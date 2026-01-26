@@ -308,4 +308,360 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1320334</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>d379f2662298a42924d2e26797953a1b</srcmd5>
+    <version>1.20.0</version>
+    <time>1769420567</time>
+    <user>anag_factory</user>
+    <comment> - Update version to 1.20:
+   - Update error message for Public Cloud instances with registercloudguest
+     installed. SUSEConnect -d is disabled on PYAG and BYOS when the
+     registercloudguest command is available. (bsc#1230861)
+   - Enhanced SAP detected. Take TREX into account and remove empty values when
+     only /usr/sap but no installation exists (bsc#1241002)
+   - Fixed modules and extension link to point to version less documentation. (bsc#1239439)
+   - Fixed SAP instance detection (bsc#1244550)
+   - Remove link to extensions documentation (bsc#1239439)
+   - Migrate to the public library
+- Version 1.14 public library release
+  This version is only available on Github as a tag to release the
+  new golang public library which can be consumed without the need
+  to interface with SUSEConnect directly.
+- Update version to 1.13:
+  - Integrating uptime-tracker
+  - Honor auto-import-gpg-keys flag on migration (bsc#1231328)
+  - Only send labels if targetting SCC
+  - Skip the docker auth generation on RMT (bsc#1231185)
+  - Add --set-labels to register command to set labels at registration time on SCC
+  - Add a new function to display suse-uptime-tracker version
+  - Integrate with uptime-tracker ( https://github.com/SUSE/uptime-tracker/ )
+  - Add a command to show the info being gathered
+- Update version to 1.12:
+  - Set the filesystem root on zypper when given (bsc#1230229,bsc#1229014)
+- Update version to 1.11
+  - Added uname as collector
+  - Added SAP workload detection
+  - Added detection of container runtimes
+  - Multiple fixes on ARM64 detection
+  - Use `read_values` for the CPU collector on Z
+  - Fixed data collection for ppc64le
+  - Grab the home directory from /etc/passwd if needed (bsc#1226128)
+- Update version to 1.10.0
+  * Build zypper-migration and zypper-packages-search as standalone
+    binaries rather then one single binary
+  * Add --gpg-auto-import-keys flag before action in zypper command (bsc#1219004)
+  * Include /etc/products.d in directories whose content are backed
+    up and restored if a zypper-migration rollback happens. (bsc#1219004)
+  * Add the ability to upload the system uptime logs, produced by the
+    suse-uptime-tracker daemon, to SCC/RMT as part of keepalive report.
+    (jsc#PED-7982) (jsc#PED-8018)
+  * Add support for third party packages in SUSEConnect
+  * Refactor existing system information collection implementation
+- Update to version 1.9.0
+  * Fix certificate import for Yast when using a registration proxy with
+    self-signed SSL certificate (bsc#1223107)
+- Update to version 1.8.0
+  * Allow &quot;--rollback&quot; flag to run on readonly filesystem (bsc#1220679)
+- Update to version 1.7.0
+  * Allow SUSEConnect on read write transactional systems (bsc#1219425)
+- Update to version 1.6.0
+  * Disable EULA display for addons (bsc#1218649 and bsc#1217961)
+- Update to version 1.5.0
+  * Configure docker credentials for registry authentication
+  * Feature: Support usage from Agama + Cockpit for ALP Micro system registration (bsc#1218364)
+  * Add --json output option
+- Update to version 1.4.0
+  * Added EULA display for addons (bsc#1170267)
+  * Fix zypper argument for auto-agreeing licenses (bsc#1214781)
+  * Enable building on SLE12 SP5 (jsc#PED-3179)
+- Update to version 1.3.0
+  * Track .changes file in git
+- Update to version 1.2.0~git0.abd0fec:
+  * enhance docs for package testing
+  * Fixed `provides` to work with yast2-registration on SLE15 &lt; SP4 (bsc#1212799)
+  * Improve error message if product set more than once
+- Update to version 1.1.0~git2.f42b4b2a060e:
+  * Keep keepalive timer states when replacing SUSEConnect (bsc#1211588)
+- Update to version 1.1.0~git0.e3c41e60892e:
+  * Bump to v1.1.0
+- Update to version 1.0.0~git23.406b219ccc9e:
+  * Added MemTotal detection for HwInfo
+  * move 'ExcludeArch' out of the if block
+- Update to version 1.0.0~git19.b225bc3:
+  * Make keepalive on SUMA systems exit without error (bsc#1207876)
+  * Update README.md
+  * Add deactivate API to ruby bindings (bsc#1202705)
+- Update to version 1.0.0~git14.17a7901:
+  * Don't write system_token to service credentials files
+  * Allow non-root users to use --version
+  * Add: ExcludeArch: %ix86 s390 ppc64 to the .spec file, so we skip builds for unsupported architectures.
+  * Update Dockerfile.yast
+  * Use openssl go for SLE and Leap 15.5+ builds
+  * Fix keepalive feature notice during installation
+  * Fix requires for all rhel clone distributions like alma, rocky...
+- Update to version 1.0.0~git0.faee7c196dc1:
+  * Revert &quot;packaging: 1.0.0 -&gt; 1.0&quot;
+- Update to version v1.0~git0.32cac3fb5047:
+  * packaging: 1.0.0 -&gt; 1.0
+- Update to version 1.0.0~git0.60e48564a714 (bsc#1204821):
+  * packaging: obsolete suseconnect &lt; 1.0.0
+  * packaging: don't end the summary with a dot
+- Update to version 0.0.10~git2.ee561b8:
+  * Drop .git from tar
+- Update to version 0.0.10~git0.5f84106:
+  * Fix System-Token support in ruby binding (bsc#1203341)
+  * Added the PACKAGE.md file
+- Update to version 0.0.9~git10.de887da7231f:
+  * Respect the PROXY_ENABLED environment variable
+- Update to version 0.0.9~git8.f9adb71:
+  * Use standard buildconditionals
+  * Strip the binaries (saves ~ 30%)
+- Update to version 0.0.9~git5.75890b6:
+  * Don't run keepalive on reboot
+  * Use system-wide proxy settings (bsc#1200994)
+  * Add customer information about keepalive calls
+  * Add timer for SUSEConnect --keepalive (bsc#1196076)
+  * Add --keepalive to manpage
+  * Added support for the System-Token header
+  * Add Keepalive command line option
+  * Print nested zypper errors (bsc#1200803)
+  * Fix migration json error with SMT (bsc#1198625)
+  * Add option to run local scc tests
+  * Switch to jenkins-hosted credentials
+  * Fix &quot;VCS stamping&quot; problem
+  * Add missing import
+  * Remove redundant code + add comment
+- Update to version 0.0.8~git2.368ea44:
+  * go1.18 compatibility: BuildRequires:git
+- Update to version 0.0.8~git0.16545bf:
+  * Allow reloading CA certs pool (bsc#1195220)
+- Update to version 0.0.7~git0.3ef988e:
+  * Fix product tree traversal (bsc#1197398)
+  * Revert &quot;Remove self from LD_PRELOAD (bsc#1196326)&quot;
+  * Remove self from LD_PRELOAD (bsc#1196326)
+- Update to version 0.0.6~git9.33e5847:
+  * Delegate free() calls back to Go (bsc#1195729)
+  * Pass &quot;insecure&quot; to zypper addservice
+  * Workaround system cert reloading after import (bsc#1195220)
+  * Extract setupHTTPClient for easier reuse
+  * Exit with code 64 on connection refused like Ruby
+- Update to version 0.0.6~git0.77933db:
+  * Add man pages
+  * Add note in DIFFERENCES.md about abbreviated flags
+  * Add -l as an alias for --list-extensions
+  * Add --clean as an alias for --cleanup (bsc#1195003)
+  * Suppress expected error log message in TLS test
+  * Add flag to import product repo keys (bsc#1174657)
+- Update to version 0.0.5~git0.bbb5544:
+  * Switch from rubygem-ffi to fiddle
+  * Cleanup services during migration (bsc#1161891)
+  * Allow non-root users to see usage text
+  * Add option to not fail dup as much
+  * Move APIVersion declaration to file where it is used
+  * Add flag to enable/disable hwinfo test
+  * Add ARM cluster count to hwinfo and fix test
+  * Simplify parsing JSON error response
+  * Add --gpg-auto-import-keys for zypper ref
+  * Rename main.go to logging.go
+  * Fix typo
+  * Remove init() from the connect package
+  * Move CFG variable declaration to config.go
+  * Move AppName const to the file where it is used
+  * Use testing.Helper() in test helpers
+  * Add ppc64le support
+  * Disable UUID test
+  * Add test tools to BuildRequires
+  * Ignore UUID errors
+  * Run basic hwinfo sanity test on build service
+  * Update code comments to match shim behavior.
+  * Remove dependency on systemd
+  * Only run httputil DumpResponse when needed
+- Update to version 0.0.4~git0.64b80e9:
+  * Makefile: also run tests under ./suseconnect
+  * Switch yast-test to upstream
+  * Removed examples leftover from the POC phase
+  * Add HA repo to get rubygem(ffi) before it's in the baseproduct
+  * Add versions and lib deps
+  * Post-review cleanup
+  * Package libsuseconnect and shim
+  * Align with yast-registration tests
+  * Fix SSLCertificate mixins
+  * Fix logger crash and restore mixin
+  * Removed TODO item handled separately
+  * Enable debug early
+  * Add package search for YaST's &quot;Online Search&quot;
+  * Clarify Repo fields
+  * Export UpdateSystem()
+  * Export SystemActivations()
+  * Add migration functions
+  * Fix handling of IsBase attribute
+  * Add missing JSONError
+  * Add list_installer_updates
+  * Add &quot;update certificates&quot;
+  * Add more specific errors
+  * Improved SSL error handling
+  * Init defaults for get_config()
+  * Improved debug logging
+  * Fix error scopes
+  * Fix ApiError interface
+  * Added DEFAULT_CREDENTIALS_DIR const
+  * get proxy credentials from curlrc
+  * Forward logs from Connect to YaST
+  * Separate Info logger
+  * Added more TODO items
+  * Simplify Config object init
+  * Map Repo and Config fields to JSON
+  * Add remaining fields listed in addon.rb
+  * Add product_type field to product
+  * First working yast part
+  * Add relative path support to credentials
+  * Add steps to test from yast
+  * Add yast create_credentials_file
+  * Add CreateCredentials() method
+  * Add yast credentials()
+  * Add yast announce_system - WIP
+  * Add MergeJSON method for Config
+  * Add readme for YaST integration
+  * Fix usage text
+  * Add missing -g argument
+  * Fix OBS CI, it now requires target
+  * Add manpage placeholder
+  * Simplify packageWanted()
+  * Add sorting and grouping options
+  * Add local repo search and duplicate removal
+  * Add basic online package search
+  * Update rpm spec for zypper-search-packages-plugin
+  * Add CLI for zypper search-packages plugin
+  * Optional base product in package search
+  * Use DefaultTransport defaults + client timeout
+  * Extract ReleaseType from zypper output
+  * Print failed command on zypper error like the Ruby
+  * Add package_search API wrapper
+  * Allow de-register/de-activate a single product
+  * Improve docstring for the Status struct
+  * Always show subscription information if available
+  * Refactor getStatuses() to ease testing
+  * Add SUMA/Uyuni check
+  * Fix status output order to follow zypper product xml
+  * Change GetExtensionsList() to reduce calls
+  * Add the subscription name to status output
+  * allow --instance-data together with --regcode
+  * Post-review cleanups
+  * Add selfupdate functionality
+  * Handle Leap -&gt; SLES migration scenario
+  * Add offline migrations support
+  * Change parse error string and add block comment
+  * Add disabling of obsolete repos
+  * Add zypper repos listing
+  * Add interactive migration selection
+  * Allow loading Config from any path
+  * Remove dummy flag
+  * Add snapper support
+  * Add zypper backup/restore functions
+  * Use connect.StringSet
+  * Add --query option
+  * Add product and break-my-system options
+  * Add note on conflicting flags
+  * Check for flag contradictions
+  * Add echoing output of executed commands to console
+  * Move product printing out of checkProducts()
+  * Split --debug and --verbose
+  * Add zypper dist-upgrade part
+  * Split migration code
+  * Extract migration sorting
+  * Expose migration(Add|Remove)Service() functions
+  * Trap SIGINT/SIGTERM
+  * Add zypper.RefreshRepos()
+  * Expose client.upgradeProduct()
+  * Add --root parameter
+  * Add --migration N parameter
+  * Prepare available migrations
+  * Add API call to get online migration paths
+  * Add system products checking
+  * Add quiet logger for easier --quiet handling
+  * Add zypper migration plugin implementation.
+  * Export toTriplet and installReleasePackage
+  * Add basic string set implementation
+  * Remove quiet param from execute() and zypperRun()
+  * Simplify mocking of external commands
+- Update to version 0.0.3~git9.19e761b:
+  * Add zypper-migration-plugin to package
+  * Remove unused Error logger
+  * Add missing doc strings to exported vars and funcs
+  * Handle error after products sync api call
+  * Make the CI check gofmt
+- Update to version 0.0.3~git0.dacdd3b:
+  * Add gofmt target to Makefile
+  * Fix gofmt errors
+  * Add Requires that weren't explicit (bsc#1188646)
+  * Use custom UnmarshalJSON() for the Product struct
+- Update to version 0.0.2~git0.ebef3b7:
+  * Add --version
+  * Fix list-extensions printing &quot;Not available&quot; when using SCC
+  * Change --deregister to --de-register
+- Update to version 0.0.1~git33.b531281:
+  * Run integration tests
+  * Try to use localized error from server response
+  * Write usage help to stdout like the Ruby version
+  * Simplify list-extensions template
+  * Fix call to create UUID on s390
+  * Provides and Obsoletes SUSEConnect
+  * Add extensions list tests
+  * Fix calls to s390 read_values
+  * Add build-s390 target to Makefile
+  * hwinfo: don't fail if dmidecode is missing
+- Update to version 0.0.1~git16.8a5d48c:
+  * Add extensions hints for readonly root fs
+  * Make the connect package an internal package
+  * Document debug output destination difference
+  * Add status value constants
+  * Add rollback CLI option
+  * Fix callHTTP() so connections are reused
+  * Fix list-extensions format
+  * Fix error from zypper refresh
+- Update to version 0.0.1~git0.a5f168a:
+  * Add JSONError and cleanup error handling
+- Update to version 0.0.0~git.c45760f:
+  * Add Conflicts:SUSEConnect due to same file name
+  * Document advantage of suseconnect-ng
+  * Make UpdateSystem() message text bold
+  * Add no_zypper_refs config file option
+  * Complete Register() and AnnounceSystem()
+  * Add registerProductTree()
+  * Add activateProduct() and registerProduct()
+  * Rename source modules to executable names
+  * Remove unnecessary content from package.
+  * Add proxy auth support
+  * Change order of usage help options to match the Ruby version
+  * Make requirement for go 1.16 explicit.
+  * Fix instance data file path
+  * Add zypper service commands needed for registration
+  * S390: set cpus, sockets, hypervisor and uuid hwinfo fields
+  * Implement the system update part of registration
+  * Add helper to build hwinfo struct
+  * Add functions to call and parse s390 read_values
+  * Add function to get the hostname
+  * Add function to get private IP address
+  * Add arch, hypervisor and uuid functions
+  * Add function to find cloud provider from dmidecode
+  * Add function to parse lscpu output
+  * Add announceSystem() api call
+  * Add deregistration functionality
+  * Add deactivateProduct() API call
+  * obs: use an in between branch
+- Update to version 0.0.0~git.a083a1f:
+  * Add Product.IsEmpty()
+  * Add unit test for token auth
+  * Add obs workflow to be able to use it as CI
+  * add files to build rpm
+  * Add more zypper operations
+  * Unexport api functions
+  * Add --cleanup CLI action
+  * Add listing of installed services via zypper
+  * Change zypperRun args to take a slice of strings
+  * Fix printInformation() outputs
+- Initial package of suseconnect-ng
+</comment>
+    <requestid>1328658</requestid>
+  </revision>
 </revisionlist>
