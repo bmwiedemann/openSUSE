@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jan 21 11:46:13 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.3:
+  + Fix direct scanout on drivers without explicit modifiers
+  + Fix cases of spurious tone mapping
+  + Fix reporing damage region in pipewire streams
+  + Initialize all luminance fields for CICP
+  + Fix subsurface geometry calculation
+  + Fix Xwayland clients becoming unresponsive on 2nd monitor
+  + Improve native Xwayland scaling support
+  + Send color management image description target volume events
+  + Improve support for tablet devices
+  + Do not spin cursor for startup sequences with no app ID
+  + Let gestures influence other gesture before state change
+  + Fixed crash
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Nov 24 16:41:26 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.2:

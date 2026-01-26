@@ -2391,4 +2391,27 @@ New stable rel</comment>
   * Updated translations. (forwarded request 1319806 from iznogood)</comment>
     <requestid>1319885</requestid>
   </revision>
+  <revision rev="261" vrev="1">
+    <srcmd5>ed70434f597ccee86fdb6e326cfdc790</srcmd5>
+    <version>49.3</version>
+    <time>1769421490</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.3:
+  + Fix direct scanout on drivers without explicit modifiers
+  + Fix cases of spurious tone mapping
+  + Fix reporing damage region in pipewire streams
+  + Initialize all luminance fields for CICP
+  + Fix subsurface geometry calculation
+  + Fix Xwayland clients becoming unresponsive on 2nd monitor
+  + Improve native Xwayland scaling support
+  + Send color management image description target volume events
+  + Improve support for tablet devices
+  + Do not spin cursor for startup sequences with no app ID
+  + Let gestures influence other gesture before state change
+  + Fixed crash
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+  + Updated translations. (forwarded request 1328486 from iznogood)</comment>
+    <requestid>1328914</requestid>
+  </revision>
 </revisionlist>
