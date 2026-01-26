@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-anthy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,6 @@ BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  python3-gobject >= 3
 BuildRequires:  swig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(ibus-1.0) >= 1.4.99
 BuildRequires:  pkgconfig(python3)
@@ -67,8 +66,6 @@ find %{buildroot} -name "*.la" -type f -delete -print
 
 %find_lang %{name}
 %fdupes -s %{buildroot}
-
-%suse_update_desktop_file ibus-setup-anthy System Utility settings
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
