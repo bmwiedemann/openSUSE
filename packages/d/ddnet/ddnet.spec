@@ -1,7 +1,7 @@
 #
 # spec file for package ddnet
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,12 @@
 #
 
 
+# ddnet needs a c++17 compiler at least
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%global force_gcc_version 13
+%endif
 Name:           ddnet
-Version:        19.6
+Version:        19.7
 Release:        0
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 License:        Apache-2.0 AND CC-BY-SA-3.0 AND Zlib AND MIT AND SUSE-Public-Domain
@@ -32,6 +36,7 @@ BuildRequires:  cargo
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  glslang-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libminiupnpc-devel
@@ -40,6 +45,7 @@ BuildRequires:  pnglite-devel
 BuildRequires:  python3
 BuildRequires:  rust
 BuildRequires:  rust-std
+BuildRequires:  spirv-tools
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
@@ -58,12 +64,6 @@ BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(wavpack)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-data = %{version}-%{release}
-%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-BuildRequires:  gcc12
-BuildRequires:  gcc12-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 
 %description
 DDraceNetwork (DDNet) is an actively maintained version of DDRace,
@@ -104,9 +104,9 @@ directory = './vendor'
 EOF
 
 %build
-%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-export CC="gcc-12"
-export CXX="g++-12"
+%if 0%{?force_gcc_version}
+export CC="gcc-%{force_gcc_version}"
+export CXX="g++-%{force_gcc_version}"
 %endif
 export CARGO_HOME=`pwd`/cargo-home/
 mkdir -p build && cd build

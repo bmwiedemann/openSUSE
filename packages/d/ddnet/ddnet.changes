@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Jan 23 14:37:41 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 19.7:
+  * [Client] Add button to start and connect to local server
+    in LAN tab
+  * [Client] Predict dummy animations, gun fire, coll. line
+  * [Client] Speed up demo player
+  * [Client] Change sitting lifefrozen tee emote to blink
+  * [Client] Shutdown http without delay if there are no requests
+    remaining
+  * [Client] Fix stuck emote wheel when dead and scoreboard lock
+    during game pause
+  * [Client] Add short helps/descriptions in touch controls editor
+  * [Client] Fix preinput weapon prediction
+  * [Client] Menu fixes
+  * [Client] Limit motd popup to 24 lines
+  * [Client] Show command completions with leading spaces
+  * [Client] Refresh skins when changing events setting
+  * [Client] Hookline showing player hook on quantum misses
+  * [Client] Fix sound volume updates being ignored
+  * [Client] Show popup upon exiting touch controls editor with
+    unsaved changes
+  * [Editor] Ensure tile skip and padding are zeroed for
+    tile layers
+  * [Editor] Fix angle value selector for speedups
+  * [Editor] Fix editor quad knife being active while popups
+    are open
+  * [Editor] Move shift-by property to map
+  * [Client&Server] Sort players by milliseconds in scoreboard
+  * [Client&Server] More reproducible release builds
+  * [Server] Fix ninja with solo + unsolo no collision
+  * [Server] Fix wrong save code printed when generated save code
+    is used
+  * [Server] Hide ips in mutes if showips is disabled and show
+    player names
+  * [Server] Improve fifo error handling
+  * [Server] Fix save_dry causing crash
+  * [Server] Send current map best time in snapshot
+  * [Masterserver] Disallow port 0
+- Add BuildRequires spirv-tools
+- Rebase gcc requirement for Leap 15.6
+
+-------------------------------------------------------------------
 Tue Dec 16 18:23:17 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 19.6:
