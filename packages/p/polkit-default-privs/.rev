@@ -2442,4 +2442,16 @@ for 12.3</comment>
 </comment>
     <requestid>1326383</requestid>
   </revision>
+  <revision rev="262" vrev="1">
+    <srcmd5>2e09f6f5d78b6e93a2bcf696f6a79875</srcmd5>
+    <version>1550+20260122.bb2b3c5</version>
+    <time>1769420628</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1550+20260122.bb2b3c5:
+  * profiles: drop no longer packaged gsd wacom-*led-helper actions
+  * profiles: whitelist InputPlumber actions (bsc#1249149)
+  * profiles: whitelist tlp-pd actions (bsc#1254768)
+</comment>
+    <requestid>1328908</requestid>
+  </revision>
 </revisionlist>

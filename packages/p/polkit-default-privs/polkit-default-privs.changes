@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 23 15:23:30 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 1550+20260122.bb2b3c5:
+  * profiles: drop no longer packaged gsd wacom-*led-helper actions
+  * profiles: whitelist InputPlumber actions (bsc#1249149)
+  * profiles: whitelist tlp-pd actions (bsc#1254768)
+
+-------------------------------------------------------------------
 Fri Jan 09 17:22:54 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 1550+20260108.4fc3a54:
