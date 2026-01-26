@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Jan 19 14:04:06 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.9
+  * Place expression field below history by default.
+  * Avoid display of completion list for non-decimal numbers, text
+    arguments, and x, y, z.
+  * Optional custom button column in keypad (four buttons shown
+    regardless keypad types).
+  * Calculate-as-you-type improvements and fixes.
+  * Improve automatic digit groups, in input, for non-decimal
+    numbers and group sizes other than 3.
+  * Add --update-exchange-rates command line option.
+  * Fix tooltips for warning and flag in result when expression
+    is placed below history.
+  * Fix curly brackets replaced with parentheses in subfunctions
+    (interferes with default values).
+  * Hide keep above option, in preferences, on Wayland.
+  * Improve speed of sort(), rank(), and mode() functions (and
+    other dependent functions) (libqalculate).
+  * Parse ± before implicit multiplication when not preceded by
+    number (e.g. "7 km ± 5m") (libqalculate).
+  * Always consider x^(a + b) equivalent to x^a × x^b
+    (fixes "x^(y + z) − x^y × x^z") (libqalculate).
+  * Simplify (x = a || x ≥ a + 1) and (x ≤ a || x ≥ a + 1), and
+    similar, when x and a are integers
+    (fixes "abs(x − 1) = abs(1 − x)") (libqalculate).
+  * Do not remove duplicate whitespace characters from text
+    strings (in quotation marks) (libqalculate).
+  * Fix floating point conversion when comma is used as decimal
+    separator (libqalculate).
+  * Fix (almost) endless loop with increasingly complex equations
+    in some cases when x + x^(1/a) is transformed to
+    x = (b − x)^a) (libqalculate).
+  * Fix and improve function() function (libqalculate).
+  * Minor bug fixes and feature enhancements.
+
+-------------------------------------------------------------------
 Mon Nov 17 18:44:01 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.8.2
