@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan 26 06:22:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.61.0:
+  * Storage Boxes support is now generally available
+    The experimental phase for Storage Boxes is over, and Storage
+    Boxes support is now generally available.
+  * Features
+    - Storage Box support no longer experimental (#1267)
+    - server: allow specifying user-data for rebuild (#1319)
+  * Dependencies
+    - deps: update module github.com/hetznercloud/hcloud-go/v2 to
+      v2.36.0 (#1320)
+    - deps: update dependency jdx/mise to v2026.1.6 (#1316)
+
+-------------------------------------------------------------------
 Fri Jan 16 15:21:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.60.0:
