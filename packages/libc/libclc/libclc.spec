@@ -1,7 +1,7 @@
 #
 # spec file for package libclc
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,16 +31,9 @@ Source0:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%
 Source1:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/%{name}-%{_version}.src.tar.xz.sig
 Source100:      %{name}-rpmlintrc
 Source101:      https://releases.llvm.org/release-keys.asc#/%{name}.keyring
-BuildRequires:  cmake
-%if 0%{?suse_version} >= 1550
-BuildRequires:  clang-devel
-BuildRequires:  llvm-devel
-%else
- %if 0%{?sle_version} >= 150600
 BuildRequires:  clang21-devel
+BuildRequires:  cmake
 BuildRequires:  llvm21-devel
- %endif
-%endif
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(LLVMSPIRVLib)
 Provides:       libclc(llvm%{_llvm_sonum})

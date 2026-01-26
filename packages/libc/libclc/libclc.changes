@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 22 14:05:24 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- BuildRequire clang21-devel/llvm21-devel, no matter which
+  suse_version/sle_version is being used
+
+-------------------------------------------------------------------
 Mon Sep 22 16:08:05 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - let Leap 15.6 llvm/clang 21

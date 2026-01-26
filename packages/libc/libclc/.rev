@@ -342,4 +342,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1307953</requestid>
   </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>95d65ff1d8ba7538399361cf133f989b</srcmd5>
+    <version>0.2.0+llvm21.1.0</version>
+    <time>1769420582</time>
+    <user>anag_factory</user>
+    <comment>- BuildRequire clang21-devel/llvm21-devel, no matter which
+  suse_version/sle_version is being used</comment>
+    <requestid>1328707</requestid>
+  </revision>
 </revisionlist>
