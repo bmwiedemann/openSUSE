@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 26 09:39:44 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260126.95a91857:
+  * Dev: sbd: Give warning when `crm cluster health sbd` detects stonith-watchdog-timeout set to -1
+  * Fix: sbd: Allow setting -1 to stonith-watchdog-timeout (bsc#1257143)
+
+-------------------------------------------------------------------
 Tue Jan 20 04:14:41 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.0.0+20260120.522c67b3:
