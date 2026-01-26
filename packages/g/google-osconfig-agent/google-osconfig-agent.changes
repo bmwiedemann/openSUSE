@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 23 14:29:15 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20260119.00
+  * Bump cloud.google.com/go/storage from 1.56.0 to 1.58.0 (#899)
+- Add missing Bugzilla and CVE references for CVE-2023-45288
+- Drop CVE-2025-47911.patch, fixed upstream
+- Drop CVE-2025-58190.patch, fixed upstream
+
+-------------------------------------------------------------------
 Wed Jan  7 11:45:40 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20251230.00
@@ -537,7 +546,7 @@ Thu May 16 12:33:50 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
   * Updating dependencies and respective checksums (#556)
 - from version 20240501.01
   * Update go.mod (#554)
-- from version 20240501.00
+- from version 20240501.00 (bsc#1236533, CVE-2023-45288)
   * Bump golang.org/x/net from 0.17.0 to 0.23.0 (#542)
 - from version 20240430.01
   * Remove SBOM generation logic from package build workflows (#553)
