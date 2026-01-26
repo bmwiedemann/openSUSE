@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-skk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@ Patch1:         ibus-skk-gcc14-fix.patch
 BuildRequires:  gnome-common
 BuildRequires:  intltool
 BuildRequires:  pkg-config
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(ibus-1.0)
 BuildRequires:  pkgconfig(libskk)
@@ -49,7 +48,6 @@ make %{?_smp_mflags}
 %install
 %make_install
 
-%suse_update_desktop_file ibus-setup-skk Utility DesktopUtility System
 %find_lang %{name}
 
 %files -f %{name}.lang
