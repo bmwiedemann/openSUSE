@@ -45,6 +45,7 @@ BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xinerama)
+BuildRequires:  pkgconfig(xpresent)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xres)
 Requires:       zenity
