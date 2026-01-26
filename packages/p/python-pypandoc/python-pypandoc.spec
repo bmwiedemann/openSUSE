@@ -27,9 +27,8 @@ URL:            https://github.com/JessicaTegner/pypandoc
 Source:         https://github.com/JessicaTegner/pypandoc/archive/refs/tags/v%{version}.tar.gz#/pypandoc-%{version}.tar.gz
 BuildRequires:  %{python_module pandocfilters}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module poetry-core >= 1}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pandoc
 BuildRequires:  python-rpm-macros
