@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Jan 19 14:22:02 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Update to 2.5:
+  * ibus-cangjie will now display the code to type when entering a
+    wildcard in the code. Contribution from 2017 by NCHL on github.
+  * The code is now type checked, to avoid future mistakes.
+  * Wrote some contribution guidelines.
+  * Added/improved the zh_HK translations.
+  * Added a new zh_CN translation.
+  * Added an about dialog to show support information.
+  * The minimum meson version is now 1.3.2, which is in
+    Ubuntu LTS 24.04.
+  * Improved the restart procedure.
+  * Used the prefered / operator instead of the deprecated join_paths
+    function in the meson buildsystem files.
+  * Improved the unit testing.
+  * ibus-cangjie is now properly installed into libexec dir, as
+    requested by our Debian friends.
+  * Code is now passed through a linter, eiter manually or in the CI.
+  * Added a passthrough mode with a simple shortcut to access.
+  * Properly display the translated name of the input method in
+    input method selection dialog.
+- Modify ibus-cangjie.spec:
+  To fit ibus-cangjie transfer the build script to meson and ninja.
+- Drop ibus-cangjie-fix_import_version.patch:
+  Upstream has merged 6b46d4c6, means 2.5 edition already have this
+  modification.
+- Drop ibus-cangjie-py312.patch:
+  Factory could build ibus-cangjie 2.5 edition successfully, and 2.5
+  edition no-longer have "py-compile", So don't need this patch after
+  the update.
+
+-------------------------------------------------------------------
 Wed Mar 19 15:01:17 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - add ibus-cangjie-py312.patch
