@@ -1,7 +1,7 @@
 #
 # spec file for package kdevelop
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,7 +14,6 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
 
 
 %define kf6_version 6.19.0
@@ -35,8 +34,8 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  clang-devel
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  kdevelop-pg-qt >= 1.9
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libboost_headers-devel
 # TODO: not ported to Qt6. Expected: 10/2024
 # BuildRequires:  okteta-devel
@@ -83,7 +82,7 @@ BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 # contains the headers that are needed for the C++ parser to work (see boo#1119186)
 Requires:       clang%(rpm -q --qf '%''{version}' clang-devel | cut -d. -f1)
 # Used by the docker plugin
-Recommends:     %{_bindir}/pkexec
+Recommends:     pkexec
 Recommends:     clazy
 Recommends:     cppcheck
 Recommends:     heaptrack
