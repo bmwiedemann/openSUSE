@@ -799,4 +799,41 @@ update to 10.15.0</comment>
       is normalized and saved to package.json #10197.</comment>
     <requestid>1323167</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>b8e5d0e89ceb7c7a926c534354580c90</srcmd5>
+    <version>10.28.0</version>
+    <time>1769421763</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.28.0:
+  * Minor Changes
+    - Add support for a hook called beforePacking that can be used
+      to customize the package.json contents at publish time #3816.
+    - In some cases, a filtered install (i.e. pnpm install --filter
+      ...) was slower than running pnpm install without any filter
+      arguments. This performance regression is now fixed. Filtered
+      installs should be as fast or faster than a full install
+      #10408.
+  * Patch Changes
+    - Do not add a symlink to the project into the store's project
+      registry if the store is in a subdirectory of the project
+      #10411.
+    - It should be possible to declare the requiredScripts setting
+      in pnpm-workspace.yaml #10261.
+- update to 10.27.0:
+  * Minor Changes
+    - Adding trustPolicyIgnoreAfter allows you to ignore trust
+      policy checks for packages published more than a specified
+      time ago#10352.
+    - Added project registry for global virtual store prune
+      support.
+    - Projects using the store are now registered via symlinks in
+      {storeDir}/v10/projects/. This enables pnpm store prune to
+      track which packages are still in use by active projects and
+      safely remove unused packages from the global virtual store.
+    - Semi-breaking. Changed the location of unscoped packages in
+      the virtual global store. They will now be stored under a
+      directory named @ to maintain a uniform 4-level directory
+      depth.</comment>
+    <requestid>1328968</requestid>
+  </revision>
 </revisionlist>

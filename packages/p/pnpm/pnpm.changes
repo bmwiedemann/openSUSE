@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Mon Jan 19 09:13:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.28.0:
+  * Minor Changes
+    - Add support for a hook called beforePacking that can be used
+      to customize the package.json contents at publish time #3816.
+    - In some cases, a filtered install (i.e. pnpm install --filter
+      ...) was slower than running pnpm install without any filter
+      arguments. This performance regression is now fixed. Filtered
+      installs should be as fast or faster than a full install
+      #10408.
+  * Patch Changes
+    - Do not add a symlink to the project into the store's project
+      registry if the store is in a subdirectory of the project
+      #10411.
+    - It should be possible to declare the requiredScripts setting
+      in pnpm-workspace.yaml #10261.
+- update to 10.27.0:
+  * Minor Changes
+    - Adding trustPolicyIgnoreAfter allows you to ignore trust
+      policy checks for packages published more than a specified
+      time ago#10352.
+    - Added project registry for global virtual store prune
+      support.
+    - Projects using the store are now registered via symlinks in
+      {storeDir}/v10/projects/. This enables pnpm store prune to
+      track which packages are still in use by active projects and
+      safely remove unused packages from the global virtual store.
+    - Semi-breaking. Changed the location of unscoped packages in
+      the virtual global store. They will now be stored under a
+      directory named @ to maintain a uniform 4-level directory
+      depth.
+    - Added mark-and-sweep garbage collection for global virtual
+      store.
+    - pnpm store prune now removes unused packages from the global
+      virtual store's links/ directory. The algorithm:
+      - Scans all registered projects for symlinks pointing to the
+        store
+      - Walks transitive dependencies to mark reachable packages
+      - Removes any package directories not marked as reachable
+    - This includes support for workspace monorepos - all
+      node_modules directories within a project (including those in
+      workspace packages) are scanned.
+  * Patch Changes
+    - Throw an error if the value of the tokenHelper or
+      <url>:tokenHelper setting contains an environment variable.
+    - Git dependencies with build scripts should respect the
+      dangerouslyAllowAllBuilds settings #10376.
+    - Skip the package manager check when running with --global and
+      a project packageManager is configured, and warn that the
+      check is skipped.
+    - pnpm store prune should not fail if the dlx cache directory
+      has files, not only directories #10384
+    - Fixed a bug (#9759) where pnpm add would incorrectly modify a
+      catalog entry in pnpm-workspace.yaml to its exact version.
+- update to 10.26.2:
+  * Patch Changes
+    - Improve error message when a package version exists but does
+      not meet the minimumReleaseAge constraint. The error now
+      clearly states that the version exists and shows a
+      human-readable time since release (e.g., "released 6 hours
+      ago") #10307.
+    - Fix installation of Git dependencies using annotated tags
+      #10335.
+    - Previously, pnpm would store the annotated tag object's SHA
+      in the lockfile instead of the actual commit SHA. This caused
+      ERR_PNPM_GIT_CHECKOUT_FAILED errors because the checked-out
+      commit hash didn't match the stored tag object hash.
+    - Binaries of runtime engines (Node.js, Deno, Bun) are written
+      to node_modules/.bin before lifecycle scripts (install,
+      postinstall, prepare) are executed #10244.
+    - Try to avoid making network calls with preferOffline #10334.
+- update to 10.26.1:
+  * Patch Changes
+    - Don't fail on pnpm add, when blockExoticSubdeps is set to
+      true #10324.
+    - Always resolve git references to full commits and ensure HEAD
+      points to the commit after checkout #10310.
+
+-------------------------------------------------------------------
 Mon Dec 15 22:06:15 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 10.26.0
