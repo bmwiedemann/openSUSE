@@ -80,4 +80,18 @@
   * gitlab CI: explictly list GNU make to be installed in build environment</comment>
     <requestid>1035539</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ba79368a337cc3a28988f90947988662</srcmd5>
+    <version>1.0.7</version>
+    <time>1769421983</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0.7
+  * meson: Add option to build with meson
+  * add -help option
+  * Accept --help &amp; --version as aliases to -help &amp; -version
+  * man page: fix warnings from `mandoc -T lint`
+  * Strip trailing whitespace from source files
+  * gitlab CI: drop the ci-fairy check-mr job</comment>
+    <requestid>1329107</requestid>
+  </revision>
 </revisionlist>
