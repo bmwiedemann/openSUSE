@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 26 06:21:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.5:
+  * build(deps): bump actions/checkout from 6.0.1 to 6.0.2 (#2030)
+  * build(deps): bump google.golang.org/api from 0.260.0 to 0.262.0
+    (#2031)
+  * build(deps): bump github/codeql-action from 4.31.10 to 4.31.11
+    (#2032)
+  * build(deps): bump chainguard-dev/actions from 1.5.11 to 1.5.12
+    (#2026)
+  * build(deps): bump sigs.k8s.io/release-utils from 0.12.2 to
+    0.12.3 (#2027)
+
+-------------------------------------------------------------------
 Mon Jan 19 06:31:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.0.4:
