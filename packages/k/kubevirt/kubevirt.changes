@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 23 16:19:24 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- Update to version 1.7.0
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v1.7.0
+- Upstream now uses stateless firmware for CoCo VMs. Drop
+  Ensure-SEV-VMs-use-stateless-OVMF-firmware.patch
+
+-------------------------------------------------------------------
 Tue Dec  2 18:00:45 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 - Build virt-synchronization-controller package

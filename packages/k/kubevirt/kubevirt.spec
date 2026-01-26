@@ -1,7 +1,7 @@
 #
 # spec file for package kubevirt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define _exclusive_arch x86_64 aarch64
 
 Name:           kubevirt
-Version:        1.6.3
+Version:        1.7.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -31,7 +31,6 @@ Source1:        kubevirt_containers_meta
 Source2:        kubevirt_containers_meta.service
 Source3:        %{url}/releases/download/v%{version}/disks-images-provider.yaml
 Source100:      %{name}-rpmlintrc
-Patch1:         Ensure-SEV-VMs-use-stateless-OVMF-firmware.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
