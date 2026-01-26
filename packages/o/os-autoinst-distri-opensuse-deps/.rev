@@ -183,4 +183,12 @@
     <comment>Update to 1.1769189266.07b75843</comment>
     <requestid>1328967</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>35d1601d1696e7f87fab0c46de43a6d6</srcmd5>
+    <version>1.1769189266.07b75843</version>
+    <time>1769444666</time>
+    <user>dimstar_suse</user>
+    <comment>Forbidden control chars found (ASCII values &lt;32 except 9, 10 and 13).
+</comment>
+  </revision>
 </revisionlist>
