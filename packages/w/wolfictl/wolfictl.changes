@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jan 26 06:21:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.29:
+  * build(deps): bump actions/checkout from 6.0.1 to 6.0.2 (#1839)
+  * build(deps): bump actions/checkout in /.github/actions (#1840)
+  * build(deps): bump cloud.google.com/go/storage from 1.59.0 to
+    1.59.1 (#1837)
+  * build(deps): bump github.com/anchore/stereoscope from 0.1.13 to
+    0.1.18 (#1836)
+  * lint: drop redundant regex and some small fixes
+  * lint: add fetch-templating rule to validate version templates
+  * Switch to SeverityWarning
+  * build(deps): bump github.com/cli/go-gh/v2 from 2.12.2 to 2.13.0
+    (#1803)
+  * build(deps): bump golangci/golangci-lint-action from 9.1.0 to
+    9.2.0 (#1812)
+  * build(deps): bump the chainguard group with 2 updates (#1834)
+  * build(deps): bump chainguard-dev/actions from 1.5.11 to 1.5.12
+    (#1833)
+  * build(deps): bump the chainguard group with 3 updates (#1832)
+  * feat(pkg/lint): flag packages that depend on unversioned python
+    packages
+
+-------------------------------------------------------------------
 Mon Jan 19 06:32:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.38.28:
