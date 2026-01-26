@@ -86,4 +86,13 @@
 - Don't depend on lua5.1</comment>
     <requestid>1315159</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>d26fc0f6dcb0955b285f260c66935d59</srcmd5>
+    <version>1.1.0</version>
+    <time>1769421753</time>
+    <user>anag_factory</user>
+    <comment>Build for Lua 5.5 as well
+- Enable lua55 build.</comment>
+    <requestid>1328965</requestid>
+  </revision>
 </revisionlist>
