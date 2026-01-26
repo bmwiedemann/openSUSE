@@ -388,6 +388,7 @@ Patch3224:      swiftshader-llvm21.patch
 Patch3225:      webrtc-pipewire_session-missing-spa_pod_object_find_prop.patch
 Patch3226:      linux_seccomp-SYS_SECCOMP.patch
 Patch3227:      text_break_iterator-icu78-breakAllLineBreakClassTable-should-be-consistent.patch 
+Patch3228:      quiche-quiche_buffer_allocator-missing-memcpy.patch
 
 # Patches to re-enable upstream force disabled features.
 # There's no sense in submitting them but they may be reused as-is by other packagers.

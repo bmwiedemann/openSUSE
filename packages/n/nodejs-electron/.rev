@@ -1527,4 +1527,13 @@ to Staging:F with it</comment>
     <comment>- Add text_break_iterator-icu78-breakAllLineBreakClassTable-should-be-consistent.patch to fix ftbfs with new icu</comment>
     <requestid>1321658</requestid>
   </revision>
+  <revision rev="177" vrev="3">
+    <srcmd5>845ae3d0e985bde7d2d23a7616e668a5</srcmd5>
+    <version>37.10.2</version>
+    <time>1769421748</time>
+    <user>anag_factory</user>
+    <comment>
+- Add quiche-quiche_buffer_allocator-missing-memcpy.patch to fix ftbfs</comment>
+    <requestid>1328950</requestid>
+  </revision>
 </revisionlist>

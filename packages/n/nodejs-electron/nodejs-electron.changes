@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 23 18:39:58 UTC 2026 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Add quiche-quiche_buffer_allocator-missing-memcpy.patch to fix ftbfs
+
+-------------------------------------------------------------------
 Mon Dec  1 11:50:09 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Add text_break_iterator-icu78-breakAllLineBreakClassTable-should-be-consistent.patch to fix ftbfs with new icu
