@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 26 07:24:44 CET 2026 - tumic@gpxsee.org
+
+- Update to version 15.10
+  * Fixed NMEA parser crash (introduced in 15.8).
+
+-------------------------------------------------------------------
+Mon Jan 26 00:45:10 CET 2026 - tumic@gpxsee.org
+
+- Update to version 15.9
+  * Added BigTIFF support (GeoTIFF, EXIF).
+  * Improved/fixed PRj(WKT) parser.
+  * Improved/fixed GeoTIFF parser.
+  * Improved/fixed EXIF parser.
+  * Added GDA2020 GCS and PCSs based on it.
+
+-------------------------------------------------------------------
 Sun Jan 11 14:00:25 CET 2026 - tumic@gpxsee.org
 
 - Update to version 15.8

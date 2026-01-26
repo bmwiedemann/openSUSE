@@ -1,3 +1,19 @@
+gpxsee (15.10) stable; urgency=medium
+
+  * Fixed NMEA parser crash (introduced in 15.8).
+
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 26 Jan 2026 07:27:24 +0100
+
+gpxsee (15.9) stable; urgency=low
+
+  * Added BigTIFF support (GeoTIFF, EXIF).
+  * Improved/fixed PRj(WKT) parser.
+  * Improved/fixed GeoTIFF parser.
+  * Improved/fixed EXIF parser.
+  * Added GDA2020 GCS and PCSs based on it.
+
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 26 Jan 2026 00:47:49 +0100
+
 gpxsee (15.8) stable; urgency=low
 
   * Fixed/improved Mapsforge styles handling.
