@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Sat Jan 24 17:27:30 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Clean up a bit: no rpmlintrc and service
+- Compile and run tests
+- Submit for libtiff to be used with GDAL in QGIS: boo#1257123
+
+-------------------------------------------------------------------
+Thu May  9 06:40:21 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- initial package (version 4.0.0) for openSUSE
