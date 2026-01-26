@@ -6,8 +6,8 @@ Index: libraries/lib.inc.php
  	$appName = 'phpPgAdmin';
  
  	// Application version
--	$appVersion = '7.14.6-mod';
-+	$appVersion = '7.14.6';
+-	$appVersion = '7.14.7-mod';
++	$appVersion = '7.14.7';
  
  	// PostgreSQL and PHP minimum version
  	global $postgresqlMinVer;

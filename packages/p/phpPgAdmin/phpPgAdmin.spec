@@ -1,7 +1,7 @@
 #
 # spec file for package phpPgAdmin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Name:           phpPgAdmin
 Summary:        Administration of PostgreSQL over the web
 License:        GPL-2.0-or-later
 Group:          Productivity/Databases/Tools
-Version:        7.14.6
+Version:        7.14.7
 Release:        0
 %define rel_version REL_7-14-6
 #URL:            https://github.com/phppgadmin/phppgadmin
@@ -55,15 +55,15 @@ Features
 * Administer multiple servers
 * Support for PostgreSQL 9.x.x, 10.x, 11.x, 12.x, 14.x
 * Manage all aspects of:
-	o Users & groups
+	o Users &amp; groups
 	o Databases
 	o Schemas
-	o Tables, indexes, constraints, triggers, rules & privileges
-	o Views, sequences & functions
+	o Tables, indexes, constraints, triggers, rules &amp; privileges
+	o Views, sequences &amp; functions
 	o Advanced objects
 	o Reports
 * Easy data manipulation:
-	o Browse tables, views & reports
+	o Browse tables, views &amp; reports
 	o Execute arbitrary SQL
 	o Select, insert, update and delete
 * Dump table data in a variety of formats: SQL, COPY, XML, XHTML, CSV, Tabbed, pg_dump

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 23 16:01:03 UTC 2026 - chris@computersalat.de
+
+- Update to 7.14.7
+  - gh#16 'Deprecated htmlspecialchars(): Passing null' and other problems
+  - gh#19 No value shown for "last value" for sequences
+  - gh#23 Ajax browsing of foreign keys only works in one level (fixed)
+
+-------------------------------------------------------------------
 Thu Feb 29 15:07:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
