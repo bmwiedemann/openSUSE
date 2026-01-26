@@ -1,0 +1,32 @@
+--- a/src/java.desktop/unix/classes/sun/awt/X11/XWindow.java
++++ b/src/java.desktop/unix/classes/sun/awt/X11/XWindow.java
+@@ -53,6 +53,7 @@ import java.lang.ref.WeakReference;
+ 
+ import sun.awt.AWTAccessor;
+ import sun.awt.AWTAccessor.ComponentAccessor;
++import sun.awt.image.PixelConverter;
+ import sun.awt.PaintEventDispatcher;
+ import sun.awt.PeerEvent;
+ import sun.awt.SunToolkit;
+@@ -465,7 +466,20 @@ class XWindow extends XBaseWindow implements X11ComponentPeer {
+             if (!doEraseBackground()) {
+                 return;
+             }
+-            int pixel = surfaceData.pixelFor(c.getRGB());
++            int pixel = 0;
++            boolean isOglEnabled = Boolean.getBoolean("sun.java2d.opengl");
++            if (isOglEnabled) {
++                // 6304250: XAWT: Items in choice show a blue border on OpenGL + Solaris10 when background color is set
++                // Note: When OGL is enabled, surfaceData.pixelFor() will not
++                // return a pixel value appropriate for passing to
++                // XSetWindowBackground().  Therefore, we will use the ColorModel
++                // for this component in order to calculate a pixel value from
++                // the given RGB value.
++                ColorModel cm = getColorModel();
++                pixel = PixelConverter.instance.rgbToPixel(c.getRGB(), cm);
++            } else {
++                pixel = surfaceData.pixelFor(c.getRGB());
++            }
+             XlibWrapper.XSetWindowBackground(XToolkit.getDisplay(), getContentWindow(), pixel);
+             XlibWrapper.XClearWindow(XToolkit.getDisplay(), getContentWindow());
+         }
