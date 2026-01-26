@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Fri Jan 23 18:02:01 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-11.0.30+7 (January 2026 CPU)
+  * CVEs
+    + CVE-2026-21925, bsc#1257034
+    + CVE-2026-21932, bsc#1257036
+    + CVE-2026-21933, bsc#1257037
+    + CVE-2026-21945, bsc#1257038
+  * Changes
+    + JDK-4895924: Strings in format #rgb not handled by
+      Color.decode() (affects CSS / Swing)
+    + JDK-8213781: web page background renders blue in JEditorPane
+    + JDK-8224087: Compile C code for at least C99 Standard
+      compliance
+    + JDK-8245545: Disable TLS_RSA cipher suites
+    + JDK-8257709: C1: Double assignment in
+      InstructionPrinter::print_stack
+    + JDK-8263622: The java.awt.color.ICC_Profile#setData invert
+      the order of bytes for the "head" tag
+    + JDK-8264524: jdk/internal/platform/docker/
+      /TestDockerMemoryMetrics.java fails due to swapping not
+      working
+    + JDK-8265429: Improve GCM encryption
+    + JDK-8271456: Avoid looking up standard charsets in
+      "java.desktop" module
+    + JDK-8274893: Update java.desktop classes to use
+      try-with-resources
+    + JDK-8295301: Problem list TrayIcon tests that fail on Ubuntu
+      22.04
+    + JDK-8299748: java/util/zip/Deinflate.java failing on s390x
+    + JDK-8313083: Print 'rss' and 'cache' as part of the container
+      information
+    + JDK-8317970: Bump target macosx-x64 version to 11.00.00
+    + JDK-8336451: [11u] GHA macos-13 and macos-15 builders are
+      unable to resolve local hostname
+    + JDK-8336854: CAInterop.java#actalisauthenticationrootca
+      conflicted with /manual and /timeout
+    + JDK-8337506: Disable "best-fit" mapping on Windows command
+      line
+    + JDK-8339280: jarsigner -verify performs cross-checking
+      between CEN and LOC
+    + JDK-8341496: Improve JMX connections
+    + JDK-8341861: GHA: Use only retention mechanism to remove
+      bundles
+    + JDK-8341964: Add mechanism to disable different parts of TLS
+      cipher suite
+    + JDK-8347129: cpuset cgroups controller is required for no
+      good reason
+    + JDK-8347381: Upgrade jQuery UI to version 1.14.1
+    + JDK-8347911: Limit the length of inflated text chunks
+    + JDK-8350813: Rendering of bulky sound bank from MIDI sequence
+      can cause OutOfMemoryError
+    + JDK-8351933: Inaccurate masking of TC subfield decrement in
+      ForkJoinPool
+    + JDK-8353299: VerifyJarEntryName.java test fails
+    + JDK-8354941: Build failure with glibc 2.42 due to uabs() name
+      collision
+    + JDK-8355528: Update HarfBuzz to 11.2.0
+    + JDK-8357657: [11u][windows] cannot stat '/jdk.crypto.ec/*':
+      No such file or directory
+    + JDK-8358004: Delete applications/scimark/Scimark.java test
+    + JDK-8359402: Test CloseDescriptors.java should throw
+      SkippedException when there is no lsof/sctp
+    + JDK-8359501: Enhance Handling of URIs
+    + JDK-8362308: Enhance Bitmap operations
+    + JDK-8362632: Improve HttpServer Request handling
+    + JDK-8364214: Enhance polygon data support
+    + JDK-8364597: Replace THL A29 Limited with Tencent
+    + JDK-8364660: ClassVerifier::ends_in_athrow() should be removed
+    + JDK-8365058: Enhance CopyOnWriteArraySet
+    + JDK-8365271: Improve Swing supports
+    + JDK-8366125: [11u] Test compiler/loopopts/
+      /TestRangeCheckPredicatesControl.java fails OOM
+    + JDK-8366359: Test should throw SkippedException when there is
+      no lpstat
+    + JDK-8366572: Bump update version of OpenJDK: 11.0.30
+    + JDK-8367782: VerifyJarEntryName.java: Fix modifyJarEntryName
+      to operate on bytes and re-introduce verifySignatureEntryName
+    + JDK-8368032: Enhance Certificate Checking
+    + JDK-8368192: Test java/lang/ProcessBuilder/Basic.java#id0
+      fails with Exception: Stack trace
+    + JDK-8368982: Test sun/security/tools/jarsigner/EC.java
+      completed and timed out
+    + JDK-8369226: GHA: Switch to MacOS 15
+    + JDK-8372534: Update Libpng to 1.6.51
+- Removed patch:
+  * jdk-8354941.patch
+    + integrated in this version
+
+-------------------------------------------------------------------
+Wed Jan 14 15:04:11 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * bsc_1255446.patch
+    + OpenJDK rendering blue borders when it should not, due to
+      missing the fix for JDK-6304250 from upstream (bsc#1255446)
+
+-------------------------------------------------------------------
+Wed Jan 14 15:02:20 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Do not depend on update-desktop-files (jsc#PED-14507)
+
+-------------------------------------------------------------------
 Wed Oct 22 10:12:08 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-11.0.29+7 (October 2025 CPU)

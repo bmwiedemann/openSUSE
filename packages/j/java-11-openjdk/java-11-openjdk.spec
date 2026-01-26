@@ -1,7 +1,7 @@
 #
 # spec file for package java-11-openjdk
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       29
+%global updatever       30
 %global buildver        7
 %global openjdk_repo    jdk11u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
@@ -226,6 +226,7 @@ Patch23:        reproducible-directory-mtime.patch
 Patch24:        reproducible-search-index-files.patch
 #
 Patch30:        JDK-8208602.patch
+Patch31:        bsc_1255446.patch
 #
 # OpenJDK specific patches
 #
@@ -236,7 +237,6 @@ Patch200:       ppc_stack_overflow_fix.patch
 Patch201:       fix_armv6_build.patch
 #
 Patch302:       disable-doclint-by-default.patch
-Patch304:       jdk-8354941.patch
 #
 Patch500:       activation-module.patch
 Patch501:       annotation-module.patch
@@ -269,7 +269,6 @@ BuildRequires:  libxslt
 BuildRequires:  mozilla-nss-devel >= 3.53
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
-BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-proto-devel
 BuildRequires:  xprop
 BuildRequires:  zip
@@ -528,6 +527,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 24 -p1
 
 %patch -P 30 -p1
+%patch -P 31 -p1
 
 # s390 build fixes
 
@@ -543,7 +543,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %endif
 
 %patch -P 302 -p1
-%patch -P 304 -p1
 
 %patch -P 500
 %patch -P 501
@@ -943,7 +942,6 @@ done
 install -d -m 0755 %{buildroot}%{_datadir}/{applications,pixmaps}
 install -d -m 0755 %{buildroot}/%{_jvmdir}/%{sdkdir}/lib/desktop/
 install -m 0644 jconsole.desktop %{buildroot}/%{_jvmdir}/%{sdkdir}/lib/desktop/
-%suse_update_desktop_file %{buildroot}/%{_jvmdir}/%{sdkdir}/lib/desktop/jconsole.desktop
 
 # Find demo directories.
 find %{buildroot}%{_jvmdir}/%{sdkdir}/demo \
