@@ -1,0 +1,239 @@
+From 9af8b97f52bd35ae3cd911f4d8c18b70a38babe0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Florian=20=22sp1rit=22=E2=80=8B?= <sp1rit@disroot.org>
+Date: Fri, 23 Jan 2026 16:42:37 +0100
+Subject: [PATCH] start: drop support for nix-gl handling
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+we do not need it and it breaks with our libglaze
+
+Signed-off-by: Florian "sp1rit"​ <sp1rit@disroot.org>
+---
+ start/src/core/Instance.cpp |   8 +--
+ start/src/core/State.hpp    |   1 -
+ start/src/helpers/Nix.cpp   | 110 ------------------------------------
+ start/src/helpers/Nix.hpp   |   9 ---
+ start/src/main.cpp          |  12 ----
+ 5 files changed, 1 insertion(+), 139 deletions(-)
+ delete mode 100644 start/src/helpers/Nix.cpp
+ delete mode 100644 start/src/helpers/Nix.hpp
+
+diff --git a/start/src/core/Instance.cpp b/start/src/core/Instance.cpp
+index 2f5007bd..ec56cc75 100644
+--- a/start/src/core/Instance.cpp
++++ b/start/src/core/Instance.cpp
+@@ -1,7 +1,6 @@
+ #include "Instance.hpp"
+ #include "State.hpp"
+ #include "../helpers/Logger.hpp"
+-#include "../helpers/Nix.hpp"
+ 
+ #include <cstdlib>
+ #include <cstring>
+@@ -55,12 +54,7 @@ void CHyprlandInstance::runHyprlandThread(bool safeMode) {
+         procctl(P_PID, getpid(), PROC_PDEATHSIG_CTL, &sig);
+ #endif
+ 
+-        if (Nix::shouldUseNixGL()) {
+-            argsStd.insert(argsStd.begin(), g_state->customPath.value_or("Hyprland"));
+-            args.insert(args.begin(), strdup(argsStd.front().c_str()));
+-            execvp("nixGL", args.data());
+-        } else
+-            execvp(g_state->customPath.value_or("Hyprland").c_str(), args.data());
++        execvp(g_state->customPath.value_or("Hyprland").c_str(), args.data());
+ 
+         g_logger->log(Hyprutils::CLI::LOG_ERR, "fork(): execvp failed: {}", strerror(errno));
+         std::fflush(stdout);
+diff --git a/start/src/core/State.hpp b/start/src/core/State.hpp
+index d00a1757..6cf73a96 100644
+--- a/start/src/core/State.hpp
++++ b/start/src/core/State.hpp
+@@ -8,7 +8,6 @@
+ struct SState {
+     std::span<const char*>     rawArgvNoBinPath;
+     std::optional<std::string> customPath;
+-    bool                       noNixGl = false;
+ };
+ 
+ inline UP<SState> g_state = makeUnique<SState>();
+\ No newline at end of file
+diff --git a/start/src/helpers/Nix.cpp b/start/src/helpers/Nix.cpp
+deleted file mode 100644
+index 07cd2a4a..00000000
+--- a/start/src/helpers/Nix.cpp
++++ /dev/null
+@@ -1,110 +0,0 @@
+-#include "Nix.hpp"
+-
+-#include "Logger.hpp"
+-#include "../core/State.hpp"
+-
+-#include <filesystem>
+-#include <algorithm>
+-#include <hyprutils/string/VarList2.hpp>
+-#include <hyprutils/string/String.hpp>
+-#include <hyprutils/os/Process.hpp>
+-#include <hyprutils/os/File.hpp>
+-
+-#include <glaze/glaze.hpp>
+-
+-using namespace Hyprutils::String;
+-using namespace Hyprutils::OS;
+-
+-using namespace Hyprutils::File;
+-
+-static std::optional<std::string> getFromEtcOsRelease(const std::string_view& sv) {
+-    static std::string content = "";
+-    static bool        once    = true;
+-
+-    if (once) {
+-        once = false;
+-
+-        auto read = readFileAsString("/etc/os-release");
+-        content   = read.value_or("");
+-    }
+-
+-    static CVarList2 vars(std::move(content), 0, '\n', true);
+-
+-    for (const auto& v : vars) {
+-        if (v.starts_with(sv) && v.contains('=')) {
+-            // found
+-            auto value = trim(v.substr(v.find('=') + 1));
+-
+-            if (value.back() == value.front() && value.back() == '"')
+-                value = value.substr(1, value.size() - 2);
+-
+-            return std::string{value};
+-        }
+-    }
+-
+-    return std::nullopt;
+-}
+-
+-static bool executableExistsInPath(const std::string& exe) {
+-    const char* PATHENV = std::getenv("PATH");
+-    if (!PATHENV)
+-        return false;
+-
+-    CVarList2       paths(PATHENV, 0, ':', true);
+-    std::error_code ec;
+-
+-    for (const auto& PATH : paths) {
+-        std::filesystem::path candidate = std::filesystem::path(PATH) / exe;
+-        if (!std::filesystem::exists(candidate, ec) || ec)
+-            continue;
+-        if (!std::filesystem::is_regular_file(candidate, ec) || ec)
+-            continue;
+-        auto perms = std::filesystem::status(candidate, ec).permissions();
+-        if (ec)
+-            continue;
+-        if ((perms & std::filesystem::perms::others_exec) != std::filesystem::perms::none)
+-            return true;
+-    }
+-
+-    return false;
+-}
+-
+-std::expected<void, std::string> Nix::nixEnvironmentOk() {
+-    if (!shouldUseNixGL())
+-        return {};
+-
+-    if (!executableExistsInPath("nixGL"))
+-        return std::unexpected(
+-            "Hyprland was installed using Nix, but you're not on NixOS. This requires nixGL to be installed as well.\nYou can install nixGL by running \"nix profile install "
+-            "github:guibou/nixGL --impure\" in your terminal.");
+-
+-    return {};
+-}
+-
+-bool Nix::shouldUseNixGL() {
+-    if (g_state->noNixGl)
+-        return false;
+-
+-    // check if installed hyprland is nix'd
+-    CProcess proc("Hyprland", {"--version-json"});
+-    if (!proc.runSync()) {
+-        g_logger->log(Hyprutils::CLI::LOG_ERR, "failed to obtain hyprland version string");
+-        return false;
+-    }
+-
+-    auto json = glz::read_json<glz::generic>(proc.stdOut());
+-    if (!json) {
+-        g_logger->log(Hyprutils::CLI::LOG_ERR, "failed to obtain hyprland version string (bad json)");
+-        return false;
+-    }
+-
+-    const auto FLAGS  = (*json)["flags"].get_array();
+-    const bool IS_NIX = std::ranges::any_of(FLAGS, [](const auto& e) { return e.get_string() == std::string_view{"nix"}; });
+-
+-    if (IS_NIX) {
+-        const auto NAME = getFromEtcOsRelease("NAME");
+-        return !NAME || *NAME != "NixOS";
+-    }
+-
+-    return false;
+-}
+diff --git a/start/src/helpers/Nix.hpp b/start/src/helpers/Nix.hpp
+deleted file mode 100644
+index edc01b19..00000000
+--- a/start/src/helpers/Nix.hpp
++++ /dev/null
+@@ -1,9 +0,0 @@
+-#pragma once
+-
+-#include <expected>
+-#include <string>
+-
+-namespace Nix {
+-    std::expected<void, std::string> nixEnvironmentOk();
+-    bool                             shouldUseNixGL();
+-};
+\ No newline at end of file
+diff --git a/start/src/main.cpp b/start/src/main.cpp
+index e73fcfa5..8a408b2b 100644
+--- a/start/src/main.cpp
++++ b/start/src/main.cpp
+@@ -3,7 +3,6 @@
+ #include <print>
+ 
+ #include "helpers/Logger.hpp"
+-#include "helpers/Nix.hpp"
+ #include "core/State.hpp"
+ #include "core/Instance.hpp"
+ 
+@@ -21,7 +20,6 @@ Any arguments after -- are passed to Hyprland. For Hyprland help, run start-hypr
+ 
+ Additional arguments for start-hyprland:
+  --path [path]       -> Override Hyprland path
+- --no-nixgl          -> Force disable nixGL
+ )#";
+ 
+ //
+@@ -76,7 +74,6 @@ int main(int argc, const char** argv, const char** envp) {
+             continue;
+         }
+         if (arg == "--no-nixgl") {
+-            g_state->noNixGl = true;
+             continue;
+         }
+     }
+@@ -87,15 +84,6 @@ int main(int argc, const char** argv, const char** envp) {
+     if (!g_state->rawArgvNoBinPath.empty())
+         g_logger->log(Hyprutils::CLI::LOG_WARN, "Arguments after -- are passed to Hyprland");
+ 
+-    // check if our environment is OK
+-    if (const auto RET = Nix::nixEnvironmentOk(); !RET) {
+-        g_logger->log(Hyprutils::CLI::LOG_ERR, "Nix environment check failed:\n{}", RET.error());
+-        return 1;
+-    }
+-
+-    if (Nix::shouldUseNixGL())
+-        g_logger->log(Hyprutils::CLI::LOG_DEBUG, "Hyprland was compiled with Nix - will use nixGL");
+-
+     bool safeMode = false;
+     while (true) {
+         g_instance     = makeUnique<CHyprlandInstance>();
+-- 
+2.50.1
+

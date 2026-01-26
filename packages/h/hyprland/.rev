@@ -391,4 +391,12 @@ depends on 1159012</comment>
     - hyprctl: add nix flag (#12653)</comment>
     <requestid>1325567</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>fb97976907eeaba0100dc7fabbdf636a</srcmd5>
+    <version>0.53.3</version>
+    <time>1769421658</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1329024</requestid>
+  </revision>
 </revisionlist>

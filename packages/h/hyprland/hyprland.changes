@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Jan 24 20:13:29 UTC 2026 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 0.53.3:
+  + This is a standard patch release backporting a few fixes from
+    main on top of 0.53.2.
+  + Fixes backported:
+    - hyprctl: remove trailing comma from json object
+
+-------------------------------------------------------------------
+Fri Jan 23 15:27:33 UTC 2026 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 0.53.2:
+  + This is a standard patch release backporting a few fixes from
+    main on top of 0.53.1.
+  + Fixes backported:
+    - pluginsystem: fix crash when unloading plugin hyprctl commands
+    - testers: add missing #include <unistd.h>
+    - config: return windowrulev2 and layerrulev2 error messages
+    - start: add parent-desth handling for BSDs
+    - start: use nixGL if Hyprland is nix but not NixOS
+    - config: don't crash on permission with a config check
+    - desktop/reservedArea: clamp to 0
+    - animationMgr: avoid uaf in ::tick() if handleUpdate destroys AV
+    - fix: handle fullscreen windows on special workspaces
+    - desktop/window: track explicit workspace assignments to prevent
+	  X11 configure overwrites
+    - desktop/workspaceHistory: fix tracking for multiple monitors
+    - desktop/window: avoid uaf on instant removal of a window
+    - desktop/ruleApplicator: fix typo in border color rule parsing
+    - anr: remove window on closewindow
+    - hyprerror: clear reserved area on destroy
+    - animation: reset tick state on session activation
+    - desktop: restore invisible floating window alpha/opacity when
+	  focused over fullscreen
+
+- Added "start_hyprland_no_nixgl.patch"
+
+-------------------------------------------------------------------
 Fri Jan  2 21:47:17 UTC 2026 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.53.1:

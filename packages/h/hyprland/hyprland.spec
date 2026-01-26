@@ -2,7 +2,7 @@
 # spec file for package hyprland
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2022-25 Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
+# Copyright (c) 2022-26 Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define shortname hypr
 
 Name:           hyprland
-Version:        0.53.1
+Version:        0.53.3
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
@@ -28,6 +28,7 @@ URL:            https://hyprland.org/
 Source0:        %{name}-%{version}.tar.xz
 Source99:       %{name}.rpmlintrc
 Patch0:         disable-donation-nag-popup.patch
+Patch1:         start_hyprland_no_nixgl.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++ >= 14
 BuildRequires:  git
