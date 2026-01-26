@@ -130,4 +130,14 @@
     <comment></comment>
     <requestid>1326755</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a7cc9c3a35145bffcd6eee8f1f5673de</srcmd5>
+    <version>6.6.1</version>
+    <time>1769427271</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.6.1:
+  * `/AcroForm` might be NullObject
+  * Handle missing font bounding boxes gracefully</comment>
+    <requestid>1329149</requestid>
+  </revision>
 </revisionlist>

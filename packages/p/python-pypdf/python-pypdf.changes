@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 26 08:06:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.6.1:
+  * `/AcroForm` might be NullObject
+  * Handle missing font bounding boxes gracefully
+
+-------------------------------------------------------------------
 Mon Jan 12 10:15:47 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.6.0 (bsc#1256463, CVE-2026-22690, bsc#1256464, CVE-2026-22691)
