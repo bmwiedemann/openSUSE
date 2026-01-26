@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 24 11:37:03 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.9.1
+  * Add Nix flakes support
+  * Fix warnings with GCC #307
+  * Fix issues with immer::box in collections
+
+-------------------------------------------------------------------
 Tue Oct 10 10:08:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.8.1

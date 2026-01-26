@@ -1,7 +1,7 @@
 #
 # spec file for package immer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# Some tests fail on 32bit archs and TW's aarch64
+
 %if 0%{?suse_version} > 1500
 %ifarch aarch64
 %define skip_tests 1
@@ -28,7 +28,7 @@
 %bcond_without tests
 %endif
 Name:           immer
-Version:        0.8.1
+Version:        0.9.1
 Release:        0
 Summary:        Persistent and immutable data structures written in C++
 License:        BSL-1.0
@@ -39,7 +39,7 @@ BuildRequires:  cmake
 BuildRequires:  gc-devel
 BuildRequires:  gcc-c++
 # includes catch2/catch.hpp
-BuildRequires:  cmake(Catch2) < 3.0
+BuildRequires:  cmake(Catch2)
 %if %{with tests}
 BuildRequires:  cmake(fmt)
 %endif
