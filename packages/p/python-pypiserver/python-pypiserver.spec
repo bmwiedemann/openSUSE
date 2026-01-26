@@ -1,7 +1,7 @@
 #
 # spec file for package python-pypiserver
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pypiserver%{psuffix}
-Version:        2.3.2
+Version:        2.4.0
 Release:        0
 Summary:        Minimal PyPI server for uploading & downloading packages with pip/easy_install
 License:        MIT

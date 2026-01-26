@@ -122,4 +122,28 @@
 - Correct URL.</comment>
     <requestid>1228408</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0b267606da3aac3e0d9a2e00eba4d32d</srcmd5>
+    <version>2.4.0</version>
+    <time>1769427280</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.4.0:
+  * ENH: integrating prefix server mounting option from
+    #647
+  * MAINT: fix toc in README.md
+  * MAINT: bottle down to 0.12.25
+  * MAINT: update Docker Hub description only on tags
+  * MAINT: Remove obsolete known limitation relating to
+    misspellings
+  * MAINT: remove unused buildout configs and related
+    bootstrap script
+  * ENH: wrap local bottle and allow overriding
+    MEMFILE_MAX with an env variable
+  * FIX: Dockerfile syntax warnings
+  * MAINT: brush up some README content
+  * MAINT: remove support for Python 3.7 (end-of-life)
+
+- Update to 1.5.1</comment>
+    <requestid>1329164</requestid>
+  </revision>
 </revisionlist>

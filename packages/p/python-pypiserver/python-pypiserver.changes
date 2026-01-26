@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan 26 08:26:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * ENH: integrating prefix server mounting option from
+    #647
+  * MAINT: fix toc in README.md
+  * MAINT: bottle down to 0.12.25
+  * MAINT: update Docker Hub description only on tags
+  * MAINT: Remove obsolete known limitation relating to
+    misspellings
+  * MAINT: remove unused buildout configs and related
+    bootstrap script
+  * ENH: wrap local bottle and allow overriding
+    MEMFILE_MAX with an env variable
+  * FIX: Dockerfile syntax warnings
+  * MAINT: brush up some README content
+  * MAINT: remove support for Python 3.7 (end-of-life)
+
+-------------------------------------------------------------------
 Thu Dec  5 01:52:18 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.3.2:
@@ -51,7 +70,7 @@ Tue May  9 13:12:28 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 -------------------------------------------------------------------
 Fri Oct 28 20:19:44 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 1.5.1 
+- Update to 1.5.1
   * 61e4487 ENH: add extremely basic /health endpoint (#396)
   * bbd2a47 FIX: docker tests in cicd (#444)
   * 784a9a1 MAINT: Replace usage of deprecated inspect.getargspec (#436)
