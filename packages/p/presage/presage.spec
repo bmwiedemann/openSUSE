@@ -1,7 +1,7 @@
 #
 # spec file for package presage
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,7 +82,6 @@ BuildRequires:  dbus-1-glib-devel
 BuildRequires:  libcppunit-devel
 BuildRequires:  python3-dbus-python
 BuildRequires:  sqlite3-devel
-BuildRequires:  update-desktop-files
 %else
 BuildRequires:  cppunit-devel
 BuildRequires:  dbus-glib-devel
@@ -262,9 +261,6 @@ pushd %{buildroot}%{python3_sitearch}/
 popd
 
 sed -i -e '1 s#/usr/bin/env.*python#/usr/bin/python3#' %{buildroot}%{_bindir}/presage_dbus_*
-
-%suse_update_desktop_file gprompter Utility DesktopUtility
-%suse_update_desktop_file pyprompter Utility DesktopUtility
 
 %fdupes %{buildroot}/%{_prefix}
 %python3_fix_shebang
