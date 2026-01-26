@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 16 20:35:40 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding/adjusting the following  for Leap 15.6/16.0
+  * BuildRequires: rust-std >= 1.90
+  * BuildRequires: cargo-vendor >= 1.90
+  * gcc15
+  * gcc15-c++
+
+-------------------------------------------------------------------
 Fri Dec 19 18:42:52 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 0.2.37:

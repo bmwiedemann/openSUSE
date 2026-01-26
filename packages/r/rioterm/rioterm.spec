@@ -1,7 +1,7 @@
 #
 # spec file for package rioterm
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,11 +25,14 @@ URL:            https://raphamorim.io/rio/
 Source0:        rio-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source99:       %{name}-rpmlintrc
-%if 0%{?suse_version} <= 1500
+%if 0%{?suse_version} <= 1500 || 0%{?suse_version} <= 1600
 Group:          System/X11/Terminals
-BuildRequires:  gcc14
-BuildRequires:  gcc14-c++
+BuildRequires:  cargo-vendor >= 1.90
+BuildRequires:  gcc15
+BuildRequires:  gcc15-c++
 BuildRequires:  libstdc++-devel
+BuildRequires:  libstdc++6-devel-gcc15
+BuildRequires:  rust-std >= 1.90
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -50,9 +53,9 @@ A hardware-accelerated GPU terminal emulator powered by WebGPU, focusing to run 
 %setup -a1 -qn rio-%{version}
 
 %build
-%if 0%{?suse_version} <= 1500
-export CC=gcc-14
-export CXX=g++-14
+%if 0%{?suse_version} <= 1500 || 0%{?suse_version} <= 1600
+export CC=gcc-15
+export CXX=g++-15
 %endif
 %{cargo_build} --no-default-features --features=x11,wayland
 
