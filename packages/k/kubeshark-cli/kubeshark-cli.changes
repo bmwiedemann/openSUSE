@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan 26 06:30:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 52.12.0:
+  * Bug Fixes & New Features
+    - Improved performance of the cluster-wide L4 connectivity map.
+    - Fixed the missing footer bug in the frontend.
+    - Added individual PCAP files to snapshot archive downloads to
+      help find the needle in the haystack in busy clusters.
+    - Transitioned the following domains:
+      - docs.kubehq.com to docs.kubeshark.com
+      - kubeshark.kubehq.com to demo.kubeshark.com
+      - console.kubehq.com to console.kubeshark.com
+      - helm.kubehq.com to helm.kubeshark.com
+      - api.kubehq.com to api.kubeshark.com
+
+
+-------------------------------------------------------------------
 Fri Jan 16 06:54:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 52.11.7 (versions between .0 and this one were

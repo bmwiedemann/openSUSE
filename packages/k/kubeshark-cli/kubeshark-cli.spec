@@ -19,7 +19,7 @@
 %define executable_name kubeshark
 
 Name:           kubeshark-cli
-Version:        52.11.7
+Version:        52.12.0
 Release:        0
 Summary:        CLI for the API traffic analyzer for Kubernetes
 License:        Apache-2.0
