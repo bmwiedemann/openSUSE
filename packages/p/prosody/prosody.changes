@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan 26 08:03:17 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.0.4:
+  Fixes and improvements:
+  * mod_s2s: Fix traceback when outgoing s2s queue is full
+  * util.uuid: Fix padding of group 2 of UUIDv7 to use zeroes
+  Minor changes:
+  * core.modulemanager: Fix shell commands on components
+  * mod_s2s: Explicitly prevent sending recursive error replies when queue is full
+  * modulemanager: Allow component modules to specify additional inherited modules
+  * prosodyctl check features: Use modulemanager to calculate modules that will actually be loaded
+  * prosodyctl check features: change recommendation from mod_muc_mam to mod_mam
+  * prosodyctl check config: Fix traceback when zero modules are enabled
+  * mod_pubsub: Fail early if loaded outside of a component to prevent misconfiguration
+  * doap: Add XEP-0486
+  * mod_pubsub/commands: Fix listing item numbers along with item names
+  * mod_account_activity: Handle authentication provider returning no user info
+  * mod_mam: Automatically load mod_muc_mam if loaded on a MUC component
+  * mod_muc: Inherit mod_mam if globally loaded
+  * See https://blog.prosody.im/prosody-13.0.4-released/
+
+-------------------------------------------------------------------
 Fri Jan 23 13:06:26 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 13.0.3:
