@@ -1,0 +1,19 @@
+diff --git a/doc/lirc-data2table b/doc/lirc-data2table
+index 14c492b..9f79327 100644
+--- a/doc/lirc-data2table
++++ b/doc/lirc-data2table
+@@ -1,3 +1,4 @@
++#!/usr/bin/python3
+ ''' Create the lirc Supported Devices Table using data in hardware.yaml '''
+ 
+ import glob
+diff --git a/tools/lirc-postinstall b/tools/lirc-postinstall
+index a0d0830..ccdd169 100755
+--- a/tools/lirc-postinstall
++++ b/tools/lirc-postinstall
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ #
+ # Perform post-install updates after lirc or externak driver install:
+ #  - Create the drivers.yaml list from the configs directory

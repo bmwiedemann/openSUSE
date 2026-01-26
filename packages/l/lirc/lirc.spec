@@ -31,11 +31,13 @@ Group:          Hardware/Other
 URL:            http://www.lirc.org/
 Source0:        https://downloads.sourceforge.net/project/lirc/LIRC/%{version}/lirc-%{version}.tar.bz2
 Source1:        baselibs.conf
+Source9:        %{name}.sysusers
 Patch0:         reproducible.patch
 Patch1:         harden_irexec.service.patch
 Patch2:         harden_lircd-uinput.service.patch
 Patch3:         harden_lircd.service.patch
 Patch4:         harden_lircmd.service.patch
+Patch5:         lirc-rpmlintfix.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection
@@ -59,6 +61,11 @@ BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  sysuser-tools
+# for tests:
+BuildRequires:  expect
+BuildRequires:  socat
+%sysusers_requires
 Requires:       udev
 Recommends:     lirc-remotes
 Suggests:       lirc-kmp
@@ -159,6 +166,7 @@ License:        GPL-2.0-or-later
 Group:          Hardware/Other
 Requires:       %{name}-core = %{version}-%{release}
 Recommends:     lirc-core = %{version}
+BuildArch:      noarch
 
 %description  disable-kernel-rc
 Udev rule which disables the kernel built-in handling of infrared devices
@@ -214,6 +222,7 @@ sed -i -e "1{s|/usr/bin/env bash|$(which bash)|}" \
 %build
 %configure --enable-devinput
 make %{?_smp_mflags}
+%sysusers_generate_pre %{SOURCE9} %{name} %{name}.conf
 
 %install
 %make_install
@@ -235,13 +244,14 @@ install -Dpm 644 contrib/60-lirc.rules \
 install -Dpm 644 contrib/99-remote-control-lirc.rules \
     %{buildroot}%{_udevrulesdir}/99-remote-control-lirc.rules
 # get rid of libtool file
-find %{buildroot} -type f -name "*.la" -delete -print
+find %{buildroot}%{_libdir} -type f -name "*.la" -delete -print
 #
 #
 # Don't install documentation in a non standard directory
 rm -rf %{buildroot}%{_datadir}/{,%{name}/}doc
 # hide python dependency
 chmod a+x %{buildroot}%{_bindir}/pronto2lirc
+install -D -m 0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/%{name}.conf
 mkdir -p %{buildroot}%{_rundir}
 # Remove old %%{_rundir}; deprecated but still installed by lirc, which is not looking for it
 rm -rf %{buildroot}%{_localstatedir}
@@ -260,6 +270,20 @@ rm -rf %{buildroot}/%{_datadir}/lirc/lirc-%{version}.tar.gz %{buildroot}/%{_data
 %python3_fix_shebang_path %{buildroot}%{python3_sitearch}/lirc-setup/*
 %endif
 
+%check
+%if 0%{?suse_version} >= 1600
+if test -d python-pkg/tests; then
+    cd python-pkg/tests; python3 -m unittest discover || exit 1
+    cd $OLDPWD
+fi
+%endif
+ 
+echo "Plugins: 34" > summary.ok
+echo "Drivers: 45" >> summary.ok
+echo "Errors: 0"   >> summary.ok
+tools/lirc-lsplugins -U plugins/.libs -s > summary
+diff -w summary summary.ok || exit 1
+
 %post -n liblirc_client0 -p /sbin/ldconfig
 %post -n liblirc_driver0 -p /sbin/ldconfig
 %post -n liblirc0 -p /sbin/ldconfig
@@ -270,13 +294,6 @@ rm -rf %{buildroot}/%{_datadir}/lirc/lirc-%{version}.tar.gz %{buildroot}/%{_data
 %postun -n libirrecord0 -p /sbin/ldconfig
 
 %pre core
-getent group lirc >/dev/null || groupadd -r lirc
-getent passwd lirc >/dev/null || \
-    useradd -r -g lirc -d %{_localstatedir}/log/lirc -s /sbin/nologin \
-        -c "LIRC daemon user, runs lircd." lirc
-usermod -a -G dialout lirc &> /dev/null || :
-usermod -a -G lock lirc &> /dev/null || :
-usermod -a -G input lirc &> /dev/null || :
 %service_add_pre lircd.service lircmd.service lircd-uinput.service lircd-setup.service lircd.socket irexec.service
 
 %post core
@@ -296,9 +313,9 @@ usermod -a -G input lirc &> /dev/null || :
 %doc contrib
 %dir %{_datadir}/%{name}
 %dir %{_libdir}/%{name}
-%dir %ghost %{_rundir}/lirc
-%ghost %{_rundir}/lirc/lircm
-%ghost %{_rundir}/lirc/lircd
+%dir %ghost %attr(0755,root,root) %{_rundir}/lirc
+%ghost %attr(0644,root,root) %{_rundir}/lirc/lircm
+%ghost %attr(0644,root,root) %{_rundir}/lirc/lircd
 %exclude %{_bindir}/irxevent
 %exclude %{_bindir}/xmode2
 %{_bindir}/*
@@ -323,6 +340,7 @@ usermod -a -G input lirc &> /dev/null || :
 %config(noreplace,missingok) %{_sysconfdir}/%{name}/irexec.lircrc
 %{_unitdir}/lirc*
 %{_unitdir}/irexec.service
+%{_sysusersdir}/%{name}.conf
 %{_tmpfilesdir}/lirc.conf
 
 %files devel
