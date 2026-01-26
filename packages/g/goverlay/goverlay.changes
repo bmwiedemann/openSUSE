@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Jan 26 04:24:04 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Update to version 1.6.9
+  * Flatpak Runtime Detection Fix
+  * PasCube/vkCube Testing Integration
+  * Multi-GPU Configuration
+
+- Update to version 1.7.0
+  * Replaced Global Enable with an FGMod-based "Auto Enable" system.
+  * Integrated FGMod
+  * New Proton Tweaks Tab
+  * OptiScaler Updates
+  * Bug Fixes & UI Uppdates
+
+- Update to version 1.7.1
+  * Updated pascube to 1.7.0
+  * MangoHud UI updates
+  * OptiScaler fixes
+  * UI Improvements
+  * Bug Fixes
+  * Improved build workflow and versioning automation
+
+- Update to version 1.7.2
+  * Save As Functionality
+  * OptiScaler Auto-Installation
+  * Complete XDG Compliance
+  * FGMOD Integration
+  * Bug Fixes
+  * FGMOD Script Execution
+  * User Interface updates
+  * Flatpak Compatibility
+
+-------------------------------------------------------------------
 Thu Jan  1 04:24:24 UTC 2026 - pallas wept <pallaswept@proton.me>
 
 - Update to version 1.6.4
