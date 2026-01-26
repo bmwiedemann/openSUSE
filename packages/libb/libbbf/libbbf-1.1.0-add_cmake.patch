@@ -1,0 +1,33 @@
+From 010b08997edba655246ce6d10abdd581dbcf3ff4 Mon Sep 17 00:00:00 2001
+From: Kainoa Kanter <kainoa@t1c.dev>
+Date: Tue, 20 Jan 2026 14:53:35 -0800
+Subject: [PATCH] add CMake config
+
+---
+ CMakeLists.txt | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+ create mode 100644 CMakeLists.txt
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+new file mode 100644
+index 0000000..9142d0c
+--- /dev/null
++++ b/CMakeLists.txt
+@@ -0,0 +1,17 @@
++cmake_minimum_required(VERSION 3.16)
++project(bbfmux)
++
++set(CMAKE_CXX_STANDARD 17)
++set(CMAKE_CXX_STANDARD_REQUIRED ON)
++
++find_package(Threads REQUIRED)
++
++add_executable(bbfmux
++    src/bbfenc.cpp
++    src/libbbf.cpp
++    src/xxhash.c
++)
++
++target_link_libraries(bbfmux PRIVATE Threads::Threads)
++
++install(TARGETS bbfmux DESTINATION bin)

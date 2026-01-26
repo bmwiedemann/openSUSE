@@ -1,0 +1,8 @@
+<package name="libbbf" project="openSUSE:Factory">
+  <title>Bound Book Format container for comics and manga</title>
+  <description>Bound Book Format (.bbf) is a high-performance binary container designed
+specifically for digital comic books and manga. Unlike CBR/CBZ, BBF is built
+for DirectSotrage/mmap, easy integrity checks, and mixed-codec
+containerization.</description>
+  <url>https://github.com/ef1500/libbbf/</url>
+</package>
