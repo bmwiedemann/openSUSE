@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 23 08:31:04 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.12.9:
+  + Bugfixes:
+    - Fixed compilation when lcms2 is disabled
+    - Lossless rotation: make sure to modify the orientation tags
+      only
+    - Do not change the file modification time if the content did
+      not change
+    - Sharpen: allow to view the image at natural size
+    - Rotation: fixed bilinear filter
+
+-------------------------------------------------------------------
 Wed Dec  3 12:13:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.12.8.2:
