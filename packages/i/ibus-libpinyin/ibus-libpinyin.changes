@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Jan 19 02:51:42 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Update ibus-libpinyin.spec to get rid of update-desktop-files:
+  * It often duplicates upstream translation effort, wasting a human
+    work, both community translators and contracted ones.
+  * Most of these translations are ~20 years old, and they were never
+    reviewed, so it is possible that they are worse than the upstream
+    ones. In the last 20 years it did not provide any way to upstream
+    the changes and translations. The upstream translations got another
+    20 years of development. Also Desktop Categories specification was
+    updated, and the upstream specification now covers all aspects of
+    former X-SuSE-* Categories extensions.
+  * As a result, the SUSE desktop menu experience differs from other
+    vendors. Applications have a different name, different translations,
+    different placement in the structured menu etc.
+  * Upstream translations have a wider impact.
+  * Package maintainers have only a limited control over the contents
+    visible to users. It is imported during the runtime, and the visible
+    contents could be different from the contents in the package.
+  * update-desktop-files is a complicated tool. It attempts to fix
+    deprecated and obsolete stuff in the desktop files without even
+    informing the developer that something was wrong and something was
+    modified.
+  * It uses a very complicated toolchain that requires access to SUSE
+    intranet and access to OpenQA VPN. The complete toolchain setup was
+    never published, so it has even problems with Open Source ideas.
+  * It mixes SUSE-unique translations with translations that just
+    duplicate the upstream translation effort. As a result it significantly
+    increases number of strings to translate and decreases the quality of
+    the translation.
+  (jsc#PED-14507)
+
+-------------------------------------------------------------------
 Tue Jan  6 08:20:19 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.16.5

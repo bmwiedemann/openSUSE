@@ -50,7 +50,6 @@ BuildRequires:  libuuid-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sqlite3
 BuildRequires:  sqlite3-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpinyin) >= 2.9.92
@@ -123,9 +122,6 @@ NOCONFIGURE=1 ./autogen.sh
 
 %fdupes %{buildroot}
 %find_lang %{name}
-
-%suse_update_desktop_file ibus-setup-libpinyin Utility DesktopUtility System
-%suse_update_desktop_file ibus-setup-libbopomofo Utility DesktopUtility System
 
 %fdupes %{buildroot}
 
