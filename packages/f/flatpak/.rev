@@ -1090,4 +1090,13 @@ As a side note Leap is affected as well by this. Might be worth back porting thi
   upstream. (forwarded request 1323545 from iznogood)</comment>
     <requestid>1323660</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>611b3b3d18c01af27f7ff056f0345cad</srcmd5>
+    <version>1.16.3</version>
+    <time>1769421631</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.16.3:
+  + Be selective about when to map font-dirs.xml in flatpak build. (forwarded request 1328489 from iznogood)</comment>
+    <requestid>1328915</requestid>
+  </revision>
 </revisionlist>

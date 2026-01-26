@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 21 11:53:42 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.3:
+  + Be selective about when to map font-dirs.xml in flatpak build.
+
+-------------------------------------------------------------------
 Thu Dec 18 15:56:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.16.2:
