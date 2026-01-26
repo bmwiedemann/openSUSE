@@ -1535,4 +1535,13 @@
     <comment></comment>
     <requestid>1326667</requestid>
   </revision>
+  <revision rev="144" vrev="2">
+    <srcmd5>8526b5ae523f21f7275caccaa3834c3c</srcmd5>
+    <version>6.4.2</version>
+    <time>1769421694</time>
+    <user>anag_factory</user>
+    <comment>- Reworked tg_owt-h264-dlopen.patch to apply with -p1.
+- Added tg_owt-cstring.patch to fix build on Tumbleweed.</comment>
+    <requestid>1328925</requestid>
+  </revision>
 </revisionlist>

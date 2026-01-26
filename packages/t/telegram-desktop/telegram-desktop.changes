@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 23 15:29:20 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Reworked tg_owt-h264-dlopen.patch to apply with -p1.
+- Added tg_owt-cstring.patch to fix build on Tumbleweed.
+
+-------------------------------------------------------------------
 Sun Jan 11 20:19:44 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Updated ada to 3.4.1.

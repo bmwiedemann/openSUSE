@@ -1,28 +1,6 @@
-diff --git a/tg_owt-git20250913/CMakeLists.txt b/tg_owt-git20250913-patched/CMakeLists.txt
-index e585335..1eb3989 100644
---- a/tg_owt-git20250913/CMakeLists.txt
-+++ b/tg_owt-git20250913-patched/CMakeLists.txt
-@@ -23,6 +23,7 @@ cmake_dependent_option(TG_OWT_USE_X11 "Use X11 for desktop capture." ON "UNIX; N
- cmake_dependent_option(TG_OWT_USE_PIPEWIRE "Use pipewire for desktop capture." ON "UNIX; NOT APPLE" OFF)
- cmake_dependent_option(TG_OWT_DLOPEN_PIPEWIRE "dlopen pipewire for desktop capture." ${not_packaged_build} TG_OWT_USE_PIPEWIRE OFF)
- option(TG_OWT_BUILD_AUDIO_BACKENDS "Build webrtc audio backends." OFF)
-+option(TG_OWT_DLOPEN_H264 "dlopen H264 for video coding." OFF)
- 
- if (BUILD_SHARED_LIBS)
-     set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-@@ -149,7 +150,7 @@ link_openssl(tg_owt)
- link_ffmpeg(tg_owt)
- link_opus(tg_owt)
- link_libabsl(tg_owt)
--link_libopenh264(tg_owt)
-+link_libopenh264(tg_owt ${TG_OWT_DLOPEN_H264})
- link_libsrtp(tg_owt)
- link_libvpx(tg_owt)
- link_crc32c(tg_owt)
-diff --git a/tg_owt-git20250913/cmake/external.cmake b/tg_owt-git20250913-patched/cmake/external.cmake
-index 0bcdf60..2b4c244 100644
---- a/tg_owt-git20250913/cmake/external.cmake
-+++ b/tg_owt-git20250913-patched/cmake/external.cmake
+diff -Pdpru tg_owt-git20251128.orig/cmake/external.cmake tg_owt-git20251128/cmake/external.cmake
+--- tg_owt-git20251128.orig/cmake/external.cmake	2026-01-23 16:43:00.627609045 +0300
++++ tg_owt-git20251128/cmake/external.cmake	2026-01-23 17:18:11.432328492 +0300
 @@ -116,8 +116,8 @@ endfunction()
  
  # libopenh264
@@ -45,11 +23,9 @@ index 0bcdf60..2b4c244 100644
  endfunction()
  
  # libSRTP
-diff --git a/tg_owt-git20250913-patched/cmake/external.cmake.orig b/tg_owt-git20250913-patched/cmake/external.cmake.orig
-new file mode 100644
-index 0000000..0bcdf60
---- /dev/null
-+++ b/tg_owt-git20250913-patched/cmake/external.cmake.orig
+diff -Pdpru tg_owt-git20251128.orig/cmake/external.cmake.orig tg_owt-git20251128/cmake/external.cmake.orig
+--- tg_owt-git20251128.orig/cmake/external.cmake.orig	1970-01-01 03:00:00.000000000 +0300
++++ tg_owt-git20251128/cmake/external.cmake.orig	2026-01-23 17:18:11.433545342 +0300
 @@ -0,0 +1,239 @@
 +# OpenSSL
 +set(TG_OWT_OPENSSL_INCLUDE_PATH "" CACHE STRING "Include path for openssl.")
@@ -290,11 +266,29 @@ index 0000000..0bcdf60
 +        target_link_libraries(${target_name} PRIVATE ${CMAKE_DL_LIBS})
 +    endif()
 +endfunction()
-diff --git a/tg_owt-git20250913-patched/src/modules/video_coding/codecs/h264/h264_dlopen.cc b/tg_owt-git20250913-patched/src/modules/video_coding/codecs/h264/h264_dlopen.cc
-new file mode 100644
-index 0000000..3762e1d
---- /dev/null
-+++ b/tg_owt-git20250913-patched/src/modules/video_coding/codecs/h264/h264_dlopen.cc
+diff -Pdpru tg_owt-git20251128.orig/CMakeLists.txt tg_owt-git20251128/CMakeLists.txt
+--- tg_owt-git20251128.orig/CMakeLists.txt	2026-01-23 16:43:00.626609061 +0300
++++ tg_owt-git20251128/CMakeLists.txt	2026-01-23 17:18:11.431328501 +0300
+@@ -23,6 +23,7 @@ cmake_dependent_option(TG_OWT_USE_X11 "U
+ cmake_dependent_option(TG_OWT_USE_PIPEWIRE "Use pipewire for desktop capture." ON "UNIX; NOT APPLE" OFF)
+ cmake_dependent_option(TG_OWT_DLOPEN_PIPEWIRE "dlopen pipewire for desktop capture." ${not_packaged_build} TG_OWT_USE_PIPEWIRE OFF)
+ option(TG_OWT_BUILD_AUDIO_BACKENDS "Build webrtc audio backends." OFF)
++option(TG_OWT_DLOPEN_H264 "dlopen H264 for video coding." OFF)
+ 
+ if (BUILD_SHARED_LIBS)
+     set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+@@ -149,7 +150,7 @@ link_openssl(tg_owt)
+ link_ffmpeg(tg_owt)
+ link_opus(tg_owt)
+ link_libabsl(tg_owt)
+-link_libopenh264(tg_owt)
++link_libopenh264(tg_owt ${TG_OWT_DLOPEN_H264})
+ link_libsrtp(tg_owt)
+ link_libvpx(tg_owt)
+ link_crc32c(tg_owt)
+diff -Pdpru tg_owt-git20251128.orig/src/modules/video_coding/codecs/h264/h264_dlopen.cc tg_owt-git20251128/src/modules/video_coding/codecs/h264/h264_dlopen.cc
+--- tg_owt-git20251128.orig/src/modules/video_coding/codecs/h264/h264_dlopen.cc	1970-01-01 03:00:00.000000000 +0300
++++ tg_owt-git20251128/src/modules/video_coding/codecs/h264/h264_dlopen.cc	2026-01-23 17:18:11.434466761 +0300
 @@ -0,0 +1,128 @@
 +/*
 + * OpenH264 dlopen code
@@ -424,11 +418,9 @@ index 0000000..3762e1d
 +
 +  return 0;
 +}
-diff --git a/tg_owt-git20250913-patched/src/modules/video_coding/codecs/h264/h264_dlopen.h b/tg_owt-git20250913-patched/src/modules/video_coding/codecs/h264/h264_dlopen.h
-new file mode 100644
-index 0000000..25fe94e
---- /dev/null
-+++ b/tg_owt-git20250913-patched/src/modules/video_coding/codecs/h264/h264_dlopen.h
+diff -Pdpru tg_owt-git20251128.orig/src/modules/video_coding/codecs/h264/h264_dlopen.h tg_owt-git20251128/src/modules/video_coding/codecs/h264/h264_dlopen.h
+--- tg_owt-git20251128.orig/src/modules/video_coding/codecs/h264/h264_dlopen.h	1970-01-01 03:00:00.000000000 +0300
++++ tg_owt-git20251128/src/modules/video_coding/codecs/h264/h264_dlopen.h	2026-01-23 17:18:11.434976954 +0300
 @@ -0,0 +1,46 @@
 +/*
 + * OpenH264 dlopen code
@@ -476,11 +468,10 @@ index 0000000..25fe94e
 +#endif /* WEBRTC_USE_H264_DLOPEN */
 +
 +#endif /* HAVE_LIBOPENH264_DLOPEN_H */
-diff --git a/tg_owt-git20250913/src/modules/video_coding/codecs/h264/h264_encoder_impl.cc b/tg_owt-git20250913-patched/src/modules/video_coding/codecs/h264/h264_encoder_impl.cc
-index c232133..29914aa 100644
---- a/tg_owt-git20250913/src/modules/video_coding/codecs/h264/h264_encoder_impl.cc
-+++ b/tg_owt-git20250913-patched/src/modules/video_coding/codecs/h264/h264_encoder_impl.cc
-@@ -217,6 +217,12 @@ int32_t H264EncoderImpl::InitEncode(const VideoCodec* inst,
+diff -Pdpru tg_owt-git20251128.orig/src/modules/video_coding/codecs/h264/h264_encoder_impl.cc tg_owt-git20251128/src/modules/video_coding/codecs/h264/h264_encoder_impl.cc
+--- tg_owt-git20251128.orig/src/modules/video_coding/codecs/h264/h264_encoder_impl.cc	2026-01-23 16:43:01.811590481 +0300
++++ tg_owt-git20251128/src/modules/video_coding/codecs/h264/h264_encoder_impl.cc	2026-01-23 17:18:11.435328466 +0300
+@@ -217,6 +217,12 @@ int32_t H264EncoderImpl::InitEncode(cons
      ReportError();
      return release_ret;
    }
@@ -493,10 +484,9 @@ index c232133..29914aa 100644
  
    int number_of_streams = SimulcastUtility::NumberOfSimulcastStreams(*inst);
    bool doing_simulcast = (number_of_streams > 1);
-diff --git a/tg_owt-git20250913/src/modules/video_coding/codecs/h264/h264_encoder_impl.h b/tg_owt-git20250913-patched/src/modules/video_coding/codecs/h264/h264_encoder_impl.h
-index 9e246b8..2deb5a2 100644
---- a/tg_owt-git20250913/src/modules/video_coding/codecs/h264/h264_encoder_impl.h
-+++ b/tg_owt-git20250913-patched/src/modules/video_coding/codecs/h264/h264_encoder_impl.h
+diff -Pdpru tg_owt-git20251128.orig/src/modules/video_coding/codecs/h264/h264_encoder_impl.h tg_owt-git20251128/src/modules/video_coding/codecs/h264/h264_encoder_impl.h
+--- tg_owt-git20251128.orig/src/modules/video_coding/codecs/h264/h264_encoder_impl.h	2026-01-23 16:43:01.811590481 +0300
++++ tg_owt-git20251128/src/modules/video_coding/codecs/h264/h264_encoder_impl.h	2026-01-23 17:18:11.436328457 +0300
 @@ -30,7 +30,12 @@
  #include "modules/video_coding/codecs/h264/include/h264.h"
  #include "modules/video_coding/svc/scalable_video_controller.h"

@@ -39,6 +39,7 @@ Source3:        tg_owt-%{owt_ver}.tar.xz
 # n=td && cd /tmp && git clone --depth=1 https://github.com/tdlib/$n && pushd $n && v=git$(TZ=UTC date -d @`git log -1 --format=%at` +%Y%m%d) && d=$n-$v && f=$d.tar.xz && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
 Source4:        td-%{td_ver}.tar.xz
 Patch0:         tg_owt-h264-dlopen.patch
+Patch1:         tg_owt-cstring.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
@@ -137,7 +138,7 @@ mv ../openh264-headers-%{h264_ver} Telegram/ThirdParty/openh264/include/wels
 
 mv ../tg_owt-%{owt_ver} Telegram/ThirdParty/tg_owt
 pushd Telegram/ThirdParty/tg_owt
-%autopatch -p2 0
+%autopatch -p1 0 1
 popd
 
 mv ../td-%{td_ver} Telegram/ThirdParty/td
