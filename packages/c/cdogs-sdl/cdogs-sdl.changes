@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 26 06:09:34 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.0
+  Game
+  * Add Super 2D Noah's Ark campaign.
+  * Add holiday hats easter eggs.
+  * Fix players getting stuck when confused #886.
+  * Fix incorrect Windows config dir depending on trailing slash.
+  * Fix lives not persisting in Wolf3D campaigns.
+  * Fix audio crack on big endian systems.
+  * Fix logic bug in AI tracking behaviour.
+  Editor
+  * Improve mission selection with shift-click to skip +/- 10
+    missions.
+
+-------------------------------------------------------------------
 Sat Nov 22 21:15:55 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.
