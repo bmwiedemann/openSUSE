@@ -1,7 +1,7 @@
 #
 # spec file for package python-pbs-installer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pbs-installer
-Version:        2025.4.9
+Version:        2026.1.14
 Release:        0
 Summary:        Installer for Python Build Standalone
 License:        MIT
