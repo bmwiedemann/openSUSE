@@ -52,13 +52,18 @@
 %define pamdir %{_libdir}/security
 %endif
 
+# distributions which ship nodejs-esbuild can rebuild the bundle during package build
+%if 0%{?fedora} >= 42
+%define rebuild_bundle 1
+%endif
+
 Name:           cockpit
 Summary:        Web Console for Linux servers
 
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        351
+Version:        354
 Release:        0
 Source0:        cockpit-%{version}.tar.gz
 Source2:        cockpit-rpmlintrc
@@ -169,13 +174,27 @@ BuildRequires: wallpaper-branding
 BuildRequires: pcp
 %else
 BuildRequires: openssh-clients
-BuildRequires: docbook-style-xsl
 %endif
 BuildRequires: krb5-server
 BuildRequires: gdb
 
+%if %{defined rebuild_bundle}
+BuildRequires: nodejs
+BuildRequires: nodejs-esbuild
+%endif
+
 # For documentation
-BuildRequires: xmlto
+%if 0%{?rhel} || 0%{?centos}
+# Only has legacy asciidoc-py and not asciidoctor.
+# asciidoc-py includes a2x package which can generate man-pages.
+BuildRequires: asciidoc
+%else
+%if 0%{?suse_version}
+BuildRequires: rubygem(asciidoctor)
+%else
+BuildRequires: asciidoctor
+%endif
+%endif
 
 %if 0%{?with_selinux}
 BuildRequires:  selinux-policy
@@ -273,7 +292,7 @@ cp %SOURCE4 tools/cockpit.pam
 
 #
 local-npm-registry %{_sourcedir} install --include=dev --ignore-scripts
-touch package-lock.json
+echo "{}" > package-lock.json
 
 %build
 find node_modules -name \*.node -print -delete

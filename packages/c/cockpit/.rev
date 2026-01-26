@@ -840,4 +840,26 @@ For details, see https://cockpit-project.org/blog/cockpit-322.html</comment>
   to /etc/selinux (bsc#1221342)</comment>
     <requestid>1321720</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>52130bdab93f07a08f4e0c03dea6215c</srcmd5>
+    <version>354</version>
+    <time>1769420577</time>
+    <user>anag_factory</user>
+    <comment>- Drop 0010-add-onExpand-prop-to-ListingTable.patch: Has been upstreamed
+- Update to 354
+  * changes since 351
+    - 354
+      * Convert documentation to AsciiDoc
+      * Work around Firefox 146/147 bug (rhbz#2422331)
+      * Bug fixes
+    - 353
+      * Networking: Suggest prefix length and gateway address
+      * Bug fixes and translation updates
+    - 352
+      * Shown a warning if the last shutdown/reboot was unclean
+      * Bug fixes and translation updates
+
+- Add 0010-add-onExpand-prop-to-ListingTable.patch to backport a feature</comment>
+    <requestid>1328691</requestid>
+  </revision>
 </revisionlist>

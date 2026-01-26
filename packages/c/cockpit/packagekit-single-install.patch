@@ -20,19 +20,18 @@ tens of seconds when there are thousands of packages.
  2 files changed, 220 insertions(+), 25 deletions(-)
 
 diff --git a/pkg/packagekit/updates.jsx b/pkg/packagekit/updates.jsx
-index 80a16dda7..4fe94432a 100644
+index 40fca0a..abc8c70 100644
 --- a/pkg/packagekit/updates.jsx
 +++ b/pkg/packagekit/updates.jsx
-@@ -80,6 +80,7 @@ import { debug } from './utils';
+@@ -81,6 +81,7 @@ import { read_os_release } from "os-release.js";
  import callTracerScript from './callTracer.py';
  
  import "./updates.scss";
 +import { Checkbox } from '@patternfly/react-core';
  import { Truncate } from '@patternfly/react-core/dist/esm/components/Truncate/index.js';
+ import { Severity } from '_internal/packagemanager-abstract';
  
- const _ = cockpit.gettext;
- 
-@@ -93,6 +94,7 @@ const UPDATES = {
+@@ -95,6 +96,7 @@ const UPDATES = {
      ALL: 0,
      SECURITY: 1,
      KPATCHES: 2,
@@ -40,7 +39,7 @@ index 80a16dda7..4fe94432a 100644
  };
  
  function init() {
-@@ -117,6 +119,196 @@ function init() {
+@@ -119,6 +121,195 @@ function init() {
      PK_STATUS_LOG_STRINGS[PK.Enum.STATUS_SIGCHECK] = _("Verified");
  }
  
@@ -233,11 +232,10 @@ index 80a16dda7..4fe94432a 100644
 +    return allIds.filter((id) => !!!state.selected[id]);
 +}
 +
-+
- // parse CVEs from an arbitrary text (changelog) and return URL array
- function parseCVEs(text) {
-     if (!text)
-@@ -401,6 +593,7 @@ function updateItem(remarkable, info, pkgNames, key) {
+ function deduplicate(list) {
+     return [...new Set(list)].sort();
+ }
+@@ -381,6 +572,7 @@ function updateItem(remarkable, info, pkgNames, key) {
              { title: <TableText wrapModifier="truncate">{info.version}</TableText>, props: { className: "version" } },
              { title: <TableText wrapModifier="nowrap">{type}</TableText>, props: { className: "type" } },
              { title: descriptionFirstLine, props: { className: "changelog" } },
@@ -245,15 +243,15 @@ index 80a16dda7..4fe94432a 100644
          ],
          props: {
              key,
-@@ -451,6 +644,7 @@ const UpdatesList = ({ updates }) => {
+@@ -430,6 +622,7 @@ const UpdatesList = ({ updates }) => {
                      { title: _("Version"), props: { width: 15 } },
                      { title: _("Severity"), props: { width: 15 } },
                      { title: _("Details"), props: { width: 30 } },
 +                    { title: _("Select update") },
                  ]}
-                 rows={update_ids.map(id => updateItem(remarkable, updates[id], packageNames[id].sort((a, b) => a.name > b.name), id))} />
+                 rows={combined_updates.map(update => updateItem(remarkable, update, packageNames[update.id].sort((a, b) => a.name > b.name), update.id))} />
      );
-@@ -932,25 +1126,12 @@ class CardsPage extends React.Component {
+@@ -913,25 +1106,12 @@ class CardsPage extends React.Component {
                  id: "available-updates",
                  title: _("Available updates"),
                  actions: (<div className="pk-updates--header--actions">
@@ -282,7 +280,7 @@ index 80a16dda7..4fe94432a 100644
                  </div>),
                  containsList: true,
                  body: <UpdatesList updates={this.props.updates} />
-@@ -1397,13 +1578,19 @@ class OsUpdates extends React.Component {
+@@ -1315,13 +1495,19 @@ class OsUpdates extends React.Component {
                  });
      }
  
@@ -291,11 +289,11 @@ index 80a16dda7..4fe94432a 100644
 +     * @param {SelecetedState=} selected
 +     */
 +    applyUpdates(type, selected) {
-         let ids = Object.keys(this.state.updates);
+         let updates = [...this.state.updates];
          if (type === UPDATES.SECURITY)
-             ids = ids.filter(id => this.state.updates[id].severity === PK.Enum.INFO_SECURITY);
+             updates = updates.filter(update => update.severity === Severity.CRITICAL);
          if (type === UPDATES.KPATCHES) {
-             ids = ids.filter(id => isKpatchPackage(this.state.updates[id].name));
+             updates = updates.filter(update => isKpatchPackage(update.name));
          }
 +        if (type === UPDATES.SELECTED && selected) {
 +            ids = calculateSelected(ids, selected);
@@ -303,7 +301,7 @@ index 80a16dda7..4fe94432a 100644
  
          PK.transaction()
                  .then(transactionPath => {
-@@ -1429,6 +1616,8 @@ class OsUpdates extends React.Component {
+@@ -1347,6 +1533,8 @@ class OsUpdates extends React.Component {
          let applySecurity;
          let applyKpatches;
          let applyAll;
@@ -312,7 +310,7 @@ index 80a16dda7..4fe94432a 100644
  
          /* On unregistered RHEL systems we need some heuristics: If the "main" OS repos (which provide coreutils) require
           * a subscription, then point this out and don't show available updates, even if there are some auxiliary
-@@ -1483,12 +1672,8 @@ class OsUpdates extends React.Component {
+@@ -1399,12 +1587,8 @@ class OsUpdates extends React.Component {
              const num_kpatches = count_kpatch_updates(this.state.updates);
              const highest_severity = find_highest_severity(this.state.updates);
  
@@ -327,7 +325,7 @@ index 80a16dda7..4fe94432a 100644
  
              if (num_security_updates > 0 && num_updates > num_security_updates) {
                  applySecurity = (
-@@ -1529,6 +1714,8 @@ class OsUpdates extends React.Component {
+@@ -1445,6 +1629,8 @@ class OsUpdates extends React.Component {
                              <CardsPage handleRefresh={this.handleRefresh}
                                         applySecurity={applySecurity}
                                         applyAll={applyAll}
@@ -336,9 +334,9 @@ index 80a16dda7..4fe94432a 100644
                                         applyKpatches={applyKpatches}
                                         highestSeverity={highest_severity}
                                         onValueChanged={this.onValueChanged}
-@@ -1717,5 +1904,9 @@ document.addEventListener("DOMContentLoaded", () => {
-     document.title = cockpit.gettext(document.title);
-     init();
+@@ -1642,5 +1828,9 @@ document.addEventListener("DOMContentLoaded", async () => {
+     }
+ 
      const root = createRoot(document.getElementById('app'));
 -    root.render(<OsUpdates />);
 +    root.render(
@@ -348,10 +346,10 @@ index 80a16dda7..4fe94432a 100644
 +    );
  });
 diff --git a/pkg/packagekit/updates.scss b/pkg/packagekit/updates.scss
-index 05494fe85..6b2c80035 100644
+index 174d6fd..82979ff 100644
 --- a/pkg/packagekit/updates.scss
 +++ b/pkg/packagekit/updates.scss
-@@ -68,7 +68,7 @@
+@@ -71,7 +71,7 @@
      }
  
      &, p {
@@ -360,7 +358,7 @@ index 05494fe85..6b2c80035 100644
        margin-block-end: 0;  // counter-act <Markdown>
        overflow: hidden;
        text-overflow: ellipsis;
-@@ -272,3 +272,7 @@ table.header-buttons {
+@@ -280,3 +280,7 @@ table.header-buttons {
  .ct-info-circle {
    color: var(--pf-t--global--icon--color--status--info--default);
  }
@@ -368,7 +366,3 @@ index 05494fe85..6b2c80035 100644
 +td.select-update {
 +  min-width: 8vw;
 +}
-\ No newline at end of file
--- 
-2.49.0
-
