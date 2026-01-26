@@ -18,15 +18,13 @@
 
 
 Name:           harfbuzz
-Version:        12.3.0
+Version:        12.3.1
 Release:        0
 Summary:        An OpenType text shaping engine
 License:        MIT
 URL:            https://www.freedesktop.org/wiki/Software/HarfBuzz
 Source0:        %{name}-%{version}.tar.zst
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM harfbuzz-CVE-2026-22693.patch bsc#1246459 mgorse@suse.com -- fix a NULL pointer dereference.
-Patch0:         harfbuzz-CVE-2026-22693.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler

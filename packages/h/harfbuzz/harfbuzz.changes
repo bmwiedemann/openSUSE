@@ -1,8 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 21 07:10:47 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 12.3.1:
+  + Various speed optimizations.
+  + Build fixes for GCC 4.9.
+  + Fix NULL pointer deference when malloc fails.
+- Drop harfbuzz-CVE-2026-22693.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Fri Jan 16 20:31:35 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Add harfbuzz-CVE-2026-22693.patch: fix a NULL pointer dereference
-  (bsc#1246459 CVE-2026-22693).
+  (bsc#1256459 CVE-2026-22693).
 
 -------------------------------------------------------------------
 Sun Dec 28 14:38:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>

@@ -1369,4 +1369,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1327784</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>7ad7e1246350060b0dbc391ba57b70c1</srcmd5>
+    <version>12.3.1</version>
+    <time>1769420586</time>
+    <user>anag_factory</user>
+    <comment>Fix incorrect bug ref (forwarded request 1328636 from mgorse)</comment>
+    <requestid>1328916</requestid>
+  </revision>
 </revisionlist>
