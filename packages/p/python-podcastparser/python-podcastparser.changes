@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 26 08:14:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.11:
+  * Docs: Add requests example
+  * Don't overwrite non-empty fields with empty fields
+  * Support overwrite flag in PodcastAttr
+  * add rss/channel/itunes::summary handling
+
+-------------------------------------------------------------------
 Tue Jun  3 11:47:11 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
