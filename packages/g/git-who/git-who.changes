@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 26 06:36:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.3:
+  * add NO_COLOR env variable to avoid ansi escape codes
+  * Add separate DEVELOPMENT.md file.
+  * Update README.md w/ logo
+  * add logo in assets
+  * Update README.md
+
+-------------------------------------------------------------------
 Mon Aug 04 13:47:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2:

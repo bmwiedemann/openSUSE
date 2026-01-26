@@ -17,7 +17,7 @@
 
 
 Name:           git-who
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        Git blame for file trees
 License:        MIT
