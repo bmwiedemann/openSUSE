@@ -83,7 +83,6 @@ Requires:       /sbin/modprobe
 Requires:       coreutils
 Requires:       udev
 Requires:       util-linux
-Recommends:     dmraid
 Suggests:       lvm2
 Suggests:       btrfsprogs
 %if 0%{?suse_version} >= 1315
