@@ -247,4 +247,12 @@
     <comment>Plasma 6.5.5, hopefully boring (forwarded request 1327258 from Vogtinator)</comment>
     <requestid>1327830</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>0fa1cae77f7493e441c4fe54280fa962</srcmd5>
+    <version>6.5.90</version>
+    <time>1769423638</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1329180</requestid>
+  </revision>
 </revisionlist>

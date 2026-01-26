@@ -27,14 +27,14 @@ Name:           drkonqi6
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        6.5.5
+Version:        6.5.90
 Release:        0
 Summary:        Helper for debugging and reporting crashes
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/unstable/plasma/%{version}/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/unstable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -141,8 +141,7 @@ install -p -D -m755 src/doc/examples/installdbgsymbols_suse.sh \
 %{_kf6_bindir}/installdbgsymbols.sh
 %{_kf6_debugdir}/drkonqi.categories
 %{_kf6_libexecdir}/drkonqi-polkit-helper
-%dir %{_kf6_plugindir}/drkonqi/
-%{_kf6_plugindir}/drkonqi/KDECoredumpNotifierTruck.so
+%{_kf6_notificationsdir}/drkonqi-coredump-launcher.notifyrc
 %{_kf6_sharedir}/dbus-1/system-services/org.kde.drkonqi.service
 %{_kf6_sharedir}/dbus-1/system.d/org.kde.drkonqi.conf
 %{_kf6_sharedir}/polkit-1/actions/org.kde.drkonqi.policy
