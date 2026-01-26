@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan 23 11:05:24 UTC 2026 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to version 0.20.3:
+  * [bugfix] Check that token is defined before logging the user out
+  * [bugfix] Mark targets of pre-approved polite interaction requests
+    as no longer pending approval
+  * [bugfix] Check follow req as well as follow when building
+    relationship model
+  * [bugfix] Remove follow (req) notifications on Follow Undo
+  * [bugfix] don't apply visibility / status filtering when requesting
+    your own account statuses
+  * [bugfix] potential race condition on status unboost
+  * [bugfix] Return unboosted status with reblogged=false
+  * [chore] Update robots.txt md5 hashes for etags
+  * [chore] Update robots.txt with latest list of "ai" bullshit
+    user-agents
+
+-------------------------------------------------------------------
 Mon Nov 17 17:19:45 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Update to version 0.20.2:
@@ -12,6 +30,12 @@ Mon Nov 17 17:19:45 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
   * Fix some swagger docs issues.
   * Various other fixes + performance tweaks.
   * Dependency bumps.
+
+-------------------------------------------------------------------
+Thu Nov  6 16:54:49 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update build flags according to upstream defaults
+  https://codeberg.org/superseriousbusiness/gotosocial/pulls/4519
 
 -------------------------------------------------------------------
 Fri Oct 17 15:12:14 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
