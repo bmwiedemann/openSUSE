@@ -1,7 +1,7 @@
 #
 # spec file for package gnucash
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,6 +51,7 @@ Patch2:         gnucash-4.1-fix-gtest-path.patch
 Patch3:         gnucash-boost-1.89.patch
 # PATCH-FIX-UPSTREAM gh#gnucash/gnucash#2152 -- test-userdata-dir-invalid-home: Unset XDG_DATA_HOME
 Patch4:         gnucash-fix-test-userdata-dir-invalid-home.patch
+Patch5:         gcc16.patch
 
 BuildRequires:  cmake >= 3.14
 BuildRequires:  doxygen

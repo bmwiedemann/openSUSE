@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 19 14:17:55 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
+
+- Add gcc16.patch, so that the package builds with GCC 16 
+
+-------------------------------------------------------------------
 Thu Nov 20 22:41:24 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Add gnucash-fix-test-userdata-dir-invalid-home.patch
