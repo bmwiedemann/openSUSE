@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jan 22 13:09:25 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.7.2:
+  * build: enabled vendordir by default.
+  * pam_access: fixed stack overflow with huge configuration files.
+  * pam_env: enhanced error diagnostics when ignoring backslash at end of string.
+  * pam_faillock: skip clearing user's failed attempt when auth stack is not run.
+  * pam_mkhomedir: added support for vendordir skeleton directory.
+  * pam_unix: added support for pwaccessd.
+  * pam_unix: added support for PAM_CHANGE_EXPIRED_AUTHTOK.
+  * pam_unix: fixed password expiration warnings for large day values.
+  * pam_unix: hardened temporary file handling.
+  * Multiple minor bug fixes, build fixes, portability fixes, 
+    documentation improvements, and translation updates.
+- Drop post-v1.7.1.patch
+- Drop pam_mkhomedir-Use-vendordir-when-defined.patch
+- Build source archive directly from git
+
+-------------------------------------------------------------------
 Thu Dec 11 14:03:11 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Add pam_env.conf.d directory for configuration snippets, to support drop-in

@@ -1,0 +1,5 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/linux-pam/linux-pam.git</param>
+ <param name="changesrevision">fe03a10115c082a8486ccbab7462139d7e4bb067</param></service>
+</servicedata>

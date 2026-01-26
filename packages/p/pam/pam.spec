@@ -70,14 +70,13 @@
 #
 Name:           pam%{name_suffix}
 #
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        A Security Tool that Provides Authentication for Applications
 License:        GPL-2.0-or-later OR BSD-3-Clause
 Group:          System/Libraries
 URL:            https://github.com/linux-pam/linux-pam
 Source:         Linux-PAM-%{version}.tar.xz
-Source1:        Linux-PAM-%{version}.tar.xz.asc
 Source2:        macros.pam
 Source3:        other.pamd
 Source4:        common-auth.pamd
@@ -93,10 +92,6 @@ Source22:       postlogin-account.pamd
 Source23:       postlogin-password.pamd
 Source24:       postlogin-session.pamd
 Patch1:         pam-limit-nproc.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         post-v1.7.1.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         pam_mkhomedir-Use-vendordir-when-defined.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  flex

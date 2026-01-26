@@ -1,0 +1,15 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">v(.*?)(\+git0)?$</param>
+    <param name="url">https://github.com/linux-pam/linux-pam.git</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">Linux-PAM</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>
