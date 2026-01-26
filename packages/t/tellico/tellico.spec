@@ -1,7 +1,7 @@
 #
 # spec file for package tellico
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define qt6_version 6.4.0
 
 Name:           tellico
-Version:        4.1.4
+Version:        4.1.5
 Release:        0
 Summary:        A Collection Manager
 License:        GPL-2.0-or-later
