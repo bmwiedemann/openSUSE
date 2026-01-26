@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 21 16:28:18 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add glib2-CVE-2026-0988.patch: fix a potential integer overflow
+  in g_buffered_input_stream_peek (bsc#1257049 CVE-2026-0988
+  glgo#GNOME/glib#3851).
+
+-------------------------------------------------------------------
 Mon Dec  8 19:35:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.86.3:
@@ -8160,7 +8167,7 @@ Thu Apr 12 16:41:43 CDT 2007 - maw@suse.de
 - Pass --enable-static to configure (#263998).
 
 -------------------------------------------------------------------
-Wed Mar 21 12:38:24 CST 2007 - maw@suse.de
+Wed Mar 21 12:38:24 UTC 2007 - maw@suse.de
 
 - Update to version 2.12.11
 - Fixes for bugzilla.gnome.org 399611, 350802, 416062, 346808,

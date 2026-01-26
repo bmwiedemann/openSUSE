@@ -2469,4 +2469,12 @@ Extra note: I see glib2 in G:N is missing its link - manual merge needed after a
     <comment></comment>
     <requestid>1321769</requestid>
   </revision>
+  <revision rev="301" vrev="2">
+    <srcmd5>4ae228320ba24c606efa7a63dfe8723b</srcmd5>
+    <version>2.86.3</version>
+    <time>1769420548</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1328598</requestid>
+  </revision>
 </revisionlist>
