@@ -22,7 +22,7 @@
 %bcond_without redis
 %bcond_without postgresql
 Name:           luanti
-Version:        5.14.0
+Version:        5.15.0
 Release:        0
 Summary:        A InfiniMiner/Minecraft inspired game
 License:        CC-BY-SA-3.0 AND LGPL-2.1-or-later
@@ -118,7 +118,7 @@ InfiniMiner, Minecraft and the like.
 This package contains a luanti server.
 
 %package data
-Summary:        luanti shared data
+Summary:        Luanti shared data
 License:        CC-BY-SA-3.0 AND LGPL-2.1-or-later
 Group:          Amusements/Games/3D/Simulation
 Requires:       google-arimo-fonts
@@ -258,7 +258,6 @@ fi
 
 %files data
 %license LICENSE.txt
-%doc README.md
 %doc .github/CONTRIBUTING.md
 %doc .github/SECURITY.md
 %doc %{_docdir}/%{name}/
