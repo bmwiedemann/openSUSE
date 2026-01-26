@@ -7,4 +7,21 @@
     <comment>- Initial release of 0.9.0.</comment>
     <requestid>1302530</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0b1a117707769cb71d28a331d9d3c040</srcmd5>
+    <version>0.9.3</version>
+    <time>1769427273</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.9.3:
+  * When determining the capabilities on an object, fall back to
+    fetching flags one by one if fetching them all at once
+    doesn't work. This mitigates issues with some tokens that
+    don't handle errors on multi-attribute fetches in a compliant
+    way.
+- update to 0.9.1:
+  * Add Python 3.14 to the CI matrix and release workflows.
+  * Expand ATTRIBUTE_TYPES for GOSTR support.
+  * Expose CK_SESSION_HANDLE as readonly</comment>
+    <requestid>1329151</requestid>
+  </revision>
 </revisionlist>

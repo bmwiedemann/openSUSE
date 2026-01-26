@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-pkcs11
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-python-pkcs11
-Version:        0.9.0
+Version:        0.9.3
 Release:        0
 Summary:        PKCS#11 (Cryptoki) support for Python
 License:        MIT
