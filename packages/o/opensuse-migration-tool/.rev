@@ -150,4 +150,13 @@ migrations as well as point release upgrades
   * Enable migration to SElinux with proper dryrun</comment>
     <requestid>1325990</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>31befe9d1e06f6bd0d547f493ddc5f4b</srcmd5>
+    <version>20260106.d2cfd39</version>
+    <time>1769427305</time>
+    <user>anag_factory</user>
+    <comment>- Add dependency on update-bootloader to fix boo#1255897
+  pattern-base-selinux could be skipped if update-bootloader was missing</comment>
+    <requestid>1329272</requestid>
+  </revision>
 </revisionlist>

@@ -32,6 +32,7 @@ Requires:       dialog
 Requires:       gawk
 Requires:       jq
 Requires:       sed
+Requires:       update-bootloader
 BuildArch:      noarch
 
 %description
