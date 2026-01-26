@@ -1,7 +1,7 @@
 #
 # spec file for package libtsm
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global sover   4
 %global lname   libtsm%{sover}
 Name:           libtsm
-Version:        4.3.0
+Version:        4.4.1
 Release:        0
 Summary:        DEC-VT terminal emulator state machine
 License:        LGPL-2.1-or-later AND MIT
@@ -80,7 +80,7 @@ in %{lname}.
 %{_libdir}/libtsm.so.%{sover}*
 
 %files devel
-%doc README
+%doc README.md
 %{_includedir}/libtsm.h
 %{_libdir}/libtsm.so
 %{_libdir}/pkgconfig/*.pc

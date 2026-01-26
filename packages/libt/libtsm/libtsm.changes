@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 23 12:38:03 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Update to 4.4.1:
+  * tsm_vte_paste: check input
+  * Add support to CSI b sequence (repeat last char)
+- Update to 4.4.0:
+  * Add support for CSI 18t command
+  * Fix SGR and PIXEL mouse modes blocked by mouse_event check
+  * Update readme to build without unit tests
+  * Fix compilation issue on ppc64el
+  * Fix mouse drag tracking in SGR and PIXEL modes
+  * Fix tsm_screen_resize()
+  * vte: Add bracketed paste support (DEC 2004)
+
+-------------------------------------------------------------------
 Wed Dec  3 21:20:34 UTC 2025 - Adam Mizerski <adam@mizerski.pl>
 
 - changed git repo to https://github.com/kmscon/libtsm
