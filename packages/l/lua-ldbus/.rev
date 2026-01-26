@@ -81,4 +81,13 @@
   * Squashed 'vendor/compat-5.3/' changes from daebe77..e245d3a</comment>
     <requestid>1315154</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e91b557cde37b8af5a4f1783902e1d2a</srcmd5>
+    <version>0.0+git20250404.5cc933b</version>
+    <time>1769427304</time>
+    <user>anag_factory</user>
+    <comment>- Add unbundle-vendoring.patch to unbundle vendored compat-5.3
+  library and make it possible to build with Lua 5.5.</comment>
+    <requestid>1328837</requestid>
+  </revision>
 </revisionlist>

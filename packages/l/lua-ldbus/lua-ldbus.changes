@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 23 09:09:11 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add unbundle-vendoring.patch to unbundle vendored compat-5.3
+  library and make it possible to build with Lua 5.5.
+
+-------------------------------------------------------------------
 Fri Oct 24 14:48:14 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch off building lua51 build of the package.

@@ -25,7 +25,11 @@ License:        MIT
 Group:          Development/Libraries/Other
 URL:            https://github.com/daurnimator/ldbus
 Source:         lua-ldbus-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE unbundle-vendoring.patch mcepl@suse.com
+# Don't rely on vendored compat-5.3
+Patch0:         unbundle-vendoring.patch
 BuildRequires:  %{flavor}-devel
+BuildRequires:  %{flavor}-compat-5.3
 BuildRequires:  lua-macros
 Requires:       %{flavor}
 BuildRequires:  pkgconfig(dbus-1)
@@ -43,8 +47,11 @@ ldbus is a C binding to dbus for Lua.
 %prep
 %autosetup -n lua-ldbus-%{version} -p1
 
+rm -r vendor/
+
 %build
 cd src
+export CFLAGS="%{optflags} -I%{lua_incdir}"
 make %{?_make_output_sync} %{?_smp_mflags} LUA_PKGNAME="lua" LUA_LIBDIR="%{lua_archdir}"
 
 %install
