@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan 24 00:58:09 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to 4.25:
+  * "behind the scenes" changes
+  * Set _NET_FRAME_EXTENTS according to the actual decoration size.
+    This improves compatibility with picom and other software.
+  * The command parser is now reentrant, which fixes a few
+    advanced for_window usages (e.g. multiple criteria).
+  * fix paragraph separators cutting off window titles
+  * fix crash when a container parent is focused and a tiling
+    drag causes it to be killed
+  * fix crash when using for_window [...] reload
+  * fix append_layout when containers use a mark
+  * randr: fix memleak and use-after-free
+
+-------------------------------------------------------------------
 Thu Nov  7 13:47:11 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 4.24:

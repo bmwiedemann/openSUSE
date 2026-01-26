@@ -468,4 +468,24 @@ Please decide if this lasts to accept the sr. (forwarded request 138719 from sei
     <comment></comment>
     <requestid>1222567</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>ff0a57cb6f1399577931f0cd1764e6c3</srcmd5>
+    <version>4.25</version>
+    <time>1769421797</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.25:
+  * &quot;behind the scenes&quot; changes
+  * Set _NET_FRAME_EXTENTS according to the actual decoration size.
+    This improves compatibility with picom and other software.
+  * The command parser is now reentrant, which fixes a few
+    advanced for_window usages (e.g. multiple criteria).
+  * fix paragraph separators cutting off window titles
+  * fix crash when a container parent is focused and a tiling
+    drag causes it to be killed
+  * fix crash when using for_window [...] reload
+  * fix append_layout when containers use a mark
+  * randr: fix memleak and use-after-free
+</comment>
+    <requestid>1328975</requestid>
+  </revision>
 </revisionlist>
