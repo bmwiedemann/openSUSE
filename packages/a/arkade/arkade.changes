@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 26 06:36:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.66:
+  * Markers for tool list block
+  * Fixes for codex
+  * Add codex
+  * Note on musl
+  * Agent guidance
+  * Notes on adding an app and finding binaries
+
+-------------------------------------------------------------------
 Fri Jan 23 06:19:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.65:
