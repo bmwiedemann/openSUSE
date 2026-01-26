@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Jan 25 17:31:30 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to version 1.1.2
+  * Improve man page formatting
+  * man pages: fix warnings from `mandoc -T lint` and `groff -rCHECKSTYLE=10`
+  * LoseSelection: second argument should be pointer, not raw value
+  * Handle -Wcast-function-type warnings for functions used as XtActionProcs
+  * StripFilename: avoid calling strrchr on NULL filename
+  * Clear 10 of 15 -Wsign-compare warnings from gcc 15.1
+  * Partial Revert of "fix: warning: assignment discards ‘const’ qualifier..."
+  * Partial Revert of "Fix warning: initialization discards ‘const’ qualifier..."
+  * Strip trailing whitespace from source files
+  * gitlab CI: drop the ci-fairy check-mr job
+  * make return obvious
+  * Fix: warning: initialization discards ‘const’ qualifier from pointer target type
+  * fix: warning: assignment discards ‘const’ qualifier from pointer target type
+  * FIX  an other const warning
+  * FIX: warning: cast from function call of type ‘double’ to non-matching type ‘short int’
+  * FIX: warning: cast from function call of type ‘double’ to non-matching type ‘short int’
+  * FIX: warning: assignment discards ‘const’ qualifier from pointer target type
+  * Fix: Shadow warning
+  * FIX: const warning
+
+-------------------------------------------------------------------
 Sun Feb  4 20:54:56 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to version 1.1.1

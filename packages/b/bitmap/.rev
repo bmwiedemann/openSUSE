@@ -100,4 +100,31 @@
   * Remove &quot;All rights reserved&quot; from Oracle copyright notices</comment>
     <requestid>1144046</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>dcab97ed111009d1f90ba57dec3a07dc</srcmd5>
+    <version>1.1.2</version>
+    <time>1769421962</time>
+    <user>anag_factory</user>
+    <comment>- update to version 1.1.2
+  * Improve man page formatting
+  * man pages: fix warnings from `mandoc -T lint` and `groff -rCHECKSTYLE=10`
+  * LoseSelection: second argument should be pointer, not raw value
+  * Handle -Wcast-function-type warnings for functions used as XtActionProcs
+  * StripFilename: avoid calling strrchr on NULL filename
+  * Clear 10 of 15 -Wsign-compare warnings from gcc 15.1
+  * Partial Revert of &quot;fix: warning: assignment discards ‘const’ qualifier...&quot;
+  * Partial Revert of &quot;Fix warning: initialization discards ‘const’ qualifier...&quot;
+  * Strip trailing whitespace from source files
+  * gitlab CI: drop the ci-fairy check-mr job
+  * make return obvious
+  * Fix: warning: initialization discards ‘const’ qualifier from pointer target type
+  * fix: warning: assignment discards ‘const’ qualifier from pointer target type
+  * FIX  an other const warning
+  * FIX: warning: cast from function call of type ‘double’ to non-matching type ‘short int’
+  * FIX: warning: cast from function call of type ‘double’ to non-matching type ‘short int’
+  * FIX: warning: assignment discards ‘const’ qualifier from pointer target type
+  * Fix: Shadow warning
+  * FIX: const warning</comment>
+    <requestid>1329081</requestid>
+  </revision>
 </revisionlist>
