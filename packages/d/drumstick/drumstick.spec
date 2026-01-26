@@ -1,7 +1,7 @@
 #
 # spec file for package drumstick
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2005-2010 Pedro Lopez-Cabanillas <plcl@users.sourceforge.net>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           drumstick
-Version:        2.10.0
+Version:        2.11.0
 Release:        0
 Summary:        MIDI Sequencer C++ Library Bindings
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -43,7 +43,7 @@ BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Test)
 BuildRequires:  cmake(Qt6UiPlugin)
 BuildRequires:  cmake(Qt6Widgets)
-BuildRequires:  cmake(sonivox)
+BuildRequires:  cmake(sonivox) >= 4.0
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(libpipewire-0.3)
