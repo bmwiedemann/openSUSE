@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 26 06:43:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.14:
+  * chore: remove direct usage of the github.com/aws/aws-sdk-go
+    package (aws sdk v1) (#3701)
+  * fix: remove usage of deprecated function
+    aws.EndpointResolverWithOptionsFunc (#3700)
+  * fix: CVE-2025-30204 - golang-jwt DoS vulnerability via
+    excessive memory allocation (#3687)
+  * Fix typos in documentation (#3678)
+
+-------------------------------------------------------------------
 Tue Jan 13 05:47:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.13:
