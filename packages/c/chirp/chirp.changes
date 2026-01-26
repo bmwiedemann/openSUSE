@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 24 18:04:55 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260123:
+  * Add Radioddity GM-30 Plus driver
+  * btech: update default timeout for download/upload
+  * f8hp-pro: Fix validate_memory for AM/aircraft
+  * Account for start bits in baud calculation
+
+-------------------------------------------------------------------
 Sat Jan 17 07:47:40 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260116:
