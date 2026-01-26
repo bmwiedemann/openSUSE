@@ -538,4 +538,38 @@
 - Preserve installer options values after successful submission</comment>
     <requestid>1327357</requestid>
   </revision>
+  <revision rev="32" vrev="32">
+    <srcmd5>a8db52621e16abc7d4bb2b03b8d611ba</srcmd5>
+    <version>0</version>
+    <time>1769420576</time>
+    <user>anag_factory</user>
+    <comment>- Adapt to the changes in the question about trusting
+  certificates from the registration (gh#agama-project/agama#3055).
+
+- Update look&amp;feel of some pages to make them match the new style
+  (gh#agama-project/agama#3050).
+
+- Avoid flicker on the product selection page by deferring the
+  display of current product information
+  (gh#agama-project/agama#3049).
+
+- Internal fix to prevent warnings (not visible for users) in the
+  product selection form (gh#agama-project/agama#3048).
+
+- Fix query refetch (gh#agama-project/agama#3044).
+
+- Avoid flickering on the overview page by stabilizing progress
+  updates (gh#agama-project/agama#3042).
+
+- Enhance product selection page (gh#agama-project/agama#3039):
+  - Keep the selected product’s radio button checked after
+    interacting with other controls.
+  - Improved UX with persistent product details on large screens,
+    clearer submission-disabled messages, and other minor yet
+    useful UI tweaks.
+
+- Updated the overview software summary to inform users about
+  blocking issues (gh#agama-project/agama#3035).</comment>
+    <requestid>1328665</requestid>
+  </revision>
 </revisionlist>
