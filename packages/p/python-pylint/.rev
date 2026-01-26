@@ -860,4 +860,19 @@
   * Handling of invalid-name at the module level was patchy. Now,</comment>
     <requestid>1318121</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>1c374b7af1c57b0ded5c5925a94d155a</srcmd5>
+    <version>4.0.4</version>
+    <time>1769427273</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0.4:
+  * Fixed false positive for ``invalid-name`` where module-level
+    constants were incorrectly classified as variables when a
+    class-level attribute with the same name exists.
+  * Closes #10719
+  * Fix a false positive for ``invalid-name`` on an UPPER_CASED
+    name inside an ``if`` branch that assigns an object.
+  * Closes #10745</comment>
+    <requestid>1329152</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 26 08:08:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.4:
+  * Fixed false positive for ``invalid-name`` where module-level
+    constants were incorrectly classified as variables when a
+    class-level attribute with the same name exists.
+  * Closes #10719
+  * Fix a false positive for ``invalid-name`` on an UPPER_CASED
+    name inside an ``if`` branch that assigns an object.
+  * Closes #10745
+
+-------------------------------------------------------------------
 Mon Nov 17 04:33:49 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.0.3:
