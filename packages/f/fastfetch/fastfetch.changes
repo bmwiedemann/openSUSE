@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan 24 17:43:46 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.58.0:
+  * DE (Linux): ensures process returns successfully before using
+    its output
+  * Packages (Linux): optimises pacman detection code
+  * Packages (Linux): Auto detect the DBPath directory for pacman
+    on archlinux (#2154)
+  * Add new KISS Linux logo based off favicon
+  * Fix Bedrock Linux version detection & futureproof for 0.8
+  * Host (Linux): uses `/sys/firmware/devicetree/base/smbios`
+    if available
+  * Linux: uses the standard `/sys/firmware/devicetree/base` instead
+    of the outdated `/proc/device-tree`
+
+-------------------------------------------------------------------
 Fri Jan 16 20:50:34 UTC 2026 - RN <R_Nik_C@proton.me>
 
 - Update to version 2.57.1:
