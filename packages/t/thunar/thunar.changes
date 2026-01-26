@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 23 17:21:41 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 4.20.7
+  * Prevent crash on unmount (#1778)
+  * Show 'queued' message only for queued jobs (#1755)
+  * Prevent crash on non-local symlinks (#1757)
+  * Fix g_object_unref warning
+  * Fix symlink resolve for desktop files (#1757)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Oct 16 07:50:59 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
-- Update to 4.20.5
+- Update to 4.20.6
   * Prevent GFileMonitor leak for folders (#1724)
   * Don't use variables for strings in ngettext (#1683)
   * Fix 'MOUNTED' state on file reload when unmounted
