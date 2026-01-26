@@ -18,7 +18,7 @@
 
 
 Name:           kmscon
-Version:        9.2.1
+Version:        9.3.0+git1
 Release:        0
 Summary:        Linux KMS/DRM based virtual Console Emulator
 License:        MIT
@@ -26,12 +26,12 @@ Group:          System/Console
 URL:            https://github.com/kmscon/kmscon
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  libtsm-devel >= 4.3.0
 BuildRequires:  meson
 BuildRequires:  pkg-config
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(libtsm) >= 4.4.0
 BuildRequires:  pkgconfig(libudev) >= 172
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangoft2)
@@ -57,6 +57,9 @@ console.
 %install
 %meson_install
 
+# Remove example config from /etc, we use %%doc
+rm %{buildroot}/%{_sysconfdir}/kmscon/kmscon.conf.example
+
 %pre
 %service_add_pre %{name}.service
 
@@ -71,8 +74,7 @@ console.
 
 %files
 %license COPYING
-%dir %{_sysconfdir}/kmscon
-%config(noreplace) %{_sysconfdir}/kmscon/kmscon.conf
+%doc scripts/etc/kmscon.conf.example
 %{_bindir}/%{name}
 %{_bindir}/%{name}-launch-gui
 %dir %{_libdir}/kmscon/

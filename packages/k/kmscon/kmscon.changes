@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Fri Jan 23 13:03:43 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 9.3.0+git1:
+  * Fix build on i686
+- Update to version 9.3.0:
+  * Prepare 9.3.0 release
+  * conf: ignore unknown options
+  * Fix XDG_VTNR not set:
+  * drm: Add legacy modesetting fallback support.
+  * input: print device name in probe
+  * input: Add missing close(fd) in input_init_abs()
+  * Add Touchscreen support
+  * Unifont font_unifont_data.hex => 17.0.3 hex.
+  * README.md: fix the kms.conf link
+  * Fix DPMS timer not resetting when display activates
+  * drm: Fix when no display is connected at startup
+  * Remove render-engine configuration
+  * kmscon_conf.c: Fix llvm compilation failure
+  * terminal: fix paste with empty copy
+  * terminal: Use tsm_vte_paste() for middle-click paste
+  * bump libtsm to 4.4.0, to use tsm_vte_paste()
+  * bbulk: Fix a bug with overflow glyph and damage support
+  * bbulk: Add damage_cell()
+  * Draw margins in the text renderer
+  * bbulk: Set damage rectangle to drm drivers
+  * drm: add has_damage
+  * drm: add need_redraw()
+  * drm: Add set_damage() callback
+  * bbulk: set_coordinate() use x and y instead of uterm_video_blend_req
+  * kmscon launcher script: redirect dbus-send errors to /dev/null
+  * drm: don't print warning on EBUSY
+  * Fix drag button encoding: use button+32 for motion events
+  * Fix mouse drag tracking: propagate button state in motion events
+  * Add DPMS screen timeout feature
+  * Rename kmscon.conf to kmscon.conf.example
+  * avoid overwriting `kmscon.conf`
+  * drm: disable all cursor planes.
+  * terminal: remove spurious warning
+  * drm: Use display name in logs
+  * Remove immediate argument to uterm_display_swap()
+  * drm: Use Atomic commit for drm
+  * drm3d: refactor error logs
+  * Set capabilities for atomic modesetting
+  * Add uterm_display_ready()
+  * text: add default attribute to prepare()
+  * Fix mouse selection can crash kmscon
+  * bbulk: Fix cell under the cursor.
+  * Add grab-reboot option to example config file
+  * bbulk: Handle font overflow with damage.
+  * bbulk: Add damage support
+  * Add name to struct uterm_display
+  * drm_shared: Set DPMS to ON for new display
+  * drm_shared: move modes initialization to init_modes()
+  * drm: make struct uterm_drm_display part of uterm_drm[23]d_display
+  * drm_shared: only store the modes that we may use later.
+  * Remove display_activate and deactivate
+  * drm2d/drm3d: move display init/destroy
+  * Removed unused struct drm2d_video and display_get_modes* functions
+  * Move SetCursor workaround to where modeset is done
+  * Set display->video early.
+  * Simplify uterm_display_get_states
+  * split uterm_drm_display_swap()
+  * Add an opengl flag to check for opengl support
+  * Fix typo in kmscon.1
+  * Fix typo in kmscon.conf
+  * logind: doesn't monitor seats if started with VT
+  * Fix mouse when using multiple monitor.
+  * Reset selection on key press, or wheel up/down
+  * Don't print function/file for log_notice
+  * Forward mouse wheel events to applications in mouse tracking mode
+  * fix: apply clang-format-20 formatting
+  * Add --grab-reboot option to trigger system reboot via keyboard shortcut
+  * Enable mouse support by default
+  * drm3d: Use drmModeAddFB2()
+  * drm2d: use libdrm functions for dumb buffers
+  * Convert backspace delete to a runtime option, and enable it.
+  * Merge all kmscon_pty_set_xxx() into kmscon_pty_set_conf()
+  * shared_drm: use the DRM_MODE_TYPE_PREFERRED
+  * Move display modes to shared drm.
+  * Move vblank timer to fbdev, as it's the only user.
+  * Remove unused uterm_display_fake_blend()
+  * Remove unused segfault callback
+  * Remove unused get_buffers function
+  * single quotes
+  * inotifywait, shfmt, case
+  * fix tty0 reading, use var
+  * Portable kmscon-launch-gui.sh
+  * github-ci: Check sources format with clang-format
+  * format tests with clang-format
+  * Format code with clang-format
+  * Add a .clang-format to have consistent formating
+  * Remove bashism in kmscon-launch-gui.sh
+  * kmscon systemd services: specify TERM for agetty
+  * Substitute shell variable from env when starting login
+
+-------------------------------------------------------------------
 Wed Dec 03 21:03:49 UTC 2025 - Adam Mizerski <adam@mizerski.pl>
 
 - change repo to https://github.com/kmscon/kmscon
