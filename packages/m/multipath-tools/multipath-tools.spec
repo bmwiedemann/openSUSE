@@ -253,7 +253,6 @@ exit 0
 %{_mandir}/man8/multipathd.8*
 %{_mandir}/man8/multipathc.8*
 %{_mandir}/man8/mpathpersist.8*
-%ghost %attr(700,root,root) /run/multipath
 
 %files -n libmpath0
 %{libdir}/libmultipath.so.0

@@ -2170,4 +2170,12 @@ by an upstream reviewed commit. (forwarded request 1109432 from mwilck)</comment
   * CI updates.</comment>
     <requestid>1328376</requestid>
   </revision>
+  <revision rev="175" vrev="2">
+    <srcmd5>c36591b41ee5a410dede2586071749a9</srcmd5>
+    <version>0.14.0+207+suse.18c17be5</version>
+    <time>1769420630</time>
+    <user>anag_factory</user>
+    <comment>- Remove %ghost entry for /run/multipath from spec file (jsc#PED-14758)</comment>
+    <requestid>1328926</requestid>
+  </revision>
 </revisionlist>
