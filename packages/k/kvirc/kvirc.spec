@@ -1,7 +1,7 @@
 #
 # spec file for package kvirc
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_without qtwebengine
 %endif
 Name:           kvirc
-Version:        5.2.8
+Version:        5.2.10
 Release:        0
 Summary:        Graphical Front-End for IRC
 License:        GPL-2.0-or-later AND (GPL-3.0-only OR SUSE-LGPL-2.1-with-digia-exception-1.1)
