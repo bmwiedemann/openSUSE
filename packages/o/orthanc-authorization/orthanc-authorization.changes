@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 25 11:25:13 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- version 0.10.3
+  * New default permissions for worklists
+  * New default permissions for tools/metrics-prometheus
+  * New default permissions for tools/generate-uid
+
+-------------------------------------------------------------------
 Sun Oct 12 14:19:00 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - version 0.10.2
