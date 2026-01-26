@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 23 18:11:07 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.5.8:
+  * Change format for SCI_GETSELECTIONSERIALIZED. Feature #1563.
+  * Ensure selection drawn correctly when selection restored by
+    undo. Bug #2487.
+  * Update to Unicode 16. Feature #1569.
+  * Fix bug when indenting rectangular selection. Feature #1567.
+  * Add PTRDIFF_DOESNT_ALIAS_INT preprocessor choice. 
+
+-------------------------------------------------------------------
 Tue Jun 24 07:00:10 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 5.5.7:
