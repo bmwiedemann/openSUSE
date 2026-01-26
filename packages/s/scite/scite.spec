@@ -17,9 +17,9 @@
 #
 
 
-%define tar_ver 557
+%define tar_ver 558
 Name:           scite
-Version:        5.5.7
+Version:        5.5.8
 Release:        0
 Summary:        Source Code Editor based on Scintilla
 License:        MIT
@@ -30,7 +30,6 @@ Patch0:         scite-use-system-scintilla.patch
 BuildRequires:  gcc-c++ >= 11.2
 BuildRequires:  libscintilla-devel >= 5.5.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gail-3.0)
 BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(gdk-broadway-3.0)
@@ -61,7 +60,6 @@ make GTK3=1 DESTDIR=%{buildroot} -C scite/gtk install
 # Add the man page
 install -d -m 0755 -p %{buildroot}%{_mandir}/man1
 install -m 0644 scite/doc/scite.1 %{buildroot}%{_mandir}/man1/SciTE.1
-%suse_update_desktop_file -r SciTE GTK Development Utility Building TextEditor
 # Needed for non Tumbleweed releases.
 %if 0%{?sle_version} && 0%{?sle_version} <= 150300
 export NO_BRP_CHECK_RPATH=true

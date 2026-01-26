@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 23 18:15:41 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.5.8:
+  * Sync with scintilla 5.5.8; so scite specific code changes.
+- Drop use of deprecated %suse_update_desktop_file macro.
+
+-------------------------------------------------------------------
 Wed Jun 25 14:06:02 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 5.5.7:
