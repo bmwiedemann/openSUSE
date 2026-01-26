@@ -1,7 +1,7 @@
 #
 # spec file for package lager
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lager
-Version:        0.1.1
+Version:        0.1.2
 Release:        0
 Summary:        C++ library to assist value-oriented design
 License:        MIT
