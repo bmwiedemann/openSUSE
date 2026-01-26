@@ -1,7 +1,7 @@
 #
 # spec file for package libxfce4windowing
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
 # upon. The license for this file, and modifications and additions to the
@@ -33,6 +33,7 @@
 %define girnameui  typelib-1_0-Libxfce4windowingui-%{api}_%{major}
 %define devname    %{name}-devel
 %define docname    %{devname}-doc
+%define langname   %{name}-lang
 
 Name:           libxfce4windowing
 Summary:        Windowing concept abstraction library for X11 and Wayland
@@ -42,6 +43,11 @@ License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://gitlab.xfce.org/xfce/libxfce4windowing
 Source0:        https://archive.xfce.org/src/xfce/libxfce4windowing/4.20/libxfce4windowing-%{version}.tar.bz2
+BuildRequires:  meson
+BuildRequires:  vala
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc13
+%endif
 BuildRequires:  gettext >= 0.19.8
 BuildRequires:  xfce4-dev-tools >= 4.19.3
 BuildRequires:  pkgconfig(gdk-3.0) >= 3.24.10
@@ -142,12 +148,14 @@ windowing-system-independent manner.
 %autosetup
 
 %build
-%configure \
-	--disable-static
-%make_build
+%if 0%{?suse_version} < 1600
+export CC=gcc-13
+%endif
+%meson -Dintrospection=true -Dvala=enabled -Dgtk-doc=true
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 find %{buildroot} -name "*.la" -print -delete
 
@@ -180,13 +188,17 @@ find %{buildroot} -name "*.la" -print -delete
 %{_libdir}/pkgconfig/libxfce4windowing-x11-%{api}.pc
 %{_datadir}/gir-1.0/Libxfce4windowing-%{api}.%{major}.gir
 %{_datadir}/gir-1.0/Libxfce4windowingui-%{api}.%{major}.gir
-%{_includedir}/xfce4/libxfce4windowing{,ui}/
+%{_includedir}/xfce4/libxfce4windowing-0
+%dir %{_datadir}/vala/vapi
+%{_datadir}/vala/vapi/libxfce4windowing{,ui}-0.deps
+%{_datadir}/vala/vapi/libxfce4windowing{,ui}-0.vapi
 
 %files -n %{docname}
 %doc README*
-%{_datadir}/gtk-doc/html/libxfce4windowingui
-%{_datadir}/gtk-doc/html/libxfce4windowing
+%{_datadir}/gtk-doc/html/libxfce4windowingui-0
+%{_datadir}/gtk-doc/html/libxfce4windowing-0
 
-%files lang -f %{name}.lang
+%files -n %{langname} -f %{name}.lang
+
 
 %changelog

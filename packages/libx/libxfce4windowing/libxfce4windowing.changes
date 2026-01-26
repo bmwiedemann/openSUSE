@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 24 18:07:40 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update copyright year.
+
+-------------------------------------------------------------------
+Fri Jan 23 11:02:30 UTC 2026 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use meson build system
+- Build with vala to generate vapi files needed by Budgie Desktop
+
+-------------------------------------------------------------------
 Mon Dec 29 16:40:56 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.20.5

@@ -56,4 +56,15 @@
     <comment></comment>
     <requestid>1325059</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>978e309747ae9d228f4a1cfa274691f4</srcmd5>
+    <version>4.20.5</version>
+    <time>1769421851</time>
+    <user>anag_factory</user>
+    <comment>- Update copyright year.
+- Use meson build system
+- Build with vala to generate vapi files needed by Budgie Desktop
+</comment>
+    <requestid>1329019</requestid>
+  </revision>
 </revisionlist>
