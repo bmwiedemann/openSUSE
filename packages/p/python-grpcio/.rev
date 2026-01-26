@@ -633,4 +633,12 @@
     <comment></comment>
     <requestid>1317622</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>50f507e2c9fbf19d81216e34941168c2</srcmd5>
+    <version>1.76.0</version>
+    <time>1769437166</time>
+    <user>anag_factory</user>
+    <comment>Add missing-includes.patch: add missed headers previously included via absl (gh#grpc/grpc#41305); upstream commit. (forwarded request 1329029 from badshah400)</comment>
+    <requestid>1329282</requestid>
+  </revision>
 </revisionlist>

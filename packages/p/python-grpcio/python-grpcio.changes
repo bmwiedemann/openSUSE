@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 25 02:23:41 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add missing-includes.patch: add missed headers previously
+  included via absl (gh#grpc/grpc#41305); upstream commit.
+
+-------------------------------------------------------------------
 Sun Nov  9 09:25:23 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.76.0:
