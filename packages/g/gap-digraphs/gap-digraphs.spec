@@ -1,7 +1,7 @@
 #
 # spec file for package gap-digraphs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-digraphs
-Version:        1.13.1
+Version:        1.14.0
 Release:        0
 Summary:        GAP: Digraphs and multigraphs
 License:        GPL-3.0-or-later
@@ -27,13 +27,13 @@ URL:            https://digraphs.github.io/Digraphs/
 Source:         https://github.com/digraphs/Digraphs/releases/download/v%version/digraphs-%version.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  libtool
 BuildRequires:  edge-addition-planarity-suite-devel >= 4
 BuildRequires:  fdupes
 BuildRequires:  gap-devel
 BuildRequires:  gap-rpm-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
+BuildRequires:  libtool
 Requires:       gap-core >= 4.10
 Requires:       gap-datastructures >= 0.2.5
 Requires:       gap-io >= 4.5.1
