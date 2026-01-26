@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 23 08:23:57 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.99.0:
+  + wfd: Fix keep-alive and RTCP port handling for Roku/Hisense
+    sinks
+  + sink-row: Add adw_preferences_row_set_use_markup
+  + Fix a couple of memory leaks and a use-after-free crash
+
+-------------------------------------------------------------------
 Mon Dec 15 08:00:06 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.98.0:

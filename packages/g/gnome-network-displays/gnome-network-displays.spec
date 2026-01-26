@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-network-displays
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-network-displays
-Version:        0.98.0
+Version:        0.99.0
 Release:        0
 Summary:        Miracast implementation for GNOME
 License:        GPL-3.0-or-later
@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= 1.14
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-rtsp-server-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
-BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk4) >= 4.13.0
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.0
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libnm) >= 1.15
