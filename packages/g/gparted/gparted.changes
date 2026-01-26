@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 26 09:05:50 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Also BuildRequire pkexec instead of /usr/bin/pkexec, aligning
+  with the previous change.
+
+-------------------------------------------------------------------
 Thu Jan 22 14:24:18 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require pkexec instead of /usr/bin/pkexec: the package split

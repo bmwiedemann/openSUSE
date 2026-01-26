@@ -35,7 +35,7 @@ BuildRequires:  intltool
 BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
 BuildRequires:  polkit
-BuildRequires:  /usr/bin/pkexec
+BuildRequires:  pkexec
 BuildRequires:  update-desktop-files
 BuildRequires:  xfsprogs-devel
 BuildRequires:  yelp-tools
