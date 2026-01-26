@@ -1,0 +1,6 @@
+<package name="bcpp" project="openSUSE:Factory">
+  <title>Beautify C++ programs</title>
+  <description>bcpp indents C/C++ source programs, replacing tabs with spaces or the reverse.
+Unlike indent, it does (by design) not attempt to wrap long statements.</description>
+  <url>https://invisible-island.net/bcpp/bcpp.html</url>
+</package>
