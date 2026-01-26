@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 26 06:21:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.0:
+  * build(deps): bump actions/checkout in the actions group (#2307)
+  * feat(config): point npm_config_cache to /var/cache/melange/npm
+  * feat(config): point COMPOSER_CACHE_DIR to
+    /var/cache/melange/composer
+  * docs(cache): document cache persistence behavior per runner
+  * feat(maven): enable caching for Maven dependencies
+  * feat(qemu): add virtiofs support for cache directory
+  * feat(config): point UV_CACHE_DIR and PIP_CACHE_DIR to
+    /var/cache/melange/ by default (#2305)
+
+-------------------------------------------------------------------
 Wed Jan 21 06:09:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.0:
