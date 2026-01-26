@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jan 26 06:43:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.14:
+  * Introduce support for OIDC workload identity federation (#3711)
+  * ci: add a upgrade bats test (#3621)
+  * chore: fix dependabot alerts (#3730)
+  * chore: fix dependabot alerts (#3726)
+  * fix: graphql playground documentation was hardcoded to an
+    unrelated example (#3721)
+  * chore: remove direct usage of the github.com/aws/aws-sdk-go
+    package (aws sdk v1) (#3701)
+  * chore: fix dependabot alerts (#3707)
+  * fix:  now attempt to bind to the zot server socket to check if
+    the server is running (#3703)
+  * fix: remove usage of deprecated function
+    aws.EndpointResolverWithOptionsFunc (#3700)
+  * fix: CVE-2025-30204 - golang-jwt DoS vulnerability via
+    excessive memory allocation (#3687)
+  * fix: pre-existing dynamodb versions table should be populated
+    with version if it doesn't contain it already (#3699)
+  * ci: fix nightly due to outdated kind (#3676)
+  * Fix typos in documentation (#3678)
+  * chore: fix dependabot alerts (#3677)
+  * test: fix some coverage issues, refactored some of the
+    pagination logic to accomplish this (#3674)
+
+-------------------------------------------------------------------
 Tue Jan 13 05:47:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.13:
