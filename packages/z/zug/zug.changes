@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan 24 12:13:11 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.1.2
+  * Update CMake min version
+  * Fix typo in sequence_data move assignment operator
+  * fix: type trait removed in C++20
+  * fix: test rng doesn't satisfy standard
+  * feat: cpp20 compatibility
+  * fix: any_state missing typeinfo include
+  * zug/transducer/eager.hpp: include algorithm
+- Drop patch:
+  * zug-gcc15.patch
+
+-------------------------------------------------------------------
 Wed Feb 12 10:18:34 UTC 2025 - pgajdos@suse.com
 
 - added patches
