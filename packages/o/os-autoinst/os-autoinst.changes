@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 23 21:33:15 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1769153586.72cabd0:
+  * Replace remaining functions with subroutine signatures in 18-qemu.t
+  * Fix snapshot overlay mechanism to avoid duplication
+  * fix(dist): provide proper copyright headers in all spec-files
+  * fix(dist): try to fix os-autoinst-obs-auto-submit reverting content
+  * fix(dist): exclude unstable t/28-signalblocker.t in OBS checks
+  * Add documentation of APPEND variable
+  * Add undocumented KERNEL/INITRD to the supported variables
+  * os-autoinst-generate-needle-preview: Embed PNG
+
+-------------------------------------------------------------------
 Fri Jan 16 20:43:12 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1768577300.b85e486:
