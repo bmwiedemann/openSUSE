@@ -1,7 +1,7 @@
 #
 # spec file for package xfd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           xfd
-Version:        1.1.4
+Version:        1.1.5
 Release:        0
 Summary:        Utility to display all the characters in an X font
 License:        X11
 Group:          System/X11/Utilities
 URL:            http://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
+BuildRequires:  meson
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(xaw7)
@@ -47,11 +48,11 @@ character metrics, and a grid containing one glyph per cell.
 %setup -q
 
 %build
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %defattr(-,root,root)
