@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Jan 24 11:24:42 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.14.0
+  * Keep draft messages on top of pinned/unpinned chat list items
+  * Optimize thumbnail creation
+  * Display border around searched/referenced message instead of
+    bar
+  * Display border around message if its context menu is shown
+  * Highlight message's avatar if hovered
+  * Display provider chat (used for welcome messages and service
+    announcements) as such
+  * Always display same name and proper avatar initials for notes
+    chats
+  * Allow to cancel downloads/uploads
+  * Allow to restart canceled uploads
+  * Allow to resend failed message via context menu
+  * Retrieve support addresses from server instead of provider
+    list (XEP-0157: Contact Addresses for XMPP Services,
+    XEP-0128: Service Discovery Extensions)
+  * Allow adding contact by entering XMPP URI (including
+    authentication of OMEMO 2 keys)
+  * Allow joining group chat by entering XMPP URI
+  * Add option for allowing SASL PLAIN (needed for servers using
+    LDAP) to custom connection settings
+  * Add filtering options to choose provider for registration
+  * Cancel file transfers on disconnecting from server
+  * Add support for offline media sharing queue
+  * Restart downloads canceled on logout once logged in
+  * Remove all related data on message removal (such as reactions
+    and media)
+  * Fix displaying message reaction details
+  * Fix adding unneeded separator on mention after new line
+  * Wrap hint for actions needing user to be connected to server
+  * Fix displaying icons on Windows
+  * Fix adding new line at cursor position
+  * Ensure that own encryption devices are not removed if notes
+    chat is removed
+- Drop patch:
+  * 0001-Add-dependency-Qt6GuiPrivate-needed-since-Qt-6.10.0.patch
+
+-------------------------------------------------------------------
 Tue Dec  2 18:55:36 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change (boo#1254389)

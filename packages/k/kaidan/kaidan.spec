@@ -1,7 +1,7 @@
 #
 # spec file for package kaidan
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 %define kf6_version 6.11.0
-%define qt6_version 6.6.0
+%define qt6_version 6.7.0
 
 Name:           kaidan
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        A XMPP client based on KDE Framework
 License:        AML AND GPL-3.0-or-later AND SUSE-GPL-3.0+-with-openssl-exception AND MIT AND CC-BY-SA-4.0
@@ -28,16 +28,14 @@ URL:            https://www.kaidan.im
 Source0:        https://download.kde.org/unstable/%{name}/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/unstable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
 Source2:        kaidan.keyring
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Add-dependency-Qt6GuiPrivate-needed-since-Qt-6.10.0.patch
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{qt6_version}
 # Both Qt 5 and Qt 6 flavors use the same cmake config name, use the -devel package name
 # BuildRequires:  cmake(KQuickImageEditor)
 BuildRequires:  kquickimageeditor6-devel
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  qt6-declarative-tools >= %{qt6_version}
+BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  qt6-sql-sqlite >= %{qt6_version}
 BuildRequires:  cmake(KDSingleApplication-qt6)
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
@@ -47,7 +45,7 @@ BuildRequires:  cmake(KF6KirigamiAddons) >= 1.4.0
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6Prison) >= %{kf6_version}
 BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}
-BuildRequires:  cmake(QXmppQt6) >= 1.11.0
+BuildRequires:  cmake(QXmppQt6) >= 1.13.0
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Keychain) >= 0.15.0

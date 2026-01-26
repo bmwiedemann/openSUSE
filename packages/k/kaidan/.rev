@@ -117,4 +117,12 @@
   * 0001-Add-dependency-Qt6GuiPrivate-needed-since-Qt-6.10.0.patch</comment>
     <requestid>1320891</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>29596f3666891b097bc0e165aa314221</srcmd5>
+    <version>0.14.0</version>
+    <time>1769421815</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.14.0</comment>
+    <requestid>1328989</requestid>
+  </revision>
 </revisionlist>
