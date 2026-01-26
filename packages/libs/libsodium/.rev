@@ -404,4 +404,41 @@
 - Add patch libsodium-Fix-compilation-with-GCC-on-aarch64.patch (forwarded request 1325970 from lmulling)</comment>
     <requestid>1325971</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>b801fd9ed7bd83e012f8d07dea5328b1</srcmd5>
+    <version>1.0.21</version>
+    <time>1769423635</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.21 (bsc#1256070, CVE-2025-15444, bsc#1255764, CVE-2025-69277):
+    small-order points that are not in the main subgroup
+  - A test designed to trigger an OOM condition didn't work on
+    Linux systems with memory overcommit turned on. It has been
+  - Emscripten: UTF8ToString() is now exported since
+  - New target: WebAssembly/WASI
+  - New functions to map a hash to an edwards25519 point
+    or get a random point:
+  - crypto_core_ed25519_scalar_mul() has been implemented for
+  - Support for the Ristretto group has been implemented for
+  - Bug fix: sodium_pad() didn't properly support block sizes
+  - JS/WebAssembly: some old iOS versions can't instantiate the
+    crypto_pwhash_scryptsalsa208sha256_str_needs_rehash()didn't
+    returnEINVAL` on input strings with a short length, unlike
+  - Added a workaround for Visual Studio 2010 bug causing CPU
+  - New low-level APIs for arithmetic mod the order of the prime
+  - crypto_core_ed25519_scalar_random(),
+  - crypto_core_ed25519_scalar_invert(),
+  - crypto_core_ed25519_scalar_complement(),
+    crypto_core_ed25519_scalar_add() and
+    crypto_scalarmult_ed25519_base_noclamp() and
+    crypto_scalarmult_ed25519_noclamp().
+  - The nonnull attribute has been added to all relevant
+  * AVX2 detection is more reliable.
+    Intel platforms. crypto_generichash() is now faster than MD5 and
+- Now that gcc 5.2 is available on TW, remove the ARMv7 workaround.
+    crypto_aead_chacha20poly1305_ietf_npubbytes(),
+  * In addition to sodium_bin2hex(), sodium_hex2bin() is now a
+  * crypto_generichash_statebytes(), crypto_auth_*_statebytes()
+    and crypto_hash_*_statebytes() have been added in order to</comment>
+    <requestid>1329146</requestid>
+  </revision>
 </revisionlist>

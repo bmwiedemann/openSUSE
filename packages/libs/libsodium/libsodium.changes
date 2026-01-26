@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Thu Jan  8 13:04:50 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
 
-- Update to 1.0.21:
+- Update to 1.0.21 (bsc#1256070, CVE-2025-15444, bsc#1255764, CVE-2025-69277):
   * The new crypto_ipcrypt_* functions implement mechanisms for securely
     encrypting and anonymizing IP addresses.
   * The sodium_bin2ip and sodium_ip2bin helper functions have been added to
@@ -20,7 +20,7 @@ Thu Jan  8 13:04:50 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
     compilers from introducing unwanted side channels via conditional jumps. This
     was observed on RISC-V targets with specific compilers and options.
   * Security: crypto_core_ed25519_is_valid_point() now properly rejects
-    small-order points that are not in the main subgroup [bsc#1256070, CVE-2025-15444]
+    small-order points that are not in the main subgroup
   * ((nonnull)) attributes have been relaxed on some crypto_stream* functions to
     allow NULL output buffers when the output length is zero
   * A cross-compilation issue with old clang versions has been fixed
@@ -62,23 +62,23 @@ Sun Jun 16 10:04:32 UTC 2019 - ecsos@opensuse.org
   - Enterprise versions of Visual Studio are now supported.
   - Visual Studio 2019 is now supported.
   - 32-bit binaries for Visual Studio 2010 are now provided.
-  - A test designed to trigger an OOM condition didn't work on 
-    Linux systems with memory overcommit turned on. It has been 
+  - A test designed to trigger an OOM condition didn't work on
+    Linux systems with memory overcommit turned on. It has been
     removed in order to fix Ansible builds.
   - Emscripten: print and printErr functions are overridden to send
     errors to the console, if there is one.
-  - Emscripten: UTF8ToString() is now exported since 
+  - Emscripten: UTF8ToString() is now exported since
     Pointer_stringify() has been deprecated.
   - Libsodium version detection has been fixed in the CMake recipe.
   - Generic hashing got a 10% speedup on AVX2.
-  - New target: WebAssembly/WASI 
+  - New target: WebAssembly/WASI
     (compile with dist-builds/wasm32-wasi.sh).
-  - New functions to map a hash to an edwards25519 point 
-    or get a random point: 
+  - New functions to map a hash to an edwards25519 point
+    or get a random point:
     core_ed25519_from_hash() and core_ed25519_random().
-  - crypto_core_ed25519_scalar_mul() has been implemented for 
+  - crypto_core_ed25519_scalar_mul() has been implemented for
     scalar*scalar (mod L) multiplication.
-  - Support for the Ristretto group has been implemented for 
+  - Support for the Ristretto group has been implemented for
     interoperability with wasm-crypto.
   - Improvements have been made to the test suite.
   - Portability improvements have been made.
@@ -94,36 +94,36 @@ Sun Jun 16 10:04:32 UTC 2019 - ecsos@opensuse.org
 Sat Feb  2 10:06:12 UTC 2019 - ecsos@opensuse.org
 
 - Update to 1.0.17
-  - Bug fix: sodium_pad() didn't properly support block sizes 
+  - Bug fix: sodium_pad() didn't properly support block sizes
     >= 256 bytes.
-  - JS/WebAssembly: some old iOS versions can't instantiate the 
+  - JS/WebAssembly: some old iOS versions can't instantiate the
     WebAssembly module; fall back to Javascript on these.
   - JS/WebAssembly: compatibility with newer Emscripten versions.
   - Bug fix: crypto_pwhash_scryptsalsa208sha256_str_verify() and
-    crypto_pwhash_scryptsalsa208sha256_str_needs_rehash()didn't 
-    returnEINVAL` on input strings with a short length, unlike 
+    crypto_pwhash_scryptsalsa208sha256_str_needs_rehash()didn't
+    returnEINVAL` on input strings with a short length, unlike
     their high-level counterpart.
-  - Added a workaround for Visual Studio 2010 bug causing CPU 
+  - Added a workaround for Visual Studio 2010 bug causing CPU
     features not to be detected.
   - Portability improvements.
   - Test vectors from Project Wycheproof have been added.
-  - New low-level APIs for arithmetic mod the order of the prime 
+  - New low-level APIs for arithmetic mod the order of the prime
     order group:
-  - crypto_core_ed25519_scalar_random(), 
+  - crypto_core_ed25519_scalar_random(),
     crypto_core_ed25519_scalar_reduce(),
-  - crypto_core_ed25519_scalar_invert(), 
+  - crypto_core_ed25519_scalar_invert(),
     crypto_core_ed25519_scalar_negate(),
-  - crypto_core_ed25519_scalar_complement(), 
-    crypto_core_ed25519_scalar_add() and 
+  - crypto_core_ed25519_scalar_complement(),
+    crypto_core_ed25519_scalar_add() and
     crypto_core_ed25519_scalar_sub().
   - New low-level APIs for scalar multiplication without clamping:
-    crypto_scalarmult_ed25519_base_noclamp() and 
-    crypto_scalarmult_ed25519_noclamp(). 
+    crypto_scalarmult_ed25519_base_noclamp() and
+    crypto_scalarmult_ed25519_noclamp().
     These new APIs are especially useful for blinding.
   - sodium_sub() has been implemented.
   - Support for WatchOS has been added.
   - getrandom(2) is now used on FreeBSD 12+.
-  - The nonnull attribute has been added to all relevant 
+  - The nonnull attribute has been added to all relevant
     prototypes.
   - More reliable AVX512 detection.
   - Javascript/Webassembly builds now use dynamic memory growth.
@@ -228,7 +228,7 @@ Thu Sep 28 19:54:43 UTC 2017 - idonmez@suse.com
   * The crypto_pwhash_str_needs_rehash() function was added to check
     if a password hash string matches the given parameters, or if it
     needs an update.
-  
+
   Updates from 1.0.13
   * An AVX2 optimized implementation of the Argon2 round function was added.
   * The Argon2id variant of Argon2 has been implemented. The high-level
@@ -270,7 +270,7 @@ Mon Mar 13 09:17:43 UTC 2017 - idonmez@suse.com
     This function can especially be useful to write reproducible tests.
   * A preliminary crypto_kx_*() API was added to compute shared
     session keys.
-  * AVX2 detection is more reliable. 
+  * AVX2 detection is more reliable.
 
 -------------------------------------------------------------------
 Sat Aug  6 04:31:24 UTC 2016 - i@marguerite.su
@@ -351,7 +351,7 @@ Mon Nov  2 10:53:04 UTC 2015 - idonmez@suse.com
 
 - Update to 1.0.6
   * Optimized implementations of Blake2 have been added for modern
-    Intel platforms. crypto_generichash() is now faster than MD5 and 
+    Intel platforms. crypto_generichash() is now faster than MD5 and
     SHA1 implementations while being far more secure.
   * The crypto_sign_edwards25519sha512batch_*() functions have been
     tagged as deprecated.
@@ -363,7 +363,7 @@ Mon Nov  2 10:53:04 UTC 2015 - idonmez@suse.com
 -------------------------------------------------------------------
 Wed Oct 21 07:06:19 UTC 2015 - idonmez@suse.com
 
-- Now that gcc 5.2 is available on TW, remove the ARMv7 workaround. 
+- Now that gcc 5.2 is available on TW, remove the ARMv7 workaround.
 
 -------------------------------------------------------------------
 Sun Oct 18 15:09:15 UTC 2015 - idonmez@suse.com
@@ -376,7 +376,7 @@ Sun Oct 18 15:09:15 UTC 2015 - idonmez@suse.com
     been implemented as crypto_stream_chacha20_ietf(),
     crypto_stream_chacha20_ietf_xor() and crypto_stream_chacha20_ietf_xor_ic().
     An IETF-compatible version of ChaCha20Poly1305 is available as
-    crypto_aead_chacha20poly1305_ietf_npubbytes(), 
+    crypto_aead_chacha20poly1305_ietf_npubbytes(),
     crypto_aead_chacha20poly1305_ietf_encrypt() and
     crypto_aead_chacha20poly1305_ietf_decrypt().
   * The sodium_increment() helper function has been added, to increment
@@ -388,23 +388,23 @@ Sun Oct 18 15:09:15 UTC 2015 - idonmez@suse.com
 Wed May 13 15:09:50 UTC 2015 - mpluskal@suse.com
 
 - Update to 1.0.3
-  * In addition to sodium_bin2hex(), sodium_hex2bin() is now a 
+  * In addition to sodium_bin2hex(), sodium_hex2bin() is now a
     constant-time function.
   * crypto_stream_xsalsa20_ic() has been added.
-  * crypto_generichash_statebytes(), crypto_auth_*_statebytes() 
-    and crypto_hash_*_statebytes() have been added in order to 
-    retrieve the size of structures keeping states from foreign 
+  * crypto_generichash_statebytes(), crypto_auth_*_statebytes()
+    and crypto_hash_*_statebytes() have been added in order to
+    retrieve the size of structures keeping states from foreign
     languages.
-  * The JavaScript target doesn't require /dev/urandom or an 
-    external randombytes() implementation any more. Other minor 
-    Emscripten-related improvements have been made in order to 
+  * The JavaScript target doesn't require /dev/urandom or an
+    external randombytes() implementation any more. Other minor
+    Emscripten-related improvements have been made in order to
     support libsodium.js
-  * Custom randombytes implementations do not need to provide 
-    their own implementation of randombytes_uniform() any more. 
-    randombytes_stir() and randombytes_close() can also be NULL 
+  * Custom randombytes implementations do not need to provide
+    their own implementation of randombytes_uniform() any more.
+    randombytes_stir() and randombytes_close() can also be NULL
     pointers if they are not required.
-  * On Linux, getrandom(2) is being used instead of directly 
-    accessing /dev/urandom, if the kernel supports this system 
+  * On Linux, getrandom(2) is being used instead of directly
+    accessing /dev/urandom, if the kernel supports this system
     call.
   * crypto_box_seal() and crypto_box_seal_open() have been added.
   * A solutions for Visual Studio 2015 was added.
