@@ -945,4 +945,12 @@ See SR#946556</comment>
     <comment>- Update to version 1.92.0 - for details see the rust1.92 package</comment>
     <requestid>1323037</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>9bb7605a66fde09e0e50e6d3f8194431</srcmd5>
+    <version>1.93.0</version>
+    <time>1769420645</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1328973</requestid>
+  </revision>
 </revisionlist>
