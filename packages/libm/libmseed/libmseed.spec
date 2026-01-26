@@ -18,7 +18,7 @@
 
 %define sover 3
 Name:           libmseed
-Version:        3.2.3
+Version:        3.2.4
 Release:        0
 Summary:        MiniSEED data format library
 License:        Apache-2.0

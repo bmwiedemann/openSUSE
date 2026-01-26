@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 25 17:25:08 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.2.4:
+  * Fix tracking of message count in log registry
+  * developer visible fixes to functions
+
+-------------------------------------------------------------------
 Fri Jan  2 10:38:34 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.2.3:
