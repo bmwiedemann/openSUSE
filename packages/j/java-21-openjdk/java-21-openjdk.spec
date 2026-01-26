@@ -1,7 +1,7 @@
 #
 # spec file for package java-21-openjdk
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,8 +33,8 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      21
 %global interimver      0
-%global updatever       9
-%global buildver        10
+%global updatever       10
+%global buildver        7
 %global openjdk_repo    jdk21u
 %global openjdk_tag     jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}-%{buildver}
@@ -205,7 +205,6 @@ BuildRequires:  libxslt
 BuildRequires:  mozilla-nss-devel >= 3.53
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
-BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-proto-devel
 BuildRequires:  xprop
 BuildRequires:  zip
@@ -618,7 +617,6 @@ done
 install -d -m 0755 %{buildroot}%{_datadir}/{applications,pixmaps}
 install -d -m 0755 %{buildroot}/%{_jvmdir}/%{sdkdir}/lib/desktop/
 install -m 0644 jconsole.desktop %{buildroot}/%{_jvmdir}/%{sdkdir}/lib/desktop/
-%suse_update_desktop_file %{buildroot}/%{_jvmdir}/%{sdkdir}/lib/desktop/jconsole.desktop
 
 # Find demo directories.
 find %{buildroot}%{_jvmdir}/%{sdkdir}/demo \

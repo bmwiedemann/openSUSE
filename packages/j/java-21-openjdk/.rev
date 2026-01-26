@@ -175,4 +175,12 @@
     <comment>October 2025 CPU</comment>
     <requestid>1313063</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>703c5b298a24e69679e0f91ed0ae9b5f</srcmd5>
+    <version>21.0.10.0</version>
+    <time>1769420554</time>
+    <user>anag_factory</user>
+    <comment>January 2026 CPU fixes</comment>
+    <requestid>1328613</requestid>
+  </revision>
 </revisionlist>
