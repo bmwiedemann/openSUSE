@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 24 13:07:37 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 3.16.19:
+  * steamcompmgr: Fix VRR page flip check
+  * mangoapp: Fix crash with engine name
+  * OpenVRBackend: Add support for hacky escape codes in SteamVR
+
+-------------------------------------------------------------------
 Mon Dec 15 21:35:43 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to version 3.16.18:
