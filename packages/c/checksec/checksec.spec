@@ -1,7 +1,7 @@
 #
 # spec file for package checksec
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013-2021 Fedora Project Authors
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           checksec
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Utility to check binaries for system hardening
 License:        BSD-3-Clause
@@ -60,7 +60,7 @@ install -pm 0644 extras/man/%{name}.1 %{buildroot}%{_mandir}/man1
 
 %files
 %license LICENSE
-%doc ChangeLog README.md
+%doc CHANGELOG.md README.md
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 

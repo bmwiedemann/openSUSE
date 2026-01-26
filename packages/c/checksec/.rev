@@ -74,4 +74,25 @@
     <comment>- build with pie</comment>
     <requestid>1249535</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5cd344842398f57637617d43ac4a42f4</srcmd5>
+    <version>3.1.0</version>
+    <time>1769421838</time>
+    <user>anag_factory</user>
+    <comment>- updated to 3.1.0
+  - fix several misc bugs
+  - add packages format to goreleaser
+  - feat: Redirect warnings to stderr
+  - Merge branch 'main' into fix-relro-check
+  - feat(relro): detect BIND_NOW via DT_FLAGS_1 (DF_1_NOW) and use bitmask for DF_BIND_NOW
+  - fix(relro): use bitwise check for DF_BIND_NOW flag
+  - feat: improve command usage descriptions and add examples
+  - Add support for ARM PAC/BTI and x86 SHSTK/IBT file checks
+  - disable headers and banners via flag
+  - fix failure with static binaries
+  - Handle kernel modules
+  - Handle binaries with no sections
+  - pkg/utils/files.go: parse all directories (forwarded request 1329007 from msmeissn)</comment>
+    <requestid>1329008</requestid>
+  </revision>
 </revisionlist>
