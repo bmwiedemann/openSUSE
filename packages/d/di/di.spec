@@ -19,7 +19,7 @@
 
 %define sover 6
 Name:           di
-Version:        6.2.1
+Version:        6.2.2.2
 Release:        0
 Summary:        Disk Information Utility
 License:        Zlib
@@ -62,7 +62,7 @@ This package contains the files needed to develop using libdi.
 
 %build
 %cmake
-%make_build
+%cmake_build
 
 %install
 %cmake_install
@@ -89,5 +89,7 @@ This package contains the files needed to develop using libdi.
 %{_libdir}/libdi.so
 %{_libdir}/pkgconfig/di.pc
 %{_mandir}/man3/libdi.3%{?ext_man}
+%dir %{_datadir}/di
+%{_datadir}/di/examples
 
 %changelog
