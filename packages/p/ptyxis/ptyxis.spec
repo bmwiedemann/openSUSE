@@ -1,7 +1,7 @@
 #
 # spec file for package ptyxis
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ptyxis
-Version:        49.2
+Version:        49.3
 Release:        0
 Summary:        A terminal for GNOME with first-class support for containers
 License:        GPL-3.0-or-later

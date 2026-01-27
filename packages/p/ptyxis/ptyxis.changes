@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan 24 07:43:56 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.3:
+  + Add support for apx containers
+  + Improve tab focus handling when creating new tabs and windows
+  + Fix user palettes being able to set primary/system-accent
+    colors
+  + Fix using default profile when requested profile UUID does not
+    exist
+  + Clear X11 urgency hint when window becomes active
+  + Improve force-quit fallback priority
+  + Include DESKTOP_SESSION in troubleshooting information
+  + Improve agent handling of --no-tty/--tty flags for distrobox
+    containers
+
+-------------------------------------------------------------------
 Tue Oct 28 05:45:13 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.2:

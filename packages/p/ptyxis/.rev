@@ -187,4 +187,23 @@
     <comment></comment>
     <requestid>1314012</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fde4d549f48edd7b5c9d278fc91f4996</srcmd5>
+    <version>49.3</version>
+    <time>1769526509</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.3:
+  + Add support for apx containers
+  + Improve tab focus handling when creating new tabs and windows
+  + Fix user palettes being able to set primary/system-accent
+    colors
+  + Fix using default profile when requested profile UUID does not
+    exist
+  + Clear X11 urgency hint when window becomes active
+  + Improve force-quit fallback priority
+  + Include DESKTOP_SESSION in troubleshooting information
+  + Improve agent handling of --no-tty/--tty flags for distrobox
+    containers (forwarded request 1328981 from iznogood)</comment>
+    <requestid>1329298</requestid>
+  </revision>
 </revisionlist>
