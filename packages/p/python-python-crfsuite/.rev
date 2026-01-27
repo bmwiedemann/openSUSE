@@ -78,4 +78,41 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1284649</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e985d38f1b904ef0be3be827ce3c11db</srcmd5>
+    <version>0.9.12</version>
+    <time>1769527062</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.9.12:
+  * Dropped support for Python 3.6, 3.7, 3.8, 3.9.
+  * Added support for Python 3.12, 3.13, 3.14.
+  * Python 3.11 Support
+  * Python 3.4 is no longer supported (it may work, but CI is
+    disabled)
+  * Python 3.8 support
+  * fixed installation issues on OS X (thanks @kvinwang)
+  * make it easier for distributions to have a reproducible build
+    (thanks @bmwiedemann)
+  * Python 3.7 support (thanks @fgregg, @danmacnaughtan and
+    @fuhrysteve).
+  * Python 3.3 support is dropped.
+  * new Tagger.open_inmemory method which allows to load tagger
+    data without having a file on-disk (thanks @lucywang000).
+  * license information is added to setup.py (thanks @nils-
+    werner).
+  * Python 3.6 wheels for Windows (thanks @fgregg).
+  * Packaging fix (thanks @fgregg).
+  * Fixed compatibility with Python 3.5+ on Windows (thanks
+    @fgregg);
+  * CRFSuite C++ library is updated to latest version, this fixes
+    several memory leaks and improves performance (thanks
+    @fgregg);
+  * extension is rebuilt with Cython 0.26.1.
+  * binary wheels for OS X and Linux (thanks @jeancochrane).
+  * Repository is moved to https://github.com/scrapinghub/python-
+    crfsuite;
+  * We're now providing Windows wheels for Python 2.7, 3.3. and
+    3.4.</comment>
+    <requestid>1329410</requestid>
+  </revision>
 </revisionlist>

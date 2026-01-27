@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-crfsuite
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-crfsuite
-Version:        0.9.11
+Version:        0.9.12
 Release:        0
 Summary:        Python binding for CRFsuite
 License:        MIT
