@@ -1,7 +1,7 @@
 #
 # spec file for package winetricks
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           winetricks
-Version:        20250102
+Version:        20260125
 Release:        0
 Summary:        A way to work around problems in WINE
 License:        LGPL-2.1-or-later

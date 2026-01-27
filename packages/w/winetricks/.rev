@@ -176,4 +176,13 @@
   - year of fixes, no changes entry</comment>
     <requestid>1234920</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0cdefdab5918fd388c3cb5afc95d74e5</srcmd5>
+    <version>20260125</version>
+    <time>1769526763</time>
+    <user>anag_factory</user>
+    <comment>- updated to 20260125
+  - year of fixes, no changes entry (forwarded request 1329340 from rhabacker)</comment>
+    <requestid>1329354</requestid>
+  </revision>
 </revisionlist>
