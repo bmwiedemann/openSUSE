@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan 23 13:26:13 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.0:
+  * Add non-contiguous submatrix views (Mat.elem(v),
+    Mat.submat(rows, cols), Cube.elem(v), Mat,rows(rows),
+    Mat.cols(cols))
+  * Use NVRTC PTX compilation when the card architecture is too
+    new for the NVRTC version
+  * Install into /usr/local/ by default on Linux/macOS systems
+  * Add COOT_TARGET_OPENCL_VERSION configuration macro to suppress
+    OpenCL compilation warnings
+  * Add coot_backend() to get the selected backend
+  * Bugfix for operations on mixed matrix or cube types
+- Changes from previous versions:
+  * See https://coot.sourceforge.io/docs.html#changelog
+- Bump so version in shared library package name.
+
+-------------------------------------------------------------------
 Fri Apr 12 13:48:36 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.13.0:

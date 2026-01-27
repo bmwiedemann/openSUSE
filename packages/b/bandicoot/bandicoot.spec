@@ -1,7 +1,7 @@
 #
 # spec file for package bandicoot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define sover 1
+%define sover 3
 %define shlib lib%{name}%{sover}
 Name:           bandicoot
-Version:        1.13.0
+Version:        3.1.0
 Release:        0
 Summary:        C++ library for GPU accelerated linear algebra
 License:        Apache-2.0
@@ -69,10 +69,7 @@ This package provides headers and sources for developing against %{name}.
 %install
 %cmake_install
 
-%check
-
-%post -n %{shlib} -p /sbin/ldconfig
-%postun -n %{shlib} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{shlib}
 
 %files -n %{shlib}
 %license LICENSE.txt
