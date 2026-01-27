@@ -1,14 +1,24 @@
 -------------------------------------------------------------------
+Mon Jan 26 09:26:00 UTC 2026 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-12.12
+- CMakeLists.txt: Fix CMAKE_PROJECT_VERSION not defined
+- doc/Doxyfile.in: REVERSE workaround for Doxygen/LaTeX broken tables
+- Automated building Windows binaries using GitHub Actions CI
+- build_clang_x64.ps1: New Clang Windows x64 build script
+- build_clang_arm64.ps1: New Clang Windows ARM64 build script
+
+-------------------------------------------------------------------
 Sun Dec 14 09:45:00 UTC 2025 - Kim Walisch <kim.walisch@gmail.com>
 
-- Update to primesieve-12.11.
-- calculator.hpp: Update to version 2.0 with improved error handling.
-- test/calculator.cpp: Add much more tests for calculator.hpp.
-- PreSieve.cpp: Simplify SIMD runtime dispatching.
-- CountPrintPrimes.cpp: Faster printing of primes to stdout.
-- CmdOptions.cpp: Prevent multiple different --print options.
-- CMakeLists.txt: Set CMAKE_VISIBILITY_INLINES_HIDDEN=ON by default.
-- BUILD.md: Update MSVC build instructions.
+- Update to primesieve-12.11
+- calculator.hpp: Update to version 2.0 with improved error handling
+- test/calculator.cpp: Add much more tests for calculator.hpp
+- PreSieve.cpp: Simplify SIMD runtime dispatching
+- CountPrintPrimes.cpp: Faster printing of primes to stdout
+- CmdOptions.cpp: Prevent multiple different --print options
+- CMakeLists.txt: Set CMAKE_VISIBILITY_INLINES_HIDDEN=ON by default
+- BUILD.md: Update MSVC build instructions
 
 -------------------------------------------------------------------
 Tue Nov 03 16:40:00 UTC 2025 - Kim Walisch <kim.walisch@gmail.com>
