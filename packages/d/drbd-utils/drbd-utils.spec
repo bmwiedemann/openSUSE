@@ -76,6 +76,7 @@ Patch1007:      bsc-1233273-1252991_drbd.ocf-update-for-OCF-1.1.patch
 Patch1008:      rpmlint-build-error.patch
 Patch1009:      bsc-1247534_drbd-didnt-start-due-to-drbd_rules-returning-err.patch
 Patch1010:      1252991-selinux-domtrans-from-kernel.patch
+Patch1011:      bsc-1256961_drbdmon-remove-unused-variables-to-fix-gcc16-errors.patch
 #############################################
 
 Provides:       drbd-bash-completion = %{version}

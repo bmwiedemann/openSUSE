@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 27 04:52:30 UTC 2026 - Glass Su <glass.su@suse.com>
+
+- Package drbd-utils doesn't build with GCC 16 (bsc#1256961)
+  * Add patch
+    + bsc-1256961_drbdmon-remove-unused-variables-to-fix-gcc16-errors.patch
+
+-------------------------------------------------------------------
 Tue Jan 13 11:47:08 UTC 2026 - heming zhao <heming.zhao@suse.com>
 
 - drbd-selinux: change arch from x86_64 to noarch

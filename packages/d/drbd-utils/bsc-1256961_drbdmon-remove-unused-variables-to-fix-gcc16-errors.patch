@@ -1,0 +1,54 @@
+From e826915c83bf93cb13aebf0ff61477787ccbf55b Mon Sep 17 00:00:00 2001
+From: Su Yue <glass.su@suse.com>
+Date: Tue, 27 Jan 2026 12:41:06 +0800
+Subject: [PATCH] drbdmon: remove unused variables to fix gcc16 errors
+
+drbd-utils doesn't build with GCC 16:
+
+[   38s] terminal/MDspTaskDetail.cpp: In member function virtual void MDspTaskDetail::display_content():
+[   38s] terminal/MDspTaskDetail.cpp:263:22: error: variable skip_ctr set but not used [-Werror=unused-but-set-variable=]
+[   38s]   263 |             uint32_t skip_ctr = 0;
+[   38s]       |                      ^~~~~~~~
+[   38s] terminal/MDspTaskDetail.cpp:277:22: error: variable print_ctr set but not used [-Werror=unused-but-set-variable=]
+[   38s]   277 |             uint32_t print_ctr = 0;
+[   38s]       |                      ^~~~~~~~~
+[   38s] cc1plus: all warnings being treated as errors
+
+Starting with GCC 16, var pre/postincrements and var @= expr no longer count as uses at some warning levels.
+
+skip_ctr and print_ctr are set but not used so remove them to fix errors.
+
+Signed-off-by: Su Yue <glass.su@suse.com>
+---
+ user/drbdmon/terminal/MDspTaskDetail.cpp | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/user/drbdmon/terminal/MDspTaskDetail.cpp b/user/drbdmon/terminal/MDspTaskDetail.cpp
+index bab08eae6775..edfcf981f7a2 100644
+--- a/user/drbdmon/terminal/MDspTaskDetail.cpp
++++ b/user/drbdmon/terminal/MDspTaskDetail.cpp
+@@ -260,10 +260,8 @@ void MDspTaskDetail::display_content()
+             uint32_t page_ctr = 1;
+             uint32_t page_line_ctr = first_page_lines;
+             format_text.restart();
+-            uint32_t skip_ctr = 0;
+             while (page_ctr < page_nr && format_text.skip_line())
+             {
+-                ++skip_ctr;
+                 ++page_line_ctr;
+                 if (page_line_ctr >= lines_per_page)
+                 {
+@@ -274,10 +272,8 @@ void MDspTaskDetail::display_content()
+ 
+             std::string line;
+             uint32_t line_ctr = page_nr == 1 ? line_offset : 0;
+-            uint32_t print_ctr = 0;
+             while (format_text.next_line(line, dsp_comp_hub.active_color_table->rst) && line_ctr < lines_per_page)
+             {
+-                ++print_ctr;
+                 dsp_comp_hub.dsp_io->cursor_xy(1, current_line);
+                 dsp_comp_hub.dsp_io->write_text(line.c_str());
+                 ++current_line;
+-- 
+2.50.1 (Apple Git-155)
+
