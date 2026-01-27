@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-multipart
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-multipart
-Version:        0.0.21
+Version:        0.0.22
 Release:        0
 License:        Apache-2.0
 Summary:        Python streaming multipart parser

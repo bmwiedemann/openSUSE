@@ -114,4 +114,13 @@ Also a dep of fastapi (https://repology.org/project/python:fastapi/versions) and
   * Add support for Python 3.14 and drop EOL 3.8 and 3.9 #216.</comment>
     <requestid>1324591</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8198122d7c7121f394d1b66290a74a41</srcmd5>
+    <version>0.0.22</version>
+    <time>1769526411</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.0.22:
+  * Drop directory path from filename in `File` 9433f4b.</comment>
+    <requestid>1329161</requestid>
+  </revision>
 </revisionlist>
