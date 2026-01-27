@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jan 22 07:33:32 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 31.patch: Fix gvc to not crash with newer pipewire and fix
+  device selection (boo#1257062).
+
+-------------------------------------------------------------------
+Wed Jan 21 11:49:22 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.3:
+  + Fix activating app-switcher thumbnails via click
+  + Fix lost focus on lock screen after resume from suspend
+  + Correctly expose/hide caps-lock warning to a11y tree
+  + Improve accessibility of icon buttons in screenshot tool
+  + Fix user deselection after idle on login screen
+  + Improve readability of insensitive text
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Nov 24 16:46:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.2:

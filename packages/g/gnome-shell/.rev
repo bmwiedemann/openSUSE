@@ -2610,4 +2610,23 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   + Updated translations. (forwarded request 1319807 from iznogood)</comment>
     <requestid>1319886</requestid>
   </revision>
+  <revision rev="283" vrev="1">
+    <srcmd5>9d41161a739d2f72f91ee63769bd55d7</srcmd5>
+    <version>49.3</version>
+    <time>1769526425</time>
+    <user>anag_factory</user>
+    <comment>- Add 31.patch: Fix gvc to not crash with newer pipewire and fix
+  device selection (boo#1257062).
+
+- Update to version 49.3:
+  + Fix activating app-switcher thumbnails via click
+  + Fix lost focus on lock screen after resume from suspend
+  + Correctly expose/hide caps-lock warning to a11y tree
+  + Improve accessibility of icon buttons in screenshot tool
+  + Fix user deselection after idle on login screen
+  + Improve readability of insensitive text
+  + Misc. bug fixes and cleanups
+  + Updated translations.</comment>
+    <requestid>1329275</requestid>
+  </revision>
 </revisionlist>
