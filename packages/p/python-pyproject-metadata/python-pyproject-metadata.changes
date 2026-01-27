@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan 26 08:23:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.0:
+  * This release adds support for PEP 794 (METADATA 2.5),
+    the new import-names(paces) fields. Support hasn't rolled out
+    in other packages yet, but once it does, you can be ready for
+    it with this release.
+  * As usual, nothing changes if you don't specify the new fields
+    or the new METADATA version.
+  * Add PyPy 3.11 testing
+  * Add Python 3.14 classifier
+  * Use PEP 639 license
+  * Use dependency groups
+  * Enable branch coverage
+  * Enabled most Ruff linting rules on codebase
+
+-------------------------------------------------------------------
 Fri Mar 14 12:20:13 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - Update to 0.9.1
@@ -16,7 +33,7 @@ Fri Mar 14 12:20:13 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
   * URL name stylization removed matching PEP 753
   * Handle form feed for Python <3.12.4
   * Some touchup based on packaging PR
- 
+
 
 -------------------------------------------------------------------
 Thu Aug 17 12:49:35 UTC 2023 - Markéta Machová <mmachova@suse.com>
@@ -45,4 +62,4 @@ Mon Jan  2 10:18:48 UTC 2023 - Ben Greiner <code@bnavigator.de>
 Sat Sep 10 21:25:27 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v 0.6.1
-- Required by meson-python 
+- Required by meson-python

@@ -39,4 +39,26 @@
     <comment></comment>
     <requestid>1253079</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a4998c52fb400baadc4b3420b673da3b</srcmd5>
+    <version>0.10.0</version>
+    <time>1769526413</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.10.0:
+  * This release adds support for PEP 794 (METADATA 2.5),
+    the new import-names(paces) fields. Support hasn't rolled out
+    in other packages yet, but once it does, you can be ready for
+    it with this release.
+  * As usual, nothing changes if you don't specify the new fields
+    or the new METADATA version.
+  * Add PyPy 3.11 testing
+  * Add Python 3.14 classifier
+  * Use PEP 639 license
+  * Use dependency groups
+  * Enable branch coverage
+  * Enabled most Ruff linting rules on codebase
+
+- Required by meson-python</comment>
+    <requestid>1329163</requestid>
+  </revision>
 </revisionlist>
