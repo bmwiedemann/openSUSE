@@ -1,9 +1,0 @@
-<package name="incus-ui-canonical" project="openSUSE:Factory">
-  <title></title>
-  <description>This is the canonical lxd-ui patched for incus from the zabbly repository.[1]
-
-It provides a systemd drop-in file to configure incus to use the UI.
-
-[1]: https://github.com/zabbly/incus-ui-canonical</description>
-  <url>https://github.com/zabbly/incus-ui-canonical</url>
-</package>
