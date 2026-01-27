@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 27 06:26:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.15.22:
+  * Fix
+    - fix(deps): update dependency tox to ~=4.34.1 (f84ff07)
+
+-------------------------------------------------------------------
 Tue Jan 13 06:31:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.15.21:
