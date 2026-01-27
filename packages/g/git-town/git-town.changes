@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jan 27 06:07:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 22.5.0:
+  * New Features
+    - The Git Town CLI can now embed breadcrumbs in proposals. This
+      helps reviewers understand where a branch sits in a stack.
+      Enable it via the new proposal-breadcrumb setting and choose
+      between stacks or branches (docs, #3003).
+    - Added git-town commit, a new command that lets you commit
+      changes from your current branch directly into an ancestor
+      branch and then syncs those changes back into your current
+      branch. This makes it much easier to work on complex,
+      cross-cutting changes in one place while committing each part
+      to the correct branch in your stack (#5760).
+  * Bug Fixes
+    - Fixed git-town detach to correctly handle branches with
+      multiple children (#5988).
+    - Fixed git-town propose --stack to properly sync branches
+      before proposing (#5973).
+
+-------------------------------------------------------------------
 Sun Jan 11 08:29:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 22.4.0:
