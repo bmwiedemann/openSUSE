@@ -22,4 +22,27 @@
 </comment>
     <requestid>1328865</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>18b6d36c9964ab49aa576e53c5964deb</srcmd5>
+    <version>1.1.2</version>
+    <time>1769526667</time>
+    <user>anag_factory</user>
+    <comment>- version 1.1.2:
+  * code cleanup
+  * fix Network and Disk IO sparkline empy
+  * fix 'virDomain' object has no attribute 'pmWakeup'
+
+- Version 1.1.0:
+  * Major fix in Bulk delete (avoid multiple connection which freeze UI)
+  * add missing state: VMSUSPENDED, BLOCKED
+  * user can select ISO from pool
+  * be sure that Configure VM tab are synced with latest config (VirtIO-FS and boot)
+  * add Legacy Windows VM type
+  * fix Install VM layout
+  * UEFI is defautl everywhere (not for computation and windows legacy)
+  * add sound card for Desktop install (including windows)
+  * various other small fixes
+</comment>
+    <requestid>1329314</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan 26 13:12:58 UTC 2026 - Antoine Ginies <aginies@suse.com>
+
+- version 1.1.2:
+  * code cleanup
+  * fix Network and Disk IO sparkline empy
+  * fix 'virDomain' object has no attribute 'pmWakeup'
+
+- Version 1.1.0:
+  * Major fix in Bulk delete (avoid multiple connection which freeze UI)
+  * add missing state: VMSUSPENDED, BLOCKED
+  * user can select ISO from pool
+  * be sure that Configure VM tab are synced with latest config (VirtIO-FS and boot)
+  * add Legacy Windows VM type
+  * fix Install VM layout
+  * UEFI is defautl everywhere (not for computation and windows legacy)
+  * add sound card for Desktop install (including windows)
+  * various other small fixes
+
+-------------------------------------------------------------------
 Fri Jan 23 09:51:07 UTC 2026 - Antoine Ginies <aginies@suse.com>
 
 - version 1.0.7:
