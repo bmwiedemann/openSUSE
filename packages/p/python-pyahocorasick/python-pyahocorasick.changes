@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 27 07:07:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * Drop support for Python 3.9. Use older version for pre-built
+    wheels. Note that it may work on these older versions, we are
+    just no longer supporting and testing these Python versions,
+    as this is end of life
+  * Add support for Python 3.14 and update CI & release scripts
+    https://github.com/WojciechMula/pyahocorasick/pull/194
+
+-------------------------------------------------------------------
 Thu Jul 10 05:26:05 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.2.0:

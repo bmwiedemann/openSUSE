@@ -43,4 +43,18 @@
   * Drop python3.8 support</comment>
     <requestid>1291584</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3e5c3b74fbd2528d342a3472c05f44cd</srcmd5>
+    <version>2.3.0</version>
+    <time>1769527066</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.3.0:
+  * Drop support for Python 3.9. Use older version for pre-built
+    wheels. Note that it may work on these older versions, we are
+    just no longer supporting and testing these Python versions,
+    as this is end of life
+  * Add support for Python 3.14 and update CI &amp; release scripts
+    https://github.com/WojciechMula/pyahocorasick/pull/194</comment>
+    <requestid>1329412</requestid>
+  </revision>
 </revisionlist>
