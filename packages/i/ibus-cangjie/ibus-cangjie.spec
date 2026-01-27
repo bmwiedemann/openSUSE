@@ -36,7 +36,6 @@ BuildRequires:  meson >= 1.3.2
 BuildRequires:  python3 >= 3.4
 BuildRequires:  python3-cangjie >= 1.2
 BuildRequires:  python3-gobject
-BuildRequires:  update-desktop-files
 Requires:       ibus
 Requires:       python3 >= 3.4
 Requires:       python3-cangjie >= 1.2
