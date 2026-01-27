@@ -3,16 +3,16 @@
 #
 # Copyright (c) 2021 Walter Fey DL8FCL
 # Copyright (c) 2022 Walter Fey DL8FCL
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # This file is under MIT license
 #
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define soname 4_69
+%define soname 4_70
 Name:           libzia
-Version:        4.69
+Version:        4.70
 Release:        0
 Summary:        Libraries for tucnak
 License:        GPL-2.0-or-later
