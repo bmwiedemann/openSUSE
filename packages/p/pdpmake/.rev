@@ -9,4 +9,12 @@
 Other than being a well maintained POSIX make, it is can be used to check if a Makefile is strictly POSIX compliant, something GNU make does not support.</comment>
     <requestid>1283308</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6bccad9b6a977b425e68c1cf4bc0efd9</srcmd5>
+    <version>2.0.4</version>
+    <time>1769526505</time>
+    <user>anag_factory</user>
+    <comment>Update to v2.0.4</comment>
+    <requestid>1329281</requestid>
+  </revision>
 </revisionlist>

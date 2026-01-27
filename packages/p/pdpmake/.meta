@@ -1,5 +1,6 @@
 <package name="pdpmake" project="openSUSE:Factory">
   <title>Public domain POSIX make</title>
   <description>This version implements the make utility as defined in both the 2017 and 2024 POSIX standards. The default build from source includes a number of extensions but a key feature of the program is that it can be switched to a strictly POSIX-compliant mode at runtime</description>
+  <devel project="devel:tools:building" package="pdpmake"/>
   <url>https://frippery.org/make/</url>
 </package>

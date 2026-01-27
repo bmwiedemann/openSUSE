@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 25 16:18:25 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.0.4:
+  * Fix detection of target rule with inline command
+  * Immediate-expansion macros aren't expanded recursively 
+  * Immediate-mode macros and suffix substitution 
+  * Override commands for single-colon target rule 
+
+
+-------------------------------------------------------------------
 Thu Jun  5 08:43:51 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - Initial release 

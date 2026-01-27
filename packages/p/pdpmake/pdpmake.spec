@@ -1,7 +1,7 @@
 #
 # spec file for package pdpmake
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pdpmake
-Version:        2.0.3
+Version:        2.0.4
 Release:        0
 Summary:        Public domain POSIX make
 License:        SUSE-Public-Domain
