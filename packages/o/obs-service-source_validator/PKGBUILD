@@ -1,6 +1,6 @@
 pkgname=obs-service-source_validator
-pkgver=0.42+4
-pkgrel=0
+pkgver=0.42+6
+pkgrel=78f7818cb454e90eb5267787d0eac2ed
 pkgdesc='An OBS source service: running all the osc source-validator checks'
 arch=('any')
 url='https://github.com/openSUSE/obs-service-source_validator'

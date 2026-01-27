@@ -859,4 +859,15 @@ last submission had wrong tar ball for unknown reason</comment>
 - Add PKGBUILD to enable builds for Arch Linux</comment>
     <requestid>1321703</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>25f019bb6814df56da3a2456636949e3</srcmd5>
+    <version>0.42+6</version>
+    <time>1769535161</time>
+    <user>anag_factory</user>
+    <comment>- add recommends for minisign in specfile
+
+- Update to version 0.42+6:
+  * 25-keyring-validate: add minisign support</comment>
+    <requestid>1329518</requestid>
+  </revision>
 </revisionlist>

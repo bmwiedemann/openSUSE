@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-source_validator
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@
 %endif
 
 Name:           obs-service-source_validator
-Version:        0.42+4
+Version:        0.42+6
 Release:        0
 Summary:        An OBS source service: running all the osc source-validator checks
 License:        GPL-2.0-or-later
@@ -53,6 +53,7 @@ Requires:       gpg2
 # Fedora
 Requires:       gnupg2
 %endif
+Recommends:     minisign
 
 %description
 This is a source service for openSUSE Build Service.

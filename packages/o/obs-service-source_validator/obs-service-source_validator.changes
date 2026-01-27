@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 27 16:20:32 CET 2026 - Ruediger Oertel <ro@suse.com>
+
+- add recommends for minisign in specfile
+
+-------------------------------------------------------------------
+Tue Jan 27 15:20:04 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- Update to version 0.42+6:
+  * 25-keyring-validate: add minisign support
+
+-------------------------------------------------------------------
 Tue Dec 09 09:34:01 UTC 2025 - Ruediger Oertel <ro@suse.com>
 
 - Update to version 0.42+4:
