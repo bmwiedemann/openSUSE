@@ -1,7 +1,7 @@
 #
 # spec file for package fontforge
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-devel >= 3.8
 BuildRequires:  readline-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  woff2-devel
 BuildRequires:  xz
 BuildRequires:  zlib-devel
@@ -95,7 +94,6 @@ to develop applications that use FontForge libraries.
 
 %install
 %cmake_install
-%suse_update_desktop_file -i org.fontforge.FontForge VectorGraphics
 %find_lang FontForge
 find %{buildroot} -type f -name "*.la" -delete -print
 rm %{buildroot}%{_docdir}/%{name}/html/.buildinfo
