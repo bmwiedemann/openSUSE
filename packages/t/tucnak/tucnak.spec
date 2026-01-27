@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2021 Walter Fey DL8FCL
 # Copyright (c) 2022 Walter Fey DL8FCL
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 # This file is under MIT license
 #
 
@@ -12,13 +12,14 @@
 
 
 Name:           tucnak
-Version:        4.69
+Version:        4.70
 Release:        0
 Summary:        VHF and microwave contest log
 License:        GPL-2.0-or-later
 Group:          Productivity/Hamradio/Logging
 URL:            https://tucnak.nagano.cz/
 Source:         https://tucnak.nagano.cz/%{name}-%{version}.tar.gz
+Patch0:         tucnak-4.70-gcc16.patch
 BuildRequires:  gpm-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)

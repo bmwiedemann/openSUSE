@@ -27,4 +27,12 @@
     <comment></comment>
     <requestid>1306284</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2f1973b9b059c4fa5d64f131592caf54</srcmd5>
+    <version>4.70</version>
+    <time>1769526773</time>
+    <user>anag_factory</user>
+    <comment>tucnak 4.70 and fix boo#1256990</comment>
+    <requestid>1329384</requestid>
+  </revision>
 </revisionlist>
