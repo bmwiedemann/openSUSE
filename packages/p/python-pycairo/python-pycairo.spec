@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycairo
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define         oldpython python
 Name:           python-pycairo
-Version:        1.28.0
+Version:        1.29.0
 Release:        0
 Summary:        Python Bindings for Cairo
 License:        LGPL-2.1-or-later OR MPL-1.1

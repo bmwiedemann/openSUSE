@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan 26 08:19:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.29.0:
+  * :meth:`ImageSurface.get_data`: Return empty memoryview for
+    empty image :pr:`418`
+  * :meth:`ImageSurface.create_for_data`: support empty images
+    :pr:`419`
+  * Drop support for Python 3.9 :pr:`428`
+  * Drop support for PyPy 3.10
+  * Support multi-phase init :pr:`413`
+  * Experimental support for free-threaded Python :pr:`430`
+    :pr:`429`
+  * Update dependencies (libpng, pixman) for the Windows wheels
+    :pr:`431`
+  * build: add "no-x11" option to disable X11 surface support
+    :pr:`432` :issue:`420`
+  * dev: support uv for development :pr:`433`
+
+-------------------------------------------------------------------
 Wed Jun 11 05:52:55 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.28.0:

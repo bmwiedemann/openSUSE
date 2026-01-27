@@ -196,4 +196,26 @@
       of .egg-info</comment>
     <requestid>1284631</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d519bb48c391727af9a297d0ee2c67c7</srcmd5>
+    <version>1.29.0</version>
+    <time>1769526405</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.29.0:
+  * :meth:`ImageSurface.get_data`: Return empty memoryview for
+    empty image :pr:`418`
+  * :meth:`ImageSurface.create_for_data`: support empty images
+    :pr:`419`
+  * Drop support for Python 3.9 :pr:`428`
+  * Drop support for PyPy 3.10
+  * Support multi-phase init :pr:`413`
+  * Experimental support for free-threaded Python :pr:`430`
+    :pr:`429`
+  * Update dependencies (libpng, pixman) for the Windows wheels
+    :pr:`431`
+  * build: add &quot;no-x11&quot; option to disable X11 surface support
+    :pr:`432` :issue:`420`
+  * dev: support uv for development :pr:`433`</comment>
+    <requestid>1329157</requestid>
+  </revision>
 </revisionlist>
