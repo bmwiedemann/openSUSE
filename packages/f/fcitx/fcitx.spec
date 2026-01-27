@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,7 +79,7 @@ Recommends:     %{name}-table = %{version}-%{release}
 # for spell-checking for keyboard users. ld can't find
 # them, so explicitly recommends.
 Recommends:     libenchant1
-Recommends:     libopencc1_1
+Recommends:     libopencc1_2
 Recommends:     libpresage1
 Provides:       locale(ko;zh_CN;zh_SG)
 

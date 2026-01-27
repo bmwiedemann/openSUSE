@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 26 06:47:15 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Update fcitx.spec:
+  Change the "Recommends" libopencc package from 1_1 to 1_2 to fit
+  the opencc update.
+
+-------------------------------------------------------------------
 Mon Jun 16 07:29:35 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Pass -DFORCE_PRESAGE=on to cmake: we already specify the exact
