@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan 22 06:39:24 UTC 2026 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.86.0:
+  * refactor: address review comments
+  * Update contributing guidelines for clarity
+  * test(copilot): fix windows asset URL
+  * fix(cache delete): add unit tests and expand help doc
+  * feat(cache delete): allow for delete all caches for a ref
+  * Fix OS name in test archive filename to 'win32'
+  * fix(copilot): replace `windows` with `win32` to match asset names
+  * fix(root): avoid command name collision when registering extensions
+  * chore(root): register `copilot` command
+  * feat: add `copilot` command
+  * refactor(run download): extract zip extraction func into a separate package
+  * fix: error when head and base refs are identical in pr create
+
+-------------------------------------------------------------------
 Fri Jan 16 16:59:07 UTC 2026 - Pavel Dostál <pdostal@suse.com>
 
 - Update to version 2.85.0:
