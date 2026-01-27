@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jan 26 14:20:39 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 0.16.3:
+  * Set version to 0.16.3
+  * chore: update Cargo.lock after downgrating ts-systemverilog
+  * chore: downgrade tree-sitter-systemverilog to 0.2.1
+  * Set version to 0.16.2
+  * test(lang_profile): clean-up (#684)
+  * refactor(mgf_dev): introduce a helper for parsing (#683)
+  * fix(solve): return non-zero exit code if conflicts remain after solve command (#670)
+  * chore: update some docs (#672)
+  * fix(TOML): treat quoted_key as atomic, fixing their merging (#668)
+  * fix(`DisplaySettings`): use `#[cfg(debug_assertions)]` to properly handle conditional field (#666)
+  * test: use range literals (#667)
+  * chore: allow to build .deb package with simply "cargo deb" (#664)
+  * fix(flake): add rust-analyzer to the devshell (#665)
+  * perf(`TreeBuilder::build_tree`): only filter out modified children once (#661)
+  * fix(book): remove obsoleted property multilingual (#663)
+  * feat(merge): fallback to `git merge-file` when one of the input files contains conflict markers (#643)
+  * perf: store conflict regexes inside `DisplaySettings` (#659)
+  * chore: introduce ParsingError type (#657)
+  * doc: improve contributing instructions (#644)
+  * fix(ci): reinstate the caching based on the Rust version (#656)
+  * refactor: adjust `merge_result.contents` directly (#655)
+  * doc: add note about signature definitions (#651)
+  * docs: simple link fix (#654)
+  * refactor(newline): perform the newline-style imitation in two steps (#650)
+  * fix: add snapshots folder to source filtering to fix the check stage of the nix build (#649)
+  * test(supported_langs): check that commutative parents' children all have signatures defined (#507)
+  * log: enclose paths in quotes when printing (#642)
+  * fix: language detection for filenames without extensions (#641)
+  * ci: add links to Apple Dockerfiles (#636)
+
+-------------------------------------------------------------------
 Thu Nov 06 16:27:36 UTC 2025 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to version 0.16.1:
