@@ -1,0 +1,61 @@
+From 045a4dc9e0a0bf9363f8341d527806db5661da9a Mon Sep 17 00:00:00 2001
+From: Ian Kent <raven@themaw.net>
+Date: Fri, 31 Oct 2025 09:31:32 +0800
+Subject: [PATCH 07/14] autofs-5.1.9 - fix skip valid map entries on expire
+ cleanup
+
+After an expire if the current map entry is stale because it could not
+be cleaned up during the map entry prune (due to the presence of a real
+mount) it needs to be cleaned up after a successful expire.
+
+Currently this is done by update_map_cache() if the entry is contained
+in an invalid map but it should be doing it if the entry is no longer
+valid. In addition, if update_map_cache() gets called the umount has
+been successful so the ioctlfd does not need to be checked (and is in
+fact updated later in the expire process).
+
+Signed-off-by: Ian Kent <raven@themaw.net>
+Acked-by: David Disseldorp <ddiss@suse.de>
+---
+ CHANGELOG          | 1 +
+ daemon/automount.c | 9 ++-------
+ 2 files changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/CHANGELOG b/CHANGELOG
+index eda4f79..9ec26ef 100644
+--- a/CHANGELOG
++++ b/CHANGELOG
+@@ -8,6 +8,7 @@
+ - quiet possibly noisy log message.
+ - fix devid update on reload.
+ - fix cache writelock must be taken in update_map_cache().
++- fix skip valid map entries on expire cleanup.
+ 
+ 02/11/2023 autofs-5.1.9
+ - fix kernel mount status notification.
+diff --git a/daemon/automount.c b/daemon/automount.c
+index d68064c..26e3a5c 100644
+--- a/daemon/automount.c
++++ b/daemon/automount.c
+@@ -519,16 +519,11 @@ static void update_map_cache(struct autofs_point *ap, const char *path)
+ 	while (map) {
+ 		struct mapent *me = NULL;
+ 
+-		/* Skip current, in-use cache */
+-		if (ap->entry->age <= map->age) {
+-			map = map->next;
+-			continue;
+-		}
+-
+ 		mc = map->mc;
+ 		cache_writelock(mc);
+ 		me = cache_lookup_distinct(mc, key);
+-		if (me && me->ioctlfd == -1)
++		/* Only for invalid map entries */
++		if (me && map->age > me->age)
+ 			cache_delete(mc, key);
+ 		cache_unlock(mc);
+ 
+-- 
+2.51.0
+

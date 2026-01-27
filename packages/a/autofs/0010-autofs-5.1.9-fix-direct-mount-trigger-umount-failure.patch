@@ -1,0 +1,49 @@
+From 1f6f3085e2d0f2b42235ce7f706e8aa21ac65e03 Mon Sep 17 00:00:00 2001
+From: Ian Kent <raven@themaw.net>
+Date: Fri, 31 Oct 2025 09:31:35 +0800
+Subject: [PATCH 10/14] autofs-5.1.9 - fix direct mount trigger umount failure
+ case
+
+In function do_umount_autofs_direct() for the case where the trigger
+mount is found to be in use we should be detaching the mount so it gets
+umounted but the process can continue using it while it has an open file
+handle for it.
+
+This is because direct mount triggers are only umounted when the map
+entry is removed from a map or automount(8) is shutdown which in both
+cases the trigger mount needs to go away.
+
+Signed-off-by: Ian Kent <raven@themaw.net>
+Acked-by: David Disseldorp <ddiss@suse.de>
+---
+ CHANGELOG       | 1 +
+ daemon/direct.c | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/CHANGELOG b/CHANGELOG
+index 3f7c425..d4e9834 100644
+--- a/CHANGELOG
++++ b/CHANGELOG
+@@ -11,6 +11,7 @@
+ - fix skip valid map entries on expire cleanup.
+ - remove unnecessary call to set_direct_mount_tree_catatonic().
+ - remove unnecessary assignment in umount_multi().
++- fix direct mount trigger umount failure case.
+ 
+ 02/11/2023 autofs-5.1.9
+ - fix kernel mount status notification.
+diff --git a/daemon/direct.c b/daemon/direct.c
+index 973be6f..6999d2a 100644
+--- a/daemon/direct.c
++++ b/daemon/direct.c
+@@ -153,6 +153,7 @@ int do_umount_autofs_direct(struct autofs_point *ap, struct mapent *me)
+ 			} else {
+ 				me->ioctlfd = -1;
+ 				ops->close(ap->logopt, ioctlfd);
++				rv = -1;
+ 				goto force_umount;
+ 			}
+ 		}
+-- 
+2.51.0
+

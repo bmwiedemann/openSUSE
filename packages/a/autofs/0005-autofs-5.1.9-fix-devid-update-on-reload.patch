@@ -1,0 +1,193 @@
+From f3019644344ff039f7ed1c0b2f0d83f9ff6f29b0 Mon Sep 17 00:00:00 2001
+From: Ian Kent <raven@themaw.net>
+Date: Fri, 31 Oct 2025 09:31:30 +0800
+Subject: [PATCH 05/14] autofs-5.1.9 - fix devid update on reload
+
+On map update if there's a direct mount in the master map it may be
+associated with multiple maps.
+
+If there's an entry that's been removed but is present in another map
+and the removed entry has a real mount associated with it special case
+handling is needed.
+
+Currently the function that looks for these newly valid map entries
+doesn't do it properly. It's meant to look for the first "valid" map
+entry but doesn't check if the entry is valid. So if a valid entry
+follows the an invalid entry it isn't found, the invalid entry is
+returned instead.
+
+Once this is fixed the handling of a removed direct mount entry that's
+covered by a real mount can be done. Basically, the newly valid map
+entry needs to take over the mount (which wasn't being done quite right
+either) and the removed map entry deleted so that the covering mount can
+expire. From this point onward the newly valid map entry will be used.
+
+Signed-off-by: Ian Kent <raven@themaw.net>
+Acked-by: David Disseldorp <ddiss@suse.de>
+---
+ CHANGELOG           |  1 +
+ daemon/lookup.c     | 38 ++++++++++++--------------------------
+ daemon/state.c      | 17 +++++------------
+ include/automount.h |  2 +-
+ 4 files changed, 19 insertions(+), 39 deletions(-)
+
+diff --git a/CHANGELOG b/CHANGELOG
+index 1bfbb60..34d06b0 100644
+--- a/CHANGELOG
++++ b/CHANGELOG
+@@ -6,6 +6,7 @@
+ - refactor mnts_get_expire_list().
+ - add en xtra logging entry to tree_mapent_mount_offsets().
+ - quiet possibly noisy log message.
++- fix devid update on reload.
+ 
+ 02/11/2023 autofs-5.1.9
+ - fix kernel mount status notification.
+diff --git a/daemon/lookup.c b/daemon/lookup.c
+index dc77948..3791aa7 100644
+--- a/daemon/lookup.c
++++ b/daemon/lookup.c
+@@ -1348,6 +1348,7 @@ void lookup_prune_one_cache(struct autofs_point *ap, struct mapent_cache *mc, ti
+ 
+ 	me = cache_enumerate(mc, NULL);
+ 	while (me) {
++		dev_t devid;
+ 		struct mapent *valid;
+ 		char *key = NULL, *next_key = NULL;
+ 
+@@ -1405,6 +1406,7 @@ void lookup_prune_one_cache(struct autofs_point *ap, struct mapent_cache *mc, ti
+ 			me = cache_enumerate(mc, me);
+ 			continue;
+ 		}
++		devid = ap->type == LKP_INDIRECT ? ap->dev : me->dev;
+ 
+ 		/*
+ 		 * If this key has another valid entry we want to prune it,
+@@ -1412,37 +1414,20 @@ void lookup_prune_one_cache(struct autofs_point *ap, struct mapent_cache *mc, ti
+ 		 * mount if it is a direct mount or it's just a stale indirect
+ 		 * cache entry.
+ 		 */
+-		valid = lookup_source_valid_mapent(ap, key, LKP_DISTINCT);
+-		if (valid && valid->mc == mc) {
+-			 /*
+-			  * We've found a map entry that has been removed from
+-			  * the current cache so it isn't really valid. Set the
+-			  * mapent negative to prevent further mount requests
+-			  * using the cache entry.
+-			  */
+-			debug(ap->logopt, "removed map entry detected, mark negative");
+-			if (valid->mapent) {
+-				free(valid->mapent);
+-				valid->mapent = NULL;
+-			}
++		valid = lookup_source_valid_mapent(ap, key, LKP_DISTINCT, age);
++		if (valid)
+ 			cache_unlock(valid->mc);
+-			valid = NULL;
+-		}
+-		if (!valid &&
+-		    is_mounted(path, MNTS_REAL)) {
++		else if (is_mounted(path, MNTS_REAL)) {
+ 			debug(ap->logopt, "prune postponed, %s mounted", path);
+ 			free(key);
+ 			free(path);
+ 			me = cache_enumerate(mc, me);
+ 			continue;
+ 		}
+-		if (valid)
+-			cache_unlock(valid->mc);
+ 
+ 		me = cache_enumerate(mc, me);
+ 		if (me)
+ 			next_key = strdup(me->key);
+-
+ 		cache_unlock(mc);
+ 
+ 		cache_writelock(mc);
+@@ -1455,10 +1440,7 @@ void lookup_prune_one_cache(struct autofs_point *ap, struct mapent_cache *mc, ti
+ 		if (valid)
+ 			cache_delete(mc, key);
+ 		else if (!is_mounted(path, MNTS_AUTOFS)) {
+-			dev_t devid = ap->dev;
+ 			status = CHE_FAIL;
+-			if (ap->type == LKP_DIRECT)
+-				devid = this->dev;
+ 			if (this->ioctlfd == -1)
+ 				status = cache_delete(mc, key);
+ 			if (status != CHE_FAIL) {
+@@ -1532,7 +1514,7 @@ int lookup_prune_cache(struct autofs_point *ap, time_t age)
+ }
+ 
+ /* Return with cache readlock held */
+-struct mapent *lookup_source_valid_mapent(struct autofs_point *ap, const char *key, unsigned int type)
++struct mapent *lookup_source_valid_mapent(struct autofs_point *ap, const char *key, unsigned int type, time_t age)
+ {
+ 	struct master_mapent *entry = ap->entry;
+ 	struct map_source *map;
+@@ -1556,8 +1538,12 @@ struct mapent *lookup_source_valid_mapent(struct autofs_point *ap, const char *k
+ 			me = cache_lookup_distinct(mc, key);
+ 		else
+ 			me = cache_lookup(mc, key);
+-		if (me)
+-			break;
++		if (me) {
++			/* Valid? */
++			if (me->age >= age)
++				break;
++			me = NULL;
++		}
+ 		cache_unlock(mc);
+ 		map = map->next;
+ 	}
+diff --git a/daemon/state.c b/daemon/state.c
+index 5fce6e3..b6728af 100644
+--- a/daemon/state.c
++++ b/daemon/state.c
+@@ -333,17 +333,7 @@ static int do_readmap_mount(struct autofs_point *ap,
+ 		 * This is becuase of the requirement to continue running with
+ 		 * an empty cache awaiting a map re-load.
+ 		 */
+-		valid = lookup_source_valid_mapent(ap, me->key, LKP_DISTINCT);
+-		if (valid && valid->mc == me->mc) {
+-			/*
+-			 * We've found a map entry that has been removed from
+-			 * the current cache so there is no need to update it.
+-			 * The stale entry will be dealt with when we prune the
+-			 * cache later.
+-			 */
+-			cache_unlock(valid->mc);
+-			valid = NULL;
+-		}
++		valid = lookup_source_valid_mapent(ap, me->key, LKP_DISTINCT, now);
+ 		if (valid) {
+ 			struct mapent_cache *vmc = valid->mc;
+ 			struct ioctl_ops *ops = get_ioctl_ops();
+@@ -365,8 +355,11 @@ static int do_readmap_mount(struct autofs_point *ap,
+ 			/* Take over the mount if there is one */
+ 			valid->ioctlfd = me->ioctlfd;
+ 			me->ioctlfd = -1;
++			/* Same path */
++			valid->dev = me->dev;
++			valid->ino = me->ino;
+ 			/* Set device and inode number of the new mapent */
+-			cache_set_ino_index(vmc, me);
++			cache_set_ino_index(vmc, valid);
+ 			cache_unlock(vmc);
+ 			/* Set timeout and calculate the expire run frequency */
+ 			timeout = get_exp_timeout(ap, map);
+diff --git a/include/automount.h b/include/automount.h
+index 9548db8..a32b7c9 100644
+--- a/include/automount.h
++++ b/include/automount.h
+@@ -279,7 +279,7 @@ int lookup_nss_mount(struct autofs_point *ap, struct map_source *source, const c
+ void lookup_close_lookup(struct autofs_point *ap);
+ void lookup_prune_one_cache(struct autofs_point *ap, struct mapent_cache *mc, time_t age);
+ int lookup_prune_cache(struct autofs_point *ap, time_t age);
+-struct mapent *lookup_source_valid_mapent(struct autofs_point *ap, const char *key, unsigned int type);
++struct mapent *lookup_source_valid_mapent(struct autofs_point *ap, const char *key, unsigned int type, time_t age);
+ struct mapent *lookup_source_mapent(struct autofs_point *ap, const char *key, unsigned int type);
+ int lookup_source_close_ioctlfd(struct autofs_point *ap, const char *key);
+ 
+-- 
+2.51.0
+

@@ -1,0 +1,46 @@
+From aa035fffd014a84a9d3a2da2b06e66f494080065 Mon Sep 17 00:00:00 2001
+From: Ian Kent <raven@themaw.net>
+Date: Fri, 31 Oct 2025 09:31:34 +0800
+Subject: [PATCH 09/14] autofs-5.1.9 - remove unnecessary assignment in
+ umount_multi()
+
+Remove the leftover initialisation of left from when there were multiple
+calls to umount_subtree_mounts().
+
+Signed-off-by: Ian Kent <raven@themaw.net>
+Acked-by: David Disseldorp <ddiss@suse.de>
+---
+ CHANGELOG          | 1 +
+ daemon/automount.c | 4 +---
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/CHANGELOG b/CHANGELOG
+index 36a19d6..3f7c425 100644
+--- a/CHANGELOG
++++ b/CHANGELOG
+@@ -10,6 +10,7 @@
+ - fix cache writelock must be taken in update_map_cache().
+ - fix skip valid map entries on expire cleanup.
+ - remove unnecessary call to set_direct_mount_tree_catatonic().
++- remove unnecessary assignment in umount_multi().
+ 
+ 02/11/2023 autofs-5.1.9
+ - fix kernel mount status notification.
+diff --git a/daemon/automount.c b/daemon/automount.c
+index 26e3a5c..348b3a7 100644
+--- a/daemon/automount.c
++++ b/daemon/automount.c
+@@ -710,9 +710,7 @@ int umount_multi(struct autofs_point *ap, const char *path, int incl)
+ 		mnts_put_mount(sbmnt);
+ 	}
+ 
+-	left = 0;
+-
+-	left += umount_subtree_mounts(ap, path, is_autofs_fs);
++	left = umount_subtree_mounts(ap, path, is_autofs_fs);
+ 
+ 	/* Delete detritus like unwanted mountpoints and symlinks */
+ 	if (left == 0 &&
+-- 
+2.51.0
+

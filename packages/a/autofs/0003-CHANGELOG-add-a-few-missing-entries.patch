@@ -1,0 +1,26 @@
+From df646c6579ffc035b9e31749a4d3c6b3d1d5bfc9 Mon Sep 17 00:00:00 2001
+From: David Disseldorp <ddiss@suse.de>
+Date: Fri, 31 Oct 2025 16:55:52 +1100
+Subject: [PATCH 03/14] CHANGELOG: add a few missing entries
+
+This is purely to ensure that Ian's patchset applies cleanly.
+
+Acked-by: David Disseldorp <ddiss@suse.de>
+---
+ CHANGELOG | 3 +++
+ 1 file changed, 3 insertions(+)
+
+Index: autofs-5.1.9/CHANGELOG
+===================================================================
+--- autofs-5.1.9.orig/CHANGELOG
++++ autofs-5.1.9/CHANGELOG
+@@ -3,6 +3,9 @@
+ - Fix incompatible function pointer types in cyrus-sasl module.
+ - fix get parent multi-mount check in try_remount().
+ - fix deadlock in remount.
++- fix state queue not processing state changes.
++- refactor mnts_get_expire_list().
++- add en xtra logging entry to tree_mapent_mount_offsets().
+ 
+ 02/11/2023 autofs-5.1.9
+ - fix kernel mount status notification.

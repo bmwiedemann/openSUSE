@@ -1,0 +1,46 @@
+From a0f840d689a50154fbf500aaf0b5eb83e88e58ba Mon Sep 17 00:00:00 2001
+From: Ian Kent <raven@themaw.net>
+Date: Fri, 31 Oct 2025 09:31:29 +0800
+Subject: [PATCH 04/14] autofs-5.1.9 - quiet possibly noisy log message
+
+The message that logs when a mount is already mounted and only the
+timeout will be updated on map re-read can create a lot of noise in
+the log for direct mount maps. But this is normal operation and is of
+limited value for both direct and indirect maps, so remove it.
+
+Signed-off-by: Ian Kent <raven@themaw.net>
+[ddiss: rebase without 6fdfbcd ("autofs-5.1.9 - make ioctl ops
+ ->timeout() handle per-dentry expire")]
+Acked-by: David Disseldorp <ddiss@suse.de>
+---
+ CHANGELOG    | 1 +
+ lib/mounts.c | 1 -
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CHANGELOG b/CHANGELOG
+index f1fa82f..1bfbb60 100644
+--- a/CHANGELOG
++++ b/CHANGELOG
+@@ -5,6 +5,7 @@
+ - fix state queue not processing state changes.
+ - refactor mnts_get_expire_list().
+ - add en xtra logging entry to tree_mapent_mount_offsets().
++- quiet possibly noisy log message.
+ 
+ 02/11/2023 autofs-5.1.9
+ - fix kernel mount status notification.
+diff --git a/lib/mounts.c b/lib/mounts.c
+index 6dcf37a..c77fac7 100644
+--- a/lib/mounts.c
++++ b/lib/mounts.c
+@@ -2756,7 +2756,6 @@ static int remount_active_mount(struct autofs_point *ap,
+ 
+ 	/* Re-reading the map, set timeout and return */
+ 	if (ap->state == ST_READMAP) {
+-		debug(ap->logopt, "already mounted, update timeout");
+ 		ops->timeout(ap->logopt, fd, timeout);
+ 		ops->close(ap->logopt, fd);
+ 		return REMOUNT_READ_MAP;
+-- 
+2.51.0
+

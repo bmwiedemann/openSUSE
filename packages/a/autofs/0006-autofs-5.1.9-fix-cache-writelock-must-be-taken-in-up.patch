@@ -1,0 +1,58 @@
+From 7bc36285913d69c2c815c1a89f71160cf8a85004 Mon Sep 17 00:00:00 2001
+From: Ian Kent <raven@themaw.net>
+Date: Fri, 31 Oct 2025 09:31:31 +0800
+Subject: [PATCH 06/14] autofs-5.1.9 - fix cache writelock must be taken in
+ update_map_cache()
+
+In update_map_cache() the cache writelock must be taken because we need
+to clean up the map entry as it will be a problem later if we don't.
+
+It's possible that some other process has taken the lock temporarily but
+when this function is called the thread does not hold any cache locks so
+it should be ok to aquire it.
+
+Signed-off-by: Ian Kent <raven@themaw.net>
+Acked-by: David Disseldorp <ddiss@suse.de>
+---
+ CHANGELOG          |  1 +
+ daemon/automount.c | 12 +++++-------
+ 2 files changed, 6 insertions(+), 7 deletions(-)
+
+diff --git a/CHANGELOG b/CHANGELOG
+index 34d06b0..eda4f79 100644
+--- a/CHANGELOG
++++ b/CHANGELOG
+@@ -7,6 +7,7 @@
+ - add en xtra logging entry to tree_mapent_mount_offsets().
+ - quiet possibly noisy log message.
+ - fix devid update on reload.
++- fix cache writelock must be taken in update_map_cache().
+ 
+ 02/11/2023 autofs-5.1.9
+ - fix kernel mount status notification.
+diff --git a/daemon/automount.c b/daemon/automount.c
+index 6cb3b1b..d68064c 100644
+--- a/daemon/automount.c
++++ b/daemon/automount.c
+@@ -526,13 +526,11 @@ static void update_map_cache(struct autofs_point *ap, const char *path)
+ 		}
+ 
+ 		mc = map->mc;
+-		/* If the lock is busy try later */
+-		if (cache_try_writelock(mc)) {
+-			me = cache_lookup_distinct(mc, key);
+-			if (me && me->ioctlfd == -1)
+-				cache_delete(mc, key);
+-			cache_unlock(mc);
+-		}
++		cache_writelock(mc);
++		me = cache_lookup_distinct(mc, key);
++		if (me && me->ioctlfd == -1)
++			cache_delete(mc, key);
++		cache_unlock(mc);
+ 
+ 		map = map->next;
+ 	}
+-- 
+2.51.0
+

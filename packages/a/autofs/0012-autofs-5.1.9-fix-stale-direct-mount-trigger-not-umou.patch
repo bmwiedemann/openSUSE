@@ -1,0 +1,102 @@
+From 9ef154bfe91b0702d9df039886f7dd6a1880c03d Mon Sep 17 00:00:00 2001
+From: Ian Kent <raven@themaw.net>
+Date: Fri, 31 Oct 2025 09:31:37 +0800
+Subject: [PATCH 12/14] autofs-5.1.9 - fix stale direct mount trigger not
+ umounted on expire
+
+If a direct mount map entry is removed but has an active real mount the
+mount trigger needs to be unmounted during the expire cleanup.
+
+If the direct mount map entry has been re-added the map entry age will
+have been updated so the entry won't be seen as stale so the umount
+won't be done.
+
+Also in function umount_multi() update_map_cache() and check_rm_dirs()
+are not called for direct mounts because count_mounts() always returns
+1 or more for top level direct mounts. Make this clear by using ap->type
+in the logical check and rely on the left == 0 check to verify there are
+no remaining mounts for indirect mounts since count_mounts() will be
+more expensive.
+
+Signed-off-by: Ian Kent <raven@themaw.net>
+Acked-by: David Disseldorp <ddiss@suse.de>
+---
+ CHANGELOG          |  1 +
+ daemon/automount.c | 12 ++++++++----
+ daemon/direct.c    | 22 +++++++++++++++++++++-
+ 3 files changed, 30 insertions(+), 5 deletions(-)
+
+diff --git a/CHANGELOG b/CHANGELOG
+index 85afa94..b97214a 100644
+--- a/CHANGELOG
++++ b/CHANGELOG
+@@ -13,6 +13,7 @@
+ - remove unnecessary assignment in umount_multi().
+ - fix direct mount trigger umount failure case.
+ - refactor do_umount_autofs_direct().
++- fix stale direct mount trigger not umounted on expire.
+ 
+ 02/11/2023 autofs-5.1.9
+ - fix kernel mount status notification.
+diff --git a/daemon/automount.c b/daemon/automount.c
+index 348b3a7..c353fac 100644
+--- a/daemon/automount.c
++++ b/daemon/automount.c
+@@ -712,10 +712,14 @@ int umount_multi(struct autofs_point *ap, const char *path, int incl)
+ 
+ 	left = umount_subtree_mounts(ap, path, is_autofs_fs);
+ 
+-	/* Delete detritus like unwanted mountpoints and symlinks */
+-	if (left == 0 &&
+-	    ap->state != ST_READMAP &&
+-	    !count_mounts(ap, path, ap->dev)) {
++	/* Delete detritus like unwanted mountpoints and symlinks
++	 * for indirect mounts. This can't be done for direct mounts
++	 * here because there's an ioctl file handle open on the
++	 * autofs trigger mount for them so it must be done after
++	 * the expire.
++	 */
++	if (ap->type == LKP_INDIRECT &&
++	    ap->state != ST_READMAP && left == 0) {
+ 		update_map_cache(ap, path);
+ 		check_rm_dirs(ap, path, incl);
+ 	}
+diff --git a/daemon/direct.c b/daemon/direct.c
+index e724a0f..be498d6 100644
+--- a/daemon/direct.c
++++ b/daemon/direct.c
+@@ -1002,10 +1002,30 @@ static void *do_expire_direct(void *arg)
+ 			       mt.ioctlfd, mt.wait_queue_token, -ENOENT);
+ 	else {
+ 		struct mapent *me;
++
+ 		cache_writelock(mt.mc);
+ 		me = cache_lookup_distinct(mt.mc, mt.name);
+-		if (me)
++		if (me) {
++			/* If the direct mount map entry is no longer
++			 * valid but there is an autofs mount trigger
++			 * for the mount the mount trigger needs to be
++			 * umounted, the map entry deleted and the mount
++			 * point directory removed (if it was created by
++			 * us).
++			 */
+ 			me->ioctlfd = -1;
++			if (me->mc->map->age > me->age &&
++			    is_mounted(mt.name, MNTS_AUTOFS)) {
++				/* We must detach the mount becuase the
++				 * umount must be completed before
++				 * notifying status to the kernel but
++				 * there's an ioctlfd open on the
++				 * trigger.
++				 */
++				if (!finish_umount(ap, me, -1))
++					cache_delete(me->mc, me->key);
++			}
++		}
+ 		cache_unlock(mt.mc);
+ 		ops->send_ready(ap->logopt, mt.ioctlfd, mt.wait_queue_token);
+ 		ops->close(ap->logopt, mt.ioctlfd);
+-- 
+2.51.0
+

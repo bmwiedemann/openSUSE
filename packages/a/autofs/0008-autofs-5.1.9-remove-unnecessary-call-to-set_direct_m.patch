@@ -1,0 +1,54 @@
+From a587657840051907384ff0c7a788cfb11da36c4d Mon Sep 17 00:00:00 2001
+From: Ian Kent <raven@themaw.net>
+Date: Fri, 31 Oct 2025 09:31:33 +0800
+Subject: [PATCH 08/14] autofs-5.1.9 - remove unnecessary call to
+ set_direct_mount_tree_catatonic()
+
+Function do_umount_autofs_direct() is called in two cases, during a
+readmap and when umounting top level direct mounts.
+
+During a readmap, mounts should not be set catatonic so the call to
+set_direct_mount_tree_catatonic() is not needed. If it's called for a
+top level direct mount the caller, umount_autofs_direct(), calls
+set_direct_mount_tree_catatonic() itself already. So remove this
+unnecessary call.
+
+Signed-off-by: Ian Kent <raven@themaw.net>
+Acked-by: David Disseldorp <ddiss@suse.de>
+---
+ CHANGELOG       | 1 +
+ daemon/direct.c | 5 +----
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/CHANGELOG b/CHANGELOG
+index 9ec26ef..36a19d6 100644
+--- a/CHANGELOG
++++ b/CHANGELOG
+@@ -9,6 +9,7 @@
+ - fix devid update on reload.
+ - fix cache writelock must be taken in update_map_cache().
+ - fix skip valid map entries on expire cleanup.
++- remove unnecessary call to set_direct_mount_tree_catatonic().
+ 
+ 02/11/2023 autofs-5.1.9
+ - fix kernel mount status notification.
+diff --git a/daemon/direct.c b/daemon/direct.c
+index a9d7128..973be6f 100644
+--- a/daemon/direct.c
++++ b/daemon/direct.c
+@@ -186,11 +186,8 @@ int do_umount_autofs_direct(struct autofs_point *ap, struct mapent *me)
+ 			warn(ap->logopt, "mount point %s is in use", me->key);
+ 			if (ap->state == ST_SHUTDOWN_FORCE)
+ 				goto force_umount;
+-			else {
+-				if (ap->state != ST_READMAP)
+-					set_direct_mount_tree_catatonic(ap, me);
++			else
+ 				return 0;
+-			}
+ 			break;
+ 		case ENOTDIR:
+ 			error(ap->logopt, "mount point is not a directory");
+-- 
+2.51.0
+

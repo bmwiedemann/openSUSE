@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 23 17:01:55 UTC 2026 - David Disseldorp <ddiss@suse.com>
+
+- fix deadlock on map entry removal (bsc#1246325)
+  * 0001-autofs-5.1.9-fix-get-parent-multi-mount-check-in-try.patch
+  * 0002-autofs-5.1.9-fix-deadlock-in-remount.patch
+  * 0003-CHANGELOG-add-a-few-missing-entries.patch
+  * 0004-autofs-5.1.9-quiet-possibly-noisy-log-message.patch
+  * 0005-autofs-5.1.9-fix-devid-update-on-reload.patch
+  * 0006-autofs-5.1.9-fix-cache-writelock-must-be-taken-in-up.patch
+  * 0007-autofs-5.1.9-fix-skip-valid-map-entries-on-expire-cl.patch
+  * 0008-autofs-5.1.9-remove-unnecessary-call-to-set_direct_m.patch
+  * 0009-autofs-5.1.9-remove-unnecessary-assignment-in-umount.patch
+  * 0010-autofs-5.1.9-fix-direct-mount-trigger-umount-failure.patch
+  * 0011-autofs-5.1.9-refactor-do_umount_autofs_direct.patch
+  * 0012-autofs-5.1.9-fix-stale-direct-mount-trigger-not-umou.patch
+  * 0013-autofs-5.1.9-add-function-table_lookup_ino.patch
+  * 0014-autofs-5.1.9-improve-handling-of-missing-map-entry-f.patch
+
+-------------------------------------------------------------------
 Thu Sep 25 08:08:50 UTC 2025 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Modified NetworkManager-autofs: (bsc#1250091)

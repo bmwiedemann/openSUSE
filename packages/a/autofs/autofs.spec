@@ -1,7 +1,7 @@
 #
 # spec file for package autofs
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,6 +59,21 @@ Patch108:       autofs-suse-manpage-remove-initdir.patch
 # bsc#1221682 - GCC 14: autofs package fails
 Patch109:       autofs-5.1.9-fix-ldap_parse_page_control-check.patch
 Patch110:       autofs-5.1.9-Fix-incompatible-function-pointer-types.patch
+# bsc#1246325 - fix map entry removal regression. queued for upstream.
+Patch111:       0001-autofs-5.1.9-fix-get-parent-multi-mount-check-in-try.patch
+Patch112:       0002-autofs-5.1.9-fix-deadlock-in-remount.patch
+Patch113:       0003-CHANGELOG-add-a-few-missing-entries.patch
+Patch114:       0004-autofs-5.1.9-quiet-possibly-noisy-log-message.patch
+Patch115:       0005-autofs-5.1.9-fix-devid-update-on-reload.patch
+Patch116:       0006-autofs-5.1.9-fix-cache-writelock-must-be-taken-in-up.patch
+Patch117:       0007-autofs-5.1.9-fix-skip-valid-map-entries-on-expire-cl.patch
+Patch118:       0008-autofs-5.1.9-remove-unnecessary-call-to-set_direct_m.patch
+Patch119:       0009-autofs-5.1.9-remove-unnecessary-assignment-in-umount.patch
+Patch120:       0010-autofs-5.1.9-fix-direct-mount-trigger-umount-failure.patch
+Patch121:       0011-autofs-5.1.9-refactor-do_umount_autofs_direct.patch
+Patch122:       0012-autofs-5.1.9-fix-stale-direct-mount-trigger-not-umou.patch
+Patch123:       0013-autofs-5.1.9-add-function-table_lookup_ino.patch
+Patch124:       0014-autofs-5.1.9-improve-handling-of-missing-map-entry-f.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  cyrus-sasl-devel
@@ -94,18 +109,10 @@ you are not using them.  This can include network filesystems, CD-ROMs,
 floppies, and so forth.
 
 %prep
-%setup -q
+%autosetup -p1
 cp %{SOURCE3} .
 cp %{SOURCE4} .
 cp %{SOURCE5} .
-#
-%patch -P 100 -p1
-%patch -P 101 -p1
-%patch -P 102 -p1
-%patch -P 106 -p1
-%patch -P 108 -p1
-%patch -P 109 -p1
-%patch -P 110 -p1
 
 %build
 autoreconf -fiv

@@ -1,0 +1,126 @@
+From 694a6ae8ba08808b72066ea2dad93a9c7878b0e3 Mon Sep 17 00:00:00 2001
+From: Ian Kent <raven@themaw.net>
+Date: Fri, 31 Oct 2025 09:31:38 +0800
+Subject: [PATCH 13/14] autofs-5.1.9 - add function table_lookup_ino()
+
+Add function table_lookup_ino() to try and locate a mount for a given
+device, open a file handle for it, and return it's path in the provided
+buffer.
+
+Signed-off-by: Ian Kent <raven@themaw.net>
+[ddiss: proc_mounts option parsing looks fragile here]
+Acked-by: David Disseldorp <ddiss@suse.de>
+---
+ CHANGELOG        |  1 +
+ include/mounts.h |  1 +
+ lib/mounts.c     | 70 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 72 insertions(+)
+
+diff --git a/CHANGELOG b/CHANGELOG
+index b97214a..f9aafd4 100644
+--- a/CHANGELOG
++++ b/CHANGELOG
+@@ -14,6 +14,7 @@
+ - fix direct mount trigger umount failure case.
+ - refactor do_umount_autofs_direct().
+ - fix stale direct mount trigger not umounted on expire.
++- add function table_lookup_ino().
+ 
+ 02/11/2023 autofs-5.1.9
+ - fix kernel mount status notification.
+diff --git a/include/mounts.h b/include/mounts.h
+index 8e6f62a..6141bc4 100644
+--- a/include/mounts.h
++++ b/include/mounts.h
+@@ -173,6 +173,7 @@ void mnts_remove_amdmounts(struct autofs_point *ap);
+ struct mnt_list *mnts_add_mount(struct autofs_point *ap, const char *name, unsigned int flags);
+ void mnts_remove_mount(const char *mp, unsigned int flags);
+ struct mnt_list *get_mnt_list(const char *path, int include);
++char *table_lookup_ino(struct autofs_point *ap, dev_t dev, ino_t ino, char *buf, size_t len, int *fd);
+ unsigned int mnts_has_mounted_mounts(struct autofs_point *ap);
+ int tree_traverse_inorder(struct tree_node *n, tree_work_fn_t work, void *ptr);
+ void tree_free(struct tree_node *root);
+diff --git a/lib/mounts.c b/lib/mounts.c
+index c77fac7..c89943c 100644
+--- a/lib/mounts.c
++++ b/lib/mounts.c
+@@ -2324,6 +2324,76 @@ void free_mnt_list(struct mnt_list *list)
+ 	}
+ }
+ 
++char *table_lookup_ino(struct autofs_point *ap,
++		       dev_t dev, ino_t ino,
++		       char *buf, size_t len, int *fd)
++{
++	struct ioctl_ops *ops;
++	struct mntent *mnt;
++	struct mntent mnt_wrk;
++	char tmp[PATH_MAX * 3];
++	char *path = NULL;
++	FILE *tab;
++	int ret = 0;
++
++	ops = get_ioctl_ops();
++	if (!ops) {
++		errno = EINVAL;
++		return NULL;
++	}
++
++	tab = open_fopen_r(_PROC_MOUNTS);
++	if (!tab) {
++		errno = EINVAL;
++		return NULL;
++	}
++
++	while ((mnt = local_getmntent_r(tab, &mnt_wrk, tmp, PATH_MAX * 3))) {
++		unsigned int type;
++		int ioctlfd;
++		dev_t devid;
++
++		if (strcmp(mnt->mnt_type, "autofs"))
++			continue;
++
++		type = t_direct;
++		if (strstr(mnt->mnt_opts, "indirect"))
++			type = t_indirect;
++		else if (strstr(mnt->mnt_opts, "offset"))
++			type = t_offset;
++
++		ret = ops->mount_device(ap->logopt, mnt->mnt_dir, type, &devid);
++		if (ret == -1 || ret == 0)
++			continue;
++
++		ioctlfd = open_ioctlfd(ap, mnt->mnt_dir, devid);
++		if (fd > 0) {
++			struct stat st;
++
++			if (fstat(ioctlfd, &st) == -1) {
++				ops->close(ap->logopt, ioctlfd);
++				continue;
++			}
++
++			if (strlen(mnt->mnt_dir) >= len) {
++				errno = ENAMETOOLONG;
++				break;
++			}
++
++			if (st.st_dev == dev && st.st_ino == ino) {
++				strcpy(buf, mnt->mnt_dir);
++				path = buf;
++				*fd = ioctlfd;
++				break;
++			}
++			ops->close(ap->logopt, ioctlfd);
++		}
++	}
++	fclose(tab);
++
++	return path;
++}
++
+ static int table_is_mounted(const char *mp, unsigned int type)
+ {
+ 	struct mntent *mnt;
+-- 
+2.51.0
+
