@@ -60,6 +60,12 @@
 %bcond_with lldb_python
 %endif
 
+%ifarch aarch64 x86_64
+%bcond_without bolt
+%else
+%bcond_with bolt
+%endif
+
 %ifarch %{arm} aarch64 %{ix86} loongarch64 ppc64le riscv64 s390x x86_64
 %bcond_without thin_lto
 %else
@@ -298,11 +304,21 @@
     lldb-instr \
     lldb-server
 %endif
+%if %{with bolt}
+%global bolt_ua_anchor llvm-bolt
+%global bolt_binfiles \
+    llvm-boltdiff \
+    llvm-bolt-binary-analysis \
+    llvm-bolt-heatmap \
+    merge-fdata \
+    perf2bolt
+%endif
 %global binfiles \
     %{llvm_ua_anchor} %{llvm_tools} %{llvm_elf_dwarf_tools} \
     %{llvm_abi_coff_macho_tools} %{llvm_instr_devel_tools} \
     %{clang_ua_anchor} %{clang_binfiles} %{clang_tools_extra_binfiles} \
-    %{?lld_ua_anchor} %{?lld_binfiles} %{?lldb_ua_anchor} %{?lldb_binfiles}
+    %{?lld_ua_anchor} %{?lld_binfiles} %{?lldb_ua_anchor} %{?lldb_binfiles} \
+    %{?bolt_ua_anchor} %{?bolt_binfiles}
 
 %global llvm_man \
 %{comment Optimizer, compiler, interpreter, linker} \
@@ -394,7 +410,8 @@ Source11:       https://github.com/llvm/llvm-project/releases/download/llvmorg-%
 Source12:       https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_version}/third-party-%{_version}.src.tar.xz
 # Only header files should be used. (https://discourse.llvm.org/t/rfc-project-hand-in-hand-llvm-libc-libc-code-sharing/77701)
 Source13:       libc-%{_version}.src.tar.xz
-Source14:       https://github.com/llvm/llvm-project/raw/llvmorg-%{_version}/libunwind/include/mach-o/compact_unwind_encoding.h
+Source14:       https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_version}/bolt-%{_version}.src.tar.xz
+Source15:       https://github.com/llvm/llvm-project/raw/llvmorg-%{_version}/libunwind/include/mach-o/compact_unwind_encoding.h
 Source29:       https://releases.llvm.org/release-keys.asc#/%{name}.keyring
 Source30:       https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_version}/llvm-%{_version}.src.tar.xz.sig
 Source31:       https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_version}/cmake-%{_version}.src.tar.xz.sig
@@ -409,6 +426,7 @@ Source39:       https://github.com/llvm/llvm-project/releases/download/llvmorg-%
 Source40:       https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_version}/polly-%{_version}.src.tar.xz.sig
 Source41:       https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_version}/runtimes-%{_version}.src.tar.xz.sig
 Source42:       https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_version}/third-party-%{_version}.src.tar.xz.sig
+Source44:       https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_version}/bolt-%{_version}.src.tar.xz.sig
 # Docs are created manually, see below
 Source50:       llvm-docs-%{_version}.src.tar.xz
 Source51:       clang-docs-%{_version}.src.tar.xz
@@ -449,6 +467,8 @@ Patch27:        clang-fix-openmp-test.patch
 Patch28:        llvm-fix-cov-test-i586.patch
 # PATCH-FIX-UPSTREAM Don't run distro detection for Android target
 Patch29:        clang-getdistro-android.patch
+# PATCH-FIX-UPSTREAM (?) Link bolt with libLLVM.so
+Patch30:        bolt-link-shared-library.patch
 BuildRequires:  %{python_pkg}-base >= 3.8
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
@@ -849,6 +869,18 @@ pretty printers for the C++ standard library.
 
 %endif
 
+%package bolt
+Summary:        A post-link optimizer developed to speed up large applications
+License:        Apache-2.0 WITH LLVM-exception
+URL:            https://github.com/llvm/llvm-project/tree/main/bolt
+# As hinted by bolt documentation
+Suggests:       gperftools-devel
+
+%description bolt
+BOLT is a post-link optimizer developed to speed up large applications.
+It achieves the improvements by optimizing application's code layout based on
+execution profile gathered by sampling profiler, such as Linux `perf` tool.
+
 %if %{with polly}
 %package polly
 Summary:        LLVM Framework for High-Level Loop and Data-Locality Optimizations
@@ -878,7 +910,7 @@ This package contains the development files for Polly.
 %endif
 
 %prep
-%setup -q -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -a 10 -a 11 -a 12 -a 13 -b 50 -b 51 -n llvm-%{_version}.src
+%setup -q -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -a 10 -a 11 -a 12 -a 13 -a 14 -b 50 -b 51 -n llvm-%{_version}.src
 %patch -P 0 -p2
 %patch -P 1 -p2
 %patch -P 13 -p1
@@ -890,6 +922,7 @@ This package contains the development files for Polly.
 %patch -P 24 -p1
 %patch -P 25 -p2
 %patch -P 28 -p2
+%patch -P 30 -p1
 
 pushd clang-%{_version}.src
 %patch -P 2 -p1
@@ -919,7 +952,7 @@ popd
 pushd lld-%{_version}.src
 # lld got a compile-time dependency on libunwind that we don't want. (https://reviews.llvm.org/D86805)
 mkdir include/mach-o
-cp %{SOURCE14} include/mach-o
+cp %{SOURCE15} include/mach-o
 popd
 
 %if %{with lldb}
@@ -957,6 +990,10 @@ mv polly-%{_version}.src tools/polly
 
 %if %{with lldb}
 mv lldb-%{_version}.src tools/lldb
+%endif
+
+%if %{with bolt}
+mv bolt-%{_version}.src tools/bolt
 %endif
 
 %if %{with openmp}
@@ -1598,6 +1635,15 @@ fi
 %{ua_remove %lldb_ua_anchor}
 %endif
 
+%if %{with bolt}
+%post bolt
+%{ua_install %bolt_ua_anchor} \
+    %{lapply -p ua_bin_slave %bolt_binfiles}
+
+%postun bolt
+%{ua_remove %bolt_ua_anchor}
+%endif
+
 %global bin_path() \
 %{_bindir}/%1
 %global bin_sonum_path() \
@@ -1852,6 +1898,15 @@ fi
 %{_includedir}/lldb/
 %{_libdir}/liblldb.so
 %{_libdir}/liblldbIntelFeatures.so
+%endif
+
+%if %{with bolt}
+%files bolt
+%license CREDITS.TXT LICENSE.TXT
+%{lapply -p bin_path %bolt_ua_anchor %bolt_binfiles}
+%{lapply -p bin_sonum_path %bolt_ua_anchor %bolt_binfiles}
+%{lapply -p ghost_ua_bin_link %bolt_ua_anchor %bolt_binfiles}
+%{_libdir}/libbolt_rt_*.a
 %endif
 
 %if %{with polly}

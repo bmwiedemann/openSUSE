@@ -137,4 +137,13 @@
 - Rebase llvm-do-not-install-static-libraries.patch.</comment>
     <requestid>1327491</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>63bb45fc3e87164de8b30883c5c2b2e5</srcmd5>
+    <version>21.1.8</version>
+    <time>1769526390</time>
+    <user>anag_factory</user>
+    <comment>- Enable build of bolt
+- Add bolt-link-shared-library.patch: link bolt with libLLVM.so.</comment>
+    <requestid>1329145</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,296 @@
+From a7de04c9184967961b521381751a7ac55cd273f4 Mon Sep 17 00:00:00 2001
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Sat, 24 Jan 2026 18:08:52 +0100
+Subject: [PATCH] Make bolt link against LLVM dylib
+
+This reverts commit 61cff9079c083fdcfb9fa324e50b9e480165037e.
+---
+ bolt/lib/Core/CMakeLists.txt                               | 1 -
+ bolt/lib/Passes/CMakeLists.txt                             | 1 -
+ bolt/lib/Profile/CMakeLists.txt                            | 1 -
+ bolt/lib/Rewrite/CMakeLists.txt                            | 1 -
+ bolt/lib/RuntimeLibs/CMakeLists.txt                        | 1 -
+ bolt/lib/Target/AArch64/CMakeLists.txt                     | 1 -
+ bolt/lib/Target/RISCV/CMakeLists.txt                       | 1 -
+ bolt/lib/Target/X86/CMakeLists.txt                         | 1 -
+ bolt/lib/Target/X86/X86MCPlusBuilder.cpp                   | 4 ++++
+ bolt/lib/Utils/CMakeLists.txt                              | 1 -
+ bolt/tools/bat-dump/CMakeLists.txt                         | 2 --
+ bolt/tools/binary-analysis/CMakeLists.txt                  | 1 -
+ bolt/tools/driver/CMakeLists.txt                           | 2 --
+ bolt/tools/heatmap/CMakeLists.txt                          | 1 -
+ bolt/tools/llvm-bolt-fuzzer/CMakeLists.txt                 | 2 --
+ bolt/tools/merge-fdata/CMakeLists.txt                      | 2 --
+ bolt/unittests/Core/CMakeLists.txt                         | 2 --
+ bolt/unittests/Profile/CMakeLists.txt                      | 2 --
+ llvm/lib/Target/X86/MCTargetDesc/X86EncodingOptimization.h | 4 ++++
+ llvm/lib/Target/X86/MCTargetDesc/X86MCTargetDesc.h         | 2 ++
+ 20 files changed, 10 insertions(+), 23 deletions(-)
+
+diff --git a/bolt/lib/Core/CMakeLists.txt b/bolt/lib/Core/CMakeLists.txt
+index fc72dc023c59..aef9b1e243a1 100644
+--- a/bolt-21.1.8.src/lib/Core/CMakeLists.txt
++++ b/bolt-21.1.8.src/lib/Core/CMakeLists.txt
+@@ -37,7 +37,6 @@ add_llvm_library(LLVMBOLTCore
+   Relocation.cpp
+ 
+   NO_EXPORT
+-  DISABLE_LLVM_LINK_LLVM_DYLIB
+   LINK_LIBS
+   ${LLVM_PTHREAD_LIB}
+   )
+diff --git a/bolt/lib/Passes/CMakeLists.txt b/bolt/lib/Passes/CMakeLists.txt
+index 77d2bb9c2bcb..e8bb8978a86a 100644
+--- a/bolt-21.1.8.src/lib/Passes/CMakeLists.txt
++++ b/bolt-21.1.8.src/lib/Passes/CMakeLists.txt
+@@ -48,7 +48,6 @@ add_llvm_library(LLVMBOLTPasses
+   RetpolineInsertion.cpp
+ 
+   NO_EXPORT
+-  DISABLE_LLVM_LINK_LLVM_DYLIB
+ 
+   LINK_LIBS
+   ${LLVM_PTHREAD_LIB}
+diff --git a/bolt/lib/Profile/CMakeLists.txt b/bolt/lib/Profile/CMakeLists.txt
+index a2bb4aa074c7..d2ec75dacb7f 100644
+--- a/bolt-21.1.8.src/lib/Profile/CMakeLists.txt
++++ b/bolt-21.1.8.src/lib/Profile/CMakeLists.txt
+@@ -8,7 +8,6 @@ add_llvm_library(LLVMBOLTProfile
+   YAMLProfileWriter.cpp
+ 
+   NO_EXPORT
+-  DISABLE_LLVM_LINK_LLVM_DYLIB
+ 
+   LINK_COMPONENTS
+   Demangle
+diff --git a/bolt/lib/Rewrite/CMakeLists.txt b/bolt/lib/Rewrite/CMakeLists.txt
+index 775036063dd5..e121eb4508e3 100644
+--- a/bolt-21.1.8.src/lib/Rewrite/CMakeLists.txt
++++ b/bolt-21.1.8.src/lib/Rewrite/CMakeLists.txt
+@@ -27,7 +27,6 @@ add_llvm_library(LLVMBOLTRewrite
+   SDTRewriter.cpp
+ 
+   NO_EXPORT
+-  DISABLE_LLVM_LINK_LLVM_DYLIB
+ 
+   LINK_LIBS
+   ${LLVM_PTHREAD_LIB}
+diff --git a/bolt/lib/RuntimeLibs/CMakeLists.txt b/bolt/lib/RuntimeLibs/CMakeLists.txt
+index b8db7e4a1553..e89043036394 100644
+--- a/bolt-21.1.8.src/lib/RuntimeLibs/CMakeLists.txt
++++ b/bolt-21.1.8.src/lib/RuntimeLibs/CMakeLists.txt
+@@ -12,7 +12,6 @@ add_llvm_library(LLVMBOLTRuntimeLibs
+   InstrumentationRuntimeLibrary.cpp
+ 
+   NO_EXPORT
+-  DISABLE_LLVM_LINK_LLVM_DYLIB
+   )
+ 
+ target_link_libraries(LLVMBOLTRuntimeLibs
+diff --git a/bolt/lib/Target/AArch64/CMakeLists.txt b/bolt/lib/Target/AArch64/CMakeLists.txt
+index cb38117de659..e65300b722d6 100644
+--- a/bolt-21.1.8.src/lib/Target/AArch64/CMakeLists.txt
++++ b/bolt-21.1.8.src/lib/Target/AArch64/CMakeLists.txt
+@@ -22,7 +22,6 @@ add_llvm_library(LLVMBOLTTargetAArch64
+   AArch64MCSymbolizer.cpp
+ 
+   NO_EXPORT
+-  DISABLE_LLVM_LINK_LLVM_DYLIB
+ 
+   DEPENDS
+   AArch64CommonTableGen
+diff --git a/bolt/lib/Target/RISCV/CMakeLists.txt b/bolt/lib/Target/RISCV/CMakeLists.txt
+index 6c3a196f8a1f..93c97effd31e 100644
+--- a/bolt-21.1.8.src/lib/Target/RISCV/CMakeLists.txt
++++ b/bolt-21.1.8.src/lib/Target/RISCV/CMakeLists.txt
+@@ -21,7 +21,6 @@ add_llvm_library(LLVMBOLTTargetRISCV
+   RISCVMCPlusBuilder.cpp
+ 
+   NO_EXPORT
+-  DISABLE_LLVM_LINK_LLVM_DYLIB
+ 
+   DEPENDS
+   RISCVCommonTableGen
+diff --git a/bolt/lib/Target/X86/CMakeLists.txt b/bolt/lib/Target/X86/CMakeLists.txt
+index 6d1accb5e815..c83b1ed10017 100644
+--- a/bolt-21.1.8.src/lib/Target/X86/CMakeLists.txt
++++ b/bolt-21.1.8.src/lib/Target/X86/CMakeLists.txt
+@@ -22,7 +22,6 @@ add_llvm_library(LLVMBOLTTargetX86
+   X86MCSymbolizer.cpp
+ 
+   NO_EXPORT
+-  DISABLE_LLVM_LINK_LLVM_DYLIB
+ 
+   DEPENDS
+   X86CommonTableGen
+diff --git a/bolt/lib/Target/X86/X86MCPlusBuilder.cpp b/bolt/lib/Target/X86/X86MCPlusBuilder.cpp
+index a60c1a6bf156..c5fc2d222581 100644
+--- a/bolt-21.1.8.src/lib/Target/X86/X86MCPlusBuilder.cpp
++++ b/bolt-21.1.8.src/lib/Target/X86/X86MCPlusBuilder.cpp
+@@ -31,6 +31,10 @@
+ #include "llvm/Support/ErrorOr.h"
+ #include <set>
+ 
++#define GET_X86_MNEMONIC_TABLES_CPP
++#include "X86GenMnemonicTables.inc"
++#undef GET_X86_MNEMONIC_TABLES_CPP
++
+ #define DEBUG_TYPE "mcplus"
+ 
+ using namespace llvm;
+diff --git a/bolt/lib/Utils/CMakeLists.txt b/bolt/lib/Utils/CMakeLists.txt
+index 94933644ef5e..36d3d67f21ea 100644
+--- a/bolt-21.1.8.src/lib/Utils/CMakeLists.txt
++++ b/bolt-21.1.8.src/lib/Utils/CMakeLists.txt
+@@ -44,7 +44,6 @@ add_llvm_library(LLVMBOLTUtils
+   ${version_inc}
+ 
+   NO_EXPORT
+-  DISABLE_LLVM_LINK_LLVM_DYLIB
+ 
+   LINK_LIBS
+   ${LLVM_PTHREAD_LIB}
+diff --git a/bolt/tools/bat-dump/CMakeLists.txt b/bolt/tools/bat-dump/CMakeLists.txt
+index 037b7d2662ae..27757568fa9c 100644
+--- a/bolt-21.1.8.src/tools/bat-dump/CMakeLists.txt
++++ b/bolt-21.1.8.src/tools/bat-dump/CMakeLists.txt
+@@ -5,8 +5,6 @@ set(LLVM_LINK_COMPONENTS
+ 
+ add_bolt_executable(llvm-bat-dump
+   bat-dump.cpp
+-
+-  DISABLE_LLVM_LINK_LLVM_DYLIB
+   )
+ 
+ target_link_libraries(llvm-bat-dump
+diff --git a/bolt/tools/binary-analysis/CMakeLists.txt b/bolt/tools/binary-analysis/CMakeLists.txt
+index 29f224e0f66f..d999762b562f 100644
+--- a/bolt-21.1.8.src/tools/binary-analysis/CMakeLists.txt
++++ b/bolt-21.1.8.src/tools/binary-analysis/CMakeLists.txt
+@@ -7,7 +7,6 @@ set(LLVM_LINK_COMPONENTS
+ 
+ add_bolt_tool(llvm-bolt-binary-analysis
+   binary-analysis.cpp
+-  DISABLE_LLVM_LINK_LLVM_DYLIB
+   )
+ 
+ target_link_libraries(llvm-bolt-binary-analysis
+diff --git a/bolt/tools/driver/CMakeLists.txt b/bolt/tools/driver/CMakeLists.txt
+index 4b3c7416de97..5103b1530a4e 100644
+--- a/bolt-21.1.8.src/tools/driver/CMakeLists.txt
++++ b/bolt-21.1.8.src/tools/driver/CMakeLists.txt
+@@ -14,8 +14,6 @@ endif()
+ add_bolt_tool(llvm-bolt
+   llvm-bolt.cpp
+ 
+-  DISABLE_LLVM_LINK_LLVM_DYLIB
+-
+   DEPENDS
+   ${BOLT_DRIVER_DEPS}
+   )
+diff --git a/bolt/tools/heatmap/CMakeLists.txt b/bolt/tools/heatmap/CMakeLists.txt
+index c5d3f6741392..27094622fabf 100644
+--- a/bolt-21.1.8.src/tools/heatmap/CMakeLists.txt
++++ b/bolt-21.1.8.src/tools/heatmap/CMakeLists.txt
+@@ -7,7 +7,6 @@ set(LLVM_LINK_COMPONENTS
+ 
+ add_bolt_tool(llvm-bolt-heatmap
+   heatmap.cpp
+-  DISABLE_LLVM_LINK_LLVM_DYLIB
+   )
+ 
+ target_link_libraries(llvm-bolt-heatmap
+diff --git a/bolt/tools/llvm-bolt-fuzzer/CMakeLists.txt b/bolt/tools/llvm-bolt-fuzzer/CMakeLists.txt
+index 7eaacb74a9da..9a19ae7aa483 100644
+--- a/bolt-21.1.8.src/tools/llvm-bolt-fuzzer/CMakeLists.txt
++++ b/bolt-21.1.8.src/tools/llvm-bolt-fuzzer/CMakeLists.txt
+@@ -4,8 +4,6 @@ set(LLVM_LINK_COMPONENTS
+ 
+ add_llvm_fuzzer(llvm-bolt-fuzzer
+   llvm-bolt-fuzzer.cpp
+-
+-  DISABLE_LLVM_LINK_LLVM_DYLIB
+   )
+ 
+ if (TARGET llvm-bolt-fuzzer)
+diff --git a/bolt/tools/merge-fdata/CMakeLists.txt b/bolt/tools/merge-fdata/CMakeLists.txt
+index f6a87a226898..5110301c6103 100644
+--- a/bolt-21.1.8.src/tools/merge-fdata/CMakeLists.txt
++++ b/bolt-21.1.8.src/tools/merge-fdata/CMakeLists.txt
+@@ -3,8 +3,6 @@ set(LLVM_LINK_COMPONENTS Support)
+ add_bolt_tool(merge-fdata
+   merge-fdata.cpp
+ 
+-  DISABLE_LLVM_LINK_LLVM_DYLIB
+-
+   DEPENDS
+   intrinsics_gen
+ )
+diff --git a/bolt/unittests/Core/CMakeLists.txt b/bolt/unittests/Core/CMakeLists.txt
+index 54e8ea10cda1..ae2c30e84b30 100644
+--- a/bolt-21.1.8.src/unittests/Core/CMakeLists.txt
++++ b/bolt-21.1.8.src/unittests/Core/CMakeLists.txt
+@@ -10,8 +10,6 @@ add_bolt_unittest(CoreTests
+   MCPlusBuilder.cpp
+   MemoryMaps.cpp
+   DynoStats.cpp
+-
+-  DISABLE_LLVM_LINK_LLVM_DYLIB
+   )
+ 
+ target_link_libraries(CoreTests
+diff --git a/bolt/unittests/Profile/CMakeLists.txt b/bolt/unittests/Profile/CMakeLists.txt
+index ce01c6c4b949..6cc1dc4c7b6b 100644
+--- a/bolt-21.1.8.src/unittests/Profile/CMakeLists.txt
++++ b/bolt-21.1.8.src/unittests/Profile/CMakeLists.txt
+@@ -7,8 +7,6 @@ set(LLVM_LINK_COMPONENTS
+ add_bolt_unittest(ProfileTests
+   DataAggregator.cpp
+   PerfSpeEvents.cpp
+-
+-  DISABLE_LLVM_LINK_LLVM_DYLIB
+   )
+ 
+ target_link_libraries(ProfileTests
+diff --git a/llvm/lib/Target/X86/MCTargetDesc/X86EncodingOptimization.h b/llvm/lib/Target/X86/MCTargetDesc/X86EncodingOptimization.h
+index 1a26336d1e72..dd1e94cf185b 100644
+--- a/lib/Target/X86/MCTargetDesc/X86EncodingOptimization.h
++++ b/lib/Target/X86/MCTargetDesc/X86EncodingOptimization.h
+@@ -12,6 +12,9 @@
+ 
+ #ifndef LLVM_LIB_TARGET_X86_X86ENCODINGOPTIMIZATION_H
+ #define LLVM_LIB_TARGET_X86_X86ENCODINGOPTIMIZATION_H
++
++#include "llvm/Support/Compiler.h"
++
+ namespace llvm {
+ class MCInst;
+ class MCInstrDesc;
+@@ -23,6 +26,7 @@ bool optimizeMOVSX(MCInst &MI);
+ bool optimizeINCDEC(MCInst &MI, bool In64BitMode);
+ bool optimizeMOV(MCInst &MI, bool In64BitMode);
+ bool optimizeToFixedRegisterOrShortImmediateForm(MCInst &MI);
++LLVM_EXTERNAL_VISIBILITY
+ unsigned getOpcodeForShortImmediateForm(unsigned Opcode);
+ unsigned getOpcodeForLongImmediateForm(unsigned Opcode);
+ } // namespace X86
+diff --git a/llvm/lib/Target/X86/MCTargetDesc/X86MCTargetDesc.h b/llvm/lib/Target/X86/MCTargetDesc/X86MCTargetDesc.h
+index 0e0e13e896ae..c6b87959e353 100644
+--- a/lib/Target/X86/MCTargetDesc/X86MCTargetDesc.h
++++ b/lib/Target/X86/MCTargetDesc/X86MCTargetDesc.h
+@@ -85,6 +85,7 @@ bool is64BitMemOperand(const MCInst &MI, unsigned Op);
+ #endif
+ 
+ /// Returns true if this instruction needs an Address-Size override prefix.
++LLVM_EXTERNAL_VISIBILITY
+ bool needsAddressSizeOverride(const MCInst &MI, const MCSubtargetInfo &STI,
+                               int MemoryOperand, uint64_t TSFlags);
+ 
+@@ -151,6 +152,7 @@ createX86WinCOFFObjectWriter(bool Is64Bit);
+ /// \param High requires the high register.
+ ///
+ /// \returns the sub or super register of a specific X86 register.
++LLVM_EXTERNAL_VISIBILITY
+ MCRegister getX86SubSuperRegister(MCRegister Reg, unsigned Size,
+                                   bool High = false);
+ } // End llvm namespace

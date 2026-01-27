@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 25 14:55:00 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add bolt-link-shared-library.patch: link bolt with libLLVM.so.
+
+-------------------------------------------------------------------
+Fri Jan 16 10:44:40 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build of bolt
+
+-------------------------------------------------------------------
 Thu Jan 15 22:21:35 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 21.1.8.
