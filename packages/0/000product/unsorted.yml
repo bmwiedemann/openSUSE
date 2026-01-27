@@ -8931,7 +8931,6 @@ unsorted:
   - incus-fish-completion 
   - incus-os-flashertool 
   - incus-tools 
-  - incus-ui-canonical 
   - incus-zsh-completion 
   - indent 
   - indent-lang 
@@ -12211,7 +12210,7 @@ unsorted:
   - libb64-devel 
   - libbacktrace-devel 
   - libbamf3-2 
-  - libbandicoot1 
+  - libbandicoot3 
   - libbaresip22 
   - libbarvinok23 
   - libbase 
@@ -14908,6 +14907,8 @@ unsorted:
   - libnetcdf22-openmpi5 
   - libnetcdf_c++-devel 
   - libnetcdf_c++4 
+  - libnetcdf_c++4-1 
+  - libnetcdf_c++4-devel 
   - libnetcontrol-devel 
   - libnetcontrol0 
   - libnetfilter_acct-devel 
@@ -17439,7 +17440,7 @@ unsorted:
   - libzen-devel 
   - libzen0 
   - libzfp1 
-  - libzia-4_69 
+  - libzia-4_70 
   - libzia-devel 
   - libzim-devel 
   - libzim9 
@@ -17697,6 +17698,7 @@ unsorted:
   - llvm20-polly-devel 
   - llvm20-vim-plugins 
   - llvm21 
+  - llvm21-bolt 
   - llvm21-devel 
   - llvm21-doc 
   - llvm21-gold 
@@ -48218,7 +48220,17 @@ unsorted:
   - tkxcd 
   - tllist-devel 
   - tlp 
+  - tlp-bash-completion 
+  - tlp-fish-completion 
+  - tlp-pd 
   - tlp-rdw 
+  - tlp-rdw-bash-completion 
+  - tlp-rdw-fish-completion 
+  - tlp-rdw-zsh-completion 
+  - tlp-zsh-completion 
+  - tlpctl-bash-completion 
+  - tlpctl-fish-completion 
+  - tlpctl-zsh-completion 
   - tlpui 
   - tlrc 
   - tlrc-bash-completion 
