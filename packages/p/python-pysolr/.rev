@@ -39,4 +39,23 @@
     <comment></comment>
     <requestid>1224129</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7c90b5da8e64b8a0222a4c7fb851ac0d</srcmd5>
+    <version>3.11.0</version>
+    <time>1769527072</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.11.0:
+  * GitHub Actions: Add Python 3.13 to the testing
+  * [REMOVE] - tests: remove duplicate get_solr method from
+    SolrTestCase class.
+  * fix: Remove ruff (handled by pre-commit.ci, not a runtime
+    dependency)
+  * fix: Remove setup.cfg to eliminate Python 2 tag from
+    distribution
+  * EOL: Drop support for Python 3.9 and below
+  * feat: Configure Ruff linter pre-commit to perform write
+    operations
+  * Format Python code with ruff-format instead of black</comment>
+    <requestid>1329422</requestid>
+  </revision>
 </revisionlist>

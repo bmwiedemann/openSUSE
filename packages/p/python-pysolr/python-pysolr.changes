@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 27 07:35:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.11.0:
+  * GitHub Actions: Add Python 3.13 to the testing
+  * [REMOVE] - tests: remove duplicate get_solr method from
+    SolrTestCase class.
+  * fix: Remove ruff (handled by pre-commit.ci, not a runtime
+    dependency)
+  * fix: Remove setup.cfg to eliminate Python 2 tag from
+    distribution
+  * EOL: Drop support for Python 3.9 and below
+  * feat: Configure Ruff linter pre-commit to perform write
+    operations
+  * Format Python code with ruff-format instead of black
+
+-------------------------------------------------------------------
 Thu Nov 14 09:22:38 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.10.0
