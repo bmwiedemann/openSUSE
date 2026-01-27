@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 26 12:28:13 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.14
+  * Preparation for a change in a future GAP version where GAP will
+    enhance `InvariantQuadraticForm`, `InvariantBilinearForm` and
+    `InvariantSesquilinearForm` to also provide the field of
+    definition.
+
+-------------------------------------------------------------------
 Tue May  6 23:26:25 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.13
