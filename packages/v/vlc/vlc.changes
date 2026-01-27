@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 23 17:27:18 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Disable chromecast for Leap 15.6, fixes building
+- Rebase gcc requirement for Leap < 16.0
+
+-------------------------------------------------------------------
 Tue Jan 20 16:36:15 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Explicitly pass --disable-postproc to configure to not have a

@@ -31,7 +31,11 @@
 # VNC support - the module is not really usable in most cases tested so far (e.g. against qemu-kvm -vnc :xx)
 %bcond_with vnc
 %bcond_without faad
-%define chromecast 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150600
+%define chromecast 0%{?suse_version} > 1500 || 0%{?sle_version} > 150600
+# vlc needs a c++17 compiler at least
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%global force_gcc_version 13
+%endif
 
 Name:           vlc
 Version:        3.0.23
@@ -65,6 +69,7 @@ BuildRequires:  flac-devel
 BuildRequires:  flex
 BuildRequires:  freetype2
 BuildRequires:  fribidi-devel
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  gdk-pixbuf-devel
 BuildRequires:  gettext-devel
 BuildRequires:  gtk3-devel
@@ -174,12 +179,6 @@ BuildRequires:  pkgconfig(dav1d)
 %endif
 %if 0%{?suse_version} > 1500 && 0%{?is_opensuse}
 BuildRequires:  pkgconfig(srt)
-%endif
-%if 0%{?suse_version} < 1500
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
-%else
-BuildRequires:  gcc-c++
 %endif
 %if 0%{?suse_version} >= 1500 && 0%{?is_opensuse}
 BuildRequires:  pkgconfig(libva-wayland)
@@ -403,9 +402,8 @@ rm -rf contrib
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
-%if 0%{?suse_version} < 1500
-export CC=%{_bindir}/gcc-7
-export CXX=%{_bindir}/g++-7
+%if 0%{?force_gcc_version}
+export CXX="g++-%{force_gcc_version}"
 %endif
 autoreconf -fiv
 %configure \
