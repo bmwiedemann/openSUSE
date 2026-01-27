@@ -14,9 +14,6 @@
         <profile name="docker-dnf" description="Docker-compatible image"/>
         <profile name="lxc-dnf" description="LXC-compatible image"/>
         <profile name="networkd-dnf" description="Image with systemd-networkd, suitable for use in systemd-machined"/>
-        <profile name="docker-microdnf" description="Docker-compatible image"/>
-        <profile name="lxc-microdnf" description="LXC-compatible image"/>
-        <profile name="networkd-microdnf" description="Image with systemd-networkd, suitable for use in systemd-machined"/>
     </profiles>
     <preferences profiles="docker-dnf">
         <type image="docker">
@@ -37,69 +34,34 @@
             </containerconfig>
         </type>
         <version>1.0.0</version>
-        <packagemanager>dnf</packagemanager>
-        <rpm-excludedocs>true</rpm-excludedocs>
-    </preferences>
-    <preferences profiles="docker-microdnf">
-        <type image="docker">
-            <containerconfig name="opensuse/tumbleweed-microdnf" tag="latest" additionaltags="%OS_VERSION_ID%,%OS_VERSION_ID%.%RELEASE%" maintainer="Neal Gompa &lt;ngompa@opensuse.org&gt;">
-                <labels>
-                    <suse_label_helper:add_prefix xmlns:suse_label_helper="com.suse.label_helper" prefix="org.opensuse.base">
-                        <label name="org.opencontainers.image.title" value="openSUSE Tumbleweed Base Container using MicroDNF"/>
-                        <label name="org.opencontainers.image.description" value="Image containing a minimal environment for containers based on openSUSE Tumbleweed."/>
-                        <label name="org.opencontainers.image.version" value="%OS_VERSION_ID%.%RELEASE%"/>
-                        <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
-                        <label name="org.opencontainers.image.vendor" value="openSUSE Project"/>
-                        <label name="org.opencontainers.image.url" value="https://www.opensuse.org/"/>
-                        <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/tumbleweed-microdnf:%OS_VERSION_ID%.%RELEASE%"/>
-                        <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
-                    </suse_label_helper:add_prefix>
-                </labels>
-                <history author="Neal Gompa &lt;ngompa@opensuse.org&gt;">openSUSE Tumbleweed %OS_VERSION_ID% Base Container using MicroDNF</history>
-            </containerconfig>
-        </type>
-        <version>1.0.0</version>
-        <packagemanager>microdnf</packagemanager>
+        <packagemanager>dnf5</packagemanager>
         <rpm-excludedocs>true</rpm-excludedocs>
     </preferences>
     <preferences profiles="lxc-dnf">
         <type image="tbz"/>
         <version>1.0.0</version>
-        <packagemanager>dnf</packagemanager>
-        <rpm-check-signatures>false</rpm-check-signatures>
-        <rpm-excludedocs>true</rpm-excludedocs>
-    </preferences>
-    <preferences profiles="lxc-microdnf">
-        <type image="tbz"/>
-        <version>1.0.0</version>
-        <packagemanager>microdnf</packagemanager>
+        <packagemanager>dnf5</packagemanager>
         <rpm-check-signatures>false</rpm-check-signatures>
         <rpm-excludedocs>true</rpm-excludedocs>
     </preferences>
     <preferences profiles="networkd-dnf">
         <type image="tbz"/>
         <version>1.0.0</version>
-        <packagemanager>dnf</packagemanager>
-        <rpm-check-signatures>false</rpm-check-signatures>
-        <rpm-excludedocs>true</rpm-excludedocs>
-    </preferences>
-    <preferences profiles="networkd-microdnf">
-        <type image="tbz"/>
-        <version>1.0.0</version>
-        <packagemanager>microdnf</packagemanager>
+        <packagemanager>dnf5</packagemanager>
         <rpm-check-signatures>false</rpm-check-signatures>
         <rpm-excludedocs>true</rpm-excludedocs>
     </preferences>
     <repository>
         <source path="obsrepositories:/"/>
     </repository>
-    <packages type="image" profiles="networkd-dnf,networkd-microdnf">
+    <packages type="image" profiles="networkd-dnf">
         <package name="systemd"/>
-        <package name="systemd-network"/>
+        <package name="systemd-networkd"/>
+        <package name="systemd-resolved"/>
         <package name="systemd-sysvinit"/>
         <package name="iproute2"/>
     </packages>
-    <packages type="image" profiles="lxc-dnf,lxc-microdnf">
+    <packages type="image" profiles="lxc-dnf">
         <package name="systemd"/>
         <package name="systemd-sysvinit"/>
         <package name="wicked"/>
@@ -126,10 +88,6 @@
         <package name="zstd"/>
     </packages>
     <packages type="bootstrap" profiles="docker-dnf,lxc-dnf,networkd-dnf">
-        <package name="dnf"/>
-    </packages>
-    <packages type="bootstrap" profiles="docker-microdnf,lxc-microdnf,networkd-microdnf">
-        <package name="dnf-data"/>
-        <package name="microdnf"/>
+        <package name="dnf5"/>
     </packages>
 </image>

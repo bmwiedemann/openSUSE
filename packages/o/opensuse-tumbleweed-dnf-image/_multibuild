@@ -2,7 +2,4 @@
   <flavor>docker-dnf</flavor>
   <flavor>lxc-dnf</flavor>
   <flavor>networkd-dnf</flavor>
-  <flavor>docker-microdnf</flavor>
-  <flavor>lxc-microdnf</flavor>
-  <flavor>networkd-microdnf</flavor>
 </multibuild>

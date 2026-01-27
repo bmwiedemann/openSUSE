@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 21 14:11:58 UTC 2026 - Neal Gompa <ngompa@opensuse.org>
+
+- Switch to dnf5
+- Fix networkd image package list
+- Drop microdnf profile as microdnf is being replaced with dnf5
+
+-------------------------------------------------------------------
 Wed Apr 17 13:36:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Scripted update to kiwi schema v74.
