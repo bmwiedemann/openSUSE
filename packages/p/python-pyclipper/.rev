@@ -91,4 +91,20 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1284632</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>eef475dbbee9201bdbf7438300331a56</srcmd5>
+    <version>1.4.0</version>
+    <time>1769527068</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.0:
+  * Add support for Python 3.14, drop support for 3.9; Python
+    3.10+ is now required.
+  * Modernize build setup by always requiring Cython to build
+    from source via PEP517/518 isolated builds.
+
+- remove obsolete setuptools_scm_git_archive requirements
+- Update to version 1.3.0.post4
+- Update to version 1.3.0.post3</comment>
+    <requestid>1329415</requestid>
+  </revision>
 </revisionlist>

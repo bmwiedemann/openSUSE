@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyclipper
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020 Xu Zhao (i@xuzhao.net).
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pyclipper
-Version:        1.3.0.post6
+Version:        1.4.0
 Release:        0
 Summary:        Cython wrapper for the Clipper library for clipping lines and polygons
 License:        MIT
