@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 20 09:00:59 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.12.3:
+  Bug Fixes:
+  * #1943: Fix a crash caused by multibyte UTF8 chars in process names
+  Other:
+  * #1939: Update Fedora install instructions
+
+-------------------------------------------------------------------
 Mon Dec 29 12:52:10 UTC 2025 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Update to version 0.12.2:

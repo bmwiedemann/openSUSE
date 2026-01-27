@@ -1,7 +1,7 @@
 #
 # spec file for package bottom
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           bottom
-Version:        0.12.2
+Version:        0.12.3
 Release:        0
 Summary:        Yet another graphical process/system monitor
 License:        Apache-2.0 AND MIT
