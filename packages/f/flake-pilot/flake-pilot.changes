@@ -1,4 +1,156 @@
 -------------------------------------------------------------------
+Mon Jan 26 22:07:12 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.26 → 3.1.27
+
+-------------------------------------------------------------------
+Mon Jan 26 22:05:23 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for --force option for remove
+
+  Add support for podman remove --force mode. In this
+  mode the referenced application will be force removed
+  and no sanity checks if this is pointing to a flake
+  registration will be done. Eventually missing files
+  do not cause an error.
+
+-------------------------------------------------------------------
+Mon Jan 26 18:09:29 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix spec file
+
+  Allow to build for Fedora, fix packager e-mail
+
+-------------------------------------------------------------------
+Mon Jan 26 17:31:40 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.25 → 3.1.26
+
+-------------------------------------------------------------------
+Mon Jan 26 12:38:12 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow force registration with arbitrary data
+
+  When using --force also register even if the eventually
+  conflicting file does not belong to a flake registration
+
+-------------------------------------------------------------------
+Sat Jan 24 18:41:13 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add --force option for register command
+
+  Allow to force writing the registration even if a
+  registration of the same name already exists. Also
+  update the man pages.
+
+-------------------------------------------------------------------
+Sat Jan 24 17:36:42 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.24 → 3.1.25
+
+-------------------------------------------------------------------
+Sat Jan 24 17:05:59 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Improve command debug log
+
+  Make sure the command called is part of the log message
+  and not only the arguments
+
+-------------------------------------------------------------------
+Sat Jan 24 16:37:01 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- drop obsolete permission settings
+
+  With the proper user vs. system wide setup there is no
+  need for the hacky permission adaptions. This also
+  improves the runtime performance
+
+-------------------------------------------------------------------
+Sat Jan 24 16:35:53 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixup flake lookup
+
+  system wide first, then user specific
+
+-------------------------------------------------------------------
+Fri Jan 23 17:35:27 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix podman remove for both workloads
+
+  Make sure podman remove functions properly when called
+  in system and/or user mode. Sanity checks must be performed
+  before any file/directory removal starts.
+
+-------------------------------------------------------------------
+Thu Jan 22 22:47:25 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add flake-ctl podman --user ... option
+
+  Flake registrations can be done systemwide and are
+  then called from a normal user via sudo or they can
+  be done user specific which requires to setup fakes.yml
+  and the respective storage.conf to point to a writable
+  space for the calling user. As a user you can decide
+  via the new --user option which direction to go for
+  the registration.
+
+-------------------------------------------------------------------
+Thu Jan 22 15:43:58 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  Add information how to setup for rootless mode
+
+-------------------------------------------------------------------
+Thu Jan 22 15:28:35 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow user specific podman storage location
+
+  In addition to the user specific config, a new config
+  option named podman_storage_conf has been added. By
+  default it points to /etc/flakes/storage.conf which is
+  provided with the pilot package. The file can now point
+  to a user specific version and can include podman
+  options to let it create the storage in a user writable
+  space on the system
+
+-------------------------------------------------------------------
+Thu Jan 22 13:54:15 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow user specific flake config file
+
+  By default and if the calling user is root the setup
+  of the flakes directory and other settings are read from
+  /etc/flakes.yml. This commit allows to read a user
+  specific $HOME/.config/flakes.yml when present.
+
+-------------------------------------------------------------------
+Thu Jan 22 11:03:40 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix typo in storage conf
+
+-------------------------------------------------------------------
+Wed Jan 21 16:19:02 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update README
+
+  Fix repo names and update use case list
+
+-------------------------------------------------------------------
+Mon Jan 19 10:54:08 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix image prune for local containers
+
+  On pull of a newer container the old one stays in the local
+  registry without any reference. So far pruning this old data
+  was done directly after explicitly pulling a container by
+  the pilot e.g. for a layer reference. However podman on its
+  own is also expected to pull the referenced container according
+  to the flake setup. As such the prune command is only called
+  under certain condition where it should be called as part of
+  the garbage collection with any flake invocation.
+
+-------------------------------------------------------------------
 Wed Jan 07 15:18:32 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 3.1.23 → 3.1.24

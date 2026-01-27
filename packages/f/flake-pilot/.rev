@@ -261,4 +261,41 @@ https://github.com/OSInside/flake-pilot?tab=readme-ov-file#flake-pilot</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1327259</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0ff968c1d8222e297d0661ed46b6682e</srcmd5>
+    <version>3.1.27</version>
+    <time>1769526751</time>
+    <user>anag_factory</user>
+    <comment>- Bump version: 3.1.26 → 3.1.27
+
+- Add support for --force option for remove
+  Add support for podman remove --force mode. In this
+  mode the referenced application will be force removed
+  and no sanity checks if this is pointing to a flake
+  registration will be done. Eventually missing files
+  do not cause an error.
+
+- Fix spec file
+  Allow to build for Fedora, fix packager e-mail
+
+- Bump version: 3.1.25 → 3.1.26
+
+- Allow force registration with arbitrary data
+  When using --force also register even if the eventually
+  conflicting file does not belong to a flake registration
+
+- Add --force option for register command
+  Allow to force writing the registration even if a
+  registration of the same name already exists. Also
+  update the man pages.
+
+- Bump version: 3.1.24 → 3.1.25
+
+- Improve command debug log
+  Make sure the command called is part of the log message
+  and not only the arguments
+
+- drop obsolete permission settings</comment>
+    <requestid>1329371</requestid>
+  </revision>
 </revisionlist>

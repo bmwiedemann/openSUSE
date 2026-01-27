@@ -1,60 +1,61 @@
 #
 # spec file for package flake-pilot
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2022 Elektrobit Automotive GmbH
 # Copyright (c) 2023 Marcus Schäfer
 #
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-#
+
+
 Name:           flake-pilot
-Version:        3.1.24
+Version:        3.1.27
 Release:        0
 Summary:        Launcher for flake applications
 License:        MIT
 %if "%{_vendor}" == "debbuild"
-Packager:       Marcus Schaefer <marcus.schaefer@elektrobit.com>
+Packager:       Marcus Schaefer <marcus.schaefer@suse.com>
 %endif
 Group:          System/Management
-Url:            https://github.com/OSInside/flake-pilot
+URL:            https://github.com/OSInside/flake-pilot
 Source0:        %{name}.tar.gz
 Source1:        cargo_config
 Source2:        %{name}-rpmlintrc
 %if 0%{?debian} || 0%{?ubuntu}
 Requires:       golang-github-containers-common
 %endif
-Requires:       sudo
 Requires:       rsync
+Requires:       sudo
 Requires:       tar
 BuildRequires:  python3-docutils
 %if 0%{?suse_version}
-BuildRequires:  rust
-BuildRequires:  cargo
-BuildRequires:  openssl-devel
 BuildRequires:  glibc-devel-static
 BuildRequires:  python3-Pygments
 %endif
+%if 0%{?fedora}
+BuildRequires:  glibc-static
+%endif
+%if 0%{?fedora} || 0%{?suse_version}
+BuildRequires:  cargo
+BuildRequires:  openssl-devel
+BuildRequires:  rust
+%endif
 %if 0%{?debian} || 0%{?ubuntu}
-BuildRequires:  rust-all
 BuildRequires:  libssl-dev
 BuildRequires:  openssl
 BuildRequires:  pkg-config
 BuildRequires:  python3-pygments
+BuildRequires:  rust-all
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -67,8 +68,8 @@ also a control tool to register an application as a flake application
 %package -n flake-pilot-podman
 Summary:        Podman pilot
 Group:          System/Management
-Requires:       rsync
 Requires:       podman
+Requires:       rsync
 Requires:       sudo
 
 %description -n flake-pilot-podman
@@ -83,12 +84,12 @@ BuildRequires:  clang
 BuildRequires:  clang-devel
 %endif
 Requires:       rsync
-%if 0%{?suse_version} > 1600
+%if 0%{?fedora} || 0%{?suse_version} > 1600
 Requires:       firecracker
 %endif
-Requires:       xz
 Requires:       e2fsprogs
 Requires:       sudo
+Requires:       xz
 
 %description -n flake-pilot-firecracker
 Launcher and service tools for KVM VM based applications
@@ -97,7 +98,7 @@ through firecracker
 %package -n flake-pilot-firecracker-dracut-netstart
 Summary:        Dracut Module Network Startup
 Group:          System/Management
-%if 0%{?suse_version}
+%if 0%{?fedora} && 0%{?suse_version}
 Requires:       systemd-network
 %else
 Requires:       systemd
@@ -125,7 +126,7 @@ mkdir -p .cargo
 cp %{SOURCE1} .cargo/config.toml
 make build
 %ifnarch ppc64le
-%if 0%{?suse_version} && 0%{?suse_version} >= 1600
+%if 0%{?fedora} || (0%{?suse_version} && 0%{?suse_version} >= 1600)
 make compile_sci_static
 %endif
 %endif
