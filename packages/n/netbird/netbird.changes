@@ -1,4 +1,303 @@
 -------------------------------------------------------------------
+Fri Jan 23 19:27:54 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.64.1:
+  - Fixed RFC 4592 wildcard matching for existing domain names.
+    #5145
+  - Extended the WireGuard watcher to also monitor ICE connections.
+    #5133
+  - Added IPv6 support to userspace bind. #5147
+  - Fixed IPv4-only limitation in the bind proxy. #5154
+  - Improved DNS reliability by trying the next upstream on
+    SERVFAIL / REFUSED responses. #5163
+  - Hid forwarding rules from status output when the count is zero.
+    #5149
+  - Added CPU profiling to the debug bundle. #4700
+  - Fixed health result reporting in the debug bundle. #5164
+  - Changed the default Rosenpass log level. #5137
+  - Fixed exit node menu behavior on reconnect and removed tooltips
+    in the GUI. #5167
+  - Management Enhancements
+  - Fixed activity event initiator reporting for user group
+    changes. #5152
+  - Ensured ephemeral peers are correctly added to the ephemeral
+    list on login. #5165
+  - Moved activity store encryption into the shared crypt package.
+    #5111
+
+-------------------------------------------------------------------
+Wed Jan 21 01:35:11 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.64.0:
+  - Debugging & Observability
+    - Added the ability to trigger debug bundle generation directly
+      from the API and Dashboard. #4832
+  - Client Improvements
+    - Improved error handling by adjusting notifyDisconnected
+      behavior on receiveJobRequest failures. #5138
+    - Added support for wildcard custom DNS records. #5125
+    - Fixed profile switching issues and repeated down / up command
+      failures. #5142
+    - Fixed Rosenpass connectivity issues for Android peers. #5044
+  - Management Enhancements
+    - Added support for local user password changes when using the
+      embedded IdP. #5132
+    - Included missing activity events in management API responses.
+      #5140
+  - Infrastructure
+    - Added embedded STUN support to the getting-started setup to
+      simplify initial deployments. #5141
+
+-------------------------------------------------------------------
+Fri Jan 16 18:04:41 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.63.0:
+  Custom DNS Zones
+  NetBird now supports private DNS zones, allowing you to host DNS
+  records directly within your network without external DNS
+  servers.
+
+  Create zones like internal.company.io, add A, AAAA, or CNAME
+  records, and distribute them to specific peer groups. Resolution
+  happens locally on peers, and records propagate automatically
+  when group membership changes. With search domain support
+  enabled, peers can query short names like api instead of the full
+  api.internal.company.io.
+
+  Custom zones take precedence over nameserver configurations,
+  giving you control over how specific domains resolve within your
+  network. This works well with routed networks—map friendly names
+  to private IPs behind routing peers, and NetBird handles both DNS
+  resolution and traffic routing. Your teams access
+  postgres.internal instead of remembering 192.168.0.68.
+
+  Zone distribution is group-based, so different teams can see
+  different records for the same zone, or have access to entirely
+  separate zones.
+
+  Use Cases
+  - Environment separation — Distinct zones for production,
+    staging, and development, distributed only to relevant teams
+  - Routed network resources — DNS names for services in data
+    centers or cloud VPCs accessed through routing peers
+  - Split-horizon DNS — Internal-only resolution for domains that
+    resolve differently outside your network
+
+  - DNS & Networking Improvements
+    - Ensured musl compatibility by chasing CNAMEs in the local
+      resolver. #5046
+    - Improved DNS resolution flow by falling through the DNS chain
+      for custom DNS zones. #5081
+    - Changed priority between local and DNS route handlers for
+      more predictable routing. #5106
+    - Fixed netstack upstream DNS handling and added WASM debug
+      methods. #4648
+  - Client Improvements
+    - Fixed WASM peer connections to lazy peers. #5097
+    - Added fallback handling for invalid loginuid in
+      ui-post-install.sh. #5099
+    - Removed duplicate audience checks in the client. #5117
+  - Management Enhancements
+    - Added Custom DNS zones support. #4849
+    - Added configuration compatibility checks during startup.
+      #5087
+    - Optimized external cache access by fetching all users in a
+      single request. #5104
+    - Adapted rate limiting behavior. #5080
+    - Fixed SSH server audience validation across management and
+      client. #5105
+    - Skipped email_verified validation when not present in IdP
+      responses. #5118
+    - Added IdP timeout configuration via environment variable.
+      #4647
+  - Infrastructure & Security
+    - Introduced embedded STUN support for relay and STUN
+      components. #5062
+    - Added a Quickstart reverse proxy assistant to simplify
+      initial setup. #5100
+    - Upgraded Alpine Linux from 3.22.2 to 3.23.2 for security
+      hardening. #5119
+
+-------------------------------------------------------------------
+Mon Jan 12 21:51:06 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.62.3:
+  - [management] Check config compatibility by @braginini in #5087
+
+-------------------------------------------------------------------
+Fri Jan  9 17:52:29 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.62.2:
+  - [relay] Update GO version and QUIC version (… by @pappz in
+    #5071
+  - [client] Add non-root ICMP support to userspace firewall
+    forwarder by @lixmal in #4792
+  - [client] Reorder userspace ACL checks to fail faster for better
+    performance by @lixmal in #4226
+  - [management] fix the issue with duplicated peers with the same
+    key by @crn4 in #5053
+  - [management] Feature/resolve local jwks keys by @braginini in
+    #5073
+  - [management] Validate OIDC issuer when creating or updating by
+    @braginini in #5074
+
+-------------------------------------------------------------------
+Thu Jan  8 13:34:47 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.62.1:
+  - [management] Fix role change in transaction and update readme
+    by @braginini in #5060
+  - [management] Fix race condition in experimental network map
+    when deleting account by @bcmmbaga in #5064
+  - [misc] add embedded provider support metrics by @mlsmaycon in
+    #5065
+  - [misc] add new getting started to release by @mlsmaycon in
+    #5057
+  - [infrastructure] fix: disable Caddy debug by @diegocn in #5067
+
+-------------------------------------------------------------------
+Wed Jan  7 19:48:34 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.62.0:
+  🔓 Simplified Identity Provider Management
+  Self-hosted NetBird no longer requires an external identity
+  provider by default. Local users now work out of the box without
+  any IdP dependency.
+
+  What's changed:
+  - No IdP required - Create and manage users directly from the
+    Dashboard
+  - Multiple IdP support - Configure Pocket ID, Auth0, Google,
+    Microsoft, Okta, or any OIDC provider directly from the
+    Dashboard
+  - New quickstart script - Simpler deployment with fewer
+    containers
+
+  - client enhancements
+    - Fixed an issue where the client could get stuck in connecting
+      state when api.netbird.io is unreachable. #5033
+    - Added port forwarding support to the SSH proxy. #5031
+    - Added support for disabling the eBPF WireGuard proxy via
+      environment variable. #5047
+    - Fixed SSH UI flickering test instability. #5036
+  - Management Improvements
+    - Refactored integrated peer validation and peer deletion logic
+      for better consistency. #5035, #5042
+    - Incremented network serial on peer updates to ensure correct
+      synchronization. #5051
+    - Fixed nil handling for extra settings in management. #5049
+    - Cached SSH authorized users in the network map for improved
+      performance. #5048
+  - Identity & Infrastructure
+    - Introduced Embedded IdP, simplifying identity provider
+      management across management, infrastructure, and IdP
+      components. #5008
+  - Shared & Tooling Improvements
+    - Added support for setting a custom User-Agent in the REST
+      client. #5037
+    - Fixed ui-post-install.sh to correctly use the full username.
+      #4809
+    - Improved Nmap concurrency handling. #5040
+
+  For all the details see:
+  https://github.com/netbirdio/netbird/releases/tag/v0.62.0
+
+-------------------------------------------------------------------
+Sat Jan  3 12:20:03 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.61.1:
+  - [client] add reset for management backoff by @gamerslouis in
+    #4935
+  - [client] Filter out own peer from remote peers list during peer
+    updates. by @pappz in #4986
+  - [client] Fix Advanced Settings not opening on Windows with
+    Japanese locale (#4455) by @h6ah4i in #4637
+  - [management] apply login filter only for setup key peers by
+    @pascal-fischer in #4943
+  - fix(router): nft tables limit number of peers source by
+    @nhenneaux in #4852
+  - [management] filter own peer when having a group to peer policy
+    to themself by @pascal-fischer in #4956
+  - Add DEX IdP Support by @braginini in #4949
+  - Feat/add support for forcing device auth flow on ios by
+    @shuuri-labs in #4944
+  - [client] Fix UI stuck in "Connecting" state when daemon reports
+    "Connected" by @pappz in #5014
+  - [management] Fix/delete groups without lock by @pascal-fischer
+    in #5012
+  - [client] Fix semaphore slot leaks by @pappz in #5018
+  - [client] add verbose flag for free ad tests by @mlsmaycon in
+    #5021
+
+-------------------------------------------------------------------
+Fri Jan  2 15:00:45 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Ignore TestJWTDetection to fix build on 15.6
+
+-------------------------------------------------------------------
+Wed Dec 31 20:05:40 UTC 2025 - Holden Fried <holden@opensuse.org>
+
+- Update to 0.61.0:
+  * [management] Fine-Grained SSH Access Control (Breaking Change):
+    NetBird introduces fine-grained SSH access control with
+    support for explicit local OS users on target machines.
+  * [management] Administrators can now define which NetBird users
+    or groups are allowed to connect as specific local system
+    users, enabling safer, more predictable SSH access without
+    relying on shared or implicit credentials.
+  * [management] Breaking change for self-hosted deployments:
+    Self-hosted installations must upgrade the Management server
+    before upgrading their clients and enabling or using the new
+    SSH access model. Failing to upgrade may result in SSH access
+    issues or unexpected behavior.
+  * [management] Auto-update available for windows and mac clients
+  * [management] Added fine-grained SSH access control across
+    client and management
+  * [client] Introduced auto-update support for the client to
+    simplify upgrades
+  * [client] Improved management domain lookup by adding an
+    additional timeout
+  * [client] Added Android profile switching for easier
+    multi-profile usage
+  * [client] Fixed Linux UI flickering during state updates
+  * [client] Applied DNS host configuration only on changes to
+    reduce unnecessary updates.
+
+-------------------------------------------------------------------
+Tue Dec 23 17:27:39 UTC 2025 - Holden Fried <holden@opensuse.org>
+
+- Update to 0.60.9:
+  * [client] lookup for management domains using an additional
+    timeout #4983
+
+-------------------------------------------------------------------
+Thu Dec 18 19:06:45 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.60.8:
+  - [client] Use setsid to avoid the parent process from being
+    killed via HUP by login by @lixmal in #4900
+  - [client] Fix DNS forwarder returning broken records on 4 to 6
+    mapped IP addresses by @lixmal in #4887
+  - [management] cleanup logs by @pascal-fischer in #4933
+  - [management] monitoring updates by @pascal-fischer in #4937
+  - [management] Fix sync metrics by @pascal-fischer in #4939
+  - [management] remove context from store methods by
+    @pascal-fischer in #4940
+  - [management] Approve all pending peers when peer approval is
+    disabled by @bcmmbaga in #4806
+  - [iOS] Add force relay connection on iOS by @doromaraujo in
+    #4928
+  - [relay-server] Add health-check agent recognition to avoid
+    error logs by @pappz in #4917
+  - [ci] Add local lint setup with pre-push hook to catch issues
+    early by @pappz in #4925
+  - [management] use xid as request id for logging by
+    @pascal-fischer in #4955
+  - [client] Add stack trace for bundle by @pappz in #4957
+  - [client] Fix deadlock in delayed WG update function by @pappz
+    in #4953
+
+-------------------------------------------------------------------
 Thu Dec  4 23:14:07 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.60.7:

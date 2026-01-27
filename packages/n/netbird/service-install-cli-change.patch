@@ -2,10 +2,10 @@ Index: netbird/client/cmd/login.go
 ===================================================================
 --- netbird.orig/client/cmd/login.go
 +++ netbird/client/cmd/login.go
-@@ -83,9 +83,16 @@ var loginCmd = &cobra.Command{
- func doDaemonLogin(ctx context.Context, cmd *cobra.Command, providedSetupKey string, activeProf *profilemanager.Profile, username string, pm *profilemanager.ProfileManager) error {
+@@ -82,9 +82,16 @@ func doDaemonLogin(ctx context.Context,
  	conn, err := DialClientGRPCServer(ctx, daemonAddr)
  	if err != nil {
+ 		//nolint
 -		return fmt.Errorf("failed to connect to daemon error: %v\n"+
 -			"If the daemon is not running please run: "+
 -			"\nnetbird service install \nnetbird service start\n", err)
@@ -26,15 +26,15 @@ Index: netbird/client/cmd/root.go
 ===================================================================
 --- netbird.orig/client/cmd/root.go
 +++ netbird/client/cmd/root.go
-@@ -387,9 +387,16 @@ func getClient(cmd *cobra.Command) (*grp
- 
+@@ -391,9 +391,16 @@ func getClient(cmd *cobra.Command) (*grp
  	conn, err := DialClientGRPCServer(cmd.Context(), daemonAddr)
  	if err != nil {
+ 		//nolint
 -		return nil, fmt.Errorf("failed to connect to daemon error: %v\n"+
 -			"If the daemon is not running please run: "+
 -			"\nnetbird service install \nnetbird service start\n", err)
 +		return nil, fmt.Errorf("failed to connect to daemon error: %v\n\n" +
-+      "The daemon may not be running. Try restarting the service:\n" +
++      "the daemon may not be running. try restarting the service:\n" +
 +      "    sudo systemctl restart netbird.service\n\n" +
 +      "To check the service status, use:\n" +
 +      "    sudo systemctl status netbird.service\n\n" +
@@ -204,51 +204,47 @@ Index: netbird/client/cmd/status.go
 ===================================================================
 --- netbird.orig/client/cmd/status.go
 +++ netbird/client/cmd/status.go
-@@ -124,10 +124,17 @@ func statusFunc(cmd *cobra.Command, args
- func getStatus(ctx context.Context, shouldRunProbes bool) (*proto.StatusResponse, error) {
+@@ -125,9 +125,16 @@ func getStatus(ctx context.Context, shou
  	conn, err := DialClientGRPCServer(ctx, daemonAddr)
  	if err != nil {
+ 		//nolint
 -		return nil, fmt.Errorf("failed to connect to daemon error: %v\n"+
 -			"If the daemon is not running please run: "+
 -			"\nnetbird service install \nnetbird service start\n", err)
--	}
 +		return nil, fmt.Errorf("failed to connect to daemon error: %v\n\n" +
-+      "The daemon may not be running. Try restarting the service:\n" +
-+      "    sudo systemctl restart netbird.service\n\n" +
-+      "To check the service status, use:\n" +
-+      "    sudo systemctl status netbird.service\n\n" +
-+      "Unless you are manually overriding with a custom drop-in file, " +
-+      "you should see the default openSUSE service at:\n" +
-+      "    /usr/lib/systemd/system/netbird.service\n\n" +
-+      "If you see the service is disabled, you can run:\n" +
-+      "    sudo systemctl enable netbird.service --now\n", err)
-+  }
++			"The daemon may not be running. Try restarting the service:\n" +
++			"    sudo systemctl restart netbird.service\n\n" +
++			"To check the service status, use:\n" +
++			"    sudo systemctl status netbird.service\n\n" +
++			"Unless you are manually overriding with a custom drop-in file, " +
++			"you should see the default openSUSE service at:\n" +
++			"    /usr/lib/systemd/system/netbird.service\n\n" +
++			"If you see the service is disabled, you can run:\n" +
++			"    sudo systemctl enable netbird.service --now\n", err)
+ 	}
  	defer conn.Close()
  
- 	resp, err := proto.NewDaemonServiceClient(conn).Status(ctx, &proto.StatusRequest{GetFullPeerStatus: true, ShouldRunProbes: shouldRunProbes})
 Index: netbird/client/cmd/up.go
 ===================================================================
 --- netbird.orig/client/cmd/up.go
 +++ netbird/client/cmd/up.go
-@@ -216,10 +216,17 @@ func runInDaemonMode(ctx context.Context
- 
+@@ -217,9 +217,16 @@ func runInDaemonMode(ctx context.Context
  	conn, err := DialClientGRPCServer(ctx, daemonAddr)
  	if err != nil {
+ 		//nolint
 -		return fmt.Errorf("failed to connect to daemon error: %v\n"+
 -			"If the daemon is not running please run: "+
 -			"\nnetbird service install \nnetbird service start\n", err)
--	}
 +		return fmt.Errorf("failed to connect to daemon error: %v\n\n" +
-+      "The daemon may not be running. Try restarting the service:\n" +
-+      "    sudo systemctl restart netbird.service\n\n" +
-+      "To check the service status, use:\n" +
-+      "    sudo systemctl status netbird.service\n\n" +
-+      "Unless you are manually overriding with a custom drop-in file, " +
-+      "you should see the default openSUSE service at:\n" +
-+      "    /usr/lib/systemd/system/netbird.service\n\n" +
-+      "If you see the service is disabled, you can run:\n" +
-+      "    sudo systemctl enable netbird.service --now\n", err)
-+  }
++			"The daemon may not be running. Try restarting the service:\n" +
++			"    sudo systemctl restart netbird.service\n\n" +
++			"To check the service status, use:\n" +
++			"    sudo systemctl status netbird.service\n\n" +
++			"Unless you are manually overriding with a custom drop-in file, " +
++			"you should see the default openSUSE service at:\n" +
++			"    /usr/lib/systemd/system/netbird.service\n\n" +
++			"If you see the service is disabled, you can run:\n" +
++			"    sudo systemctl enable netbird.service --now\n", err)
+ 	}
  	defer func() {
  		err := conn.Close()
- 		if err != nil {
