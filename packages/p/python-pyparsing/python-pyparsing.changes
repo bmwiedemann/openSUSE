@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Jan 26 08:09:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.2:
+  * Defined pyparsing-specific warning classes so that they can
+    be selectively enabled or disabled without affecting warnings
+    raised by other libraries in the same Python
+  * Added `as_datetime` parse action to `pyparsing.common` - a
+    more generalized version of the `convert_to_datetime` parse
+    action (supports any expression that extracts date/time fields
+    into "year", "month", "day", etc. results names), and validates
+    that the parsed fields represent a valid date and time.
+  * Added `iso8601_date_validated` and `iso8601_datetime_validated`
+    expressions to `pyparsing.common`, which return a Python
+    `datetime.datetime`
+  * Various performance improvements in `ParseResults` class and
+    core functions, with 10-20% performance overall.
+  * Added `regex_inverter` web page (using PyScript) to
+    demonstrate using the `inv_regex.py` example.
+  *  The version 3.3.0 release will begin emitting
+    `DeprecationWarnings` for pyparsing methods
+     that have been renamed to PEP8-compliant names (introduced
+     in pyparsing 3.0.0, in August, 2021, with legacy names
+     retained as aliases). In preparation, I added in pyparsing
+     3.2.2 a utility for finding and replacing the legacy method
+     names with the new names.
+  * Deprecated `indentedBlock`, when converted using the
+    `cvt_pyparsing_pep8_names` utility, will emit `UserWarnings`
+    that additional code changes will be required.
+  * Deprecated `locatedExpr`, when converted using the
+    `cvt_pyparsing_pep8_names` utility, will emit `UserWarnings`
+    that additional code changes may be required.
+  * Updated all examples and test cases to use PEP8 names (unless
+    the test case is specifically designed to test behavior of a
+    legacy method). Added railroad diagrams for some examples.
+  * Added exception handling when calling `formatted_message()`,
+    so that `str(exception)` always returns at least _something_.
+  * All unit tests pass with Python 3.14, including 3.14t. This
+    does _not_ necessarily mean that pyparsing is now thread-safe,
+    just that when run in the free-threaded interpreter, there
+    were no errors. None of the unit tests try to do any parsing
+    with multiple threads - they test the basic functionality
+    of the library, under various versions of packrat and
+    left-recursive parsing.
+  * Added AI instructions so that AI agents can be prompted with
+    best practices for generating parsers using pyparsing code.
+  * Implemented a TINY language parser/interpreter using
+    pyparsing, in the `examples/tiny` directory. This is a little
+    tutorial language that I used to demonstrate how to use pyparsing to
+    build a simple interpreter, following a recommended
+    parser+AST+engine+run structure.
+  * Fixed minor formatting bugs in
+    `pyparsing.testing.with_line_numbers`, found during
+    development of the TINY language example.
+  * Added test in `DelimitedList` and `nested_expr` which auto-
+    suppress delimiting commas to avoid wrapping in a `Suppress`
+    if delimiter is already a `Suppress`.
+
+-------------------------------------------------------------------
 Wed Nov 26 10:48:14 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.2.5

@@ -1570,4 +1570,41 @@ self, run_tests_report, expected_parse_results=None, msg=None)
     <comment></comment>
     <requestid>1320161</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>62985dba481643df111b97bcbf683cac</srcmd5>
+    <version>3.3.2</version>
+    <time>1769526402</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.3.2:
+  * Defined pyparsing-specific warning classes so that they can
+    be selectively enabled or disabled without affecting warnings
+    raised by other libraries in the same Python
+  * Added `as_datetime` parse action to `pyparsing.common` - a
+    more generalized version of the `convert_to_datetime` parse
+    action (supports any expression that extracts date/time fields
+    into &quot;year&quot;, &quot;month&quot;, &quot;day&quot;, etc. results names), and validates
+    that the parsed fields represent a valid date and time.
+  * Added `iso8601_date_validated` and `iso8601_datetime_validated`
+    expressions to `pyparsing.common`, which return a Python
+    `datetime.datetime`
+  * Various performance improvements in `ParseResults` class and
+    core functions, with 10-20% performance overall.
+  * Added `regex_inverter` web page (using PyScript) to
+    demonstrate using the `inv_regex.py` example.
+  *  The version 3.3.0 release will begin emitting
+    `DeprecationWarnings` for pyparsing methods
+     that have been renamed to PEP8-compliant names (introduced
+     in pyparsing 3.0.0, in August, 2021, with legacy names
+     retained as aliases). In preparation, I added in pyparsing
+     3.2.2 a utility for finding and replacing the legacy method
+     names with the new names.
+  * Deprecated `indentedBlock`, when converted using the
+    `cvt_pyparsing_pep8_names` utility, will emit `UserWarnings`
+    that additional code changes will be required.
+  * Deprecated `locatedExpr`, when converted using the
+    `cvt_pyparsing_pep8_names` utility, will emit `UserWarnings`
+    that additional code changes may be required.
+  * Updated all examples and test cases to use PEP8 names (unless</comment>
+    <requestid>1329156</requestid>
+  </revision>
 </revisionlist>
