@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 27 00:16:11 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.30.0:
+  * Implement --output to centralize choosing an output format
+  * Have render functions call print() themselves rather than the caller
+  * Replace large EnumAction class with simpler logic
+  * Drop 3.9 support
+  * Allow --exclude to be used with --include
+  * Replace pytest-console-scripts plugin with smaller in-house solution
+  * Remove wheel package from tests due to virtualenv v20.31.0
+  * Implement --exclude-dependencies
+
+-------------------------------------------------------------------
 Mon Apr 28 16:43:51 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.26.1:

@@ -235,4 +235,20 @@
   * Implement --path argument</comment>
     <requestid>1273212</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>209c2d7660895243aa5ba010cb9fedb9</srcmd5>
+    <version>2.30.0</version>
+    <time>1769527055</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.30.0:
+  * Implement --output to centralize choosing an output format
+  * Have render functions call print() themselves rather than the caller
+  * Replace large EnumAction class with simpler logic
+  * Drop 3.9 support
+  * Allow --exclude to be used with --include
+  * Replace pytest-console-scripts plugin with smaller in-house solution
+  * Remove wheel package from tests due to virtualenv v20.31.0
+  * Implement --exclude-dependencies</comment>
+    <requestid>1329393</requestid>
+  </revision>
 </revisionlist>

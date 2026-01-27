@@ -1,7 +1,7 @@
 #
 # spec file for package python-pipdeptree
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,25 @@
 
 
 Name:           python-pipdeptree
-Version:        2.26.1
+Version:        2.30.0
 Release:        0
 Summary:        Command line utility to show dependency tree of packages
 License:        MIT
 URL:            https://github.com/naiquevin/pipdeptree
 Source:         https://github.com/naiquevin/pipdeptree/archive/%{version}.tar.gz#/pipdeptree-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pip
-Suggests:       python-graphviz
+Requires:       python-packaging >= 25
+Requires:       python-pip >= 25.2
+Suggests:       python-graphviz >= 0.21
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module graphviz}
-BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module graphviz >= 0.21}
+BuildRequires:  %{python_module packaging >= 25}
+BuildRequires:  %{python_module pip >= 25.2}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module virtualenv}
@@ -71,6 +74,6 @@ export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
 %license LICENSE
 %python_alternative %{_bindir}/pipdeptree
 %{python_sitelib}/pipdeptree
-%{python_sitelib}/pipdeptree-%{version}*-info
+%{python_sitelib}/pipdeptree-%{version}.dist-info
 
 %changelog
