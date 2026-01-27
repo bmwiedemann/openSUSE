@@ -23,4 +23,17 @@
     <comment></comment>
     <requestid>1287872</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e048d2c162c170f1fdc9e1f653b68d25</srcmd5>
+    <version>1.0.5</version>
+    <time>1769527056</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.5:
+  * Bump pyca/cryptography dependency upper bound to version 47
+  * Timestamps are now verified with the timestamp time as reference time
+    like the RFC says: this means that the certificate chain no longer needs
+    to be valid at current time, it is enough for it to have been valid at
+    timestamp time</comment>
+    <requestid>1329395</requestid>
+  </revision>
 </revisionlist>

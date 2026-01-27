@@ -1,7 +1,7 @@
 #
 # spec file for package python-rfc3161-client
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-rfc3161-client
-Version:        1.0.3
+Version:        1.0.5
 Release:        0
 Summary:        Python library implementing the Time-Stamp Protocol (TSP) described in RFC 3161
 License:        Apache-2.0
@@ -37,7 +37,6 @@ Source1:        vendor.tar.zst
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module maturin >= 1.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 
 BuildRequires:  cargo >= 1.56.0

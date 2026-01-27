@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 27 01:37:15 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.5:
+  * Bump pyca/cryptography dependency upper bound to version 47
+  * Timestamps are now verified with the timestamp time as reference time
+    like the RFC says: this means that the certificate chain no longer needs
+    to be valid at current time, it is enough for it to have been valid at
+    timestamp time
+
+-------------------------------------------------------------------
 Mon Jun 23 07:46:59 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 1.0.3
