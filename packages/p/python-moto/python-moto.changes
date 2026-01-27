@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 23 10:14:26 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.1.20
+  * Many new methods and services
+  * Python 3.14 is now officially supported
+  * Removed support for the RoboMaker, QLDB and ElasticTranscoder,
+    now that AWS has also deprecated these services 
+  * otherwise, see upstream changelog:
+    https://github.com/getmoto/moto/blob/5.1.20/CHANGELOG.md
+
+-------------------------------------------------------------------
 Mon Sep 22 03:50:46 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.1.13
