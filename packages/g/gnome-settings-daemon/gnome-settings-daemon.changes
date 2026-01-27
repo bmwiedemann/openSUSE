@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 22 08:56:29 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add gnome-settings-daemon-gvc-31.patch: Fix crash with newer
+  pipewire on switching bluetooth profile
+  (glgo#GNOME/libgnome-volume-control!31).
+
+-------------------------------------------------------------------
 Thu Jan  8 09:24:18 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop /usr/bin/pkexec Requires: this has not been needed anymore
