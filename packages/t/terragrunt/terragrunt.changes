@@ -1,4 +1,183 @@
 -------------------------------------------------------------------
+Tue Jan 27 06:06:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.99.0:
+  * Breaking Changes
+    - Undocumented behavior removed
+      We have removed several undocumented features that served as
+      temporary stop-gaps to facilitate experimentation.
+      The following environment variables no longer affect
+      Terragrunt behavior:
+      - TERRAGRUNT_TEMP_QUOTE_NULL
+      - TMP_UNDOCUMENTED_REPORT_PADDER
+      - TMP_UNDOCUMENTED_REPORT_UNIT_COLORIZE
+      - TMP_UNDOCUMENTED_COLORIZE_DEFAULT_SUMMARY_PADDING
+    - Internal tflint deprecated
+      Terragrunt has been shipping with a version of tflint
+      compiled into the binary to allow for more convenient usage
+      without installing tflint directly. However due to the
+      adoption of a BUSL license in tflint, the version included in
+      Terragrunt was frozen.
+      We have now deprecated use of the internal tflint hook, and
+      will be fully removing it in the future. We still do work to
+      integrate with tflint; Including automatically running tflint
+      init and passing through variables. For now using the
+      internal version will only emit a warning, and you can opt in
+      to the future behavior today in one of two ways:
+
+        The legacy-internal-tflint strict control (recommended)
+
+        Adding the --terragrunt-external-tflint flag to your hook
+        usage (this also works in previous versions of Terragrunt);
+        this flag is stripped prior to running the external tflint.
+        Example:
+
+        terraform {
+            before_hook "tflint" {
+            commands = ["apply", "plan"]
+            execute = ["tflint", "--terragrunt-external-tflint", "--minimum-failure-severity=error", "--config", "custom.tflint.hcl"]
+          }
+        }
+
+  * New Features
+    - Depth control for dependency traversal
+      Graph-based expressions in the --filter flag now support
+      limiting the depth of graph traversal they perform when
+      discovering units. You can now append/prepend a number to the
+      end of a graph expression ellipsis to control how deep in
+      graph traversal Terragrunt will look for
+      dependents/dependencies.
+
+      e.g.
+
+        # Find 'service' and only its direct dependencies (1 level deep)
+        terragrunt find --filter 'service...1'
+
+        # Find 'vpc' and only components that directly depend on it (1 level)
+        terragrunt find --filter '1...vpc'
+
+        # Find 'db' with 2 levels of dependencies and 1 level of dependents
+        terragrunt find --filter '1...db...2'
+
+      This should result in significant performance and usability
+      improvements for users with large dependency graphs.
+      Special thanks to @sofianedjerbi for contributing this
+      feature!
+    - Run report schema extended
+      The run report has been extended to include the Ref, Cmd and
+      Args fields when relevant to a run.
+      - The Ref field will be populated for runs performed in Git
+        worktrees due to their discovery from a Git-based
+        expression in a filter.
+      - The Cmd field will contain the sub command of
+        OpenTofu/Terraform executed in a run (e.g. plan , apply)
+        and the Args field will contain the arguments passed to
+        that subcommand (e.g. -auto-approve, -destroy). These can
+        differ between runs when using Git-based expressions, as
+        additions or modifications of units between Git references
+        can result in a plan or apply, whereas removal of units can
+        result in plan -destroy or apply -destroy .
+  * Experiments Updated
+    - IaC Engines Updated to use v0.1.0 of terragrunt-engine-go
+      The iac-engine experiment has been updated to use v0.1.0 of
+      the terragrunt-engine-go library.
+      Given that this is still experimental functionality, no
+      effort has been made to maintain backwards compatibility with
+      existing engines. If you are currently using the OpenTofu
+      engine, you will need to upgrade to v0.1.0 of the engine. The
+      Terraform engine will be updated in the near future.
+      This update pulls in changes to the protobuf schema used in
+      communication between Terragrunt and IaC engines to give
+      engines the ability to log messages in Terragrunt and reduces
+      the overall size of messages passed to Terragrunt for
+      stdout/stderr messages.
+  * Process Updates
+    - Curl to Bash script available
+      In addition to all the other installation mechanisms
+      available to install Terragrunt, a convenient curl to bash
+      script has been added to minimize the friction in installing
+      and getting started with Terragrunt, and removing any
+      dependency on third party tools if you don’t want to use
+      them.
+
+        curl -sL https://terragrunt.gruntwork.io/install | bash
+
+      The installation can be customized, with full customization
+      options available via the --help flag.
+
+        curl -sL https://terragrunt.gruntwork.io/install | bash -s -- --help
+
+      In addition to providing this script, the ASDF plugin for
+      Terragrunt has been updated to automatically perform
+      signature verification on an opt-out basis for any version of
+      Terragrunt equal or newer to v0.98.0. The Terragrunt entry in
+      the Aqua registry has been updated to do the same, meaning
+      mise users will automatically benefit from this as well.
+      If you don’t want to use the curl to bash script, or any of
+      the other distribution methods available, the instructions
+      for performing signature verification manually have been
+      updated in the installation documentation as well.
+  * Documentation Updates
+    - OpenTofu/Terraform compatibility matrix now available as API
+      In addition to providing a compatibility matrix in the
+      Supported Versions documentation, compatibility verification
+      is also available via an API endpoint here:
+      https://terragrunt.gruntwork.io/api/v1/compatibility
+      See the compatibility API documentation for more details,
+      including availability of query string parameters for
+      filtering responses.
+    - JSON schema for --auth-provider-cmd published
+      A JSON schema has been published for the schema expected for
+      the stdout of commands invoked using --auth-provider-cmd. You
+      can access the schema here.
+      You can use tools like this JSON schema validator or other
+      simple utilities to programmatically validate that the stdout
+      of JSON responses in your commands invoked by
+      --auth-provider-cmd obey the expected schema.
+  * Bug Fixes
+    - Exit Codes for run --all more consistent
+      Fixed an issue where run --all incorrectly returned a 0 exit
+      code when individual units failed.
+    - Automatic retry for provider queries
+      To address intermittent errors in queries to the
+      OpenTofu/Terraform provider registries, we expanded the
+      automatic retry logic to include timeouts from provider
+      registries.
+  * What's Changed
+    - fix: Removing unnecessary schema validation (#5416)
+    - docs: add depth-limited traversal to filter documentation
+      (#5382)
+    - fix: docs build (#5415)
+    - fix: Ensuring go mod cache in addition to go cache (#5411)
+    - add internal-tflint strict control (#5361)
+    - feat: Extending report schema (#5401)
+    - fix: Fixing `TestTUIFinalModel` flake (#5410)
+    - chore: Committing lockfiles (#5404)
+    - fix: Improving test speed (#5399)
+    - fix: Adding `schema.json` for the `auth-provider-cmd` (#5405)
+    - improve the error message of a test that flaked on me (#5408)
+    - New ambassador (#5406)
+    - fix: Adding red test for HTTP backend encryption failing
+      (#5393)
+    - docs: Fixing Discord link in README (#5403)
+    - fix: Adding auto-retry for provider queries (#5395)
+    - chore: Removing undocumented behavior (#5396)
+    - fix: Fixing exit codes for `run --all` (#5385)
+    - chore: Upgrade `golangci-lint` to `v2.8.0` (#5365)
+    - feat: Using updated `v0.1.0` version of
+      `terragrunt-engine-go` (#5381)
+    - docs: compatibility API (#5383)
+    - Updates to LP (#5391)
+    - fix: Addressing empty mark as read (#5387)
+    - Revert "Migrate workflows to Blacksmith (#5388)" (#5389)
+    - Migrate workflows to Blacksmith (#5388)
+    - feat: install script for Terragrunt (#5364)
+    - chore: Removing `runfn` package (#5359)
+    - feat(filter): add depth control for dependency traversal
+      (#5268)
+    - Update error messages to deduplicate (#5375)
+
+-------------------------------------------------------------------
 Tue Jan 20 14:47:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.98.0:
