@@ -522,4 +522,12 @@ set the minimum version of setuptools to 77.0 to match upstream pyproject.toml</
     <comment></comment>
     <requestid>1315694</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>748e1c707223e03ae5394537a416a7c1</srcmd5>
+    <version>3.10.1</version>
+    <time>1769526409</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1329160</requestid>
+  </revision>
 </revisionlist>

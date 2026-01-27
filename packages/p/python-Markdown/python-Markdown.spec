@@ -1,7 +1,7 @@
 #
 # spec file for package python-Markdown
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Markdown%{psuffix}
-Version:        3.10
+Version:        3.10.1
 Release:        0
 Summary:        Python implementation of Markdown
 License:        BSD-3-Clause
