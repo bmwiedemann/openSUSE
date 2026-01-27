@@ -15,4 +15,12 @@
     <comment>Submit rust 1.91</comment>
     <requestid>1317477</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5bd90bd3186d851acd6934bc02090b28</srcmd5>
+    <version>1.91.0</version>
+    <time>1769526423</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1329267</requestid>
+  </revision>
 </revisionlist>

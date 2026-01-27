@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 18 07:13:09 UTC 2025 - William Brown <william.brown@suse.com>
+
+- Resolve bootstrap incorrectly using lld
+
+-------------------------------------------------------------------
 Thu Nov 13 02:11:01 UTC 2025 - William Brown <william.brown@suse.com>
 
 - bsc#1253321 - resolve issue during linking due to missing requires

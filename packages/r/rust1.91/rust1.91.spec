@@ -617,10 +617,9 @@ RUSTC_LOG=rustc_codegen_ssa::back::link=info %{rust_root}/bin/rustc -C link-args
   --set llvm.link-jobs=0 \
   --set llvm.clang=false \
   --set target.%{rust_triple}.profiler=true \
-  %{?with_llvmtools: --set llvm.use-linker=lld } \
+  %{?with_llvmtools: --set llvm.use-linker=lld --set rust.use-lld=true } \
   --default-linker=%{rlinker} \
   --set rust.lld=true \
-  --set rust.use-lld=true \
   %{?with_sccache: --enable-sccache} \
   %{!?with_sccache: --enable-ccache} \
   --disable-docs \
