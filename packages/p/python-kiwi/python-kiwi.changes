@@ -1,4 +1,822 @@
 -------------------------------------------------------------------
+Mon Jan 26 12:08:10 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.36 → 10.2.37
+
+-------------------------------------------------------------------
+Mon Jan 26 12:02:59 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move fedora arm build test to dnf5
+
+-------------------------------------------------------------------
+Mon Jan 26 11:52:49 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Explicitly list dnf as a package to help OBS
+
+  If not mentioned explicitly OBS does not place it into
+  the repositories to build the image from
+
+-------------------------------------------------------------------
+Mon Jan 26 11:42:04 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move fedora container build test to dnf5
+
+-------------------------------------------------------------------
+Mon Jan 26 11:00:21 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move remaining fedora build tests to dnf5
+
+-------------------------------------------------------------------
+Fri Jan 23 16:14:21 CET 2026 - Neal Gompa <ngompa@velocitylimitless.com>
+
+- Reapply "Set CentOS 9 integration tests to use dnf4 explicitly"
+
+  This reverts commit 31a0171bbbc9c8ec8319bff48c7de528082a1486.
+
+-------------------------------------------------------------------
+Fri Jan 23 16:14:19 CET 2026 - Neal Gompa <ngompa@velocitylimitless.com>
+
+- Reapply "Set CentOS 10 integration tests to use dnf4 explicitly"
+
+  This reverts commit 9fe29d9925fd3f0866e7c89c6a9573b1fc310a63.
+
+-------------------------------------------------------------------
+Fri Jan 23 16:12:31 CET 2026 - Neal Gompa <ngompa@velocitylimitless.com>
+
+- Identify the correct binary for DNF4
+
+  This is pretty much the same solution we used back when we supported
+  YUM and had to deal with yum vs yum-deprecated.
+
+-------------------------------------------------------------------
+Fri Jan 23 15:21:39 CET 2026 - Neal Gompa <ngompa@velocitylimitless.com>
+
+- Revert "Set CentOS 9 integration tests to use dnf4 explicitly"
+
+  This causes the environment to not have /usr/bin/dnf.
+
+  This reverts commit b2c4760e2f6ae9ac4fa71a622a89445c572217b4.
+
+-------------------------------------------------------------------
+Fri Jan 23 15:21:20 CET 2026 - Neal Gompa <ngompa@velocitylimitless.com>
+
+- Revert "Set CentOS 10 integration tests to use dnf4 explicitly"
+
+  This causes the environment to not have /usr/bin/dnf.
+
+  This reverts commit df77cba989eb80be66fad5c3ce5630287a72e7ea.
+
+-------------------------------------------------------------------
+Fri Jan 23 15:19:02 CET 2026 - Neal Gompa <ngompa@velocitylimitless.com>
+
+- Set CentOS 9 integration tests to use dnf4 explicitly
+
+-------------------------------------------------------------------
+Fri Jan 23 15:18:07 CET 2026 - Neal Gompa <ngompa@velocitylimitless.com>
+
+- Set CentOS 10 integration tests to use dnf4 explicitly
+
+  Also, fix the description of the tests to state it's for CentOS 10.
+
+-------------------------------------------------------------------
+Fri Jan 23 15:16:42 CET 2026 - Neal Gompa <ngompa@velocitylimitless.com>
+
+- Revert "Switch centos v10 integration tests to dnf5"
+
+  DNF5 does not exist in CentOS 10 yet.
+
+  This reverts commit a722acedc512528c1d73bd5c99d1cd2227c8beab.
+
+-------------------------------------------------------------------
+Fri Jan 23 12:09:04 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Switch centos v10 integration tests to dnf5
+
+-------------------------------------------------------------------
+Fri Jan 23 09:53:07 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix agama integration test
+
+  Service agama-proxy-setup no longer exists
+
+-------------------------------------------------------------------
+Thu Jan 22 18:28:59 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix fedora integration test build
+
+  Explicitly add shadow package
+
+-------------------------------------------------------------------
+Thu Jan 22 17:31:01 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix fedora integration test build
+
+  Explicitly add shadow package
+
+-------------------------------------------------------------------
+Wed Jan 21 15:25:29 CET 2026 - Neal Gompa <neal@gompa.dev>
+
+- package/spec: Reorganize supported DNF variants in packaging
+
+  DNF5 has replaced DNF4 and MicroDNF since Fedora Linux 41, and this
+  replacement will take effect with CentOS Stream/RHEL 11 onward.
+
+  Furthermore, openSUSE Tumbleweed is switching to DNF5 for its support
+  of DNF, so switch things so that DNF5 is available for openSUSE.
+
+-------------------------------------------------------------------
+Tue Jan 20 17:49:27 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move OVA support to open-vmdk
+
+  Finally this commit drops the use of the VMware ovftool
+  and moves to the real opensource alternative open-vmdk
+  This Fixes #2292
+
+-------------------------------------------------------------------
+Fri Jan 16 10:30:01 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add staging box build to build_status helper
+
+-------------------------------------------------------------------
+Fri Jan 16 08:05:44 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow to setup the environment blob for grub
+
+  Added new <environment> section to the existing <bootloadersettings>
+  section which allows to specify environment variables for setting
+  up an environment blob for the selected loader. With this commit
+  we add support for grub by using grub2-editenv. Other loaders
+  do not yet have an implementation or does not support environment
+  blobs. Settings will be ignored for unsupported loaders.
+  This Fixes #2922
+
+  Co-authored-by: Rhys Oxenham <rhys.oxenham@suse.com>
+
+-------------------------------------------------------------------
+Fri Jan 16 08:04:53 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add missing base class method
+
+  The BootLoaderInstallBase class was missing the default
+  implementation for the set_disk_password API
+
+-------------------------------------------------------------------
+Tue Jan 13 18:04:31 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Set btrfs_relative_path conditional
+
+  The early boot script and also the ISO template should only
+  set this option if the conditions to set it are met. Conditions
+  for this option are if btrfs is in use and a default subvolume
+  and/or a snapper based snapshot is requested by the image
+  description. This Fixes #2919
+
+-------------------------------------------------------------------
+Fri Jan 09 12:03:04 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed ramdisk sysroot generator
+
+  Do not use a custom _dev name and stick with the UUID representation
+  of the disk image in RAM after deployment. Former versions of udev
+  did not create a by-uuid device representation which now seems to
+  have changed. This then leads to the device name RamDisk_rootfs
+  not being created the and respective .device unit times out.
+  In addition the timer unit for the standard device representation
+  changed to infinity. This fixes bsc#1254116
+
+-------------------------------------------------------------------
+Wed Jan 07 15:36:26 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix integration tests
+
+  Tests using btrfs snapshots with snapper has to
+  install snapper
+
+-------------------------------------------------------------------
+Wed Jan 07 15:12:41 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.35 → 10.2.36
+
+-------------------------------------------------------------------
+Wed Jan 07 14:47:13 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update CA target distribution name
+
+  Instead of rhel better name it redhat
+
+-------------------------------------------------------------------
+Wed Jan 07 10:45:16 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.34 → 10.2.35
+
+-------------------------------------------------------------------
+Sat Jan 03 21:54:16 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add dracut to strip list
+
+  Make sure legacy image builds which uses kiwi to create
+  an initrd keeps dracut such that the initrd format detection
+  continuous to work with the new dracut --printconfig option
+
+-------------------------------------------------------------------
+Thu Jan 01 01:38:02 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update Fedora integration test
+
+  Use custom partition IDs for the Virtual profiles with
+  and without an extra boot partition
+
+-------------------------------------------------------------------
+Thu Jan 01 01:33:31 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add documentation about new attributes
+
+  Add information about eficsmpart_id
+
+-------------------------------------------------------------------
+Thu Jan 01 01:32:38 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for eficsmpart_id attribute
+
+  Allow custom partition number also for the
+  EFI CSM (legacy BIOS) partition
+
+-------------------------------------------------------------------
+Wed Dec 31 11:04:49 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add documentation about new attributes
+
+  Add information about part_id, efipart_id, rootpart_id
+  and bootpart_id
+
+-------------------------------------------------------------------
+Tue Dec 23 16:25:15 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added test-image-amazon-linux-layout build test
+
+  This Fixes #2848
+
+-------------------------------------------------------------------
+Tue Dec 23 15:30:06 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for custom part id attributes
+
+  efipart_id, rootpart_id, bootpart_id in <type> and
+  part_id in <partition>. Allow to specify a custom partition
+  number instead of the default numbering schema 1-N
+
+-------------------------------------------------------------------
+Wed Dec 17 15:07:56 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for custom partition ID to Disk
+
+  Allow to specify a custom partition ID in the Disk
+  class interface and API. As of today the new parameter
+  partition_id in the ptable_entry_type record is not
+  in use by the current kiwi image description schema.
+  This change will be a followup to the API change and
+  needs further conversation upstream first. The code
+  changes here are based on the work from:
+
+  Co-authored-by: Caleb Wolfe <cwolfe651@gmail.com>
+  Co-authored-by: Caleb Wolfe (Amazon) <xcawolfe@amazon.com>
+  Assisted-by: Claude Opus 4.5 <noreply@anthropic.com>
+
+  This is related to #2917
+
+-------------------------------------------------------------------
+Wed Dec 17 13:13:08 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for custom partition ID to Partitioner
+
+  Allow to specify a custom partition ID in the Partitioner
+  class interface and API. The code changes here are based
+  on the work from:
+
+  Co-authored-by: Caleb Wolfe <cwolfe651@gmail.com>
+  Co-authored-by: Caleb Wolfe (Amazon) <xcawolfe@amazon.com>
+  Assisted-by: Claude Opus 4.5 <noreply@anthropic.com>
+
+  This is related to #2917
+
+-------------------------------------------------------------------
+Mon Dec 15 11:08:14 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Set fixed permissions for image root directory
+
+  The new root directory (/) for an image build is created
+  by taking the current system umask into account. However,
+  if that umask setting is not appropriate for the needs
+  of the image root directory some hard to debug after
+  effects can appear on the later run of the image binary.
+  As such this commit changes the permissions for the root
+  directory explicitly to the expected value.
+  This Fixes #2920
+
+-------------------------------------------------------------------
+Fri Dec 12 11:58:59 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix initrd outputfile format detection
+
+  With dracut-ng the output file format is a configuration
+  option. The detection mechanics must be extended by also
+  looking at the combined configuration settings which can
+  be obtained via the new --printconfig dracut option.
+  This commit adds the additional check if the used dracut
+  command supports that option. This Fixes #2918
+
+-------------------------------------------------------------------
+Sun Dec 07 19:51:40 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix unit tests when SOURCE_DATE_EPOCH is set
+
+  There are some unit tests which failed when the call environment
+  has SOURCE_DATE_EPOCH set. This commit fixes it. This Fixes #2912
+
+-------------------------------------------------------------------
+Fri Dec 05 17:53:31 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed btrfs mount procedure
+
+  If root is not a snapshot and the root volume is
+  not (/) we forgot to self bind mount the root volume.
+  This must happen in the volume manager because if
+  done later it would shadow any other mountpoint
+
+-------------------------------------------------------------------
+Fri Dec 05 17:51:49 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update integration tests
+
+  Update and extend integration tests with disk.sh examples.
+  Add a call to check that it knows about (/) and provide
+  proper output such that it can be checked by reading
+  the build logs
+
+-------------------------------------------------------------------
+Fri Dec 05 12:39:55 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix time mock when no SOURCE_DATE_EPOCH is present
+
+-------------------------------------------------------------------
+Fri Dec 05 12:24:12 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix unit tests
+
+  Missing os.path.getsize mock when called on an non existing file
+  This is related to Issue #2912
+
+-------------------------------------------------------------------
+Fri Dec 05 10:26:02 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Run disk.sh script hook with / being a mountpoint
+
+  Add optional root_is_mountpoint parameter to the _call_script
+  method. When set the provided root path is turned into a bind
+  mount such that it appears as / being a mountpoint in the
+  chrooted call. Apply the argument to the call_disk_script
+  method such that is becomes effective for the disk.sh
+  script hook.
+
+-------------------------------------------------------------------
+Tue Dec 02 17:59:46 CET 2025 - Rhys Oxenham <rhys.oxenham@suse.com>
+
+- Adding support for import of custom certificates
+
+  This commit adds support for providing custom CA certificates
+  during the build process. It allows a user to specify one ore
+  more CA file(s) via the new <certificates> section and/or
+  via the command line. The certificate files will be imported
+  directly after the image bootstrap has finished (where the
+  required CA update tools are available), but before any
+  further packages are retrieved, solving for situations where
+  the chroot environment needs certificates, e.g. when there's
+  a proxy server in the build environment.
+
+  Co-authored-by: Marcus Schaefer <marcus.schaefer@gmail.com>
+
+-------------------------------------------------------------------
+Thu Nov 27 12:44:14 CET 2025 - Dmitri Popov <dpopov@suse.com>
+
+- Add brd driver note (#2906)
+
+-------------------------------------------------------------------
+Wed Nov 26 10:41:06 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add registration utility
+
+-------------------------------------------------------------------
+Tue Nov 25 10:20:31 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added IBM secure execution test build for leap
+
+  Simple disk build enabling secure execution and attestation
+  for testing in the IBM Cloud and the SUSE s390 Infra.
+  Please note: UV attestation only works on z16, as long as
+  the SUSE infra is z15 based you won't be able to test
+  attestation
+
+-------------------------------------------------------------------
+Tue Nov 25 09:02:07 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.33 → 10.2.34
+
+-------------------------------------------------------------------
+Mon Nov 24 17:06:46 CET 2025 - Eduardo Mínguez <eduardo.minguez@suse.com>
+
+- Minor typo
+
+-------------------------------------------------------------------
+Sun Nov 23 10:06:44 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add console setup for Fedora integration test
+
+  Update fedora/test-image-live-disk and setup two output
+  consoles and one input console
+
+-------------------------------------------------------------------
+Sat Nov 22 19:20:08 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Improve grub console setup
+
+  The console attribute in the bootloader section was used to
+  target both, output and input console setup using a space separator.
+  However, there can be multiple consoles specified for output
+  and input consoles and that turns the idea to handle both in
+  one attribute into a mess. This commit drops the console attribute
+  and offers two new attributes output_console and input_console which
+  can define multiple consoles each using space as a separator.
+  For example:
+
+  <bootloader ... output_console="console serial" input_console="console"/>
+
+  This change comes with a schema version bump to v8.4
+  An automatic XSL transformation template for the old console
+  attribute into the new output_console and input_console
+  attributes is also part of this commit.
+
+  This Fixes #2886
+
+-------------------------------------------------------------------
+Fri Nov 21 18:39:53 CET 2025 - Robert Schneider <robert.schneider03@sap.com>
+
+- Warn if keymap is unsupported via systemd
+
+  Some OS don't support the way systemd is dealing with keymaps (e.g.
+  Debian, see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=790955).
+  If we try to set the keymap using `systemd-firstboot --keymap`, this
+  will fail, and the error message from `systemd-firstboot` is misleading:
+  it states that the keymap is not installed.
+
+  I couldn't find out how to reliably detect if systemd's keymap
+  management is supported, so instead, we provide a hint in the error
+  message if `systemd-firstboot --keymap` fails that the reason could be
+  that it's unsupported.
+
+  Fixes #2904
+
+  More generic keymap/systemd error message + dedent
+
+  Adds test of warning if keymap setting unsupported
+
+  Fix linter complaints about formatting
+
+  Run keymap check under chroot
+
+  We're interested in the capabilities of the target system, since we also
+  run `systemd-firstboot --keymap` in there.
+
+  Fixup for setup_test after chroot'ing localectl
+
+  Remove localectl call
+
+  It talks to systemd.
+
+  Fix tests for keymap
+
+-------------------------------------------------------------------
+Mon Nov 17 15:24:38 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed spec file requires
+
+  The package requirement for binutils was set to TW (>=1650)
+  only but is also required for SLES16/Leap16 which is 1600
+  This commit fixes the condition to match with all required
+  distributions and fixes bsc#1253637
+
+-------------------------------------------------------------------
+Fri Nov 14 15:17:14 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for encryped live images
+
+  So far setting the luks= attribute on a live image build had
+  no impact to the generated ISO image. This commit adds the
+  encryption capability also for live ISO images. The read-only
+  part of the rootfs gets encrypted using the provided luks
+  passphrase. An eventual persistent storage area gets encrypted
+  at boot time if the rd.live.encrypt kernel cmdline parameters
+  is passed. encryption/decryption requires to interactively
+  set/provide passhphrase information at boot time. Please note
+  due to the read-only restrictions of an ISO image there is no
+  way to apply the standard re-encryption process as it is
+  usually performed by kiwi encrypted systems. As such the
+  specified luks passphrase in the kiwi image descriptions
+  becomes sensitive information that needs to be protected
+
+-------------------------------------------------------------------
+Fri Nov 14 13:55:25 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix repo type setup when set from cmdline
+
+  Using --add-repo/--set-repo options on the commandline
+  allows to skip the repotype setting by passing in an empty
+  value. That empty value however caused the type attribute
+  in a repository section to be set to an empty string which
+  is not allowed by the schema. Instead an empty type should
+  lead to no type attribute set at all. This commit fixes it
+
+-------------------------------------------------------------------
+Mon Nov 10 16:34:40 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- poetry doesn't seem to work with py3.9 anymore
+
+-------------------------------------------------------------------
+Fri Nov 07 17:02:55 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for s390 UV-attestation
+
+  To run pvattest perform an attestation request binary as
+  well as the corresponding attestation key and the secure
+  execution header is required. This data should be created
+  as part of the image build. In this commit we are adding
+  support for creating the attestation data when building
+  a secure execution enabled image
+
+-------------------------------------------------------------------
+Fri Oct 31 09:52:41 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop unused recreate_last_partition
+
+-------------------------------------------------------------------
+Wed Oct 29 12:35:03 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update slfo/test-image-disk-simple test build
+
+  Activate selinux for testing transparent containers
+
+-------------------------------------------------------------------
+Tue Oct 28 12:49:34 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop root only resize restriction
+
+  The current kiwi-resize code was restricted to the root
+  partition for historical reasons. As in a partition table
+  only the last partition can resize, this should be the only
+  limitation for the resize code to perform its job. In
+  connection with the rd.kiwi.install.retain_last feature
+  it is also very likely that the last partition is not
+  the root partition but it should be properly restored by
+  the resize code after deployment
+
+-------------------------------------------------------------------
+Mon Oct 27 14:51:50 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add rd.kiwi.install.systemsize kernel boot option
+
+  In a kiwi repart process the <oem-systemsize> element allows to
+  control the size of the partition to hold the rootfs. This commit
+  allows to dynamically overwrite the static value, or set it via
+  a kernel cmdline parameter
+
+-------------------------------------------------------------------
+Fri Oct 24 20:51:43 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add integration test build for retain feature
+
+-------------------------------------------------------------------
+Fri Oct 24 12:49:14 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add rd.kiwi.install.retain_last deployment option
+
+  Instructs an OEM installation to retain the contents of the
+  last partition on the target disk. This setting is only useful
+  if the last partition does not belong to the main OS e.g. an
+  extra data partition added via the spare_part attribute in
+  the type setup of the image description. The implementation
+  also checks if the start address of the last partition on the
+  target disk matches with the start adress of the image to be
+  deployed. Only if they match the data on the last partition
+  can be retained.
+
+-------------------------------------------------------------------
+Tue Oct 21 18:05:58 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added az-cli-cmd to SLFO integration test
+
+-------------------------------------------------------------------
+Mon Oct 06 17:40:25 CEST 2025 - Josef Ottl <j.ottl@edgizer.com>
+
+- fix: root repartitioning for root on raid: do not device lock not yet started RaidDev, set partition type to fd for raid, assemble once after repart with devicesize update
+
+-------------------------------------------------------------------
+Wed Oct 01 12:08:12 CEST 2025 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Support SOURCE_DATE_EPOCH for OCI containers
+
+  If SOURCE_DATE_EPOCH is available, use it for the container creation
+  time and history.
+
+-------------------------------------------------------------------
+Sun Sep 28 10:49:20 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix ci-config-functions.yml workflow
+
+  Pip as root has issues installing modules already present on the
+  system. Thus let's perform actions that are not required to run
+  as root to be done by the standard user.
+
+-------------------------------------------------------------------
+Sun Sep 28 10:38:13 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add handling for stale issues and PRs
+
+  As discussed in the community meeting stale issues and PRs
+  will be warned and stale labeled after 60 days. In the
+  community meeting we will go over all stale PRs and close
+  them on agreement. We will also look on stale issues and
+  decide if closing them is useful or not. There will never
+  be an auto-close.
+
+-------------------------------------------------------------------
+Sat Sep 27 17:43:44 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  Add information about btrfs sector size and its dependency
+  to the kernel page size for the autodetected value
+
+-------------------------------------------------------------------
+Wed Sep 17 09:53:11 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix test-image-azure integration test
+
+  Do not delete /etc/resolv.conf
+
+-------------------------------------------------------------------
+Thu Sep 11 12:23:00 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.32 → 10.2.33
+
+-------------------------------------------------------------------
+Wed Sep 10 16:32:15 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Run grub mkconfig with os-prober disabled
+
+  Set GRUB_DISABLE_OS_PROBER=true to the caller environment
+  such that it gets consumed via /etc/grub.d/30_os-prober
+  This Fixes #2883
+
+-------------------------------------------------------------------
+Wed Sep 10 16:10:13 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed typo in documentation
+
+  Invalid XML syntax, missing end tag. This Fixes #2882
+
+-------------------------------------------------------------------
+Tue Sep 02 19:30:05 CEST 2025 - Klaas Demter <Klaas-@users.noreply.github.com>
+
+- References #2474 and #2475 poweroff instead of halt on oem shutdown
+
+-------------------------------------------------------------------
+Mon Sep 01 15:42:33 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix rawhide integration test
+
+  The package shim-ia32 got dropped
+
+-------------------------------------------------------------------
+Mon Sep 01 15:16:48 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add test for profiled overlays
+
+  kiwi supports overlay files per profile, but we didn't had a
+  proper integration test for it. This commit adds one
+
+-------------------------------------------------------------------
+Mon Sep 01 10:51:56 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Mount proc when needed
+
+  Using cp -a might lookup in proc/self/.. under certain conditions.
+  Make sure to mount proc for config/function that might trigger
+  this condition. This Fixes #2876
+
+-------------------------------------------------------------------
+Mon Sep 01 10:24:51 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update test-image-custom-partitions test build
+
+  Fix patch files to match with new dracut module dirs
+
+-------------------------------------------------------------------
+Mon Sep 01 10:22:32 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update dracut version compat runtime check
+
+  Update check_dracut_module_versions_compatible_to_kiwi to match
+  with new dracut module dirs which have changed due to recommended
+  dracut module ordering for out-of-tree modules.
+
+-------------------------------------------------------------------
+Mon Sep 01 10:11:11 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix dracut Makefile install target
+
+  module dir names have changed due to recommended dracut
+  module ordering for out-of-tree modules.
+
+-------------------------------------------------------------------
+Mon Sep 01 09:58:41 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update pacman spec to dract changed module dirs
+
+  Follow up change for the fix of the recommended dracut
+  module ordering for out-of-tree modules.
+
+-------------------------------------------------------------------
+Mon Sep 01 09:52:24 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update spec file due to dract changed module dirs
+
+  Follow up change for the fix of the recommended dracut
+  module ordering for out-of-tree modules.
+
+-------------------------------------------------------------------
+Sun Aug 31 07:48:53 CEST 2025 - Jo Zzsi <jozzsicsataban@gmail.com>
+
+- Follow the recommended dracut module ordering for out-of-tree modules
+
+  In dracut release v108 or later the recommended ordering
+  for out out of tree modules is 50-59 range. The following is a section from dracut documentation:
+
+  > Not using the 50-59 range for out of tree dracut modules will likely
+  > lead to unintended errors in the initramfs generation process as your
+  > dracut module will either run too early or too late in the generation process.
+  > You have been warned.
+
+-------------------------------------------------------------------
+Fri Aug 22 11:15:59 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix agama integration test
+
+  Disable no longer existing agama-auto.service
+
+-------------------------------------------------------------------
+Fri Aug 22 10:53:48 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed agama integration test
+
+  nothing provides agama-auto anymore
+
+-------------------------------------------------------------------
+Tue Aug 19 15:54:00 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update SLFO integration test
+
+  Make sure ps tool is installed
+
+-------------------------------------------------------------------
+Fri Aug 15 10:02:17 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix exclude list for live image builds
+
+  When specifying a filesystem attribute for a live image build,
+  the rootfs gets build directly into this filesystem instead of
+  being a squashfs wraped ext4 which is the default layout for
+  compatibility reasons. In this direct filesystem mode the
+  exclude list was not passed along to the filesystem creation
+  and causes unwanted metadata to be part of the final image.
+  This Fixes #2873
+
+-------------------------------------------------------------------
+Mon Aug 11 22:26:40 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix test-image-custom-partitions integration test
+
+  Same fix as for the Tumbleweed test now also applied
+  to the Leap test. Patching of the new root device did
+  no longer apply
+
+-------------------------------------------------------------------
+Mon Aug 11 22:18:54 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix test-image-custom-partitions integration test
+
+  Patching of the new root device did no longer apply
+
+-------------------------------------------------------------------
 Mon Aug 11 17:44:15 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.2.31 → 10.2.32
@@ -686,6 +1504,27 @@ Mon Jun 02 12:27:18 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
   zipl as loader, the code to validate the targettype against
   the targetgeometry was not effective and zipl failed.
   This Fixes #2821
+
+-------------------------------------------------------------------
+Fri May 30 17:05:18 CEST 2025 - David Cassany <dcassany@suse.com>
+
+- Refactor snapshots logic in a new SnapshotManager factory
+
+  This commit introduces the SnapshotManager factory to abstract Snapper
+  specific logic into its own class.
+
+  It also updates unit tests to reach full coverage. It essentially
+  adds a new snapper unit tests suite and it refactors the volume manager
+  tests suite.
+
+  Signed-off-by: David Cassany <dcassany@suse.com>
+
+-------------------------------------------------------------------
+Fri May 30 10:18:00 CEST 2025 - David Cassany <dcassany@suse.com>
+
+- Use a NamedTuple for chroot bind mounts
+
+  Signed-off-by: David Cassany <dcassany@suse.com>
 
 -------------------------------------------------------------------
 Wed May 28 21:11:16 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
@@ -1706,6 +2545,28 @@ Wed Mar 12 09:12:36 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
   work. So let's drop this test build
 
 -------------------------------------------------------------------
+Mon Mar 10 10:55:14 CET 2025 - David Cassany <dcassany@suse.com>
+
+- Adding support for new snapper helpers
+
+  This commit makes use of snapper helpers to install a new
+  system where frist root is already a snapshot. Requires snapper
+  higher or equal to v0.12.1.
+
+  It also keeps old logic for backward compatibility with OSes including
+  older versions of snapper. The execution path is split based on the
+  snapper version included within the image being built.
+
+  Signed-off-by: David Cassany <dcassany@suse.com>
+
+-------------------------------------------------------------------
+Mon Mar 10 00:20:57 CET 2025 - David Cassany <dcassany@suse.com>
+
+- Little refactor to group the logic the new snapper helper provides
+
+  Signed-off-by: David Cassany <dcassany@suse.com>
+
+-------------------------------------------------------------------
 Thu Mar 06 11:32:25 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - distutils sysconfig is deprecated
@@ -1981,6 +2842,22 @@ Sat Jan 18 17:53:07 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
   to change the default package manager behavior which
   we from the kiwi side do not influence intentionally.
   This is a followup change to bsc#1235448
+
+-------------------------------------------------------------------
+Thu Jan 16 16:13:01 CET 2025 - David Cassany <dcassany@suse.com>
+
+- Adding the ChrootManager class
+
+  Chroot manager class can be used to setup
+  a chroot enviroment including an arbitrary
+  list of bind mounts. The provided paths to bind
+  are mounted in the chroot to the same actual root
+  path they are bound from.
+
+  This class is useful to setup a chroot envirment
+  based on the root-tree created on prepare step.
+
+  Signed-off-by: David Cassany <dcassany@suse.com>
 
 -------------------------------------------------------------------
 Tue Jan 14 10:52:43 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
