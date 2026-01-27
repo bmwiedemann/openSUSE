@@ -582,19 +582,6 @@ Index: loki/clients/cmd/promtail/promtail-journal.yaml
  
  clients:
    - url: http://localhost:3100/loki/api/v1/push
-Index: loki/docs/sources/operations/troubleshooting.md
-===================================================================
---- loki.orig/docs/sources/operations/troubleshooting.md
-+++ loki/docs/sources/operations/troubleshooting.md
-@@ -35,7 +35,7 @@ Promtail yet. There may be one of many r
-   them off. Here is what you can do:
-     - Start Promtail after Loki, e.g., 60 seconds later.
-     - To force Promtail to re-send log messages, delete the positions file
--      (default location `/tmp/positions.yaml`).
-+      (default location `/var/lib/promtail/positions.yaml`).
- - Promtail is ignoring targets and isn't reading any logs because of a
-   configuration issue.
-     - This can be detected by turning on debug logging in Promtail and looking
 Index: loki/examples/promtail-heroku/config.yml
 ===================================================================
 --- loki.orig/examples/promtail-heroku/config.yml
