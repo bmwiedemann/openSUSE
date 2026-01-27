@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Jan 20 11:59:03 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260120.7ecaa0c8:
+  * doc: adding  simplest_bot.py and how to create bot account instructions
+  * fix: use explicit '/'.join for url construction
+  * fix: fix split call in plat.Gitea.comment_find
+  * fix: remove the return statement in scm.OSC.checkout_package
+  * ci: add missing pygit2 dependency in test workflow
+  * fix: revert devel-project
+  * Adding initial documentation for bot framework
+  * fix: close devnull to prevent file handle leak
+  * doc: improve comment for source_info mock
+  * refactor: rework scm & platform init code
+  * refactor: move `get_path` to platform and implement it for gitea
+  * refactor: remove deprecated Gitea Action implementation for now
+  * fix: rollback CommetAPI.get_comments interface change
+  * fix: pass in git_base_url for ReviewBot
+  * fix: make request id unique on gitea
+  * fix: switch to GitPython for SHA256 repo support
+  * style: fix flaker lint issues
+  * feat: implement reviewer mode for git based bots
+  * feat: implement searching for gitea pull requests
+  * feat: implement searching requests for a specific project
+  * feat: preliminary support for comment API on gitea
+  * refactor: replace old implementation of devel-project.py
+  * refactor: make "maintainer" and "notify" command works with framework
+  * refactor: make "reviews" command work with `ReviewBot`
+  * refactor: port `requests` command to work with `ReviewBots`
+  * refactor: refactor the `list` command of devel-project to use ReviewBots
+  * fix: add stub implementation for Config.get
+  * fix: temporarily workaround file name test on Gitea
+  * chore: improve logging for skipped checks on actions
+  * chore: rename `vcs` module to `scm`
+  * style: fix style issues
+  * fix: remove vcs files to avoid confusing source validator
+  * fix: add prefix to distinguish between base and head projects
+  * fix: properly implement checkout for actions
+  * refactor: ignore MaxRetryError where HTTPError is ignored
+  * fix: add stub implementation for getting package kind
+  * fix: add stub implementation for Config.get
+  * fix: correctly obtain context from environment variables
+  * fix: load OSC config only when scm_type == 'OSC'
+  * feat: prelimitary support for check_source running as Gitea Action
+  * refactor: strip out checkout_package
+  * feat: add stub git implementation
+  * refactor: strip out get_request implementation from ReviewBot
+  * refactor: strip out get_path implementation from ReviewBot
+  * refactor: add VCS implementation for OSC
+  * refactor: add abstraction class for VC
+
+-------------------------------------------------------------------
+Tue Jan 20 11:19:14 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260120.acd88d69:
+  * gocd: enabled pipeline for Leap 16.1
+
+-------------------------------------------------------------------
 Tue Jan 13 09:49:18 UTC 2026 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20260113.a71c9a09:
