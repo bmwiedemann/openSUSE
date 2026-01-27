@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan 26 08:05:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2025.12:
+  * Add support for green, red and yellow side borders for code
+    examples
+  * Add Portuguese translation
+  * Add support for Python 3.15
+  * Convert CHANGELOG and CONTRIBUTING from .rst to .md
+  * Add zizmor to CI and fix findings
+- update to 2025.10:
+  * Add Romanian translation
+  * Add Arabic and Russian translations
+  * Add French translation
+  * Update authors in `pyproject.toml`
+  * Add link to devguide in README
+
+-------------------------------------------------------------------
 Thu Oct  9 07:10:41 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 2025.9.2

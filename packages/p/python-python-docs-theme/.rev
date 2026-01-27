@@ -158,4 +158,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1311626</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0d82b54a014033cb6e7b789afca7a59b</srcmd5>
+    <version>2025.12</version>
+    <time>1769526393</time>
+    <user>anag_factory</user>
+    <comment>- update to 2025.12:
+  * Add support for green, red and yellow side borders for code
+    examples
+  * Add Portuguese translation
+  * Add support for Python 3.15
+  * Convert CHANGELOG and CONTRIBUTING from .rst to .md
+  * Add zizmor to CI and fix findings
+- update to 2025.10:
+  * Add Romanian translation
+  * Add Arabic and Russian translations
+  * Add French translation
+  * Update authors in `pyproject.toml`
+  * Add link to devguide in README</comment>
+    <requestid>1329147</requestid>
+  </revision>
 </revisionlist>
