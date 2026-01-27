@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 26 09:17:55 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Add 0001-Detect-CDROM-media-changes-using-ID_FD_UUID-udev-pro.patch (bsc#1255667)
+
+  This patch ensures Thunar only reacts to genuine media insertions, ignoring
+  irrelevant uevents.
+
+-------------------------------------------------------------------
 Fri Jan 23 17:21:41 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 4.20.7
