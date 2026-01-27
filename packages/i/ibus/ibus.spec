@@ -1,7 +1,7 @@
 #
 # spec file for package ibus
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -84,7 +84,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-dbus-python-devel
 BuildRequires:  python3-gobject-devel
 BuildRequires:  unicode-ucd
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(dconf) >= 0.7.5
 BuildRequires:  pkgconfig(gtk+-2.0)
@@ -299,8 +298,6 @@ touch %{buildroot}/%{_sysconfdir}/dconf/db/ibus
 # install macros
 mkdir -p %{buildroot}%{_rpmmacrodir}
 install -m 644 %{SOURCE7} %{buildroot}%{_rpmmacrodir}
-
-%suse_update_desktop_file -r org.freedesktop.IBus.Setup Settings DesktopSettings X-SuSE-Core-System
 
 %fdupes %{buildroot}
 
