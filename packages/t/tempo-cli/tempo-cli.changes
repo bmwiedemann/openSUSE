@@ -1,4 +1,273 @@
 -------------------------------------------------------------------
+Tue Jan 27 06:12:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.10.0:
+  * [tempo-cli] add suggest dedicated columns cli command (#6131)
+  * [DOC] 2.10: vParquet5, TraceQL, tempo-cli, dedicated columns
+    (#6186)
+  * chore(deps): update anchore/sbom-action action to v0.21.1
+    (#6222)
+  * fix(deps): update module github.com/minio/minio-go/v7 to
+    v7.0.98 (#6215)
+  * chore(deps): update memcached:1.6.40 docker digest to e4e5eca
+    (#6208)
+  * chore(deps): update memcached:1.6.40 docker digest to 894f7a8
+    (#6206)
+  * chore(deps): update actions/setup-go digest to 7a3fe6c (#6200)
+  * chore(deps): update memcached:1.6.40 docker digest to 8a42412
+    (#6201)
+  * chore(deps): update docker (#6194)
+  * chore(deps): update grafana/writers-toolkit digest to e6666bc
+    (#6181)
+  * chore(deps): update dependency
+    github.com/grafana/rollout-operator/operations/rollout-operator
+    to v0.33.0 (#6175)
+  * chore(deps): update docker.redpanda.com/redpandadata/console
+    docker tag to v2.8.10 (#6176)
+  * fix(deps): update module google.golang.org/api to v0.259.0
+    (#6174)
+  * chore(deps): update otel/opentelemetry-collector docker tag to
+    v0.143.1 (#6172)
+  * fix(deps): update module github.com/golangci/golangci-lint/v2
+    to v2.8.0 (#6173)
+  * fix(deps): update module github.com/prometheus/common to
+    v0.67.5 (#6171)
+  * fix(deps): update opentelemetry-otel to v1.39.0 (#6168)
+  * fix(deps): update module google.golang.org/grpc to v1.78.0
+    (#6165)
+  * fix(deps): update module github.com/googleapis/gax-go/v2 to
+    v2.16.0 (#6163)
+  * chore(deps): update actions/cache action to v5 (#6157)
+  * fix(deps): update module github.com/parquet-go/parquet-go to
+    v0.26.4 (#6156)
+  * fix(deps): update module google.golang.org/api to v0.258.0
+    (#6164)
+  * fix(deps): update module cloud.google.com/go/storage to v1.58.0
+    (#6162)
+  * chore(deps): update otel/opentelemetry-collector docker tag to
+    v0.142.0 (#6161)
+  * fix(deps): update module github.com/pierrec/lz4/v4 to v4.1.23
+    (#6153)
+  * chore(deps): update github artifact actions (#6158)
+  * chore(deps): update k8s.io to v0.35.0 (#6155)
+  * fix(deps): update module github.com/twmb/franz-go to v1.20.6
+    (#6154)
+  * chore(deps): update memcached docker tag to v1.6.40 (#6151)
+  * fix(deps): update module github.com/jedib0t/go-pretty/v6 to
+    v6.7.8 (#6152)
+  * fix(deps): update google.golang.org/genproto/googleapis/rpc
+    digest to 0a764e5 (#6147)
+  * fix(deps): update module github.com/axiomhq/hyperloglog to
+    v0.2.6 (#6149)
+  * chore(deps): update actions/create-github-app-token action to
+    v2.2.1 (#6148)
+  * fix(deps): update github.com/twmb/franz-go/pkg/kfake digest to
+    0c71f7e (#6146)
+  * chore(deps): update grafana/writers-toolkit digest to a6040b2
+    (#6145)
+  * fix(deps): update module github.com/olekukonko/tablewriter to
+    v1 (#5920)
+  * chore(deps): update grafana/writers-toolkit digest to 6d7ddb2
+    (#6122)
+  * chore(deps): update grafana/alloy docker tag to v1.12.1 (#6118)
+  * chore(deps): update anchore/sbom-action action to v0.21.0
+    (#6120)
+  * chore(deps): update grafana/grafana docker tag to v12.3.1
+    (#6119)
+  * chore(deps): update docker (#6109)
+  * chore(deps): update grafana/shared-workflows/ action to (#6054)
+  * chore(deps): update module github.com/expr-lang/expr to v1.17.7
+    [security] (#6092)
+  * Upgrade to Go 1.25.5 (#6096)
+  * Upgrade tools to go 1.25.5 (#6089)
+  * fix(deps): update module golang.org/x/net to v0.48.0 (#6042)
+  * fix(deps): update module github.com/jedib0t/go-pretty/v6 to
+    v6.7.5 (#6067)
+  * fix(deps): update module github.com/mark3labs/mcp-go to v0.43.2
+    (#6068)
+  * fix(deps): update github.com/twmb/franz-go/pkg/kfake digest to
+    c3eeb81 (#6024)
+  * fix(deps): update module github.com/uber-go/atomic to v1.11.0
+    (#5905)
+  * fix(deps): update github.com/grafana/gomemcache digest to
+    74f9354 (#6057)
+  * chore(deps): update grafana/writers-toolkit digest to 9cd40a7
+    (#6055)
+  * fix(deps): update github.com/grafana/e2e digest to 9884d3f
+    (#6056)
+  * fix(deps): update module go.uber.org/zap to v1.27.1 (#6060)
+  * chore(deps): update actions/create-github-app-token action to
+    v2.2.0 (#6061)
+  * chore(deps): update k8s.io to v0.34.3 (#6059)
+  * chore(deps): update anchore/sbom-action action to v0.20.10
+    (#6058)
+  * chore(deps): update actions/setup-go digest to 4dc6199 (#6052)
+  * fix(deps): update module google.golang.org/api to v0.257.0
+    (#6029)
+  * fix(deps): update module golang.org/x/tools to v0.40.0 (#6044)
+  * fix(deps): update module golang.org/x/sync to v0.19.0 (#6043)
+  * chore(deps): update actions/stale action to v10.1.1 (#6047)
+  * chore(deps): update grafana/shared-workflows/dockerhub-login
+    action to v1.0.3 (#6048)
+  * chore(deps): update memcached:1.6.39 docker digest to 462fa77
+    (#5963)
+  * chore(deps): update grafana/grafana docker tag to v12.3.0
+    (#6040)
+  * fix(deps): update module github.com/twmb/franz-go to v1.20.5
+    (#6049)
+  * fix(deps): update google.golang.org/genproto/googleapis/rpc
+    digest to ff82c1b (#6025)
+  * chore(deps): update github-actions (#6036)
+  * fix(deps): update module github.com/klauspost/compress to
+    v1.18.2 (#6026)
+  * chore(deps): update grafana/alloy docker tag to v1.12.0 (#6027)
+  * cleanup: drop dependency on
+    github.com/prometheus/statsd_exporter (#6032)
+  * fix(deps): Revert bad version upgrade, revert enabling
+    automerge (#6031)
+  * fix(deps): update module github.com/grafana/tanka to v0.36.2
+    (#5885)
+  * fix(deps): update module github.com/prometheus/common to
+    v0.67.4 (#6014)
+  * Upgrade parquet-go (#6030)
+  * chore(deps): update grafana/grafana docker tag to v12 (#5889)
+  * fix(deps): update module github.com/sony/gobreaker to v1
+    (#5890)
+  * fix(deps): update google.golang.org/genproto/googleapis/rpc
+    digest to 79d6a2a (#5925)
+  * fix(deps): update github.com/twmb/franz-go/pkg/kfake digest to
+    2b5c574 (#5948)
+  * fix(deps): update module google.golang.org/grpc to v1.77.0
+    (#5971)
+  * fix(deps): update module google.golang.org/api to v0.256.0
+    (#5908)
+  * fix(deps): update module gotest.tools/gotestsum to v1.13.0
+    (#5930)
+  * fix(deps): update module golang.org/x/tools to v0.39.0 (#5970)
+  * fix(deps): update module github.com/sony/gobreaker to v0.5.0
+    (#5902)
+  * fix(deps): update module go.opentelemetry.io/proto/otlp to
+    v1.9.0 (#5887)
+  * fix(deps): update module github.com/jedib0t/go-pretty/v6 to
+    v6.7.3 (#5886)
+  * fix(deps): update module github.com/alecthomas/kong to v1.13.0
+    (#5965)
+  * chore(deps): update otel/opentelemetry-collector docker tag to
+    v0.139.0 (#5896)
+  * chore(deps): update k8s.io to v0.34.2 (#5895)
+  * Update go to 1.25.4 (#6001)
+  * Update go to 1.25.4: tools (#5939)
+  * chore(deps): update module golang.org/x/crypto to v0.45.0
+    [security] (#5987)
+  * fix(deps): update module github.com/prometheus/common to
+    v0.67.3 (#5964)
+  * fix(deps): update module github.com/twmb/franz-go to v1.20.4
+    (#5950)
+  * fix: Reverting backport.yml until
+    grafana/grafana-github-actions-go/backport is fixed (#5960)
+  * fix(deps): update module
+    github.com/azure/azure-sdk-for-go/sdk/azidentity to v1.13.1
+    (#5926)
+  * fix(deps): update module cloud.google.com/go/storage to v1.57.2
+    (#5949)
+  * chore(deps): update module golang.org/x/crypto to v0.43.0
+    [security] (#5944)
+  * [bugfix] Wrong sleep duration if one of partitions is inactive
+    (#5855)
+  * fix(deps): update module golang.org/x/sync to v0.18.0 (#5906)
+  * chore(deps): update grafana/grafana docker tag to v10 (#5915)
+  * chore(deps): update actions/checkout action to v5 (#5888)
+  * fix(deps): update module mvdan.cc/gofumpt to v0.9.2 (#5910)
+  * chore(deps): update grafana/shared-workflows/get-vault-secrets
+    action to v1.3.0 (#5894)
+  * chore(deps): update grafana/shared-workflows/login-to-gar
+    action to v1.0.1 (#5917)
+  * chore(deps): update grafana/grafana docker tag to v8 (#5913)
+  * fix(deps): update module github.com/google/go-jsonnet to
+    v0.21.0 (#5899)
+  * fix(deps): update module golang.org/x/tools to v0.38.0 (#5907)
+  * fix(deps): update module github.com/spf13/viper to v1.21.0
+    (#5903)
+  * fix(deps): update module github.com/jsternberg/zap-logfmt to
+    v1.3.0 (#5900)
+  * fix(deps): update google.golang.org/genproto/googleapis/rpc
+    digest to f26f940 (#5803)
+  * fix(deps): update module
+    github.com/azure/azure-sdk-for-go/sdk/azcore to v1.20.0 (#5897)
+  * fix(deps): update github.com/twmb/franz-go/pkg/kfake digest to
+    d7de413 (#5893)
+  * chore(deps): pin dependencies (#5873)
+  * fix(deps): update module github.com/minio/minio-go/v7 to
+    v7.0.97 (#5878)
+  * chore(deps): update grafana/alloy docker tag to v1.11.3 (#5882)
+  * chore(deps): update docker (#5881)
+  * fix(deps): update module github.com/twmb/franz-go to v1.20.3
+    (#5880)
+  * fix(deps): update module github.com/prometheus/prometheus to
+    v0.307.3 (#5879)
+  * fix(deps): update module github.com/go-logfmt/logfmt to v0.6.1
+    (#5877)
+  * chore(deps): update memcached docker tag to v1.6.39 (#5875)
+  * chore(deps): update grafana/shared-workflows/dockerhub-login
+    action to v1.0.2 (#5874)
+  * build(deps): bump grafana/writers-toolkit (#5841)
+  * build(deps): bump cloud.google.com/go/storage from 1.56.0 to
+    1.57.1 (#5840)
+  * fix(deps): update github.com/grafana/dskit digest to a6f1538
+    (#5860)
+  * chore(deps): update grafana monorepo (#5870)
+  * chore(deps): update dependabot/fetch-metadata digest to 5a70a1d
+    (#5745)
+  * Bump actions/stale from 9.1.0 to 10.1.0 (#5729)
+  * build(deps): bump
+    go.opentelemetry.io/contrib/exporters/autoexport (#5839)
+  * chore(deps): update anchore/sbom-action action to v0.20.9
+    (#5804)
+  * build(deps): bump github.com/twmb/franz-go/pkg/kadm (#5800)
+  * build(deps): bump github.com/prometheus/common from 0.67.1 to
+    0.67.2 (#5842)
+  * build(deps): bump
+    github.com/Azure/azure-sdk-for-go/sdk/storage/azblob (#5797)
+  * build(deps): update grafana/shared-workflows requirement to
+    ae92934a14a48b94494dbc06d74a81d47fe08a40 (#5843)
+  * build(deps): bump github.com/mark3labs/mcp-go from 0.37.0 to
+    0.43.0 (#5844)
+  * build(deps): bump google.golang.org/api from 0.251.0 to 0.254.0
+    (#5845)
+  * Update Prometheus to v0.307.2, OTel collector contrib to
+    v0.138.0, OTel to v1.44.0 (#5810)
+  * fix(deps): update github.com/grafana/dskit digest to 10fce42
+    (#5749)
+  * chore(deps): update github.com/grafana/memberlist digest to
+    5cd332c (#5746)
+  * chore(deps): update grafana/shared-workflows/ action to (#5792)
+  * Bump github.com/prometheus/client_golang from 1.23.0 to 1.23.2
+    (#5731)
+  * chore(deps): update grafana/writers-toolkit digest to f7597da
+    (#5793)
+  * fix(deps): update github.com/grafana/e2e digest to 3cea6f6
+    (#5768)
+  * fix(deps): update github.com/grafana/gomemcache digest to
+    65a671e (#5769)
+  * Bump github.com/twmb/franz-go from 1.18.1 to 1.20.0 (#5766)
+  * chore(deps): update grafana/shared-workflows/ action to (#5747)
+  * chore(deps): update grafana/writers-toolkit digest to d87843b
+    (#5748)
+  * Bump github.com/jedib0t/go-pretty/v6 from 6.6.7 to 6.6.8
+    (#5531)
+  * Bump actions/checkout from 4 to 5 (#5528)
+  * Bump grafana/writers-toolkit (#5707)
+  * Bump github.com/go-viper/mapstructure/v2 from 2.3.0 to 2.4.0 in
+    /tools (#5562)
+  * Bump google.golang.org/api from 0.247.0 to 0.251.0 (#5708)
+  * Bump anchore/sbom-action from 0.20.4 to 0.20.6 (#5669)
+  * Bump actions/create-github-app-token from 2.1.0 to 2.1.4
+    (#5649)
+  * Bump actions/setup-go from 5 to 6 (#5621)
+  * Bump github.com/prometheus/prometheus from 0.304.2 to 0.306.0
+    (#5671)
+
+-------------------------------------------------------------------
 Wed Jan 21 06:10:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.9.1:
