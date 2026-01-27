@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 26 07:33:31 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260124
+  + add xterm+indirect16, vt100+keypad+emul, putty-direct,
+    putty-direct16, wezterm-direct, wezterm-direct16
+    (patch by Jakub Horky)
+  + add Smol/Rmol to ms-terminal, konsole, iTerm2 (report by Jared
+    Finder)
+  + add ecma+overline -TD
+  + update configure macros
+- Port ncurses-6.6.dif
+- Add description to ncurses-5.9-ibm327x.dif
+
+-------------------------------------------------------------------
 Mon Jan 19 07:17:50 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20260117

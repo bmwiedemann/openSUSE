@@ -1,10 +1,16 @@
+With sclp use full ansi+cup instead of cup only as it can do this.
+With ibm327x allow colors and ANSI escape sequences for coloring,
+line graphics, and more as 3270 can do this.  Nevertheless the
+local x3270 access layer is not direct connected to the remote
+terminal or the shell or any other program therein (no keys).
+
 ---
  misc/terminfo.src |   18 +++++++++++++++---
  1 file changed, 15 insertions(+), 3 deletions(-)
 
 --- misc/terminfo.src
 +++ misc/terminfo.src	2025-05-05 07:10:18.639838164 +0000
-@@ -1252,7 +1252,7 @@ sclp|IBM s390 driver for Linux,
+@@ -1255,7 +1255,7 @@ sclp|IBM s390 driver for Linux,
  	cols#80, lines#24,
  	acsc=``aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~,
  	bel=^G, blink=\E[5m, cr=\r, cub1=^H, cud1=\n,
@@ -13,7 +19,7 @@
  	dl=\E[%p1%dM, dl1=\E[M, ech=\E[%p1%dX, el1=\E[1K,
  	enacs=\E)0, ht=^I, ich=\E[%p1%d@, ind=\ED, is2=\Ec,
  	kf5=\E[15~, khome=\E[1~, nel=\EE, rc=\E8, rev=\E[7m, ri=\EM,
-@@ -1261,7 +1261,7 @@ sclp|IBM s390 driver for Linux,
+@@ -1264,7 +1264,7 @@ sclp|IBM s390 driver for Linux,
  	    \E(B%;$<2>,
  	sgr0=\E[m\E(B, smacs=\E(0$<2>, smul=\E[4m,
  	use=ecma+underline, use=ecma+standout, use=klone+color,
@@ -22,7 +28,7 @@
  	use=ansi+local, use=ansi+rca, use=linux+sfkeys,
  	use=vt100+pf1-pf4, use=vt220+ufkeys, use=vt220+pcedit,
  
-@@ -18306,7 +18306,19 @@ hazel|exec80|h80|he80|Hazeltine Executiv
+@@ -18340,7 +18340,19 @@ hazel|exec80|h80|he80|Hazeltine Executiv
  
  ibm327x|line mode IBM 3270 style,
  	gn,

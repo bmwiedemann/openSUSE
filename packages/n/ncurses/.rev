@@ -5533,4 +5533,21 @@
 - Port patch ncurses-6.6.dif</comment>
     <requestid>1328025</requestid>
   </revision>
+  <revision rev="320" vrev="93">
+    <srcmd5>891005815ffeda9eca348192b0d9b698</srcmd5>
+    <version>unknown</version>
+    <time>1769526447</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20260124
+  + add xterm+indirect16, vt100+keypad+emul, putty-direct,
+    putty-direct16, wezterm-direct, wezterm-direct16
+    (patch by Jakub Horky)
+  + add Smol/Rmol to ms-terminal, konsole, iTerm2 (report by Jared
+    Finder)
+  + add ecma+overline -TD
+  + update configure macros
+- Port ncurses-6.6.dif
+- Add description to ncurses-5.9-ibm327x.dif</comment>
+    <requestid>1329242</requestid>
+  </revision>
 </revisionlist>
