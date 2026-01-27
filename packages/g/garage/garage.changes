@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jan 26 06:43:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.2.0:
+  This release is a stable release. There are no breaking changes
+  when migrating from Garage v2.1.0.
+  * Bug fixes:
+    - properly handle precondition time equal to object timestamp
+      (#1193)
+    - don't enforce x-amz-content-sha256 to be in signed headers
+      (#770, #1195)
+    - don't append index document to redirect urls (#1223)
+    - openapi: work around issue in binding generator (#1249,
+      #1278)
+    - fix typo in error message (#1283)
+    - fix presigned post when bucket is absent from fields (#1290)
+    - fix SIGILL on raspberry pi and older ARM boards (#1217)
+  * Features:
+    - add block_max_concurrent_writes_per_request configuration
+      parameter (#1251)
+    - add consul discovery for WAN-federated consul servers (#1252)
+  * Toolchain & dependencies:
+    - update toolchain (#1233, #1296)
+    - update cargo dependencies (#1217, #1295)
+    - replace err-derive by thiserror (#1218, #1219)
+    - set optimization level to 3 in release builds (#1235)
+  * Ecosystem:
+    - helm chart updates (#1190, #1225, #1184, #1264, #1271, #1242,
+      #1238)
+    - documentation updates (#1169, #1211, #1204, #1258, #1259,
+      #1263, #1256, #1270, #1269, #1272, #826, #1281, #1268, #1284,
+      #1286, #1294)
+    - publish slides for talk at JoSy 2025 (#1191)
+
+-------------------------------------------------------------------
 Mon Dec 15 13:05:57 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Use protoc from protobuf-devel package, intead of bundled binaries of

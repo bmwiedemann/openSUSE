@@ -2,12 +2,12 @@
 <constraints>
   <hardware>
     <memory>
-      <size unit="G">12</size>
+      <size unit="G">16</size>
     </memory>
   </hardware>
   <overwrite>
     <conditions>
-      <arch>aarch64</arch>
+      <arch>s390x</arch>
     </conditions>
     <hardware>
       <memory>
