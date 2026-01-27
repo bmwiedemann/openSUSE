@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 27 06:10:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.1.0:
+  * Fixes
+    - fix: Support custom callback with Ansible 2.19 (#539)
+      @alisonlhart
+    - fix: Use pathspec glob syntax in '_load_scenarios' (#536)
+      @sth850
+  * Maintenance
+    - chore(deps): update all dependencies (#538) @renovate[bot]
+
+-------------------------------------------------------------------
 Fri Dec 05 12:57:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.12.0:
