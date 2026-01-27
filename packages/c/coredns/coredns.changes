@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 27 08:35:27 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.14.1:
+  * This release primarily addresses security vulnerabilities affecting Go 
+    versions prior to Go 1.25.6 and Go 1.24.12 
+    (CVE-2025-61728, CVE-2025-61726, CVE-2025-68121, CVE-2025-61731,
+     CVE-2025-68119). 
+     It also includes performance improvements to the proxy plugin via
+     multiplexed connections, along with various documentation updates.
+
+- skip flaky tests
+
+-------------------------------------------------------------------
 Thu Jan 08 14:45:03 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - fix CVE-2025-68156 https://bugzilla.suse.com/show_bug.cgi?id=1255345

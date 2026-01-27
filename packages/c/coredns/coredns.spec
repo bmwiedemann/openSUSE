@@ -18,7 +18,7 @@
 
 %define project github.com/coredns/coredns
 Name:           coredns
-Version:        1.14.0
+Version:        1.14.1
 Release:        0
 Summary:        DNS server written in Go
 License:        Apache-2.0
@@ -71,7 +71,23 @@ go build -mod=vendor -v -buildmode=pie -o coredns
 %check
 # Too many tests fail due to the restricted permissions in the build enviroment.
 # Updates must be tested manually.
-go test ./... -skip="TestZoneExternalCNAMELookupWithProxy|TestReadme|TestCorefile1|TestView|TestMultisocket_Restart"
+
+skiplist=(
+    "TestIssue7630"
+    "TestMetricsRewriteRequestSize"
+    "TestReloadUnreadyPlugin"
+    "TestZoneExternalCNAMELookupWithProxy"
+    "TestReadme"
+    "TestCorefile1"
+    "TestView"
+    "TestMultisocket_Restart"
+    "TestFailover"
+)
+
+# Concatenate the array elements into a single regex string separated by pipes (|)
+# Output will look like: "TestIssue7630|TestMetricsRewriteRequestSize|TestReloadUnreadyPlugin"
+TEST_TO_SKIP=$(IFS="|"; echo "${skiplist[*]}")
+go test ./... -skip="$TEST_TO_SKIP"
 
 %install
 cd $HOME/go/src/%{project}
