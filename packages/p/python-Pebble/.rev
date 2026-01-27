@@ -175,4 +175,15 @@
     function</comment>
     <requestid>1299497</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>53f1b339a8789c422f6652ccb171a93d</srcmd5>
+    <version>5.2.0</version>
+    <time>1769527071</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.2.0:
+  * issue #158: set pending futures to BrokenProcessPool error
+    when ProcessPool internal errors occur.
+  * Cleanup resources when terminating pool's processes via SIGTERM.</comment>
+    <requestid>1329421</requestid>
+  </revision>
 </revisionlist>

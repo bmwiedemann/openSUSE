@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 27 07:34:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.0:
+  * issue #158: set pending futures to BrokenProcessPool error
+    when ProcessPool internal errors occur.
+  * Cleanup resources when terminating pool's processes via SIGTERM.
+
+-------------------------------------------------------------------
 Fri Aug 15 02:17:49 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.1.3:
