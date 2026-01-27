@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 27 01:25:00 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pytest-9.patch:
+  * Support pytest 9 changes.
+
+-------------------------------------------------------------------
 Wed Jun  4 01:03:11 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

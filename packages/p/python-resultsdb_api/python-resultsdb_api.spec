@@ -1,7 +1,7 @@
 #
 # spec file for package python-resultsdb_api
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        Library for simplifying the communication with ResultsDB
 License:        GPL-2.0-or-later
 URL:            https://pagure.io/taskotron/resultsdb_api
 Source:         https://files.pythonhosted.org/packages/source/r/resultsdb_api/resultsdb_api-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support pytest 9 changes
+Patch0:         support-pytest-9.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -45,7 +47,7 @@ the JSON/REST methods, but allow the common goodies as named parameters,
 and parameters skipping.
 
 %prep
-%setup -q -n resultsdb_api-%{version}
+%autosetup -p1 -n resultsdb_api-%{version}
 
 %build
 %pyproject_wheel

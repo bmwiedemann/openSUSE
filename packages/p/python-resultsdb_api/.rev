@@ -36,4 +36,13 @@
 - No more greedy globs in %files.</comment>
     <requestid>1282465</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>b680c17dc713dc35e0a19951dbe5aa1a</srcmd5>
+    <version>2.1.5</version>
+    <time>1769526912</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-pytest-9.patch:
+  * Support pytest 9 changes.</comment>
+    <requestid>1329394</requestid>
+  </revision>
 </revisionlist>

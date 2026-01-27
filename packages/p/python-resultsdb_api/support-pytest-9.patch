@@ -1,0 +1,17 @@
+Index: resultsdb_api-2.1.5/testing/conftest.py
+===================================================================
+--- resultsdb_api-2.1.5.orig/testing/conftest.py
++++ resultsdb_api-2.1.5/testing/conftest.py
+@@ -8,10 +8,10 @@ def pytest_addoption(parser):
+                      help='Add functional tests')
+ 
+ 
+-def pytest_ignore_collect(path, config):
++def pytest_ignore_collect(collection_path, config):
+     """Prevents collection of any files named functest* to speed up non
+         integration tests"""
+-    if path.fnmatch('*functest*'):
++    if collection_path.match("*functest*"):
+         try:
+             is_functional = config.getvalue('functional')
+         except KeyError:
