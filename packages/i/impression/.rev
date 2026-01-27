@@ -73,4 +73,14 @@
     write nothing (forwarded request 1325319 from rrahl0)</comment>
     <requestid>1325355</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b332bfdb4328d3980ba8c6d680abb840</srcmd5>
+    <version>3.6.0</version>
+    <time>1769526450</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.6.0:
+  + Impression will now ask you where to save downloaded images
+    instead of saving them to a temporary location (forwarded request 1328407 from rrahl0)</comment>
+    <requestid>1329167</requestid>
+  </revision>
 </revisionlist>

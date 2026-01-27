@@ -1,7 +1,7 @@
 #
 # spec file for package impression
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appname io.gitlab.adhami3310.Impression
 Name:           impression
-Version:        3.5.6
+Version:        3.6.0
 Release:        0
 Summary:        A straight-forward and modern application to create bootable drives
 License:        GPL-3.0-only
