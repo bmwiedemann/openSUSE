@@ -36,6 +36,9 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        libgxdp-0.gitmodule.tar.zst
 Source99:       %{name}-rpmlintrc
 
+# PATCH-FIX-UPSTREAM gnome-control-center-gvc-31.patch glgo#GNOME/libgnome-volume-control!31 alynx.zhou@suse.com -- Fix crash with newer pipewire on switching bluetooth profile
+Patch1:         gnome-control-center-gvc-31.patch
+
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-system-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
 Patch1001:      gnome-control-center-system-never-use-gnome-software.patch

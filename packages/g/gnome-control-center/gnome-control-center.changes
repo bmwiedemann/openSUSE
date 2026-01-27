@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 22 08:51:58 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add gnome-control-center-gvc-31.patch: Fix crash with newer
+  pipewire on switching bluetooth profile
+  (glgo#GNOME/libgnome-volume-control!31).
+
+-------------------------------------------------------------------
 Mon Jan  5 22:32:03 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.3:
