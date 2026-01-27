@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan 26 15:08:41 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.9.9:
+  * Browser: new search: allow searching for specifically "kind of object
+    by specific field" (e.g. track by artist) for a number of combinations,
+    in addition to the general search.
+  * Browser: when not listing an album, make the album name a link to a
+    search for the album.
+  * Browser: add popup items for searching for tracks or albums by the
+    current entry artist. 
+  * Browser: display the UPnP search(es) as a breadcrumb link tooltip,
+    instead of in the main dirbrowser area
+
+-------------------------------------------------------------------
+Tue Jan 13 13:03:12 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- fixed compilation on Leap 15.6
+
+-------------------------------------------------------------------
 Sun Jan 11 12:03:42 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - removed disable-mpris.patch

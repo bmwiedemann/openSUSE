@@ -17,7 +17,7 @@
 
 
 Name:           upplay
-Version:        1.9.8
+Version:        1.9.9
 Release:        0
 Summary:        UPnP and OpenHome audio Control Point
 License:        GPL-2.0-or-later
@@ -41,6 +41,9 @@ managed by your UPnP/DLNA media servers to your UPnP/DLNA/OpenHome players (rend
 %autosetup
 
 %build
+# compilation fix for amber-mpris on Leap 15.6 caused by /bin not being a link to /usr/bin
+(cd amber-mpris && sed -i 's:/bin/qmake6:/usr/bin/qmake6:' Makefile src/Makefile qtdbusextended/Makefile)
+# temporary compilation fix: https://framagit.org/medoc92/upplay/-/commit/849e3e5ff469a864ac8a6a91f867d8fe6698da73
 sed -i 's/config += dbus/QT += dbus/' upplay.pro
 %qmake6 QMAKE_POST_LINK='$(STRIP) $(TARGET)' WEBPLATFORM=webengine
 %make_build STRIP=%{_bindir}/strip
