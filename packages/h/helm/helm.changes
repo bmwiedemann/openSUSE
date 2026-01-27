@@ -1,4 +1,226 @@
 -------------------------------------------------------------------
+Thu Jan 22 06:01:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.1.0:
+  * Notable Changes
+    - Feature: added chart name to dependency logs, namespace to
+      resource waiting logs, and confirmation message when all
+      resources are ready #31530
+    - Feature: improved plugin name validation error messages and
+      field name detection #31491
+    - Feature: improved the --wait flag by allowing explicit
+      strategy selection (including explicit --wait=hookOnly) and
+      preventing SDK timeout errors when timeout is not specified
+#31421
+    - Feature: allow concurrent dependency build with atomic file
+      write #30984
+    - Feature: added a --no-headers flag to the 'helm repo list'
+      command, allowing users to suppress table headers in the
+      output. Useful for scripting and automation #31448
+    - SDK feature: added a LoadArchive to common loader #31462
+    - SDK feature: introduced support for custom kstatus readers
+      #31706
+    - Fixed bug where a plugin name could already be used by
+      another command #31427
+    - Fixed bug where --server-side flag was not passed to install
+      when using upgrade --install #31635
+    - Fixed bug where HELM_ environment variables were not passed
+      to plugins. this fixes a regression which was blocking some
+      getter plugins #31613
+    - Fixed bug where Helm test --logs failed with
+      hook-delete-policy "hook-failed" or "hook-succeed" #31579
+    - Fixed kube client logging issue #31560
+    - Fixed regression where vendor-specific suffixes were stripped
+      from .Capabilities.KubeVersion.GitVersion, breaking charts
+      that detect managed Kubernetes platforms #31528
+    - Fixed a bug where helm uninstall with --keep-history did not
+      suspend previous deployed releases #12564
+    - SDK: bump k8s API versions to v0.35.0
+    - docs: updated helm template help text to document
+      --api-versions #31683
+    - docs: fixed documentation about default wait strategy
+  * Changelog
+    - Update pkg/kube/statuswait.go
+    - pkg/kube: introduce support for custom kstatus readers
+    - chore(deps): bump golang.org/x/term from 0.38.0 to 0.39.0
+    - chore(deps): bump golang.org/x/text from 0.32.0 to 0.33.0
+    - fix(release): fix test compilation error
+    - Suppress SC2154 without changing behavior
+    - chore(deps): bump github.com/foxcpp/go-mockdns from 1.1.0 to
+      1.2.0
+    - Lint sync-repo.sh with ShellCheck
+    - chore: move Evans Mungai from triage to maintainers
+    - Replace reflect.Ptr with reflect.Pointer
+    - fix: typo in the function names
+    - Add documentation for --api-versions flag in template command
+    - Fixing failing tests for cli-tools update
+    - chore(deps): bump github.com/fluxcd/cli-utils
+    - Replace deprecated `NewSimpleClientset`
+    - docs(README): add mise alternate installation documentation
+    - enable exhaustive linter
+    - fix: add default casess to switch statements
+    - build: set kube version via `debug.BuildInfo`
+    - chore(deps): bump github.com/tetratelabs/wazero from 1.10.1
+      to 1.11.0
+    - chore(deps): bump github.com/BurntSushi/toml from 1.5.0 to
+      1.6.0
+    - doc: update based on review suggestion
+    - test(statuswait): fix Copilot code review suggestion for
+      goroutine in tests
+    - test(statuswait): add more tests suggested by Copilot code
+      review
+    - test(statuswait): add some tests for statuswait
+    - fix: use namespace-scoped watching to avoid cluster-wide LIST
+      permissions
+    - fix(doc): Update default wait strategy
+    - Update to use slog
+    - Fix TestCliPluginExitCode
+    - Check plugin name is not used
+    - chore(deps): bump github.com/fluxcd/cli-utils
+    - Fix `TestConcurrencyDownloadIndex` typo
+    - Use errors.Is to check for io.EOF and gzip.ErrHeader
+    - chore(deps): bump actions/upload-artifact from 4.6.2 to 6.0.0
+    - chore(deps): bump the k8s-io group with 7 updates
+    - chore(deps): bump golang.org/x/crypto from 0.45.0 to 0.46.0
+    - chore: fix some comments to improve readability
+    - chore(deps): bump golang.org/x/text from 0.31.0 to 0.32.0
+    - feat: move TerryHowe triage to maintainers
+    - Use latest patch release of Go in releases
+    - chore(deps): bump github.com/rubenv/sql-migrate from 1.8.0 to
+      1.8.1
+    - fix(upgrade): pass --server-side flag to install when using
+      upgrade --install
+    - chore(deps): bump github.com/spf13/cobra from 1.10.1 to
+      1.10.2
+    - chore(deps): bump golang.org/x/term from 0.37.0 to 0.38.0
+    - Run the vulnerability check on PR that change the file
+    - Fix govulncheck in CI
+    - Update the govulncheck.yml to run on change
+    - Enable the sloglint linter
+    - fix(cli): handle nil config in EnvSettings.Namespace()
+    - fix(getter): pass settings environment variables
+    - fixes comment in install.go
+    - chore(deps): bump actions/stale from 10.1.0 to 10.1.1
+    - chore(deps): bump golangci/golangci-lint-action from 9.1.0 to
+      9.2.0
+    - fixes tests after merge
+    - fixes lint issue
+    - updates tests after rebase from master
+    - Add tests to action package to improve coverage
+    - chore(deps): bump actions/checkout from 6.0.0 to 6.0.1
+    - Inform we use a different golangci-lint version than the CI
+    - Deal with golint warning with private executeShutdownFunc
+    - Use length check for MetaDependencies instead of nil
+      comparison
+    - Code review
+    - Fix linting issue
+    - Update pkg/action/hooks.go
+    - added check for nil shutdown
+    - cleaned up empty line
+    - updated comment and made defer of shutdown function return
+      errors as before and not the possible shutdown error
+    - added shutdown hook that is executed after the logs have been
+      retrieved
+    - chore: fix typo in pkg/downloader/chart_downloader.go
+    - Bump required go version (`go.mod` version)
+    - Use modernize to use newer Golang features.
+    - Remove two redundant if-checks.
+    - Fix kube client logging
+    - chore(deps): bump golangci/golangci-lint-action from 9.0.0 to
+      9.1.0
+    - chore(deps): bump actions/checkout from 5.0.1 to 6.0.0
+    - chore(deps): bump actions/setup-go from 5.5.0 to 6.1.0
+    - fix: prevent segmentation violation on empty yaml in multidoc
+    - fix: prevent reporting fallback on version when none
+      specified
+    - chore(deps): bump golang.org/x/crypto from 0.44.0 to 0.45.0
+    - chore(deps): bump github.com/cyphar/filepath-securejoin
+    - bump version to 4.1
+    - fix: add missing context to debug logs
+    - fix: preserve vendor suffixes in KubeVersion.GitVersion
+    - chore(deps): bump actions/checkout from 5.0.0 to 5.0.1
+    - fixup test
+    - logs
+    - fix
+    - chore: add warning for registry login with namespace
+    - style: linting
+    - test: split tests between valid and invalid
+    - test: convert tests to table drive tests
+    - test: refactor TestMetadataLegacyValidate to be more generic
+    - update tests
+    - fix: Use server-side apply for object create during update
+    - Copy adopted resource info
+    - Refactor environment variable expansion in PrepareCommands
+      and update tests
+    - fix: correct LDFLAGS path for default Kubernetes version
+    - fix: improve plugin name validation err messages early via
+      unmarshalling
+    - fix: Make invalid name error message more similar and move
+      tests
+    - fix: focus only on plugin name but give more info about what
+      we get
+    - Make validation error similar and explicit for both metadatas
+    - fix: improve plugin name validation error messages
+    - Fix syntax errors in the document
+    - chore(deps): bump the k8s-io group with 7 updates
+    - docs: Fix LFX Health Score badge URL in README.md
+    - chore(deps): bump golang.org/x/crypto from 0.43.0 to 0.44.0
+    - chore(deps): bump github.com/tetratelabs/wazero from 1.9.0 to
+      1.10.1
+    - Publish Helm v4 -> `helm-latest-version`
+    - Adding script to download Helm v4
+    - chore(deps): bump golang.org/x/term from 0.36.0 to 0.37.0
+    - refactor: use strings.Builder to improve performance
+    - chore(deps): bump sigs.k8s.io/kustomize/kyaml from 0.20.1 to
+      0.21.0
+    - chore(deps): bump golangci/golangci-lint-action from 8.0.0 to
+      9.0.0
+    - Update pkg/cmd/flags.go
+    - Error strategy list match help
+    - Prevent surprising failure with SDK when timeout is not set
+    - Do not change the default waiting strategy when --wait is not
+      set
+    - Provide more help for SDK user when setting up WaitStrategy
+    - Avoid confusion between `--wait` (watcher) and no --wait
+      (hookOnly)
+    - The default is not HookOnlyStrategy but WaitStrategy
+    - Make wait strategy selection more obvious
+    - Update pkg/cmd/flags.go
+    - Increase documentation of --wait flag
+    - While testing SDK features for v4. I was surprised with the
+      error:
+    - fix: do not run release workflow on forks
+    - Convert pkg/cmd/load_plugins.go to slog
+    - Rename copilot-instructions.md to AGENTS.md
+    - fix(rollback): `errors.Is` instead of string comp
+    - fix(uninstall): supersede deployed releases
+    - for remaining local variable case inconsistency
+    - Properly test error messages on pull command's test
+    - Adding a LoadArchive to common loader
+    - for all other similar cases
+    - chore(deps): bump github.com/cyphar/filepath-securejoin
+    - chore(deps): bump sigs.k8s.io/controller-runtime from 0.22.3
+      to 0.22.4
+    - chore: increase logging package test coverage
+    - feat(repo): add --no-headers option to 'helm repo list'
+    - chore: fix typo of public field
+    - rename interface{} to any
+    - test: protect unknown hook delete policies
+    - chore: replace github.com/mitchellh/copystructure
+    - fix: Fix Helm v4 release distribtion/get-helm-3 script
+    - fix test
+    - Make test scripts run without /bin/bash
+    - Ignore duplicated URN in logs
+    - jsonschema: warn and ignore unresolved URN $ref to match
+      v3.18.4
+    - chore: delete unused var in installer.go
+    - fix: assign KUBECONFIG environment variable value to
+      env.Kubeconfig
+    - add concurrency test on write & load index file
+    - update writing index files to writeAtomicFile
+    - fix index concurrency
+
+-------------------------------------------------------------------
 Thu Jan 15 05:58:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.0.5:

@@ -17,7 +17,7 @@
 
 
 Name:           helm
-Version:        4.0.5
+Version:        4.1.0
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0
@@ -123,6 +123,7 @@ rm -fv internal/plugin/installer/http_installer_test.go
 rm -fv internal/plugin/installer/installer_test.go
 rm -fv internal/plugin/installer/vcs_installer_test.go
 rm -fv internal/plugin/runtime_extismv1_test.go
+rm -fv pkg/action/pull_test.go
 rm -fv pkg/downloader/cache_test.go
 rm -fv pkg/downloader/chart_downloader_test.go
 rm -fv pkg/downloader/manager_test.go
