@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jan 26 20:24:35 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 2.15.0
+  ## Changes
+  * test: unxfail sqlframe tests for list functions (#3383)
+  * ci: Test fairlearn using pytest marker (#3234)
+  ## Enhancements
+  * test: unxfail sqlframe for list.median (#3387)
+  * feat: Add {Expr,Series}.sin (#3365)
+  * feat: add list.sort (#3356)
+  ## Bug fixes
+  * test: Various GPU fixes (#3390)
+  * test: separate numpy array for tests (#3385)
+  * fix(docs): Keep table filter only in api-completeness page (#3367)
+  * ci: Fix hierarchicalforecast installation (#3362)
+  ## Documentation
+  * fix(docs): Keep table filter only in api-completeness page (#3367)
+  ## Other improvements
+  * chore: Refactor pandas-like pyarrow branching (#3361)
+
+-------------------------------------------------------------------
 Sat Dec 20 17:51:40 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.14.0
