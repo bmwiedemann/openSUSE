@@ -1,7 +1,7 @@
 #
 # spec file for package opencc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           opencc
-Version:        1.1.9
+Version:        1.2.0
 Release:        0
 Summary:        Open Chinese Convert
 License:        Apache-2.0
 Group:          System/I18n/Chinese
 URL:            https://github.com/BYVoid/OpenCC
-Source:         https://github.com/BYVoid/OpenCC/archive/ver.%{version}/OpenCC-ver.%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch1:         opencc-gcc15.patch
+Source:         https://github.com/BYVoid/OpenCC/archive/ver.%{version}/OpenCC-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -38,12 +36,12 @@ OpenCC is an opensource project for conversion between Traditional
 Chinese and Simplified Chinese, which supports phrase-level conversion
 and regional idioms among Mainland China, Taiwan and Hong kong.
 
-%package -n libopencc1_1
+%package -n libopencc1_2
 Summary:        Open Chinese Convert
 Group:          System/Libraries
 Requires:       %{name}-data
 
-%description -n libopencc1_1
+%description -n libopencc1_2
 OpenCC is an opensource project for conversion between Traditional
 Chinese and Simplified Chinese, which supports phrase-level conversion
 and regional idioms among Mainland China, Taiwan and Hong kong.
@@ -93,8 +91,8 @@ sed -i \
 %cmake_install
 find %{buildroot} -name "*.a" -delete -print
 
-%post -n libopencc1_1 -p /sbin/ldconfig
-%postun -n libopencc1_1 -p /sbin/ldconfig
+%post -n libopencc1_2 -p /sbin/ldconfig
+%postun -n libopencc1_2 -p /sbin/ldconfig
 
 %files
 %{_bindir}/%{name}
@@ -106,8 +104,8 @@ find %{buildroot} -name "*.a" -delete -print
 %files data
 %{_datadir}/%{name}/
 
-%files -n libopencc1_1
-%{_libdir}/libopencc.so.1.1
+%files -n libopencc1_2
+%{_libdir}/libopencc.so.1.2
 %{_libdir}/libopencc.so.%{version}
 
 %files devel

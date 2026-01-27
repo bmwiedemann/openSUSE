@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Jan 12 05:51:05 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Update to 1.2.0:
+  * Fix and optimize:
+    Fix the crash issue when reading configuration files.
+    Add type definitions (Typing).
+    Fix two out-of-bounds reading issues when handling truncated UTF-8 input.
+  * Compilation and environment adaptation:
+    Fix the issue of GCC 15 lacking cstdint.
+    Fix the error during "npm install opencc" that occurs during the build process.
+    Fix the issue of V8 API being deprecated in Node 23.
+    Fix the build problem of GCC 15.
+    Depend on cmake only when there are no system packages.
+    Set the default language version through variables.
+    Fix the "python" command in gyp.
+    Fix the build error on Node.js 24.
+    Fix the deprecated declaration in C++17.
+    Use C++17 in marisa 0.3.0.
+    Adapt CMake changes related to Fedora.
+    Register the hermetic Python 3.12 toolchain.
+    Upgrade the Bazel version from 7.2.1 to 8.5.1.
+  * The vocabulary list and conversion rules have been updated.
+  * Documentation have been added and updated.
+  * CI tools have been repaired and updated.
+  * Fix two out-of-bounds read issues when handling truncated UTF-8 input.
+  (CVE-2025-15536, bsc#1256930)
+- Update opencc.spec:
+  * Change lib package name and file name to fit this update.
+- Drop opencc-gcc15.patch:
+  OpenCC-1.2.0 has merged the request 72cae18c, which has the same
+  contents with opencc-gcc15.patch.
+
+-------------------------------------------------------------------
 Sat Apr  5 14:42:06 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - Add opencc-gcc15.patch to fix gcc15 compile time error
