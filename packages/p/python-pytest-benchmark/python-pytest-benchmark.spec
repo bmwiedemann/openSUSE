@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pytest-benchmark
-Version:        5.2.1
+Version:        5.2.3
 Release:        0
 Summary:        A py.test fixture for benchmarking code
 License:        BSD-2-Clause

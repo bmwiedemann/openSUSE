@@ -1,4 +1,353 @@
 -------------------------------------------------------------------
+Mon Jan 26 08:28:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.3:
+  * Add support for pytest 9.0.
+  * Moved the README.rst/CHANGELOG.rst concatenation from
+    setup.py to pyproject.toml.
+  * Fixed auto-disable to work with newer xdist (pytest-benchmark
+    auto disables benchmarks if xdist is enabled by design).
+    Contributed by Thomas B. Brunner in #294.
+  * Add markers so pytest doesn't try to assert-rewrite the
+    plugin internals (fixes those
+    pytest.PytestAssertRewriteWarning: Module already imported so
+    cannot be rewritten; pytest_benchmark warnings).
+  * Added support for a per-round teardown function to pedantic
+    mode. Contributed Patrick Winter by #264.
+  * Added --benchmark-time-unit option. Contributed by Tony Kuo
+    in #281.
+  * Fixed deprecated hook examples in docstrings. Contributed by
+    Ali-Akber Saifee in #284.
+  * Changed --benchmark-compare-fail to accept percentages higher
+    than 100%. Contributed by Ben Avrahami in #280.
+  * Added minimal typing support. Contributed by Sorin Sbarnea in
+    #290.
+  * Fixed support for Python 3.9. Contributed by Enno Gotthold in
+    #291.
+  * Replaced the complicated and broken code of
+    pytest_benchmark.utils.clonefunc with a simple return of the
+    input. That function was supposed to allow benchmarking with
+    the cost of PyPy JIT included but it's a hassle to maintain.
+  * Moved the instrumentation pause outside the round loops (in
+    addition to tracing, profiling is paused too). Pedantic mode
+    will keep doing this per round (as the user manually controls
+    the round count). This is necessary because in some scenarios
+    setting and unsetting the tracer too much will overflow an
+    internal counter (found to cause "OverflowError: events set
+    too many times" at least on Python 3.13).
+  * Fixed broken hooks handling on pytest 8.1 or later (the
+    TypeError: import_path() missing 1 required keyword-only
+    argument: 'consider_namespace_packages' issue). Unfortunately
+    this sets the minimum supported pytest version to 8.1.
+  * Fixed bad fixture check that broke down then nbmake was
+    enabled.
+  * Dropped support for now EOL Python 3.8. Also moved tests
+    suite to only test the latest pytest versions (8.3.x).
+  * Fix generate parametrize tests benchmark csv report errors
+    (issue #268). Contributed by Johnny Huang in #269.
+  * Added the --benchmark-time-unit cli option for overriding the
+    measurement unit used for display. Contributed by Tony Kuo in
+    #257.
+  * Fixes spelling in some help texts. Contributed by Eugeniy in
+    #267.
+  * Added new cprofile options: --benchmark-cprofile-loops=LOOPS
+    - previously profiling only ran the function once, this allow
+    customization. --benchmark-cprofile-top=COUNT - allows
+    showing more rows. --benchmark-cprofile-dump=[FILENAME-
+    PREFIX] - allows saving to a file (that you can load in
+    snakeviz, RunSnakeRun or other tools).
+  * --benchmark-cprofile-loops=LOOPS - previously profiling only
+    ran the function once, this allow customization.
+  * --benchmark-cprofile-top=COUNT - allows showing more rows.
+  * --benchmark-cprofile-dump=[FILENAME-PREFIX] - allows saving
+    to a file (that you can load in snakeviz, RunSnakeRun or
+    other tools).
+  * Removed hidden dependency on py.path (replaced with pathlib).
+  * Dropped support for legacy Pythons (2.7, 3.6 or older).
+  * Switched CI to GitHub Actions.
+  * Removed dependency on the py library (that was not properly
+    specified as a dependency anyway).
+  * Fix skipping test in test_utils.py if appropriate VCS not
+    available. Also fix typo. Contributed by Sam James in #211.
+  * Added support for pytest 7.2.0 by using pytest.hookimpl and
+    pytest.hookspec to configure hooks. Contributed by Florian
+    Bruhin in #224.
+  * Now no save is attempted if --benchmark-disable is used.
+    Fixes #205. Contributed by Friedrich Delgado in #207.
+  * Republished with updated changelog. I intended to publish a
+    3.3.0 release but I messed it up because bumpversion doesn't
+    work well with pre-commit apparently... thus 3.4.0 was set in
+    by accident.
+  * Disable progress indication unless --benchmark-verbose is
+    used. Contributed by Dimitris Rozakis in #149.
+  * Added Python 3.9, dropped Python 3.5. Contributed by Miroslav
+    Šedivý in #189.
+  * Changed the "cpu" data in the json output to include
+    everything that cpuinfo outputs, for better or worse as
+    cpuinfo 6.0 changed some fields. Users should now ensure they
+    are an adequate cpuinfo package installed. MAY BE BACKWARDS
+    INCOMPATIBLE
+  * Changed behavior of --benchmark-skip and --benchmark-only to
+    apply early in the collection phase. This means skipped tests
+    won't make pytest run fixtures for said tests unnecessarily,
+    but unfortunately this also means the skipping behavior will
+    be applied to any tests that requires a "benchmark" fixture,
+    regardless if it would come from pytest-benchmark or not. MAY
+    BE BACKWARDS INCOMPATIBLE
+  * Added --benchmark-quiet - option to disable reporting and
+    other information output.
+  * Squelched unnecessary warning when --benchmark-disable and
+    save options are used. Fixes #199.
+  * PerformanceRegression exception no longer inherits
+    pytest.UsageError (apparently a final class).
+  * Fixed "already-imported" pytest warning. Contributed by
+    Jonathan Simon Prates in #151.
+  * Fixed breakage that occurs when benchmark is disabled while
+    using cprofile feature (by disabling cprofile too).
+  * Dropped Python 3.4 from the test suite and updated test deps.
+  * Fixed pytest_benchmark.utils.clonefunc to work on Python 3.8.
+  * Added support for pytest items without funcargs. Fixes
+    interoperability with other pytest plugins like pytest-
+    flake8.
+  * Updated changelog entries for 3.2.0. I made the release for
+    pytest-cov on the same day and thought I updated the
+    changelogs for both plugins. Alas, I only updated pytest-cov.
+  * Added missing version constraint change. Now pytest >= 3.8 is
+    required (due to pytest 4.1 support).
+  * Fixed couple CI/test issues.
+  * Fixed broken pytest_benchmark.__version__.
+  * Added support for simple trial x-axis histogram label.
+    Contributed by Ken Crowell in #95).
+  * Added support for Pytest 3.3+, Contributed by Julien
+    Nicoulaud in #103.
+  * Added support for Pytest 4.0. Contributed by Pablo Aguiar in
+    #129 and #130.
+  * Added support for Pytest 4.1.
+  * Various formatting, spelling and documentation fixes.
+    Contributed by Ken Crowell, Ofek Lev, Matthew Feickert, Jose
+    Eduardo, Anton Lodder, Alexander Duryagin and Grygorii
+    Iermolenko in #97, #105, #110, #111, #115, #123, #131 and
+    #140.
+  * Fixed broken pytest_benchmark_update_machine_info hook.
+    Contributed by Alex Ford in #109.
+  * Fixed bogus xdist warning when using --benchmark-disable.
+    Contributed by Francesco Ballarin in #113.
+  * Added support for pathlib2. Contributed by Lincoln de Sousa
+    in #114.
+  * Changed handling so you can use --benchmark-skip and
+    --benchmark-only, with the later having priority. Contributed
+    by Ofek Lev in #116.
+  * Fixed various CI/testing issues. Contributed by Stanislav
+    Levin in #134, #136 and #138.
+  * Fixed loading data from old json files (missing ops field,
+    see #81).
+  * Fixed regression on broken SCM (see #82).
+  * Added "operations per second" (ops field in Stats) metric --
+    shows the call rate of code being tested. Contributed by
+    Alexey Popravka in #78.
+  * Added a time field in commit_info. Contributed by "varac" in
+    #71.
+  * Added a author_time field in commit_info. Contributed by
+    "varac" in #75.
+  * Fixed the leaking of credentials by masking the URL printed
+    when storing data to elasticsearch.
+  * Added a --benchmark-netrc option to use credentials from a
+    netrc file when storing data to elasticsearch. Both
+    contributed by Andre Bianchi in #73.
+  * Fixed docs on hooks. Contributed by Andre Bianchi in #74.
+  * Remove git and hg as system dependencies when guessing the
+    project name.
+  * machine_info now contains more detailed information about the
+    CPU, in particular the exact model. Contributed by Antonio
+    Cuni in #61.
+  * Added benchmark.extra_info, which you can use to save
+    arbitrary stuff in the JSON. Contributed by Antonio Cuni in
+    the same PR as above.
+  * Fix support for latest PyGal version (histograms).
+    Contributed by Swen Kooij in #68.
+  * Added support for getting commit_info when not running in the
+    root of the repository. Contributed by Vara Canero in #69.
+  * Added short form for --storage/--verbose options in CLI.
+  * Added an alternate pytest-benchmark CLI bin (in addition to
+    py.test-benchmark) to match the madness in pytest.
+  * Fix some issues with --help in CLI.
+  * Improved git remote parsing (for commit_info in JSON
+    outputs).
+  * Fixed default value for --benchmark-columns.
+  * Fixed comparison mode (loading was done too late).
+  * Remove the project name from the autosave name. This will get
+    the old brief naming from 3.0 back.
+  * Added --benchmark-columns command line option. It selects
+    what columns are displayed in the result table. Contributed
+    by Antonio Cuni in #34.
+  * Added support for grouping by specific test parametrization
+    (--benchmark-group-by=param:NAME where NAME is your param
+    name). Contributed by Antonio Cuni in #37.
+  * Added support for name or fullname in --benchmark-sort.
+    Contributed by Antonio Cuni in #37.
+  * Changed signature for pytest_benchmark_generate_json hook to
+    take 2 new arguments: machine_info and commit_info.
+  * Changed --benchmark-histogram to plot groups instead of name-
+    matching runs.
+  * Changed --benchmark-histogram to plot exactly what you
+    compared against. Now it's 1:1 with the compare feature.
+  * Changed --benchmark-compare to allow globs. You can compare
+    against all the previous runs now.
+  * Changed --benchmark-group-by to allow multiple values
+    separated by comma. Example: --benchmark-group-
+    by=param:foo,param:bar
+  * Added a command line tool to compare previous data: py.test-
+    benchmark. It has two commands: list - Lists all the
+    available files. compare - Displays result tables. Takes
+    options: --sort=COL --group-by=LABEL --columns=LABELS
+    --histogram=[FILENAME-PREFIX]
+  * list - Lists all the available files.
+  * compare - Displays result tables. Takes options: --sort=COL
+    --group-by=LABEL --columns=LABELS --histogram=[FILENAME-
+    PREFIX]
+  * --sort=COL
+  * --group-by=LABEL
+  * --columns=LABELS
+  * --histogram=[FILENAME-PREFIX]
+  * Added --benchmark-cprofile that profiles last run of
+    benchmarked function.  Contributed by Petr Šebek.
+  * Changed --benchmark-storage so it now allows elasticsearch
+    storage. It allows to store data to elasticsearch instead to
+    json files. Contributed by Petr Šebek in #58.
+  * Improved --help text for --benchmark-histogram, --benchmark-
+    save and --benchmark-autosave.
+  * Benchmarks that raised exceptions during test now have
+    special highlighting in result table (red background).
+  * Benchmarks that raised exceptions are not included in the
+    saved data anymore (you can still get the old behavior back
+    by implementing pytest_benchmark_generate_json in your
+    conftest.py).
+  * The plugin will use pytest's warning system for warnings.
+    There are 2 categories: WBENCHMARK-C (compare mode issues)
+    and WBENCHMARK-U (usage issues).
+  * The red warnings are only shown if --benchmark-verbose is
+    used. They still will be always be shown in the pytest-
+    warnings section.
+  * Using the benchmark fixture more than one time is disallowed
+    (will raise exception).
+  * Not using the benchmark fixture (but requiring it) will issue
+    a warning (WBENCHMARK-U1).
+  * Changed --benchmark-warmup to take optional value and
+    automatically activate on PyPy (default value is auto). MAY
+    BE BACKWARDS INCOMPATIBLE
+  * Removed the version check in compare mode (previously there
+    was a warning if current version is lower than what's in the
+    file).
+  * Changed how comparison is displayed in the result table. Now
+    previous runs are shown as normal runs and names get a
+    special suffix indicating the origin. Eg: "test_foobar (NOW)"
+    or "test_foobar (0123)".
+  * Fixed sorting in the result table. Now rows are sorted by the
+    sort column, and then by name.
+  * Show the plugin version in the header section.
+  * Moved the display of default options in the header section.
+  * Add a --benchmark-disable option. It's automatically
+    activated when xdist is on
+  * When xdist is on or statistics can't be imported then
+    --benchmark-disable is automatically activated (instead of
+    --benchmark-skip). BACKWARDS INCOMPATIBLE
+  * Replace the deprecated __multicall__ with the new hookwrapper
+    system.
+  * Improved description for --benchmark-max-time.
+  * Tests are sorted alphabetically in the results table.
+  * Failing to import statistics doesn't create hard failures
+    anymore. Benchmarks are automatically skipped if import
+    failure occurs. This would happen on Python 3.2 (or earlier
+    Python 3).
+  * Changed how failures to get commit info are handled: now they
+    are soft failures. Previously it made the whole test suite
+    fail, just because you didn't have git/hg installed.
+  * Added progress indication when computing stats.
+  * Fixed accidental output capturing caused by capturemanager
+    misuse.
+  * Added JSON report saving (the --benchmark-json command line
+    arguments). Based on initial work from Dave Collins in #8.
+  * Added benchmark data storage(the --benchmark-save and
+    --benchmark-autosave command line arguments).
+  * Added comparison to previous runs (the --benchmark-compare
+    command line argument).
+  * Added performance regression checks (the --benchmark-compare-
+    fail command line argument).
+  * Added possibility to group by various parts of test name (the
+    --benchmark-compare-group-by command line argument).
+  * Added historical plotting (the --benchmark-histogram command
+    line argument).
+  * Added option to fine tune the calibration (the --benchmark-
+    calibration-precision command line argument and
+    calibration_precision marker option).
+  * Changed benchmark_weave to no longer be a context manager.
+    Cleanup is performed automatically. BACKWARDS INCOMPATIBLE
+  * Added benchmark.weave method (alternative to benchmark_weave
+    fixture).
+  * Added new hooks to allow customization:
+    pytest_benchmark_generate_machine_info(config)
+    pytest_benchmark_update_machine_info(config, info)
+    pytest_benchmark_generate_commit_info(config)
+    pytest_benchmark_update_commit_info(config, info)
+    pytest_benchmark_group_stats(config, benchmarks, group_by)
+    pytest_benchmark_generate_json(config, benchmarks,
+    include_data) pytest_benchmark_update_json(config,
+    benchmarks, output_json)
+    pytest_benchmark_compare_machine_info(config,
+    benchmarksession, machine_info, compared_benchmark)
+  * pytest_benchmark_generate_machine_info(config)
+  * pytest_benchmark_update_machine_info(config, info)
+  * pytest_benchmark_generate_commit_info(config)
+  * pytest_benchmark_update_commit_info(config, info)
+  * pytest_benchmark_group_stats(config, benchmarks, group_by)
+  * pytest_benchmark_generate_json(config, benchmarks,
+    include_data)
+  * pytest_benchmark_update_json(config, benchmarks, output_json)
+  * pytest_benchmark_compare_machine_info(config,
+    benchmarksession, machine_info, compared_benchmark)
+  * Changed the timing code to: Tracers are automatically
+    disabled when running the test function (like coverage
+    tracers). Fixed an issue with calibration code getting stuck.
+  * Tracers are automatically disabled when running the test
+    function (like coverage tracers).
+  * Fixed an issue with calibration code getting stuck.
+  * Added pedantic mode via benchmark.pedantic(). This mode
+    disables calibration and allows a setup function.
+  * Improved test suite a bit (not using cram anymore).
+  * Improved help text on the --benchmark-warmup option.
+  * Made warmup_iterations available as a marker argument (eg:
+    @pytest.mark.benchmark(warmup_iterations=1234)).
+  * Fixed --benchmark-verbose's printouts to work properly with
+    output capturing.
+  * Changed how warmup iterations are computed (now number of
+    total iterations is used, instead of just the rounds).
+  * Fixed a bug where calibration would run forever.
+  * Disabled red/green coloring (it was kinda random) when
+    there's a single test in the results table.
+  * Fix regression, plugin was raising ValueError: no option
+    named 'dist' when xdist wasn't installed.
+  * Add a benchmark_weave experimental fixture.
+  * Fix internal failures when xdist plugin is active.
+  * Automatically disable benchmarks if xdist is active.
+  * Moved the warmup in the calibration phase. Solves issues with
+    benchmarking on PyPy. Added a --benchmark-warmup-iterations
+    option to fine-tune that.
+  * Make the default rounds smaller (so that variance is more
+    accurate).
+  * Show the defaults in the --help section.
+  * Simplify the calibration code so that the round is smaller.
+  * Add diagnostic output for calibration code (--benchmark-
+    verbose).
+  * Replace the context-manager based API with a simple callback
+    interface. BACKWARDS INCOMPATIBLE
+  * Implement timer calibration for precise measurements.
+  * Use a precise default timer for PyPy.
+  * README and styling fixes. Contributed by Marc Abramowitz in
+    #4.
+  * Lots of wild changes and too many irrelevant releases to
+    include.
+
+-------------------------------------------------------------------
 Wed Nov  5 12:35:00 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.2.1
