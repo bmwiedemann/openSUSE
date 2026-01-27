@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 27 07:09:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.1:
+  * fix: Simplify the actor thread's name
+
+-------------------------------------------------------------------
 Tue Nov 25 12:46:05 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 
 - Update to 4.4.0:

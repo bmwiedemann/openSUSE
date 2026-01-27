@@ -48,4 +48,13 @@
     <comment></comment>
     <requestid>1319991</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dd0cad11821861e8ad66eb820d511a41</srcmd5>
+    <version>4.4.1</version>
+    <time>1769527065</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.4.1:
+  * fix: Simplify the actor thread's name</comment>
+    <requestid>1329411</requestid>
+  </revision>
 </revisionlist>
