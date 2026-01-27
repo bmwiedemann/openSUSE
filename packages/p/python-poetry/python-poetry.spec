@@ -27,31 +27,32 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry%{psuffix}
-Version:        2.2.1
+Version:        2.3.1
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
 URL:            https://python-poetry.org/
 # PyPI sdist doesn't contain tests
 Source:         https://github.com/python-poetry/poetry/archive/%{version}.tar.gz#/poetry-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM support-dulwich-0_25.patch gh#python-poetry/poetry#10674
-Patch0:         support-dulwich-0_25.patch
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 2.1}
+BuildRequires:  %{python_module poetry-core >= 2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-poetry-core = 2.2.1
+Requires:       python-poetry-core = 2.3.0
 Requires:       (python-build >= 1.2.1 with python-build < 2.0.0)
 Requires:       (python-cachecontrol >= 0.14.0 with python-cachecontrol < 0.15.0)
 # from cachecontrol[filecache]
 Requires:       python-filelock >= 3.8.0
 # /cachecontrol[filecache]
 Requires:       (python-cleo >= 2.1.0 with python-cleo < 3.0.0)
-Requires:       python-packaging >= 24.2
+Requires:       python-packaging >= 24
+Requires:       python-pbs-installer >= 2025.6.10
 Requires:       python-trove-classifiers >= 2022.5.19
+Requires:       python-virtualenv >= 20.26.6
 Requires:       (python-dulwich >= 0.25.0 with python-dulwich < 0.26.0)
 Requires:       (python-fastjsonschema >= 2.18.0 with python-fastjsonschema < 3.0.0)
+Requires:       (python-findpython >= 0.6.2 with python-findpython < 0.8.0)
 Requires:       (python-installer >= 0.7.0 with python-installer < 0.8.0)
 Requires:       (python-keyring >= 25.1.0 with python-keyring < 26.0.0)
 Requires:       (python-pkginfo >= 1.12 with python-pkginfo < 2.0)
@@ -60,10 +61,6 @@ Requires:       (python-pyproject-hooks >= 1.0.0 with python-pyproject-hooks < 2
 Requires:       (python-requests >= 2.26 with python-requests < 3.0)
 Requires:       (python-requests-toolbelt >= 1.0.0 with python-requests-toolbelt < 2.0.0)
 Requires:       (python-shellingham >= 1.5 with python-shellingham < 2.0)
-# allow findpython 0.7.0 https://github.com/python-poetry/poetry/issues/10468
-Requires:       (python-findpython >= 0.6.2 with python-findpython < 0.8.0)
-Requires:       python-virtualenv >= 20.26.6
-Requires:       (python-pbs-installer >= 2025.1.6 with python-pbs-installer < 2026.0.0)
 Requires:       (python-tomlkit >= 0.11.4 with python-tomlkit < 1.0.0)
 # python-pbs-installer[download,install]
 Requires:       (python-httpx >= 0.27.0 with python-httpx < 1)
@@ -77,7 +74,6 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module cachy >= 0.3.0}
 BuildRequires:  %{python_module deepdiff >= 6.3}
-BuildRequires:  %{python_module httpretty >= 1.0}
 # Required because deepdiff > 6.2.3
 BuildRequires:  %{python_module orjson}
 BuildRequires:  %{python_module poetry = %{version}}
@@ -85,6 +81,7 @@ BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest >= 7.1}
 BuildRequires:  %{python_module pytest-mock >= 3.9}
 BuildRequires:  %{python_module pytest-xdist >= 3.1}
+BuildRequires:  %{python_module responses >= 0.25}
 BuildRequires:  git-core
 %endif
 %python_subpackages
@@ -94,6 +91,7 @@ Python dependency management and packaging made easy.
 
 %prep
 %autosetup -p1 -n poetry-%{version}
+echo "# empty module" >> src/poetry/console/events/console_events.py
 
 %if !%{with test}
 %build
