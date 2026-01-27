@@ -4,7 +4,7 @@
     <param name="url">https://github.com/lapce/lapce</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="match-tag">v0.4.4</param>
+    <param name="match-tag">v0.4.5</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
   </service>
