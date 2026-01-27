@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 26 09:33:00 UTC 2026 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-8.1.
+- CMakeLists.txt: Fix CMAKE_PROJECT_VERSION not defined.
+- AC.cpp: Up to 15% faster due to improved instruction level parallelism.
+- S2_easy.cpp: Fix "#pragma omp master" deprecated in OpenMP 5.1. 
+- Sieve_count*.hpp: Improve GCC conditional move code gen.
+- Automated building Windows binaries using GitHub Actions CI.
+
+-------------------------------------------------------------------
 Sun Dec 14 09:53:00 UTC 2025 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primecount-8.0.
