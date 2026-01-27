@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 26 09:03:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.0:
+  * Add deadfixtures_ignore decorator to ignore specific fixtures
+    from being reported as unused
+
+-------------------------------------------------------------------
 Fri Dec 19 03:25:20 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 3.0.0.
