@@ -1,7 +1,7 @@
 #
 # spec file for package python-sigstore
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,20 +24,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sigstore
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        A tool for signing Python package distributions
 License:        Apache-2.0
 URL:            https://github.com/sigstore/sigstore-python
 Source0:        https://github.com/sigstore/sigstore-python/archive/v%{version}.tar.gz#/sigstore-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-ecparam-testing.patch gh#sigstore/sigstore-python#1603 mcepl@suse.com
-# Update supported public key algorithms
-Patch0:         fix-ecparam-testing.patch
-# PATCH-FIX-UPSTREAM nofail-neg-test.patch gh#sigstore/sigstore-python!1605 mcepl@suse.com
-# Try to not fail negative key tests if support is not there
-Patch1:         nofail-neg-test.patch
 BuildRequires:  %{python_module PyJWT >= 2.1}
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module cryptography >= 42}
 BuildRequires:  %{python_module flit-core >= 3.2}
 BuildRequires:  %{python_module id >= 1.1.0}

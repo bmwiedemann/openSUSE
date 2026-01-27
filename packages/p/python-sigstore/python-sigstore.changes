@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan 27 09:04:41 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 4.2.0 (fixes CVE-2026-24408, bsc#1257303)
+  * Add state validation to OIDC flow to prevent Cross-site request forgery
+    during OIDC authorization (GHSA-hm8f-75xx-w2vr)
+  * verification now ensures that artifact digest documented in bundle and the
+    real digest match (this is a bundle consistency check: bundle signature was
+    always verified over real digest)
+  * Fix issue with Signed Certificate Timestamp parsing where extensions
+    were not allowed by sigstore-python
+  * Update supported public key algorithms
+  * trust: Update embedded TUF root
+  * Removed support for Python 3.9 as it is end-of-life
+  * Removed unused nonce in Oauth flow
+- drop fix-ecparam-testing.patch and nofail-neg-test.patch, merged upstream
+
+-------------------------------------------------------------------
 Mon Nov 10 08:18:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - remove sigstore-protobuf-specs:
