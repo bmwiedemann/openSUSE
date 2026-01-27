@@ -193,4 +193,17 @@
     <comment></comment>
     <requestid>1318841</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>55d0fe3920cf4fd5c958be66b403a987</srcmd5>
+    <version>3.11.5</version>
+    <time>1769526417</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2025-67221.patch to fix write outsize of allocated memory
+  on json dump (bsc#1257121, gh#ijl/orjson#637)
+
+- Update to 3.11.5 (bsc#1257121, CVE-2025-67221):
+  * Show simple error message instead of traceback when attempting to
+    build on unsupported Python versions.</comment>
+    <requestid>1329172</requestid>
+  </revision>
 </revisionlist>

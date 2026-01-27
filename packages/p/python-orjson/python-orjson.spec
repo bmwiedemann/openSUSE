@@ -1,7 +1,7 @@
 #
 # spec file for package python-orjson
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-orjson
-Version:        3.11.4
+Version:        3.11.5
 Release:        0
 Summary:        Fast, correct Python JSON library supporting dataclasses, datetimes, and numpy
 License:        Apache-2.0 OR MIT
@@ -29,6 +29,8 @@ Source1:        vendor.tar.xz
 Source2:        https://files.pythonhosted.org/packages/source/o/orjson/orjson-%{version}.tar.gz
 Source3:        devendor-sdist.sh
 Source4:        PACKAGING_README.md
+# PATCH-FIX-OPENSUSE CVE-2025-67221.patch gh#ijl/orjson#637
+Patch0:         CVE-2025-67221.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module maturin >= 1.9.2}
 BuildRequires:  %{python_module pip}
@@ -53,7 +55,7 @@ orjson is a fast JSON library for Python.
 It benchmarks as the fastest Python library for JSON.
 
 %prep
-%autosetup -a1 -n orjson-%{version}
+%autosetup -p1 -a1 -n orjson-%{version}
 
 %build
 %pyproject_wheel

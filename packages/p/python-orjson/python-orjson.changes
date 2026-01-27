@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 26 08:45:25 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add CVE-2025-67221.patch to fix write outsize of allocated memory
+  on json dump (bsc#1257121, gh#ijl/orjson#637)
+
+-------------------------------------------------------------------
+Fri Jan 23 10:22:26 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.11.5 (bsc#1257121, CVE-2025-67221):
+  * Show simple error message instead of traceback when attempting to
+    build on unsupported Python versions.
+
+-------------------------------------------------------------------
 Thu Nov 20 10:00:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.11.4
