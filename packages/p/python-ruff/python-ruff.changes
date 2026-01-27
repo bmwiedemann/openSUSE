@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Jan 25 20:38:11 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.14.14 
+ * Preview features
+  * Preserve required parentheses in lambda bodies 
+  * Combine range suppression code diagnostics 
+  * [airflow] Second positional argument to Asset/Dataset should not be a dictionary (AIR303) 
+  * [ruff] Detect duplicate entries in __all__ (RUF068) 
+ * Bug fixes
+  * [pyupgrade] Allow shadowing non-builtin bindings (UP029) 
+  * [pyupgrade] Apply UP045 to string arguments of typing.cast 
+  * [flake8-pie] Detect duplicated declared class fields in PIE794 
+ * Rule changes
+  * [flake8-pyi] Fix inconsistent handling of forward references for __new__, __enter__, __aenter__ in PYI034 
+  * [flake8-pytest-style] Support check parameter in PT011 
+  * [ruff] Add exception for ctypes.Structure._fields_ (RUF012) 
+  * Many fixes are now marked unsafe if they would remove comments:
+  * [flake8-bugbear] B009, B010, B013, B014, B033
+  * [flake8-simplify] SIM910, SIM911
+  * [pyupgrade] UP007, UP039, UP041, UP045
+  * [refurb] FURB105, FURB116, FURB136, FURB140, FURB145, FURB154, FURB157, FURB164,FURB181, FURB188
+  * [ruff] RUF019, RUF020
+ * Documentation
+  * Add --exit-non-zero-on-format to formatter exit codes section 
+  * Update contributing guide for adding a new rule 
+  * [FastAPI] Document fix safety for FAST001 
+  * [flake8-async] Tweak explanation to focus on latency/efficiency tradeoff (ASYNC110) 
+  * [pandas-vet] Make example error out-of-the-box (PD002) 
+  * [refurb] Make the example work out of box (FURB101) 
+  * [refurb] Make the example work out of box (FURB103) 
+
+
+-------------------------------------------------------------------
 Fri Jan 16 14:29:55 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.14.13 
