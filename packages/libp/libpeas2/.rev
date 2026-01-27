@@ -47,4 +47,12 @@
     <comment></comment>
     <requestid>1308555</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>51fa530235672285463e88958a3576f0</srcmd5>
+    <version>2.2.0</version>
+    <time>1769526506</time>
+    <user>anag_factory</user>
+    <comment>- Enable vapi support by default needed by Budgie Desktop (forwarded request 1328873 from gmbr3)</comment>
+    <requestid>1329297</requestid>
+  </revision>
 </revisionlist>

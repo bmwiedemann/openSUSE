@@ -24,7 +24,7 @@
 %bcond_without  gjs
 %bcond_with     lua51
 %bcond_without  python3
-%bcond_with     vapi
+%bcond_without  vapi
 
 Name:           libpeas2
 Version:        2.2.0
@@ -64,7 +64,7 @@ BuildRequires:  lua51-lgi >= 0.9.0
 BuildRequires:  pkgconfig(lua5.1) >= 5.1.0
 BuildRequires:  pkgconfig(luajit) >= 2.0
 %endif
-%if %{with python3}
+%if %{with vapi}
 # The vapigen binary is required
 BuildRequires:  vala
 %endif
@@ -200,6 +200,11 @@ This package contains the Python loader.
 %{_libdir}/libpeas-%{prj_version}.so
 %{_libdir}/pkgconfig/libpeas-%{prj_version}.pc
 %{_datadir}/gir-1.0/Peas-%{prj_version}.gir
+%if %{with vapi}
+%dir %{_datadir}/vala/vapi
+%{_datadir}/vala/vapi/libpeas-%{prj_version}.deps
+%{_datadir}/vala/vapi/libpeas-%{prj_version}.vapi
+%endif
 
 %files lang -f libpeas-%{prj_version}.lang
 
