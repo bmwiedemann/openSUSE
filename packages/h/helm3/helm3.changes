@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Thu Jan 22 06:01:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.20.0:
+  * Notable Changes
+    - SDK: bump k8s API versions to v0.35.0
+    - v3 backport: Fixed a bug where helm uninstall with
+      --keep-history did not suspend previous deployed releases
+      #12564
+    - v3 backport: Bump Go version to v1.25
+  * Changelog
+    - bump version to v3.20
+    - chore(deps): bump golang.org/x/text from 0.32.0 to 0.33.0
+    - chore(deps): bump golang.org/x/term from 0.38.0 to 0.39.0
+    - chore(deps): bump github.com/foxcpp/go-mockdns from 1.1.0 to
+      1.2.0
+    - chore(deps): bump the k8s-io group with 7 updates
+    - [dev-v3] Replace deprecated `NewSimpleClientset`
+    - [dev-v3] Bump Go v1.25, `golangci-lint` v2
+    - chore(deps): bump github.com/BurntSushi/toml from 1.5.0 to
+      1.6.0
+    - chore(deps): bump github.com/containerd/containerd from
+      1.7.29 to 1.7.30
+    - fix(rollback): `errors.Is` instead of string comp
+    - fix(uninstall): supersede deployed releases
+    - Use latest patch release of Go in releases
+    - chore(deps): bump the k8s-io group with 7 updates
+    - chore(deps): bump golang.org/x/crypto from 0.45.0 to 0.46.0
+    - chore(deps): bump golang.org/x/text from 0.31.0 to 0.32.0
+    - chore(deps): bump golang.org/x/term from 0.37.0 to 0.38.0
+    - chore(deps): bump github.com/spf13/cobra from 1.10.1 to
+      1.10.2
+    - chore(deps): bump github.com/rubenv/sql-migrate from 1.8.0 to
+      1.8.1
+    - chore(deps): bump golang.org/x/crypto from 0.44.0 to 0.45.0
+    - chore(deps): bump github.com/cyphar/filepath-securejoin
+    - chore(deps): bump the k8s-io group with 7 updates
+    - chore(deps): bump golang.org/x/text from 0.30.0 to 0.31.0
+    - chore(deps): bump golang.org/x/crypto from 0.43.0 to 0.44.0
+    - Remove dev-v3 `helm-latest-version` publish
+    - chore(deps): bump golang.org/x/term from 0.36.0 to 0.37.0
+    - chore(deps): bump github.com/containerd/containerd from
+      1.7.28 to 1.7.29
+    - Revert "pkg/registry: Login option for passing TLS config in
+      memory"
+    - chore(deps): bump github.com/cyphar/filepath-securejoin
+    - jsonschema: warn and ignore unresolved URN $ref to match
+      v3.18.4
+    - Fix `helm pull` untar dir check with repo urls
+    - chore(deps): bump golang.org/x/crypto from 0.42.0 to 0.43.0
+    - chore(deps): bump github.com/gofrs/flock from 0.12.1 to
+      0.13.0
+    - chore(deps): bump golang.org/x/text from 0.29.0 to 0.30.0
+    - chore(deps): bump github.com/cyphar/filepath-securejoin
+    - [backport] fix: get-helm-3 script use helm3-latest-version
+    - pkg/registry: Login option for passing TLS config in memory
+    - chore(deps): bump the k8s-io group with 7 updates
+    - Fix deprecation warning
+    - chore(deps): bump golang.org/x/crypto from 0.41.0 to 0.42.0
+    - chore(deps): bump golang.org/x/term from 0.34.0 to 0.35.0
+    - Avoid "panic: interface conversion: interface {} is nil"
+    - bump version to v3.19.0
+    - chore(deps): bump github.com/spf13/pflag from 1.0.7 to 1.0.10
+    - fix: set repo authorizer in registry.Client.Resolve()
+    - fix null merge
+    - Add timeout flag to repo add and update flags
+
+-------------------------------------------------------------------
 Thu Jan 15 05:58:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.19.5:
