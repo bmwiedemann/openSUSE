@@ -1,9 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 27 07:11:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.0:
+  * Add hook for ``ddgs``.
+  * Add hook for ``fake_useragent``.
+  * Add hook for ``pytokens`` to automatically discover and collect
+    the ``{id}__mypyc`` top-level module that was introduced in
+    ``pytokens`` 0.4.0.
+  * see https://raw.githubusercontent.com/pyinstaller/pyinstaller-hooks-contrib/refs/tags/v2026.0/CHANGELOG.rst
+
+-------------------------------------------------------------------
 Fri May 23 13:03:09 UTC 2025 - Edgar Aichinger <edogawa@aon.at>
 
 - Update to 2025.4
-  * Fix error in narwhals hook when typing-extensions is not available 
-    in the build environment (neither stand-alone version is installed 
+  * Fix error in narwhals hook when typing-extensions is not available
+    in the build environment (neither stand-alone version is installed
     nor it is provided as part of setuptools). (#908)
   * For versions 2025.0-3 see the complete changelog in CHANGELOG.rst.
 - Update runtime requirements
@@ -12,7 +23,7 @@ Fri May 23 13:03:09 UTC 2025 - Edgar Aichinger <edogawa@aon.at>
 Tue Jan  7 09:49:19 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2024.11
-  * Update torch hook to suppress creation of symbolic links to the 
+  * Update torch hook to suppress creation of symbolic links to the
     top-level application directory
   * Update sklearn.tree hook for compatibility with scikit-learn v1.6.0
 - Downloaded upstream conftest.py missing in the tarball
@@ -22,7 +33,7 @@ Fri Dec 13 10:56:25 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - update to 2024.10
   * Add many hooks, updated many hooks.
-  * Released sdists and tagged GitHub source archives contain the 
+  * Released sdists and tagged GitHub source archives contain the
     changelog entries for their current release.
   * See the complete changelog in CHANGELOG.rst.
 

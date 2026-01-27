@@ -142,4 +142,23 @@
 </comment>
     <requestid>1280564</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9f3879932fd7b70c52acb0e64e57601a</srcmd5>
+    <version>2026.0</version>
+    <time>1769527069</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.0:
+  * Add hook for ``ddgs``.
+  * Add hook for ``fake_useragent``.
+  * Add hook for ``pytokens`` to automatically discover and collect
+    the ``{id}__mypyc`` top-level module that was introduced in
+    ``pytokens`` 0.4.0.
+  * see https://raw.githubusercontent.com/pyinstaller/pyinstaller-hooks-contrib/refs/tags/v2026.0/CHANGELOG.rst
+
+  * Fix error in narwhals hook when typing-extensions is not available
+    in the build environment (neither stand-alone version is installed
+  * Update torch hook to suppress creation of symbolic links to the
+  * Released sdists and tagged GitHub source archives contain the</comment>
+    <requestid>1329417</requestid>
+  </revision>
 </revisionlist>
