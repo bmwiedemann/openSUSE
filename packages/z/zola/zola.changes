@@ -1,38 +1,72 @@
 -------------------------------------------------------------------
+Sun Jan 11 13:18:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.22.0:
+  * Update themes gallery in #2946
+  * Reword section/drafting paragraph in #2934
+  * Reword taxonomy page in #2936
+  * Update themes gallery in #2952
+  * Add Azure Static Web Apps deployment instructions in #2931
+  * Add code highlight theme previews to docs in #2951
+  * Update themes gallery in #2960
+  * Fix broken links and highlight warnings in docs in #2963
+  * Update themes gallery in #2986
+  * Update themes gallery in #2990
+  * Update cloudflare-pages.md in #2998
+  * Update Zola installation command in documentation in #3003
+  * Fix typo in pagination documentation in #3011
+  * Fix typos in CHANGELOG.md in #3021
+  * Update themes gallery in #3022
+  * Update Vercel guide in #2971
+  * Clarify instructions on deployment on github pages in #2988
+  * Add "Zola Demo Site" to examples list in #3030
+  * Add missing documentation for GitHub-flavored alerts in #3034
+  * Update themes gallery in #3031
+  * Update themes gallery in #3036
+  * Update themes gallery in #3037
+  * Update themes gallery in #3039
+  * Update themes gallery in #3046
+  * Update Snapcraft YAML: core22 upgrade and improved architecture
+    support in #3045
+  * Use giallo instead of syntect in #3044
+  * Update themes gallery in #3049
+  * feat: migrate serve WebSocket from ws crate to Axum in #3048
+  * Update themes gallery in #3055
+  * Fix components/utils build in #3058
+  * Port logging to log in #3042
+  * Update themes gallery in #3064
+  * Next version in #2925
+
+-------------------------------------------------------------------
 Tue Jul 15 06:33:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.21.0:
   * Fix .gitlab-ci.yaml with v0.20.0 having multiple different
-    build artifacts for linux available by @mb in #2799
-  * Add example: Nizzlay.com by @Nizzlay in #2804
-  * Refactor external link styling to use external_links_class by
-    @welpo in #2801
-  * Update themes gallery by @Keats in #2807
-  * Metainfo by @Ayush1325 in #2809
-  * input gitlab pages url in the CI build step by @benjaminlyng in
-    #2822
-  * Update themes gallery by @Keats in #2828
-  * Docs: adds logo SVGs; replaces the favicon.ico by @indiscipline
-    in #2827
-  * Update themes gallery by @Keats in #2846
-  * Update GitLab Pages deployment documentation by @walpox in
-    #2844
-  * Update themes gallery by @Keats in #2866
+    build artifacts for linux available in #2799
+  * Add example: Nizzlay.com in #2804
+  * Refactor external link styling to use external_links_class in
+    #2801
+  * Update themes gallery in #2807
+  * Metainfo in #2809
+  * input gitlab pages url in the CI build step in #2822
+  * Update themes gallery in #2828
+  * Docs: adds logo SVGs; replaces the favicon.ico in #2827
+  * Update themes gallery in #2846
+  * Update GitLab Pages deployment documentation in #2844
+  * Update themes gallery in #2866
   * docs: add section on handling preview deployments for
-    Cloudflare Pages by @welpo in #2868
-  * [docs] Fix typo in overview by @adithyabsk in #2876
-  * Update themes gallery by @Keats in #2887
-  * Update themes gallery by @Keats in #2907
-  * Update themes gallery by @Keats in #2914
-  * Update themes gallery by @Keats in #2918
-  * README: adds logo; DOCS: logo in header by @indiscipline in
-    #2904
-  * Add Lysator to examples by @sermuns in #2922
-  * Update themes gallery by @Keats in #2921
-  * Update themes gallery by @Keats in #2924
-  * Closes the paren on page count for themes by @JustusAdam in
-    #2923
-  * Next version by @Keats in #2798
+    Cloudflare Pages in #2868
+  * [docs] Fix typo in overview in #2876
+  * Update themes gallery in #2887
+  * Update themes gallery in #2907
+  * Update themes gallery in #2914
+  * Update themes gallery in #2918
+  * README: adds logo; DOCS: logo in header in #2904
+  * Add Lysator to examples in #2922
+  * Update themes gallery in #2921
+  * Update themes gallery in #2924
+  * Closes the paren on page count for themes in #2923
+  * Next version in #2798
 
 -------------------------------------------------------------------
 Sun Feb 16 13:20:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
