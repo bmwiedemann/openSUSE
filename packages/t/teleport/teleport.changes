@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 19 07:34:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.7.14:
+  * Updated Go to 1.24.12. #62886
+  * Fixed launching AWS Identity Center from Teleport Connect.
+    #62870
+  * Fixed renewed X509-SVIDs not being proactively sent to Envoy
+    instances. #62829
+  * Updated rustcrypto/rsa dependency to fix potential panic
+    (CVE-2026-21895). #62769
+  * Fixed an issue that would prevent tsh from working when the
+    1password SSH agent is running. #62737
+
+-------------------------------------------------------------------
 Mon Jan 12 07:02:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 17.7.13 (.12 was not released):
