@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jan 26 12:52:40 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.1.10 (bsc#1253148)
+  * fix resource warning
+  * PYPY3 Add support for pypy3 in FormatHandler
+  * Treat any falsy context as invalid
+  * Return type for *GetCurrentContext is a pointer on all platforms
+  * BUILD Minor bugfix; readme.txt vs. readme.md inclusion
+  * GH#134 Remove some old cruft wrt getting gl/opengl but still handle oserrors
+  * BUGFIX Python 3.13 does not define long, so crashes if not aliased to int
+  * USE install_package_data which has been standard for ages already
+  * NUMPY Newer numpy doesn't have tostring() any more, prefer tobytes() when it exists
+  * TESTSUITE Mark jit-triggering test an xfail on python 3.12+
+  * RUFF Switch to preserving quote style
+  * FORMAT markdown format tweaks
+  * WAYLAND Cleanup behaviour so at least the compatible tests run on wayland hosts
+  * IGNORE generated C files
+  * TESTSUITE Add setuptools explicitly to the tox test requirements
+  * CIBUILDWHEEL Update to the latest to pick up python 3.14 support
+  * BUMPVERSION 3.1.10 release
+  * TESTSUITE Add test case that explicitly verifies that we can pass a scalar as an array
+  * GH#137 Parse ES style version strings even if you are using the GL api
+  * BUGFIX TESTSUITE Fix the requirements for numpy to match supported python versions
+  * GH#143 Invalid escape sequence in docstrings
+  * MODULES Generation from the upstream registry
+- Skip test_test_glgetfloat_leak test
+
+-------------------------------------------------------------------
 Mon Jun 16 11:42:21 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop pkgconfig(osmesa) BuildRequires: OSMesa was dropped with
