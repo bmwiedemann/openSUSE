@@ -18,20 +18,20 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry-core
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        Poetry PEP 517 Build Backend
 License:        Apache-2.0 AND BSD-2-Clause AND MIT AND Python-2.0
 URL:            https://github.com/python-poetry/poetry-core
 # Only the github archive provides the tests
 Source:         %{url}/archive/%{version}.tar.gz#/poetry-core-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION these are all test dependencies, including python-devel and git-core
-BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module build >= 0.10.0}
 BuildRequires:  %{python_module pytest >= 7.1.2}
 BuildRequires:  %{python_module pytest-mock >= 3.10}

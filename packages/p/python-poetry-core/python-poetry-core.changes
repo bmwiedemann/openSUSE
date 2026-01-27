@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jan 25 11:56:18 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.3.0
+  # Added
+  * Add (optional) size and upload_time to Link and Package.files
+    (#905).
+  ## Changed
+  * Drop support for Python 3.9 (#897).
+  * Normalize versions (#893).
+  * Remove helper function to create temporary directories (#337).
+  * Improve type hint of Package.files (#904).
+  * Update list of supported licenses (#890, #895).
+  ## Fixed
+  * Fix an issue where unsatisfiable requirements did not raise an
+    error (#891).
+  * Fix an issue where the implicit main group did not exist if it
+    was explicitly declared as not having any dependencies (#892).
+  * Fix an issue where python_full_version markers with pre-release
+    versions were parsed incorrectly (#893).
+
+-------------------------------------------------------------------
 Fri Jan 16 10:16:45 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 2.2.1

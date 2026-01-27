@@ -431,4 +431,29 @@
     <comment></comment>
     <requestid>1327660</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>61233a901414f7b569bd9ca8e5e459b8</srcmd5>
+    <version>2.3.0</version>
+    <time>1769526423</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.0
+  # Added
+  * Add (optional) size and upload_time to Link and Package.files
+    (#905).
+  ## Changed
+  * Drop support for Python 3.9 (#897).
+  * Normalize versions (#893).
+  * Remove helper function to create temporary directories (#337).
+  * Improve type hint of Package.files (#904).
+  * Update list of supported licenses (#890, #895).
+  ## Fixed
+  * Fix an issue where unsatisfiable requirements did not raise an
+    error (#891).
+  * Fix an issue where the implicit main group did not exist if it
+    was explicitly declared as not having any dependencies (#892).
+  * Fix an issue where python_full_version markers with pre-release
+    versions were parsed incorrectly (#893).
+</comment>
+    <requestid>1329254</requestid>
+  </revision>
 </revisionlist>
