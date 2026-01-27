@@ -44,7 +44,7 @@
 # In the staging/ring projects, we don't want to build the unneeded packages
 %bcond_with ringdisabled
 Name:           %{pname}
-Version:        4.5.0.20241231
+Version:        4.6.0.20260123
 Release:        0
 Summary:        C library intended for use on embedded systems
 License:        BSD-3-Clause AND MIT AND LGPL-2.0-or-later AND ISC
