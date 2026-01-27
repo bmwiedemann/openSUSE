@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2017 Walter Fey DL8FCL
 # Copyright (c) 2024 Wojciech Kazubski <wk@ire.pw.edu.pl>
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # This file is under MIT license
 
@@ -13,7 +13,7 @@
 
 %define sover 2_6
 Name:           tqsl
-Version:        2.8.2
+Version:        2.8.3
 Release:        0
 Summary:        TrustedQSL ham-radio applications
 # https://spdx.org/licenses/TrustedQSL.html
