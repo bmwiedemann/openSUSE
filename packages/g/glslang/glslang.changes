@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 23 22:56:20 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 16.2.0
+  * Allow gl_FragDepth identifier to be redeclared
+  * Replace `GL_TASK(MESH)_SHADER_NV` with
+    `GL_TASK(MESH)_SHADER_EXT`
+  * Scalarize swizzled MeshEXT stores
+  * Support GL_EXT_long_vector
+  * Add missing preamble #define for GL_EXT_nontemporal_keyword
+  * Support GL_NV_push_constant_bank
+  * Support GL_EXT_descriptor_heap
+
+-------------------------------------------------------------------
 Tue Dec  2 18:33:14 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 16.1.0

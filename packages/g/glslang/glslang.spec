@@ -1,7 +1,7 @@
 #
 # spec file for package glslang
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           glslang
-Version:        16.1.0
+Version:        16.2.0
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
@@ -56,8 +56,8 @@ specifications for these languages.
 %package devel
 Summary:        OpenGL and OpenGL ES shader front end and validator
 Group:          Development/Libraries/C and C++
-Requires:       cmake(SPIRV-Tools-opt)
 Requires:       %lname = %version
+Requires:       cmake(SPIRV-Tools-opt)
 
 %description devel
 glslang is a compiler front end for the OpenGL ES and OpenGL shading
