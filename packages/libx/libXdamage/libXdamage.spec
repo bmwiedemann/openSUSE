@@ -1,7 +1,7 @@
 #
 # spec file for package libXdamage
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libXdamage
 %define lname	libXdamage1
-Version:        1.1.6
+Version:        1.1.7
 Release:        0
 Summary:        X Damage Extension library
 License:        MIT
@@ -31,6 +31,7 @@ Source:         http://xorg.freedesktop.org/archive/individual/lib/%name-%versio
 Source1:        baselibs.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(damageproto) >= 1.1
 BuildRequires:  pkgconfig(fixesproto)
@@ -67,12 +68,11 @@ in %lname.
 %setup -q
 
 %build
-%configure --disable-static
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-make install DESTDIR="%buildroot"
-rm -f "%buildroot/%_libdir"/*.la
+%meson_install
 
 %post -n %lname -p /sbin/ldconfig
 

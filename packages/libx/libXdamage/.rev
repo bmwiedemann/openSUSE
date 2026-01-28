@@ -92,4 +92,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1042321</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>caf0dc2e0b69620eb52e290101a8f154</srcmd5>
+    <version>1.1.7</version>
+    <time>1769609249</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.7
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * meson: Add option to build with meson
+  * gitlab CI: drop the ci-fairy check-mr job
+- switch to meson build</comment>
+    <requestid>1329311</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 26 13:17:00 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.7
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * meson: Add option to build with meson
+  * gitlab CI: drop the ci-fairy check-mr job
+- switch to meson build
+
+-------------------------------------------------------------------
 Mon Dec  5 10:25:43 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.6
