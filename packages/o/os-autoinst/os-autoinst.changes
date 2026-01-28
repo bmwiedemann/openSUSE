@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 28 12:34:32 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1769602729.9728790:
+  * fix: Improve wrong comment about enablement of modern Perl features
+  * Replace remaining functions with subroutine signatures in 18-qemu.t
+  * Fix snapshot overlay mechanism to avoid duplication
+  * fix(dist): provide proper copyright headers in all spec-files
+  * fix(dist): try to fix os-autoinst-obs-auto-submit reverting content
+  * Remove deprecated BIOS and UEFI_PFLASH variables
+
+-------------------------------------------------------------------
 Fri Jan 23 21:33:15 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1769153586.72cabd0:
