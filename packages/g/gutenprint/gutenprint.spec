@@ -1,7 +1,7 @@
 #
 # spec file for package gutenprint
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           gutenprint
 URL:            http://gutenprint.sourceforge.net
-Version:        5.3.4
+Version:        5.3.5
 Release:        0
 %define tarball_version %{version}
 %define gutenprintmajor 5.3
@@ -35,11 +35,9 @@ Requires:       ghostscript
 # Install into this non-root directory (required when it is built as non-root user):
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-Source0:        http://downloads.sourceforge.net/gimp-print/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM bmwiedemann https://sourceforge.net/p/gimp-print/source/merge-requests/9/
-Patch0:         reproducible.patch
+Source0:        http://downloads.sourceforge.net/gimp-print/%{name}-%{version}.tar.xz
 # How to get Source0 directly:
-# wget --no-check-certificate -O gutenprint-5.3.4.tar.bz2 https://sourceforge.net/projects/gimp-print/files/gutenprint-5.3/5.3.4/gutenprint-5.3.4.tar.bz2
+# wget --no-check-certificate -O gutenprint-5.3.5.tar.xz https://sourceforge.net/projects/gimp-print/files/gutenprint-5.3/5.3.5/gutenprint-5.3.5.tar.xz
 # Patch0...Patch9 is for patches from upstream:
 # Patch10...Patch99 is for openSUSE patches which which are intended for upstream:
 
@@ -118,9 +116,23 @@ mv $RPM_BUILD_ROOT/%{_bindir}/testpattern $RPM_BUILD_ROOT/%{_libdir}/gutenprint/
 rm $RPM_BUILD_ROOT/usr/share/locale/*/gutenprint_*.po
 # Remove to make builds reproducible because hostname in here made results vary:
 rm $RPM_BUILD_ROOT%_libdir/gutenprint/*/config.summary
-# Mark locale-dependent files with the respective %lang tag in the file list
+# Mark locale-dependent files with the respective 'lang' tag in the file list
 # see https://en.opensuse.org/openSUSE:Packaging_Conventions_RPM_Macros
 %find_lang gutenprint
+%ifarch riscv64
+# Currently (Jan. 2026) build hardware for 64-bit RISC-V architecture is rather slow.
+# When testing build it took about 2.6 hours (on x86_64 it takes less than 10 minutes)
+# from "[ 1623s] Processing files: gutenprint-5.3.5-91.1.riscv64"
+# to "[11116s] Provides: config(gutenprint) = 5.3.5-91.1 ..."
+# which happens after the end of the install section in a subsequent rpmbuild step.
+# The time (11116s - 1623s = 9493s) is longer than a timeout which would falsely abort the build
+# with "5400 seconds (logidlelimit) elapsed without any output: build job terminated!"
+# To avoid that a background job gets launched at the end of the install section
+# which produces artificial output each minute for up to 3 hours (180 minutes):
+for minutes in $( seq 180 ) ; do sleep 60 ; echo "Still building since $minutes minutes (max: 3 hours)" ; done &
+echo "'Still building' artificial output background job PID is $!"
+# When the build job finished the background job is terminated after 5 minutes by "WATCHDOG TRIGGERED, KILLING VM".
+%endif
 
 %post
 /sbin/ldconfig
@@ -157,6 +169,7 @@ exit 0
 /usr/lib/cups/driver/gutenprint.%{gutenprintmajor}
 %dir /usr/lib/cups/filter
 /usr/lib/cups/filter/commandtocanon
+/usr/lib/cups/filter/commandtodyesub
 /usr/lib/cups/filter/commandtoepson
 /usr/lib/cups/filter/rastertogutenprint.%{gutenprintmajor}
 %dir /usr/lib/cups/backend

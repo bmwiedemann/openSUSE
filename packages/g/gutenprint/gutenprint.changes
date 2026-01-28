@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan 26 10:53:23 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
+
+- Version upgrade to 5.3.5:
+  Major changes in this release (compared to 5.3.4):
+  * Support for several Dye-sublimation & thermal printers
+    has been added.
+  * Several printers have received significant bugfixes
+    or major enhancements.
+  * Added CUPS Command filter support for most dyesub models.
+    This allows querying printer status and media information
+    at any time.
+  For details see the NEWS file.
+- reproducible.patch is no longer needed
+  because its change is merged upstream, see
+  https://sourceforge.net/p/gimp-print/source/merge-requests/9/
+- Make it build even on slow riscv64 build hardware.
+
+-------------------------------------------------------------------
 Tue Oct 22 14:11:16 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
 
 - Spec file cleanup (removal of all SLE10/11/12 special cases).

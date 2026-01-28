@@ -310,4 +310,12 @@
     <comment>Gutenprint spec file cleanup and build simplification</comment>
     <requestid>1218980</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>ee4abdb3e04dde7044b27079d0aff7b4</srcmd5>
+    <version>5.3.5</version>
+    <time>1769609356</time>
+    <user>anag_factory</user>
+    <comment>Gutenprint version upgrade to 5.3.5 (forwarded request 1329509 from jsmeix)</comment>
+    <requestid>1329510</requestid>
+  </revision>
 </revisionlist>
