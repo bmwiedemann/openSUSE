@@ -1,7 +1,7 @@
 #
 # spec file for package python-tifffile
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-tifffile%{psuffix}
-Version:        2025.12.20
+Version:        2026.1.14
 Release:        0
 Summary:        Read and write TIFF files
 License:        BSD-2-Clause

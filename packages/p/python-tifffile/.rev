@@ -297,4 +297,14 @@ This should fix ERROR: download_files is configured to fail when the upstream fi
     <comment></comment>
     <requestid>1324598</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>21170630d6b9ecf50ad3c4b706c1eb3e</srcmd5>
+    <version>2026.1.14</version>
+    <time>1769609455</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.1.14:
+  * Pass 5128 tests.
+  * Improve code quality.</comment>
+    <requestid>1329529</requestid>
+  </revision>
 </revisionlist>
