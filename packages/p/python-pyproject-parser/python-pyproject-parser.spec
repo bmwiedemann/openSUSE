@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyproject-parser
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-pyproject-parser%{psuffix}
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        Parser for 'pyproject.toml'
 License:        MIT
@@ -45,6 +45,7 @@ Requires:       python-apeye-core >= 1.0.0
 Requires:       python-attrs >= 20.3.0
 Requires:       python-dom-toml >= 2.0.0
 Requires:       python-domdf-python-tools >= 2.8.0
+Requires:       python-license-expression
 Requires:       python-natsort >= 7.1.1
 Requires:       python-packaging >= 20.9
 Requires:       python-shippinglabel >= 1.0.0

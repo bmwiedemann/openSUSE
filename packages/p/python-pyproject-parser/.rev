@@ -41,4 +41,16 @@
     <comment>- Make the libalternatives transition conditional</comment>
     <requestid>1299067</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c3d7b0dcd6cc37dd9ddef2ede9b793ca</srcmd5>
+    <version>0.14.0</version>
+    <time>1769609131</time>
+    <user>anag_factory</user>
+    <comment>- Add missing Requires on license-expression.
+
+- update to 0.14.0:
+  * Requires Python 3.9+
+  * Add support for PEP 639 license expressions</comment>
+    <requestid>1329389</requestid>
+  </revision>
 </revisionlist>
