@@ -13,7 +13,10 @@ Wed Jan 14 14:19:10 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
 
 - Use internal deb classes instead of external aptsource lib
 - Speed up wheel key.finger call (bsc#1240532)
-- Add security patches (bsc#1254903,bsc#1254905,bsc#1254904)
+- Backport security patches for Salt vendored tornado:
+  * CVE-2025-67724: missing validation of supplied reason phrase (bsc#1254903)
+  * CVE-2025-67725: fix DoS via malicious HTTP request (bsc#1254905)
+  * CVE-2025-67726: fix HTTP header parameter parsing algorithm (bsc#1254904)
 - Simplify and speed up utils.find_json function (bsc#1246130)
 
 - Added:
@@ -33,12 +36,12 @@ Thu Jan  8 08:37:04 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
 -------------------------------------------------------------------
 Tue Nov 25 16:48:02 UTC 2025 - Alexander Graul <alexander.graul@suse.com>
 
-- Add minimum_auth_version to enforce security (CVE-2025-62349)
+- CVE-2025-62349: Add minimum_auth_version to enforce security (bsc#1254257)
 - Backport security fixes for vendored tornado
   * BDSA-2024-3438
   * BDSA-2024-3439
   * BDSA-2024-9026
-- Junos module yaml loader fix (CVE-2025-62348)
+- CVE-2025-62348: Junos module yaml loader fix (bsc#1254256)
 
 - Added:
   * backport-3006.17-security-fixes-739.patch
