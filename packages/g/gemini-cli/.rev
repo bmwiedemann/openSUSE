@@ -180,4 +180,41 @@
   * fix(workflows): fix and limit labels for pr-triage.sh script</comment>
     <requestid>1328478</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7fd280e68b78475e8b45c3936b459d8a</srcmd5>
+    <version>0.26.0</version>
+    <time>1769618546</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.26.0:
+  * fix: PDF token estimation
+  * docs: clarify F12 to open debug console
+  * docs: Remove .md extension from internal links in
+    architecture.md
+  * Add an experimental setting for extension config
+  * feat: add Rewind Confirmation dialog and Rewind Viewer
+    component
+  * fix(a2a): Don't throw errors for  GeminiEventType Retry and
+    InvalidStream.
+  * prefactor: add rootCommands as array so it can be used for
+    policy parsing
+  * remove unnecessary `&amp;#x7f;` key bindings
+  * docs(skills): use body-file in pr-creator skill for better
+    reliability
+  * chore(automation): recursive labeling for workstream
+    descendants
+  * feat: introduce 'skill-creator' built-in skill and CJS
+    management tools
+  * chore(automation): remove automated PR size and complexity
+    labeler
+  * refactor(skills): replace 'project' with 'workspace' scope
+  * Docs: Update release notes for 1/13/2026
+  * Simplify paste handling
+  * chore(automation): improve scheduled issue triage discovery
+    and throughput
+  * fix(acp): run exit cleanup when stdin closes
+  * feat(scheduler): add types needed for event driven scheduler
+  * Remove unused rewind key binding
+  * Remove sequence binding</comment>
+    <requestid>1329664</requestid>
+  </revision>
 </revisionlist>

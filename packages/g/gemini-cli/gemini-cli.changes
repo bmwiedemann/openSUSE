@@ -1,4 +1,194 @@
 -------------------------------------------------------------------
+Wed Jan 28 12:08:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.26.0:
+  * fix: PDF token estimation
+  * docs: clarify F12 to open debug console
+  * docs: Remove .md extension from internal links in
+    architecture.md
+  * Add an experimental setting for extension config
+  * feat: add Rewind Confirmation dialog and Rewind Viewer
+    component
+  * fix(a2a): Don't throw errors for  GeminiEventType Retry and
+    InvalidStream.
+  * prefactor: add rootCommands as array so it can be used for
+    policy parsing
+  * remove unnecessary `` key bindings
+  * docs(skills): use body-file in pr-creator skill for better
+    reliability
+  * chore(automation): recursive labeling for workstream
+    descendants
+  * feat: introduce 'skill-creator' built-in skill and CJS
+    management tools
+  * chore(automation): remove automated PR size and complexity
+    labeler
+  * refactor(skills): replace 'project' with 'workspace' scope
+  * Docs: Update release notes for 1/13/2026
+  * Simplify paste handling
+  * chore(automation): improve scheduled issue triage discovery
+    and throughput
+  * fix(acp): run exit cleanup when stdin closes
+  * feat(scheduler): add types needed for event driven scheduler
+  * Remove unused rewind key binding
+  * Remove sequence binding
+  * feat(cli): undeprecate the --prompt flag
+  * chore: update dependabot configuration
+  * feat(config): add 'auto' alias for default model selection
+  * Enable & disable agents
+  * cleanup: Improve keybindings
+  * Add timeout for shell-utils to prevent hangs.
+  * feat(plan): add experimental plan flag
+  * feat(cli): add security consent prompts for skill
+    installation
+  * fix: replace 3 consecutive periods with ellipsis character
+  * chore(automation): ensure status/need-triage is applied and
+    never cleared automatically
+  * fix: Handle colons in skill description frontmatter
+  * refactor(core): harden skill frontmatter parsing
+  * feat(skills): add conflict detection and warnings for skill
+    overrides
+  * feat(scheduler): add SchedulerStateManager for reactive tool
+    state
+  * chore(automation): enforce 'help wanted' label permissions
+    and update guidelines
+  * fix(core): resolve circular dependency via tsconfig paths
+  * chore/release: bump version to
+    0.26.0-nightly.20260115.6cb3ae4e0
+  * fix(automation): correct status/need-issue label matching
+    wildcard
+  * fix(automation): prevent label-enforcer loop by ignoring all
+    bots
+  * Add links to supported locations and minor fixes
+  * feat(policy): add source tracking to policy rules
+  * feat(automation): enforce '🔒 maintainer only' and fix bot
+    loop
+  * Make merged settings non-nullable and fix all lints related
+    to that.
+  * fix(core): prevent ModelInfo event emission on aborted signal
+  * Replace relative paths to fix website build
+  * Restricting to localhost
+  * fix(cli): add explicit dependency on color-convert
+  * fix(automation): robust label enforcement with permission
+    checks
+  * fix(cli): prevent OOM crash by limiting file search traversal
+    and adding timeout
+  * fix(cli): safely handle /dev/tty access on macOS
+  * docs: clarify workspace test execution in GEMINI.md
+  * Add support for running available commands prior to MCP
+    servers loading
+  * feat(plan): add experimental 'plan' approval mode
+  * feat(scheduler): add functional awaitConfirmation utility
+  * fix(infra): update maintainer rollup label to 'workstream-
+    rollup'
+  * fix(infra): use GraphQL to detect direct parents in rollup
+    workflow
+  * chore(workflows): rename label-workstream-rollup workflow
+  * skip simple-mcp-server.test.ts
+  * Steer outer agent to use expert subagents when present
+  * Fix race condition by awaiting scheduleToolCalls
+  * cleanup: Organize key bindings
+  * feat(core): Add `generalist` agent.
+  * perf(ui): optimize text buffer and highlighting for large
+    inputs
+  * fix(core): fix PTY descriptor shell leak
+  * feat(plan): enforce strict read-only policy and halt
+    execution on violation
+  * remove need-triage label from bug_report template
+  * fix(core): truncate large telemetry log entries
+  * docs(extensions): add Agent Skills support and mark feature
+    as experimental
+  * fix(core): surface warnings for invalid hook event names in
+    configuration
+  * feat(plan): remove `read_many_files` from approval mode
+    policies
+  * feat(admin): implement admin controls polling and restart
+    prompt
+  * Remove LRUCache class migrating to mnemoist
+  * feat(settings): rename negative settings to positive naming
+    (disable* -> enable*)
+  * refactor(cli): unify shell confirmation dialogs
+  * feat(agent): enable agent skills by default
+  * refactor(core): foundational truncation refactoring and token
+    estimation optimization
+  * fix(hooks): enable /hooks disable to reliably stop single
+    hooks
+  * Don't commit unless user asks us to.
+  * chore: remove a2a-adapter and bump @a2a-js/sdk to 0.3.8
+  * fix: Show experiment values in settings UI for
+    compressionThreshold
+  * feat(cli): replace relative keyboard shortcuts link with web
+    URL
+  * fix(core): resolve PKCE length issue and stabilize OAuth
+    redirect port
+  * Delete rewind documentation for now
+  * Stabilize skill-creator CI and package format
+  * Stabilize the git evals
+  * fix(core): attempt compression before context overflow check
+  * Fix inverted logic.
+  * chore(scripts): add duplicate issue closer script and fix
+    lint errors
+  * docs: update README and config guide to reference Gemini 3
+  * fix(cli): correct Homebrew installation detection
+  * Demote git evals to nightly run.
+  * fix(cli): use OSC-52 clipboard copy in Windows Terminal
+  * Fix: Process all parts in response chunks when thought is
+    first
+  * fix(automation): fix jq quoting error in pr-triage.sh
+  * refactor(core): decouple scheduler into orchestration,
+    policy, and confirmation
+  * feat: add /introspect slash command
+  * refactor(cli): centralize tool mapping and decouple legacy
+    scheduler
+  * fix(ui): ensure rationale renders before tool calls
+  * fix(workflows): use author_association for maintainer check
+  * fix return type of fireSessionStartEvent to defaultHookOutput
+  * feat(cli): add experiment gate for event-driven scheduler
+  * feat(core): improve shell redirection transparency and
+    security
+  * fix(core): deduplicate ModelInfo emission in GeminiClient
+  * docs(themes): remove unsupported DiffModified color key
+  * fix: update currentSequenceModel when modelChanged
+  * feat(core): enhanced anchored iterative context compression
+    with self-verification
+  * Fix mcp instructions
+  * [A2A] Disable checkpointing if git is not installed
+  * feat(admin): set admin.skills.enabled based on
+    advancedFeaturesEnabled setting
+  * Test coverage for hook exit code cases
+  * Revert "Revert "Update extension examples""
+  * fix(core): Provide compact, actionable errors for agent
+    delegation failures
+  * fix: migrate BeforeModel and AfterModel hooks to HookSystem
+  * feat(admin): apply admin settings to gemini
+    skills/mcp/extensions commands
+  * fix(core): update telemetry token count after session resume
+  * Demote the subagent test to nightly
+  * feat(plan): telemetry to track adoption and usage of plan
+    mode
+  * feat: Add flash lite utility fallback chain
+  * Fixes Windows crash: "Cannot resize a pty that has already
+    exited"
+  * feat(core): Add initial eval for generalist agent.
+  * feat(core): unify agent enabled and disabled flags
+  * fix(core): resolve auto model in default strategy
+  * docs: update project context and pr-creator workflow
+  * fix(cli): send gemini-cli version as mcp client version
+  * fix(cli): resolve Ctrl+Enter and Ctrl+J newline issues
+  * Remove missing sidebar item
+  * feat(core): Ensure all properties in `hooks` object are event
+    names.
+  * fix(cli): fix newline support broken in previous PR
+  * Add interactive ValidationDialog for handling 403
+    VALIDATION_REQUIRED errors.
+  * Add Esc-Esc to clear prompt when it's not empty
+  * Avoid spurious warnings about unexpected renders triggered by
+    appEvents and coreEvents.
+  * fix(cli): resolve home/end keybinding conflict
+  * fix bad fallback logic external editor logic
+  * Fix bug where System scopes weren't migrated.
+  * Fix mcp tool lookup in tool registry
+
+-------------------------------------------------------------------
 Wed Jan 21 10:34:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.25.0:
