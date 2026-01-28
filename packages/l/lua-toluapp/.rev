@@ -105,4 +105,12 @@
   the previous patch.</comment>
     <requestid>1313583</requestid>
   </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>262c9fd533f0438d8cb88b681cf8c167</srcmd5>
+    <version>1.0.93</version>
+    <time>1769609675</time>
+    <user>anag_factory</user>
+    <comment>Add option to build for lua55.</comment>
+    <requestid>1329646</requestid>
+  </revision>
 </revisionlist>

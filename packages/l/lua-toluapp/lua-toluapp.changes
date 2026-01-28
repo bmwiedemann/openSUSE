@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 22 18:49:43 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add option to build for lua55.
+
+-------------------------------------------------------------------
 Fri Oct 24 14:51:12 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch off building lua51 build of the package.
