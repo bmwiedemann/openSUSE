@@ -538,4 +538,20 @@
   (part of Rust translations enablement, gh#agama-project/agama#2949).</comment>
     <requestid>1328666</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d1c6b5e9d42fc6823507c3dc9f1a32c6</srcmd5>
+    <version>19.pre.devel1189.efc3a4978</version>
+    <time>1769609149</time>
+    <user>anag_factory</user>
+    <comment>- Provide new D-Bus API for iSCSI (gh#agama-project/agama#3008).
+
+- Temporarily disable the check of os-prober to avoid
+  trying to access libzypp (gh#agama-project/agama#3053).
+
+- Drop dependency on dmraid (jsc#PED-15368)
+
+- Stop reporting a bootloader error when there is no valid storage
+  proposal (bsc#1257013).</comment>
+    <requestid>1329458</requestid>
+  </revision>
 </revisionlist>
