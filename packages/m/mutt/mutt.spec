@@ -88,7 +88,9 @@ BuildRequires:  tex(8r.enc)
 BuildRequires:  python3-base
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
+%if 0%{suse_version} >= 1600
 BuildRequires:  smtp_daemon
+%endif
 %endif
 Requires:       cyrus-sasl-gssapi
 Requires:       cyrus-sasl-plain

@@ -1526,4 +1526,12 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
     <comment>- Remove dependency on update-desktop-files (jsc#PED-15228)</comment>
     <requestid>1327391</requestid>
   </revision>
+  <revision rev="124" vrev="3">
+    <srcmd5>214c915d3d807191a21dafd75db66d1b</srcmd5>
+    <version>2.2.16</version>
+    <time>1769609730</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1329651</requestid>
+  </revision>
 </revisionlist>
