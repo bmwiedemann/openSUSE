@@ -84,4 +84,17 @@
   * unifdef DGUX</comment>
     <requestid>1040227</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f990652bf68e4cee7d99560e339e3f24</srcmd5>
+    <version>1.1.7</version>
+    <time>1769609264</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.7
+  * Remove &quot;All rights reserved&quot; from Oracle copyright notices
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * meson: Add option to build with meson
+  * Improve man page formatting
+  * gitlab CI: drop the ci-fairy check-mr job</comment>
+    <requestid>1329323</requestid>
+  </revision>
 </revisionlist>
