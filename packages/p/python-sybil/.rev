@@ -211,4 +211,19 @@
     <comment></comment>
     <requestid>1313517</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>67d18d5bbf4a77bda93764f2fb6b24bd</srcmd5>
+    <version>9.3.0</version>
+    <time>1769609198</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.3.0:
+  * Add support for MyST code-cell :ref:`directives
+    &lt;syntax/directives&gt;`.
+  * Provide :func:`sybil.testing.check_sybil`,
+    :func:`sybil.testing.check_parser` and
+    :func:`sybil.testing.check_lexer` to help test custom lexers
+    and parsers.
+  * Add documentation around testing custom lexers and parsers.</comment>
+    <requestid>1329543</requestid>
+  </revision>
 </revisionlist>

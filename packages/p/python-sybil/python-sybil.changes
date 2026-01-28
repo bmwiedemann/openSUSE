@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 27 17:18:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.3.0:
+  * Add support for MyST code-cell :ref:`directives
+    <syntax/directives>`.
+  * Provide :func:`sybil.testing.check_sybil`,
+    :func:`sybil.testing.check_parser` and
+    :func:`sybil.testing.check_lexer` to help test custom lexers
+    and parsers.
+  * Add documentation around testing custom lexers and parsers.
+
+-------------------------------------------------------------------
 Fri Oct 24 08:55:53 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 9.2.0
