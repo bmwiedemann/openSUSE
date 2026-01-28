@@ -1,0 +1,26 @@
+Index: libXmu-1.3.0/include/X11/Xmu/EditresP.h
+===================================================================
+--- libXmu-1.3.0.orig/include/X11/Xmu/EditresP.h
++++ libXmu-1.3.0/include/X11/Xmu/EditresP.h
+@@ -295,7 +295,7 @@ in this Software without prior written a
+ #ifdef LONG64
+ #define ID2WIDGET(X) ((Widget)(void *)((X)))
+ #else
+-#define ID2WIDGET(X) ((Widget)(void *)((X) & 0xffffffff))
++#define ID2WIDGET(X) ((Widget)(uintptr_t)((X) & 0xffffffff))
+ #endif
+ 
+ typedef enum {
+Index: libXmu-1.3.0/src/EditresCom.c
+===================================================================
+--- libXmu-1.3.0.orig/src/EditresCom.c
++++ libXmu-1.3.0/src/EditresCom.c
+@@ -1631,7 +1631,7 @@ InsertWidget(ProtocolStream *stream, Wid
+      * make sure that they are inserted in the list from parent -> child
+      */
+     for (i--, temp = w; temp != NULL; temp = XtParent(temp), i--)
+-    widget_list[i] = (CARD64)temp;
++    widget_list[i] = (CARD64)(uintptr_t)temp;
+ 
+     _XEditResPut16(stream, num_widgets);	/* insert number of widgets */
+     for (i = 0; i < num_widgets; i++)		/* insert Widgets themselves */

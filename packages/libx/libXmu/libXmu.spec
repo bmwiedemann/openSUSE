@@ -1,7 +1,7 @@
 #
 # spec file for package libXmu
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libXmu
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Miscellaneous utility routines for X
 License:        MIT
@@ -28,6 +28,7 @@ URL:            http://xorg.freedesktop.org/
 #Git-Web:       http://cgit.freedesktop.org/xorg/lib/libXmu/
 Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+Patch0:         u_int-to-pointer-cast.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  pkgconfig
@@ -84,7 +85,7 @@ This package contains the development headers for the library found
 in libXmu6 and libXmuu1.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --docdir=%_docdir/%name --disable-static

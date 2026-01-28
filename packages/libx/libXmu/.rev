@@ -117,4 +117,20 @@ of these interfaces.</comment>
   * test: Add prototype for Xmureallocarray to silence warning</comment>
     <requestid>1168558</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2e95d0abc921456170b2b50b231740c4</srcmd5>
+    <version>1.3.0</version>
+    <time>1769609222</time>
+    <user>anag_factory</user>
+    <comment>- u_int-to-pointer-cast.patch
+  * fixes build on i586
+
+- Update to version 1.3.0
+  * test: Avoid incorrect -Wuse-after-free warning from gcc 13
+  * gitlab CI: drop the ci-fairy check-mr job
+  * Remove duplicate ARGSUSED comment
+  * EditresCom: Fix time argument for XtGetSelectionValue()
+  * Editres: Bump the proto to v6, Widget / Window values are 64-bit</comment>
+    <requestid>1329295</requestid>
+  </revision>
 </revisionlist>
