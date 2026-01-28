@@ -8,7 +8,7 @@
     <param name="scm">git</param>
     <!-- the revision might be changed to "release" branch or a git tag by the
     .github/workflows/obs-staging-shared.yml action when submitting to OBS -->
-    <param name="revision">fix-registration</param>
+    <param name="revision">master</param>
     <param name="subdir">web</param>
     <param name="without-version">enable</param>
     <param name="extract">package-lock.json</param>

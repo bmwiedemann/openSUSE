@@ -572,4 +572,27 @@
   blocking issues (gh#agama-project/agama#3035).</comment>
     <requestid>1328665</requestid>
   </revision>
+  <revision rev="33" vrev="33">
+    <srcmd5>66731b854d85eba369f0be9378d5f5e7</srcmd5>
+    <version>0</version>
+    <time>1769609151</time>
+    <user>anag_factory</user>
+    <comment>- Fixed removing automatically selected recommended patterns
+  (gh#agama-project/agama#3072)
+
+- Allow registering add-ons (gh#agama-project/agama#3061).
+- Improve error reporting in the registration page.
+- Do not block the UI when registering the system (bsc#1257105).
+- Do not allow to change the product when it is already registered.
+
+- Track state (collapsed/open) of the lists of logical volumes
+  (gh#agama-project/agama#3066).
+
+- Avoid inconsistent state (collapsed/open) in the lists of
+  partitions (gh#agama-project/agama#3063).
+
+- Updated top header install button label to clarify navigation to
+  the overview page (gh#agama-project/agama#3060).</comment>
+    <requestid>1329459</requestid>
+  </revision>
 </revisionlist>
