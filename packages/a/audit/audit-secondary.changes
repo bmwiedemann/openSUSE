@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 26 12:11:06 UTC 2026 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move all /var/spool, /var/log directories to systemd-tmpfiles
+
+-------------------------------------------------------------------
 Tue Jun 10 14:24:47 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Refresh systemd service patches:

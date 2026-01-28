@@ -30,6 +30,7 @@ Group:          System/Monitoring
 URL:            https://people.redhat.com/sgrubb/audit/
 Source0:        https://people.redhat.com/sgrubb/audit/%{_name}-%{version}.tar.gz
 Source1:        system-group-audit.conf
+Source2:        audit.tmpfiles
 Patch1:         audit-plugins-path.patch
 Patch2:         audit-no-gss.patch
 Patch3:         audit-ausearch-do-not-require-tclass.patch
@@ -222,6 +223,7 @@ done
 ln -s service %{buildroot}%{_sbindir}/rcauditd
 %endif
 chmod 0644 %{buildroot}%{_unitdir}/auditd.service
+install -Dm0644 %{SOURCE2} %{buildroot}%{_tmpfilesdir}/audit.conf
 
 %check
 %make_build check
@@ -308,10 +310,11 @@ fi
 %config(noreplace) %attr(640,root,root) %{_sysconfdir}/audit/plugins.d/syslog.conf
 %ghost %{_sysconfdir}/auditd.conf
 %config(noreplace) %attr(640,root,root) %{_sysconfdir}/audit/auditd.conf
-%dir %attr(750,root,audit) %{_localstatedir}/log/audit
-%ghost %config(noreplace) %attr(640,root,audit) %{_localstatedir}/log/audit/audit.log
-%dir %attr(700,root,root) %{_localstatedir}/spool/audit
+%ghost %dir %attr(0750,root,audit) %{_localstatedir}/log/audit
+%ghost %config(noreplace) %attr(0640,root,audit) %{_localstatedir}/log/audit/audit.log
+%ghost %dir %attr(0700,root,root) %{_localstatedir}/spool/audit
 %{_unitdir}/auditd.service
+%{_tmpfilesdir}/audit.conf
 %if 0%{?suse_version} < 1550
 %{_sbindir}/rcauditd
 %endif

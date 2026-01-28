@@ -1,0 +1,3 @@
+d /var/log/audit 0750 root audit - -
+f /var/log/audit/audit.log 0640 root audit - -
+d /var/spool/audit 0700 root root - -
