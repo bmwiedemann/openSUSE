@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Jan 23 15:36:12 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
+
+- Fixed removing automatically selected recommended patterns
+  (gh#agama-project/agama#3072)
+
+-------------------------------------------------------------------
+Fri Jan 23 14:10:16 UTC 2026 - Martin Vidner <mvidner@suse.com>
+
+- Follow suit, do not package /usr/share/locale itself
+  (gh#agama-project/agama#3071).
+
+-------------------------------------------------------------------
+Fri Jan 23 13:47:29 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
+
+- Copy the SCC credentials and the libzypp services 
+  (gh#agama-project/agama#3053).
+
+-------------------------------------------------------------------
+Fri Jan 23 09:53:37 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Use the right architecture when regisrering a system in ppc64le
+  (gh#agama-project/agama#3068).
+
+-------------------------------------------------------------------
+Thu Jan 22 16:16:55 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Consider inst.register_url as part of the "extended configuration"
+  (bsc#1256907).
+- Try to register the system even if only a registration URL was
+  specified (without a code).
+- When the registration fails, retry it on the next SetConfig call.
+
+-------------------------------------------------------------------
+Wed Jan 21 11:07:34 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Allow importing SSL certificates from registration servers
+  (gh#agama-project/agama#3055).
+  
+-------------------------------------------------------------------
+Wed Jan 21 10:59:15 UTC 2026 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix enabling NetworkManager service in the target system
+  (gh#agama-project/agama#3056).
+
+-------------------------------------------------------------------
+Mon Jan 19 20:31:26 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix inst.finish=stop option (gh#agama-project/agama#3047)
+
+-------------------------------------------------------------------
+Fri Jan 16 15:01:32 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix unattended installation (bsc#1256898).
+- Add first user to wheel group (gh#agama-project/agama#3030).
+- Implement using inst.install_url instead of Product repositories
+  (gh#agama-project/agama#3030).
+
+-------------------------------------------------------------------
 Wed Jan 14 23:27:16 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Implement support for users and authentication configuration.

@@ -40,6 +40,8 @@ ExcludeArch:    %ix86 s390 ppc64
 BuildRequires:  memory-constraints
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(openssl)
+# for msgfmt
+BuildRequires:  gettext-runtime
 # used in tests for dbus service
 BuildRequires:  dbus-1-common
 Requires:       dbus-1-common
@@ -72,6 +74,8 @@ Requires:       python-langtable-data
 # dependency on the YaST part of Agama
 Requires:       agama-yast
 Requires:       agama-common
+# required for importing SSL certificates
+Requires:       ca-certificates
 
 %description
 Agama is a service-based Linux installer. It is composed of an HTTP-based API,
@@ -176,6 +180,7 @@ cargo run --package xtask -- manpages
 gzip out/man/*
 cargo run --package xtask -- completions
 cargo run --package xtask -- openapi
+make -C po
 
 %install
 env \
@@ -189,6 +194,7 @@ env \
   libexecdir=%{_libexecdir} \
   mandir=%{_mandir} \
   %{_builddir}/agama/install.sh
+%find_lang agama
 
 %check
 PATH=$PWD/share/bin:$PATH
@@ -235,7 +241,7 @@ echo $PATH
 %postun -n agama-scripts
 %service_del_postun_with_restart agama-scripts.service
 
-%files
+%files -f agama.lang
 %doc README.md
 %license LICENSE
 %{_bindir}/agama-web-server

@@ -563,4 +563,41 @@
 - Version 18</comment>
     <requestid>1327356</requestid>
   </revision>
+  <revision rev="33" vrev="33">
+    <srcmd5>e227e8847face0b07dd0552b0a09f457</srcmd5>
+    <version>0</version>
+    <time>1769609148</time>
+    <user>anag_factory</user>
+    <comment>- Fixed removing automatically selected recommended patterns
+  (gh#agama-project/agama#3072)
+
+- Follow suit, do not package /usr/share/locale itself
+  (gh#agama-project/agama#3071).
+
+- Copy the SCC credentials and the libzypp services 
+  (gh#agama-project/agama#3053).
+
+- Use the right architecture when regisrering a system in ppc64le
+  (gh#agama-project/agama#3068).
+
+- Consider inst.register_url as part of the &quot;extended configuration&quot;
+  (bsc#1256907).
+- Try to register the system even if only a registration URL was
+  specified (without a code).
+- When the registration fails, retry it on the next SetConfig call.
+
+- Allow importing SSL certificates from registration servers
+  (gh#agama-project/agama#3055).
+  
+
+- Fix enabling NetworkManager service in the target system
+  (gh#agama-project/agama#3056).
+
+- Fix inst.finish=stop option (gh#agama-project/agama#3047)
+
+- Fix unattended installation (bsc#1256898).
+- Add first user to wheel group (gh#agama-project/agama#3030).
+- Implement using inst.install_url instead of Product repositories</comment>
+    <requestid>1329457</requestid>
+  </revision>
 </revisionlist>
