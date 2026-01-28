@@ -30,6 +30,9 @@ License:        MIT
 Group:          Development/Languages/Other
 URL:            https://lunarmodules.github.io/Penlight/
 Source0:        https://github.com/lunarmodules/Penlight/archive/%{version}/%{rname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM lua55-build.patch gh#lunarmodules/Penlight!512 mcepl@suse.com
+# Make the package working with Lua 5.5
+Patch0:         lua55-build.patch
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-ldoc
 BuildRequires:  %{flavor}-luafilesystem

@@ -1,0 +1,174 @@
+---
+ lua/pl/app.lua    |   21 ++++++++++++---------
+ lua/pl/lapp.lua   |    4 ++--
+ lua/pl/seq.lua    |   30 +++++++++++++++++++-----------
+ lua/pl/tablex.lua |    6 +++---
+ lua/pl/test.lua   |    2 +-
+ 5 files changed, 37 insertions(+), 26 deletions(-)
+
+Index: Penlight-1.14.0/lua/pl/app.lua
+===================================================================
+--- Penlight-1.14.0.orig/lua/pl/app.lua	2024-04-15 13:37:20.000000000 +0200
++++ Penlight-1.14.0/lua/pl/app.lua	2026-01-23 01:30:34.957259286 +0100
+@@ -194,9 +194,10 @@
+     local with_values = {}
+     for k,v in pairs(flags_with_values or {}) do
+         if type(k) == "number" then
+-            k = v
++            with_values[v] = true
++        else
++            with_values[k] = true
+         end
+-        with_values[k] = true
+     end
+ 
+     local valid
+@@ -207,19 +208,21 @@
+     else
+         valid = {}
+         for k,aliases in pairs(flags_valid) do
++            local idx_k = k
++            local idx_aliases = aliases
+             if type(k) == "number" then         -- array/list entry
+-                k = aliases
++                idx_k = aliases
+             end
+-            if type(aliases) == "string" then  -- single alias
+-                aliases = { aliases }
++            if type(idx_aliases) == "string" then  -- single alias
++                idx_aliases = { aliases }
+             end
+-            if type(aliases) == "table" then   -- list of aliases
++            if type(idx_aliases) == "table" then   -- list of aliases
+                 -- it's the alternate name, so add the proper mappings
+-                for i, alias in ipairs(aliases) do
+-                    valid[alias] = k
++                for i, alias in ipairs(idx_aliases) do
++                    valid[alias] = idx_k
+                 end
+             end
+-            valid[k] = k
++            valid[idx_k] = idx_k
+         end
+         do
+             local new_with_values = {}  -- needed to prevent "invalid key to 'next'" error
+Index: Penlight-1.14.0/lua/pl/lapp.lua
+===================================================================
+--- Penlight-1.14.0.orig/lua/pl/lapp.lua	2024-04-15 13:37:20.000000000 +0200
++++ Penlight-1.14.0/lua/pl/lapp.lua	2026-01-23 02:08:58.549364202 +0100
+@@ -215,10 +215,10 @@
+     end
+ 
+ 
+-    for line in lines(str) do
++    for l in lines(str) do
+         local res = {}
+         local optparm,defval,vtype,constraint,rest
+-        line = lstrip(line)
++        local line = lstrip(l)
+         local function check(str)
+             return match(str,line,res)
+         end
+Index: Penlight-1.14.0/lua/pl/seq.lua
+===================================================================
+--- Penlight-1.14.0.orig/lua/pl/seq.lua	2024-04-15 13:37:20.000000000 +0200
++++ Penlight-1.14.0/lua/pl/seq.lua	2026-01-23 01:57:01.301108040 +0100
+@@ -67,9 +67,9 @@
+   if not nexti then
+     nexti = ipairs{}
+   end
+-  local key,value = 0
++  local key, value = 0
+   return function()
+-    key,value = nexti(t,key)
++    key, value = nexti(t,key)
+     return value
+   end
+ end
+@@ -126,9 +126,9 @@
+ function seq.minmax(iter)
+   local vmin,vmax = 1e70,-1e70
+   for v in default_iter(iter) do
+-    v = tonumber(v)
+-    if v < vmin then vmin = v end
+-    if v > vmax then vmax = v end
++    local idx_v = tonumber(v)
++    if idx_v < vmin then vmin = idx_v end
++    if idx_v > vmax then vmax = idx_v end
+   end
+   return vmin,vmax
+ end
+@@ -140,8 +140,11 @@
+   local s = 0
+   local i = 0
+   for v in default_iter(iter) do
+-    if fn then v = fn(v) end
+-    s = s + v
++    local idx_v = v
++    if fn then
++      idx_v = fn(v)
++    end
++    s = s + idx_v
+     i = i + 1
+   end
+   return s,i
+@@ -263,7 +266,9 @@
+ function seq.unique(iter,returns_table)
+     local t = seq.count_map(iter)
+     local res,k = {},1
+-    for key in pairs(t) do res[k] = key; k = k + 1 end
++    for key in pairs(t) do
++      res[k] = key; k = k + 1
++    end
+     table.sort(res)
+     if returns_table then
+         return res
+@@ -290,12 +295,15 @@
+   end
+   local k = 1
+   for v in default_iter(iter) do
+-     if fmt then v = fmt(v) end
++     local idx_v = v
++     if fmt then
++       idx_v = fmt(v)
++     end
+      if k < nfields then
+-       write(v,sep)
++       write(idx_v,sep)
+        k = k + 1
+     else
+-       write(v,'\n')
++       write(idx_v,'\n')
+        k = 1
+     end
+   end
+Index: Penlight-1.14.0/lua/pl/tablex.lua
+===================================================================
+--- Penlight-1.14.0.orig/lua/pl/tablex.lua	2024-04-15 13:37:20.000000000 +0200
++++ Penlight-1.14.0/lua/pl/tablex.lua	2026-01-23 01:10:27.187737257 +0100
+@@ -103,9 +103,9 @@
+     cache[t] = res
+     local mt = getmetatable(t)
+     for k,v in pairs(t) do
+-        k = cycle_aware_copy(k, cache)
+-        v = cycle_aware_copy(v, cache)
+-        res[k] = v
++        local new_k = cycle_aware_copy(k, cache)
++        local new_v = cycle_aware_copy(v, cache)
++        res[new_k] = new_v
+     end
+     setmetatable(res,mt)
+     return res
+Index: Penlight-1.14.0/lua/pl/test.lua
+===================================================================
+--- Penlight-1.14.0.orig/lua/pl/test.lua	2024-04-15 13:37:20.000000000 +0200
++++ Penlight-1.14.0/lua/pl/test.lua	2026-01-23 02:02:22.968585922 +0100
+@@ -91,7 +91,7 @@
+     else
+         ok, err = pcall(fn)
+     end
+-    if ok or err:match(e)==nil then
++    if ok or (e and err:match(e)==nil) then
+         complain (err,e,"these errors did not match",where)
+     end
+ end

@@ -70,4 +70,13 @@
 - Make the package build with LuaJIT.</comment>
     <requestid>1315189</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>7710ee5466d838f96317cee64e5d449a</srcmd5>
+    <version>1.14.0</version>
+    <time>1769609666</time>
+    <user>anag_factory</user>
+    <comment>- Add lua55-build.patch to fix Lua 5.5 compatibility issues
+  (gh#lunarmodules/Penlight!512)</comment>
+    <requestid>1328813</requestid>
+  </revision>
 </revisionlist>
