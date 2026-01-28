@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 27 17:14:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.3:
+  * Fix inefficient attribute pattern.
+  * Ensure custom selectors or namespace dictionaries
+    reject non-string keys
+  * Fix handling of `:in-range` and `:out-of-range` with
+    end of year weeks
+  * Fix a potential infinite loop in the pretty printing
+    debug function
+
+-------------------------------------------------------------------
 Mon Dec 29 10:10:20 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.8.1 (bsc#1256316)

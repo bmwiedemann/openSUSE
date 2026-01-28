@@ -266,4 +266,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1327360</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d311f030d6ccd4770687c206248492c8</srcmd5>
+    <version>2.8.3</version>
+    <time>1769609192</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.8.3:
+  * Fix inefficient attribute pattern.
+  * Ensure custom selectors or namespace dictionaries
+    reject non-string keys
+  * Fix handling of `:in-range` and `:out-of-range` with
+    end of year weeks
+  * Fix a potential infinite loop in the pretty printing
+    debug function</comment>
+    <requestid>1329539</requestid>
+  </revision>
 </revisionlist>
