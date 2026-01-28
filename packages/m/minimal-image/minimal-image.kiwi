@@ -57,10 +57,10 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
     <source path="obsrepositories:/"/>
   </repository>
   <packages type="delete">
-    <package name="grep"/>
     <package name="diffutils"/>
-    <package name="info"/>
     <package name="fillup"/>
+    <package name="grep"/>
+    <package name="info"/>
     <package name="libzio1"/>
   </packages>
   <packages type="bootstrap">
