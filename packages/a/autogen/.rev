@@ -452,4 +452,12 @@
   (CVE-2025-8746, bsc#1247921) (forwarded request 1304825 from Andreas_Schwab)</comment>
     <requestid>1304826</requestid>
   </revision>
+  <revision rev="55" vrev="9">
+    <srcmd5>2139483e3bb88d767091073caa9720ff</srcmd5>
+    <version>5.18.16</version>
+    <time>1769609141</time>
+    <user>anag_factory</user>
+    <comment>- Disable -Werror (forwarded request 1329452 from Andreas_Schwab)</comment>
+    <requestid>1329453</requestid>
+  </revision>
 </revisionlist>
