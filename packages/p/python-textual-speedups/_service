@@ -1,0 +1,6 @@
+<services>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srctar">textual_speedups-*.tar.gz</param>
+    <param name="compression">gz</param>
+  </service>
+</services>
