@@ -102,4 +102,18 @@
   * Add -no-undefined flag to LDFLAGS to fix Windows builds</comment>
     <requestid>1230958</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7c572549887187ef2507ed5fc696c219</srcmd5>
+    <version>1.1.7</version>
+    <time>1769609267</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.7
+  * meson: Add option to build with meson
+  * Improve man page formatting
+  * XF86VM.3: fix warnings raised by `mandoc -T lint` and `groff -rCHECKSTYLE=10`
+  * gitlab CI: drop the ci-fairy check-mr job
+  * XF86VM.3: Some editorial changes for this man page [Debian bug #1102885]
+- switch to meson</comment>
+    <requestid>1329324</requestid>
+  </revision>
 </revisionlist>

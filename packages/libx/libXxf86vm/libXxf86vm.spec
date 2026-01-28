@@ -1,7 +1,7 @@
 #
 # spec file for package libXxf86vm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libXxf86vm1
 Name:           libXxf86vm
-Version:        1.1.6
+Version:        1.1.7
 Release:        0
 Summary:        XFree86-VidMode X extension library
 License:        MIT
@@ -31,6 +31,7 @@ Source1:        baselibs.conf
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  fdupes
 BuildRequires:  grep
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11) >= 1.6
 BuildRequires:  pkgconfig(xext)
@@ -70,12 +71,11 @@ in %{lname}.
 %setup -q
 
 %build
-%configure --disable-static
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 %fdupes %{buildroot}/%{_prefix}
 
 %post -n %{lname} -p /sbin/ldconfig
