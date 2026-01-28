@@ -1,7 +1,7 @@
 #
 # spec file for package python-gi-docgen
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           python-gi-docgen
-Version:        2025.5
+Version:        2026.1
 Release:        0
 Summary:        A documentation generator for GObject-based libraries
 # For reference, as some scripts are known to reorder things:

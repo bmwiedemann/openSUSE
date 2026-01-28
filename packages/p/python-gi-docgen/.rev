@@ -154,4 +154,15 @@
     <comment></comment>
     <requestid>1311299</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2422c8d16897e54cff6e8566db6e58cc</srcmd5>
+    <version>2026.1</version>
+    <time>1769609224</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2026.1:
+  + Added: Parse method-inline for records, unions and interfaces
+  + Changed: Use dot's svg_inline output format
+  + Fixed: Fix Red Hat Display italic font-face (forwarded request 1328982 from iznogood)</comment>
+    <requestid>1329299</requestid>
+  </revision>
 </revisionlist>
