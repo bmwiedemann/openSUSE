@@ -166,4 +166,16 @@
   XRRGetMonitors().</comment>
     <requestid>1115752</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a87a705b9919e95614faf2860cd5ba47</srcmd5>
+    <version>1.5.5</version>
+    <time>1769609260</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5.5
+  * meson: Add option to build with meson
+  * Improve man page formatting
+  * gitlab CI: drop the ci-fairy check-mr job
+- switch to meson build</comment>
+    <requestid>1329320</requestid>
+  </revision>
 </revisionlist>

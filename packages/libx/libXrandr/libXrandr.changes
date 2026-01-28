@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 26 13:46:39 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.5.5
+  * meson: Add option to build with meson
+  * Improve man page formatting
+  * gitlab CI: drop the ci-fairy check-mr job
+- switch to meson build
+
+-------------------------------------------------------------------
 Thu Oct  5 07:41:36 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.5.4

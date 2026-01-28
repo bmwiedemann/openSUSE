@@ -1,7 +1,7 @@
 #
 # spec file for package libXrandr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libXrandr
 %define lname   libXrandr2
-Version:        1.5.4
+Version:        1.5.5
 Release:        0
 Summary:        X Resize, Rotate and Reflection extension library
 License:        MIT
@@ -33,6 +33,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  fdupes
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(randrproto) >= 1.5
 BuildRequires:  pkgconfig(renderproto)
@@ -73,13 +74,11 @@ in %lname.
 %setup -q
 
 %build
-#git#autoreconf -fi
-%configure --disable-static
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-make install DESTDIR="%buildroot"
-rm -f "%buildroot/%_libdir"/*.la
+%meson_install
 %fdupes %buildroot/%_prefix
 
 %post -n %lname -p /sbin/ldconfig
