@@ -1,7 +1,7 @@
 #
 # spec file for package libxkbfile
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libxkbfile1
 Name:           libxkbfile
-Version:        1.1.3
+Version:        1.2.0
 Release:        0
 Summary:        X11 keyboard file manipulation library
 License:        MIT
@@ -28,7 +28,6 @@ URL:            https://xorg.freedesktop.org/
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libxkbfile/
 Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-Patch1237429:   U_CVE-2025-26595-0001-xkb-Fix-buffer-overflow-in-XkbVModMaskText.patch
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(kbproto)

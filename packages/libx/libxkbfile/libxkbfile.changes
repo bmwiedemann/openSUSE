@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 26 13:32:17 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 1.2.0
+  * This release adds a new XkbRF_FreeVarDefs() API, and brings
+    over many fixes from the other copies of XKB code in the
+    various X.Org repos.
+- supersedes U_CVE-2025-26595-0001-xkb-Fix-buffer-overflow-in-XkbVModMaskText.patch
+
+-------------------------------------------------------------------
 Tue Feb 25 17:41:52 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_CVE-2025-26595-0001-xkb-Fix-buffer-overflow-in-XkbVModMaskText.patch 

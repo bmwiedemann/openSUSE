@@ -146,4 +146,16 @@
   * Buffer overflow in XkbVModMaskText() (CVE-2025-26595, bsc#1237429)</comment>
     <requestid>1248444</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>866767c45e1d787d6f0b141305ee3423</srcmd5>
+    <version>1.2.0</version>
+    <time>1769609255</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.2.0
+  * This release adds a new XkbRF_FreeVarDefs() API, and brings
+    over many fixes from the other copies of XKB code in the
+    various X.Org repos.
+- supersedes U_CVE-2025-26595-0001-xkb-Fix-buffer-overflow-in-XkbVModMaskText.patch</comment>
+    <requestid>1329317</requestid>
+  </revision>
 </revisionlist>
