@@ -1,7 +1,7 @@
 #
 # spec file for package kst
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011 Christian Trippe ctrippe@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,17 +28,17 @@ Source:         kst-plot-%{version}.tar.zst
 Patch0:         fix-hdf5-include-path.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         kst-cmake4.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         https://invent.kde.org/graphics/kst-plot/-/commit/c2b585fbd23e1e7de8f7dba457ca632bb07708da.patch#/kst_netcdf4_compat.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-Fix-detection-of-HDF5-CPP-library.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gsl-devel
 BuildRequires:  hdf5-devel
 BuildRequires:  libmatio-devel
-%if 0%{?suse_version} != 1600
-BuildRequires:  libnetcdf_c++-devel
-%endif
 BuildRequires:  libqt5-linguist
-BuildRequires:  netcdf-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  cmake(Qt5Concurrent)
@@ -49,6 +49,8 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(cfitsio)
+BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(netcdf-cxx4)
 Obsoletes:      python-kst < %{version}
 
 %description

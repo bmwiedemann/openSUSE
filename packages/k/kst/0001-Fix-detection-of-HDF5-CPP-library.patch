@@ -1,0 +1,32 @@
+From 36ae9800ca845ddebb4e018c5bad36772d6e3dc5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Mon, 26 Jan 2026 22:07:58 +0100
+Subject: [PATCH] Fix detection of HDF5 CPP library
+
+The official name of the library is libhdf5_cpp, and this works for any
+distribution not messing with the names, notably (open)SUSE and Fedora.
+
+Ubuntu/Debian install the serial (default) flavor with a non-standard
+name, including the pkgconfig file, and thus fall through to the
+`else()` branch anyway.
+---
+ cmake/modules/FindHDF5.cmake | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/modules/FindHDF5.cmake b/cmake/modules/FindHDF5.cmake
+index dc1e8e21..57411817 100644
+--- a/cmake/modules/FindHDF5.cmake
++++ b/cmake/modules/FindHDF5.cmake
+@@ -22,7 +22,8 @@ if(NOT HDF5_INCLUDEDIR)
+   endif()
+ 
+   if(HDF5_INCLUDEDIR AND HDF5_LIBRARIES)
+-    FIND_LIBRARY(HDF5_LIBRARY_CPP hdf5_c++
++    FIND_LIBRARY(HDF5_LIBRARY_CPP
++      NAMES hdf5_cpp
+       HINTS ${HDF5_LIBRARY_DIRS})
+     set(HDF5_LIBRARY_C -L${HDF5_LIBRARY_DIRS} ${HDF5_LIBRARIES} CACHE STRING "" FORCE)
+   else()
+-- 
+2.52.0
+

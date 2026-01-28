@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 26 18:48:14 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use correct dependency for non-obsolete version of netcdf-cxx4.
+- Fix build with current netcdf-cxx4, add kst_netcdf4_compat.patch
+- Fix detection of HDF5 libraries, add
+  0001-Fix-detection-of-HDF5-CPP-library.patch
+- Add libtiff-devel build dependency
+
+-------------------------------------------------------------------
 Thu May 29 12:37:05 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Do not BuildRequire netcdf_cxx in Leap 16 where it's not
