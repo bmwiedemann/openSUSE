@@ -1,7 +1,7 @@
 #
 # spec file for package spirv-tools
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define _lto_cflags %nil
-%define lname libSPIRV-Tools-2025_5_rc1
+%define lname libSPIRV-Tools-2026_1
 
 # Leap 15 and SLES 15 defaults to GCC 7, which does not have stable C++17 ABI.
 # See https://bugzilla.suse.com/show_bug.cgi?id=1235697
@@ -26,13 +26,13 @@
 %endif
 
 Name:           spirv-tools
-Version:        2025.5~rc1
+Version:        2026.1
 Release:        0
 Summary:        API and commands for processing SPIR-V modules
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/SPIRV-Tools
-Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v2025.5.rc1.tar.gz
+Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v2026.1.tar.gz
 Source9:        baselibs.conf
 Patch1:         ver.diff
 BuildRequires:  bison
@@ -42,7 +42,7 @@ BuildRequires:  gcc%{?gcc_version}-c++ >= 9
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
-BuildRequires:  spirv-headers >= 1.6.4+sdk335
+BuildRequires:  spirv-headers >= 1.6.4+sdk335+take2
 
 %description
 The package includes an assembler, binary module parser,
@@ -70,7 +70,7 @@ validator, and is used in the standalone tools whilst also enabling
 integration into other code bases directly.
 
 %prep
-%autosetup -p1 -n SPIRV-Tools-2025.5.rc1
+%autosetup -p1 -n SPIRV-Tools-2026.1
 find . -type f -name CMakeLists.txt -exec \
 	perl -i -pe 's{\@PACKAGE_VERSION\@}{%version}' CMakeLists.txt {} +
 

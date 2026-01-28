@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 26 19:04:22 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2026.1
+  * spirv-opt: Extended folding rules for subtraction, negation
+  * spirv-opt: Added constant folding for NMin, NMax and NClamp
+  * Implemented SPV_EXT_descriptor_heap
+  * Added support for SPV_NV_push_constant_bank
+
+-------------------------------------------------------------------
 Tue Dec  9 23:33:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2025.5~rc1 (SDK-1.4.335.0)
