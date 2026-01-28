@@ -53,4 +53,16 @@
   * update ls-qpack to 2.6.1</comment>
     <requestid>1273218</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>783c68ef92388f5e4636db77dab000f2</srcmd5>
+    <version>0.3.23</version>
+    <time>1769609136</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.3.23:
+  * update ls-qpack to latest version
+  * Support 3.14, drop python 3.9
+  * binding: store reference to xhdr buffer
+  * binding: add sanity asserts</comment>
+    <requestid>1329413</requestid>
+  </revision>
 </revisionlist>
