@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jan 28 06:19:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.49.0:
+  * Added Features
+    - turn on EOL provider [#849 @willmurphyscode]
+    - write info about distro EOL timing into database [#817
+      @willmurphyscode]
+  * Additional Changes
+    - remove go.mod replace statement that is no longer needed
+      [#759 @westonsteimel]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#846)
+    - chore: remove go.mod replace statement that is no longer
+      needed (#759)
+    - chore(deps): update tools to latest versions (#838)
+    - chore(deps): Bump actions/checkout from 6.0.1 to 6.0.2 (#839)
+    - chore(deps): Bump zizmorcore/zizmor-action from 0.3.0 to
+      0.4.1 (#841)
+    - chore(deps): Bump actions/cache from 5.0.1 to 5.0.2 (#842)
+    - chore(deps): Bump actions/cache in /.github/actions/bootstrap
+      (#844)
+    - chore(deps): Bump the python-minor-and-patch group across 1
+      directory with 2 updates (#840)
+    - chore(deps): Bump github.com/klauspost/compress from 1.18.2
+      to 1.18.3 (#843)
+    - chore(deps): Bump boto3 in the python-minor-and-patch group
+      (#835)
+
+-------------------------------------------------------------------
 Wed Jan 21 06:10:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.48.0:
