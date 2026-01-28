@@ -211,4 +211,22 @@ After this PR, there will be a delete request for kernel-firmware.
   * intel_vpu: Add firmware for 50xx NPUs and update older ones</comment>
     <requestid>1324920</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8c1ff6524553355a81eab8dbbed442ba</srcmd5>
+    <version>20260122</version>
+    <time>1769420670</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260122 (git commit 1b7b9f6c3461):
+  * Intel IPU7: Update firmware binary for Panther Lake</comment>
+    <requestid>1328723</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2571cde59a0e104edeeb44b6f0da55ad</srcmd5>
+    <version>20260123</version>
+    <time>1769609290</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260123 (git commit 0882248d0504):
+  * intel/ish: Add Lenovo ISH firmware support for X1 and X9 systems</comment>
+    <requestid>1329426</requestid>
+  </revision>
 </revisionlist>
