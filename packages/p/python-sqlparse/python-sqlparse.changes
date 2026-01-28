@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Jan 27 16:06:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.5:
+  * Fix DoS protection to raise SQLParseError instead of silently
+    returning None when grouping limits are exceeded (issue827).
+  * Fix splitting of BEGIN TRANSACTION statements (issue826).
+  * Add support for Python 3.14.
+  * Add type annotations to top-level API functions and include
+    py.typed marker for PEP 561 compliance, enabling type checking
+    with mypy and other tools
+  * Add pre-commit hook support. sqlparse can now be used as a
+    pre-commit hook to automatically format SQL files. The CLI now
+    supports multiple files and an `--in-place` flag for in-place
+    editing (issue537).
+  * Add `ATTACH` and `DETACH` to PostgreSQL keywords (pr808).
+  * Add `INTERSECT` to close keywords in WHERE clause (pr820).
+  * Support `REGEXP BINARY` comparison operator (pr817).
+  * Add additional protection against denial of service attacks
+    when parsing very large lists of tuples. This enhances the
+    existing recursion protections with configurable limits for
+    token processing to prevent DoS through algorithmic complexity
+    attacks. The new limits
+  * MAX_GROUPING_TOKENS=10000) can be adjusted or disabled (by
+    setting to None) if needed for legitimate large SQL statements.
+  * Remove shebang from cli.py and remove executable flag
+  * Fix strip_comments not removing all comments when input
+    contains only comments (issue801, pr803 by stropysh).
+  * Fix splitting statements with IF EXISTS/IF NOT EXISTS inside
+    BEGIN...END blocks (issue812).
+  * Fix splitting on semicolons inside BEGIN...END blocks
+    (issue809).
+
+-------------------------------------------------------------------
 Mon Aug 25 13:52:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems
