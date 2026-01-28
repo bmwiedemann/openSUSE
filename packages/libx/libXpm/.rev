@@ -236,4 +236,29 @@
     <comment>- adding COPYING file to filelist (bsc#1240836)</comment>
     <requestid>1267176</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>db09ce80134a0a9bc0bc4e0836740f41</srcmd5>
+    <version>3.5.18</version>
+    <time>1769609257</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.5.18
+  * Remove outdated ifdef checks for including stdint.h
+  * unifdef sequent
+  * unifdef VAX11C
+  * Remove ancient Amiga support
+  * Remove ancient port to 16-bit Windows without X11 libraries
+  * Remove xpmstrcasecmp fallback for strcasecmp
+  * Remove xpmstrdup fallback for strdup
+  * Use _stricmp() instead of strcasecmp() on Windows
+  * man pages: make indentation arguments to .IP be numeric
+  * man pages: ensure .BR macro has multiple arguments
+  * man pages: remove .PP after .SH or .SS lines
+  * man pages: adjust line breaks in source files
+  * Strip trailing whitespace from source files
+  * gitlab CI: drop the ci-fairy check-mr job
+  * XpmCreateBuffer.3: editorial changes for this man page [Debian bug #1102886]
+  * Fix build with current Windows headers
+  * tests: poll for stable compressed output</comment>
+    <requestid>1329319</requestid>
+  </revision>
 </revisionlist>

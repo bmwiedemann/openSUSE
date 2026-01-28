@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan 26 13:38:53 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 3.5.18
+  * Remove outdated ifdef checks for including stdint.h
+  * unifdef sequent
+  * unifdef VAX11C
+  * Remove ancient Amiga support
+  * Remove ancient port to 16-bit Windows without X11 libraries
+  * Remove xpmstrcasecmp fallback for strcasecmp
+  * Remove xpmstrdup fallback for strdup
+  * Use _stricmp() instead of strcasecmp() on Windows
+  * man pages: make indentation arguments to .IP be numeric
+  * man pages: ensure .BR macro has multiple arguments
+  * man pages: remove .PP after .SH or .SS lines
+  * man pages: adjust line breaks in source files
+  * Strip trailing whitespace from source files
+  * gitlab CI: drop the ci-fairy check-mr job
+  * XpmCreateBuffer.3: editorial changes for this man page [Debian bug #1102886]
+  * Fix build with current Windows headers
+  * tests: poll for stable compressed output
+
+-------------------------------------------------------------------
 Fri Apr  4 15:43:53 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - adding COPYING file to filelist (bsc#1240836) 

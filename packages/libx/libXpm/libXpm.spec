@@ -1,7 +1,7 @@
 #
 # spec file for package libXpm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libXpm4
 Name:           libXpm
-Version:        3.5.17
+Version:        3.5.18
 Release:        0
 Summary:        X Pixmap image file format library
 License:        MIT
