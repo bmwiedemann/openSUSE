@@ -23,7 +23,7 @@
 %else
 %define gfx_version 580.126.09
 %endif
-%define cuda_version 580.105.08
+%define cuda_version 580.126.09
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 
@@ -101,12 +101,8 @@ Source14:       group-source-files.pl
 Source15:       kmp-trigger.sh
 Source17:       kmp-post.sh
 Source18:       Check4WrongSupplements.sh
-%if "%{flavor}" == "cuda"
-Patch0:         kernel-6.18.patch
-%else
 %if 0%{?sle_version} < 150500
 Patch0:         kernel-5.14.patch
-%endif
 %endif
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes

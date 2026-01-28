@@ -982,4 +982,12 @@
 - update non-CUDA variant to version 580.126.09 (boo#1255858)</comment>
     <requestid>1327081</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>5c21362f01205bd1d0e7710fc6ba8ede</srcmd5>
+    <version>580.126.09</version>
+    <time>1769609177</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1329516</requestid>
+  </revision>
 </revisionlist>

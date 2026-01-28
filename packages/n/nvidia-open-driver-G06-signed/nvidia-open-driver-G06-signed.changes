@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 20 14:32:54 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- updated CUDA variant to version 580.126.09
+- supersedes kernel-6.18.patch
+
+-------------------------------------------------------------------
 Tue Jan 13 18:42:37 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - kernel-5.14.patch
