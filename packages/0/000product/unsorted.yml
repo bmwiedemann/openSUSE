@@ -11635,7 +11635,7 @@ unsorted:
   - libSM-devel 
   - libSM-devel-32bit 
   - libSM6-32bit 
-  - libSPIRV-Tools-2025_5_rc1-32bit 
+  - libSPIRV-Tools-2026_1-32bit 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -16661,6 +16661,8 @@ unsorted:
   - libtolua++-5_3-devel 
   - libtolua++-5_4-1 
   - libtolua++-5_4-devel 
+  - libtolua++-5_5-1 
+  - libtolua++-5_5-devel 
   - libtolua-devel 
   - libtolua5 
   - libtomcrypt-devel 
@@ -17978,15 +17980,22 @@ unsorted:
   - lua54-vstruct 
   - lua54-zlib 
   - lua55 
+  - lua55-alt-getopt 
+  - lua55-argparse 
   - lua55-compat-5.3 
   - lua55-compat-5.3-bit32 
   - lua55-devel 
   - lua55-doc 
   - lua55-ldbus 
+  - lua55-ldoc 
+  - lua55-loadkit 
   - lua55-lpeg 
   - lua55-lpeg-doc 
+  - lua55-luacheck 
   - lua55-luafilesystem 
   - lua55-markdown 
+  - lua55-moonscript 
+  - lua55-penlight 
   - luabind-devel 
   - luajit 
   - luajit-alt-getopt 
@@ -27603,6 +27612,7 @@ unsorted:
   - python311-textile 
   - python311-texttable 
   - python311-textual 
+  - python311-textual-speedups 
   - python311-thLib 
   - python311-thespian 
   - python311-threadpoolctl 
@@ -31481,6 +31491,7 @@ unsorted:
   - python312-textile 
   - python312-texttable 
   - python312-textual 
+  - python312-textual-speedups 
   - python312-thLib 
   - python312-thespian 
   - python312-threadpoolctl 
@@ -35315,6 +35326,7 @@ unsorted:
   - python313-textile 
   - python313-texttable 
   - python313-textual 
+  - python313-textual-speedups 
   - python313-thLib 
   - python313-thespian 
   - python313-threadpoolctl 
@@ -48264,6 +48276,7 @@ unsorted:
   - toluapp-5.1 
   - toluapp-5.3 
   - toluapp-5.4 
+  - toluapp-5.5 
   - tomatoes 
   - tomcat 
   - tomcat-admin-webapps 
@@ -48739,7 +48752,6 @@ unsorted:
   - typelib-1_0-GCab-1_0 
   - typelib-1_0-GData-0_0 
   - typelib-1_0-GES-1_0 
-  - typelib-1_0-GExiv2-0_10 
   - typelib-1_0-GLibUnix-2_0 
   - typelib-1_0-GMime-3_0 
   - typelib-1_0-GOffice-0_10 
