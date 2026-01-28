@@ -85,7 +85,7 @@
 %define pkg_name gimp
 
 Name:           gimp
-Version:        3.0.6
+Version:        3.0.8
 Release:        0
 %global pkg_version %{version}
 Summary:        The GNU Image Manipulation Program
@@ -100,16 +100,6 @@ Source2:        openSUSE.gpl
 Patch1:         gimp-2.99.19-cm-system-monitor-profile-by-default.patch
 Patch2:         gimp-2.99.19-external-help-browser.patch
 Patch3:         gimp-2.99.19-no-phone-home-default.patch
-# PATCH-FIX-UPSTREAM gimp-CVE-2025-15059.patch CVE-2025-15059 bsc#1255766 xwang@suse.com -- vulnerability in file-psp
-Patch4:         gimp-CVE-2025-15059.patch
-# PATCH-FIX-UPSTREAM gimp-CVE-2025-14422.patch bsc#1255293 mgorse@suse.com -- fix an overflow in the pnm parser.
-Patch5:         gimp-CVE-2025-14422.patch
-# PATCH-FIX-UPSTREAM gimp-CVE-2025-14423.patch bsc#1255294 mgorse@suse.com -- fix an overflow parsing LBM files.
-Patch6:         gimp-CVE-2025-14423.patch
-# PATCH-FIX-UPSTREAM gimp-CVE-2025-14424.patch bsc#1255295 mgorse@suse.com -- fix a use after free in the XCF parser.
-Patch7:         gimp-CVE-2025-14424.patch
-# PATCH-FIX-UPSTREAM gimp-CVE-2025-14425.patch bsc#1255296 mgorse@suse.com -- fix an overflow when reading jp2 files.
-Patch8:         gimp-CVE-2025-14425.patch
 %if %{with debug_in_build_gimp}
 BuildRequires:  gdb
 %endif
@@ -152,6 +142,7 @@ BuildRequires:  /usr/bin/gtk-update-icon-cache
 BuildRequires:  qoi-devel
 BuildRequires:  xdg-utils
 BuildRequires:  libbacktrace-devel
+BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(libjxl) >= %{libjxl_version}
 BuildRequires:  pkgconfig(OpenEXR) >= %{OpenEXR_version}
@@ -210,6 +201,7 @@ BuildRequires:  python3 >= 3.6.0
 BuildRequires:  python3-gobject
 BuildRequires:  typelib-1_0-Babl-0_1 >= %{babl_version}
 BuildRequires:  typelib-1_0-Gegl-0_4 >= %{gegl_version}
+BuildRequires:  typelib-1_0-GExiv2-0_10 >= %{gexiv2_version}
 %requires_eq    gegl-0_4
 Requires:       gjs
 # Explicitly declare the libgimp versions for upgrade purposes
@@ -225,6 +217,7 @@ Requires:       shared-mime-info
 Requires:       xdg-utils
 Requires:       typelib-1_0-Babl-0_1 >= %{babl_version}
 Requires:       typelib-1_0-Gegl-0_4 >= %{gegl_version}
+Requires:       typelib-1_0-GExiv2-0_10 >= %{gexiv2_version}
 Recommends:     %{name}-plugins-python3 = %{version}
 Recommends:     iso-codes
 Suggests:       AdobeICCProfiles
@@ -481,6 +474,7 @@ install -m 644 -c macros.gimp \
 %exclude %{_libdir}/gimp/3.0/plug-ins/file-aa
 %{_libdir}/girepository-1.0/Gimp-3.0.typelib
 %{_libdir}/girepository-1.0/GimpUi-3.0.typelib
+%{_datadir}/bash-completion/completions/gimp-3.0
 
 %files plugin-aa
 %{_libdir}/gimp/3.0/plug-ins/file-aa

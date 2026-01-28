@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Sun Jan 25 03:00:53 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.0.8
+  - Font Loading Performance
+    - Improvements in start-up time for users with a large number
+      of fonts was backported from our 3.2 RC2 release. As a
+      result, we now wait to load images until fonts are
+      initialized - this prevents some occasional odd displays and
+      other issues when an XCF file tried to access a partially
+      loaded font.
+  - Assorted updates and fixes
+    - Daniel Plakhotich helped us identify an issue when exporting
+      a lossless WEBP image could be affected by lossy settings
+      (such as Quality being less than 100%). We’ve updated our
+      WEBP plug-in to prevent this from happening.
+    - Thanks to Jehan‘s efforts, the standard gimp-3.0 executable
+      can now be run with a --no-interface flag instead of
+      requiring users to call gimp-console-3.0 even on devices with
+      no display. The --show-debug-menu flag is now visible as
+      well.
+    - programmer_ceds improved our flatpak by adding safe guards to
+      show the correct configuration directory regardless of
+      whether XDG_CONFIG_HOME is defined on the user’s system. This
+      should make it much easier for flatpak users to install and
+      use third party plug-ins.
+    - We fixed a rare but possible crash when using the Equalize
+      filter on images with NaN values. Images that contain these
+      are usually created from scientific or mapping data, so
+      you’re unlikely to come across them in standard editing.
+    - Jeremy Bicha fixed an internal issue where the wrong version
+      number could be used when installing minor releases (such as
+      the 3.2 release candidates and upcoming 3.2 stable release).
+    - As noted in our 3.2RC2 news post, we have updated our SVG
+      import code to improve the rendered path.
+    - Further improvements have been made to our non-destructive
+      filter code to improve stability, especially when copying and
+      pasting layers and images with filters attached to them. Some
+      issues related to applying NDE filters on Quick Masks have
+      also been corrected.
+    - An unintended Search pop-up that appeared when typing while
+      the Channels dockable was selected has been turned off.
+    - When saving XCFs for GIMP 2.10 compatibility, we
+      unintentionally saved Grid color using the new color format.
+      This caused errors when reopening the XCF in 2.10. This
+      problem has now been fixed! If you encounter any other XCF
+      incompatibility, please let us know.
+  - Themes and UX
+    - The Navigation and Selection Editor dockables no longer show
+      a large bright texture when no image is actively selected.
+      This was especially noticeable on dark themes.
+    - When a layer has no active filters, the Fx column had the
+      same “checkbox” outline when hovered over as the lock column.
+      This led to confusion about clicking it to add filters. We
+      have removed the outline on hover as a small step to help
+      address this.
+    - Ondřej Míchal fixed alignment and cut-off issues with the
+      buttons on our Transform tool overlays. All buttons should
+      now be properly centered and visible.
+    - The options for filling layers with colors when resizing the
+      canvas will be turned off when not relevant (such as when you
+      set layers to not be resized).
+    - More GUI elements such as dialog header icons will now
+      respond to your icon size preferences.
+    - Ondřej Míchal has continued his work to update our UI with
+      the more usable Spin Scale widget. He has also updated the
+      widget itself to improve how it works for users and
+      developers alike.
+  - Security fixes
+    - Jacob Boerema and Gabriele Barbero continued to patch
+      potential security issues related to some of our file format
+      plug-ins. In addition to existing fixes mentioned in the
+      release candidate news posts, the following exploits are now
+      prevented: ZDI-CAN-28232 ZDI-CAN-28265 ZDI-CAN-28530
+      ZDI-CAN-28591 ZDI-CAN-28599
+    - Another potential issue related to ICO files with incorrect
+      metadata was reported by Dhiraj. It does not have a CVE
+      number yet, but it has been fixed for GIMP 3.0.8. Jacob
+      Boerema also fixed a potential issue with loading Creator
+      blocks in Paintshop Pro PSP images.
+  - API
+    - For plug-in and script developers, a few new public APIs were
+      backported to GIMP 3.0.8. gimp_cairo_surface_get_buffer ()
+      allows you to retrieve a GEGL buffer from a Cairo surface
+      (such as a text layer). Note that this deprecates
+      gimp_cairo_surface_create_buffer ().
+    - gimp_config_set_xcf_version () and
+      gimp_config_get_xcf_version () can be used to specify a
+      particular XCF version for a configuration. This will allow
+      you to have that data serialized/deserialized for certain
+      versions of GIMP if there were differences (such as the Grid
+      colors mentioned above).
+    - Fixes were made for retrieving image metadata via scripting.
+      GimpMetadata is now a visible child of GExiv2Metadata, so you
+      can use standard gexiv2 functions to retrieve information
+      from it.
+    - Original thumbnail metadata is also now removed on export to
+      prevent potential issues when exporting into a new format.
+- drop patches included in the update
+  gimp-CVE-2025-14422.patch (bsc#1255293 CVE-2025-14422)
+  gimp-CVE-2025-14423.patch (bsc#1255294 CVE-2025-14423)
+  gimp-CVE-2025-14424.patch (bsc#1255295 CVE-2025-14424)
+  gimp-CVE-2025-14425.patch (bsc#1255296 CVE-2025-14425)
+  gimp-CVE-2025-15059.patch (bsc#1255766 CVE-2025-15059)
+
+-------------------------------------------------------------------
 Fri Jan 16 17:52:35 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Add CVE fixes:
