@@ -1,7 +1,7 @@
 #
 # spec file for package fontconfig
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -130,6 +130,8 @@ pushd %{buildroot}%{_sysconfdir}/fonts/conf.d
     # leave place for 60-family-prefer.conf from fonts-config
     mv 60-latin.conf 61-latin.conf
 popd
+# let fontconfig create the directory at runtime
+rm -r %{buildroot}%{_localstatedir}
 mkdir -p %{buildroot}/%{_docdir}/%{name}
 %find_lang %{name}
 %find_lang %{name}-conf
@@ -153,9 +155,9 @@ mkdir -p %{buildroot}/%{_docdir}/%{name}
 %{_datadir}/%{name}/conf.avail/*.conf
 %dir %{_datadir}/xml/%{name}
 %{_datadir}/xml/%{name}/fonts.dtd
-%dir %{_localstatedir}/cache/fontconfig/
 %{_mandir}/man5/fonts-conf.5%{ext_man}
 %{_mandir}/man1/*
+%ghost %dir %attr(755,root,root) /var/cache/fontconfig
 
 %files lang -f %{name}.lang -f %{name}-conf.lang
 

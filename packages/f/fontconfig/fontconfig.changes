@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 26 17:08:42 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- do not package /var/lib/fontconfig to support immutable mode
+
+-------------------------------------------------------------------
 Mon Feb 17 02:00:25 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - update to 2.16.0:
