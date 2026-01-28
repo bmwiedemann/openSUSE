@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Jan 28 09:32:05 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add multibuild for tests
+
+-------------------------------------------------------------------
+Wed Jan 28 08:09:20 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.11.0:
+  * Bump minimum matplotlib to 3.5.0 by @bmcfee in #1839
+  * Fix name collision for norm argument in mfcc by @ssslakter in
+    #1844
+  * Remove .H for conjugate().T by @bmcfee in #1851
+  * [documentation][Issue #1855] Update Fast Mellin Transform doc
+    example by @dhunstack in #1856
+  * fix onset documentation specshow samplerate by @BenedictSt in
+    #1858
+  * Updating github issue templates by @bmcfee in #1860
+  * Faster abs2 on real inputs by @bmcfee in #1864
+  * Revised dtw docstring, fixes #1741 by @bmcfee in #1866
+  * Various doc updates 0.11 by @bmcfee in #1878
+  * Improved CMND implementation for YIN / pYIN by @dsuedholt in #1882
+  * Update effects.py by @scottvr in #1891
+  * bump codecov action to v5 by @bmcfee in #1898
+  * declare numba requirement before numpy by @dsuedholt in #1897
+  * allow skipping linkchecks on ~dpwe by @bmcfee in #1899
+  * fixed pooch registry regression from #1829 by @bmcfee in #1900
+  * Modernize for 2024/5 by @bmcfee in #1903
+  * implemented testing with network isolation by @bmcfee in #1911
+  * 0.11.0rc0 release prep by @bmcfee in #1907
+  * Deprecate set_fftlib, update fftpack uses by @bmcfee in #1916
+  * PR for 0.11.0rc1 by @bmcfee in #1913
+  * Get samplerate installing from source on windows for python 3.13
+    by @bmcfee in #1919
+  * Trying on the new linux-arm64 runners by @bmcfee in #1921
+  * 0.11.0 final by @bmcfee in #1922
+- Drop upstreamed patch csr_matrix-attr-H.patch
+
+-------------------------------------------------------------------
 Fri Jan 17 15:55:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Switch ffmpeg-5 with ffmpeg-4 BuildRequires: python-librosa is

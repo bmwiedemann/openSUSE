@@ -4,8 +4,10 @@
  tests/test_util.py         |    3 +++
  3 files changed, 6 insertions(+)
 
---- a/setup.cfg
-+++ b/setup.cfg
+Index: librosa-0.11.0/setup.cfg
+===================================================================
+--- librosa-0.11.0.orig/setup.cfg
++++ librosa-0.11.0/setup.cfg
 @@ -14,6 +14,8 @@ addopts =  --mpl --mpl-baseline-path=tes
  filterwarnings =
      ignore::DeprecationWarning:audioread.*
@@ -13,11 +15,13 @@
 +markers =
 +    network: tests requiring network connection
  
+ 
  [flake8]
- count = True
---- a/tests/test_multichannel.py
-+++ b/tests/test_multichannel.py
-@@ -914,6 +914,7 @@ def test_click_multi():
+Index: librosa-0.11.0/tests/test_multichannel.py
+===================================================================
+--- librosa-0.11.0.orig/tests/test_multichannel.py
++++ librosa-0.11.0/tests/test_multichannel.py
+@@ -918,6 +918,7 @@ def test_click_multi():
      assert np.allclose(yout[..., 2000:2100], click)
  
  
@@ -25,16 +29,11 @@
  def test_nnls_multi(s_multi):
  
      # Verify that a stereo melspectrogram can be reconstructed
---- a/tests/test_util.py
-+++ b/tests/test_util.py
-@@ -1385,17 +1385,20 @@ def test_phasor(dtype, angles, mag):
-     assert z2.dtype == librosa.util.dtype_r2c(dtype)
- 
- 
-+@pytest.mark.network
- def test_cite_released():
-     version = "0.10.1"
-     doi = "https://doi.org/10.5281/zenodo.8252662"
+Index: librosa-0.11.0/tests/test_util.py
+===================================================================
+--- librosa-0.11.0.orig/tests/test_util.py
++++ librosa-0.11.0/tests/test_util.py
+@@ -1472,6 +1472,7 @@ def test_cite_released():
      assert doi == librosa.cite(version=version)
  
  
@@ -42,9 +41,3 @@
  @pytest.mark.xfail(raises=librosa.ParameterError)
  def test_cite_badversion():
      librosa.cite(version="-1.5")
- 
- 
-+@pytest.mark.network
- @pytest.mark.xfail(raises=librosa.ParameterError)
- def test_cite_unreleased():
-     librosa.cite("0.10.0.dev0")
