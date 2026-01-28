@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 22 15:20:04 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add luacheck-lua55.patch to make package buildable with Lua
+  5.5, because of changing cycle counters.
+  (gh#mpeterv/luacheck!238) 
+
+-------------------------------------------------------------------
 Fri Oct 24 14:48:56 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch off building lua51 build of the package.

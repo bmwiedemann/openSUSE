@@ -35,6 +35,9 @@ URL:            https://github.com/lunarmodules/luacheck
 Source:         https://github.com/lunarmodules/luacheck/archive/v%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE - silence rpmlint
 Patch0:         env.patch
+# PATCH-FIX-UPSTREAM luacheck-lua55.patch gh#mpeterv/luacheck!238 mcepl@suse.com
+# Fix incompatibility with Lua 5.5 (changing of for cycle counters)
+Patch1:         luacheck-lua55.patch
 BuildRequires:  %{flavor}
 BuildRequires:  %{flavor}-argparse
 BuildRequires:  %{flavor}-luafilesystem

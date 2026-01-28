@@ -27,4 +27,14 @@
 - Allow building with LuaJIT.</comment>
     <requestid>1315164</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>8ef4e41ce130481c6f2bbe3f5d394e57</srcmd5>
+    <version>1.1.0</version>
+    <time>1769609668</time>
+    <user>anag_factory</user>
+    <comment>- Add luacheck-lua55.patch to make package buildable with Lua
+  5.5, because of changing cycle counters.
+  (gh#mpeterv/luacheck!238)</comment>
+    <requestid>1328836</requestid>
+  </revision>
 </revisionlist>
