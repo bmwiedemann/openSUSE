@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 27 17:15:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.0:
+  * Custom generator parameters description with validation.
+  * Docs moved to Nix flake setup.
+  * Reworked project setup.
+
+-------------------------------------------------------------------
 Wed Oct 29 13:29:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.2.3

@@ -329,4 +329,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1315734</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1a62e0b5492ffc95d0f9800b2dd9cb25</srcmd5>
+    <version>4.3.0</version>
+    <time>1769609534</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.3.0:
+  * Custom generator parameters description with validation.
+  * Docs moved to Nix flake setup.
+  * Reworked project setup.</comment>
+    <requestid>1329541</requestid>
+  </revision>
 </revisionlist>
