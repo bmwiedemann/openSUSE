@@ -358,4 +358,16 @@
     <comment></comment>
     <requestid>1244773</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>b9469d7ea3fab2ec41f01ab061790cc7</srcmd5>
+    <version>1.7.2</version>
+    <time>1769609119</time>
+    <user>anag_factory</user>
+    <comment>- add 9a1c801a1a3c102bf95c5339c9e985b26b823a21.patch (bsc#1257254)
+
+  * Somewhat more robust type labelling for the benefit of yaml output
+  taken from fedora to fix build on s390
+- rename ftdump to dtc-ftdump to avoid conflict with ft2demos</comment>
+    <requestid>1329358</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package dtc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Source20:       baselibs.conf
 Source21:       dtc.keyring
 # PATCH-FIX-UPSTREAM - https://github.com/dgibson/dtc/commit/ce1d858
 Patch1:         ce1d858.patch
+# PATCH-FIX-UPSTREAM - https://github.com/dgibson/dtc/commit/9a1c801a1a3c102bf95c5339c9e985b26b823a21
+Patch2:         https://github.com/dgibson/dtc/commit/9a1c801a1a3c102bf95c5339c9e985b26b823a21.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libyaml-devel

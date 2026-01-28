@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 26 18:43:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add 9a1c801a1a3c102bf95c5339c9e985b26b823a21.patch (bsc#1257254)
+
+-------------------------------------------------------------------
 Fri Feb  7 15:24:23 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 1.7.2:
@@ -100,7 +105,7 @@ Sat Oct 16 13:06:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Accept .dtbo extension for overlays
   * Update valid node and property characters to match current devicetree spec
   * Add several checks for root node sanity in fdt_check_full()
-  * Somewhat more robust type labelling for the benefit of yaml output 
+  * Somewhat more robust type labelling for the benefit of yaml output
 
 -------------------------------------------------------------------
 Wed Apr 21 10:28:05 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
@@ -260,7 +265,7 @@ Mon Nov  9 17:28:39 UTC 2015 - p.drouand@gmail.com
 Fri Mar  7 01:29:13 CET 2014 - ro@suse.de
 
 - add use-tx-as-the-type-specifier-instead-of-zx.patch
-  taken from fedora to fix build on s390 
+  taken from fedora to fix build on s390
 
 -------------------------------------------------------------------
 Tue Jul  9 09:26:13 UTC 2013 - dmueller@suse.com
@@ -271,7 +276,7 @@ Tue Jul  9 09:26:13 UTC 2013 - dmueller@suse.com
 -------------------------------------------------------------------
 Wed Jun 19 06:58:23 UTC 2013 - dmueller@suse.com
 
-- rename ftdump to dtc-ftdump to avoid conflict with ft2demos 
+- rename ftdump to dtc-ftdump to avoid conflict with ft2demos
 
 -------------------------------------------------------------------
 Tue Jun 18 00:58:27 UTC 2013 - afaerber@suse.de
