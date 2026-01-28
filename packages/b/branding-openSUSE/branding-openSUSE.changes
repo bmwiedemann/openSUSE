@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 26 14:25:38 UTC 2026 - Frederic Crozat <fcrozat@suse.com>
+
+- Drop update-desktop-files usage, we don't need to update
+  translations on wallpapers .desktop files.
+
+-------------------------------------------------------------------
 Mon Jan  6 09:10:36 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not build package as noarch: ifarch and noarch logically cannot

@@ -1,7 +1,7 @@
 #
 # spec file for package branding-openSUSE
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019 Stasiek Michalski <hellcp@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -51,7 +51,6 @@ BuildRequires:  rsvg-view
 %endif
 BuildRequires:  suse-module-tools
 BuildRequires:  unzip
-BuildRequires:  update-desktop-files
 Conflicts:      branding
 Provides:       branding
 %if 0%{?suse_version} > 1320
@@ -206,10 +205,6 @@ if test -f gfx/openSUSE/bootlogo; then
     %{_datadir}/gfxboot/bin/2hl --link --quiet %{buildroot}%{_sysconfdir}/bootsplash/themes/openSUSE/*
     touch %{buildroot}/boot/message
 fi
-
-for i in %{buildroot}%{_datadir}/wallpapers/*.desktop; do
-    %suse_update_desktop_file "$i"
-done
 
 %fdupes -s %{buildroot}%{_datadir}/wallpapers/
 %fdupes -s %{buildroot}%{_datadir}/YaST2/theme/current/wizard/
