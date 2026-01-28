@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jan 26 09:59:16 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 20260126:
+  * Allow thumb_t stream connect to systemd-machined
+  * Allow thumb_t stream connect to systemd-homed
+  * Allow aide get attributes of tmpfs and devtmpfs filesystems
+  * Allow sshd noatsecure on sshd-session execution
+  * Confine rhc-worker-playbook.worker and rhc-playbook-verifier
+  * Allow kernel_t to read/write all domains' pipes
+  * Allow domain read sysfs files
+  * allow abrt_dump_oops to write to init sockets
+  * Add insights_client service interfaces
+  * Allow plasma login manager stop login services
+  * Allow NM nvme dispatcher script start systemd services
+  * Allow sshd_net_t ioctl on unix_stream_socket of sshd_session_t
+  * Allow sshd-session read, write, and map ica tmpfs files
+  * Allow aide get attributes of a filesystem with extended attributes
+  * Set correct label for glycin fontconfig (bsc#1253682)
+  * Set correct gstreamer directory label for gnome-desktop-thumbnailer (bsc#1253682)
+  * Logwatch zz-runtime uses uptime (bsc#1255862)
+  * Add auth_login_pgm_signull interface (bsc#1255862)
+  * Introduce systemd_cryptsetup_generator_var_run_t file type (bsc#1244459)
+  * Allow l2tpd_t access to netlink and sysfs
+  * Label miscellaneous /dev/papr-* devices
+  * Allow qemu-ga to skip authentication
+  * Revert "Allow systemd-coredump signull containers"
+  * Allow systemd-coredump signull containers
+- Syncing with upstream rawhide selinux-policy up to:
+  * b8928889681b041f10e511fd17accbcb2f82d5e0
+
+-------------------------------------------------------------------
 Tue Jan 20 08:42:09 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Update to version 20260120:
