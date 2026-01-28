@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jan 28 06:29:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.35.0:
+  * Features
+    - add support for CNCF WASM OCI Artifact media types (26155a8)
+    - registry: add demo gcstats command with mock data (e928759)
+    - registry: enable REGISTRY_FF_ENFORCE_LOCKFILES by default
+      (150b68b)
+  * Dependencies
+    - chore: gitlab.com/gitlab org/api/client/.go/1.x bump
+    - build(deps): update module
+      github.com/azure/azure-sdk-for-go/sdk/storage/azblob to
+      v1.6.4
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/service/s3 to v1.95.1
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/feature/cloudfront/sign to
+      v1.9.17
+    - build(deps): update module cloud.google.com/go/storage to
+      v1.59.1
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/config to v1.32.7
+
+-------------------------------------------------------------------
 Fri Jan 16 14:04:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.34.0 (.33 was not released):
