@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jan 27 23:43:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.0:
+  * Add drain() method
+  * Allow the conninfo and kwargs ConnectionPool parameters to be
+    callable to allow connection parameters update (ticket #851).
+  * Add close_returns ConnectionPool parameter for integration with
+    SQLAlchemy (ticket #1046).
+  * Don’t lose connections if a CancelledError is raised on check,
+    rollback, or other events (tickets #1123, #1208).
+  * Fix infinite loop with connections modified to return on close
+  * Fix request of excessive connections upon connection close
+    failing and retrying (ticket #1176).
+  * Reset transaction status of connection failing check
+  * Fix spurious warning logging on pool shrinking (ticket #1001).
+  * Add a hint to the warning printed if threads fail to stop
+    during __del__, which has been reported happening
+    during interpreter shutdown on Python 3.13 (see ticket #954).
+  * Add metadata to declare compatibility with Python 3.13.
+  * Raise a RuntimeWarning instead of a DeprecationWarning if an
+    async pool is open in the constructor.
+  * Fix connections possibly left in the pool after closing
+  * Use an empty query instead of SELECT 1 to check connections
+
+-------------------------------------------------------------------
 Mon Jan 15 13:25:58 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use %sle15_python_module_pythons
