@@ -83,6 +83,9 @@ sed -e "s@__NAME__@$iso_name@g" \
 
 # Copy image changelog required for reproducible builds timestamps
 cp -v $TOPDIR/SOURCES/*.changes $BUILD_DIR/image.changes
+# Prepare the changelog entried for reproducible build; extract the changelog from the changes file
+$BUILD_DIR/changelog2spec --target rpm --timestampfile "$BUILD_ROOT/.build-changelog-timestamp" --file "$BUILD_DIR/image.spec" > "$BUILD_ROOT/.build-changelog"
+cat $BUILD_ROOT/.build-changelog >> "$BUILD_DIR/image.spec"
 
 if [ -z "$BUILD_DISTURL" ]; then
   rpmbuild --target $ARCH -ba $PXEBOOT_BCOND $BUILD_DIR/image.spec

@@ -47,4 +47,14 @@
     <comment></comment>
     <requestid>1326840</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>c9b68ba138dd21981e3526de602df81b</srcmd5>
+    <version>0.2.5</version>
+    <time>1769609448</time>
+    <user>anag_factory</user>
+    <comment>- Fix code for reproducible build: simply copying the spec changes
+  file is not good enough; we need to extract it using
+  changelog2spec. (forwarded request 1328247 from dimstar)</comment>
+    <requestid>1329523</requestid>
+  </revision>
 </revisionlist>
