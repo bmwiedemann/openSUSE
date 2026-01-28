@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 27 13:54:50 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update dependencies for bsc#1257325
+- Update to 346
+  * 346
+    - Performance improvements
+    - Translation updates
+  * 345
+    - New virtual machines don't get SPICE graphics anymore
+    - Support for network port forwarding
+    - Bug fixes and translation updates
+
+-------------------------------------------------------------------
 Thu Nov 13 05:34:48 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
 
 - Update to 344

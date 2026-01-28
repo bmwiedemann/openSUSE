@@ -353,4 +353,20 @@
   been upstreamed</comment>
     <requestid>1318208</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>caff0fb01e4b2aa1279dde5f1bfa2431</srcmd5>
+    <version>346</version>
+    <time>1769609736</time>
+    <user>anag_factory</user>
+    <comment>- Update dependencies for bsc#1257325
+- Update to 346
+  * 346
+    - Performance improvements
+    - Translation updates
+  * 345
+    - New virtual machines don't get SPICE graphics anymore
+    - Support for network port forwarding
+    - Bug fixes and translation updates</comment>
+    <requestid>1329649</requestid>
+  </revision>
 </revisionlist>
