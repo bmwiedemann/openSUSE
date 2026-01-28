@@ -609,4 +609,12 @@ Pushing GNOME 45.rc packages</comment>
     <comment> (forwarded request 1274938 from iznogood)</comment>
     <requestid>1274959</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>9085ab233c4dd2c5076ac9168251544f</srcmd5>
+    <version>49.0</version>
+    <time>1769618553</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1329502</requestid>
+  </revision>
 </revisionlist>
