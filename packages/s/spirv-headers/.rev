@@ -437,4 +437,12 @@
     <comment>new version</comment>
     <requestid>1321861</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>b7c2f9eae6ca693d6553c2c13df96368</srcmd5>
+    <version>1.6.4+sdk335+take2</version>
+    <time>1769609125</time>
+    <user>anag_factory</user>
+    <comment>- Update to post-snapshot SDK-1.4.335.0 commit 04f10f65</comment>
+    <requestid>1329362</requestid>
+  </revision>
 </revisionlist>

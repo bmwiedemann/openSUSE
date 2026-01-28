@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 23 23:21:43 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to post-snapshot SDK-1.4.335.0 commit 04f10f65
+  * Add SPV_EXT_long_vector, SPV_EXT_descriptor_heap,
+    SPV_EXT_shader_subgroup_partitioned
+
+-------------------------------------------------------------------
 Tue Dec  9 23:30:31 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag SDK-1.4.335.0 (Git b824a46)
