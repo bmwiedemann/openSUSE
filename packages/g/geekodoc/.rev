@@ -149,4 +149,12 @@ Fixes issue #41 to reduce number of files in packages
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1191163</requestid>
   </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>e30569b4da55da4f48d1243933c578aa</srcmd5>
+    <version>unknown</version>
+    <time>1769609752</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1329662</requestid>
+  </revision>
 </revisionlist>

@@ -37,11 +37,7 @@ BuildRequires:  fdupes
 BuildRequires:  jing
 BuildRequires:  libxml2-tools
 BuildRequires:  make
-%if 0%{?is_opensuse}
-BuildRequires:  openSUSE-release
-%else
-BuildRequires:  sles-release
-%endif
+BuildRequires:  distribution-release
 BuildRequires:  python3-importlib_metadata
 BuildRequires:  python3-rnginline
 BuildRequires:  python3-setuptools
