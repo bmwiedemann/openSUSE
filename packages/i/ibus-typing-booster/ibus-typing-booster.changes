@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Jan 28 09:23:05 UTC 2026 - Mike FABIAN <maiku.fabian@gmail.com>
+
+- Update to 2.30.2
+- Add `Control+Left` to the default for `commit_and_forward_key` for the `tb:*` engines
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/879)
+
+-------------------------------------------------------------------
+Thu Jan 22 09:18:24 UTC 2026 - Mike FABIAN <maiku.fabian@gmail.com>
+
+- Update to 2.30.0
+- Make autosetting `ibuseventsleepseconds` possible
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/878)
+- Use a better estimate of how many `Left` keys are needed to step back over the committed string to the caret position
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/874)
+- Finalize commit string also when the preedit cursor is not at the right end of the preedit
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/871)
+- Change the look of the selected Gtk.Notebook tab
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/872)
+- Commit key should commit the final form always
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/870)
+- Make the “Options” and “Appearance” tabs in the setup tool scrollable to save vertical space
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/865)
+- Add an option to show in the preedit what would be committed on pressing space
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/854)
+- Add commands to commit the raw input, with and without forwarding the key
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/855)
+- Add an option to show the raw input in the auxiliary text
+  (Resolves:  https://github.com/mike-fabian/ibus-typing-booster/issues/853)
+- When a candidate is autoselected, the `cancel` command should deselect
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/851)
+- Use self._ollama_aux_wrapper when showing the prompt in the auxiliary text
+  (Without that, long prompts may be shown as a very long single line
+  auxiliary text partly off-screen.)
+- Translation update from Weblate (ca 100%, de 100%, fi 98%, it 98%, ja 100%, ka 100%, ko 100%, sv 100%, tr 100%, uk 100%)
+
+-------------------------------------------------------------------
+Tue Dec 16 20:16:27 UTC 2025 - Mike FABIAN <maiku.fabian@gmail.com>
+
+- Use Debian tarball (ibus-typing-booster_2.29.0.orig.tar.gz) also in
+  the rpm build to save disk space.
+
+-------------------------------------------------------------------
+Tue Dec 16 12:23:25 UTC 2025 - Mike FABIAN <maiku.fabian@gmail.com>
+
+- Update to 2.29.0
+- find_hunspell_dictionary(language: str): Never fall back to en if language is not English
+- emoji_picker.py: improve selecting a label while search is still running
+- Fix minus sign on buttons in adding autosettings and keybindings
+- Fixes for the Gtk3/Gtk4 port needed for RHEL9 and Ubuntu ≤ 22.04: Fall back to Gtk3 on these old systems
+- setup/dictionary_download.py: Fix dictionary download for Ubuntu 24.04.3 LTS
+- Port setup tool, emoji_picker, and everything else exept test_0_gtk.py to Gtk4.
+  Gtk4 is used by default if available on the system, if not Gtk3 is used as a fallback.
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/848)
+- Translation update from Weblate (cz 100%, hu 40.4%, it 99.6%, ka 100%, ko 100%, sv 100%)
+
+-------------------------------------------------------------------
 Sat Nov 22 16:22:46 UTC 2025 - Mike FABIAN <maiku.fabian@gmail.com>
 
 - Update to 2.28.6

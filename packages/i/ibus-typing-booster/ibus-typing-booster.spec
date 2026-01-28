@@ -17,13 +17,13 @@
 
 
 Name:           ibus-typing-booster
-Version:        2.28.6
+Version:        2.30.2
 Release:        0
 Summary:        An input completion utility
 License:        GPL-3.0-or-later
 Group:          System/X11/Utilities
 URL:            https://mike-fabian.github.io/ibus-typing-booster/
-Source0:        https://github.com/mike-fabian/ibus-typing-booster/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/mike-fabian/ibus-typing-booster/releases/download/%{version}/%{name}-%{version}.tar.gz#/%{name}_%{version}.orig.tar.gz
 Source1:        https://releases.pagure.org/inscript2/inscript2-20210820.tar.gz
 BuildRequires:  wl-clipboard
 BuildRequires:  AppStream
@@ -46,6 +46,7 @@ BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
 %if 0%{?suse_version} >= 1600
 BuildRequires:  python3-rapidfuzz
+BuildRequires:  python3-regex
 %endif
 BuildRequires:  python3-pyenchant
 # To avoid requiring Python >= 3.8
@@ -63,6 +64,7 @@ Requires:       python3-pyenchant
 Requires:       python3-pyxdg
 %if 0%{?suse_version} < 1600
 Requires:       python3-dataclasses
+Requires:       python3-typing_extensions
 %endif
 Recommends:     gdouros-symbola-fonts
 # Recommend reasonably good fonts which have most of the emoji:
@@ -154,7 +156,9 @@ pushd engine
         echo "/usr/share/m17n/si-wijesekara.mim does not exist, m17n-db probably < 1.8.6, skipping doctest of m17n_translit.py"
     fi
     python3 itb_emoji.py -v
+%if 0%{?suse_version} >= 1600
     python3 itb_util.py -v
+%endif
 popd
 mkdir -p /tmp/glib-2.0/schemas/
 cp org.freedesktop.ibus.engine.typing-booster.gschema.xml \
