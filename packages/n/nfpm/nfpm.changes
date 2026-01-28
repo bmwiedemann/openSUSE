@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jan 27 06:06:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.44.2:
+  * Build process updates
+    - 73ce998: ci(deps): bump anchore/sbom-action in the actions
+      group (#1016) (@dependabot[bot])
+    - 2227c2a: ci(deps): bump the actions group with 3 updates
+      (#1019) (@dependabot[bot])
+    - f7043ff: ci(deps): bump the actions group with 3 updates
+      (#1021) (@dependabot[bot])
+    - bfbc4b9: ci(deps): bump the actions group with 4 updates
+      (#1022) (@dependabot[bot])
+  * Other work
+    - 1e0e7ff: docs: correct link to documentation (#1017)
+      (@joclement)
+    - 9441740: docs: update cmd docs (@caarlos0)
+    - 89dc45c: fix(apk/rpm): Correctly configure arch for
+      loongarch64 (#1018) (@fcharlie)
+
+-------------------------------------------------------------------
 Sun Jan 11 12:49:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.44.1:
