@@ -165,4 +165,41 @@
    (ticket #1155).</comment>
     <requestid>1318340</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>76b0e9b3ba0714f355a30f6b9258871b</srcmd5>
+    <version>3.3.2</version>
+    <time>1769609582</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.3.2:
+  * Add :ref:`template strings queries &lt;template-strings&gt;`
+    (:ticket:`#1054`).
+  * More flexible :ref:`composite adaptation&lt;adapt-composite&gt;`:
+    it is now possible to adapt Python objects to PostgreSQL
+    composites and back even if they are not sequences or if they
+    take keyword arguments (:ticket:`#932`, :ticket:`#1202`).
+  * Cursors are now iterators, not just iterables. This means you
+    can call next(cur) or anext(cur), which is useful as a
+    :ref:`type-safe expression &lt;typing-fetchone&gt;`
+    (:ticket:`#1064`).
+  * Add Cursor.set_result() and Cursor.results() to move across
+    the result sets of queries executed though
+    ~Cursor.executemany() or ~Cursor.execute() with multiple
+    statements (:tickets:`#1080, #1170`).
+  * Add :ref:`transaction-status` to report the status during and
+    after a ~Connection.transaction() block (:ticket:`#969`).
+  * Allow to change loaders using
+    ~adapt.AdaptersMap.register_loader() on Cursor.adapters after
+    a query result has been already returned (:ticket:`#884`).
+  * Add pq.PGconn.used_gssapi attribute and
+    Capabilities.has_used_gssapi() function (:ticket:`#1138`).
+  * Add ConnectionInfo.full_protocol_version attribute,
+    Capabilities.has_full_protocol_version() function
+    (:ticket:`#1079`).
+  * Disable default GSSAPI preferential connection in the binary
+    package (:ticket:`#1136`).  Warning Please explicitly set the
+    gssencmode_ connection parameter or the
+    :envvar:`PGGSSENCMODE` environment variable to interact
+    reliably with the GSSAPI.</comment>
+    <requestid>1329586</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Jan 27 07:37:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.2:
+  * Add :ref:`template strings queries <template-strings>`
+    (:ticket:`#1054`).
+  * More flexible :ref:`composite adaptation<adapt-composite>`:
+    it is now possible to adapt Python objects to PostgreSQL
+    composites and back even if they are not sequences or if they
+    take keyword arguments (:ticket:`#932`, :ticket:`#1202`).
+  * Cursors are now iterators, not just iterables. This means you
+    can call next(cur) or anext(cur), which is useful as a
+    :ref:`type-safe expression <typing-fetchone>`
+    (:ticket:`#1064`).
+  * Add Cursor.set_result() and Cursor.results() to move across
+    the result sets of queries executed though
+    ~Cursor.executemany() or ~Cursor.execute() with multiple
+    statements (:tickets:`#1080, #1170`).
+  * Add :ref:`transaction-status` to report the status during and
+    after a ~Connection.transaction() block (:ticket:`#969`).
+  * Allow to change loaders using
+    ~adapt.AdaptersMap.register_loader() on Cursor.adapters after
+    a query result has been already returned (:ticket:`#884`).
+  * Add pq.PGconn.used_gssapi attribute and
+    Capabilities.has_used_gssapi() function (:ticket:`#1138`).
+  * Add ConnectionInfo.full_protocol_version attribute,
+    Capabilities.has_full_protocol_version() function
+    (:ticket:`#1079`).
+  * Disable default GSSAPI preferential connection in the binary
+    package (:ticket:`#1136`).  Warning Please explicitly set the
+    gssencmode_ connection parameter or the
+    :envvar:`PGGSSENCMODE` environment variable to interact
+    reliably with the GSSAPI.
+  * Drop support for Python 3.8 (:ticket:`#976`) and 3.9
+    (:ticket:`#1056`).
+  * Show the host name in the error message in case of name
+    resolution error (:ticket:`#1205`).
+  * Fix Cursor.copy() and AsyncCursor.copy() to hold the
+    connection lock for the entire operation, preventing
+    concurrent access issues (:ticket:`#1210`).
+  * Fix GSSAPI check with C extension built with libpq < v16
+    (:ticket:`#1216`).
+
+-------------------------------------------------------------------
 Tue Nov 11 15:36:00 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.12:

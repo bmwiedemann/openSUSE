@@ -1,7 +1,7 @@
 #
 # spec file for package python-psycopg
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-psycopg
 # This needs to upgraded in lockstep with python-psycopg-c
-Version:        3.2.12
+Version:        3.3.2
 Release:        0
 Summary:        PostgreSQL database adapter for Python
 License:        LGPL-3.0-only
