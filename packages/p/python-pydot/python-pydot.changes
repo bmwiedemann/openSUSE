@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jan 27 07:15:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.1:
+  * Updated pyparsing to `>=3.1.0`. Required for pydot to
+    function correctly. (#477)
+  * Parser: Fixed 'strict' handling. (#480)
+  * Parser: Support backslash continuation in quoted IDs. (#487)
+  * Parser: Support +-concatenated quoted strings. (#490)
+  * Added initial type annotations. (#430)
+  * Added (fixed) complex edge parsing. (#467)
+  * Simplify `Common.get_top_graph_type` with a default. (#437)
+  * Define parser elements in a separate `GraphParser` class.
+    (#464)
+  * Improve return values and typing of setters and getters.
+    (#470)
+  * Avoid subprocess window creation within `call_graphviz` on
+    Windows. (#431)
+  * Removed a blank line inserted after subgraphs in the
+    `to_string()` output. (#434)
+  * Fixed the issue where the parser breaks off lines at hash
+    symbol following a HTML tag (#451)
+  * Removed old, unused `Common.__get_attribute__`. (#426)
+
+-------------------------------------------------------------------
 Tue Feb  4 03:06:42 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.0.4:
@@ -23,7 +47,7 @@ Tue Feb  4 03:06:42 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
     + Improved handling of temporary files. Temporary files will be cleaned
       up in all cases, even when exceptions are raised or things exit
       unexpectedly.
-    + From now on, the license files will be included in the distributed 
+    + From now on, the license files will be included in the distributed
       release as expected.
     + Fix quoting in `Edge.to_string()`.
     + Internal storage and lookup of identifiers (names) improved.
@@ -67,26 +91,26 @@ Tue Jun 13 11:09:47 UTC 2023 - ecsos <ecsos@opensuse.org>
 -------------------------------------------------------------------
 Tue Dec  7 07:42:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- skip failing tests 
+- skip failing tests
 
 -------------------------------------------------------------------
 Thu Apr 22 19:34:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.2:
   - Documentation: Basic usage examples in `README.md`. (#141)
-  
+
   Changed:
   - More detailed error message in case of Graphviz errors. (#239)
   - More detailed warning message in case of failure to import the DOT
     parser module. (#241)
-  
+
   Deprecated:
   - A future pydot 2.0.0 will drop support for Python 2, 3.4 and
     possibly other Python versions that are end-of-life at that time.
     Pydot does not emit any deprecation warnings about this. Further
     pydot 1.x.x releases are currently not foreseen, but if there are
     any, should still support the mentioned Python versions. (#229)
-  
+
   Fixed:
   - On Python 2, non-equality comparison (`!=`) between two separate, but
     equal `Edge` instances will now correctly return `False`, as it
@@ -222,7 +246,7 @@ Sat May  3 14:00:00 UTC 2014 - andrea@opensuse.org
 
 - added python-pydot-1.0.28_fix_pyparser_2_incompatibility.patch to fix
   incompatibility when using pydot with pyparser 2
-  
+
 -------------------------------------------------------------------
 Fri May 25 09:05:07 UTC 2012 - toddrme2178@gmail.com
 

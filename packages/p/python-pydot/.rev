@@ -188,4 +188,34 @@
       Attribute values containing comma-separated strings will now be quoted</comment>
     <requestid>1242949</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1e67e7aa732265e1b7974b483c5d11de</srcmd5>
+    <version>4.0.1</version>
+    <time>1769609139</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0.1:
+  * Updated pyparsing to `&gt;=3.1.0`. Required for pydot to
+    function correctly. (#477)
+  * Parser: Fixed 'strict' handling. (#480)
+  * Parser: Support backslash continuation in quoted IDs. (#487)
+  * Parser: Support +-concatenated quoted strings. (#490)
+  * Added initial type annotations. (#430)
+  * Added (fixed) complex edge parsing. (#467)
+  * Simplify `Common.get_top_graph_type` with a default. (#437)
+  * Define parser elements in a separate `GraphParser` class.
+    (#464)
+  * Improve return values and typing of setters and getters.
+    (#470)
+  * Avoid subprocess window creation within `call_graphviz` on
+    Windows. (#431)
+  * Removed a blank line inserted after subgraphs in the
+    `to_string()` output. (#434)
+  * Fixed the issue where the parser breaks off lines at hash
+    symbol following a HTML tag (#451)
+  * Removed old, unused `Common.__get_attribute__`. (#426)
+
+    + From now on, the license files will be included in the distributed
+- skip failing tests</comment>
+    <requestid>1329416</requestid>
+  </revision>
 </revisionlist>

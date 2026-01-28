@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydot
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pydot
-Version:        3.0.4
+Version:        4.0.1
 Release:        0
 Summary:        Module to create (dot) graphs from Python
 License:        MIT
@@ -28,7 +28,7 @@ BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyparsing >= 3.0.9}
+BuildRequires:  %{python_module pyparsing >= 3.1.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -38,7 +38,7 @@ BuildRequires:  graphviz-gd
 BuildRequires:  python-rpm-macros
 Requires:       graphviz
 Requires:       graphviz-gd
-Requires:       python-pyparsing >= 3.0.9
+Requires:       python-pyparsing >= 3.1.0
 # we need at least some fonts
 Requires:       dejavu-fonts
 BuildArch:      noarch
