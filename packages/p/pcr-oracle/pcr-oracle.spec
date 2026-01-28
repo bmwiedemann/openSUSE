@@ -30,7 +30,7 @@ BuildRequires:  libfdisk-devel
 BuildRequires:  libopenssl-devel >= 3.0.0
 BuildRequires:  tpm2-0-tss-devel >= 2.4.0
 Requires:       libtss2-tcti-device0
-ExclusiveArch:  x86_64 aarch64 ppc64le riscv64
+ExclusiveArch:  x86_64 aarch64 ppc64le riscv64 %{arm}
 
 %description
 This utility tries to predict the values of the TPM's Platform

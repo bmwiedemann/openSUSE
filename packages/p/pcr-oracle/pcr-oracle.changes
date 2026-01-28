@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 26 12:59:21 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build on %{arm} as it is required by sdbootutil
+
+-------------------------------------------------------------------
 Tue Oct  7 02:45:01 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to 0.5.8
