@@ -41,4 +41,12 @@
 - Pull in lua-macros indirectly via %{flavor} (and lua-interepreter)</comment>
     <requestid>1315138</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>42d137353eec534ca5fcb14eae57cda7</srcmd5>
+    <version>0.8.1</version>
+    <time>1769609672</time>
+    <user>anag_factory</user>
+    <comment>Enable lua55 build.</comment>
+    <requestid>1329626</requestid>
+  </revision>
 </revisionlist>
