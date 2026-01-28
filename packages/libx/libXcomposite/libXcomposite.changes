@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 26 13:11:35 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.4.7
+  * Remove "All rights reserved" from Oracle copyright notices
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * meson: Add option to build with meson
+  * gitlab CI: drop the ci-fairy check-mr job
+- switch to meson build
+
+-------------------------------------------------------------------
 Sun Dec  4 23:06:04 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 0.4.6

@@ -109,4 +109,17 @@
   * XCompositeCloseDisplay: Mark codes as unused</comment>
     <requestid>1040105</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>96485a7830826d74b9329d93b7965761</srcmd5>
+    <version>0.4.7</version>
+    <time>1769609251</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.7
+  * Remove &quot;All rights reserved&quot; from Oracle copyright notices
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * meson: Add option to build with meson
+  * gitlab CI: drop the ci-fairy check-mr job
+- switch to meson build</comment>
+    <requestid>1329312</requestid>
+  </revision>
 </revisionlist>

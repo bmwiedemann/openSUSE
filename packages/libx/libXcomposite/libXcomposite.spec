@@ -1,7 +1,7 @@
 #
 # spec file for package libXcomposite
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libXcomposite
 %define lname	libXcomposite1
-Version:        0.4.6
+Version:        0.4.7
 Release:        0
 Summary:        X11 protocol Composite extension client library
 License:        MIT
@@ -32,7 +32,9 @@ Source1:        baselibs.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  fdupes
+BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  xmlto
 BuildRequires:  pkgconfig(compositeproto) >= 0.4
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xextproto)
@@ -81,12 +83,11 @@ in %lname.
 %setup -q
 
 %build
-%configure --disable-static
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-make install DESTDIR="%buildroot"
-rm -f "%buildroot/%_libdir"/*.la
+%meson_install
 %fdupes %buildroot/%_prefix
 
 %post -n %lname -p /sbin/ldconfig
