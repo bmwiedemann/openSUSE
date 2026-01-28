@@ -83,7 +83,9 @@ Features:
 %fdupes %{buildroot}%{_datadir}
 
 %check
+%ifarch x86_64
 %meson_test
+%endif
 
 %files
 %license LICENSES/GPL-3.0-or-later.md

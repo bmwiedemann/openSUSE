@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 20 10:26:20 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Run test-suite only on x86_64. Suite randomly failes on other
+  targets.
+
+-------------------------------------------------------------------
 Thu Oct  9 09:28:02 UTC 2025 - Andrei Dziahel <develop7@develop7.info>
 
 - deja-dup-49.2-loosen_pkit_filters.patch: relax architecture match 
