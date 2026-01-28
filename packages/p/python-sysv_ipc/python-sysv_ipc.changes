@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jan 27 17:24:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * This release modernizes the file layout, building, and
+    packaging of `sysv_ipc`, including many improvements copied
+    from its sister project `posix_ipc`. There are no changes to
+    the core code other than the one behavior change noted below.
+  * When attempting to set a Semaphore's value out of range (e.g.
+    -1 or 99999), the module still raises a `ValueError`, but the
+    associated message has changed. The previous message was
+    "Attribute 'value' must be between 0 and 32767
+    (SEMAPHORE_VALUE_MAX)". The new message is "The semaphore's
+    value must remain between 0 and SEMVMX"
+  * > The module constants `PAGE_SIZE` and `SEMAPHORE_VALUE_MAX`
+    are deprecated as of this version. They will be removed in a
+    future version. See
+    https://github.com/osvenskan/sysv_ipc/issues/48 for
+    background.
+  * Renamed `prober.py` to `discover_system_info.py`, which now
+    raises `DiscoveryError` if it encounters a situation it can't
+    handle.
+  * Improved `does_build_succeed()` and `compile_and_run()`,
+    including some ideas suggested by Martin Jansa copied from
+    https://github.com/osvenskan/posix_ipc/pull/77.
+  * Added and expanded docstrings.
+  * Changed to always write `SEMVMX` to `system_info.h`, and
+    surround it with `#ifndef/#endif`.
+
+-------------------------------------------------------------------
 Mon Sep 29 08:50:12 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Initial version 1.1.0
