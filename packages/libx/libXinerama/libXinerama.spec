@@ -1,7 +1,7 @@
 #
 # spec file for package libXinerama
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libXinerama
 %define lname	libXinerama1
-Version:        1.1.5
+Version:        1.1.6
 Release:        0
 Summary:        Xinerama extension to the X11 Protocol
 License:        MIT
@@ -31,6 +31,7 @@ Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{ve
 Source1:        baselibs.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
+BuildRequires:  meson
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
@@ -70,12 +71,11 @@ in %lname.
 %setup -q
 
 %build
-%configure --disable-static
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-make install DESTDIR="%buildroot"
-rm -f "%buildroot/%_libdir"/*.la
+%meson_install
 %fdupes %buildroot/%_prefix
 
 %post -n %lname -p /sbin/ldconfig

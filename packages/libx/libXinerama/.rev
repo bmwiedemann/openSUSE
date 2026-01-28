@@ -82,4 +82,18 @@
   * Remove &quot;register&quot; type qualifier from variable declarations</comment>
     <requestid>1032239</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1c25ac30f8b87ba1830600bc823eb558</srcmd5>
+    <version>1.1.6</version>
+    <time>1769609255</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.6
+  * Remove &quot;All rights reserved&quot; from Oracle copyright notices
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * meson: Add option to build with meson
+  * Improve man page formatting
+  * gitlab CI: drop the ci-fairy check-mr job
+- switch to meson build</comment>
+    <requestid>1329315</requestid>
+  </revision>
 </revisionlist>
