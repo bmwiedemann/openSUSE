@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 27 16:26:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * TOML v1.1.0 compatibility
+  * Binary wheels for Windows arm64
+
+-------------------------------------------------------------------
 Mon Nov 10 08:24:24 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.0:

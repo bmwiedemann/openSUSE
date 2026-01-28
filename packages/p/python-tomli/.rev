@@ -84,4 +84,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1318191</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e642fb32b2558c545172609b359ca2de</srcmd5>
+    <version>2.4.0</version>
+    <time>1769609186</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.4.0:
+  * TOML v1.1.0 compatibility
+  * Binary wheels for Windows arm64</comment>
+    <requestid>1329534</requestid>
+  </revision>
 </revisionlist>
