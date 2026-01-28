@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 27 17:20:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.9:
+  * remove unwanted debug
+  * fix callback security hole
+  * fix table layout error
+  * fix CHANGES versions wrongly marked as 4.3.x --> 4.4.x
+  * remove url from default PDF metadata
+  * remove random monkey patches in randomtext
+  * add and use testutils.invariantSeed in tests
+  * fix (maybe partially) Table row splitting of ListFlowable
+  * apply patch for in row splitting
+
+-------------------------------------------------------------------
 Thu Nov 13 03:43:23 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.4.0:

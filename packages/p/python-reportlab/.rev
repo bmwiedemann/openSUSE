@@ -501,4 +501,21 @@
   * allow for import pyfribidi2 to check for pyfribidi</comment>
     <requestid>1317472</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>4a24898fa634eed7828c00e832910e5a</srcmd5>
+    <version>4.4.9</version>
+    <time>1769609536</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.4.9:
+  * remove unwanted debug
+  * fix callback security hole
+  * fix table layout error
+  * fix CHANGES versions wrongly marked as 4.3.x --&gt; 4.4.x
+  * remove url from default PDF metadata
+  * remove random monkey patches in randomtext
+  * add and use testutils.invariantSeed in tests
+  * fix (maybe partially) Table row splitting of ListFlowable
+  * apply patch for in row splitting</comment>
+    <requestid>1329544</requestid>
+  </revision>
 </revisionlist>
