@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jan 27 17:21:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.0:
+  * Adds a new `--check_jupyter` flag to report which notebook
+    environment is used (e.g., Colab, Jupyter Notebook,
+    JupyterLab, VS Code).
+  * Adds a new `--check_latest` flag to check whether newer
+    package versions are available.
+  * Adds a new `--python_installation` flag to provide
+    information about how Python was installed.
+  * Feat check latest 87
+  * Feat: Add --filename (-fn) option to display notebook path.
+    Closes #25
+  * Fix KeyError in version lookup and implement fallback
+  * Fix timezone space 73
+  * Feat jupyter env 93
+  * Feat python install 89
+- update to 2.5.1:
+  * fixed typo
+  * Bump version to 2.5.1.dev
+  * Bump to 2.5.1.dev1 for build testing
+  * fixed -d and -t flags
+  * List imported packages in alphabetical order.
+  * Add auto deployment workflow
+
+-------------------------------------------------------------------
 Wed Nov 20 18:07:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.0:
