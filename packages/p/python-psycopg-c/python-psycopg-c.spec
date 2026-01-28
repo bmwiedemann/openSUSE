@@ -1,7 +1,7 @@
 #
 # spec file for package python-psycopg-c
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-psycopg-c
 # This needs to upgraded in lockstep with python-psycopg
-Version:        3.2.12
+Version:        3.3.2
 Release:        0
 Summary:        PostgreSQL database adapter for Python -- C optimisation distribution
 License:        LGPL-3.0-only
@@ -32,7 +32,7 @@ BuildRequires:  %{python_module tomli >= 2.0.1}
 BuildRequires:  %{python_module wheel >= 0.37}
 BuildRequires:  fdupes
 BuildRequires:  gcc
-BuildRequires:  postgresql17-server-devel
+BuildRequires:  postgresql-server-devel
 BuildRequires:  python-rpm-macros
 %python_subpackages
 
