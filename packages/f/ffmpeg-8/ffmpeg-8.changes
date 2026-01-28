@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 27 00:01:04 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable harfbuzz-based plugins [boo#1256873]
+
+-------------------------------------------------------------------
 Tue Jan 20 12:51:56 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable some more codecs based on package availability and

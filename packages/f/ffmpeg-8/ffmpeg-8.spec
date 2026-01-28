@@ -131,6 +131,7 @@ BuildRequires:  pkgconfig(fontconfig) >= 2.4.2
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(fribidi) >= 0.19.0
 BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libass) >= 0.11.0
 BuildRequires:  pkgconfig(libavc1394)
@@ -561,6 +562,7 @@ LDFLAGS="%_lto_cflags" \
 	--enable-libfreetype \
 	--enable-libfribidi \
 	--enable-libgsm \
+	--enable-libharfbuzz \
 	--enable-libiec61883 \
 	--enable-libjack \
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700

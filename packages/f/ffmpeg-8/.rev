@@ -38,4 +38,12 @@
   based on comparison with Fedora's ffmpeg package.</comment>
     <requestid>1328316</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>697d38c432dd10b99ec442f4744bf96f</srcmd5>
+    <version>8.0.1</version>
+    <time>1769609146</time>
+    <user>anag_factory</user>
+    <comment>- Enable harfbuzz-based plugins [boo#1256873]</comment>
+    <requestid>1329391</requestid>
+  </revision>
 </revisionlist>
