@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx_rtd_theme
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sphinx_rtd_theme%{psuffix}
-Version:        3.0.2
+Version:        3.1.0
 Release:        0
 Summary:        ReadTheDocs.org theme for Sphinx
 License:        Apache-2.0 AND MIT AND OFL-1.1

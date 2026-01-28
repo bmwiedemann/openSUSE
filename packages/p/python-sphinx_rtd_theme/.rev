@@ -223,4 +223,14 @@
 - No longer skip a test.</comment>
     <requestid>1305595</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>752c31bfcba6f7485d444ce120dcec11</srcmd5>
+    <version>3.1.0</version>
+    <time>1769609188</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.1.0:
+  * Added support for docutils 0.22
+  * Added support for Sphinx 9.x</comment>
+    <requestid>1329535</requestid>
+  </revision>
 </revisionlist>
