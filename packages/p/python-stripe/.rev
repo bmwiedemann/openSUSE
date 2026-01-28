@@ -168,4 +168,40 @@
 - Dropped patch suport-pytest-9.patch, included upstream.</comment>
     <requestid>1323242</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d2a5134ceb9a44b57ef237eef49ae5e0</srcmd5>
+    <version>14.2.0</version>
+    <time>1769609542</time>
+    <user>anag_factory</user>
+    <comment>- update to 14.2.0:
+  * Update generated code
+  * Add support for event notifications
+    `V2CoreAccountClosedEvent`, `V2CoreAccountCreatedEvent`, `V2C
+    oreAccountIncludingConfigurationCustomerCapabilityStatusUpdat
+    edEvent`,
+    `V2CoreAccountIncludingConfigurationCustomerUpdatedEvent`, `V
+    2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpd
+    atedEvent`,
+    `V2CoreAccountIncludingConfigurationMerchantUpdatedEvent`, `V
+    2CoreAccountIncludingConfigurationRecipientCapabilityStatusUp
+    datedEvent`,
+    `V2CoreAccountIncludingConfigurationRecipientUpdatedEvent`,
+    `V2CoreAccountIncludingDefaultsUpdatedEvent`,
+    `V2CoreAccountIncludingFutureRequirementsUpdatedEvent`,
+    `V2CoreAccountIncludingIdentityUpdatedEvent`,
+    `V2CoreAccountIncludingRequirementsUpdatedEvent`, and
+    `V2CoreAccountUpdatedEvent` with related object
+    `v2.core.Account`
+  * Add support for event notification
+    `V2CoreAccountLinkReturnedEvent`
+  * Add support for event notifications
+    `V2CoreAccountPersonCreatedEvent`,
+    `V2CoreAccountPersonDeletedEvent`, and
+    `V2CoreAccountPersonUpdatedEvent` with related object
+    `v2.core.AccountPerson`
+  * Fix DeprecationWarning when encoding StripeObject
+    metadata (fixes #1651)
+  * Update ci to run on Python 3.14 as well</comment>
+    <requestid>1329547</requestid>
+  </revision>
 </revisionlist>

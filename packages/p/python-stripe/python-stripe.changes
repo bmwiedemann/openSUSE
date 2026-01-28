@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Jan 27 17:22:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 14.2.0:
+  * Update generated code
+  * Add support for event notifications
+    `V2CoreAccountClosedEvent`, `V2CoreAccountCreatedEvent`, `V2C
+    oreAccountIncludingConfigurationCustomerCapabilityStatusUpdat
+    edEvent`,
+    `V2CoreAccountIncludingConfigurationCustomerUpdatedEvent`, `V
+    2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpd
+    atedEvent`,
+    `V2CoreAccountIncludingConfigurationMerchantUpdatedEvent`, `V
+    2CoreAccountIncludingConfigurationRecipientCapabilityStatusUp
+    datedEvent`,
+    `V2CoreAccountIncludingConfigurationRecipientUpdatedEvent`,
+    `V2CoreAccountIncludingDefaultsUpdatedEvent`,
+    `V2CoreAccountIncludingFutureRequirementsUpdatedEvent`,
+    `V2CoreAccountIncludingIdentityUpdatedEvent`,
+    `V2CoreAccountIncludingRequirementsUpdatedEvent`, and
+    `V2CoreAccountUpdatedEvent` with related object
+    `v2.core.Account`
+  * Add support for event notification
+    `V2CoreAccountLinkReturnedEvent`
+  * Add support for event notifications
+    `V2CoreAccountPersonCreatedEvent`,
+    `V2CoreAccountPersonDeletedEvent`, and
+    `V2CoreAccountPersonUpdatedEvent` with related object
+    `v2.core.AccountPerson`
+  * Fix DeprecationWarning when encoding StripeObject
+    metadata (fixes #1651)
+  * Update ci to run on Python 3.14 as well
+
+-------------------------------------------------------------------
 Wed Dec 17 01:08:48 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 14.1.0:
