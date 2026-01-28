@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Jan 26 08:40:02 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.34.0:
+  + Build:
+    - New "-Dmbim_groupname=<name>" meson build option to restrict
+      MBIM kernel device access to a given Unix group and root. The
+      access check works in parallel to the "-Dmbim_username"
+      option; passing either check allows access to the kernel
+      device (eg, logical OR).
+  + New Intel AT Tunnel service, including the following
+    operations: MBIM_CID_INTEL_AT_TUNNEL_AT_COMMAND
+  + Extended the SMS service: MBIM_CID_SMS_CONFIGURATION now
+    supports notifications
+  + mbimcli:
+    - New '--sms-query-configuration' and
+      '--sms-query-message-store-status' actions
+    - New '--atds-query-rat' and '--atds-query-operators' actions
+
+-------------------------------------------------------------------
+Thu Sep  4 06:38:28 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.33.1dev:
+  + mbimcli:
+    - add ATDS Query Operators support
+    - bump Basic Connect --query-visible-providers timeout to 240s
+    - add ATDS RAT query support
+    - add --sms-query-configuration option
+    - add --sms-query-message-store-status
+    - add test infrastructure and testcases for quectel QDU command
+      parsing
+    - intel-attunnel: new service, set-at-command
+
+-------------------------------------------------------------------
 Sat May 24 09:04:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.32.0:

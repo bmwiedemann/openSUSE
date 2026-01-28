@@ -1,7 +1,7 @@
 #
 # spec file for package libmbim
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           libmbim
-Version:        1.32.0
+Version:        1.34.0
 Release:        0
 Summary:        Mobile Broadband Interface Model (MBIM) protocol
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later

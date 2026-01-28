@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.freedesktop.org/mobile-broadband/libmbim.git</param>
-    <param name="revision">refs/tags/1.32.0</param>
+    <param name="revision">1.34.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
   </service>
   <service name="tar" mode="buildtime"/>
