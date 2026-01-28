@@ -77,6 +77,10 @@ BuildRequires:  apparmor-profiles
 ExcludeArch:    s390
 %{?systemd_ordering}
 
+%if 0%{?debian} || 0%{?ubuntu}
+ExclusiveArch:  do_not_build
+%endif
+
 %description
 Exports apache mod_status statistics via HTTP for Prometheus consumption.
 
