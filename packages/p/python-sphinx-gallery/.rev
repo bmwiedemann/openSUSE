@@ -86,4 +86,38 @@
   * DOC Improve custom sort key docs</comment>
     <requestid>1265491</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>48de987fed93ab01510a8983d0b1cee7</srcmd5>
+    <version>0.20.0</version>
+    <time>1769609532</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.20.0:
+  * Support for Python 3.8 dropped in this release. Requirement
+    is now Python &gt;=3.10.
+  * Bump version 0.20.0
+  * MNT Add test for `_bool_eval` and add configs to `_bool_eval`
+    check
+  * Add POT, SKADA and TorchDR to the list in README
+  * Update instructions for converting script to notebook
+  * Add comment on path for sphinx_gallery_thumbnail_path
+  * DOC Add plotly to supported scrapers
+  * DOC: Add JUnit XML parsing example
+  * DOC Update junit doc
+  * [DOC] Add an example or index.rst file that allow example in
+    multiple sections
+  * Embed code links with dirhtml builder
+  * Fix typo in note about Binder/JupyterLite
+  * Remove &quot;# noqa: E501&quot; from end of text blocks
+  * allow git archives to have dynamic versioning
+  * Update FAQ with notebook and RST file guidance
+  * DOC: Add cards for the subsections on the main topic pages
+  * Fix sphinx warning
+  * MNT: Use names instead of indices for Block namedtuple
+  * FIX: Fix test_recommend_n_examples
+  * ENH: Use :doc: instead of :ref: to link to examples
+  * MAINT: Add MNE-Python doc build integration test
+  * Support plain .rst files as example inputs
+  * MNT Update jupyterlite-sphinx version in circle CI</comment>
+    <requestid>1329536</requestid>
+  </revision>
 </revisionlist>

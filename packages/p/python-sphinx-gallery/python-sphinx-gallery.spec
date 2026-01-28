@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-gallery
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sphinx-gallery
-Version:        0.19.0
+Version:        0.20.0
 Release:        0
 Summary:        Sphinx extension that builds an HTML gallery of examples
 License:        BSD-3-Clause
