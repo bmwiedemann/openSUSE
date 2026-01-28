@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue Jan 27 23:08:10 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1769550212.662a4f95:
+  * refactor(investigation): Use TEST_GIT_URL and NEEDLES_GIT_URL
+  * refactor(investigation): Rename gitrepodir function
+  * Restart: handle subclassed AMQP plugin
+  * Revert "Update CircleCI image to Leap 16.0"
+  * fix: Fix invalid HTML in test creation form
+  * feat: Make test creation discoverable to all users
+  * refactor: Simplify/extend flash message templates
+  * feat: Avoid confusing/wrong "Administrator level required" error
+  * Update CircleCI image to Leap 16.0
+  * feat: Support `async=1` flag via `openqa-cli schedule --monitor`
+  * fix: Avoid serializing `null` click point after e19aee4 and da7cce6b
+  * test: Fix failing style checks due to test file with invalid YAML
+  * test: Cover redirection to Git platform via CASEDIR and TEST_GIT_HASH
+  * fix: Fix error handling when redirecting to Git platform
+  * test: Distinguish different cases for showing settings files
+  * test: Cover case of invalid scenario definitions when creating test
+  * test: Consider `Step.pm` fully covered
+  * test: Cover case of showing unsupported results
+  * fix: Improve condition for checking valid step result
+  * test: Cover case of showing candidate needle with no tags
+  * refactor: Simplify `calc_matches`
+  * refactor: Write uncoverable error handler in one line
+  * refactor: Simplify `_new_screenshot`
+  * refactor: Rewrite code for screenshot name in a more compact way
+  * test: Cover options to take images/areas from existing needles
+  * Use body parameters in POST request
+  * feat: Add symlink for aeon in openqa-bootstrap script
+  * chore(deps): bump lodash from 4.17.21 to 4.17.23
+  * test: Add test for displaying audio results
+  * test: Cover remaining lines of `File.pm`
+  * feat: Improve log message about invalid config in df-based cleanup
+  * feat: Add dry run to df-based cleanup of job results
+  * Fix grammatic mistakes on the snapshots documentation
+  * Describe how snapshots work internally
+  * doc: Improve wording in documentation about space-aware cleanup
+  * doc: Clarify settings for space-aware cleanup
+  * doc: Use "file system" consistently in comments in config files
+  * doc: Wrap comments in `openqa.ini` at 80 characters
+  * doc: Use "file system" consistently in users documentation
+  * doc: Mention also `…_cleanup_max_free_percentage`
+  * doc: Move documentation about space-aware cleanup into its own section
+  * doc: Use "filesystem" instead of "partition" in config comments
+  * fix: Account deletion of screenshots of archived jobs correctly
+  * doc: Mention variables for df-based job result cleanup
+  * feat: Consider archive as well in df-based cleanup of job results
+
+-------------------------------------------------------------------
 Thu Jan 22 17:43:32 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1769068942.639067ee:
