@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 24 09:08:16 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260123 (git commit 0882248d0504):
+  * cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Lenovo laptops
+  * cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Dell laptops
+  * cirrus: cs35l57 cs35l63: Add firmware for Cirrus Amps for some Lenovo laptops
+  * cirrus: cs35l56 cs35l57: Add and update firmware for some Dell laptops
+
+-------------------------------------------------------------------
 Sun Jan 11 09:21:23 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260110 (git commit fd6473795fc6):
