@@ -1377,4 +1377,16 @@ New stable rel</comment>
     <comment>Fix incorrect bug ref (forwarded request 1328636 from mgorse)</comment>
     <requestid>1328916</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>ed775ed673f31a0a5d5124b07192956f</srcmd5>
+    <version>12.3.2</version>
+    <time>1769609228</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 12.3.2:
+  + Fix padding gvar table during subsetting when the original font
+    uses long format and subset font using short format.
+  + Various fuzzing fixes.
+  + Fix NULL pointer deference when malloc fails. (forwarded request 1329065 from iznogood)</comment>
+    <requestid>1329300</requestid>
+  </revision>
 </revisionlist>
