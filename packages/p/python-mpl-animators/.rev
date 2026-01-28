@@ -33,4 +33,13 @@
     <comment></comment>
     <requestid>1292518</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6d8fc239fedcd6ddc5ec084fb0187395</srcmd5>
+    <version>1.2.4</version>
+    <time>1769609677</time>
+    <user>anag_factory</user>
+    <comment>- Ignore warnings in tests to avoid
+  astropy.utils.exceptions.AstropyUserWarning: XDG_CONFIG_HOME</comment>
+    <requestid>1329630</requestid>
+  </revision>
 </revisionlist>

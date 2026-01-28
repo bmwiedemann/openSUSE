@@ -1,7 +1,7 @@
 #
 # spec file for package python-mpl-animators
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,7 +62,7 @@ It is designed to handle N-dimensional data, and can be used to create animation
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -n auto
+%pytest -p no:warnings -n auto
 
 %files %{python_files}
 %{python_sitelib}/mpl_animators

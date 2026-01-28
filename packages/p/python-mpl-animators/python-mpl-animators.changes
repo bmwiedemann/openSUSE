@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 28 09:19:45 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Ignore warnings in tests to avoid
+  astropy.utils.exceptions.AstropyUserWarning: XDG_CONFIG_HOME
+
+-------------------------------------------------------------------
 Sun Jul 13 13:56:16 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.2.4
