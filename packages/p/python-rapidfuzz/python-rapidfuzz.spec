@@ -1,7 +1,7 @@
 #
 # spec file for package python-rapidfuzz
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-rapidfuzz
-Version:        3.13.0
+Version:        3.14.3
 Release:        0
 Summary:        Rapid fuzzy string matching
 License:        MIT
 URL:            https://github.com/maxbachmann/RapidFuzz
 Source:         https://files.pythonhosted.org/packages/source/r/rapidfuzz/rapidfuzz-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 3.0.12}
-BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module Cython >= 3.1.4}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}

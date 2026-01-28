@@ -183,4 +183,26 @@
   * switch build system to ``scikit-build-core``</comment>
     <requestid>1293242</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b83d9de1df5a9c1a6f865364c51f661c</srcmd5>
+    <version>3.14.3</version>
+    <time>1769609204</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.14.3:
+  * add missing pypy and freethreaded linux wheels
+  * drop s390x and ppc64le wheels since they are virtually unused
+    and require extremly long to build under emulation
+  * upgrade to Cython==3.1.6
+  * enable free threading
+  * Fully disable line tracing in release builds
+  * upgrade to rapidfuzz-cpp==3.3.3
+  * add support for freethreaded Python
+  * add python 3.14 wheels
+  * dropped support for Python3.9
+  * drop 32 bit linux wheels
+  * remove unused hook-dirs from pyinstaller config to fix a
+    warning
+  * fixed WRatio for a length ratio of exactly 8.0</comment>
+    <requestid>1329565</requestid>
+  </revision>
 </revisionlist>
