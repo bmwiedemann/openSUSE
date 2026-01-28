@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jan 28 06:18:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.6:
+  * chore(deps): update anchore dependencies (#386)
+  * chore(deps): bump actions/cache in /.github/actions/bootstrap
+    (#384)
+  * chore(deps): bump modernc.org/sqlite from 1.44.1 to 1.44.2
+    (#383)
+  * chore(deps): bump zizmorcore/zizmor-action from 0.3.0 to 0.4.1
+    (#385)
+  * chore(deps): update tools to latest versions (#382)
+  * chore(deps): bump actions/checkout from 6.0.1 to 6.0.2 (#381)
+  * chore(deps): update tools to latest versions (#380)
+  * chore(deps): update tools to latest versions (#377)
+  * chore(deps): bump modernc.org/sqlite from 1.44.0 to 1.44.1
+    (#378)
+  * ci: configure zizmor to fail PRs, address lints (#379)
+  * chore: switch to official slack action (#376)
+
+-------------------------------------------------------------------
 Fri Jan 16 05:58:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.5.5:
