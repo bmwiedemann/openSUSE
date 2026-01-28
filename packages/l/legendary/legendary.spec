@@ -16,7 +16,7 @@
 #
 
 Name:           legendary
-Version:        0.20.38
+Version:        0.20.39
 Release:        0
 Summary:        An Epic Games Launcher alternative
 License:        GPL-3.0-only
