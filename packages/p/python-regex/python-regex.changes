@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 27 17:25:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.1.15:
+  * Git issue 596: Specifying {e<=0} causes ca 210× slow-down.
+  * Added RISC-V wheels.
+  * Git issue 594: Support relative PARNO in recursive
+    subpatterns.
+  * Fixed test in main.yml.
+  * Moved tests into subfolder.
+  * Re-organised files.
+  * Updated to Unicode 17.0.0.
+  * Enable free-threading support in cibuildwheel.
+
+-------------------------------------------------------------------
 Fri Sep  5 09:18:35 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2025.9.11:

@@ -280,4 +280,21 @@
   * Git issue 535: Regex fails Unicode 15.1 GraphemeBreakTest due</comment>
     <requestid>1302893</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>73b040dfa3eccd21c0b15d45a6ce5320</srcmd5>
+    <version>2026.1.15</version>
+    <time>1769609201</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.1.15:
+  * Git issue 596: Specifying {e&lt;=0} causes ca 210× slow-down.
+  * Added RISC-V wheels.
+  * Git issue 594: Support relative PARNO in recursive
+    subpatterns.
+  * Fixed test in main.yml.
+  * Moved tests into subfolder.
+  * Re-organised files.
+  * Updated to Unicode 17.0.0.
+  * Enable free-threading support in cibuildwheel.</comment>
+    <requestid>1329551</requestid>
+  </revision>
 </revisionlist>
