@@ -193,4 +193,29 @@ Requires python-setuptools 78 to build successfully.
     <comment></comment>
     <requestid>1281288</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>eaf94c71371a7717d7aa83e2e4f297fc</srcmd5>
+    <version>1.4.1</version>
+    <time>1769609567</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.1:
+  * Issue 296 - Release QtAwesome 1.4.1
+  * Issue 284 - `example.py` segfaults with both PyQt 6 and
+    PySide 6 (6.8.x) (PR 288 by @dalthviz)
+  * Issue 280 - Segfault at the end on Qt6 when `draw=='path'`
+    (PR 290 by @StSav012)
+  * PR 299 - PR: Update macOS image label to `macos-15-intel`, by
+    @dalthviz
+  * PR 292 - PR: Add Qt6 (PyQt6/PySide6) test jobs and fix
+    PySide2 and `pytest-qt` support related failures, by
+    @StSav012
+  * PR 290 - PR: Do not clear the cache of `QRawFont` instances
+    for the main app thread, by @StSav012
+  * PR 288 - PR: Check specific PySide6 version (6.8.3) in CI and
+    address CI warnings (`setup-miniconda`), by @dalthviz
+  * PR 287 - PR: Add new security policy, by @CAM-Gerlach
+  * PR 286 - [pre-commit.ci] pre-commit autoupdate, by [@pre-
+    commit-ci[bot]](https://github.com/apps/pre-commit-ci)</comment>
+    <requestid>1329568</requestid>
+  </revision>
 </revisionlist>
