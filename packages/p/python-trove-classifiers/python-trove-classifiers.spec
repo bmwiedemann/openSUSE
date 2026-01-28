@@ -1,7 +1,7 @@
 #
 # spec file for package python-trove-classifiers
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-trove-classifiers%{?psuffix}
-Version:        2025.11.14.15
+Version:        2026.1.14.14
 Release:        0
 Summary:        Canonical source for classifiers on PyPI
 License:        Apache-2.0

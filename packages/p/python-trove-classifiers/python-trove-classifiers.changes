@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 27 17:13:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.1.14.14:
+  * add "Environment :: Cygwin (MS Windows)",
+    "Framework :: Django CMS :: 5.1",
+    "Framework :: Zope :: 6"
+
+-------------------------------------------------------------------
 Fri Nov 21 21:52:24 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2025.11.14.15:

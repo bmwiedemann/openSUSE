@@ -200,4 +200,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1320537</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>70313a829d5257f03eaed03358cb7c28</srcmd5>
+    <version>2026.1.14.14</version>
+    <time>1769609196</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.1.14.14:
+  * add &quot;Environment :: Cygwin (MS Windows)&quot;,
+    &quot;Framework :: Django CMS :: 5.1&quot;,
+    &quot;Framework :: Zope :: 6&quot;</comment>
+    <requestid>1329542</requestid>
+  </revision>
 </revisionlist>
