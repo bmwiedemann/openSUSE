@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jan 27 12:18:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.41.0:
+  * Added Features
+    - detect Debian version from /etc/debian_version [#4569
+      @kzantow]
+  * Bug Fixes
+    - correctly report supporting evidence for binary packages
+      [#4558 @kzantow]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#4575)
+    - chore(deps): update tools to latest versions (#4570)
+    - chore(deps): bump the actions-minor-patch group across 2
+      directories with 3 updates (#4568)
+    - chore(deps): bump the go-minor-patch group with 6 updates
+      (#4567)
+    - chore(deps): update tools to latest versions (#4565)
+    - chore(deps): bump github.com/spdx/tools-golang (#4557)
+
+-------------------------------------------------------------------
 Fri Jan 16 05:58:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.40.1:
