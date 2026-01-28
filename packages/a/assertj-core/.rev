@@ -31,4 +31,12 @@
     <comment>Use SOURCE_DATE_EPOCH for reproducible builds</comment>
     <requestid>1202515</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0cae89ff0bc7a2695eab93da976987c6</srcmd5>
+    <version>3.27.7</version>
+    <time>1769609360</time>
+    <user>anag_factory</user>
+    <comment>bsc#1257293, CVE-2026-24400</comment>
+    <requestid>1329513</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Tue Jan 27 13:52:15 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.27.7
+  * Security
+    + Fix XXE vulnerability in isXmlEqualTo assertion
+      (bsc#1257293, CVE-2026-24400)
+  * Breaking Changes
+    + Delegate OptionalDouble value comparison to Double.compare
+      in hasValue assertion
+    + Replace assertThat(Temporal) with
+      assertThatTemporal(Temporal)
+  * Deprecated
+    + Deprecate ObjectAssertFactory in favor of
+      Assertions.assertThat(Object)
+    + Deprecate AssertionErrorFactory in favor of
+      AssertionErrorCreator
+    + Deprecate catchThrowableOfType(ThrowingCallable, Class) in
+      favor of catchThrowableOfType(Class, ThrowingCallable)
+    + Deprecate assertThat(Iterable, AssertFactory),
+    + Deprecate ClassBasedNavigableIterableAssert and
+      ClassBasedNavigableListAssert
+    + Deprecate usingComparatorForFields and remove deprecated
+      assertions from usingComparatorForType documentation
+    + Deprecate hasCauseReference(Throwable) from Throwable
+      assertions
+    + Deprecate org.assertj.core.annotations.Beta in favor of
+      org.assertj.core.annotation.Beta
+    + Deprecate org.assertj.core.util.CanIgnoreReturnValue in favor
+      of org.assertj.core.annotation.CanIgnoreReturnValue
+    + Deprecate org.assertj.core.util.CheckReturnValue in favor of
+      org.assertj.core.annotation.CheckReturnValue
+    + Deprecate XmlStringPrettyFormatter with no replacement
+  * New Features
+    + Support multiple AfterAssertionErrorCollected callbacks
+    + Add InstanceOfAssertFactory for Set instances
+    + Add doesNotContainKey and doesNotContainKeys to Guava Multimap
+      assertions
+    + Add assertions for JDK YearMonth type
+    + Add TemporalAssert type
+    + Add ignoringFieldsOfTypesMatchingRegexes
+    + Add fail(Throwable) and fail() variants
+    + Add isPrivate to Class assertions
+    + Add doesNot[Start/End]WithWhitespace methods to CharSequence
+      assertions
+    + Add createAssert(ValueProvider) to AssertFactory
+    + Add values() navigation method to AbstractMapAssert
+    + Add bytes()/bytes(Charset)/bytes(String) navigation methods to
+      AbstractStringAssert
+    + Add doesNotThrowAnyExceptionExcept to AbstractThrowableAssert
+    + Add hasPermittedSubclasses to Class assertions
+    + Add isUnmodifiable to Iterator assertions
+    + Add actual() to access the object under test
+    + Add isCompletedWithValueMatchingWithin to CompletableFuture
+      assertions
+    + Add completesExceptionallyWithin to CompletableFuture
+      assertions
+    + Add inBinary to CharSequence assertions
+    + Support for Assertions.byLessThan(Duration) and
+      Assertions.within(Duration)
+    + Add standard representation for CharSequence
+    + Add predicate descriptions overloads to anyMatch and noneMatch
+    + Add doesNotMatch(Predicate)
+    + Add usingEquals accepting a BiPredicate and an optional
+      description to provide a custom comparison in assertions
+    + Add isNotEmpty to Table assertions
+  * Bug Fixes
+    + Preserve original order of elements when returning duplicates
+      on doesNotHaveDuplicates
+    + Make isNotEqualTo(boolean) pass when actual is null
+    + Fix isEqualTo comparison of Timestamp instances with Instant
+    + Fix Instant conversion with Date assertions
+    + Rebuild default date formats used to parse strings as dates
+      when default timezone or lenient flag changes
+    + Fix Javadoc rendering on
+      FactoryBasedNavigableListAssert::assertThat
+    + Allow ComparingNormalizedFields instances to be reused across
+      different assertions
+    + Recursive assertion hasNoNullFields throws NPE with fields of
+      anonymous and local types
+    + Fix incorrect mutation of actualElementsGroupedByHashCode in
+      recursive comparison
+    + Recursive comparison ignoringFields not working properly with
+      maps
+    + Custom representation ignored when describing expected items
+      not in the actual list
+    + hasFieldOrPropertyWithValue swallows exceptions thrown by
+      getters, and reports non-existent property instead
+    + satisfies() with nested assertions obscures stack trace
+    + Recursive comparison fails if ignored fields are not found in
+      expected
+    + Fix missing introspection for record accessors
+    + Honor assertion description in asString()
+    + Avoid InputStream manipulation when mark / reset are supported
+    + NPE with custom RecursiveComparisonConfiguration on
+      usingRecursiveFieldByFieldElementComparator
+    + Restore support for null-valued maps when ignoring fields
+    + Fix StandardRepresentation regression for unquoted strings
+    + Fix thread-safety in AbstractDateAssert
+    + Add missing export for org.assertj.core.annotation
+    + Navigation to assertj-core or guava types from assertj-guava
+      Javadoc site has unnecessary header
+  * Improvements
+    + Avoid duplicating maven-javadoc-plugin configuration and CSS
+      files
+    + Favor additionalOption entries in maven-javadoc-plugin
+    + Fix typo in Javadoc
+    + Improve AssertFactory Javadoc
+    + Add Throwable stack trace to ShouldHaveCauseExactlyInstance
+    + Fix typo
+    + Add Throwable stack trace to ShouldHaveCauseInstance
+    + Implement boolean assertions directly in AbstractBooleanAssert
+      and remove Booleans internal class
+    + Remove stack trace elements triggered by AssertJ in addition
+      to AssertJ elements
+    + Report all failing conditions when using
+      satisfies(allOf(Condition...))
+    + Fix Unicode escapes in inUnicode() Javadoc
+    + Show error differences if values were compared with equals in
+      recursive comparison
+    + Add throwable stacktrace to ShouldNotContainCharSequence
+    + Remove unused code and other minor cleanup
+    + Simplify comparison strategy isLessThan and
+      isLessThanOrEqualTo in AbstractComparisonStrategy
+    + Update AbstractCharSequenceAssert.java reference
+    + Include stack trace of internal errors in all/any satisfy
+      assertions
+    + Declare license using SPDX identifier
+    + Add Class info to class loading strategy failures
+    + Migrate to the Central Publisher Portal, enable snapshot
+      publishing
+    + Annotate fail methods with custom @Contract
+    + ByteBuddy in AssertJ 3.27.4 not compatible with Java 25
+
+-------------------------------------------------------------------
 Mon Sep 23 05:32:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use SOURCE_DATE_EPOCH for reproducible builds

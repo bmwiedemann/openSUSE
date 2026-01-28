@@ -1,7 +1,7 @@
 #
 # spec file for package assertj-core
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # binaries are java 8 compatible
 %define __requires_exclude java-headless
 Name:           assertj-core
-Version:        3.25.3
+Version:        3.27.7
 Release:        0
 Summary:        Library of assertions similar to fest-assert
 License:        Apache-2.0
@@ -60,21 +60,24 @@ This package provides API documentation for %{name}.
 #pom_remove_plugin -r :bnd-maven-plugin
 %pom_remove_plugin -r :bnd-resolver-maven-plugin
 %pom_remove_plugin -r :bnd-testing-maven-plugin
-%pom_remove_plugin -r :nexus-staging-maven-plugin
+%pom_remove_plugin -r :central-publishing-maven-plugin
 %pom_remove_plugin -r :license-maven-plugin
 %pom_remove_plugin -r :flatten-maven-plugin
 %pom_remove_dep -r :mockito-bom
 %pom_remove_dep -r :junit-bom
+%pom_remove_dep -r :spring-boot-dependencies
 
 %pom_disable_module assertj-core-kotlin assertj-tests/assertj-integration-tests
 %pom_disable_module assertj-core-groovy assertj-tests/assertj-integration-tests
+%pom_disable_module assertj-core-spring-boot assertj-tests/assertj-integration-tests
+%pom_disable_module assertj-core-osgi assertj-tests/assertj-integration-tests
 
 %pom_add_dep org.apiguardian:apiguardian-api:1.1.2:provided
 
 %build
 %{mvn_build} -f -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
-    -Dproject.build.sourceEncoding=UTF-8 -Dmaven.compiler.release=8 -Dsource=8
+    -Dproject.build.sourceEncoding=UTF-8 \
+    -Dmaven.compiler.release=8 -Dsource=8
 
 %install
 %mvn_install
