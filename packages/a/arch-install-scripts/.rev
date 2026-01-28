@@ -53,4 +53,19 @@ I have made the fixes you requested.</comment>
     <comment></comment>
     <requestid>1228101</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dbfaaca1358ae805ddc01b8e4e7b928c</srcmd5>
+    <version>30</version>
+    <time>1769609304</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release 30
+  * arch-chroot: introduce a systemd-run mode
+  * arch-chroot: switch to X-mount.nocanonicalize= for mounting over symlink 
+  * arch-chroot: use -L rather than -h 
+  * genfstab: Add fuse.portal to pseudofs list
+  * genfstab: Fix zram skipping during fstab generation
+  * Require util-linux 2.41
+</comment>
+    <requestid>1329450</requestid>
+  </revision>
 </revisionlist>

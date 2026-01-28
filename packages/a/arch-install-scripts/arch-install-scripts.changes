@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 27 09:30:58 UTC 2026 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 30
+  * arch-chroot: introduce a systemd-run mode
+  * arch-chroot: switch to X-mount.nocanonicalize= for mounting over symlink 
+  * arch-chroot: use -L rather than -h 
+  * genfstab: Add fuse.portal to pseudofs list
+  * genfstab: Fix zram skipping during fstab generation
+  * Require util-linux 2.41
+
+-------------------------------------------------------------------
 Tue Dec  3 19:13:23 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 29

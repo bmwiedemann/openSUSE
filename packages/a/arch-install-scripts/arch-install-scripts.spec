@@ -17,7 +17,7 @@
 
 
 Name:           arch-install-scripts
-Version:        29
+Version:        30
 Release:        0
 Summary:        Scripts aimed at automating some menial installation/recovery tasks
 License:        GPL-2.0-only
@@ -30,7 +30,7 @@ BuildRequires:  m4
 Requires:       awk
 Requires:       bash >= 4.1
 Requires:       coreutils >= 8.15
-Requires:       util-linux >= 2.39
+Requires:       util-linux >= 2.41
 Requires:       util-linux-systemd >= 2.23
 BuildArch:      noarch
 
