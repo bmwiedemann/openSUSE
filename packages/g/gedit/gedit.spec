@@ -1,7 +1,7 @@
 #
 # spec file for package gedit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define api_ver 48.2
+%define api_ver 49
 
 Name:           gedit
-Version:        48.2
+Version:        49.0
 Release:        0
 Summary:        UTF-8 text editor
 License:        GPL-2.0-or-later
@@ -47,7 +47,7 @@ BuildRequires:  pkgconfig(gspell-1) >= 1.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libgedit-amtk-5)
 BuildRequires:  pkgconfig(libgedit-gtksourceview-300)
-BuildRequires:  pkgconfig(libgedit-tepl-6) >= 6.11
+BuildRequires:  pkgconfig(libgedit-tepl-6) >= 6.14.0
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.14.1
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.14.1
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.0.0
@@ -126,6 +126,8 @@ This subpackage contains the header files for creating gedit plugins.
 %{_libdir}/gedit/girepository-1.0/
 %dir %{_libdir}/gedit/plugins/
 # Explicitly list plugins so we know when we miss one
+%{_libdir}/gedit/plugins/codecomment.plugin
+%{_libdir}/gedit/plugins/libcodecomment.so
 %{_libdir}/gedit/plugins/docinfo.plugin
 %{_libdir}/gedit/plugins/libdocinfo.so
 %{_libdir}/gedit/plugins/filebrowser.plugin

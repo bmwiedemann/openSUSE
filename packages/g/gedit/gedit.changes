@@ -1,8 +1,60 @@
 -------------------------------------------------------------------
+Mon Jan 26 08:54:59 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Metainfo data: add more infos to fix Flathub warnings.
+  + Cleanup: remove BuildStream and Snap from build-aux/ (outdated)
+- Changes from version 49.alpha2:
+  + User-visible changes:
+    - Add a max-file-size setting for document loading, fixing the
+      common problem with very large files.
+    - New symbolic app icon (to have a square one).
+    - Statusbar: fix a bug with the language button popover.
+  + Under the hood changes:
+    - Fix a compilation warning.
+    - Statusbar:
+      . Move some features of GeditStatusbar to libgedit-tepl as
+        TeplStatusbar.
+      . GeditWindowStatus: new internal class to offload some work
+        that was done in GeditWindow, to avoid a god class.
+       - *.ui -> code.
+  + Other:
+    * Tools: generate-html-list-of-plugins-description.sh script
+      (output HTML content that is put on the website instead of
+      generating a Markdown file located in the git repository).
+  + Updated translations
+
+-------------------------------------------------------------------
 Thu Oct  2 07:41:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add AppStream BuildRequires and check section with meson_test
   macro, run tests during build.
+
+-------------------------------------------------------------------
+Mon Sep  8 06:19:37 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.alpha1:
+  + User-visible changes:
+    - gedit icon: take an older version for small sizes. The older
+      version looks nicer.
+    - Code Comment/Uncomment plugin: some bugs have been fixed, and
+      the behavior can be slightly different in some situations. A
+      new user manual page has also been written.
+    - Setup allowed GDK backends to disable Wayland. Only the X11
+      backend is allowed on Linux (so it relies on XWayland when
+      running the application on a Wayland session). It fixes some
+      bugs, especially for the Word Completion plugin.
+  + Under the hood changes:
+    - Tools: add generate-c-plugin, to generate the boilerplate C
+       code for a new plugin.
+    - Code Comment/Uncomment plugin: rewrite it in C, and have the
+      bulk of the implementation in libgedit-tepl.
+    - Port to new GtkSourceEncoding API.
+    - GeditTab refactorings:
+      . Extract gedit-tab-utils.c.
+      . Start to extract GeditTabLoader (private class).
+    - Various other code refactorings.
+  + Updated translations
 
 -------------------------------------------------------------------
 Thu Apr 17 08:16:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
