@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Jan 27 16:14:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * [feat] Allow disabling automatic draining immediately on
+    sigterm
+  * feat: add enable_automatic_graceful_drain_mode() for re-
+    enabling auto
+- update to 3.1.2:
+  * fix: prevent watcher task leak by using threading.local
+- update to 3.1.1:
+  * fix(shutdown): detect uvicorn shutdown via signal handler
+    introspection
+- update to 3.1.0:
+  * chore(deps): bump actions/setup-python from 3 to 6
+  * Fix Issue #149: handle_exit cannot signal context-local
+    events
+- update to 3.0.4:
+  * Add starlette to dependencies
+  * Maintenance: CI updates, Python 3.13 support, and packaging
+    fixes
+- update to 3.0.3:
+  * Security: Upgrade Starlette to 0.49.1 to address
+    CVE-2025-62727
+- update to 3.0.0:
+  * No breaking changes expected.
+  * Fix Issue #140: Replace global AppStatus.should_exit_event
+    with context-local events
+  * **Multi-Threading Support**: SSE now works correctly in
+    multi-threaded applications
+  * **Multi-Loop Support**: Full compatibility with multiple
+    asyncio event loops
+  * **Automatic Test Isolation**: No more manual state resets
+    needed in tests
+  * **Context-Local Events**: Replaced global state with context-
+    aware event management
+- update to 2.4.0:
+  * add missing test dependencies to tox.ini
+  * Add an `JSONServerSentEvent` utility based on starlette
+    `JSONResponse`
+
+-------------------------------------------------------------------
 Mon Jun 23 15:20:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Initial release (v2.3.6), needed by mcp

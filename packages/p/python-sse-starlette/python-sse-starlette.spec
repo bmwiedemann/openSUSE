@@ -1,7 +1,7 @@
 #
 # spec file for package python-sse-starlette
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,24 +15,25 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-sse-starlette
-Version:        2.3.6
+Version:        3.2.0
 Release:        0
 Summary:        SSE plugin for Starlette
 License:        BSD-3-Clause
 URL:            https://github.com/sysid/sse-starlette
 Source:         https://github.com/sysid/sse-starlette/archive/refs/tags/v%{version}.tar.gz#/sse_starlette-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module anyio >= 4.7.0}
 BuildRequires:  %{python_module asgi-lifespan}
 BuildRequires:  %{python_module httpx}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module starlette >= 0.41.3}
 # /SECTION
 BuildRequires:  fdupes
