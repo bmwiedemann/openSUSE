@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 28 06:22:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.8.8:
+  no CLI-related changes or dependency updates
+  v1.8.8 is a minor bugfix PR to fix an issue where cluster secrets
+  did not get the kargo.akuity.io/cred-type applied when creating
+  them via the API
+
+-------------------------------------------------------------------
 Tue Jan 27 06:06:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.8.7:
