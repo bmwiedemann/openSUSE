@@ -1,7 +1,7 @@
 #
 # spec file for package hwinfo
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hwinfo
-Version:        25.0
+Version:        25.1
 %define lname	libhd%(echo "%version" | perl -pe 's{\\D.*}{}')
 Release:        0
 Summary:        Hardware Library
@@ -98,36 +98,37 @@ system.
   install -m 644 doc/getsysinfo.1 %{buildroot}%{_mandir}/man1/
   install -m 644 doc/mk_isdnhwdb.1 %{buildroot}%{_mandir}/man1/
   install -m 644 doc/hwinfo.8 %{buildroot}%{_mandir}/man8/
-  mkdir -p %{buildroot}/var/lib/hardware/udi
+  mkdir -p %{buildroot}%{_tmpfilesdir}
+  echo "d %{_localstatedir}/lib/hardware 0755 root root" > %{buildroot}%{_tmpfilesdir}/%{name}.conf
+  echo "d %{_localstatedir}/lib/hardware/udi 0755 root root" >> %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%post   -n %{lname} -p %{_sbindir}/ldconfig
+%postun -n %{lname} -p %{_sbindir}/ldconfig
 
 %files
-/usr/sbin/hwinfo
-/usr/sbin/mk_isdnhwdb
-/usr/sbin/getsysinfo
+%{_sbindir}/hwinfo
+%{_sbindir}/mk_isdnhwdb
+%{_sbindir}/getsysinfo
 %doc *.md
 %doc %{_mandir}/man1/getsysinfo.1*
 %doc %{_mandir}/man1/mk_isdnhwdb.1*
 %doc %{_mandir}/man8/hwinfo.8*
-%dir /var/lib/hardware
-%dir /var/lib/hardware/udi
-%dir /usr/share/hwinfo
-/usr/share/hwinfo/*
+%dir %{_datadir}/hwinfo
+%{_datadir}/hwinfo/*
+%{_tmpfilesdir}/%{name}.conf
 
 %files -n %lname
 %{_libdir}/libhd.so.*
 
 %files devel
-/usr/sbin/check_hd
-/usr/sbin/convert_hd
+%{_sbindir}/check_hd
+%{_sbindir}/convert_hd
 %doc %{_mandir}/man1/convert_hd.1*
 %doc %{_mandir}/man1/check_hd.1*
 %{_libdir}/libhd.so
 %{_libdir}/libhd.a
 %{_libdir}/pkgconfig/hwinfo.pc
-/usr/include/hd.h
+%{_includedir}/hd.h
 %doc doc/libhd/html
 
 %changelog

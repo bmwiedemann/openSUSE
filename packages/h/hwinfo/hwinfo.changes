@@ -1,4 +1,14 @@
 --------------------------------------------------------------------
+Mon Jan 26 14:42:09 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#175
+- include package spec file in git repo
+- adjust spec file for immutable mode: switch to using
+  systemd-tmpfiles (jsc#PED-14832)
+- update git2log script
+- 25.1
+
+--------------------------------------------------------------------
 Mon Jul 14 15:12:08 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#170
