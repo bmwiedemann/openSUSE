@@ -131,4 +131,19 @@
   * XEVI: fix -Walloc-size</comment>
     <requestid>1144239</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e70f56d02916a9511e0b2cd23a1b0881</srcmd5>
+    <version>1.3.7</version>
+    <time>1769609252</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.3.7
+  * unifdef ATTSHAREDLIB
+  * unifdef NULL_NOT_ZERO
+  * Xevi.man: Improve man page formatting
+  * man pages: Improve man page formatting
+  * gitlab CI: drop the ci-fairy check-mr job
+  * Xevi.3: Some editorial changes for this man page [Debian bug #1050884]
+  * Fix HWND pointer casting errors on MinGW-w64</comment>
+    <requestid>1329313</requestid>
+  </revision>
 </revisionlist>
