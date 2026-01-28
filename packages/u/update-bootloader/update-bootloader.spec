@@ -1,7 +1,7 @@
 #
 # spec file for package update-bootloader
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %{!?_distconfdir:%global _distconfdir /etc}
 
 Name:           update-bootloader
-Version:        1.26
+Version:        1.27
 Release:        0
 Requires:       coreutils
 Requires:       util-linux
@@ -56,27 +56,23 @@ install -D -m 644 pbl.8 %{buildroot}%{_mandir}/man8/pbl.8
 install -D -m 644 bootloader_entry.8 %{buildroot}%{_mandir}/man8/bootloader_entry.8
 install -D -m 644 update-bootloader.8 %{buildroot}%{_mandir}/man8/update-bootloader.8
 install -D -m 644 kexec-bootloader.8 %{buildroot}%{_mandir}/man8/kexec-bootloader.8
-mkdir -p %{buildroot}/var/log
-touch %{buildroot}/var/log/pbl.log
-
-%post
-echo -n >>/var/log/pbl.log
-chmod 600 /var/log/pbl.log
+mkdir -p %{buildroot}%{_tmpfilesdir}
+echo "f %{_localstatedir}/log/pbl.log 0600 root root" > %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 %files
 %defattr(-, root, root)
 %license COPYING
 %doc %{_mandir}/man8/*
 %doc boot.readme
-%{sbindir}/update-bootloader
-%{sbindir}/pbl
-%{sbindir}/kexec-bootloader
+%{_sbindir}/update-bootloader
+%{_sbindir}/pbl
+%{_sbindir}/kexec-bootloader
 /usr/lib/bootloader
+%{_tmpfilesdir}/%{name}.conf
 %if "%{_distconfdir}" == "/etc"
 %config(noreplace) %{_distconfdir}/logrotate.d/pbl
 %else
 %{_distconfdir}/logrotate.d/pbl
 %endif
-%ghost %attr(0600,root,root) /var/log/pbl.log
 
 %changelog

@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Mon Jan 26 14:28:26 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#194
+- adjust spec file for immutable mode: switch to using
+  systemd-tmpfiles (jsc#PED-14833)
+- 1.27
+
+--------------------------------------------------------------------
 Thu Sep 11 15:30:03 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#193
