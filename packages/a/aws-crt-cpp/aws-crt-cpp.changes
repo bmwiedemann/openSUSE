@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 23 09:31:32 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.37.1
+  * Update submodules by @sfod in (#812)
+  * Bump aws-c-s3 version by @azkrishpy in (#813)
+
+-------------------------------------------------------------------
 Fri Jan  9 13:30:08 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.37.0
