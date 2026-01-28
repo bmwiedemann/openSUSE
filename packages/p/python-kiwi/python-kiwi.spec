@@ -56,7 +56,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        10.2.37
+Version:        10.2.32
 Provides:       kiwi-schema = 8.1
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -146,20 +146,21 @@ Recommends:     dnf
 %endif
 %endif
 # package managers required by distro
-%if 0%{?fedora} >= 41 || 0%{?rhel} >= 11 || 0%{?suse_version} >= 1650
+%if 0%{?fedora} || 0%{?rhel} >= 8 || 0%{?suse_version} >= 1650
+Provides:       kiwi-packagemanager:microdnf
+Requires:       microdnf
+%endif
+%if 0%{?fedora} >= 41
 Requires:       dnf5
 Requires:       dnf5-plugins
 Provides:       kiwi-packagemanager:dnf5
-%endif
-%if (0%{?fedora} && 0%{?fedora} < 41) || (0%{?rhel} && 0%{?rhel} < 11)
-Requires:       dnf4
+%else
+%if 0%{?fedora} || 0%{?rhel} || 0%{?suse_version} >= 1650
+Requires:       dnf
 Provides:       kiwi-packagemanager:dnf
 Provides:       kiwi-packagemanager:dnf4
 Provides:       kiwi-packagemanager:yum
 %endif
-%if (0%{?fedora} && 0%{?fedora} < 41) || (0%{?rhel} >= 8 && 0%{?rhel} < 11)
-Provides:       kiwi-packagemanager:microdnf
-Requires:       microdnf
 %endif
 %if 0%{?fedora} >= 26 || 0%{?suse_version}
 Requires:       zypper
@@ -353,7 +354,7 @@ Provides:       kiwi-image:vmx
 Requires:       kiwi-systemdeps-filesystems = %{version}-%{release}
 Requires:       kiwi-systemdeps-bootloaders = %{version}-%{release}
 Requires:       kiwi-systemdeps-iso-media = %{version}-%{release}
-%if 0%{?suse_version} >= 1600
+%if 0%{?suse_version} >= 1650
 Requires:       binutils
 Requires:       glibc-gconv-modules-extra
 %endif
@@ -368,9 +369,6 @@ Requires:       kpartx
 Requires:       cryptsetup
 Requires:       mdadm
 Requires:       util-linux
-%if 0%{?fedora} || 0%{?rhel} || 0%{?suse_version}
-Requires:       open-vmdk
-%endif
 # lsblk is part of util-linux-systemd on openSUSE
 %if 0%{?suse_version}
 Requires:       util-linux-systemd
@@ -813,23 +811,23 @@ fi
 %doc %{_mandir}/man8/*
 
 %files -n dracut-kiwi-lib
-%{_usr}/lib/dracut/modules.d/59kiwi-lib
+%{_usr}/lib/dracut/modules.d/99kiwi-lib
 
 %files -n dracut-kiwi-oem-repart
-%{_usr}/lib/dracut/modules.d/55kiwi-repart
+%{_usr}/lib/dracut/modules.d/90kiwi-repart
 
 %files -n dracut-kiwi-oem-dump
-%{_usr}/lib/dracut/modules.d/55kiwi-dump
-%{_usr}/lib/dracut/modules.d/59kiwi-dump-reboot
+%{_usr}/lib/dracut/modules.d/90kiwi-dump
+%{_usr}/lib/dracut/modules.d/99kiwi-dump-reboot
 
 %files -n dracut-kiwi-live
-%{_usr}/lib/dracut/modules.d/55kiwi-live
+%{_usr}/lib/dracut/modules.d/90kiwi-live
 
 %files -n dracut-kiwi-overlay
-%{_usr}/lib/dracut/modules.d/55kiwi-overlay
+%{_usr}/lib/dracut/modules.d/90kiwi-overlay
 
 %files -n dracut-kiwi-verity
-%{_usr}/lib/dracut/modules.d/50kiwi-verity
+%{_usr}/lib/dracut/modules.d/80kiwi-verity
 %{_bindir}/kiwi-parse-verity
 
 %if "%{_vendor}" != "debbuild"

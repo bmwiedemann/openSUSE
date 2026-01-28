@@ -3107,4 +3107,12 @@
     <comment>Update from 10.2.32 to 10.2.37</comment>
     <requestid>1329277</requestid>
   </revision>
+  <revision rev="142" vrev="2">
+    <srcmd5>f11805c0121b820fef4934d540825508</srcmd5>
+    <version>10.2.32</version>
+    <time>1769609224</time>
+    <user>anag_factory</user>
+    <comment>Broken live image boot: https://bugzilla.opensuse.org/show_bug.cgi?id=1257389</comment>
+    <requestid>1329629</requestid>
+  </revision>
 </revisionlist>
