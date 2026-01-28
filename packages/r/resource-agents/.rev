@@ -2033,4 +2033,19 @@
     <comment>- (jsc#PED-14860) Fix packages for Immutable Mode - resource-agents</comment>
     <requestid>1324200</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>a3bc2bf8514409baa38e12b761bca363</srcmd5>
+    <version>4.17.0+git30.b33c378d</version>
+    <time>1769609275</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.17.0+git30.b33c378d: (jsc#PED-15014)
+  * powervs-move-ip/powervs-subnet: fix error logging
+  * Filesystem: optionally report &quot;xargs ps -f&quot; even when killing many processes
+  * ocf-shellfunc: add ocf_log_pipe
+  * findif.c: remove unused colonptr variable
+  * Filesystem: use -eq/-ne for numeric variables
+  * powervs-subnet: wait until IP is activated before running monitor-check
+  * OCPBUGS-64765: podman-etcd: add -a option to crictl ps (#2112)</comment>
+    <requestid>1329342</requestid>
+  </revision>
 </revisionlist>
