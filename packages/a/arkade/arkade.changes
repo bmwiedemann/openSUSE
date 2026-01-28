@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 27 13:00:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.67:
+  * Add websocat
+  * Update various in go.mod
+
+-------------------------------------------------------------------
 Mon Jan 26 06:36:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.66:
