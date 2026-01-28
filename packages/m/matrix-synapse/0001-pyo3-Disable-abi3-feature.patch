@@ -1,0 +1,73 @@
+From 09fad3a6461efd63a59560f2e1f2e16a1e2c0821 Mon Sep 17 00:00:00 2001
+From: "Kai A. Hiller" <V02460@gmail.com>
+Date: Fri, 8 Sep 2023 14:10:56 +0200
+Subject: [PATCH 1/2] pyo3: Disable abi3 feature
+
+Fedora does not require compatibility with Python versions different to
+the one at compile time.
+---
+ build_rust.py   | 22 ++--------------------
+ rust/Cargo.toml |  2 --
+ 2 files changed, 2 insertions(+), 22 deletions(-)
+
+diff --git a/build_rust.py b/build_rust.py
+index a9e9265daf..65d9ac301d 100644
+--- a/build_rust.py
++++ b/build_rust.py
+@@ -1,10 +1,8 @@
+ # A build script for poetry that adds the rust extension.
+ 
+-import itertools
+ import os
+ from typing import Any
+ 
+-from packaging.specifiers import SpecifierSet
+ from setuptools_rust import Binding, RustExtension
+ 
+ 
+@@ -16,27 +14,11 @@ def build(setup_kwargs: dict[str, Any]) -> None:
+         target="synapse.synapse_rust",
+         path=cargo_toml_path,
+         binding=Binding.PyO3,
+-        # This flag is a no-op in the latest versions. Instead, we need to
+-        # specify this in the `bdist_wheel` config below.
+-        py_limited_api=True,
++        # This flag is a no-op in the latest versions.
++        py_limited_api=False,
+         # We always build in release mode, as we can't distinguish
+         # between using `poetry` in development vs production.
+         debug=False,
+     )
+     setup_kwargs.setdefault("rust_extensions", []).append(extension)
+     setup_kwargs["zip_safe"] = False
+-
+-    # We look up the minimum supported Python version with
+-    # `python_requires` (e.g. ">=3.10.0,<4.0.0") and finding the first Python
+-    # version that matches. We then convert that into the `py_limited_api` form,
+-    # e.g. cp310 for Python 3.10.
+-    py_limited_api: str
+-    python_bounds = SpecifierSet(setup_kwargs["python_requires"])
+-    for minor_version in itertools.count(start=10):
+-        if f"3.{minor_version}.0" in python_bounds:
+-            py_limited_api = f"cp3{minor_version}"
+-            break
+-
+-    setup_kwargs.setdefault("options", {}).setdefault("bdist_wheel", {})[
+-        "py_limited_api"
+-    ] = py_limited_api
+diff --git a/rust/Cargo.toml b/rust/Cargo.toml
+index e8321d159b..eeeb512920 100644
+--- a/rust/Cargo.toml
++++ b/rust/Cargo.toml
+@@ -33,8 +33,6 @@ mime = "0.3.17"
+ pyo3 = { version = "0.26.0", features = [
+     "macros",
+     "anyhow",
+-    "abi3",
+-    "abi3-py310",
+ ] }
+ pyo3-log = "0.13.1"
+ pythonize = "0.26.0"
+-- 
+2.51.1
+

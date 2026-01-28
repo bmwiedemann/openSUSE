@@ -1,0 +1,33 @@
+From 6452deb91594dd1ba8b2ed27e937033110c19f54 Mon Sep 17 00:00:00 2001
+From: "Kai A. Hiller" <V02460@gmail.com>
+Date: Wed, 29 Mar 2023 12:28:31 +0200
+Subject: [PATCH 2/2] Build RustExtension with debug symbols
+
+---
+ build_rust.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/build_rust.py b/build_rust.py
+index 65d9ac301d..ecc98a5ec8 100644
+--- a/build_rust.py
++++ b/build_rust.py
+@@ -3,7 +3,7 @@
+ import os
+ from typing import Any
+ 
+-from setuptools_rust import Binding, RustExtension
++from setuptools_rust import Binding, RustExtension, Strip
+ 
+ 
+ def build(setup_kwargs: dict[str, Any]) -> None:
+@@ -19,6 +19,7 @@ def build(setup_kwargs: dict[str, Any]) -> None:
+         # We always build in release mode, as we can't distinguish
+         # between using `poetry` in development vs production.
+         debug=False,
++        strip=Strip.No,
+     )
+     setup_kwargs.setdefault("rust_extensions", []).append(extension)
+     setup_kwargs["zip_safe"] = False
+-- 
+2.51.1
+

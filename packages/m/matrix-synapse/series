@@ -1,2 +1,3 @@
 matrix-synapse-1.4.1-paths.patch
-bump-dependencies.patch
+0001-pyo3-Disable-abi3-feature.patch
+0002-Build-RustExtension-with-debug-symbols.patch

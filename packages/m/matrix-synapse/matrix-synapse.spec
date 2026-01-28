@@ -19,6 +19,9 @@
 %bcond_without use_poetry_for_dependencies
 
 # NOTE: Keep this is in the same order as pyproject.toml.
+# keep in sync with poetry.lock
+# if we do not have the version yet for the locked version
+# add it as TODO
 %if %{with use_poetry_for_dependencies}
 %global Twisted_version               24.7.0
 %global Jinja2_version                3.1.5
@@ -109,7 +112,7 @@
 # via jaeger-client
 %global tornado_version               6.0
 %else
-# some version locks based on poetry.lock
+# some version locks based on pyproject.toml
 %global Jinja2_version                3.0
 %global Pillow_version                10.0.1
 %global PyYAML_version                5.3
@@ -227,7 +230,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.145.0
+Version:        1.146.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
@@ -245,6 +248,8 @@ Source51:       matrix-synapse-generate-config.sh
 # to clean up your working copy afterwards: git reset --hard ; rm -rv .pc patches
 Source99:       series
 Patch0:         matrix-synapse-1.4.1-paths.patch
+Patch1:         0001-pyo3-Disable-abi3-feature.patch
+Patch2:         0002-Build-RustExtension-with-debug-symbols.patch
 # https://github.com/matrix-org/synapse/pull/10719
 # disable by marking as source until we get a decision upstream
 Source100:      10719-Fix-instert-of-duplicate-key-into-event_json.patch
@@ -253,6 +258,7 @@ BuildRequires:  %{use_python}-pip
 BuildRequires:  %{use_python}-poetry-core >= 1.1.0
 BuildRequires:  %{use_python}-setuptools
 BuildRequires:  %{use_python}-wheel
+BuildRequires:  cargo-packaging
 #global rust_version 1.84
 %if "%{?rust_version}" == ""
 BuildRequires:  cargo
@@ -432,6 +438,7 @@ find ./ -type f -not -path './vendor/**' \
 sed -i 's|@PYTHON_FLAVOR@|%{__python3}|g' %{S:50}
 
 %build
+export RUSTFLAGS="%{build_rustflags}"
 %pyproject_wheel
 %sysusers_generate_pre %{SOURCE47} %{name}
 
