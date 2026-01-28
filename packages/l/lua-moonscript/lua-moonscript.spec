@@ -113,8 +113,8 @@ busted
 %{_bindir}/moonc
 %{_bindir}/moonc-%{lua_version}
 %{lua_noarchdir}/moon*
-%ghost %{_sysconfdir}/alternatives/moon
-%ghost %{_sysconfdir}/alternatives/moonc
+%ghost %attr(0644,root,root) /etc/alternatives/moon
+%ghost %attr(0644,root,root) /etc/alternatives/moonc
 %endif
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 23 08:41:38 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix file persmissions on alternate files.
+
+-------------------------------------------------------------------
 Fri Oct 24 14:50:38 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch off building lua51 build of the package.

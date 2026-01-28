@@ -43,4 +43,13 @@
 - Add luajit version to _multibuild</comment>
     <requestid>1315187</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>229c4561941d8f43b3e04d12c292769f</srcmd5>
+    <version>0.5.0</version>
+    <time>1769609669</time>
+    <user>anag_factory</user>
+    <comment>Build for Lua 5.5
+- Fix file persmissions on alternate files.</comment>
+    <requestid>1328966</requestid>
+  </revision>
 </revisionlist>
