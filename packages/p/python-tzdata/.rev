@@ -81,4 +81,19 @@
     <comment>- Only require pytest-subtests with pytest &lt; 9.</comment>
     <requestid>1321493</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d099fe652182f1e33615331d27050169</srcmd5>
+    <version>2025.3</version>
+    <time>1769609214</time>
+    <user>anag_factory</user>
+    <comment>- update to 2025.3:
+  * Upstream version 2025c released 2025-12-10T22:42:37+00:00
+  * Baja California agreed with California’s DST rules in 1953
+    and in 1961 through 1975, instead of observing standard time
+    all year.
+  * The leapseconds file contains commentary about the IERS and
+    NIST last-modified and expiration timestamps for leap second
+    data.</comment>
+    <requestid>1329566</requestid>
+  </revision>
 </revisionlist>

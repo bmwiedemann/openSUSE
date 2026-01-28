@@ -1,7 +1,7 @@
 #
 # spec file for package python-tzdata
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-tzdata
-Version:        2025.2
+Version:        2025.3
 Release:        0
 Summary:        Provider of IANA time zone data
 License:        Apache-2.0
