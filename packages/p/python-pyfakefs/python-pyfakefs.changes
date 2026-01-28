@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Jan 27 07:02:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.0:
+  * Removes some deprecated functionality, removes support for
+    Python < 3.10.
+  * removed support for Python versions < 3.10; patch releases
+    based on `pyfakefs` 5.10 supporting older versions may be
+    made on demand
+  * removed support for patching legacy modules `scandir` and
+    `pathlib2`
+  * changed the default for
+    `FakeFilesystem.shuffle_listdir_results` to `True` to reflect
+  * the real filesystem behavior
+  * added some support for Python 3.15a3
+  * fixes a problem with `Path` type hints using the pipe symbol
+    in wrapped functions inside an `fs` dependent fixture (see #1242)
+  * fixes problem with new `coverage` in Python 3.14 using the
+    fake filesystem
+  * fixed `pathlib.glob()` for Python 3.14 (see #1239)
+  * the `errno` codes set in `OSError` have changed for some
+    specific error conditions
+  * in Windows 11/Windows Server 2025; pyfakefs now matches this
+    behavior
+  * instead of the previous behavior under Windows 10
+  * added official support for Python 3.14
+  * added support for `os.readinto` in Python 3.14
+  * added support for `pathlib.copy` and `pathlib.copy_into` in
+    Python 3.14
+  * fixes patching of Debian-specific `tempfile` in Python 3.13
+    (see #1214)
+
+-------------------------------------------------------------------
 Sun Sep 14 18:31:28 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.9.3:
