@@ -88,4 +88,18 @@
     <comment></comment>
     <requestid>1320464</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>71cdbfa746c7750252f3cc10d7706dd5</srcmd5>
+    <version>3.3.36</version>
+    <time>1769609217</time>
+    <user>anag_factory</user>
+    <comment>- Add patch sealert_add_dependency_error_handling.patch to address
+  setroubleshoot-server gui dependency to setroubleshoot (bsc#1237302)
+- Update to version 3.3.36
+  * audit_data: include syslog when needed
+  * Rename appdata to metainfo
+  * Replace python-six with python 3 only code
+</comment>
+    <requestid>1329280</requestid>
+  </revision>
 </revisionlist>

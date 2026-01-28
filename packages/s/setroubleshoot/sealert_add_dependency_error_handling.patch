@@ -1,0 +1,22 @@
+Index: setroubleshoot-3.3.35/src/sealert
+===================================================================
+--- sealert     2024-11-26 14:18:39.000000000 +0100
++++ sealert_new 2025-10-29 14:57:44.916138138 +0100
+@@ -382,6 +382,15 @@
+             syslog.syslog(syslog.LOG_ERR, e.strerror)
+             sys.exit(1)
+ 
++        except ImportError as e:
++            # Handle ImportError of setroubleshoot.browser when not available
++            # (e.g. no gui)
++            syslog.syslog(syslog.LOG_ERR, "exception %s: %s" % (e.__class__.__name__, str(e)))
++            print ("This feature requires setroubleshoot package installed on the system.", file=sys.stderr)
++            sys.exit(1)
++
++
++
+     def finish(self):
+         if self.setroubleshootd_dbus is not None:
+             self.setroubleshootd_dbus.finish()
+~
+

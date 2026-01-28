@@ -1,7 +1,7 @@
 #
 # spec file for package setroubleshoot
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2006-2024 Red Hat, Inc.
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@ Summary:        Helps troubleshoot SELinux problems
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 Name:           setroubleshoot
-Version:        3.3.35
+Version:        3.3.36
 Release:        0
 URL:            https://gitlab.com/setroubleshoot/setroubleshoot
 Source0:        https://gitlab.com/setroubleshoot/setroubleshoot/-/archive/%{version}/setroubleshoot-%{version}.tar.bz2
@@ -34,6 +34,7 @@ Source3:        %{name}.logrotate
 Patch0:         setroubleshoot-desktop.patch
 Patch1:         remove-pip-from-makefile.patch
 Patch2:         disable-send-bug-report-button.patch
+Patch3:         sealert_add_dependency_error_handling.patch
 # git format-patch -N 3.3.30
 # i=1; for j in 00*patch; do printf "Patch%04d: %s\n" $i $j; i=$((i+1));done
 BuildRequires:  autoconf
@@ -102,9 +103,9 @@ to user preference. The same tools can be run on existing log files.
 %config(noreplace) %{_sysconfdir}/xdg/autostart/*
 %{_datadir}/applications/*.desktop
 %if 0%{?suse_version}
-%{_datadir}/metainfo/org.fedoraproject.setroubleshoot.appdata.xml
+%{_datadir}/metainfo/org.fedoraproject.setroubleshoot.metainfo.xml
 %else
-%{_metainfodir}/*.appdata.xml
+%{_metainfodir}/*.metainfo.xml
 %endif
 %{_datadir}/dbus-1/services/org.fedoraproject.sealert.service
 %{_datadir}/icons/hicolor/*/*/*
@@ -183,7 +184,6 @@ Requires:       python3-gobject >= 3.11
 Requires:       python3-libxml2
 Requires:       python3-rpm
 Requires:       python3-selinux  >= 2.1.5-1
-Requires:       python3-six
 Requires:       python3-systemd >= 206-1
 BuildRequires:  gettext
 BuildRequires:  intltool
@@ -206,7 +206,7 @@ to user preference. The same tools can be run on existing log files.
 %post server
 %if 0%{?suse_version}
 %tmpfiles_create %{_tmpfilesdir}/setroubleshoot.conf
-/usr/bin/systemctl try-reload-or-restart auditd.service >/dev/null 2>&1 || : #bsc1237388
+/usr/bin/systemctl try-reload-or-restart auditd.service >/dev/null 2>&1 || : bsc#1237388
 %else
 /sbin/service auditd reload >/dev/null 2>&1 || :
 %endif
@@ -214,7 +214,7 @@ to user preference. The same tools can be run on existing log files.
 
 %postun server
 %if 0%{?suse_version}
-/usr/bin/systemctl try-reload-or-restart auditd.service >/dev/null 2>&1 || : #bsc1237388
+/usr/bin/systemctl try-reload-or-restart auditd.service >/dev/null 2>&1 || : bsc#1237388
 %else
 /sbin/service auditd reload >/dev/null 2>&1 || :
 %endif

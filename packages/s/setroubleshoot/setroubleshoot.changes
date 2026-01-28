@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 19 17:02:00 UTC 2026 - Zdenek Kubala <zkubala@suse.com>
+
+- Add patch sealert_add_dependency_error_handling.patch to address
+  setroubleshoot-server gui dependency to setroubleshoot (bsc#1237302)
+- Update to version 3.3.36
+  * audit_data: include syslog when needed
+  * Rename appdata to metainfo
+  * Replace python-six with python 3 only code
+
+-------------------------------------------------------------------
 Fri Nov 14 16:31:11 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - The dbus calls in post/postun got removed long ago, remove the
