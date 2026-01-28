@@ -898,4 +898,41 @@
     <comment></comment>
     <requestid>1325968</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>fcf0470c9dc86a36023f04f40059de48</srcmd5>
+    <version>3.1.5</version>
+    <time>1769609183</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.1.5:
+  * safe_join on Windows does not allow more special device
+    names, regardless of extension or surrounding spaces.
+    :ghsa:`87hc-h4r5-73f7`
+  * Fix AttributeError when initializing DebuggedApplication with
+    pin_security=False. :issue:`3075`
+
+  * drops 0001-limit-the-maximum-number-of-multipart-form-parts.patch
+    stream that may not return the requested size in one
+  * Type checking FileStorage accepts os.PathLike. #2418
+    :issue:`2397`
+    - Fix type annotation for send_file max_age callable. Don’t pass
+    - Mark top-level names as exported so type checking understands imports
+    - cached_property is generic over its return type, properties decorated
+    - Fix multipart parsing bug when boundary contains special regex
+    - Type checking understands that calling headers.get with a string
+    - If HTTPException.description is not a string, get_description will
+    - Deprecate the environ[&quot;werkzeug.server.shutdown&quot;] function that is
+    - Deprecate the useragents module and the built-in user agent parser. Use
+      a dedicated parser library instead by subclassing user_agent.UserAgent
+    - All datetime values are timezone-aware with tzinfo=timezone.utc. This
+      applies to anything using http.parse_date: Request.date,
+      .if_modified_since, .if_unmodified_since; Response.date, .expires,
+      .last_modified, .retry_after; parse_if_range_header, and IfRange.date.
+      When comparing values, the other values must also be aware, or these
+      values must be made naive. When passing parameters or setting
+    - Merge all request and response wrapper mixin code into single Request
+      and Response classes. Using the mixin classes is no longer necessary
+      and will show a deprecation warning. Checking isinstance or issubclass
+      against BaseRequest and BaseResponse will show a deprecation warning</comment>
+    <requestid>1329533</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-Werkzeug
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Werkzeug%{psuffix}
-Version:        3.1.4
+Version:        3.1.5
 Release:        0
 Summary:        The Swiss Army knife of Python web development
 License:        BSD-3-Clause

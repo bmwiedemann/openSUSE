@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 27 16:24:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.5:
+  * safe_join on Windows does not allow more special device
+    names, regardless of extension or surrounding spaces.
+    :ghsa:`87hc-h4r5-73f7`
+  * Fix AttributeError when initializing DebuggedApplication with
+    pin_security=False. :issue:`3075`
+
+-------------------------------------------------------------------
 Wed Jan  7 15:28:53 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.1.4
@@ -337,7 +347,7 @@ Thu Apr 13 22:45:56 UTC 2023 - Matej Cepl <mcepl@suse.com>
 Mon Mar 13 18:48:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.3 (bsc#1208283, CVE-2023-25577):
-  * drops 0001-limit-the-maximum-number-of-multipart-form-parts.patch 
+  * drops 0001-limit-the-maximum-number-of-multipart-form-parts.patch
     in older dists
   * Ensure that URL rules using path converters will redirect
     with strict slashes when the trailing slash is missing.
@@ -355,7 +365,7 @@ Mon Mar 13 18:48:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Fix handling of header extended parameters such that they
     are no longer quoted.
   * ``LimitedStream.read`` works correctly when wrapping a
-    stream that may not return the requested size in one 
+    stream that may not return the requested size in one
     ``read`` call.
   * A cookie header that starts with ``=`` is treated as an
     empty key and discarded, rather than stripping the leading ``==``.
@@ -410,7 +420,7 @@ Fri Sep  9 15:52:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   * Added Sans-IO is_resource_modified and parse_cookie functions based on WSGI versions. #2408
   * Added Sans-IO get_content_length function. #2415
   * Don’t assume a mimetype for test responses. #2450
-  * Type checking FileStorage accepts os.PathLike. #2418 
+  * Type checking FileStorage accepts os.PathLike. #2418
 
 -------------------------------------------------------------------
 Fri Jul 29 10:58:49 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
@@ -429,7 +439,7 @@ Wed May 11 10:40:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
     :issue:`2379`
   * Disable ``keep-alive`` connections in the development server, which
     are not supported sufficiently by Python's ``http.server``.
-    :issue:`2397` 
+    :issue:`2397`
 - drop 2402-dev_server.patch (upstream)
 
 -------------------------------------------------------------------
@@ -605,18 +615,18 @@ Sat Jun 19 07:42:14 UTC 2021 - Michael Ströder <michael@stroeder.com>
 - updated upstream project URL
 - Update to 2.0.1
   * Version 2.0.1
-    - Fix type annotation for send_file max_age callable. Don’t pass 
+    - Fix type annotation for send_file max_age callable. Don’t pass
       pathlib.Path to max_age. #2119
-    - Mark top-level names as exported so type checking understands imports 
+    - Mark top-level names as exported so type checking understands imports
       in user projects. #2122
     - Fix some types that weren’t available in Python 3.6.0. #2123
-    - cached_property is generic over its return type, properties decorated 
+    - cached_property is generic over its return type, properties decorated
       with it report the correct type. #2113
-    - Fix multipart parsing bug when boundary contains special regex 
+    - Fix multipart parsing bug when boundary contains special regex
       characters. #2125
-    - Type checking understands that calling headers.get with a string 
+    - Type checking understands that calling headers.get with a string
       default will always return a string. #2128
-    - If HTTPException.description is not a string, get_description will 
+    - If HTTPException.description is not a string, get_description will
       convert it to a string. #2115
   * Version 2.0.0
     - Drop support for Python 2 and 3.5. #1693
@@ -626,148 +636,148 @@ Sat Jun 19 07:42:14 UTC 2021 - Michael Ströder <michael@stroeder.com>
     - Deprecate utils.HTMLBuilder. #1761
     - Deprecate utils.escape() and utils.unescape(), use MarkupSafe instead. #1758
     - Deprecate the undocumented python -m werkzeug.serving CLI. #1834
-    - Deprecate the environ["werkzeug.server.shutdown"] function that is 
+    - Deprecate the environ["werkzeug.server.shutdown"] function that is
       available when running the development server. #1752
-    - Deprecate the useragents module and the built-in user agent parser. Use 
-      a dedicated parser library instead by subclassing user_agent.UserAgent 
+    - Deprecate the useragents module and the built-in user agent parser. Use
+      a dedicated parser library instead by subclassing user_agent.UserAgent
       and setting Request.user_agent_class. #2078
     - Remove the unused, internal posixemulation module. #1759
-    - All datetime values are timezone-aware with tzinfo=timezone.utc. This 
-      applies to anything using http.parse_date: Request.date, 
-      .if_modified_since, .if_unmodified_since; Response.date, .expires, 
-      .last_modified, .retry_after; parse_if_range_header, and IfRange.date. 
-      When comparing values, the other values must also be aware, or these 
-      values must be made naive. When passing parameters or setting 
+    - All datetime values are timezone-aware with tzinfo=timezone.utc. This
+      applies to anything using http.parse_date: Request.date,
+      .if_modified_since, .if_unmodified_since; Response.date, .expires,
+      .last_modified, .retry_after; parse_if_range_header, and IfRange.date.
+      When comparing values, the other values must also be aware, or these
+      values must be made naive. When passing parameters or setting
       attributes, naive values are still assumed to be in UTC. #2040
-    - Merge all request and response wrapper mixin code into single Request 
-      and Response classes. Using the mixin classes is no longer necessary 
-      and will show a deprecation warning. Checking isinstance or issubclass 
-      against BaseRequest and BaseResponse will show a deprecation warning 
+    - Merge all request and response wrapper mixin code into single Request
+      and Response classes. Using the mixin classes is no longer necessary
+      and will show a deprecation warning. Checking isinstance or issubclass
+      against BaseRequest and BaseResponse will show a deprecation warning
       and check against Request or Response instead. #1963
-    - JSON support no longer uses simplejson if it’s installed. To use 
-      another JSON module, override Request.json_module and 
+    - JSON support no longer uses simplejson if it’s installed. To use
+      another JSON module, override Request.json_module and
       Response.json_module. #1766
-    - Response.get_json() no longer caches the result, and the cache 
+    - Response.get_json() no longer caches the result, and the cache
       parameter is removed. #1698
-    - Response.freeze() generates an ETag header if one is not set. The 
-      no_etag parameter (which usually wasn’t visible anyway) is no longer 
+    - Response.freeze() generates an ETag header if one is not set. The
+      no_etag parameter (which usually wasn’t visible anyway) is no longer
       used. #1963
     - Add a url_scheme argument to build() to override the bound scheme. #1721
-    - Passing an empty list as a query string parameter to build() won’t 
-      append an unnecessary ?. Also drop any number of None items in a list. 
+    - Passing an empty list as a query string parameter to build() won’t
+      append an unnecessary ?. Also drop any number of None items in a list.
       #1992
-    - When passing a Headers object to a test client method or 
-      EnvironBuilder, multiple values for a key are joined into one comma 
-      separated value. This matches the HTTP spec on multi-value headers. 
+    - When passing a Headers object to a test client method or
+      EnvironBuilder, multiple values for a key are joined into one comma
+      separated value. This matches the HTTP spec on multi-value headers.
       #1655
-    - Setting Response.status and status_code uses identical parsing and 
+    - Setting Response.status and status_code uses identical parsing and
       error checking. #1658, #1728
-    - MethodNotAllowed and RequestedRangeNotSatisfiable take a response 
+    - MethodNotAllowed and RequestedRangeNotSatisfiable take a response
       kwarg, consistent with other HTTP errors. #1748
-    - The response generated by Unauthorized produces one WWW-Authenticate 
-      header per value in www_authenticate, rather than joining them into a 
-      single value, to improve interoperability with browsers and other 
+    - The response generated by Unauthorized produces one WWW-Authenticate
+      header per value in www_authenticate, rather than joining them into a
+      single value, to improve interoperability with browsers and other
       clients. #1755
-    - If parse_authorization_header can’t decode the header value, it returns 
+    - If parse_authorization_header can’t decode the header value, it returns
       None instead of raising a UnicodeDecodeError. #1816
     - The debugger no longer uses jQuery. #1807
     - The test client includes the query string in REQUEST_URI and RAW_URI. #1781
-    - Switch the parameter order of default_stream_factory to match the order 
+    - Switch the parameter order of default_stream_factory to match the order
       used when calling it. #1085
-    - Add send_file function to generate a response that serves a file. 
+    - Add send_file function to generate a response that serves a file.
       Adapted from Flask’s implementation. #265, #1850
-    - Add send_from_directory function to safely serve an untrusted path 
+    - Add send_from_directory function to safely serve an untrusted path
       within a trusted directory. Adapted from Flask’s implementation. #1880
-    - send_file takes download_name, which is passed even if 
-      as_attachment=False by using Content-Disposition: inline. download_name 
+    - send_file takes download_name, which is passed even if
+      as_attachment=False by using Content-Disposition: inline. download_name
       replaces Flask’s attachment_filename. #1869
-    - send_file sets conditional=True and max_age=None by default. 
-      Cache-Control is set to no-cache if max_age is not set, otherwise 
-      public. This tells browsers to validate conditional requests instead of 
-      using a timed cache. max_age=None replaces Flask’s cache_timeout=43200. 
+    - send_file sets conditional=True and max_age=None by default.
+      Cache-Control is set to no-cache if max_age is not set, otherwise
+      public. This tells browsers to validate conditional requests instead of
+      using a timed cache. max_age=None replaces Flask’s cache_timeout=43200.
       #1882
-    - send_file can be called with etag="string" to set a custom ETag instead 
+    - send_file can be called with etag="string" to set a custom ETag instead
       of generating one. etag replaces Flask’s add_etags. #1868
-    - send_file sets the Content-Encoding header if an encoding is returned 
+    - send_file sets the Content-Encoding header if an encoding is returned
       when guessing mimetype from download_name. #3896
-    - Update the defaults used by generate_password_hash. Increase PBKDF2 
-      iterations to 260000 from 150000. Increase salt length to 16 from 8. 
+    - Update the defaults used by generate_password_hash. Increase PBKDF2
+      iterations to 260000 from 150000. Increase salt length to 16 from 8.
       Use secrets module to generate salt. #1935
     - The reloader doesn’t crash if sys.stdin is somehow None. #1915
-    - Add arguments to delete_cookie to match set_cookie and the attributes 
+    - Add arguments to delete_cookie to match set_cookie and the attributes
       modern browsers expect. #1889
-    - utils.cookie_date is deprecated, use utils.http_date instead. The value 
+    - utils.cookie_date is deprecated, use utils.http_date instead. The value
       for Set-Cookie expires is no longer “-” delimited. #2040
     - Use request.headers instead of request.environ to look up header attributes. #1808
-    - The test Client request methods (client.get, etc.) always return an 
-      instance of TestResponse. In addition to the normal behavior of 
-      Response, this class provides request with the request that produced 
-      the response, and history to track intermediate responses when 
+    - The test Client request methods (client.get, etc.) always return an
+      instance of TestResponse. In addition to the normal behavior of
+      Response, this class provides request with the request that produced
+      the response, and history to track intermediate responses when
       follow_redirects is used. #763, #1894
-    - The test Client request methods takes an auth parameter to add an 
-      Authorization header. It can be an Authorization object or a (username, 
+    - The test Client request methods takes an auth parameter to add an
+      Authorization header. It can be an Authorization object or a (username,
       password) tuple for Basic auth. #1809
-    - Calling response.close() on a response from the test Client will close 
-      the request input stream. This matches file behavior and can prevent a 
+    - Calling response.close() on a response from the test Client will close
+      the request input stream. This matches file behavior and can prevent a
       ResourceWarning in some cases. #1785
-    - EnvironBuilder.from_environ decodes values encoded for WSGI, to avoid 
+    - EnvironBuilder.from_environ decodes values encoded for WSGI, to avoid
       double encoding the new values. #1959
-    - The default stat reloader will watch Python files under 
-      non-system/virtualenv sys.path entries, which should contain most user 
-      code. It will also watch all Python files under directories given in 
+    - The default stat reloader will watch Python files under
+      non-system/virtualenv sys.path entries, which should contain most user
+      code. It will also watch all Python files under directories given in
       extra_files. #1945
     - The reloader ignores __pycache__ directories again. #1945
-    - run_simple takes exclude_patterns a list of fnmatch patterns that will 
+    - run_simple takes exclude_patterns a list of fnmatch patterns that will
       not be scanned by the reloader. #1333
-    - Cookie names are no longer unquoted. This was against RFC 6265 and 
+    - Cookie names are no longer unquoted. This was against RFC 6265 and
       potentially allowed setting __Secure prefixed cookies. #1965
     - Fix some word matches for user agent platform when the word can be a substring. #1923
     - The development server logs ignored SSL errors. #1967
-    - Temporary files for form data are opened in rb+ instead of wb+ mode for 
+    - Temporary files for form data are opened in rb+ instead of wb+ mode for
       better compatibility with some libraries. #1961
-    - Use SHA-1 instead of MD5 for generating ETags and the debugger pin, and 
-      in some tests. MD5 is not available in some environments, such as FIPS 
-      140. This may invalidate some caches since the ETag will be different. 
+    - Use SHA-1 instead of MD5 for generating ETags and the debugger pin, and
+      in some tests. MD5 is not available in some environments, such as FIPS
+      140. This may invalidate some caches since the ETag will be different.
       #1897
-    - Add Cross-Origin-Opener-Policy and Cross-Origin-Embedder-Policy 
+    - Add Cross-Origin-Opener-Policy and Cross-Origin-Embedder-Policy
       response header properties. #2008
-    - run_simple tries to show a valid IP address when binding to all 
-      addresses, instead of 0.0.0.0 or ::. It also warns about not running 
+    - run_simple tries to show a valid IP address when binding to all
+      addresses, instead of 0.0.0.0 or ::. It also warns about not running
       the development server in production in this case. #1964
-    - Colors in the development server log are displayed if Colorama is 
-      installed on Windows. For all platforms, style support no longer 
+    - Colors in the development server log are displayed if Colorama is
+      installed on Windows. For all platforms, style support no longer
       requires Click. #1832
-    - A range request for an empty file (or other data with length 0) will 
+    - A range request for an empty file (or other data with length 0) will
       return a 200 response with the empty file instead of a 416 error. #1937
-    - New sans-IO base classes for Request and Response have been extracted 
-      to contain all the behavior that is not WSGI or IO dependent. These are 
-      not a public API, they are part of an ongoing refactor to let ASGI 
+    - New sans-IO base classes for Request and Response have been extracted
+      to contain all the behavior that is not WSGI or IO dependent. These are
+      not a public API, they are part of an ongoing refactor to let ASGI
       frameworks use Werkzeug. #2005
-    - Parsing multipart/form-data has been refactored to use sans-io 
-      patterns. This should also make parsing forms with large binary file 
+    - Parsing multipart/form-data has been refactored to use sans-io
+      patterns. This should also make parsing forms with large binary file
       uploads significantly faster. #1788, #875
-    - LocalProxy matches the current Python data model special methods, 
-      including all r-ops, in-place ops, and async. __class__ is proxied, so 
-      the proxy will look like the object in more cases, including 
-      isinstance. Use issubclass(type(obj), LocalProxy) to check if an object 
+    - LocalProxy matches the current Python data model special methods,
+      including all r-ops, in-place ops, and async. __class__ is proxied, so
+      the proxy will look like the object in more cases, including
+      isinstance. Use issubclass(type(obj), LocalProxy) to check if an object
       is actually a proxy. #1754
     - Local uses ContextVar on Python 3.7+ instead of threading.local. #1778
-    - request.values does not include form for GET requests (even though GET 
-      bodies are undefined). This prevents bad caching proxies from caching 
+    - request.values does not include form for GET requests (even though GET
+      bodies are undefined). This prevents bad caching proxies from caching
       form data instead of query strings. #2037
-    - The development server adds the underlying socket to environ as 
-      werkzeug.socket. This is non-standard and specific to the dev server, 
-      other servers may expose this under their own key. It is useful for 
+    - The development server adds the underlying socket to environ as
+      werkzeug.socket. This is non-standard and specific to the dev server,
+      other servers may expose this under their own key. It is useful for
       handling a WebSocket upgrade request. #2052
     - URL matching assumes websocket=True mode for WebSocket upgrade requests. #2052
     - Updated UserAgentParser to handle more cases. #1971
     - werzeug.DechunkedInput.readinto will not read beyond the size of the buffer. #2021
     - Fix connection reset when exceeding max content size. #2051
-    - pbkdf2_hex, pbkdf2_bin, and safe_str_cmp are deprecated. hashlib and 
+    - pbkdf2_hex, pbkdf2_bin, and safe_str_cmp are deprecated. hashlib and
       hmac provide equivalents. #2083
     - invalidate_cached_property is deprecated. Use del obj.name instead. #2084
     - Href is deprecated. Use werkzeug.routing instead. #2085
-    - Request.disable_data_descriptor is deprecated. Create the request with 
+    - Request.disable_data_descriptor is deprecated. Create the request with
       shallow=True instead. #2085
     - HTTPException.wrap is deprecated. Create a subclass manually instead. #2085
 
@@ -1260,7 +1270,7 @@ Mon Jun 22 14:22:45 UTC 2015 - tbechtold@suse.com
      object (pull request ``#583``).
    - The ``qop`` parameter for ``WWW-Authenticate`` headers is now always quoted,
      as required by RFC 2617 (issue ``#633``).
-   - Fix bug in ``werkzeug.contrib.cache.SimpleCache`` with Python 3 where add/set 
+   - Fix bug in ``werkzeug.contrib.cache.SimpleCache`` with Python 3 where add/set
      may throw an exception when pruning old entries from the cache (pull request
      ``#651``).
 
