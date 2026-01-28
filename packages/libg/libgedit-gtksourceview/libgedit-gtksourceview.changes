@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Mon Jan 26 09:00:06 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 299.6.0:
+  + Completion framework:
+    - The GtkSourceCompletion class no longer implements the
+      GtkBuildable interface.
+    - GtkSourceCompletionProposal: various improvements.
+    - GtkSourceCompletionItem:
+      . Various improvements.
+      . Remove all the properties.
+  + Various gardening tasks:
+    - Move back almost all typedefs from gtksourcetypes.h to the
+      corresponding headers, with the goal to keep in
+      gtksourcetypes.h only what is strictly necessary.
+    - Convert #include guards to #pragma once with the guardonce
+      utility:
+    - Add missing G_BEGIN_DECLS/G_END_DECLS pairs.
+    - Add missing G_GNUC_CONST annotation for get_type() functions.
+    - Have a LICENSES directory, to better follow the REUSE way of
+      applying licenses
+    - Reduce the padding for future expansion in public Class
+      structs, the API/ABI is anyway no longer guaranteed to be
+      stable.
+  + Updated translations
+- Changes from version 299.6.alpha2:
+  + File loading and saving:
+    - Small bug fix in GtkSourceFile.
+    - GtkSourceBufferOutputStream private class:
+      . Start to refactor it.
+      . Extract the try_convert() function out of the class and
+        re-implement it with GtkSourceIconv.
+    - GtkSourceIconv:
+      . Add the feed_discard_output() function.
+      . Write unit tests.
+    - GtkSourceFileLoader:
+      . Add max-size property.
+      . Improve the unit tests.
+  + GtkSourceView class:
+    - Improve the API documentation.
+    - Remove GtkBuildable interface implementation.
+  + Other:
+    - Docs: improve the CSS for the docs that is manually written
+      in HTML.
+- Bump sover to 4, following upstream changes. This results in the
+  shared library package being renamed from
+  libgedit-gtksourceview-300-3 to libgedit-gtksourceview-300-4.
+
+-------------------------------------------------------------------
+Mon Sep  8 06:36:21 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 299.6.alpha1:
+  + GtkSourceIter:
+    - Make some gtk_source_iter_*() functions public.
+    - Move the single tepl_iter_*() function as a public gtk_source_iter_*().
+    - Write more unit tests.
+  + File loading and saving:
+   - GtkSourceEncoding, GtkSourceFile, GtkSourceFileLoader and
+     GtkSourceFileSaver are maintained again.
+   - Create the "Low-Level File Loading and Saving" category in the
+     API docs, and add GtkSourceIconv and GtkSourceInputStream
+   - Rework GtkSourceEncoding.
+   - Start to rework GtkSourceFile.
+   - Rework GtkSourceFileLoader (modernize the code and use
+     GtkSourceInputStream internally).
+   - Code organization: create the file-loading-and-saving/ subdir.
+  + GtkSourceView class: Small improvements to both the API docs
+    and the implementation.
+  + Tools: Some small changes/improvements to the 'list-langs' and
+    'uncrustify' tools.
+  + Updated translations
+
+-------------------------------------------------------------------
 Thu Apr 17 08:33:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 299.5.0:
