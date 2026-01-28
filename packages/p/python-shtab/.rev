@@ -15,4 +15,19 @@
     <comment></comment>
     <requestid>1280826</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>20a2b21a8fc3991c2eea3b2d1cd7060d</srcmd5>
+    <version>1.8.0</version>
+    <time>1769609215</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.8.0:
+  * fix `bash` error on optional `nargs=&quot;?&quot;`
+  * fix `zsh` duplicate default remainder &amp; swapped
+    one_or_more/remainder
+  * misc minor docs updates
+  * add own/example CLI file output
+  * misc framework updates
+  * test support for Python 3.14</comment>
+    <requestid>1329567</requestid>
+  </revision>
 </revisionlist>

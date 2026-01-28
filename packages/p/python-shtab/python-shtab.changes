@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 27 21:36:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.0:
+  * fix `bash` error on optional `nargs="?"`
+  * fix `zsh` duplicate default remainder & swapped
+    one_or_more/remainder
+  * misc minor docs updates
+  * add own/example CLI file output
+  * misc framework updates
+  * test support for Python 3.14
+
+-------------------------------------------------------------------
 Wed May 28 08:23:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.7.2
