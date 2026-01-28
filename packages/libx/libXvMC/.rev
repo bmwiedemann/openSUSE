@@ -138,4 +138,19 @@
 - switched to meson build system</comment>
     <requestid>1144234</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>763fece0dc1664248ca93c087f1ad909</srcmd5>
+    <version>1.0.15</version>
+    <time>1769609261</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0.15
+  * unifdef Lynx
+  * meson: Move protos from Requires.private to Requires in generated .pc files
+  * meson: raise minimum required meson version from 0.58 to 0.62
+  * meson: set MALLOC_0_RETURNS_NULL to match autoconf
+  * meson: prepend prefix to sysconfdir if it doesn't start with /
+  * gitlab CI: Use diffoscope to compare autoconf &amp; meson installs
+  * gitlab CI: drop the ci-fairy check-mr job</comment>
+    <requestid>1329322</requestid>
+  </revision>
 </revisionlist>

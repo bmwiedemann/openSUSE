@@ -1,7 +1,7 @@
 #
 # spec file for package libXvMC
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libXvMC
 %define lname	libXvMC1
-Version:        1.0.14
+Version:        1.0.15
 Release:        0
 Summary:        X-Video Motion Compensation library
 License:        MIT
