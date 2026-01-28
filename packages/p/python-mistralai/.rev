@@ -7,4 +7,12 @@
     <comment>New package python-mistralai</comment>
     <requestid>1328845</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a0fd4ec50d36296327f59d71b4991c8d</srcmd5>
+    <version>1.10.1</version>
+    <time>1769609575</time>
+    <user>anag_factory</user>
+    <comment>Update required for python-mistral-vibe 2.0.0.</comment>
+    <requestid>1329581</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           python-mistralai
-Version:        1.10.0
+Version:        1.10.1
 Release:        0
 Summary:        Python Client SDK for the Mistral AI API
 License:        Apache-2.0
@@ -25,7 +25,7 @@ URL:            https://github.com/mistralai/client-python
 Source0:        https://files.pythonhosted.org/packages/source/m/mistralai/mistralai-%{version}.tar.gz
 Source99:       python-mistralai.rpmlintrc
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-opentelemetry-api
@@ -85,7 +85,7 @@ use it.
 %pytest
 
 %files %{python_files}
-%doc README-PYPI.md
+%doc README.md
 %license LICENSE
 %{python_sitelib}/mistralai
 %{python_sitelib}/mistralai_gcp

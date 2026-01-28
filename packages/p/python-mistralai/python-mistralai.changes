@@ -1,45 +1,79 @@
 -------------------------------------------------------------------
+Tue Jan 27 22:50:22 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.10.1:
+  - mistral.beta.conversations.restart():
+     - request.inputs.[array].[] Changed Breaking
+     - response.outputs.[].[message_output_entry].content.[array].[]
+       Changed Breaking
+  - mistral.beta.conversations.start():
+     - request.inputs.[array].[] Changed Breaking
+     - response.outputs.[].[message_output_entry].content.[array].[]
+       Changed Breaking
+  - mistral.beta.conversations.append():
+     - request.inputs.[array].[] Changed Breaking
+     - response.outputs.[].[message_output_entry].content.[array].[]
+       Changed Breaking
+  - mistral.beta.conversations.get_history(): response.entries.[]
+    Changed Breaking
+  - mistral.beta.conversations.get_messages():
+    response.messages.[] Changed Breaking
+  - mistral.beta.agents.list(): request.metadata Changed
+  - mistral.beta.conversations.list(): request.metadata Changed
+  - mistral.batch.jobs.list(): response.data.[].outputs Added
+  - mistral.batch.jobs.create():
+     - request Changed
+     - response.outputs Added
+  - mistral.batch.jobs.get():
+     - request.inline Added
+     - response.outputs Added
+  - mistral.batch.jobs.cancel(): response.outputs Added
+  - mistral.embeddings.create(): request.metadata Added
+  - mistral.classifiers.moderate(): request.metadata Added
+  - mistral.classifiers.classify(): request.metadata Added
+
+-------------------------------------------------------------------
 Wed Jan 14 13:18:56 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 1.10.0:
-  - mistral.beta.libraries.create(): response.owner_id ⚠️
-  - mistral.beta.libraries.documents.get(): response ⚠️
+  - mistral.beta.libraries.create(): response.owner_id
+  - mistral.beta.libraries.documents.get(): response
   - mistral.models.list():
         response.data.[].[base].capabilities
-        error.status[422] Removed Breaking ⚠️
+        error.status[422] Removed Breaking
   - mistral.files.list():
         request.include_total Added
-        response.total ⚠️
+        response.total
   - mistral.beta.conversations.start():
-        request ⚠️
-        response.outputs.[].[tool_execution_entry].name ⚠️
+        request
+        response.outputs.[].[tool_execution_entry].name
   - mistral.beta.libraries.accesses.delete():
         request.org_id
-        response.share_with_uuid ⚠️
+        response.share_with_uuid
   - mistral.beta.libraries.accesses.update_or_create():
         request.org_id
-        response.share_with_uuid ⚠️
+        response.share_with_uuid
      - mistral.beta.conversations.append():
-        request.inputs.[array].[].[tool_execution_entry].name ⚠️
-        response.outputs.[].[tool_execution_entry].name ⚠️
+        request.inputs.[array].[].[tool_execution_entry].name
+        response.outputs.[].[tool_execution_entry].name
      - mistral.beta.libraries.accesses.list():
-       response.data.[].share_with_uuid ⚠️
+       response.data.[].share_with_uuid
      - mistral.beta.conversations.restart():
-        request ⚠️
-        response.outputs.[].[tool_execution_entry].name ⚠️
+        request
+        response.outputs.[].[tool_execution_entry].name
      - mistral.beta.libraries.documents.update():
         request.attributes Added
-        response ⚠️
-     - mistral.beta.libraries.documents.upload(): response ⚠️
+        response
+     - mistral.beta.libraries.documents.upload(): response
      - mistral.beta.libraries.documents.list():
         request.filters_attributes Added
-        response.data.[] ⚠️
-     - mistral.beta.libraries.update(): response.owner_id ⚠️
-     - mistral.beta.libraries.delete(): response.owner_id ⚠️
-     - mistral.beta.libraries.get(): response.owner_id ⚠️
+        response.data.[]
+     - mistral.beta.libraries.update(): response.owner_id
+     - mistral.beta.libraries.delete(): response.owner_id
+     - mistral.beta.libraries.get(): response.owner_id
      - mistral.beta.conversations.get_history():
-       response.entries.[].[tool_execution_entry].name ⚠️
-     - mistral.beta.libraries.list(): response.data.[].owner_id ⚠️
+       response.entries.[].[tool_execution_entry].name
+     - mistral.beta.libraries.list(): response.data.[].owner_id
      - mistral.models.retrieve(): response.[base].capabilities
       
      - mistral.agents.complete(): request.metadata Added
