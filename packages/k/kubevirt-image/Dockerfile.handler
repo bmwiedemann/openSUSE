@@ -17,7 +17,7 @@
 #!ExclusiveArch: x86_64
 #!BuildTag: opensuse/virt-handler:%%kubevirt_ver%%-%RELEASE%
 #!BuildTag: opensuse/virt-handler:%%kubevirt_ver%%
-#!BuildTag: opensuse/virt-handler:1.6
+#!BuildTag: opensuse/virt-handler:1.7
 #!BuildTag: opensuse/virt-handler:latest
 #!BcntSyncTag: kubevirt-image
 
@@ -31,7 +31,7 @@ RUN set -euo pipefail; \
 # sanity check that the version from the tag is equal to the version of kubevirt-virt-handler that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' kubevirt-virt-handler | \
-    cut -d '.' -f -3)" = "1.6.3" ]
+    cut -d '.' -f -3)" = "1.7.0" ]
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
