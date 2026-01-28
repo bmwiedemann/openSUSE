@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 24 04:42:24 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Fix systemd service hardening
+
+-------------------------------------------------------------------
 Tue Jul 29 07:19:02 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
 
 - Allow enabling the service via `systemctl enable tftp` to create

@@ -376,4 +376,12 @@
   the tftp.socket symlink [bsc#1215520, bsc#1246141]</comment>
     <requestid>1296245</requestid>
   </revision>
+  <revision rev="49" vrev="30">
+    <srcmd5>f0532e9097fec06879453ba9898aadab</srcmd5>
+    <version>5.2</version>
+    <time>1769609281</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1329343</requestid>
+  </revision>
 </revisionlist>

@@ -10,9 +10,6 @@ ExecStart=/usr/sbin/in.tftpd -u $TFTP_USER -s $TFTP_OPTIONS $TFTP_DIRECTORY
 StandardInput=socket
 PrivateDevices=yes
 
-[Install]
-Also=tftp.socket
-
 # added automatically, for details please see
 # https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 ProtectSystem=full
@@ -24,3 +21,6 @@ ProtectKernelLogs=true
 ProtectControlGroups=true
 RestrictRealtime=true
 # end of automatic additions 
+
+[Install]
+Also=tftp.socket
