@@ -17,7 +17,7 @@
 
 
 Name:           falcoctl
-Version:        0.12.1
+Version:        0.12.2
 Release:        0
 Summary:        CLI / Administrative tooling for Falco
 License:        Apache-2.0
