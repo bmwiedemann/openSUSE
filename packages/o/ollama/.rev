@@ -680,4 +680,15 @@ because we don't need git-web and the other stuff here (forwarded request 125417
   * An error will now return when embeddings return NaN or -Inf</comment>
     <requestid>1328568</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>bb413e34d8a704cda296feda96748e0e</srcmd5>
+    <version>0.15.2</version>
+    <time>1769705163</time>
+    <user>anag_factory</user>
+    <comment>- Updated to version 0.15.2:
+- Updated to version 0.15.1:
+- Updated to version 0.15.0:
+- Updated to version 0.14.3:</comment>
+    <requestid>1329736</requestid>
+  </revision>
 </revisionlist>
