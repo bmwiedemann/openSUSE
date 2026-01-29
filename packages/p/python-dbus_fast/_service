@@ -1,12 +1,12 @@
 <services>
   <service name="tar_scm" mode="manual">
-    <param name="versionformat">2.24.4</param>
+    <param name="versionformat">3.1.2</param>
     <param name="url">https://github.com/bluetooth-devices/dbus-fast.git</param>
     <param name="filename">python-dbus_fast</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
-    <param name="exclude">.*</param>
-    <param name="revision">2419d07</param>
+    <param name="exclude">git</param>
+    <param name="revision">b19f299</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="compression">xz</param>

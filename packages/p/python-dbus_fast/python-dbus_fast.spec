@@ -1,7 +1,7 @@
 #
 # spec file for package python-dbus_fast
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %{?sle15_python_module_pythons}
 
 Name:           %{pname}%{?psuffix}
-Version:        2.24.4
+Version:        3.1.2
 Release:        0
 Summary:        Python library for DBus
 License:        MIT
@@ -45,10 +45,14 @@ BuildRequires:  %{python_module setuptools}
 
 %if %{with test}
 BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module covdefaults}
 BuildRequires:  %{python_module gobject}
 BuildRequires:  %{python_module pycairo}
 BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-codspeed < 5.0.0}
+BuildRequires:  %{python_module pytest-codspeed >= 3.1.1}
+BuildRequires:  %{python_module pytest-cov < 8.0.0}
+BuildRequires:  %{python_module pytest-cov >= 3.0.0}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  dbus-1
