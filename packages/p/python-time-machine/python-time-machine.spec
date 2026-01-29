@@ -1,7 +1,7 @@
 #
 # spec file for package python-time-machine
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-time-machine
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Travel through time in your tests
 License:        MIT
@@ -37,6 +37,7 @@ Requires:       python-tokenize-rt
 Requires:       timezone
 # SECTION tests
 BuildRequires:  %{python_module backports.zoneinfo if %python-base < 3.9}
+BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module tokenize-rt}

@@ -192,4 +192,37 @@
     <comment></comment>
     <requestid>1327286</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d1983f8c6d340a618d12b8b7d1e5cb7b</srcmd5>
+    <version>3.2.0</version>
+    <time>1769705050</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.2.0:
+  * Add :attr:`time_machine.naive_mode` to control how time-
+    machine interprets naive datetimes. The default mode is
+    MIXED, which preserves existing behaviour: naive datetime
+    objects and date objects are interpreted as UTC, while naive
+    datetime strings are interpreted as local time. Three
+    alternative modes are available:  UTC: naive datetimes are
+    always interpreted as UTC. LOCAL: naive datetimes are
+    interpreted as local time, matching Python's default
+    semantics, and freezegun. ERROR: naive datetimes raise a
+    RuntimeError, ensuring your tests are isolated from the
+    current timezone.   Note It’s recommended you use LOCAL or
+    ERROR to avoid confusion around naive datetimes.  PR #591.
+    Thanks to Paolo Melchiorre for review. Thanks to PhML,
+    Stefaan Lippens, Matthieu Rigal, Nikita Demir, Steve Mavens,
+    Andy Freeland, and Paul Ganssle for their input on Issue
+    #257.
+  * UTC: naive datetimes are always interpreted as UTC.
+  * LOCAL: naive datetimes are interpreted as local time,
+    matching Python's default semantics, and freezegun.
+  * ERROR: naive datetimes raise a RuntimeError, ensuring your
+    tests are isolated from the current timezone.
+  * Raise RuntimeError when attempting to start time travelling
+    if freezegun is active. This change should help avoid
+    surprises when migrating complex test suites from freezegun
+    to time-machine. PR #590.</comment>
+    <requestid>1329666</requestid>
+  </revision>
 </revisionlist>
