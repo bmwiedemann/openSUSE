@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Jan 27 15:47:34 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 4.5+39.g1aa6e5de:
+  * fix compilation errors with GCC 16 (bsc#1256973)
+  * load md_mod before creating array (bsc#1257330)
+
+-------------------------------------------------------------------
+Tue Jan 20 21:15:35 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 4.5+33.g9560967f (bsc#1257009):
+
+- Upstream feature additions in 4.5:
+  * Support --logical-block-size in --create
+  * Remove --freeze-reshape logic in reshape
+  * Create array with sync del gendisk mode
+  * Re-enable mdadm --monitor ... for /dev/mdX
+  * Don't stop array after creating it during assemble
+  * Allow RAID0 to be created with v0.90 metadata
+  * Optimize DDF header search for widely used RAID controllers
+
+  Upstream bug fixes from 4.5:
+  * Moves memory management into Assemble to avoid null pointer dereference
+  * Wait a while before removing a member in Incremental
+  * Fix memory leaks
+  * Support non-absolute name during monitor scan
+  * Enable udev block for Incremental/Assemble to avoid race condition
+  * Don't set badblock flag when adding a new disk
+  * Fix metadata corruption when managing new imsm array
+  * Do not start reshape before switchroot
+
+-------------------------------------------------------------------
 Mon Dec  8 10:29:07 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 4.4+31.g541b40d3:
