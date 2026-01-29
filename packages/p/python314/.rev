@@ -2728,4 +2728,20 @@
     dynamic scenarios. Patch by Jelle Zijlstra.</comment>
     <requestid>1325465</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>4e22152cc8c669376b0e05327a40a15a</srcmd5>
+    <version>3.14.2</version>
+    <time>1769709566</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2024-6923-follow-up-EOL-email-headers.patch which is
+  a follow-up to the previous fix of CVE-2024-6923 further
+  encoding EOL possibly hidden in email headers (bsc#1257181).
+- Add CVE-2025-11468-email-hdr-fold-comment.patch preserving
+  parens when folding comments in email headers (bsc#1257029,
+  CVE-2025-11468).
+
+      Petr Viktorin in gh-121650.; CVE-2024-6923, bsc#1228780,
+      bsc#1257181)</comment>
+    <requestid>1329832</requestid>
+  </revision>
 </revisionlist>

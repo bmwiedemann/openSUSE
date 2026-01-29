@@ -224,7 +224,14 @@ Patch41:        bsc1243155-sphinx-non-determinism.patch
 Patch44:        gh138131-exclude-pycache-from-digest.patch
 # PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
 Patch45:        gh139257-Support-docutils-0.22.patch
-#### Python 3.14 DEVELOPMENT PATCHES
+# PATCH-FIX-UPSTREAM CVE-2024-6923-follow-up-EOL-email-headers.patch bsc#1257181 mcepl@suse.com
+# Encode newlines in headers when using ByteGenerator
+# patch from gh#python/cpython#144125
+Patch46:        CVE-2024-6923-follow-up-EOL-email-headers.patch
+# PATCH-FIX-UPSTREAM CVE-2025-11468-email-hdr-fold-comment.patch bsc#1257029 mcepl@suse.com
+# Email preserve parens when folding comments
+Patch47:        CVE-2025-11468-email-hdr-fold-comment.patch
+#### Python 3.14 END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes

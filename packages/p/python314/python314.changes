@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 29 12:58:15 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2024-6923-follow-up-EOL-email-headers.patch which is
+  a follow-up to the previous fix of CVE-2024-6923 further
+  encoding EOL possibly hidden in email headers (bsc#1257181).
+- Add CVE-2025-11468-email-hdr-fold-comment.patch preserving
+  parens when folding comments in email headers (bsc#1257029,
+  CVE-2025-11468).
+
+-------------------------------------------------------------------
 Thu Dec 11 17:37:09 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 * Update to 3.14.2:
@@ -4672,7 +4682,8 @@ Sat Sep  7 15:36:03 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
       now refuse to serialize (write) headers
       that are unsafely folded or delimited; see
       verify_generated_headers. (Contributed by Bas Bloemsaat and
-      Petr Viktorin in gh-121650.; CVE-2024-6923, bsc#1228780)
+      Petr Viktorin in gh-121650.; CVE-2024-6923, bsc#1228780,
+      bsc#1257181)
     - gh-121723: Make logging.config.dictConfig() accept any
       object implementing the Queue public API. See the queue
       configuration section for details. Patch by Bénédikt Tran.
