@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 28 21:09:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.6.2 (bsc#1257385, CVE-2026-24688):
+  * Detect cyclic references when retrieving outlines
+
+-------------------------------------------------------------------
 Mon Jan 26 08:06:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.6.1:

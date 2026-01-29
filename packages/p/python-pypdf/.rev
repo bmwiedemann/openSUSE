@@ -140,4 +140,13 @@
   * Handle missing font bounding boxes gracefully</comment>
     <requestid>1329149</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4b25f0971119c34be033fe16ff868c1b</srcmd5>
+    <version>6.6.2</version>
+    <time>1769705158</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.6.2 (bsc#1257385, CVE-2026-24688):
+  * Detect cyclic references when retrieving outlines</comment>
+    <requestid>1329730</requestid>
+  </revision>
 </revisionlist>
