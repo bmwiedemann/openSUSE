@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-appconfiguration
-Version:        1.7.2
+Version:        1.8.0
 Release:        0
 Summary:        Microsoft App Configuration Data Library for Python
 License:        MIT

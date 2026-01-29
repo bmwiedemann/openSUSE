@@ -167,4 +167,15 @@
 - Update Requires from setup.py (forwarded request 1312701 from glaubitz)</comment>
     <requestid>1312827</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d0844aa7c3df2a3d5eec59582997a804</srcmd5>
+    <version>1.8.0</version>
+    <time>1769705141</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.8.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1329622 from glaubitz)</comment>
+    <requestid>1329703</requestid>
+  </revision>
 </revisionlist>
