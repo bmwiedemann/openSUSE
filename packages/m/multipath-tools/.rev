@@ -2178,4 +2178,29 @@ by an upstream reviewed commit. (forwarded request 1109432 from mwilck)</comment
     <comment>- Remove %ghost entry for /run/multipath from spec file (jsc#PED-14758)</comment>
     <requestid>1328926</requestid>
   </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>91d7278164d97feff5e6593fb4a80dde</srcmd5>
+    <version>0.14.1+208+suse.d08f5475</version>
+    <time>1769705049</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.14.1+208+suse.d08f5475:
+  * kpartx: fix segfault when operating on regular files
+    (bsc#1257244, bsc#1257153)
+  * multipathd: print path offline message even without a checker
+    (bsc#1254094)
+  * multipathd: make &quot;multipathd show status&quot; busy checker better
+  * multipathd: finish initalization of paths added while offline
+  * multipathd: don't add removed/partial paths to new maps
+- Update to version 0.14.1+208+suse.d08f5475:
+  * kpartx: fix segfault when operating on regular files
+    (bsc#1257244, bsc#1257153)
+  * multipathd: print path offline message even without a checker
+    (bsc#1254094)
+  * multipathd: make &quot;multipathd show status&quot; busy checker better
+  * multipathd: finish initalization of paths added while offline
+  * multipathd: don't add removed/partial paths to new maps
+
+    `-fno-strict-aliasing`. (gh#opensvc/multipath-tools#130, bsc#1255285)</comment>
+    <requestid>1329631</requestid>
+  </revision>
 </revisionlist>
