@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Wed Jan 28 09:23:56 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.166.0
+  * Support for message fanout with filtering using Consumer Groups in the Queue service
+  * Support for model selection on Agent and RAG/SQL Tool in the OCI Generative AI Agent service
+  * Support for new rolling restart option for autonomous databases in the Database service
+  * Support for importing external Certificate Authority hierarchies with
+    two new Certificate Authority types in the Certificates service
+  * Support for specifying Certificate Authority name and path constraints
+    with new Issuance Rules in the Certificates service
+  * Support for Management Appliance in the Oracle Cloud VMware Provisioning service
+  * Support for creating and updating load balancer configuration
+    for a cluster in the OpenSearch service
+  * Support for more processor families when selecting clusters
+    in the OCI Streaming with Apache Kafka service
+  * Support for compute cluster in instance pool and instance configuration in the Compute service
+  * Support for AI Data Platform, Oracle Managed Kubernetes, and Oracle
+    Kubernetes Engine in the Data Intelligence Foundation service
+  * Support for exporting backup images to customer Object Storage buckets
+    and for canceling ongoing export operations in the MySQL HeatWave service
+  * Model was renamed from `UpdateComputeHostDetails` to `UpdateComputeHostsDetails`
+    in the Compute service
+- from version 2.165.1
+  * Support for the Private Service Access (PSA) service
+  * Support for ApiKey in the Generative AI service
+  * Support for Cohere v2 APIs for Chat, Embed and Rerank endpoints
+    in the Generative AI Inference service
+  * Support for new generic chat request parameters in the Generative AI inference service
+  * Support for summarized thinking traces in Generative AI inference service
+  * Support for importing Transportable Tablespace in the Database service
+  * Support for old Execution window to reference the new Execution window in the Database service
+  * Support for the PARTIAL_SUCCESS lifecycle state and COMPLETE and FAILED
+    patching state in maintenance run summary in the Database service
+  * Support for the CANCELED_BY_OPS lifecycle substate in execution action
+    summary in the Database service
+  * Support for adding new scheduled action types for Exadata Fleet Update service
+    (FPPCS) requirement in the Database service
+  * Support for skiping datapatch and closed PDBs and applying datapatch options
+    in ExaCS and ExaCC in the Database service
+  * Support for updating the wallet for the specified Autonomous AI Database in the Database service
+  * Support for database connection bundle and Service-Owned Certificates in DB
+    Cloud Databases in the Database service
+  * Support for AWS KMS in Autonomous Dedicated Database in the Database service
+  * Support for Flexible Domain Group Resourcing in the OCI Internet of Things (OCI IoT) service
+- from version 2.165.0
+  * Support for Point-In-Time Recovery (PITR) as iRestore using timestamps in the Database service
+  * Support for selecting a maintenance window when enabling dedicated storage
+    on a Resource Pool leader in the Database service
+  * Support for pausing and resuming maintenance patching in the Database service
+  * Support for providing the OCID of the standby local ADG Resource Pool leader when
+    enabling local ADG on a Resource Pool with dedicated storage in the Database service
+  * Support for Security Attributes in the DevOps Deploy Service
+  * Support for platform configuration soft links with new optional parameters
+    in the Fleet Application Management service
+  * Support for Database Console operations in the MySQL HeatWave service
+  * The models `PullRequestChangeSummaryMetrics`,`PullRequestFileChangeCollection`
+    and `PullRequestFileChangeSummary` were removed from the DevOps Service.
+- from version 2.164.2
+  * Support for OCI Batch service
+  * Support for fetching mapped attributes in the Identity Domains service
+  * Support for Oracle Integration Cloud (OIC) resource as a member in the Disaster Recovery service
+  * Support for model explorer for model deployments in the Data Science service
+  * Support for configuring backend network security groups at cluster level in the Kubernetes Engine service
+  * Support for IPv6 for iSCSI volume attachment in the Compute service
+  * Support for firmware pinning using host groups in the Compute service
+  * Support for creating Access Control Lists (ACLs) for Oracle Integration
+    Cloud (OIC) Design Time in the Integration Cloud service
+  * Support for disabling and deleting existing Oracle Process Automation (OPA)
+    instances attached to a Gen3 Integration instance in the Integration Cloud service
+  * Support for sending Oracle Integration Cloud (OIC) activity streams
+    to OCI Logging Analytics in the Integration Cloud service
+  * Support for enabling disaster recovery of existing instances in the Integration Cloud service
+- from version 2.164.1
+  * Support for listing elastic pool cost savings in the Database service
+  * Support for OpenAI GPT-OSS model in the Generative AI Inference service
+  * Support for distributed tracing via opc-request-id
+- Update file list to fix Python imports for unvendoring
+
+-------------------------------------------------------------------
 Thu Dec  4 12:07:27 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.164.0

@@ -1,7 +1,7 @@
 #
 # spec file for package python-oci-sdk
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without python2
 %{?sle15_python_module_pythons}
 Name:           python-oci-sdk
-Version:        2.164.0
+Version:        2.166.0
 Release:        0
 Summary:        Oracle Cloud Infrastructure Python SDK
 License:        Apache-2.0 OR UPL-1.0
@@ -85,6 +85,7 @@ rm -rf src/oci/_vendor/
 # Fix includes
 find . -name "*.py" -exec sed -i 's/from oci._vendor //' \{\} +
 sed -i 's/from \._vendor //' src/oci/*.py
+sed -i 's/from \._vendor\./from /' src/oci/*.py
 sed -i 's/ oci._vendor.jwt as//' src/oci/auth/*.py
 sed -i 's/oci\._vendor\.//' src/oci/*.py src/oci/auth/*.py src/oci/auth/signers/*.py src/oci/retry/*.py src/oci/object_storage/transfer/internal/*.py tests/*.py
 sed -i 's/from . import vcr_mods//' tests/test_config_container.py
