@@ -313,4 +313,23 @@
     <comment>Update to 49.0.1 (forwarded request 1306117 from dimstar)</comment>
     <requestid>1306427</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>46284ddb8e7b2dd65a64bb2ef7595a4f</srcmd5>
+    <version>49.1.1</version>
+    <time>1769705100</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.1.1:
+  + Update outdated screenshot URLs
+- Changes from version 49.1.0:
+  + Implement pause menu with 'Resume' and 'Quit' buttons
+  + Add Escape keyboard shortcut to pause game
+  + Pause game when main window is obscured
+  + Pause game when dialogs and menus are visible
+  + Don't allow pausing completed games
+  + Don't show confirmation dialog for layout change after
+    completing game
+  + Fix text entry not always receiving focus in Scores dialog
+  + Updated translations. (forwarded request 1329506 from iznogood)</comment>
+    <requestid>1329619</requestid>
+  </revision>
 </revisionlist>

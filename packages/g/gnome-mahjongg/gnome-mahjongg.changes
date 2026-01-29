@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 27 13:54:36 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.1.1:
+  + Update outdated screenshot URLs
+- Changes from version 49.1.0:
+  + Implement pause menu with 'Resume' and 'Quit' buttons
+  + Add Escape keyboard shortcut to pause game
+  + Pause game when main window is obscured
+  + Pause game when dialogs and menus are visible
+  + Don't allow pausing completed games
+  + Don't show confirmation dialog for layout change after
+    completing game
+  + Fix text entry not always receiving focus in Scores dialog
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Sep 20 11:26:34 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0.1:
