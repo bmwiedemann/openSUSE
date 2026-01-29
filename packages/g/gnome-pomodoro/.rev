@@ -443,4 +443,14 @@ doesn't work anyway. (forwarded request 796279 from develop7)</comment>
   * Updated German translation</comment>
     <requestid>1307859</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>dc579597dc1716f5ff31f5ee66d56587</srcmd5>
+    <version>0.28.1</version>
+    <time>1769705102</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.28.1:
+  * Added Tamil translation
+  * Added Hebrew translation (forwarded request 1329556 from jubalh)</comment>
+    <requestid>1329621</requestid>
+  </revision>
 </revisionlist>
