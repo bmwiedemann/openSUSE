@@ -25,7 +25,7 @@
 
 %define upstream_name gcemetadata
 Name:           python-gcemetadata
-Version:        1.0.4
+Version:        1.1.0
 Release:        0
 Summary:        Python module for collecting instance metadata from GCE
 License:        GPL-3.0-or-later

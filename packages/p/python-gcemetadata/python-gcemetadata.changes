@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 28 19:19:51 UTC 2026 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to version 1.1.0
+  + Add licenses option in identity command.
+
+-------------------------------------------------------------------
 Tue Apr  8 20:18:43 UTC 2025 - Robert Schweikert <rjschwei@suse.com>
 
 - Switch te SLE 15 build setup to also use a macro instead of referencing
