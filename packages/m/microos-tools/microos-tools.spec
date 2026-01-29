@@ -1,7 +1,7 @@
 #
 # spec file for package microos-tools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           microos-tools
-Version:        4.0+git19
+Version:        4.0+git21
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
@@ -54,6 +54,27 @@ Summary:        Tools to develop MicroOS
 
 %description -n microos-devel-tools
 This package contains tools to make developing of MicroOS easier.
+
+%package -n zypp-no-recommends
+Summary:        Disable recommends of libzypp by default
+
+%description -n zypp-no-recommends
+This package installs a zypp.conf snippet to disable Recommends.
+
+%package -n zypp-excludedocs
+Summary:        Exclude installation of docs by libzypp
+
+%description -n zypp-excludedocs
+This package installs a zypp.conf snippet to enable excludedocs.
+
+%package -n zypp-no-multiversion
+Summary:        Don't install multiple packages in parallel
+
+%description -n zypp-no-multiversion
+This package installs a zypp.conf snippet to disable multiversion
+settings. This is normally used to install the kernel in different
+versions at the same time, but not necessary with snapshots or
+transactional-update.
 
 %prep
 %autosetup -p1
@@ -140,5 +161,20 @@ This package contains tools to make developing of MicroOS easier.
 %{_sbindir}/rpm-sortbysize
 %{_sbindir}/rpmorphan
 %{_sbindir}/sysext-add-debug
+
+%files -n zypp-no-recommends
+%dir %{_prefix}/etc/zypp
+%dir %{_prefix}/etc/zypp/zypp.conf.d
+%{_prefix}/etc/zypp/zypp.conf.d/no-recommends.conf
+
+%files -n zypp-excludedocs
+%dir %{_prefix}/etc/zypp
+%dir %{_prefix}/etc/zypp/zypp.conf.d
+%{_prefix}/etc/zypp/zypp.conf.d/excludedocs.conf
+
+%files -n zypp-no-multiversion
+%dir %{_prefix}/etc/zypp
+%dir %{_prefix}/etc/zypp/zypp.conf.d
+%{_prefix}/etc/zypp/zypp.conf.d/no-multiversion.conf
 
 %changelog

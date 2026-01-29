@@ -464,4 +464,14 @@
   * Use single rpmtrans with libzypp by default</comment>
     <requestid>1295493</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>ff815b513116bf9b0a7872561f419b2d</srcmd5>
+    <version>4.0+git21</version>
+    <time>1769705086</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.0+git21:
+  * Add zypp-no-multiversion sub-package
+  * Add config snippets for zypp.conf</comment>
+    <requestid>1329645</requestid>
+  </revision>
 </revisionlist>
