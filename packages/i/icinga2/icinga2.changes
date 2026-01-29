@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 29 15:21:18 UTC 2026 - ecsos <ecsos@opensuse.org> - 2.15.2
+
+- Update to 2.15.2
+  * Security
+    - CVE-2026-24413: Fix permissions of %ProgramData%\icinga2\var on Windows.
+    - SELinux: Fix policy to allow logrotate to execute the icinga2 binary in order to send SIGUSR1 for log rotation. #10643
+    - SELinux: Fix policy to allow icinga2 to send SIGTERM to nagios plugins processes on timeout. #10694
+  * Other Changes
+    - doc: Update Windows development docs to use Visual Studio 2022 instead of 2019. #10695
+    - Windows: Update to OpenSSL 3.0.19. #10706
+
+-------------------------------------------------------------------
 Fri Oct 17 10:45:56 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.15.1
