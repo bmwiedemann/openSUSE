@@ -1,7 +1,7 @@
 #
 # spec file for package gpredict
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,20 @@
 
 
 Name:           gpredict
-Version:        2.2.1
+Version:        2.4
 Release:        0
 Summary:        Realtime satellite tracking and orbit prediction application
 License:        GPL-2.0-only
 Group:          Productivity/Hamradio/Other
-URL:            http://gpredict.oz9aec.net/
+URL:            https://gpredict.oz9aec.net/
 Source:         https://github.com/csete/gpredict/releases/download/v%{version}/gpredict-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM gpredict-goocanvas-3 -- very loosly inspired by https://github.com/csete/gpredict/commit/86fb71.patch#/
-Patch0:         gpredict-goocanvas3.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(glib-2.0) >= 2.32
+BuildRequires:  pkgconfig(glib-2.0) >= 2.40
 BuildRequires:  pkgconfig(goocanvas-3.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libcurl) >= 7.19
@@ -54,27 +51,27 @@ satellite, and provide you with detailed information about each pass.
 %autosetup -p1
 
 %build
-autoreconf -fiv
-export CFLAGS="%optflags -fcommon"
-%configure \
-    --disable-silent-rules
-make %{?_smp_mflags}
+export CFLAGS="%{optflags} -fcommon"
+%configure
+%make_build
 
 %install
 %make_install
 %find_lang %{name}
-%suse_update_desktop_file -c gpredict Gpredict "Satellite tracking program" gpredict gpredict-icon "Network;HamRadio"
 %fdupes -s %{buildroot}
 
 %files
-%doc AUTHORS COPYING ChangeLog NEWS README
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README
 %{_bindir}/gpredict
 %{_datadir}/applications/gpredict.desktop
 %{_datadir}/gpredict/
-%{_datadir}/pixmaps/gpredict-icon.png
 %{_datadir}/pixmaps/gpredict/
-%{_mandir}/man1/gpredict.1%{ext_man}
+%{_datadir}/icons/hicolor/scalable/apps/gpredict.svg
+%{_datadir}/metainfo/dk.oz9aec.Gpredict.metainfo.xml
+%{_mandir}/man1/gpredict.1%{?ext_man}
 
 %files lang -f %{name}.lang
+%license COPYING
 
 %changelog
