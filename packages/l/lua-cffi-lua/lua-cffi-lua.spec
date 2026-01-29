@@ -18,7 +18,20 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name cffi-lua
-Version:        0.2.3+git.1748465608.9f2acc9
+%bcond_with compat53
+%if "%{flavor}" == "lua53"
+%bcond_without compat53
+%endif
+%if "%{flavor}" == "lua54"
+%bcond_without compat53
+%endif
+%if "%{flavor}" == "lua55"
+%bcond_without compat53
+%endif
+%if "%{flavor}" == "luajit"
+%bcond_without compat53
+%endif
+Version:        0.2.3+git.1769216057.4c6197f
 Release:        0
 Summary:        A portable C FFI for Lua 5.1+
 License:        MIT
@@ -31,18 +44,17 @@ Patch0:         0001-Corrects-1st-example-in-introduction.md.patch
 # PATCH-FIX-UPSTREAM 0002-docs-fixed-the-second-example-in-introduction.md.patch mcepl@suse.com
 # fix second typo in introduction.md
 Patch1:         0002-docs-fixed-the-second-example-in-introduction.md.patch
-# PATCH-FIX-UPSTREAM remove-bogus-luajit.patch gh#q66/cffi-lua#63 mcepl@suse.com
-# fix tests for LuaJIT
-Patch2:         remove-bogus-luajit.patch
 BuildRequires:  %{flavor}-devel
-BuildRequires:  %{flavor}-compat-5.3
 BuildRequires:  lua-macros
 BuildRequires:  meson
 BuildRequires:  c++_compiler
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libffi)
 Requires:       %{flavor}
+%if %{with compat53}
+BuildRequires:  %{flavor}-compat-5.3
 Requires: 	%{flavor}-compat-5.3
+%endif
 # gh#q66/cffi-lua#59
 ExcludeArch:    %{ix86} armv6l armv6hl armv7l armv7hl
 %lua_provides

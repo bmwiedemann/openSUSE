@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jan 24 12:41:30 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.2.3+git.1769216057.4c6197f:
+  * add 5.5 support
+- Remove lua55-build.patch, which is now superflouous.
+- Remove, now upstreamed, remove-bogus-luajit.patch.
+
+-------------------------------------------------------------------
+Fri Jan 23 22:14:09 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.2.3+git.1760984966.1a8c220:
+  * tests: remove bogus code making tests fail under luajit
+- Add lua55-build.patch fixing the implementation of __close
+  function (gh#q66/cffi-lua!64).
+
+-------------------------------------------------------------------
+Fri Jan 23 21:40:40 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Enable lua55 build.
+
+-------------------------------------------------------------------
 Fri Oct 24 14:47:14 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch off building lua51 build of the package.
