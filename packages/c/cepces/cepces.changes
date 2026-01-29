@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 16 18:22:41 UTC 2026 - David Mulder <david.mulder@suse.com>
+
+- Update to version 0.3.16:
+  * Bump version to 0.3.16
+  * feat(cepces-submit): Add an --install mode
+  * Bump version to 0.3.15
+  * fix(certmonger): Skip authentication for operations that don't need it
+  * Bump version to 0.3.14
+  * fix(github-ci): Fix branch pattern
+  * fix(certmonger): Handle None result in Submit operation
+  * fix(core): Handle nil policies and CAs in Service properties
+  * feat(scripts): Add a script to verify version numbers are in sync
+  * fix(xml:binding): Handle xsi:nil="true" in XMLElementList
+
+-------------------------------------------------------------------
 Thu Jun 13 10:37:44 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - remove dependency on /usr/bin/python3 (bsc#1212476)

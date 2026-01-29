@@ -1,7 +1,7 @@
 #
 # spec file for package cepces
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,14 @@
 #
 
 
+%define pythons %{primary_python}
+
 %global app_name cepces
 %global selinux_variants targeted
 %global logdir %{_localstatedir}/log/%{app_name}
 
 Name:           %{app_name}
-Version:        0.3.9
+Version:        0.3.16
 Release:        0%{?dist}
 Summary:        Certificate Enrollment through CEP/CES
 
@@ -44,15 +46,19 @@ It currently only operates through certmonger.
 %package -n python3-%{app_name}
 Summary:        Python part of %{app_name}
 
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-cryptography >= 1.2
 BuildRequires:  python3-devel
+BuildRequires:  python3-pip
+BuildRequires:  python3-pytest
 BuildRequires:  python3-requests
-BuildRequires:  python3-requests-gssapi
+BuildRequires:  python3-requests-gssapi >= 1.4.0
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 
 Requires:       python3-cryptography >= 1.2
 Requires:       python3-requests
-Requires:       python3-requests-gssapi
+Requires:       python3-requests-gssapi >= 1.4.0
 
 %description -n python3-%{app_name}
 %{app_name} is an application for enrolling certificates through CEP and CES.
@@ -85,7 +91,7 @@ SELinux support for %{app_name}
 %setup -q -n %{app_name}-%{version}
 
 %build
-%py3_build
+%pyproject_wheel
 
 %if 0%{?sle_version} > 150600 || 0%{?suse_version} > 1500
 # Build the SELinux module(s).
@@ -96,7 +102,7 @@ done
 %endif
 
 %install
-%py3_install
+%pyproject_install
 
 install -d -m 0700 %{buildroot}%{logdir}
 
@@ -171,9 +177,7 @@ if [ $1 -eq 0 ]; then
 fi
 
 %check
-pushd tests
-%{__python3} ./runner.py
-popd
+%pytest
 
 %files
 %doc README.rst
@@ -185,7 +189,7 @@ popd
 %files -n python3-%{app_name}
 %license LICENSE
 %{python3_sitelib}/%{app_name}
-%{python3_sitelib}/%{app_name}-%{version}-py*.egg-info
+%{python3_sitelib}/%{app_name}-%{version}.dist-info
 
 %files certmonger
 %dir %{_libexecdir}/certmonger
