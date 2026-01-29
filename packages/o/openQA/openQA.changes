@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 28 15:07:49 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1769603414.6c0fa72e:
+  * Handle links on test_log on missing git repo extension
+  * test: Consider `Test.pm` fully covered
+  * test: Extend tests for showing dependency graph
+  * fix: Merge parallel clusters correctly for displaying dependency tree
+
+-------------------------------------------------------------------
 Tue Jan 27 23:08:10 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1769550212.662a4f95:
