@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 27 20:00:13 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add CVE fixes:
+  + glib2-CVE-2026-1484.patch (bsc#1257355 CVE-2026-1484
+    glgo#GNOME/glib!4979).
+  + glib2-CVE-2026-1485.patch (bsc#1257354 CVE-2026-1485
+    glgo#GNOME/glib!4981).
+  + glib2-CVE-2026-1489.patch (bsc#1257353 CVE-2026-1489
+    glgo#GNOME/glib!4984).
+
+-------------------------------------------------------------------
 Wed Jan 21 16:28:18 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Add glib2-CVE-2026-0988.patch: fix a potential integer overflow
