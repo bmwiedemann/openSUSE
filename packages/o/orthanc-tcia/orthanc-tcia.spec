@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc-tcia
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2021-2024 Dr. Axel Braun <DocB@opensuse.org>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2021-2026 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           orthanc-tcia
 Summary:        TCIA plugin for Orthanc
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        1.1
+Version:        1.3
 Release:        0
 URL:            http://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancTcia-%{version}.tar.gz
