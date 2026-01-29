@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 22 09:29:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2026.1.19.0.42.31:
+  * https://github.com/astropy/astropy-iers-data/compare/v0.2026.1.12.0.42.13...v0.2026.1.19.0.42.31
+
+-------------------------------------------------------------------
 Thu Jan  1 16:19:32 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
-- Update to 0.2025.12.29.0.42.34  
+- Update to 0.2025.12.29.0.42.34
   * Update IERS Earth rotation and leap second tables
 - Switch build backend to hatchling
 

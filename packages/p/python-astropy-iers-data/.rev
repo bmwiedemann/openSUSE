@@ -149,4 +149,12 @@
 - Switch build backend to hatchling</comment>
     <requestid>1325026</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fa2d73501f31ab9e522aa8cb9796c478</srcmd5>
+    <version>0.2026.1.19.0.42.31</version>
+    <time>1769705225</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1329798</requestid>
+  </revision>
 </revisionlist>
