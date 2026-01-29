@@ -19,4 +19,15 @@
   which we don't want (at least not now) (boo#1254887)</comment>
     <requestid>1322657</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fdf6a3c30fef63cd787131d3fa686c88</srcmd5>
+    <version>590.48.01</version>
+    <time>1769705145</time>
+    <user>anag_factory</user>
+    <comment>- update to G07 version 590.48.01
+
+- let G07 packages supplement via packageand(G06) so G06 packages
+  get uninstalled if G07 packages get installed</comment>
+    <requestid>1329720</requestid>
+  </revision>
 </revisionlist>

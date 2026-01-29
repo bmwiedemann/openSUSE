@@ -16,14 +16,14 @@
 #
 
 
-%define gfx_aarch64_version 590.44.01
+%define gfx_aarch64_version 590.48.01
 
 %ifarch aarch64
 %define gfx_version %gfx_aarch64_version
 %else
-%define gfx_version 590.44.01
+%define gfx_version 590.48.01
 %endif
-%define cuda_version 590.44.01
+%define cuda_version 590.48.01
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 

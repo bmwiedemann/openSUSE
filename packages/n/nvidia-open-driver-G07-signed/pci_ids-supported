@@ -14,7 +14,7 @@
 0x1E91 NVIDIA GeForce RTX 2070 Super with Max-Q Design
 0x1E93 NVIDIA GeForce RTX 2080 Super with Max-Q Design
 0x1EB0 Quadro RTX 5000
-0x1EB1 EIZO Quadro MED-XN92
+0x1EB1 Quadro RTX 4000
 0x1EB5 Quadro RTX 5000 with Max-Q Design
 0x1EB6 Quadro RTX 4000 with Max-Q Design
 0x1EB8 Tesla T4
@@ -248,7 +248,7 @@
 0x2B87 NVIDIA GeForce RTX 5090 D
 0x2B8C NVIDIA GeForce RTX 5090 D v2
 0x2BB1 NVIDIA RTX PRO 6000 Blackwell Workstation Edition
-0x2BB3 NVIDIA RTX PRO 5000 Blackwell
+0x2BB3 NVIDIA RTX PRO 5000 72GB Blackwell
 0x2BB4 NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition
 0x2BB5 NVIDIA RTX PRO 6000 Blackwell Server Edition
 0x2BB9 NVIDIA RTX 6000D
@@ -280,6 +280,7 @@
 0x2DB9 NVIDIA RTX PRO 500 Blackwell Generation Laptop GPU
 0x2DD8 NVIDIA GeForce RTX 5050 Laptop GPU
 0x2DF9 NVIDIA RTX PRO 500 Blackwell Embedded GPU
+0x2E12 NVIDIA GB10
 0x2F04 NVIDIA GeForce RTX 5070
 0x2F18 NVIDIA GeForce RTX 5070 Ti Laptop GPU
 0x2F38 NVIDIA RTX PRO 3000 Blackwell Generation Laptop GPU

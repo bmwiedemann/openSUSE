@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 23 05:40:37 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to G07 version 590.48.01
+
+-------------------------------------------------------------------
+Mon Dec 15 13:34:11 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- let G07 packages supplement via packageand(G06) so G06 packages
+  get uninstalled if G07 packages get installed
+ 
+-------------------------------------------------------------------
 Fri Dec 12 17:47:48 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - preamble: let G07 KMPs conflict with G06 KMPs due to file conflicts
