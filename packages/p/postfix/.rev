@@ -2580,4 +2580,20 @@ successfully tested on Tumbleweed x86_64</comment>
   from /sbin/postalias to /usr/sbin/postalias</comment>
     <requestid>1328660</requestid>
   </revision>
+  <revision rev="262" vrev="4">
+    <srcmd5>e1d95c213cfc257ae4b0eb9d1eead253</srcmd5>
+    <version>3.10.7</version>
+    <time>1769705032</time>
+    <user>anag_factory</user>
+    <comment>- (bsc#1257199) [SELinux] postalias denied - fatal: open database /etc/aliases.lmdb: Permission denied
+  Add proposed ExecStartPre.
+- (jsc#PED-14859) Fix packages for Immutable Mode - postfix
+  Pack /var/spool/postfix/* /var/lib/postfix using tmpfiles.d
+
+- (bsc#1257199) [SELinux] postalias denied - fatal: open database /etc/aliases.lmdb: Permission denied
+  Add proposed ExecStartPre.
+- (jsc#PED-14859) Fix packages for Immutable Mode - postfix
+  Pack /var/spool/postfix/* /var/lib/postfix using tmpfiles.d</comment>
+    <requestid>1329599</requestid>
+  </revision>
 </revisionlist>
