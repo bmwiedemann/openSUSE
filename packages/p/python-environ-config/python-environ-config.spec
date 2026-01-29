@@ -1,7 +1,7 @@
 #
 # spec file for package python-environ-config
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,17 @@
 
 
 Name:           python-environ-config
-Version:        23.2.0
+Version:        24.1.0
 Release:        0
 Summary:        Boilerplate-free configuration with env variables
 License:        MIT
 URL:            https://github.com/hynek/environ_config
 Source:         https://files.pythonhosted.org/packages/source/e/environ-config/environ_config-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#hynek/environ-config#76
-Patch0:         support-moto-5.patch
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 17.4.0
@@ -40,7 +38,6 @@ BuildRequires:  %{python_module attrs >= 17.4.0}
 BuildRequires:  %{python_module boto3}
 BuildRequires:  %{python_module moto}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module urllib3 < 2}
 # /SECTION
 %python_subpackages
 

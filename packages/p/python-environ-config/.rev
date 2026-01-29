@@ -40,4 +40,19 @@
   * Support moto 5.0 changes.</comment>
     <requestid>1146301</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>627795a042fc435c60a680392ee07dd7</srcmd5>
+    <version>24.1.0</version>
+    <time>1769705177</time>
+    <user>anag_factory</user>
+    <comment>- Update to 24.1.0:
+  * Added
+    + Support for Python 3.13.
+    + Support for Moto 5. #76
+  * Removed
+    + Support for Python 3.7.
+- Remove urllib3 BuildRequires.
+- Drop patch support-moto-5.patch, merged upstream.</comment>
+    <requestid>1329749</requestid>
+  </revision>
 </revisionlist>

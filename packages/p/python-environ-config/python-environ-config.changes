@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 29 03:47:53 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 24.1.0:
+  * Added
+    + Support for Python 3.13.
+    + Support for Moto 5. #76
+  * Removed
+    + Support for Python 3.7.
+- Remove urllib3 BuildRequires.
+- Drop patch support-moto-5.patch, merged upstream.
+
+-------------------------------------------------------------------
 Tue Feb 13 05:40:17 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-moto-5.patch:
