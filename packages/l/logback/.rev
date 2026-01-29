@@ -87,4 +87,12 @@
     <comment>1.2.13 + bsc#1250715, CVE-2025-11226</comment>
     <requestid>1308795</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>196c05ce1d3bb6f8be1317bad078bc43</srcmd5>
+    <version>1.2.13</version>
+    <time>1769705178</time>
+    <user>anag_factory</user>
+    <comment>bsc#1257094, CVE-2026-1225</comment>
+    <requestid>1329765</requestid>
+  </revision>
 </revisionlist>

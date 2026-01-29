@@ -27,6 +27,7 @@ Patch0:         logback-1.2.3-getCallerClass.patch
 Patch1:         logback-CVE-2024-12801-CVE-2024-12798.patch
 Patch2:         filtering.patch
 Patch3:         logback-CVE-2025-11226.patch
+Patch4:         logback-CVE-2026-1225.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(javax.mail:mail)

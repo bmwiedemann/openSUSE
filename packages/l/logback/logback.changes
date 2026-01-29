@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 29 06:56:29 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * logback-CVE-2026-1225.patch
+    + backport of upstream fix for bsc#1257094, CVE-2026-1225: ACE
+      vulnerability in configuration file
+
+-------------------------------------------------------------------
 Fri Oct  3 06:52:14 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.2.13
