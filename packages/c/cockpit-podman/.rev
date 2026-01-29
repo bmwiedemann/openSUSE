@@ -296,4 +296,17 @@
     - Sortable Images table</comment>
     <requestid>1318207</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b3b05fbefd00b8ee1276660459f4279a</srcmd5>
+    <version>119.1</version>
+    <time>1769705048</time>
+    <user>anag_factory</user>
+    <comment>- Update dependencies for bsc#1257324
+- Update to 119.1
+  * 119
+    - Bug fixes and translation updates
+  * 118
+    - Bug fixes and translation updates</comment>
+    <requestid>1329624</requestid>
+  </revision>
 </revisionlist>
