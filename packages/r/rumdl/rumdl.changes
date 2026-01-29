@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jan 29 06:41:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.3:
+  * Added
+    - MD073: Table of Contents validation rule
+      - Validates TOC entries match actual document headings
+      - Detects missing, extra, misordered, and misnamed TOC
+        entries
+      - Supports multiple anchor styles: GitHub, GitLab,
+        Markdownlint, VSCode
+      - Configurable: toc-heading, anchor-style, case-sensitive
+  * Fixed
+    - MD064: Recognize sentence endings after markdown inline
+      elements (#345)
+      - allow-sentence-double-space now works with sentences ending
+        in inline code, emphasis, bold, strikethrough, and other
+        markdown elements
+      - Example: `code`.  Next sentence no longer flags a false
+        positive
+
+-------------------------------------------------------------------
 Wed Jan 28 06:18:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.2:
