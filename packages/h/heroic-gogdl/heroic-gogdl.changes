@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 29 08:33:33 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Use upstream GitHub release tarball as Source0  
+
+-------------------------------------------------------------------
+Tue Jan 27 22:05:27 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 1.2.0
+  * [Feat] Add arm64 build by @Etaash-mathamsetty in #60
+  * Update workflows by @CommandMC in #62
+  * Remove explicit max-parallel value in workflow file by @CommandMC in #63
+  * Auth token not always required by @khanism in #66
+  * Refactor xdelta to C module by @imLinguin in #65 
+
+-------------------------------------------------------------------
 Sun Nov 23 00:32:03 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Add architecture-specific ExclusiveArch for x86_64 and aarch64 (PyInstaller requires ELF loader) 

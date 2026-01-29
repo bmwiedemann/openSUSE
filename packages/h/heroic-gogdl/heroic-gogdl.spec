@@ -16,12 +16,12 @@
 #
 
 Name:           heroic-gogdl
-Version:        1.1.2
+Version:        1.2.0
 Release:        0
 Summary:        GOG download module for Heroic Games Launcher
 License:        GPL-3.0-only
 URL:            https://github.com/Heroic-Games-Launcher/heroic-gogdl
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://github.com/Heroic-Games-Launcher/heroic-gogdl/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  python313-PyInstaller
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -37,7 +37,7 @@ ExclusiveArch: x86_64
 GOG Downloading module for Heroic Games Launcher
 
 %prep
-%setup -q
+%setup -q -n heroic-gogdl-%{version}
 
 %build
 pyinstaller --onefile --name gogdl gogdl/cli.py

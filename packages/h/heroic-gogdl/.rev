@@ -8,4 +8,13 @@
 This is also a dependency for heroic-games-launcher package.</comment>
     <requestid>1320364</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>00a6a352f3df4fa4f1354b1d77d1ac1a</srcmd5>
+    <version>1.2.0</version>
+    <time>1769705203</time>
+    <user>anag_factory</user>
+    <comment>Reverted revision to fix duplicated changes.
+Fix URL to use upstream GitHub release tarball as Source0</comment>
+    <requestid>1329779</requestid>
+  </revision>
 </revisionlist>
