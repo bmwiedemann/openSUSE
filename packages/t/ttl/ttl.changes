@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Wed Jan 28 07:40:23 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.15.1:
+  * Validate replay speed, update keybinding docs, fix PMTUD
+    example.
+  * Add jumbo frame support: raise packet size ceiling to 9216
+    bytes (#28).
+  * Add 'p' as alias for Space to pause/resume replay.
+  * Add animated replay mode (#9).
+
+-------------------------------------------------------------------
+Mon Jan 26 16:21:18 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.14.1:
+  * Fix hop detail modal truncating content.
+  * Add FreeBSD support (experimental).
+  * Fix target list lockup and improve number key behavior (#19).
+  * Remove preference for IPv4 when resolving target.
+
+-------------------------------------------------------------------
+Sun Jan 25 17:48:09 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package for ttl, version 0.14.0

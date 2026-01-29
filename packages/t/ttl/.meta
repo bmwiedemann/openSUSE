@@ -1,0 +1,7 @@
+<package name="ttl" project="openSUSE:Factory">
+  <title>Modern traceroute/mtr-style TUI</title>
+  <description>ttl provides a live traceroute interface that can trace multiple targets,
+detect ECMP paths, run PMTUD, export JSON/CSV reports, and optionally
+enrich hop data with DNS, ASN, geolocation, and PeeringDB information.</description>
+  <url>https://github.com/lance0/ttl</url>
+</package>
