@@ -1,7 +1,7 @@
 #
 # spec file for package bat-extras
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Group:          Productivity/File utilities
 URL:            https://github.com/eth-p/bat-extras
 Source0:        https://github.com/eth-p/bat-extras/archive/v%{version}.tar.gz
 Source1:        https://github.com/eth-p/best/archive/%{testsuite_version}.tar.gz
-Patch0:         recreate-snapshots-with-bat-v0.25.0.patch
+Patch0:         recreate-snapshots-with-bat-v0.26.0.patch
 Requires:       bash
 Requires:       bat
 BuildRequires:  bat
@@ -62,6 +62,12 @@ install -Dm 0644 -t %{buildroot}%{_mandir}/man1 man/*
 %license LICENSE.md
 %{_mandir}/man1/*
 %doc README.md
-%{_bindir}/*
+%{_bindir}/bat-modules
+%{_bindir}/batdiff
+%{_bindir}/batgrep
+%{_bindir}/batman
+%{_bindir}/batpipe
+%{_bindir}/batwatch
+%{_bindir}/prettybat
 
 %changelog

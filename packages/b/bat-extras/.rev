@@ -81,4 +81,13 @@ Update to version v2024.08.24</comment>
     <comment></comment>
     <requestid>1241006</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>4650e5178c6e8549d4e5aed655ca81ab</srcmd5>
+    <version>2024.08.24</version>
+    <time>1769705161</time>
+    <user>anag_factory</user>
+    <comment>- Add recreate-snapshots-with-bat-v0.26.0.patch: Recreate test data with bat
+  v0.26.1. Superseedes recreate-snapshots-with-bat-v0.25.0.patch</comment>
+    <requestid>1329723</requestid>
+  </revision>
 </revisionlist>
