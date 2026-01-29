@@ -1,7 +1,7 @@
 #
 # spec file for package river
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,8 +33,8 @@ BuildRequires:  libevdev-devel
 BuildRequires:  libpixman-1-0-devel
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc >= 1.9.2
-BuildRequires:  zig = 0.15.1
-BuildRequires:  zig-rpm-macros = 0.15.1
+BuildRequires:  zig >= 0.15.1
+BuildRequires:  zig-rpm-macros >= 0.15.1
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1) >= 1.10

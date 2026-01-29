@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 28 11:24:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Be a bit less strict on the zig version: newer than 0.15.1 is
+  also fine.
+
+-------------------------------------------------------------------
 Tue Sep  2 12:47:41 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 0.3.12:
