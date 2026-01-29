@@ -1,7 +1,7 @@
 #
 # spec file for package libaec
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libaec
-Version:        1.1.4
+Version:        1.1.5
 Release:        0
 Summary:        Adaptive Entropy Coding library
 License:        BSD-2-Clause
@@ -94,10 +94,8 @@ SZIP library (http://www.hdfgroup.org/doc_resource/SZIP).
 %install
 %cmake_install
 
-%post -n libaec0 -p /sbin/ldconfig
-%post -n libsz2 -p /sbin/ldconfig
-%postun -n libaec0 -p /sbin/ldconfig
-%postun -n libsz2 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libaec0
+%ldconfig_scriptlets -n libsz2
 
 %files -n libaec0
 %license LICENSE.txt
