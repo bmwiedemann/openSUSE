@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-coverage-plugin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-django-coverage-plugin
-Version:        3.1.1
+Version:        3.2.0
 Release:        0
 Summary:        Django template coveragepy plugin
 License:        Apache-2.0
