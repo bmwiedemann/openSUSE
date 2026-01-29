@@ -55,4 +55,12 @@
     <comment>update to 4.1.0 (and fix version information in GUI)</comment>
     <requestid>1323593</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>07a6f6909e7f1dcba51354f0149fd8e0</srcmd5>
+    <version>5.0.0</version>
+    <time>1769705123</time>
+    <user>anag_factory</user>
+    <comment>update to 5.0.0</comment>
+    <requestid>1329671</requestid>
+  </revision>
 </revisionlist>

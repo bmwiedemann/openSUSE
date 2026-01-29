@@ -1,7 +1,7 @@
 #
 # spec file for package opencloud-server
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 %define executable_name opencloud-server
-%define web_assets_version v4.3.0
+%define web_assets_version v5.0.0
 
 Name:           opencloud-server
-Version:        4.1.0
+Version:        5.0.0
 Release:        0
 Summary:        Secure and private way to store, access, and share your files
 License:        Apache-2.0
@@ -35,7 +35,7 @@ Source12:       environment-file
 Source21:       system-user-%{name}.conf
 Source31:       Makefile
 Source32:       PACKAGING_README.md
-BuildRequires:  golang(API) >= 1.23
+BuildRequires:  go1.24 >= 1.24.6
 BuildRequires:  make
 BuildRequires:  pnpm
 BuildRequires:  ncurses-utils
