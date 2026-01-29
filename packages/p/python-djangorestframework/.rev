@@ -368,4 +368,12 @@
   - Add upstream pyproject.patch to modernize packaging</comment>
     <requestid>1308666</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>aa234d0f07eed872d9eb349c599b9cc9</srcmd5>
+    <version>3.16.1</version>
+    <time>1769705051</time>
+    <user>anag_factory</user>
+    <comment>add bugzilla entry</comment>
+    <requestid>1329788</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@ Wed Oct  1 09:01:44 UTC 2025 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Sat Jun 29 16:41:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
-- update to 3.15.2:
+- update to 3.15.2 (bsc#1227077, CVE-2024-21520):
   * Fix potential XSS vulnerability in browsable API. #9435
   * Revert "Ensure CursorPagination respects nulls in the ordering
     field". #9381
