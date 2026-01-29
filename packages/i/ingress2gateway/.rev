@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a98c57c6c6ef46beb13ee85635259119</srcmd5>
+    <version>0.5.0</version>
+    <time>1769705182</time>
+    <user>anag_factory</user>
+    <comment>new package ingress2gateway: convert Ingress resources to Gateway API resources</comment>
+    <requestid>1329751</requestid>
+  </revision>
+</revisionlist>

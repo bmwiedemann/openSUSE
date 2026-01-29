@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Tue Jan 20 15:23:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.0:
+  * Release/prepare 0.5.0 (#300) (#301)
+  * add changelog for release 0.5.0-rc1 (#252)
+  * Fix canary and create new dependencies in IR (#251)
+  * Upgrade gatewayapi to v1.4 (#248)
+  * Support kyaml output (#242)
+  * Fix OIDC authentication support (#245)
+  * Do not require a namespace when input-file is used (#241)
+  * add rikatz reviewers (#239)
+  * Update ingress2gateway reviewers (#237)
+  * Add NGINX provider support (#224)
+
+-------------------------------------------------------------------
+Tue Jan 20 15:22:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package ingress2gateway: convert Ingress resources to Gateway
+  API resources

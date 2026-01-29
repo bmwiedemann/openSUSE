@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/kubernetes-sigs/ingress2gateway.git</param>
+              <param name="changesrevision">ba50ad6ec5a9522d22ee6356412d5deb192d6458</param></service></servicedata>
