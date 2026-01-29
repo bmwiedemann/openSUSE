@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-auth-ldap
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-auth-ldap
-Version:        5.1.0
+Version:        5.3.0
 Release:        0
 Summary:        Django LDAP authentication backend
 License:        BSD-2-Clause

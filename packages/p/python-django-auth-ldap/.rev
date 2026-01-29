@@ -195,4 +195,12 @@
   * Test support for Python 3.13 by @francoisfreitag in #374</comment>
     <requestid>1248126</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>225ec1ec4036fa70356f6b8d6be5e77e</srcmd5>
+    <version>5.3.0</version>
+    <time>1769705219</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1329795</requestid>
+  </revision>
 </revisionlist>

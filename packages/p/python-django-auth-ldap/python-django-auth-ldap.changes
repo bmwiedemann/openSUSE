@@ -1,19 +1,32 @@
 -------------------------------------------------------------------
+Thu Jan 22 09:32:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.0:
+  * Add support for Python 3.14
+  * Add support for Django 6.0
+  * Drop support for Python 3.9
+  * Drop support for Django 5.1
+- update to 5.2.0:
+  * Filter empty Django group names when mirroring groups
+  * Increase log level from debug to info when
+    creating/populating a user
+
+-------------------------------------------------------------------
 Mon Feb 24 12:12:39 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 5.1.0:
   * Allow importing the backend without loading apps by @francoisfreitag in #382 (Closes #380)
   * Drop support for EOL Python 3.8 by @francoisfreitag in #383
 - 5.0.0:
-  * Breaking changes: 
+  * Breaking changes:
   An LDAPError during an LDAP search operation would cause the library
   to assume an empty result set.
-  
+
   When mirroring groups, only a portion of a user groups would be
   mirrored. Allowing them to proceed with authentication may then break
   application access controls, as membership to a group (imagine an
   exclude group) would be missing.
-  
+
   The library now systematically sends the ldap_error django signal. If
   an LDAPError occurs during an operation, the operation is aborted. In
   particular, when mirroring groups (LDAPUser._mirror_groups), an
@@ -115,7 +128,7 @@ Tue Aug 14 06:55:04 UTC 2018 - tchvatal@suse.com
 -------------------------------------------------------------------
 Tue Jan 23 10:47:15 UTC 2018 - mimi.vx@gmail.com
 
-- convert to singlespec 
+- convert to singlespec
 
 -------------------------------------------------------------------
 Thu Apr 23 06:54:50 UTC 2015 - mcihar@suse.cz
