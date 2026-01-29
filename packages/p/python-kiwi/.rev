@@ -3115,4 +3115,28 @@
     <comment>Broken live image boot: https://bugzilla.opensuse.org/show_bug.cgi?id=1257389</comment>
     <requestid>1329629</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>9d26b87fa2d43e153086b0eb63780a6c</srcmd5>
+    <version>10.2.38</version>
+    <time>1769705088</time>
+    <user>anag_factory</user>
+    <comment>- Bump version: 10.2.37 → 10.2.38
+
+- Fix booting non-encrypted live images
+  activate_luks returned true if the passed blockdev was not luks.
+
+- Fix pytest type hint issue
+  Running on pytest &lt; 7 causes an AttributeError:
+  module 'pytest' has no attribute 'Config'. Quoting
+  the type hint argument to be a string and accessing
+  the elements of pytestconfig via getattr() and a
+  default value workarounds the issue for older pytest
+  versions
+
+- Fix platform mock for kis builder unit testing
+
+- Fix s390 unit test
+  Forgot to mock the architecture properly. This commit fixes it</comment>
+    <requestid>1329679</requestid>
+  </revision>
 </revisionlist>
