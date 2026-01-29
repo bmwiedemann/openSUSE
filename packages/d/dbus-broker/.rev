@@ -151,4 +151,12 @@
     <comment>- Update to release 37</comment>
     <requestid>1290132</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>5208a3b982ac5150a4f3a5942ce82721</srcmd5>
+    <version>37</version>
+    <time>1769705026</time>
+    <user>anag_factory</user>
+    <comment>- dbus-broker should require dbus-1-common (bsc#1255655)</comment>
+    <requestid>1329585</requestid>
+  </revision>
 </revisionlist>

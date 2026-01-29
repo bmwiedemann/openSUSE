@@ -43,6 +43,7 @@ BuildRequires:  pkgconfig(libselinux) >= 3.2
 BuildRequires:  pkgconfig(libsystemd) >= 230
 BuildRequires:  pkgconfig(systemd) >= 230
 Requires(pre):  systemd >= 253.6
+Requires:       dbus-1-common
 Provides:       dbus-service
 Provides:       bundled(c-dvar) = 1+
 Provides:       bundled(c-ini) = 1+

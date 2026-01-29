@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 27 22:45:00 UTC 2026 - Simon Lees <sflees@suse.de>
+
+- dbus-broker should require dbus-1-common (bsc#1255655)
+
+-------------------------------------------------------------------
 Mon Jun 16 13:20:52 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 37
