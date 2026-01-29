@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 25 20:08:38 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 1.10.26
+  - PEAR 1.10.28
+    * don't use report_memleaks with 8.5+
+
+-------------------------------------------------------------------
 Sun Dec 14 20:56:13 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 1.10.25

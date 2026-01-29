@@ -85,4 +85,14 @@
     * Remove gzopen/gztell/gzseek shim (forwarded request 1322866 from adkorte)</comment>
     <requestid>1322916</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>92730d9c3d78245de74956f7a61b7444</srcmd5>
+    <version>1.10.26</version>
+    <time>1769705037</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.10.26
+  - PEAR 1.10.28
+    * don't use report_memleaks with 8.5+ (forwarded request 1329100 from adkorte)</comment>
+    <requestid>1329615</requestid>
+  </revision>
 </revisionlist>
