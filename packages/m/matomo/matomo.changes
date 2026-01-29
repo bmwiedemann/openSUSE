@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Jan 29 15:07:37 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.7.0
+
+- Update to 5.7.0
+  * AI Bot tracking
+    - #23725 Track AI Bots through our HTTP Tracking API
+    - #23870 Adds reporting around requests made by AI bots
+  * Privacy
+    - #23818 Remove MadMimi from Newsletter privacy note
+    - #23903 Fix issue for saving of preferences throwing errors and redirecting when logged in as anonymous user
+  * Core improvements
+    - #23743 Prevent logging tracking failure for obviously malformed idsite or token auth
+    - #23768 Fix and Improve period selection via keyboard navigation
+    - #23771 Allow to star and unstar stored segment
+    - #23783 Redirect to login page when session ends
+    - #23792 Segment selector: max out at 5-6, instead of throwing many errors in reporting interface
+    - #23800 Updates jQuery and jQuery-Mousewheel
+    - #23802 Change display to inline from inline-block for .table-action, #PG-4790
+    - #23809 Show success notification once a Goal has been created or updated
+    - #23815 Update html page title to have both the current active Segment as well as Menu Category and Subcategory
+    - #23827 Fix external theme that are using CSS custom props
+    - #23833 Fix language selection in demo website
+    - #23837 Fix possible archiving error “Column “referer_type” in WHERE is ambiguous – in plugin Referrers”
+    - #23844 Discard invalid campaign names in tracker parameters to avoid failures
+    - #23857 Add the option to include source maps to served files
+    - #23878 Add additional check for refresh to make sure they are in the app
+    - #23889 Manage Live API Model Offset / Count / timeframe split correctly and more memory efficient
+    - #23890 Fix invalid test by making provider method public
+    - #23891 Normalise 4xx responses for invalid plugins/actions/assets and quiet their logging
+    - #23899 Fix escaping in site selector tooltip
+    - #23902 Add archiving metrics code with timer
+    - #23913 Add drag and drop for selected reports
+    - #23939 Add helper text to promote the mediums in Scheduled reports
+    - #23940 Add event-controllable warning message to compliance policy descriptions
+    - #23959 Properly check idSite value when updating a segment
+    - #23968 Gate proxy scheme headers behind config
+    - #23970 Deprecate API.getSettings
+    - #23977 Fix DevicesDetection User-Agent double escaping
+    - #23983 Improve VisitFrequency API
+    - #23984 Improve marketplace loading speed
+    - #23987 Ensure regexes are handled correctly in excluded useragents
+
+-------------------------------------------------------------------
 Wed Dec 10 09:16:08 UTC 2025 - ecsos <ecsos@opensuse.org> - 5.6.2
 
 - Update to 5.6.2
