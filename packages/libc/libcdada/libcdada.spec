@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +20,7 @@
 
 %define sover 0
 Name:           libcdada
-Version:        0.6.1
+Version:        0.6.3
 Release:        0
 Summary:        Basic data structures in C (libstdc++ wrapper)
 License:        BSD-2-Clause
@@ -70,7 +71,7 @@ This package contains libraries and header files for developing
 applications that use libcdada.
 
 %prep
-%autosetup
+%autosetup -p1
 sed -i 's|#!%{_bindir}/env python3|#!%{_bindir}/python3|g' tools/cdada-gen
 
 %build
@@ -80,21 +81,22 @@ autoreconf -fiv
 
 %install
 %make_install
-rm -fv %{buildroot}/%{_libdir}/*.{a,la}
+find %{buildroot} -type f -name "*.a" -delete -print
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
 %make_build check
 
-%post   -n libcdada%{sover} -p /sbin/ldconfig
-%postun -n libcdada%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libcdada%{sover}
 
 %files -n libcdada%{sover}
 %license LICENSE
 %doc AUTHORS CHANGELOG.md README.md
 %doc doc/
-%{_libdir}/libcdada.so.%{sover}*
+%{_libdir}/libcdada.so.%{sover}{,.*}
 
 %files devel
+%license LICENSE
 %{_bindir}/cdada-gen
 %{_includedir}/cdada.h
 %{_includedir}/cdada

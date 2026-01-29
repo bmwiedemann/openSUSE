@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 28 19:46:51 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.6.3:
+  * fix build with GCC 16 boo#1256970
+- includes changes from 0.6.2:
+  * map: fix garbage in prev_val when key not in map for
+    cdada_map_insert_replace()
+
+-------------------------------------------------------------------
 Thu Oct  2 11:38:59 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Don't use valgrind in qemu emulation
