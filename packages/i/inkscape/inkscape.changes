@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 26 23:13:03 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with Poppler 26.01.00, add
+  Fix_Poppler_26_01_00_compat.patch
+
+-------------------------------------------------------------------
 Sat Jan 03 22:47:37 UTC 2026 - thod_@gmx.de
 
 - Update to version 1.4.3+git2.fcd0343856:

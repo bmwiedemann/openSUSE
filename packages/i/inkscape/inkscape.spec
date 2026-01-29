@@ -1,8 +1,7 @@
 #
 # spec file for package inkscape
 #
-# Copyright (c) 2026 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +27,8 @@ Source:         inkscape-%{version}.tar.zst
 # openSUSE palette file
 Source1:        openSUSE.gpl
 Source2:        inkscape-split-extensions-extra.py
+# PATCH-FIX-UPSTREAM -- rebased https://gitlab.com/inkscape/inkscape/-/commit/3a528728ebe3
+Patch0:         Fix_Poppler_26_01_00_compat.patch
 
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
