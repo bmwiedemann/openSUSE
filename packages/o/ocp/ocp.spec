@@ -17,7 +17,7 @@
 
 
 Name:           ocp
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        Open Cubic Player for MOD/S3M/XM/IT/MIDI music files
 # Code is GPL-2.0-or-later, Graphics and animations are CC-BY-3.0
@@ -54,6 +54,7 @@ BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(zlib)
+Requires:       curl
 Requires:       gnu-unifont-otf-fonts
 Provides:       opencubicplayer
 ### Bundled libs
