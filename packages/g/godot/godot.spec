@@ -29,7 +29,7 @@
 %define compiler_version_leap 13
 
 Name:           godot
-Version:        4.5.1
+Version:        4.6
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -48,11 +48,11 @@ BuildRequires:  gcc%{compiler_version_leap}
 BuildRequires:  gcc%{compiler_version_leap}-c++
 %endif
 # pkgconfig broken for freetype2 ?
-BuildRequires:  freetype2-devel >= 2.13
+BuildRequires:  freetype2-devel >= 2.14
 BuildRequires:  mbedtls-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
-BuildRequires:  scons > 4.5
+BuildRequires:  scons > 4.9.0
 BuildRequires:  wayland-devel
 BuildRequires:  yasm-devel
 BuildRequires:  pkgconfig(alsa)
@@ -129,64 +129,66 @@ Provides:       bundled(enet) = 1.3.18
 
 # Has custom changes to support seeking in zip archives
 # Should not be unbundled.
-Provides:       bundled(minizip) = 1.3.1
+Provides:       bundled(minizip) = 1.3.1.2
 Provides:       bundled(FastLZ)
 Provides:       bundled(FastNoiseLite)
 Provides:       bundled(JetBrainsMono_Regular)
 Provides:       bundled(RVO2-3D)
 Provides:       bundled(Tangent_Space_Normal_Maps)
-Provides:       bundled(accesskit) = 0.17.0
+Provides:       bundled(accesskit) = 0.18.0
 Provides:       bundled(amd-fsr) = 1.0.2
 Provides:       bundled(amd-fsr2) = 2.2.1
 Provides:       bundled(angle)
 Provides:       bundled(astcenc) = 5.3.0
-Provides:       bundled(basis_universal) = 1.60.0
+Provides:       bundled(basis_universal) = b1110111d4a93c7dd7de93ce3d9ed8fcdfd114f2
 Provides:       bundled(clipper2) = 1.5.4
 Provides:       bundled(cvtt)
 Provides:       bundled(d3d12ma) = 2.1.0
-Provides:       bundled(directx_headers) = 1.611.1
+Provides:       bundled(directx_headers) = 1.618.2
 Provides:       bundled(doctest) = 2.4.12
+Provides:       bundled(dr_libs) = 547c211a87a06a42bf62c1366616aa14b57dd429
 Provides:       bundled(etcpak) = 2.0
 Provides:       bundled(glad) = 2.0.4
 # same version for glslang, spirv-reflect, volk and vulkan needed
 Provides:       bundled(glslang) = sdk-1.3.283.0
 Provides:       bundled(google-droid-fonts)
-Provides:       bundled(grisu2)
+Provides:       bundled(grisu2) = 667d0ed3c77f55cbda2082b034168d69898d1f88
 # gdextension crash with unbundled harfbuzz or icu4c
 # https://github.com/godotengine/godot/issues/91401
-Provides:       bundled(harfbuzz) = 11.3.2
-Provides:       bundled(icu4c) = 77.1
+Provides:       bundled(harfbuzz) = 12.2.0
+Provides:       bundled(icu4c) = 78.1
 Provides:       bundled(ifaddrs-android)
-Provides:       bundled(jolt_physics) = 5.3.0
+Provides:       bundled(jolt_physics) = 5.4.0
 Provides:       bundled(libbacktrace)
-Provides:       bundled(libktx) = 4.4.0
-Provides:       bundled(manifold)
-Provides:       bundled(meshoptimizer) = 0.24
+Provides:       bundled(libktx) = 4.4.2
+Provides:       bundled(manifold) = 3.3.2
+Provides:       bundled(meshoptimizer) = 1.0
 Provides:       bundled(mingw-std-threads)
-Provides:       bundled(minimp3)
-Provides:       bundled(msdfgen) = 1.12.1
+Provides:       bundled(msdfgen) = 1.13
 Provides:       bundled(noto-sans-fonts)
 Provides:       bundled(nvapi) = R525
-Provides:       bundled(openxr) = 1.1.49
+Provides:       bundled(openxr) = 1.1.54
 Provides:       bundled(pcg)
 Provides:       bundled(polyclipping)
 Provides:       bundled(polypartition)
 Provides:       bundled(pvrtccompressor)
 Provides:       bundled(qoa)
+Provides:       bundled(re-spirv) = 5af3b606e6aaf11bae8dc7b5cd236c943e24865e
 Provides:       bundled(smaa)
 Provides:       bundled(smaz)
 Provides:       bundled(spirv-cross)
+Provides:       bundled(spirv-headers) = sdk-1.4.328.1
 Provides:       bundled(spirv-reflect) = sdk-1.3.283.0
 Provides:       bundled(stb)
 Provides:       bundled(swappy-frame-pacing)
-Provides:       bundled(thorvg) = 0.15.13
+Provides:       bundled(thorvg) = 0.15.16
 Provides:       bundled(tinyexr) = 1.0.12
 Provides:       bundled(ufbx) = 0.20.0
 Provides:       bundled(vhacd)
 Provides:       bundled(volk) = sdk-1.3.283.0
 Provides:       bundled(vulkan) = sdk-1.3.283.0
-Provides:       bundled(wayland) = 1.22.0
-Provides:       bundled(wayland-protocols) = 1.33
+Provides:       bundled(wayland) = 1.24.0
+Provides:       bundled(wayland-protocols) = 1.46
 Provides:       bundled(yuv2rgb)
 
 # Can be unbundled if packaged
@@ -203,12 +205,12 @@ Provides:       bundled(embree) = 4.4.0
 %if 0%{?suse_version} > 1600
 %else
 # see comments for freetype2, libpng and zlib Factory BuildRequires
-#Provides:       bundled(brotli) = 1.1.0
-#Provides:       bundled(freetype2) = 2.13.3
+#Provides:       bundled(brotli) = 1.2.0
+#Provides:       bundled(freetype2) = 2.14.1
 #Provides:       bundled(graphite) = 1.3.14
-#Provides:       bundled(libpng) = 1.6.48
+#Provides:       bundled(libpng) = 1.6.53
 #Provides:       bundled(libzstd) = 1.5.7
-#Provides:       bundled(zlib) = 1.3.1
+#Provides:       bundled(zlib) = 1.3.1.2
 %endif
 
 # Build currently fails on armv7l
@@ -228,7 +230,7 @@ Recommends:     ca-certificates-mozilla
 Suggests:       %{name}-bash-completion
 
 %description runner
-This package contains a godot-runner binary for the Linux X11 platform,
+This package contains a godot-runner binary for the Linux platform,
 which can be used to run any game developed with the Godot engine simply
 by pointing to the location of the game's data package.
 %endif
@@ -251,9 +253,6 @@ cp thirdparty/README.md thirdparty_README.md
 
 # actual doc location in openSUSE
 sed -i 's/\/usr\/share\/doc\/godot\//\/usr\/share\/doc\/packages\/godot\//' misc/dist/linux/godot.6
-
-# disarm shebang
-sed -i '1s/#!/##/' misc/dist/shell/godot.bash-completion
 
 # bash completion for sub package
 cp misc/dist/shell/godot.bash-completion misc/dist/shell/godot-runner
@@ -293,7 +292,7 @@ done
 # Keep empty certificates file needed as "source" by
 # function "make_certs_header" in core/core_builders.py
 mkdir -pv thirdparty/certs
-touch thirdparty/certs/ca-certificates.crt
+touch thirdparty/certs/ca-bundle.crt
 
 use_lto="full"
 use_sowrap="use_sowrap=no"

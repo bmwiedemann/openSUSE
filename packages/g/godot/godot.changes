@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jan 27 12:00:00 UTC 2026 - cunix@mail.de
+
+- Update to 4.6
+  * Inverse kinematics Framework
+  * libgodot possible
+  * Separated mouse and keyboard focus
+  * Movable floatable docks and panels
+  * New standard editor theme
+  * Jolt physics as default
+  * Unique Node IDs
+  * Decoupled Select and Transform modes
+  * Switch tabs on hover while dragging
+  * Custom keyboard shortcuts through EditorSettings
+  * Material debanding and improved HDR precision
+  * Automatically turn meshes into collision shapes
+  * Step Out button in script debugger
+  * Rotating scene tiles in TileMapLayer
+  * Wayland game embedding
+  * Core UNIX domain socket support
+  * SSE4.2 runtime check
+  * and much more: https://godotengine.github.io/godot-interactive-changelog/#4.6
+
+-------------------------------------------------------------------
 Thu Oct 30 12:00:00 UTC 2025 - cunix@mail.de
 
 - Update to 4.5.1
