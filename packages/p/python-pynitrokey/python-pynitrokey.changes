@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 26 06:59:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.11.3:
+  * chore(deps): pin hidapi to 0.14.0.post2 on linux by @LtdSauce
+    in #708
+  * nkpk: Add admin-app commands by @robin-nitrokey in #709
+  * Update urllib3 to v2.6.0 by @robin-nitrokey in #713
+  * nk3: Only allow factory-reset-app for opcard by @robin-nitrokey
+    in #714
+  * add RSA 3072 and 4096 for PIV by @n0xena in #715
+  * nkpk: Add support for firmware updates by @robin-nitrokey in
+    #710
+  * Add test command to NetHSM cli by @mmerklinger in #718
+  * Release v0.11.3 by @mmerklinger in #719
+
+-------------------------------------------------------------------
 Tue Nov 18 14:17:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.11.2:

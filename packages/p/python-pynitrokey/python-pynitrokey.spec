@@ -1,7 +1,7 @@
 #
 # spec file for package python-pynitrokey
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pynitrokey
-Version:        0.11.2
+Version:        0.11.3
 Release:        0
 Summary:        Python Library for Nitrokey devices
 License:        Apache-2.0 OR MIT
@@ -36,10 +36,10 @@ BuildRequires:  %{python_module click >= 8.2 with %python-click < 9}
 BuildRequires:  %{python_module cryptography >= 43 with %python-cryptography < 47}
 BuildRequires:  %{python_module fido2 >= 2 with %python-fido2 < 3}
 # https://github.com/Nitrokey/pynitrokey/issues/601
-BuildRequires:  %{python_module hidapi >= 0.14.0.post1 with %python-hidapi < 0.14.0.post4}
+BuildRequires:  %{python_module hidapi >= 0.14.0.post2 with %python-hidapi < 0.14.0.post3}
 BuildRequires:  %{python_module libusb1 >= 3 with %python-libusb1 < 4}
 BuildRequires:  %{python_module nethsm >= 2.0.1 with %python-nethsm < 3}
-BuildRequires:  %{python_module nitrokey >= 0.4.0 with %python-nitrokey < 0.5}
+BuildRequires:  %{python_module nitrokey >= 0.4.2 with %python-nitrokey < 0.5}
 BuildRequires:  %{python_module nkdfu >= 0.2 with %python-nkdfu < 0.3}
 BuildRequires:  %{python_module pyusb >= 1.2 with %python-pyusb < 2}
 BuildRequires:  %{python_module requests >= 2.16 with %python-requests < 3}
@@ -55,10 +55,10 @@ Requires:       (intelhex >= 2.3 with intelhex < 3)
 Requires:       (python-click >= 8.2  with python-click < 9)
 Requires:       (python-cryptography >= 43 with python-cryptography < 47)
 Requires:       (python-fido2 >= 2 with python-fido2 < 3)
-Requires:       (python-hidapi >= 0.14.0.post1 with python-hidapi < 0.14.0.post4)
+Requires:       (python-hidapi >= 0.14.0.post2 with python-hidapi < 0.14.0.post3)
 Requires:       (python-libusb1 >= 3 with python-libusb1 < 4)
 Requires:       (python-nethsm >= 2.0.1 with python-nethsm < 3)
-Requires:       (python-nitrokey >= 0.4.0 with python-nitrokey < 0.5)
+Requires:       (python-nitrokey >= 0.4.2 with python-nitrokey < 0.5)
 Requires:       (python-nkdfu >= 0.2 with python-nkdfu < 0.3)
 Requires:       (python-pyusb >= 1.2 with python-pyusb < 2)
 Requires:       (python-requests >= 2.16 with python-requests < 3)
