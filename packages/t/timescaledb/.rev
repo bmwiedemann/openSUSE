@@ -520,4 +520,12 @@ Stop storing build machine kernel version (boo#1101107)</comment>
     <comment>- Update to version 2.24.0</comment>
     <requestid>1320970</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>a56c671471ba4890e2e191a85660eae0</srcmd5>
+    <version>2.25.0</version>
+    <time>1769705208</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.25.0</comment>
+    <requestid>1329783</requestid>
+  </revision>
 </revisionlist>
