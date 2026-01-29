@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 27 17:07:54 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.5.17:
+  * agent: Fix stack buffer overflow when using gpgsm and KEM
+    (CVE-2026-24881, boo#1257358)
+  * tpm: Fix possible buffer overflow in PKDECRYPT
+    (CVE-2026-24882, boo#1257396)
+  * gpg: Fix possible NULL-deref with overlong signature packets
+    (CVE-2026-24883, boo#1257395)
+  * gpg: New export-option "keep-expired-subkeys"
+  * gpgsm: Make multiple search patterns work with keyboxd
+  * agent: Add accelerator keys for "Wrong" and "Correct"
+  * dirmngr: Help detection of bad keyserver configurations
+
+-------------------------------------------------------------------
 Tue Dec 30 09:10:46 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2.5.16:
