@@ -630,4 +630,17 @@ SPDX compliant license short name. MIT chosen as majority of files are under thi
   * xfig-3.2.6.dif</comment>
     <requestid>1235636</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>f52d1de809f886d33dff5f452ca1d129</srcmd5>
+    <version>3.2.9a</version>
+    <time>1769705233</time>
+    <user>anag_factory</user>
+    <comment>Remove the dependency on update-desktop-files (jsc#PED-15248)
+
+This revision removes the translations previously provided by the SUSE
+desktop translations project, but retains the subcategory added to the XDG
+desktop entry file.  Please refer to the changes file and the newly added
+patch to get additional information on this change.</comment>
+    <requestid>1329833</requestid>
+  </revision>
 </revisionlist>

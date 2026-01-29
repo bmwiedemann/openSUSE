@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 29 14:42:49 UTC 2026 - Jan Fooken <jan.fooken@suse.com>
+
+- Remove dependency on update-desktop-files (jsc#PED-15248):
+  * Drop unfit translations
+  * Add subcategory XDG desktop entry via patch
+    xfig-3.2.9a-update-xdg-desktop-entry.patch
+
+-------------------------------------------------------------------
 Tue Jan  7 13:34:13 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Update to xfig 3.2.9a

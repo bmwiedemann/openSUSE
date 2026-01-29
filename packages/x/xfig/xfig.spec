@@ -1,7 +1,7 @@
 #
 # spec file for package xfig
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ Patch0:         xfig-3.2.6.dif
 Patch5:         xfig.3.2.5b-null.dif
 Patch6:         xfig.3.2.5b-locale.dif
 Patch7:         xfig.3.2.5b-fixes.dif
+Patch8:         xfig-3.2.9a-update-xdg-desktop-entry.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -44,7 +45,6 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  netpbm
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(ijs)
 BuildRequires:  pkgconfig(libtiff-4)
@@ -97,6 +97,7 @@ set -x
 %patch -P5 -b .null
 %patch -P6 -b .locale
 %patch -P7 -b .fixes
+%patch -p1 -P8 -b .desktop-entry
 cp %{SOURCE1} .
 test ! -e Libraries/Examples/aircraft.fig || { echo forbidden file found 1>&2; exit 1; }
 
@@ -123,7 +124,6 @@ find -name '*.bak' -exec rm -vf '{}' \+
 mv %{buildroot}%{_mandir}/man1/xfig.1 %{buildroot}%{_mandir}/man1/xfig.1x
 gzip -9 %{buildroot}%{_mandir}/man1/xfig.1x
 %fdupes %{buildroot}
-%suse_update_desktop_file %{buildroot}%{_datadir}/applications/org.%name.%name.desktop VectorGraphics
 
 %files
 %defattr(-,root,root,755)

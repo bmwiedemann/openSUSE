@@ -1,0 +1,41 @@
+From: Jan Fooken <jan.fooken@suse.com>
+Date: 2026-01-29 15:22:36 +0100
+Subject: Port translations from SUSE desktop translations project
+References: jsc#PED-15248
+Upstream: no
+
+With the deprecation and removal of the update-desktop-files tool,
+translations previously provided by the tool are now supposed to be
+upstreamed or provided via other means.
+
+After evaluating the current state of the existing translations as well as
+the chance to upstream them, we decided to drop the translations and only
+patch the specialization of the category in the XDG desktop entry.
+
+We came to this conclusion after reviewing the fitness and accuracy of the
+translated strings.  A lot of them correspond to the wrong application or
+do not fit the reference.  Therefore, they do not reach the desired quality
+level for upstreaming.
+
+Furthermore, the upstream does not have any translations present in their
+source, so chances of getting existing translations of the desired quality
+level included into upstream's source are quite slim.
+
+For more information please refer to the following links:
+* https://en.opensuse.org/openSUSE:Update-desktop-files_deprecation
+* https://github.com/openSUSE/suse-desktop-translations
+---
+ org.xfig.xfig.desktop |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: xfig-3.2.9a/org.xfig.xfig.desktop
+===================================================================
+--- xfig-3.2.9a.orig/org.xfig.xfig.desktop
++++ xfig-3.2.9a/org.xfig.xfig.desktop
+@@ -7,5 +7,5 @@ Comment=Facility for Interactive Generat
+ Icon=xfig
+ Terminal=false
+ Type=Application
+-Categories=Graphics;
++Categories=Graphics;VectorGraphics;
+ Keywords=vector;graphics;figure;drawing;
