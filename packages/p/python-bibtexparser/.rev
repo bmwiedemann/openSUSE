@@ -95,4 +95,13 @@
   * Bugfix: Use raw strings to fix invalid escape</comment>
     <requestid>1234567</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>f2890ce3ae4b57e4c0f0f9c5cc3f539d</srcmd5>
+    <version>1.4.3</version>
+    <time>1769705172</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-new-pyparsing.patch:
+  * Avoid DeprecationWarning from pyparsing.</comment>
+    <requestid>1329742</requestid>
+  </revision>
 </revisionlist>

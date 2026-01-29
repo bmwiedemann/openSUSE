@@ -1,7 +1,7 @@
 #
 # spec file for package python-bibtexparser
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        Bibtex parser for python
 License:        BSD-3-Clause OR LGPL-3.0-only
 URL:            https://github.com/sciunto-org/python-bibtexparser
 Source:         https://github.com/sciunto-org/python-bibtexparser/archive/v%{version}.tar.gz#/python-bibtexparser-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#sciunto-org/python-bibtexparser#512
+Patch0:         support-new-pyparsing.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
