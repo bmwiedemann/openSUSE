@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 28 13:25:08 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.16.3
+  * Env var for keep-env when an exception occurs during environment
+    creation to enable debugging.
+  * Fix issue with self-referential dependencies not being recognized.
+  * Fix incomplete environments created when an exception occurs during
+    creation.
+  * Fix dependency-groups not working with when environment is not
+    marked as builder.
+  * Change Keyring to take expect repository URL instead of repository
+    name.
+- Drop python39 build requirement
+- Add shell.patch to fix visible regression with 1.16.3
+
+-------------------------------------------------------------------
 Fri Jan  2 17:06:04 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.16.2

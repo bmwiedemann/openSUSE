@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hatch%{psuffix}
-Version:        1.16.2
+Version:        1.16.3
 Release:        0
 Summary:        Modern, extensible Python project management
 License:        MIT
@@ -53,6 +53,8 @@ Source21:       https://files.pythonhosted.org/packages/py3/r/requests/requests-
 Source22:       https://files.pythonhosted.org/packages/py3/s/setuptools/setuptools-80.9.0-py3-none-any.whl
 Source23:       https://files.pythonhosted.org/packages/py3/t/trove_classifiers/trove_classifiers-2025.12.1.14-py3-none-any.whl
 Source24:       https://files.pythonhosted.org/packages/py3/u/urllib3/urllib3-2.6.2-py3-none-any.whl
+# PATCH-FIX-UPSTREAM https://github.com/pypa/hatch/pull/2165 keep_env TypeError
+Patch0:         shell.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch-vcs >= 0.3}
 BuildRequires:  %{python_module hatchling >= 1.27}
@@ -95,12 +97,8 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module trustme}
 BuildRequires:  cargo
-%if 0%{?suse_version} >= 1699
-BuildRequires:  python39-base
 %endif
-%else
 BuildArch:      noarch
-%endif
 %python_subpackages
 
 %description
@@ -172,6 +170,10 @@ donttest+=" or test_workspace_multi_service_application"
 donttest+=" or test_workspace_documentation_generation"
 donttest+=" or test_workspace_development_workflow"
 donttest+=" or test_workspace_overrides_matrix_conditional_members"
+# multiple tests fail with rich 14.3 https://github.com/pypa/hatch/issues/2170
+rm tests/cli/env/test_show.py tests/cli/python/test_show.py tests/cli/dep/show/test_table.py
+# flaky test
+donttest+=" or test_workspace_overrides_combined_conditions"
 %pytest -n auto -v -k "not ($donttest)"
 %endif
 

@@ -1,0 +1,43 @@
+From 9068758886e57751ff71a59520dcf576c7deea0b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=CF=87risto=CF=86e=20=D0=94=D0=B5=D0=BC=D0=BA=D0=BE?=
+ <chdemko@gmail.com>
+Date: Fri, 23 Jan 2026 17:44:54 +0100
+Subject: [PATCH] Fix #2164 keep_env type error for hatch shell (#2165)
+
+* Fix #2164
+
+* Fix ruff
+
+---------
+
+Co-authored-by: Cary Hawkins <hawkinscary23@gmail.com>
+---
+ src/hatch/cli/shell/__init__.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/hatch/cli/shell/__init__.py b/src/hatch/cli/shell/__init__.py
+index 815e71d98..5edc1f1ca 100644
+--- a/src/hatch/cli/shell/__init__.py
++++ b/src/hatch/cli/shell/__init__.py
+@@ -1,9 +1,12 @@
+ from __future__ import annotations
+ 
++import os
+ from typing import TYPE_CHECKING
+ 
+ import click
+ 
++from hatch.config.constants import AppEnvVars
++
+ if TYPE_CHECKING:
+     from hatch.cli.application import Application
+ 
+@@ -42,7 +45,7 @@ def shell(app: Application, env_name: str | None, name: str, path: str):  # no c
+ 
+     with app.project.ensure_cwd():
+         environment = app.project.get_environment(chosen_env)
+-        app.project.prepare_environment(environment)
++        app.project.prepare_environment(environment, keep_env=bool(os.environ.get(AppEnvVars.KEEP_ENV)))
+ 
+         first_run_indicator = app.cache_dir / "shell" / "first_run"
+         if not first_run_indicator.is_file():
