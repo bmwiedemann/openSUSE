@@ -469,7 +469,8 @@ Conflicts:      gcc-go
 %endif
 Requires:       gcc%{gcc_version}-go
 Requires:       gcc%{gccsuffix} = %{version}
-Requires(post): update-alternatives
+OrderWithRequires(pre): update-alternatives
+Suggests:       update-alternatives
 
 %description -n gcc%{gccsuffix}-go
 The system GNU Go Compiler.
@@ -705,9 +706,11 @@ mkdir -p $RPM_BUILD_ROOT%{_libdir}/bfd-plugins
 ln -s `gcc-%{gcc_suffix} -print-file-name=liblto_plugin.so` $RPM_BUILD_ROOT%{_libdir}/bfd-plugins/liblto_plugin.so
 
 # We no longer register go/gofmt alternatives for gcc-go, but remove
-# any existing one on upgrade
-%post -n gcc%{gccsuffix}-go
-update-alternatives --remove go %{_bindir}/go-%{gcc_suffix}
+# any existing one on upgrade if it still exists
+%pre -n gcc%{gccsuffix}-go
+if [ $1 -eq 2 ] && [ -f %{_sysconfdir}/alternatives/go ] ; then
+  update-alternatives --remove go %{_bindir}/go-%{gcc_suffix}
+fi
 
 %files -n gcc%{gccsuffix}
 %defattr(-,root,root)

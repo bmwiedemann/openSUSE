@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 27 14:12:22 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Improve go/gofmt alternative removal upon migration to an
+  alternative-less system.
+
+-------------------------------------------------------------------
 Fri Dec  5 07:33:47 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Remove go/gofmt alternatives.  [bsc#1245878]

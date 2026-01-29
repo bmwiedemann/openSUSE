@@ -697,4 +697,13 @@ this would switch building packages to gcc14.  Thus Staging:Gcc7.
     <comment>- Remove go/gofmt alternatives.  [bsc#1245878]</comment>
     <requestid>1321277</requestid>
   </revision>
+  <revision rev="82" vrev="3">
+    <srcmd5>3dd786eadaacb7aed4c82a363f8262d3</srcmd5>
+    <version>15</version>
+    <time>1769705094</time>
+    <user>anag_factory</user>
+    <comment>- Improve go/gofmt alternative removal upon migration to an
+  alternative-less system.</comment>
+    <requestid>1329508</requestid>
+  </revision>
 </revisionlist>
