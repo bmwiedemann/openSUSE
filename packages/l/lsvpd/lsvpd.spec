@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            https://github.com/power-ras/lsvpd
 Source:         https://github.com/power-ras/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch:          lsvpd-Add-FRU-number-for-Spyre-cards.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  librtas-devel

@@ -1,0 +1,27 @@
+From 1d2dc3d83734ea7c669905993adcae386b1db91d Mon Sep 17 00:00:00 2001
+From: Sathvika Vasireddy <sv@linux.ibm.com>
+Date: Thu, 4 Dec 2025 21:32:42 +0530
+Subject: [PATCH] lsvpd: Add FRU number for Spyre cards
+
+Update setCustomVPDFields to print FRU number for Spyre devices.
+
+Signed-off-by: Sathvika Vasireddy <sv@linux.ibm.com>
+---
+ src/internal/sys_interface/sysfstreecollector.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/internal/sys_interface/sysfstreecollector.cpp b/src/internal/sys_interface/sysfstreecollector.cpp
+index 7af2fb7..f7e074a 100644
+--- a/src/internal/sys_interface/sysfstreecollector.cpp
++++ b/src/internal/sys_interface/sysfstreecollector.cpp
+@@ -1731,6 +1731,7 @@ ERROR:
+ 			case 0x101406A7:
+ 			case 0x101406A8:
+ 				fillMe->mFeatureCode.setValue("ECSE", 95, __FILE__, __LINE__);
++				fillMe->mFRU.setValue("03PN188", 100, __FILE__, __LINE__);
+ 				fillMe->addDeviceSpecific( "CC", "Customer Card ID Number", "2E1F", 95);
+ 				break;
+ 			case 0x15b31021: // Nvidia ConnectX-7 PF
+-- 
+2.51.0
+

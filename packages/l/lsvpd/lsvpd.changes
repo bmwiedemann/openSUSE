@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 29 08:35:52 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Add FRU number for Spyre cards
+  * lsvpd-Add-FRU-number-for-Spyre-cards.patch
+
+-------------------------------------------------------------------
 Wed Jan  7 17:31:58 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
 
 - Update to version 1.7.17 (jsc#PED-14567, jsc#PED-14550)
