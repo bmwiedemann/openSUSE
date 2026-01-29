@@ -18,7 +18,7 @@
 
 
 Name:           disk-encryption-tool
-Version:        1+git20260121.010c05a
+Version:        1+git20260129.f7df08c
 Release:        0
 Summary:        Tool to reencrypt kiwi raw images
 License:        MIT
