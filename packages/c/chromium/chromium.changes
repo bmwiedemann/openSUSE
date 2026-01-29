@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 28 13:31:17 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 144.0.7559.109 (boo#1257404)
+  * CVE-2026-1504: Inappropriate implementation in Background Fetch API
+
+-------------------------------------------------------------------
 Wed Jan 21 00:29:54 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 144.0.7559.96 (boo#1257011)

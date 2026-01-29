@@ -6119,4 +6119,13 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
     <comment>Chromium 144.0.7559.96 (boo#1257011)</comment>
     <requestid>1328404</requestid>
   </revision>
+  <revision rev="498" vrev="1">
+    <srcmd5>bf9df042b1dbf356fc63c6de70f06f95</srcmd5>
+    <version>144.0.7559.109</version>
+    <time>1769705124</time>
+    <user>anag_factory</user>
+    <comment>- Chromium 144.0.7559.109 (boo#1257404)
+  * CVE-2026-1504: Inappropriate implementation in Background Fetch API</comment>
+    <requestid>1329682</requestid>
+  </revision>
 </revisionlist>
