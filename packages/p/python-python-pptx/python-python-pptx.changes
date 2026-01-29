@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 29 01:03:28 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-new-pyparsing.patch:
+  * Avoid deprecation warnings from new pyparsing.
+- List directories in %files explicitly.
+
+-------------------------------------------------------------------
 Fri Sep 27 17:49:50 UTC 2024 - Thiago Bertoldi <thiago.bertoldi@suse.com>
 
 - Remove utc.patch (not necessary since 1.0.0)

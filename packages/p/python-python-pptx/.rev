@@ -70,4 +70,14 @@
 </comment>
     <requestid>1218358</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8b88035678d818da96b000dd5244b2d1</srcmd5>
+    <version>1.0.2</version>
+    <time>1769705168</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-new-pyparsing.patch:
+  * Avoid deprecation warnings from new pyparsing.
+- List directories in %files explicitly.</comment>
+    <requestid>1329741</requestid>
+  </revision>
 </revisionlist>

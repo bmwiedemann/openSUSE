@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-pptx
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,8 @@ Summary:        Generate and manipulate Open XML PowerPoint (pptx) files
 License:        MIT
 URL:            http://github.com/scanny/python-pptx
 Source:         https://files.pythonhosted.org/packages/source/p/python-pptx/python_pptx-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#scanny/python-pptx#1104
+Patch0:         support-new-pyparsing.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.0.0}
 BuildRequires:  python-rpm-macros
@@ -64,6 +66,7 @@ Create, read, and update PowerPoint 2007+ (.pptx) files.
 %files %{python_files}
 %license LICENSE
 %doc HISTORY.rst README.rst
-%{python_sitelib}/*pptx*
+%{python_sitelib}/pptx
+%{python_sitelib}/python_pptx-%{version}.dist-info
 
 %changelog
