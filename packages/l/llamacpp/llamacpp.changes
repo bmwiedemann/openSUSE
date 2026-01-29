@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jan 21 18:51:02 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 7789:
+  * CUDA: multiple fixes and cleanups, improved Blackwell and RDNA
+    support, FA/MMA correctness fixes, reduced debug output, and
+    improved compatibility with older toolchains.
+  * Vulkan: performance optimizations, new and extended operators,
+    improved handling of large tensors, and driver-specific
+    workarounds for AMD and Intel.
+  * GGML: new operators, backend sampling support, allocator and
+    graph improvements, WebGPU enhancements, and better error
+    handling.
+  * CPU and accelerator backends: fixes and optimizations across
+    OpenCL, HIP, SYCL, CANN, Hexagon, Metal, and Power
+    architectures.
+  * Models and conversion: added and fixed support for multiple
+    models including GLM-4 variants, EXAONE MoE, Qwen3 Next,
+    Gemma 3, Granite,LFM2, Youtu-VL, and others.
+  * Server and CLI: scheduling, memory, and KV-cache fixes,
+    improved defaults, new options, and stability improvements.
+  * Jinja templates: correctness fixes, feature completion, and
+    improved test coverage.
+  * Full commit log:
+    https://github.com/ggml-org/llama.cpp/compare/b7540...b7789
+
+-------------------------------------------------------------------
 Fri Dec 26 01:54:44 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 7540:

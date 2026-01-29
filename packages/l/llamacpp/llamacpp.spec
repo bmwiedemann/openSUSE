@@ -1,7 +1,7 @@
 #
 # spec file for package llamacpp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Eyad Issa <eyadlorenzo@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,11 +25,11 @@
 %global mtmd_sover         0.0.%{version}
 %global mtmd_sover_suffix  0
 
-%global ggml_sover         0.9.4
+%global ggml_sover         0.9.5
 %global ggml_sover_suffix  0
 
 Name:           llamacpp
-Version:        7540
+Version:        7789
 Release:        0
 Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
 License:        MIT

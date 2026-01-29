@@ -386,4 +386,12 @@
   * CLI and argument-parsing improvements with new flags, negated</comment>
     <requestid>1324424</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>42a036b51b6873305af09da719076b67</srcmd5>
+    <version>7789</version>
+    <time>1769705146</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1329718</requestid>
+  </revision>
 </revisionlist>
