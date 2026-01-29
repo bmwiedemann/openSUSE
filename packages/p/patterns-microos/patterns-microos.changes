@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec 12 15:09:22 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add kf6-purpose to desktop-kde pattern
+
+-------------------------------------------------------------------
 Fri Dec 12 10:43:19 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Drop purpose from desktop-kde pattern.
+
+-------------------------------------------------------------------
+Thu Nov 13 14:11:33 UTC 2025 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Pull health-checker by default as sd-boot and grub2-bls are
+  now supported
 
 -------------------------------------------------------------------
 Wed Oct  8 19:19:39 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>

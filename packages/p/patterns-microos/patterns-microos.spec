@@ -104,9 +104,9 @@ Requires:       MicroOS-release
 Requires:       dosfstools
 Requires:       glibc-locale-base
 Suggests:       busybox-gzip
+Requires:       health-checker
+Requires:       health-checker-plugins-MicroOS
 Requires:       iputils
-Requires:       (health-checker if (grub2 or grub2-common))
-Requires:       (health-checker-plugins-MicroOS if health-checker)
 %ifnarch %{arm}
 Requires:       kdump
 %endif
@@ -518,6 +518,7 @@ Requires:       kde-gtk-config6-gtk3
 Requires:       kf6-qqc2-desktop-style
 Requires:       plasma6-browser-integration
 Requires:       plasma6-sddm-theme-openSUSE
+Requires:       kf6-purpose
 Requires:       xdg-desktop-portal-kde
 
 # Recommended by powerdevil5, but allow tlp as alternative

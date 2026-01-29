@@ -978,4 +978,12 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <comment>- Drop purpose from desktop-kde pattern.</comment>
     <requestid>1322581</requestid>
   </revision>
+  <revision rev="105" vrev="105">
+    <srcmd5>760cb4d85e85a7d93775495d4d3b0417</srcmd5>
+    <version>5.0</version>
+    <time>1769705069</time>
+    <user>anag_factory</user>
+    <comment>Next try, health-checker got several fixes.</comment>
+    <requestid>1322956</requestid>
+  </revision>
 </revisionlist>
