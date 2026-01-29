@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Tue Jan 27 13:56:31 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to version 0.1+ga780082:
+  * storage: check provisioning type and size even for unmanaged disks
+  * storage: vdisk: adjust old comment
+  * storage: move all virtual disk code to separate vdisk.go
+  * storage: rename internal functions to a consistent storage_ prefix
+  * storage: fix broken check for is_managed
+  * add missing copyright preambles in packages
+  * httpx: add newline after imports, should be exactly 1
+  * virtx: remove some extra newlines after imports
+  * storage: new package, extracted from virtx/vm_storage
+  * virtx: vm_storage: move the most important functions to the top
+  * virtx: vm_storage: refactor vm_storage_create and vm_storage_delete
+  * vmdef: remove obsolete comment
+  * vmdef: To_xml: add configuration for qemu-vdagent vnc copy/paste
+  * virtx: vm_storage: detect image provisioning and size when claiming existing files
+  * virtx: vm_storage: do not create storage if provisioning mode is NONE
+  * model: regen from api, replace disk_create_mode with man_mode and prov_mode
+
+-------------------------------------------------------------------
+Wed Jan 21 15:31:50 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to version 0.1+g84716fe:
+  * vmdef: new function vmdef.Disks() to return a slice with all disks
+- Enable automatic changes generation for the source service
+
+-------------------------------------------------------------------
+Tue Jan 20 14:13:22 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Set the services to manual mode, to make the package suitable for Factory 
+
+-------------------------------------------------------------------
+Thu Jan 15 17:31:31 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Include commit hash in version
+
+-------------------------------------------------------------------
+Thu Dec  4 17:24:13 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
+
+- Create the bash-completion subpackage 
+
+-------------------------------------------------------------------
+Tue Dec  2 09:24:25 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
+
+- Initial import of the sources for the package

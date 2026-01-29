@@ -1,0 +1,9 @@
+<package name="virtx" project="openSUSE:Factory">
+  <title>VirtX</title>
+  <description>A simple federation of KVM hosts based on libvirt and serf, working with centralized shared storage.
+It offers a REST API to interact with the cluster, so as to make it easier to implement custom KVM platforms.
+
+This package is still experimental and under development, so use at your own risk for experimentation only,
+not for production.</description>
+  <url>https://github.com/openSUSE/virtx</url>
+</package>

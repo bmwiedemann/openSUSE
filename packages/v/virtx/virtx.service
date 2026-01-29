@@ -1,0 +1,28 @@
+[Unit]
+Description=VirtX server
+
+# wait for all local and known remote filesystems
+After=local-fs.target remote-fs.target
+Wants=remote-fs.target
+Requires=virtqemud.service
+Requires=virtproxyd.service
+Requires=serf.service
+
+# we need to be able to read/write the disk images, so we need to be User qemu,
+# (group is not enough due to permissions being writable only by qemu).
+# we also need to be able to connect to libvirt locally, and via tcp remotely.
+#
+# The enemy is then polkit, for which we need then a special rule allowing user qemu.
+# Again, group does not work, as apparently group belonging is only checked for interactive accounts,
+# not system ones. Ugh.
+
+[Service]
+Type=simple
+User=qemu
+Group=qemu
+ExecStart=/usr/sbin/virtxd
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

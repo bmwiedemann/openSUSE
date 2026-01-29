@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1ce2d41380bb0b01268b2607794e20ed</srcmd5>
+    <version>0.1+ga780082</version>
+    <time>1769705097</time>
+    <user>anag_factory</user>
+    <comment>virtx is tool for managing simple federation of KVM hosts based on libvirt and serf, working with centralized shared storage. It offers a REST API to interact with the cluster, so as to make it easier to implement custom KVM platforms. It is currently based on Hashicorp Serf for simple clustering.
+
+(Part of) Its development happened during the latest Hackweek (https://hackweek.opensuse.org/25/projects/virtx) and it's already part of the Virtualization devel project:
+
+https://build.opensuse.org/package/show/Virtualization/virtx
+
+It's still under heavy development, and some of the features it offers and aims at offering are still experimental, but we believe it could be useful and interesting for someone to have it in Factory (and, of course, we'll maintain it in there, once accepted).
+
+See:
+https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/PK4PWMHDM4ZQNGF4JYCEGC3LTYL32UUR/</comment>
+    <requestid>1329644</requestid>
+  </revision>
+</revisionlist>
