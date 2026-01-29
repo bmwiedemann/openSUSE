@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 22 09:36:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.51.2.0:
+  * apsw.ext.DataClassRowFactory now defaults slots to True for
+    dataclasses.dataclass() which saves a small amount of memory.
+
+-------------------------------------------------------------------
 Fri Dec 12 10:55:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.51.1.0:
