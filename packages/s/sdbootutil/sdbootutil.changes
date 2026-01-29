@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 28 07:29:06 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260127.6240918:
+  * Correctly replace the boot entry with a new name
+
+-------------------------------------------------------------------
+Thu Jan 22 11:39:50 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260122.dd5ba5c:
+  * Fix boot entries detection when boot counting is enabled
+  * [.github]: Improve issue templates
+
+-------------------------------------------------------------------
 Thu Jan 15 12:58:34 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20260115.cd41d07:
