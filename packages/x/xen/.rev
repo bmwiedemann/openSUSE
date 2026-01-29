@@ -3142,4 +3142,12 @@
     <comment>Update Xen to version 4.21.0</comment>
     <requestid>1318748</requestid>
   </revision>
+  <revision rev="371" vrev="1">
+    <srcmd5>90edb482cd6f7e0554184d514cc719fb</srcmd5>
+    <version>4.21.0_04</version>
+    <time>1769705057</time>
+    <user>anag_factory</user>
+    <comment>Security and Maintenance Update. Fix for bsc#1256745 CVE-2025-58150 XSA-477 and fix for bsc#1256747 CVE-2026-23553 XSA-479. Fix for bsc#1257399 - Package xen doesn't build with glibc 2.43</comment>
+    <requestid>1329731</requestid>
+  </revision>
 </revisionlist>

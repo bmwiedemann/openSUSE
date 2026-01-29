@@ -1,0 +1,32 @@
+References: bsc#1257399 - Package xen doesn't build with glibc 2.43
+
+Ignore instances of,
+error: assignment discards "const" qualifier from pointer target type [-Werror=discarded-qualifiers]
+There are three instances in libxl_cpuid.c and one in libxl_internal.c
+
+Index: xen-4.21.0-testing/tools/libs/light/libxl_cpuid.c
+===================================================================
+--- xen-4.21.0-testing.orig/tools/libs/light/libxl_cpuid.c
++++ xen-4.21.0-testing/tools/libs/light/libxl_cpuid.c
+@@ -407,6 +407,8 @@ int libxl_cpuid_parse_config(libxl_cpuid
+     return 2;
+ }
+ 
++#pragma GCC diagnostic ignored "-Wdiscarded-qualifiers"
++
+ /* parse a single list item from the legacy Python xend syntax, where
+  * the strings for each register were directly exposed to the user.
+  * Used for maintaining compatibility with older config files
+Index: xen-4.21.0-testing/tools/libs/light/libxl_internal.c
+===================================================================
+--- xen-4.21.0-testing.orig/tools/libs/light/libxl_internal.c
++++ xen-4.21.0-testing/tools/libs/light/libxl_internal.c
+@@ -293,6 +293,8 @@ char *libxl__strndup(libxl__gc *gc, cons
+     return s;
+ }
+ 
++#pragma GCC diagnostic ignored "-Wdiscarded-qualifiers"
++
+ char *libxl__dirname(libxl__gc *gc, const char *s)
+ {
+     char *c = strrchr(s, '/');

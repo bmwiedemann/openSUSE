@@ -1,7 +1,7 @@
 #
 # spec file for package xen
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -125,7 +125,7 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  python-rpm-macros
 Provides:       installhint(reboot-needed)
 
-Version:        4.21.0_02
+Version:        4.21.0_04
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -160,6 +160,8 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
+Patch1:         xsa477.patch
+Patch2:         xsa479.patch
 # EMBARGOED security fixes
 # Our platform specific patches
 Patch400:       xen-destdir.patch
@@ -188,10 +190,10 @@ Patch466:       libxl.helper_done-crash.patch
 Patch467:       libxl.LIBXL_HOTPLUG_TIMEOUT.patch
 # Hypervisor and PV driver Patches
 Patch600:       xen.bug1026236.suse_vtsc_tolerance.patch
-Patch601:       x86-ioapic-ack-default.patch
 Patch602:       xenwatchdogd-restart.patch
 Patch621:       xen.build-compare.doc_html.patch
 # Build patches
+Patch800:       glibc2.43-fixes.patch
 URL:            http://www.cl.cam.ac.uk/Research/SRG/netos/xen/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define pyver %(python3 -c "import sys; print(sys.version.rpartition('.')[0])")

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jan 28 14:20:05 MST 2026 - carnold@suse.com
+
+- bsc#1257399 - Package xen doesn't build with glibc 2.43
+  glibc2.43-fixes.patch
+
+-------------------------------------------------------------------
+Thu Jan 15 10:40:05 MST 2026 - carnold@suse.com
+
+- bsc#1256745 - VUL-0: CVE-2025-58150: xen: x86: buffer overrun
+  with shadow paging + tracing (XSA-477)
+  xsa477.patch
+- bsc#1256747 - VUL-0: CVE-2026-23553: xen: x86: incomplete IBPB
+  for vCPU isolation (XSA-479)
+  xsa479.patch
+
+-------------------------------------------------------------------
+Thu Nov 20 09:16:24 MST 2025 - carnold@suse.com
+
+- Drop x86-ioapic-ack-default.patch
+  Upstream changes make this patch unnecessary. 
+
+-------------------------------------------------------------------
 Tue Nov 18 15:17:42 MST 2025 - carnold@suse.com
 
 - Update to Xen 4.21.0 FCS release
