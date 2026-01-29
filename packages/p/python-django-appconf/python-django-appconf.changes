@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 22 09:20:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Added support for Python 3.14 and Django 6.0
+  * Dropped support for EOL Python 3.19.
+
+-------------------------------------------------------------------
 Tue Jun  3 06:48:22 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
