@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 29 09:04:24 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Run tests in a subpackage, this allows to exclude build in different
+  distributions
+
+-------------------------------------------------------------------
 Mon Nov 17 08:34:57 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 8.3.1

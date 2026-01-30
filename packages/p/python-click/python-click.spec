@@ -1,7 +1,7 @@
 #
 # spec file for package python-click
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,16 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %{?sle15_python_module_pythons}
-Name:           python-click
+Name:           python-click%{psuffix}
 Version:        8.3.1
 Release:        0
 Summary:        A wrapper around optparse for command line utilities
@@ -27,9 +35,12 @@ Source:         https://files.pythonhosted.org/packages/source/c/click/click-%{v
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+%if %{with test}
+BuildRequires:  %{python_module click == %{version}}
+BuildRequires:  %{python_module pytest}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -45,20 +56,28 @@ defaults out of the box.
 %autosetup -p1 -n click-%{version}
 
 %build
+%if %{without test}
 %pyproject_wheel
+%endif
 
 %install
+%if %{without test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 export LANG=en_US.UTF-8
 %pytest -rs --tb=short
+%endif
 
+%if %{without test}
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.rst README.md
 %{python_sitelib}/click
 %{python_sitelib}/click-%{version}.dist-info
+%endif
 
 %changelog
