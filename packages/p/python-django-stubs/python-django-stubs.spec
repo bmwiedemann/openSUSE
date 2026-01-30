@@ -26,7 +26,7 @@
 %{?sle15_python_module_pythons}
 %define short_name django-stubs
 Name:           python-django-stubs%{psuffix}
-Version:        5.2.2
+Version:        5.2.9
 Release:        0
 Summary:        PEP-484 stubs for Django
 License:        MIT
@@ -34,7 +34,7 @@ URL:            https://github.com/typeddjango/django-stubs/
 Source:         %{short_name}-%{version}.tar.gz
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module uv-build}
 %if %{with test}
 BuildRequires:  %{python_module Django >= 5.0}
 BuildRequires:  %{python_module django-stubs = %{version}}
@@ -98,12 +98,12 @@ cd ext; %pyproject_install
 %license LICENSE.md
 %doc README.md
 %{python_sitelib}/%{short_name}
-%{python_sitelib}/django_stubs-%{version}.*-info
+%{python_sitelib}/django_stubs-%{version}.dist-info
 %{python_sitelib}/mypy_django_plugin
 
 %files %{python_files ext}
 %{python_sitelib}/django_stubs_ext
-%{python_sitelib}/django_stubs_ext-%{version}.*-info
+%{python_sitelib}/django_stubs_ext-%{version}.dist-info
 %endif
 
 %changelog

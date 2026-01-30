@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Fri Jan 30 04:43:39 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to version 5.2.9:
+  * Improve database-related check signatures (#2994)
+  * Make all system checks return a `list`, not a `Sequence` (#2992)
+  * fix: django.contrib.gis.utils.LayerMapping attribute types (#2988)
+  * Remove useless decorators from `main/django/contrib/auth/admin.py`
+  * Add `SetPasswordMixin.__class_getitem__` (#2985)
+  * Fix missing `__del__` (#2974)
+  * Fix kwargs for `forms.widgets.Script` (#2973)
+  * fix: `prefetch_related_objects` requires `Sequence` not `Iterable`
+  * Add hints support to postgres extension classes (#2972)
+  * chore(deps): update dependency pyrefly to v0.46.1 (#2971)
+  * fix: Annotate SessionStore with a type var for the Session type
+  * fix: template type in template response (#2964)
+  * Add stubs for django.contrib.postgres.search.Lexeme (#2961)
+  * Add stubs for django.db.models.StringAgg and Aggregate order_by fields
+  * Make LoginView generic over its form class (#2959)
+  * Update `get_auto_imports()` to also allow returning `None` (#2956)
+  * Fix dispatch_uid type: str -> _AnyHashable (#2950)
+  * Fix infinite semantic analysis loop when using from_queryset (#2935)
+  * Renovate: mypy updates to widen accepted version range (#2921)
+  * fix: allow `EmailMultiAlternatives` in `outbox` (#2922)
+  * fix: in db.models make required_db_vendor str (#2909)
+  * CI: Only run branch tests on Renovate branches where it's needed (#2899)
+  * Remove `str` from enum label types when we know for sure the labels are
+    lazy (#2888)
+  * Update middleware types (#2884)
+  * Update `assertContains` and `assertNotContains` signatures (#2880)
+  * fix: import all forms widgets (#2871)
+  * fix: add type declarations for some missing settings (#2870)
+  * fix: allow `django.shortcuts.resolve_url` to receive a str-promise
+  * Validation of the `fields` argument to `bulk_update`  (#2808)
+  * Also typecheck aget calls (#2856)
+  * Support `GenericPrefetch` (#2851)
+  * Allow to annotate existing model field de-selected via prior `.values` /
+    `.values_list` calls (#2836)
+  * Remove magically added `django.contrib.contenttypes` installed app in
+    tests (#2853)
+  * `BaseForm.add_error`: Use covariant types  (#2849)
+  * Fix the actual new api name (#2839)
+  * fix: allow to query decimal fields with int (#2838)
+  * Fix `union` / `intersection` / `difference` to support QuerySet using
+    `values_list` and `values` (#2829)
+  * Refactor `_replace_type_var` that can potentially cause cache problems
+  * Add `strict_model_abstract_attrs` setting to allow `models.Model.objects`
+    access (#2830)
+  * django.urls.resolve can also take _StrPromise (#2826)
+  * Support `related_query_name` in `Model._meta.get_fields` (#2821)
+  * update `add_ordering` signature (#2822)
+  * Add `mypy_primer` workflow (#2819)
+  * Fix `order_by` to accept any `Combinable` (#2816)
+  * Validate `select_related` lookups (#2806)
+  * Add lookup validation in `prefetch_related` (#2804)
+  * Detect more incompatible `to_attr` targets (#2797)
+  * Improve type for `order_by` / `defer` / `only` / `distinct` / `order_by`
+    / `explain` / `dates` / `datetimes` (#2795)
+  * Detect invalid `to_attr` target (alredy defined fields) (#2794)
+  * Improve `.select_related` stubs (#2792)
+  * Auto inherit from `TypedModelMeta` (#2788)
+  * Support star arg in prefetch_related( (#2789)
+  * Update Meta.permissions type (#2787)
+  * Declare `Prefetch` as generic and do specialization in the plugin (#2786)
+  * Improve `Model` inference from custom `QuerySet`/`Manager` (#2784)
+  * [pre-commit.ci] pre-commit autoupdate (#2785)
+  * Simplify parsing of bool call arguments (#2783)
+  * Reuse util in `resolve_many_to_many_arguments` (#2782)
+  * Initial support for `to_attr` inferrence in `Prefetch` calls (#2779)
+  * Simpler `get_current_module` util (#2781)
+  * Remove OrderedDict usage, this is the default since py 3.6 (#2780)
+  * Allow all error types to `BaseForm.add_error()` in documentation (#2774)
+  * Change FormMixin.success_url to _StrOrPromise (#2769)
+  * Annotate return type of reverse_lazy() (#2766)
+  * Allow passing None to migrations.AlterOrderWithRespectTo (#2759)
+  * Change partition input to any iterable (#2752)
+  * Refine `Model._meta.get_field("field_name")` type inference (#2748)
+
+-------------------------------------------------------------------
 Mon Aug  4 06:54:44 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to version 5.2.2:

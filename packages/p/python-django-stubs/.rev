@@ -37,4 +37,41 @@
   * Fix reveal_type to return its argument (#2716)</comment>
     <requestid>1297388</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>005e791871069c4734be2116fdff6365</srcmd5>
+    <version>5.2.9</version>
+    <time>1769793784</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 5.2.9:
+  * Improve database-related check signatures (#2994)
+  * Make all system checks return a `list`, not a `Sequence` (#2992)
+  * fix: django.contrib.gis.utils.LayerMapping attribute types (#2988)
+  * Remove useless decorators from `main/django/contrib/auth/admin.py`
+  * Add `SetPasswordMixin.__class_getitem__` (#2985)
+  * Fix missing `__del__` (#2974)
+  * Fix kwargs for `forms.widgets.Script` (#2973)
+  * fix: `prefetch_related_objects` requires `Sequence` not `Iterable`
+  * Add hints support to postgres extension classes (#2972)
+  * chore(deps): update dependency pyrefly to v0.46.1 (#2971)
+  * fix: Annotate SessionStore with a type var for the Session type
+  * fix: template type in template response (#2964)
+  * Add stubs for django.contrib.postgres.search.Lexeme (#2961)
+  * Add stubs for django.db.models.StringAgg and Aggregate order_by fields
+  * Make LoginView generic over its form class (#2959)
+  * Update `get_auto_imports()` to also allow returning `None` (#2956)
+  * Fix dispatch_uid type: str -&gt; _AnyHashable (#2950)
+  * Fix infinite semantic analysis loop when using from_queryset (#2935)
+  * Renovate: mypy updates to widen accepted version range (#2921)
+  * fix: allow `EmailMultiAlternatives` in `outbox` (#2922)
+  * fix: in db.models make required_db_vendor str (#2909)
+  * CI: Only run branch tests on Renovate branches where it's needed (#2899)
+  * Remove `str` from enum label types when we know for sure the labels are
+    lazy (#2888)
+  * Update middleware types (#2884)
+  * Update `assertContains` and `assertNotContains` signatures (#2880)
+  * fix: import all forms widgets (#2871)
+  * fix: add type declarations for some missing settings (#2870)
+  * fix: allow `django.shortcuts.resolve_url` to receive a str-promise</comment>
+    <requestid>1329924</requestid>
+  </revision>
 </revisionlist>
