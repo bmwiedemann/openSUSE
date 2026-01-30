@@ -179,4 +179,14 @@
     <comment></comment>
     <requestid>1290022</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>dc6a7d203dd7aeebbf615055d3a9da82</srcmd5>
+    <version>4.16.0</version>
+    <time>1769793778</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-urllib3-2.patch:
+  * Decompress vcr cassette data.
+- Remove urllib3 BuildRequires, now that we don't have to pin it.</comment>
+    <requestid>1329917</requestid>
+  </revision>
 </revisionlist>

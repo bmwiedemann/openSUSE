@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 30 03:02:06 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-urllib3-2.patch:
+  * Decompress vcr cassette data.
+- Remove urllib3 BuildRequires, now that we don't have to pin it.
+
+-------------------------------------------------------------------
 Wed Jul  2 11:45:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.16.0

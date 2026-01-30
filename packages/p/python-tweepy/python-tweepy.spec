@@ -1,7 +1,7 @@
 #
 # spec file for package python-tweepy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,9 @@ Summary:        Twitter library for python
 License:        MIT
 URL:            https://github.com/tweepy/tweepy
 Source:         https://github.com/tweepy/tweepy/archive/v%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Decompress vcr cassette data, sourced from:
+# https://github.com/kevin1024/vcrpy/issues/719#issuecomment-1811544263
+Patch0:         support-urllib3-2.patch
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module async-lru}
 BuildRequires:  %{python_module flit-core}
@@ -32,9 +35,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.27.0}
 BuildRequires:  %{python_module requests-oauthlib >= 1.0.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module urllib3 < 2}
 BuildRequires:  %{python_module vcrpy >= 1.10.3}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators
 BuildRequires:  python-rpm-macros
