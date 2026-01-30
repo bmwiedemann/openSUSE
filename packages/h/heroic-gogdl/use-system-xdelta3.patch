@@ -1,0 +1,38 @@
+diff '--color=auto' -rub heroic-gogdl-1.2.0.orig/gogdl/dl/workers/task_executor.py heroic-gogdl-1.2.0/gogdl/dl/workers/task_executor.py
+--- heroic-gogdl-1.2.0.orig/gogdl/dl/workers/task_executor.py	2026-01-21 07:20:18.000000000 -0300
++++ heroic-gogdl-1.2.0/gogdl/dl/workers/task_executor.py	2026-01-29 21:23:51.634296751 -0300
+@@ -1,6 +1,7 @@
+ from multiprocessing.shared_memory import SharedMemory
+ import os
+ from queue import Empty
++import subprocess
+ import shutil
+ import sys
+ import stat
+@@ -17,7 +18,6 @@
+ from enum import Enum, auto
+ from multiprocessing import Process, Queue
+ from gogdl.dl.objects.generic import MemorySegment, TaskFlag, TerminateWorker
+-import gogdl.xdelta3
+ 
+ 
+ class FailReason(Enum):
+@@ -357,7 +357,17 @@
+                     patch = os.path.join(task.destination, task.patch_file)
+                     patch = dl_utils.get_case_insensitive_name(patch)
+                     target = task_path
+-                    gogdl.xdelta3.patch(source, patch, target, self.speed_queue)
++                    xdelta = shutil.which("xdelta3")
++                    if not xdelta:
++                        raise RuntimeError("xdelta3 binary not found")
++
++                    cmd = [
++                        xdelta,
++                        "-d",        # decode
++                        "-s", source,
++                        patch,
++                        target
++                    ]
+ 
+                 except Exception as e:
+                     print("Patch failed", e)

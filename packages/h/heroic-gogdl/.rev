@@ -17,4 +17,13 @@ This is also a dependency for heroic-games-launcher package.</comment>
 Fix URL to use upstream GitHub release tarball as Source0</comment>
     <requestid>1329779</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5a7f3f43bd79b93e9e0caab67291468c</srcmd5>
+    <version>1.2.0</version>
+    <time>1769793792</time>
+    <user>anag_factory</user>
+    <comment>- Use system xdelta3 instead of bundled Python module
+  * Add use-system-xdelta3.patch</comment>
+    <requestid>1329911</requestid>
+  </revision>
 </revisionlist>

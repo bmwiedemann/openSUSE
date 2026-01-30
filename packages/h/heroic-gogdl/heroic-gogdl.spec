@@ -1,7 +1,7 @@
 #
 # spec file for package heroic-gogdl
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,12 @@ Summary:        GOG download module for Heroic Games Launcher
 License:        GPL-3.0-only
 URL:            https://github.com/Heroic-Games-Launcher/heroic-gogdl
 Source0:        https://github.com/Heroic-Games-Launcher/heroic-gogdl/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         use-system-xdelta3.patch
 BuildRequires:  python313-PyInstaller
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module requests < 3.0}
+Requires:       xdelta3
 %ifarch aarch64
 ExclusiveArch: aarch64
 %endif
@@ -37,7 +39,7 @@ ExclusiveArch: x86_64
 GOG Downloading module for Heroic Games Launcher
 
 %prep
-%setup -q -n heroic-gogdl-%{version}
+%autosetup -p1
 
 %build
 pyinstaller --onefile --name gogdl gogdl/cli.py

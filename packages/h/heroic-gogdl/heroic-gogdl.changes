@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 30 01:26:07 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Use system xdelta3 instead of bundled Python module
+  * Add use-system-xdelta3.patch
+
+-------------------------------------------------------------------
 Thu Jan 29 08:33:33 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Use upstream GitHub release tarball as Source0  
