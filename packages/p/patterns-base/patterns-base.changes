@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 30 09:35:08 UTC 2026 - Jiri Srain <jsrain@suse.com>
+
+- rename transactional_base to immutable_base
+
+-------------------------------------------------------------------
+Fri Jan 16 19:45:00 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- remove dmraid from enhanced_base
+
+-------------------------------------------------------------------
 Mon Nov 24 09:58:43 UTC 2025 - Jiri Srain <jsrain@suse.com>
 
 - remove yast2-logs from transactional base

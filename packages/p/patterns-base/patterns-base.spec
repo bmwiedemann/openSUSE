@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-base
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -529,7 +529,6 @@ Recommends:     powerpc32
 %endif
 # Other packages we have in openSUSE and not SLE-15
 %if 0%{?is_opensuse}
-Recommends:     dmraid
 Recommends:     dosfstools
 Recommends:     klogd
 Recommends:     mpt-status
@@ -800,13 +799,15 @@ This pattern provides a graphical application and a command line tool for keepin
 
 # Do not build it on Leap 16
 %if !(0%{?is_opensuse} && 0%{?suse_version} == 1600) || 0%{?is_leapmicro}
-%package transactional_base
+%package immutable_base
 %pattern_basetechnologies
-Summary:        Transactional Base System
+Summary:        Immutable Base System
 Group:          Metapackages
-Provides:       pattern() = transactional_base
+Provides:       pattern() = immutable_base
 Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 1050
+Obsoletes:      patterns-base-transactional_base
+Provides:       patterns-base-transactional_base
 Requires:       /usr/bin/gzip
 Requires:       btrfsmaintenance
 Requires:       less
@@ -879,12 +880,12 @@ Requires:       vim-small
 Requires:       pattern() = base
 Suggests:       health-checker
 
-%description transactional_base
+%description immutable_base
 This is the base system for a host updated by Transactional Updates. Includes Tools for systems with a read-only root filesystem.
 
-%files transactional_base
+%files immutable_base
 %dir %{_docdir}/patterns
-%{_docdir}/patterns/transactional_base.txt
+%{_docdir}/patterns/immutable_base.txt
 %endif
 
 ################################################################################
@@ -1193,7 +1194,7 @@ done
 # These packages don't generate a 32bit pattern
 for i in basesystem bootloader documentation fips selinux kdump \
 %if !(0%{?is_opensuse} && 0%{?suse_version} == 1600) || 0%{?is_leapmicro}
-transactional_base \
+immutable_base \
 %endif
 %if !0%{?is_opensuse} && 0%{?suse_version} >= 1600
 kernel_livepatching \

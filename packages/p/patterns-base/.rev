@@ -1205,4 +1205,20 @@ by zypper, as no packages with those names exist</comment>
 - rename the systemd-presets-branding to -SLE_transactional (forwarded request 1319696 from jsrain)</comment>
     <requestid>1319742</requestid>
   </revision>
+  <revision rev="139" vrev="23">
+    <srcmd5>40386c53f11388c1bb6dba5f54f03ddf</srcmd5>
+    <version>20241218</version>
+    <time>1769420695</time>
+    <user>anag_factory</user>
+    <comment>- remove dmraid from enhanced_base</comment>
+    <requestid>1328888</requestid>
+  </revision>
+  <revision rev="140" vrev="24">
+    <srcmd5>17b30c03a052713ee7f6c97847dea478</srcmd5>
+    <version>20241218</version>
+    <time>1769793729</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1330005</requestid>
+  </revision>
 </revisionlist>
