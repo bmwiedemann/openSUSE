@@ -1,0 +1,14 @@
+Index: django-localflavor-5.0/tasks.py
+===================================================================
+--- django-localflavor-5.0.orig/tasks.py
++++ django-localflavor-5.0/tasks.py
+@@ -13,7 +13,8 @@ def clean(c):
+ @task
+ def test(c, country='all'):
+     print('Python version: ' + sys.version)
+-    test_cmd = 'coverage run `which django-admin` test --settings=tests.settings'
++    dja_cmd = f"django-admin-{sys.version_info[0]}.{sys.version_info[1]}"
++    test_cmd = f'coverage run `which {dja_cmd}` test --settings=tests.settings'
+     country = os.environ.get('COUNTRY', country)
+ 
+     # Fix issue #49
