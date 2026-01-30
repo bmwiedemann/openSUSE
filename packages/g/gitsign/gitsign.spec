@@ -1,7 +1,7 @@
 #
 # spec file for package gitsign
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gitsign
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        Keyless Git signing using Sigstore
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         gitsign-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        gitsign-credential-cache.service
 Source3:        gitsign-credential-cache.socket
-BuildRequires:  golang(API) >= 1.23
+BuildRequires:  go1.25 >= 1.25.5
 
 %description
 Keyless Git signing with Sigstore!
