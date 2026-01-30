@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 28 09:41:25 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- CVE-2025-13465: Bump lodash package to version 4.17.23 to fix
+  prototype pollution vulnerability (bsc#1257329)
+- Drop redundant recompress service definition
+
+-------------------------------------------------------------------
 Sun Jan 11 13:43:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.9.1:
