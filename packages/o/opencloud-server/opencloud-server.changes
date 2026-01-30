@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jan 30 07:14:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.0.1:
+  Opencloud
+  * Bug Fixes
+    - Do not ever set a TTL for the ID cache. It's not supposed to
+      expire. [#2223]
+  * Tests
+    - test(api): wait for web-office readiness by checking
+      discovery endpoint [#2217]
+  * Dependencies
+    - reva-bump-2.42.1 [#2225]
+  Reva
+  * Bug Fixes
+    - Apply changed TTL settings to existing buckets [#509]
+
+-------------------------------------------------------------------
 Tue Jan 27 12:20:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.0.0:
