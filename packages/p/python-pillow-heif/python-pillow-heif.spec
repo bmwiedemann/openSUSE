@@ -1,7 +1,7 @@
 #
 # spec file for package python-pillow-heif
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,14 @@
 #
 
 
+%define         _name pillow_heif
 Name:           python-pillow-heif
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Python interface for libheif library
 License:        BSD-3-Clause
 URL:            https://github.com/bigcat88/pillow_heif
-Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}.tar.gz#/python-pillow-heif-%{version}.tar.gz
 BuildRequires:  %{python_module Pillow >= 9.5.0}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module devel}
@@ -45,7 +46,7 @@ Suggests:       python-pillow-heif-doc
 Python interface for libheif library
 
 %prep
-%autosetup -n pillow_heif-%{version}
+%autosetup -n %{_name}-%{version}
 
 %build
 %pyproject_wheel
@@ -60,11 +61,12 @@ popd
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 rm docs/_build/html/.buildinfo
 %fdupes docs/_build/html
+%{python_expand} %{fdupes} %{buildroot}
 
 %files %{python_files}
 %doc docs/_build/html
-%{python_sitearch}/pillow_heif
-%{python_sitearch}/pillow_heif-%{version}.dist-info
-%{python_sitearch}/_pillow_heif.cpython-*.so
+%{python_sitearch}/%{_name}
+%{python_sitearch}/%{_name}-%{version}.dist-info
+%{python_sitearch}/_%{_name}.cpython-%{python_version_nodots}-*.so
 
 %changelog

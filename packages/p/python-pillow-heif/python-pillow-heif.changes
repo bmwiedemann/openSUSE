@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jan 30 13:22:43 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- remove tests, as they can't run anyway on OBS
+
+-------------------------------------------------------------------
+Fri Jan 30 11:44:14 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.2.0:
+  * Dropped Python 3.9 support
+  * PREFERRED_DECODER must now always be a valid, available decoder ID, or an
+    exception will be raised
+
+-------------------------------------------------------------------
+Tue Nov 11 16:35:05 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * macOS: Wheels now support older macOS versions like Catalina
+    (x86_64 CPU) or Ventura (ARM CPU). #384 #385
+
+-------------------------------------------------------------------
+Tue Aug 12 21:26:01 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add tests if dependencies are available
+- removing duplicates with fdupes
+
+-------------------------------------------------------------------
 Tue Aug 12 09:37:55 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - updated to version 1.1.0:
