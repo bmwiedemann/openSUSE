@@ -595,4 +595,21 @@
   the overview page (gh#agama-project/agama#3060).</comment>
     <requestid>1329459</requestid>
   </revision>
+  <revision rev="34" vrev="34">
+    <srcmd5>522412726d13b0689df03b78e2810b18</srcmd5>
+    <version>0</version>
+    <time>1769793580</time>
+    <user>anag_factory</user>
+    <comment>- Do not crash when selecting a pattern (gh#agama-project/agama#3097,
+  bsc#1257454).
+
+- Force the user to select a mode when it is needed (related to
+  jsc#PED-14307).
+- Do not loose the mode when registering a product (related to
+  jsc#PED-14307).
+- Reset the configuration when selecting a new product.
+
+- Allow selecting the mode in the product selection screen (jsc#PED-14307).</comment>
+    <requestid>1329818</requestid>
+  </revision>
 </revisionlist>
