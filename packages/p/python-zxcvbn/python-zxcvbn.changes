@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 29 19:39:39 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Update to version 4.5.0
+  * decorator solution for lazy loading frequency_lists library
+  * handle zero-length password gracefully
+  * add max password length, default 72, configurable via
+    ZXCVBN_MAX_LENGTH env var
+  
+-------------------------------------------------------------------
 Fri Jun  6 03:08:58 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

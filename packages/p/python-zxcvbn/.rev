@@ -24,4 +24,18 @@
 - No more greedy globs in %files.</comment>
     <requestid>1283481</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>081b935d908dc9ed006efcc32ac920ee</srcmd5>
+    <version>4.5.0</version>
+    <time>1769794141</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.5.0
+  * decorator solution for lazy loading frequency_lists library
+  * handle zero-length password gracefully
+  * add max password length, default 72, configurable via
+    ZXCVBN_MAX_LENGTH env var
+  
+</comment>
+    <requestid>1330016</requestid>
+  </revision>
 </revisionlist>
