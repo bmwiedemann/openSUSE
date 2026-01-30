@@ -17,7 +17,7 @@
 
 
 Name:           lima
-Version:        2.0.2~0
+Version:        2.0.3
 Release:        0
 Summary:        Linux virtual machines, with a focus on running containers
 License:        Apache-2.0
@@ -44,7 +44,7 @@ Linux virtual machines, with a focus on running containers.
 %autosetup -p1 -a1
 
 %build
-VERSION=%{version} CC=gcc CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -ldflags="-s -w -X github.com/lima-vm/lima/pkg/version.Version="  -o limactl ./cmd/limactl
+VERSION="%{version}" CC=gcc CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -ldflags="-w -X github.com/lima-vm/lima/v2/pkg/version.Version=%{version}"  -o limactl ./cmd/limactl
 make native-guestagent
 make default_template
 
@@ -60,6 +60,9 @@ mkdir -p %{buildroot}/usr/share/%{name}/templates/
 install -Dm644 _output/share/lima/lima-guestagent.Linux-%{lima_arch}.gz \
 	%{buildroot}/usr/share/lima/%{name}-guestagent.Linux-%{lima_arch}.gz
 cp -rv templates/* %{buildroot}/usr/share/%{name}/templates/
+
+%check
+./limactl --version
 
 %files
 %license LICENSE

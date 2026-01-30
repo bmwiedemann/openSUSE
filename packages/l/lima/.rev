@@ -7,4 +7,41 @@
     <comment>New package, see https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/NVXAH37BQKAAG6TREQGMILXBJOJM224G/ </comment>
     <requestid>1327898</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a53c3c7a4db7e80b086c9cf09af438c5</srcmd5>
+    <version>2.0.3</version>
+    <time>1769793731</time>
+    <user>anag_factory</user>
+    <comment>- Remove -s from ldflags to allow shipping debuginfo
+
+- Update to version 2.0.3:
+  * build(deps): bump google.golang.org/grpc in /hack/tools
+  * build(deps): bump google.golang.org/grpc from 1.77.0 to 1.78.0
+  * pkg/driver/qemu: Cancel Context on exiting QEMU command
+  * templates: update
+  * nerdctl: update from v2.2.0 to v2.2.1
+  * Scrape the log of dnf needs-restarting command
+  * limactl copy: fix copying directory with rsync
+  * build(deps): bump github.com/goccy/go-yaml from 1.19.0 to 1.19.1
+  * build(deps): bump actions/attest-build-provenance from 3.0.0 to 3.1.0
+  * templates: experimental/rke2: update to 1.34
+  * templates: k8s: pin Kubernetes version to 1.34
+  * Add bats test for the shell tty fixes
+  * Check that input is a tty before using it
+  * Check tty flag also for the shell command
+  * build(deps): bump github/codeql-action from 4.31.8 to 4.31.9
+  * driverutil: s/diffDisk/srcDisk/ to avoid confusion
+  * fix: avoid nil pointer dereference in shellAction
+  * build(deps): bump actions/download-artifact from 6.0.0 to 7.0.0
+  * build(deps): bump google.golang.org/protobuf in /hack/tools
+  * build(deps): bump google.golang.org/protobuf from 1.36.10 to 1.36.11
+  * build(deps): bump actions/upload-artifact from 5.0.0 to 6.0.0
+  * build(deps): bump github/codeql-action from 4.31.7 to 4.31.8
+  * build(deps): bump actions/cache from 5.0.0 to 5.0.1
+  * update GPG fingerprint for unsuman
+  * test(driverutil): add EnsureDisk tests for ISO and non-ISO base images Add pkg/driverutil/disk_test.go covering:  - Base image is ISO: EnsureDisk creates/keeps diffdisk and converts to asif and raw; base ISO remains unchanged (content hash and ISO signature).  - Base image is non-ISO: EnsureDisk converts diffdisk to raw and asif.
+  * Validate number of CPUs
+  * build(deps): bump github.com/miekg/dns from 1.1.68 to 1.1.69</comment>
+    <requestid>1329926</requestid>
+  </revision>
 </revisionlist>
