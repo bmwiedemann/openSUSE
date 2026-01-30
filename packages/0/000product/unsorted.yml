@@ -8949,6 +8949,10 @@ unsorted:
   - info-std 
   - info2html 
   - infos-creator-rpm 
+  - ingress2gateway 
+  - ingress2gateway-bash-completion 
+  - ingress2gateway-fish-completion 
+  - ingress2gateway-zsh-completion 
   - ini4j 
   - ini4j-javadoc 
   - inkscape-extensions-fig 
@@ -10037,7 +10041,6 @@ unsorted:
   - kernel-kvmsmall-devel 
   - kernel-kvmsmall-livepatch-devel 
   - kernel-kvmsmall-vdso 
-  - kernel-longterm 
   - kernel-longterm-devel 
   - kernel-longterm-vdso 
   - kernel-macros 
@@ -14905,8 +14908,6 @@ unsorted:
   - libnetcdf22 
   - libnetcdf22-openmpi4 
   - libnetcdf22-openmpi5 
-  - libnetcdf_c++-devel 
-  - libnetcdf_c++4 
   - libnetcdf_c++4-1 
   - libnetcdf_c++4-devel 
   - libnetcontrol-devel 
@@ -15604,7 +15605,6 @@ unsorted:
   - libpython3_15-1_0 
   - libpython3_15-1_0-x86-64-v3 
   - libpython3_15t-1_0 
-  - libpython3_9-1_0 
   - libqaccessibilityclient-qt5 
   - libqaccessibilityclient-qt5-0 
   - libqaccessibilityclient-qt5-devel 
@@ -17982,6 +17982,8 @@ unsorted:
   - lua55 
   - lua55-alt-getopt 
   - lua55-argparse 
+  - lua55-cffi-lua 
+  - lua55-cffi-lua-doc 
   - lua55-compat-5.3 
   - lua55-compat-5.3-bit32 
   - lua55-devel 
@@ -18971,6 +18973,7 @@ unsorted:
   - minitube-lang 
   - miniupnpc 
   - miniz-devel 
+  - minizign 
   - minizinc 
   - minizip-devel 
   - minizip-ng-devel 
@@ -20085,12 +20088,8 @@ unsorted:
   - nvidia-open-driver-G07-signed-check 
   - nvidia-open-driver-G07-signed-cuda-check 
   - nvidia-open-driver-G07-signed-cuda-default-devel 
-  - nvidia-open-driver-G07-signed-cuda-kmp-default 
-  - nvidia-open-driver-G07-signed-cuda-kmp-longterm 
   - nvidia-open-driver-G07-signed-cuda-longterm-devel 
   - nvidia-open-driver-G07-signed-default-devel 
-  - nvidia-open-driver-G07-signed-kmp-default 
-  - nvidia-open-driver-G07-signed-kmp-longterm 
   - nvidia-open-driver-G07-signed-longterm-devel 
   - nvidia-settings 
   - nvidia-texture-tools 
@@ -35707,17 +35706,6 @@ unsorted:
   - python315-tk 
   - python315-tools 
   - python315-x86-64-v3 
-  - python39 
-  - python39-base 
-  - python39-curses 
-  - python39-dbm 
-  - python39-devel 
-  - python39-doc 
-  - python39-doc-devhelp 
-  - python39-idle 
-  - python39-testsuite 
-  - python39-tk 
-  - python39-tools 
   - pyzo 
   - pyzologo 
   - q4wine 
@@ -48600,6 +48588,7 @@ unsorted:
   - tslib-plugins 
   - tsung 
   - ttf-converter 
+  - ttl 
   - ttyd 
   - ttynvt 
   - ttyper 
@@ -49401,13 +49390,14 @@ unsorted:
   - virtualbox-guest-desktop-icons 
   - virtualbox-guest-source 
   - virtualbox-host-source 
-  - virtualbox-kmp-longterm 
   - virtualbox-qt 
   - virtualbox-vnc 
   - virtualbox-websrv 
   - virtui-manager 
   - virtui-manager-doc 
   - virtui-remote-viewer 
+  - virtx 
+  - virtx-bash-completion 
   - viruskiller 
   - vis 
   - visio2svg-conv 
@@ -50562,7 +50552,10 @@ unsorted:
   - zynaddsubfx-dssi 
   - zynaddsubfx-lv2 
   - zynaddsubfx-vst 
+  - zypp-excludedocs 
   - zypp-gui 
+  - zypp-no-multiversion 
+  - zypp-no-recommends 
   - zypper-aptitude 
   - zypper-changelog-plugin 
   - zypper-keys-plugin 

@@ -903,6 +903,7 @@
     <package name="kernel-firmware-ti" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="kernel-firmware-ueagle" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="kernel-firmware-usb-network" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="kernel-longterm" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="kexec-tools" supportstatus="unsupported"/> <!-- reason: dvd:kdump -->
     <package name="keyutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="kf6-attica" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3155,6 +3156,10 @@
     <package name="numlockx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="nvidia-libXNVCtrl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="nvidia-open-driver-G06-signed-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="nvidia-open-driver-G07-signed-cuda-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="nvidia-open-driver-G07-signed-cuda-kmp-longterm" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="nvidia-open-driver-G07-signed-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="nvidia-open-driver-G07-signed-kmp-longterm" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="nvme-cli" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="nvme-cli-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="obex-data-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -4182,6 +4187,7 @@
     <package name="virtiofsd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="virtualbox-guest-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="virtualbox-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="virtualbox-kmp-longterm" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="vlan" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="vlc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="vlc-codec-gstreamer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
