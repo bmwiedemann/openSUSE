@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan 29 07:04:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.7.15:
+  * Updated indirect dependency go-chi/chi/v5 (addresses
+    GO-2026-4316). #63093
+  * The tbot systemd install command now supports a --pid-file flag
+    for setting the path to the PID file. #63038
+  * Fixed GCS session recording backend not respecting rate limits.
+    #62987
+  * Made the teleport-cluster Helm chart job resources configurable
+    again via the jobResources value. #62924
+  * Reverted a disruptive change from v17.7.11: teleport-cluster
+    Helm chart uses resources for Jobs again. If set jobResources
+    takes precedence. This will change in v18, only jobResources
+    will be used. #62924
+
+-------------------------------------------------------------------
 Mon Jan 19 07:34:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 17.7.14:
