@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 23 13:34:31 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Adapt the .spec file for Immutable Mode [jsc#PED-14814]
+
+-------------------------------------------------------------------
 Thu Nov  6 14:11:20 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 5.76:

@@ -1,7 +1,7 @@
 #
 # spec file for package stunnel
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ Source1:        https://www.stunnel.org/downloads/%{name}-%{version}.tar.gz.asc
 Source2:        https://www.stunnel.org/pgp.asc#/%{name}.keyring
 Source3:        sysconfig.syslog-stunnel
 Source4:        stunnel.rc
-Source7:        stunnel.README
+Source5:        stunnel.README
 # PATCH-FIX-UPSTREAM Fix service file, so it ensure we are starting after network is really up!
 Patch1:         stunnel-5.59_service_always_after_network.patch
 Patch2:         harden_stunnel.service.patch
@@ -126,7 +126,19 @@ rm -rf %{buildroot}%{_docdir}/stunnel/INSTALL.W32.md
 rm -rf %{buildroot}%{_docdir}/stunnel/ca-certs.pem
 rm -rf %{buildroot}%{_docdir}/stunnel/plugins/
 
-mkdir -p %{buildroot}%{_localstatedir}/lib/stunnel/{bin,etc,dev,%{_lib},sbin,var/run}
+# Install tmpfiles.d and define the configuration for immutable mode [jsc#PED-14814]
+install -d %{buildroot}%{_tmpfilesdir}
+cat > %{buildroot}%{_tmpfilesdir}/stunnel.conf <<EOF
+#Type Path         Mode UID  GID  Age Argument
+d /var/lib/stunnel 0755 root root - -
+d /var/lib/stunnel/bin 0755 root root - -
+d /var/lib/stunnel/etc 0755 root root - -
+d /var/lib/stunnel/dev 0755 root root - -
+d /var/lib/stunnel/lib64 0755 root root - -
+d /var/lib/stunnel/sbin 0755 root root - -
+d /var/lib/stunnel/var/run 0755 stunnel root - -
+EOF
+
 install -d %{buildroot}%{_sysconfdir}/%{name}/conf.d
 
 %check
@@ -145,6 +157,7 @@ fi
 %service_add_pre %{name}.service
 
 %post
+%tmpfiles_create %{_tmpfilesdir}/stunnel.conf
 %service_add_post %{name}.service
 %{fillup_only -ans syslog stunnel}
 
@@ -162,19 +175,21 @@ fi
 %{_libdir}/%{name}/
 %{_mandir}/man8/stunnel*8%{?ext_man}
 %dir %attr(700,root,root) %{_sysconfdir}/%{name}/
-%dir %attr(700,root,root) %{_sysconfdir}/%{name}//conf.d
+%dir %attr(700,root,root) %{_sysconfdir}/%{name}/conf.d
 %config(noreplace) %{_sysconfdir}/%{name}/stunnel.conf
-%dir %attr(755,root,root) %{_localstatedir}/lib/stunnel
-%dir %attr(755,root,root) %{_localstatedir}/lib/stunnel/bin
-%dir %attr(755,root,root) %{_localstatedir}/lib/stunnel%{_sysconfdir}
-%dir %attr(755,root,root) %{_localstatedir}/lib/stunnel/dev
-%dir %attr(755,root,root) %{_localstatedir}/lib/stunnel/%{_lib}
-%dir %attr(755,root,root) %{_localstatedir}/lib/stunnel/sbin
-%dir %attr(755,root,root) %{_localstatedir}/lib/stunnel%{_localstatedir}
-%dir %attr(755,stunnel,root) %{_localstatedir}/lib/stunnel%{_localstatedir}/run
 %{_fillupdir}/sysconfig.syslog-stunnel
 %{_unitdir}/stunnel.service
 %{_datadir}/bash-completion/completions/%{name}.bash
+# Immutable mode (jsc#PED-14814)
+%{_tmpfilesdir}/stunnel.conf
+%ghost %dir %attr(755,root,root) %{_localstatedir}/lib/stunnel
+%ghost %dir %attr(755,root,root) %{_localstatedir}/lib/stunnel/bin
+%ghost %dir %attr(755,root,root) %{_localstatedir}/lib/stunnel%{_sysconfdir}
+%ghost %dir %attr(755,root,root) %{_localstatedir}/lib/stunnel/dev
+%ghost %dir %attr(755,root,root) %{_localstatedir}/lib/stunnel/%{_lib}
+%ghost %dir %attr(755,root,root) %{_localstatedir}/lib/stunnel/sbin
+%ghost %dir %attr(755,root,root) %{_localstatedir}/lib/stunnel%{_localstatedir}
+%ghost %dir %attr(755,stunnel,root) %{_localstatedir}/lib/stunnel%{_localstatedir}/run
 
 %files doc
 %doc %{_docdir}/%{name}
