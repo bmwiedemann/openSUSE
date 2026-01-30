@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-config
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define mainver 2.3.0
 Name:           lxqt-config
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        LXQt Control Center
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 29 19:21:59 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.3.1:
+  * Update the code for kscreen 6.6
+  * Added monospace setting to lxqt-config-appearance
+  * Added draglock and disable-while-typing settings for X11
+  * Added unsupported notice for brightness on Wayland to lxqt-config-brightness
+  * Miscellaneous enhancements
+
+-------------------------------------------------------------------
 Wed Nov  5 18:12:17 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 2.3.0:

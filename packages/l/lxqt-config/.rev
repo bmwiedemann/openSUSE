@@ -675,4 +675,17 @@ this patch makes lxqt-config also include desktop files with the x-lxqt category
   * Miscellaneous small fixes and enhancements</comment>
     <requestid>1315875</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>5bfaea1f1a87e10b39264c27df8d3e6a</srcmd5>
+    <version>2.3.1</version>
+    <time>1769793741</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.1:
+  * Update the code for kscreen 6.6
+  * Added monospace setting to lxqt-config-appearance
+  * Added draglock and disable-while-typing settings for X11
+  * Added unsupported notice for brightness on Wayland to lxqt-config-brightness
+  * Miscellaneous enhancements</comment>
+    <requestid>1329873</requestid>
+  </revision>
 </revisionlist>
