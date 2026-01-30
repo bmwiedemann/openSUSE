@@ -1,0 +1,27 @@
+From 77b1b1486077c3a216b00d64d54fc861cad309b1 Mon Sep 17 00:00:00 2001
+From: Maxim Iorsh <iorsh@users.sourceforge.net>
+Date: Tue, 4 Nov 2025 23:46:52 +0200
+Subject: [PATCH] Fix UFO crash for empty contours (#5645)
+
+---
+ fontforge/ufo.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/fontforge/ufo.c b/fontforge/ufo.c
+index 56643d0f1..e9d988854 100644
+--- a/fontforge/ufo.c
++++ b/fontforge/ufo.c
+@@ -2722,6 +2722,10 @@ static SplineChar *_UFOLoadGlyph(SplineFont *sf, xmlDocPtr doc, char *glifname,
+             for ( points=contour->children; points!=NULL; points=points->next )
+                 if ( xmlStrcmp(points->name,(const xmlChar *) "point")==0 )
+             break;
++            if (points == NULL) {
++                // The UFO3 specification allows empty contours, we just drop them.
++                continue;
++            }
+             for ( npoints=points->next; npoints!=NULL; npoints=npoints->next )
+                 if ( xmlStrcmp(npoints->name,(const xmlChar *) "point")==0 )
+             break;
+-- 
+2.49.0
+

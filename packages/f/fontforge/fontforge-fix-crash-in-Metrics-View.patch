@@ -1,0 +1,48 @@
+From 46dc37435bc5b3daaf160f494cd36677d2bb8cb3 Mon Sep 17 00:00:00 2001
+From: Maxim Iorsh <iorsh@users.sourceforge.net>
+Date: Thu, 6 Nov 2025 22:54:52 +0200
+Subject: [PATCH] Fix crash in Metrics View (#5647)
+
+---
+ fontforge/tottf.c | 4 ++--
+ fontforge/ufo.c   | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/fontforge/tottf.c b/fontforge/tottf.c
+index 1b686c0b1..dddd5d6a6 100644
+--- a/fontforge/tottf.c
++++ b/fontforge/tottf.c
+@@ -6174,7 +6174,7 @@ int _WriteTTFFont(FILE *ttf,SplineFont *sf,enum fontformat format,
+ 
+ 	fake_mappings = calloc(sf->glyphcnt,sizeof(bool));
+ 	for (i = 0; i < sf->glyphcnt; ++i) {
+-	    if (sf->glyphs[i]->unicodeenc == -1) {
++	    if (sf->glyphs[i] && sf->glyphs[i]->unicodeenc == -1) {
+ 		sf->glyphs[i]->unicodeenc = fake_unicode_base + sf->glyphs[i]->orig_pos;
+ 		fake_mappings[i] = true;
+ 	    }
+@@ -6222,7 +6222,7 @@ int _WriteTTFFont(FILE *ttf,SplineFont *sf,enum fontformat format,
+     // Remove temporarily assigned fake Private Area unicode point from all unmapped glyphs
+     if (flags & ttf_flag_fake_map) {
+ 	for (i = 0; i < sf->glyphcnt; ++i) {
+-	    if (fake_mappings[i])
++	    if (sf->glyphs[i] && fake_mappings[i])
+ 		sf->glyphs[i]->unicodeenc = -1;
+ 	}
+ 	free(fake_mappings);
+diff --git a/fontforge/ufo.c b/fontforge/ufo.c
+index e9d988854..d68633359 100644
+--- a/fontforge/ufo.c
++++ b/fontforge/ufo.c
+@@ -1050,7 +1050,7 @@ void clear_cached_ufo_paths(SplineFont * sf) {
+   // First we clear the glif names.
+   for (i = 0; i < sf->glyphcnt; i++) {
+     struct splinechar * sc = sf->glyphs[i];
+-    if (sc->glif_name != NULL) { free(sc->glif_name); sc->glif_name = NULL; }
++    if (sc && sc->glif_name != NULL) { free(sc->glif_name); sc->glif_name = NULL; }
+   }
+   // Then we clear the layer names.
+   for (i = 0; i < sf->layer_cnt; i++) {
+-- 
+2.49.0
+

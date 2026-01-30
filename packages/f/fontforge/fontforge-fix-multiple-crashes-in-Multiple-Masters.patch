@@ -1,0 +1,180 @@
+From dfe5c8035d716e99ebd0fdb1c49ea623d94737a7 Mon Sep 17 00:00:00 2001
+From: Maxim Iorsh <iorsh@users.sourceforge.net>
+Date: Mon, 19 Jan 2026 22:45:20 +0200
+Subject: [PATCH] Fix multiple crashes in Multiple Masters (#5733)
+
+* Fix corruption in SFMakeChar() for MM fonts
+* Crash when opening MM font with kerning
+* Fix crash for missing MM Mac name
+---
+ Unicode/memory.c     |  7 +++++++
+ Unicode/ustring.c    |  2 +-
+ fontforge/encoding.c | 40 ++++++++++++++++++++++++++--------------
+ fontforge/sfd.c      |  4 +++-
+ fontforgeexe/mmdlg.c |  6 +++---
+ inc/basics.h         |  2 ++
+ 6 files changed, 42 insertions(+), 19 deletions(-)
+
+diff --git a/Unicode/memory.c b/Unicode/memory.c
+index 774b138fd..1613f7730 100644
+--- a/Unicode/memory.c
++++ b/Unicode/memory.c
+@@ -39,6 +39,13 @@ void NoMoreMemMessage(void) {
+     fprintf(stderr, "Out of memory\n" );
+ }
+ 
++void ExpandBuffer(void** p_buf, size_t elem_size, size_t increment,
++                  int* p_maxalloc) {
++    *p_buf = realloc(*p_buf, (*p_maxalloc + increment) * elem_size);
++    memset((char*)*p_buf + (*p_maxalloc) * elem_size, 0, increment * elem_size);
++    *p_maxalloc += increment;
++}
++
+ char *copy(const char *str) {
+     return str ? strdup(str) : NULL;
+ }
+diff --git a/Unicode/ustring.c b/Unicode/ustring.c
+index b0fe3387e..893eeedf2 100644
+--- a/Unicode/ustring.c
++++ b/Unicode/ustring.c
+@@ -535,7 +535,7 @@ unichar_t *utf82u_strncpy(unichar_t *ubuf,const char *utf8buf,int len) {
+ }
+ 
+ unichar_t *utf82u_strcpy(unichar_t *ubuf,const char *utf8buf) {
+-return( utf82u_strncpy(ubuf,utf8buf,strlen(utf8buf)+1));
++return( utf82u_strncpy(ubuf,utf8buf,c_strlen(utf8buf)+1));
+ }
+ 
+ unichar_t *utf82u_copyn(const char *utf8buf,int len) {
+diff --git a/fontforge/encoding.c b/fontforge/encoding.c
+index 194ecd035..6eb9c6dc7 100644
+--- a/fontforge/encoding.c
++++ b/fontforge/encoding.c
+@@ -1233,7 +1233,7 @@ enum cmaptype { cmt_out=-1, cmt_coderange, cmt_notdefs, cmt_cid, cmt_max };
+ struct coderange { uint32_t first, last, cid; };
+ struct cmap {
+     struct {
+-	int n;
++	size_t n;
+ 	struct coderange *ranges;
+     } groups[cmt_max];
+     char *registry;
+@@ -1253,7 +1253,7 @@ static void cmapfree(struct cmap *cmap) {
+     free(cmap);
+ }
+ 
+-static struct coderange *ExtendArray(struct coderange *ranges,int *n, int val) {
++static struct coderange *ExtendArray(struct coderange *ranges, size_t *n, int val) {
+     if ( *n == 0 )
+ 	ranges = calloc(val,sizeof(struct coderange));
+     else {
+@@ -1280,7 +1280,8 @@ static struct cmap *ParseCMap(char *filename) {
+     FILE *file;
+     struct cmap *cmap;
+     char *end, *pt;
+-    int val, pos;
++    int val;
++    size_t pos;
+     enum cmaptype in;
+     int in_is_single; // We set this if we are to parse cidchars into cidranges.
+     static const char *bcsr = "begincodespacerange", *bndr = "beginnotdefrange", *bcr = "begincidrange", *bcc = "begincidchar";
+@@ -2363,21 +2364,32 @@ return( any );
+ }
+ 
+ void SFAddGlyphAndEncode(SplineFont *sf,SplineChar *sc,EncMap *basemap, int baseenc) {
+-    int gid, mapfound = false;
++    int j, gid, mapfound = false;
+     FontViewBase *fv;
+     BDFFont *bdf;
+ 
+     if ( sf->cidmaster==NULL ) {
+-	if ( sf->glyphcnt+1>=sf->glyphmax )
+-	    sf->glyphs = realloc(sf->glyphs,(sf->glyphmax+=10)*sizeof(SplineChar *));
+-	gid = sf->glyphcnt++;
+-	for ( bdf = sf->bitmaps; bdf!=NULL; bdf=bdf->next ) {
+-	    if ( sf->glyphcnt+1>=bdf->glyphmax )
+-		bdf->glyphs = realloc(bdf->glyphs,(bdf->glyphmax=sf->glyphmax)*sizeof(BDFChar *));
+-	    if ( sf->glyphcnt>bdf->glyphcnt ) {
+-		memset(bdf->glyphs+bdf->glyphcnt,0,(sf->glyphcnt-bdf->glyphcnt)*sizeof(BDFChar *));
+-		bdf->glyphcnt = sf->glyphcnt;
+-	    }
++        if (sf->glyphcnt + 1 > sf->glyphmax)
++            ExpandBuffer((void**)&sf->glyphs, sizeof(SplineChar*), 10,
++                         &sf->glyphmax);
++        gid = sf->glyphcnt++;
++        for (bdf = sf->bitmaps; bdf != NULL; bdf = bdf->next) {
++            if (sf->glyphcnt + 1 > bdf->glyphmax)
++                ExpandBuffer((void**)&bdf->glyphs, sizeof(BDFChar*),
++                             sf->glyphmax - bdf->glyphmax, &bdf->glyphmax);
++        }
++        if (sf->mm != NULL) {
++            if (sf->mm->normal->glyphmax < sf->glyphmax)
++                ExpandBuffer((void**)&sf->mm->normal->glyphs,
++                             sizeof(SplineChar*),
++                             sf->glyphmax - sf->mm->normal->glyphmax,
++                             &sf->mm->normal->glyphmax);
++            for (j = 0; j < sf->mm->instance_count; ++j)
++                if (sf->mm->instances[j]->glyphmax < sf->glyphmax)
++                    ExpandBuffer((void**)&sf->mm->instances[j]->glyphs,
++                                 sizeof(SplineChar*),
++                                 sf->glyphmax - sf->mm->instances[j]->glyphmax,
++                                 &sf->mm->instances[j]->glyphmax);
+ 	}
+ 	for ( fv=sf->fv; fv!=NULL; fv = fv->nextsame ) {
+ 	    EncMap *map = fv->map;
+diff --git a/fontforge/sfd.c b/fontforge/sfd.c
+index a349d0b2f..f3c84080d 100644
+--- a/fontforge/sfd.c
++++ b/fontforge/sfd.c
+@@ -9014,7 +9014,9 @@ exit( 1 );
+ 	    }
+ 	}
+     }
+-    if ( sf->cidmaster==NULL )
++
++    /* MM font has already been already fixed up. */
++    if (sf->cidmaster == NULL && sf->mm == NULL)
+ 	SFDFixupRefs(sf);
+ 
+     if ( !haddupenc )
+diff --git a/fontforgeexe/mmdlg.c b/fontforgeexe/mmdlg.c
+index 1baf9ffda..540afdd1c 100644
+--- a/fontforgeexe/mmdlg.c
++++ b/fontforgeexe/mmdlg.c
+@@ -1632,7 +1632,7 @@ return( NULL );
+ 	pt[-1] = ']';
+ 	ustyle = PickNameFromMacName(mmw->old->named_instances[i].names);
+ 	ti[i].bg = ti[i].fg = COLOR_DEFAULT;
+-	ti[i].text = malloc((strlen(buffer)+3+strlen(ustyle))*sizeof(unichar_t));
++	ti[i].text = calloc(strlen(buffer)+3+c_strlen(ustyle), sizeof(unichar_t));
+ 	utf82u_strcpy(ti[i].text,ustyle);
+ 	uc_strcat(ti[i].text," ");
+ 	uc_strcat(ti[i].text,buffer);
+@@ -1762,9 +1762,9 @@ static void MMW_ParseNamedStyles(MMSet *setto,MMW *mmw) {
+ 
+ static void MMW_DoOK(MMW *mmw) {
+     real weights[AppleMmMax+1];
+-    real fbt;
++    real fbt = 0.;
+     int err = false;
+-    char *familyname, *fn, *origname=NULL;
++    char *familyname, *fn=NULL, *origname=NULL;
+     int i,j;
+     MMSet *setto, *dlgmm;
+     FontView *fv = NULL;
+diff --git a/inc/basics.h b/inc/basics.h
+index 86f0db712..9204285d5 100644
+--- a/inc/basics.h
++++ b/inc/basics.h
+@@ -73,6 +73,8 @@ typedef uint32_t unichar_t;
+ #endif
+ 
+ extern void NoMoreMemMessage(void);
++extern void ExpandBuffer(void** p_buf, size_t elem_size, size_t increment,
++                         int* p_maxalloc);
+ 
+ static inline int imin(int a, int b)
+ {
+-- 
+2.49.0
+

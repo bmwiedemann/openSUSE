@@ -23,8 +23,30 @@ Summary:        A Font Editor
 License:        GPL-3.0-or-later
 URL:            https://fontforge.org/
 Source0:        https://github.com/fontforge/fontforge/releases/download/%{version}/fontforge-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE fontforge-version.patch pgajdos@suse.com -- fontforge --version now returns fontforge release version.
 Patch0:         fontforge-version.patch
+# PATCH-FIX-OPENSUSE add-bitmap-transform-support.patch boo#1169444 alarrosa@suse.com -- support transforming bitmap glyphs from python with one of the predefined transformations.
 Patch1:         add-bitmap-transform-support.patch
+# PATCH-FIX-UPSTREAM fontforge-fix-crash-issue-in-allmarkglyphs.patch qzhao@suse.com -- Fix crash issue in allmarkglyphs (#5668).
+Patch2:         fontforge-fix-crash-issue-in-allmarkglyphs.patch
+# PATCH-FIX-UPSTREAM fontforge-fix-UFO-crash-for-empty-contours.patch qzhao@suse.com -- Fix UFO crash for empty contours (#5645).
+Patch3:         fontforge-fix-UFO-crash-for-empty-contours.patch
+# PATCH-FIX-UPSTREAM fontforge-fix-crash-in-Metrics-View.patch qzhao@suse.com -- Fix crash in Metrics View (#5647).
+Patch4:         fontforge-fix-crash-in-Metrics-View.patch
+# PATCH-FIX-UPSTREAM fontforge-fix-crash-on-UpDown-keypress-in-the-feature-list.patch qzhao@suse.com -- Metrics view: Fix crash on Up/Down keypress while in the feature list (#5683).
+Patch5:         fontforge-fix-crash-on-UpDown-keypress-in-the-feature-list.patch
+# PATCH-FIX-UPSTREAM fontforge-CVE-2025-15279-part01_7d67700c.patch CVE-2025-15279 ZDI-CAN-27517 bsc#1256013 qzhao@suse.com -- Fix CVE-2025-15279: Heap buffer overflow in BMP RLE decompression (#5720)
+Patch6:         fontforge-CVE-2025-15279-part01_7d67700c.patch
+# PATCH-FIX-UPSTREAM fontforge-CVE-2025-15275.patch CVE-2025-15275 ZDI-25-1189 ZDI-CAN-28543 bsc#1256025 qzhao@suse.com -- Fix CVE-2025-15275: Heap buffer overflow in SFD image parsing (#5721).
+Patch7:         fontforge-CVE-2025-15275.patch
+# PATCH-FIX-UPSTREAM fontforge-CVE-2025-15269.patch CVE-2025-15269 ZDI-25-1195 ZDI-CAN-28564 bsc#1256032 qzhao@suse.com -- Fix CVE-2025-15269: Use-after-free in SFD ligature parsing (#5722).
+Patch8:         fontforge-CVE-2025-15269.patch
+# PATCH-FIX-UPSTREAM fontforge-CVE-2025-15279-part02_720ea950.patch CVE-2025-15279 ZDI-CAN-27517 bsc#1256013 qzhao@suse.com -- Fix CVE-2025-15279: Move bounds check inside cnt >= 3 block (#5723).
+Patch9:         fontforge-CVE-2025-15279-part02_720ea950.patch
+# PATCH-FIX-UPSTREAM fontforge-fix-crash-for-content-over-32767-characters-in-GDraw.patch qzhao@suse.com -- Fix crash for content over 32767 characters in GDraw multiline text field (#5728).
+Patch10:        fontforge-fix-crash-for-content-over-32767-characters-in-GDraw.patch
+# PATCH-FIX-UPSTREAM fontforge-fix-multiple-crashes-in-Multiple-Masters.patch qzhao@suse.com -- Fix multiple crashes in Multiple Masters (#5733).
+Patch11:        fontforge-fix-multiple-crashes-in-Multiple-Masters.patch
 BuildRequires:  cairo-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes

@@ -1,0 +1,49 @@
+From 9d793fe90ea0c5356e3fb00fa31d0737e1c952fc Mon Sep 17 00:00:00 2001
+From: MihailJP <mihailjp@gmail.com>
+Date: Tue, 4 Nov 2025 02:29:32 +0900
+Subject: [PATCH] Fix crash issue in allmarkglyphs (#5668)
+
+---
+ fontforge/tottfgpos.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/fontforge/tottfgpos.c b/fontforge/tottfgpos.c
+index 73d4e01c3..895ba87b0 100644
+--- a/fontforge/tottfgpos.c
++++ b/fontforge/tottfgpos.c
+@@ -1821,24 +1821,24 @@ static SplineChar **allmarkglyphs(SplineChar ***glyphlist, int classcnt) {
+     int i, tot, k;
+ 
+     if ( classcnt==1 )
+-return( SFOrderedGlyphs(glyphlist[0]));
++        return( SFOrderedGlyphs(glyphlist[0]));
+ 
+     for ( i=tot=0; i<classcnt; ++i ) {
+-	for ( k=0; glyphlist[i][k]!=NULL; ++k );
+-	tot += k;
++        for ( k=0; glyphlist[i]!=NULL && glyphlist[i][k]!=NULL; ++k );
++        tot += k;
+     }
+     glyphs = malloc((tot+1)*sizeof(SplineChar *));
+     for ( i=tot=0; i<classcnt; ++i ) {
+-	for ( k=0; glyphlist[i][k]!=NULL; ++k )
+-	    glyphs[tot++] = glyphlist[i][k];
++        for ( k=0; glyphlist[i]!=NULL && glyphlist[i][k]!=NULL; ++k )
++            glyphs[tot++] = glyphlist[i][k];
+     }
+     qsort(glyphs,tot,sizeof(SplineChar *),orderglyph);
+     for ( i=k=0; i<tot; ++i ) {
+-	while ( i+1<tot && glyphs[i]==glyphs[i+1]) ++i;
+-	glyphs[k++] = glyphs[i];
++        while ( i+1<tot && glyphs[i]==glyphs[i+1]) ++i;
++        glyphs[k++] = glyphs[i];
+     }
+     glyphs[k] = NULL;
+-return( glyphs );
++    return( glyphs );
+ }
+ 
+ static void dumpgposAnchorData(FILE *gpos,AnchorClass *_ac,
+-- 
+2.49.0
+
