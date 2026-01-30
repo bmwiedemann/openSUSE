@@ -88,4 +88,18 @@
   * Update dependencies</comment>
     <requestid>1327024</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6320fdc3ecf898568b39839de913f21a</srcmd5>
+    <version>14.4</version>
+    <time>1769794131</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 14.4 for bsc#1257325
+  * Changes since 14.2
+    - 14.4
+      * Update @patternfly/react-core
+    - 14.3
+      * Translation updates
+      * Dependency updates</comment>
+    <requestid>1329978</requestid>
+  </revision>
 </revisionlist>

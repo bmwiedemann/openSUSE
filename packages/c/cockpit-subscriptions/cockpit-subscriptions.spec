@@ -16,7 +16,7 @@
 #
 
 Name: cockpit-subscriptions
-Version: 14.2
+Version: 14.4
 Release: 1%{?dist}
 Summary: Cockpit module for managing and registering subscriptions
 License: LGPL-2.1-or-later
@@ -39,7 +39,7 @@ Requires: cockpit-bridge
 Requires: suseconnect-ng
 
 Provides: bundled(npm(@patternfly/patternfly)) = 6.4.0
-Provides: bundled(npm(@patternfly/react-core)) = 6.4.0
+Provides: bundled(npm(@patternfly/react-core)) = 6.4.1
 Provides: bundled(npm(@patternfly/react-icons)) = 6.4.0
 Provides: bundled(npm(@patternfly/react-styles)) = 6.4.0
 Provides: bundled(npm(@patternfly/react-tokens)) = 6.4.0

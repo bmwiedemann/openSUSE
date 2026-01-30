@@ -4,7 +4,7 @@ set -e
 
 curVersion=$(grep Version: cockpit-subscriptions.spec | sed -e 's,^\(\s*Version:\s*\)\(.*\)\s*$,\2,')
 
-if [[ ! "$curVersion" =~ ^[0-9]+$ ]]; then
+if [[ ! "$curVersion" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
   echo "Error: curVersion is not a valid integer"
   exit 1
 fi
@@ -18,12 +18,12 @@ newVersion=$(git ls-remote --tags --refs "https://github.com/openSUSE/cockpit-su
 echo "Current version: $curVersion"
 echo "    New version: $newVersion"
 
-if [[ ! "$newVersion" =~ ^[0-9]+$ ]]; then
+if [[ ! "$newVersion" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
   echo "Error: newVersion cannot be determined"
   exit 1
 fi
 
-if [ "$curVersion" -ge "$newVersion" ]; then
+if [ "$(printf '%s\n' "$newVersion" "$curVersion" | sort -V | head -n1)" = "$newVersion" ]; then
 	echo "Nothing to do."
 	exit 0
 fi

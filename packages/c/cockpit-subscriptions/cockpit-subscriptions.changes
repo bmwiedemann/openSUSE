@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 29 09:14:56 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to version 14.4 for bsc#1257325
+  * Changes since 14.2
+    - 14.4
+      * Update @patternfly/react-core
+    - 14.3
+      * Translation updates
+      * Dependency updates
+
+-------------------------------------------------------------------
 Tue Jan 13 12:38:49 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
 
 - Update to version 14.2
