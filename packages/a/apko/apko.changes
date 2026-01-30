@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jan 30 06:22:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.0:
+  * Add limit readers for readers that consume data from external
+    sources. (#2042)
+  * build(deps): bump google.golang.org/api from 0.262.0 to 0.263.0
+    (#2037)
+  * build(deps): bump github/codeql-action from 4.31.11 to 4.32.0
+    (#2036)
+  * build(deps): bump chainguard.dev/sdk from 0.1.48 to 0.1.49
+    (#2040)
+  * chore: fix ineffectual err assignment (#2041)
+  * build(deps): bump go.step.sm/crypto from 0.75.0 to 0.76.0
+    (#2029)
+  * Merge commit from fork
+  * Regenerate apko-discover testdata (#2039)
+  * build(deps): bump chainguard.dev/sdk from 0.1.47 to 0.1.48
+    (#2035)
+  * build(deps): bump chainguard-dev/actions from 1.5.12 to 1.5.13
+    (#2033)
+  * build(deps): bump step-security/harden-runner from 2.14.0 to
+    2.14.1 (#2034)
+
+-------------------------------------------------------------------
 Mon Jan 26 06:21:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.0.5:
