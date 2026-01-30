@@ -311,4 +311,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1328607</requestid>
   </revision>
+  <revision rev="29" vrev="29">
+    <srcmd5>ac49c967ff6775d2c5b89e08b9bde0cb</srcmd5>
+    <version>0</version>
+    <time>1769793596</time>
+    <user>anag_factory</user>
+    <comment>- Add Leap 16.1 product definition
+- Drop Leap 16.0 product definition
+
+- Fix the optional_patterns attribute in the product definitions
+  (jsc#PED-14307).
+
+- Define &quot;standard&quot; and &quot;immutable&quot; modes for SLES (jsc#PED-14307).</comment>
+    <requestid>1330009</requestid>
+  </revision>
 </revisionlist>
