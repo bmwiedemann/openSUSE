@@ -1,0 +1,191 @@
+Index: osinfo-db-20251212/os/opensuse.org/opensuse-16.1.xml
+===================================================================
+--- /dev/null
++++ osinfo-db-20251212/os/opensuse.org/opensuse-16.1.xml
+@@ -0,0 +1,186 @@
++<?xml version="1.0"?>
++<libosinfo version="0.0.1">
++  <!-- Licensed under the GNU General Public License version 2 or later.
++     See http://www.gnu.org/licenses/ for a copy of the license text -->
++  <os id="http://opensuse.org/opensuse/16.1">
++    <short-id>opensuse16.1</short-id>
++    <name>openSUSE Leap 16.1</name>
++    <version>16.1</version>
++    <vendor>openSUSE</vendor>
++    <vendor xml:lang="zh-Hans">openSUSE</vendor>
++    <vendor xml:lang="cs">openSUSE</vendor>
++    <vendor xml:lang="ka">openSUSE</vendor>
++    <vendor xml:lang="ko">&#xC624;&#xD508;&#xC218;&#xC138;</vendor>
++    <vendor xml:lang="uk">openSUSE</vendor>
++    <vendor xml:lang="tr">openSUSE</vendor>
++    <vendor xml:lang="pt-BR">openSUSE</vendor>
++    <vendor xml:lang="pl">openSUSE</vendor>
++    <vendor xml:lang="ja">openSUSE</vendor>
++    <vendor xml:lang="it">openSUSE</vendor>
++    <vendor xml:lang="id">openSUSE</vendor>
++    <vendor xml:lang="fr">openSUSE</vendor>
++    <vendor xml:lang="es">openSUSE</vendor>
++    <vendor xml:lang="de">openSUSE</vendor>
++    <vendor xml:lang="ca">openSUSE</vendor>
++    <family>linux</family>
++    <distro>opensuse</distro>
++    <upgrades id="http://opensuse.org/opensuse/16.0"/>
++    <derives-from id="http://opensuse.org/opensuse/16.0"/>
++    <release-date>2025-10-01</release-date>
++    <variant id="netinst">
++      <name>openSUSE Leap 16.1</name>
++    </variant>
++    <!-- DVD -->
++    <media arch="x86_64">
++      <url>https://download.opensuse.org/distribution/leap/16.1/offline/Leap-16.1-offline-installer-x86_64.install.iso</url>
++      <iso>
++        <volume-id>Install-Leap-16.1-x86_64</volume-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>openSUSE</publisher-id>
++        <application-id>Leap-16.1-offline-installer-x86_64-Build\d+.\d</application-id>
++      </iso>
++      <kernel>boot/x86_64/loader/linux</kernel>
++      <initrd>boot/x86_64/loader/initrd</initrd>
++    </media>
++    <!-- Network -->
++    <media arch="x86_64">
++      <variant id="netinst"/>
++      <url>https://download.opensuse.org/distribution/leap/16.1/offline/Leap-16.1-online-installer-x86_64.install.iso</url>
++      <iso>
++        <volume-id>Install-Leap-16.1-x86_64*</volume-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>openSUSE</publisher-id>
++        <application-id>Leap-16.1-online-installer-x86_64-Build\d+.\d</application-id>
++      </iso>
++      <kernel>boot/x86_64/loader/linux</kernel>
++      <initrd>boot/x86_64/loader/initrd</initrd>
++    </media>
++    <!-- DVD -->
++    <media arch="aarch64">
++      <url>https://download.opensuse.org/distribution/leap/16.1/offline/Leap-16.1-offline-installer-aarch64.install.iso</url>
++      <iso>
++        <volume-id>Install-Leap-16.1-aarch64</volume-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>openSUSE</publisher-id>
++        <application-id>Leap-16.1-offline-installer-aarch64-Build\d+.\d</application-id>
++      </iso>
++      <kernel>boot/aarch64/loader/linux</kernel>
++      <initrd>boot/aarch64/loader/initrd</initrd>
++    </media>
++    <!-- Network -->
++    <media arch="aarch64">
++      <variant id="netinst"/>
++      <url>https://download.opensuse.org/distribution/leap/16.1/offline/Leap-16.1-online-installer-aarch64.install.iso</url>
++      <iso>
++        <volume-id>Install-Leap-16.1-aarch64</volume-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>openSUSE</publisher-id>
++        <application-id>Leap-16.1-online-installer-aarch64-Build\d+.\d</application-id>
++      </iso>
++      <kernel>boot/aarch64/loader/linux</kernel>
++      <initrd>boot/aarch64/loader/initrd</initrd>
++    </media>
++    <!-- DVD -->
++    <media arch="ppc64le">
++      <url>https://download.opensuse.org/distribution/leap/16.1/offline/Leap-16.1-offline-installer-ppc64le.install.iso</url>
++      <iso>
++        <volume-id>Install-Leap-16.1-ppc64le</volume-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>openSUSE</publisher-id>
++        <application-id>Leap-16.1-offline-installer-ppc64le-Build\d+.\d</application-id>
++      </iso>
++      <kernel>boot/ppc64le/linux</kernel>
++      <initrd>boot/ppc64le/initrd</initrd>
++    </media>
++    <!-- Network -->
++    <media arch="ppc64le">
++      <variant id="netinst"/>
++      <url>https://download.opensuse.org/distribution/leap/16.1/offline/Leap-16.1-online-installer-ppc64le.install.iso</url>
++      <iso>
++        <volume-id>Install-Leap-16.1-ppc64le</volume-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>openSUSE</publisher-id>
++        <application-id>Leap-16.1-online-installer-ppc64le-Build\d+.\d</application-id>
++      </iso>
++      <kernel>boot/ppc64le/linux</kernel>
++      <initrd>boot/ppc64le/initrd</initrd>
++    </media>
++    <!-- DVD -->
++    <media arch="s390x">
++      <url>https://download.opensuse.org/distribution/leap/16.1/offline/Leap-16.1-offline-installer-s390x.install.iso</url>
++      <iso>
++        <volume-id>Install-Leap-16.1-s390x</volume-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>openSUSE</publisher-id>
++        <application-id>Leap-16.1-offline-installer-s390x-Build\d+.\d</application-id>
++      </iso>
++      <kernel>boot/s390x/linux</kernel>
++      <initrd>boot/s390x/initrd</initrd>
++    </media>
++    <!-- Network -->
++    <media arch="s390x">
++      <variant id="netinst"/>
++      <url>https://download.opensuse.org/distribution/leap/16.1/offline/Leap-16.1-online-installer-s390x.install.iso</url>
++      <iso>
++        <volume-id>Install-Leap-16.1-s390x</volume-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>openSUSE</publisher-id>
++        <application-id>Leap-16.1-online-installer-s390x-Build\d+.\d</application-id>
++      </iso>
++      <kernel>boot/s390x/linux</kernel>
++      <initrd>boot/s390x/initrd</initrd>
++    </media>
++    <image arch="aarch64" format="qcow2" cloud-init="true">
++      <url>https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.aarch64-Cloud.qcow2</url>
++    </image>
++    <image arch="x86_64" format="qcow2" cloud-init="true">
++      <url>https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.x86_64-Cloud.qcow2</url>
++    </image>
++    <tree arch="x86_64">
++      <url>https://download.opensuse.org/distribution/leap/16.1/repo/oss/</url>
++      <treeinfo>
++        <family>openSUSE Leap</family>
++        <version>16.1</version>
++        <arch>x86_64</arch>
++      </treeinfo>
++    </tree>
++    <tree arch="aarch64">
++      <url>https://download.opensuse.org/distribution/leap/16.1/repo/oss/</url>
++      <treeinfo>
++        <family>openSUSE Leap</family>
++        <version>16.1</version>
++        <arch>aarch64</arch>
++      </treeinfo>
++    </tree>
++    <tree arch="ppc64le">
++      <url>https://download.opensuse.org/distribution/leap/16.1/repo/oss/</url>
++      <treeinfo>
++        <family>openSUSE Leap</family>
++        <version>16.1</version>
++        <arch>ppc64le</arch>
++      </treeinfo>
++    </tree>
++    <tree arch="s390x">
++      <url>https://download.opensuse.org/distribution/leap/16.1/repo/oss/</url>
++      <treeinfo>
++        <family>openSUSE Leap</family>
++        <version>16.1</version>
++        <arch>s390x</arch>
++      </treeinfo>
++    </tree>
++    <resources arch="all">
++      <minimum>
++        <cpu>2000000000</cpu>
++        <n-cpus>2</n-cpus>
++        <ram>2147483648</ram>
++        <storage>42949672960</storage>
++      </minimum>
++      <recommended>
++        <cpu>2400000000</cpu>
++        <n-cpus>2</n-cpus>
++        <ram>2147483648</ram>
++        <storage>42949672960</storage>
++      </recommended>
++    </resources>
++  </os>
++</libosinfo>

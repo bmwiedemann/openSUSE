@@ -696,4 +696,12 @@
     <comment>Update osinfo-db database version to 20251212</comment>
     <requestid>1325466</requestid>
   </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>82df2ee61a1250041e7f608eb340a653</srcmd5>
+    <version>20251212</version>
+    <time>1769793727</time>
+    <user>anag_factory</user>
+    <comment>Add support for SLES-16.1 and openSUSE Leap 16.1 to the database.</comment>
+    <requestid>1329867</requestid>
+  </revision>
 </revisionlist>
