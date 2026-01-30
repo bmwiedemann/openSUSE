@@ -425,4 +425,13 @@
 - live-root: update final EULAs with the June 2024 delivery</comment>
     <requestid>1327362</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>96e4910933c4e58a436ef038b8e60a55</srcmd5>
+    <version>19.pre.0.0</version>
+    <time>1769793581</time>
+    <user>anag_factory</user>
+    <comment>- Display version &quot;16.1&quot; in the Live ISO boot menu
+  (gh#agama-project/agama#3089)</comment>
+    <requestid>1329820</requestid>
+  </revision>
 </revisionlist>
