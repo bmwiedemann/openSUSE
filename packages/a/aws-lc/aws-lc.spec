@@ -19,7 +19,7 @@
 %define         sover 0
 %define         __builder ninja
 Name:           aws-lc
-Version:        1.66.2
+Version:        1.67.0
 Release:        0
 Summary:        Checksums package for AWS SDK for C
 License:        Apache-2.0
@@ -28,7 +28,6 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 # integration test needs internet
 Patch0:         disable-integrationtest.patch
-Patch1:         vendor-fix.patch
 # I need to look further into this, as the test fails pretty hard
 Patch2:         skip-test.patch
 BuildRequires:  clang

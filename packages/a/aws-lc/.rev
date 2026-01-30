@@ -238,4 +238,26 @@
   * Fix ppc64le; Improve platform detection (forwarded request 1326314 from rrahl0)</comment>
     <requestid>1326315</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c17c210df05a253a3c7ec7612902c289</srcmd5>
+    <version>1.67.0</version>
+    <time>1769794241</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.67.0:
+  * Migrate Wycheproof test vectors for ECDSA, RSA PKCS#1, and some more
+  * Rename volatile state/memory to unique state/memory
+  * Service Indicator: Add error call trampoline to avoid delocator issue
+  * Add support for Big Endian in ACVP tool
+  * AES-GCM: Add function pointer trampolines to avoid delocator issue
+  * Use already defined macro for no inline
+  * Remove Kyber completely
+  * Import mldsa-native
+  * Use existing session context if new is actually NULL
+  * Integrate Wycheproof ML-KEM test vectors
+  * Avoid cross-compilation build failure
+  * Cleanup pass on Go code in repository
+  * Update patch for nmap
+- remove vendor-fix.patch, as upstream finally fixed the issue (forwarded request 1330034 from rrahl0)</comment>
+    <requestid>1330035</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 30 11:59:39 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.67.0:
+  * Migrate Wycheproof test vectors for ECDSA, RSA PKCS#1, and some more
+  * Rename volatile state/memory to unique state/memory
+  * Service Indicator: Add error call trampoline to avoid delocator issue
+  * Add support for Big Endian in ACVP tool
+  * AES-GCM: Add function pointer trampolines to avoid delocator issue
+  * Use already defined macro for no inline
+  * Remove Kyber completely
+  * Import mldsa-native
+  * Use existing session context if new is actually NULL
+  * Integrate Wycheproof ML-KEM test vectors
+  * Avoid cross-compilation build failure
+  * Cleanup pass on Go code in repository
+  * Update patch for nmap
+- remove vendor-fix.patch, as upstream finally fixed the issue
+
+-------------------------------------------------------------------
 Fri Jan  9 10:05:01 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.66.2:
