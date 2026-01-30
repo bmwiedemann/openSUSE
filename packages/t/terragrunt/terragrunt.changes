@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 30 07:09:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.99.1:
+  * Bug Fixes
+    - Pass through null inputs
+      Fixes a bug where null inputs weren't being passed through
+      correctly to OpenTofu/Terraform.
+  * What's Changed
+    - fix: Fixing null input passing (#5458)
+
+-------------------------------------------------------------------
 Tue Jan 27 06:06:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.99.0:
