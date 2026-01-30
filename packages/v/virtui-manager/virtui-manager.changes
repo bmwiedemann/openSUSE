@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jan 30 09:37:48 UTC 2026 - Antoine Ginies <aginies@suse.com>
+
+- version 1.3.0:
+  * DE and IT translation
+  * improve pagination reactivity
+  * fix logging issue
+  * add host Allocation dashboard
+  * update doc
+
+- version 1.2.0:
+  * fix issue pool not reachable
+  * first FR translation
+
+-------------------------------------------------------------------
+Wed Jan 28 00:22:44 UTC 2026 - Antoine Ginies <aginies@suse.com>
+
+- version 1.1.6:
+  * add UP key to show running VM, DOWN to show all VMs
+  * add Howto doc
+  * add log level parameter in config
+  * User can do custom config before installing the guest
+  * fix: an UN-reacheable pool doesn't block the UI anymore
+  * fix: some shortuts
+  * fix: some layout (color and buttons)
+
+-------------------------------------------------------------------
 Mon Jan 26 13:12:58 UTC 2026 - Antoine Ginies <aginies@suse.com>
 
 - version 1.1.2:

@@ -19,7 +19,7 @@
 %define pythons python3
 
 Name:           virtui-manager
-Version:        1.1.2
+Version:        1.3.0
 Release:        0
 Summary:        Terminal-based interface to manage virtual machines using libvirt
 License:        GPL-3.0-or-later
@@ -27,6 +27,7 @@ URL:            https://aginies.github.io/virtui-manager/
 Source:         %{name}-%{version}.tar.gz
 Group: 		System/Monitoring
 BuildRequires:  fdupes
+BuildRequires:  gettext-runtime
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module pip}
@@ -68,6 +69,8 @@ It supports VNC and SPICE protocols.
 %setup -q
 
 %build
+# Compile translations
+bash src/vmanager/manage_translation.sh compile-mo
 %python3_pyproject_wheel
 
 %install
@@ -79,7 +82,7 @@ if [ -d docs ]; then
     cp -r docs/* %{buildroot}%{_docdir}/%{name}/html/
 fi
 # Install other docs
-cp README.md FEATURES.md %{buildroot}%{_docdir}/%{name}/
+cp README.md %{buildroot}%{_docdir}/%{name}/
 
 # Deduplicate files
 %fdupes %{buildroot}%{python3_sitelib}
@@ -87,7 +90,7 @@ cp README.md FEATURES.md %{buildroot}%{_docdir}/%{name}/
 
 %files
 %license LICENSE
-%doc README.md FEATURES.md
+%doc README.md
 %{_bindir}/virtui-manager
 %{_bindir}/virtui-manager-cmd
 %{python3_sitelib}/vmanager

@@ -45,4 +45,22 @@
 </comment>
     <requestid>1329314</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ecb253bc6832cc18d4b1efd8934eec6a</srcmd5>
+    <version>1.3.0</version>
+    <time>1769794125</time>
+    <user>anag_factory</user>
+    <comment>- version 1.3.0:
+  * DE and IT translation
+  * improve pagination reactivity
+  * fix logging issue
+  * add host Allocation dashboard
+  * update doc
+
+- version 1.2.0:
+  * fix issue pool not reachable
+  * first FR translation
+</comment>
+    <requestid>1329988</requestid>
+  </revision>
 </revisionlist>
