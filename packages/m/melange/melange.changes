@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jan 30 06:34:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.2:
+  * chore: run make generate to update schema JSON and testdata
+    (#2314)
+
+-------------------------------------------------------------------
+Fri Jan 30 06:24:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.1:
+  * fix: set num-queues to at least 1 (#2313)
+  * build(deps): bump github.com/docker/cli (#2312)
+  * pipelines/patch: reword info message
+  * pipelines/patch: report explicitly what patch file is being
+    applied
+  * build(deps): bump step-security/harden-runner in the actions
+    group (#2308)
+  * build(deps): bump the gomod group with 2 updates (#2309)
+
+-------------------------------------------------------------------
 Mon Jan 26 06:21:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.40.0:
