@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Jan 30 13:14:35 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to  0.9.28
+ * Enhancements
+  * Add support for Pyodide interpreter on Windows 
+  * Warn if multiple indexes include default = true 
+  * Skip uploads when validation reports 'Already uploaded' 
+  * Add -t shortform for --target to uv pip subcommands 
+  * Add support for ROCm 7.0 and 7.1 accelerator backends 
+  * Further improve free-threading ABI incompatibility errors 
+  * Implement uv pip freeze --exclude flag 
+  * Improve warnings for --system and --no-system in uv venv 
+  * Make uv pip compile attempt to download a specified --python-version if it can. 
+  * Support Trusted Publishing with pyx 
+  * Fix JSON schema for exclude-newer-package 
+ * Preview features
+  * Better detection for conflicting packages 
+  * Upgrade based on outdated build versions in uv python upgrade 
+ * Bug fixes
+  * Ensure uv.exe exits when uvw.exe or uvx.exe is killed 
+  * Change chocolatey system test to ensure uv uses the right python 
+  * Fix infinite loop when SSL_CERT_FILE is a directory 
+ * Documentation
+  * Add cargo-xwin to the CONTRIBUTING guide 
+  * Fix typo in the documentation of UV_PUBLISH_INDEX 
+  * Move MSRV to platform support section 
+  * Update the testing instructions in the CONTRIBUTING guide 
+  * Use --locked to install cargo-xwin in guide 
+  * Warn about PyPy being unmaintained 
+  * docs: Correct gitlab-ci.yml to .gitlab-ci.yml 
+ * Other changes
+  * Update MSRV to 1.91 
+ * Configuration
+  * Add a reflink alias for the "clone" link mode 
+
+-------------------------------------------------------------------
 Fri Jan 16 14:35:37 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.26 
