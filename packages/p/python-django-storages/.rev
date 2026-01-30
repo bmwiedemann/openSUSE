@@ -159,4 +159,12 @@
   * Revert raising ImproperlyConfigured when no bucket_name is</comment>
     <requestid>1222049</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ddf9fe5ebf1d52017e403d2adbe780d3</srcmd5>
+    <version>1.14.6</version>
+    <time>1769793786</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1330010</requestid>
+  </revision>
 </revisionlist>

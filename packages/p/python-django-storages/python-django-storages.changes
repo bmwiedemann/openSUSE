@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 29 17:38:34 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Update to 1.14.6:
+  * Google Cloud: Add option to sign URLs via IAM Blob API
+  * S3: Fix exists calls when using SSE-C
+  * S3: Default url_protocol to https: if set to None
+- From 1.14.5:
+  * Revert ``exists()`` behavior to pre-1.14.4 semantics with additional hardening for Django versions < 4.2 to fix
+  CVE-2024-39330. This change matches the eventual behavior Django itself shipped with.
+  * Add support for Django 5.1
+  * Dropbox: As part of the above hardening fix a bug was uncovered whereby a ``root_path`` setting would be applied
+  multiple times during ``save()``
+  * Google Cloud: Fix incorrect ``exists()`` results due to an errant appended slash
+
+-------------------------------------------------------------------
 Thu Nov  7 09:01:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.14.4:

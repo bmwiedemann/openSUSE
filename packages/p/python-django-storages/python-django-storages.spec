@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-storages
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-storages
-Version:        1.14.4
+Version:        1.14.6
 Release:        0
 Summary:        Support for many storage backends in Django
 License:        BSD-3-Clause
 URL:            https://github.com/jschneier/django-storages
-Source:         https://files.pythonhosted.org/packages/source/d/django-storages/django-storages-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/django-storages/django_storages-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -36,7 +36,7 @@ BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module azure-storage-blob >= 12}
 BuildRequires:  %{python_module boto3 >= 1.4.4}
 BuildRequires:  %{python_module dropbox >= 7.2.1}
-BuildRequires:  %{python_module google-cloud-storage >= 1.27}
+BuildRequires:  %{python_module google-cloud-storage >= 1.36.1}
 BuildRequires:  %{python_module paramiko >= 1.15}
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -46,7 +46,7 @@ BuildRequires:  %{python_module pytest}
 django-storages is a project to provide a variety of storage backends in a single library.
 
 %prep
-%setup -q -n django-storages-%{version}
+%autosetup -n django_storages-%{version}
 
 %build
 %pyproject_wheel
