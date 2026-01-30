@@ -342,4 +342,13 @@
   * /usr/share/doc/packages/mame/whatsnew-0.284.txt</comment>
     <requestid>1324873</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>768f8150c76dd7809639b01a99ef5a5e</srcmd5>
+    <version>0.285</version>
+    <time>1769793743</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 0.285
+  * /usr/share/doc/packages/mame/whatsnew-0.285.txt</comment>
+    <requestid>1329875</requestid>
+  </revision>
 </revisionlist>
