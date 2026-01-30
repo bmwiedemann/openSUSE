@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 30 08:38:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.13.2:
+  * Update Rancher refs to (#540)
+  * [v2.13] Fix release GHA workflow (#537)
+  * [v2.13] Prerelease dependency bumps for v2.13.2 (#533)
+  * [v2.13] Fix login command (#525)
+  * [v2.13] Use staticcheck linter (#523)
+  * [v2.13] Bump Go toolchain to 1.24.11 (#524)
+
+-------------------------------------------------------------------
 Sat Dec 20 07:00:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.13.1:
