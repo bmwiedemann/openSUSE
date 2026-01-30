@@ -502,4 +502,12 @@
     <comment>update to 1.4.3 (forwarded request 1318133 from ojkastl_buildservice)</comment>
     <requestid>1318184</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>3660e21cc9a0bf557dccd82b144ad1e4</srcmd5>
+    <version>1.5.0</version>
+    <time>1769794283</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1330066</requestid>
+  </revision>
 </revisionlist>

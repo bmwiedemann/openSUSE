@@ -1,7 +1,7 @@
 #
 # spec file for package rekor
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define apps cli server
 
 Name:           rekor
-Version:        1.4.3
+Version:        1.5.0
 Release:        0
 Summary:        Supply Chain Transparency Log
 License:        Apache-2.0
@@ -27,9 +27,9 @@ URL:            https://github.com/sigstore/rekor
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source2:        rekor-zypper-verify.sh
-BuildRequires:  go >= 1.23.6
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
+BuildRequires:  golang(API) >= 1.25
 
 %description
 Rekor's goals are to provide an immutable tamper resistant ledger of metadata

@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Thu Jan 22 06:00:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.5.0:
+  This release fixes the following security issues:
+
+  - GHSA-4c4x-jm2x-pf9j / CVE-2026-24117 / bsc#1257135: Fixed Server-Side Request Forgery (SSRF) via provided public key URL
+  - GHSA-273p-m2cw-6833 / CVE-2026-23831 / bsc#1257132: Fixed  lack of input validation thatg can cause a thread crash
+  - GHSA-j5w8-q4qc-rx2x / CVE-2025-58181 / bsc#1253817: Fixed golang.org/x/crypto/ssh: invalidated number of mechanisms can cause unbounded memory consumption
+
+  Note that this drops support for fetching public keys via URL
+  when querying the search API.
+  * Vulnerability Fixes
+    - Handle malformed COSE and DSSE entries (#2729)
+    - Drop support for fetching public keys by URL in the search
+      index (#2731)
+  * Features
+    - Add support for a custom TLS config for clients (#2709)
+  * Dependencies
+    - build(deps): Bump github.com/redis/go-redis/v9 from 9.14.1 to
+      9.17.2 (#2706)
+    - build(deps): Bump google.golang.org/api from 0.256.0 to
+      0.259.0 (#2723)
+    - build(deps): Bump golang.org/x/net from 0.47.0 to 0.48.0
+      (#2722)
+    - build(deps): Bump github.com/sigstore/sigstore from 1.9.5 to
+      1.10.3 (#2724)
+    - build(deps): Bump the all group across 1 directory with 3
+      updates (#2727)
+    - build(deps): Bump the all group with 2 updates (#2728)
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+      (#2726)
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+      (#2720)
+    - build(deps): Bump
+      github.com/sigstore/sigstore/pkg/signature/kms/azure (#2716)
+    - build(deps): Bump golang.org/x/sync from 0.18.0 to 0.19.0
+      (#2715)
+    - build(deps): Bump actions/upload-artifact from 5.0.0 to 6.0.0
+      (#2714)
+    - build(deps): Bump
+      github.com/sigstore/sigstore/pkg/signature/kms/hashivault
+      (#2717)
+    - build(deps): Bump
+      github.com/sigstore/sigstore/pkg/signature/kms/aws (#2718)
+    - build(deps): Bump sigstore/scaffolding/trillian_log_signer
+      (#2713)
+    - build(deps): Bump sigstore/scaffolding/trillian_log_server
+      (#2712)
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+      (#2711)
+    - build(deps): Bump the all group across 1 directory with 4
+      updates (#2707)
+    - build(deps): Bump golang from 1.25.4 to 1.25.5 in the all
+      group (#2703)
+    - build(deps): Bump the all group across 1 directory with 4
+      updates (#2708)
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+    - build(deps): Bump golang from `e68f6a0` to `6981837`
+    - build(deps): Bump sigstore/scaffolding/trillian_log_signer
+    - build(deps): Bump sigstore/scaffolding/trillian_log_server
+    - build(deps): Bump google.golang.org/api from 0.254.0 to
+      0.256.0
+    - build(deps): Bump the all group with 2 updates
+    - build(deps): Bump github/codeql-action in the all group
+    - build(deps): Bump the all group with 3 updates (#2692)
+    - build(deps): Bump the all group with 2 updates
+    - build(deps): Bump golangci/golangci-lint-action from 8.0.0 to
+      9.1.0
+    - build(deps): Bump actions/checkout from 5.0.0 to 6.0.0
+    - build(deps): Bump golang.org/x/crypto from 0.43.0 to 0.45.0
+    - build(deps): Bump golang.org/x/crypto in /hack/tools
+    - build(deps): Bump golang from `6ca9eb0` to `e68f6a0`
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+
+-------------------------------------------------------------------
 Mon Nov 17 06:20:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.3:
