@@ -600,4 +600,41 @@
 - Implement using inst.install_url instead of Product repositories</comment>
     <requestid>1329457</requestid>
   </revision>
+  <revision rev="34" vrev="34">
+    <srcmd5>271b7768581fbada576a69ac389d3385</srcmd5>
+    <version>0</version>
+    <time>1769793596</time>
+    <user>anag_factory</user>
+    <comment>- Do not export neither network/connections nor network/state when
+  they are None (related to bsc#1257400).
+
+- Add support for &quot;onlyRequired&quot; key in &quot;software&quot; section
+  using new libzypp zypp.conf.d directory.
+  (gh#agama-project/agama#3100)
+
+- Fix &quot;agama config edit&quot; subcommand to update the configuration
+  (bsc#1257198).
+
+- Do not wait for the storage service when setting the configuration
+  (gh#agama-project/agama#3096, related to bsc#1257067).
+
+- Expose the product configuration even in the software service is busy
+  (bsc#1257443).
+
+- Fix answers validation (gh#agama-project/agama#3094).
+
+- Import the security settings correctly (bsc#1257290).
+
+- Use the first product mode if none is given (related to jsc#PED-14307).
+
+- Add agama-iscsi service and integrate iSCSI into the new HTTP API
+  (gh#agama-project/agama#3064).
+
+- Fix the handling of HTTP actions (gh#agama-project/agama#3088).
+- Add more details when a request fails because there are pending issues
+  or the installer is busy.
+- Include in the logs markers for the start and the end of the
+  installation.</comment>
+    <requestid>1330000</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Thu Jan 29 22:30:05 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not export neither network/connections nor network/state when
+  they are None (related to bsc#1257400).
+
+-------------------------------------------------------------------
+Thu Jan 29 21:10:18 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
+
+- Add support for "onlyRequired" key in "software" section
+  using new libzypp zypp.conf.d directory.
+  (gh#agama-project/agama#3100)
+
+-------------------------------------------------------------------
+Thu Jan 29 14:56:50 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix "agama config edit" subcommand to update the configuration
+  (bsc#1257198).
+
+-------------------------------------------------------------------
+Thu Jan 29 09:56:05 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not wait for the storage service when setting the configuration
+  (gh#agama-project/agama#3096, related to bsc#1257067).
+
+-------------------------------------------------------------------
+Thu Jan 29 07:04:09 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Expose the product configuration even in the software service is busy
+  (bsc#1257443).
+
+-------------------------------------------------------------------
+Thu Jan 29 06:24:00 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix answers validation (gh#agama-project/agama#3094).
+
+-------------------------------------------------------------------
+Wed Jan 28 17:07:32 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Import the security settings correctly (bsc#1257290).
+
+-------------------------------------------------------------------
+Wed Jan 28 16:14:52 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Use the first product mode if none is given (related to jsc#PED-14307).
+
+-------------------------------------------------------------------
+Wed Jan 28 12:59:50 UTC 2026 - José Iván López González <jlopez@suse.com>
+
+- Add agama-iscsi service and integrate iSCSI into the new HTTP API
+  (gh#agama-project/agama#3064).
+
+-------------------------------------------------------------------
+Wed Jan 28 12:43:05 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix the handling of HTTP actions (gh#agama-project/agama#3088).
+- Add more details when a request fails because there are pending issues
+  or the installer is busy.
+- Include in the logs markers for the start and the end of the
+  installation.
+
+-------------------------------------------------------------------
+Wed Jan 28 10:59:29 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add support to define product modes (jsc#PED-14307).
+
+-------------------------------------------------------------------
+Wed Jan 28 09:59:43 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
+
+- Support "gpgFingerprints" and "allowUnsigned" keys in
+  "software/extraRepositories" section of profile
+  (gh#agama-project/agama#3087)
+
+-------------------------------------------------------------------
+Tue Jan 27 18:35:59 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
+
+- Enable the SSH service and open the SSH port in firewall when
+  an SSH key for the root user is set (bsc#1257212)
+
+-------------------------------------------------------------------
 Fri Jan 23 15:36:12 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
 
 - Fixed removing automatically selected recommended patterns
@@ -13,7 +92,7 @@ Fri Jan 23 14:10:16 UTC 2026 - Martin Vidner <mvidner@suse.com>
 -------------------------------------------------------------------
 Fri Jan 23 13:47:29 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
 
-- Copy the SCC credentials and the libzypp services 
+- Copy the SCC credentials and the libzypp services
   (gh#agama-project/agama#3053).
 
 -------------------------------------------------------------------
@@ -36,7 +115,7 @@ Wed Jan 21 11:07:34 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Allow importing SSL certificates from registration servers
   (gh#agama-project/agama#3055).
-  
+
 -------------------------------------------------------------------
 Wed Jan 21 10:59:15 UTC 2026 - Knut Anderssen <kanderssen@suse.com>
 
