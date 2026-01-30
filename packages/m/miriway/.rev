@@ -96,4 +96,15 @@ Provides the miriway wayland compositor</comment>
 - Drop 0001-Fix-xkbcommon-includes.patch</comment>
     <requestid>1315011</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9a9812c9b78993658112974ff1734b21</srcmd5>
+    <version>26.01</version>
+    <time>1769793774</time>
+    <user>anag_factory</user>
+    <comment>- Update version 26.01
+  * Fix ext-workspace implementation
+  * Remove obselete workaround for Mir Bug
+  * Add a default wallpaper</comment>
+    <requestid>1329914</requestid>
+  </revision>
 </revisionlist>

@@ -21,7 +21,7 @@
 %define _name Miriway
 
 Name:           miriway
-Version:        25.12
+Version:        26.01
 Release:        0
 Summary:        Simple Wayland compositor built on Mir
 License:        GPL-3.0-only
@@ -90,6 +90,7 @@ mv %{buildroot}/%{_sysconfdir}/sddm.conf.d %{buildroot}%{_prefix}/lib/sddm
 %license LICENSE
 %doc README.md CONFIGURING_MIRIWAY.md example-configs
 %{_bindir}/%{name}*
+%{_datadir}/backgrounds/
 %dir %{_sysconfdir}/xdg/xdg-%{name}
 %config(noreplace) %{_sysconfdir}/xdg/xdg-%{name}/%{name}-shell.config
 
