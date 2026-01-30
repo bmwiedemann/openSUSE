@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 30 07:29:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.1.2:
+  * Fixes
+    - Allow overriding podman user ID with --container-option
+      (#2079) (#2080)
+
+-------------------------------------------------------------------
 Tue Jan 13 06:52:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.1.1:
