@@ -1,12 +1,4 @@
 -------------------------------------------------------------------
-Wed Jan 28 02:01:50 UTC 2026 - Peter Varkoly <varkoly@suse.com>
-
-- (bsc#1257199) [SELinux] postalias denied - fatal: open database /etc/aliases.lmdb: Permission denied
-  Add proposed ExecStartPre.
-- (jsc#PED-14859) Fix packages for Immutable Mode - postfix
-  Pack /var/spool/postfix/* /var/lib/postfix using tmpfiles.d
-
--------------------------------------------------------------------
 Thu Jan 22 10:59:46 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Do not strip binaries at all

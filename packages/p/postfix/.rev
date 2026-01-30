@@ -2596,4 +2596,11 @@ successfully tested on Tumbleweed x86_64</comment>
   Pack /var/spool/postfix/* /var/lib/postfix using tmpfiles.d</comment>
     <requestid>1329599</requestid>
   </revision>
+  <revision rev="263" vrev="5">
+    <srcmd5>fad55bf0d69a76d3d4dfed4311cbb311</srcmd5>
+    <version>3.10.7</version>
+    <time>1769817207</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1257523</comment>
+  </revision>
 </revisionlist>
