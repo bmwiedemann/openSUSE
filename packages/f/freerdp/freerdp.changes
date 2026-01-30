@@ -25,6 +25,50 @@ Fri Jan 23 02:26:21 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
   * [warnings,format] fix format string warnings (#12152)
   * Double free fixes (#12153)
   * [clang-tidy] clean up code warnings (#12154)
+- Drop upstreamed patches:
+  + freerdp-split-cast-macros-to-header.patch
+  + freerdp-CVE-2025-4478.patch  (CVE-2025-4478,  bsc#1243109)
+  + freerdp-CVE-2026-22851.patch (CVE-2026-22851, bsc#1256717)
+  + freerdp-CVE-2026-22852.patch (CVE-2026-22852, bsc#1256718)
+  + freerdp-CVE-2026-22853.patch (CVE-2026-22853, bsc#1256719)
+  + freerdp-CVE-2026-22854.patch (CVE-2026-22854, bsc#1256720)
+  + freerdp-CVE-2026-22855.patch (CVE-2026-22855, bsc#1256721)
+  + freerdp-CVE-2026-22856.patch (CVE-2026-22856, bsc#1256722)
+  + freerdp-CVE-2026-22857.patch (CVE-2026-22857, bsc#1256723)
+  + freerdp-CVE-2026-22858.patch (CVE-2026-22858, bsc#1256724)
+  + freerdp-CVE-2026-22859.patch (CVE-2026-22859, bsc#1256725)
+  + freerdp-CVE-2026-23530.patch (CVE-2026-23530, bsc#1256940)
+  + freerdp-CVE-2026-23531.patch (CVE-2026-23531, bsc#1256941)
+  + freerdp-CVE-2026-23532.patch (CVE-2026-23532, bsc#1256942)
+  + freerdp-CVE-2026-23533.patch (CVE-2026-23533, bsc#1256943)
+  + freerdp-CVE-2026-23534.patch (CVE-2026-23534, bsc#1256944)
+  + freerdp-CVE-2026-23732.patch (CVE-2026-23732, bsc#1256945)
+  + freerdp-CVE-2026-23883.patch (CVE-2026-23883, bsc#1256946)
+  + freerdp-CVE-2026-23884.patch (CVE-2026-23884, bsc#1256947)
+
+-------------------------------------------------------------------
+Wed Jan 22 04:07:19 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
+
+- Add patches to fix CVE issues:
+  + freerdp-split-cast-macros-to-header.patch
+  + freerdp-CVE-2025-4478.patch  (CVE-2025-4478,  bsc#1243109)
+  + freerdp-CVE-2026-22851.patch (CVE-2026-22851, bsc#1256717)
+  + freerdp-CVE-2026-22852.patch (CVE-2026-22852, bsc#1256718)
+  + freerdp-CVE-2026-22853.patch (CVE-2026-22853, bsc#1256719)
+  + freerdp-CVE-2026-22854.patch (CVE-2026-22854, bsc#1256720)
+  + freerdp-CVE-2026-22855.patch (CVE-2026-22855, bsc#1256721)
+  + freerdp-CVE-2026-22856.patch (CVE-2026-22856, bsc#1256722)
+  + freerdp-CVE-2026-22857.patch (CVE-2026-22857, bsc#1256723)
+  + freerdp-CVE-2026-22858.patch (CVE-2026-22858, bsc#1256724)
+  + freerdp-CVE-2026-22859.patch (CVE-2026-22859, bsc#1256725)
+  + freerdp-CVE-2026-23530.patch (CVE-2026-23530, bsc#1256940)
+  + freerdp-CVE-2026-23531.patch (CVE-2026-23531, bsc#1256941)
+  + freerdp-CVE-2026-23532.patch (CVE-2026-23532, bsc#1256942)
+  + freerdp-CVE-2026-23533.patch (CVE-2026-23533, bsc#1256943)
+  + freerdp-CVE-2026-23534.patch (CVE-2026-23534, bsc#1256944)
+  + freerdp-CVE-2026-23732.patch (CVE-2026-23732, bsc#1256945)
+  + freerdp-CVE-2026-23883.patch (CVE-2026-23883, bsc#1256946)
+  + freerdp-CVE-2026-23884.patch (CVE-2026-23884, bsc#1256947)
 
 -------------------------------------------------------------------
 Fri Jan 16 08:26:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -245,6 +289,18 @@ Wed Feb  5 07:38:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
   webview=on to cmake, hence unused and nobody complained.
 
 -------------------------------------------------------------------
+Thu Jan  9 08:27:07 UTC 2025 - Yifan Jiang <yfjiang@suse.com>
+
+- Drop SLE backported patches already included in freerdp 3:
+  + freerdp-CVE-2024-22211.patch
+  + freerdp-CVE-2024-32658.patch
+  + freerdp-CVE-2024-32659.patch
+  + freerdp-CVE-2024-32660.patch
+  + freerdp-CVE-2024-32661.patch
+  + freerdp-CVE-2024-32039-to-2024-32460.patch
+  + freerdp-CVE-2023-40574-to-2023-40576.patch
+
+-------------------------------------------------------------------
 Sun Dec 29 23:10:59 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.10.3:
@@ -409,6 +465,43 @@ Wed Jul 10 08:13:08 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
   * fix possible NULL dereference in command line parser (#10348)
 
 -------------------------------------------------------------------
+Tue Jun 18 07:46:46 UTC 2024 - Daike Yu <yu.daike@suse.com>
+
+- Add freerdp-CVE-2024-22211.patch (bsc#1219049, CVE-2024-22211)
+  - In affected versions an integer overflow in
+    `freerdp_bitmap_planar_context_reset` leads to heap-buffer
+    overflow.
+
+-------------------------------------------------------------------
+Thu May 23 21:59:32 UTC 2024 - Daike Yu <yu.daike@suse.com>
+
+- Add freerdp-CVE-2024-32658.patch (bsc#1223353, CVE-2024-32658)
+  - out-of-bounds read in Interleaved RLE Bitmap Codec in FreeRDP based clients
+
+-------------------------------------------------------------------
+Thu May  9 05:21:19 UTC 2024 - Daike Yu <yu.daike@suse.com>
+
+- Multiple CVE fixes
+  + Add freerdp-CVE-2024-32659.patch (bsc#1223346, CVE-2024-32659)
+    - out-of-bounds read if `((nWidth == 0) and (nHeight == 0))`
+  + Add freerdp-CVE-2024-32660.patch (bsc#1223347, CVE-2024-32660)
+    - client crash via invalid huge allocation size
+  + Add freerdp-CVE-2024-32661.patch (bsc#1223348, CVE-2024-32661)
+    - client NULL pointer dereference
+
+-------------------------------------------------------------------
+Thu May  9 02:56:11 UTC 2024 - Daike Yu <yu.daike@suse.com>
+
+- Add freerdp-CVE-2024-32039-to-2024-32460.patch
+  + Multiple CVE fixes
+    * bsc#1223293, CVE-2024-32039
+    * bsc#1223294, CVE-2024-32040
+    * bsc#1223295, CVE-2024-32041
+    * bsc#1223296, CVE-2024-32458
+    * bsc#1223297, CVE-2024-32459
+    * bsc#1223298, CVE-2024-32460
+
+-------------------------------------------------------------------
 Wed Apr 24 08:57:51 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.5.1:
@@ -483,6 +576,17 @@ Tue Mar 19 07:18:13 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
   * Fix a bug in shadow with GFX breaking mstsc (#9818)
   * Improved manpages and help (#9813, #9804)
   * Blocking mode via transport IO interface (#9793)
+
+-------------------------------------------------------------------
+Tue Feb  6 04:14:05 UTC 2024 - Daike Yu <yu.daike@suse.com>
+
+- Add freerdp-CVE-2023-40574-to-2023-40576.patch
+  * Fix CVE-2023-40574 - bsc#1214869
+    Out-Of-Bounds Write in general_YUV444ToRGB_8u_P3AC4R_BGRX
+  * Fix CVE-2023-40575 - bsc#1214870
+    Out-Of-Bounds Read in general_YUV444ToRGB_8u_P3AC4R_BGRX
+  * Fix CVE-2023-40576 - bsc#1214871
+    Out-Of-Bounds Read in RleDecompress
 
 -------------------------------------------------------------------
 Fri Jan 19 13:53:59 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
