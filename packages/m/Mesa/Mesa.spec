@@ -131,7 +131,7 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        25.3.3
+Version:        25.3.4
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT

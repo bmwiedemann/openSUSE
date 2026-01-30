@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 28 14:49:09 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to Mesa 25.3.4
+  --> https://docs.mesa3d.org/relnotes/25.3.4
+
+-------------------------------------------------------------------
 Thu Jan 22 14:15:42 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - BuildRequire llvm21-devel, no matter which suse_version/sle_version

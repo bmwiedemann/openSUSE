@@ -6650,4 +6650,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - improved previous changelog</comment>
     <requestid>1328714</requestid>
   </revision>
+  <revision rev="567" vrev="1">
+    <srcmd5>b2811d50a6bc998c518f611e5a7635fc</srcmd5>
+    <version>25.3.4</version>
+    <time>1769793601</time>
+    <user>anag_factory</user>
+    <comment>- Update to Mesa 25.3.4
+  --&gt; https://docs.mesa3d.org/relnotes/25.3.4</comment>
+    <requestid>1329695</requestid>
+  </revision>
 </revisionlist>
