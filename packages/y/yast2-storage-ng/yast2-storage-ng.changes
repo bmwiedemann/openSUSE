@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 29 09:00:40 UTC 2026 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Adjusted the criteria to check whether TPM-based full-disk
+  encryption is available at Agama (bsc#1257315).
+- 5.0.40
+
+-------------------------------------------------------------------
 Thu Jan 15 08:26:47 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
 
 - Drop the yast2-ycp-ui-bindings dependency to avoid installing
