@@ -50,7 +50,6 @@ Source6:        disable_flat_volumes.conf
 Source7:        pulseaudio.tmpfiles
 Source9:        client-system.conf
 Source10:       system-user-pulse.conf
-Source98:       pulseaudio-rpmlintrc
 Source99:       baselibs.conf
 Patch0:         disabled-start.diff
 Patch1:         suppress-socket-error-msg.diff
@@ -568,7 +567,7 @@ exit 0
 %{_userunitdir}/%{name}.service
 %{_userunitdir}/%{name}.socket
 %{_prefix}/lib/tmpfiles.d/pulseaudio.conf
-%ghost %dir %{_localstatedir}/lib/pulseaudio
+%ghost %dir %attr(0755,-,-) %{_localstatedir}/lib/pulseaudio
 
 # xwayland integration
 %{_userunitdir}/pulseaudio-x11.service
