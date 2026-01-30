@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 29 19:33:40 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Update to version 1.0.1:
+  * Fix memoisation of lazy parser
+
+-------------------------------------------------------------------
 Thu Jun 12 05:01:34 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
