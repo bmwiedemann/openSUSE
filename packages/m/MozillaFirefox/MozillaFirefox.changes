@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 28 20:36:26 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 147.0.2
+  * Resolved various issues with missing or impaired browser
+    functionality when using XDG Base Directories on Linux. (bmo#2011300)
+  * Fixed an issue causing excess passkey prompts to appear when
+    logging into some sites. (bmo#2010919)
+  * Fixed an issue that could lead to sites being incorrectly
+    flagged as malicious by SafeBrowsing. (bmo#2010956)
+  MFSA 2026-06 (bsc#1257363)
+  * CVE-2026-24868 (bmo#2007302)
+    Mitigation bypass in the Privacy: Anti-Tracking component
+  * CVE-2026-24869 (bmo#2008698)
+    Use-after-free in the Layout: Scrolling and Overflow component
+
+-------------------------------------------------------------------
 Tue Jan 20 17:52:28 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 147.0.1
