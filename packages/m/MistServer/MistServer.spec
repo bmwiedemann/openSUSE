@@ -17,7 +17,7 @@
 
 
 Name:           MistServer
-Version:        3.9.2
+Version:        3.10
 Release:        0
 Summary:        Internet streaming media toolkit
 License:        Unlicense
@@ -72,7 +72,6 @@ export CXXFLAGS="$CXXFLAGS -funsigned-char"
 %meson \
   -DDEBUG=3 \
   -DLOCAL_GENERATORS=false \
-  -DNOGA=true \
   -DNOUPDATE=true \
   -DRELEASE=%{version}
 %meson_build
@@ -166,6 +165,7 @@ install -D -p -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/mistserver.conf
 %{_bindir}/MistOutTSSRT
 %{_bindir}/MistOutWAV
 %{_bindir}/MistOutWebRTC
+%{_bindir}/MistProcComposer
 %{_bindir}/MistProcFFMPEG
 %{_bindir}/MistProcLivepeer
 %{_bindir}/MistProcMKVExec

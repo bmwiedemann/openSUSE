@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jan 30 10:14:04 UTC 2026 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Update to the new upstream release 3.10
+  * Behaviour change: Stream processes that output raw tracks now default to masking viewers, but not other stream processes
+  * Feature: Added MistProcComposer: a new type of input process that can mix multiple raw streams together and (optionally) synchronize them. Create multiviews, failovers, picture-in-picture  * overlays, and much more with ease!
+  * Feature: Added NOSESS environment variable that entirely disables the session system
+  * Feature: Added support for RTP with fragmented AAC audio packets
+  * Improvement: No more UDP socket warnings when connecting to a IPv4-only host on an IPv6-capable system (now immediately uses the correct socket type)
+  * Improvement: WS/MP4 playback now allows tracks to play if they are within 1.5s of the newest selected track (rather than 0.25s, previously)
+  * Improvement: Several stability and usability improvements to MistProcAV
+  * Bugfix: Fix debug message overread on UDP API commands (was a visual only bug)
+  * Bugfix: Fixed compiling without libsrt
+  * Bugfix: Fixed EBML/MKV input if new tracks are announced mid-stream
+  * Bugfix: WebRTC ingest Opus data now correctly generates codec private data (fixes several output protocols)
+  * Bugfix: Stripped out the last remains of the ancient and long broken Google Analytics tags
+  * Bugfix: Fixed SRT IP whitelisting
+  * Bugfix: Fixed a rare race condition when creating a new session that would prevent the session from being accessible
+  * Bugfix: Improved timing code so that it no longer overflows in a bad way when using extremely high timestamps in streams
+  * Bugfix: Various small web interface fixes and improvements
+  * Bugfix: Fixed RECORDING_END trigger reporting the wrong filename sometimes if variables were in use that changed definition as the recording started
+  * Bugfix: Fixed not correctly auto-detecting E-RTMP support (specifically fixes Black Magic Design product range RTMP streaming ingest)
+  * Bugfix: Fixed RTMP UTC timestamps going into the future when receiving the beginning of a stream faster than real-time
+  * Bugfix: Fixed RTSP sources that used non-spec-conforming base URIs
+  * Bugfix: Fixed spinlock in SRT connections that were briefly disconnected and then resumed before they timed out
+
+-------------------------------------------------------------------
 Thu Nov 27 20:42:40 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
 
 - Update to the new upstream release 3.9.2
