@@ -54,4 +54,14 @@
   * Dependency updates</comment>
     <requestid>1306664</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7b3cd979953e3e19b7b66ab108887b98</srcmd5>
+    <version>4.1</version>
+    <time>1769794132</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.1:
+  * Translation updates
+  * Dependency updates fixes bsc#1257325</comment>
+    <requestid>1329996</requestid>
+  </revision>
 </revisionlist>
