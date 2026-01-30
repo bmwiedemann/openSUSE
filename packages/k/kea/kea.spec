@@ -58,6 +58,7 @@ Source4:        kea-dhcp4.service
 Source5:        kea-dhcp6.service
 Source6:        kea-dhcp-ddns.service
 Source7:        kea-ctrl-agent.service
+Source8:        kea-tmpfiles.conf
 Patch1:         kea-boost1_89.patch
 Patch2:         kea-boost1_90.patch
 BuildRequires:  fdupes
@@ -388,17 +389,16 @@ cp %_sourcedir/*.service "$b/%_unitdir/"
 echo 'u keadhcp - "Kea DHCP server" /var/lib/kea' >system-user-keadhcp.conf
 cp -a system-user-keadhcp.conf "$b/%_sysusersdir/"
 %sysusers_generate_pre system-user-keadhcp.conf random system-user-keadhcp.conf
+install -Dpm0644 %SOURCE8 "%buildroot/%_tmpfilesdir/kea.conf"
 
 perl -i -pe 's{%_localstatedir/log/kea-}{%_localstatedir/log/kea/}' \
 	"$b/%_sysconfdir/kea"/*.conf
 
-mkdir -p "$b%_localstatedir/log/kea"
-
 # Remove unnecessary files
 rm -Rf "%buildroot/%python3_sitelib/kea/__pycache__"
 # Remove meson-info directory as it contains non reproducable files
-rm -Rf "%{buildroot}/%{_datadir}/kea/meson-info"
-%fdupes %{buildroot}/%{_datadir}/doc/kea
+rm -Rf "%buildroot/%_datadir/kea/meson-info"
+%fdupes %buildroot/%_datadir/doc/kea
 
 %pre -f random.pre
 %service_add_pre kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service kea-ctrl-agent.service
@@ -406,47 +406,47 @@ rm -Rf "%{buildroot}/%{_datadir}/kea/meson-info"
 %post
 %service_add_post kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service kea-ctrl-agent.service
 if [ "$1" -gt 1 ]; then
-	chown -R keadhcp:keadhcp "%_localstatedir/lib/kea"
-	chown -R keadhcp:keadhcp "%_localstatedir/log/kea"
+	[ -d "%_sharedstatedir/kea" ] && chown -R keadhcp:keadhcp "%_sharedstatedir/kea"
+	[ -d "%_localstatedir/log/kea" ] && chown -R keadhcp:keadhcp "%_localstatedir/log/kea"
 	find %_sysconfdir/kea/ -type f -name '*.conf' -exec chown root:keadhcp {} +
 	find %_sysconfdir/kea/ -type f -name '*.conf' -exec chmod 640 {} +
 fi
-bigkea_enabled=$(/usr/bin/systemctl is-enabled kea.service 2>/dev/null || :)
-bigkea_active=$(/usr/bin/systemctl is-active kea.service 2>/dev/null || :)
-use_dhcp4=$(grep -ie ^dhcp4=yes /etc/kea/keactrl.conf 2>/dev/null || :)
-use_dhcp6=$(grep -ie ^dhcp6=yes /etc/kea/keactrl.conf 2>/dev/null || :)
-use_ddns=$(grep -ie ^dhcp_ddns=yes /etc/kea/keactrl.conf 2>/dev/null || :)
-use_agent=$(grep -ie ^ctrl_agent=yes /etc/kea/keactrl.conf 2>/dev/null || :)
+bigkea_enabled=$(%_bindir/systemctl is-enabled kea.service 2>/dev/null || :)
+bigkea_active=$(%_bindir/systemctl is-active kea.service 2>/dev/null || :)
+use_dhcp4=$(grep -ie ^dhcp4=yes %_sysconfdir/kea/keactrl.conf 2>/dev/null || :)
+use_dhcp6=$(grep -ie ^dhcp6=yes %_sysconfdir/kea/keactrl.conf 2>/dev/null || :)
+use_ddns=$(grep -ie ^dhcp_ddns=yes %_sysconfdir/kea/keactrl.conf 2>/dev/null || :)
+use_agent=$(grep -ie ^ctrl_agent=yes %_sysconfdir/kea/keactrl.conf 2>/dev/null || :)
 if [ "$bigkea_enabled" = "enabled" ]; then
 	echo "Transferring enablement of kea.service to new split units..."
-	/usr/bin/systemctl disable kea.service || :
+	%_bindir/systemctl disable kea.service || :
 	if [ -n "$use_dhcp4" ]; then
-		/usr/bin/systemctl enable kea-dhcp4.service || :
+		%_bindir/systemctl enable kea-dhcp4.service || :
 	fi
 	if [ -n "$use_dhcp6" ]; then
-		/usr/bin/systemctl enable kea-dhcp6.service || :
+		%_bindir/systemctl enable kea-dhcp6.service || :
 	fi
 	if [ -n "$use_ddns" ]; then
-		/usr/bin/systemctl enable kea-dhcp-ddns.service || :
+		%_bindir/systemctl enable kea-dhcp-ddns.service || :
 	fi
 	if [ -n "$use_agent" ]; then
-		/usr/bin/systemctl enable kea-ctrl-agent.service || :
+		%_bindir/systemctl enable kea-ctrl-agent.service || :
 	fi
 fi
 if [ "$bigkea_active" = "active" ]; then
 	echo "Transferring active state of kea.service to new split units..."
-	/usr/bin/systemctl disable --now kea.service || :
+	%_bindir/systemctl disable --now kea.service || :
 	if [ -n "$use_dhcp4" ]; then
-		/usr/bin/systemctl start kea-dhcp4.service || :
+		%_bindir/systemctl start kea-dhcp4.service || :
 	fi
 	if [ -n "$use_dhcp6" ]; then
-		/usr/bin/systemctl start kea-dhcp6.service || :
+		%_bindir/systemctl start kea-dhcp6.service || :
 	fi
 	if [ -n "$use_ddns" ]; then
-		/usr/bin/systemctl start kea-dhcp-ddns.service || :
+		%_bindir/systemctl start kea-dhcp-ddns.service || :
 	fi
 	if [ -n "$use_agent" ]; then
-		/usr/bin/systemctl start kea-ctrl-agent.service || :
+		%_bindir/systemctl start kea-ctrl-agent.service || :
 	fi
 fi
 
@@ -490,9 +490,8 @@ fi
 %_sbindir/perfdhcp
 %_datadir/kea/
 %_unitdir/*.service
-%dir %attr(0750,keadhcp,keadhcp) %_localstatedir/lib/kea
 %_sysusersdir/*
-%attr(0750,keadhcp,keadhcp) %_localstatedir/log/kea/
+%_tmpfilesdir/kea.conf
 
 %files doc
 %doc %_datadir/doc/kea/
@@ -501,8 +500,8 @@ fi
 %files hooks
 %dir %_libdir/kea
 %_libdir/kea/hooks/
-%dir %{_sysconfdir}/kea/radius
-%{_sysconfdir}/kea/radius/dictionary
+%dir %_sysconfdir/kea/radius
+%_sysconfdir/kea/radius/dictionary
 
 %files -n libkea-asiodns%asiodns_sover
 %_libdir/libkea-asiodns.so.%asiodns_sover
@@ -610,7 +609,7 @@ fi
 %files devel
 %_includedir/kea/
 %_libdir/libkea*.so
-%{_libdir}/pkgconfig/*.pc
-%{_bindir}/kea-msg-compiler
+%_libdir/pkgconfig/*.pc
+%_bindir/kea-msg-compiler
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 29 13:35:45 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Create /var/lib/kea and /var/log/kea via systemd-tmpfiles to
+  improve immutable os compatibility
+
+-------------------------------------------------------------------
 Thu Nov 13 15:16:39 CET 2025 - aschnell@suse.com
 
 - Fix building with Boost 1.90 Beta 1
