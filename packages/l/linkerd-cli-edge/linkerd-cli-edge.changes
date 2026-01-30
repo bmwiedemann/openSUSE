@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jan 30 06:27:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.1.4:
+  No CLI-related changes in the changelog
+  Dependencies
+  * build(deps): bump socket2 from 0.6.1 to 0.6.2 (#14887)
+  * build(deps): bump zmij from 1.0.14 to 1.0.17 (#14888)
+  * build(deps): bump libc from 0.2.178 to 0.2.180 (#14889)
+  * build(deps): bump thiserror from 2.0.17 to 2.0.18 (#14890)
+  * build(deps): bump docker/login-action from 3.6.0 to 3.7.0
+    (#14892)
+  * build(deps): bump syn from 2.0.111 to 2.0.114 (#14877)
+  * build(deps): bump find-msvc-tools from 0.1.5 to 0.1.8 (#14875)
+  * build(deps): bump zerocopy from 0.8.31 to 0.8.33 (#14876)
+  * build(deps): bump chrono from 0.4.42 to 0.4.43 (#14874)
+  * build(deps): bump actions/checkout from 6.0.1 to 6.0.2 (#14881)
+  * build(deps-dev): bump @babel/runtime from 7.28.4 to 7.28.6 in
+    /web/app (#14882)
+  * build(deps-dev): bump @babel/core from 7.28.5 to 7.28.6 in
+    /web/app (#14883)
+  * build(deps): bump core-js from 3.47.0 to 3.48.0 in /web/app
+    (#14884)
+  * build(deps-dev): bump webpack-dev-server from 5.2.2 to 5.2.3 in
+    /web/app (#14885)
+
+-------------------------------------------------------------------
 Fri Jan 23 06:35:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.1.3:
