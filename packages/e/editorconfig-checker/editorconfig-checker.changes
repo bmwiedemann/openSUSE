@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jan 30 06:34:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.6.1:
+  * Bug Fixes
+    - empty charset on xlf files (#527) (ebaf1b9)
+    - github actions workflow example in readme (#528) (1e564b2)
+  * Dependencies
+    - chore(deps): bump anchore/sbom-action from 0.21.1 to 0.22.0
+      (#531)
+    - chore(deps): bump golang.org/x/text from 0.32.0 to 0.33.0
+      (#526)
+    - chore(deps): bump anchore/sbom-action from 0.21.0 to 0.21.1
+      (#525)
+    - chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.18
+      to 0.5.19 (#524)
+    - chore(deps): bump anchore/sbom-action from 0.20.11 to 0.21.0
+      (#523)
+    - chore(deps): bump anchore/sbom-action from 0.20.10 to 0.20.11
+      (#518)
+    - chore(deps): bump
+      github.com/editorconfig/editorconfig-core-go/v2 (#522)
+    - chore(deps): bump golang.org/x/text from 0.31.0 to 0.32.0
+      (#516)
+    - chore(deps): bump github.com/gabriel-vasile/mimetype (#520)
+    - chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.17
+      to 0.5.18 (#514)
+    - chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.16
+      to 0.5.17 (#513)
+
+-------------------------------------------------------------------
 Wed Nov 26 06:22:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.6.0:
