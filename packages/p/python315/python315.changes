@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jan 27 16:31:12 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2024-6923-follow-up-EOL-email-headers.patch which is
+  a follow-up to the previous fix of CVE-2024-6923 further
+  encoding EOL possibly hidden in email headers (bsc#1257181).
+- Add CVE-2025-11468-email-hdr-fold-comment.patch preserving
+  parens when folding comments in email headers (bsc#1257029,
+  CVE-2025-11468).
+- Add CVE-2026-0672-http-hdr-inject-cookie-Morsel.patch, which
+  rejects control characters in http cookies (bsc#1257031,
+  CVE-2026-0672).
+
+-------------------------------------------------------------------
+Wed Jan 21 18:02:37 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Remodel python-3.3.0b1-fix_date_time_compiler.patch to be
+  upstreamable (make it dependent on the environment variable
+  $UNVERSIONED_COMPILER; gh#python/cpython#144121).
+
+-------------------------------------------------------------------
+Fri Jan  9 10:41:47 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Rename skip-test_thread_time.patch to
+  longer-time-test_thread_time.patch and replace its content with
+  gh#python/cpython!143558
+
+-------------------------------------------------------------------
 Wed Jan  7 17:12:05 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add skip-test_thread_time.patch to skip
@@ -6678,7 +6705,8 @@ Sat Sep  7 15:36:03 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
       now refuse to serialize (write) headers
       that are unsafely folded or delimited; see
       verify_generated_headers. (Contributed by Bas Bloemsaat and
-      Petr Viktorin in gh-121650.; CVE-2024-6923, bsc#1228780)
+      Petr Viktorin in gh-121650.; CVE-2024-6923, bsc#1228780,
+      bsc#1257181)
     - gh-121723: Make logging.config.dictConfig() accept any
       object implementing the Queue public API. See the queue
       configuration section for details. Patch by Bénédikt Tran.

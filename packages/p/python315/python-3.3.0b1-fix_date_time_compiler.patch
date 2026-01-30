@@ -1,19 +1,35 @@
+From 8323be9cee608439cd1a7c1e026d744bbbc83805 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@cepl.eu>
+Date: Wed, 21 Jan 2026 17:10:46 +0100
+Subject: [PATCH] Allow overriding COMPILER with UNVERSIONED_COMPILER
+
+Introduce UNVERSIONED_COMPILER variable in Makefile.pre.in to allow
+overriding the COMPILER macro definition during the build of
+Python/getcompiler.o.
+
+This enables reproducible builds by providing a way to set a generic
+compiler identification string (e.g., "[GCC]") instead of the default
+versioned one.
+
+The rule is made conditional on UNVERSIONED_COMPILER being defined.
 ---
- Makefile.pre.in |    5 +++++
- 1 file changed, 5 insertions(+)
+ Makefile.pre.in |    7 +++++++
+ 1 file changed, 7 insertions(+)
 
 Index: Python-3.15.0a3/Makefile.pre.in
 ===================================================================
---- Python-3.15.0a3.orig/Makefile.pre.in	2025-12-19 02:26:23.594002103 +0100
-+++ Python-3.15.0a3/Makefile.pre.in	2025-12-19 02:26:28.185444105 +0100
-@@ -1926,6 +1926,11 @@
+--- Python-3.15.0a3.orig/Makefile.pre.in	2025-12-16 13:26:12.000000000 +0100
++++ Python-3.15.0a3/Makefile.pre.in	2026-01-21 18:16:49.104742043 +0100
+@@ -1926,6 +1926,13 @@
  	      -DGITBRANCH="\"`LC_ALL=C $(GITBRANCH)`\"" \
  	      -o $@ $(srcdir)/Modules/getbuildinfo.c
  
++ifdef UNVERSIONED_COMPILER
 +Python/getcompiler.o: $(srcdir)/Python/getcompiler.c Makefile
 +	$(CC) -c $(PY_CORE_CFLAGS) \
-+		-DCOMPILER='"[GCC]"' \
++		-DCOMPILER='"$(UNVERSIONED_COMPILER)"' \
 +		-o $@ $(srcdir)/Python/getcompiler.c
++endif
 +
  Modules/getpath.o: $(srcdir)/Modules/getpath.c Python/frozen_modules/getpath.h Makefile $(PYTHON_HEADERS)
  	$(CC) -c $(PY_CORE_CFLAGS) -DPYTHONPATH='"$(PYTHONPATH)"' \

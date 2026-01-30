@@ -82,4 +82,31 @@ with 20251123 (so 20251206 we have in Factory, should be
 covered).</comment>
     <requestid>1325861</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>f02e6d5e05ca7668c81f84a379e98401</srcmd5>
+    <version>3.15.0~a3</version>
+    <time>1769793736</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2024-6923-follow-up-EOL-email-headers.patch which is
+  a follow-up to the previous fix of CVE-2024-6923 further
+  encoding EOL possibly hidden in email headers (bsc#1257181).
+- Add CVE-2025-11468-email-hdr-fold-comment.patch preserving
+  parens when folding comments in email headers (bsc#1257029,
+  CVE-2025-11468).
+- Add CVE-2026-0672-http-hdr-inject-cookie-Morsel.patch, which
+  rejects control characters in http cookies (bsc#1257031,
+  CVE-2026-0672).
+
+- Remodel python-3.3.0b1-fix_date_time_compiler.patch to be
+  upstreamable (make it dependent on the environment variable
+  $UNVERSIONED_COMPILER; gh#python/cpython#144121).
+
+- Rename skip-test_thread_time.patch to
+  longer-time-test_thread_time.patch and replace its content with
+  gh#python/cpython!143558
+
+      Petr Viktorin in gh-121650.; CVE-2024-6923, bsc#1228780,
+      bsc#1257181)</comment>
+    <requestid>1329830</requestid>
+  </revision>
 </revisionlist>

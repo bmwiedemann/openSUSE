@@ -1,0 +1,29 @@
+From 6c6636477245f87b200f2f2c5a9043ee1d69842e Mon Sep 17 00:00:00 2001
+From: Victor Stinner <vstinner@python.org>
+Date: Thu, 8 Jan 2026 13:18:50 +0100
+Subject: [PATCH] gh-143528: Fix test_time.test_thread_time()
+
+Tolerate 100 ms instead of 20 ms to support slow CIs.
+---
+ Lib/test/test_time.py |    7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+Index: Python-3.15.0a3/Lib/test/test_time.py
+===================================================================
+--- Python-3.15.0a3.orig/Lib/test/test_time.py	2026-01-09 11:44:20.543009433 +0100
++++ Python-3.15.0a3/Lib/test/test_time.py	2026-01-09 11:44:27.380993477 +0100
+@@ -580,11 +580,10 @@
+ 
+         # thread_time() should not include time spend during a sleep
+         start = time.thread_time()
+-        time.sleep(0.100)
++        time.sleep(0.200)
+         stop = time.thread_time()
+-        # use 20 ms because thread_time() has usually a resolution of 15 ms
+-        # on Windows
+-        self.assertLess(stop - start, 0.020)
++        # gh-143528: use 100 ms to support slow CI
++        self.assertLess(stop - start, 0.100)
+ 
+         info = time.get_clock_info('thread_time')
+         self.assertTrue(info.monotonic)

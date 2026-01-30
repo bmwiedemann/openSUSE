@@ -201,7 +201,8 @@ Source100:      PACKAGING-NOTES
 Patch02:        F00251-change-user-install-location.patch
 # support finding packages in /usr/local, install to /usr/local by default
 Patch03:        python-3.3.0b1-localpath.patch
-# replace DATE, TIME and COMPILER by fixed definitions to aid reproducible builds
+# PATCH-FIX-UPSTREAM python-3.3.0b1-fix_date_time_compiler.patch gh#python/cpython#144121 mcepl@suse.com
+# replace COMPILER by fixed definitions to aid reproducible builds
 Patch04:        python-3.3.0b1-fix_date_time_compiler.patch
 # Raise timeout value for test_subprocess
 Patch06:        subprocess-raise-timeout.patch
@@ -224,9 +225,19 @@ Patch40:        fix-test-recursion-limit-15.6.patch
 Patch41:        bsc1243155-sphinx-non-determinism.patch
 # PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
 Patch42:        gh139257-Support-docutils-0.22.patch
-# PATCH-FIX-UPSTREAM skip-test_thread_time.patch gh#python/cpython#143528 mcepl@suse.com
-# skip test.test_time.TimeTestCase.test_thread_time on s390x
-Patch43:        skip-test_thread_time.patch
+# PATCH-FIX-UPSTREAM longer-time-test_thread_time.patch gh#python/cpython!143558 mcepl@suse.com
+# tolerate 100 ms instead of 20 ms to support slow CIs.
+Patch43:        longer-time-test_thread_time.patch
+# PATCH-FIX-UPSTREAM CVE-2024-6923-follow-up-EOL-email-headers.patch bsc#1257181 mcepl@suse.com
+# Encode newlines in headers when using ByteGenerator
+# patch from gh#python/cpython#144125
+Patch44:        CVE-2024-6923-follow-up-EOL-email-headers.patch
+# PATCH-FIX-UPSTREAM CVE-2025-11468-email-hdr-fold-comment.patch bsc#1257029 mcepl@suse.com
+# Email preserve parens when folding comments
+Patch45:        CVE-2025-11468-email-hdr-fold-comment.patch
+# PATCH-FIX-UPSTREAM CVE-2026-0672-http-hdr-inject-cookie-Morsel.patch bsc#1257031 mcepl@suse.com
+# Reject control characters in http cookies
+Patch46:        CVE-2026-0672-http-hdr-inject-cookie-Morsel.patch
 #### Python 3.15 DEVELOPMENT PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -575,6 +586,7 @@ sed -i -e '/^SPHINXERRORHANDLING/s/--fail-on-warning//' Doc/Makefile
 %build
 export SUSE_VERSION="0%{?suse_version}"
 export SLE_VERSION="0%{?sle_version}"
+export UNVERSIONED_COMPILER="[GCC]"
 
 %if %{with doc}
 TODAY_DATE=`date -r %{SOURCE0} "+%B %d, %Y"`
