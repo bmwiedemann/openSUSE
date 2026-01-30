@@ -1,4 +1,184 @@
 -------------------------------------------------------------------
+Fri Jan 30 07:47:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.9.0:
+  * chore(backport release-1.9): fix(cli): fix api version used by
+    hand-written watch client (#5655)
+  * chore(backport release-1.9): fix: fix two cli commands to not
+    rely on legacy api types (#5644)
+  * feat(cli): allow auth using api token in env var (#5634)
+  * docs: update CLI auth callback URL to use HTTP (#5425)
+  * chore(deps): bump major dependencies (#5555)
+  * chore(deps): bump actions/setup-node from 6.1.0 to 6.2.0
+    (#5595)
+  * chore(deps): bump actions/setup-go from 6.1.0 to 6.2.0 (#5596)
+  * chore(deps): bump actions/cache from 5.0.1 to 5.0.2 (#5597)
+  * chore(deps): bump the go-patch group with 2 updates (#5601)
+  * chore(deps): update non-K8s dependencies (#5572)
+  * chore(deps): bump curlimages/curl from 8.17.0 to 8.18.0 (#5564)
+  * chore(deps): bump anchore/sbom-action from 0.21.0 to 0.21.1
+    (#5565)
+  * chore(deps): bump the js-patch group across 1 directory with 6
+    updates (#5546)
+  * chore(deps): bump actions/download-artifact from 4.3.0 to 7.0.0
+    (#5529)
+  * chore(deps): bump docker/login-action from 3.3.0 to 3.6.0
+    (#5526)
+  * chore(deps): bump anchore/sbom-action from 0.20.11 to 0.21.0
+    (#5543)
+  * chore(dep): bump dex to `v2.44.0` (#5537)
+  * chore(deps): bump the go-patch group with 3 updates (#5531)
+  * chore(deps): bump docker/setup-buildx-action from 3.11.1 to
+    3.12.0 (#5527)
+  * chore(deps): bump docker/build-push-action from 6.5.0 to 6.18.0
+    (#5528)
+  * chore(deps): bump korthout/backport-action from 4.0.0 to 4.0.1
+    (#5525)
+  * chore(deps): bump github.com/expr-lang/expr from 1.17.6 to
+    1.17.7 (#5514)
+  * chore(deps/api): bump the go-patch group in /api with 4 updates
+    (#5502)
+  * chore(deps/tools): bump the go-patch group in /hack/tools with
+    3 updates (#5500)
+  * chore(deps): bump codecov/codecov-action from 5.5.1 to 5.5.2
+    (#5499)
+  * chore(deps): bump korthout/backport-action from 3.4.1 to 4.0.0
+    (#5498)
+  * chore(deps): bump the go-patch group across 1 directory with 12
+    updates (#5505)
+  * chore(deps/tools): bump golang.org/x/tools from 0.39.0 to
+    0.40.0 in /hack/tools in the go-minor group (#5501)
+  * chore(deps): bump library/node from 24.11.1 to 24.12.0 (#5497)
+  * chore(deps): bump actions/cache from 4.3.0 to 5.0.1 (#5496)
+  * chore(deps/tools): bump github.com/quic-go/quic-go from 0.56.0
+    to 0.57.0 in /hack/tools (#5488)
+  * chore(deps): bump the go-minor group with 7 updates (#5504)
+  * chore(deps): bump the go-patch group with 8 updates (#5466)
+  * chore(deps): bump golang from 1.25.4-trixie to 1.25.5-trixie
+    (#5462)
+  * chore(deps): bump actions/stale from 10.1.0 to 10.1.1 (#5461)
+  * chore(deps/tools): bump github.com/golangci/golangci-lint/v2
+    from 2.6.2 to 2.7.1 in /hack/tools in the go-minor group
+    (#5465)
+  * chore(deps): bump actions/checkout from 6.0.0 to 6.0.1 (#5463)
+  * chore(deps): bump actions/setup-node from 6.0.0 to 6.1.0
+    (#5464)
+  * chore(deps): bump the go-minor group with 2 updates (#5467)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from
+    0.160.1 to 1.2.0 in the go-major group (#5437)
+  * chore(deps): bump the go-patch group with 6 updates (#5436)
+  * chore(deps/tools): bump github.com/bufbuild/buf from 1.60.0 to
+    1.61.0 in /hack/tools in the go-minor group (#5435)
+  * chore(deps): bump the go-minor group with 8 updates (#5424)
+  * chore(deps): bump actions/setup-go from 6.0.0 to 6.1.0 (#5423)
+  * chore(deps): bump the js-patch group across 1 directory with 16
+    updates (#5426)
+  * chore(deps): bump actions/checkout from 5.0.0 to 6.0.0 (#5421)
+  * chore(deps): bump the go-patch group with 3 updates (#5422)
+  * chore(deps): bump zx from 8.8.0 to 8.8.5 in /ui (#5419)
+  * chore(deps/tools): bump golang.org/x/crypto from 0.44.0 to
+    0.45.0 in /hack/tools (#5411)
+  * chore(deps): bump golang.org/x/crypto from 0.44.0 to 0.45.0
+    (#5410)
+  * chore(deps/tools): bump the go-minor group in /hack/tools with
+    2 updates (#5390)
+  * chore(deps/tools): bump the go-patch group in /hack/tools with
+    3 updates (#5389)
+  * chore(deps): bump the go-minor group with 8 updates (#5393)
+  * chore(deps/api): bump the go-patch group in /api with 3 updates
+    (#5391)
+  * chore(deps): bump library/node from 24.10.0 to 24.11.1 (#5388)
+  * chore(deps): bump the go-patch group with 11 updates (#5392)
+  * chore(deps): bump golang from 1.25.3-trixie to 1.25.4-trixie
+    (#5366)
+  * chore(deps): bump the go-patch group with 6 updates (#5368)
+  * chore(deps/tools): bump github.com/golangci/golangci-lint/v2
+    from 2.6.0 to 2.6.1 in /hack/tools in the go-patch group
+    (#5367)
+  * chore(deps): bump the go-minor group with 6 updates (#5369)
+  * chore(deps): bump docker/setup-qemu-action from 3.6.0 to 3.7.0
+    (#5365)
+  * chore(deps): bump curlimages/curl from 8.16.0 to 8.17.0 (#5364)
+  * chore(deps/tools): bump github.com/containerd/containerd from
+    1.7.28 to 1.7.29 in /hack/tools (#5357)
+  * chore(deps): bump github.com/containerd/containerd from 1.7.28
+    to 1.7.29 (#5358)
+  * chore(deps/tools): bump github.com/golangci/golangci-lint/v2
+    from 2.5.0 to 2.6.0 in /hack/tools in the go-minor group
+    (#5326)
+  * chore(deps): bump the go-minor group with 2 updates (#5328)
+  * chore(deps): bump the go-patch group with 7 updates (#5327)
+  * chore(deps): bump sigstore/cosign-installer from 3.10.0 to
+    4.0.0 (#5247)
+  * chore(deps): bump the go-minor group with 4 updates (#5290)
+  * chore(deps): bump the go-patch group with 6 updates (#5289)
+  * chore(deps/tools): bump github.com/bufbuild/buf from 1.58.0 to
+    1.59.0 in /hack/tools in the go-minor group (#5288)
+  * chore(deps): bump golang from 1.25.2-trixie to 1.25.3-trixie
+    (#5246)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from
+    0.156.0 to 0.157.0 in the go-minor group (#5251)
+  * chore(deps): bump the go-patch group with 5 updates (#5250)
+  * chore(deps): bump actions/setup-node from 5.0.0 to 6.0.0
+    (#5249)
+  * chore(deps): bump the js-minor group in /ui with 19 updates
+    (#5135)
+  * chore(deps): bump pnpm/action-setup from 4.1.0 to 4.2.0 (#5196)
+  * chore(deps): bump library/node from 24.9.0 to 24.10.0 (#5197)
+  * chore(deps): bump sigs.k8s.io/controller-runtime from 0.22.2 to
+    0.22.3 in the go-patch group (#5198)
+  * chore(deps/tools): bump the go-minor group in /hack/tools with
+    2 updates (#5199)
+  * chore(deps/tools): bump github.com/quic-go/quic-go from 0.54.0
+    to 0.54.1 in /hack/tools (#5194)
+  * chore(deps): bump korthout/backport-action from 3.3.0 to 3.4.1
+    (#5157)
+  * chore(deps): update Go dependencies (#5185)
+  * chore(deps): update Go from 1.25.1 to 1.25.2 (#5184)
+  * chore(deps): bump actions/stale from 10.0.0 to 10.1.0 (#5156)
+  * chore(deps): bump the go-minor group with 3 updates (#5160)
+  * chore(deps): bump the go-patch group with 3 updates (#5159)
+
+-------------------------------------------------------------------
+Fri Jan 30 07:27:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.8.9:
+  * chore(backport release-1.8): docs: update CLI auth callback URL
+    to use HTTP (#5441)
+  * chore(backport release-1.8): chore(deps): bump the go-patch
+    group with 7 updates (#5333)
+  * chore(backport release-1.8): chore(deps): bump
+    pnpm/action-setup from 4.1.0 to 4.2.0 (#5207)
+  * chore(backport release-1.8): chore(deps): bump
+    sigs.k8s.io/controller-runtime from 0.22.2 to 0.22.3 in the
+    go-patch group (#5206)
+  * chore(backport release-1.8): chore(deps): update Go
+    dependencies (#5189)
+  * chore(backport release-1.8): chore(deps): update Go from 1.25.1
+    to 1.25.2 (#5188)
+  * chore(backport release-1.8): chore(deps): bump the go-patch
+    group with 6 updates (#5291)
+  * chore(deps): bump golang from 1.25.2-trixie to 1.25.3-trixie
+    (#5256)
+  * chore(backport release-1.8): chore(deps): bump
+    gitlab.com/gitlab-org/api/client-go from 0.156.0 to 0.157.0 in
+    the go-minor group (#5255)
+  * chore(backport release-1.8): chore(deps): bump the go-patch
+    group with 5 updates (#5254)
+  * chore(backport release-1.8): chore(deps): bump
+    github.com/expr-lang/expr from 1.17.6 to 1.17.7 (#5515)
+  * chore(backport release-1.8): chore(deps): bump the go-patch
+    group with 11 updates (#5398)
+  * chore(backport release-1.8): chore(deps/api): bump the go-patch
+    group in /api with 3 updates (#5397)
+  * chore(backport release-1.8): chore(deps): bump golang from
+    1.25.3-trixie to 1.25.4-trixie (#5371)
+  * chore(backport release-1.8): chore(deps): bump the go-patch
+    group with 6 updates (#5370)
+  * chore(backport release-1.8): chore(deps): bump
+    github.com/containerd/containerd from 1.7.28 to 1.7.29 (#5360)
+
+-------------------------------------------------------------------
 Wed Jan 28 06:22:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.8.8:
