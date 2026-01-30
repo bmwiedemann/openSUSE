@@ -6,6 +6,10 @@ Mon Jan 19 18:33:04 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
     https://github.com/ImageMagick/ImageMagick/compare/7.1.2-12..7.1.2-13
 - modified patches
   * ImageMagick-configuration-SUSE.patch (refreshed)
+- fixes CVE-2026-23876 [bsc#1256962]
+        CVE-2026-22770 [bsc#1256969]
+        CVE-2026-23952 [bsc#1257076]
+        CVE-2026-23874 [bsc#1256976]
 
 -------------------------------------------------------------------
 Tue Jan  6 09:32:47 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
