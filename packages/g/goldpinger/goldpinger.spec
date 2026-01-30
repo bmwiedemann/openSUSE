@@ -1,7 +1,7 @@
 #
 # spec file for package goldpinger
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           goldpinger
-Version:        3.10.2
+Version:        3.10.3
 Release:        0
 Summary:        Tests and displays connectivity between nodes in a Kubernetes cluster
 License:        Apache-2.0
 URL:            https://github.com/bloomberg/goldpinger
 Source:         goldpinger-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.23
+BuildRequires:  golang(API) >= 1.25
 
 %description
 Goldpinger makes calls between its instances to monitor your networking. It
