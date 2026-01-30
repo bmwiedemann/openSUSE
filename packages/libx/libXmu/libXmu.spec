@@ -17,7 +17,7 @@
 
 
 Name:           libXmu
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Miscellaneous utility routines for X
 License:        MIT
@@ -28,7 +28,6 @@ URL:            http://xorg.freedesktop.org/
 #Git-Web:       http://cgit.freedesktop.org/xorg/lib/libXmu/
 Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-Patch0:         u_int-to-pointer-cast.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  pkgconfig
