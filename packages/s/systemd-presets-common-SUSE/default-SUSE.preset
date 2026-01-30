@@ -69,9 +69,10 @@ enable storage-fixup.service
 enable systemd-pstore.service
 enable unbound-anchor.timer
 enable uuidd.socket
+enable vgauthd.service
 enable vmblock-fuse.service
 enable vmtoolsd.service
-enable vgauthd.service
+enable vpdupdate.service
 enable wtmpdb-update-boot.service
 enable wtmpdb-rotate.timer
 enable wtmpdbd.socket

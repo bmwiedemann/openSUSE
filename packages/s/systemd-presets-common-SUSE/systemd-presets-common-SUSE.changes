@@ -1,10 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 29 08:28:27 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Enable vpdupdate service for lsvpd (jsc#PED-14567).
+
+-------------------------------------------------------------------
 Tue Dec 23 08:17:49 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Add Provides:  %{name}-selinux-storeroot-etc-service so that
   selinux-policy can "Conflicts:" on versions without the
   cleanoldesepoldir.service. Otherwise store-root migration might
-  break (PED-12492, bsc#1221342) 
+  break (PED-12492, bsc#1221342)
 
 -------------------------------------------------------------------
 Wed Dec 10 14:28:32 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
@@ -73,7 +78,7 @@ Tue Jan 28 11:00:10 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 Tue Jan  7 09:43:10 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove enable nscd, nscd doesn't work anymore with systemd 257
-  [bsc#1234904] 
+  [bsc#1234904]
 
 -------------------------------------------------------------------
 Tue Oct  1 06:51:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -138,7 +143,7 @@ Tue Feb  7 07:46:45 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 -------------------------------------------------------------------
 Thu Dec 15 14:47:15 UTC 2022 - Franck Bui <fbui@suse.com>
 
-- Enable systemd-pstore.service by default (jsc#PED-2663) 
+- Enable systemd-pstore.service by default (jsc#PED-2663)
 
 -------------------------------------------------------------------
 Wed Nov 16 14:13:44 UTC 2022 - Matthias Gerstner <matthias.gerstner@suse.com>
@@ -273,7 +278,7 @@ Tue Jan 15 17:26:42 CET 2019 - tiwai@suse.de
 -------------------------------------------------------------------
 Fri Jan 11 15:09:22 CET 2019 - kukuk@suse.de
 
-- Add issue-generator.path to make sure /etc/issue is really 
+- Add issue-generator.path to make sure /etc/issue is really
   regenerated if snippets change [bsc#1116825]
 
 -------------------------------------------------------------------
@@ -551,7 +556,7 @@ Tue Jun 30 22:43:34 UTC 2015 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Wed Apr  1 18:34:50 UTC 2015 - crrodriguez@opensuse.org
 
-- Native systemd unit apparmor.service need to be enabled 
+- Native systemd unit apparmor.service need to be enabled
   by default.
 
 -------------------------------------------------------------------
@@ -588,7 +593,7 @@ Thu Jun 26 08:51:33 UTC 2014 - glin@suse.com
 Wed May 28 06:40:13 UTC 2014 - lwang@suse.com
 
 - enable lvm2-lvmetad.socket (bnc#878473)
-  enable lvm2-lvmetad.service 
+  enable lvm2-lvmetad.service
 
 -------------------------------------------------------------------
 Fri Apr 11 08:58:36 UTC 2014 - meissner@suse.com
@@ -619,7 +624,7 @@ Thu Feb 13 11:44:28 PST 2014 - lduncan@suse.com
 -------------------------------------------------------------------
 Sat Feb  1 09:54:04 CET 2014 - ohering@suse.de
 
-- Revert last change for hyper-v.rpm 
+- Revert last change for hyper-v.rpm
   Both daemons are started on demand via udev rules.
 
 -------------------------------------------------------------------

@@ -404,4 +404,12 @@ It fits better in common-SUSE. I'll remove it from branding. (forwarded request 
   break (PED-12492, bsc#1221342) (forwarded request 1324248 from cahu)</comment>
     <requestid>1325396</requestid>
   </revision>
+  <revision rev="47" vrev="47">
+    <srcmd5>7933fdbf38d5ed4e80150af842fe6227</srcmd5>
+    <version>15</version>
+    <time>1769793588</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1329839</requestid>
+  </revision>
 </revisionlist>
