@@ -346,4 +346,17 @@ gh#kubernetes-client/python#2178 - merged upstream and released.
 ref: https://github.com/kubernetes-client/python/releases/tag/v35.0.0</comment>
     <requestid>1327547</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>78f014b4c3b476ea7bac4684411d7326</srcmd5>
+    <version>35.0.0</version>
+    <time>1769793598</time>
+    <user>anag_factory</user>
+    <comment>- remove the following Build time requirements.
+  These modules are stale requirements and no longer in use across the tests.
+  * BuildRequires:  %{python_module Sphinx &gt;= 1.4} (only needed for building docs, which is not part of the spec file)
+  * BuildRequires:  %{python_module pluggy &gt;= 0.3.1} 
+  * BuildRequires:  %{python_module recommonmark} (ref: https://github.com/kubernetes-client/python/pull/2508)
+</comment>
+    <requestid>1329680</requestid>
+  </revision>
 </revisionlist>

@@ -48,11 +48,8 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module Sphinx >= 1.4}
 BuildRequires:  %{python_module oauthlib}
-BuildRequires:  %{python_module pluggy >= 0.3.1}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module recommonmark}
 # /SECTION
 Requires:       python-oauthlib
 Requires:       python-PyYAML >= 5.4.1
