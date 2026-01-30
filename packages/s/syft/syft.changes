@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 30 06:21:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.41.1:
+  * Bug Fixes
+    - [Bug Report] Missing some dependencies on cyclonedx formatted
+      SBOM using syft [#4562 #4573 @spiffcs]
+  * Dependencies
+    - chore(deps): update tools to latest versions (#4577)
+
+-------------------------------------------------------------------
 Tue Jan 27 12:18:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.41.0:
