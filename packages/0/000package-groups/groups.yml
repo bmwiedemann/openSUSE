@@ -34,6 +34,7 @@ OUTPUT:
 common_locks:
   - dummy-release: [locked]
   - kernel-default: [required]
+  - kernel-longterm: [locked]
   - kernel-vanilla-base: [locked]
   - kernel-kvmsmall-base: [locked]
   - kernel-vanilla: [locked]

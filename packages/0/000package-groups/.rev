@@ -2361,4 +2361,11 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <user>dimstar_suse</user>
     <comment>Suggest sudo and pkexec; run0-wrappers are not yet ready</comment>
   </revision>
+  <revision rev="331" vrev="329">
+    <srcmd5>bb770654e50e8092412720736e2d31e9</srcmd5>
+    <version>unknown</version>
+    <time>1769784330</time>
+    <user>dimstar_suse</user>
+    <comment>No space for kernel-longterm</comment>
+  </revision>
 </revisionlist>
