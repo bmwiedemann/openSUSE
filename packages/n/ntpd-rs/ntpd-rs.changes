@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 30 13:31:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.0
+  * Support for the experimental NTS pool is now possible with
+    configuration changes.
+  Changed
+  * NTPv5 draft support now targets draft 6.
+  * Reworked NTS parsing to be easier to maintain.
+  * Updated dependencies.
+  * Cap ntp-ctl control socket input size for defense in depth.
+  Fixed
+  * Fixed bug that caused force-sync to fail when only a single
+    server was configured.
+  * Fixed bug in parsing NTPv4 requests with a MAC.
+  * Fixed bug in odd-sized NTPv5 bloom filter requests.
+  * Fixed incorrect reference to configuration field warn-on-jump
+    in log output.
+
+-------------------------------------------------------------------
 Sun Sep  7 19:40:16 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.6.2

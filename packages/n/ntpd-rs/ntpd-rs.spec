@@ -1,8 +1,8 @@
 #
 # spec file for package ntpd-rs
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2024-2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2024-2027, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define services ntpd-rs.service ntpd-rs-metrics.service
 Name:           ntpd-rs
-Version:        1.6.2
+Version:        1.7.0
 Release:        0
 Summary:        Full-featured implementation of NTP with NTS support
 License:        Apache-2.0 OR MIT
