@@ -618,4 +618,15 @@
     <comment></comment>
     <requestid>1252513</requestid>
   </revision>
+  <revision rev="71" vrev="5">
+    <srcmd5>cdc68e9295db31c4eaaaa47f9807c9f1</srcmd5>
+    <version>1.23.0</version>
+    <time>1769793604</time>
+    <user>anag_factory</user>
+    <comment>- Remove update-alternatives usage for roff manpage, mandoc no longer
+  provides it. (bsc#1245900)
+- Use libalternatives for soelim, fixing conflict with mandoc
+  * Add new soelim-common package which provides soelim symlink to alts</comment>
+    <requestid>1329728</requestid>
+  </revision>
 </revisionlist>

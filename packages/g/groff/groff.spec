@@ -1,7 +1,7 @@
 #
 # spec file for package groff
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -92,9 +92,12 @@ Obsoletes:      jgroff < %{version}
 Provides:       groff-devx = %{version}-%{release}
 Obsoletes:      groff-devx <= 1.21
 # alternatives
-BuildRequires:  update-alternatives
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+%else
+Provides:       soelim
+BuildRequires:  alts
+Requires:       alts
+Requires:       soelim-common
 %endif
 
 %description
@@ -129,6 +132,15 @@ Obsoletes:      gxdview < %{version}
 This version of xditview is called gxditview and has some extensions
 used by the groff command.  gxditview is used by groff if called with
 the -X option.
+
+%package -n soelim-common
+Summary:        Common package for soelim alternatives
+Requires:       alts
+Requires:       soelim
+BuildArch:      noarch
+
+%description -n soelim-common
+Interpret .so requests in manpages. Common package for soelim alternatives.
 
 %prep
 %setup -q -n groff-%{version}
@@ -195,20 +207,6 @@ rm -f %{buildroot}%{_mandir}/man1/soelim.1*
 rm -f %{buildroot}%{_mandir}/man1/tbl.1*
 rm -f %{buildroot}%{_mandir}/man1/troff.1*
 
-# Prepare alternatives
-find %{buildroot}%{_mandir}
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-
-## This construct should help identify whether the manpage is compressed,
-## and the mv/ln TARGET parameter should be adjusted accordingly.
-ext_man="%{?ext_man}%{!?ext_man:.gz}"
-manfile="$(find %{buildroot}%{_mandir}/man7/ -type f -name "roff.7${ext_man}")"
-test -z "${manfile}" && unset ext_man
-
-mv -v "%{buildroot}%{_mandir}/man7/roff.7${ext_man:-}" \
-    "%{buildroot}%{_mandir}/man7/roff-gf.7${ext_man:-}"
-ln -s -f "%{_sysconfdir}/alternatives/roff.7${ext_man:-}" \
-    "%{buildroot}%{_mandir}/man7/roff.7${ext_man:-}"
 # full_build
 %else
 # fix permission for devps/generate/afmname
@@ -255,6 +253,17 @@ ln -s -f tbl %{buildroot}%{_bindir}/gtbl
 install -d -m 0755 %{buildroot}/%{_sysconfdir}/profile.d
 install -m 644 %{SOURCE3} %{SOURCE4} %{buildroot}/%{_sysconfdir}/profile.d/
 
+# alternatives config for soelim
+mv %{buildroot}%{_bindir}/soelim %{buildroot}%{_bindir}/groff-soelim
+mv %{buildroot}%{_mandir}/man1/soelim.1 %{buildroot}%{_mandir}/man1/groff-soelim.1
+mkdir -p %{buildroot}%{_datadir}/libalternatives/soelim
+ln -s %{_bindir}/alts %{buildroot}%{_bindir}/soelim
+
+cat > %{buildroot}%{_datadir}/libalternatives/soelim/10.conf <<EOF
+binary=%{_bindir}/groff-soelim
+man=groff-soelim.1
+EOF
+
 # full_build
 %endif
 
@@ -263,17 +272,12 @@ install -m 644 %{SOURCE3} %{SOURCE4} %{buildroot}/%{_sysconfdir}/profile.d/
 %if %{with full_build}
 %post -n groff-full
 %install_info --info-dir=%{_infodir} %{_infodir}/groff.info.gz
-if test -f %{_mandir}/man7/roff-gf.7%{?ext_man} ; then
-   update-alternatives --install \
-      %{_mandir}/man7/roff.7%{?ext_man} roff.7%{?ext_man} \
-          %{_mandir}/man7/roff-gf.7%{?ext_man} 500
+if [ ! -f %{_mandir}/man7/roff-gf.7%{?ext_man} ]; then
+   %{_sbindir}/update-alternatives --remove roff.7%{?ext_man} %{_mandir}/man7/roff-gf.7%{?ext_man}
 fi
 
 %preun -n groff-full
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/groff.info.gz
-if [ $1 -eq 0 ] ; then
-   update-alternatives --remove man.7%{?ext_man} %{_mandir}/man7/man-gf.7%{?ext_man}
-fi
 %endif
 
 %if !%{with full_build}
@@ -292,7 +296,7 @@ fi
 %{_bindir}/nroff
 %{_bindir}/pic
 %{_bindir}/preconv
-%{_bindir}/soelim
+%{_bindir}/groff-soelim
 %{_bindir}/tbl
 %{_bindir}/troff
 %{_mandir}/man1/eqn.1%{?ext_man}
@@ -305,13 +309,18 @@ fi
 %{_mandir}/man1/nroff.1%{?ext_man}
 %{_mandir}/man1/pic.1%{?ext_man}
 %{_mandir}/man1/preconv.1%{?ext_man}
-%{_mandir}/man1/soelim.1%{?ext_man}
+%{_mandir}/man1/groff-soelim.1%{?ext_man}
 %{_mandir}/man1/tbl.1%{?ext_man}
 %{_mandir}/man1/troff.1%{?ext_man}
 %config %{_sysconfdir}/profile.d/zzz-%{name}.*sh
 %{_datadir}/%{name}
 %dir %{_libexecdir}/groff
 %{_datadir}/groff/current
+%dir %{_datadir}/libalternatives/soelim
+%{_datadir}/libalternatives/soelim/10.conf
+
+%files -n soelim-common
+%{_bindir}/soelim
 
 %else #groff_base_only
 
@@ -328,7 +337,6 @@ fi
 %{_mandir}/man5/*
 %{_mandir}/man7/*
 %exclude %{_mandir}/man1/gxditview.1*
-%ghost %{_sysconfdir}/alternatives/roff.7%{?ext_man}
 %{_bindir}/*
 %exclude %{_bindir}/gxditview
 %dir %{_datadir}/groff

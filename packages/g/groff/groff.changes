@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 28 19:00:46 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Remove update-alternatives usage for roff manpage, mandoc no longer
+  provides it. (bsc#1245900)
+- Use libalternatives for soelim, fixing conflict with mandoc
+  * Add new soelim-common package which provides soelim symlink to alts
+
+-------------------------------------------------------------------
 Tue Mar 11 15:50:30 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - Add devps-fix.patch
