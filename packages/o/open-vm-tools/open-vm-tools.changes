@@ -1,7 +1,30 @@
 -------------------------------------------------------------------
+Tue Jan 27 06:28:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 13.0.10 based on build 25056151: (boo#1257357):
+  Please refer to the Release Notes at
+  https://github.com/vmware/open-vm-tools/blob/stable-13.0.10/ReleaseNotes.md.
+
+  The granular changes that have gone into the open-vm-tools
+  13.0.10 release are in the ChangeLog at
+  https://github.com/vmware/open-vm-tools/blob/stable-13.0.10/open-vm-tools/ChangeLog.
+
+  There are no new features in the open-vm-tools 13.0.10 release.
+  This is primarily a maintenance release that addresses a fix.
+
+  A minor enhancement has been made for Guest OS Customization. The
+  DeployPkg plugin has been updated to handle a new cloud-init
+  error code that signals a recoverable error and allow cloud-init
+  to finish running.
+
+  For a more complete description of what's new in this release,
+  see the What's New and Resolved Issues sections of the Release
+  Notes.
+
+-------------------------------------------------------------------
 Wed Oct  1 14:53:20 UTC 2025 - Kirk Allan <kallan@suse.com>
 
-- Update to open-vm-tools 13.0.5 based on build 24915695. (boo#1250692): 
+- Update to open-vm-tools 13.0.5 based on build 24915695. (boo#1250692):
 
   Please refer to the Release Notes at
   https://github.com/vmware/open-vm-tools/blob/stable-13.0.5/ReleaseNotes.md.
