@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 30 06:35:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.69 (.68 was not released):
+  * Reformat text
+  * Update sponsors message
+  * Retry failed downloads, improve messages
+  * Add copilot and charm
+
+-------------------------------------------------------------------
 Tue Jan 27 13:00:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.67:
