@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-model-utils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,24 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-django-model-utils
-Version:        4.4.0
+Version:        5.0.0
 Release:        0
 Summary:        Django model mixins and utilities
 License:        BSD-3-Clause
 URL:            https://github.com/jazzband/django-model-utils
-Source:         https://files.pythonhosted.org/packages/source/d/django-model-utils/django-model-utils-%{version}.tar.gz
-# Upstreamed to https://github.com/jazzband/django-model-utils/pull/516
-Patch0:         use-sqlite.patch
-BuildRequires:  %{python_module Django >= 2.0}
+Source:         https://files.pythonhosted.org/packages/source/d/django-model-utils/django_model_utils-%{version}.tar.gz
+BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module time-machine}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-Requires:       python-Django >= 2.0
+Requires:       python-Django >= 4.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -41,7 +41,7 @@ BuildArch:      noarch
 Django model mixins and utilities.
 
 %prep
-%autosetup -p1 -n django-model-utils-%{version}
+%autosetup -p1 -n django_model_utils-%{version}
 
 %build
 %pyproject_wheel

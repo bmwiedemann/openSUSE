@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 29 17:10:53 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Update to 5.0.0:
+  * skip multiple versions, reference upstream changelog
+- Drop use-sqlite.patch, merged upstream
+- Enable sle15_python_module_pythons, project now mandates Python >= 3.10
+
+-------------------------------------------------------------------
 Thu Feb 22 05:01:04 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.4.0:
