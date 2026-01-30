@@ -1,7 +1,7 @@
 #
 # spec file for package helm-schema
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           helm-schema
-Version:        0.20.0
+Version:        0.20.2
 Release:        0
 Summary:        Generate jsonschemas from helm charts
 License:        MIT
 URL:            https://github.com/dadav/helm-schema
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.23.1
+BuildRequires:  golang(API) >= 1.25
 
 %description
 This tool tries to help you to easily create some nice JSON schema for your helm chart.
