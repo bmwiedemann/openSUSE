@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Thu Jan 29 18:46:02 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.3.2+git0.72df9192b:
+  * [RELEASE] Released version 3.3.2
+  * BUG/MEDIUM: debug: only dump Lua state when panicking
+  * BUG/MEDIUM: ssl: fix msg callbacks on QUIC connections
+  * BUG/MINOR: config/ssl: fix spelling of "expose-experimental-directives"
+  * BUG/MINOR: config: check capture pool creations for failures
+  * BUG/MINOR: stick-tables: abort startup on stk_ctr pool creation failure
+  * DOC: config: mention some possible TLS versions restrictions for kTLS
+  * BUG/MAJOR: applet: Don't call I/O handler if the applet was shut
+  * BUG/MINOR: ssl: Encrypted keys could not be loaded when given alongside certificate
+  * BUG/MINOR: ssl: Properly manage alloc failures in SSL passphrase callback
+  * DOC: reg-tests: update VTest upstream link in the starting guide
+  * MINOR: hlua: Add support for lua 5.5
+  * BUG/MINOR: ssl: fix error message of tune.ssl.certificate-compression
+  * MINOR: ssl: allow to disable certificate compression
+  * BUG/MINOR: proto_tcp: Properly report support for HAVE_TCP_MD5SIG feature
+  * BUG/MEDIUM: mux-h1: Skip UNUSED htx block when formating the start line
+  * BUG/MINOR: promex: Detach promex from the server on error dump its metrics dump
+  * BUG/MINOR: hlua: consume error object if ignored after a failing lua_pcall()
+  * BUG/MEDIUM: hlua: fix invalid lua_pcall() usage in hlua_traceback()
+  * BUG/MINOR: proxy: fix deinit crash on defaults with duplicate name
+  * REGTESTS: ssl: fix generate-certificates w/ LibreSSL
+  * BUG/MEDIUM: mux-quic: prevent BUG_ON() on aborted uni stream close
+  * BUG/MEDIUM: ssl: fix generate-certificates option when SNI greater than 64bytes
+  * BUG/MEDIUM: ssl: fix error path on generate-certificates
+  * BUG/MEDIUM: log: parsing log-forward options may result in segfault
+  * BUG/MEDIUM: promex: server iteration may rely on stale server
+  * BUG/MINOR: server: ensure server is detached from proxy list before being freed
+  * MINOR: cli: use srv_drop() when server was created using new_server()
+  * BUG/MINOR: cfgparse: fix "default" prefix parsing
+  * BUG/MINOR: proxy: free persist_rules
+  * BUG/MINOR: http_act: fix deinit performed on uninitialized lf_expr in release_http_map()
+  * BUG/MEDIUM: quic: fix ACK ECN frame parsing
+  * BUG/MINOR: hlua_fcn: ensure Patref:add_bulk() is given a table object before using it
+  * BUG/MINOR: hlua_fcn: fix broken yield for Patref:add_bulk()
+  * MINOR: cfgparse: remove duplicate "force-persist" in common kw list
+  * BUG/MINOR: ech/quic: enable ech configuration also for quic listeners
+  * REGTESTS: ssl: Fix reg-tests curve check
+  * BUG/MINOR: cli/stick-tables: argument to "show table" is optional
+  * BUILD: sockpair: fix build issue on macOS related to variable-length arrays
+  * BUG/MINOR: cfgparse: wrong section name upon error
+  * BUILD: tools: memchr definition changed in C23
+  * BUILD: ssl: strchr definition changed in C23
+  * BUG/MINOR: quic: fix deprecated warning for window size keyword
+  * BUG/MEDIUM: stconn: Move data from <kip> to <kop> during zero-copy forwarding
+  * BUG/MEDIUM: mworker: can't use signals after a failed reload
+  * BUG/MEDIUM: mux-h1: Take care to update <kop> value during zero-copy forwarding
+  * BUG/MEDIUM: peers: Properly handle shutdown when trying to get a line
+  * BUG/MINOR: mworker/cli: fix show proc pagination using reload counter
+  * DOC: config: fix the length attribute name for stick tables of type binary / string
+  * BUG/MINOR: backend: inspect request not response buffer to check for TFO
+  * BUG/MINOR: backend: fix the conn_retries check for TFO
+  * MINOR: mux-h2: perform a graceful close at 75% glitches threshold
+  * MINOR: mux-h2: add missing glitch count for non-decodable H2 headers
+
+-------------------------------------------------------------------
+Wed Jan 28 15:08:53 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- Fix packages for Immutable Mode
+
+-------------------------------------------------------------------
 Fri Dec 19 16:04:39 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.3.1+git0.9c24c11a6:

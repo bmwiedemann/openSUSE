@@ -49,7 +49,7 @@
 %bcond_with ech
 
 Name:           haproxy
-Version:        3.3.1+git0.9c24c11a6
+Version:        3.3.2+git0.72df9192b
 Release:        0
 #
 Summary:        The Reliable, High Performance TCP/HTTP Load Balancer
@@ -222,7 +222,7 @@ rm examples/*init*
 %if %{with rc_symlink}
 %{_sbindir}/rchaproxy
 %endif
-%dir %attr(-,root,haproxy) %{pkg_home}
+%dir %ghost %{pkg_home}
 %{_mandir}/man1/%{pkg_name}.1%{?ext_man}
 %dir %{_datadir}/vim
 %dir %{vim_data_dir}
