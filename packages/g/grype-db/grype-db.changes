@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 30 06:25:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.0:
+  * Added Features
+    - prepare to receive erlang data [#855 @willmurphyscode]
+  * Additional Changes
+    - Add Secureos mappings ahead of enabling provider [#857
+      @willmurphyscode]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#858)
+
+-------------------------------------------------------------------
 Wed Jan 28 06:19:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.49.0:
