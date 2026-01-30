@@ -554,4 +554,16 @@
   proposal (bsc#1257013).</comment>
     <requestid>1329458</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>a353ef7a91667455cf6b775ec4738bdb</srcmd5>
+    <version>19.pre.devel1272.5cc4683a6</version>
+    <time>1769793578</time>
+    <user>anag_factory</user>
+    <comment>- Retry requests to the web server if the connection failed
+  (gh#agama-project/agama#3096, related to bsc#1257067).
+
+- Configure storage and iSCSI only if needed
+  (gh#agama-project/agama#3064).</comment>
+    <requestid>1329814</requestid>
+  </revision>
 </revisionlist>
