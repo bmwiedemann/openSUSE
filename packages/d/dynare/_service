@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <services>
   <service name="obs_scm" mode="manual">
-		<param name="url">https://git.dynare.org/Dynare/dynare</param>
+    <param name="url">https://git.dynare.org/Dynare/dynare</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">6.4</param>
+    <param name="revision">6.5</param>
     <param name="filename">dynare</param>
     <param name="submodules">enable</param>
   </service>

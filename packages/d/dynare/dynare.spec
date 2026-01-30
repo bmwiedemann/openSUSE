@@ -1,7 +1,7 @@
 #
 # spec file for package dynare
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 %if 0%{?suse_version} < 1550
-# GCC 10 or higher required
-%define gccver 10
 # Sphinx in Leap 15.x is too old
 %bcond_with doc
 %else
 %bcond_without doc
 %endif
 Name:           dynare
-Version:        6.4
+Version:        6.5
 Release:        0
 Summary:        A platform for handling a wide class of economic models
 License:        GPL-3.0-or-later
@@ -36,10 +34,12 @@ Patch0:         dynare-libdir.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
-BuildRequires:  gcc%{?gccver}-c++
-BuildRequires:  gcc%{?gccver}-fortran
+BuildRequires:  gcc-c++
+BuildRequires:  gcc-fortran
 BuildRequires:  lapack-devel
 BuildRequires:  libboost_headers-devel
+# Dummy BR, required due to meson bug https://github.com/mesonbuild/meson/issues/15470
+BuildRequires:  libboost_thread-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  slicot-devel-static
@@ -86,7 +86,6 @@ This package provides documentation for %{name} in HTML format.
 %autosetup -p1
 
 %build
-export CXX=g++%{?gccver:-%{gccver}}
 %meson \
   -Dbuild_for=octave \
   %{nil}

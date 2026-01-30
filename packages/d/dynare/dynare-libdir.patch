@@ -2,12 +2,12 @@
  meson.build |   14 +++++++-------
  1 file changed, 7 insertions(+), 7 deletions(-)
 
-Index: dynare-6.4/meson.build
+Index: dynare-6.5/meson.build
 ===================================================================
---- dynare-6.4.orig/meson.build
-+++ dynare-6.4/meson.build
+--- dynare-6.5.orig/meson.build
++++ dynare-6.5/meson.build
 @@ -36,19 +36,19 @@ subdir('preprocessor/src')
- # NB: the following two symlinks my be improved if this wishlist item is done:
+ # NB: the following two symlinks may be improved if this wishlist item is done:
  #  https://github.com/mesonbuild/meson/issues/11519
  
 -install_symlink('dynare-preprocessor', install_dir : 'lib/dynare/preprocessor/',
