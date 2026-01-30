@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Jan 30 11:52:12 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.94.0:
+  * IS SET and NOT SET have been added as device posture operators
+  * India DERP Region City Name updated
+  * Custom DERP servers support GCP Certificate Manager
+  * Tailscale SSH authentication, when successful, results in LOGIN audit
+    messages being sent to the kernel audit subsystem
+  * Tailscale Peer Relay throughput is improved when the SO_REUSEPORT socket
+    option is supported on multi-core systems
+  * Tailscale Peer Relay server handshake transmission is guarded against
+    routing loops over Tailscale
+  * MagicDNS always resolves when using resolv.conf without a DNS manager
+  * tailscaled_peer_relay_forwarded_packets_total and
+    tailscaled_peer_relay_forwarded_bytes_total client metrics are available for
+    Tailscale Peer Relays
+  * Identity tokens are automatically generated for workload identities
+  * --audience flag added to tailscale up command to support auto generation of
+    ID tokens for workload identity
+  * tsnet nodes can host Tailscale Services
+  * The tailscale lock status -json command returns tailnet key authority (TKA)
+    data in a stable format
+  * Tailscale Peer Relays deliver improved throughput through monotonic time
+    comparison optimizations and reduced lock contention
+  * Tailscale Services virtual IPs are now automatically accepted by clients
+    across all platforms regardless of the status of the --accept-routes
+    feature
+
+-------------------------------------------------------------------
 Wed Jan 21 01:30:13 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.94.0:

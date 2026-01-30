@@ -498,4 +498,36 @@
   * tsnet: allow for automatic ID token generation (forwarded request 1328413 from rrahl0)</comment>
     <requestid>1328414</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>f1edd66e8146703d07e88f9f5d274222</srcmd5>
+    <version>1.94.1</version>
+    <time>1769794191</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.94.0:
+  * IS SET and NOT SET have been added as device posture operators
+  * India DERP Region City Name updated
+  * Custom DERP servers support GCP Certificate Manager
+  * Tailscale SSH authentication, when successful, results in LOGIN audit
+    messages being sent to the kernel audit subsystem
+  * Tailscale Peer Relay throughput is improved when the SO_REUSEPORT socket
+    option is supported on multi-core systems
+  * Tailscale Peer Relay server handshake transmission is guarded against
+    routing loops over Tailscale
+  * MagicDNS always resolves when using resolv.conf without a DNS manager
+  * tailscaled_peer_relay_forwarded_packets_total and
+    tailscaled_peer_relay_forwarded_bytes_total client metrics are available for
+    Tailscale Peer Relays
+  * Identity tokens are automatically generated for workload identities
+  * --audience flag added to tailscale up command to support auto generation of
+    ID tokens for workload identity
+  * tsnet nodes can host Tailscale Services
+  * The tailscale lock status -json command returns tailnet key authority (TKA)
+    data in a stable format
+  * Tailscale Peer Relays deliver improved throughput through monotonic time
+    comparison optimizations and reduced lock contention
+  * Tailscale Services virtual IPs are now automatically accepted by clients
+    across all platforms regardless of the status of the --accept-routes
+    feature (forwarded request 1330020 from rrahl0)</comment>
+    <requestid>1330022</requestid>
+  </revision>
 </revisionlist>
