@@ -1,7 +1,7 @@
 #
 # spec file for package frizbee
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,15 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           frizbee
-Version:        0.1.7
+Version:        0.1.8
 Release:        0
 Summary:        Throw a tag at and it comes back with a checksum
 License:        Apache-2.0
 URL:            https://github.com/stacklok/frizbee
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.24
+BuildRequires:  golang(API) >= 1.25
 
 %description
 Frizbee is a tool you may throw a tag at and it comes back with a checksum.
