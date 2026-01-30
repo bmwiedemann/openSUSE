@@ -88,4 +88,21 @@
   faster.</comment>
     <requestid>1173641</requestid>
   </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>3c99697e92025d748aa9a3803067edd5</srcmd5>
+    <version>1.14.6</version>
+    <time>1769793609</time>
+    <user>anag_factory</user>
+    <comment>- Use libalternatives for soelim, fixing conflict with groff. 
+
+- Remove %{_mandir}/man7/roff.7, the only remaining conflict with
+  groff.
+- Remove executable bits on manpages
+
+- Add dont-change-rights.patch not to mess with file mode
+  https://inbox.vuxu.org/mandoc-discuss/20210814145000.GC88512@athene.usta.de/T/#t
+
+- Don’t Conflict groff, just man.</comment>
+    <requestid>1329729</requestid>
+  </revision>
 </revisionlist>

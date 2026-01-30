@@ -1,7 +1,7 @@
 #
 # spec file for package mandoc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,12 +29,17 @@ Source1:        mandoc.lua
 # PATCH-FIX-UPSTREAM boo1209830-endless-loop.patch bsc#1209830 mcepl@suse.com
 # Fix endless loop
 Patch0:         boo1209830-endless-loop.patch
+# PATCH-FIX-OPENSUSE dont-change-rights.patch mcepl@suse.com
+# https://inbox.vuxu.org/mandoc-discuss/20210814145000.GC88512@athene.usta.de/T/#t
+Patch1:         dont-change-rights.patch
+BuildRequires:  alts
 BuildRequires:  less
 BuildRequires:  zlib-devel
+Requires:       alts
 Requires:       %{name}-bin = %{version}
+Requires:       soelim-common
 Provides:       man = %{version}
-Conflicts:      groff
-Conflicts:      groff-full
+Provides:       soelim
 Conflicts:      makewhat
 Conflicts:      man
 # file triggers use rpm.execute()
@@ -73,6 +78,21 @@ export CFLAGS="%optflags"
 cp -fv %{buildroot}%{_bindir}/apropos %{_tmppath}/
 mv -fv %{_tmppath}/apropos %{buildroot}%{_sbindir}/makewhatis
 install -D -m 644 %{SOURCE1} %{buildroot}%{_rpmconfigdir}/lua/mandoc.lua
+
+# conflicts with groff
+# remove roff manpage
+rm -v %{buildroot}%{_mandir}/man7/roff.7
+# use libalternatives config for soelim
+mv %{buildroot}%{_bindir}/soelim %{buildroot}%{_bindir}/mandoc-soelim
+mv %{buildroot}%{_mandir}/man1/soelim.1 %{buildroot}%{_mandir}/man1/mandoc-soelim.1
+mkdir -p  %{buildroot}%{_datadir}/libalternatives/soelim
+cat > %{buildroot}%{_datadir}/libalternatives/soelim/5.conf <<EOF
+binary=%{_bindir}/mandoc-soelim
+man=mandoc-soelim.1
+EOF
+
+# remove executable bits on manpages
+chmod -x %{buildroot}%{_mandir}/man*/*
 
 # ghost
 : > %{buildroot}%{_mandir}/mandoc.db
@@ -116,7 +136,7 @@ mandoc.done()
 %{_bindir}/apropos
 %{_bindir}/demandoc
 %{_bindir}/man
-%{_bindir}/soelim
+%{_bindir}/mandoc-soelim
 %{_bindir}/whatis
 %{_sbindir}/makewhatis
 %dir %{_rpmconfigdir}/lua
@@ -126,6 +146,8 @@ mandoc.done()
 %{_mandir}/man7/*.7%{?ext_man}
 %{_mandir}/man8/*.8%{?ext_man}
 %ghost %{_mandir}/mandoc.db
+%dir %{_datadir}/libalternatives/soelim
+%{_datadir}/libalternatives/soelim/5.conf
 
 %files bin
 %{_bindir}/mandoc

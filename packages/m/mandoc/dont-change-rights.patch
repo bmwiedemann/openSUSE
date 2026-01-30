@@ -1,0 +1,23 @@
+---
+ configure |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+Index: mandoc-1.14.6/configure
+===================================================================
+--- mandoc-1.14.6.orig/configure	2021-09-23 20:03:23.000000000 +0200
++++ mandoc-1.14.6/configure	2025-04-06 01:27:02.205747195 +0200
+@@ -617,10 +617,10 @@
+ [ -z "${HTDOCDIR}"        ] && HTDOCDIR="${WWWPREFIX}/htdocs"
+ [ -z "${CGIBINDIR}"       ] && CGIBINDIR="${WWWPREFIX}/cgi-bin"
+
+-[ -z "${INSTALL_PROGRAM}" ] && INSTALL_PROGRAM="${INSTALL} -m 0555"
+-[ -z "${INSTALL_LIB}"     ] && INSTALL_LIB="${INSTALL} -m 0444"
+-[ -z "${INSTALL_MAN}"     ] && INSTALL_MAN="${INSTALL} -m 0444"
+-[ -z "${INSTALL_DATA}"    ] && INSTALL_DATA="${INSTALL} -m 0444"
++[ -z "${INSTALL_PROGRAM}" ] && INSTALL_PROGRAM="${INSTALL}"
++[ -z "${INSTALL_LIB}"     ] && INSTALL_LIB="${INSTALL}"
++[ -z "${INSTALL_MAN}"     ] && INSTALL_MAN="${INSTALL}"
++[ -z "${INSTALL_DATA}"    ] && INSTALL_DATA="${INSTALL}"
+
+ BUILD_TARGETS=
+ [ ${BUILD_CGI} -gt 0 ] && BUILD_TARGETS="man.cgi"

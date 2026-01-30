@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jan 28 18:58:55 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Use libalternatives for soelim, fixing conflict with groff. 
+
+-------------------------------------------------------------------
+Wed Jan 28 15:29:57 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove %{_mandir}/man7/roff.7, the only remaining conflict with
+  groff.
+- Remove executable bits on manpages
+
+-------------------------------------------------------------------
+Sat Apr  5 23:28:47 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add dont-change-rights.patch not to mess with file mode
+  https://inbox.vuxu.org/mandoc-discuss/20210814145000.GC88512@athene.usta.de/T/#t
+
+-------------------------------------------------------------------
+Sat Apr  5 22:32:43 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Don’t Conflict groff, just man.
+
+-------------------------------------------------------------------
 Mon May 13 11:37:57 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add /usr/lib/rpm/lua/mandoc.lua and use it for processing man
