@@ -10041,6 +10041,7 @@ unsorted:
   - kernel-kvmsmall-devel 
   - kernel-kvmsmall-livepatch-devel 
   - kernel-kvmsmall-vdso 
+  - kernel-longterm 
   - kernel-longterm-devel 
   - kernel-longterm-vdso 
   - kernel-macros 
@@ -20088,8 +20089,10 @@ unsorted:
   - nvidia-open-driver-G07-signed-check 
   - nvidia-open-driver-G07-signed-cuda-check 
   - nvidia-open-driver-G07-signed-cuda-default-devel 
+  - nvidia-open-driver-G07-signed-cuda-kmp-longterm 
   - nvidia-open-driver-G07-signed-cuda-longterm-devel 
   - nvidia-open-driver-G07-signed-default-devel 
+  - nvidia-open-driver-G07-signed-kmp-longterm 
   - nvidia-open-driver-G07-signed-longterm-devel 
   - nvidia-settings 
   - nvidia-texture-tools 
@@ -49390,6 +49393,7 @@ unsorted:
   - virtualbox-guest-desktop-icons 
   - virtualbox-guest-source 
   - virtualbox-host-source 
+  - virtualbox-kmp-longterm 
   - virtualbox-qt 
   - virtualbox-vnc 
   - virtualbox-websrv 

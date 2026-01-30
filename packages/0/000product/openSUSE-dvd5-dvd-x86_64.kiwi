@@ -903,7 +903,6 @@
       <repopackage name="kernel-firmware-ti"/>
       <repopackage name="kernel-firmware-ueagle"/>
       <repopackage name="kernel-firmware-usb-network"/>
-      <repopackage name="kernel-longterm"/>
       <repopackage name="kexec-tools"/>
       <repopackage name="keyutils"/>
       <repopackage name="kf6-attica"/>
@@ -3196,9 +3195,7 @@
       <repopackage name="nvidia-libXNVCtrl"/>
       <repopackage name="nvidia-open-driver-G06-signed-kmp-default"/>
       <repopackage name="nvidia-open-driver-G07-signed-cuda-kmp-default"/>
-      <repopackage name="nvidia-open-driver-G07-signed-cuda-kmp-longterm"/>
       <repopackage name="nvidia-open-driver-G07-signed-kmp-default"/>
-      <repopackage name="nvidia-open-driver-G07-signed-kmp-longterm"/>
       <repopackage name="nvme-cli"/>
       <repopackage name="nvme-cli-bash-completion"/>
       <repopackage name="obex-data-server"/>
@@ -4234,7 +4231,6 @@
       <repopackage name="virtiofsd"/>
       <repopackage name="virtualbox-guest-tools"/>
       <repopackage name="virtualbox-kmp-default"/>
-      <repopackage name="virtualbox-kmp-longterm"/>
       <repopackage name="vlan"/>
       <repopackage name="vlc"/>
       <repopackage name="vlc-codec-gstreamer"/>
