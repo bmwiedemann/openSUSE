@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan 29 12:23:56 UTC 2026 - Neal Gompa <ngompa@opensuse.org>
+
+- Add shadow-utils Provides for compatibility with RH/Fedora packages
+
+-------------------------------------------------------------------
+Thu Jan 29 07:32:37 UTC 2026 - Hadi Chokr <hadichokr@icloud.com>
+
+- Remove --enable-account-tools-setuid build flag:
+  This was a leftover. The package builds chgpasswd, chpasswd,
+  groupadd, groupdel, groupmod, newusers, useradd, userdel,
+  and usermod as setuid binaries via this flag and then strips
+  the setuid bit again in the install section.
+  See gh/shadow-maint/shadow#1518
+- Cleanup PAM config files which are no longer needed:
+  groupadd, groupdel, groupmod, useradd, userdel, usermod
+
+-------------------------------------------------------------------
 Mon Jan 19 13:39:42 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.19.2:

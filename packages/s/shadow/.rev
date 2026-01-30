@@ -1349,4 +1349,21 @@
   * Send UID range warning to stderr (bsc#1230972)</comment>
     <requestid>1328842</requestid>
   </revision>
+  <revision rev="84" vrev="4">
+    <srcmd5>02253732cd82c7794708182239085a62</srcmd5>
+    <version>4.19.2</version>
+    <time>1769793567</time>
+    <user>anag_factory</user>
+    <comment>- Add shadow-utils Provides for compatibility with RH/Fedora packages
+
+- Remove --enable-account-tools-setuid build flag:
+  This was a leftover. The package builds chgpasswd, chpasswd,
+  groupadd, groupdel, groupmod, newusers, useradd, userdel,
+  and usermod as setuid binaries via this flag and then strips
+  the setuid bit again in the install section.
+  See gh/shadow-maint/shadow#1518
+- Cleanup PAM config files which are no longer needed:
+  groupadd, groupdel, groupmod, useradd, userdel, usermod</comment>
+    <requestid>1329809</requestid>
+  </revision>
 </revisionlist>

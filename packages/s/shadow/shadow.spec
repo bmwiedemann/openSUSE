@@ -55,6 +55,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libacl-devel
 BuildRequires:  libattr-devel
+BuildRequires:  libeconf-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  libsemanage-devel
 BuildRequires:  libtool
@@ -73,7 +74,9 @@ Suggests:       shadow-pw-mgmt
 Provides:       pwdutils = 3.2.20
 Obsoletes:      pwdutils <= 3.2.19
 Provides:       useradd_or_adduser_dep
-BuildRequires:  libeconf-devel
+# For RH/Fedora compatibility
+Provides:       shadow-utils = %{version}-%{release}
+Provides:       shadow-utils%{?_isa} = %{version}-%{release}
 
 %description
 This package includes the necessary programs for converting plain
@@ -144,7 +147,6 @@ autoreconf -fvi
 # SSSD files provider is deprecated since 2.9.0, but still enabled in openSUSE Leap 15.6 and SLE 15 SP6
 %configure \
   --enable-shadowgrp \
-  --enable-account-tools-setuid \
   --with-audit \
   --with-libpam \
   --with-sha-crypt \
@@ -215,7 +217,6 @@ rm %{buildroot}/%{_mandir}/*/man8/nologin.*
 rm %{buildroot}/%{_sbindir}/chgpasswd
 rm %{buildroot}/%{_mandir}/man8/chgpasswd.*
 rm %{buildroot}/%{_mandir}/*/man8/chgpasswd.*
-rm %{buildroot}%{_sysconfdir}/pam.d/chgpasswd
 
 rm %{buildroot}/%{_mandir}/man3/getspnam.*
 rm %{buildroot}/%{_mandir}/*/man3/getspnam.*
@@ -307,39 +308,27 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/subgid
 %if %{defined no_config}
 %{_pam_vendordir}/chpasswd
-%{_pam_vendordir}/groupadd
-%{_pam_vendordir}/groupdel
-%{_pam_vendordir}/groupmod
 %{_pam_vendordir}/newusers
-%{_pam_vendordir}/useradd
-%{_pam_vendordir}/userdel
-%{_pam_vendordir}/usermod
 %else
 %config %{_sysconfdir}/pam.d/chpasswd
-%config %{_sysconfdir}/pam.d/groupadd
-%config %{_sysconfdir}/pam.d/groupdel
-%config %{_sysconfdir}/pam.d/groupmod
 %config %{_sysconfdir}/pam.d/newusers
-%config %{_sysconfdir}/pam.d/useradd
-%config %{_sysconfdir}/pam.d/userdel
-%config %{_sysconfdir}/pam.d/usermod
 %endif
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/gpasswd
 %verify(not mode) %attr(4755,root,root) %{_bindir}/newgrp
 %{_bindir}/sg
 %{_bindir}/getsubids
-%attr(0755,root,root) %{_sbindir}/groupadd
-%attr(0755,root,root) %{_sbindir}/groupdel
-%attr(0755,root,root) %{_sbindir}/groupmod
+%{_sbindir}/groupadd
+%{_sbindir}/groupdel
+%{_sbindir}/groupmod
 %{_sbindir}/grpck
 %{_sbindir}/pwck
-%attr(0755,root,root) %{_sbindir}/useradd
-%attr(0755,root,root) %{_sbindir}/userdel
-%attr(0755,root,root) %{_sbindir}/usermod
+%{_sbindir}/useradd
+%{_sbindir}/userdel
+%{_sbindir}/usermod
 %{_sbindir}/pwconv
 %{_sbindir}/pwunconv
-%attr(0755,root,root) %{_sbindir}/chpasswd
-%attr(0755,root,root) %{_sbindir}/newusers
+%{_sbindir}/chpasswd
+%{_sbindir}/newusers
 %{_sbindir}/vipw
 %{_sbindir}/vigr
 %{_mandir}/man1/gpasswd.1%{?ext_man}
