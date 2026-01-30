@@ -27,6 +27,8 @@ BuildRequires:  python313-PyInstaller
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module requests < 3.0}
+BuildRequires:  %{python_module requests-futures}
+Requires:       %{python_module requests-futures}
 %ifarch aarch64
 ExclusiveArch: aarch64
 %endif

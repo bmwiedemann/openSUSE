@@ -16,4 +16,13 @@ This is also a dependency for heroic-games-launcher package.</comment>
     <comment>Update to version 0.20.39 - This Vortal Coil (Heroic)</comment>
     <requestid>1329573</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ca503ebf6e7cfbb1c49e4be708cff350</srcmd5>
+    <version>0.20.39</version>
+    <time>1769793790</time>
+    <user>anag_factory</user>
+    <comment>- Fix error &quot;Failed to execute script 'cli' due to unhandled exception&quot;
+  * Add requests_futures python module.</comment>
+    <requestid>1329901</requestid>
+  </revision>
 </revisionlist>
