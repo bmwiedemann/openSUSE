@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Thu Jan 29 15:24:43 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.56.1
+  Bug fix:
+  * Clipboard: Fix compilation failure
+  version 0.56.0:
+  New Features:
+  * Add Append action to add subtitles from another files with
+    their timecodes as-is.
+  * Add keyframe command line switch and automatically open
+    keyframes (and open keyframes automatically when they share
+    filename with other files)
+  * Implement BorderStyle=4 for ASS subtitles (libass only) to
+    show rectangular box even for two- and more-line subtitles.
+  * Add AutoWrap action that wraps subtitles into lines that are
+    shorter than Maximum Characters per Line
+  User Interface Improvements:
+  * Make mpv show window when playing audio files
+  * Sort keyboard shortcuts alphabetically and show dynamic ones
+    first
+  * Add modern format like MP4 to autoopen
+  * Simplify Move plugin: use current position as new time,
+    provide better feedback on nonsensical user input and by
+    default move all subsequent subtitles when only one subtitle
+    is selected
+  * Changing playback speed now does not distort sound (pitch)
+  * Join Subtitles now by default offsets the new subtitles by
+    the length of the video, but the offset can also be set by
+    the user
+  * When creating a new file from clipboard or when importing
+    from plaintext, add an extension
+  * Use em-dash instead of a hyphen in user facing strings
+  * Force ratio option is now better explained
+  * For empty files, set format based on extension (so opening
+    empty file.srt no longer throws an error)
+  * Use radio buttons to indicate which view is active and also
+    make changes to a view apply immediately.
+  * GUI: Make lines longer than max char per line bold and red
+  * GUI: make it impossible to select uneditable columns (like
+    subtitle number)
+  * Fix labels and tooltip displayed at the bottom of the window
+    when hovering over menu items: now all should have a tooltip,
+    and often with more precise wording
+  * Import and export are now in File menu, not its submenu
+    (they were only items in the submenu previously)
+  * Add shortcuts, icons and change order of Clipboard actions
+  Bug fixes:
+  * Clipboard actions in the menus are now properly faded when
+    not applicable
+  * Respect layers when reading an ASS file
+  * Style editor no longer shows default style twice
+  * Make styles editable for new files
+  * Remove leading zeroes for margins when reading ASS files (so
+    now margin is 0 and not 0000)
+  * Handle Unicode BOM properly
+  * Fix crash on mouse move and click in empty waveform renderer
+    with unsaved non-empty file
+  * Stop emitting GTK warnings when using the clipboard plugin
+  * Fix typoes
+  Development & Modernization:
+  * Change default clang formatting and save all files with it,
+    hopefulyl making the style more uniform
+  * Moved from gstreamermm to gstreamer C API, which should make
+    playback a lot more reliable and improbe Wayland support
+    (thanks Kitone!)
+  * Improve .gitignore
+  * Add info on how to make a release to README
+  * Remove some obsolete content
+  * Fix compilation warnings for ASS subtitles plugin
+  * Make Style editor work when running local build
+  * Make ti possible to compile with libxml++3.0
+  * Sort all accessible bugs from GNA! and either fix them or
+    open new issues on GitHub
+
+-------------------------------------------------------------------
 Sun Sep 21 14:12:17 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.55.0

@@ -1,7 +1,7 @@
 #
 # spec file for package subtitleeditor
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _sover  0
 %define _fname  org.kitone.subtitleeditor
 Name:           subtitleeditor
-Version:        0.55.0
+Version:        0.56.1
 Release:        0
 Summary:        A GTK+3 tool to edit subtitles
 License:        GPL-3.0-or-later
@@ -34,15 +34,14 @@ BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(enchant-2)
+BuildRequires:  pkgconfig(enchant-2) >= 2.2.0
 BuildRequires:  pkgconfig(glibmm-2.4) >= 2.16.3
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
-BuildRequires:  pkgconfig(gstreamermm-1.0) >= 1.0.0
 BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.10
 BuildRequires:  pkgconfig(iso-codes)
-BuildRequires:  pkgconfig(libxml++-2.6)
+BuildRequires:  pkgconfig(libxml++-3.0) >= 3.0.0
 
 %description
 Subtitle Editor is a GTK+3 tool to edit subtitles.
