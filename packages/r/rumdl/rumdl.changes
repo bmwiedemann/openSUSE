@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Fri Jan 30 07:23:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.6:
+  * Added
+    - CLI: Shell completions subcommand (#327)
+      - rumdl completions <shell> generates shell completions for
+        bash, zsh, fish, powershell, and elvish
+      - Auto-detects current shell and provides installation hints
+      - (thanks @tpoliaw in #333)
+    - CLI: Static rules.json for tooling integration (#351)
+      - Rule metadata now available at
+        https://raw.githubusercontent.com/rvben/rumdl/main/rules.json
+      - Enables external tools (Alfred workflows, etc.) to access
+        rule data without installing rumdl
+      - Release verification ensures rules.json stays in sync
+  * Fixed
+    - MD073: Read indent config from MD007 by default (#353)
+      - TOC indentation now respects MD007's indent setting
+        automatically
+      - Can be overridden with explicit [MD073] indent = N
+- Update to version 0.1.5:
+  * Added
+    - CLI: JSON output for rule metadata (#351)
+      - rumdl rule -o json exports all rule data as JSON
+      - rumdl rule -o json-lines for streaming/piping (one JSON
+        object per line)
+      - Filter options: --fixable (-f), --category (-c)
+      - --list-categories shows available categories with rule
+        counts
+      - --explain includes full documentation in output
+      - JSON includes: code, name, aliases, summary, category,
+        fix_availability, url
+  * Fixed
+    - MD073: Validate TOC entry indentation matches heading levels
+      (#353)
+      - TOC entries must now have correct indentation relative to
+        heading depth
+      - Example: H2 entries need 2-space indent, H3 entries need
+        4-space indent
+    - CLI: Correctly count fixable issues (#349)
+      - "Run rumdl fmt to fix N issues" message now uses
+        capability-based counting
+      - Previously could show fixable count for rules that don't
+        actually auto-fix
+    - CLI: Correctly count files modified by fmt (#347)
+      - Summary now shows actual number of modified files, not just
+        files with issues
+  * Changed
+    - Docs: Update all documentation URLs to rumdl.dev (#352)
+      - LSP code actions now link to rumdl.dev instead of GitHub
+      - Rule URLs in JSON output point to rumdl.dev
+- Update to version 0.1.4:
+  * Changed
+    - MD073: Simplified to marker-based TOC detection only (#332)
+      - Removed heading-based TOC detection (~200 lines of code)
+      - Now only supports <!-- toc -->...<!-- tocstop --> markers
+      - Ensures consistent detect/fix behavior - only validates
+        TOCs users explicitly mark
+      - Rule is now opt-in: disabled by default, enable with
+        [MD073] enabled = true
+  * Fixed
+    - Rules: Call should_skip() in linting engine for opt-in rules
+      - Opt-in rules (like MD073) now correctly skip when disabled
+      - Previously, rules had to check skip internally which caused
+        inconsistent behavior
+      - Architectural fix affects all rules with opt-in behavior
+    - MD073: Fix HTML anchor handling in heading ID generation
+      - Headings with <a name="..."></a> anchors now correctly
+        extract the anchor ID
+      - Centralized fix in header_id_utils.rs benefits all
+        anchor-related functionality
+    - MD032: Fix should_skip() to detect ordered lists
+      - likely_has_lists() only checked for unordered markers (*,
+        -, +)
+      - Ordered lists (e.g., 1. item) were incorrectly skipped
+      - Now uses pre-computed list_blocks which includes all list
+        types
+
+-------------------------------------------------------------------
 Thu Jan 29 06:41:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.3:
