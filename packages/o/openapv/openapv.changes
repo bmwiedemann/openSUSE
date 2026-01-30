@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 30 11:30:49 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.2.1.0:
+  * New API to encode metadata information to bitstream syntax
+  * 64bits-based codeword reading and writing to support a large symbol more
+    than 32bits
+  * Fixed bug in tile calculation in ImHex pattern file
+
+-------------------------------------------------------------------
 Tue Nov 11 11:11:11 UTC 2025 - olaf@aepfle.de
 
 - devel package requires the library

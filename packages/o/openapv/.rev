@@ -70,4 +70,16 @@
   * Update README</comment>
     <requestid>1317643</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b60f291bf29d19bb4a3bfca65e20950a</srcmd5>
+    <version>0.2.1.0</version>
+    <time>1769794155</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.2.1.0:
+  * New API to encode metadata information to bitstream syntax
+  * 64bits-based codeword reading and writing to support a large symbol more
+    than 32bits
+  * Fixed bug in tile calculation in ImHex pattern file (forwarded request 1330007 from rrahl0)</comment>
+    <requestid>1330008</requestid>
+  </revision>
 </revisionlist>
