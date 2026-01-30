@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 28 13:10:09 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Move default config files 127.0.0.zone, localhost.zone and
+  root.hint in /var/lib/named to /usr/share/named with a symlink to
+  /var/lib/named via systemd-tmpfiles to improve immutable os
+  compatibility.
+
+-------------------------------------------------------------------
 Wed Jan 21 13:03:10 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Upgrade to release 9.20.18

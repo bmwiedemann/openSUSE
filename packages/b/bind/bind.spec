@@ -353,11 +353,9 @@ for file in named; do
 	ln -s /sbin/service %{buildroot}%{_sbindir}/rc${file}
 done
 install -D -m 0644 %{SOURCE70} %{buildroot}%{_prefix}/lib/tmpfiles.d/bind.conf
-install -D -m 0644 %{_sourcedir}/named.root %{buildroot}%{_datadir}/factory%{_localstatedir}/lib/named/root.hint
-install -m 0644 vendor-files/config/{127.0.0,localhost}.zone %{buildroot}%{_datadir}/factory%{_localstatedir}/lib/named
+install -D -m 0644 %{_sourcedir}/named.root %{buildroot}%{_datadir}/named/root.hint
+install -m 0644 vendor-files/config/{127.0.0,localhost}.zone %{buildroot}%{_datadir}/named
 install -d -m 0755 %{buildroot}/%{_unitdir}/named.service.d
-install -m 0644 %{_sourcedir}/named.root %{buildroot}%{_localstatedir}/lib/named/root.hint
-mv vendor-files/config/{127.0.0,localhost}.zone %{buildroot}%{_localstatedir}/lib/named
 install -m 0755 vendor-files/tools/bind.genDDNSkey %{buildroot}/%{_bindir}/genDDNSkey
 cp -p %{_sourcedir}/dnszone-schema.txt %{buildroot}/%{_sysconfdir}/openldap/schema/dnszone.schema
 cp -p "%{SOURCE60}" "%{buildroot}/%{_sysconfdir}/openldap/schema/dlz.schema"
@@ -430,7 +428,6 @@ make test
 %dir %{_unitdir}/named.service.d
 %{_prefix}/lib/tmpfiles.d/bind.conf
 %{_sysusersdir}/named.conf
-%{_datadir}/factory
 %dir %{_sysconfdir}/crypto-policies
 %dir %{_sysconfdir}/crypto-policies/back-ends
 %{_bindir}/named-rrchecker
@@ -455,13 +452,7 @@ make test
 %{_datadir}/bind/ldapdump
 %ghost %{_rundir}/named
 %{_fillupdir}/sysconfig.named-named
-%attr(1775,root,named) %dir %{_var}/lib/named
-%dir %{_var}/lib/named/master
-%attr(-,named,named) %dir %{_var}/lib/named/dyn
-%attr(-,named,named) %dir %{_var}/lib/named/slave
-%config %{_var}/lib/named/root.hint
-%config %{_var}/lib/named/127.0.0.zone
-%config %{_var}/lib/named/localhost.zone
+%{_datadir}/named/
 %dir %{_libexecdir}/bind
 %{_libexecdir}/bind/named.prep
 %dir %{_libdir}/bind-plugins
