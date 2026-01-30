@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 30 06:20:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.107.0:
+  * Added Features
+    - Add secureos distro [#3086 @divolgin]
+    - add hex matcher for Erlang/Elixir ecosystem [#3194
+      @willmurphyscode]
+  * Bug Fixes
+    - disable version fallback in EOL query [#3195
+      @willmurphyscode]
+    - VEX documents with docker.io registry reference not matching,
+      require index.docker.io instead [#2818 #3172 @jainlakshya]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#3198)
+    - chore(deps): bump actions/setup-python in
+      /.github/actions/bootstrap (#3196)
+    - chore(deps): update tools to latest versions (#3189)
+
+-------------------------------------------------------------------
 Tue Jan 27 14:13:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.106.0:
