@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 29 21:04:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2026.01.29
+  * Accept float values for command-line option `--sleep-subtitles`
+  * Add `--format-sort-reset` option
+  * yt: Support comment subthreads
+
+-------------------------------------------------------------------
 Mon Dec  8 00:37:12 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
-- Update to releas 2025.12.08
+- Update to release 2025.12.08
   * cookies: Fix --cookies-from-browser for new installs of
     Firefox 147+
   * floatplane: add subtitle support
