@@ -1,7 +1,7 @@
 #
 # spec file for package neovim
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %endif
 Name:           neovim
-Version:        0.11.5
+Version:        0.11.6
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim AND GPL-3.0-or-later AND CC-BY-3.0

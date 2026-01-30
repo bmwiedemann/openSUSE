@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Jan 26 22:34:03 UTC 2026 - Egor Bychin <e.siga@proton.me>
+
+- Update to version 0.11.6:
+  * lsp: support auto-force escalation in client stop #36430
+  * lsp: warn about unknown filetype #36910
+  * :ls: check for finished terminal properly (#37303)
+  * api: autocmds mess up nvim_get_option_value's dummy buffer
+  * api: buffer overflow in nvim_buf_get_extmarks overlap #37184
+  * api: crash when moving curwin to other tabpage #35679
+  * api: do not allow opening float to closing buffer
+  * api: ignore split_disallowed when opening a float
+  * api: nvim_get_option_value dummy buffer crashes
+  * api: on_bytes gets stale data on :substitute #36487
+  * api: open_win leak from naughty autocommands
+  * api: parse_expression crash with ident and curly
+  * api: parse_expression crash with unopened ] and node
+  * autocmd: fire TabClosed after freeing tab page
+  * autocmd: heap UAF with :bwipe in Syntax autocmd
+  * autocmd: parsing of comma-separated buflocal patterns
+  * autocmd: skip empty comma-separated patterns properly
+  * buffer: defer w_buffer clearing to prevent dict watcher crash #36748
+  * buffer: don't allow changedtick watcher to delete buffer (#36764)
+  * buffer: don't reuse 1-line terminal buffer (#37261)
+  * buffer: switching buffer should respect jumpoptions+=view (#36969)
+  * channel: unreference list after callback finishes (#37358)
+  * clipboard: tmux clipboard data may be stale #36787
+  * clipboard: use tmux only in a tmux session (#36603)
+  * eval: 0 should mean current tabpage in gettabvar() (#36891)
+  * events: crash on WinScrolled #35995
+  * langmap: assert failure on mapping to char >= 256 (#37291)
+  * lsp: check `nvim.lsp.enable` before `doautoall` #36518
+  * lua: don't remove first char of non-file stacktrace source (#37008)
+  * lua: relax `vim.wait()` timeout validation (#36907)
+  * lua: separate vim.{g,b,w,t} types #37081
+  * lua: vim._with() doesn't save boolean options properly (#37354)
+  * lua: vim.wait(math.huge) fails #36885
+  * man.lua: :Man slow/hangs if MANPAGER is set #36689
+  * man.lua: show_toc condition may cause infinite loop #36979
+  * marks: wrong line('w$', win) with conceal_lines (#37047)
+  * normal: assertion failure with "gk" in narrow window (#37444)
+  * remote: remote-ui connect timeout on slow networks #36800
+  * rpc: don't overwrite already received results on error (#37339)
+  * session: window sizes not stored with float windows (#37344)
+  * statusline: scope truncation bookkeeping
+  * terminal: :edit should respect 'bufhidden' with exited job (#37301)
+  * terminal: <Ignore> should be no-op (#37494)
+  * terminal: avoid multiple terminals writing to same buffer (#37219)
+  * terminal: crash when TermClose deletes other buffers
+  * terminal: crash when TermClose switches back to terminal buffer
+  * terminal: crash with race between buffer close and OSC 2 (#37225)
+  * terminal: handle closing terminal with pending TermRequest (#37227)
+  * terminal: inconsistent mode change when switching buffer (#37215)
+  * terminal: restore options properly when switching buffer (#37485)
+  * treesitter: use metadata in :EditQuery captures #37116
+  * tutor: escape tutor filename #36539
+  * vim.fs: abspath(".") returns "/…/." (#36584)
+  * vim.fs: root() should always return absolute path #36466
+  * window: crash closing only non-float if autocmds :tabonly (#37218)
+  * window: crash closing split if autocmds close other splits (#37233)
+  * window: disallow closing autocmd window in other tabpage
+  * window: handle closing the only non-float in other tabpage
+  * window: restore b_nwindows if win_close_othertab keeps window
+  * window: win_move_after UAF from naughty autocmds (#37065)
+
+-------------------------------------------------------------------
 Sat Dec 27 15:39:47 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add tree-sitter-system.lua for the registration of system-wide

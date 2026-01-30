@@ -1671,4 +1671,41 @@ FIXES (LSP):
     <comment></comment>
     <requestid>1324588</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>3d17aeea28bfae98ab0f00760d5156b2</srcmd5>
+    <version>0.11.6</version>
+    <time>1769794257</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.11.6:
+  * lsp: support auto-force escalation in client stop #36430
+  * lsp: warn about unknown filetype #36910
+  * :ls: check for finished terminal properly (#37303)
+  * api: autocmds mess up nvim_get_option_value's dummy buffer
+  * api: buffer overflow in nvim_buf_get_extmarks overlap #37184
+  * api: crash when moving curwin to other tabpage #35679
+  * api: do not allow opening float to closing buffer
+  * api: ignore split_disallowed when opening a float
+  * api: nvim_get_option_value dummy buffer crashes
+  * api: on_bytes gets stale data on :substitute #36487
+  * api: open_win leak from naughty autocommands
+  * api: parse_expression crash with ident and curly
+  * api: parse_expression crash with unopened ] and node
+  * autocmd: fire TabClosed after freeing tab page
+  * autocmd: heap UAF with :bwipe in Syntax autocmd
+  * autocmd: parsing of comma-separated buflocal patterns
+  * autocmd: skip empty comma-separated patterns properly
+  * buffer: defer w_buffer clearing to prevent dict watcher crash #36748
+  * buffer: don't allow changedtick watcher to delete buffer (#36764)
+  * buffer: don't reuse 1-line terminal buffer (#37261)
+  * buffer: switching buffer should respect jumpoptions+=view (#36969)
+  * channel: unreference list after callback finishes (#37358)
+  * clipboard: tmux clipboard data may be stale #36787
+  * clipboard: use tmux only in a tmux session (#36603)
+  * eval: 0 should mean current tabpage in gettabvar() (#36891)
+  * events: crash on WinScrolled #35995
+  * langmap: assert failure on mapping to char &gt;= 256 (#37291)
+  * lsp: check `nvim.lsp.enable` before `doautoall` #36518
+  * lua: don't remove first char of non-file stacktrace source (#37008) (forwarded request 1329883 from siga)</comment>
+    <requestid>1330040</requestid>
+  </revision>
 </revisionlist>
