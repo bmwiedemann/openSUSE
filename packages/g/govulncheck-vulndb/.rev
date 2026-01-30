@@ -1654,4 +1654,19 @@
   * GO-2026-4322 CVE-2026-22045 GHSA-cwjm-3f7h-9hwq (forwarded request 1328952 from jfkw)</comment>
     <requestid>1328954</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>6f0398eaa4337c2347bd9913c2af0627</srcmd5>
+    <version>0.0.20260128T190828</version>
+    <time>1769794273</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.0.20260128T190828 2026-01-28T19:08:28Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2026-4338 CVE-2025-68119 CVE-2025-68119
+  * GO-2026-4339 CVE-2025-61731 CVE-2025-61731
+  * GO-2026-4340 CVE-2025-61730 CVE-2025-61730
+  * GO-2026-4341 CVE-2025-61726 CVE-2025-61726
+  * GO-2026-4342 CVE-2025-61728 CVE-2025-61728 (forwarded request 1330056 from jfkw)</comment>
+    <requestid>1330057</requestid>
+  </revision>
 </revisionlist>
