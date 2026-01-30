@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 28 14:40:23 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update dependencies for bsc#1257324
+
+-------------------------------------------------------------------
 Fri Jan 16 15:03:36 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
 
 - Drop 0010-add-onExpand-prop-to-ListingTable.patch: Has been upstreamed

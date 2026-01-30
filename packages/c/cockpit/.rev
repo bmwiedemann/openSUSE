@@ -862,4 +862,12 @@ For details, see https://cockpit-project.org/blog/cockpit-322.html</comment>
 - Add 0010-add-onExpand-prop-to-ListingTable.patch to backport a feature</comment>
     <requestid>1328691</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>dba170d0f9e4b47f49829fc4eb4be8f6</srcmd5>
+    <version>354</version>
+    <time>1769793572</time>
+    <user>anag_factory</user>
+    <comment>- Update dependencies for bsc#1257324</comment>
+    <requestid>1329769</requestid>
+  </revision>
 </revisionlist>
