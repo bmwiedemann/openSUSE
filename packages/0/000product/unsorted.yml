@@ -21176,10 +21176,10 @@ unsorted:
   - patterns-base-documentation 
   - patterns-base-enhanced_base-32bit 
   - patterns-base-fips 
+  - patterns-base-immutable_base 
   - patterns-base-kdump 
   - patterns-base-minimal_base-32bit 
   - patterns-base-sw_management-32bit 
-  - patterns-base-transactional_base 
   - patterns-base-update_test 
   - patterns-base-x11-32bit 
   - patterns-base-x11_enhanced-32bit 

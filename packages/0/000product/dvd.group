@@ -3902,6 +3902,7 @@
     <package name="snapshot-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="snmp-mibs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="socat" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="soelim-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="solid-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="solid-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="sonnet" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
