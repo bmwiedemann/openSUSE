@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 31 09:56:33 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260130
+  * Test for zero-sized btree before doing anything with it
+
+-------------------------------------------------------------------
 Sun May  4 08:10:38 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - build with fuse 3 (boo#1242079)
