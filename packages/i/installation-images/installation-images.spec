@@ -25,7 +25,8 @@
 # Since they are all auto-generated files, so they keep on changing. Having the mtime
 # constant though causes issues for rsync - which uses this information by default to decide
 # wether there is something to sync or not
-%global clamp_mtime_to_source_date_epoch 0
+%global build_mtime_policy clamp_to_buildtime
+%global use_source_date_epoch_as_buildtime N
 
 # do not build 32-bit s390
 ExcludeArch:    s390

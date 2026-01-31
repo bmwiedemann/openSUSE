@@ -1946,4 +1946,11 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>1328221</requestid>
   </revision>
+  <revision rev="243" vrev="2">
+    <srcmd5>d63b4e84e96668917d400aadf805c3dd</srcmd5>
+    <version>17.170</version>
+    <time>1769872391</time>
+    <user>dimstar_suse</user>
+    <comment>RelEng emergency checkin: properly disable mtime source epoch clamping for this package, as it's extracted onto the FTP server and later rsynced</comment>
+  </revision>
 </revisionlist>
