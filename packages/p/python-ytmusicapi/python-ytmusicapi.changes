@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 31 10:27:59 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.11.5
+  * feat(artists): add new monthly audience feature to get_artist
+  * get_explore: fix missing duration for top episodes
+  * get_playlist: compute trackCount after following continuations
+
+-------------------------------------------------------------------
 Sat Dec 20 20:56:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.11.4
