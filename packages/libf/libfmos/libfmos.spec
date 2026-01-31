@@ -1,7 +1,7 @@
 #
 # spec file for package libfmos
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libfmos
 %define lname	libfmos1
-Version:        20240415
+Version:        20260131
 Release:        0
 Summary:        Library for MacOS data types
 License:        LGPL-3.0-or-later

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 31 10:01:55 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260131
+  * Avoid use of __lzcnt on ARM
+
+-------------------------------------------------------------------
 Mon Apr 15 19:18:06 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20240415
