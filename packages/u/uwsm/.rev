@@ -9,4 +9,18 @@
 Meson clean up and fixes regression on Leap 15.6.</comment>
     <requestid>1328300</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7c1a28b67ba24aafafab9d4918190842</srcmd5>
+    <version>0.26.1</version>
+    <time>1769872587</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.26.1:
+  * Added hyprlauncher support
+  * Added niri plugin
+  * Added sourcing of environment from env.d dirs
+  * Added may-start checks for root, local session
+- Drop fix-quotes-in-f-string-for-python-before-3.12.patch
+  * Patch is included upstream</comment>
+    <requestid>1330081</requestid>
+  </revision>
 </revisionlist>

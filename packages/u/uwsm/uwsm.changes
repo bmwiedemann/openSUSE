@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 30 16:30:14 UTC 2026 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to version 0.26.1:
+  * Added hyprlauncher support
+  * Added niri plugin
+  * Added sourcing of environment from env.d dirs
+  * Added may-start checks for root, local session
+- Drop fix-quotes-in-f-string-for-python-before-3.12.patch
+  * Patch is included upstream
+
+-------------------------------------------------------------------
+Tue Jan 27 10:03:35 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Run check without writing .pyc files for reproducible builds (boo#1227364)
+
+-------------------------------------------------------------------
 Tue Jan 20 14:30:52 UTC 2026 - Alexey Kolos <lioli7k@gmail.com>
 
 - Update fix-quotes-in-f-string-for-python-before-3.12.patch status

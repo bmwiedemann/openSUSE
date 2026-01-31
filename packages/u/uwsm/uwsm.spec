@@ -17,15 +17,13 @@
 
 
 Name:           uwsm
-Version:        0.26.0
+Version:        0.26.1
 Release:        0
 Summary:        Universal Wayland Session Manager
 License:        MIT
 Group:          System/Management
 URL:            https://github.com/Vladimir-csp/uwsm
 Source:         %{name}-%{version}.tar.zst
-# PATCH-FIX-UPSTREAM https://github.com/Vladimir-csp/uwsm/pull/201
-Patch:          fix-quotes-in-f-string-for-python-before-3.12.patch
 BuildRequires:  meson >= 1.3
 BuildRequires:  scdoc
 
@@ -91,6 +89,7 @@ rm %{buildroot}/%{_userpresetdir}/80-fumon.preset
 rm %{buildroot}/%{_userpresetdir}/80-ttyautolock.preset
 
 %check
+export PYTHONDONTWRITEBYTECODE=1
 PYTHONPATH=%{buildroot}/%{_datadir}/%{name}/modules %{buildroot}/%{_bindir}/%{name} --version
 
 %files
