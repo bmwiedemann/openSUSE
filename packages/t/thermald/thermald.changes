@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 31 12:26:45 UTC 2026 - Thomas Renninger <trenn@suse.de>
+
+- Move update-desktop-file dependency into with_thermalmonitor which
+  is_openSUSE only and by that remove update-desktop-file dependency for SLE
+  (jsc#PED-15244)
+  Do the bigger cleanup and replace update-desktop-file with translate-suse-desktop
+  for openSUSE with a follow up.
+
+-------------------------------------------------------------------
 Tue Dec 30 11:26:10 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build against recent changes of qcustomplot: the library

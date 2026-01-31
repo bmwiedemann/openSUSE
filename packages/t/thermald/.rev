@@ -211,4 +211,12 @@ A    thermal_daemon.obsinfo
     <comment></comment>
     <requestid>1325947</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>4ddc0f00a687c9780f3c5c6e4fa47c1f</srcmd5>
+    <version>2.5.10.4.git+f284686</version>
+    <time>1769872669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1330151</requestid>
+  </revision>
 </revisionlist>
