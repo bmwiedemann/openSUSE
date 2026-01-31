@@ -12786,7 +12786,7 @@ unsorted:
   - libcroco 
   - libcroco-devel 
   - libcryptmount-devel 
-  - libcrypto56 
+  - libcrypto57 
   - libcryptopp-devel 
   - libcryptopp8_9_0 
   - libcryptsetup-devel 
@@ -16390,7 +16390,7 @@ unsorted:
   - libssh2-1-32bit 
   - libssh2-devel 
   - libssh4-32bit 
-  - libssl59 
+  - libssl60 
   - libssr-glinject 
   - libsss_certmap-devel 
   - libsss_idmap-devel 
@@ -16652,7 +16652,7 @@ unsorted:
   - libtinyxml2-11 
   - libtirpc-devel 
   - libtirpc3-32bit 
-  - libtls32 
+  - libtls33 
   - libtmglib3 
   - libtntdb-devel 
   - libtntdb5 
@@ -25468,6 +25468,7 @@ unsorted:
   - python311-easypysmb 
   - python311-easywatch 
   - python311-ebcdic 
+  - python311-ebooklib 
   - python311-ecdsa 
   - python311-ed25519 
   - python311-edgegrid-python 
@@ -29294,6 +29295,7 @@ unsorted:
   - python312-easypysmb 
   - python312-easywatch 
   - python312-ebcdic 
+  - python312-ebooklib 
   - python312-ecdsa 
   - python312-ed25519 
   - python312-edgegrid-python 
@@ -33155,6 +33157,7 @@ unsorted:
   - python313-easypysmb 
   - python313-easywatch 
   - python313-ebcdic 
+  - python313-ebooklib 
   - python313-ecdsa 
   - python313-ed25519 
   - python313-edgegrid-python 
