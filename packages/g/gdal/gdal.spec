@@ -1,7 +1,7 @@
 #
 # spec file for package gdal
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -43,7 +43,7 @@
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 
 Name:           gdal
-Version:        3.12.0
+Version:        3.12.1
 Release:        0
 Summary:        GDAL/OGR - a translator library for raster and vector geospatial data formats
 License:        BSD-3-Clause AND MIT AND SUSE-Public-Domain
@@ -51,6 +51,8 @@ URL:            https://www.gdal.org/
 Source0:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz
 Source1:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz.md5
 Source2:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}autotest-%{version}.zip
+# PATCH-FIX-UPSTREAM gdal-pr13664-poppler26.patch gh#OSGeo/gdal#13664 -- add compatibility with poppler 26.01.0
+Patch0:         https://github.com/OSGeo/gdal/commit/979604d.patch#/gdal-pr13664-poppler26.patch
 BuildRequires:  KEALib-devel
 BuildRequires:  bison
 BuildRequires:  blas-devel
@@ -225,6 +227,7 @@ rm -rv frmts/gif/giflib
 rm -rv frmts/jpeg/libjpeg
 rm -rv frmts/jpeg/libjpeg12
 rm -rv frmts/gtiff/libgeotiff
+# Lerc support is provided by libtiff -- boo#1257123
 rm -rv frmts/gtiff/libtiff
 # internal but needed rm -rv frmts/pcidsk
 
@@ -270,7 +273,6 @@ sed -e 's|gdal_optional_format(libertiff "GeoTIFF support through libertiff libr
 %else
   -DGDAL_USE_HEIF=OFF \
 %endif
-  -DGDAL_USE_LERC_INTERNAL=ON \
   -DGDAL_USE_JPEG=ON \
   -DGDAL_USE_JPEG12_INTERNAL=OFF \
   -DGDAL_USE_JSONC=ON \
@@ -488,7 +490,7 @@ popd
 %{_mandir}/man1/gdal-vector-check-geometry.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-clean-coverage.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-clip.1%{?ext_man}
-%{_mandir}/man1/gdal-vector_concat.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-concat.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-convert.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-edit.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-explode-collections.1%{?ext_man}
