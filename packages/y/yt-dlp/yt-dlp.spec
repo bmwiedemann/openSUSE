@@ -72,7 +72,7 @@ This package installs "youtube-dl" as a symlink to yt-dlp.
 Summary:        yt-dlp Python library
 Group:          Development/Languages/Python
 Requires:       ffmpeg
-Recommends:     (deno or nodejs >= 20)
+Recommends:     (deno or nodejs >= 20 or quickjs >= 20250913)
 Suggests:       python-Brotli
 Suggests:       python-certifi
 Suggests:       python-mutagen
