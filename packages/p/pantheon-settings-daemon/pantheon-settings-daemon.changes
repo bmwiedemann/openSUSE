@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 30 23:12:37 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.5.0:
+  * Autostart using systemd instead of gnome-session
+  * skip notifications for already-installed packages
+  * GSchema: default auto updates to true
+  * AccentColorManager: Prevent out of range access to themes array
+  * Updated translations
+
+-------------------------------------------------------------------
 Sun Dec 21 03:09:50 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 8.4.0:

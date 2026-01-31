@@ -49,4 +49,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1324526</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>50ec0272742cba8ef474f176afe14c23</srcmd5>
+    <version>8.5.0</version>
+    <time>1769872648</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.5.0:
+  * Autostart using systemd instead of gnome-session
+  * skip notifications for already-installed packages
+  * GSchema: default auto updates to true
+  * AccentColorManager: Prevent out of range access to themes array
+  * Updated translations (forwarded request 1330108 from rrahl0)</comment>
+    <requestid>1330109</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package pantheon-settings-daemon
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.settings-daemon
 Name:           pantheon-settings-daemon
-Version:        8.4.0
+Version:        8.5.0
 Release:        0
 Summary:        A daemon for the Pantheon Desktop
 License:        GPL-3.0-or-later
@@ -60,9 +60,6 @@ BuildRequires:  pkgconfig(packagekit-glib2)
 # install our own systemd unit file
 install -Dm0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{appid}.check-for-firmware-updates.service
 
-# move the xdg autostart file into /usr/etc
-# when moving the file, the build fails for some reason (file does not exist
-
 %post
 %service_add_post %{appid}.check-for-firmware-updates.service
 
@@ -82,16 +79,15 @@ install -Dm0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{appid}.check-for-firmware-u
 %dir %{_datadir}/{xdg-desktop-portal,xdg-desktop-portal/portals}
 %{_bindir}/%{appid}
 %{_datadir}/accountsservice/interfaces/io.elementary.SettingsDaemon.AccountsService.xml
-%{_datadir}/applications/%{appid}.desktop
 %{_datadir}/dbus-1/interfaces/io.elementary.SettingsDaemon.AccountsService.xml
 %{_datadir}/dbus-1/services/org.freedesktop.impl.portal.desktop.elementary.settings-daemon.service
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
 %{_datadir}/metainfo/%{appid}.metainfo.xml
 %{_datadir}/xdg-desktop-portal/portals/%{appid}.portal
 %{_libexecdir}/%{appid}.xdg-desktop-portal
-%{_sysconfdir}/xdg/autostart/%{appid}.desktop
 %{_unitdir}/%{appid}.check-for-firmware-updates.service
 %{_unitdir}/%{appid}.check-for-firmware-updates.timer
+%{_userunitdir}/%{appid}.service
 %{_userunitdir}/%{appid}.system-update.service
 %{_userunitdir}/%{appid}.system-update.timer
 %{_userunitdir}/%{appid}.xdg-desktop-portal.service
