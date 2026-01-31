@@ -1,7 +1,7 @@
 #
 # spec file for package opensurge
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           opensurge
-Version:        0.6.1.2
+Version:        0.6.1.3
 Release:        0
 Summary:        Game based on Sonic the Hedgehog Universe
 License:        Apache-2.0 AND GPL-3.0-or-later AND LGPL-2.1-or-later AND CC-BY-3.0 AND OFL-1.1 AND MIT
@@ -39,8 +39,8 @@ BuildRequires:  pkgconfig(allegro_font-5)
 BuildRequires:  pkgconfig(allegro_image-5)
 BuildRequires:  pkgconfig(allegro_main-5)
 BuildRequires:  pkgconfig(allegro_memfile-5)
-BuildRequires:  pkgconfig(allegro_primitives-5)
 BuildRequires:  pkgconfig(allegro_physfs-5)
+BuildRequires:  pkgconfig(allegro_primitives-5)
 BuildRequires:  pkgconfig(allegro_ttf-5)
 BuildRequires:  pkgconfig(physfs)
 BuildRequires:  pkgconfig(surgescript) >= 0.6.1
@@ -81,11 +81,11 @@ rm -rfv %{buildroot}%{_datadir}/%{name}/licenses
 
 %files
 %license licenses/*
-%doc CHANGES.md README.md
+%doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/metainfo/%{name}.appdata.xml
-%{_datadir}/pixmaps/%{name}.png
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/%{name}
 
 %changelog
