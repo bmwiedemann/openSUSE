@@ -1,7 +1,7 @@
 #
 # spec file for package marknote
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           marknote
-Version:        1.3.0
+Version:        1.4.1
 Release:        0
 Summary:        Rich text notes editor
 License:        GPL-2.0-or-later
@@ -33,12 +33,12 @@ Source1:        https://download.kde.org/stable/marknote/%{name}-%{version}.tar.
 Source2:        marknote.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  cmake(md4c)
 BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
 BuildRequires:  cmake(KF6KirigamiAddons) >= 1.3.0
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
@@ -49,13 +49,14 @@ BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(md4c)
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kirigami-addons6 >= 1.3.0
 Requires:       qt6-declarative-imports >= %{qt6_version}
 
 %description
 Marknote lets you create rich text notes and easily organise them into notebooks.
-You can personalise your notebooks by choosing an icon and accent color for each 
+You can personalise your notebooks by choosing an icon and accent color for each
 one, making it easy to distinguish between them and keep your notes at your
 fingertips. Your notes are saved as Markdown files in your Documents folder,
 making it easy to use your notes outside of Marknote as well as inside the app.
