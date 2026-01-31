@@ -584,4 +584,13 @@
     <comment>- Update to release 4.1.0</comment>
     <requestid>1302220</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>f5a41161575d8582e7f6c04e6aaa9873</srcmd5>
+    <version>4.2.1</version>
+    <time>1769872645</time>
+    <user>dimstar_suse</user>
+    <comment>- Make the build succeed on s390x.
+- Update to release 4.2.1</comment>
+    <requestid>1330100</requestid>
+  </revision>
 </revisionlist>

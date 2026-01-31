@@ -23,12 +23,12 @@ b) the dynamic loader is required to look for SSL_CTX_new@@LIBRESSL
  tls/Makefile.am    |    6 +++++-
  3 files changed, 15 insertions(+), 3 deletions(-)
 
-Index: libressl-3.8.2/crypto/Makefile.am
+Index: libressl-4.2.0/crypto/Makefile.am
 ===================================================================
---- libressl-3.8.2.orig/crypto/Makefile.am
-+++ libressl-3.8.2/crypto/Makefile.am
-@@ -62,8 +62,11 @@ libcrypto_la_objects.mk: Makefile
- 	  | sed 's/compat\// $$\(abs_top_builddir\)\/crypto\/&/g' \
+--- libressl-4.2.0.orig/crypto/Makefile.am
++++ libressl-4.2.0/crypto/Makefile.am
+@@ -81,8 +81,11 @@ libcrypto_la_objects.mk: Makefile
+ 	  | sed 's/compat\// $$\(top_builddir\)\/crypto\/&/g' \
  	  >> libcrypto_la_objects.mk
  
 -libcrypto_la_LDFLAGS = -version-info @LIBCRYPTO_VERSION@ -no-undefined -export-symbols crypto_portable.sym
@@ -41,11 +41,11 @@ Index: libressl-3.8.2/crypto/Makefile.am
  EXTRA_libcrypto_la_DEPENDENCIES += libcrypto_la_objects.mk
  libcrypto_la_LIBADD = libcompat.la
  if !HAVE_EXPLICIT_BZERO
-Index: libressl-3.8.2/ssl/Makefile.am
+Index: libressl-4.2.0/ssl/Makefile.am
 ===================================================================
---- libressl-3.8.2.orig/ssl/Makefile.am
-+++ libressl-3.8.2/ssl/Makefile.am
-@@ -35,6 +35,11 @@ remove_bs_objects: libssl.la
+--- libressl-4.2.0.orig/ssl/Makefile.am
++++ libressl-4.2.0/ssl/Makefile.am
+@@ -51,6 +51,11 @@ remove_bs_objects: libssl.la
  
  libssl_la_CPPFLAGS = -I$(top_srcdir)/ssl/hidden ${AM_CPPFLAGS}
  libssl_la_LDFLAGS = -version-info @LIBSSL_VERSION@ -no-undefined -export-symbols $(top_srcdir)/ssl/ssl.sym
@@ -57,12 +57,12 @@ Index: libressl-3.8.2/ssl/Makefile.am
  libssl_la_LIBADD = $(abs_top_builddir)/crypto/libcrypto.la $(PLATFORM_LDADD)
  libssl_la_LIBADD += $(libcompat_la_objects)
  libssl_la_LIBADD += $(libcompatnoopt_la_objects)
-Index: libressl-3.8.2/tls/Makefile.am
+Index: libressl-4.2.0/tls/Makefile.am
 ===================================================================
---- libressl-3.8.2.orig/tls/Makefile.am
-+++ libressl-3.8.2/tls/Makefile.am
-@@ -19,7 +19,11 @@ libtls_la_objects.mk: Makefile
- 	  | sed -e 's/ *$$//' -e 's/  */ $$\(abs_top_builddir\)\/tls\//g' \
+--- libressl-4.2.0.orig/tls/Makefile.am
++++ libressl-4.2.0/tls/Makefile.am
+@@ -34,7 +34,11 @@ libtls_la_objects.mk: Makefile
+ 	  | sed -e 's/ *$$//' -e 's/  */ $$\(top_builddir\)\/tls\//g' \
  	  > libtls_la_objects.mk
  
 -libtls_la_LDFLAGS = -version-info @LIBTLS_VERSION@ -no-undefined -export-symbols $(top_srcdir)/tls/tls.sym

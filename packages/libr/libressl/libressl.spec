@@ -16,7 +16,7 @@
 #
 
 Name:           libressl
-Version:        4.1.0
+Version:        4.2.1
 Release:        0
 Summary:        An SSL/TLS protocol implementation
 License:        OpenSSL
@@ -45,31 +45,31 @@ LibreSSL is an implementation of the Secure Sockets Layer (SSL) and
 Transport Layer Security (TLS) protocols. It derives from OpenSSL,
 with refactorings.
 
-%package -n libcrypto56
+%package -n libcrypto57
 Summary:        An SSL/TLS protocol implementation
 Group:          System/Libraries
 
-%description -n libcrypto56
+%description -n libcrypto57
 The "crypto" library implements a wide range of cryptographic
 algorithms used in various Internet standards. The services provided
 by this library are used by the LibreSSL implementations of SSL, TLS
 and S/MIME, and they have also been used to implement SSH, OpenPGP,
 and other cryptographic standards.
 
-%package -n libssl59
+%package -n libssl60
 Summary:        An SSL/TLS protocol implementation
 Group:          System/Libraries
 
-%description -n libssl59
+%description -n libssl60
 LibreSSL is an implementation of the Secure Sockets Layer (SSL) and
 Transport Layer Security (TLS) protocols. It derives from OpenSSL,
 with refactorings.
 
-%package -n libtls32
+%package -n libtls33
 Summary:        A simplified interface for the OpenSSL/LibreSSL TLS protocol implementation
 Group:          System/Libraries
 
-%description -n libtls32
+%description -n libtls33
 LibreSSL is an implementation of the Secure Sockets Layer (SSL) and
 Transport Layer Security (TLS) protocols. It derives from OpenSSL,
 with refactorings.
@@ -80,9 +80,9 @@ libssl) for secure client and server communications.
 %package devel
 Summary:        Development files for LibreSSL, an SSL/TLS protocol implementation
 Group:          Development/Libraries/C and C++
-Requires:       libcrypto56 = %version
-Requires:       libssl59 = %version
-Requires:       libtls32 = %version
+Requires:       libcrypto57 = %version
+Requires:       libssl60 = %version
+Requires:       libtls33 = %version
 Conflicts:      ssl-devel
 Provides:       ssl-devel
 
@@ -118,6 +118,15 @@ This subpackage contains the manpages to the LibreSSL API.
 cp %_sourcedir/unavail* .
 
 %build
+%ifarch s390x
+# libressl can work without any arch-specific code whatsoever. The makefiles
+# contain a bunch of `if PPC64 { CPPFLAGS+=-Icrypto/arch/ppc64 }`-style lines,
+# for various archs, but no "else" clause, so there is no functioning fallback.
+# The following adds this fallback.
+#
+touch crypto/crypto_arch.h crypto/bn/bn_arch.h
+%endif
+
 autoreconf -fi
 %configure --enable-libtls --with-openssldir="%_sysconfdir/libressl"
 %make_build
@@ -140,6 +149,8 @@ done
 rm -v "%buildroot/%_sysconfdir/libressl/cert.pem"
 rm -fv "%buildroot/%_libdir"/*.a "%buildroot/%_libdir"/*.la
 
+find "%buildroot/%_mandir" -type l -exec perl -e 'for (@ARGV) { next if(!-l $_); $t=readlink$_; unlink if(!-e $t); }' '{}' '+'
+
 %check
 if ! %make_build check; then
 	cat tests/test-suite.log
@@ -147,9 +158,9 @@ if ! %make_build check; then
 	#exit 1
 fi
 
-%ldconfig_scriptlets -n libcrypto56
-%ldconfig_scriptlets -n libssl59
-%ldconfig_scriptlets -n libtls32
+%ldconfig_scriptlets -n libcrypto57
+%ldconfig_scriptlets -n libssl60
+%ldconfig_scriptlets -n libtls33
 
 %files
 # openssl's config (syntax) is incompatible with libressl,
@@ -164,13 +175,13 @@ fi
 %_mandir/man8/*.8*
 %doc COPYING
 
-%files -n libcrypto56
+%files -n libcrypto57
 %_libdir/libcrypto.so.*
 
-%files -n libssl59
+%files -n libssl60
 %_libdir/libssl.so.*
 
-%files -n libtls32
+%files -n libtls33
 %_libdir/libtls.so.*
 
 %files devel

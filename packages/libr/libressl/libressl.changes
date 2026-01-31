@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Jan 30 21:26:20 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Make the build succeed on s390x.
+
+-------------------------------------------------------------------
+Wed Jan 28 10:14:04 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.2.1
+  * Ensure the group selected by a TLSv1.3 server for a
+    HelloRetryRequest is not one for which the client has already
+    sent a key share.
+
+-------------------------------------------------------------------
+Wed Oct 15 10:27:46 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.2.0
+  * Removed the -msie_hack option from the openssl(1) ca
+    subcommand.
+  * Removed parameters of the 239-bit prime curves from X9.62,
+    H.5.2: prime239v1, prime239v2, prime239v3.
+  * Increased default MAC salt length used by PKCS12_set_mac(3) to
+    16 per recommendation of NIST SP 800-132.
+  * Encrypted PKCS#8 key files now use a default password-based key
+    derivation function that is acceptable in the present
+    millenium.
+  * const corrected EVP_PKEY_get{0,1}_{DH,DSA,EC_KEY,RSA}().
+  * X509_CRL_verify() now checks that the AlgorithmIdentifiers in
+    the signature and the tbsCertList are identical.
+  * Of the old *err() only PEMerr(), RSAerr(), and SSLerr() remain.
+  * Removed BIO_s_log(), X509_PKEY_{new,free}(),
+    PEM_X509_INFO_read() and PEM_X509_INFO_write_bio().
+  * Re-expose the ASN.1 Boolean template items.
+
+-------------------------------------------------------------------
 Mon Sep  1 13:13:02 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Move default config to /etc/libressl.
