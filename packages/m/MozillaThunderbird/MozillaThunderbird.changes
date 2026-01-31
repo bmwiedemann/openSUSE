@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 30 18:41:56 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Thunderbird 140.7.1 ESR
+  MFSA 2026-08 (bsc#1257397)
+  * CVE-2026-0818 (bmo#1881530)
+    CSS-based exfiltration of the content from partially
+    encrypted emails when allowing remote content
+
+-------------------------------------------------------------------
 Thu Jan 15 22:11:28 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Support using system GnuPG with gpgme 2, boo#1253718 bmo1967121
