@@ -1,0 +1,240 @@
+diff -rubN ebooklib-0.20/ebooklib/epub.py ebooklib-0.20-patched/ebooklib/epub.py
+--- ebooklib-0.20/ebooklib/epub.py	2025-10-26 21:53:42.000000000 +0100
++++ ebooklib-0.20-patched/ebooklib/epub.py	2026-01-30 01:33:53.124822670 +0100
+@@ -23,8 +23,6 @@
+ import zipfile
+ from collections import OrderedDict
+ 
+-import six
+-
+ try:
+     from urllib.parse import unquote
+ except ImportError:
+@@ -60,21 +58,17 @@
+ </container>
+ """
+ 
+-NCX_XML = six.b("""<!DOCTYPE ncx PUBLIC "-//NISO//DTD ncx 2005-1//EN" "http://www.daisy.org/z3986/2005/ncx-2005-1.dtd">
+-<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1" />""")
++NCX_XML = b'''<!DOCTYPE ncx PUBLIC "-//NISO//DTD ncx 2005-1//EN" "http://www.daisy.org/z3986/2005/ncx-2005-1.dtd">
++<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1" />'''
+ 
+-NAV_XML = six.b(
+-    """<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" """
+-    """xmlns:epub="http://www.idpf.org/2007/ops"/>"""
+-)
++NAV_XML = b'''<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" """
++    """xmlns:epub="http://www.idpf.org/2007/ops"/>'''
+ 
+-CHAPTER_XML = six.b(
+-    """<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" """
++CHAPTER_XML = b'''<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" """
+     """xmlns:epub="http://www.idpf.org/2007/ops" epub:prefix="z3998: """
+-    """http://www.daisy.org/z3998/2012/vocab/structure/#"></html>"""
+-)
++    """http://www.daisy.org/z3998/2012/vocab/structure/#"></html>'''
+ 
+-COVER_XML = six.b("""<?xml version="1.0" encoding="UTF-8"?>
++COVER_XML = b'''<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE html>
+ <html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+  <head>
+@@ -86,8 +80,7 @@
+  <body>
+    <img src="" alt="" />
+  </body>
+-</html>""")
+-
++</html>'''
+ 
+ IMAGE_MEDIA_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/svg+xml"]
+ 
+@@ -140,7 +133,7 @@
+         self.id = uid
+         self.file_name = file_name
+         self.media_type = media_type
+-        self.content = content or six.b("")
++        self.content = content or b""
+         self.is_linear = True
+         self.manifest = manifest
+ 
+@@ -189,7 +182,7 @@
+         _, ext = zip_path.splitext(self.get_name())
+         ext = ext.lower()
+ 
+-        for uid, ext_list in six.iteritems(ebooklib.EXTENSIONS):
++        for uid, ext_list in ebooklib.EXTENSIONS.items():
+             if ext in ext_list:
+                 return uid
+ 
+@@ -206,7 +199,7 @@
+           Returns content of the item.
+         """
+         if default is None:
+-            default = six.b("")
++            default = b""
+         return self.content or default
+ 
+     def set_content(self, content):
+@@ -387,7 +380,7 @@
+         try:
+             html_tree = parse_html_string(self.content)
+         except Exception:
+-            return six.b("")
++            return b""
+ 
+         html_root = html_tree.getroottree()
+ 
+@@ -397,14 +390,14 @@
+             tree_str = etree.tostring(body, pretty_print=True, encoding="utf-8", xml_declaration=False)
+ 
+             # this is so stupid
+-            if tree_str.startswith(six.b("<body>")):
+-                n = tree_str.rindex(six.b("</body>"))
++            if tree_str.startswith(b"<body>"):
++                n = tree_str.rindex(b"</body>")
+ 
+                 return tree_str[6:n]
+ 
+             return tree_str
+ 
+-        return six.b("")
++        return b""
+ 
+     def get_content(self, default=None):
+         """
+@@ -430,7 +423,7 @@
+         try:
+             html_tree = parse_html_string(self.content)
+         except Exception:
+-            return six.b("")
++            return b""
+ 
+         _html_root = html_tree.getroottree()
+ 
+@@ -963,7 +956,7 @@
+             mtime = datetime.datetime.now()
+         el.text = mtime.strftime("%Y-%m-%dT%H:%M:%SZ")
+ 
+-        for ns_name, values in six.iteritems(self.book.metadata):
++        for ns_name, values in self.book.metadata.items():
+             if ns_name == NAMESPACES["OPF"]:
+                 for values2 in values.values():
+                     for v in values2:
+@@ -976,7 +969,7 @@
+                         except ValueError:
+                             logging.error("Could not create metadata.")
+             else:
+-                for name, values2 in six.iteritems(values):
++                for name, values2 in values.items():
+                     for v in values2:
+                         try:
+                             if ns_name:
+@@ -1411,13 +1404,9 @@
+                 self.out.writestr("{file_name}".format(file_name=item.file_name), item.get_content())  # noqa: UP032
+ 
+     def write(self):
+-        if six.PY2:
+-            self.out = zipfile.ZipFile(self.file_name, "w", zipfile.ZIP_DEFLATED)
+-        else:
+-            self.out = zipfile.ZipFile(
+-                self.file_name, "w", zipfile.ZIP_DEFLATED, compresslevel=self.options["compresslevel"]
+-            )
+-        self.out.writestr("mimetype", "application/epub+zip", compress_type=zipfile.ZIP_STORED)
++        self.out = zipfile.ZipFile(self.file_name, 'w', zipfile.ZIP_DEFLATED)
++        self.out.writestr('mimetype', 'application/epub+zip', compress_type=zipfile.ZIP_STORED)
++
+ 
+         self._write_container()
+         self._write_opf()
+@@ -1495,7 +1484,7 @@
+         metadata = self.container.find("{%s}%s" % (NAMESPACES["OPF"], "metadata"))  # noqa: UP031
+ 
+         nsmap = metadata.nsmap
+-        nstags = dict(six.iteritems(nsmap))
++        nstags = dict(nsmap.items())
+         default_ns = nstags.get(None, "")
+ 
+         nsdict = {v: {} for v in nsmap.values()}
+@@ -1744,9 +1733,7 @@
+     def _load(self):
+         self.zf = None
+ 
+-        if (six.PY3 and isinstance(self.file_name, (str, bytes, os.PathLike))) or (
+-            six.PY2 and isinstance(self.file_name, (six.string_types))
+-        ):
++        if (isinstance(self.file_name, (str, bytes, os.PathLike))):
+             if os.path.isdir(self.file_name):
+                 self.zf = Directory(self.file_name)
+ 
+@@ -1789,7 +1776,7 @@
+         warnings.warn("In the future throwing exceptions while writing will be default behavior.", stacklevel=2)
+         t, v, tb = sys.exc_info()
+         if options and options.get("raise_exceptions"):
+-            six.reraise(t, v, tb)
++            raise(t, v, tb)
+         else:
+             return False
+ 
+diff -rubN ebooklib-0.20/ebooklib/plugins/standard.py ebooklib-0.20-patched/ebooklib/plugins/standard.py
+--- ebooklib-0.20/ebooklib/plugins/standard.py	2025-10-26 14:28:33.000000000 +0100
++++ ebooklib-0.20-patched/ebooklib/plugins/standard.py	2026-01-29 19:00:35.464382344 +0100
+@@ -14,8 +14,6 @@
+ # You should have received a copy of the GNU Affero General Public License
+ # along with EbookLib.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-import six
+-
+ from ebooklib.plugins.base import BasePlugin
+ from ebooklib.utils import parse_html_string
+ 
+@@ -68,7 +66,7 @@
+ 
+ 
+ def leave_only(item, tag_list):
+-    for _attr in six.iterkeys(item.attrib):
++    for _attr in item.attrib.keys():
+         if _attr not in tag_list:
+             del item.attrib[_attr]
+ 
+@@ -371,7 +369,7 @@
+                     if _item.get("preserveaspectratio", None):
+                         del _item.attrib["preserveaspectratio"]
+                 else:
+-                    for _attr in six.iterkeys(_item.attrib):
++                    for _attr in _item.attrib.keys():
+                         if _attr not in ATTRIBUTES_GLOBAL:
+                             del _item.attrib[_attr]
+ 
+diff -rubN ebooklib-0.20/ebooklib/plugins/tidyhtml.py ebooklib-0.20-patched/ebooklib/plugins/tidyhtml.py
+--- ebooklib-0.20/ebooklib/plugins/tidyhtml.py	2025-10-26 14:28:33.000000000 +0100
++++ ebooklib-0.20-patched/ebooklib/plugins/tidyhtml.py	2026-01-29 19:00:35.464382344 +0100
+@@ -16,8 +16,6 @@
+ 
+ import subprocess
+ 
+-import six
+-
+ from ebooklib.plugins.base import BasePlugin
+ 
+ # Recommend usage of
+@@ -27,7 +25,7 @@
+ def tidy_cleanup(content, **extra):
+     cmd = []
+ 
+-    for k, v in six.iteritems(extra):
++    for k, v in extra.items():
+         if v:
+             cmd.append("--{k}".format(k=k))  # noqa: UP032
+             cmd.append(v)
+diff -rubN ebooklib-0.20/setup.py ebooklib-0.20-patched/setup.py
+--- ebooklib-0.20/setup.py	2025-10-26 21:53:42.000000000 +0100
++++ ebooklib-0.20-patched/setup.py	2026-01-29 19:00:35.464382344 +0100
+@@ -44,7 +44,6 @@
+     python_requires=">=2.7",
+     install_requires=[
+         "lxml",
+-        "six",
+     ],
+     extras_require={
+         "dev": [
