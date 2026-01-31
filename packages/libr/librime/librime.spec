@@ -1,7 +1,7 @@
 #
 # spec file for package librime
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           librime
-Version:        1.14.0
+Version:        1.16.1
 Release:        0
 Summary:        Rime Input Method Engine
 License:        BSD-3-Clause
 Group:          System/I18n/Chinese
 URL:            https://github.com/rime/librime
-Source:         https://github.com/rime/%{name}/archive/refs/tags/%{version}.tar.gz
+Source:         https://github.com/rime/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 #PATCH-FIX-OPENSUSE librime-boost166.patch i@marguerite.su -- leap's gcc7 has no <filesystem>
 Patch0:         librime-boost166.patch
 BuildRequires:  capnproto >= 0.7.0

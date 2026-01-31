@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 29 16:57:08 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version 1.16.1:
+  * Bug Fixes:
+    navigator: 插入輸入碼再向右移動 (居戎氏)
+  * Builds
+    bump_version.sh: use git-cliff (居戎氏)
+  * Chores
+    include for std::{max,min} (居戎氏)
+    clangd lsp integration (#1125) #1125 (morse.hsiao)
+    release: 1.16.1 🎉 (居戎氏)
+  * Commits
+    58e51c5: fix(SwitcherSettings):load schema list when
+    default.custom.yaml is absent (#1126) (fxliang) #1126.
+
+-------------------------------------------------------------------
 Tue Sep 23 11:08:54 CEST 2025 - aschnell@suse.com
 
 - libboost_system was removed upstream (bsc#1249900)
