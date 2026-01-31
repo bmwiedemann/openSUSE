@@ -34,4 +34,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1300331</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cd26334088d69cbf182db6ec224508ea</srcmd5>
+    <version>8.1.0</version>
+    <time>1769872649</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.1.0:
+  * Modernize screenshot icons
+  * SetupDialog: add labels to image radios
+  * Screenshot/SetupDialog: Remember screenshot type
+  * Metainfo: Add issue link for labeling selection modes
+  * Update translations (forwarded request 1330110 from rrahl0)</comment>
+    <requestid>1330111</requestid>
+  </revision>
 </revisionlist>

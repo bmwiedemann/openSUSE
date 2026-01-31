@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 30 23:05:44 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.1.0:
+  * Modernize screenshot icons
+  * SetupDialog: add labels to image radios
+  * Screenshot/SetupDialog: Remember screenshot type
+  * Metainfo: Add issue link for labeling selection modes
+  * Update translations
+
+-------------------------------------------------------------------
 Tue Aug 12 15:12:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 8.0.4:

@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal-pantheon
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.portals
 Name:           xdg-desktop-portal-pantheon
-Version:        8.0.4
+Version:        8.1.0
 Release:        0
 Summary:        Pantheon Backend Portal
 License:        GPL-3.0-or-later
@@ -64,12 +64,13 @@ export CFLAGS="%{optflags} -Wno-error=return-type"
 %files
 %license COPYING
 %doc README.md
-%{_userunitdir}/%{name}.service
-%{_libexecdir}/%{name}
+%dir %{_datadir}/{xdg-desktop-portal,xdg-desktop-portal/portals}
 %{_datadir}/dbus-1/services/org.freedesktop.impl.portal.desktop.pantheon.service
+%{_datadir}/glib-2.0/schemas/%{name}.gschema.xml
 %{_datadir}/metainfo/%{appid}.metainfo.xml
 %{_datadir}/xdg-desktop-portal/portals/pantheon.portal
-%dir %{_datadir}/{xdg-desktop-portal,xdg-desktop-portal/portals}
+%{_libexecdir}/%{name}
+%{_userunitdir}/%{name}.service
 
 %files lang -f %{name}.lang
 
