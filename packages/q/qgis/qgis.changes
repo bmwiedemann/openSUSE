@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Jan 31 15:54:26 UTC 2026 - Enno Tensing <tenno+suse@suij.in>
+
+- Update to 3.44.7
+  * Improves the readability of locator filter tiles and group
+    names (commit a692774)
+  * Prefer 32 bit integers for Postgres connections (commit 80ee600)
+  * Prefer doubles over reals for Postgres connections (commit e28eac6)
+  * The string_to_array expression is renamed to array_to_string
+    (commit 9548958)
+  * WFS error messages will now add the server response if available
+    (commit f02c762)
+  * Other changes and fixes
+
+- Changes from 3.44.6
+  * Fixes 3D Point orientation (commit 9bcd777)
+  * Fixes a crash in the DB manager when listing layers without
+    a data source (commit 65fdf79)
+  * Fixes a crash in the DB manager caused by invalid layers
+    (commit b5f6da7)
+  * Fixes a 3D rendering crash (commit 744c6b8)
+  * Fixes a crash when working with invalid WMS layers (commit 4f7e625)
+  * Fixes a crash that occured when closing the elvation
+    profile with the identify tool active (commit 2ef4d55)
+  * 3D renderer setup will now be disabled when a vector layer
+    has no geometry type (commit 840a51f)
+  * Fixes a crash when a layer from an elevation profile is removed
+    (commit c607234)
+  * Empty geometries will no longer be written to MVT tiles (commit 1fa7588)
+  * QGIS will now be initalised before the QgsNetworkAccessManager
+    (commit 76e4ef2)
+  * Fixes a crash that occured in data defined assistants when the
+    minimum value was larger than the maximum value (commit 947e5dc)
+  * Fixes various other issues
+
+-------------------------------------------------------------------
 Wed Nov 26 19:30:17 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to 3.44.5
