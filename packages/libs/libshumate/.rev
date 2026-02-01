@@ -181,4 +181,13 @@
   + Add functionallity for zoom-on-double-click (forwarded request 1325200 from iznogood)</comment>
     <requestid>1325357</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f6701e88d917ab11124a06a273599bb8</srcmd5>
+    <version>1.5.3</version>
+    <time>1769979733</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5.3:
+  + Updated translations. (forwarded request 1329790 from iznogood)</comment>
+    <requestid>1330184</requestid>
+  </revision>
 </revisionlist>
