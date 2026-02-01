@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-m17n
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           ibus-m17n
-Version:        1.4.36
+Version:        1.4.37
 Release:        0
 Summary:        The M17N engine for IBus platform
 License:        GPL-2.0-or-later
 Group:          System/Localization
 URL:            https://github.com/ibus/ibus-m17n
 Source:         https://github.com/ibus/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  gtk3-devel
 BuildRequires:  ibus-devel
 BuildRequires:  libtool
+BuildRequires:  pkgconfig(gtk4) >= 4.10.0
 BuildRequires:  pkgconfig(m17n-shell)
 Requires:       ibus
 Provides:       locale(ibus:am;ar;as;bn;fa;gu;he;hi;ja;ka;kk;kn;ko;lo;ml;my;ur;ru;vi;zh)

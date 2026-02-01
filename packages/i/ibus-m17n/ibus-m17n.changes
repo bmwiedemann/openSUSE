@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 28 03:37:06 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Update to 1.4.37:
+  * Port UI to GTK4 (Resolves: #99). Configure option for Gtk4
+    added: “--with-gtk=2.0|3.0|4.0|no” (default: 4.0)
+  * Translation update from Weblate (cs 100%, de 100%, el 100%,
+    es 100%, new: fi 100%, fr 100%, ja 100%, ka 100%, kab 100%,
+    lt 100%, pt_BR 100%, ro 96%, ru 100%, sv 100%, tr 100%, uk 100%,
+    zh_CN 100%, zh_TW 28%)
+
+-------------------------------------------------------------------
 Tue Aug 19 07:20:07 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Update to 1.4.36:
