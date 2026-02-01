@@ -444,4 +444,13 @@
     <comment></comment>
     <requestid>1329047</requestid>
   </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>5f6a14e7c85464df77356f557b18df99</srcmd5>
+    <version>1.16.5</version>
+    <time>1769979939</time>
+    <user>anag_factory</user>
+    <comment>- Add PYPEnglishCandidates-fix-vector-iterator-invalidation.patch, fix a
+  crash bug (boo#1257531, gh#libpinyin/ibus-libpinyin#549) (forwarded request 1330255 from hillwood)</comment>
+    <requestid>1330256</requestid>
+  </revision>
 </revisionlist>

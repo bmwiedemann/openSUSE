@@ -39,6 +39,9 @@ License:        GPL-3.0-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/libpinyin/ibus-libpinyin
 Source:         https://github.com/libpinyin/ibus-libpinyin/releases/download/%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM PYPEnglishCandidates-fix-vector-iterator-invalidation.patch hillwood@opensuse.org
+# Fix a crash bug (boo#1257531, gh#libpinyin/ibus-libpinyin#549)
+Patch0:         PYPEnglishCandidates-fix-vector-iterator-invalidation.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel

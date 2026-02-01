@@ -1,0 +1,41 @@
+From 74916128a0a7dc6afdc7a0dbbe4e1a501d357531 Mon Sep 17 00:00:00 2001
+From: Hillwood Yang <hillwood@opensuse.org>
+Date: Sun, 11 Jan 2026 20:22:05 +0800
+Subject: [PATCH] Fix a crash issue
+
+https://github.com/libpinyin/ibus-libpinyin/issues/549
+Fix potential iterator undefined behavior in PYPEnglishCandidates.cc
+by replacing iterator-based insertion with index-based insertion into
+the candidates vector.
+---
+ src/PYPEnglishCandidates.cc | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/src/PYPEnglishCandidates.cc b/src/PYPEnglishCandidates.cc
+index 0da60a99..94bbe22d 100644
+--- a/src/PYPEnglishCandidates.cc
++++ b/src/PYPEnglishCandidates.cc
+@@ -49,8 +49,9 @@ EnglishCandidates::processCandidates (std::vector<EnhancedCandidate> & candidate
+     const char *prefix = m_editor->m_text.c_str ();
+     std::vector<std::string> words;
+ 
+-    std::vector<EnhancedCandidate>::iterator pos;
+-    for (pos = candidates.begin (); pos != candidates.end (); ++pos) {
++    // Find the insertion position
++    size_t insert_index = 0;
++    for (auto pos = candidates.begin (); pos != candidates.end (); ++pos, ++insert_index) {
+         if (CANDIDATE_NBEST_MATCH != pos->m_candidate_type &&
+             CANDIDATE_LONGER != pos->m_candidate_type &&
+             CANDIDATE_LONGER_USER != pos->m_candidate_type)
+@@ -72,7 +73,9 @@ EnglishCandidates::processCandidates (std::vector<EnhancedCandidate> & candidate
+ 
+             enhanced.m_candidate_id = count;
+             enhanced.m_display_string = *iter;
+-            candidates.insert (pos + count, enhanced);
++
++            // Use an integer index to avoid iterator UB
++            candidates.insert(candidates.begin() + insert_index + count, enhanced);
+ 
+             ++count;
+         }
+
