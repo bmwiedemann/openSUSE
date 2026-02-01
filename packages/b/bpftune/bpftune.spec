@@ -1,6 +1,7 @@
 #
 # spec file for package bpftune
 #
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,14 +17,15 @@
 #
 
 
-%define soname 0_1_3
+%define soname 0_4_2
+%define tarversion 0.4-2
 Name:           bpftune
-Version:        0.1~20241219
+Version:        0.4.2
 Release:        0
 Summary:        BPF/tracing tools for auto-tuning Linux
 License:        GPL-2.0-only WITH Linux-syscall-note
 URL:            https://github.com/oracle/bpftune/
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/oracle/bpftune/archive/refs/tags/%{tarversion}.tar.gz#/%{name}-%{tarversion}.tar.gz
 BuildRequires:  bpftool >= 4.18
 BuildRequires:  clang >= 11
 BuildRequires:  llvm >= 11
@@ -55,7 +57,7 @@ The %{name}-devel package contains libraries and header files for
 developing BPF shared object tuners that use %{name}
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{tarversion}
 
 %build
 %make_build \
@@ -84,14 +86,21 @@ developing BPF shared object tuners that use %{name}
 %ldconfig_scriptlets -n libbpftune%{soname}
 
 %files
+%exclude %{_sysconfdir}/conf.d/bpftune
+%exclude %{_initddir}/bpftune
 %license LICENSE.txt
 %{_sbindir}/bpftune
 %{_unitdir}/bpftune.service
 %dir %{_libdir}/bpftune
 %{_libdir}/bpftune/*.so
 %{_mandir}/man8/*.gz
+%dir %{_localstatedir}/lib/pcp
+%dir %{_localstatedir}/lib/pcp/pmdas
+%dir %{_localstatedir}/lib/pcp/pmdas/bpftune
+%{_localstatedir}/lib/pcp/pmdas/bpftune/*
 
 %files -n libbpftune%{soname}
+%exclude %{_sysconfdir}/ld.so.conf.d/libbpftune.conf
 %license LICENSE.txt
 %{_sysconfdir}/ld.so.conf.d/libbpftune.conf
 %{_libdir}/libbpftune.so.*

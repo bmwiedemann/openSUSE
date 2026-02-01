@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 12 22:02:37 UTC 2026 - Bret Towe <bret.towe@gmail.com>
+
+- version bump to 0.4-2
+  * add multiple strategy support
+  * bpftune: support rollback mode (-R) for bpftune
+  * IP fragmentation auto-tuning
+  * bpftune: add bpftune -q client/server to allow local queries
+  * add optional summarize function to tuners
+  * bpftune: add adaptive sampling
+  * libbpftune: add support for json queries of tunables
+  * many upstream improvements and bug fixes
+- update spec file to use release source tarballs
+
+-------------------------------------------------------------------
 Thu Dec 19 20:21:02 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.1~20241219:
