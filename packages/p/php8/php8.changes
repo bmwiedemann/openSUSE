@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 26 11:11:51 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- package /var/lib/php8 via tmpfiles
+- deleted sources
+  * php-fpm.tmpfiles.d (renamed)
+- added sources
+  * php-fpm-tmpfiles.conf
+  * php8-tmpfiles.conf
+
+-------------------------------------------------------------------
 Mon Jan 19 08:21:08 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - remove a patch, which breaks phar.phar [bsc#1256905]

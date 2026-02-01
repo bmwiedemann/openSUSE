@@ -1638,4 +1638,17 @@
     <comment>remove a patch, which breaks phar.phar [bsc#1256905]</comment>
     <requestid>1328029</requestid>
   </revision>
+  <revision rev="101" vrev="3">
+    <srcmd5>d1de85cf875e628931a4e93e774e80c4</srcmd5>
+    <version>8.4.17</version>
+    <time>1769979721</time>
+    <user>anag_factory</user>
+    <comment>- package /var/lib/php8 via tmpfiles
+- deleted sources
+  * php-fpm.tmpfiles.d (renamed)
+- added sources
+  * php-fpm-tmpfiles.conf
+  * php8-tmpfiles.conf</comment>
+    <requestid>1330069</requestid>
+  </revision>
 </revisionlist>

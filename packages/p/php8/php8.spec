@@ -74,7 +74,8 @@ Source8:        https://secure.php.net/distributions/php-%{version}.tar.xz.asc
 # Source9:       https://www.php.net/distributions/php-keyring.gpg#/%%{php_name}.keyring
 Source9:        %{php_name}.keyring
 Source11:       %{php_name}.rpmlintrc
-Source12:       php-fpm.tmpfiles.d
+Source12:       php-fpm-tmpfiles.conf
+Source13:       php8-tmpfiles.conf
 Source100:      build-test.sh
 ## SUSE specific patches
 # adjust includedir
@@ -1352,8 +1353,9 @@ for f in %{buildroot}%{extension_dir}/*; do
     echo "; comment out next line to disable $ext extension in php" > %{buildroot}%{php_sysconf}/conf.d/${ini_name}.ini
     echo "${zend_}extension=$ext.so" >> %{buildroot}%{php_sysconf}/conf.d/${ini_name}.ini
 done
-# directory for sessions
-install -d %{buildroot}%{_localstatedir}/lib/%{php_name}/sessions
+# package /var/lib/php8/sessions trough tmpfiles
+install -d -m 0755 %{buildroot}%{_tmpfilesdir}
+install -m 0644 %{SOURCE13} %{buildroot}%{_tmpfilesdir}/php8.conf
 # fix symlink (bnc#734176)
 ln -s %{_bindir}/php %{buildroot}%{_bindir}/%{php_name}
 # install the macros file:
@@ -1367,6 +1369,11 @@ install -m 644 sapi/embed/php_embed.h %{buildroot}%{_includedir}/%{php_name}/sap
 for f in %{buildroot}%{_datadir}/%{php_name}/build/{gen_stub.php,run-tests.php}; do
     sed -i '1{s|env ||}' $f
 done
+%endif
+
+%if "%{flavor}" == ""
+%post
+%tmpfiles_create php8.conf
 %endif
 
 %if "%{flavor}" == "apache2"
@@ -1400,7 +1407,7 @@ fi
 
 %post
 %service_add_post php-fpm.service
-%tmpfiles_create %{_tmpfilesdir}/php-fpm.conf
+%tmpfiles_create php-fpm.conf
 
 %preun
 %service_del_preun php-fpm.service
@@ -1442,8 +1449,9 @@ fi
 %dir %{extension_dir}
 %dir %{php_sysconf}
 %dir %{php_sysconf}/conf.d
-%attr(0755, %{apache_user}, root) %dir %{_localstatedir}/lib/%{php_name}
-%attr(0755, %{apache_user}, root) %dir %{_localstatedir}/lib/%{php_name}/sessions
+%{_tmpfilesdir}/php8.conf
+%ghost %dir %attr(755,%{apache_user},root) /var/lib/php8
+%ghost %dir %attr(755,%{apache_user},root) /var/lib/php8/sessions
 
 %files cli
 %defattr(-, root, root)
