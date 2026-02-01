@@ -1,7 +1,7 @@
 #
 # spec file for package python-greenlet
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2010 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-greenlet
-Version:        3.3.0
+Version:        3.3.1
 Release:        0
 Summary:        Lightweight in-process concurrent programming
 License:        MIT
@@ -30,11 +30,11 @@ Group:          Development/Libraries/Python
 URL:            https://github.com/python-greenlet/greenlet
 Source0:        https://files.pythonhosted.org/packages/source/g/greenlet/greenlet-%{version}.tar.gz
 Source9:        python-greenlet-rpmlintrc
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module objgraph}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 77.0.3}
 BuildRequires:  %{python_module wheel}
 %if 0%{?suse_version} < 1600
 BuildRequires:  gcc12
