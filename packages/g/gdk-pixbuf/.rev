@@ -1669,4 +1669,19 @@
     <comment></comment>
     <requestid>1313601</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>17923d9040151e5a0d8b7046d5c4c038</srcmd5>
+    <version>2.44.5</version>
+    <time>1769979742</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.44.5:
+  + Make the testsuite work with glycin
+  + glycin: Add support for xpm and xbm
+  + Updated translations.
+- Drop gdk-pixbuf-jpeg-slow.patch, we are not running tests, nor do
+  we want to depend on glycin during build as it leads to a cycle.
+- Pass test=false to meson setup.
+- Drop unused check section and already disabled meson_test macro. (forwarded request 1329847 from iznogood)</comment>
+    <requestid>1330186</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 29 10:00:06 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.44.5:
+  + Make the testsuite work with glycin
+  + glycin: Add support for xpm and xbm
+  + Updated translations.
+- Drop gdk-pixbuf-jpeg-slow.patch, we are not running tests, nor do
+  we want to depend on glycin during build as it leads to a cycle.
+- Pass test=false to meson setup.
+- Drop unused check section and already disabled meson_test macro.
+
+-------------------------------------------------------------------
 Tue Oct 21 21:03:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.44.4:
