@@ -117,8 +117,14 @@ mysql_upgrade() {
 
 		# Run upgrade itself
 		echo "Running upgrade itself..."
-		echo "It will do some chek first and report all errors and tries to correct them"
+		echo "It will do some check first and report all errors and tries to correct them"
 		echo
+		# Needed to fix wrongly labled $datadir, breaking database updates with SELinux
+		#   this is a quick interim fix and can be removed once the directories are label
+		#   correctly during package install.
+		if which selinuxenabled > /dev/null && selinuxenabled; then
+			restorecon -R "$datadir/"
+		fi
 		if /usr/bin/mysql_upgrade --force --socket="$protected/mysql.sock"; then
 			echo "Everything upgraded successfully"
 			up_ok=""

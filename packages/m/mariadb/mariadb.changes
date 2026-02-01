@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 29 16:39:57 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Fix incomplete SELinux labels during database update (bsc#1255024)
+
+-------------------------------------------------------------------
 Thu Dec 18 14:29:29 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 -  make 'mysql-systemd-helper upgrade' selinux aware (bsc#1255024)
