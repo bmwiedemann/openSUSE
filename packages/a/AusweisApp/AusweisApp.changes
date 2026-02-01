@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 29 20:55:55 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.4.1
+    - Visual adjustments and optimizations to the graphical user interface.
+    - Enabled privacy protection against screenshots on mobile devices
+      when entering passwords or displaying personal details.
+    - Fixed unstable behavior when using smartphones as card readers.
+    - Updated OpenSSL to version 3.5.5.
+    - The container SDK now only contains necessary libraries instead
+      of the complete package manager of the distribution.
+
+-------------------------------------------------------------------
 Thu Oct 30 20:28:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
