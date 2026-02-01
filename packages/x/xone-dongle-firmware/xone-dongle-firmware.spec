@@ -1,7 +1,7 @@
 #
 # spec file for package xone-dongle-firmware
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,24 @@
 #
 
 Name:           xone-dongle-firmware
-Version:        0.1
+# Version of the install/firmware.sh script
+Version:        0+git20251208.d8be599
 Release:        0
 Summary:        Xbox Wireless Controller Adapter firmware downloader
 # The firmware itself is proprietary and downloaded from Microsoft;
 # this package only contains helper scripts and placeholders.
 License:        GPL-3.0-or-later
-URL:            https://github.com/medusalix/xone
+URL:            https://github.com/dlundqvist/xone
 
 Source0:        xone-dl-firmware.sh.in
 Source1:        COPYING
 Source2:        firmware.sha256
 
-Requires:       cabextract
-Requires:       wget
+Requires:       bash
+Requires:       bsdtar
 Requires:       curl
 Requires:       w3m
+Conflicts:      xone < 0.5.0
 BuildArch:      noarch
 
 %description
@@ -58,27 +60,41 @@ sed \
     xone-dl-firmware.sh.in > xone-dl-firmware.sh
 
 %install
-%suse_install_update_script xone-dl-firmware.sh
-
-mkdir -p %buildroot/var/adm/update-messages
-touch %buildroot/var/adm/update-messages/%name-%version-%release-1
+mkdir -p %{buildroot}%{_libexecdir}/%{name}
+install -m 0755 xone-dl-firmware.sh %{buildroot}%{_libexecdir}/%{name}/xone-dl-firmware.sh
 
 mkdir -p %buildroot/usr/share/doc/%{name}
 touch %buildroot/usr/share/doc/%{name}/MICROSOFT-TOS.html
 
 mkdir -p %buildroot/usr/lib/firmware
-touch %buildroot/usr/lib/firmware/xow_dongle.bin
+touch %buildroot/usr/lib/firmware/xone_dongle_02e6.bin
+touch %buildroot/usr/lib/firmware/xone_dongle_02fe.bin
+touch %buildroot/usr/lib/firmware/xone_dongle_02f9.bin
+touch %buildroot/usr/lib/firmware/xone_dongle_091e.bin
 
 mkdir -p %{buildroot}/usr/share/%{name}
 mv firmware.sha256 %{buildroot}/usr/share/%{name}
 
+# Store update messages under /usr/share to work with transactional-update snapshots
+mkdir -p %{buildroot}/usr/share/%{name}/update-messages
+touch %{buildroot}/usr/share/%{name}/update-messages/%name-%version-%release-1
+
+%posttrans
+%{_libexecdir}/%{name}/xone-dl-firmware.sh --no-fail || :
+
 %files
 %license COPYING
-/var/adm/update-scripts/*
-%ghost /var/adm/update-messages/%name-%version-%release-1
+%dir %{_libexecdir}/%{name}
+%{_libexecdir}/%{name}/xone-dl-firmware.sh
 %dir /usr/share/doc/%{name}
 %ghost /usr/share/doc/%{name}/MICROSOFT-TOS.html
-%ghost /usr/lib/firmware/xow_dongle.bin
-/usr/share/%{name}
+%ghost /usr/lib/firmware/xone_dongle_02e6.bin
+%ghost /usr/lib/firmware/xone_dongle_02fe.bin
+%ghost /usr/lib/firmware/xone_dongle_02f9.bin
+%ghost /usr/lib/firmware/xone_dongle_091e.bin
+%dir /usr/share/%{name}
+%dir /usr/share/%{name}/update-messages
+%ghost /usr/share/%{name}/update-messages/%name-%version-%release-1
+/usr/share/%{name}/firmware.sha256
 
 %changelog

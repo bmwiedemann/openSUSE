@@ -1,12 +1,11 @@
-#!/bin/sh
+#!/usr/bin/bash
 
 TOS_URL="https://www.microsoft.com/en-us/legal/terms-of-use"
 TOS_FILE="/usr/share/doc/xone-dongle-firmware/MICROSOFT-TOS.html"
-POST_MESSAGE="/var/adm/update-messages/__NAME__-__VERSION__-__RELEASE__-1"
+POST_MESSAGE="/usr/share/__NAME__/update-messages/__NAME__-__VERSION__-__RELEASE__-1"
 
-FIRMWARE_URL="http://download.windowsupdate.com/c/msdownload/update/driver/drvs/2017/07/1cd6a87c-623f-4407-a52d-c31be49e925c_e19f60808bdcbfbd3c3df6be3e71ffc52e43261e.cab"
-FIRMWARE_FILE="/usr/lib/firmware/xow_dongle.bin"
 CHECKSUM_FILE="/usr/share/__NAME__/firmware.sha256"
+FIRMWARE_DIR="/usr/lib/firmware"
 
 CURL_OPTIONS="-L -s"
 
@@ -24,6 +23,7 @@ if [ -e "$TOS_FILE" ]; then
     echo "  already present"
 else
     echo -n "  Fetching   ... "
+    mkdir -p "$(dirname "$TOS_FILE")" 2>/dev/null || true
     if curl $CURL_OPTIONS -o "$TOS_FILE" "$TOS_URL"; then
         echo "done"
     else
@@ -42,90 +42,133 @@ fi
 
 cd "$tmpdir" || exit $exit_code
 
-if [ -e "$FIRMWARE_FILE" ]; then
-    echo "*** No update necessary. Firmware already installed at $FIRMWARE_FILE. ***"
-    # Still show ToS summary below
-else
-    echo "Downloading Xbox Wireless Controller Adapter firmware..."
+# Firmware sources
+urls=(
+    'https://catalog.s.download.windowsupdate.com/d/msdownload/update/driver/drvs/2017/03/2ea9591b-f751-442c-80ce-8f4692cdc67b_6b555a3a288153cf04aec6e03cba360afe2fce34.cab'
+    'https://catalog.s.download.windowsupdate.com/c/msdownload/update/driver/drvs/2017/07/1cd6a87c-623f-4407-a52d-c31be49e925c_e19f60808bdcbfbd3c3df6be3e71ffc52e43261e.cab'
+    'https://catalog.s.download.windowsupdate.com/c/msdownload/update/driver/drvs/2017/06/1dbd7cb4-53bc-4857-a5b0-5955c8acaf71_9081931e7d664429a93ffda0db41b7545b7ac257.cab'
+    'https://catalog.s.download.windowsupdate.com/d/msdownload/update/driver/drvs/2017/08/aeff215c-3bc4-4d36-a3ea-e14bfa8fa9d2_e58550c4f74a27e51e5cb6868b10ff633fa77164.cab'
+)
+filenames=('FW_ACC_00U.bin' 'FW_ACC_00U.bin' 'FW_ACC_CL.bin' 'FW_ACC_BR.bin')
+pids=('02e6' '02fe' '02f9' '091e')
 
-    echo -n "  Fetching   ... "
-    if ! wget -q -O driver.cab "$FIRMWARE_URL"; then
-        echo "failed!"
+log_msg() {
+    mkdir -p "$(dirname "$POST_MESSAGE")" 2>/dev/null || true
+    echo "$*" | tee "$POST_MESSAGE"
+}
+
+get_expected_hash() {
+    local firmware_name="$1"
+    if [ ! -f "$CHECKSUM_FILE" ]; then
+        return 1
+    fi
+    awk -v f="$firmware_name" '$2 == f { print $1; exit }' "$CHECKSUM_FILE"
+}
+
+download_firmware() {
+    local pid="$1"
+    local url="$2"
+    local extracted="$3"
+
+    local firmware_name="xone_dongle_${pid}.bin"
+    local dest_file="${FIRMWARE_DIR}/${firmware_name}"
+
+    if [ -e "$dest_file" ]; then
+        echo "*** No update necessary. Firmware already installed at $dest_file. ***"
+        return 0
+    fi
+
+    local expected_hash
+    expected_hash="$(get_expected_hash "$firmware_name")" || expected_hash=""
+    if [ -z "$expected_hash" ]; then
+        echo "Checksum entry for $firmware_name not found in $CHECKSUM_FILE."
         if [ "$exit_code" -ne 0 ]; then
             exit $exit_code
         else
-            echo "*** No Firmware installed. ***" | tee "$POST_MESSAGE"
-            # Show ToS and exit
+            log_msg "*** No Firmware installed. ***"
             if [ -f "$TOS_FILE" ] && command -v w3m >/dev/null 2>&1; then
                 w3m -dump "$TOS_FILE" | tee "$POST_MESSAGE"
             fi
-            exit 0
+            return 0
         fi
     fi
-    echo "done"
 
-    echo -n "  Extracting ... "
-    if ! cabextract -F FW_ACC_00U.bin driver.cab >/dev/null 2>&1; then
+    echo "Downloading Xbox Wireless Controller Adapter firmware (${firmware_name})..."
+
+    echo -n "  Fetching   ... "
+    if ! curl $CURL_OPTIONS -o driver.cab "$url"; then
         echo "failed!"
         rm -f driver.cab
         if [ "$exit_code" -ne 0 ]; then
             exit $exit_code
         else
-            echo "*** No Firmware installed. ***" | tee "$POST_MESSAGE"
+            log_msg "*** No Firmware installed. ***"
             if [ -f "$TOS_FILE" ] && command -v w3m >/dev/null 2>&1; then
                 w3m -dump "$TOS_FILE" | tee "$POST_MESSAGE"
             fi
-            exit 0
+            return 0
+        fi
+    fi
+    echo "done"
+
+    echo -n "  Extracting ... "
+    if ! bsdtar -xf driver.cab "$extracted" >/dev/null 2>&1; then
+        echo "failed!"
+        rm -f driver.cab
+        if [ "$exit_code" -ne 0 ]; then
+            exit $exit_code
+        else
+            log_msg "*** No Firmware installed. ***"
+            if [ -f "$TOS_FILE" ] && command -v w3m >/dev/null 2>&1; then
+                w3m -dump "$TOS_FILE" | tee "$POST_MESSAGE"
+            fi
+            return 0
         fi
     fi
     echo "done"
 
     rm -f driver.cab
 
-    if [ ! -f FW_ACC_00U.bin ]; then
-        echo "Firmware file FW_ACC_00U.bin not found after extraction."
+    if [ ! -f "$extracted" ]; then
+        echo "Firmware file $extracted not found after extraction."
         if [ "$exit_code" -ne 0 ]; then
             exit $exit_code
         else
-            echo "*** No Firmware installed. ***" | tee "$POST_MESSAGE"
+            log_msg "*** No Firmware installed. ***"
             if [ -f "$TOS_FILE" ] && command -v w3m >/dev/null 2>&1; then
                 w3m -dump "$TOS_FILE" | tee "$POST_MESSAGE"
             fi
-            exit 0
+            return 0
         fi
     fi
 
-    if [ ! -f "$CHECKSUM_FILE" ]; then
-        echo "Checksum file $CHECKSUM_FILE not found."
+    echo -n "  Verifying ... "
+    actual_hash="$(sha256sum "$extracted" | awk '{print $1}')"
+    if [ "$actual_hash" != "$expected_hash" ]; then
+        echo "failed!"
+        echo "Checksum mismatch for $firmware_name ... deleted!"
+        rm -f "$extracted"
         if [ "$exit_code" -ne 0 ]; then
             exit $exit_code
         else
-            echo "*** No Firmware installed. ***" | tee "$POST_MESSAGE"
+            log_msg "*** No Firmware installed. ***"
             if [ -f "$TOS_FILE" ] && command -v w3m >/dev/null 2>&1; then
                 w3m -dump "$TOS_FILE" | tee "$POST_MESSAGE"
             fi
-            exit 0
+            return 0
         fi
     fi
+    echo "done"
 
-    if ! grep "FW_ACC_00U.bin" "$CHECKSUM_FILE" | sha256sum --check --quiet --status >/dev/null 2>&1; then
-        echo "Checksum mismatch for FW_ACC_00U.bin ... deleted!"
-        rm -f FW_ACC_00U.bin
-        if [ "$exit_code" -ne 0 ]; then
-            exit $exit_code
-        else
-            echo "*** No Firmware installed. ***" | tee "$POST_MESSAGE"
-            if [ -f "$TOS_FILE" ] && command -v w3m >/dev/null 2>&1; then
-                w3m -dump "$TOS_FILE" | tee "$POST_MESSAGE"
-            fi
-            exit 0
-        fi
-    fi
+    chmod 644 "$extracted"
+    mv -f "$extracted" "$dest_file"
+    log_msg "*** Firmware installed: $dest_file ***"
+}
 
-    chmod 644 FW_ACC_00U.bin
-    mv -f FW_ACC_00U.bin "$FIRMWARE_FILE"
-    echo "*** Firmware installed. ***" | tee "$POST_MESSAGE"
-fi
+# Install all known dongle firmwares
+for ((i = 0 ; i < "${#urls[@]}" ; i++)); do
+    download_firmware "${pids[$i]}" "${urls[$i]}" "${filenames[$i]}"
+done
 
 # Show ToS at the end
 if [ -f "$TOS_FILE" ] && command -v w3m >/dev/null 2>&1; then

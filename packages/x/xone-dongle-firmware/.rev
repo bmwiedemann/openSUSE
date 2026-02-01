@@ -10,4 +10,22 @@ Submitting this package to allow installation of the xone package which I will a
 This package is only a download script that presents the TOS of Microsoft during installation. It follows how this package works, the use cases are very similar/identical: https://build.opensuse.org/package/show/openSUSE:Factory/fetchmsttfonts</comment>
     <requestid>1318010</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>989523be325e85e0d84348b3abd1f5e3</srcmd5>
+    <version>0+git20251208.d8be599</version>
+    <time>1769979840</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0+git20251208.d8be599:
+  - Update to new firmware file locations
+  - Make version linked to upstream firmware donwload script
+
+I moved away from the SUSE install script macro and mechanism since it writes to /var - which isn't mounted on transactional systems during transactional-update, see https://kubic.opensuse.org/documentation/transactional-update-guide/tu-setup.html#tu-setup-var
+and
+https://en.opensuse.org/openSUSE:Packaging_for_transactional-updates#Files_in_/var
+where it's recommended to place the files in /usr/share instead - so I did. The script itself lives in _libexecdir, I guess that's the correct location for the download script.
+If there's another solution, please let me know :)
+
+This should be accepted together with the new xone version, which changed the firmware paths requiring this update.</comment>
+    <requestid>1330200</requestid>
+  </revision>
 </revisionlist>
