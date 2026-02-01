@@ -939,4 +939,15 @@
   + Updated translations. (forwarded request 1324006 from iznogood)</comment>
     <requestid>1324254</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>dedd02aa665663bb055b4e6f346b74a3</srcmd5>
+    <version>49.4</version>
+    <time>1769979737</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.4:
+  + Fix opening GNOME Settings Privacy panel (after Setting
+    rearranging panels)
+  + Updated translations. (forwarded request 1329791 from iznogood)</comment>
+    <requestid>1330185</requestid>
+  </revision>
 </revisionlist>
