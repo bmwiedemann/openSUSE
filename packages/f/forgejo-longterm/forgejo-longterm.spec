@@ -1,7 +1,7 @@
 #
 # spec file for package forgejo-longterm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %bcond_without apparmor
 %endif
 Name:           forgejo-longterm
-Version:        11.0.8
+Version:        11.0.10
 Release:        0
 Summary:        Self-hostable forge
 License:        GPL-3.0-or-later
@@ -46,6 +46,7 @@ Source10:       forgejo.apparmor
 Source11:       forgejo.firewalld
 Source12:       forgejo-abstraction.apparmor
 Source13:       forgejo-hooks-abstraction.apparmor
+Source14:       node_modules.sums
 Source99:       README.SUSE
 Patch0:         custom-app.ini.patch
 BuildRequires:  golang(API) >= 1.25

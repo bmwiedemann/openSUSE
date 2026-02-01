@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jan 31 11:06:45 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 11.0.10:
+  * fix: add forgejo doctor cleanup-commit-status command
+  * fix: correctly compute required commit status
+  * chore: correct spelling error in cleanup-commit-status CLI docs
+- Update to version 11.0.9:
+  * fix: hide user profile anonymous options on public repo APIs
+  * fix: incorrect whitespace handling on pre&post receive hooks
+  * fix: reduce memory usage while processing large attachment uploads
+  * fix: load reviewer for pull review dismiss action notifier
+  * fix: use correct GPG key for export
+  * fix: don't duplicate commit status records on workflows with empty name
+  * fix: build-release workflow stops its own end-to-end checks when run concurrently
+  * fix: password leak in log messages
+
+-------------------------------------------------------------------
 Sat Dec  6 21:38:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 11.0.8:

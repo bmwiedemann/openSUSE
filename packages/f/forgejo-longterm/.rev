@@ -115,4 +115,24 @@
   fixed upstream</comment>
     <requestid>1321399</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>abbab94a7c38aaa8a1b17a6538a2daac</srcmd5>
+    <version>11.0.10</version>
+    <time>1769979783</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 11.0.10:
+  * fix: add forgejo doctor cleanup-commit-status command
+  * fix: correctly compute required commit status
+  * chore: correct spelling error in cleanup-commit-status CLI docs
+- Update to version 11.0.9:
+  * fix: hide user profile anonymous options on public repo APIs
+  * fix: incorrect whitespace handling on pre&amp;post receive hooks
+  * fix: reduce memory usage while processing large attachment uploads
+  * fix: load reviewer for pull review dismiss action notifier
+  * fix: use correct GPG key for export
+  * fix: don't duplicate commit status records on workflows with empty name
+  * fix: build-release workflow stops its own end-to-end checks when run concurrently
+  * fix: password leak in log messages</comment>
+    <requestid>1330179</requestid>
+  </revision>
 </revisionlist>
