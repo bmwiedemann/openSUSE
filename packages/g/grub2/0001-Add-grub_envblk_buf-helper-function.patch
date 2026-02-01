@@ -13,8 +13,6 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  util/grub-editenv.c       |  4 +---
  3 files changed, 14 insertions(+), 3 deletions(-)
 
-diff --git a/grub-core/lib/envblk.c b/grub-core/lib/envblk.c
-index 2e4e78b132..24efbe7ffa 100644
 --- a/grub-core/lib/envblk.c
 +++ b/grub-core/lib/envblk.c
 @@ -23,6 +23,18 @@
@@ -36,11 +34,9 @@ index 2e4e78b132..24efbe7ffa 100644
  grub_envblk_t
  grub_envblk_open (char *buf, grub_size_t size)
  {
-diff --git a/include/grub/lib/envblk.h b/include/grub/lib/envblk.h
-index c3e6559217..83f3fcf841 100644
 --- a/include/grub/lib/envblk.h
 +++ b/include/grub/lib/envblk.h
-@@ -31,6 +31,7 @@ struct grub_envblk
+@@ -31,6 +31,7 @@
  };
  typedef struct grub_envblk *grub_envblk_t;
  
@@ -48,12 +44,10 @@ index c3e6559217..83f3fcf841 100644
  grub_envblk_t grub_envblk_open (char *buf, grub_size_t size);
  int grub_envblk_set (grub_envblk_t envblk, const char *name, const char *value);
  void grub_envblk_delete (grub_envblk_t envblk, const char *name);
-diff --git a/util/grub-editenv.c b/util/grub-editenv.c
-index b8219335f7..a02d3f2a63 100644
 --- a/util/grub-editenv.c
 +++ b/util/grub-editenv.c
-@@ -210,9 +210,7 @@ create_envblk_fs (void)
-   if (! fp)
+@@ -255,9 +255,7 @@
+   if (fp == NULL)
      grub_util_error (_("cannot open `%s': %s"), device, strerror (errno));
  
 -  buf = xmalloc (size);
@@ -63,6 +57,3 @@ index b8219335f7..a02d3f2a63 100644
  
    if (fseek (fp, offset, SEEK_SET) < 0)
      grub_util_error (_("cannot seek `%s': %s"), device, strerror (errno));
--- 
-2.34.1
-

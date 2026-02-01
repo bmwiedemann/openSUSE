@@ -41,30 +41,9 @@ Signed-Off-by: Michael Chang <mchang@suse.com>
  include/grub/parser.h       |  4 ++
  3 files changed, 90 insertions(+)
 
-diff --git a/grub-core/commands/blscfg.c b/grub-core/commands/blscfg.c
-index cbe2a289e..e08f35817 100644
---- a/grub-core/commands/blscfg.c
-+++ b/grub-core/commands/blscfg.c
-@@ -953,10 +953,14 @@ static void create_entry (struct bls_entry *entry)
- 
-   const char *sdval = grub_env_get("save_default");
-   bool savedefault = ((NULL != sdval) && (grub_strcmp(sdval, "true") == 0));
-+#ifdef GRUB_MACHINE_EFI
-+  src = grub_xasprintf ("%slinux %s%s%s%s\n"
-+#else
-   src = grub_xasprintf ("%sload_video\n"
- 			"set gfxpayload=keep\n"
- 			"insmod gzio\n"
- 			"linux %s%s%s%s\n"
-+#endif
- 			"%s%s",
- 			savedefault ? "savedefault\n" : "",
- #ifdef GRUB_MACHINE_EMU
-diff --git a/grub-core/normal/main.c b/grub-core/normal/main.c
-index 03631f07a..8e58ced67 100644
 --- a/grub-core/normal/main.c
 +++ b/grub-core/normal/main.c
-@@ -113,6 +113,65 @@ read_config_file_getline (char **line, int cont __attribute__ ((unused)),
+@@ -113,6 +113,65 @@
    return GRUB_ERR_NONE;
  }
  
@@ -130,7 +109,7 @@ index 03631f07a..8e58ced67 100644
  static grub_menu_t
  read_config_file (const char *config)
  {
-@@ -282,6 +341,26 @@ grub_normal_execute (const char *config, int nested, int batch)
+@@ -282,6 +341,26 @@
  
    grub_boot_time ("Executing config file");
  
@@ -157,7 +136,7 @@ index 03631f07a..8e58ced67 100644
    if (config)
      {
        menu = read_config_file (config);
-@@ -307,6 +386,9 @@ grub_normal_execute (const char *config, int nested, int batch)
+@@ -307,6 +386,9 @@
  
    grub_boot_time ("Executed config file");
  
@@ -167,11 +146,9 @@ index 03631f07a..8e58ced67 100644
    if (! batch)
      {
        if (menu && menu->size)
-diff --git a/include/grub/parser.h b/include/grub/parser.h
-index 64f9f5cc2..9d702571a 100644
 --- a/include/grub/parser.h
 +++ b/include/grub/parser.h
-@@ -86,7 +86,11 @@ struct grub_parser
+@@ -86,7 +86,11 @@
  };
  typedef struct grub_parser *grub_parser_t;
  
@@ -183,6 +160,3 @@ index 64f9f5cc2..9d702571a 100644
  
  grub_err_t
  grub_rescue_parse_line (char *line,
--- 
-2.46.0
-

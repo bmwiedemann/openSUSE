@@ -138,7 +138,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +  if (grub_initrd_load (&initrd_ctx, initrd_mem))
 +    goto fail;
  
-   params->ramdisk_size = size;
+   params->hdr.ramdisk_size = size;
  
   fail:
 -  for (i = 0; i < nfiles; i++)

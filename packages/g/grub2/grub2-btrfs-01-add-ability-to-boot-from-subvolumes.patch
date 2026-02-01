@@ -172,7 +172,7 @@ V2:
    return data;
  }
  
-@@ -1783,6 +1868,98 @@
+@@ -1788,6 +1873,98 @@
  }
  
  static grub_err_t
@@ -271,9 +271,9 @@ V2:
  find_path (struct grub_btrfs_data *data,
  	   const char *path, struct grub_btrfs_key *key,
  	   grub_uint64_t *tree, grub_uint8_t *type)
-@@ -1800,14 +1977,26 @@
-   char *origpath = NULL;
+@@ -1806,14 +1983,26 @@
    unsigned symlinks_max = 32;
+   grub_size_t sz;
  
 -  err = get_root (data, key, tree, type);
 -  if (err)
@@ -302,18 +302,14 @@ V2:
    while (1)
      {
        while (path[0] == '/')
-@@ -1980,13 +2169,25 @@
+@@ -2000,13 +2189,25 @@
  	  path = path_alloc = tmp;
  	  if (path[0] == '/')
  	    {
 -	      err = get_root (data, key, tree, type);
 -	      if (err)
 +	      if (data->fs_tree)
- 		{
--		  grub_free (direl);
--		  grub_free (path_alloc);
--		  grub_free (origpath);
--		  return err;
++		{
 +		  *type = GRUB_BTRFS_DIR_ITEM_TYPE_DIRECTORY;
 +		  *tree = data->fs_tree;
 +		  /* This is a tree root, so everything starts at objectid 256 */
@@ -322,7 +318,11 @@ V2:
 +		  key->offset = 0;
 +		}
 +	      else
-+		{
+ 		{
+-		  grub_free (direl);
+-		  grub_free (path_alloc);
+-		  grub_free (origpath);
+-		  return err;
 +		  err = get_root (data, key, tree, type);
 +		  if (err)
 +		    {
@@ -334,7 +334,7 @@ V2:
  		}
  	    }
  	  continue;
-@@ -2254,6 +2455,20 @@
+@@ -2282,6 +2483,20 @@
  				 data->tree, file->offset, buf, len);
  }
  
@@ -355,7 +355,7 @@ V2:
  static grub_err_t
  grub_btrfs_uuid (grub_device_t device, char **uuid)
  {
-@@ -2265,15 +2480,7 @@
+@@ -2293,15 +2508,7 @@
    if (!data)
      return grub_errno;
  
@@ -372,7 +372,7 @@ V2:
  
    grub_btrfs_unmount (data);
  
-@@ -2394,6 +2601,248 @@
+@@ -2431,6 +2638,248 @@
  }
  #endif
  
@@ -621,7 +621,7 @@ V2:
  static struct grub_fs grub_btrfs_fs = {
    .name = "btrfs",
    .fs_dir = grub_btrfs_dir,
-@@ -2409,12 +2858,88 @@
+@@ -2446,13 +2895,89 @@
  #endif
  };
  
@@ -685,6 +685,7 @@ V2:
 +
  GRUB_MOD_INIT (btrfs)
  {
+   grub_btrfs_fs.mod = mod;
    grub_fs_register (&grub_btrfs_fs);
 +  cmd_info = grub_register_command("btrfs-info", grub_cmd_btrfs_info,
 +				   "DEVICE",

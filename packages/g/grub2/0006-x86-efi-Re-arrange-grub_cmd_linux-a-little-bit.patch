@@ -10,11 +10,9 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  grub-core/loader/i386/efi/linux.c | 73 +++++++++++++++++--------------
  1 file changed, 40 insertions(+), 33 deletions(-)
 
-diff --git a/grub-core/loader/i386/efi/linux.c b/grub-core/loader/i386/efi/linux.c
-index d6bed4fb4..096a52eb5 100644
 --- a/grub-core/loader/i386/efi/linux.c
 +++ b/grub-core/loader/i386/efi/linux.c
-@@ -227,32 +227,9 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+@@ -227,32 +227,9 @@
        goto fail;
      }
  
@@ -49,7 +47,7 @@ index d6bed4fb4..096a52eb5 100644
    grub_dprintf ("linux", "checking lh->boot_flag\n");
    if (lh->boot_flag != grub_cpu_to_le16 (0xaa55))
      {
-@@ -300,6 +277,34 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+@@ -300,6 +277,34 @@
      }
  #endif
  
@@ -84,7 +82,7 @@ index d6bed4fb4..096a52eb5 100644
    grub_dprintf ("linux", "setting up cmdline\n");
    linux_cmdline = grub_efi_allocate_pages_max(GRUB_EFI_MAX_ALLOCATION_ADDRESS,
  					      BYTES_TO_PAGES(lh->cmdline_size + 1));
-@@ -324,8 +329,8 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+@@ -324,8 +329,8 @@
    grub_dprintf ("linux", "setting lh->cmd_line_ptr\n");
    lh->cmd_line_ptr = (grub_uint32_t)(grub_addr_t)linux_cmdline;
  
@@ -94,7 +92,7 @@ index d6bed4fb4..096a52eb5 100644
  
    start = (lh->setup_sects + 1) * 512;
  
-@@ -342,24 +347,26 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+@@ -342,24 +347,26 @@
        grub_error (GRUB_ERR_OUT_OF_MEMORY, N_("can't allocate kernel"));
        goto fail;
      }
@@ -118,16 +116,13 @@ index d6bed4fb4..096a52eb5 100644
 +		lh->type_of_loader);
  
 -  grub_dprintf ("linux", "setting lh->ext_loader_{type,ver}\n");
-   params->ext_loader_type = 0;
-   params->ext_loader_ver = 2;
+   params->hdr.ext_loader_type = 0;
+   params->hdr.ext_loader_ver = 2;
 -  grub_dprintf("linux", "kernel_mem: %p handover_offset: %08x\n",
 -	       kernel_mem, handover_offset);
 +  grub_dprintf ("linux",
 +		"setting lh->ext_loader_{type,ver} = {0x%02x,0x%02x}\n",
-+		params->ext_loader_type, params->ext_loader_ver);
++		params->hdr.ext_loader_type, params->hdr.ext_loader_ver);
  
   fail:
  
--- 
-2.31.1
-

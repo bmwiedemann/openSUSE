@@ -31,7 +31,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -2695,3 +2695,8 @@
+@@ -2802,3 +2802,8 @@
    cflags = '$(CFLAGS_POSIX) $(CFLAGS_GNULIB)';
    cppflags = '$(CPPFLAGS_POSIX) $(CPPFLAGS_GNULIB)';
  };
@@ -92,7 +92,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +}
 --- a/grub-core/disk/cryptodisk.c
 +++ b/grub-core/disk/cryptodisk.c
-@@ -30,6 +30,8 @@
+@@ -33,6 +33,8 @@
  
  #ifdef GRUB_UTIL
  #include <grub/emu/hostdisk.h>
@@ -101,7 +101,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  #endif
  
  GRUB_MOD_LICENSE ("GPLv3+");
-@@ -1235,6 +1237,10 @@
+@@ -1303,6 +1305,10 @@
    if (cargs->hdr_file != NULL)
      source->read_hook = NULL;
  
@@ -111,7 +111,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +#endif
    if (askpass)
      {
-       cargs->key_len = 0;
+       grub_memset (cargs->key_data, 0, cargs->key_len);
 --- a/grub-core/loader/linux.c
 +++ b/grub-core/loader/linux.c
 @@ -5,6 +5,7 @@

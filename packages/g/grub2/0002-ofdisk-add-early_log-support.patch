@@ -31,15 +31,15 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 
 --- a/grub-core/disk/ieee1275/ofdisk.c
 +++ b/grub-core/disk/ieee1275/ofdisk.c
-@@ -25,6 +25,7 @@
- #include <grub/i18n.h>
+@@ -26,6 +26,7 @@
  #include <grub/time.h>
+ #include <grub/safemath.h>
  #include <grub/env.h>
 +#include <grub/command.h>
  
  #define RETRY_DEFAULT_TIMEOUT 15
  
-@@ -60,6 +61,9 @@
+@@ -61,6 +62,9 @@
  #define OFDISK_HASH_SZ	8
  static struct ofdisk_hash_ent *ofdisk_hash[OFDISK_HASH_SZ];
  
@@ -49,7 +49,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  static int
  ofdisk_hash_fn (const char *devpath)
  {
-@@ -1132,10 +1136,10 @@
+@@ -1167,10 +1171,10 @@
        return NULL;
      }
    else
@@ -62,7 +62,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  
    grub_free (canon);
    return parent;
-@@ -1179,9 +1183,9 @@
+@@ -1221,9 +1225,9 @@
        boot_parent = get_boot_device_parent (bootpath, &is_boot_nvmeof);
        boot_type =  grub_ieee1275_get_device_type (boot_parent);
        if (boot_type)
@@ -74,7 +74,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
      }
    grub_free (type);
    grub_free (bootpath);
-@@ -1205,7 +1209,7 @@
+@@ -1247,7 +1251,7 @@
    static char *ret;
  
    if (!ret)
@@ -83,7 +83,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  	      boot_parent,
  	      boot_type ? : "unknown",
  	      is_boot_nvmeof);
-@@ -1221,6 +1225,17 @@
+@@ -1263,6 +1267,17 @@
    return NULL;
  }
  
@@ -101,7 +101,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  void
  grub_ofdisk_init (void)
  {
-@@ -1230,6 +1245,9 @@
+@@ -1272,6 +1287,9 @@
    grub_register_variable_hook ("ofdisk_boot_type", grub_env_get_boot_type,
                                 grub_env_set_boot_type );
  
@@ -111,7 +111,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
    grub_disk_dev_register (&grub_ofdisk_dev);
  }
  
-@@ -1278,3 +1296,50 @@
+@@ -1320,3 +1338,50 @@
  
    return 0;
  }

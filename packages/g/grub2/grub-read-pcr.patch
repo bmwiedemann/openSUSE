@@ -1,7 +1,5 @@
-Index: grub-2.12/include/grub/tpm.h
-===================================================================
---- grub-2.12.orig/include/grub/tpm.h
-+++ grub-2.12/include/grub/tpm.h
+--- a/include/grub/tpm.h
++++ b/include/grub/tpm.h
 @@ -36,6 +36,12 @@
  
  #define EV_IPL 0x0d
@@ -15,7 +13,7 @@ Index: grub-2.12/include/grub/tpm.h
  grub_err_t grub_tpm_measure (unsigned char *buf, grub_size_t size,
  			     grub_uint8_t pcr, const char *description);
  int grub_tpm_present (void);
-@@ -45,5 +51,7 @@ grub_is_tpm_fail_fatal (void)
+@@ -46,5 +52,7 @@
  {
    return grub_env_get_bool ("tpm_fail_fatal", false);
  }
@@ -23,10 +21,8 @@ Index: grub-2.12/include/grub/tpm.h
 +void grub_tpm_digest_free (struct grub_tpm_digest *d);
  
  #endif
-Index: grub-2.12/grub-core/commands/efi/tpm.c
-===================================================================
---- grub-2.12.orig/grub-core/commands/efi/tpm.c
-+++ grub-2.12/grub-core/commands/efi/tpm.c
+--- a/grub-core/commands/efi/tpm.c
++++ b/grub-core/commands/efi/tpm.c
 @@ -28,6 +28,8 @@
  #include <grub/tpm.h>
  #include <grub/term.h>
@@ -36,7 +32,7 @@ Index: grub-2.12/grub-core/commands/efi/tpm.c
  typedef TCG_PCR_EVENT grub_tpm_event_t;
  
  static grub_guid_t tpm_guid = EFI_TPM_GUID;
-@@ -186,6 +188,91 @@ grub_tpm1_log_event (grub_efi_handle_t t
+@@ -189,6 +191,91 @@
    return grub_efi_log_event_status (status);
  }
  
@@ -128,9 +124,9 @@ Index: grub-2.12/grub-core/commands/efi/tpm.c
  static grub_err_t
  grub_tpm2_log_event (grub_efi_handle_t tpm_handle, unsigned char *buf,
  		     grub_size_t size, grub_uint8_t pcr,
-@@ -323,3 +410,26 @@ grub_tpm_present (void)
-       return grub_tpm2_present (tpm);
-     }
+@@ -381,3 +468,26 @@
+ 
+   return (grub_uint32_t) (tpm2_active_pcr_banks = active_pcr_banks);
  }
 +
 +struct grub_tpm_digest *
@@ -155,11 +151,9 @@ Index: grub-2.12/grub-core/commands/efi/tpm.c
 +
 +  return result;
 +}
-Index: grub-2.12/grub-core/Makefile.core.def
-===================================================================
---- grub-2.12.orig/grub-core/Makefile.core.def
-+++ grub-2.12/grub-core/Makefile.core.def
-@@ -2606,6 +2606,7 @@ module = {
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -2690,6 +2690,7 @@
    common = commands/tpm.c;
    efi = commands/efi/tpm.c;
    enable = efi;

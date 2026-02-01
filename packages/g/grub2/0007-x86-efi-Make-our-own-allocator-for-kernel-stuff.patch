@@ -10,11 +10,9 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  grub-core/loader/i386/efi/linux.c | 155 ++++++++++++++++++------------
  1 file changed, 94 insertions(+), 61 deletions(-)
 
-diff --git a/grub-core/loader/i386/efi/linux.c b/grub-core/loader/i386/efi/linux.c
-index 096a52eb5..d284db5d1 100644
 --- a/grub-core/loader/i386/efi/linux.c
 +++ b/grub-core/loader/i386/efi/linux.c
-@@ -47,6 +47,65 @@ static char *linux_cmdline;
+@@ -47,6 +47,65 @@
  
  #define BYTES_TO_PAGES(bytes)   (((bytes) + 0xfff) >> 12)
  
@@ -80,7 +78,7 @@ index 096a52eb5..d284db5d1 100644
  static grub_err_t
  grub_linuxefi_boot (void)
  {
-@@ -62,14 +121,12 @@ grub_linuxefi_unload (void)
+@@ -62,14 +121,12 @@
  {
    grub_dl_unref (my_mod);
    loaded = 0;
@@ -93,15 +91,15 @@ index 096a52eb5..d284db5d1 100644
 -  if (params)
 -    grub_efi_free_pages((grub_efi_physical_address_t)(grub_addr_t)params, BYTES_TO_PAGES(16384));
 +
-+  kernel_free(initrd_mem, params->ramdisk_size);
-+  kernel_free(linux_cmdline, params->cmdline_size + 1);
++  kernel_free(initrd_mem, params->hdr.ramdisk_size);
++  kernel_free(linux_cmdline, params->hdr.cmdline_size + 1);
 +  kernel_free(kernel_mem, kernel_size);
 +  kernel_free(params, sizeof(*params));
 +
    return GRUB_ERR_NONE;
  }
  
-@@ -146,17 +203,13 @@ grub_cmd_initrd (grub_command_t cmd __attribute__ ((unused)),
+@@ -146,17 +203,13 @@
        size += ALIGN_UP (grub_file_size (files[i]), 4);
      }
  
@@ -124,7 +122,7 @@ index 096a52eb5..d284db5d1 100644
  
    ptr = initrd_mem;
  
-@@ -214,7 +267,6 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+@@ -214,7 +267,6 @@
    filelen = grub_file_size (file);
  
    kernel = grub_malloc(filelen);
@@ -132,7 +130,7 @@ index 096a52eb5..d284db5d1 100644
    if (!kernel)
      {
        grub_error (GRUB_ERR_OUT_OF_MEMORY, N_("cannot allocate kernel buffer"));
-@@ -258,7 +310,7 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+@@ -258,7 +310,7 @@
        goto fail;
      }
  
@@ -141,7 +139,7 @@ index 096a52eb5..d284db5d1 100644
    grub_dprintf ("linux", "checking lh->xloadflags\n");
    if (!(lh->xloadflags & LINUX_XLF_KERNEL_64))
      {
-@@ -277,17 +329,9 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+@@ -277,17 +329,9 @@
      }
  #endif
  
@@ -161,17 +159,17 @@ index 096a52eb5..d284db5d1 100644
    grub_dprintf ("linux", "params = %p\n", params);
  
    grub_memset (params, 0, sizeof(*params));
-@@ -306,16 +350,10 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+@@ -306,16 +350,10 @@
    grub_dprintf ("linux", "new lh is at %p\n", lh);
  
    grub_dprintf ("linux", "setting up cmdline\n");
 -  linux_cmdline = grub_efi_allocate_pages_max(GRUB_EFI_MAX_ALLOCATION_ADDRESS,
 -					      BYTES_TO_PAGES(lh->cmdline_size + 1));
-+  linux_cmdline = kernel_alloc (lh->cmdline_size + 1, N_("can't allocate cmdline"));
-   if (!linux_cmdline)
+-  if (!linux_cmdline)
 -    linux_cmdline = grub_efi_allocate_pages_max(GRUB_EFI_MAX_USABLE_ADDRESS,
 -						BYTES_TO_PAGES(lh->cmdline_size + 1));
--  if (!linux_cmdline)
++  linux_cmdline = kernel_alloc (lh->cmdline_size + 1, N_("can't allocate cmdline"));
+   if (!linux_cmdline)
 -    {
 -      grub_error (GRUB_ERR_OUT_OF_MEMORY, N_("can't allocate cmdline"));
 -      goto fail;
@@ -181,7 +179,7 @@ index 096a52eb5..d284db5d1 100644
  
    grub_memcpy (linux_cmdline, LINUX_IMAGE, sizeof (LINUX_IMAGE));
    err = grub_create_loader_cmdline (argc, argv,
-@@ -326,27 +364,24 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+@@ -326,27 +364,24 @@
      goto fail;
  
    grub_dprintf ("linux", "cmdline:%s\n", linux_cmdline);
@@ -220,7 +218,7 @@ index 096a52eb5..d284db5d1 100644
    grub_dprintf("linux", "kernel_mem = %p\n", kernel_mem);
  
    grub_loader_set (grub_linuxefi_boot, grub_linuxefi_unload, 0);
-@@ -382,16 +417,14 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+@@ -382,16 +417,14 @@
        loaded = 0;
      }
  
@@ -244,6 +242,3 @@ index 096a52eb5..d284db5d1 100644
  
    return grub_errno;
  }
--- 
-2.31.1
-

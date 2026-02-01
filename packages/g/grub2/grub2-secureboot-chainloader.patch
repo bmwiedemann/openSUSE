@@ -26,7 +26,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 
 --- a/grub-core/loader/efi/chainloader.c
 +++ b/grub-core/loader/efi/chainloader.c
-@@ -41,10 +41,24 @@
+@@ -42,10 +42,24 @@
  #include <grub/i386/macho.h>
  #endif
  
@@ -51,7 +51,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  static grub_err_t
  grub_chainloader_unload (void *context)
  {
-@@ -209,6 +223,421 @@
+@@ -207,6 +221,421 @@
    return file_path;
  }
  
@@ -473,7 +473,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  static grub_err_t
  grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),
  		      int argc, char *argv[])
-@@ -222,11 +651,12 @@
+@@ -220,11 +649,12 @@
    grub_efi_loaded_image_t *loaded_image;
    char *filename;
    void *boot_image = 0;
@@ -487,7 +487,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  
    if (argc == 0)
      return grub_error (GRUB_ERR_BAD_ARGUMENT, N_("filename expected"));
-@@ -236,12 +666,39 @@
+@@ -234,12 +664,39 @@
  
    b = grub_efi_system_table->boot_services;
  
@@ -529,7 +529,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
    if (dev == NULL)
      ;
    else if (dev->disk)
-@@ -343,6 +800,28 @@
+@@ -338,6 +795,28 @@
      }
  #endif
  
@@ -555,10 +555,10 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +    }
 +#endif
 +
-   status = b->load_image (0, grub_efi_image_handle, file_path,
- 			  boot_image, size,
- 			  &image_handle);
-@@ -368,33 +847,10 @@
+   image_handle = grub_efi_get_last_verified_image_handle ();
+   if (image_handle == NULL)
+     {
+@@ -366,33 +845,10 @@
    loaded_image->device_handle = dev_handle;
  
    /* Build load options with arguments from chainloader command line. */

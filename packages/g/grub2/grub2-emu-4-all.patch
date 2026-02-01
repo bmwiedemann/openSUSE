@@ -7,7 +7,7 @@
 
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
-@@ -377,7 +377,7 @@
+@@ -408,7 +408,7 @@
    ldadd = grub-core/lib/gnulib/libgnu.a;
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
    cppflags = '-DGRUB_SETUP_FUNC=grub_util_bios_setup';
@@ -16,7 +16,7 @@
  };
  
  program = {
-@@ -398,7 +398,7 @@
+@@ -429,7 +429,7 @@
    ldadd = grub-core/lib/gnulib/libgnu.a;
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
    cppflags = '-DGRUB_SETUP_FUNC=grub_util_sparc_setup';
@@ -25,8 +25,8 @@
  };
  
  program = {
-@@ -414,7 +414,7 @@
-   ldadd = libgrubkern.a;
+@@ -445,7 +445,7 @@
+   ldadd = libgrubgcry.a;
    ldadd = grub-core/lib/gnulib/libgnu.a;
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
 -  emu_condition = COND_NOT_s390x;
@@ -34,8 +34,8 @@
  };
  
  program = {
-@@ -445,7 +445,7 @@
-   ldadd = libgrubkern.a;
+@@ -476,7 +476,7 @@
+   ldadd = libgrubgcry.a;
    ldadd = grub-core/lib/gnulib/libgnu.a;
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
 -  emu_condition = COND_NOT_s390x;
@@ -43,8 +43,8 @@
  };
  
  data = {
-@@ -1420,7 +1420,7 @@
-   ldadd = libgrubkern.a;
+@@ -1475,7 +1475,7 @@
+   ldadd = libgrubgcry.a;
    ldadd = grub-core/lib/gnulib/libgnu.a;
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
 -  emu_condition = COND_NOT_s390x;
@@ -54,7 +54,7 @@
  program = {
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -1183,7 +1183,7 @@
+@@ -1225,7 +1225,7 @@
  module = {
    name = videotest;
    common = commands/videotest.c;
@@ -63,7 +63,7 @@
  };
  
  module = {
-@@ -1638,7 +1638,7 @@
+@@ -1691,7 +1691,7 @@
    common = gfxmenu/gui_progress_bar.c;
    common = gfxmenu/gui_util.c;
    common = gfxmenu/gui_string_util.c;
@@ -72,7 +72,7 @@
  };
  
  module = {
-@@ -2077,13 +2077,13 @@
+@@ -2137,13 +2137,13 @@
    name = gfxterm;
    common = term/gfxterm.c;
    enable = videomodules;
@@ -88,7 +88,7 @@
  };
  
  module = {
-@@ -2204,9 +2204,7 @@
+@@ -2293,9 +2293,7 @@
    enable = i386_xen_pvh;
    enable = i386_efi;
    enable = x86_64_efi;
@@ -98,7 +98,7 @@
  };
  
  module = {
-@@ -2253,7 +2251,7 @@
+@@ -2346,7 +2344,7 @@
  module = {
    name = gfxterm_menu;
    common = tests/gfxterm_menu.c;
@@ -107,7 +107,7 @@
  };
  
  module = {
-@@ -2413,9 +2411,7 @@
+@@ -2507,9 +2505,7 @@
    enable = i386_xen_pvh;
    enable = i386_efi;
    enable = x86_64_efi;
@@ -119,7 +119,7 @@
  module = {
 --- a/configure.ac
 +++ b/configure.ac
-@@ -2061,6 +2061,7 @@
+@@ -2419,6 +2419,7 @@
  
  AM_CONDITIONAL([COND_real_platform], [test x$platform != xnone])
  AM_CONDITIONAL([COND_emu], [test x$platform = xemu])

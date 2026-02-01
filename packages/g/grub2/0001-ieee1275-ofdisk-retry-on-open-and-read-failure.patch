@@ -22,19 +22,17 @@ Signed-off-by: Mukesh Kumar Chaurasiya <mchauras@linux.ibm.com>
  grub-core/disk/ieee1275/ofdisk.c | 80 +++++++++++++++++++++++++++++++-
  2 files changed, 86 insertions(+), 2 deletions(-)
 
-diff --git a/docs/grub.texi b/docs/grub.texi
-index d3f0f6577..c8ebc083d 100644
 --- a/docs/grub.texi
 +++ b/docs/grub.texi
-@@ -3315,6 +3315,7 @@ These variables have special meaning to GRUB.
+@@ -3323,6 +3323,7 @@
  * net_default_ip::
  * net_default_mac::
  * net_default_server::
 +* ofdisk_retry_timeout::
  * pager::
  * prefix::
- * pxe_blksize::
-@@ -3744,6 +3745,13 @@ The default is the value of @samp{color_normal} (@pxref{color_normal}).
+ * pxe_default_server::
+@@ -3783,6 +3784,13 @@
  @xref{Network}.
  
  
@@ -48,21 +46,19 @@ index d3f0f6577..c8ebc083d 100644
  @node pager
  @subsection pager
  
-diff --git a/grub-core/disk/ieee1275/ofdisk.c b/grub-core/disk/ieee1275/ofdisk.c
-index 7197d5401..f96bbb58c 100644
 --- a/grub-core/disk/ieee1275/ofdisk.c
 +++ b/grub-core/disk/ieee1275/ofdisk.c
-@@ -24,6 +24,9 @@
- #include <grub/ieee1275/ofdisk.h>
+@@ -25,6 +25,9 @@
  #include <grub/i18n.h>
  #include <grub/time.h>
+ #include <grub/safemath.h>
 +#include <grub/env.h>
 +
 +#define RETRY_DEFAULT_TIMEOUT 15
  
  static char *last_devpath;
  static grub_ieee1275_ihandle_t last_ihandle;
-@@ -783,7 +786,7 @@ compute_dev_path (const char *name)
+@@ -822,7 +825,7 @@
  }
  
  static grub_err_t
@@ -71,7 +67,7 @@ index 7197d5401..f96bbb58c 100644
  {
    grub_ieee1275_phandle_t dev;
    char *devpath;
-@@ -879,6 +882,56 @@ grub_ofdisk_open (const char *name, grub_disk_t disk)
+@@ -918,6 +921,56 @@
    return 0;
  }
  
@@ -128,7 +124,7 @@ index 7197d5401..f96bbb58c 100644
  static void
  grub_ofdisk_close (grub_disk_t disk)
  {
-@@ -915,7 +968,7 @@ grub_ofdisk_prepare (grub_disk_t disk, grub_disk_addr_t sector)
+@@ -954,7 +1007,7 @@
  }
  
  static grub_err_t
@@ -137,11 +133,10 @@ index 7197d5401..f96bbb58c 100644
  		  grub_size_t size, char *buf)
  {
    grub_err_t err;
-@@ -934,6 +987,29 @@ grub_ofdisk_read (grub_disk_t disk, grub_disk_addr_t sector,
-   return 0;
+@@ -974,6 +1027,29 @@
  }
  
-+static grub_err_t
+ static grub_err_t
 +grub_ofdisk_read (grub_disk_t disk, grub_disk_addr_t sector,
 +		  grub_size_t size, char *buf)
 +{
@@ -164,9 +159,7 @@ index 7197d5401..f96bbb58c 100644
 +  return err;
 +}
 +
- static grub_err_t
++static grub_err_t
  grub_ofdisk_write (grub_disk_t disk, grub_disk_addr_t sector,
  		   grub_size_t size, const char *buf)
--- 
-2.41.0
-
+ {

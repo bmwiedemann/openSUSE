@@ -76,7 +76,7 @@ V20:
 
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
-@@ -377,6 +377,7 @@
+@@ -408,6 +408,7 @@
    ldadd = grub-core/lib/gnulib/libgnu.a;
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
    cppflags = '-DGRUB_SETUP_FUNC=grub_util_bios_setup';
@@ -84,7 +84,7 @@ V20:
  };
  
  program = {
-@@ -397,6 +398,7 @@
+@@ -428,6 +429,7 @@
    ldadd = grub-core/lib/gnulib/libgnu.a;
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
    cppflags = '-DGRUB_SETUP_FUNC=grub_util_sparc_setup';
@@ -92,23 +92,23 @@ V20:
  };
  
  program = {
-@@ -412,6 +414,7 @@
-   ldadd = libgrubkern.a;
+@@ -443,6 +445,7 @@
+   ldadd = libgrubgcry.a;
    ldadd = grub-core/lib/gnulib/libgnu.a;
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
 +  emu_condition = COND_NOT_s390x;
  };
  
  program = {
-@@ -442,6 +445,7 @@
-   ldadd = libgrubkern.a;
+@@ -473,6 +476,7 @@
+   ldadd = libgrubgcry.a;
    ldadd = grub-core/lib/gnulib/libgnu.a;
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
 +  emu_condition = COND_NOT_s390x;
  };
  
  data = {
-@@ -665,6 +669,7 @@
+@@ -696,6 +700,7 @@
    common = grub-core/disk/host.c;
  
    common = util/resolve.c;
@@ -116,7 +116,7 @@ V20:
    common = grub-core/kern/emu/argp_common.c;
    common = grub-core/osdep/init.c;
  
-@@ -734,6 +739,46 @@
+@@ -765,6 +770,46 @@
  };
  
  script = {
@@ -163,8 +163,8 @@ V20:
    name = grub-mkconfig_lib;
    common = util/grub-mkconfig_lib.in;
    installdir = noinst;
-@@ -1381,6 +1426,7 @@
-   ldadd = libgrubkern.a;
+@@ -1430,6 +1475,7 @@
+   ldadd = libgrubgcry.a;
    ldadd = grub-core/lib/gnulib/libgnu.a;
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
 +  emu_condition = COND_NOT_s390x;
@@ -173,7 +173,7 @@ V20:
  program = {
 --- a/configure.ac
 +++ b/configure.ac
-@@ -211,9 +211,9 @@
+@@ -212,9 +212,9 @@
     esac
  fi
  
@@ -186,7 +186,7 @@ V20:
  
  case "$target_os" in
    windows* | mingw32*) target_os=cygwin ;;
-@@ -2158,6 +2158,9 @@
+@@ -2451,6 +2451,9 @@
  AM_CONDITIONAL([COND_sparc64_emu], [test x$target_cpu = xsparc64 -a x$platform = xemu])
  AM_CONDITIONAL([COND_x86_64_efi], [test x$target_cpu = xx86_64 -a x$platform = xefi])
  AM_CONDITIONAL([COND_x86_64_xen], [test x$target_cpu = xx86_64 -a x$platform = xxen])
@@ -198,7 +198,7 @@ V20:
  AM_CONDITIONAL([COND_HOST_LINUX], [test x$host_kernel = xlinux])
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -1186,6 +1186,7 @@
+@@ -1225,6 +1225,7 @@
  module = {
    name = videotest;
    common = commands/videotest.c;
@@ -206,7 +206,7 @@ V20:
  };
  
  module = {
-@@ -1640,6 +1641,7 @@
+@@ -1690,6 +1691,7 @@
    common = gfxmenu/gui_progress_bar.c;
    common = gfxmenu/gui_util.c;
    common = gfxmenu/gui_string_util.c;
@@ -214,7 +214,7 @@ V20:
  };
  
  module = {
-@@ -2078,11 +2080,13 @@
+@@ -2135,11 +2137,13 @@
    name = gfxterm;
    common = term/gfxterm.c;
    enable = videomodules;
@@ -228,7 +228,7 @@ V20:
  };
  
  module = {
-@@ -2205,6 +2209,7 @@
+@@ -2291,6 +2295,7 @@
    enable = x86_64_efi;
    enable = emu;
    enable = xen;
@@ -236,7 +236,7 @@ V20:
  };
  
  module = {
-@@ -2251,6 +2256,7 @@
+@@ -2341,6 +2346,7 @@
  module = {
    name = gfxterm_menu;
    common = tests/gfxterm_menu.c;
@@ -244,7 +244,7 @@ V20:
  };
  
  module = {
-@@ -2412,6 +2418,7 @@
+@@ -2503,6 +2509,7 @@
    enable = x86_64_efi;
    enable = emu;
    enable = xen;
@@ -296,7 +296,7 @@ V20:
 +}
 --- a/include/grub/util/install.h
 +++ b/include/grub/util/install.h
-@@ -110,6 +110,7 @@
+@@ -116,6 +116,7 @@
      GRUB_INSTALL_PLATFORM_LOONGARCH64_EFI,
      GRUB_INSTALL_PLATFORM_RISCV32_EFI,
      GRUB_INSTALL_PLATFORM_RISCV64_EFI,
@@ -304,7 +304,7 @@ V20:
      GRUB_INSTALL_PLATFORM_MAX
    };
  
-@@ -237,6 +238,9 @@
+@@ -247,6 +248,9 @@
  grub_install_sgi_setup (const char *install_device,
  			const char *imgfile, const char *destname);
  
@@ -316,7 +316,7 @@ V20:
  int
 --- a/util/grub-install-common.c
 +++ b/util/grub-install-common.c
-@@ -924,6 +924,7 @@
+@@ -957,6 +957,7 @@
      [GRUB_INSTALL_PLATFORM_LOONGARCH64_EFI] =  { "loongarch64", "efi"       },
      [GRUB_INSTALL_PLATFORM_RISCV32_EFI] =      { "riscv32",     "efi"       },
      [GRUB_INSTALL_PLATFORM_RISCV64_EFI] =      { "riscv64",     "efi"       },
@@ -1274,3 +1274,16 @@ V20:
 +  EXIT="  # done"
 +fi
 +exit $ret
+--- a/util/grub-editenv.c
++++ b/util/grub-editenv.c
+@@ -568,6 +568,10 @@
+   grub_fs_t grub_fs = NULL;
+   bool have_abstraction = false;
+ 
++#ifdef __s390x__
++  return;
++#endif
++
+   grub_util_biosdisk_init (DEFAULT_DEVICE_MAP);
+   grub_init_all ();
+   grub_gcry_init_all ();

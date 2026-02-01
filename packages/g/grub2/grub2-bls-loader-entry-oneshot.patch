@@ -1,10 +1,8 @@
 Add support for LoaderEntryOneshot EFI variable
 
-Index: grub-2.12/grub-core/normal/menu.c
-===================================================================
---- grub-2.12.orig/grub-core/normal/menu.c
-+++ grub-2.12/grub-core/normal/menu.c
-@@ -36,6 +36,16 @@
+--- a/grub-core/normal/menu.c
++++ b/grub-core/normal/menu.c
+@@ -37,6 +37,16 @@
  #ifdef GRUB_MACHINE_IEEE1275
  #include <grub/ieee1275/ieee1275.h>
  #endif
@@ -21,7 +19,7 @@ Index: grub-2.12/grub-core/normal/menu.c
  
  /* Time to delay after displaying an error message about a default/fallback
     entry failing to boot.  */
-@@ -562,6 +572,62 @@ menuentry_eq (const char *id, const char
+@@ -563,6 +573,62 @@
      }
  }
  
@@ -49,7 +47,7 @@ Index: grub-2.12/grub-core/normal/menu.c
 +		break;
 +	  }
 +
-+	if (e->bls)
++	if (e->blsuki)
 +	  {
 +		char *v, *ext;
 +
@@ -84,7 +82,7 @@ Index: grub-2.12/grub-core/normal/menu.c
  
  /* Get the entry number from the variable NAME.  */
  static int
-@@ -580,53 +646,7 @@ get_entry_number (grub_menu_t menu, cons
+@@ -581,53 +647,7 @@
  
    if (grub_errno == GRUB_ERR_BAD_NUMBER)
      {
@@ -139,7 +137,7 @@ Index: grub-2.12/grub-core/normal/menu.c
      }
  
    if (grub_errno != GRUB_ERR_NONE)
-@@ -724,6 +744,45 @@ run_menu (grub_menu_t menu, int nested,
+@@ -725,6 +745,45 @@
  
    default_entry = get_entry_number (menu, "default");
  

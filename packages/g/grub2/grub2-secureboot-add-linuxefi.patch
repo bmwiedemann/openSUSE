@@ -33,7 +33,7 @@ consequence.
 
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -1920,6 +1920,13 @@
+@@ -1977,6 +1977,13 @@
  };
  
  module = {
@@ -49,7 +49,7 @@ consequence.
    i386_pc = loader/i386/pc/chainloader.c;
 --- a/grub-core/kern/efi/mm.c
 +++ b/grub-core/kern/efi/mm.c
-@@ -112,6 +112,38 @@
+@@ -114,6 +114,38 @@
      }
  }
  
@@ -234,7 +234,7 @@ consequence.
 +      ptr += ALIGN_UP_OVERHEAD (cursize, 4);
 +    }
 +
-+  params->ramdisk_size = size;
++  params->hdr.ramdisk_size = size;
 +
 + fail:
 +  for (i = 0; i < nfiles; i++)

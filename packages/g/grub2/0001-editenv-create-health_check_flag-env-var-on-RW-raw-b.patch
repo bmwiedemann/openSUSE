@@ -1,0 +1,27 @@
+From ad40cc47948a351a77bd0aa35286e1f1e66cc39f Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 24 Nov 2025 15:27:28 +0800
+Subject: [PATCH] editenv: create health_check_flag env var on RW raw block
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ util/grub-editenv.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/util/grub-editenv.c b/util/grub-editenv.c
+index ddecfab48..16ab32798 100644
+--- a/util/grub-editenv.c
++++ b/util/grub-editenv.c
+@@ -468,7 +468,8 @@ set_variables (const char *name, int argc, char *argv[])
+ 
+       *(p++) = 0;
+ 
+-      if ((strcmp (argv[0], "next_entry") == 0) && envblk_on_block != NULL)
++      if ((strcmp (argv[0], "next_entry") == 0 ||
++	  strcmp (argv[0], "health_checker_flag") == 0) && envblk_on_block != NULL)
+ 	{
+ 	  if (grub_envblk_set (envblk_on_block, argv[0], p) == 0)
+ 	    grub_util_error ("%s", _("environment block too small"));
+-- 
+2.51.1
+

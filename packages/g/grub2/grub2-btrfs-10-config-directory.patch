@@ -8,7 +8,7 @@ return code handling.
 
 --- a/grub-core/fs/btrfs.c
 +++ b/grub-core/fs/btrfs.c
-@@ -3260,8 +3260,7 @@
+@@ -3297,8 +3297,7 @@
  }
  
  static grub_err_t
@@ -18,7 +18,7 @@ return code handling.
  {
    char *devname;
    grub_device_t dev;
-@@ -3270,21 +3269,8 @@
+@@ -3307,21 +3306,8 @@
    grub_uint64_t id;
    char *subvol = NULL;
    grub_uint64_t subvolid = 0;
@@ -41,7 +41,7 @@ return code handling.
    dev = grub_device_open (devname);
    grub_free (devname);
    if (!dev)
-@@ -3295,8 +3281,7 @@
+@@ -3332,8 +3318,7 @@
      {
        grub_device_close (dev);
        grub_dprintf ("btrfs", "failed to open fs\n");
@@ -51,7 +51,7 @@ return code handling.
      }
  
    err = grub_btrfs_get_default_subvolume_id (data, &subvolid);
-@@ -3325,12 +3310,47 @@
+@@ -3362,12 +3347,47 @@
  	  return err;
  	}
  
@@ -101,7 +101,7 @@ return code handling.
    if (num_only && path_only)
        output = grub_xasprintf ("%"PRIuGRUB_UINT64_T" /%s", subvolid, subvol);
    else if (num_only)
-@@ -3346,9 +3366,6 @@
+@@ -3383,9 +3403,6 @@
    grub_free (output);
    grub_free (subvol);
  
@@ -111,7 +111,7 @@ return code handling.
    return GRUB_ERR_NONE;
  }
  
-@@ -3427,6 +3444,122 @@
+@@ -3464,6 +3481,122 @@
      return "";
  }
  
@@ -233,8 +233,8 @@ return code handling.
 +
  GRUB_MOD_INIT (btrfs)
  {
-   grub_fs_register (&grub_btrfs_fs);
-@@ -3450,6 +3583,8 @@
+   grub_btrfs_fs.mod = mod;
+@@ -3488,6 +3621,8 @@
                                 subvol_set_env);
    grub_register_variable_hook ("btrfs_subvolid", subvolid_get_env,
                                 subvolid_set_env);
@@ -243,7 +243,7 @@ return code handling.
    grub_env_export ("btrfs_subvol");
    grub_env_export ("btrfs_subvolid");
    grub_env_export ("btrfs_relative_path");
-@@ -3459,6 +3594,7 @@
+@@ -3497,6 +3632,7 @@
  {
    grub_register_variable_hook ("btrfs_subvol", NULL, NULL);
    grub_register_variable_hook ("btrfs_subvolid", NULL, NULL);

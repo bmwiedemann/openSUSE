@@ -61,10 +61,10 @@ v4:
    if (err)
        return grub_error(GRUB_ERR_FILE_NOT_FOUND, "couldn't locate %s\n", path);
  
-@@ -2323,11 +2347,20 @@
-   grub_uint64_t tree;
+@@ -2342,11 +2366,20 @@
    grub_uint8_t type;
    grub_size_t est_size = 0;
+   grub_size_t sz;
 +  char *new_path = NULL;
  
    if (!data)
@@ -83,7 +83,7 @@ v4:
    if (err)
      {
        grub_btrfs_unmount (data);
-@@ -2454,11 +2487,21 @@
+@@ -2480,11 +2513,21 @@
    struct grub_btrfs_inode inode;
    grub_uint8_t type;
    struct grub_btrfs_key key_in;
@@ -106,7 +106,7 @@ v4:
    if (err)
      {
        grub_btrfs_unmount (data);
-@@ -2693,6 +2736,150 @@
+@@ -2728,6 +2771,150 @@
    return 0;
  }
  
@@ -257,7 +257,7 @@ v4:
  static grub_err_t
  get_fs_root(struct grub_btrfs_data *data, grub_uint64_t tree,
              grub_uint64_t objectid, grub_uint64_t offset,
-@@ -2905,6 +3092,7 @@
+@@ -2940,6 +3127,7 @@
  };
  
  static grub_command_t cmd_info;
@@ -265,7 +265,7 @@ v4:
  static grub_extcmd_t cmd_list_subvols;
  
  static char *
-@@ -2968,6 +3156,9 @@
+@@ -3004,6 +3192,9 @@
    cmd_info = grub_register_command("btrfs-info", grub_cmd_btrfs_info,
  				   "DEVICE",
  				   "Print BtrFS info about DEVICE.");
@@ -292,7 +292,7 @@ v4:
  struct btrfs_ioctl_search_args {
    struct btrfs_ioctl_search_key key;
    grub_uint64_t buf[(4096 - sizeof(struct btrfs_ioctl_search_key))
-@@ -375,6 +383,117 @@
+@@ -377,6 +385,117 @@
  
  int use_relative_path_on_btrfs = 0;
  
@@ -410,7 +410,7 @@ v4:
  char **
  grub_find_root_devices_from_mountinfo (const char *dir, char **relroot)
  {
-@@ -516,12 +635,17 @@
+@@ -521,12 +640,17 @@
        else if (grub_strcmp (entries[i].fstype, "btrfs") == 0)
  	{
  	  ret = grub_find_root_devices_from_btrfs (dir);
@@ -431,9 +431,9 @@ v4:
  	    }
  	}
        else if (!retry && grub_strcmp (entries[i].fstype, "autofs") == 0)
-@@ -1202,6 +1326,24 @@
-   return grub_dev;
+@@ -1213,6 +1337,24 @@
  }
+ #endif
  
 +
 +char *

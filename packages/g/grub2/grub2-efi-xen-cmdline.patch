@@ -1,9 +1,9 @@
 --- a/util/grub-mkconfig.in
 +++ b/util/grub-mkconfig.in
-@@ -298,7 +298,8 @@
-   GRUB_BADRAM \
+@@ -300,7 +300,8 @@
    GRUB_OS_PROBER_SKIP_LIST \
    GRUB_DISABLE_SUBMENU \
+   GRUB_FORCE_EFI_ALL_VIDEO \
 -  SUSE_BTRFS_SNAPSHOT_BOOTING
 +  SUSE_BTRFS_SNAPSHOT_BOOTING \
 +  SUSE_CMDLINE_XENEFI

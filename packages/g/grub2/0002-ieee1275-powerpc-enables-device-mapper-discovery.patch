@@ -29,7 +29,7 @@ Fix gcc-12 error: pointer 'device_path' may be used after 'free'
  
  #ifdef __sparc__
  typedef enum
-@@ -754,13 +755,74 @@
+@@ -757,13 +758,74 @@
    return new;
  }
  
@@ -90,8 +90,8 @@ Fix gcc-12 error: pointer 'device_path' may be used after 'free'
  char *
  grub_util_devname_to_ofpath (const char *sys_devname)
  {
--  char *name_buf, *device, *devnode, *devicenode, *ofpath;
-+  char *name_buf, *device, *devnode, *devicenode, *ofpath, *realname;
+-  char *name_buf, *device, *devnode, *devicenode, *ofpath = NULL;
++  char *name_buf, *device, *devnode, *devicenode, *ofpath = NULL, *realname;
  
    name_buf = xrealpath (sys_devname);
  
@@ -104,4 +104,4 @@ Fix gcc-12 error: pointer 'device_path' may be used after 'free'
 +
    device = get_basename (name_buf);
    devnode = strip_trailing_digits (name_buf);
-   devicenode = strip_trailing_digits (device);
+   if (devnode == NULL)

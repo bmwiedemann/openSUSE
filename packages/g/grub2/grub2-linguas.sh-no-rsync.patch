@@ -4,12 +4,11 @@ Subject: disable rsync to make it possible to use in RPM build
 We need to create po/LINGUAS to generate message catalogs. Use
 linguas.sh to ensure we always use the same rules as upstream, but
 disable rsync.
-Index: grub-2.02~rc2/linguas.sh
-===================================================================
---- grub-2.02~rc2.orig/linguas.sh
-+++ grub-2.02~rc2/linguas.sh
-@@ -1,8 +1,8 @@
- #!/bin/sh
+--- a/linguas.sh
++++ b/linguas.sh
+@@ -5,9 +5,9 @@
+ 
+ cd "$SDIR"
  
 -rsync -Lrtvz translationproject.org::tp/latest/grub/ po
 +#rsync -Lrtvz translationproject.org::tp/latest/grub/ po

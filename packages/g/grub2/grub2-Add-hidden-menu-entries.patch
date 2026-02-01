@@ -33,17 +33,17 @@ v2 -> v3:
  	    args[0] = oldname;
  	    grub_normal_add_menu_entry (1, args, NULL, NULL, "legacy",
  					NULL, NULL,
--					entrysrc, 0);
-+					entrysrc, 0, 0);
+-					entrysrc, 0, NULL);
++					entrysrc, 0, NULL, 0);
  	    grub_free (args);
  	    entrysrc[0] = 0;
  	    grub_free (oldname);
-@@ -205,7 +205,7 @@
+@@ -204,7 +204,7 @@
  	}
        args[0] = entryname;
        grub_normal_add_menu_entry (1, args, NULL, NULL, NULL,
--				  NULL, NULL, entrysrc, 0);
-+				  NULL, NULL, entrysrc, 0, 0);
+-				  NULL, NULL, entrysrc, 0, NULL);
++				  NULL, NULL, entrysrc, 0, NULL, 0);
        grub_free (args);
      }
  
@@ -53,15 +53,15 @@ v2 -> v3:
  			    char **classes, const char *id,
  			    const char *users, const char *hotkey,
  			    const char *prefix, const char *sourcecode,
--			    int submenu)
-+			    int submenu, int hidden)
+-			    int submenu, grub_blsuki_entry_t *blsuki)
++			    int submenu, grub_blsuki_entry_t *blsuki, int hidden)
  {
    int menu_hotkey = 0;
    char **menu_args = NULL;
-@@ -188,8 +188,11 @@
-   (*last)->args = menu_args;
+@@ -189,8 +189,11 @@
    (*last)->sourcecode = menu_sourcecode;
    (*last)->submenu = submenu;
+   (*last)->blsuki = blsuki;
 +  (*last)->hidden = hidden;
 +
 +  if (!hidden)
@@ -71,27 +71,27 @@ v2 -> v3:
    return GRUB_ERR_NONE;
  
   fail:
-@@ -286,7 +289,8 @@
- 				       users,
+@@ -291,7 +294,8 @@
  				       ctxt->state[2].arg, 0,
  				       ctxt->state[3].arg,
--				       ctxt->extcmd->cmd->name[0] == 's');
-+				       ctxt->extcmd->cmd->name[0] == 's',
+ 				       ctxt->extcmd->cmd->name[0] == 's',
+-				       NULL);
++				       NULL,
 +				       ctxt->extcmd->cmd->name[0] == 'h');
  
    src = args[argc - 1];
    args[argc - 1] = NULL;
-@@ -303,7 +307,8 @@
+@@ -308,7 +312,8 @@
  				  ctxt->state[0].args, ctxt->state[4].arg,
  				  users,
  				  ctxt->state[2].arg, prefix, src + 1,
--				  ctxt->extcmd->cmd->name[0] == 's');
-+				  ctxt->extcmd->cmd->name[0] == 's',
+-				  ctxt->extcmd->cmd->name[0] == 's', NULL);
++				  ctxt->extcmd->cmd->name[0] == 's', NULL,
 +				  ctxt->extcmd->cmd->name[0] == 'h');
  
    src[len - 1] = ch;
    args[argc - 1] = src;
-@@ -311,7 +316,7 @@
+@@ -316,7 +321,7 @@
    return r;
  }
  
@@ -100,7 +100,7 @@ v2 -> v3:
  
  void
  grub_menu_init (void)
-@@ -327,6 +332,13 @@
+@@ -332,6 +337,13 @@
  				  | GRUB_COMMAND_FLAG_EXTRACTOR,
  				  N_("BLOCK"), N_("Define a submenu."),
  				  options);
@@ -116,7 +116,7 @@ v2 -> v3:
  void
 --- a/grub-core/normal/menu.c
 +++ b/grub-core/normal/menu.c
-@@ -40,6 +40,8 @@
+@@ -41,6 +41,8 @@
  grub_err_t (*grub_gfxmenu_try_hook) (int entry, grub_menu_t menu,
  				     int nested) = NULL;
  
@@ -125,7 +125,7 @@ v2 -> v3:
  enum timeout_style {
    TIMEOUT_STYLE_MENU,
    TIMEOUT_STYLE_COUNTDOWN,
-@@ -80,8 +82,20 @@
+@@ -81,8 +83,20 @@
  {
    grub_menu_entry_t e;
  
@@ -148,7 +148,7 @@ v2 -> v3:
  
    return e;
  }
-@@ -93,10 +107,10 @@
+@@ -94,10 +108,10 @@
    grub_menu_entry_t entry;
    int i;
  
@@ -161,7 +161,7 @@ v2 -> v3:
  
    return -1;
  }
-@@ -519,6 +533,10 @@
+@@ -520,6 +534,10 @@
        grub_menu_entry_t e = menu->entry_list;
        int i;
  
@@ -172,7 +172,7 @@ v2 -> v3:
        grub_errno = GRUB_ERR_NONE;
  
        for (i = 0; e; i++)
-@@ -530,6 +548,10 @@
+@@ -531,6 +549,10 @@
  	      break;
  	    }
  	  e = e->next;
@@ -185,7 +185,7 @@ v2 -> v3:
        if (! e)
 --- a/grub-core/normal/menu_text.c
 +++ b/grub-core/normal/menu_text.c
-@@ -318,6 +318,10 @@
+@@ -321,6 +321,10 @@
  		   e, data);
        if (e)
  	e = e->next;
@@ -198,7 +198,7 @@ v2 -> v3:
    grub_term_gotoxy (data->term,
 --- a/include/grub/menu.h
 +++ b/include/grub/menu.h
-@@ -58,6 +58,8 @@
+@@ -72,6 +72,8 @@
  
    int submenu;
  
@@ -206,15 +206,35 @@ v2 -> v3:
 +
    /* The next element.  */
    struct grub_menu_entry *next;
- };
+ 
 --- a/include/grub/normal.h
 +++ b/include/grub/normal.h
 @@ -145,7 +145,7 @@
  			    const char *id,
  			    const char *users, const char *hotkey,
  			    const char *prefix, const char *sourcecode,
--			    int submenu);
-+			    int submenu, int hidden);
+-			    int submenu, grub_blsuki_entry_t *blsuki);
++			    int submenu, grub_blsuki_entry_t *blsuki, int hidden);
  
  grub_err_t
  grub_normal_set_password (const char *user, const char *password);
+--- a/grub-core/commands/blsuki.c
++++ b/grub-core/commands/blsuki.c
+@@ -1022,7 +1022,7 @@
+ 			linux_cmd, initrd_cmd ? initrd_cmd : "",
+ 			dt_cmd ? dt_cmd : "");
+ 
+-  grub_normal_add_menu_entry (argc, argv, classes, id, users, hotkey, NULL, src, 0, entry);
++  grub_normal_add_menu_entry (argc, argv, classes, id, users, hotkey, NULL, src, 0, entry, 0);
+ 
+  finish:
+   grub_free (linux_cmd);
+@@ -1088,7 +1088,7 @@
+ 			(options != NULL) ? " " : "",
+ 			(options != NULL) ? options : "");
+ 
+-  grub_normal_add_menu_entry (1, argv, NULL, id, NULL, NULL, NULL, src, 0, entry);
++  grub_normal_add_menu_entry (1, argv, NULL, id, NULL, NULL, NULL, src, 0, entry, 0);
+ 
+  finish:
+   grub_free (argv);

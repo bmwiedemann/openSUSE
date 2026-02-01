@@ -8,10 +8,8 @@ the entry on the EFI partition.
 
 https://systemd.io/AUTOMATIC_BOOT_ASSESSMENT/
 
-Index: grub-2.12/include/grub/efi/filesystem.h
-===================================================================
 --- /dev/null
-+++ grub-2.12/include/grub/efi/filesystem.h
++++ b/include/grub/efi/filesystem.h
 @@ -0,0 +1,155 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
@@ -168,70 +166,8 @@ Index: grub-2.12/include/grub/efi/filesystem.h
 +
 +
 +#endif
-Index: grub-2.12/grub-core/commands/blscfg.c
-===================================================================
---- grub-2.12.orig/grub-core/commands/blscfg.c
-+++ grub-2.12/grub-core/commands/blscfg.c
-@@ -791,6 +791,8 @@ static void create_entry (struct bls_ent
-   int i, index;
-   bool add_dt_prefix = false;
- 
-+  char *bumpcounter = NULL;
-+
-   grub_dprintf("blscfg", "%s got here\n", __func__);
-   clinux = bls_get_val (entry, "linux", NULL);
-   if (!clinux)
-@@ -949,6 +951,19 @@ static void create_entry (struct bls_ent
-       grub_free(prefix);
-     }
- 
-+  /* "bls_bumpcounter " + id + "\n" */
-+  int bumpcounter_size = sizeof("bls_bumpcounter ") + grub_strlen(id) + 1;
-+  bumpcounter = grub_malloc(bumpcounter_size);
-+  if (!bumpcounter)
-+  {
-+    grub_error (GRUB_ERR_OUT_OF_MEMORY, N_("out of memory"));
-+    goto finish;
-+  }
-+  char *tmp = bumpcounter;
-+  tmp = grub_stpcpy(tmp, "bls_bumpcounter ");
-+  tmp = grub_stpcpy(tmp, id);
-+  tmp = grub_stpcpy(tmp, "\n");
-+
-   grub_dprintf ("blscfg2", "devicetree %s for id:\"%s\"\n", dt, id);
- 
-   const char *sdval = grub_env_get("save_default");
-@@ -961,7 +976,7 @@ static void create_entry (struct bls_ent
- 			"insmod gzio\n"
- 			"linux %s%s%s%s\n"
- #endif
--			"%s%s",
-+			"%s%s%s",
- 			savedefault ? "savedefault\n" : "",
- #ifdef GRUB_MACHINE_EMU
- 			separate_boot ? GRUB_BOOT_DEVICE : "",
-@@ -969,7 +984,8 @@ static void create_entry (struct bls_ent
- 			bootdev,
- #endif
- 			clinux, options ? " " : "", options ? options : "",
--			initrd ? initrd : "", dt ? dt : "");
-+			bumpcounter ? bumpcounter : "", initrd ? initrd : "",
-+			dt ? dt : "");
- 
-   grub_normal_add_menu_entry (argc, argv, classes, id, users, hotkey, NULL, src, 0, 0, &index, entry);
-   grub_dprintf ("blscfg", "Added entry %d id:\"%s\"\n", index, id);
-@@ -987,6 +1003,7 @@ finish:
-   grub_free (argv);
-   grub_free (src);
-   grub_free (bootdev);
-+  grub_free (bumpcounter);
- }
- 
- struct find_entry_info {
-Index: grub-2.12/grub-core/commands/blsbumpcounter.c
-===================================================================
 --- /dev/null
-+++ grub-2.12/grub-core/commands/blsbumpcounter.c
++++ b/grub-core/commands/blsbumpcounter.c
 @@ -0,0 +1,54 @@
 +/*-*- Mode: C; c-basic-offset: 2; indent-tabs-mode: t -*-*/
 +
@@ -263,8 +199,8 @@ Index: grub-2.12/grub-core/commands/blsbumpcounter.c
 +
 +
 +static grub_err_t
-+grub_cmd_bumpcounters (grub_extcmd_context_t ctxt UNUSED,
-+         int argc UNUSED, char **args UNUSED)
++grub_cmd_bumpcounters (grub_extcmd_context_t ctxt __attribute__ ((unused)),
++         int argc __attribute__ ((unused)), char **args __attribute__ ((unused)))
 +{
 +    /* placeholder, as blsbumpcounter only work on EFI platforms */
 +  return GRUB_ERR_NONE;
@@ -287,11 +223,9 @@ Index: grub-2.12/grub-core/commands/blsbumpcounter.c
 +{
 +  grub_unregister_extcmd (cmd);
 +}
-Index: grub-2.12/grub-core/Makefile.core.def
-===================================================================
---- grub-2.12.orig/grub-core/Makefile.core.def
-+++ grub-2.12/grub-core/Makefile.core.def
-@@ -858,6 +858,13 @@ module = {
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -869,6 +869,13 @@
  };
  
  module = {
@@ -305,10 +239,8 @@ Index: grub-2.12/grub-core/Makefile.core.def
    name = boot;
    common = commands/boot.c;
    i386_pc = lib/i386/pc/biosnum.c;
-Index: grub-2.12/grub-core/commands/efi/blsbumpcounter.c
-===================================================================
 --- /dev/null
-+++ grub-2.12/grub-core/commands/efi/blsbumpcounter.c
++++ b/grub-core/commands/efi/blsbumpcounter.c
 @@ -0,0 +1,252 @@
 +/*-*- Mode: C; c-basic-offset: 2; indent-tabs-mode: t -*-*/
 +
@@ -352,8 +284,8 @@ Index: grub-2.12/grub-core/commands/efi/blsbumpcounter.c
 +static grub_guid_t grub_efi_loader_guid = GRUB_EFI_LOADER_GUID;
 +
 +static grub_err_t
-+grub_cmd_bumpcounters (grub_extcmd_context_t ctxt UNUSED,
-+         int argc UNUSED, char **args UNUSED)
++grub_cmd_bumpcounters (grub_extcmd_context_t ctxt __attribute__ ((unused)),
++         int argc, char **args)
 +{
 +  grub_efi_file_info_t *file_info = NULL;
 +  grub_efi_file_protocol_t *handle = NULL;
@@ -562,3 +494,48 @@ Index: grub-2.12/grub-core/commands/efi/blsbumpcounter.c
 +{
 +  grub_unregister_extcmd (cmd);
 +}
+--- a/grub-core/commands/blsuki.c
++++ b/grub-core/commands/blsuki.c
+@@ -1044,6 +1044,8 @@
+   grub_size_t size;
+   bool blsuki_save_default;
+ 
++  char *bumpcounter = NULL;
++
+   linux_path = blsuki_get_val (entry, "linux", NULL);
+   if (linux_path == NULL)
+     {
+@@ -1089,10 +1091,23 @@
+   if (grub_errno != GRUB_ERR_NONE)
+     goto finish;
+ 
++  /* "bls_bumpcounter " + id + "\n" */
++  int bumpcounter_size = sizeof("bls_bumpcounter ") + grub_strlen(id) + 1;
++  bumpcounter = grub_malloc(bumpcounter_size);
++  if (!bumpcounter)
++  {
++    grub_error (GRUB_ERR_OUT_OF_MEMORY, N_("out of memory"));
++    goto finish;
++  }
++  char *tmp = bumpcounter;
++  tmp = grub_stpcpy(tmp, "bls_bumpcounter ");
++  tmp = grub_stpcpy(tmp, id);
++  tmp = grub_stpcpy(tmp, "\n");
++
+   blsuki_save_default = grub_env_get_bool ("blsuki_save_default", false);
+-  src = grub_xasprintf ("%s%s%s%s",
++  src = grub_xasprintf ("%s%s%s%s%s",
+ 			blsuki_save_default ? "savedefault\n" : "",
+-			linux_cmd, initrd_cmd ? initrd_cmd : "",
++			linux_cmd, bumpcounter ? bumpcounter : "", initrd_cmd ? initrd_cmd : "",
+ 			dt_cmd ? dt_cmd : "");
+ 
+   grub_normal_add_menu_entry (argc, argv, classes, id, users, hotkey, NULL, src, 0, entry, 0);
+@@ -1105,6 +1120,7 @@
+   grub_free (args);
+   grub_free (argv);
+   grub_free (src);
++  grub_free (bumpcounter);
+ }
+ 
+ #ifdef GRUB_MACHINE_EFI

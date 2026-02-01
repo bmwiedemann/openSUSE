@@ -210,8 +210,8 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  
 -  params->type_of_loader = 0x21;
 +  grub_dprintf ("linux", "setting lh->ext_loader_{type,ver}\n");
-+  params->ext_loader_type = 0;
-+  params->ext_loader_ver = 2;
++  params->hdr.ext_loader_type = 0;
++  params->hdr.ext_loader_ver = 2;
 +  grub_dprintf("linux", "kernel_mem: %p handover_offset: %08x\n",
 +	       kernel_mem, handover_offset);
  
@@ -232,7 +232,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
      grub_efi_free_pages((grub_efi_physical_address_t)(grub_addr_t)kernel_mem, BYTES_TO_PAGES(kernel_size));
 --- a/include/grub/i386/linux.h
 +++ b/include/grub/i386/linux.h
-@@ -148,6 +148,11 @@
+@@ -402,6 +402,11 @@
    grub_uint32_t kernel_alignment;
    grub_uint8_t relocatable;
    grub_uint8_t min_alignment;

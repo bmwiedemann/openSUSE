@@ -38,8 +38,6 @@ Signed-Off-by Michael Chang <mchang@suse.com>
  include/grub/crypttab.h       | 18 ++++++++++-------
  7 files changed, 61 insertions(+), 22 deletions(-)
 
-diff --git a/grub-core/commands/crypttab.c b/grub-core/commands/crypttab.c
-index c2217ca980..9397bede9e 100644
 --- a/grub-core/commands/crypttab.c
 +++ b/grub-core/commands/crypttab.c
 @@ -9,17 +9,20 @@
@@ -67,7 +65,7 @@ index c2217ca980..9397bede9e 100644
    if (!cur)
      cur = grub_zalloc (sizeof (*cur));
    if (!cur)
-@@ -44,21 +47,24 @@ grub_initrd_publish_key (const char *uuid, const char *key, grub_size_t key_len,
+@@ -44,21 +47,24 @@
        cur->path = grub_strdup (path);
      }
  
@@ -96,7 +94,7 @@ index c2217ca980..9397bede9e 100644
  	{
  	  grub_list_remove (GRUB_AS_LIST (cur));
  	  grub_memset (cur->key, 0, cur->key_len);
-@@ -69,6 +75,20 @@ grub_initrd_discard_key (void)
+@@ -69,6 +75,20 @@
  	}
  }
  
@@ -117,7 +115,7 @@ index c2217ca980..9397bede9e 100644
  static grub_err_t
  grub_cmd_crypttab_entry (grub_command_t cmd __attribute__ ((unused)),
  	       int argc, char **argv)
-@@ -92,7 +112,7 @@ grub_cmd_crypttab_entry (grub_command_t cmd __attribute__ ((unused)),
+@@ -92,7 +112,7 @@
      }
  
    /*FIXME: Validate UUID string*/
@@ -126,11 +124,9 @@ index c2217ca980..9397bede9e 100644
  }
  
  static grub_command_t cmd;
-diff --git a/grub-core/disk/cryptodisk.c b/grub-core/disk/cryptodisk.c
-index cb87d337ac..5fd68f4549 100644
 --- a/grub-core/disk/cryptodisk.c
 +++ b/grub-core/disk/cryptodisk.c
-@@ -1071,6 +1071,9 @@ grub_cryptodisk_scan_device_real (const char *name,
+@@ -1076,6 +1076,9 @@
    struct cryptodisk_read_hook_ctx read_hook_data = {0};
    int askpass = 0;
    char *part = NULL;
@@ -140,15 +136,15 @@ index cb87d337ac..5fd68f4549 100644
  
    dev = grub_cryptodisk_get_by_source_disk (source);
  
-@@ -1185,6 +1188,7 @@ grub_cryptodisk_scan_device_real (const char *name,
- 	        goto error;
+@@ -1194,6 +1197,7 @@
+ 		goto error;
  #ifndef GRUB_UTIL
  	      grub_cli_set_auth_needed ();
 +	      is_tpmkey = 1;
  #endif
  	      goto cleanup;
  	    }
-@@ -1247,7 +1251,7 @@ grub_cryptodisk_scan_device_real (const char *name,
+@@ -1307,7 +1311,7 @@
  
  #ifndef GRUB_UTIL
    if (cargs->key_data && dev)
@@ -157,7 +153,7 @@ index cb87d337ac..5fd68f4549 100644
  #endif
    if (askpass)
      {
-@@ -1792,6 +1796,10 @@ grub_cryptodisk_erasesecrets (void)
+@@ -1890,6 +1894,10 @@
    grub_cryptodisk_t i;
    grub_uint8_t *buf;
  
@@ -168,11 +164,9 @@ index cb87d337ac..5fd68f4549 100644
    buf = grub_zalloc (GRUB_CRYPTODISK_MAX_KEYLEN);
    if (buf == NULL)
      grub_fatal ("grub_cryptodisk_erasesecrets: cannot allocate memory");
-diff --git a/grub-core/loader/linux.c b/grub-core/loader/linux.c
-index 9ee8f37907..e5e7929581 100644
 --- a/grub-core/loader/linux.c
 +++ b/grub-core/loader/linux.c
-@@ -226,13 +226,13 @@ grub_initrd_init (int argc, char *argv[],
+@@ -226,13 +226,13 @@
    int i;
    int newc = 0;
    struct dir *root = 0;
@@ -188,7 +182,7 @@ index 9ee8f37907..e5e7929581 100644
      if (pk->key && pk->path)
        numkey++;
  
-@@ -305,7 +305,7 @@ grub_initrd_init (int argc, char *argv[],
+@@ -305,7 +305,7 @@
  	goto overflow;
      }
  
@@ -197,11 +191,9 @@ index 9ee8f37907..e5e7929581 100644
      if (pk->key && pk->path)
        {
  	grub_initrd_component (pk->key, pk->key_len, pk->path, initrd_ctx);
-diff --git a/grub-core/normal/main.c b/grub-core/normal/main.c
-index 320adbe337..343cdbae2c 100644
 --- a/grub-core/normal/main.c
 +++ b/grub-core/normal/main.c
-@@ -599,7 +599,7 @@ grub_cmdline_run (int nested, int force_auth)
+@@ -599,7 +599,7 @@
        return;
      }
  
@@ -210,19 +202,17 @@ index 320adbe337..343cdbae2c 100644
    grub_normal_reader_init (nested);
  
    while (1)
-diff --git a/grub-core/normal/menu.c b/grub-core/normal/menu.c
-index f243c5e0bd..897da6abac 100644
 --- a/grub-core/normal/menu.c
 +++ b/grub-core/normal/menu.c
-@@ -32,6 +32,7 @@
- #include <grub/script_sh.h>
+@@ -33,6 +33,7 @@
  #include <grub/gfxterm.h>
  #include <grub/dl.h>
+ #include <grub/safemath.h>
 +#include <grub/crypttab.h>
  #ifdef GRUB_MACHINE_IEEE1275
  #include <grub/ieee1275/ieee1275.h>
  #endif
-@@ -769,6 +770,7 @@ run_menu (grub_menu_t menu, int nested, int *auto_boot, int *notify_boot)
+@@ -770,6 +771,7 @@
  	  if (grub_key_is_interrupt (key))
  	    {
  	      timeout = -1;
@@ -230,7 +220,7 @@ index f243c5e0bd..897da6abac 100644
  	      break;
  	    }
  
-@@ -851,6 +853,11 @@ run_menu (grub_menu_t menu, int nested, int *auto_boot, int *notify_boot)
+@@ -852,6 +854,11 @@
  	      clear_timeout ();
  	    }
  
@@ -242,11 +232,9 @@ index f243c5e0bd..897da6abac 100644
  	  switch (c)
  	    {
  	    case GRUB_TERM_KEY_HOME:
-diff --git a/grub-core/normal/menu_entry.c b/grub-core/normal/menu_entry.c
-index 38c958e657..bbd05e5638 100644
 --- a/grub-core/normal/menu_entry.c
 +++ b/grub-core/normal/menu_entry.c
-@@ -1331,7 +1331,7 @@ grub_menu_entry_run (grub_menu_entry_t entry)
+@@ -1331,7 +1331,7 @@
        return;
      }
  
@@ -255,8 +243,6 @@ index 38c958e657..bbd05e5638 100644
  
    screen = make_screen (entry);
    if (! screen)
-diff --git a/include/grub/crypttab.h b/include/grub/crypttab.h
-index 113c53cfce..f86404686f 100644
 --- a/include/grub/crypttab.h
 +++ b/include/grub/crypttab.h
 @@ -4,21 +4,25 @@
@@ -292,6 +278,3 @@ index 113c53cfce..f86404686f 100644
 +void
 +grub_cryptokey_tpmkey_discard (void);
  #endif /* ! GRUB_CRYPTTAB_HEADER */
--- 
-2.49.0
-

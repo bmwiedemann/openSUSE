@@ -1,7 +1,7 @@
 #
 # spec file for package grub2
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@
 %endif
 
 Name:           grub2
+BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  device-mapper-devel
@@ -172,7 +173,7 @@ BuildRequires:  fde-tpm-helper-rpm-macros
 %endif
 %endif
 
-Version:        2.12
+Version:        2.14
 Release:        0
 Summary:        Bootloader with support for Linux, Multiboot and more
 License:        GPL-3.0-or-later
@@ -218,12 +219,10 @@ Patch20:        grub2-s390x-03-output-7-bit-ascii.patch
 Patch21:        grub2-s390x-04-grub2-install.patch
 Patch22:        grub2-s390x-05-grub2-mkconfig.patch
 Patch23:        grub2-use-rpmsort-for-version-sorting.patch
-Patch24:        grub2-getroot-treat-mdadm-ddf-as-simple-device.patch
 Patch25:        grub2-setup-try-fs-embed-if-mbr-gap-too-small.patch
 Patch26:        grub2-xen-linux16.patch
 Patch27:        grub2-efi-disable-video-cirrus-and-bochus.patch
 Patch28:        grub2-vbe-blacklist-preferred-1440x900x32.patch
-Patch29:        grub2-grubenv-in-btrfs-header.patch
 Patch30:        grub2-mkconfig-aarch64.patch
 Patch31:        grub2-default-distributor.patch
 Patch32:        grub2-menu-unrestricted.patch
@@ -292,7 +291,6 @@ Patch94:        0001-Unify-the-check-to-enable-btrfs-relative-path.patch
 Patch95:        0001-efi-linux-provide-linux-command.patch
 Patch96:        0001-Add-support-for-Linux-EFI-stub-loading-on-aarch64.patch
 Patch97:        0002-arm64-make-sure-fdt-has-address-cells-and-size-cells.patch
-Patch98:        0003-Make-grub_error-more-verbose.patch
 Patch99:        0004-arm-arm64-loader-Better-memory-allocation-and-error-.patch
 Patch100:       0006-efi-Set-image-base-address-before-jumping-to-the-PE-.patch
 Patch101:       0044-squash-kern-Add-lockdown-support.patch
@@ -313,26 +311,6 @@ Patch115:       0008-x86-efi-Allow-initrd-params-cmdline-allocations-abov.patch
 Patch116:       0009-x86-efi-Reduce-maximum-bounce-buffer-size-to-16-MiB.patch
 Patch117:       0010-efilinux-Fix-integer-overflows-in-grub_cmd_initrd.patch
 Patch118:       0011-Also-define-GRUB_EFI_MAX_ALLOCATION_ADDRESS-for-RISC.patch
-Patch119:       0004-Add-suport-for-signing-grub-with-an-appended-signatu.patch
-Patch120:       0005-docs-grub-Document-signing-grub-under-UEFI.patch
-Patch121:       0006-docs-grub-Document-signing-grub-with-an-appended-sig.patch
-Patch122:       0007-dl-provide-a-fake-grub_dl_set_persistent-for-the-emu.patch
-Patch123:       0008-pgp-factor-out-rsa_pad.patch
-Patch124:       0009-crypto-move-storage-for-grub_crypto_pk_-to-crypto.c.patch
-Patch125:       0010-posix_wrap-tweaks-in-preparation-for-libtasn1.patch
-Patch126:       0011-libtasn1-import-libtasn1-4.18.0.patch
-Patch127:       0012-libtasn1-disable-code-not-needed-in-grub.patch
-Patch128:       0013-libtasn1-changes-for-grub-compatibility.patch
-Patch129:       0014-libtasn1-compile-into-asn1-module.patch
-Patch130:       0015-test_asn1-test-module-for-libtasn1.patch
-Patch131:       0016-grub-install-support-embedding-x509-certificates.patch
-Patch132:       0017-appended-signatures-import-GNUTLS-s-ASN.1-descriptio.patch
-Patch133:       0018-appended-signatures-parse-PKCS-7-signedData-and-X.50.patch
-Patch134:       0019-appended-signatures-support-verifying-appended-signa.patch
-Patch135:       0020-appended-signatures-verification-tests.patch
-Patch136:       0021-appended-signatures-documentation.patch
-Patch137:       0022-ieee1275-enter-lockdown-based-on-ibm-secure-boot.patch
-Patch138:       0023-x509-allow-Digitial-Signature-plus-other-Key-Usages.patch
 Patch139:       0001-grub-install-Add-SUSE-signed-image-support-for-power.patch
 Patch140:       0001-Add-grub_envblk_buf-helper-function.patch
 Patch141:       0002-Add-grub_disk_write_tail-helper-function.patch
@@ -344,11 +322,6 @@ Patch146:       0001-install-fix-software-raid1-on-esp.patch
 Patch147:       0001-grub-probe-Deduplicate-probed-partmap-output.patch
 Patch148:       0001-Fix-infinite-boot-loop-on-headless-system-in-qemu.patch
 Patch149:       0001-ofdisk-improve-boot-time-by-lookup-boot-disk-first.patch
-Patch150:       0001-key_protector-Add-key-protectors-framework.patch
-Patch151:       grub2-add-tss2-support.patch
-Patch152:       0001-key_protector-Add-TPM2-Key-Protector.patch
-Patch153:       0004-cryptodisk-Support-key-protectors.patch
-Patch154:       0001-util-grub-protect-Add-new-tool.patch
 Patch155:       0008-linuxefi-Use-common-grub_initrd_load.patch
 Patch156:       0009-Add-crypttab_entry-to-obviate-the-need-to-input-pass.patch
 Patch157:       0010-templates-import-etc-crypttab-to-grub.cfg.patch
@@ -359,9 +332,7 @@ Patch161:       safe_tpm_pcr_snapshot.patch
 Patch162:       0001-ieee1275-add-support-for-NVMeoFC.patch
 Patch163:       0002-ieee1275-ofpath-enable-NVMeoF-logical-device-transla.patch
 Patch164:       0003-ieee1275-change-the-logic-of-ieee1275_get_devargs.patch
-Patch166:       0002-Mark-environmet-blocks-as-used-for-image-embedding.patch
 Patch167:       grub2-increase-crypttab-path-buffer.patch
-Patch170:       0001-tpm2_key_protector-Support-authorized-policy.patch
 Patch171:       0001-tpm2-Add-extra-RSA-SRK-types.patch
 Patch174:       0001-clean-up-crypttab-and-linux-modules-dependency.patch
 Patch175:       0002-discard-cached-key-before-entering-grub-shell-and-ed.patch
@@ -371,18 +342,10 @@ Patch178:       0001-openfw-Ensure-get_devargs-and-get_devname-functions-.patch
 Patch179:       0002-prep_loadenv-Fix-regex-for-Open-Firmware-device-spec.patch
 Patch181:       0001-font-Try-memdisk-fonts-with-the-same-name.patch
 Patch182:       0001-Make-grub.cfg-compatible-to-old-binaries.patch
-Patch183:       grub2-change-bash-completion-dir.patch
-Patch184:       0001-tpm2_key_protector-Implement-NV-index.patch
-Patch185:       0002-cryptodisk-Fallback-to-passphrase.patch
-Patch186:       0003-cryptodisk-wipe-out-the-cached-keys-from-protectors.patch
-Patch187:       0004-diskfilter-look-up-cryptodisk-devices-first.patch
 Patch188:       grub2-mkconfig-riscv64.patch
 Patch189:       arm64-Use-proper-memory-type-for-kernel-allocation.patch
 Patch190:       0001-luks2-Use-grub-tpm2-token-for-TPM2-protected-volume-.patch
 Patch191:       Fix-the-size-calculation-for-the-synthesized-initrd.patch
-# Workaround for 2.12 tarball
-Patch196:       fix_no_extra_deps_in_release_tarball.patch
-Patch197:       0001-fs-xfs-always-verify-the-total-number-of-entries-is-.patch
 Patch198:       0001-loader-arm64-efi-linux-Remove-magic-number-header-fi.patch
 Patch200:       0001-ofdisk-enhance-boot-time-by-focusing-on-boot-disk-re.patch
 Patch201:       0002-ofdisk-add-early_log-support.patch
@@ -390,142 +353,47 @@ Patch202:       0001-disk-Optimize-disk-iteration-by-moving-memdisk-to-th.patch
 Patch203:       grub2-bsc1220338-key_protector-implement-the-blocklist.patch
 Patch204:       0001-ofdisk-Enhance-canonical-path-handling-for-bootpath.patch
 Patch205:       0001-10_linux-Ensure-persistence-of-root-file-system-moun.patch
-Patch206:       0001-util-bash-completion-Fix-for-bash-completion-2.12.patch
 Patch207:       0001-util-enable-grub-protect-only-for-EFI-systems.patch
-Patch208:       0001-blscfg-add-blscfg-module-to-parse-Boot-Loader-Specif.patch
-Patch211:       0004-blscfg-Don-t-root-device-in-emu-builds.patch
-Patch212:       0005-blscfg-check-for-mounted-boot-in-emu.patch
-Patch213:       0006-Follow-the-device-where-blscfg-is-discovered.patch
-Patch217:       0001-net-drivers-ieee1275-ofnet-Remove-200-ms-timeout-in-.patch
 Patch218:       grub2-s390x-set-hostonly.patch
-Patch219:       0001-bli-Fix-crash-in-get_part_uuid.patch
 Patch220:       0001-Streamline-BLS-and-improve-PCR-stability.patch
-Patch221:       0001-fix-grub-screen-filled-with-post-screen-artifects.patch
-Patch222:       0001-efinet-Skip-virtual-VLAN-devices-during-card-enumera.patch
-Patch223:       0001-tpm-Skip-loopback-image-measurement.patch
-Patch230:       0007-grub-mkimage-Create-new-ELF-note-for-SBAT.patch
-Patch231:       0008-grub-mkimage-Add-SBAT-metadata-into-ELF-note-for-Pow.patch
 Patch232:       0001-ieee1275-support-added-for-multiple-nvme-bootpaths.patch
-Patch233:       0001-kern-ieee1275-init-Add-IEEE-1275-Radix-support-for-K.patch
-Patch234:       0001-cli_lock-Add-build-option-to-block-command-line-inte.patch
-Patch235:       0002-Requiring-authentication-after-tpm-unlock-for-CLI-ac.patch
 Patch236:       0001-kern-main-Fix-cmdpath-in-root-directory.patch
 Patch237:       grub2-s390x-secure-execution-support.patch
-Patch238:       0001-powerpc-increase-MIN-RMA-size-for-CAS-negotiation.patch
-Patch239:       0001-misc-Implement-grub_strlcpy.patch
-Patch240:       0002-fs-ufs-Fix-a-heap-OOB-write.patch
-Patch241:       0003-fs-hfs-Fix-stack-OOB-write-with-grub_strcpy.patch
-Patch242:       0004-fs-tar-Integer-overflow-leads-to-heap-OOB-write.patch
-Patch243:       0005-fs-hfsplus-Set-a-grub_errno-if-mount-fails.patch
-Patch244:       0006-kern-file-Ensure-file-data-is-set.patch
-Patch245:       0007-kern-file-Implement-filesystem-reference-counting.patch
-Patch246:       0008-net-Fix-OOB-write-in-grub_net_search_config_file.patch
-Patch247:       0009-video-readers-jpeg-Do-not-permit-duplicate-SOF0-mark.patch
-Patch248:       0010-commands-extcmd-Missing-check-for-failed-allocation.patch
-Patch249:       0011-commands-pgp-Unregister-the-check_signatures-hooks-o.patch
-Patch250:       0012-normal-Remove-variables-hooks-on-module-unload.patch
-Patch251:       0013-gettext-Remove-variables-hooks-on-module-unload.patch
-Patch252:       0014-gettext-Integer-overflow-leads-to-heap-OOB-write-or-.patch
-Patch253:       0015-gettext-Integer-overflow-leads-to-heap-OOB-write.patch
-Patch254:       0016-commands-read-Fix-an-integer-overflow-when-supplying.patch
-Patch255:       0017-commands-minicmd-Block-the-dump-command-in-lockdown-.patch
-Patch256:       0018-fs-bfs-Disable-under-lockdown.patch
-Patch257:       0019-fs-Disable-many-filesystems-under-lockdown.patch
-Patch258:       0020-fs-Prevent-overflows-when-allocating-memory-for-arra.patch
 Patch259:       0001-bls-Accept-.conf-suffix-in-setting-default-entry.patch
-Patch260:       0001-fs-xfs-Add-new-superblock-features-added-in-Linux-6..patch
-Patch261:       0002-fs-xfs-Fix-grub_xfs_iterate_dir-return-value-in-case.patch
-Patch262:       0003-fs-xfs-fix-large-extent-counters-incompat-feature-su.patch
 Patch263:       0001-autofs-Ignore-zfs-not-found.patch
 Patch264:       0001-s390x-emu-Pass-through-PAES-cipher-as-AES.patch
-Patch265:       0001-ieee1275-adding-failure-check-condition-on-ibm-secur.patch
-Patch266:       0002-ieee1275-Platform-Keystore-PKS-Support.patch
-Patch267:       0003-ieee1275-Read-the-DB-and-DBX-secure-boot-variables.patch
-Patch268:       0004-appendedsig-The-creation-of-trusted-and-distrusted-l.patch
-Patch269:       0005-appendedsig-While-verifying-the-kernel-use-trusted-a.patch
-Patch270:       0006-powerpc_ieee1275-set-use_static_keys-flag.patch
-Patch271:       0007-appendedsig-Reads-the-default-DB-keys-from-ELF-Note.patch
-Patch272:       0008-appendedsig-The-grub-command-s-trusted-and-distruste.patch
-Patch273:       0009-appendedsig-documentation.patch
 Patch274:       0001-ofpath-Add-error-check-in-NVMEoF-device-translation.patch
 Patch275:       grub2-btrfs-filter-non-subvol-mount.patch
-Patch276:       grub2-provide-edid.patch
 Patch277:       0001-prep_loadenv-Measure-the-environment-block-into-PCR-.patch
-Patch278:       0001-tpm2_key_protector-Add-grub-emu-support.patch
-Patch279:       0001-tss2-Adjust-bit-fields-for-big-endian-targets.patch
-Patch280:       0002-term-ieee1275-serial-Cast-0-to-proper-type.patch
-Patch281:       0003-ieee1275-Consolidate-repeated-definitions-of-IEEE127.patch
-Patch282:       0004-ieee1275-ibmvpm-Move-TPM-initialization-functions-to.patch
-Patch283:       0005-ieee1275-tcg2-Refactor-grub_ieee1275_tpm_init.patch
-Patch284:       0006-ieee1275-tcg2-Add-TCG2-driver-for-ieee1275-PowerPC-f.patch
-Patch285:       0007-tpm2_key_protector-Enable-build-for-powerpc_ieee1275.patch
-Patch286:       0001-tpm2_key_protector-Dump-PCRs-on-policy-fail.patch
-Patch287:       0002-tpm2_key_protector-Add-tpm2_dump_pcr-command.patch
-Patch288:       0003-tss2-Fix-the-missing-authCommand.patch
-Patch289:       0004-tss2-Add-TPM-2.0-NV-index-commands.patch
-Patch290:       0005-tpm2_key_protector-Unseal-key-from-a-buffer.patch
-Patch291:       0006-tpm2_key_protector-Support-NV-index-handles.patch
-Patch292:       0007-util-grub-protect-Support-NV-index-mode.patch
-Patch293:       grub2-string-initializer.patch
 Patch294:       0001-Fix-PowerPC-CAS-reboot-to-evaluate-menu-context.patch
 Patch295:       0001-blscfg-read-fragments-in-order.patch
 Patch296:       grub2-bls-boot-counting.patch
 Patch297:       grub2-bls-boot-assessment.patch
 Patch298:       grub2-bls-boot-show-snapshot.patch
-Patch299:       grub2-blscfg-fix-hang.patch
 Patch300:       grub2-blscfg-set-efivars.patch
-Patch301:       0001-kern-rescue_reader-Block-the-rescue-mode-until-the-C.patch
-Patch302:       0002-commands-search-Introduce-the-cryptodisk-only-argume.patch
-Patch303:       0003-disk-diskfilter-Introduce-the-cryptocheck-command.patch
-Patch304:       0004-commands-search-Add-the-diskfilter-support.patch
-Patch305:       0005-docs-Document-available-crypto-disks-checks.patch
-Patch306:       0006-disk-cryptodisk-Add-the-erase-secrets-function.patch
-Patch307:       0007-disk-cryptodisk-Wipe-the-passphrase-from-memory.patch
-Patch308:       0008-cryptocheck-Add-quiet-option.patch
 Patch309:       0001-Improve-TPM-key-protection-on-boot-interruptions.patch
 Patch310:       0004-Key-revocation-on-out-of-bound-file-access.patch
 Patch311:       grub2-bls-loader-entry-oneshot.patch
 Patch312:       0001-mkconfig-Determine-GRUB_DISTRIBUTOR-from-etc-SUSE-br.patch
 Patch313:       grub2-blsbumpcounter-menu.patch
-Patch314:       0001-disk-cryptodisk-Allow-user-to-retry-failed-passphras.patch
 Patch315:       0001-test-Fix-f-test-on-files-over-network.patch
 Patch316:       0002-http-Return-HTTP-status-code-in-http_establish.patch
 Patch317:       0003-docs-Clarify-test-for-files-on-TFTP-and-HTTP.patch
 Patch318:       0004-tftp-Fix-hang-when-file-is-a-directory.patch
-Patch319:       grub2-constant-time-grub_crypto_memcmp.patch
 Patch320:       0001-getroot-Skip-mount-points-in-grub_find_device.patch
-Patch321:       0001-tcp-Fix-TCP-port-number-reused-on-reboot.patch
-Patch322:       0001-modules-Make-.module_license-read-only.patch
-Patch323:       0002-modules-Strip-.llvm_addrsig-sections-and-similar.patch
-Patch324:       0003-modules-Don-t-allocate-space-for-non-allocable-secti.patch
-Patch325:       0004-modules-Load-module-sections-at-page-aligned-address.patch
-Patch326:       0005-nx-Add-memory-attribute-get-set-API.patch
-Patch327:       0006-nx-Set-page-permissions-for-loaded-modules.patch
-Patch328:       0007-nx-Set-the-NX-compatible-flag-for-the-GRUB-EFI-image.patch
-Patch329:       0008-efi-Provide-wrappers-for-load_image-start_image-and-.patch
-Patch330:       0009-efi-sb-Add-support-for-the-shim-loader-protocol.patch
-Patch331:       0010-efi-sb-Add-API-for-retrieving-shim-loader-image-hand.patch
-Patch332:       0011-loader-efi-chainloader-Use-shim-loader-image-handle-.patch
-Patch333:       0012-loader-efi-linux-Use-shim-loader-image-handle-where-.patch
-Patch334:       0013-nx-Rename-GRUB_DL_ALIGN-to-DL_ALIGN.patch
 Patch335:       0001-linux-fallback-to-EFI-handover-on-x86_64.patch
 Patch336:       0002-linux-fallback-to-direct-PE-entry-boot-on-arm64.patch
 Patch337:       0003-efi-chainloader-fallback-to-direct-image-execution.patch
 Patch338:       0004-efi-chainloader-fix-missing-file_path-in-loaded_imag.patch
-Patch339:       0001-lib-crypto-Introduce-new-HMAC-functions-to-reuse-buf.patch
-Patch340:       0002-lib-pbkdf2-Optimize-PBKDF2-by-reusing-HMAC-handle.patch
-Patch341:       0001-kern-misc-Implement-faster-grub_memcpy-for-aligned-b.patch
 Patch342:       grub2-bls-loader-entry-default.patch
-Patch343:       0001-term-ns8250-spcr-Return-if-redirection-is-disabled.patch
 Patch344:       grub2-i386-pc-no-pageflipping.patch
-Patch345:       0001-ieee1275-Use-net-config-for-boot-location-instead-of.patch
-Patch346:       0001-kern-file-Call-grub_dl_unref-after-fs-fs_close.patch
-Patch347:       0002-net-net-Unregister-net_set_vlan-command-on-unload.patch
-Patch348:       0003-gettext-gettext-Unregister-gettext-command-on-module.patch
-Patch349:       0004-normal-main-Unregister-commands-on-module-unload.patch
-Patch350:       0005-tests-lib-functional_test-Unregister-commands-on-mod.patch
-Patch351:       0006-commands-usbtest-Use-correct-string-length-field.patch
-Patch352:       0007-commands-usbtest-Ensure-string-length-is-sufficient-.patch
+Patch401:       grub2-bls-loader-entries-boot-counting.patch
+Patch402:       grub2-bls-loader-features.patch
+Patch403:       grub2-bls-loader-config-timeout.patch
+Patch404:       0001-editenv-create-health_check_flag-env-var-on-RW-raw-b.patch
+Patch405:       0001-00_header-Omit-loading-efi_uga-on-non-x86-EFI-platfo.patch
+Patch406:       0001-Revert-configure-Print-a-more-helpful-error-if-autoc.patch
+Patch407:       0002-Revert-configure-Check-linker-for-image-base-support.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime
@@ -859,7 +727,7 @@ export PYTHON=%{_bindir}/python3
 %define _configure ../configure
 
 # We don't want to let rpm override *FLAGS with default a.k.a bogus values.
-CFLAGS="-fno-strict-aliasing -fno-inline-functions-called-once "
+CFLAGS="-fno-strict-aliasing -fno-inline-functions-called-once -Wno-error=discarded-qualifiers"
 CXXFLAGS=" "
 FFLAGS=" "
 export CFLAGS CXXFLAGS FFLAGS
@@ -867,17 +735,14 @@ export CFLAGS CXXFLAGS FFLAGS
 %if %{emu}
 cd build-emu
 %define arch_specific --enable-device-mapper --disable-grub-mount
-TLFLAGS="-fPIC"
 
-# -static is needed so that autoconf script is able to link
-# test that looks for _start symbol on 64 bit platforms
-../configure TARGET_LDFLAGS=$TLFLAGS	\
-	--prefix=%{_prefix}		\
-	--libdir=%{_datadir}		\
-	--sysconfdir=%{_sysconfdir}	\
+../configure                            \
+        --prefix=%{_prefix}             \
+        --libdir=%{_datadir}            \
+        --sysconfdir=%{_sysconfdir}     \
         --target=%{_target_platform}    \
-        --with-platform=emu     \
-	%{arch_specific}                \
+        --with-platform=emu             \
+        %{arch_specific}                \
         --program-transform-name=s,grub,%{name},
 make %{?_smp_mflags}
 cd ..
@@ -913,7 +778,7 @@ CD_MODULES="all_video boot cat configfile echo true \
 PXE_MODULES="tftp http"
 CRYPTO_MODULES="luks luks2 gcry_rijndael gcry_sha1 gcry_sha256 gcry_sha512 crypttab"
 %ifarch %{efi}
-CD_MODULES="${CD_MODULES} chain efifwsetup efinet read tpm tss2 tpm2_key_protector memdisk tar squash4 xzio blscfg blsbumpcounter"
+CD_MODULES="${CD_MODULES} chain efifwsetup efinet read tpm tss2 tpm2_key_protector memdisk tar squash4 xzio blsuki blsbumpcounter"
 PXE_MODULES="${PXE_MODULES} efinet"
 %else
 CD_MODULES="${CD_MODULES} net ofnet"
@@ -1019,7 +884,7 @@ mksquashfs ./boot memdisk.sqsh -keep-as-directory -comp xz -quiet -no-progress
     %{?sbat_generation:--sbat sbat.csv} \
     -d grub-core \
     all_video boot font gfxmenu gfxterm gzio halt jpeg minicmd normal part_gpt png reboot video \
-    fat tpm tss2 tpm2_key_protector memdisk tar squash4 xzio blscfg blsbumpcounter linux bli regexp loadenv test echo true sleep
+    fat tpm tss2 tpm2_key_protector memdisk tar squash4 xzio blsuki blsbumpcounter linux bli regexp loadenv test echo true sleep
 %endif
 
 %ifarch x86_64 aarch64
@@ -1200,7 +1065,7 @@ EOF
         ./grub-mkimage -O %{grubarch} -o grub.elf -d grub-core -x grub.der -m memdisk.tar \
             -c %{platform}-config -s sbat.csv --appended-signature-size %brp_pesign_reservation ${GRUB_MODULES}
         ls -l "grub.elf"
-        truncate -s -%brp_pesign_reservation "grub.elf"
+        # truncate -s -%brp_pesign_reservation "grub.elf"
 fi
 %endif
 cd ..

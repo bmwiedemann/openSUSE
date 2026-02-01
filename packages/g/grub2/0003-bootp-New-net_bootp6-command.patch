@@ -21,10 +21,10 @@ V1:
 
 --- a/grub-core/net/bootp.c
 +++ b/grub-core/net/bootp.c
-@@ -24,6 +24,98 @@
- #include <grub/net/netbuff.h>
+@@ -25,6 +25,98 @@
  #include <grub/net/udp.h>
  #include <grub/datetime.h>
+ #include <grub/safemath.h>
 +#include <grub/time.h>
 +#include <grub/list.h>
 +
@@ -120,7 +120,7 @@ V1:
  
  struct grub_dhcp_discover_options
  {
-@@ -610,6 +702,578 @@
+@@ -611,6 +703,578 @@
    return err;
  }
  
@@ -699,7 +699,7 @@ V1:
  /*
   * This is called directly from net/ip.c:handle_dgram(), because those
   * BOOTP/DHCP packets are a bit special due to their improper
-@@ -678,6 +1342,77 @@
+@@ -679,6 +1343,77 @@
      }
  }
  
@@ -777,7 +777,7 @@ V1:
  static grub_err_t
  grub_cmd_dhcpopt (struct grub_command *cmd __attribute__ ((unused)),
  		  int argc, char **args)
-@@ -903,7 +1638,174 @@
+@@ -918,7 +1653,174 @@
    return err;
  }
  
@@ -953,7 +953,7 @@ V1:
  
  void
  grub_bootp_init (void)
-@@ -917,6 +1819,9 @@
+@@ -932,6 +1834,9 @@
    cmd_getdhcp = grub_register_command ("net_get_dhcp_option", grub_cmd_dhcpopt,
  				       N_("VAR INTERFACE NUMBER DESCRIPTION"),
  				       N_("retrieve DHCP option and save it into VAR. If VAR is - then print the value."));
@@ -963,7 +963,7 @@ V1:
  }
  
  void
-@@ -925,4 +1830,5 @@
+@@ -940,4 +1845,5 @@
    grub_unregister_command (cmd_getdhcp);
    grub_unregister_command (cmd_bootp);
    grub_unregister_command (cmd_dhcp);

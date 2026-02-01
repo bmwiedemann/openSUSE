@@ -70,7 +70,7 @@ V6:
 
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -2362,6 +2362,12 @@
+@@ -2456,6 +2456,12 @@
    common = net/ethernet.c;
    common = net/arp.c;
    common = net/netbuff.c;
@@ -233,7 +233,7 @@ V6:
  
  GRUB_MOD_LICENSE ("GPLv3+");
  
-@@ -345,7 +346,7 @@
+@@ -346,7 +347,7 @@
  }
  
  static grub_efi_handle_t
@@ -242,7 +242,7 @@ V6:
  			    grub_efi_device_path_t **r_device_path)
  {
    grub_efi_handle_t handle;
-@@ -498,6 +499,17 @@
+@@ -499,6 +500,17 @@
  
    ldp = grub_efi_find_last_device_path (ddp);
  
@@ -260,7 +260,7 @@ V6:
    if (GRUB_EFI_DEVICE_PATH_TYPE (ldp) != GRUB_EFI_MESSAGING_DEVICE_PATH_TYPE
        || (GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_IPV4_DEVICE_PATH_SUBTYPE
            && GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_IPV6_DEVICE_PATH_SUBTYPE))
-@@ -765,6 +777,7 @@
+@@ -766,6 +778,7 @@
  	if (GRUB_EFI_DEVICE_PATH_TYPE (ldp) != GRUB_EFI_MESSAGING_DEVICE_PATH_TYPE
  	    || (GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_IPV4_DEVICE_PATH_SUBTYPE
  		&& GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_IPV6_DEVICE_PATH_SUBTYPE
@@ -268,7 +268,7 @@ V6:
  		&& GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_URI_DEVICE_PATH_SUBTYPE))
  	  continue;
  	dup_dp = grub_efi_duplicate_device_path (dp);
-@@ -780,6 +793,15 @@
+@@ -781,6 +794,15 @@
  	  }
  
  	dup_ldp = grub_efi_find_last_device_path (dup_dp);
@@ -284,7 +284,7 @@ V6:
  	dup_ldp->type = GRUB_EFI_END_DEVICE_PATH_TYPE;
  	dup_ldp->subtype = GRUB_EFI_END_ENTIRE_DEVICE_PATH_SUBTYPE;
  	dup_ldp->length = sizeof (*dup_ldp);
-@@ -860,6 +882,9 @@
+@@ -870,6 +892,9 @@
  
  GRUB_MOD_INIT(efinet)
  {
@@ -294,7 +294,7 @@ V6:
    grub_efinet_findcards ();
    grub_efi_net_config = grub_efi_net_config_real;
  }
-@@ -871,5 +896,7 @@
+@@ -881,5 +906,7 @@
    FOR_NET_CARDS_SAFE (card, next)
      if (card->driver == &efidriver)
        grub_net_card_unregister (card);
@@ -3848,17 +3848,17 @@ V6:
 +
 --- a/grub-core/net/net.c
 +++ b/grub-core/net/net.c
-@@ -32,6 +32,9 @@
- #include <grub/loader.h>
+@@ -33,6 +33,9 @@
  #include <grub/bufio.h>
  #include <grub/kernel.h>
+ #include <grub/safemath.h>
 +#ifdef GRUB_MACHINE_EFI
 +#include <grub/net/efi.h>
 +#endif
  
  GRUB_MOD_LICENSE ("GPLv3+");
  
-@@ -2014,8 +2017,49 @@
+@@ -2079,8 +2082,49 @@
  static grub_command_t cmd_setvlan, cmd_lsroutes, cmd_lscards;
  static grub_command_t cmd_lsaddr, cmd_slaac;
  
@@ -3908,7 +3908,7 @@ V6:
    grub_register_variable_hook ("net_default_server", defserver_get_env,
  			       defserver_set_env);
    grub_env_export ("net_default_server");
-@@ -2066,10 +2110,37 @@
+@@ -2131,10 +2175,37 @@
  						grub_net_restore_hw,
  						GRUB_LOADER_PREBOOT_HOOK_PRIO_DISK);
    grub_net_poll_cards_idle = grub_net_poll_cards_idle_real;
@@ -3945,8 +3945,8 @@ V6:
 +
    grub_register_variable_hook ("net_default_server", 0, 0);
    grub_register_variable_hook ("pxe_default_server", 0, 0);
- 
-@@ -2088,4 +2159,7 @@
+   grub_register_variable_hook ("net_default_ip", 0, 0);
+@@ -2155,4 +2226,7 @@
    grub_net_fini_hw (0);
    grub_loader_unregister_preboot_hook (fini_hnd);
    grub_net_poll_cards_idle = NULL;
@@ -3956,7 +3956,7 @@ V6:
  }
 --- a/include/grub/efi/api.h
 +++ b/include/grub/efi/api.h
-@@ -653,6 +653,23 @@
+@@ -663,6 +663,23 @@
  typedef grub_uint8_t grub_efi_ip_address_t[8] __attribute__ ((aligned(4)));
  typedef grub_efi_uint64_t grub_efi_physical_address_t;
  typedef grub_efi_uint64_t grub_efi_virtual_address_t;
@@ -3980,7 +3980,7 @@ V6:
  
  /* XXX although the spec does not specify the padding, this actually
     must have the padding!  */
-@@ -902,6 +919,8 @@
+@@ -912,6 +929,8 @@
    grub_efi_uint16_t remote_port;
    grub_efi_uint16_t protocol;
    grub_efi_uint8_t static_ip_address;
@@ -3989,7 +3989,7 @@ V6:
  } GRUB_PACKED;
  typedef struct grub_efi_ipv6_device_path grub_efi_ipv6_device_path_t;
  
-@@ -960,6 +979,15 @@
+@@ -970,6 +989,15 @@
  } GRUB_PACKED;
  typedef struct grub_efi_uri_device_path grub_efi_uri_device_path_t;
  
@@ -4005,7 +4005,7 @@ V6:
  #define GRUB_EFI_VENDOR_MESSAGING_DEVICE_PATH_SUBTYPE	10
  
  /* Media Device Path.  */
-@@ -1042,6 +1070,23 @@
+@@ -1052,6 +1080,23 @@
  } GRUB_PACKED;
  typedef struct grub_efi_bios_device_path grub_efi_bios_device_path_t;
  
@@ -4029,7 +4029,7 @@ V6:
  struct grub_efi_open_protocol_information_entry
  {
    grub_efi_handle_t agent_handle;
-@@ -1544,23 +1589,28 @@
+@@ -1554,23 +1599,28 @@
  
  typedef grub_uint8_t grub_efi_pxe_packet_t[1472];
  
@@ -4072,7 +4072,7 @@ V6:
  
  #define GRUB_EFI_PXE_BASE_CODE_MAX_IPCNT 8
  typedef struct {
-@@ -1610,18 +1660,32 @@
+@@ -1620,18 +1670,32 @@
  typedef struct grub_efi_pxe
  {
    grub_uint64_t rev;
@@ -4117,7 +4117,7 @@ V6:
    struct grub_efi_pxe_mode *mode;
  } grub_efi_pxe_t;
  
-@@ -1921,6 +1985,44 @@
+@@ -1951,6 +2015,44 @@
  };
  typedef struct grub_efi_ip4_config2_protocol grub_efi_ip4_config2_protocol_t;
  
@@ -4162,7 +4162,7 @@ V6:
  enum grub_efi_ip6_config_data_type {
    GRUB_EFI_IP6_CONFIG_DATA_TYPE_INTERFACEINFO,
    GRUB_EFI_IP6_CONFIG_DATA_TYPE_ALT_INTERFACEID,
-@@ -1955,4 +2057,47 @@
+@@ -1985,4 +2087,47 @@
  };
  typedef struct grub_efi_ip6_config_protocol grub_efi_ip6_config_protocol_t;
  

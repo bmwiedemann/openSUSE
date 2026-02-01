@@ -1,0 +1,30 @@
+From b50719d46a75da79b23d2eda4bb117bb1c9207fc Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 19 Jan 2026 14:27:49 +0800
+Subject: [PATCH 1/2] Revert "configure: Print a more helpful error if
+ autoconf-archive is not installed"
+
+This reverts commit ac042f3f58d33ce9cd5ff61750f06da1a1d7b0eb.
+---
+ configure.ac | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 900e0626a..b4d4db944 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1792,11 +1792,6 @@ LIBS=""
+ # Defined in acinclude.m4.
+ grub_ASM_USCORE
+ grub_PROG_TARGET_CC
+-
+-# The error message produced by autoconf if autoconf-archive is not installed is
+-# quite misleading and not very helpful. So, try point people in the right direction.
+-m4_ifndef([AX_CHECK_LINK_FLAG], [m4_fatal([autoconf-archive is missing. You must install it to generate the configure script.])])
+-
+ if test "x$TARGET_APPLE_LINKER" != x1 ; then
+ AX_CHECK_LINK_FLAG([-Wl,--image-base,0x400000],
+     [TARGET_IMG_BASE_LDOPT="-Wl,--image-base"],
+-- 
+2.52.0
+

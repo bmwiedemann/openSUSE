@@ -1,4 +1,237 @@
 -------------------------------------------------------------------
+Fri Jan 16 08:52:19 UTC 2026 - Michael Chang <mchang@suse.com>
+
+- Update to 2.14
+- New in 2.14
+  * libgcrypt 1.11.
+  * LVM LV integrity and cachevol support.
+  * EROFS support.
+  * GRUB environment block inside the Btrfs header support.
+  * NX support for EFI platforms.
+  * shim loader protocol support.
+  * BLS and UKI support.
+  * Argon2 KDF support.
+  * TPM2 key protector support.
+  * Appended Signature Secure Boot Support for PowerPC.
+  * New option to block command line interface.
+  * Support dates outside of 1901..2038 range.
+  * zstdio decompression support.
+  * EFI code improvements and fixes.
+  * TPM driver fixes.
+  * Filesystems fixes.
+  * CVE and Coverity fixes.
+  * Tests improvements.
+  * Documentation improvements.
+- New tarball
+  * grub-2.14.tar.xz
+- Removed tarball
+  * grub-2.12.tar.xz
+- Patch rediff
+  * use-grub2-as-a-package-name.patch
+  * grub2-secureboot-add-linuxefi.patch
+  * grub2-secureboot-no-insmod-on-sb.patch
+  * grub2-secureboot-chainloader.patch
+  * grub2-linguas.sh-no-rsync.patch
+  * grub2-s390x-01-Changes-made-and-files-added-in-order-to-allow-s390x.patch
+  * grub2-s390x-03-output-7-bit-ascii.patch
+  * grub2-s390x-04-grub2-install.patch
+  * grub2-efi-chainload-harder.patch
+  * grub2-emu-4-all.patch
+  * grub2-lvm-allocate-metadata-buffer-from-raw-contents.patch
+  * grub2-btrfs-01-add-ability-to-boot-from-subvolumes.patch
+  * grub2-btrfs-03-follow_default.patch
+  * grub2-btrfs-05-grub2-mkconfig.patch
+  * grub2-btrfs-06-subvol-mount.patch
+  * grub2-btrfs-10-config-directory.patch
+  * grub2-efi-xen-cmdline.patch
+  * grub2-Add-hidden-menu-entries.patch
+  * grub2-suse-remove-linux-root-param.patch
+  * 0003-bootp-New-net_bootp6-command.patch
+  * 0008-efinet-Setting-DNS-server-from-UEFI-protocol.patch
+  * 0001-add-support-for-UEFI-network-protocols.patch
+  * 0001-kern-mm.c-Make-grub_calloc-inline.patch
+  * 0002-cmdline-Provide-cmdline-functions-as-module.patch
+  * 0002-ieee1275-powerpc-enables-device-mapper-discovery.patch
+  * 0004-arm-arm64-loader-Better-memory-allocation-and-error-.patch
+  * 0003-Handle-multi-arch-64-on-32-boot-in-linuxefi-loader.patch
+  * 0006-x86-efi-Re-arrange-grub_cmd_linux-a-little-bit.patch
+  * 0007-x86-efi-Make-our-own-allocator-for-kernel-stuff.patch
+  * 0008-x86-efi-Allow-initrd-params-cmdline-allocations-abov.patch
+  * 0001-Add-grub_envblk_buf-helper-function.patch
+  * 0004-Introduce-prep_load_env-command.patch
+  * 0008-linuxefi-Use-common-grub_initrd_load.patch
+  * 0009-Add-crypttab_entry-to-obviate-the-need-to-input-pass.patch
+  * grub-read-pcr.patch
+  * 0001-ieee1275-ofdisk-retry-on-open-and-read-failure.patch
+  * 0001-luks2-Use-grub-tpm2-token-for-TPM2-protected-volume-.patch
+  * 0001-ofdisk-enhance-boot-time-by-focusing-on-boot-disk-re.patch
+  * 0002-ofdisk-add-early_log-support.patch
+  * 0001-ofdisk-Enhance-canonical-path-handling-for-bootpath.patch
+  * 0001-Streamline-BLS-and-improve-PCR-stability.patch
+  * 0001-Fix-PowerPC-CAS-reboot-to-evaluate-menu-context.patch
+  * 0001-blscfg-read-fragments-in-order.patch
+  * grub2-bls-boot-counting.patch
+  * grub2-bls-boot-assessment.patch
+  * grub2-bls-boot-show-snapshot.patch
+  * grub2-blscfg-set-efivars.patch
+  * 0001-Improve-TPM-key-protection-on-boot-interruptions.patch
+  * grub2-bls-loader-entry-oneshot.patch
+  * grub2-blsbumpcounter-menu.patch
+- Patch removed
+  * grub2-getroot-treat-mdadm-ddf-as-simple-device.patch
+  * grub2-grubenv-in-btrfs-header.patch
+  * 0003-Make-grub_error-more-verbose.patch
+  * 0004-Add-suport-for-signing-grub-with-an-appended-signatu.patch
+  * 0005-docs-grub-Document-signing-grub-under-UEFI.patch
+  * 0006-docs-grub-Document-signing-grub-with-an-appended-sig.patch
+  * 0007-dl-provide-a-fake-grub_dl_set_persistent-for-the-emu.patch
+  * 0008-pgp-factor-out-rsa_pad.patch
+  * 0009-crypto-move-storage-for-grub_crypto_pk_-to-crypto.c.patch
+  * 0010-posix_wrap-tweaks-in-preparation-for-libtasn1.patch
+  * 0011-libtasn1-import-libtasn1-4.18.0.patch
+  * 0012-libtasn1-disable-code-not-needed-in-grub.patch
+  * 0013-libtasn1-changes-for-grub-compatibility.patch
+  * 0014-libtasn1-compile-into-asn1-module.patch
+  * 0015-test_asn1-test-module-for-libtasn1.patch
+  * 0016-grub-install-support-embedding-x509-certificates.patch
+  * 0017-appended-signatures-import-GNUTLS-s-ASN.1-descriptio.patch
+  * 0018-appended-signatures-parse-PKCS-7-signedData-and-X.50.patch
+  * 0019-appended-signatures-support-verifying-appended-signa.patch
+  * 0020-appended-signatures-verification-tests.patch
+  * 0021-appended-signatures-documentation.patch
+  * 0022-ieee1275-enter-lockdown-based-on-ibm-secure-boot.patch
+  * 0023-x509-allow-Digitial-Signature-plus-other-Key-Usages.patch
+  * 0001-key_protector-Add-key-protectors-framework.patch
+  * grub2-add-tss2-support.patch
+  * 0001-key_protector-Add-TPM2-Key-Protector.patch
+  * 0004-cryptodisk-Support-key-protectors.patch
+  * 0001-util-grub-protect-Add-new-tool.patch
+  * 0002-Mark-environmet-blocks-as-used-for-image-embedding.patch
+  * 0001-tpm2_key_protector-Support-authorized-policy.patch
+  * grub2-change-bash-completion-dir.patch
+  * 0001-tpm2_key_protector-Implement-NV-index.patch
+  * 0002-cryptodisk-Fallback-to-passphrase.patch
+  * 0003-cryptodisk-wipe-out-the-cached-keys-from-protectors.patch
+  * 0004-diskfilter-look-up-cryptodisk-devices-first.patch
+  * fix_no_extra_deps_in_release_tarball.patch
+  * 0001-fs-xfs-always-verify-the-total-number-of-entries-is-.patch
+  * 0001-util-bash-completion-Fix-for-bash-completion-2.12.patch
+  * 0001-blscfg-add-blscfg-module-to-parse-Boot-Loader-Specif.patch
+  * 0004-blscfg-Don-t-root-device-in-emu-builds.patch
+  * 0005-blscfg-check-for-mounted-boot-in-emu.patch
+  * 0006-Follow-the-device-where-blscfg-is-discovered.patch
+  * 0001-net-drivers-ieee1275-ofnet-Remove-200-ms-timeout-in-.patch
+  * 0001-bli-Fix-crash-in-get_part_uuid.patch
+  * 0001-fix-grub-screen-filled-with-post-screen-artifects.patch
+  * 0001-efinet-Skip-virtual-VLAN-devices-during-card-enumera.patch
+  * 0001-tpm-Skip-loopback-image-measurement.patch
+  * 0007-grub-mkimage-Create-new-ELF-note-for-SBAT.patch
+  * 0008-grub-mkimage-Add-SBAT-metadata-into-ELF-note-for-Pow.patch
+  * 0001-kern-ieee1275-init-Add-IEEE-1275-Radix-support-for-K.patch
+  * 0001-cli_lock-Add-build-option-to-block-command-line-inte.patch
+  * 0002-Requiring-authentication-after-tpm-unlock-for-CLI-ac.patch
+  * 0001-powerpc-increase-MIN-RMA-size-for-CAS-negotiation.patch
+  * 0001-misc-Implement-grub_strlcpy.patch
+  * 0002-fs-ufs-Fix-a-heap-OOB-write.patch
+  * 0003-fs-hfs-Fix-stack-OOB-write-with-grub_strcpy.patch
+  * 0004-fs-tar-Integer-overflow-leads-to-heap-OOB-write.patch
+  * 0005-fs-hfsplus-Set-a-grub_errno-if-mount-fails.patch
+  * 0006-kern-file-Ensure-file-data-is-set.patch
+  * 0007-kern-file-Implement-filesystem-reference-counting.patch
+  * 0008-net-Fix-OOB-write-in-grub_net_search_config_file.patch
+  * 0009-video-readers-jpeg-Do-not-permit-duplicate-SOF0-mark.patch
+  * 0010-commands-extcmd-Missing-check-for-failed-allocation.patch
+  * 0011-commands-pgp-Unregister-the-check_signatures-hooks-o.patch
+  * 0012-normal-Remove-variables-hooks-on-module-unload.patch
+  * 0013-gettext-Remove-variables-hooks-on-module-unload.patch
+  * 0014-gettext-Integer-overflow-leads-to-heap-OOB-write-or-.patch
+  * 0015-gettext-Integer-overflow-leads-to-heap-OOB-write.patch
+  * 0016-commands-read-Fix-an-integer-overflow-when-supplying.patch
+  * 0017-commands-minicmd-Block-the-dump-command-in-lockdown-.patch
+  * 0018-fs-bfs-Disable-under-lockdown.patch
+  * 0019-fs-Disable-many-filesystems-under-lockdown.patch
+  * 0020-fs-Prevent-overflows-when-allocating-memory-for-arra.patch
+  * 0001-fs-xfs-Add-new-superblock-features-added-in-Linux-6..patch
+  * 0002-fs-xfs-Fix-grub_xfs_iterate_dir-return-value-in-case.patch
+  * 0003-fs-xfs-fix-large-extent-counters-incompat-feature-su.patch
+  * 0001-ieee1275-adding-failure-check-condition-on-ibm-secur.patch
+  * 0002-ieee1275-Platform-Keystore-PKS-Support.patch
+  * 0003-ieee1275-Read-the-DB-and-DBX-secure-boot-variables.patch
+  * 0004-appendedsig-The-creation-of-trusted-and-distrusted-l.patch
+  * 0005-appendedsig-While-verifying-the-kernel-use-trusted-a.patch
+  * 0006-powerpc_ieee1275-set-use_static_keys-flag.patch
+  * 0007-appendedsig-Reads-the-default-DB-keys-from-ELF-Note.patch
+  * 0008-appendedsig-The-grub-command-s-trusted-and-distruste.patch
+  * 0009-appendedsig-documentation.patch
+  * grub2-provide-edid.patch
+  * 0001-tpm2_key_protector-Add-grub-emu-support.patch
+  * 0001-tss2-Adjust-bit-fields-for-big-endian-targets.patch
+  * 0002-term-ieee1275-serial-Cast-0-to-proper-type.patch
+  * 0003-ieee1275-Consolidate-repeated-definitions-of-IEEE127.patch
+  * 0004-ieee1275-ibmvpm-Move-TPM-initialization-functions-to.patch
+  * 0005-ieee1275-tcg2-Refactor-grub_ieee1275_tpm_init.patch
+  * 0006-ieee1275-tcg2-Add-TCG2-driver-for-ieee1275-PowerPC-f.patch
+  * 0007-tpm2_key_protector-Enable-build-for-powerpc_ieee1275.patch
+  * 0001-tpm2_key_protector-Dump-PCRs-on-policy-fail.patch
+  * 0002-tpm2_key_protector-Add-tpm2_dump_pcr-command.patch
+  * 0003-tss2-Fix-the-missing-authCommand.patch
+  * 0004-tss2-Add-TPM-2.0-NV-index-commands.patch
+  * 0005-tpm2_key_protector-Unseal-key-from-a-buffer.patch
+  * 0006-tpm2_key_protector-Support-NV-index-handles.patch
+  * 0007-util-grub-protect-Support-NV-index-mode.patch
+  * grub2-string-initializer.patch
+  * grub2-blscfg-fix-hang.patch
+  * 0001-kern-rescue_reader-Block-the-rescue-mode-until-the-C.patch
+  * 0002-commands-search-Introduce-the-cryptodisk-only-argume.patch
+  * 0003-disk-diskfilter-Introduce-the-cryptocheck-command.patch
+  * 0004-commands-search-Add-the-diskfilter-support.patch
+  * 0005-docs-Document-available-crypto-disks-checks.patch
+  * 0006-disk-cryptodisk-Add-the-erase-secrets-function.patch
+  * 0007-disk-cryptodisk-Wipe-the-passphrase-from-memory.patch
+  * 0008-cryptocheck-Add-quiet-option.patch
+  * 0001-disk-cryptodisk-Allow-user-to-retry-failed-passphras.patch
+  * grub2-constant-time-grub_crypto_memcmp.patch
+  * 0001-tcp-Fix-TCP-port-number-reused-on-reboot.patch
+  * 0001-modules-Make-.module_license-read-only.patch
+  * 0002-modules-Strip-.llvm_addrsig-sections-and-similar.patch
+  * 0003-modules-Don-t-allocate-space-for-non-allocable-secti.patch
+  * 0004-modules-Load-module-sections-at-page-aligned-address.patch
+  * 0005-nx-Add-memory-attribute-get-set-API.patch
+  * 0006-nx-Set-page-permissions-for-loaded-modules.patch
+  * 0007-nx-Set-the-NX-compatible-flag-for-the-GRUB-EFI-image.patch
+  * 0008-efi-Provide-wrappers-for-load_image-start_image-and-.patch
+  * 0009-efi-sb-Add-support-for-the-shim-loader-protocol.patch
+  * 0010-efi-sb-Add-API-for-retrieving-shim-loader-image-hand.patch
+  * 0011-loader-efi-chainloader-Use-shim-loader-image-handle-.patch
+  * 0012-loader-efi-linux-Use-shim-loader-image-handle-where-.patch
+  * 0013-nx-Rename-GRUB_DL_ALIGN-to-DL_ALIGN.patch
+  * 0001-lib-crypto-Introduce-new-HMAC-functions-to-reuse-buf.patch
+  * 0002-lib-pbkdf2-Optimize-PBKDF2-by-reusing-HMAC-handle.patch
+  * 0001-kern-misc-Implement-faster-grub_memcpy-for-aligned-b.patch
+  * 0001-term-ns8250-spcr-Return-if-redirection-is-disabled.patch
+  * 0001-ieee1275-Use-net-config-for-boot-location-instead-of.patch
+  * 0001-kern-file-Call-grub_dl_unref-after-fs-fs_close.patch
+  * 0002-net-net-Unregister-net_set_vlan-command-on-unload.patch
+  * 0003-gettext-gettext-Unregister-gettext-command-on-module.patch
+  * 0004-normal-main-Unregister-commands-on-module-unload.patch
+  * 0005-tests-lib-functional_test-Unregister-commands-on-mod.patch
+  * 0006-commands-usbtest-Use-correct-string-length-field.patch
+  * 0007-commands-usbtest-Ensure-string-length-is-sufficient-.patch
+- From Danilo Spinella <danilo.spinella@suse.com>: Fix LoaderEntries with
+  entries with boot counting enabled
+  * grub2-bls-loader-entries-boot-counting.patch
+  * grub2-bls-loader-features.patch
+  * grub2-bls-loader-config-timeout.patch
+- New patch
+  * 0001-editenv-create-health_check_flag-env-var-on-RW-raw-b.patch
+  * 0001-00_header-Omit-loading-efi_uga-on-non-x86-EFI-platfo.patch
+- Reverted commit
+  * 0001-Revert-configure-Print-a-more-helpful-error-if-autoc.patch
+  * 0002-Revert-configure-Check-linker-for-image-base-support.patch
+- Use -Wno-error=discarded-qualifiers as temporary workaround for build failure
+  with new glibc 2.43
+
+-------------------------------------------------------------------
 Thu Nov 20 08:10:10 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
 
 - Rename sysfb patch file to match purpose

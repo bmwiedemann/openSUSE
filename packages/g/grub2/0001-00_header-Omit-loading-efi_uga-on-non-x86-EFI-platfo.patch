@@ -1,0 +1,42 @@
+From d7158116601881ec676de4c16d82653344ea617f Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Thu, 22 Jan 2026 18:19:23 +0800
+Subject: [PATCH] 00_header: Omit loading efi_uga on non-x86 EFI platforms
+
+When booting the arm64-efi target, GRUB prints the error message that
+may disrupt the boot process:
+
+error: ../../grub-core/fs/btrfs.c:find_path:2163:file
+`/boot/grub2/arm64-efi/efi_uga.mod' not found.
+
+This is introduced by the commit:
+
+ea0b76dc4 util/grub.d/00_header.in: Disable loading all_video for EFI
+
+However the efi_uga module is only enabled for x86_64-efi and i386-efi.
+The script should therefore check the CPU target before attempting to
+load it.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ util/grub.d/00_header.in | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/util/grub.d/00_header.in b/util/grub.d/00_header.in
+index ffb50847f..63d8a1f38 100644
+--- a/util/grub.d/00_header.in
++++ b/util/grub.d/00_header.in
+@@ -179,7 +179,9 @@ else # GRUB_FORCE_EFI_ALL_VIDEO is not set true
+     cat <<EOF
+   if [ x\$grub_platform = xefi ]; then
+     insmod efi_gop
+-    insmod efi_uga
++    if [ x\$grub_cpu = xx86_64 -o x\$grub_cpu = xi386 ]; then
++        insmod efi_uga
++    fi
+   elif [ x\$feature_all_video_module = xy ]; then
+ EOF
+ fi # end GRUB_FORCE_EFI_ALL_VIDEO
+-- 
+2.52.0
+

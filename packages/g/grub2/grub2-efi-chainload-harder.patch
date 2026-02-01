@@ -12,7 +12,7 @@ file_path  (bsc#1216081)
 
 --- a/grub-core/loader/efi/chainloader.c
 +++ b/grub-core/loader/efi/chainloader.c
-@@ -305,40 +305,41 @@
+@@ -303,40 +303,41 @@
  static grub_efi_boolean_t
  read_header (void *data, grub_efi_uint32_t size, pe_coff_loader_image_context_t *context)
  {
@@ -77,7 +77,7 @@ file_path  (bsc#1216081)
  }
  
  static void*
-@@ -607,6 +608,9 @@
+@@ -605,6 +606,9 @@
    if (buffer)
      b->free_pool (buffer);
  
@@ -87,35 +87,35 @@ file_path  (bsc#1216081)
    return 0;
  
  }
-@@ -825,6 +829,31 @@
-   status = b->load_image (0, grub_efi_image_handle, file_path,
- 			  boot_image, size,
- 			  &image_handle);
-+#ifdef SUPPORT_SECURE_BOOT
-+  if (status == GRUB_EFI_SECURITY_VIOLATION && grub_efi_get_secureboot () != GRUB_EFI_SECUREBOOT_MODE_ENABLED)
-+    {
-+      /* If it failed with security violation while not in secure boot mode,
-+         the firmware might be broken. We try to workaround on that by forcing
-+         the SB method! (bsc#887793) */
-+      struct grub_secureboot_chainloader_context *sb_context;
-+
-+      grub_dprintf ("chain", "Possible firmware flaw! Security violation while not in secure boot mode.\n");
-+      sb_context = grub_malloc (sizeof (*sb_context));
-+      if (!sb_context)
-+	goto fail;
-+      sb_context->cmdline = cmdline;
-+      sb_context->cmdline_len = cmdline_len;
-+      sb_context->fsize = size;
-+      sb_context->dev_handle = dev_handle;
-+      sb_context->address = address;
-+      sb_context->pages = pages;
-+      sb_context->file_path = file_path;
-+      grub_file_close (file);
-+      grub_loader_set_ex (grub_secureboot_chainloader_boot,
-+	      grub_secureboot_chainloader_unload, sb_context, 0);
-+      return 0;
-+    }
-+#endif
-   if (status != GRUB_EFI_SUCCESS)
+@@ -822,6 +826,31 @@
      {
-       if (status == GRUB_EFI_OUT_OF_RESOURCES)
+       status = grub_efi_load_image (0, grub_efi_image_handle, file_path,
+ 				boot_image, size, &image_handle);
++#ifdef SUPPORT_SECURE_BOOT
++      if (status == GRUB_EFI_SECURITY_VIOLATION && grub_efi_get_secureboot () != GRUB_EFI_SECUREBOOT_MODE_ENABLED)
++	{
++	  /* If it failed with security violation while not in secure boot mode,
++	     the firmware might be broken. We try to workaround on that by forcing
++	     the SB method! (bsc#887793) */
++	  struct grub_secureboot_chainloader_context *sb_context;
++
++	  grub_dprintf ("chain", "Possible firmware flaw! Security violation while not in secure boot mode.\n");
++	  sb_context = grub_malloc (sizeof (*sb_context));
++	  if (!sb_context)
++	    goto fail;
++	  sb_context->cmdline = cmdline;
++	  sb_context->cmdline_len = cmdline_len;
++	  sb_context->fsize = size;
++	  sb_context->dev_handle = dev_handle;
++	  sb_context->address = address;
++	  sb_context->pages = pages;
++	  sb_context->file_path = file_path;
++	  grub_file_close (file);
++	  grub_loader_set_ex (grub_secureboot_chainloader_boot,
++		  grub_secureboot_chainloader_unload, sb_context, 0);
++	  return 0;
++	}
++#endif
+       if (status != GRUB_EFI_SUCCESS)
+ 	{
+ 	  if (status == GRUB_EFI_OUT_OF_RESOURCES)

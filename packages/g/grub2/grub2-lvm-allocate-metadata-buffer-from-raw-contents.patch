@@ -12,11 +12,9 @@ the likelihood to out of memory error.
  grub-core/disk/lvm.c | 79 ++++++++++++++++++++++++--------------------
  1 file changed, 43 insertions(+), 36 deletions(-)
 
-diff --git a/grub-core/disk/lvm.c b/grub-core/disk/lvm.c
-index 8257159b3..1d1a3dcad 100644
 --- a/grub-core/disk/lvm.c
 +++ b/grub-core/disk/lvm.c
-@@ -140,9 +140,11 @@ grub_lvm_detect (grub_disk_t disk,
+@@ -138,9 +138,11 @@
    grub_err_t err;
    grub_uint64_t mda_offset, mda_size;
    grub_size_t ptr;
@@ -28,7 +26,7 @@ index 8257159b3..1d1a3dcad 100644
    char *metadatabuf, *mda_end, *vgname;
    const char *p, *q;
    struct grub_lvm_label_header *lh = (struct grub_lvm_label_header *) buf;
-@@ -220,21 +222,15 @@ grub_lvm_detect (grub_disk_t disk,
+@@ -218,21 +220,15 @@
  
    dlocn++;
    mda_offset = grub_le_to_cpu64 (dlocn->offset);
@@ -53,7 +51,7 @@ index 8257159b3..1d1a3dcad 100644
    if ((grub_strncmp ((char *)mdah->magic, GRUB_LVM_FMTT_MAGIC,
  		     sizeof (mdah->magic)))
        || (grub_le_to_cpu32 (mdah->version) != GRUB_LVM_FMTT_VERSION))
-@@ -244,42 +240,58 @@ grub_lvm_detect (grub_disk_t disk,
+@@ -242,42 +238,58 @@
  #ifdef GRUB_UTIL
        grub_util_info ("unknown LVM metadata header");
  #endif
@@ -134,13 +132,13 @@ index 8257159b3..1d1a3dcad 100644
      {
   error_parsing_metadata:
  #ifdef GRUB_UTIL
-@@ -288,11 +300,6 @@ grub_lvm_detect (grub_disk_t disk,
+@@ -286,11 +298,6 @@
        goto fail2;
      }
  
 -  p = q = (char *)ptr;
 -
--  if (grub_add ((grub_size_t)metadatabuf, (grub_size_t)mda_size, &ptr))
+-  if (grub_add (ptr, (grub_size_t) grub_le_to_cpu64 (rlocn->size), &ptr))
 -    goto error_parsing_metadata;
 -
    mda_end = (char *)ptr;

@@ -120,17 +120,17 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  	  if (nested)
 --- a/grub-core/normal/menu.c
 +++ b/grub-core/normal/menu.c
-@@ -32,6 +32,9 @@
- #include <grub/script_sh.h>
+@@ -33,6 +33,9 @@
  #include <grub/gfxterm.h>
  #include <grub/dl.h>
+ #include <grub/safemath.h>
 +#ifdef GRUB_MACHINE_IEEE1275
 +#include <grub/ieee1275/ieee1275.h>
 +#endif
  
  /* Time to delay after displaying an error message about a default/fallback
     entry failing to boot.  */
-@@ -317,8 +320,31 @@
+@@ -318,8 +321,31 @@
      grub_env_set ("default", ptr + 1);
    else
      grub_env_unset ("default");
@@ -162,7 +162,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  
    if (errs_before != grub_err_printed_errors)
      grub_wait_after_message ();
-@@ -326,8 +352,23 @@
+@@ -327,8 +353,23 @@
    errs_before = grub_err_printed_errors;
  
    if (grub_errno == GRUB_ERR_NONE && grub_loader_is_loaded ())
@@ -312,7 +312,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  
  /* Max digits for a char is 3 (0xFF is 255), similarly for an int it
     is sizeof (int) * 3, and one extra for a possible -ve sign.  */
-@@ -886,10 +883,6 @@
+@@ -903,10 +900,6 @@
    grub_err_t ret = 0;
    struct grub_script *parsed_script;
  

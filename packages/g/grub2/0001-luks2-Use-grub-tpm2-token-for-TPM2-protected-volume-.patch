@@ -12,11 +12,9 @@ Signed-Off-by Michael Chang <mchang@suse.com>
  grub-core/disk/luks2.c | 81 ++++++++++++++++++++++++++++++++++++++++--
  1 file changed, 79 insertions(+), 2 deletions(-)
 
-diff --git a/grub-core/disk/luks2.c b/grub-core/disk/luks2.c
-index d5106402f..fe5ba777a 100644
 --- a/grub-core/disk/luks2.c
 +++ b/grub-core/disk/luks2.c
-@@ -124,6 +124,14 @@ struct grub_luks2_digest
+@@ -126,6 +126,14 @@
  };
  typedef struct grub_luks2_digest grub_luks2_digest_t;
  
@@ -31,7 +29,7 @@ index d5106402f..fe5ba777a 100644
  gcry_err_code_t AF_merge (const gcry_md_spec_t * hash, grub_uint8_t * src,
  			  grub_uint8_t * dst, grub_size_t blocksize,
  			  grub_size_t blocknumbers);
-@@ -257,6 +265,39 @@ luks2_parse_digest (grub_luks2_digest_t *out, const grub_json_t *digest)
+@@ -267,6 +275,39 @@
    return GRUB_ERR_NONE;
  }
  
@@ -71,7 +69,7 @@ index d5106402f..fe5ba777a 100644
  static grub_err_t
  luks2_get_keyslot (grub_luks2_keyslot_t *k, grub_luks2_digest_t *d, grub_luks2_segment_t *s,
  		   const grub_json_t *root, grub_size_t keyslot_json_idx)
-@@ -561,13 +602,14 @@ luks2_recover_key (grub_disk_t source,
+@@ -594,13 +635,14 @@
  {
    grub_uint8_t candidate_key[GRUB_CRYPTODISK_MAX_KEYLEN];
    char cipher[32], *json_header = NULL, *ptr;
@@ -86,9 +84,9 @@ index d5106402f..fe5ba777a 100644
 -  grub_json_t *json = NULL, keyslots;
 +  grub_json_t *json = NULL, keyslots, tokens;
    grub_err_t ret;
+   grub_size_t sz;
  
-   if (cargs->key_data == NULL || cargs->key_len == 0)
-@@ -605,6 +647,37 @@ luks2_recover_key (grub_disk_t source,
+@@ -644,6 +686,37 @@
        goto err;
      }
  
@@ -126,7 +124,7 @@ index d5106402f..fe5ba777a 100644
    if (grub_disk_native_sectors (source) == GRUB_DISK_SIZE_UNKNOWN)
      {
        /* FIXME: Allow use of source disk, and maybe cause errors in read. */
-@@ -641,6 +714,10 @@ luks2_recover_key (grub_disk_t source,
+@@ -680,6 +753,10 @@
  	  continue;
  	}
  
@@ -137,6 +135,3 @@ index d5106402f..fe5ba777a 100644
        grub_dprintf ("luks2", "Trying keyslot \"%" PRIuGRUB_UINT64_T "\"\n", keyslot.idx);
  
        /* Sector size should be one of 512, 1024, 2048, or 4096. */
--- 
-2.42.0
-

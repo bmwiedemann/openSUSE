@@ -1,0 +1,155 @@
+Add support for  LoaderConfigTimeout and LoaderConfigTimeoutOneShot EFI variables.
+Index: grub-2.14~rc1/grub-core/normal/menu.c
+===================================================================
+--- grub-2.14~rc1.orig/grub-core/normal/menu.c
++++ grub-2.14~rc1/grub-core/normal/menu.c
+@@ -756,34 +756,38 @@ workaround_snapshot_menu_default_entry (
+ }
+ 
+ #ifdef GRUB_MACHINE_EFI
+-static int
+-get_entry_from_efivar(grub_menu_t menu, const char* efivar)
++static char*
++get_efivar(const char* efivar)
+ {
+   grub_efi_status_t status;
+-  grub_size_t entry_size;
+-  grub_efi_char16_t *entry_efi = NULL;
+-  char *entry_name = NULL;
+-  int entry_index = -1;
++  grub_size_t size;
++  grub_efi_char16_t *val_efi = NULL;
++  char *val = NULL;
+   status = grub_efi_get_variable(efivar,
+-								 &grub_efi_loader_guid,
+-								 &entry_size,
+-								 (void**) &entry_efi);
+-  if (status == GRUB_EFI_SUCCESS)
++		  &grub_efi_loader_guid,
++		  &size,
++		  (void**) &val_efi);
++  if (status == GRUB_EFI_SUCCESS && size != 0)
+ 	{
+-	  grub_efi_char16_t *src = entry_efi;
+-	  int size = 0;
+-	  while (*src++)
+-		size++;
+-	  if (size != 0)
+-		{
+-		  entry_name = grub_malloc (size * sizeof (char));
+-		  grub_utf16_to_utf8 ((grub_uint8_t*) entry_name,
+-							  (grub_uint16_t*) entry_efi, size);
+-		  entry_index = search_entry (menu, entry_name);
+-		}
++	  val = grub_malloc (size * sizeof (char));
++	  grub_utf16_to_utf8 ((grub_uint8_t*) val,
++			  (grub_uint16_t*) val_efi, size);
+ 	}
+-  grub_free(entry_name);
+-  return entry_index;
++  return val;
++}
++
++static int
++get_entry_from_efivar(grub_menu_t menu, const char* efivar)
++{
++  char* entry_name = get_efivar(efivar);
++  if (entry_name)
++    {
++      int idx = search_entry (menu, entry_name);
++      grub_free(entry_name);
++      return idx;
++    } else {
++      return -1;
++    }
+ }
+ #endif
+ 
+@@ -814,10 +818,13 @@ run_menu (grub_menu_t menu, int nested,
+ 	{
+ 
+ 	  static long loader_features =
++		  GRUB_EFI_LOADER_FEATURE_CONFIG_TIMEOUT |
++		  GRUB_EFI_LOADER_FEATURE_CONFIG_TIMEOUT_ONE_SHOT |
+ 		  GRUB_EFI_LOADER_FEATURE_ENTRY_DEFAULT |
+ 		  GRUB_EFI_LOADER_FEATURE_ENTRY_ONESHOT |
+ 		  GRUB_EFI_LOADER_FEATURE_BOOT_COUNTING |
+-		  GRUB_EFI_LOADER_FEATURE_XBOOTLDR;
++		  GRUB_EFI_LOADER_FEATURE_XBOOTLDR |
++		  GRUB_EFI_LOADER_FEATURE_MENU_DISABLE;
+ 
+ 	  grub_efi_set_variable("LoaderFeatures", &grub_efi_loader_guid, &loader_features, sizeof(long));
+ 
+@@ -845,6 +852,72 @@ run_menu (grub_menu_t menu, int nested,
+   if (default_entry < 0 || default_entry >= menu->size)
+     default_entry = 0;
+ 
++#ifdef GRUB_MACHINE_EFI
++  if (val && (val[0] == '1' || val[0] == 'y'))
++    {
++      int timeout_oneshot = -1;
++      /* https://systemd.io/BOOT_LOADER_INTERFACE/ */
++      char* loader_config_timeout_oneshot = get_efivar("LoaderConfigTimeoutOneShot");
++      grub_dprintf("bls", "%s\n", loader_config_timeout_oneshot);
++      if (loader_config_timeout_oneshot)
++      {
++        grub_efi_set_variable_to_string("LoaderConfigTimeoutOneShot",
++                &grub_efi_loader_guid, "", 0);
++        timeout_oneshot = (int) grub_strtoul (loader_config_timeout_oneshot, 0, 0);
++        if (grub_errno != GRUB_ERR_NONE)
++          {
++            grub_errno = GRUB_ERR_NONE;
++            timeout_oneshot = -1;
++          }
++        /* We have a valid value */
++        if (timeout_oneshot != -1)
++          {
++            if (timeout_oneshot == 0)
++              {
++                /* Wait indefinitely. In this case we want to set the timeout value to -1.
++                   In this case unsetting timeout will have the same effect. */
++                grub_env_unset ("timeout");
++              } else {
++                grub_menu_set_timeout (timeout_oneshot);
++              }
++              grub_env_set("timeout_style", "menu");
++          }
++        grub_free(loader_config_timeout_oneshot);
++      }
++    /* If there was no LoaderConfigTimeoutOneShot value or it was invalid
++       read LoaderConfigTimeout */
++    if (timeout_oneshot == -1)
++      {
++        char* loader_config_timeout = get_efivar("LoaderConfigTimeout");
++        if (loader_config_timeout)
++          {
++            if (grub_strcmp(loader_config_timeout, "menu-force") == 0)
++              {
++                grub_env_unset ("timeout");
++              } else if (grub_strcmp(loader_config_timeout, "0") == 0 ||
++                      grub_strcmp(loader_config_timeout, "menu-hidden") == 0)
++              {
++                grub_menu_set_timeout (1);
++                grub_env_set("timeout_style", "hidden");
++              } else if (grub_strcmp(loader_config_timeout, "menu-disabled") == 0)
++              {
++                grub_menu_set_timeout (0);
++                grub_env_unset ("timeout");
++              } else {
++                int loader_timeout = (int) grub_strtoul (loader_config_timeout, 0, 0);
++                if (grub_errno == GRUB_ERR_NONE)
++                  {
++                    grub_menu_set_timeout (loader_timeout);
++                    grub_env_set("timeout_style", "menu");
++                  } else {
++                    grub_errno = GRUB_ERR_NONE;
++                  }
++              }
++            grub_free(loader_config_timeout);
++          }
++      }
++    }
++#endif
+   timeout = grub_menu_get_timeout ();
+   if (timeout < 0)
+     /* If there is no timeout, the "countdown" and "hidden" styles result in

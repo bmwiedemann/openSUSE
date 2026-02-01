@@ -14,11 +14,9 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  include/grub/i386/linux.h         |  6 ++-
  2 files changed, 65 insertions(+), 8 deletions(-)
 
-diff --git a/grub-core/loader/i386/efi/linux.c b/grub-core/loader/i386/efi/linux.c
-index d284db5d1..d49749269 100644
 --- a/grub-core/loader/i386/efi/linux.c
 +++ b/grub-core/loader/i386/efi/linux.c
-@@ -52,13 +52,22 @@ struct allocation_choice {
+@@ -52,13 +52,22 @@
      grub_efi_allocate_type_t alloc_type;
  };
  
@@ -42,7 +40,7 @@ index d284db5d1..d49749269 100644
  
  static inline void
  kernel_free(void *addr, grub_efi_uintn_t size)
-@@ -80,6 +89,11 @@ kernel_alloc(grub_efi_uintn_t size, const char * const errmsg)
+@@ -80,6 +89,11 @@
        grub_uint64_t max = max_addresses[i].addr;
        grub_efi_uintn_t pages;
  
@@ -54,7 +52,7 @@ index d284db5d1..d49749269 100644
        if (max == prev_max)
  	continue;
  
-@@ -168,6 +182,9 @@ read(grub_file_t file, grub_uint8_t *bufp, grub_size_t len)
+@@ -168,6 +182,9 @@
    return bufpos;
  }
  
@@ -64,14 +62,14 @@ index d284db5d1..d49749269 100644
  static grub_err_t
  grub_cmd_initrd (grub_command_t cmd __attribute__ ((unused)),
                   int argc, char *argv[])
-@@ -208,8 +225,12 @@ grub_cmd_initrd (grub_command_t cmd __attribute__ ((unused)),
+@@ -208,8 +225,12 @@
      goto fail;
    grub_dprintf ("linux", "initrd_mem = %p\n", initrd_mem);
  
 -  params->ramdisk_size = size;
 -  params->ramdisk_image = initrd_mem;
-+  params->ramdisk_size = LOW_U32(size);
-+  params->ramdisk_image = LOW_U32(initrd_mem);
++  params->hdr.ramdisk_size = LOW_U32(size);
++  params->hdr.ramdisk_image = LOW_U32(initrd_mem);
 +#if defined(__x86_64__)
 +  params->ext_ramdisk_size = HIGH_U32(size);
 +  params->ext_ramdisk_image = HIGH_U32(initrd_mem);
@@ -79,7 +77,7 @@ index d284db5d1..d49749269 100644
  
    ptr = initrd_mem;
  
-@@ -329,6 +350,18 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+@@ -329,6 +350,18 @@
      }
  #endif
  
@@ -98,7 +96,7 @@ index d284db5d1..d49749269 100644
    params = kernel_alloc (sizeof(*params), "cannot allocate kernel parameters");
    if (!params)
      goto fail;
-@@ -365,21 +398,40 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+@@ -365,21 +398,40 @@
  
    grub_dprintf ("linux", "cmdline:%s\n", linux_cmdline);
    grub_dprintf ("linux", "setting lh->cmd_line_ptr to 0x%08x\n",
@@ -141,7 +139,7 @@ index d284db5d1..d49749269 100644
    if (!kernel_mem)
      goto fail;
    grub_dprintf("linux", "kernel_mem = %p\n", kernel_mem);
-@@ -388,8 +440,9 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+@@ -388,8 +440,9 @@
  
    loaded = 1;
  
@@ -153,23 +151,3 @@ index d284db5d1..d49749269 100644
  
    grub_memcpy (kernel_mem, (char *)kernel + start, filelen - start);
  
-diff --git a/include/grub/i386/linux.h b/include/grub/i386/linux.h
-index 25ef52c04..fac22476c 100644
---- a/include/grub/i386/linux.h
-+++ b/include/grub/i386/linux.h
-@@ -236,7 +236,11 @@ struct linux_kernel_params
-   grub_uint32_t ofw_cif_handler;	/* b8 */
-   grub_uint32_t ofw_idt;		/* bc */
- 
--  grub_uint8_t padding7[0x1b8 - 0xc0];
-+  grub_uint32_t ext_ramdisk_image;	/* 0xc0 */
-+  grub_uint32_t ext_ramdisk_size;	/* 0xc4 */
-+  grub_uint32_t ext_cmd_line_ptr;	/* 0xc8 */
-+
-+  grub_uint8_t padding7[0x1b8 - 0xcc];
- 
-   union
-     {
--- 
-2.31.1
-

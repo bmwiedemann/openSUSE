@@ -383,9 +383,9 @@ Vn+2:
        grub_free (msg_translated);
 +#endif
  
-       if (nested)
+       if (!grub_is_cli_disabled ())
  	{
-@@ -211,6 +227,10 @@
+@@ -214,6 +230,10 @@
  
    title = entry ? entry->title : "";
    title_len = grub_strlen (title);
@@ -396,7 +396,7 @@ Vn+2:
    unicode_title = grub_calloc (title_len, sizeof (*unicode_title));
    if (! unicode_title)
      /* XXX How to show this error?  */
-@@ -244,6 +264,14 @@
+@@ -247,6 +267,14 @@
    if (data->geo.num_entries > 1)
      grub_putcode (highlight ? '*' : ' ', data->term);
  
@@ -411,7 +411,7 @@ Vn+2:
    grub_print_ucs4_menu (unicode_title,
  			unicode_title + len,
  			0,
-@@ -416,6 +444,8 @@
+@@ -419,6 +447,8 @@
    grub_term_highlight_color = old_color_highlight;
    geo->timeout_y = geo->first_entry_y + geo->num_entries
      + geo->border + empty_lines;
@@ -420,7 +420,7 @@ Vn+2:
    if (bottom_message)
      {
        grub_term_gotoxy (term,
-@@ -425,6 +455,8 @@
+@@ -428,6 +458,8 @@
        print_message (nested, edit, term, 0);
        geo->timeout_y += msg_num_lines;
      }
@@ -429,7 +429,7 @@ Vn+2:
    geo->right_margin = grub_term_width (term)
      - geo->first_entry_x
      - geo->entry_width - 1;
-@@ -436,12 +468,19 @@
+@@ -439,12 +471,19 @@
    struct menu_viewer_data *data = dataptr;
    char *msg_translated = 0;
  
@@ -451,7 +451,7 @@ Vn+2:
    else
      msg_translated = grub_xasprintf (_("The highlighted entry will be executed automatically in %ds."), timeout);
    if (!msg_translated)
-@@ -471,6 +510,8 @@
+@@ -474,6 +513,8 @@
  			       data->term);
    grub_free (msg_translated);
  
@@ -460,7 +460,7 @@ Vn+2:
    grub_term_gotoxy (data->term,
  		    (struct grub_term_coordinate) {
  		      grub_term_cursor_x (&data->geo),
-@@ -498,7 +539,7 @@
+@@ -501,7 +542,7 @@
        data->first = entry;
        complete_redraw = 1;
      }
@@ -469,7 +469,7 @@ Vn+2:
      print_entries (data->menu, data);
    else
      {
-@@ -528,6 +569,9 @@
+@@ -531,6 +572,9 @@
    struct menu_viewer_data *data = dataptr;
    int i;
  
@@ -492,7 +492,7 @@ Vn+2:
  void
 --- a/grub-core/kern/emu/main.c
 +++ b/grub-core/kern/emu/main.c
-@@ -190,6 +190,12 @@
+@@ -195,6 +195,12 @@
    NULL, help_filter, NULL
  };
  
@@ -505,7 +505,7 @@ Vn+2:
  
  
  #pragma GCC diagnostic ignored "-Wmissing-prototypes"
-@@ -259,7 +265,7 @@
+@@ -264,7 +270,7 @@
        sleep (1);
      }
  

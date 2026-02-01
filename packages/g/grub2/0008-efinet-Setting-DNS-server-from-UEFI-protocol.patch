@@ -43,7 +43,7 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  
  static grub_err_t
  send_card_buffer (struct grub_net_card *dev,
-@@ -342,6 +344,125 @@
+@@ -343,6 +345,125 @@
    grub_free (handles);
  }
  
@@ -169,7 +169,7 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  static struct grub_net_buff *
  grub_efinet_create_dhcp_ack_from_device_path (grub_efi_device_path_t *dp, int *use_ipv6)
  {
-@@ -394,6 +515,8 @@
+@@ -395,6 +516,8 @@
        grub_efi_ipv4_device_path_t *ipv4 = (grub_efi_ipv4_device_path_t *) ldp;
        struct grub_net_bootp_packet *bp;
        grub_uint8_t *ptr;
@@ -178,7 +178,7 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  
        bp = (struct grub_net_bootp_packet *) nb->tail;
        err = grub_netbuff_put (nb, sizeof (*bp) + 4);
-@@ -455,6 +578,25 @@
+@@ -456,6 +579,25 @@
        *ptr++ = sizeof ("HTTPClient") - 1;
        grub_memcpy (ptr, "HTTPClient", sizeof ("HTTPClient") - 1);
  
@@ -204,7 +204,7 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
        ptr = nb->tail;
        err = grub_netbuff_put (nb, 1);
        if (err)
-@@ -487,6 +629,8 @@
+@@ -488,6 +630,8 @@
        struct grub_net_dhcp6_option *opt;
        struct grub_net_dhcp6_option_iana *iana;
        struct grub_net_dhcp6_option_iaaddr *iaaddr;
@@ -213,7 +213,7 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  
        d6p = (struct grub_net_dhcp6_packet *)nb->tail;
        err = grub_netbuff_put (nb, sizeof(*d6p));
-@@ -550,6 +694,25 @@
+@@ -551,6 +695,25 @@
        opt->len = grub_cpu_to_be16 (uri_len);
        grub_memcpy (opt->data, uri_dp->uri, uri_len);
  
@@ -241,8 +241,8 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  
 --- a/include/grub/efi/api.h
 +++ b/include/grub/efi/api.h
-@@ -379,6 +379,16 @@
-     {0xb6, 0xc7, 0x44, 0x0b, 0x29, 0xbb, 0x8c, 0x4f } \
+@@ -399,6 +399,16 @@
+     { 0xbd, 0x89, 0x86, 0x3b, 0xbe, 0xf8, 0x23, 0x25 } \
    }
  
 +#define GRUB_EFI_IP4_CONFIG2_PROTOCOL_GUID \
@@ -258,9 +258,9 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  struct grub_efi_sal_system_table
  {
    grub_uint32_t signature;
-@@ -1879,4 +1889,70 @@
- } GRUB_PACKED;
- typedef struct initrd_media_device_path initrd_media_device_path_t;
+@@ -1919,4 +1929,70 @@
+ };
+ typedef struct grub_efi_memory_attribute_protocol grub_efi_memory_attribute_protocol_t;
  
 +enum grub_efi_ip4_config2_data_type {
 +  GRUB_EFI_IP4_CONFIG2_DATA_TYPE_INTERFACEINFO,

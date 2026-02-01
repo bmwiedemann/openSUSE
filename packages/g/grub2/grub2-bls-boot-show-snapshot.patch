@@ -1,30 +1,31 @@
-Index: grub-2.12/grub-core/commands/blscfg.c
-===================================================================
---- grub-2.12.orig/grub-core/commands/blscfg.c
-+++ grub-2.12/grub-core/commands/blscfg.c
-@@ -810,6 +810,7 @@ static void create_entry (struct bls_ent
-   const char **argv = NULL;
+--- a/grub-core/commands/blsuki.c
++++ b/grub-core/commands/blsuki.c
+@@ -1100,6 +1100,21 @@
+     id[id_len - BLS_EXT_LEN] = '\0';
  
-   char *title = NULL;
-+  char *version = NULL;
-   char *clinux = NULL;
-   char *options = NULL;
-   char **initrds = NULL;
-@@ -853,7 +854,9 @@ static void create_entry (struct bls_ent
-   if (dotconf)
-     dotconf[0] = '\0';
- 
--  title = bls_get_val (entry, "title", NULL);
-+  title = grub_strdup(bls_get_val (entry, "title", NULL));
-+  version = bls_get_val (entry, "version", NULL);
-+  title = version ? grub_xasprintf("%s (%s)", title, version) : title;
-   options = expand_val (bls_get_val (entry, "options", NULL));
- 
-   if (!options)
-@@ -1040,6 +1043,7 @@ finish:
-   grub_free (devicetree);
-   grub_free (initrds);
-   grub_free (options);
+   title = blsuki_get_val (entry, "title", NULL);
++  if (title != NULL)
++    {
++      char *title_v = NULL;
++      char *version = NULL;
++
++      version = blsuki_get_val (entry, "version", NULL);
++      if (version != NULL)
++	title_v = grub_xasprintf("%s (%s)", title, version);
++      if (title_v != NULL)
++	{
++	  grub_free (title);
++	  title = title_v;
++	}
++      grub_free (version);
++    }
+   hotkey = blsuki_get_val (entry, "grub_hotkey", NULL);
+   users = blsuki_expand_val (blsuki_get_val (entry, "grub_users", NULL));
+   classes = blsuki_make_list (entry, "grub_class", NULL);
+@@ -1158,6 +1173,7 @@
+   grub_free (linux_cmd);
+   grub_free (dt_cmd);
+   grub_free (initrd_cmd);
 +  grub_free (title);
    grub_free (classes);
    grub_free (args);

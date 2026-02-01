@@ -18,18 +18,15 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 
 --- a/grub-core/kern/dl.c
 +++ b/grub-core/kern/dl.c
-@@ -38,6 +38,10 @@
- #define GRUB_MODULES_MACHINE_READONLY
+@@ -44,6 +44,7 @@
  #endif
  
-+#ifdef GRUB_MACHINE_EFI
+ #ifdef GRUB_MACHINE_EFI
 +#include <grub/efi/sb.h>
-+#endif
-+
- 
- 
- #pragma GCC diagnostic ignored "-Wcast-align"
-@@ -708,6 +712,19 @@
+ #define DL_ALIGN	GRUB_EFI_PAGE_SIZE
+ #else
+ #define DL_ALIGN	1
+@@ -831,6 +832,19 @@
  
    grub_boot_time ("Loading module %s", filename);
  

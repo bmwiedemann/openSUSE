@@ -9,73 +9,65 @@ after the one without a boot counter or with a positive boot counter.
 After removing the boot counter from the release string, keep the ordering
 as it worked previously.
 
-Index: grub-2.12/grub-core/commands/blscfg.c
-===================================================================
---- grub-2.12.orig/grub-core/commands/blscfg.c
-+++ grub-2.12/grub-core/commands/blscfg.c
-@@ -323,9 +323,37 @@ finish:
- /* NULL string pointer returned if nothing found */
- static void
- split_package_string (char *package_string, char **name,
--                     char **version, char **release)
-+                     char **version, char **release, int *tries_left)
- {
--  char *package_version, *package_release;
-+  char *package_version, *package_release, *tries_left_str, *tmp;
+--- a/grub-core/commands/blsuki.c
++++ b/grub-core/commands/blsuki.c
+@@ -255,6 +255,39 @@
+   return ret;
+ }
+ 
++static long
++tries_left (const char *filename)
++{
++  char *tries_left_str;
++  long ret = -1;
++  char *str = grub_strdup (filename);
 +
-+  *tries_left = -1;
++  if (str == NULL)
++    return -1;
++
 +  /* Search for the start of the tries left, as per boot assessment */
-+  tries_left_str = grub_strrchr(package_string, '+');
++  tries_left_str = grub_strrchr (str, '+');
++
 +  if (tries_left_str != NULL)
 +    {
-+      /* If there the number of tries available is after the number of tries left (e.g. +1-2)
-+         stop the string at the '-' delimiter, so that strtol
-+         does the parsing of the first part and skip the second */
-+      tmp = grub_strrchr(tries_left_str, '-');
-+      if (tmp != NULL)
-+        {
-+          *tmp = '\0';
-+        }
-+      tmp = tries_left_str;
-+      *tries_left = grub_strtol(++tmp, (const char **)&tmp, 10);
++      const char *end;
++      long tries;
 +
-+      /* Conversion failed */
-+      if (tmp == tries_left_str)
-+        {
-+          /* Reset the counter */
-+          *tries_left = -1;
-+        }
++      ++tries_left_str;
++      tries = grub_strtol (tries_left_str, (const char **) &end, 10);
++
++      if (grub_errno == GRUB_ERR_NONE)
++	{
++	  if (*end == '-' || *end == '.')
++	    ret = tries;
++	}
 +      else
-+        {
-+          *tries_left_str = '\0';
-+        }
++	grub_errno = GRUB_ERR_NONE;
 +    }
- 
-   /* Release */
-   package_release = grub_strrchr (package_string, '-');
-@@ -372,9 +401,23 @@ split_cmp(char *nvr0, char *nvr1, int ha
-   int ret = 0;
-   char *name0, *version0, *release0;
-   char *name1, *version1, *release1;
-+  int tries_left0;
-+  int tries_left1;
 +
-+  split_package_string(nvr0, has_name ? &name0 : NULL, &version0, &release0, &tries_left0);
-+  split_package_string(nvr1, has_name ? &name1 : NULL, &version1, &release1, &tries_left1);
++  grub_free (str);
++  return ret;
++}
+ /*
+  * Add a new grub_blsuki_entry_t struct to the entries list and sort it's
+  * position on the list.
+@@ -274,10 +307,19 @@
  
--  split_package_string(nvr0, has_name ? &name0 : NULL, &version0, &release0);
--  split_package_string(nvr1, has_name ? &name1 : NULL, &version1, &release1);
-+  /* Check for systemd Automatic Boot Assessment
-+     0 has no tries left, while 1 doesn't have a boot count / still has tries left */
-+  if (tries_left0 == 0 && tries_left1 != 0)
-+    {
-+      return -1;
-+    }
-+  /* viceversa, b has no tries left */
-+  else if (tries_left0 != 0 && tries_left1 == 0)
-+    {
-+      return 1;
-+    }
- 
-   if (has_name)
+   FOR_BLSUKI_ENTRIES (e)
      {
++      long t1, t2;
++     
+       rc = filevercmp (entry->filename, e->filename);
+       if (rc == 0)
+ 	return grub_error (GRUB_ERR_BAD_ARGUMENT, N_("duplicate file: `%s'"), entry->filename);
+ 
++      t1 = tries_left (entry->filename);
++      t2 = tries_left (e->filename);
++      if (t2 == 0 && t1 != 0)
++	rc = 1;
++      else if (t2 != 0 && t1 == 0)
++	rc = -1;
++
+       if (rc > 0)
+ 	{
+ 	  grub_dprintf ("blsuki", "Add entry with id \"%s\"\n", entry->filename);

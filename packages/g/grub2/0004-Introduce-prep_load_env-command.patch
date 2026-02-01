@@ -27,9 +27,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -2679,3 +2679,9 @@
-   common = lib/libtasn1_wrap/tests/Test_strings.c;
-   common = lib/libtasn1_wrap/wrap_tests.c;
+@@ -2794,3 +2794,9 @@
+   name = cmdline;
+   common = lib/cmdline.c;
  };
 +
 +module = {
