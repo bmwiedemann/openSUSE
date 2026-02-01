@@ -2332,4 +2332,14 @@
     <comment></comment>
     <requestid>1320147</requestid>
   </revision>
+  <revision rev="295" vrev="2">
+    <srcmd5>859208b950edcc0c2aede20b462837b0</srcmd5>
+    <version>49.2</version>
+    <time>1769979726</time>
+    <user>anag_factory</user>
+    <comment>- Add gdm-initial-vt-tty1.patch: the greeter session runs on tty1
+  when environment variable GDM_INITIAL_VT_TTY1 is defined
+  (bsc#1252888). (forwarded request 1329739 from xiaoguang_wang)</comment>
+    <requestid>1330183</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package gdm
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,6 +74,8 @@ Patch10:        gdm-service-keytable.patch
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE gdm-disable-gnome-initial-setup.patch bnc#1067976 qzhao@suse.com -- Disable gnome-initial-setup runs before gdm, g-i-s will only serve for CJK people to choose the input-method after login.
 Patch1000:      gdm-disable-gnome-initial-setup.patch
+# PATCH-FIX-SLE gdm-initial-vt-tty1.patch bsc#1252888 xwang@suse.com -- Greeter session runs on tty1
+Patch1001:      gdm-initial-vt-tty1.patch
 
 BuildRequires:  check-devel
 # dconf and gnome-session-core are needed for directory ownership

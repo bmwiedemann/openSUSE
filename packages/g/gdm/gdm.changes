@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 28 05:21:04 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gdm-initial-vt-tty1.patch: the greeter session runs on tty1
+  when environment variable GDM_INITIAL_VT_TTY1 is defined
+  (bsc#1252888).
+
+-------------------------------------------------------------------
 Tue Nov 25 08:30:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.2:
