@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 29 14:00:41 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.3
+  * Added the <libHX/tie.hpp> header containing the
+    HX::unique_tie function
+  * Make HX_isascii work in C23 mode
+
+-------------------------------------------------------------------
 Sun Oct 19 13:36:52 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.2
