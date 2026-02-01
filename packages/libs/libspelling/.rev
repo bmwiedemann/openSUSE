@@ -107,4 +107,13 @@
     <comment></comment>
     <requestid>1300963</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>87acc75e09c4091dd9747bb8f59522dd</srcmd5>
+    <version>0.4.10</version>
+    <time>1769979836</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.10:
+  + Updated translations. (forwarded request 1329865 from iznogood)</comment>
+    <requestid>1330187</requestid>
+  </revision>
 </revisionlist>
