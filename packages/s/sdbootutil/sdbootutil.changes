@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 30 13:35:54 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260130.2ae660a:
+  * Better support for GRUB2 2.12 / 2.14
+  * Drop pcrlock_manual_raw in favor of lock-raw
+  * If shim is installed, it will measure the kernel
+  * In grub2-bls the kernel also measures initrd and cmdline
+  * Instead of hd0, uses the DISK-SEQ order
+  * Hide grep error when missing files
+  * A non-snapshot is not read-only
+
+-------------------------------------------------------------------
 Wed Jan 28 07:29:06 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20260127.6240918:
