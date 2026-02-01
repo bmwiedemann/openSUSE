@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-commander
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-commander
-Version:        1.18.4
+Version:        1.18.5
 Release:        0
 Summary:        A file manager for the GNOME desktop environment
 License:        GPL-2.0-or-later

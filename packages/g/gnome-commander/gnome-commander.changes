@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 28 12:06:43 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.5:
+  + Fix Bug: Crash when trying to enter a directory where user
+    doesn't have permission
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 28 11:43:18 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.4:

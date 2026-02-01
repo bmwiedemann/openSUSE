@@ -206,4 +206,15 @@
   + Updated docs. (forwarded request 1307564 from iznogood)</comment>
     <requestid>1307748</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8737ebe20c13f21c3849da20e0820e35</srcmd5>
+    <version>1.18.5</version>
+    <time>1769979833</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.18.5:
+  + Fix Bug: Crash when trying to enter a directory where user
+    doesn't have permission
+  + Updated translations. (forwarded request 1329663 from iznogood)</comment>
+    <requestid>1330188</requestid>
+  </revision>
 </revisionlist>
