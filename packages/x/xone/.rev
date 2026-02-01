@@ -11,4 +11,32 @@ compatible with Microsoft's Game Input Protocol (GIP).
 Now that xone-dongle-firmware is also in Factory, the driver can easily be installed and used on openSUSE :)</comment>
     <requestid>1318347</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>997aeeaa3b55eec1f029265a1829d05f</srcmd5>
+    <version>0.5.4</version>
+    <time>1769979841</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 0.5.4
+  * Work around another sleeping issue
+- Update to release 0.5.3
+  * Work around sleeping issues
+- Update to release 0.5.2
+  * Add fw override module parameter
+- Update to release 0.5.1
+  * Fix pairing through sysfs
+- Update to release 0.5.0
+  * This version breaks compatibility with kernels older than 6.5.0 
+    to lessen the maintainership burden.
+  * Increase the dongle pairing timout
+  * Support firmwares for all the defined dongles
+  * Merge mainline changes from medusalix
+- Update to release 0.4.12
+  * Fix leftover autosuspend handling
+  * Reduce the sleep before registering a GIP client
+  * Cleanup a warning
+  * Improve module unloading for testing
+
+Requires: https://build.opensuse.org/requests/1330200</comment>
+    <requestid>1330202</requestid>
+  </revision>
 </revisionlist>

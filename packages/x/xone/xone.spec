@@ -1,7 +1,7 @@
 #
 # spec file for package xone
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           xone
-Version:        0.4.11
+Version:        0.5.4
 Release:        0
 Summary:        Driver for Xbox One and Xbox Series X|S controllers
 License:        GPL-2.0-or-later
@@ -27,7 +28,7 @@ Source1:        preamble
 BuildRequires:  %kernel_module_package_buildreqs
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
-Requires:       xone-dongle-firmware
+Requires:       xone-dongle-firmware >= 0+git20251208.d8be599
 Requires:       xone-kmp
 
 %kernel_module_package -n %name -p %_sourcedir/preamble
@@ -67,4 +68,3 @@ install -Dm0644 -t "%buildroot/%_modprobedir" source/install/xone.conf
 %_modprobedir/xone.conf
 
 %changelog
-

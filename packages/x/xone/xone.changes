@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Jan 31 16:42:35 UTC 2026 - Tobias Görgens <suse.snooper541@passmail.net>
+
+- Update to release 0.5.4
+  * Work around another sleeping issue
+- Update to release 0.5.3
+  * Work around sleeping issues
+
+-------------------------------------------------------------------
+Sun Jan 25 04:42:42 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Update to release 0.5.2
+  * Add fw override module parameter
+- Update to release 0.5.1
+  * Fix pairing through sysfs
+- Update to release 0.5.0
+  * This version breaks compatibility with kernels older than 6.5.0 
+    to lessen the maintainership burden.
+  * Increase the dongle pairing timout
+  * Support firmwares for all the defined dongles
+  * Merge mainline changes from medusalix
+- Update to release 0.4.12
+  * Fix leftover autosuspend handling
+  * Reduce the sleep before registering a GIP client
+  * Cleanup a warning
+  * Improve module unloading for testing
+
+-------------------------------------------------------------------
 Mon Nov 17 16:46:41 UTC 2025 - Tobias Görgens <suse.snooper541@passmail.net>
 
 - Update to release 0.4.11
