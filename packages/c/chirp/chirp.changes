@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb 01 10:20:58 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260130:
+  * uvk5: Improve read-only warning strategy
+  * uvk5: Bless new found firmware versions 7.00.x
+  * vx1: Fixes for compatibility
+  * Update Italian Translation
+  * Updated Spanish translation for "frequency out of range" message
+
+-------------------------------------------------------------------
 Sat Jan 24 18:04:55 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260123:
