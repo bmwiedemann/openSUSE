@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-rime
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           ibus-rime
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        Rime for Linux/IBus
 License:        GPL-3.0-or-later
 Group:          System/I18n/Chinese
 URL:            https://rime.im/
-Source:         https://github.com/rime/%{name}/archive/refs/tags/%{version}.tar.gz
+Source:         https://github.com/rime/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel

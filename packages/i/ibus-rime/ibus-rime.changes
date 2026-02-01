@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 29 16:35:44 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version 1.6.0:
+  * Features:
+    rime_engine:** change candidate selection horizontally;
+  * Bug Fixes:
+    cmake:** call cmake_minimum_required() piror to project();
+    rime_main:** Adjust the sigterm_cb processing logic;
+
+-------------------------------------------------------------------
 Tue Aug  3 11:37:30 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Update to version 1.5.1:
