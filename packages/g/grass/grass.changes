@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Jan 31 16:13:38 UTC 2026 - Enno Tensing <tenno+suse@suij.in>
+
+- Update to 8.4.2
+  * Switch Source to github relase
+  * Add sha256sum of the tarball, which was not available from
+    the old download location
+  * g.region correctly respects rows and cols when saving a computational region.
+  * v.overlay removes collapsed (zero-length) lines after snapping.
+  * A new srtm_percent color table is available.
+  * The Simple Python Editor supports scripts without required parameters.
+  * The GraphicalModeler preserves previously defined where option values.
+  * Fixed an incorret radiation conversion (PR 5600)
+  * Fixes a short overflow in r.surf.idw (PR 6396)
+  * v.overlay will no longer replace the SQL TEXT type with VARCHAR(250)
+    (PR 6406)
+  * Other fixes and improvements
+- Changes from 8.4.1
+  * r.in.gdal and r.external now have basic support for GDALs GDT_Int8
+    (PR 4256)
+  * Turn of parallelization in r.sim if a mask is active (PR 5037 and
+    PR 5052)
+  * Fixes a crash caused by a translation issue (PR 4513)
+  * Other fixes and improvements
+
+-------------------------------------------------------------------
 Mon Nov  4 17:12:25 UTC 2024 - pgajdos@suse.com
 
 - python3-six is not required

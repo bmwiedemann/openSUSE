@@ -25,13 +25,14 @@ BuildRequires:  python-wxWidgets-devel >= 3.0
 %endif
 
 Name:           grass
-Version:        8.4.0
+Version:        8.4.2
 Release:        0
 Summary:        Geographic Resources Analysis Support System
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Other
 URL:            https://grass.osgeo.org/
-Source:         https://grass.osgeo.org/grass%{shortver}/source/%{name}-%{version}.tar.gz
+Source0:         https://github.com/OSGeo/grass/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:         https://github.com/OSGeo/grass/releases/download/%{version}/%{name}-%{version}.tar.gz.sha256
 BuildRequires:  -post-build-checks
 BuildRequires:  PDAL-devel
 BuildRequires:  bison
@@ -269,7 +270,6 @@ echo %{grassdir} >%{buildroot}/%{_sysconfdir}/GRASSDIR
 %{grassdir}/translators.csv
 %{grassdir}/translation_status.json
 %{grassdir}/contributors*
-%{grassdir}/CHANGES
 %{grassdir}/COPYING
 %{grassdir}/GPL.TXT
 %{grassdir}/REQUIREMENTS.md
