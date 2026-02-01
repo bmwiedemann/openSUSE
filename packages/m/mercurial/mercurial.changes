@@ -1,4 +1,292 @@
 -------------------------------------------------------------------
+Thu Jan 29 22:16:18 UTC 2026 - Sean Baggaley <me@drinkybird.net>
+
+- Mercurial 7.2
+
+  This is the first release to support Python 3.14 and likely the last to
+  support Python 3.9.
+
+  This release is exceptionally full of changes, and as always a lot of minor
+  changes have been omitted from these release notes.
+
+  + New Features
+    * Support for Python 3.14
+    * Added a `closesbranch()` template keyword
+    * Added support for support `--remote-hidden` in `hg incoming`
+    * `hg clone` now supports `--no-stream` to force opt-out of a streamclone
+    * `hg strip` will optionally accept empty revision sets without bailing out
+      (`--permit-empty-revset`). This is unconditionally enabled for `hg debugstrip`
+    * Support for ZSTD is improved by falling back to the system package if the
+      vendored module is not available. This change mostly affects pure python
+      installs and helps distributions to use their integrated version by default.
+      The appropriate package has been added as a Python optional dependency
+      to help people who need it.
+    * Added a new `usage.resources.bandwidth` config to tune how aggressive
+      Mercurial is with its bandwidth usage.
+
+  + Feature moved out of experimental
+    * `dirstate-v2` format (8c912a652c54)
+
+      A better format for storing the working copy information, provides a significant
+      performance boost to `hg status` performance (and other commands that need that
+      information like `commit`, `purge`, etc).
+
+      The use of `dirstate-v2` can only be recommended when using the Rust
+      extensions, as the Python version is quite slow at most operations (likely
+      slower than dirstate-v1).*
+
+      See `hg help config.format.use-dirstate-v2` for details.
+
+    * `diff.merge` configuration (a1c2e0753d1a)
+
+      When set, running `hg diff` on a merge will show the difference compared to the
+      default merge result instead of the diff against a parent. This is quite useful
+      to spot changes introduced by a merge and how conflicts were resolved.
+
+      See `hg help config.diff.merge` for details.
+
+    * `tracked-hint` format (bdd10cd37f6a)
+
+      A small format variant that keeps a small file that helps external automation to
+      detect changes to the set of tracked files.
+
+      See `hg help config.revlog.reuse-external-delta-compression` for details.
+
+    * Parallel stream clone processing (2cc0954cef52)
+
+      The parallel processing of incoming stream bundles is now enabled by default.
+      See `hg help config.worker.parallel-stream-bundle-processing` for details.
+
+  + Performance improvements for existing features
+    * `hg purge` (aka `hg clean`) now better leverages the Rust implementation of
+      "status" when available. This provides performance improvement similar to the
+      one provided by the rust status.
+    * The computation of deltas when storing a revision (during `commit`, `clone`,
+      `push`, `pull`, `unbundle`, ...) was significantly sped up in Mercurial 7.2.
+      This was achieved by a mix of reducing the amount of useless work done,
+      improving the algorithms used, and smarter cache usage. All flavors of
+      Mercurial (using the Rust extensions or not) should see a performance
+      improvement, but using the Rust extensions will show a more dramatic
+      improvement (some benchmark move from almost 4 hours to 2 minutes).
+
+      (Here is small set of the involved changesets: 916d5b1db75f, a2cbf3d71a94,
+      2e8ba3356d7e, 4eb879393c45, 855cfc1c7c42, 2cbc32498a83)
+
+    * The performance of caches related to tags has been improved when using the
+      Rust extensions (f93ba6645f8e, eed40a296a18)
+    * The performance of `commit` has been improved by removing useless computation
+    * The performance of the Rust index (specifically the nodemap) with large
+      revlogs has been improved
+    * Warming a cold filenode tag cache is up to 12% faster
+
+  + New Experimental Features and Formats
+    + Narrow-Store's Shapes
+
+      We are introducing the concept of "shapes" to improve the experience using
+      `narrow`. Since using `narrow` implies using a more centralized workflow of
+      version control, clients being dependent on the server for all practical
+      matters of exchanging changes, we want to make this hybrid
+      centralized/distributed world more practical.
+
+      The feature is still experimental and actively worked on, but Mercurial 7.2
+      ships some already usable parts:
+
+      * A new server-side configuration (`.hg/store/server-shapes`) to define shapes,
+        which are normalized and minimal descriptions of views into a slice of a
+        repository store based on file names
+      * A new `admin::narrow-server` command to get and list important information
+        about these shapes
+      * A new `admin::narrow-client` command to inspect the client state within this
+        workflow
+      * `hg bundle` is now able to generate streaming narrow clonebundles from shapes:
+          * Support for *non-streaming* narrow clonebundles is not implemented yet
+          * Each such bundle's bundlespec contains the fingerprint of the shape it was
+            generated with
+          * A client `hg` can generate the same fingerprint from the narrow patterns
+            passed to `clone` (`--include`, `--exclude`)
+          * This makes the client `hg` filter out bundles that do not have the
+            expected fingerprint
+          * Old clients will not receive fingerprinted bundles when listing
+            clonebundles, so backwards compatibility is conserved
+          * This process is quite manual still, but is expected to improve in the
+            coming versions
+
+      For more detailed information, see `hg help shapes`.
+
+    + File Index
+
+      The File Index is a new repository format that supersedes the `fncache` format.
+      It tracks all file paths ever used within a repository throughout its entire
+      history (excluding the working copy) and is useful for many common commands.
+      The File Index is designed for efficient querying and updating and our
+      benchmarks show significant performance improvements compared to when using the
+      `fncache`. This is an internal format change that doesn't affect the
+      availability of any feature.
+
+      The introduction of the File Index will also open the door for other
+      datastructures and algorithms to make use of its internal mapping of unique
+      file to unique token, further unlocking a ton of performance down the line. You
+      can learn more about its design by running `hg help internals.file-index`.
+
+      While basic support for the file index is implemented in Python, its use is
+      only recommended when using the Rust extensions for performance reasons.
+
+    + Revlog delta info
+
+      The `delta-info-revlog` format variant is a small adjustment to the `revlog-v1`
+      format to better keep track of some information to help speed up some operations
+      and improve the internal storage. This is an internal format change that doesn't
+      affect the availability of any feature.
+
+      The new information stored mostly focuses on:
+
+      - Does a file revision contain file rename metadata?
+      - Is a stored delta a "standard delta" or a "snapshot" (of any level)?
+      - Is the stored delta "small" and which parent is best to find such a "small"
+      delta?
+
+      Having this information around has various benefits:
+
+      - We no longer need to manually inspect rename metadata in any case, speeding up
+        various operations. This especially helps the copy tracing used by `hg status`
+        and `hg merge` where such checks would add up to ⅓ of the total time.
+      - We no longer need to worry about `issue6528` on delta-info repositories
+        (especially during exchanges given that `changegroup-v4` is used)
+      - Having more information about delta quality and "best parent" helps to
+        generate better bundles faster when the stored delta cannot be directly
+        reused.
+      - Having more precise snapshot information allows for more advanced heuristics
+        when creating the delta tree used for storage. In particular, it unlocks
+        skipping over redundant deltas in the parents' chain, using delta folding
+        heuristics. That last part requires the Rust extensions to be enabled.
+
+      Consider giving the format a try on large repositories if you experience slow
+      `push`/`pull`.
+
+      Some of these features are controlled by the following experimental features:
+      - `storage.revlog.record-delta-quality`
+      - `storage.delta-fold-estimate`
+
+    + Changegroup v4
+
+      A new changegroup format was introduced to carry the new information from
+      delta-info. The format also includes some extra features that help performance
+      overall:
+
+      - explicitly transfer the full revision size to avoid situations where the
+        client has to recompute at unbundle time
+      - explicitly carry the "has metadata" information for filelogs to avoid the need
+        to detect `issue6528` at unbundle time
+      - explicitly carry snapshot and quality information regarding exchanged delta to
+        help the client to take more informed decisions when applying incoming deltas
+      - explicitly carry the source delta base information to help the client find a
+        suitable base quicker when receiving a recomputed delta
+      - allow the exchange of deltas in their compressed form. This reduces the
+        overall efficiently of compressing the bundle stream, but avoids costs
+        associated with decompressing and recompressing the deltas on the server *and*
+        the client. This also helps to identify deltas that won't benefit from being
+        compressed to speedup their application.
+
+      This format is not used by default unless the `delta-info-revlog` format variant
+      is in use. It can be enabled using the `experimental.changegroup4`
+      configuration.
+
+      The various new features and behaviors associated with it can be controlled
+      using various configuration options:
+
+      - `storage.revlog.exchange-compressed-delta`
+      - `storage.revlog.reuse-external-delta-compression`
+      - `storage.revlog.reuse-external-suspicious-delta-parent`
+
+    + Branchmap v3
+
+      The V3 version of the branchmap is a small evolution from the V2 format that has
+      been used. The main difference is that the topological heads are no longer
+      explicitly listed in the cache. This significantly reduces the size the
+      branchmap that has to be read and written to disk and allows for various
+      optimizations when a repository update only affects topological heads on a
+      branch.
+
+      In particular, this new branchmap format drastically reduces the cost of
+      named-branch-related computations for large repositories that don't use the
+      feature.
+
+      Further performance improvements are expected with further code changes in later
+      versions (without affecting the format).
+
+      That feature is not enabled by default yet, don't hesitate to give it a try on
+      any repositories with many heads or branches you might have at hand.
+
+    + Rust Fast Path
+
+      `rhg` now supports the `purge` (aka `clean`) command, for even better
+      performance that combines with the on this command gains previously mentioned.
+
+  + Bug Fixes
+    * The `profiling.output-dir` now supports expansion of tilde and shell variables
+    * The `lfs` extension now expands and resolves the blob cache path to an
+      absolute path
+    * The availability of the given compression engine is now checked before
+      applying a clonebundle
+    * Extensions can now alter the contents of the repo's default config when using
+      stream clone
+    * Support for changing the process name on Linux and MacOS has been restored
+      (useful for `chg` users)
+    * Using `RUST_LOG` when profiling with `py-spy` will not display the logs of
+      `py-spy` itself anymore
+    * `hgweb` now validates that plain filesystem paths exist in `--web-conf` file
+      instead of raising 500
+    * subrepo: fix an error handler in `hgsubrepo.matchfileset()`
+    * largefiles: fix a MergeAction bytes vs str issue for marking a file removed
+    * Local access to repositories with `pull`/`incoming` and `push` now honors
+      `server.view` (note that `hg clone` in link-mode still does *not* honour
+      `server.view`, `hg clone --pull` does)
+    * repo-cache: fix using --chg with the rust extension (issue10048)
+    * update: fix crash in rust update-from-clean on certain byte sequences
+    * tracing: avoid writing traces to stdout, write to stderr instead
+    * verify: fix fncache consistency checks (fixes #10045)
+    * encoding: skip over "environ" re-encoding it the codec is bad
+
+  + Internal API Changes
+    The large and ongoing Python typing effort has once again made significant
+    progress. To that end, there was a large import-cycle-breaking series that
+    implied refactoring, new files which may make this merge more difficult for
+    extension maintainers. We're sorry about that, but typing the Python code is
+    helping us make the codebase a lot clearer and is now catching a lot of bugs
+    during development, including within common third-party extensions like
+    `tortoise-hg`.
+
+    Raw changes are listed here to help with migrating.
+
+    - 54d9dc0c2209 "cleanup: drop compatibility for `islocal(<repo-obj>)`"
+    - f2aa1bb35860 "deprecations: remove support for `HGWITHRUSTEXT` env var and
+      its usages"
+    - f026848bebe4 "deprecations: remove `manifest.readfast`"
+    - e915f96ea1d5 "deprecations: remove `manifest.readdelta`"
+    - ee0a7fa4cdd5 "revlog: enforce the "writable parameter""
+    - 592438265fb3 "cleanup: drop the simplestorerepo extension"
+    - 4963494bbd3f "bundle2: deprecate `bundle2.getrepocaps()` for hg 7.3"
+    - a49c8fe2c986 "branchmap: drop the `repo.branchheads` method"
+
+  + Miscellaneous
+    * Add a `commands.commit.report-head-changes` config option, to remove the need
+      for what can be an expensive computation in cases where it's not needed.
+    * contrib: update apache-server Dockerfile to debian:trixie
+    * Added `--py-installer` option to `run-tests.py` to control how Mercurial is
+      installed before tests
+    * Added an `--offline` option to `run-tests.py`
+    * Documented installation through `uv` for Rust extensions (see `hg help rust`)
+
+    Following the significant work made in 7.1 in this area, further changes have
+    been made to the way developers can create a local copy of Mercurial for
+    testing. Here are the unedited changes to make it easier to follow for those
+    affected:
+
+    - e2d10987bf26 "make-local: change the venv name"
+    - e53ba925c7eb "make-local: add a symbolic link hg-local"
+    - 2d69d5a333a6 "make-local: OFFLINE option"
+
+-------------------------------------------------------------------
 Tue Nov 18 09:40:31 UTC 2025 - Sean Baggaley <me@drinkybird.net>
 
 - Mercurial 7.1.2

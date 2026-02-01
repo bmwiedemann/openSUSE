@@ -1946,4 +1946,12 @@ Regularly scheduled major release. (forwarded request 1186324 from develop7)</co
 - Remove docutils-022.patch as it's been applied upstream</comment>
     <requestid>1318426</requestid>
   </revision>
+  <revision rev="220" vrev="1">
+    <srcmd5>35964404aeed1801dd84073931d1827f</srcmd5>
+    <version>7.2</version>
+    <time>1769979707</time>
+    <user>anag_factory</user>
+    <comment>- Mercurial 7.2</comment>
+    <requestid>1329898</requestid>
+  </revision>
 </revisionlist>
