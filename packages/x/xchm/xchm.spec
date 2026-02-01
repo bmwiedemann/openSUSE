@@ -17,7 +17,7 @@
 
 
 Name:           xchm
-Version:        1.37
+Version:        1.38
 Release:        0
 Summary:        A wxWidgets CHM document viewer
 License:        GPL-2.0-or-later

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb  1 16:16:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.38
+  * Added drag-and-drop support
+  * Added support for external .chi index files
+  * Performance improvements
+
+-------------------------------------------------------------------
 Tue Oct 22 10:03:47 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.37
