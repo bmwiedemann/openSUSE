@@ -151,4 +151,12 @@
     <comment>- completely disable AVX10.2/AVX3 [boo#1248740]</comment>
     <requestid>1302595</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>a8ae886ed0eb1aa52a0cb50e7d31a9c4</srcmd5>
+    <version>1.3.0</version>
+    <time>1769979703</time>
+    <user>anag_factory</user>
+    <comment>- Reenable LTO on riscv64, gcc has been fixed</comment>
+    <requestid>1329886</requestid>
+  </revision>
 </revisionlist>

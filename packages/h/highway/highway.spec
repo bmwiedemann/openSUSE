@@ -1,7 +1,7 @@
 #
 # spec file for package highway
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,6 @@
 
 
 %define lname libhwy1
-%ifarch riscv64
-# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110812
-%global _lto_cflags %{nil}
-%endif
 
 Name:           highway
 Version:        1.3.0
