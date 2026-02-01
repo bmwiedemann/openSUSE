@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Feb  1 03:41:56 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 8.1.1
+  * Added a new plugin that can be used to suppress voice.
+  * The transition band of the bandpass filters used by the
+    crystalizer plugin can be customized. Higher values will use
+    less CPU. But cause more overlap between the bands.
+  * The internal state of some plugins are now reset after the
+    inactivity timeout triggers the unlinking of the filters. This
+    should remove the presence of old audio data in the playback
+    when easyeffects resumes operation after a new audio player
+    becomes active.
+  * Fixed a regression in the crystalizer plugin that caused noises
+    in some situations
+
+-------------------------------------------------------------------
 Thu Jan 22 06:47:59 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Explicitly requires `speexdsp` when building.
