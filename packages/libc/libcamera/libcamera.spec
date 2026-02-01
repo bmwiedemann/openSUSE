@@ -1,7 +1,7 @@
 #
 # spec file for package libcamera
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define lname       libcamera0_6
-%define lname_base  libcamera-base0_6
+%define lname       libcamera0_7
+%define lname_base  libcamera-base0_7
 %if "@BUILD_FLAVOR@" != ""
 %define extname -@BUILD_FLAVOR@
 %else
@@ -29,7 +29,7 @@
 %bcond_with    signed_ipa
 
 Name:           libcamera%extname
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        A complex camera support library in C++
 License:        CC-BY-SA-4.0 AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -45,6 +45,7 @@ BuildRequires:  python3-Jinja2
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-ply
 BuildRequires:  xz
+BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(libevent_pthreads)
@@ -177,6 +178,7 @@ Python bindings for libcamera.
 %else
 	-Dqcam=disabled \
 %endif
+	-Drpi-awb-nn=disabled \
 	-Dv4l2=false -Dtracing=disabled \
 	-Dpipelines=auto,vimc \
 	-Dlc-compliance=disabled

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 29 20:50:45 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.7.0
+  * Initial plumbing for GPU acceleration in the software ISP.
+
+-------------------------------------------------------------------
 Mon Dec 22 17:57:30 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Various cleanups:
