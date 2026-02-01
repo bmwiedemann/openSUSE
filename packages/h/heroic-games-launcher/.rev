@@ -22,4 +22,15 @@ https://bugzilla.suse.com/show_bug.cgi?id=1256475
 https://bugzilla.suse.com/show_bug.cgi?id=1256845</comment>
     <requestid>1328107</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e4702298721948a71ce8c6f933997d05</srcmd5>
+    <version>2.19.1</version>
+    <time>1769979942</time>
+    <user>anag_factory</user>
+    <comment>- Integrate SELinux policy via Supplements in accordance with openSUSE Factory policies
+
+- Update to version 2.19.1
+  * Remove &quot;pnpm run download-helper-binaries&quot; in spec, binaries are installed on the system as a dependency.</comment>
+    <requestid>1330252</requestid>
+  </revision>
 </revisionlist>

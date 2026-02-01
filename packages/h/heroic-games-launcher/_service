@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="submodules">enable</param>
     <param name="filename">heroic-games-launcher</param>
-    <param name="revision">v2.18.1</param>
+    <param name="revision">v2.19.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v([\.\d]+)</param>
     <param name="versionrewrite-replacement">\1</param>

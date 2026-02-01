@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Feb  1 12:13:22 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Integrate SELinux policy via Supplements in accordance with openSUSE Factory policies 
+
+-------------------------------------------------------------------
+Sun Feb  1 12:08:46 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Added selinux-policy-targeted-gaming as an optional dependency for newer openSUSE
+  installations with SELinux. 
+
+-------------------------------------------------------------------
+Sat Jan 31 19:06:01 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 2.19.1
+  * Remove "pnpm run download-helper-binaries" in spec, binaries are installed on the system as a dependency.
+  * Added experimental integration for games from the Zoom platform, Linux only for now. Next release we will bring it to the others.
+  * macOS - Added support for DXMT -M chips only- (Install a version of Wine-Staging and 2 variants will appear, it only applies to new Wine-Staging installations, so if you want the DXMT variant of a version you already have installed, reinstall it)
+  * Added new Launch Options setting for games that supports it.
+  * Added Import button to the game page so its easier to find it.
+  * Added some Sync-Saves options to the Game page as well.
+  * macOS - Removed the ability to install Steam with a button since it is not working anymore, we are investigating other ways of automate that, but for now we preferred to remove it.
+  * Cleaned up several options that are not relevant for Linux and macOS anymore.
+  * Improved gamepad navigation in general
+  * Linux - Added initial support for AppImage auto-update.
+  * Windows - both the Setup and Portable versions are signed with certificate now.
+  * Updated Electron to v39
+  * Updated gogdl and legendary with fixes for a few bugs related with game listing, updates and more.
+  * Linux - The DXVK Frame Rate option was removed since it was removed from DXVK completely and it was not doing anything already (it's still available on macOS)
+  * Added Irish translations
+  * Accessibility - Added an option to disable all animations
+  * Several other fixes and improvements. 
+
+-------------------------------------------------------------------
 Mon Jan 19 11:45:31 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Fix CVE-2026-22029 and CVE-2026-22036 affecting undici

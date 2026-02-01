@@ -1,7 +1,7 @@
 #
 # spec file for package HeroicGamesLauncher
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 
 Name:           heroic-games-launcher
-Version:        2.18.1
+Version:        2.19.1
 Release:        0
 Summary:        Native Games launcher for GOG, Epic and Amazon
 License:        GPL-3.0-only
@@ -70,6 +70,8 @@ ExclusiveArch:  x86_64 aarch64
 Provides:       heroic-games-launcher = %{version}
 Obsoletes:      heroic-games-launcher < %{version}
 Conflicts:      heroic-games-launcher-bin
+Supplements:    (heroic-games-launcher and selinux-policy-targeted)
+Supplements:    (heroic-games-launcher and selinux-policy-targeted-gaming)
 
 %description
 Game launcher and manager for GOG, Epic Games, and Amazon
@@ -95,7 +97,6 @@ export PATH=$PWD/node_modules/.bin:$PATH
 
 pnpm config set store-dir .pnpm-store
 pnpm install --store-dir .pnpm-store --frozen-lockfile --ignore-scripts --strict-peer-dependencies=false --offline
-pnpm run download-helper-binaries
 pnpm dist:linux %{arch_flag} --dir
 
 %ifarch aarch64
@@ -127,7 +128,8 @@ install -m 644 flatpak/com.heroicgameslauncher.hgl.desktop %{buildroot}%{_datadi
 install -m 644 flatpak/templates/com.heroicgameslauncher.hgl.metainfo.xml.template \
     %{buildroot}%{_datadir}/metainfo/com.heroicgameslauncher.hgl.metainfo.xml
 
-find %{buildroot}%{_libdir}/Heroic -type f -path "*/node_modules/*" -name "*.js" -print0 | xargs -0 chmod -x
+find %{buildroot}%{_libdir}/Heroic -type f -path "*/node_modules/*" -name "*.js" \
+  -exec sed -i '1s|^#!.*||' {} \;
 find %{buildroot}%{_libdir}/Heroic -type f -path "*/node_modules/*" -name "*.js" -exec sed -i '1s|^#!.*||' {} \;
 find %{buildroot}%{_libdir}/Heroic -type f \( -name "*.node" -o -perm /111 \) -exec %{__strip} --strip-unneeded {} \; || true
 
