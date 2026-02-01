@@ -1,7 +1,7 @@
 #
 # spec file for package forgejo-cli
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           forgejo-cli
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        CLI application for interacting with Forgejo
 License:        Apache-2.0 OR MIT

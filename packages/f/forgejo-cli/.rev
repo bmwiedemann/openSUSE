@@ -81,4 +81,25 @@
     <comment>- update vendor dependencies, fixing bsc#1248047 bsc#1242683 (forwarded request 1299835 from rrahl0)</comment>
     <requestid>1299836</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ad5b384bcfaf2c850d05faebd0593e7f</srcmd5>
+    <version>0.4.0</version>
+    <time>1769979755</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.0:
+  * Support for issue &amp; pull request templates with fj issue/pr create
+    --template
+  * fj pr create --autofill, which will automatically populate the PR's title
+    and body from the commit(s)
+  * fj user key and fj user gpg commands for managing uploaded SSH and GPG keys
+  * fj user repos --page, to select the page of results to view
+  * fj issue/pr create/comment --body-from-file to use the contents of a file
+    as the body
+  * --identity-file/-I flag for selecting the SSH identity to use
+  * fj tag to manage git tags
+  * fj issue search --state all
+  * --remote &amp; --repo flags can now be at the end of the command with the rest
+    of the flags (forwarded request 1330160 from rrahl0)</comment>
+    <requestid>1330161</requestid>
+  </revision>
 </revisionlist>

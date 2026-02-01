@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan 30 22:53:43 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.4.0:
+  * Support for issue & pull request templates with fj issue/pr create
+    --template
+  * fj pr create --autofill, which will automatically populate the PR's title
+    and body from the commit(s)
+  * fj user key and fj user gpg commands for managing uploaded SSH and GPG keys
+  * fj user repos --page, to select the page of results to view
+  * fj issue/pr create/comment --body-from-file to use the contents of a file
+    as the body
+  * --identity-file/-I flag for selecting the SSH identity to use
+  * fj tag to manage git tags
+  * fj issue search --state all
+  * --remote & --repo flags can now be at the end of the command with the rest
+    of the flags
+
+-------------------------------------------------------------------
 Fri Aug 15 14:02:30 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update vendor dependencies, fixing bsc#1248047 bsc#1242683
