@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Jan 30 22:40:17 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 12.6.3:
+  * fix: revert switch from lxc-attach to nsenter
+- Update to version 12.6.2:
+  * fix: inputs containing '-' don't function in LXC executor
+  * Fix typos, grammar issues and split long sentence in config.example.yaml
+- Update to version 12.6.1:
+  * fix: PATH modifications are lost in LXC executions
+  * fix: support "container.network: host" when using job services
+  * refactor: support multiple clients
+- Update to version 12.6.0:
+  * feat: add 'using: docker' action pre and post-entrypoint support
+  * fix: eliminate log data loss caused by LXC & PTY buffer
+  * fix(jobparser): evaluating matrix values within runs-on references first
+    matrix value only
+- Update to version 12.5.3:
+  * fix: support Forgejo returning AdditionalTasks but not Task
+  * fix: only skip fetching when a commit exists locally
+  * fix: unbreak the build for platforms w/o docker support
+  * fix: try to empty clone directory that is not empty
+- Update to version 12.5.2:
+  * Update dependencies
+- Update to version 12.5.1:
+  * fix: private repository cloning with authentication token
+  * fix: minimize log data loss caused by LXC & PTY buffer
+- Update to version 12.5.0:
+  * feat: introduce experimental command connect with token option
+  * feat: add OIDC workload identity federation support
+  * feat: include auth token when cloning actions from own instance
+  * fix: clone actions with Git instead of go-git
+  * fix: host-based executor, clarify error message from missing working-directory
+  * fix: stop creation of branch called HEAD during fetch
+  * docs: remove 'required' flag from reusable workflow 'runs-on' field
+
+-------------------------------------------------------------------
 Sun Jan  4 20:24:48 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 12.4.0:
