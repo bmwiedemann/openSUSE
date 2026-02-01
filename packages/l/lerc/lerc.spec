@@ -26,6 +26,7 @@ License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/Esri/lerc
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source99:       baselibs.conf
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  dos2unix

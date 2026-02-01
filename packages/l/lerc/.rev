@@ -7,4 +7,12 @@
     <comment>for libtiff to be used in GDAL with QGIS</comment>
     <requestid>1329062</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8b5c4017d414add4940bc6f30d183222</srcmd5>
+    <version>4.0.0</version>
+    <time>1769979944</time>
+    <user>anag_factory</user>
+    <comment>add baselibs</comment>
+    <requestid>1330254</requestid>
+  </revision>
 </revisionlist>
