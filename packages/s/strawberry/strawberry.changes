@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb  1 17:38:22 UTC 2026 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.2.18
+  + Fixed devices no longer detected with newer GIO versions (#1974)
+  + Fixed error message appearing when dragging folders with non-audio files to the playlist from files (#1977)
+  + Fixed clear button for device textfield in Backend settings 
+
+-------------------------------------------------------------------
 Sun Jan 18 13:26:04 UTC 2026 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.2.17

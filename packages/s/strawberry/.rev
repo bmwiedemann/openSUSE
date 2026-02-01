@@ -1795,4 +1795,16 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1327938</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>89112bf9081e09b8eb6696155e38e0a3</srcmd5>
+    <version>1.2.18</version>
+    <time>1769979953</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.18
+  + Fixed devices no longer detected with newer GIO versions (#1974)
+  + Fixed error message appearing when dragging folders with non-audio files to the playlist from files (#1977)
+  + Fixed clear button for device textfield in Backend settings 
+</comment>
+    <requestid>1330265</requestid>
+  </revision>
 </revisionlist>
