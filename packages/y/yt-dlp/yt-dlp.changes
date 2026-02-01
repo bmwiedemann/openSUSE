@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb  1 09:43:09 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2026.01.31
+  * yt: Add `web_embedded` fallback for `android_vr` client
+  * yt: Remove broken `ios_downgraded` and `tv_embedded` player
+    clients
+
+-------------------------------------------------------------------
 Fri Jan 30 17:27:41 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - added quickjs recommends as a lighter alternative to deno and nodejs

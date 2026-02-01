@@ -678,4 +678,12 @@
     <comment>- added quickjs recommends as a lighter alternative to deno and nodejs</comment>
     <requestid>1330142</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>a2257336f58b9079eb660b482f98b313</srcmd5>
+    <version>2026.01.31</version>
+    <time>1769979946</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 2026.01.31</comment>
+    <requestid>1330251</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package yt-dlp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 
 Name:           yt-dlp
-Version:        2026.01.29
+Version:        2026.01.31
 %define ejsver  0.4.0
 Release:        0
 Summary:        Enhanced fork of youtube-dl, a video site downloader for offline watching
@@ -42,8 +42,8 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  make >= 4
 BuildRequires:  python-rpm-macros
-BuildRequires:  zip
 BuildRequires:  unzip
+BuildRequires:  zip
 BuildArch:      noarch
 Obsoletes:      yt-dlp-bash-completion < %version-%release
 Provides:       yt-dlp-bash-completion = %version-%release
