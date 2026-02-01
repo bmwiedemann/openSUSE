@@ -1,6 +1,6 @@
-diff -rub forgejo-src-10.0.0/custom/conf/app.example.ini forgejo-src-10.0.0-patched/custom/conf/app.example.ini
---- forgejo-src-10.0.0/custom/conf/app.example.ini	2025-01-16 07:37:10.000000000 +0100
-+++ forgejo-src-10.0.0-patched/custom/conf/app.example.ini	2025-01-16 14:05:03.035772154 +0100
+diff -rubN forgejo-src-14.0.2/custom/conf/app.example.ini forgejo-src-14.0.2-patched/custom/conf/app.example.ini
+--- forgejo-src-14.0.2/custom/conf/app.example.ini	2026-01-29 08:37:32.000000000 +0100
++++ forgejo-src-14.0.2-patched/custom/conf/app.example.ini	2026-01-31 13:30:44.872131178 +0100
 @@ -51,7 +51,7 @@
  ;APP_DISPLAY_NAME_FORMAT = {APP_NAME}: {APP_SLOGAN}
  ;;
@@ -9,7 +9,7 @@ diff -rub forgejo-src-10.0.0/custom/conf/app.example.ini forgejo-src-10.0.0-patc
 +RUN_USER = ; forgejo
  ;;
  ;; Application run mode, affects performance and debugging: "dev" or "prod", default is "prod"
- ;; Mode "dev" makes Gitea easier to develop and debug, values other than "dev" are treated as "prod" which is for production use.
+ ;; Mode "dev" makes Forgejo easier to develop and debug, values other than "dev" are treated as "prod" which is for production use.
 @@ -284,15 +284,15 @@
  ;; $ openssl pkcs12 -in cert.pfx -out cert.pem -nokeys
  ;; $ openssl pkcs12 -in cert.pfx -out key.pem -nocerts -nodes
@@ -20,7 +20,7 @@ diff -rub forgejo-src-10.0.0/custom/conf/app.example.ini forgejo-src-10.0.0-patc
 +KEY_FILE = /etc/forgejo/https/key.pem
  ;;
  ;; Root directory containing templates and static files.
- ;; default is the path where Gitea is executed
+ ;; default is the path where Forgejo is executed
 -;STATIC_ROOT_PATH = ; Will default to the built-in value _`StaticRootPath`_
 +STATIC_ROOT_PATH = /usr/share/forgejo
  ;;
@@ -33,7 +33,7 @@ diff -rub forgejo-src-10.0.0/custom/conf/app.example.ini forgejo-src-10.0.0-patc
 @@ -303,7 +303,7 @@
  ;ENABLE_PPROF = false
  ;;
- ;; PPROF_DATA_PATH, use an absolute path when you start gitea as service
+ ;; PPROF_DATA_PATH, use an absolute path when you start Forgejo as service
 -;PPROF_DATA_PATH = data/tmp/pprof ; Path is relative to _`AppWorkPath`_
 +PPROF_DATA_PATH = /var/lib/forgejo/data/tmp/pprof
  ;;
@@ -47,8 +47,8 @@ diff -rub forgejo-src-10.0.0/custom/conf/app.example.ini forgejo-src-10.0.0-patc
 +;NAME = forgejo
  ;USER = root
  ;PASSWD = ;Use PASSWD = `your password` for quoting if you use special characters in the password.
- ;SSL_MODE = false ; either "false" (default), "true", or "skip-verify"
-@@ -382,7 +382,7 @@
+ ;; Alternative location to specify mysql password. You cannot specify both this and PASSWD, and must pick one
+@@ -384,7 +384,7 @@
  ;;
  ;DB_TYPE = postgres
  ;HOST = 127.0.0.1:5432 ; can use socket e.g. /var/run/postgresql/
@@ -56,8 +56,8 @@ diff -rub forgejo-src-10.0.0/custom/conf/app.example.ini forgejo-src-10.0.0-patc
 +;NAME = forgejo
  ;USER = root
  ;PASSWD =
- ;SCHEMA =
-@@ -573,14 +573,14 @@
+ ;; Alternative location to specify postgres password. You cannot specify both this and PASSWD, and must pick one
+@@ -577,14 +577,14 @@
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; Root path for the log files - defaults to %(GITEA_WORK_DIR)/log
@@ -74,7 +74,7 @@ diff -rub forgejo-src-10.0.0/custom/conf/app.example.ini forgejo-src-10.0.0-patc
  ;;
  ;; Either "Trace", "Debug", "Info", "Warn", "Error" or "None", default is "Info"
  LEVEL = Info
-@@ -962,7 +962,7 @@
+@@ -959,7 +959,7 @@
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; Root path for storing all repository data. By default, it is set to %(APP_DATA_PATH)s/gitea-repositories.
  ;; A relative path is interpreted as _`AppWorkPath`_/%(ROOT)s
@@ -83,16 +83,16 @@ diff -rub forgejo-src-10.0.0/custom/conf/app.example.ini forgejo-src-10.0.0-patc
  ;;
  ;; The script type this server supports. Usually this is `bash`, but some users report that only `sh` is available.
  ;SCRIPT_TYPE = bash
-@@ -1081,7 +1081,7 @@
+@@ -1085,7 +1085,7 @@
  ;ENABLED = true
  ;;
- ;; Path for uploads. Defaults to `data/tmp/uploads` (content gets deleted on gitea restart)
+ ;; Path for uploads. Defaults to `data/tmp/uploads` (content gets deleted on Forgejo restart)
 -;TEMP_PATH = data/tmp/uploads
 +TEMP_PATH = /var/lib/forgejo/data/tmp/uploads
  ;;
  ;; Comma-separated list of allowed file extensions (`.zip`), mime types (`text/plain`) or wildcard type (`image/*`, `audio/*`, `video/*`). Empty value or `*/*` allows all types.
  ;ALLOWED_TYPES =
-@@ -1460,7 +1460,7 @@
+@@ -1461,7 +1461,7 @@
  ;ISSUE_INDEXER_TYPE = bleve
  ;;
  ;; Issue indexer storage path, available when ISSUE_INDEXER_TYPE is bleve
@@ -101,7 +101,7 @@ diff -rub forgejo-src-10.0.0/custom/conf/app.example.ini forgejo-src-10.0.0-patc
  ;;
  ;; Issue indexer connection string, available when ISSUE_INDEXER_TYPE is elasticsearch (e.g. http://elastic:password@localhost:9200) or meilisearch (e.g. http://:apikey@localhost:7700)
  ;ISSUE_INDEXER_CONN_STR =
-@@ -1487,7 +1487,7 @@
+@@ -1488,7 +1488,7 @@
  ;REPO_INDEXER_TYPE = bleve
  ;;
  ;; Index file used for code search. available when `REPO_INDEXER_TYPE` is bleve
@@ -110,7 +110,7 @@ diff -rub forgejo-src-10.0.0/custom/conf/app.example.ini forgejo-src-10.0.0-patc
  ;;
  ;; Code indexer connection string, available when `REPO_INDEXER_TYPE` is elasticsearch. i.e. http://elastic:changeme@localhost:9200
  ;REPO_INDEXER_CONN_STR =
-@@ -1525,7 +1525,7 @@
+@@ -1526,7 +1526,7 @@
  ;TYPE = persistable-channel
  ;;
  ;; data-dir for storing persistable queues and level queues, individual queues will default to `queues/common` meaning the queue is shared.
@@ -119,7 +119,7 @@ diff -rub forgejo-src-10.0.0/custom/conf/app.example.ini forgejo-src-10.0.0-patc
  ;;
  ;; Default queue length before a channel queue will block
  ;LENGTH = 100000
-@@ -1872,7 +1872,7 @@
+@@ -1893,7 +1893,7 @@
  ;; file: session file path, e.g. `data/sessions`
  ;; redis: `redis://127.0.0.1:6379/0?pool_size=100&idle_timeout=180s` (or `redis+cluster://127.0.0.1:6379/0?pool_size=100&idle_timeout=180s` for a Redis cluster)
  ;; mysql: go-sql-driver/mysql dsn config string, e.g. `root:password@/session_table`
@@ -128,7 +128,7 @@ diff -rub forgejo-src-10.0.0/custom/conf/app.example.ini forgejo-src-10.0.0-patc
  ;;
  ;; Session cookie name
  ;COOKIE_NAME = i_like_gitea
-@@ -1959,7 +1959,7 @@
+@@ -1980,7 +1980,7 @@
  ;;
  ;; Path for attachments. Defaults to `attachments`. Only available when STORAGE_TYPE is `local`
  ;; Relative paths will be resolved to `${AppDataPath}/${attachment.PATH}`
@@ -137,7 +137,7 @@ diff -rub forgejo-src-10.0.0/custom/conf/app.example.ini forgejo-src-10.0.0-patc
  ;;
  ;; Minio endpoint to connect only available when STORAGE_TYPE is `minio`
  ;MINIO_ENDPOINT = localhost:9000
-@@ -1985,7 +1985,7 @@
+@@ -2006,7 +2006,7 @@
  ;MINIO_LOCATION = us-east-1
  ;;
  ;; Minio base path on the bucket only available when STORAGE_TYPE is `minio`
@@ -146,7 +146,7 @@ diff -rub forgejo-src-10.0.0/custom/conf/app.example.ini forgejo-src-10.0.0-patc
  ;;
  ;; Minio enabled ssl only available when STORAGE_TYPE is `minio`
  ;MINIO_USE_SSL = false
-@@ -2568,10 +2568,10 @@
+@@ -2590,10 +2590,10 @@
  ;;
  ;STORAGE_TYPE = local
  ;; override the minio base path if storage type is minio
@@ -159,7 +159,7 @@ diff -rub forgejo-src-10.0.0/custom/conf/app.example.ini forgejo-src-10.0.0-patc
  ;;
  ;; Maximum count of package versions a single owner can have (`-1` means no limits)
  ;LIMIT_TOTAL_OWNER_COUNT = -1
-@@ -2640,10 +2640,10 @@
+@@ -2662,10 +2662,10 @@
  ;STORAGE_TYPE = local
  ;;
  ;; Where your lfs files reside, default is data/lfs.
@@ -172,7 +172,7 @@ diff -rub forgejo-src-10.0.0/custom/conf/app.example.ini forgejo-src-10.0.0-patc
  
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-@@ -2663,10 +2663,10 @@
+@@ -2685,10 +2685,10 @@
  ;STORAGE_TYPE = local
  ;;
  ;; Where your lfs files reside, default is data/lfs.

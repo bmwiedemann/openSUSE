@@ -1,4 +1,174 @@
 -------------------------------------------------------------------
+Sat Jan 31 12:38:20 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 14.0.2:
+  * fix(ui): tippy menu styles too broad, affecting switch in PR review
+  * fix(ui): add missing translation for code search when keyword is empty string
+  * fix(ui): improve force-push layout alignment
+  * feat: enable SQLite WAL by default
+  * fix: allow test delivery for webhooks not enabled for push events
+  * fix: empty dynamic matrix can leave action run hanging incomplete
+  * Fix not decreasing watch count when blocking user
+  * fix: don't clobber authorized_keys file during installation
+  * fix(api): default new release 'title' field to label name, if not provided
+  * fix: remove infinite loop in UpdateRunJobWithoutNotification when run in transaction
+  * feat: strip newlines on og image rendering
+  * fix: don't return AdditionalTasks from FetchTask if there is no Task
+  * fix: use ALTER TABLE in SQLite DropTableColumns(), allowing unexpected
+    database sources to work better in migrations
+  * fix: migrations/github: avoid getting the first issues page twice
+  * fix NewMockWebServer(): Headers never reached the http client
+  * fix: migrations/github: Wait & retry when primary rate limit is hit
+  * fix: detect renames when using diff-tree
+- Update to version 14.0.1:
+  * fix: use strict-origin as referrer policy
+  * fix: make concurrency group job cancellation effect runs that are failed
+  * fix: recreate-tables doesn't work on PostgreSQL with multiple Forgejo schemas
+- Update to version 14.0.0:
+  * new feature: ssh managed by forgejo now breaks startup, if an unexpected key
+    is being found, can be overridden with
+    [server].SSH_ALLOW_UNEXPECTED_AUTHORIZED_KEYS = true in their app.ini file
+  * CSRF attacks are now prevented via a stateless method
+  * fix!: paginate GET /api/v1/admin/hooks response
+  * fix!: Prevent forked .profile repositories from displaying profile content
+  * Forgejo subcommands which only accept flag options would previously ignore
+    any command-line arguments
+  * add admin moderation actions for abuse reports and for reported abusive content
+  * feat(ui): replace Monaco with CodeMirror
+  * improve close/reopen/comment buttons
+  * fix(ui): improve rendering of commit links
+  * feat(ui): improve rendering commit links for PR commits, external repos and diffs
+  * lazy-load all Vue components
+  * feat(ui): arrow key navigation in dropdown
+  * feat(ui): convert disable/enable workflow menu to JS-less dropdown
+  * feat(ui): JS-less sorting on /explore/{users,organizations}
+  * feat(ui): JS-less dropdowns in navbar
+  * feat(ui): add legends to storage overview (JS-free)
+  * feat(ui): responsive, JS-free repo language stats panel
+  * feat: show update time when sorting by recently updated
+  * feat(ui): show cancel button until all jobs are finished
+  * feat(ui): implement new buttons for better cohesiveness
+  * feat(ui): allow dropdown to contain not just items
+  * feat(ui): improve devtest, link to it from user menu
+  * feat(ui): improve admin dashboard cron list
+  * ui: improve release editing
+  * feat(ui): improve modal width rules
+  * move more modals to native dialogs
+  * feat(ui): add switch between formats when previewing CITATION.{cff,bib} files
+  * convert create/rename branch and create tag to native dialog
+  * Add admin individual user email management endpoints
+  * feat(ui): improve new buttons, use in more areas
+  * feat(ui): dangerous buttons
+  * improve tooltips and aria-labels of stars/forks/watchers links
+  * Actions jobs that can't be understood display a technical error in the UI,
+    not just server-side logs
+  * Drag and drop nested directories
+  * ability to filter listed accounts by type in admin dashboard
+  * feat(ui): add a little padding-top to form .help
+  * fix: proper styling for global time tracker popup
+  * fix(ui): show switch default branch button in branch list only for repo admins
+  * fix(ui): actions list layout breakage with long content
+  * fix(ui): pull request merge menu item clipping the auto merge tip
+  * fix(ui): make it possible to post issues and comments w/o JS
+  * fix(ui): process dynamically added content via htmx
+  * fix(ui): don't stretch activity top author image
+  * fix: add dynamic aria-label to monospace button in markdown editor
+  * fix: align due date icon in issue list
+  * fix: ignore private .profile repo on user profile page
+  * Add to html button in markdown type="button"
+  * fix(ui): add missing space before 'Commit' back
+  * fix(ui): fix width of attached fomantic segments
+  * fix(ui): use octicon-repo-forked in repo list
+  * fix(ui): document token validity in key verification view
+  * fix(ui): replace obsolete gt- helpers
+  * fix(ui/dropdown): ensure same height for all items
+  * fix(ui): improve markdown editor indentation counting
+  * prevent page jumps due to textarea auto resizing
+  * stop clone-panel enlarging site on mobile
+  * fix(ui): strike through deleted comment revisions
+  * feat(actions): make GITHUB_WORKFLOW_REF available
+  * allow/disallow users to run workflows when pushing to a pull request from a fork
+  * feat: provide multiple tasks to Runner in one FetchTask when requested
+  * Add support for administrators to set email visibility on user accounts
+  * Foreign keys have been added to the Forgejo database schema
+  * feat: add Forgejo server version to runner context
+  * support referencing ${{ needs... }} variables in runs-on
+  * support referencing ${{ needs... }} variables in strategy.matrix
+  * implement "concurrency" block in Forgejo Actions at the workflow level
+  * display detailed action run diagnostics
+  * add foreign keys to the access table
+  * add foreign keys to forgejo_auth_token
+  * add foreign keys to table collaboration
+  * improve performance of getting shortstat
+  * Add YYYY-MM-DD date format support for Pagure milestone migration
+  * feat: allow to add pam source from command line
+  * chore: Remove IsDeleted from action (activity) table
+  * Add support for loading db password from file via PASSD_URI
+  * feat(code-search): add support to opt-in for fuzzy search
+  * feat(i18n): translate system status data units in runtime
+  * Uploaded avatar images can sometimes contain unexpected metadata
+  * allow sync quota groups with oauth2 auth source
+  * feat(slack): place user names into inline code blocks for Slack
+  * feat(issue-search): support query syntax
+  * allow PRs between common forks of the same base repository
+  * show link to pull requests targeting a non-default branch when pushing
+  * Allow referencing inputs in jobs.<job_id>.runs-on
+  * feat(email): reference the commit closing the issue
+  * display the PR editable status in the right-hand side menu
+  * fix(actions): improve errors when ${{ needs... }} is used in
+    strategy.matrix incorrectly
+  * handle empty dates in pagure milestone migration
+  * include variable values in /repos/.../actions/variables API response
+  * github issue migration failing for large datasets
+  * fix: add forgejo doctor cleanup-commit-status command to recover
+  * fix: correctly compute required commit status
+  * fix: internal server error on a large .gitmodules
+  * reduce deadlocks merging PRs w/ async milestone stat recalcs
+  * fix: display orphan branches separately in commit graph
+  * fix: allow Actions trust management on conflicted PRs
+  * reduce deadlocks merging PRs by using caching for repo issue count stats
+  * reduce deadlocks merging PRs w/ async label stat recalcs
+  * possible cause of invalid issue counts; cache module doesn't guarantee concurrency safety
+  * prevent deadlocks updating repo.num_action_runs/num_closed_action_runs
+  * possible cause of invalid issue counts; cache invalidation occurs before a
+    active transaction is committed
+  * fix: always search for issue posters by user and full name
+  * garbage collect lingering actions logs
+  * fix: Count releases correctly when using filters
+  * fix(actions): replace hardcoded with dynamically determined workflow directory
+  * Allow SHA-256 in PR commit URLs
+  * display action run attempt status instead of job status
+  * Fix merge message template with empty message
+  * issues and pulls route permitted extra characters
+  * i18n: translate Actions PreExecutionError for viewer
+  * replace limit/offset pagination in debian SearchPackages
+  * stuck gitea migration due to gita api pagination bug
+  * replace bad pagination to cleanup branch protection rules on user delete
+  * replace buggy limit/offset pagination in DoctorUserStarNum
+  * fix(perf): add missing index on action_task table
+  * strict error handling on corrupted DB migration tracking tables
+  * OpenGraph cards for some issues show wrong timestamp
+  * chore(ui): cleanup PR checks area
+  * fix(ui): avatar for dismissed review is stretched if not square
+  * cleanup reviews css, improve consistency
+  * Prioritize Noto Sans over Roboto and Noto Sans Hebrew over Arial
+  * chore(ui): a few consistency improvements for modals
+  * refactor(ui): re-implement icon colors but for all thin elements
+  * fix(ui): Don't use the subtle color for log text
+  * fix: drop sqlite shared cache
+  * migration: update existing foreign key migrations to automatically fix inconsistencies
+  * refactor: migrate from lib/pq to jackc/pgx
+  * add foreign keys to table pull_request
+  * feat(ssh): use AppDomain for key verification
+  * false error logging "Render JSON failed" from workflow dispatch via API
+  * fix(i18n/en): improve search syntax hints
+  * fix: make lastcommit available for non-signed-in users
+  * don't push LFS when using SSH authentication
+  * fix: retain Forgejo Action's commit_status entries with distinct descriptions
+  * fix: in-progress job icon doesn't rotate on repo's action list
+  * chore(cleanup): move all test blank imports in a single package
+
+-------------------------------------------------------------------
 Sat Dec  6 21:44:06 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 13.0.3:
