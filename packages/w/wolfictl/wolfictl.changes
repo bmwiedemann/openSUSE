@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 02 05:46:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.30:
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group (#1848)
+  * build(deps): bump github.com/chainguard-dev/advisory-schema
+    (#1844)
+  * build(deps): bump step-security/harden-runner from 2.14.0 to
+    2.14.1 (#1842)
+  * build(deps): bump chainguard-dev/actions from 1.5.12 to 1.5.13
+    (#1843)
+  * build(deps): bump the chainguard group with 3 updates (#1841)
+
+-------------------------------------------------------------------
 Mon Jan 26 06:21:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.38.29:
