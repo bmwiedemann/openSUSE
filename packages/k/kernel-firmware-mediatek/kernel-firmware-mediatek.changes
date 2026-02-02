@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 21 07:33:27 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260119 (git commit ed7a76faccbc):
+  * linux-firmware: update firmware for MT7921 WiFi device
+
+-------------------------------------------------------------------
 Wed Jan 14 13:37:24 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260114 (git commit e477bd5942f4):

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 22 11:53:33 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- 61008.patch: fix ppc64le build
+- node-gyp-addon-gypi.patch: fix build of binary modules
+
+-------------------------------------------------------------------
 Thu Jan 15 14:18:29 UTC 2026 - Adam Majer <adam.majer@suse.de>
 
 - Update to 24.13.0:

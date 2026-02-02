@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 22 07:29:22 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
+
+- remove all dependencies on update-desktop-files (jsc#PED-15208)
+  * add 0001-lstopo-x11-add-desktop-translations.patch
+- move .desktop files to gui package
+
+-------------------------------------------------------------------
 Wed Sep  3 08:11:15 UTC 2025 - Thomas Blume <Thomas.Blume@suse.com>
 
 - removed patches (fixed upstream)

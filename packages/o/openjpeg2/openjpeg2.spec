@@ -1,7 +1,7 @@
 #
 # spec file for package openjpeg2
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Group:          Productivity/Graphics/Other
 URL:            https://www.openjpeg.org/
 Source0:        https://github.com/uclouvain/openjpeg/archive/v%{version}.tar.gz#/openjpeg-%{version}.tar.gz
 Source1:        baselibs.conf
+Patch01:        openjpeg2-cve-2023-39327-limit-iterations.patch
 BuildRequires:  cmake > 3.5
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -87,7 +88,7 @@ The OpenJPEG library is an open-source JPEG 2000 codec written in C language.
 This package provides the API documentation for %{name}.
 
 %prep
-%autosetup -n openjpeg-%{version} -p0
+%autosetup -n openjpeg-%{version} -p1
 
 # do not embed timestamps into html documentation
 sed -i 's|^HTML_TIMESTAMP[ =].*$|HTML_TIMESTAMP = NO|' doc/Doxyfile.dox.cmake.in

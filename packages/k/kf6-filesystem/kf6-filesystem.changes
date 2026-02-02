@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 21 11:12:37 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- macros.kf6: Add %{?build_ldflags} to linker flags
+
+-------------------------------------------------------------------
 Tue Oct  7 17:18:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Switch to GCC 14 and 15 on resp. Leap 15.6 and 16.0.

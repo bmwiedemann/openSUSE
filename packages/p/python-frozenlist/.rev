@@ -153,4 +153,13 @@
     <comment></comment>
     <requestid>1312740</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>2d89d7ba6874ddb0c1a1f3a8246c451b</srcmd5>
+    <version>1.8.0</version>
+    <time>1769420673</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python314.patch:
+  * Do not attempt to query annotation internals.</comment>
+    <requestid>1328762</requestid>
+  </revision>
 </revisionlist>

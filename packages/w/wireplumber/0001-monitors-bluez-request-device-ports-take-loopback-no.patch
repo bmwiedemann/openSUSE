@@ -1,0 +1,37 @@
+From b60b2f4ece58eb5b08d30d6832ee987c71a52350 Mon Sep 17 00:00:00 2001
+From: Pauli Virtanen <pav@iki.fi>
+Date: Sun, 4 Jan 2026 23:23:25 +0200
+Subject: [PATCH] monitors/bluez: request device ports take loopback nodes into
+ account
+
+Take the loopback nodes into account also in device Routes.
+
+Some Pulseaudio applications (eg GNOME) determine what to do based on
+device ports, so make sure they are consistent with what nodes will be
+emitted.
+---
+ src/scripts/monitors/bluez.lua | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/scripts/monitors/bluez.lua b/src/scripts/monitors/bluez.lua
+index 3acbeb309a19..e58731391e66 100644
+--- a/src/scripts/monitors/bluez.lua
++++ b/src/scripts/monitors/bluez.lua
+@@ -546,6 +546,14 @@ function checkProfiles (dev)
+     return
+   end
+ 
++  -- Setup Route/Port correctly for loopback nodes
++  local param = Pod.Object ({
++      "Spa:Pod:Object:Param:Props",
++      "Props",
++      params = Pod.Struct ({ "bluez5.autoswitch-routes", true })
++  })
++  dev:set_param("Props", param)
++
+   -- Create the source loopback device if never created before
+   local source_loopback = spa_device:get_managed_object (LOOPBACK_SOURCE_ID)
+   if source_loopback == nil then
+-- 
+2.52.0
+

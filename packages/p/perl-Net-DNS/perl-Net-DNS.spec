@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-DNS
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Net-DNS
 Name:           perl-Net-DNS
-Version:        1.530.0
+Version:        1.540.0
 Release:        0
-# 1.53 -> normalize -> 1.530.0
-%define cpan_version 1.53
+# 1.54 -> normalize -> 1.540.0
+%define cpan_version 1.54
 License:        MIT
 Summary:        Perl Interface to the Domain Name System
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -77,13 +77,13 @@ Provides:       perl(Net::DNS::Domain) = 2002.0.0
 Provides:       perl(Net::DNS::DomainName) = 2005.0.0
 Provides:       perl(Net::DNS::DomainName1035)
 Provides:       perl(Net::DNS::DomainName2535)
-Provides:       perl(Net::DNS::Header) = 2002.0.0
+Provides:       perl(Net::DNS::Header) = 2042.0.0
 Provides:       perl(Net::DNS::Mailbox) = 2002.0.0
 Provides:       perl(Net::DNS::Mailbox1035)
 Provides:       perl(Net::DNS::Mailbox2535)
 Provides:       perl(Net::DNS::Nameserver) = 2002.0.0
 Provides:       perl(Net::DNS::Packet) = 2003.0.0
-Provides:       perl(Net::DNS::Parameters) = 2021.0.0
+Provides:       perl(Net::DNS::Parameters) = 2043.0.0
 Provides:       perl(Net::DNS::Question) = 2002.0.0
 Provides:       perl(Net::DNS::RR) = 2037.0.0
 Provides:       perl(Net::DNS::RR::A) = 2003.0.0
@@ -95,14 +95,15 @@ Provides:       perl(Net::DNS::RR::APL::Item)
 Provides:       perl(Net::DNS::RR::CAA) = 2003.0.0
 Provides:       perl(Net::DNS::RR::CDNSKEY) = 2003.0.0
 Provides:       perl(Net::DNS::RR::CDS) = 2003.0.0
-Provides:       perl(Net::DNS::RR::CERT) = 2002.0.0
+Provides:       perl(Net::DNS::RR::CERT) = 2042.0.0
 Provides:       perl(Net::DNS::RR::CNAME) = 2003.0.0
 Provides:       perl(Net::DNS::RR::CSYNC) = 2003.0.0
-Provides:       perl(Net::DNS::RR::DELEG) = 2039.0.0
+Provides:       perl(Net::DNS::RR::DELEG) = 2043.0.0
+Provides:       perl(Net::DNS::RR::DELEGI) = 2043.0.0
 Provides:       perl(Net::DNS::RR::DHCID) = 2003.0.0
 Provides:       perl(Net::DNS::RR::DNAME) = 2003.0.0
-Provides:       perl(Net::DNS::RR::DNSKEY) = 2003.0.0
-Provides:       perl(Net::DNS::RR::DS) = 2003.0.0
+Provides:       perl(Net::DNS::RR::DNSKEY) = 2042.0.0
+Provides:       perl(Net::DNS::RR::DS) = 2042.0.0
 Provides:       perl(Net::DNS::RR::DSYNC) = 2003.0.0
 Provides:       perl(Net::DNS::RR::EUI48) = 2003.0.0
 Provides:       perl(Net::DNS::RR::EUI64) = 2003.0.0
@@ -150,15 +151,15 @@ Provides:       perl(Net::DNS::RR::PTR) = 2002.0.0
 Provides:       perl(Net::DNS::RR::PX) = 2003.0.0
 Provides:       perl(Net::DNS::RR::RESINFO) = 2003.0.0
 Provides:       perl(Net::DNS::RR::RP) = 2002.0.0
-Provides:       perl(Net::DNS::RR::RRSIG) = 2003.0.0
+Provides:       perl(Net::DNS::RR::RRSIG) = 2042.0.0
 Provides:       perl(Net::DNS::RR::RT) = 2003.0.0
-Provides:       perl(Net::DNS::RR::SIG) = 2003.0.0
+Provides:       perl(Net::DNS::RR::SIG) = 2042.0.0
 Provides:       perl(Net::DNS::RR::SMIMEA) = 2003.0.0
 Provides:       perl(Net::DNS::RR::SOA) = 2002.0.0
 Provides:       perl(Net::DNS::RR::SPF) = 2003.0.0
 Provides:       perl(Net::DNS::RR::SRV) = 2003.0.0
 Provides:       perl(Net::DNS::RR::SSHFP) = 2003.0.0
-Provides:       perl(Net::DNS::RR::SVCB) = 2037.0.0
+Provides:       perl(Net::DNS::RR::SVCB) = 2043.0.0
 Provides:       perl(Net::DNS::RR::TKEY) = 2035.0.0
 Provides:       perl(Net::DNS::RR::TLSA) = 2003.0.0
 Provides:       perl(Net::DNS::RR::TSIG) = 2003.0.0
@@ -175,7 +176,7 @@ Provides:       perl(Net::DNS::Resolver::android) = 2007.0.0
 Provides:       perl(Net::DNS::Resolver::cygwin) = 2002.0.0
 Provides:       perl(Net::DNS::Resolver::os2) = 2007.0.0
 Provides:       perl(Net::DNS::Resolver::os390) = 2007.0.0
-Provides:       perl(Net::DNS::Text) = 2002.0.0
+Provides:       perl(Net::DNS::Text) = 2043.0.0
 Provides:       perl(Net::DNS::Update) = 2017.0.0
 Provides:       perl(Net::DNS::ZoneFile) = 2002.0.0
 Provides:       perl(Net::DNS::ZoneFile::Generator)

@@ -253,8 +253,6 @@ fi
 %{_datadir}/corosync/corosync
 %{_datadir}/corosync/corosync-notifyd
 %endif
-%ghost %{_localstatedir}/lib/corosync
-%ghost %{_localstatedir}/log/cluster
 %{_mandir}/man7/corosync_overview.7*
 %{_mandir}/man8/corosync.8*
 %{_mandir}/man8/corosync-blackbox.8*

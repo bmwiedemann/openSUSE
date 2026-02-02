@@ -1,7 +1,7 @@
 #
 # spec file for package python-frozenlist
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Source:         https://files.pythonhosted.org/packages/source/f/frozenlist/froz
 Patch1:         no-pytest-cov.patch
 # PATCH-FIX-OPENSUSE - avoid embedding random tmp dir in .so
 Patch2:         reproducible.patch
+# PATCH-FIX-OPENSUSE Do not check annotation internals
+Patch3:         support-python314.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module expandvars}
@@ -59,6 +61,6 @@ export CFLAGS="%{optflags}"
 %doc CHANGES.rst README.rst
 %license LICENSE
 %{python_sitearch}/frozenlist
-%{python_sitearch}/frozenlist-%{version}*-info
+%{python_sitearch}/frozenlist-%{version}.dist-info
 
 %changelog

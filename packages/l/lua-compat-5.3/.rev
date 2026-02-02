@@ -139,4 +139,13 @@
 - Add rpmlintrc</comment>
     <requestid>1313522</requestid>
   </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>7c46d1de2bfde356420e481474a8c94c</srcmd5>
+    <version>unknown</version>
+    <time>1769420683</time>
+    <user>anag_factory</user>
+    <comment>- Add lua55-build.patch and modify `CFLAGS` to make the build
+  working for Lua 5.5.</comment>
+    <requestid>1328829</requestid>
+  </revision>
 </revisionlist>

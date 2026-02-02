@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 22 23:07:16 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add lua55-build.patch and modify `CFLAGS` to make the build
+  working for Lua 5.5.
+
+-------------------------------------------------------------------
 Fri Oct 24 14:47:30 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch off building lua51 build of the package.

@@ -115,9 +115,9 @@
 %endif \
         -DCMAKE_C_FLAGS:STRING="%{optflags}" \\\
         -DCMAKE_CXX_FLAGS:STRING="%{optflags}" \\\
-        -DCMAKE_EXE_LINKER_FLAGS:STRING="-Wl,--as-needed -Wl,--no-undefined" \\\
-        -DCMAKE_MODULE_LINKER_FLAGS:STRING="-Wl,--as-needed -Wl,--no-undefined" \\\
-        -DCMAKE_SHARED_LINKER_FLAGS:STRING="-Wl,--as-needed -Wl,--no-undefined" \\\
+        -DCMAKE_EXE_LINKER_FLAGS:STRING="%{?build_ldflags} -Wl,--as-needed -Wl,--no-undefined" \\\
+        -DCMAKE_MODULE_LINKER_FLAGS:STRING="%{?build_ldflags} -Wl,--as-needed -Wl,--no-undefined" \\\
+        -DCMAKE_SHARED_LINKER_FLAGS:STRING="%{?build_ldflags} -Wl,--as-needed -Wl,--no-undefined" \\\
         -DKDE_INSTALL_LIBEXECDIR=%{_libexecdir} \\\
         -DBUILD_TESTING:BOOL=FALSE
 

@@ -1,0 +1,41 @@
+From 1694b87736a74a5fbbbc93599bc359ed9b890073 Mon Sep 17 00:00:00 2001
+From: Dario Faggioli <dfaggioli@suse.com>
+Date: Fri, 23 Jan 2026 11:59:01 +0100
+Subject: [PATCH] mbedtls: fix building with GCC 16
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+GCC 16 is strictier about variables set but not actually used. In fact,
+the build (in OBS) with it fails like this:
+
+  13s] [...]/mbedtls/library/bignum.c:1650:29: error: variable ‘t’ set but not used [-Werror=unused-but-set-variable=]
+[   13s]  1650 |     mbedtls_mpi_uint c = 0, t = 0;
+[   13s]       |                             ^
+[   13s] cc1: all warnings being treated as errors
+
+However, the variable is used in some of the macros. Let's add a "fake"
+read of it, for silencing the warning.
+
+References: bsc#1256957
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ library/bignum.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/canokey-core/canokey-crypto/mbedtls/library/bignum.c b/canokey-core/canokey-crypto/mbedtls/library/bignum.c
+index 20afa22d5d..2548576f0b 100644
+--- a/canokey-core/canokey-crypto/mbedtls/library/bignum.c
++++ b/canokey-core/canokey-crypto/mbedtls/library/bignum.c
+@@ -1699,6 +1699,8 @@ void mpi_mul_hlp( size_t i,
+ #endif /* MULADDC_HUIT */
+ 
+     t++;
++    // FIX: Silence GCC16 "set but unused" warning 
++    (void) t;
+ 
+     while( c != 0 )
+     {
+-- 
+2.52.0
+

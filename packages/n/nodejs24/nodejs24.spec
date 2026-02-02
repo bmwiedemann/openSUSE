@@ -18,15 +18,6 @@
 # TODO: this needs reworking into different format. After 10 years,
 # we can modernize the specfile
 
-###########################################################
-#
-#   WARNING! WARNING! WARNING! WARNING! WARNING! WARNING!
-#
-# This spec file is generated from a template hosted at
-# https://github.com/AdamMajer/nodejs-packaging
-#
-###########################################################
-
 # Fedora doesn't have rpm-config-SUSE which provides
 # ext_man in /usr/lib/rpm/macros.d/macros.obs
 %if 0%{?fedora_version}
@@ -162,6 +153,7 @@ Patch102:       node-gyp-addon-gypi.patch
 Patch104:       npm_search_paths.patch
 
 Patch120:       flaky_test_rerun.patch
+Patch121:       61008.patch
 
 
 # Use versioned binaries and paths

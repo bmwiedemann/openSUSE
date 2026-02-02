@@ -4825,4 +4825,15 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1326482</requestid>
   </revision>
+  <revision rev="304" vrev="2">
+    <srcmd5>8bfcdffd9c7b05ae18214eda65f4d367</srcmd5>
+    <version>10.2.0</version>
+    <time>1769420697</time>
+    <user>anag_factory</user>
+    <comment>- Bug and CVE fixes:
+  * roms/edk2: fix building with GCC 16 (bsc#1256980)
+  * hw/i386/kvm: fix PIRQ bounds check in xen_physdev_map_pirq() (bsc#1256484, CVE-2026-0665)
+</comment>
+    <requestid>1328909</requestid>
+  </revision>
 </revisionlist>

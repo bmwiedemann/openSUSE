@@ -15,4 +15,12 @@
     <comment>- Fix static library build (added canokey-core-static.diff) (forwarded request 1141452 from lnussel)</comment>
     <requestid>1141479</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>35f8ce56dbc9d4a013e36df9e4c38565</srcmd5>
+    <version>0.0+git20230606.151568c</version>
+    <time>1769420688</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1328878</requestid>
+  </revision>
 </revisionlist>

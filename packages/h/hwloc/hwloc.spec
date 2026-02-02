@@ -1,7 +1,7 @@
 #
 # spec file for package hwloc
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ Summary:        Portable Hardware Locality
 License:        BSD-3-Clause
 URL:            https://www.open-mpi.org/projects/hwloc/
 Source0:        https://download.open-mpi.org/release/hwloc/v2.12/hwloc-%{version}.tar.bz2
+Patch:          0001-lstopo-x11-add-desktop-translations.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -47,7 +48,6 @@ BuildRequires:  ncurses-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(pciaccess)
@@ -152,7 +152,6 @@ autoreconf -fvi
 
 %install
 %make_install
-%suse_update_desktop_file -r lstopo System Monitor
 # We don't ship .la files.
 rm -rf %{buildroot}%{_libdir}/libhwloc.la
 
@@ -221,7 +220,6 @@ rm %{buildroot}%{_includedir}/hwloc/cudart.h
 %{_mandir}/man1/lstopo-no-graphics*
 %{_bindir}/hwloc*
 %{_bindir}/lstopo-no-graphics
-%{_datadir}/applications/*.desktop
 %{_datadir}/bash-completion/completions/%{name}
 %ifarch %{ix86} x86_64
 %attr(0755,root,root) %{_sbindir}/hwloc-dump-hwdata
@@ -231,6 +229,7 @@ rm %{buildroot}%{_includedir}/hwloc/cudart.h
 %files gui
 %{_bindir}/lstopo
 %{_mandir}/man1/lstopo.*
+%{_datadir}/applications/*.desktop
 
 %files devel
 %exclude %{_includedir}/hwloc/opencl.h

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 21 10:36:34 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- macros.kf5: Add %{?build_ldflags} to linker flags
+
+-------------------------------------------------------------------
 Sun Sep  4 10:57:35 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - macros.kf5: convert obsolete egrep call to grep -E

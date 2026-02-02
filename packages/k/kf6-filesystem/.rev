@@ -23,4 +23,12 @@
     <comment>KDE Frameworks 6.19.0</comment>
     <requestid>1310893</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2591d2986c53a0d8ec2df7fb767370d8</srcmd5>
+    <version>20251007</version>
+    <time>1769420684</time>
+    <user>anag_factory</user>
+    <comment>- macros.kf6: Add %{?build_ldflags} to linker flags (forwarded request 1328474 from Guillaume_G)</comment>
+    <requestid>1328831</requestid>
+  </revision>
 </revisionlist>

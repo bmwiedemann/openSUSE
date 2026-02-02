@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 19 14:22:37 UTC 2025 - Jean Delvare <jdelvare@suse.com>
+
+- Update to upstream version 3.7:
+  * Memory sizes use binary unit prefixes.
+  * The word "Firmware" is now used instead of "BIOS".
+  * Support for SMBIOS 3.8.0. This includes a new processor family.
+  * Support for SMBIOS 3.9.0. This includes chassis type name
+    adjustments, new rack attributes, slot ID for more slot types,
+    and new memory device form factors and types.
+  * Decode HPE OEM records 193, 195, 202, 211, 226, 229, 232 and
+    244.
+  * Update HPE OEM records 203, 216, 242 and 245.
+  * EDSFF slot names now include their .S/.L suffix.
+  * Obsoletes dmioem-update-hpe-oem-type-238.patch.
+
+-------------------------------------------------------------------
 Wed May 29 19:54:25 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Enable build on riscv64

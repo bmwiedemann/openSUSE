@@ -1290,4 +1290,14 @@ v2.3.5
   * Migrate D-Bus configuration files from /etc to /usr/share.</comment>
     <requestid>1326283</requestid>
   </revision>
+  <revision rev="84" vrev="3">
+    <srcmd5>89b396b83df33aa4d7038e26efa18303</srcmd5>
+    <version>3.1.10</version>
+    <time>1769420678</time>
+    <user>anag_factory</user>
+    <comment>- Update corosync.spec:
+  * Stop marking /var/lib/corosyn and /var/log/cluster as %ghost (jsc#PED-14799)
+</comment>
+    <requestid>1328801</requestid>
+  </revision>
 </revisionlist>

@@ -35,6 +35,9 @@ Group:          Development/Libraries/Other
 URL:            https://github.com/lunarmodules/lua-compat-5.3
 Source0:        https://github.com/lunarmodules/lua-compat-5.3/archive/v%{version}.tar.gz#$/%{mod_name}-%{version}.tar.gz
 Source99:       lua-compat-5.3.rpmlintrc
+# PATCH-FIX-UPSTREAM lua55-build.patch bugno mcepl@suse.com
+# Bump the maximum compatibility version to 5.5
+Patch0:         lua55-build.patch
 BuildRequires:  %{flavor}-devel
 BuildRequires:  lua-macros
 BuildRequires:  pkgconfig
@@ -69,13 +72,18 @@ from Lua 5.3; it is compatible with Lua 5.1, 5.2 and 5.3.
 %endif
 
 %prep
-%autosetup -n %{mod_name}-%{mversion}
+%autosetup -p1 -n %{mod_name}-%{mversion}
 
 %build
-export CC="${COMPILER:-gcc}" DEF="" SRC="" CFLAGS="-Wall -Wextra $(pkg-config --cflags lua) -Ic-api -O2 -fPIC"
+CC="${COMPILER:-gcc}" DEF="" SRC="" CFLAGS="-Wall -Wextra $(pkg-config --cflags lua) -Ic-api -O2 -fPIC"
+# For compatibility with Lua 5.5, where lua_assert() macro is private
+export CFLAGS="${CFLAGS} -Dlua_assert=assert -include assert.h"
 if [ "x${EXTERNAL:-}" = xtrue ]; then
     export DEF="-DCOMPAT53_PREFIX=compat53" SRC="c-api/compat-5.3.c"
 fi
+# Then use it in your build commands
+gcc $CFLAGS -shared -o utf8.so lutf8lib.c
+gcc $CFLAGS -shared -o table.so ltablib.c
 gcc ${CFLAGS} -Iinclude ${DEF} -shared -o utf8.so lutf8lib.c
 gcc ${CFLAGS} -Iinclude ${DEF} -shared -o table.so ltablib.c
 gcc ${CFLAGS} -Iinclude ${DEF} -shared -o string.so lstrlib.c

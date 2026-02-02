@@ -250,4 +250,12 @@
     <comment></comment>
     <requestid>1001102</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>f0d2859968aeda127ec1b6d4031a2d36</srcmd5>
+    <version>20220307</version>
+    <time>1769420683</time>
+    <user>anag_factory</user>
+    <comment>- macros.kf5: Add %{?build_ldflags} to linker flags (forwarded request 1328467 from Guillaume_G)</comment>
+    <requestid>1328830</requestid>
+  </revision>
 </revisionlist>

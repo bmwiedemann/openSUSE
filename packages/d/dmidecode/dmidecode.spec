@@ -1,7 +1,7 @@
 #
 # spec file for package dmidecode
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dmidecode
-Version:        3.6
+Version:        3.7
 Release:        0
 Summary:        DMI table decoder
 License:        GPL-2.0-or-later
@@ -27,7 +27,6 @@ Source0:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{vers
 Source1:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.xz.sig
 # https://savannah.nongnu.org/project/memberlist-gpgkeys.php?group=dmidecode
 Source2:        %{name}.keyring
-Patch1:         dmioem-update-hpe-oem-type-238.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  xz
 ExclusiveArch:  %ix86 ia64 x86_64 %arm aarch64 riscv64

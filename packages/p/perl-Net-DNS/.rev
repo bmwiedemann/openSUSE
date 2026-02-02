@@ -658,4 +658,13 @@ Personally I would make this even &quot;required&quot; instead of
    see /usr/share/doc/packages/perl-Net-DNS/Changes</comment>
     <requestid>1310018</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>d176aa3b5cd23a9be634f5f06d0db78b</srcmd5>
+    <version>1.540.0</version>
+    <time>1769420681</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.540.0 (1.54)
+   see /usr/share/doc/packages/perl-Net-DNS/Changes</comment>
+    <requestid>1328816</requestid>
+  </revision>
 </revisionlist>

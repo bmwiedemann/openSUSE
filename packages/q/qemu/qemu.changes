@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 23 12:52:44 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Bug and CVE fixes:
+  * roms/edk2: fix building with GCC 16 (bsc#1256980)
+  * hw/i386/kvm: fix PIRQ bounds check in xen_physdev_map_pirq() (bsc#1256484, CVE-2026-0665)
+
+-------------------------------------------------------------------
 Fri Jan 09 16:59:54 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
 
 - Build ui-sdl and audio-sdl modules as some applications (like quickemu)

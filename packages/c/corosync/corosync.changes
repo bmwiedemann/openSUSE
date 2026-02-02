@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 12 09:19:23 UTC 2026 - Nicholas Yang <nicholas.yang@suse.com>
+
+- Update corosync.spec:
+  * Stop marking /var/lib/corosyn and /var/log/cluster as %ghost (jsc#PED-14799)
+
+-------------------------------------------------------------------
 Fri Dec 26 08:56:37 UTC 2025 - Nicholas Yang <nicholas.yang@suse.com>
 
 - Update corosync.spec:

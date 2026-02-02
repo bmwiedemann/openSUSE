@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 23 11:02:32 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix building with GCC 16 (bsc#1256957)
+  * Patch added: mbedtls-fix-building-with-GCC-16.patch
+
+-------------------------------------------------------------------
 Thu Jan 25 08:48:29 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
 
 - Fix static library build (added canokey-core-static.diff)

@@ -79,4 +79,13 @@
   * deps: updated bundled c-ares to 1.34.6 (if used)</comment>
     <requestid>1327946</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>cd050c604857b6814d9ffddd38583c35</srcmd5>
+    <version>24.13.0</version>
+    <time>1769420672</time>
+    <user>anag_factory</user>
+    <comment>- 61008.patch: fix ppc64le build
+- node-gyp-addon-gypi.patch: fix build of binary modules</comment>
+    <requestid>1328734</requestid>
+  </revision>
 </revisionlist>

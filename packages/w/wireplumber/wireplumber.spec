@@ -31,6 +31,8 @@ URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        wireplumber.env
 # PATCH-FIX-UPSTREAM
+Patch1:         0001-monitors-bluez-request-device-ports-take-loopback-no.patch
+Patch2:         0002-autoswitch-bluetooth-profile-Fix-attempt-to-index-a-.patch
 Patch100:       set-profile-in-service.patch
 # docs
 BuildRequires:  doxygen

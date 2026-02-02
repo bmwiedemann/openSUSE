@@ -1,7 +1,7 @@
 #
 # spec file for package canokey-qemu
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ URL:            https://github.com/canokeys/canokey-qemu
 Source:         %{name}-%{version}.tar
 Patch0:         canokey-git.diff
 Patch1:         canokey-core-static.diff
+Patch2:         mbedtls-fix-building-with-GCC-16.patch
 BuildRequires:  cmake
 BuildRequires:  glibc-devel-static
 
