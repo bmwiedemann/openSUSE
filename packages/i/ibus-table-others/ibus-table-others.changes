@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan 29 02:27:08 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Update to 1.3.21:
+  * Add Lean table (by Alba Mendez).
+  * Add hu_Hung_HU_traditional.txt (by Viktor Kovács).
+  * Add ⟨anɡle brackets⟩ to X-SAMPA.
+  * Some fixes for the hu-old-hungarian-rovas table:
+    1. usage of repeated postfixes was inconsistent, fix that.
+    2. add missing line: b      𐳂       0       ### U+10CC2 OLD
+       HUNGARIAN SMALL LETTER EB.
+    3. fix typo in _Enc, _ENc, _ENC (lowercase was mistakenly used).
+    4. remove duplicate _ENT.
+  * Use “autoupdate” to modernize configure.ac and some other files.
+  * Rename emoji-table to emoticon-table.
+  * Remove useless m4/as-version.m4.
+
+-------------------------------------------------------------------
 Wed May 14 15:11:04 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use %make_build instead of %jobs (boo#1237231)

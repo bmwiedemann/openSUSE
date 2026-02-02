@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-table-others
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           ibus-table-others
-Version:        1.3.16
+Version:        1.3.21
 Release:        0
 Summary:        Other non-Chinese tables for ibus
 License:        GPL-3.0-or-later
 Group:          System/Localization
 URL:            https://github.com/moebiuscurve/ibus-table-others
-Source:         https://github.com/moebiuscurve/ibus-table-others/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/moebiuscurve/ibus-table-others/archive/refs/tags/1.3.21.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  ibus-table >= 1.9.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
@@ -54,13 +54,15 @@ Requires:       ibus-table
 ibus-table-cns11643 provides CNS11643 input method on IBus Table under IBus
 framework.
 
-%package -n ibus-table-emoji
+%package -n ibus-table-emoticon
 Summary:        Emoji input method for IBus framework
 Group:          System/Localization
 Requires:       ibus-table
+Provides:       ibus-table-emoji = %{version}
+Obsoletes:      ibus-table-emoji < %{version}
 
-%description -n ibus-table-emoji
-ibus-table-emoji provides Emoji input method on IBus Table under IBus framework.
+%description -n ibus-table-emoticon
+ibus-table-emoticon provides table for emoticons o(*￣▽￣*)q.
 
 %package -n ibus-table-rustrad
 Summary:        Rustrad input method for IBus framework
@@ -184,6 +186,22 @@ Requires:       ibus-table
 %description -n ibus-table-vni
 ibus-table-mongol-bichig provides the Vietnamese Vni table for ibus-table.
 
+%package -n ibus-table-lean
+Summary:        lean table for ibus-table
+Group:          System/Localization
+Requires:       ibus-table
+
+%description -n ibus-table-lean
+ibus-table-lean provides abbreviations to enter mathematical symbols. All abbreviations start with a backslash (\).
+
+%package -n ibus-table-hu_Hung_HU_traditional
+Summary:        lean table for ibus-table
+Group:          System/Localization
+Requires:       ibus-table
+
+%description -n ibus-table-hu_Hung_HU_traditional
+ibus-table-hu_Hung_HU_traditional provides old Hungarian script for ibus-table.
+
 %prep
 %setup
 
@@ -202,16 +220,16 @@ make DESTDIR=${RPM_BUILD_ROOT} NO_INDEX=true install
 %license COPYING
 
 %files -n ibus-table-latex
-%{_datadir}/ibus-table/icons/latex*
-%{_datadir}/ibus-table/tables/latex*
+%{_datadir}/ibus-table/icons/latex.svg
+%{_datadir}/ibus-table/tables/latex.db
 
 %files -n ibus-table-cns11643
-%{_datadir}/ibus-table/icons/cns11643*
-%{_datadir}/ibus-table/tables/cns11643*
+%{_datadir}/ibus-table/icons/cns11643.png
+%{_datadir}/ibus-table/tables/cns11643.db
 
-%files -n ibus-table-emoji
-%{_datadir}/ibus-table/icons/ibus-emoji*
-%{_datadir}/ibus-table/tables/emoji*
+%files -n ibus-table-emoticon
+%{_datadir}/ibus-table/icons/ibus-emoticon.svg
+%{_datadir}/ibus-table/tables/emoticon-table.db
 
 %files -n ibus-table-rustrad
 %{_datadir}/ibus-table/icons/rustrad.png
@@ -268,5 +286,13 @@ make DESTDIR=${RPM_BUILD_ROOT} NO_INDEX=true install
 %files -n ibus-table-vni
 %{_datadir}/ibus-table/icons/vni.png
 %{_datadir}/ibus-table/tables/vni.db
+
+%files -n ibus-table-lean
+%{_datadir}/ibus-table/icons/lean.svg
+%{_datadir}/ibus-table/tables/lean.db
+
+%files -n ibus-table-hu_Hung_HU_traditional
+%{_datadir}/ibus-table/icons/hu_Hung_HU_traditional.png
+%{_datadir}/ibus-table/tables/hu_Hung_HU_traditional.db
 
 %changelog
