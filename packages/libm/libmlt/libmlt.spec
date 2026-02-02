@@ -1,7 +1,7 @@
 #
 # spec file for package libmlt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,17 @@
 
 %define _name mlt
 %define libname lib%{_name}
-%define lversion 7.34.1
+%define lversion 7.36.1
 %define sover 7
 %define lib_pkgname %{libname}-%{sover}-%{sover}
 %define _name_pp %{_name}++
 %define libname_pp lib%{_name_pp}
 %define sover_pp 7
-%define lversion_pp 7.34.1
+%define lversion_pp 7.36.1
 %define libpp_pkgname %{libname_pp}-%{sover_pp}-%{sover_pp}
-%bcond_without Qt6
 %bcond_without rtaudio
 Name:           %{libname}
-Version:        7.34.1
+Version:        7.36.1
 Release:        0
 Summary:        Multimedia framework for television broadcasting
 License:        GPL-3.0-or-later
@@ -39,7 +38,7 @@ Source0:        https://github.com/mltframework/mlt/releases/download/v%{version
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-%if %{with Qt6} && 0%{?suse_version} < 1600
+%if 0%{?suse_version} < 1600
 # Qt 6 requires a compiler that fully supports c++-17
 BuildRequires:  gcc13-c++
 BuildRequires:  gcc13-PIE
@@ -47,13 +46,6 @@ BuildRequires:  gcc13-PIE
 BuildRequires:  ladspa-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  cmake(Qt5Core) >= 5.10
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
-%if %{with Qt6}
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Core5Compat)
 BuildRequires:  cmake(Qt6Gui)
@@ -61,13 +53,6 @@ BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6SvgWidgets)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
-%else
-BuildRequires:  cmake(Qt5Core) >= 5.10
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
-%endif
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(fontconfig)
@@ -180,9 +165,9 @@ transcoders and web streamers.
 The functionality of the system is provided via an assortment of
 tools, XML authoring components, and an plug-in based API.
 
-%if %{with Qt6}
 # Creating a distinct Qt 6 module avoids pulling Qt 6 when installing the
 # libmlt modules package
+
 %package -n %{libname}%{sover}-module-qt6
 Summary:        Qt 6 module for the MLT multimedia framework
 Group:          Productivity/Multimedia/Video/Editors and Convertors
@@ -197,7 +182,6 @@ The functionality of the system is provided via an assortment of
 tools, XML authoring components, and an plug-in based API.
 
 This package provides a Qt 6 module for MLT.
-%endif
 
 %package -n %{libname}%{sover}-data
 Summary:        Architecture-independent data files for the MLT multimedia framework
@@ -227,7 +211,7 @@ This package contains python bindings.
 %autosetup -p1 -n %{_name}-%{version}
 
 %build
-%if %{with Qt6} && 0%{?sle_version}
+%if 0%{?sle_version}
 export CC=gcc-13 CXX=g++-13
 %endif
 
@@ -245,9 +229,6 @@ export CC=gcc-13 CXX=g++-13
    -DMOD_GLAXNIMATE=ON \
    -DMOD_GLAXNIMATE_QT6=ON \
    -DMOD_QT=ON \
-%if %{without Qt6}
-   -DMOD_QT6=OFF
-%endif
 
 %cmake_build
 
@@ -311,7 +292,6 @@ popd
 %exclude %{_libdir}/%{_name}-%{sover}/libmltglaxnimate-qt6.so
 %exclude %{_libdir}/%{_name}-%{sover}/libmltqt6.so
 
-%if %{with Qt6}
 %files -n %{libname}%{sover}-module-qt6
 %dir %{_datadir}/%{_name}-%{sover}
 %{_datadir}/%{_name}-%{sover}/glaxnimate-qt6/
@@ -319,7 +299,6 @@ popd
 %dir %{_libdir}/%{_name}-%{sover}
 %{_libdir}/%{_name}-%{sover}/libmltglaxnimate-qt6.so
 %{_libdir}/%{_name}-%{sover}/libmltqt6.so
-%endif
 
 %files -n %{libname}%{sover}-data
 %dir %{_datadir}/%{_name}-%{sover}/

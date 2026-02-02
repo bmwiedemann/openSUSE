@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Feb  2 09:41:08 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 7.36.1:
+  * Fix a regression creating a xml-clip producer or producer with
+    a null profile. This broke, for example, nesting a MLT XML project
+    file within another project in Shotcut.
+
+-------------------------------------------------------------------
+Mon Feb  2 09:38:52 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 7.36.0:
+  Framework:
+  * Added mlt_image_default_colorspace()
+  * Added mlt_image_default_trc()
+  * Added mlt_image_default_primaries()
+  * Added mlt_color_convert_trc()
+  * Added the mlt_consumer property mlt_color_trc to drive a new
+    color_transform normalizer filter. This sets the color transfer function to
+    use for image/video effects. It is beneficial and correct to use linear
+    color for any pixel mixing whether for blending or interpolation.
+  * Removed atexit(mlt_factory_close) in mlt_factory_init(). Close the factory
+    yourself if you feel the need to (not generally needed when exiting a
+    process).
+  * Prevent possible crash in mlt_service_connect_producer().
+  * Added mlt_profile_is_valid() and Mlt::Profile::is_valid().
+  * Fixed crash on invalid profile (CVE-2025-65834)
+  Modules:
+  * Drop support for Qt 5.
+  * Fixed bad color in luma transition's dissolve (regression in v7.34.0).
+  * Fixed HLG HDR broken in decklink consumer (regression in v7.34.0).
+  * Fixed warnings when flushing audio in the avformat consumer.
+  * Added support for hwaccel=vulkan to the avformat producer.
+  * Added a color_transform normalizer filter to the core module to convert all
+    image/video producers to and from linear color. It is abstract in the core
+    module and drives some filters
+  * Added filter sws_colortransform that is more efficient than avfilter.swscale but requires FFmpeg 8.
+    Changed the default property values of the null consumer: real_time: -1 terminate_on_pause: 1
+  * Changed the luma and movit.luma transitions to progress linearly with linear color_trc.
+  * Fixed the alpha channel dropped by the xml-clip producer.
+  * Added mlt_image_rgba64 format
+  * Changed the mask_apply filter default transition to qtblend.
+  * Removed the maximum for the alpha property on the brightness filter so that
+    you can increase the opacity of an existing alpha channel.
+  * Fixed background image scaling in the gpsgraphic filter.
+  * Fix audio artifacts with pcm_s24le in mkv in avformat producer.
+  Other:
+  * Fixed melt on Windows not reading file path/name with extended characters (regression in v7.34.0).
+  * Removed bitrate and quality limits in the vp9 and webm avformat presets.
+  * Fixed building the ruby bindings with Ruby 3.0.
+  * More fixes for MSVC.
+  * Removed win32/strptime.c and replaced with Qt functions.
+  * Stop showing melt usage on error exit.
+- Drop Qt5 support
+
+-------------------------------------------------------------------
 Wed Nov  5 18:09:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 7.34.1
