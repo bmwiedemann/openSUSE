@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Feb  1 21:35:24 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 18:
+  Next-Generation Evaluation:
+  * This release introduces the SFNNv10 network architecture. The network’s input
+    layer has been augmented with 'Threat Inputs' features as part of a massive
+    community effort. These features allow the engine to 'see' which pieces are
+    threatened more naturally, resulting in more accurate evaluations.
+  Hardware and Performance Optimizations:
+  * A key highlight is the new 'Shared Memory' implementation, which allows
+    different Stockfish processes to share the same memory space for neural
+    network weights. This makes it the most efficient version for cloud
+    analysis and high-concurrency testing.
+  * Significant efforts have also been made to utilize hardware more
+    effectively by adapting the code to make use of modern CPU instructions and
+    refining how threads interact during a search.
+  Search Improvements:
+  * Stockfish 18 features a heavily refined search, utilizing 'Correction
+    History' to dynamically adjust evaluations based on patterns found during
+    the search itself. These and other refinements allow the engine to detect
+    stalemates and evaluate fortresses significantly better than previous
+    versions. A particularly rare issue, involving threefold repetition
+    detection, en passant, and pins, was also fixed.
+  Refactored Training Workflow:
+  * The training of Stockfish's neural networks has transitioned to an
+    automated and reproducible model. This new framework allows the project to
+    employ standardized recipes to chain complex training stages together. This
+    transition facilitates the training of networks using over 100 billion
+    positions of Lc0 evaluation data.
+- Update stockfish-remove-net.patch
+
+-------------------------------------------------------------------
 Wed Apr  2 13:40:32 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 17.1:

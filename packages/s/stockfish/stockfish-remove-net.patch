@@ -1,8 +1,8 @@
-Index: Stockfish-sf_17.1/src/Makefile
+Index: Stockfish-sf_18/src/Makefile
 ===================================================================
---- Stockfish-sf_17.1.orig/src/Makefile
-+++ Stockfish-sf_17.1/src/Makefile
-@@ -927,20 +927,20 @@ ifneq ($(SUPPORTED_ARCH), true)
+--- Stockfish-sf_18.orig/src/Makefile
++++ Stockfish-sf_18/src/Makefile
+@@ -972,20 +972,20 @@ ifneq ($(SUPPORTED_ARCH), true)
  endif
  
  
@@ -27,7 +27,7 @@ Index: Stockfish-sf_17.1/src/Makefile
  	@echo ""
  	@echo "Step 1/4. Building instrumented executable ..."
  	$(MAKE) ARCH=$(ARCH) COMP=$(COMP) $(profile_make)
-@@ -999,7 +999,7 @@ default:
+@@ -1040,7 +1040,7 @@ format:
  
  all: $(EXE) .depend
  
@@ -36,11 +36,11 @@ Index: Stockfish-sf_17.1/src/Makefile
  	@echo ""
  	@echo "Config:" && \
  	echo "debug: '$(debug)'" && \
-@@ -1118,6 +1118,6 @@ icx-profile-use:
+@@ -1159,6 +1159,6 @@ icx-profile-use:
  .depend: $(SRCS)
  	-@$(CXX) $(DEPENDFLAGS) -MM $(SRCS) > $@ 2> /dev/null
  
--ifeq (, $(filter $(MAKECMDGOALS), help strip install clean net objclean profileclean config-sanity))
-+ifeq (, $(filter $(MAKECMDGOALS), help strip install clean objclean profileclean config-sanity))
+-ifeq (, $(filter $(MAKECMDGOALS), help strip install clean net objclean profileclean format config-sanity))
++ifeq (, $(filter $(MAKECMDGOALS), help strip install clean objclean profileclean format config-sanity))
  -include .depend
  endif
