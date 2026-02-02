@@ -60,4 +60,12 @@
   * Fix some tshark_path problems.</comment>
     <requestid>1136295</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9338bd286d0aa4d0dfb70b1dfacfb512</srcmd5>
+    <version>0.6</version>
+    <time>1770040669</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1330340</requestid>
+  </revision>
 </revisionlist>

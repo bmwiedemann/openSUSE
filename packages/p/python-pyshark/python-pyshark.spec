@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyshark
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/KimiNewt/pyshark
 #Git-Clone:     https://github.com/KimiNewt/pyshark.git
 Source:         https://github.com/KimiNewt/pyshark/archive/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix_tshark.patch -- based on PR 744
+Patch0:         fix_tshark.patch
 BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pip}
@@ -38,6 +40,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  wireshark
+Requires:       %{python_module packaging}
 Requires:       python-appdirs
 Requires:       python-lxml
 Requires:       python-py
@@ -51,7 +54,7 @@ Python wrapper for tshark, allowing python packet parsing using
 wireshark dissectors.
 
 %prep
-%setup -q -n pyshark-%{version}/src
+%autosetup -p1 -n pyshark-%{version}/src
 
 %build
 %pyproject_wheel
