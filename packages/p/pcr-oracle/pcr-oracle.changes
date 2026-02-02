@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  2 07:38:47 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.5.9
+  + Fix event skipping due to double increment
+  + Add '--persistent-srk' to make SRK persistent (bsc#1248516)
+
+-------------------------------------------------------------------
 Mon Jan 26 12:59:21 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable build on %{arm} as it is required by sdbootutil

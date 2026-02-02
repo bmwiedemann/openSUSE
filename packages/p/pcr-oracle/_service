@@ -7,7 +7,7 @@
 		<param name="url">https://github.com/openSUSE/pcr-oracle.git</param>
 		<param name="filename">pcr-oracle</param>
 		<param name="versionformat">@PARENT_TAG@</param>
-		<param name="revision">refs/tags/0.5.8</param>
+		<param name="revision">refs/tags/0.5.9</param>
 	</service>
 	<service name="recompress" mode="disabled">
 		 <param name="file">pcr-oracle*.tar</param>
