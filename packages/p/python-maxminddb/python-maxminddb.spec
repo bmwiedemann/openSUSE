@@ -16,18 +16,17 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-maxminddb
-Version:        2.6.3
+Version:        3.0.0
 Release:        0
 Summary:        Reader for the MaxMind DB format
 License:        Apache-2.0
-URL:            http://www.maxmind.com/
+URL:            https://www.maxmind.com/
 Source:         https://files.pythonhosted.org/packages/source/m/maxminddb/maxminddb-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.6}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libmaxminddb-devel
@@ -45,8 +44,12 @@ MaxMind DB is a binary file format that stores data indexed by IP address
 subnets (IPv4 or IPv6).
 
 %prep
-%setup -q -n maxminddb-%{version}
-sed -i '/nose/d' setup.py
+%autosetup -n maxminddb-%{version}
+
+# hack to restore compatibility with older setuptools
+%if 0%{?suse_version} <= 1500
+sed -i 's/^from setuptools.command.bdist_wheel/from wheel.bdist_wheel/' setup.py
+%endif
 
 %build
 export CFLAGS="%{optflags}"

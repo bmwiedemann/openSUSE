@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 29 18:11:49 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Update to version 3.0.0:
+  * jump multiple versions, reference upstream changelog
+- Clean up spec file, add workaround to keep compatibility with Leap 15.6
+  (new version would otherwise require newer setuptools)
+
+-------------------------------------------------------------------
 Tue Jun 17 04:35:55 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install.
