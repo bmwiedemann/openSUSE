@@ -1,0 +1,26 @@
+--- a/pyproject.toml	1970-01-01 01:00:00.000000000 +0100
++++ b/pyproject.toml	2026-01-29 19:40:59.478833382 +0100
+@@ -43,19 +43,11 @@
+ ]
+ 
+ [build-system]
+-requires = ["uv_build>=0.7.19,<0.8.0"]
+-build-backend = "uv_build"
++requires = ["setuptools"]
++build-backend = "setuptools.build_meta"
+ 
+-[tool.uv.build-backend]
+-source-include = [
+-    "HISTORY.rst",
+-    "README.rst",
+-    "LICENSE",
+-    "docs/html",
+-    "examples/*.py",
+-    "tests/*.py",
+-    "tests/data/test-data/*.mmdb"
+-]
++[tool.setuptools.package-data]
++geoip2 = ["py.typed"]
+ 
+ [project.urls]
+ Homepage = "https://www.maxmind.com/"

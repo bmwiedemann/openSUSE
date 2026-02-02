@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jan 29 18:42:21 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Require uv-build on Tumbleweed
+- Add pyproject-setuptools.patch to switch back to setuptools on distributions
+  without uv-build
+
+-------------------------------------------------------------------
+Thu Jan 29 18:04:59 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Update to version 5.2.0:
+  * maxminddb has been upgraded to 3.0.0. This includes free-threading support.
+  * Setuptools has been replaced with the uv build backend for building the package.
+  * A new anonymizer object has been added to geoip2.models.Insights.
+  * A new ip_risk_snapshot property has been added to geoip2.records.Traits.
+  * The following properties on geoip2.records.Traits have been deprecated:
+    is_anonymous, is_anonymous_vpn, is_hosting_provider, is_public_proxy,
+    is_residential_proxy, and is_tor_exit_node.
+- From 5.1.0:
+  * Support for the GeoIP Anonymous Plus database has been added.
+  * Reorganized module documentation to improve language-server support.
+- From 5.0.1:
+  * Allow ip_address in the Traits record to be None again.
+
+-------------------------------------------------------------------
 Sun May  4 06:58:09 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 5.0.0:

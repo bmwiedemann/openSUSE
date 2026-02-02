@@ -1,7 +1,7 @@
 #
 # spec file for package python-geoip2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,28 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-geoip2
-Version:        5.0.0
+Version:        5.2.0
 Release:        0
 Summary:        MaxMind GeoIP2 Python API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/maxmind/GeoIP2-python
 Source:         https://files.pythonhosted.org/packages/source/g/geoip2/geoip2-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+%if 0%{?suse_version} <= 1600
+# partial reversion of 83825a8 ("Switch to uv build")
+Patch0:         pyproject-setuptools.patch
+BuildRequires:  %{python_module setuptools}
+%else
+BuildRequires:  %{python_module uv-build}
+%endif
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module aiohttp >= 3.6.2}
-BuildRequires:  %{python_module maxminddb >= 2.5.1}
+BuildRequires:  %{python_module maxminddb >= 3.0.0}
 BuildRequires:  %{python_module mocket >= 3.11.0}
 BuildRequires:  %{python_module pytest}
 %if 0%{?suse_version} > 1600
@@ -44,7 +50,7 @@ BuildRequires:  %{python_module python-magic >= 0.4.18}
 BuildRequires:  %{python_module requests >= 2.24.0}
 # /SECTION
 Requires:       python-aiohttp >= 3.6.2
-Requires:       python-maxminddb >= 2.5.1
+Requires:       python-maxminddb >= 3.0.0
 Requires:       python-requests >= 2.24.0
 BuildArch:      noarch
 %python_subpackages
@@ -54,7 +60,7 @@ This package provides an API for the GeoIP2 web services and databases.
 The API also works with MaxMind's free GeoLite2 databases.
 
 %prep
-%setup -q -n geoip2-%{version}
+%autosetup -n geoip2-%{version} -p 1
 
 %build
 %pyproject_wheel
@@ -71,6 +77,6 @@ rm -v tests/webservice_test.py
 %license LICENSE
 %doc README.rst HISTORY.rst
 %{python_sitelib}/geoip2
-%{python_sitelib}/geoip2-%{version}*-info
+%{python_sitelib}/geoip2-%{version}.dist-info
 
 %changelog
