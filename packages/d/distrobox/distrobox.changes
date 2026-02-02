@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jan 29 17:15:23 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to 1.8.2.3:
+    * fix: add missing fedora dependency by @Kamorst in https://github.com/89luca89/distrobox/pull/1922
+    * fix: unintended print to stdout in assemble command by @balanza in https://github.com/89luca89/distrobox/pull/1925
+    * build(deps): bump actions/checkout from 5 to 6 by @dependabot[bot] in https://github.com/89luca89/distrobox/pull/1929
+    * Review README.md by @nilslindemann in https://github.com/89luca89/distrobox/pull/1953
+    * fix: make sure PWD matches workdir by @Taywee in https://github.com/89luca89/distrobox/pull/1952
+    * fix(init): fix support for newer shadow strictier checks by @89luca89 in https://github.com/89luca89/distrobox/pull/1965
+    * init: only install base packages once by @Kamorst in https://github.com/89luca89/distrobox/pull/1932
+    * fix: remove the error in case dependencies are not fully met by @dottorblaster in https://github.com/89luca89/distrobox/pull/1967
+    * fix: manpages generation auth error by @dottorblaster in https://github.com/89luca89/distrobox/pull/1968
+    * chore(version): bump to 1.8.2.3 by @dottorblaster in https://github.com/89luca89/distrobox/pull/1969
+    * docs: add Fedora 43 to the compatbility list by @dottorblaster in https://github.com/89luca89/distrobox/pull/1970
+    * docs: fix manpages generation by setting contents: write permissions by @dottorblaster in https://github.com/89luca89/distrobox/pull/1971
+    * docs: add CentOS Stream 10 to the supported container OSes by @dottorblaster in https://github.com/89luca89/distrobox/pull/1972
+    * ci: persist credentials in order to allow for manpages commit by @dottorblaster in https://github.com/89luca89/distrobox/pull/1973
+    * docs: add Oracle Linux 10 to the compatibility doc by @dottorblaster in https://github.com/89luca89/distrobox/pull/1974
+    * docs: leverage PAT again for gen_man action by @dottorblaster in https://github.com/89luca89/distrobox/pull/1975
+    * docs: add Linux Mint 22.3 to the compatibility document by @dottorblaster in https://github.com/89luca89/distrobox/pull/1976
+
+-------------------------------------------------------------------
 Wed Nov 26 15:44:33 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to 1.8.2.2:
