@@ -229,4 +229,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * intel/ish: Add Lenovo ISH firmware support for X1 and X9 systems</comment>
     <requestid>1329426</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>cbc3cab042b334598d3fd1eb1d0aede3</srcmd5>
+    <version>20260130</version>
+    <time>1770040491</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260130 (git commit 4b3f8c411f17):
+  * linux-firmware: Add Dell ISH firmware for Intel panther lake systems</comment>
+    <requestid>1330132</requestid>
+  </revision>
 </revisionlist>
