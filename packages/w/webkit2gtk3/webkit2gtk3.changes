@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb  1 15:09:13 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Build with Clang. The Skia documentation strongly recommends
+  building with Clang, since some of its routines are optimized
+  for it. See https://skia.org/docs/user/build/
+- Pass -DUSE_64KB_PAGE_BLOCK=ON on aarch64, rather than disabling
+  JIT and bmalloc. This should be compatible with both kernel-64kb
+  and the normal kernel.
+
+-------------------------------------------------------------------
 Wed Dec 17 15:35:08 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.50.4 (bsc#1255183 bsc#1255191 bsc#1255194

@@ -1,7 +1,7 @@
 #
 # spec file for package webkit2gtk3
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -98,13 +98,13 @@ BuildRequires:  Mesa-libGLESv2-devel
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  bison >= 2.3
 BuildRequires:  bubblewrap
+BuildRequires:  clang-devel
 BuildRequires:  cmake
 BuildRequires:  enchant-devel
 BuildRequires:  flex
 %if 0%{?_with_backtrace}
 BuildRequires:  libbacktrace-devel
 %endif
-BuildRequires:  gcc-c++ >= 11.2
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gperf >= 3.0.1
 BuildRequires:  hyphen-devel
@@ -454,13 +454,11 @@ sed -i 's|/gst-plugin-scanner|/gst-plugin-scanner-%{_target_cpu}|' ./Source/WebK
 export PYTHON=%{_bindir}/python3
 # Use linker flags to reduce memory consumption
 %global optflags %(echo %{optflags} -Wl,--no-keep-memory -Wl,--reduce-memory-overheads | sed 's/-g /-g1 /')
-%ifarch i586 %arm s390x
-# Force the garbage collector to run more often, to reduce memory consumption
-%global optflags %{optflags} --param ggc-min-expand=30
-%endif
 %cmake \
   -GNinja \
   -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_C_COMPILER=clang \
+  -DCMAKE_CXX_COMPILER=clang++ \
   -DENABLE_DOCUMENTATION=OFF \
   -DUSE_LIBBACKTRACE=%[ %{defined _with_backtrace} ? "ON" : "OFF" ] \
   -DPORT=GTK \
@@ -486,8 +484,7 @@ export PYTHON=%{_bindir}/python3
   -DUSE_SOUP2=ON \
 %endif
 %ifarch aarch64
-  -DENABLE_JIT=OFF \
-  -DUSE_SYSTEM_MALLOC=ON \
+  -DUSE_64KB_PAGE_BLOCK=ON \
 %endif
   -DUSE_SYSTEM_SYSPROF_CAPTURE=NO \
   -DUSE_FLITE=OFF \

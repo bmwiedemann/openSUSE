@@ -2049,4 +2049,12 @@ Add bug/CVE refs to changes (forwarded request 1319842 from mgorse)</comment>
   where AT-SPI roles were mapped incorrectly. (forwarded request 1323389 from mgorse)</comment>
     <requestid>1323659</requestid>
   </revision>
+  <revision rev="235" vrev="2">
+    <srcmd5>06d254482968975955dc1e6e15528f64</srcmd5>
+    <version>2.50.4</version>
+    <time>1770040495</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1330261</requestid>
+  </revision>
 </revisionlist>
