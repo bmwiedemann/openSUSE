@@ -1,7 +1,7 @@
 #
 # spec file for package bluemoon
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           bluemoon
-Version:        2.12
+Version:        2.13
 Release:        0
 Summary:        Blue Moon card solitaire
-License:        BSD-3-Clause
+License:        BSD-2-Clause
 Group:          Amusements/Games/Board/Card
-Url:            http://www.catb.org/~esr/bluemoon/
+URL:            http://www.catb.org/~esr/bluemoon/
 Source0:        http://www.catb.org/~esr/%{name}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM - bluemoon-2.12-Makefile.patch -- add $(DESTDIR), png and desktop, fix conflict with bluez
-Patch0:         %{name}-2.12-Makefile.patch
+# PATCH-FIX-SUSE - bluemoon-2.13-Makefile.patch -- fix conflict with bluez
+Patch0:         %{name}-2.13-Makefile.patch
 # PATCH-FIX-UPSTREAM - bluemoon-2.12-bluemoon.desktop.patch -- change executable
 Patch1:         %{name}-2.12-bluemoon.desktop.patch
 # PATCH-FIX-UPSTREAM - bluemoon-2.12-bluemoon.c.patch -- fix 'File is compiled without RPM_OPT_FLAGS'
 Patch2:         %{name}-2.12-bluemoon.c.patch
+# PATCH-FEATURE-SUSE bluemoon-desktop-translation.patch -- Add translations from update-desktop-files
+Patch3:         %{name}-desktop-translation.patch
 %if 0%{?suse_version}
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  update-desktop-files
 %endif
 BuildRequires:  ncurses-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -64,13 +65,10 @@ make %{?_smp_mflags} CFLAGS="%{optflags}"
 %install
 %make_install
 
-%if 0%{?suse_version}
-    %suse_update_desktop_file %{name}
-%endif
-
 %files
 %defattr(-,root,root,-)
-%doc COPYING NEWS README
+%doc NEWS.adoc README
+%license COPYING
 %{_bindir}/%{name}-catb
 %{_mandir}/man6/%{name}-catb.6%{ext_man}
 %{_datadir}/appdata/
