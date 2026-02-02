@@ -1,7 +1,7 @@
 #
 # spec file for package duplicity
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,8 @@ BuildRequires:  librsync-devel >= 0.9.6
 BuildRequires:  python-rpm-macros
 Requires:       %{_python}-fasteners
 Requires:       %{_python}-lockfile
+Requires:       %{_python}-pexpect
+Requires:       %{_python}-ptyprocess
 Requires:       gpg
 Recommends:     %{_python}-boto3
 Recommends:     %{name}-lang
