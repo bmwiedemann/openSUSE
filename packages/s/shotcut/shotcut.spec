@@ -26,7 +26,7 @@
 # NOTE: Appears there are no .pc files in qt6
 #%%(pkg-config --modversion Qt6Core)
 Name:           shotcut
-Version:        25.12.30
+Version:        26.1.30
 Release:        0
 Summary:        Video and audio editor and creator
 License:        GPL-3.0-or-later
@@ -57,7 +57,7 @@ BuildRequires:  cmake(Qt6UiTools)
 BuildRequires:  cmake(Qt6WebSockets)
 BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(fftw3)
-BuildRequires:  pkgconfig(mlt++-7) >= 7.32
+BuildRequires:  pkgconfig(mlt++-7) >= 7.36.0
 BuildRequires:  pkgconfig(mlt-framework-7)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vpx)
