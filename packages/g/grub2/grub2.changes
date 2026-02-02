@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  2 10:45:27 UTC 2026 - Michael Chang <mchang@suse.com>
+
+- Fix sporadic boot failure in 2.14 BLS (bsc#1257547)
+  * 0001-blsuki-Fix-linux_cmd-size-calcution-in-bls_get_linux.patch
+
+-------------------------------------------------------------------
 Fri Jan 16 08:52:19 UTC 2026 - Michael Chang <mchang@suse.com>
 
 - Update to 2.14

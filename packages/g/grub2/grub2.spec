@@ -394,6 +394,7 @@ Patch404:       0001-editenv-create-health_check_flag-env-var-on-RW-raw-b.patch
 Patch405:       0001-00_header-Omit-loading-efi_uga-on-non-x86-EFI-platfo.patch
 Patch406:       0001-Revert-configure-Print-a-more-helpful-error-if-autoc.patch
 Patch407:       0002-Revert-configure-Check-linker-for-image-base-support.patch
+Patch408:       0001-blsuki-Fix-linux_cmd-size-calcution-in-bls_get_linux.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime

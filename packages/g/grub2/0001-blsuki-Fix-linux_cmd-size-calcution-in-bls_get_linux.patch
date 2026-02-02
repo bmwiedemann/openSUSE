@@ -1,0 +1,30 @@
+From cc6749ca2fbe48c8624dbbea02b4bed89f046ef5 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 2 Feb 2026 18:40:01 +0800
+Subject: [PATCH] blsuki: Fix linux_cmd size calcution in bls_get_linux()
+
+---
+ grub-core/commands/blsuki.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/grub-core/commands/blsuki.c b/grub-core/commands/blsuki.c
+index 4da0464cf..531aac889 100644
+--- a/grub-core/commands/blsuki.c
++++ b/grub-core/commands/blsuki.c
+@@ -958,6 +958,13 @@ bls_get_linux (grub_blsuki_entry_t *entry)
+ 	}
+     }
+ 
++  /* Need one extra byte for '\n' */
++  if (grub_add (size, 1, &size))
++    {
++      grub_error (GRUB_ERR_OUT_OF_RANGE, "overflow detected while calculating linux buffer size");
++      goto finish;
++    }
++
+   linux_cmd = grub_malloc (size);
+   if (linux_cmd == NULL)
+     goto finish;
+-- 
+2.52.0
+
