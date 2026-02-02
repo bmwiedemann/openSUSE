@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Feb 01 19:32:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.3.1:
+  * Enhancements
+    - Add language: swift support (#1463)
+    - Add language: haskell support (#1484)
+    - Extract go version constraint from go.mod (#1457)
+    - Warn when config file exists but fails to parse (#1487)
+    - Add GitHub artifact attestations to release and build-docker
+      workflow (#1494, #1497)
+    - Allow GIT_CONFIG_PARAMETERS for private repository
+      authentication (#1472)
+    - Show progress bar when running builtin hooks (#1504)
+  * Bug fixes
+    - Cap ARG_MAX at 1<<19 for safety (#1506)
+    - Don't check Python executable path in health check (#1496)
+  * Documentation
+    - Include CocoIndex as a project using prek (#1477)
+    - Add commands for artifact verification using GitHub
+      Attestations (#1500)
+
+-------------------------------------------------------------------
 Thu Jan 22 07:00:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.3.0:
