@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 28 19:19:24 UTC 2026 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Update to version 1.0.0.1767877226.b4b136189:
+  * Change path to mandir in the %install section
+  * Fixed Korean font by injuras
+  * Revert "Test upload"
+  * Test upload
+  * Add Traditional Chinese fonts
+  * SDL_port
+  * Making Universal Builds
+  * Add mac to filename
+  * using legacy SDL to avoid linking issues (otherwise link SDL2 as well, which is weird)
+  * OSX is not used anymore
+  * trying to format macos readme better
+
+-------------------------------------------------------------------
 Thu Mar 25 14:18:37 UTC 2021 - tomas.chvatal@gmail.com
 
 - Update to version 1.0.0.1615230250.adb97235b:

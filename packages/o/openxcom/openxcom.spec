@@ -1,7 +1,7 @@
 #
 # spec file for package openxcom
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           openxcom
-Version:        1.0.0.1615230250.adb97235b
+Version:        1.0.0.1767877226.b4b136189
 Release:        0
 Summary:        An open source reimplementation of the original X-Com game
 License:        GPL-3.0-only
@@ -32,6 +32,7 @@ BuildRequires:  pkgconfig(SDL_gfx)
 BuildRequires:  pkgconfig(SDL_image)
 BuildRequires:  pkgconfig(SDL_mixer)
 BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(yaml-cpp) >= 0.5
 Obsoletes:      %{name}-doc
@@ -57,7 +58,7 @@ dos2unix *.txt
 
 %install
 %cmake_install
-rm %{buildroot}/usr/man/man6/openxcom.6
+rm %{buildroot}%{_datadir}/man/man6/openxcom.6
 
 %files
 %license LICENSE.txt
