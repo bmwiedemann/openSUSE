@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan 29 18:53:28 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Update to version 2.4.1:
+  * .Nominatim: fix broken featuretype parameter. (#564)
+- From 2.4.0:
+  * New geocoder: .Woosmap.
+    Contributed by galela. (#541)
+  * New geocoder: .Geokeo.
+    Contributed by Geokeo. (#490)
+  * Removed Algolia Places geocoder: the service is shut down.
+    Contributed by mtmail. (#547)
+  * Add support for Python 3.12. (#559)
+  * RequestsAdapter: use system CA store by default instead of certifi. (#558)
+  * .DataBC: update service domain and endpoint.
+    Contributed by nickpcrogers. (#557)
+  * Move hardcoded domains to __init__ args for all geocoders.
+
+-------------------------------------------------------------------
 Tue Jun 17 04:37:28 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install.

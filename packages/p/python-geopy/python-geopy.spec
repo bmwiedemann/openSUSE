@@ -17,7 +17,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-geopy
-Version:        2.3.0
+Version:        2.4.1
 Release:        0
 License:        MIT
 Summary:        Python Geocoding Toolbox
@@ -31,20 +31,18 @@ BuildRequires:  %{python_module wheel}
 # SECTION test requirements
 BuildRequires:  %{python_module async_generator}
 BuildRequires:  %{python_module docutils}
-BuildRequires:  %{python_module geographiclib >= 1.49}
+BuildRequires:  %{python_module geographiclib >= 1.52}
+BuildRequires:  %{python_module geographiclib < 3}
 BuildRequires:  %{python_module pytest >= 3.10}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module xml}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-geographiclib >= 1.49
+Requires:       python-geographiclib >= 1.52
+Requires:       python-geographiclib < 3
 Recommends:     python-pytz
 Recommends:     python-xml
-%ifpython2
-Requires:       python-statistics
-%endif
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -57,8 +55,7 @@ Local Live (Virtual Earth), geocoder.us, GeoNames, MediaWiki pages (with the GIS
 extension), and Semantic MediaWiki pages.
 
 %prep
-%setup -q -n geopy-%{version}
-
+%autosetup -n geopy-%{version}
 
 # Online services are not available
 rm \
