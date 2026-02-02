@@ -1386,4 +1386,41 @@ dropped patch file
   bsc#1253977, CVE-2025-47914):</comment>
     <requestid>1324695</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>a50bebeaf31966b366efc4a4a6e88e9d</srcmd5>
+    <version>0.69.0</version>
+    <time>1770040735</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.69.0 (bsc#1255366, CVE-2025-64702):
+  * release: v0.69.0 [main] (#9886)
+  * chore: bump trivy-checks to v2 (#9875)
+  * chore(deps): bump github.com/theupdateframework/go-tuf/v2 from 2.3.1 to 2.4.1 (#10091)
+  * fix(repo): return a nil interface for gitAuth if missing (#10097)
+  * fix(java): correctly inherit properties from parent fields for pom.xml files (#9111)
+  * fix(rust): implement version inheritance for Cargo mono repos (#10011)
+  * feat(activestate): add support ActiveState images (#10081)
+  * feat(vex): support per-repo tls configuration (#10030)
+  * refactor: allow per-request transport options override (#10083)
+  * chore(deps): bump github.com/sigstore/rekor from 1.4.3 to 1.5.0 (#10084)
+  * chore(deps): bump github.com/sigstore/sigstore from 1.10.3 to 1.10.4 (#10085)
+  * fix(java): correctly propagate repositories from upper POMs to dependencies (#10077)
+  * feat(rocky): enable modular package vulnerability detection (#10069)
+  * chore(deps): bump github.com/theupdateframework/go-tuf/v2 from 2.3.0 to 2.3.1 (#10079)
+  * docs: fix mistake in config file example for skip-dirs/skip-files flag (#10070)
+  * feat(report): add Trivy version to JSON output (#10065)
+  * fix(rust): add cargo workspace members glob support (#10032)
+  * feat: add AnalyzedBy field to track which analyzer detected packages (#10059)
+  * fix: use canonical SPDX license IDs from embeded licenses.json (#10053)
+  * docs: fix link to Docker Image Specification (#10057)
+  * feat(secret): add detection for Symfony default secret key (#9892)
+  * refactor(misconf): move common logic to base value and simplify typed values (#9986)
+  * fix(java): add hash of GAV+root pom file path for pkgID for packages from pom.xml files (#9880)
+  * feat(misconf): use Terraform plan configuration to partially restore schema (#9623)
+  * feat(misconf): add action block to Terraform schema (#10035)
+  * fix(misconf): correct typos in block and attribute names (#9993)
+  * test(misconf): simplify test values using *Test helpers (#9985)
+  * fix(misconf): safely parse rotation_period in google_kms_crypto_key (#9980)
+  * feat(misconf): support for ARM resources defined as an object (#9959)</comment>
+    <requestid>1330386</requestid>
+  </revision>
 </revisionlist>
