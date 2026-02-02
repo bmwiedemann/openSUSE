@@ -127,4 +127,17 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: Add firmware for airoha-npu-7583 driver</comment>
     <requestid>1327795</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a2827f96799e6607ddad8efcd2fd7f87</srcmd5>
+    <version>20260130</version>
+    <time>1770040492</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260130 (git commit 4b3f8c411f17):
+  * linux-firmware: Add firmware for airoha-npu-7581 driver used for MT7990 offloading
+
+- Update to version 20260130 (git commit 82e3e0e4c96f):
+  * linux-firmware: update Aeonsemi AS21x1x firmware to 1.9.1
+  * ice: update DDP LAG package to 1.3.2.0</comment>
+    <requestid>1330133</requestid>
+  </revision>
 </revisionlist>
