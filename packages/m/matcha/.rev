@@ -7,4 +7,19 @@
     <comment>Initial package</comment>
     <requestid>1328610</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f49a7a7d32559b92688a8229f024d746</srcmd5>
+    <version>0.16.0</version>
+    <time>1770040639</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.16.0
+  * Fixed IMAP folder detection using flags
+  * Added support for email signatures
+  * Removed duplicate email count display in the UI
+  * Simplified UI when using a single email account
+  * Improved visibility of fetch status on emails and tabs
+  * Added Trash and Archive inboxes
+</comment>
+    <requestid>1330294</requestid>
+  </revision>
 </revisionlist>

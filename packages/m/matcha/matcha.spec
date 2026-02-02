@@ -17,7 +17,7 @@
 
 
 Name:           matcha
-Version:        0.14.2
+Version:        0.16.0
 Release:        0
 Summary:        A terminal email client
 License:        MIT
