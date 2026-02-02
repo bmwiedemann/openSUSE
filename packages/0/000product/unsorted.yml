@@ -12467,7 +12467,7 @@ unsorted:
   - libbpf-devel-static 
   - libbpf-tools 
   - libbpf1-32bit 
-  - libbpftune0_1_3 
+  - libbpftune0_4_2 
   - libbraiding-devel 
   - libbraiding0 
   - libbraille 
@@ -12528,12 +12528,12 @@ unsorted:
   - libcallaudio0_1-0 
   - libcallback1 
   - libcamd-doc 
-  - libcamera-base0_6-32bit 
+  - libcamera-base0_7-32bit 
   - libcamera-cam 
   - libcamera-devel 
   - libcamera-ipa 
   - libcamera-qcam 
-  - libcamera0_6-32bit 
+  - libcamera0_7-32bit 
   - libcanberra-devel 
   - libcanberra-gtk-devel 
   - libcanberra-gtk0-32bit 
