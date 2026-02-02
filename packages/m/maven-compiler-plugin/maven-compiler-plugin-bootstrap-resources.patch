@@ -1,5 +1,5 @@
---- maven-compiler-plugin-3.14.1/src/main/filtered-resources/META-INF/maven/org.apache.maven.plugins/maven-compiler-plugin/plugin-help.xml	1970-01-01 01:00:00.000000000 +0100
-+++ maven-compiler-plugin-3.14.1/src/main/filtered-resources/META-INF/maven/org.apache.maven.plugins/maven-compiler-plugin/plugin-help.xml	2025-09-21 13:30:11.742960611 +0200
+--- a/src/main/filtered-resources/META-INF/maven/org.apache.maven.plugins/maven-compiler-plugin/plugin-help.xml	1970-01-01 01:00:00.000000000 +0100
++++ b/src/main/filtered-resources/META-INF/maven/org.apache.maven.plugins/maven-compiler-plugin/plugin-help.xml	2026-01-27 05:28:22.464378642 +0100
 @@ -0,0 +1,1195 @@
 +<?xml version="1.0" encoding="UTF-8"?>
 +
@@ -563,7 +563,7 @@
 +    </mojo>
 +    <mojo>
 +      <goal>help</goal>
-+      <description>Display help information on maven-compiler-plugin.
++      <description>Display help information on maven-compiler-plugin. 
 +Call mvn compiler:help -Ddetail=true -Dgoal=&lt;goal-name&gt; to display parameter details.</description>
 +      <requiresDirectInvocation>false</requiresDirectInvocation>
 +      <requiresProject>false</requiresProject>
@@ -1196,8 +1196,8 @@
 +    </mojo>
 +  </mojos>
 +</plugin>
---- maven-compiler-plugin-3.14.1/src/main/filtered-resources/META-INF/maven/plugin.xml	1970-01-01 01:00:00.000000000 +0100
-+++ maven-compiler-plugin-3.14.1/src/main/filtered-resources/META-INF/maven/plugin.xml	2025-09-21 13:31:52.102781401 +0200
+--- a/src/main/filtered-resources/META-INF/maven/plugin.xml	1970-01-01 01:00:00.000000000 +0100
++++ b/src/main/filtered-resources/META-INF/maven/plugin.xml	2026-01-27 05:29:04.832663353 +0100
 @@ -0,0 +1,1415 @@
 +<?xml version="1.0" encoding="UTF-8"?>
 +
@@ -1840,7 +1840,7 @@
 +    </mojo>
 +    <mojo>
 +      <goal>help</goal>
-+      <description>Display help information on maven-compiler-plugin.
++      <description>Display help information on maven-compiler-plugin. 
 +Call mvn compiler:help -Ddetail=true -Dgoal=&lt;goal-name&gt; to display parameter details.</description>
 +      <requiresDirectInvocation>false</requiresDirectInvocation>
 +      <requiresProject>false</requiresProject>
@@ -2541,22 +2541,22 @@
 +  </mojos>
 +  <dependencies>
 +    <dependency>
-+      <groupId>org.slf4j</groupId>
-+      <artifactId>slf4j-api</artifactId>
-+      <type>jar</type>
-+      <version>1.7.36</version>
-+    </dependency>
-+    <dependency>
 +      <groupId>javax.inject</groupId>
 +      <artifactId>javax.inject</artifactId>
 +      <type>jar</type>
 +      <version>1</version>
 +    </dependency>
 +    <dependency>
++      <groupId>org.slf4j</groupId>
++      <artifactId>slf4j-api</artifactId>
++      <type>jar</type>
++      <version>1.7.36</version>
++    </dependency>
++    <dependency>
 +      <groupId>org.ow2.asm</groupId>
 +      <artifactId>asm</artifactId>
 +      <type>jar</type>
-+      <version>9.8</version>
++      <version>9.9.1</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.apache.maven.shared</groupId>
@@ -2580,7 +2580,7 @@
 +      <groupId>org.codehaus.plexus</groupId>
 +      <artifactId>plexus-java</artifactId>
 +      <type>jar</type>
-+      <version>1.5.0</version>
++      <version>1.5.2</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>com.thoughtworks.qdox</groupId>
@@ -2592,30 +2592,30 @@
 +      <groupId>org.codehaus.plexus</groupId>
 +      <artifactId>plexus-compiler-api</artifactId>
 +      <type>jar</type>
-+      <version>2.15.0</version>
++      <version>2.16.2</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.codehaus.plexus</groupId>
 +      <artifactId>plexus-compiler-manager</artifactId>
 +      <type>jar</type>
-+      <version>2.15.0</version>
++      <version>2.16.2</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.codehaus.plexus</groupId>
 +      <artifactId>plexus-compiler-javac</artifactId>
 +      <type>jar</type>
-+      <version>2.15.0</version>
++      <version>2.16.2</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.codehaus.plexus</groupId>
 +      <artifactId>plexus-utils</artifactId>
 +      <type>jar</type>
-+      <version>4.0.1</version>
++      <version>4.0.2</version>
 +    </dependency>
 +  </dependencies>
 +</plugin>
---- maven-compiler-plugin-3.14.1/src/main/java/org/apache/maven/plugins/maven_compiler_plugin/HelpMojo.java	1970-01-01 01:00:00.000000000 +0100
-+++ maven-compiler-plugin-3.14.1/src/main/java/org/apache/maven/plugins/maven_compiler_plugin/HelpMojo.java	2025-09-21 13:28:25.168614657 +0200
+--- a/src/main/java/org/apache/maven/plugins/maven_compiler_plugin/HelpMojo.java	1970-01-01 01:00:00.000000000 +0100
++++ b/src/main/java/org/apache/maven/plugins/maven_compiler_plugin/HelpMojo.java	2026-01-27 05:26:32.025986195 +0100
 @@ -0,0 +1,448 @@
 +package org.apache.maven.plugins.maven_compiler_plugin;
 +
