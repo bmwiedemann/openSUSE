@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 30 06:38:56 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-bsc1248516-tpm-Support-persistent-SRK.patch to
+  suppoert persistent SRK (bsc#1248516)
+
+-------------------------------------------------------------------
 Wed Dec 31 06:29:41 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add fde-tools.conf to create /var/log/fde with tmpfiles.d

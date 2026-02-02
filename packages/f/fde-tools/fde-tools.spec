@@ -1,7 +1,7 @@
 #
 # spec file for package fde-tools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ Patch0:         fde-tools-firstboot-alp-snapshot.patch
 Patch1:         fde-tools-bsc1243877-firstboot-remove-key-conf.patch
 Patch2:         fde-tools-bsc1244323-firstboot-fix-lsinitrd.patch
 Patch3:         fde-tools-bsc1246464-use-default-uefi-boot-path.patch
+Patch4:         fde-tools-bsc1248516-tpm-Support-persistent-SRK.patch
 BuildRequires:  help2man
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libcryptsetup)

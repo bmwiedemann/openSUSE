@@ -1,0 +1,65 @@
+From 9d15b48478534a9555b1ba17c5e82261385c93df Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Thu, 30 Oct 2025 15:40:27 +0800
+Subject: [PATCH] tpm: Support persistent SRK
+
+If pcr-oracle supports persistent SRK and the user assigns the
+persistent handle in the config file, make SRK persistent when sealing
+the disk key.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ share/tpm     | 14 ++++++++++++++
+ sysconfig.fde |  7 +++++++
+ 2 files changed, 21 insertions(+)
+
+diff --git a/share/tpm b/share/tpm
+index 63a4ae6..d69cf2b 100644
+--- a/share/tpm
++++ b/share/tpm
+@@ -260,6 +260,13 @@ function tpm_seal_key {
+ 	extra_opts="${extra_opts} --rsa-bits ${rsa_size}"
+     fi
+ 
++    if [ -n "$FDE_TPM_PERSISTENT_SRK" ]; then
++	# Check if pcr-oracle supports '--persistent-srk'
++	if ! pcr-oracle --persistent-srk 2>&1 | grep -q "unrecognized option"; then
++	    extra_opts="${extra_opts} --persistent-srk ${FDE_TPM_PERSISTENT_SRK}"
++	fi
++    fi
++
+     local stop_event=$(bootloader_stop_event)
+ 
+     echo "Sealing secret against PCR policy covering $FDE_SEAL_PCR_LIST" >&2
+@@ -350,6 +357,13 @@ function tpm_seal_secret {
+     # If we are expected to use an authorized policy, seal the secret
+     # against that, using pcr-oracle rather than the tpm2 tools
+     if [ -n "$authorized_policy" ]; then
++	if [ -n "$FDE_TPM_PERSISTENT_SRK" ]; then
++	    # Check if pcr-oracle supports '--persistent-srk'
++	    if ! pcr-oracle --persistent-srk 2>&1 | grep -q "unrecognized option"; then
++		extra_opts="${extra_opts} --persistent-srk ${FDE_TPM_PERSISTENT_SRK}"
++	    fi
++	fi
++
+ 	pcr-oracle ${extra_opts} \
+ 			--authorized-policy "$authorized_policy" \
+ 			--input $secret \
+diff --git a/sysconfig.fde b/sysconfig.fde
+index 741f5b4..0a32b19 100644
+--- a/sysconfig.fde
++++ b/sysconfig.fde
+@@ -41,3 +41,10 @@ FDE_TPM_AUTO_UPDATE="yes"
+ # Expected values: 2048, 3072, 4096, or just leave it empty to let fdectl
+ # to determine the size at runtime
+ FDE_RSA_KEY_SIZE=""
++
++# Specify the TPM persistent handle to store SRK
++# The valid range of this variable is 0x81000000~0x817FFFFF.
++# If this variable is unset, grub2 will generate SRK dynamically.
++# NOTE: The persistent handle will be overwritten. Please make sure that no
++#       other program is using the same handle before setting this variable.
++FDE_TPM_PERSISTENT_SRK=""
+-- 
+2.51.0
+
