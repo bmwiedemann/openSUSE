@@ -364,4 +364,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * cirrus: cs35l56 cs35l57: Add and update firmware for some Dell laptops</comment>
     <requestid>1329428</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9ef56db9fe97afb0a20a9822c466a83d</srcmd5>
+    <version>20260130</version>
+    <time>1770040495</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260130 (git commit 82e3e0e4c96f):
+  * cirrus: cs35l56: Add WHENCE links for 17aa233c spkid0 firmware</comment>
+    <requestid>1330137</requestid>
+  </revision>
 </revisionlist>

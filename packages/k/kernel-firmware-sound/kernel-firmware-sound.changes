@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 30 08:15:52 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260130 (git commit 82e3e0e4c96f):
+  * cirrus: cs35l56: Add WHENCE links for 17aa233c spkid0 firmware
+
+-------------------------------------------------------------------
 Sat Jan 24 09:08:16 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260123 (git commit 0882248d0504):
