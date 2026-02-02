@@ -1,7 +1,7 @@
 #
 # spec file for package bpftool
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,6 @@
 #
 
 
-# Use latest version by default on Tumbleweed (as of 2025-02-25: llvm 19)
-%define llvm_major_version %{nil}
-
-# Default versions are too old on Leap 15 and SLES 15, overwrite llvm_major_version
-%if 0%{?suse_version} == 1500
-%define llvm_major_version 17
-%endif
-%if 0%{?sle_version} == 150600
-%define llvm_major_version 17
-%endif
-%if 0%{?sle_version} == 150500
-%define llvm_major_version 15
-%endif
-%if 0%{?sle_version} == 150400
-%define llvm_major_version 11
-%endif
-
 Name:           bpftool
 Version:        7.6.0
 Release:        0
@@ -44,13 +27,13 @@ Source0:        https://github.com/libbpf/bpftool/releases/download/v%{version}/
 Patch0:         binutils-2.40.patch
 BuildRequires:  binutils-devel
 # Needed for compiling included BPF program (i.e. skeletons)
-BuildRequires:  clang%{llvm_major_version}
+BuildRequires:  clang%{product_libs_llvm_ver}
 BuildRequires:  docutils
 BuildRequires:  libcap-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libzstd-devel
 # llvm-strip is needed for the included BPF program (i.e. skeletons)
-BuildRequires:  llvm%{llvm_major_version}
+BuildRequires:  llvm%{product_libs_llvm_ver}
 
 %description
 bpftool allows for inspection and simple modification of BPF objects (programs
@@ -59,6 +42,7 @@ and maps) on the system.
 %package bash-completion
 Summary:        Bash completion for bpftool
 Group:          System/Shells
+BuildArch:      noarch
 Requires:       %{name}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
@@ -68,9 +52,9 @@ bash command line completion support for bpftool.
 
 %prep
 %autosetup -p1 -n bpftool-libbpf-v%{version}-sources
-sed -i -e 's/CFLAGS += -O2/CFLAGS = $(RPM_OPT_FLAGS)/' src/Makefile
 
 %build
+export CFLAGS="%{optflags}"
 %make_build -C src V=1 \
     feature-reallocarray=1 \
     feature-libbfd-liberty=1 \

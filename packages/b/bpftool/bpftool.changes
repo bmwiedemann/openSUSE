@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 30 08:07:39 UTC 2026 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Simplify LLVM-version detection to use product_libs_llvm_ver
+  * Macro available in SLES as well since 15-SP7
+- Make bpftool-bash-completion noarch
+- Export CFLAGS to properly propagate optflags to sub-make
+  * Ensure bundled libbpf builds with system flags
+
+-------------------------------------------------------------------
 Fri Jul 25 20:11:11 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - Update to version 7.6.0:

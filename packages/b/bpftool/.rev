@@ -127,4 +127,12 @@
     <comment></comment>
     <requestid>1295990</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>c77b8f351f7c9f252d6fc97ff364b69c</srcmd5>
+    <version>7.6.0</version>
+    <time>1770040514</time>
+    <user>anag_factory</user>
+    <comment>Workaround boo#1257253</comment>
+    <requestid>1330339</requestid>
+  </revision>
 </revisionlist>
