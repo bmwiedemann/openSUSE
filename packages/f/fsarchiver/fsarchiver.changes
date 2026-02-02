@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  1 21:39:51 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.9:
+  * Add support for xfs and btrfs features up to linux-6.18
+- Drop fsarchiver-types.patch
+
+-------------------------------------------------------------------
 Mon Dec 16 10:54:10 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.8.8:

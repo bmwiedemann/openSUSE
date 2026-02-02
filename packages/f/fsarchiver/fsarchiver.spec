@@ -1,7 +1,7 @@
 #
 # spec file for package fsarchiver
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fsarchiver
-Version:        0.8.8
+Version:        0.8.9
 Release:        0
 Summary:        Filesystem Archiver
 License:        GPL-2.0-only
@@ -25,8 +25,6 @@ Group:          Productivity/Archiving/Backup
 URL:            http://www.fsarchiver.org
 Source0:        https://github.com/fdupoux/fsarchiver/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        HOWTO
-# PATCH-FIX-UPSTREAM Remove conflicting uses of reserved identifiers
-Patch0:         fsarchiver-types.patch
 BuildRequires:  libgcrypt-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(blkid)

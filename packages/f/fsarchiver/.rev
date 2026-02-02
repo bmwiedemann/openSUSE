@@ -242,4 +242,14 @@
   * Accept -j arguments greater than FSA_MAX_COMPJOBS (#146)</comment>
     <requestid>1231374</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>810ac8619ec9693243329bc5040ffb3d</srcmd5>
+    <version>0.8.9</version>
+    <time>1770040617</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.8.9:
+  * Add support for xfs and btrfs features up to linux-6.18
+- Drop fsarchiver-types.patch</comment>
+    <requestid>1330289</requestid>
+  </revision>
 </revisionlist>
