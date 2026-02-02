@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 28 08:25:51 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260128 (git commit 2e5a8b0550ba):
+  * qcom: Update ADSP and add CDSP firmware for qcs6490-radxa-dragon-q6a
+  * qcom: Remove ADSP SensorPD json for Radxa Dragon Q6A
+
+-------------------------------------------------------------------
 Wed Jan 14 13:37:32 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260114 (git commit e477bd5942f4):

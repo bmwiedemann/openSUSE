@@ -372,4 +372,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Update DSP firmware for QCM6490 platform</comment>
     <requestid>1327797</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>6d4b44817649da01d40cb70178660a5b</srcmd5>
+    <version>20260128</version>
+    <time>1770040493</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260128 (git commit 2e5a8b0550ba):
+  * qcom: Update ADSP and add CDSP firmware for qcs6490-radxa-dragon-q6a
+  * qcom: Remove ADSP SensorPD json for Radxa Dragon Q6A</comment>
+    <requestid>1330135</requestid>
+  </revision>
 </revisionlist>
