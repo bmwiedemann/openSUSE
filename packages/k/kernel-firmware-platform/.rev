@@ -194,4 +194,13 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases</comment>
     <requestid>1325735</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>274fd9a03a749b35a4064d5a1a73e256</srcmd5>
+    <version>20260128</version>
+    <time>1770040492</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260128 (git commit 2e5a8b0550ba):
+  * Update firmware for NPU PHX, STX and STX HALO</comment>
+    <requestid>1330134</requestid>
+  </revision>
 </revisionlist>
