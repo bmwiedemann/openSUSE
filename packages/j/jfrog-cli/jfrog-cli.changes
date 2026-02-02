@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 01 19:31:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.90.0:
+  * Bug Fixes
+    - Fix the merge artifact issue by @agrasth in
+      jfrog/build-info-go#367
+
+-------------------------------------------------------------------
 Fri Jan 23 06:13:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.89.0:
