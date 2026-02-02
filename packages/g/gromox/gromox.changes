@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Feb  2 11:36:15 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.4
+  * mbop: new "zaddrxlat" command
+  * delivery: add pre-delivery junk shelving and ``lda_junk_rules``
+    config directive
+  * mrautoproc: server-side processed meeting requests
+    automatically entered into the calendar had lacked the flags
+    asfMeeting+asfReceived, which was fixed.
+  * nsp: seeking backwards with the seekEntries routine jumped too
+    far backwards, causing the last screenful of the Outlook GAL to
+    be misrepresented.
+  * oxcmail: the "Keywords:" RFC5322 header (Categories) used to
+    get filled with text garbage, which is now fixed.
+  * zcore: plug a memory leak occuring when importing vCards
+  * Any data, when converted from windows-1255 or 1258 character
+    set to Unicode, sometimes lost the last character in the
+    conversion, which has been fixed.
+  * exmdb: abort purge-datafiles if there is a database error midway
+  * imap: release potentially-large APPEND buffers much earlier
+  * exporter: plug two memory leaks
+  * oxcmail: limit nesting depth of attachments during export to 7
+  * oxcmail: RFC 5322 header fields are now treated as US-ASCII as
+    mandated, and no longer magically assumed to be in the same
+    charset as the body.
+  * exporter: FAI messages are no longer emitted by default and
+    explicitly need to be requested with the -a option.
+  * ruleproc: treat not only "Busy" as a collision, but also
+    "Tentative" and "Out-Of-Office"
+  * ab_tree: PR_COMPANY_NAME is no longer synthesized from the
+    title of the domain a user belongs to
+
+-------------------------------------------------------------------
 Sat Dec 27 11:53:34 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.3
