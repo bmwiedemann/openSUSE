@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 29 05:58:53 UTC 2026 - Nicholas Yang <nicholas.yang@suse.com>
+
+- kronosnet-1.33
+ * Build fixes for gcc-15 (bsc#1257258)
+ * Build fixes for rust coreutils
+ * Coverity tests cleanup
+ * Release: ship all files for completeness
+
+-------------------------------------------------------------------
 Fri Dec 12 08:49:36 UTC 2025 - Nicholas Yang <nicholas.yang@suse.com>
 
 - kronosnet-1.32
