@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  2 04:05:13 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-packaging-26.patch:
+  * Support changes required by packaging 26.0.
+
+-------------------------------------------------------------------
 Thu Mar 20 12:41:49 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Reintroduce multibuild on Tumbleweed to avoid build cycle

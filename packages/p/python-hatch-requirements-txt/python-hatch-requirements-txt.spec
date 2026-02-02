@@ -1,7 +1,7 @@
 #
 # spec file for package python-hatch-requirements-txt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,8 @@ Summary:        Hatchling plugin to read project dependencies from requirements.
 License:        MIT
 URL:            https://github.com/repo-helper/hatch-requirements-txt
 Source:         https://github.com/repo-helper/hatch-requirements-txt/archive/refs/tags/v%{version}.tar.gz#/hatch_requirements_txt-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#repo-helper/hatch-requirements-txt#caf885b14f7b6515c5a421a6b070e4aea0fd4d0b
+Patch0:         support-packaging-26.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros

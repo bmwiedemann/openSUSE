@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>1254781</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6fccbcd5eba637dc999d380c7b2481a3</srcmd5>
+    <version>0.4.1</version>
+    <time>1770040513</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-packaging-26.patch:
+  * Support changes required by packaging 26.0.</comment>
+    <requestid>1330313</requestid>
+  </revision>
 </revisionlist>
