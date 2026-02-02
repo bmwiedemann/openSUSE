@@ -376,6 +376,7 @@ fi
 #BEGIN Upstreaming help
 GENERIC_CHANGES=false
 TRANSLATION_CHANGES=false
+DEADPACKAGE_SUCCESS=false
 shopt -s nullglob
 cp -v "$FILE" $SUDF_DIR/suse_update_desktop_file/update-desktop-files/$DESKTOP_NAME/$DESKTOP_NAME-downstream-no-translation.desktop
 # Insert translations from the downstream
@@ -413,6 +414,25 @@ if [ "$I18N" != "no" ]; then
     done
     sed -i "s@\"\(Name\|GenericName\|Comment\|Keywords\)($DESKTOP_NAME.desktop): @\"@" po/$DESKTOP_NAME.pot
     rm $DESKTOP_NAME-downstream-no-translation-desktop_translations.desktop $DESKTOP_NAME-downstream-no-translation-desktop_translations.desktop.h $DESKTOP_NAME-downstream-translated-raw.desktop
+    mkdir -p deadpackage/po
+    if test -d $ORIG_DIR/po ; then
+        echo -n "" >$DESKTOP_NAME-deadpackage-po.diff
+        echo -n "" >$DESKTOP_NAME-deadpackage-po-upstreamfirst.diff
+        for PO in po/*.po po/$DESKTOP_NAME.pot ; do
+            if test -f $ORIG_DIR/$PO ; then
+                msgcat --use-first $PO $ORIG_DIR/$PO -o deadpackage/$PO
+                diff -u $ORIG_DIR/$PO deadpackage/$PO >>$DESKTOP_NAME-deadpackage-po.diff
+                msgcat --use-first $ORIG_DIR/$PO $PO -o deadpackage/$PO
+                diff -u $ORIG_DIR/$PO deadpackage/$PO >>$DESKTOP_NAME-deadpackage-po-upstreamfirst.diff
+            else
+                diff -u /dev/null $PO >>$DESKTOP_NAME-deadpackage-po.diff
+                diff -u /dev/null $PO >>$DESKTOP_NAME-deadpackage-po-upstreamfirst.diff
+            fi
+        done
+        sed -i 's:^\(---\|\+\+\+\) deadpackage/:\1 :;s:^\(---\|\+\+\+\) '$ORIG_DIR/':\1 :' $DESKTOP_NAME-deadpackage-po.diff $DESKTOP_NAME-deadpackage-po-upstreamfirst.diff
+        DEADPACKAGE_SUCCESS=true
+        rm -rf deadpackage
+    fi
 fi
 
 # Generate output in the OTHER directory
@@ -439,6 +459,7 @@ https://en.opensuse.org/openSUSE:Update-desktop-files_deprecation
 
 Are there any generic changes to upstream: $GENERIC_CHANGES
 Are there any translation changes to upstream: $TRANSLATION_CHANGES
+po files diff generator succeeded: $DEADPACKAGE_SUCCESS
 
 Location of the upstreaming files during the build:
 $SUDF_DIR/suse_update_desktop_file/$DESKTOP_NAME
@@ -450,7 +471,11 @@ $SUDF_DIR/suse_update_desktop_file/$DESKTOP_NAME
 - $DESKTOP_NAME-upstream.desktop
 - $DESKTOP_NAME-upstream.desktop.in
 
-Customized helpers for you:
+And for dead packages (optionally):
+- $DESKTOP_NAME-deadpackage-po.diff
+- $DESKTOP_NAME-deadpackage-po-upstreamfirst.diff
+
+Customized helpers for you (for cut-and-paste purpose):
 cd update-desktop-files/$DESKTOP_NAME/po
 for PO in *.po ; do
 	if test -f ../../../po/\$PO ; then
