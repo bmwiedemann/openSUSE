@@ -8780,12 +8780,14 @@ unsorted:
   - ibus-table-cns11643 
   - ibus-table-compose 
   - ibus-table-devel 
-  - ibus-table-emoji 
+  - ibus-table-emoticon 
   - ibus-table-extraphrase 
   - ibus-table-extraphrase-devel 
   - ibus-table-hu-old-hungarian-rovas 
+  - ibus-table-hu_Hung_HU_traditional 
   - ibus-table-ipa-x-sampa 
   - ibus-table-latex 
+  - ibus-table-lean 
   - ibus-table-mathwriter 
   - ibus-table-mongol-bichig 
   - ibus-table-others 
@@ -22920,7 +22922,6 @@ unsorted:
   - php8-pgsql 
   - php8-phalcon 
   - php8-phar 
-  - php8-phpunit 
   - php8-posix 
   - php8-psr 
   - php8-readline 
