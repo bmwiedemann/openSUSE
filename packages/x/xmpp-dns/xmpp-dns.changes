@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb  1 21:24:57 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.2:
+  * Change [WARN] to Test: [WARN] to be uniform to Test:
+    [OK] and Test: [Not OK].
+  * Improve presentation of cert expiry.
+  * Check syntax of manually provided arbitrary targets
+    introduced in v0.6.0.
+
+-------------------------------------------------------------------
 Fri Jan 23 07:31:45 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.1:

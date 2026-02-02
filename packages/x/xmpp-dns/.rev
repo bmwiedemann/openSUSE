@@ -239,4 +239,17 @@
   * Print [WARN] instead of [OK] if the certificate expires within the next 14 days.</comment>
     <requestid>1328795</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3c3fbdefbca5b62ec24e07c4d46b041f</srcmd5>
+    <version>0.6.2</version>
+    <time>1770040636</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.6.2:
+  * Change [WARN] to Test: [WARN] to be uniform to Test:
+    [OK] and Test: [Not OK].
+  * Improve presentation of cert expiry.
+  * Check syntax of manually provided arbitrary targets
+    introduced in v0.6.0.</comment>
+    <requestid>1330288</requestid>
+  </revision>
 </revisionlist>
