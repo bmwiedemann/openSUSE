@@ -1,7 +1,7 @@
 #
 # spec file for package maven-dependency-analyzer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maven-dependency-analyzer
-Version:        1.16.0
+Version:        1.17.0
 Release:        0
 Summary:        Maven dependency analyzer
 License:        Apache-2.0
@@ -33,6 +33,7 @@ BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  maven-lib
 BuildRequires:  objectweb-asm
+BuildRequires:  plexus-xml
 BuildRequires:  sisu-inject
 BuildRequires:  slf4j
 BuildRequires:  unzip
@@ -68,6 +69,7 @@ build-jar-repository -s lib \
     maven/maven-model \
     objectweb-asm/asm \
     org.eclipse.sisu.inject \
+    plexus/xml \
     slf4j/api
 
 %{ant} \

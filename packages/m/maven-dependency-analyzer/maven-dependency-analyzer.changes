@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Feb  2 09:53:59 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.17.0
+  * New features and improvements
+    + Recognize classes used in web.xml as main classes
+    + Introduced a DependencyClassesProvider service
+  * Maintenance
+    + Update site descriptor to 2.0
+    + Fix badges in README
+    + Exclude slf4j 2.x and mockito 5.x from dependabot
+    + feat: enable prevent branch protection rules
+    + Catch exceptions on all paths
+    + Add Apache 2.0 LICENSE file
+    + Handle corrupt constant pools
+    + Remove redundant code
+    + move default to end
+  * Build
+    + Build on GH also by Maven 4
+  * Dependency updates
+    + Bump org.assertj:assertj-bom from 3.27.3 to 3.27.7
+    + Bump org.apache.maven.shared:maven-shared-components from 44
+      to 47
+    + Bump mavenVersion from 3.9.9 to 3.9.12
+    + Bump org.ow2.asm:asm from 9.8 to 9.9.1
+    + Update Invoker Plugin and Plugin tools to support Java 25
+
+-------------------------------------------------------------------
 Sat Apr 19 04:52:14 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.16.0
@@ -12,8 +39,7 @@ Sat Apr 19 04:52:14 UTC 2025 - Fridrich Strba <fstrba@suse.com>
     + Bump org.apache.maven.shared:maven-shared-components from 43
       to 44
     + Bump org.ow2.asm:asm from 9.7.1 to 9.8
-    + Bump org.assertj:assertj-bom from 3.27.2 to 3.27.3
-    + Bump org.assertj:assertj-bom from 3.26.3 to 3.27.2
+    + Bump org.assertj:assertj-bom from 3.26.3 to 3.27.3
 
 -------------------------------------------------------------------
 Tue Oct 29 17:25:56 UTC 2024 - Fridrich Strba <fstrba@suse.com>

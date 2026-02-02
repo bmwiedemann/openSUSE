@@ -8,7 +8,7 @@
 
   <property file="build.properties"/>
 
-  <property name="project.version" value="1.16.0"/>
+  <property name="project.version" value="1.17.0"/>
   <property name="project.groupId" value="org.apache.maven.shared"/>
   <property name="project.artifactId" value="maven-dependency-analyzer"/>
   <property name="project.name" value="Apache Maven Dependency Analyzer"/>
