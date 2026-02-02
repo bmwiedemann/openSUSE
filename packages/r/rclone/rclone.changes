@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Fri Jan 30 22:22:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.73.0:
+  * Version v1.73.0
+  * drive: fix crash when trying to creating shortcut to a Google doc
+  * azureblob,azurefiles: factor the common auth into a library
+  * test: allow backends to return fs.ErrorCantListRoot to skip Root tests
+  * build: add privatebeta Makefile target
+  * docs: add Internxt as a sponsor
+  * internxt: remove use of CVE laden github.com/disintegration/imaging
+  * docs: fix Internxt docs after merge
+  * docs: update making a new backend docs
+  * docs: build overview page from the backend data
+  * docs: add tiering to the documentation - fixes #8873
+  * docs: add data about each backend in YAML format
+  * docs: add bin/manage_backends.py for managing the backend data files
+  * internxt: use rclone's http.Client to enable more features
+  * internxt: fix lint problems
+  * Add StarHack to contributors
+  * Add lullius to contributors
+  * Add jzunigax2 to contributors
+  * internxt: add Internxt backend - fixes #7610
+  * drive: add --drive-metadata-force-expansive-access flag - Fixes #8980
+  * test_all: allow drime more time to complete
+  * onedrive: fix permissions on onedrive Personal
+  * onedrive: fix require sign in for Onedrive Personal
+  * onedrive: Onedrive Personal no longer supports description
+  * onedrive: fix setting modification time on directories for onedrive Personal
+  * onedrive: fix cancelling multipart upload
+  * docs: fix WinFsp link in mount documentation
+  * cmount: make work under OpenBSD - fixes #1727
+  * vfs: make mount tests run on OpenBSD
+  * docs: improve alignment of icons
+  * protondrive: update to use forks of upstream modules
+  * Add hyusap to contributors
+  * Add Nick Owens to contributors
+  * Add Mikel Olasagasti Uranga to contributors
+  * docs: fix googlephotos custom client_id instructions
+  * cmount: fix OpenBSD mount support.
+  * fs: fix bwlimit: correctly report minutes
+  * fs: fix bwlimit: use %d instead of %q for ints
+  * mega: reverts TLS workaround
+  * docs: fix formatting
+  * docs: add faq entry about re-enabling old TLS ciphers
+  * Add Marc-Philip to contributors
+  * Add yy to contributors
+  * filen: swap to blake3 hashes
+  * docs: fix echo command syntax for password input
+  * docs: fix typos in comments and messages
+  * docs: fix use of removed rem macro
+  * uptobox: remove backend as service is no longer available
+  * rc: add operations/hashsumfile to sum a single file only
+  * docs: update sponsor link
+  * filen: add Filen backend - Fixes #6728
+  * sftp: fix proxy initialisation
+  * fstest: skip Copy mutation test with --sftp-copy-is-hardlink
+  * fstest: Make Copy mutation test work properly
+  * Add Qingwei Li to contributors
+  * Add Nicolas Dessart to contributors
+  * log: fix systemd adding extra newline - fixes #9086
+  * oracleobjectstorage, sftp: eliminate unnecessary heap allocation
+  * sftp,ftp: add http proxy authentication support
+  * Add Drime backend
+  * lib/rest: add opts.MultipartContentType to explicitly set Content-Type of attachements
+  * dircache: allow empty string as root parent id
+  * docs: update sponsors
+  * s3: add provider Bizfly Cloud Simple Storage
+  * docs: update sponsor logos
+  * Add sys6101 to contributors
+  * Add darkdragon-001 to contributors
+  * Add vupn0712 to contributors
+  * docs: add cloudinary to readme
+  * docs: fix headers hierarchy in mount docs
+  * s3: fix Copy ignoring storage class
+  * serve s3: make errors in --s3-auth-key fatal - fixes #9044
+  * Add masrlinu to contributors
+  * pcloud: add support for real-time updates in mount
+  * memory: add --memory-discard flag for speed testing - fixes #9037
+  * Add vyv03354 to contributors
+  * shade: Fix VFS test issues
+  * docs: mention use of ListR feature in ls docs
+  * build: bump actions/download-artifact from 6 to 7
+  * build: bump actions/upload-artifact from 5 to 6
+  * build: bump actions/cache from 4 to 5
+  * docs: reflects the fact that pCloud supports ListR
+  * S3: Linode: updated endpoints to use ISO 3166-1 alpha-2 standard
+  * sync: fix error propagation in tests (#9025)
+  * Changelog updates from Version v1.72.1
+  * s3: add more regions for Selectel
+  * Add jhasse-shade to contributors
+  * Add Shade backend
+  * log: fix backtrace not going to the --log-file #9014
+  * build: fix lint warning after linter upgrade
+  * Add Jonas Tingeborn to contributors
+  * Add Tingsong Xu to contributors
+  * configfile: add piped config support - fixes #9012
+  * fs/log: fix PID not included in JSON log output
+  * build: adjust lint rules to exclude new errors from linter update
+  * proxy: fix error handling in tests spotted by the linter
+  * Add Johannes Rothe to contributors
+  * Add Leo to contributors
+  * Add Vladislav Tropnikov to contributors
+  * Add Cliff Frey to contributors
+  * Add vicerace to contributors
+  * b2: Fix listing root buckets with unrestricted API key
+  * googlecloudstorage: improve endpoint parameter docs
+  * serve webdav: implement download-directory-as-zip
+  * s3: The ability to specify an IAM role for cross-account interaction
+  * azureblob: add metadata and tags support across upload and copy paths
+  * refactor: use strings.Cut to simplify code
+  * docs: note where a provider has an S3 compatible alternative
+  * Add Shade as sponsor
+  * Add Duncan Smart to contributors
+  * Add Diana to contributors
+  * docs: Clarify OAuth scopes for readonly Google Drive access
+  * b2: support authentication with new bucket restricted application keys
+  * docs: update sponsor logos
+  * docs: fix lint error in changelog
+  * Start v1.73.0-DEV development
+
+-------------------------------------------------------------------
 Wed Dec 10 22:39:11 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 1.72.1:
