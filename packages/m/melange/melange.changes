@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Feb 02 05:46:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.4:
+  * build(deps): bump chainguard.dev/apko in the gomod group
+    (#2321)
+  * Revert "fix: add and leverage helper functions for [safely]
+    setting capacity (#2318)" (#2320)
+
+-------------------------------------------------------------------
+Sun Feb 01 19:30:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.3:
+  * bump apko dependency to v1.1.0 (#2319)
+  * fix: add and leverage helper functions for [safely] setting
+    capacity (#2318)
+  * chore: fix linting issues; update golangci-lint and address
+    findings (#2317)
+  * Improve kernel SCA to handle raspberry pi images (#2315)
+  * qemu: Cancel context if ssh never comes up (#2316)
+
+-------------------------------------------------------------------
 Fri Jan 30 06:34:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.40.2:
