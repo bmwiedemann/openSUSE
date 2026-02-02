@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb 01 19:38:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.10.5:
+  * feat: upgrade kubefirst api tag (#2423)
+
+-------------------------------------------------------------------
+Sun Feb 01 19:32:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.10.4:
+  * chore: update k3d to v5.8.3 and k3s to v1.28.12 by @CristhianF7
+    in konstructio/kubefirst-api#587
+
+-------------------------------------------------------------------
 Wed Oct 29 05:41:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.10.3:
