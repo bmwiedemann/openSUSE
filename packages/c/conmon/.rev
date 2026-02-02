@@ -303,4 +303,12 @@
     <comment>- Build with distro flags (forwarded request 1321121 from Guillaume_G)</comment>
     <requestid>1321123</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>4e32dea435979a6b9a9fec8c39ae1e82</srcmd5>
+    <version>2.2.0</version>
+    <time>1770040503</time>
+    <user>anag_factory</user>
+    <comment>Update to version 2.2.0 (forwarded request 1329757 from danishprakash)</comment>
+    <requestid>1330266</requestid>
+  </revision>
 </revisionlist>

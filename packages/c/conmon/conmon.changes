@@ -1,4 +1,259 @@
 -------------------------------------------------------------------
+Thu Jan 29 05:47:24 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
+
+- Update to version 2.2.0:
+  * Release v2.2.0
+  * Fix SIGABRT crash in drop_signal_event
+  * Add an easy cleanup for tests
+  * [skip-ci] Update actions/checkout action to v6
+  * Check memory.events file exists before adding inotify watch
+  * Fix remaining busybox references in tests
+  * Fix inconsistent error messages when runtime fails (bsc#1252432)
+  * Move attach start message after failure check
+  * Add more tests for ctr_logging.c
+  * Document testing package requirements
+  * Switch tests from busybox to UBI10 and add consistent terminal size validation
+  * Restore use of `writev()` system call
+  * Document all CLI options
+  * Add tests for --terminal and ctrl.c
+  * Add tests for _OCI_SYNCPIPE.
+  * Add log rotation functionality as alternative to log truncation
+  * Add tests for --exec-attach.
+  * Add more tests for --stdin and --exec.
+  * [skip-ci] Update actions/setup-go action to v6
+  * Add systemd priority prefix parsing to journald logging
+  * Run the coverage_task also on VM, not in container.
+  * Show the code coverage in `make test-coverage` output.
+  * [skip-ci] Update actions/checkout action to v5
+  * Really run the container in the 04-runtime.bats.
+  * Fix missing F-sequence on container exit
+  * Fix JSON parsing error in console file descriptor communication
+  * Fix code quality issues
+  * Revert 'Fix conmon exec exit status handling'
+  * Fix meson install path to match Makefile
+  * Fix conmon exec exit status handling
+  * Add --no-container-partial-message option
+  * Fix OOM detection on cgroup v2
+  * Fix CI: Remove Go dependencies and fix missing make targets
+  * Replace Go tests with BATS and remove Go dependency
+  * Fix errno race condition and logging macro issues
+  * Add optional systemd support for static builds
+  * Require at least golang 1.23
+  * ci/int: test with Go 1.23 and 1.24
+  * ci/deps: use "stable" go version
+  * Fix container exit detection in systemd scope environments
+  * Enhance k8s-file log rotation test coverage for corruption fix
+  * Add test suite for k8s-file log rotation fix
+  * Fix k8s-file log corruption during log rotation
+  * conn_sock: drop -1 fron snprintf
+  * conn_sock: make sure strncpy buffer is NUL terminated
+  * oom: drop usage of sprintf in favor of snprintf
+  * conmon: drop usage of sprintf in favor of snprintf
+  * cmsg: shrink buffer to effective size
+  * src: Fix terminal resize event processing
+  * fix integration github action
+  * fix wrong conditions of k8s-file logging
+  * logging: Add container labels to log entries on journald
+  * Makefile: simplify fmt
+  * Remove hack/tree_status.sh
+  * Remove hack/kubernetes-e2e
+  * ci: add go.mod/go.sum validation
+  * ci/gha: add all-done job
+  * ci/gha: fix branch name
+  * Remove old vendored go-md2man
+  * ci/gha: remove actions/cache
+  * Use gofumpt
+  * runner/conmon_test: rm unused skopeoPath
+  * runner/conmon: rm unused writeConmonPipeData
+  * Replace ioutil.TempDir with t.TempDir
+  * Use os.ReadFile/os.WriteFile instead of ioutil
+  * runner: stop using pkg/errors
+  * Use %m instead of strerror(errno)
+  * cmsg: error logging nits
+  * seccomp_accept_cb: fix memory leak
+  * Remove pwarn macro
+  * write_journald: fix logging a warning
+  * write_oom_adjust: remove extra newlines from ndebugf
+  * Introduce pwarnf() for better diagnosis of socket/fd write issues.
+  * Handle descriptor in non-blocking mode properly. Resolves: #490
+  * Bump conmon version to 2.1.13
+  * Install some packages to fix CI
+  * Make timestamp generation never fail.
+  * Change permissions of logs from 0600 to 0640
+  * Avoid bogus journal filling errors
+  * Fix typos and clarify man page.
+  * Packit: constrain downstream jobs to the fedora package
+  * gh actions: use crun and update runc version
+  * gh actions: call make correctly
+  * runner: fix runtime test
+  * gh actions: add sudo to make command
+  * vendor: drop libpod in runner package
+  * [skip-ci] Update actions/checkout action to v4
+  * chore(deps): update module github.com/docker/docker to v25 [security]
+  * RPM: delete unnecessary patching from spec
+  * RPM: cleanup changelog conditionals
+  * RPM: do not create cri-o dirs
+  * Use `.gitignore` in nix build excludes
+  * conmon: do not create oom file under cwd
+  * gh actions: bump to golang 1.22
+  * logging: remove unuseful fsync
+  * fix(deps): update module golang.org/x/sys to v0.20.0
+  * Remove CI VM OS names
+  * chore(deps): update dependency containers/automation_images to v20240513
+  * Bump version to 2.1.12
+  * Make 'docs' target not depend on 'install.tools' if GOMD2MAN is set
+  * Packit: enable downstream sync to CentOS Stream 10
+  * Build s390x binaries using musl libc
+  * Add support for s390x
+  * Remove checks for (long)deprecated libsystemd-journal in favor of libsystemd
+  * update packit config, enable downstream tasks
+  * fix(deps): update module github.com/onsi/gomega to v1.31.1
+  * [skip-ci] Update actions/setup-go action to v5
+  * [skip-ci] Update actions/cache action to v4
+  * fix(deps): update github.com/opencontainers/runtime-tools digest to 408c51e
+  * chore(deps): update dependency containers/automation_images to v20240102
+  * drop --tty on exec
+  * chore(deps): update dependency containers/automation_images to v20231208
+  * docs/Makefile: softcode GOMD2MAN
+  * bump to 2.1.10
+  * fix(deps): update module github.com/onsi/gomega to v1.30.0
+  * chore(deps): update module github.com/docker/docker to v24 [security]
+  * chore(deps): update module golang.org/x/net to v0.17.0 [security]
+  * Fix incorrect free in conn_sock
+  * logging: Respect log-size-max immediately after open
+  * fix some issues flagged by SAST scan
+  * version: bump to 2.1.9
+  * README.md: update the correct Nix channel
+  * Fix podman tests
+  * Forward more messages on the sd-notify socket
+  * ci: skip broken cri-o tests
+  * logging: -l passthrough accepts TTYs
+  * src: fix write after end of buffer
+  * src: open all files with O_CLOEXEC
+  * oom-score: restore oom score before running exit command
+  * src/seccomp_notify.c: fix static build
+  * CI: Update Fedora names
+  * chore(deps): update dependency containers/automation_images to v20231004
+  * fix(deps): update module github.com/onsi/ginkgo/v2 to v2.12.0
+  * bump to v2.1.8
+  * fix(deps): update module github.com/containers/storage to v1.48.0
+  * cli: log parsing errors to stderr
+  * Update nix and use an overlay
+  * chore(deps): update dependency containers/automation_images to v20230809
+  * gh actions: bump to go 1.21
+  * gh actions: drop perma-failing jobs
+  * fix(deps): update module github.com/onsi/ginkgo/v2 to v2.11.0
+  * Changes to build conmon for `riscv64`
+  * stdio: ignore EIO for terminals
+  * refactor: handle a broken pipe with write_sync_fd
+  * ensure console socket buffers are properly sized
+  * Remove lgtm badge
+  * chore(deps): update dependency containers/automation_images to v20230614
+  * log fds more permissive
+  * Fix close_other_fds on FreeBSD
+  * chore(deps): update dependency containers/automation_images to v20230601
+  * chore(deps): update dependency containers/automation_images to v20230517
+  * Update nixos image and dependencies' version.
+  * Changes to build conmon for ppc64le
+  * fix compile regression on FreeBSD
+  * chore(deps): update dependency containers/automation_images to v20230426
+  * Packit: update config
+  * ctrl: fix a debug statement
+  * [skip-ci] Update actions/setup-go action to v4
+  * [skip-ci] Update actions/checkout action to v3
+  * [skip-ci] Update actions/cache action to v3
+  * vendor: bump to latest packages
+  * fix(deps): update module github.com/containers/libpod to v4
+  * chore(deps): update dependency containers/automation_images to v20230405
+  * conmon: drop return after pexit()
+  * ctrl: make accept4 failures fatal
+  * cmsg: recvfd returns an error on failures
+  * cmsg: fix program name
+  * ctrl: on EINTR retry accept4
+  * Add renovate configuration
+  * logging: avoid opening /dev/null for each write
+  * oom: restore old OOM score
+  * Update CI VM images
+  * Switch go version to 1.19
+  * Use default umask `0022`
+  * exit: Free allocated string
+  * version: bump to v2.1.7
+  * Fix leaking symbolic links in the opt_socket_path directory
+  * cgroup: Stumble on if we can't set up oom handling
+  * bump to v2.1.6
+  * packit: build in dedicated projects
+  * hack: build ginkgo in GOPATH
+  * vendor bump ginkgo to v2
+  * gh actions: bump to go 1.20
+  * Use --detach instead of -d
+  * Fix OOM watcher for cgroupv2 `oom_kill` events
+  * Lint/format fixes for golang 1.19
+  * Update CI VM Images to F36/F37
+  * ctrl: drop fifo perms to 0660
+  * Fix tools/Makefile with GNU make 4.4
+  * bump to v2.1.5
+  * don't leak syslog_identifier
+  * logging: do not read more that the buf size
+  * logging: fix error handling
+  * cli: Fix conmon-pidfile/container-pidfile description
+  * Makefile: Fix install for FreeBSD
+  * signal: Track changes to get_signal_descriptor in the FreeBSD version
+  * Packit: initial enablement
+  * bump to 2.1.4
+  * signal: handle SIGUSR1 with signalfd
+  * Use /usr/bin/env to locate bash
+  * Cirrus: Add meta task to keep CI VM images alive
+  * VERSION: bump to 2.1.3
+  * meson: build with seccomp if available
+  * Fix build on FreeBSD-13.0
+  * Reduce the amount of duplicated code between Linux and FreeBSD
+  * Port conmon to FreeBSD
+  * gh actions: bump versions
+  * bump golang in gh action to 1.18
+  * Stop using g_unix_signal_add() to avoid threads
+  * [Fixup #342] `log-size-global-max` Should Be`log-global-size-max`
+  * bump to v2.1.2
+  * log_global_max: ignore if negative
+  * add log-global-size-max option to limit the total output conmon processes
+  * bump to v2.1.1
+  * journald: print tag and name if both are specified
+  * logging: add missing static keyword
+  * drop some logs to debug level
+  * meson: Handle journald
+  * bump to v2.1.0
+  * logging: buffer partial messages to journald
+  * ci: add podman system to different cache
+  * ci: install rootlessport right
+  * ci: install go correctly
+  * ci: add subid ranges for crio tests
+  * ci: install all binaries for podman-system
+  * ci: run vendor on podman job
+  * ci: set host IP
+  * ci: give conmon job sudo
+  * ci: bump to go 1.17
+  * exit: close all fds >= 3
+  * fix: cgroup: Free memory_cgroup_file_path if open fails. Call g_free instead of free.
+  * Make libdl optional in meson definition
+  * bump to v2.0.33-dev
+  * bump to v2.0.32
+  * Avoid mainfd_std{in,out} sharing the same file descriptor.
+  * exit_command: unset subreaper attribute before running exit command
+  * bump to 2.0.32-dev
+  * bump to 2.0.31
+  * conmon: fix error message
+  * logging: set SYSLOG_IDENTIFIER= with --log-tag
+  * conmon: free userdata files before exec cleanup
+  * Cirrus: Remove disused scripts
+  * test: drop seccomp tests
+  * fix gh action yaml
+  * ctr_logs: use container name or ID as SYSLOG_IDENTIFIER for journald
+  * logging: new mode -l passthrough
+  * ctrl: delete the fifo if it exists
+  * conmon_test: fix race condition on os.RemoveAll
+  * integration: use the built binary
+  * bump to v2.0.31-dev
+
+-------------------------------------------------------------------
 Thu Dec  4 10:56:18 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Build with distro flags
