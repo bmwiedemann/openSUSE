@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 24 13:41:25 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20250924.8eb417e:
+  * sysextmgrd: ignore images without metadata
+  * Implement reading of os-release from snapshots
+  * Adjust for new mkosi manifest format
+
+-------------------------------------------------------------------
 Thu Aug 07 14:48:25 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.0+git20250806.0599a82:
