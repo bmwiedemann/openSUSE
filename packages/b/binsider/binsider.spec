@@ -1,7 +1,7 @@
 #
 # spec file for package binsider
 #
-# Copyright (c) 2025 mantarimay
+# Copyright (c) 2026 mantarimay
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           binsider
-Version:        0.3.0
+Version:        0.3.2
 Release:        0
 Summary:        Analyze ELF binaries
 License:        Apache-2.0 OR MIT
