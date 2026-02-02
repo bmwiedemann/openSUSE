@@ -1,8 +1,30 @@
-Index: armagetronad-0.2.9.2.3/desktop/Makefile.am
-===================================================================
---- armagetronad-0.2.9.2.3.orig/desktop/Makefile.am
-+++ armagetronad-0.2.9.2.3/desktop/Makefile.am
-@@ -1,15 +1,16 @@
+diff -Nur armagetronad-0.2.9.2.5-orig/desktop/armagetronad.appdata.xml.in armagetronad-0.2.9.2.5/desktop/armagetronad.appdata.xml.in
+--- armagetronad-0.2.9.2.5-orig/desktop/armagetronad.appdata.xml.in	2025-11-02 18:48:43.000000000 +0100
++++ armagetronad-0.2.9.2.5/desktop/armagetronad.appdata.xml.in	2026-01-31 07:55:54.673978589 +0100
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <component type="desktop-application">
+-  <id>@progid@.desktop</id>
++  <id>@progname@.desktop</id>
+   
+   <name>@progtitle@</name>
+   <summary>3D Lightcycle Game</summary>
+diff -Nur armagetronad-0.2.9.2.5-orig/desktop/armagetronad.desktop.in armagetronad-0.2.9.2.5/desktop/armagetronad.desktop.in
+--- armagetronad-0.2.9.2.5-orig/desktop/armagetronad.desktop.in	2025-05-16 21:09:00.000000000 +0200
++++ armagetronad-0.2.9.2.5/desktop/armagetronad.desktop.in	2026-01-31 07:56:48.706364172 +0100
+@@ -4,7 +4,7 @@
+ Exec=@progname@ %f
+ Comment=3d light cycle game
+ Comment[de]=dreidimensionales Lichtradspiel
+-Icon=@progid@
++Icon=@progname@
+ Terminal=@build_dedicated@
+ Categories=Game;ActionGame;
+ StartupNotify=@build_dedicated@
+diff -Nur armagetronad-0.2.9.2.5-orig/desktop/Makefile.am armagetronad-0.2.9.2.5/desktop/Makefile.am
+--- armagetronad-0.2.9.2.5-orig/desktop/Makefile.am	2025-05-16 21:09:00.000000000 +0200
++++ armagetronad-0.2.9.2.5/desktop/Makefile.am	2026-01-31 07:54:51.013524315 +0100
+@@ -1,18 +1,18 @@
  # include $(top_srcdir)/Makefile.paths
  
 -# desktop files location
@@ -11,6 +33,7 @@ Index: armagetronad-0.2.9.2.3/desktop/Makefile.am
  # files for desktop integration
 -nobase_desktopfile_DATA=armagetronad.desktop \
 -	icons/16x16/armagetronad.png icons/32x32/armagetronad.png icons/48x48/armagetronad.png \
+-	icons/64x64/armagetronad.png icons/128x128/armagetronad.png \
 -	armagetronad.appdata.xml
 +desktopdir=@datadir@/applications
 +desktop_DATA=armagetronad.desktop
@@ -25,31 +48,12 @@ Index: armagetronad-0.2.9.2.3/desktop/Makefile.am
 -EXTRA_DIST=icons/16x16/armagetronad.png\
 -           icons/32x32/armagetronad.png\
 -		   icons/48x48/armagetronad.png\
+-		   icons/64x64/armagetronad.png\
+-		   icons/128x128/armagetronad.png\
+-		   armagetronad.desktop.in\
+-		   armagetronad.appdata.xml.in
 +EXTRA_DIST=icons/48x48/armagetronad.png\
- 		   armagetronad.desktop.in\
- 		   armagetronad.appdata.xml.in
-Index: armagetronad-0.2.9.2.3/desktop/armagetronad.desktop.in
-===================================================================
---- armagetronad-0.2.9.2.3.orig/desktop/armagetronad.desktop.in
-+++ armagetronad-0.2.9.2.3/desktop/armagetronad.desktop.in
-@@ -4,7 +4,7 @@ Name=@progtitle@@progtitle_server@
- Exec=@progname@ %f
- Comment=3d light cycle game
- Comment[de]=dreidimensionales Lichtradspiel
--Icon=@progid@
-+Icon=@progname@
- Terminal=@build_dedicated@
- Categories=Game;ActionGame;
- StartupNotify=@build_dedicated@
-Index: armagetronad-0.2.9.2.3/desktop/armagetronad.appdata.xml.in
-===================================================================
---- armagetronad-0.2.9.2.3.orig/desktop/armagetronad.appdata.xml.in
-+++ armagetronad-0.2.9.2.3/desktop/armagetronad.appdata.xml.in
-@@ -1,6 +1,6 @@
- <?xml version="1.0" encoding="UTF-8"?>
- <component type="desktop-application">
--  <id>@progid@.desktop</id>
-+  <id>@progname@.desktop</id>
-   
-   <name>@progtitle@</name>
-   <summary>3D Lightcycle Game</summary>
++	   icons/64x64/armagetronad.png\
++	   icons/128x128/armagetronad.png\
++	   armagetronad.desktop.in\
++	   armagetronad.appdata.xml.in

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 31 06:45:48 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 0.2.9.2.5
+  * Fixed Bugs
+    - Startup freeze (#161)
+- Rebase armagetron-desktop-files-installdir.patch
+
+-------------------------------------------------------------------
 Sat Nov  8 10:19:33 UTC 2025 - munix9@googlemail.com
 
 - Add fix-sdl12-compat-1_2_70.patch (gh#libsdl-org/sdl12-compat#382)

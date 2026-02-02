@@ -1,7 +1,7 @@
 #
 # spec file for package armagetron
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define series 0.2.9
 %define src_name %{name}ad
 Name:           armagetron
-Version:        %{series}.2.3
+Version:        %{series}.2.5
 Release:        0
 Summary:        OpenGL Game Similar to the Film Tron
 License:        GPL-2.0-or-later
