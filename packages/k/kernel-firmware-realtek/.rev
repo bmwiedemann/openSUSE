@@ -209,4 +209,17 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases for more Realtek WiFi devices (bsc#1255777)</comment>
     <requestid>1325737</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>12970fdb5ddbaf30339405d063a4791d</srcmd5>
+    <version>20260130</version>
+    <time>1770040494</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260130 (git commit 82e3e0e4c96f):
+  * rtl_nic: add firmware rtl8125cp-1 for RTL8125cp
+
+- Update to version 20260128 (git commit 2e5a8b0550ba):
+  * rtw89: 8922a: update REGD R73-R08, txpwr R46 and element of diag MAC
+  * rtw89: 8852c: update REGD R73-R60, txpwr R82 and element of diag MAC</comment>
+    <requestid>1330136</requestid>
+  </revision>
 </revisionlist>

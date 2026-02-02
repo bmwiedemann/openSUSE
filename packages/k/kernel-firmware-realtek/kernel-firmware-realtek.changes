@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 30 08:15:45 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260130 (git commit 82e3e0e4c96f):
+  * rtl_nic: add firmware rtl8125cp-1 for RTL8125cp
+
+-------------------------------------------------------------------
+Wed Jan 28 08:26:12 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260128 (git commit 2e5a8b0550ba):
+  * rtw89: 8922a: update REGD R73-R08, txpwr R46 and element of diag MAC
+  * rtw89: 8852c: update REGD R73-R60, txpwr R82 and element of diag MAC
+
+-------------------------------------------------------------------
 Wed Jan  7 08:59:05 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update aliases for more Realtek WiFi devices (bsc#1255777)
