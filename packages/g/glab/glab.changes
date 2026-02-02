@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Fri Jan 30 06:20:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.82.0:
+  * Features
+    - 5ff014e1: feat(installer): Add dark mode support in
+      setup_windows.iss (RC Chuah
+      4343069-rc-chuah@users.noreply.gitlab.com)
+    - 1304c75f: feat(installer): improve PATH management with
+      programmatic control (Oldřich Jedlička oldium.pro@gmail.com)
+    - e170e21f: feat: add -d- flag support to create commands (Kai
+      Armstrong karmstrong@gitlab.com)
+    - e53cde38: feat: support OAuth2 Access Token only
+      authentication (Timo Furrer tfurrer@gitlab.com)
+  * Bug Fixes
+    - 7883dc24: fix(glrepo): use Host instead of Hostname in
+      FromURL function (Swapnaneel Patra swapnaneel06@gmail.com)
+    - 3aca775d: fix(stack): reorder spinner is displayed over
+      terminal-based editor (Sandro Sauer sauersandro149@gmail.com)
+    - ba8e90ef: fix: normalize nil slices to empty arrays in JSON
+      output (Kai Armstrong karmstrong@gitlab.com)
+    - 9cc43eee: fix: suppress informational messages in JSON output
+      mode (Kai Armstrong karmstrong@gitlab.com)
+  * Documentation
+    - e501773c: docs: Remove EOL spaces in doc files - 2026-01-28
+      (Marcel Amirault mamirault@gitlab.com)
+    - e6e2eb2d: docs: Remove trailing dot from auth login URL tip
+      (Benedikt Reinartz benedikt.reinartz@statkraft.com)
+    - 56e9970b: docs: Update SHA description for glab mr merge
+      (Brendan Lynch blynch@gitlab.com)
+    - 4c4e16ea: docs: Update install from source instructions (Tom
+      Elliff-O'Shea telliffoshea@rigetti.com)
+  * Dependencies
+    - 52d33754: chore(deps): update dependency golangci-lint to
+      v2.8.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 2d5732d4: chore(deps): update golangci-lint version in CI
+      (Ahmed Hemdan ahemdan@gitlab.com)
+    - b3f9cc6c: chore(deps): update module github.com/docker/cli to
+      v29.2.0+incompatible (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - 807598a6: chore(deps): update module
+      github.com/gdamore/tcell/v2 to v2.13.8 (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - b5de98e9: chore(deps): update module
+      github.com/golang-jwt/jwt/v5 to v5.3.1 (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+  * Maintenance
+    - 614c42a5: chore(ci): remove unnecessary pre-build step from
+      prepare_go_cache (Kai Armstrong karmstrong@gitlab.com)
+    - dcba5bc1: chore(docs): gen-docs for mr list (Filip Aleksic
+      faleksic@gitlab.com)
+    - ab44a3bf: chore: Add fdignore to gitignore file (Gary Holtz
+      gholtz@gitlab.com)
+    - 2406d1c7: chore: Adding fdignore to prevent markdown edits
+      (Gary Holtz gholtz@gitlab.com)
+    - 7c5b1dfa: chore: clarify sort/order flags and add consistency
+      improvements (Kai Armstrong karmstrong@gitlab.com)
+    - 4f107308: chore: enable a few linters (Oleksandr Redko
+      oleksandr.red+gitlab@gmail.com)
+    - 428e1d2b: ci(deps): remove GOLANGCI_LINT_VERSION from CI
+      configuration (Ahmed Hemdan ahemdan@gitlab.com)
+  * Others
+    - a8c7c1b6: Revert "Merge branch 'gmh-add-fdignore' into
+      'main'" (Gary Holtz gholtz@gitlab.com)
+    - 21d1ef08: test: fix expires value in
+      TestClear_WithRevoke_ActiveToken (Oleksandr Redko
+      oleksandr.red+gitlab@gmail.com)
+
+-------------------------------------------------------------------
 Wed Jan 21 12:29:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.81.0:
