@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-wayland
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.10.1
+%define real_version 6.10.2
 %define short_version 6.10
 %define tar_name qtwayland-everywhere-src
 %define tar_suffix %{nil}
@@ -33,7 +33,7 @@
 %global with_opengl 1
 %endif
 Name:           qt6-wayland%{?pkg_suffix}
-Version:        6.10.1
+Version:        6.10.2
 Release:        0
 Summary:        Qt 6 Wayland libraries and tools
 # The wayland compositor files are GPL-3.0-or-later
@@ -88,7 +88,7 @@ Qt 6 Wayland integration plugins.
 Summary:        GNOME-like client-side decoration plugin
 # Split from qt6-wayland-integration immediately after 6.10.0 release
 # TODO: drop after 6.11 release
-Conflicts: qt6-wayland-integration < %{version}-%{release}
+Conflicts:      qt6-wayland-integration < %{version}-%{release}
 
 %description  decoration-client-adwaita
 This package provides a client-side decoration plugin implementing GNOME's
