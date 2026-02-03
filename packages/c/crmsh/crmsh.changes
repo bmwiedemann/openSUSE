@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Feb 03 12:05:59 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260203.366eb25a:
+  * Fix: log: Add milliseconds time format to crmsh.log (bsc#1255021)
+  * Dev: corosync: Add milliseconds to log time format
+
+-------------------------------------------------------------------
+Tue Feb 03 07:30:57 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260203.2855bc97:
+  * Fix: ui_cluster: Stop dlm in maintenance mode correctly (bsc#1253733)
+
+-------------------------------------------------------------------
+Tue Jan 27 05:13:00 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260127.deec490c:
+  * Dev: run-functional-tests: Sleep 2s after creating contaier and attaching network
+  * Dev: run-functional-tests: Add timestamp logging for better debugging
+
+-------------------------------------------------------------------
 Mon Jan 26 09:39:44 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.0.0+20260126.95a91857:
