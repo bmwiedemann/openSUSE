@@ -548,4 +548,15 @@
   + Updated translations. (forwarded request 1325265 from iznogood)</comment>
     <requestid>1325362</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>a4b233e30d3861d128b962f00309d5bc</srcmd5>
+    <version>1.8.4</version>
+    <time>1770150371</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.8.4:
+  + AdwDialog: Fix initial focus in bottom sheet mode
+  + AdwWrapBox: Fix ADW_JUSTIFY_SPREAD
+  + Updated translations. (forwarded request 1330509 from iznogood)</comment>
+    <requestid>1330727</requestid>
+  </revision>
 </revisionlist>
