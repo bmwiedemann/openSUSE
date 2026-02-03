@@ -301,4 +301,16 @@
   * Fixed issues with importing legacy portable Minder files (forwarded request 1328394 from rrahl0)</comment>
     <requestid>1328395</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e108313f769f2369cb21d3a66d4c0573</srcmd5>
+    <version>2.0.5</version>
+    <time>1770150592</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.0.5:
+  * Improved .minder file icon image
+  * Improved connection drawing to avoid lines overlapping with other
+    connection lines
+  * Fixed runtime string in About window (forwarded request 1330425 from rrahl0)</comment>
+    <requestid>1330426</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %define         appid com.github.phase1geo.minder
 Name:           minder
-Version:        2.0.4
+Version:        2.0.5
 Release:        0
 Summary:        Mind-mapping app
 License:        GPL-3.0-only
