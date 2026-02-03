@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Feb 03 06:09:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.49.0:
+  Inspektor Gadget v0.49.0 brings important enhancements and fixes
+  to improve observability and security. Key highlights include the
+  addition of [OpenTelemetry profiles
+  support[(https://github.com//pull/5003)] for exporters, a
+  security fix addressing CFLAGS customization vulnerabilities
+  (GHSA-79qw-g77v-2vfh), and an upgrade to Go 1.25.6. The release
+  also includes improvements to the bpfstats gadget with a new
+  --gadgets-only flag, better container handling to avoid blocking
+  on creation, and several bug fixes for Kubernetes integration and
+  UID/GID resolution. We also welcome two new contributors to the
+  project!
+  * Breaking Changes
+    - Improve bpfstats Gadget: default to showing all eBPF programs
+      and add new flag --gadgets-only to show only gadget programs
+      by @alronova in #5212. The --all parameter was removed and
+      it's now the default behavior. To force the old behavior
+      (showing only stats of gadgets) pass --gadgets-only
+  * General Improvements
+    - exporters: Add otel profiles by @mauriciovasquezbernal in
+      #5003
+    - fix(trace_fsslower): unify latency threshold and duration
+      units to µs by @intojhanurag in #5064
+    - Fix datasource: Add case-insensitive fallback to GetField by
+      @alronova in #5221
+  * Security Improvements
+    - cmd: Remove possibility to customize CFLAGS from build.yaml:
+      9cab166 & GHSA-79qw-g77v-2vfh
+    - treewide: Bump to golang 1.25.6. by @eiffel-fl in #5253
+  * Bug Fixes
+    - containers: Avoid blocking creation of new containers by
+      @mauriciovasquezbernal in #5195
+    - k8s: skip KubeIPResolver/KubeNameResolver when kubeconfig
+      missing; honor KUBECONFIG env var by @matthyx in #5191
+    - op/uidgidresolver: Do not error out when files are missing by
+      @burak-ok in #5209
+
+-------------------------------------------------------------------
 Fri Jan 30 06:37:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.48.1:

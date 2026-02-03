@@ -17,7 +17,7 @@
 
 
 Name:           inspektor-gadget
-Version:        0.48.1
+Version:        0.49.0
 Release:        0
 Summary:        A eBPF tool and systems inspection framework
 License:        Apache-2.0
