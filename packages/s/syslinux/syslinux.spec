@@ -1,7 +1,7 @@
 #
 # spec file for package syslinux
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,6 +66,7 @@ Patch24:        %{name}-%{version}-gcc10.patch
 Patch25:        syslinux-4.04-reproducible-isohybrid.patch
 Patch26:        %{name}-%{version}-pie.patch
 Patch27:        %{name}-%{version}-gpxe-gcc15.patch
+Patch28:        syslinux-4.04-size.patch
 
 %description
 SYSLINUX is a boot loader for the Linux operating system which operates

@@ -1,0 +1,17 @@
+Newer versions of NASM (3.00+) require explicit
+size hints for memory references when using movsx/movzx
+to avoid ambiguity. Added "byte" keyword to indicate 8-to-16
+bit sign extension.
+Index: syslinux-4.04/core/getc.inc
+===================================================================
+--- syslinux-4.04.orig/core/getc.inc
++++ syslinux-4.04/core/getc.inc
+@@ -193,7 +193,7 @@ ungetc:
+ 		push di
+ 		push bx
+ 		mov di,[CurrentGetC]
+-		movzx bx,[di+gc_unget_cnt]
++		movzx bx, byte [di+gc_unget_cnt]
+ 		mov [bx+di+gc_unget_buf],al
+ 		inc bx
+ 		mov [di+gc_unget_cnt],bl

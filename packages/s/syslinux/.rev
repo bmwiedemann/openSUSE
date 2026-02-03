@@ -551,4 +551,13 @@ helps ipxe iso reproducibility. (forwarded request 868912 from bmwiedemann)</com
     <comment>add syslinux-4.04-gpxe-gcc15.patch to fix gcc-15 compile time errors during (re-)build of gpxelinux.0 (forwarded request 1274217 from hsk17)</comment>
     <requestid>1277941</requestid>
   </revision>
+  <revision rev="73" vrev="52">
+    <srcmd5>f92ea8197ecaa4fd61127c3011331ab9</srcmd5>
+    <version>4.04</version>
+    <time>1770150475</time>
+    <user>anag_factory</user>
+    <comment>- bsc#1257495: NASM (3.00+) requires explicit size hints
+  Add syslinux-4.04-size.patch (forwarded request 1329982 from jubalh)</comment>
+    <requestid>1329985</requestid>
+  </revision>
 </revisionlist>

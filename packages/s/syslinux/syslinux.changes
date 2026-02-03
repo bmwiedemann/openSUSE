@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 29 19:42:57 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1257495: NASM (3.00+) requires explicit size hints
+  Add syslinux-4.04-size.patch
+
+-------------------------------------------------------------------
 Sun May  4 09:18:37 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - Add syslinux-4.04-gpxe-gcc15.patch to fix gcc-15 compile time
