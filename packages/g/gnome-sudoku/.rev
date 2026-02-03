@@ -508,4 +508,14 @@
     <comment> (forwarded request 1325169 from iznogood)</comment>
     <requestid>1325356</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>c4ed3552e200abaad940d2eccb69381b</srcmd5>
+    <version>49.4</version>
+    <time>1770150845</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.4:
+  + Fix stuck highlight after starting a custom game without a
+    dialog (forwarded request 1330233 from iznogood)</comment>
+    <requestid>1330726</requestid>
+  </revision>
 </revisionlist>
