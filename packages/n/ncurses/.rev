@@ -5550,4 +5550,16 @@
 - Add description to ncurses-5.9-ibm327x.dif</comment>
     <requestid>1329242</requestid>
   </revision>
+  <revision rev="321" vrev="94">
+    <srcmd5>3045cb6f3bdd752c0cd4b88fad5449ac</srcmd5>
+    <version>unknown</version>
+    <time>1770150335</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20260131
+  + add putty+3keys -TD
+  + add dim to putty -TD
+  + add xterm+3keys -TD
+  + add note explaining origin of ecma+overline -TD</comment>
+    <requestid>1330370</requestid>
+  </revision>
 </revisionlist>

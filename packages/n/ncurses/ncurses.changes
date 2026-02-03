@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb  2 08:17:52 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260131
+  + add putty+3keys -TD
+  + add dim to putty -TD
+  + add xterm+3keys -TD
+  + add note explaining origin of ecma+overline -TD
+
+-------------------------------------------------------------------
 Mon Jan 26 07:33:31 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20260124

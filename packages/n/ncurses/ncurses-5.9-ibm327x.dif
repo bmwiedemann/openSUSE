@@ -10,7 +10,7 @@ terminal or the shell or any other program therein (no keys).
 
 --- misc/terminfo.src
 +++ misc/terminfo.src	2025-05-05 07:10:18.639838164 +0000
-@@ -1255,7 +1255,7 @@ sclp|IBM s390 driver for Linux,
+@@ -1266,7 +1266,7 @@ sclp|IBM s390 driver for Linux,
  	cols#80, lines#24,
  	acsc=``aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~,
  	bel=^G, blink=\E[5m, cr=\r, cub1=^H, cud1=\n,
@@ -19,7 +19,7 @@ terminal or the shell or any other program therein (no keys).
  	dl=\E[%p1%dM, dl1=\E[M, ech=\E[%p1%dX, el1=\E[1K,
  	enacs=\E)0, ht=^I, ich=\E[%p1%d@, ind=\ED, is2=\Ec,
  	kf5=\E[15~, khome=\E[1~, nel=\EE, rc=\E8, rev=\E[7m, ri=\EM,
-@@ -1264,7 +1264,7 @@ sclp|IBM s390 driver for Linux,
+@@ -1275,7 +1275,7 @@ sclp|IBM s390 driver for Linux,
  	    \E(B%;$<2>,
  	sgr0=\E[m\E(B, smacs=\E(0$<2>, smul=\E[4m,
  	use=ecma+underline, use=ecma+standout, use=klone+color,
@@ -28,7 +28,7 @@ terminal or the shell or any other program therein (no keys).
  	use=ansi+local, use=ansi+rca, use=linux+sfkeys,
  	use=vt100+pf1-pf4, use=vt220+ufkeys, use=vt220+pcedit,
  
-@@ -18340,7 +18340,19 @@ hazel|exec80|h80|he80|Hazeltine Executiv
+@@ -18370,7 +18370,19 @@ hazel|exec80|h80|he80|Hazeltine Executiv
  
  ibm327x|line mode IBM 3270 style,
  	gn,
