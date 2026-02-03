@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 30 21:27:01 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to 2.8.4
+  * corrects the Spanish translation.
+  * corrects callsign certificate renewals for cases where the DXCC
+    entity and the callsign prefix do not match.
+  
+-------------------------------------------------------------------
 Mon Jan 26 22:25:38 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.8.3:
@@ -191,7 +199,8 @@ Mon Jun 20 17:29:52 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
   * When signing a log, TQSL checks if there are any valid callsign
     certificates for that call before allowing signing to proceed.
     This check caused station locations with “None” as their callsign
-    to be rejected when signing a log. This is now corrected to
+    to be rejected when signing a log. This is now corrected to corrects callsign certificate renewals for cases where the DXCC entity
+and the callsign prefix do not match.
     permit the station location to be used.
   * When checking callsign validity, allow both “K1MU/KH6” and
     “KH6/K1MU” forms of the portable
