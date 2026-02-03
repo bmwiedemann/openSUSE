@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  3 11:09:18 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add NetworkManager-devel to BuildRequires
+- Install NetworkManager dispatcher script (bsc#1254266)
+
+-------------------------------------------------------------------
 Tue Jan 20 14:31:53 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20260116.00 (bsc#1256906)
