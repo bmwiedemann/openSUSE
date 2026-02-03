@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:25:45 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Thu Nov 21 11:46:03 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace wxWidgets-3_0-devel for wxWidgets-devel BuildRequires:
@@ -153,4 +158,3 @@ Mon Jan 20 15:30:11 CET 2003 - ghillie@suse.de
 Mon Dec 16 17:54:00 MET 2002 - gernot@hillier.de
 
 - first package
--------------------------------------------------------------------

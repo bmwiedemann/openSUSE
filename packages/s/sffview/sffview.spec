@@ -1,7 +1,7 @@
 #
 # spec file for package sffview
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,6 @@ BuildRequires:  boost-devel
 %endif
 BuildRequires:  gcc-c++
 BuildRequires:  libtiff-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  wxWidgets-devel
 BuildRequires:  xorg-x11
 Version:        0.5
