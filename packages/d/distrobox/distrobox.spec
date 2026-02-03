@@ -24,6 +24,7 @@ License:        GPL-3.0-only
 URL:            https://github.com/89luca89/distrobox
 Source:         https://github.com/89luca89/distrobox/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        distrobox.conf
+Patch0:         0001-fix-add-newline-when-manually-adding-user.patch
 Requires:       %{_bindir}/basename
 Requires:       %{_bindir}/find
 Requires:       %{_bindir}/grep

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  3 07:44:08 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
+
+- add newline when manually adding user (bsc#1257302)
+  * add 0001-fix-add-newline-when-manually-adding-user.patch
+
+-------------------------------------------------------------------
 Thu Jan 29 17:15:23 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to 1.8.2.3:
