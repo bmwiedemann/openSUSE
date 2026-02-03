@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>468a03bc83e7a13ce05b0532b54783b1</srcmd5>
+    <version>1.13.11</version>
+    <time>1770150498</time>
+    <user>anag_factory</user>
+    <comment>- Only install gaming selinux policy on SLE +16 / Leap +16 / Tumbleweed / Slowroll
+- Winetricks and wine-staging have been removed as dependencies, as they are no longer needed</comment>
+    <requestid>1330644</requestid>
+  </revision>
+</revisionlist>

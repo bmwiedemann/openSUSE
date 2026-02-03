@@ -1,0 +1,138 @@
+-------------------------------------------------------------------
+Mon Feb  2 22:11:41 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Only install gaming selinux policy on SLE +16 / Leap +16 / Tumbleweed / Slowroll 
+
+-------------------------------------------------------------------
+Mon Feb  2 21:44:50 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Winetricks and wine-staging have been removed as dependencies, as they are no longer needed
+
+-------------------------------------------------------------------
+Sun Feb  1 00:09:37 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Fix .changes file
+
+-------------------------------------------------------------------
+Sat Jan 31 23:51:35 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- For _service switch to tar_scm
+
+-------------------------------------------------------------------
+Sat Jan 31 23:10:33 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Removed umu-launcher as a dependency, as it's not needed anymore
+
+-------------------------------------------------------------------
+Sat Jan 31 05:51:23 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Fix typo in python dependency 
+
+-------------------------------------------------------------------
+Sat Jan 31 05:47:37 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Improved python version dependency management
+- Added specific fixes for Leap 15.x
+
+-------------------------------------------------------------------
+Sat Jan 31 00:31:34 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Minor fixes
+
+-------------------------------------------------------------------
+Sat Jan 31 00:26:26 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Revert some changes in favor of the python-vdf package
+- Stop bundling vdf module in faugus-launcher package
+
+-------------------------------------------------------------------
+Fri Jan 30 22:17:58 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Rework for _service to only use obs_scm without compressed tarballs
+- Added source code download for python-vdf
+- Changed .spec file to bundle the required vdf python module with faugus-launcher
+- Added .rpmlintrc for exclusions
+- Removed git commit from version
+- Many .spec enhancements
+- Bump faugus-launcher to version 1.13.11
+
+-------------------------------------------------------------------
+Fri Jan 30 22:10:48 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- [python-vdf] Update to version 20241003:
+  * Update __init__.py - use of None in mapper parameter (#4)
+  * Update dev_requirements.txt for Python >=3.6 only
+  * Tests: Don't use two different versions of Ubuntu
+  * Bump version to v4.0, Update contact info, and Add 3.10-3.12 to supported version list
+  * README: Restore coverage and Tests badges
+  * Tests: Hold back Ubuntu and macOS (try supporting Python 3.6)
+  * Tests: Add workflow_dispatch
+  * Update README
+  * Tests: Update for the modern day and drop Python 2.7
+
+-------------------------------------------------------------------
+Fri Jan 30 22:10:47 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- [faugus-launcher] Update to version 1.13.11:
+  * Updated metadata screenshots
+  * Updated screenshots
+  * Version 1.13.11
+  * Fixed banner from URL not being loaded
+  * Press delete to remove a global envar
+  * Updated Portuguese translation
+  * Added prevent sleep as an option
+  * Version 1.13.10
+  * Fixed GE-Proton Latest being downloaded every time
+  * Fixed Proton Manager showing new Proton version without any assets
+
+-------------------------------------------------------------------
+Fri Jan 30 03:43:20 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Fix libvk3d and libvk3d-utils name in .spec, added changesgenerate to _service
+
+-------------------------------------------------------------------
+Fri Jan 30 03:35:42 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Update to version 1.13.10+git.20260128:
+  * Press delete to remove a global envar
+  * Updated Portuguese translation
+  * Added prevent sleep as an option
+  * Version 1.13.10
+  * Fixed GE-Proton Latest being downloaded every time
+  * Fixed Proton Manager showing new Proton version without any assets
+  * Attempt to fix encoding problems
+  * Version 1.13.9
+  * Fixed game not launching from context when having single quotes
+  * Fixed MangoHud not working with OpenGL games
+
+-------------------------------------------------------------------
+Fri Jan 30 03:06:10 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Fix typo in _service
+
+-------------------------------------------------------------------
+Fri Jan 30 02:23:19 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- I forgot to add source code files... sorry
+
+-------------------------------------------------------------------
+Fri Jan 30 02:20:51 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Validating that _service works
+
+-------------------------------------------------------------------
+Fri Jan 30 01:06:17 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Changed _service to manual
+
+-------------------------------------------------------------------
+Thu Jan 29 20:54:00 UTC 2026 - JMarcosHP01 <jehuherrerap@hotmail.com>
+
+- Added wine-stagging, libvk3d, ntsync-autoload, ntsync-autoload-udev-rules as recommended
+- Added copyright in .spec
+- More .spec enhancements
+
+-------------------------------------------------------------------
+Thu Jan 29 20:44:00 UTC 2026 - JMarcosHP01 <jehuherrerap@hotmail.com>
+
+- Initial version 1.13.10
