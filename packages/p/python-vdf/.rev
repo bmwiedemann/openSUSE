@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3b34b34494ddde086995522dbca77d60</srcmd5>
+    <version>4.0</version>
+    <time>1770150495</time>
+    <user>anag_factory</user>
+    <comment>I want to maintain python-vdf in Factory and would like to use games:tools as the devel/feeder project. This is a required dependency for faugus-launcher to work properly.</comment>
+    <requestid>1330222</requestid>
+  </revision>
+</revisionlist>

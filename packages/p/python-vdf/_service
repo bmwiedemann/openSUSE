@@ -1,0 +1,21 @@
+<services>
+  <!-- Using tar_scm to automate source code downloads -->
+  <service name="tar_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/solsticegamestudios/vdf.git</param>
+    <param name="revision">v4.0</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="filename">python-vdf</param> 
+    <param name="versionrewrite-pattern">^v?([0-9]+(?:\.[0-9]+)*)(?:\+0)?</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+
+  <!-- Update the version in spec file -->
+  <service name="set_version" mode="manual"/>
+</services>
