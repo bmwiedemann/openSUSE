@@ -1,5 +1,5 @@
 <group name="dvd">
-  <!-- ### AUTOMATICALLY GENERATED, DO NOT EDIT ### -->
+  <!-- ### AUTOMATICALLY GENERATED, DO NOT EDIT ###-->
   <packagelist relationship="recommends">
     <package name="389-ds" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="7zip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->

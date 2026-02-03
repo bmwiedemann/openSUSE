@@ -1,5 +1,5 @@
 <group name="opensuse_kalpa">
-  <!-- ### AUTOMATICALLY GENERATED, DO NOT EDIT ### -->
+  <!-- ### AUTOMATICALLY GENERATED, DO NOT EDIT ###-->
   <packagelist relationship="recommends">
     <package name="Kalpa-release" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="Kalpa-release-appliance" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->

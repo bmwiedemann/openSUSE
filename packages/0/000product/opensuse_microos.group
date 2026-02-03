@@ -1,5 +1,5 @@
 <group name="opensuse_microos">
-  <!-- ### AUTOMATICALLY GENERATED, DO NOT EDIT ### -->
+  <!-- ### AUTOMATICALLY GENERATED, DO NOT EDIT ###-->
   <packagelist relationship="recommends">
     <package name="Mesa" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="Mesa-demo-egl" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
