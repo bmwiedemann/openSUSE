@@ -1,8 +1,6 @@
-Index: openjdk/common/autoconf/build-aux/autoconf-config.sub
-===================================================================
---- openjdk/common/autoconf/build-aux/autoconf-config.sub.orig
-+++ openjdk/common/autoconf/build-aux/autoconf-config.sub
-@@ -302,6 +302,7 @@ case $basic_machine in
+--- openjdk/common/autoconf/build-aux/autoconf-config.sub	2026-02-02 11:26:27.909663959 +0100
++++ openjdk/common/autoconf/build-aux/autoconf-config.sub	2026-02-02 11:26:41.627981464 +0100
+@@ -302,6 +302,7 @@
  	| pdp10 | pdp11 | pj | pjl \
  	| powerpc | powerpc64 | powerpc64le | powerpcle | ppcbe \
  	| pyramid \
@@ -10,7 +8,7 @@ Index: openjdk/common/autoconf/build-aux/autoconf-config.sub
  	| score \
  	| sh | sh[1234] | sh[24]a | sh[23]e | sh[34]eb | sheb | shbe | shle | sh[1234]le | sh3ele \
  	| sh64 | sh64le \
-@@ -383,6 +384,7 @@ case $basic_machine in
+@@ -383,6 +384,7 @@
  	| pdp10-* | pdp11-* | pj-* | pjl-* | pn-* | power-* \
  	| powerpc-* | powerpc64-* | powerpc64le-* | powerpcle-* | ppcbe-* \
  	| pyramid-* \
@@ -18,13 +16,11 @@ Index: openjdk/common/autoconf/build-aux/autoconf-config.sub
  	| romp-* | rs6000-* \
  	| sh-* | sh[1234]-* | sh[24]a-* | sh[23]e-* | sh[34]eb-* | sheb-* | shbe-* \
  	| shle-* | sh[1234]le-* | sh3ele-* | sh64-* | sh64le-* \
-Index: openjdk/common/autoconf/platform.m4
-===================================================================
---- openjdk/common/autoconf/platform.m4.orig
-+++ openjdk/common/autoconf/platform.m4
-@@ -96,6 +96,12 @@ AC_DEFUN([PLATFORM_EXTRACT_VARS_FROM_CPU
+--- openjdk/common/autoconf/platform.m4	2026-02-02 11:26:27.910692427 +0100
++++ openjdk/common/autoconf/platform.m4	2026-02-02 11:26:41.629818609 +0100
+@@ -102,6 +102,12 @@
        VAR_CPU_BITS=64
-       VAR_CPU_ENDIAN=big
+       VAR_CPU_ENDIAN=little
        ;;
 +    riscv64)
 +      VAR_CPU=riscv64
@@ -35,7 +31,7 @@ Index: openjdk/common/autoconf/platform.m4
      *)
        AC_MSG_ERROR([unsupported cpu $1])
        ;;
-@@ -397,6 +403,7 @@ AC_DEFUN([PLATFORM_SETUP_LEGACY_VARS],
+@@ -397,6 +403,7 @@
      sparc*)  ZERO_ARCHDEF=SPARC ;;
      x86_64*) ZERO_ARCHDEF=AMD64 ;;
      x86)     ZERO_ARCHDEF=IA32  ;;
@@ -43,20 +39,18 @@ Index: openjdk/common/autoconf/platform.m4
      *)      ZERO_ARCHDEF=$(echo "${OPENJDK_TARGET_CPU_LEGACY_LIB}" | tr a-z A-Z)
    esac
    AC_SUBST(ZERO_ARCHDEF)
-Index: openjdk/hotspot/src/os/linux/vm/os_linux.cpp
-===================================================================
---- openjdk/hotspot/src/os/linux/vm/os_linux.cpp.orig
-+++ openjdk/hotspot/src/os/linux/vm/os_linux.cpp
-@@ -369,7 +369,7 @@ void os::init_system_properties_values()
- //        1: ...
- //        ...
- //        7: The default directories, normally /lib and /usr/lib.
+--- openjdk/hotspot/src/os/linux/vm/os_linux.cpp	2026-02-02 11:26:27.994153937 +0100
++++ openjdk/hotspot/src/os/linux/vm/os_linux.cpp	2026-02-02 11:28:02.905112153 +0100
+@@ -365,7 +365,7 @@
+   //        1: ...
+   //        ...
+   //        7: The default directories, normally /lib and /usr/lib.
 -#if defined(AMD64) || defined(_LP64) && (defined(SPARC) || defined(PPC) || defined(S390))
 +#if defined(AMD64) || defined(_LP64) && (defined(SPARC) || defined(PPC) || defined(S390) || defined(RISCV))
- #define DEFAULT_LIBPATH "/usr/lib64:/lib64:/lib:/usr/lib"
+   #define DEFAULT_LIBPATH "/usr/lib64:/lib64:/lib:/usr/lib"
  #else
- #define DEFAULT_LIBPATH "/lib:/usr/lib"
-@@ -1960,6 +1960,10 @@ void * os::dll_load(const char *filename
+ #if defined(AARCH64)
+@@ -1962,6 +1962,10 @@
    #define EM_LOONGARCH  258               /* LoongArch */
    #endif
  
@@ -67,7 +61,7 @@ Index: openjdk/hotspot/src/os/linux/vm/os_linux.cpp
    static const arch_t arch_array[]={
      {EM_386,         EM_386,     ELFCLASS32, ELFDATA2LSB, (char*)"IA 32"},
      {EM_486,         EM_386,     ELFCLASS32, ELFDATA2LSB, (char*)"IA 32"},
-@@ -1982,6 +1986,7 @@ void * os::dll_load(const char *filename
+@@ -1985,6 +1989,7 @@
      {EM_68K,         EM_68K,     ELFCLASS32, ELFDATA2MSB, (char*)"M68k"},
      {EM_AARCH64,     EM_AARCH64, ELFCLASS64, ELFDATA2LSB, (char*)"AARCH64"},
      {EM_LOONGARCH,   EM_LOONGARCH, ELFCLASS64, ELFDATA2LSB, (char*)"LoongArch"},
@@ -75,12 +69,12 @@ Index: openjdk/hotspot/src/os/linux/vm/os_linux.cpp
    };
  
    #if  (defined IA32)
-@@ -2014,6 +2019,8 @@ void * os::dll_load(const char *filename
+@@ -2019,6 +2024,8 @@
      static  Elf32_Half running_arch_code=EM_AARCH64;
-   #elif  (defined LOONGARCH)
+   #elif  (defined LOONGARCH64)
      static  Elf32_Half running_arch_code=EM_LOONGARCH;
 +#elif  (defined RISCV)
 +    static  Elf32_Half running_arch_code=EM_RISCV;
    #else
      #error Method os::dll_load requires that one of following is defined:\
-          IA32, AMD64, IA64, __sparc, __powerpc__, ARM, S390, ALPHA, MIPS, MIPSEL, PARISC, M68K, AARCH64
+          IA32, AMD64, IA64, __sparc, __powerpc__, ARM, S390, ALPHA, MIPS, MIPSEL, PARISC, M68K, AARCH64, LOONGARCH64

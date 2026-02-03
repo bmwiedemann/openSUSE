@@ -882,4 +882,12 @@
     <comment>October 2025 CPU</comment>
     <requestid>1315342</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>90d5a4115b77f10f85643d6f41071213</srcmd5>
+    <version>1.8.0.482</version>
+    <time>1770150558</time>
+    <user>anag_factory</user>
+    <comment>January 2026 CPU fixes</comment>
+    <requestid>1330411</requestid>
+  </revision>
 </revisionlist>

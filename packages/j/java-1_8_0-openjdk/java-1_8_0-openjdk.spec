@@ -1,7 +1,7 @@
 #
 # spec file for package java-1_8_0-openjdk
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm}
-%global icedtea_version 3.37.0
+%global icedtea_version 3.38.0
 %global buildoutputdir openjdk.build/
 # Convert an absolute path to a relative path.  Each symbolic link is
 # specified relative to the directory in which it is installed so that
@@ -31,7 +31,7 @@
 # priority must be 6 digits in total
 %global priority        1805
 %global javaver         1.8.0
-%global updatever       472
+%global updatever       482
 %global buildver        08
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openjdk
@@ -203,8 +203,6 @@ Patch2001:      disable-doclint-by-default.patch
 Patch2002:      JDK_1_8_0-8208602.patch
 Patch3000:      tls13extensions.patch
 Patch4000:      riscv64-zero.patch
-Patch4001:      jdk-8354941.patch
-Patch4002:      jdk-8354941-aarch32.patch
 Patch5001:      fips.patch
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
@@ -226,7 +224,6 @@ BuildRequires:  libxslt
 BuildRequires:  mozilla-nss-devel >= 3.53
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
-BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-proto-devel
 BuildRequires:  xz
 BuildRequires:  zip
@@ -547,11 +544,6 @@ patch -p0 -i %{PATCH3000}
 
 patch -p0 -i %{PATCH4000}
 
-%ifarch %{arm}
-patch -p0 -i %{PATCH4001}
-patch -p0 -i %{PATCH4002}
-%endif
-
 patch -p0 -i %{PATCH5001}
 
 (cd openjdk/common/autoconf
@@ -703,7 +695,6 @@ install -d -m 0755 %{buildroot}%{_datadir}/{applications,pixmaps}
 install -d -m 0755 %{buildroot}/%{_jvmdir}/%{jredir}/lib/desktop/
 for d in jconsole policytool; do
     install -m 0644 $d.desktop %{buildroot}/%{_jvmdir}/%{jredir}/lib/desktop/
-    %suse_update_desktop_file %{buildroot}/%{_jvmdir}/%{jredir}/lib/desktop/$d.desktop
 done
 
 # Find JRE directories.

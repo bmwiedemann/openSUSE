@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Mon Feb  2 10:47:58 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u482 (icedtea-3.38.0)
+  * CVEs
+    + CVE-2026-21925, bsc#1257034
+    + CVE-2026-21932, bsc#1257036
+    + CVE-2026-21933, bsc#1257037
+    + CVE-2026-21945, bsc#1257038
+  * Import of OpenJDK 8 u482 build 08
+    + JDK-8154043: Fields not reachable anymore by tab-key, because
+      of new tabbing behaviour of radio button groups.
+    + JDK-8182577: Exception when Tab key moves focus to a
+      JCheckbox with a custom ButtonModel
+    + JDK-8193017: Import freetype sources into OpenJDK source tree
+    + JDK-8211804: Constant AO_UNUSED_MBZ uses left shift of
+      negative value
+    + JDK-8212155: Race condition when posting
+      dynamic_code_generated event leads to JVM crash
+    + JDK-8212678: Windows IME related patch
+    + JDK-8219006: AArch64: Register corruption in slow subtype
+      check
+    + JDK-8222362: Upgrade to Freetype 2.10.0
+    + JDK-8227324: Upgrade to freetype 2.10.1
+    + JDK-8247867: Upgrade to freetype 2.10.2
+    + JDK-8258805: Japanese characters not entered by mouse click
+      on Windows 10
+    + JDK-8261170: Upgrade to FreeType 2.10.4
+    + JDK-8265429: Improve GCM encryption
+    + JDK-8269668: [aarch64] java.library.path not including
+      /usr/lib64
+    + JDK-8285686: Update FreeType to 2.12.0
+    + JDK-8290334: Update FreeType to 2.12.1
+    + JDK-8293672: Update freetype md file
+    + JDK-8297088: Update LCMS to 2.14
+    + JDK-8298974: Add ftcolor.c to imported freetype sources
+    + JDK-8305072: Win32ShellFolder2.compareTo is inconsistent
+    + JDK-8306881: Update FreeType to 2.13.0
+    + JDK-8316028: Update FreeType to 2.13.2
+    + JDK-8316030: Update Libpng to 1.6.40
+    + JDK-8317970: Bump target macosx-x64 version to 11.00.00
+    + JDK-8329004: Update Libpng to 1.6.43
+    + JDK-8339280: jarsigner -verify performs cross-checking
+      between CEN and LOC
+    + JDK-8341496: Improve JMX connections
+    + JDK-8345358: Some DLL Files are missing Windows Properties
+    + JDK-8348596: Update FreeType to 2.13.3
+    + JDK-8348598: Update Libpng to 1.6.47
+    + JDK-8353299: VerifyJarEntryName.java test fails
+    + JDK-8359501: Enhance Handling of URIs
+    + JDK-8362208: [8u] Buffer overflow in
+      g1GCPhaseTimes.cpp::LineBuffer::_buffer
+    + JDK-8362308: Enhance Bitmap operations
+    + JDK-8362632: Improve HttpServer Request handling
+    + JDK-8364214: Enhance polygon data support
+    + JDK-8364597: Replace THL A29 Limited with Tencent
+    + JDK-8364660: ClassVerifier::ends_in_athrow() should be removed
+    + JDK-8365058: Enhance CopyOnWriteArraySet
+    + JDK-8365271: Improve Swing supports
+    + JDK-8366574: Bump update version of OpenJDK: 8u482
+    + JDK-8367115: [8u] Problem list
+      CAInterop.java#actalisauthenticationrootca test
+    + JDK-8367257: [8u] Problem list CAInterop.java#entrustrootcag4
+      test
+    + JDK-8367782: VerifyJarEntryName.java: Fix modifyJarEntryName
+      to operate on bytes and re-introduce verifySignatureEntryName
+    + JDK-8368032: Enhance Certificate Checking
+    + JDK-8371334: [8u] GHA: installation of VS2010 hangs
+    + JDK-8371352: [8u] Fix VS2010 build issue in check_code.c
+    + JDK-8371387: [8u] hotspot needs to recognise latest VS2022
+    + JDK-8372534: Update Libpng to 1.6.51
+  * Backports
+    + JDK-8376272: [8u] Windows x86-32 fails to build after
+      JDK-8359501
+    + JDK-8376352: [8u] Build failure on Windows 32-bit after
+      JDK-8362308
+  * AArch32 port
+    + JDK-8374556: [aarch32] JDK hangs on startup after 8354941
+- Modified patch:
+  * riscv64-zero.patch
+    + rediff
+- Removed patches:
+  * jdk-8354941-aarch32.patch
+  * jdk-8354941.patch
+    + not needed anymore
+
+-------------------------------------------------------------------
+Wed Jan 14 15:02:20 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Do not depend on update-desktop-files (jsc#PED-14507)
+
+-------------------------------------------------------------------
 Mon Nov  3 14:19:45 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version jdk8u472 (icedtea-3.37.0)
