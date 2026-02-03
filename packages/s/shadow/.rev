@@ -1366,4 +1366,15 @@
   groupadd, groupdel, groupmod, useradd, userdel, usermod</comment>
     <requestid>1329809</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>efd3d3fd3ef4f784efb07b210bf4bfd0</srcmd5>
+    <version>4.19.3</version>
+    <time>1770150329</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.19.3:
+  * chpasswd(8):  Don't reject hashes containing backslashes or 'n'
+    characters. Affected SHA-256, SHA-512, MD5.
+- Update shadow.keyring according to AUTHORS.md and shadow/keys</comment>
+    <requestid>1330357</requestid>
+  </revision>
 </revisionlist>

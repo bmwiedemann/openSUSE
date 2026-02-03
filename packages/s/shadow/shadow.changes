@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb  1 21:56:26 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.19.3:
+  * chpasswd(8):  Don't reject hashes containing backslashes or 'n'
+    characters. Affected SHA-256, SHA-512, MD5.
+- Update shadow.keyring according to AUTHORS.md and shadow/keys
+
+-------------------------------------------------------------------
 Thu Jan 29 12:23:56 UTC 2026 - Neal Gompa <ngompa@opensuse.org>
 
 - Add shadow-utils Provides for compatibility with RH/Fedora packages
