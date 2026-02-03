@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Fri Jan 30 09:43:44 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/gfxboot#58
+- fix invalid operand size for movsx instructions (bsc#1257495)
+- 4.5.104
+
+--------------------------------------------------------------------
 Wed Jul 23 12:25:20 UTC 2025 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Kabyle) (bsc#1149754)
