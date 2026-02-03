@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  2 16:17:01 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-14 branch head, ed5f89a2062002f5dfb69aac8, git12292
+  * includes fix for bogus expression simplification [bsc#1257463]
+
+-------------------------------------------------------------------
 Fri Oct 31 14:23:35 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-14 branch head, dfb81b8cb5eb2fc4908beb65f, git12132

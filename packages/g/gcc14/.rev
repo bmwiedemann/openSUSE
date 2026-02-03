@@ -268,4 +268,13 @@ next week.  Gcc7 can pick it up from there.
   to pick change fixing build with glibc 2.42 remove of termio.</comment>
     <requestid>1315080</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5a7c8946908fd6104e44a459bd7b8e14</srcmd5>
+    <version>14.3.1+git12292</version>
+    <time>1770150813</time>
+    <user>anag_factory</user>
+    <comment>- Update to gcc-14 branch head, ed5f89a2062002f5dfb69aac8, git12292
+  * includes fix for bogus expression simplification [bsc#1257463]</comment>
+    <requestid>1330688</requestid>
+  </revision>
 </revisionlist>
