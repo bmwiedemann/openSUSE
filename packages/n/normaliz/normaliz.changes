@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb  2 11:52:31 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.11.1
+  * This release realizes the full functionality also for
+    non-integral fusion rings. In particular it is now possible to
+    compute induction matrices. Moreover all computations are
+    substantially accelerated by running them over the integers.
+
+-------------------------------------------------------------------
 Sun Oct 19 11:37:14 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.11.0

@@ -231,4 +231,12 @@ systems
     <comment>- Update to release 3.11.0</comment>
     <requestid>1312213</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>4c0a136c94324fd1a5e97c4b922d1b7d</srcmd5>
+    <version>3.11.1</version>
+    <time>1770150673</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.11.1</comment>
+    <requestid>1330613</requestid>
+  </revision>
 </revisionlist>
