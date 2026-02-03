@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-base
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.10.1
+%define real_version 6.10.2
 %define short_version 6.10
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
@@ -33,7 +33,7 @@
 %bcond_without system_md4c
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.10.1
+Version:        6.10.2
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -75,6 +75,9 @@ BuildRequires:  pcre2-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-macros
+%ifnarch ppc64le s390x
+BuildRequires:  renderdoc-devel
+%endif
 BuildRequires:  xmlstarlet
 BuildRequires:  cmake(double-conversion)
 %if %{with system_md4c}
@@ -984,6 +987,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_qt6_libexecdir}/cmake_automoc_parser
 %{_qt6_libexecdir}/moc
 %{_qt6_libexecdir}/qlalr
+%{_qt6_libexecdir}/qt_cyclonedx_generator.py
 %{_qt6_libexecdir}/qt-cmake-private
 %{_qt6_libexecdir}/qt-cmake-private-install.cmake
 %{_qt6_libexecdir}/qt-cmake-standalone-test
