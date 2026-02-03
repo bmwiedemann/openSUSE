@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Feb 03 11:11:40 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 16.9.0:
+  * chore: release v16.9.0 (#1710)
+  * chore(pre-commit): autoupdate (#1723)
+  * chore(deps): update github/codeql-action action to v4.32.1 (#1722)
+  * chore(deps): update vmactions/openbsd-vm digest to a23337e (#1720)
+  * chore(deps): update rust crate notify-rust to ~4.12.0 (#1721)
+  * refactor(system,home-manager): make matches more explicit (#1719)
+  * fix: add missing import (#1718)
+  * fix(nix): make nix-{channel,env} optional for flake-enabled systems (#1716)
+  * feat(system,home_manager): integrate nh into nix-based updaters (#1712)
+  * chore(pre-commit): autoupdate (#1704)
+  * chore(deps): update release-plz/action digest to e592230 (#1698)
+  * chore(deps): update actions/checkout action to v6.0.2 (#1699)
+  * chore(deps): update github/codeql-action action to v4.32.0 (#1700)
+  * chore(deps): update actions/attest-build-provenance action to v3.2.0 (#1703)
+  * chore(deps): update vmactions/openbsd-vm digest to f5b9bc1 (#1706)
+  * chore(renovate): disable rate-limiting (#1697)
+  * chore(renovate): disable rate-limiting (#1696)
+  * chore(deps): update dependency rust to v1.93.0 (#1695)
+  * chore(renovate): add rust-toolchain updating (#1694)
+  * chore: pin toolchain to stable instead of MSRV, add MSRV testing, simplify CI workflow (#1690)
+  * chore(pre-commit): autoupdate (#1687)
+  * feat(cargo): add `git` and `quiet` options (#1685)
+  * chore(renovate): use preset for lockfile config (#1684)
+  * chore(pre-commit): autoupdate (#1682)
+  * chore(deps): update github/codeql-action action to v4.31.10 (#1680)
+  * chore(deb): update copyright
+  * chore(deps): unpin toml
+  * docs(installation): add Pacstall Ubuntu package to README (#1676)
+  * chore(deps): update rust crate toml to v0.9.11 (#1675)
+  * ci(release): fix OpenBSD release job (#1674)
+  * ci(release): fix OpenBSD release job (#1672)
+
+-------------------------------------------------------------------
 Fri Jan 09 14:49:04 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 16.8.0:
