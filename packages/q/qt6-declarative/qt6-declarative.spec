@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-declarative
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 %endif
 
-%define real_version 6.10.1
+%define real_version 6.10.2
 %define short_version 6.10
 %define tar_name qtdeclarative-everywhere-src
 %define tar_suffix %{nil}
@@ -32,7 +32,7 @@
 %endif
 #
 Name:           qt6-declarative%{?pkg_suffix}
-Version:        6.10.1
+Version:        6.10.2
 Release:        0
 Summary:        Qt 6 Declarative Libraries and tools
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
@@ -41,8 +41,6 @@ Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-declarative-rpmlintrc
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-qmlimportscanner-Include-module-versions-again.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-QtQml-Invalidate-fallback-lookups-after-each-call-fr.patch
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base

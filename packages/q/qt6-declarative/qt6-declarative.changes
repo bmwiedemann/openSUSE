@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 31 08:10:35 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.10.2:
+  * https://www.qt.io/blog/qt-6.10.2-released
+- Drop patch, merged upstream:
+  * 0001-QtQml-Invalidate-fallback-lookups-after-each-call-fr.patch
+
+-------------------------------------------------------------------
 Tue Dec  9 18:24:59 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix crashes in QML code (kde#512754, QTBUG-142331):
