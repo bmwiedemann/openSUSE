@@ -7,4 +7,12 @@
     <comment>Dracut module which is calling systemd-repart before encryption.</comment>
     <requestid>1206557</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>31d6cc1306cfba58a272c533fc24e84c</srcmd5>
+    <version>1+git20260128.1b0de2b</version>
+    <time>1770150393</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1329799</requestid>
+  </revision>
 </revisionlist>

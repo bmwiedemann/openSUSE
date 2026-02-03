@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 28 12:51:11 UTC 2026 - schubi@suse.com
+
+- Update to version 1+git20260128.1b0de2b:
+  * systemd-repart-dracut.service: adjust for ignition
+
+-------------------------------------------------------------------
+Fri Jan 23 09:50:29 UTC 2026 - schubi@suse.com
+
+- Update to version 1+git20260123.eee7397:
+  * cleanup service dependencies
+  * Add powerpc64le as an included arch
+
+-------------------------------------------------------------------
 Tue Oct 08 13:45:06 UTC 2024 - schubi@suse.com
 
 - Initial

@@ -1,7 +1,7 @@
 #
 # spec file for package systemd-repart-dracut
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 # icecream 0
 
+
 %if 0%{?_build_in_place}
 %define git_version %(git log '-n1' '--date=format:%Y%m%d' '--no-show-signature' "--pretty=format:+git%cd.%h")
 BuildRequires:  git-core
@@ -27,14 +28,14 @@ BuildRequires:  git-core
 %endif
 
 Name:           systemd-repart-dracut
-Version:        1+git20241008.deebae3%{git_version}
+Version:        1+git20260128.1b0de2b%{git_version}
 Release:        0
 Summary:        Systemd-repart service dracut module
 License:        MIT
-URL:            https://github.com/schubi2/systemd-repart-dracut
+URL:            https://github.com/openSUSE/systemd-repart-dracut
 Source:         systemd-repart-dracut-%{version}.tar
 BuildRequires:  systemd-rpm-macros
-ExclusiveArch:  aarch64 ppc64le riscv64 x86_64
+ExclusiveArch:  aarch64 ppc64le powerpc64le riscv64 x86_64
 BuildArch:      noarch
 %{?systemd_requires}
 
