@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb  3 15:32:28 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.17.3
+  * `sumnumrat` & friends: use full precision estimates to avoid
+    failing with domain error when "close" to boundary
+  * Fix an infinite loop with `zeta([3,2,1])`
+  * Fix stack overflow with
+    `parforeach([1..1000],j,vector(10^5,i,i))`
+  * Fix an incorrect result of `mfpetersson()` when one form is not
+    cuspidal
+  * Fixed `sumeulerrat(1/(p^2-5),1.1)` and
+    `prodeulerrat(1+1/(p^2-p-23),0.6)` failing in some cases
+  * `hyperellratpoints(P, d)` had missed points when `P(-d) = 0`
+  * `hypergeom([8,8.5],7,-0.4)` had wrong output
+  * Fixed `fforder(,factor(1))` crashing the program
+  * Fixed too low precision of `zeta(1/2+10^22*I)`
+
+-------------------------------------------------------------------
 Fri Mar 14 08:11:01 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.17.2
