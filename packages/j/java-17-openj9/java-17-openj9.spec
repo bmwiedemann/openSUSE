@@ -1,7 +1,7 @@
 #
 # spec file for package java-17-openj9
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,18 +31,18 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      17
 %global interimver      0
-%global updatever       17
-%global buildver        10
+%global updatever       18
+%global buildver        8
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk17/archive
-%global root_revision   7c916e0ce446a6ba622b956e4381badec9822393
-%global root_branch     v0.56.0-release
+%global root_revision   a00b5bf11ed406d3f3636d9e6dc23457a92a3c98
+%global root_branch     v0.57.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    d4c7e3040fb85d68216d7e422014bcf02acf3df5
-%global omr_branch      v0.56.0-release
+%global omr_revision    c8ee95c0c729ac0c0cb3a46a6fde45f0d0b8cc0d
+%global omr_branch      v0.57.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 14b3b2de26cdbab340416bc6b5d367b6ceb11df0
-%global openj9_branch   v0.56.0-release
-%global openj9_tag      openj9-0.56.0
+%global openj9_revision f0754f410244ad2c42b07c5fe76983a3c7b61e87
+%global openj9_branch   v0.57.0-release
+%global openj9_tag      openj9-0.57.0
 # priority must be 6 digits in total
 %if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
 %global priority        2701
@@ -165,7 +165,6 @@ BuildRequires:  nasm
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
-BuildRequires:  update-desktop-files
 BuildRequires:  xprop
 BuildRequires:  zip
 BuildConflicts: java-devel >= 18
@@ -538,7 +537,6 @@ done
 install -d -m 0755 %{buildroot}%{_datadir}/{applications,pixmaps}
 install -d -m 0755 %{buildroot}/%{_jvmdir}/%{sdkdir}/lib/desktop/
 install -m 0644 jconsole.desktop %{buildroot}/%{_jvmdir}/%{sdkdir}/lib/desktop/
-%suse_update_desktop_file %{buildroot}/%{_jvmdir}/%{sdkdir}/lib/desktop/jconsole.desktop
 
 # Find demo directories.
 find %{buildroot}%{_jvmdir}/%{sdkdir}/demo \
