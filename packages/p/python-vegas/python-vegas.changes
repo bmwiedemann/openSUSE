@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb  2 03:00:47 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.1:
+  * New function vegas.restratify(integ, f) creates a copy of
+    integrator integ but with a new y-space stratification that is
+    adapted to integrand f(x).
+  * New vegas.Integrator option correlate_integrals if True
+    (default) instructs vegas to evaluate correlations between the
+    different integrals when integrating multiple integrands at
+    the same time.
+  * Bugs are fixed for pickling objects of type vegas.RAvgDict
+    (for Python 3.14), and for vegas.Integrator(integ) where integ
+    is an integrator.
+
+-------------------------------------------------------------------
 Wed Oct 22 18:52:55 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial package.

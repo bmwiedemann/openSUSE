@@ -17,7 +17,7 @@
 
 
 Name:           python-vegas
-Version:        6.3
+Version:        6.4.1
 Release:        0
 Summary:        Tools for adaptive multidimensional Monte Carlo integration
 License:        GPL-3.0-only
