@@ -1,7 +1,7 @@
 #
 # spec file for package zoxide
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           zoxide
-Version:        0.9.8
+Version:        0.9.9
 Release:        0
 Summary:        A smarter cd command
 License:        MIT
