@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Feb  2 15:44:04 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 0.12.9: 
+  * Add folder support for protobuf parser.
+  * Update dependencies.
+  * Add JS syntax highlighting.
+  * Add CSS syntax highlighting.
+  * Add `mitmproxz_rs.syntax_highlight.languages()`.
+  * Fix a bug where macOS local capture mode wouldn't clean up connections and stop working after a while.  * The changes may break half-closed TCP streams.
+  * tun mode: allow using a pre-configured persistent tun interface, to avoid requiring CAP_NET_ADMIN.
+  * Various fixes for Protobuf number encoding.
+  * Make gRPC and Protobuf parsing more forgiving
+  * Contentview bugfixes.
+  * Add `mitmproxy_rs.contentviews` module with MsgPack, Protobuf, and gRPC views.
+  * Add `mitmproxy_rs.syntax_highlight` module with YAML and HTML support.
+  * Wireguard: Bind server to specified address only.
+  * Fix a bug where buffer space wasn't reclaimed correctly, leading to an error in local capture mode.
+  * macOS: Make sure an existing network extension is replaced if a newer version is available.
+  * macOS: Fix a bug where IPv6 addresses with scope ids were not parsed correctly.
+  * Improve error message if `bpf-linker` is missing.
+  * Fix PyInstaller hooks to include `mitmproxy_linux`.
+  * Fix CI to build wheels compatible with Python 3.13 for mitmproxy-linux.
+  * Add local redirect mode for Linux.
+  * Update dependencies
+- Fake mitmproxy-linux, we can't build that in openSUSE, requires rust
+  nightly:
+  https://github.com/mitmproxy/mitmproxy_rs/tree/main/mitmproxy-linux#build-dependencies
+
+-------------------------------------------------------------------
 Mon Feb 10 04:48:26 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.11.1:

@@ -1,8 +1,9 @@
 <services>
   <service name="download_files" mode="manual"/>
-  <service name="cargo_vendor" mode="disabled">
-    <param name="srctar">mitmproxy_rs-0.11.1.tar.gz</param>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srctar">mitmproxy_rs-0.12.9.tar.gz</param>
     <param name="compression">zst</param>
     <param name="filter">true</param>
+    <param name="update">true</param>
   </service>
 </services>

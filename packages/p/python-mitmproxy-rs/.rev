@@ -34,4 +34,12 @@
 - Switch to srctar for cargo vendoring.</comment>
     <requestid>1244640</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>64e7afbc7b730eb0f5ca5c7eab983253</srcmd5>
+    <version>0.12.9</version>
+    <time>1770150820</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1330696</requestid>
+  </revision>
 </revisionlist>

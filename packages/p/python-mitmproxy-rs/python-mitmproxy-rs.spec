@@ -1,7 +1,7 @@
 #
 # spec file for package python-mitmproxy-rs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,16 @@
 #
 
 
+%define skip_python311 1
 Name:           python-mitmproxy-rs
-Version:        0.11.1
+Version:        0.12.9
 Release:        0
 Summary:        Rust bits for mitmproxy
 License:        MIT
 URL:            https://github.com/mitmproxy/mitmproxy_rs
-Source:         https://files.pythonhosted.org/packages/source/m/mitmproxy-rs/mitmproxy_rs-%{version}.tar.gz
+Source:         https://github.com/mitmproxy/mitmproxy_rs/archive/v%{version}/mitmproxy_rs-%{version}.tar.gz
 Source1:        vendor.tar.zst
+
 BuildRequires:  %{python_module maturin >= 1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  cargo-packaging
@@ -38,15 +40,45 @@ This package contains mitmproxy's Rust bits.
 %autosetup -a1 -p1 -n mitmproxy_rs-%{version}
 
 %build
+pushd mitmproxy-rs
 %pyproject_wheel
+popd
+
+# Can't build mitmproxy-linux because it depends on rust nightly
+# https://github.com/mitmproxy/mitmproxy_rs/tree/main/mitmproxy-linux#build-dependencies
+# pushd mitmproxy-linux
+# %%pyproject_wheel
+# popd
 
 %install
+pushd mitmproxy-rs
 %pyproject_install
+popd
+
+# Can't build mitmproxy-linux because it depends on rust nightly
+# https://github.com/mitmproxy/mitmproxy_rs/tree/main/mitmproxy-linux#build-dependencies
+# pushd mitmproxy-linux
+# %%pyproject_install
+# popd
+
+%{python_expand #
+mkdir -p %{buildroot}%{$python_sitearch}/mitmproxy_linux
+cat <<EOF >> %{buildroot}%{$python_sitearch}/mitmproxy_linux/__init__.py
+# Fake mitmproxy-linux, we can't build in openSUSE yet because it
+# depends on rust nightly
+from pathlib import Path
+def executable_path():
+    return Path("/usr/bin/mitmproxy-linux-redirector")
+EOF
+}
+
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 # no tests in the tarball
 
 %files %{python_files}
+%{python_sitearch}/mitmproxy_linux
+%{python_sitearch}/mitmproxy_linux/__init__.py
 %{python_sitearch}/mitmproxy_rs
 %{python_sitearch}/mitmproxy_rs-%{version}.dist-info
 
