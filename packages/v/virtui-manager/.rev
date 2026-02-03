@@ -63,4 +63,30 @@
 </comment>
     <requestid>1329988</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>db8890f62f3594e383cd0b11da15951a</srcmd5>
+    <version>1.4.0</version>
+    <time>1770150939</time>
+    <user>anag_factory</user>
+    <comment>- version 1.4.0:
+  * Add server allocation display (10sec at vm state change)
+  * add tmux capabilities
+  * fix host stats info
+  * fix missing translation
+  * fix cpu model display
+  * fix migration issue (can't find vm name)
+  * fix missing import (webconsole)
+  * test vm name on host server destination before migration
+  * add Hibernate capabilities (save vm)
+  * update doc (including images)
+  * pylint fixes
+
+- version 1.3.0:
+  * DE and IT translation
+  * improve pagination reactivity
+  * fix logging issue
+  * add host Allocation dashboard
+  * update doc</comment>
+    <requestid>1330809</requestid>
+  </revision>
 </revisionlist>
