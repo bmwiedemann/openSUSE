@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Thu Oct 30 07:55:03 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.01:
+  * A new obj2 version of the obj output format, intended for use on OS/2. See section 9.5.
+  * The condition after %if or %elif would be evaluated while output is suppressed
+    after %exitrep or %exitmacro. Although no output would be generated in either case,
+    assembly would fail if evaluating the expression triggered an error.
+  * Fix encoding of TCVTROWPS2PHL, correct multiple AVX512-BF16 instructions' operand
+    formats and typoed mnemonics.
+  * The unofficial but obvious alternate form TEST reg,mem was not accepted by NASM 3.00;
+    corrected.
+  * For the obj output format, multiple GROUP directives can now be specified for the same
+    group; the resulting group includes all sections specified in all GROUP directives for
+    the group.
+  * A new %selbits() preprocessor function. See section 5.4.19.
+  * A new --bits option as convenience shorthand for --before "BITS ...". See section 2.1.31.
+  * The options and pragmas for configuring external label mangling were inconsistent, the
+    former using the spelling postfix and the latter suffix. Furthermore, these were also
+    documented as directives in addition to pragmas. Implement the already documented
+    directives (bracketed forms only) and allow both postfix and suffix in all cases.
+    See section 2.1.28 and section 8.10.
+  * Define additional permissive patterns and fix several opcode bugs.
+  * Fix parsing of two-operand forms of x87 instructions.
+  * Fix bogus "absolute address can not be RIP-relative" warning.
+  * Hopefully fix building with OpenWatcom.
+  * Generate a warning, promoted to error by default, on the use of o64 prefixes in
+    16- or 32-bit mode. If demoted to a warning or suppressed the prefix is ignored, but
+    likely will trigger subsequent, harder to debug, error messages.
+  * More consistent handling of jump and call instructions with specified operand sizes.
+  * Fix an operand size handling bug in the CMPXCHG instruction.
+
+-------------------------------------------------------------------
+Thu Oct 30 07:52:27 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.00:
+  * Improve the documentation for building from source (appendix D).
+  * Add support for the APX and AVX10 instruction sets, and various miscellaneous new instructions.
+  * Add new preprocessor functions: %b2hs(), %chr(), %depend(), %find(),
+    %findi(), %hs2b(), %null(), %ord(), %pathsearch(), and %realpath(). See section 5.4.
+  * New preprocessor directive %note to insert a note in the list file,
+    without issuing an external diagnosic. Unlike a comment, it is optionally
+    macro-expanded, see section 5.11.
+  * New preprocessor directive %iffile (and corresponding function %isfile()) to
+    test for the existence of a file. See section 5.6.12.
+  * New preprocessor directive %ifdirective to test for the existence of a
+    preprocessor directive, assembly directive, or pseudo-instruction; see section 5.6.10.
+  * Fix a number of invalid memory references (usually causing crashes) on various invalid inputs.
+  * Fix multiple bugs in the handling of $–escaped symbols.
+  * The use of $ as a prefix for hexadecimal numbers has been deprecated,
+    and will now issue a warning. A new directive [DOLLARHEX] can be used to disable
+    this syntax entirely, see section 8.12.
+  * Fix the generation of segment selector references (mainly used in the obj output format.)
+  * Fix crash in the obj backend when code was emitted into the default segment,
+    without any labels having been defined.
+  * Clean up the command-line help text (-h) and break it down into individual
+    topics, as the previous output was just too verbose to be practical as a quick reference.
+  * The implicit DEFAULT ABS in 64-bit mode is deprecated and may be changed to REL
+    in the future. See section 8.2. A warning is now emitted for this condition.
+  * It is now possible to set the REL/ABS default for memory accesses using FS: or GS:,
+    see section 8.2.
+  * The __?DEFAULT?__ standard macro now reflects the settings of the DEFAULT directive.
+    See section 6.4.
+  * The NASM preprocessor now assumes that an unknown directive starting with %if or %elif
+    is a misspelled or not yet implemented conditional directive, and tries to match it
+    with a corresponding %endif. See section 5.6.14.
+  * The masm macro package now defines a macro for x87 register syntax. See section 7.5.
+  * A new macro package, vtern, to simplify generation of the control immediates for
+    the VPTERNLOGD and VPTERNLOGQ instructions. See section 7.6.
+  * A new command line option -LF allows overriding [LIST -] directives.
+  * In the obj output format, allow a segment in the FLAT pseudo-group to also belong to
+    another (real) group. Used on OS/2.
+  * Add a new build_version directive to the Mach-O backend. See section 9.8.6.
+  * Fix a spec violation in the generation of DWARF debugging information on ELF.
+  * Response files can now be nested.
+  * Many documentation improvements.
+
+-------------------------------------------------------------------
 Thu Apr 18 05:41:15 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.16.03:

@@ -396,4 +396,50 @@
   * Update the included RPM .spec file.</comment>
     <requestid>1168699</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>9391cc191805f4af65bd99adda587f48</srcmd5>
+    <version>3.01</version>
+    <time>1770150473</time>
+    <user>anag_factory</user>
+    <comment>This SR will break building of syslinux and gfxboot.
+Please see https://build.opensuse.org/project/show/home:jubalh:nasm
+
+I sent:
+* https://github.com/openSUSE/gfxboot/pull/58
+* SR#1329878 to system:install:head/syslinux
+
+So this request needs to go together with those updates.
+
+- Update to 3.01:
+  * A new obj2 version of the obj output format, intended for use on OS/2. See section 9.5.
+  * The condition after %if or %elif would be evaluated while output is suppressed
+    after %exitrep or %exitmacro. Although no output would be generated in either case,
+    assembly would fail if evaluating the expression triggered an error.
+  * Fix encoding of TCVTROWPS2PHL, correct multiple AVX512-BF16 instructions' operand
+    formats and typoed mnemonics.
+  * The unofficial but obvious alternate form TEST reg,mem was not accepted by NASM 3.00;
+    corrected.
+  * For the obj output format, multiple GROUP directives can now be specified for the same
+    group; the resulting group includes all sections specified in all GROUP directives for
+    the group.
+  * A new %selbits() preprocessor function. See section 5.4.19.
+  * A new --bits option as convenience shorthand for --before &quot;BITS ...&quot;. See section 2.1.31.
+  * The options and pragmas for configuring external label mangling were inconsistent, the
+    former using the spelling postfix and the latter suffix. Furthermore, these were also
+    documented as directives in addition to pragmas. Implement the already documented
+    directives (bracketed forms only) and allow both postfix and suffix in all cases.
+    See section 2.1.28 and section 8.10.
+  * Define additional permissive patterns and fix several opcode bugs.
+  * Fix parsing of two-operand forms of x87 instructions.
+  * Fix bogus &quot;absolute address can not be RIP-relative&quot; warning.
+  * Hopefully fix building with OpenWatcom.
+  * Generate a warning, promoted to error by default, on the use of o64 prefixes in
+    16- or 32-bit mode. If demoted to a warning or suppressed the prefix is ignored, but
+    likely will trigger subsequent, harder to debug, error messages.
+  * More consistent handling of jump and call instructions with specified operand sizes.
+  * Fix an operand size handling bug in the CMPXCHG instruction.
+
+- Update to 3.00:</comment>
+    <requestid>1329879</requestid>
+  </revision>
 </revisionlist>
