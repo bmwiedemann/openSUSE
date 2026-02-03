@@ -1,0 +1,5 @@
+<package name="python-ncompress" project="openSUSE:Factory">
+  <title>LZW compression and decompression in Python and C++</title>
+  <description>Ported with minimal changes from the (N)compress CLI tool.</description>
+  <url>https://github.com/valgur/ncompress</url>
+</package>
