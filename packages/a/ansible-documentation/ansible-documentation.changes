@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jan 30 08:27:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.20.2:
+  * remove stale release managers page (#3449) (#3452)
+  * ci: refresh dev dependencies (#3443)
+  * cache: disclaimer for using cache (#3168) (#3441)
+  * Update installation_distros.rst (#3435) (#3438)
+  * Update porting guide about undefined variable error (#3202)
+    (#3432)
+  * Update pipx inject commands for Ansible (#3396) (#3434)
+  * ci: refresh dev dependencies (#3425)
+  * ci: refresh dev dependencies (#3419)
+  * Adjust wording in set theory section (#3380) (#3417)
+  * Remove locales (#3373) (#3414)
+  * developing_collections_creating.rst: fix min namespace /
+    collection name length specified (#3407) (#3410)
+  * ci: refresh dev dependencies (#3401)
+  * Update installation_distros.rst (#3393) (#3400)
+  * [stable-2.20] ci: refresh dev dependencies (#3388)
+  * Add the Ansible community 13.2.0 porting guide (#3397) (#3398)
+  * Update role commands in galaxy dev_guide (#3372) (#3385)
+  * Remove deprecated action/local_action syntax (#3352) (#3384)
+  * ci: refresh dev dependencies (#3374)
+  * Fix typo (#3362) (#3367)
+  * Misc typo fix (#3363) (#3369)
+  * Add the Ansible community 11.13.0 porting guide (#3355) (#3361)
+  * Add the Ansible community 12.3.0 porting guide (#3356) (#3360)
+  * Add the Ansible community 13.1.0 porting guide (#3353) (#3354)
+
+-------------------------------------------------------------------
 Thu Dec 11 08:56:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.20.1:
