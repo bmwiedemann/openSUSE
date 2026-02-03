@@ -17,9 +17,9 @@
 
 
 Name:           nauty
-%define lname   libnauty-2_9_1
-%define fuv     2_9_1
-Version:        2.9.1
+%define lname   libnauty-2_9_3
+%define fuv     2_9_3
+Version:        2.9.3
 Release:        0
 Summary:        Tools for computing automorphism groups of graphs
 License:        Apache-2.0

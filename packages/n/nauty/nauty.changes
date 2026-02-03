@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Feb  3 16:45:02 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.9.3
+  * The `-r` and `-R` switches in complg were badly broken for a
+    long time. The core functionality of complg was fine, however.
+    As well as fixing this problem, complg has a new switch `-S`
+    that outputs only the input graphs that are self-complementary.
+  * vcolg has a new switch ``-F#`` that says to use the group that
+    fixes the first n(#) vertices setwise and also to use only
+    colour 0 on the first n vertices.
+  * genrang has a new switch `-G#` that provides an approximation
+    of random unlabelled graphs. The greater the parameter, the
+    better the approximation and the worse the efficiency. In
+    particular graphs whose automorphism groups have order at most
+    # come out in the correct relative proportions.
+  * uniqg has a new switch `-J` that writes 32-byte hash codes as
+    lines ending with LF newline. Note that it is still binary, but
+    now it is good for sorting.
+  * A labelling error with Traces when an initial partition is
+    specified was corrected. A minor standards violation with
+    memcpy was also fixed.
+  * `cubhamg -V -c` now displays all hamiltonian cycles. In
+    addition, cubhamg has a facility for user-written code to be
+    called for each cycle.
+
+-------------------------------------------------------------------
 Sat Oct 11 18:46:48 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.9.1

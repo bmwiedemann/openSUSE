@@ -7,14 +7,14 @@ Partly based on Debian's upstream-autotoolization.patch.
 `./configure --enable-generic` is broken: still uses -march=native.
 Rewrite in automake.
 ---
- Makefile.am  |  123 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Makefile.am  |  124 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  configure.ac |   11 ++++-
- 2 files changed, 132 insertions(+), 2 deletions(-)
+ 2 files changed, 133 insertions(+), 2 deletions(-)
 
-Index: nauty2_9_1/Makefile.am
+Index: nauty2_9_3/Makefile.am
 ===================================================================
 --- /dev/null
-+++ nauty2_9_1/Makefile.am
++++ nauty2_9_3/Makefile.am
 @@ -0,0 +1,124 @@
 +ACLOCAL_AMFLAGS = -I m4
 +bin_PROGRAMS = addedgeg amtog assembleg biplabg catg checks6 complg converseg copyg \
@@ -140,13 +140,13 @@ Index: nauty2_9_1/Makefile.am
 +libnautyW1_la_SOURCES  = ${libnauty_la_SOURCES}
 +libnautyW1_la_LIBADD   = -lpthread
 +libnautyW1_la_LDFLAGS  = ${libnauty_la_LDFLAGS}
-Index: nauty2_9_1/configure.ac
+Index: nauty2_9_3/configure.ac
 ===================================================================
---- nauty2_9_1.orig/configure.ac
-+++ nauty2_9_1/configure.ac
+--- nauty2_9_3.orig/configure.ac
++++ nauty2_9_3/configure.ac
 @@ -1,6 +1,12 @@
  # Process this file with autoconf to produce a configure script.
- AC_INIT([nauty],[2.9.1],[brendan.mckay@anu.edu.au])
+ AC_INIT([nauty],[2.9.3],[brendan.mckay@anu.edu.au])
  AC_CONFIG_SRCDIR([nauty-h.in])
 +AC_CONFIG_AUX_DIR([build-aux])
 +AC_CONFIG_MACRO_DIR([m4])
@@ -174,9 +174,9 @@ Index: nauty2_9_1/configure.ac
  
  dnl Checks for library functions.
  AC_CHECK_FUNC(isatty,have_isatty=1,have_isatty=0)
-@@ -571,7 +578,7 @@ AC_SUBST(have_gunzip)
- 
- LT_INIT
+@@ -577,7 +584,7 @@ AS_IF([test "x$enable_static" = "xyes"],
+ AC_SUBST([osuffix])
+ AC_SUBST([olist])
  
 -AC_CONFIG_FILES([makefile:makefile.in nauty.h:nauty-h.in
 +AC_CONFIG_FILES([Makefile nauty.h:nauty-h.in
