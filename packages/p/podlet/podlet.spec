@@ -1,7 +1,7 @@
 #
 # spec file for package podlet
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,19 @@
 
 
 Name:           podlet
-Version:        0.3.0~0
+Version:        0.3.1~0
 Release:        0
 Summary:        Podman quadlet generator
 License:        MPL-2.0
 URL:            https://github.com/containers/podlet/
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+BuildRequires:  cargo >= 1.85
 BuildRequires:  cargo-packaging
 
 %description
-Podlet generates podman quadlet files from a podman command, compose file, or existing object.
+Podlet generates podman quadlet files from a podman command, compose file, or
+existing object.
 
 %prep
 %autosetup -p1 -a1
