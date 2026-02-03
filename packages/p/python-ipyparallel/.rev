@@ -404,4 +404,378 @@
   * 9.0.1 fixes compatibility with IPython 9.0.</comment>
     <requestid>1287580</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>aa3acf4c1eac3b92c4dae2cab01c9509</srcmd5>
+    <version>9.0.2</version>
+    <time>1770150851</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.0.2:
+  * 9.0.2 fixes compatibility with upcoming ipykernel 7 (as of
+    alpha 3).
+- Update to 9.0.1
+  * 9.0.1 fixes compatibility with IPython 9.0.
+- Update to 9.0.0
+  ## Fixes:
+  * Fix for background-thread output going to the wrong cell in a
+    notebook.
+  ## Other changes:
+  * Compatibility fixes for upcoming ipykernel 7 (ipykernel 6.9.1
+    is now required)
+  * JupyterLab extension dependencies are updated from 3.x to
+    JupyterLab 4.3
+  * Use importlib.metadata instead of deprecated entrypoints (no
+    effect for users)
+- Update to 8.8.0
+  ## New:
+  * BroadcastView.map is defined for API compatibility, but is not
+    particularly efficient or recommended.
+  ## Fixed:
+  * AsyncResult.join is fixed.
+  ## Improved:
+  * Performance optimization disabling timestamp parsing in
+    jupyter_client is not applied until ipyparallel classes are
+    instantiated, rather than at import time.
+- Update to 8.7.0
+  * 8.7 is a small release, with a few improvements and updates,
+    mostly related to compatibility with different versions of
+    JupyterLab, Notebook, and Jupyter Server.
+  ## Highlights:
+  * JupyterLab 4 compatibility for the lab extension
+  * Improved logging and deprecation messages for different
+    versions of Jupyter Server and Notebook
+  ## New features added
+  * Update labextension to jupyterlab 4 #833 (@minrk)
+  * add ControllerLauncher.connection_info_timeout config #872
+    (@minrk)
+  ## Enhancements made
+  * log launcher output at warning-level in case of nonzero exit
+    code #866 (@minrk)
+  * improve deprecation messaging around ipcluster nbextension
+    #835 (@minrk)
+  ## Bugs fixed
+  * Use pre-3.10 serialization code on PyPy3.10 #846 (@mgorny,
+    @minrk)
+  * fallback import when using notebook and jupyter_server is
+    unavailable #808 (@minrk)
+  * don't propagate logs in IPython #797 (@minrk)
+- Drop ipyparallel-pr859-utcnow-deprecation.patch
+- Skip python39: no longer supported since ipython 8.19
+- Add ipyparallel-pr859-utcnow-deprecation.patch for Python 3.12
+  gh#ipython/ipyparallel#859
+- Jupyterlab does not require notebook &lt; 7 anymore
+- Update to 8.6.1
+  * avoid errors when engine id cannot be identified #793 (@minrk)
+  * Disable variable expansion in %px #792 (@minrk)
+  * fix wait_interactive(return_when=FIRST_EXCEPTION) when there
+    are no errors #790 (@minrk)
+- Release 8.6.0
+  * Fix KeyError on parent_header when streaming output with %%px
+  * Allow disabling streaming/progress defaults with
+    IPP_NONINTERACTIVE=1 environment variable (e.g. when building
+    notebooks in documentation)
+- Update to 8.5.1
+  * Fix error preventing creation of new profiles via the lab
+    extension
+- Release 8.5.0
+  * Updates dependencies in jupyterlab extension to jupyterlab 3.6
+  * fix ResourceWarnings about closed clusters
+  * Avoid some deprecated APIs in jupyter-client and pyzmq
+- Drop ipyparallel-pr729+pr753-deprecationfilters.patch
+- Add deprecation warnings filters
+  * ipyparallel-pr729+pr753-deprecationfilters.patch
+  * gh#ipython/ipyparallel#729
+  * gh#ipython/ipyparallel#753
+- Update to version 8.4.1
+  * add support for Python 3.11
+- Release 8.4.0
+  * (%px) only skip redisplay of streamed errors if outputs are
+    complete
+  * Avoid use of recently deprecated asyncio/tornado APIs around
+    'current' event loops that are not running.
+  * Switch to hatch backend for packaging
+- Release 8.3.0
+  * Workaround SSL issues with recent builds of nodejs + webpack
+  * Build with flit, removing setup.py
+  * Remove remaining references to deprecated distutils package
+    (has surprising impact on process memory)
+  * Improve logging when engine registration times out
+- Release 8.2.1
+  * Fixes some compatibility issues with latest dask, ipykernel,
+    and setuptools, as well as some typos and improved
+    documentation.
+- Skip flaky tests
+- Fix non-rewritten obsoletes and remove incorrect provides in
+  jupyter extension package
+- update to version 8.2.0:
+  * Changes:
+    + len(AsyncMapResult) and progress ports now use the number of
+      items in the map, not the number of messages.
+  * Enhancements:
+    + Show output prior to errors in %%px
+  * Bugs fixed:
+    + Fix cases where engine id could be -1 in tracebacks
+    + Add missing pbs to engine launcher entrypoints
+- Update to 8.1.0
+  * 8.1.0 is a small release, adding a few new features and
+    bugfixes.
+  * relay KeyboardInterrupt to engines in blocking `%px` magics
+  * add `Cluster.start_and_connect(activate=True)` to include
+    activation of `%px` magics in one-liner startup.
+  * initial support for Clusters tab in RetroLab
+  * ensure profile config is always loaded for
+    `Cluster(profile=&quot;xyz&quot;)`
+  * build lab extension in production mode, apply trove classifiers
+  * pass through keyword arguments to constructor in
+    `Client.broadcast_view`
+- Don't require iptest for testing anymore, removed in ipython 8
+- Skip flaky imap_infinite test
+- Update to 8.0.0
+  * This is marked as a major revision because of the change to
+    pass connection information via environment variables.
+    BatchSystem launchers with a custom template will need to make
+    sure to set flags that inherit environment variables, such as
+    #PBS -V or #SBATCH --export=ALL.
+  * More convenient Cluster(engines=&quot;mpi&quot;) signature for setting
+    the engine (or controller) launcher class.
+  * The first (and usually only) engine set can be accessed as
+    .Cluster.engine_set, rather than digging through the
+    Cluster.engines dict.
+  * Add environment configuration to all Launchers.
+  * Support more configuration via environment variables, including
+    passing connection info to engines via $IPP_CONNECTION_INFO,
+    which is used by default, avoiding the need to send connection
+    files to engines in cases of non-shared filesystems.
+  * Launchers send connection info to engines via
+    $IPP_CONNECTION_INFO by default. This is governed by
+    Cluster.send_engines_connection_env, which is True by default.
+  * Support EngineLauncher.get_output via output files in batch
+    system launchers
+  * Capture output in Batch launchers by setting output file
+    options in the default templates.
+  * LoadBalancedView.imap returns a LazyMapIterator which has a
+    .cancel() method, for stopping consumption of the map input.
+  * Support for return_when argument in .AsyncResult.wait and
+    ~.AsyncResult.wait_interactive, to allow returning on the first
+    error, first completed, or (default) all completed.
+  * LoadBalancedView.imap(max_outstanding=n) limits the number of
+    tasks submitted to the cluster, instead of limiting the number
+    not-yet-consumed. Prior to this, the cluster could be idle if
+    several results were waiting to be consumed.
+  * output streamed by %%px includes errors and results, for
+    immediate feedback when only one engine fails.
+  * Various bugs preventing use of non-default Controller launchers
+  * Fixed crash in jupyterlab extension when IPython directory does
+    not exist
+  * ViewExecutor.shutdown() waits for imap results, like Executors
+    in the standard library
+  * Removed spurious jupyterlab plugin options that had no effect.
+  * %autopx streams output just like %%px
+  * Add BroadcastView benchmark code
+  * Tag releases with tbump
+- Update to 7.1.0
+  * New Client.start_and_connect() method for starting a cluster
+    and returning a connected client in one call.
+  * Support CurveZMQ for transport-level encryption and
+    authentication. See security docs for more info.
+  * Define _max_workers attribute on view.executor for better
+    consistency with standard library Executors.
+  * Client.wait_for_engines() will raise an informative error if
+    the parent Cluster object notices that its engines have halted
+    while waiting, or any engine unregisters, rather than
+    continuing to wait for engines that will never come
+  * Show progress if %px is taking significant time
+  * Improved support for streaming output, e.g. with %px, including
+    support for updating output in-place with standard terminal
+    carriage-return progress bars.
+  * Fix dropped IOPub messages when using large numbers of engines,
+    causing AsyncResult.wait_for_output() to hang.
+  * Use absolute paths for Cluster.profile_dir, fixing issues with
+    Cluster.from_file() when run against a profile created with a
+    relative location, e.g. Cluster(profile_dir=&quot;./profile&quot;)
+  * Fix error waiting for connection files when controller is
+    started over ssh.
+- Release 7.0.1
+  * Fix missing setupbase.py in tarball
+- Release 7.0.0
+  * Require Python 3.6
+  * Fix compatibility issues with ipykernel 6 and jupyter-client 7
+  * Remove dependency on deprecated ipython-genutils
+  * New dependencies on psutil, entrypoints, tqdm
+  * New Cluster API for managing clusters from Python, including
+    support for signaling and restarting engines. See docs for
+    more.
+  * New ipcluster list and ipcluster clean commands derived from
+    the Cluster API.
+  * New Client.send_signal() for sending signals to single engines.
+  * New KernelNanny process for signaling and monitoring engines
+    for improved responsiveness of handing engine crashes.
+  * New prototype BroadcastScheduler with vastly improved scaling
+    in ‘do-on-all’ operations on large numbers of engines, c/o
+    Tom-Olav Bøyum’s Master’s thesis at University of Oslo.
+    Broadcast view documentation.
+  * New Client.wait_for_engines() method to wait for engines to be
+    available.
+  * Nicer progress bars for interactive waits, such as
+    AsyncResult.wait_interactive().
+  * Add AsyncResult.stream_output() context manager for streaming
+    output. Stream output by default in parallel magics.
+  * Launchers registered via entrypoints for better support of
+    third-party Launchers.
+  * New JupyterLab extension (enabled by default) based on
+    dask-labextension for managing clusters.
+  * LoadBalancedView.imap() consumes inputs as-needed, producing a
+    generator of results instead of an AsyncMapResult, allowing for
+    consumption of very large or infinite mapping inputs.
+  * Greatly improved performance of heartbeat and registration with
+    large numbers of engines, tested with 5000 engines and default
+    configuration.
+  * Single IPController.ports configuration to specify the pool of
+    ports for the controller to use, e.g. ipcontroller --ports
+    10101-10120.
+  * Allow f as keyword-argument to apply, e.g. view.apply(myfunc,
+    f=5).
+  * joblib backend will start and stop a cluster by default if the
+    default cluster is not running.
+- Go back to PyPI tarball
+- Update to final 6.3.0
+  * **Require Python 3.5**
+  * Fix compatibility with joblib 0.14
+  * Fix crash recovery test for Python 3.8
+  * Fix repeated name when cluster-id is set
+  * Fix CSS for notebook extension
+  * Fix KeyError handling heartbeat failures
+- Drop the doc subpackage, the package can be found on readthedocs
+- Drop py2 code from py3 only package
+- Switch to git scm service
+- Update to version 6.3.0~git.20191010T150914.ce996ae:
+  * fix maybe_future
+  * only yield Futures
+  * pytest captures output
+  * importing joblib can raise TypeError on py38
+  * unpin tornado
+  * update dask api
+  * update mocking for latest ipykernel
+  * Use unittest.mock if available
+- Drop python2 support due to python-notebook dropping python2 support
+- Fix spurious test failure
+- Switch from wheel to sdist.
+- Update to 6.2.4
+  * Improve compatibility with ipykernel 5
+  * Fix %autopx with IPython 7
+  * Fix non-local ip warning when using current hostname
+- Rename to to match python package naming guidelines.
+- Split jupyter components into own subpackage.
+- Update to 6.2.3
+  * Fix compatibility for execute requests with ipykernel 5
+  * require ipykernel &gt;= 4.4
+- Update to 6.2.2
+  * Fix compatibility with tornado 4, broken in 6.2.0
+  * Fix encoding of engine and controller logs in ipcluster --debug on Python 3
+  * Fix compatiblity with joblib 0.12
+  * Include LICENSE file in wheels
+- Update to version 6.2.1
+  * Workaround a setuptools issue preventing installation from sdist on Windows
+- Update to version 6.2.0
+  * Drop support for Python 3.3. IPython parallel now requires Python 2.7 or &gt;= 3.4.
+  * Further fixes for compatibility with tornado 5 when run with asyncio (Python 3)
+  * Fix for enabling clusters tab via nbextension
+  * Multiple fixes for handling when engines stop unexpectedly
+  * Installing IPython Parallel enables the Clusters tab extension by default, without any additional commands.
+- Switch to wheel-based install
+- Run tests in main package
+- Remove -doc subpackage and use upstream-build docs
+- Update to 6.1.1
+  * Fix regression in 6.1.0 preventing BatchSpawners (PBS, etc.) from launching with ipcluster.
+- Update to 6.1.0
+  + Compatibility fixes with related packages:
+    * Fix compatibility with pyzmq 17 and tornado 5.
+    * Fix compatibility with IPython ≥ 6.
+    * Improve compatibility with dask.distributed ≥ 1.18.
+  + New features:
+    * Add :attr:`namespace` to BatchSpawners for easier extensibility.
+    * Support serializing partial functions.
+    * Support hostnames for machine location, not just ip addresses.
+    * Add ``--location`` argument to ipcluster for setting the controller location.
+      It can be a hostname or ip.
+    * Engine rank matches MPI rank if engines are started with ``--mpi``.
+    * Avoid duplicate pickling of the same object in maps, etc.
+- Update url
+- Further improvements to notebook extension handling
+- Fix notebook extension handling
+- Fix script interpeter.
+- Implement single-spec version.
+- Clean up update-alternatives usage.
+- Update to 6.0.2
+  * Upload fixed sdist for 6.0.1.
+- Update to 6.0.1
+  * Small encoding fix for Python 2.
+- Update to 6.0
+  * Due to a compatibility change and semver, this is a major release. However, it is not a big release.
+  * The main compatibility change is that all timestamps are now timezone-aware UTC timestamps.
+  * This means you may see comparison errors if you have code that uses datetime objects without timezone info (so-called naïve datetime objects).
+  *  Rename :meth:`Client.become_distributed` to :meth:`Client.become_dask`.
+    :meth:`become_distributed` remains as an alias.
+  *  import joblib from a public API instead of a private one
+    when using IPython Parallel as a joblib backend.
+  *  Compatibility fix in extensions for security changes in notebook 4.3
+- Update to 5.2
+  *  Fix compatibility with changes in ipykernel 4.3, 4.4
+  *  Improve inspection of ``@remote`` decorated functions
+  *  :meth:`Client.wait` accepts any Future.
+  *  Add ``--user`` flag to :command:`ipcluster nbextension`
+  *  Default to one core per worker in :meth:`Client.become_distributed`.
+    Override by specifying `ncores` keyword-argument.
+  *  Subprocess logs are no longer sent to files by default in :command:`ipcluster`.
+- Update to 5.1
+  * IPython Parallel 5.1 adds integration with other parallel computing tools,
+    such as `dask.distributed &lt;https://distributed.readthedocs.io&gt;`_ and `joblib &lt;https://pythonhosted.org/joblib&gt;`__.
+  * IPython parallel now supports the notebook-4.2 API for enabling server extensions,
+    to provide the IPython clusters tab
+      jupyter serverextension enable --py ipyparallel
+      jupyter nbextension install --py ipyparallel
+      jupyter nbextension enable --py ipyparallel
+    though you can still use the more convenient single-call::
+      ipcluster nbextension enable
+    which does all three steps above.
+  * `Slurm &lt;https://computing.llnl.gov/tutorials/linux_clusters&gt;`_ support is added to ipcluster.
+- Update to 5.0.1
+  *  Fix imports in :meth:`use_cloudpickle`, :meth:`use_dill`.
+  *  Various typos and documentation updates to catch up with 5.0.
+- specfile:
+  * update copyright year
+- update to version 5.0.0:
+  * The highlight of ipyparallel 5.0 is that the Client has been
+    reorganized a bit to use Futures. AsyncResults are now a Future
+    subclass, so they can be `yield`ed in coroutines, etc. Views have
+    also received an Executor interface. This rewrite better connects
+    results to their handles, so the Client.results cache should no
+    longer grow unbounded.
+    + The Executor API :class:`ipyparallel.ViewExecutor`
+    + Creating an Executor from a Client:
+      :meth:`ipyparallel.Client.executor`
+    + Each View has an :attr:`executor` attribute
+  * Part of the Future refactor is that Client IO is now handled in a
+    background thread, which means that :meth:`Client.spin_thread` is
+    obsolete and deprecated.
+  * Other changes:
+    + Add :command:`ipcluster nbextension enable|disable` to toggle
+    the clusters tab in Jupyter notebook
+  * Less interesting development changes for users: Some
+    IPython-parallel extensions to the IPython kernel have been moved
+    to the ipyparallel package:
+    + :mod:`ipykernel.datapub` is now :mod:`ipyparallel.datapub`
+    + ipykernel Python serialization is now in
+      :mod:`ipyparallel.serialize`
+    + apply_request message handling is implememented in a Kernel
+      subclass, rather than the base ipykernel Kernel.
+- update to version 4.1.0:
+  * Add :meth:`.Client.wait_interactive`
+  * Improvements for specifying engines with SSH launcher.
+- Split documentation into own subpackage to speed up builds.
+- Build documentation
+- Fix conflict.
+- Initial version
+</comment>
+    <requestid>1330719</requestid>
+  </revision>
 </revisionlist>
