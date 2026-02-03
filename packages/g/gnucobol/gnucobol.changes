@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Mon Feb  2 16:30:56 UTC 2026 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update keyring from the latest version from gnu ftp server
+
+-------------------------------------------------------------------
+Sat Jan 17 11:11:05 UTC 2026 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to 3.2
+  * improved dialect handling including changed defaults to better match 
+    the selected dialect
+  * a complete new dialect GCOS and support for more COBOL statements
+  * intrinsic functions and syntax from both "old" and new dialects
+  * highly improved run-times for several statements, 
+    along with less memory usage, especially if runtime checks are enabled
+  * fileio changes to support LINE-SEQUENTIAL per COBOL2023 and 
+    runtime options to change the way files are handled, 
+    see NEWS and runtime.cfg
+  * improvements for source-level debugging via GDB and coredump support
+  * output of context for diagnostics
+  * improvements for reproducible builds
+- Change download resources to gnu ftp for more stable source
+- Add patch move_packed_decimal.patch
+- Remove mlio.c in gnucobol-3.1.2-C99.diff 
+- Remove fix_test_698.patch 
+- Add patch fix-errno.patch 
+- Add newcob.val.tar.gz  for fixing download of value data for tests
+- Add gnucobol-esql-3.0
+  * ESQL preprocessor (esqlOC) relies on ODBC for access to a variety 
+    of SQL engines 
+- Renaming from gnu-cobol to gnucobol
+
+-------------------------------------------------------------------
+Sat Oct 25 19:43:42 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix build errors with GCC 15
+
+-------------------------------------------------------------------
+Wed Jul 24 13:48:02 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add gnucobol-3.1.2-C99.diff to add missing includes of
+  libxml/parser.h which cause GCC 14 to emit compiler error rather
+  than a warning.
+
+- Add -Wno-error=incompatible-pointer-types to optflags so that GCC 14
+  can compile test 0987 without failing with an error.
+
+-------------------------------------------------------------------
+Sat Jul 15 18:11:27 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Move libcob-devel files to gnucobol.lang because libcob.h can not be found 
+  (boo#1209438)
+
+-------------------------------------------------------------------
+Wed Dec 23 17:43:58 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.1.2 (see NEWS or ChangeLog for details)
+- Drop gnucobol-CFLAGS.patch (no longer needed)
+- Add fix_test_698.patch and enable hardening
+- Add buildtime requirements for libjson-c and libxml2
+- Disable lto to avoid test failure
+
+-------------------------------------------------------------------
+Fri Jul 27 09:14:34 UTC 2018 - jengelh@inai.de
+
+- Trim redundancies from description.
+
+-------------------------------------------------------------------
+Sat May 12 05:05:29 UTC 2018 - aloisio@gmx.com
+
+- Enable parallel build and tests
+
+-------------------------------------------------------------------
+Tue May  8 22:14:34 UTC 2018 - aloisio@gmx.com
+
+- Update to version 3.0rc1, stabler than 2.2 final
+  (see NEWS or ChangeLog for details)
+- Refreshed gnucobol-CFLAGS.patch
+- Switched source URL to sourceforge to get the latest tarball
+- Fixed description
+- Enabled tests
+
+-------------------------------------------------------------------
+Thu Sep  7 19:42:36 UTC 2017 - aloisio@gmx.com
+
+- Update to version 2.2 (see NEWS or ChangeLog)
+- Switched license to GPL-3.0+/LGPL-3.0+
+- Updated source URL and homepage on account of being accepted
+  into the GNU Project
+- Added gnucobol-CFLAGS.patch
+- Dropped types.diff (apparently no longer necessary)
+
+-------------------------------------------------------------------
+Mon Apr  6 15:00:39 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Use url for source
+- Update info dependencies
+- Use macro for locale handling
+- Do not create static library
+
+-------------------------------------------------------------------
+Wed Jul 16 16:32:55 UTC 2014 - dvlaeev@suse.com
+
+- Fix SLE11 builds by defining buildroot 
+
+Wed Apr 30 00:00:00 UTC 2014 - MihailJP
+
+- First packaging
+
+
