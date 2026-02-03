@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Tue Feb  3 08:09:10 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add fix-async-tests.patch to fix async tests with latest pytest
+- Skip more tests that are failing in the latest version
+- Migrate to libalternatives for Tumbleweed and leap 16.0
+
+-------------------------------------------------------------------
+Sun Feb  1 07:00:17 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 12.2.1:
+  * Make TCP inactivity timeout configurable through a new `tcp_timeout` option (default: 600 seconds).  * Previously, the timeout was hardcoded to 10 minutes for all TCP connections.
+  * Flush flow file after each flow to allow further processing.
+  * infer_content_encoding: Fallback to UTF-8 for more content types
+  * Remove `bless` from hex editors to avoid issues with macOS
+  * Improves `is_mostly_bin` check to support chinese characters
+  * Fix various issues in infer_content_encoding
+  * Add example addon to spoof DNS responses.
+  * Gracefully handle decoding of raw binary payloads that previously caused   * "Raw cannot decode" or "failed to parse as JSON" errors
+  * Show query parameters for empty-body requests in the mitmproxy console.
+  * mitmweb is now built with Vite, improving the development workflow.
+  * Fix URL of mitmweb when --web-host is an IPv6 address.
+  * Fix event loop leak when running tests
+  * Fix TypeScript build by adding React types and removing obsolete `@ts-expect-error` directives.
+  * mitmproxy now supports Python 3.14. Binary releases ship with 3.14 by default.
+  * Replace `htpasswd` file parser with a custom implementation to migrate off unmaintained  * `passlib` dependency. The new parser only supports bcrypt and SHA-1 hashing.  * Contributions for additional formats are welcome as long as they don't introduce new  * dependencies.
+  * Docker images are now build with Debian Trixie.
+  * Fix mitmweb auth cookie always using the default `web_port` option.
+  * fix: missing content-length header in curl export
+  * fix: update log message with correct header name
+  * Update deprecated `windows-2019` runner to `windows-2025`.
+  * Do not escape non-ascii characters in the JSON contentview.
+  * Fix crash in mitmweb when no explicit Server-Connection is logged.
+  * Add syntax highlighting for CSS and JavaScript contentviews.
+  * Display local timezone in the Timing tab of mitmweb.
+  * Prevent showing the quit message in the console when no flows are available under specific configurations.  * Upgrade hyper-h2 to fix a request smuggling vulnerability that affects mitmproxy's  * HTTP/2 -> HTTP/1 translation. (@mhils)
+  * Fix a race condition when updating the flow list in mitmweb.
+  * mitmweb now supports filtering by body contents (~b, ~bq, ~bs).
+  * Fix raw response export incorrectly zeroing non-zero `Content-Length` header for HEAD requests.
+  * Fix concurrent mitmweb instances overwrite each other's auth cookie.
+  * Fix a crash when editing raw messages bodies in mitmproxy.
+  * Added an option to pass the web token as `Authentication: Bearer ...` header
+  * In DNS proxy mode, user-provided addons now trigger before DNS resolution has taken place.
+  * Contentviews can now be interactive and re-encode prettified data.  * For example, the new Protobuf view pretty-prints to YAML, which the user  * can edit and then re-serialize into binary representation.
+  * Replace the existing gRPC and Protobuf contentviews with an interactive contentview that  * supports both existing proto definitions and completely unknown protos.
+  * The MsgPack contentview is now interactive, too.
+  * The contentview API has been drastically simplified.  * Contentviews now return a plain `str` with the prettified data.  * Syntax highlighting is now signaled off-band (and based on [tree-sitter]).
+  * Docs: Add new documentation page and API reference for contentviews.
+  * Contentviews can now be written in Rust for better performance and access to  * the crates ecosystem.
+  * Add a new feature to store streamed bodies for requests and responses.
+  * Add support for TLS 1.3 Post Handshake Authentication.
+  * Add search functionality to the documentation.
+  * Introduce a new theme for docs.mitmproxy.org.
+  * Add CRL entries to dummy cert when the upstream certificate has some.
+  * Fix a bug where mitmproxy would incorrectly send empty HTTP/2 data frames.
+  * Enhance homebrew installation command for Brewfile users.
+  * Fix a bug where mitmdump would exit prematurely in server replay mode.
+  * Fix a bug where WebSocket Messages view jumps to top when a message is received
+  * Create content view for Socket.IO over WebSocket transport
+  * Correctly forward HTTP_1_1_REQUIRED errors in HTTP/2 streams.
+  * Fix a bug where HAR export would crash for malformed flows.
+  * Fix a bug where mitmweb would crash when viewing flows with undefined headers.
+  * Fix a bug where mitmproxy does not listen on IPv4 and IPv6 by default in wireguard mode.
+  * Adjust popover placement for browsers that support anchor positioning (Chrome, Edge)
+  * Fix mitmweb crash when searching or highlighting using ~h, ~hq, or ~hs.
+  * `mitmproxy.dns.Message` has been renamed to `mitmproxy.dns.DNSMessage`
+  * Added support for selecting multiple flows in mitmweb using Ctrl+Click and Shift+Click. Multi-selection is now supported for deleting, duplicating, marking, reverting, replaying ,resuming, and aborting flows.
+  * Update mitmproxy_rs dependency to fix several bugs in local capture mode.
+  * Add documentation for local capture mode.
+  * Revise documentation on proxy modes.
+  * Add a log message to point Docker mitmweb users towards `web_password`.
+  * Fix a bug where UTF-8 surrogates would crash the export addon.
+  * Add help entries for all options in mitmweb that didn't have them.
+
+-------------------------------------------------------------------
 Mon Feb 10 04:57:07 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 11.1.2:

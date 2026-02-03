@@ -1,0 +1,1203 @@
+Index: mitmproxy-12.2.1/test/mitmproxy/addons/test_asgiapp.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/addons/test_asgiapp.py
++++ mitmproxy-12.2.1/test/mitmproxy/addons/test_asgiapp.py
+@@ -1,3 +1,4 @@
++import pytest
+ import asyncio
+ import json
+ 
+@@ -43,6 +44,7 @@ async def noresponseapp(scope, receive,
+     return
+ 
+ 
++@pytest.mark.asyncio
+ async def test_asgi_full(caplog):
+     ps = Proxyserver()
+     addons = [
+Index: mitmproxy-12.2.1/test/mitmproxy/addons/test_block.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/addons/test_block.py
++++ mitmproxy-12.2.1/test/mitmproxy/addons/test_block.py
+@@ -53,6 +53,7 @@ from mitmproxy.test import taddons
+         (False, True, False, ("2001:4860:4860::8888",)),
+     ],
+ )
++@pytest.mark.asyncio
+ async def test_block_global(block_global, block_private, should_be_killed, address):
+     ar = block.Block()
+     with taddons.context(ar) as tctx:
+@@ -62,6 +63,7 @@ async def test_block_global(block_global
+         assert bool(client.error) == should_be_killed
+ 
+ 
++@pytest.mark.asyncio
+ async def test_ignore_local_mode():
+     """At least on macOS, local mode peername may be the client's public IP."""
+     ar = block.Block()
+Index: mitmproxy-12.2.1/test/mitmproxy/addons/test_browser.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/addons/test_browser.py
++++ mitmproxy-12.2.1/test/mitmproxy/addons/test_browser.py
+@@ -1,3 +1,4 @@
++import pytest
+ from unittest import mock
+ 
+ from mitmproxy.addons import browser
+@@ -27,6 +28,7 @@ def test_browser(caplog):
+         assert not b.browser
+ 
+ 
++@pytest.mark.asyncio
+ async def test_no_browser(caplog):
+     caplog.set_level("INFO")
+     with mock.patch("shutil.which") as which:
+@@ -37,18 +39,21 @@ async def test_no_browser(caplog):
+         assert "platform is not supported" in caplog.text
+ 
+ 
++@pytest.mark.asyncio
+ async def test_find_executable_cmd():
+     with mock.patch("shutil.which") as which:
+         which.side_effect = lambda cmd: cmd == "chrome"
+         assert browser.find_executable_cmd("chrome") == ["chrome"]
+ 
+ 
++@pytest.mark.asyncio
+ async def test_find_executable_cmd_no_executable():
+     with mock.patch("shutil.which") as which:
+         which.return_value = False
+         assert browser.find_executable_cmd("chrome") is None
+ 
+ 
++@pytest.mark.asyncio
+ async def test_find_flatpak_cmd():
+     def subprocess_run_mock(cmd, **kwargs):
+         returncode = 0 if cmd == ["flatpak", "info", "com.google.Chrome"] else 1
+@@ -68,6 +73,7 @@ async def test_find_flatpak_cmd():
+         ]
+ 
+ 
++@pytest.mark.asyncio
+ async def test_find_flatpak_cmd_no_flatpak():
+     with (
+         mock.patch("shutil.which") as which,
+@@ -78,6 +84,7 @@ async def test_find_flatpak_cmd_no_flatp
+         assert browser.find_flatpak_cmd("com.google.Chrome") is None
+ 
+ 
++@pytest.mark.asyncio
+ async def test_browser_start_firefox():
+     with (
+         mock.patch("shutil.which") as which,
+@@ -89,6 +96,7 @@ async def test_browser_start_firefox():
+         assert po.called
+ 
+ 
++@pytest.mark.asyncio
+ async def test_browser_start_firefox_not_found(caplog):
+     caplog.set_level("INFO")
+     with mock.patch("shutil.which") as which:
+Index: mitmproxy-12.2.1/test/mitmproxy/addons/test_clientplayback.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/addons/test_clientplayback.py
++++ mitmproxy-12.2.1/test/mitmproxy/addons/test_clientplayback.py
+@@ -56,6 +56,7 @@ async def tcp_server(handle_conn, **serv
+ 
+ @pytest.mark.parametrize("mode", ["http", "https", "upstream", "err"])
+ @pytest.mark.parametrize("concurrency", [-1, 1])
++@pytest.mark.asyncio
+ async def test_playback(tdata, mode, concurrency):
+     async def handler(reader: asyncio.StreamReader, writer: asyncio.StreamWriter):
+         if mode == "err":
+@@ -123,6 +124,7 @@ async def test_playback(tdata, mode, con
+         await cp.done()
+ 
+ 
++@pytest.mark.asyncio
+ async def test_playback_https_upstream():
+     async def handler(reader: asyncio.StreamReader, writer: asyncio.StreamWriter):
+         conn_req = await reader.readuntil(b"\r\n\r\n")
+@@ -153,6 +155,7 @@ async def test_playback_https_upstream()
+         await cp.done()
+ 
+ 
++@pytest.mark.asyncio
+ async def test_playback_crash(monkeypatch, caplog_async):
+     async def raise_err(*_, **__):
+         raise ValueError("oops")
+@@ -191,6 +194,7 @@ def test_check():
+         assert "Can only replay HTTP" in cp.check(f)
+ 
+ 
++@pytest.mark.asyncio
+ async def test_start_stop(tdata, caplog_async):
+     cp = ClientPlayback()
+     with taddons.context(cp):
+Index: mitmproxy-12.2.1/test/mitmproxy/addons/test_command_history.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/addons/test_command_history.py
++++ mitmproxy-12.2.1/test/mitmproxy/addons/test_command_history.py
+@@ -1,3 +1,4 @@
++import pytest
+ import os
+ from pathlib import Path
+ from unittest.mock import patch
+@@ -24,6 +25,7 @@ class TestCommandHistory:
+         with open(history_file) as f:
+             assert f.read() == "cmd3\ncmd4\n"
+ 
++    @pytest.mark.asyncio
+     async def test_done_writing_failed(self, caplog):
+         ch = command_history.CommandHistory()
+         ch.VACUUM_SIZE = 1
+@@ -45,6 +47,7 @@ class TestCommandHistory:
+             ch.add_command("")
+             assert ch.history == ["cmd1", "cmd2"]
+ 
++    @pytest.mark.asyncio
+     async def test_add_command_failed(self, caplog):
+         ch = command_history.CommandHistory()
+         with taddons.context(ch) as tctx:
+@@ -152,6 +155,7 @@ class TestCommandHistory:
+ 
+             ch.clear_history()
+ 
++    @pytest.mark.asyncio
+     async def test_clear_failed(self, monkeypatch, caplog):
+         ch = command_history.CommandHistory()
+ 
+Index: mitmproxy-12.2.1/test/mitmproxy/addons/test_cut.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/addons/test_cut.py
++++ mitmproxy-12.2.1/test/mitmproxy/addons/test_cut.py
+@@ -86,6 +86,7 @@ def qr(f):
+         return fp.read()
+ 
+ 
++@pytest.mark.asyncio
+ async def test_cut_clip(caplog):
+     v = view.View()
+     c = cut.Cut()
+@@ -144,6 +145,7 @@ def test_cut_save(tmpdir):
+         (FileNotFoundError, "No such file or directory"),
+     ],
+ )
++@pytest.mark.asyncio
+ async def test_cut_save_open(exception, log_message, tmpdir, caplog):
+     f = str(tmpdir.join("path"))
+     v = view.View()
+Index: mitmproxy-12.2.1/test/mitmproxy/addons/test_dns_resolver.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/addons/test_dns_resolver.py
++++ mitmproxy-12.2.1/test/mitmproxy/addons/test_dns_resolver.py
+@@ -16,6 +16,7 @@ from mitmproxy.test import tflow
+ from mitmproxy.test import tutils
+ 
+ 
++@pytest.mark.asyncio
+ async def test_ignores_reverse_mode():
+     dr = dns_resolver.DnsResolver()
+     with taddons.context(dr, proxyserver.Proxyserver()):
+@@ -35,6 +36,7 @@ def _err():
+     raise RuntimeError("failed to get name servers")
+ 
+ 
++@pytest.mark.asyncio
+ async def test_name_servers(caplog, monkeypatch):
+     dr = dns_resolver.DnsResolver()
+     with taddons.context(dr) as tctx:
+@@ -83,6 +85,7 @@ NameServers = typing.Literal["nameserver
+ @pytest.mark.parametrize("hosts_file", typing.get_args(HostsFile))
+ @pytest.mark.parametrize("name_servers", typing.get_args(NameServers))
+ @pytest.mark.parametrize("domain", typing.get_args(Domain))
++@pytest.mark.asyncio
+ async def test_lookup(
+     domain: Domain, hosts_file: HostsFile, name_servers: NameServers, monkeypatch
+ ):
+@@ -155,6 +158,7 @@ async def test_lookup(
+                 typing.assert_never(other)
+ 
+ 
++@pytest.mark.asyncio
+ async def test_unspec_lookup(monkeypatch):
+     monkeypatch.setattr(asyncio.get_running_loop(), "getaddrinfo", getaddrinfo)
+     assert await GetaddrinfoFallbackResolver().lookup_ip("ipv6.example.com") == ["::1"]
+Index: mitmproxy-12.2.1/test/mitmproxy/addons/test_errorcheck.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/addons/test_errorcheck.py
++++ mitmproxy-12.2.1/test/mitmproxy/addons/test_errorcheck.py
+@@ -20,12 +20,14 @@ def test_errorcheck(tdata, capsys, run_m
+     assert "Error logged during startup" in capsys.readouterr().err
+ 
+ 
++@pytest.mark.asyncio
+ async def test_no_error():
+     e = ErrorCheck()
+     await e.shutdown_if_errored()
+     e.finish()
+ 
+ 
++@pytest.mark.asyncio
+ async def test_error_message(capsys):
+     e = ErrorCheck()
+     logging.error("wat")
+@@ -35,6 +37,7 @@ async def test_error_message(capsys):
+     assert "Errors logged during startup, exiting..." in capsys.readouterr().err
+ 
+ 
++@pytest.mark.asyncio
+ async def test_repeat_error_on_stderr(capsys):
+     e = ErrorCheck(repeat_errors_on_stderr=True)
+     logging.error("wat")
+Index: mitmproxy-12.2.1/test/mitmproxy/addons/test_eventstore.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/addons/test_eventstore.py
++++ mitmproxy-12.2.1/test/mitmproxy/addons/test_eventstore.py
+@@ -1,9 +1,11 @@
++import pytest
+ import asyncio
+ import logging
+ 
+ from mitmproxy.addons import eventstore
+ 
+ 
++@pytest.mark.asyncio
+ async def test_simple():
+     store = eventstore.EventStore()
+     assert not store.data
+@@ -44,6 +46,7 @@ async def test_simple():
+     store.done()
+ 
+ 
++@pytest.mark.asyncio
+ async def test_max_size():
+     store = eventstore.EventStore(3)
+     assert store.size == 3
+Index: mitmproxy-12.2.1/test/mitmproxy/addons/test_intercept.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/addons/test_intercept.py
++++ mitmproxy-12.2.1/test/mitmproxy/addons/test_intercept.py
+@@ -6,6 +6,7 @@ from mitmproxy.test import taddons
+ from mitmproxy.test import tflow
+ 
+ 
++@pytest.mark.asyncio
+ async def test_simple():
+     r = intercept.Intercept()
+     with taddons.context(r) as tctx:
+@@ -44,6 +45,7 @@ async def test_simple():
+         assert f.intercepted
+ 
+ 
++@pytest.mark.asyncio
+ async def test_dns():
+     r = intercept.Intercept()
+     with taddons.context(r) as tctx:
+@@ -63,6 +65,7 @@ async def test_dns():
+         assert not f.intercepted
+ 
+ 
++@pytest.mark.asyncio
+ async def test_tcp():
+     r = intercept.Intercept()
+     with taddons.context(r) as tctx:
+@@ -77,6 +80,7 @@ async def test_tcp():
+         assert not f.intercepted
+ 
+ 
++@pytest.mark.asyncio
+ async def test_udp():
+     r = intercept.Intercept()
+     with taddons.context(r) as tctx:
+@@ -91,6 +95,7 @@ async def test_udp():
+         assert not f.intercepted
+ 
+ 
++@pytest.mark.asyncio
+ async def test_websocket_message():
+     r = intercept.Intercept()
+     with taddons.context(r) as tctx:
+Index: mitmproxy-12.2.1/test/mitmproxy/addons/test_keepserving.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/addons/test_keepserving.py
++++ mitmproxy-12.2.1/test/mitmproxy/addons/test_keepserving.py
+@@ -1,3 +1,4 @@
++import pytest
+ import asyncio
+ 
+ from mitmproxy import command
+@@ -38,6 +39,7 @@ class TKS(keepserving.KeepServing):
+         self.is_shutdown = True
+ 
+ 
++@pytest.mark.asyncio
+ async def test_keepserving():
+     ks = TKS()
+     d = Dummy(True)
+Index: mitmproxy-12.2.1/test/mitmproxy/addons/test_maplocal.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/addons/test_maplocal.py
++++ mitmproxy-12.2.1/test/mitmproxy/addons/test_maplocal.py
+@@ -171,6 +171,7 @@ class TestMapLocal:
+             ml.request(f)
+             assert f.response.content == b"foofoobar"
+ 
++    @pytest.mark.asyncio
+     async def test_nonexistent_files(self, tmpdir, monkeypatch, caplog):
+         caplog.set_level("INFO")
+         ml = MapLocal()
+Index: mitmproxy-12.2.1/test/mitmproxy/addons/test_modifyheaders.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/addons/test_modifyheaders.py
++++ mitmproxy-12.2.1/test/mitmproxy/addons/test_modifyheaders.py
+@@ -128,6 +128,7 @@ class TestModifyHeadersFile:
+             mh.requestheaders(f)
+             assert f.request.headers["one"] == "two"
+ 
++    @pytest.mark.asyncio
+     async def test_nonexistent(self, tmpdir, caplog):
+         mh = ModifyHeaders()
+         with taddons.context(mh) as tctx:
+Index: mitmproxy-12.2.1/test/mitmproxy/addons/test_proxyserver.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/addons/test_proxyserver.py
++++ mitmproxy-12.2.1/test/mitmproxy/addons/test_proxyserver.py
+@@ -55,6 +55,7 @@ class HelperAddon:
+         self.flows.append(f)
+ 
+ 
++@pytest.mark.asyncio
+ async def test_start_stop(caplog_async):
+     caplog_async.set_level("INFO")
+ 
+@@ -125,6 +126,7 @@ async def _wait_for_connection_closes(ps
+     assert not ps.connections
+ 
+ 
++@pytest.mark.asyncio
+ async def test_inject() -> None:
+     async def server_handler(
+         reader: asyncio.StreamReader, writer: asyncio.StreamWriter
+@@ -163,6 +165,7 @@ async def test_inject() -> None:
+             await _wait_for_connection_closes(ps)
+ 
+ 
++@pytest.mark.asyncio
+ async def test_inject_fail(caplog) -> None:
+     ps = Proxyserver()
+     ps.inject_websocket(tflow.tflow(), True, b"test")
+@@ -181,6 +184,7 @@ async def test_inject_fail(caplog) -> No
+     assert "Cannot inject WebSocket messages into non-WebSocket flows" in caplog.text
+ 
+ 
++@pytest.mark.asyncio
+ async def test_warn_no_nextlayer(caplog):
+     """
+     Test that we log an error if the proxy server is started without NextLayer addon.
+@@ -194,6 +198,7 @@ async def test_warn_no_nextlayer(caplog)
+         assert "Warning: Running proxyserver without nextlayer addon!" in caplog.text
+ 
+ 
++@pytest.mark.asyncio
+ async def test_self_connect():
+     server = tserver_conn()
+     client = tclient_conn()
+@@ -235,6 +240,7 @@ def test_options():
+         tctx.configure(ps, mode=["regular", "local"], server=False)
+ 
+ 
++@pytest.mark.asyncio
+ async def test_startup_err(monkeypatch, caplog) -> None:
+     async def _raise(*_):
+         raise OSError("cannot bind")
+@@ -247,6 +253,7 @@ async def test_startup_err(monkeypatch,
+         assert "cannot bind" in caplog.text
+ 
+ 
++@pytest.mark.asyncio
+ async def test_shutdown_err(caplog_async) -> None:
+     caplog_async.set_level("INFO")
+ 
+@@ -270,6 +277,7 @@ async def lookup_ipv4():
+     return await asyncio.sleep(0, ["8.8.8.8"])
+ 
+ 
++@pytest.mark.asyncio
+ async def test_dns(caplog_async, monkeypatch) -> None:
+     monkeypatch.setattr(
+         mitmproxy_rs.dns.DnsResolver, "lookup_ipv4", lambda _, __: lookup_ipv4()
+@@ -360,6 +368,7 @@ async def udp_server(
+         transport.close()
+ 
+ 
++@pytest.mark.asyncio
+ async def test_udp(caplog_async) -> None:
+     caplog_async.set_level("INFO")
+ 
+@@ -771,6 +780,7 @@ async def _test_echo(client: H3Client, s
+ 
+ 
+ @pytest.mark.parametrize("scheme", ["http3", "quic"])
++@pytest.mark.asyncio
+ async def test_reverse_http3_and_quic_stream(caplog_async, scheme: str) -> None:
+     caplog_async.set_level("INFO")
+     ps = Proxyserver()
+@@ -804,6 +814,7 @@ async def test_reverse_http3_and_quic_st
+             await _wait_for_connection_closes(ps)
+ 
+ 
++@pytest.mark.asyncio
+ async def test_reverse_quic_datagram(caplog_async) -> None:
+     caplog_async.set_level("INFO")
+     ps = Proxyserver()
+@@ -840,6 +851,7 @@ async def test_reverse_quic_datagram(cap
+ 
+ 
+ @pytest.mark.skip("HTTP/3 for regular mode is not fully supported yet")
++@pytest.mark.asyncio
+ async def test_regular_http3(caplog_async, monkeypatch) -> None:
+     caplog_async.set_level("INFO")
+     ps = Proxyserver()
+Index: mitmproxy-12.2.1/test/mitmproxy/addons/test_readfile.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/addons/test_readfile.py
++++ mitmproxy-12.2.1/test/mitmproxy/addons/test_readfile.py
+@@ -47,6 +47,7 @@ class TestReadFile:
+                 tctx.configure(rf, readfile_filter="~~")
+             tctx.configure(rf, readfile_filter="")
+ 
++    @pytest.mark.asyncio
+     async def test_read(self, tmpdir, data, corrupt_data, caplog_async):
+         rf = readfile.ReadFile()
+         with taddons.context(rf) as tctx:
+@@ -75,6 +76,7 @@ class TestReadFile:
+             rf.running()
+             await caplog_async.await_log("corrupted")
+ 
++    @pytest.mark.asyncio
+     async def test_corrupt(self, corrupt_data, caplog_async):
+         rf = readfile.ReadFile()
+         with taddons.context(rf):
+@@ -86,6 +88,7 @@ class TestReadFile:
+                 await rf.load_flows(corrupt_data)
+             await caplog_async.await_log("file corrupted")
+ 
++    @pytest.mark.asyncio
+     async def test_nonexistent_file(self, caplog):
+         rf = readfile.ReadFile()
+         with pytest.raises(exceptions.FlowReadException):
+@@ -95,6 +98,7 @@ class TestReadFile:
+ 
+ class TestReadFileStdin:
+     @mock.patch("sys.stdin")
++    @pytest.mark.asyncio
+     async def test_stdin(self, stdin, data, corrupt_data):
+         rf = readfile.ReadFileStdin()
+         with taddons.context(rf):
+@@ -108,6 +112,7 @@ class TestReadFileStdin:
+                 with pytest.raises(exceptions.FlowReadException):
+                     await rf.load_flows(stdin.buffer)
+ 
++    @pytest.mark.asyncio
+     async def test_normal(self, tmpdir, data):
+         rf = readfile.ReadFileStdin()
+         with taddons.context(rf) as tctx:
+Index: mitmproxy-12.2.1/test/mitmproxy/addons/test_script.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/addons/test_script.py
++++ mitmproxy-12.2.1/test/mitmproxy/addons/test_script.py
+@@ -63,6 +63,7 @@ class TestScript:
+         s = script.Script(f'"{path}"', False)
+         assert '"' not in s.fullpath
+ 
++    @pytest.mark.asyncio
+     async def test_simple(self, tdata, caplog_async):
+         caplog_async.set_level("DEBUG")
+         sc = script.Script(
+@@ -83,6 +84,7 @@ class TestScript:
+             assert rec.call_log[0][1] == "request"
+         sc.done()
+ 
++    @pytest.mark.asyncio
+     async def test_reload(self, tmp_path, caplog_async):
+         caplog_async.set_level("INFO")
+         with taddons.context() as tctx:
+@@ -104,6 +106,7 @@ class TestScript:
+                 raise AssertionError("No reload seen")
+             sc.done()
+ 
++    @pytest.mark.asyncio
+     async def test_exception(self, tdata, caplog_async):
+         caplog_async.set_level("INFO")
+         with taddons.context() as tctx:
+@@ -141,6 +144,7 @@ class TestScript:
+             )
+             assert "Options Error" in caplog.text
+ 
++    @pytest.mark.asyncio
+     async def test_addon(self, tdata, caplog_async):
+         caplog_async.set_level("INFO")
+         with taddons.context() as tctx:
+@@ -175,6 +179,7 @@ class TestCutTraceback:
+ 
+ 
+ class TestScriptLoader:
++    @pytest.mark.asyncio
+     async def test_script_run(self, tdata, caplog_async):
+         caplog_async.set_level("DEBUG")
+         rp = tdata.path("mitmproxy/data/addonscripts/recorder/recorder.py")
+@@ -194,11 +199,13 @@ class TestScriptLoader:
+                 "recorder response",
+             ]
+ 
++    @pytest.mark.asyncio
+     async def test_script_run_nonexistent(self, caplog):
+         sc = script.ScriptLoader()
+         sc.script_run([tflow.tflow(resp=True)], "/")
+         assert "No such script" in caplog.text
+ 
++    @pytest.mark.asyncio
+     async def test_simple(self, tdata):
+         sc = script.ScriptLoader()
+         with taddons.context(loadcore=False) as tctx:
+@@ -220,6 +227,7 @@ class TestScriptLoader:
+             with pytest.raises(exceptions.OptionsError):
+                 tctx.configure(sc, scripts=["one", "one"])
+ 
++    @pytest.mark.asyncio
+     async def test_script_deletion(self, tdata, caplog_async):
+         caplog_async.set_level("INFO")
+         tdir = tdata.path("mitmproxy/data/addonscripts/")
+@@ -241,6 +249,7 @@ class TestScriptLoader:
+             assert not tctx.options.scripts
+             assert not sl.addons
+ 
++    @pytest.mark.asyncio
+     async def test_order(self, tdata, caplog_async):
+         caplog_async.set_level("DEBUG")
+         rec = tdata.path("mitmproxy/data/addonscripts/recorder")
+Index: mitmproxy-12.2.1/test/mitmproxy/addons/test_server_side_events.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/addons/test_server_side_events.py
++++ mitmproxy-12.2.1/test/mitmproxy/addons/test_server_side_events.py
+@@ -1,7 +1,9 @@
++import pytest
+ from mitmproxy.addons.server_side_events import ServerSideEvents
+ from mitmproxy.test.tflow import tflow
+ 
+ 
++@pytest.mark.asyncio
+ async def test_simple(caplog):
+     s = ServerSideEvents()
+     f = tflow(resp=True)
+Index: mitmproxy-12.2.1/test/mitmproxy/addons/test_serverplayback.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/addons/test_serverplayback.py
++++ mitmproxy-12.2.1/test/mitmproxy/addons/test_serverplayback.py
+@@ -365,6 +365,7 @@ def test_server_playback_full():
+         assert not tf.response
+ 
+ 
++@pytest.mark.asyncio
+ async def test_server_playback_kill():
+     s = serverplayback.ServerPlayback()
+     with taddons.context(s) as tctx:
+@@ -380,6 +381,7 @@ async def test_server_playback_kill():
+         assert f.error
+ 
+ 
++@pytest.mark.asyncio
+ async def test_server_playback_kill_new_option():
+     s = serverplayback.ServerPlayback()
+     with taddons.context(s) as tctx:
+@@ -404,6 +406,7 @@ async def test_server_playback_kill_new_
+         ("500", 500),
+     ],
+ )
++@pytest.mark.asyncio
+ async def test_server_playback_404(option, status):
+     s = serverplayback.ServerPlayback()
+     with taddons.context(s) as tctx:
+Index: mitmproxy-12.2.1/test/mitmproxy/addons/test_termlog.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/addons/test_termlog.py
++++ mitmproxy-12.2.1/test/mitmproxy/addons/test_termlog.py
+@@ -33,6 +33,7 @@ def test_output(capsys):
+     t.uninstall()
+ 
+ 
++@pytest.mark.asyncio
+ async def test_styling(monkeypatch) -> None:
+     monkeypatch.setattr(vt_codes, "ensure_supported", lambda _: True)
+ 
+@@ -46,6 +47,7 @@ async def test_styling(monkeypatch) -> N
+     t.uninstall()
+ 
+ 
++@pytest.mark.asyncio
+ async def test_cannot_print(monkeypatch) -> None:
+     def _raise(*args, **kwargs):
+         raise OSError
+Index: mitmproxy-12.2.1/test/mitmproxy/addons/test_tlsconfig.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/addons/test_tlsconfig.py
++++ mitmproxy-12.2.1/test/mitmproxy/addons/test_tlsconfig.py
+@@ -506,6 +506,7 @@ class TestTlsConfig:
+             assert self.do_handshake(tssl_client, tssl_server)
+             assert tssl_server.obj.getpeercert()
+ 
++    @pytest.mark.asyncio
+     async def test_ca_expired(self, monkeypatch, caplog):
+         monkeypatch.setattr(certs.Cert, "has_expired", lambda self: True)
+         ta = tlsconfig.TlsConfig()
+Index: mitmproxy-12.2.1/test/mitmproxy/addons/test_view.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/addons/test_view.py
++++ mitmproxy-12.2.1/test/mitmproxy/addons/test_view.py
+@@ -249,6 +249,7 @@ def test_orders():
+         assert v.order_options()
+ 
+ 
++@pytest.mark.asyncio
+ async def test_load(tmpdir, caplog):
+     path = str(tmpdir.join("path"))
+     v = view.View()
+Index: mitmproxy-12.2.1/test/mitmproxy/proxy/test_mode_servers.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/proxy/test_mode_servers.py
++++ mitmproxy-12.2.1/test/mitmproxy/proxy/test_mode_servers.py
+@@ -45,6 +45,7 @@ def test_make():
+         WireGuardServerInstance.make("regular", manager)
+ 
+ 
++@pytest.mark.asyncio
+ async def test_last_exception_and_running(monkeypatch):
+     manager = MagicMock()
+     err = ValueError("something else")
+@@ -76,6 +77,7 @@ async def test_last_exception_and_runnin
+         assert not inst1.is_running
+ 
+ 
++@pytest.mark.asyncio
+ async def test_tcp_start_stop(caplog_async):
+     caplog_async.set_level("INFO")
+     manager = MagicMock()
+@@ -98,6 +100,7 @@ async def test_tcp_start_stop(caplog_asy
+         assert await caplog_async.await_log("stopped")
+ 
+ 
++@pytest.mark.asyncio
+ async def test_tcp_timeout(caplog_async):
+     """Test that TCP connections are closed after the configured timeout period."""
+     caplog_async.set_level("INFO")
+@@ -135,6 +138,7 @@ async def test_tcp_timeout(caplog_async)
+ 
+ 
+ @pytest.mark.parametrize("failure", [True, False])
++@pytest.mark.asyncio
+ async def test_transparent(failure, monkeypatch, caplog_async):
+     caplog_async.set_level("INFO")
+     manager = MagicMock()
+@@ -177,6 +181,7 @@ async def _echo_server(self: ConnectionH
+     t.writer.close()
+ 
+ 
++@pytest.mark.asyncio
+ async def test_wireguard(tdata, monkeypatch, caplog):
+     caplog.set_level("DEBUG")
+ 
+@@ -228,6 +233,7 @@ async def test_wireguard(tdata, monkeypa
+ 
+ 
+ @pytest.mark.parametrize("host", ["127.0.0.1", "::1"])
++@pytest.mark.asyncio
+ async def test_wireguard_dual_stack(host, caplog_async):
+     caplog_async.set_level("DEBUG")
+ 
+@@ -259,6 +265,7 @@ async def test_wireguard_dual_stack(host
+         assert await caplog_async.await_log("stopped")
+ 
+ 
++@pytest.mark.asyncio
+ async def test_wireguard_generate_conf(tmp_path):
+     with taddons.context(Proxyserver()) as tctx:
+         tctx.options.confdir = str(tmp_path)
+@@ -280,6 +287,7 @@ async def test_wireguard_generate_conf(t
+         await inst2.stop()
+ 
+ 
++@pytest.mark.asyncio
+ async def test_wireguard_invalid_conf(tmp_path):
+     with taddons.context(Proxyserver()):
+         # directory instead of filename
+@@ -291,6 +299,7 @@ async def test_wireguard_invalid_conf(tm
+         assert "Invalid configuration file" in repr(inst.last_exception)
+ 
+ 
++@pytest.mark.asyncio
+ async def test_tcp_start_error():
+     manager = MagicMock()
+ 
+@@ -312,6 +321,7 @@ async def test_tcp_start_error():
+             await inst3.start()
+ 
+ 
++@pytest.mark.asyncio
+ async def test_invalid_protocol(monkeypatch):
+     manager = MagicMock()
+ 
+@@ -322,6 +332,7 @@ async def test_invalid_protocol(monkeypa
+             await inst.start()
+ 
+ 
++@pytest.mark.asyncio
+ async def test_udp_start_stop(caplog_async):
+     caplog_async.set_level("INFO")
+     manager = MagicMock()
+@@ -345,6 +356,7 @@ async def test_udp_start_stop(caplog_asy
+         assert await caplog_async.await_log("stopped")
+ 
+ 
++@pytest.mark.asyncio
+ async def test_udp_start_error():
+     manager = MagicMock()
+ 
+@@ -364,6 +376,7 @@ async def test_udp_start_error():
+ 
+ @pytest.mark.parametrize("ip_version", ["v4", "v6"])
+ @pytest.mark.parametrize("protocol", ["tcp", "udp"])
++@pytest.mark.asyncio
+ async def test_dual_stack(ip_version, protocol, caplog_async):
+     """Test that a server bound to "" binds on both IPv4 and IPv6 for both TCP and UDP."""
+ 
+@@ -399,6 +412,7 @@ async def test_dual_stack(ip_version, pr
+ 
+ 
+ @pytest.mark.parametrize("transport_protocol", ["udp", "tcp"])
++@pytest.mark.asyncio
+ async def test_dns_start_stop(caplog_async, transport_protocol):
+     caplog_async.set_level("INFO")
+     manager = MagicMock()
+@@ -426,6 +440,7 @@ async def test_dns_start_stop(caplog_asy
+ 
+ 
+ @skip_not_linux
++@pytest.mark.asyncio
+ async def test_tun_mode(monkeypatch, caplog):
+     monkeypatch.setattr(ConnectionHandler, "handle_client", _echo_server)
+ 
+@@ -454,6 +469,7 @@ async def test_tun_mode(monkeypatch, cap
+         await inst.stop()
+ 
+ 
++@pytest.mark.asyncio
+ async def test_tun_mode_mocked(monkeypatch):
+     tun_interface = Mock()
+     tun_interface.tun_name = lambda: "tun0"
+@@ -487,6 +503,7 @@ def patched_local_redirector(monkeypatch
+     return start_local_redirector
+ 
+ 
++@pytest.mark.asyncio
+ async def test_local_redirector(patched_local_redirector, caplog_async):
+     caplog_async.set_level("INFO")
+ 
+@@ -507,6 +524,7 @@ async def test_local_redirector(patched_
+         inst.make_top_layer(MagicMock())
+ 
+ 
++@pytest.mark.asyncio
+ async def test_local_redirector_startup_err(patched_local_redirector):
+     patched_local_redirector.side_effect = RuntimeError(
+         "Local redirector startup error"
+@@ -519,6 +537,7 @@ async def test_local_redirector_startup_
+         assert not inst.is_running
+ 
+ 
++@pytest.mark.asyncio
+ async def test_multiple_local_redirectors(patched_local_redirector):
+     manager = MagicMock()
+ 
+@@ -533,6 +552,7 @@ async def test_multiple_local_redirector
+             await inst2.start()
+ 
+ 
++@pytest.mark.asyncio
+ async def test_always_uses_current_instance(patched_local_redirector, monkeypatch):
+     manager = MagicMock()
+ 
+Index: mitmproxy-12.2.1/test/mitmproxy/proxy/test_server.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/proxy/test_server.py
++++ mitmproxy-12.2.1/test/mitmproxy/proxy/test_server.py
+@@ -33,6 +33,7 @@ class MockConnectionHandler(server.Simpl
+ 
+ 
+ @pytest.mark.parametrize("result", ("success", "killed", "failed"))
++@pytest.mark.asyncio
+ async def test_open_connection(result, monkeypatch):
+     handler = MockConnectionHandler()
+     server_connect = handler.hook_handlers["server_connect"]
+@@ -73,6 +74,7 @@ async def test_open_connection(result, m
+     assert server_disconnected.called == (result == "success")
+ 
+ 
++@pytest.mark.asyncio
+ async def test_no_reentrancy(capsys):
+     class ReentrancyTestLayer(layer.Layer):
+         def handle_event(self, event: Event) -> layer.CommandGenerator[None]:
+Index: mitmproxy-12.2.1/test/mitmproxy/script/test_concurrent.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/script/test_concurrent.py
++++ mitmproxy-12.2.1/test/mitmproxy/script/test_concurrent.py
+@@ -12,6 +12,7 @@ class TestConcurrent:
+     @pytest.mark.parametrize(
+         "addon", ["concurrent_decorator.py", "concurrent_decorator_class.py"]
+     )
++    @pytest.mark.asyncio
+     async def test_concurrent(self, addon, tdata):
+         with taddons.context() as tctx:
+             sc = tctx.script(tdata.path(f"mitmproxy/data/addonscripts/{addon}"))
+Index: mitmproxy-12.2.1/test/mitmproxy/test_addonmanager.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/test_addonmanager.py
++++ mitmproxy-12.2.1/test/mitmproxy/test_addonmanager.py
+@@ -70,6 +70,7 @@ def test_command():
+         assert tctx.master.commands.execute("test.command") == "here"
+ 
+ 
++@pytest.mark.asyncio
+ async def test_halt():
+     o = options.Options()
+     m = master.Master(o)
+@@ -88,6 +89,7 @@ async def test_halt():
+     assert end.running_called
+ 
+ 
++@pytest.mark.asyncio
+ async def test_async_halt():
+     o = options.Options()
+     m = master.Master(o)
+@@ -106,6 +108,7 @@ async def test_async_halt():
+     assert end.running_called
+ 
+ 
++@pytest.mark.asyncio
+ async def test_lifecycle():
+     o = options.Options()
+     m = master.Master(o)
+@@ -129,6 +132,7 @@ def test_defaults():
+     assert addons.default_addons()
+ 
+ 
++@pytest.mark.asyncio
+ async def test_mixed_async_sync(caplog):
+     with taddons.context(loadcore=False) as tctx:
+         a = tctx.master.addons
+@@ -154,6 +158,7 @@ async def test_mixed_async_sync(caplog):
+         assert "called from sync context" in caplog.text
+ 
+ 
++@pytest.mark.asyncio
+ async def test_loader(caplog):
+     with taddons.context() as tctx:
+         loader = addonmanager.Loader(tctx.master)
+@@ -174,6 +179,7 @@ async def test_loader(caplog):
+         loader.add_command("test.command", cmd)
+ 
+ 
++@pytest.mark.asyncio
+ async def test_simple(caplog):
+     with taddons.context(loadcore=False) as tctx:
+         a = tctx.master.addons
+@@ -215,6 +221,7 @@ async def test_simple(caplog):
+         assert ta in a
+ 
+ 
++@pytest.mark.asyncio
+ async def test_load_option():
+     o = options.Options()
+     m = master.Master(o)
+@@ -223,6 +230,7 @@ async def test_load_option():
+     assert "custom_option" in m.options._options
+ 
+ 
++@pytest.mark.asyncio
+ async def test_nesting():
+     o = options.Options()
+     m = master.Master(o)
+@@ -248,6 +256,7 @@ async def test_nesting():
+     assert not a.get("four")
+ 
+ 
++@pytest.mark.asyncio
+ async def test_old_api(caplog):
+     with taddons.context(loadcore=False) as tctx:
+         tctx.master.addons.add(AOldAPI())
+Index: mitmproxy-12.2.1/test/mitmproxy/test_command.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/test_command.py
++++ mitmproxy-12.2.1/test/mitmproxy/test_command.py
+@@ -653,6 +653,7 @@ class TCmds(TAttr):
+         pass
+ 
+ 
++@pytest.mark.asyncio
+ async def test_collect_commands(caplog):
+     """
+     This tests for errors thrown by getattr() or __getattr__ implementations
+Index: mitmproxy-12.2.1/test/mitmproxy/test_flow.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/test_flow.py
++++ mitmproxy-12.2.1/test/mitmproxy/test_flow.py
+@@ -116,6 +116,7 @@ class TestSerialize:
+ 
+ 
+ class TestFlowMaster:
++    @pytest.mark.asyncio
+     async def test_load_http_flow_reverse(self):
+         opts = options.Options(mode=["reverse:https://use-this-domain"])
+         s = State()
+@@ -124,6 +125,7 @@ class TestFlowMaster:
+             await ctx.master.load_flow(f)
+             assert s.flows[0].request.host == "use-this-domain"
+ 
++    @pytest.mark.asyncio
+     async def test_all(self):
+         opts = options.Options(mode=["reverse:https://use-this-domain"])
+         s = State()
+Index: mitmproxy-12.2.1/test/mitmproxy/test_http.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/test_http.py
++++ mitmproxy-12.2.1/test/mitmproxy/test_http.py
+@@ -749,6 +749,7 @@ class TestHTTPFlow:
+         f.resume()
+         assert not f.intercepted
+ 
++    @pytest.mark.asyncio
+     async def test_wait_for_resume(self):
+         f = tflow()
+         await f.wait_for_resume()
+Index: mitmproxy-12.2.1/test/mitmproxy/test_master.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/test_master.py
++++ mitmproxy-12.2.1/test/mitmproxy/test_master.py
+@@ -1,3 +1,4 @@
++import pytest
+ import asyncio
+ import gc
+ 
+@@ -8,6 +9,7 @@ async def err():
+     raise RuntimeError
+ 
+ 
++@pytest.mark.asyncio
+ async def test_exception_handler(caplog_async):
+     caplog_async.set_level("ERROR")
+ 
+Index: mitmproxy-12.2.1/test/mitmproxy/tools/console/test_contentview.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/tools/console/test_contentview.py
++++ mitmproxy-12.2.1/test/mitmproxy/tools/console/test_contentview.py
+@@ -1,3 +1,4 @@
++import pytest
+ from mitmproxy import contentviews
+ from mitmproxy.contentviews import Metadata
+ from mitmproxy.contentviews import raw
+@@ -19,6 +20,7 @@ class ConsoleTestContentView(contentview
+         return 2
+ 
+ 
++@pytest.mark.asyncio
+ async def test_contentview_flowview(console, monkeypatch):
+     monkeypatch.setattr(contentviews.registry, "_by_name", {"raw": raw})
+     assert "Flows" in console.screen_contents()
+Index: mitmproxy-12.2.1/test/mitmproxy/tools/console/test_defaultkeys.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/tools/console/test_defaultkeys.py
++++ mitmproxy-12.2.1/test/mitmproxy/tools/console/test_defaultkeys.py
+@@ -1,7 +1,9 @@
++import pytest
+ import mitmproxy.types
+ from mitmproxy.test.tflow import tflow
+ 
+ 
++@pytest.mark.asyncio
+ async def test_commands_exist(console):
+     await console.load_flow(tflow())
+ 
+Index: mitmproxy-12.2.1/test/mitmproxy/tools/console/test_flowview.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/tools/console/test_flowview.py
++++ mitmproxy-12.2.1/test/mitmproxy/tools/console/test_flowview.py
+@@ -1,3 +1,4 @@
++import pytest
+ import sys
+ from unittest import mock
+ 
+@@ -6,6 +7,7 @@ from mitmproxy.test import tflow
+ from mitmproxy.tools.console.flowview import FlowDetails
+ 
+ 
++@pytest.mark.asyncio
+ async def test_flowview(console):
+     for f in tflow.tflows():
+         console.commands.call("view.clear")
+@@ -18,6 +20,7 @@ def _edit(data: str) -> str:
+     return "hello: false"
+ 
+ 
++@pytest.mark.asyncio
+ async def test_edit(console, monkeypatch, caplog):
+     MSGPACK_WITH_TRUE = b"\x81\xa5hello\xc3"
+     MSGPACK_WITH_FALSE = b"\x81\xa5hello\xc2"
+@@ -37,6 +40,7 @@ async def test_edit(console, monkeypatch
+     assert f.request.content == MSGPACK_WITH_FALSE
+ 
+ 
++@pytest.mark.asyncio
+ async def test_content_missing_returns_error(console):
+     # message.raw_content is None -> expect "[content missing]" error text
+     f_missing = tflow.tflow(
+@@ -55,6 +59,7 @@ async def test_content_missing_returns_e
+     assert "[content missing]" == first_text
+ 
+ 
++@pytest.mark.asyncio
+ async def test_empty_content_request_and_response(console):
+     fd = FlowDetails(console)
+ 
+@@ -82,6 +87,7 @@ async def test_empty_content_request_and
+     assert "No content" == resp_text
+ 
+ 
++@pytest.mark.asyncio
+ async def test_content_view_fullcontents_true_uses_unlimited_limit(console):
+     f = tflow.tflow(req=http.Request.make("POST", "http://example.com", b"non-empty"))
+     await console.load_flow(f)
+Index: mitmproxy-12.2.1/test/mitmproxy/tools/console/test_statusbar.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/tools/console/test_statusbar.py
++++ mitmproxy-12.2.1/test/mitmproxy/tools/console/test_statusbar.py
+@@ -3,6 +3,7 @@ import pytest
+ from mitmproxy.tools.console import statusbar
+ 
+ 
++@pytest.mark.asyncio
+ async def test_statusbar(console, monkeypatch):
+     console.options.update(
+         modify_headers=[":~q:foo:bar"],
+Index: mitmproxy-12.2.1/test/mitmproxy/tools/test_dump.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/tools/test_dump.py
++++ mitmproxy-12.2.1/test/mitmproxy/tools/test_dump.py
+@@ -6,6 +6,7 @@ from mitmproxy.tools import dump
+ 
+ class TestDumpMaster:
+     @pytest.mark.parametrize("termlog", [False, True])
++    @pytest.mark.asyncio
+     async def test_addons_termlog(self, capsys, termlog):
+         o = options.Options()
+         m = dump.DumpMaster(o, with_termlog=termlog)
+@@ -13,6 +14,7 @@ class TestDumpMaster:
+         await m.done()
+ 
+     @pytest.mark.parametrize("dumper", [False, True])
++    @pytest.mark.asyncio
+     async def test_addons_dumper(self, capsys, dumper):
+         o = options.Options()
+         m = dump.DumpMaster(o, with_dumper=dumper, with_termlog=False)
+Index: mitmproxy-12.2.1/test/mitmproxy/tools/web/test_app.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/tools/web/test_app.py
++++ mitmproxy-12.2.1/test/mitmproxy/tools/web/test_app.py
+@@ -37,6 +37,7 @@ def get_json(resp: httpclient.HTTPRespon
+ 
+ 
+ @pytest.mark.parametrize("filename", list((here / "../../../../web/gen").glob("*.py")))
++@pytest.mark.asyncio
+ async def test_generated_files(filename):
+     mod = importlib.import_module(f"web.gen.{filename.stem}")
+     expected = await mod.make()
+Index: mitmproxy-12.2.1/test/mitmproxy/tools/web/test_master.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/tools/web/test_master.py
++++ mitmproxy-12.2.1/test/mitmproxy/tools/web/test_master.py
+@@ -6,6 +6,7 @@ from mitmproxy.options import Options
+ from mitmproxy.tools.web.master import WebMaster
+ 
+ 
++@pytest.mark.asyncio
+ async def test_reuse():
+     async def handler(r, w):
+         pass
+Index: mitmproxy-12.2.1/test/mitmproxy/tools/web/test_static_viewer.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/tools/web/test_static_viewer.py
++++ mitmproxy-12.2.1/test/mitmproxy/tools/web/test_static_viewer.py
+@@ -1,3 +1,4 @@
++import pytest
+ import json
+ from unittest import mock
+ 
+@@ -58,6 +59,7 @@ def test_save_flows_content(tmpdir):
+             assert p.join("response/content/Auto.json").check(file=1)
+ 
+ 
++@pytest.mark.asyncio
+ async def test_static_viewer(tmpdir):
+     s = static_viewer.StaticViewer()
+     rf = readfile.ReadFile()
+Index: mitmproxy-12.2.1/test/mitmproxy/utils/test_asyncio_utils.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/utils/test_asyncio_utils.py
++++ mitmproxy-12.2.1/test/mitmproxy/utils/test_asyncio_utils.py
+@@ -13,6 +13,7 @@ async def ttask():
+     await asyncio.sleep(999)
+ 
+ 
++@pytest.mark.asyncio
+ async def test_simple(monkeypatch):
+     monkeypatch.setenv("PYTEST_CURRENT_TEST", "test_foo")
+     task = asyncio_utils.create_task(
+@@ -33,6 +34,7 @@ async def _raise():
+     raise RuntimeError()
+ 
+ 
++@pytest.mark.asyncio
+ async def test_install_exception_handler():
+     e = asyncio.Event()
+     with asyncio_utils.install_exception_handler(lambda *_, **__: e.set()):
+@@ -44,6 +46,7 @@ async def test_install_exception_handler
+         await e.wait()
+ 
+ 
++@pytest.mark.asyncio
+ async def test_eager_task_factory():
+     x = False
+ 
+Index: mitmproxy-12.2.1/test/mitmproxy/utils/test_debug.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/utils/test_debug.py
++++ mitmproxy-12.2.1/test/mitmproxy/utils/test_debug.py
+@@ -21,6 +21,7 @@ def test_dump_info():
+     assert "Tasks" not in cs.getvalue()
+ 
+ 
++@pytest.mark.asyncio
+ async def test_dump_info_async():
+     cs = io.StringIO()
+     debug.dump_info(None, None, file=cs)
+Index: mitmproxy-12.2.1/test/mitmproxy/utils/test_signals.py
+===================================================================
+--- mitmproxy-12.2.1.orig/test/mitmproxy/utils/test_signals.py
++++ mitmproxy-12.2.1/test/mitmproxy/utils/test_signals.py
+@@ -62,6 +62,7 @@ def test_sync_signal_async_receiver() ->
+         s.connect(mock.AsyncMock())
+ 
+ 
++@pytest.mark.asyncio
+ async def test_async_signal() -> None:
+     s = AsyncSignal(lambda event: None)
+     m1 = mock.AsyncMock()
