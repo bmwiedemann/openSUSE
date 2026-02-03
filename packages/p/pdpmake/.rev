@@ -17,4 +17,12 @@ Other than being a well maintained POSIX make, it is can be used to check if a M
     <comment>Update to v2.0.4</comment>
     <requestid>1329281</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4d5888c6a3b26f6d88f02e61efb3409c</srcmd5>
+    <version>2.0.4</version>
+    <time>1770150556</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1330400</requestid>
+  </revision>
 </revisionlist>

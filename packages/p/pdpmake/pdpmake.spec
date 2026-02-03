@@ -35,7 +35,7 @@ is that it can be switched to a strictly POSIX-compliant mode at runtime
 %autosetup
 
 %build
-%make_build CC=gcc CFLAGS="%{optflags}"
+%make_build CC=gcc CFLAGS="%{optflags} -std=c99"
 
 %install
 %make_install PREFIX=%{_prefix}

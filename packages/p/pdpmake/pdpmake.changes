@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 26 12:01:03 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- add -std=c99 to fix compilation failure on SLE_12
+
+-------------------------------------------------------------------
 Sun Jan 25 16:18:25 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.0.4:
