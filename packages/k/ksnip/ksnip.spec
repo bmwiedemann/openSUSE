@@ -1,7 +1,7 @@
 #
 # spec file for package ksnip
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,8 @@
 #
 
 
+%define rev ac15aa97ead20ff25ccadfce8981cf8601c2dc4e
+
 Name:           ksnip
 Version:        1.10.1
 Release:        0
@@ -23,29 +25,27 @@ Summary:        Screenshot tool
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/ksnip/ksnip
-Source:         https://github.com/ksnip/ksnip/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-build-against-kImageAnnotator-and-kColorPicker-t.patch
+Source:         https://github.com/ksnip/ksnip/archive/%{rev}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-gui-private-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  xvfb-run
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5X11Extras)
-BuildRequires:  cmake(Qt5Xml)
-BuildRequires:  cmake(kColorPicker-Qt5) >= 0.3.1
-BuildRequires:  cmake(kImageAnnotator-Qt5) >= 0.7.1
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6PrintSupport)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6Test)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
+BuildRequires:  cmake(kColorPicker-Qt6) >= 0.3.1
+BuildRequires:  cmake(kImageAnnotator-Qt6) >= 0.7.1
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb-xfixes)
 
@@ -56,10 +56,14 @@ annotation features for your screenshots.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{rev}
+
+# Qt 6.10.1 fix
+sed -E -e '/QT_COMPONENTS/s&(Widgets)&\1 GuiPrivate&' -i CMakeLists.txt
 
 %build
-%cmake
+
+%cmake -DBUILD_WITH_QT6=ON
 %cmake_build
 
 %install
