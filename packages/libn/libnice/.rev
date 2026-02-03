@@ -395,4 +395,26 @@
     <comment>Scripted push from GNOME:Next (forwarded request 1304936 from dimstar)</comment>
     <requestid>1305528</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>8b74007a2ff0d6fd7d57c3c92b86e7f3</srcmd5>
+    <version>0.1.23</version>
+    <time>1770150365</time>
+    <user>anag_factory</user>
+    <comment>NOTE: Feel free to try to fix the test-suite, I gave up :-)
+
+- Update to version 0.1.23:
+  + API: Added option NICE_AGENT_OPTION_CLOSE_FORCED to not wait
+    for TURN when closing asynchronous
+  + Reject invalid remote candidates with priority=0
+  + Add missing mutex in tcp-bsd socket
+  + Add buffer list support to nicesrc
+  + Avoid dropping packing in nicesink, retry instead
+  + Only create a new NiceCandidate if a socket can be opened, as
+    it is a somewhat costly operation
+  + Many new tests
+  + Fix leaks
+  + Fix various test flakiness
+- Temp disable test-suite. (forwarded request 1330065 from iznogood)</comment>
+    <requestid>1330724</requestid>
+  </revision>
 </revisionlist>
