@@ -154,4 +154,16 @@ I want to make OpenBoard available again in TW (and later also Leap) and therefo
     <comment></comment>
     <requestid>1329086</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6599ec9a6f1ace1ff9e15ddbdc4e73fc</srcmd5>
+    <version>1.7.5</version>
+    <time>1770150908</time>
+    <user>anag_factory</user>
+    <comment>- add AppData in metainfo.xml
+- add patch 1347-chore-appdata.patch
+  * add metainfo.xml and adjust cmake
+- update to release version 1.7.5
+</comment>
+    <requestid>1330771</requestid>
+  </revision>
 </revisionlist>

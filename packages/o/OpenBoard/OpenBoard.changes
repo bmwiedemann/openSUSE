@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb  3 11:11:42 UTC 2026 - Martin Winter <me@letsfindaway.de>
+
+- add AppData in metainfo.xml
+- add patch 1347-chore-appdata.patch
+  * add metainfo.xml and adjust cmake
+
+-------------------------------------------------------------------
+Tue Feb  3 10:07:35 UTC 2026 - Martin Winter <me@letsfindaway.de>
+
+- update to release version 1.7.5
+
+-------------------------------------------------------------------
 Sun Jan 25 17:57:26 UTC 2026 - Martin Winter <me@letsfindaway.de>
 
 - update to release version 1.7.4
