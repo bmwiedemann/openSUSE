@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan 28 06:36:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 8.0.0:
+  * Bug Fixes
+    - Actually define project repr_attr (4187a69)
+    - File save start_branch as a body attribute (1001d93)
+  * Chores
+    - black: Run black v26 on code (4a8d82b)
+    - precommit: Update dependency black to v26 (ad43b76)
+  * Features
+    - graphql: Update to gql 4.0.0 (6f0da67)
+  * Breaking Changes
+    - graphql: GraphQL.execute() no longer accepts graphql.Source
+
+-------------------------------------------------------------------
 Tue Jan 13 06:25:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 7.1.0:
