@@ -1,0 +1,104 @@
+-------------------------------------------------------------------
+Wed Jan 14 15:32:16 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Requires python_module `textual` >= 6.3.0 because of the
+  `scrollbar-visibility` parsing (gh#Textualize/textual!6156).
+
+-------------------------------------------------------------------
+Wed Jan 14 13:41:06 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.3.5:
+  - bash tool not discovered by vibe-acp
+- Update to 1.3.4:
+  - markup in blinking messages
+  - safety around Bash and AGENTS.md
+  - explicit permissions to GitHub Actions workflows
+  - improve render performance in long sessions
+- Update to 1.3.3:
+  - Fix config desyncing issues
+- Update to 1.3.2:
+  - User definable reasoning field
+  - Fix rendering issue with spinner
+- Update to 1.3.1:
+  - Fix crash when continuing conversation
+  - Fix Nix flake to not export python
+- Update to 1.3.0:
+  - agentskills.io support
+  - Reasoning support
+  - Native terminal theme support
+  - Issue templates for bug reports and feature requests
+  - Auto update zed extension on release creation
+  - Improve ToolUI system with better rendering and organization
+  - Use pinned actions in CI workflows
+  - Remove 100k -> 200k tokens config migration
+  - Fix -p mode to auto-approve tool calls
+  - Fix crash when switching mode
+  - Fix some cases where clipboard copy didn't work
+- Update to 1.2.2:
+  - Remove dead code
+  - Fix artefacts automatically attached to the release
+  - Refactor agent post streaming
+- Update to 1.2.1:
+  - Improve error message when running in home dir
+  - Do not show trusted folder workflow in home dir
+- Update to 1.2.0:
+  - Modular mode system
+  - Trusted folder mechanism for local .vibe directories
+  - Document public setup for vibe-acp in zed, jetbrains and
+    neovim --version flag
+  - Improve UI based on feedback
+  - Remove unnecessary logging and flushing for better
+    performance
+  - Update textual
+  - Update nix flake
+  - Automate binary attachment to GitHub releases
+  - Prevent segmentation fault on exit by shutting down thread
+    pools
+  - Fix extra spacing with assistant message
+- Update to 1.1.3:
+  - Add more copy_to_clipboard methods to support all cases
+  - Add bindings to scroll chat history
+  - Relax config to accept extra inputs
+  - Remove useless stats from assistant events
+  - Improve scroll actions while streaming
+  - Do not check for updates more than once a day
+  - Use PyPI in update notifier
+  - Fix tool permission handling for "allow always" option in ACP
+  - Fix security issue: prevent command injection in GitHub
+    Action prompt handling
+  - Fix issues with vLLM
+- Update to 1.1.2:
+  - add terminal-auth auth method to ACP agent only if the client
+    supports it
+  - fix user-agent header when using Mistral backend, using SDK
+    hook
+- Update to 1.1.1:
+  - added include_commit_signature in config.toml to disable
+    signing commits
+- Update to 1.1.0:
+  - fixed crash in some rare instances when copy-pasting
+  - improved context length from 100k to 200k
+- Update to 1.0.6:
+  - add missing steps in bump_version script
+  - move pytest-xdist to dev dependencies
+  - take into account config for bash timeout
+  - improve textual performance
+  - improve README:
+    improve windows installation instructions
+    update default system prompt reference
+    document MCP tool permission configuration
+- Update to 1.0.5:
+  - Fix streaming with OpenAI adapter
+- Update to 1.0.4:
+  - Rename agent in distribution/zed/extension.toml to
+    mistral-vibe
+  - Fix icon and description in distribution/zed/extension.toml
+  - Remove .envrc file
+- Update to 1.0.3:
+  - Add LICENCE symlink in distribution/zed for compatibility
+    with zed extension release process
+
+-------------------------------------------------------------------
+Tue Dec  9 16:33:56 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Initial packaging effort for mistral-vibe 1.0.2.
