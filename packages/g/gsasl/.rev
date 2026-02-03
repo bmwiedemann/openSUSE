@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>1281550</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>35f596015b4f4fddccd7878ce54bc6a1</srcmd5>
+    <version>2.2.2</version>
+    <time>1770150354</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 2.2.2
+(not enough to fix the breakage with glibc-2.43, unfortunately)</comment>
+    <requestid>1330636</requestid>
+  </revision>
 </revisionlist>

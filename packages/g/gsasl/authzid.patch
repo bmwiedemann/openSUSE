@@ -1,0 +1,30 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: 2026-01-26 19:07:49.531781521 +0100
+
+There is a compile error that gsasl itself did not catch (failure to
+test-build with own dogfood, aka. -Werror).
+
+openid20.c: In function 'openid20':
+openid20.c:259:12: error: use of NULL where non-null expected [CWE-476] [-Werror=analyzer-null-argument]
+ 259 |   else if (strcmp (authzid, gsasl_property_fast (server, GSASL_AUTHZID)) != 0)
+
+---
+ tests/openid20.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: gsasl-2.2.2/tests/openid20.c
+===================================================================
+--- gsasl-2.2.2.orig/tests/openid20.c
++++ gsasl-2.2.2/tests/openid20.c
+@@ -256,9 +256,9 @@ openid20 (Gsasl *c, Gsasl *s)
+ 	  gsasl_property_fast (server, GSASL_AUTHZID));
+   else if (authzid && !gsasl_property_fast (server, GSASL_AUTHZID))
+     fail ("did not get authzid? %s\n", authzid);
+-  else if (strcmp (authzid, gsasl_property_fast (server, GSASL_AUTHZID)) != 0)
++  else if (authzid == nullptr || strcmp (authzid, gsasl_property_fast (server, GSASL_AUTHZID)) != 0)
+     fail ("authzid comparison failed: got %s expected %s\n",
+-	  gsasl_property_fast (server, GSASL_AUTHZID), authzid);
++	  gsasl_property_fast (server, GSASL_AUTHZID), authzid ? authzid : "");
+ 
+   gsasl_finish (client);
+   gsasl_finish (server);

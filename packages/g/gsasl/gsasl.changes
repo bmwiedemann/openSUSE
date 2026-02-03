@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 26 17:57:26 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2.2
+  * The gsasl tool now uses the "gnulib" domain for translations.
+  * Updated for build fixes.
+- Delete 0003-Fix-more-transposed-calloc-arguments.patch,
+  0002-Fix-calloc-transposed-arguments.patch (merged)
+- Add authzid.patch
+
+-------------------------------------------------------------------
 Tue May 27 09:43:28 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
 
 - Rename patch uninitialized_x.patch to 0001-uninitialized_x.patch

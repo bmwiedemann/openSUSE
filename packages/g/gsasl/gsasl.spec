@@ -1,7 +1,7 @@
 #
 # spec file for package gsasl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gsasl
-Version:        2.2.1
+Version:        2.2.2
 Release:        0
 Summary:        Implementation of the SASL framework and a few common SASL mechanisms
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -28,8 +28,7 @@ Source2:        https://ftp.gnu.org/gnu/gsasl/%{name}-%{version}.tar.gz.sig
 # https://josefsson.org/54265e8c.txt#/libgsasl.keyring
 Source3:        %{name}.keyring
 Patch1:         0001-uninitialized_x.patch
-Patch2:         0002-Fix-calloc-transposed-arguments.patch
-Patch3:         0003-Fix-more-transposed-calloc-arguments.patch
+Patch2:         authzid.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel >= 0.19.8
 BuildRequires:  pkgconfig
@@ -80,7 +79,7 @@ from clients, and in clients to authenticate against servers.
 	--disable-static \
 	--disable-ntlm \
 	--with-gssapi-impl=mit \
-	--enable-gcc-warnings=error \
+	--enable-gcc-warnings=error
 #
 %make_build
 
@@ -92,8 +91,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %check
 %make_build check
 
-%post   -n libgsasl18 -p /sbin/ldconfig
-%postun -n libgsasl18 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgsasl18
 
 %files
 %{_bindir}/gsasl
