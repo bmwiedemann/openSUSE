@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jan 30 08:22:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.19.6:
+  https://github.com/ansible/ansible/blob/v2.19.6/changelogs/CHANGELOG-v2.19.rst
+  * Minor Changes
+    - ansible-test - Replace RHEL 10.0 remote with 10.1.
+    - ansible-test - Replace RHEL 9.5 remote with 9.7.
+  * Bugfixes
+    - Fix Windows LIB env var corruption
+      (ansible-collections/ansible.windows#297).
+    - ansible_local will no longer trigger variable injection
+      default value deprecation.
+    - package, service, gather_facts - fix templating
+      module_defaults for modules executed by these action plugins.
+      (#85848)
+    - winrm - Provide a better error message if a domain user is
+      specified using a User Principal Name (UPN) but the
+      pykerberos library is not installed so Kerberos is
+      unavailable.
+
+-------------------------------------------------------------------
 Thu Dec 11 08:53:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.19.5:
