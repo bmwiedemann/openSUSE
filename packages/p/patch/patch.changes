@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 29 09:24:15 UTC 2026 - Jean Delvare <jdelvare@suse.com>
+
+- CVE-2021-45261.patch: Clear range of pointers before they are
+  used/freed (boo#1194037 CVE-2021-45261).
+
+-------------------------------------------------------------------
 Sat Apr 12 19:05:33 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.8:
