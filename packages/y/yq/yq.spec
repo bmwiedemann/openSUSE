@@ -1,7 +1,7 @@
 #
 # spec file for package yq
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           yq
-Version:        4.48.2
+Version:        4.52.2
 Release:        0
 Summary:        A portable command-line YAML processor
 License:        MIT
@@ -35,7 +35,7 @@ Conflicts:      python3dist(yq)
 %else
 Conflicts:      python3-yq
 %endif
-BuildRequires:  golang(API) = 1.24
+BuildRequires:  golang(API) = 1.25
 
 %description
 A lightweight and portable command-line YAML processor. yq uses jq like syntax
