@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.10.1
+%define real_version 6.10.2
 %define short_version 6.10
 %define tar_name qtquick3d-everywhere-src
 %define tar_suffix %{nil}
@@ -30,13 +30,15 @@
 %global __requires_exclude qt6qmlimport\\((LightmapFile|Quick3DAssets|VirtualAssistant\\.Constants|robotassistant|.*Example|xr_shared).*
 #
 Name:           qt6-quick3d%{?pkg_suffix}
-Version:        6.10.1
+Version:        6.10.2
 Release:        0
 Summary:        API for creating 3D content and 3D user interfaces based on Qt Quick
 License:        GPL-3.0-only
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-quick3d-rpmlintrc
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-XR-fix-build-error-for-using-EGL-without-GL-ES.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt6Concurrent) = %{real_version}

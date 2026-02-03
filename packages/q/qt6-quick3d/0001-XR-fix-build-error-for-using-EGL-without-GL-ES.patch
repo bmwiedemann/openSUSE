@@ -1,0 +1,91 @@
+From 9a31fd29f47d1cb2868a778885bfd26adeec770f Mon Sep 17 00:00:00 2001
+From: Inho Lee <inho.lee@qt.io>
+Date: Mon, 19 Jan 2026 11:35:25 +0100
+Subject: [PATCH] XR: fix build error for using EGL without GL(ES)
+
+Amends a9184325f9c07996639ab2f0ac19e4b449c34ba5
+
+XR_USE_PLATFORM_EGL will only be used for linux opengl/opengles.
+
+For the 3rd party dependncy, EGL related types should be
+defined before including openxr_platform.h for XR_USE_PLATFORM_EGL
+
+Done-by: Peng Zhang
+Fixes: QTBUG-143480
+Pick-to: 6.8
+Change-Id: Iff8238965849604817f282ae7a3b2efaf5444fdd
+Reviewed-by: Paul Olav Tvete <paul.tvete@qt.io>
+Reviewed-by: Stanislav Aleksandrov <lightofmysoul@gmail.com>
+(cherry picked from commit e2facad90c1bd65d3f6e0008c4e497a9397fe93a)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+(cherry picked from commit ad1ffd558abfe629a5a39b6ffea3ff6e5802de50)
+---
+ src/xr/quick3dxr/openxr/CMakeLists.txt             |  2 +-
+ src/xr/quick3dxr/openxr/qopenxrgraphics_opengl.cpp |  4 ----
+ src/xr/quick3dxr/openxr/qopenxrplatform_p.h        | 12 +++++-------
+ 3 files changed, 6 insertions(+), 12 deletions(-)
+
+diff --git a/src/xr/quick3dxr/openxr/CMakeLists.txt b/src/xr/quick3dxr/openxr/CMakeLists.txt
+index 56cca56ee..fc23587e8 100644
+--- a/src/xr/quick3dxr/openxr/CMakeLists.txt
++++ b/src/xr/quick3dxr/openxr/CMakeLists.txt
+@@ -41,7 +41,7 @@ qt_internal_extend_target(Quick3DXr CONDITION LINUX AND QT_FEATURE_wayland
+ )
+ 
+ # Linux / egl
+-qt_internal_extend_target(Quick3DXr CONDITION LINUX AND QT_FEATURE_egl
++qt_internal_extend_target(Quick3DXr CONDITION LINUX AND QT_FEATURE_egl AND (QT_FEATURE_opengles2 OR QT_FEATURE_opengl)
+     DEFINES
+         XR_USE_PLATFORM_EGL
+     LIBRARIES
+diff --git a/src/xr/quick3dxr/openxr/qopenxrgraphics_opengl.cpp b/src/xr/quick3dxr/openxr/qopenxrgraphics_opengl.cpp
+index 706685c28..669da3429 100644
+--- a/src/xr/quick3dxr/openxr/qopenxrgraphics_opengl.cpp
++++ b/src/xr/quick3dxr/openxr/qopenxrgraphics_opengl.cpp
+@@ -10,10 +10,6 @@
+ 
+ #include <rhi/qrhi.h>
+ 
+-#ifdef XR_USE_PLATFORM_EGL
+-#include <EGL/egl.h>
+-#endif
+-
+ #if defined(XR_USE_PLATFORM_XLIB) || defined(XR_USE_PLATFORM_XCB)
+ #include <GL/glx.h>
+ #endif
+diff --git a/src/xr/quick3dxr/openxr/qopenxrplatform_p.h b/src/xr/quick3dxr/openxr/qopenxrplatform_p.h
+index 4e910e619..9bfab3229 100644
+--- a/src/xr/quick3dxr/openxr/qopenxrplatform_p.h
++++ b/src/xr/quick3dxr/openxr/qopenxrplatform_p.h
+@@ -29,16 +29,10 @@
+ # include <d3d12.h>
+ #endif
+ 
+-#ifdef XR_USE_GRAPHICS_API_OPENGL
++#if defined(XR_USE_GRAPHICS_API_OPENGL) || defined(XR_USE_GRAPHICS_API_OPENGL_ES)
+ # include <QtGui/QOpenGLContext>
+ #endif
+ 
+-
+-#ifdef XR_USE_GRAPHICS_API_OPENGL_ES
+-# include <QtGui/QOpenGLContext>
+-# include <EGL/egl.h>
+-#endif
+-
+ #ifdef XR_USE_PLATFORM_ANDROID
+ # include <QtCore/qnativeinterface.h>
+ # include <QtCore/QJniEnvironment>
+@@ -49,6 +43,10 @@
+ # include <xcb/glx.h>
+ #endif
+ 
++#if defined(XR_USE_PLATFORM_EGL) || defined(XR_USE_GRAPHICS_API_OPENGL_ES)
++# include <EGL/egl.h>
++#endif
++
+ #ifdef XR_USE_PLATFORM_XLIB
+ typedef struct __GLXFBConfigRec *GLXFBConfig;
+ typedef unsigned long GLXDrawable;
+-- 
+2.52.0
+
