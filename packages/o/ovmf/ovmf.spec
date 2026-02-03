@@ -1,7 +1,7 @@
 #
 # spec file for package ovmf
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,6 +79,8 @@ Patch11:        %{name}-BaseTools-Using-gcc12-for-building-image.patch
 Patch13:        %{name}-UefiCpuPkg-Disable-EFI-memory-attributes-protocol.patch
 # Bug 1244218 - ovmf: non-deterministic .bin files (about unreproducible)
 Patch14:        %{name}-OvmfPkg-ArmVirtPkg-Keep-JSON-stack-cookie-files.patch
+# Bug 1257495 - nasm > 3 is stricter
+Patch15:        %{name}-nasm3.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}

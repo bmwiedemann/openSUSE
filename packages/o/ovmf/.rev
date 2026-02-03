@@ -1457,4 +1457,14 @@ more mature.
     <comment>Add jsc#PED-15004 to the changelog.</comment>
     <requestid>1328417</requestid>
   </revision>
+  <revision rev="126" vrev="3">
+    <srcmd5>e4883c5c73c46e0d0b412798f8ad9497</srcmd5>
+    <version>202511</version>
+    <time>1770150480</time>
+    <user>anag_factory</user>
+    <comment>- bsc#1257495: NASM (3.00+) requires explicit size hints:
+  Add ovmf-nasm3.patch
+</comment>
+    <requestid>1330646</requestid>
+  </revision>
 </revisionlist>
