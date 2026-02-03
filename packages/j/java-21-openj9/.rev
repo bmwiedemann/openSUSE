@@ -103,4 +103,12 @@
     <comment>October 2025 CPU</comment>
     <requestid>1314648</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9b77f2ea0000e08c1a80fde81561fc9f</srcmd5>
+    <version>21.0.10.0</version>
+    <time>1770150715</time>
+    <user>anag_factory</user>
+    <comment>January 2026 CPU fixes + OpenJ9 0.57.0</comment>
+    <requestid>1330662</requestid>
+  </revision>
 </revisionlist>
