@@ -473,4 +473,12 @@
     <comment>new version</comment>
     <requestid>1321864</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>724b52c66b89721d32add56a0031d8f1</srcmd5>
+    <version>1.4.341</version>
+    <time>1770150492</time>
+    <user>anag_factory</user>
+    <comment>- Update to release SDK-1.4.341.0</comment>
+    <requestid>1330642</requestid>
+  </revision>
 </revisionlist>

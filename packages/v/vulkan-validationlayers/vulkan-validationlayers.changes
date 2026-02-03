@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb  2 19:47:56 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.4.341.0
+  * layers: Validate suspend-resume mismatch within command buffers
+  * layers: Add PerPrimitiveEXT check
+  * gpuav: Add SetMeshOutputsEXT check
+  * layers: Add VkBuffer VK_QCOM_tile_memory_heap support
+  * layers: Validate VK_EXT_shader_long_vector
+  * layers: Add VK_EXT_descriptor_heap and Add
+    VK_EXT_ray_tracing_invocation_reorder
+
+-------------------------------------------------------------------
 Tue Dec  9 22:17:52 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.4.335.0
