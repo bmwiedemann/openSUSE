@@ -1,0 +1,77 @@
+From 3e68238ed7c9d3f26f8bfaf03780f79ce7c7043e Mon Sep 17 00:00:00 2001
+From: Alynx Zhou <alynx.zhou@gmail.com>
+Date: Fri, 30 Jan 2026 21:02:50 +0800
+Subject: [PATCH] mixer-control: Check whether we are handling new device in
+ sync_devices()
+
+Previously sync_devices() is only called when there is a new device, but
+with [1] we always call it, and create duplicated new devices. Fix it by
+check whether we are handling new devices before creating.
+
+Closes: https://gitlab.gnome.org/GNOME/libgnome-volume-control/-/issues/39
+
+[1]: https://gitlab.gnome.org/GNOME/libgnome-volume-control/-/commit/b9d0b120c6022cc2d1a728820a81beacc9360366
+---
+ gvc-mixer-control.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/gvc-mixer-control.c b/gvc-mixer-control.c
+index a8c75a0..51e389f 100644
+--- a/gvc-mixer-control.c
++++ b/gvc-mixer-control.c
+@@ -1336,6 +1336,7 @@ clear_stream_from_devices (GvcMixerControl    *control,
+ static void
+ sync_devices (GvcMixerControl *control,
+               GvcMixerStream*  stream,
++              gboolean         is_new,
+               gboolean         is_bluetooth)
+ {
+         /* Go through ports to see what outputs can be created. */
+@@ -1350,7 +1351,7 @@ sync_devices (GvcMixerControl *control,
+                 return;
+         }
+ 
+-        if (stream_ports == NULL) {
++        if (stream_ports == NULL && is_new) {
+                 GvcMixerUIDevice *device;
+                 GObject *object;
+ 
+@@ -1547,7 +1548,7 @@ update_sink (GvcMixerControl    *control,
+         is_bt = is_bluetooth (info->proplist);
+         /* Sync devices as the port on the stream might have changed */
+         if (!is_new)
+-                sync_devices (control, stream, is_bt);
++                sync_devices (control, stream, is_new, is_bt);
+ 
+         /* Messy I know but to set the port everytime regardless of whether it has changed will cost us a
+          * port change notify signal which causes the frontend to resync.
+@@ -1576,7 +1577,7 @@ update_sink (GvcMixerControl    *control,
+                 add_stream (control, stream);
+                 /* Always sync on a new stream to able to assign the right stream id
+                  * to the appropriate outputs (multiple potential outputs per stream). */
+-                sync_devices (control, stream, is_bt);
++                sync_devices (control, stream, is_new, is_bt);
+         } else {
+                 g_signal_emit (G_OBJECT (control),
+                                signals[STREAM_CHANGED],
+@@ -1685,7 +1686,7 @@ update_source (GvcMixerControl      *control,
+         is_bt = is_bluetooth (info->proplist);
+         /* Sync devices as the port on the stream might have changed */
+         if (!is_new)
+-                sync_devices (control, stream, is_bt);
++                sync_devices (control, stream, is_new, is_bt);
+ 
+         if (info->active_port != NULL) {
+                 if (is_new)
+@@ -1707,7 +1708,7 @@ update_source (GvcMixerControl      *control,
+                                      GUINT_TO_POINTER (info->index),
+                                      g_object_ref (stream));
+                 add_stream (control, stream);
+-                sync_devices (control, stream, is_bt);
++                sync_devices (control, stream, is_new, is_bt);
+         } else {
+                 g_signal_emit (G_OBJECT (control),
+                                signals[STREAM_CHANGED],
+-- 
+GitLab
+

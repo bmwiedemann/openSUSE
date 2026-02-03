@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 30 13:29:53 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add 32.patch: Fix duplicated new devices introduced by
+  glgo#GNOME/libgnome-volume-control!31
+  (bsc#1257512, glgo#GNOME/libgnome-volume-control#39).
+
+-------------------------------------------------------------------
 Thu Jan 22 07:33:32 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 31.patch: Fix gvc to not crash with newer pipewire and fix
