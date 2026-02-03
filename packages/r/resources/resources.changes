@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Feb  2 08:59:18 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.10.0:
+  + Bug fixes:
+    - Column names were not announced to screen readers
+    - Apps view and Processes view were hard to navigate using just
+      a keyboard
+    - CPU frequency reading could be off for some users
+    - Titles of drives were not updated when the data unit prefix
+      was changed
+  + New features:
+    - Added support for AMD NPUs using the amdxdna driver (note
+      that your kernel and firmware needs to be up-to-date for
+      proper detection)
+    - Searching for multiple process names at once is now possible
+      using the “|” operator in the search field
+    - Added support for detecting AppImage apps managed by
+      appimaged
+    - Added support for detecting apps managed by Portable
+    - LXC bridge network interfaces are now properly detected
+  + Improvements:
+    - CPU usage of Resources’ companion process has been cut down
+      significantly
+    - Resources’ companion process now also offers debug logs
+    - Improved app detection by adhering to the XDG standard for
+      cgroups better
+    - Per-process memory usage is now determined by VmRSS — this
+      will lead to higher memory readings overall. Further
+      improvements to gathering per-process memory usage are being
+      explored along with ways to perhaps make this a
+      user-controllable option
+    - Less Cargo dependencies
+    - AdwAboutDialog’s newer features are now in use
+    - Decimal base will now always be used for network speeds when
+      displayed in bits per second
+
+-------------------------------------------------------------------
 Mon Oct 27 07:07:19 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Align with standard rust packaging via service.
