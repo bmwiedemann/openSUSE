@@ -1,7 +1,7 @@
 #
 # spec file for package pdfarranger
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020 Karl Cheng <qantas94heavy@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@
 %endif
 
 Name:           pdfarranger
-Version:        1.12.1
+Version:        1.13.0
 Release:        0
 Summary:        Merge, split, rotate, crop, and rearrange pages of PDF documents
 License:        GPL-3.0-only

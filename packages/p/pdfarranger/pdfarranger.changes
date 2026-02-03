@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Feb  1 20:13:41 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.13.0 (fixes boo#1257190)
+  * New / improved features:
+    - Store selection state and scrollbar state in undomanager
+    - Support resizing of pasted overlay/underlay
+    - Add support for searching of text in PDF
+    - Scroll iconview one row up/down with Alt + mouse wheel scroll
+    - Support import of JPEG 2000 (.jp2) on Windows and Linux (if img2pdf is available)
+    - Support import of AVIF images (.avif) on Windows
+    - Add version info about more software in About dialog
+    - Add Vietnamese translation
+    - Add Georgian translation
+  * Fixes:
+    - Fix crop-white-borders for pages with overlay/underlay
+    - Some speed improvements
+    - Fix misaligned pages when generating booklet
+    - Stop adding files/pages on first exception
+    - Bundle poppler encoding files with Windows build
+
+-------------------------------------------------------------------
 Thu Jul  3 06:22:39 UTC 2025 - Atri Bhattacharya <badshah400@gmai.com>
 
 - Specfile cleanups:

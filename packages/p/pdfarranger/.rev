@@ -125,4 +125,28 @@
 * Add 'Requires: python-packaging': new version has 'imports' on it. (forwarded request 1290123 from badshah400)</comment>
     <requestid>1290532</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a30bcc05f5e4bbd7433aebbd5f3aeba7</srcmd5>
+    <version>1.13.0</version>
+    <time>1770150638</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.13.0 (fixes boo#1257190)
+  * New / improved features:
+    - Store selection state and scrollbar state in undomanager
+    - Support resizing of pasted overlay/underlay
+    - Add support for searching of text in PDF
+    - Scroll iconview one row up/down with Alt + mouse wheel scroll
+    - Support import of JPEG 2000 (.jp2) on Windows and Linux (if img2pdf is available)
+    - Support import of AVIF images (.avif) on Windows
+    - Add version info about more software in About dialog
+    - Add Vietnamese translation
+    - Add Georgian translation
+  * Fixes:
+    - Fix crop-white-borders for pages with overlay/underlay
+    - Some speed improvements
+    - Fix misaligned pages when generating booklet
+    - Stop adding files/pages on first exception
+    - Bundle poppler encoding files with Windows build</comment>
+    <requestid>1330529</requestid>
+  </revision>
 </revisionlist>
