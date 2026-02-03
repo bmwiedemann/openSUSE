@@ -1,7 +1,7 @@
 #
 # spec file for package ansible
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define ansible_community_major_version 13
-%define required_ansible_core_version 2.20.1
+%define required_ansible_core_version 2.20.2
 %define next_ansible_core_version 2.21.0
 
 
@@ -43,7 +43,7 @@
 %endif
 
 Name:           ansible
-Version:        13.2.0
+Version:        13.3.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
