@@ -17,9 +17,9 @@
 
 
 Name:           gap-polymaking
-Summary:        GAP: Interfacing the geometry software polymake
-Version:        0.8.7
+Version:        0.8.8
 Release:        0
+Summary:        GAP: Interfacing the geometry software polymake
 License:        GPL-2.0
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/polymaking/
