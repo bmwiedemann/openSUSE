@@ -18,7 +18,7 @@
 
 %define         appid info.febvre.Komikku
 Name:           Komikku
-Version:        1.99.0
+Version:        1.101.0
 Release:        0
 Summary:        A manga reader for GNOME
 # appdata.xml is CC-BY-4.0
@@ -45,12 +45,14 @@ BuildRequires:  pkgconfig(python3)
 Requires:       WebKitGTK-6.0
 Requires:       python3-Brotli >= 1.1.0
 Requires:       python3-Pillow >= 10.3.0
+Requires:       python3-PyJWT
 Requires:       python3-Unidecode
 Requires:       python3-beautifulsoup4
 Requires:       python3-cffi
 Requires:       python3-cloudscraper
 Requires:       python3-cryptography
 Requires:       python3-dateparser >= 1.1.6
+Requires:       python3-ebooklib
 Requires:       python3-emoji
 Requires:       python3-gobject
 Requires:       python3-keyring >= 21.6.0
@@ -60,6 +62,7 @@ Requires:       python3-natsort >= 7.1.1
 Requires:       python3-piexif
 Requires:       python3-pure-protobuf >= 3.0.0
 Requires:       python3-pycairo
+Requires:       python3-pypdf
 Requires:       python3-python-magic
 Requires:       python3-pytz
 Requires:       python3-rarfile

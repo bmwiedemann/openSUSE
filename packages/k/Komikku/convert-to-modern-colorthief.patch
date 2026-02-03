@@ -1,12 +1,12 @@
 diff -rubN komikku/komikku/models/database/mangas.py komikku-patched/komikku/models/database/mangas.py
---- komikku/komikku/models/database/mangas.py	2026-01-05 01:59:13.000000000 +0100
-+++ komikku-patched/komikku/models/database/mangas.py	2026-01-09 00:34:13.294683759 +0100
+--- komikku/komikku/models/database/mangas.py	2026-01-16 00:20:03.000000000 +0100
++++ komikku-patched/komikku/models/database/mangas.py	2026-01-21 01:15:21.471552212 +0100
 @@ -13,7 +13,7 @@
  import shutil
  import time
  
 -from colorthief import ColorThief
-+from modern_colorthief import get_pallete
++from modern_colorthief import get_palette
  from PIL import Image
  from PIL import ImageFilter
  from PIL import ImageStat
@@ -15,13 +15,13 @@ diff -rubN komikku/komikku/models/database/mangas.py komikku-patched/komikku/mod
                      return data
  
 -        palette = ColorThief(cover_path).get_palette(color_count=2, quality=1)[:2]
-+        palette = get_pallete(cover_path).get_palette(color_count=2, quality=1)[:2]
++        palette = get_palette(cover_path).get_palette(color_count=2, quality=1)[:2]
          if len(palette) != 2:
              # Single color image?
              return None
 diff -rubN komikku/requirements.txt komikku-patched/requirements.txt
---- komikku/requirements.txt	2026-01-05 01:59:13.000000000 +0100
-+++ komikku-patched/requirements.txt	2026-01-09 00:34:23.916562365 +0100
+--- komikku/requirements.txt	2026-01-16 00:20:03.000000000 +0100
++++ komikku-patched/requirements.txt	2026-01-21 01:16:00.134027904 +0100
 @@ -4,7 +4,7 @@
  
  beautifulsoup4
@@ -29,5 +29,5 @@ diff -rubN komikku/requirements.txt komikku-patched/requirements.txt
 -colorthief
 +modern_colorthief
  dateparser >= 1.1.6
+ ebooklib
  emoji
- keyring >= 21.6.0

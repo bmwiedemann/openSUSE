@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jan 29 12:34:46 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.101.0:
+  * [Reader] Webtoon pager: Added missing navigation with Page Up
+    and Page Down of numpad
+  * [Servers] Invincible ComicsVF (FR): Disabled
+  * [Servers] Lovers Toon (pt_BR): Re-enabled
+  * [Servers] MangaCrab (ES): Update
+  * [Servers] Manganelo (EN): Update
+  * [Servers] Phenix Scans (FR): Update
+  * [Servers] Terco Scans (EN): Disabled
+  * [L10n] Updated Turkish translation
+
+-------------------------------------------------------------------
+Wed Jan 21 00:12:42 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.100.0:
+  * [Servers] Added Hijala (AR)
+  * [Servers] Local: Added EPUB format support
+  * [Servers] DocTruyen3Q (VI): Update
+  * [Servers] Mangas Origines (FR): Update
+  * [L10n] Updated Italian and Portuguese (Brazil) translations
+- fix a typo in the patch
+- requires python-ebooklib, python-pypdf and python-PyJWT, as a
+  new feature got implemented to read local files
+
+-------------------------------------------------------------------
 Thu Jan  8 23:24:26 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.99.0:

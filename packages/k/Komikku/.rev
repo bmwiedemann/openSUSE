@@ -706,4 +706,31 @@
   avoid 1.8 MB of (rust) dependencies (forwarded request 1326271 from rrahl0)</comment>
     <requestid>1326318</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>d2e3ca610d5b354cda1b9768ab157cfb</srcmd5>
+    <version>1.101.0</version>
+    <time>1770150840</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.101.0:
+  * [Reader] Webtoon pager: Added missing navigation with Page Up
+    and Page Down of numpad
+  * [Servers] Invincible ComicsVF (FR): Disabled
+  * [Servers] Lovers Toon (pt_BR): Re-enabled
+  * [Servers] MangaCrab (ES): Update
+  * [Servers] Manganelo (EN): Update
+  * [Servers] Phenix Scans (FR): Update
+  * [Servers] Terco Scans (EN): Disabled
+  * [L10n] Updated Turkish translation
+
+- Update to version 1.100.0:
+  * [Servers] Added Hijala (AR)
+  * [Servers] Local: Added EPUB format support
+  * [Servers] DocTruyen3Q (VI): Update
+  * [Servers] Mangas Origines (FR): Update
+  * [L10n] Updated Italian and Portuguese (Brazil) translations
+- fix a typo in the patch
+- requires python-ebooklib, python-pypdf and python-PyJWT, as a
+  new feature got implemented to read local files (forwarded request 1330093 from rrahl0)</comment>
+    <requestid>1330715</requestid>
+  </revision>
 </revisionlist>
