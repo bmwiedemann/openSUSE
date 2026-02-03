@@ -58,4 +58,14 @@
   * Add an explicit test for Seagull.Statement.bind_text with a NULL value</comment>
     <requestid>1328393</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>364ceceddcf2d8859219c39370202101</srcmd5>
+    <version>0.7.0</version>
+    <time>1770150594</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.7.0:
+  * Add support for int64s
+  * Add support for GError</comment>
+    <requestid>1330424</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package seagull
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         sover 0
 Name:           seagull
-Version:        0.6.1
+Version:        0.7.0
 Release:        0
 Summary:        A SQLite helper library
 License:        LGPL-2.1-or-later

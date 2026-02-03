@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  2 13:44:34 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.7.0:
+  * Add support for int64s
+  * Add support for GError
+
+-------------------------------------------------------------------
 Tue Jan 20 23:29:36 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.6.1:
