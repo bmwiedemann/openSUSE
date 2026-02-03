@@ -19,13 +19,19 @@
 #!BuildTag: opensuse/kea:3.0
 #!BuildTag: opensuse/kea:latest
 
-FROM opensuse/tumbleweed:latest
+FROM opensuse/bci/bci-micro:latest AS target
+FROM opensuse/tumbleweed:latest AS builder
+COPY --from=target / /target
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends kea util-linux
+    export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1; \
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends kea util-linux
+
+RUN set -euo pipefail; zypper -n install --no-recommends systemd && \
+    systemd-tmpfiles --create --root /target
 
 # cleanup logs and temporary files
-RUN set -euo pipefail; zypper -n clean -a; \
+RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; \
     rm -rf {/target,}/run/*; \
     rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
@@ -34,8 +40,9 @@ RUN set -euo pipefail; zypper -n clean -a; \
     command -v zypper >/dev/null 2>&1 || rm -f /var/lib/zypp/AutoInstalled
 
 # set the day of last password change to empty
-RUN set -euo pipefail; sed -i 's/^\([^:]*:[^:]*:\)[^:]*\(:.*\)$/\1\2/' /etc/shadow
-
+RUN set -euo pipefail; sed -i 's/^\([^:]*:[^:]*:\)[^:]*\(:.*\)$/\1\2/' /target/etc/shadow
+FROM opensuse/bci/bci-micro:latest
+COPY --from=builder /target /
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.application.kea
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed Kea DHCP Server"

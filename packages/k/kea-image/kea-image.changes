@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  3 09:37:46 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- add systemd-tmpfiles to create necessary directories outside /usr
+
+-------------------------------------------------------------------
 Thu Jan  1 14:16:34 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - update copyright year
