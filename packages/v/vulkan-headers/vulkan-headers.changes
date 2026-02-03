@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Feb  2 19:50:08 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.4.341.0
+  * New extensions:
+  * The VK_NV_compute_occupancy_priority extension provides
+    applications with control over how their compute workloads make
+    use of GPU compute resources.
+  * VK_EXT_shader_long_vector extension adds support for using
+    vector types with more than four components in SPIR-V.
+  * VK_EXT_texture_compression_astc_3d is the other new extension
+    and it adds support for 3D textures compressed using Adaptive
+    Scalable Texture Compression.
+  * VK_EXT_descriptor_heap allows for explicit management of
+    descriptors and the memory used to store descriptors and
+    addresses issues uncovered with VK_EXT_descriptor_buffer and
+    should provide more portable guarantees and more predictable
+    performance characteristics.
+  * VK_KHR_internally_synchronized_queues allows applications to
+    opt-in to queues to be internally synchronized (so that there
+    is no need to do so externally).
+  * VK_EXT_shader_subgroup_partitioned allows support for a new
+    class of shader group operations on subgroups via the GLSL
+    GL_NV_shader_subgroup_partitioned and SPIR-V
+    SPV_EXT_shader_subgroup_partitioned extensions.
+  * VK_QCOM_cooperative_matrix_conversion adds support for new
+    SPIR-V shader instructions to allow loading and storing a
+    cooperative matrix without needing to stage through shared
+    memory and to allow bit-casting arrays, per the extension text.
+
+-------------------------------------------------------------------
 Tue Dec  9 23:10:54 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.4.335.0
