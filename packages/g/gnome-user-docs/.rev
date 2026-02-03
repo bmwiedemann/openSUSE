@@ -861,4 +861,14 @@ New stable release</comment>
     <comment></comment>
     <requestid>1311125</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>d25ab0390cf9956a4bdfe5ced9ea6d83</srcmd5>
+    <version>49.4</version>
+    <time>1770150362</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.4:
+  + Updates to GNOME Help
+  + Updated translations. (forwarded request 1330062 from iznogood)</comment>
+    <requestid>1330723</requestid>
+  </revision>
 </revisionlist>
