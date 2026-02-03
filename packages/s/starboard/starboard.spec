@@ -17,7 +17,7 @@
 
 
 Name:           starboard
-Version:        0.15.30
+Version:        0.15.32
 Release:        0
 Summary:        Kubernetes-native security toolkit
 License:        Apache-2.0
