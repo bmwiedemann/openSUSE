@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 31 09:30:51 UTC 2026 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Update to version 4.2.4
+  * Eliminate usage of 'return' in 'finally' blocks (#438)
+- Changes in version 4.2.3
+  Ensure that task results are delivered during pool 
+  shutdown (#435)
+
+-------------------------------------------------------------------
 Mon Oct 27 15:38:45 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 4.2.2
