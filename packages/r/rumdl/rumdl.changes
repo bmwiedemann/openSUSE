@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Mon Feb 02 05:45:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.9:
+  * Fixed
+    - MD033: Don't remove HTML tags that can't be converted to
+      Markdown
+      - Previously, auto-fix would destructively remove tags like
+        <img>, <span>, and <div>
+      - Now only safe fixable tags (em, i, strong, b, code, br, hr)
+        are converted
+      - All other HTML tags are left unchanged as expected
+    - Fix mode: Respect per-file-flavor configuration
+      - rumdl check --fix now correctly uses per-file flavor
+        settings from [per-file-flavor]
+      - Previously used global flavor instead of file-specific
+        flavor during fix coordination
+- Update to version 0.1.8:
+  * Added
+    - Inline config: Automatic support for all rules (#364)
+      - All rules now automatically support inline configuration
+        via <!-- rumdl-configure-file --> comments
+      - Engine-level implementation ensures consistent behavior
+        across rules
+      - Added get_effective_config helper for inline config support
+    - MD033: Opt-in auto-fix for inline HTML conversion
+      - New fix = true option enables auto-fix (disabled by
+        default)
+      - Converts simple inline HTML to Markdown equivalents
+      - Conservative approach: only fixes clear-cut cases
+    - MD036: Opt-in auto-fix for emphasis-as-heading
+      - New fix = true option enables auto-fix (disabled by
+        default)
+      - Converts emphasis-only paragraphs to proper headings
+    - Test: Comprehensive MkDocs extension regression tests
+      - Added 197 tests across 20 modules for MkDocs flavor
+      - Covers admonitions, content tabs, mkdocstrings, keys,
+        snippets, math, and more
+      - Tests edge cases, cross-flavor comparison, fix
+        preservation, and malformed syntax
+  * Fixed
+    - MD013: Preserve MkDocs admonition and tab content during
+      reflow (#361)
+      - Reflow now preserves required indentation inside MkDocs
+        containers
+      - Admonition content no longer incorrectly converted to
+        fenced code blocks
+      - Content tabs (=== "Tab") properly handled during line
+        wrapping
+    - MD013: Prevent whitespace accumulation in sentence-per-line
+      reflow (#360)
+      - Fixed infinite loop causing "failed to converge after 100
+        iterations" error
+      - Sentence-per-line mode now produces stable, idempotent
+        output
+    - MD064: Support inline configure-file comments (#364)
+      - allow-sentence-double-space now works with inline HTML
+        config comments
+      - Sentences ending with markup (`code`.) now correctly
+        recognized
+- Update to version 0.1.7:
+  * Added
+    - MD060: Loose last column option (#356)
+      - loose-last-column = true skips padding the last column in
+        body rows
+      - Keeps tables compact while maintaining alignment for other
+        columns
+      - Useful for tables with variable-length description columns
+      - (thanks @Ravlen for the suggestion)
+    - MD060: Separate header/body alignment (#348)
+      - column-align-header controls alignment for the header row
+        only
+      - column-align-body controls alignment for body rows only
+      - Existing column-align remains as fallback for both
+      - (thanks @pygarap for the suggestion)
+    - MD018: MagicLink support in MkDocs flavor (#355)
+      - When using flavor = "mkdocs", MD018 skips PyMdown
+        MagicLink-style issue references
+      - #10 and #123 at the start of lines are not flagged as
+        malformed headings
+      - Non-numeric patterns like #Summary are still flagged
+        correctly
+      - (thanks @kattni for the suggestion)
+  * Changed
+    - Docs: Add MD073 to opt-in rules table
+      - MD073 (TOC validation) now listed in the opt-in rules
+        section of docs/RULES.md
+    - Release: Add SchemaStore update reminder
+      - verify-release-ready.sh now warns when rumdl.schema.json
+        has changed
+      - Reminds to submit a PR to SchemaStore after releasing
+    - Release: Add opt-in rules documentation check
+      - verify-release-ready.sh verifies all opt-in rules are
+        documented in docs/RULES.md
+      - Prevents forgetting to document new opt-in rules
+    - Release: Add config validation check
+      - verify-release-ready.sh now tests all rule config options
+        for validation warnings
+      - Catches schema bugs where valid options show "Unknown
+        option" warnings
+  * Fixed
+    - MD060: Fix config validation warnings for optional alignment
+      options
+      - column-align-header and column-align-body no longer show
+        "Unknown option" warnings
+      - Schema now explicitly includes all valid config keys
+    - MD073: Add missing indent option to config schema
+      - indent option was accepted but not in the validation schema
+    - CLI: Remove noisy hints from completions command
+      - Shell completion output is now cleaner without installation
+        hints in the generated script
+
+-------------------------------------------------------------------
 Fri Jan 30 07:23:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.6:
@@ -498,7 +610,7 @@ Tue Jan 13 12:05:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
         separate groups
       - Fixes cases where MD005 and MD007 would fight over
         indentation
-  * - Update to version 0.0.215:
+- Update to version 0.0.215:
   * Fixed
     - MD057: Exclude footnote definitions from relative link
       checking (fixes #286)
@@ -515,7 +627,7 @@ Tue Jan 13 12:05:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
       - When fixing list indentation inside blockquotes, the >
         prefix is now preserved
       - Previously, auto-fix could break blockquote structure
-  * - Update to version 0.0.214:
+- Update to version 0.0.214:
   * Added
     - Per-file flavor configuration (fixes #283)
       - Configure different markdown flavors for specific file
@@ -550,7 +662,7 @@ Tue Jan 13 12:05:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
         positives inside blockquotes
       - Fixes cases where multi-paragraph list items in blockquotes
         triggered warnings
-  * - Update to version 0.0.213:
+- Update to version 0.0.213:
   * Fixed
     - MD031/MD046: Detect code blocks inside lists (fixes #276)
       - MD031 with list-items=true now correctly flags fenced code
@@ -582,7 +694,7 @@ Tue Jan 13 12:05:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
         list marker spacing checks
       - Fixes incorrect warnings about list spacing inside LaTeX
         display math
-  * - Update to version 0.0.212:
+- Update to version 0.0.212:
   * Added
     - CLI: Show relative file paths in output by default (fixes
       #266)
@@ -621,7 +733,7 @@ Tue Jan 13 12:05:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
         formatting
       - Fixed config warning about "unknown option: enabled"
       - Compute fix in check() to enable LSP formatting
-  * - Update to version 0.0.211:
+- Update to version 0.0.211:
   * Fixed
     - MD032: Handle blockquote continuation lines correctly (fixes
       #260)
@@ -642,7 +754,7 @@ Tue Jan 13 12:05:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
       - MD070: nested-code-fence-collision
       - MD071: blank-line-after-frontmatter
       - MD072: frontmatter-key-sort
-  * - Update to version 0.0.210:
+- Update to version 0.0.210:
   * Added
     - MD071: Blank line after frontmatter (new rule)
       - Enforces a blank line between frontmatter closing delimiter
@@ -672,7 +784,7 @@ Tue Jan 13 12:05:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
     - MD072: Stop at TOML table headers when extracting keys
       - TOML table headers like [section] now properly terminate
         key extraction
-  * - Update to version 0.0.209:
+- Update to version 0.0.209:
   * Added
     - MD070: Nested code fence collision detection (new rule)
       - Detects when inner code fences would prematurely close
@@ -743,7 +855,7 @@ Tue Jan 13 12:05:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
         regardless of actual severity level
       - JSON/JSON Lines/Azure formatters now correctly output
         "error", "warning", or "info" based on actual severity
-  * - Update to version 0.0.208:
+- Update to version 0.0.208:
   * Changed
     - Reflow: Replace manual emphasis parsing with pulldown-cmark
       - Use pulldown-cmark for CommonMark-compliant emphasis, bold,
@@ -811,7 +923,7 @@ Tue Jan 13 12:05:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
     - Reflow: Preserve Hugo shortcodes as atomic elements
       - Hugo shortcodes ({{< >}} and {{% %}}) are no longer broken
         across lines during text reflow
-  * - Update to version 0.0.207:
+- Update to version 0.0.207:
   * Added
     - CLI: Add --flavor option to override markdown flavor
       - New CLI flag allows overriding the markdown flavor for a
@@ -838,7 +950,7 @@ Tue Jan 13 12:05:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
     - Docs: Add mise as an installation option
       - README now includes mise (formerly rtx) as an alternative
         installation method
-  * - Update to version 0.0.206:
+- Update to version 0.0.206:
   * Fixed
     - MD013: Apply inline config before should_skip optimization
       (fixes #241)
@@ -860,7 +972,7 @@ Tue Jan 13 12:05:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
         longer cause a panic
       - Fixed by using byte indices instead of character indices
         for string slicing
-  * - Update to version 0.0.205:
+- Update to version 0.0.205:
   * Fixed
     - MD037: Skip multi-line inline code spans
       - Asterisks inside code spans that cross line boundaries no
@@ -895,7 +1007,7 @@ Tue Jan 13 12:05:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
       - CommonMark-compliant tab expansion now uses shared
         visual_indent utility
       - Consistent indentation detection across all rules
-  * - Update to version 0.0.204:
+- Update to version 0.0.204:
   * Fixed
     - MD007: Use per-parent indent logic instead of document-wide
       style
@@ -917,7 +1029,7 @@ Tue Jan 13 12:05:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
       - Ensures consistent position tracking between editor and
         command-line
   * Downloads
-  * - Update to version 0.0.203:
+- Update to version 0.0.203:
   * Added
     - Config: Implement Ruff-style config inheritance model
       - User config (~/.config/rumdl/) now serves as base, project
@@ -961,7 +1073,7 @@ Tue Jan 13 12:05:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
         index with different column positions
       - Deduplication now ignores column differences, preventing
         duplicate warnings
-  * - Update to version 0.0.202:
+- Update to version 0.0.202:
   * Added
     - MD069 (no-duplicate-list-markers): Detect accidental
       duplicate list markers (fixes #227)
@@ -991,7 +1103,7 @@ Tue Jan 13 12:05:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
       - Added LSP server documentation
       - Added footnote rules documentation and cache configuration
       - Added opt-in rules section to RULES.md
-  * - Update to version 0.0.201:
+- Update to version 0.0.201:
   * Added
     - CLI: Add --fail-on flag to control exit code by severity
       - Configure minimum severity level that triggers non-zero
@@ -1041,7 +1153,7 @@ Tue Jan 13 12:05:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
       - Prevents incorrect lowercasing of control character
         representations
       - Supports full range: ^@ through ^_ and ^A through ^Z
-  * - Update to version 0.0.200:
+- Update to version 0.0.200:
   * Added
     - CLI: Add --no-defaults flag to rumdl config command (fixes
       #218)
@@ -1155,7 +1267,7 @@ Tue Jan 13 12:05:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
       - Moved Issue #209 tests to tests/rules/md007_test.rs
       - Moved Issue #197 tests to tests/cli_integration_tests.rs
       - Removed issueXXX-named test files per project conventions
-  * - Update to version 0.0.199:
+- Update to version 0.0.199:
   * Fixed
     - MD063 (heading-capitalization): Fix preserve-cased-words for
       iOS and ignore-words for first word (fixes #215, #216)
