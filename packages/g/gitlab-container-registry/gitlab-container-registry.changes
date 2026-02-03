@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb 03 11:54:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.36.0:
+  * Features
+    - bbm: add configuration_media_type_id_convert_to_bigint
+      migration (eb27d80)
+  * Dependencies
+    - build(deps): update module github.com/alicebob/miniredis/v2
+      to v2.36.1
+    - build(deps): update module github.com/sirupsen/logrus to
+      v1.9.4
+    - build(deps): update module cloud.google.com/go/storage to
+      v1.59.2
+    - build(deps): update module github.com/redis/go-redis/v9 to
+      v9.17.3
+    - build(deps): update module github.com/olekukonko/tablewriter
+      to v1.1.3
+
+-------------------------------------------------------------------
 Wed Jan 28 06:29:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.35.0:
