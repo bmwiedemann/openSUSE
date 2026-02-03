@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 30 13:46:22 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add gnome-control-center-gvc-32.patch: Fix duplicated new devices
+  introduced by glgo#GNOME/libgnome-volume-control!31
+  (bsc#1257512, glgo#GNOME/libgnome-volume-control#39).
+
+-------------------------------------------------------------------
 Thu Jan 22 08:51:58 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add gnome-control-center-gvc-31.patch: Fix crash with newer

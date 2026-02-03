@@ -38,6 +38,8 @@ Source99:       %{name}-rpmlintrc
 
 # PATCH-FIX-UPSTREAM gnome-control-center-gvc-31.patch glgo#GNOME/libgnome-volume-control!31 alynx.zhou@suse.com -- Fix crash with newer pipewire on switching bluetooth profile
 Patch1:         gnome-control-center-gvc-31.patch
+# PATCH-FIX-UPSTREAM gnome-control-center-gvc-32.patch bsc#1257512, glgo#GNOME/libgnome-volume-control!32 alynx.zhou@suse.com -- Fix duplicated new devices introduced by glgo#GNOME/libgnome-volume-control!31
+Patch2:         gnome-control-center-gvc-32.patch
 
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-system-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.

@@ -1,0 +1,56 @@
+diff --unified --recursive --text --new-file --color gnome-control-center-49.3/subprojects/gvc/gvc-mixer-control.c gnome-control-center-49.3.new/subprojects/gvc/gvc-mixer-control.c
+--- gnome-control-center-49.3/subprojects/gvc/gvc-mixer-control.c	2026-01-30 21:43:59.573517475 +0800
++++ gnome-control-center-49.3.new/subprojects/gvc/gvc-mixer-control.c	2026-01-30 21:43:37.860960567 +0800
+@@ -1337,6 +1337,7 @@
+ static void
+ sync_devices (GvcMixerControl *control,
+               GvcMixerStream*  stream,
++              gboolean         is_new,
+               gboolean         is_bluetooth)
+ {
+         /* Go through ports to see what outputs can be created. */
+@@ -1351,7 +1352,7 @@
+                 return;
+         }
+ 
+-        if (stream_ports == NULL) {
++        if (stream_ports == NULL && is_new) {
+                 GvcMixerUIDevice *device;
+                 GObject *object;
+ 
+@@ -1548,7 +1549,7 @@
+         is_bt = is_bluetooth (info->proplist);
+         /* Sync devices as the port on the stream might have changed */
+         if (!is_new)
+-                sync_devices (control, stream, is_bt);
++                sync_devices (control, stream, is_new, is_bt);
+ 
+         /* Messy I know but to set the port everytime regardless of whether it has changed will cost us a
+          * port change notify signal which causes the frontend to resync.
+@@ -1577,7 +1578,7 @@
+                 add_stream (control, stream);
+                 /* Always sync on a new stream to able to assign the right stream id
+                  * to the appropriate outputs (multiple potential outputs per stream). */
+-                sync_devices (control, stream, is_bt);
++                sync_devices (control, stream, is_new, is_bt);
+         } else {
+                 g_signal_emit (G_OBJECT (control),
+                                signals[STREAM_CHANGED],
+@@ -1686,7 +1687,7 @@
+         is_bt = is_bluetooth (info->proplist);
+         /* Sync devices as the port on the stream might have changed */
+         if (!is_new)
+-                sync_devices (control, stream, is_bt);
++                sync_devices (control, stream, is_new, is_bt);
+ 
+         if (info->active_port != NULL) {
+                 if (is_new)
+@@ -1708,7 +1709,7 @@
+                                      GUINT_TO_POINTER (info->index),
+                                      g_object_ref (stream));
+                 add_stream (control, stream);
+-                sync_devices (control, stream, is_bt);
++                sync_devices (control, stream, is_new, is_bt);
+         } else {
+                 g_signal_emit (G_OBJECT (control),
+                                signals[STREAM_CHANGED],
