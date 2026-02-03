@@ -1,24 +1,84 @@
 -------------------------------------------------------------------
+Sat Jan 31 13:06:29 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+Breaking change:
+As explained in the comment left on the CVE-2025-66490 fix, this new hotfix
+version makes the behavior opt-in. As a result, this release is breaking
+compared to the previous hotfix versions since v3.6.4, but it restores by
+default the behavior that existed before that hotfix. Please, read the
+migration guide to enable the feature. boo#1254879
+
+CVE fixed:
+  * CVE-2026-22045 (Advisory GHSA-cwjm-3f7h-9hwqj) boo#1256815
+
+- Version 3.6.7
+  Bug fixes:
+    * acme
+      - Add missing renew options
+      - Add timeout to ACME-TLS/1 challenge handshake
+      - Bump github.com/go-acme/lego/v4 to v4.31.0
+      - Replace hardcoded references to LetsEncrypt in log messages
+    * k8s
+      - Fix condition used for serving and fenced endpoints
+    * k8s/ingress
+      - Fix panic for empty defaultBackend and defaultBackend without resources
+    * k8s/ingress-nginx
+      - Fix use-regex nginx annotation
+      - Prevent Ingress Nginx provider http router to attach to an entrypoint
+      with TLS
+    * server
+      - Make encoded character options opt-in
+    * webui
+      - Validate X-Forwarded-Prefix value for dashboard redirect
+
+-------------------------------------------------------------------
 Sat Jan  3 21:53:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- update to 3.6.6 (bsc#1254879, CVE-2025-66490, bsc#1254880,
-    CVE-2025-66491):
-  * [k8s/ingress,k8s] Fix Kubernetes Ingress provider
-    documentation
-  * [k8s/ingress-nginx] Add RBAC documentation for Ingress
-    NGINX provider
-  * [k8s] Improve the K8S multi-tenancy security note
-  * Restore documentation on http.maxHeaderBytes
-  * Fix Menu Item Naming
-  * [k8s/ingress-nginx] Fix NGINX sslredirect annotation
-    support
-  * [server] Print access logs for rejected requests and warn
-    about new behavior
-  * CVE-2025-66490 (Advisory GHSA-gm3x-23wp-hc2c): Breaking
-    Change please read the migration guide.
-  * CVE-2025-66491 (Advisory GHSA-7vww-mvcr-x6vj)
-  * **Important:** Please read the migration guide.
-  * [server] Reject suspicious encoded characters
+Breaking Change please read the migration guide.
+
+- Version 3.6.6
+  * acme
+    - Bump github.com/go-acme/lego/v4 to v4.30.1
+  * http3
+    - Bump github.com/quic-go/quic-go to v0.58.0
+  * redis
+    - Fix mutually exclusive verification for Redis
+  * server
+    - Fix deny encoded characters
+    - Fix deny encoded characters
+    - Print access logs for rejected requests and warn about new behavior
+
+- Version 3.6.5
+  * k8s/ingress-nginx
+    - Fix NGINX sslredirect annotation support
+  * server
+    - Print access logs for rejected requests and warn about new behavior
+
+- Version 3.6.4
+  CVE's fixed:
+  * CVE-2025-66490 (Advisory GHSA-gm3x-23wp-hc2c) boo#1254879
+  * CVE-2025-66491 (Advisory GHSA-7vww-mvcr-x6vj) boo#1254880
+  * CVE-2025-58181 boo#1253793
+
+  Bug fixes
+  * acme
+    - Bump github.com/go-acme/lego/v4 to v4.29.0
+  * http3
+    - Bump github.com/quic-go/quic-go to v0.57.1
+  * k8s/ingress-nginx
+    - Fix nginx.ingress.kubernetes.io/proxy-ssl-verify annotation support
+    - Fix SSL redirect to match NGINX behavior
+    - Fix the service name for ingress-nginx provider
+  * middleware,authentication
+    - Change ForwardAuth error log level from DEBUG to ERROR
+  * plugins
+    - Validate plugin module name
+  * server
+    - Bump golang.org/x/crypto to v0.45.0. Fixes CVE-2025-58181
+    - Reject suspicious encoded characters
+
+
+- Version 3.6.3 had not been released
 
 -------------------------------------------------------------------
 Wed Nov 19 10:30:09 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
