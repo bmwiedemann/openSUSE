@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec  1 23:16:40 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.1.8:
+  * Fix badge formatting in README.md
+  * Add Plausible web stats
+  * Update jupyterlab_widgets metadata to indicate it works with
+    JupyterLab 4
+
+-------------------------------------------------------------------
 Sat Aug  2 16:14:15 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.1.7
@@ -312,7 +321,7 @@ Sun Oct 17 20:53:43 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Mon Feb  8 22:51:24 UTC 2021 - malcolmlewis@opensuse.org
 
-- Updated to version 7.6.3: 
+- Updated to version 7.6.3:
   * The main change in this release is that installing `ipywidgets`
     7.6.0 will now automatically enable ipywidgets support in
     JupyterLab 3.0
@@ -375,7 +384,7 @@ Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
 -------------------------------------------------------------------
 Thu Feb  7 06:37:08 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 
-- add python pexpect and pickleshare test dependencies 
+- add python pexpect and pickleshare test dependencies
 
 -------------------------------------------------------------------
 Tue Feb  5 12:52:46 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
@@ -603,7 +612,7 @@ Mon Oct 12 13:47:20 UTC 2015 - toddrme2178@gmail.com
 
 - Update to 4.0.3
   * Provide link to example notebooks in the README.md
-  * Correct some bugs in the code 
+  * Correct some bugs in the code
   * Add __version__ to ipywidgets package
   * Call correct superclass in AccordionView
   * Make long description part of setup.py

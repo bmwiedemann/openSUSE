@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipywidgets
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-ipywidgets
-Version:        8.1.7
+Version:        8.1.8
 Release:        0
 Summary:        IPython HTML widgets for Jupyter
 License:        BSD-3-Clause
@@ -47,6 +47,7 @@ BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module jupyterlab_widgets >= 3.0.15 with %python-jupyterlab_widgets < 4}
 BuildRequires:  %{python_module pytest >= 3.6.0}
 BuildRequires:  %{python_module pytz}
+BuildRequires:  %{python_module nbclassic}
 BuildRequires:  %{python_module traitlets >= 4.3.1}
 BuildRequires:  %{python_module widgetsnbextension >= 4.0.14 with %python-widgetsnbextension < 5}
 # /SECTION
