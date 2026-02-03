@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-languageserver
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define real_version 6.10.1
+%define real_version 6.10.2
 %define short_version 6.10
 %define short_name qtlanguageserver
 %define tar_name qtlanguageserver-everywhere-src
 %define tar_suffix %{nil}
 #
 Name:           qt6-languageserver
-Version:        6.10.1
+Version:        6.10.2
 Release:        0
 Summary:        Implementation of the Language Server Protocol
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
