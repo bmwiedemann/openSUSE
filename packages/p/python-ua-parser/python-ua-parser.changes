@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  3 01:25:21 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Grab the source tarball for uap-core, so we can build and install
+  ua-parser-builtins.
+- Run the testsuite.
+
+-------------------------------------------------------------------
 Thu Jan 29 19:33:40 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Update to version 1.0.1:

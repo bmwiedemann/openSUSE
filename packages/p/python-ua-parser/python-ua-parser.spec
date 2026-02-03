@@ -23,10 +23,15 @@ Release:        0
 Summary:        Python Implementation of UA Parser
 License:        Apache-2.0
 URL:            https://github.com/ua-parser/uap-python
-Source:         https://files.pythonhosted.org/packages/source/u/ua-parser/ua_parser-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/u/ua-parser/ua_parser-%{version}.tar.gz
+# Current submodule commit for uap-core, required to build ua-parser-builtins
+Source1:        https://github.com/ua-parser/uap-core/archive/d668d6c6157db7737edfc0280adc6610c1b88029.tar.gz#/uap-core.tar.gz
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module versioningit}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -39,20 +44,34 @@ https://github.com/tobie/ua-parser)
 
 %prep
 %autosetup -n ua_parser-%{version}
+mkdir uap-core
+tar zx --strip-components=1 -C uap-core -f %{SOURCE1}
+echo "Version: %{version}" > uap-core/PKG-INFO
+pushd ua-parser-builtins
+ln -s ../uap-core .
+popd
 
 %build
 %pyproject_wheel
+# Also build the builtins
+pushd ua-parser-builtins
+%pyproject_wheel
+popd
 
 %install
 %pyproject_install
+pushd ua-parser-builtins
+%pyproject_install
+popd
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}
 
 %check
-# Tests lack fixtures in the released tarball
-#%%python_expand PYTHONPATH="%{buildroot}%{$python_sitelib}" $python ua_parser/user_agent_parser_test.py
+%pytest
 
 %files %{python_files}
 %{python_sitelib}/ua_parser
+%{python_sitelib}/ua_parser_builtins
 %{python_sitelib}/ua_parser-%{version}.dist-info
+%{python_sitelib}/ua_parser_builtins-%{version}.dist-info
 
 %changelog

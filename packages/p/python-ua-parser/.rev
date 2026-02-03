@@ -62,4 +62,14 @@
     <comment></comment>
     <requestid>1330011</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>495be6926f262746ed5ca25d291db06b</srcmd5>
+    <version>1.0.1</version>
+    <time>1770150803</time>
+    <user>anag_factory</user>
+    <comment>- Grab the source tarball for uap-core, so we can build and install
+  ua-parser-builtins.
+- Run the testsuite.</comment>
+    <requestid>1330654</requestid>
+  </revision>
 </revisionlist>
