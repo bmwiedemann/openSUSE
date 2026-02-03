@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  3 01:52:48 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add libsoup-CVE-2026-1536.patch: Always validate the headers
+  value when coming from untrusted source
+  (bsc#1257440, CVE-2026-1536, glgo#GNOME/libsoup/commit/5c1a2e9c).
+- Add libsoup-CVE-2026-1761.patch: multipart: check length of bytes
+  read soup_filter_input_stream_read_until()
+  (bsc#1257598, CVE-2026-1761, glgo#GNOME/libsoup!496).
+
+-------------------------------------------------------------------
 Mon Jan 12 02:48:06 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add libsoup-CVE-2026-0716.patch: Fix out-of-bounds read for

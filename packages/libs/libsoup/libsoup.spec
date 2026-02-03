@@ -1,8 +1,7 @@
 #
 # spec file for package libsoup
 #
-# Copyright (c) 2026 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,6 +50,10 @@ Patch9:         libsoup-CVE-2025-14523.patch
 Patch10:        libsoup-CVE-2026-0719.patch
 # PATCH-FIX-UPSTREAM libsoup-CVE-2026-0716.patch bsc#1256418, CVE-2026-0716, glgo#GNOME/libsoup!494 alynx.zhou@suse.com -- Fix out-of-bounds read for websocket
 Patch11:        libsoup-CVE-2026-0716.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2026-1536.patch bsc#1257440, CVE-2026-1536, glgo#GNOME/libsoup/commit/5c1a2e9c sckang@suse.com -- Always validate the headers value when coming from untrusted source
+Patch12:        libsoup-CVE-2026-1536.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2026-1761.patch bsc#1257598, CVE-2026-1761, glgo#GNOME/libsoup!496 sckang@suse.com -- multipart: check length of bytes read soup_filter_input_stream_read_until()
+Patch13:        libsoup-CVE-2026-1761.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.53

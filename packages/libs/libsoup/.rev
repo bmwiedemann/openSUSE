@@ -1359,4 +1359,17 @@
   (bsc#1256399, CVE-2026-0719, glgo#GNOME/libsoup!493). (forwarded request 1326672 from AZhou)</comment>
     <requestid>1326753</requestid>
   </revision>
+  <revision rev="163" vrev="12">
+    <srcmd5>a232ec5ebf9cc95c1db78f8ded545df9</srcmd5>
+    <version>3.6.5</version>
+    <time>1770150388</time>
+    <user>anag_factory</user>
+    <comment>- Add libsoup-CVE-2026-1536.patch: Always validate the headers
+  value when coming from untrusted source
+  (bsc#1257440, CVE-2026-1536, glgo#GNOME/libsoup/commit/5c1a2e9c).
+- Add libsoup-CVE-2026-1761.patch: multipart: check length of bytes
+  read soup_filter_input_stream_read_until()
+  (bsc#1257598, CVE-2026-1761, glgo#GNOME/libsoup!496). (forwarded request 1330655 from JonathanKang)</comment>
+    <requestid>1330729</requestid>
+  </revision>
 </revisionlist>
