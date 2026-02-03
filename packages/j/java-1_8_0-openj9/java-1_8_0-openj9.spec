@@ -1,7 +1,7 @@
 #
 # spec file for package java-1_8_0-openj9
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,18 +28,18 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       472
+%global updatever       482
 %global buildver        b08
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
-%global root_revision   4b5a9b28183fd0464e304b4c3dba03a02375ec28
-%global root_branch     v0.56.0-release
+%global root_revision   bf2eb7bfec47a1b10399bc02def282ae3dc10fa9
+%global root_branch     v0.57.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    d4c7e3040fb85d68216d7e422014bcf02acf3df5
-%global omr_branch      v0.56.0-release
+%global omr_revision    c8ee95c0c729ac0c0cb3a46a6fde45f0d0b8cc0d
+%global omr_branch      v0.57.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 14b3b2de26cdbab340416bc6b5d367b6ceb11df0
-%global openj9_branch   v0.56.0-release
-%global openj9_tag      openj9-0.56.0
+%global openj9_revision f0754f410244ad2c42b07c5fe76983a3c7b61e87
+%global openj9_branch   v0.57.0-release
+%global openj9_tag      openj9-0.57.0
 # priority must be 6 digits in total
 %global priority        1801
 %global javaver         1.8.0
@@ -151,7 +151,6 @@ BuildRequires:  nasm >= 2.11
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
-BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-proto-devel
 BuildRequires:  zip
 # Requires rest of java
@@ -555,7 +554,6 @@ install -d -m 0755 %{buildroot}%{_datadir}/{applications,pixmaps}
 install -d -m 0755 %{buildroot}/%{_jvmdir}/%{jredir}/lib/desktop/
 for d in jconsole policytool; do
     install -m 0644 $d.desktop %{buildroot}/%{_jvmdir}/%{jredir}/lib/desktop/
-    %suse_update_desktop_file %{buildroot}/%{_jvmdir}/%{jredir}/lib/desktop/$d.desktop
 done
 
 # Find JRE directories.
