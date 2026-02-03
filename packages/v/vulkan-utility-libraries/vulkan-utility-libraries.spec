@@ -1,7 +1,7 @@
 #
 # spec file for package vulkan-utility-libraries
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define lname libVulkanLayerSettings-1_4_335
+%define lname libVulkanLayerSettings-1_4_341
 %if 0%{?suse_version} < 1600
 %define gcc_version 13
 %endif
 
 Name:           vulkan-utility-libraries
-Version:        1.4.335
+Version:        1.4.341
 Release:        0
 Summary:        Utility libraries for Vulkan
 License:        Apache-2.0
