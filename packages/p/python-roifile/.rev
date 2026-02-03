@@ -102,4 +102,12 @@
   * Deprecate Python 3.9, support Python 3.13.</comment>
     <requestid>1222984</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f623ef661297dad7898a6f5362090168</srcmd5>
+    <version>2026.1.22</version>
+    <time>1770150957</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1330813</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-roifile
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define packagename roifile
 Name:           python-roifile
-Version:        2024.9.15
+Version:        2026.1.22
 Release:        0
 Summary:        Read and write ImageJ ROI format
 License:        BSD-3-Clause

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 27 16:08:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.1.22:
+  * Fix boolean codec in ImagejRoi.properties.
+  * Fix reading ImagejRoi.props.
+  * Add ImagejRoi.properties property to decode and encode
+    ImagejRoi.props.
+  * Improve code quality.
+  * Drop support for Python 3.10.
+  * Move tests to separate module.
+  * Support Python 3.14.
+  * Drop support for Python 3.9.
+
+-------------------------------------------------------------------
 Sat Nov  9 15:50:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.9.15:
