@@ -1,0 +1,608 @@
+-------------------------------------------------------------------
+Mon Feb  2 09:41:55 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Refactor to python-click81, conflict with python-click
+
+-------------------------------------------------------------------
+Thu Jan  9 08:39:31 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 8.1.8
+  * Fix an issue with type hints for ``click.open_file()``. :issue:`2717`
+  * Fix issue where error message for invalid ``click.Path`` displays on
+    multiple lines. :issue:`2697`
+  * Fixed issue that prevented a default value of ``""`` from being displayed in
+    the help for an option. :issue:`2500`
+  * The test runner handles stripping color consistently on Windows.
+    :issue:`2705`
+  * Show correct value for flag default when using ``default_map``.
+    :issue:`2632`
+  * Fix ``click.echo(color=...)`` passing ``color`` to coloroma so it can be
+    forced on Windows. :issue:`2606`.
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+  * Update name for dist directory in %files section
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
+Thu Sep  7 10:58:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.1.7:
+  * Fix issue with regex flags in shell completion.
+  * Bash version detection issues a warning instead of an
+    error.
+  * Fix issue with completion script for Fish shell.
+
+-------------------------------------------------------------------
+Tue Aug  1 19:44:22 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 8.1.6
+  * Replace all typing.Dict occurrences to typing.MutableMapping for parameter
+    hints. #2255
+  * Improve type hinting for decorators and give all generic types parameters.
+  * Fix return value and type signature of
+    shell_completion.add_completion_class function. #2421
+  * Bash version detection doesn’t fail on Windows. #2461
+  * Completion works if there is a dot (.) in the program name. #2166
+  * Improve type annotations for pyright type checker. #2268
+  * Improve responsiveness of click.clear(). #2284
+  * Improve command name detection when using Shiv or PEX. #2332
+  * Avoid showing empty lines if command help text is empty. #2368
+  * ZSH completion script works when loaded from fpath. #2344.
+  * EOFError and KeyboardInterrupt tracebacks are not suppressed when
+    standalone_mode is disabled. #2380
+  * @group.command does not fail if the group was created with a custom
+    command_class. #2416
+  * multiple=True is allowed for flag options again and does not require
+    setting default=(). #2246, #2292, #2295
+  * Make the decorators returned by @argument() and @option() reusable when the
+    cls parameter is used. #2294
+  * Don’t fail when writing filenames to streams with strict errors. Replace
+    invalid bytes with the replacement character (�). #2395
+  * Remove unnecessary attempt to detect MSYS2 environment. #2355
+  * Remove outdated and unnecessary detection of App Engine environment. #2554
+  * echo() does not fail when no streams are attached, such as with pythonw on
+    Windows. #2415
+  * Argument with expose_value=False do not cause completion to fail. #2336
+  * Fix an issue with type hints for @click.command(), @click.option(), and
+    other decorators. Introduce typing tests. #2558
+  * Fix an issue with type hints for @click.group(). #2558
+- Drop fix-tests.patch
+
+-------------------------------------------------------------------
+Fri May  5 13:41:09 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- add fix-tests.patch to fix tests with new versions of python packages
+
+-------------------------------------------------------------------
+Fri Apr 21 12:23:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:40:31 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Fri Mar 24 12:48:15 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed requirement python-setuptools
+
+-------------------------------------------------------------------
+Sun Jun  5 14:19:36 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile
+  * require python >= 3.7
+
+- update to version 8.1.3:
+  * Use verbose form of "typing.Callable" for "@command" and
+      "@group". :issue:`2255`
+  * Show error when attempting to create an option with
+      "multiple=True, is_flag=True". Use "count" instead.
+      :issue:`2246`
+
+- changes from version 8.1.2:
+  * Fix error message for readable path check that was mixed up with
+    the executable check. :pr:`2236`
+  * Restore parameter order for "Path", placing the "executable"
+    parameter at the end. It is recommended to use keyword arguments
+    instead of positional arguments. :issue:`2235`
+
+- changes from version 8.1.1:
+  * Fix an issue with decorator typing that caused type checking to
+    report that a command was not callable. :issue:`2227`
+
+- changes from version 8.1.0:
+  * Drop support for Python 3.6. :pr:`2129`
+  * Remove previously deprecated code. :pr:`2130`
+    + "Group.resultcallback" is renamed to "result_callback".
+    + "autocompletion" parameter to "Command" is renamed to
+        "shell_complete".
+    + "get_terminal_size" is removed, use "shutil.get_terminal_size"
+        instead.
+    + "get_os_args" is removed, use "sys.argv[1:]" instead.
+  * Rely on :pep:`538` and :pep:`540` to handle selecting UTF-8
+    encoding instead of ASCII. Click's locale encoding detection is
+    removed.  :issue:`2198`
+  * Single options boolean flags with "show_default=True" only show
+    the default if it is "True". :issue:`1971`
+  * The "command" and "group" decorators can be applied with or
+    without parentheses. :issue:`1359`
+  * The "Path" type can check whether the target is executable.
+    :issue:`1961`
+  * "Command.show_default" overrides "Context.show_default", instead
+    of the other way around. :issue:`1963`
+  * Parameter decorators and "@group" handles "cls=None" the same as
+    not passing "cls". "@option" handles "help=None" the same as not
+    passing "help". :issue:`#1959`
+  * A flag option with "required=True" requires that the flag is
+    passed instead of choosing the implicit default
+    value. :issue:`1978`
+  * Indentation in help text passed to "Option" and "Command" is
+    cleaned the same as using the "@option" and "@command"
+    decorators does. A command's "epilog" and "short_help" are also
+    processed. :issue:`1985`
+  * Store unprocessed "Command.help", "epilog" and "short_help"
+    strings. Processing is only done when formatting help text for
+    output. :issue:`2149`
+  * Allow empty str input for "prompt()" when
+    "confirmation_prompt=True" and "default=""". :issue:`2157`
+  * Windows glob pattern expansion doesn't fail if a value is an
+    invalid pattern. :issue:`2195`
+  * It's possible to pass a list of "params" to "@command". Any params
+    defined with decorators are appended to the passed params.
+    :issue:`2131`.
+  * "@command" decorator is annotated as returning the correct type if
+    a "cls" argument is used. :issue:`2211`
+  * A "Group" with "invoke_without_command=True" and "chain=False"
+    will invoke its result callback with the group function's return
+    value. :issue:`2124`
+  * "to_info_dict" will not fail if a "ParamType" doesn't define a
+    "name". :issue:`2168`
+  * Shell completion prioritizes option values with option prefixes
+    over new options. :issue:`2040`
+  * Options that get an environment variable value using
+    "autoenvvar_prefix" treat an empty value as "None", consistent
+    with a direct "envvar". :issue:`2146`
+
+-------------------------------------------------------------------
+Sun Mar 27 11:02:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.0.4:
+  * ``open_file`` recognizes ``Path("-")`` as a standard stream, the
+    same as the string ``"-"``. :issue:`2106`
+  * The ``option`` and ``argument`` decorators preserve the type
+    annotation of the decorated function. :pr:`2155`
+  * A callable default value can customize its help text by overriding
+    ``__str__`` instead of always showing ``(dynamic)``. :issue:`2099`
+  * Fix a typo in the Bash completion script that affected file and
+    directory completion. If this script was generated by a previous
+    version, it should be regenerated. :issue:`2163`
+  *  Fix typing for ``echo`` and ``secho`` file argument.
+
+-------------------------------------------------------------------
+Sat Oct 16 21:18:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.0.3:
+  * Fix issue with ``Path(resolve_path=True)`` type creating invalid
+    paths. :issue:`2088`
+  * Importing ``readline`` does not cause the ``confirm()`` prompt to
+    disappear when pressing backspace. :issue:`2092`
+  * Any default values injected by ``invoke()`` are cast to the
+    corresponding parameter's type. :issue:`2089, 2090`
+  * ``is_bool_flag`` is not set to ``True`` if ``is_flag`` is ``False``.
+  * Bash version detection is locale independent. :issue:`1940`
+  * Empty ``default`` value is not shown for ``multiple=True``.
+  * Fix shell completion for arguments that start with a forward slash
+    such as absolute file paths. :issue:`1929`
+  * ``Path`` type with ``resolve_path=True`` resolves relative symlinks
+    to be relative to the containing directory. :issue:`1921`
+  * Completion does not skip Python's resource cleanup when exiting,
+    avoiding some unexpected warning output. :issue:`1738, 2017`
+  * Fix type annotation for ``type`` argument in ``prompt`` function.
+  * Fix overline and italic styles, which were incorrectly added when
+    adding underline. :pr:`2058`
+  * An option with ``count=True`` will not show "[x>=0]" in help text.
+  * Default values are not cast to the parameter type twice during
+    processing.
+  * Options with ``multiple`` and ``flag_value`` use the flag value
+    instead of leaving an internal placeholder.
+
+-------------------------------------------------------------------
+Mon Aug 30 10:30:30 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add runtime dependency on importlib-metadata on Python 3.6
+
+-------------------------------------------------------------------
+Sat Jun 19 14:16:30 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 8.0.1:
+  way too many changes to be listed here, see:
+  https://click.palletsprojects.com/en/8.0.x/changes/#version-8-0-1
+
+-------------------------------------------------------------------
+Thu Aug 20 23:45:47 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Add runtime dependency on setuptools
+
+-------------------------------------------------------------------
+Wed Jun  3 11:15:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 7.1.2:
+   Revert applying shell quoting to commands for ``echo_with_pager``
+   and ``edit``. This was intended to allows spaces in commands, but
+   caused issues if the string was actually a command and arguments, or
+   on Windows. Instead, the string must be quoted manually as it should
+   appear on the command line. :issue:`1514`
+
+-------------------------------------------------------------------
+Tue Mar 31 11:57:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 7.1.1
+  *   Fix ``ClickException`` output going to stdout instead of stderr.
+  *   Fix PyPI package name, "click" is lowercase again.
+  *   Fix link in ``unicode_literals`` error message. :pr:`1151`
+  *   Add support for colored output on UNIX Jupyter notebooks.
+  *   Operations that strip ANSI controls will strip the cursor hide/show
+      sequences. :issue:`1216`
+  *   Remove unused compat shim for ``bytes``. :pr:`1195`
+  *   Always return one of the passed choices for ``click.Choice``
+      :issue:`1277`, :pr:`1318`
+  *   Handle ``env MYPATH=''`` as though the option were not passed.
+      :issue:`1196`
+  *   It is once again possible to call ``next(bar)`` on an active
+      progress bar instance. :issue:`1125`
+  *   ``open_file`` with ``atomic=True`` retains permissions of existing
+      files and respects the current umask for new files. :issue:`1376`
+  *   Fix ``TypeError`` raised when using bool flags and specifying
+      ``type=bool``. :issue:`1287`
+  *   Newlines in option help text are replaced with spaces before
+      re-wrapping to avoid uneven line breaks. :issue:`834`
+  *   ``MissingParameter`` exceptions are printable in the Python
+      interpreter. :issue:`1139`
+  *   Fix how default values for file-type options are shown during
+      prompts. :issue:`914`
+  *   Option help text that is wrapped adds an extra newline at the end to
+      distinguish it from the next option. :issue:`1075`
+  *   Consider ``sensible-editor`` when determining the editor to use for
+      ``click.edit()``. :pr:`1469`
+  *   Arguments to system calls such as the executable path passed to
+      ``click.edit`` can contains spaces. :pr:`1470`
+  *   Add ZSH completion autoloading and error handling. :issue:`1348`
+  *   ZSH completion escapes special characters in values. :pr:`1418`
+  *   Add completion support for Fish shell. :pr:`1423`
+  *   Decoding bytes option values falls back to UTF-8 in more cases.
+  *   Make the warning about old 2-arg parameter callbacks a deprecation
+      warning, to be removed in 8.0. This has been a warning since Click
+      2.0. :pr:`1492`
+
+-------------------------------------------------------------------
+Mon Oct 14 11:43:49 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
+Sat Dec 22 16:12:12 UTC 2018 - marec@detebe.org
+
+- update to version 7.0:
+  * Drop support for Python 2.6 and 3.3.
+  * Wrap ``click.Choice``'s missing message.
+  * Add native ZSH autocompletion support.
+  * Document that ANSI color info isn't parsed from bytearrays in
+    Python 2.
+  * Document byte-stripping behavior of ``CliRunner``.
+  * Usage errors now hint at the ``--help`` option.
+  * Implement streaming pager.
+  * Extract bar formatting to its own method.
+  * Add ``DateTime`` type for converting input in given date time
+    formats.
+  * ``secho``'s first argument can now be ``None``, like in ``echo``.
+
+  * Fixes a ``ZeroDivisionError`` in ``ProgressBar.make_step``, when the
+    arg passed to the first call of ``ProgressBar.update`` is 0.
+
+  * Show progressbar only if total execution time is visible.
+  * Added the ability to hide commands and options from help.
+  * Document that options can be ``required=True``.
+  * Non-standalone calls to ``Context.exit`` return the exit code,
+    rather than calling ``sys.exit``.
+  * ``click.getchar()`` returns Unicode in Python 3 on Windows,
+    consistent with other platforms.
+  * Added ``FloatRange`` type.
+  * Added support for bash completion of ``type=click.Choice`` for
+  ``Options`` and ``Arguments``.
+  * Only allow one positional arg for ``Argument`` parameter
+    declaration.
+  * Add ``case_sensitive=False`` as an option to Choice.
+  * ``click.getchar()`` correctly raises ``KeyboardInterrupt`` on "^C"
+    and ``EOFError`` on "^D" on Linux.
+  * Fix encoding issue with ``click.getchar(echo=True)`` on Linux.
+
+  * ``param_hint`` in errors now derived from param itself.
+  * Add a test that ensures that when an argument is formatted into a
+    usage error, its metavar is used, not its name.
+  * Allow setting ``prog_name`` as extra in ``CliRunner.invoke``.
+
+  * Help text taken from docstrings truncates at the ``\f`` form feed
+    character, useful for hiding Sphinx-style parameter documentation.
+
+  * ``launch`` now works properly under Cygwin.
+  * Update progress after iteration.
+  * ``CliRunner.invoke`` now may receive ``args`` as a string
+    representing a Unix shell command.
+  * Make ``Argument.make_metavar()`` default to type metavar.
+  * Add documentation for ``ignore_unknown_options``.
+  * Add bright colors support for ``click.style`` and fix the reset
+    option for parameters ``fg`` and ``bg``.
+  * Add ``show_envvar`` for showing environment variables in help.
+
+  * Avoid ``BrokenPipeError`` during interpreter shutdown when stdout or
+    stderr is a closed pipe.
+  * Document customizing option names.
+  * Disable ``sys._getframes()`` on Python interpreters that don't
+    support it.
+  * Fix bug in test runner when calling ``sys.exit`` with ``None``.
+
+  * Clarify documentation on command line options.
+  * Fix crash on Windows console.
+  * Fix bug that caused bash completion to give improper completions on
+    chained commands.
+  * Added support for dynamic bash completion from a user-supplied
+    callback.
+  * Added support for bash completions containing spaces.
+  * Allow autocompletion function to determine whether or not to return
+    completions that start with the incomplete argument.
+  * Fix option naming routine to match documentation and be
+    deterministic.
+  * Fix path validation bug.
+  * Add test and documentation for ``Option`` naming: functionality.
+
+  * Update doc to match arg name for ``path_type``.
+  * Raw strings added so correct escaping occurs.
+  * Fix 16k character limit of ``click.echo`` on Windows.
+  * Overcome 64k character limit when writing to binary stream on
+    Windows 7.
+  * Add bool conversion for "t" and "f".
+  * ``NoSuchOption`` errors take ``ctx`` so that ``--help`` hint gets
+    printed in error output.
+  * Fixed the behavior of Click error messages with regards to Unicode
+    on 2.x and 3.x. Message is now always Unicode and the str and
+    Unicode special methods work as you expect on that platform.
+
+  * Progress bar now uses stderr by default.
+  * Add support for auto-completion documentation.
+  * Allow ``CliRunner`` to separate stdout and stderr.
+  * Fix variable precedence.
+  * Fix invalid escape sequences.
+  * Fix ``ResourceWarning`` that occurs during some tests.
+  * When detecting a misconfigured locale, don't fail if the ``locale``
+    command fails.
+  * Add ``case_sensitive=False`` as an option to ``Choice`` types.
+
+  * Force stdout/stderr writable. This works around issues with badly
+    patched standard streams like those from Jupyter.
+  * Fix completion of subcommand options after last argument
+  * ``_AtomicFile`` now uses the ``realpath`` of the original filename
+    so that changing the working directory does not affect it.
+
+  * Fix incorrect completions when defaults are present
+  * Add copy option attrs so that custom classes can be re-used.
+
+  * "x" and "a" file modes now use stdout when file is ``"-"``.
+
+  * Fix missing comma in ``__all__`` list.
+  * Clarify how parameters are named.
+  * Stdout is now automatically set to non blocking.
+  * Do not set options twice.
+  * Move ``fcntl`` import.
+  * Fix Google App Engine ``ImportError``.
+  * Better handling of help text for dynamic default option values.
+
+  * Fix ``get_winter_size()`` so it correctly returns ``(0,0)``.
+
+  * Add test case checking for custom param type.
+  * Allow short width to address cmd formatting.
+  * Add details about Python version support.
+  * Added deprecation flag to commands.
+  * Fixed issues where ``fd`` was undefined.
+  * Fix formatting for short help.
+  * Document how ``auto_envvar_prefix`` works with command groups.
+
+  * Don't add newlines by default for progress bars.
+  * Use Python sorting order for ZSH completions.
+  * Document that parameter names are converted to lowercase by default.
+
+  * Subcommands that are named by the function now automatically have
+    the underscore replaced with a dash. If you register a function
+    named ``my_command`` it becomes ``my-command`` in the command line
+    interface.
+  * Hide hidden commands and options from completion.
+  * Fix absolute import blocking Click from being vendored into a
+    project on Windows.
+  * Fix issue where a lowercase ``auto_envvar_prefix`` would not be
+    converted to uppercase.
+- Drop patch merged upstream python-click-test_compat.py.patch
+
+-------------------------------------------------------------------
+Wed Dec  5 01:18:27 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias and future aims from description.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:46:39 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Sep 12 06:39:01 UTC 2017 - thomas.schraitle@suse.com
+
+- Added python-click-test_compat.py.patch to let %check section
+  run successfully
+  Disabled test_legacy_callbacks() for the time being
+
+-------------------------------------------------------------------
+Tue Apr  4 15:50:59 UTC 2017 - jmatejek@suse.com
+
+- better test runner that works with pypy
+
+-------------------------------------------------------------------
+Wed Mar 22 15:44:17 UTC 2017 - aloisio@gmx.com
+
+- Converted to single-spec
+- Changed source URL to pypi.io
+
+-------------------------------------------------------------------
+Thu Mar 16 12:41:06 UTC 2017 - michael@stroeder.com
+
+- update to version 6.7:
+  * Make `click.progressbar` work with `codecs.open` files. See #637.
+  * Fix bug in bash completion with nested subcommands. See #639.
+  * Fix test runner not saving caller env correctly. See #644.
+  * Fix handling of SIGPIPE. See #626
+  * Deal with broken Windows environments such as Google App
+    Engine's. See #711.
+
+-------------------------------------------------------------------
+Thu Nov 17 13:49:50 UTC 2016 - rjschwei@suse.com
+
+- Include in SLE 12 (FATE#320818, bsc#979331)
+
+-------------------------------------------------------------------
+Thu Sep 15 22:54:59 UTC 2016 - toddrme2178@gmail.com
+
+- update to version 6.6:
+  * Fix bug in `click.Path` where it would crash when passed a
+    `-`. See #551.
+- update to version 6.4:
+  * Fix bug in bash completion where click would discard one or more
+    trailing arguments. See #471.
+- update to version 6.3:
+  * Fix argument checks for interpreter invoke with `-m` and `-c` on
+    Windows.
+  * Fixed a bug that cased locale detection to error out on Python 3.
+
+-------------------------------------------------------------------
+Thu Dec  3 13:21:05 UTC 2015 - ronisbr@gmail.com
+
+- Update to version 6.2
+  * Correct fix for hidden progress bars.
+- Changes from version 6.1
+  * Resolved an issue with invisible progress bars no longer
+    rendering.
+  * Disable chain commands with subcommands as they were
+    inherently broken.
+  * Fix `MissingParameter` not working without parameters passed.
+- Changes from version 6.0
+  * Optimized the progressbar rendering to not render when it did
+    not actually change.
+  * Explicitly disallow nargs=-1 with a set default.
+  * The context is now closed before it's popped from the stack.
+  * Added support for short aliases for the false flag on
+    toggles.
+  * Click will now attempt to aid you with debugging locale
+    errors better by listing with the help of the OS what locales
+    are available.
+  * Click used to return byte strings on Python 2 in some
+    unit-testing situations.  This has been fixed to correctly
+    return unicode strings now.
+  * For Windows users on Python 2, Click will now handle Unicode
+    more correctly handle Unicode coming in from the system.
+    This also has the disappointing side effect that filenames
+    will now be always unicode by default in the `Path` type
+    which means that this can introduce small bugs for code not
+    aware of this.
+  * Added a `type` parameter to `Path` to force a specific string
+    type on the value.
+  * For users running Python on Windows the `echo`) and `prompt`
+    functions now work with full unicode functionality in the
+    Python windows console by emulating an output stream.  This
+    also applies to getting the virtual output and input streams
+    via `click.get_text_stream(...)`.
+  * Unittests now always force a certain virtual terminal width.
+  * Added support for allowing dashes to indicate standard
+    streams to the `Path` type.
+  * Multi commands in chain mode no longer propagate arguments
+    left over from parsing to the callbacks.  It's also now
+    disallowed through an exception when optional arguments are
+    attached to multi commands if chain mode is enabled.
+  * Relaxed restriction that disallowed chained commands to have
+    other chained commands as child commands.
+  * Arguments with positive nargs can now have defaults
+    implemented.  Previously this configuration would often
+    result in slightly unexpected values be returned.
+- Changes from version 5.1
+  * Fix a bug in `pass_obj` that would accidentally pass the
+    context too.
+- Changes from version 5.0
+  * Removed various deprecated functionality.
+  * Atomic files now only accept the `w` mode.
+  * Change the usage part of help output for very long commands
+    to wrap their arguments onto the next line, indented by 4
+    spaces.
+  * Fix a bug where return code and error messages were incorrect
+    when using ``CliRunner``.
+  * added `get_current_context`.
+  * added a `meta` dictionary to the context which is shared
+    across the linked list of contexts to allow click utilities
+    to place state there.
+  * introduced `Context.scope`.
+  * The `echo` function is now threadsafe: It calls the `write`
+    method of the underlying object only once.
+  * `prompt(hide_input=True)` now prints a newline on `^C`.
+  * Click will now warn if users are using ``unicode_literals``.
+  * Click will now ignore the ``PAGER`` environment variable if
+    it is empty or contains only whitespace.
+  * The `click-contrib` GitHub organization was created.
+
+-------------------------------------------------------------------
+Sat Jul 18 17:17:10 UTC 2015 - aloisio@gmx.com
+
+- Update to version 4.1
+  * Fix a bug where error messages would include a trailing
+    None string.
+  * Fix a bug where Click would crash on docstrings with
+    trailing newlines.
+  Version 4.0:
+  * Added color parameters to lots of interfaces that directly
+    or indirectly call into echoing. This previously was always
+    autodetection (with the exception of the echo_via_pager
+    function). Now you can forcefully enable or disable it,
+    overriding the auto detection of Click.
+  * Added an UNPROCESSED type which does not perform any type
+    changes which simplifies text handling on 2.x / 3.x in
+    some special advanced usecases.
+  * Added NoSuchOption and BadOptionUsage exceptions for more
+    generic handling of errors.
+  * Added support for handling of unprocessed options which
+    can be useful in situations where arguments are forwarded
+    to underlying tools.
+  * Added max_content_width parameter to the context which
+    can be used to change the maximum width of help output.
+    By default Click will not format content for more than
+    80 characters width.
+  * Added support for writing prompts to stderr.
+  * Fix a bug when showing the default for multiple arguments.
+  * Added support for custom subclasses to option and argument.
+  * Fix bug in clear() on Windows when colorama is installed.
+  * Reject nargs=-1 for options properly. Options cannot be
+    variadic.
+  * Fixed an issue with bash completion not working properly
+    for commands with non ASCII characters or dashes.
+  * Added a way to manually update the progressbar.
+  * Changed the formatting of missing arguments. Previously
+    the internal argument name was shown in error messages,
+    now the metavar is shown if passed. In case an automated
+    metavar is selected, it’s stripped of extra formatting first.
+
+-------------------------------------------------------------------
+Tue Aug 26 11:22:44 UTC 2014 - p.drouand@gmail.com
+
+- Fix %description
+
+-------------------------------------------------------------------
+Tue Aug 26 02:37:06 UTC 2014 - lowks@lowkster.com
+
+- Initial package of python-click
+
