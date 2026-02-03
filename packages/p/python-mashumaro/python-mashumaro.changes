@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb  2 07:38:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.18:
+  * Changes
+    - Fixed support for PEP 695 types created with type keyword in
+      JSON Schema (#301)
+    - Fixed serialization problem when collections with passing
+      through items were used with no_copy_collections in unions
+      (#302)
+
+-------------------------------------------------------------------
 Tue Oct  7 06:05:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.17:
