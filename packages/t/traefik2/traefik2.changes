@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Jan 31 13:14:32 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 1.11.35
+Breaking change:
+As explained in the comment left on the CVE-2025-66490 fix, this new hotfix
+version makes the behavior opt-in. As a result, this release is breaking
+compared to the previous hotfix versions since v3.6.4, but it restores by
+default the behavior that existed before that hotfix. Please, read the
+migration guide to enable the feature. boo#1254879
+
+  CVE fixed:
+  CVE-2026-22045 (Advisory GHSA-cwjm-3f7h-9hwqj) boo#1256815
+
+  Bug fixes:
+  * acme
+    - Add timeout to ACME-TLS/1 challenge handshake
+  * server
+    - Make encoded character options opt-in
+
+
+- Version 1.11.34
+  * server
+    - Fix deny encoded characters
+
+- Version 1.11.33
+  * server
+    - Print access logs for rejected requests and warn about new behavior
+
+- Version 1.11.32
+  CVE's fixed:
+  CVE-2025-66490 (Advisory GHSA-gm3x-23wp-hc2c) boo#1254879
+
+  * http3
+    - Bump github.com/quic-go/quic-go to v0.57.1
+  * plugins
+    - Validate plugin module name
+  * server
+    - Bump golang.org/x/crypto to v0.45.0 VUL-0: CVE-2025-58181 boo#1253793
+    - Reject suspicious encoded characters
+
+-------------------------------------------------------------------
 Thu Nov 13 14:52:27 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 2.11.31
@@ -46,6 +87,7 @@ Fri Jul 25 05:45:58 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
     - Redact logged install configuration (gh#traefik/traefik#11907 by jspdown)
   * plugins
     - Fix client arbitrary file access during archive extraction zipslip (gh#traefik/traefik#11911 by odaysec)
+      Fixes CVE-2025-54386 and boo#1247524
   * server
     - Disable MPTCP by default (gh#traefik/traefik#11918 by rtribotte)
 
