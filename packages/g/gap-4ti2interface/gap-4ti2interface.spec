@@ -1,7 +1,7 @@
 #
 # spec file for package gap-4ti2interface
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gap-4ti2interface
-Version:        2024.11.01
-%define sillyversion 2024.11-01
+Version:        2025.12.01
+%define sillyversion 2025.12-01
 Release:        0
 Summary:        GAP: Interface to 4ti2
 License:        GPL-2.0-only
