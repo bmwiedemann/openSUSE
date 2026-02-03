@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-datamatrix
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-python-datamatrix
-Version:        1.0.13
+Version:        1.0.16
 Release:        0
 Summary:        A python library to work with tabular data
 License:        GPL-3.0-or-later
@@ -35,6 +35,7 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module openpyxl}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module tomlkit}
@@ -84,7 +85,7 @@ sed -i 's/\r$//' doc-pelican/data/fratescu-replication-data-exp1.csv
 if [ $(getconf LONG_BIT) -eq 32 ]; then
   donttest="or test_intcolumn or test_seriescolumn"
 fi
-%pytest ${$python_donttest} ${donttest:+ -k "not (${donttest:4})"}
+%pytest -p no:warnings ${$python_donttest} ${donttest:+ -k "not (${donttest:4})"}
 
 %files %{python_files}
 %license copyright

@@ -97,4 +97,23 @@
 - Split out docs into a seperate package.</comment>
     <requestid>1159709</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>460e6cc33c5c9400e5098c6f03e7d623</srcmd5>
+    <version>1.0.16</version>
+    <time>1770150904</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.16:
+  * Fix mapping of multidimensional columns
+- update to 1.0.15:
+  * Fix changing the depth of unloaded multidimensional columns
+  * Add conftest.py
+- update to 1.0.14:
+  * Fix NumericColumn._getrowid() for cases when it is called
+    externally
+  * Fix an issue in referencing multidimensional columns by names with
+    dict notation
+  * Integrate sigmund search
+  * Update footer</comment>
+    <requestid>1330770</requestid>
+  </revision>
 </revisionlist>
