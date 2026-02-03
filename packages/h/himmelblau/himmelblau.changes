@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 02 17:12:33 UTC 2026 - David Mulder <david.mulder@suse.com>
+
+- Update to version 2.3.3+git0.25e8b73:
+  * Version 2.3.3
+  * cargo vet
+  * /var/cache/private/himmelblaud should not be created tmpfiles
+  * Updatee python vers for dataclasses dep
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 3 updates
+  * Generate pin init service file systemd < 250
+  * Checkin missing himmelblaud.if file for SELinux
+  * Resolve typos in selinux package commands
+
+-------------------------------------------------------------------
 Thu Jan 22 20:30:14 UTC 2026 - David Mulder <david.mulder@suse.com>
 
 - Update to version 2.3.2+git0.5a7a598:
