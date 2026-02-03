@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 31 08:10:44 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.10.2:
+  * https://www.qt.io/blog/qt-6.10.2-released
+  Based on Chromium version: 134.0.6998.208
+  Patched with security patches up to Chromium version: 144.0.7559.96
+
+-------------------------------------------------------------------
 Tue Dec 16 12:32:44 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - boo#1251922 - Re-enable LTO and pass -mno-outline-atomics to
