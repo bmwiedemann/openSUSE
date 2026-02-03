@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb  3 09:44:17 UTC 2026 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 2.0.14
+  * Fixes
+    fix(beacon): skip point-to-point interfaces on Android by @bt90 in #10504
+    fix(stdiscosrv): use fmt.Println for version output (fixes #10523) by @maishivamhoo123 in #10527
+    fix(stdiscosrv): log full device ID on startup by @maishivamhoo123 in #10541
+  * Other
+    chore(api): remove charset declaration from JSON content-type (fixes #10500) by @prathik8794 in #10508
+    chore(sqlite): allow periodic database maintenance to be disabled by @pixelspark in #10441
+    chore(gui): include license files for fork-awesome assets by @gotmax23 in #10539
+    build: add build attestation step at release by @calmh in #10540 
+
+-------------------------------------------------------------------
 Tue Jan  6 20:19:20 UTC 2026 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 2.0.13
