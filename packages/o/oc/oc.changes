@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Tue Feb 03 11:54:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.21.0:
+  * .claude: Improve pr-review command/skill
+  * Fall back to simpler behavior, if setsid,ps,pkill are not
+    installed
+  * Unify ErrAlreadyExists to correctly match
+  * Update documentation of oc adm must-gather timeout flag
+  * Clear defaultNodeSelector to run on any node
+  * feat(login): extend --auto-open-browser to work with --web
+  * fix(must-gather): do not set node affinity if nodename is set
+  * pkg/cli/admin/upgrade: Tighten force warnings
+  * test(git): Replace IPv4-mapped IPv6 addresses with valid IPv6
+    in tests
+  * Increase Node ISO creation timeout from 15 to 30 minutes
+  * Add pr-review Claude command and effective-go skills
+  * Update version tags to 1.34.1
+  * Use renamed ObjectGoPrintSideBySide function
+  * React to upstream changes
+  * Update openshift library depedencies to latest
+  * Update golang.org/x dependencies to latest
+  * Update k8s dependencies to 1.34.1
+  * Pass dry-run option to all create API calls
+  * Escape characters in url
+  * Adjust logs per verbosity
+  * Use aws native user-agent assignment
+  * Update to newer versions of aws-sdk-go-v2
+  * Make respective changes for the new sdk
+  * Migrate to aws-sdk-go-v2
+  * Update sspi library to newer
+  * Migrate shellescape to new domain
+  * pkg/cli/admin/upgrade/recommend: Drop obsolete precheckEnabled
+    knob
+  * NO-JIRA: Remove myself from update approvers, add Hongkai
+  * Updating ose-cli-artifacts-container image to be consistent
+    with ART for 4.21 Reconciling with
+    https://github.com/openshift/ocp-build-data/tree/4fbe3fab45239dc4be6f5d9d98a0bf36e0274ec9/images/ose-cli-artifacts.yml
+  * Updating openshift-enterprise-deployer-container image to be
+    consistent with ART for 4.21 Reconciling with
+    https://github.com/openshift/ocp-build-data/tree/4fbe3fab45239dc4be6f5d9d98a0bf36e0274ec9/images/openshift-enterprise-deployer.yml
+  * fix(node-image): prevent crash when rootDeviceHints format is
+    invalid
+  * fix(vendor): add missing fake clientset from
+    openshift/client-go
+  * OCPBUGS-61491: Update code to retrieve ICSP instead of ICP
+  * Updating ose-tools-container image to be consistent with ART
+    for 4.21 Reconciling with
+    https://github.com/openshift/ocp-build-data/tree/4fbe3fab45239dc4be6f5d9d98a0bf36e0274ec9/images/ose-tools.yml
+  * Updating openshift-enterprise-cli-container image to be
+    consistent with ART for 4.21 Reconciling with
+    https://github.com/openshift/ocp-build-data/tree/2bb084cbeea78d508257d4127febe7d8b5bc09eb/images/openshift-enterprise-cli.yml
+  * must-gather: Add support for context
+  * must-gather: Call queue.Done at the right time
+  * must-gather: Do cleanup on role binding error
+  * must-gather: Use NewTypedRateLimitingQueue
+  * pkg/.../inspect: Add support for context
+  * must-gather: Align cleanup order
+  * Add tchap as reviewer in oc
+  * vendor: Update library-go and go-ldap
+  * oc adm groups sync: Use client.Unbind
+  * Add unit tests to verify the behavior
+  * pkg/cli/admin/upgrade/recommend/examples/4.19.0-okd-scos.16:
+    Add OKD example
+  * Add some warnings into excluded list
+  * oc adm policy: Only initialize UserClient if built-in OAuth is
+    enabled
+  * Introduce auto-open-browser flag for external OIDC issuer login
+  * oc adm must-gather: Wrap gather in a session
+  * pkg/cli/admin/upgrade/recommend: Enable precheck and accept
+    gates
+  * Rely on overall available disk space of the mounted volume
+  * `adm upgrade status`: capture testcase for OCPBUGS-60768
+
+-------------------------------------------------------------------
 Tue Oct 28 05:45:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.20.0:
