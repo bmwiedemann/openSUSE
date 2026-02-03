@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Tue Feb 03 06:08:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.9.0:
+  * Features
+    - #1365 Make version separator configurable via configuration
+      file @ReenigneArcher
+    - #1372 Make version separator configurable via command line
+      option and environment variable
+  * Bug Fixes
+    - #1359 Fix a bug that -log-color doesn't work
+  * Others
+    - docs: fix readme for ignore_actions[].ref by @nasa9084 in
+      #1323
+    - docs: fix readme for correct GHES_API_URL by @maruloop in
+      #1324
+    - docs(INSTALL): add mise alternate installation documentation
+      by @jylenhof in #1331
+  * Dependencies
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.465.0 (#1371)
+    - fix(deps): update module github.com/google/go-github/v81 to
+      v82 (#1368)
+    - chore(deps): update dependency aquaproj/aqua to v2.56.6
+      (#1370)
+    - chore(deps): update dependency anchore/syft to v1.41.1
+      (#1369)
+    - chore(deps): update dependency crate-ci/typos to v1.42.3
+      (#1367)
+    - chore(deps): update dependency anchore/syft to v1.41.0
+      (#1366)
+    - chore(deps): update dependency crate-ci/typos to v1.42.2
+      (#1364)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.464.0 (#1362)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.463.0 (#1361)
+    - fix(deps): update module github.com/suzuki-shunsuke/slog-util
+      to v0.3.1 (#1359)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.462.0 (#1360)
+    - chore(deps): update dependency suzuki-shunsuke/ghalint to
+      v1.5.5 (#1358)
+    - chore(deps): update dependency crate-ci/typos to v1.42.1
+      (#1357)
+    - chore(deps): update actions/checkout action to v6.0.2 (#1356)
+    - chore(deps): update aquaproj/aqua-renovate-config to v2.10.0
+      (#1355)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.461.0 (#1354)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.460.1 (#1353)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.459.0 (#1352)
+    - fix(deps): update module github.com/urfave/cli/v3 to v3.6.2
+      (#1351)
+    - chore(deps): update dependency aquaproj/aqua to v2.56.5
+      (#1350)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.458.0 (#1349)
+    - chore(deps): update dependency anchore/syft to v1.40.1
+      (#1348)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.457.0 (#1347)
+    - chore(deps): update dependency aquaproj/aqua to v2.56.4
+      (#1346)
+    - chore(deps): update dependency go to v1.25.6 (#1345)
+    - fix(deps): update module
+      github.com/suzuki-shunsuke/slog-error to v0.2.2 (#1344)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.456.0 (#1343)
+    - chore(deps): update actions/setup-go action to v6.2.0 (#1341)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.455.0 (#1340)
+    - chore(deps): update dependency aquaproj/aqua to v2.56.3
+      (#1339)
+    - chore(deps): update dependency goreleaser/goreleaser to
+      v2.13.3 (#1338)
+    - chore(deps): update dependency sigstore/cosign to v3.0.4
+      (#1337)
+    - chore(deps): update dependency anchore/syft to v1.40.0
+      (#1336)
+    - fix(deps): update module github.com/goccy/go-yaml to v1.19.2
+      (#1335)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.8.0 (#1334)
+    - chore(deps): update dependency crate-ci/typos to v1.42.0
+      (#1332)
+    - fix(deps): update module github.com/google/go-github/v80 to
+      v81 (#1329)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.454.0 (#1330)
+    - chore(deps): update dependency aquaproj/aqua to v2.56.2
+      (#1328)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.453.0 (#1327)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.452.0 (#1325)
+    - chore(deps): update dependency crate-ci/typos to v1.41.0
+      (#1322)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.451.1 (#1321)
+    - chore(deps): update dependency rhysd/actionlint to v1.7.10
+      (#1320)
+    - chore(deps): update dependency crate-ci/typos to v1.40.1
+      (#1319)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.451.0 (#1318)
+    - chore(deps): update dependency suzuki-shunsuke/pinact to
+      v3.8.0 (#1317)
+
+-------------------------------------------------------------------
 Tue Jan 13 06:14:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.8.0:
