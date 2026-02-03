@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb  3 06:21:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.7.16:
+  * Improved robustness of the Slack hosted plugin to reduce the
+    likeliness of failed token refresh when experiencing external
+    disruption. #63347
+  * Ensure application session rejections for untrusted devices are
+    consistently audited as AppSessionStart failures after MFA.
+    #63260
+  * Fixed a CredentialContainer error when attempting to log in to
+    the Web UI with a hardware key using Firefox >=147.0.2. #63246
+  * Updated OpenSSL to 3.0.19. #63203
+
+-------------------------------------------------------------------
 Thu Jan 29 07:04:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 17.7.15:
