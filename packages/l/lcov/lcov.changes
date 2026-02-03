@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Jan 31 16:36:13 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.4:
+  * enhanced criteria.pm module, to check function, branch, and MC/DC metrics
+  * enhance llvm2lcov to support llvm/21 and higher
+  * various bug fixes
+
+- Update to version 2.3.2:
+  * Improved llvm2lcov - more complete and more correct output
+  * add lcovrc support for config_file = ... attribute
+  * various bug fixes
+  * improved test portability (for very old gcc versions)
+
+- Update to version 2.3:
+  * support for Modified Condition / Decision Coverage (MC/DC) metrics
+    see the man pages for details
+  * remove deprecated lcov --diff ... feature
+  * various bug fixes and testcase portability fixes
+
+- Update to version 2.2:
+  * Support for integrating coverage data/coverage changes during code review
+  * Additional --filter options and better counting of number of times filter
+    was applied
+  * Improved callback performance
+  * Additional error checking, especially as related to coverage data
+    consistency
+  * Options to enable more compact HTML reports.
+  * Automated retry if child process dies on out-of-memory during parallel
+    execution
+  * Bug fixes
+
+- Update to version 2.1:
+  * Support for other languages/data import from other tools - Perl and Python,
+    in particular, as well as XML import - e.g., from cobertura
+  * See perl2lcov --help, py2lcov --help, and xml2lcov --help - as well as the
+    associated tests.
+  * Improved callback support. See the discussion in the genhtml man page.
+  * Improved error checking
+  * Performance improvements compared to lcov/2.0 - especially when dealing
+    with very large numbers of files.
+  * Bug fixes.
+
+-------------------------------------------------------------------
 Tue Jul 16 10:17:58 UTC 2024 - Florian <sp1rit@disroot.org>
 
 - Added missing perl-TimeDate dependency

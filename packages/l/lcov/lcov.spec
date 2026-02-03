@@ -1,7 +1,7 @@
 #
 # spec file for package lcov
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lcov
-Version:        2.0+git.20240123.d981242
+Version:        2.4
 Release:        0
 Summary:        A Graphical GCOV Front-end
 License:        GPL-2.0-or-later
@@ -51,6 +51,9 @@ Example sources for %{name}
 %autosetup
 sed -i "s/1.0/%{version}/" bin/get_version.sh
 
+# fix  E: env-script-interpreter
+sed -i 's,#!%{_bindir}/env ,#!/usr/bin/,' bin/gen* bin/xml2lcovutil.py bin/*lcov scripts/*
+
 %build
 
 %install
@@ -73,6 +76,9 @@ find %{buildroot}%{_datadir}/%{name}/support-scripts/ -name "*.pm" -exec chmod -
 %{_bindir}/gendesc
 %{_bindir}/perl2lcov
 %{_bindir}/py2lcov
+%{_bindir}/llvm2lcov
+%{_bindir}/xml2lcov
+%{_bindir}/xml2lcovutil.py
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/lib/
 %{_datadir}/%{name}/support-scripts
