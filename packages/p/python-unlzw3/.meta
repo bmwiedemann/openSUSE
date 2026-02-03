@@ -1,0 +1,5 @@
+<package name="python-unlzw3" project="openSUSE:Factory">
+  <title>Pure Python decompression module for .Z files</title>
+  <description>Pure Python decompression module for .Z files compressed using Unix compress utility. Unlike the faster but Linux-specific unlzw using Python CFFI, unlzw3 is slower but works on any platform that runs Python including Windows.</description>
+  <url>https://github.com/scivision/unlzw3</url>
+</package>
