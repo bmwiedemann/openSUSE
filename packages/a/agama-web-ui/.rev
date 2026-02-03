@@ -612,4 +612,22 @@
 - Allow selecting the mode in the product selection screen (jsc#PED-14307).</comment>
     <requestid>1329818</requestid>
   </revision>
+  <revision rev="35" vrev="35">
+    <srcmd5>58c3de8402e5abea9fa4cc53b49ae9a0</srcmd5>
+    <version>0</version>
+    <time>1770150352</time>
+    <user>anag_factory</user>
+    <comment>- Improve product and mode selection UX with clearer messaging, better
+  feedback, and removal of no-op mode switches
+  (gh#agama-project/agama#3112).
+  
+
+- Fix unselecting  product preselected patterns
+  (gh#agama-project/agama#3103)
+
+- Adapt UI to the new representation of Btrfs information
+  (snapshots and immutable) in the storage model and the volume
+  templates (related to jsc#PED-14307).</comment>
+    <requestid>1330410</requestid>
+  </revision>
 </revisionlist>
