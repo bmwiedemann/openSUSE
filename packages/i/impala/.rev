@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>1328192</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a46e979336eb2013ac57d3459c03c1bc</srcmd5>
+    <version>0.7.3</version>
+    <time>1770150920</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.7.3:
+  * fix: use the correct fields names of PEAP network config</comment>
+    <requestid>1330791</requestid>
+  </revision>
 </revisionlist>
