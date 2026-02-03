@@ -1,0 +1,15 @@
+Index: OpenImageIO-3.1.10.0/src/libOpenImageIO/imageinout_test.cpp
+===================================================================
+--- OpenImageIO-3.1.10.0.orig/src/libOpenImageIO/imageinout_test.cpp
++++ OpenImageIO-3.1.10.0/src/libOpenImageIO/imageinout_test.cpp
+@@ -360,6 +360,10 @@ test_all_formats()
+         // Skip "formats" that aren't amenable to this kind of testing
+         if (formatname == "null" || formatname == "term")
+             continue;
++        if (formatname == "heif") {
++          std::cout << "  [skipping " << formatname << " -- not supported here]\n";
++          continue;
++        }
+         float eps = 0.0f;
+         // Allow lossy formats to have a little more error
+         if (formatname == "heif" || formatname == "jpegxl")

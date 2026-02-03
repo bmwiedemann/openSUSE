@@ -51,7 +51,7 @@
 %global major_minor_ver 3.1
 
 Name:           OpenImageIO
-Version:        3.1.9.0
+Version:        3.1.10.0
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        Apache-2.0
@@ -60,6 +60,9 @@ URL:            https://www.openimageio.org/
 Source0:        https://github.com/AcademySoftwareFoundation/OpenImageIO/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # this contains the actual test images, only used during build
 Source1:        oiio-images-%{images_ts}.tar.xz
+Source2:        series
+# PATCH-FIX-OPENSUSE skip-heif-tests.patch - We can not run heif tests in the official builds
+Patch1:         skip-heif-tests.patch
 # NOTE: Please don't uncomment a build requirement unless you have submitted the package to factory and it exists
 #BuildRequires:  Field3D-devel
 BuildRequires:  cmake >= 3.18.2
