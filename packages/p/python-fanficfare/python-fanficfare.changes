@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan 27 16:44:19 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to the version 4.53.0:
+  - Fix for rare 'false' as INI list corner case
+  - base_xenforo2forum_adapter: Add include_nonauthor_poster
+    option
+  - adapter_storiesonlinenet: Improve inject_chapter_title
+  - writer_epub: Add option as page_progression_direction_rtl
+  - Changes for #1292 for normalizing different series URL forms.
+  - adapter_literotica: Remove unused chapter_categories_use_all
+    option, fix other site options for better defaults.ini
+  - Calc words_added even if not in logpage_entries.
+  - AO3: Site changed 'don't have permission' string
+  - adapter_literotica: Get series ID from data object
+  - adapter_literotica: Add chapter descriptions to summary
+  - adapter_literotica: Don't require tags_from_chapters for old
+    eroticatags collection
+  - adapter_fictionlive: create self.chapter_id_to_api earlier
+    for normalize_chapterurl
+  - adapter_literotica: Fix for one-shot aver_rating
+
+-------------------------------------------------------------------
 Mon Dec  1 17:31:25 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to the version 4.52.0:

@@ -1733,4 +1733,12 @@ Update to 4.43.0:
   * Fix for add_chapter_numbers:toconly and unnew. Closes #1274</comment>
     <requestid>1320774</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>b44f539ad8c54feb62810d67d3423dbf</srcmd5>
+    <version>4.53.0</version>
+    <time>1770150951</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1330811</requestid>
+  </revision>
 </revisionlist>
