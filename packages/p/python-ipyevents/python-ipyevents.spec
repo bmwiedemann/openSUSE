@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipyevents
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%define skip_python39 1
 Name:           python-ipyevents
-Version:        2.0.2
+Version:        2.0.4
 Release:        0
 Summary:        A custom ipython widget for returning mouse and keyboard events
 License:        BSD-3-Clause

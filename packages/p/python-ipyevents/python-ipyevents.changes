@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  1 21:27:51 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.4:
+  * CI fixes
+  * Fix a number of typos
+
+-------------------------------------------------------------------
 Tue Mar  5 18:48:31 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python39: no longer supported since ipython 8.19 (through

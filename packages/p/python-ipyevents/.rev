@@ -69,4 +69,15 @@
   ipywidgets)</comment>
     <requestid>1155333</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c9f073403f1774d922912b04e8e3d023</srcmd5>
+    <version>2.0.4</version>
+    <time>1770150854</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.0.4:
+  * CI fixes
+  * Fix a number of typos
+</comment>
+    <requestid>1330721</requestid>
+  </revision>
 </revisionlist>
