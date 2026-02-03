@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 03 09:21:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.5:
+  * Bug Fixes
+    - 527425d: fix(go): update github.com/charmbracelet/bubbles (
+      v0.21.0 → v0.21.1 ) (@mr-borboto[bot])
+  * Chores
+    - 4d128cb: chore(mise): update go ( 1.25.5 → 1.25.6 )
+      (@mr-borboto[bot])
+
+-------------------------------------------------------------------
 Fri Jan 16 06:14:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.4:
