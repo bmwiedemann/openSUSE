@@ -48,6 +48,8 @@ Patch4:         0001-usb-protection-Treat-hubs-and-HID-devices-like-any-o.patch
 Patch5:         g-s-d-skip-donation.patch
 # PATCH-FIX-UPSTREAM gnome-settings-daemon-gvc-31.patch glgo#GNOME/libgnome-volume-control!31 alynx.zhou@suse.com -- Fix crash with newer pipewire on switching bluetooth profile
 Patch6:         gnome-settings-daemon-gvc-31.patch
+# PATCH-FIX-UPSTREAM gnome-settings-daemon-gvc-32.patch bsc#1257512, glgo#GNOME/libgnome-volume-control!32 alynx.zhou@suse.com -- Fix duplicated new devices introduced by glgo#GNOME/libgnome-volume-control!31
+Patch7:         gnome-settings-daemon-gvc-32.patch
 
 ## SLE/LEAP-only patches start at 1000
 # PATCH-FEATURE-OPENSUSE gnome-settings-daemon-notify-idle-resumed.patch bnc#439018 bnc#708182 bgo#575467 hpj@suse.com -- notify user about auto suspend when returning from sleep
