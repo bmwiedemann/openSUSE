@@ -1,7 +1,7 @@
 #
 # spec file for package lrslib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,10 @@
 #
 
 
-%define dullver	073
-%define dullver2 073
+%define dullver	073a
 %define lname   liblrs1
 Name:           lrslib
-Version:        7.3
+Version:        7.3a
 Release:        0
 Summary:        Reverse Search Vertex Enumeration program
 License:        GPL-2.0-or-later
@@ -28,7 +27,6 @@ Group:          Productivity/Scientific/Math
 URL:            http://cgm.cs.mcgill.ca/~avis/C/lrs.html
 Source:         http://cgm.cs.mcgill.ca/~avis/C/lrslib/archive/%name-%dullver.tar.gz
 Patch1:         lrs-128.diff
-Patch2:         lrs-compile.diff
 Patch3:         lrs-types.diff
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel

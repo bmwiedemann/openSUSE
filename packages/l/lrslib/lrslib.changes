@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  3 15:43:29 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.3a
+  * Compiler fixes for e.g. gcc15
+- Delete lrs-compile.diff (merged)
+
+-------------------------------------------------------------------
 Wed Oct  1 22:26:33 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove deprecated buildrequire on libboost_system-devel

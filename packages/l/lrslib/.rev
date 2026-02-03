@@ -80,4 +80,12 @@
   for Tumbleweed.</comment>
     <requestid>1308496</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5b36d8b83d4c922eb9940b919a7fa967</srcmd5>
+    <version>7.3a</version>
+    <time>1770150947</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 7.3a</comment>
+    <requestid>1330808</requestid>
+  </revision>
 </revisionlist>
