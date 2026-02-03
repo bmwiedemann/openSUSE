@@ -1615,4 +1615,17 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1303548</requestid>
   </revision>
+  <revision rev="204" vrev="1">
+    <srcmd5>c0670754ce9e2170b52bcbf058eab835</srcmd5>
+    <version>1.58.1</version>
+    <time>1770150367</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.58.1:
+  + cdda: Fix duration of last track for some media
+  + build: Fix build when google option is disabled
+  + Fix various memory leaks
+  + Some other fixes
+  + Updated translations. (forwarded request 1330207 from iznogood)</comment>
+    <requestid>1330725</requestid>
+  </revision>
 </revisionlist>
