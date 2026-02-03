@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 03 06:08:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.3:
+  * Bring back the FetchPackage function on APK (#2049)
+
+-------------------------------------------------------------------
 Mon Feb 02 05:46:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.2:
