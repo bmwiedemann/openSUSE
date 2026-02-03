@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Mon Feb  2 10:18:22 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add -devel subpackage to move commands to it, and conflict the
+  subpackage with `mmv` package.
+
+-------------------------------------------------------------------
+Thu Jan 15 10:52:46 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove now redundant _multibuild file.
+
+-------------------------------------------------------------------
+Wed Dec 10 12:17:27 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.23.3:
+  - Too many upgrades in between, full (too long) list is on
+    https://github.com/modelcontextprotocol/python-sdk/releases
+
+-------------------------------------------------------------------
+Wed Jun 25 08:47:38 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.9.4
+- Run tests
+- Convert to libalternatives
+
+-------------------------------------------------------------------
+Tue Jun  3 06:45:00 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- initial package of version 1.9.2
+
