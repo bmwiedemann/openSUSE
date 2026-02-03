@@ -16,12 +16,16 @@
 #
 
 
+# a c++17 compiler is needed at least
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%global force_gcc_version 13
+%endif
 Name:           antimicrox
 Version:        3.5.1
 Release:        0
 Summary:        Graphical program used to map keyboard keys and mouse controls to a game-pad
 # antimicrox is GPL-3.0-or-later except SDL_GameControllerDB which is Zlib
-License:        GPL-3.0-or-later and Zlib
+License:        GPL-3.0-or-later AND Zlib
 Group:          Hardware/Joystick
 URL:            https://github.com/AntiMicroX/antimicroX
 Source0:        https://github.com/AntiMicroX/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -30,20 +34,17 @@ Patch0:         remove_datetime_aboutdialog.patch
 # PATCH-FIX-OPENSUSE fix_xcb_linker.patch -- fix linking xcb
 Patch1:         fix_xcb_linker.patch
 BuildRequires:  cmake >= 3.12
-BuildRequires:  desktop-file-utils
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  itstool
-BuildRequires:  libqt5-qttools-devel
+BuildRequires:  libQt6Core5Compat6
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-base-devel
+BuildRequires:  qt6-linguist-devel
+BuildRequires:  qt6-tools-devel
 BuildRequires:  shared-mime-info
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
@@ -61,10 +62,12 @@ This application is continuation of project called AntiMicro,
 which was later abandoned and revived by juliagoda.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
+%if 0%{?force_gcc_version}
+export CXX="g++-%{force_gcc_version}"
+%endif
 %cmake
 %cmake_build
 
@@ -78,7 +81,9 @@ rm %{buildroot}%{_datadir}/%{name}/CHANGELOG.md
 rm %{buildroot}%{_datadir}/doc/%{name}/CHANGELOG.md
 
 %fdupes %{buildroot}%{_datadir}
-%suse_update_desktop_file -r io.github.antimicrox.%{name} System HardwareSettings
+
+# fix category
+sed -i 's/Categories=Game;Qt;Utility;/Categories=System;HardwareSettings;/g' %{buildroot}%{_datadir}/applications/io.github.antimicrox.antimicrox.desktop
 
 %files
 %license LICENSE
