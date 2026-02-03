@@ -836,4 +836,41 @@ update to 10.15.0</comment>
       depth.</comment>
     <requestid>1328968</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>1a0709543d29ed230d05b58a11d4be8a</srcmd5>
+    <version>10.28.2</version>
+    <time>1770150686</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.28.2:
+  * Patch Changes
+    - Security fix: prevent path traversal in directories.bin
+      field.
+    - When pnpm installs a file: or git: dependency, it now
+      validates that symlinks point within the package directory.
+      Symlinks to paths outside the package root are skipped to
+      prevent local data from being leaked into node_modules.
+      This fixes a security issue where a malicious package could
+      create symlinks to sensitive files (e.g., /etc/passwd,
+      ~/.ssh/id_rsa) and have their contents copied when the
+      package is installed.
+      Note: This only affects file: and git: dependencies. Registry
+      packages (npm) have symlinks stripped during publish and are
+      not affected.
+    - Fixed optional dependencies to request full metadata from the
+      registry to get the libc field, which is required for proper
+      platform compatibility checks #9950.
+- update to 10.28.1:
+  * Patch Changes
+    - Fixed installation of config dependencies from private
+      registries.
+      Added support for object type in configDependencies when the
+      tarball URL returned from package metadata differs from the
+      computed URL #10431.
+    - Fix path traversal vulnerability in binary fetcher ZIP
+      extraction
+      - Validate ZIP entry paths before extraction to prevent
+        writing files outside target directory
+      - Validate BinaryResolution.prefix (basename) to prevent</comment>
+    <requestid>1330629</requestid>
+  </revision>
 </revisionlist>
