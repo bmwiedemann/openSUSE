@@ -637,4 +637,24 @@
   installation.</comment>
     <requestid>1330000</requestid>
   </revision>
+  <revision rev="35" vrev="35">
+    <srcmd5>7441a233abc91e9210a698d1349b4762</srcmd5>
+    <version>0</version>
+    <time>1770150351</time>
+    <user>anag_factory</user>
+    <comment>- Fixed opening the SSH firewall port when the firewall is not
+  installed because of the set &quot;onlyRequires&quot; flag in the software
+  configuration (bsc#1257212)
+
+- Implement modification of kernel parameters when SELinux pattern
+  is selected (gh#agama-project/agama#3103)
+
+- Update schemas for storage model and volume templates (related to
+  jsc#PED-14307).
+
+- Added proxy service allowing to configure the proxy through the 
+  kernel cmdline proxy argument and with HTTP API
+  (gh#agama-project/agama#3069).</comment>
+    <requestid>1330409</requestid>
+  </revision>
 </revisionlist>
