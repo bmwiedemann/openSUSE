@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  2 19:57:54 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.341.0
+  * vulkaninfo: Fix running under RenderDoc
+  * vulkaninfo: Dump VkCooperativeMatrixPropertiesKHR and TimeDomain
+- Drop 0001-vulkaninfo-Fix-running-under-RenderDoc.patch (merged)
+
+-------------------------------------------------------------------
 Tue Dec  9 23:18:24 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.335
