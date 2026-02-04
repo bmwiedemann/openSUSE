@@ -17,10 +17,10 @@
 #
 
 
-%global unversion 2_7_3
+%global unversion 2_7_4
 %define sover 1
 Name:           expat
-Version:        2.7.3
+Version:        2.7.4
 Release:        0
 Summary:        XML Parser Toolkit
 License:        MIT

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Feb  3 08:17:21 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 2.7.4
+  * CVE-2026-24515 -- Function XML_ExternalEntityParserCreate
+            failed to copy the encoding handler data passed to
+            XML_SetUnknownEncodingHandler from the parent to the new
+            subparser. This can cause a NULL dereference (CWE-476) from
+            external entities that declare use of an unknown encoding.
+            The expected impact is denial of service. It takes use of
+            both functions XML_ExternalEntityParserCreate and
+            XML_SetUnknownEncodingHandler for an application to be
+            vulnerable.
+  * CVE-2026-25210 -- Add missing check for integer overflow
+            related to buffer size determination in function doContent
+  * lib: Fix missing undoing of group size expansion in doProlog
+            failure cases
+  * xmlwf: Fix a memory leak
+  * WASI: Fix format specifiers for 32bit WASI SDK
+- fixes [bsc#1257144] and [bsc#1257496]
+
+-------------------------------------------------------------------
 Sat Sep 27 09:21:33 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - version update to 2.7.3
