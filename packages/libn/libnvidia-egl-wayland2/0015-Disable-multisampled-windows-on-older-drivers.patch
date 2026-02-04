@@ -1,7 +1,7 @@
 From 0c15809fcfb3fcf4b2eb2422fdd1dae4f9aea6ae Mon Sep 17 00:00:00 2001
 From: Kyle Brenneman <kbrenneman@nvidia.com>
 Date: Mon, 10 Nov 2025 14:41:53 -0700
-Subject: [PATCH 15/18] Disable multisampled windows on older drivers.
+Subject: [PATCH 15/21] Disable multisampled windows on older drivers.
 
 Multisampled windows require additional driver support that was added in
 version 0.2 of the platform surface interface.

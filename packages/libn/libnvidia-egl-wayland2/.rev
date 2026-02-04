@@ -7,4 +7,33 @@
     <comment>initial package</comment>
     <requestid>1325678</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e0f978d607a89683f58848dc16ea1e4a</srcmd5>
+    <version>1.0.1~20251213gitMACRO</version>
+    <time>1770235812</time>
+    <user>anag_factory</user>
+    <comment>- list patches from git since 1.0.0-rc release
+  * 0001-egl-wayland2-close-dmabuf-format-table-fd.patch
+  * 0002-Update-the-wl_egl_window-attached-size.patch
+  * 0003-egl-wayland2-Fix-libdrm-loading-when-wl_drm-is-not-a.patch
+  * 0004-Remove-a-stray-abort-in-eplWlCreateWindowSurface.patch
+  * 0005-Increment-version-number-to-1.0.1.patch
+  * 0006-base-Add-basic-support-for-EGL_KHR_partial_update.patch
+  * 0007-base-Add-an-EplImplFuncs-function-for-EGL_BUFFER_AGE.patch
+  * 0008-base-Add-an-EplImplFuncs-function-for-eglSetDamageRe.patch
+  * 0009-wayland-Implement-EplImplFuncs-QueryBufferAge.patch
+  * 0010-Fix-the-version-check-for-wl_surface.patch
+  * 0011-wayland-Flip-the-damage-rectangles-in-wl_surface_dam.patch
+  * 0012-egl-wayland2-add-FP16-DRM-format.patch
+  * 0014-Fix-multisampled-windows.patch
+  * 0015-Disable-multisampled-windows-on-older-drivers.patch
+  * 0016-Don-t-pass-EGL_RENDER_BUFFER-to-the-driver.patch
+  * 0017-Fix-an-incorrect-return-statement-in-eplWlSwapBuffer.patch
+  * 0018-Replace-SurfaceFeedbackState-modifiers_changed-with-.patch
+- added latest fixes from git
+  * 0019-Don-t-use-the-wl_display-during-teardown.patch
+  * 0020-Fix-building-on-FreeBSD.patch
+  * 0021-Fix-NULL-pointer-passed-to-wl_event_queue_destroy.patch</comment>
+    <requestid>1331012</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,232 @@
+From 744774943caf4ff0ab95687ae0f6d3e11ea7c44d Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Mon, 15 Dec 2025 15:46:18 -0700
+Subject: [PATCH 19/21] Don't use the wl_display during teardown.
+
+Some applications will call wl_display_disconnect but not eglTerminate
+before exiting, which leads to segfaults or hangs when we try to clean
+up the EGLDisplay.
+
+While that's technically an app bug, it's a common enough one to be
+worth trying to work around.
+
+To do that, add a new eplWlDisplayInstanceIsNativeValid function, which
+returns true if we expect the wl_display to still be valid. In this
+case, that means either we're not in teardown, or the native display was
+NULL and so egl-wayland2 has its own wl_display. We can update that if
+Wayland ever gains an equivalent to XESetCloseDisplay.
+
+In eplWlDestroyWindow and eplWlDisplayInstanceFree, avoid calling any
+Wayland functions if eplWlDisplayInstanceIsNativeValid returns false.
+We'll just leak any queues or proxy structs that libwayland didn't clean
+up.
+---
+ src/wayland/wayland-display.c   | 25 ++++++++---
+ src/wayland/wayland-display.h   | 10 +++++
+ src/wayland/wayland-surface.c   | 75 +++++++++++++++++----------------
+ src/wayland/wayland-swapchain.c |  4 +-
+ src/wayland/wayland-timeline.c  |  5 ++-
+ 5 files changed, 74 insertions(+), 45 deletions(-)
+
+diff --git a/src/wayland/wayland-display.c b/src/wayland/wayland-display.c
+index f522ca4..789f787 100644
+--- a/src/wayland/wayland-display.c
++++ b/src/wayland/wayland-display.c
+@@ -1153,13 +1153,21 @@ static void eplWlDisplayInstanceFree(WlDisplayInstance *inst)
+             eplInternalDisplayUnref(inst->internal_display);
+         }
+ 
+-        if (inst->globals.dmabuf != NULL)
+-        {
+-            zwp_linux_dmabuf_v1_destroy(inst->globals.dmabuf);
+-        }
+-        if (inst->globals.syncobj != NULL)
++        /*
++         * If we're going through teardown, then the application may have
++         * already called wl_display_disconnect, so we can't safely touch
++         * the wl_display or any proxies or queues.
++         */
++        if (eplWlDisplayInstanceIsNativeValid(inst))
+         {
+-            wp_linux_drm_syncobj_manager_v1_destroy(inst->globals.syncobj);
++            if (inst->globals.dmabuf != NULL)
++            {
++                zwp_linux_dmabuf_v1_destroy(inst->globals.dmabuf);
++            }
++            if (inst->globals.syncobj != NULL)
++            {
++                wp_linux_drm_syncobj_manager_v1_destroy(inst->globals.syncobj);
++            }
+         }
+ 
+         if (inst->own_display && inst->wdpy != NULL)
+@@ -1212,3 +1220,8 @@ const char *eplWlHookQueryString(EGLDisplay edpy, EGLint name)
+     eplDisplayRelease(pdpy);
+     return str;
+ }
++
++EGLBoolean eplWlDisplayInstanceIsNativeValid(WlDisplayInstance *inst)
++{
++    return inst != NULL && (!inst->platform->destroyed || inst->own_display);
++}
+diff --git a/src/wayland/wayland-display.h b/src/wayland/wayland-display.h
+index 39a4fa5..6cf3539 100644
+--- a/src/wayland/wayland-display.h
++++ b/src/wayland/wayland-display.h
+@@ -180,4 +180,14 @@ void eplWlTerminateDisplay(EplPlatformData *plat, EplDisplay *pdpy);
+ 
+ const char *eplWlHookQueryString(EGLDisplay edpy, EGLint name);
+ 
++/**
++ * Returns true if the native display is still expected to be valid.
++ *
++ * This will return false during teardown for an application-owned wl_display.
++ * Some applications will call wl_display_disconnect but not eglTerminate
++ * before they terminate, in which trying to do anything with the wl_display
++ * could cause a crash or hang.
++ */
++EGLBoolean eplWlDisplayInstanceIsNativeValid(WlDisplayInstance *inst);
++
+ #endif // WAYLAND_DISPLAY_H
+diff --git a/src/wayland/wayland-surface.c b/src/wayland/wayland-surface.c
+index ae5c165..0a66c46 100644
+--- a/src/wayland/wayland-surface.c
++++ b/src/wayland/wayland-surface.c
+@@ -509,7 +509,8 @@ static void DestroySurfaceFeedback(EplSurface *psurf)
+ {
+     if (psurf->priv->current.feedback != NULL)
+     {
+-        if (psurf->priv->current.feedback->feedback != NULL)
++        if (psurf->priv->current.feedback->feedback != NULL
++                && eplWlDisplayInstanceIsNativeValid(psurf->priv->inst))
+         {
+             zwp_linux_dmabuf_feedback_v1_destroy(psurf->priv->current.feedback->feedback);
+         }
+@@ -1069,11 +1070,6 @@ void eplWlDestroyWindow(EplDisplay *pdpy, EplSurface *psurf,
+         psurf->internal_surface = EGL_NO_SURFACE;
+     }
+ 
+-    if (psurf->priv->current.wsurf != NULL)
+-    {
+-        wl_proxy_wrapper_destroy(psurf->priv->current.wsurf);
+-    }
+-
+     if (psurf->priv->params.native_window != NULL)
+     {
+         psurf->priv->params.native_window->resize_callback = NULL;
+@@ -1091,37 +1087,44 @@ void eplWlDestroyWindow(EplDisplay *pdpy, EplSurface *psurf,
+ 
+     DestroySurfaceFeedback(psurf);
+ 
+-    if (psurf->priv->current.syncobj != NULL)
+-    {
+-        wp_linux_drm_syncobj_surface_v1_destroy(psurf->priv->current.syncobj);
+-    }
+-    if (psurf->priv->current.frame_callback != NULL)
++    if (eplWlDisplayInstanceIsNativeValid(pdpy->priv->inst))
+     {
+-        wl_callback_destroy(psurf->priv->current.frame_callback);
+-    }
+-    if (psurf->priv->current.last_swap_sync != NULL)
+-    {
+-        wl_callback_destroy(psurf->priv->current.last_swap_sync);
+-    }
+-    if (psurf->priv->current.presentation_feedback != NULL)
+-    {
+-        wp_presentation_feedback_destroy(psurf->priv->current.presentation_feedback);
+-    }
+-    if (psurf->priv->current.fifo != NULL)
+-    {
+-        wp_fifo_v1_destroy(psurf->priv->current.fifo);
+-    }
+-    if (psurf->priv->current.commit_timer != NULL)
+-    {
+-        wp_commit_timer_v1_destroy(psurf->priv->current.commit_timer);
+-    }
+-    if (psurf->priv->current.presentation_time != NULL)
+-    {
+-        wl_proxy_wrapper_destroy(psurf->priv->current.presentation_time);
+-    }
+-    if (psurf->priv->current.queue != NULL)
+-    {
+-        wl_event_queue_destroy(psurf->priv->current.queue);
++        if (psurf->priv->current.wsurf != NULL)
++        {
++            wl_proxy_wrapper_destroy(psurf->priv->current.wsurf);
++        }
++        if (psurf->priv->current.syncobj != NULL)
++        {
++            wp_linux_drm_syncobj_surface_v1_destroy(psurf->priv->current.syncobj);
++        }
++        if (psurf->priv->current.frame_callback != NULL)
++        {
++            wl_callback_destroy(psurf->priv->current.frame_callback);
++        }
++        if (psurf->priv->current.last_swap_sync != NULL)
++        {
++            wl_callback_destroy(psurf->priv->current.last_swap_sync);
++        }
++        if (psurf->priv->current.presentation_feedback != NULL)
++        {
++            wp_presentation_feedback_destroy(psurf->priv->current.presentation_feedback);
++        }
++        if (psurf->priv->current.fifo != NULL)
++        {
++            wp_fifo_v1_destroy(psurf->priv->current.fifo);
++        }
++        if (psurf->priv->current.commit_timer != NULL)
++        {
++            wp_commit_timer_v1_destroy(psurf->priv->current.commit_timer);
++        }
++        if (psurf->priv->current.presentation_time != NULL)
++        {
++            wl_proxy_wrapper_destroy(psurf->priv->current.presentation_time);
++        }
++        if (psurf->priv->current.queue != NULL)
++        {
++            wl_event_queue_destroy(psurf->priv->current.queue);
++        }
+     }
+ 
+     pthread_mutex_destroy(&psurf->priv->params.mutex);
+diff --git a/src/wayland/wayland-swapchain.c b/src/wayland/wayland-swapchain.c
+index 58eacd5..a51f4c4 100644
+--- a/src/wayland/wayland-swapchain.c
++++ b/src/wayland/wayland-swapchain.c
+@@ -46,7 +46,7 @@ static void DestroyPresentBuffer(WlDisplayInstance *inst, WlPresentBuffer *buffe
+ {
+     if (buffer != NULL)
+     {
+-        if (buffer->wbuf != NULL)
++        if (buffer->wbuf != NULL && eplWlDisplayInstanceIsNativeValid(inst))
+         {
+             wl_buffer_destroy(buffer->wbuf);
+         }
+@@ -298,7 +298,7 @@ void eplWlSwapChainDestroy(WlDisplayInstance *inst, WlSwapChain *swapchain)
+             DestroyPresentBuffer(inst, buffer);
+         }
+ 
+-        if (swapchain->queue != NULL)
++        if (swapchain->queue != NULL && eplWlDisplayInstanceIsNativeValid(inst))
+         {
+             wl_event_queue_destroy(swapchain->queue);
+         }
+diff --git a/src/wayland/wayland-timeline.c b/src/wayland/wayland-timeline.c
+index 8df4743..4b87c30 100644
+--- a/src/wayland/wayland-timeline.c
++++ b/src/wayland/wayland-timeline.c
+@@ -82,7 +82,10 @@ void eplWlTimelineDestroy(WlDisplayInstance *inst, WlTimeline *timeline)
+ {
+     if (timeline->wtimeline != NULL)
+     {
+-        wp_linux_drm_syncobj_timeline_v1_destroy(timeline->wtimeline);
++        if (eplWlDisplayInstanceIsNativeValid(inst))
++        {
++            wp_linux_drm_syncobj_timeline_v1_destroy(timeline->wtimeline);
++        }
+ 
+         inst->platform->priv->drm.SyncobjDestroy(
+                 gbm_device_get_fd(inst->gbmdev),
+-- 
+2.51.0
+

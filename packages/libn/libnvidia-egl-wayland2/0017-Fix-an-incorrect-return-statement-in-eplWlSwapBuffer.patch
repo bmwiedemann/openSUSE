@@ -1,7 +1,7 @@
 From 797026638f234a4a178c5ca6be8939df6ebd5afd Mon Sep 17 00:00:00 2001
 From: Kyle Brenneman <kbrenneman@nvidia.com>
 Date: Wed, 10 Dec 2025 08:31:56 -0700
-Subject: [PATCH 17/18] Fix an incorrect return statement in eplWlSwapBuffers.
+Subject: [PATCH 17/21] Fix an incorrect return statement in eplWlSwapBuffers.
 
 In eplWlSwapBuffers, if WaitForPreviousFrames fails, then do all the
 necessary cleanup before returning.

@@ -1,7 +1,7 @@
 From dcbb123f1804572889d2dc45af00e89ee9e5ff4f Mon Sep 17 00:00:00 2001
 From: Kyle Brenneman <kbrenneman@nvidia.com>
 Date: Tue, 14 Oct 2025 16:33:47 -0600
-Subject: [PATCH 06/18] base: Add basic support for EGL_KHR_partial_update.
+Subject: [PATCH 06/21] base: Add basic support for EGL_KHR_partial_update.
 
 Add the necessary bookkeeping to handle EGL_KHR_partial_update and
 EGL_EXT_buffer_age.

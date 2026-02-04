@@ -1,7 +1,7 @@
 From d1f80ea8ab4d3b808854673975dbf1e1ea9dac9d Mon Sep 17 00:00:00 2001
 From: Kyle Brenneman <kbrenneman@nvidia.com>
 Date: Tue, 21 Oct 2025 12:00:27 -0600
-Subject: [PATCH 10/18] Fix the version check for wl_surface.
+Subject: [PATCH 10/21] Fix the version check for wl_surface.
 
 In eplWlSwapBuffers, fix the version check for whether
 wl_surface::damage_buffer is available. It was checking against version

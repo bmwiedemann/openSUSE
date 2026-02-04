@@ -1,7 +1,7 @@
 From 9ae4f1daf3c9f1a30ef0870d74db7196c3fe8ebf Mon Sep 17 00:00:00 2001
 From: Austin Shafer <ashafer@badland.io>
 Date: Tue, 5 Aug 2025 13:02:45 -0400
-Subject: [PATCH 01/18] egl-wayland2: close dmabuf format table fd
+Subject: [PATCH 01/21] egl-wayland2: close dmabuf format table fd
 
 The compositor sends us a memfd for the format table, we need to
 actually close it once we are done. This is causing an fd leak on

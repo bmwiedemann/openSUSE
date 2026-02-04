@@ -1,7 +1,7 @@
 From 40d205187661699d96d2e27ece56af9bf61295aa Mon Sep 17 00:00:00 2001
 From: Kyle Brenneman <kbrenneman@nvidia.com>
 Date: Tue, 14 Oct 2025 17:00:07 -0600
-Subject: [PATCH 09/18] wayland: Implement EplImplFuncs::QueryBufferAge.
+Subject: [PATCH 09/21] wayland: Implement EplImplFuncs::QueryBufferAge.
 
 Add a buffer_age field to WlPresentBuffer, and add a new
 eplWlSwapChainUpdateBufferAge function to increment the ages of the

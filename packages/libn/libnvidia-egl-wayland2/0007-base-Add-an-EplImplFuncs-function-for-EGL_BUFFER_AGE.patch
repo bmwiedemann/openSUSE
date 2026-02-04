@@ -1,7 +1,7 @@
 From 94f578e48cbcde2468385b7187b71d22b2bb9ba2 Mon Sep 17 00:00:00 2001
 From: Kyle Brenneman <kbrenneman@nvidia.com>
 Date: Tue, 14 Oct 2025 16:42:08 -0600
-Subject: [PATCH 07/18] base: Add an EplImplFuncs function for EGL_BUFFER_AGE.
+Subject: [PATCH 07/21] base: Add an EplImplFuncs function for EGL_BUFFER_AGE.
 
 Add a new function, EplImplFuncs::QueryBufferAge, which is used to check
 the value of EGL_BUFFER_AGE for a surface.

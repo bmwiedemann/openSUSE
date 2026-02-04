@@ -1,7 +1,7 @@
 From 4b95dc9879a812a812f1e77d31f63220e378b5a7 Mon Sep 17 00:00:00 2001
 From: Kyle Brenneman <kbrenneman@nvidia.com>
 Date: Fri, 7 Nov 2025 11:47:29 -0700
-Subject: [PATCH 11/18] wayland: Flip the damage rectangles in
+Subject: [PATCH 11/21] wayland: Flip the damage rectangles in
  wl_surface_damage_buffer
 
 Flip the Y coordinate for the damage rectangles.

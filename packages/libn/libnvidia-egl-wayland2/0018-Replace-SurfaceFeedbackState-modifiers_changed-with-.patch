@@ -1,7 +1,7 @@
 From a6d6523b6b7ec9e5649a0dd13d417586d814e209 Mon Sep 17 00:00:00 2001
 From: Kyle Brenneman <kbrenneman@nvidia.com>
 Date: Wed, 10 Dec 2025 08:19:14 -0700
-Subject: [PATCH 18/18] Replace SurfaceFeedbackState::modifiers_changed with a
+Subject: [PATCH 18/21] Replace SurfaceFeedbackState::modifiers_changed with a
  counter
 
 Currently, we set the modifiers_changed flag upon receiving new surface

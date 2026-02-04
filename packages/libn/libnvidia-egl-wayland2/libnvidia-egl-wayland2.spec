@@ -59,6 +59,9 @@ Patch15:        0015-Disable-multisampled-windows-on-older-drivers.patch
 Patch16:        0016-Don-t-pass-EGL_RENDER_BUFFER-to-the-driver.patch
 Patch17:        0017-Fix-an-incorrect-return-statement-in-eplWlSwapBuffer.patch
 Patch18:        0018-Replace-SurfaceFeedbackState-modifiers_changed-with-.patch
+Patch19:        0019-Don-t-use-the-wl_display-during-teardown.patch
+Patch20:        0020-Fix-building-on-FreeBSD.patch
+Patch21:        0021-Fix-NULL-pointer-passed-to-wl_event_queue_destroy.patch
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.50

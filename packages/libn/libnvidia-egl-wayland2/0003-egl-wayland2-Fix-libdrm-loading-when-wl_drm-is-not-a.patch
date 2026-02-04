@@ -1,7 +1,7 @@
 From eb31eb3674829a12e8b49dee17b5f3d3ab92d31d Mon Sep 17 00:00:00 2001
 From: Austin Shafer <ashafer@badland.io>
 Date: Fri, 5 Sep 2025 15:14:27 -0400
-Subject: [PATCH 03/18] egl-wayland2: Fix libdrm loading when wl_drm is not
+Subject: [PATCH 03/21] egl-wayland2: Fix libdrm loading when wl_drm is not
  available
 
 If the compositor does not support wl_drm and we fail to get the

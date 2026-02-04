@@ -1,0 +1,47 @@
+From 3bda68accb174e112e21f37b348cbab3da912afd Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Mon, 22 Dec 2025 07:49:35 -0700
+Subject: [PATCH 20/21] Fix building on FreeBSD.
+
+FreeBSD doesn't have ETIME, so if drmSyncobjTimelineWait times out, it
+will fail with ETIMEDOUT instead.
+
+Also remove the ETIME check after calling poll(), since that function
+doesn't use ETIME for anything.
+---
+ src/wayland/wayland-swapchain.c | 2 +-
+ src/wayland/wayland-swapchain.h | 5 +++++
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/wayland/wayland-swapchain.c b/src/wayland/wayland-swapchain.c
+index 58eacd5..dec28d3 100644
+--- a/src/wayland/wayland-swapchain.c
++++ b/src/wayland/wayland-swapchain.c
+@@ -705,7 +705,7 @@ static int CheckBufferReleaseImplicit(WlDisplayInstance *inst,
+         }
+         return count;
+     }
+-    else if (ret == 0 || errno == ETIME || errno == EINTR)
++    else if (ret == 0 || errno == EINTR)
+     {
+         // Nothing freed up before the timeout, but that's not a fatal error
+         // here.
+diff --git a/src/wayland/wayland-swapchain.h b/src/wayland/wayland-swapchain.h
+index 3316a03..13996c8 100644
+--- a/src/wayland/wayland-swapchain.h
++++ b/src/wayland/wayland-swapchain.h
+@@ -32,6 +32,11 @@
+ #include "wayland-platform.h"
+ #include "wayland-timeline.h"
+ 
++// FreeBSD doesn't have ETIME, so the DRM calls return ETIMEDOUT instead.
++#ifndef ETIME
++#define ETIME ETIMEDOUT
++#endif
++
+ typedef enum
+ {
+     /**
+-- 
+2.51.0
+

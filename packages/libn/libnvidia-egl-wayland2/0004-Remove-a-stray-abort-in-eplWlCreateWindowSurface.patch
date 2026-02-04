@@ -1,7 +1,7 @@
 From fa3c994af319e265f3ff3da2bb2d76e0b993128a Mon Sep 17 00:00:00 2001
 From: Kyle Brenneman <kbrenneman@nvidia.com>
 Date: Tue, 14 Oct 2025 15:11:57 -0600
-Subject: [PATCH 04/18] Remove a stray abort() in eplWlCreateWindowSurface.
+Subject: [PATCH 04/21] Remove a stray abort() in eplWlCreateWindowSurface.
 
 ---
  src/wayland/wayland-surface.c | 1 -

@@ -1,0 +1,34 @@
+From f7b4c68f62efc15e6f25517a6ce370e2b0d6f48f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Do=C4=9Fukan=20Korkmazt=C3=BCrk?= <dkorkmazturk@nvidia.com>
+Date: Fri, 9 Jan 2026 08:46:25 -0500
+Subject: [PATCH 21/21] Fix NULL pointer passed to wl_event_queue_destroy
+
+In eplWlDisplayInstanceCreate, the queue variable may remain NULL if an
+error occurs before an event queue is successfully created. The cleanup
+code at the done label would then pass NULL to wl_event_queue_destroy,
+which does not safely handle NULL pointers.
+
+Add a NULL check before calling wl_event_queue_destroy to prevent this.
+---
+ src/wayland/wayland-display.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/wayland/wayland-display.c b/src/wayland/wayland-display.c
+index 789f787..0907003 100644
+--- a/src/wayland/wayland-display.c
++++ b/src/wayland/wayland-display.c
+@@ -1127,7 +1127,10 @@ WlDisplayInstance *eplWlDisplayInstanceCreate(EplDisplay *pdpy, EGLBoolean from_
+ 
+ done:
+     FreeDisplayRegistry(&names);
+-    wl_event_queue_destroy(queue);
++    if (queue != NULL)
++    {
++        wl_event_queue_destroy(queue);
++    }
+     free(drmNode);
+     if (drmFd >= 0)
+     {
+-- 
+2.51.0
+

@@ -1,7 +1,7 @@
 From ab4d5af9899d05ccbc363c4ec0e4f02d6525bf3e Mon Sep 17 00:00:00 2001
 From: Kyle Brenneman <kbrenneman@nvidia.com>
 Date: Tue, 5 Aug 2025 16:41:23 -0600
-Subject: [PATCH 02/18] Update the wl_egl_window attached size.
+Subject: [PATCH 02/21] Update the wl_egl_window attached size.
 
 In eglSwapBuffers, after sending the wl_surface::commit request, update
 wl_egl_window::attached_width and attached_height to the size of the

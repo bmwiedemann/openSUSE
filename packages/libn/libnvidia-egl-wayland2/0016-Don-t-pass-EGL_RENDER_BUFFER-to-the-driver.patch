@@ -1,7 +1,7 @@
 From 14c013b12ef4cccdabaa7df5269939a563d51898 Mon Sep 17 00:00:00 2001
 From: Kyle Brenneman <kbrenneman@nvidia.com>
 Date: Mon, 24 Nov 2025 11:25:15 -0700
-Subject: [PATCH 16/18] Don't pass EGL_RENDER_BUFFER to the driver.
+Subject: [PATCH 16/21] Don't pass EGL_RENDER_BUFFER to the driver.
 
 In eplWlCreateWindowSurface, if the application passes the
 EGL_RENDER_BUFFER attribute, then consume it locally instead of passing

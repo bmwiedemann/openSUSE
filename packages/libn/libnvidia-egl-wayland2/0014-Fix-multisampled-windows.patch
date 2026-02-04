@@ -1,7 +1,7 @@
 From d67240ab29f0dd4af4320fc3288842b24b3c8777 Mon Sep 17 00:00:00 2001
 From: Kyle Brenneman <kbrenneman@nvidia.com>
 Date: Mon, 10 Nov 2025 14:34:04 -0700
-Subject: [PATCH 14/18] Fix multisampled windows.
+Subject: [PATCH 14/21] Fix multisampled windows.
 
 Multisampling requires the driver to downsample the image before
 presentation, which wasn't getting called.
