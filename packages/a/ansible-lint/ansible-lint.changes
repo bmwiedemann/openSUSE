@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 16 06:19:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 26.1.1:
+  * Features
+    - feat: added exit code 8 for successfully fixed violations
+      (#4674) (#4899) @Jkhall81
+  * Fixes
+    - fix: resolve auto-fix failures and detection for short module
+      names (… (#4897) @Jkhall81
+    - fix: ensure --no-offline overrides config file precedence
+      (#4845) (#4903) @Jkhall81
+    - fix: pre-commit cache missing cspell updates (#4909)
+      @alisonlhart
+    - Set cryptography ceiling to match downstream requirement.
+      (#4904) @cidrblock
+    - fix: almalinux missing reference in platforms array (#4896)
+      @thelinuxracoon
+
+-------------------------------------------------------------------
 Mon Jan 12 06:39:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 26.1.0:
