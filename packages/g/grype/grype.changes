@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 04 06:03:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.107.1:
+  * Additional Changes
+    - support context cancellation while finding vuln matches
+      [#3200 @luhring]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#3203)
+
+-------------------------------------------------------------------
 Fri Jan 30 06:20:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.107.0:
