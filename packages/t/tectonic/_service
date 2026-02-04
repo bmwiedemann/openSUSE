@@ -1,8 +1,0 @@
-<services>
-  <service name="cargo_vendor" mode="manual">
-     <param name="srctar">tectonic-*.tar.gz</param>
-     <param name="compression">zst</param>
-     <param name="update">true</param>
-  </service>
-</services>
-
