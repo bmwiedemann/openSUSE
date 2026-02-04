@@ -1,7 +1,7 @@
 #
 # spec file for package python-yamllint
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,21 +23,24 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-yamllint
-Version:        1.37.1
+Version:        1.38.0
 Release:        0
 Summary:        A linter for YAML files
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/adrienverge/yamllint
 Source:         https://files.pythonhosted.org/packages/source/y/yamllint/yamllint-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+# Runtime dependencies
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module pathspec >= 1.0.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
-Requires:       python-pathspec >= 0.5.3
+Requires:       python-pathspec >= 1.0.0
 BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts

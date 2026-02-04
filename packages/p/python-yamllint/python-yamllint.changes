@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 16 06:40:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.38.0:
+  * Add support for Python 3.14, drop support for Python 3.9
+  * Require pathspec ≥ 1.0.0
+  * Config: Follow gitignore implementation in yaml-files and ignore
+  * Config: Use "mapping" instead of "dict" for user-facing errors
+  * Rule indentation: Fix error message for check-multi-line-strings
+  * Rule quoted-strings: Add quote-type: consistent
+  * Docs: Update the name of BSD ports
+  * Docs: Enhance wording of recursive directory lint in README
+  * Docs: Add Alpine Linux installation instructions in README
+
+-------------------------------------------------------------------
 Tue Aug 26 09:48:09 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems

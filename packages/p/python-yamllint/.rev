@@ -215,4 +215,12 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
     <requestid>1301410</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7a25f9ed8e9fe8e354baec428ddfa14c</srcmd5>
+    <version>1.38.0</version>
+    <time>1770235581</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1327663</requestid>
+  </revision>
 </revisionlist>
