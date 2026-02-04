@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Feb 04 06:09:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.45.0:
+  * New Features
+    - 7743fb4: feat(deb): base architecture variant support (#1031)
+      (@scop)
+    - be6fd83: feat: map uname -m (#1032) (@caarlos0)
+  * Bug fixes
+    - 2e98cc7: fix: improve deb.arch_variant (@caarlos0)
+  * Dependency updates
+    - 802edf4: fix(deps): bump alpine from 3.23.2 to 3.23.3 (#1029)
+      (@dependabot[bot])
+    - 205b84c: fix(deps): bump alpine from 3.23.2 to 3.23.3 in
+      /testdata/acceptance (#1030) (@dependabot[bot])
+  * Build process updates
+    - 95e3e02: ci(deps): bump the actions group with 5 updates
+      (#1028) (@dependabot[bot])
+    - edbfb76: ci: npm login (@caarlos0)
+  * Other work
+    - 615c2ed: docs: add missing options for ipk and archlinux
+      (@caarlos0)
+    - a8b7b6f: docs: added missing options (@caarlos0)
+    - 2c03e7d: docs: update (@caarlos0)
+    - 0e8e7cd: docs: update cmd docs (@caarlos0)
+
+-------------------------------------------------------------------
 Tue Jan 27 06:06:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.44.2:
