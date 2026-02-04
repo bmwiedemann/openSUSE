@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  3 16:59:03 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Require krb5 devel package as it ships krb5-config which k5test shells out to
+
+-------------------------------------------------------------------
 Fri May 30 09:05:17 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

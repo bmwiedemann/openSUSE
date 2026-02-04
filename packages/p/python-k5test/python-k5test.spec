@@ -1,7 +1,7 @@
 #
 # spec file for package python-k5test
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       krb5-client
 Requires:       krb5-server
+# for krb5-config (this tool being shipped in the devel package is rather odd)
+Requires:       pkgconfig(krb5)
 BuildArch:      noarch
 %python_subpackages
 
