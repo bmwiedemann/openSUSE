@@ -338,4 +338,22 @@
     provided as convenience for users of the wrapt module, but were not</comment>
     <requestid>1320086</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1b5ed932283dede78099d39897762ab4</srcmd5>
+    <version>2.1.1</version>
+    <time>1770235248</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.1.1:
+  ## Features Changed
+  * Drop support for Python 3.8. Python version 3.9 or later is now required.
+  ## Bugs Fixed
+  * Missing tox.ini from source distribution package has been added.
+  * Improved type hints so that mypy and ty work better for methods of
+    classes when using wrapt.decorator and wrapt.function_wrapper. Note that
+    applying these to static methods still does not work correctly due to
+    possibly limitations in those type checkers. The pyrefly tool still does
+    not work correctly with wrapt.decorator and wrapt.function_wrapper
+    applied to any methods of classes</comment>
+    <requestid>1330660</requestid>
+  </revision>
 </revisionlist>

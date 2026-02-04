@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb  3 05:11:19 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.1.1:
+  ## Features Changed
+  * Drop support for Python 3.8. Python version 3.9 or later is now required.
+  ## Bugs Fixed
+  * Missing tox.ini from source distribution package has been added.
+  * Improved type hints so that mypy and ty work better for methods of
+    classes when using wrapt.decorator and wrapt.function_wrapper. Note that
+    applying these to static methods still does not work correctly due to
+    possibly limitations in those type checkers. The pyrefly tool still does
+    not work correctly with wrapt.decorator and wrapt.function_wrapper
+    applied to any methods of classes
+
+-------------------------------------------------------------------
 Wed Nov 26 01:59:50 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.0.1:
