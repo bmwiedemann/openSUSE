@@ -21,7 +21,7 @@
 %{!?_tmpfilesdir:%global _tmpfilesdir %{_prefix}/lib/tmpfiles.d}
 
 Name:           matomo
-Version:        5.7.0
+Version:        5.7.1
 Release:        0
 Summary:        Web analytics platform
 License:        GPL-3.0-or-later
@@ -185,7 +185,7 @@ install -D -m0644 %{SOURCE13} %{buildroot}/%{_sysconfdir}/my.cnf.d/%{name}.my.cn
 
 %post
 # BSC#1154324
-# # # chown -R %{apache_user}:%{apache_group} %{apache_serverroot}/%{name}
+# # # chown -R %%{apache_user}:%%{apache_group} %%{apache_serverroot}/%%{name}
 %service_add_post matomo-archive.timer matomo-archive.service apache2.service
 %tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 if [ $1 -gt 1 ]; then

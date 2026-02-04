@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  4 11:01:47 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.7.1
+
+- Update to 5.7.1
+  * Bug Fixes
+    - #23698, #24008 Reset dashboard not working until page reloads
+    - #24033, #24034 Infinite redirects after upgrading to 5.7.0
+  * Security
+    - #24041 Harden handling for IdSite param in API requests
+    - #23650 Correctly filter shared segments by available site access for user
+
+-------------------------------------------------------------------
 Thu Jan 29 15:07:37 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.7.0
 
 - Update to 5.7.0
