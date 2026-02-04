@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan  8 18:47:04 UTC 2026 - Noel Power <nopower@suse.com>
+
+- Immutable mode support, create /var/log/krb5 dir via
+  systemd.tmpfiles; (PED-14767).
+- Add krb5-log.tmpfiles
+
+-------------------------------------------------------------------
+Mon Nov 24 12:56:46 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
+
+- Fix memory leak; (bsc#1252989); Update patch
+  0009-UsrEtc-support.patch
+
+-------------------------------------------------------------------
 Fri Aug 29 17:32:17 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 1.22.1

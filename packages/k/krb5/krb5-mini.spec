@@ -1,7 +1,7 @@
 #
 # spec file for package krb5-mini
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ Source3:        vendor-files.tar.bz2
 Source4:        baselibs.conf
 Source5:        krb5-rpmlintrc
 Source6:        krb5.tmpfiles
+Source7:        krb5-log.tmpfiles
 Patch1:         0001-ksu-pam-integration.patch
 Patch2:         0002-krb5-1.9-manpaths.patch
 Patch3:         0003-Adjust-build-configuration.patch
@@ -133,7 +134,6 @@ DEFCCNAME=DIR:/run/user/%%{uid}/krb5cc; export DEFCCNAME
 cp man/kadmin.man man/kadmin.local.8
 
 %install
-mkdir -p %{buildroot}/%{_localstatedir}/log/krb5
 %make_install -C src
 # Munge krb5-config yet again.  This is totally wrong for 64-bit, but chunks
 # of the buildconf patch already conspire to strip out /usr/<anything> from the
@@ -147,7 +147,6 @@ install -m 644 src/util/ac_check_krb5.m4 %{buildroot}%{_datadir}/aclocal/
 # I'll probably do something about this later on
 mkdir -p %{buildroot}%{_sysconfdir}
 mkdir -p %{buildroot}%{_sysconfdir}/krb5.conf.d
-mkdir -p %{buildroot}%{_localstatedir}/log/krb5
 # create plugin directories
 mkdir -p %{buildroot}/%{_libdir}/krb5/plugins/kdb
 mkdir -p %{buildroot}/%{_libdir}/krb5/plugins/preauth
@@ -164,6 +163,7 @@ install -m 644 %{vendorFiles}/krb5.conf %{buildroot}%{_sysconfdir}
 # updates. Use systemd-tmpfiles to copy the files there when it doesn't exist
 install -d -m 0755 %{buildroot}%{_tmpfilesdir}
 install -m 644 %{SOURCE6} %{buildroot}%{_tmpfilesdir}/krb5.conf
+install -m 644 %{SOURCE7} %{buildroot}%{_tmpfilesdir}/krb5-log.conf
 mkdir -p %{buildroot}/%{_datadir}/kerberos/krb5kdc
 # Where per-user keytabs live by default.
 mkdir -p %{buildroot}/%{_datadir}/kerberos/krb5/user
@@ -237,6 +237,7 @@ sed -i "s/%{_lto_cflags}//" %{buildroot}%{_bindir}/krb5-config
 /sbin/ldconfig
 %service_add_post krb5kdc.service kadmind.service kpropd.service
 %tmpfiles_create krb5.conf
+%tmpfiles_create krb5-log.conf
 %{fillup_only -n kadmind}
 %{fillup_only -n krb5kdc}
 %{fillup_only -n kpropd}
@@ -294,7 +295,6 @@ done
 %dir %{_libdir}/krb5/plugins/preauth
 %dir %{_libdir}/krb5/plugins/libkrb5
 %dir %{_libdir}/krb5/plugins/tls
-%attr(0700,root,root) %dir %{_localstatedir}/log/krb5
 %doc %{krb5docdir}/README
 %if 0%{?suse_version} > 1500
 %attr(0644,root,root) %{_distconfdir}/krb5.conf
@@ -322,6 +322,7 @@ done
 %{_libdir}/krb5/plugins/kdb/*
 %{_libdir}/krb5/plugins/tls/*
 %{_tmpfilesdir}/krb5.conf
+%{_tmpfilesdir}/krb5-log.conf
 %dir %{_datadir}/kerberos/
 %dir %{_datadir}/kerberos/krb5kdc
 %dir %{_datadir}/kerberos/krb5

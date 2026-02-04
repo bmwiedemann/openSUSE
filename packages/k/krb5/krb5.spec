@@ -1,7 +1,7 @@
 #
 # spec file for package krb5
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,6 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir %{_localstatedir}/adm/fillup-templates
-%endif
 Name:           krb5
 Version:        1.22.1
 Release:        0
@@ -34,6 +30,7 @@ Source4:        baselibs.conf
 Source5:        krb5-rpmlintrc
 Source6:        ksu-pam.d
 Source7:        krb5.tmpfiles
+Source8:        krb5-log.tmpfiles
 Patch1:         0001-ksu-pam-integration.patch
 Patch2:         0002-krb5-1.9-manpaths.patch
 Patch3:         0003-Adjust-build-configuration.patch
@@ -203,7 +200,6 @@ DEFCCNAME=DIR:/run/user/%%{uid}/krb5cc; export DEFCCNAME
 cp man/kadmin.man man/kadmin.local.8
 
 %install
-mkdir -p %{buildroot}/%{_localstatedir}/log/krb5
 %make_install -C src
 # Munge krb5-config yet again.  This is totally wrong for 64-bit, but chunks
 # of the buildconf patch already conspire to strip out /usr/<anything> from the
@@ -217,7 +213,6 @@ install -m 644 src/util/ac_check_krb5.m4 %{buildroot}%{_datadir}/aclocal/
 # I'll probably do something about this later on
 mkdir -p %{buildroot}%{_sysconfdir}
 mkdir -p %{buildroot}%{_sysconfdir}/krb5.conf.d
-mkdir -p %{buildroot}%{_localstatedir}/log/krb5
 # create plugin directories
 mkdir -p %{buildroot}/%{_libdir}/krb5/plugins/kdb
 mkdir -p %{buildroot}/%{_libdir}/krb5/plugins/preauth
@@ -234,6 +229,7 @@ install -m 644 %{vendorFiles}/krb5.conf %{buildroot}%{_sysconfdir}
 # updates. Use systemd-tmpfiles to copy the files there when it doesn't exist
 install -d -m 0755 %{buildroot}%{_tmpfilesdir}
 install -m 644 %{SOURCE7} %{buildroot}%{_tmpfilesdir}/krb5.conf
+install -m 644 %{SOURCE8} %{buildroot}%{_tmpfilesdir}/krb5-log.conf
 mkdir -p %{buildroot}/%{_datadir}/kerberos/krb5kdc
 # Where per-user keytabs live by default.
 mkdir -p %{buildroot}/%{_datadir}/kerberos/krb5/user
@@ -323,7 +319,10 @@ for i in krb5.conf; do
 done
 %endif
 
-%post -p /sbin/ldconfig
+%post
+/sbin/ldconfig
+%tmpfiles_create krb5-log.conf
+
 %postun -p /sbin/ldconfig
 
 %preun server
@@ -394,8 +393,6 @@ done
 %dir %{_libdir}/krb5/plugins/preauth
 %dir %{_libdir}/krb5/plugins/libkrb5
 %dir %{_libdir}/krb5/plugins/tls
-# add log directory
-%attr(0700,root,root) %dir %{_localstatedir}/log/krb5
 %doc %{krb5docdir}/README
 %if 0%{?suse_version} > 1500
 %attr(0644,root,root) %{_distconfdir}/krb5.conf
@@ -416,9 +413,10 @@ done
 %{_libdir}/libkrb5support.so.*
 %{_libdir}/libkrad.so.*
 %{_libdir}/krb5/plugins/tls/*.so
+%{_tmpfilesdir}/krb5-log.conf
 
 %files server
-%attr(0700,root,root) %dir %{_localstatedir}/log/krb5
+%defattr(-,root,root)
 %config(noreplace) %{_sysconfdir}/logrotate.d/krb5-server
 %{_unitdir}/kadmind.service
 %{_unitdir}/krb5kdc.service
