@@ -1,7 +1,7 @@
 #
 # spec file for package LuminanceHDR
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ Patch1:         fix-boost_system.patch
 Patch2:         clamp.patch
 Patch3:         fix-version.patch
 Patch4:         fix-boost-1.87.0.patch
+Patch5:         eigen-cmake.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel

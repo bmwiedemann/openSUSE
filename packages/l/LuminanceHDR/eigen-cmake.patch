@@ -1,0 +1,47 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: 2026-02-03 16:28:54.000013795 +0100
+
+As per eigen3-3.4.1:/usr/share/eigen3/cmake/UseEigen3.cmake,
+the modern way to use Eigen3 is as follows...
+
+[This resolves a build failure with eigen3-5.x, which has
+abandoned setting EIGEN3_INCLUDE_DIR.]
+
+---
+ CMakeLists.txt                          |    2 --
+ src/TonemappingOperators/CMakeLists.txt |    2 +-
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+Index: LuminanceHDR-2.6.0+git313.634b489/CMakeLists.txt
+===================================================================
+--- LuminanceHDR-2.6.0+git313.634b489.orig/CMakeLists.txt
++++ LuminanceHDR-2.6.0+git313.634b489/CMakeLists.txt
+@@ -132,7 +132,6 @@ IF(WIN32)
+             set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS} -Werror=unknown-pragmas")
+         ENDIF()
+         FIND_PACKAGE(Eigen3 REQUIRED)
+-        INCLUDE_DIRECTORIES(${EIGEN3_INCLUDE_DIR})
+     ELSE()
+         SET(LIBRAW_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/../DEPs/include/libraw")
+         SET(FFTWF_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/../DEPs/include/fftw3")
+@@ -174,7 +173,6 @@ ELSE()
+     INCLUDE_DIRECTORIES(${LCMS2_INCLUDE_DIR})
+ 
+     FIND_PACKAGE(Eigen3 REQUIRED)
+-    INCLUDE_DIRECTORIES(${EIGEN3_INCLUDE_DIR})
+ ENDIF()
+ 
+ IF(WIN32)
+Index: LuminanceHDR-2.6.0+git313.634b489/src/TonemappingOperators/CMakeLists.txt
+===================================================================
+--- LuminanceHDR-2.6.0+git313.634b489.orig/src/TonemappingOperators/CMakeLists.txt
++++ LuminanceHDR-2.6.0+git313.634b489/src/TonemappingOperators/CMakeLists.txt
+@@ -24,7 +24,7 @@ FILE(GLOB FILES_H *.h)
+ FILE(GLOB FILES_CPP *.cpp)
+ 
+ ADD_LIBRARY(pfstmo STATIC ${TM_LIBPFS_H} ${TM_LIBPFS_CPP} ${FILES_H} ${FILES_CPP})
+-TARGET_LINK_LIBRARIES(pfstmo pfs Qt5::Core Qt5::Gui Qt5::Widgets)
++TARGET_LINK_LIBRARIES(pfstmo pfs Qt5::Core Qt5::Gui Qt5::Widgets Eigen3::Eigen)
+ 
+ SET(LUMINANCE_MODULES_GUI ${LUMINANCE_MODULES_GUI} pfstmo PARENT_SCOPE)
+ SET(LUMINANCE_MODULES_CLI ${LUMINANCE_MODULES_CLI} pfstmo PARENT_SCOPE)
