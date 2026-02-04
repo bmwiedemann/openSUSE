@@ -1,7 +1,7 @@
 #
 # spec file for package python-mypy
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-mypy
-Version:        1.18.2
+Version:        1.19.1
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
@@ -38,9 +38,12 @@ Source1:        https://files.pythonhosted.org/packages/source/t/types_psutil/ty
 # License Source2: Apache-2.0. Only for the test suite, not packaged here.
 Source2:        https://files.pythonhosted.org/packages/source/t/types_setuptools/types_setuptools-%{types_setuptools_version}.tar.gz
 Source99:       python-mypy-rpmlintrc
+# PATCH-FIX-UPSTREAM Based on gh#python/mypy#20533
+Patch0:         support-pathspec-1.0.0.patch
 BuildRequires:  %{python_module exceptiongroup}
+BuildRequires:  %{python_module librt >= 0.6}
 BuildRequires:  %{python_module mypy_extensions >= 1.0.0}
-BuildRequires:  %{python_module pathspec}
+BuildRequires:  %{python_module pathspec >= 1.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli >= 1.1.0}
@@ -48,9 +51,10 @@ BuildRequires:  %{python_module typing_extensions >= 4.6.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-mypy_extensions >= 0.4.3
-Requires:       python-pathspec
-Requires:       python-typing_extensions >= 3.10
+Requires:       python-librt >= 0.6
+Requires:       python-mypy_extensions >= 1.0.0
+Requires:       python-pathspec >= 1.0.0
+Requires:       python-typing_extensions >= 4.6.0
 Requires:       (python-tomli >= 1.1.0 if python-base < 3.11)
 Suggests:       python-psutil >= 4.0
 BuildArch:      noarch
@@ -171,8 +175,7 @@ donttest+=" or PEP561Suite"
 %license LICENSE
 %{python_sitelib}/mypy
 %{python_sitelib}/mypyc
-# %%{python_sitelib}/mypy-%%{version}.dist-info
-%{python_sitelib}/mypy-*.dist-info
+%{python_sitelib}/mypy-%{version}.dist-info
 %python_alternative %{_bindir}/dmypy
 %python_alternative %{_bindir}/mypy
 %python_alternative %{_bindir}/mypyc

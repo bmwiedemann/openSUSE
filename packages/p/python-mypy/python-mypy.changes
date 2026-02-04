@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Feb  3 03:45:28 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.19.1:
+  * Fix noncommutative joins with bounded TypeVars
+  * Respect output format for cached runs by serializing raw errors in cache
+    metas
+  * Allow types.NoneType in match cases
+  * Fix mypyc generator regression with empty tuple
+  * Fix crash involving Unpack-ed TypeVarTuple
+  * Fix crash on star import of redefinition
+  * Fix crash on typevar with forward ref used in other module
+  * Fail with an explicit error on PyPy
+  * Mypy now recognizes TypeForm[T] as a type and implements PEP 747. The
+    feature is still experimental, and it's disabled by default
+  * Fix annotated with function as type keyword list parameter
+  * Fix errors for raise NotImplemented
+  * Don't let help formatter line-wrap URLs
+  * Do not cache fast container types inside lambdas
+  * Respect force-union-syntax flag in error hint
+  * Fix type checking of dict type aliases
+  * Use pretty callable formatting more often for callable expressions
+  * Use dummy concrete type instead of Any when checking protocol variance
+  * PEP 696: Fix swapping TypeVars with defaults
+  * Fix narrowing of class pattern with union type
+  * Do not emit unreachable warnings for lines that return NotImplemented
+  * Fix matching against typing.Callable and Protocol types
+  * Make --pretty work better on multi-line issues
+  * More precise return types for TypedDict.get
+  * Prevent false unreachable warnings for @final instances that occur when
+    strict optional checking is disabled
+  * Check class references to catch non-existent classes in match cases
+  * Do not sort unused error codes in unused error codes warning
+  * Fix [name-defined] false positive in class A[X, Y=X]: case
+  * Filter SyntaxWarnings during AST parsing
+  * Make untyped decorator its own error code
+  * Support error codes from plugins in options
+  * Allow returning Literals in __new__
+  * Inverse interface freshness logic
+  * Do not report exhaustive-match after deferral
+  * Make untyped_calls_exclude invalidate cache
+  * Add await to empty context hack
+  * Consider non-empty enums assignable to Self
+- Add patch support-pathspec-1.0.0.patch:
+  * Support changes required by pathspec 1.0.0. (bsc#1257517)
+
+-------------------------------------------------------------------
 Tue Nov 25 12:55:30 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Lower-bound python version on mypy self check because of pytest 9
