@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  4 06:11:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.39.0:
+  * Remove obsolete commands by @xnox in #1857
+
+-------------------------------------------------------------------
+Wed Feb 04 06:03:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.31:
+  * upgrade to latest apko
+
+-------------------------------------------------------------------
 Mon Feb 02 05:46:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.38.30:
