@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Feb 04 14:25:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.93.0:
+  * [INS-228] Add ignorePattern configuration support to Postgres
+    and Sqlserver detectors (#4612)
+  * [INS-280] Fix Github "repostories" filter does not respect GHES
+    endpoint (#4677)
+  * remove tracker type (#4723)
+  * Added Analysis info to tableau detector (#4717)
+  * [INS-307] Added unspecified(0.0.0.0) check to
+    DetectorHttpClientWithNoLocalAddresses (#4726)
+  * [INS-249] Updated Gitlab client from v0.129.0 to
+    v1.12.0(latest) (#4655)
+  * Unify some false positive logic (#4720)
+  * Unify false positive/overlap tests (#4699)
+  * Add some false positive tests #4703
+  * enabled the test which was previously failing due to
+    inaccessible github repo (#4715)
+  * [INS-258] Revert includeRepos removal from GitHub source
+    (#4673)
+  * bug fix: UnitErr and UnitOK called for the same repo (#4681)
+  * skip failing test (#4701)
+  * fix(github): preserve trailing hyphens in repository names
+    (#4695)
+  * Stop using detectableChunk in processResult (#4691)
+  * fix: typos in comments (#4676)
+  * Include key info for analyze (#4686)
+  * Auto-configure TruffleHog for Pre-commit Hooks (#4666)
+  * Fix/issue 4578 path normalization for unix and windows (#4614)
+  * [INS-202] Add rate limiting to the Github Analyzer (#4617)
+  * Switch out default HTTP client use in detectors (#4670)
+  * Add tests for processResult (#4674)
+  * remove ResultWithMetadata.Data (#4659)
+
+-------------------------------------------------------------------
 Mon Jan 19 09:51:01 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 3.92.5:

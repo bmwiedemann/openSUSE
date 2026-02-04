@@ -2599,4 +2599,12 @@ Note: The previously pushed version 3.89.0 never existed. This was a typo, which
   * [INS-206] Store Gitlab Project ID in secret location metadata (#4601) (forwarded request 1328060 from ph03nix)</comment>
     <requestid>1328099</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>81e21b38725cea0a1e2f2f64b9cc2da9</srcmd5>
+    <version>3.93.0</version>
+    <time>1770235824</time>
+    <user>anag_factory</user>
+    <comment>update to 3.93.0 (forwarded request 1330981 from ojkastl_buildservice)</comment>
+    <requestid>1330991</requestid>
+  </revision>
 </revisionlist>
