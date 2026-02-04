@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb  2 15:53:14 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.14.2+211+suse.66f8a5ec:
+
+  * multipathd: fix possible null deference in purge_disconnected code
+  (bsc#1257590)
+  * CI enhancements
+
+-------------------------------------------------------------------
 Mon Jan 26 17:02:24 UTC 2026 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.14.1+208+suse.d08f5475:

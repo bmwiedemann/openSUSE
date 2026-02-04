@@ -2203,4 +2203,15 @@ by an upstream reviewed commit. (forwarded request 1109432 from mwilck)</comment
     `-fno-strict-aliasing`. (gh#opensvc/multipath-tools#130, bsc#1255285)</comment>
     <requestid>1329631</requestid>
   </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>90cad510a69f872953a6341f47737923</srcmd5>
+    <version>0.14.2+211+suse.66f8a5ec</version>
+    <time>1770235264</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.14.2+211+suse.66f8a5ec:
+  * multipathd: fix possible null deference in purge_disconnected code
+  (bsc#1257590)
+  * CI enhancements</comment>
+    <requestid>1330511</requestid>
+  </revision>
 </revisionlist>
