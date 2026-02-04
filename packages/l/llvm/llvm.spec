@@ -1,7 +1,7 @@
 #
 # spec file for package llvm
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,10 @@
 %if %{suse_version} >= 1600 || 0%{?sle_version} >= 150600
 %define has_lldb_python 1
 %endif
+%endif
+
+%ifarch aarch64 x86_64
+%define has_bolt 1
 %endif
 
 # obsolete_llvm_versioned() prefix postfix
@@ -280,6 +284,21 @@ This package is a dummy package that depends on the version of
 libomp-devel that openSUSE currently supports.  Packages that
 don't require a specific LLVM version should depend on this.
 
+%package bolt
+Summary:        A post-link optimizer developed to speed up large applications
+URL:            https://github.com/llvm/llvm-project/tree/main/bolt
+Requires:       llvm%{_sonum}-bolt
+%obsolete_llvm_versioned llvm bolt
+
+%description bolt
+BOLT is a post-link optimizer developed to speed up large applications.
+It achieves the improvements by optimizing application's code layout based on
+execution profile gathered by sampling profiler, such as Linux `perf` tool.
+
+This package is a dummy package that depends on the version of
+llvm-bolt that openSUSE currently supports.  Packages that
+don't require a specific LLVM version should depend on this.
+
 %package polly
 Summary:        LLVM Framework for High-Level Loop and Data-Locality Optimizations
 Group:          Development/Languages/Other
@@ -370,6 +389,11 @@ echo "This is a dummy package to provide a dependency on the system compiler." >
 
 %if 0%{?has_openmp}
 %files -n libomp-devel
+%doc README
+%endif
+
+%if 0%{?has_bolt}
+%files bolt
 %doc README
 %endif
 

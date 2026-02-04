@@ -2423,4 +2423,13 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 </comment>
     <requestid>1303270</requestid>
   </revision>
+  <revision rev="152" vrev="2">
+    <srcmd5>f2426d3deb67f661e697b0528ca06820</srcmd5>
+    <version>21</version>
+    <time>1770235251</time>
+    <user>anag_factory</user>
+    <comment>- Add metapackage for bolt.
+</comment>
+    <requestid>1330299</requestid>
+  </revision>
 </revisionlist>
