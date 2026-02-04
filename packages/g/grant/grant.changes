@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 04 06:07:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.8:
+  * chore(deps): update anchore dependencies (#393)
+  * chore(deps): update tools to latest versions (#392)
+
+-------------------------------------------------------------------
 Fri Jan 30 06:22:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.5.7:
