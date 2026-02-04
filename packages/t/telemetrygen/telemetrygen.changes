@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Wed Feb 04 10:24:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.145.0:
+  No telemetrygen-related changes, only dependency changes:
+  * Update module github.com/golang-jwt/jwt/v5 to v5.3.1 (#45818)
+  * Update module github.com/SAP/go-hdb to v1.14.19 (#45821)
+  * Update module github.com/DataDog/datadog-go/v5 to v5.8.3 -
+    abandoned (#45817)
+  * Update module github.com/shirou/gopsutil/v4 to v4.26.1 (#45826)
+  * [chore] Update core dependencies (#45800)
+  * Update All github.com/datadog packages to v0.76.0-rc.2 (#45659)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.40 (#45686)
+  * Update module github.com/aws/aws-sdk-go-v2/service/ec2 to
+    v1.283.0 (#45684)
+  * Update module github.com/elastic/go-docappender/v2 to v2.12.1
+    (#45661)
+  * Update module github.com/knadh/koanf/v2 to v2.3.2 (#45662)
+  * Update module github.com/redis/go-redis/v9 to v9.17.3 (#45664)
+  * Update module github.com/getsentry/sentry-go to v0.42.0
+    (#45671)
+  * Update module github.com/linkedin/goavro/v2 to v2.15.0 (#45672)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.39 (#45666)
+  * Update module github.com/twmb/franz-go/pkg/kadm to v1.17.2
+    (#45667)
+  * Update module github.com/zeebo/xxh3 to v1.1.0 (#45673)
+  * Update All github.com/aws packages (#45657)
+  * Update module github.com/hetznercloud/hcloud-go/v2 to v2.36.0
+    (#45669)
+  * Update module github.com/bmatcuk/doublestar/v4 to v4.10.0
+    (#45668)
+  * Update mcr.microsoft.com/mssql/server:2025-latest Docker digest
+    to 54b23ca (#45656)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.35 (#45530)
+  * Update module modernc.org/sqlite to v1.44.3 (#45531)
+  * Update module github.com/aws/aws-sdk-go-v2/feature/s3/manager
+    to v1.21.0 (#45529)
+  * Update docker-compose deps to v0.144.0 (#45525)
+  * Update All github.com/googlecloudplatform packages (#45524)
+  * Update module github.com/SAP/go-hdb to v1.14.18 (#45498)
+  * Update module github.com/microsoft/go-mssqldb to v1.9.6
+    (#45497)
+  * Update module github.com/klauspost/compress to v1.18.3 (#45496)
+  * Update module github.com/DataDog/agent-payload/v5 to v5.0.179
+    (#45521)
+  * Update module cloud.google.com/go/storage to v1.59.1 (#45495)
+  * Update module github.com/google/cadvisor to v0.56.2 (#45504)
+  * Update module modernc.org/sqlite to v1.44.2 (#45500)
+  * Update module github.com/DataDog/datadog-api-client-go/v2 to
+    v2.54.0 (#45502)
+  * Update module github.com/getsentry/sentry-go to v0.41.0
+    (#45503)
+  * Update All github.com/aws packages (#45501)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.34 (#45499)
+  * Update module github.com/hetznercloud/hcloud-go/v2 to v2.35.0
+    (#45507)
+
+-------------------------------------------------------------------
 Tue Jan 20 14:58:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.144.0:
