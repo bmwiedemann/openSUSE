@@ -1,0 +1,17 @@
+<services>
+ <service name="obs_scm" mode="localonly">
+  <param name="url">https://github.com/qr243vbi/execdir.git</param>
+  <param name="revision">main</param>
+  <param name="scm">git</param>
+  <param name="versionformat">@PARENT_TAG@.git%ct</param>
+  <param name="versionrewrite-pattern">v(.*)</param>
+ </service>
+ <service name="tar" mode="localonly">
+ </service>
+ <service name="recompress" mode="localonly">
+  <param name="compression">gz</param>
+  <param name="file">*.tar</param>
+ </service>
+ <service name="set_version" mode="localonly">
+ </service>
+</services>

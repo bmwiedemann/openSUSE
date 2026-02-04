@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>70da8f6aefd7429345a07e351ed52283</srcmd5>
+    <version>0.4.1.git1770014834</version>
+    <time>1770235714</time>
+    <user>anag_factory</user>
+    <comment>I am the author. execdir was originally created by Gustavo Costa in 2022, and I forked it in 2025. I replaced the text-based key-value storage with lmdb and made aliases optional, which improves usability. I also replaced the makefile with a CMakeLists.txt file.</comment>
+    <requestid>1330879</requestid>
+  </revision>
+</revisionlist>
