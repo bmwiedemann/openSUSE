@@ -3831,6 +3831,8 @@ unsorted:
   - espeak-ng-vim 
   - espeakedit 
   - espresso 
+  - esql 
+  - esql-devel 
   - etc-update 
   - etcd 
   - etcd-for-k8s1.32 
@@ -3978,6 +3980,7 @@ unsorted:
   - fatcat 
   - fatrace 
   - fatsort 
+  - faugus-launcher 
   - faust 
   - faust-android-devel 
   - faust-devel 
@@ -7462,6 +7465,7 @@ unsorted:
   - gnucash-docs 
   - gnucash-lang 
   - gnuchess 
+  - gnucobol 
   - gnudos 
   - gnudos-devel 
   - gnugo 
@@ -11666,7 +11670,7 @@ unsorted:
   - libVFlib3-10 
   - libVSyntaxHighlighting1 
   - libVTextEdit1 
-  - libVulkanLayerSettings-1_4_335 
+  - libVulkanLayerSettings-1_4_341 
   - libWN3 
   - libWPEBackend-fdo-1_0-1 
   - libWPEBackend-fdo-1_0-1-32bit 
@@ -14875,7 +14879,7 @@ unsorted:
   - libnanomsg6 
   - libnanosvg0 
   - libnanosvgrast0 
-  - libnauty-2_9_1 
+  - libnauty-2_9_3 
   - libnbcompat-devel 
   - libnbcompat0 
   - libnbd 
@@ -16995,7 +16999,7 @@ unsorted:
   - libvoikko-devel 
   - libvoikko1 
   - libvoikko1-32bit 
-  - libvolk-1_4_335 
+  - libvolk-1_4_341 
   - libvolk3_2 
   - libvomsapi1 
   - libvorbis-devel 
@@ -25137,6 +25141,7 @@ unsorted:
   - python311-click-repl 
   - python311-click-spinner 
   - python311-click-threading 
+  - python311-click81 
   - python311-cliff 
   - python311-cligj 
   - python311-clikit 
@@ -26213,6 +26218,8 @@ unsorted:
   - python311-maxminddb 
   - python311-mbstrdecoder 
   - python311-mccabe 
+  - python311-mcp 
+  - python311-mcp-devel 
   - python311-md2workflow 
   - python311-md2workflow-plugins-jira 
   - python311-md2workflow-plugins-redmine 
@@ -26239,7 +26246,6 @@ unsorted:
   - python311-mistralai 
   - python311-mistune 
   - python311-mistune2 
-  - python311-mitmproxy-rs 
   - python311-mitmproxy-wireguard 
   - python311-mizani 
   - python311-mkdocs 
@@ -26330,6 +26336,7 @@ unsorted:
   - python311-nbval 
   - python311-nbxmpp 
   - python311-ncclient 
+  - python311-ncompress 
   - python311-ndg-httpsclient 
   - python311-ndindex 
   - python311-ndjson 
@@ -27741,6 +27748,7 @@ unsorted:
   - python311-unittest-mixins 
   - python311-unittest-xml-reporting 
   - python311-unix-ar 
+  - python311-unlzw3 
   - python311-unpaddedbase64 
   - python311-unsync 
   - python311-untokenize 
@@ -27775,6 +27783,7 @@ unsorted:
   - python311-vcrpy 
   - python311-vcver 
   - python311-vcversioner 
+  - python311-vdf 
   - python311-vdirsyncer 
   - python311-vega 
   - python311-vega_datasets 
@@ -28957,6 +28966,7 @@ unsorted:
   - python312-click-repl 
   - python312-click-spinner 
   - python312-click-threading 
+  - python312-click81 
   - python312-cliff 
   - python312-cligj 
   - python312-clikit 
@@ -30059,6 +30069,8 @@ unsorted:
   - python312-maxminddb 
   - python312-mbstrdecoder 
   - python312-mccabe 
+  - python312-mcp 
+  - python312-mcp-devel 
   - python312-md2workflow 
   - python312-md2workflow-plugins-jira 
   - python312-md2workflow-plugins-redmine 
@@ -30083,6 +30095,7 @@ unsorted:
   - python312-miniupnpc 
   - python312-misaka 
   - python312-mistletoe 
+  - python312-mistral-vibe 
   - python312-mistralai 
   - python312-mistune 
   - python312-mistune2 
@@ -30179,6 +30192,7 @@ unsorted:
   - python312-nbval 
   - python312-nbxmpp 
   - python312-ncclient 
+  - python312-ncompress 
   - python312-ndg-httpsclient 
   - python312-ndindex 
   - python312-ndjson 
@@ -31624,6 +31638,7 @@ unsorted:
   - python312-unittest-mixins 
   - python312-unittest-xml-reporting 
   - python312-unix-ar 
+  - python312-unlzw3 
   - python312-unpaddedbase64 
   - python312-unsync 
   - python312-untokenize 
@@ -31659,6 +31674,7 @@ unsorted:
   - python312-vcrpy 
   - python312-vcver 
   - python312-vcversioner 
+  - python312-vdf 
   - python312-vdirsyncer 
   - python312-vega 
   - python312-vega_datasets 
@@ -32828,6 +32844,7 @@ unsorted:
   - python313-click-repl 
   - python313-click-spinner 
   - python313-click-threading 
+  - python313-click81 
   - python313-cliff 
   - python313-cligj 
   - python313-clikit 
@@ -33911,6 +33928,8 @@ unsorted:
   - python313-maxminddb 
   - python313-mbstrdecoder 
   - python313-mccabe 
+  - python313-mcp 
+  - python313-mcp-devel 
   - python313-md2workflow 
   - python313-md2workflow-plugins-jira 
   - python313-md2workflow-plugins-redmine 
@@ -33935,6 +33954,7 @@ unsorted:
   - python313-miniupnpc 
   - python313-misaka 
   - python313-mistletoe 
+  - python313-mistral-vibe 
   - python313-mistralai 
   - python313-mistralclient 
   - python313-mistune 
@@ -34031,6 +34051,7 @@ unsorted:
   - python313-nbval 
   - python313-nbxmpp 
   - python313-ncclient 
+  - python313-ncompress 
   - python313-ndg-httpsclient 
   - python313-ndindex 
   - python313-ndjson 
@@ -35456,6 +35477,7 @@ unsorted:
   - python313-unittest-mixins 
   - python313-unittest-xml-reporting 
   - python313-unix-ar 
+  - python313-unlzw3 
   - python313-unpaddedbase64 
   - python313-unsync 
   - python313-untokenize 
@@ -35490,6 +35512,7 @@ unsorted:
   - python313-vcrpy 
   - python313-vcver 
   - python313-vcversioner 
+  - python313-vdf 
   - python313-vdirsyncer 
   - python313-vega 
   - python313-vega_datasets 
