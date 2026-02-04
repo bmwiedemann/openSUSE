@@ -213,4 +213,13 @@
     <comment></comment>
     <requestid>1320050</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>e814e80142df05a09c491c2d9b2bd265</srcmd5>
+    <version>1.8.0</version>
+    <time>1770235739</time>
+    <user>anag_factory</user>
+    <comment>- Add pythons_for_pypi macro. This macro will help to build the python
+  minimal stack for different python versions.</comment>
+    <requestid>1330921</requestid>
+  </revision>
 </revisionlist>
