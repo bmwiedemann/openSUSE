@@ -318,4 +318,12 @@
     <comment>Fix for Immutable Mode jsc#PED-14776 from epic jsc#PED-14688 (forwarded request 1328889 from jsmeix)</comment>
     <requestid>1328890</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>0e25bc8460434914ba3672fe28836df6</srcmd5>
+    <version>2.9</version>
+    <time>1770235829</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1330996</requestid>
+  </revision>
 </revisionlist>

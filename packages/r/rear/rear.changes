@@ -76,7 +76,7 @@ Thu Jul 14 12:55:28 CEST 2022 - jsmeix@suse.de
 - Version upgrade to 2.7
   New features, bigger enhancements,
   and possibly backward incompatible changes:
-  * ReaR’s default TMPDIR is now /var/tmp (it was /tmp before)
+  * ReaR's default TMPDIR is now /var/tmp (it was /tmp before)
   * Stop ReaR from possibly overwriting its own disk and
     backup drives for OUTPUT=USB and OUTPUT=RAWDISK
     via new WRITE_PROTECTED_... config variables.
@@ -110,14 +110,14 @@ Thu Jul 14 12:55:28 CEST 2022 - jsmeix@suse.de
     with NovaStor DataCenter 8.0 and higher.
   * Support for systemd and parallel restore with
     Data Protector BACKUP=DP.
-  * Now “rear format” has in addition to the ‘–efi’ switch
-    a ‘–bios’ switch. If none is given (i.e. by default)
+  * Now "rear format" has in addition to the '-efi' switch
+    a '-bios' switch. If none is given (i.e. by default)
     it will now do hybrid formatting.
   * Overhauled serial console support code via SERIAL_CONSOLE_...
     config variables (see default.conf for details).
   * Support for HTTP sources when using PXE via new PXE_HTTP_URL
   * In /usr/share/rear/conf/default.conf changed ISO_VOLID from
-    "RELAXRECOVER" to "REAR-ISO" and accordingly ‘RELAXRECOVER’
+    "RELAXRECOVER" to "REAR-ISO" and accordingly 'RELAXRECOVER'
     in variable names was replaced. In particular
     USER_INPUT_RELAXRECOVER_SYMLINK_TARGET was renamed as
     USER_INPUT_ISO_SYMLINK_TARGET so only the new name will work.
