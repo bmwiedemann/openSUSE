@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb  2 02:59:30 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- update to 0.9.27:
+  * xrdp.ini manpage updated
+  * Unauthenticated RDP security scan finding/partial auth bypass
+  * CVE-2025-68670: Improper bounds checking of domain string
+    length leads to Stack-based Buffer Overflow (bsc#1257362)
+
+-------------------------------------------------------------------
 Sat May  3 20:51:12 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.9.26:
