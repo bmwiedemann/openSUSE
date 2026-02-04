@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb  3 08:49:14 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.6.1
+  Enhancements
+  * Use dict instead of OrderedDict in Record serialization.
+  New Features
+  * Add cable path tracing support for front ports, rear ports,
+    and virtual circuit terminations.
+  Bug Fixes
+  * Update internal object state after save operations to prevent
+    attribute reset issues.
+
+-------------------------------------------------------------------
 Sat Jan 10 09:36:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.6.0
