@@ -1,7 +1,7 @@
 #
 # spec file for package libnvidia-egl-gbm
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define lname libnvidia-egl-gbm%{so_ver}
 %define rname egl-gbm
 Name:           libnvidia-egl-gbm
-Version:        1.1.2.1
+Version:        1.1.3
 Release:        0
 Summary:        The GBM EGL external platform library
 License:        MIT
@@ -28,7 +28,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/NVIDIA/egl-gbm
 Source0:        https://github.com/NVIDIA/egl-gbm/archive/%{version}/%{rname}-%{version}.tar.gz
 Source1:        baselibs.conf
-Patch0:         0001-egl-gbm-add-FP16-DRM-format.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  ninja
