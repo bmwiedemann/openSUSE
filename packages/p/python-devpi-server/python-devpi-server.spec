@@ -1,7 +1,7 @@
 #
 # spec file for package python-devpi-server
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,17 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %define commands export fsck gen-config import init passwd server gen-secret
 
 %{?sle15_python_module_pythons}
 Name:           python-devpi-server
-Version:        6.11.0
+Version:        6.18.0
 Release:        0
 Summary:        Private PyPI caching server
 License:        MIT
@@ -32,7 +38,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-aiohttp
 Requires:       python-argon2-cffi >= 16.2
 Requires:       python-attrs
 Requires:       python-defusedxml
@@ -50,8 +55,13 @@ Requires:       python-repoze.lru >= 0.6
 Requires:       python-ruamel.yaml >= 0.15.94
 Requires:       python-strictyaml
 Requires:       python-waitress >= 1.0.1
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 # nginx tests failing when not skipped, likely due to rpmbuild environment
 Suggests:       nginx
 Suggests:       python-WebTest
@@ -60,7 +70,6 @@ Suggests:       python-beautifulsoup4
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module WebTest}
-BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module argon2-cffi >= 16.2}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module beautifulsoup4}
@@ -89,7 +98,6 @@ inherit packages from each other or from the pypi.org site.
 
 %prep
 %setup -q -n devpi_server-%{version}
-sed -i "s/ruamel.yaml<=[^']*,/ruamel.yaml/g" setup.py
 sed -i "s/--flake8//" tox.ini
 
 %build
@@ -116,6 +124,12 @@ export PATH=$PATH:`pwd`/bin-%{$python_version}
 export PYTHONPATH=:%{buildroot}%{$python_sitelib}
 $python -m pytest --ignore test_devpi_server -k "not ($donttest)" %{buildroot}%{$python_sitelib}/test_devpi_server
 }
+
+%pre
+# removing old update-alternatives entries
+for c in %{commands}; do
+%python_libalternatives_reset_alternative devpi-$c
+done
 
 %post
 for c in %{commands}; do
