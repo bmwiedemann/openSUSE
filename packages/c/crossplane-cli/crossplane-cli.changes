@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Feb 04 12:42:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.4:
+  This release backports #7030 to the 2.1 branch to fix one of the
+  issues reported in #3423, where shared transitive dependencies
+  could not be upgraded successfully. It also contains security
+  updates to Crossplane's dependencies.
+  * What's Changed
+    - chore(deps): update module
+      github.com/theupdateframework/go-tuf/v2 to v2.4.1 [security]
+    - chore(deps): update module github.com/go-chi/chi/v5 to v5.2.4
+      [security]
+    - Backport lint fixes and config from main
+    - Update sigstore dependencies to fix security vulnerabilities
+    - e2e: Move transitive dependency test packages to
+      xpkg.crossplane.io
+    - pkg: Fix handling of no-op package upgrades
+    - pkg: Ignore outdated dependencies in the lock when upgrades
+      are enabled
+    - e2e: Add an e2e test for transitive dependency conflicts
+    - chore(deps): update module github.com/quic-go/quic-go to
+      v0.57.0 [security] (#6978)
+    - test: add edge case tests     for SetComposedResourceMetadata
+    - render: propagate root composite identity through nested XR
+      trees
+
+-------------------------------------------------------------------
 Fri Dec 05 12:35:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.3:

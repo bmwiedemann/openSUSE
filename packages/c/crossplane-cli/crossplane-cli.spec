@@ -1,7 +1,7 @@
 #
 # spec file for package crossplane-cli
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,14 @@
 %define executable_name crossplane
 
 Name:           crossplane-cli
-Version:        2.1.3
+Version:        2.1.4
 Release:        0
 Summary:        The Cloud Native Control Plane
 License:        Apache-2.0
 URL:            https://github.com/crossplane/crossplane
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.20
+BuildRequires:  go1.25 >= 1.25.6
 Provides:       crossplane = %{version}
 
 %description
