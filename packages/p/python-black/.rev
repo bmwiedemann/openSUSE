@@ -552,4 +552,36 @@
   * Add `no_cache` option to control caching behavior.</comment>
     <requestid>1318930</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>64fccd21fe9b642ae90894d53de8a966</srcmd5>
+    <version>26.1.0</version>
+    <time>1770235244</time>
+    <user>anag_factory</user>
+    <comment>- Update to 26.1.0:
+  * Highlights
+    + Introduces the 2026 stable style 
+    + Black no longer supports running with Python 3.9
+    + This release alo bumps pathspec to v1 and fixes inconsistencies with
+      Git's .gitignore logic (bsc#1257517)
+  * Stable style
+    + Fix bug where comments preceding # fmt: off/# fmt: on blocks were
+      incorrectly removed, particularly affecting Jupytext's # %% [markdown]
+      comments
+    + Fix crash when multiple # fmt: skip comments are used in a multi-part
+      if-clause, on string literals, or on dictionary entries with long lines
+    + Fix possible crash when fmt: directives aren't on the top level
+    + Preserve parentheses when # type: ignore comments would be merged with
+      other comments on the same line, preventing AST equivalence failures
+  * Preview style
+    + Fix fmt: skip skipping the line after instead of the line it's on
+    + Remove unnecessary parentheses from the left-hand side of assignments
+      while preserving magic trailing commas and intentional multiline
+      formatting
+    + Fix fix_fmt_skip_in_one_liners crashing on with statements
+    + Fix fix_fmt_skip_in_one_liners crashing on annotated parameters
+    + Fix new lines being added after imports with # fmt: skip on them
+  * Output
+    + Explicitly shutdown the multiprocessing manager when run in diff mode</comment>
+    <requestid>1330657</requestid>
+  </revision>
 </revisionlist>
