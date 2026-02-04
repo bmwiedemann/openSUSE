@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  8 08:58:51 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Exclude df from checking nsfs. This is upstream, but
+  not in a release yet. (bsc#1255862)
+  0001-Exclude-virtual-FS-nsfs.patch 
+
+-------------------------------------------------------------------
 Wed Jul 23 08:55:09 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 7.13

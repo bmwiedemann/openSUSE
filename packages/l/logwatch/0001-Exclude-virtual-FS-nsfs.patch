@@ -1,0 +1,25 @@
+From 6cbaacbe80aa4f86340dc55271f7f3e08bb76750 Mon Sep 17 00:00:00 2001
+From: Frank Crawford <frank@crawford.emu.id.au>
+Date: Tue, 28 Oct 2025 20:18:56 +1100
+Subject: [PATCH] Exclude virtual FS nsfs
+
+---
+ scripts/services/zz-disk_space | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/services/zz-disk_space b/scripts/services/zz-disk_space
+index d7f2c9a..67c6f02 100644
+--- a/scripts/services/zz-disk_space
++++ b/scripts/services/zz-disk_space
+@@ -163,7 +163,7 @@ sub DiskFull {
+ #Main
+ 
+ if ($OSname eq "Linux") {
+-	$df_options = "-h -x tmpfs -x devtmpfs -x udf -x iso9660 -x squashfs -x overlay";
++	$df_options = "-h -x tmpfs -x devtmpfs -x udf -x iso9660 -x squashfs -x overlay -x nsfs";
+ 	if ($local_disks_only) { $df_options .= " -l"; }
+ } elsif ($OSname eq "Darwin") {
+ 	$df_options = "-h -T nodevfs,autofs";
+-- 
+2.52.0
+
