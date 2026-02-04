@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 04 09:18:12 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260204.2cf77a3:
+  * Drop requires on update-bootloader as it's not available on 15.6.
+    Install it in post-script on target of migration instead. boo#1255897
+  * Refine post-scritps
+  * Ensure update bootloader is installed in post scripts
+  * don't install selinux-policy-targeted-gaming by default
+
+-------------------------------------------------------------------
 Mon Jan 26 10:30:01 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Add dependency on update-bootloader to fix boo#1255897

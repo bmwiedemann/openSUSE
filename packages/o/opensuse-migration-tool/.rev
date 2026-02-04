@@ -159,4 +159,17 @@ migrations as well as point release upgrades
   pattern-base-selinux could be skipped if update-bootloader was missing</comment>
     <requestid>1329272</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ced8728f4d90c7bec384ad1f06a4736c</srcmd5>
+    <version>20260204.2cf77a3</version>
+    <time>1770235735</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260204.2cf77a3:
+  * Drop requires on update-bootloader as it's not available on 15.6.
+    Install it in post-script on target of migration instead. boo#1255897
+  * Refine post-scritps
+  * Ensure update bootloader is installed in post scripts
+  * don't install selinux-policy-targeted-gaming by default</comment>
+    <requestid>1330907</requestid>
+  </revision>
 </revisionlist>

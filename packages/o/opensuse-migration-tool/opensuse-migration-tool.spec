@@ -19,7 +19,7 @@
 
 
 Name:           opensuse-migration-tool
-Version:        20260106.d2cfd39
+Version:        20260204.2cf77a3
 Release:        0
 Summary:        Migration and Upgrade tool for openSUSE
 License:        Apache-2.0
@@ -32,7 +32,6 @@ Requires:       dialog
 Requires:       gawk
 Requires:       jq
 Requires:       sed
-Requires:       update-bootloader
 BuildArch:      noarch
 
 %description
