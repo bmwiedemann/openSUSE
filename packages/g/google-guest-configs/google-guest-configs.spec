@@ -30,7 +30,9 @@ License:        Apache-2.0
 Group:          System/Daemons
 URL:            https://github.com/GoogleCloudPlatform/guest-configs
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+%if 0%{?suse_version} && 0%{?suse_version} >= 1600
 BuildRequires:  NetworkManager-devel
+%endif
 BuildRequires:  sysconfig
 BuildRequires:  sysconfig-netconfig
 BuildRequires:  systemd-rpm-macros
@@ -64,8 +66,10 @@ cp -av src/lib/udev/rules.d/* %{buildroot}%{_udevrulesdir}/
 cp -av src/lib/udev/google_nvme_id %{buildroot}/%{_udevdir}/
 mkdir -p %{buildroot}%{_bindir}
 cp -av src/usr/bin/* %{buildroot}%{_bindir}/
+%if 0%{?suse_version} && 0%{?suse_version} >= 1600
 mkdir -p %{buildroot}%{_sysconfdir}/NetworkManager/dispatcher.d
 cp -av src/etc/NetworkManager/dispatcher.d/google_hostname.sh %{buildroot}%{_sysconfdir}/NetworkManager/dispatcher.d/
+%endif
 
 %post
 if [ -f %{_sysconfdir}/sysconfig/network/ifcfg-eth0 ] && \
@@ -93,7 +97,9 @@ fi
 %config(noreplace) %{_modprobedir}/gce-blacklist.conf
 %config %{_sysconfdir}/rsyslog.d/*
 %config %{_sysconfdir}/sysconfig/network/scripts/*
+%if 0%{?suse_version} && 0%{?suse_version} >= 1600
 %attr(0755,root,root) %{_sysconfdir}/NetworkManager/dispatcher.d/google_hostname.sh
+%endif
 %{_sysctldir}/*
 %attr(0755,root,root) %{_udevdir}/google_nvme_id
 %{_udevrulesdir}/*
