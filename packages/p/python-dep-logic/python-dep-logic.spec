@@ -1,7 +1,7 @@
 #
 # spec file for package python-dep-logic
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Python dependency specifications supporting logical operations
 License:        Apache-2.0
 URL:            https://github.com/pdm-project/dep-logic
 Source:         https://files.pythonhosted.org/packages/source/d/dep-logic/dep_logic-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support packaging 26.0 changes
+Patch0:         support-packaging-26.0.patch
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros

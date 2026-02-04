@@ -1,0 +1,26 @@
+Index: dep_logic-0.5.2/tests/marker/test_evaluation.py
+===================================================================
+--- dep_logic-0.5.2.orig/tests/marker/test_evaluation.py
++++ dep_logic-0.5.2/tests/marker/test_evaluation.py
+@@ -102,7 +102,7 @@ def test_evaluates(
+             {"platform_machine": "x86_64"},
+             False,
+         ),
+-        ("platform_release >= '6'", {"platform_release": "6.1-foobar"}, True),
++        ("platform_release >= '6'", {"platform_release": "6.1.post1"}, True),
+         # extras
+         # single extra
+         ("extra != 'security'", {"extra": "quux"}, True),
+Index: dep_logic-0.5.2/tests/specifier/test_arbitrary.py
+===================================================================
+--- dep_logic-0.5.2.orig/tests/specifier/test_arbitrary.py
++++ dep_logic-0.5.2/tests/specifier/test_arbitrary.py
+@@ -37,7 +37,7 @@ def test_arbitrary_union(a: str, b: str,
+ 
+ @pytest.mark.parametrize(
+     "a, b, operand",
+-    [("===abc", ">=1", "and"), ("===1.0.0", "<1", "or"), ("===abc", "==1.*", "or")],
++    [("===1.0.0", "<1", "or"), ("===abc", "==1.*", "or")],
+ )
+ def test_arbitrary_unsupported(a: str, b: str, operand: str) -> None:
+     with pytest.raises(ValueError):
