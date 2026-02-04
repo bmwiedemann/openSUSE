@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Jan 28 12:18:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.9:
+  * Removed the `py.typed` file since it was causing a lot of
+    downstream CI failures where consumers weren't handling the
+    xlsxwriter types correctly or taking them into account.
+  * The file will be re-added once the xlsxwriter typing is more
+    comprehensive.
+  * Fixed ``mypy`` implicit export error caused by the
+    ``Workbook()`` type annotations changes in v3.2.7 and v3.2.6.
+  * Fixed typing issue in ``Workbook()`` constructor.
+  * Added an option to position custom data labels in the same
+    way that the data labels can be positioned for the entire series.
+  * Add border, fill, gradient and pattern formatting options for
+    chart titles and also chart axis titles.
+  * Fixed issue where a test function was made public incorrectly
+    which caused warnings about a missing ``xlsxwriter.test`` module.
+  * Added support for a :ref:`Color() <Color>` type. This is
+    backwards compatible with existing Html and named color string
+    types but also adds support for theme colors. See also :ref:`colors`.
+  * Fixed issue where ``write_url()`` dropped implicit support
+    for generic URL types due to the refactoring into a ``Url``
+    type in the previous release.
+  * Fixed issue where ``max_url_length`` parameter wasn't
+    honored.
+  * The Format class contained methods called ``set_font()``,
+    ``set_size()`` and ``set_color()`` which were old internal
+    testing alternatives for ``set_font_name()``, ``set_font_size()`` and
+    ``set_font_color()``. Since they were intentionally internal
+    methods they were removed as part of a general
+    refactoring in v3.2.1. However, the alternative method names
+    had leaked out into production code and the removal caused
+    breaks in dependent code. These methods have been reinstated
+    to prevent inadvertent breakages but may be removed in the
+    future after an orderly deprecation. Users should update to the
+    documented method names.
+  * Added support for checkboxes via the
+    :func:`insert_checkbox()` method.
+  * Checkboxes are a new feature added to `Excel in 2024`_. They
+    are a way of displaying a boolean value as a checkbox in a cell.
+    The underlying value is still an Excel ``TRUE/FALSE`` boolean
+    value and can be used in formulas and in references.
+  * Added improvements to ``autofit()``.
+  * Added the optional ``max_width`` parameter to the
+    :func:`autofit()` method to work around the issue where the
+    autofit width is too big.
+
+-------------------------------------------------------------------
 Tue May 20 15:43:12 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch building to use of PEP517 backend.
@@ -8,7 +56,7 @@ Tue May 20 15:43:12 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 -------------------------------------------------------------------
 Thu Sep 26 21:59:20 UTC 2024 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Fixed %{?sle15_python_module_pythons} 
+- Fixed %{?sle15_python_module_pythons}
 
 -------------------------------------------------------------------
 Sat Mar 16 16:20:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
