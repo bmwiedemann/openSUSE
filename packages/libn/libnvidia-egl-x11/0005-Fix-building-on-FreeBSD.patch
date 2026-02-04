@@ -1,0 +1,47 @@
+From 3e4147dc9a789ec7126a6695e9c78d46356cf4a6 Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Tue, 30 Dec 2025 09:55:47 -0700
+Subject: [PATCH 5/5] Fix building on FreeBSD.
+
+FreeBSD doesn't have ETIME, so if drmSyncobjTimelineWait times out, it
+will fail with ETIMEDOUT instead.
+
+Also remove the ETIME check after calling poll(), since that function
+doesn't use ETIME for anything.
+---
+ src/x11/x11-platform.h | 5 +++++
+ src/x11/x11-window.c   | 2 +-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/x11/x11-platform.h b/src/x11/x11-platform.h
+index 62fd866..bd0d163 100644
+--- a/src/x11/x11-platform.h
++++ b/src/x11/x11-platform.h
+@@ -43,6 +43,11 @@
+ #include "config-list.h"
+ #include "refcountobj.h"
+ 
++// FreeBSD doesn't have ETIME, so the DRM calls return ETIMEDOUT instead.
++#ifndef ETIME
++#define ETIME ETIMEDOUT
++#endif
++
+ #ifndef EGL_EXT_platform_xcb
+ #define EGL_EXT_platform_xcb 1
+ #define EGL_PLATFORM_XCB_EXT              0x31DC
+diff --git a/src/x11/x11-window.c b/src/x11/x11-window.c
+index 5a458ba..6040485 100644
+--- a/src/x11/x11-window.c
++++ b/src/x11/x11-window.c
+@@ -1827,7 +1827,7 @@ static int CheckBufferReleaseImplicit(EplDisplay *pdpy, EplSurface *surf,
+         }
+         return count;
+     }
+-    else if (ret == 0 || err == ETIME || err == EINTR)
++    else if (ret == 0 || err == EINTR)
+     {
+         // Nothing freed up before the timeout, but that's not a fatal error
+         // here.
+-- 
+2.51.0
+

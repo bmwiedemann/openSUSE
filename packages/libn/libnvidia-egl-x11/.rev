@@ -90,4 +90,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1324723</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>7e205813ca829afaf04cc50d36ef3880</srcmd5>
+    <version>1.0.5</version>
+    <time>1770235809</time>
+    <user>anag_factory</user>
+    <comment>- added the following patches
+  * 0003-Bump-version-number-to-1.0.5.patch
+  * 0005-Fix-building-on-FreeBSD.patch
+- renamed 0003-Enable-implicit-sync-if-we-re-talking-to-the-NVIDIA-.patch
+  to 0004-Enable-implicit-sync-if-we-re-talking-to-the-NVIDIA-.patch</comment>
+    <requestid>1330982</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 From f0c64b0fd24b884247889cb86a343c2adf65edc7 Mon Sep 17 00:00:00 2001
 From: Kyle Brenneman <kbrenneman@nvidia.com>
 Date: Wed, 25 Jun 2025 17:17:15 -0600
-Subject: [PATCH 4/4] Enable implicit sync if we're talking to the NVIDIA Xorg
+Subject: [PATCH 4/5] Enable implicit sync if we're talking to the NVIDIA Xorg
  server module.
 
 Although the NVIDIA driver doesn't support implicit sync semantics, the

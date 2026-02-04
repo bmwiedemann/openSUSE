@@ -1,7 +1,7 @@
 From 5e373f88a21b8aa190bf67eec8c6158d8642f289 Mon Sep 17 00:00:00 2001
 From: Kyle Brenneman <kbrenneman@nvidia.com>
 Date: Mon, 1 Dec 2025 13:33:44 -0700
-Subject: [PATCH 2/4] Handle eglQuerySurface(EGL_RENDER_BUFFER)
+Subject: [PATCH 2/5] Handle eglQuerySurface(EGL_RENDER_BUFFER)
 
 Add a hook for eglQuerySurface to handle EGL_RENDER_BUFFER.
 

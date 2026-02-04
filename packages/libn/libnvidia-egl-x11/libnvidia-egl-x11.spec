@@ -1,7 +1,7 @@
 #
 # spec file for package libnvidia-egl-x11
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,9 @@ Source0:        %{rname}-1.0.4.tar.gz
 Source1:        baselibs.conf
 Patch1:         0001-Fix-attribute-handling-for-eglCreateWindow-PixmapSur.patch
 Patch2:         0002-Handle-eglQuerySurface-EGL_RENDER_BUFFER.patch
-Patch3:         0003-Enable-implicit-sync-if-we-re-talking-to-the-NVIDIA-.patch
+Patch3:         0003-Bump-version-number-to-1.0.5.patch
+Patch4:         0004-Enable-implicit-sync-if-we-re-talking-to-the-NVIDIA-.patch
+Patch5:         0005-Fix-building-on-FreeBSD.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  ninja

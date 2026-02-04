@@ -1,0 +1,25 @@
+From b4f7c54bc821cd84532628611737f3a34b58bd56 Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Tue, 9 Dec 2025 08:08:11 -0700
+Subject: [PATCH 3/5] Bump version number to 1.0.5.
+
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 5f324c5..560c489 100644
+--- a/meson.build
++++ b/meson.build
+@@ -14,7 +14,7 @@
+ # limitations under the License.
+ 
+ project('egl-x11', 'c',
+-  version : '1.0.4',
++  version : '1.0.5',
+   default_options : ['c_std=gnu99'],
+ )
+ 
+-- 
+2.51.0
+
