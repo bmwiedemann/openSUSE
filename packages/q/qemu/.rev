@@ -4836,4 +4836,24 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1328909</requestid>
   </revision>
+  <revision rev="305" vrev="3">
+    <srcmd5>1bcac5c9827925b7f03d06df1c5d2a7b</srcmd5>
+    <version>10.2.0</version>
+    <time>1770235266</time>
+    <user>anag_factory</user>
+    <comment>- Fix bsc#1257314, bsc#1256980, bsc#1256484 (CVE-2026-0665) and
+  some issues with userspace emulation:
+  * tests: add tcg coverage for fixed mremap bugs
+  * linux-user: fix reserved_va page leak in do_munmap
+  * linux-user: fix mremap errors for invalid ranges
+  * linux-user: fix mremap unmapping adjacent region
+  * linux-user/elfload.c: Correction to HWCAP2 accessor
+  * linux-user: allow null `pathname` for statx()/fstatat()
+  * [openSUSE] roms/efi: Fix build error with glibc 2.43 (bsc#1257314)
+  * roms/edk2: fix building with GCC 16 (bsc#1256980)
+  * hw/i386/kvm: fix PIRQ bounds check in xen_physdev_map_pirq() (bsc#1256484, CVE-2026-0665)
+  * [openSUSE][RPM]: add enable-sdl and enable-sdl-image flags
+</comment>
+    <requestid>1330621</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb 02 11:31:24 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix bsc#1257314, bsc#1256980, bsc#1256484 (CVE-2026-0665) and
+  some issues with userspace emulation:
+  * tests: add tcg coverage for fixed mremap bugs
+  * linux-user: fix reserved_va page leak in do_munmap
+  * linux-user: fix mremap errors for invalid ranges
+  * linux-user: fix mremap unmapping adjacent region
+  * linux-user/elfload.c: Correction to HWCAP2 accessor
+  * linux-user: allow null `pathname` for statx()/fstatat()
+  * [openSUSE] roms/efi: Fix build error with glibc 2.43 (bsc#1257314)
+  * roms/edk2: fix building with GCC 16 (bsc#1256980)
+  * hw/i386/kvm: fix PIRQ bounds check in xen_physdev_map_pirq() (bsc#1256484, CVE-2026-0665)
+  * [openSUSE][RPM]: add enable-sdl and enable-sdl-image flags
+
+-------------------------------------------------------------------
 Fri Jan 23 12:52:44 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
 
 - Bug and CVE fixes:
