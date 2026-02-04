@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 04 06:03:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.4:
+  * fix(spdx): Only warn when the same LicenseIDs have different
+    text (#2053)
+
+-------------------------------------------------------------------
 Tue Feb 03 06:08:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.3:
