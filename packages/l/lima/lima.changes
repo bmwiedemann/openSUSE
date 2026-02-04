@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  4 08:40:57 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Do not hardcode GOARCH to amd64 to fix build on other architectures
+
+-------------------------------------------------------------------
 Fri Jan 30 05:36:05 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Remove -s from ldflags to allow shipping debuginfo

@@ -44,4 +44,12 @@
   * build(deps): bump github.com/miekg/dns from 1.1.68 to 1.1.69</comment>
     <requestid>1329926</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4517fae5fa62e5fd600744a38ab05e92</srcmd5>
+    <version>2.0.3</version>
+    <time>1770235749</time>
+    <user>anag_factory</user>
+    <comment>Do not hardcode GOARCH to amd64 to fix build on other architectures</comment>
+    <requestid>1330922</requestid>
+  </revision>
 </revisionlist>

@@ -44,7 +44,7 @@ Linux virtual machines, with a focus on running containers.
 %autosetup -p1 -a1
 
 %build
-VERSION="%{version}" CC=gcc CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -ldflags="-w -X github.com/lima-vm/lima/v2/pkg/version.Version=%{version}"  -o limactl ./cmd/limactl
+VERSION="%{version}" CC=gcc CGO_ENABLED=1 GOOS=linux GOARCH=%{go_arch} go build -ldflags="-w -X github.com/lima-vm/lima/v2/pkg/version.Version=%{version}"  -o limactl ./cmd/limactl
 make native-guestagent
 make default_template
 
