@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Feb 04 06:03:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.11:
+  * Added
+    - CI: Automated SchemaStore sync workflow - Schema updates are
+      now automatically synced to SchemaStore on release
+  * Fixed
+    - MD044: Check proper names in link text, image alt text, and
+      WikiLinks (#369)
+      - Previously only checked regular text and YAML front matter
+      - Now also checks [link text](url), ![alt text](url), and
+        [[WikiLinks]]
+    - Schema: Remove non-standard 'uint' format (#368)
+      - Fixed JSON Schema validation errors in editors when using
+        flavor = "obsidian"
+      - Schema now uses standard integer with minimum: 0 instead of
+        non-standard uint format
+
+-------------------------------------------------------------------
+Mon Feb 02 11:41:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.10:
+  * Added
+    - Obsidian flavor support - New markdown flavor for
+      Obsidian-specific syntax
+      - Tags (#my-tag) - Not flagged as missing heading space
+        (MD018)
+      - Callouts (> [!NOTE]) - Recognized as valid blockquotes
+      - Highlights (==text==) - Not flagged as spacing issues
+      - Comments (%%comment%%) - Content inside is skipped by all
+        rules
+      - Extended checkboxes (- [/], - [-], - [>]) - Recognized as
+        valid task items
+      - Dataview fields (field:: value) - Not flagged as
+        consecutive spaces
+      - Templater syntax (<% code %>) - Recognized as template
+        syntax
+      - Block references (^block-id) - Not flagged
+    - WASM: Obsidian flavor support - Use flavor: 'obsidian' in
+      Linter config
+      - Enables Obsidian-specific syntax recognition in
+        browser/plugin contexts
+    - WASM: Rule-specific configuration - Pass rule configs to
+      Linter constructor
+      - Example: new Linter({ 'MD013': { 'line-length': 120 } })
+  * Fixed
+    - MD041: Skip MkDocs anchor lines - Lines starting with
+      [](){#id} are now skipped when checking for first-line
+      heading
+
+-------------------------------------------------------------------
 Mon Feb 02 05:45:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.9:
