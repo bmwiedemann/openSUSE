@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  4 01:31:04 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch regenerate-snapshots.patch:
+  * Regenerate snapshots due to Python 3.12 changes. (bsc#1257517)
+
+-------------------------------------------------------------------
 Tue Dec  9 21:37:47 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.31.1:

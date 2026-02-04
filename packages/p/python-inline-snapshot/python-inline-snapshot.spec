@@ -1,7 +1,7 @@
 #
 # spec file for package python-inline-snapshot
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Summary:        Create and update inline snapshots in your Python code
 License:        MIT
 URL:            https://github.com/15r10nk/inline-snapshot/
 Source:         https://files.pythonhosted.org/packages/source/i/inline-snapshot/inline_snapshot-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Regenerate snapshots for Python 3.12 changes
+Patch0:         regenerate-snapshots.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -96,7 +98,7 @@ Create and update inline snapshots in your Python code.
 %doc README.md CHANGELOG.md
 %license LICENSE
 %{python_sitelib}/inline_snapshot
-%{python_sitelib}/inline_snapshot-%{version}*-info
+%{python_sitelib}/inline_snapshot-%{version}.dist-info
 %endif
 
 %changelog

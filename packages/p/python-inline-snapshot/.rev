@@ -154,4 +154,13 @@ and python-pydantic-settings</comment>
     <comment></comment>
     <requestid>1327291</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f5017afc363699aef95a74835f8248bb</srcmd5>
+    <version>0.31.1</version>
+    <time>1770235250</time>
+    <user>anag_factory</user>
+    <comment>- Add patch regenerate-snapshots.patch:
+  * Regenerate snapshots due to Python 3.12 changes. (bsc#1257517)</comment>
+    <requestid>1330838</requestid>
+  </revision>
 </revisionlist>
