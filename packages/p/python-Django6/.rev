@@ -17,4 +17,12 @@ python312+, keeping primary Django on 5.2</comment>
     <comment>update + please link the package</comment>
     <requestid>1326321</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>08a71d0c55fef37579e5e05311d2cef5</srcmd5>
+    <version>6.0.2</version>
+    <time>1770235718</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1330889</requestid>
+  </revision>
 </revisionlist>

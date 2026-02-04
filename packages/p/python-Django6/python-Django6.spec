@@ -27,7 +27,7 @@
 %endif
 %define skip_python311 1
 Name:           python-Django6
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
