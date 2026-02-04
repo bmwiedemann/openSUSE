@@ -1,7 +1,7 @@
 #
 # spec file for package bpftrace
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,36 +16,14 @@
 #
 
 
-# Use default LLVM unless it is not yet supported
-%if 0%{?suse_version} >= 1600
- %if 0%{?product_libs_llvm_ver} > 20
- %define llvm_major_version 20
- %else
- %define llvm_major_version %{nil}
- %endif
- %define cc_package clang%{llvm_major_version}
- %define cc_binary clang
- %define xx_binary clang++
-%else
- # Hard-code latest LLVM for SLES, the default version is too old
- %if 0%{?sle_version} == 150700
-  %define llvm_major_version 19
- %else
- %if 0%{?sle_version} == 150600
-  %define llvm_major_version 17
- %else
- %if 0%{?sle_version} == 150500
-  %define llvm_major_version 15
- %else
- %if 0%{?sle_version} == 150400
-  %define llvm_major_version 11
- %endif
- %endif
- %endif
- %endif
+%if 0%{?sle_version} == 150700
  %define cc_package gcc13-c++
  %define cc_binary gcc-13
  %define xx_binary g++-13
+%else
+ %define cc_package clang%{product_libs_llvm_ver}
+ %define cc_binary clang
+ %define xx_binary clang++
 %endif
 
 Name:           bpftrace
@@ -61,12 +39,12 @@ BuildRequires:  binutils
 BuildRequires:  binutils-devel
 # Required for -Wcounterexamples since gh#bpftrace/bpftrace#4124
 BuildRequires:  bison >= 3.7
-BuildRequires:  clang%{llvm_major_version}-devel
+BuildRequires:  clang%{product_libs_llvm_ver}-devel
 BuildRequires:  cmake
 BuildRequires:  flex
 BuildRequires:  libbpf-devel
 BuildRequires:  libxml2-devel
-BuildRequires:  llvm%{llvm_major_version}-devel
+BuildRequires:  llvm%{product_libs_llvm_ver}-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  xxd

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  4 10:33:54 UTC 2026 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Refactor LLVM version detection macro
+  * simply use product_libs_llvm_ver, which is now also available in SLES since
+    15-SP7
+  * use LLVM 21 (current default) to build bpftrace (bsc#1257616)
+
+-------------------------------------------------------------------
 Tue Dec 23 16:22:12 UTC 2025 - Hoyeon Lee <hoyeon.lee@suse.com>
 
 - Update to 0.24.2
