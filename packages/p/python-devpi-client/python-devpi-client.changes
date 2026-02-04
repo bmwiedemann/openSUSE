@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  4 14:04:07 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix tests, add fix-tests.patch upstream patch,
+  gh#devpi/devpi@408273fb7755
+
+-------------------------------------------------------------------
 Thu Nov  7 12:26:57 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 7.2.0

@@ -1,0 +1,22 @@
+From 408273fb77551d69ae88b76666c15ded0d98caf3 Mon Sep 17 00:00:00 2001
+From: Florian Schulze <mail@florian-schulze.net>
+Date: Mon, 10 Mar 2025 09:04:38 +0100
+Subject: [PATCH] Support fully normalized wheel names in tests.
+
+This is caused by setuptools v75.8.1 where the wheel file naming was changed.
+---
+ client/testing/test_test.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+Index: devpi-client-7.2.0/testing/test_test.py
+===================================================================
+--- devpi-client-7.2.0.orig/testing/test_test.py
++++ devpi-client-7.2.0/testing/test_test.py
+@@ -353,6 +353,7 @@ class TestWheel:
+             "zip" + os.sep + f"{pkgname_norm}-1.0"))
+         assert wheel1[0].basename in {
+             f"{pkgname}-1.0-py2.py3-none-any.whl",
++            f"{pkgname_norm}-1.0-py2.py3-none-any.whl",
+             f"{pkgname_whl}-1.0-py2.py3-none-any.whl"}
+         assert str(wheel1[1].path_unpacked).endswith(wheel1[0].basename)
+ 

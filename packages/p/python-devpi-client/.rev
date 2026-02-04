@@ -256,4 +256,13 @@
   * Support using various kinds of devpi tools with pyproject.toml.</comment>
     <requestid>1223955</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>cdd457ee48e8f68963d8b5126587ba80</srcmd5>
+    <version>7.2.0</version>
+    <time>1770235814</time>
+    <user>anag_factory</user>
+    <comment>- Fix tests, add fix-tests.patch upstream patch,
+  gh#devpi/devpi@408273fb7755</comment>
+    <requestid>1330975</requestid>
+  </revision>
 </revisionlist>

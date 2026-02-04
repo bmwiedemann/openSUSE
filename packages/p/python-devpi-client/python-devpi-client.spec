@@ -1,7 +1,7 @@
 #
 # spec file for package python-devpi-client
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Summary:        Client for devpi
 License:        MIT
 URL:            https://github.com/devpi/devpi
 Source:         https://files.pythonhosted.org/packages/source/d/devpi-client/devpi-client-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-tests.patch -- gh#devpi/devpi@408273fb7755
+Patch0:         fix-tests.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -58,6 +60,7 @@ BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module devpi-client = %{version}}
 BuildRequires:  %{python_module devpi-common >= 4}
 BuildRequires:  %{python_module devpi-server}
+BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  git-core
 %endif
@@ -105,6 +108,8 @@ donttest+=" or test_simple_install_missing_venvdir"
 donttest+=" or test_main_example or test_specific_version or test_pkgname_with_dashes"
 # broken tests with tox
 donttest+=" or test_toxresult_forbidden"
+# broken test because of pyramid: gh#Pylons/pyramid#3731
+donttest+=" or test_whitelist_setting"
 %pytest -k "not ($donttest)"
 %endif
 
