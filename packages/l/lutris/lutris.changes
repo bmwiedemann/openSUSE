@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  4 14:53:49 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1257536: Add Requires: libvulkan1-32bit
+
+-------------------------------------------------------------------
 Wed Apr 16 06:50:25 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Move selinux dependency

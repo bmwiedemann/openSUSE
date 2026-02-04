@@ -1,7 +1,7 @@
 #
 # spec file for package lutris
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,6 +56,7 @@ Requires:       python3-PyYAML
 Requires:       python3-certifi
 Requires:       python3-dbus-python
 Requires:       python3-distro
+Requires:       (selinux-policy-targeted-gaming if selinux-policy-targeted)
 # controller support
 Requires:       python3-evdev
 Requires:       python3-gobject
@@ -69,7 +70,6 @@ Requires:       python3-pypresence
 %if %{with moddb}
 Requires:       python3-moddb
 %endif
-Requires:       (selinux-policy-targeted-gaming if selinux-policy-targeted)
 %else
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
@@ -85,6 +85,8 @@ BuildRequires:  python%{_py}-setuptools
 Requires:       cabextract
 Requires:       curl
 Requires:       fluid-soundfont-gm
+# boo#1257536
+Requires:       libvulkan1-32bit
 Requires:       p7zip
 Requires:       psmisc
 Requires:       python%{_py}-Pillow

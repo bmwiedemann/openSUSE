@@ -556,4 +556,12 @@
     <comment></comment>
     <requestid>1269917</requestid>
   </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>9704b537b1d147e383fda9717beb6128</srcmd5>
+    <version>0.5.19</version>
+    <time>1770235832</time>
+    <user>anag_factory</user>
+    <comment>- bsc#1257536: Add Requires: libvulkan1-32bit</comment>
+    <requestid>1330997</requestid>
+  </revision>
 </revisionlist>
