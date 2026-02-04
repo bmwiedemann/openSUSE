@@ -83,4 +83,13 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
     <requestid>1301304</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>2642e0777789a23abece66d63153c112</srcmd5>
+    <version>1.9.2</version>
+    <time>1770235760</time>
+    <user>anag_factory</user>
+    <comment>- Add pythons_for_pypi macro. This macro will help to build the python
+  minimal stack for different python versions.</comment>
+    <requestid>1330941</requestid>
+  </revision>
 </revisionlist>
