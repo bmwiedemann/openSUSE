@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 04 09:30:10 UTC 2026 - Mike FABIAN <maiku.fabian@gmail.com>
+
+- Update to 2.30.3
+- Add `Mod1+Left` to the default for `commit_and_forward_key` for the `tb:*` engines
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/879#issuecomment-3844807216)
+- Translation update from Weblate (kab 71.4%, ro 100%)
+
+-------------------------------------------------------------------
 Wed Jan 28 09:23:05 UTC 2026 - Mike FABIAN <maiku.fabian@gmail.com>
 
 - Update to 2.30.2
