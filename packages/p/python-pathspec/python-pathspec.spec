@@ -1,7 +1,7 @@
 #
 # spec file for package python-pathspec
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pathspec
-Version:        0.12.1
+Version:        1.0.4
 Release:        0
 Summary:        Utility library for gitignore style pattern matching of file paths
 License:        MPL-2.0
 URL:            https://github.com/cpburnz/python-path-specification
 Source:         https://files.pythonhosted.org/packages/source/p/pathspec/pathspec-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -57,6 +56,6 @@ files.
 %doc CHANGES.rst README.rst
 %license LICENSE
 %{python_sitelib}/pathspec
-%{python_sitelib}/pathspec-%{version}*-info
+%{python_sitelib}/pathspec-%{version}.dist-info
 
 %changelog

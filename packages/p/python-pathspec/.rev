@@ -188,4 +188,41 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1282325</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>dcb19d78395d24712b91cef4feec51d3</srcmd5>
+    <version>1.0.4</version>
+    <time>1770235241</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.4:
+  * Using re2 fails if pyre2 is also installed.
+- Remove unneeded BuildRequires on setuptools.
+
+- update to 1.0.3:
+  * Bug fixes:
+    - Issue #101: pyright strict errors with pathspec &gt;= 1.0.0.
+    - Issue #102: No module named 'tomllib'.
+  * - update to 1.0.2:
+  * Bug fixes:
+    - Type hint collections.abc.Callable does not properly replace
+      typing.Callable until Python 3.9.2.
+  * - update to 1.0.1:
+  * Bug fixes:
+    - Issue #100: ValueError(f&quot;{patterns=!r} cannot be empty.&quot;)
+      when using black.
+  * - update to 1.0.0:
+  * Major changes:
+    - Issue #91: Dropped support of EoL Python 3.8.
+    - Added concept of backends to allow for faster regular
+      expression matching. The backend can be controlled using the
+      backend argument to PathSpec(), PathSpec.from_lines(),
+      GitIgnoreSpec(), and GitIgnoreSpec.from_lines().
+    - Renamed &quot;gitwildmatch&quot; pattern back to &quot;gitignore&quot;. The
+      &quot;gitignore&quot; pattern behaves slightly differently when used
+      with PathSpec (gitignore as documented) than with
+      GitIgnoreSpec (replicates Git's edge cases).
+  * API changes:
+    - Breaking: protected method
+      pathspec.pathspec.PathSpec._match_file() (with a leading</comment>
+    <requestid>1330656</requestid>
+  </revision>
 </revisionlist>
