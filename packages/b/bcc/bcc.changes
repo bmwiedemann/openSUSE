@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Feb  4 10:54:13 UTC 2026 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to version 0.36.0
+  * Support for kernel up to 6.18
+  * New tool: softirqslower (trace slow software interrupt handlers)
+  * libbpf-tools updates:
+    * opensnoop, filelife: Add full-path support
+    * filetop: Add directory filter capability
+    * runqslower: Add -c option to filter by process name prefix
+    * fsdist, fsslower: Add support for fuse filesystem
+    * tcptop: Major refactoring using fentry/fexit for better performance
+    * syncsnoop: Add support for sync_file_range2
+    * offcputime: Fix min/max_block_ns unit conversion error
+  * bcc tools updates:
+    * opensnoop: Add full-path support with -F option
+    * kvmexit: Add AMD processor support and parallel post-processing
+    * offwaketime: Add raw tracepoint support to reduce overhead
+    * tcpconnect: Fix iov field for DNS with Linux>=6.4
+    * biolatency, biosnoop, biotop: Use TRACEPOINT_PROBE() for tracepoints
+  * Python API:
+    * Add functionality to detach all uprobes for a binary
+    * Add support for executing a program and tracing it
+  * Build:
+    * Fix build failure with Clang 21 (bsc#1257616)
+    * Fix build for LLVM 23
+  * Support versioned SONAME in shared library resolution
+  * doc update, other bug fixes and tools improvement.
+  * drop 0001-tools-filetop-fix-DNAME_INLINE_LEN-by-folding-to-int.patch which
+    is now included
+
+-------------------------------------------------------------------
 Wed Sep 24 01:59:23 UTC 2025 - Hoyeon Lee <hoyeon.lee@suse.com>
 
 - Add libbpf-tools subpackage

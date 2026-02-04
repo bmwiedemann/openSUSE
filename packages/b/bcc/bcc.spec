@@ -1,7 +1,7 @@
 #
 # spec file for package bcc
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,32 +26,6 @@
 %{!?with_lua: %global with_lua 0}
 %endif
 
-# Use default LLVM on openSUSE unless it is not yet supported
-%if 0%{?suse_version} >= 1600 || 0%{?is_opensuse}
- %if 0%{?product_libs_llvm_ver} > 19
- %define llvm_major_version 19
- %else
- %define llvm_major_version %{nil}
- %endif
-%else
- # Hard-code latest LLVM for SLES, the default version is too old
- %if 0%{?sle_version} == 150700
-  %define llvm_major_version 19
- %else
- %if 0%{?sle_version} == 150600
-  %define llvm_major_version 17
- %else
- %if 0%{?sle_version} == 150500
-  %define llvm_major_version 15
- %else
- %if 0%{?sle_version} == 150400
-  %define llvm_major_version 11
- %endif
- %endif
- %endif
- %endif
-%endif
-
 %ifarch %arm %ix86
 %{!?with_libbpf_tools: %global with_libbpf_tools 0}
 %else
@@ -59,7 +33,7 @@
 %endif
 
 Name:           bcc
-Version:        0.35.0
+Version:        0.36.0
 Release:        0
 Summary:        BPF Compiler Collection (BCC)
 License:        Apache-2.0
@@ -67,7 +41,6 @@ Group:          Development/Tools/Other
 URL:            https://github.com/iovisor/bcc
 Source:         https://github.com/iovisor/bcc/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source100:      bcc-rpmlintrc
-Patch0:         0001-tools-filetop-fix-DNAME_INLINE_LEN-by-folding-to-int.patch
 ExcludeArch:    ppc s390
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.7
@@ -75,10 +48,10 @@ BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  libbpf-devel
 BuildRequires:  libelf-devel
-BuildRequires:  llvm%{llvm_major_version}-devel
+BuildRequires:  llvm%{product_libs_llvm_ver}-devel
 %if 0%{?suse_version} > 1320
-BuildRequires:  clang%{llvm_major_version}-devel
-BuildRequires:  llvm%{llvm_major_version}-gold
+BuildRequires:  clang%{product_libs_llvm_ver}-devel
+BuildRequires:  llvm%{product_libs_llvm_ver}-gold
 %else
 BuildRequires:  libstdc++-devel
 %endif
