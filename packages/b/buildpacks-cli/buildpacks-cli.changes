@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 04 07:56:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.0:
+  * Features
+    - chore: migrate from docker/docker to moby/moby client (#2512
+      by @jjbustamante)
+    - Writer Factory: Support FreeBSD (#2510 by @gogolok)
+    - Execution Environment RFC Implementation (#2324 by
+      @jjbustamante)
+
+-------------------------------------------------------------------
 Fri Dec 12 08:18:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.1:
