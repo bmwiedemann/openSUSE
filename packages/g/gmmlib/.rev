@@ -365,4 +365,21 @@
     <comment></comment>
     <requestid>1307919</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>0637aaa37c5239e0b1e6d7f9156c6777</srcmd5>
+    <version>22.9.0</version>
+    <time>1770235838</time>
+    <user>anag_factory</user>
+    <comment>- Update to  release 22.9.0
+  * Update Readme with Xe3P_HPM details (#268)
+  * Add Media Core Family for CRI and fix ULT (#267)
+  * Introduce CRI Support (#263)
+  * Introduce NVL Support (#261)
+  * Mark L4 Uncached for media usages (#265)
+  * Update Media resources to L3 Cacheable (#264)
+  * Introducing new resource usages to support command streamer instructions (#262)
+  * Remove unused variables from Gen12 Resource ULT (#259)
+  * Fix Null check in GMM Auxtable ULT (#256)</comment>
+    <requestid>1331009</requestid>
+  </revision>
 </revisionlist>
