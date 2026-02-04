@@ -1,7 +1,7 @@
 #
 # spec file for package actuated-cli
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           actuated-cli
-Version:        0.2.11
+Version:        0.2.14
 Release:        0
 Summary:        CLI for actuated
 License:        MIT
 URL:            https://github.com/self-actuated/actuated-cli
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.22
+BuildRequires:  golang(API) >= 1.25
 
 %description
 CLI for actuated, which brings "blazingly fast, secure builds to self-hosted CI
@@ -49,7 +49,7 @@ go build \
 install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
 
 %check
-ACTUATED_URL="" %{buildroot}/%{_bindir}/%{name} version | grep v%{version}
+ACTUATED_URL="XXX" %{buildroot}/%{_bindir}/%{name} version | grep v%{version}
 
 %files
 %doc README.md

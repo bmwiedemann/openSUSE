@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 04 13:38:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.14:
+  * Make job progress more beautiful
+- Update to version 0.2.13:
+  * Warning for old URL and Copyright update
+- Update to version 0.2.12:
+  * Clarify README on OWNER
+  * Upgrade Go version to 1.25
+  * Additional explanation/documentation
+
+-------------------------------------------------------------------
 Thu Aug 21 05:01:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.11:
