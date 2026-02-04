@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb  4 15:31:11 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.26.25
+  * Improved: ensure focus is set on view after bookmark
+    activation/creation
+  * Improved: use correct offsets after too large primitive
+    structures arrays (kde#514151)
+  * Fixed: do not scan parent dir of structures data dir for
+    definitions
+  * Fixed: do not crash on warning for too large structures
+    array length
+
+-------------------------------------------------------------------
 Sat Oct 11 19:27:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.26.24

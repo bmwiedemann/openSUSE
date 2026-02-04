@@ -1,7 +1,7 @@
 #
 # spec file for package okteta
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define Okteta_sover 3
 %bcond_without released
 Name:           okteta
-Version:        0.26.24
+Version:        0.26.25
 Release:        0
 Summary:        Hex Editor
 License:        GFDL-1.2-only AND GPL-2.0-only
