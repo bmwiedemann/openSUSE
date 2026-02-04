@@ -154,4 +154,39 @@
     to perform on highlighted word</comment>
     <requestid>1270686</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0f9f14147e42acd5849f78145b7f90b0</srcmd5>
+    <version>2.6</version>
+    <time>1770235717</time>
+    <user>anag_factory</user>
+    <comment>- Rebase 0001-Only-export-necessary-symbols.-Fixes-105.patch
+  against version 2.1
+ 
+- Update to version 2.6:
+  * jinx-next/jinx-previous: Make argument optional
+  * Add link to proposed file-local language variable bug svg#80071
+  
+- Changes from version 2.5
+  * Drop annotation-function,
+    We provide an affixation-function supported since Emacs 28.
+  * Actions can now be triggered via digit keys
+  * Remove C-u C-u C-u M-$ keybind
+  
+- Changes from version 2.4
+  * Use eager-display for the default completion UI, on Emacs 31.
+  * Update bundled emacs-module.h
+  * Use globalized minor mode predicate, require Emacs 29
+  * jinx-exclude-properties: Exclude propertized text
+  * jinx-exclude-regexps: Expand docstring
+  
+- Changes from version 2.3
+  * jinx-correct-all: Show message when ONLY-CHECK is non-nil
+  
+- Changes from ersion 2.2
+  * Stop using enchant_dict_get_extra_word_characters.
+    Instead rely on the jinx--syntax-table for tokenization.
+    See also ghub#rrthomas/enchant#244.
+  * jinx--save-dir: Do not switch to .dir-locals.el (Fix gh#minad/jinx#236)</comment>
+    <requestid>1330832</requestid>
+  </revision>
 </revisionlist>

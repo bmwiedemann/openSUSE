@@ -16,7 +16,7 @@ Signed-off-by: Björn Bidar <bjorn.bidar@thaodan.de>
  2 files changed, 18 insertions(+), 3 deletions(-)
 
 diff --git a/jinx-mod.c b/jinx-mod.c
-index 33e080d34bc0f53a2e7bc5ff0c3d9ee5bb70eb39..476b8c105985514d2f2870fb50b9bcfe3923abba 100644
+index b28ddf67001b4f78d024352473f6e312b1b731bc..d71b3f1ba7a2cefc0b8970e2d0061258f960eb29 100644
 --- a/jinx-mod.c
 +++ b/jinx-mod.c
 @@ -20,10 +20,25 @@ along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.  */
@@ -46,7 +46,7 @@ index 33e080d34bc0f53a2e7bc5ff0c3d9ee5bb70eb39..476b8c105985514d2f2870fb50b9bcfe
  
  static EnchantBroker* broker = 0;
  static emacs_value Qt, Qnil, Qcons;
-@@ -173,7 +188,7 @@ static emacs_value jinx_suggest(emacs_env* env, ptrdiff_t jinx_unused(nargs),
+@@ -160,7 +175,7 @@ static emacs_value jinx_suggest(emacs_env* env, ptrdiff_t jinx_unused(nargs),
      return list;
  }
  
@@ -56,10 +56,10 @@ index 33e080d34bc0f53a2e7bc5ff0c3d9ee5bb70eb39..476b8c105985514d2f2870fb50b9bcfe
      if ((size_t)runtime->size < sizeof (*runtime))
          return 1;
 diff --git a/jinx.el b/jinx.el
-index 5561f3996a1a2fe5eeb85532ac1c89621f7ea1da..3beec38a32ea830d33d28d03b342ee2e944b399b 100644
+index 9da85d2bf236570ea2e656637353b1b37dc57446..a53d0096485dd08532c6694c4b25d2f6982f9a3f 100644
 --- a/jinx.el
 +++ b/jinx.el
-@@ -269,7 +269,7 @@ (easy-menu-define jinx-mode-menu jinx-mode-map
+@@ -282,7 +282,7 @@ (easy-menu-define jinx-mode-menu jinx-mode-map
  ;;;; Internal variables
  
  (defvar jinx--compile-flags
