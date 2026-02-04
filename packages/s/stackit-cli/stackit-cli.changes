@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb 04 12:44:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.53.1:
+  * Encrypt cache used by ske kubeconfig login by @MichaelEischer
+    in #1244
+  * Onboard Logs service -instance commands by @GokceGK in #1184
+  * feat(cdn): add cdn client, config, list command by
+    @cgoetz-inovex in #1100
+  * chore(cdn): Update CDN version from v1beta2 to v1 by @Fyusel in
+    #1252
+  * fix(auth): remove deprecated refresh token by @marceljk in
+    #1255
+  * chore: update sfs module to v1 api by @marceljk in #1254
+  * fix(print): use os.Stdin.Fd instead of syscall.Stdin in
+    PromptForPassword by @marceljk in #1256
+
+-------------------------------------------------------------------
 Thu Jan 22 06:01:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.52.0:
