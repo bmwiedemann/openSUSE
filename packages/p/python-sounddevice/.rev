@@ -144,4 +144,12 @@
   * add explicit_sample_format parameter to WasapiSettings</comment>
     <requestid>1316848</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8bb8dfe3db7eac211e316dc60ca3d08f</srcmd5>
+    <version>0.5.5</version>
+    <time>1770235596</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1330835</requestid>
+  </revision>
 </revisionlist>
