@@ -273,4 +273,18 @@
   * Add new member and enum for dec csc and scale caps</comment>
     <requestid>1327956</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f520cdd55e1231bc2a654dfddbad4802</srcmd5>
+    <version>26.1.1</version>
+    <time>1770235797</time>
+    <user>anag_factory</user>
+    <comment>- Update to 26.1.1
+  * Simplified conditional checks for 8-pixel surface alignment in
+    HEVC encoder query tests. Merged duplicate platform checks into
+    single condition covering BMG and subsequent hardware
+    generations. Removed preprocessor guards that were fragmenting
+    the logic. This improves code maintainability and ensures
+    consistent alignment behavior across supported platforms.</comment>
+    <requestid>1330960</requestid>
+  </revision>
 </revisionlist>

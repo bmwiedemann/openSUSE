@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  4 12:55:54 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 26.1.1
+  * Simplified conditional checks for 8-pixel surface alignment in
+    HEVC encoder query tests. Merged duplicate platform checks into
+    single condition covering BMG and subsequent hardware
+    generations. Removed preprocessor guards that were fragmenting
+    the logic. This improves code maintainability and ensures
+    consistent alignment behavior across supported platforms.
+
+-------------------------------------------------------------------
 Sun Jan 18 18:37:10 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 26.1.0; changes since 25.3.4
