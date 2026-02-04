@@ -3885,6 +3885,7 @@ unsorted:
   - examine 
   - exec-maven-plugin 
   - exec-maven-plugin-javadoc 
+  - execdir 
   - execstack 
   - exempi-tools 
   - exif 
@@ -17647,6 +17648,7 @@ unsorted:
   - lldpd-devel 
   - llmnrd 
   - llvm 
+  - llvm-bolt 
   - llvm-devel 
   - llvm-doc 
   - llvm-gold 
@@ -26121,6 +26123,7 @@ unsorted:
   - python311-libregf 
   - python311-librosa 
   - python311-librouteros 
+  - python311-librt 
   - python311-libsass 
   - python311-libscca 
   - python311-libsigscan 
@@ -29970,6 +29973,7 @@ unsorted:
   - python312-libregf 
   - python312-librosa 
   - python312-librouteros 
+  - python312-librt 
   - python312-libsass 
   - python312-libscca 
   - python312-libsigscan 
@@ -33826,6 +33830,7 @@ unsorted:
   - python313-libregf 
   - python313-librosa 
   - python313-librouteros 
+  - python313-librt 
   - python313-libsass 
   - python313-libscca 
   - python313-libsigscan 
@@ -38522,7 +38527,6 @@ unsorted:
   - tecla 
   - tecla-devel 
   - tecnoballz 
-  - tectonic 
   - teeworlds 
   - tei-roma 
   - tei-xsl-stylesheets 
