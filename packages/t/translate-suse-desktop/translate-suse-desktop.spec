@@ -1,7 +1,7 @@
 #
 # spec file for package translate-suse-desktop
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           translate-suse-desktop
-Version:        0.20251113.f49c23d
+Version:        0.20260203.86a0fb1
 Release:        0
 Summary:        A Build Tool to Provide Desktop Translation
 License:        GPL-3.0-or-later
