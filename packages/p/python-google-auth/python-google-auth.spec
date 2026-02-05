@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-auth
-Version:        2.47.0
+Version:        2.48.0
 Release:        0
 Summary:        Google Authentication Library
 License:        Apache-2.0
@@ -28,7 +28,7 @@ BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module PyJWT >= 2.0}
 BuildRequires:  %{python_module aiohttp >= 3.6.2}
 BuildRequires:  %{python_module aioresponses}
-BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module cryptography >= 38.0.3}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyOpenSSL >= 22.0.0}
@@ -45,12 +45,12 @@ BuildRequires:  %{python_module urllib3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-cryptography >= 38.0.3
 Requires:       python-pyasn1-modules >= 0.2.1
 Requires:       python-rsa >= 3.1.4
 Requires:       python-urllib3
 Recommends:     python-PyJWT >= 2.0
 Recommends:     python-aiohttp >= 3.6.2
-Recommends:     python-cryptography >= 38.0.3
 Recommends:     python-pyOpenSSL >= 22.0.0
 Recommends:     python-pyu2f >= 0.1.5
 Recommends:     python-requests >= 2.20.0

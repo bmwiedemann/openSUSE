@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb  4 09:02:33 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.48.0
+  * add cryptography as required dependency (#1929)
+  * Support the mTLS IAM domain for Certificate based Access (#1938)
+  * add configurable GCE Metadata Server retries (#1488)
+  * honor `NO_GCE_CHECK` environment variable (#1610)
+  * resolve circular imports (#1942)
+  * removes `content-header` from AWS IMDS get request (#1934)
+  * detect correct auth when ADC env var is set but empty (#1374)
+  * replace deprecated utcfromtimestamp (#1799)
+  * Use `user_verification=preferred` for ReAuth WebAuthn challenge (#1798)
+- Update BuildRequires, Recommends and Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Mon Jan 12 11:00:50 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.47.0
