@@ -1,7 +1,7 @@
 #
 # spec file for package ca-certificates
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,7 @@
 #
 
 
-%define ssletcdir %{_sysconfdir}/ssl
 %define cabundle  %{_localstatedir}/lib/ca-certificates/ca-bundle.pem
-%define sslcerts  %{ssletcdir}/certs
 
 %if 0%{?_build_in_place}
 %define git_version %(git log '-n1' '--date=format:%Y%m%d' '--no-show-signature' "--pretty=format:+git%cd.%h")
@@ -37,7 +35,7 @@ BuildRequires:  git-core
 %bcond_without cabundle
 
 Name:           ca-certificates
-Version:        2+git20251006.0b604c2%{git_version}
+Version:        2+git20260203.5937e9f%{git_version}
 Release:        0
 Summary:        Utilities for system wide CA certificate installation
 License:        GPL-2.0-or-later
@@ -74,26 +72,20 @@ certificate store that is managed by p11-kit.
 rm -f certbundle.run
 %endif
 %make_install
-install -d -m 755 %{buildroot}%{ssletcdir}
-install -d -m 755 %{buildroot}%{_sysconfdir}/ca-certificates/update.d
 install -d -m 755 %{buildroot}%{_prefix}/lib/ca-certificates/update.d
 install -d -m 555 %{buildroot}%{_localstatedir}/lib/ca-certificates/pem
 install -d -m 555 %{buildroot}%{_localstatedir}/lib/ca-certificates/openssl
 install -d -m 755 %{buildroot}/%{_prefix}/lib/systemd/system
-ln -s ../..%{_localstatedir}/lib/ca-certificates/pem %{buildroot}%{sslcerts}
-%if %{with cabundle}
-install -D -m 444 /dev/null %{buildroot}/%{cabundle}
-ln -s %{cabundle} %{buildroot}%{ssletcdir}/ca-bundle.pem
-%endif
-install -D -m 444 /dev/null %{buildroot}%{_localstatedir}/lib/ca-certificates/java-cacerts
 
 %pre
 %service_add_pre ca-certificates.path ca-certificates.service ca-certificates-setup.service
 
 %post
+%service_add_post ca-certificates.path ca-certificates.service ca-certificates-setup.service
+
+%posttrans
 # force rebuilding all certificate stores.
 update-ca-certificates -f || true
-%service_add_post ca-certificates.path ca-certificates.service ca-certificates-setup.service
 
 %preun
 %service_del_preun ca-certificates.path ca-certificates.service ca-certificates-setup.service
@@ -107,17 +99,9 @@ fi
 %files
 %license COPYING
 %doc README
-%dir %{ssletcdir}
-%{sslcerts}
-%ghost %{_localstatedir}/lib/ca-certificates/java-cacerts
-%dir %{_sysconfdir}/ca-certificates
-%dir %{_sysconfdir}/ca-certificates/update.d
 %dir %{_prefix}/lib/ca-certificates
 %dir %{_prefix}/lib/ca-certificates/update.d
 %{_prefix}/lib/systemd/system/*
-%dir %{_localstatedir}/lib/ca-certificates
-%dir %{_localstatedir}/lib/ca-certificates/pem
-%dir %{_localstatedir}/lib/ca-certificates/openssl
 %{_sbindir}/update-ca-certificates
 %{_mandir}/man8/update-ca-certificates.8%{?ext_man}
 %{_prefix}/lib/ca-certificates/update.d/*java.run
@@ -125,8 +109,6 @@ fi
 %{_prefix}/lib/ca-certificates/update.d/*openssl.run
 #
 %if %{with cabundle}
-%{ssletcdir}/ca-bundle.pem
-%ghost %{cabundle}
 %{_prefix}/lib/ca-certificates/update.d/*certbundle.run
 %endif
 

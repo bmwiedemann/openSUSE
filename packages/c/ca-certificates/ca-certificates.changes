@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 03 13:33:23 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2+git20260203.5937e9f:
+  * Remove files in /etc and /var from spec file [jsc#PED-14792]
+
+-------------------------------------------------------------------
 Mon Oct 06 13:31:59 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2+git20251006.0b604c2:

@@ -485,4 +485,13 @@
     <comment></comment>
     <requestid>1310595</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>042aa7f041f017d93198406806daa2db</srcmd5>
+    <version>2+git20260203.5937e9f</version>
+    <time>1770310596</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2+git20260203.5937e9f:
+  * Remove files in /etc and /var from spec file [jsc#PED-14792]</comment>
+    <requestid>1330779</requestid>
+  </revision>
 </revisionlist>
