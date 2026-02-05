@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  4 19:41:30 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to relesae 2.32.64
+  * Fixed surface memory leak in some circumstances
+  * Fixed mouse grab not persisting past window recreation
+  * Fixed picking the correct fullscreen resolution
+
+-------------------------------------------------------------------
 Thu Jan  1 17:03:15 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.32.62
