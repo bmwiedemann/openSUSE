@@ -7847,4 +7847,40 @@ handle manual pages that consist only of a .so directive such as
     <comment>Revert to 257 - filed a bunch of bug reports </comment>
     <requestid>1324470</requestid>
   </revision>
+  <revision rev="462" vrev="2">
+    <srcmd5>6ef29c5c8f03ad051d65fefa46517175</srcmd5>
+    <version>258.3</version>
+    <time>1770310592</time>
+    <user>anag_factory</user>
+    <comment>- Import commit 2ffdb7879d1913b91d75fb7638023689ad49d6ff
+  2ffdb7879d pam_systemd: fix regression introduced in v258 by preserving the FIFO fd (bsc#1255658)
+  ab7770cb7e repart: support &quot;nodatacow&quot; in btrfs subvolumes
+  245645f444 basic: Use xopenat_full() in mkdir_p_root_full()
+  d197900c28 ssh-generator: suppress error message for vsock EADDRNOTAVAIL (bsc#1255656)
+  7dcca22a3a ssh-generator: split out one more helper function
+  1fb6114132 ssh-generator: split out common helper function
+  2f836405c4 core/dbus-manager: propagate meaningful dbus errors from EnqueueMarkedJobs
+  9480762ccd core/transaction: when isolating, keep triggered units only if their triggers are actually active
+- Drop 0003-pam_systemd-fix-regression-introduced-in-v258-by-pre.patch and
+  5003-core-when-isolating-keep-triggered-units-only-if-the.patch as they have
+  been merged by upstream and is part of the last batch of backported commits
+  (see above).
+
+- Add 0003-pam_systemd-fix-regression-introduced-in-v258-by-pre.patch (bsc#1255658)
+  This patch will be removed once either logind supports restarts or a
+  sufficient amount of time has passed to ensure that systems have transitioned
+  to a version of logind greater than 257.
+
+- Drop most of the workarounds contained in the fixlets
+  These workarounds were hold to address old issues that no longer exist in
+  recent versions of systemd. For systems upgrading to this version, we assume
+  these issues have already been fixed by the fixlet scripts in the previous
+  distribution.
+  Only the logig warning users about the deprecated usage of the main
+  configuration files (favoring drop-in files) is preserved.
+
+- systemd-update-helper: clean up the flags immediately after they have been
+  consumed (no functional changes).</comment>
+    <requestid>1329291</requestid>
+  </revision>
 </revisionlist>

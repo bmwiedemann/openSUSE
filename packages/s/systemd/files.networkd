@@ -32,8 +32,8 @@
 %{_systemd_util_dir}/network/80-6rd-tunnel.link
 %{_systemd_util_dir}/network/80-6rd-tunnel.network
 %{_systemd_util_dir}/network/80-auto-link-local.network.example
-%{_systemd_util_dir}/network/80-container-host0.network
 %{_systemd_util_dir}/network/80-container-host0-tun.network
+%{_systemd_util_dir}/network/80-container-host0.network
 %{_systemd_util_dir}/network/80-vm-vt.link
 %{_systemd_util_dir}/network/80-vm-vt.network
 %{_systemd_util_dir}/network/80-wifi-adhoc.network
@@ -47,8 +47,9 @@
 %{_tmpfilesdir}/systemd-network.conf
 %{_unitdir}/systemd-networkd-persistent-storage.service
 %if %{with upstream}
-%{_unitdir}/systemd-networkd-varlink.socket
+%{_unitdir}/systemd-networkd-resolve-hook.socket
 %endif
+%{_unitdir}/systemd-networkd-varlink.socket
 %{_unitdir}/systemd-networkd-wait-online.service
 %{_unitdir}/systemd-networkd-wait-online@.service
 %{_unitdir}/systemd-networkd.service

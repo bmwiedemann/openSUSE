@@ -48,6 +48,7 @@ do_install_units() {
 
     for unit in "$@" ; do
         if [ -e /run/systemd/rpm/$mode/needs-preset/"$unit" ]; then
+            rm  /run/systemd/rpm/$mode/needs-preset/"$unit"
             units+=("$unit")
         fi
     done
@@ -70,6 +71,8 @@ do_remove_units() {
     for unit in "$@" ; do
         if [ ! -e /run/systemd/rpm/$mode/dont-disable/"$unit" ]; then
             units+=("$unit")
+        else
+            rm /run/systemd/rpm/$mode/dont-disable/"$unit"
         fi
     done
 
@@ -145,17 +148,17 @@ case "$command" in
         wait
         ;;
 
-    system-reload-restart|system-reload|system-restart) # called from %transfiletriggerin
+    system-reload-restart|system-reload|system-restart|system-reexec) # called once from %transfiletriggerin or %transfiletriggerpostun
         if [ -n "$*" ]; then
             echo >&2 "Unexpected arguments for '$command': $*"
             exit 2
         fi
 
-        # Clean up all flags created during executions of %pre (i.e. on
-        # install/upgrade/rename) at the very end of the transaction.
-        rm -fr /run/systemd/rpm/system
-
         [ -d /run/systemd/system ] || exit 0
+
+        if [[ "$command" =~ reexec ]]; then
+            systemctl daemon-reexec
+        fi
 
         if [[ "$command" =~ reload ]]; then
             systemctl daemon-reload
@@ -166,15 +169,11 @@ case "$command" in
         fi
         ;;
 
-    user-reload-restart|user-reload|user-restart|user-reexec) # called from %transfiletriggerin
+    user-reload-restart|user-reload|user-restart|user-reexec) # called once from %transfiletriggerin or %transfiletriggerpostun
         if [ -n "$*" ]; then
             echo >&2 "Unexpected arguments for '$command': $*"
             exit 2
         fi
-
-        # Clean up all flags created during executions of %pre (i.e. on
-        # install/upgrade/rename) at the very end of the transaction.
-        rm -fr /run/systemd/rpm/user
 
         [ -d /run/systemd/system ] || exit 0
 

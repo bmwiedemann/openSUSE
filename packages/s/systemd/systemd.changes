@@ -1,4 +1,165 @@
 -------------------------------------------------------------------
+Mon Jan 26 10:02:37 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Import commit 2ffdb7879d1913b91d75fb7638023689ad49d6ff
+
+  2ffdb7879d pam_systemd: fix regression introduced in v258 by preserving the FIFO fd (bsc#1255658)
+  ab7770cb7e repart: support "nodatacow" in btrfs subvolumes
+  245645f444 basic: Use xopenat_full() in mkdir_p_root_full()
+  d197900c28 ssh-generator: suppress error message for vsock EADDRNOTAVAIL (bsc#1255656)
+  7dcca22a3a ssh-generator: split out one more helper function
+  1fb6114132 ssh-generator: split out common helper function
+  2f836405c4 core/dbus-manager: propagate meaningful dbus errors from EnqueueMarkedJobs
+  9480762ccd core/transaction: when isolating, keep triggered units only if their triggers are actually active
+
+- Drop 0003-pam_systemd-fix-regression-introduced-in-v258-by-pre.patch and
+  5003-core-when-isolating-keep-triggered-units-only-if-the.patch as they have
+  been merged by upstream and is part of the last batch of backported commits
+  (see above).
+
+-------------------------------------------------------------------
+Thu Jan 22 08:17:11 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Add 0003-pam_systemd-fix-regression-introduced-in-v258-by-pre.patch (bsc#1255658)
+
+  This patch will be removed once either logind supports restarts or a
+  sufficient amount of time has passed to ensure that systems have transitioned
+  to a version of logind greater than 257.
+
+-------------------------------------------------------------------
+Fri Jan  9 14:46:51 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Drop most of the workarounds contained in the fixlets
+
+  These workarounds were hold to address old issues that no longer exist in
+  recent versions of systemd. For systems upgrading to this version, we assume
+  these issues have already been fixed by the fixlet scripts in the previous
+  distribution.
+
+  Only the logig warning users about the deprecated usage of the main
+  configuration files (favoring drop-in files) is preserved.
+
+-------------------------------------------------------------------
+Thu Jan  8 16:24:35 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- systemd-update-helper: clean up the flags immediately after they have been
+  consumed (no functional changes).
+
+-------------------------------------------------------------------
+Wed Jan  7 16:14:09 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: don't reexecute PID1 on transactional updates.
+
+-------------------------------------------------------------------
+Wed Jan  7 14:30:00 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Drop %filetriggers build flag. It was introduced to ease backport of
+  Base:System to SLE distros where file-triggers were unreliable but that is no
+  longer the case on the latest SLE distros.
+
+-------------------------------------------------------------------
+Fri Dec 12 18:35:01 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Import commit 25181d4e4c8307a3621d115f99279c4d3c28a9fa (merge of v258.3)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/e103ce013ed270c0a43318743ab822cac9325f00...25181d4e4c8307a3621d115f99279c4d3c28a9fa
+
+-------------------------------------------------------------------
+Fri Nov 28 13:32:39 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Add 5003-core-when-isolating-keep-triggered-units-only-if-the.patch until
+  https://github.com/systemd/systemd/pull/39925 is merged.
+
+-------------------------------------------------------------------
+Thu Nov 20 14:51:47 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Import commit e103ce013ed270c0a43318743ab822cac9325f00
+
+  e103ce013e pam_systemd: fix OSC write failure message appearing in error logs
+  c81c546411 pam-util: fix pam_syslog_errno() ignoring the level parameter
+
+-------------------------------------------------------------------
+Wed Nov 12 09:54:11 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Drop 1001-Temporarily-remove-mountfsd-nsresourced-new-Polkit-a.patch
+
+  The relevant polkit actions have been reviewed by the security team.
+
+-------------------------------------------------------------------
+Wed Nov 12 08:42:40 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Import commit 71c9223a1df429ae23bf113dc9eeb49154d8b734 (merge of v258.2)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/1898fac58dd5170dbe85f4c3d01e564889dba0de...71c9223a1df429ae23bf113dc9eeb49154d8b734
+
+- Drop 1002-core-unit-fail-earlier-before-spawning-executor-when.patch as it's
+  part of v258.2.
+
+-------------------------------------------------------------------
+Wed Nov 12 08:33:14 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Import commit 1898fac58dd5170dbe85f4c3d01e564889dba0de
+
+  1898fac58d main: switch explicitly to tty1 on soft-reboot (bsc#1231986)
+  5fdd32dbe1 units: don't force the loading of the loop and dm_mod modules in systemd-repart.service (bsc#1248356)
+
+-------------------------------------------------------------------
+Wed Nov  5 15:25:52 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Temporarily add
+  1002-core-unit-fail-earlier-before-spawning-executor-when.patch until v258.2
+  is released.
+
+-------------------------------------------------------------------
+Wed Oct 29 14:10:06 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- pam.systemd-user: skip common-account to avoid issues with pam_sss
+  and other network user directories (bsc#1250691)
+
+-------------------------------------------------------------------
+Wed Oct 22 10:33:00 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: drop the %{release} number from the SBAT version (1251948)
+
+-------------------------------------------------------------------
+Wed Oct 22 06:26:53 UTC 2025 - Thomas Blume <Thomas.Blume@suse.com>
+
+- Add 0001-Drop-or-soften-some-upstream-warnings.patch (bsc#1228728) (bsc#1251981)
+
+  For now it just drops the 'unmerged-bin' taint flag.
+
+-------------------------------------------------------------------
+Mon Oct 20 07:54:34 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Upgrade to v258.1 (commit 67a1069b7269cc23c3d04a2fb0cf110abe7abf31)
+
+  See https://github.com/openSUSE/systemd/blob/SUSE/v258/NEWS for details.
+
+  This upgrade includes the following fix:
+
+    c058ff41cb timer: don't run service immediately after restart of a timer (bsc#1254563)
+    3e14d02500 detect-virt: bare-metal GCE only for x86 and i386 (bsc#1254293)
+
+- Drop 0001-Drop-support-for-efivar-SystemdOptions.patch, upstream removed
+  support for SystemdOptions efi var, see 14871a652925d08926c2d2d7cf2a95cd.
+
+- Drop 0009-pid1-handle-console-specificities-weirdness-for-s390.patch,
+  upstream gained a new auto-detection logic to setup $TERM on various systems
+  including s390x (bsc#1238117)
+
+- Support for System V style system state control has been removed: drop
+  initctl, runlevel, runlevel*.target, etc.. from the sysvcompat sub-package
+
+- Add 1001-Temporarily-remove-mountfsd-nsresourced-new-Polkit-a.patch. This
+  temporary patch disables the new polkit actions introduced by mountfsd and
+  nsresourced until these actions are validated by the Security team.
+
+- Our testsuite sub-package is functional again and has been updated to work
+  with the meson + mkosi infra.
+
+-------------------------------------------------------------------
 Tue Sep 16 10:32:38 UTC 2025 - Franck Bui <fbui@suse.com>
 
 - Move systemd-pcrlock out from the experimental sub-package to udev (bsc#1248261)

@@ -1,7 +1,7 @@
 #
 # spec file for package systemd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,9 +32,9 @@
 %bcond_with obs_service_set_version
 
 %if %{without obs_service_set_version}
-%define systemd_version    257.9
+%define systemd_version    258.3
 %define systemd_release    0
-%define archive_version    +suse.23.gc139debf2c
+%define archive_version    +suse.15.g2ffdb7879d
 %endif
 
 %define _testsuitedir %{_systemd_util_dir}/tests
@@ -79,10 +79,6 @@
 
 %bcond_with upstream
 
-# The following features are kept to ease migrations toward SLE. Their default
-# value is independent of the build flavor.
-%bcond_without  filetriggers
-
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
 Version:        %{?systemd_version}
@@ -99,7 +95,6 @@ BuildRequires:  libapparmor-devel
 %endif
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libxslt-tools
-BuildRequires:  polkit
 # python is only required for generating systemd.directives.xml
 BuildRequires:  python3-base
 BuildRequires:  python3-lxml
@@ -136,7 +131,7 @@ BuildRequires:  python3-pefile
 BuildRequires:  timezone
 
 %if %{with bootstrap}
-#!BuildIgnore:  dbus-1
+#!BuildIgnore:  dbus-service
 Provides:       systemd = %{version}-%{release}
 Conflicts:      systemd
 # Don't consider the mini flavors when building kiwi medias. This conflict is
@@ -150,7 +145,9 @@ Requires:       this-is-only-for-build-envs
 # the buildignore is important for bootstrapping
 #!BuildIgnore:  udev
 Requires:       aaa_base >= 13.2
-Requires:       dbus-1 >= 1.4.0
+Requires:       dbus-service
+# Temporary workaround for bsc#1255655
+Requires:       dbus-1-common
 Requires:       kbd
 Requires:       netcfg >= 11.5
 Requires:       systemd-default-settings-branding
@@ -201,8 +198,9 @@ Source7:        triggers.systemd
 Source8:        pam.systemd-user
 Source9:        pam.systemd-run0
 Source14:       kbd-model-map.legacy
+Source15:       mkosi.local.conf
 
-Source101:      fixlet-systemd-post.sh
+Source100:      fixlet-systemd-post.sh
 
 Source200:      files.systemd
 Source201:      files.udev
@@ -234,12 +232,12 @@ Source214:      files.ukify
 # inside the following if block.
 #
 %if %{without upstream}
-Patch:          0001-Drop-support-for-efivar-SystemdOptions.patch
+Patch:          0001-Drop-or-soften-some-upstream-warnings.patch
 %if %{with sysvcompat}
 Patch:          0002-rc-local-fix-ordering-startup-for-etc-init.d-boot.lo.patch
 Patch:          0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
 %endif
-Patch:          0009-pid1-handle-console-specificities-weirdness-for-s390.patch
+
 # The patches listed below are in quarantine. Normally, all changes must be
 # pushed to upstream first and then cherry-picked into the SUSE git
 # repository. However, in few cases, some issues might take too much time to be
@@ -613,83 +611,6 @@ systemd-journal-remote, and systemd-journal-upload.
 %package testsuite
 Summary:        Testsuite for systemd
 License:        LGPL-2.1-or-later
-Recommends:     python3
-Recommends:     python3-colorama
-# Optional dep for mkfs.vfat needed by test-loop-block (otherwise skipped)
-Recommends:     dosfstools
-# Optional deps needed by TEST-70-TPM2 (otherwise skipped)
-Recommends:     swtpm
-Recommends:     tpm2.0-tools
-%if %{with resolved}
-# Optional dep for knot needed by TEST-75-RESOLVED
-Recommends:     knot
-%endif
-%if %{with selinux}
-# Optional deps needed by TEST-06-SELINUX (otherwise skipped)
-Recommends:     selinux-policy-devel
-Recommends:     selinux-policy-targeted
-%endif
-Requires:       %{name} = %{version}-%{release}
-Requires:       attr
-Requires:       binutils
-Requires:       busybox-static
-Requires:       cryptsetup
-Requires:       dhcp-client
-Requires:       dosfstools
-Requires:       iproute2
-Requires:       jq
-Requires:       libcap-progs
-Requires:       lz4
-Requires:       make
-Requires:       mtools
-Requires:       python3-pexpect
-Requires:       qemu
-Requires:       quota
-Requires:       socat
-Requires:       squashfs
-Requires:       stress-ng
-Requires:       systemd-container
-# System users/groups that some tests rely on.
-Requires:       group(bin)
-Requires:       group(daemon)
-Requires:       group(games)
-Requires:       group(nobody)
-Requires:       user(bin)
-Requires:       user(daemon)
-Requires:       user(games)
-Requires:       user(nobody)
-# The following deps on libs are for test-dlopen-so whereas the pkgconfig ones
-# are used by test-funtions to find the libs on the host and install them in the
-# image, see install_missing_libraries() for details.
-Requires:       pkgconfig(libarchive)
-Requires:       pkgconfig(libfido2)
-Requires:       pkgconfig(libidn2)
-Requires:       pkgconfig(libkmod)
-Requires:       pkgconfig(libqrencode)
-Requires:       pkgconfig(pwquality)
-Requires:       pkgconfig(tss2-esys)
-Requires:       pkgconfig(tss2-mu)
-Requires:       pkgconfig(tss2-rc)
-%if %{with sd_boot}
-Requires:       systemd-boot
-%endif
-Requires:       systemd-experimental
-%if %{with homed}
-Requires:       systemd-homed
-%endif
-%if %{with journal_remote}
-Requires:       systemd-journal-remote
-%endif
-%if %{with networkd}
-Requires:       systemd-networkd
-%endif
-%if %{with portabled}
-Requires:       systemd-portable
-%endif
-%if %{with sd_boot}
-Requires:       systemd-ukify
-%endif
-Requires:       xz
 
 %description testsuite
 This package contains the unit tests as well as the extended testsuite. The unit
@@ -697,16 +618,26 @@ tests are used to check various internal functions used by systemd whereas the
 extended testsuite is used to test various functionalities of systemd and all
 its components.
 
-Note that you need root privileges to run the extended testsuite.
+For now, you will also need to grab and install the most recent version of
+mkosi, available at https://github.com/systemd/mkosi.git. Indeed running the
+integration tests with meson + mkosi relies on the mkosi latest features.
 
 Run the following python script to run all unit tests at once:
 $ %{_testsuitedir}/run-unit-tests.py
 
 To run the full extended testsuite do the following:
-$ NO_BUILD=1 TEST_NESTED_VM=1 %{_testsuitedir}/integration-tests/run-integration-tests.sh
+$ cp -a %{_testsuitedir} /var/tmp/systemd-testsuite
+$ cd /var/tmp/systemd-testsuite
+$ mkosi genkey
+$ mkosi summary
+$ mkosi -f
+$ mkosi -f box -- meson setup build integration-tests/standalone
+$ mkosi -f box -- meson test -C build --setup=integration --suite=integration-tests
 
 Or to run one specific integration test:
-$ NO_BUILD=1 TEST_NESTED_VM=1 make -C %{_testsuitedir}/integration-tests/TEST-01-BASIC clean setup run
+$ mkosi -f box -- meson test -C build --setup=integration --suite=integration-tests -v TEST-01-BASIC
+
+Note that you need root privileges to run the extended testsuite.
 
 For more details on the available options to run the extended testsuite, please
 refer to %{_testsuitedir}/integration-tests/README.testsuite.
@@ -808,6 +739,7 @@ for the C APIs.
 %if %{without sysvcompat}
         -Dsysvinit-path= \
         -Dsysvrcnd-path= \
+        -Drc-local= \
 %else
         -Drc-local=/etc/init.d/boot.local \
 %endif
@@ -892,7 +824,7 @@ for the C APIs.
         -Dsbat-distro-url="%{?sbat_distro_url}" \
         \
         -Dsbat-distro-pkgname="%{name}" \
-        -Dsbat-distro-version="%{version}%[%{without upstream}?"-%{release}":""]" \
+        -Dsbat-distro-version="%{version}" \
         \
         -Ddefault-dnssec=no \
         -Ddns-servers='' \
@@ -943,7 +875,7 @@ install -m0755 -D %{SOURCE4} %{buildroot}/%{_systemd_util_dir}/systemd-sysv-inst
 
 # Install the fixlets
 mkdir -p %{buildroot}%{_systemd_util_dir}/rpm
-install -m0755 %{SOURCE101} %{buildroot}%{_systemd_util_dir}/rpm/
+install -m0755 %{SOURCE100} %{buildroot}%{_systemd_util_dir}/rpm/
 
 # Make sure /usr/lib/modules-load.d exists in udev(-mini)?, so other
 # packages can install modules without worry
@@ -1068,8 +1000,10 @@ touch %{buildroot}%{_localstatedir}/lib/systemd/catalog/database
 # Make sure to disable all services by default. The branding presets package
 # takes care of defining the SUSE policies.
 rm -f %{buildroot}%{_presetdir}/*.preset
+rm -f %{buildroot}%{_systemd_util_dir}/initrd-preset/*.preset
 echo 'disable *' >%{buildroot}%{_presetdir}/99-default.preset
 echo 'disable *' >%{buildroot}%{_userpresetdir}/99-default.preset
+echo 'disable *' >%{buildroot}%{_systemd_util_dir}/initrd-preset/99-default.preset
 
 # Most of the entries for the generic paths are defined by filesystem package as
 # the definitions used by SUSE distros diverged from the ones defined by
@@ -1094,15 +1028,8 @@ rm -fr %{buildroot}%{_datadir}/factory/*
 cat %{SOURCE14} >>%{buildroot}%{_datarootdir}/systemd/kbd-model-map
 
 %if %{with testsuite}
-# -Dinstall_test took care of installing the unit tests only (those in
-# src/tests) and testdata directory. Here we copy the integration tests
-# including also all related scripts used to prepare and run the integration
-# tests in dedicated VMs.
-mkdir -p %{buildroot}%{_testsuitedir}/integration-tests
-tar -cO \
-    --exclude-vcs  \
-    --exclude-vcs-ignores \
-    -C test/integration-tests/ . | tar -xC %{buildroot}%{_testsuitedir}/integration-tests/
+install -m0644 %{SOURCE15} %{buildroot}%{_testsuitedir}/mkosi/mkosi.local.conf
+install -m0644 test/integration-tests/README.md %{buildroot}%{_testsuitedir}/integration-tests/
 %endif
 
 %if %{without bootstrap}
@@ -1112,7 +1039,8 @@ rm -f  %{buildroot}%{_journalcatalogdir}/*
 rm -fr %{buildroot}%{_docdir}/systemd
 %endif
 
-# Generate system users for pre scriptlets.
+# Some systemd system users needs to exist before %post is executed
+# (bsc#1248501).
 %if %{with resolved}
 %sysusers_generate_pre %{buildroot}/%{_sysusersdir}/systemd-resolve.conf systemd-resolve systemd-resolve.conf
 %endif
@@ -1162,19 +1090,9 @@ pam-config --add --systemd || :
 %ldconfig
 %endif
 
-systemctl daemon-reexec || :
-# Reexecute the user managers (if any)
+# Reexecute the managers
+%{_systemd_util_dir}/systemd-update-helper system-reexec || :
 %{_systemd_util_dir}/systemd-update-helper user-reexec || :
-
-%if %{without filetriggers}
-# During package installation, the followings are for config files shipped by
-# packages that got installed before systemd and by the systemd main package
-# itself. During update they deal with files that could have been introduced by
-# new versions of systemd.
-systemd-sysusers || :
-systemd-tmpfiles --create || :
-journalctl --update-catalog || :
-%endif
 
 # See the comment in the 'pre' section about why we need to call 'systemd_pre'
 # macro.
@@ -1183,8 +1101,7 @@ journalctl --update-catalog || :
 %systemd_post systemd-journald-audit.socket
 %systemd_post systemd-userdbd.service
 
-# Run the hacks/fixups to clean up the old stuff left by (very) old versions of
-# systemd.
+# Run the workarounds to fix the issues left by (very) old versions of systemd.
 %{_systemd_util_dir}/rpm/fixlet-systemd-post.sh $1 || :
 
 %postun
@@ -1210,11 +1127,6 @@ fi
 
 %post -n udev%{?mini}
 %regenerate_initrd_post
-%if %{without filetriggers}
-%udev_hwdb_update
-%tmpfiles_create systemd-pstore.conf
-%sysusers_create systemd-timesync.conf
-%endif
 %systemd_post remote-cryptsetup.target
 %systemd_post systemd-pstore.service
 %systemd_post systemd-timesyncd.service
@@ -1262,9 +1174,6 @@ fi
 %post container
 %if %{with machined}
 %ldconfig
-%if %{without filetriggers}
-%tmpfiles_create systemd-nspawn.conf
-%endif
 %systemd_post systemd-mountfsd.socket
 %systemd_post systemd-nsresourced.socket
 %systemd_post machines.target
@@ -1277,10 +1186,6 @@ fi
 %systemd_pre systemd-journal-upload.service
 
 %post journal-remote
-# Assume that all files shipped by systemd-journal-remove are owned by root.
-%if %{without filetriggers}
-%sysusers_create systemd-remote.conf
-%endif
 %systemd_post systemd-journal-gatewayd.service
 %systemd_post systemd-journal-remote.service
 %systemd_post systemd-journal-upload.service
@@ -1302,9 +1207,6 @@ fi
 %systemd_pre systemd-networkd-wait-online.service
 
 %post networkd
-%if %{without filetriggers}
-%tmpfiles_create systemd-network.conf
-%endif
 %systemd_post systemd-networkd.service
 %systemd_post systemd-networkd-wait-online.service
 
@@ -1323,9 +1225,6 @@ fi
 
 %post resolved
 %ldconfig
-%if %{without filetriggers}
-%tmpfiles_create systemd-resolve.conf
-%endif
 %systemd_post systemd-resolved.service
 
 %preun resolved
@@ -1361,9 +1260,6 @@ fi
 %systemd_pre systemd-portabled.service
 
 %post portable
-%if %{without filetriggers}
-%tmpfiles_create portables.conf
-%endif
 %systemd_post systemd-portabled.service
 
 %preun portable
@@ -1371,13 +1267,6 @@ fi
 
 %postun portable
 %systemd_postun_with_restart systemd-portabled.service
-%endif
-
-%post experimental
-%if %{without filetriggers}
-%if %{without bootstrap}
-%sysusers_create systemd-oom.conf
-%endif
 %endif
 
 # Keep the clean section until the following issue is solved:
@@ -1393,9 +1282,7 @@ rm -rf \
     elfbins.list
 
 # File trigger definitions
-%if %{with filetriggers}
 %include %{SOURCE7}
-%endif
 
 %files
 %include %{SOURCE200}

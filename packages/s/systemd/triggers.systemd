@@ -3,10 +3,12 @@
 #
 #  This file is part of systemd.
 #  Copyright © 2018 Neal Gompa
-
-# The contents of this are an example to be copied into systemd.spec.
 #
-# Minimum rpm version supported: 4.15.0
+#  Minimum rpm version supported: 4.15.0
+#
+#  A basic introduction of rpm file-triggers can be found at
+#  https://rpm.org/docs/4.19.x/manual/file_triggers.html
+#
 
 %transfiletriggerin -P 900900 -p <lua> -- /usr/lib/systemd/system /etc/systemd/system
 -- This script will run after any package is initially installed or
