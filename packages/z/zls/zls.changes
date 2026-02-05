@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 28 11:26:07 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Be a bit less strict on the zig version: newer than 0.15.1 is
+  also fine.
+
+-------------------------------------------------------------------
 Mon Sep  8 06:42:37 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Remove non-existent flag `--Dversion_data_path`

@@ -1,7 +1,7 @@
 #
 # spec file for package zls
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,8 @@ URL:            https://github.com/zigtools/zls
 Source0:        https://github.com/zigtools/zls/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.xz
 Source1:        vendor.tar.zst
 # ZLS only follows versions for zig except patch vers
-BuildRequires:  zig = %{_major_minor_ver}.1
-BuildRequires:  zig-rpm-macros = %{_major_minor_ver}.1
+BuildRequires:  zig >= %{_major_minor_ver}.1
+BuildRequires:  zig-rpm-macros >= %{_major_minor_ver}.1
 BuildRequires:  zstd
 
 %description

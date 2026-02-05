@@ -29,4 +29,13 @@
 </comment>
     <requestid>1303154</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>34ebf7c0ddba902226e0cf1f8349a759</srcmd5>
+    <version>0.15.0</version>
+    <time>1770310773</time>
+    <user>anag_factory</user>
+    <comment>- Be a bit less strict on the zig version: newer than 0.15.1 is
+  also fine. (forwarded request 1329655 from dimstar)</comment>
+    <requestid>1331116</requestid>
+  </revision>
 </revisionlist>
