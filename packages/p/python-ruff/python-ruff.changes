@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Wed Feb  4 09:53:17 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.15.0
+ * BREAKING CHANGES:
+  * Ruff now formats your code according to the 2026 style guide.
+  * The linter now supports block suppression comments.
+  * Ruff now resolves all extended configuration files before falling back on a default Python version.
+ * Stabilization
+  * The following rules have been stabilized and are no longer in preview:
+    * blocking-http-call-httpx-in-async-function (ASYNC212)
+    * blocking-path-method-in-async-function (ASYNC240)
+    * blocking-input-in-async-function (ASYNC250)
+    * map-without-explicit-strict (B912)
+    * if-exp-instead-of-or-operator (FURB110)
+    * single-item-membership-test (FURB171)
+    * missing-maxsplit-arg (PLC0207)
+    * unnecessary-lambda (PLW0108)
+    * unnecessary-empty-iterable-within-deque-call (RUF037)
+    * in-empty-collection (RUF060)
+    * legacy-form-pytest-raises (RUF061)
+    * non-octal-permissions (RUF064)
+    * invalid-rule-code (RUF102)
+    * invalid-suppression-comment (RUF103)
+    * unmatched-suppression-comment (RUF104)
+    * replace-str-enum (UP042)
+  * The following behaviors have been stabilized:
+    * The --output-format flag is now respected when running Ruff in --watch mode, and the full output format is now used by default, matching the regular CLI output.
+    * builtin-attribute-shadowing (A003) now detects the use of shadowed built-in names in additional contexts like decorators, default arguments, and other attribute definitions.
+    * duplicate-union-member (PYI016) now considers typing.Optional when searching for duplicate union members.
+    * split-static-string (SIM905) now offers an autofix when the maxsplit argument is provided, even without a sep argument.
+    * dict-get-with-none-default (SIM910) now applies to more types of key expressions.
+    * super-call-with-parameters (UP008) now has a safe fix when it will not delete comments.
+    * unnecessary-default-type-args (UP043) now applies to stub (.pyi) files on Python versions before 3.13.
+ * Formatter
+  * This release introduces the new 2026 style guide, with the following changes:
+    * Lambda parameters are now kept on the same line and lambda bodies will be parenthesized to let them break across multiple lines 
+    * Parentheses around tuples of exceptions in except clauses will now be removed on Python 3.14 and later 
+    * A single empty line is now permitted at the beginning of function bodies 
+    * Parentheses are avoided for long as captures in match statements 
+    * Extra spaces between escaped quotes and ending triple quotes can now be omitted 
+    * Blank lines are now enforced before classes with decorators in stub files 
+ * Preview features
+  * Apply formatting to Markdown code blocks
+ * Bug fixes
+  * Fix suppression indentation matching 
+ * Rule changes
+  * Customize where the fix_title sub-diagnostic appears 
+  * [FastAPI] Add sub-diagnostic explaining why a fix was unavailable (FAST002) 
+  * [flake8-annotations] Don't suggest NoReturn for functions raising NotImplementedError (ANN201, ANN202, ANN205, ANN206) 
+  * [pyupgrade] Make fix unsafe if it deletes comments (UP017) 
+  * [pyupgrade] Make fix unsafe if it deletes comments (UP020) 
+  * [pyupgrade] Make fix unsafe if it deletes comments (UP033) 
+  * [refurb] Do not add abc.ABC if already present (FURB180) 
+  * [refurb] Make fix unsafe if it deletes comments (FURB110) 
+  * [ruff] Add sub-diagnostics with permissions (RUF064) 
+ * Server
+  * Identify notebooks by LSP didOpen instead of .ipynb file extension 
+ * CLI
+  * Add --color CLI option to force colored output 
+ * Documentation
+  * Document - stdin convention in CLI help text 
+  * [refurb] Change example to re.search with ^ anchor (FURB167) 
+  * Fix link to Sphinx code block directives 
+  * [pydocstyle] Clarify which quote styles are allowed (D300) 
+  * [flake8-bugbear] Improve docs for no-explicit-stacklevel (B028) 
+
+-------------------------------------------------------------------
 Sun Jan 25 20:38:11 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.14.14 

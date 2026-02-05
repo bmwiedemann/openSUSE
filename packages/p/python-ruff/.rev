@@ -3024,4 +3024,41 @@
   * [refurb] Make the example work out of box (FURB103)</comment>
     <requestid>1329105</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>2d118d3c6e2eb8bc4e51b3c4ce43b899</srcmd5>
+    <version>0.15.0</version>
+    <time>1770310598</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.15.0
+ * BREAKING CHANGES:
+  * Ruff now formats your code according to the 2026 style guide.
+  * The linter now supports block suppression comments.
+  * Ruff now resolves all extended configuration files before falling back on a default Python version.
+ * Stabilization
+  * The following rules have been stabilized and are no longer in preview:
+    * blocking-http-call-httpx-in-async-function (ASYNC212)
+    * blocking-path-method-in-async-function (ASYNC240)
+    * blocking-input-in-async-function (ASYNC250)
+    * map-without-explicit-strict (B912)
+    * if-exp-instead-of-or-operator (FURB110)
+    * single-item-membership-test (FURB171)
+    * missing-maxsplit-arg (PLC0207)
+    * unnecessary-lambda (PLW0108)
+    * unnecessary-empty-iterable-within-deque-call (RUF037)
+    * in-empty-collection (RUF060)
+    * legacy-form-pytest-raises (RUF061)
+    * non-octal-permissions (RUF064)
+    * invalid-rule-code (RUF102)
+    * invalid-suppression-comment (RUF103)
+    * unmatched-suppression-comment (RUF104)
+    * replace-str-enum (UP042)
+  * The following behaviors have been stabilized:
+    * The --output-format flag is now respected when running Ruff in --watch mode, and the full output format is now used by default, matching the regular CLI output.
+    * builtin-attribute-shadowing (A003) now detects the use of shadowed built-in names in additional contexts like decorators, default arguments, and other attribute definitions.
+    * duplicate-union-member (PYI016) now considers typing.Optional when searching for duplicate union members.
+    * split-static-string (SIM905) now offers an autofix when the maxsplit argument is provided, even without a sep argument.
+    * dict-get-with-none-default (SIM910) now applies to more types of key expressions.
+    * super-call-with-parameters (UP008) now has a safe fix when it will not delete comments.</comment>
+    <requestid>1330930</requestid>
+  </revision>
 </revisionlist>
