@@ -129,4 +129,20 @@ version 2.0:
   * fix typo in vlan-default-pvid</comment>
     <requestid>1308824</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0dddf56974bd8e4ba6c67cead7efc187</srcmd5>
+    <version>2.9</version>
+    <time>1770310651</time>
+    <user>anag_factory</user>
+    <comment>version 2.9:
+  * use VAR for DBUS path
+  * create a get all devices function
+  * Create CommandHandler class (for interactive and command args)
+  * add interactive wizard for: add, delete, activate, deactivate
+  * rollback if activation of the bridge interface failed
+  * fix some pylint issues
+  * simplification: use _select_connection_interactively
+  * clarify indentation</comment>
+    <requestid>1331015</requestid>
+  </revision>
 </revisionlist>

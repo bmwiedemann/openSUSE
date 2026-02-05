@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  9 11:57:33 UTC 2025 - Antoine Ginies <aginies@suse.com>
+
+version 2.9:
+  * use VAR for DBUS path
+  * create a get all devices function
+  * Create CommandHandler class (for interactive and command args)
+  * add interactive wizard for: add, delete, activate, deactivate
+  * rollback if activation of the bridge interface failed
+  * fix some pylint issues
+  * simplification: use _select_connection_interactively
+  * clarify indentation
+
+-------------------------------------------------------------------
 Wed Oct  1 11:43:17 UTC 2025 - Antoine Ginies <aginies@suse.com>
 
 version 2.8:
