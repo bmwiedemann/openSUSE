@@ -1,7 +1,7 @@
 #
 # spec file for package hawk2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -146,7 +146,8 @@ Source97:        websocket-driver-0.8.0.gem
 Source98:        websocket-extensions-0.1.5.gem
 Source99:        zeitwerk-2.7.4.gem
 
-Source100:      hawk-rpmlintrc
+Source101:      %{name}.sysusers
+Source102:      %{name}.tmpfiles.conf
 Patch1:         make-sle16-compatible.patch
 Patch2:         gemfile-lock.patch
 Patch3:         update-hawk-backend-service.patch
@@ -168,6 +169,7 @@ Recommends:     graphviz-gnome
 Requires:       iproute2
 PreReq:         permissions
 BuildRequires:  systemd-rpm-macros
+%{?sysusers_requires}
 %{?systemd_requires}
 # declare the user/group we create in the preinstall script
 Provides:       user(%{uname})
@@ -186,7 +188,9 @@ Requires:       rubygem(%{rb_build_abi}:bundler)
 BuildRequires:  git
 BuildRequires:  nodejs >= 10
 BuildRequires:  pam-devel
-BuildRequires:  shadow
+%if 0%{?suse_version} >= 1600
+BuildRequires:  sysuser-tools
+%endif
 
 %description
 A web-based GUI for managing and monitoring the Pacemaker
@@ -256,6 +260,10 @@ find ./hawk/locale \( -name "*.po" -o -name "*.pot" \) -exec sed -i 's/^"PO-Revi
 find ./hawk/public -name "manifest.json" -exec sed -i 's/"mtime":"[^"]*"/"mtime":"2025-09-01T00:00:00+00:00"/g' {} +
 rm ./hawk/tmp/session_secret # if there is no session_secret, it's automatically generated when starting puma
 
+%if 0%{?suse_version} >= 1600
+%sysusers_generate_pre %{SOURCE101} %{name} %{name}.conf
+%endif
+
 %install
 
 install -p -d -m 755 %{buildroot}%{install_gem_path}
@@ -295,21 +303,31 @@ find %{buildroot}%{www_base}/hawk -type f -name '.git*' -print0 | xargs --no-run
 install -p -d -m 755 %{buildroot}%{_sysconfdir}/hawk
 install -D -m 0644 %{S:1}  %{buildroot}%{_fillupdir}/sysconfig.hawk
 
+%if %{defined _tmpfilesdir}
+install -p -D -m 0644 %{SOURCE102} %{buildroot}%{_tmpfilesdir}/%{name}.conf
+%endif
+
+%if %{defined _sysusersdir}
+install -p -D -m 0644 %{SOURCE101} %{buildroot}%{_sysusersdir}/%{name}.conf
+%endif
+
 %clean
 rm -rf %{buildroot}
 
 %verifyscript
 %verify_permissions -e %{_sbindir}/hawk_chkpwd
 
-%pre
-getent group %{gname} >/dev/null || groupadd -r %{gname} -g 189
-getent passwd %{uname} >/dev/null || useradd -r -g %{gname} -u 189 -s /sbin/nologin -c "cluster user" %{uname}
+%pre -f %{name}.pre
 %service_add_pre hawk.service hawk-backend.service
 
 %post
 %set_permissions %{_sbindir}/hawk_chkpwd
 %service_add_post hawk.service hawk-backend.service
-%{fillup_only -n hawk}
+%fillup_only -n hawk
+
+%if %{defined _tmpfilesdir}
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
+%endif
 
 %preun
 %service_del_preun hawk.service hawk-backend.service
@@ -319,6 +337,15 @@ getent passwd %{uname} >/dev/null || useradd -r -g %{gname} -u 189 -s /sbin/nolo
 
 
 %files -f hawk.lang
+
+%if %{defined _sysusersdir}
+%{_sysusersdir}/%{name}.conf
+%endif
+
+%if %{defined _tmpfilesdir}
+%{_tmpfilesdir}/%{name}.conf
+%endif
+
 %defattr(644,root,root,755)
 %{_fillupdir}/sysconfig.hawk
 %attr(4750, root, %{gname})%{_sbindir}/hawk_chkpwd
@@ -327,7 +354,6 @@ getent passwd %{uname} >/dev/null || useradd -r -g %{gname} -u 189 -s /sbin/nolo
 %{www_base}/hawk/tmp
 %{www_base}/hawk/app
 %{www_base}/hawk/config
-%dir %{_localstatedir}/lib/hawk
 %dir %{www_base}/hawk/bin
 %attr(0755, root, root)%{www_base}/hawk/bin/rake
 %attr(0755, root, root)%{www_base}/hawk/bin/rails
@@ -335,14 +361,6 @@ getent passwd %{uname} >/dev/null || useradd -r -g %{gname} -u 189 -s /sbin/nolo
 %attr(0755, root, root)%{www_base}/hawk/bin/generate-ssl-cert
 %attr(0755, root, root)%{www_base}/hawk/bin/bundle
 %attr(0750, %{uname},%{gname})%{_sysconfdir}/hawk
-%dir %attr(0750, %{uname},%{gname})%{www_log}
-%dir %attr(0750, %{uname},%{gname})%{www_tmp}
-%attr(-, %{uname},%{gname})%{www_tmp}/cache
-%attr(-, %{uname},%{gname})%{www_tmp}/explorer
-%attr(-, %{uname},%{gname})%{www_tmp}/home
-%attr(-, %{uname},%{gname})%{www_tmp}/pids
-%attr(-, %{uname},%{gname})%{www_tmp}/sessions
-%attr(-, %{uname},%{gname})%{www_tmp}/sockets
 %{www_base}/hawk/locale/hawk.pot
 %{www_base}/hawk/public
 %{www_base}/hawk/Rakefile

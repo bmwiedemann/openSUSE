@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  4 17:06:55 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Strengthen hawk2 against immutable Mode (ped#14729) 
+
+-------------------------------------------------------------------
 Tue Jan 20 13:47:29 UTC 2026 - aburlakov@suse.com
 
 - Update to version 2.7.0+git.1768223657.3a8bb29f:
