@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb  4 20:07:46 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.4.5
+  * Resolved issues with zero-sized CompositeTransforms and
+    out-of-bounds access in GDCM, addressing possible security
+    vulnerabilities.
+  * Addressed bugs in imread with single-element lists and added
+    corresponding tests to reinforce image IO reliability.
+
+-------------------------------------------------------------------
 Sat Jun 21 03:17:02 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.4.4:
