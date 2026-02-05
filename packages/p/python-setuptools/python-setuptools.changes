@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 29 14:55:29 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix suse_version check to make sure that primary builds for SLE-16
+  series
+- Add pythons_for_pypi macro. This macro will help to build the python
+  minimal stack for different python versions.
+
+-------------------------------------------------------------------
 Thu Jan  1 12:37:12 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to v80.9.0

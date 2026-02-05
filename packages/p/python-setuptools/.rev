@@ -1387,4 +1387,15 @@
     <comment></comment>
     <requestid>1325086</requestid>
   </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>386a418105af31854d6a6bf6503d7881</srcmd5>
+    <version>80.9.0</version>
+    <time>1770310629</time>
+    <user>anag_factory</user>
+    <comment>- Fix suse_version check to make sure that primary builds for SLE-16
+  series
+- Add pythons_for_pypi macro. This macro will help to build the python
+  minimal stack for different python versions.</comment>
+    <requestid>1330931</requestid>
+  </revision>
 </revisionlist>
