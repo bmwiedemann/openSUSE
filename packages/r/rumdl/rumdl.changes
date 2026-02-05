@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Feb 05 06:13:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.12:
+  * Added
+    - Code Block Tools [preview] - Run external linters and
+      formatters on fenced code blocks (#331)
+      - rumdl check: Run configured linters (ruff, shellcheck,
+        eslint, etc.) on code blocks
+      - rumdl check --fix: Run configured formatters (ruff,
+        prettier, shfmt, etc.) to auto-format code blocks
+      - 31 built-in tool definitions with support for custom tools
+      - Language resolution via GitHub Linguist aliases (e.g., py →
+        python, bash → shell)
+      - Configurable error handling per language (fail, warn, skip)
+      - See docs/code-block-tools.md for configuration guide
+    - MD018: Per-rule magiclink configuration - Control whether
+      magiclink syntax is recognized per rule
+      - Add magiclink = true to MD018 config to skip email-like
+        syntax
+    - MD033: Auto-fix for <a> and <img> tags - Convert simple HTML
+      links and images to Markdown
+      - <a href="url">text</a> → [text](url)
+      - <img src="url" alt="text"> → ![text](url)
+      - Requires fix = true in MD033 config (disabled by default)
+    - MkDocs: Support for markdown-enabled HTML blocks - Properly
+      handle <div markdown> grid cards and similar patterns
+      - Supports 10 HTML5 sectioning elements (div, section,
+        article, aside, details, figure, footer, header, main, nav)
+      - MD030 and MD035 now skip content inside markdown-enabled
+        HTML blocks
+      - Added skip_mkdocs_html_markdown() filter to filtered_lines
+        API
+  * Fixed
+    - MD013: Prevent infinite loop in MkDocs admonition reflow -
+      Fixed edge case causing reflow to hang on certain admonition
+      content
+    - Config: Remove deprecated MD002 from example -
+      rumdl.toml.example no longer includes deprecated rules
+  * Changed
+    - Config: Compact inline table syntax in example -
+      rumdl.toml.example now uses more readable inline tables for
+      code-block-tools
+
+-------------------------------------------------------------------
 Wed Feb 04 06:03:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.11:
