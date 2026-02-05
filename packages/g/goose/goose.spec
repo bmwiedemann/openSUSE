@@ -17,7 +17,7 @@
 
 
 Name:           goose
-Version:        1.22.0
+Version:        1.23.0
 Release:        0
 Summary:        A local, extensible, open source AI agent that automates engineering tasks
 License:        Apache-2.0
@@ -28,6 +28,9 @@ BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  libxcb-devel
 BuildRequires:  protobuf-devel
+# wtype is required for Linux automation
+# Goose shows a warning during startup in it's abscence
+Recommends:     wtype
 
 %description
 Goose is an extensible open source AI agent that enhances your software development by automating coding tasks.
