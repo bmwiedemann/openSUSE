@@ -780,4 +780,22 @@ So preferably for 13.1 as well.</comment>
     <comment></comment>
     <requestid>1329558</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>1450a7472a21e038e147e6c9f97c5088</srcmd5>
+    <version>49.3</version>
+    <time>1770310816</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.3:
+  + Fix occasional errors when mounting FUSE from a removable drive
+    backup
+  + Allow selecting text in some error dialogs
+  + Don't try to use new Rclone encryption calls on old Rclones
+  + Don't bother with packagekit if a command is already in PATH
+  + Ignore trailing colons on URL hostnames, which can confuse gvfs
+  + Add a nice error message if the user uses https:// instead of
+    davs://
+  + Quiet some console warnings about hidden files when interacting
+    with SMB filesystems (forwarded request 1330732 from dimstar)</comment>
+    <requestid>1331123</requestid>
+  </revision>
 </revisionlist>

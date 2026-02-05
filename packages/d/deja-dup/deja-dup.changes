@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb  3 11:05:38 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.3:
+  + Fix occasional errors when mounting FUSE from a removable drive
+    backup
+  + Allow selecting text in some error dialogs
+  + Don't try to use new Rclone encryption calls on old Rclones
+  + Don't bother with packagekit if a command is already in PATH
+  + Ignore trailing colons on URL hostnames, which can confuse gvfs
+  + Add a nice error message if the user uses https:// instead of
+    davs://
+  + Quiet some console warnings about hidden files when interacting
+    with SMB filesystems
+
+-------------------------------------------------------------------
 Tue Jan 20 10:26:20 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Run test-suite only on x86_64. Suite randomly failes on other
