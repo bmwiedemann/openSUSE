@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyproject-examples
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Example pyproject.toml configs for testing
 License:        MIT
 URL:            https://github.com/repo-helper/pyproject-examples
 Source:         https://files.pythonhosted.org/packages/source/p/pyproject-examples/pyproject_examples-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix_regex.patch -- based on PR
+Patch0:         fix_regex.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module whey}
 BuildRequires:  fdupes
