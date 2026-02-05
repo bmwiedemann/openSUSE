@@ -102,4 +102,15 @@
       * Dependency updates</comment>
     <requestid>1329978</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>7d758b89b2b6dc0ee07dc00a52909b4d</srcmd5>
+    <version>14.4</version>
+    <time>1770310834</time>
+    <user>anag_factory</user>
+    <comment>Correcting the changelog to include the CVE reference as recommended
+outside of Factory
+
+- Update to version 14.4 for bsc#1257325/CVE-2025-13465</comment>
+    <requestid>1331135</requestid>
+  </revision>
 </revisionlist>
