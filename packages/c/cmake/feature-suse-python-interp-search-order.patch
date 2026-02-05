@@ -1,8 +1,12 @@
-Index: cmake-3.27.7/Modules/FindPythonInterp.cmake
+---
+ Modules/FindPythonInterp.cmake |    5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+Index: cmake-4.1.3/Modules/FindPythonInterp.cmake
 ===================================================================
---- cmake-3.27.7.orig/Modules/FindPythonInterp.cmake
-+++ cmake-3.27.7/Modules/FindPythonInterp.cmake
-@@ -105,8 +105,9 @@ if(DEFINED PYTHONLIBS_VERSION_STRING)
+--- cmake-4.1.3.orig/Modules/FindPythonInterp.cmake	2025-11-18 15:55:48.000000000 +0100
++++ cmake-4.1.3/Modules/FindPythonInterp.cmake	2026-01-28 16:44:12.726637412 +0100
+@@ -138,8 +138,9 @@
    list(GET _PYTHONLIBS_VERSION 1 _PYTHONLIBS_VERSION_MINOR)
    list(APPEND _Python_VERSIONS ${_PYTHONLIBS_VERSION_MAJOR}.${_PYTHONLIBS_VERSION_MINOR})
  endif()

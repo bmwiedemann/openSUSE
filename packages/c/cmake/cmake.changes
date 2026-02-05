@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Feb  4 01:50:26 UTC 2026 - Simon Lees <sflees@suse.de>
+
+- Exclude Tutorial Test on i586 due to SSE issues
+  * https://gitlab.kitware.com/cmake/cmake/-/issues/27569
+
+-------------------------------------------------------------------
+Thu Jan 29 20:23:36 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- update to 4.2.3
+  * Tests: Remove invalid CUDA code from tests
+- Exclude test RunCMake.string on 32-bit systems as it fails
+  with a year 2038 issue
+- Remove ignored ctest parameter --force-new-ctest-process. It
+  has no longer any effect.
+
+-------------------------------------------------------------------
+Wed Jan 28 18:34:55 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add the modern version of Modules/FindLua.cmake from
+  https://gitlab.kitware.com/cmake/cmake/-/blob/261b7b933c66/Modules/FindLua.cmake,
+  which works with Lua 5.5
+
+-------------------------------------------------------------------
+Thu Jan 22 21:19:44 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- update to 4.2.2
+  * Linux: Do not force 64-bit `time_t` on 32-bit archs with system
+    libarchive
+  * fileapi: Handle unused imported libraries with missing
+    IMPORTED_IMPLIB
+  * GenEx: Partially restore pre-CMP0199 behavior of $<CONFIG>
+
+-------------------------------------------------------------------
+Wed Dec 10 04:44:31 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to 4.2.1
+  * Source: Improve detection of Linux architectures requiring
+    explicit libatomic
+  * ExternalProject: Fix environment modification ops named
+    with underscores
+  * fileAPI: Silently ignore non-target order dependencies
+  * export: Fix exporting targets with multiple file sets
+
+-------------------------------------------------------------------
+Wed Dec  3 12:17:03 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to 4.2.0
+  * The "FASTBuild" generator was added.
+  * CMake now supports Cross Compiling for Emscripten with simple
+    toolchain files.
+  * The "set(CACHE{<variable>})" and "unset(CACHE{<variable>})"
+    commands were added to explicitly set and unset cache entries.
+  * The "INSTALL_OBJECT_NAME" source file property was added to control
+    names of installed object files for specific compiled sources.
+  * Nearly all find modules now provide a "<PackageName>_VERSION" result
+    variable matching the casing of its module name.  Existing variants
+    such as "<PackageName>_VERSION_STRING" and uppercased
+    "<PACKAGENAME>_VERSION" are deprecated.
+  * The "ExternalProject" module's "ExternalProject_Add()" and
+    "ExternalProject_Add_Step()" commands now provide options to set
+    environment variables on the configure, build, install, and test
+    steps.
+    
+-------------------------------------------------------------------
 Tue Dec  2 19:39:27 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.1.3:

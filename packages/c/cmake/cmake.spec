@@ -1,7 +1,7 @@
 #
 # spec file for package cmake
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -51,7 +51,7 @@
 %define pyver 3
 %endif
 Name:           cmake%{?psuffix}
-Version:        4.1.3
+Version:        4.2.3
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause
@@ -64,6 +64,9 @@ Source4:        cmake.prov
 Source5:        https://github.com/Kitware/CMake/releases/download/v%{version}/cmake-%{version}-SHA-256.txt
 Source6:        https://github.com/Kitware/CMake/releases/download/v%{version}/cmake-%{version}-SHA-256.txt.asc
 Source7:        cmake.keyring
+# Work with Lua 5.5
+# https://gitlab.kitware.com/cmake/cmake/-/blob/261b7b933c66/Modules/FindLua.cmake
+Source50:       FindLua.cmake
 Source99:       README.SUSE
 Patch0:         cmake-fix-ruby-test.patch
 # Search for python interpreters from newest to oldest rather then picking up /usr/bin/python as first choice
@@ -148,6 +151,9 @@ CMake documentation for offline reading - qhelp version.
 # Verify hashes in that file against source tarball.
 echo "`grep cmake-%{version}.tar.gz %{SOURCE5} | grep -Eo '^[0-9a-f]+'`  %{SOURCE0}" | sha256sum -c
 %autosetup -p1 -n cmake-%{version}
+
+# Use modern FindLua.cmake capable of working with Lua 5.5
+cp %{SOURCE50} ./Modules/FindLua.cmake
 
 %build
 cp -p %{SOURCE99} .
@@ -245,8 +251,15 @@ sed -i -e "1s@#!.*python.*@#!$(realpath %{_bindir}/python3)@" %{buildroot}%{_rpm
 #    SimpleInstall: seems to fail due to RPATH strictness
 #                   if any other app installs then this test is bogus
 #    suse specific brp-25-symlink cramps the symlinks, hence the CPackComponentsForAll-RPM-(default|OnePackPerGroup|IgnoreGroup|AllInOne) fail
-./bin/ctest --force-new-ctest-process --output-on-failure %{?_smp_mflags} \
+%ifnarch %arm %ix86
+./bin/ctest --output-on-failure %{?_smp_mflags} \
     -E "(TestUpload|SimpleInstall|SimpleInstall-Stage2|CPackComponentsForAll-RPM-(default|OnePackPerGroup|IgnoreGroup|AllInOne)|CPack_RPM)"
+%else
+# dont' run failing test on 32-bit architectures due to year 2038 issue
+# dont' run Tutorial due to SSE issues https://gitlab.kitware.com/cmake/cmake/-/issues/27569
+./bin/ctest --output-on-failure %{?_smp_mflags} \
+    -E "(TestUpload|SimpleInstall|SimpleInstall-Stage2|CPackComponentsForAll-RPM-(default|OnePackPerGroup|IgnoreGroup|AllInOne)|CPack_RPM|RunCMake.string|Tutorial)"
+%endif
 %endif
 
 %if %{with qhelp}
