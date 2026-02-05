@@ -18,7 +18,7 @@
 
 
 Name:           mediainfo
-Version:        25.09
+Version:        26.01
 Release:        0
 Summary:        Audio/video file technical and tag information utility
 License:        GPL-2.0-or-later
