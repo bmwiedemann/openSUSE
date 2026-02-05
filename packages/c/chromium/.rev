@@ -6128,4 +6128,34 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
   * CVE-2026-1504: Inappropriate implementation in Background Fetch API</comment>
     <requestid>1329682</requestid>
   </revision>
+  <revision rev="499" vrev="1">
+    <srcmd5>995c317d1eb135d946514365f0831f33</srcmd5>
+    <version>144.0.7559.132</version>
+    <time>1770310639</time>
+    <user>anag_factory</user>
+    <comment>- Chromium 144.0.7559.132 (boo#1257650)
+  * CVE-2026-1861: Heap buffer overflow in libvpx in Google Chrome
+    prior to 144.0.7559.132 allowed a remote attacker to potentially
+    exploit heap corruption via a crafted HTML page.
+  * CVE-2026-1862: Type Confusion in V8 in Google Chrome prior to
+    144.0.7559.132 allowed a remote attacker to potentially exploit
+    heap corruption via a crafted HTML page.
+- removed patches:
+  * chromium-134-revert-rust-adler2.patch
+  * chromium-144-rust-adler2.patch
+    (obsolete, automatic if rust_nightly is set properly)
+- added patches:
+  * force-rust-nightly.patch
+- try rust1.93 for tumbleweed, 1.92 for older
+- gn flags:
+  add toolchain_supports_rust_thin_lto=false to be able to build
+  with a llvm older than the one vendored in rust
+- use llvm21 for tumbleweed
+- drop qt5 parts from spec, not used
+
+- use nodejs-common and use the version from /usr/bin/node
+- but use nodejs22 for code15 (while nodejs-common still
+  points to nodejs14 there)</comment>
+    <requestid>1330919</requestid>
+  </revision>
 </revisionlist>

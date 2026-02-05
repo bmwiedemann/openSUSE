@@ -28,10 +28,8 @@
 # suse_version 1699 tw
 %if 0%{?suse_version} >= 1600 || 0%{?sle_version} >= 150400
 %bcond_without gtk4
-%bcond_without qt5
 %else
 %bcond_with gtk4
-%bcond_with qt5
 %endif
 %ifarch aarch64 ppc64le riscv64
 # ERROR Unresolved dependencies.
@@ -62,14 +60,19 @@
 %bcond_without noopenh264
 %define ffmpeg_version 59
 %bcond_with system_zstd
-%define node_ver 22
-%define node_ver_next 23
-%define node_version %(rpm -q --qf "%%{version}" nodejs%{node_ver})
+%if 0%{?suse_version} > 1600
+# LLVM version
+%define llvm_version 21
+%define llvm_version_long 21.1.8
+# RUST version
+%define rust_version 1.93
+%else
 # LLVM version
 %define llvm_version 19
 %define llvm_version_long 19.1.7
 # RUST version
-%define rust_version 1.86
+%define rust_version 1.92
+%endif
 # GCC version
 %define gcc_version 14
 # esbuild version
@@ -124,7 +127,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        144.0.7559.109
+Version:        144.0.7559.132
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -181,6 +184,7 @@ Patch386:       chromium-143-libpng-unbundle.patch
 Patch387:       chromium-143-cookie_string_view.patch
 Patch389:       chromium-143-revert_rust_is_multiple_of.patch
 Patch390:       chromium-144-revert_gfx_value_or.patch
+Patch393:       force-rust-nightly.patch
 # conditionally applied patches ppc64le only
 Patch401:       ppc-fedora-add-ppc64-architecture-string.patch
 Patch402:       ppc-fedora-0001-linux-seccomp-bpf-ppc64-glibc-workaround-in-SIGSYS-h.patch
@@ -245,10 +249,6 @@ Patch460:       ppc-debian-0003-third_party-ffmpeg-Add-ppc64-generated-config.pa
 Patch1010:      chromium-124-system-libxml.patch
 # patch where libxml < 2.13
 Patch1011:      chromium-144-revert-libxml-2.13.patch
-# patch where rust = 1.85
-Patch1030:      chromium-134-revert-rust-adler2.patch
-# patch where rust = 1.86
-Patch1031:      chromium-144-rust-adler2.patch
 # gtk4 is too old
 Patch1040:      gtk-414.patch
 Patch1041:      gtk-414-2.patch
@@ -279,7 +279,11 @@ BuildRequires:  nasm
 BuildRequires:  ninja >= 1.7.2
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
-BuildRequires:  (nodejs >= %node_ver.0 with nodejs < %node_ver_next.0)
+%if 0%{?suse_version} >= 1600
+BuildRequires:  nodejs-common
+%else
+BuildRequires:  nodejs22
+%endif
 %if 0%{?suse_version} >= 1600
 BuildRequires:  python3
 BuildRequires:  python3-setuptools
@@ -437,11 +441,6 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libavif)
 BuildRequires:  pkgconfig(libyuv)
 %endif
-%if %{with qt5}
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Widgets)
-%endif
 %if %{with qt6}
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
@@ -514,14 +513,6 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %patch -p1 -P 1011
 %endif
 
-%if "%{?rust_version}" == "1.85"
-%patch -p1 -P 1030
-%endif
-
-%if "%{?rust_version}" == "1.86"
-%patch -p1 -P 1031
-%endif
-
 %if %{without gtk4_4_19}
 %patch -p1 -R -P 1041
 %patch -p1 -R -P 1040
@@ -550,7 +541,8 @@ popd
 mkdir -p third_party/node/linux/node-linux-x64/bin
 rm -f third_party/node/linux/node-linux-x64/bin/node
 ln -s %{_bindir}/node third_party/node/linux/node-linux-x64/bin/node
-sed -i -e "s@^NODE_VERSION=.*@NODE_VERSION=\"v%{node_version}\"@" third_party/node/update_node_binaries
+node_version=$(/usr/bin/node --version)
+sed -i -e "s@^NODE_VERSION=.*@NODE_VERSION=\"${node_version}\"@" third_party/node/update_node_binaries
 
 # python3
 mkdir -p $HOME/bin
@@ -1086,11 +1078,7 @@ myconf_gn+=" safe_browsing_use_unrar=false"
 %if %{with gtk4}
 myconf_gn+=" gtk_version=4"
 %endif
-%if %{without qt5}
 myconf_gn+=" use_qt5=false"
-%else
-myconf_gn+=" moc_qt5_path=\"%{_libqt5_bindir}\""
-%endif
 %if %{with qt6}
 myconf_gn+=" use_qt6=true"
 myconf_gn+=" moc_qt6_path=\"%{?_qt6_libexecdir}\""
@@ -1141,6 +1129,9 @@ myconf_gn+=" google_api_key=\"${google_api_key}\""
 
 if [ "$clang_version" -lt 20 ] ; then
 myconf_gn+=" clang_warning_suppression_file=\"\""
+fi
+if [ "$clang_version" -lt 21 ] ; then
+myconf_gn+=" toolchain_supports_rust_thin_lto=false"
 fi
 myconf_gn+=" chrome_pgo_phase=0"
 
