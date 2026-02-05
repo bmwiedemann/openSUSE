@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Feb 05 06:07:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.19.1:
+  * Bug Fixes
+    - docker hub creds might leak in pod events (#510) (8f8d7b4)
+    - logs stop showing after 4 hours (#508) (9d31303)
+
+-------------------------------------------------------------------
+Thu Feb 05 06:03:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.19.0:
+  * Features
+    - werf.io/log-regex-skip and
+      werf.io/log-regex-skip-for-<container> annotations (#506)
+      (ced6487)
+  * Bug Fixes
+    - panic if apiserver connection lost (#507) (d9db36b)
+
+-------------------------------------------------------------------
+Thu Feb 05 05:57:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.18.1:
+  * Bug Fixes
+    - hooks cleaned up too early (#503) (f9986dd)
+    - inherit deckhouse-controller managed fields (0116483)
+    - revert: inherit deckhouse-controller managed fields (c3dd378)
+
+-------------------------------------------------------------------
 Wed Dec 17 09:21:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.18.0:
