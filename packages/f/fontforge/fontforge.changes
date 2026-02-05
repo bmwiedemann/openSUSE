@@ -185,8 +185,16 @@ Sun Oct 12 13:02:51 UTC 2025 - MihailJP <mihailjp@gmail.com>
   * fix spelling "bt" -> "but" (#5636)
   * Fix typos in Python module docs (#5634)
   * October 2025 release (#5632)
-  * fix memleak in function DlgCreate8 (#5491)
+  * fix memleak in function DlgCreate8 (#5491).
+    Remove da98987f.patch.
     (CVE-2025-50949, bsc#1252652)
+
+-------------------------------------------------------------------
+Fri Oct 10 12:18:21 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add da98987f.patch:
+  Backport da98987f from upstream, fix memleak in function DlgCreate8.
+  (CVE-2025-50949, bsc#1252652)
 
 -------------------------------------------------------------------
 Mon May 26 06:39:39 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
