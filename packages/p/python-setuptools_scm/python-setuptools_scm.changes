@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  4 11:32:01 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add pythons_for_pypi macro. This macro will help to build the python
+  minimal stack for different python versions.
+
+-------------------------------------------------------------------
 Thu Jan  1 13:44:54 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 9.2.2

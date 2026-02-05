@@ -26,6 +26,7 @@
 %bcond_with test
 %endif
 %bcond_without libalternatives
+%{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-setuptools_scm%{psuffix}
 Version:        9.2.2
