@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  4 17:58:53 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.12.0
+  * iuup: Explicitly discard Iu-UP-DATA.req in Initialization state
+  * protocol/gsm_04_08.h: Add GSM 04.08 message types for SI21/22/23
+  * vty: Add 'show runtime' command
+  * Send multiple read/recvfrom/recvmsg SQEs in advance
+  * Register OSMO_EXT protocol number for TCAP routing
+  * AMR codec: add conversion between s-bits and codec parameters
+  * AMR codec: add decoder homing frame const patterns
+
+-------------------------------------------------------------------
 Sun Oct 12 09:03:12 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.11.2
