@@ -1711,4 +1711,36 @@ Dropped CVE-2019-11372_CVE-2019-11373.patch (merged upstream)
 </comment>
     <requestid>1308859</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>b85ce29052b8263df7b5f11ea46f91cc</srcmd5>
+    <version>26.01</version>
+    <time>1770310692</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 26.01
+  Added features:
+  * More coherency/integrity checks, sponsored by
+    Austrian Mediathek
+  * MXF: fix crash with some 0 byte audio packets
+  * MPEG-4: C2PA support
+  * ID3v2: support of Olympus voice recorder metadata
+  * Matroska: show block addition tracks
+  * Matroska: add timecode label readout
+  * Add default language string for ISO 639-2 special codes,
+    thanks to cjee21
+  * AVI/WAV: add support for WAVE_FORMAT_MPEG_HEAAC (0x1610)
+  * AV1: Enable parsing raw OBU from network, thanks to cjee21
+  * AV1: Indicate usage of Film Grain Synthesis, thanks to cjee21
+  * Bindings: add C#/PowerShell (Windows/Linux) support,
+    thanks to cjee21
+  * Matroska/TimeCodeXML: add frame rate
+  Fixed bugs:
+  * Matroska: fix incoherent readout of unordered tag elements
+  * TimeCodeXml output: fix lack of frame number with
+    some MXF SDTI timecodes
+  * AVI/WAV: fix crash with some invalid FourCC
+  * SDP: fix false-positive detection
+  * I2469, CDP: fix handling of 708 streams caught in the middle
+</comment>
+    <requestid>1331075</requestid>
+  </revision>
 </revisionlist>
