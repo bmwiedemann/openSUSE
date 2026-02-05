@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb  4 09:52:50 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.16.0
+  * The experimental phase for Storage Boxes is over,
+    and Storage Boxes support is now generally available.
+  * **servers**: allow setting user_data for rebuild (#627)
+  * Storage Box support no longer experimental (#626)
+- from version 2.15.0
+  * add name to Storage Box Subaccount (#621)
+- from version 2.14.0
+  * retry requests when the api returns a `timeout` error (#617)
+
+-------------------------------------------------------------------
 Wed Jan  7 15:41:14 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.13.0
