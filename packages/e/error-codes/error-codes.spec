@@ -16,7 +16,7 @@
 #
 
 Name:           error-codes
-Version:        0.2+git20251202.d72c330
+Version:        0.3.0+git20260204.54278a1
 Release:        0
 Summary:        Lookup error codes and their description
 License:        GPL-2.0-or-later

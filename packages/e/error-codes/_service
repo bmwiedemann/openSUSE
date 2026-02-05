@@ -5,7 +5,8 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">error-codes</param>
     <param name="revision">main</param>
-    <param name="versionformat">0.2+git%cd.%h</param>
+    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+    <param name="versionrewrite-pattern">v(.*?)(\+git0)?$</param>
   </service>
   <service mode="manual" name="recompress">
     <param name="file">*.tar</param>

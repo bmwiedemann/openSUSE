@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 04 22:16:56 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3.0+git20260204.54278a1:
+  * Release version 0.3.0
+  * error-codes: error out if no mode was given after option handling
+  * manpage: fix missing command as parameter
+
+-------------------------------------------------------------------
 Fri Dec  5 09:08:24 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove wrong Conflicts

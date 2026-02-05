@@ -18,4 +18,15 @@
   * Initial version</comment>
     <requestid>1321239</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0bae26c71bf54a4c67bb2bc3c7746ff9</srcmd5>
+    <version>0.3.0+git20260204.54278a1</version>
+    <time>1770310682</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.3.0+git20260204.54278a1:
+  * Release version 0.3.0
+  * error-codes: error out if no mode was given after option handling
+  * manpage: fix missing command as parameter</comment>
+    <requestid>1331070</requestid>
+  </revision>
 </revisionlist>
