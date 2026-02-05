@@ -190,4 +190,13 @@
   x86_64. (forwarded request 1302687 from iznogood)</comment>
     <requestid>1303129</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a56c8652bab7bec7bc54452228702737</srcmd5>
+    <version>2026.01.15</version>
+    <time>1770310727</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2026.01.15:
+  + Update signing key hash (forwarded request 1330738 from dimstar)</comment>
+    <requestid>1331124</requestid>
+  </revision>
 </revisionlist>

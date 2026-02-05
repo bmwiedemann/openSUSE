@@ -19,7 +19,7 @@
 
 %global nautilus_extdir %( pkg-config libnautilus-extension-4 --variable extensiondir )
 Name:           nautilus-dropbox
-Version:        2025.05.20
+Version:        2026.01.15
 Release:        0
 Summary:        Dropbox client integrated into Nautilus
 License:        GPL-3.0-or-later AND CC-BY-ND-3.0
