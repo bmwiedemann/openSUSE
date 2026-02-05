@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 29 09:13:15 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use %bcond_with macro for test flavor
+
+-------------------------------------------------------------------
 Fri May  2 14:17:24 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 3.12.0

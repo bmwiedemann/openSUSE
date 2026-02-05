@@ -1,7 +1,7 @@
 #
 # spec file for package python-flit-core
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,12 +29,6 @@
 %if "%{flavor}" == ""
 %define pprefix python
 %{expand:%%define skip_%{primary_python} 1}
-%if "%{shrink:%{pythons}}" == ""
-# Exclude for local osc build: unresolvable
-%define python_module() empty-python-buildset
-# Exclude for obs server
-ExclusiveArch:  do-not-build
-%endif
 %endif
 %else
 # backport and option d projects for 15.X having one or more python in the buildset don't need the Ring split for bootstrap
@@ -45,12 +39,25 @@ ExclusiveArch:  do-not-build
 %define pprefix python
 %endif
 %endif
+
 # test everything in the buildset by standard python flavor expansion: primary and non-primary, if any.
 %if "%{flavor}" == "test"
 %define pprefix python
 %define psuffix -test
+%bcond_without test
+%else
+%bcond_with test
 %endif
+
 %{?sle15_python_module_pythons}
+
+%if "%{flavor}" == "" && "%{shrink:%{pythons}}" == ""
+# Exclude for local osc build: unresolvable
+%define python_module() empty-python-buildset
+# Exclude for obs server
+ExclusiveArch:  do-not-build
+%endif
+
 Name:           %{pprefix}-flit-core%{?psuffix}
 Version:        3.12.0
 Release:        0
@@ -62,7 +69,7 @@ BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%if "%{flavor}" == "test"
+%if %{with test}
 BuildRequires:  %{python_module flit-core = %{version}}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}
@@ -90,7 +97,7 @@ The only public interface is the API specified by PEP 517, at flit_core.buildapi
 %prep
 %autosetup -p2 -n flit_core-%{version}
 
-%if "%{flavor}" != "test"
+%if !%{with test}
 %build
 # https://flit.readthedocs.io/en/latest/bootstrap.html, take the first available python in the build set
 mypython=%{expand:%%__%(echo %{pythons} | cut -d " " -f 1)}
@@ -105,14 +112,14 @@ $python bootstrap_install.py dist/flit_core-%{version}-py3-none-any.whl -i %{bui
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
-%if "%{flavor}" == "test"
+%if %{with test}
 %check
 # make sure we do not test the sources but the package
 rm flit_core/*.py pyproject.toml
 %pytest -rfEs
 %endif
 
-%if "%{flavor}" != "test"
+%if !%{with test}
 %files %{python_files}
 %{python_sitelib}/flit_core
 %{python_sitelib}/flit_core-%{version}.dist-info

@@ -233,4 +233,12 @@
     <comment></comment>
     <requestid>1274041</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>6e9508ffa4c5ba90ed60be8f697cba65</srcmd5>
+    <version>3.12.0</version>
+    <time>1770310624</time>
+    <user>anag_factory</user>
+    <comment>- Use %bcond_with macro for test flavor</comment>
+    <requestid>1329821</requestid>
+  </revision>
 </revisionlist>
