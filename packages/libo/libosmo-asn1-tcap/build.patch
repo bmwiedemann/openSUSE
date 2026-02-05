@@ -1,0 +1,23 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: 2026-02-05 12:32:24.331023163 +0100
+
+Running `make check` in a `./configure --disable-static` build
+errors out because there is no .a archive to speak of.
+
+---
+ tests/parse/Makefile.am |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: libosmo-asn1-tcap-0.2.1/tests/parse/Makefile.am
+===================================================================
+--- libosmo-asn1-tcap-0.2.1.orig/tests/parse/Makefile.am
++++ libosmo-asn1-tcap-0.2.1/tests/parse/Makefile.am
+@@ -2,7 +2,7 @@ AM_CPPFLAGS = $(all_includes) -I$(top_sr
+ AM_CFLAGS = -Wall
+ AM_LDFLAGS = -no-install
+ 
+-LDADD = $(top_builddir)/src/.libs/libosmo-asn1-tcap.a
++LDADD = $(top_builddir)/src/libosmo-asn1-tcap.la
+ 
+ check_PROGRAMS = \
+ 	tcap_parse_test \
