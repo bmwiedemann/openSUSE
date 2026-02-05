@@ -1,0 +1,13 @@
+Index: aiorpcX-0.25.0/tests/test_jsonrpc.py
+===================================================================
+--- aiorpcX-0.25.0.orig/tests/test_jsonrpc.py
++++ aiorpcX-0.25.0/tests/test_jsonrpc.py
+@@ -1064,7 +1064,7 @@ async def test_max_response_size(protoco
+             await group.spawn(send_batch(batch))
+ 
+ 
+-def test_misc(protocol):
++async def test_misc(protocol):
+     '''Misc tests to get full coverage.'''
+     connection = JSONRPCConnection(protocol)
+ 

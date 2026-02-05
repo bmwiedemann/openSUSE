@@ -129,4 +129,18 @@
 </comment>
     <requestid>1296251</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>0e5d43275ed85dfe5b5cb6df4aa7dd09</srcmd5>
+    <version>0.25.0</version>
+    <time>1770310766</time>
+    <user>anag_factory</user>
+    <comment>- Add fix-jsonrpc-test-misc.patch to fix broken tests
+  gh#kyuupichan/aiorpcX#56
+
+- replace a non-upstream patch:
+    event_loop.patch
+  by an upstream one:
+    0001-Remove-event_loop-fixture-usage-from-tests.patch</comment>
+    <requestid>1331109</requestid>
+  </revision>
 </revisionlist>

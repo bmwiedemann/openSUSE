@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiorpcX
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/kyuupichan/aiorpcX
 Source:         https://github.com/kyuupichan/aiorpcX/archive/%{version}.tar.gz
-Patch0:         event_loop.patch
+Patch0:         0001-Remove-event_loop-fixture-usage-from-tests.patch
+# PATCH-FIX-OPENSUSE fix-jsonrpc-test-misc.patch -- gh#kyuupichan/aiorpcX#56
+Patch1:         fix-jsonrpc-test-misc.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -48,10 +50,7 @@ BuildRequires:  %{python_module websockets}
 Generic async RPC implementation, including JSON-RPC
 
 %prep
-%setup -q -n aiorpcX-%{version}
-%if 0%{?suse_version} > 1600
-%autopatch -p1
-%endif
+%autosetup -p1 -n aiorpcX-%{version}
 # needs network
 rm tests/test_websocket.py
 chmod a-x LICENCE README.rst docs/*
