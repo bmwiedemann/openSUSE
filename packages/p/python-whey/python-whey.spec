@@ -1,7 +1,7 @@
 #
 # spec file for package python-whey
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,7 @@ Summary:        A simple Python wheel builder for simple projects
 License:        MIT
 URL:            https://github.com/repo-helper/whey
 Source:         https://github.com/repo-helper/whey/archive/refs/tags/v%{version}.tar.gz#/whey-%{version}.tar.gz
+Patch0:         fix_requirements.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.6.0}
 BuildRequires:  %{python_module wheel >= 0.34.2}

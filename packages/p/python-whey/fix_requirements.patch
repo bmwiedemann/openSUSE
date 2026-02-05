@@ -1,0 +1,13 @@
+Index: whey-0.1.1/tests/requirements.txt
+===================================================================
+--- whey-0.1.1.orig/tests/requirements.txt
++++ whey-0.1.1/tests/requirements.txt
+@@ -4,7 +4,7 @@ coverage-pyver-pragma>=0.2.1
+ editables>=0.2
+ importlib-metadata>=3.6.0
+ iniconfig!=1.1.0,>=1.0.1
+-pyproject-examples@ https://github.com/repo-helper/pyproject-examples/archive/refs/heads/master.zip
++pyproject-examples
+ pytest>=6.0.0
+ pytest-cov>=2.8.1
+ pytest-randomly>=3.7.0
