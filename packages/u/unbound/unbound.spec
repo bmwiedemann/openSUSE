@@ -68,6 +68,7 @@ Requires:       ldns >= %{ldns_version}
 # unbound-control-setup depends on /usr/bin/openssl
 Requires:       openssl
 %if %{with systemd}
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(libsystemd)
 %{?systemd_requires}
 %endif
@@ -94,6 +95,7 @@ Source15:       unbound-anchor.timer
 Source16:       unbound-munin.README
 Source18:       unbound-anchor.service
 Source19:       unbound.sysusers
+Source20:       tmpfiles-unbound-anchor.conf
 Patch0:         unbound-swig-4.4.0-compat.patch
 
 Summary:        Validating, recursive, and caching DNS(SEC) resolver
@@ -254,13 +256,14 @@ install -m 0644 testcode/streamtcp.1 %{buildroot}/%{_mandir}/man1/unbound-stream
 
 # Install tmpfiles.d config
 install -d -m 0755         %{buildroot}%{_tmpfilesdir}/ \
-                           %{buildroot}%{_sharedstatedir}/unbound
+                           %{buildroot}%{_datadir}/unbound
 install -m 0644 %{SOURCE8} %{buildroot}%{_tmpfilesdir}/unbound.conf
+install -m 0644 %{SOURCE20} %{buildroot}%{_tmpfilesdir}/unbound-anchor.conf
 
 # install root and DLV key - we keep a copy of the root key in old location,
 # in case user has changed the configuration and we wouldn't update it there
 install -m 0644 %{SOURCE5} %{SOURCE6} %{buildroot}%{_sysconfdir}/unbound/
-install -m 0644 %{SOURCE13}           %{buildroot}%{_sharedstatedir}/unbound/root.key
+install -m 0644 %{SOURCE13}           %{buildroot}%{_datadir}/unbound/root.key
 
 # create softlink for all functions of libunbound man pages
 for mpage in ub_ctx ub_result ub_ctx_create ub_ctx_delete ub_ctx_set_option ub_ctx_get_option ub_ctx_config ub_ctx_set_fwd ub_ctx_resolvconf ub_ctx_hosts ub_ctx_add_ta ub_ctx_add_ta_file ub_ctx_trustedkeys ub_ctx_debugout ub_ctx_debuglevel ub_ctx_async ub_poll ub_wait ub_fd ub_process ub_resolve ub_resolve_async ub_cancel ub_resolve_free ub_strerror ub_ctx_print_local_zones ub_ctx_zone_add ub_ctx_zone_remove ub_ctx_data_add ub_ctx_data_remove;
@@ -404,8 +407,11 @@ systemd-tmpfiles --create  %{_tmpfilesdir}/unbound.conf  || :
 %{_unitdir}/unbound-anchor.timer
 %{_unitdir}/unbound-anchor.service
 %{_sysusersdir}/unbound.conf
-%dir %attr(-,unbound,unbound) %{_sharedstatedir}/%{name}
-%attr(0644,unbound,unbound) %config(noreplace) %{_sharedstatedir}/%{name}/root.key
+%{_tmpfilesdir}/unbound-anchor.conf
+%ghost %dir %{_sharedstatedir}/%{name}
+%ghost %attr(0644,root,root) %{_sharedstatedir}/%{name}/root.key
+%dir %attr(-,unbound,unbound) %{_datadir}/%{name}
+%attr(0644,unbound,unbound) %{_datadir}/%{name}/root.key
 %attr(0644,root,unbound)    %config(noreplace) %{_sysconfdir}/%{name}/dlv.isc.org.key
 # just left for backwards compat with user changed unbound.conf files - format is different!
 %attr(0644,root,unbound)    %config(noreplace) %{_sysconfdir}/%{name}/root.key

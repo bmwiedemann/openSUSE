@@ -731,4 +731,16 @@ Features
     University, Yang Luo and JianJun Chen from Tsinghua University.</comment>
     <requestid>1320162</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>14b59c4f2f3ebb912c965521214f21d1</srcmd5>
+    <version>1.24.2</version>
+    <time>1770310615</time>
+    <user>anag_factory</user>
+    <comment>- Create /var/lib/unbound with systemd-tmpfiles, move root.key to
+  /usr/share/unbound and copy it to /var/lib/unbound/root.key to
+  improve immutable os compatibility.
+- Add BuildRequires for pkgconfig(systemd) to avoid tmpfiles not
+  found error in install section.</comment>
+    <requestid>1331004</requestid>
+  </revision>
 </revisionlist>

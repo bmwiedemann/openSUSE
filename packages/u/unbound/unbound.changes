@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 30 12:21:42 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Create /var/lib/unbound with systemd-tmpfiles, move root.key to
+  /usr/share/unbound and copy it to /var/lib/unbound/root.key to
+  improve immutable os compatibility.
+- Add BuildRequires for pkgconfig(systemd) to avoid tmpfiles not
+  found error in install section.
+
+-------------------------------------------------------------------
 Wed Nov 26 11:31:04 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 1.24.2:
