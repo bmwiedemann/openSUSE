@@ -1,7 +1,7 @@
 #
 # spec file for package dnsmasq
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Requires(pre):  group(nogroup)
 %define dnsmasq_group nogroup
 %endif
 Name:           dnsmasq
-Version:        2.91
+Version:        2.92
 Release:        0
 Summary:        DNS Forwarder and DHCP Server
 License:        GPL-2.0-only OR GPL-3.0-only
