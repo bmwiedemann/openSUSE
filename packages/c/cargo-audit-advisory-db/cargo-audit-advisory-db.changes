@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 05 00:29:04 UTC 2026 - william.brown@suse.com
+
+- Update to version 20260205:
+  * Assigned RUSTSEC-2026-0008 to git2
+  * Add RUSTSEC advisory for git2 (#2620)
+  * Synchronize IDs (2026-02-04)
+  * Assigned RUSTSEC-2026-0007 to bytes (#2622)
+  * Add bytes GHSA-434x-w66g-qw3r (#2621)
+  * Bump peter-evans/create-pull-request from 8.0.0 to 8.1.0
+  * Synchronize IDs (2026-01-30)
+  * Synchronize IDs (2026-01-29)
+  * Assigned RUSTSEC-2025-0144 to ml-dsa
+  * ml-dsa: add "Timing side-channel in ML-DSA decomposition"
+
+-------------------------------------------------------------------
 Wed Nov 12 03:45:56 UTC 2025 - william.brown@suse.com
 
 - Update to version 20251112:
