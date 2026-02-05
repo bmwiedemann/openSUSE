@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 05 14:22:35 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1770127521.c249fe9:
+  * refactor: Distinguish tests by the script path in `loadtest`
+  * refactor: Simplify approach for avoiding redefine warnings
+  * test: Allow running tests with `Test::Warnings<0.033`
+  * test: Format test of `loadtestdir` in a more compact way
+  * test: Use `ENABLE_MODERN_PERL_FEATURES=1` in test suite
+  * feat: Allow enabling strict/warnings/signatures globally
+  * fix: Improve wrong comment about enablement of modern Perl features
+
+[36m[1m[info] Trying 2 more times after 3 seconds …[0m
+[36m[1m[info] Trying 1 more times after 6 seconds …[0m
+[36m[1m[info] Full output: -------------------------------------------------------------------
 Wed Jan 28 12:34:32 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1769602729.9728790:
@@ -6443,7 +6457,8 @@ Fri Dec 22 11:27:27 UTC 2017 - okurz@suse.com
   * Do not reset NUMDISKS if RAIDLEVEL is not present (#901)
   * svirt: Add {start,stop}_serial_grab interface (#899)
   * Retidy - perltidy 20171214 changed output (#896)
-  * Simply ignore '\r' in type string (#894)
+  * Simply ignore '
+' in type string (#894)
   * Change the logs timestamp to ISO8601. (#893)
   * Add method to get files content and integration test
   * Add possibility to share files on worker directly
@@ -6692,5 +6707,4 @@ Mon Mar 10 13:21:22 UTC 2014 - tchvatal@suse.com
 -------------------------------------------------------------------
 Tue May 14 15:09:56 UTC 2013 - lnussel@suse.de
 
-- initial package
-
+- initial package[0m
