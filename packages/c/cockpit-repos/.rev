@@ -78,4 +78,15 @@
   * Dependency updates for bsc#1257325</comment>
     <requestid>1329997</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>cf223c7e4ad939ee160812ddbe4b8403</srcmd5>
+    <version>4.7</version>
+    <time>1770310838</time>
+    <user>anag_factory</user>
+    <comment>Correcting the changelog to include the CVE reference as recommended
+outside of Factory
+
+  * Dependency updates for bsc#1257325/CVE-2025-13465</comment>
+    <requestid>1331148</requestid>
+  </revision>
 </revisionlist>
