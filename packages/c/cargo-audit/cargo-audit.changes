@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Feb 05 00:16:50 UTC 2026 - william.brown@suse.com
+
+- Update to version 0.22.1~git0.efcde93:
+  * cargo-audit: bump version to 0.22.1
+  * Take semver-compatible dependency updates
+  * rustsec: upgrade gix to 0.78
+  * rustsec: upgrade to tame-index 0.26
+  * admin: use sparse index
+  * admin: update test for newer CLI
+  * rustsec: vendor git helper function from tame-index
+  * platforms: bump version to 3.8.0
+  * platforms: regenerate
+  * build(deps): bump bytes from 1.11.0 to 1.11.1 (#1526)
+  * Add Actions workflow for detecting platform changes
+  * build(deps): bump askama from 0.15.1 to 0.15.2
+  * build(deps): bump comrak from 0.49.0 to 0.50.0
+  * cargo-audit: disable colors by default if stdout it not a terminal
+  * cargo-audit: Put a newline character at the end of json reports
+  * build(deps): bump actions/cache from 5.0.1 to 5.0.2
+  * build(deps): bump actions/checkout from 6.0.1 to 6.0.2
+  * build(deps): bump thiserror from 2.0.17 to 2.0.18
+  * build(deps): bump chrono from 0.4.42 to 0.4.43
+  * build(deps): bump toml from 0.9.10+spec-1.1.0 to 0.9.11+spec-1.1.0
+  * ci: use stable toolchain for clippy
+  * Ignore RUSTSEC-2025-0140 for now
+  * Upgrade askama to 0.15
+  * Take semver-compatible dependency updates
+  * Bump cargo-lock version to 11.0.1
+  * Change `doc_auto_cfg` feature usage back to `doc_cfg`
+  * Website: Add light theme (#1498)
+  * admin: remove unused lint --skip-namecheck option
+  * build(deps): bump fs-err from 3.2.1 to 3.2.2
+  * build(deps): bump toml from 0.9.8 to 0.9.10+spec-1.1.0
+  * build(deps): bump toml_edit from 0.23.9 to 0.24.0+spec-1.1.0
+  * build(deps): bump fs-err from 3.2.0 to 3.2.1
+  * build(deps): bump actions/cache from 4.3.0 to 5.0.1
+  * build(deps): bump comrak from 0.48.0 to 0.49.0
+  * build(deps): bump toml_edit from 0.23.7 to 0.23.9
+  * build(deps): bump actions/checkout from 6.0.0 to 6.0.1
+  * rustsec: bump version to 0.32.0
+  * rustsec: make advisory metadata non-exhaustive
+  * rustsec: add field expect-deleted to advisory metadata
+  * build(deps): bump Swatinem/rust-cache from 2.8.1 to 2.8.2
+  * build(deps): bump softprops/action-gh-release from 2.4.2 to 2.5.0
+  * Update gix to 0.75 and tame-index to 0.25
+  * build(deps): bump actions/checkout from 5.0.0 to 6.0.0
+  * cvss: use `cargo hack` to test feature combos
+  * gate the v3/v4 versions of MetricType
+  * build(deps): bump fs-err from 3.1.3 to 3.2.0
+  * build(deps): bump softprops/action-gh-release from 2.4.1 to 2.4.2
+  * build(deps): bump comrak from 0.47.0 to 0.48.0
+  * build(deps): bump abscissa_core from 0.8.2 to 0.9.0
+  * Release Apple Silicon cargo-audit binary
+
+-------------------------------------------------------------------
 Wed Nov 12 03:48:30 UTC 2025 - william.brown@suse.com
 
 - Update to version 0.22.0~git0.db854b0:
