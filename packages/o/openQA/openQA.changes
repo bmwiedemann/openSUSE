@@ -1,7 +1,26 @@
 -------------------------------------------------------------------
-Wed Jan 28 15:07:49 UTC 2026 - okurz@suse.com
+Thu Jan 29 06:10:03 UTC 2026 - okurz@suse.com
 
-- Update to version 5.1769603414.6c0fa72e:
+- Update to version 5.1769644379.ef069e9d:
+  * style: Add quotes in openqa-bootstrap
+  * feat: default API key expiration to 1 year, aligning with UI
+  * feat: wrap array in an object in api_key API responses
+  * feat: add API endpoint for deleting API keys
+  * feat: add API endpoint for listing API keys
+  * feat: add API endpoint for creating API keys
+  * fix(openqa-bootstrap): prevent shellcheck warning SC2086
+  * Add dependency on 'file'
+  * refactor: Write code in `JobGroup.pm` in a more compact way
+  * test: Consider `Job.pm` fully covered
+  * test: Add tests for error handling of artefact upload
+  * refactor: Format artefact upload test in a more compact way
+  * test: Add tests for using assigned worker on job status updates
+  * test: Add tests for re-scheduling invalid scheduled product
+  * test: Add tests for querying non-existent scheduled product
+  * refactor: Use more compact coding style in `show_scheduled_product`
+  * refactor: Improve `Mm.pm`
+  * test: Improve tests of multi-machine API
+  * Remove unused module Config::Tiny from dependencies
   * Handle links on test_log on missing git repo extension
   * test: Consider `Test.pm` fully covered
   * test: Extend tests for showing dependency graph
