@@ -1,7 +1,7 @@
 #
 # spec file for package sdl12_compat
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           sdl12_compat
 %define lname libSDL-1_2-0
 %global _lto_cflags %_lto_cflags -ffat-lto-objects
-Version:        1.2.72
+Version:        1.2.74
 Release:        0
 Summary:        SDL-1.2 Compatibility Layer for Simple DirectMedia Layer 2.0
 License:        MIT
