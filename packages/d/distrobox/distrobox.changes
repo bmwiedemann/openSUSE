@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  4 17:06:15 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Drop 0001-fix-add-newline-when-manually-adding-user.patch since it was merged upstream
+- Update to 1.8.2.4:
+    * Add missing dependencies for fedora and wolfi. by @Kamorst in https://github.com/89luca89/distrobox/pull/1931
+    * docs: update Alpine Linux images to latest versions by @dottorblaster in https://github.com/89luca89/distrobox/pull/1977
+    * distrobox-init: add newline when appending user via printf by @tblume in https://github.com/89luca89/distrobox/pull/1988
+    * init: refactor user setup to modify attributes individually by @89luca89 in https://github.com/89luca89/distrobox/pull/1994
+    * chore(version): bump to v1.8.2.4 by @dottorblaster in https://github.com/89luca89/distrobox/pull/1995
+
+-------------------------------------------------------------------
 Tue Feb  3 07:44:08 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
 
 - add newline when manually adding user (bsc#1257302)

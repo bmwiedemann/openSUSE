@@ -254,4 +254,19 @@
     <comment></comment>
     <requestid>1330780</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b5ca9522b2e4625a65991aec9130b905</srcmd5>
+    <version>1.8.2.4</version>
+    <time>1770310840</time>
+    <user>anag_factory</user>
+    <comment>- Drop 0001-fix-add-newline-when-manually-adding-user.patch since it was merged upstream
+- Update to 1.8.2.4:
+    * Add missing dependencies for fedora and wolfi. by @Kamorst in https://github.com/89luca89/distrobox/pull/1931
+    * docs: update Alpine Linux images to latest versions by @dottorblaster in https://github.com/89luca89/distrobox/pull/1977
+    * distrobox-init: add newline when appending user via printf by @tblume in https://github.com/89luca89/distrobox/pull/1988
+    * init: refactor user setup to modify attributes individually by @89luca89 in https://github.com/89luca89/distrobox/pull/1994
+    * chore(version): bump to v1.8.2.4 by @dottorblaster in https://github.com/89luca89/distrobox/pull/1995
+</comment>
+    <requestid>1331142</requestid>
+  </revision>
 </revisionlist>
