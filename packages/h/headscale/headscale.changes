@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb  4 22:28:15 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.28.0:
+  * Minimum supported Tailscale client version: v1.74.0
+  * Tags as identity
+  * Smarter map updates
+  * Pre-authentication key security improvements
+  * Web registration templates redesign
+  * Database migration support removed for pre-0.25.0 databases
+  * Full changelog at 
+    https://github.com/juanfont/headscale/releases/tag/v0.28.0
+
+-------------------------------------------------------------------
 Fri Jan  2 01:19:19 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - currently setting the version and commit hash via ldflags does

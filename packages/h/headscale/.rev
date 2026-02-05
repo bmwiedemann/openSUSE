@@ -207,4 +207,20 @@
     <comment></comment>
     <requestid>1325290</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a8374fc084a48b7fc5d8448f3a86952d</srcmd5>
+    <version>0.28.0</version>
+    <time>1770310684</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.28.0:
+  * Minimum supported Tailscale client version: v1.74.0
+  * Tags as identity
+  * Smarter map updates
+  * Pre-authentication key security improvements
+  * Web registration templates redesign
+  * Database migration support removed for pre-0.25.0 databases
+  * Full changelog at 
+    https://github.com/juanfont/headscale/releases/tag/v0.28.0 (forwarded request 1331073 from rrahl0)</comment>
+    <requestid>1331074</requestid>
+  </revision>
 </revisionlist>
