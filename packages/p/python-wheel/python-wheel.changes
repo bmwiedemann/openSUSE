@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jan 27 10:15:40 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.46.3
+  * Fixed ImportError: cannot import name '_setuptools_logging' from 'wheel'
+    when installed alongside an old version of setuptools and running the
+    bdist_wheel command
+- Update to 0.46.2 (fixes CVE-2026-24049, bsc#1257100)
+  * Restored the bdist_wheel command for compatibility with setuptools older
+    than v70.1
+  * Importing wheel.bdist_wheel now emits a FutureWarning instead of a
+    DeprecationWarning
+  * Fixed wheel unpack potentially altering the permissions of files outside
+    of the destination tree with maliciously crafted wheels (CVE-2026-24049)
+- Update to 0.46.1
+  * Temporarily restored the wheel.macosx_libfile module
+- Update to 0.46.0
+  * Dropped support for Python 3.8
+  * Removed the bdist_wheel setuptools command implementation and entry point.
+    The wheel.bdist_wheel module is now just an alias to
+    setuptools.command.bdist_wheel, emitting a deprecation warning on import.
+  * Removed vendored packaging in favor of a run-time dependency on it
+  * Made the wheel.metadata module private (with a deprecation warning if it's
+    imported
+  * Made the wheel.cli package private (no deprecation warning)
+  * Fixed an exception when calling the convert command with an empty
+    description field
+- drop tests.patch, merged upstream
+
+-------------------------------------------------------------------
 Thu Mar 27 10:29:43 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add tests.patch to fix (some) tests with setuptools 77

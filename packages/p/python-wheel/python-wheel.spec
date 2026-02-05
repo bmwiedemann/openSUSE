@@ -1,7 +1,7 @@
 #
 # spec file for package python-wheel
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,17 +32,15 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-wheel%{psuffix}
-Version:        0.45.1
+Version:        0.46.3
 Release:        0
 Summary:        A built-package format for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pypa/wheel
 Source:         https://github.com/pypa/wheel/archive/%{version}.tar.gz#/wheel-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/pypa/wheel/pull/651 fix test failures
-Patch:          tests.patch
 # Bootstrap: Don't BuildRequire setuptools or pip here!
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
@@ -59,6 +57,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest >= 3.0.0}
 BuildRequires:  %{python_module wheel >= %{version}}
 %endif
+Requires:       python-packaging >= 26.0
 %python_subpackages
 
 %description
@@ -100,7 +99,10 @@ export PYTHONPATH=build/env/lib/python%{$python_bin_suffix}/site-packages
 export LC_ALL=en_US.utf8
 export PYTHONDONTWRITEBYTECODE=1
 # license tests failing with setuptools 77: https://github.com/pypa/wheel/issues/658
-%pytest -k "not (test_licenses_default or test_licenses_deprecated or test_licenses_override)"
+skip="test_licenses_default or test_licenses_deprecated or test_licenses_override"
+# requires packaging >= 26.0: https://github.com/pypa/wheel/issues/677
+skip+=" or test_pkginfo_to_metadata"
+%pytest -vv -k "not (${skip})"
 %endif
 
 %if !%{with test}
