@@ -134,4 +134,14 @@
   * Support Python 3.14 URI parsing and ast changes.</comment>
     <requestid>1316998</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>a6dfd1cd816c354935be46ff5c47c44a</srcmd5>
+    <version>0.0.34</version>
+    <time>1770310637</time>
+    <user>anag_factory</user>
+    <comment>- Refresh support-python314.patch:
+  * Support changes for packaging 26.0 -- since this patch touches URLs,
+    and support-packaging-changes.patches does not, this patch is it.</comment>
+    <requestid>1330843</requestid>
+  </revision>
 </revisionlist>

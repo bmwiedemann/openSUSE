@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  4 05:31:18 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Refresh support-python314.patch:
+  * Support changes for packaging 26.0 -- since this patch touches URLs,
+    and support-packaging-changes.patches does not, this patch is it.
+
+-------------------------------------------------------------------
 Tue Nov 11 02:04:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python314.patch:
