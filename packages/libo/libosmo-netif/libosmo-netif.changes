@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb  4 18:05:39 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.7.0
+  * stream: Support configuring TCP keep-alive pars
+  * stream: Support configuring TCP_USER_TIMEOUT parameter
+  * Bring twjit and twrtp into libosmo-netif
+  * stream: Support overwriting tx_queue_max_length per srv conn
+
+-------------------------------------------------------------------
+Sun Oct 12 09:04:40 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.1
+  * Fix time_t prints for debian 13 armv7l, and use %zu for size_t.
+
+-------------------------------------------------------------------
 Thu Feb 13 13:37:03 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.0
