@@ -1,7 +1,7 @@
 #
 # spec file for package python-pip-requirements-parser
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-pip-requirements-parser
 Version:        32.0.1
@@ -23,10 +24,12 @@ Summary:        Pip requirements parsing library
 License:        MIT
 URL:            https://github.com/nexB/pip-requirements-parser
 Source:         https://files.pythonhosted.org/packages/source/p/pip-requirements-parser/pip-requirements-parser-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module setuptools_scm >= 4}
+# PATCH-FIX-UPSTREAM gh#aboutcode-org/pip-requirements-parser#28
+Patch0:         support-packaging-26.patch
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm >= 4}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}
@@ -74,7 +77,7 @@ skip="test_RequirementsFile_to_dict or test_RequirementsFile_dumps_unparse"
 %{python_sitelib}/packaging_legacy_version.py
 
 %files -n %{name}-doc
-%doc AUTHORS.txt CHANGELOG.rst README.rst src/packaging_legacy_version.py.ABOUT 
+%doc AUTHORS.txt CHANGELOG.rst README.rst src/packaging_legacy_version.py.ABOUT
 %{_docdir}/%{name}-doc/skeleton-usage.txt
 
 %changelog

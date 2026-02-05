@@ -7,4 +7,13 @@
     <comment>new package, needed for FawltyDeps</comment>
     <requestid>1244660</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2274fb856d3897d866c14cffdf46b6df</srcmd5>
+    <version>32.0.1</version>
+    <time>1770310637</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-packaging-26.patch:
+  * Support changes required by packaging 26.0.</comment>
+    <requestid>1330308</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  2 02:01:40 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-packaging-26.patch:
+  * Support changes required by packaging 26.0.
+
+-------------------------------------------------------------------
 Mon Feb  3 16:09:44 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - initial packaging, v32.0.1
