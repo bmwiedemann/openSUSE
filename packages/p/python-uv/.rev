@@ -2011,4 +2011,38 @@
   * Update MSRV to 1.91</comment>
     <requestid>1330041</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>763cd89d780f6f1932b833c0b2a44dd5</srcmd5>
+    <version>0.9.30</version>
+    <time>1770310856</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.9.30
+ * Enhancements
+  * Add wheel-tag-style aliases for manylinux platform names 
+  * Hint on uv version --bump dev similar to pre-release bumps 
+  * Improve display of RFC 9457 Problem Detail responses in uv publish server errors 
+  * Improve the wording of publish errors during dry-run 
+  * Set backoff to 10 retries 
+  * Add properties to synthentic and project roots in Cyclone DX exports 
+  * Identify the invidividual clients in uv publish trace logs 
+  * Allow comma-separated values for --extra option 
+  * Check all files during a dry-run publish instead of stopping at the first failure 
+  * Clarify UV_HTTP_TIMEOUT error message 
+ * Preview features
+  * Use relocatable virtual environments by default 
+  * Remove special casing for base and default conda environment names 
+ * Bug fixes
+  * Fix PYTHONHOME inheritance when spawning different Python versions 
+  * Fix wheel rejections on freethreading+debug builds 
+  * Pad with zeros during comparisons in EqualStar and NotEqualStar operators 
+  * Reject unknown field names in conflict declarations 
+  * Fix panics in system-configuration in sandboxes 
+  * Fix deadlock on token refresh in uv publish when using pyx 
+  * Ignore global Python pins when incompatible with project 
+ * Documentation
+  * Update pip pre-release compatibility information 
+ * Security
+  * Hide a subset of environment variable values in --help</comment>
+    <requestid>1331406</requestid>
+  </revision>
 </revisionlist>
