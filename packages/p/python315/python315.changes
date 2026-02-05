@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Feb  4 00:53:37 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2025-12781-b64decode-alt-chars.patch fixing bsc#1257108
+  (CVE-2025-12781) combining gh#python/cpython!141061,
+  gh#python/cpython!141128, and gh#python/cpython!141153. All
+  `*b64decode` functions should not accept non-altchars.
+- Add CVE-2026-0865-wsgiref-ctrl-chars.patch fixing bsc#1257042
+  (CVE-2026-0865) rejecting control characters in
+  wsgiref.headers.Headers, which could be abused for injecting
+  false HTTP headers.
+- Add CVE-2025-15366-imap-ctrl-chars.patch fixing bsc#1257044
+  (CVE-2025-15366) using gh#python/cpython!143922 and doing
+  basically the same as the previous patch for IMAP protocol.
+- Add CVE-2025-15282-urllib-ctrl-chars.patch fixing bsc#1257046
+  (CVE-2025-15282) using gh#python/cpython!143926 and doing
+  basically the same as the previous patch for urllib library.
+- Add CVE-2025-15367-poplib-ctrl-chars.patch fixing bsc#1257041
+  (CVE-2025-15367) using gh#python/cpython!143924 and doing
+  basically the same as the previous patch for poplib library.
+
+-------------------------------------------------------------------
 Tue Jan 27 16:31:12 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2024-6923-follow-up-EOL-email-headers.patch which is

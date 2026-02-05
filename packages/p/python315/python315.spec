@@ -238,6 +238,21 @@ Patch45:        CVE-2025-11468-email-hdr-fold-comment.patch
 # PATCH-FIX-UPSTREAM CVE-2026-0672-http-hdr-inject-cookie-Morsel.patch bsc#1257031 mcepl@suse.com
 # Reject control characters in http cookies
 Patch46:        CVE-2026-0672-http-hdr-inject-cookie-Morsel.patch
+# PATCH-FIX-UPSTREAM CVE-2025-12781-b64decode-alt-chars.patch bsc#1257108 mcepl@suse.com
+# Fix decoding with non-standard Base64 alphabet gh#python/cpython#125346
+Patch47:        CVE-2025-12781-b64decode-alt-chars.patch
+# PATCH-FIX-UPSTREAM CVE-2026-0865-wsgiref-ctrl-chars.patch bsc#1257042 mcepl@suse.com
+# Reject control characters in wsgiref.headers.Headers
+Patch48:        CVE-2026-0865-wsgiref-ctrl-chars.patch
+# PATCH-FIX-UPSTREAM CVE-2025-15366-imap-ctrl-chars.patch bsc#1257044 mcepl@suse.com
+# Reject control characters in wsgiref.headers.Headers
+Patch49:        CVE-2025-15366-imap-ctrl-chars.patch
+# PATCH-FIX-UPSTREAM CVE-2025-15282-urllib-ctrl-chars.patch bsc#1257046 mcepl@suse.com
+# Reject control characters in wsgiref.headers.Headers
+Patch50:        CVE-2025-15282-urllib-ctrl-chars.patch
+# PATCH-FIX-UPSTREAM CVE-2025-15367-poplib-ctrl-chars.patch bsc#1257041 mcepl@suse.com
+# Reject control characters in poplib
+Patch51:        CVE-2025-15367-poplib-ctrl-chars.patch
 #### Python 3.15 DEVELOPMENT PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

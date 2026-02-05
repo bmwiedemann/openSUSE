@@ -109,4 +109,28 @@ covered).</comment>
       bsc#1257181)</comment>
     <requestid>1329830</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>642dd78d2f8e26ca2bc433570ceedbe0</srcmd5>
+    <version>3.15.0~a3</version>
+    <time>1770310875</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2025-12781-b64decode-alt-chars.patch fixing bsc#1257108
+  (CVE-2025-12781) combining gh#python/cpython!141061,
+  gh#python/cpython!141128, and gh#python/cpython!141153. All
+  `*b64decode` functions should not accept non-altchars.
+- Add CVE-2026-0865-wsgiref-ctrl-chars.patch fixing bsc#1257042
+  (CVE-2026-0865) rejecting control characters in
+  wsgiref.headers.Headers, which could be abused for injecting
+  false HTTP headers.
+- Add CVE-2025-15366-imap-ctrl-chars.patch fixing bsc#1257044
+  (CVE-2025-15366) using gh#python/cpython!143922 and doing
+  basically the same as the previous patch for IMAP protocol.
+- Add CVE-2025-15282-urllib-ctrl-chars.patch fixing bsc#1257046
+  (CVE-2025-15282) using gh#python/cpython!143926 and doing
+  basically the same as the previous patch for urllib library.
+- Add CVE-2025-15367-poplib-ctrl-chars.patch fixing bsc#1257041
+  (CVE-2025-15367) using gh#python/cpython!143924 and doing
+  basically the same as the previous patch for poplib library.</comment>
+    <requestid>1331423</requestid>
+  </revision>
 </revisionlist>
