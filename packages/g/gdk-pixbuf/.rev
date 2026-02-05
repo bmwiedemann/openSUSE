@@ -1684,4 +1684,12 @@
 - Drop unused check section and already disabled meson_test macro. (forwarded request 1329847 from iznogood)</comment>
     <requestid>1330186</requestid>
   </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>abd89a9e7cfa585d2012f3b56fb2f933</srcmd5>
+    <version>2.44.4</version>
+    <time>1770310604</time>
+    <user>anag_factory</user>
+    <comment>https://bugzilla.suse.com/show_bug.cgi?id=1257653</comment>
+    <requestid>1330956</requestid>
+  </revision>
 </revisionlist>

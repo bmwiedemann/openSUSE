@@ -1,7 +1,7 @@
 #
 # spec file for package gdk-pixbuf
 #
-# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define gdk_pixbuf_binary_version 2.10.0
 
 Name:           gdk-pixbuf
-Version:        2.44.5
+Version:        2.44.4
 Release:        0
 Summary:        An image loading library
 License:        LGPL-2.1-or-later
@@ -30,6 +30,8 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        macros.gdk-pixbuf
 Source2:        README.SUSE
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM gdk-pixbuf-jpeg-slow.patch -- https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/merge_requests/174
+Patch0:         gdk-pixbuf-jpeg-slow.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docutils
@@ -120,10 +122,9 @@ cp -a %{SOURCE2} .
 
 %build
 %meson \
-	-Dtests=false                 \
-	-Dinstalled_tests=false       \
-	-Dothers=enabled              \
-        -Dandroid=disabled            \
+	-Dinstalled_tests=false \
+	-Dothers=enabled \
+        -Dandroid=disabled \
         -Dpng=disabled                \
         -Dtiff=disabled               \
         -Djpeg=disabled               \
@@ -162,6 +163,12 @@ cp %{SOURCE1} %{buildroot}%{_rpmmacrodir}
 %define _gdk_pixbuf_query_loaders %{_bindir}/gdk-pixbuf-query-loaders
 %endif
 %define _gdk_pixbuf_query_loaders_update_cache %{_gdk_pixbuf_query_loaders} --update-cache
+
+%ifarch x86_64
+%check
+echo Meson test skipped, as glyin/bubblewrap does not work inside the OBS workers
+%dnl %meson_test
+%endif
 
 %post -n libgdk_pixbuf-2_0-0
 /sbin/ldconfig
