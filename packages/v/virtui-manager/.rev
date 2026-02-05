@@ -89,4 +89,17 @@
   * update doc</comment>
     <requestid>1330809</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1ca5d462ea68ec9d91471491afa4085c</srcmd5>
+    <version>1.5.0</version>
+    <time>1770310652</time>
+    <user>anag_factory</user>
+    <comment>- version 1.5.0:
+  * Add quick buttons
+  * right click mouse to select a card
+  * fix layout after bulk operation
+  * add a simple GTK3 VTE wrapper
+</comment>
+    <requestid>1331051</requestid>
+  </revision>
 </revisionlist>

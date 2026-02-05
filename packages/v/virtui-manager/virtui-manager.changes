@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  4 18:20:05 UTC 2026 - Antoine Ginies <aginies@suse.com>
+
+- version 1.5.0:
+  * Add quick buttons
+  * right click mouse to select a card
+  * fix layout after bulk operation
+  * add a simple GTK3 VTE wrapper
+
+-------------------------------------------------------------------
 Tue Feb  3 06:54:46 UTC 2026 - Antoine Ginies <aginies@suse.com>
 
 - version 1.4.0:
