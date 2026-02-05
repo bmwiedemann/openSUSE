@@ -369,4 +369,15 @@
     - Bug fixes and translation updates</comment>
     <requestid>1329649</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>427c2eb505a896269ee304fa9fc6e20f</srcmd5>
+    <version>346</version>
+    <time>1770310835</time>
+    <user>anag_factory</user>
+    <comment>Correcting the changelog to include the CVE reference as recommended
+outside of Factory
+
+- Update dependencies for bsc#1257325/CVE-2025-13465</comment>
+    <requestid>1331137</requestid>
+  </revision>
 </revisionlist>
