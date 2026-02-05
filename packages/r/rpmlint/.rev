@@ -5488,4 +5488,14 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
     <comment></comment>
     <requestid>1328851</requestid>
   </revision>
+  <revision rev="524" vrev="1">
+    <srcmd5>d734ca5b25bdf77c0b1a7ac38d79e182</srcmd5>
+    <version>2.8.0+git20260130.c630ef64</version>
+    <time>1770310594</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.8.0+git20260130.c630ef64:
+  * dbus-services: systemd v258.3 (bsc#1257388)
+</comment>
+    <requestid>1330003</requestid>
+  </revision>
 </revisionlist>
