@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  4 14:32:39 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Move from sourceforge to gitlab 
+
+-------------------------------------------------------------------
 Thu Feb  1 09:48:24 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Version 1.09: Allow to create files without suffix as well 
@@ -145,7 +150,6 @@ Mon Feb 23 11:05:37 CET 2009 - schwab@suse.de
 - Fix namespace violations.
 
 -------------------------------------------------------------------
-
 Fri Feb 13 14:05:11 CET 2009 - werner@suse.de
 
 - Use liblzma from xz package if available
@@ -264,4 +268,3 @@ Tue Apr 20 17:24:55 CEST 2004 - werner@suse.de
 
 - Initial version 0.1 of libzio, the wrapper library to zlib/libbz2
 
--------------------------------------------------------------------

@@ -1,7 +1,7 @@
 #
 # spec file for package libzio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Summary:        A Library for Accessing Compressed Text Files
 License:        GPL-2.0-or-later
 Group:          System/Libraries
 URL:            https://libzio.sourceforge.net/
-Source:         https://downloads.sourceforge.net/project/%{name}/%{name}/%{name}-%{version}.tar.bz2
+Source0:        https://gitlab.com/bitstreamout/%{name}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 BuildRequires:  libbz2-devel
 BuildRequires:  libzstd-devel

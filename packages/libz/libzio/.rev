@@ -356,4 +356,12 @@
     <comment>- Version 1.09: Allow to create files without suffix as well</comment>
     <requestid>1143272</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>ca41a4ac297b277079389527ddd75e49</srcmd5>
+    <version>1.09</version>
+    <time>1770310591</time>
+    <user>anag_factory</user>
+    <comment>- Move from sourceforge to gitlab</comment>
+    <requestid>1330984</requestid>
+  </revision>
 </revisionlist>
