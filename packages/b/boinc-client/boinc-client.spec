@@ -1,7 +1,7 @@
 #
 # spec file for package boinc-client
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2016 by Aaron Puchert <aaronpuchert@alice-dsl.net>
 # Copyright (c) 2011 by Sascha Manns <saigkill@opensuse.org>
 #
@@ -38,7 +38,7 @@
 Name:           boinc-client
 %define rel_name        %{name}_release
 %define minor_version   8.2
-Version:        %minor_version.2
+Version:        %minor_version.8
 Release:        0
 Summary:        Client for Berkeley Open Infrastructure for Network Computing
 License:        GPL-3.0-or-later OR LGPL-3.0-or-later
