@@ -1,7 +1,7 @@
 #
 # spec file for package libnvidia-egl-wayland
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,16 +24,19 @@
 %define so_ver 1
 %define lname libnvidia-egl-wayland%{so_ver}
 %define rname egl-wayland
+%define pkg_version 1.1.21
 Name:           libnvidia-egl-wayland
-Version:        1.1.21
+Version:        1.1.22
 Release:        0
 Summary:        The EGLStream-based Wayland external platform
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/NVIDIA/egl-wayland
-Source0:        https://github.com/NVIDIA/egl-wayland/archive/%{version}/%{rname}-%{version}.tar.gz
+Source0:        https://github.com/NVIDIA/egl-wayland/archive/%{pkg_version}/%{rname}-%{pkg_version}.tar.gz
 Source1:        baselibs.conf
-Patch0:         0001-egl-wayland-add-FP16-DRM-format.patch
+Patch1:         0001-egl-wayland-add-FP16-DRM-format.patch
+Patch2:         0002-Bump-version-to-1.1.22.patch
+Patch3:         0003-egl-wayland-remove-extraneous-call-to-wl_display_rou.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.50
 BuildRequires:  ninja
@@ -82,7 +85,7 @@ This package provides headers and libraries required to build software
 using %{name}.
 
 %prep
-%autosetup -n %{rname}-%{version} -p1
+%autosetup -n %{rname}-%{pkg_version} -p1
 
 %build
 export LDFLAGS="-Wl,-z,noexecstack -Wl,-z,now -Wl,-z,relro %{?_lto_cflags}"

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  4 14:09:01 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- added latest patches
+  * 0002-Bump-version-to-1.1.22.patch
+  * 0003-egl-wayland-remove-extraneous-call-to-wl_display_rou.patch
+- raised version to 1.1.22 due to patches above
+
+-------------------------------------------------------------------
 Mon Dec 22 14:32:14 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to version 1.1.21

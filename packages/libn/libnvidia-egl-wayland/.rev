@@ -235,4 +235,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1324719</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0843673659f20744e06630917ab96853</srcmd5>
+    <version>1.1.22</version>
+    <time>1770310614</time>
+    <user>anag_factory</user>
+    <comment>- added latest patches
+  * 0002-Bump-version-to-1.1.22.patch
+  * 0003-egl-wayland-remove-extraneous-call-to-wl_display_rou.patch
+- raised version to 1.1.22 due to patches above</comment>
+    <requestid>1330978</requestid>
+  </revision>
 </revisionlist>

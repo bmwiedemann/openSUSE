@@ -1,0 +1,39 @@
+From a557bed172dcd7ba379095f784d047202281c0de Mon Sep 17 00:00:00 2001
+From: Austin Shafer <ashafer@badland.io>
+Date: Tue, 6 Jan 2026 10:51:18 -0500
+Subject: [PATCH 3/3] egl-wayland: remove extraneous call to
+ wl_display_roundtrip_queue
+
+This replaces a call to wl_display_roundtrip_queue that we have had
+for quite some time which gets called every time we do a surface
+commit. This normally may incur very mild overhead but there is also
+the possibility that a compositor may take more time to respond,
+blocking the app.
+
+This replaces the roundtrip with a simple flush on the display to
+push all of our surface updates to the compositor.
+
+Fixes #184
+---
+ src/wayland-eglsurface.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/wayland-eglsurface.c b/src/wayland-eglsurface.c
+index c944b62..b601934 100644
+--- a/src/wayland-eglsurface.c
++++ b/src/wayland-eglsurface.c
+@@ -310,8 +310,9 @@ wlEglSendDamageEvent(WlEglSurface *surface,
+     wl_surface_commit(surface->wlSurface);
+     surface->ctx.isAttached = EGL_TRUE;
+ 
+-    return (wl_display_roundtrip_queue(wlDpy,
+-                                       queue) >= 0) ? EGL_TRUE : EGL_FALSE;
++    wl_display_flush(wlDpy);
++
++    return EGL_TRUE;
+ }
+ 
+ static void*
+-- 
+2.51.0
+
