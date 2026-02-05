@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 05 05:48:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.5:
+  * fix: Disable APK size limits during tests (#2327)
+  * build(deps): bump the gomod group across 1 directory with 3
+    updates (#2325)
+
+-------------------------------------------------------------------
 Mon Feb 02 05:46:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.40.4:
