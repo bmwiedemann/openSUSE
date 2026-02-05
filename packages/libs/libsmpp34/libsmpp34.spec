@@ -1,7 +1,7 @@
 #
 # spec file for package libsmpp34
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover 1
 Name:           libsmpp34
-Version:        1.14.4
+Version:        1.14.5
 Release:        0
 Summary:        PDU SMPP packaging and unpackaging tool
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
