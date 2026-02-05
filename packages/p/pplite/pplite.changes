@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  4 17:05:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.13
+  * Define stream output operator for PolySet.
+  * Fixed latent UB in Bits helper function shifted_copy.
+  * Added option -s to allow for sorting the input description.
+- Delete 0001-build-fix-build-error-with-flint-3.2.0.patch (merged)
+
+-------------------------------------------------------------------
 Fri Mar 14 09:11:52 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-build-fix-build-error-with-flint-3.2.0.patch

@@ -31,4 +31,12 @@
     <comment>- Add 0001-build-fix-build-error-with-flint-3.2.0.patch</comment>
     <requestid>1253271</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4411c25857df79311c83773607d6f577</srcmd5>
+    <version>0.13</version>
+    <time>1770310677</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 0.13</comment>
+    <requestid>1331030</requestid>
+  </revision>
 </revisionlist>

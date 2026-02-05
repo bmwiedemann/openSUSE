@@ -1,7 +1,7 @@
 #
 # spec file for package pplite
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,18 @@
 #
 
 
-%define lname   libpplite5
+%define lname   libpplite6
 Name:           pplite
-Version:        0.12
+Version:        0.13
 Release:        0
 Summary:        Computations with polyhedra
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://github.com/ezaffanella/PPLite/
 Source:         https://github.com/ezaffanella/PPLite/raw/main/releases/%name-%version.tar.gz
-Patch1:         0001-build-fix-build-error-with-flint-3.2.0.patch
-BuildRequires:  pkgconfig(flint)
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
+BuildRequires:  pkgconfig(flint)
 
 %description
 PPLite is a C++ library implementing the abstract domain of convex polyhedra,
