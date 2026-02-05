@@ -1,7 +1,7 @@
 #
 # spec file for package oath-toolkit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,16 @@
 
 %{!?_pam_moduledir: %define _pam_moduledir /%{_lib}/security}
 Name:           oath-toolkit
-Version:        2.6.11.12
+Version:        2.6.14
 Release:        0
 Summary:        Toolkit for one-time password authentication systems
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/Security
 URL:            https://www.nongnu.org/oath-toolkit/
-Source:         https://download-mirror.savannah.gnu.org/releases/%{name}/%{name}-2.6.11.tar.gz
-Source1:        https://download-mirror.savannah.gnu.org/releases/%{name}/%{name}-2.6.11.tar.gz.sig
+#Git-Clone:     https://codeberg.org/oath-toolkit/oath-toolkit.git
+Source:         https://download-mirror.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.gz
+Source1:        https://download-mirror.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.gz.sig
 Source99:       %{name}.keyring
-Patch001:       0001-usersfile-fix-potential-security-issues-in-PAM-modul.patch
-# https://gitlab.com/oath-toolkit/oath-toolkit/-/merge_requests/42
-Patch002:       42-null_usersfile_okay.patch
 BuildRequires:  bison
 BuildRequires:  gengetopt
 BuildRequires:  libgcrypt-devel
@@ -131,9 +129,7 @@ For managing secret key files, the Portable Symmetric Key Container
 This subpackage contains the headers for this library.
 
 %prep
-%setup -q -n %{name}-2.6.11
-%patch -P 001 -p1
-%patch -P 002 -p1
+%setup -q -n %{name}-%{version}
 
 %build
 autoreconf -fiv
@@ -155,15 +151,12 @@ make %{?_smp_mflags}
 mv COPYING COPYING.summary
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n liboath0 -p /sbin/ldconfig
-%postun -n liboath0 -p /sbin/ldconfig
-%post -n libpskc0 -p /sbin/ldconfig
-%postun -n libpskc0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n liboath0
+%ldconfig_scriptlets -n libpskc0
 
 %files
 %license COPYING.summary
 %doc ChangeLog NEWS README
-%license oathtool/COPYING
 %{_bindir}/oathtool
 %{_mandir}/man1/oathtool.*
 %{_bindir}/pskctool
@@ -171,11 +164,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n pam_oath
 %doc pam_oath/README
-%license pam_oath/COPYING
 %{_pam_moduledir}/pam_oath.so
 
 %files -n liboath0
-%license liboath/COPYING
 %{_libdir}/liboath.so.*
 
 %files xml
@@ -191,7 +182,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n libpskc0
 # there's no COPYING for libpskc, but it's LGPL, like liboath
 %doc libpskc/README
-%license liboath/COPYING
 %{_libdir}/libpskc.so.*
 
 %files -n libpskc-devel

@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue Feb  3 08:23:19 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.14
+  * pam_oath: Support null_usersfile_okay parameter. The argument
+    no_usersfile_okay forces the module to act as if the user is
+    not present in the config, if the config file does not exist.
+    This has security implications only use if you know what you
+    are doing. E.g. if the file is in a mount like home and that
+    fails to be mounted, then this will succeed even if the OTP if
+    configured for that user. Patch by Luna, Jan Zerebecki, and
+    Miika Alikirri; see
+    https://codeberg.org/oath-toolkit/oath-toolkit/pulls/94.
+  * pam_oath README: Suggest KbdInteractiveAuthentication. Instead
+    of deprecated ChallengeResponseAuthentication.
+    see https://codeberg.org/oath-toolkit/oath-toolkit/pulls/112.
+  * Various build fixes including updated gnulib files. Fixes
+    building with glibc 2.43.
+- Update to version 2.6.13
+  * liboath/libpskc: Fix _FORTIFY_SOURCE build problem and allow
+    configuration.
+  * liboath: Fix --with-openssl builds
+  * Git hosting moved from gitlab.com to codeberg.org. The new URL
+    is https://codeberg.org/oath-toolkit/oath-toolkit although the
+    old GitLab project will continue to be used for pipelines.
+    https://gitlab.com/oath-toolkit/oath-toolkit/-/pipelines
+  * Various build fixes including updated gnulib files. Gnulib
+    files are no longer stored in git version control. As a
+    consequence, gnulib is a required build dependency when
+    building from git, see CONTRIBUTING.md.
+- Update to version 2.6.12
+  * Reported by Fabian Vogt (SUSE), and associated with
+    CVE-2024-47191.
+    See https://codeberg.org/oath-toolkit/oath-toolkit/issues/43.
+    Security bug triggered by new feature in pam_oath v2.6.7
+    released on 2021-05-01 with the USER/HOME placeholder strings,
+    https://gitlab.com/oath-toolkit/oath-toolkit/-/merge_requests/12.
+    Quoting a writeup in an alternate patch by Matthias Gerstner
+    (SUSE): With the addition of the possibility to place a
+    usersfile also into a the usersfile= path specification,
+    security issues sneaked in. The PAM process usually runs with
+    root privileges. The file operations in an unprivileged user’s
+    home directory follow symlinks both when reading and creating
+    files, allowing for a potential local root exploit, because of
+    the fchown() performed on the newly created usersfile.
+  * We drop privileges to the user that is being logged into,
+    assuming it has the necessary permissions for the usersfile
+    belonging in their home directory. This restricts the ability
+    for non-root users to affect files beyond their control via
+    liboath.
+  * liboath: Don’t follow symbolic links for usersfile updates.
+    Reported by Fabian Vogt (SUSE), and associated with CVE-2024-47191.
+    See https://codeberg.org/oath-toolkit/oath-toolkit/issues/43.
+    Security bug triggered by new feature in pam_oath v2.6.7
+    released on 2021-05-01 with the USER/HOME placeholder strings, see
+    https://gitlab.com/oath-toolkit/oath-toolkit/-/merge_requests/12.
+    The fix is to open files for writing in exclusive mode (i.e., fail
+    if the file exists including if it is a symbolic link).
+  * oathtool: Fix test suite on 32-bit big-endian platforms.
+  * libpskc: Don’t call deprecated xmlMemoryDump.
+  * Various build fixes including updated gnulib files.
+- Drop not longer needed patches (fixed upstream):
+  * 0001-usersfile-fix-potential-security-issues-in-PAM-modul.patch
+  * 42-null_usersfile_okay.patch
+- Use %ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
 Wed Oct 16 14:24:27 UTC 2024 - Jan Zerebecki <jan.suse@zerebecki.de>
 
 - Update 0001-usersfile-fix-potential-security-issues-in-PAM-modul.patch
