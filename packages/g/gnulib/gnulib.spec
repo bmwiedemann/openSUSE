@@ -1,7 +1,7 @@
 #
 # spec file for package gnulib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global module1 git-merge-changelog
 
 Name:           gnulib
-Version:        git.20240213.c99c8d4918
+Version:        git.20260114.2a288c048e
 Release:        0
 Summary:        GNU Portability Library
 License:        GPL-2.0-or-later AND SUSE-Public-Domain AND GPL-3.0-only AND GPL-3.0-or-later AND LGPL-2.0-only AND LGPL-2.1-or-later AND LGPL-3.0-or-later
@@ -28,13 +28,18 @@ URL:            http://www.gnu.org/software/gnulib
 Source:         %{name}-%{version}.tar.xz
 Source1:        http://erislabs.net/gitweb/?p=gnulib.git;a=blob_plain;hb=HEAD;f=debian/manpages/check-module.1
 Source2:        http://erislabs.net/gitweb/?p=gnulib.git;a=blob_plain;hb=HEAD;f=debian/manpages/gnulib-tool.1
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  bison
 # For building Modules, all gnulib requires must be found, Modules BRs:
 BuildRequires:  gettext-devel
 BuildRequires:  gperf
 BuildRequires:  help2man
 BuildRequires:  java-devel
+BuildRequires:  libacl-devel
+BuildRequires:  libattr-devel
 BuildRequires:  libtool
+BuildRequires:  ncurses-devel
 BuildRequires:  texinfo
 
 %description
@@ -57,6 +62,8 @@ Requires:       patch
 Requires:       texinfo
 Provides:       gnulib
 BuildArch:      noarch
+%define add_optflags(a:f:t:p:w:W:d:g:O:A:C:D:E:H:i:M:n:P:U:u:l:s:X:B:I:L:b:V:m:x:c:S:E:o:v:) \
+%global optflags %{optflags} %{**}
 
 %description devel
 The GNU portability library is a macro system and C declarations and
@@ -71,7 +78,7 @@ License:        GFDL-1.3-only
 Group:          Development/Languages/C and C++
 Requires:       %{name}-devel = %{version}-%{release}
 Requires(post): info
-Requires(preun):info
+Requires(preun): info
 BuildArch:      noarch
 
 %description docs
@@ -81,35 +88,31 @@ It can be used to improve portability and other functionality in your programs.
 
 This package contains documentation for %{name}.
 
-%package -n git-merge-changelog
-Summary:        Git merge driver for ChangeLog files
-License:        GPL-2.0-or-later
-Group:          Development/Languages/C and C++
-
-%description -n git-merge-changelog
-Git Merge Changelog is a git merge driver for changelogs that combines
-parallel additions to the changelog without generating merge conflicts.
-It can be enabled for specific files by setting appropriate git attributes.
-
 %prep
-%setup -q
+%setup -q -n gnulib-stable-202601
+LC_ALL=C.UTF-8
+LANG=C.UTF-8
+export LC_ALL LANG
+%add_optflags -D_DEFAULT_SOURCE
 
 #modules not to be tested by direct import
 toRemove="lib-symbol-visibility havelib .*-obsolete localcharset gettext-h gettext alloca-opt alloca "
+toRemove="$(echo $toRemove | tr ' ' '|')"
 
-list="$(./gnulib-tool --list)"
-for item in $toRemove
-do
-   list="$(echo $list| sed "s:\b$item\b::g")"
-done
+list="$(./gnulib-tool --list | grep -vE "($toRemove)")"
+unset toRemove
+
 #is necessary to avoid some modules to test prep pass
-./gnulib-tool --create-testdir --with-tests --with-obsolete --avoid=alloca --avoid=lib-symbol-visibility --avoid=havelib --dir=build-tests $list
+./gnulib-tool --create-testdir --with-tests --with-obsolete --avoid=alloca --avoid=lib-symbol-visibility --dir=build-tests $list
 
 rm lib/javaversion.class
 # MODULE #1 - git-merge-changelog
 ./gnulib-tool --create-testdir --dir=build-git-merge-changelog git-merge-changelog
 
 %build
+LC_ALL=C.UTF-8
+LANG=C.UTF-8
+export LC_ALL LANG
 # MODULE #1 - git-merge-changelog
 pushd build-git-merge-changelog
 %configure --prefix=%{_prefix}
@@ -128,7 +131,8 @@ make %{?_smp_mflags} MODULES.html
 sed -i -r 's#HREF="(lib|m4|modules)#HREF="%{_datadir}/%{name}/\1#g' MODULES.html
 sed -i "/^[ ]*gnulib_dir=/s#\`[^\`]*\`#%{_datadir}/%{name}#" gnulib-tool
 # This part is done with the target path
-make %{?_smp_mflags} info html
+make %{?_smp_mflags} info
+make %{?_smp_mflags} html
 # Removing unused files
 rm -f */.cvsignore
 rm -f */.gitignore
@@ -137,6 +141,9 @@ rm -f lib/.cppi-disable
 rm -f lib/uniname/gen-uninames.lisp
 
 %check
+LC_ALL=C.UTF-8
+LANG=C.UTF-8
+export LC_ALL LANG
 pushd build-tests
 make %{?_smp_mflags} check
 popd
@@ -166,7 +173,6 @@ cp -p %{SOURCE1} %{SOURCE2} %{buildroot}%{_mandir}/man1
 pushd build-git-merge-changelog
 make DESTDIR=%{buildroot} install %{?_smp_mflags}
 popd
-help2man -N --no-discard-stderr %{buildroot}%{_bindir}/git-merge-changelog | gzip -9c > %{buildroot}%{_mandir}/man1/git-merge-changelog.1.gz
 
 %post docs
 /sbin/install-info %{_infodir}/%{name}.info %{_infodir}/dir || :
@@ -193,11 +199,5 @@ fi
 %{_docdir}/%{name}/
 %exclude %{_docdir}/%{name}/MODULES.html
 %exclude %{_docdir}/%{name}/gnulib.html
-
-%files -n git-merge-changelog
-%defattr(-,root,root)
-%{_bindir}/git-merge-changelog
-%{_mandir}/*/git-merge-changelog.*
-%doc doc/COPYINGv2
 
 %changelog

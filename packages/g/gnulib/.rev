@@ -47,4 +47,24 @@
     <comment></comment>
     <requestid>1231802</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cdece1aabfe8e5f36fbb94a661a409ee</srcmd5>
+    <version>git.20260114.2a288c048e</version>
+    <time>1770310821</time>
+    <user>anag_factory</user>
+    <comment>- Remove nomemset_expicit.patch as not needed anymore 
+
+- Update to gnulib-stable-202601 which is based on 2a288c0 
+  Detailed commit changelog at https://github.com/coreutils/gnulib/commits/stable-202601/
+- Avoid dummys means add libacl, libattr, libncurses development
+- Drop --avoid=havelib as otherwise no autopoint from gettext
+  will be executed which leads to not expanded m4 macros
+- Add patch nomemset_expicit.patch
+  * Work around currently missing memset_explicit in (g)libc
+    (why there is a declaration in string.h and string_fortified.h?)
+- Drop git-merge-changelog as this binary had been removed
+- Split build of info and html as otherwise parallel jobs
+  obstruct each other</comment>
+    <requestid>1331352</requestid>
+  </revision>
 </revisionlist>

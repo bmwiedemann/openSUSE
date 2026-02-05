@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Feb  5 11:21:13 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Remove nomemset_expicit.patch as not needed anymore 
+
+-------------------------------------------------------------------
+Tue Jan 27 08:15:31 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to gnulib-stable-202601 which is based on 2a288c0 
+  Detailed commit changelog at https://github.com/coreutils/gnulib/commits/stable-202601/
+- Avoid dummys means add libacl, libattr, libncurses development
+- Drop --avoid=havelib as otherwise no autopoint from gettext
+  will be executed which leads to not expanded m4 macros
+- Add patch nomemset_expicit.patch
+  * Work around currently missing memset_explicit in (g)libc
+    (why there is a declaration in string.h and string_fortified.h?)
+- Drop git-merge-changelog as this binary had been removed
+- Split build of info and html as otherwise parallel jobs
+  obstruct each other
+
+-------------------------------------------------------------------
 Mon Mar 11 10:21:20 UTC 2024 - opensuse.lietuviu.kalba@gmail.com
 
 - Update to the latest version git.20240213.c99c8d4918 from 
