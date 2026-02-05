@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mashumaro
-Version:        3.18
+Version:        3.19
 Release:        0
 Summary:        Fast and well tested serialization library
 License:        Apache-2.0

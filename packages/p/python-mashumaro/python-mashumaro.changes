@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  4 07:55:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.19:
+  * Added support for recursive types in JSON Schema (#303)
+  * Added "Trusted Publishing" workflow (#304)
+
+-------------------------------------------------------------------
 Mon Feb  2 07:38:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.18:
