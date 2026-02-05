@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb  5 10:40:08 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.36.0
+  * Fix propagating the incompressible bit in the data update
+    path: sometimes this would be lost, leading to spurious
+    "extent with bad/missing reconcile options" errors.
+  * "bcachefs_metadata_version_no_sb_user_data_replicas":
+    an (incompatible) disk format upgrade feature to aid in
+    clearing a bottleneck when the filesystem has a large (50-ish)
+    number of drives.
+  * Fixes for the data update path: it turns out, the data update
+    path was dropping replicas to devices being evacuated (which
+    are considered to have durability of 0) before the extent was
+    sufficiently replicated on other devices. This caused data loss
+    for a few users.
+
+-------------------------------------------------------------------
 Tue Jan 13 19:52:59 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.35.0
