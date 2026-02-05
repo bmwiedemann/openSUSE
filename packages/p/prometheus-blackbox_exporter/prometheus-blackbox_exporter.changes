@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  5 11:49:33 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Build only for SUSE distributions
+
+-------------------------------------------------------------------
 Wed Jan 21 11:59:39 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Replace cpio with tar
