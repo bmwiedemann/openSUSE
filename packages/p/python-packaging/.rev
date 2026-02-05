@@ -375,4 +375,102 @@
 update to 25.0</comment>
     <requestid>1296839</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e56c1ab358d746dd1f6f8cd6b845e65f</srcmd5>
+    <version>26.0</version>
+    <time>1770310627</time>
+    <user>anag_factory</user>
+    <comment>- update to 26.0:
+  * Features:
+    - PEP 751: support pylock (PR #900)
+    - PEP 794: import name metadata (PR #948)
+    - Support for writing metadata to a file (PR #846)
+    - Support __replace__ on Version (PR #1003)
+    - Support positional pattern matching for Version and SpecifierSet (PR #1004)
+  * Behavior adaptations:
+    - PEP 440 handling of prereleases for Specifier.contains,
+      SpecifierSet.contains, and SpecifierSet.filter (PR #897)
+    - Handle PEP 440 edge case in SpecifierSet.filter (PR #942)
+    - Adjust arbitrary equality intersection preservation in SpecifierSet (PR #951)
+    - Return False instead of raising for .contains with invalid version (PR #932)
+    - Support arbitrary equality on arbitrary strings for Specifier
+      and SpecifierSet’s filter and contains method. (PR #954)
+    - Only try to parse as Version on certain marker keys,
+      return False on unequal ordered comparisons (PR #939)
+  * Fixes:
+    - Update _hash when unpickling Tag() (PR #860)
+    - Correct comment and simplify implicit prerelease handling in
+      Specifier.prereleases (PR #896)
+    - Use explicit _GLibCVersion NamedTuple in _manylinux (PR #868)
+    - Detect invalid license expressions containing () (PR #879)
+    - Correct regex for metadata 'name' format (PR #925)
+    - Improve the message around expecting a semicolon (PR #833)
+    - Support nested parens in license expressions (PR #931)
+    - Add space before at symbol in Requirements string (PR #953)
+    - A root logger use found, use a packaging logger instead (PR #965)
+    - Better support for subclassing Marker and Requirement (PR #1022)
+    - Normalize all extras, not just if it comes first (PR #1024)
+    - Don’t produce a broken repr if Marker fails to construct (PR #1033)
+  * Performance:
+    - Avoid recompiling regexes in the tokenizer for a 3x speedup (PR #1019)
+    - Improve performance in _manylinux.py (PR #869)
+    - Minor cleanups to Version (PR #913)
+    - Skip redundant creation of Version’s in specifier comparison (PR #986)
+    - Cache the Specifier’s Version (PR #985)
+    - Make Version a little faster (PR #987)
+    - Minor Version regex cleanup (PR #990)
+    - Faster regex on Python 3.11.5+ for Version (PR #988, PR #1055)
+    - Lazily calculate _key in Version (PR #989, PR #1048)
+    - Faster canonicalize_version (PR #993)
+    - Use re.fullmatch in a couple more places (PR #992, PR #1029)
+    - Use map instead of generator (PR #996)
+    - Deprecate ._version (_Version, a NamedTuple) (PR #995, PR #1062)
+    - Avoid duplicate Version creation in canonicalize_version (PR #994)
+    - Add __slots__ to core classes (PR #1001, PR #1002, PR #1032)
+    - Use Version.__replace__ in specifier comparison (PR #999)
+    - Use _get_spec_version in more places in Specifier (PR #1005)
+    - Pull set construction out of function (PR #1012)
+    - Letter normalization dict for prereleases and the like (PR #1014)
+    - Use str.partition in _parse_project_urls (PR #1013)
+    - Avoid normalizing extras again when comparing (PR #1028)
+    - Speed up Version.__str__ by about 10% (PR #997)
+    - Much faster canonicalize_name by avoiding a regex
+      (PR #1030, PR #1047, PR #1064)
+    - Faster zero stripping (PR #1058)
+  * Type annotations:
+    - Fix a type annotation (PR #907)
+    - Fix type hint of function used with contextlib.contextmanager (PR #1046)
+    - Fix tags return type in parse_wheel_filename docs (PR #973)
+    - Add type hint for _version in .version.Version (PR #927)
+    - Changed static type annotations in prereleases setter method
+      in specifier.py (PR #930)
+    - Statically type our test suite (PR #982)
+  * Internal:
+    - Test and declare support for Python 3.14 (PR #901)
+    - Change our license metadata to use an SPDX license expression
+      (PR #881, PR #924)
+    - Expand the Ruff checks run on our codebase (PR #835, PR #957,
+      PR #959, PR #963, PR #956, PR #961, PR #964, PR #958, PR #960,
+      PR #968, PR #967, PR #966, PR #969, PR #980, PR #979, PR #962,
+      PR #984, PR #972)
+    - Add spell checking (PR #904, PR #910, PR #1015)
+    - Improve links back to source in the documentation (PR #991)
+    - Add case insensitivity tests for arbitrary equality (PR #975)
+    - Fix incorrectly implicitly concatenated string in specifiers test (PR #946)
+    - Simpler else instead of assert in a check (PR #1027, PR #1031)
+    - Synchronize documentation and code for markers (PR #1008)
+    - Use the GitHub Actions slim runner for the all pass check (PR #1021)
+    - Use actionlint to check CI workflows (PR #1052)
+    - Use Trusted Publishing (PR #893, PR #1043, PR #1045, PR #1051)
+    - Use zizmor to check CI (PR #1035)
+    - Test on first public release of CPython 3.11 and newer (PR #1056)
+  Since the final release candidate: Faster canonicalize_name,
+  especially on Python 3.12 and 3.13, where performance regressed
+  previously (PR #1064), and reintroduce (deprecated) support for
+  Version._.version (PR #1062).
+- Move %sle15_python_module_pythons macro just above the Name, outside
+  of all the if-else logic
+</comment>
+    <requestid>1330019</requestid>
+  </revision>
 </revisionlist>

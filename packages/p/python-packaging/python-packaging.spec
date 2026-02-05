@@ -1,7 +1,7 @@
 #
 # spec file for package python-packaging
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,8 +42,9 @@ ExclusiveArch:  do-not-build
 %else
 %define pprefix python
 %endif
-%{?sle15_python_module_pythons}
+
 %endif
+
 %if "%{flavor}" == "test"
 %define pprefix python
 %define psuffix -test
@@ -52,8 +53,9 @@ ExclusiveArch:  do-not-build
 %bcond_with test
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           %{pprefix}-packaging%{?psuffix}
-Version:        25.0
+Version:        26.0
 Release:        0
 Summary:        Core utilities for Python packages
 License:        Apache-2.0 AND BSD-2-Clause
@@ -71,6 +73,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module packaging = %{version}}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pytest >= 6.2}
+BuildRequires:  %{python_module tomli-w}
 %endif
 %if "%{flavor}" == "primary"
 # See boo#1186870, we can't provide ourselves to pythondistdeps.py
