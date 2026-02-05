@@ -532,4 +532,25 @@ versions of libva(2)</comment>
     <comment></comment>
     <requestid>1307918</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>19c5b7a222a188e2a69f0ac8cb663c54</srcmd5>
+    <version>26.1.1</version>
+    <time>1770310647</time>
+    <user>anag_factory</user>
+    <comment>- back to old tarball name
+
+- Update to version 26.1.1
+  + changes since 25.3.4
+    - Revert &quot;[VP] re-checkin driver implement for gmm mapgpuva wa&quot;
+    - update feature table to clarify VVC support on PTL
+    - [Media Common] Revert/re-implement 0c545e1 to use VE copy as
+      default ...
+    - Fix pragma errors causing -Wpragma-pack-suspicious-include
+    - [Encode] fix saliency memory footprint issue
+    - [Media Common] disable pat index for MTL/ARL on i915
+    - [Encode] PTL HuC kernel release V20251210
+    - [Encode] DDI Caps Open Source for VP9/JPEG
+    - [Decode] Fix Exclude AVC Build Issue</comment>
+    <requestid>1330959</requestid>
+  </revision>
 </revisionlist>

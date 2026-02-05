@@ -1,7 +1,7 @@
 #
 # spec file for package intel-media-driver
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define so_ver	7
 
 Name:           intel-media-driver
-Version:        25.3.4
+Version:        26.1.1
 Release:        0
 Summary:        Intel Media Driver for VAAPI
 License:        BSD-3-Clause AND MIT

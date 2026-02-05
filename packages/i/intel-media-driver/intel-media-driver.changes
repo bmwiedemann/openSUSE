@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Feb  4 13:34:51 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- back to old tarball name
+
+-------------------------------------------------------------------
+Wed Feb  4 12:41:57 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 26.1.1
+  + changes since 25.3.4
+    - Revert "[VP] re-checkin driver implement for gmm mapgpuva wa"
+    - update feature table to clarify VVC support on PTL
+    - [Media Common] Revert/re-implement 0c545e1 to use VE copy as
+      default ...
+    - Fix pragma errors causing -Wpragma-pack-suspicious-include
+    - [Encode] fix saliency memory footprint issue
+    - [Media Common] disable pat index for MTL/ARL on i915
+    - [Encode] PTL HuC kernel release V20251210
+    - [Encode] DDI Caps Open Source for VP9/JPEG
+    - [Decode] Fix Exclude AVC Build Issue
+
+-------------------------------------------------------------------
 Fri Sep 26 05:46:56 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 25.3.4:
