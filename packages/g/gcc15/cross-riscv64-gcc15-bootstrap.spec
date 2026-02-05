@@ -1,7 +1,7 @@
 #
 # spec file for package cross-riscv64-gcc15-bootstrap
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -103,7 +103,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        15.2.1+git10392
+Version:        15.2.1+git10776
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -124,7 +124,8 @@ Patch15:        gcc7-avoid-fixinc-error.diff
 Patch16:        gcc9-reproducible-builds.patch
 Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch19:        gcc11-gdwarf-4-default.patch
-Patch20:        gcc15-pr120424.patch
+Patch20:        gcc15-bsc1253043.patch
+Patch21:        gcc15-pr120424.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -330,8 +331,9 @@ ln -s newlib-4.5.0.20241231/newlib .
 # In SLE15 and earlier default to dwarf4, not dwarf5
 %if %{suse_version} < 1550
 %patch -p1 -P 19
-%endif
 %patch -p1 -P 20
+%endif
+%patch -p1 -P 21
 %patch -P 51
 %patch -p1 -P 60 -P 61
 

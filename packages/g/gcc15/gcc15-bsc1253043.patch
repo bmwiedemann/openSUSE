@@ -1,0 +1,65 @@
+From dc756a1289f58737166feb6fad9837208f5a6dfa Mon Sep 17 00:00:00 2001
+From: Richard Biener <rguenther@suse.de>
+Date: Fri, 7 Nov 2025 08:48:31 +0100
+Subject: [PATCH] bsc#1253043 - use _dl_find_object based on runtime detection
+To: gcc-patches@gcc.gnu.org
+
+The following allows libgcc to use newer glibc _dl_find_object even
+when at compile-time the facility was not available.
+
+libgcc/
+	* unwind-dw2-fde-dip.c (_Unwind_Find_FDE): When _dl_find_object
+	is not available declare it weak and perform a runtime check
+	on its presence.
+---
+ libgcc/unwind-dw2-fde-dip.c | 34 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 34 insertions(+)
+
+diff --git a/libgcc/unwind-dw2-fde-dip.c b/libgcc/unwind-dw2-fde-dip.c
+index 5c19838e0a3..4aa3ad9823b 100644
+--- a/libgcc/unwind-dw2-fde-dip.c
++++ b/libgcc/unwind-dw2-fde-dip.c
+@@ -542,6 +542,40 @@ _Unwind_Find_FDE (void *pc, struct dwarf_eh_bases *bases)
+   if (ret != NULL)
+     return ret;
+ 
++/* When the glibc we build against does not have dl_find_object tentatively
++   declare the relevant bits of the structure here and use a weak declaration
++   so we can perform a runtime check on its presence.  */
++#if !defined(DLFO_STRUCT_HAS_EH_DBASE) && defined(__GLIBC__)
++
++#ifdef __i386__
++# define DLFO_STRUCT_HAS_EH_DBASE 1
++#else
++# define DLFO_STRUCT_HAS_EH_DBASE 0
++#endif
++
++/* The following is dl_find_object as in it's maximum size configuration.  */
++struct dl_find_object
++{
++  __extension__ unsigned long long int dlfo_flags;
++  void *dlfo_map_start;         /* Beginning of mapping containing address.  */
++  void *dlfo_map_end;           /* End of mapping.  */
++  struct link_map *dlfo_link_map;
++  void *dlfo_eh_frame;          /* Exception handling data of the object.  */
++# if DLFO_STRUCT_HAS_EH_DBASE
++  void *dlfo_eh_dbase;          /* Base address for DW_EH_PE_datarel.  */
++#  if __WORDSIZE == 32
++  unsigned int __dlfo_eh_dbase_pad;
++#  endif
++# endif
++  /* PAD to an upper bound size.  */
++  __extension__ unsigned long long int __dflo_reserved[8];
++};
++
++  extern int _dl_find_object (void *,
++			      struct dl_find_object *) __attribute__((weak));
++
++  if (_dl_find_object)
++#endif
+   /* Use DLFO_STRUCT_HAS_EH_DBASE as a proxy for the existence of a glibc-style
+      _dl_find_object function.  */
+ #if defined(DLFO_STRUCT_HAS_EH_DBASE)
+-- 
+2.51.0
+

@@ -209,4 +209,16 @@ since we bumped libgo SONAME as well for 15</comment>
   of libgo on arm.  [bsc#1252306]</comment>
     <requestid>1312706</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c6220e6007efe64a98d4ce6d6f88d0c0</srcmd5>
+    <version>15.2.1+git10776</version>
+    <time>1770310586</time>
+    <user>anag_factory</user>
+    <comment>- Update to GCC 15 branch head, 15.2.1+git10776
+  * includes fix for bogus expression simplification [bsc#1257463]
+
+- Add gcc15-bsc1253043.patch to enable the use of _dl_find_object
+  even when not available at build time.  [bsc#1253043]</comment>
+    <requestid>1330698</requestid>
+  </revision>
 </revisionlist>

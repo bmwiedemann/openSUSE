@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb  2 16:13:07 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC 15 branch head, 15.2.1+git10776
+  * includes fix for bogus expression simplification [bsc#1257463]
+
+-------------------------------------------------------------------
+Fri Nov  7 07:52:00 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Add gcc15-bsc1253043.patch to enable the use of _dl_find_object
+  even when not available at build time.  [bsc#1253043] 
+
+-------------------------------------------------------------------
 Mon Oct 20 09:03:52 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Add gcc15-pr120424.patch to backport fix that cures a miscompile
