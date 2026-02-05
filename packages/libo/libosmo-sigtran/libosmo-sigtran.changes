@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Feb  5 13:15:23 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2.1
+  * Move osmo_ss7_route_name() to osmo_ss7_route.c
+  * vty: Add cmd to look up route
+  * vty: show cs7 route: display qos-class configured value
+  * vty: Allow filtering by DPC in show cs7 instance route
+  * vty: Improve route status display in show cs7 instance route
+  * Make sure to NOTIFY current state to peer after ASP UP ACK / REG RESP
+  * AS loadsharing: Initial routing implementation based on extended-SLS
+  * AS loadsharing: Implement AS loadshare, skip unavailable AS/lset when choosing
+  * sccp: Apply SLS on locally-originated transmitted Connection-Oriented messages
+  * vty: Add cmd 'show cs7 instance <0-15> as name AS_NAME'
+  * ASP loadsharing: vty: Add cmd 'show cs7 instance <0-15> as binding-table name AS_NAME'
+  * vty: Introduce AS node cmd 'binding-table reset'
+  * Implement ASP adm state shutdown
+  * asp: Introduce VTY configurations 'timer xua (ack|beat)'
+  * ipa: Implement ASP Hearbeat procedure
+  * m3ua/sua: Implement ASP Hearbeat procedure
+  * Introduce initial route status support
+  * Indicate PC (un)availability from address-book when AS goes up/down
+  * Submit SCRC Routing Failure indications asynchronously
+  * vty: Introduce cmd 'cs7 instance <0-15> asp NAME audit point-code POINT_CODE'
+  * build-system: depend on libosmo-asn1-tcap
+  * mtp: Support MTP-TRANSFER.req/ind of raw IPA messages
+  * mtp3: Implement RTPC transfer prohibited to concerned SP or STP
+  * Implement ITU Q.704 timer T8
+  * Add TCAP based loadsharing/routing
+  * Add rate counters for loadshare-tcap
+  * Add VTY command to list TCAP ranges for an AS
+
+-------------------------------------------------------------------
 Fri May 30 09:31:21 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.1.1

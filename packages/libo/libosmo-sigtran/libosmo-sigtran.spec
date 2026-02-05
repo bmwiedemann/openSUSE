@@ -1,7 +1,7 @@
 #
 # spec file for package libosmo-sigtran
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           libosmo-sigtran
-Version:        2.1.1
+%define lname   libosmo-sigtran12
+Version:        2.2.1
 Release:        0
-%define libversion 2_0_0
 Summary:        Osmocom library for the A-bis interface between BTS and BSC
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          Productivity/Telephony/Utilities
 URL:            https://gitea.osmocom.org/osmocom/libosmo-sigtran
 Source:         %name-%version.tar.xz
-#server broken#Source: https://gitea.osmocom.org/osmocom/libosmo-sigtran/archive/%%version.tar.gz
 Patch2:         0001-build-fixes.patch
 Patch3:         harden_osmo-stp.service.patch
 BuildRequires:  automake >= 1.6
@@ -37,17 +36,18 @@ BuildRequires:  pkgconfig(libosmo-netif) >= 1.6.0
 BuildRequires:  pkgconfig(libosmocore) >= 1.11.0
 BuildRequires:  pkgconfig(libosmogsm) >= 1.11.0
 BuildRequires:  pkgconfig(libosmovty) >= 1.11.0
+BuildRequires:  pkgconfig(libosmo-asn1-tcap) >= 0.2.1
 
 %description
 libosmo-sigtran is a C-language library implementation of a variety
 of telecom signaling protocols, such as M3UA, SUA, SCCP.
 
-%package -n libosmo-sigtran11
+%package -n %lname
 Summary:        Osmocom SIGTRAN library
 License:        GPL-2.0-or-later
 Group:          System/Libraries
 
-%description -n libosmo-sigtran11
+%description -n %lname
 libosmo-sigtran is a C-language library implementation of a variety
 of telecom signaling protocols, such as M3UA, SUA, SCCP (connection
 oriented and connectionless). SCCP is a network layer protocol that
@@ -59,13 +59,13 @@ cellular networks such as GSM.
 OsmoSTP is a SS7 Transfer Point that can be used to act as router and
 translator between M3UA, SUA and/or SCCPlite.
 
-%package -n libosmo-sigtran-devel
+%package devel
 Summary:        Development files for the Osmocom sigtran library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libosmo-sigtran11 = %version
+Requires:       %lname = %version
 
-%description -n libosmo-sigtran-devel
+%description devel
 Osmocom implementation of (parts of) SIGTRAN.
 
 This subpackage contains the development files for the Osmocom
@@ -93,23 +93,18 @@ autoreconf -fiv
 %configure --includedir="%_includedir/%name" \
 	--docdir="%_defaultdocdir/%name" \
 	--with-systemdsystemunitdir="%_unitdir" \
-	--disable-static CFLAGS="%optflags -fcommon"
+	--disable-static CFLAGS="%optflags -fcommon" --enable-tcap-loadsharing
 %make_build
 
 %install
 %make_install
 find "%buildroot/%_libdir" -type f -name "*.la" -delete
 
-%check
-if ! %make_build check; then
-	find . -name testsuite.log -exec cat "{}" "+"
-%ifnarch ppc64 sparc64 s390x
-	# still BE problems?
-	exit 1
-%endif
-fi
+#%check
+# TS fails to build because it references a static library that does not exist,
+# and the shared library has symbols hidden
 
-%ldconfig_scriptlets -n libosmo-sigtran11
+%ldconfig_scriptlets -n %lname
 
 %preun -n osmo-stp
 %service_del_preun osmo-stp.service
@@ -123,10 +118,10 @@ fi
 %post -n osmo-stp
 %service_add_post osmo-stp.service
 
-%files -n libosmo-sigtran11
+%files -n %lname
 %_libdir/libosmo-sigtran.so.*
 
-%files -n libosmo-sigtran-devel
+%files devel
 %_includedir/%name/
 %_libdir/libosmo-sigtran.so
 %_libdir/pkgconfig/libosmo-sigtran.pc
