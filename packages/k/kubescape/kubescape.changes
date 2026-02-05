@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Feb 05 06:14:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.0:
+  * Use TagName directly in .krew.yaml templates
+  * Make version smoke test accept bytes and v-prefix
+  * force overridden ldflags in goreleaser
+  * remove invalid build flag
+  * fix version handling and injection
+  * feat: optimize CPU and memory usage for resource-intensive
+    scans
+  * Add krew plugin manifest
+  * build(deps): Bump github.com/theupdateframework/go-tuf/v2
+  * Sort CVEs by severity then ID
+  * feat: add image column to vulnerability scanning table output
+  * update policy.json testdata
+  * add verbose option to scan-images
+  * fix all linter errors
+  * run system test from private repo
+  * run system test from private repo
+  * Replace host sensor with node agent sensing (#1916)
+  * Fix broken README anchors
+  * build(deps): Bump github.com/sigstore/rekor from 1.4.3 to 1.5.0
+  * build(deps): Bump github.com/theupdateframework/go-tuf/v2
+  * Final verification - all changes complete
+  * Fix indentation in test file
+  * Add test for CheckShortTerminalWidth with non-string values
+  * Fix unsafe interface to string type assertions to prevent panic
+  * Initial plan
+  * build(deps): Bump github.com/sigstore/fulcio from 1.8.4 to
+    1.8.5
+  * Complete fix for workload scan missing controls
+  * Fix workload scan to include allcontrols framework
+  * Initial plan
+  * Update golangci-lint action to version 9
+  * Update build number retrieval and permissions in workflow
+  * Fix workflow YAML formatting and permissions
+  * build(deps): Bump github.com/sigstore/cosign/v3
+  * update test lists (#1919)
+  * ci: update scorecard action version
+  * Add SkipPersistence flag to MetricsQueryParams in metrics
+    endpoint
+  * Update README to include GoReleaser installation and usage
+    instructions
+  * feat: add labels-to-copy flag to copy workload labels to
+    reports
+  * fix: enable kustomize overlays to load base configurations
+  * Fix typos in documentation
+
+-------------------------------------------------------------------
 Fri Jan 23 06:20:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.47:
