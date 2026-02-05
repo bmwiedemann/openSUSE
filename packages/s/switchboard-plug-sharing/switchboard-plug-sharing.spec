@@ -1,7 +1,7 @@
 #
 # spec file for package switchboard-plug-sharing
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,11 @@
 
 %define         appid io.elementary.settings.sharing
 Name:           switchboard-plug-sharing
-Version:        8.0.2
+Version:        8.0.3
 Release:        0
 Summary:        Configure the sharing of system services
 License:        GPL-3.0-or-later
-Group:          System/GUI/Other
-URL:            https://github.com/elementary/switchboard-plug-sharing
+URL:            https://github.com/elementary/settings-sharing
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  meson
@@ -43,7 +42,7 @@ Switchboard plug for controlling media sharing.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -n settings-sharing-%{version}
 
 %build
 %meson
@@ -52,7 +51,7 @@ Switchboard plug for controlling media sharing.
 %install
 %meson_install
 %find_lang %{appid}
-%fdupes %{buildroot}/%{_datadir}
+%fdupes %{buildroot}
 
 %files
 %license COPYING

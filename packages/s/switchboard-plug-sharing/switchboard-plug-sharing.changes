@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  4 22:21:39 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.0.3:
+  * BluetoothPage: use daemon for enabled state
+  * Update translation template
+  * Updated translations
+- Update to new upstream URL
+
+-------------------------------------------------------------------
 Sat Aug 16 19:30:52 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 8.0.2:

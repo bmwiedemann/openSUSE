@@ -23,4 +23,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1301210</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ae69471e40093a29f3fc6b3d227b4958</srcmd5>
+    <version>8.0.3</version>
+    <time>1770310680</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 8.0.3:
+  * BluetoothPage: use daemon for enabled state
+  * Update translation template
+  * Updated translations
+- Update to new upstream URL (forwarded request 1331071 from rrahl0)</comment>
+    <requestid>1331072</requestid>
+  </revision>
 </revisionlist>
