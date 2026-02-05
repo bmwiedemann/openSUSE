@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Thu Feb  5 09:56:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.27.0:
+  * remove fireAgent and beforeAgent hook
+  * Remove unused modelHooks and toolHooks
+  * feat(cli): sanitize ANSI escape sequences in non-interactive
+    output
+  * Update Attempt text to Retry when showing the retry happening
+    to the …
+  * feat(cli): implement event-driven tool execution scheduler
+  * chore(release): bump version to
+  * Remove other rewind reference in docs
+  * feat(skills): add code-reviewer skill
+  * feat(plan): Extend `Shift+Tab` Mode Cycling to include `Plan`
+    Mode
+  * feat(plan): refactor TestRig and eval helper to support
+    configurable approval modes
+  * feat(workflows): support recursive workstream labeling and
+    new IDs
+  * Run evals for all models.
+  * fix(github): improve label-workstream-rollup efficiency with
+  * Docs: Update changelogs for v.0.25.0 and v0.26.0-preview.0
+    releases.
+  * Migrate beforeTool and afterTool hooks to hookSystem
+  * fix(github): improve label-workstream-rollup efficiency and
+    fix bugs
+  * feat(cli): improve skill enablement/disablement verbiage
+  * fix(admin): Ensure CLI commands run in non-interactive mode
+  * feat(core): support dynamic variable substitution in system
+    prompt override
+  * fix(core,cli): enable recursive directory access for
+  * Docs: Marking for experimental features
+  * drain stdin on exit
+  * refactor(cli): decouple UI from live tool execution via
+    ToolActionsContext
+  * fix(core): update token count and telemetry on /chat resume
+    history load
+  * fix: /policy to display policies according to mode
+  * fix(core): simplify replace tool error message
+  * feat(cli): consolidate shell inactivity and redirection
+    monitoring
+  * fix(scheduler): prevent stale tool re-publication and fix
+    stuck UI state
+  * feat(config): default enableEventDrivenScheduler to true
+  * feat(hooks): enable hooks system by default
+  * feat(core): Enable AgentRegistry to track all discovered
+    subagents
+  * feat(core): Have subagents use a JSON schema type for input.
+  * feat: replace large text pastes with [Pasted Text: X lines]
+    placeholder
+  * security(hooks): Wrap hook-injected context in distinct XML
+    tags
+  * New skill: docs-writer
+  * fix(core): Resolve AbortSignal MaxListenersExceededWarning
+  * Disable tips after 10 runs
+  * Fix so rewind starts at the bottom and loadHistory refreshes
+    static content.
+  * feat(core): Remove legacy settings.
+  * feat(plan): add 'communicate' tool kind
+  * feat(routing): A/B Test Numerical Complexity Scoring for
+    Gemini 3
+  * feat(plan): update UI Theme for Plan Mode
+  * fix(ui): stabilize rendering during terminal resize in
+    alternate buffer
+  * feat(cli): add /agents config command and improve agent
+    discovery
+  * feat(mcp): add enable/disable commands for MCP servers
+  * fix(cli)!: Default to interactive mode for positional
+    arguments
+  * Fix issue #17080
+  * feat(core): Refresh agents after loading an extension.
+  * fix(cli): include source in policy rule display
+  * fix: remove obsolete CloudCode PerDay quota and 120s terminal
+    threshold
+  * Refactor subagent delegation to be one tool per agent
+  * fix(core): Include MCP server name in OAuth message
+  * Fix pr-triage.sh script to update pull requests with tags
+    "help wanted" and "maintainer only"
+  * feat(plan): implement simple workflow for planning in main
+    agent
+  * fix: exit with non-zero code when esbuild is missing
+  * fix: ensure @-command UI message ordering and test
+  * fix(core): add alternative command names for Antigravity
+    editor detec…
+  * Refactor: Migrate CLI `appEvents` to Core `coreEvents`
+  * fix(core): await MCP initialization in non-interactive mode
+
+-------------------------------------------------------------------
 Wed Jan 28 12:08:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.26.0:

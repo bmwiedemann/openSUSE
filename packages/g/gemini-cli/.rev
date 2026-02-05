@@ -217,4 +217,41 @@
   * Remove sequence binding</comment>
     <requestid>1329664</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a8326ebdb6ee954f46c023bafe6e980a</srcmd5>
+    <version>0.27.0</version>
+    <time>1770310845</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.27.0:
+  * remove fireAgent and beforeAgent hook
+  * Remove unused modelHooks and toolHooks
+  * feat(cli): sanitize ANSI escape sequences in non-interactive
+    output
+  * Update Attempt text to Retry when showing the retry happening
+    to the …
+  * feat(cli): implement event-driven tool execution scheduler
+  * chore(release): bump version to
+  * Remove other rewind reference in docs
+  * feat(skills): add code-reviewer skill
+  * feat(plan): Extend `Shift+Tab` Mode Cycling to include `Plan`
+    Mode
+  * feat(plan): refactor TestRig and eval helper to support
+    configurable approval modes
+  * feat(workflows): support recursive workstream labeling and
+    new IDs
+  * Run evals for all models.
+  * fix(github): improve label-workstream-rollup efficiency with
+  * Docs: Update changelogs for v.0.25.0 and v0.26.0-preview.0
+    releases.
+  * Migrate beforeTool and afterTool hooks to hookSystem
+  * fix(github): improve label-workstream-rollup efficiency and
+    fix bugs
+  * feat(cli): improve skill enablement/disablement verbiage
+  * fix(admin): Ensure CLI commands run in non-interactive mode
+  * feat(core): support dynamic variable substitution in system
+    prompt override
+  * fix(core,cli): enable recursive directory access for
+  * Docs: Marking for experimental features</comment>
+    <requestid>1331149</requestid>
+  </revision>
 </revisionlist>
