@@ -1,7 +1,7 @@
 #
 # spec file for package libfsfat
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 Name:           libfsfat
 %define lname	libfsfat1
-Version:        20240501
+Version:        20260204
 Release:        0
 Summary:        Library and tools for accessing the FAT filesystem
 License:        LGPL-3.0-or-later
@@ -40,7 +40,7 @@ BuildRequires:  pkgconfig(libcerror) >= 20240413
 BuildRequires:  pkgconfig(libcfile) >= 20240414
 BuildRequires:  pkgconfig(libclocale) >= 20240414
 BuildRequires:  pkgconfig(libcnotify) >= 20240414
-BuildRequires:  pkgconfig(libcpath) >= 20240414
+BuildRequires:  pkgconfig(libcpath) >= 20251224
 BuildRequires:  pkgconfig(libcsplit) >= 20240414
 BuildRequires:  pkgconfig(libcthreads) >= 20240413
 BuildRequires:  pkgconfig(libfcache) >= 20240414
