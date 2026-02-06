@@ -1,7 +1,7 @@
 #
 # spec file for package python-sortinghat
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,70 +17,59 @@
 
 
 Name:           python-sortinghat
-Version:        1.7.1
+Version:        1.13.0
 Release:        0
 Summary:        A tool to manage identities
 License:        GPL-3.0-only
-URL:            https://github.com/grimoirelab/sortinghat
+URL:            https://github.com/chaoss/grimoirelab-sortinghat
 Source:         https://github.com/chaoss/grimoirelab-sortinghat/archive/refs/tags/%{version}.tar.gz#/sortinghat-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Allow overridding the database config
 Patch0:         allow-database-config-overrides.patch
-# PATCH-FIX-OPENSUSE Support django-graphql-jwt 0.4.0
-Patch1:         support-new-django-graphql-jwt.patch
 # PATCH-FIX-OPENSUSE Do not use testcontainers module
-Patch2:         no-testcontainers.patch
-# PATCH-FIX-OPENSUSE Support click 8.2+
-Patch3:         support-click-8.2.patch
-BuildRequires:  %{python_module base >= 3.9}
+Patch1:         no-testcontainers.patch
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 4.2
-Requires:       python-Jinja2 >= 3.1
+Requires:       python-Django >= 5.2
+Requires:       python-Jinja2 >= 3.1.1
 Requires:       python-PyJWT >= 2.4
-Requires:       python-PyMySQL >= 0.7.0
 Requires:       python-PyYAML >= 3.12
 Requires:       python-SQLAlchemy >= 1.2
-Requires:       python-click >= 7.1
+Requires:       python-click >= 8.2
 Requires:       python-django-cors-headers >= 4.6
-Requires:       python-django-graphql-jwt >= 0.3
+Requires:       python-django-graphql-jwt >= 0.4
 Requires:       python-django-rq >= 2.3
+Requires:       python-django-storages >= 1.13
 Requires:       python-django-treebeard >= 4.5
-Requires:       python-graphene >= 2.1.5
-Requires:       python-graphene-django
+Requires:       python-graphene-django >= 3.2.3
 Requires:       python-grimoirelab-toolkit >= 0.3
-Requires:       python-importlib-resources
 Requires:       python-mysqlclient >= 2.0
-Requires:       python-numpy
 Requires:       python-pandas >= 2.2
 Requires:       python-python-dateutil >= 2.8.0
 Requires:       python-requests >= 2.7
 Requires:       python-rq
-Requires:       python-setuptools
 Requires:       python-sgqlc >= 16.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Jinja2 >= 3.1}
-BuildRequires:  %{python_module Django >= 4.2}
-BuildRequires:  %{python_module PyMySQL >= 0.7.0}
+BuildRequires:  %{python_module Jinja2 >= 3.1.1}
+BuildRequires:  %{python_module Django >= 5.2}
 BuildRequires:  %{python_module PyYAML >= 3.12}
 BuildRequires:  %{python_module SQLAlchemy >= 1.2}
-BuildRequires:  %{python_module click >= 7.1}
+BuildRequires:  %{python_module click >= 8.2}
 BuildRequires:  %{python_module django-cors-headers >= 4.6}
-BuildRequires:  %{python_module django-graphql-jwt >= 0.3}
+BuildRequires:  %{python_module django-graphql-jwt >= 0.4}
 BuildRequires:  %{python_module django-rq >= 2.3}
+BuildRequires:  %{python_module django-storages >= 1.13}
 BuildRequires:  %{python_module django-treebeard >= 4.5}
 BuildRequires:  %{python_module fakeredis}
-BuildRequires:  %{python_module graphene >= 2.1.5}
 BuildRequires:  %{python_module grimoirelab-toolkit >= 0.3}
 BuildRequires:  %{python_module httpretty >= 0.9.5}
 BuildRequires:  %{python_module importlib-resources}
 BuildRequires:  %{python_module mysqlclient >= 2.0}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas >= 2.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.8.0}
@@ -146,8 +135,6 @@ run_dir=/tmp/mysql
 export TEST_SORTINGHAT_DB_PORT=$port
 export TEST_SORTINGHAT_DB_USER=$user
 export TEST_SORTINGHAT_DB_PASSWORD=$pass
-# Broken tests
-rm tests/test_jobs.py
 %python_exec manage.py test --settings=config.settings.config_testing
 %python_exec manage.py test --settings=config.settings.config_testing_tenant
 #

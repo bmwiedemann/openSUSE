@@ -1,13 +1,13 @@
-Index: grimoirelab-sortinghat-1.2.1/config/settings/config_testing.py
+Index: grimoirelab-sortinghat-1.9.2/config/settings/config_testing.py
 ===================================================================
---- grimoirelab-sortinghat-1.2.1.orig/config/settings/config_testing.py
-+++ grimoirelab-sortinghat-1.2.1/config/settings/config_testing.py
+--- grimoirelab-sortinghat-1.9.2.orig/config/settings/config_testing.py
++++ grimoirelab-sortinghat-1.9.2/config/settings/config_testing.py
 @@ -1,3 +1,4 @@
 +import os
  import sys
  import logging
  
-@@ -38,8 +39,8 @@ SQL_MODE = [
+@@ -40,8 +41,8 @@ SQL_MODE = [
  DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.mysql',
@@ -18,7 +18,7 @@ Index: grimoirelab-sortinghat-1.2.1/config/settings/config_testing.py
          'NAME': 'sortinghat_db',
          'OPTIONS': {
              'charset': 'utf8mb4',
-@@ -49,9 +50,10 @@ DATABASES = {
+@@ -51,9 +52,10 @@ DATABASES = {
              'NAME': 'testhat',
              'CHARSET': 'utf8mb4',
              'COLLATION': 'utf8mb4_unicode_520_ci',
@@ -30,10 +30,10 @@ Index: grimoirelab-sortinghat-1.2.1/config/settings/config_testing.py
      }
  }
  
-Index: grimoirelab-sortinghat-1.2.1/config/settings/config_testing_tenant.py
+Index: grimoirelab-sortinghat-1.9.2/config/settings/config_testing_tenant.py
 ===================================================================
---- grimoirelab-sortinghat-1.2.1.orig/config/settings/config_testing_tenant.py
-+++ grimoirelab-sortinghat-1.2.1/config/settings/config_testing_tenant.py
+--- grimoirelab-sortinghat-1.9.2.orig/config/settings/config_testing_tenant.py
++++ grimoirelab-sortinghat-1.9.2/config/settings/config_testing_tenant.py
 @@ -15,8 +15,8 @@ TENANTS_DEDICATED_QUEUES = [t["name"] fo
  DATABASES.update({
      tenant: {

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Feb  5 05:12:51 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.13.0:
+  * New features:
+    + Merge identities when adding a LinkedIn profile
+    + Redirect to the original URL after user inactivity
+    + Recommendations based on GitHub-generated email addresses
+    + Increased minimum version for Python to 3.10
+    + Post processing of imported individuals
+    + History of profile changes
+    + Allow pasting LinkedIn URL
+  * Bug fixes:
+    + Missing migrations from model changes
+    + Task update issues due to type mismatch
+    + Remove multiple LinkedIn identities
+    + Table showing jobs failing for offset-naive datetimes
+    + Automatic affiliation fixed and reduced results
+    + Unavailable Individuals in Recommendations
+    + Django static files configuration
+    + Automatic affiliation fixed and reduced results
+    + Merge organizations aliases
+    + Press Enter key to log in
+    + Fixed unresponsive affiliation calendar
+    + Affiliation dates different from input
+- Update URL to correct location
+- Refreshed patch allow-database-config-overrides.patch
+- Drop patches, no longer required:
+  * support-click-8.2.patch
+  * support-new-django-graphql-jwt.patch
+
+-------------------------------------------------------------------
 Thu May 15 02:33:32 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.7.1:
