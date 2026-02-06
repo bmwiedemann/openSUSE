@@ -277,4 +277,12 @@
   * Skip tests/thread/stress_schedule.py when single core system detected</comment>
     <requestid>1313856</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>788741518187a33b8ab12c445858857e</srcmd5>
+    <version>1.26.1</version>
+    <time>1770401495</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2026-1998.patch for CVE-2026-1998 / bsc#1257803</comment>
+    <requestid>1331712</requestid>
+  </revision>
 </revisionlist>

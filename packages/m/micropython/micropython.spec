@@ -1,7 +1,7 @@
 #
 # spec file for package micropython
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ URL:            https://micropython.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        prepare.sh
 Source2:        https://github.com/Mbed-TLS/mbedtls/releases/download/mbedtls-3.6.5/mbedtls-3.6.5.tar.bz2#/mbedtls-3.6.5.tar.bz2
+Patch0:         CVE-2026-1998.patch
 BuildRequires:  openssl
 BuildRequires:  pkgconfig
 BuildRequires:  python3
