@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Feb  3 10:06:17 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.2/
+- Changes since 25.12.1:
+  * Remove single tap to maximize code component (kde#499048)
+  * Fix transparency blur not applying to the timeline anymore (kde#513363)
+  * Add hack to fix crash when sending long text reactions (kde#504344)
+  * Cleanup few remaining atYEnd usages in TimelineView
+  * Add hack to fix room sidebar not sticking to the top
+  * Fix left padding for "Rooms" label in the room list
+  * Fix Quick Switcher not being activatable by Enter/Return key
+  * Don't show the Share action for non-file messages
+  * Add hack around the timeline never settling just right
+  * Improve reliability of restoring the last space and room (again)
+  * Add hack around atYEnd
+  * Tell room page header message to fill the width
+  * Small notification improvements
+  * fix bug: room settings don't open
+  * Null check decoded messages in `loadPinnedMessage`
+  * Null check pinned messages after decryption when filling `PinnedMessageModel`.
+  * RoomPage: Fix selected text and hovered link in context menu
+  * Fix some runtime qml warnings
+  * Fix pushDialogLayer failing in DelegateContextMenu
+  * Decrypt when downloading single events from the server
+  * Fix reply colors being broken if you're faster than the server
+  * Make clicking room list section headers more reliable
+
+-------------------------------------------------------------------
 Wed Jan  7 12:25:30 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.1
