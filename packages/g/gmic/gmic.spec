@@ -1,7 +1,7 @@
 #
 # spec file for package gmic
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@
 %define gmic_datadir %{_datadir}/gmic
 
 Name:           gmic
-Version:        3.6.5
+Version:        3.6.6
 Release:        0
 Summary:        GREYC's Magick for Image Computing (denoise and others)
 # gmic-qt is GPL-3.0-or-later, zart is CECILL-2.0, libgmic and cli program are
@@ -53,8 +53,6 @@ Source0:        https://gmic.eu/files/source/gmic_%{version}.tar.gz
 Patch0:         krita5.patch
 # PATCH-FEATURE-OPENSUSE
 Patch1:         0001-Find-the-local-gmic-library.patch
-# PATCH-FEATURE-OPENSUSE
-Patch2:         fix-libc.patch
 #
 # SECTION pkg_vcmp
 #

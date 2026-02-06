@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  5 12:32:09 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.6.6
+  https://discuss.pixls.us/t/on-the-road-to-3-7/52265/23
+- drop fix-libc.patch
+
+-------------------------------------------------------------------
 Sun Dec 21 11:43:02 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - bump memory constraint to 8GB to fix linking now that we build
