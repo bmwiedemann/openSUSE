@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  4 07:41:13 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- CVE-2025-10911 will be fixed on libxml2 side instead [bsc#1250553]
+- deleted patches
+  * libxslt-CVE-2025-10911.patch
+
+-------------------------------------------------------------------
 Wed Oct 15 08:10:07 UTC 2025 - pgajdos@suse.com
 
 - security update

@@ -603,4 +603,12 @@
   * libxslt-CVE-2025-11731.patch</comment>
     <requestid>1311449</requestid>
   </revision>
+  <revision rev="76" vrev="5">
+    <srcmd5>f64abb9f3920e6c26d074f2a1238ae87</srcmd5>
+    <version>1.1.43</version>
+    <time>1770400950</time>
+    <user>anag_factory</user>
+    <comment>CVE-2025-10911 will be fixed on libxml2 side instead [bsc#1250553]</comment>
+    <requestid>1330867</requestid>
+  </revision>
 </revisionlist>

@@ -1,6 +1,7 @@
 #
 # spec file for package libxslt
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -42,8 +43,6 @@ Patch0:         libxslt-1.1.24-no-net-autobuild.patch
 Patch1:         libxslt-random-seed.patch
 # CVE-2025-7424 [bsc#1246360], Type confusion in xmlNode.psvi between stylesheet and source nodes
 Patch2:         libxslt-CVE-2025-7424.patch
-# CVE-2025-10911 [bsc#1250553], use-after-free with key data stored cross-RVT
-Patch3:         libxslt-CVE-2025-10911.patch
 # CVE-2025-11731 [bsc#1251979], type confusion in exsltFuncResultCompfunction leading to denial of service
 Patch4:         libxslt-CVE-2025-11731.patch
 BuildRequires:  fdupes
