@@ -21,7 +21,7 @@
 
 %bcond_without  released
 Name:           kalm
-Version:        25.12.1
+Version:        25.12.2
 Release:        0
 Summary:        Breathing techniques helper
 License:        LGPL-2.1-or-later
