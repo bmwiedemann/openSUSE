@@ -1,7 +1,7 @@
 #
 # spec file for package apk-tools
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define soname 3_0_0
 %define libname libapk%{soname}
 Name:           apk-tools
-Version:        3.0.2
+Version:        3.0.4
 Release:        0
 Summary:        Alpine package manager
 License:        GPL-2.0-or-later

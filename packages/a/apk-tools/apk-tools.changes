@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Feb 03 08:38:46 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.4:
+  * portability: do not include_next sys/random.h if its missing.
+  * db: add O_DIRECTORY to opening database directory.
+  * print: fix usage of va_list twice.
+  * doc: document identity hash constraint used by "add file.apk"
+  * print: fix apk_indent output to be logged if needed.
+  * db: reset 'replaces' before reading v2 pkginfo.
+  * solver: allow virtual provided package swap on del.
+  * test: add test for replaces to function.
+  * db: fix replaces to take ownership of files.
+  * libfetch: increase password buffer to support long tokens.
+  * db: check that unshare(CLONE_NEWNS) as root works.
+  * db: always match package size in apk_db_get_pkg_by_name().
+  * progress io: propagate error code at close.
+
+-------------------------------------------------------------------
+Sun Dec 21 10:44:56 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.3:
+  * package: fix memfd sealing.
+  * io: do not close stdin.
+  * process: do not depend on /dev/null.
+  * db: print error if apk_process_init fails during script exec.
+
+-------------------------------------------------------------------
 Mon Dec 15 08:24:10 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.2:
