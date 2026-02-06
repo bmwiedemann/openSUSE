@@ -101,7 +101,7 @@ Source14:       group-source-files.pl
 Source15:       kmp-trigger.sh
 Source17:       kmp-post.sh
 Source18:       Check4WrongSupplements.sh
-%if 0%{?sle_version} < 150500
+%if 0%{?sle_version} < 150600
 Patch0:         kernel-5.14.patch
 %endif
 BuildRequires:  %{kernel_module_package_buildreqs}

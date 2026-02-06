@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 29 09:44:34 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- apply kernel-5.14.patch also on sle15-sp5 in order to fix build
+  and adjusted it to sle15-sp5 kernel
+
+-------------------------------------------------------------------
 Tue Jan 20 14:32:54 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - updated CUDA variant to version 580.126.09

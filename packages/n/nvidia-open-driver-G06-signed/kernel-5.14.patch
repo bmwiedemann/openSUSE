@@ -1,6 +1,21 @@
---- open-gpu-kernel-modules-580.126.09/kernel-open/nvidia-uvm/uvm_pmm_gpu.c.orig	2026-01-13 19:18:18.022084000 +0100
-+++ open-gpu-kernel-modules-580.126.09/kernel-open/nvidia-uvm/uvm_pmm_gpu.c	2026-01-13 19:30:36.214892000 +0100
-@@ -3282,11 +3282,13 @@ static void device_p2p_page_free(struct
+Index: open-gpu-kernel-modules-580.126.09/kernel-open/nvidia-uvm/uvm_pmm_gpu.c
+===================================================================
+--- open-gpu-kernel-modules-580.126.09.orig/kernel-open/nvidia-uvm/uvm_pmm_gpu.c
++++ open-gpu-kernel-modules-580.126.09/kernel-open/nvidia-uvm/uvm_pmm_gpu.c
+@@ -3159,10 +3159,12 @@ static void devmem_page_free(struct page
+                                  &gpu->pmm.root_chunks.va_block_lazy_free_q_item);
+ }
+ 
++#if defined(NV_PAGEMAP_OPS_HAS_FOLIO_FREE)
+ static void devmem_folio_free(struct folio *folio)
+ {
+     devmem_page_free(&folio->page);
+ }
++#endif
+ 
+ // This is called by HMM when the CPU faults on a ZONE_DEVICE private entry.
+ static vm_fault_t devmem_fault(struct vm_fault *vmf)
+@@ -3282,11 +3284,13 @@ static void device_p2p_page_free(struct
      nv_kref_put(&p2p_mem->refcount, device_p2p_page_free_wake);
  }
  
@@ -14,3 +29,16 @@
  
  #if UVM_CDMM_PAGES_SUPPORTED()
  static void device_coherent_page_free(struct page *page)
+@@ -3294,10 +3298,12 @@ static void device_coherent_page_free(st
+     device_p2p_page_free(page);
+ }
+ 
++#if defined(NV_PAGEMAP_OPS_HAS_FOLIO_FREE)
+ static void device_coherent_folio_free(struct folio *folio)
+ {
+     device_p2p_page_free(&folio->page);
+ }
++#endif
+ 
+ static const struct dev_pagemap_ops uvm_device_coherent_pgmap_ops =
+ {
