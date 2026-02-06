@@ -268,4 +268,21 @@
     <comment></comment>
     <requestid>1307682</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>9a779e9eead11248430f9a214ff49576</srcmd5>
+    <version>0.22.0</version>
+    <time>1770401344</time>
+    <user>anag_factory</user>
+    <comment>- Package libtvm_ffi.so
+- Update to 0.22.0:
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.22.0
+- Re-enable LTO
+- Refresh patch:
+  * lib-finder-python-cmake.patch
+- Drop upstream patch:
+  * 18202.patch
+  * 18204_backported.patch
+</comment>
+    <requestid>1331569</requestid>
+  </revision>
 </revisionlist>

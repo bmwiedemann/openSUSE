@@ -1,7 +1,7 @@
 #
 # spec file for package tvm
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,6 @@
 #
 
 
-%define _lto_cflags %{nil}
-
-# System dmlc is too old - https://github.com/apache/tvm/issues/17459#issuecomment-2429144716
 %bcond_with system_dmlc
 %define dmlc_version 3031e4a
 %define libbacktrace_version 08f7c7e
@@ -41,12 +38,13 @@
 # regular cmake builddir conflicts with the python singlespec
 %global __builddir build_cmake
 Name:           tvm
-Version:        0.21.0
+Version:        0.22.0
 Release:        0
 Summary:        An end-to-end Deep Learning Compiler Stack
 License:        Apache-2.0
 URL:            https://tvm.apache.org/
 Source:         https://github.com/apache/tvm/archive/refs/tags/v%{version}.tar.gz#/tvm-%{version}.tar.gz
+Source1:        https://github.com/apache/tvm-ffi/archive/refs/tags/v0.1.0.tar.gz#/tvm-ffi.tar.gz
 # License2: MIT
 Source2:        https://github.com/dmlc/dmlc-core/archive/%{dmlc_version}.tar.gz#/dmlc-core.tar.gz
 # License3: BSD-3-Clause
@@ -55,15 +53,12 @@ Source3:        https://github.com/tlc-pack/libbacktrace/archive/%{libbacktrace_
 Patch1:         lib-finder-python-cmake.patch
 # PATCH-FIX-OPENSUSE tvm-disable-vulkan-test-check.patch -- Cannot test in OBS despite enabled in library
 Patch2:         tvm-disable-vulkan-test-check.patch
-# PATCH-FIX-UPSTREAM 18202.patch -- https://github.com/apache/tvm/pull/18202
-Patch3:         18202.patch
-# PATCH-FIX-UPSTREAM 18204_backported.patch -- https://github.com/apache/tvm/pull/18204
-Patch4:         18204_backported.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module cloudpickle}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
@@ -153,10 +148,14 @@ Libraries generated for TVM without any provided soname.
 %setup -q
 %autopatch -p1
 pushd 3rdparty
+tar xf %{SOURCE1} && rmdir tvm-ffi && mv tvm-ffi-* tvm-ffi
+pushd tvm-ffi
+rm -rf 3rdparty && ln -s ../../3rdparty
+popd
 %if %{without system_dmlc}
 tar xf %{SOURCE2} && rmdir dmlc-core && mv dmlc-core-* dmlc-core
 %endif
-tar xf %{SOURCE3} && rmdir libbacktrace && mv libbacktrace-* libbacktrace
+tar xf %{SOURCE3} && mv libbacktrace-* libbacktrace
 popd
 
 # Workaround - https://discuss.tvm.ai/t/build-fails-on-tvm-0-6-0-0-6-1-with-gcc10-and-gcc7/7462/5?u=ggardet
@@ -214,7 +213,7 @@ export TVM_LIBRARY_PATH="$(pwd)/%{__builddir}"
 pushd python
 # Fix rpm runtime dependency rpmlint error replace the shebang in all the scripts with %%{_bindir}/python3
 find . -name "*.py" -exec sed -i 's|#!%{_bindir}/env python|#!%{_bindir}/python3|' {} ";"
-%python_build
+%pyproject_wheel
 popd
 
 %install
@@ -223,12 +222,10 @@ popd
 rm -f %{buildroot}%{_includedir}/endian.h
 export TVM_LIBRARY_PATH="$(pwd)/%{__builddir}"
 pushd python
-%python_install
+%pyproject_install
 popd
-# Remove /usr/tvm/*.so
-rm -rf %{buildroot}%{_prefix}/tvm
-# Do not package static lib
-rm -f %{buildroot}%{_libdir}/libtvm_ffi_static.a
+# Package libtvm_ffi.so
+cp build_cmake/lib/libtvm_ffi.so %{buildroot}%{_libdir}
 # Remove src,include,3rdparty dirs
 %python_expand rm -rf %{buildroot}/%{$python_sitearch}/tvm/{src,include,3rdparty}/
 %if %{without system_dmlc}
@@ -326,8 +323,7 @@ donttest="$donttest or test_meta_schedule_local_runner_time_out or test_meta_sch
 %{_libdir}/cmake/tvm/*.cmake
 
 %files %{python_files}
-%{python_sitearch}/tvm
-%dir %{python_sitearch}/tvm*.egg-info/
-%{python_sitearch}/tvm*.egg-info/*
+%{python_sitelib}/tvm
+%{python_sitelib}/tvm-*.dist-info/
 
 %changelog

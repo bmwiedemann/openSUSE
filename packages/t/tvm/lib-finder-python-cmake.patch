@@ -1,8 +1,8 @@
---- tvm-0.21.0/python/tvm/libinfo.py.orig	2025-07-07 16:48:21.000000000 +0200
-+++ tvm-0.21.0/python/tvm/libinfo.py	2025-09-24 09:12:48.885453735 +0200
-@@ -67,8 +67,8 @@ def get_dll_directories():
-     # Pip lib directory
+--- tvm-0.22.0/python/tvm/libinfo.py.orig	2025-10-21 06:27:10.000000000 +0200
++++ tvm-0.22.0/python/tvm/libinfo.py	2026-02-05 10:30:49.433456028 +0100
+@@ -68,8 +68,8 @@ def get_dll_directories():
      dll_path.append(ffi_dir)
+     dll_path.append(os.path.join(ffi_dir, "lib"))
      # Default cmake build directory
 -    dll_path.append(os.path.join(source_dir, "build"))
 -    dll_path.append(os.path.join(source_dir, "build", "Release"))
