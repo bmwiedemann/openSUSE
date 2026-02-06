@@ -308,4 +308,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1321199</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>8cbfb168f918fa05c36b1f1487a48f7d</srcmd5>
+    <version>1.28.0</version>
+    <time>1770409799</time>
+    <user>anag_factory</user>
+    <comment>- Add pythons_for_pypi macro. This macro will help to build the python
+  minimal stack for different python versions.</comment>
+    <requestid>1330911</requestid>
+  </revision>
 </revisionlist>
