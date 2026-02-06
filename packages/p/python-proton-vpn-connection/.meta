@@ -1,6 +1,0 @@
-<package name="python-proton-vpn-connection" project="openSUSE:Factory">
-  <title>python-proton-vpn-connection</title>
-  <description>Proton VPN connection interface</description>
-  <devel project="network:vpn" package="python-proton-vpn-connection"/>
-  <url>https://github.com/ProtonVPN/python-proton-vpn-connection</url>
-</package>
