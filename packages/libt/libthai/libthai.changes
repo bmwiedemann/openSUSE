@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  3 11:31:58 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.1.30:
+  + No more dependency on autoconf-archive when building from Git.
+  + Handle memory allocation failures.
+  + Save more memory by sharing constant data in text segment.
+  + Fix potential integer overflows in code.
+  + Improved documentation.
+  + Updated word break dictionary.
+
+-------------------------------------------------------------------
 Tue Dec 21 20:27:42 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 0.1.29.

@@ -317,4 +317,18 @@
   * Updated word break dictionary. (forwarded request 942001 from andythe_great)</comment>
     <requestid>942318</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>83fbc883e71964b80542537b6f83bd2b</srcmd5>
+    <version>0.1.30</version>
+    <time>1770401117</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.1.30:
+  + No more dependency on autoconf-archive when building from Git.
+  + Handle memory allocation failures.
+  + Save more memory by sharing constant data in text segment.
+  + Fix potential integer overflows in code.
+  + Improved documentation.
+  + Updated word break dictionary. (forwarded request 1330739 from dimstar)</comment>
+    <requestid>1331118</requestid>
+  </revision>
 </revisionlist>
