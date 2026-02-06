@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb  3 10:05:26 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.2/
+- Changes since 25.12.1:
+  * Fix word select+move shortcut conflict on macos (kde#512817)
+  * documentation.yml is no more needed
+  * workaround wrongly removed virtual functions in KDirOperator
+  * ensure we honor the documentHighlightProvider capability
+  * Avoid ambiguous constructor call to fix Windows build with gpgmepp 2
+
+-------------------------------------------------------------------
 Wed Jan  7 12:24:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.1
