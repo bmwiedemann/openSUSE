@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb  6 09:16:25 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.8.1:
+  * https://invent.kde.org/education/kstars/-/blob/stable-3.8.1/ChangeLog
+- Drop upstreamed fix-build-gcc15.patch
+- Drop upstreamed fix-eigen3-max.patch
+
+-------------------------------------------------------------------
 Mon Dec 15 07:29:59 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add additionals __requires_exclude (bsc#1254576)

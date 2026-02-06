@@ -1,7 +1,7 @@
 #
 # spec file for package kstars
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # Internal QML import
 %global __requires_exclude qmlimport\\((KStarsLiteEnums|TelescopeLiteEnums|Qt.labs.calendar.1|QtGraphicalEffects.1|QtQuick.Controls.1|QtQuick.Controls.Private.1|QtQuick.Dialogs.1).*
 Name:           kstars
-Version:        3.8.0
+Version:        3.8.1
 Release:        0
 Summary:        Desktop Planetarium
 # Note for legal: the Apache licensed files in the tarball are for the
@@ -36,14 +36,13 @@ Source1:        https://download.kde.org/stable/kstars/%{version}/kstars-%{versi
 # https://invent.kde.org/sysadmin/release-keyring/-/blob/master/keys/mutlaqja@key1.asc?ref_type=heads
 Source2:        kstars.keyring
 %endif
-Patch0:         fix-eigen3-max.patch
-Patch1:         fix-build-gcc15.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  curl-devel
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  libXISF-devel
 BuildRequires:  libnova-devel
+BuildRequires:  opencv-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xplanet
 BuildRequires:  cmake(KF6Config)
