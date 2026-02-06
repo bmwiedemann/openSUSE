@@ -870,4 +870,15 @@ For details, see https://cockpit-project.org/blog/cockpit-322.html</comment>
     <comment>- Update dependencies for bsc#1257324</comment>
     <requestid>1329769</requestid>
   </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>9cb5230df10caadc2bf8a510464b373b</srcmd5>
+    <version>354</version>
+    <time>1770409809</time>
+    <user>anag_factory</user>
+    <comment>Correcting the changelog to include the CVE reference as recommended
+outside of Factory
+
+- Update dependencies for bsc#1257324/CVE-2025-13465</comment>
+    <requestid>1331134</requestid>
+  </revision>
 </revisionlist>
