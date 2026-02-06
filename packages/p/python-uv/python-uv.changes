@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Feb  5 23:06:10 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.10.0
+ * Breaking Changes
+  * Require --clear to remove existing virtual environments in uv venv
+  * Error if multiple indexes include default = true
+  * Error when an explicit index is unnamed
+  * Install alternative Python executables using their implementation name
+  * Respect global Python version pins in uv tool run and uv tool install
+  * Require username when multiple credentials match a URL
+  * Avoid invalidating the lockfile versions after an exclude-newer change
+  * Upgrade uv format to Ruff 0.15.0 
+ * Stabilizations
+  * uv python upgrade and uv python install --upgrade
+  * uv add --bounds and the add-bounds configuration option
+  * uv workspace list and uv workspace dir
+  * extra-build-dependencies
+ * Enhancements
+  * Improve ABI tag error message phrasing 
+  * Introduce a 10s connect timeout 
+  * Allow using pyx.dev as a target in uv auth commands despite PYX_API_URL differing 
+ * Bug fixes
+  * Support all CPython ABI tag suffixes properly 
+  * Add support for detecting PowerShell on Linux and macOS 
+  * Retry timeout errors for streams 
+
+-------------------------------------------------------------------
 Thu Feb  5 11:33:19 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.30
