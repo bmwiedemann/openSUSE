@@ -50,4 +50,18 @@
     <comment></comment>
     <requestid>1251113</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1a81e05426cf4ed45391c799d0809931</srcmd5>
+    <version>2.4.3</version>
+    <time>1770401479</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.3:
+  * Fix: fixed C23 compilation (Petr Gajdos)
+  * Misc: CMake FindCriterion improvements (Peter Kokot).
+  * Misc: various documentation fixes (Yohann Boniface, Christopher Sahnwaldt,
+  * Misc: various updates to dependencies.
+- Drop upstreamed criterion-gcc15.patch
+</comment>
+    <requestid>1331677</requestid>
+  </revision>
 </revisionlist>

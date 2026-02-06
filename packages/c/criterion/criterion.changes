@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb  6 12:04:49 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.4.3:
+  * Fix: fixed C23 compilation (Petr Gajdos)
+  * Misc: CMake FindCriterion improvements (Peter Kokot).
+  * Misc: various documentation fixes (Yohann Boniface, Christopher Sahnwaldt,
+  * Misc: various updates to dependencies.
+- Drop upstreamed criterion-gcc15.patch
+
+-------------------------------------------------------------------
 Thu Mar  6 13:28:57 UTC 2025 - pgajdos@suse.com
 
 - added patches

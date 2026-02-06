@@ -1,7 +1,7 @@
 #
 # spec file for package criterion
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,13 @@
 %define sover 3
 
 Name:           criterion
-Version:        2.4.2
+Version:        2.4.3
 Release:        0
 Summary:        A dead-simple, yet extensible, C and C++ unit testing framework
 License:        MIT
 URL:            https://github.com/Snaipe/Criterion
 Source:         https://github.com/Snaipe/Criterion/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.xz
 Patch0:         fix-meson.patch
-# https://github.com/Snaipe/Criterion/issues/559
-Patch1:         criterion-gcc15.patch
 BuildRequires:  boxfort-devel
 BuildRequires:  chrpath
 BuildRequires:  cmake
@@ -75,8 +73,8 @@ This packages contains all the libraries needed to use Criterion.
 Summary:        Devel files for Criterion
 Requires:       lib%{name}%{sover} = %{version}
 # devel package was wrongly named after the library, including version
-Provides:       lib%{name}3-devel = 2.4.2
-Obsoletes:      lib%{name}3-devel <= 2.4.2
+Provides:       lib%{name}3-devel = %{version}
+Obsoletes:      lib%{name}3-devel <= %{version}
 
 %description -n lib%{name}-devel
 Contains all needed devel files for Criterion.
