@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="manual">
     <param name="url">https://gitlab.com/Zwarf/picplanner</param>
-    <param name="versionformat">0.5.3+git@TAG_OFFSET@.%h</param>
+    <param name="versionformat">0.5.4+git@TAG_OFFSET@.%h</param>
     <param name="scm">git</param>
     <param name="revision">main</param>
     <param name="changesgenerate">enable</param>

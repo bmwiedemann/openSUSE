@@ -58,4 +58,16 @@
 </comment>
     <requestid>1312002</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>030bf99ef0f5310ad8857b0c967347fc</srcmd5>
+    <version>0.5.4+git4.2ea8588</version>
+    <time>1770401424</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.5.4+git4.2ea8588:
+  * metadata: Tidy up
+  * Revert to old id format but add branding to metainfo
+  * Fix appid missmatch
+</comment>
+    <requestid>1331543</requestid>
+  </revision>
 </revisionlist>

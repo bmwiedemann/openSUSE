@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 06 08:37:00 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.5.4+git4.2ea8588:
+  * metadata: Tidy up
+  * Revert to old id format but add branding to metainfo
+  * Fix appid missmatch
+
+-------------------------------------------------------------------
 Fri Oct 17 06:54:52 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 0.5.3+git.1737413116.f4b1be9:
