@@ -1953,4 +1953,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <user>dimstar_suse</user>
     <comment>RelEng emergency checkin: properly disable mtime source epoch clamping for this package, as it's extracted onto the FTP server and later rsynced</comment>
   </revision>
+  <revision rev="244" vrev="1">
+    <srcmd5>d5bdf2e896b4d07513532e48c238c690</srcmd5>
+    <version>17.171</version>
+    <time>1770409805</time>
+    <user>anag_factory</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>1330954</requestid>
+  </revision>
 </revisionlist>

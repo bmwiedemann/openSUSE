@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Feb 4 13:08:15 UTC 2026 - dimstar@opensuse.org
+
+- merge gh#openSUSE/installation-images#781
+- Packaging: fix disabling mtime clamping
+- 17.171
+
+--------------------------------------------------------------------
 Tue Jan 20 09:44:11 UTC 2026 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#780
