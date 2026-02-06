@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb  3 08:56:31 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2026.01.3
+  * Fix mixer frequency lock failures.
+  * Add access to larger SPI flash on HackRF Pro.
+- Update to version 2026.01.2
+  Changes in this release include:
+  * Fixed RX, TX, and self-test on rad1o.
+  * Fixed intermittent tuning failures with SDR++.
+  * Fixed intermittent spectrum inversion in RX mode when changing
+    the sample rate on HackRF Pro.
+
+-------------------------------------------------------------------
 Fri Jan 16 18:23:11 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 2026.01.1
