@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           libkcddb-qt6
-Version:        25.12.1
+Version:        25.12.2
 Release:        0
 Summary:        CDDB library for KDE Applications
 License:        GPL-2.0-or-later
