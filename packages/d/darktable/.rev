@@ -1640,4 +1640,14 @@ Togan
 </comment>
     <requestid>1324149</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>7f83497a4963889c881f5c9392537ed2</srcmd5>
+    <version>5.4.1</version>
+    <time>1770401428</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.4.1:
+  * https://www.darktable.org/2026/02/darktable-5.4.1-released/
+</comment>
+    <requestid>1331555</requestid>
+  </revision>
 </revisionlist>
