@@ -7,7 +7,7 @@
   <!-- ====================================================================== -->
 
   <property file="build.properties"/>
-  <property name="project.version" value="2.0.1"/>
+  <property name="project.version" value="2.1.0"/>
   <property name="project.groupId" value="org.codehaus.plexus"/>
   <property name="project.artifactId" value="plexus-testing"/>
 

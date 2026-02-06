@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-testing
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with tests
 Name:           plexus-testing
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        Plexus Testing
 License:        Apache-2.0

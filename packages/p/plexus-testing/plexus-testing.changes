@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb  6 04:38:08 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.1.0
+  * New features and improvements
+    + Use guice with classes classifier - without embedded
+      dependencies
+    + Support for Nested tests
+  * Maintenance
+    + Cleanups dependencies
+  * Dependency updates
+    + Bump org.codehaus.plexus:plexus from 24 to 25
+
+-------------------------------------------------------------------
 Tue Nov  4 08:59:21 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 2.0.1

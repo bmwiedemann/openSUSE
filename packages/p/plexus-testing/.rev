@@ -7,4 +7,12 @@
     <comment>2.0.1 will be needed by maven-plugin-testing 3.4.0</comment>
     <requestid>1315449</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4a3cd4d9890e27a13eb5c12c5de22967</srcmd5>
+    <version>2.1.0</version>
+    <time>1770401476</time>
+    <user>anag_factory</user>
+    <comment>2.1.0</comment>
+    <requestid>1331671</requestid>
+  </revision>
 </revisionlist>
