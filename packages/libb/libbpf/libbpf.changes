@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  4 07:58:43 UTC 2026 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- update to 1.6.3:
+  * compilation warnings fixes to make libbpf build more GCC and C23
+    compatible
+
+-------------------------------------------------------------------
 Mon Aug 25 19:09:42 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.6.2:
