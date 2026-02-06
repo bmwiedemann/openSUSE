@@ -1,7 +1,7 @@
 #
 # spec file for package angelfish
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           angelfish
-Version:        25.12.1
+Version:        25.12.2
 Release:        0
 Summary:        Mobile web browser
 License:        GPL-2.0-or-later
