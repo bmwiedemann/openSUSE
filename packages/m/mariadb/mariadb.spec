@@ -505,9 +505,6 @@ filelist_excludes()
 # Install the package itself
 %cmake_install benchdir_root=%{_datadir}/
 
-# Create log directory with the expected perms of mysql
-install -d -m 700 %{buildroot}%{_localstatedir}/log/mysql/
-
 # Symbols from build to go into libdir
 install -m 644 build/sql/mysqld.sym %{buildroot}%{_libdir}/mysql/mysqld.sym
 
@@ -642,11 +639,15 @@ ln -sf %{_unitdir}/mariadb@.service %{buildroot}%{_unitdir}/mysql@.service
 # mysql-systemd-helper
 sed -e 's:mysql.sock-%I:mysql.%I.sock:' -i %{buildroot}%{_unitdir}/mariadb@.socket
 
-# Tmpfiles file to exclude mysql tempfiles that are auto-cleaned up
-# bnc#852451
+# Tmpfiles file
+# Exclude mysql tempfiles that are auto-cleaned up (bnc#852451)
+# Create log directory with the expected perms of mysql
+# Create the directory specified in 'secure-file-priv' option
 mkdir -p %{buildroot}%{_tmpfilesdir}
 cat >> %{buildroot}%{_tmpfilesdir}/mariadb.conf <<EOF
 x %{_localstatedir}/tmp/mysql.*
+d %{_localstatedir}/log/mysql 0700 mysql mysql
+d %{_localstatedir}/lib/mysql-files 0750 mysql mysql
 EOF
 
 # Testsuite
@@ -686,9 +687,6 @@ rm -f '%{buildroot}'%{_datadir}/doc/* 2> /dev/null || true
 
 # Unwanted packaged stuff
 rm -rf '%{buildroot}'%{_datadir}/mysql/{solaris,SELinux}
-
-# Create the directory specified in 'secure-file-priv' option
-mkdir -p '%{buildroot}'%{_localstatedir}/lib/mysql-files
 
 # install rpm macros file
 mkdir -p %{buildroot}%{_rpmmacrodir}
@@ -837,7 +835,7 @@ exit 0
 %license %{_docdir}/%{name}/COPYING
 %doc %{_docdir}/%{name}
 %dir %{_libexecdir}/mysql
-%dir %attr(0700, mysql, mysql) %{_localstatedir}/log/mysql
+%ghost %dir %attr(0700, mysql, mysql) %{_localstatedir}/log/mysql
 %{_libexecdir}/mysql/mysql-systemd-helper
 %{_unitdir}/mariadb.service
 %{_unitdir}/mariadb@.service
@@ -866,8 +864,8 @@ exit 0
 %{_pam_moduledir}/pam_user_map.so
 %dir %attr(0750, root, mysql) %{_libdir}/mysql/plugin/auth_pam_tool_dir
 %verify(not mode) %attr(4755,root,root) %{_libdir}/mysql/plugin/auth_pam_tool_dir/auth_pam_tool
-%ghost %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-something
-%dir %attr(0750, mysql, mysql) %{_localstatedir}/lib/mysql-files
+%ghost %attr(0644,root,root) %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-something
+%ghost %dir %attr(0750, mysql, mysql) %{_localstatedir}/lib/mysql-files
 %if 0%{with_mroonga} > 0
 %license %{_datadir}/mariadb/mroonga/COPYING
 %{_datadir}/mariadb/mroonga/

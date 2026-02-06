@@ -69,3 +69,7 @@ PermissionsStartOnly=true
 
 UMask=007
 
+# Let systemd create /var/lib/mysql-$instance so that the correct SELinux labels are applied
+StateDirectory=mysql-%i
+StateDirectoryMode=700
+
