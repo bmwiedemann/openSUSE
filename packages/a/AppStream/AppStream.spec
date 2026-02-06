@@ -1,7 +1,7 @@
 #
 # spec file for package AppStream
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,16 +21,20 @@
 %bcond_without vala
 %endif
 
-# The default Leap compiler is too old for building AppStream-qt6. use the same compiler for both flavors
+# Use the same compiler that was used to build Qt 6 packages in the devel project
+# Mixing gcc 13 and 15 on Leap 16 causes linker errors ('undefined reference to __cxa_call_terminate@CXXABI_1.3.15')
 %if 0%{?suse_version} == 1500
-%bcond_without gcc13
+%bcond_without gcc14
+%endif
+%if 0%{?suse_version} == 1600
+%bcond_without gcc15
 %endif
 %define rname AppStream
 %define libappstream_sover 5
 %define libAppStreamQt_sover 3
 %define libappstream_compose_sover 0
 Name:           AppStream
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        LGPL-2.1-or-later
@@ -40,12 +44,20 @@ Source1:        https://www.freedesktop.org/software/appstream/releases/%{rname}
 Source2:        AppStream.keyring
 # PATCH-FIX-OPENSUSE
 Patch0:         support-meson0.59.patch
+# PATCH-FIX-OPENSUSE
+# TODO: Only apply to Leap when libfyaml >= 0.9.3 will be in factory
+Patch1:         0001-Disable-failing-test-with-old-libfyaml.patch
 BuildRequires:  cairo-devel
 BuildRequires:  docbook-xsl-stylesheets
-%if %{with gcc13}
-BuildRequires:  gcc13
-BuildRequires:  gcc13-PIE
-BuildRequires:  gcc13-c++
+%if %{with gcc14}
+BuildRequires:  gcc14
+BuildRequires:  gcc14-PIE
+BuildRequires:  gcc14-c++
+%endif
+%if %{with gcc15}
+BuildRequires:  gcc15
+BuildRequires:  gcc15-PIE
+BuildRequires:  gcc15-c++
 %endif
 %if 0%{?suse_version} > 1600
 BuildRequires:  bubblewrap
@@ -59,8 +71,7 @@ BuildRequires:  itstool
 BuildRequires:  meson >= 0.59
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
-BuildRequires:  pkgconfig(Qt6Core) >= %{min_qt_version}
-BuildRequires:  pkgconfig(Qt6Test) >= %{min_qt_version}
+BuildRequires:  pkgconfig(bash-completion) >= 2.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.62
@@ -71,6 +82,8 @@ BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(pango)
+BuildRequires:  pkgconfig(Qt6Core) >= %{min_qt_version}
+BuildRequires:  pkgconfig(Qt6Test) >= %{min_qt_version}
 BuildRequires:  pkgconfig(xmlb) >= 0.3.14
 Recommends:     curl
 %if %{with vala}
@@ -194,8 +207,11 @@ GObject introspection bindings for interfaces provided by AppStream.
 
 %define options -Dqt=true -Dcompose=true -Dvapi=%{build_vapi}
 
-%if %{with gcc13}
-export CC=gcc-13 CXX=g++-13
+%if %{with gcc14}
+export CC=gcc-14 CXX=g++-14
+%endif
+%if %{with gcc15}
+export CC=gcc-15 CXX=g++-15
 %endif
 
 %meson %{common_options} %{options}
@@ -225,6 +241,9 @@ export PATH=~/bin:$PATH
 %{_bindir}/appstreamcli
 %dir %{_datadir}/appstream
 %{_datadir}/appstream/appstream.conf
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/appstreamcli
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.freedesktop.appstream.cli.metainfo.xml
 %{_mandir}/man1/appstreamcli.*

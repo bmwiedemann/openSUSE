@@ -1,0 +1,54 @@
+From 5c1e59133b84475cc15761901b8abed9899646d8 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Tue, 3 Feb 2026 13:51:12 +0100
+Subject: [PATCH] Disable failing test with libfyaml < 0.9.3
+
+libfyaml < 0.9.3 is buggy. See https://github.com/ximion/appstream/issues/743
+---
+ tests/meson.build | 30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/tests/meson.build b/tests/meson.build
+index 5b70409..d4935f8 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -44,21 +44,21 @@ test ('as-test_xml',
+     env: as_test_env,
+ )
+ 
+-# YAML read/write
+-as_test_yaml_exe = executable ('as-test_yaml',
+-    ['test-yamldata.c',
+-     as_test_common_src],
+-    dependencies: [appstream_dep,
+-                   gio_dep,
+-                   xml2_dep,
+-                   fyaml_dep],
+-    include_directories: [root_inc_dir]
+-)
+-test ('as-test_yaml',
+-    as_test_yaml_exe,
+-    args: as_test_args,
+-    env: as_test_env
+-)
++# # YAML read/write
++# as_test_yaml_exe = executable ('as-test_yaml',
++#     ['test-yamldata.c',
++#      as_test_common_src],
++#     dependencies: [appstream_dep,
++#                    gio_dep,
++#                    xml2_dep,
++#                    fyaml_dep],
++#     include_directories: [root_inc_dir]
++# )
++# test ('as-test_yaml',
++#     as_test_yaml_exe,
++#     args: as_test_args,
++#     env: as_test_env
++# )
+ 
+ # Metadata Pool
+ as_test_pool_exe = executable ('as-test_pool',
+-- 
+2.52.0
+

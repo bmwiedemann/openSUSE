@@ -652,4 +652,12 @@ Features:
   file: Qt5 is no longer supported (forwarded request 1308796 from dimstar)</comment>
     <requestid>1308900</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>87b79f2cccb0e3adc496d9201054628a</srcmd5>
+    <version>1.1.2</version>
+    <time>1770401094</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.1.2</comment>
+    <requestid>1330763</requestid>
+  </revision>
 </revisionlist>
