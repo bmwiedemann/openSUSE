@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 30 13:28:03 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.3.2+git3.bc0fb5969:
+  * BUG/MEDIUM: applet: Fix test on shut flags for legacy applets
+  * DOC: internals: cleanup few typos in master-worker documentation
+  * MEDIUM: h1: strictly verify quoting in chunk extensions
+
+-------------------------------------------------------------------
 Thu Jan 29 18:46:02 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.3.2+git0.72df9192b:
