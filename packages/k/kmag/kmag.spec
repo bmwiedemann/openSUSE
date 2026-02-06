@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kmag
-Version:        25.12.1
+Version:        25.12.2
 Release:        0
 Summary:        Screen Magnifier
 License:        GPL-2.0-only
