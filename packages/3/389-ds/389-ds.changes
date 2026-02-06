@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Feb 04 02:40:45 UTC 2026 - william.brown@suse.com
+
+- To prevent SLE-16 pulling in non LTS branches (which is what we run in tumbleweed), we have to
+  downgrade to an LTS branch so that anytime SLE-16 pulls, it's always something at least
+  maintainable. Short term this means some fun for "updates", but it avoids the problem.
+- Downgrade to version 3.1.4+64845ffd9:
+  * Issue 7194 - Repl Log Analysis - Add CSN propagation details (#7195)
+  * Issue 7213 - MDB_BAD_VALSIZE error while handling VLV (#7214)
+  * Issue 7027 - (2nd) 389-ds-base OpenScanHub Leaks Detected (#7211)
+  * Issue 7184 - argparse.HelpFormatter _format_actions_usage() is deprecated
+  * Issue 7198 - Web console doesn't show sub-suffix when parent-suffix points to an entry (#7202)
+  * Issue 7189 - DSBLE0007 generates incorrect remediation commands for scan limits
+  * Bump lodash from 4.17.21 to 4.17.23 in /src/cockpit/389-console (#7203)
+  * Issue 7172 - (2nd) Index ordering mismatch after upgrade (#7180)
+  * Issue 7172 - Index ordering mismatch after upgrade (#7173)
+  * Issue 7108 - Fix shutdown crash in entry cache destruction (#7163)
+  * Issue - Revise paged result search locking
+  * Issue 7096 - During replication online total init the function idl_id_is_in_idlist is not scaling with large database (#7145)
+  * Issue 7160 - Add lib389 version sync check to configure (#7165)
+  * Issue 7166 - db_config_set asserts because of dynamic list (#7167)
+  * Sync lib389 version to 3.1.4 (#7161)
+  * Issue 7150 - Compressed access log rotations skipped, accesslog-list out of sync (#7151)
+  * Bump version to 3.1.4
+
+-------------------------------------------------------------------
 Fri Jan 16 01:23:29 UTC 2026 - william.brown@suse.com
 
 - Update to version 3.2.0~git7.7c8a16c6b:

@@ -1,9 +1,10 @@
 <services>
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/389ds/389-ds-base.git</param>
-    <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
+    <param name="versionformat">@PARENT_TAG@+%h</param>
     <param name="scm">git</param>
-    <param name="revision">main</param>
+    <param name="revision">389-ds-base-3.1</param>
+    <!-- <param name="revision">main</param> -->
     <param name="versionrewrite-pattern">389-ds-base-(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
