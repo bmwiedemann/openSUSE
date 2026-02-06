@@ -1,7 +1,7 @@
 #
 # spec file for package python-rq-scheduler
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        Provides job scheduling capabilities to RQ (Redis Queue)
 License:        MIT
 URL:            https://github.com/rq/rq-scheduler
 Source:         https://github.com/rq/rq-scheduler/archive/refs/tags/v%{version}.tar.gz#/rq-scheduler-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM fix_test_callback.patch -- based on PR 328
+Patch0:         fix_test_callback.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
