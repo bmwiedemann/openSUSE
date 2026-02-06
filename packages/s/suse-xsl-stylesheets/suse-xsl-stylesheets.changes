@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Feb  3 15:18:26 UTC 2026 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.29
+
+- Update 2.95.29
+  * Use documentation.suse.com for author.url by @tomschr in #773
+  * Fix #750: Remove extra space after dbtimestamp by @tomschr in #775
+  * Fix #748 Keep title in TOC together by @tomschr in #776
+  * Fix baseline shift for zh-cn language by @tomschr in #779
+  * Fix #756: Suppress revhistory in book divisions by @tomschr in #780
+ 
+  * Update the _service file to be able to run "osc service runall"
+
+-------------------------------------------------------------------
+Thu Jan 29 07:40:00 UTC 2026 - Thomas Schraitle <thomas.schraitle@suse.com>
+
+- Update 2.95.28
+  * Use documentation.suse.com for author.url (#773)
+  * Fix #750: Remove extra space after dbtimestamp (#775)
+  * Fix #748 Keep title in TOC together (#776)
+  * Remove obsolete xsl:message 
+
+-------------------------------------------------------------------
 Tue Dec 16 15:54:33 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.27
 
 - Update to 2.95.27
