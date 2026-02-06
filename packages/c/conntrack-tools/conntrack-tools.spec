@@ -1,7 +1,7 @@
 #
 # spec file for package conntrack-tools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           conntrack-tools
-Version:        1.4.8
+Version:        1.4.9
 Release:        0
 Summary:        Userspace tools for interacting with the Connection Tracking System
 License:        GPL-2.0-or-later
@@ -45,7 +45,7 @@ BuildRequires:  pkg-config >= 0.21
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libmnl) >= 1.0.3
-BuildRequires:  pkgconfig(libnetfilter_conntrack) >= 1.0.9
+BuildRequires:  pkgconfig(libnetfilter_conntrack) >= 1.1.1
 BuildRequires:  pkgconfig(libnetfilter_cthelper) >= 1.0.0
 BuildRequires:  pkgconfig(libnetfilter_cttimeout) >= 1.0.0
 BuildRequires:  pkgconfig(libnetfilter_queue) >= 1.0.2

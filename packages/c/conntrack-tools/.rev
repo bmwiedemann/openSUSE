@@ -302,4 +302,12 @@
     <comment>- Remove rc* symlinks</comment>
     <requestid>1181449</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>75b8784c112af914d891b9bb7898b411</srcmd5>
+    <version>1.4.9</version>
+    <time>1770401134</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.4.9</comment>
+    <requestid>1330916</requestid>
+  </revision>
 </revisionlist>
