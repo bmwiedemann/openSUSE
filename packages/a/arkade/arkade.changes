@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 06 14:25:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.70:
+  * Update README for arkade oci install and extract alias
+  * Update oci install to extract to arg[0] rather than path
+
+-------------------------------------------------------------------
 Fri Jan 30 06:35:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.69 (.68 was not released):
