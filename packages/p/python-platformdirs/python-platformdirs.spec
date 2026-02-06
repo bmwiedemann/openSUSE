@@ -1,7 +1,7 @@
 #
 # spec file for package python-platformdirs
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-platformdirs%{psuffix}
 Version:        4.5.1

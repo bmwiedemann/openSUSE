@@ -230,4 +230,13 @@
   * Fix no-ctypes fallback on windows</comment>
     <requestid>1324571</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>82d9fa9848bef9deb47ea752ead53fd6</srcmd5>
+    <version>4.5.1</version>
+    <time>1770409802</time>
+    <user>anag_factory</user>
+    <comment>- Add pythons_for_pypi macro. This macro will help to build the python
+  minimal stack for different python versions.</comment>
+    <requestid>1330923</requestid>
+  </revision>
 </revisionlist>
