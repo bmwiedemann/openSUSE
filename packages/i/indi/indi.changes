@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb  5 13:40:43 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.1.8:
+  * Update PowerChannelCurrentNP labels to conform to other props
+  * Redefine rotation angles of guide simulator and correct label for camera rotation offset 
+  * Fix infinite loop when read=0
+  * Svbony powerbox support
+  * OpenAstroTech lx200 turn tracking on/off
+  * PMC8: fix southern hemisphere math for manual mount moves
+  * Bug fix setting adj. power in PPBA
+- Drop upstreamed fix-safety-monitor.patch
+- Drop upstreamed fix-infinite-loop.patch
+
+-------------------------------------------------------------------
 Thu Dec 18 07:37:44 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add fix-safety-monitor.patch

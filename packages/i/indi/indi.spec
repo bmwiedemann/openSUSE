@@ -1,7 +1,7 @@
 #
 # spec file for package indi
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 %define so_ver 2
 Name:           indi
-Version:        2.1.7
+Version:        2.1.8
 Release:        0
 Summary:        Instrument Neutral Distributed Interface
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -30,10 +30,6 @@ Group:          Productivity/Scientific/Astronomy
 URL:            https://www.indilib.org/
 Source0:        https://github.com/indilib/indi/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        indi-rpmlintrc
-# PATCH-FIX-UPSTREAM https://github.com/indilib/indi/commit/9ce200b65d65ae2d5e4d25796049273d99fcf41e
-Patch0:         fix-safety-monitor.patch
-# PATCH-FIX-UPSTREAM https://github.com/indilib/indi/commit/7891ede769f350db0b8117e2a3182b204230a055
-Patch1:         fix-infinite-loop.patch
 BuildRequires:  cmake
 BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
 %if 0%{?suse_version} < 1600
