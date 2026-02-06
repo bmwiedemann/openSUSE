@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb  3 10:05:23 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.2/
+- Changes since 25.12.1:
+  * documentation.yml is no more needed
+  * Add release information
+  * kde#514804: Fix hang evaluating next recurrence time for time zones with daylight savings time
+  * Update change log
+  * Update change log
+  * Bug 514609: Fix hang while loading the calendar during KAlarm startup
+  * Fix bug comparing sub-repetitions
+
+-------------------------------------------------------------------
 Wed Jan  7 12:24:37 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.1
