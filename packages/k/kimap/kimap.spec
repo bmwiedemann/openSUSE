@@ -18,11 +18,11 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.0
+%define kpim6_version 6.6.2
 
 %bcond_without released
 Name:           kimap
-Version:        25.12.1
+Version:        25.12.2
 Release:        0
 Summary:        Library to assist working with IMAP servers
 License:        LGPL-2.1-or-later
