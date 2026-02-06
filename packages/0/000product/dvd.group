@@ -1425,6 +1425,7 @@
     <package name="libKirigamiPlatform6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libLLVM21" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libLayerShellQtInterface6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libLerc4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libMagickCore-7_Q16HDRI10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libMagickWand-7_Q16HDRI10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libOpenEXR-3_4-33" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2682,7 +2683,7 @@
     <package name="libsnapper8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsnappy1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libsndfile1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libsnmp40" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libsnmp45" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsodium26" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsoftokn3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsolv-tools-base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

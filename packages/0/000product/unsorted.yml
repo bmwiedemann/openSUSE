@@ -3329,6 +3329,7 @@ unsorted:
   - dnf-plugins-core-lang 
   - dnf4 
   - dnf4-lang 
+  - dnf5 
   - dnf5-devel 
   - dnf5-plugin-automatic 
   - dnf5-plugin-manifest 
@@ -11093,6 +11094,7 @@ unsorted:
   - leptonica-devel 
   - leptonica-tools 
   - lerc-devel 
+  - lerc-devel-32bit 
   - letsconnect-client 
   - letterize 
   - level-zero 
@@ -11298,7 +11300,7 @@ unsorted:
   - libLTO19 
   - libLTO20 
   - libLTO21 
-  - libLerc4 
+  - libLerc4-32bit 
   - libLibreGraphAPI1 
   - libLimeSuite23_11-0 
   - libMagick++-7_Q16HDRI5 
@@ -11792,7 +11794,7 @@ unsorted:
   - liba52-devel 
   - libabigail-devel 
   - libabigail-tools 
-  - libabigail6 
+  - libabigail8 
   - libabiword-3_0 
   - libabiword-3_0-devel 
   - libabsl_base2601_0_0-32bit 
@@ -12972,6 +12974,7 @@ unsorted:
   - libdnet1 
   - libdnf-devel 
   - libdnf5-cli-devel 
+  - libdnf5-cli3 
   - libdnf5-devel 
   - libdnf5-plugin-actions 
   - libdnf5-plugin-expired-pgp-keys 
@@ -13450,7 +13453,6 @@ unsorted:
   - libfwps1 
   - libfwsi-devel 
   - libfwsi1 
-  - libfyaml 
   - libfyaml-devel 
   - libfyaml-fy-tool 
   - libgadu-devel 
@@ -16301,7 +16303,7 @@ unsorted:
   - libsndfile-progs 
   - libsndfile1-32bit 
   - libsndio7 
-  - libsnmp40-32bit 
+  - libsnmp45-32bit 
   - libsoc-common 
   - libsoc-devel 
   - libsoc2 
@@ -26668,14 +26670,9 @@ unsorted:
   - python311-proton-client 
   - python311-proton-core 
   - python311-proton-vpn-api-core 
-  - python311-proton-vpn-connection 
-  - python311-proton-vpn-killswitch 
   - python311-proton-vpn-killswitch-network-manager 
   - python311-proton-vpn-local-agent 
-  - python311-proton-vpn-logger 
   - python311-proton-vpn-network-manager 
-  - python311-proton-vpn-network-manager-openvpn 
-  - python311-proton-vpn-session 
   - python311-protonvpn-nm-lib 
   - python311-proxmoxer 
   - python311-pscript 
@@ -30533,14 +30530,9 @@ unsorted:
   - python312-proton-client 
   - python312-proton-core 
   - python312-proton-vpn-api-core 
-  - python312-proton-vpn-connection 
-  - python312-proton-vpn-killswitch 
   - python312-proton-vpn-killswitch-network-manager 
   - python312-proton-vpn-local-agent 
-  - python312-proton-vpn-logger 
   - python312-proton-vpn-network-manager 
-  - python312-proton-vpn-network-manager-openvpn 
-  - python312-proton-vpn-session 
   - python312-protonvpn-nm-lib 
   - python312-proxmoxer 
   - python312-pscript 
@@ -34396,14 +34388,9 @@ unsorted:
   - python313-proton-client 
   - python313-proton-core 
   - python313-proton-vpn-api-core 
-  - python313-proton-vpn-connection 
-  - python313-proton-vpn-killswitch 
   - python313-proton-vpn-killswitch-network-manager 
   - python313-proton-vpn-local-agent 
-  - python313-proton-vpn-logger 
   - python313-proton-vpn-network-manager 
-  - python313-proton-vpn-network-manager-openvpn 
-  - python313-proton-vpn-session 
   - python313-protonvpn-nm-lib 
   - python313-proxmoxer 
   - python313-pscript 
@@ -50584,10 +50571,7 @@ unsorted:
   - zynaddsubfx-dssi 
   - zynaddsubfx-lv2 
   - zynaddsubfx-vst 
-  - zypp-excludedocs 
   - zypp-gui 
-  - zypp-no-multiversion 
-  - zypp-no-recommends 
   - zypper-aptitude 
   - zypper-changelog-plugin 
   - zypper-keys-plugin 

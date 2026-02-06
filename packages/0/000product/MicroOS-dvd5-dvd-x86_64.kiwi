@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20260205" schemaversion="4.1">
+<image name="OBS__MicroOS___20260206" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20260205</productvar>
+      <productvar name="VERSION">20260206</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260205,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260206,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260205/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260206/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -166,7 +166,6 @@
       <repopackage name="distrobox-bash-completion"/>
       <repopackage name="dmidecode"/>
       <repopackage name="dnf-data"/>
-      <repopackage name="dnf5"/>
       <repopackage name="docbook-xsl-stylesheets"/>
       <repopackage name="docbook_4"/>
       <repopackage name="docker"/>
@@ -622,7 +621,6 @@
       <repopackage name="libdnf-plugin-txnupd"/>
       <repopackage name="libdnf-repo-config-zypp"/>
       <repopackage name="libdnf2"/>
-      <repopackage name="libdnf5-cli3"/>
       <repopackage name="libdnf5-plugin-appstream"/>
       <repopackage name="libdnf5_2"/>
       <repopackage name="libdolphinvcs6"/>
@@ -909,6 +907,7 @@
       <repopackage name="libldap2"/>
       <repopackage name="libldb2"/>
       <repopackage name="libleancrypto1"/>
+      <repopackage name="libLerc4"/>
       <repopackage name="liblilv-0-0"/>
       <repopackage name="liblirc_client0"/>
       <repopackage name="libliveMedia112"/>
@@ -1186,7 +1185,7 @@
       <repopackage name="libsnapper8"/>
       <repopackage name="libsnappy1"/>
       <repopackage name="libsndfile1"/>
-      <repopackage name="libsnmp40"/>
+      <repopackage name="libsnmp45"/>
       <repopackage name="libsodium26"/>
       <repopackage name="libsoftokn3"/>
       <repopackage name="libsolv-tools-base"/>
@@ -1461,7 +1460,6 @@
       <repopackage name="patterns-kde-kde_plasma"/>
       <repopackage name="patterns-microos-alt_onlyDVD"/>
       <repopackage name="patterns-microos-base"/>
-      <repopackage name="patterns-microos-base-microdnf"/>
       <repopackage name="patterns-microos-base-packagekit"/>
       <repopackage name="patterns-microos-base-zypper"/>
       <repopackage name="patterns-microos-basesystem"/>
@@ -1807,6 +1805,9 @@
       <repopackage name="yast2-logs"/>
       <repopackage name="zstd"/>
       <repopackage name="zypp-boot-plugin"/>
+      <repopackage name="zypp-excludedocs"/>
+      <repopackage name="zypp-no-multiversion"/>
+      <repopackage name="zypp-no-recommends"/>
       <repopackage name="zypper"/>
       <repopackage name="zypper-needs-restarting"/>
       <repopackage name="MicroOS-release" addarch="x86_64"/>
