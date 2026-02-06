@@ -1,7 +1,7 @@
 #
 # spec file for package prometheus-postgres_exporter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2021 Silvio Moioli <moio@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -69,6 +69,10 @@ Requires(pre):  shadow
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 %{go_provides}
+
+%if 0%{?debian} || 0%{?ubuntu}
+ExclusiveArch:  do_not_build
+%endif
 
 %description
 Prometheus exporter for PostgreSQL server metrics. Supported PostgreSQL versions: 9.1 and up.

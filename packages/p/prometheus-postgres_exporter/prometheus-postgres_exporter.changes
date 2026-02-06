@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  6 10:57:04 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Do not build for Debian or Ubuntu
+
+-------------------------------------------------------------------
 Tue Nov 21 15:10:00 UTC 2023 - Marina Latini <marina.latini@suse.com>
 
 - Remove duplicated call to systemd requirements
