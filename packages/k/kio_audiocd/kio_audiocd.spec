@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           kio_audiocd
-Version:        25.12.1
+Version:        25.12.2
 Release:        0
 Summary:        KDE I/O Slave for Audio CDs
 License:        GPL-2.0-or-later
@@ -78,7 +78,7 @@ This package contains the development files for the audiocd kio slave
 %files
 %license COPYING*
 %doc %lang(en) %{_kf6_htmldir}/en/kcontrol/
-%doc %lang(en) %{_kf6_htmldir}/en/kioslave5/
+%doc %lang(en) %{_kf6_htmldir}/en/kioworker6/
 %{_kf6_applicationsdir}/kcm_audiocd.desktop
 %{_kf6_appstreamdir}/org.kde.kio_audiocd.metainfo.xml
 %{_kf6_configkcfgdir}/audiocd_*_encoder.kcfg
@@ -102,6 +102,6 @@ This package contains the development files for the audiocd kio slave
 
 %files lang -f %{name}.lang
 %exclude %{_kf6_htmldir}/en/kcontrol/
-%exclude %{_kf6_htmldir}/en/kioslave5/
+%exclude %{_kf6_htmldir}/en/kioworker6/
 
 %changelog
