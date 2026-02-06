@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 26 13:18:46 UTC 2026 - containers@suse.com
+
+- Update to version 1769433269.171420f:
+  * Bump version: 0.0.11 → 0.0.12
+  * Add an option to parse the release
+  * Bump actions/setup-python from 6.1.0 to 6.2.0
+  * Bump actions/cache from 4 to 5
+  * Bump actions/setup-python from 6.0.0 to 6.1.0
+
+-------------------------------------------------------------------
 Mon Oct 28 14:47:12 UTC 2024 - containers@suse.com
 
 - Update to version 1730126702.6c2bf3a:

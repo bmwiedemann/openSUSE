@@ -57,8 +57,11 @@ version_regex = {
     'minor': r'^(\d+(\.\d+){0,1})',
     'patch': r'^(\d+(\.\d+){0,2})',
     'patch_update': r'^(\d+(\.\d+){0,3})',
-    'offset': r'^(?:\d+(?:\.\d+){0,3})[+-.~](?:git|svn|cvs)(\d+)'
+    'offset': r'^(?:\d+(?:\.\d+){0,3})[+-.~](?:git|svn|cvs)(\d+)',
+    'release': r'^(\d+(\.\d+){0,3}([+-.~](?:git|svn|cvs)([\d\w]+))?\-\d+(\.\d+){0,2})',  # noqa: E501
+    'release_increment': r'^(\d+(\.\d+){0,3}([+-.~](?:git|svn|cvs)([\d\w]+))?\-\d+(\.\d+){0,3})',  # noqa: E501
 }
+allowed_version_regex = version_regex.keys()
 obsinfo_regex = r'version: (.+)'
 
 
@@ -131,16 +134,20 @@ def main():
     if command_args['--package']:
         parse_version = command_args['--parse-version']
         version = find_package_version(command_args['--package'], rpm_dir)
-        if parse_version and parse_version not in version_regex.keys():
-            raise Exception((
-                'Invalid value for this flag. Expected format is: '
-                '--parse-version=[major|minor|patch|patch_update|offset]'
-            ))
-        elif parse_version:
-            version = find_match_in_version(
-                version_regex[parse_version], version
-            )
-        replacement = version
+
+        if parse_version is not None:
+            if parse_version not in allowed_version_regex:
+                raise Exception(
+                    f"Invalid value '{parse_version}' for --parse-version "
+                    f"flag. Expected: {allowed_version_regex}"
+                )
+            else:
+                replacement = find_match_in_version(
+                    version_regex[parse_version], version
+                )
+        else:
+            # drop %RELEASE to keep compatibility
+            replacement = version.rsplit("-", 1)[0]
     else:
         replacement = command_args['--replacement']
 
@@ -254,7 +261,7 @@ def get_pkg_name_from_rpm(rpm_file: str) -> str:
 
 def get_pkg_version_from_rpm(rpm_file: str) -> str:
     command = [
-        'rpm', '-qp', '--queryformat', '%{VERSION}', rpm_file
+        'rpm', '-qp', '--queryformat', '%{VERSION}-%{RELEASE}', rpm_file
     ]
     return run_command(command)
 
@@ -268,7 +275,7 @@ def get_pkg_provides_from_rpm(rpm_file: str) -> List[str]:
 
 def get_pkg_version(package: str) -> str:
     command = [
-        'rpm', '-q', '--queryformat', '%{VERSION}', package
+        'rpm', '-q', '--queryformat', '%{VERSION}-%{RELEASE}', package
     ]
     return run_command(command)
 
