@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 29 21:10:29 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.61.1:
+  * Revert "init: change --manifest-depth default to 1"
+  * manifest_xml: prevent extend-project from inheriting local groups
+  * CONTRIBUTING: fix HTTP password URL
+  * project: disable auto-gc for depth=1 in git config
+  * run_tests/release: require Python 3.9+
+  * tests: drop tox support
+  * github: add black check action
+  * tests: skip AF_UNIX tests when unavailable
+  * check-metadata: skip files that do not exist
+  * init: change --manifest-depth default to 1
+
+-------------------------------------------------------------------
 Tue Dec 16 16:30:03 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - Update to version 2.60.1:
