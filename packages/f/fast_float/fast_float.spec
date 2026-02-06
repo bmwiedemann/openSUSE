@@ -1,7 +1,7 @@
 #
 # spec file for package fast_float
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fast_float
-Version:        8.1.0
+Version:        8.2.2
 Release:        0
 Summary:        Re-implementation of std::from_chars for parsing strings into numbers
 License:        Apache-2.0 OR BSL-1.0 OR MIT

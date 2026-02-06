@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  3 14:56:22 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.2.2
+  * Added template overloads for integer_times_pow10()
+  * Added corner cases around max value/infinity
+  * Faster uint8_t parsing
+
+-------------------------------------------------------------------
 Tue Oct  7 16:11:47 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.1.0
