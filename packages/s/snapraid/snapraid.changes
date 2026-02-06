@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb  6 10:01:31 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 13.0:
+  * Added new thermal protection configuration options
+  * Added a new "probe" command that shows the spinning status of all disks.
+  * Added a new -s, --spin-down-on-error option that spins down all disks when a command ends with an error.
+  * Added a new -A, --stats option for an extensive view of the process.
+  * Removed the SMART attribute 193 "Load Cycle Count" from the failure probability computation
+  * Added a new "smartignore" configuration option to ignore specific SMART attributes
+
+-------------------------------------------------------------------
 Sat May 10 18:16:35 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 12.4:
