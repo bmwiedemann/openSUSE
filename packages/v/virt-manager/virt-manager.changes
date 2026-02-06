@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 23 12:05:21 MST 2026 - carnold@suse.com
+
+- bsc#1257182 - A VM will fail to boot with Intel TDX or AMD SNP
+  with a TPM device defined in the VM
+  virtinst-remove-tpm-device-for-tdx-and-snp.patch
+- Modified detection of SLES distros to be more flexible with
+  media naming conventions
+
+-------------------------------------------------------------------
 Wed Jan  7 13:32:03 MST 2026 - carnold@suse.com
 
 - Upstream features and bug fixes (bsc#1027942) (jsc#PED-14625)

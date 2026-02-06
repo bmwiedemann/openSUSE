@@ -2,7 +2,7 @@ Index: virt-manager-5.1.0/virtinst/install/urldetect.py
 ===================================================================
 --- virt-manager-5.1.0.orig/virtinst/install/urldetect.py
 +++ virt-manager-5.1.0/virtinst/install/urldetect.py
-@@ -271,8 +271,11 @@ class _SUSEContent:
+@@ -271,20 +271,27 @@ class _SUSEContent:
  
          # Special case, parse version out of a line like this
          # cpe:/o:opensuse:opensuse:13.2,openSUSE
@@ -16,22 +16,28 @@ Index: virt-manager-5.1.0/virtinst/install/urldetect.py
          distro_version = distro_version.strip()
  
          if "Enterprise" in self.product_name or "SLES" in self.product_name or "Micro" in self.product_name:
-@@ -283,6 +286,14 @@ class _SUSEContent:
+             if " SAP " in self.product_name:
+                 sle_version = self.product_name.strip().rsplit(' ')[7]
+-            if " High Performance " in self.product_name:
++            elif " High Performance " in self.product_name:
+                 sle_version = self.product_name.strip().rsplit(' ')[6]
++            elif "SUSE SL Micro" in self.product_name:
++                sle_version = self.product_name.strip().rsplit(' ')[3]
              else:
-                 if "SUSE SL Micro" in self.product_name:
-                     sle_version = self.product_name.strip().rsplit(' ')[3]
-+                elif "SLES Full" in self.product_name or "SUSE SLES" in self.product_name:
-+                    # For SLES 16
-+                    sle_version = self.product_name.strip().rsplit(' ')
-+                    for num in sle_version:
-+                        num = num.rstrip(".0")
-+                        if num.isnumeric():
-+                            sle_version = num
-+                            break
-                 else:
-                     sle_version = self.product_name.strip().rsplit(' ')[4]
+-                if "SUSE SL Micro" in self.product_name:
+-                    sle_version = self.product_name.strip().rsplit(' ')[3]
+-                else:
+-                    sle_version = self.product_name.strip().rsplit(' ')[4]
++                sle_version = self.product_name.strip().rsplit(' ')
++                for num in sle_version:
++                    num = num.replace(".0", "", 1)
++                    if num.isnumeric():
++                        sle_version = num
++                        break
              if len(self.product_name.strip().rsplit(' ')) > 5 and not " Micro " in self.product_name:
-@@ -518,13 +529,20 @@ class _SuseDistro(_RHELDistro):
+                 if " SAP " in self.product_name:
+                     sle_version = (sle_version + '.' + self.product_name.strip().rsplit(' ')[8][2])
+@@ -518,13 +525,20 @@ class _SuseDistro(_RHELDistro):
  
          if not cache.checked_for_suse_content:
              cache.checked_for_suse_content = True
@@ -52,7 +58,7 @@ Index: virt-manager-5.1.0/virtinst/install/urldetect.py
                  if media_str:
                      media_arch = "x86_64"
                      if 'aarch64' in media_str:
-@@ -580,6 +598,10 @@ class _SuseDistro(_RHELDistro):
+@@ -580,6 +594,10 @@ class _SuseDistro(_RHELDistro):
              if tree_arch == "ppc64":
                  self._kernel_paths.append(("suseboot/linux64", "suseboot/initrd64"))
  
@@ -63,16 +69,16 @@ Index: virt-manager-5.1.0/virtinst/install/urldetect.py
          # Tested with SLES 12 for ppc64le, all s390x
          self._kernel_paths.append(("boot/%s/linux" % tree_arch, "boot/%s/initrd" % tree_arch))
          # Tested with Opensuse 10.0
-@@ -669,7 +691,7 @@ class _SLESDistro(_SuseDistro):
+@@ -669,7 +687,7 @@ class _SLESDistro(_SuseDistro):
      PRETTY_NAME = "SLES"
      matching_distros = ["sles"]
      _variant_prefix = "sles"
 -    _suse_regex = [".*SUSE Linux Enterprise Server*", ".*SUSE SLES*"]
-+    _suse_regex = [".*SUSE Linux Enterprise Server*", ".*SLES Full*", ".*SUSE SLES*"]
++    _suse_regex = [".*SUSE Linux Enterprise Server*", ".*SLES*", ".*SUSE SLES*"]
      famregex = ".*SUSE Linux Enterprise.*"
  
  
-@@ -965,17 +987,17 @@ def _build_distro_list(osobj):
+@@ -965,17 +983,17 @@ def _build_distro_list(osobj):
      allstores = [
          # Libosinfo takes priority
          _LibosinfoDistro,

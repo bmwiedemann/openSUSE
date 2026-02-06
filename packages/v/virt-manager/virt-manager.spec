@@ -110,6 +110,7 @@ Patch284:       virtinst-add-slem60-detection-support.patch
 Patch285:       virtinst-windows-server-detection.patch
 Patch286:       virtinst-drop-removeprefix-usage.patch
 Patch287:       virtinst-add-sle16-detection-support.patch
+Patch288:       virtinst-remove-tpm-device-for-tdx-and-snp.patch
 
 BuildArch:      noarch
 

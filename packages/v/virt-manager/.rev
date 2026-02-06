@@ -2254,4 +2254,12 @@
     <comment>Several upstream features and bug fixes</comment>
     <requestid>1326011</requestid>
   </revision>
+  <revision rev="285" vrev="7">
+    <srcmd5>f4062c2e9c8c19eb415ccb2fee1d57e5</srcmd5>
+    <version>5.1.0</version>
+    <time>1770409793</time>
+    <user>anag_factory</user>
+    <comment>Fix for bsc#1257182 - A VM will fail to boot with Intel TDX or AMD SNP with a TPM device defined in the VM. Adjusted SLES media detection while preserving old.</comment>
+    <requestid>1330617</requestid>
+  </revision>
 </revisionlist>

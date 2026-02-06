@@ -1,0 +1,35 @@
+References: bsc#1257182
+
+Index: virt-manager-5.1.0/virtinst/guest.py
+===================================================================
+--- virt-manager-5.1.0.orig/virtinst/guest.py
++++ virt-manager-5.1.0/virtinst/guest.py
+@@ -1049,6 +1049,16 @@ class Guest(XMLBuilder):
+         self.pm.set_defaults(self)
+         self.os.set_defaults(self)
+         self.launchSecurity.set_defaults(self)
++        # Currently TPM does not work with SEV-SNP and TDX.
++        # Remove TPM device if present.
++        if self.have_default_tpm:
++            domcaps = self.lookup_domcaps()
++            if domcaps.get_launch_security_type() is not None:
++                for dev in self.devices.get_all():
++                    if dev.type == DeviceTpm.TYPE_EMULATOR:
++                        self.remove_device(dev)
++                        self.have_default_tpm = False
++                        break
+ 
+         for dev in self.devices.get_all():
+             dev.set_defaults(self)
+--- virt-manager-5.1.0/tests/data/cli/compare/virt-install-amd-sev.xml.orig	2026-01-23 13:52:18.196433822 -0700
++++ virt-manager-5.1.0/tests/data/cli/compare/virt-install-amd-sev.xml	2026-01-23 13:53:20.340435342 -0700
+@@ -66,9 +66,6 @@
+       <target type="virtio" name="com.redhat.spice.0"/>
+     </channel>
+     <input type="tablet" bus="usb"/>
+-    <tpm model="tpm-crb">
+-      <backend type="emulator"/>
+-    </tpm>
+     <graphics type="spice" port="-1" tlsPort="-1" autoport="yes">
+       <image compression="off"/>
+     </graphics>
