@@ -32,7 +32,7 @@ Summary:        Reverse proxy designed for Prometheus exporters
 License:        Apache-2.0
 Group:          System/Monitoring
 URL:            https://%{provider_prefix}
-Source0:        %{repo}-%{version}.tar.gz
+Source0:        %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{repo}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        exporter_exporter.yaml
 Source3:        prometheus-exporter_exporter.service
@@ -62,6 +62,10 @@ ExcludeArch:    s390
 %if 0%{?suse_version}
 %{go_nostrip}
 %{go_provides}
+%endif
+
+%if 0%{?debian} || 0%{?ubuntu}
+ExclusiveArch:  do_not_build
 %endif
 
 %description

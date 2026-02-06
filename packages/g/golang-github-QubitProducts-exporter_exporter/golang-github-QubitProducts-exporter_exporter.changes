@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  5 17:57:19 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Replace cpio with tar
+- Do not build on Debian or Ubuntu
+
+-------------------------------------------------------------------
 Fri Jan  9 17:36:23 UTC 2026 - Marina Latini <marina.latini@suse.com>
 
 - Restore debug build:
