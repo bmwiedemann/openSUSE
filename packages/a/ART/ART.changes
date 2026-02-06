@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb  6 08:34:01 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.26.1:
+  * fixed layout of simple editor mode
+  * KLT Files duplicated
+  * properly activate fast-export mode
+  * added wb presets for the Nikon Z5
+  * imagedata: properly set ISO speed in Exif
+
+-------------------------------------------------------------------
 Fri Oct 17 06:56:44 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.25.9 (no changelog).

@@ -1,7 +1,7 @@
 #
 # spec file for package ART
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 
 Name:           ART
-Version:        1.25.9
+Version:        1.26.1
 Release:        0
 Summary:        Rawtherapee fork with masks and simplified UI
 License:        GPL-3.0-only
@@ -142,5 +142,7 @@ mv %{buildroot}%{_datadir}/doc/%{name} %{buildroot}%{_docdir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_mandir}/*/%{name}*
 %{_docdir}/%{name}
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/us.pixls.art.ART.metainfo.xml
 
 %changelog
