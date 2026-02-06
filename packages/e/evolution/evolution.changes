@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Feb  4 14:31:12 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add evolution-year-view-week-number.patch: fix incorrect week
+  numbers in calendar year view (bsc#1256465
+  glgo#GNOME/evolution#3238).
+
+-------------------------------------------------------------------
+Fri Jan 30 15:13:45 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.58.3:
+  + Bug Fixes:
+    - Hides .p7m attachments
+    - Mail: Crash with invalid UTF-8 folder name
+    - Mail: Reply with selected text can preserve also original
+      body
+  + Miscellaneous: flatpak: Add gettext ACLOCAL workaround
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Nov 21 11:12:39 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.58.2:
@@ -8896,12 +8915,12 @@ Fri Oct 31 15:54:05 CET 2008 - msuman@suse.de
   for picking the LDAP libraries.
 
 -------------------------------------------------------------------
-Tue Oct 28 18:39:33 CST 2008 - maw@suse.de
+Tue Oct 28 18:39:33 UTC 2008 - maw@suse.de
 
 - Tag evo-core-mapi-changes.diff.
 
 -------------------------------------------------------------------
-Sun Oct 26 23:45:11 CST 2008 - hpj@novell.com
+Sun Oct 26 23:45:11 UTC 2008 - hpj@novell.com
 
 - Add evolution-shared-nss-db.patch, which migrates the old NSS
   cert DB to the new, shared format and location.
@@ -9732,13 +9751,13 @@ Fri Mar 30 14:20:52 CEST 2007 - aj@suse.de
 - Fix BuildRequires.
 
 -------------------------------------------------------------------
-Thu Mar 22 13:08:10 CST 2007 - maw@suse.de
+Thu Mar 22 13:08:10 UTC 2007 - maw@suse.de
 
 - Update to version 2.10.0
 - Update the required intltool version.
 
 -------------------------------------------------------------------
-Mon Mar 12 16:44:10 CST 2007 - maw@suse.de
+Mon Mar 12 16:44:10 UTC 2007 - maw@suse.de
 
 - Update to version 2.9.91
 - Remove upstreamed bnc-214647-add-prefer-plain-plugin.patch

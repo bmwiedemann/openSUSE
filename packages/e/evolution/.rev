@@ -2738,4 +2738,23 @@ New stable rel</comment>
   + Updated translations. (forwarded request 1319065 from iznogood)</comment>
     <requestid>1319636</requestid>
   </revision>
+  <revision rev="292" vrev="1">
+    <srcmd5>08f5070ef54701f1ef9841d4703be4df</srcmd5>
+    <version>3.58.3</version>
+    <time>1770401119</time>
+    <user>anag_factory</user>
+    <comment>- Add evolution-year-view-week-number.patch: fix incorrect week
+  numbers in calendar year view (bsc#1256465
+  glgo#GNOME/evolution#3238).
+
+- Update to version 3.58.3:
+  + Bug Fixes:
+    - Hides .p7m attachments
+    - Mail: Crash with invalid UTF-8 folder name
+    - Mail: Reply with selected text can preserve also original
+      body
+  + Miscellaneous: flatpak: Add gettext ACLOCAL workaround
+  + Updated translations. (forwarded request 1330983 from mgorse)</comment>
+    <requestid>1331120</requestid>
+  </revision>
 </revisionlist>

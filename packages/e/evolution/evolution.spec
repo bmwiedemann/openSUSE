@@ -1,7 +1,7 @@
 #
 # spec file for package evolution
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _version %(echo %{version} | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
 
 Name:           evolution
-Version:        3.58.2
+Version:        3.58.3
 Release:        0
 # FIXME: check if note on license is still valid (comment before license)
 Summary:        The Integrated GNOME Mail, Calendar, and Address Book Suite
@@ -29,6 +29,8 @@ License:        CC-BY-SA-3.0 AND LGPL-2.0-only AND LGPL-3.0-only AND OLDAP-2.8 A
 Group:          Productivity/Networking/Email/Clients
 URL:            https://wiki.gnome.org/Apps/Evolution/
 Source0:        %{name}-%{version}.tar.zst
+# PATCH-FIX-UPSTREAM evolution-year-view-week-number.patch bsc#1256465 mgorse@suse.com -- fix incorrect week numbers in calendar year view.
+Patch0:         evolution-year-view-week-number.patch
 
 BuildRequires:  bison
 BuildRequires:  bogofilter
