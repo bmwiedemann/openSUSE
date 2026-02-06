@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Feb  6 13:27:13 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 4.11.0
+  * New features and improvements
+    + Replace PlexusIoZipFileResourceCollection with
+      PlexusArchiverZipFileResourceCollection for non-JAR formats
+  * Bug Fixes
+    + Revert "Utilize VT if possible
+    + Fix AbstractZipUnArchiver handling of zip entries with
+      unspecified modification time
+    + Fix AbstractArchiver.getFiles() to return forward slashes for
+      ZIP-based archivers
+    + Reduce heap usage in Zip archiver to prevent OutOfMemoryError
+      in CI builds
+  * Maintenance
+    + Convert to Markdown and compare to Commons Compress
+    + JUnit Jupiter best practices
+    + Replace FileUtils.deleteDirectory(File) with JDK provided API
+  * Dependency updates
+    + Downgrade plexus-utils to 3.6.0
+    + Bump com.github.luben:zstd-jni from 1.5.7-4 to 1.5.7-6
+    + Bump plexus-io to 3.6.0
+    + Bump org.codehaus.plexus:plexus from 23 to 25
+    + Replace Airlift Snappy with Apache Commons Compress
+    + Removal of dependency to AirCompressor that contains
+      vulnerabilities
+    + Bump org.tukaani:xz from 1.10 to 1.11
+- Modified patch:
+  * 0002-Remove-support-for-zstd.patch
+    -> 0001-Remove-support-for-zstd.patch
+    + rediff
+- Removed patch:
+  * 0001-Remove-support-for-snappy.patch
+    + snappy support goes now through commons-io that we package
+
+-------------------------------------------------------------------
 Tue Oct  7 11:25:23 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 4.10.2

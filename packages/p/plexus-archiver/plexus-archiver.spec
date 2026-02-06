@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-archiver
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           plexus-archiver
-Version:        4.10.2
+Version:        4.11.0
 Release:        0
 Summary:        Plexus Archiver Component
 License:        Apache-2.0
@@ -25,8 +25,7 @@ Group:          Development/Libraries/Java
 URL:            https://codehaus-plexus.github.io/plexus-archiver
 Source0:        https://github.com/codehaus-plexus/plexus-archiver/archive/plexus-archiver-%{version}.tar.gz
 Source1:        %{name}-build.xml
-Patch0:         0001-Remove-support-for-snappy.patch
-Patch1:         0002-Remove-support-for-zstd.patch
+Patch0:         0001-Remove-support-for-zstd.patch
 Patch2:         y2038.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-compress
@@ -62,14 +61,6 @@ Javadoc for %{name}.
 cp %{SOURCE1} build.xml
 
 %patch -P 0 -p1
-%pom_remove_dep io.airlift:aircompressor
-rm -rf src/main/java/org/codehaus/plexus/archiver/snappy
-rm -rf src/test/java/org/codehaus/plexus/archiver/snappy
-rm -f src/main/java/org/codehaus/plexus/archiver/tar/SnappyTarFile.java
-rm -f src/main/java/org/codehaus/plexus/archiver/tar/PlexusIoTarSnappyFileResourceCollection.java
-rm -r src/test/java/org/codehaus/plexus/archiver/tar/TarSnappyUnArchiverTest.java
-
-%patch -P 1 -p1
 %pom_remove_dep com.github.luben:zstd-jni
 rm -rf src/main/java/org/codehaus/plexus/archiver/zstd
 rm -rf src/test/java/org/codehaus/plexus/archiver/zstd

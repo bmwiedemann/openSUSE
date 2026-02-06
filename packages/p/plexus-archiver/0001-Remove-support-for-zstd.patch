@@ -1,7 +1,7 @@
-From f703c72614a8d78af30152f83004ac74ec8aadae Mon Sep 17 00:00:00 2001
+From c2472e893d0a438fd5cef7d9eae98ccea1bf2d60 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
 Date: Thu, 13 Jun 2024 09:02:59 +0200
-Subject: [PATCH 2/2] Remove support for zstd
+Subject: [PATCH] Remove support for zstd
 
 ---
  .../java/org/codehaus/plexus/archiver/tar/TarArchiver.java     | 3 +--
@@ -9,12 +9,12 @@ Subject: [PATCH 2/2] Remove support for zstd
  2 files changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/src/main/java/org/codehaus/plexus/archiver/tar/TarArchiver.java b/src/main/java/org/codehaus/plexus/archiver/tar/TarArchiver.java
-index 070849c1..c0f10c60 100644
+index 2091eaf8..78c469ef 100644
 --- a/src/main/java/org/codehaus/plexus/archiver/tar/TarArchiver.java
 +++ b/src/main/java/org/codehaus/plexus/archiver/tar/TarArchiver.java
 @@ -29,7 +29,6 @@
- import org.apache.commons.compress.archivers.tar.TarArchiveOutputStream;
  import org.apache.commons.compress.compressors.bzip2.BZip2CompressorOutputStream;
+ import org.apache.commons.compress.compressors.snappy.FramedSnappyCompressorOutputStream;
  import org.apache.commons.compress.compressors.xz.XZCompressorOutputStream;
 -import org.apache.commons.compress.compressors.zstandard.ZstdCompressorOutputStream;
  import org.codehaus.plexus.archiver.AbstractArchiver;
@@ -30,18 +30,18 @@ index 070849c1..c0f10c60 100644
  
          return ostream;
 diff --git a/src/main/java/org/codehaus/plexus/archiver/tar/TarUnArchiver.java b/src/main/java/org/codehaus/plexus/archiver/tar/TarUnArchiver.java
-index 0ae6e3b4..8fa6e925 100644
+index de73c106..173e4c22 100644
 --- a/src/main/java/org/codehaus/plexus/archiver/tar/TarUnArchiver.java
 +++ b/src/main/java/org/codehaus/plexus/archiver/tar/TarUnArchiver.java
-@@ -27,7 +27,6 @@
- import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
+@@ -28,7 +28,6 @@
  import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
+ import org.apache.commons.compress.compressors.snappy.FramedSnappyCompressorInputStream;
  import org.apache.commons.compress.compressors.xz.XZCompressorInputStream;
 -import org.apache.commons.compress.compressors.zstandard.ZstdCompressorInputStream;
  import org.codehaus.plexus.archiver.AbstractUnArchiver;
  import org.codehaus.plexus.archiver.ArchiverException;
  import org.codehaus.plexus.archiver.util.Streams;
-@@ -140,7 +139,7 @@ private InputStream decompress(UntarCompressionMethod compression, final File fi
+@@ -141,7 +140,7 @@ private InputStream decompress(UntarCompressionMethod compression, final File fi
          } else if (compression == UntarCompressionMethod.XZ) {
              return new XZCompressorInputStream(istream);
          } else if (compression == UntarCompressionMethod.ZSTD) {
@@ -51,5 +51,5 @@ index 0ae6e3b4..8fa6e925 100644
          return istream;
      }
 -- 
-2.45.2
+2.52.0
 
