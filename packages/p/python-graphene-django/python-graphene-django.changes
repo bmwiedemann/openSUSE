@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb  5 23:52:55 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.2.3:
+  * remove dead code: singledispatch has been in the standard library since
+    Python 3.7.
+  * add official Django 5.1 support
+  * fix typed choices, work with different Django 5x choices options
+  * Bugfix: call resolver function in DjangoConnectionField as documented
+
+-------------------------------------------------------------------
 Wed Nov 13 05:05:17 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.2.2:

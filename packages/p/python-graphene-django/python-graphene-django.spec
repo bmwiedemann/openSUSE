@@ -1,7 +1,7 @@
 #
 # spec file for package python-graphene-django
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-graphene-django
-Version:        3.2.2
+Version:        3.2.3
 Release:        0
 Summary:        Graphene Django integration
 License:        MIT
@@ -38,15 +38,15 @@ Requires:       python-text-unidecode
 Suggests:       python-djangorestframework >= 3.6.3
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 2.2}
-BuildRequires:  %{python_module django-filter >= 2}
+BuildRequires:  %{python_module Django >= 3.2}
+BuildRequires:  %{python_module django-filter >= 22.1}
 BuildRequires:  %{python_module djangorestframework >= 3.6.3}
 BuildRequires:  %{python_module graphene >= 3.0}
 BuildRequires:  %{python_module graphql-core >= 3.1.0}
 BuildRequires:  %{python_module graphql-relay >= 3.1}
 BuildRequires:  %{python_module promise >= 2.1}
 BuildRequires:  %{python_module psycopg2}
-BuildRequires:  %{python_module pytest-django >= 3.3.2}
+BuildRequires:  %{python_module pytest-django >= 4.5.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module text-unidecode}
