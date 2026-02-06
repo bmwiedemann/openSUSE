@@ -1,4 +1,201 @@
 -------------------------------------------------------------------
+Thu Feb  5 23:22:54 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.1.2132 
+- refreshed patch vim-8.2.2411-globalvimrc.patch
+ * patch 9.1.2132: [security]: buffer-overflow in 'helpfile' option handling
+ * translation(tr): Update Turkish translations
+ * patch 9.1.2131: tests: Test_diff_screen() fails on BSD
+ * translation(sv): Remove duplicates from [g]vim.desktop.in
+ * runtime(context): fix issue with SyncTeX and update command
+ * runtime(doc): add note for -complete=shellcmdline
+ * patch 9.1.2130: Page scrolling in Insert mode beeps
+ * runtime(haskellcomplete): fix Undefined variable b:completingLangExtension.
+ * patch 9.1.2129: MS-Windows: font size calculation slightly wrong, causing line gaps
+ * runtime(doc): Update version9.txt with numbered patches
+ * runtimei(vim9): Always launch programs in background (linux)
+ * translation(ta): Include Tamil Translation
+ * patch 9.1.2128: Heap use after free in buf_check_timestamp()
+ * runtime(c): only set keywordprg when there has 'man'
+ * runtime(vim): Fix for :VimKeywordPrg when syntax does not match
+ * translation(sv): Update tutor1.sv to version 1.7
+ * translation(sv): Add Swedish translation of tutor2
+ * translation(sv): Fix typo and help.svx formatting
+ * runtime(doc): Clarify the behaviour of command completion functions
+ * patch 9.1.2127: MS-Windows: DirectX renders font too small
+ * runtime(odin): update indent and syntax scripts
+ * runtime(doc): update win_findbuf() return value
+ * patch 9.1.2126: vim --version used single column for feature list
+ * runtime(vim): Update base syntax, match Vim9 :unlet command
+ * runtime(doc): Improve the description at :help :cwindow
+ * patch 9.1.2125: MS-Windows: DirectX rendering can be improved
+ * runtime(qf): Update quickfix syntax
+ * runtime(doc): Fix some overlength lines
+ * runtime(colors): improve catppuccin colorscheme
+ * patch 9.1.2124: blob2str() does not handle UTF-16 encoding
+ * patch 9.1.2123: using NOT with a float returns a float in legacy script
+ * patch 9.1.2122: Vim9: Negating a float doesn't result in a bool
+ * patch 9.1.2121: Vim9: type issue when modifying a variable using :legacy
+ * patch 9.1.2120: blob2str() does not restore trailing newline
+ * runtime(doc): Reformat example at :h gui-w32-fullscreen
+ * patch 9.1.2119: tests: Test_language_cmd fails on OpenBSD
+ * patch 9.1.2118: 'cursorline' missing after :diffput to empty buf
+ * patch 9.1.2117: unnecessary braces in terminal.c
+ * patch 9.1.2116: crash when using 'tagfunc'
+ * patch 9.1.2115: CI: wrong preprocessor indentation
+ * patch 9.1.2114: modeless selection not copied to * register
+ * runtime(tera): update syntax files to support many more tera code
+ * patch 9.1.2113: potential NULL pointer dereference issues
+ * runtime(doc): Mark the use of "\n" in the tabpanel as experimental
+ * runtime(rust): Fix Rust indentation when string contains "if"
+ * runtime(doc): 'ignorecase' affects character classes in the old engine
+ * runtime(helpcurwin): fix E121 error
+ * patch 9.1.2112: long statusline may crash if using singlebyte encoding
+ * patch 9.1.2111: Vim9: no error for elseif/else after else
+ * runtime(make): Declare syntax file orphaned
+ * runtime(8th): Update syntax script
+ * runtime(doc): fix missing code block marker in ft-python-syntax
+ * runtime(vim): set 'path' to common Vim directories
+ * translation(sv): Add Swedish translation
+ * runtime(python): Highlight built-in constants in Python
+ * runtime(c): set 'keywordprg' to :CKeywordPrg in a GUI
+ * runtime(doc): fix inconsistent indent in ft_rust.txt
+ * runtime(colors): include new catppuccin colorscheme
+ * runtime(doc): Fix overlength lines in :help {russian,vietnamese}.txt
+ * runtime(toml): update syntax and ftplugin.
+ * runtime(doc): clarify the help style a bit
+ * patch 9.1.2110: filetype: skhd files are not recognized
+ * runtime: convert *_utf-8.vim files to actual UTF-8 encoding
+ * runtime(doc): Fix erroneous *roff syntax examples
+ * runtime(doc): Tweak tag lines in vim9.txt
+ * runtime(rustfmt): Recover accidentally deleted code, don't hide rustfmt error
+ * runtime(doc): mark a-a-p website as dead
+ * patch 9.1.2109: filetype: NetLinx fires are not recognized
+ * patch 9.1.2108: tests: Test_foldtextresult_rightleft() does not restore 'columns'
+ * patch 9.1.2107: :normal may change cmdline history
+ * patch 9.1.2106: Vim9: class, enum and type alias can be used as value
+ * patch 9.1.2105: tests: not enough tests for using plain_vgetc()
+ * runtime(doc): Fix typo in syntax.txt
+ * runtime(csh): Update ftplugin, improve matchit behaviour
+ * patch 9.1.2104: readdirex() might be slow
+ * runtime(csh,tcsh): Update syntax files
+ * translation(ua): Update Ukrainian translation
+ * patch 9.1.2103: tests: test_fold.vim leaves swapfiles behind
+ * patch 9.1.2102: foldtext not reversed and cut off in 'rightleft' mode
+ * check.vim: Use silent command modifier
+ * runtime(debcontrol): improve Debian syntax files
+ * runtime(kitty): Add kitty ftplugin file
+ * patch 9.1.2101: Vim9: more truthiness issues
+ * patch 9.1.2100: filetype: tiltfiles are not recognized
+ * CI: Reorder path in Windows CI runners and move Python3 before $PATH
+ * runtime(doc): Update [gnt]roff information
+ * patch 9.1.2099: different line endings in ja.sjis.po and ja.po
+ * runtime(netrw): Do not create swapfiles in netrw buffers
+ * runtime(sml): add 'include' setting to ftplugin
+ * runtime(asm): add '#' as comment symbol (GNU as)
+ * runtime(menu): fix space before Tab and trailing space
+ * patch 9.1.2098: Crash with 'wildmenu' when typing Ctrl-Y after Ctrl-A
+ * patch 9.1.2097: TabClosedPre may be triggered twice for the same tab page
+ * patch 9.1.2096: Vim9: truthiness issue with objects
+ * patch 9.1.2095: :wqall! doesn't quit when using :quit in BufWritePost
+ * translation(jp): Update Japanese Translation for Vim 9.2 Release
+ * runtime(haskell): add include-search and define support in ftplugin
+ * runtime(doc): Update advice for [gnt]roff users
+ * patch 9.1.2094: filetype: tiger files are not recognized
+ * patch 9.1.2093: heap-use-after-free when wiping buffer in TabClosedPre
+ * runtime(doc): Tweak documentation style in {ft_context,terminal}.txt
+ * runtime: Changed old "Sponsor" menu item name to a new one
+ * patch 9.1.2092: cannot detect kitty foreground/background color
+ * patch 9.1.2091: Ruby integration does not work correctly
+ * patch 9.1.2090: Last buffer not freed with EXITFREE
+ * runtime(doc): fix return type in getqflist() and getloclist()
+ * runtime(syntax-tests): tests: sh_10 fails on MacOS runners
+ * patch 9.1.2089: Wayland: Clipboard not working with external programs
+ * patch 9.1.2088: Redundant NULL checks in find_pattern_in_path()
+ * patch 9.1.2087: Crash when using :tabonly in BufUnload
+ * runtime(tutor): Add Chinese translation for chapter 1
+ * runtime(c,cpp): Add reference links to noreturn tests
+ * runtime(sh): highlight single-dash short options containing digits
+ * translation(sr): update Serbian messages translation
+ * runtime(c): Do not highlight noreturn in C++ code
+ * runtime(csh): Support negated if in matchit
+ * runtime(rapid): Update syntax file for ABB Rapid
+ * patch 9.1.2086: Memory leak when skipping invalid literal dict
+ * runtime(mbsync): Add syntax highlighting for TLSVersions keyword
+ * runtime(yaml): fix indentation script
+ * patch 9.1.2085: Use-after-free in winframe_remove()
+ * runtime(compiler): add compiler plugin for cabal
+ * patch 9.1.2084: Compile error when build with job feature
+ * CI: Add C preproc indentation check to CI
+ * patch 9.1.2083: style: wrong indentation of nested ifdefs
+ * patch 9.1.2082: modeless auto-select not working
+ * runtime(krl): Update syntax file for Kuka Robot Language
+ * runtime(matchit): include minor improvement from chrisbra/matchit
+ * patch 9.1.2081: MS-Windows: unnecessary "#ifdef FEAT_GUI" in os_win32.c
+ * patch 9.1.2080: W23/W24 messsage appears on :reg
+ * patch 9.1.2079: use-after-free with 'qftf' wiping buffer
+ * patch 9.1.2078: A few more typos in various files
+ * runtime(doc): Fix typo at :help 'fsync'
+ * runtime(rst): set suffixesadd for rst
+ * runtime: Update files for ConTeXt, METAFONT, and MetaPost.
+ * runtime(syntax-tests): Add :help command termination tests
+ * runtime(doc): clarify vim.eval behavior with Vim special variables
+ * runtime(compiler): Do not set title in pandoc compiler
+ * patch 9.1.2077: Vim9: type issue when appending item to a list
+ * patch 9.1.2076: tests: MinGW test fails midway and stops
+ * patch 9.1.2075: tests: wrong change to test_ins_complete.vim
+ * patch 9.1.2074: Compile error with Motif GUI
+ * runtime(sieve): preserve existing line endings in ftplugin
+ * patch 9.1.2073: auto/configure needs to be regenerated
+ * patch 9.1.2072: Socket server has a few minor issues
+ * runtime(syntax-tests): Adapt "runtime/syntax/testdir/vimcmd" for "src/testdir/util/shared.vim"
+ * patch 9.1.2071: tests: test_ins_complete.vim leaves swapfiles behind
+ * patch 9.1.2070: completion: autocomplete breaks  with large dict
+ * patch 9.1.2069: Search wrap indicator not shown w/out 'shm-S'
+ * runtime(lynx): Update syntax file
+ * runtime(doc): clarify the behaviour of 'fo-m'
+ * translation(de): update German message translation
+ * patch 9.1.2068: :bd/bw may try to switch to a closing buffer
+ * runtime(cpp): Fix c++ float and integer literal syntax highlighting
+ * runtime(matchit): Update to Release 1.21
+ * runtime(sh): Update indent script
+ * patch 9.1.2067: shadow variable warning in menu.c
+ * runtime(racket): update Racket syntax file
+ * patch 9.1.2066: :wqall! doesn't close a terminal like :qall! does
+ * patch 9.1.2065: GvimExt cannot be linked statically using MinGW
+ * runtime(yaml): update YAML indentation for mapping keys inside list items
+ * patch 9.1.2064: completion: segfault during file name completion
+ * gitattributes: mark test21.ok binary, drop test42.in
+ * runtime(doc): add termdebug tag, remove term "floating window"
+ * runtime(sqloracle): Update syntax script
+ * runtime(xml): update XML runtime files
+ * runtime(zsh): Update runtime files
+ * runtime(privoxy): Update syntax file
+ * runtime(tutor): fix wrong motion in instruction
+ * patch 9.1.2063: A few typos in the code and runtime files
+ * runtime(wget): Update syntax files
+ * runtime(doc): Minor updates to version9.txt
+ * runtime(cpp): Announce syntax file adoption
+ * patch 9.1.2062: filetype: djot files are not recognized
+ * patch 9.1.2061: filetype: Koka files are not recognized
+ * patch 9.1.2060: filetype: Rasi include files are not recognized
+ * patch 9.1.2059: filetype: Nickel files are not recognized
+ * patch 9.1.2058: b_locked_split is not checked for :sbuffer
+ * patch 9.1.2057: copying to clipboard register broken with 'go-P'
+ * patch 9.1.2056: tests: inconsistent indent and line breaking in Test_maparg()
+ * translation(ru): Updated message file
+ * translation(ru): added a disclaimer to the license translation
+ * translation(ru): updated menu files according to the patch 9.1.1989
+ * translation(ru): updated tutor files
+ * patch 9.1.2055: Division by zero in :file after failing to wipe buffer
+ * Always force LF line endings in old test .ok files
+ * runtime(cangjie): Update syntax script
+ * patch 9.1.2054: Can't unpack tuple from imported function
+ * patch 9.1.2053: MS-Windows: May use wrong find command
+ * patch 9.1.2052: Compile error when disabling linebreak feature
+ * patch 9.1.2051: tests: fix Test_cd_completion fails in Appveyor
+
+-------------------------------------------------------------------
 Mon Jan  5 09:51:53 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.1.2050: 

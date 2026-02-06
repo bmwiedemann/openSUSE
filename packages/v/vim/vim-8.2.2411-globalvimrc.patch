@@ -1,16 +1,16 @@
-Index: vim-9.1.1706/src/main.c
+Index: vim-9.1.2132/src/main.c
 ===================================================================
---- vim-9.1.1706.orig/src/main.c
-+++ vim-9.1.1706/src/main.c
-@@ -3364,7 +3364,10 @@ source_startup_scripts(mparm_T *parmp)
+--- vim-9.1.2132.orig/src/main.c
++++ vim-9.1.2132/src/main.c
+@@ -3373,7 +3373,10 @@ source_startup_scripts(mparm_T *parmp)
  	 * Get system wide defaults, if the file name is defined.
  	 */
- #ifdef SYS_VIMRC_FILE
+ # ifdef SYS_VIMRC_FILE
 -	(void)do_source((char_u *)SYS_VIMRC_FILE, FALSE, DOSO_NONE, NULL);
 +	if (do_source((char_u *)SYS_VIMRC_FILE, FALSE, DOSO_NONE, NULL) == FAIL)
 +	{
 +	    (void)do_source((char_u *)"$VIMRUNTIME/suse.vimrc", FALSE, DOSO_NONE, NULL);
 +	}
- #endif
- #ifdef MACOS_X
+ # endif
+ # ifdef MACOS_X
  	(void)do_source((char_u *)"$VIMRUNTIME/macmap.vim", FALSE,

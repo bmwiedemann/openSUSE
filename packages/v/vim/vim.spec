@@ -18,7 +18,7 @@
 
 
 %define pkg_version 9.1
-%define patchlevel 2050
+%define patchlevel 2132
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim91
 %define site_runtimepath %{_datadir}/vim/site
@@ -443,6 +443,8 @@ rm -rf %{buildroot}%{_mandir}/da.ISO8859-1/
 rm -rf %{buildroot}%{_mandir}/de.ISO8859-1/
 rm -Rf %{buildroot}%{_mandir}/tr.ISO8859-9/
 rm -Rf %{buildroot}%{_mandir}/tr.UTF-8/
+rm -rf %{buildroot}%{_mandir}/sv.UTF-8/
+rm -rf %{buildroot}%{_mandir}/sv.ISO8859-1/
 
 # remove unnecessary files
 rm -rf %{buildroot}%{_datadir}/applications/vim.desktop
@@ -617,6 +619,9 @@ fi
 %dir %{_mandir}/tr
 %dir %{_mandir}/tr/man1/
 %{_mandir}/tr/man1/*.1%{?ext_man}
+%dir %{_mandir}/sv
+%dir %{_mandir}/sv/man1/
+%{_mandir}/sv/man1/*.1%{?ext_man}
 
 # docs and data file
 %license LICENSE
@@ -687,7 +692,7 @@ fi
 # existing, unmodified vimrc would not be removed. That results in a
 # duplicated definition of SKEL_spec().
 # see also https://github.com/rpm-software-management/rpm/issues/1296
-#%ghost %config(noreplace) %{_sysconfdir}/vimrc
+#%%ghost %%config(noreplace) %%{_sysconfdir}/vimrc
 %{_datadir}/vim/current
 %dir %{_datadir}/vim/
 %dir %{_datadir}/vim/%{VIM_SUBDIR}/

@@ -8259,4 +8259,41 @@ always built-in because vim has direct perl dependencies anyway.
  * runtime(rust): Update indentation after nested array literal</comment>
     <requestid>1325371</requestid>
   </revision>
+  <revision rev="394" vrev="1">
+    <srcmd5>6cdbf7c9f7bad22d05c78a61fea0e371</srcmd5>
+    <version>9.1.2132</version>
+    <time>1770409820</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.1.2132 
+- refreshed patch vim-8.2.2411-globalvimrc.patch
+ * patch 9.1.2132: [security]: buffer-overflow in 'helpfile' option handling
+ * translation(tr): Update Turkish translations
+ * patch 9.1.2131: tests: Test_diff_screen() fails on BSD
+ * translation(sv): Remove duplicates from [g]vim.desktop.in
+ * runtime(context): fix issue with SyncTeX and update command
+ * runtime(doc): add note for -complete=shellcmdline
+ * patch 9.1.2130: Page scrolling in Insert mode beeps
+ * runtime(haskellcomplete): fix Undefined variable b:completingLangExtension.
+ * patch 9.1.2129: MS-Windows: font size calculation slightly wrong, causing line gaps
+ * runtime(doc): Update version9.txt with numbered patches
+ * runtimei(vim9): Always launch programs in background (linux)
+ * translation(ta): Include Tamil Translation
+ * patch 9.1.2128: Heap use after free in buf_check_timestamp()
+ * runtime(c): only set keywordprg when there has 'man'
+ * runtime(vim): Fix for :VimKeywordPrg when syntax does not match
+ * translation(sv): Update tutor1.sv to version 1.7
+ * translation(sv): Add Swedish translation of tutor2
+ * translation(sv): Fix typo and help.svx formatting
+ * runtime(doc): Clarify the behaviour of command completion functions
+ * patch 9.1.2127: MS-Windows: DirectX renders font too small
+ * runtime(odin): update indent and syntax scripts
+ * runtime(doc): update win_findbuf() return value
+ * patch 9.1.2126: vim --version used single column for feature list
+ * runtime(vim): Update base syntax, match Vim9 :unlet command
+ * runtime(doc): Improve the description at :help :cwindow
+ * patch 9.1.2125: MS-Windows: DirectX rendering can be improved
+ * runtime(qf): Update quickfix syntax
+ * runtime(doc): Fix some overlength lines</comment>
+    <requestid>1331491</requestid>
+  </revision>
 </revisionlist>
