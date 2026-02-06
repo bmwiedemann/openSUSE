@@ -32,7 +32,7 @@ Index: git/setup.c
 ===================================================================
 --- git.orig/setup.c
 +++ git/setup.c
-@@ -327,12 +327,20 @@ int get_common_dir_noenv(struct strbuf *
+@@ -326,12 +326,20 @@ int get_common_dir_noenv(struct strbuf *
  {
  	struct strbuf data = STRBUF_INIT;
  	struct strbuf path = STRBUF_INIT;
@@ -56,7 +56,7 @@ Index: git/setup.c
  		while (data.len && (data.buf[data.len - 1] == '\n' ||
  				    data.buf[data.len - 1] == '\r'))
  			data.len--;
-@@ -343,8 +351,6 @@ int get_common_dir_noenv(struct strbuf *
+@@ -342,8 +350,6 @@ int get_common_dir_noenv(struct strbuf *
  		strbuf_addbuf(&path, &data);
  		strbuf_add_real_path(sb, path.buf);
  		ret = 1;

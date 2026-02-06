@@ -6,7 +6,7 @@ Index: git/contrib/completion/git-completion.bash
 ===================================================================
 --- git.orig/contrib/completion/git-completion.bash
 +++ git/contrib/completion/git-completion.bash
-@@ -81,10 +81,12 @@
+@@ -82,10 +82,12 @@
  #     case insensitively, even on systems with case sensitive file systems
  #     (e.g., completing tag name "FOO" on "git checkout f<TAB>").
  

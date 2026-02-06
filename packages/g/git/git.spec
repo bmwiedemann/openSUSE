@@ -1,7 +1,7 @@
 #
 # spec file for package git
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -43,7 +43,7 @@
 %bcond_with    asciidoctor
 %endif
 Name:           git
-Version:        2.52.0
+Version:        2.53.0
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
