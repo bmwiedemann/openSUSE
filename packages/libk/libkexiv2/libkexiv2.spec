@@ -30,7 +30,7 @@ ExclusiveArch: do_not_build
 %endif
 %bcond_without released
 Name:           libkexiv2%{?pkg_suffix}
-Version:        25.12.1
+Version:        25.12.2
 Release:        0
 Summary:        Library to manipulate picture meta data
 License:        GPL-2.0-or-later
