@@ -26,7 +26,7 @@
 %endif
 
 Name:           gnome-control-center
-Version:        49.3
+Version:        49.4
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
@@ -36,8 +36,6 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        libgxdp-0.gitmodule.tar.zst
 Source99:       %{name}-rpmlintrc
 
-# PATCH-FIX-UPSTREAM gnome-control-center-gvc-31.patch glgo#GNOME/libgnome-volume-control!31 alynx.zhou@suse.com -- Fix crash with newer pipewire on switching bluetooth profile
-Patch1:         gnome-control-center-gvc-31.patch
 # PATCH-FIX-UPSTREAM gnome-control-center-gvc-32.patch bsc#1257512, glgo#GNOME/libgnome-volume-control!32 alynx.zhou@suse.com -- Fix duplicated new devices introduced by glgo#GNOME/libgnome-volume-control!31
 Patch2:         gnome-control-center-gvc-32.patch
 

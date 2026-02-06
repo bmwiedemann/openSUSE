@@ -2486,4 +2486,15 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1330367</requestid>
   </revision>
+  <revision rev="280" vrev="1">
+    <srcmd5>a8903aa9eeb3f6c54eb2eb7021c1f641</srcmd5>
+    <version>49.4</version>
+    <time>1770401109</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.4:
+  + Sound/Bluetooth: Update libgvc to fix crashes with new pipewire
+  + Updated translations
+- Drop gnome-control-center-gvc-31.patch: fixed upstream. (forwarded request 1330736 from dimstar)</comment>
+    <requestid>1331117</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  3 11:10:26 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.4:
+  + Sound/Bluetooth: Update libgvc to fix crashes with new pipewire
+  + Updated translations
+- Drop gnome-control-center-gvc-31.patch: fixed upstream. 
+
+-------------------------------------------------------------------
 Fri Jan 30 13:46:22 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add gnome-control-center-gvc-32.patch: Fix duplicated new devices
