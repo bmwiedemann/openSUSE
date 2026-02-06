@@ -51,4 +51,12 @@
     <comment>- Add missing BuildRequires on pytest-asyncio and pyhanko-certvalidator.</comment>
     <requestid>1298725</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>b94b4b97bc97358b95b6d54077942600</srcmd5>
+    <version>0.13.0</version>
+    <time>1770401380</time>
+    <user>anag_factory</user>
+    <comment>- Explicitly BuildRequires on pytz.</comment>
+    <requestid>1331498</requestid>
+  </revision>
 </revisionlist>

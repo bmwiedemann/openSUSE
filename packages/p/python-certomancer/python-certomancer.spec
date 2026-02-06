@@ -1,7 +1,7 @@
 #
 # spec file for package python-certomancer
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,7 @@ BuildRequires:  %{python_module pyhanko-certvalidator}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.8.1}
+BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module tzlocal >= 2.1}
