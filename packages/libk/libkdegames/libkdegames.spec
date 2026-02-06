@@ -20,7 +20,7 @@
 
 %bcond_without released
 Name:           libkdegames
-Version:        25.12.1
+Version:        25.12.2
 Release:        0
 Summary:        General Data for KDE Games
 License:        GPL-2.0-or-later
