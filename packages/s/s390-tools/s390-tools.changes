@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Feb  6 10:12:57 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Reworked and combined all s390-tools patches 
+- Applied new combined patches
+  * s390-tools-dasdfmt-reworked.patch
+  * s390-tools-combined.patch
+- Removed obsolete patches
+  * s390-tools-sles15sp3-Allow-multiple-device-arguments.patch
+  * s390-tools-sles15sp3-Format-devices-in-parallel.patch
+  * s390-tools-sles15sp3-Format-devices-in-parallel-1.patch
+  * s390-tools-sles15sp3-Implement-Y-yast_mode.patch
+  * s390-tools-sles15sp3-Implement-f-for-backwards-compability.patch
+  * s390-tools-sles15sp3-dasdfmt-retry-BIODASDINFO-if-device-is-busy.patch
+  * s390-tools-sles12-create-filesystem-links.patch
+  * s390-tools-sles12-fdasd-skip-partition-check-and-BLKRRPART-ioctl.patch
+  * s390-tools-sles12-zipl_boot_msg.patch
+  * s390-tools-sles15-sysconfig-compatible-dumpconf.patch
+  * s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.patch
+  * s390-tools-sles15sp6-kdump-initrd-59-zfcp-compat-rules.patch
+  * s390-tools-slfo-01-parse-ipl-device-for-activation.patch
+  * s390-tools-sles12-update-by_id-links-on-change-and-add-action.patch.opensuse
+  * s390-tools-sles12-update-by_id-links-on-change-and-add-action.patch.suse
+- Re-vendor-ed vendor.tar.zst
+
+-------------------------------------------------------------------
 Wed Jan  7 09:16:27 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file to fix Rust build errors

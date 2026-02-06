@@ -135,26 +135,10 @@ Source200:      vendor.tar.zst
 # IBM patches
 ###
 # SUSE patches
-Patch900:       s390-tools-sles12-zipl_boot_msg.patch
-Patch901:       s390-tools-sles15-sysconfig-compatible-dumpconf.patch
-Patch902:       s390-tools-sles12-create-filesystem-links.patch
-%if 0%{?suse_version} >= 1550
-Patch903:       s390-tools-sles12-update-by_id-links-on-change-and-add-action.patch.opensuse
-%else
-Patch903:       s390-tools-sles12-update-by_id-links-on-change-and-add-action.patch.suse
-%endif
-Patch904:       s390-tools-sles15sp3-Allow-multiple-device-arguments.patch
-Patch905:       s390-tools-sles15sp3-Format-devices-in-parallel.patch
-Patch906:       s390-tools-sles15sp3-Format-devices-in-parallel-1.patch
-Patch907:       s390-tools-sles15sp3-Implement-Y-yast_mode.patch
-Patch908:       s390-tools-sles15sp3-Implement-f-for-backwards-compability.patch
-Patch909:       s390-tools-sles15sp3-dasdfmt-retry-BIODASDINFO-if-device-is-busy.patch
-Patch910:       s390-tools-sles12-fdasd-skip-partition-check-and-BLKRRPART-ioctl.patch
-Patch911:       s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.patch
-Patch912:       s390-tools-ALP-zdev-live.patch
-Patch913:       s390-tools-sles15sp6-kdump-initrd-59-zfcp-compat-rules.patch
+Patch900:       s390-tools-combined.patch
+Patch901:       s390-tools-dasdfmt-reworked.patch
 ###
-Patch990:       s390-tools-slfo-01-parse-ipl-device-for-activation.patch
+Patch910:       s390-tools-ALP-zdev-live.patch
 ###
 
 BuildRequires:  curl-devel

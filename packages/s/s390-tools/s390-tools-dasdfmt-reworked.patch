@@ -1,0 +1,743 @@
+diff -Naur a/dasdfmt/dasdfmt.8 b/dasdfmt/dasdfmt.8
+--- a/dasdfmt/dasdfmt.8	2025-12-11 17:03:28.000000000 +0100
++++ b/dasdfmt/dasdfmt.8	2026-02-06 11:00:31.937570213 +0100
+@@ -7,18 +7,18 @@
+ dasdfmt \- formatting of DASD (ECKD) disk drives.
+ 
+ .SH SYNOPSIS
+-\fBdasdfmt\fR [\-h] [\-t] [\-v] [\-y] [\-p] [\-P] [\-m \fIstep\fR]
++\fBdasdfmt\fR [\-h] [\-t] [\-v] [\-y] [\-p] [\-Q] [\-P] [\-Y] [\-m \fIstep\fR]
+ .br
+         [\-r \fIcylinder\fR] [\-b \fIblksize\fR] [\-l \fIvolser\fR] [\-d \fIlayout\fR]
+ .br
+-        [\-L] [\-V] [\-F] [\-k] [\-C] [\-M \fImode\fR] \fIdevice\fR
++        [\-L] [\-V] [\-F] [\-k] [\-C] [\-M \fImode\fR] [-f \fIdevice\fR] [\fIdevice\fR]
+ 
+ .SH DESCRIPTION
+-\fBdasdfmt\fR formats a DASD (ECKD) disk drive to prepare it
++\fBdasdfmt\fR formats one or several  DASD (ECKD) disk drive(s) to prepare them
+ for usage with Linux for S/390.
+ The \fIdevice\fR is the node of the device (e.g. '/dev/dasda').
+ Any device node created by udev for kernel 2.6 can be used
+-(e.g. '/dev/dasd/0.0.b100/disc').
++(e.g. '/dev/dasd/0.0.b100/disc'). It is possible to specify up to 512 devices.
+ .br
+ 
+ \fBWARNING\fR: Careless usage of \fBdasdfmt\fR can result in
+@@ -41,6 +41,10 @@
+ Increases verbosity.
+ 
+ .TP
++\fB-f\fR \fIdevice\fR or \fB--device\fR=\fIdevice\fR
++Specify device to format. For backwards compability only.
++
++.TP
+ \fB\-y\fR
+ Start formatting without further user-confirmation.
+ 
+@@ -95,7 +99,7 @@
+ running in background or redirecting the output to a file.
+ 
+ .TP
+-\fB\-P\fR or \fB\-\-percentage\fR
++\fB\-Q\fR or \fB\-\-percentage\fR
+ Print one line for each formatted cylinder showing the number of the
+ cylinder and percentage of formatting process.
+ Intended to be used by higher level interfaces.
+@@ -112,6 +116,11 @@
+ .br
+ 
+ .TP
++\fB-Y\fR or \fB--yast_mode\fR
++YaST mode; suppress most output.
++.br
++
++.TP
+ \fB\-M\fR \fImode\fR or \fB\-\-mode\fR=\fImode\fR
+ Specify the \fImode\fR to be used to format the device. Valid modes are:
+ .RS
+@@ -164,6 +173,18 @@
+ 
+ .TP
+ \fB\-l\fR \fIvolser\fR or \fB\-\-label\fR=\fIvolser\fR
++\fB-P\fR \fInumdisks\fR or \fB--max_parallel\fR=\fInumdisks\fR
++Specify the number of disks to be formatted in parallel.
++\fInumdisks\fR specifies the number of formatting processed,
++independent on the overall number of disks to be formatted.
++The maximum value for \fInumdisks\fR is 512. Default is 1.
++.br
++Using this option can decrease overall processing time when formatting
++several disks. Please note that the I/O throughput will dramatically
++increase when using this option. Use with care.
++.br
++
++.TP
+ Specify the volume serial number or volume identifier to be written
+ to disk after formatting. If no label is specified, a sensible default
+ is used. \fIvolser\fR is interpreted as ASCII string and is automatically
+diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
+--- a/dasdfmt/dasdfmt.c	2025-12-11 17:03:28.000000000 +0100
++++ b/dasdfmt/dasdfmt.c	2026-02-06 11:34:15.367040138 +0100
+@@ -13,6 +13,8 @@
+ #include <sys/sysmacros.h>
+ #include <sys/time.h>
+ #include <sys/utsname.h>
++#include <sys/wait.h>
++
+ 
+ #include "lib/dasd_base.h"
+ #include "lib/dasd_sys.h"
+@@ -26,6 +28,8 @@
+ #include "dasdfmt.h"
+ #include "dasdfmt_cli.h"
+ 
++#define MAX_DEVICES 512
++#define MAX_LENGTH 256
+ #define BUSIDSIZE  8
+ #define SEC_PER_DAY (60 * 60 * 24)
+ #define SEC_PER_HOUR (60 * 60)
+@@ -58,7 +62,9 @@
+ static struct dasdfmt_globals {
+ 	dasd_information2_t dasd_info;
+ 	char *dev_path; /* device path entered by user */
++        char dev_path_array[MAX_DEVICES][MAX_LENGTH]; /* Array of device paths entered by user */
+ 	char *dev_node; /* reliable device node determined by dasdfmt */
++        char dev_node_array[MAX_DEVICES][MAX_LENGTH]; /* Array of reliable device nodes determined by dasdfmt */
+ 	int   verbosity;
+ 	int   testmode;
+ 	int   withoutprompt;
+@@ -78,6 +84,8 @@
+ 	int   mode_specified;
+ 	int   ese;
+ 	int   no_discard;
++        int   procnum;
++        int   yast_mode;	
+ } g = {
+ 	.dasd_info = { 0 },
+ };
+@@ -202,7 +210,9 @@
+ 	}
+ 
+ 	if (g.print_hashmarks && (cyl / g.hashstep - hashcount) != 0) {
+-		printf("#");
++                if (g.yast_mode)
++                        printf("%d|", g.procnum);
++                else printf("#");
+ 		fflush(stdout);
+ 		hashcount++;
+ 	}
+@@ -276,7 +286,7 @@
+ 	unsigned int kl = 0;
+ 	int blksize = cdata->expect.blksize;
+ 
+-	if (g.print_progressbar || g.print_hashmarks)
++        if ((g.print_progressbar || g.print_hashmarks) && !g.yast_mode)
+ 		printf("\n");
+ 
+ 	/*
+@@ -379,15 +389,15 @@
+ 	program_interrupt_in_progress = 1;
+ 
+ 	if (disk_disabled) {
+-		printf("Re-accessing the device...\n");
++                printf("Re-accessing %s...\n", g.dev_path);
+ 		disk_enable();
+ 	}
+ 
+-	printf("Rereading the partition table...\n");
++        printf("Rereading the partition table for %s...\n", g.dev_path);
+ 	rc = dasd_reread_partition_table(g.dev_node, 5);
+ 	if (rc) {
+ 		ERRMSG("%s: (signal handler) Re-reading partition table "
+-		       "failed. (%s)\n", prog_name, strerror(rc));
++                       "for %s failed. (%s)\n", prog_name, g.dev_path, strerror(rc));
+ 	} else {
+ 		printf("Exiting...\n");
+ 	}
+@@ -407,9 +417,6 @@
+ 	unsigned int maj, min;
+ 	struct stat dev_stat;
+ 
+-	if (optind + 1 < argc)
+-		error("More than one device specified!");
+-
+ 	if (optind >= argc)
+ 		error("No device specified!");
+ 
+@@ -497,7 +504,7 @@
+  */
+ static void check_disk(void)
+ {
+-	int err;
++        int err, index = 0 ;
+ 	bool ro;
+ 
+ 	err = dasd_is_ro(g.dev_node, &ro);
+@@ -505,10 +512,27 @@
+ 		error("the ioctl call to retrieve read/write status information failed: %s",
+ 		      strerror(err));
+ 	if (ro)
+-		error("Disk is read only!");
++                error("Disk %s is read only!", g.dev_path);
+ 	if (!g.force) {
++                /*
++                 * udev strikes again.
++                 * Modern udev will issue a 'change' event whenever
++                 * a device opened with O_RDWR is closed again.
++                 * On the grounds that program _might_ have changed
++                 * the partition table.
++                 * And confusing the hell out ouf anyone else.
++                 * Bah.
++                */
++                for ( index = 0 ; index < 6 ; index++ ) {
++                        if (g.dasd_info.open_count > 1) {
++                                dasd_get_info(g.dev_node, &g.dasd_info);
++                                sleep(1);
++                        }
++                        else break;
++ 
++                }
+ 		if (g.dasd_info.open_count > 1)
+-			error("Disk in use!");
++                      error("Disk %s is in use!", g.dev_path);
+ 	}
+ 	if (strncmp(g.dasd_info.type, "ECKD", 4) != 0) {
+ 		warnx("Unsupported disk type");
+@@ -595,7 +619,7 @@
+ 	struct dasd_eckd_characteristics *characteristics;
+ 
+ 	if (g.verbosity > 0)
+-		printf("Retrieving disk geometry...\n");
++                printf("Retrieving disk geometry for %s...\n", g.dev_path);
+ 
+ 	characteristics = (struct dasd_eckd_characteristics *)
+ 				&g.dasd_info.characteristics;
+@@ -623,13 +647,13 @@
+ 			       "Cylinders above this limit will not be"
+ 			       " accessible as a linux partition!\n"
+ 			       "Type \"yes\" to continue, no will leave"
+-			       " the disk untouched: ", LV_COMPAT_CYL);
++                               " the %s disk untouched: ", LV_COMPAT_CYL, g.dev_path);
+ 			if (fgets(inp_buffer, sizeof(inp_buffer), stdin) == NULL)
+ 				return;
+ 			if (strcasecmp(inp_buffer, "yes") &&
+ 			    strcasecmp(inp_buffer, "yes\n")) {
+-				printf("Omitting ioctl call (disk will "
+-					"NOT be formatted).\n");
++                                printf("Omitting ioctl call (disk %s will "
++                                        "NOT be formatted).\n", g.dev_path);
+ 				return;
+ 			}
+ 		}
+@@ -667,8 +691,9 @@
+ 			g.hashstep = 10;
+ 		}
+ 
+-		printf("Printing hashmark every %d cylinders.\n",
+-		       g.hashstep);
++                if (!g.yast_mode)
++                        printf("Printing hashmark every %d cylinders.\n",
++                               g.hashstep);
+ 	}
+ }
+ 
+@@ -767,7 +792,7 @@
+ 	check_params->start_unit = 0;
+ 	check_params->stop_unit = (cylinders * heads) - 1;
+ 
+-	printf("Checking format of the entire disk...\n");
++        printf("Checking format of the entire %s disk...\n", g.dev_path);
+ 
+ 	if (g.testmode) {
+ 		printf("Test mode active, omitting ioctl.\n");
+@@ -791,7 +816,7 @@
+ 	if (process_tracks(cylinders, heads, check_params))
+ 		error("Use --mode=full to perform a clean format.");
+ 
+-	printf("Done. Disk is fine.\n");
++        printf("Done. Disk %s is fine.\n", g.dev_path);
+ }
+ 
+ /*
+@@ -841,8 +866,8 @@
+ 
+ 	printf("Device Type: %s Provisioned\n",
+ 	       g.ese ? "Thinly" : "Fully");
+-	printf("\nI am going to format the device ");
+-	printf("%s in the following way:\n", g.dev_path);
++        printf("\nI am going to format %s ", g.dev_path);
++        printf("in the following way:\n");
+ 	printf("   Device number of device : 0x%x\n", g.dasd_info.devno);
+ 	printf("   Labelling device        : %s\n",
+ 	       (g.writenolabel) ? "no" : "yes");
+@@ -907,7 +932,7 @@
+ 	int ipl1_record_len, ipl2_record_len;
+ 
+ 	if (g.verbosity > 0)
+-		printf("Retrieving dasd information... ");
++                printf("Retrieving dasd information for %s... ", g.dev_path);
+ 
+ 	get_blocksize(&blksize);
+ 
+@@ -925,7 +950,7 @@
+ 
+ 	/* write empty bootstrap (initial IPL records) */
+ 	if (g.verbosity > 0)
+-		printf("Writing empty bootstrap...\n");
++                printf("Writing label to %s...\n", g.dev_path);
+ 
+ 	/*
+ 	 * Note: ldl labels do not contain the key field
+@@ -1015,7 +1040,7 @@
+ 	}
+ 
+ 	if (g.verbosity > 0)
+-		printf("Writing VTOC... ");
++                printf("Writing VTOC to %s... ", g.dev_path);
+ 
+ 	label_position = (VTOC_START_CC * heads + VTOC_START_HH) *
+ 		geo.sectors * blksize;
+@@ -1137,7 +1162,7 @@
+ 	if (!g.ese || g.no_discard)
+ 		return;
+ 
+-	printf("Releasing space for the entire device...\n");
++        printf("Releasing space for the entire %s device...\n", g.dev_path);
+ 	err = dasd_release_space(g.dev_node, &r);
+ 	if (err)
+ 		error("Could not release space: %s", strerror(err));
+@@ -1156,20 +1181,21 @@
+ 	int err;
+ 
+ 	if (!(g.withoutprompt && g.verbosity < 1))
+-		printf("Formatting the device. This may take a while "
+-		       "(get yourself a coffee).\n");
++                printf("Formatting the %s device. This may take a while "
++                       "(get yourself a coffee).\n", g.dev_path);
+ 
+ 	if (g.verbosity > 0)
+-		printf("Detaching the device...\n");
++                printf("Detaching the %s device...\n", g.dev_path);
+ 
+ 	disk_disable(g.dev_node);
+ 
+ 	if (g.verbosity > 0)
+-		printf("Invalidate first track...\n");
++                printf("Invalidate first track on %s...\n", g.dev_path);
+ 
+ 	err = dasd_format_disk(filedes, &temp);
+ 	if (err != 0)
+-		error("(invalidate first track) IOCTL BIODASDFMT failed: %s", strerror(err));
++                error("(invalidate first track) IOCTL BIODASDFMT failed for %s: %s",
++                        g.dev_path, strerror(err));
+ 
+ 	/* except track 0 from standard formatting procss */
+ 	p->start_unit = 1;
+@@ -1177,19 +1203,19 @@
+ 	process_tracks(cylinders, heads, p);
+ 
+ 	if (g.verbosity > 0)
+-		printf("formatting tracks complete...\n");
++                printf("formatting tracks for %s complete...\n", g.dev_path);
+ 
+ 	temp.intensity = p->intensity;
+ 
+ 	if (g.verbosity > 0)
+-		printf("Revalidate first track...\n");
++                printf("Revalidate first track on %s...\n", g.dev_path);
+ 
+ 	err = dasd_format_disk(filedes, &temp);
+ 	if (err != 0)
+ 		error("(re-validate first track) IOCTL BIODASDFMT failed: %s", strerror(err));
+ 
+ 	if (g.verbosity > 0)
+-		printf("Re-accessing the device...\n");
++                printf("Re-accessing the %s device...\n", g.dev_path);
+ 
+ 	disk_enable();
+ }
+@@ -1201,18 +1227,18 @@
+ 				  format_data_t *p)
+ {
+ 	if (!(g.withoutprompt && g.verbosity < 1))
+-		printf("Formatting the device. This may take a while "
+-		       "(get yourself a coffee).\n");
++                printf("Formatting the %s device. This may take a while "
++                       "(get yourself a coffee).\n", g.dev_path);
+ 
+ 	if (g.verbosity > 0)
+-		printf("Detaching the device...\n");
++                printf("Detaching the %s device...\n", g.dev_path);
+ 
+ 	disk_disable(g.dev_node);
+ 
+ 	process_tracks(cylinders, heads, p);
+ 
+ 	if (g.verbosity > 0)
+-		printf("Formatting tracks complete...\n");
++                printf("formatting tracks for %s complete...\n", g.dev_path);
+ 
+ 	if (g.verbosity > 0)
+ 		printf("Re-accessing the device...\n");
+@@ -1321,16 +1347,16 @@
+ 		if (!g.withoutprompt) {
+ 			printf("\n");
+ 			if (mode != EXPAND)
+-				printf("--->> ATTENTION! <<---\nAll data of "
+-				       "that device will be lost.\n");
++                                printf("--->> ATTENTION! <<---\nAll data on "
++                                       "the %s device will be lost.\n", g.dev_path);
+ 			printf("Type \"yes\" to continue, no will leave the "
+ 			       "disk untouched: ");
+ 			if (fgets(inp_buffer, sizeof(inp_buffer), stdin) == NULL)
+ 				return;
+ 			if (strcasecmp(inp_buffer, "yes") &&
+ 			    strcasecmp(inp_buffer, "yes\n")) {
+-				printf("Omitting ioctl call (disk will "
+-					"NOT be formatted).\n");
++                                printf("Omitting ioctl call (disk %s will "
++                                        "NOT be formatted).\n", g.dev_path);
+ 				return;
+ 			}
+ 		}
+@@ -1348,17 +1374,19 @@
+ 			break;
+ 		}
+ 
+-		printf("Finished formatting the device.\n");
++                if (!g.yast_mode)
++                        printf("Finished formatting the %s device.\n", g.dev_path);
+ 
+ 		if (!(g.writenolabel || mode == EXPAND))
+ 			dasdfmt_write_labels(vlabel, cylinders, heads);
+ 
+-		printf("Rereading the partition table... ");
++                if (!g.yast_mode)
++                        printf("Rereading the partition table for %s... ", g.dev_path);
+ 		err = dasd_reread_partition_table(g.dev_node, 5);
+ 		if (err != 0) {
+ 			ERRMSG("%s: error during rereading the partition "
+ 			       "table: %s.\n", prog_name, strerror(err));
+-		} else {
++                } else if (!g.yast_mode) {
+ 			printf("ok\n");
+ 		}
+ 	}
+@@ -1367,7 +1395,7 @@
+ static void eval_format_mode(void)
+ {
+ 	if (!g.force && g.mode_specified && g.ese && mode == EXPAND) {
+-		warnx("WARNING: The specified device is thin-provisioned");
++                warnx("WARNING: The specified device, %s, is thin-provisioned", g.dev_path);
+ 		warnx("Format mode 'expand' is not feasible.");
+ 		error("Use --mode=full or --mode=quick to perform a clean format");
+ 	}
+@@ -1390,7 +1418,7 @@
+ 		prog_name = p + 1;
+ }
+ 
+-int main(int argc, char *argv[])
++void process_dasd(volume_label_t *orig_vlabel, format_data_t format_params)
+ {
+ 	volume_label_t vlabel;
+ 	char old_volser[7];
+@@ -1398,12 +1426,93 @@
+ 	char str[ERR_LENGTH];
+ 	char buf[7];
+ 
++        unsigned int cylinders, heads; int rc;
++ 
++        rc = dasd_get_info(g.dev_node, &g.dasd_info);
++        if (rc != 0)
++                error("the ioctl call to retrieve device information failed: %s", strerror(rc));
++ 
++        g.ese = dasd_sys_ese(g.dev_node);
++        eval_format_mode();
++ 
++        /* Not sure this next line is needed in the new version of the code. */
++        memcpy(&vlabel, orig_vlabel, sizeof(vlabel));
++ 
++        /* Either let the user specify the blksize or get it from the kernel */
++        if (!g.blksize_specified) {
++                if (!(mode == FULL ||
++                      g.dasd_info.format == DASD_FORMAT_NONE) || g.check)
++                        get_blocksize(&format_params.blksize);
++                else
++                        format_params = ask_user_for_blksize(format_params);
++        }
++ 
++        if (g.keep_volser) {
++                if (g.labelspec)
++                        error("The -k and -l options are mutually exclusive");
++                if (!(format_params.intensity & DASD_FMT_INT_COMPAT))
++                        error("WARNING: VOLSER cannot be kept when using the ldl format!");
++ 
++                if (dasdfmt_get_volser(old_volser) == 0)
++                        vtoc_volume_label_set_volser(&vlabel, old_volser);
++                else
++                        error("VOLSER not found on device %s", g.dev_path);
++        }
++ 
++        check_disk();
++ 
++        if (check_param(str, ERR_LENGTH, &format_params) < 0)
++                error("%s", str);
++ 
++        set_geo(&cylinders, &heads);
++        
++	set_label(&vlabel, &format_params, cylinders);
++ 
++        if (g.check)
++                check_disk_format(cylinders, heads, &format_params);
++        else
++                do_format_dasd(&vlabel, &format_params, cylinders, heads);
++ 
++ }
++ 
++static void yast_print_cylinfo(const char *dev_filename)
++{
++       unsigned int cylinders = -1u;
++       int fd;
++       dasd_information2_t dasd_info;
++       struct dasd_eckd_characteristics *characteristics;
++
++       fd = open(dev_filename, O_RDONLY);
++       if ((fd != -1) && ( ! ioctl(fd, BIODASDINFO2, &dasd_info))) {
++
++               characteristics = (struct dasd_eckd_characteristics *) &dasd_info.characteristics;
++               if (characteristics->no_cyl == LV_COMPAT_CYL && characteristics->long_no_cyl)
++                       cylinders = characteristics->long_no_cyl;
++               else
++                       cylinders = characteristics->no_cyl;
++       }
++
++       if (fd != -1)
++               close(fd);
++       printf("%u\n", cylinders);
++       fflush(stdout);
++}
++
++int main(int argc, char *argv[])
++ {
++        volume_label_t vlabel;
++
++	char buf[7];
++
+ 	char *blksize_param_str = NULL;
+ 	char *reqsize_param_str = NULL;
+ 	char *hashstep_str      = NULL;
+ 
+-	int rc;
+-	unsigned int cylinders, heads;
++        int rc, numdev = 0, numproc = 0, status;
++        int max_parallel =1 ;
++        int running = 0;
++        int chpid;
++        int tmp;
+ 
+ 	/* Establish a handler for interrupt signals. */
+ 	signal(SIGTERM, program_interrupt_signal);
+@@ -1447,6 +1556,12 @@
+ 			}
+ 			g.layout_specified = 1;
+ 			break;
++                case 'f':
++                        get_device_name(optind-1, argc, argv);
++                        strncpy(g.dev_path_array[numdev], g.dev_path, strlen(g.dev_path));
++                        strncpy(g.dev_node_array[numdev], g.dev_node, strlen(g.dev_node));
++                        numdev++;
++                        break;
+ 		case 'y':
+ 			g.withoutprompt = 1;
+ 			break;
+@@ -1466,7 +1581,7 @@
+ 				g.print_hashmarks = 1;
+ 			}
+ 			break;
+-		case 'P':
++		case 'Q':
+ 			if (!(g.print_hashmarks || g.print_progressbar))
+ 				g.print_percentage = 1;
+ 			break;
+@@ -1525,6 +1640,13 @@
+ 		case OPT_NODISCARD:
+ 			g.no_discard = 1;
+ 			break;
++                case 'Y':
++                        /* YaST mode */
++                        g.yast_mode = 1;
++                        break;
++		case 'P':
++                        max_parallel = atoi(optarg);
++                        break;
+ 		case OPT_CHECK:
+ 			g.check = 1;
+ 			break;
+@@ -1539,6 +1661,9 @@
+ 			break; /* exit loop if finished */
+ 	}
+ 
++        /* Reset the value of rc since we're going to use it again later. */
++        rc = 0;
++ 
+ 	CHECK_SPEC_MAX_ONCE(g.blksize_specified, "blocksize");
+ 	CHECK_SPEC_MAX_ONCE(g.labelspec, "label");
+ 	CHECK_SPEC_MAX_ONCE(g.writenolabel, "omit-label-writing flag");
+@@ -1554,54 +1679,70 @@
+ 		reqsize = DEFAULT_REQUESTSIZE;
+ 	}
+ 
++/* If -Y (YaST mode) was specified by the caller, then we need to suppress
++ * most of all the other output that might be generated. But, we _do_ want
++ * hashmarks printed so that YaST can track what's going on. If it wasn't
++ * specified on the command line, set it to a default of 10 cylinders.
++ */
++       if (g.yast_mode) {
++               g.verbosity = 0;
++               g.print_progressbar = 0;
++               g.print_percentage = 0;
++               if (! g.print_hashmarks) {
++                       g.print_hashmarks = 1;
++                       hashstep_str = "10";
++               }
++       }
++
+ 	if (g.print_hashmarks)
+ 		PARSE_PARAM_INTO(g.hashstep, hashstep_str, 10, "hashstep");
+ 
+-	get_device_name(optind, argc, argv);
+-
+-	rc = dasd_get_info(g.dev_node, &g.dasd_info);
+-	if (rc != 0)
+-		error("the ioctl call to retrieve device information failed: %s", strerror(rc));
+-
+-	g.ese = dasd_sys_ese(g.dev_node);
+-	eval_format_mode();
+-
+-	/* Either let the user specify the blksize or get it from the kernel */
+-	if (!g.blksize_specified) {
+-		if (!(mode == FULL ||
+-		      g.dasd_info.format == DASD_FORMAT_NONE) || g.check)
+-			get_blocksize(&format_params.blksize);
+-		else
+-			format_params = ask_user_for_blksize(format_params);
+-	}
+-
+-	if (g.keep_volser) {
+-		if (g.labelspec)
+-			error("The -k and -l options are mutually exclusive");
+-		if (!(format_params.intensity & DASD_FMT_INT_COMPAT))
+-			error("WARNING: VOLSER cannot be kept when using the ldl format!");
+-
+-		if (dasdfmt_get_volser(old_volser) == 0)
+-			vtoc_volume_label_set_volser(&vlabel, old_volser);
+-		else
+-			error("VOLSER not found on device %s", g.dev_path);
+-	}
+-
+-	check_disk();
++        while (optind < argc) {
++                get_device_name(optind, argc, argv);
++                strncpy(g.dev_path_array[numdev], g.dev_path, strlen(g.dev_path));
++                strncpy(g.dev_node_array[numdev], g.dev_node, strlen(g.dev_node));
++
++                optind++;
++                numdev++;
++	}
++
++        if (numdev > 1 && g.labelspec)
++                error("Specifying a volser to be written doesn't make sense when formatting multiple DASD volumes.");
++
++        if (g.yast_mode) {
++                for (numproc = 0; numproc < numdev; numproc++)
++                        yast_print_cylinfo(g.dev_path_array[numproc]);
++ 
++        }
++
++	for (numproc = 0; numproc < numdev; numproc++) {
++                chpid = fork();
++                if (chpid == -1 )
++                        ERRMSG_EXIT(EXIT_FAILURE,
++                                        "%s: Unable to create child process: %s\n",
++                                        prog_name, strerror(errno));
++                if (!chpid) {
++                                g.procnum = numproc;
++                                strncpy(g.dev_path, g.dev_path_array[numproc], strlen(g.dev_path_array[numproc])+1);
++                                strncpy(g.dev_node, g.dev_node_array[numproc], strlen(g.dev_node_array[numproc])+1);
++                                process_dasd(&vlabel, format_params);
++ 
++                                free(g.dev_path);
++                                free(g.dev_node);
++                                exit(0);
++                } else {
++                        running++;
++                        if (running >= max_parallel) {
++                                if (wait(&tmp) > 0 && WEXITSTATUS(tmp))
++                                        rc = WEXITSTATUS(tmp);
++                                running--;
++                        }
++                }
++         }
++        /* wait until all formatting children have finished */
++        while(wait(&status) > 0)
++                if (WEXITSTATUS(status))
++                        rc = WEXITSTATUS(status);
+ 
+-	if (check_param(str, ERR_LENGTH, &format_params) < 0)
+-		error("%s", str);
+-
+-	set_geo(&cylinders, &heads);
+-	set_label(&vlabel, &format_params, cylinders);
+-
+-	if (g.check)
+-		check_disk_format(cylinders, heads, &format_params);
+-	else
+-		do_format_dasd(&vlabel, &format_params, cylinders, heads);
+-
+-	free(g.dev_path);
+-	free(g.dev_node);
+-
+-	return 0;
++	return rc;
+ }
+diff -Naur a/dasdfmt/dasdfmt_cli.h b/dasdfmt/dasdfmt_cli.h
+--- a/dasdfmt/dasdfmt_cli.h	2025-12-11 17:03:28.000000000 +0100
++++ b/dasdfmt/dasdfmt_cli.h	2026-02-06 11:01:52.002323129 +0100
+@@ -34,6 +34,11 @@
+ 		.desc = "Perform complete format check on device",
+ 		.flags = UTIL_OPT_FLAG_NOSHORT,
+ 	},
++        {
++                .option = { "max_parallel", required_argument, NULL, 'P' },
++                .desc = "Format devices in parallel",
++                .flags = UTIL_OPT_FLAG_NOLONG,
++        },	
+ 	UTIL_OPT_SECTION("FORMAT OPTIONS"),
+ 	{
+ 		.option = { "blocksize", required_argument, NULL, 'b' },
+@@ -80,6 +85,10 @@
+ 		.desc = "Start formatting without further user-confirmation",
+ 		.flags = UTIL_OPT_FLAG_NOLONG,
+ 	},
++        {
++                .option = { "device", required_argument, NULL, 'f' },
++                .desc = "Specify device to format",
++        },
+ 	UTIL_OPT_SECTION("DISPLAY PROGRESS"),
+ 	{
+ 		.option = { "hashmarks", required_argument, NULL, 'm' },
+@@ -91,9 +100,13 @@
+ 		.desc = "Show a progressbar",
+ 	},
+ 	{
+-		.option = { "percentage", no_argument, NULL, 'P' },
++                .option = { "percentage", no_argument, NULL, 'Q' },
+ 		.desc = "Show progress in percent",
+ 	},
++        {
++                .option = { "yast_mode", no_argument, NULL, 'Y' },
++                .desc = "YaST mode",
++        },
+ 	UTIL_OPT_SECTION("MISC"),
+ 	{
+ 		.option = { "check_host_count", no_argument, NULL, 'C' },
