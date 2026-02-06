@@ -56,4 +56,13 @@
   * Fix `DeprecationWarning` for `datetime.datetime.utcnow()`</comment>
     <requestid>1322577</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>fd7e8854bc0b4784de6be4e4092605d7</srcmd5>
+    <version>2025.10.20</version>
+    <time>1770409797</time>
+    <user>anag_factory</user>
+    <comment>- Update ghtag, download source from latest release tag
+- Add pythons_for_pypi macro</comment>
+    <requestid>1330909</requestid>
+  </revision>
 </revisionlist>

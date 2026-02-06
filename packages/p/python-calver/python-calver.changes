@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  4 10:32:48 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update ghtag, download source from latest release tag
+- Add pythons_for_pypi macro
+
+-------------------------------------------------------------------
 Fri Dec 12 10:32:44 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2025.10.20:

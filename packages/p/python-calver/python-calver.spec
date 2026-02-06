@@ -1,7 +1,7 @@
 #
 # spec file for package python-calver
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,8 @@
 %bcond_with test
 %endif
 %define skip_python2 1
-%define ghtag 2022.06.26
+%define ghtag 2025.10.20
+%{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-calver%{psuffix}
 Version:        2025.10.20
