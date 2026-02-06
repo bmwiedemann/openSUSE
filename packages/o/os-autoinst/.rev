@@ -5349,4 +5349,11 @@
 5.1770127521.c249fe9</comment>
     <requestid>1331441</requestid>
   </revision>
+  <revision rev="563" vrev="2">
+    <srcmd5>a68c3008303b430b8061e64290b062b6</srcmd5>
+    <version>5.1770127521.c249fe9</version>
+    <time>1770382857</time>
+    <user>dimstar_suse</user>
+    <comment>RelEng override - invalid chars in changelog</comment>
+  </revision>
 </revisionlist>
