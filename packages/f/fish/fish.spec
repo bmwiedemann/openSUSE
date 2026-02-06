@@ -1,7 +1,7 @@
 #
 # spec file for package fish
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fish
-Version:        4.2.1
+Version:        4.3.3
 Release:        0
 Summary:        The "friendly interactive shell"
 # see bundled doc_src/license.rst
@@ -27,6 +27,7 @@ URL:            https://fishshell.com/
 Source:         https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.xz
 Source2:        vendor.tar.zst
 Source100:      fish.keyring
+BuildRequires:  %{python_module Sphinx}
 BuildRequires:  cargo
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -78,10 +79,10 @@ find share/tools -type f -name *.py -exec \
 %cmake_install
 
 # Location varies between TW and SLE/Leap, try both
-rm %{buildroot}/%{_datadir}/doc/packages/fish/.buildinfo
+rm %{buildroot}%{_datadir}/doc/packages/fish/.buildinfo
 
 %if %{suse_version} >= 1600
-%python3_fix_shebang_path %{buildroot}/%{_datadir}/%{name}/tools/*.py
+%python3_fix_shebang_path %{buildroot}%{_datadir}/%{name}/tools/*.py
 %endif
 
 %check
