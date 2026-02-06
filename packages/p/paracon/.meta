@@ -7,5 +7,6 @@ without trying to include all of the bells and whistles that few would use.
 It talks to the TNC using AGWPE and works well with the direwolf software TNC.
 If you have a classic KISS or 6PACK TNC you can use the classic Linux native
 AX.25 stack with ldsped on top to be able to speak AGWPE.</description>
+  <devel project="hamradio" package="paracon"/>
   <url>https://paracon.readthedocs.io/en/latest/</url>
 </package>

@@ -73,7 +73,7 @@ EOF
 ln -s __init__.py paracon/paracon.py
 cd docs
 %make_build man
-gzip _build/man/paracon.1
+gzip -n _build/man/paracon.1
 
 %install
 %pyproject_install
