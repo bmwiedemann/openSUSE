@@ -20,7 +20,7 @@
 %define pythons python3
 %bcond_with test
 Name:           dnsdiag
-Version:        2.9.2
+Version:        2.9.3
 Release:        0
 Summary:        DNS request auditing toolset
 License:        BSD-3-Clause

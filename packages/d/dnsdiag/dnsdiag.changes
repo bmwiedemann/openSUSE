@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Feb  3 18:44:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.9.3
+  Bug Fixes
+  * TCP Traceroute Fixed: The most important fix in this release
+    resolves a regression where dnstraceroute with TCP protocol
+    (-T flag) would immediately fail with "No route to host" errors
+    During TCP traceroute operations, intermediate hosts send ICMP
+    Time Exceeded messages when TTL expires, which the TCP stack
+    interprets as EHOSTUNREACH errors. These errors were being
+    unconditionally re-raised even in traceroute mode where they're
+    expected behavior. The fix now properly handles these errors
+    during traceroute, allowing TCP path discovery to work as
+    intended.
+  * QUIC and HTTP/3 Traceroute TTL Control: Previously,
+    dnstraceroute couldn't control TTL values when using QUIC (-Q)
+    or HTTP/3 (-3) protocols, basically breaking traceroute
+    functionality for DoH3 and DoQ. The fix enables proper TTL
+    manipulation for both protocols, allowing users to trace
+    network paths to DNS-over-QUIC and DNS-over-HTTP/3 resolvers.
+  * Timing Accuracy Improvements: Replaced dnspython library
+    internal timing with Python's perf_counter for response time
+    measurements across all DNS protocols. This provides more
+    accurate and consistent latency measurements.
+  * Better Error Handling for Modern Protocols: Improved error
+    handling for DoH, DoH3, and DoQ protocols to display
+    user-friendly error messages instead of Python stack traces.
+    Connection refused errors are now treated as transient across
+    all DNS protocols, and transient QUIC connection failures
+    (UnexpectedEOF exceptions) are handled gracefully, allowing
+    dnsping to continue with the next attempt.
+  * DNSSEC Information Display: Added explanation of DNSSEC flags
+    and Extended DNS Error (EDE) codes in dnsping output. When
+    DNSSEC validation is enabled, users now see detailed
+    explanations of response codes like "DNSSEC Bogus" with
+    human-readable descriptions of what went wrong, making DNSSEC
+    troubleshooting easier.
+  * Command-Line Parameter Validation: Added mutual exclusivity
+    validation to command-line parameters across all tools.
+    Conflicting protocol flags (like -T and -H used together) now
+    trigger clear error messages instead of unpredictable behavior,
+    preventing user confusion and potential misdiagnosis of DNS
+    issues.
+
+-------------------------------------------------------------------
 Sun Jan 18 09:07:10 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.9.2
