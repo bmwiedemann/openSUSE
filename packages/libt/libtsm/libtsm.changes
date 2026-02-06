@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb  6 11:59:19 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Update to 4.4.2:
+  * add nord color scheme
+  * meson: include tsm's deps in libtsm_dep
+  * Fix CSI 18t and 19t reporting size
+  * resize: Fix a corner case when resizing
+
+-------------------------------------------------------------------
 Fri Jan 23 12:38:03 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Update to 4.4.1:
