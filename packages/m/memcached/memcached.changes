@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  3 08:09:20 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Move homedir setup for the sysusers case to tmpfiles.d
+- enable TLS mode on 15.6
+- enable proxy mode with TLS support. io_uring mode is disabled
+  because it tries to use an intree copy of liburing
+
+-------------------------------------------------------------------
 Mon Dec 22 12:06:06 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 1.6.40

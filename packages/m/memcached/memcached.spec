@@ -1,8 +1,7 @@
 #
 # spec file for package memcached
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +20,8 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-%if 0%{?suse_version} > 1500
+%bcond_without run_tests
+%if 0%{?suse_version} >= 1500
 %bcond_without tls
 %else
 %bcond_with    tls
@@ -32,6 +32,14 @@
 %else
 %bcond_with    sysusers
 %bcond_with    tmpfiles
+%endif
+%if 0
+# taken from the postgresql18.spec
+%if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1600
+    %bcond_without uring
+%else
+    %bcond_with uring
+%endif
 %endif
 Name:           memcached
 Version:        1.6.40
@@ -59,6 +67,9 @@ BuildRequires:  openssl-devel >= 1.1.0
 BuildRequires:  perl
 BuildRequires:  perl-IO-Socket-SSL
 BuildRequires:  perl-Net-SSLeay
+%endif
+%if %{with uring}
+BuildRequires:  pkgconfig(liburing)
 %endif
 %if %{with sysusers}
 BuildRequires:  sysuser-tools
@@ -99,6 +110,11 @@ autoreconf -fi
 %configure \
 %if %{with tls}
   --enable-tls \
+  --enable-proxy-tls \
+%endif
+  --enable-proxy \
+%if %{with uring}
+  --enable-proxy-uring \
 %endif
   --enable-sasl \
   --enable-sasl-pwdb \
@@ -128,12 +144,14 @@ install -D -m 0644 %{SOURCE5} %{buildroot}%{_sysusersdir}/%{name}-user.conf
 install -D -m 0644 %{SOURCE6} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 %endif
 
+%if %{with run_tests}
 %check
 %ifarch s390x
 # bsc#1243673
 rm t/ssl_session_resumption.t
 %endif
 %make_build test
+%endif
 
 %if %{with sysusers}
 %pre -f memcached.pre
@@ -176,7 +194,10 @@ getent passwd %{name} >/dev/null || \
 %endif
 %if %{with tmpfiles}
 %{_tmpfilesdir}/%{name}.conf
-%dir %ghost %{_rundir}/%{name}
+%ghost %dir %attr(750,memcached,memcached) %{_rundir}/%{name}
+%ghost %dir %attr(751,memcached,memcached) %{_localstatedir}/lib/%{name}
+%else
+%dir %attr(751,memcached,memcached) %{_localstatedir}/lib/%{name}
 %endif
 
 %files devel

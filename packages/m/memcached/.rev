@@ -679,4 +679,17 @@ bsc#1007869) (CVE-2016-8706)</comment>
     <comment></comment>
     <requestid>1324859</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>9f4aff3f68ddc508ebe2250f5fc20d60</srcmd5>
+    <version>1.6.40</version>
+    <time>1770401091</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1330689 from darix
+
+- Move homedir setup for the sysusers case to tmpfiles.d
+- enable TLS mode on 15.6
+- enable proxy mode with TLS support. io_uring mode is disabled
+  because it tries to use an intree copy of liburing</comment>
+    <requestid>1330693</requestid>
+  </revision>
 </revisionlist>
