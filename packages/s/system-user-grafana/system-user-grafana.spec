@@ -1,7 +1,7 @@
 #
 # spec file for package system-user-grafana
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           system-user-grafana
 Version:        1.0.0
 Release:        0
@@ -27,6 +28,10 @@ Provides:       group(grafana)
 Provides:       user(grafana)
 BuildArch:      noarch
 %sysusers_requires
+
+%if ! 0%{?suse_version}
+ExclusiveArch:  do_not_build
+%endif
 
 %description
 This package provides a shared system user for all grafana components
