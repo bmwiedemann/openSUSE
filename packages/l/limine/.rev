@@ -247,4 +247,12 @@
     <comment>Update to 10.6.3</comment>
     <requestid>1327274</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>70bfc4f47dfc289b19ac009b6f2917af</srcmd5>
+    <version>10.6.6</version>
+    <time>1770401432</time>
+    <user>anag_factory</user>
+    <comment>Update to 10.6.6</comment>
+    <requestid>1331538</requestid>
+  </revision>
 </revisionlist>

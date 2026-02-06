@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  5 23:43:28 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 10.6.6:
+  * Re-add a mistakenly removed check for EFI volume responsiveness. Lack
+    of this check would indirectly cause hangs due to EFI volumes being
+    indexed despite their non-responsiveness.
+  * Replace suboptimal code to handle reads close to the end of a volume.
+
+-------------------------------------------------------------------
 Wed Jan 14 18:16:37 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 10.6.3:
