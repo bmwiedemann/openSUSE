@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 16 11:21:14 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %make_build instead of %jobs (boo#1237231)
+- 5.0.3
+
+-------------------------------------------------------------------
 Wed Jul 16 12:08:03 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Allow building using CMake 4.0 by bumping the minimum for cmake
