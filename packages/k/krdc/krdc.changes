@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  3 10:06:00 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.2/
+- Changes since 25.12.1:
+  * documentation.yml is no more needed
+  * Rdp: set the correct keyboardType; fix local input of some chars on japanese keyboards. (kde#514241)
+
+-------------------------------------------------------------------
 Wed Jan  7 12:25:13 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.1
