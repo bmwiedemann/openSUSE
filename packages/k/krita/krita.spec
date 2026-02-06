@@ -1,7 +1,7 @@
 #
 # spec file for package krita
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %define pyver python311
 %endif
 Name:           krita
-Version:        5.2.14
+Version:        5.2.15
 Release:        0
 Summary:        Digital Painting Application
 License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.0-only
