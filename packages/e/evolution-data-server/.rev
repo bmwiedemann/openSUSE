@@ -2502,4 +2502,16 @@ New stable rel</comment>
   + Updated translations. (forwarded request 1319064 from iznogood)</comment>
     <requestid>1319635</requestid>
   </revision>
+  <revision rev="270" vrev="1">
+    <srcmd5>adf55322c5dc2244dd467d7824c7430f</srcmd5>
+    <version>3.58.3</version>
+    <time>1770401123</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.58.3:
+  + Bug Fixes: addressbook-export: Fails with &quot;Invalid query&quot; error
+  + Miscellaneous:
+    - flatpak: Add gettext ACLOCAL workaround
+    - EBookSqlite: Correct mutex unlock in e_book_sqlite_lock() (forwarded request 1330993 from iznogood)</comment>
+    <requestid>1331121</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 30 15:09:26 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.58.3:
+  + Bug Fixes: addressbook-export: Fails with "Invalid query" error
+  + Miscellaneous:
+    - flatpak: Add gettext ACLOCAL workaround
+    - EBookSqlite: Correct mutex unlock in e_book_sqlite_lock()
+
+-------------------------------------------------------------------
 Fri Nov 21 11:07:55 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.58.2:
