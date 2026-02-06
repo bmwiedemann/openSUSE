@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  4 17:03:56 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Support-building-with-Eigen3-5.0.0.patch
+
+-------------------------------------------------------------------
 Wed Oct 15 17:11:08 UTC 2025 - Christoph Junghans <junghans@votca.org>
 
 - Drop dependency on lammps, package too long

@@ -1,7 +1,7 @@
 #
 # spec file for package votca
 #
-# Copyright (c) 2022-2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2021-2022 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,6 +15,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %global with_xtp 1
 # libint2 used by xtp is broken on 32-bit archs
@@ -34,7 +35,7 @@ License:        Apache-2.0
 Group:          Productivity/Scientific/Chemistry
 URL:            https://www.votca.org
 Source0:        https://github.com/votca/votca/archive/v%{uversion}.tar.gz#/%{name}-%{uversion}.tar.gz
-
+Patch1:         0001-Support-building-with-Eigen3-5.0.0.patch
 BuildRequires:  cmake >= 3.13
 BuildRequires:  eigen3-devel
 BuildRequires:  fdupes

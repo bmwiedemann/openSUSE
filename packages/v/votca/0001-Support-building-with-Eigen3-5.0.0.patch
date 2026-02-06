@@ -1,0 +1,84 @@
+From cc581d91196c3505c649e35ba69bcc8ec33fa14b Mon Sep 17 00:00:00 2001
+From: Michael Cho <michael@michaelcho.dev>
+Date: Sat, 1 Nov 2025 15:00:12 -0400
+Subject: [PATCH] Support building with Eigen3 5.0.0
+
+---
+ CMakeLists.txt                      | 5 ++++-
+ xtp/include/votca/xtp/glink.h       | 3 +++
+ xtp/include/votca/xtp/openmp_cuda.h | 3 +++
+ xtp/include/votca/xtp/qmstate.h     | 1 +
+ xtp/src/libxtp/symmetric_matrix.cc  | 1 +
+ 5 files changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 71f2601c2..82686c32d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -110,7 +110,10 @@ find_package(Boost 1.71.0 REQUIRED
+   COMPONENTS program_options filesystem regex timer)
+ set_package_properties(Boost PROPERTIES TYPE REQUIRED PURPOSE "Extended C++ libraries")
+ 
+-find_package(Eigen3 3.3.0 NO_MODULE REQUIRED)
++find_package(Eigen3 3.4...5 NO_MODULE QUIET)
++if(NOT Eigen3_FOUND)
++  find_package(Eigen3 3.3.0 NO_MODULE REQUIRED)
++endif()
+ set_package_properties(Eigen3 PROPERTIES TYPE REQUIRED PURPOSE "C++ vector data structures")
+ message(STATUS "Found Eigen3: ${Eigen3_DIR}")
+ 
+diff --git a/xtp/include/votca/xtp/glink.h b/xtp/include/votca/xtp/glink.h
+index 4b6887228..3e50c8e3f 100644
+--- a/xtp/include/votca/xtp/glink.h
++++ b/xtp/include/votca/xtp/glink.h
+@@ -19,6 +19,9 @@
+ #ifndef VOTCA_XTP_GLINK_H
+ #define VOTCA_XTP_GLINK_H
+ 
++// Standard includes
++#include <cassert>
++
+ // Local VOTCA includes
+ #include "eigen.h"
+ 
+diff --git a/xtp/include/votca/xtp/openmp_cuda.h b/xtp/include/votca/xtp/openmp_cuda.h
+index 53d9052c2..bc78b752b 100644
+--- a/xtp/include/votca/xtp/openmp_cuda.h
++++ b/xtp/include/votca/xtp/openmp_cuda.h
+@@ -21,6 +21,9 @@
+ #ifndef VOTCA_XTP_OPENMP_CUDA_H
+ #define VOTCA_XTP_OPENMP_CUDA_H
+ 
++// Standard includes
++#include <cassert>
++
+ // Local VOTCA includes
+ #include "eigen.h"
+ 
+diff --git a/xtp/include/votca/xtp/qmstate.h b/xtp/include/votca/xtp/qmstate.h
+index c616239b6..e2e0ecabf 100644
+--- a/xtp/include/votca/xtp/qmstate.h
++++ b/xtp/include/votca/xtp/qmstate.h
+@@ -22,6 +22,7 @@
+ #define VOTCA_XTP_QMSTATE_H
+ 
+ // Standard includes
++#include <cassert>
+ #include <string>
+ 
+ // VOTCA includes
+diff --git a/xtp/src/libxtp/symmetric_matrix.cc b/xtp/src/libxtp/symmetric_matrix.cc
+index e48593113..e2eac3c87 100644
+--- a/xtp/src/libxtp/symmetric_matrix.cc
++++ b/xtp/src/libxtp/symmetric_matrix.cc
+@@ -18,6 +18,7 @@
+  */
+ 
+ // Standard includes
++#include <cassert>
+ #include <iostream>
+ 
+ // Local VOTCA includes
+-- 
+2.52.0
+
