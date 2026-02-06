@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb  3 10:05:26 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.2/
+- Changes since 25.12.1:
+  * Fix empty EpisodePage on startup (kde#510634)
+  * Encode spaces in streaming urls handed over to vlc (kde#514562)
+  * Fix segfault-on-exit when closing app from systray
+  * Add vcs-browser url to appstream data
+
+-------------------------------------------------------------------
 Wed Jan  7 12:24:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.1
