@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Feb  5 23:17:05 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 06.02.03 - 2026-02-05
+
+- NEW FEATURE: rem2html: Add a new --yaag option to produce a calendar
+  in the "year-at-a-glance" format.  This format features a table with
+  an entire month in each row.  Thanks to Robert Black for suggesting
+  this and for helping out with the CSS.
+
+- CHANGE: remind: If standard output is a TTY, then default
+  $TerminalHyperlinks to 1
+
+- CHANGE: remind: Increase the default value of $MaxSatIter from 1000
+  to 10000, reflecting the higher speed of the new expression
+  evaluation engine as well as the speed of modern CPUs.
+
+- UPDATE: examples/remind.vim: Update the URL to point to maintained
+  version.
+
+- IMPROVEMENT: include/sun.rem: Add Wikipedia links for sunrise/sunset
+
+- IMPROVEMENT: Add MOON, SHADE, WEEK, COLOR and COLOUR to the Emacs
+  syntax highlighting keyword list.
+
+- IMPROVEMENT: If an invalid value is assigned to a system variable,
+  issue the error "Invalid value for system variable" rather than
+  "Type mismatch"
+
+- DOC FIX: Fix typo in man page
+
+- BUG FIX: rem2html: Eliminate "use of uninitialized variable"
+  warning.
+
+- BUG FIX: remind: The "trigbase" JSON key in "remind -pp" output had
+  an incorrectly-formatted value.  This has been fixed; thanks to
+  Georg Simon for reporting this bug.
+
+-------------------------------------------------------------------
 Mon Jan 12 09:46:26 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
 
 -  VERSION 06.02.02 - 2026-01-10
