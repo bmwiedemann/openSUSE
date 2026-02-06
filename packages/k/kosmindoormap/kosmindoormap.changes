@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  3 10:05:57 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.2/
+- Changes since 25.12.1:
+  * Don't attempt to render to an empty viewport
+
+-------------------------------------------------------------------
 Wed Jan  7 12:25:11 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.1
