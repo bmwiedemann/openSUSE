@@ -1,7 +1,7 @@
 #
 # spec file for package tiff
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,6 +56,9 @@ BuildRequires:  lzma-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
+%if 0%{?is_opensuse}
+BuildRequires:  pkgconfig(Lerc)
+%endif
 Recommends:     tiff-docs = %{version}
 
 %description

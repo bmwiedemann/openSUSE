@@ -1134,4 +1134,13 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1314434</requestid>
   </revision>
+  <revision rev="109" vrev="4">
+    <srcmd5>b95d3eb3274871c44bc08dfa5580b579</srcmd5>
+    <version>4.7.1</version>
+    <time>1770401088</time>
+    <user>anag_factory</user>
+    <comment>- Enable Lerc support in openSUSE
+  * Used in GDAL for QGIS: boo#1257123</comment>
+    <requestid>1330099</requestid>
+  </revision>
 </revisionlist>

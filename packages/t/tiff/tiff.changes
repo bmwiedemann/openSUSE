@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 24 18:08:33 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Enable Lerc support in openSUSE
+  * Used in GDAL for QGIS: boo#1257123
+
+-------------------------------------------------------------------
 Thu Sep 18 19:11:37 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.7.1:
@@ -2502,4 +2508,3 @@ Wed Jul 29 19:01:00 MEST 1998 - werner@suse.de
 Tue May 12 18:22:27 MEST 1998 - ro@suse.de
 
 - extracted package from libgr / build from own sources
-
