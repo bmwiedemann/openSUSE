@@ -7089,7 +7089,6 @@ unsorted:
   - git-filter-repo 
   - git-fzlog 
   - git-lfs 
-  - git-merge-changelog 
   - git-mr 
   - git-next 
   - git-p4 
@@ -15233,6 +15232,8 @@ unsorted:
   - libosmcomp5 
   - libosmgpsmap-1_0-1 
   - libosmgpsmap-devel 
+  - libosmo-asn1-tcap-devel 
+  - libosmo-asn1-tcap1 
   - libosmo-dsp-devel 
   - libosmo-dsp-doc 
   - libosmo-e1d3 
@@ -15256,7 +15257,7 @@ unsorted:
   - libosmo-sabp-devel 
   - libosmo-sabp1 
   - libosmo-sigtran-devel 
-  - libosmo-sigtran11 
+  - libosmo-sigtran12 
   - libosmo-simtrace2-1 
   - libosmo-simtrace2-devel 
   - libosmoabis-devel 
@@ -15505,7 +15506,7 @@ unsorted:
   - libppd-devel 
   - libppl14 
   - libppl_c4 
-  - libpplite5 
+  - libpplite6 
   - libppsdocument4_0-6 
   - libppsview4_0-5 
   - libpq5-32bit 
@@ -50193,10 +50194,6 @@ unsorted:
   - xournalpp 
   - xournalpp-lang 
   - xpad-noone-kmp-default 
-  - xpadneo 
-  - xpadneo-kmp-default 
-  - xpadneo-kmp-longterm 
-  - xpadneo-ueficert 
   - xpenguins 
   - xpinguin 
   - xplanet 
