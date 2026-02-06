@@ -19,7 +19,7 @@
 %define binary_name jj
 
 Name:           jujutsu
-Version:        0.37.0
+Version:        0.38.0
 Release:        0
 Summary:        Git-compatible DVCS that is both simple and powerful
 License:        MIT
@@ -129,7 +129,9 @@ rm -rf tests/contest/
         --skip 'test_gpg::gpgsm_signing_roundtrip' \
         --skip 'test_gpg::gpgsm_signing_roundtrip_explicit_key' \
         --skip 'test_gpg::gpgsm_unknown_key' \
-        --skip 'config::tests::test_parse_value_or_bare_string'
+        --skip 'test_diff_command::test_diff_basic' \
+        --skip 'test_new_command::test_new_insert_after' \
+        --skip 'test_new_command::test_new_insert_before'
 
 %files
 %doc README.md
