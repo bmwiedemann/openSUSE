@@ -21,7 +21,7 @@
 #
 %bcond_without released
 Name:           kamoso
-Version:        25.12.1
+Version:        25.12.2
 Release:        0
 Summary:        Application to take pictures and videos using a webcam
 License:        GPL-2.0-or-later
