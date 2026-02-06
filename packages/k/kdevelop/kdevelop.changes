@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb  3 10:05:35 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.2/
+- No code change since 25.12.1
+
+-------------------------------------------------------------------
 Thu Jan 22 14:26:18 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Recommend pkexec instead of /usr/bin/pkexec: the package split
