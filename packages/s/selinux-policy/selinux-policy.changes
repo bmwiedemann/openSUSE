@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 03 09:55:20 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 20260203:
+  * Add support for 'mariadb@.service' (bsc#1255024).
+
+-------------------------------------------------------------------
 Mon Jan 26 09:59:16 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Update to version 20260126:
