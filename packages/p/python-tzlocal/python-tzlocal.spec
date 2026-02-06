@@ -1,7 +1,7 @@
 #
 # spec file for package python-tzlocal
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,39 +21,38 @@
 Name:           python-%{modname}
 Version:        5.3.1
 Release:        0
-Summary:        tzinfo object for the local timezone
+Summary:        Timezone information (tzinfo) object for the local timezone
 License:        MIT
 URL:            https://github.com/regebro/tzlocal
 Source:         https://github.com/regebro/tzlocal/archive/%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytz-deprecation-shim}
-BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module tzdata}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytz
-Requires:       python-pytz-deprecation-shim
+Requires:       python-tzdata
 BuildArch:      noarch
 %python_subpackages
 
 %description
-This Python module returns a tzinfo object with the local timezone information
-under Unix and Win-32. It requires pytz, and returns pytz tzinfo objects.
+This Python module returns the IANA time zone name for your local time zone
+or a tzinfo object with the local timezone information, under Unix and
+Windows.
 
-This module attempts to fix a glaring hole in pytz, that there is no way to get
-the local timezone information, unless you know the zoneinfo name, and under
-several Linux distros that’s hard or impossible to figure out.
-
-Also, with Windows different timezone system using pytz isn’t of much use unless
-you separately configure the zoneinfo timezone name.
+This module attempts to fix a glaring hole in the pytz and zoneinfo modules,
+that there is no way to get the local timezone information, unless you know
+the zoneinfo name, and under several Linux distros that's hard or impossible
+to figure out.
 
 With tzlocal you only need to call get_localzone() and you will get a tzinfo
-object with the local time zone info. On some Unices you will still not get to
-know what the timezone name is, but you don’t need that when you have the tzinfo
-file. However, if the timezone name is readily available it will be used.
+object with the local time zone info. On some Unices you will still not get
+to know what the timezone name is, but you don't need that when you have the
+tzinfo file. However, if the timezone name is readily available it will be
+used.
 
 %prep
 %setup -q -n %{modname}-%{version}

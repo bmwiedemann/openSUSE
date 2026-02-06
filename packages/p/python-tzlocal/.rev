@@ -214,4 +214,12 @@
     who want to explicitly check and fail.</comment>
     <requestid>1304050</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>c7bf9536d37be29d00093249a53faa8c</srcmd5>
+    <version>5.3.1</version>
+    <time>1770401108</time>
+    <user>anag_factory</user>
+    <comment>- Correct {Build,}Requires, the summary and the description to match reality.</comment>
+    <requestid>1331090</requestid>
+  </revision>
 </revisionlist>
