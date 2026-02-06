@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Feb  4 20:05:47 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- python36-buildfix1.patch
+  * trying to fix build with python 3.6
+
+-------------------------------------------------------------------
+Wed Feb  4 19:35:40 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to Mesa 26.0.0~rc3
+
+-------------------------------------------------------------------
+Wed Jan 28 17:39:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to Mesa 26.0.0~rc2
+- refreshed patches:
+  - python36-buildfix1.patch
+  - u_d3d12.patch
+
+-------------------------------------------------------------------
 Wed Jan 28 14:49:09 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to Mesa 25.3.4

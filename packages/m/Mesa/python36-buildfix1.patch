@@ -1,7 +1,7 @@
-Index: mesa-25.3.0/src/nouveau/headers/class_parser.py
+Index: mesa-26.0.0-rc1/src/nouveau/headers/class_parser.py
 ===================================================================
---- mesa-25.3.0.orig/src/nouveau/headers/class_parser.py
-+++ mesa-25.3.0/src/nouveau/headers/class_parser.py
+--- mesa-26.0.0-rc1.orig/src/nouveau/headers/class_parser.py
++++ mesa-26.0.0-rc1/src/nouveau/headers/class_parser.py
 @@ -14,6 +14,16 @@ from mako.template import Template
  import util
  
@@ -74,13 +74,13 @@ Index: mesa-25.3.0/src/nouveau/headers/class_parser.py
          with open(args.prev_in_h, 'r', encoding='utf-8') as f:
              (prev_version, prev_methods) = parse_header(prev_nvcl, f)
  
-Index: mesa-25.3.0/src/compiler/nir/nir_algebraic.py
+Index: mesa-26.0.0-rc1/src/compiler/nir/nir_algebraic.py
 ===================================================================
---- mesa-25.3.0.orig/src/compiler/nir/nir_algebraic.py
-+++ mesa-25.3.0/src/compiler/nir/nir_algebraic.py
-@@ -31,6 +31,11 @@ import traceback
+--- mesa-26.0.0-rc1.orig/src/compiler/nir/nir_algebraic.py
++++ mesa-26.0.0-rc1/src/compiler/nir/nir_algebraic.py
+@@ -39,6 +39,11 @@ class TestStatus(Enum):
+     UNSUPPORTED = 2,
  
- from nir_opcodes import opcodes, type_sizes
  
 +def removeprefix(s, prefix):
 +    if s.startswith(prefix):
@@ -90,19 +90,21 @@ Index: mesa-25.3.0/src/compiler/nir/nir_algebraic.py
  # This should be the same as NIR_SEARCH_MAX_COMM_OPS in nir_search.c
  nir_search_max_comm_ops = 8
  
-@@ -396,7 +401,7 @@ class Expression(Value):
-       self.nnan = cond.pop('nnan', False)
-       self.ninf = cond.pop('ninf', False)
-       self.contract = cond.pop('contract', False)
--      self.swizzle = -1 if m.group('swizzle') is None else swizzles[m.group('swizzle').removeprefix('.')]
-+      self.swizzle = -1 if m.group('swizzle') is None else swizzles[removeprefix(m.group('swizzle'),'.')]
+@@ -432,8 +437,8 @@ class Expression(Value):
+         self.ninf = cond.pop('ninf', False)
+         self.contract = cond.pop('contract', False)
+         self.swizzle = - \
+-            1 if m.group('swizzle') is None else swizzles[m.group(
+-                'swizzle').removeprefix('.')]
++            1 if m.group('swizzle') is None else \
++              swizzles[removeprefix(m.group('swizzle'), '.')]
  
-       assert len(cond) <= 1
-       self.cond = cond.popitem()[0] if cond else None
-Index: mesa-25.3.0/src/nouveau/headers/nv_push_class_dump_h.py
+         assert len(cond) <= 1
+         self.cond = cond.popitem()[0] if cond else None
+Index: mesa-26.0.0-rc1/src/nouveau/headers/nv_push_class_dump_h.py
 ===================================================================
---- mesa-25.3.0.orig/src/nouveau/headers/nv_push_class_dump_h.py
-+++ mesa-25.3.0/src/nouveau/headers/nv_push_class_dump_h.py
+--- mesa-26.0.0-rc1.orig/src/nouveau/headers/nv_push_class_dump_h.py
++++ mesa-26.0.0-rc1/src/nouveau/headers/nv_push_class_dump_h.py
 @@ -5,6 +5,11 @@ from collections import defaultdict
  from mako.template import Template
  import util
@@ -124,10 +126,10 @@ Index: mesa-25.3.0/src/nouveau/headers/nv_push_class_dump_h.py
          engine_id = class_id_to_engine_id(class_id)
  
          classes_per_eng[engine_id].append(class_id)
-Index: mesa-25.3.0/src/vulkan/util/vk_physical_device_features_gen.py
+Index: mesa-26.0.0-rc1/src/vulkan/util/vk_physical_device_features_gen.py
 ===================================================================
---- mesa-25.3.0.orig/src/vulkan/util/vk_physical_device_features_gen.py
-+++ mesa-25.3.0/src/vulkan/util/vk_physical_device_features_gen.py
+--- mesa-26.0.0-rc1.orig/src/vulkan/util/vk_physical_device_features_gen.py
++++ mesa-26.0.0-rc1/src/vulkan/util/vk_physical_device_features_gen.py
 @@ -34,6 +34,11 @@ import mako
  from mako.template import Template
  from vk_extensions import Requirements, get_all_required, filter_api
@@ -140,7 +142,7 @@ Index: mesa-25.3.0/src/vulkan/util/vk_physical_device_features_gen.py
  RENAMED_FEATURES = {
      # See https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/17272#note_1446477 for details
      ('BufferDeviceAddressFeaturesEXT', 'bufferDeviceAddressCaptureReplay'): 'bufferDeviceAddressCaptureReplayEXT',
-@@ -149,7 +154,7 @@ for (feature_structs, features) in KNOWN
+@@ -151,7 +156,7 @@ for (feature_structs, features) in KNOWN
              RENAMED_FEATURES[rename] = flag
  
  def get_renamed_feature(c_type, feature):
@@ -149,7 +151,7 @@ Index: mesa-25.3.0/src/vulkan/util/vk_physical_device_features_gen.py
  
  @dataclass
  class FeatureStruct:
-@@ -512,12 +517,12 @@ def get_feature_structs_from_xml(xml_fil
+@@ -514,12 +519,12 @@ def get_feature_structs_from_xml(xml_fil
              if renamed_flag not in features:
                  features[renamed_flag] = f.c_type
              else:
@@ -165,10 +167,10 @@ Index: mesa-25.3.0/src/vulkan/util/vk_physical_device_features_gen.py
  
      for rename in unused_renames:
          diagnostics.append(f'unused rename {rename}')
-Index: mesa-25.3.0/src/vulkan/util/vk_physical_device_spirv_caps_gen.py
+Index: mesa-26.0.0-rc1/src/vulkan/util/vk_physical_device_spirv_caps_gen.py
 ===================================================================
---- mesa-25.3.0.orig/src/vulkan/util/vk_physical_device_spirv_caps_gen.py
-+++ mesa-25.3.0/src/vulkan/util/vk_physical_device_spirv_caps_gen.py
+--- mesa-26.0.0-rc1.orig/src/vulkan/util/vk_physical_device_spirv_caps_gen.py
++++ mesa-26.0.0-rc1/src/vulkan/util/vk_physical_device_spirv_caps_gen.py
 @@ -14,6 +14,11 @@ import xml.etree.ElementTree as et
  import mako
  from mako.template import Template
@@ -197,10 +199,10 @@ Index: mesa-25.3.0/src/vulkan/util/vk_physical_device_spirv_caps_gen.py
  
  def get_capabilities(doc, beta):
      caps = {}
-Index: mesa-25.3.0/src/amd/vulkan/layers/radv_annotate_layer_gen.py
+Index: mesa-26.0.0-rc1/src/amd/vulkan/layers/radv_annotate_layer_gen.py
 ===================================================================
---- mesa-25.3.0.orig/src/amd/vulkan/layers/radv_annotate_layer_gen.py
-+++ mesa-25.3.0/src/amd/vulkan/layers/radv_annotate_layer_gen.py
+--- mesa-26.0.0-rc1.orig/src/amd/vulkan/layers/radv_annotate_layer_gen.py
++++ mesa-26.0.0-rc1/src/amd/vulkan/layers/radv_annotate_layer_gen.py
 @@ -14,6 +14,11 @@ import xml.etree.ElementTree as et
  import mako
  from mako.template import Template
@@ -222,10 +224,10 @@ Index: mesa-25.3.0/src/amd/vulkan/layers/radv_annotate_layer_gen.py
          if stripped_name in commands_names or stripped_name in EXCLUDED_COMMANDS:
              continue
  
-Index: mesa-25.3.0/src/nouveau/compiler/latencies/lat_rs_gen.py
+Index: mesa-26.0.0-rc1/src/nouveau/compiler/latencies/lat_rs_gen.py
 ===================================================================
---- mesa-25.3.0.orig/src/nouveau/compiler/latencies/lat_rs_gen.py
-+++ mesa-25.3.0/src/nouveau/compiler/latencies/lat_rs_gen.py
+--- mesa-26.0.0-rc1.orig/src/nouveau/compiler/latencies/lat_rs_gen.py
++++ mesa-26.0.0-rc1/src/nouveau/compiler/latencies/lat_rs_gen.py
 @@ -13,6 +13,11 @@ import sys
  
  from mako import template
@@ -238,7 +240,7 @@ Index: mesa-25.3.0/src/nouveau/compiler/latencies/lat_rs_gen.py
  TEMPLATE_RS = template.Template(text="""\
  // Copyright 2024 Red Hat Inc.
  // SPDX-License-Identifier: MIT
-@@ -105,7 +110,7 @@ class Fld(object):
+@@ -106,7 +111,7 @@ class Fld(object):
              self.pred_val = part[1]
          elif " & sb" in line:
              self.scoreboard = True
@@ -247,7 +249,7 @@ Index: mesa-25.3.0/src/nouveau/compiler/latencies/lat_rs_gen.py
          else:
              self.scoreboard = False
              self.value = line.strip()
-@@ -185,7 +190,7 @@ def main():
+@@ -186,7 +191,7 @@ def main():
  
      file_cats = {}
      for csv_file in args.csv_files[0]:
@@ -256,10 +258,10 @@ Index: mesa-25.3.0/src/nouveau/compiler/latencies/lat_rs_gen.py
          assert len(split) == 2
          reg_file = split[0]
          latcat = split[1]
-Index: mesa-25.3.0/src/nouveau/headers/lib_rs_gen.py
+Index: mesa-26.0.0-rc1/src/nouveau/headers/lib_rs_gen.py
 ===================================================================
---- mesa-25.3.0.orig/src/nouveau/headers/lib_rs_gen.py
-+++ mesa-25.3.0/src/nouveau/headers/lib_rs_gen.py
+--- mesa-26.0.0-rc1.orig/src/nouveau/headers/lib_rs_gen.py
++++ mesa-26.0.0-rc1/src/nouveau/headers/lib_rs_gen.py
 @@ -16,6 +16,10 @@ from mako.template import Template
  
  import util
@@ -280,10 +282,10 @@ Index: mesa-25.3.0/src/nouveau/headers/lib_rs_gen.py
  
          mod_path = f.split('_')
          assert mod_path[0] == 'nvh'
-Index: mesa-25.3.0/src/nouveau/headers/struct_parser.py
+Index: mesa-26.0.0-rc1/src/nouveau/headers/struct_parser.py
 ===================================================================
---- mesa-25.3.0.orig/src/nouveau/headers/struct_parser.py
-+++ mesa-25.3.0/src/nouveau/headers/struct_parser.py
+--- mesa-26.0.0-rc1.orig/src/nouveau/headers/struct_parser.py
++++ mesa-26.0.0-rc1/src/nouveau/headers/struct_parser.py
 @@ -13,6 +13,10 @@ from mako.template import Template
  
  import util
@@ -304,10 +306,10 @@ Index: mesa-25.3.0/src/nouveau/headers/struct_parser.py
          else:
              for f in struct.fields:
                  if name.startswith(f.name + '_'):
-Index: mesa-25.3.0/src/vulkan/util/vk_physical_device_properties_gen.py
+Index: mesa-26.0.0-rc1/src/vulkan/util/vk_physical_device_properties_gen.py
 ===================================================================
---- mesa-25.3.0.orig/src/vulkan/util/vk_physical_device_properties_gen.py
-+++ mesa-25.3.0/src/vulkan/util/vk_physical_device_properties_gen.py
+--- mesa-26.0.0-rc1.orig/src/vulkan/util/vk_physical_device_properties_gen.py
++++ mesa-26.0.0-rc1/src/vulkan/util/vk_physical_device_properties_gen.py
 @@ -36,6 +36,11 @@ from mako.template import Template
  
  from vk_extensions import get_all_required, filter_api
@@ -329,3 +331,27 @@ Index: mesa-25.3.0/src/vulkan/util/vk_physical_device_properties_gen.py
  
          # collect a list of properties
          properties = []
+diff -u -r mesa-26.0.0-rc3/src.orig/asahi/isa/isa.py mesa-26.0.0-rc3/src/asahi/isa/isa.py
+--- mesa-26.0.0-rc3/src.orig/asahi/isa/isa.py	2026-02-04 20:59:25.293967127 +0100
++++ mesa-26.0.0-rc3/src/asahi/isa/isa.py	2026-02-04 21:02:29.593753170 +0100
+@@ -122,7 +122,7 @@
+             if el.tag != 'zero':
+                 text = substitute(el.text, subst)
+                 bits = parse_bitstring(text)
+-                assert(len(text) == self.mask.bit_count())
++                assert(len(text) == bin(self.mask).count("1"))
+         else:
+             self.mask = 0
+ 
+diff -u -r mesa-26.0.0-rc3/src.orig/asahi/isa/test/disasm.py mesa-26.0.0-rc3/src/asahi/isa/test/disasm.py
+--- mesa-26.0.0-rc3/src.orig/asahi/isa/test/disasm.py	2026-02-04 20:59:25.293967127 +0100
++++ mesa-26.0.0-rc3/src/asahi/isa/test/disasm.py	2026-02-04 21:01:26.308452985 +0100
+@@ -46,7 +46,7 @@
+     if count == 0:
+         count = 4
+     if 'mask' in desc:
+-        count = desc['mask'].bit_count()
++        count = bin(desc['mask']).count("1")
+     if 'zx' in desc:
+         desc['sx'] = desc['zx'] ^ 1
+ 

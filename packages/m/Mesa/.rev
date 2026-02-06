@@ -6659,4 +6659,20 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   --&gt; https://docs.mesa3d.org/relnotes/25.3.4</comment>
     <requestid>1329695</requestid>
   </revision>
+  <revision rev="568" vrev="1">
+    <srcmd5>ae563433e900f31580d52f0d9b291958</srcmd5>
+    <version>26.0.0~rc3</version>
+    <time>1770401106</time>
+    <user>anag_factory</user>
+    <comment>- python36-buildfix1.patch
+  * trying to fix build with python 3.6
+
+- Update to Mesa 26.0.0~rc3
+
+- Update to Mesa 26.0.0~rc2
+- refreshed patches:
+  - python36-buildfix1.patch
+  - u_d3d12.patch</comment>
+    <requestid>1331065</requestid>
+  </revision>
 </revisionlist>

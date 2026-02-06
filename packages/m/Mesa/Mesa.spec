@@ -131,15 +131,16 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        25.3.4
+Version:        26.0.0~rc3
 Release:        0
+%define pkg_version 26.0.0-rc3
 Summary:        System for rendering 3-D graphics
 License:        MIT
 Group:          System/Libraries
 URL:            https://www.mesa3d.org
 #Git-Clone:     git://anongit.freedesktop.org/mesa/mesa
-Source0:        https://archive.mesa3d.org/%{_name_archive}-%{version}.tar.xz
-Source1:        https://archive.mesa3d.org/%{_name_archive}-%{version}.tar.xz.sig
+Source0:        https://archive.mesa3d.org/%{_name_archive}-%{pkg_version}.tar.xz
+Source1:        https://archive.mesa3d.org/%{_name_archive}-%{pkg_version}.tar.xz.sig
 # NVK aka Vulkan Nouveau dependencies
 # Explainer:
 # Since Rust crates are not installed or discouraged to be installed as system
@@ -726,7 +727,7 @@ Group:          System/Libraries
 This package contains the VK_MESA_Overlay Vulkan layer
 
 %prep
-%setup -q -n %{_name_archive}-%{version} -b9
+%setup -q -n %{_name_archive}-%{pkg_version} -b9
 # remove some docs
 rm -rf docs/README.{VMS,WIN32,OS2}
 
@@ -1041,7 +1042,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %ifarch %{arm} aarch64
 %exclude %{_libdir}/dri/vc4_dri.so
 %endif
-%{_libdir}/libgallium-%{version}.so
+%{_libdir}/libgallium-%{pkg_version}.so
 %dir %{_libdir}/gbm/
 %{_libdir}/gbm/dri_gbm.so
 
