@@ -20,7 +20,7 @@
 %define web_assets_version v5.0.0
 
 Name:           opencloud-server
-Version:        5.0.1
+Version:        5.0.2
 Release:        0
 Summary:        Secure and private way to store, access, and share your files
 License:        Apache-2.0
