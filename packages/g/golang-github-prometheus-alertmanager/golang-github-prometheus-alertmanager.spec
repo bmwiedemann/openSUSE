@@ -21,9 +21,9 @@ Version:        0.31.0
 Release:        0
 Summary:        Prometheus Alertmanager
 License:        Apache-2.0
-URL:            https://prometheus.io/
+URL:            https://github.com/prometheus/alertmanager
 Group:          System/Monitoring
-Source:         alertmanager-%{version}.tar.gz
+Source:         %{URL}/archive/refs/tags/v%{version}.tar.gz#/alertmanager-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        prometheus-alertmanager.service
 Source3:        alertmanager.yml
