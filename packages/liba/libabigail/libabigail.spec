@@ -1,7 +1,7 @@
 #
 # spec file for package libabigail
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define lname   libabigail6
+%define lname   libabigail8
 Name:           libabigail
-Version:        2.7
+Version:        2.9
 Release:        0
 Summary:        Application Binary Interface Generic Analysis and Instrumentation Library
 License:        Apache-2.0 WITH LLVM-exception
