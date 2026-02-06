@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Feb 05 09:23:57 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.11.2:
+  * v0.11.2
+  * update deps
+  * gui: update Cargo.toml
+
+-------------------------------------------------------------------
+Thu Feb 05 09:23:07 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.11.1:
+  * v0.11.1
+  * add "--single-gui" option update docs
+  * gui: clippy
+  * gui: persist main tab and info tab
+  * gui: use GpuMetrics::get_throttle_status_info
+  * lib, gui: persist GUI mode
+  * lib: update kfd process detection logic
+  * lib: improve cpu usage calculation
+  * update libdrm_amdgpu_sys rev
+  * clippy
+
+-------------------------------------------------------------------
 Wed Sep 03 05:52:04 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to version 0.11.0:

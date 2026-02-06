@@ -6,7 +6,7 @@
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v([\.\d]+)</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">v0.11.0</param>
+    <param name="revision">v0.11.2</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="tar" mode="buildtime"/>
