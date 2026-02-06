@@ -1,7 +1,7 @@
 #
 # spec file for package kdepim-addons
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,11 +19,11 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.0
+%define kpim6_version 6.6.2
 
 %bcond_without released
 Name:           kdepim-addons
-Version:        25.12.1
+Version:        25.12.2
 Release:        0
 Summary:        Addons for KDE PIM applications
 License:        GPL-2.0-only
