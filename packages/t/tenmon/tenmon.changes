@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb  6 08:39:42 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 20260119:
+  * Try to fix crash in ImageRingList
+  * Fix compile error
+  * Clean up code
+  * Update metainfo
+  * Open parent directory if it doesn't exist
+  * Fix copy/move operation
+
+-------------------------------------------------------------------
 Fri Oct 17 07:49:50 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 20250915:

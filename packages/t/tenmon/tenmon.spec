@@ -1,7 +1,7 @@
 #
 # spec file for package tenmon
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %endif
 
 Name:           tenmon
-Version:        20250915
+Version:        20260119
 Release:        0
 Summary:        FITS and XISF image viewer, converter and indexer
 License:        GPL-3.0-or-later
@@ -32,7 +32,7 @@ Patch0:         fix-cmakelists.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         fix-libxisf-include.patch
 BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
-BuildRequires:  libXISF-devel >= 0.2.13+git3.556bb22
+BuildRequires:  libXISF-devel >= 0.2.13+git5.7b70b6a
 BuildRequires:  libzstd-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-base-devel >= 6.2.0

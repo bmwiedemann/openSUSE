@@ -193,4 +193,19 @@
 </comment>
     <requestid>1312310</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>248c2554c49cce9a4ac65c0515e0cced</srcmd5>
+    <version>20260119</version>
+    <time>1770401423</time>
+    <user>anag_factory</user>
+    <comment>- Update to 20260119:
+  * Try to fix crash in ImageRingList
+  * Fix compile error
+  * Clean up code
+  * Update metainfo
+  * Open parent directory if it doesn't exist
+  * Fix copy/move operation
+</comment>
+    <requestid>1331541</requestid>
+  </revision>
 </revisionlist>

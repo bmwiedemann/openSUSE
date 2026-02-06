@@ -2,8 +2,8 @@ Index: tenmon/src/main.cpp
 ===================================================================
 --- tenmon.orig/src/main.cpp
 +++ tenmon/src/main.cpp
-@@ -5,6 +5,7 @@
- #include <QCommandLineParser>
+@@ -6,6 +6,7 @@
+ #include <QSettings>
  #include <stdlib.h>
  #include "../thumbnailer/genthumbnail.h"
 +#include <libxisf.h>
