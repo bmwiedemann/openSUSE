@@ -268,4 +268,36 @@
     <comment></comment>
     <requestid>1290622</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1fd9affb9416a31fbce408a244eb8c9e</srcmd5>
+    <version>1.4.1</version>
+    <time>1770401421</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.4.1:
+  * Fixed tkfilebrowser submodule: resolved issues with duplicate filenames or bookmarks (!964)
+  * Improved sirilpy robustness: corrected too-strict condition and off-by-one error
+  * Fixed sirilpy.FFit class: corrected data setter behavior
+  * Fixed compilation without optional dependencies
+  * Fixed remote catalogue: eliminated dependency on Gaia Archive for improved reliability (!969)
+- Update to 1.4.0
+  Lots of improvements. For all the details see:
+  https://siril.org/download/2025-12-05-siril-1-4-0/
+- Update to 1.4.0~rc2
+  https://siril.org/download/2025-11-20-siril-1-4-0-rc2/
+- Update to 1.4.0~rc1
+  https://gitlab.com/free-astro/siril/-/releases/1.4.0-rc1 
+- gcc 7 no longer is enough to build 1.4.0 force gcc 14
+- use system libraries for healpix and yyjson where possible
+- Update to 1.4.0~beta4
+  https://siril.org/download/2025-09-28-siril-1-4-0-beta4/
+  https://siril.org/download/2025-07-11-siril-1-4-0-beta3/
+  https://siril.org/download/2025-05-21-siril-1-4-0-beta2/
+  https://siril.org/download/2025-04-26-siril-1-4-0-beta1/
+- drop patches pulled from upstream:
+  * fix_C_linkage.patch
+  * fix_glib_284_compat.patch
+  * fix_odr_violation.patch
+</comment>
+    <requestid>1331540</requestid>
+  </revision>
 </revisionlist>
