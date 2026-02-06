@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  3 10:05:42 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.2/
+- Changes since 25.12.1:
+  * remove trailing spaces in .gitlab-ci.yml
+  * documentation.yml is no more needed
+
+-------------------------------------------------------------------
 Wed Jan  7 12:24:56 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.1
