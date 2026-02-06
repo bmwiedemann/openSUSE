@@ -1,21 +1,6 @@
 <services>
-  <service name="obs_scm" mode="manual">
-    <param name="url">https://github.com/prometheus/promu.git</param>
-    <param name="scm">git</param>
-    <param name="exclude">.git</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v0.17.0</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
-  </service>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
-    <param name="file">*.tar</param>
-    <param name="compression">gz</param>
-  </service>
-  <service name="set_version" mode="manual">
-    <param name="basename">promu</param>
-  </service>
+  <service name="download_files" mode="manual" />
   <service name="go_modules" mode="manual">
-    <param name="archive">promu-0.17.0.obscpio</param>
+    <param name="archive">promu-*.tar.gz</param>
   </service>
 </services>

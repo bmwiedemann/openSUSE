@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-promu
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ Summary:        Prometheus Utility Tool
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/prometheus/promu
-Source:         %{shortname}-%{version}.tar.gz
+Source:         %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{shortname}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 # PATCH-FIX-OPENSUSE Do not pass -static to external linker by default
 Patch2:         extldflags-no-static.patch
