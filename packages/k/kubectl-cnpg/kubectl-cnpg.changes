@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Fri Feb 06 06:01:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.28.1:
+  * cnpg plugin:
+    - Updated the status command to display "Disabled" when the
+      skipWalArchiving annotation is present on a cluster. This
+      replaces confusing "starting up" or "unknown" states when WAL
+      archiving is intentionally bypassed. (#9709)
+    - Fixed the logs --follow command to continue polling for new
+      pods instead of exiting prematurely when all current log
+      streams complete. (#9599)
+  * Dependencies
+    - [chore]: update avast/retry-go to v5 #9544 (#9545)
+    - chore(deps): refresh pip-compile outputs (release-1.28)
+      (#9460)
+    - chore(deps): refresh pip-compile outputs (release-1.28)
+      (#9649)
+    - chore(deps): refresh pip-compile outputs (release-1.28)
+      (#9884)
+    - chore(deps): update actions/checkout digest to de0fac2
+      (release-1.28) (#9863)
+    - chore(deps): update all non-major github action
+      (release-1.28) (#9446)
+    - chore(deps): update all non-major github action
+      (release-1.28) (#9493)
+    - chore(deps): update all non-major github action
+      (release-1.28) (#9753)
+    - chore(deps): update all non-major github action
+      (release-1.28) (#9812)
+    - chore(deps): update aws-actions/configure-aws-credentials
+      action to v6 (release-1.28) (#9902)
+    - chore(deps): update backup test tools (release-1.28) (#9761)
+    - chore(deps): update container distroless digests
+      (release-1.28) (#9450)
+    - chore(deps): update container distroless digests
+      (release-1.28) (#9703)
+    - chore(deps): update containers no-digests (release-1.28)
+      (#9501)
+    - chore(deps): update dependency boto3 to v1.42.10
+      (release-1.28) (#9456)
+    - chore(deps): update dependency boto3 to v1.42.19
+      (release-1.28) (#9618)
+    - chore(deps): update dependency boto3 to v1.42.24
+      (release-1.28) (#9640)
+    - chore(deps): update dependency boto3 to v1.42.41
+      (release-1.28) (#9889)
+    - chore(deps): update dependency boto3 to v1.42.42
+      (release-1.28) (#9907)
+    - chore(deps): update dependency go to v1.25.6 (release-1.28)
+      (#9741)
+    - chore(deps): update dependency go to v1.25.7 (release-1.28)
+      (#9893)
+    - chore(deps): update dependency golang to v1.25.6
+      (release-1.28) (#9747)
+    - chore(deps): update dependency golang to v1.25.7
+      (release-1.28) (#9897)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.7.2 (release-1.28) (#9514)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.8.0 (release-1.28) (#9696)
+    - chore(deps): update dependency onsi/ginkgo to v2.27.3
+      (release-1.28) (#9481)
+    - chore(deps): update dependency onsi/ginkgo to v2.27.4
+      (release-1.28) (#9665)
+    - chore(deps): update dependency onsi/ginkgo to v2.27.5
+      (release-1.28) (#9756)
+    - chore(deps): update dependency onsi/ginkgo to v2.28.1
+      (release-1.28) (#9853)
+    - chore(deps): update dependency
+      operator-framework/operator-registry to v1.63.0
+      (release-1.28) (#9807)
+    - chore(deps): update dependency packaging to v26
+      (release-1.28) (#9880)
+    - chore(deps): update dependency
+      redhat-openshift-ecosystem/openshift-preflight to v1.16.0
+      (release-1.28) (#9708)
+    - chore(deps): update dependency rook/rook to v1.18.8
+      (release-1.28) (#9611)
+    - chore(deps): update dependency rook/rook to v1.18.9
+      (release-1.28) (#9719)
+    - chore(deps): update dependency rook/rook to v1.19.0
+      (release-1.28) (#9869)
+    - chore(deps): update docker/setup-buildx-action digest to
+      8d2750c (release-1.28) (#9517)
+    - chore(deps): update github artifact actions (release-1.28)
+      (major) (#9531)
+    - chore(deps): update jonasbn/github-action-spellcheck docker
+      tag to v0.56.0 (release-1.28) (#9580)
+    - chore(deps): update jonasbn/github-action-spellcheck docker
+      tag to v0.57.0 (release-1.28) (#9728)
+    - chore(deps): update jonasbn/github-action-spellcheck docker
+      tag to v0.58.0 (release-1.28) (#9859)
+    - chore(deps): update module sigs.k8s.io/controller-tools to
+      v0.20.0 (release-1.28) (#9527)
+    - chore(deps): update peter-evans/create-pull-request action to
+      v8 (release-1.28) (#9535)
+    - chore(deps): update
+      registry.access.redhat.com/ubi9/ubi-micro:latest docker
+      digest to e976551 (release-1.28) (#9497)
+    - chore(deps): update rojopolis/spellcheck-github-actions
+      action to v0.56.0 (release-1.28) (#9586)
+    - fix(deps): update all non-major go dependencies
+      (release-1.28) (#9472)
+    - fix(deps): update all non-major go dependencies
+      (release-1.28) (#9590)
+    - fix(deps): update all non-major go dependencies
+      (release-1.28) (#9654)
+    - fix(deps): update all non-major go dependencies
+      (release-1.28) (#9684)
+    - fix(deps): update all non-major go dependencies
+      (release-1.28) (#9840)
+    - fix(deps): update cnpg (release-1.28) (#9615)
+    - fix(deps): update k8s.io/utils digest to 0fe9cd7
+      (release-1.28) (#9635)
+    - fix(deps): update k8s.io/utils digest to 718f0e5
+      (release-1.28) (#9597)
+    - fix(deps): update k8s.io/utils digest to 914a6e7
+      (release-1.28) (#9672)
+    - fix(deps): update k8s.io/utils digest to 98d557b
+      (release-1.28) (#9521)
+    - fix(deps): update kubernetes packages to v0.35.0
+      (release-1.28) (#9543)
+    - fix(deps): update kubernetes patches to v0.34.3
+      (release-1.28) (#9464)
+
+-------------------------------------------------------------------
 Thu Dec 11 09:23:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.28.0:
