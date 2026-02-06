@@ -17,16 +17,15 @@
 
 
 Name:           suse-kabi-tools
-Version:        0.5.0+git0.9ad91db
+Version:        1.1.0+git0.3857c3a
 Release:        0
 Summary:        A set of ABI tools for the Linux kernel
 Group:          System/Kernel
 License:        GPL-2.0-or-later
 URL:            https://github.com/SUSE/suse-kabi-tools
 Source:         %{name}-%{version}.tar.zst
-BuildRequires:  cargo
+BuildRequires:  cargo >= 1.88
 BuildRequires:  cargo-packaging
-Requires:       perl
 
 %description
 suse-kabi-tools is a set of Application Binary Interface (ABI) tools for the
@@ -36,15 +35,18 @@ Linux kernel.
 %autosetup -p1
 
 %build
+export SUSE_KABI_TOOLS_VERSION="%{version}"
 %{cargo_build}
 
 %install
+export SUSE_KABI_TOOLS_VERSION="%{version}"
 %{cargo_install}
 install -D -m 0644 %{_builddir}/%{name}-%{version}/doc/ksymtypes.1 %{buildroot}%{_mandir}/man1/ksymtypes.1
 install -D -m 0644 %{_builddir}/%{name}-%{version}/doc/ksymvers.1 %{buildroot}%{_mandir}/man1/ksymvers.1
 install -D -m 0644 %{_builddir}/%{name}-%{version}/doc/suse-kabi-tools.5 %{buildroot}%{_mandir}/man5/suse-kabi-tools.5
 
 %check
+export SUSE_KABI_TOOLS_VERSION="%{version}"
 %{cargo_test}
 
 %files

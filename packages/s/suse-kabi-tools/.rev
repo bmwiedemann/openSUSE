@@ -24,4 +24,36 @@
   * Reject duplicate symvers records</comment>
     <requestid>1294331</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>031848e214d77eadc11bb344a62312e6</srcmd5>
+    <version>1.1.0+git0.3857c3a</version>
+    <time>1770401098</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.0+git0.3857c3a:
+  * Add support for parsing quoted type names
+  * Report changes from a forward declaration to a definition in a succinct manner
+  * Fix the path reported in symtypes parsing errors
+  * Reject any extra data at the end of an override record
+  * Fix formatting of typedef enum declarations
+  * Fix the paths displayed when reporting duplicated exports
+  * Reject duplicate paths when reading symtypes data
+  * Ensure that loading symtypes data has commit or rollback semantics
+
+- Update to version 1.0.0+git0.4b3a0d0:
+  * Make parsing errors more informative
+  * Add the --filter-symbol-list option for 'ksymvers compare'
+  * Restrict 'ksymtypes split' to loading only consolidated symtypes files
+  * Restrict 'ksymtypes consolidate' to loading only split symtypes files
+  * Be less aggressive about wrapping '(', ')' and ','
+  * Enable setting output format of the ksymtypes comparison
+  * Add --format=mod-symbols for 'ksymvers compare' and 'ksymtypes compare'
+  * Add --format=short for 'ksymvers compare' and 'ksymtypes compare'
+  * Adopt a three-value exit status similar to that of diff/grep
+  * Exit 'ksymtypes compare' with code indicating input equality
+  * Require Rust version 1.88 or higher
+
+- Update to version 0.5.0+git6.7ef8a5e:
+  * Correct the --version output</comment>
+    <requestid>1330778</requestid>
+  </revision>
 </revisionlist>
