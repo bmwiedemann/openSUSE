@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb  6 08:01:41 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 1.29.5
+  * https://nginx.org/en/CHANGES
+  * Fixed an attacker might inject plain text data in the response from an SSL backend (CVE-2026-1642).
+  * Fixed use-after-free might occur after switching to the next gRPC or HTTP/2 backend.
+  * Fixed an invalid HTTP/2 request might be sent after switching to the next upstream.
+  * Fixed a response with multiple ranges might be larger than the source response.
+  * Fixed setting HTTP_HOST when proxying to FastCGI, SCGI, and uwsgi backends.
+  * Fixed warning when compiling with MSVC 2022 x86.
+  * Changed the logging level of the "ech_required" SSL error has been lowered from "crit" to "info".
+
+-------------------------------------------------------------------
 Wed Dec 10 06:14:47 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 1.29.4

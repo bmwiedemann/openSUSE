@@ -1,7 +1,7 @@
 #
 # spec file for package nginx
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with    ngx_google_perftools
 #
 Name:           nginx
-Version:        1.29.4
+Version:        1.29.5
 Release:        0
 Summary:        A HTTP server and IMAP/POP3 proxy server
 License:        BSD-2-Clause
@@ -31,7 +31,8 @@ Group:          Productivity/Networking/Web/Proxy
 URL:            https://github.com/nginx/nginx
 Source0:        https://github.com/nginx/nginx/releases/download/release-%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/nginx/nginx/releases/download/release-%{version}/%{name}-%{version}.tar.gz.asc
-Source2:        https://nginx.org/keys/pluknet.key#/%{name}.keyring
+# https://nginx.org/en/pgp_keys.html
+Source2:        %{name}.keyring
 Source3:        %{name}.rpmlintrc
 Source4:        %{name}.logrotate
 Source5:        %{name}.service

@@ -1357,4 +1357,20 @@
     &quot;try_files&quot; directive and &quot;proxy_pass&quot; with a URI were used.</comment>
     <requestid>1321886</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>9e4731c3d822bbc3819afbdbf716b619</srcmd5>
+    <version>1.29.5</version>
+    <time>1770409822</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 1.29.5
+  * https://nginx.org/en/CHANGES
+  * Fixed an attacker might inject plain text data in the response from an SSL backend (CVE-2026-1642).
+  * Fixed use-after-free might occur after switching to the next gRPC or HTTP/2 backend.
+  * Fixed an invalid HTTP/2 request might be sent after switching to the next upstream.
+  * Fixed a response with multiple ranges might be larger than the source response.
+  * Fixed setting HTTP_HOST when proxying to FastCGI, SCGI, and uwsgi backends.
+  * Fixed warning when compiling with MSVC 2022 x86.
+  * Changed the logging level of the &quot;ech_required&quot; SSL error has been lowered from &quot;crit&quot; to &quot;info&quot;.</comment>
+    <requestid>1331530</requestid>
+  </revision>
 </revisionlist>
