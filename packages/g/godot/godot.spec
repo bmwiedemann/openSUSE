@@ -37,6 +37,10 @@ Group:          Development/Tools/Other
 URL:            https://godotengine.org/
 Source0:        https://github.com/godotengine/%{name}/releases/download/%{version}-stable/%{name}-%{version}-stable.tar.xz
 Source1:        https://github.com/godotengine/%{name}/releases/download/%{version}-stable/%{name}-%{version}-stable.tar.xz.sha256
+# PATCH-FIX-UPSTREAM LSP__add_godot_to_known_language_ids.patch more details inside
+Patch0:         LSP__add_godot_to_known_language_ids.patch
+# PATCH-FIX-UPSTREAM LSP__handle_clients_that_do_not_support_CompletionContext.patch more details inside
+Patch1:         LSP__handle_clients_that_do_not_support_CompletionContext.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes

@@ -453,4 +453,13 @@
     <comment></comment>
     <requestid>1329661</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>4239eb3677bfed9a59808f0a5aacb0a2</srcmd5>
+    <version>4.6</version>
+    <time>1770401346</time>
+    <user>anag_factory</user>
+    <comment>- added patch LSP__add_godot_to_known_language_ids.patch
+- added patch LSP__handle_clients_that_do_not_support_CompletionContext.patch</comment>
+    <requestid>1331459</requestid>
+  </revision>
 </revisionlist>

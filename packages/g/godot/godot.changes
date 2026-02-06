@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 31 12:00:00 UTC 2026 - cunix@mail.de
+
+- added patch LSP__add_godot_to_known_language_ids.patch
+- added patch LSP__handle_clients_that_do_not_support_CompletionContext.patch
+
+-------------------------------------------------------------------
 Tue Jan 27 12:00:00 UTC 2026 - cunix@mail.de
 
 - Update to 4.6
