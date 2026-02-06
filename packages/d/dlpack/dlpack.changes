@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb  6 08:10:55 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.3:
+  * [DOCS] Include exchange api in the docs by @tqchen in #181
+  * Update exchange API to be capsule following new convention
+    by @tqchen in #180
+- Skipped to 1.2:
+  * Add support for Trainium device in #168
+  * Enforce strides to be not null when ndim is nonzero in #178
+  * Support DLPACK C Functions for Speed Exchange and Stream
+    Handling in #174
+
+-------------------------------------------------------------------
 Wed Sep 24 07:46:28 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 1.1:

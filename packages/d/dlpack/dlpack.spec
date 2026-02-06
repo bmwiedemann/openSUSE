@@ -1,7 +1,7 @@
 #
 # spec file for package dlpack
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           dlpack
-Version:        1.1
+Version:        1.3
 Release:        0
 Summary:        DLPack: Open In Memory Tensor Structure
 License:        Apache-2.0
 URL:            https://github.com/dmlc/dlpack
 Source0:        https://github.com/dmlc/dlpack/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.16
 BuildRequires:  gcc-c++
 
 %description
