@@ -25,7 +25,7 @@ COPY --from=target / /target
 
 RUN set -euo pipefail; \
     export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1; \
-    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends kea util-linux
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends kea sed util-linux
 
 RUN set -euo pipefail; zypper -n install --no-recommends systemd && \
     systemd-tmpfiles --create --root /target
@@ -66,4 +66,4 @@ LABEL runcwd_dhcp6="podman run --replace -it --privileged --network=host --name 
 EXPOSE 67/tcp 67/udp
 
 ENV KEA_PIDFILE_DIR="/var/run/kea"
-RUN install -m 0750 -o root -g root -d /var/run/kea
+RUN set -euo pipefail; install -m 0750 -o root -g root -d /var/run/kea
