@@ -191,4 +191,12 @@
     <comment>Forbidden control chars found (ASCII values &lt;32 except 9, 10 and 13).
 </comment>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4f6ebfebc5001c076dd5bb3857517f0a</srcmd5>
+    <version>1.1769257693.3ca3ce7c</version>
+    <time>1770401498</time>
+    <user>anag_factory</user>
+    <comment>Fixed changelog</comment>
+    <requestid>1331717</requestid>
+  </revision>
 </revisionlist>

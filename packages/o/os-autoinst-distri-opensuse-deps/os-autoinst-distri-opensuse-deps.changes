@@ -1,14 +1,12 @@
 -------------------------------------------------------------------
-Fri Jan 23 22:14:39 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+Sun Jan 25 03:29:37 UTC 2026 - Dominik Heidler <dheidler@suse.de>
 
-[info] get_spec_changes_in_requirements os-autoinst-distri-opensuse-deps devel:openQA:testing
 - Removed dependency gzip
 - Added dependency /usr/bin/gzip
 
 -------------------------------------------------------------------
 Tue Jan 20 13:45:47 UTC 2026 - Dominik Heidler <dheidler@suse.de>
 
-info] get_spec_changes_in_requirements os-autoinst-distri-opensuse-deps devel:openQA:testing
 - Added dependency perl(Inline::Python)
 - Added dependency mkisofs
 - Added dependency jq
