@@ -986,4 +986,12 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <comment>Next try, health-checker got several fixes.</comment>
     <requestid>1322956</requestid>
   </revision>
+  <revision rev="106" vrev="106">
+    <srcmd5>0306eff431b21dbf3f5649a7127ddae0</srcmd5>
+    <version>5.0</version>
+    <time>1770401131</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1331466</requestid>
+  </revision>
 </revisionlist>

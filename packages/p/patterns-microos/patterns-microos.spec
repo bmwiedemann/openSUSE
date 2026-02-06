@@ -153,29 +153,15 @@ Requires:       pattern() = microos_base
 # zypper ps is useless in transactional mode. It also checks for
 # /run/reboot-needed though which is created by transactional-update
 Requires:       zypper-needs-restarting
+# Exclude installation of docs by libzypp
+Requires:       zypp-excludedocs
+# Don't install multiple packages in parallel
+RequireS:       zypp-no-multiversion
+# Disable recommends of libzypp by default
+Requires:       zypp-no-recommends
 
 %description base-zypper
 This is the openSUSE MicroOS runtime system using the Zypper package manager.
-It contains only a minimal multiuser booting system.
-
-%package base-microdnf
-Summary:        openSUSE MicroOS using Micro DNF
-Group:          Metapackages
-Provides:       pattern() = microos_base_microdnf
-Provides:       pattern-category() = MicroOS
-Provides:       pattern-icon() = pattern-kubic
-Provides:       pattern-order() = 9012
-Provides:       pattern-visible()
-Requires:       libdnf-plugin-txnupd
-Requires:       microdnf
-Requires:       pattern() = microos_base
-# We need repository configuration from somewhere, so
-# make sure one gets installed
-Requires:       (libdnf-repo-config-zypp or rpm-repos-openSUSE)
-Suggests:       libdnf-repo-config-zypp
-
-%description base-microdnf
-This is the openSUSE MicroOS runtime system using the Micro DNF package manager.
 It contains only a minimal multiuser booting system.
 
 %package base-packagekit
@@ -661,7 +647,7 @@ Alternative additional packages on a openSUSE MicroOS DVD.
 %install
 mkdir -p %{buildroot}%{_docdir}/patterns-microos/
 PATTERNS='
-    basesystem base base_zypper base_microdnf base_packagekit defaults hardware
+    basesystem base base_zypper base_packagekit defaults hardware
     sssd_ldap ima_evm ra_agent ra_verifier selinux cockpit cloud
     desktop-common desktop-kde onlyDVD alt_onlyDVD
 '
@@ -681,10 +667,6 @@ done
 %files base-zypper
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/base_zypper.txt
-
-%files base-microdnf
-%dir %{_docdir}/patterns-microos
-%{_docdir}/patterns-microos/base_microdnf.txt
 
 %files base-packagekit
 %dir %{_docdir}/patterns-microos

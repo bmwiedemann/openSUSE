@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb  5 17:20:24 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require zypp-excludedocs, zypp-no-multiversion, and
+  zypp-no-recommends by microos-base-zypper (part of boo#1257769).
+
+-------------------------------------------------------------------
+Wed Feb  4 17:43:30 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop base_microdnf pattern: microdnf is slated for removal in
+  favor of DNF5.
+
+-------------------------------------------------------------------
 Fri Dec 12 15:09:22 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add kf6-purpose to desktop-kde pattern
