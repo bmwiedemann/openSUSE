@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 06 06:00:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.91.0:
+  * Other Changes
+    - Added e2e tests for create and update of a draft release
+      bundle commands (#3334)
+
+-------------------------------------------------------------------
 Sun Feb 01 19:31:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.90.0:
