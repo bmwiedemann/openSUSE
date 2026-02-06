@@ -17,7 +17,7 @@
 
 
 Name:           libzpc
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        IBM Z Protected-key Crypto library
 License:        MIT

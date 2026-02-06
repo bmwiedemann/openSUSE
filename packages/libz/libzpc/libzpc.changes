@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  6 16:34:24 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade libzpc to version 1.5.0 (jsc#PED-14603, jsc#PED-14275, jsc#PED-15049) 
+  * [FEATURE] Support live guest relocation
+
+-------------------------------------------------------------------
 Wed Jan  7 12:21:51 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade libzpc to 1.4.1 
