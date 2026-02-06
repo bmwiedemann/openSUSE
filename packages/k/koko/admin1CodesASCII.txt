@@ -167,7 +167,7 @@ AZ.46	Sabirabad District	Sabirabad District	147284
 AZ.45	Saatlı	Saatli	147287
 AZ.13	Bilasuvar District	Bilasuvar District	147310
 AZ.36	Neftçala	Neftcala	147422
-AZ.35	Nakhichevan ASSR	Nakhichevan ASSR	147435
+AZ.35	Nakhchivan	Nakhchivan	147435
 AZ.32	Masally	Masally	147551
 AZ.31	Lerik District	Lerik District	147610
 AZ.29	Lənkəran	Lankaran	147613
@@ -305,7 +305,6 @@ BI.22	Muramvya	Muramvya	425550
 BI.13	Gitega	Gitega	426271
 BI.21	Ruyigi	Ruyigi	426699
 BI.11	Cankuzo	Cankuzo	427700
-BI.14	Karuzi	Karuzi	428218
 BI.09	Bubanza	Bubanza	428514
 BI.12	Cibitoke	Cibitoke	430020
 BI.19	Ngozi	Ngozi	430567
@@ -313,7 +312,6 @@ BI.15	Kayanza	Kayanza	430951
 BI.18	Muyinga	Muyinga	431747
 BI.16	Kirundo	Kirundo	432455
 BI.20	Rutana	Rutana	434147
-BI.23	Mwaro	Mwaro	434386
 BI.24	Bujumbura Mairie	Bujumbura Mairie	7303939
 BI.25	Bujumbura Rural	Bujumbura Rural	7303940
 BI.26	Rumonge	Rumonge	11184798
@@ -456,7 +454,7 @@ BY.06	Mogilev	Mogilev	625073
 BY.05	Minsk	Minsk	625142
 BY.04	Minsk City	Minsk City	625143
 BY.03	Grodnenskaya	Grodnenskaya	628035
-BY.02	Gomel Oblast	Gomel Oblast	628281
+BY.02	Homyel’ Voblasc’	Homyel' Voblasc'	628281
 BY.01	Brest	Brest	629631
 BZ.06	Toledo District	Toledo District	3580913
 BZ.05	Southern District	Southern District	3580975
@@ -1010,7 +1008,7 @@ FR.93	Provence-Alpes-Côte d'Azur	Provence-Alpes-Cote d'Azur	2985244
 FR.52	Pays de la Loire	Pays de la Loire	2988289
 FR.11	Île-de-France	Ile-de-France	3012874
 FR.94	Corsica	Corsica	3023519
-FR.24	Centre	Centre	3027939
+FR.24	Centre-Val de Loire	Centre-Val de Loire	3027939
 FR.53	Brittany	Brittany	3030293
 FR.27	Bourgogne	Bourgogne	11071619
 FR.75	Nouvelle-Aquitaine	Nouvelle-Aquitaine	11071620
@@ -1357,7 +1355,7 @@ IN.18	Meghalaya	Meghalaya	1263207
 IN.17	Manipur	Manipur	1263706
 IN.16	Maharashtra	Maharashtra	1264418
 IN.35	Madhya Pradesh	Madhya Pradesh	1264542
-IN.14	Laccadives	Laccadives	1265206
+IN.14	Lakshadweep	Lakshadweep	1265206
 IN.13	Kerala	Kerala	1267254
 IN.19	Karnataka	Karnataka	1267701
 IN.12	Jammu and Kashmir	Jammu and Kashmir	1269320
@@ -1378,24 +1376,24 @@ IN.39	Uttarakhand	Uttarakhand	1444366
 IN.41	Ladakh	Ladakh	12096464
 IN.52	Dadra and Nagar Haveli and Daman and Diu	Dadra and Nagar Haveli and Daman and Diu	12165662
 IQ.02	Basra	Basra	89341
-IQ.16	Wāsiţ	Wasit	89693
+IQ.16	Wasit	Wasit	89693
 IQ.18	Salah ad Din	Salah ad Din	91695
 IQ.15	Nineveh	Nineveh	92877
 IQ.14	Maysan	Maysan	93540
-IQ.12	Karbalāʼ	Muhafazat Karbala'	94823
+IQ.12	Karbala	Karbala	94823
 IQ.11	Erbil	Erbil	95445
-IQ.10	Diyālá	Diyala	96965
+IQ.10	Diyala	Diyala	96965
 IQ.09	Dhi Qar	Dhi Qar	97019
 IQ.08	Duhok	Duhok	97270
 IQ.07	Baghdad	Baghdad	98180
-IQ.06	Bābil	Babil	98227
+IQ.06	Babil	Babil	98227
 IQ.13	Kirkuk	Kirkuk	98410
 IQ.05	Sulaymaniyah	Sulaymaniyah	98465
 IQ.17	An Najaf	An Najaf	98862
-IQ.04	Al Qādisīyah	Al Qadisiyah	99022
-IQ.03	Al Muthanna Governorate	Al Muthanna Governorate	99032
-IQ.01	Al Anbar	Al Anbar	99592
-IQ.19	Halabja Governorate	Halabja Governorate	12218240
+IQ.04	Al-Qadisiyah	Al-Qadisiyah	99022
+IQ.03	Muthanna	Muthanna	99032
+IQ.01	Anbar	Anbar	99592
+IQ.19	Halabja	Halabja	12218240
 IR.26	Tehran	Tehran	110791
 IR.36	Zanjan	Zanjan	111452
 IR.40	Yazd Province	Yazd Province	111821
@@ -1489,7 +1487,7 @@ JO.16	Amman	Amman	250439
 JO.15	Mafraq	Mafraq	250583
 JO.09	Karak	Karak	250625
 JO.02	Balqa	Balqa	250751
-JO.20	Ajlun	Ajlun	443120
+JO.20	Ajloun	Ajloun	443120
 JO.22	Jerash	Jerash	443121
 JO.21	Aqaba	Aqaba	443122
 JO.23	Madaba	Madaba	443123
@@ -2425,7 +2423,7 @@ NO.46	Vestland	Vestland	12110600
 NP.1	Koshi	Koshi	12095447
 NP.2	Madhesh	Madhesh	12095448
 NP.3	Bagmati Province	Bagmati Province	12095449
-NP.4	Province 4	Province 4	12095450
+NP.4	Gandaki Pradesh	Gandaki Pradesh	12095450
 NP.5	Lumbini Province	Lumbini Province	12095451
 NP.6	Karnali Pradesh	Karnali Pradesh	12095452
 NP.7	Sudurpashchim Pradesh	Sudurpashchim Pradesh	12095453
@@ -2554,7 +2552,7 @@ PH.08	Eastern Visayas	Eastern Visayas	7521307
 PH.09	Zamboanga Peninsula	Zamboanga Peninsula	7521308
 PH.11	Davao Region	Davao Region	7521309
 PH.05	Bicol Region	Bicol Region	7521310
-PH.NCR	Metro Manila	Metro Manila	7521311
+PH.NCR	National Capital Region	National Capital Region	7521311
 PK.08	Islamabad	Islamabad	1162015
 PK.05	Sindh	Sindh	1164807
 PK.04	Punjab	Punjab	1167710
@@ -3253,7 +3251,7 @@ SV.03	Chalatenango Department	Chalatenango Department	3587090
 SV.02	Cabañas	Cabanas	3587217
 SV.01	Ahuachapán	Ahuachapan	3587425
 SY.14	Tartus	Tartus	163342
-SY.13	Dimashq	Dimashq	167541
+SY.13	Damascus Governorate	Damascus Governorate	167541
 SY.12	Idlib	Idlib	169387
 SY.11	Homs	Homs	169575
 SY.10	Hama	Hama	170015
@@ -3261,7 +3259,7 @@ SY.09	Aleppo	Aleppo	170062
 SY.08	Rif-dimashq	Rif-dimashq	170652
 SY.07	Deir ez-Zor	Deir ez-Zor	170792
 SY.06	Daraa	Daraa	170903
-SY.05	As-Suwayda	As-Suwayda	172410
+SY.05	Suwayda	Suwayda	172410
 SY.04	Raqqa	Raqqa	172957
 SY.03	Quneitra	Quneitra	173336
 SY.02	Latakia	Latakia	173578
@@ -3585,11 +3583,11 @@ UA.21	Sumy	Sumy	692196
 UA.20	Sevastopol City	Sevastopol City	694422
 UA.19	Rivne	Rivne	695592
 UA.18	Poltava	Poltava	696634
-UA.17	Odessa	Odessa	698738
+UA.17	Odesa	Odesa	698738
 UA.16	Mykolaiv	Mykolaiv	700567
 UA.15	Lviv	Lviv	702549
 UA.14	Luhansk	Luhansk	702657
-UA.13	Kiev	Kiev	703446
+UA.13	Kyiv	Kyiv	703446
 UA.12	Kyiv City	Kyiv City	703447
 UA.11	Crimea	Crimea	703883
 UA.10	Kirovohrad	Kirovohrad	705811

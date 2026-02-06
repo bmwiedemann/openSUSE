@@ -2108,22 +2108,22 @@ BE.WAL.WBR	Province du Brabant Wallon	Province du Brabant Wallon	3333251
 BE.BRU.BRU	Bruxelles-Capitale	Bruxelles-Capitale	6693370
 BF.07.44	Zoundweogo Province	Zoundweogo Province	2353169
 BF.10.76	Province du Yatenga	Province du Yatenga	2353568
-BF.08.42	Province de la Tapoa	Province de la Tapoa	2354771
+BF.08.42	Province du Gobnangou	ProvinceduGobnangou	2354771
 BF.01.73	Province du Sourou	Province du Sourou	2355211
-BF.12.40	Province du Soum	Province du Soum	2355248
+BF.12.40	Province du Djelgodji	ProvinceduDjelgodji	2355248
 BF.06.72	Province de la Sissili	Province de la Sissili	2355474
 BF.12.71	Province du Séno	Province du Seno	2355737
-BF.05.70	Province du Sanmatenga	Province du Sanmatenga	2355914
+BF.05.70	Sandbondtenga	Sandbondtenga	2355914
 BF.06.36	Province du Sanguié	Province du Sanguie	2355930
 BF.13.69	Province du Poni	Province du Poni	2356386
 BF.10.34	Province du Passoré	Province du Passore	2356667
 BF.12.33	Oudalan	Oudalan	2356982
-BF.11.68	Oubritenga	Oubritenga	2356983
+BF.11.68	Province du Bassitenga	ProvinceduBassitenga	2356983
 BF.07.65	Nahouri Province	Nahouri Province	2357548
 BF.05.64	Province du Namentenga	Province du Namentenga	2357611
 BF.01.63	Province du Mouhoun	Province du Mouhoun	2357858
 BF.04.28	Kouritenga Province	Kouritenga Province	2358700
-BF.01.58	Province de la Kossi	Province de la Kossi	2359027
+BF.01.58	Province de la Koosin	ProvincedelaKoosin	2359027
 BF.02.55	Province de la Comoé	Province de la Comoe	2359209
 BF.09.54	Province du Kénédougou	Province du Kenedougou	2359569
 BF.03.53	Kadiogo Province	Kadiogo Province	2359923
@@ -2141,10 +2141,10 @@ BF.01.46	Province des Banwa	Province des Banwa	2597250
 BF.13.52	Province du Ioba	Province du Ioba	2597251
 BF.08.56	Province de la Komandjoari	Province de la Komandjoari	2597259
 BF.08.57	Province de la Kompienga	Province de la Kompienga	2597260
-BF.04.59	Province du Koulpélogo	Province du Koulpelogo	2597261
+BF.04.59	Province du Koulpelogo	ProvinceduKoulpelogo	2597261
 BF.11.60	Province du Kourwéogo	Province du Kourweogo	2597262
 BF.02.61	Province de la Léraba	Province de la Leraba	2597263
-BF.10.62	Province du Loroum	Province du Loroum	2597264
+BF.10.62	Province du Lorum	ProvinceduLorum	2597264
 BF.01.66	Province du Nayala	Province du Nayala	2597265
 BF.13.67	Province du Noumbièl	Province du Noumbiel	2597266
 BF.09.74	Province du Tuy	Province du Tuy	2597267
@@ -2426,12 +2426,12 @@ BI.26.7670592	Buyengero	Buyengero	7670592
 BI.11.7670593	Cendajuru	Cendajuru	7670593
 BI.19.7670594	Gashikanwa	Gashikanwa	7670594
 BI.18.7670595	Gashoho	Gashoho	7670595
-BI.23.7670596	Gisozi	Gisozi	7670596
+BI.13.7670596	Gisozi	Gisozi	7670596
 BI.13.7670597	Gitega	Gitega	7670597
 BI.18.7670598	Giteranyi	Giteranyi	7670598
 BI.15.7670599	Kabarore	Kabarore	7670599
 BI.15.7670600	Kayanza	Kayanza	7670600
-BI.23.7670601	Kayokwe	Kayokwe	7670601
+BI.13.7670601	Kayokwe	Kayokwe	7670601
 BI.22.7670602	Kiganda	Kiganda	7670602
 BI.17.7670603	Mabanda	Mabanda	7670603
 BI.12.7670604	Mabayi	Mabayi	7670604
@@ -2440,8 +2440,8 @@ BI.26.7670606	Muhuta	Muhuta	7670606
 BI.12.7670607	Murwi	Murwi	7670607
 BI.25.7670608	Commune of Mutimbuzi	Commune of Mutimbuzi	7670608
 BI.18.7670609	Muyinga	Muyinga	7670609
-BI.23.7670610	Nyabihanga	Nyabihanga	7670610
-BI.14.7670611	Nyabikere	Nyabikere	7670611
+BI.13.7670610	Nyabihanga	Nyabihanga	7670610
+BI.13.7670611	Nyabikere	Nyabikere	7670611
 BI.12.7670613	Commune of Rugombo	Commune of Rugombo	7670613
 BI.19.7670614	Ruhororo	Ruhororo	7670614
 BI.22.7670615	Rutegama	Rutegama	7670615
@@ -2469,7 +2469,7 @@ BI.20.9072892	Commune of Rutana	Commune of Rutana	9072892
 BI.11.9072894	Commune of Cankuzo	Commune of Cankuzo	9072894
 BI.10.9157454	Commune of Matana	Commune of Matana	9157454
 BI.26.9158023	Commune of Rumonge	Commune of Rumonge	9158023
-BI.23.9171802	Ndava	Ndava	9171802
+BI.13.9171802	Ndava	Ndava	9171802
 BI.26.9171803	Bugarama	Bugarama	9171803
 BI.10.9171804	Bururi	Bururi	9171804
 BI.25.9171805	Kanyosha1	Kanyosha1	9171805
@@ -2480,8 +2480,8 @@ BI.25.9171809	Nyabiraba	Nyabiraba	9171809
 BI.17.9171810	Vugizo	Vugizo	9171810
 BI.10.9171811	Vyanda	Vyanda	9171811
 BI.10.9171812	Songa	Songa	9171812
-BI.23.9171813	Rusaka	Rusaka	9171813
-BI.23.9171814	Bisoro	Bisoro	9171814
+BI.13.9171813	Rusaka	Rusaka	9171813
+BI.13.9171814	Bisoro	Bisoro	9171814
 BI.25.9171815	Mugongomanga	Mugongomanga	9171815
 BI.11.9171816	Mishiha	Mishiha	9171816
 BI.15.9171817	Rango	Rango	9171817
@@ -2511,21 +2511,21 @@ BI.13.9171845	Bukirasazi	Bukirasazi	9171845
 BI.20.9171847	Mpinga-Kayove	Mpinga-Kayove	9171847
 BI.20.9171849	Giharo	Giharo	9171849
 BI.21.9171851	Nyabitsinda	Nyabitsinda	9171851
-BI.14.9171852	Shombo	Shombo	9171852
+BI.13.9171852	Shombo	Shombo	9171852
 BI.17.9171854	Nyanza-Lac	Nyanza-Lac	9171854
 BI.21.9171856	Butezi	Butezi	9171856
 BI.19.9171858	Mwumba	Mwumba	9171858
 BI.21.9171859	Bweru	Bweru	9171859
-BI.14.9171861	Gitaramuka	Gitaramuka	9171861
+BI.13.9171861	Gitaramuka	Gitaramuka	9171861
 BI.19.9171863	Nyamurenza	Nyamurenza	9171863
-BI.14.9171866	Bugenyuzi	Bugenyuzi	9171866
+BI.13.9171866	Bugenyuzi	Bugenyuzi	9171866
 BI.19.9171867	Marangara	Marangara	9171867
 BI.15.9171868	Muhanga	Muhanga	9171868
 BI.16.9171870	Ntega	Ntega	9171870
-BI.14.9171872	Gihogazi	Gihogazi	9171872
+BI.13.9171872	Gihogazi	Gihogazi	9171872
 BI.19.9171874	Kiremba	Kiremba	9171874
-BI.14.9171878	Mutumba	Mutumba	9171878
-BI.14.9171879	Buhiga	Buhiga	9171879
+BI.13.9171878	Mutumba	Mutumba	9171878
+BI.13.9171879	Buhiga	Buhiga	9171879
 BI.18.9171882	Mwakiro	Mwakiro	9171882
 BI.18.9171884	Gasorwe	Gasorwe	9171884
 BI.16.9171886	Gitobe	Gitobe	9171886
@@ -10668,6 +10668,7 @@ CH.GR.1845	Region Landquart	Region Landquart	11611655
 CH.GR.1842	Region Bernina	Region Bernina	11611656
 CH.GR.1847	Region Moesa	Region Moesa	11611657
 CH.GR.1846	Region Maloja	Region Maloja	11611658
+CH.JU.2604	Moutier	Moutier	13561769
 CI.97.2597334	Bafing	Bafing	2597334
 CI.76.11153075	Gbôklé	Gbokle	11153075
 CI.76.11153076	Nawa	Nawa	11153076
@@ -15699,7 +15700,6 @@ GQ.06.2310534	Acurenam	Acurenam	2310534
 GQ.09.11237860	Ayene	Ayene	11237860
 GQ.09.11237861	Mengomeyén	Mengomeyen	11237861
 GQ.09.11237862	Aconibe	Aconibe	11237862
-GQ.09.11237863	Ciudad de la Paz	Ciudad de la Paz	11237863
 GQ.08.11237864	Río Campo	Rio Campo	11237864
 GQ.08.11237865	Corisco	Corisco	11237865
 GQ.08.11237866	Bitica	Bitica	11237866
@@ -18600,7 +18600,7 @@ IQ.10.94590	Khanaqin District	Khanaqin District	94590
 IQ.13.94786	Kirkuk District	Kirkuk District	94786
 IQ.12.94822	Kerbala District	Kerbala District	94822
 IQ.11.95444	Arbil	Arbil	95444
-IQ.05.96204	Qaḑā’ Ḩalabchah	Qada' Halabchah	96204
+IQ.19.96204	Qaḑā’ Ḩalabchah	Qada' Halabchah	96204
 IQ.08.97269	Dohuk District	Dohuk District	97269
 IQ.05.97416	Chamchamal District	Chamchamal District	97416
 IQ.10.97988	Ba'quba District	Ba'quba District	97988
@@ -23850,7 +23850,7 @@ LV.AN.0440815	Subate	Subate	11352613
 LV.09.0500294	Tirzas pagasts	Tirzas pagasts	11352614
 LV.AN.0440856	Eglaines pagasts	Eglaines pagasts	11352615
 LV.AN.0440890	Šēderes pagasts	Sederes pagasts	11352616
-LV.04.0406400	Iecavas novads	Iecavas novads	11352617
+LV.04.0406400	Iecavas pagasts	Iecavas pagasts	11352617
 LV.21.0740625	Tīnūžu pagasts	Tinuzu pagasts	11352618
 LV.05.0425798	Zosēnu pagasts	Zosenu pagasts	11352619
 LV.AN.0440844	Bebrenes pagasts	Bebrenes pagasts	11352620
@@ -38156,7 +38156,7 @@ RU.05.13396900	ZATO Tsiolkovskiy	ZATO Tsiolkovskiy	13396900
 RU.05.13396901	Gorodskoy Okrug Svobodnyy	Gorodskoy Okrug Svobodnyy	13396901
 RU.79.13396902	Sut-Khol’skiy Kozhuun	Sut-Khol'skiy Kozhuun	13396902
 RU.79.13396903	Gorodskoy Okrug Kyzyl	Gorodskoy Okrug Kyzyl	13396903
-RU.79.13396904	Tere-Khol'skiy Kozhuun	Tere-Khol'skiy Kozhuun	13396904
+RU.79.13396904	Tere-Khol’skiy Kozhuun	Tere-Khol'skiy Kozhuun	13396904
 RU.79.13396905	Gorodskoy Okrug Ak-Dovurak	Gorodskoy Okrug Ak-Dovurak	13396905
 RU.79.13396906	Chedi-Khol’skiy Kozhuun	Chedi-Khol'skiy Kozhuun	13396906
 RU.79.13396907	Chaa-Khol’skiy Kozhuun	Chaa-Khol'skiy Kozhuun	13396907
@@ -39295,7 +39295,7 @@ SY.04.172956	Ar-Raqqah District	Ar-Raqqah District	172956
 SY.08.173194	Al-Nabk District	Al-Nabk District	173194
 SY.08.173313	Al-Qutayfah District	Al-Qutayfah District	173313
 SY.11.173324	Al-Qusayr District	Al-Qusayr District	173324
-SY.03.173335	Quneitra District	Quneitra District	173335
+SY.03.173335	Quneitra Governorate	Quneitra Governorate	173335
 SY.02.173365	Qardaha District	Qardaha District	173365
 SY.01.173378	Al-Qamishli District	Al-Qamishli District	173378
 SY.11.173435	Al-Mukharram District	Al-Mukharram District	173435
@@ -40942,7 +40942,7 @@ TR.23.6544214	Karakoçan	Karakocan	6544214
 TR.81.7732059	Ceyhan	Ceyhan	7732059
 TR.81.7732063	Seyhan	Seyhan	7732063
 TR.81.7732065	Yüreğir	Yueregir	7732065
-TR.02.7732069	Adiyaman	Adiyaman	7732069
+TR.02.7732069	Adıyaman	Adiyaman	7732069
 TR.03.7732070	Afyonkarahisar	Afyonkarahisar	7732070
 TR.03.7732071	İscehisar	Iscehisar	7732071
 TR.75.7732073	Aksaray	Aksaray	7732073
@@ -42224,7 +42224,7 @@ UA.11.0108	Yevpatoriiskyi Raion	Yevpatoriiskyi Raion	12189506
 UA.19.5602	Varaskyi Raion	Varaskyi Raion	12189508
 UA.17.5110	Odeskyi Raion	Odeskyi Raion	12189513
 UA.15.4606	Lvivskyi Raion	Lvivskyi Raion	12189514
-UA.15.4612	Chervonohradskyi Raion	Chervonohradskyi Raion	12189515
+UA.15.4612	Sheptytskyi Raion	Sheptytskyi Raion	12189515
 UA.15.4602	Drohobytskyi Raion	Drohobytskyi Raion	12189516
 UA.13.3208	Buchanskyi Raion	Buchanskyi Raion	12189517
 UA.08.6510	Khersonskyi Raion	Khersonskyi Raion	12189518
