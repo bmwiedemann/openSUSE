@@ -31,5 +31,5 @@ index 76539c3..fe16ec9 100644
 -    return os.path.join(os.path.abspath(os.path.dirname(__file__)), "cmake")
 +    return "/usr/share/nanobind/cmake"
  
- __version__ = "2.9.2"
+ __version__ = "2.11.0"
  
