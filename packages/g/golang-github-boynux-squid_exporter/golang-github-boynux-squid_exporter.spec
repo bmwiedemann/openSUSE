@@ -38,8 +38,8 @@ Release:        0
 Summary:        Squid Prometheus Exporter
 License:        MIT
 Group:          System/Management
-URL:            http://%{githubrepo}
-Source:         %{upstreamname}-%{version}.tar.gz
+URL:            https://%{githubrepo}
+Source:         %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{upstreamname}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        %{targetname}.service
 %if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
@@ -57,6 +57,10 @@ Requires(pre):  shadow
 %endif
 ExcludeArch:    s390
 %systemd_ordering
+
+%if ! 0%{?suse_version}
+ExclusiveArch:  do_not_build
+%endif
 
 %description
 Exports squid metrics in Prometheus format

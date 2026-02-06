@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  5 17:35:15 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Replace cpio with tar
+- Build for SUSE distributions only
+
+-------------------------------------------------------------------
 Thu Dec 11 08:26:57 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Add _service file
