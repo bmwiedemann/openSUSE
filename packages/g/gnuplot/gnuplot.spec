@@ -1,7 +1,7 @@
 #
 # spec file for package gnuplot
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,8 +70,10 @@ BuildRequires:  gnuplot
 BuildRequires:  latex2html
 BuildRequires:  makeinfo
 BuildRequires:  texlive-epstopdf
+BuildRequires:  texlive-gnu-freefont
 BuildRequires:  texlive-latex
 BuildRequires:  texlive-latexconfig
+BuildRequires:  texlive-luatex
 BuildRequires:  texlive-makeindex
 BuildRequires:  texlive-pdftex
 BuildRequires:  texlive-tex
@@ -88,12 +90,12 @@ BuildRequires:  tex(nicefrac.sty)
 BuildRequires:  tex(pdftex.def)
 BuildRequires:  tex(subfigure.sty)
 BuildRequires:  tex(textgreek.sty)
+BuildRequires:  tex(unicode-math.sty)
 BuildRequires:  tex(upquote.sty)
 %endif
 URL:            https://www.gnuplot.info/
-Version:        6.0.3
+Version:        6.0.4
 Release:        0
-%global         underscore 6
 %if "%{flavor}" == ""
 Summary:        Function Plotting Utility and more
 License:        GPL-2.0-or-later AND SUSE-Gnuplot
@@ -104,25 +106,21 @@ License:        GPL-2.0-or-later AND SUSE-Gnuplot
 Group:          Documentation/Other
 %endif
 Source0:        https://downloads.sourceforge.net/project/gnuplot/gnuplot/%{version}/gnuplot-%{version}.tar.gz
-Source1:        https://downloads.sourceforge.net/project/gnuplot/gnuplot/%{version}/Gnuplot%{underscore}.pdf
-Source2:        gnuplot-fr.doc.bz2
-Source3:        README.whynot
-Source4:        webp_figures.gnu
+Source1:        README.whynot
+Source2:        webp_figures.gnu
 # https://mirrors.ctan.org/macros/latex209/contrib/picins/picins.sty
 # That's a build requirement, not provided by Tex Live
-Source5:        picins.sty
+Source3:        picins.sty
 # Repair broken texi(nfo) file
-Source6:        gnuplot-5.2.0-texi2info.patch
+Source4:        gnuplot-5.2.0-texi2info.patch
 Patch0:         gnuplot-4.6.0.dif
 Patch1:         gnuplot-4.4.0-x11ovf.dif
 Patch2:         gnuplot-4.6.0-fonts.diff
 Patch3:         gnuplot-doc2tex.patch
 Patch4:         gnuplot-4.6.0-demo.diff
-Patch5:         gnuplot-wx3.diff
-Patch6:         gnuplot-QtCore-PIC.dif
-Patch7:         gnuplot-PIE.patch
-Patch8:         gnuplot-6.0.3-backward_compat.patch
-Patch84:        fix4bug1241684.patch
+Patch5:         gnuplot-QtCore-PIC.dif
+Patch6:         gnuplot-PIE.patch
+Patch7:         gnuplot-6.0.3-backward_compat.patch
 %define _x11lib     %{_libdir}
 %define _x11data    %{_datadir}/X11
 %define _x11inc     %{_includedir}/X11
@@ -147,23 +145,21 @@ and can easily be extended to include new devices.
 
 %prep
 %setup -q -n %{sname}-%{version}
-bunzip2 -dc %{_sourcedir}/gnuplot-fr.doc.bz2 > docs/gnuplot-fr.doc
-test $? -eq 0 || exit 1
 cp %{_sourcedir}/picins.sty docs
 %patch -P2 -p0 -b .font
 %patch -P3 -p0 -b .overscan
 %patch -P4 -p0 -b .demo
 %patch -P0 -p1 -b .0
 %patch -P1 -p0 -b .x11ovf
-%patch -P5 -p1 -b .w3x
-%patch -P6 -p0 -b .pic
-%patch -P7 -p1 -b .pie
-%patch -P8 -p0 -b .multiplot
-%patch -P84 -p0 -b .p84
+%patch -P5 -p0 -b .pic
+%patch -P6 -p1 -b .pie
+%patch -P7 -p0 -b .multiplot
 
 %build
 autoreconf -fi
 
+    # The generation of the PDFs fails otherwise
+    export  PDFLATEX=lualatex
     export  CPPFLAGS="-I%{_includedir}/gd -DAppDefDir=\\\"%{_appdef}\\\""
     export  CPPFLAGS="$CPPFLAGS -DGNUPLOT_LIB_DEFAULT=\\\"%{_docdir}/%{sname}/demo\\\""
     export  CFLAGS="${RPM_OPT_FLAGS} -pipe -D_GNU_SOURCE -fpic"
@@ -184,6 +180,8 @@ autoreconf -fi
 
 %if "%{flavor}" == ""
     mkdir bin
+    # Fake the existence of build dependencies only required in the doc package
+    # to make configure pass without errors
     ln -sf /bin/true bin/dvips
     ln -sf /bin/true bin/emacs
     ln -sf /bin/true bin/kpsewhich
@@ -231,12 +229,12 @@ autoreconf -fi
 %if "%{flavor}" == "doc"
   mv src/Makefile{,_INACESSIBLE}
   pushd docs/
-	cp -p %{S:4} webp_figures.gnu
+	cp -p %{S:2} webp_figures.gnu
 	make GNUPLOT_EXE=%{_bindir}/gnuplot srcdir=. clean
 	make GNUPLOT_EXE=%{_bindir}/gnuplot srcdir=. allterm.h allterm-ja.h
 	make GNUPLOT_EXE=%{_bindir}/gnuplot srcdir=. html pdf
 	make srcdir=. gnuplot.texi
-	patch -p0 < %{S:6}
+	patch -p0 < %{S:4}
 	make srcdir=. info
 	pushd psdoc/
 	    make srcdir=. pdf
@@ -274,6 +272,7 @@ autoreconf -fi
     rm  -vf tutorial/eg7.pdf
     rm -rvf demo/html
     install -m 0444 docs/*.info*      %{buildroot}/%{_infodir}/
+    install -m 0444 docs/gnuplot.pdf  %{buildroot}/%{_docdir}/gnuplot/
     install -m 0444 docs/html/*       %{buildroot}/%{_docdir}/gnuplot/doc/html
     install -m 0444 docs/psdoc/*.pdf  %{buildroot}/%{_docdir}/gnuplot/doc/
     install -m 0444 docs/psdoc/*.ps   %{buildroot}/%{_docdir}/gnuplot/doc/
@@ -283,9 +282,8 @@ autoreconf -fi
     install -m 0444 demo/*.*          %{buildroot}/%{_docdir}/gnuplot/demo/
     install -m 0444 README*           %{buildroot}/%{_docdir}/gnuplot/
     install -m 0444 NEWS BUGS	      %{buildroot}/%{_docdir}/gnuplot/
-    install -m 0444 %{SOURCE3}        %{buildroot}/%{_docdir}/gnuplot/
-    rm -f %{buildroot}/%{_docdir}/gnuplot/demo/Makefile*
     install -m 0444 %{S:1}            %{buildroot}/%{_docdir}/gnuplot/
+    rm -f %{buildroot}/%{_docdir}/gnuplot/demo/Makefile*
     %fdupes %{buildroot}/%{_docdir}
 %endif
 

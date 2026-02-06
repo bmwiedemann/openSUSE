@@ -1,11 +1,7 @@
-Index: gnuplot-5.4.1/src/Makefile.am
+Index: gnuplot-6.0.4/src/Makefile.am
 ===================================================================
----
- gnuplot-6.0.0/src/Makefile.am |    5 +++++
- 1 file changed, 5 insertions(+)
-
---- gnuplot-6.0.0/src/Makefile.am
-+++ gnuplot-6.0.0/src/Makefile.am	2024-01-08 15:22:45.413763257 +0000
+--- gnuplot-6.0.4.orig/src/Makefile.am
++++ gnuplot-6.0.4/src/Makefile.am
 @@ -67,6 +67,7 @@ voxelgrid.c voxelgrid.h vplot.c vplot.h
  watch.c watch.h xdg.c xdg.h
  
@@ -22,15 +18,15 @@ Index: gnuplot-5.4.1/src/Makefile.am
  endif
  
  getcolor_x11.o: getcolor.c
-@@ -102,6 +104,7 @@ $(EXTRA_gnuplot_SOURCES)
+@@ -101,6 +103,7 @@ $(EXTRA_gnuplot_SOURCES)
+ 
  if BUILD_WXWIDGETS
  gnuplot_SOURCES += wxterminal/wxt_gui.cpp
- gnuplot_LDADD += -lX11
 +gnuplot_LDFLAGS += -pie
  endif
  
  if BUILD_GPCAIRO
-@@ -189,6 +192,7 @@ qtterminal/QtGnuplotApplication.cpp qtte
+@@ -188,6 +191,7 @@ qtterminal/QtGnuplotApplication.cpp qtte
  qtterminal/QtGnuplotScene.cpp qtterminal/QtGnuplotItems.cpp \
  qtterminal/QtGnuplotEvent.cpp
  gnuplot_qt_LDADD = $(QT_LIBS)
@@ -38,7 +34,7 @@ Index: gnuplot-5.4.1/src/Makefile.am
  
  #
  # embedded Qt widget example program
-@@ -204,6 +208,7 @@ qt_embed_example_SOURCES = qtterminal/qt
+@@ -203,6 +207,7 @@ qt_embed_example_SOURCES = qtterminal/qt
         qtterminal/QtGnuplotScene.cpp qtterminal/QtGnuplotItems.cpp \
         qtterminal/QtGnuplotInstance.cpp
  qt_embed_example_LDADD = $(QT_LIBS)

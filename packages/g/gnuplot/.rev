@@ -1414,4 +1414,12 @@ removed boo#1203092 (forwarded request 1006499 from AndreasStieger)</comment>
   * FIX error handling for various cases involving function blocks     Bug 2797</comment>
     <requestid>1284714</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>ef60941f4204e3f69488311121cbf493</srcmd5>
+    <version>6.0.4</version>
+    <time>1770401100</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1330783</requestid>
+  </revision>
 </revisionlist>

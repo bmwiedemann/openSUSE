@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Jan  8 15:49:56 UTC 2026 - Jan Fooken <jan.fooken@suse.com>
+
+- Update to gnuplot 6.0.4
+  * NEW variable Inf is pre-set to floating point INFINITY
+  * NEW "sharpen" filter handles vertical edges in a step function
+  * NEW gprintf format specifiers %C and %Ci
+        %C  formats a complex value as {a, b}
+            This is the format used by the gnuplot "print" command
+        %Ci formats a complex value as a + bi
+            Both the real and imaginary parts are printed using libc format %g
+            with optional width and precision
+  * NEW Allow installation of 64bit version on Windows on ARM systems
+  * NEW mingw: optionally use the MSYS2/CLANG64 environment
+        Support for cross-compilation for Windows on ARM
+  * CHANGE update configure and headers for better compatibility with c23/gcc15
+  * CHANGE splot with pm3d fillcolor <x> generates a matching key sample
+  * CHANGE gprintf %H format is distinct from %h in utf8 context
+           %H uses dot operator between mantissa and exponent
+  * CHANGE kitty, sixel: default size to 100% width, 75% height of terminal window
+  * CHANGE partially deprecate the "sample" keyword for plot commands
+           The plot command accepts axis ranges as the first thing after "plot".
+           If present, they update the primary axis ranges x y x2 y2.
+           If a second colon is found in the range, as in [t=min:max:increment],
+           this is unambiguously a sample range rather than an axis range so
+           the "sample" keyword is not required.                          Bug 2666
+  * CHANGE do not break contour lines into 100-segment fragments
+           This fixes a bug when saved contour lines are used as polygons.
+           To maintain previous placement of contour labels, use
+           "set cntrlabl interval 100".
+  * FIX sixel: improved support for a transparent background           Bug 2828
+  * FIX kitty: support animation on a transparent background
+  * FIX webp:  support animation on a transparent background
+  * FIX backport fixes for color assignment to pm3d surfaces
+        "set pm3d implicit" + "with lines" treated the same as "with pm3d"
+        adds support for "fc background"
+        pm3d interpolate > 1 inherits rgb color assignments from the parent tile
+  * FIX fill style of colorbox should match fill style of pm3d surface
+  * FIX svg: fillstyle solid <frac> was incorrectly treated as transparent
+  * FIX transparent fill color in 3D boxes and polygons                Bug 2812
+  * FIX alpha channel colors on ARM platforms                          Bug 2812
+  * FIX resolve ambiguous syntax in "set dashtype i (n,m)"             Bug 2814
+  * FIX svg: font size changes within a text fragment could be lost    Bug 2816
+  * FIX "reset session" must terminate multiplot mode
+  * FIX determination of above/below in polar mode filledcurves        Bug 2825
+  * FIX always flush hidden3d line cache if present                    Bug 2836
+  * FIX incorrect evaluation of a**b for integer a, integer b < 0
+        in the case of "set overflow NaN" or "set overflow undefined"
+  * FIX loss of precision in some ranges for asin acos asinh acosh     Bug 2839
+- Replace Gnuplot6.pdf with gnuplot.pdf
+- Switch lualatex / texlive-luatex to generate the PDF documentation
+- Remove very old French documentation
+- Remove patches now upstream:
+  * fix4bug1241684.patch
+- Remove obsolete patches:
+  * gnuplot-wx3.diff
+
+-------------------------------------------------------------------
 Wed Jun 11 08:02:18 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch gnuplot-6.0.3-backward_compat.patch 

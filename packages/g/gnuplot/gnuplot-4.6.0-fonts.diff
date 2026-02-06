@@ -1,12 +1,24 @@
+Change default font and fix potential buffer overflow
+
+For X11 multi-byte we want to ensure there is a good default font selected,
+so we change the default font to font variants present on openSUSE systems.
+
+Prevent buffer overflow when changing the default font to a maliciously
+crafted font name.
+
+Make output for missing character sets less verbose by preferring debug
+prints
 ---
  src/gplt_x11.c |   33 +++++++++++++++++++++++++++------
  1 file changed, 27 insertions(+), 6 deletions(-)
 
---- src/gplt_x11.c
-+++ src/gplt_x11.c	2020-07-17 07:20:04.523781257 +0000
-@@ -99,15 +99,16 @@
-  * patches by Masahito Yamaga <ma@yama-ga.com>
-  */
+Index: src/gplt_x11.c
+===================================================================
+--- src/gplt_x11.c.orig
++++ src/gplt_x11.c
+@@ -106,15 +106,16 @@
+ #include "stdfn.h"
+ #include "gp_types.h"
  
 +#ifndef _GNU_SOURCE
 +#define _GNU_SOURCE
@@ -24,7 +36,7 @@
  #include <X11/XKBlib.h>	/* for XkbKeycodeToKeysym */
  
  #include <assert.h>
-@@ -118,6 +119,12 @@
+@@ -122,6 +123,12 @@
  #include "gplt_x11.h"
  #include "version.h"
  
@@ -37,7 +49,7 @@
  #ifdef EXPORT_SELECTION
  # undef EXPORT_SELECTION
  #endif /* EXPORT SELECTION */
-@@ -522,8 +529,8 @@ static char *gpFallbackFont(void);
+@@ -526,8 +533,8 @@ static char *gpFallbackFont(void);
  static int gpXGetFontascent(XFontStruct *cfont);
  
  enum set_encoding_id encoding = S_ENC_DEFAULT; /* EAM - mirrored from core code by 'QE' */
@@ -48,7 +60,7 @@
  
  #define Nwidths 10
  static unsigned int widths[Nwidths] = { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-@@ -2290,6 +2297,8 @@ exec_cmd(plot_struct *plot, char *comman
+@@ -2294,6 +2301,8 @@ exec_cmd(plot_struct *plot, char *comman
  		/* Save the request default font */
  		c = &(buffer[strlen(buffer)-1]);
  		while (*c <= ' ') *c-- = '\0';
@@ -57,7 +69,7 @@
  		strncpy(default_font, &buffer[2], sizeof(default_font)-1);
  		FPRINTF((stderr, "gnuplot_x11: exec_cmd() set default_font to \"%s\"\n", default_font));
  		break;
-@@ -5810,7 +5819,7 @@ XFontStruct *gpXLoadQueryFont (Display *
+@@ -5814,7 +5823,7 @@ XFontStruct *gpXLoadQueryFont (Display *
  	    }
  #else
  	    if (first_time) {
@@ -66,7 +78,7 @@
  		first_time = FALSE;
  	    }
  	    while (n_miss-- > 0)
-@@ -5962,6 +5971,18 @@ char *fontname;
+@@ -5966,6 +5975,18 @@ pr_font( char *fontname )
      }
  
  #ifdef USE_X11_MULTIBYTE
