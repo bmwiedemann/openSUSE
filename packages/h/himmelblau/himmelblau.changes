@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 06 16:58:20 UTC 2026 - David Mulder <david.mulder@suse.com>
+
+- Update to version 2.3.4+git0.db5df80:
+  * Version 2.3.4
+  * cargo vet
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 8 updates
+  * Revert sketching update (which breaks SLE16 build)
+
+-------------------------------------------------------------------
 Mon Feb 02 17:12:33 UTC 2026 - David Mulder <david.mulder@suse.com>
 
 - Update to version 2.3.3+git0.25e8b73:

@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="manual">
 		<param name="url">https://github.com/himmelblau-idm/himmelblau.git</param>
 		<param name="scm">git</param>
-		<param name="revision">2.3.3</param>
+		<param name="revision">2.3.4</param>
 		<param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
 		<param name="versionrewrite-pattern">himmelblau-(.*)</param>
 		<param name="versionrewrite-replacement">\1</param>

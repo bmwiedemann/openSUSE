@@ -30,7 +30,7 @@
 %endif
 
 Name:           himmelblau
-Version:        2.3.3+git0.25e8b73
+Version:        2.3.4+git0.db5df80
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure Entra Id
 License:        GPL-3.0-or-later
