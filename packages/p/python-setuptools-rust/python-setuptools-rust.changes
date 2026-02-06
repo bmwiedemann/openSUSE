@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 27 16:04:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.0:
+  * Set `PYO3_BUILD_EXTENSION_MODULE` environment variable when
+    building PyO3 extensions. #540
+
+-------------------------------------------------------------------
 Wed Apr 23 07:38:41 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix license, it's MIT
