@@ -405,7 +405,6 @@ opensuse_microos:
   - patterns-base-basesystem: [locked]
   - MicroOS-release: [aarch64,ppc64le,s390x,x86_64]
   - patterns-microos-base: [aarch64,ppc64le,s390x,x86_64]
-  - patterns-microos-base-microdnf: [aarch64,ppc64le,s390x,x86_64]
   - patterns-microos-base-packagekit: [aarch64,ppc64le,s390x,x86_64]
   - patterns-microos-base-zypper: [aarch64,ppc64le,s390x,x86_64]
   - patterns-microos-defaults: [aarch64,ppc64le,s390x,x86_64]

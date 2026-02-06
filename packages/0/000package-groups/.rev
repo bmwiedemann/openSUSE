@@ -2368,4 +2368,12 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <user>dimstar_suse</user>
     <comment>No space for kernel-longterm</comment>
   </revision>
+  <revision rev="332" vrev="330">
+    <srcmd5>c7e4680f497fbbcbba480d3a38d746cc</srcmd5>
+    <version>unknown</version>
+    <time>1770401132</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1331517</requestid>
+  </revision>
 </revisionlist>
