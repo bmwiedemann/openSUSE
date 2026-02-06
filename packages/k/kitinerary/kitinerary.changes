@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb  3 10:05:45 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.2/
+- Changes since 25.12.1:
+  * Find ZXing 3.0 as well and remove pre-3.0 version workarounds
+  * Adapt to ZXing 3.0 BarcodeFormats API change
+  * Namespace ZXING_* macros
+  * Adapt to Poppler 26.02 API changes
+  * Support SNCF TER pass barcodes
+  * Adapt to Poppler 26.02 API removal
+  * Extract more information from SNCF TER barcodes
+
+-------------------------------------------------------------------
 Wed Jan  7 12:24:59 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.1
