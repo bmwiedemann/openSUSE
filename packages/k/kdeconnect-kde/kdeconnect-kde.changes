@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb  3 10:05:31 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.2/
+- Changes since 25.12.1:
+  * Prevent hitting assert
+  * Same for the other methods
+  * Do not log if bluetooth provider is disabled
+  * Add a limit of 32 MB per packet
+  * Use abort, which is immediate, instead of disconnectFromHost
+  * Check max packet size also inside the encrypted identity exchange
+  * Lift LAN discovery socket restriction on broadcast flag
+  * Fix sharing files from kdeconnect-app (kde#504982)
+  * Revert "Disable MDNS by default"
+
+-------------------------------------------------------------------
 Wed Jan  7 12:24:46 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.1
