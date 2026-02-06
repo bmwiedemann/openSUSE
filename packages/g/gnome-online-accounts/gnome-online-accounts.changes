@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb  4 13:58:04 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.56.4:
+  + Bugs fixed:
+    - Unclear which part of "IMAP+SMTP" account test failed
+    - Adding nextcloud account which has a subfolder does not work
+    - goadaemon: Handle broken account configs
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Jan  4 13:25:42 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.56.3:

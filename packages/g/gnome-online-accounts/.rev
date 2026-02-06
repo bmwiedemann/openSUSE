@@ -924,4 +924,17 @@
   + Updated translations. (forwarded request 1325267 from iznogood)</comment>
     <requestid>1325363</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>a92d8da79bc0d76783bc2dda8bbfb57d</srcmd5>
+    <version>3.56.4</version>
+    <time>1770401117</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.56.4:
+  + Bugs fixed:
+    - Unclear which part of &quot;IMAP+SMTP&quot; account test failed
+    - Adding nextcloud account which has a subfolder does not work
+    - goadaemon: Handle broken account configs
+  + Updated translations. (forwarded request 1330971 from iznogood)</comment>
+    <requestid>1331119</requestid>
+  </revision>
 </revisionlist>
