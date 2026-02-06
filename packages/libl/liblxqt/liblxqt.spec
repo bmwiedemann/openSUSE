@@ -25,6 +25,11 @@ URL:            https://github.com/lxqt/liblxqt
 Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+
+# PATCH-FIX-UPSTREAM 0001-Support-logout-in-SystemdProvider.patch sfalken@opensuse.org
+# https://github.com/lxqt/liblxqt/pull/372
+Patch0:         0001-Support-logout-in-SystemdProvider.patch
+
 BuildRequires:  cmake >= 3.5.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

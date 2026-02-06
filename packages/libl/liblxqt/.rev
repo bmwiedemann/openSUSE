@@ -426,4 +426,14 @@
     <comment></comment>
     <requestid>1328741</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>34758295bc85c0dadbe03fe3b3f11e39</srcmd5>
+    <version>2.3.0</version>
+    <time>1770401349</time>
+    <user>anag_factory</user>
+    <comment>- Added 0001-Support-logout-in-SystemdProvider.patch, for better
+  systemd compaitibility and functionality, please see
+  https://github.com/lxqt/liblxqt/pull/372</comment>
+    <requestid>1331460</requestid>
+  </revision>
 </revisionlist>

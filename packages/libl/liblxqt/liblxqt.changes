@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  5 01:22:26 UTC 2026 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added 0001-Support-logout-in-SystemdProvider.patch, for better
+  systemd compaitibility and functionality, please see
+  https://github.com/lxqt/liblxqt/pull/372
+
+-------------------------------------------------------------------
 Thu Jan 22 14:27:45 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require pkexec instead of /usr/bin/pkexec: the package split
