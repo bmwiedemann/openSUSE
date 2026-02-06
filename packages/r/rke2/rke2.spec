@@ -31,10 +31,10 @@
 %define min_required_golang_minor_version 1.25.5
 
 #
-%define hardened_etcd_version build20251210
+%define hardened_etcd_version build20260126
 
 Name:           rke2
-Version:        1.35.0+rke2r1
+Version:        1.35.0+rke2r3
 Release:        0
 Summary:        Rancher Kubernetes Engine
 License:        Apache-2.0
