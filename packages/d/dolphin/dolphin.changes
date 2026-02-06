@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Feb  3 10:05:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.2/
+- Changes since 25.12.1:
+  * dolphinmainwindow: Reload context menu plugins when configuration changes (kde#508722)
+  * documentation.yml is no more needed
+  * kitemviews: Prevent crash when dragging details side padding header (kde#511057)
+  * CI - Flatpak - Sync manifest from master
+  * viewproperties: remove temp file after loading defaultConfig (kde#510500)
+  * DolphinView: Avoid using dynamic view if any items in the view are expanded
+  * viewmodes: ensure font dialog retains last custom selection (kde#499786)
+  * viewactionhandler: remove duplicate Sort by: text
+
+-------------------------------------------------------------------
 Wed Jan  7 12:24:30 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.1
