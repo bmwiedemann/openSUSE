@@ -18,7 +18,7 @@
 
 
 Name:           kmscon
-Version:        9.3.0+git1
+Version:        9.3.1
 Release:        0
 Summary:        Linux KMS/DRM based virtual Console Emulator
 License:        MIT

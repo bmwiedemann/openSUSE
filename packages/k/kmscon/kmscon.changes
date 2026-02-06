@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Feb 06 12:01:16 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 9.3.1:
+  * Prepare v9.3.1 release
+  * drm: set master only if needed
+  * drm: Refactor dpms, to only set it if needed
+  * drm: Add device name, for easier multi-gpu debug
+  * Font: remove unused baseline field
+  * unifont: Add bold and underline support
+  * unifont: use sparse table, to be able to use codepoints after 0xFFFF
+  * drm: Fix black screen when switching back to kmscon
+  * feat: Read /proc/sys/kernel/ctrl-alt-del to decide reboot behavior
+  * agetty: Add -8 arguments to accept full 8-bits characters
+  * start script: get local from localectl too
+  * units: fill out [Install] section
+  * units: drop unnecessary templating of units
+  * man: Document --version/-V option
+  * conf: Add --version/-V command-line option
+  * conf: Fix help text formatting and typos
+
+-------------------------------------------------------------------
 Fri Jan 23 13:03:43 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 9.3.0+git1:

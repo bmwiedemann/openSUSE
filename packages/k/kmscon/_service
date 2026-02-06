@@ -2,7 +2,7 @@
   <service mode="manual" name="obs_scm">
     <param name="url">https://github.com/kmscon/kmscon.git</param>
     <param name="scm">git</param>
-    <param name="revision">24a19ad91c18f0bb4ce95ddc533a116bc1bcad7a</param>
+    <param name="revision">v9.3.1</param>
     <param name="changesgenerate">enable</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v(.*?)(\+git0)?$</param>
