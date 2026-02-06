@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           lokalize
-Version:        25.12.1
+Version:        25.12.2
 Release:        0
 Summary:        KDE Translation Editor
 License:        GPL-2.0-or-later
