@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  6 08:50:35 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Fix conditional for SLE 12
+
+-------------------------------------------------------------------
 Thu Feb  5 11:49:33 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Build only for SUSE distributions
