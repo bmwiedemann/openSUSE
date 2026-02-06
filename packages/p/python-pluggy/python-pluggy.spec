@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-pluggy%{psuffix}
 Version:        1.6.0
