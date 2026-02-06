@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  6 12:09:26 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.4.0:
+  * This release is relicensed to GPLv2 (with GPLv3 remaining an option) to fix compatibility with Stellarium's license.
+  * A few build system issues have been fixed.
+
+-------------------------------------------------------------------
 Fri Oct 17 07:44:59 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.3.5:

@@ -1,7 +1,7 @@
 #
 # spec file for package CalcMySky
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,10 +28,10 @@
 %endif
 
 Name:           CalcMySky
-Version:        0.3.5
+Version:        0.4.0
 Release:        0
 Summary:        Software package that simulates scattering of light by the atmosphere
-License:        GPL-3.0-or-later
+License:        GPL-2.0-or-later
 URL:            https://github.com/10110111/CalcMySky
 Source:         https://github.com/10110111/CalcMySky/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake

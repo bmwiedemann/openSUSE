@@ -69,4 +69,15 @@
 </comment>
     <requestid>1311920</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>40e6db80adcd992316848bb0cccfca0d</srcmd5>
+    <version>0.4.0</version>
+    <time>1770401459</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.4.0:
+  * This release is relicensed to GPLv2 (with GPLv3 remaining an option) to fix compatibility with Stellarium's license.
+  * A few build system issues have been fixed.
+</comment>
+    <requestid>1331620</requestid>
+  </revision>
 </revisionlist>
