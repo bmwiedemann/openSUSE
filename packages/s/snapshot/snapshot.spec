@@ -1,7 +1,7 @@
 #
 # spec file for package snapshot
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,7 @@ BuildRequires:  pkgconfig(libadwaita-1) >= 1.7.alpha
 BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0) >= %{gstreamer_version}
 ##
 BuildRequires:  pkgconfig(gstreamer-video-1.0) >= %{gstreamer_version}
+Requires:       gstreamer-plugin-pipewire
 Requires:       gstreamer-plugins-rs
 
 %description
