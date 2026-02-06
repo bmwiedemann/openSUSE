@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Feb  5 07:03:10 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix dependency on renamed library in baselibs devel package.
+
+-------------------------------------------------------------------
+Tue Feb  3 08:31:38 UTC 2026 - Alexander Bergmann <abergmann@suse.com>
+
+- Fix devel package libnl3-devel requires (boo#1256695).
+- Update to net-snmp-5.9.5.2.
+  snmptrapd:
+  - fixed a critical vulnerability triggered by a specially crafted trap
+    (bsc#1255491, CVE-2025-68615)
+  snmpd:
+  - Make UCD-SNMP::dskTable dynamic if includeAllDisks is set.") added
+    a verification that drops all filesystems not present in other_fs[]
+    table. So add 'ubifs' in other_fs[] to fix it.
+  add (rename):
+  * net-snmp-5.9.5.2-add-netgroups-functionality.patch 
+  * net-snmp-5.9.5.2-harden_snmpd.service.patch
+  * net-snmp-5.9.5.2-harden_snmptrapd.service.patch
+  delete (rename):
+  * net-snmp-5.9.4-add-netgroups-functionality.patch
+  * net-snmp-5.9.4-harden_snmpd.service.patch
+  * net-snmp-5.9.4-harden_snmptrapd.service.patch
+
+-------------------------------------------------------------------
 Mon Jun 30 04:38:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install.

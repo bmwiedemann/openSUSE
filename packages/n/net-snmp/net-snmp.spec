@@ -1,7 +1,7 @@
 #
 # spec file for package net-snmp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,10 @@
 %ifnarch s390 s390x
 %define netsnmp_with_sensors 1
 %endif
-%define libname libsnmp40
+%define libname libsnmp45
 %bcond_without python2
 Name:           net-snmp
-Version:        5.9.4
+Version:        5.9.5.2
 Release:        0
 Summary:        SNMP Daemon
 License:        BSD-3-Clause AND MIT
@@ -56,13 +56,13 @@ Patch6:         net-snmp-5.9.4-snmpstatus-suppress-output.patch
 Patch7:         net-snmp-5.9.4-fix-Makefile.PL.patch
 Patch8:         net-snmp-5.9.4-modern-rpm-api.patch
 Patch9:         net-snmp-5.9.4-add-lustre-fs-support.patch
-Patch10:        net-snmp-5.9.4-harden_snmpd.service.patch
-Patch11:        net-snmp-5.9.4-harden_snmptrapd.service.patch
+Patch10:        net-snmp-5.9.5.2-harden_snmpd.service.patch
+Patch11:        net-snmp-5.9.5.2-harden_snmptrapd.service.patch
 Patch12:        net-snmp-5.9.4-suse-systemd-service-files.patch
 Patch13:        net-snmp-5.9.4-fix-create-v3-user-outfile.patch
 Patch14:        net-snmp-5.9.4-subagent-set-response.patch
 Patch15:        net-snmp-5.9.4-fixed-python2-bindings.patch
-Patch16:        net-snmp-5.9.4-add-netgroups-functionality.patch
+Patch16:        net-snmp-5.9.5.2-add-netgroups-functionality.patch
 Patch17:        net-snmp-5.9.4-systemd-no-utmp.patch
 Patch18:        net-snmp-5.9.4-setup.py-basedir-environ.patch
 BuildRequires:  %{python_module devel}
@@ -71,6 +71,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  libnl3-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
@@ -144,6 +145,7 @@ Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 # for mib2c
 Requires:       perl
+Requires:       libnl3-devel
 Requires:       perl-SNMP = %{version}
 Requires:       rpm-devel
 Requires:       tcpd-devel

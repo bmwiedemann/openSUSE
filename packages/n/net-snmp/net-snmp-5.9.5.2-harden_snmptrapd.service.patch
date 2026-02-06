@@ -1,8 +1,8 @@
-diff -Nurp net-snmp-5.9.3-orig/dist/snmptrapd.service net-snmp-5.9.3/dist/snmptrapd.service
---- net-snmp-5.9.3-orig/dist/snmptrapd.service	2022-07-13 23:14:14.000000000 +0200
-+++ net-snmp-5.9.3/dist/snmptrapd.service	2023-01-09 12:13:40.120216602 +0100
+diff -Nurp net-snmp-5.9.5.2-orig/dist/snmptrapd.service net-snmp-5.9.5.2/dist/snmptrapd.service
+--- net-snmp-5.9.5.2-orig/dist/snmptrapd.service	2026-01-08 14:14:11.863152850 +0000
++++ net-snmp-5.9.5.2/dist/snmptrapd.service	2026-01-08 14:14:42.503152850 +0000
 @@ -7,6 +7,15 @@ Description=Simple Network Management Pr
- After=syslog.target network.target
+ After=network.target
  
  [Service]
 +# added automatically, for details please see
