@@ -341,4 +341,12 @@ https://pypi.org/project/click/8.2.2/
   distributions</comment>
     <requestid>1329782</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>f1777d2333f88ef7e86dd0a194e50e66</srcmd5>
+    <version>8.3.1</version>
+    <time>1770409798</time>
+    <user>anag_factory</user>
+    <comment>- Add pythons_for_pypi macro</comment>
+    <requestid>1330910</requestid>
+  </revision>
 </revisionlist>
