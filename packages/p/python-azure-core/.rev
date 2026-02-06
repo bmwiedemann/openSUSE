@@ -615,4 +615,12 @@
     CHANGELOG.md file provided with this package (forwarded request 1326953 from glaubitz)</comment>
     <requestid>1326973</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>fef59b40cc08a82f3825feb322241ff9</srcmd5>
+    <version>1.38.0</version>
+    <time>1770401103</time>
+    <user>anag_factory</user>
+    <comment>- Add missing Bugzilla and CVE references for CVE-2026-21226 (forwarded request 1331548 from glaubitz)</comment>
+    <requestid>1331638</requestid>
+  </revision>
 </revisionlist>

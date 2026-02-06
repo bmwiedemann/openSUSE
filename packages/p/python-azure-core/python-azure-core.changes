@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Jan 13 11:40:19 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
-- New upstream release
+- New upstream release (bsc#1257703, CVE-2026-21226)
   + Version 1.38.0
   + For detailed information about changes see the
     CHANGELOG.md file provided with this package
