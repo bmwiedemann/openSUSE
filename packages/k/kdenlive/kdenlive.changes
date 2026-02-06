@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Feb  3 10:05:34 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.2/
+- Changes since 25.12.1:
+  * Disable sequence audio thumbnails until properly fixed. Related to #2134
+  * Fix crash opening and quickly closing Kdenlive settings
+  * Fix MacOs
+  * Fix pasting effects always enables built-in effects (kde#514885)
+  * Expand bin and render profiles folders when doing a search
+  * Fix monitor image position on fixed scale with small profile size
+  * Try to workaround possible double free in audio thumbs
+  * Fix remaining issues in clip monitor click and drag
+  * documentation.yml is no more needed
+  * Refactor monitor dragging to fix audio/video only drag and disappearing audio waveform in clip monitor
+  * Clip monitor audio thumbail: immediatly apply change in always show audio thumb setting
+  * Fix sequence clips audio thumbnails (update each time duration changes)
+  * Fix licensing
+  * Hide some irrelevant effects from UI using hidden_effects.txt / hidden_transitions.txt files. Allow copy from effects list description
+  * Fix app glitch opening project with missing clip on Windows
+  * Fix monitor rotoscoping overlay sometimes not correctly updating
+  * Fix monitors always displayed on activation even when explicitely hidden (kde#514831)
+
+-------------------------------------------------------------------
 Wed Jan  7 12:24:49 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.1
