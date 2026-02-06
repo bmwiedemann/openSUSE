@@ -1,7 +1,7 @@
 #
 # spec file for package libfyaml
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,33 @@
 #
 
 
+%define lib_name libfyaml0
+
 Name:           libfyaml
-Version:        0.9
+Version:        0.9.3
 Release:        0
 Summary:        YAML 1.2 parser and emitter
 License:        MIT
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/pantoniou/libfyaml
 Source:         https://github.com/pantoniou/libfyaml/releases/download/v%{version}/libfyaml-%{version}.tar.gz
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc14
+BuildRequires:  gcc14-c++
+BuildRequires:  gcc14-PIE
+%endif
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  libtool-ltdl-devel
 BuildRequires:  m4
 BuildRequires:  pkgconfig
-Suggests:       libyaml-0-2
 
 %description
 A YAML 1.2 parser and emitter, featuring a no-copy paradigm.
 Some YAML 1.3 is supported.
 
-%define lib_name libfyaml0
-
 %package -n %{lib_name}
 Summary:        YAML 1.2 parser and emitter
-Group:          System/Libraries
 
 %description -n %{lib_name}
 A YAML parser and emitter.
@@ -57,7 +59,6 @@ A YAML parser and emitter.
 
 %package devel
 Summary:        Development files for libfyaml
-Group:          Development/Libraries/C and C++
 Requires:       %{lib_name} = %{version}
 
 %description devel
@@ -66,17 +67,22 @@ a YAML parser and emitter written in C.
 
 %package fy-tool
 Summary:        Command line tools for libfyaml
-Group:          Development/Libraries/C and C++
 Requires:       %{lib_name} = %{version}
+# Merged manpages in the 0.9.3 update
+Provides:       libfyaml = 0.9.3
+Obsoletes:      libfyaml < 0.9.3
 
 %description fy-tool
 This package provides a couple of command line tools for processing
 YAML using libfyaml.
 
 %prep
-%setup -q -n libfyaml-%{version}
+%autosetup -p1
 
 %build
+%if 0%{?suse_version} == 1500
+export CC=gcc-14 CXX=g++-14
+%endif
 ./bootstrap.sh
 %configure --disable-static
 %make_build
@@ -92,6 +98,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n %{lib_name}
 %license LICENSE
+%doc AUTHORS README.md
 %{_libdir}/libfyaml.so.0
 %{_libdir}/libfyaml.so.0.0.0
 
@@ -101,6 +108,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/libfyaml.pc
 
 %files fy-tool
+%license LICENSE
 %{_bindir}/fy-compose
 %{_bindir}/fy-dump
 %{_bindir}/fy-filter
@@ -108,9 +116,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/fy-testsuite
 %{_bindir}/fy-tool
 %{_bindir}/fy-ypath
-
-%files
-%{_mandir}/man1/fy-*.1%{?ext_man}
-%license LICENSE
+%doc %{_mandir}/man1/fy-*.1%{?ext_man}
 
 %changelog

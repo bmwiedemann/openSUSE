@@ -1,4 +1,5 @@
 <package name="libfyaml" project="openSUSE:Factory">
   <title>https://github.com/pantoniou/libfyaml</title>
   <description>Fully feature complete YAML parser and emitter, supporting the latest YAML spec and passing the full YAML testsuite.</description>
+  <devel project="devel:libraries:c_c++" package="libfyaml"/>
 </package>

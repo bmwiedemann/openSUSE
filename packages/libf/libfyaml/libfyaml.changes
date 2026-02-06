@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb  3 10:32:08 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.9.3. Check https://github.com/pantoniou/libfyaml/releases
+  for older changes. Changes since 0.9.2:
+  * -winf: Infinite width option for output without line wrapping
+  * --no-output-newline: Suppress trailing newline (useful with
+    oneline mode)
+  * FYEXCF_OUTPUT_FILENAME: New extended option for direct file
+    output
+  * JSON mode: Now works like YAML flow mode with less
+    special-casing
+  * Compact mode: Now produces truly compact output without
+    unnecessary indentation
+  * Scalar preservation: Only changes plain scalar style when
+    spaces or linebreaks are present, better preserving numeric
+    values
+
+-------------------------------------------------------------------
 Wed Sep 17 08:25:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.9
