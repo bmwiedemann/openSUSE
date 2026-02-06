@@ -211,4 +211,13 @@
     &quot;Framework :: Zope :: 6&quot;</comment>
     <requestid>1329542</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>6138e7925dbd6cf5171986a2f8509235</srcmd5>
+    <version>2026.1.14.14</version>
+    <time>1770409803</time>
+    <user>anag_factory</user>
+    <comment>- Add pythons_for_pypi macro. This macro will help to build the python
+  minimal stack for different python versions.</comment>
+    <requestid>1330937</requestid>
+  </revision>
 </revisionlist>

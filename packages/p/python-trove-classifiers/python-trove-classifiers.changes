@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  4 11:46:41 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add pythons_for_pypi macro. This macro will help to build the python
+  minimal stack for different python versions.
+
+-------------------------------------------------------------------
 Tue Jan 27 17:13:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.1.14.14:

@@ -30,6 +30,7 @@
 %bcond_with libalternatives
 %endif
 
+%{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-trove-classifiers%{?psuffix}
 Version:        2026.1.14.14
