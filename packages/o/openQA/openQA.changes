@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Feb 05 17:16:04 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1770308102.12dfd0e4:
+  * fix: Configure sudoers correctly in Leap 16
+  * Also use devel:openQA/16.0 in dependency bot workflow
+  * Remove dependencies not available in 16
+  * Remove all explicit versions from ci-packages.txt
+  * Explicitly use new cache key for fullstack_cache
+  * Use devel:openQA 16.0 repositories
+  * fix: Create user directory without sudo
+  * refactor(ui): use native DOM APIs for bulk action logic
+  * Update devel:openQA:ci/base container to Leap 16
+  * test: Consider all controller code covered
+  * refactor: Remove unused "group connect" endpoints
+  * test: Cover `openqa_jobs_by_worker` field of InfluxDB endpoint
+  * test: Cover all cases of search of audit log table
+  * refactor: Simplify function to render audit log index page
+  * test: Add test for `eventid` parameter of audit log page
+  * test: Cover remaining lines of `Asset.pm`
+  * Mark some one line catch statements uncoverable
+  * Move t/07-api_jobtokens.t to t/api/
+  * refactor: Avoid mapping of actions in df-based cleanup
+  * refactor: Use loop to invoke `_delete_jobs` repeatedly
+  * refactor: Simplify code for df-based cleanup further
+  * refactor: Extract repeated lookup and loop into separate function
+  * Dependency cron 2026-02-03
+  * feat(ui): add bulk action checkboxes to test overview filters
+  * feat(openqa-clone-custom-git-refspec): add "BADGE" mode
+  * fix(openqa-clone-custom-git-refspec): fix "MARKDOWN" mode
+  * feat(UI): add delete button for job groups and parent groups
+  * refactor(javascripts): harden by using const in admin_groups.js
+  * feat(api): prevent deletion of non-empty parent job groups
+  * docs: Fix typo in MCP documentation
+  * docs: Improve note about enabling modern Perl features
+  * test: Remove unused parameters in `OpenQA::Test::Case::login`
+  * navbar: add new item in menu to link MCP documentation
+  * Refactor t/lib/OpenQA/Test/Case.pm with signatures
+  * test: Consider all API controller code covered
+  * test: Cover remaining error cases of worker API
+  * fix: Improve error handling when updating records in admin tables
+  * test: Ensure consistent coverage of job cancellation function
+  * Prepare documentation generation for Leap 16.0
+  * test: Cover remaining lines of `Search.pm`
+  * test: Cover remaining lines of `Locks.pm`
+  * refactor: Simplify `JobTemplate::destroy`
+  * refactor: Remove unused code from `JobTemplate.pm`
+  * git subrepo pull (merge) external/os-autoinst-common
+
+-------------------------------------------------------------------
 Thu Jan 29 06:10:03 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1769644379.ef069e9d:
@@ -12775,4 +12824,3 @@ Thu Jun 13 16:09:32 UTC 2013 - lnussel@suse.de
 Tue May 14 15:32:56 UTC 2013 - lnussel@suse.de
 
 - initial package
-
