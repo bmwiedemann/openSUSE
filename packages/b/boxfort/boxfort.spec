@@ -1,7 +1,7 @@
 #
-# spec file for package boxfort 
+# spec file for package boxfort
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define _lto_cflags %{nil}
 
 Name:           boxfort
-Version:        0.1.4
+Version:        0.1.5
 Release:        0
 Summary:        A sandboxing C library for Criterion
 License:        MIT
@@ -58,7 +59,7 @@ export NO_BRP_STRIP_DEBUG=true
 export NO_DEBUGINFO_STRIP_DEBUG=true
 
 %files
-%license LICENSE 
+%license LICENSE
 %doc README.md
 
 %files devel
