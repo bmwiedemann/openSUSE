@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  3 10:05:59 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.2/
+- Changes since 25.12.1:
+  * fix(StopPickerPage): Assign parent to the clear confirmation dialog
+
+-------------------------------------------------------------------
 Wed Jan  7 12:25:13 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.1
