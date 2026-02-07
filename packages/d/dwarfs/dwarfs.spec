@@ -1,7 +1,7 @@
 #
 # spec file for package dwarfs
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,12 @@
 %define sover %(echo %{version} | sed 's/\\./_/g;')
 %define __builder ninja
 Name:           dwarfs
-Version:        0.13.0
+Version:        0.14.1
 Release:        0
 Summary:        Deduplicating compressed read-only file system
 License:        GPL-3.0-or-later AND MIT
 URL:            https://github.com/mhx/dwarfs
 Source0:        https://github.com/mhx/dwarfs/releases/download/v%{version}/dwarfs-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM folly-remove-boost_system-dependency.patch gh#mhx/dwarfs#288 gh#facebook/folly#2489
-Patch0:         folly-remove-boost_system-dependency.patch
-# PATCH-FIX-UPSTREAM remove_hhdate_dependency.patch https://github.com/mhx/dwarfs/pull/289 TODO: Remove this patch once a new upstream version containing the PR has been released
-Patch1:         https://github.com/mhx/dwarfs/pull/289.patch#/remove_hhdate_dependency.patch
 BuildRequires:  bison
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
@@ -68,8 +64,8 @@ BuildRequires:  pkgconfig(libxxhash)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(nlohmann_json)
 # SECTION test requirements
-BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(gmock)
+BuildRequires:  pkgconfig(gtest)
 # /SECTION
 
 %description
@@ -104,6 +100,26 @@ Compared to SquashFS, it is typically more efficient.
 
 This package contains the development files for DwarFS.
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash command line completion support for %{name}.
+
+%package zsh-completion
+Summary:        ZSH Completion for %{name}
+Requires:       %{name} = %{version}
+Requires:       zsh
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+ZSH command line completion support for %{name}.
+
 %ldconfig_scriptlets -n libdwarfs%{sover}
 
 %prep
@@ -118,10 +134,6 @@ This package contains the development files for DwarFS.
 %install
 %cmake_install
 
-# only mount helper should be in sbin
-mv %{buildroot}%{_sbindir}/dwarfs %{buildroot}%{_bindir}/dwarfs
-ln -sf %{_bindir}/dwarfs %{buildroot}%{_sbindir}/mount.dwarfs
-
 %check
 %ctest
 
@@ -132,6 +144,8 @@ ln -sf %{_bindir}/dwarfs %{buildroot}%{_sbindir}/mount.dwarfs
 %{_mandir}/*/*dwarfs*
 %{_bindir}/*dwarfs*
 %{_sbindir}/mount.dwarfs
+%{_datadir}/mime/packages/dwarfs.xml
+%{_datadir}/applications/dwarfs-mount-handler.desktop
 
 %files -n libdwarfs%{sover}
 %{_libdir}/*.so.*
@@ -140,5 +154,11 @@ ln -sf %{_bindir}/dwarfs %{buildroot}%{_sbindir}/mount.dwarfs
 %{_includedir}/dwarfs
 %{_libdir}/cmake/dwarfs
 %{_libdir}/libdwarfs*.so
+
+%files zsh-completion
+%{_datadir}/zsh/site-functions/*
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/*
 
 %changelog

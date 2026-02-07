@@ -141,4 +141,41 @@ Features:
     <comment></comment>
     <requestid>1309397</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ddfd65f5a13b4e338f9e1be27980a589</srcmd5>
+    <version>0.14.1</version>
+    <time>1770474822</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.14.1:
+Bugfixes:
+  * The metadata_builder now recomputes all total sizes
+    (total_fs_size, total_allocated_fs_size, and
+    total_hardlink_size) as part of the build() function. This not
+    only ensures that the totals are correct even if the allocated
+    size changes between scanning and segmenting (which has been
+    happening at least on ZFS volumes), but it also allows images
+    affected by a related bug in Windows builds of DwarFS to be
+    fixed by rebuilding the metadata.
+  * Instead of making the FUSE drivers fail hard when seeing the
+    options that were removed in v0.14.0, they now just log a
+    warning and ignore them. The options may still be fully removed
+    in a future release.
+    gh#mhx/dwarfs#303.
+  * The pcmaudio categorizer had two minor issues when compressing
+    a large number of WAV files. One was reporting an unsupported
+    format: 3/0 or unsupported format: 65,534/3 warning, which
+    isn't very useful for the end user. These format codes
+    correspond to IEEE floating point formats, which are indeed
+    unsupported. However, the format appears to be quite common,
+    so the warning has been downgraded to an info message that
+    explicitly mentions the floating point format. The second issue
+    was an unexpected fmt chunk size of 20 bytes, which caused the
+    file to be rejected as a PCM audio file (meaning it was added
+    using a generic compressor instead of FLAC). It turns out that
+    these non-conforming fmt chunks are also quite common in
+    practice, so the code has been changed to accept the
+    non-conforming file, but also logging an info message
+    mentioning the non-conformance.</comment>
+    <requestid>1331760</requestid>
+  </revision>
 </revisionlist>
