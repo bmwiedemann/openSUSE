@@ -169,12 +169,11 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.23.4+git.428.6b48e7eba5b
+Version:        4.23.5+git.458.200d9061a31
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
 Obsoletes:      samba-gplv3 < %{version}
-Recommends:     cron
 Recommends:     logrotate
 Summary:        A SMB/CIFS File, Print, and Authentication Server
 License:        GPL-3.0-or-later
@@ -428,6 +427,7 @@ Requires:       samba-python3 = %{version}
 Recommends:     cepces
 Recommends:     certmonger
 Recommends:     sscep
+Suggests:       cron
 
 %description gpupdate
 The samba-gpupdate package provides the samba-gpupdate tool for applying
@@ -461,7 +461,6 @@ Obsoletes:      samba-gplv3-winbind < %{version}
 Provides:       samba-client:/usr/sbin/winbindd
 Provides:       group(winbind)
 Requires:       pam-config
-Recommends:     cron
 Recommends:     logrotate
 Requires:       coreutils
 Requires:       samba-client = %{version}

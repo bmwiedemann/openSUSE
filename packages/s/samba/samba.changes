@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Feb  2 13:06:04 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 4.23.5
+  * New Spotlight default search field incorrectly initialized;
+    (bso#15959);
+  * Winbind group resolution failure; (bso#15972);
+  * winbindd crashes with Bad talloc magic value - unknown value;
+    (bso#15937);
+  * Bind dlz 9.20; (bso#15790); (bsc#1249058);
+
+-------------------------------------------------------------------
+Wed Jan 21 17:19:15 UTC 2026 - Noel Power <nopower@suse.com>
+
+- Fix mistake in README.SUSE /var/spool/samba => /var/samba/spool
+  (bsc#1254665).
+
+-------------------------------------------------------------------
+Mon Dec 22 12:11:10 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
+
+- Remove cron package recommends; (bsc#1255450);
+
+-------------------------------------------------------------------
+Thu Dec 18 11:00:46 UTC 2025 - Noel Power <nopower@suse.com>
+
+- Adjust README.SUSE to reflect the new preferred location for
+  '[printers]' share; (bsc#1254665).
+
+-------------------------------------------------------------------
+Fri Dec 17 09:32:26 UTC 2025 - Noel Power <nopower@suse.com>
+
+-  Fix Samba printers reporting invalid sid during print jobs;
+  (bsc#1234210); (bsc#1254926); (bso#15792).
+
+-------------------------------------------------------------------
 Fri Dec 12 15:42:05 UTC 2025 - Noel Power <nopower@suse.com>
 
 - samba-ad-dc-libs packages are missing a DLZ plugin for bind 9.20;
