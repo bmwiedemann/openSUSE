@@ -1,4 +1,264 @@
 -------------------------------------------------------------------
+Fri Feb  6 12:48:41 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.21.0
+  * New features
+    + FileUtils#byteCountToDisplaySize() supports Zettabyte,
+      Yottabyte, Ronnabyte and Quettabyte
+    + Add org.apache.commons.io.FileUtils.ONE_RB
+    + Add org.apache.commons.io.FileUtils.ONE_QB
+    + Add org.apache.commons.io.output.ProxyOutputStream
+      .writeRepeat(byte[], int, int, long)
+    + Add org.apache.commons.io.output.ProxyOutputStream
+      .writeRepeat(byte[], long)
+    + Add org.apache.commons.io.output.ProxyOutputStream
+      .writeRepeat(int, long)
+    + Add length unit support in FileSystem limits
+    + Add IOUtils.toByteArray(InputStream, int, int) for safer
+      chunked reading with size validation
+    + Add org.apache.commons.io.file.PathUtils.getPath(String,
+      String)
+    + Add org.apache.commons.io.channels
+      .ByteArraySeekableByteChannel
+    + Add IOIterable.asIterable()
+    + Add NIO channel support to 'AbstractStreamBuilder'
+    + Add CloseShieldChannel to close-shielded NIO Channels
+    + Added IOUtils.checkFromIndexSize as a Java 8 backport of
+     Objects.checkFromIndexSize
+  * Fixed Bugs
+    + When testing on Java 21 and up, enable
+     -XX:+EnableDynamicAgentLoading
+    + When testing on Java 24 and up, don't fail
+      FileUtilsListFilesTest for a different behavior in the JRE
+    + ValidatingObjectInputStream does not validate dynamic proxy
+      interfaces
+    + BoundedInputStream.getRemaining() now reports Long.MAX_VALUE
+      instead of 0 when no limit is set
+    + BoundedInputStream.available() correctly accounts for the
+      maximum read limit
+    + Deprecate IOUtils.readFully(InputStream, int) in favor of
+      toByteArray(InputStream, int)
+    + IOUtils.toByteArray(InputStream) now throws IOException on
+      byte array overflow
+    + Javadoc general improvements
+    + IOUtils.toByteArray() now throws EOFException when not enough
+      data is available
+    + Fix IOUtils.skip() usage in concurrent scenarios
+    + [javadoc] Fix XmlStreamReader Javadoc to indicate the correct
+      class that is built
+  * Changes
+    + Bump org.apache.commons:commons-parent from 85 to 91
+    + [test] Bump commons-codec:commons-codec from 1.18.0 to 1.19.0
+    + [test] Bump commons.bytebuddy.version from 1.17.6 to 1.17.8
+    + [test] Bump org.apache.commons:commons-lang3 from 3.18.0 to
+      3.19.0
+  * Removed
+    + Inline private constant field
+      ProxyInputStream.exceptionHandler
+
+-------------------------------------------------------------------
+Fri Feb  6 12:48:07 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.20.0
+  * New features
+    + Add org.apache.commons.io.file.CountingPathVisitor
+      .accept(Path, BasicFileAttributes)
+    + Add org.apache.commons.io.Charsets.isAlias(Charset, String)
+    + Add org.apache.commons.io.Charsets.isUTF8(Charset)
+    + Add org.apache.commons.io.Charsets.toCharsetDefault(String,
+      Charset)
+    + Add Tailer ignoreTouch option
+  * Fixed Bugs
+    + [javadoc] Rename parameter of ProxyOutputStream.write(int)
+    + CopyDirectoryVisitor ignores fileFilter
+    + org.apache.commons.io.build.AbstractOrigin.getReader(Charset)
+      now maps a null Charset to the default Charset
+    + org.apache.commons.io.build.AbstractOrigin
+      .AbstractRandomAccessFileOrigin.getReader(Charset) now maps a
+      null Charset to the default Charset
+    + org.apache.commons.io.build.AbstractOrigin.ByeArrayOrigin
+      .getReader(Charset) now maps a null Charset to the default
+      Charset
+    + org.apache.commons.io.build.AbstractOrigin.InputStreamOrigin
+      .getReader(Charset) now maps a null Charset to the default
+      Charset
+    + org.apache.commons.io.build.AbstractOrigin.getWriter(Charset)
+      now maps a null Charset to the default Charset
+    + org.apache.commons.io.build.AbstractOrigin
+      .AbstractRandomAccessFileOrigin.getWriter(Charset) now maps a
+      null Charset to the default Charset
+    + org.apache.commons.io.build.AbstractOrigin.OutputStreamOrigin
+      .getWriter(Charset) now maps a null Charset to the default
+      Charset
+    + FileUtils.readLines(File, Charset) now maps a null Charset to
+      the default Charset
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "atSlashCr" in one thread may not yield the value of the most
+      recent write from another thread
+      [org.apache.commons.io.input.WindowsLineEndingInputStream,
+      org.apache.commons.io.input.WindowsLineEndingInputStream] At
+      WindowsLineEndingInputStream.java:[line 77] Another occurrence
+      at WindowsLineEndingInputStream.java:[line 81]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "atSlashCr" in one thread may not yield the value of the most
+      recent write from another thread
+      [org.apache.commons.io.input.WindowsLineEndingInputStream] At
+      WindowsLineEndingInputStream.java:[line 112]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "atSlashLf" in one thread may not yield the value of the most
+      recent write from another thread
+      [org.apache.commons.io.input.WindowsLineEndingInputStream] At
+      WindowsLineEndingInputStream.java:[line 113]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "atSlashLf" in one thread may not yield the value of the most
+      recent write from another thread
+      [org.apache.commons.io.input.UnixLineEndingInputStream] At
+      UnixLineEndingInputStream.java:[line 75]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "atEos" in one thread may not yield the value of the most
+      recent write from another thread
+      [org.apache.commons.io.input.UnixLineEndingInputStream] At
+      UnixLineEndingInputStream.java:[line 120]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "atSlashCr" in one thread may not yield the value of the most
+      recent write from another thread
+      [org.apache.commons.io.input.UnixLineEndingInputStream] At
+      UnixLineEndingInputStream.java:[line 124]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "atSlashLf" in one thread may not yield the value of the most
+      recent write from another thread
+      [org.apache.commons.io.input.UnixLineEndingInputStream] At
+      UnixLineEndingInputStream.java:[line 125]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "closed" in one thread may not yield the value of the most
+      recent write from another thread
+      [org.apache.commons.io.input.ProxyInputStream] At
+      ProxyInputStream.java:[line 233]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "propagateClose" in one thread may not yield the value of the
+      most recent write from another thread
+      [org.apache.commons.io.input.BoundedInputStream] At
+      BoundedInputStream.java:[line 555]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + QueueInputStream reads all but the first byte without waiting
+    + Javadoc fixes and improvements
+    + Avoid NPE in org.apache.commons.io.filefilter.WildcardFilter
+      .accept(File)
+    + FileUtils.forceDelete can delete a broken symlink again
+    + Fix infinite loop in AbstractByteArrayOutputStream
+  * Changes
+    + Bump commons.bytebuddy.version from 1.17.5 to 1.17.6
+    + Bump org.apache.commons:commons-parent from 81 to 85
+    + Bump org.apache.commons:commons-lang3 from 3.17.0 to 3.18.0
+
+-------------------------------------------------------------------
+Fri Feb  6 12:46:24 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.19.0
+  * New features
+    + Add ThrottledInputStream.Builder.setMaxBytes(long,
+      ChronoUnit)
+    + Add IOIterable
+    + ReversedLinesFileReader implements IOIterable<String>
+    + Add AbstractByteArrayOutputStream.write(CharSequence,
+      Charset)
+    + Add AbstractByteArrayOutputStream.write(byte[])
+    + Add RandomAccessFileOutputStream.getRandomAccessFile()
+    + Add ProxyInputStream.setReference(InputStream), was
+      package-private setIn(InputStream)
+    + Add ProxyOutputStream.setReference(OutputStream)
+    + Add RandomAccessFileInputStream.copy(long, long,
+      OutputStream)
+    + Add ProxyOutputStream.Builder
+    + Add ByteOrderMark.matches(int[])
+    + Add BrokenOutputStream.BrokenOutputStream(Function<String>,
+      Throwable>) and deprecate Supplier<String> constructor
+    + Add IOBooleanSupplier
+    + Add Uncheck.getAsBoolean(IOBooleanSupplier)
+    + Add FileChannels.contentEquals(SeekableByteChannel,
+      SeekableByteChannel, int)
+    + Add FileChannels.contentEquals(ReadableByteChannel,
+      ReadableByteChannel, int)
+    + Add SimplePathVisitor.AbstractBuilder
+    + Add CountingPathVisitor.AbstractBuilder and
+      CountingPathVisitor.Builder
+    + Add AccumulatorPathVisitor.Builder and builder()
+    + Add PathUtils.contentEquals(FileSystem, FileSystem)
+  * Fixed Bugs
+    + Deprecate constructor Counters.Counters() to be private in
+      4.0
+    + Deprecate constructor Charsets.Charsets() to be private in
+      4.0
+    + Pick up maven-antrun-plugin version from parent POM
+      org.apache:apache
+    + Javadoc is missing its Overview page
+    + Remove -nouses directive from maven-bundle-plugin. OSGi
+      package imports now state 'uses' definitions for package
+      imports, this doesn't affect JPMS (from
+      org.apache.commons:commons-parent:80)
+    + Deprecate DeferredFileOutputStream.getStream() in favor of
+      getOutputStream()
+    + Improve Javadoc for a BoundedInputStream builder() throwing
+      IOException
+    + Improve Javadoc for all implementations of
+      AbstractOriginSupplier#get()
+    + The Consumer to IOUtils.closeQuietly(Closeable, Consumer) now
+      accepts Exception, not just IOException
+    + The Consumer to IOUtils.close(Closeable, IOConsumer) now
+      accepts wrapped Exception, not just IOException
+    + Use Uncheck.getAsBoolean(IOBooleanSupplier) to avoid boxing
+      and unboxing of boolean values
+    + Avoid unnecessary boxing and unboxing of long values in
+      FileUtils.sizeOf(File)
+    + Avoid unnecessary boxing and unboxing of int values in
+      UncheckedBufferedReader.read()
+    + Avoid unnecessary boxing and unboxing of int values in
+      UncheckedFilterInputStream.available() and read()
+    + Avoid unnecessary boxing and unboxing of int values in
+      UncheckedFilterReader.read()
+    + FileChannels.contentEquals(FileChannel, FileChannel, int) can
+      return false when comparing a non-blocking channel
+    + Deprecate FileChannels.contentEquals(FileChannel, FileChannel,
+      int) in favor of FileChannels
+      .contentEquals(SeekableByteChannel, SeekableByteChannel, int)
+    + Improve performance of IOUtils.contentEquals(InputStream,
+      InputStream) by about 13%
+    + PathUtils.copyFileToDirectory() across file systems
+    + IOUtils.contentEquals is incorrect when InputStream.available
+      under-reports
+    + java.lang.ArithmeticException: long overflow java.lang.Math
+      .addExact(Math.java:932) at org.apache.commons.io.file
+      .attribute.FileTimes.ntfsTimeToFileTime(FileTimes.java:164).
+      See also https://issues.apache.org/jira/browse/MDEP-978
+    + java.lang.ArithmeticException: long overflow java.lang.Math
+      .addExact(Math.java:932) at org.apache.commons.io.file
+      .attribute.FileTimes.ntfsTimeToDate(long)
+    + FileTimes.toNtfsTime(*) methods can overflow result values
+    + Fix Javadoc for ChunkedOutputStream.Builder
+    + General Javadoc improvements
+    + Calling QueueInputStream.QueueInputStream(null) maps to the
+      same kind of default blocking queue as
+      QueueInputStream.Builder.setBlockingQueue(null)
+    + CopyDirectoryVisitor creates incorrect file names when
+      copying between different file systems that use different file
+      system separators ("/" versus "\"); fixes
+      PathUtils.copyDirectory(Path, Path, CopyOption...)
+    + ThreadUtils.sleep(Duration) should handle the underlying OS
+      time changing
+  * Changes
+    + Bump commons.bytebuddy.version from 1.15.10 to 1.17.5
+    + Bump commons-codec:commons-codec from 1.17.1 to 1.18.0
+    + Bump org.apache.commons:commons-parent from 78 to 81
+
+-------------------------------------------------------------------
 Fri Jan 24 15:08:26 UTC 2025 - Gus Kenion <gus.kenion@suse.com>
 
 - Upgrade to 2.18.0

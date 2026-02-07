@@ -10,15 +10,19 @@
 
   <property name="project.groupId" value="commons-io"/>
   <property name="project.artifactId" value="commons-io"/>
-  <property name="project.version" value="2.18.0"/>
+  <property name="project.version" value="2.21.0"/>
   <property name="project.name" value="Apache Commons IO"/>
-  <property name="project.description" value="The Apache Commons IO library 
-contains utility classes, stream implementations, file filters, 
+  <property name="project.description" value="The Apache Commons IO library
+contains utility classes, stream implementations, file filters,
 file comparators, endian transformation classes, and much more."/>
   <property name="project.organization.name" value="The Apache Software Foundation"/>
-  
-  <property name="bundle.symbolicName" value="org.apache.commons.io"/>
+
+  <property name="bundle.symbolicName" value="org.apache.commons.commons-io"/>
   <property name="bundle.version" value="${project.version}"/>
+
+  <property name="module.name" value="org.apache.commons.io"/>
+
+  <property name="spec.version" value="2.21"/>
 
   <property name="compiler.release" value="8"/>
   <property name="compiler.source" value="1.${compiler.release}"/>
@@ -31,13 +35,6 @@ file comparators, endian transformation classes, and much more."/>
   <property name="build.resourceDir.0" value="src/main/resources"/>
   <property name="build.resourceDir.1" value="."/>
   <property name="reporting.outputDirectory" value="${build.dir}/site"/>
-
-  <!-- ====================================================================== -->
-  <!-- Defining classpaths                                                    -->
-  <!-- ====================================================================== -->
-
-  <path id="build.classpath"/>
-  <path id="build.test.classpath"/>
 
   <!-- ====================================================================== -->
   <!-- Cleaning up target                                                     -->
@@ -67,7 +64,6 @@ file comparators, endian transformation classes, and much more."/>
       <src>
         <pathelement location="${build.srcDir}"/>
       </src>
-      <classpath refid="build.classpath"/>
     </javac>
     <mkdir dir="${build.outputDir}/META-INF"/>
     <copy todir="${build.outputDir}/META-INF">
@@ -117,7 +113,7 @@ file comparators, endian transformation classes, and much more."/>
          basedir="${build.outputDir}"
          excludes="**/package.html">
       <manifest>
-        <attribute name="Automatic-Module-Name" value="${bundle.symbolicName}"/>
+        <attribute name="Automatic-Module-Name" value="${module.name}"/>
         <attribute name="Bundle-Description" value="${project.description}"/>
         <attribute name="Bundle-DocURL" value="http://commons.apache.org/proper/commons-io/"/>
         <attribute name="Bundle-License" value="https://www.apache.org/licenses/LICENSE-2.0.txt"/>
@@ -126,12 +122,19 @@ file comparators, endian transformation classes, and much more."/>
         <attribute name="Bundle-SymbolicName" value="${bundle.symbolicName}"/>
         <attribute name="Bundle-Vendor" value="${project.organization.name}"/>
         <attribute name="Bundle-Version" value="${bundle.version}"/>
-        <attribute name="Export-Package" value="org.apache.commons.io;version=&quot;1.4.9999&quot;,org.apache.commons.io.comparator;version=&quot;1.4.9999&quot;,org.apache.commons.io.filefilter;version=&quot;1.4.9999&quot;,org.apache.commons.io.input;version=&quot;1.4.9999&quot;,org.apache.commons.io.output;version=&quot;1.4.9999&quot;,org.apache.commons.io.monitor;version=&quot;${project.version}&quot;,org.apache.commons.io.serialization;version=&quot;${project.version}&quot;,org.apache.commons.io;version=&quot;${project.version}&quot;,org.apache.commons.io.comparator;version=&quot;${project.version}&quot;,org.apache.commons.io.filefilter;version=&quot;${project.version}&quot;,org.apache.commons.io.input;version=&quot;${project.version}&quot;,org.apache.commons.io.output;version=&quot;${project.version}&quot;"/>
-        <attribute name="Include-Resource" value="META-INF/NOTICE.txt=NOTICE.txt,META-INF/LICENSE.txt=LICENSE.txt"/>
+        <attribute name="Export-Package" value="org.apache.commons.io.build;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.io,org.apache.commons.io.function&quot;,org.apache.commons.io.channels;version=&quot;${project.version}&quot;,org.apache.commons.io.charset;version=&quot;${project.version}&quot;,org.apache.commons.io.comparator;version=&quot;1.4.9999&quot;;uses:=&quot;org.apache.commons.io&quot;,org.apache.commons.io.comparator;version=&quot;${project.version}&quot;,org.apache.commons.io.file.attribute;version=&quot;${project.version}&quot;,org.apache.commons.io.file.spi;version=&quot;${project.version}&quot;,org.apache.commons.io.file;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.io.build,org.apache.commons.io.function&quot;,org.apache.commons.io.filefilter;version=&quot;1.4.9999&quot;;uses:=&quot;org.apache.commons.io,org.apache.commons.io.build,org.apache.commons.io.file&quot;,org.apache.commons.io.filefilter;version=&quot;${project.version}&quot;,org.apache.commons.io.function;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.io&quot;,org.apache.commons.io.input.buffer;version=&quot;${project.version}&quot;,org.apache.commons.io.input;version=&quot;1.4.9999&quot;;uses:=&quot;org.apache.commons.io,org.apache.commons.io.build,org.apache.commons.io.function,org.apache.commons.io.output&quot;,org.apache.commons.io.input;version=&quot;${project.version}&quot;,org.apache.commons.io.monitor;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.io,org.apache.commons.io.build&quot;,org.apache.commons.io.output;version=&quot;1.4.9999&quot;;uses:=&quot;org.apache.commons.io.build,org.apache.commons.io.function,org.apache.commons.io.input&quot;,org.apache.commons.io.output;version=&quot;${project.version}&quot;,org.apache.commons.io.serialization;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.io.build&quot;,org.apache.commons.io;version=&quot;1.4.9999&quot;;uses:=&quot;org.apache.commons.io.filefilter,org.apache.commons.io.function,org.apache.commons.io.input&quot;,org.apache.commons.io;version=&quot;${project.version}&quot;"/>
+        <attribute name="Implementation-Title" value="${project.name}"/>
+        <attribute name="Implementation-Vendor" value="${project.organization.name}"/>
+        <attribute name="Implementation-Version" value="2.21.0"/>
+        <attribute name="Import-Package" value="java.io,java.lang,java.lang.invoke,java.lang.ref,java.lang.reflect,java.math,java.net,java.nio,java.nio.channels,java.nio.charset,java.nio.file,java.nio.file.attribute,java.nio.file.spi,java.security,java.text,java.time,java.time.chrono,java.time.temporal,java.util,java.util.concurrent,java.util.concurrent.atomic,java.util.concurrent.locks,java.util.function,java.util.regex,java.util.stream,java.util.zip,sun.misc;resolution:=optional,sun.nio.ch;resolution:=optional"/>
+        <attribute name="Include-Resource" value="META-INF/LICENSE.txt=LICENSE.txt,META-INF/NOTICE.txt=NOTICE.txt"/>
         <attribute name="JavaPackages-ArtifactId" value="${project.artifactId}"/>
         <attribute name="JavaPackages-GroupId" value="${project.groupId}"/>
         <attribute name="JavaPackages-Version" value="${project.version}"/>
         <attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
+        <attribute name="Specification-Title" value="${project.name}"/>
+        <attribute name="Specification-Vendor" value="${project.organization.name}"/>
+        <attribute name="Specification-Version" value="${spec.version}"/>
       </manifest>
     </jar>
   </target>
