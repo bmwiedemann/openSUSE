@@ -110,4 +110,14 @@
     <comment></comment>
     <requestid>1265663</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>804f38573b78f277f32c419af4ef52a3</srcmd5>
+    <version>2.2.7</version>
+    <time>1770474788</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.7:
+  * This release adds Chinese standard paper sizes (D series, and ZL envelope). Thanks to @liushuyu for the patch.
+</comment>
+    <requestid>1331622</requestid>
+  </revision>
 </revisionlist>

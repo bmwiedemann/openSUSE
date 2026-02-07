@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  6 12:10:58 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.2.7:
+  * This release adds Chinese standard paper sizes (D series, and ZL envelope). Thanks to @liushuyu for the patch.
+
+-------------------------------------------------------------------
 Sun Mar 30 09:22:06 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.6:
