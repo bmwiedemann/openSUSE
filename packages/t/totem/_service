@@ -3,11 +3,11 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/totem.git</param>
-    <param name="revision">43.2</param>
-    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="revision">b8d8108e</param>
+    <param name="versionformat">43.2+git@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">v?(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="changesgenerate">disable</param>
+    <param name="changesgenerate">enable</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">

@@ -1249,4 +1249,12 @@
     <comment> (forwarded request 1279082 from iznogood)</comment>
     <requestid>1280014</requestid>
   </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>9306235b408168a521e1dbc20b9af096</srcmd5>
+    <version>43.2+git402.b8d8108e0</version>
+    <time>1770474779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1331590</requestid>
+  </revision>
 </revisionlist>

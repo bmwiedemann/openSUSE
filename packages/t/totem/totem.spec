@@ -1,7 +1,7 @@
 #
 # spec file for package totem
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           totem
-Version:        43.2
+Version:        43.2+git402.b8d8108e0
 Release:        0
 Summary:        Movie Player for the GNOME Desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -25,7 +25,7 @@ Group:          Productivity/Multimedia/Video/Players
 URL:            https://wiki.gnome.org/Apps/Videos
 Source0:        %{name}-%{version}.tar.zst
 
-BuildRequires:  appstream-glib
+BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gstreamer-plugins-good
@@ -48,8 +48,7 @@ BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libhandy-1)
-BuildRequires:  pkgconfig(libpeas-1.0) >= 1.1.0
-BuildRequires:  pkgconfig(libpeas-gtk-1.0)
+BuildRequires:  pkgconfig(libpeas-2)
 BuildRequires:  pkgconfig(libportal-gtk3)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 2.90.3
@@ -126,9 +125,9 @@ This package contains the video thumbnailer.
 
 %build
 %meson \
-	-D enable-easy-codec-installation=yes \
 	-D enable-gtk-doc=true \
 	-D enable-python=yes \
+	-D ui-tests=false \
 	%{nil}
 %meson_build
 
@@ -140,8 +139,7 @@ This package contains the video thumbnailer.
 %ldconfig_scriptlets
 
 %check
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome.Totem.appdata.xml
-desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Totem.desktop
+%meson_test
 
 %files
 %license COPYING
@@ -150,7 +148,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Totem.deskt
 %{_datadir}/GConf/gsettings/totem.convert
 %{_datadir}/dbus-1/services/org.gnome.Totem.service
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/org.gnome.Totem.appdata.xml
+%{_datadir}/metainfo/org.gnome.Totem.metainfo.xml
 %{_datadir}/applications/*.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.totem.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.totem.gschema.xml
@@ -179,7 +177,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Totem.deskt
 %{_libdir}/totem/plugins/save-file/
 %{_libdir}/totem/plugins/screensaver/
 %{_libdir}/totem/plugins/screenshot/
-%{_libdir}/totem/plugins/skipto/
 %{_libdir}/totem/plugins/variable-rate/
 %{_datadir}/GConf/gsettings/opensubtitles.convert
 %{_datadir}/GConf/gsettings/pythonconsole.convert
@@ -187,7 +184,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Totem.deskt
 %{_datadir}/glib-2.0/schemas/org.gnome.totem.plugins.pythonconsole.gschema.xml
 
 %files devel
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %{_datadir}/gtk-doc/html/totem/
 %{_includedir}/totem/
 %{_libdir}/libtotem.so
