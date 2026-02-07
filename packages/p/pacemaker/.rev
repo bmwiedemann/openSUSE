@@ -2537,4 +2537,44 @@
     <comment>- Update to version 3.0.1+20250807.16e74fc4da (Pacemaker-3.0.1): (forwarded request 1307107 from yan_gao)</comment>
     <requestid>1307108</requestid>
   </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>318de39580c2ef65e8f0f4db42517fda</srcmd5>
+    <version>3.0.1+20251208.f7f28ab3</version>
+    <time>1770474782</time>
+    <user>dimstar_suse</user>
+    <comment>jsc#PED-14614
+jsc#PED-14899
+
+- spec: do not treat fillup templates as configuration files
+
+- build: install the default logrotate config into /usr/etc/logrotate.d
+
+- build: create directories in /var via tmpfiles.d
+
+- build: create hacluster user and haclient group via sysusers.d
+
+- Update to version 3.0.1+20251208.f7f28ab3:
+- agents: Deprecate allow_stonith_disabled param for controld RA
+- agents: New allow_fencing_disabled param for controld RA
+- agents: Use case-insensitive property matching in controld RA
+- schemas: Deprecate stonith-timeout-ms in crm_mon output
+- schemas: Deprecate stonith-enabled in crm_mon output
+- various: New fencing-timeout-ms in crm_mon/pcmk_status output
+- schemas: New fencing-timeout-ms attribute in crm_mon schema
+- various: New fencing-enabled in crm_mon/pcmk_status output
+- schemas: New fencing-enabled attribute in crm_mon schema
+
+- Update to version 3.0.1+20251130.37f6466b:
+- tools: cibadmin --xpath --delete-all deletes all matches again
+- various: Use const for a few string pointer variables
+
+- Update to version 3.0.1+20251125.39c07b64:
+- cts: Respect cts-lab --nic option if specified for IPv4 (gh#ClusterLabs/pacemaker#3986)
+- cts: cts-lab --nic option defaults to eth0 only for an IPv6 link local address (gh#ClusterLabs/pacemaker#3986)
+
+- Update to version 3.0.1+20251124.253fbe4c:
+- controller: Ask attribute manager to purge fenced nodes' attributes
+- controller: Don't purge transient attributes on node loss (gh#ClusterLabs/pacemaker#3991) (forwarded request 1331597 from yan_gao)</comment>
+    <requestid>1331598</requestid>
+  </revision>
 </revisionlist>

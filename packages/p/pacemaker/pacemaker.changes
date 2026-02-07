@@ -1,4 +1,221 @@
 -------------------------------------------------------------------
+Mon Jan 12 17:03:49 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- spec: do not treat fillup templates as configuration files
+
+-------------------------------------------------------------------
+Mon Jan 12 11:39:23 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- build: install the default logrotate config into /usr/etc/logrotate.d
+
+-------------------------------------------------------------------
+Mon Dec 15 17:11:07 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- build: create directories in /var via tmpfiles.d
+
+-------------------------------------------------------------------
+Mon Dec 15 16:42:21 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- build: create hacluster user and haclient group via sysusers.d
+
+-------------------------------------------------------------------
+Tue Dec 09 09:51:48 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.1+20251208.f7f28ab3:
+- agents: Deprecate allow_stonith_disabled param for controld RA
+- agents: New allow_fencing_disabled param for controld RA
+- agents: Use case-insensitive property matching in controld RA
+- schemas: Deprecate stonith-timeout-ms in crm_mon output
+- schemas: Deprecate stonith-enabled in crm_mon output
+- various: New fencing-timeout-ms in crm_mon/pcmk_status output
+- schemas: New fencing-timeout-ms attribute in crm_mon schema
+- various: New fencing-enabled in crm_mon/pcmk_status output
+- schemas: New fencing-enabled attribute in crm_mon schema
+
+-------------------------------------------------------------------
+Mon Dec 01 09:44:34 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.1+20251130.37f6466b:
+- tools: cibadmin --xpath --delete-all deletes all matches again
+- various: Use const for a few string pointer variables
+
+-------------------------------------------------------------------
+Wed Nov 26 13:14:14 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.1+20251125.39c07b64:
+- cts: Respect cts-lab --nic option if specified for IPv4 (gh#ClusterLabs/pacemaker#3986)
+- cts: cts-lab --nic option defaults to eth0 only for an IPv6 link local address (gh#ClusterLabs/pacemaker#3986)
+
+-------------------------------------------------------------------
+Tue Nov 25 13:14:57 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.1+20251124.253fbe4c:
+- controller: Ask attribute manager to purge fenced nodes' attributes
+- controller: Don't purge transient attributes on node loss (gh#ClusterLabs/pacemaker#3991)
+- controller: Allow purging node attrs without cache removal
+- controller: don't need to erase node attributes for remote nodes
+- pacemaker-attrd: Drop "requesting shutdown" code
+- pacemaker-attrd: Wipe CIB along with memory (gh#ClusterLabs/pacemaker#3991)
+
+-------------------------------------------------------------------
+Thu Nov 20 12:56:38 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.1+20251119.6fa73e16:
+- libcrmservice: Correctly check the return value of stat.
+- fencer: Improve validation of pcmk_host_map
+- fencer: Drop support for escaped characters in pcmk_host_map
+- fencer: Drop unhelpful message from build_port_aliases()
+- fencer: Fix ISO 8601 interval parsing in pcmk_delay_base
+- daemons: When checking for duplicate messages, we might be prepending.
+- daemons: Don't add repeated I_PE_CALC messages to the fsa queue.
+- scheduler:	promoted state with promoted state with attribute
+- fencer: Log an error for empty pcmk_delay_base mapping key
+- fencer: Fix a format string
+- libcrmservice: List only the requested directory contents
+- build, libcrmservice: initdir must be a single directory
+- libcrmservice: Fix memory leaks when listing directory contents
+
+- Rebase:
+  * bug-806256_pacemaker-log-level-notice.patch
+  * bug-728579_pacemaker-stonith-dev-id.patch
+
+-------------------------------------------------------------------
+Wed Nov 05 15:56:21 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.1+20251105.192f0bc60:
+- cts: Add cts-lab --nic option used for generated IP address resources (gh#ClusterLabs/pacemaker#3982)
+
+-------------------------------------------------------------------
+Tue Nov 04 10:32:17 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.1+20251103.2d047bb45:
+- libcrmcommon: Loop on EAGAIN in mainloop_gio_callback.
+- daemons: Get rid of some logged warnings in execd.
+- libcrmcommon: Bump feature set to 3.20.5
+- libcrmcommon: Deprecate stop-removed-resources cluster property
+- libcrmcommon: Deprecate cancel-removed-actions cluster property
+- libpe_status: Warn if concurrent-fencing is false
+- libcrmcommon: Deprecate enable-startup-probes cluster property
+- libcrmcommon: Rename stop-removed-actions to cancel-removed-actions
+- libcrmcommon: Deprecate cluster-ipc-limit cluster option
+
+-------------------------------------------------------------------
+Fri Sep 26 09:15:47 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.1+20250925.efd4dc5283:
+- cts-cli: Escape special characters in the path for a pattern (gh#ClusterLabs/pacemaker#3971)
+
+-------------------------------------------------------------------
+Fri Sep 19 15:28:11 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.1+20250919.1ec160a815:
+- tools: Prevent crm_verify from stating configuration is "invalid" if it only has warnings (bsc#1250349)
+
+-------------------------------------------------------------------
+Thu Sep 18 07:41:41 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.1+20250917.3319ff40fa:
+- tools: Handle large timeouts correctly in crm_resource --wait
+- controller: NULL-check lrm_state before dereferencing it
+- tools: cibsecret should work with CIB_file set.
+- controller: Avoid "stonith" in log messages
+- tools: Use "fencing" in stonith_admin/crm_resource
+- libpe_status: Use "fencing" instead of "STONITH" in some logs
+- libcrmcommon: New "fencing-reaction" cluster property
+- libcrmcommon: New "fencing-watchdog-timeout" cluster property
+- libcrmcommon: New "fencing-timeout" cluster property
+- libcrmcommon: New "fencing-max-attempts" cluster property
+- libcrmcommon: New "fencing-action" cluster property
+- libcrmcommon: New "fencing-enabled" cluster property
+- libcrmcommon: Update documentation for cluster-ipc-limit.
+- libcrmcommon: Be more lenient in evicting IPC clients.
+- tools: Deprecate iso8601 command line tool
+- libcrmcommon: Show deprecated option aliases in outputs
+- libcrmcommon: Parse iso8601 strings according to spec.
+- fencer: Prevent unsigned int overflow in get_action_timeout()
+- libcrmcommon: Fix integer overflow of alert timeouts
+- libcrmcommon: Ensure stonith watchdog timeout is in long range
+- controller, fencer: Ignore negative/unparsable pcmk_monitor_timeout
+- cts: Drop cts script
+- tools: Drop crm_report -T/--cts and --cts-log options
+- schemas: Deprecate "orphaned" attribute
+- schemas: resource XML element has new "removed" attribute
+- schemas: Deprecate "orphan" attribute in crm_mon and crm_simulate
+- schemas: resource_history XML element has new "removed" attribute
+- libcrmcommon: Fix a segfault in internal_ipc_get_reply. (bsc#1255371, gh#ClusterLabs/pacemaker#3949)
+- libcrmcommon: New "stop-removed-resources" cluster property
+- libcrmcommon: New "stop-removed-actions" cluster property
+- sysconfig: Remove --leak-check=full from default VALGRIND_OPTS.
+- tools: Hide crm_mon --as-xml option
+- crm_mon: Deprecate --pid-file/-p option
+- tools: Fix CIB validation in crm_mon.c
+- libcib, libcrmcommon: Improve a couple of log messages
+- libcrmcommon: pcmk__quote_cmdline() returns valid shell string
+- libcrmcommon: Bump feature set to 3.20.4
+- schemas: Add a schema for cibadmin
+- tools: Use formatted output in cibadmin
+- tools: Formatted output for cibadmin --show-access --query
+- tools: Formatted output for cibadmin --node-path
+- tools: Basic cibadmin XML formatted output
+- tools: Formatted output for cibadmin --empty
+- tools: Formatted output for cibadmin --md5-sum{,-versioned}
+- tools: Deprecate cibadmin -e/--node-path option
+- libcrmcommon: bump feature set to 3.20.3
+- schemas: Add a schema for cibsecret.
+- libcrmcommon: Return a value for md5sum of empty input.
+- tools: Remove the shell version of cibsecret.
+
+- Rebase:
+  * bug-806256_pacemaker-log-level-notice.patch
+  * bug-728579_pacemaker-stonith-dev-id.patch
+
+-------------------------------------------------------------------
+Fri Aug 08 17:43:52 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.1+20250808.78542884ac:
+- tools: Improve some cibadmin error messages
+- tools: cibadmin renders ACLs only when output is cib element
+- tools: cibadmin now errors if unable to compute md5 sum
+- libcib, tools: Resolve cibadmin TODO re: ACL rendering and input
+- controller: Avoid crash due to GSource double-free
+- tools: Deprecate cibadmin -N/--node option
+- tools: Drop "Digest: " from cibadmin --md5-sum stderr
+- tools: cibadmin ignores --node-path for non-XPath-query command
+- tools: Change exit codes for failure to create cib_t object
+- libcib: Fix cib__signon_retry() return code
+- various: Avoid warnings about a negative value for `stonith-watchdog-timeout` (bsc#1246622, gh#ClusterLabs/pacemaker#3922)
+- tools: Deprecate cibadmin --show-access as non-privileged user
+- tools: Don't require --force for non-privileged cibadmin ACLs
+- tools: Default cibadmin command is now --query
+- tools: Deprecate current input source precedence in cibadmin
+- tools: Drop cibadmin --extended-version/-! option
+- libcrmcommon: Bump feature set to 3.20.2
+- schemas: Add a schema for crm_diff
+- tools: Use formatted output in crm_diff.c
+- libcrmcommon: Standardize remote environment variable parsing
+- libcrmcommon: Allow empty string values in pcmk__scan_nvpair()
+- libcrmcommon: Keep trailing newlines in pcmk__scan_nvpair()
+- fencer: Fix fence delay range off-by-one
+- daemons: Return CRM_EX_PROTOCOL when ACKing an unknown request.
+- daemons: Correct result error string on unknown IPC messages.
+- daemons: Add a return to do_pe_invoke_callback.
+- tools: Deprecate crm_diff --stdin
+- tools: Improve error handling in crm_diff.c
+- tools: Be stricter about crm_diff --cib/--no-version
+- libcrmcommon: Don't require version info when applying CIB patches
+- agents: Error check calling attrd_updater in HealthSMART.
+- agents: Error check calling attrd_updater in HealthIOWait.
+- agents: Error out if CPU I/O wait time isn't available.
+- agents: Error check calling attrd_updater in HealthCPU.
+- agents: Error out if CPU idleness isn't available.
+- daemons: Don't log the unresponsive message for a daemon we killed
+- controller: Avoid blocking wait in controller for CIB re-request
+- libcrmcommon: Increase poll() timeout to 5s for liveness checks on sub-daemons (bsc#1239533, gh#ClusterLabs/pacemaker#3900)
+
+- Rebase:
+  * bug-728579_pacemaker-stonith-dev-id.patch
+
+-------------------------------------------------------------------
 Thu Aug 07 17:54:32 UTC 2025 - Yan Gao <ygao@suse.com>
 
 - Update to version 3.0.1+20250807.16e74fc4da (Pacemaker-3.0.1):

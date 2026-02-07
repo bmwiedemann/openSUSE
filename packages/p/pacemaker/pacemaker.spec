@@ -35,6 +35,13 @@
 # Define conditionals so that "rpmbuild --with <feature>" and
 # "rpmbuild --without <feature>" can enable and disable specific features
 
+## Use systemd to create users/groups as required
+%if (0%{?suse_version} >= 1600)
+%bcond_without use_sysusers
+%else
+%bcond_with use_sysusers
+%endif
+
 ## Add option for Linux-HA (stonith/external) fencing agent support
 %if 0%{?suse_version} < 1600
 %bcond_without linuxha
@@ -121,7 +128,7 @@
 %define with_regression_tests   0
 
 Name:           pacemaker
-Version:        3.0.1+20250807.16e74fc4da
+Version:        3.0.1+20251208.f7f28ab3
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
@@ -129,7 +136,10 @@ License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Clustering/HA
 URL:            https://www.clusterlabs.org/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        crm_report.in
+Source1:        %{name}.sysusers
+Source2:        %{name}-cli.tmpfiles.conf
+Source3:        %{name}.tmpfiles.conf
+Source4:        crm_report.in
 Source100:      pacemaker.rpmlintrc
 Patch1:         bug-806256_pacemaker-log-level-notice.patch
 Patch2:         bug-728579_pacemaker-stonith-dev-id.patch
@@ -160,6 +170,9 @@ BuildRequires:  python3-setuptools
 # Required for agent_config.h which specifies the correct scratch directory
 BuildRequires:  resource-agents
 BuildRequires:  sed
+%if %{with use_sysusers}
+BuildRequires:  sysuser-tools
+%endif
 BuildRequires:  pkgconfig(bzip2)
 # Required for "make check"
 BuildRequires:  pkgconfig(cmocka) >= 1.1.0
@@ -258,6 +271,9 @@ Summary:        Core Pacemaker libraries
 Group:          System/Libraries
 Requires(pre):  shadow
 Requires:       %{name}-schemas = %{version}-%{release}
+%if %{with use_sysusers}
+%?sysusers_requires
+%endif
 # sbd 1.4.0+ supports the libpe_status API for pe_working_set_t
 # sbd 1.4.2+ supports startup/shutdown handshake via pacemakerd-api
 #            and handshake defaults to enabled for rhel builds
@@ -443,6 +459,10 @@ pushd python
 %py3_build
 popd
 
+%if %{with use_sysusers}
+%sysusers_generate_pre %{SOURCE1} %{name} %{name}.conf
+%endif
+
 %install
 %make_install
 
@@ -454,6 +474,11 @@ rm -fr %{buildroot}/etc/sysconfig
 install -d -m755 %{buildroot}%{_fillupdir}
 install -m 644 etc/sysconfig/pacemaker %{buildroot}%{_fillupdir}/sysconfig.pacemaker
 install -m 644 etc/sysconfig/crm_mon %{buildroot}%{_fillupdir}/sysconfig.crm_mon
+
+%if (0%{?suse_version} >= 1600)
+install -d -m 0755 %{buildroot}%{_distconfdir}/logrotate.d
+install -p -D -m 0644 etc/logrotate.d/%{name} %{buildroot}%{_distconfdir}/logrotate.d/%{name}
+%endif
 
 %if %{with nls}
 %find_lang %{name}
@@ -468,8 +493,20 @@ ln -s service %{buildroot}%{_sbindir}/rcpacemaker
 ln -s service %{buildroot}%{_sbindir}/rcpacemaker_remote
 ln -s service %{buildroot}%{_sbindir}/rccrm_mon
 
+# sysusers.d
+%if %{with use_sysusers}
+install -p -D -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/%{name}.conf
+%endif
+
+# tmpfiles.d
+%if %{defined _tmpfilesdir}
+install -d -m 0755 %{buildroot}/%{_tmpfilesdir}
+install -p -D -m 0644 %{SOURCE2} %{buildroot}/%{_tmpfilesdir}/%{name}-cli.conf
+install -p -D -m 0644 %{SOURCE3} %{buildroot}/%{_tmpfilesdir}/%{name}.conf
+%endif
+
 mv %{buildroot}%{_sbindir}/crm_report %{buildroot}%{_sbindir}/crm_report.pacemaker
-install -m 755 %{SOURCE1} %{buildroot}%{_sbindir}/crm_report
+install -m 755 %{SOURCE4} %{buildroot}%{_sbindir}/crm_report
 
 %if 0%{?suse_version} < 1600
 ln -s ../heartbeat/NodeUtilization %{buildroot}%{ocf_root}/resource.d/pacemaker/
@@ -491,6 +528,10 @@ make %{_smp_mflags} check
 %service_add_pre pacemaker.service
 
 %post
+%if %{defined _tmpfilesdir}
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
+%endif
+
 %service_add_post pacemaker.service
 
 %preun
@@ -515,6 +556,10 @@ make %{_smp_mflags} check
 %service_add_pre crm_mon.service
 
 %post cli
+%if %{defined _tmpfilesdir}
+%tmpfiles_create %{_tmpfilesdir}/%{name}-cli.conf
+%endif
+
 if [ ! -e %{_sysconfdir}/sysconfig/pacemaker ]; then
     %fillup_only -n pacemaker
 fi
@@ -533,16 +578,35 @@ if [ "$1" -eq "2" ]; then
     } >/dev/null 2>/dev/null || :
 fi
 
+%if (0%{?suse_version} >= 1600)
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in logrotate.d/%{name} ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
+
+%if (0%{?suse_version} >= 1600)
+%posttrans cli
+# Migration to /usr/etc, restore just created .rpmsave
+for i in logrotate.d/%{name} ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
+
 %preun cli
 %service_del_preun crm_mon.service
 
 %postun cli
 %service_del_postun crm_mon.service
 
+%if %{with use_sysusers}
+%pre libs -f %{name}.pre
+%else
 %pre libs
 getent group %{gname} >/dev/null || groupadd -r %{gname} -g %{hacluster_id}
 getent passwd %{uname} >/dev/null || useradd -r -g %{gname} -u %{hacluster_id} -d %{_var}/lib/pacemaker -s /sbin/nologin -c "cluster user" %{uname}
 exit 0
+%endif
 
 %if %{defined ldconfig_scriptlets}
 %ldconfig_scriptlets libs
@@ -604,14 +668,24 @@ fi
 %license COPYING
 %doc ChangeLog.md
 
+%if %{defined _tmpfilesdir}
+%{_tmpfilesdir}/%{name}.conf
+%else
 %dir %attr (750, %{uname}, %{gname}) %{_var}/lib/pacemaker/cib
 %dir %attr (750, %{uname}, %{gname}) %{_var}/lib/pacemaker/pengine
+%endif
+
 %{ocf_root}/resource.d/pacemaker/controld
 %{ocf_root}/resource.d/pacemaker/remote
 
 %files cli
 %dir %attr (750, root, %{gname}) %{_sysconfdir}/pacemaker
+%if (0%{?suse_version} >= 1600)
+%{_distconfdir}/logrotate.d/%{name}
+%exclude %{_sysconfdir}/logrotate.d/%{name}
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/pacemaker
+%endif
 %{_unitdir}/crm_mon.service
 %{_sbindir}/rccrm_mon
 %{_sbindir}/attrd_updater
@@ -653,8 +727,8 @@ fi
 %dir %{ocf_root}/resource.d
 %{ocf_root}/resource.d/pacemaker
 
-%config(noreplace) %{_fillupdir}/sysconfig.pacemaker
-%config(noreplace) %{_fillupdir}/sysconfig.crm_mon
+%{_fillupdir}/sysconfig.pacemaker
+%{_fillupdir}/sysconfig.crm_mon
 %{_mandir}/man7/*pacemaker*
 %exclude %{_mandir}/man7/pacemaker-based.*
 %exclude %{_mandir}/man7/pacemaker-controld.*
@@ -675,13 +749,20 @@ fi
 %license COPYING
 %doc ChangeLog.md
 
+%if %{defined _tmpfilesdir}
+%{_tmpfilesdir}/%{name}-cli.conf
+%else
 %dir %attr (750, %{uname}, %{gname}) %{_var}/lib/pacemaker
 %dir %attr (750, %{uname}, %{gname}) %{_var}/lib/pacemaker/blackbox
 %dir %attr (750, %{uname}, %{gname}) %{_var}/lib/pacemaker/cores
 %dir %attr (770, %{uname}, %{gname}) %{_var}/log/pacemaker
 %dir %attr (770, %{uname}, %{gname}) %{_var}/log/pacemaker/bundles
+%endif
 
 %files libs %{?with_nls:-f %{name}.lang}
+%if %{with use_sysusers}
+%{_sysusersdir}/%{name}.conf
+%endif
 %{_libdir}/libcib.so.*
 %{_libdir}/liblrmd.so.*
 %{_libdir}/libcrmservice.so.*
