@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Feb  6 13:59:11 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix parsing of the answers file (bsc#1257400).
+
+-------------------------------------------------------------------
+Fri Feb  6 07:38:38 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Allow loading a profile with no product (bsc#1257067 and bsc#1257082).
+- Make the bootloader proposal after the storage one is ready (bsc#1257530).
+- Run pre-scripts only once to prevent potential infinite loops.
+
+-------------------------------------------------------------------
+Thu Feb  5 06:46:46 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Sort the list of languages, keymaps and timezones (bsc#1257497).
+
+-------------------------------------------------------------------
+Wed Feb  4 11:37:18 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix usage of local repositories on full medium
+  (bsc#1257475)
+
+-------------------------------------------------------------------
+Tue Feb  3 07:23:18 UTC 2026 - Knut Anderssen <kanderssen@suse.com>
+
+- Correct the /etc/resolv.conf link in the chroot to
+  /run/NetworkManager/resolv.conf (bsc#257468).
+
+-------------------------------------------------------------------
 Mon Feb  2 11:56:24 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
 
 - Fixed opening the SSH firewall port when the firewall is not
@@ -28,7 +57,7 @@ Fri Jan 30 11:00:08 UTC 2026 - Knut Anderssen <kanderssen@suse.com>
 Thu Jan 29 22:30:05 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Do not export neither network/connections nor network/state when
-  they are None (related to bsc#1257400).
+  they are None (related to bsc#1257230).
 
 -------------------------------------------------------------------
 Thu Jan 29 21:10:18 UTC 2026 - Josef Reidinger <jreidinger@suse.com>

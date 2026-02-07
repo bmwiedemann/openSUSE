@@ -657,4 +657,26 @@
   (gh#agama-project/agama#3069).</comment>
     <requestid>1330409</requestid>
   </revision>
+  <revision rev="36" vrev="36">
+    <srcmd5>45afa86653b633f51cdbdde3b6e3f521</srcmd5>
+    <version>0</version>
+    <time>1770474807</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix parsing of the answers file (bsc#1257400).
+
+- Allow loading a profile with no product (bsc#1257067 and bsc#1257082).
+- Make the bootloader proposal after the storage one is ready (bsc#1257530).
+- Run pre-scripts only once to prevent potential infinite loops.
+
+- Sort the list of languages, keymaps and timezones (bsc#1257497).
+
+- Fix usage of local repositories on full medium
+  (bsc#1257475)
+
+- Correct the /etc/resolv.conf link in the chroot to
+  /run/NetworkManager/resolv.conf (bsc#257468).
+
+  they are None (related to bsc#1257230).</comment>
+    <requestid>1331727</requestid>
+  </revision>
 </revisionlist>
