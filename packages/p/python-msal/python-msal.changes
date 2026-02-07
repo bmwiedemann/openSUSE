@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Feb  6 09:38:14 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.35.0b1
+  * The managed identity code path no longer has a dependency on the
+    socket.getfqdn(). No API change is needed. Existing MSAL-powered
+    apps will automatically pick up this new behavior.
+  * This version of MSAL Python will pick up PyMsalRuntime 0.20.*.
+    No API change is needed. Existing MSAL-powered apps will
+    automatically pick up this new behavior.
+  * The thumbprint name-value pair in the client_credential parameter
+    becomes optional now. See API docs for usage.
+  * ROPC deprecation by @Ugonnaak1 in (#855)
+  * Test case for token response scope differing from token request
+    scope by @rayluo in (#856)
+  * Update pymsalruntime version range to handle the latest 0.20.0 release
+    by @DharshanBJ in (#858)
+  * Document how to enable sha256 for client credential by @rayluo in (#833)
+  * Remove the reliance on getfqdn() by @rayluo in (#859)
+  * Thumbprint for certificate made optional by @vi7us in (#835)
+  * Support Python 3.14 by @rayluo in (#861)
+  * Explicitly remove issuer from the OIDC discovery response
+    by @rayluo in (#863)
+  * Suppress CodeQL warning by @bgavrilMS in (#867)
+- Override upstream version with 1.35.0~b1
+
+-------------------------------------------------------------------
 Wed Oct 22 09:59:15 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.34.0
