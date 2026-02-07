@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb  7 11:28:27 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260206:
+  * Add IARU R1 VHF/UHF bands to bandplan
+  * kguv980p: Fix string comparison for power==None
+  * Updated Italian, Spanish translations
+
+-------------------------------------------------------------------
 Sun Feb 01 10:20:58 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260130:
