@@ -8,4 +8,19 @@
 - Winetricks and wine-staging have been removed as dependencies, as they are no longer needed</comment>
     <requestid>1330644</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>678af530a3437cd7ffacf8e26ba0d832</srcmd5>
+    <version>1.14.1</version>
+    <time>1770474813</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 1.14.1
+- Upstream changes for 1.14.1:
+  * Updated Portuguese translation
+  * Added global settings for new entries
+  * Added a message when SLR download fails due to connection error
+  * fix: allow protonfixes for steam games
+  * Support running games on Asahi Linux
+  * Updated Dutch translation</comment>
+    <requestid>1331738</requestid>
+  </revision>
 </revisionlist>

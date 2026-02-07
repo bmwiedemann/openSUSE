@@ -23,19 +23,16 @@
 # Force python3_sitelib to use 3.11
 %global __python3 /usr/bin/python3.11
 %global python3_sitelib /usr/lib/python3.11/site-packages
-
-# Set Group (deprecated in newer versions)
-Group:          System/Emulators/PC
 %endif
 
 Name:           faugus-launcher
-Version:        1.13.11
+Version:        1.14.1
 Release:        0
 Summary:        A simple and lightweight app for running Windows games using UMU-Launcher
 
 License:        MIT
 URL:            https://github.com/Faugus/faugus-launcher
-
+Group:          System/Emulators/PC
 # Get the source from tar_scm
 Source0:        %{name}-%{version}.tar.xz
 # Exclusions

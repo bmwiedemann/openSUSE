@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 06 16:27:52 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+- Bump to version 1.14.1
+- Upstream changes for 1.14.1:
+  * Updated Portuguese translation
+  * Added global settings for new entries
+  * Added a message when SLR download fails due to connection error
+  * fix: allow protonfixes for steam games
+  * Support running games on Asahi Linux
+  * Updated Dutch translation
+
+-------------------------------------------------------------------
 Mon Feb  2 22:11:41 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Only install gaming selinux policy on SLE +16 / Leap +16 / Tumbleweed / Slowroll 
