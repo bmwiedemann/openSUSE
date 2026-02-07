@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan 16 00:16:34 UTC 2026 - Bret Towe <bret.towe@gmail.com>
+
+- update spec file to use release source tarball
+- update to version 1.8.3
+  * Add Hash::as_slice.
+  * Update to the 2024 Edition and bump the MSRV to 1.85.
+  * Fix a set of Miri failures in the intrinsics implementations. We were
+     computing (though not dereferencing) an out-of-bounds pointer using
+     add rather than wrapping_add. I'm not aware of any observable
+     consequences of this bug. See #507.
+  * CPU feature detection on x86/x86-64 no longer requires the std Cargo
+     feature in the blake3 crate.
+  * Build fixes in the C implementation for macOS and Cygwin, and various
+  *  improvements to the CMake build.
+- updates from version 1.8.2
+  * Fixes to the CMake build, particularly around the new TBB feature.
+
+-------------------------------------------------------------------
 Sat Apr  5 01:17:04 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 1.8.1:
