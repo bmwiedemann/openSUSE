@@ -18,7 +18,7 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           sdbootutil
-Version:        1+git20260130.2ae660a
+Version:        1+git20260206.54f4a16
 Release:        0
 Summary:        Bootctl wrapper for BLS boot loaders
 License:        MIT
@@ -254,6 +254,7 @@ fi
 %license LICENSE
 %{_bindir}/%{name}
 %{_unitdir}/%{name}-update-predictions.service
+%dir %{_sharedstatedir}/%{name}
 %{_tmpfilesdir}/%{name}.conf
 %dir %{_libexecdir}/%{name}
 %{_libexecdir}/%{name}/uhmac

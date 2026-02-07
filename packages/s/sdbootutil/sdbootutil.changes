@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 06 10:20:57 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260206.54f4a16:
+  * Declare /var/lib/sdbootutil in the spec file (bsc#1256775)
+
+-------------------------------------------------------------------
 Fri Jan 30 13:35:54 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20260130.2ae660a:
