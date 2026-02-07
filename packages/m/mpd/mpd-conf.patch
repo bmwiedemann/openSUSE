@@ -1,6 +1,6 @@
-diff -Pdpru mpd-0.24.5.orig/doc/mpdconf.example mpd-0.24.5/doc/mpdconf.example
---- mpd-0.24.5.orig/doc/mpdconf.example	2025-07-31 22:58:34.000000000 +0300
-+++ mpd-0.24.5/doc/mpdconf.example	2025-08-14 14:24:35.546964116 +0300
+diff -Pdpru mpd-0.24.8.orig/doc/mpdconf.example mpd-0.24.8/doc/mpdconf.example
+--- mpd-0.24.8.orig/doc/mpdconf.example	2026-01-26 16:50:08.000000000 +0300
++++ mpd-0.24.8/doc/mpdconf.example	2026-02-07 02:37:02.977081403 +0300
 @@ -19,7 +19,7 @@
  # format. This setting defaults to playlist saving being disabled.
  #
@@ -53,24 +53,16 @@ diff -Pdpru mpd-0.24.5.orig/doc/mpdconf.example mpd-0.24.5/doc/mpdconf.example
  #
  ###############################################################################
  
-@@ -74,14 +74,14 @@
+@@ -74,7 +74,7 @@
  # initialization. This setting is disabled by default and MPD is run as the
  # current user.
  #
 -#user				"nobody"
 +#user				"mpd"
  #
- # This setting specifies the group that MPD will run as. If not specified
- # primary group of user specified with "user" setting will be used (if set).
- # This is useful if MPD needs to be a member of group such as "audio" to
- # have permission to use sound card.
- #
--#group				"nogroup"
-+#group				"audio"
- #
  # This setting sets the address for the daemon to listen on. Careful attention
  # should be paid if this is assigned to anything other than the default, any.
-@@ -93,7 +93,7 @@
+@@ -86,7 +86,7 @@
  #
  # And for Unix Socket
  #bind_to_address		"$XDG_RUNTIME_DIR/mpd/socket"
@@ -79,7 +71,7 @@ diff -Pdpru mpd-0.24.5.orig/doc/mpdconf.example mpd-0.24.5/doc/mpdconf.example
  #
  # This setting is the TCP port that is desired for the daemon to get assigned
  # to.
-@@ -104,7 +104,7 @@
+@@ -97,7 +97,7 @@
  # troubleshooting. Available setting arguments are "notice", "info", "verbose",
  # "warning" and "error".
  #
@@ -88,7 +80,7 @@ diff -Pdpru mpd-0.24.5.orig/doc/mpdconf.example mpd-0.24.5/doc/mpdconf.example
  #
  # Setting "restore_paused" to "yes" puts MPD into pause mode instead
  # of starting playback after startup.
-@@ -128,7 +128,7 @@
+@@ -121,7 +121,7 @@
  # This setting enables automatic update of MPD's database when files in
  # music_directory are changed.  (Linux only)
  #
@@ -97,7 +89,7 @@ diff -Pdpru mpd-0.24.5.orig/doc/mpdconf.example mpd-0.24.5/doc/mpdconf.example
  #
  # Limit the depth of the directories being watched, 0 means only watch
  # the music directory itself.  There is no limit by default.
-@@ -158,7 +158,7 @@
+@@ -151,7 +151,7 @@
  # If this setting is set to "yes", service information will be published with
  # Zeroconf / Avahi.
  #
@@ -106,23 +98,22 @@ diff -Pdpru mpd-0.24.5.orig/doc/mpdconf.example mpd-0.24.5/doc/mpdconf.example
  #
  # The argument to this setting will be the Zeroconf / Avahi unique name for
  # this MPD server on the network. %h will be replaced with the hostname.
-@@ -225,11 +225,11 @@ input {
+@@ -218,11 +218,11 @@ input {
  #
  #audio_output {
  #	type		"alsa"
 -#	name		"My ALSA Device"
 -##	device		"hw:0,0"	# optional
--##	mixer_type      "hardware"	# optional
 +#	name		"ALSA Device"
 +##	device		"plug:plugequal"	# optional
-+##	mixer_type	"hardware"	# optional
+ ##	mixer_type      "hardware"	# optional
  ##	mixer_device	"default"	# optional
 -##	mixer_control	"PCM"		# optional
 +##	mixer_control	"Master"		# optional
  ##	mixer_index	"0"		# optional
  #}
  #
-@@ -249,14 +249,14 @@ input {
+@@ -242,14 +242,14 @@ input {
  #audio_output {
  #	type		"shout"
  #	encoder		"vorbis"		# optional
@@ -141,7 +132,7 @@ diff -Pdpru mpd-0.24.5.orig/doc/mpdconf.example mpd-0.24.5/doc/mpdconf.example
  ##	protocol	"icecast2"		# optional
  ##	user		"source"		# optional
  ##	description	"My Stream Description"	# optional
-@@ -271,37 +271,37 @@ input {
+@@ -264,37 +264,37 @@ input {
  #
  #audio_output {
  #	type		"recorder"
@@ -180,10 +171,11 @@ diff -Pdpru mpd-0.24.5.orig/doc/mpdconf.example mpd-0.24.5/doc/mpdconf.example
 -#audio_output {
 -#	type		"pulse"
 -#	name		"My Pulse Output"
+-##	server		"remote_server"		# optional
 +audio_output {
 +	type		"pulse"
 +	name		"Pulse Output"
- ##	server		"remote_server"		# optional
++##	server		"127.0.0.1"		# optional
  ##	sink		"remote_server_sink"	# optional
  ##	media_role	"media_role"		#optional
 -#}
@@ -191,7 +183,7 @@ diff -Pdpru mpd-0.24.5.orig/doc/mpdconf.example mpd-0.24.5/doc/mpdconf.example
  #
  # An example of a winmm output (Windows multimedia API).
  #
-@@ -364,7 +364,7 @@ input {
+@@ -357,7 +357,7 @@ input {
  #	command		"AudioCompress -m | aplay -f cd 2>/dev/null"
  ## Or to send raw PCM stream through PCM:
  #	command		"nc example.org 8765"

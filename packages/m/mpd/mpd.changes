@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb  6 22:52:20 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 0.24.8
+  * Changed mpd-conf.patch
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.24.8/NEWS
+  * input: cdio_paranoia: fixed parsing of absolute device paths
+  * decoder: ffmpeg: allow seeking only if both AVFormatContext and
+    InputStream allow it
+  * playlist: cue: strip UTF-8 byte order marker
+  * disabled the iowait state for io_uring
+  * fixed GCC 16 compiler warning
+  * fixed spurious linker failures
+  * fixed build with glibc 2.43 and liburing < 2.4
+
+-------------------------------------------------------------------
 Mon Nov  3 18:00:22 UTC 2025 - llyyr <llyyr@yukari.in>
 
 - Updated to 0.24.6
