@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb  6 15:06:40 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 4.25.1:
+  * cmd_floating: Fix crash when running empty workspace
+  * Fix i3bar workspace buttons for primary screen
+  * Fix ctype(3) function arguments.
+  * use setlocale(3) (NetBSD lacks uselocale(3))
+
+-------------------------------------------------------------------
 Sat Jan 24 00:58:09 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to 4.25:
