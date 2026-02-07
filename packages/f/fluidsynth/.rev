@@ -686,4 +686,12 @@
     <comment>Add CVE reference in changelog</comment>
     <requestid>1326785</requestid>
   </revision>
+  <revision rev="86" vrev="3">
+    <srcmd5>502f210396199d0550222c41a3350c93</srcmd5>
+    <version>2.5.2</version>
+    <time>1770474800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1331710</requestid>
+  </revision>
 </revisionlist>
