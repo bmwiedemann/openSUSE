@@ -5,6 +5,5 @@
 tree and renders the resulting pages to one of the following output
 formats: PDF (primary output target), PCL, PS, SVG, XML (area tree
 representation), Print, AWT, MIF, and TXT.</description>
-  <devel project="Java:packages" package="xmlgraphics-fop"/>
   <url>http://xml.apache.org/fop/</url>
 </package>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  6 14:08:26 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch
+  * ioexception.patch
+    + fix build with commons-io >= 2.19
+
+-------------------------------------------------------------------
 Wed Mar  5 17:50:56 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

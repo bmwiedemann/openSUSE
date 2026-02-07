@@ -1,0 +1,36 @@
+diff -urEbwB fop-2.10.orig/fop-core/src/main/java/org/apache/fop/pdf/PDFOutputIntent.java fop-2.10/fop-core/src/main/java/org/apache/fop/pdf/PDFOutputIntent.java
+--- fop-2.10.orig/fop-core/src/main/java/org/apache/fop/pdf/PDFOutputIntent.java	2026-02-06 15:00:51.925506699 +0100
++++ fop-2.10/fop-core/src/main/java/org/apache/fop/pdf/PDFOutputIntent.java	2026-02-06 15:01:50.805544209 +0100
+@@ -130,7 +130,6 @@
+     /** {@inheritDoc} */
+     public byte[] toPDF() {
+         ByteArrayOutputStream bout = new ByteArrayOutputStream(128);
+-        try {
+             bout.write(encode("<<\n"));
+             bout.write(encode("/Type /OutputIntent\n"));
+ 
+@@ -165,9 +164,6 @@
+             }
+ 
+             bout.write(encode(">>"));
+-        } catch (IOException ioe) {
+-            log.error("Ignored I/O exception", ioe);
+-        }
+         byte[] bytes = bout.toByteArray();
+         IOUtils.closeQuietly(bout);
+         return bytes;
+diff -urEbwB fop-2.10.orig/fop-core/src/main/java/org/apache/fop/render/pdf/AbstractImageAdapter.java fop-2.10/fop-core/src/main/java/org/apache/fop/render/pdf/AbstractImageAdapter.java
+--- fop-2.10.orig/fop-core/src/main/java/org/apache/fop/render/pdf/AbstractImageAdapter.java	2026-02-06 15:00:51.933619573 +0100
++++ fop-2.10/fop-core/src/main/java/org/apache/fop/render/pdf/AbstractImageAdapter.java	2026-02-06 15:05:54.463586122 +0100
+@@ -261,11 +261,7 @@
+         isDeviceGray = Arrays.equals(reds, blues) && Arrays.equals(blues, greens);
+         if  (isDeviceGray) {
+             indexed.add(new PDFName("DeviceGray"));
+-            try {
+                 baout.write(blues);
+-            } catch (IOException e) {
+-                e.printStackTrace();
+-            }
+         }  else {
+             indexed.add(new PDFName(toPDFColorSpace(icm.getColorSpace()).getName()));
+             for (int i = 0; i < c; i++) {

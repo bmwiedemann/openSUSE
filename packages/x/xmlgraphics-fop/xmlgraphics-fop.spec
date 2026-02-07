@@ -43,13 +43,14 @@ Patch4:         encoding.patch
 Patch5:         reproducible-build-manifest.patch
 Patch6:         fop-2.10-QDox-2.0.patch
 Patch7:         reproducible.patch
-Patch8:         java8-compatibility.patch
+Patch8:         ioexception.patch
+Patch9:         java8-compatibility.patch
 BuildRequires:  ant >= 1.9.15
 BuildRequires:  apache-pdfbox >= 2.0.23
 BuildRequires:  bouncycastle
 BuildRequires:  bouncycastle-pkix
 BuildRequires:  bouncycastle-util
-BuildRequires:  commons-io >= 2.4
+BuildRequires:  commons-io >= 2.19
 BuildRequires:  commons-logging
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  jakarta-servlet
@@ -87,8 +88,9 @@ find -name "*.jar" | xargs -t rm
 %patch -P 5 -p1
 %patch -P 6 -p1
 %patch -P 7 -p1
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
 %patch -P 8 -p1
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+%patch -P 9 -p1
 %endif
 
 # Replace keyword "VERSION" in XML files with the real one:
