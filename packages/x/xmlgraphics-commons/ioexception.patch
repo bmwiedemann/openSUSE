@@ -1,0 +1,14 @@
+--- xmlgraphics-commons-2.10/src/main/java/org/apache/xmlgraphics/image/loader/impl/ImageLoaderRawJPEG.java	2026-02-06 14:46:33.830690789 +0100
++++ xmlgraphics-commons-2.10/src/main/java/org/apache/xmlgraphics/image/loader/impl/ImageLoaderRawJPEG.java	2026-02-06 14:52:44.657115723 +0100
+@@ -226,11 +226,7 @@
+             final int alignment = 4;
+             int padding = (alignment - (iccStream.size() % alignment)) % alignment;
+             if (padding != 0) {
+-                try {
+                     iccStream.write(new byte[padding]);
+-                } catch (IOException ioe) {
+-                    throw new IOException("Error while aligning ICC stream: " + ioe.getMessage());
+-                }
+             }
+ 
+             ICC_Profile iccProfile = null;

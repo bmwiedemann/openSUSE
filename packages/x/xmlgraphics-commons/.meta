@@ -7,6 +7,5 @@ separately outside the domains of SVG and XSL-FO. You will
 find components such as a PDF library, an RTF library, 
 Graphics2D implementations that let you generate PDF &amp; 
 PostScript files, and much more.</description>
-  <devel project="Java:packages" package="xmlgraphics-commons"/>
   <url>http://xmlgraphics.apache.org/</url>
 </package>

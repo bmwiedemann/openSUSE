@@ -1,7 +1,7 @@
 #
 # spec file for package xmlgraphics-commons
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,7 @@ URL:            https://xmlgraphics.apache.org/commons/
 Source0:        https://archive.apache.org/dist/xmlgraphics/commons/source/xmlgraphics-commons-%{version}-src.tar.gz
 Patch0:         xmlgraphics-commons-build_xml.patch
 Patch1:         xmlgraphics-commons-jdk10.patch
+Patch2:         ioexception.patch
 BuildRequires:  ant >= 1.6.5
 BuildRequires:  commons-io >= 1.1
 BuildRequires:  commons-logging
@@ -55,6 +56,7 @@ Javadoc for package %{name}.
 %setup -q %{name}-%{version}
 %patch -P 0
 %patch -P 1 -p1
+%patch -P 2 -p1
 find . -name "*.jar" | xargs rm
 
 %build

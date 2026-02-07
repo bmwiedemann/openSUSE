@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb  6 13:57:35 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * ioexception.patch
+    + do not forward IOException that is not thrown with newer
+      commons-io versions
+
+-------------------------------------------------------------------
 Sat Oct 12 16:14:58 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.8
