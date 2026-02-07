@@ -1,0 +1,28 @@
+From 2da6a9442f09b2d83e5c508a4161a6aa586c5598 Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Thu, 15 Jan 2026 11:11:27 +0100
+Subject: [PATCH 2/6] extractor: Bail out on 0-size frame for ID3v2.0 tags
+
+The code handling ID3v2.3 and v2.4 tags already bailed out correctly, do
+this too for 2.0 tags, avoids a possible NULL pointer dereference.
+
+Closes: https://gitlab.gnome.org/GNOME/localsearch/-/issues/426
+---
+ src/extractor/tracker-extract-mp3.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/extractor/tracker-extract-mp3.c b/src/extractor/tracker-extract-mp3.c
+index 3d3abf8e8..81150e6fb 100644
+--- a/src/extractor/tracker-extract-mp3.c
++++ b/src/extractor/tracker-extract-mp3.c
+@@ -2583,6 +2583,7 @@ parse_id3v20 (const gchar          *data,
+ 			break;
+ 		} else if (csize == 0) {
+ 			g_debug ("[v20] Content size was 0, moving to next frame");
++			continue;
+ 		}
+ 
+ 		/* Early versions do not have unsynch per frame */
+-- 
+2.52.0
+

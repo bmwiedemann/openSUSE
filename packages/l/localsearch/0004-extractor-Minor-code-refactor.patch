@@ -1,0 +1,125 @@
+From efb4aa19ec8e4ec172457deea10ebb9a1a3147f1 Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Thu, 15 Jan 2026 11:23:59 +0100
+Subject: [PATCH 4/6] extractor: Minor code refactor
+
+The APIC tag is the same for ID3v2.3 and 2.4 frames, refactor
+its handling to a separate function, so the code is not repeated.
+---
+ src/extractor/tracker-extract-mp3.c | 82 +++++++++++++----------------
+ 1 file changed, 36 insertions(+), 46 deletions(-)
+
+diff --git a/src/extractor/tracker-extract-mp3.c b/src/extractor/tracker-extract-mp3.c
+index e469550b1..ff2a2fb75 100644
+--- a/src/extractor/tracker-extract-mp3.c
++++ b/src/extractor/tracker-extract-mp3.c
+@@ -1565,6 +1565,38 @@ extract_ufid_tags (id3v2tag *tag, const gchar *data, guint pos, size_t csize)
+ 	tag->mb_recording_id = identifier;
+ }
+ 
++static void
++extract_apic_tag (id3v2tag    *tag,
++                  const gchar *data,
++                  guint        pos,
++                  size_t       csize,
++                  id3tag      *info,
++                  MP3Data     *filedata,
++                  gfloat       version)
++{
++	char text_type;
++	const char *mime;
++	char pic_type;
++	const char *desc;
++	guint offset;
++	int mime_len;
++
++	text_type =  data[pos + 0];
++	mime = &data[pos + 1];
++	mime_len = strnlen (mime, csize - 1);
++	pic_type =  data[pos + 1 + mime_len + 1];
++	desc = &data[pos + 1 + mime_len + 1 + 1];
++
++	if (pic_type == 3 || (pic_type == 0 && filedata->media_art_size == 0)) {
++		offset = pos + 1 + mime_len + 2;
++		offset += id3v2_strlen (text_type, desc, csize - offset) + id3v2_nul_size (text_type);
++
++		filedata->media_art_data = &data[offset];
++		filedata->media_art_size = csize - offset;
++		filedata->media_art_mime = mime;
++	}
++}
++
+ static void
+ get_id3v24_tags (id3v24frame           frame,
+                  const gchar          *data,
+@@ -1578,31 +1610,10 @@ get_id3v24_tags (id3v24frame           frame,
+ 	guint pos = 0;
+ 
+ 	switch (frame) {
+-	case ID3V24_APIC: {
++	case ID3V24_APIC:
+ 		/* embedded image */
+-		gchar text_type;
+-		const gchar *mime;
+-		gchar pic_type;
+-		const gchar *desc;
+-		guint offset;
+-		gint mime_len;
+-
+-		text_type =  data[pos + 0];
+-		mime      = &data[pos + 1];
+-		mime_len  = strnlen (mime, csize - 1);
+-		pic_type  =  data[pos + 1 + mime_len + 1];
+-		desc      = &data[pos + 1 + mime_len + 1 + 1];
+-
+-		if (pic_type == 3 || (pic_type == 0 && filedata->media_art_size == 0)) {
+-			offset = pos + 1 + mime_len + 2;
+-			offset += id3v2_strlen (text_type, desc, csize - offset) + id3v2_nul_size (text_type);
+-
+-			filedata->media_art_data = &data[offset];
+-			filedata->media_art_size = csize - offset;
+-			filedata->media_art_mime = mime;
+-		}
++		extract_apic_tag (tag, data, pos, csize, info, filedata, 2.4f);
+ 		break;
+-	}
+ 
+ 	case ID3V24_COMM: {
+ 		gchar *word;
+@@ -1786,31 +1797,10 @@ get_id3v23_tags (id3v24frame           frame,
+ 	guint pos = 0;
+ 
+ 	switch (frame) {
+-	case ID3V24_APIC: {
++	case ID3V24_APIC:
+ 		/* embedded image */
+-		gchar text_type;
+-		const gchar *mime;
+-		gchar pic_type;
+-		const gchar *desc;
+-		guint offset;
+-		gint  mime_len;
+-
+-		text_type =  data[pos + 0];
+-		mime      = &data[pos + 1];
+-		mime_len  = strnlen (mime, csize - 1);
+-		pic_type  =  data[pos + 1 + mime_len + 1];
+-		desc      = &data[pos + 1 + mime_len + 1 + 1];
+-
+-		if (pic_type == 3 || (pic_type == 0 && filedata->media_art_size == 0)) {
+-			offset = pos + 1 + mime_len + 2;
+-			offset += id3v2_strlen (text_type, desc, csize - offset) + id3v2_nul_size (text_type);
+-
+-			filedata->media_art_data = &data[offset];
+-			filedata->media_art_size = csize - offset;
+-			filedata->media_art_mime = mime;
+-		}
++		extract_apic_tag (tag, data, pos, csize, info, filedata, 2.3f);
+ 		break;
+-	}
+ 
+ 	case ID3V24_COMM: {
+ 		gchar *word;
+-- 
+2.52.0
+

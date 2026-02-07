@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb  5 17:39:02 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add fixes for the MP3 extractor:
+  + 0001-extractor-Check-for-valid-offsets-extracting-MP3-per.patch
+    (bsc#1257606 CVE-2026-1764 glgo#GNOME/localsearch#425)
+  + 0002-extractor-Bail-out-on-0-size-frame-for-ID3v2.0-tags.patch
+    (glgo#GNOME/localsearch#426)
+  + 0003-extractor-Check-for-buffer-boundaries-extracting-MP3.patch
+    (bsc#1257607 CVE-2026-1765 glgo#GNOME/localsearch#427)
+  + 0004-extractor-Minor-code-refactor.patch
+  + 0005-extractor-Refactor-fix-handling-of-COMM-tags.patch
+    (bsc#1257608 CVE-2026-1766 glgo#GNOME/localsearch#428)
+  + 0006-extractor-Fix-accounting-of-offsets-within-MP3-perfo.patch
+    (bsc#1257609 CVE-2026-1767 glgo#GNOME/localsearch#429)
+
+-------------------------------------------------------------------
 Wed Dec 10 20:18:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.10.2:

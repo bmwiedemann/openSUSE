@@ -1,7 +1,7 @@
 #
 # spec file for package localsearch
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,18 @@ License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/localsearch
 Source0:        %{name}-%{version}.tar.zst
+# PATCH-FIX-UPSTREAM 0001-extractor-Check-for-valid-offsets-extracting-MP3-per.patch bsc#1257606 mgorse@suse.com -- check for valid offsets extracting MP3 performer tags.
+Patch0:         0001-extractor-Check-for-valid-offsets-extracting-MP3-per.patch
+# PATCH-FIX-UPSTREAM 0002-extractor-Bail-out-on-0-size-frame-for-ID3v2.0-tags.patch mgorse@suse.com -- fix a possible NULL pointer dereference.
+Patch1:         0002-extractor-Bail-out-on-0-size-frame-for-ID3v2.0-tags.patch
+# PATCH-FIX-UPSTREAM 0003-extractor-Check-for-buffer-boundaries-extracting-MP3.patch bsc#1257607 mgorse@suse.com -- check for buffer boundaries extracting MP3 TXX tags.
+Patch2:         0003-extractor-Check-for-buffer-boundaries-extracting-MP3.patch
+# PATCH-FIX-UPSTREAM 0004-extractor-Minor-code-refactor.patch mgorse@suse.com -- minor code refactor.
+Patch3:         0004-extractor-Minor-code-refactor.patch
+# PATCH-FIX-UPSTREAM 0005-extractor-Refactor-fix-handling-of-COMM-tags.patch bsc#1257608 mgorse@suse.com -- refactor/fix handling of COMM tags.
+Patch4:         0005-extractor-Refactor-fix-handling-of-COMM-tags.patch
+# PATCH-FIX-UPSTREAM 0006-extractor-Fix-accounting-of-offsets-within-MP3-perfo.patch bsc#1257609 mgorse@suse.com -- fix accounting of offsets within MP3 performer tags.
+Patch5:         0006-extractor-Fix-accounting-of-offsets-within-MP3-perfo.patch
 BuildRequires:  asciidoc
 BuildRequires:  giflib-devel
 BuildRequires:  intltool >= 0.40.0
