@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  6 12:06:41 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.15.0:
+  * Add support for realloc by adding json_set_alloc_funcs2, json_get_alloc_funcs2
+  * Optimize serialization
+
+-------------------------------------------------------------------
 Thu May 15 14:10:28 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.14.1:

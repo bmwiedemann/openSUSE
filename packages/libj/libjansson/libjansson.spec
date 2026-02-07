@@ -1,7 +1,7 @@
 #
 # spec file for package libjansson
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname   libjansson4
 Name:           libjansson
-Version:        2.14.1
+Version:        2.15.0
 Release:        0
 Summary:        C library for encoding, decoding and manipulating JSON data
 License:        MIT

@@ -152,4 +152,15 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
 </comment>
     <requestid>1277798</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>098fdea2e84e86365e148ac04bfe4bb2</srcmd5>
+    <version>2.15.0</version>
+    <time>1770474786</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.15.0:
+  * Add support for realloc by adding json_set_alloc_funcs2, json_get_alloc_funcs2
+  * Optimize serialization
+</comment>
+    <requestid>1331615</requestid>
+  </revision>
 </revisionlist>
