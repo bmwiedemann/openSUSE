@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Wed Feb  4 19:40:40 UTC 2026 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- Update to 9.10:
+  Bug fixes
+  * cp, install, and mv no longer enter an infinite loop copying sparse files
+    with SEEK_HOLE.  E.g., this was seen on ext4 when copying sparse files with
+    extents that are being actively updated, and copy offload is not being used.
+    [bug introduced in coreutils-9.9]
+  * 'date' no longer fails with format directives that return an empty string.
+    [bug introduced in coreutils-9.9]
+  * 'dd seek=N of=FILE' no longer continues copying, overwriting FILE if it
+    exists, if ftruncate fails.
+    [bug introduced in coreutils-9.1]
+  * du and ls no longer modify strings returned by getenv.
+    POSIX says this is not portable.
+    [bug introduced in fileutils-4.1.6]
+  * 'fmt' now correctly diagnoses read errors.
+    Previously fmt generated a generic error for any read error.
+    [bug introduced in coreutils-9.0]
+  * md5sum --text correctly translates CRLF line endings with the MSYS2 runtime.
+    This also applies to the sha*sum and b2sum utilities.
+    [This bug was present in "the beginning".]
+  * 'numfmt' no longer drops custom suffixes from numbers it cannot fully parse.
+    [bug introduced with numfmt in coreutils-8.21]
+  * 'tail -f --pid' can no longer exit upon receiving a non terminating signal.
+    On older Linux systems it may have failed with "Interrupted system call".
+    [bug introduced in coreutils-7.5]
+  * 'timeout' will now propagate all terminating signals to the monitored command.
+    Previously 'timeout' could have exited and left the monitored command running.
+    [bug introduced with timeout in coreutils-7.0]
+  * wc now documents its --debug option, currently used to
+    indicate the line count acceleration being used.
+    [bug introduced in coreutils-9.0]
+  * When built with `clang -fno-inline`, memory allocation issues are again
+    handled in a defined manner.  Previously programs may have crashed etc.
+    after a failure to allocate memory.
+    [bug introduced in coreutils-9.0]
+  New Features
+  * configure accepts a new --enable-single-binary=hardlinks mode to build the
+    selected programs as hard links to a multi-call binary called "coreutils".
+    This augments the existing "symlinks" and "shebangs" modes already
+    supported by the --enable-single-binary option.
+  * 'stat' and 'tail' now know about the "guest-memfd" file system type.
+    stat -f -c%T now reports the file system type,
+    and tail -f uses polling for this file system.
+  *  'tail' now accepts the --debug option, which is currently used to
+    detail the --follow implementation being used.
+  * 'du' now supports the short option -A corresponding to the existing long
+    option --apparent-size, for compatibility with FreeBSD.
+  Changes in behavior
+  * All commands now markup option names in --help and man pages,
+    with bold attributes, and hyperlinks into the online manual on gnu.org.
+    The links can be configured with the --enable-manual-url configure option,
+    and the bold highlighting with --disable-bold-man-page-references.
+    At runtime all markup can be disabled with the TERM=dumb env var value.
+  * 'fmt' -w,--width no longer includes '\n' in the width of a line.
+    I.e., the specified width is interpreted to be an _inclusive_ maximum.
+  * 'ls --hyperlink' now uses more standard format hyperlinks.
+    'ESC\' (ST) is now used as a delimiter, instead of '\a' (BEL).
+  * 'ptx' -t is no longer a no-op, and now sets the default width to 100 columns.
+  * 'timeout' now honors ignored signals and will not propagate them.  E.g.,
+    timeout(1) in a shell backgrounded job, will not terminate upon receiving
+    SIGINT or SIGQUIT, as these are ignored by default in shell background jobs.
+  * 'timeout -v -s 0' now prints the signal number 0 instead of EXIT.
+  * The multi-call binary now only processes --help or --version options
+    if it is installed with a name ending with "coreutils".  This allows
+    for more consistent handling of these options with unsupported commands.
+  Improvements
+  *  The multi-call binary built with configure --enable-single-binary
+    is reduced in size by 3.2% through the more efficient reuse of the cksum
+    utility by the md5sum and sha*sum utilities.
+  * 'cksum' now validates its options more consistently.
+    E.g., `cksum --text --tag` now fails like `cksum --tag --text` already did.
+  * 'cksum', 'du', and 'wc' now exit promptly upon receiving a write
+    error, which is significant when processing many input files.
+  * csplit, ls, and sort, now handle a more complete set of terminating signals.
+  * 'du' now processes directories with 10,000 or more entries up to 9 times
+    faster on the Lustre file system.
+  * 'paste' now supports multi-byte --delimiters characters.
+  * 'pinky' will now exit immediately upon receiving a write error, which is
+    significant when reading large plan or project files.
+  * 'readlink' and 'realpath' will now exit promptly upon receiving a write error,
+    which is significant when canonicalizing multiple file names longer than
+    PATH_MAX.
+  * 'timeout' on Linux will always terminate the child in the case where the
+    timeout process itself dies, like when it receives a KILL signal for example.
+  Build-related
+  * Programs now port to C23 platforms that strictly check types when
+    qualifier-generic functions like strchr are used.
+  * 'chcon' and 'runcon' stub binaries will be built on systems without
+    libselinux, when configured using --with-selinux.
+  * 'kill' and 'uptime' are no longer built by default.  These programs can be
+    built with the --enable-install-program=kill,uptime configure option.
+- coreutils.spec (%build):
+  Remove --disable-install-program=kill as that is the default now.
+  Add --enable-install-program=uptime as that is no longer built by default.
+  Add hyperlinks in man pages via the --enable-manual-url option.
+- coreutils-i18n.patch: Refresh patch.
+  Sync mbfile.[ch] from the gnulib revision coreutils-9.10 is using.
+- coreutils-remove_hostname_documentation.patch: Do not remove the description
+  of 'uname -n' from the Texinfo manual.
+- Refresh all other patches.
+
+
+-------------------------------------------------------------------
 Tue Nov 11 08:12:40 UTC 2025 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - Update to 9.9:

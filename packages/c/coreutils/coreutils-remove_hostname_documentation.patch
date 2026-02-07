@@ -1,6 +1,6 @@
 ---
- doc/coreutils.texi |   42 +-----------------------------------------
- 1 file changed, 1 insertion(+), 41 deletions(-)
+ doc/coreutils.texi |   33 +--------------------------------
+ 1 file changed, 1 insertion(+), 32 deletions(-)
 
 Index: doc/coreutils.texi
 ===================================================================
@@ -31,7 +31,7 @@ Index: doc/coreutils.texi
  * hostid invocation::            Print numeric host identifier
  * uptime invocation::            Print system uptime and load
  
-@@ -16609,7 +16607,6 @@ information.
+@@ -15821,7 +15819,6 @@ information.
  * arch invocation::             Print machine hardware name.
  * nproc invocation::            Print the number of processors.
  * uname invocation::            Print system information.
@@ -39,23 +39,7 @@ Index: doc/coreutils.texi
  * hostid invocation::           Print numeric host identifier.
  * uptime invocation::           Print system uptime and load.
  @end menu
-@@ -17614,15 +17611,6 @@ This is non-portable, even across GNU/Li
- Print the machine hardware name (sometimes called the hardware class
- or hardware type).
- 
--@item -n
--@itemx --nodename
--@opindex -n
--@opindex --nodename
--@cindex hostname
--@cindex node name
--@cindex network node name
--Print the network node hostname.
--
- @item -p
- @itemx --processor
- @opindex -p
-@@ -17676,34 +17664,6 @@ Print the kernel version.
+@@ -16849,34 +16846,6 @@ Print the kernel version.
  
  @exitstatus
  

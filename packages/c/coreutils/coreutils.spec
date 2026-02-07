@@ -1,7 +1,7 @@
 #
 # spec file for package coreutils
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %global psuffix %{nil}
 %endif
 Name:           coreutils%{?psuffix}
-Version:        9.9
+Version:        9.10
 Release:        0
 Summary:        GNU Core Utilities
 License:        GPL-3.0-or-later
@@ -171,8 +171,8 @@ AUTOPOINT=true autoreconf -fi
 %endif
 export CFLAGS="%{optflags}"
 %configure --libexecdir=%{_libdir} \
-           --enable-install-program=arch \
-	   --enable-no-install-program=kill \
+           --enable-install-program=arch,uptime \
+           --enable-manual-url \
 %if "%{name}" == "coreutils-single"
            --enable-single-binary \
            --without-openssl \
