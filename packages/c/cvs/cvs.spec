@@ -1,7 +1,7 @@
 #
 # spec file for package cvs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,6 +54,7 @@ Patch28:        cvs-gnulib.diff
 Patch29:        cvs-CVE-2012-0804.patch
 Patch30:        cvs-Bug-1053364-disallow-dash.patch
 Patch31:        compile-with-Wformat-security.patch
+Patch32:        fix-broken-zlib.c-implementation.patch
 BuildRequires:  automake
 BuildRequires:  gdbm-devel
 BuildRequires:  groff
@@ -64,7 +65,7 @@ Requires:       %{_bindir}/csh
 Requires:       /bin/mktemp
 Requires:       openssh
 Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 
 %description
 CVS is a front-end to the rcs (Revision Control System) included in the
@@ -108,6 +109,7 @@ Development with CVS, 2nd Edition".
 %patch -P 29
 %patch -P 30 -p1
 %patch -P 31 -p1
+%patch -P 32 -p1
 
 %build
 autoreconf -fvi

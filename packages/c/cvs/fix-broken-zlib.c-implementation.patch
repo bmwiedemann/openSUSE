@@ -1,0 +1,46 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Derek Robert Price <derek@ximbiot.com>
+Date: Fri, 28 Oct 2005 16:10:59 +0200
+Subject: [PATCH] Fix broken zlib.c implementation
+
+* zlib.c (compress_bufer_input): Don't assume the number of bytes the
+caller requested will be available from the stream underlying the
+compression buffer - the data is compressed and should be shorter by
+definition.  Improve comment.
+
+Fixes: https://savannah.nongnu.org/bugs/?14840
+Reported-by: Rahul Bhargava <rahul@wandisco.com>
+Upstream-Status: Backport [1.12.14]
+[iluceno@suse.de: Patch normalized]
+Signed-off-by: Ismael Luceno <iluceno@suse.de>
+---
+ zlib.c |   15 +++++++--------
+ 1 file changed, 7 insertions(+), 8 deletions(-)
+
+RCS file: /sources/cvs/ccvs/src/zlib.c,v
+diff -u -r1.31 -r1.32
+--- a/src/zlib.c
++++ b/src/zlib.c
+@@ -221,15 +221,14 @@
+            point.  */
+ 	assert (bd->size == 0);
+ 
+-	/* This will work well in the server, because this call will
+-	   do an unblocked read and fetch all the available data.  In
+-	   the client, this will read a single byte from the stdio
+-	   stream, which will cause us to call inflate once per byte.
+-	   It would be more efficient if we could make a call which
+-	   would fetch all the available bytes, and at least one byte.  */
+-
++	/* On the server, this will do an unblocking read of as much data as is
++	 * available.  On the client, with a blocking input descriptor and the
++	 * current fd_buffer implementation, this should read as much data as
++	 * is currently available, and at least 1 byte (or EOF), from the
++	 * underlying buffer.
++	 */
+ 	status = (*cb->buf->input) (cb->buf->closure, bd->text,
+-				    need, BUFFER_DATA_SIZE, &nread);
++				    need ? 1 : 0, BUFFER_DATA_SIZE, &nread);
+ 
+ 	if (status == -2)
+ 	    /* Don't try to recover from memory allcoation errors.  */

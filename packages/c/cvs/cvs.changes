@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb  6 16:26:33 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- The CVS server hangs because it assumes the compressed input
+  length requested will be available from the underlying stream,
+  which is almost always necessarily shorter due to compression.
+  Fixed by requesting one byte at a time. (bsc#1257000)
+  * fix-broken-zlib.c-implementation.patch
+
+-------------------------------------------------------------------
 Sun Jul  7 14:57:14 UTC 2024 - Friedrich Haubensak <hsk17@mail.de>
 
 - add %autoreconf in subdir cvslock-0.2 to support gcc-14
