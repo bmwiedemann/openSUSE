@@ -566,4 +566,22 @@
   (gh#agama-project/agama#3064).</comment>
     <requestid>1329814</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>ec0f5a3f7ad242adc379433336932876</srcmd5>
+    <version>19.pre.devel1415.80da57854</version>
+    <time>1770474809</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide new D-Bus API for DASD (gh#agama-project/agama#3110).
+
+- Identify iSCSI nodes using the combination of name and portal
+  (gh#agama-project/agama#3123).
+
+- Allow other parts to define in bootloader its proposed kernel
+  parameters (gh#agama-project/agama#3103)
+
+- Change how Btrfs information (snapshots and immutable) is
+  represented in the storage model and in the volume templates
+  (related to jsc#PED-14307).</comment>
+    <requestid>1331729</requestid>
+  </revision>
 </revisionlist>
