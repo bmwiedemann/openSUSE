@@ -2214,4 +2214,16 @@ by an upstream reviewed commit. (forwarded request 1109432 from mwilck)</comment
   * CI enhancements</comment>
     <requestid>1330511</requestid>
   </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>ea92edc0d3540772966854c15713ccf7</srcmd5>
+    <version>0.14.3+212+suse.f5d32098</version>
+    <time>1770474805</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-add the %ghost entry for /run/multipath (jsc#PED-14758)
+
+- Update to version 0.14.3+212+suse.f5d32098:
+  * multipathd: fix failures on booting from a multipath device
+    (bsc#1257007)</comment>
+    <requestid>1331722</requestid>
+  </revision>
 </revisionlist>

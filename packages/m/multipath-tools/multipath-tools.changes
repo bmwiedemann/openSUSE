@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb  6 16:45:11 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Re-add the %ghost entry for /run/multipath (jsc#PED-14758)
+
+-------------------------------------------------------------------
+Thu Feb  5 15:23:41 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.14.3+212+suse.f5d32098:
+  * multipathd: fix failures on booting from a multipath device
+    (bsc#1257007)
+
+-------------------------------------------------------------------
 Mon Feb  2 15:53:14 UTC 2026 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.14.2+211+suse.66f8a5ec:
