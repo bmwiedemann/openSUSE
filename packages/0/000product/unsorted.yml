@@ -209,6 +209,7 @@ unsorted:
   - OpenMoji-Color 
   - OpenRGB 
   - OpenRGB-udev-rules 
+  - OpenSMTPD 
   - OpenSceneGraph 
   - OpenSceneGraph-examples 
   - OpenSceneGraph-plugin-collada 
@@ -2781,7 +2782,9 @@ unsorted:
   - crmsh 
   - crmsh-scripts 
   - crmsh-test 
+  - cron 
   - cronic 
+  - cronie 
   - cronie-anacron 
   - cross-aarch64-binutils 
   - cross-aarch64-gcc13 
@@ -3172,6 +3175,7 @@ unsorted:
   - dealers-choice 
   - dealers-choice-lang 
   - debhelper 
+  - debianutils 
   - debootstrap 
   - debugbreak 
   - debugbreak-devel 
@@ -3526,7 +3530,9 @@ unsorted:
   - dvgt 
   - dwarf2json 
   - dwarfs 
+  - dwarfs-bash-completion 
   - dwarfs-devel 
+  - dwarfs-zsh-completion 
   - dwarves 
   - dwarves-devel 
   - dwz 
@@ -13037,7 +13043,7 @@ unsorted:
   - libdwarf-doc 
   - libdwarf-tools 
   - libdwarf2 
-  - libdwarfs0_13_0 
+  - libdwarfs0_14_1 
   - libdwarves1 
   - libdxflib-3_26_4-1 
   - libe-book-devel 
@@ -15375,12 +15381,8 @@ unsorted:
   - libpcscspy0 
   - libpcscspy0-32bit 
   - libpe1 
-  - libpeas-2-0 
   - libpeas-devel 
   - libpeas2-devel 
-  - libpeas2-lang 
-  - libpeas2-loader-gjs 
-  - libpeas2-loader-python 
   - libpeasd-3-0 
   - libperseus-sdr-devel 
   - libperseus-sdr-udev 
@@ -18271,6 +18273,7 @@ unsorted:
   - mailutils-mh 
   - mailutils-notify 
   - mailutils-pop3d 
+  - mailx 
   - maim 
   - mairix 
   - makedepend 
@@ -48905,6 +48908,7 @@ unsorted:
   - typelib-1_0-PantheonWayland-1_0 
   - typelib-1_0-PapersDocument-4_0 
   - typelib-1_0-PapersView-4_0 
+  - typelib-1_0-Peas-1_0 
   - typelib-1_0-Peas-2 
   - typelib-1_0-PeasGtk-1_0 
   - typelib-1_0-Playerctl-2_0 

@@ -259,8 +259,6 @@
       <repopackage name="cracklib"/>
       <repopackage name="cracklib-dict-full"/>
       <repopackage name="createrepo_c"/>
-      <repopackage name="cron"/>
-      <repopackage name="cronie"/>
       <repopackage name="crypto-policies"/>
       <repopackage name="crypto-policies-scripts"/>
       <repopackage name="cryptsetup"/>
@@ -295,7 +293,6 @@
       <repopackage name="dconf-editor-lang"/>
       <repopackage name="ddcutil-i2c-udev-rules"/>
       <repopackage name="ddskk"/>
-      <repopackage name="debianutils"/>
       <repopackage name="debuginfod-client"/>
       <repopackage name="debuginfod-profile"/>
       <repopackage name="dejavu-fonts"/>
@@ -2349,8 +2346,12 @@
       <repopackage name="libpcre2-posix3"/>
       <repopackage name="libpcsclite1"/>
       <repopackage name="libpeas-1_0-0"/>
+      <repopackage name="libpeas-2-0"/>
       <repopackage name="libpeas-gtk-1_0-0"/>
       <repopackage name="libpeas-lang"/>
+      <repopackage name="libpeas2-lang"/>
+      <repopackage name="libpeas2-loader-gjs"/>
+      <repopackage name="libpeas2-loader-python"/>
       <repopackage name="libpgm-5_3-0"/>
       <repopackage name="libphodav-3_0-0"/>
       <repopackage name="libphonenumber9"/>
@@ -3037,7 +3038,6 @@
       <repopackage name="mailimporter"/>
       <repopackage name="mailimporter-lang"/>
       <repopackage name="mailutils"/>
-      <repopackage name="mailx"/>
       <repopackage name="make"/>
       <repopackage name="make-lang"/>
       <repopackage name="makedumpfile"/>
@@ -3221,7 +3221,6 @@
       <repopackage name="opensc-bash-completion"/>
       <repopackage name="openslp"/>
       <repopackage name="openslp-server"/>
-      <repopackage name="OpenSMTPD"/>
       <repopackage name="openssh"/>
       <repopackage name="openssh-askpass-gnome"/>
       <repopackage name="openssh-clients"/>
@@ -4168,7 +4167,6 @@
       <repopackage name="typelib-1_0-Notify-0_7"/>
       <repopackage name="typelib-1_0-PackageKitGlib-1_0"/>
       <repopackage name="typelib-1_0-Pango-1_0"/>
-      <repopackage name="typelib-1_0-Peas-1_0"/>
       <repopackage name="typelib-1_0-Polkit-1_0"/>
       <repopackage name="typelib-1_0-Rest-1_0"/>
       <repopackage name="typelib-1_0-Rsvg-2_0"/>
