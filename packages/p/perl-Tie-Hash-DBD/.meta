@@ -13,6 +13,5 @@ value field.
 
 I think it would make sense to merge the functionality that this module
 provides into 'Tie::DBI'.</description>
-  <devel project="devel:languages:perl" package="perl-Tie-Hash-DBD"/>
   <url>http://search.cpan.org/dist/Tie-Hash-DBD/</url>
 </package>

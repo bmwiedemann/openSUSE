@@ -144,4 +144,15 @@
     <comment></comment>
     <requestid>1269376</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8e81aee02bd2f611e51caa42e3698f87</srcmd5>
+    <version>0.260.0</version>
+    <time>1770647689</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.260.0 (0.26)
+   see /usr/share/doc/packages/perl-Tie-Hash-DBD/Changes
+  0.26	- 25 Jan 2026, H.Merijn Brand
+      * It's 2026</comment>
+    <requestid>1331908</requestid>
+  </revision>
 </revisionlist>

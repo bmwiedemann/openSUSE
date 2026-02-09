@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Tie-Hash-DBD
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name Tie-Hash-DBD
 Name:           perl-Tie-Hash-DBD
-Version:        0.250.0
+Version:        0.260.0
 Release:        0
-# 0.25 -> normalize -> 0.250.0
-%define cpan_version 0.25
+# 0.26 -> normalize -> 0.260.0
+%define cpan_version 0.26
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Tie plain hashes to DBI interface
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{cpan_version}.tgz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -38,11 +39,11 @@ Provides:       perl(Tie::Array::DBD) = %{version}
 Provides:       perl(Tie::Hash::DBD) = %{version}
 %undefine       __perllib_provides
 Recommends:     perl(DBD::CSV) >= 0.620
-Recommends:     perl(DBD::Pg) >= 3.18.0
-Recommends:     perl(DBD::SQLite) >= 1.760
+Recommends:     perl(DBD::Pg) >= 3.18
+Recommends:     perl(DBD::SQLite) >= 1.780
 Recommends:     perl(DBI) >= 1.647
-Recommends:     perl(Sereal) >= 5.4.0
-Recommends:     perl(Storable) >= 3.32
+Recommends:     perl(Sereal) >= 5.4
+Recommends:     perl(Storable) >= 3.25
 %{perl_requires}
 
 %description
@@ -61,7 +62,7 @@ I think it would make sense to merge the functionality that this module
 provides into 'Tie::DBI'.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
