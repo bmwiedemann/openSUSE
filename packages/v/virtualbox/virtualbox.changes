@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb  2 09:59:43 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.2.6
+  * VMM: Fixed issue when VM process was crashing during RHEL5
+    guest boot
+  * VMM: Fixed issue when VMX nested-guest VM-entry was checking
+    the wrong VM-execution control bit in the virtual VMCS
+  * VMM: Fixed issue when guest process was crashing inside Windows
+    guest on AMD system
+  * The VRDP server, the USB smartcard emulation, the disk/VM
+    encryption features are now in the open source base package
+- Drop curl-8.16.patch (merged)
+
+-------------------------------------------------------------------
 Wed Oct 22 10:52:35 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.2.4

@@ -68,8 +68,8 @@
 %endif
 
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        7.2.4
-%define rversion 7.2.4
+Version:        7.2.6
+%define rversion 7.2.6
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-3.0-or-later
@@ -133,7 +133,6 @@ Patch10:        fix_for_leap15.5.patch
 Patch11:        cxx17.patch
 Patch12:        host-source.patch
 Patch20:        gentoo-C23.patch
-Patch21:        curl-8.16.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -812,8 +811,9 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_vbox_instdir}/VBoxSharedFolders.so
 %{_vbox_instdir}/VBoxVMM.so
 %{_vbox_instdir}/VBoxVMMArm.so
-%{_vbox_instdir}/VBoxXPCOMC.so
+%{_vbox_instdir}/VBoxVRDP.so
 %{_vbox_instdir}/VBoxXPCOM.so
+%{_vbox_instdir}/VBoxXPCOMC.so
 %{_vbox_instdir}/VBox*.r0
 %{_vbox_instdir}/VMMR0.r0
 %{_vbox_instdir}/VBoxEFI*.fd

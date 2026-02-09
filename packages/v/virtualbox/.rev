@@ -2802,4 +2802,12 @@ we must have vb7.1.10.</comment>
     <comment>- Update to release 7.2.4</comment>
     <requestid>1313066</requestid>
   </revision>
+  <revision rev="299" vrev="1">
+    <srcmd5>2e0d05271b25771a54bedda7df0c3f68</srcmd5>
+    <version>7.2.6</version>
+    <time>1770633767</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 7.2.6</comment>
+    <requestid>1331750</requestid>
+  </revision>
 </revisionlist>
