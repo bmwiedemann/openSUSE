@@ -57,7 +57,7 @@ A flake8 plugin that helps you write better list/set/dict comprehensions.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest %{?jobs: -n %jobs}
+%pytest
 
 %files %{python_files}
 %license LICENSE
