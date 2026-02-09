@@ -328,4 +328,17 @@
     <comment></comment>
     <requestid>1295340</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>dece7ccb62f2f5dd1be82e9218f728bd</srcmd5>
+    <version>3.10</version>
+    <time>1770633781</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.10
+  https://github.com/SELinuxProject/selinux/releases/tag/3.10
+  * no functional change, small test case change
+- keyring: Add key of Jason Zaman &lt;jasonzaman@gmail.com&gt; 
+  * added 63191CE94183098689CAB8DB7EF137EC935B0EAF [expires: 2026-02-08]
+</comment>
+    <requestid>1331578</requestid>
+  </revision>
 </revisionlist>
