@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Feb  8 06:31:16 UTC 2026 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.9
+  * replace stringutils::endsWith
+  * fix FindLibSKK.cmake
+- changes in 5.1.8
+  * fix SkkEngine::loadDictionary() envvar behavior
+  * replace SKK_DEFAULT_PATH with SKK_PATH
+  * Refactor: Replace QDialog::exec() with QDialog::open()
+    in SkkDictWidget::addDictClicked()
+  * Switch to user dictionary editing when the end of a list
+    of candidates has been reached
+
+-------------------------------------------------------------------
 Sun Jun 22 04:13:15 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.7
