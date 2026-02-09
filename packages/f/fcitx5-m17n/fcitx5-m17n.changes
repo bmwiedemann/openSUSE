@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb  8 06:29:18 UTC 2026 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.5
+  * workaround an m17n-lib bug that makes fcitx crash
+
+-------------------------------------------------------------------
 Sun Jun 22 04:00:35 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.4
