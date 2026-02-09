@@ -2021,4 +2021,26 @@ Changes:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1317757</requestid>
   </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>c398b569602992b0ddbd6367a744aac5</srcmd5>
+    <version>20260202</version>
+    <time>1770633757</time>
+    <user>anag_factory</user>
+    <comment>- pbuild: support for _manifest files
+- VM builds: fix export of mtime out of the build env
+- config:
+  * tumbleweed syncing
+  * slfo 1.2 updates
+  * Re-create SLE 15 SP7 config
+- oci-archive
+  * Support package list introspection
+  * Support sbom generation
+- Docker.pm: Also handle 'zypper update' 
+- obs-docker-support: Pass --no-refresh to zypper
+- fail if PKGID can not be queried
+- Add a workaround to fix builds on debian aarch64 with old systemd versions
+- Add gzip retry for the sidestore downloads
+- Revert VCS indenting change to fix reproducible builds</comment>
+    <requestid>1330437</requestid>
+  </revision>
 </revisionlist>
