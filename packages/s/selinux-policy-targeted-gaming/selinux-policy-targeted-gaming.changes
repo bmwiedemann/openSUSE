@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  6 20:47:55 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Enable selinuxuser_execheap=1 for some game mod loaders 
+
+-------------------------------------------------------------------
 Thu Aug 14 13:23:10 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Enable selinuxuser_execstack=1 for new installations as well (bsc#1247992)

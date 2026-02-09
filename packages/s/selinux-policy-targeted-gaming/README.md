@@ -17,11 +17,13 @@ The package makes the following change to the system during package install:
 
 > semanage boolean -m --on selinuxuser_execmod
 > semanage boolean -m --on selinuxuser_execstack
+> semanage boolean -m --on selinuxuser_execheap
 
 or identical change, but using another tool
 
 > setsebool -P selinuxuser_execmod 1
 > setsebool -P selinuxuser_execstack 1
+> setsebool -P selinuxuser_execheap 1
 
 This change has security implications, as it allows unconfined executables to
 make their stack executable. Usually because certain libraries requiring text
