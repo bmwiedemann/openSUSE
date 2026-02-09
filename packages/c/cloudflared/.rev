@@ -155,4 +155,13 @@
   * Fix the cloudflared binary path used in the component test (forwarded request 1319785 from hillwood)</comment>
     <requestid>1319787</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e745343e063c2d3057990f89eacb46ca</srcmd5>
+    <version>2026.2.0</version>
+    <time>1770640986</time>
+    <user>anag_factory</user>
+    <comment>- Update version to 2026.2.0
+  * Fix bugs (forwarded request 1331878 from hillwood)</comment>
+    <requestid>1331879</requestid>
+  </revision>
 </revisionlist>
