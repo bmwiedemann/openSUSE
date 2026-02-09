@@ -1,7 +1,7 @@
 #
 # spec file for package klog
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           klog
-Version:        6.6
+Version:        7.0
 Release:        0
 Summary:        Time tracking in a human-readable, plain-text file format
 License:        MIT
@@ -26,8 +26,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.22
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.25
 
 %description
 klog is a plain-text file format and a command line tool for time tracking.
