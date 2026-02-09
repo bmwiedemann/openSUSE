@@ -757,4 +757,34 @@
     <comment></comment>
     <requestid>1311736</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>89e25fae608577b8ffc0eb031dcefde3</srcmd5>
+    <version>3.10</version>
+    <time>1770633771</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.10
+  https://github.com/SELinuxProject/selinux/releases/tag/3.10
+  * libselinux: fix parsing of the enforcing kernel cmdline parameter
+  * libselinux: remove out2 labels
+  * libselinux: refactor selinux_getenforcemode
+  * libselinux: load_policy: log using selinux_log instead of fprintf
+  * libselinux: refactor selinux_check_securetty_context
+  * libselinux: Ignore files removed during relabeling
+  * libselinux/src/Makefile: build python module without isolation
+- keyring: Add key of Jason Zaman &lt;jasonzaman@gmail.com&gt; 
+  * added 63191CE94183098689CAB8DB7EF137EC935B0EAF [expires: 2026-02-08]
+- Update to version 3.10
+  https://github.com/SELinuxProject/selinux/releases/tag/3.10
+  * libselinux: fix parsing of the enforcing kernel cmdline parameter
+  * libselinux: remove out2 labels
+  * libselinux: refactor selinux_getenforcemode
+  * libselinux: load_policy: log using selinux_log instead of fprintf
+  * libselinux: refactor selinux_check_securetty_context
+  * libselinux: Ignore files removed during relabeling
+  * libselinux/src/Makefile: build python module without isolation
+- keyring: Add key of Jason Zaman &lt;jasonzaman@gmail.com&gt; 
+  * added 63191CE94183098689CAB8DB7EF137EC935B0EAF [expires: 2026-02-08]
+</comment>
+    <requestid>1331575</requestid>
+  </revision>
 </revisionlist>

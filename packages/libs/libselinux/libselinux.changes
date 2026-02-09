@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb  5 16:16:32 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 3.10
+  https://github.com/SELinuxProject/selinux/releases/tag/3.10
+  * libselinux: fix parsing of the enforcing kernel cmdline parameter
+  * libselinux: remove out2 labels
+  * libselinux: refactor selinux_getenforcemode
+  * libselinux: load_policy: log using selinux_log instead of fprintf
+  * libselinux: refactor selinux_check_securetty_context
+  * libselinux: Ignore files removed during relabeling
+  * libselinux/src/Makefile: build python module without isolation
+- keyring: Add key of Jason Zaman <jasonzaman@gmail.com> 
+  * added 63191CE94183098689CAB8DB7EF137EC935B0EAF [expires: 2026-02-08]
+
+-------------------------------------------------------------------
 Thu Oct 16 14:26:57 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
 
 - Ship license file (bsc#1252160) 

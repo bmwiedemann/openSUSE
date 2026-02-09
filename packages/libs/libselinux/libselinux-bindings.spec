@@ -1,7 +1,7 @@
 #
 # spec file for package libselinux-bindings
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %{?sle15allpythons}
 %define python_subpackage_only 1
-%define libsepol_ver 3.9
+%define libsepol_ver 3.10
 %define upname libselinux
 Name:           libselinux-bindings
-Version:        3.9
+Version:        3.10
 Release:        0
 Summary:        SELinux runtime library and utilities
 License:        SUSE-Public-Domain
