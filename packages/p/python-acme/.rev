@@ -909,4 +909,19 @@
   * Support for Python 3.14 was added.</comment>
     <requestid>1327568</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>66fc80a65e3a9d94db967d1e27e11a2c</srcmd5>
+    <version>5.3.0</version>
+    <time>1770661705</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.3.0
+  * Deprecated acme.crypto_util.Format in our effort to remove our
+    pyOpenSSL dependency
+  * achallenges.KeyAuthorizationAnnotatedChallenge, achallenges.DNS,
+    and achallenges.Other have a new field identifier, of type
+    acme.messages.Identifier. This should be used in place of the
+    domain field, which is now deprecated both as an attribute and
+    during object creation.</comment>
+    <requestid>1332023</requestid>
+  </revision>
 </revisionlist>
