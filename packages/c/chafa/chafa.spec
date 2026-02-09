@@ -1,7 +1,7 @@
 #
 # spec file for package chafa
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           chafa
-Version:        1.18.0
+Version:        1.18.1
 Release:        0
 Summary:        Image-to-text converter for terminal
 License:        LGPL-3.0-or-later

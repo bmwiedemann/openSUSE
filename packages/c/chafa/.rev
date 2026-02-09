@@ -531,4 +531,26 @@
     + [unfiled] Wrong exit code returned on some failures.</comment>
     <requestid>1317033</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>7a4c9dcc8ad7c866b8687472739eb677</srcmd5>
+    <version>1.18.1</version>
+    <time>1770640995</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.18.1:
+  * New option: --probe-mode=[any|ctty|stdio]. This specifies whether to probe
+    the terminal through stdio or ctty (usually /dev/tty). Defaults to any,
+    which will probe stdio if it looks like a tty, otherwise the ctty. This
+    allows the terminal to be probed when I/O is redirected (#325)
+  * We now try harder to restore the terminal to a usable state after SIGINT is
+    received, even if we couldn't do a clean exit in a reasonable time frame
+    (#309)
+  * Bash completions were added and zsh completions updated (#315).
+  * Improved compatibility for the Kitty protocol, specifically with iTerm2.
+  * Bug fixes:
+    + #184 Test failure on sparc64.
+    + #292 Test failure on i386.
+    + #321 Bad console modes on win32 after exit.
+    + [unfiled] Stalling on closed output pipe on OpenBSD.</comment>
+    <requestid>1331960</requestid>
+  </revision>
 </revisionlist>

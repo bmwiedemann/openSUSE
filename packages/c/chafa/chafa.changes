@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb  9 08:01:39 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.18.1:
+  * New option: --probe-mode=[any|ctty|stdio]. This specifies whether to probe
+    the terminal through stdio or ctty (usually /dev/tty). Defaults to any,
+    which will probe stdio if it looks like a tty, otherwise the ctty. This
+    allows the terminal to be probed when I/O is redirected (#325)
+  * We now try harder to restore the terminal to a usable state after SIGINT is
+    received, even if we couldn't do a clean exit in a reasonable time frame
+    (#309)
+  * Bash completions were added and zsh completions updated (#315).
+  * Improved compatibility for the Kitty protocol, specifically with iTerm2.
+  * Bug fixes:
+    + #184 Test failure on sparc64.
+    + #292 Test failure on i386.
+    + #321 Bad console modes on win32 after exit.
+    + [unfiled] Stalling on closed output pipe on OpenBSD.
+
+-------------------------------------------------------------------
 Tue Nov 11 08:53:54 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.18.0:
