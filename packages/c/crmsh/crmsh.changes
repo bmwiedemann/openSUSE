@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 09 08:41:11 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260209.ed56b53c:
+  * Dev: testcases: Replace stonith-enabled as fencing-enabled in original testcases
+  * Dev: behave: Adjust functional test for previous commit
+  * Fix: cibverify: If no errors found, treat crm_verify result as success (bsc#1250349)
+  * Dev: Dockerfile: Explicitly install diffutils
+  * Dev: behave: Use "systemctl poweroff" instead of legacy "init 0"
+
+-------------------------------------------------------------------
 Tue Feb 03 12:05:59 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.0.0+20260203.366eb25a:
