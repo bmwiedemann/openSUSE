@@ -30,12 +30,12 @@
 %endif
 
 %define libaudit_ver     2.2
-%define libsepol_ver     3.9
-%define libsemanage_ver  3.9
-%define libselinux_ver   3.9
+%define libsepol_ver     3.10
+%define libsemanage_ver  3.10
+%define libselinux_ver   3.10
 %define setools_ver      4.1.1
 Name:           policycoreutils
-Version:        3.9
+Version:        3.10
 Release:        0
 Summary:        SELinux policy core utilities
 License:        GPL-2.0-or-later
@@ -54,6 +54,7 @@ Source15:       https://github.com/SELinuxProject/selinux/releases/download/%{ve
 Source16:       https://github.com/SELinuxProject/selinux/releases/download/%{version}/selinux-dbus-%{version}.tar.gz
 Source17:       https://github.com/SELinuxProject/selinux/releases/download/%{version}/selinux-dbus-%{version}.tar.gz.asc
 Source18:       policycoreutils-rpmlintrc
+Source19:       sepolgen.conf
 Patch0:         make_targets.patch
 Patch2:         get_os_version.patch
 Patch3:         run_init.pamd.patch
@@ -280,8 +281,11 @@ done
 
 mkdir -p %{buildroot}%{_libexecdir}/selinux/hll/
 mkdir -p %{buildroot}%{_localstatedir}/lib/sepolgen
+mkdir -p %{buildroot}%{_tmpfilesdir}
 
 (cd selinux-python-%{version}/po && make DESTDIR=%{buildroot} install)
+cp -a %{buildroot}%{_localstatedir}/lib/sepolgen %{buildroot}%{_datadir}/sepolgen
+install -m 644 %{SOURCE19} %{buildroot}%{_tmpfilesdir}
 %find_lang %{name}
 %find_lang selinux-python
 %find_lang selinux-gui
@@ -441,7 +445,10 @@ done
 %{_mandir}/man8/sepolicy.8%{?ext_man}
 %{_mandir}/man8/sepolgen.8%{?ext_man}
 %dir %{_localstatedir}/lib/sepolgen
-%{_localstatedir}/lib/sepolgen/perm_map
+%ghost %{_localstatedir}/lib/sepolgen/perm_map
+%dir %{_datadir}/sepolgen
+%{_datadir}/sepolgen/perm_map
+%{_tmpfilesdir}/sepolgen.conf
 %{_datadir}/bash-completion/completions/sepolicy
 
 %files newrole

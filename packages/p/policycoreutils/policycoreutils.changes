@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb  5 16:30:31 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 3.10
+  https://github.com/SELinuxProject/selinux/releases/tag/3.10
+  * setfiles: Add -A option to disable SELINUX_RESTORECON_ADD_ASSOC
+  * semanage: Reset active value when deleting boolean customizations
+  * python/sepolicy: Add support for DNF5
+  * Man page improvments
+- keyring: Add key of Jason Zaman <jasonzaman@gmail.com> 
+  * added 63191CE94183098689CAB8DB7EF137EC935B0EAF [expires: 2026-02-08]
+
+-------------------------------------------------------------------
+Wed Jul 30 13:59:48 UTC 2025 - Ignaz Forster <iforster@suse.com>
+
+- Move /var/lib/sepolgen/perm_map to /usr/share/sepolgen and create
+  a symlink instead (boo#1233024)
+
+-------------------------------------------------------------------
 Thu Jul 17 15:53:34 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.9
