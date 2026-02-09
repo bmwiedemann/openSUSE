@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Spreadsheet-Read
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Spreadsheet-Read
 Name:           perl-Spreadsheet-Read
-Version:        0.940.0
+Version:        0.950.0
 Release:        0
-# 0.94 -> normalize -> 0.940.0
-%define cpan_version 0.94
+# 0.95 -> normalize -> 0.950.0
+%define cpan_version 0.95
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Meta-Wrapper for reading spreadsheet data
 URL:            https://metacpan.org/release/%{cpan_name}

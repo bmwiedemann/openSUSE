@@ -403,4 +403,15 @@
       * Update SECURITY.md</comment>
     <requestid>1323813</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4c6f0c1118cdb7cbb48ff58c328e7f63</srcmd5>
+    <version>0.950.0</version>
+    <time>1770647688</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.950.0 (0.95)
+   see /usr/share/doc/packages/perl-Spreadsheet-Read/Changes
+  0.95	- 25 Jan 2026, H.Merijn Brand
+      * It's 2026</comment>
+    <requestid>1331907</requestid>
+  </revision>
 </revisionlist>
