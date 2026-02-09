@@ -1,7 +1,7 @@
 #
 # spec file for package audit-secondary
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -160,6 +160,7 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 	--with-arm \
 %endif
 	--libexecdir=%{_libexecdir}/%{_name} \
+	--runstatedir=%{_rundir} \
 	--with-apparmor \
 	--with-libwrap \
 	--with-libcap-ng=yes \

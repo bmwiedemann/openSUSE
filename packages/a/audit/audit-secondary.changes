@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  3 14:02:12 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Configure runstatedir as "/run" to get rid of systemd deprecation
+  warnings.
+
+-------------------------------------------------------------------
 Mon Jan 26 12:11:06 UTC 2026 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move all /var/spool, /var/log directories to systemd-tmpfiles
