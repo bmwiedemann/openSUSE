@@ -23,4 +23,13 @@ Meson clean up and fixes regression on Leap 15.6.</comment>
   * Patch is included upstream</comment>
     <requestid>1330081</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6b246bedceffd0b7953d1a36ff5bf7c9</srcmd5>
+    <version>0.26.2</version>
+    <time>1770648304</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.26.2:
+  * Added Mango Wayland Compositor support</comment>
+    <requestid>1331896</requestid>
+  </revision>
 </revisionlist>
