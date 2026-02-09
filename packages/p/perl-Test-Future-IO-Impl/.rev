@@ -30,4 +30,21 @@
              test, as most OSes need it. 100msec is sufficient</comment>
     <requestid>1327640</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>824b9a8f94ac544ffe76a140d00bc441</srcmd5>
+    <version>0.170.0</version>
+    <time>1770647686</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.170.0 (0.17)
+   see /usr/share/doc/packages/perl-Test-Future-IO-Impl/Changes
+  0.17    2026-01-18
+          [CHANGES]
+           * Added tests for `poll` method
+          [BUGFIXES]
+           * Account for the fact that read or write IO operations may have
+             already happened before they are cancelled
+           * Clear the EAGAIN error from `$wr` filehandle in EAGAIN write test
+             to stop perl writing annoying warnings during test</comment>
+    <requestid>1331903</requestid>
+  </revision>
 </revisionlist>
