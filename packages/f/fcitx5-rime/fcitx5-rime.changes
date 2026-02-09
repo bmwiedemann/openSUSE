@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb  8 06:23:41 UTC 2026 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.12
+  * Change the notification mechanism to allow list mode
+  * Port to StandardPath and bump librime version to 1.7.0
+  * fix action label empty for multi-switch without reset
+
+-------------------------------------------------------------------
 Fri Jun 20 13:52:36 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.10

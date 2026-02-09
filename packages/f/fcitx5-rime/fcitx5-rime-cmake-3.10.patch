@@ -1,9 +1,9 @@
-Index: fcitx5-rime-5.1.2/CMakeLists.txt
+Index: fcitx5-rime-5.1.12/CMakeLists.txt
 ===================================================================
---- fcitx5-rime-5.1.2.orig/CMakeLists.txt
-+++ fcitx5-rime-5.1.2/CMakeLists.txt
-@@ -24,6 +24,12 @@ if ("${Rime_VERSION}" VERSION_LESS "1.3.
-     add_definitions(-DFCITX_RIME_NO_SELECT_CANDIDATE)
+--- fcitx5-rime-5.1.12.orig/CMakeLists.txt
++++ fcitx5-rime-5.1.12/CMakeLists.txt
+@@ -29,6 +29,12 @@ if ("${Rime_VERSION}" VERSION_LESS "1.8.
+     add_definitions(-DFCITX_RIME_NO_DELETE_CANDIDATE)
  endif()
  
 +if(${CMAKE_VERSION} VERSION_LESS "3.11.0")
