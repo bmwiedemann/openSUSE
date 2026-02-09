@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  8 06:11:15 UTC 2026 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.9
+  * interpret dictionary path starting with $XDG_DATA_DIRS
+  * fix FindLibKKC
+
+-------------------------------------------------------------------
 Sun Jun 22 04:18:52 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.7
