@@ -1,7 +1,7 @@
 #
 # spec file for package container-suseconnect
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ Source1:        vendor.tar.zst
 Source2:        container-suseconnect-rpmlintrc
 BuildRequires:  libzypp > 9.34
 BuildRequires:  zstd
-BuildRequires:  golang(API) = 1.24
+BuildRequires:  golang(API) = 1.25
 Requires:       libzypp > 9.34
 
 %description
