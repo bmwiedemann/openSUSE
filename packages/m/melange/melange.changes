@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb 09 06:18:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.41.1:
+  * sca: skip soname runtime deps for host provided libraries
+    (#2337)
+- Update to version 0.41.0:
+  * chore: Restore APK size limits during tests, bump apko (#2336)
+  * chore: pin wolfictl to last working version (#2334)
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/stdout/stdouttrace (#2333)
+  * build(deps): bump go.opentelemetry.io/otel/sdk from 1.39.0 to
+    1.40.0 (#2332)
+  * build(deps): bump chainguard.dev/apko in the gomod group
+    (#2330)
+  * build(deps): bump go.opentelemetry.io/otel from 1.39.0 to
+    1.40.0 (#2331)
+  * feat: add --pipeline-dirs flag to build command (#2323)
+
+-------------------------------------------------------------------
 Thu Feb 05 05:48:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.40.5:
