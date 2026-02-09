@@ -97,6 +97,10 @@ export LC_ALL LANG
 
 #modules not to be tested by direct import
 toRemove="lib-symbol-visibility havelib .*-obsolete localcharset gettext-h gettext alloca-opt alloca "
+%if 0%{?qemu_user_space_build}
+# stack overflow recovery does not work in qemu emulation
+toRemove+="c-stack sigsegv "
+%endif
 toRemove="$(echo $toRemove | tr ' ' '|')"
 
 list="$(./gnulib-tool --list | grep -vE "($toRemove)")"

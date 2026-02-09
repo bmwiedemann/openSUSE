@@ -67,4 +67,12 @@
   obstruct each other</comment>
     <requestid>1331352</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>03ec877b18b4000c85cb40796b056724</srcmd5>
+    <version>git.20260114.2a288c048e</version>
+    <time>1770647727</time>
+    <user>anag_factory</user>
+    <comment>- Skip c-stack and sigsegv modules in qemu emulation (forwarded request 1331981 from Andreas_Schwab)</comment>
+    <requestid>1331984</requestid>
+  </revision>
 </revisionlist>
