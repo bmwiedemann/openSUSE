@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb  9 12:50:01 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.3.0
+  * A new command line flag, --ip-address, has been added. This requests
+    certificates with IP address SANs when using the standalone or manual
+    plugin. Note that for Let's Encrypt's implementation of IP address
+    certificates, you'll also need to pass --preferred-profile shortlived.
+  * Deploy directory hooks are now also run when using certbot certonly
+    or certbot run to get a new cert. 
+  * A few largely unused functions/types from certbot.crypto_util have been
+    deprecated in our effort to remove our pyOpenSSL dependency.
+  * Authenticator.get_chall_pref's argument has been renamed from domain
+    to identifier, and can now receive string-formatted IP addresses in
+    addition to domain names.
+
+-------------------------------------------------------------------
 Thu Jan 15 13:55:32 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.2.2
