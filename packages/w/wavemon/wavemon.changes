@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb  9 12:05:32 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.7
+  Info Screen:
+    * fix resolving 6/7GHz frequencies into channels.
+    * filter out /128 IPv6 addresses (to display the address
+      prefix).
+    * change rx/tx counters to 64bit.
+  Netlink:
+    * fix memory leak by properly releasing allocated caches.
+    * add fallback to reading 32 bit byte count.
+  Miscellaneous
+  * replace deprecated nl_send_autocall with nl_send_auto_complete
+  * fix nl80211 compiler warning.
+  * fix configure when using basic sh.
+
+-------------------------------------------------------------------
 Sat Jul 13 18:39:06 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.9.6

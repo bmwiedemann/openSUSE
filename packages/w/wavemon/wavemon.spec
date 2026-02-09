@@ -1,7 +1,7 @@
 #
 # spec file for package wavemon
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wavemon
-Version:        0.9.6
+Version:        0.9.7
 Release:        0
 Summary:        An ncurses monitoring application for wireless network devices
 License:        GPL-2.0-or-later
