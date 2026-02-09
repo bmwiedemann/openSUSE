@@ -31,6 +31,8 @@ RUN set -euo pipefail; \
 
 # patch named.prep to not call logger (provided by systemd)
 # and just log to stdout
+RUN set -euo pipefail; zypper -n install --no-recommends systemd && \
+    systemd-tmpfiles --create --root /target
 RUN set -euo pipefail; \
     mkdir -p /target/usr/local/lib/bind; \
     cp /target//usr/libexec/bind/named.prep /target/usr/local/lib/bind/named.prep; \
