@@ -1,8 +1,8 @@
-Index: librime-1.14.0/CMakeLists.txt
+Index: librime-1.16.1/CMakeLists.txt
 ===================================================================
---- librime-1.14.0.orig/CMakeLists.txt
-+++ librime-1.14.0/CMakeLists.txt
-@@ -60,7 +60,7 @@ if(MSVC)
+--- librime-1.16.1.orig/CMakeLists.txt
++++ librime-1.16.1/CMakeLists.txt
+@@ -63,7 +63,7 @@ if(MSVC)
  endif()
  
  if(LINUX)
@@ -11,10 +11,10 @@ Index: librime-1.14.0/CMakeLists.txt
  else()
    find_package(Boost 1.77.0)
  endif()
-Index: librime-1.14.0/plugins/plugins_module.cc
+Index: librime-1.16.1/plugins/plugins_module.cc
 ===================================================================
---- librime-1.14.0.orig/plugins/plugins_module.cc
-+++ librime-1.14.0/plugins/plugins_module.cc
+--- librime-1.16.1.orig/plugins/plugins_module.cc
++++ librime-1.16.1/plugins/plugins_module.cc
 @@ -6,7 +6,7 @@
  #include <algorithm>
  #include <boost/algorithm/string.hpp>
@@ -33,10 +33,10 @@ Index: librime-1.14.0/plugins/plugins_module.cc
  
  namespace rime {
  
-Index: librime-1.14.0/src/rime/common.h
+Index: librime-1.16.1/src/rime/common.h
 ===================================================================
---- librime-1.14.0.orig/src/rime/common.h
-+++ librime-1.14.0/src/rime/common.h
+--- librime-1.16.1.orig/src/rime/common.h
++++ librime-1.16.1/src/rime/common.h
 @@ -9,7 +9,7 @@
  
  #include <rime/build_config.h>
@@ -80,10 +80,10 @@ Index: librime-1.14.0/src/rime/common.h
  #ifdef RIME_ENABLE_LOGGING
    friend std::ostream& operator<<(std::ostream& os, const path& p) {
      return os << p.u8string();
-Index: librime-1.14.0/src/rime/config/build_info_plugin.cc
+Index: librime-1.16.1/src/rime/config/build_info_plugin.cc
 ===================================================================
---- librime-1.14.0.orig/src/rime/config/build_info_plugin.cc
-+++ librime-1.14.0/src/rime/config/build_info_plugin.cc
+--- librime-1.16.1.orig/src/rime/config/build_info_plugin.cc
++++ librime-1.16.1/src/rime/config/build_info_plugin.cc
 @@ -2,7 +2,7 @@
  // Copyright RIME Developers
  // Distributed under the BSD License
@@ -102,10 +102,10 @@ Index: librime-1.14.0/src/rime/config/build_info_plugin.cc
    });
  #endif
    return true;
-Index: librime-1.14.0/src/rime/config/config_data.cc
+Index: librime-1.16.1/src/rime/config/config_data.cc
 ===================================================================
---- librime-1.14.0.orig/src/rime/config/config_data.cc
-+++ librime-1.14.0/src/rime/config/config_data.cc
+--- librime-1.16.1.orig/src/rime/config/config_data.cc
++++ librime-1.16.1/src/rime/config/config_data.cc
 @@ -7,7 +7,7 @@
  #include <fstream>
  #include <sstream>
@@ -126,10 +126,10 @@ Index: librime-1.14.0/src/rime/config/config_data.cc
        LOG(WARNING) << "nonexistent config file '" << file_path << "'.";
      return false;
    }
-Index: librime-1.14.0/src/rime/dict/db.cc
+Index: librime-1.16.1/src/rime/dict/db.cc
 ===================================================================
---- librime-1.14.0.orig/src/rime/dict/db.cc
-+++ librime-1.14.0/src/rime/dict/db.cc
+--- librime-1.16.1.orig/src/rime/dict/db.cc
++++ librime-1.16.1/src/rime/dict/db.cc
 @@ -5,7 +5,7 @@
  // 2011-11-02 GONG Chen <chen.sst@gmail.com>
  //
@@ -157,10 +157,10 @@ Index: librime-1.14.0/src/rime/dict/db.cc
  }
  
  bool Db::CreateMetadata() {
-Index: librime-1.14.0/src/rime/dict/dict_compiler.cc
+Index: librime-1.16.1/src/rime/dict/dict_compiler.cc
 ===================================================================
---- librime-1.14.0.orig/src/rime/dict/dict_compiler.cc
-+++ librime-1.14.0/src/rime/dict/dict_compiler.cc
+--- librime-1.16.1.orig/src/rime/dict/dict_compiler.cc
++++ librime-1.16.1/src/rime/dict/dict_compiler.cc
 @@ -4,7 +4,7 @@
  //
  // 2011-11-27 GONG Chen <chen.sst@gmail.com>
@@ -206,10 +206,10 @@ Index: librime-1.14.0/src/rime/dict/dict_compiler.cc
    return target_resolver->ResolvePath(resource_id);
  }
  
-Index: librime-1.14.0/src/rime/dict/dictionary.cc
+Index: librime-1.16.1/src/rime/dict/dictionary.cc
 ===================================================================
---- librime-1.14.0.orig/src/rime/dict/dictionary.cc
-+++ librime-1.14.0/src/rime/dict/dictionary.cc
+--- librime-1.16.1.orig/src/rime/dict/dictionary.cc
++++ librime-1.16.1/src/rime/dict/dictionary.cc
 @@ -4,7 +4,7 @@
  //
  // 2011-07-05 GONG Chen <chen.sst@gmail.com>
@@ -219,7 +219,7 @@ Index: librime-1.14.0/src/rime/dict/dictionary.cc
  #include <rime/algo/syllabifier.h>
  #include <rime/common.h>
  #include <rime/dict/dictionary.h>
-@@ -352,8 +352,8 @@ bool Dictionary::Decode(const Code& code
+@@ -362,8 +362,8 @@ bool Dictionary::Decode(const Code& code
  }
  
  bool Dictionary::Exists() const {
@@ -230,10 +230,10 @@ Index: librime-1.14.0/src/rime/dict/dictionary.cc
  }
  
  bool Dictionary::Remove() {
-Index: librime-1.14.0/src/rime/dict/mapped_file.cc
+Index: librime-1.16.1/src/rime/dict/mapped_file.cc
 ===================================================================
---- librime-1.14.0.orig/src/rime/dict/mapped_file.cc
-+++ librime-1.14.0/src/rime/dict/mapped_file.cc
+--- librime-1.16.1.orig/src/rime/dict/mapped_file.cc
++++ librime-1.16.1/src/rime/dict/mapped_file.cc
 @@ -7,7 +7,7 @@
  // 2011-06-30 GONG Chen <chen.sst@gmail.com>
  //
@@ -261,11 +261,11 @@ Index: librime-1.14.0/src/rime/dict/mapped_file.cc
    } catch (...) {
      return false;
    }
-Index: librime-1.14.0/src/rime/dict/user_db.cc
+Index: librime-1.16.1/src/rime/dict/user_db.cc
 ===================================================================
---- librime-1.14.0.orig/src/rime/dict/user_db.cc
-+++ librime-1.14.0/src/rime/dict/user_db.cc
-@@ -107,7 +107,7 @@ bool UserDbHelper::UpdateUserInfo() {
+--- librime-1.16.1.orig/src/rime/dict/user_db.cc
++++ librime-1.16.1/src/rime/dict/user_db.cc
+@@ -108,7 +108,7 @@ bool UserDbHelper::UpdateUserInfo() {
  }
  
  bool UserDbHelper::IsUniformFormat(const path& file_path) {
@@ -274,10 +274,10 @@ Index: librime-1.14.0/src/rime/dict/user_db.cc
                            plain_userdb_extension);
  }
  
-Index: librime-1.14.0/src/rime/dict/user_db_recovery_task.cc
+Index: librime-1.16.1/src/rime/dict/user_db_recovery_task.cc
 ===================================================================
---- librime-1.14.0.orig/src/rime/dict/user_db_recovery_task.cc
-+++ librime-1.14.0/src/rime/dict/user_db_recovery_task.cc
+--- librime-1.16.1.orig/src/rime/dict/user_db_recovery_task.cc
++++ librime-1.16.1/src/rime/dict/user_db_recovery_task.cc
 @@ -5,7 +5,7 @@
  // 2013-04-22 GONG Chen <chen.sst@gmail.com>
  //
@@ -315,20 +315,20 @@ Index: librime-1.14.0/src/rime/dict/user_db_recovery_task.cc
        return;  // not found
      }
    }
-Index: librime-1.14.0/src/rime/gear/simplifier.cc
+Index: librime-1.16.1/src/rime/gear/simplifier.cc
 ===================================================================
---- librime-1.14.0.orig/src/rime/gear/simplifier.cc
-+++ librime-1.14.0/src/rime/gear/simplifier.cc
-@@ -36,7 +36,7 @@ class Opencc {
+--- librime-1.16.1.orig/src/rime/gear/simplifier.cc
++++ librime-1.16.1/src/rime/gear/simplifier.cc
+@@ -41,7 +41,7 @@ class Opencc {
      opencc::Config config;
      try {
        // opencc accepts file path encoded in UTF-8.
--      converter_ = config.NewFromFile(config_path.u8string());
-+      converter_ = config.NewFromFile(config_path.string());
+-      converter_ = config.NewFromFile(config_path_.u8string());
++      converter_ = config.NewFromFile(config_path_.string());
  
        const list<opencc::ConversionPtr> conversions =
            converter_->GetConversionChain()->GetConversions();
-@@ -305,7 +305,7 @@ Simplifier* SimplifierComponent::Create(
+@@ -315,7 +315,7 @@ Simplifier* SimplifierComponent::Create(
      return new Simplifier(ticket, opencc);
    }
    path opencc_config_path = path(opencc_config);
@@ -337,10 +337,10 @@ Index: librime-1.14.0/src/rime/gear/simplifier.cc
      LOG(ERROR) << "please upgrade opencc_config to an opencc 1.0 config file.";
      return nullptr;
    }
-Index: librime-1.14.0/src/rime/lever/customizer.cc
+Index: librime-1.16.1/src/rime/lever/customizer.cc
 ===================================================================
---- librime-1.14.0.orig/src/rime/lever/customizer.cc
-+++ librime-1.14.0/src/rime/lever/customizer.cc
+--- librime-1.16.1.orig/src/rime/lever/customizer.cc
++++ librime-1.16.1/src/rime/lever/customizer.cc
 @@ -4,14 +4,14 @@
  //
  // 2011-12-12 GONG Chen <chen.sst@gmail.com>
@@ -367,10 +367,10 @@ Index: librime-1.14.0/src/rime/lever/customizer.cc
      } catch (...) {
        LOG(ERROR) << "Error copying config file '" << source_path_
                   << "' to user directory.";
-Index: librime-1.14.0/src/rime/lever/deployment_tasks.cc
+Index: librime-1.16.1/src/rime/lever/deployment_tasks.cc
 ===================================================================
---- librime-1.14.0.orig/src/rime/lever/deployment_tasks.cc
-+++ librime-1.14.0/src/rime/lever/deployment_tasks.cc
+--- librime-1.16.1.orig/src/rime/lever/deployment_tasks.cc
++++ librime-1.16.1/src/rime/lever/deployment_tasks.cc
 @@ -9,7 +9,7 @@
  
  #include <algorithm>
@@ -531,10 +531,10 @@ Index: librime-1.14.0/src/rime/lever/deployment_tasks.cc
            if (boost::starts_with(target_file_name, app_name) &&
                boost::ends_with(target_file_name, ".log")) {
              files_in_use.insert(target);
-Index: librime-1.14.0/src/rime/lever/switcher_settings.cc
+Index: librime-1.16.1/src/rime/lever/switcher_settings.cc
 ===================================================================
---- librime-1.14.0.orig/src/rime/lever/switcher_settings.cc
-+++ librime-1.14.0/src/rime/lever/switcher_settings.cc
+--- librime-1.16.1.orig/src/rime/lever/switcher_settings.cc
++++ librime-1.16.1/src/rime/lever/switcher_settings.cc
 @@ -6,12 +6,12 @@
  //
  #include <utility>
@@ -550,10 +550,10 @@ Index: librime-1.14.0/src/rime/lever/switcher_settings.cc
  
  namespace rime {
  
-Index: librime-1.14.0/src/rime/lever/user_dict_manager.cc
+Index: librime-1.16.1/src/rime/lever/user_dict_manager.cc
 ===================================================================
---- librime-1.14.0.orig/src/rime/lever/user_dict_manager.cc
-+++ librime-1.14.0/src/rime/lever/user_dict_manager.cc
+--- librime-1.16.1.orig/src/rime/lever/user_dict_manager.cc
++++ librime-1.16.1/src/rime/lever/user_dict_manager.cc
 @@ -6,7 +6,7 @@
  //
  #include <fstream>
@@ -599,10 +599,10 @@ Index: librime-1.14.0/src/rime/lever/user_dict_manager.cc
      if (!fs::create_directories(sync_dir, ec)) {
        LOG(ERROR) << "error creating directory '" << sync_dir << "'.";
        return false;
-Index: librime-1.14.0/src/rime/resource.cc
+Index: librime-1.16.1/src/rime/resource.cc
 ===================================================================
---- librime-1.14.0.orig/src/rime/resource.cc
-+++ librime-1.14.0/src/rime/resource.cc
+--- librime-1.16.1.orig/src/rime/resource.cc
++++ librime-1.16.1/src/rime/resource.cc
 @@ -4,13 +4,13 @@
  //
  
@@ -640,10 +640,10 @@ Index: librime-1.14.0/src/rime/resource.cc
        return fallback_path;
      }
    }
-Index: librime-1.14.0/test/resource_resolver_test.cc
+Index: librime-1.16.1/test/resource_resolver_test.cc
 ===================================================================
---- librime-1.14.0.orig/test/resource_resolver_test.cc
-+++ librime-1.14.0/test/resource_resolver_test.cc
+--- librime-1.16.1.orig/test/resource_resolver_test.cc
++++ librime-1.16.1/test/resource_resolver_test.cc
 @@ -1,9 +1,9 @@
  #include <fstream>
 -#include <filesystem>
@@ -656,10 +656,10 @@ Index: librime-1.14.0/test/resource_resolver_test.cc
  using namespace rime;
  
  static const ResourceType kMineralsType = ResourceType{
-Index: librime-1.14.0/tools/rime_table_decompiler.cc
+Index: librime-1.16.1/tools/rime_table_decompiler.cc
 ===================================================================
---- librime-1.14.0.orig/tools/rime_table_decompiler.cc
-+++ librime-1.14.0/tools/rime_table_decompiler.cc
+--- librime-1.16.1.orig/tools/rime_table_decompiler.cc
++++ librime-1.16.1/tools/rime_table_decompiler.cc
 @@ -122,7 +122,7 @@ int main(int argc, char* argv[]) {
    fout << "# Rime dictionary\n\n";
    fout << "---\n"
