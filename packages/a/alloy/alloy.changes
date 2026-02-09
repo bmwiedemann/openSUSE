@@ -1,4 +1,229 @@
 -------------------------------------------------------------------
+Fri Feb  6 06:33:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.13.0:
+  * BREAKING CHANGES
+    - otelcol: Upgrade to OTel Collector v0.142.0
+    - otelcol.receiver.kafka: The global topic attribute has been
+      deleted; use the topics attributes inside the logs, metrics,
+      and traces blocks instead.
+    - otelcol.exporter > sending_queue > batch > min_size changed
+      from 8192 to 2000 and max_size changed from 0 to 3000
+  * Features
+    - Add a virtual_node_peer_attributes and
+      virtual_node_extra_label arguments to
+      otelcol.connector.servicegraph (#5058) (20900c6) (@ptodev,
+      @clayton-cornell)
+    - Add an otelcol.processor.metric_start_time component (#5342)
+      (3fb13ac) (@ptodev)
+    - Add job level period, length, and add_cloudwatch_timestamp
+      options and labels_snake_case to CW exporter [backport]
+      (#5355) (60d73b7) (@tmeijn, @clayton-cornell)
+    - Add missing configuration parameter
+      deployment_name_from_replicaset to k8sattributes processor
+      (#5183) (b54ca77) (@dehaansa)
+    - Add parcas symbols upload to pyroscope.ebpf (#4948) (30f2242)
+      (@korniltsev-grafanista, @claude)
+    - Add sharding for loki.write (#4882) (7570d65) (@kalleep,
+      @thampiotr)
+    - Add unexposed otel engine and extension to codebase and
+      change build structure (#5114) (6438176) (@blewis12)
+    - beyla.ebpf: Add meta_cache_address to
+      beyla.ebpf.attributes.kubernetes (#4871) (b43864b) (@skl)
+    - beyla.ebpf: Upgrade Beyla to v2.8.5 (f1f457f) (@ptodev,
+      @clayton-cornell)
+    - Change the defaults for sending_queue > batch block inside
+      otelcol.exporter components (#5061) (714a2ed) (@ptodev)
+    - cluster: Support DNS discovery mode prefixes in
+      --cluster.join-addresses flag (#5034) (d2fda91) (@x1unix)
+    - converter: Update promtail converter to use file_match block
+      for loki.source.file (#4791) (a42f386) (@kalleep)
+    - Database_observability: add health check collector for
+      postgres component (#5222) (80917b1) (@matthewnolf)
+    - Database_observability: expose exclude_schemas and
+      exclude_databases settings (#5334) (37656f8) (@cristiangreco)
+    - Database_observability: support Azure cloud provider config
+      data (#5245) (d7a469f) (@cristiangreco)
+    - Database_observability: support Azure privatelink db name
+      (#5260) (22e4991) (@cristiangreco)
+    - Database_observability.mysql: support excluding schemas in
+      all collectors [backport] (#5380) (d67268c) (@cristiangreco)
+    - Database_observability.postgres: support excluding DBs in all
+      collectors [backport] (#5383) (165492c) (@cristiangreco)
+    - database_observability: Add health_check collector to
+      validate configuration (#5115) (6d96740) (@matthewnolf)
+    - database_observability: Always send explain plan log for each
+      query including status (#4969) (03a5a20) (@rgeyer)
+    - database_observability: Append cloud provider information
+      labels to metrics (#4942) (166829e) (@matthewnolf)
+    - database_observability: Stop tracking own instrumentation
+      queries (#4991) (0b55557) (@cristiangreco)
+    - deps: Update Prometheus to v3.8.0 and Loki to v3.6.2 (#5035)
+      (01c4a62) (@thampiotr)
+    - Expose otel subcommand and add user-facing documentation
+      (#5244) (93f20b8) (@blewis12, @thampiotr, @clayton-cornell)
+    - Improve faro.receiver.sourcemaps caching strategy (#4337)
+      (41e655c) (@mateagluhak, @clayton-cornell)
+    - loki.process: Mark stage.windowsevent as GA (#4879) (22de0cf)
+      (@kgeckhart)
+    - loki.source.file: Refactor tailer to reduce resource usage
+      (#5003) (688da66) (@kalleep)
+    - loki.source.syslog: Implement livedebugging support (#5216)
+      (e26badb) (@x1unix, @dehaansa)
+    - loki.source.syslog: Support cisco-specific syslog fields
+      (#5165) (3230ba0) (@x1unix)
+    - loki.source.syslog: Support raw format (#5140) (923d127)
+      (@x1unix, @clayton-cornell)
+    - mimir.alerts.kubernetes: Add alertmanagerconfig_matcher block
+      to change the matcher strategy (f2b9671) (@timonegk, @ptodev,
+      @clayton-cornell)
+    - mimir.alerts.kubernetes: Add component to discover
+      AlertmanagerConfig Kubernetes resources (#3448) (6f2396e)
+      (@ptodev)
+    - mixin: Provide rendered mixin outputs (#5118) (738b9fb)
+      (@thampiotr)
+    - otelcol.auth.basic: Add htpasswd file based authentication
+      (#3916) (c564d09) (@pkarakal)
+    - otelcol.connector.count: Add component to count spans,
+      metrics, and logs (#4913) (b1cb806) (@hhertout)
+    - otelcol.exporter.file: Add otelcol.exporter.file component to
+      write metrics, logs, and traces to disk with optional
+      rotation, compression, and grouping by resource attribute
+      (#4475) (1aef0ac) (@madhub)
+    - otelcol.exporter.prometheus: Add honor_metadata config
+      argument [backport] (#5439) (32cb175)
+    - otelcol.receiver.awss3: Add experimental receiver for traces
+      stored in S3 (#4928) (bc3885b) (@x1unix)
+    - otelcol.receiver.kafka: Deprecate the topic attribute inside
+      the logs, metrics, and traces blocks in favour of a new
+      topics attribute. (f1f457f) (@ptodev, @clayton-cornell)
+    - otelcol.receiver.kafka: Remove the global topic attribute
+      (f1f457f) (@ptodev, @clayton-cornell)
+    - otelcol: Upgrade to OTel Collector v0.142.0 (f1f457f)
+      (@ptodev, @clayton-cornell)
+    - prometheus.echo: Add component for local metrics inspection
+      in exposition format (#4105) (7f6d0d2) (@iamrajiv)
+    - prometheus.exporter.cloudwatch: Add delay option to account
+      for CloudWatch ingestion latency (#4936) (1ab7f12) (@tmeijn)
+    - prometheus.exporter.databricks: Add Databricks exporter
+      component (#5054) (4442836) (@aalhour, @clayton-cornell)
+    - prometheus.operator.scrapeconfigs: Add HTTP service discovery
+      support via httpSDConfigs (#4826) (0d0fb65) (@QuentinBisson)
+    - prometheus.remote_write: Add metadata support to
+      prometheus.remote_write component, but only if Remote Write
+      v2 has been configured. In order for prometheus.remote_write
+      to receive metadata, prometheus.scrape must be configured
+      with honor_metadata = true. (#5045) (74d424b) (@ptodev)
+    - prometheus: Reduce resource overhead by removing unnecessary
+      labelstore usage (#4890) (b89f510) (@kgeckhart)
+    - pyroscope.ebpf: Add lazy_mode argument to the pyroscope.ebpf
+      to defer eBPF profiler startup until there are targets to
+      profile (#4824) (2eb281c) (@luweglarz)
+    - pyroscope.enrich: Add experimental component to enrich
+      profiles using discovery labels (#4797) (cc7448f)
+      (@AndreZiviani)
+    - Strip comments from normalized sql text in
+      database_observability.postgres (#5005) (a58721a)
+      (@cristiangreco)
+    - Support setting default scrape limit for prometheus.operator
+      components (#5280) (40ffe08) (@dehaansa)
+    - tracing: Add send_traceparent option to enable traceparent
+      header propagation (#4874) (3c4b4f6) (@MyDigitalLife)
+  * Bug Fixes
+    - Add support for compressed files for tail package [backport]
+      (#5415) (311662f) (@kalleep)
+    - Allow loki.source.file to read renaming lines of a deleted
+      file before it tries to re open a new one (#5270) (f8b1de8)
+      (@kalleep)
+    - Compute signatures from files so that loki.source.file can
+      handle atomic writes (#5143) (3090c4a) (@kalleep)
+    - converter: Fix promtail converter to limit Kubernetes
+      discovery to same node (#5046) (27a5717) (@dehaansa)
+    - Database_observability: add Azure provider relabeling rules
+      [backport] (#5382) (c121178) (@cristiangreco)
+    - Database_observability: allow setting limit for mysql
+      query_details (#5314) (085f300) (@cristiangreco)
+    - Database_observability: fix race in postgres query samples
+      test (#5315) (4f01753) (@cristiangreco)
+    - Database_observability: grant check only require SELECT . on
+      perf_schema (#5294) (490017c) (@matthewnolf)
+    - Database_observability: reuse cloud provider regexes (#5262)
+      (6009c54) (@cristiangreco)
+    - Database_observability: update BackendXID type to int64 to
+      better map to PG xid [backport] (#5373) (1cb4b0f)
+      (@matthewnolf)
+    - Database_observability: update BackendXmin type to int64 to
+      better map to PG BIGINT (#5296) (d45ccc0) (@matthewnolf)
+    - database_observability.mysql: Add setup_actors collector to
+      avoid tracking own queries (#4978) (1d34414) (@cristiangreco)
+    - database_observability.mysql: Replace server_id label with
+      hash from server_uuid and hostname (#4943) (51107ca)
+      (@gaantunes)
+    - database_observability.postgres: Fix schema_details
+      collection for mixed case table names (#4872) (7d0f15e)
+      (@fridgepoet)
+    - database_observability: Improve postgres version parsing for
+      explain plans in database_observability component (#5131)
+      (23c7f37) (@rgeyer)
+    - database_observability: Skip explain plans which lookup
+      individual records and return no rows (#5203) (b7c7cbb)
+      (@rgeyer)
+    - deps: Update npm dependencies (#5190) (cd027e2) (@jharvey10)
+    - docker: Fix log corruption for multiplexed long lines (#4713)
+      (cccbda7) (@axd1x8a)
+    - Ensure the squid exporter wrapper properly brackets ipv6
+      addresses (#5199) (ee23162) (@dehaansa)
+    - Guard pyroscope otel profiler code with unix go build tag
+      [backport] (#5360) (b1ecdb6) (@korniltsev-grafanista)
+    - HTTP/2 is no longer always disabled in loki.write (#5267)
+      (1c97c2d) (@kalleep)
+    - Invalid handling of id in foreach when using discovery
+      components (#5322) (61fe184), closes #5297 (@thampiotr)
+    - Issues when reading files using non UTF-8 encoding in
+      loki.source.file (#5259) (4740276) (@kalleep)
+    - loki.process: Implement encoding.TextMarshaler and
+      encoding.TextUnmarshaler for TruncateSourceType [backport]
+      (#5428) (3585393) (@kalleep)
+    - loki.process: Remove extraneous output stage from cri stage
+      pipeline (#5002) (f2f08fc) (@kalleep)
+    - loki.source.api: Prevent dropping request when relabel rules
+      drop a specific stream. (#4834) (74653ac) (@kalleep)
+    - loki.source.file: Make sure position is recorded when
+      component exit [backport] (#5418) (64fb278) (@kalleep)
+    - loki.source.file: Update tail_from_end to properly handle
+      file encoding [backport] (#5436) (731e8e5) (@kalleep)
+    - mimir.alerts.kubernetes: Fix crash when using Kubernetes
+      secret or configmap in AlertmanagerConfig (#5010) (9052910)
+      (@synthe102)
+    - mixin: Correct invalid queries in alloy logs dashboard
+      (#5123) (ad8efd3) (@thampiotr)
+    - Only alert on cluster drift when cluster_name is set (#5181)
+      (8b6f056) (@dehaansa)
+    - otelcol: Allow configuration of force_attempt_http2 and
+      default to true (#5050) (ff849f4) (@dehaansa)
+    - Perform drain when file is deleted in tail package (#5139)
+      (2e48867) (@kalleep)
+    - Preserve meta labels in loki.source.podlogs (#5097) (23d787c)
+      (@kalleep)
+    - Prevent panic in import.git when update fails (#5198)
+      (577a591) (@dehaansa)
+    - prometheus.exporter.gcp: Preserve colons in extra_filters
+      filter expressions (#5018) (398365d) (@Kim-Yukyung)
+    - prometheus.operator: Enable native histogram ingestion in
+      internal scrape manager (#4750) (86b3c7d) (@dehaansa)
+    - relabel: Fix default values for source_labels to prevent
+      labeldrop issues (#5059) (d385cba) (@kalleep)
+    - Remove Parca debug info upload from user configuration
+      [backport] (#5395) (58eb9cc)
+    - Revert doublestar v4 update [backport] (#5435) (0e9e615)
+      (@kalleep)
+    - Set content-encoding header in loki.write (#5346) (ffd2bea)
+      (@kalleep)
+    - Show correct fallback alloy version instead of v1.13.0
+      (#5110) (e2e96e9) (@jharvey10)
+    - Update to use doublestar v4 (#5148) (d8f0b3e) (@kalleep)
+
+-------------------------------------------------------------------
 Mon Jan 19 14:55:10 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - CVE-2025-68156: Fix potential DoS via unbounded recursion in

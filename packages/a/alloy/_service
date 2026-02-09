@@ -3,7 +3,7 @@
     <param name="url">https://github.com/grafana/alloy</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v1.12.2</param>
+    <param name="revision">v1.13.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">disable</param>
@@ -11,7 +11,6 @@
   <service name="set_version" mode="manual">
   </service>
   <service name="go_modules" mode="manual">
-    <param name="replace">github.com/expr-lang/expr=github.com/expr-lang/expr@v1.17.7</param>
   </service>
   <!-- services below are running at buildtime -->
   <service name="tar" mode="buildtime">
