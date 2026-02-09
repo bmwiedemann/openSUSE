@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  8 07:00:30 UTC 2026 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.6
+  * make test and data optional
+  * support alternative PkgData path
+
+-------------------------------------------------------------------
 Wed Jul 30 17:49:58 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Disable ASLR during build for reproducible builds (bsc#1180734)
