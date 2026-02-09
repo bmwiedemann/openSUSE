@@ -1,7 +1,7 @@
 #
 # spec file for package waypipe
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           waypipe
-Version:        0.10.4
+Version:        0.11.0
 Release:        0
 Summary:        Proxy for Wayland clients
 License:        GPL-3.0-or-later AND MIT

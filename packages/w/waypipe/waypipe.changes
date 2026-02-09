@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sun Feb 08 12:13:01 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.11.0:
+  * Bump version again, to fix a release tag issue
+  * Bump version
+  * Apply more clippy suggestions
+  * Update Cargo.lock
+  * Use nix 0.30
+  * Pass vsock config unchanged to waypipe server
+  * Fix vsock config serialization
+  * Improve handling of non-UTF8 paths in build scripts
+  * Apply more clippy suggestions
+  * Also match physical devices by primary node ID
+
+-------------------------------------------------------------------
+Sun Feb 08 12:11:23 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.10.6:
+  * Bump version
+  * Apply more clippy suggestions
+  * Update Cargo.lock
+  * Use nix 0.30
+  * Pass vsock config unchanged to waypipe server
+  * Fix vsock config serialization
+  * Improve handling of non-UTF8 paths in build scripts
+  * Apply more clippy suggestions
+  * Also match physical devices by primary node ID
+  * Fix and elaborate DRM node ID debug messages
+  * Fix out of date sentence in README
+  * Add option to automatically run xwayland-satellite
+  * Silence missing docs lints on generated code
+  * Autoformat changes for meson
+  * Update implementation language stated in man page
+  * Cargo.toml: define a workspace for helper crates
+  * docs: add --ssh-bin option to man page
+  * feat(cli): add configurable SSH binary path option
+  * fix(cli): prevent SSH argument parsing conflicts with remote command
+  * Add license field to helper crates
+  * Cargo.toml: add license field
+
+-------------------------------------------------------------------
+Sun Feb 08 12:10:51 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.10.5:
+  * Bump version
+  * waypipe-c: distinguish meson test names
+  * Add --remote-socket option for ssh mode remote socket prefix
+  * Mention Unix socket support in man page
+  * Apply more clippy suggestions
+  * Use a more portable macro for ioctl codes
+  * Work around for minimum h264 hardware encoding/decoding sizes
+  * Autoformat changes for meson
+  * Avoid a non-portable error code
+  * Specify soname instead of linker name for dynamic libraries
+
+-------------------------------------------------------------------
 Tue Jun 17 20:18:43 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.10.4:
