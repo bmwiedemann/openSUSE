@@ -1,7 +1,7 @@
 #
 # spec file for package volk
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %global sonum 3
-%global soname 3_2
+%global soname 3_3
 Name:           volk
-Version:        3.2.0
+Version:        3.3.0
 Release:        0
 Summary:        Vector-Optimized Library of Kernels
 License:        LGPL-3.0-or-later
@@ -30,6 +30,7 @@ Source98:       https://github.com/gnuradio/volk/releases/download/v%{version}/%
 Source99:       volk.keyring
 BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  fmt-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem-devel
 %if 0%{?suse_version} < 1600

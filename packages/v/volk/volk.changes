@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Feb  8 20:30:32 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 3.3.0
+  New kernels
+  * volk_16i_x2_add_saturated_16i
+  * volk_16u_x2_add_saturated_16u
+  * volk_32f_sincos_32f_x2.h
+  * volk_64f_x2_dot_prod_64f.h
+  * volk_8i_x2_add_saturated_8i.h
+  * volk_8u_x2_add_saturated_8u.h
+  Improvements to a lot of kernels
+  * RiscV kernels are further improved and fixed
+  * RVV index_max/min kernels always return the correct (first)
+    index now
+  * New AVX512 implementations for a lot of kernels
+  * Add more NEON kernels with better accuracy
+  Documentation
+  * Working on auto-publishing latest docs
+  * More clarification on our software library dependencies policy
+  * Improved documentation on the underlying algorithms that are
+    used
+  Code quality
+  * cx-limited-range: Reduce scope of compile feature
+  * Fully rely on std::filesystem (we used to have a
+    boost::filesystem fallback)
+  * Align CMake auto-format with GNU Radio
+  * Update to modern PIC enablement
+  * Fix NEON compile checks
+  * Update code style in more places
+  * tighter
+  CI
+  * Add -Werror flag to CI for C compilation
+  * Remove obsolete CI, add new CI
+  * Fix obsolete MacOS Intel CI
+  Tests
+  * Add specialized test suite for the rotator kernel
+  * Improved usability with gtest
+  * Tighter error bounds for a lot of implementations
+  Usability
+  * new performance test output
+  * fastest implementation is marked with a star
+  * speed up vs. generic implementation is printed
+  * test "heat up" added
+
+-------------------------------------------------------------------
 Wed Oct 15 11:12:20 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Reenable LTO on riscv64 as gcc has been fixed
