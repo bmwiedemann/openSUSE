@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb  7 18:20:00 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.4.17:
+  * Ed25519 and Ed448 support (PKCS#11 v3.2)
+  * Fixed OPENSSL_NO_EC builds
+  * Reverted RSA public exponent change
+  * Fixed crash on module initialization failures
+  * Ignoring trailing newlines in pin-source files
+  * Initial build fixes for the upcoming OpenSSL 4.x
+- package license files
+
+-------------------------------------------------------------------
 Tue Jun 24 17:42:52 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 0.4.16:

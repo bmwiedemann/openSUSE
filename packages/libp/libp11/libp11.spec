@@ -2,6 +2,7 @@
 # spec file for package libp11
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +26,7 @@
 %define libname libp11-3
 %endif
 Name:           libp11
-Version:        0.4.16
+Version:        0.4.17
 Release:        0
 Summary:        Library Implementing a Small Layer on Top of PKCS#11 API
 License:        LGPL-2.1-or-later
@@ -153,14 +154,15 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %check
 %make_build check
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
+%license COPYING
 %doc %{_docdir}/%{libname}
 %{_libdir}/libp11.so.*
 
 %files -n openssl-engine-%{name}
+%license COPYING
 %if 0%{?suse_version} > 1325
 %{_libdir}/engines-*
 %else
@@ -168,9 +170,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %endif
 
 %files -n openssl-provider-%{name}
+%license COPYING
 %{_libdir}/ossl-modules
 
 %files devel
+%license COPYING
 %{_includedir}/*.h
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
