@@ -1,20 +1,20 @@
-Index: fcitx5-anthy-5.1.7/CMakeLists.txt
+Index: fcitx5-anthy-5.1.9/CMakeLists.txt
 ===================================================================
---- fcitx5-anthy-5.1.7.orig/CMakeLists.txt
-+++ fcitx5-anthy-5.1.7/CMakeLists.txt
+--- fcitx5-anthy-5.1.9.orig/CMakeLists.txt
++++ fcitx5-anthy-5.1.9/CMakeLists.txt
 @@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.6)
  
- project(fcitx5-anthy VERSION 5.1.7)
+ project(fcitx5-anthy VERSION 5.1.9)
  
 -set(REQUIRED_FCITX_VERSION 5.1.13)
 +set(REQUIRED_FCITX_VERSION 5.0.18)
  find_package(ECM 1.0.0 REQUIRED)
  set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
  include(FeatureSummary)
-Index: fcitx5-anthy-5.1.7/src/engine.cpp
+Index: fcitx5-anthy-5.1.9/src/engine.cpp
 ===================================================================
---- fcitx5-anthy-5.1.7.orig/src/engine.cpp
-+++ fcitx5-anthy-5.1.7/src/engine.cpp
+--- fcitx5-anthy-5.1.9.orig/src/engine.cpp
++++ fcitx5-anthy-5.1.9/src/engine.cpp
 @@ -294,7 +294,7 @@ AnthyEngine::AnthyEngine(fcitx::Instance
              FCITX_ANTHY_INFO() << "Anthy: " << msg;
          },
