@@ -177,4 +177,16 @@
     <comment></comment>
     <requestid>1237576</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b306db5ff9faa3eba40958b59fc542b4</srcmd5>
+    <version>0.540.0</version>
+    <time>1770647686</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.540.0 (0.54)
+   see /usr/share/doc/packages/perl-Data-Peek/ChangeLog
+  0.54	- 2026-01-25, H.Merijn Brand   &lt;hmbrand@cpan.org&gt;
+      * It's 2026
+      * Update to Devel::PPPort-3.73</comment>
+    <requestid>1331905</requestid>
+  </revision>
 </revisionlist>
