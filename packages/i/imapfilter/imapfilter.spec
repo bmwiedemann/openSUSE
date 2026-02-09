@@ -1,7 +1,7 @@
 #
 # spec file for package imapfilter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           imapfilter
-Version:        2.8.2
+Version:        2.8.3
 Release:        0
 Summary:        A mail filtering utility
 License:        MIT
