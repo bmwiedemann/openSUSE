@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 09 06:19:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.72:
+  * Basic progress/feedback for system install command
+  * Examples in SLICER_BOX.md for testing e2e
+- Update to version 0.11.71:
+  * Make arkade beautiful
+
+-------------------------------------------------------------------
 Fri Feb 06 14:25:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.70:
