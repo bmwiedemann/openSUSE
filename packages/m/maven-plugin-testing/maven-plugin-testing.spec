@@ -17,7 +17,7 @@
 
 
 Name:           maven-plugin-testing
-Version:        3.5.0
+Version:        3.5.1
 Release:        0
 Summary:        Maven Plugin Testing
 License:        Apache-2.0

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb  9 12:10:56 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 3.5.1
+  * Bug Fixes
+    + Fix wrong resources directory name in MavenProject
+    + Minimize dependencies on JUnit5 in MavenProjectStub
+  * Documentation updates
+    + Fix typos
+  * Dependency updates
+    + Bump org.apache.maven:maven-parent from 46 to 47
+    + Bump org.codehaus.plexus:plexus-archiver from 4.10.4 to 4.11.0
+
+-------------------------------------------------------------------
 Tue Jan 13 14:16:15 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 3.5.0
