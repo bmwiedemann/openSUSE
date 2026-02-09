@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  9 11:00:51 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- bsc#bsc#1257536: require libvulkan1-32bit for 64bit systems
+- Make lutris ExclusiveArch:  %{ix86} x86_64 aarch64 
+- Drop noarch
+
+-------------------------------------------------------------------
 Wed Feb  4 14:53:49 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - bsc#1257536: Add Requires: libvulkan1-32bit

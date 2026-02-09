@@ -564,4 +564,14 @@
     <comment>- bsc#1257536: Add Requires: libvulkan1-32bit</comment>
     <requestid>1330997</requestid>
   </revision>
+  <revision rev="40" vrev="6">
+    <srcmd5>4d7be2b6be4fb560dc621b2e83aeffd2</srcmd5>
+    <version>0.5.19</version>
+    <time>1770662109</time>
+    <user>anag_factory</user>
+    <comment>- bsc#bsc#1257536: require libvulkan1-32bit for 64bit systems
+- Make lutris ExclusiveArch:  %{ix86} x86_64 aarch64 
+- Drop noarch</comment>
+    <requestid>1332085</requestid>
+  </revision>
 </revisionlist>

@@ -32,7 +32,8 @@ Requires:       xrandr
 # boo#1213440
 Recommends:     ca-certificates-steamtricks
 Recommends:     winetricks
-BuildArch:      noarch
+#BuildArch:      noarch
+ExclusiveArch:  %{ix86} x86_64 aarch64
 %if 0%{?suse_version} >= 1600
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
@@ -85,8 +86,6 @@ BuildRequires:  python%{_py}-setuptools
 Requires:       cabextract
 Requires:       curl
 Requires:       fluid-soundfont-gm
-# boo#1257536
-Requires:       libvulkan1-32bit
 Requires:       p7zip
 Requires:       psmisc
 Requires:       python%{_py}-Pillow
@@ -105,6 +104,10 @@ Requires:       python%{_py}-pypresence
 %if %{with moddb}
 Requires:       python%{_py}-moddb
 %endif
+%endif
+%if %{__isa_bits} == 64
+# boo#1257536
+Requires:       libvulkan1-32bit
 %endif
 
 %lang_package
