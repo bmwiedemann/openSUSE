@@ -1,0 +1,33 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: 2026-02-03 16:06:43.440699815 +0100
+
+With eigen-5.x, the build fails due to assumption of implicit inclusion of
+assert.
+
+```
+[   26s] In file included from ~/avogadrolibs-1.100.0/avogadro/core/angleiterator.cpp:9:
+[   26s] ~/avogadrolibs-1.100.0/avogadro/core/molecule.h: In member function ‘Avogadro::Index Avogadro::Core::Molecule::bondCount() const’:
+[   26s] ~/avogadrolibs-1.100.0/avogadro/core/molecule.h:1115:3: error: ‘assert’ was not declared in this scope
+[   26s]  1115 |   assert(m_graph.edgeCount() == m_bondOrders.size());
+[   26s]       |   ^~~~~~
+[   26s] ~/avogadrolibs-1.100.0/avogadro/core/molecule.h:23:1: note: ‘assert’
+is defined in header ‘<cassert>’; this is probably fixable by adding ‘#include
+<cassert>’
+```
+
+---
+ avogadro/core/molecule.h |    1 +
+ 1 file changed, 1 insertion(+)
+
+Index: avogadrolibs-1.100.0/avogadro/core/molecule.h
+===================================================================
+--- avogadrolibs-1.100.0.orig/avogadro/core/molecule.h
++++ avogadrolibs-1.100.0/avogadro/core/molecule.h
+@@ -19,6 +19,7 @@
+ #include "vector.h"
+ 
+ #include <bitset>
++#include <cassert>
+ #include <list>
+ #include <map>
+ #include <string>

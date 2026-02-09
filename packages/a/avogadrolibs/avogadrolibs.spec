@@ -1,7 +1,7 @@
 #
 # spec file for package avogadrolibs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ Name:           avogadrolibs
 Version:        1.100.0
 Release:        0
 Summary:        Avogadro libraries for computational chemistry
-License:        BSD-3-Clause AND CDDL-1.0 AND GPL-3.0-or-later AND Apache-2.0
+License:        Apache-2.0 AND BSD-3-Clause AND CDDL-1.0 AND GPL-3.0-or-later
 URL:            https://two.avogadro.cc/
 Source0:        https://github.com/OpenChemistry/avogadrolibs/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/OpenChemistry/molecules/archive/%{molecules_rev}.tar.gz#/molecules-%{molecules_rev}.tar.gz
@@ -50,6 +50,7 @@ Source3:        https://github.com/OpenChemistry/fragments/archive/refs/tags/%{f
 Patch0:         not-install-gwavi.patch
 # PATCH-FIX-UPSTREAM fix-cmake-dependencies.patch -- Fix CMake dependencies
 Patch1:         fix-cmake-dependencies.patch
+Patch2:         assert.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  eigen3-devel >= 2.91.0
 BuildRequires:  fdupes
@@ -97,8 +98,8 @@ modeling, bioinformatics, materials science, and related areas.
 
 %package -n %{libname}
 Summary:        Avogadro libraries for computational chemistry
-Recommends:     avogadro2-data >= %{version}
 Recommends:     %{name}-plugins >= %{version}
+Recommends:     avogadro2-data >= %{version}
 
 %description -n %{libname}
 Avogadro libraries provide 3D rendering, visualization, analysis
