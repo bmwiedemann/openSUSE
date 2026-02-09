@@ -20098,14 +20098,17 @@ unsorted:
   - nvidia-open-driver-G06-signed-cuda-kmp-longterm 
   - nvidia-open-driver-G06-signed-cuda-longterm-devel 
   - nvidia-open-driver-G06-signed-default-devel 
+  - nvidia-open-driver-G06-signed-kmp-default 
   - nvidia-open-driver-G06-signed-kmp-longterm 
   - nvidia-open-driver-G06-signed-longterm-devel 
   - nvidia-open-driver-G07-signed-check 
   - nvidia-open-driver-G07-signed-cuda-check 
   - nvidia-open-driver-G07-signed-cuda-default-devel 
+  - nvidia-open-driver-G07-signed-cuda-kmp-default 
   - nvidia-open-driver-G07-signed-cuda-kmp-longterm 
   - nvidia-open-driver-G07-signed-cuda-longterm-devel 
   - nvidia-open-driver-G07-signed-default-devel 
+  - nvidia-open-driver-G07-signed-kmp-default 
   - nvidia-open-driver-G07-signed-kmp-longterm 
   - nvidia-open-driver-G07-signed-longterm-devel 
   - nvidia-settings 
@@ -27164,7 +27167,6 @@ unsorted:
   - python311-pytoolconfig-validation 
   - python311-pytools 
   - python311-pytz 
-  - python311-pytz-deprecation-shim 
   - python311-pytzdata 
   - python311-pyu2f 
   - python311-pyuca 
@@ -31035,7 +31037,6 @@ unsorted:
   - python312-pytoolconfig-validation 
   - python312-pytools 
   - python312-pytz 
-  - python312-pytz-deprecation-shim 
   - python312-pytzdata 
   - python312-pyu2f 
   - python312-pyuca 
@@ -34878,7 +34879,6 @@ unsorted:
   - python313-pytoolconfig-validation 
   - python313-pytools 
   - python313-pytz 
-  - python313-pytz-deprecation-shim 
   - python313-pytzdata 
   - python313-pyu2f 
   - python313-pyuca 
