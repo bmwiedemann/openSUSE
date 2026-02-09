@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-xml4
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global base_name plexus-xml
 %global version_suffix 4
 Name:           %{base_name}%{version_suffix}
-Version:        4.1.0
+Version:        4.1.1
 Release:        0
 Summary:        Plexus XML Utilities
 License:        Apache-2.0

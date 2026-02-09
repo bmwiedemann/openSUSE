@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb  9 14:38:46 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 4.1.1
+  * Changes
+    + Fix polynomial regular expression vulnerability in XML
+      encoding detection
+    + Declare license info in POM
+  * Maintenance
+    + JUnit Jupiter best practices
+  * Dependency updates
+    + Bump org.codehaus.plexus:plexus from 20 to 25
+    + Bump org.apache.maven:maven-xml from 4.0.0-rc-3 to 4.0.0-rc-5
+
+-------------------------------------------------------------------
 Tue Nov  4 15:52:56 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging with version 4.1.0
