@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb  8 06:02:07 UTC 2026 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.10
+  * Add colemak keyboard (if libchewing supports it)
+- changes in 5.1.9
+  * Fix compatibility with new chewing version
+
+-------------------------------------------------------------------
 Sun Jun 22 03:45:07 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.8
