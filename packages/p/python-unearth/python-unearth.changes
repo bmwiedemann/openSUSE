@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb  9 05:17:29 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.18.2:
+  ## Features
+  * Support Python 3.14 and drop support for Python 3.8
+  ## Bug Fixes
+  * Allow again branches in git URLs
+  * Ensure repository is reset to the correct revision during fetch
+  * Support git urls with refs
+- Add patch support-packaging-26.patch:
+  * Support changes required by packaging 26.0.
+
+-------------------------------------------------------------------
 Fri May 16 08:28:31 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.17.5

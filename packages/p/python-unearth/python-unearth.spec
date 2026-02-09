@@ -1,7 +1,7 @@
 #
 # spec file for package python-unearth
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-unearth
-Version:        0.17.5
+Version:        0.18.2
 Release:        0
 Summary:        A utility to fetch and download python packages
 License:        MIT
 URL:            https://unearth.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/u/unearth/unearth-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+# PATCH-FIX-UPSTREAM gh#frostming/unearth#176
+Patch0:         support-packaging-26.patch
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module packaging >= 20}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
@@ -57,7 +59,7 @@ This project exists as the last piece to complete the puzzle of a package manage
 They provide all the low-level functionalities that are needed to resolve and install packages.
 
 %prep
-%setup -q -n unearth-%{version}
+%autosetup -p1 -n unearth-%{version}
 
 %build
 %pyproject_wheel
