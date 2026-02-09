@@ -16598,6 +16598,8 @@ unsorted:
   - libtcmu2 
   - libtcnative-1-0 
   - libtcnative-1-0-devel 
+  - libtcnative-2-0 
+  - libtcnative-2-0-devel 
   - libtdb-devel 
   - libtdsodbc0 
   - libtdsodbc0-32bit 
@@ -17006,7 +17008,7 @@ unsorted:
   - libvoikko1 
   - libvoikko1-32bit 
   - libvolk-1_4_341 
-  - libvolk3_2 
+  - libvolk3_3 
   - libvomsapi1 
   - libvorbis-devel 
   - libvorbis-devel-32bit 
@@ -17283,6 +17285,7 @@ unsorted:
   - libxcvt-devel 
   - libxdg-basedir-devel 
   - libxdg-basedir1 
+  - libxdigest0 
   - libxdp-devel 
   - libxeme0 
   - libxerces-c-3_3 
@@ -20098,17 +20101,14 @@ unsorted:
   - nvidia-open-driver-G06-signed-cuda-kmp-longterm 
   - nvidia-open-driver-G06-signed-cuda-longterm-devel 
   - nvidia-open-driver-G06-signed-default-devel 
-  - nvidia-open-driver-G06-signed-kmp-default 
   - nvidia-open-driver-G06-signed-kmp-longterm 
   - nvidia-open-driver-G06-signed-longterm-devel 
   - nvidia-open-driver-G07-signed-check 
   - nvidia-open-driver-G07-signed-cuda-check 
   - nvidia-open-driver-G07-signed-cuda-default-devel 
-  - nvidia-open-driver-G07-signed-cuda-kmp-default 
   - nvidia-open-driver-G07-signed-cuda-kmp-longterm 
   - nvidia-open-driver-G07-signed-cuda-longterm-devel 
   - nvidia-open-driver-G07-signed-default-devel 
-  - nvidia-open-driver-G07-signed-kmp-default 
   - nvidia-open-driver-G07-signed-kmp-longterm 
   - nvidia-open-driver-G07-signed-longterm-devel 
   - nvidia-settings 
@@ -48420,6 +48420,8 @@ unsorted:
   - tree-sitter-doxygen-devel 
   - tree-sitter-firrtl 
   - tree-sitter-firrtl-devel 
+  - tree-sitter-fountain 
+  - tree-sitter-fountain-devel 
   - tree-sitter-func 
   - tree-sitter-gitattributes 
   - tree-sitter-gitattributes-devel 
@@ -49923,6 +49925,7 @@ unsorted:
   - xdg-desktop-portal-wlr 
   - xdg-terminal-exec 
   - xdg-utils-cxx-devel 
+  - xdigest-devel 
   - xdiskusage 
   - xditview 
   - xdm-xsession 
