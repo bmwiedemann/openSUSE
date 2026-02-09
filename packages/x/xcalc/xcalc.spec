@@ -1,7 +1,7 @@
 #
 # spec file for package xcalc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xcalc
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        Scientific calculator for X
 License:        MIT
@@ -26,8 +26,7 @@ URL:            https://xorg.freedesktop.org/
 Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 Source1:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz.sig
 Source2:        xcalc.keyring
-Source3:        xcalc.desktop
-Source4:        xcalc.png
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(x11)
@@ -43,23 +42,18 @@ or an HP-10C.
 
 %prep
 %setup -q
-cp %{SOURCE3} .
 
 %build
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
-%suse_update_desktop_file -i -u xcalc Utility Calculator
-install -m0644 -D %{SOURCE4} %{buildroot}%{_datadir}/pixmaps/xcalc.png
+%meson_install
 
 %files
 %license COPYING
 %doc ChangeLog README.md
 %{_bindir}/xcalc
-%{_datadir}/applications/xcalc.desktop
-%{_datadir}/pixmaps/xcalc.png
 %dir %{_datadir}/X11/app-defaults
 %{_datadir}/X11/app-defaults/XCalc
 %{_datadir}/X11/app-defaults/XCalc-color

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Feb  8 08:05:41 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.3
+  * negf: Fix -Wformat-truncation warning
+  * actions.c: handle 61 -Wextra-semi-stmt warnings from clang
+  * Add noreturn attribute to Syntax() prototype
+  * Add unused attributes to unused parameters of callback functions
+  * Add cast to quiet -Wshorten-64-to-32 warning
+  * meson: Add option to build with meson
+  * Improve man page formatting
+  * man page: fix warnings from `mandoc -T lint` and `groff -rCHECKSTYLE=10`
+  * gitlab CI: drop the ci-fairy check-mr job
+- switch to meson
+- get rid of xcalc.desktop/xcalc.png since usage became too
+  complicated ...
+
+-------------------------------------------------------------------
 Fri May  5 09:20:38 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.2

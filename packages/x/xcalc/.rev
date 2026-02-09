@@ -108,4 +108,24 @@
   * Key color highlighting still incorrect</comment>
     <requestid>1085007</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b057e248f5f13c9a6db512bdadb2c6b6</srcmd5>
+    <version>1.1.3</version>
+    <time>1770648306</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.3
+  * negf: Fix -Wformat-truncation warning
+  * actions.c: handle 61 -Wextra-semi-stmt warnings from clang
+  * Add noreturn attribute to Syntax() prototype
+  * Add unused attributes to unused parameters of callback functions
+  * Add cast to quiet -Wshorten-64-to-32 warning
+  * meson: Add option to build with meson
+  * Improve man page formatting
+  * man page: fix warnings from `mandoc -T lint` and `groff -rCHECKSTYLE=10`
+  * gitlab CI: drop the ci-fairy check-mr job
+- switch to meson
+- get rid of xcalc.desktop/xcalc.png since usage became too
+  complicated ...</comment>
+    <requestid>1331897</requestid>
+  </revision>
 </revisionlist>
