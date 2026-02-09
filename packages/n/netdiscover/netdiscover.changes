@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 19 08:54:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.21:
+  * update-oui-database.sh:
+  * - Using mtime to define DATA2 to update-oui-database.sh
+    reproducible.
+  * - Added an autofix for x01 binary byte.
+  * - Added a check for dos2unix results.
+  * - Released version 0.6.
+
+-------------------------------------------------------------------
 Wed May 21 14:00:25 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.20:
@@ -18,7 +29,7 @@ Sat Dec  3 22:16:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Use unsigned int for data_counter.hosts. Thanks to Brendan Coles
     bcoles@gmail.com
   * Updated OUI table.
- 
+
 -------------------------------------------------------------------
 Wed Mar 16 12:49:22 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
@@ -88,7 +99,7 @@ Wed Feb 28 14:25:58 UTC 2018 - mpluskal@suse.com
 -------------------------------------------------------------------
 Mon Jul 24 11:25:06 UTC 2017 - mpluskal@suse.com
 
-- Cleaned up spec file with spec-cleaner 
+- Cleaned up spec file with spec-cleaner
 - Add patches:
   * netdiscover-update-oui.patch
   * netdiscover-fix-makefile.patch
@@ -116,7 +127,7 @@ Wed May 20 10:23:57 UTC 2015 - AxelKoellhofer@web.de - 0.3_beta7
 -------------------------------------------------------------------
 Sat May  2 12:49:56 UTC 2015 - AxelKoellhofer@web.de - 0.3_beta7
 
-- updated to 0.3 beta7 pre-release 
+- updated to 0.3 beta7 pre-release
 - updated oui database
 
 -------------------------------------------------------------------
