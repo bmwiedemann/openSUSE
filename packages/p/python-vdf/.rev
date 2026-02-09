@@ -7,4 +7,13 @@
     <comment>I want to maintain python-vdf in Factory and would like to use games:tools as the devel/feeder project. This is a required dependency for faugus-launcher to work properly.</comment>
     <requestid>1330222</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c67c7de307291b8b3279215d8447f7ef</srcmd5>
+    <version>4.0</version>
+    <time>1770633789</time>
+    <user>anag_factory</user>
+    <comment>- Minor .spec fixes
+- Updated URL on package overview</comment>
+    <requestid>1331802</requestid>
+  </revision>
 </revisionlist>

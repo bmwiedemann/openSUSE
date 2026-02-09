@@ -1,5 +1,7 @@
 #
-# Copyright (c) 2026 SUSE LLC
+# spec file for package python-vdf
+#
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,13 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%{?sle15_python_module_pythons}
 
-# Fixes for Leap 15.x
-%if 0%{?sle_version} == 150600
-# Set Group (deprecated in newer versions)
-Group:          Development/Languages/Python
-%endif
+%{?sle15_python_module_pythons}
 
 Name:           python-vdf
 Version:        4.0
@@ -27,6 +24,7 @@ Release:        0
 Summary:        Python Parser for VDF Files
 License:        MIT
 URL:            https://github.com/solsticegamestudios/vdf
+Group:          Development/Languages/Python
 
 # Get the source from tar_scm
 Source0:        %{name}-%{version}.tar.xz
@@ -36,9 +34,9 @@ BuildArch:      noarch
 # VDF BuildDeps
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module pytest}
 
 # To remove duplicated files
 BuildRequires:  fdupes
