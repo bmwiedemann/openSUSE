@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Feb 09 06:20:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.51.0:
+  * Added Features
+    - capture new CVSS scores and additional references from GHSA
+      [#863 @westonsteimel]
+    - Add support for secureos distro (#765) [#856
+      @willmurphyscode]
+  * Bug Fixes
+    - remove default configs from grype-db-manager [#861
+      @willmurphyscode]
+  * Additional Changes
+    - document use of uv not poetry [#640 @popey]
+  * Dependencies
+    - chore(deps): Bump boto3 in the python-minor-and-patch group
+      (#868)
+    - chore(deps): Bump actions/cache in /.github/actions/bootstrap
+      (#867)
+    - chore(deps): Bump actions/cache from 5.0.2 to 5.0.3 (#866)
+    - chore(deps): Bump the python-minor-and-patch group across 1
+      directory with 4 updates (#862)
+    - chore(deps): update tools to latest versions (#865)
+    - chore(deps): update anchore dependencies (#864)
+    - chore(deps): Bump actions/setup-python in
+      /.github/actions/bootstrap (#854)
+    - chore(deps): Bump peter-evans/create-pull-request from 8.0.0
+      to 8.1.0 (#853)
+
+-------------------------------------------------------------------
 Fri Jan 30 06:25:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.50.0:
