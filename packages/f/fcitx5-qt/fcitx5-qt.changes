@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb  7 06:34:32 UTC 2026 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.12
+  * fix build with new Qt6
+- drop patch:
+  * 0001-Try-new-cmake-style-for-Qt6-76.patch
+  * 0002-Fix-cmake-for-qt6.patch
+  * 0003-Migrate-immodule-probing-also-to-GuiPrivate-target.patch
+
+-------------------------------------------------------------------
 Thu Oct  9 18:57:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream changes for Qt 6.10 compatibility:

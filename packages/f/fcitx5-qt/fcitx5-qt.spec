@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-qt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,17 +29,13 @@
 
 %define build_qt5 1
 Name:           fcitx5-qt
-Version:        5.1.10
+Version:        5.1.12
 Release:        0
 Summary:        Qt library and IM module for fcitx5
 License:        BSD-3-Clause AND LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx5-qt
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
-# PATCH-FIX-UPSTREAM -- Qt 6.10 compat
-Patch0:         0001-Try-new-cmake-style-for-Qt6-76.patch
-Patch1:         0002-Fix-cmake-for-qt6.patch
-Patch2:         0003-Migrate-immodule-probing-also-to-GuiPrivate-target.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
