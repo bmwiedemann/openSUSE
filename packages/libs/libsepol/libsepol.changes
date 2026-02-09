@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Feb  5 16:28:22 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 3.10
+  https://github.com/SELinuxProject/selinux/releases/tag/3.10
+  * libsepol: fix TARGET and LIBSO on Darwin
+  * libsepol: add bpf_token_perms polcap
+  * libsepol: Fix erroneous genfscon asterisks
+  * libsepol: Fix sid handling when writing out policy from binary
+  * libsepol: Fix an error in the policyd validation of user datums
+  * libsepol: Fix processing of levels for user rule in an optional block
+  * libsepol: Fix problem with handling type attributes in role-types rule
+  * libsepol: Expand role attributes when expanding instead of when linking
+  * libsepol: Fix expand_role_attributes_in_attributes()
+  * libsepol: Allow type attributes to be associated with other type attributes
+  * libsepol: Tighten checks on MLS range and level when validating
+  * libsepol: Check for an unset sensitivity in module_to_cil
+  * libsepol: Handled required users in module_to_cil
+  * libsepol: Fix potential NULL dereference in policydb_read()
+  * libsepol: Fix potential use of an uninitialized value in link.c
+  * libsepol: Fix possible use-after-free when expanding attributes
+  * libsepol: Support functionfs_seclabel policycap
+  * libsepol: add memfd_class capability
+- keyring: Add key of Jason Zaman <jasonzaman@gmail.com> 
+  * added 63191CE94183098689CAB8DB7EF137EC935B0EAF [expires: 2026-02-08]
+
+-------------------------------------------------------------------
 Thu Jul 17 15:49:27 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.9
