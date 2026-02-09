@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb  8 05:34:25 UTC 2026 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.11
+  * A new default-enabled option allows use previously typed text
+    to predict
+- changes in 5.1.10
+  * Fix crash when prediction with custom phrase
+  * emoji 15 & 16 support in pinyin symbols
+
+-------------------------------------------------------------------
 Sat Sep 20 00:51:32 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - fix build for leap 15.6

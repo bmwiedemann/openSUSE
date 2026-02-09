@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-chinese-addons
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-chinese-addons
-Version:        5.1.9
+Version:        5.1.11
 Release:        0
 Summary:        Pinyin and Table IM support for fcitx5
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -32,8 +32,13 @@ BuildRequires:  fcitx5-qt-devel
 BuildRequires:  fdupes
 BuildRequires:  fmt-devel
 BuildRequires:  hicolor-icon-theme
+%if 0%{?suse_version} < 1600
+BuildRequires:  libboost_iostreams1_75_0-devel
+BuildRequires:  libboost_regex1_75_0-devel
+%else
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_regex-devel
+%endif
 BuildRequires:  libcurl-devel
 BuildRequires:  libime-devel >= 1.0.12
 BuildRequires:  opencc-devel
