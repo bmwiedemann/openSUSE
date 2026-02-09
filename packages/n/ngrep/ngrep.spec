@@ -1,7 +1,7 @@
 #
 # spec file for package ngrep
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ngrep
-Version:        1.48.3
+Version:        1.49.0
 Release:        0
 Summary:        Network grep
 License:        BSD-4-Clause

@@ -102,4 +102,12 @@ If possible please copy to 12.3 too</comment>
   * 27.patch (not longer needed)</comment>
     <requestid>1318246</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d02ed09f0a798b33778bca7e7babb769</srcmd5>
+    <version>1.49.0</version>
+    <time>1770649206</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1332015</requestid>
+  </revision>
 </revisionlist>
