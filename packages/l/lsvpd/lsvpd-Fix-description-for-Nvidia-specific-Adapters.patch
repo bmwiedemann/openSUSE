@@ -1,0 +1,66 @@
+From c6fc2eed3940dce96830d32b2e5959c1a38e160e Mon Sep 17 00:00:00 2001
+From: Sathvika Vasireddy <sv@linux.ibm.com>
+Date: Mon, 19 Jan 2026 10:57:20 +0530
+Subject: [PATCH] lsvpd: Fix description for Nvidia specific Adapters
+
+- Update Fractal description to include 1Gb speed support
+  (25Gb/10Gb -> 25Gb/10Gb/1Gb)
+- Correct Onion Creek description speed from 100GbE to 200GbE
+- Fix indentation for mDescription.setValue() calls.
+
+Signed-off-by: Sathvika Vasireddy <sv@linux.ibm.com>
+---
+ .../sys_interface/sysfstreecollector.cpp         | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/src/internal/sys_interface/sysfstreecollector.cpp b/src/internal/sys_interface/sysfstreecollector.cpp
+index f7e074a..b6f8a6a 100644
+--- a/src/internal/sys_interface/sysfstreecollector.cpp
++++ b/src/internal/sys_interface/sysfstreecollector.cpp
+@@ -1742,8 +1742,8 @@ ERROR:
+ 						fillMe->mFRU.setValue("03JP128", 95, __FILE__, __LINE__);
+ 						fillMe->mFeatureCode.setValue("EAPC / EAPD", 95, __FILE__, __LINE__);
+ 						fillMe->addDeviceSpecific("CE", "CCIN Extension", "EC26", 95);
+-                        fillMe->mDescription.setValue(fillMe->mDescription.getValue() +
+-                            " PCIe4 4-Port 25Gb/10Gb RoCE SFP28 Adapter", 95, __FILE__, __LINE__);
++						fillMe->mDescription.setValue(fillMe->mDescription.getValue() +
++								" PCIe4 4-Port 25Gb/10Gb/1Gb RoCE SFP28 Adapter", 95, __FILE__, __LINE__);
+ 						break;
+ 
+ 					case 0x15b30022:  // CX7 Onion Creek PF
+@@ -1752,8 +1752,8 @@ ERROR:
+ 						fillMe->mFRU.setValue("03JP136", 95, __FILE__, __LINE__);
+ 						fillMe->mFeatureCode.setValue("EAPE / EAPF", 95, __FILE__, __LINE__);
+ 						fillMe->addDeviceSpecific("CE", "CCIN Extension", "EC2E", 95);
+-                        fillMe->mDescription.setValue(fillMe->mDescription.getValue() +
+-                            " PCIe5 2-Port 100GbE RoCE QSFP56 Adapter", 95, __FILE__, __LINE__);
++						fillMe->mDescription.setValue(fillMe->mDescription.getValue() +
++								" PCIe5 2-Port 200GbE RoCE QSFP56 Adapter", 95, __FILE__, __LINE__);
+ 						break;
+ 
+ 					default:
+@@ -1769,8 +1769,8 @@ ERROR:
+ 						fillMe->mFRU.setValue("03JP128", 95, __FILE__, __LINE__);
+ 						fillMe->mFeatureCode.setValue("EAPC / EAPD", 95, __FILE__, __LINE__);
+ 						fillMe->addDeviceSpecific("CE", "CCIN Extension", "EC26", 95);
+-                        fillMe->mDescription.setValue(fillMe->mDescription.getValue() +
+-                            " PCIe4 4-Port 25Gb/10Gb RoCE SFP28 Adapter", 95, __FILE__, __LINE__);
++						fillMe->mDescription.setValue(fillMe->mDescription.getValue() +
++								" PCIe4 4-Port 25Gb/10Gb/1Gb RoCE SFP28 Adapter", 95, __FILE__, __LINE__);
+ 						break;
+ 
+ 					case 0x15b30022:  // CX7 Onion Creek SR-IOV
+@@ -1779,8 +1779,8 @@ ERROR:
+ 						fillMe->mFRU.setValue("03JP136", 95, __FILE__, __LINE__);
+ 						fillMe->mFeatureCode.setValue("EAPE / EAPF", 95, __FILE__, __LINE__);
+ 						fillMe->addDeviceSpecific("CE", "CCIN Extension", "EC2E", 95);
+-                        fillMe->mDescription.setValue(fillMe->mDescription.getValue() +
+-                            " PCIe5 2-Port 100GbE RoCE QSFP56 Adapter", 95, __FILE__, __LINE__);
++						fillMe->mDescription.setValue(fillMe->mDescription.getValue() +
++								" PCIe5 2-Port 200GbE RoCE QSFP56 Adapter", 95, __FILE__, __LINE__);
+ 						break;
+ 
+ 					default:
+-- 
+2.51.0
+

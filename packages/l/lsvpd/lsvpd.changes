@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  9 10:31:01 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix description for Nvidia specific Adapters (jsc#PED-14550)
+  * lsvpd-Fix-description-for-Nvidia-specific-Adapters.patch
+
+-------------------------------------------------------------------
 Thu Jan 29 08:35:52 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
 
 - Add FRU number for Spyre cards
