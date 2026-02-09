@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 09 06:45:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.21.1:
+  no code changes
+- Update to version 0.21.0:
+  * feat: Add annotate functionality
+- Update to version 0.20.3:
+  * fix(uncomment): preserve indentation and flush buffer on
+    uncommented lines
+  * chore(deps): update alpine:3.23 docker digest to 2510918
+  * chore(deps): update azure/setup-helm digest to 1a275c3
+  * chore(deps): update docker/login-action digest to c94ce9f
+
+-------------------------------------------------------------------
 Fri Jan 30 07:52:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.20.2:
