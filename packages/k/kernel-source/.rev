@@ -7336,4 +7336,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.18.8 &amp; glibc 2.43 support; bugs: bsc#1012628 bsc#1257309</comment>
     <requestid>1330032</requestid>
   </revision>
+  <revision rev="823" vrev="1">
+    <srcmd5>b0dfe1768aa795419c470a0f7c1e1016</srcmd5>
+    <version>6.18.9</version>
+    <time>1770633765</time>
+    <user>anag_factory</user>
+    <comment>6.18.9 &amp; other fixes; bugs: bsc#1012628</comment>
+    <requestid>1331739</requestid>
+  </revision>
 </revisionlist>
