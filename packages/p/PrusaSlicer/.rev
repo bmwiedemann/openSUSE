@@ -553,4 +553,15 @@ Resubmitting in the hope that all bots and maintainers pick it up this time. The
     <comment></comment>
     <requestid>1317791</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>f104f4f0e64b1669d585c2de561c6799</srcmd5>
+    <version>2.9.4</version>
+    <time>1770647671</time>
+    <user>anag_factory</user>
+    <comment>- Bundle eigen-3.4.1 for now (prusa's bundled libigl is
+  incompatible with eigen-5.x, and prusa itself fails to build
+  with a new libigl) (uses eigen.patch)
+</comment>
+    <requestid>1331854</requestid>
+  </revision>
 </revisionlist>

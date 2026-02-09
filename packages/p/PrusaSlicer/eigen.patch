@@ -1,0 +1,57 @@
+From: <ej@inai.de>
+Date: 2026-02-07 22:54:58.634795742 +0100
+
+Stop looking for system eigen while we have eigen-3.4.1.tar.bz2
+bundled.
+
+---
+ CMakeLists.txt                     |    2 --
+ bundled_deps/admesh/CMakeLists.txt |    1 -
+ src/clipper/CMakeLists.txt         |    1 -
+ src/libslic3r/CMakeLists.txt       |    1 -
+ 4 files changed, 5 deletions(-)
+
+Index: PrusaSlicer-version_2.9.4/CMakeLists.txt
+===================================================================
+--- PrusaSlicer-version_2.9.4.orig/CMakeLists.txt
++++ PrusaSlicer-version_2.9.4/CMakeLists.txt
+@@ -377,8 +377,6 @@ set(MINIMUM_BOOST_VERSION "1.83.0")
+ set(_boost_components "filesystem;thread;log;locale;regex;chrono;atomic;date_time;iostreams;nowide")
+ find_package(Boost ${MINIMUM_BOOST_VERSION} REQUIRED COMPONENTS ${_boost_components})
+ 
+-find_package(Eigen3 3.3.7 REQUIRED)
+-
+ add_library(boost_libs INTERFACE)
+ add_library(boost_headeronly INTERFACE)
+ 
+Index: PrusaSlicer-version_2.9.4/bundled_deps/admesh/CMakeLists.txt
+===================================================================
+--- PrusaSlicer-version_2.9.4.orig/bundled_deps/admesh/CMakeLists.txt
++++ PrusaSlicer-version_2.9.4/bundled_deps/admesh/CMakeLists.txt
+@@ -13,4 +13,3 @@ add_library(admesh STATIC
+ 
+ target_include_directories(admesh PUBLIC .)
+ target_link_libraries(admesh PRIVATE boost_headeronly localesutils)
+-target_link_libraries(admesh PUBLIC Eigen3::Eigen)
+Index: PrusaSlicer-version_2.9.4/src/clipper/CMakeLists.txt
+===================================================================
+--- PrusaSlicer-version_2.9.4.orig/src/clipper/CMakeLists.txt
++++ PrusaSlicer-version_2.9.4/src/clipper/CMakeLists.txt
+@@ -10,5 +10,4 @@ add_library(clipper STATIC
+ )
+ 
+ target_link_libraries(clipper PRIVATE TBB::tbb TBB::tbbmalloc int128)
+-target_link_libraries(clipper PUBLIC Eigen3::Eigen)
+ target_include_directories(clipper PUBLIC .)
+Index: PrusaSlicer-version_2.9.4/src/libslic3r/CMakeLists.txt
+===================================================================
+--- PrusaSlicer-version_2.9.4.orig/src/libslic3r/CMakeLists.txt
++++ PrusaSlicer-version_2.9.4/src/libslic3r/CMakeLists.txt
+@@ -634,7 +634,6 @@ target_link_libraries(libslic3r PRIVATE
+     nlohmann_json::nlohmann_json
+ )
+ target_link_libraries(libslic3r PUBLIC
+-    Eigen3::Eigen
+     semver
+     admesh
+     localesutils

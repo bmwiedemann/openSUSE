@@ -1,7 +1,7 @@
 #
 # spec file for package PrusaSlicer
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,8 +35,9 @@ Summary:        G-code generator for 3D printers (RepRap, Makerbot, Ultimaker et
 License:        AGPL-3.0-only
 Group:          Hardware/Printing
 URL:            https://www.prusa3d.com/prusaslicer/
-# SourceRepository: https://github.com/prusa3d/PrusaSlicer
+#Git-Clone:     https://github.com/prusa3d/PrusaSlicer
 Source0:        https://github.com/prusa3d/PrusaSlicer/archive/version_%{prusa_slicer_tarball_version}.tar.gz#/%{name}-version_%{prusa_slicer_tarball_version}.tar.gz
+Source2:        https://gitlab.com/libeigen/eigen/-/archive/3.4.1/eigen-3.4.1.tar.bz2
 # PATCH-FIX-UPSTREAM PrusaSlicer-2.7.1-slic3r-wxWidgets-3.2.4.patch gh#prusa3d/PrusaSlicer#11769
 Patch1:         PrusaSlicer-2.7.1-slic3r-wxWidgets-3.2.4.patch
 # PATCH-FIX-UPSTREAM prusaslicer-2.9.3-boost-1.89.0-asio.patch gh#prusa3d/PrusaSlicer#13799 gentoo#946495 + asio::deadline_timer to system_timer
@@ -61,11 +62,11 @@ Patch16:        PrusaSlicer-2.9.1-pr14440-glad.patch
 Patch17:        PrusaSlicer-2.9.1-pr14214-egl-support.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.9.1-pr14263-secretstorage.patch gh#prusa3d/PrusaSlicer#14263
 Patch18:        PrusaSlicer-2.9.1-pr14263-secretstorage.patch
+Patch19:        eigen.patch
 BuildRequires:  blosc-devel
 BuildRequires:  cereal-devel
 BuildRequires:  cgal-devel >= 5.6
 BuildRequires:  cmake
-BuildRequires:  eigen3-devel >= 3
 BuildRequires:  expat
 BuildRequires:  fdupes
 # gcc v8 is required as least for charconv header. version 10 exists on 15.4 and tumbleweed
@@ -125,7 +126,7 @@ all those based on the Marlin, Prusa, Sprinter and Repetier firmware.
 It also works with Mach3, LinuxCNC and Machinekit controllers.
 
 %prep
-%autosetup -p1 -n %{name}-version_%{prusa_slicer_tarball_version}
+%autosetup -p1 -n %{name}-version_%{prusa_slicer_tarball_version} -a2
 %if 0%{?suse_version}
 sed -i 's/UNKNOWN/%{release}-%{?is_opensuse:open}SUSE-%{suse_version}/' version.inc
 %endif
@@ -147,6 +148,8 @@ sed -i 's|SLIC3R_BUILD_TESTS|FALSE|' src/libseqarrange/CMakeLists.txt
 # https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.build_job_constraints.html
 # https://en.opensuse.org/openSUSE:Specfile_guidelines#Parallel_make
 %limit_build -m 3072
+%set_build_flags
+export CXXFLAGS="$CXXFLAGS -I$PWD/eigen-3.4.1"
 export CC=gcc-%gcc_ver CXX=g++-%gcc_ver
 %cmake \
   -DCMAKE_CXX_STANDARD=17 \

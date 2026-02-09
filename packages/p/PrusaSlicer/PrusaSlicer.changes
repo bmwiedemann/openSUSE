@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb  7 21:53:44 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Bundle eigen-3.4.1 for now (prusa's bundled libigl is
+  incompatible with eigen-5.x, and prusa itself fails to build
+  with a new libigl) (uses eigen.patch)
+
+-------------------------------------------------------------------
 Mon Nov 10 15:34:54 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update PrusaSlicer-2.9.1-pr14263-secretstorage.patch
