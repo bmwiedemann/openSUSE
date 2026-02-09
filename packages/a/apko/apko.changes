@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Feb 09 06:18:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.6:
+  * fix: Double default APK data size limit (#2060)
+  * build(deps): bump github/codeql-action from 4.32.0 to 4.32.1
+    (#2048)
+  * build(deps): bump chainguard-dev/actions from 1.5.13 to 1.5.15
+    (#2057)
+  * build(deps): bump go.opentelemetry.io/otel/trace from 1.39.0 to
+    1.40.0 (#2051)
+  * build(deps): bump go.opentelemetry.io/otel from 1.39.0 to
+    1.40.0 (#2052)
+  * build(deps): bump chainguard.dev/sdk from 0.1.49 to 0.1.50
+    (#2055)
+  * build(deps): bump google.golang.org/api from 0.264.0 to 0.265.0
+    (#2056)
+  * build(deps): bump imjasonh/setup-crane from 0.4 to 0.5 (#2058)
+- Update to version 1.1.5:
+  * fix: Double default APK data size limit again (#2063)
+  * build(deps): bump github/codeql-action from 4.32.1 to 4.32.2
+    (#2062)
+
+-------------------------------------------------------------------
 Wed Feb 04 06:03:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.4:
