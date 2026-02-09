@@ -1,7 +1,7 @@
 #
 # spec file for package xournalpp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xournalpp
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Notetaking software designed around a tablet
 License:        GPL-2.0-or-later

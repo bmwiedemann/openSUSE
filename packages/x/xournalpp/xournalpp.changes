@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Feb  5 17:29:03 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.3.2:
+  * Fix sidebar layout when resizing and changing tab
+    (gh#xournalpp/xournalpp#7060).
+  * Fix missing lines/dots in graph/dotted backgrounds
+    (gh#xournalpp/xournalpp#6968).
+  * Fix change in new page behaviour with PDF background
+    (gh#xournalpp/xournalpp#7055).
+  * Fix crash on Clipboard IO error (gh#xournalpp/xournalpp#7009).
+  * Make Plugin openFile API comply with forceOpen parameter
+    (gh#xournalpp/xournalpp#6961).
+  * Fix CLI behaviour on error (gh#xournalpp/xournalpp#6956).
+  * Restore GtkSourceView support (gh#xournalpp/xournalpp#6969).
+  * Fix recoloring when light color is lighter
+    (gh#xournalpp/xournalpp#6948).
+  * Fix image orientation on Drag-n-Drop pasting
+    (gh#xournalpp/xournalpp#6943).
+  * Fix crashes when using touchscreen in Setting->Input panel
+    (gh#xournalpp/xournalpp#6916).
+  * Updated translations.
+
+-------------------------------------------------------------------
 Fri Dec 26 06:58:21 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.3.1:
