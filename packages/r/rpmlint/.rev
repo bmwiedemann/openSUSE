@@ -5498,4 +5498,15 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1330003</requestid>
   </revision>
+  <revision rev="525" vrev="1">
+    <srcmd5>1694189d875889955e58b75ea153db58</srcmd5>
+    <version>2.8.0+git20260206.eac6dd56</version>
+    <time>1770633763</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.8.0+git20260206.eac6dd56:
+  * polkit-rules-whitelist: add run0-wrappers rules (bsc#1254446)
+  * scoring: Raise forbidden-controlchar-found to 10k
+</comment>
+    <requestid>1331698</requestid>
+  </revision>
 </revisionlist>
