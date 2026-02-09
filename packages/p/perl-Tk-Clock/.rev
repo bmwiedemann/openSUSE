@@ -121,4 +121,13 @@
     <comment></comment>
     <requestid>1066000</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c9a012765c8ca8889fc66bb554c3057c</srcmd5>
+    <version>0.450.0</version>
+    <time>1770647689</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.450.0 (0.45)
+   see /usr/share/doc/packages/perl-Tk-Clock/ChangeLog</comment>
+    <requestid>1331909</requestid>
+  </revision>
 </revisionlist>

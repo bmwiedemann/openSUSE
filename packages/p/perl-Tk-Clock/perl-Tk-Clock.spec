@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Tk-Clock
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,30 +18,35 @@
 
 %define cpan_name Tk-Clock
 Name:           perl-Tk-Clock
-Version:        0.44
+Version:        0.450.0
 Release:        0
+# 0.45 -> normalize -> 0.450.0
+%define cpan_version 0.45
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Clock widget with analog and digital display
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{version}.tgz
+Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{cpan_version}.tgz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.90
 BuildRequires:  perl(Test::NoWarnings)
-BuildRequires:  perl(Tk) >= 402.000
+BuildRequires:  perl(Tk) >= 402.0
 BuildRequires:  perl(Tk::Canvas)
 BuildRequires:  perl(Tk::Derived)
 BuildRequires:  perl(Tk::Widget)
 Requires:       perl(Test::More) >= 0.9
 Requires:       perl(Test::NoWarnings)
-Requires:       perl(Tk) >= 402.000
+Requires:       perl(Tk) >= 402.0
 Requires:       perl(Tk::Canvas)
 Requires:       perl(Tk::Derived)
 Requires:       perl(Tk::Widget)
-Recommends:     perl(Encode) >= 3.19
-Recommends:     perl(Tk) >= 804.036
+Provides:       perl(Tk::Clock) = %{version}
+%undefine       __perllib_provides
+Recommends:     perl(Encode) >= 3.21
+Recommends:     perl(Tk) >= 804.36
 %{perl_requires}
 
 %description
@@ -51,8 +56,9 @@ options to change the appearance.
 Both analog and digital clocks are implemented.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
 sed -i -e 's,/pro/bin/perl,/usr/bin/perl,' examples/*pl
 # MANUAL END
@@ -70,6 +76,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc ChangeLog CONTRIBUTING.md examples README
+%doc ChangeLog CONTRIBUTING.md examples README SECURITY.md
 
 %changelog
