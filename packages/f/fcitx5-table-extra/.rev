@@ -81,4 +81,16 @@
     <comment></comment>
     <requestid>1287692</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f9b12250a71abe7636a34e9acc5a11c4</srcmd5>
+    <version>5.1.10</version>
+    <time>1770633810</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.1.10
+  * Update cangjie5.txt
+- update to 5.1.9
+  * translation update
+</comment>
+    <requestid>1331874</requestid>
+  </revision>
 </revisionlist>

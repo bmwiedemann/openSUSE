@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-table-extra
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-table-extra
-Version:        5.1.8
+Version:        5.1.10
 Release:        0
 Summary:        Extra Chinese table input methods for Fcitx5
 License:        GPL-3.0-or-later AND SUSE-Public-Domain
