@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  5 15:54:11 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 3.10
+  https://github.com/SELinuxProject/selinux/releases/tag/3.10
+  * no functional change
+- keyring: Add key of Jason Zaman <jasonzaman@gmail.com> 
+  * added 63191CE94183098689CAB8DB7EF137EC935B0EAF [expires: 2026-02-08]
+
+-------------------------------------------------------------------
 Thu Jul 17 16:02:42 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.9

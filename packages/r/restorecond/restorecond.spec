@@ -1,7 +1,7 @@
 #
 # spec file for package restorecond
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define libselinux_ver   3.9
+%define libselinux_ver   3.10
 Name:           restorecond
-Version:        3.9
+Version:        3.10
 Release:        0
 Summary:        Daemon to restore SELinux contexts
 License:        GPL-2.0-or-later

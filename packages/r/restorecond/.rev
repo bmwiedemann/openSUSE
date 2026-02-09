@@ -177,4 +177,17 @@
     <comment></comment>
     <requestid>1295306</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4c91140921597664a9693659a44319e3</srcmd5>
+    <version>3.10</version>
+    <time>1770633782</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.10
+  https://github.com/SELinuxProject/selinux/releases/tag/3.10
+  * no functional change
+- keyring: Add key of Jason Zaman &lt;jasonzaman@gmail.com&gt; 
+  * added 63191CE94183098689CAB8DB7EF137EC935B0EAF [expires: 2026-02-08]
+</comment>
+    <requestid>1331580</requestid>
+  </revision>
 </revisionlist>
