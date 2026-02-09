@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Mon Feb  9 07:05:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.205:
+  * Meshery CLI
+    - [CLI] Enhance default provider behavior @hortison (#17359)
+  * Maintenance
+    - [CI] Remove explicit branch from auto-commit in Rego lint
+      workflow @guan404ming (#17355)
+  * Documentation
+    - [CLI] Enhance default provider behavior @hortison (#17359)
+- update to 0.8.204:
+  * General
+    - Fix typos in rego policy files @guan404ming (#17346)
+    - Add make policy-lint target for Rego files @guan404ming
+      (#17343)
+    - Remove unused variable in extract_components rego rule
+      @guan404ming (#17344)
+    - refactor(policies): remove unused MAX_ALIASES constant
+      @guan404ming (#17333)
+    - Update npm install command to use legacy-peer-deps
+      @leecalcote (#17341)
+  * Meshery CLI
+    - fix(mesheryctl): update design list tests to fix failing test
+      and update test name @lekaf974 (#17334)
+  * Maintenance
+    - fix(ci): skip Rego auto-commit for fork PRs @guan404ming
+      (#17332)
+    - [GitHub Issue Template] Chore: Update documentation.md
+      @leecalcote (#17352)
+    - fix(mesheryctl): update design list tests to fix failing test
+      and update test name @lekaf974 (#17334)
+  * Documentation
+    - [Server] Fix None provider blank login by routing through
+      /user/login @leecalcote (#17342)
+- update to 0.8.203:
+  * General
+    - Initial migration of docs.meshery.io from Jekyll to Hugo
+      @CodexRaunak (#17071)
+    - Bump jsonpath from 1.1.1 to 1.2.0 in
+      /install/docker-extension/ui @dependabot[bot] (#17287)
+    - fix: reduce retry log spam when capability fetch fails
+      @guan404ming (#17212)
+  * Meshery CLI
+    - Fix unsafe os.Stat handling during mesheryctl config
+      initialization @SuryanshGarg04 (#17146)
+    - refactor: Consolidate --output-format handling in filter
+      command @shri771 (#17259)
+    - [mesheryctl] mesheryctl design onboard e2e @lekaf974 (#17283)
+    - [mesheryctl]: Added E2E tests for workspace command @DharunMR
+      (#17193)
+    - Fix duplicate error code: change mesheryctl
+      ErrConnectionNotFoundCode from "mesheryctl-1196" to
+      "mesheryctl-1197" @PragalvaXFREZ (#17268)
+    - mesheryctl/tests: change expected auth.json provider from
+      Meshery to ... @pranjalkole (#14985)
+    - template json for missing component and relationship
+      @Jougan-0 (#13872)
+    - Changed output status for system context @DharunMR (#17187)
+    - [mesheryctl] consolidate --output-format handling in
+      relationships command @shri771 (#17233)
+    - fix(mesheryctl/tests): Update BATS test expectations for
+      system-check, and perf commands @PragalvaXFREZ (#17141)
+    - refactor(mesehryctl): update organization handling to use
+      schema models @lekaf974 (#17162)
+  * Maintenance
+    - Fix unsafe os.Stat handling during mesheryctl config
+      initialization @SuryanshGarg04 (#17146)
+    - fix: remove secrets from workflow @ianrwhitney (#17323)
+    - feat: remove email and password from trace @ianrwhitney
+      (#17102)
+    - [mesheryctl] mesheryctl design onboard e2e @lekaf974 (#17283)
+    - [mesheryctl]: Added E2E tests for workspace command @DharunMR
+      (#17193)
+    - mesheryctl/tests: change expected auth.json provider from
+      Meshery to ... @pranjalkole (#14985)
+    - fix(ci): add TAP to Allure conversion for mesheryctl E2E QA
+      sync @PragalvaXFREZ (#17185)
+    - Added memory to tools list for coding agent @kishore08-07
+      (#17234)
+    - [CI] Fix bats-action 403 rate limit error @PragalvaXFREZ
+      (#17215)
+    - fix(mesheryctl/tests): Update BATS test expectations for
+      system-check, and perf commands @PragalvaXFREZ (#17141)
+  * Documentation
+    - Fix unsafe os.Stat handling during mesheryctl config
+      initialization @SuryanshGarg04 (#17146)
+    - [Catalog] Publish Guestbook App to Catalog @Sahitya0805
+      (#17324)
+    - fix broken hyperlink @bugslayer01 (#17302)
+    - fix(mesheryctl/tests): Update BATS test expectations for
+      system-check, and perf commands @PragalvaXFREZ (#17141)
+    - docs: fix minor grammar and formatting issues in concepts
+      documentation @va4unsingh (#17190)
+
+-------------------------------------------------------------------
 Fri Jan 30 08:32:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.202:
