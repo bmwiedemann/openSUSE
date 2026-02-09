@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb  8 06:39:17 UTC 2026 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.9
+  * Use QT_NO_KEYWORDS and clean up qt plugin includes
+
+-------------------------------------------------------------------
 Sun Jun 22 04:05:05 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.7

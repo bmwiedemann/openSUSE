@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-unikey
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-unikey
-Version:        5.1.7
+Version:        5.1.9
 Release:        0
 Summary:        Unikey engine support for Fcitx5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
