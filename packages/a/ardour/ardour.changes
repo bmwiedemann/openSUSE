@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb  6 04:42:24 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Update to 9.0. Check https://ardour.org/whatsnew.html for the
+  full list of changes
+  * Region FX
+  * clip recording
+  * touch-sensitive GUI
+  * pianoroll windows
+  * clip editing
+  * new MIDI binding maps
+  * dozens of bug fixes
+- Loading some external plugins will be blocked by selinux
+  * selinux-policy-targeted-gaming is recommended to allow them to load
+  * See: https://discourse.ardour.org/t/tls-1295-lea-so-linux-vers-doesnt-work
+
+-------------------------------------------------------------------
 Mon Nov 10 14:02:17 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop pkgconfig(libart-2.0) BuildRequires: no longer needed.

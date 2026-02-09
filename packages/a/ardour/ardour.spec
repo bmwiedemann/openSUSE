@@ -1,7 +1,7 @@
 #
 # spec file for package ardour
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%define dirbase ardour8
+%define dirbase ardour9
 Name:           ardour
-Version:        8.12.0
+Version:        9.0.0
 Release:        0
 Summary:        Multichannel Digital Audio Workstation
 # Legal: Ardour is a mix of GPL-2.0-or-later, [L]GPL-3.0-or-later and a couple copyleft
 #  licensed files (BSD, WTFPL). Use GPL-3.0-only for the compiled package.
 License:        GPL-3.0-only
 URL:            https://ardour.org/
-Source0:        https://community.ardour.org/download/release/610#/Ardour-%{version}.tar.bz2
+Source0:        https://community.ardour.org/download/release/616#/Ardour-%{version}.tar.bz2
 Source99:       ardour-rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -108,6 +108,7 @@ Recommends:     a2jmidid
 Recommends:     gtk2-engine-clearlooks
 Recommends:     libcanberra-gtk2-module
 Recommends:     libfftw3_threads3
+Recommends:     (selinux-policy-targeted-gaming if selinux)
 Conflicts:      ardour-vst
 Conflicts:      ardour2
 Conflicts:      ardour2-vst
@@ -150,7 +151,9 @@ sed -i 's#/usr/local/lib/vst3:/usr/lib/vst3#/usr/local/lib64/vst3:/usr/local/lib
 sed -i 's#/usr/local/lib/vst:/usr/lib/vst#/usr/local/lib64/vst:/usr/local/lib/vst:/usr/lib64/vst:/usr/lib/vst#' libs/ardour/search_paths.cc
 %endif
 
-# --no-ytk allows using the system gtk2
+# --no-execstack will avoid linter errors but prevent loading of external plugins
+# see https://discourse.ardour.org/t/tls-1295-lea-so-linux-vers-doesnt-work/111778/21
+# selinux would prevent this anyway, the gaming policy is necessary for this to work
 %build
 ./waf configure \
    --prefix=%{_prefix} \
@@ -166,7 +169,7 @@ sed -i 's#/usr/local/lib/vst:/usr/lib/vst#/usr/local/lib64/vst:/usr/local/lib/vs
    --noconfirm \
    --no-phone-home \
    --optimize \
-   --no-ytk
+   --ptformat
 
 ./waf i18n
 ./waf %{?_smp_mflags}
@@ -175,24 +178,24 @@ sed -i 's#/usr/local/lib/vst:/usr/lib/vst#/usr/local/lib64/vst:/usr/local/lib/vs
 ./waf --destdir=%{buildroot} install -v
 
 # upstream installs in wrong places
-install -D -m 644 -t %{buildroot}%{_datadir}/metainfo %{buildroot}%{_datadir}/appdata/ardour8.appdata.xml
+install -D -m 644 -t %{buildroot}%{_datadir}/metainfo %{buildroot}%{_datadir}/appdata/ardour9.appdata.xml
 rm -r %{buildroot}%{_datadir}/appdata
 
-%suse_update_desktop_file -i ardour8 AudioVideo Recorder
-%find_lang ardour8
-%find_lang gtk2_ardour8
+%suse_update_desktop_file -i ardour9 AudioVideo Recorder
+%find_lang ardour9
+%find_lang gtk2_ardour9
 %find_lang gtkmm2ext3
+%find_lang libytk9
 
 # remove dupes
 %fdupes -s %{buildroot}%{_datadir}
 
-%files -f ardour8.lang -f gtk2_ardour8.lang -f gtkmm2ext3.lang
+%files -f ardour9.lang -f gtk2_ardour9.lang -f gtkmm2ext3.lang -f libytk9.lang
 %license COPYING
 %doc doc README
 %dir %{_sysconfdir}/%{dirbase}
 %config(noreplace) %{_sysconfdir}/%{dirbase}/*
 %{_bindir}/%{dirbase}
-%{_bindir}/%{dirbase}-copy-mixer
 %{_bindir}/%{dirbase}-export
 %{_bindir}/%{dirbase}-lua
 %{_bindir}/%{dirbase}-new_empty_session
@@ -200,7 +203,7 @@ rm -r %{buildroot}%{_datadir}/appdata
 %{_datadir}/%{dirbase}/
 %{_datadir}/applications/%{dirbase}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{dirbase}.png
-%{_datadir}/metainfo/ardour8.appdata.xml
+%{_datadir}/metainfo/ardour9.appdata.xml
 %{_datadir}/mime/packages/ardour.xml
 %{_libdir}/%{dirbase}/
 %exclude %{_datadir}/%{dirbase}/templates/.stub
