@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb 09 06:27:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.222.0:
+  * Features
+    - Add support for EKS Windows Server 2025 in eksctl (#8648)
+    - Allow wildcard matching of service account subject (#8629)
+  * Improvements
+    - Bump aws-sdk-go-v2 versions to support aws login (#8668)
+    - Update default cluster version to Kubernetes v1.34 (#8645)
+  * Bug Fixes
+    - replace AmazonLinux2 amis with AmazonLinux2023 | remove
+      override-bootstrap test in custom_ami tests (#8666)
+    - fix integration test with eks default version change (#8665)
+    - only create iam role stack for capability if the roleArn is
+      not provided (#8655)
+    - fix ssm resolver ami test with addition of bottleRocket
+      nvidia fips amis (#8656)
+
+-------------------------------------------------------------------
 Fri Dec 19 08:21:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.221.0:
