@@ -1,7 +1,7 @@
 #
 # spec file for package arpack-ng
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -198,6 +198,8 @@ export MPIF77=%{my_prefix}/bin/mpif77
 export LD_LIBRARY_PATH=%{my_prefix}/%{_lib}
 %endif
 
+# The eigen library needs better than 11
+perl -i -lpe 's{(set.CMAKE_CXX_STANDARD) 11}{$1 14}g' CMakeLists.txt
 %cmake \
   -DCMAKE_INSTALL_PREFIX:PATH=%{my_prefix} \
   -DCMAKE_INSTALL_LIBDIR:PATH=%{my_libdir} \

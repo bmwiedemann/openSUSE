@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb  7 19:00:05 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Bump chosen standard to C++14 because Eigen 5.x requires it now.
+
+-------------------------------------------------------------------
 Sun Mar 24 11:28:44 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Remove s390x specific memory constraints based on improved memory usage
