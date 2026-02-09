@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Sun Feb  8 11:32:46 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- initial package
+- with xdigest-0.4.0-pkgconfig_version.patch
+- with xdigest-0.4.0-noexecstack.patch

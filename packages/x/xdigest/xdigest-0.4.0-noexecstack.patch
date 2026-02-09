@@ -1,0 +1,27 @@
+From 9d5a24bdc24aefb7269eee37916599cdbcce9ee1 Mon Sep 17 00:00:00 2001
+From: Timofei Zhakov <tima@chemodax.net>
+Date: Sun, 8 Feb 2026 11:29:38 +0000
+Subject: [PATCH] cmake: Disable stack execution by passing adding
+ `-Wa,--noexecstack` arguments to the assembler.
+
+Fixes #8.
+Found by: @andreasstieger
+
+
+git-svn-id: https://svn.rinrab.com/rinrab/xdigest/trunk@6540 0083e6b4-6090-234a-836e-88fcc467669c
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7e5bf30..f6417ac 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -52,6 +52,7 @@ if (USE_ASM)
+     else()
+         enable_language(ASM)
+         set(ASMEXT S)
++        set(CMAKE_ASM_FLAGS "${CMAKE_ASM_FLAGS} -Wa,--noexecstack")
+     endif()
+ endif()
+ 

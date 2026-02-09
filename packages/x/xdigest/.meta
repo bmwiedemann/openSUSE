@@ -1,0 +1,5 @@
+<package name="xdigest" project="openSUSE:Factory">
+  <title>Digest algorithm library designed for speed</title>
+  <description>Xdigest is a digest algorithm implementation library designed for speed. It uses assembly optimization for performance, is designed to be small and lightweight and provides a simple API.</description>
+  <url>https://github.com/rinrab/xdigest</url>
+</package>
