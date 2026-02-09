@@ -1,7 +1,7 @@
 #
 # spec file for package azure-cli
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 %endif
 
 Name:           azure-cli%{?psuffix}
-Version:        2.82.0
+Version:        2.83.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -51,10 +51,11 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       %{pythons}-Fabric >= 3.2.2
 Requires:       %{pythons}-PyGithub >= 1.38
-Requires:       %{pythons}-PyNaCl >= 1.5.0
+Requires:       %{pythons}-PyNaCl >= 1.6.2
 Requires:       %{pythons}-PyYAML >= 5.1
 Requires:       %{pythons}-antlr4-python3-runtime >= 4.13.1
-Requires:       %{pythons}-azure-appconfiguration >= 1.7.1
+Requires:       %{pythons}-azure-ai-projects >= 1.0.0
+Requires:       %{pythons}-azure-appconfiguration >= 1.7.2
 Requires:       %{pythons}-azure-batch >= 15.0.0~b1
 Requires:       %{pythons}-azure-cosmos >= 3.0.2
 Requires:       %{pythons}-azure-data-tables >= 12.4.0
@@ -64,7 +65,6 @@ Requires:       %{pythons}-azure-keyvault-certificates >= 4.7.0
 Requires:       %{pythons}-azure-keyvault-keys >= 4.11.0
 Requires:       %{pythons}-azure-keyvault-secrets >= 4.7.0
 Requires:       %{pythons}-azure-keyvault-securitydomain >= 1.0.0~b1
-Requires:       %{pythons}-azure-ai-projects >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-advisor >= 9.0.0
 Requires:       %{pythons}-azure-mgmt-apimanagement >= 4.0.0
 Requires:       %{pythons}-azure-mgmt-appconfiguration >= 5.0.0
@@ -131,8 +131,8 @@ Requires:       %{pythons}-azure-mgmt-synapse >= 2.1.0b5
 Requires:       %{pythons}-azure-mgmt-trafficmanager >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-web >= 9.0.0
 Requires:       %{pythons}-azure-monitor-query >= 1.2.0
-Requires:       %{pythons}-azure-storage-common >= 1.4
 Requires:       %{pythons}-azure-storage-blob >= 12.28.0~b1
+Requires:       %{pythons}-azure-storage-common >= 1.4
 Requires:       %{pythons}-azure-storage-file-datalake >= 12.23.0~b1
 Requires:       %{pythons}-azure-storage-file-share >= 12.24.0~b1
 Requires:       %{pythons}-azure-storage-queue >= 12.15.0~b1
