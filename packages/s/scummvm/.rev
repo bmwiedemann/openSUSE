@@ -360,4 +360,14 @@ SPDX format - plus it appears as though only one license relevant binary is crea
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1323705</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e98ab9f3631b6fea5e287ebbf1940b9c</srcmd5>
+    <version>2026.1.0</version>
+    <time>1770661816</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2026.1.0
+  * see https://downloads.scummvm.org/frs/scummvm/2026.1.0/ReleaseNotes.html for notes
+</comment>
+    <requestid>1332060</requestid>
+  </revision>
 </revisionlist>
