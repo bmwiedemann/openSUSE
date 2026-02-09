@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb  8 14:07:42 UTC 2026 - Marguerite Su <i@marguerite.su>
+
+- update version 5.1.12
+  * configlib: Do not link to unused PkgConfig::XkbFile
+
+-------------------------------------------------------------------
+Sun Feb  8 06:06:20 UTC 2026 - Marguerite Su <i@marguerite.su>
+
+- update version 5.1.11
+  * Use iso639 and iso3166 for better language name
+  * improve input method search with language
+- add fcitx5-configtool-revert-drop-qt5.patch
+  * upstream dropped Qt5, but Leap 15.6 is still using it
+
+-------------------------------------------------------------------
 Sun Jun 22 03:46:19 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - update version 5.1.10

@@ -145,4 +145,19 @@
     <comment></comment>
     <requestid>1287704</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>bdff20292fd2bd4f4497306fa36b38c4</srcmd5>
+    <version>5.1.12</version>
+    <time>1770648313</time>
+    <user>anag_factory</user>
+    <comment>- update version 5.1.12
+  * configlib: Do not link to unused PkgConfig::XkbFile
+- update version 5.1.11
+  * Use iso639 and iso3166 for better language name
+  * improve input method search with language
+- add fcitx5-configtool-revert-drop-qt5.patch
+  * upstream dropped Qt5, but Leap 15.6 is still using it
+</comment>
+    <requestid>1331876</requestid>
+  </revision>
 </revisionlist>
