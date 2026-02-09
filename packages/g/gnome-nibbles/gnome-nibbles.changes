@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb  8 09:31:43 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.5.0:
+  + No build dependency changes.
+  + Correct metadata.
+  + Fix the game not starting on level 1 for progress of Levels 1
+    through 26 in sequential order if the previous game was a fixed
+    level > 1
+  + Add new feature to clear high scores.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Nov  1 13:37:19 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.4.2:

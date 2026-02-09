@@ -427,4 +427,19 @@
     <comment></comment>
     <requestid>1315007</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>163ab45961de5034d3ed7ae2ff920b4f</srcmd5>
+    <version>4.5.0</version>
+    <time>1770662096</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.5.0:
+  + No build dependency changes.
+  + Correct metadata.
+  + Fix the game not starting on level 1 for progress of Levels 1
+    through 26 in sequential order if the previous game was a fixed
+    level &gt; 1
+  + Add new feature to clear high scores.
+  + Updated translations. (forwarded request 1331844 from iznogood)</comment>
+    <requestid>1332073</requestid>
+  </revision>
 </revisionlist>
