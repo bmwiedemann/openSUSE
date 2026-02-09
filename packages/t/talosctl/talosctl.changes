@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb  9 06:39:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.12.3:
+  https://github.com/siderolabs/talos/releases/tag/v1.12.3
+  * fix: undo CRLF on Windows (talosctl edit)
+  * fix(talosctl): pass --k8s-endpoint flag to rotate-ca kubernetes
+    rotation
+  * github.com/siderolabs/pkgs v1.12.0-32-g4f8efaf ->
+    v1.12.0-35-g15d5d78
+  * github.com/siderolabs/talos/pkg/machinery v1.12.2 -> v1.12.3
+  * github.com/siderolabs/tools v1.12.0-4-g31959f4 ->
+    v1.12.0-6-gdc37e09
+
+-------------------------------------------------------------------
 Fri Jan 23 06:20:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.12.2:
