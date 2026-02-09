@@ -1,7 +1,7 @@
 #
 # spec file for package cil
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cil
-Version:        3.9
+Version:        3.10
 Release:        0
 Summary:        SELinux Common Intermediate Language compiler
 License:        BSD-2-Clause

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  5 16:09:14 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 3.10
+  https://github.com/SELinuxProject/selinux/releases/tag/3.10
+  * secilc: use correct long option name for -X
+- keyring: Add key of Jason Zaman <jasonzaman@gmail.com> 
+  * added 63191CE94183098689CAB8DB7EF137EC935B0EAF [expires: 2026-02-08]
+
+-------------------------------------------------------------------
 Wed Jul 23 12:23:16 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.9

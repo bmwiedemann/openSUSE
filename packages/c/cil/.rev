@@ -53,4 +53,17 @@
     <comment></comment>
     <requestid>1295316</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>eb7caa24f7b88e11afd8b71db15eca57</srcmd5>
+    <version>3.10</version>
+    <time>1770633780</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.10
+  https://github.com/SELinuxProject/selinux/releases/tag/3.10
+  * secilc: use correct long option name for -X
+- keyring: Add key of Jason Zaman &lt;jasonzaman@gmail.com&gt; 
+  * added 63191CE94183098689CAB8DB7EF137EC935B0EAF [expires: 2026-02-08]
+</comment>
+    <requestid>1331574</requestid>
+  </revision>
 </revisionlist>
