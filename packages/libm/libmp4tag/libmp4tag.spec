@@ -18,13 +18,12 @@
 
 %define sover 2
 Name:           libmp4tag
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 Summary:        MP4 tagging library
 License:        Zlib
 URL:            https://libmp4tag.sourceforge.io/
 Source:         https://sourceforge.net/projects/libmp4tag/files/%{name}-src-%{version}.tar.gz
-Patch0:         libmp4tag-2.0.0-remove-rpath.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.18
 
@@ -70,6 +69,7 @@ This package contains the CLI tools built from %{name}.
 %build
 %cmake \
 	-DCMAKE_PROJECT_VERSION="%{version}" \
+	-DCMAKE_SKIP_RPATH:BOOL=TRUE \
 	%{nil}
 %cmake_build
 

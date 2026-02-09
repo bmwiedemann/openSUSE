@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  8 18:29:53 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.0.3:
+  * Fix compilation of user libmp4tag.h file
+- drop libmp4tag-2.0.0-remove-rpath.patch
+
+-------------------------------------------------------------------
 Wed Jan 21 18:59:58 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.0.2:
