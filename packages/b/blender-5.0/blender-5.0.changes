@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  6 21:40:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add assert.patch to fix build failures
+
+-------------------------------------------------------------------
 Thu Jan 15 23:22:20 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Allow ffmpeg 8

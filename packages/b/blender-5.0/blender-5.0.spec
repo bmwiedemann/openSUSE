@@ -1,7 +1,7 @@
 #
 # spec file for package blender-5.0
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019-2025 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -125,6 +125,7 @@ Source99:       series
 Patch1:         cmake_manpage_fix.patch
 # PATCH-FIX-OPENSUSE on 15.6 fstream is not included indirectly pull it in directly here
 Patch2:         octree-missing-fstream.patch
+Patch3:         assert.patch
 BuildRequires:  %{py3pkg}-devel
 BuildRequires:  %{py3pkg}-numpy-devel
 BuildRequires:  %{py3pkg}-requests
@@ -160,13 +161,6 @@ BuildRequires:  cmake(manifold)
 %if %{with oidn}
 BuildRequires:  cmake(OpenImageDenoise)
 %endif
-BuildRequires:  pkgconfig(libavcodec) >= 61.19.101
-BuildRequires:  pkgconfig(libavdevice) >= 61.3.100
-BuildRequires:  pkgconfig(libavfilter) >= 10.4.100
-BuildRequires:  pkgconfig(libavformat) >= 61.7.100
-BuildRequires:  pkgconfig(libavutil) >= 59.39.100
-BuildRequires:  pkgconfig(libswresample) >= 5.3.100
-BuildRequires:  pkgconfig(libswscale) >= 8.3.100
 BuildRequires:  cmake(TBB)
 BuildRequires:  cmake(Tiff)
 BuildRequires:  cmake(pugixml)
@@ -178,11 +172,18 @@ BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(jemalloc)
 BuildRequires:  pkgconfig(level-zero)
+BuildRequires:  pkgconfig(libavcodec) >= 61.19.101
+BuildRequires:  pkgconfig(libavdevice) >= 61.3.100
+BuildRequires:  pkgconfig(libavfilter) >= 10.4.100
+BuildRequires:  pkgconfig(libavformat) >= 61.7.100
+BuildRequires:  pkgconfig(libavutil) >= 59.39.100
 BuildRequires:  pkgconfig(libdecor-0)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpng16)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libswresample) >= 5.3.100
+BuildRequires:  pkgconfig(libswscale) >= 8.3.100
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(lzo2)
@@ -252,8 +253,8 @@ Recommends:     %name-demo = %version
 Recommends:     %name-lang = %version
 Requires(pre):  blender-wrapper
 Requires:       blender-wrapper
-Provides:       %{pkg_name}-implementation = %{version}-%{release}
 Provides:       %{pkg_name}-%{_suffix} = %{version}-%{release}
+Provides:       %{pkg_name}-implementation = %{version}-%{release}
 Conflicts:      %{pkg_name}-%{_suffix} = %{version}
 %ifarch x86_64
 Obsoletes:      %{pkg_name}-cycles-devel <= %{version}

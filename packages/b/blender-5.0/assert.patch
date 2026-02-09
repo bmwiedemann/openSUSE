@@ -1,0 +1,67 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: 2026-02-06 21:35:38.854957697 +0100
+
+When blender is built with eigen 5.x rather than 3.x, there are some
+compile errors. Probably blender relied on implicit cassert inclusion
+through eigen (the latter of which has gone away).
+
+intern/libmv/intern/camera_intrinsics.cc:56:14: error: ‘assert’ was not declared in this scope
+intern/libmv/libmv/numeric/numeric.h:150:3: error: there are no arguments to ‘assert’ that depend on a template parameter, so a declaration of ‘assert’ must be available [-Wtemplate-body]
+intern/libmv/libmv/simple_pipeline/camera_intrinsics_impl.h:162:3: error: there are no arguments to ‘assert’ that depend on a template parameter, so a declaration of ‘assert’ must be available [-Wtemplate-body]
+intern/libmv/libmv/simple_pipeline/camera_intrinsics_impl.h:162:9: error: ‘assert’ was not declared in this scope
+
+---
+ intern/libmv/libmv/numeric/numeric.h                        |    1 +
+ intern/libmv/libmv/simple_pipeline/camera_intrinsics_impl.h |    1 +
+ intern/slim/intern/edge_lengths.cpp                         |    1 +
+ intern/slim/intern/uv_initializer.cpp                       |    1 +
+ 4 files changed, 4 insertions(+)
+
+Index: blender-5.0.1/intern/libmv/libmv/numeric/numeric.h
+===================================================================
+--- blender-5.0.1.orig/intern/libmv/libmv/numeric/numeric.h
++++ blender-5.0.1/intern/libmv/libmv/numeric/numeric.h
+@@ -25,6 +25,7 @@
+ #ifndef LIBMV_NUMERIC_NUMERIC_H
+ #define LIBMV_NUMERIC_NUMERIC_H
+ 
++#include <cassert>
+ #include <Eigen/Cholesky>
+ #include <Eigen/Core>
+ #include <Eigen/Eigenvalues>
+Index: blender-5.0.1/intern/libmv/libmv/simple_pipeline/camera_intrinsics_impl.h
+===================================================================
+--- blender-5.0.1.orig/intern/libmv/libmv/simple_pipeline/camera_intrinsics_impl.h
++++ blender-5.0.1/intern/libmv/libmv/simple_pipeline/camera_intrinsics_impl.h
+@@ -19,6 +19,7 @@
+ // IN THE SOFTWARE.
+ 
+ #include "libmv/threading/parallel_for.h"
++#include <cassert>
+ 
+ namespace libmv {
+ 
+Index: blender-5.0.1/intern/slim/intern/edge_lengths.cpp
+===================================================================
+--- blender-5.0.1.orig/intern/slim/intern/edge_lengths.cpp
++++ blender-5.0.1/intern/slim/intern/edge_lengths.cpp
+@@ -7,6 +7,7 @@
+  * \ingroup intern_slim
+  */
+ 
++#include <cassert>
+ #include "BLI_task.hh"
+ 
+ #include "edge_lengths.h"
+Index: blender-5.0.1/intern/slim/intern/uv_initializer.cpp
+===================================================================
+--- blender-5.0.1.orig/intern/slim/intern/uv_initializer.cpp
++++ blender-5.0.1/intern/slim/intern/uv_initializer.cpp
+@@ -6,6 +6,7 @@
+  * \ingroup intern_slim
+  */
+ 
++#include <cassert>
+ #include "uv_initializer.h"
+ 
+ #include <Eigen/SparseLU>
