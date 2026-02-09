@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Feb 07 11:51:30 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 9.4.0:
+  * Add /db/sql API to demonstrate SQL rewriting
+  * Upgrade SQL parser
+- includes changes from 9.3.21:
+  * improvements to SQLite WAL checkpointing.
+- includes changes from 9.3.20:
+  * Switch to Synchronous=FULL mode when checkpointing database
+  * Ensure checkpointing doesn't permanently change Synchronous mode
+  * Explicitly fsync WAL file copied to Snapshot store
+- includes changes from 9.3.19:
+  * various logic improvements
+
+-------------------------------------------------------------------
 Thu Jan 29 20:14:20 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 9.3.18:
