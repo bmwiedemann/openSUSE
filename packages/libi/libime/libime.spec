@@ -1,7 +1,7 @@
 #
 # spec file for package libime
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,24 @@
 
 
 Name:           libime
-Version:        1.1.11
+Version:        1.1.13
 Release:        0
 Summary:        Generic input method implementation
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/libime
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}_dict.tar.zst
-BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
 BuildRequires:  fdupes
-%if 0%{?suse_version} >= 1550
-BuildRequires:  gcc-c++
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc15-c++
+BuildRequires:  libboost_iostreams1_75_0-devel
 %else
-BuildRequires:  gcc13-c++
-%endif
+BuildRequires:  gcc-c++
 BuildRequires:  libboost_iostreams-devel
+%endif
 BuildRequires:  libzstd-devel
 BuildRequires:  zstd
 
@@ -93,12 +93,13 @@ This package provides dictionary files for libime.
 %autosetup
 
 %build
-%if 0%{?suse_version} < 1550
-export CC=%{_bindir}/gcc-13
-export CXX=%{_bindir}/g++-13
-%endif
-export LANG=en_US.UTF-8
+%if 0%{?suse_version} < 1600
+%cmake -DCMAKE_C_COMPILER=%{_bindir}/gcc-15 \
+       -DCMAKE_CXX_COMPILER=%{_bindir}/g++-15 \
+       -DCMAKE_SKIP_RPATH=OFF
+%else
 %cmake -DCMAKE_SKIP_RPATH=OFF
+%endif
 %make_build
 
 %install

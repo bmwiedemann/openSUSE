@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb  8 02:55:58 UTC 2026 - Marguerite Su <i@marguerite.su>
+
+- update to 1.1.13
+  * learning new words logic in pinyin is updated to create fewer
+    words if the model contains it.
+  * Some new API to query ngram existence.
+
+-------------------------------------------------------------------
 Fri Jun 20 13:37:57 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - update to 1.1.11
