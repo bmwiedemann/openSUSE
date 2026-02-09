@@ -23,4 +23,15 @@
   * go1.26 requires go1.24.6 or later for bootstrap.</comment>
     <requestid>1327509</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>417ea09402473f69b35ca9928c4c5fad</srcmd5>
+    <version>1.26rc3</version>
+    <time>1770661785</time>
+    <user>anag_factory</user>
+    <comment>- go1.26rc3 (released 2026-02-04) is a release candidate version of
+  go1.26 cut from the master branch at the revision tagged
+  go1.26rc3.
+  Refs boo#1255111 go1.26 release tracking</comment>
+    <requestid>1332057</requestid>
+  </revision>
 </revisionlist>

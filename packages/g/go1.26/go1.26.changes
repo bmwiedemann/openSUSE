@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  4 15:46:44 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.26rc3 (released 2026-02-04) is a release candidate version of
+  go1.26 cut from the master branch at the revision tagged
+  go1.26rc3.
+  Refs boo#1255111 go1.26 release tracking
+
+-------------------------------------------------------------------
 Thu Jan 15 18:32:04 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.26rc2 (released 2026-01-15) is a release candidate version of
