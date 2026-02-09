@@ -350,4 +350,20 @@
     <comment></comment>
     <requestid>1295311</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>b72a2f09063b50bd8a07c2669079b5c6</srcmd5>
+    <version>3.10</version>
+    <time>1770633769</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.10
+  https://github.com/SELinuxProject/selinux/releases/tag/3.10
+  - Fix problem with bounds statements in optional blocks
+  - Provide a better error message for implicit role and user bounds
+  - Allow type attributes to be associated with other type attributes
+  - checkpolicy/tests: Modify tests to check handling of initial sids
+- keyring: Add key of Jason Zaman &lt;jasonzaman@gmail.com&gt; 
+  * added 63191CE94183098689CAB8DB7EF137EC935B0EAF [expires: 2026-02-08]
+</comment>
+    <requestid>1331573</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb  5 16:10:58 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 3.10
+  https://github.com/SELinuxProject/selinux/releases/tag/3.10
+  - Fix problem with bounds statements in optional blocks
+  - Provide a better error message for implicit role and user bounds
+  - Allow type attributes to be associated with other type attributes
+  - checkpolicy/tests: Modify tests to check handling of initial sids
+- keyring: Add key of Jason Zaman <jasonzaman@gmail.com> 
+  * added 63191CE94183098689CAB8DB7EF137EC935B0EAF [expires: 2026-02-08]
+
+-------------------------------------------------------------------
 Thu Jul 17 15:40:49 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.9
