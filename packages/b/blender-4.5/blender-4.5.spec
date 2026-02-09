@@ -1,7 +1,7 @@
 #
-# spec file for package blender
+# spec file for package blender-4.5
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019-2025 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -125,6 +125,7 @@ Source99:       series
 Patch1:         cmake_manpage_fix.patch
 # PATCH-FIX-UPSTREAM https://projects.blender.org/blender/blender/pulls/149301
 Patch2:         audaspace_1_8_compat.patch
+Patch3:         assert.patch
 BuildRequires:  %{py3pkg}-devel
 BuildRequires:  %{py3pkg}-numpy-devel
 BuildRequires:  %{py3pkg}-requests
@@ -252,8 +253,8 @@ Recommends:     %name-lang = %version
 #!BuildIgnore: blender-wrapper-lts
 Requires(pre):  blender-wrapper
 Requires:       blender-wrapper
-Provides:       %{pkg_name}-implementation = %{version}-%{release}
 Provides:       %{pkg_name}-%{_suffix} = %{version}-%{release}
+Provides:       %{pkg_name}-implementation = %{version}-%{release}
 Conflicts:      %{pkg_name}-%{_suffix} = %{version}
 %ifarch x86_64
 Obsoletes:      %{pkg_name}-cycles-devel <= %{version}

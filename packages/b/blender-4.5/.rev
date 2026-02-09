@@ -15,4 +15,12 @@
     <comment>Update to 4.5.6</comment>
     <requestid>1328879</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>dd6f8b0f815ae9af29aaecc7fd7e0dbd</srcmd5>
+    <version>4.5.6</version>
+    <time>1770640990</time>
+    <user>anag_factory</user>
+    <comment>build fix</comment>
+    <requestid>1331891</requestid>
+  </revision>
 </revisionlist>

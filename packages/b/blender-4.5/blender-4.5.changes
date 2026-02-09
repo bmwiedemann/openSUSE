@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  6 21:40:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add assert.patch to fix build failures
+
+-------------------------------------------------------------------
 Fri Jan 23 09:57:28 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.5.6
