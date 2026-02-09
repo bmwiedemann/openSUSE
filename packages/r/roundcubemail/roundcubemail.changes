@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Feb  8 12:51:32 UTC 2026 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 1.6.13
+  This is a security update to the stable version 1.6 of Roundcube Webmail.
+  It provides fixes to recently reported security vulnerabilities:
+  + Fix CSS injection vulnerability reported by CERT Polska.
+  + Fix remote image blocking bypass via SVG content reported by nullcathedral.
+
+  This version is considered stable and we recommend to update all productive 
+  installations of Roundcube 1.6.x with it. Please do backup your data 
+  before updating!
+
+  CHANGELOG
+  + Managesieve: Fix handling of string-list format values for date 
+    tests in Out of Office (#10075)
+  + Fix CSS injection vulnerability reported by CERT Polska.
+  + Fix remote image blocking bypass via SVG content reported by nullcathedral.
+
+-------------------------------------------------------------------
 Mon Dec 15 13:38:36 UTC 2025 - Lars Vogdt <lars@linux-schulserver.de>
 
 - update to 1.6.12

@@ -825,4 +825,12 @@ Security Update, [bsc#1228900]  [bsc#1228901]</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1324199</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>25154ac15b2dccea70795e8a131bfe57</srcmd5>
+    <version>1.6.13</version>
+    <time>1770633812</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1331861</requestid>
+  </revision>
 </revisionlist>
