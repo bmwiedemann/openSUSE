@@ -147,4 +147,17 @@ Redis 8.0.0 supported atomic HGETDEL, HGETEX and HSETEX, and AGPL-3.0-only licen
     <comment></comment>
     <requestid>1320545</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cc4dc84a3c20fc54ef8d62c3208aa970</srcmd5>
+    <version>8.4.1</version>
+    <time>1770754285</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 8.4.1
+  * https://github.com/redis/redis/releases/tag/8.4.1
+  * Atomic slot migration: wrong adjacent slot range behavior.
+  * Atomic slot migration: support delay trimming slots after
+    finishing migrating slots.
+  * Fixed CLUSTER SLOT-STATS few memory tracking bugs.</comment>
+    <requestid>1331921</requestid>
+  </revision>
 </revisionlist>

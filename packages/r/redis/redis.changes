@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb  8 10:43:13 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Updated to 8.4.1
+  * https://github.com/redis/redis/releases/tag/8.4.1
+  * Atomic slot migration: wrong adjacent slot range behavior.
+  * Atomic slot migration: support delay trimming slots after
+    finishing migrating slots.
+  * Fixed CLUSTER SLOT-STATS few memory tracking bugs.
+
+-------------------------------------------------------------------
 Sat Nov 29 02:18:18 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Fix filename of the config template
