@@ -8,7 +8,7 @@
     <param name='exclude'>demos</param>
     <param name='exclude'>exec.sh</param>
     <param name="filename">ocaml-menhir</param>
-    <param name="revision">eddf6dd437cf2ef0cf2b7fb1948af98721ca8bc4</param>
+    <param name="revision">817a9505ffcfd3c98da23d4f807a55344622db16</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://gitlab.inria.fr/fpottier/menhir.git</param>

@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-menhir
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-menhir
-Version:        20250912
+Version:        20260203
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        LR(1) parser generator for the OCaml programming language
@@ -48,7 +48,7 @@ developing applications that use %name.
 
 %build
 cp -Lp '%{S:1}' CHANGELOG.md
-dune_release_pkgs='menhir,menhirLib,menhirSdk'
+dune_release_pkgs='menhir,menhirGLR,menhirLib,menhirSdk,menhirGLR'
 %ocaml_dune_setup
 %ocaml_dune_build
 

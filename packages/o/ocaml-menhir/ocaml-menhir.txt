@@ -1,5 +1,120 @@
 # Changes
 
+## 2026/02/03
+
+* Fix a printing bug in the Rocq back-end, which was introduced in 20260112:
+  the types of (terminal and nonterminal) symbols were not properly
+  parenthesized. (Reported by Xavier Leroy.)
+
+## 2026/01/22
+
+* Fix a mistake: when the table back-end is selected, in the generated file
+  `parser.mli`, the declaration `module Tables : MenhirLib.TableFormat.TABLES`
+  should include the equation `with type token = token`. This feature is
+  considered undocumented, unstable, and temporary: in the future, the format
+  of the parse tables may change, and this feature will eventually be removed.
+  (Reported by Federico Dal Pio Luogo.)
+
+## 2026/01/12
+
+* A new GLR back-end has been introduced.
+  It is selected by the command line switch `--GLR`.
+  GLR is a non-deterministic parsing algorithm;
+  it is useful when the grammar lies outside the class LR(1),
+  either because the grammar is unambiguous
+  but requires more than one token of lookahead,
+  or because the grammar is truly ambiguous.
+  For more information, please read the manual.
+
+* The command line switches `--coq*`
+  are now available also under the names `--rocq*`.
+  The names `--coq*` are deprecated
+  and may be removed at some point in the future.
+  The opam package `coq-menhirlib` is not renamed.
+
+* Menhir now requires OCaml 4.08 or later.
+
+* Major internal reorganization of the code.
+
+* Table back-end: generate specialized table access code. This code should
+  in theory make table access slightly faster, but the difference does not
+  seem to be measurable.
+
+* In `--strict` mode, all warnings are now errors.
+
+* The situation where Menhir does not know how to resolve a reduce/reduce
+  conflict now causes a warning instead of an error. (In `--strict` mode, it
+  still causes an error.) This situation arises when there is no default order
+  between the two productions. This can happen when the productions originate
+  in different source files or when they are derived, via inlining, from the
+  same production.
+
+* Menhir can now report several well-formedness issues (undefined symbols,
+  unused tokens, etc.) in one run, instead of stopping at the first issue.
+
+* The new command line switch `--no-code-generation` causes Menhir to stop
+  without generating any code: in other words, no back-end is invoked. The
+  analyses in Menhir's front-end are still performed. If requested via the
+  command line switch `--cmly`, a `.cmly` file is written.
+
+* In the `.conflicts` file, the conflicts are now listed in increasing
+  order of state numbers, whereas (for an unknown reason) they used to
+  be listed in decreasing order.
+
+* If the table back-end has been selected, then the parse tables are exposed
+  to the user, by letting the generated file `parser.mli` contain the
+  declaration `module Tables : MenhirLib.TableFormat.TABLES`. This feature is
+  considered undocumented, unstable, and temporary: in the future, the format
+  of the parse tables may change, and this feature will eventually be removed.
+
+* Some additions have been made in `MenhirSdk`:
+
+  + In the signature `GRAMMAR`,
+    the module `Surface` is new.
+    This module provides access to two versions of the grammar,
+    namely the source grammar (as found in the `.mly` file)
+    and the grammar that is obtained
+    after parameterized nonterminal symbols have been expanded away
+    (before the nonterminal symbols marked `%inline` are eliminated).
+
+  (Contributed by Frédéric Bour; reviewed by François Pottier.)
+
+* Some incompatible changes have been made in `MenhirSdk`:
+
+  + In the signature `GRAMMAR`, the function
+    `Token.filename` has been removed.
+
+* The words `effect` and `nonrec` are now reserved.
+  The word `parser` is no longer reserved.
+
+* The ancient code back-end has been removed.
+  The command line switch `--code-ancient` is no longer supported.
+
+* The command line switch `--list-errors-algorithm` is no longer supported.
+
+* In the incremental API, the deprecated type `stack` and the deprecated
+  function `stack` have been removed. To inspect the parser's stack, the
+  functions `top` and `pop` should be used instead.
+
+* The module `MenhirLib.InfiniteArray`, whose existence was not documented,
+  has been removed.
+
+* The deprecated module `MenhirLib.General` has been removed.
+
+* The deprecated demos in `demos/ocamlbuild` have been removed.
+
+* Documentation comments have been added in `MenhirLib`.
+
+* Some documentation comments have been added in `MenhirSdk`.
+
+* Fix an obscure bug (which was never reported or observed). When a multi-way
+  shift/reduce/reduce conflict is resolved in favor of neither action,
+  a default reduction in this state should be forbidden (see 2012/01/23).
+  This was not the case; it should now be fixed.
+
+* Fix an obscure bug where Menhir could report an end-of-stream conflict on an
+  empty set of terminal symbols.
+
 ## 2025/09/12
 
 * In the new code back-end, fix a problem that could lead to an internal error
@@ -923,8 +1038,8 @@
 * Fixes in the output of `--only-preprocess`:
   * The order of productions is now preserved.
       (It was not. This matters if there are reduce/reduce conflicts.)
-  * `%parameter` directives are now printed. (They were not).
-  * `%on_error_reduce` directives are now printed. (They were not.)
+  * `%parameter` declarations are now printed. (They were not).
+  * `%on_error_reduce` declarations are now printed. (They were not.)
 
 ## 2016/08/25
 
@@ -1427,7 +1542,7 @@
 * Fixed bug that caused some precedence declarations to be incorrectly
   reported as useless.
 * Improved things so that useless pseudo-tokens now also cause warnings.
-* Fixed bug that would cause `%type` directives for terminal symbols to
+* Fixed bug that would cause `%type` declarations for terminal symbols to
   be incorrectly accepted.
 * Fixed bug that would occur when a semantic action containing `$i` keywords
   was inlined.

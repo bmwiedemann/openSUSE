@@ -96,4 +96,12 @@ ocaml 4.03 (fate#320836)</comment>
   see included CHANGELOG.md file for details</comment>
     <requestid>1317328</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7b65e9dfd61efcc6a127ab1f1e30283d</srcmd5>
+    <version>20260203</version>
+    <time>1770754445</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1332308</requestid>
+  </revision>
 </revisionlist>
