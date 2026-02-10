@@ -23,7 +23,7 @@ Signed-off-by: Philip Withnall <pwithnall@endlessos.org>
  4 files changed, 51 insertions(+)
 
 diff --git a/libsoup/soup-message-io.c b/libsoup/soup-message-io.c
-index c5412abb2..8d69f18d6 100644
+index c5412abb..8d69f18d 100644
 --- a/libsoup/soup-message-io.c
 +++ b/libsoup/soup-message-io.c
 @@ -927,7 +927,11 @@ soup_message_io_get_source (SoupMessage *msg, GCancellable *cancellable,
@@ -39,7 +39,7 @@ index c5412abb2..8d69f18d6 100644
  	message_source->msg = g_object_ref (msg);
  	message_source->paused = io && io->paused;
 diff --git a/libsoup/soup-misc.c b/libsoup/soup-misc.c
-index 2cf6b0f6a..170fa15a2 100644
+index 2cf6b0f6..170fa15a 100644
 --- a/libsoup/soup-misc.c
 +++ b/libsoup/soup-misc.c
 @@ -83,6 +83,11 @@ soup_add_io_watch (GMainContext *async_context,
@@ -91,7 +91,7 @@ index 2cf6b0f6a..170fa15a2 100644
  	g_source_attach (source, async_context);
  	g_source_unref (source);
 diff --git a/libsoup/soup-socket.c b/libsoup/soup-socket.c
-index 0ec451032..53b5c584b 100644
+index 0ec45103..53b5c584 100644
 --- a/libsoup/soup-socket.c
 +++ b/libsoup/soup-socket.c
 @@ -1203,6 +1203,13 @@ soup_socket_create_watch (SoupSocketPrivate *priv, GIOCondition cond,
@@ -109,7 +109,7 @@ index 0ec451032..53b5c584b 100644
  
  	g_source_attach (watch, priv->async_context);
 diff --git a/libsoup/soup-websocket-connection.c b/libsoup/soup-websocket-connection.c
-index a4095e1c9..6d136d411 100644
+index a4095e1c..6d136d41 100644
 --- a/libsoup/soup-websocket-connection.c
 +++ b/libsoup/soup-websocket-connection.c
 @@ -306,6 +306,11 @@ soup_websocket_connection_start_input_source (SoupWebsocketConnection *self)

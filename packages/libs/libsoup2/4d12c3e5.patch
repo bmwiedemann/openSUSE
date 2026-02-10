@@ -22,7 +22,7 @@ Signed-off-by: Philip Withnall <pwithnall@endlessos.org>
  11 files changed, 16 insertions(+)
 
 diff --git a/libsoup/soup-address.c b/libsoup/soup-address.c
-index 574e982f2..bcd3e9e7f 100644
+index 574e982f..bcd3e9e7 100644
 --- a/libsoup/soup-address.c
 +++ b/libsoup/soup-address.c
 @@ -1209,6 +1209,8 @@ soup_address_address_enumerator_next_async (GSocketAddressEnumerator  *enumerato
@@ -35,7 +35,7 @@ index 574e982f2..bcd3e9e7f 100644
  		soup_address_resolve_async (addr_enum->addr,
  					    g_main_context_get_thread_default (),
 diff --git a/libsoup/soup-client-input-stream.c b/libsoup/soup-client-input-stream.c
-index e73ec9e63..c5484501e 100644
+index e73ec9e6..c5484501 100644
 --- a/libsoup/soup-client-input-stream.c
 +++ b/libsoup/soup-client-input-stream.c
 @@ -189,6 +189,7 @@ soup_client_input_stream_close_async (GInputStream        *stream,
@@ -47,7 +47,7 @@ index e73ec9e63..c5484501e 100644
  
  	if (close_async_ready (cistream->priv->msg, task) == G_SOURCE_CONTINUE) {
 diff --git a/libsoup/soup-connection.c b/libsoup/soup-connection.c
-index 1b9a4fee8..8d4fee8d1 100644
+index 1b9a4fee..8d4fee8d 100644
 --- a/libsoup/soup-connection.c
 +++ b/libsoup/soup-connection.c
 @@ -418,6 +418,7 @@ soup_connection_connect_async (SoupConnection      *conn,
@@ -67,7 +67,7 @@ index 1b9a4fee8..8d4fee8d1 100644
  	soup_socket_handshake_async (priv->socket, priv->remote_uri->host,
  				     cancellable, start_ssl_completed, task);
 diff --git a/libsoup/soup-io-stream.c b/libsoup/soup-io-stream.c
-index 8daca38d6..3da1d614b 100644
+index 8daca38d..3da1d614 100644
 --- a/libsoup/soup-io-stream.c
 +++ b/libsoup/soup-io-stream.c
 @@ -160,6 +160,7 @@ soup_io_stream_close_async (GIOStream           *stream,
@@ -79,7 +79,7 @@ index 8daca38d6..3da1d614b 100644
  				 io_priority, cancellable,
  				 close_async_complete, task);
 diff --git a/libsoup/soup-multipart-input-stream.c b/libsoup/soup-multipart-input-stream.c
-index 535dd6ec4..209eb9a32 100644
+index 535dd6ec..209eb9a3 100644
 --- a/libsoup/soup-multipart-input-stream.c
 +++ b/libsoup/soup-multipart-input-stream.c
 @@ -528,6 +528,7 @@ soup_multipart_input_stream_next_part_async (SoupMultipartInputStream *multipart
@@ -91,7 +91,7 @@ index 535dd6ec4..209eb9a32 100644
  
  	if (!g_input_stream_set_pending (stream, &error)) {
 diff --git a/libsoup/soup-proxy-resolver-wrapper.c b/libsoup/soup-proxy-resolver-wrapper.c
-index e07664ca9..e787ff095 100644
+index e07664ca..e787ff09 100644
 --- a/libsoup/soup-proxy-resolver-wrapper.c
 +++ b/libsoup/soup-proxy-resolver-wrapper.c
 @@ -92,6 +92,7 @@ soup_proxy_resolver_wrapper_lookup_async (GProxyResolver       *resolver,
@@ -103,7 +103,7 @@ index e07664ca9..e787ff095 100644
  	g_task_set_task_data (task, source_uri, (GDestroyNotify) soup_uri_free);
  
 diff --git a/libsoup/soup-request-file.c b/libsoup/soup-request-file.c
-index c402a5b4c..6d3e9fa3b 100644
+index c402a5b4..6d3e9fa3 100644
 --- a/libsoup/soup-request-file.c
 +++ b/libsoup/soup-request-file.c
 @@ -301,6 +301,7 @@ soup_request_file_send_async (SoupRequest          *request,
@@ -115,7 +115,7 @@ index c402a5b4c..6d3e9fa3b 100644
  	if (!soup_request_file_ensure_file (file, cancellable, &error)) {
  		g_task_return_error (task, error);
 diff --git a/libsoup/soup-request-http.c b/libsoup/soup-request-http.c
-index 285f59d7a..a608d3a2d 100644
+index 285f59d7..a608d3a2 100644
 --- a/libsoup/soup-request-http.c
 +++ b/libsoup/soup-request-http.c
 @@ -140,6 +140,7 @@ soup_request_http_send_async (SoupRequest          *request,
@@ -127,7 +127,7 @@ index 285f59d7a..a608d3a2d 100644
  				 http_input_stream_ready_cb, task);
  }
 diff --git a/libsoup/soup-request.c b/libsoup/soup-request.c
-index 61980c78a..6c11c32c4 100644
+index 61980c78..6c11c32c 100644
 --- a/libsoup/soup-request.c
 +++ b/libsoup/soup-request.c
 @@ -177,6 +177,7 @@ soup_request_default_send_async (SoupRequest          *request,
@@ -139,7 +139,7 @@ index 61980c78a..6c11c32c4 100644
  	stream = soup_request_send (request, cancellable, &error);
  	if (stream)
 diff --git a/libsoup/soup-session.c b/libsoup/soup-session.c
-index 83421ef9d..c74b1b886 100644
+index 83421ef9..c74b1b88 100644
 --- a/libsoup/soup-session.c
 +++ b/libsoup/soup-session.c
 @@ -4355,6 +4355,7 @@ soup_session_send_async (SoupSession         *session,
@@ -167,7 +167,7 @@ index 83421ef9d..c74b1b886 100644
          msg = soup_message_new_from_uri (SOUP_METHOD_HEAD, uri);
          soup_message_set_flags (msg, SOUP_MESSAGE_NEW_CONNECTION);
 diff --git a/libsoup/soup-socket.c b/libsoup/soup-socket.c
-index 7ad484308..0ec451032 100644
+index 7ad48430..0ec45103 100644
 --- a/libsoup/soup-socket.c
 +++ b/libsoup/soup-socket.c
 @@ -970,6 +970,7 @@ soup_socket_connect_async_internal (SoupSocket          *sock,

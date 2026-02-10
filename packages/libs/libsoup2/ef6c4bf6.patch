@@ -11,7 +11,7 @@ CVE-2025-2784
  3 files changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/libsoup/soup-content-sniffer.c b/libsoup/soup-content-sniffer.c
-index 967ec6141..4c8134a7f 100644
+index 967ec614..4c8134a7 100644
 --- a/libsoup/soup-content-sniffer.c
 +++ b/libsoup/soup-content-sniffer.c
 @@ -642,7 +642,7 @@ sniff_feed_or_html (SoupContentSniffer *sniffer, SoupBuffer *buffer)
@@ -24,7 +24,7 @@ index 967ec6141..4c8134a7f 100644
  
  	if (skip_insignificant_space (resource, &pos, resource_length))
 diff --git a/tests/sniffing-test.c b/tests/sniffing-test.c
-index d2aa86b9d..0a4569a43 100644
+index d2aa86b9..0a4569a4 100644
 --- a/tests/sniffing-test.c
 +++ b/tests/sniffing-test.c
 @@ -605,6 +605,11 @@ main (int argc, char **argv)
@@ -40,7 +40,7 @@ index d2aa86b9d..0a4569a43 100644
  	g_test_add_data_func ("/sniffing/disabled",
  			      "/text_or_binary/home.gif",
 diff --git a/tests/soup-tests.gresource.xml b/tests/soup-tests.gresource.xml
-index 9c08d170e..cbef1d402 100644
+index 9c08d170..cbef1d40 100644
 --- a/tests/soup-tests.gresource.xml
 +++ b/tests/soup-tests.gresource.xml
 @@ -25,5 +25,6 @@

@@ -11,7 +11,7 @@ but the error is already != NULL and it will assert
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/tests/websocket-test.c b/tests/websocket-test.c
-index 06c443bb5..6a48c1f9b 100644
+index 06c443bb..6a48c1f9 100644
 --- a/tests/websocket-test.c
 +++ b/tests/websocket-test.c
 @@ -1539,8 +1539,9 @@ test_receive_invalid_encode_length_64 (Test *test,

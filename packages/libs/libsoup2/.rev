@@ -161,4 +161,12 @@ Forwarded request #1101518 from iznogood
   md4sum (bsc#1256399, CVE-2026-0719, glgo#GNOME/libsoup!493). (forwarded request 1326671 from AZhou)</comment>
     <requestid>1326752</requestid>
   </revision>
+  <revision rev="19" vrev="15">
+    <srcmd5>07e12c2d5e1713c986dd88be8f9cae8e</srcmd5>
+    <version>2.74.3</version>
+    <time>1770754311</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1332174</requestid>
+  </revision>
 </revisionlist>

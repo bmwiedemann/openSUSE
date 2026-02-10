@@ -15,7 +15,7 @@ Signed-off-by: Khem Raj <raj.khem@gmail.com>
  2 files changed, 2 insertions(+)
 
 diff --git a/libsoup/soup-xmlrpc-old.c b/libsoup/soup-xmlrpc-old.c
-index c57086b6a..527e3b235 100644
+index c57086b6..527e3b23 100644
 --- a/libsoup/soup-xmlrpc-old.c
 +++ b/libsoup/soup-xmlrpc-old.c
 @@ -11,6 +11,7 @@
@@ -27,7 +27,7 @@ index c57086b6a..527e3b235 100644
  
  #include "soup-xmlrpc-old.h"
 diff --git a/libsoup/soup-xmlrpc.c b/libsoup/soup-xmlrpc.c
-index 42dcda9c7..e991cbf01 100644
+index 42dcda9c..e991cbf0 100644
 --- a/libsoup/soup-xmlrpc.c
 +++ b/libsoup/soup-xmlrpc.c
 @@ -17,6 +17,7 @@

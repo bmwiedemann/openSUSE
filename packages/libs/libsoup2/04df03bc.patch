@@ -10,7 +10,7 @@ In the past (2015) this was allowed for some problematic sites. However Chromium
  2 files changed, 32 insertions(+), 45 deletions(-)
 
 diff --git a/libsoup/soup-headers.c b/libsoup/soup-headers.c
-index a0cf351ac..f30ee467a 100644
+index a0cf351a..f30ee467 100644
 --- a/libsoup/soup-headers.c
 +++ b/libsoup/soup-headers.c
 @@ -51,13 +51,14 @@ soup_headers_parse (const char *str, int len, SoupMessageHeaders *dest)
@@ -47,7 +47,7 @@ index a0cf351ac..f30ee467a 100644
  		name = value_end + 1;
  		name_end = strchr (name, ':');
 diff --git a/tests/header-parsing-test.c b/tests/header-parsing-test.c
-index edf8eebb3..715c2c6f2 100644
+index edf8eebb..715c2c6f 100644
 --- a/tests/header-parsing-test.c
 +++ b/tests/header-parsing-test.c
 @@ -358,24 +358,6 @@ static struct RequestTest {

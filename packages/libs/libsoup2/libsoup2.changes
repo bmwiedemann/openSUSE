@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Feb  9 23:48:35 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add libsoup2-CVE-2025-4476.patch: fix crash in
+  soup_auth_digest_get_protection_space (bsc#1243422
+  CVE-2025-4476 glgo#GNOME/libsoup#440).
+
+-------------------------------------------------------------------
+Fri Feb  6 18:52:17 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add libsoup2-CVE-2026-0716.patch: Fix out-of-bounds read for
+  websocket (bsc#1256418, CVE-2026-0716, glgo#GNOME/libsoup!494).
+
+-------------------------------------------------------------------
+Tue Feb  3 01:52:48 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add libsoup2-CVE-2026-1761.patch: multipart: check length of bytes
+  read soup_filter_input_stream_read_until()
+  (bsc#1257598, CVE-2026-1761, glgo#GNOME/libsoup!496).
+- Refresh ef6c4bf6.patch, 04df03bc.patch, 29b96fab.patch,
+  48b3b611.patch, 4d12c3e5.patch, 96c22b67.patch and ced3c5d8.patch
+  from upstream git.
+
+-------------------------------------------------------------------
 Fri Jan  9 02:52:21 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add libsoup2-CVE-2026-0719.patch: Fix overflow for password

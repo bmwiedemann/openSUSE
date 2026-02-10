@@ -11,7 +11,7 @@ CVE-2025-2784
  3 files changed, 53 insertions(+), 11 deletions(-)
 
 diff --git a/libsoup/soup-content-sniffer.c b/libsoup/soup-content-sniffer.c
-index 4c8134a7f..7669c6385 100644
+index 4c8134a7..7669c638 100644
 --- a/libsoup/soup-content-sniffer.c
 +++ b/libsoup/soup-content-sniffer.c
 @@ -612,8 +612,11 @@ sniff_text_or_binary (SoupContentSniffer *sniffer, SoupBuffer *buffer)
@@ -47,7 +47,7 @@ index 4c8134a7f..7669c6385 100644
  		goto text_html;
  
 diff --git a/tests/sniffing-test.c b/tests/sniffing-test.c
-index 0a4569a43..372b659e1 100644
+index 0a4569a4..372b659e 100644
 --- a/tests/sniffing-test.c
 +++ b/tests/sniffing-test.c
 @@ -436,6 +436,52 @@ test_disabled (gconstpointer data)
@@ -123,7 +123,7 @@ index 0a4569a43..372b659e1 100644
  
  	soup_uri_free (base_uri);
 diff --git a/tests/soup-tests.gresource.xml b/tests/soup-tests.gresource.xml
-index cbef1d402..9c08d170e 100644
+index cbef1d40..9c08d170 100644
 --- a/tests/soup-tests.gresource.xml
 +++ b/tests/soup-tests.gresource.xml
 @@ -25,6 +25,5 @@
