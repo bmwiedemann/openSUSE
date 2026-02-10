@@ -17,7 +17,7 @@
 
 
 Name:           oxipng
-Version:        9.1.5
+Version:        10.1.0
 Release:        0
 Summary:        Multithreaded lossless PNG optimizer
 License:        MIT
