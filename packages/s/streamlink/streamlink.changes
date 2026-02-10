@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Feb 10 11:00:25 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.2.0:
+  * Added: --http-cookies-file CLI argument and http-cookies-files session
+    option
+  * Changed: PluginError to also be raised when setting a plugin's url attribute
+  * Deprecated: imports of re-exported module attributes from streamlink.utils
+  * Fixed: LogRecord missing the function name and stack info
+  * Fixed: custom network interface being reset when disabling Diffie-Hellman
+    key exchange
+  * Fixed: broken logic when unsetting ipv4/ipv6 session options
+  * Fixed: edge case when trying to detect the text encoding of certain kinds
+    of HTML responses
+  * Fixed: missing representation not being handled when polling dynamic DASH
+    manifests
+  * dailymotion: disabled TLS session tickets
+  * Docs: bumped dependencies with support for Sphinx 9
+
+-------------------------------------------------------------------
+Wed Feb  4 09:42:51 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- add remove-check-for-update.patch, on startup streamlink checks
+  for a new version
+- add lower-pytest-requirement.patch, so it can run on leap16.0
+
+-------------------------------------------------------------------
 Tue Jan 20 23:19:02 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 8.1.2:

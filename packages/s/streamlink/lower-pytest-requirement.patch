@@ -1,0 +1,34 @@
+From: Alexis Murzeau <amubtdx@gmail.com>
+Date: Thu, 4 Dec 2025 19:51:01 +0100
+Subject: Add compatibility with pytest 8.3
+
+Forwarded: not-needed
+Author: Alexis Murzeau <amubtdx@gmail.com>
+---
+ pyproject.toml | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 3310058..ce03729 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -97,7 +97,7 @@ dev = [
+ test = [
+   { include-group = "dev" },
+   # pytest and plugins
+-  "pytest >=8.4.0",
++  "pytest >=8.0.0",
+   "pytest-cov",
+   "pytest-trio",
+   "requests-mock",
+@@ -192,9 +192,8 @@ method = { module = "build_backend.onbuild", value = "onbuild" }
+ # https://docs.pytest.org/en/latest/reference/customize.html#configuration
+ # https://docs.pytest.org/en/latest/reference/reference.html#ini-options-ref
+ [tool.pytest.ini_options]
+-minversion = "8.4.0"
++minversion = "8.0.0"
+ addopts = """
+---disable-plugin-autoload
+ -p trio
+ -p requests_mock
+ """

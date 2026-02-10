@@ -24,7 +24,7 @@
 %endif
 %{?sle15_python_module_pythons}%{!?sle15_python_module_pythons:%define pythons python3}
 Name:           streamlink%{psuffix}
-Version:        8.1.2
+Version:        8.2.0
 Release:        0
 Summary:        Program to pipe streams from services into a video player
 License:        Apache-2.0 AND BSD-2-Clause
@@ -32,6 +32,9 @@ URL:            https://streamlink.github.io/
 Source:         https://github.com/%{name}/%{name}/releases/download/%{version}/streamlink-%{version}.tar.gz
 Source1:        https://github.com/%{name}/%{name}/releases/download/%{version}/streamlink-%{version}.tar.gz.asc
 Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xcdac41b9122470faf357a9d344448a298d5c3618#/streamlink.keyring
+# Thanks to Debian for providing these patches
+Patch0:         remove-check-for-update.patch
+Patch1:         lower-pytest-requirement.patch
 BuildRequires:  %{python_module PySocks >= 1.5.6}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module devel >= 3.9}
@@ -53,7 +56,7 @@ BuildRequires:  fdupes
 
 %if "%{flavor}" == "test"
 BuildRequires:  %{python_module freezegun >= 1.5.0}
-BuildRequires:  %{python_module pytest >= 8.4.0}
+BuildRequires:  %{python_module pytest >= 8.3.0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-trio}
@@ -87,7 +90,7 @@ avoid resource-heavy and unoptimized websites, while still allowing the user to
 enjoy various streamed content.
 
 %prep
-%autosetup -n streamlink-%{version}
+%autosetup -p1 -n streamlink-%{version}
 
 %build
 %pyproject_wheel

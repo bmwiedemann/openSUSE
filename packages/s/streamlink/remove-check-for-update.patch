@@ -1,0 +1,64 @@
+From: Alexis Murzeau <amubtdx@gmail.com>
+Date: Sun, 23 Apr 2017 15:54:58 +0200
+Subject: Remove streamlink version check on startup
+
+Forwarded: not-needed
+Author: Stefan Breunig <stefan-debian@yrden.de>
+Bug-Debian: https://bugs.debian.org/750502
+---
+ src/streamlink_cli/argparser.py      |  2 +-
+ src/streamlink_cli/main.py           |  2 +-
+ tests/cli/main/test_version_check.py | 14 --------------
+ 3 files changed, 2 insertions(+), 16 deletions(-)
+
+diff --git a/src/streamlink_cli/argparser.py b/src/streamlink_cli/argparser.py
+index bf929a0..7d64cac 100644
+--- a/src/streamlink_cli/argparser.py
++++ b/src/streamlink_cli/argparser.py
+@@ -251,7 +251,7 @@ def build_parser():
+         metavar="{yes,true,1,on,no,false,0,off}",
+         default=False,
+         help="""
+-            Enable or disable the automatic check for a new version of Streamlink.
++            Unused, kept for compatibility reasons.
+ 
+             Default is "no".
+         """,
+diff --git a/src/streamlink_cli/main.py b/src/streamlink_cli/main.py
+index 4a7c85d..679b31a 100644
+--- a/src/streamlink_cli/main.py
++++ b/src/streamlink_cli/main.py
+@@ -991,7 +991,7 @@ def setup(parser: ArgumentParser) -> None:
+ def run(parser: ArgumentParser) -> int:
+     exit_code = 0
+ 
+-    if args.version_check or args.auto_version_check:
++    if args.version_check:
+         exit_code = check_version_wrapper()
+ 
+     if args.version_check:
+diff --git a/tests/cli/main/test_version_check.py b/tests/cli/main/test_version_check.py
+index cae8394..2d593c7 100644
+--- a/tests/cli/main/test_version_check.py
++++ b/tests/cli/main/test_version_check.py
+@@ -29,20 +29,6 @@ import streamlink_cli.main
+             1,
+             id="outdated",
+         ),
+-        pytest.param(
+-            ["--auto-version-check=True"],
+-            True,
+-            False,
+-            0,
+-            id="auto-latest",
+-        ),
+-        pytest.param(
+-            ["--auto-version-check=True"],
+-            False,
+-            False,
+-            0,
+-            id="auto-outdated",
+-        ),
+     ],
+     indirect=["argv"],
+ )
