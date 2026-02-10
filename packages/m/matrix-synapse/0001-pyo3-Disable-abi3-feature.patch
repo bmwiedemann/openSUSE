@@ -10,10 +10,10 @@ the one at compile time.
  rust/Cargo.toml |  2 --
  2 files changed, 2 insertions(+), 22 deletions(-)
 
-diff --git a/build_rust.py b/build_rust.py
-index a9e9265daf..65d9ac301d 100644
---- a/build_rust.py
-+++ b/build_rust.py
+Index: synapse/build_rust.py
+===================================================================
+--- synapse.orig/build_rust.py
++++ synapse/build_rust.py
 @@ -1,10 +1,8 @@
  # A build script for poetry that adds the rust extension.
  
@@ -25,7 +25,7 @@ index a9e9265daf..65d9ac301d 100644
  from setuptools_rust import Binding, RustExtension
  
  
-@@ -16,27 +14,11 @@ def build(setup_kwargs: dict[str, Any]) -> None:
+@@ -16,27 +14,11 @@ def build(setup_kwargs: dict[str, Any])
          target="synapse.synapse_rust",
          path=cargo_toml_path,
          binding=Binding.PyO3,
@@ -55,19 +55,16 @@ index a9e9265daf..65d9ac301d 100644
 -    setup_kwargs.setdefault("options", {}).setdefault("bdist_wheel", {})[
 -        "py_limited_api"
 -    ] = py_limited_api
-diff --git a/rust/Cargo.toml b/rust/Cargo.toml
-index e8321d159b..eeeb512920 100644
---- a/rust/Cargo.toml
-+++ b/rust/Cargo.toml
+Index: synapse/rust/Cargo.toml
+===================================================================
+--- synapse.orig/rust/Cargo.toml
++++ synapse/rust/Cargo.toml
 @@ -33,8 +33,6 @@ mime = "0.3.17"
- pyo3 = { version = "0.26.0", features = [
+ pyo3 = { version = "0.27.2", features = [
      "macros",
      "anyhow",
 -    "abi3",
 -    "abi3-py310",
  ] }
  pyo3-log = "0.13.1"
- pythonize = "0.26.0"
--- 
-2.51.1
-
+ pythonize = "0.27.0"

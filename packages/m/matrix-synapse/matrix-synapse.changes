@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Feb 10 16:29:39 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.147.0
+  - Bugfixes
+    - Fix memory leak caused by not cleaning up stopped looping
+      calls. Introduced in v1.140.0. (#19416)
+    - Fix a typo that incorrectly made setuptools_rust a runtime
+      dependency. (#19417)
+  - Internal Changes
+    - Prune stale entries from
+      sliding_sync_connection_required_state table. (#19306)
+    - Update "Event Send Time Quantiles" graph to only use dots for
+      the event persistence rate (Grafana dashboard). (#19399)
+    - Update and align Grafana dashboard to use regex matching for
+      job selectors (job=~"$job") so the "all" value works
+      correctly across all panels. (#19400)
+    - Don't retry joining partial state rooms all at once on
+      startup. (#19402)
+    - Disallow requests to the health endpoint from containing
+      trailing path characters. (#19405)
+    - Add notes that new experimental features should have
+      associated tracking issues. (#19410)
+    - Bump pyo3 from 0.26.0 to 0.27.2 and pythonize from 0.26.0 to
+      0.27.0. Contributed by @razvp @ ERCOM. (#19412)
+- refresh 0001-pyo3-Disable-abi3-feature.patch
+
+-------------------------------------------------------------------
 Tue Jan 27 16:17:47 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.146.0

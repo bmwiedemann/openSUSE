@@ -74,7 +74,7 @@
 %global txredisapi_version            1.4.10
 %global Pympler_version               1.0.1
 %global pydantic_version              2.7.1
-%global python_multipart_version      0.0.9
+%global python_multipart_version      0.0.22
 # TODO: 0.30.0
 %global rpds_py_verison               0.27.0
 ## indirect dependencies which need to be guarded for matrix-synapse to work
@@ -230,7 +230,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.146.0
+Version:        1.147.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
