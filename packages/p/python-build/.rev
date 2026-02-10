@@ -187,4 +187,19 @@
   * Mention conda and update uv mention in README/docs</comment>
     <requestid>1307679</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>883dd48db2cbc2e619abb1fbb9095f3c</srcmd5>
+    <version>1.4.0</version>
+    <time>1770754283</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.4.0:
+  * Add --quiet flag
+  * Add option to dump PEP 517 metadata with --metadata
+  * Support UV environment variable
+  * Remove a workaround for 3.14b1
+  * In 3.14 final release, color defaults to True already
+  * In pytest configuration, log_level is better than log_cli_level
+  * Fix test failure when flit-core is installed</comment>
+    <requestid>1331919</requestid>
+  </revision>
 </revisionlist>

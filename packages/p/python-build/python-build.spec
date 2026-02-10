@@ -1,7 +1,7 @@
 #
 # spec file for package python-build
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-build%{psuffix}
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Simple PEP517 package builder
 License:        MIT
@@ -41,19 +41,18 @@ URL:            https://github.com/pypa/build
 Source0:        https://github.com/pypa/build/archive/%{version}.tar.gz#/build-%{version}.tar.gz
 # Needs the wheels for wheel, flit-core, and tomli for testing
 Source10:       https://files.pythonhosted.org/packages/py2.py3/w/wheel/wheel-0.37.1-py2.py3-none-any.whl
-Source11:       https://files.pythonhosted.org/packages/py3/f/flit_core/flit_core-3.8.0-py3-none-any.whl
+Source11:       https://files.pythonhosted.org/packages/py3/f/flit_core/flit_core-3.11.0-py3-none-any.whl
 Source12:       https://files.pythonhosted.org/packages/py3/t/tomli/tomli-2.0.1-py3-none-any.whl
 Source14:       runtests.py
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module flit-core >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module flit-core >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-packaging >= 0.19.0
+Requires:       python-packaging >= 24
 Requires:       python-pyproject-hooks
-Requires:       (python-importlib-metadata >= 0.22 if python-base < 3.8)
 Requires:       (python-tomli >= 1.1.0 if python-base < 3.11)
-Recommends:     python-virtualenv >= 20.0.35
+Recommends:     python-virtualenv >= 20.17
 BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
