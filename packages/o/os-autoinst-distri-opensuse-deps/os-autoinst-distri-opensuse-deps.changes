@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Feb 10 13:24:49 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Added dependency perl(constant)
+- Added dependency perl(Inline::Python)
+- Removed dependency perl(Inline::Python)
+- Removed dependency perl(LWP::Simple)
+- Added dependency perl(LWP::Simple)
+- Removed dependency perl(POSIX)
+- Added dependency perl(parent)
+- Added dependency perl(POSIX)
+- Added dependency perl(strict)
+- Added dependency perl(utf8)
+- Added dependency perl(version)
+- Added dependency perl(warnings)
+- Removed dependency perl(constant)
+- Removed dependency perl(parent)
+- Removed dependency perl(strict)
+- Removed dependency perl(utf8)
+- Removed dependency perl(version)
+- Removed dependency perl(warnings)
+- Removed dependency /usr/bin/gzip
+- Added dependency /usr/bin/gzip
+
+-------------------------------------------------------------------
 Sun Jan 25 03:29:37 UTC 2026 - Dominik Heidler <dheidler@suse.de>
 
 - Removed dependency gzip
