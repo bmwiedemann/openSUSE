@@ -740,4 +740,21 @@ additions, including new UTF-8 compose sequences for:
     <comment></comment>
     <requestid>1320983</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>4f13c88677e843e975dcf388adadff3c</srcmd5>
+    <version>1.8.13</version>
+    <time>1770754242</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.8.13; this release includes
+  * Ignore XkbMapNotify events that don't belong to the core keyboard (!293)
+  * xkb: Fix invalid level names count for key types without level names (!292)
+  * xkb: Fix default key types (!292)
+  * xkb: fix include of config.h and drop unused DEBUG check (!290)
+  * xcb_io: fix build with configure --disable-xthreads (#232, !289)
+  * Improve man page formatting (!286)
+  * imDefIc: Clear fabricated state on unfocus. (!283)
+  * Avoid memory leak in XKeysymToString (!282)
+- supersedes libX11-ignore-incompatible-XkbMapNotify.patch</comment>
+    <requestid>1331892</requestid>
+  </revision>
 </revisionlist>

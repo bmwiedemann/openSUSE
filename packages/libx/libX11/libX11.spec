@@ -1,7 +1,7 @@
 #
 # spec file for package libX11
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libX11
-Version:        1.8.12
+Version:        1.8.13
 Release:        0
 Summary:        Core X11 protocol client library
 License:        MIT
@@ -32,8 +32,6 @@ Patch1:         p_xlib_skip_ext_env.diff
 # PATCH-FIX-UPSTREAM en-locales.diff fdo#48596 bnc#388711 -- Add missing data for more en locales
 Patch2:         en-locales.diff
 Patch3:         u_no-longer-crash-in-XVisualIDFromVisual.patch
-# PATCH-FIX-UPSTREAM libX11-ignore-incompatible-XkbMapNotify.patch bsc#1253076 alynx.zhou@suse.com -- Fix mutter-x11-frames crash due to orca screen reader
-Patch4:         libX11-ignore-incompatible-XkbMapNotify.patch
 BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -123,7 +121,6 @@ test -f nls/ja.S90/XLC_LOCALE.pre && exit 1
 %patch -P 1
 %patch -P 2
 %patch -P 3 -p1
-%patch -P 4 -p1
 
 %build
 %configure \

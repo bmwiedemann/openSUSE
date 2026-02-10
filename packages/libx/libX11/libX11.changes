@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Feb  8 07:56:01 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 1.8.13; this release includes
+  * Ignore XkbMapNotify events that don't belong to the core keyboard (!293)
+  * xkb: Fix invalid level names count for key types without level names (!292)
+  * xkb: Fix default key types (!292)
+  * xkb: fix include of config.h and drop unused DEBUG check (!290)
+  * xcb_io: fix build with configure --disable-xthreads (#232, !289)
+  * Improve man page formatting (!286)
+  * imDefIc: Clear fabricated state on unfocus. (!283)
+  * Avoid memory leak in XKeysymToString (!282)
+- supersedes libX11-ignore-incompatible-XkbMapNotify.patch
+
+-------------------------------------------------------------------
 Fri Nov 28 08:52:07 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add libX11-ignore-incompatible-XkbMapNotify.patch: Fix
