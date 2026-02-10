@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb 10 09:15:57 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.1.8:
+  - bump to 0.1.8 to fix lockfile
+- Update to 0.1.6:
+  - fix --help command
+  - Need to re-enable "help" feature.
+  - Also will enable "usage" and "suggestions" to avoid cryptic
+    errors when incorrect flags etc given.
+
+-------------------------------------------------------------------
+Thu Oct  2 20:27:06 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.1.5:
+  - fix regression for arguments to -w option
+  - Update dependencies
+
+-------------------------------------------------------------------
 Fri Jun 27 13:50:01 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Initial packaging effort for autotiling-rs v 0.1.3.

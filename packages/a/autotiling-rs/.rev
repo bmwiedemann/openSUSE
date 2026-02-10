@@ -7,4 +7,23 @@
     <comment>Autotiling significantly improves user experience of i3/sway tiling window managers.</comment>
     <requestid>1289333</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>505b86fb89d2916509a4e8de89efdead</srcmd5>
+    <version>0.1.8</version>
+    <time>1770754379</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.1.8
+
+- Update to 0.1.8:
+  - bump to 0.1.8 to fix lockfile
+- Update to 0.1.6:
+  - fix --help command
+  - Need to re-enable &quot;help&quot; feature.
+  - Also will enable &quot;usage&quot; and &quot;suggestions&quot; to avoid cryptic
+    errors when incorrect flags etc given.
+- Update to 0.1.5:
+  - fix regression for arguments to -w option
+  - Update dependencies</comment>
+    <requestid>1332200</requestid>
+  </revision>
 </revisionlist>

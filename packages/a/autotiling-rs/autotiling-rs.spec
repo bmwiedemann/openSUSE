@@ -17,7 +17,7 @@
 
 
 Name:           autotiling-rs
-Version:        0.1.3
+Version:        0.1.8
 Release:        0
 Summary:        Container layout switcher for sway/i3 with automatic tiling
 License:        MIT
