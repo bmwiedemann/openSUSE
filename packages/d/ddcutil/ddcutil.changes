@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri Feb  6 23:49:19 UTC 2026 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.2.5
+  * Bugfixes
+    - Fixes FTBFS on aarch64
+  * Changes
+    - Updates related to detecting and reporting display connection
+      and disconnection
+- 2.2.3 -> 2.2.4
+  * Bugfixes
+    - Display selection has been reworked to be more flexible,
+      while also simpler internally
+    - "eDP" is once again an (almost) absolute indicator or a
+      laptop display which can be excluded from further processing.
+      To handle the error case where "eDP" is in the name for an
+      external display, option --edp-ambiguous has been added
+    - Segfault in the capabilities command when parsing a malformed
+      capabilities string returned by a monitor.
+    - Very slow response when the EDID is obtained from /sys but is
+      not readable using I2C.
+  * Changes
+    - Option --edid. If the value given starts with "...", the
+      remainder of the value is some number of hex digits.
+    - Added option --ignore-bus. Specifies the number of a /dev/i2c
+      bus that should be completely ignored, providing a workaround
+      for obscure bugs.
+- 2.2.1 -> 2.2.3
+  * Bugfixes
+    - Starting with release 2.2.0, verification on command setvcp
+      and API functions that set a feature value did not not occur,
+      even if option --verify was explicitly given. As a result of
+      this fix, scripts and applications that hitherto appeared to
+      succeed when setting a feature value many now fail the
+      operation because of verification.
+    - Command getvcp --verbose: output was partially in a format
+      intended for syslog.
+    - Fix permission denied errors and incorrectly formed path name
+      for examining /sys/class/drm with environment --verbose
+    - Fix out-of-tree build reference to generated file
+      /src/base/build_details.h (gh#rockowitz/ddcutil#544)
+    - Fix FTBFS when --disable-drm set
+    - configure option --disable-drm forces --disable-watch-displays
+  * Changes
+    - Relax the check of the device class when determining if a
+      device is a video controller (gh#rockowitz/ddcutil#530)
+    - Additional messages reporting configuration file errors
+    - If possible, obtain the list of PNP ids from
+      /usr/share/hwdata/pnp.ids instead of using a hardcoded list.
+      Affects output of command detect.
+    - Reword the parser explanation of options --verify and
+      --noverify for clarity.
+
+
+-------------------------------------------------------------------
 Tue Jul 15 07:02:40 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 2.2.1:
