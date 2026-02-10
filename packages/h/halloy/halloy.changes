@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Feb  7 00:34:48 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to version 2026.2:
+  + Added:
+    - Settings to disable (selectively, or for the entire server)
+    - confirmation of delivery for sent messages
+    - Setting to adjust inner spacing and outer padding for panes
+    - (pane.gap.inner, pane.gap.outer)
+    - Setting to style unread query buffers as highlights in the
+    - sidebar (sidebar.unread_indicator.query_as_highlight)
+    - Settings to configure card and image preview dimensions
+    - Support for transparent background.
+  + Fixed:
+    - Buffer not showing history until resize
+    - Previews are fetched through the same proxy as the server
+      (or default proxy) for HTTP/SOCKS5 proxies
+    - No longer highlight nickname mentions in sent messages in
+      certain scenarios
+    - Filters applied to one server will no longer hide query panes
+      for other servers
+    - Card preview description text is now limited in height to
+      prevent excessive text display
+  + Changed:
+    - No longer highlight matches in sent messages
+    - No longer show notifications for messages where the relevant
+      buffer is open and Halloy is focused
+
+-------------------------------------------------------------------
 Wed Jan 21 17:37:20 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2026.1:

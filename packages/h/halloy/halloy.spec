@@ -2,7 +2,7 @@
 # spec file for package halloy
 #
 # Copyright (c) 2026 mantarimay
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define appid   org.squidowl.halloy
 Name:           halloy
-Version:        2026.1
+Version:        2026.2
 Release:        0
 Summary:        IRC application written in Rust
 License:        GPL-3.0-or-later
