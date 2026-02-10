@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-dune
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define     pkg ocaml-dune
 %global  _buildshell /bin/bash
 Name:           %pkg%nsuffix
-Version:        3.20.2
+Version:        3.21.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 License:        MIT
@@ -51,6 +51,7 @@ Group:          Development/Languages/OCaml
 BuildRequires:  ocaml-dune = %version
 BuildRequires:  ocamlfind(csexp)
 BuildRequires:  ocamlfind(pp)
+BuildRequires:  ocamlfind(re)
 Provides:       ocaml-dune-configurator == %version-%release
 Obsoletes:      ocaml-dune-configurator <  %version-%release
 Provides:       ocaml-dune-configurator-devel == %version-%release
@@ -115,9 +116,11 @@ dune-private-libs
 dune-rpc
 dune-site
 dyn
+fs-io
 ocamlc-loc
 ordering
 stdune
+top-closure
 xdg
 )
 dune_release_pkgs="${pkgs[*]}"

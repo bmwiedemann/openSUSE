@@ -513,4 +513,12 @@ I will submit the packages one by one once this is accepted.</comment>
   see included CHANGES.md file for details</comment>
     <requestid>1317326</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>2f2f50517344f42c548afc6a6c75cb87</srcmd5>
+    <version>3.21.0</version>
+    <time>1770754322</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1332109</requestid>
+  </revision>
 </revisionlist>
