@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb  9 14:54:09 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 12.0.0.
+  * drop compatibility with Mercurial version 4.9 to 6.6
+  * evolve: remove legacy.py that could be used to "detect and convert
+    prehistoric format of obsolete markers" (older than Mercurial 2.3)
+  topic (2.0.0)
+  * drop compatibility with Mercurial version 4.9 to 6.6
+- Add test_wireproto.patch to fix tests.
+
+-------------------------------------------------------------------
 Wed Nov 26 18:08:52 UTC 2025 - Sean Baggaley <me@drinkybird.net>
 
 - Update to version 11.1.10.

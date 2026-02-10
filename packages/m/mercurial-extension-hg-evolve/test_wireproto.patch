@@ -1,0 +1,19 @@
+--- a/tests/test-wireproto.t
++++ b/tests/test-wireproto.t
+@@ -76,7 +76,7 @@
+     protocaps
+     pushkey
+     streamreqs=generaldelta,revlog-compression-zstd,revlogv1,sparserevlog (zstd !)
+-    streamreqs=generaldelta,revlogv1,sparserevlog (no-zstd !)
++    streamreqs=generaldelta,revlog-compression-zstd,revlogv1,sparserevlog
+     unbundle=HG10GZ,HG10BZ,HG10UN
+     unbundlehash
+   Bundle2 capabilities:
+@@ -92,6 +92,7 @@
+       none (delta-compression !)
+       zlib (delta-compression !)
+       zstd (delta-compression zstd !)
++      zstd
+     digests
+       md5
+       sha1

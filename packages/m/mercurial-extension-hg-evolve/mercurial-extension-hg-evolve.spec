@@ -1,7 +1,7 @@
 #
 # spec file for package mercurial-extension-hg-evolve
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %endif
 
 Name:           mercurial-extension-hg-evolve
-Version:        11.1.10
+Version:        12.0.0
 Release:        0
 Summary:        Flexible evolution of Mercurial history
 License:        GPL-2.0-or-later
@@ -36,6 +36,7 @@ Group:          Development/Tools/Version Control
 URL:            https://www.mercurial-scm.org/doc/evolution/
 Source0:        https://files.pythonhosted.org/packages/source/h/hg-evolve/hg_evolve-%{version}.tar.gz
 Source90:       tests.blacklist
+Patch0:         test_wireproto.patch
 BuildRequires:  %{pythons}
 # python311-flake8 is not available on Leap 15.6.
 %if 0%{?suse_version} > 1600 || 0%{?sle_version} < 150600
@@ -57,7 +58,7 @@ BuildArch:      noarch
 Flexible evolution of Mercurial history.
 
 %prep
-%setup -q -n hg_evolve-%{version}
+%autosetup -p1 -n hg_evolve-%{version}
 
 %build
 %pyproject_wheel
