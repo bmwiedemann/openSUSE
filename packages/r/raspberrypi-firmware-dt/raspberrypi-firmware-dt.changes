@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  6 16:16:13 UTC 2026 - Andrea della Porta <andrea.porta@suse.com>
+
+- Extend PCIe range to encompass shared SRAM
+* 0001-dts-bcm2712-Extend-PCIe-range-to-encompass-firmware-.patch
+
+-------------------------------------------------------------------
 Thu Nov 12 06:25:51 UTC 2025 - Ivan Ivanov <ivan.ivanov@suse.com>
 
 - Remove RPi5 UART u-boot specific overlay. Better fix will be to

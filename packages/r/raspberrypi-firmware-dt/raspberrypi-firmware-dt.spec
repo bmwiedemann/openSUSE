@@ -41,6 +41,7 @@ Patch6:         0001-ARM-dts-bcm2712-Slow-down-eMMC-interface.patch
 Patch7:         bcm2712-fix-compatible.patch
 Patch8:         0001-Amend-the-RP1-ethernet-node-to-work-with-upstream-dr.patch
 Patch9:         0001-dts-overlays-Adjust-them-for-RPi5.patch
+Patch10:	0001-dts-bcm2712-Extend-PCIe-range-to-encompass-firmware-.patch
 Requires:       raspberrypi-firmware
 BuildRequires:  dtc
 BuildRequires:  raspberrypi-firmware
