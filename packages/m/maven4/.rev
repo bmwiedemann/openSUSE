@@ -39,4 +39,12 @@
     <comment>Specify required resolver version</comment>
     <requestid>1323460</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>d12cdf2f64be4bccf7d073de5128e632</srcmd5>
+    <version>4.0.0~rc5</version>
+    <time>1770754391</time>
+    <user>anag_factory</user>
+    <comment>Require the compatibility version of plexus-xml4</comment>
+    <requestid>1332223</requestid>
+  </revision>
 </revisionlist>

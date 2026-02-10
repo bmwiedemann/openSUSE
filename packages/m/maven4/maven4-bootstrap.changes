@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 10 06:14:07 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Require the compatibility version of plexus-xml4 to avoid breaking
+  on each upgrade
+
+-------------------------------------------------------------------
 Thu Dec 18 06:43:33 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Specify required maven-resolver version since the patch ports

@@ -1,7 +1,7 @@
 #
 # spec file for package maven4
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -105,8 +105,8 @@ BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
 #!BuildIgnore:  %{name}-bootstrap
 #!BuildIgnore:  %{name}-lib
 #!BuildIgnore:  plexus-sec-dispatcher
-Requires:       java-headless >= 17
 Requires:       %{name}-lib = %{version}-%{release}
+Requires:       java-headless >= 17
 
 %description
 Maven is a software project management and comprehension tool. Based on the
@@ -189,6 +189,9 @@ BuildArch:      noarch
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
+
+# New plexus-xml4
+%pom_xpath_set pom:project/pom:properties/pom:plexusXmlVersion 4
 
 %pom_remove_dep -r :junit-bom
 %pom_remove_dep -r :mockito-bom
