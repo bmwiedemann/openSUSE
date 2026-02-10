@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 10 16:51:52 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Fix Patch numbering.
+
+-------------------------------------------------------------------
+Tue Feb 10 14:08:30 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Update 0001-Detect-CDROM-media-changes-using-ID_FD_UUID-udev-pro.patch to
+  match the version merged by upstream.
+
+- Add 0002-Fix-media_fs_uuids-not-being-initialized-with-existi.patch to fix
+  media_fs_uuids hash table not being initialized with existing media at
+  startup.
+
+-------------------------------------------------------------------
 Mon Jan 26 09:17:55 UTC 2026 - Franck Bui <fbui@suse.com>
 
 - Add 0001-Detect-CDROM-media-changes-using-ID_FD_UUID-udev-pro.patch (bsc#1255667)

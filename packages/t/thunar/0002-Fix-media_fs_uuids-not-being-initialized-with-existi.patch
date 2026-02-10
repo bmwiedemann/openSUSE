@@ -1,0 +1,102 @@
+From c52ed176e69f0ecbe5f795ce6bd38d0be0468dfe Mon Sep 17 00:00:00 2001
+From: Franck Bui <fbui@suse.com>
+Date: Mon, 9 Feb 2026 18:59:27 +0100
+Subject: [PATCH 2/2] Fix media_fs_uuids not being initialized with existing
+ media at startup
+
+The media_fs_uuids hash table introduced for CD/DVD media change detection has
+a bug: it starts empty even when discs are already present in drives at startup.
+
+When Thunar starts with a CD/DVD already inserted, the first "change" uevent
+finds no entry in media_fs_uuids (returns NULL), causing
+has_cdrom_media_changed() to incorrectly report the media as "changed" since
+g_strcmp0(NULL, current_uuid) != 0.
+
+This triggers unwanted auto-mount and volume manager actions for media that was
+present all along, defeating the purpose of the change detection mechanism.
+
+Fix by adding thunar_application_initialize_media_fs_uuids() to scan existing
+CD/DVD drives at startup and populate the hash table with any media currently
+present. Now the first uevent after startup correctly compares against the
+actual initial state instead of an empty table.
+---
+ thunar/thunar-application.c | 49 ++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 48 insertions(+), 1 deletion(-)
+
+diff --git a/thunar/thunar-application.c b/thunar/thunar-application.c
+index 81ac5589..8ae24f3e 100644
+--- a/thunar/thunar-application.c
++++ b/thunar/thunar-application.c
+@@ -201,6 +201,8 @@ thunar_application_volman_watch (GPid     pid,
+                                  gpointer user_data);
+ static void
+ thunar_application_volman_watch_destroy (gpointer user_data);
++static void
++thunar_application_initialize_media_fs_uuids (ThunarApplication *application);
+ #endif
+ static gboolean
+ thunar_application_show_progress_dialog_timeout (gpointer user_data);
+@@ -408,7 +410,8 @@ thunar_application_startup (GApplication *gapp)
+   g_signal_connect (application->udev_client, "uevent",
+                     G_CALLBACK (thunar_application_uevent), application);
+ 
+-  application->media_fs_uuids = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_free);
++  /* create and populate the hash table with currently present media */
++  thunar_application_initialize_media_fs_uuids (application);
+ #endif
+ 
+   thunar_application_dbus_init (application);
+@@ -1170,6 +1173,50 @@ thunar_application_uevent (GUdevClient       *client,
+ 
+ 
+ 
++static void
++thunar_application_initialize_media_fs_uuids (ThunarApplication *application)
++{
++  GList       *devices;
++  GList       *lp;
++  GUdevDevice *device;
++  const gchar *sysfs_path;
++  const gchar *media_fs_uuid;
++
++  _thunar_return_if_fail (THUNAR_IS_APPLICATION (application));
++  _thunar_return_if_fail (G_UDEV_IS_CLIENT (application->udev_client));
++  _thunar_return_if_fail (application->media_fs_uuids == NULL);
++
++  application->media_fs_uuids = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_free);
++
++  /* query all block devices from udev */
++  devices = g_udev_client_query_by_subsystem (application->udev_client, "block");
++
++  for (lp = devices; lp != NULL; lp = lp->next)
++    {
++      device = G_UDEV_DEVICE (lp->data);
++
++      /* check if this is a CD/DVD drive with media currently present */
++      if (g_udev_device_get_property_as_boolean (device, "ID_CDROM") &&
++          g_udev_device_get_property_as_boolean (device, "ID_CDROM_MEDIA"))
++        {
++          sysfs_path = g_udev_device_get_sysfs_path (device);
++          media_fs_uuid = g_udev_device_get_property (device, "ID_FS_UUID");
++
++          /* store the filesystem UUID for this device if it has one */
++          if (media_fs_uuid != NULL)
++            {
++              g_hash_table_insert (application->media_fs_uuids,
++                                   g_strdup (sysfs_path),
++                                   g_strdup (media_fs_uuid));
++            }
++        }
++    }
++
++  g_list_free_full (devices, g_object_unref);
++}
++
++
++
+ static gboolean
+ thunar_application_volman_idle (gpointer user_data)
+ {
+-- 
+2.51.0
+

@@ -1,7 +1,6 @@
 #
 # spec file for package thunar
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +26,8 @@ Group:          Productivity/File utilities
 URL:            https://docs.xfce.org/xfce/thunar/start
 Source:         https://archive.xfce.org/src/xfce/thunar/4.20/%{name}-%{version}.tar.bz2
 Source100:      %{name}-rpmlintrc
-Patch:          0001-Detect-CDROM-media-changes-using-ID_FD_UUID-udev-pro.patch
+Patch01:        0001-Detect-CDROM-media-changes-using-ID_FD_UUID-udev-pro.patch
+Patch02:        0002-Fix-media_fs_uuids-not-being-initialized-with-existi.patch
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.8
