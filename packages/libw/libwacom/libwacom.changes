@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Feb  8 07:52:35 UTC 2026 - Aesara Binder <aesara@mailbox.org>
+
+- Update to version 2.18.0
+  * New devices:
+    - Added Lenovo ThinkVision M14t Gen2
+    - XP Pen Deco02
+    - Huion Kamvas Pro 19 (4K) (GT1902)
+  * Device fixes:
+    - drop the firmware match for the Huion Kamvas 13 GS1333
+    - fix the Huion Inspiroy Q620M layout
+    - add bluetooth match for the XP-Pen Deco MW
+    - Update huion-hs611.tablet
+    - Update huion-inspiroy-q620m.tablet
+  * Device other:
+    - libwacom_stylus_is_generic() to detect generic styli
+
+-------------------------------------------------------------------
 Sun Nov 23 20:08:00 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.17.0
