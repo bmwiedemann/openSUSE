@@ -1,7 +1,7 @@
 #
 # spec file for package lalframe
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,28 +25,25 @@
 # No support for octave >= 6
 %bcond_with octave
 Name:           lalframe
-Version:        3.0.5
+Version:        3.0.7
 Release:        0
 Summary:        LSC Algorithm Frame Library for gravitational wave data analysis
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://wiki.ligo.org/Computing/LALSuite
 Source:         https://software.igwn.org/sources/source/lalsuite/lalframe-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         https://git.ligo.org/lscsoft/lalsuite/-/commit/9dba245ab3692ecf691247a442704f13c075ed34.patch#/lalframe-swig-stringval-not-value.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module lal >= 7.1.0}
+BuildRequires:  %{python_module lal >= 7.7.0}
 BuildRequires:  %{python_module numpy >= 1.7}
 BuildRequires:  %{python_module numpy-devel >= 1.7}
-# python3-py - remove with next update -- https://git.ligo.org/lscsoft/lalsuite/-/merge_requests/2033
-BuildRequires:  %{python_module py}
 BuildRequires:  fdupes
-BuildRequires:  pkgconfig
+BuildRequires:  help2man >= 1.37
+BuildRequires:  pkgconfig >= 0.18.0
 BuildRequires:  python-rpm-macros
-BuildRequires:  swig
-BuildRequires:  pkgconfig(framecppc)
-BuildRequires:  pkgconfig(framel)
-BuildRequires:  pkgconfig(lal) >= 6.21.0
+BuildRequires:  swig >= 3.0.11
+BuildRequires:  pkgconfig(framecppc) >= 2.5.5
+BuildRequires:  pkgconfig(framel) >= 8.42.2
+BuildRequires:  pkgconfig(lal) >= 7.7.0
 Requires:       python-lal
 Requires:       python-numpy >= 1.7
 ExcludeArch:    %{ix86}
@@ -54,12 +51,13 @@ ExcludeArch:    %{ix86}
 BuildRequires:  python-xml
 %endif
 %if %{with octave}
-BuildRequires:  octave-lal >= 7.1.0
+BuildRequires:  octave-lal >= 7.7.0
 BuildRequires:  pkgconfig(octave)
 %endif
 # SECTION For tests
-BuildRequires:  %{python_module ligo-segments}
 BuildRequires:  %{python_module pytest}
+# Addtional modules not mentioned by upstream
+BuildRequires:  %{python_module igwn-segments}
 # /SECTION
 %python_subpackages
 
@@ -78,9 +76,9 @@ that use the LAL Frame library.
 Summary:        Development files for LAL Frame
 Group:          Development/Libraries/C and C++
 Requires:       %{shlib} = %{version}
-Requires:       pkgconfig(framecppc)
-Requires:       pkgconfig(framel)
-Requires:       pkgconfig(lal)
+Requires:       pkgconfig(framecppc) >= 2.5.5
+Requires:       pkgconfig(framel) >= 8.42.2
+Requires:       pkgconfig(lal) >= 7.7.0
 
 %description -n %{name}-devel
 This package contains sources and header files needed to build applications
@@ -90,7 +88,9 @@ that use the LAL Frame library.
 %package -n octave-lalframe
 Summary:        Octave bindings for LAL Frame
 Group:          Productivity/Scientific/Physics
-Requires:       octave-lal
+Requires:       7.7.0
+Requires:       octave
+Requires:       octave-lal >= 7.7.0
 %requires_eq    octave-cli
 
 %description -n octave-lalframe
@@ -102,6 +102,8 @@ This package provides the necessary files for using LAL Frame with octave.
 %autosetup -p2
 
 %build
+# SWIG_FEATURES="-w999" fixes build in Factory
+export SWIG_FEATURES="-w999"
 %{python_expand # Necessary to run configure with multiple py3 flavours
 export PYTHON=$python
 mkdir ../${PYTHON}_build

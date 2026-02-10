@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Feb  9 19:49:49 UTC 2026 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Fix build in Factory by adding export SWIG_FEATURES="-w999"
+  * Add BuildRequires for
+    - help2man
+  * Add Requires for
+    - octave
+  * Change version numbers according to specification.
+
+-------------------------------------------------------------------
+Sun Feb  1 20:50:31 UTC 2026 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Update to version 3.0.7
+  * Fix build on Tumbleweed/Factory by adding 
+    BuildRequires python-igwn-segments
+  * Remove BuildRequires for python-ligo-segments
+    which is replaced by python-igwn-segments
+  * Remove lalframe-swig-stringval-not-value.patch, fixed upstream
+  * Remove BuildRequires python-py as stated in comment in spec 
+    file. 
+    https://git.ligo.org/lscsoft/lalsuite/-/merge_requests/2033
+  * No Release Notes
+- Changes in version 3.0.6
+  * No Release Notes
+
+-------------------------------------------------------------------
 Mon Dec  2 12:08:43 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add lalframe-swig-stringval-not-value.patch: For compatibility
