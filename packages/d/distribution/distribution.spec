@@ -125,6 +125,7 @@ install -m 0644 %{SOURCE3} %{buildroot}%{_tmpfilesdir}/%{name}-registry.conf
 %{_sysusersdir}/system-user-registry.conf
 %config %{_sysconfdir}/registry
 %config(noreplace) %{_sysconfdir}/registry/config.yml
+%ghost %attr(-,registry,registry) %{_localstatedir}/lib/docker-registry
 %{_tmpfilesdir}/%{name}-registry.conf
 
 %changelog

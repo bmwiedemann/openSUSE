@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  3 10:25:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- restore directory ownership after last change
+
+-------------------------------------------------------------------
 Tue Jan 13 16:39:31 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Move config files in systemd tmpfiles dir for immutable mode
