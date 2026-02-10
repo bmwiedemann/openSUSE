@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 10 11:18:37 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.9.3
+  * Bump actions/checkout from 5 to 6 by @dependabot[bot] in (#1334)
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci[bot] in (#1335)
+  * Fix B608 to detect VALUES( without space by @kfess in (#1337)
+  * Add check for hardcoded passwords in dicts. by @alanverresen in (#1338)
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci[bot] in (#1341)
+  * Update tox tests for Python 3.10 by @willschlitzer in (#1346)
+  * Bump docker/setup-buildx-action from 3.11.1 to 3.12.0 by @dependabot[bot] in (#1347)
+  * Limit B614 to torch.load deserializers by @dibussoc in (#1348)
+
+-------------------------------------------------------------------
 Thu Nov 27 08:17:43 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.9.2

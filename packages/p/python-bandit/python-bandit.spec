@@ -1,7 +1,7 @@
 #
 # spec file for package python-bandit
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@
 %bcond_without  builddocs
 %{?sle15_python_module_pythons}
 Name:           python-bandit
-Version:        1.9.2
+Version:        1.9.3
 Release:        0
 Summary:        Security oriented static analyser for Python code
 License:        Apache-2.0
