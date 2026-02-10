@@ -1,7 +1,36 @@
 -------------------------------------------------------------------
+Mon Feb 09 14:44:05 UTC 2026 - aplanas@suse.com
+
+- Update vendored crates (bsc#1257908, CVE-2026-25727)
+  * time 0.3.47
+
+- Update to version 0.2.8+116:
+  * build(deps): bump bytes from 1.7.2 to 1.11.1
+  * api: Modify /version endpoint output in version 2.5
+  * Add API v2.5 with backward-compatible /v2.5/quotes/integrity
+  * tests: add unit test for resolve_agent_id (#1182)
+  * (pull-model): enable retry logic for registration
+  * rpm: Update specfiles to apply on master
+  * workflows: Add test to detect unused crates
+  * lib: Drop unused crates
+  * push-model: Drop unused crates
+  * keylime-agent: Drop unused crates
+  * build(deps): bump uuid from 1.18.1 to 1.19.0
+  * Update reqwest-retry to 0.8, retry-policies to 0.5
+  * rpm: Fix cargo_build macro usage on CentOS Stream
+  * fix(push-model): resolve hash_ek uuid to actual EK hash
+  * build(deps): bump thiserror from 2.0.16 to 2.0.17
+  * workflows: Separate upstream test suite from e2e coverage
+  * Send UEFI measured boot logs as raw bytes (#1173)
+  * auth: Add unit tests for SecretToken implementation
+  * packit: Enable push-attestation tests
+  * resilient_client: Prevent authentication token leakage in logs
+
+-------------------------------------------------------------------
 Wed Jan 07 15:53:59 UTC 2026 - aplanas@suse.com
 
 - Use tmpfiles.d for /var directories (PED-14736)
+  + tmpfiles.keylime renamed to rust-keylime.conf and extended
 
 - Update to version 0.2.8+96:
   * build(deps): bump wiremock from 0.6.4 to 0.6.5
