@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 10 11:03:00 UTC 2026 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-8.2, this is a minor bugfix release.
+- primesieve.pc.in: Fix missing version in generated pkg-config file, GitHub#104.
+- AC.cpp: Refactor loop condition.
+- No API or ABI changes.
+
+-------------------------------------------------------------------
 Mon Jan 26 09:33:00 UTC 2026 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primecount-8.1.
