@@ -1051,4 +1051,41 @@ See https://bugzilla.opensuse.org/show_bug.cgi?id=1195398
     <comment></comment>
     <requestid>1297679</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>fc1a88dda7517992b322f85d26ad521a</srcmd5>
+    <version>13.48</version>
+    <time>1770754251</time>
+    <user>anag_factory</user>
+    <comment>- Update to 13.48:
+  * Added a new Nikon LensID (#385)
+  * Added support for quoted entries in input -geotag CSV files
+  * Fixed decoding of Nikon Z6III menu settings for firmware 2.0 update
+  * Fixed -fast2 to avoid processing maker notes in some QuickTime-based files
+  * Fixed bug introduced in version 13.46 where some tags may be
+    associated with the next fix when geotagging from GPX files
+
+- Update to 13.47:
+  * Enhanced -fast option to avoid scanning QuickTime MediaData for
+    metadata (improves performance when reading CR3 files from slow
+    media, #384) and -fast2 to avoid reading HDRP maker notes
+  * API Changes:
+    + Added CSV support to GeoUserTag option
+
+- Update to 13.46:
+  * Added a new Pentax LensType
+  * Decode some new Canon tags (#380)
+  * Renamed a newly added Canon tag
+  * Improved identification of Canon RF lenses in edited images when an extender was used
+  * Changed description of FocalLength35efl to add &quot;35mm Equiv&quot;
+  * Patched -validate option to recognize DNG 1.7.1 tags
+  * Patched to remove maker note error/warning when writing files from some Google phones (#377)
+  * Patched to improve warning for corrupted HEIC files downloaded
+    from heic.digital, and added ability to delete this garbage when writing (#361 and #378)
+  * Fixed minor error when writing some DJI DNG files
+  * API Changes:
+    + Added GeoUserTag option
+
+- Update to 13.45:</comment>
+    <requestid>1331910</requestid>
+  </revision>
 </revisionlist>

@@ -55,5 +55,4 @@ supported by ExifTool (r = read, w = write, c = create):
   PDF            r/w/c  |  PrintIM        r    |  AVCHD          r
   CIFF           r/w    |  ID3            r    |  ZIP            r
   AFCP           r/w    |  Ricoh RMETA    r    |  (and more)</description>
-  <devel project="devel:languages:perl" package="perl-Image-ExifTool"/>
 </package>
