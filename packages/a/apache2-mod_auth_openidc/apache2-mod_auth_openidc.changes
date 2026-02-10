@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Feb 10 11:37:18 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 2.4.19.1
+  * backwards incompatible session format so existing sessions (created by versions
+    <=2.4.18.x) are invalid
+  * oauth: fix segfault when using OIDCOAuthVerifySharedKeys, regression since 2.4.16; closes #1373
+  * jwk: fix parsing RSA JWKs with only an x5c parameter (i.e. no n and e parameters)
+- version update to 2.4.19
+  * cookie: support individual SameSite cookie settings on the session cookie, state cookie
+    and Discovery CSRF cookie by adding 2 more arguments to OIDCCookieSameSite
+  * id_token: add off option to OIDCPassIDTokenAs so no claims from the ID token will be passed on
+  * passphrase: generate a crypto key when OIDCCryptoPassphrase is not set
+  * note that the OIDCCryptoPassphrase does need to be configured statically if you want sessions
+    to survive server restarts, or for a cluster that shares a session storage backend
+  * metadata: avoid double-free when validation of provider metadata fails
+  * response: avoid proto state memory leaks upon errors in response processing
+  * util/key.c: check for unsupported symmetric key hashing algorithms and avoid a memory
+    leak in such cases
+  * session: remove expired session from cache with oidc_session_kill instead of just clearing it
+  * memory: rewrite pconf pool memory allocation handling to avoid increasing memory (pool)
+    consumption over graceful restarts
+  * drop support for Apache 2.2
+  * redis: use SET..EX %d when storing cached data instead of the deprecated SETEX
+  * session/cookie: save 20-40 bytes on the session and client-cookie size
+  * request: set the OIDC_ERROR variables when PAR is configured but not enabled by the Provider
+  * code: avoid compiler warnings on curl_easy_setopt in http.c
+  * test: add more unit tests in test/test_*.c and migrate proto tests from test.c
+
+-------------------------------------------------------------------
 Tue Sep  9 09:25:18 UTC 2025 - pgajdos@suse.com
 
 - version update to 2.4.18

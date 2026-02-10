@@ -547,4 +547,12 @@ Bugfixes
     to prevents possible segmentation faults after (graceful) restarting the same process</comment>
     <requestid>1303323</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>6383366bfdd46baab3bfefbe4df17eee</srcmd5>
+    <version>2.4.19.1</version>
+    <time>1770754388</time>
+    <user>anag_factory</user>
+    <comment>version update to 2.4.19.1</comment>
+    <requestid>1332219</requestid>
+  </revision>
 </revisionlist>
