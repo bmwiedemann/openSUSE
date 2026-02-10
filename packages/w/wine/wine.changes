@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Feb  8 16:38:53 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 11.2 release
+  - More optimizations in PDB loading.
+  - Support for MSVC constructors in C runtime.
+  - Easier mechanism for creating version resources.
+  - Various bug fixes.
+- update staging to 11.2 release
+
+-------------------------------------------------------------------
+Sat Feb  7 13:33:16 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 11.1 release
+  - Various changes that were deferred during code freeze.
+  - More pixel format conversions in WindowsCodecs.
+  - More work on ActiveX Data Objects (MSADO).
+  - Various bug fixes.
+- update staging to 11.1 release
+
+-------------------------------------------------------------------
 Tue Jan 13 16:29:38 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - updated to 11.0 release

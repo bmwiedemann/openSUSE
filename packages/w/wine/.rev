@@ -5780,4 +5780,24 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 11.0-rc5 release</comment>
     <requestid>1327276</requestid>
   </revision>
+  <revision rev="485" vrev="1">
+    <srcmd5>4da15756567f831694b52bdba04dbf1b</srcmd5>
+    <version>11.2</version>
+    <time>1770754374</time>
+    <user>anag_factory</user>
+    <comment>- updated to 11.2 release
+  - More optimizations in PDB loading.
+  - Support for MSVC constructors in C runtime.
+  - Easier mechanism for creating version resources.
+  - Various bug fixes.
+- update staging to 11.2 release
+
+- updated to 11.1 release
+  - Various changes that were deferred during code freeze.
+  - More pixel format conversions in WindowsCodecs.
+  - More work on ActiveX Data Objects (MSADO).
+  - Various bug fixes.
+- update staging to 11.1 release</comment>
+    <requestid>1332184</requestid>
+  </revision>
 </revisionlist>
