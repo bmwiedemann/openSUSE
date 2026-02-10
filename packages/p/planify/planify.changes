@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb  9 14:36:06 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 4.18.0:
+  * Refactored Quick Find to use ListView
+  * Improved task rendering performance
+  * Fixed a crash when typing dates with years below 1000 in the due date picker
+  * Optimized database operations
+  * Fixed Quick Find getting stuck in multi-select mode
+  * Added support for Todoist assignment filtering
+  * Added a mandatory Todoist API migration flow
+  * Improved Radicale CalDAV compatibility by accepting HTTP 201 responses for
+    PUT requests
+  * Fixed filtering by labels in Today view
+  * Fixed manual task ordering synchronization with CalDAV and Nextcloud
+  * Fixed drag and drop not working correctly
+
+-------------------------------------------------------------------
 Fri Dec 26 13:40:56 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 4.17.0:

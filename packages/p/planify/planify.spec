@@ -1,7 +1,7 @@
 #
 # spec file for package planify
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         sover 0
 %define         appid io.github.alainm23.planify
 Name:           planify
-Version:        4.17.0
+Version:        4.18.0
 Release:        0
 Summary:        Task and project manager
 License:        GPL-3.0-or-later
