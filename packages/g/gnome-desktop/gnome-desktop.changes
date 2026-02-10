@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb  9 13:11:37 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.5:
+  + thumbnail: support %m expansion
+  + Update seccomp filters from flatpak-run.c
+  + Fix various memory leaks
+  + Run tests again by default
+  + Updated translations.
+- Add check section and meson_test macro, run upstreams default
+  tests during build.
+
+-------------------------------------------------------------------
 Fri Sep  5 06:19:22 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.4:

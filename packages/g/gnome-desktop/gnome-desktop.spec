@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-desktop
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-desktop
-Version:        44.4
+Version:        44.5
 Release:        0
 Summary:        The GNOME Desktop API Library
 License:        LGPL-2.1-or-later
@@ -200,6 +200,9 @@ libgnome-desktop.
 
 %ldconfig_scriptlets -n libgnome-desktop-3-20
 %ldconfig_scriptlets -n libgnome-desktop-4-2
+
+%check
+%meson_test
 
 %files -n libgnome-desktop-3-20
 %license COPYING.LIB
