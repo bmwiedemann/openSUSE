@@ -125,13 +125,13 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
 %check
 %{buildroot}/%{_bindir}/%{binary_name} --version | grep %{version}
 rm -rf tests/contest/
+
+# Failing tests reported upstream
+# https://github.com/jj-vcs/jj/issues/6241
 %{cargo_test} -- \
         --skip 'test_gpg::gpgsm_signing_roundtrip' \
         --skip 'test_gpg::gpgsm_signing_roundtrip_explicit_key' \
-        --skip 'test_gpg::gpgsm_unknown_key' \
-        --skip 'test_diff_command::test_diff_basic' \
-        --skip 'test_new_command::test_new_insert_after' \
-        --skip 'test_new_command::test_new_insert_before'
+        --skip 'test_gpg::gpgsm_unknown_key'
 
 %files
 %doc README.md

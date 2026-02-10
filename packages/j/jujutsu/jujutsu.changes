@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 10 05:50:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- do not update cargo dependencies in cargo_vendor, as this causes
+  three tests to fail
+
+-------------------------------------------------------------------
 Fri Feb  6 06:21:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.38.0:

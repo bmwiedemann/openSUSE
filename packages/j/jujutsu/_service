@@ -12,8 +12,8 @@
   <service name="set_version" mode="manual">
   </service>
   <service name="cargo_vendor" mode="manual">
-    <param name="update">true</param>
-    <param name="respect-lockfile">false</param>
+    <param name="update">false</param>
+    <param name="respect-lockfile">true</param>
     <param name="srcdir">jj</param>
   </service>
   <service name="tar" mode="buildtime"/>
