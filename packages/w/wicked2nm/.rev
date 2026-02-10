@@ -74,4 +74,17 @@
   * Add support for autoip-fallback</comment>
     <requestid>1310596</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ef3a8d49a01efeb7629b9b2442c43e16</srcmd5>
+    <version>1.4.1</version>
+    <time>1770754403</time>
+    <user>anag_factory</user>
+    <comment>- Update to v1.4.1
+  * bump bytes from 1.10.1 to 1.11.1
+  * Update time to 0.3.47 (CVE-2026-25727)
+    [bsc#1257911]
+- Disable `update` in cargo vendor service, as newer agama versions
+  are incompatible for now.</comment>
+    <requestid>1332264</requestid>
+  </revision>
 </revisionlist>

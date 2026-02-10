@@ -16,7 +16,7 @@
 #
 
 Name:           wicked2nm
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Migration tool from wicked to NetworkManager
 License:        GPL-2.0-or-later

@@ -3,7 +3,7 @@
     <param name="url">https://github.com/openSUSE/wicked2nm</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v1.4.0</param>
+    <param name="revision">v1.4.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
@@ -15,7 +15,7 @@
   <service name="cargo_vendor" mode="manual">
     <param name="srcdir">wicked2nm</param>
     <param name="compression">gz</param>
-    <param name="update">true</param>
+    <param name="update">false</param>
     <param name="filter">true</param>
   </service>
   <service name="set_version" mode="manual"/>

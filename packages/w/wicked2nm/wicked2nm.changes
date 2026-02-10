@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 10 12:55:51 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to v1.4.1
+  * bump bytes from 1.10.1 to 1.11.1
+  * Update time to 0.3.47 (CVE-2026-25727)
+    [bsc#1257911]
+- Disable `update` in cargo vendor service, as newer agama versions
+  are incompatible for now.
+
+-------------------------------------------------------------------
 Fri Oct 10 13:47:03 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to v1.4.0
