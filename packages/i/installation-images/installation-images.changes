@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Mon Feb 9 12:24:24 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#782
+- Build: use full ffmpeg package version
+- 17.173
+
+--------------------------------------------------------------------
+Mon Feb 9 12:21:25 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#783
+- MicroOS needs adapted minimalist zypp config (bsc#1256694)
+- 17.172
+
+--------------------------------------------------------------------
 Wed Feb 4 13:08:15 UTC 2026 - dimstar@opensuse.org
 
 - merge gh#openSUSE/installation-images#781

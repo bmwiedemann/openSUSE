@@ -307,6 +307,9 @@ BuildRequires:  grub2-branding-%branding_grub2
 ExcludeArch:    %ix86
 %endif
 
+BuildRequires:  zypp-excludedocs
+BuildRequires:  zypp-no-multiversion
+BuildRequires:  zypp-no-recommends
 BuildRequires:  xf86-input-libinput
 BuildRequires:  google-roboto-fonts
 BuildRequires:  noto-sans-fonts
@@ -553,6 +556,7 @@ BuildRequires:  sbl
 %endif
 %if %{with vnc}
 BuildRequires:  xorg-x11-Xvnc
+#!BuildConflicts: ffmpeg-8-mini-libs
 %endif
 # kmps
 %ifarch %ix86 x86_64
@@ -684,7 +688,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.171
+Version:        17.173
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

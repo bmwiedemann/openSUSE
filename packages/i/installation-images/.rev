@@ -1961,4 +1961,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>1330954</requestid>
   </revision>
+  <revision rev="245" vrev="1">
+    <srcmd5>ab3328d927e74354f40384b50adc0a06</srcmd5>
+    <version>17.173</version>
+    <time>1770754310</time>
+    <user>anag_factory</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>1332110</requestid>
+  </revision>
 </revisionlist>
