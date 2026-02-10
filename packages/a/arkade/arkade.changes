@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Feb 10 12:45:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.75:
+  * Fixes for assuming gh has --json output
+  * Update SLICER_BOX.md
+
+-------------------------------------------------------------------
+Tue Feb 10 05:52:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.74:
+  * Initial gh release hidden command
+  * Guard verification output for progress bar/alt screen
+- Update to version 0.11.73:
+  * Use an alt screen to protect scroll buffer
+  * Print summary in non-interactive mode
+
+-------------------------------------------------------------------
 Mon Feb 09 06:19:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.72:
