@@ -360,4 +360,21 @@
   * go#76966 cmd/compile/internal/ssa: Compile.func1(): panic during sccp while compiling &lt;function&gt;: runtime error: index out of range (forwarded request 1327526 from jfkw)</comment>
     <requestid>1327528</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4c33eec56581b91b86c4c222ee220299</srcmd5>
+    <version>1.24.13</version>
+    <time>1770754313</time>
+    <user>anag_factory</user>
+    <comment>- go1.24.13 (released 2026-02-04) includes security fixes to the go
+  command and the crypto/tls package, as well as bug fixes to the
+  crypto/x509 package.
+  Refs boo#1236217 go1.24 release tracking
+  CVE-2025-61732 CVE-2025-68121 CVE-2025-68119
+  * go#77128 go#76697 boo#1257692 security: fix CVE-2025-61732 cmd/go: potential code smuggling using doc comments
+  * go#77355 go#77217 boo#1256818 crypto/tls:  CVE-2025-68121 revert Config.Clone change and apply lightweight chain validation
+  * go#77103 go#77099 boo#1256820 security: fix CVE-2025-68119 cmd/go: unexpected code execution when invoking toolchain
+  * go#77322 crypto/x509: single-label excluded DNS name constraints incorrectly match all wildcard SANs
+  * go#77424 crypto/tls: CL 737700 broke session resumption on macOS (forwarded request 1332051 from jfkw)</comment>
+    <requestid>1332055</requestid>
+  </revision>
 </revisionlist>

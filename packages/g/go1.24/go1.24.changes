@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb  4 15:46:48 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.24.13 (released 2026-02-04) includes security fixes to the go
+  command and the crypto/tls package, as well as bug fixes to the
+  crypto/x509 package.
+  Refs boo#1236217 go1.24 release tracking
+  CVE-2025-61732 CVE-2025-68121 CVE-2025-68119
+  * go#77128 go#76697 boo#1257692 security: fix CVE-2025-61732 cmd/go: potential code smuggling using doc comments
+  * go#77355 go#77217 boo#1256818 crypto/tls:  CVE-2025-68121 revert Config.Clone change and apply lightweight chain validation
+  * go#77103 go#77099 boo#1256820 security: fix CVE-2025-68119 cmd/go: unexpected code execution when invoking toolchain
+  * go#77322 crypto/x509: single-label excluded DNS name constraints incorrectly match all wildcard SANs
+  * go#77424 crypto/tls: CL 737700 broke session resumption on macOS
+
+-------------------------------------------------------------------
 Thu Jan 15 18:28:38 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.24.12 (released 2026-01-15) includes security fixes to the go
