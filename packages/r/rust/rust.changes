@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  5 15:34:09 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Provide rust-src meta package, too; it may be useful for building
+  Rust support in Linux kernel
+
+-------------------------------------------------------------------
 Fri Jan 23 05:36:22 UTC 2026 - William Brown <william.brown@suse.com>
 
 - Update to version 1.93.0 - for details see the rust1.93 package

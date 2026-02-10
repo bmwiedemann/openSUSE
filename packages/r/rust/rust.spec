@@ -1,8 +1,7 @@
 #
 # spec file for package rust
 #
-# Copyright (c) 2026 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2021 William Brown <william@blackhats.net.au>
 #
 # All modifications and additions to the file contributed by third parties
@@ -82,6 +81,16 @@ speed, and concurrency.
 want to install Rust for a development environment, you should install
 'rustup' instead.
 
+%package src
+Summary:        The Rust Standard Library Source
+License:        Apache-2.0 OR MIT
+Group:          Development/Languages/Rust
+Requires:       rust%{version_suffix}-src
+%obsolete_rust_versioned rust src
+
+%description src
+Rust Stanard Library Sources are required for building some types of projects
+
 %package -n cargo
 Summary:        The Rust package manager
 License:        Apache-2.0 OR MIT
@@ -104,11 +113,16 @@ want to install Rust for a development environment, you should install
 
 %install
 install -D -m 0644 %{S:0} %{buildroot}/usr/share/doc/packages/rust/README
+install -D -m 0644 %{S:0} %{buildroot}/usr/share/doc/packages/rust-src/README
 install -D -m 0644 %{S:0} %{buildroot}/usr/share/doc/packages/cargo/README
 
 %files
 %defattr(-,root,root,-)
 %doc /usr/share/doc/packages/rust
+
+%files src
+%defattr(-,root,root,-)
+%doc /usr/share/doc/packages/rust-src
 
 %files -n cargo
 %defattr(-,root,root,-)
