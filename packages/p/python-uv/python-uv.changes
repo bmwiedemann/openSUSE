@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 10 17:43:48 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.10.1 
+ * Enhancements
+  * Don't panic on metadata read errors 
+  * Skip empty workspace members instead of failing 
+  * Don't fail creating a read-only sdist-vX/.git if it already exists 
+ * Documentation
+  * Suggest uv python update-shell over uv tool update-shell in Python docs 
+
+
+-------------------------------------------------------------------
 Thu Feb  5 23:06:10 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.10.0

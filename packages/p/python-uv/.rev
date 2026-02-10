@@ -2075,4 +2075,18 @@
   * Retry timeout errors for streams</comment>
     <requestid>1331489</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>76c116b2d6f1da03bb91475b10713cba</srcmd5>
+    <version>0.10.1</version>
+    <time>1770754432</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.10.1 
+ * Enhancements
+  * Don't panic on metadata read errors 
+  * Skip empty workspace members instead of failing 
+  * Don't fail creating a read-only sdist-vX/.git if it already exists 
+ * Documentation
+  * Suggest uv python update-shell over uv tool update-shell in Python docs</comment>
+    <requestid>1332306</requestid>
+  </revision>
 </revisionlist>
