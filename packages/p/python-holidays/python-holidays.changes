@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Feb 10 12:13:51 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.90
+  * Update Armenia holidays: add WORKDAY category and substituted holidays
+  * Update Brunei holidays: observed holidays, 2026 exact dates
+  * Update Germany holidays: add catholic holidays to Augsburg
+  * Update Italy holidays: add Whit Monday in Bolzano (BZ)
+  * Update WM archiver script: add optional target parameter
+  * Reference maintenance: archive links, fix broken, remove unused
+- from version 0.89
+  * Refactor test_no_holidays, now also test supported_categories by default
+  * Update Argentina holidays: add 2026 bridge public holidays
+  * Update Australia holidays: add Queensland's Christmas Eve HALF_DAY
+    holidays from 2019 onwards
+  * Update Australia holidays: move Anzac Day in 2026 (ACT)
+  * Update Azerbaijan holidays
+  * Update CONTRIBUTORS
+  * Update README: update Available Countries table
+  * Add archive-links Makefile target
+  * Migrate I-L countries to new test case standards
+
+-------------------------------------------------------------------
 Wed Jan  7 15:37:54 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.88
