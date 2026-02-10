@@ -1386,4 +1386,12 @@
   CVE-2026-0989, bsc#1256805, https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/374 (forwarded request 1328521 from dgarcia)</comment>
     <requestid>1328657</requestid>
   </revision>
+  <revision rev="139" vrev="3">
+    <srcmd5>ddfaba672e7b0a23ec02c587e5525453</srcmd5>
+    <version>2.14.5</version>
+    <time>1770754229</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1331970</requestid>
+  </revision>
 </revisionlist>

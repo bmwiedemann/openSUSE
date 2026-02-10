@@ -1,6 +1,7 @@
 #
 # spec file for package libxml2
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -48,6 +49,10 @@ Patch2:         libxml2-CVE-2025-7425.patch
 # PATCH-FIX-UPSTREAM libxml2-CVE-2026-0989.patch bsc#1256805 daniel.garcia@suse.com
 # https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/374
 Patch3:         libxml2-CVE-2026-0989.patch
+# CVE-2025-10911 [bsc#1250553], use-after-free with key data stored cross-RVT
+Patch4:         libxml2-CVE-2025-10911.patch
+# CVE-2026-1757 [bsc#1257593], memory leak in the `xmllint` interactive shell
+Patch5:         libxml2-CVE-2026-1757.patch
 #
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
