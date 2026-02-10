@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Feb 10 06:00:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.8.1:
+  This release completes a fix for namespace propagation that
+  occurred in v5.8.0. #6031 (comment)
+  Also addressed the breaking changes introduced in helm v4. #6016
+  * fix
+    - #5990: fix: allow empty patches files
+    - #6016: fix: support helm v4 beside v3
+    - #6038: Fix a failing test
+    - #6044: Fix namespace propagation problem at v5.8.0
+  * Dependencies
+    - #6057: Upgrade json-patch to v4.13.0 to remove pkg/errors
+      dependency
+  * chore
+    - #6065: Update kyaml to v0.21.1
+    - #6066: Update cmd/config to v0.21.1
+    - #6067: Update api to v0.21.1
+
+-------------------------------------------------------------------
 Mon Nov 10 13:12:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.8.0:
