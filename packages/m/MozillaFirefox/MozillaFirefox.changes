@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Feb  8 16:40:46 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 147.0.3
+  * Interoperability improvements for the CSS anchor positioning
+    and Navigation web APIs
+  * Fix a regression where `position: sticky` elements on some
+    webpages could appear stuck or fail to update while
+    mousewheel-scrolling after certain `:hover` interactions
+    (bmo#2010481)
+  * Fix an issue where the Firefox Developer Tools could fail to
+    re-open after using the Inspector’s node picker and reloading
+    a page containing cross-origin iframes (bmo#2003810)
+  * Fix an issue where the DNS over HTTPS provider settings section
+    could appear as a blank box, preventing users from seeing the
+    current setting or changing it (bmo#2010501)
+
+-------------------------------------------------------------------
 Wed Jan 28 20:36:26 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 147.0.2

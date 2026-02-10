@@ -7990,4 +7990,12 @@
     Use-after-free in the Layout: Scrolling and Overflow component</comment>
     <requestid>1329762</requestid>
   </revision>
+  <revision rev="477" vrev="1">
+    <srcmd5>dd1e29dc9de4eb740ec7f93141ad96c0</srcmd5>
+    <version>147.0.3</version>
+    <time>1770754252</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1331914</requestid>
+  </revision>
 </revisionlist>
