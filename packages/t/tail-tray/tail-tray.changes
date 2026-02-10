@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Feb 10 07:12:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.29:
+  This release has focused mainly on fixing bugs and improving on
+  the UI in general.
+  * [UI] - Icons - Better contrast on dark/light theme icons
+    (Marcus Grenängen)
+  * Issues #106 - The "Devices" tab has items with no name (#108)
+    (Marcus Grenängen) #108
+  * Issues #107 - UI inconsistencies in the "Settings" tab (Marcus
+    Grenängen)
+  * Settings Dialog - Icons from XDG Theme for tabs (Marcus
+    Grenängen)
+  * Refactor and cleanup & pull out the device tab UI logic into
+    it's own manager (#109) (Marcus Grenängen) #109
+  * Issues #106 - Show full dns name if peer belongs to other
+    user/tailnet (Marcus Grenängen)
+  * Issues #107 - Adjust the labels for layout groups to align top
+    where more than one item in group (Marcus Grenängen)
+  * Issues #106 - Device Tab - Set column header resize scopes &
+    further try to resolve display name for peers (Marcus
+    Grenängen)
+  * Fix for odd devices showing in tailnet. Issue #106 (#110)
+    (Marcus Grenängen) #110
+  * Bump version to 0.2.29 (Marcus Grenängen)
+
+-------------------------------------------------------------------
 Sun Jan 11 13:12:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.28:
