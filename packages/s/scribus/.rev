@@ -792,4 +792,13 @@
     <comment>Update to 1.6.5</comment>
     <requestid>1324708</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>6159ef295a93f8a0d29d1bef13d05ef4</srcmd5>
+    <version>1.6.5</version>
+    <time>1770754232</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream change (boo#1257664)
+  * 0001-Fix-build-failure-with-poppler-26.01.0.patch</comment>
+    <requestid>1330958</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package scribus
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) Peter Linnell and 2010 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -51,6 +51,8 @@ Source2:        scribus.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Make-sure-information-displayed-on-the-about-window-.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-build-failure-with-poppler-26.01.0.patch
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix
