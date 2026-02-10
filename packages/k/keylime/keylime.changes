@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Feb 09 13:47:17 UTC 2026 - aplanas@suse.com
+
+- Update to version 7.14.0+0 (CVE-2026-1709, bsc#1257895):
+  * Bump version to 7.14.0
+  * verifier: Delete sessions from the DB and then from the cache
+  * authentication: Do not persist plaintext tokens
+  * crypto: Add operation to calculate the hash of a token
+  * Fix session management bugs and improve security
+  * authorization: Add documentation explaining authorization framework
+  * authorization: Add unit tests
+  * authorization: Add metadata to routes with auth requirement
+  * authorization: Integrate authorization to action_handler
+  * authorization: Add access requirement metadata to all routes
+  * authorization: Add authorization provider manager
+  * authorization: Add pluggable authorization provider framework
+  * keylime_oneshot_attestation: Fix measured boot log encoding
+  * tenant: Log the API version used to communicate with the agent
+  * tenant: Negotiate API version with the registrar
+  * scripts: Do not take TPM ownership
+  * scripts: Remove verifier key parameters from keylime_oneshot_attestation
+  * /verify/evidence: Return error 400 if no policy is provided
+  * tpm: handle policies provided as empty strings
+  * /verify/evidence: Require a policy for TPM evidence type
+  * ima: Fix deserialization of empty runtime policy
+  * scripts: Fix keylime_oneshot_attestation for API v2.5
+  * [Automatic] Update Keylime base image 2026-02-03
+  * tpm_engine: Fix evidence_class filtering for ima_log
+  * tpm_engine: Move _add_error() calls to self.attestation
+  * tpm_engine: Validate that available_subjects is a dict
+  * verifier: Add missing identity controller and fix routing mixup
+  * templates: Remove unused agent options, fixed incorrect ones
+  * templates: Add missing options to the templates
+  * templates: Fix values to be TOML compatible
+  * tests: Add unit tests for negotiate_version
+  * verifier: Only check for version downgrade after first attestation
+  * docs: Fix documentation regarding behavior of /verify/evidence
+  * docs: Update v2.5 doc with new agent /version behavior
+  * tenant, verifier: Implement API version negotiation
+  * Introduce new API version v2.5
+  * Fix HTTP 500 error when accessing attestations for agents with no records
+  * Remove @Controller.require_json_api from GET attestations endpoints
+  * mba: Fix linting warnings on measured boot code
+  * CI: Update e2e test plan with new tests
+  * CI: Switch code coverage measurement to Fedora43
+  * workflows: Separate upstream test suite from e2e coverage
+
+-------------------------------------------------------------------
 Fri Jan  9 11:32:03 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add missing pyasn1 dependency
