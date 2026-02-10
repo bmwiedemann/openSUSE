@@ -25,7 +25,7 @@ developers are free to design and structure the program as desired.
 %define allegro_so_nr 5_2
 %define dot_allegro_so_nr %(echo %{allegro_so_nr} | sed s/_/./)
 Name:           allegro
-Version:        5.2.11.2
+Version:        5.2.11.3
 Release:        0
 Summary:        A game programming library
 License:        BSD-3-Clause AND Zlib

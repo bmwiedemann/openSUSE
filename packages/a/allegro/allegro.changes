@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  9 19:02:32 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.2.11.3:
+  * Fix a backwards incompatible change to ALLEGRO_JOYSTICK_STATE (#1718)
+
+-------------------------------------------------------------------
 Tue Jan 20 08:00:46 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 5.2.11.2:
