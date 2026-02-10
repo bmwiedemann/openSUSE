@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Feb 09 09:44:08 UTC 2026 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Update to version 109+suse.35.g1fdbb27e:
+
+  Switch from https://github.com/dracutdevs/dracut to https://github.com/dracut-ng/dracut-ng
+
+  Full list of changes:
+  * https://github.com/dracut-ng/dracut-ng/releases/tag/109
+  * https://github.com/dracut-ng/dracut-ng/releases/tag/108
+  * https://github.com/dracut-ng/dracut-ng/releases/tag/107
+  * https://github.com/dracut-ng/dracut-ng/releases/tag/106
+  * https://github.com/dracut-ng/dracut-ng/releases/tag/105
+  * https://github.com/dracut-ng/dracut-ng/releases/tag/104
+  * https://github.com/dracut-ng/dracut-ng/releases/tag/103
+  * https://github.com/dracut-ng/dracut-ng/releases/tag/102
+  * https://github.com/dracut-ng/dracut-ng/releases/tag/101
+  * https://github.com/dracut-ng/dracut-ng/releases/tag/100
+  * https://github.com/dracut-ng/dracut-ng/releases/tag/060
+
+  The most important ones had already been backported to 059, see:
+  * https://github.com/openSUSE/dracut/blob/SUSE/059/suse/README.susemaint
+
+  Additional openSUSE-specific changes and post-release fixes:
+  * fix(systemd-networkd): check if units exist before enabling them
+  * feat(systemd-import): introducing the systemd-import module
+  * fix(systemd-networkd): install and enable systemd-networkd-resolve-hook.socket
+  * feat(systemd): install new dlopened libraries
+  * fix(dracut-systemd): do not error out with new root= options handled by systemd
+  * fix(systemd-pcrphase): do not print an error if an optional binary is not found
+  * fix(dracut): avoid calling dwarning before dracut-logger is sourced
+  * chore(suse): accommodate to the new Git workflow
+  * fix(dracut.spec): switch to tmpfiles based file creation
+  * fix(nfs): do not execute logic in nfs hooks if netroot is not nfs
+  * feat(dracut): print $initrdname with --printconfig
+  * fix(dracut): --printconfig does not work without --force
+  * feat(network-manager): add systemd generator if available
+  * fix(nfs): set the default group of the rpcbind user to the state dir
+  * perf(nfs): remove references to old rpcbind state dir
+  * fix(dracut-systemd): use expected PS1 in the emergency shell
+  * feat(dracut-systemd): add back and fix printing fs help in the emergency shell
+  * fix(qemu-net): in hostonly mode, only install if network is needed
+  * feat(resume): add openSUSE-specific sanity check
+  * perf(resume): do not search cmdline options in /etc/cmdline{,.d}
+  * perf(resume): do not attempt to install systemd-hibernate-resume@.service
+  * fix(rngd): revert changes that removed the custom systemd service
+  * chore(suse): add openSUSE-specific spec, conf and doc
+  * fix(systemd-pcrphase): revert changes related to inclusion and dependencies
+  * fix(plymouth): avoid warning if /etc/plymouth/plymouthd.conf is not present
+  * fix(lsinitrd, dracut-initramfs-restore): detect initrd for BLS Type #1 entries
+  * ci: change openSUSE code owners
+  * fix(dracut.sh): improve detection of installed kernel versions
+  * feat: add openSUSE-specific code related to networking
+  * feat(tpm2-tss): add openSUSE support
+  * feat(pcsc): add openSUSE support
+  * feat(convertfs): add openSUSE-specific code
+  * feat(fips): add openSUSE-specific code
+  * chore(suse): add openSUSE-specific modules
+
+-------------------------------------------------------------------
 Thu Jan 08 11:48:38 UTC 2026 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.787.gfb86123e:

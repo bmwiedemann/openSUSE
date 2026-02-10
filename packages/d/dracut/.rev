@@ -2568,4 +2568,12 @@ and stuff that has no relevance to the end user (i.e CI related commits) (forwar
     <comment></comment>
     <requestid>1325953</requestid>
   </revision>
+  <revision rev="252" vrev="1">
+    <srcmd5>0afa4c18e1deb954f4a02e77f2d7efa5</srcmd5>
+    <version>109+suse.35.g1fdbb27e</version>
+    <time>1770754312</time>
+    <user>anag_factory</user>
+    <comment>Switch from dracutdevs to dracut-ng</comment>
+    <requestid>1331995</requestid>
+  </revision>
 </revisionlist>

@@ -26,47 +26,61 @@
 %endif
 
 Name:           dracut
-Version:        059+suse.787.gfb86123e
+Version:        109+suse.35.g1fdbb27e
 Release:        0
 Summary:        Event driven initramfs infrastructure
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Base
-URL:            https://github.com/dracutdevs/dracut/wiki
+URL:            https://github.com/dracut-ng/dracut-ng
 Source0:        dracut-%{version}.tar.xz
 Source1:        dracut-rpmlintrc
 Source2:        README.susemaint
+# Temporary files for locations outside of /usr and /etc (jsc#PED-14785 - comply
+# with immutable mode).
 Source3:        dracut-rpm-tmpfiles.conf
-BuildRequires:  asciidoc
+# Example configuration to add the debug module.
+Source4:        99-debug.conf
+# Default by-uuid persistent policy.
+Source5:        persistent_policy.conf
+# Specific by-path persistent policy for s390x (bsc#915218).
+Source6:        s390x_persistent_policy.conf
 BuildRequires:  bash
 BuildRequires:  cargo
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt
-BuildRequires:  rust
 BuildRequires:  pkgconfig(libkmod)
-BuildRequires:  pkgconfig(systemd) >= 219
+# dracut >= 108 needs to be compiled with libsystemd.pc present to enable
+# parsing .note.dlopen JSON entries from the libsystemd-shared-*.so library,
+# in order to resolve dlopen() dependencies.
+BuildRequires:  pkgconfig(libsystemd) >= 257
+BuildRequires:  rust
+BuildRequires:  pkgconfig(systemd) >= 257
+BuildRequires:  rubygem(asciidoctor)
 Requires:       %{_bindir}/get_kernel_version
 Requires:       bash
 Requires:       coreutils
-Requires:       gawk
 Requires(post): coreutils
 Requires:       cpio
 Requires:       elfutils
 Requires:       file
 Requires:       filesystem
 Requires:       findutils
+Requires:       gawk
 Requires:       grep
 Requires:       hardlink
 Requires:       modutils
 Requires:       pigz
 Requires:       sed
-Requires:       systemd >= 219
+# dracut >= 108 needs the sd-json API added in systemd-v257 to resolve dlopen()
+# dependencies.
+Requires:       systemd >= 257
 Recommends:     (tpm2.0-tools if tpm2-0-tss)
 Requires:       udev > 166
 Requires:       util-linux >= 2.21
 Requires:       util-linux-systemd >= 2.36.2
 Recommends:     xz
 Requires:       zstd
-# We use 'btrfs fi usage' that was not present before
+# We use 'btrfs fi usage' that was not present before.
 Conflicts:      btrfsprogs < 3.18
 # suse-module-tools >= 15.4.7 is prepared for the removal of mkinitrd-suse.sh
 Conflicts:      suse-module-tools < 15.4.7
@@ -109,7 +123,7 @@ initramfs (using dracut) which tries to load an IMA policy during startup.
 Summary:        Tools to build a local initramfs
 Group:          System/Base
 Requires:       %{name}
-# split-provides for upgrade from SLES12 SP1 to SLES12 SP2
+# Split-provides for upgrade from SLES12 SP1 to SLES12 SP2.
 Provides:       %{name}:%{_bindir}/dracut-catimages
 
 %description tools
@@ -140,53 +154,48 @@ but are not normally supported or required.
 
 echo -e "#!/bin/bash\nDRACUT_VERSION=%{version}-%{rbrelease}" > %{buildroot}%{dracutlibdir}/dracut-version.sh
 
-# remove architecture specific modules
+# Remove architecture specific modules.
 %ifnarch ppc ppc64 ppc64le ppc64p7
-rm -rf %{buildroot}%{dracutlibdir}/modules.d/90ppcmac
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/70ppcmac
 %endif
 %ifnarch s390 s390x
-rm -rf %{buildroot}%{dracutlibdir}/modules.d/80cms
-rm -rf %{buildroot}%{dracutlibdir}/modules.d/81cio_ignore
-rm -rf %{buildroot}%{dracutlibdir}/modules.d/91zipl
-rm -rf %{buildroot}%{dracutlibdir}/modules.d/95dasd
-rm -rf %{buildroot}%{dracutlibdir}/modules.d/95dasd_mod
-rm -rf %{buildroot}%{dracutlibdir}/modules.d/95dcssblk
-rm -rf %{buildroot}%{dracutlibdir}/modules.d/95zfcp
-rm -rf %{buildroot}%{dracutlibdir}/modules.d/95znet
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/68cms
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/69cio_ignore
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/73zipl
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/74dasd
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/74dasd_mod
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/74dcssblk
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/74zfcp
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/74znet
 %else
-rm -rf %{buildroot}%{dracutlibdir}/modules.d/00warpclock
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/10warpclock
 %endif
 
-install -D -m 0644 dracut.conf.d/suse.conf.example %{buildroot}%{dracutlibdir}/dracut.conf.d/01-dist.conf
-install -m 0644 suse/99-debug.conf %{buildroot}%{_sysconfdir}/dracut.conf.d/99-debug.conf
+rm -rf %{buildroot}%{dracutlibdir}/dracut.conf.d/*
+install -D -m 0644 dracut.conf.d/opensuse/01-dist.conf %{buildroot}%{dracutlibdir}/dracut.conf.d/01-dist.conf
+install -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/dracut.conf.d/99-debug.conf
 %ifnarch %ix86
-install -m 0644 dracut.conf.d/fips.conf.example %{buildroot}%{_sysconfdir}/dracut.conf.d/40-fips.conf
-install -m 0644 dracut.conf.d/ima.conf.example %{buildroot}%{_sysconfdir}/dracut.conf.d/40-ima.conf
+install -m 0644 dracut.conf.d/fips/10-fips.conf %{buildroot}%{_sysconfdir}/dracut.conf.d/10-fips.conf
+install -m 0644 dracut.conf.d/ima/10-ima.conf %{buildroot}%{_sysconfdir}/dracut.conf.d/10-ima.conf
 %endif
-# bsc#915218
+
+# Install persistent policy config.
 %ifarch s390 s390x
-install -m 0644 suse/s390x_persistent_policy.conf %{buildroot}%{_sysconfdir}/dracut.conf.d/10-persistent_policy.conf
+install -m 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/dracut.conf.d/10-persistent_policy.conf
 %else
-install -m 0644 suse/persistent_policy.conf %{buildroot}%{_sysconfdir}/dracut.conf.d/10-persistent_policy.conf
+install -m 0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/dracut.conf.d/10-persistent_policy.conf
 %endif
 
-%if 0%{?suse_version}
-rm -f %{buildroot}%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh
-ln -s %{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-suse.sh %{buildroot}%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh
-%else
-mv %{buildroot}%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh %{buildroot}%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-redhat.sh
-ln -s %{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-redhat.sh %{buildroot}%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh
-%endif
-
-# create a link to dracut-util to be able to parse kernel command line arguments at generation time
-ln -s %{dracutlibdir}/dracut-util %{buildroot}%{dracutlibdir}/dracut-getarg
-
-#switch to tmpfiles config
+# Install tmpfiles config.
 mkdir -p %{buildroot}%{_tmpfilesdir}
 install -m 644 %{SOURCE3} %{buildroot}%{_tmpfilesdir}/dracut.conf
 
+# Remove tests.
+rm -rf %{buildroot}%{dracutlibdir}/test
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/70test*
+
 %post
-# check whether /var/run has been converted to a symlink
+# Check whether /var/run has been converted to a symlink.
 if [ ! -L /var/run ]; then
     grep -q '^[ 	]*GRUB_CMDLINE_LINUX_DEFAULT=.*rd.convertfs' /etc/default/grub || \
     sed -i '/^[ 	]*GRUB_CMDLINE_LINUX_DEFAULT.*/s/"$/ rd.convertfs"/' /etc/default/grub  || :
@@ -196,7 +205,7 @@ add_dracutmodules+=" convertfs "
 EOF
     fi
 fi
-#clean up after the conversion is done
+# Clean up after the conversion is done.
 if [ -L /var/run ] && [ -f /etc/dracut.conf.d/05-convertfs.conf ]; then
     sed -i '/^[ 	]*GRUB_CMDLINE_LINUX_DEFAULT.*/s/rd.convertfs//' /etc/default/grub || :
     [ -f /etc/dracut.conf.d/05-convertfs.conf ] && sed -i '/add_dracutmodules+="[ 	]*convertfs[ 	]*"/d' /etc/dracut.conf.d/05-convertfs.conf || :
@@ -205,7 +214,7 @@ if [ -L /var/run ] && [ -f /etc/dracut.conf.d/05-convertfs.conf ]; then
     [ -d /var/run.runmove~ ] && rm -rf /var/run.runmove~ || :
 fi
 
-# remove obsolete legacy fillup template for /etc/sysconfig/kernel
+# Remove obsolete legacy fillup template for /etc/sysconfig/kernel.
 rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 
 %{?regenerate_initrd_post}
@@ -249,17 +258,18 @@ rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 %ifnarch %ix86
 %files fips
 %license COPYING
-%config %{_sysconfdir}/dracut.conf.d/40-fips.conf
-%{dracutlibdir}/modules.d/01fips
+%config %{_sysconfdir}/dracut.conf.d/10-fips.conf
+%{dracutlibdir}/modules.d/11fips
+%{dracutlibdir}/modules.d/11fips-crypto-policies
 %endif
 
 %ifnarch %ix86
 %files ima
 %license COPYING
-%config %{_sysconfdir}/dracut.conf.d/40-ima.conf
-%{dracutlibdir}/modules.d/96securityfs
-%{dracutlibdir}/modules.d/97masterkey
-%{dracutlibdir}/modules.d/98integrity
+%config %{_sysconfdir}/dracut.conf.d/10-ima.conf
+%{dracutlibdir}/modules.d/75securityfs
+%{dracutlibdir}/modules.d/76masterkey
+%{dracutlibdir}/modules.d/77integrity
 %endif
 
 %files tools
@@ -270,25 +280,22 @@ rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 %files extra
 %license COPYING
 
-%{dracutlibdir}/modules.d/00mksh
-%{dracutlibdir}/modules.d/02caps
-%{dracutlibdir}/modules.d/00dash
-%{dracutlibdir}/modules.d/05busybox
+%{dracutlibdir}/modules.d/10dash
+%{dracutlibdir}/modules.d/12caps
 %ifarch ppc ppc64 ppc64le ppc64p7
-%{dracutlibdir}/modules.d/90ppcmac
+%{dracutlibdir}/modules.d/70ppcmac
 %endif
 %ifarch s390 s390x
-# RH-specific s390 modules, we take another approach
-%{dracutlibdir}/modules.d/95dasd
-%{dracutlibdir}/modules.d/95dasd_mod
-%{dracutlibdir}/modules.d/95zfcp
+# RH-specific s390 modules, we take another approach.
+%{dracutlibdir}/modules.d/74dasd
+%{dracutlibdir}/modules.d/74dasd_mod
+%{dracutlibdir}/modules.d/74zfcp
 %endif
+%{dracutlibdir}/modules.d/81busybox
 
 %files
 %license COPYING
-%doc README.md NEWS.md AUTHORS dracut.html
-%doc docs/README.cross docs/README.generic docs/README.kernel
-%doc docs/HACKING.md docs/dracut.png docs/dracut.svg
+%doc README.md NEWS.md AUTHORS
 %{_bindir}/dracut
 %{_bindir}/lsinitrd
 %dir %{_datadir}/bash-completion
@@ -335,143 +342,161 @@ rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 %{dracutlibdir}/dracut-initramfs-restore
 %{dracutlibdir}/dracut-install
 %{dracutlibdir}/dracut-util
-%{dracutlibdir}/dracut-getarg
 %{dracutlibdir}/dracut-cpio
 
 %dir %{dracutlibdir}/modules.d
-%{dracutlibdir}/modules.d/00bash
-%{dracutlibdir}/modules.d/00systemd
-%{dracutlibdir}/modules.d/00systemd-network-management
+%{dracutlibdir}/modules.d/10bash
+%{dracutlibdir}/modules.d/10systemd
+%{dracutlibdir}/modules.d/10systemd-network-management
 %ifnarch s390 s390x
-%{dracutlibdir}/modules.d/00warpclock
+%{dracutlibdir}/modules.d/10warpclock
 %endif
 %ifarch %ix86
-%exclude %{dracutlibdir}/modules.d/01fips
+%exclude %{dracutlibdir}/modules.d/11fips
+%exclude %{dracutlibdir}/modules.d/11fips-crypto-policies
 %endif
-%{dracutlibdir}/modules.d/01systemd-ac-power
-%{dracutlibdir}/modules.d/01systemd-ask-password
-%{dracutlibdir}/modules.d/01systemd-coredump
-%{dracutlibdir}/modules.d/01systemd-hostnamed
-%{dracutlibdir}/modules.d/01systemd-initrd
-%{dracutlibdir}/modules.d/01systemd-integritysetup
-%{dracutlibdir}/modules.d/01systemd-journald
-%{dracutlibdir}/modules.d/01systemd-ldconfig
-%{dracutlibdir}/modules.d/01systemd-modules-load
-%{dracutlibdir}/modules.d/01systemd-networkd
-%{dracutlibdir}/modules.d/01systemd-pcrphase
-%{dracutlibdir}/modules.d/01systemd-portabled
-%{dracutlibdir}/modules.d/01systemd-pstore
-%{dracutlibdir}/modules.d/01systemd-repart
-%{dracutlibdir}/modules.d/01systemd-resolved
-%{dracutlibdir}/modules.d/01systemd-sysctl
-%{dracutlibdir}/modules.d/01systemd-sysext
-%{dracutlibdir}/modules.d/01systemd-sysusers
-%{dracutlibdir}/modules.d/01systemd-timedated
-%{dracutlibdir}/modules.d/01systemd-timesyncd
-%{dracutlibdir}/modules.d/01systemd-tmpfiles
-%{dracutlibdir}/modules.d/01systemd-udevd
-%{dracutlibdir}/modules.d/01systemd-veritysetup
-%{dracutlibdir}/modules.d/03modsign
-%{dracutlibdir}/modules.d/03rescue
-%{dracutlibdir}/modules.d/04watchdog
-%{dracutlibdir}/modules.d/04watchdog-modules
-%{dracutlibdir}/modules.d/06dbus-broker
-%{dracutlibdir}/modules.d/06dbus-daemon
-%{dracutlibdir}/modules.d/06rngd
-%{dracutlibdir}/modules.d/09dbus
-%{dracutlibdir}/modules.d/10i18n
+%{dracutlibdir}/modules.d/11systemd-ac-power
+%{dracutlibdir}/modules.d/11systemd-ask-password
+%{dracutlibdir}/modules.d/11systemd-battery-check
+%{dracutlibdir}/modules.d/11systemd-bsod
+%{dracutlibdir}/modules.d/11systemd-coredump
+%{dracutlibdir}/modules.d/11systemd-creds
+%{dracutlibdir}/modules.d/11systemd-cryptsetup
+%{dracutlibdir}/modules.d/11systemd-hostnamed
+%{dracutlibdir}/modules.d/11systemd-initrd
+%{dracutlibdir}/modules.d/11systemd-integritysetup
+%{dracutlibdir}/modules.d/11systemd-journald
+%{dracutlibdir}/modules.d/11systemd-ldconfig
+%{dracutlibdir}/modules.d/11systemd-modules-load
+%{dracutlibdir}/modules.d/11systemd-networkd
+%{dracutlibdir}/modules.d/11systemd-pcrphase
+%{dracutlibdir}/modules.d/11systemd-portabled
+%{dracutlibdir}/modules.d/11systemd-pstore
+%{dracutlibdir}/modules.d/11systemd-repart
+%{dracutlibdir}/modules.d/11systemd-resolved
+%{dracutlibdir}/modules.d/11systemd-sysctl
+%{dracutlibdir}/modules.d/11systemd-sysext
+%{dracutlibdir}/modules.d/11systemd-timedated
+%{dracutlibdir}/modules.d/11systemd-timesyncd
+%{dracutlibdir}/modules.d/11systemd-tmpfiles
+%{dracutlibdir}/modules.d/11systemd-udevd
+%{dracutlibdir}/modules.d/11systemd-veritysetup
+%{dracutlibdir}/modules.d/13modsign
+%{dracutlibdir}/modules.d/13rescue
+%{dracutlibdir}/modules.d/14watchdog
+%{dracutlibdir}/modules.d/14watchdog-modules
+%{dracutlibdir}/modules.d/16dbus-broker
+%{dracutlibdir}/modules.d/16dbus-daemon
+%{dracutlibdir}/modules.d/16rngd
+%{dracutlibdir}/modules.d/19dbus
+%{dracutlibdir}/modules.d/20i18n
 %{dracutlibdir}/modules.d/30convertfs
 %{dracutlibdir}/modules.d/35connman
 %{dracutlibdir}/modules.d/35network-legacy
 %{dracutlibdir}/modules.d/35network-manager
 %{dracutlibdir}/modules.d/40network
-%{dracutlibdir}/modules.d/45ifcfg
+%{dracutlibdir}/modules.d/45drm
+%{dracutlibdir}/modules.d/45net-lib
+%{dracutlibdir}/modules.d/45plymouth
+%{dracutlibdir}/modules.d/45simpledrm
+%{dracutlibdir}/modules.d/45systemd-import
 %{dracutlibdir}/modules.d/45url-lib
-%{dracutlibdir}/modules.d/50drm
-%{dracutlibdir}/modules.d/50plymouth
-%{dracutlibdir}/modules.d/62bluetooth
 %ifarch s390 s390x
-%{dracutlibdir}/modules.d/80cms
+%{dracutlibdir}/modules.d/68cms
 %endif
-%{dracutlibdir}/modules.d/80lvmmerge
-%{dracutlibdir}/modules.d/80lvmthinpool-monitor
-%exclude %{dracutlibdir}/modules.d/80test
-%exclude %{dracutlibdir}/modules.d/80test-makeroot
-%exclude %{dracutlibdir}/modules.d/80test-root
+%{dracutlibdir}/modules.d/68lvmmerge
+%{dracutlibdir}/modules.d/68lvmthinpool-monitor
 %ifarch s390 s390x
-%{dracutlibdir}/modules.d/81cio_ignore
+%{dracutlibdir}/modules.d/69cio_ignore
 %endif
-%{dracutlibdir}/modules.d/90btrfs
-%{dracutlibdir}/modules.d/90crypt
-%{dracutlibdir}/modules.d/90dm
-%{dracutlibdir}/modules.d/90dmraid
-%{dracutlibdir}/modules.d/90dmsquash-live
-%{dracutlibdir}/modules.d/90dmsquash-live-autooverlay
-%{dracutlibdir}/modules.d/90dmsquash-live-ntfs
-%{dracutlibdir}/modules.d/90kernel-modules-extra
-%{dracutlibdir}/modules.d/90kernel-modules
-%{dracutlibdir}/modules.d/90kernel-network-modules
-%{dracutlibdir}/modules.d/90livenet
-%{dracutlibdir}/modules.d/90lvm
-%{dracutlibdir}/modules.d/90mdraid
-%{dracutlibdir}/modules.d/90multipath
-%{dracutlibdir}/modules.d/90nvdimm
-%{dracutlibdir}/modules.d/90overlayfs
-%{dracutlibdir}/modules.d/90qemu
-%{dracutlibdir}/modules.d/90qemu-net
-%{dracutlibdir}/modules.d/91crypt-gpg
-%{dracutlibdir}/modules.d/91crypt-loop
-%{dracutlibdir}/modules.d/91fido2
-%{dracutlibdir}/modules.d/91pcsc
-%{dracutlibdir}/modules.d/91pkcs11
-%{dracutlibdir}/modules.d/91tpm2-tss
+%{dracutlibdir}/modules.d/70bluetooth
+%{dracutlibdir}/modules.d/70btrfs
+%{dracutlibdir}/modules.d/70crypt
+%{dracutlibdir}/modules.d/70dm
+%{dracutlibdir}/modules.d/70dmraid
+%{dracutlibdir}/modules.d/70dmsquash-live
+%{dracutlibdir}/modules.d/70dmsquash-live-autooverlay
+%{dracutlibdir}/modules.d/70dmsquash-live-ntfs
+%{dracutlibdir}/modules.d/70fs-lib
+%{dracutlibdir}/modules.d/70img-lib
+%{dracutlibdir}/modules.d/70kernel-modules
+%{dracutlibdir}/modules.d/70kernel-modules-export
+%{dracutlibdir}/modules.d/70kernel-modules-extra
+%{dracutlibdir}/modules.d/70kernel-network-modules
+%{dracutlibdir}/modules.d/70livenet
+%{dracutlibdir}/modules.d/70lvm
+%{dracutlibdir}/modules.d/70mdraid
+%{dracutlibdir}/modules.d/70multipath
+%{dracutlibdir}/modules.d/70numlock
+%{dracutlibdir}/modules.d/70nvdimm
+%{dracutlibdir}/modules.d/70overlayfs
+%{dracutlibdir}/modules.d/70pcmcia
+%{dracutlibdir}/modules.d/70qemu
+%{dracutlibdir}/modules.d/70qemu-net
+%{dracutlibdir}/modules.d/70uefi-lib
+%{dracutlibdir}/modules.d/73crypt-gpg
+%{dracutlibdir}/modules.d/73crypt-loop
+%{dracutlibdir}/modules.d/73fido2
+%{dracutlibdir}/modules.d/73pcsc
+%{dracutlibdir}/modules.d/73pkcs11
+%{dracutlibdir}/modules.d/73tpm2-tss
 %ifarch s390 s390x
-%{dracutlibdir}/modules.d/91zipl
+%{dracutlibdir}/modules.d/73zipl
 %endif
-%{dracutlibdir}/modules.d/95cifs
+%{dracutlibdir}/modules.d/74cifs
 %ifarch s390 s390x
-%{dracutlibdir}/modules.d/95dcssblk
+%{dracutlibdir}/modules.d/74dcssblk
 %endif
-%{dracutlibdir}/modules.d/95debug
-%{dracutlibdir}/modules.d/95fcoe
-%{dracutlibdir}/modules.d/95fcoe-uefi
-%{dracutlibdir}/modules.d/95fstab-sys
-%{dracutlibdir}/modules.d/95iscsi
-%{dracutlibdir}/modules.d/95lunmask
-%{dracutlibdir}/modules.d/95nbd
-%{dracutlibdir}/modules.d/95nfs
-%{dracutlibdir}/modules.d/95nvmf
-%{dracutlibdir}/modules.d/95resume
-%{dracutlibdir}/modules.d/95rootfs-block
-%{dracutlibdir}/modules.d/95ssh-client
-%{dracutlibdir}/modules.d/95terminfo
-%{dracutlibdir}/modules.d/95udev-rules
-%{dracutlibdir}/modules.d/95virtfs
-%{dracutlibdir}/modules.d/95virtiofs
+%{dracutlibdir}/modules.d/74debug
+%{dracutlibdir}/modules.d/74fcoe
+%{dracutlibdir}/modules.d/74fcoe-uefi
+%{dracutlibdir}/modules.d/74fstab-sys
+%{dracutlibdir}/modules.d/74hwdb
+%{dracutlibdir}/modules.d/74iscsi
+%{dracutlibdir}/modules.d/74lunmask
+%{dracutlibdir}/modules.d/74nbd
+%{dracutlibdir}/modules.d/74nfs
+%{dracutlibdir}/modules.d/74nvmf
+%{dracutlibdir}/modules.d/74resume
+%{dracutlibdir}/modules.d/74rootfs-block
+%{dracutlibdir}/modules.d/74rootfs-block-fallback
+%{dracutlibdir}/modules.d/74squash-erofs
+%{dracutlibdir}/modules.d/74squash-squashfs
+%{dracutlibdir}/modules.d/74ssh-client
+%{dracutlibdir}/modules.d/74terminfo
+%{dracutlibdir}/modules.d/74udev-rules
+%{dracutlibdir}/modules.d/74virtfs
+%{dracutlibdir}/modules.d/74virtiofs
 %ifarch s390 s390x
-%{dracutlibdir}/modules.d/95znet
+%{dracutlibdir}/modules.d/74znet
 %endif
-%{dracutlibdir}/modules.d/97biosdevname
 %ifarch %ix86
-%exclude %{dracutlibdir}/modules.d/96securityfs
-%exclude %{dracutlibdir}/modules.d/97masterkey
-%exclude %{dracutlibdir}/modules.d/98integrity
+%exclude %{dracutlibdir}/modules.d/75securityfs
 %endif
-%{dracutlibdir}/modules.d/98dracut-systemd
-%{dracutlibdir}/modules.d/98ecryptfs
-%{dracutlibdir}/modules.d/98pollcdrom
-%{dracutlibdir}/modules.d/98selinux
-%{dracutlibdir}/modules.d/98syslog
-%{dracutlibdir}/modules.d/98usrmount
-%{dracutlibdir}/modules.d/99base
-%{dracutlibdir}/modules.d/99fs-lib
-%{dracutlibdir}/modules.d/99img-lib
-%{dracutlibdir}/modules.d/99memstrack
-%{dracutlibdir}/modules.d/99shutdown
-%{dracutlibdir}/modules.d/99squash
+%{dracutlibdir}/modules.d/76biosdevname
+%ifarch %ix86
+%exclude %{dracutlibdir}/modules.d/76masterkey
+%endif
+%{dracutlibdir}/modules.d/76systemd-emergency
+%{dracutlibdir}/modules.d/77dracut-systemd
+%{dracutlibdir}/modules.d/77ecryptfs
+%{dracutlibdir}/modules.d/77initqueue
+%ifarch %ix86
+%exclude %{dracutlibdir}/modules.d/77integrity
+%endif
+%{dracutlibdir}/modules.d/77pollcdrom
+%{dracutlibdir}/modules.d/77selinux
+%{dracutlibdir}/modules.d/77syslog
+%{dracutlibdir}/modules.d/77usrmount
+%{dracutlibdir}/modules.d/78systemd-sysusers
+%{dracutlibdir}/modules.d/80base
+%{dracutlibdir}/modules.d/84memstrack
+%{dracutlibdir}/modules.d/85shell-interpreter
+%{dracutlibdir}/modules.d/86shutdown
+%{dracutlibdir}/modules.d/87squash
+%{dracutlibdir}/modules.d/88squash-lib
 %{dracutlibdir}/modules.d/99suse
 %{dracutlibdir}/modules.d/99suse-initrd
-%{dracutlibdir}/modules.d/99uefi-lib
 %attr(0640,root,root) %ghost %config(missingok,noreplace) %{_localstatedir}/log/dracut.log
 %dir %{_unitdir}/initrd.target.wants
 %dir %{_unitdir}/sysinit.target.wants
