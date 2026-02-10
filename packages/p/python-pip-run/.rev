@@ -65,4 +65,41 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems only</comment>
     <requestid>1300765</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4d4777f37cbba2b26a322b21a780911b</srcmd5>
+    <version>16.1.0</version>
+    <time>1770754335</time>
+    <user>anag_factory</user>
+    <comment>- Update to 16.1.0:
+  ## Features
+  * Implement support for max_age in persistent environments.
+  * Leverages coherent.deps to infer dependencies from scripts.
+  * Deprecated support for non-sequence __requires__.
+  * Add support for script dependencies in a TOML block per PEP 723.
+  * Ensure requirements with a URL are not detected as installed.
+  * Renamed PIP_RUN_MODE variable to PIP_RUN_RETENTION_STRATEGY. Also renamed
+    the default value of 'ephemeral' to 'destroy'.
+  * Presence of Python script parameters now honors files with a shebang even
+    if no Python extension is present.
+  * Require Python 3.8 or later.
+  * The executable parameters now accept a ! prefix, indicating to run a
+    separate executable instead of Python in the context.
+  ## Deprecations and Removals
+  * Now supports and prefers uv as the installer if present.
+  * Removed support for PIP_RUN_MODE.
+  * Removed support for a single string arg to __requires__.
+  * Dropped support for filtering out satisfied requirements.
+  * pip_run.launch.with_path now expects the literal command to be passed and
+    no longer injects the sys.executable.
+  ## Bugfixes
+  * Declare py_modules using underscore. Avoids deprecation warning.
+  * Suppress FileNotFoundError when attempting to inject sitecustomize file
+    on a degenerate install.
+  * Rely on ignore_cleanup_errors on Python 3.10+ to suppress cleanup errors.
+  * IPython inference now uses a different variable and an explicit string
+    value to disable inference. Instead of PIP_RUN_INFER_IPYTHON=0, use
+    PIP_RUN_IPYTHON_MODE=ignore.
+  * Now if ipython is included in the dependencies, it will be used as the</comment>
+    <requestid>1332136</requestid>
+  </revision>
 </revisionlist>

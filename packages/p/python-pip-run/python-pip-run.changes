@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Tue Feb 10 04:55:55 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 16.1.0:
+  ## Features
+  * Implement support for max_age in persistent environments.
+  * Leverages coherent.deps to infer dependencies from scripts.
+  * Deprecated support for non-sequence __requires__.
+  * Add support for script dependencies in a TOML block per PEP 723.
+  * Ensure requirements with a URL are not detected as installed.
+  * Renamed PIP_RUN_MODE variable to PIP_RUN_RETENTION_STRATEGY. Also renamed
+    the default value of 'ephemeral' to 'destroy'.
+  * Presence of Python script parameters now honors files with a shebang even
+    if no Python extension is present.
+  * Require Python 3.8 or later.
+  * The executable parameters now accept a ! prefix, indicating to run a
+    separate executable instead of Python in the context.
+  ## Deprecations and Removals
+  * Now supports and prefers uv as the installer if present.
+  * Removed support for PIP_RUN_MODE.
+  * Removed support for a single string arg to __requires__.
+  * Dropped support for filtering out satisfied requirements.
+  * pip_run.launch.with_path now expects the literal command to be passed and
+    no longer injects the sys.executable.
+  ## Bugfixes
+  * Declare py_modules using underscore. Avoids deprecation warning.
+  * Suppress FileNotFoundError when attempting to inject sitecustomize file
+    on a degenerate install.
+  * Rely on ignore_cleanup_errors on Python 3.10+ to suppress cleanup errors.
+  * IPython inference now uses a different variable and an explicit string
+    value to disable inference. Instead of PIP_RUN_INFER_IPYTHON=0, use
+    PIP_RUN_IPYTHON_MODE=ignore.
+  * Now if ipython is included in the dependencies, it will be used as the
+    default interactive interpreter (implying -m IPython).
+  * Added missing implicit test dependencies on setuptools and wheel.
+  * Now the bin directory in the target is inserted at the front of the PATH
+    variable, making scripts available as installed by packages.
+  * Avoid OSError when a parameter to Python exceeds the allowed filename
+    length.
+  * Fixed EncodingWarnings.
+  * Fixed handling of inferred Python args.
+  * Fixed regression in sitecustomize generation where pathlib objects were
+    being rendered.
+  * Tests that require connectivity are now tagged with the network marker.
+  * Removed explicit parsing of .pth files, redundant to the use of
+    sitecustomize.
+  * Removed processing of JYTHONPATH as Jython is Python 2 only.
+  * Removed commands.separate_dash.
+  * Switch to platformdirs for resolving the cache dir.
+  * Honors PIP_RUN_MODE.
+  * Fixed minimum dependency on more_itertools to match usage.
+  * Support the "limited requirements" in comments in a script.
+  * No longer requires a -- separator when the first argument to Python is an
+    extant Python script.
+  * Set PIP_QUIET=1 when invoking pip to install packages.
+- Refreshed patch pip-run-suse-ring1-no-nbformat.patch
+- Inject setuptools-wheel into the testsuite.
+
+-------------------------------------------------------------------
 Thu Aug 21 10:15:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only

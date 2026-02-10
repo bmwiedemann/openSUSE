@@ -1,16 +1,16 @@
-Index: pip-run-8.8.1/pip_run/tests/test_scripts.py
+Index: pip_run-16.1.0/tests/test_scripts.py
 ===================================================================
---- pip-run-8.8.1.orig/pip_run/tests/test_scripts.py
-+++ pip-run-8.8.1/pip_run/tests/test_scripts.py
+--- pip_run-16.1.0.orig/tests/test_scripts.py
++++ pip_run-16.1.0/tests/test_scripts.py
 @@ -4,7 +4,6 @@ import sys
- import subprocess
+ import textwrap
  
- import pytest
+ import jaraco.path
 -import nbformat
+ import pytest
  
- from pip_run import scripts
- 
-@@ -85,6 +84,8 @@ class TestSourceDepsReader:
+ from pip_run import deps, scripts
+@@ -110,6 +109,8 @@ class TestSourceDepsReader:
  class TestNotebookDepsReader:
      @pytest.fixture
      def notebook_factory(self, tmpdir, request):
