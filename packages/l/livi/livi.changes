@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 10 02:39:05 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+ Update to version 0.4.0:
+  * Allow to loop the current video
+  * Fix gear menu styling
+  * Improve seeking
+  * Use more metadata from yt-dlp for the mpris information
+
+-------------------------------------------------------------------
 Mon Nov 24 00:28:04 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.
