@@ -26,7 +26,7 @@
 %define lrelease lrelease-qt5
 %endif
 Name:           datovka
-Version:        4.27.0
+Version:        4.28.0
 Release:        0
 Summary:        Library to access Czech eGov system "Datove schranky"
 License:        GPL-3.0-or-later
