@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 10 07:05:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.13.1:
+  No kumactl-related changes
+  Dependencies
+  * chore(deps): security update (#15507)
+  * chore(deps/dev): bump go from 1.25.5 to 1.25.6 (#15380)
+
+-------------------------------------------------------------------
 Mon Jan 12 08:50:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.13.0:
