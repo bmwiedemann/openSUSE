@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 10 05:03:58 UTC 2026 - william.brown@suse.com
+
+- Update to version 1.8.6~git0.268c71d0a:
+  * Release 1.8.6
+  * Release 1.8.5
+  * OAuth2 CSP form-action (#4011)
+  * Force webauthn 0.5.4
+
+-------------------------------------------------------------------
 Wed Dec 10 06:20:30 UTC 2025 - william.brown@suse.com
 
 - Update to version 1.8.4~git0.2449805e3:
