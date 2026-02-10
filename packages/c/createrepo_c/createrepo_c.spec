@@ -1,7 +1,7 @@
 #
 # spec file for package createrepo_c
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2022 Neal Gompa <ngompa13@gmail.com>.
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -45,16 +45,13 @@
 %bcond_without as_createrepo
 %endif
 Name:           createrepo_c
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        RPM repository metadata generation utility
 License:        GPL-2.0-or-later
 Group:          System/Packages
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-# part of https://github.com/rpm-software-management/createrepo_c/pull/438
-# accidentally also fixes boo#1239788
-Patch0:         createrepo_c-1.2.1-cmake4.patch
 BuildRequires:  bash-completion
 BuildRequires:  cmake >= 3.7.0
 BuildRequires:  doxygen

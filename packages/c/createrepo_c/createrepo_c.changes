@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 27 15:27:55 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.2:
+  + Don't try to use imported targets of turned-off dependencies
+  + cmake: Allow builds without Doxygen being present with CMake 4+
+  + Use RPMTAG_SHA1HEADER instead of RPMTAG_HDRID
+  + Do not build python docs unless python is enabled
+- Drop createrepo_c-1.2.1-cmake4.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Sat Apr 19 07:41:03 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.2.1:
