@@ -1602,4 +1602,41 @@ eplacement for google-api-python-client, follow our naming convention</comment>
     <comment></comment>
     <requestid>1328067</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>b6214e14a41396465862bfabd3c4374a</srcmd5>
+    <version>2.189.0</version>
+    <time>1770754392</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.189.0
+  * **accessapproval:** Update the api
+  * **admin:** Update the api
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **alloydb:** Update the api
+  * **analyticshub:** Update the api
+  * **androidmanagement:** Update the api
+  * **androidmanagement:** Update the api
+  * **androidpublisher:** Update the api
+  * **appengine:** Update the api
+  * **appengine:** Update the api
+  * **artifactregistry:** Update the api
+  * **backupdr:** Update the api
+  * **beyondcorp:** Update the api
+  * **bigqueryreservation:** Update the api
+  * **bigquery:** Update the api
+  * **chat:** Update the api
+  * **classroom:** Update the api
+  * **clouddeploy:** Update the api
+  * **cloudkms:** Update the api
+  * **cloudsearch:** Update the api
+  * **cloudsupport:** Update the api
+  * **compute:** Update the api
+  * **compute:** Update the api
+  * **contactcenteraiplatform:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **containeranalysis:** Update the api
+  * **container:** Update the api (forwarded request 1332217 from glaubitz)</comment>
+    <requestid>1332238</requestid>
+  </revision>
 </revisionlist>

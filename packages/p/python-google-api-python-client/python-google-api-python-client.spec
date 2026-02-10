@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-api-python-client
-Version:        2.188.0
+Version:        2.189.0
 Release:        0
 Summary:        Google APIs Python Client
 License:        Apache-2.0
