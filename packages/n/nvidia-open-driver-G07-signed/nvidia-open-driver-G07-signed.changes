@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 10 11:46:22 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- kernel-6.19.patch: fixes build against kernel 6.19
+
+-------------------------------------------------------------------
 Tue Dec 23 05:40:37 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to G07 version 590.48.01

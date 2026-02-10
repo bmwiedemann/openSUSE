@@ -30,4 +30,12 @@
   get uninstalled if G07 packages get installed</comment>
     <requestid>1329720</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>39cba201edede849d8d66cbfd87a413e</srcmd5>
+    <version>590.48.01</version>
+    <time>1770754397</time>
+    <user>anag_factory</user>
+    <comment>- kernel-6.19.patch: fixes build against kernel 6.19</comment>
+    <requestid>1332242</requestid>
+  </revision>
 </revisionlist>
