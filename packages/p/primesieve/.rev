@@ -183,4 +183,12 @@ primesieve is a new package, it's a command-line program and C/C++ library that 
     <comment>Update to latest primesieve-12.12</comment>
     <requestid>1329423</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>84b8ef98d0bf1fdf173542b99736fcbd</srcmd5>
+    <version>12.13</version>
+    <time>1770754371</time>
+    <user>anag_factory</user>
+    <comment>Update to latest primesieve-12.13</comment>
+    <requestid>1332177</requestid>
+  </revision>
 </revisionlist>
