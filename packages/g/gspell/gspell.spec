@@ -1,7 +1,7 @@
 #
 # spec file for package gspell
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,9 +34,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.44
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.42.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(iso-codes) >= 0.35
-%ifarch aarch64 %{ix86} x86_64 ppc ppc64 ppc64le s390x armv7l armv7hl armv6l armv6hl
-BuildRequires:  pkgconfig(valgrind)
-%endif
 BuildRequires:  pkgconfig(vapigen)
 
 %description

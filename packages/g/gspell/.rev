@@ -253,4 +253,12 @@
     <comment></comment>
     <requestid>1320870</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>75d6acbdfdb6e49b215bf891d23aac0d</srcmd5>
+    <version>1.14.2</version>
+    <time>1770754303</time>
+    <user>anag_factory</user>
+    <comment>- Remove unsued dependency on valgrind (forwarded request 1332052 from Andreas_Schwab)</comment>
+    <requestid>1332075</requestid>
+  </revision>
 </revisionlist>
