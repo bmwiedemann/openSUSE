@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  6 12:03:11 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.26.1
+  * Add PQ-opt-out pref to supported s2n cases by @WillChilds-Klein in (#786)
+
+-------------------------------------------------------------------
 Wed Jan 14 10:49:59 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.26.0
