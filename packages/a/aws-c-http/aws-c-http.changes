@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  6 11:34:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.10.10
+  * Fix h2 stream manager initial settings not passed correctly and
+    log the headers by @TingDaoK in (#544)
+
+-------------------------------------------------------------------
 Fri Jan  9 13:22:08 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.10.9

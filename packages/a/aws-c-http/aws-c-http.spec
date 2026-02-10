@@ -1,7 +1,7 @@
 #
 # spec file for package aws-c-http
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define library_version 1.0.0
 %define library_soversion 1_0_0
 Name:           aws-c-http
-Version:        0.10.9
+Version:        0.10.10
 Release:        0
 Summary:        C99 implementation of the HTTP/1.1 and HTTP/2 specifications
 License:        Apache-2.0
