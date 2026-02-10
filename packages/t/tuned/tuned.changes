@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Feb 10 17:01:47 UTC 2026 - trenn@suse.de
+
+- Correctly mark /var/log and /run log and pid files as ghost
+  with correct attributes (jsc#PED-14850)
+- Update to version 2.26.0.20+git.cd5e0c0:
+  * ppd: ask tuned recommend for base profile
+  * sap-hana: force latency to 70 us, not to C-states
+  * feat(sysctl): add reapply_sysctl_exclude option
+  * spec: use correct python interpreter for documentation installation
+  * man: fixed instance_acquire_devices example in tuned-adm man
+  * profiles: Set boost=1 in *-performance profiles
+  * feat(openshift): Optimize TCP settings for high throughput and low latency
+  * cpu-partitioning: autodetect dracut hook directory, systemd workaround
+  * Fix doc build
+  * typo: additionaly → additionally
+
+-------------------------------------------------------------------
 Wed Sep 10 07:01:06 UTC 2025 - Thomas Renninger <trenn@suse.de>
 
 - Update to version 2.26.0.0+git.181472a:

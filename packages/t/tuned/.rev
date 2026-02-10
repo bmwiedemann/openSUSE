@@ -483,4 +483,12 @@ A 0001-hardened-Introduce-hardened-profile.patch</comment>
   * variables: Add an option to prepend child variables before parent ones</comment>
     <requestid>1303530</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>1c5c5b6d473b599195b97071dd533e5f</srcmd5>
+    <version>2.26.0.20+git.cd5e0c0</version>
+    <time>1770754431</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1332304</requestid>
+  </revision>
 </revisionlist>

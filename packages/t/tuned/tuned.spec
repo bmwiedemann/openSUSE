@@ -1,7 +1,7 @@
 #
 # spec file for package tuned
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         system_dir %{_prefix}/lib/%{name}/
 %define         profile_dir %{system_dir}profiles/
 Name:           tuned
-Version:        2.26.0.0+git.181472a
+Version:        2.26.0.20+git.cd5e0c0
 Release:        0
 Summary:        A dynamic adaptive system tuning daemon
 License:        GPL-2.0-or-later
@@ -337,7 +337,7 @@ done
 %{_unitdir}/tuned.service
 %{_modprobedir}/tuned.conf
 %{_datadir}/dbus-1/system.d/com.redhat.tuned.conf
-%attr(750, root, root) %dir %{_localstatedir}/log/tuned
+%ghost %attr(750, root, root) %dir %{_localstatedir}/log/tuned
 %dir %{_sysconfdir}/tuned
 %{_mandir}/man5/tuned*
 %{_mandir}/man7/tuned-profiles-cpu-partitioning.7%{?ext_man}
@@ -345,7 +345,7 @@ done
 %{_mandir}/man7/tuned-profiles-mssql.7%{?ext_man}
 %{_mandir}/man8/tuned*
 %dir %{_datadir}/tuned
-%ghost %dir /run/tuned
+%ghost %attr(755, root, root) %dir /run/tuned
 %dir %{_prefix}/lib/kernel
 %dir %{_prefix}/lib/kernel/install.d
 %{_prefix}/lib/kernel/install.d/92-tuned.install
