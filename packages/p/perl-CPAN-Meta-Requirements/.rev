@@ -109,4 +109,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1288610</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>933f966decda0cb078db5d3713ede11e</srcmd5>
+    <version>2.144</version>
+    <time>1770754250</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.144
+   see /usr/share/doc/packages/perl-CPAN-Meta-Requirements/Changes
+  2.144     2026-01-22 16:12:20-05:00 America/New_York
+      - Remove code meant to cope with running on v5.8, when v5.10 is the minimum
+        required perl!
+      - Normalize away &quot;&gt;= 0&quot; in compount version requirements, it's meaningless.</comment>
+    <requestid>1331904</requestid>
+  </revision>
 </revisionlist>

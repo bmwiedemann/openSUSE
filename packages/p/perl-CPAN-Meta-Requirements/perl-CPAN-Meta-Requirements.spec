@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CPAN-Meta-Requirements
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %define cpan_name CPAN-Meta-Requirements
 Name:           perl-CPAN-Meta-Requirements
-Version:        2.143
+Version:        2.144
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Set of version requirements for a CPAN dist
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros

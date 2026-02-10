@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 24 05:40:45 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.144
+   see /usr/share/doc/packages/perl-CPAN-Meta-Requirements/Changes
+
+  2.144     2026-01-22 16:12:20-05:00 America/New_York
+      - Remove code meant to cope with running on v5.8, when v5.10 is the minimum
+        required perl!
+      - Normalize away ">= 0" in compount version requirements, it's meaningless.
+
+-------------------------------------------------------------------
 Mon Jun 23 20:21:15 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version
