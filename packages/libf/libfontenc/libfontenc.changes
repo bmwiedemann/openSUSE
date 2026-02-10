@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb  8 19:08:47 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 1.1.9
+  * configure: Use pkg-config to handle zlib dependency if possible
+  * meson: Add option to build with meson
+  * gitlab CI: drop the ci-fairy check-mr job
+- switch to meson
+
+-------------------------------------------------------------------
 Sat Mar  2 18:55:05 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 1.1.8

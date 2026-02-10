@@ -128,4 +128,16 @@
     exec another program.</comment>
     <requestid>1154327</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1b874a329e60d33d70ee678ea539d0ca</srcmd5>
+    <version>1.1.9</version>
+    <time>1770754247</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.9
+  * configure: Use pkg-config to handle zlib dependency if possible
+  * meson: Add option to build with meson
+  * gitlab CI: drop the ci-fairy check-mr job
+- switch to meson</comment>
+    <requestid>1331901</requestid>
+  </revision>
 </revisionlist>

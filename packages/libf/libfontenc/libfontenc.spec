@@ -1,7 +1,7 @@
 #
 # spec file for package libfontenc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libfontenc
 %define lname	libfontenc1
-Version:        1.1.8
+Version:        1.1.9
 Release:        0
 Summary:        X11 font encoding library
 License:        MIT
@@ -31,6 +31,7 @@ Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{ve
 Source1:        baselibs.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(fontutil) >= 1.1
@@ -72,12 +73,11 @@ in %lname.
 %setup -q
 
 %build
-%configure --disable-static
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-make install DESTDIR="%buildroot"
-rm -f "%buildroot/%_libdir"/*.la
+%meson_install
 
 %post -n %lname -p /sbin/ldconfig
 
