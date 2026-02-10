@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Feb  9 03:16:40 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.34.1:
+  ## Features:
+  * Support installing extras from the current project in dependency groups.
+  * Add support for conditional set_env using PEP-496 environment markers.
+  * Add __TOX_ENVIRONMENT_VARIABLE_ORIGINAL_CI, which passes through the CI
+    variable if present.
+  * A new tox life cycle event is now exposed for use via Plugins API.
+  * Pass ssh-agent variables SSH_AGENT_PID and SSH_AUTH_SOCK in pass_env by
+    default.
+  * Added constraints to allow specifying constraints files for all
+    dependencies.
+  * Allow disabling tox plugins via the TOX_DISABLED_EXTERNAL_PLUGINS
+    environment variable.
+  ## Bugfixes:
+  * Fix wheel corruption errors when the build backend updates the file in
+    place.
+  * Expand braced range syntax in all internal sections of tox.ini
+    (e.g. deps, testenv).
+  * Fix None appearing as the config filename in error output when the user's
+    default config file is corrupt.
+  * Previously, when tox ran in an automatically provisioned environment, it
+    could hang waiting for a PEP 517 build backend if used in conjunction
+    with the --installpkg option.
+  * Prevent tox from hanging upon exit due to orphaned build threads and
+    subprocesses when the --installpkg option is used with sdist.
+  * Makes the error message more clear when pyproject.toml file cannot be
+    loaded or is missing expected keys.
+  * The tox_extend_envs() hook recently added turned out to not work well
+    with tox run. It was fixed internally, not to exhaust the underlying
+    iterator on the first use.
+  * Don't pass in the filter argument to tar.extractall on old Python
+    versions.
+  * Use tarfile.data_filter with extractall only on supported Python
+    versions.
+- Refresh patches:
+  * optional_devpi_process.patch
+  * mark-network-tests.patch
+- Add patch support-packaging-26.patch:
+  * Support changes required by packaging 26.0.
+- Use autopatch to apply patches after the first one.
+
+-------------------------------------------------------------------
 Fri Jan 16 09:40:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 update to 4.27.0:

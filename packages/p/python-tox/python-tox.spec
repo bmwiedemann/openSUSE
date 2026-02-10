@@ -23,7 +23,7 @@
 %bcond_with devpi_process
 %endif
 Name:           python-tox
-Version:        4.27.0
+Version:        4.34.1
 Release:        0
 Summary:        Virtualenv-based automation of test activities
 License:        MIT
@@ -35,27 +35,28 @@ Patch0:         optional_devpi_process.patch
 # PATCH-FEATURE-UPSTREAM mark-network-tests.patch mcepl@suse.com
 # to skip test which require network access
 Patch1:         mark-network-tests.patch
-BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module build >= 0.10.0}
-BuildRequires:  %{python_module cachetools >= 5.5.1}
+# PATCH-FIX-OPENSUSE Support packaging 26 changes
+Patch2:         support-packaging-26.patch
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module build >= 1.4}
+BuildRequires:  %{python_module cachetools >= 6.2.4}
 BuildRequires:  %{python_module chardet >= 5.2}
 BuildRequires:  %{python_module colorama >= 0.4.6}
-BuildRequires:  %{python_module filelock >= 3.16.1}
+BuildRequires:  %{python_module filelock >= 3.20.2}
 BuildRequires:  %{python_module hatch >= 0.3}
-BuildRequires:  %{python_module hatch_vcs >= 0.4}
+BuildRequires:  %{python_module hatch_vcs >= 0.5}
 BuildRequires:  %{python_module hatchling >= 1.21}
-BuildRequires:  %{python_module packaging >= 24.2}
+BuildRequires:  %{python_module packaging >= 25}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module platformdirs >= 4.3.6}
-BuildRequires:  %{python_module pluggy >= 1.5}
-BuildRequires:  %{python_module pyproject-api >= 1.8}
-BuildRequires:  %{python_module pytoml >= 0.1}
-BuildRequires:  %{python_module re-assert}
-BuildRequires:  %{python_module setuptools >= 41.0.1}
+BuildRequires:  %{python_module platformdirs >= 4.5.1}
+BuildRequires:  %{python_module pluggy >= 1.6}
+BuildRequires:  %{python_module pyproject-api >= 1.10}
+BuildRequires:  %{python_module re-assert >= 1.1}
+BuildRequires:  %{python_module setuptools >= 78}
 BuildRequires:  %{python_module setuptools_scm >= 2.0.0}
-BuildRequires:  %{python_module time-machine >= 2.13}
-BuildRequires:  %{python_module virtualenv >= 20.31}
-BuildRequires:  %{python_module wheel >= 0.42}
+BuildRequires:  %{python_module time-machine >= 3.2}
+BuildRequires:  %{python_module virtualenv >= 20.35.4}
+BuildRequires:  %{python_module wheel >= 0.45.1}
 %if %{with devpi_process}
 BuildRequires:  %{python_module devpi-process > 1}
 %endif
@@ -63,15 +64,15 @@ BuildRequires:  %{python_module importlib-metadata >= 6.8}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-cachetools >= 5.5.1
+Requires:       python-cachetools >= 6.2.4
 Requires:       python-chardet >= 5.2
 Requires:       python-colorama >= 0.4.6
-Requires:       python-filelock >= 3.16.1
-Requires:       python-packaging >= 24.2
-Requires:       python-platformdirs >= 4.3.6
-Requires:       python-pluggy >= 1.5
-Requires:       python-pyproject-api >= 1.8
-Requires:       python-virtualenv >= 20.31
+Requires:       python-filelock >= 3.20.2
+Requires:       python-packaging >= 25
+Requires:       python-platformdirs >= 4.5.1
+Requires:       python-pluggy >= 1.6
+Requires:       python-pyproject-api >= 1.10
+Requires:       python-virtualenv >= 20.35.4
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # last detox version is 0.19
@@ -80,14 +81,14 @@ Provides:       python-detox > 0.19
 BuildArch:      noarch
 # SECTION setup.cfg [options.extras_requires] testing=
 # (except for pytest-cov and -randomly)
-BuildRequires:  %{python_module flaky >= 3.7.0}
+BuildRequires:  %{python_module flaky >= 3.8.1}
 BuildRequires:  %{python_module freezegun >= 0.3.11}
 BuildRequires:  %{python_module numpy >= 1.25}
 BuildRequires:  %{python_module psutil >= 6.1.1}
 BuildRequires:  %{python_module pytest >= 8.3.4}
 BuildRequires:  %{python_module pytest-cov >= 5}
 BuildRequires:  %{python_module pytest-mock >= 3.14}
-BuildRequires:  %{python_module pytest-xdist >= 3.6.1}
+BuildRequires:  %{python_module pytest-xdist >= 3.8}
 # /SECTION
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Provides:       tox = %{version}
@@ -113,7 +114,7 @@ use for:
 %if %{without devpi_process}
 %patch -P 0 -p1
 %endif
-%patch -P 1 -p1
+%autopatch -m 1 -p1
 
 %build
 export LANG=en_US.UTF8
@@ -152,6 +153,8 @@ donttest+=" or test_package_cmd_builder"
 donttest+=" or test_package_pyproject or test_package_only"
 # gh#tox-dev/tox#3399
 donttest+=" or test_skip_develop_mode"
+# gh#tox-dev/tox#3672
+donttest+=" or test_dependency_groups_bad_requirement"
 
 %{python_expand # tests expect an active virtualenv with a clean python name as sys.executable
 virtualenv-%{$python_bin_suffix} --system-site-packages testenv-%{$python_bin_suffix}
@@ -171,7 +174,7 @@ deactivate
 %license LICENSE
 %doc README.md
 %python_alternative %{_bindir}/tox
-%{python_sitelib}/tox-%{version}*-info
 %{python_sitelib}/tox
+%{python_sitelib}/tox-%{version}.dist-info
 
 %changelog

@@ -10,11 +10,11 @@ the devpi server and can break without it
  tests/test_provision.py | 5 ++++-
  2 files changed, 9 insertions(+), 2 deletions(-)
 
-diff --git a/src/tox/pytest.py b/src/tox/pytest.py
-index d734defd..f9e5ae10 100644
---- a/src/tox/pytest.py
-+++ b/src/tox/pytest.py
-@@ -17,7 +17,10 @@ from typing import TYPE_CHECKING, Any, Callable, Iterator, Protocol, Sequence, c
+Index: tox-4.34.1/src/tox/pytest.py
+===================================================================
+--- tox-4.34.1.orig/src/tox/pytest.py
++++ tox-4.34.1/src/tox/pytest.py
+@@ -17,7 +17,10 @@ from typing import TYPE_CHECKING, Any, P
  
  import pytest
  from _pytest.fixtures import SubRequest  # noqa: PLC2701
@@ -26,7 +26,7 @@ index d734defd..f9e5ae10 100644
  from virtualenv.info import fs_supports_symlink
  
  import tox.run
-@@ -507,6 +510,7 @@ def enable_pip_pypi_access_fixture(
+@@ -514,6 +517,7 @@ def enable_pip_pypi_access_fixture(
      """Set a fake pip index url, tests that want to use a pypi server should create and overwrite this."""
      _, previous_url = disable_pip_pypi_access
      enable_pypi_server(monkeypatch, previous_url)
@@ -34,14 +34,14 @@ index d734defd..f9e5ae10 100644
      return previous_url
  
  
-diff --git a/tests/test_provision.py b/tests/test_provision.py
-index 41eb630e..88cefb76 100644
---- a/tests/test_provision.py
-+++ b/tests/test_provision.py
-@@ -16,7 +16,10 @@ from filelock import FileLock
- from packaging.requirements import Requirement
+Index: tox-4.34.1/tests/test_provision.py
+===================================================================
+--- tox-4.34.1.orig/tests/test_provision.py
++++ tox-4.34.1/tests/test_provision.py
+@@ -19,7 +19,10 @@ if TYPE_CHECKING:
+     from collections.abc import Callable, Iterator, Sequence
  
- if TYPE_CHECKING:
+     from build import DistributionType
 -    from devpi_process import Index, IndexServer
 +    try:
 +        from devpi_process import Index, IndexServer
@@ -50,6 +50,3 @@ index 41eb630e..88cefb76 100644
  
      from tox.pytest import MonkeyPatch, TempPathFactory, ToxProjectCreator
  
--- 
-2.44.0
-
