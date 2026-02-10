@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  9 08:52:59 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to 0.26.2
+  rpc: CVE-2026-2100: NULL dereference via C_DeriveKey with specific NULL parameters (bsc#1257820)
+
+-------------------------------------------------------------------
 Tue Jan 20 09:09:29 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 0.26.1:

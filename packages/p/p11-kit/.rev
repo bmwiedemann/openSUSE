@@ -463,4 +463,12 @@
   * trust: Ensure compatibility of CKA_NSS_TRUST and CKA_TRUST (forwarded request 1328203 from pmonrealgonzalez)</comment>
     <requestid>1328265</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>380ed3265abf81657c8b9cb5103a1643</srcmd5>
+    <version>0.26.2</version>
+    <time>1770754290</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1331978</requestid>
+  </revision>
 </revisionlist>
