@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 10 05:52:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.20:
+  * Fixed type name for for PEP 695 types created with type keyword
+    (#301)
+
+-------------------------------------------------------------------
 Wed Feb  4 07:55:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.19:
