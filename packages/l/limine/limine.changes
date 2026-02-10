@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Feb 10 10:48:46 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 10.7.0:
+  * Multiboot2: Implement relocatable preference=2 (prefer highest
+    address).
+  * Multiboot2: Accept LOAD_BASE_ADDR and NETWORK info request tags.
+  * Multiboot2: Accept EFI system table and image handle info requests.
+  * Extensive hardening of the ELF and PE loaders with thorough bounds,
+    overflow, and alignment validation.
+  * Extensive hardening of the Multiboot and Multiboot2 protocol
+    implementations with thorough validation of header fields, tag sizes,
+    and relocation parameters.
+  * Linux boot protocol: Honour kernel_alignment field from the x86 boot
+    protocol header for kernel load address alignment, and init_size for
+    allocation sizing. Use image_size from the kernel header for non-x86
+    allocation.
+  * Fix several bugs in the physical memory manager's overlap detection,
+    sanitiser logic, and memory info reporting.
+  * SMP: Fix x86 AP temp stack pointer to pass top of allocation instead
+    of base. Fix several bugs in the AArch64 SMP trampoline and AP
+    enumeration paths. Skip APs with unrecognised PSCI method instead of
+    panicking.
+  * Host tool: Fix signature search algorithm to correctly handle partial
+    prefix overlaps. Bounds-check GPT partition entry offset arithmetic
+    for overflow. Guard secondary GPT nuke against alternate_lba
+    underflow.
+  * ACPI: Fall back to RSDT when XSDT is above 4 GiB on 32-bit.
+  * VMM: Preserve WC/FB cache attribute in x86 page table flags during
+    page splits.
+
+
+-------------------------------------------------------------------
 Thu Feb  5 23:43:28 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 10.6.6:
