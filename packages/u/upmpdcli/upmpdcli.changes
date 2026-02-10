@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Feb 10 12:49:20 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- updated upmpdcli.keyring
+- added upstream fix-confgui.patch to fix upmpdcl-config failing to start
+- made package upmpdcli-uprcrl supplementing package recoll
+- Update to 1.9.12:
+  * Media server: uprcl: speed up initialisation by using stored recoll
+    data instead of accessing the file system
+- Update to 1.9.11:
+  * Media server: uprcl: search: support "=" operator for properties
+    (mostly motivated by upplay new "click on album title" feature)
+  * Media server: uprcl: add option to not run the indexer on startup
+  * Media server: uprcl: don't add "album" tag on album entries
+- Update to 1.9.10:
+  * Media server: Qobuz: improve search, make it usable
+- Update to 1.9.9:
+  * Media server: uprcl: improve cover detection. Fix incompatibility with recoll
+- Update to 1.9.8:
+  * Media server: Subsonic plugins updates
+
+-------------------------------------------------------------------
 Mon Nov 24 11:37:21 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 1.9.7:

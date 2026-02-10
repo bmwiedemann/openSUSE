@@ -1,8 +1,8 @@
 #
 # spec file for package upmpdcli
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,19 @@
 #
 
 
+%bcond_without confgui
 Name:           upmpdcli
-Version:        1.9.7
+Version:        1.9.12
 Release:        0
 Summary:        UPnP AV and OpenHome Media Renderer front-end to MPD, the Music Player Daemon
 License:        GPL-2.0-or-later
 URL:            https://www.lesbonscomptes.com/updmpdcli
 Source0:        https://www.lesbonscomptes.com/upmpdcli/downloads/upmpdcli-%{version}.tar.gz
 Source1:        https://www.lesbonscomptes.com/upmpdcli/downloads/upmpdcli-%{version}.tar.gz.asc
-Source2:        https://www.lesbonscomptes.com/pages/jf-at-dockes.org.pub#/%{name}.keyring
+Source2:        https://www.lesbonscomptes.com/pages/lesbonscomptes.gpg#/%{name}.keyring
 Patch0:         harden_upmpdcli.service.patch
+# PATCH-FIX-UPSTREAM fix-confgui.patch
+Patch1:         fix-confgui.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -62,7 +65,12 @@ It can also operate as an UPnP/DLNA Media Server to give access to various onlin
 
 %build
 export QMAKE=qmake-qt5
-%meson -Dscctl=true -Dconfgui=true
+%meson \
+%if %{with confgui}
+           -Dconfgui=true \
+%endif
+		   -Dscctl=true
+
 %meson_build
 
 %install
@@ -127,6 +135,7 @@ getent passwd upmpdcli >/dev/null || useradd -r -g audio -d /nonexistent -s /sbi
 
 ####
 
+%if %{with confgui}
 %package config
 Summary:        GUI configuration editor for upmpdcli
 BuildRequires:  pkgconfig
@@ -138,6 +147,8 @@ QT-based GUI for editing upmpdcli configuration files.
 %files config
 %license COPYING
 %{_bindir}/upmpdcli-config
+
+%endif
 
 ########## MEDIA SERVER PLUGINS
 
@@ -272,6 +283,7 @@ Requires:       python3-mutagen
 Requires:       python3-requests
 Requires:       python3-waitress
 Requires:       upmpdcli = %{version}
+Supplements:    (upmpdcli and recoll)
 BuildArch:      noarch
 
 %description uprcl
