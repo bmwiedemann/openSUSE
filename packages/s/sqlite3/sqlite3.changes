@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 22 12:57:58 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Update to version 3.51.2:
+  * Fix an obscure deadlock in the new broken-posix-lock detection
+    logic.
+  * Fix multiple problems in the EXISTS-to-JOIN optimization.
+  * Other minor bug fixes.
+
+-------------------------------------------------------------------
 Fri Nov 28 20:49:24 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Update to version 3.51.1:
@@ -94,7 +103,7 @@ Thu Jul 17 16:17:25 UTC 2025 - Reinhard Max <max@suse.com>
 - Update to version 3.50.3:
   * Fix a possible memory error that can occur if a query is made
     against against FTS5 index that has been deliberately corrupted
-    in a very specific way.
+    in a very specific way (CVE-2025-7709, bsc#1254670).
   * Fix the parser so that it ignored SQL comments in all places of
     a CREATE TRIGGER statement. This resolves a problem that was
     introduced by the introduction of the

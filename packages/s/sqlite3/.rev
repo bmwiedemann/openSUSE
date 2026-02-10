@@ -1974,4 +1974,12 @@ CVE-2020-13871 boo#1172646</comment>
     - The &quot;.imposter&quot; command provides read-only imposter tables</comment>
     <requestid>1320534</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>801c36cda3c1eeb40074b6321085200e</srcmd5>
+    <version>3.51.2</version>
+    <time>1770754303</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1332086</requestid>
+  </revision>
 </revisionlist>
