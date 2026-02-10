@@ -17,7 +17,7 @@
 
 
 Name:           rumdl
-Version:        0.1.15
+Version:        0.1.17
 Release:        0
 Summary:        Markdown Linter written in Rust
 License:        MIT
@@ -30,7 +30,7 @@ BuildRequires:  cargo-packaging
 BuildRequires:  cargo >= 1.91
 
 # out-of-memory errors
-ExcludeArch:    %{ix86} armv7hl armv7l armv7l:armv6l:armv5tel armv6hl ppc64le
+ExcludeArch:    %{ix86} %{arm} ppc64le
 
 %description
 rumdl is a high-performance Markdown linter and formatter that helps ensure
