@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 10 14:58:09 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 3.16.20:
+  * Apps: Add gamescope-type
+  * Scripts: Add display script for OneXPlayer F1 Series OLED display - Adds script to configure the OneXPlayer OneXFly F1 OLED and F1 Pro   screens. Without it the colors are washed despite it detecting as a PQ   display as its native color gamut is equivalent to sRGB. Use Gamma2.2   to fix and apply timings. There is also a 60Hz screen mode but it uses   different timings, so use 120Hz and frame limit to 60 in gamescope   instead.
+  * steamcompmgr: Support _STEAMOS_TOUCH_POINTER_EMULATION
+  * WaylandBackend: Fix relative pointer state tracking
+  * steamcompmgr: Fix condition on enabling mouse cursor constraint
+  * DRMBackend: Fix NULL dereference in drm_prepare_liftoff()
+  * rendervulkan: Only define 32-bit float DRM_FORMATs if necessary.
+  * steamcompmgr: Fix VRR page flip check
+  * mangoapp: Fix crash with engine name
+  * OpenVRBackend: Add support for hacky escape codes in SteamVR
+
+-------------------------------------------------------------------
 Sat Jan 24 13:07:37 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to version 3.16.19:
