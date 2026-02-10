@@ -1,0 +1,120 @@
+From c46b6368bfb956b30a6604494bec52f6d837540c Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Thu, 27 Nov 2025 12:14:30 +0800
+Subject: [PATCH 2/2] grubbls: Add automatic fwsetup menu entry
+
+Similar to the auto-firmware option in loader.conf, this patch adds
+support for automatically generating the menu entry that allows users to
+reboot into the firmware interface instead of the OS. The entry is
+labeled "UEFI Firmware Settings", the same label used in today's GRUB
+menu.
+
+The feature is enabled by default. To disable it, one can set
+blscfg_auto_firmware=n in the GRUB environment variable.
+
+  grub2-editenv /boot/efi/EFI/opensuse/grubenv set \
+  blscfg_auto_firmware=n
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/commands/efi/efifwsetup.c | 31 ++++++++++++++++++++++++++++-
+ grub-core/normal/main.c             | 12 +++++++++++
+ 2 files changed, 42 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/commands/efi/efifwsetup.c b/grub-core/commands/efi/efifwsetup.c
+index 704f9d352..cdc84ac2b 100644
+--- a/grub-core/commands/efi/efifwsetup.c
++++ b/grub-core/commands/efi/efifwsetup.c
+@@ -24,6 +24,7 @@
+ #include <grub/efi/efi.h>
+ #include <grub/command.h>
+ #include <grub/i18n.h>
++#include <grub/normal.h>
+ 
+ GRUB_MOD_LICENSE ("GPLv3+");
+ 
+@@ -65,7 +66,7 @@ grub_cmd_fwsetup (grub_command_t cmd __attribute__ ((unused)),
+   return GRUB_ERR_BUG;
+ }
+ 
+-static grub_command_t cmd = NULL;
++static grub_command_t cmd = NULL, cmd_fwsetup_auto = NULL;
+ 
+ static grub_efi_boolean_t
+ efifwsetup_is_supported (void)
+@@ -89,14 +90,42 @@ efifwsetup_is_supported (void)
+   return ret;
+ }
+ 
++static grub_err_t
++grub_cmd_efifwsetup_auto (grub_command_t command __attribute__ ((unused)),
++			  int argc __attribute__ ((unused)),
++			  char **args __attribute__ ((unused)))
++{
++  const char *argv[] = { "UEFI Firmware Settings" };
++
++  if (efifwsetup_is_supported () == false)
++    return GRUB_ERR_NONE;
++
++  grub_normal_add_menu_entry (1,
++			      argv,
++			      NULL,
++			      "uefi-firmware",
++			      NULL,
++			      NULL,
++			      NULL,
++			      "fwsetup\n",
++			      0,
++			      NULL,
++			      0);
++  return GRUB_ERR_NONE;
++}
++
+ GRUB_MOD_INIT (efifwsetup)
+ {
+   cmd = grub_register_command ("fwsetup", grub_cmd_fwsetup, NULL,
+                                N_("Reboot into firmware setup menu."));
++  cmd_fwsetup_auto = grub_register_command ("efifwsetup_auto", grub_cmd_efifwsetup_auto,
++			       NULL, N_("Show UEFI fwsetup menu automatically."));
+ }
+ 
+ GRUB_MOD_FINI (efifwsetup)
+ {
+   if (cmd)
+     grub_unregister_command (cmd);
++  if (cmd_fwsetup_auto != NULL)
++    grub_unregister_command (cmd_fwsetup_auto);
+ }
+diff --git a/grub-core/normal/main.c b/grub-core/normal/main.c
+index 835e486e6..4428827bf 100644
+--- a/grub-core/normal/main.c
++++ b/grub-core/normal/main.c
+@@ -373,6 +373,17 @@ bls_set_terminal (const char *type)
+   grub_device_close (dev);
+ }
+ 
++static void
++bls_auto_firmware (void)
++{
++  const char *val = grub_env_get ("blscfg_auto_firmware");
++
++  if (val && (val[0] == '0' || val[0] == 'n'))
++    return;
++
++  grub_parser_execute ((char *) "efifwsetup_auto\n");
++}
++
+ static grub_menu_t
+ read_blscfg (void)
+ {
+@@ -389,6 +400,7 @@ read_blscfg (void)
+ 
+   bls_set_terminal (NULL);
+   grub_parser_execute ((char *)"blscfg\n");
++  bls_auto_firmware ();
+   return newmenu;
+ }
+ 
+-- 
+2.52.0
+

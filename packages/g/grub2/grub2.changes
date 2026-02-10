@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb  9 03:53:04 UTC 2026 - Michael Chang <mchang@suse.com>
+
+- Fix screen flickering in BLS due to rendering graphical and text terminals at
+  the same time (bsc#1256480)
+- Add automatic fwsetup menu entry in BLS
+  * 0001-bls-Allow-configuration-of-active-console-type.patch
+  * 0002-grubbls-Add-automatic-fwsetup-menu-entry.patch
+- Add efifwsetup module to EFI BLS image
+
+-------------------------------------------------------------------
 Mon Feb  2 10:45:27 UTC 2026 - Michael Chang <mchang@suse.com>
 
 - Fix sporadic boot failure in 2.14 BLS (bsc#1257547)

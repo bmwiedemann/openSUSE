@@ -395,6 +395,8 @@ Patch405:       0001-00_header-Omit-loading-efi_uga-on-non-x86-EFI-platfo.patch
 Patch406:       0001-Revert-configure-Print-a-more-helpful-error-if-autoc.patch
 Patch407:       0002-Revert-configure-Check-linker-for-image-base-support.patch
 Patch408:       0001-blsuki-Fix-linux_cmd-size-calcution-in-bls_get_linux.patch
+Patch409:       0001-bls-Allow-configuration-of-active-console-type.patch
+Patch410:       0002-grubbls-Add-automatic-fwsetup-menu-entry.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime
@@ -885,7 +887,7 @@ mksquashfs ./boot memdisk.sqsh -keep-as-directory -comp xz -quiet -no-progress
     %{?sbat_generation:--sbat sbat.csv} \
     -d grub-core \
     all_video boot font gfxmenu gfxterm gzio halt jpeg minicmd normal part_gpt png reboot video \
-    fat tpm tss2 tpm2_key_protector memdisk tar squash4 xzio blsuki blsbumpcounter linux bli regexp loadenv test echo true sleep
+    fat tpm tss2 tpm2_key_protector memdisk tar squash4 xzio blsuki blsbumpcounter linux bli regexp loadenv test echo true sleep efifwsetup
 %endif
 
 %ifarch x86_64 aarch64
