@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb  9 12:03:19 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.16.0
+  * Implement SMB2 LOCK operation.
+  * Allow floating point times for smbclient.utime .
+  * Update CI and build information.
+  * Generalize to Callables Instead of Strictly Lambdas.
+  * Propagate missing session params.
+  * Fix no symlink buffer on symlink open.
+  * Fix copy/copy2 kwargs handling.
+
+-------------------------------------------------------------------
 Mon Nov 11 22:08:22 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.15.0

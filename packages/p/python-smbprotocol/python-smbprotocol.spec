@@ -1,7 +1,7 @@
 #
 # spec file for package python-smbprotocol
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-smbprotocol
-Version:        1.15.0
+Version:        1.16.0
 Release:        0
 Summary:        SMBv2/v3 client for Python 2 and 3
 License:        MIT
