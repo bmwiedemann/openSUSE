@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  8 18:59:43 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- font-alias 1.0.6
+  * Add a meson build system
+  * gitlab CI: drop the ci-fairy check-mr job
+
+-------------------------------------------------------------------
 Mon May 26 15:41:47 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Disable build of the converted flavor in Tumbleweed and SLE16.

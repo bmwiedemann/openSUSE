@@ -546,4 +546,14 @@
     <comment></comment>
     <requestid>1280357</requestid>
   </revision>
+  <revision rev="62" vrev="49">
+    <srcmd5>5097ea41f5db4e749135a46dd0c0cdc6</srcmd5>
+    <version>7.6</version>
+    <time>1770754244</time>
+    <user>anag_factory</user>
+    <comment>- font-alias 1.0.6
+  * Add a meson build system
+  * gitlab CI: drop the ci-fairy check-mr job</comment>
+    <requestid>1331899</requestid>
+  </revision>
 </revisionlist>

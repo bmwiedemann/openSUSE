@@ -1,7 +1,7 @@
 #
 # spec file for package xorg-x11-fonts
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,7 +67,7 @@ Source32:       http://xorg.freedesktop.org/archive/individual/font/encodings-1.
 Source33:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-utopia-100dpi-1.0.5.tar.xz
 Source34:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-utopia-75dpi-1.0.5.tar.xz
 Source35:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-utopia-type1-1.0.5.tar.xz
-Source36:       http://xorg.freedesktop.org/archive/individual/font/font-alias-1.0.5.tar.xz
+Source36:       http://xorg.freedesktop.org/archive/individual/font/font-alias-1.0.6.tar.xz
 Source100:      README.converted
 %if "%{flavor}" == "converted"
 Source1000:     https://pwu.fedorapeople.org/fonts/convertbitmap/convertfont.py
