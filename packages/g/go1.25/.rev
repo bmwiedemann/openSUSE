@@ -246,4 +246,21 @@
   * go#76973 errors: errors.Join behavior changed in 1.25 (forwarded request 1327527 from jfkw)</comment>
     <requestid>1327532</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>97d0b169f1b063b9620828f639877122</srcmd5>
+    <version>1.25.7</version>
+    <time>1770754315</time>
+    <user>anag_factory</user>
+    <comment>- go1.25.7 (released 2026-02-04) includes security fixes to the go
+  command and the crypto/tls package, as well as bug fixes to the
+  compiler and the crypto/x509 package.
+  Refs boo#1244485 go1.25 release tracking
+  CVE-2025-61732 CVE-2025-68121
+  * go#77129 go#76697 boo#1257692 security: fix CVE-2025-61732 cmd/go: potential code smuggling using doc comments
+  * go#77356 go#77217 boo#1256818 security: fix CVE-2025-68121 crypto/tls: revert Config.Clone change and apply lightweight chain validation
+  * go#75844 cmd/compile: OOM killed on linux/arm64
+  * go#77323 crypto/x509: single-label excluded DNS name constraints incorrectly match all wildcard SANs
+  * go#77425 crypto/tls: CL 737700 broke session resumption on macOS (forwarded request 1332053 from jfkw)</comment>
+    <requestid>1332056</requestid>
+  </revision>
 </revisionlist>
