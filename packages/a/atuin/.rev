@@ -1372,4 +1372,13 @@
 - Update to version 18.11.0</comment>
     <requestid>1327068</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>bf1794c4761d241d0ee15e762d845c36</srcmd5>
+    <version>18.12.0</version>
+    <time>1770754405</time>
+    <user>anag_factory</user>
+    <comment>- bump Rust to 1.93 (see upstream changelog)
+- Update to version 18.12.0: (forwarded request 1332270 from develop7)</comment>
+    <requestid>1332271</requestid>
+  </revision>
 </revisionlist>

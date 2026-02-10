@@ -17,7 +17,7 @@
 
 
 Name:           atuin
-Version:        18.11.0
+Version:        18.12.0
 Release:        0
 Summary:        Magical shell history
 License:        MIT
@@ -27,7 +27,7 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
-BuildRequires:  cargo >= 1.91
+BuildRequires:  cargo >= 1.93
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  protobuf-devel
@@ -70,8 +70,7 @@ Zsh command line completion support for %{name}.
 cp -v CONTRIBUTORS crates/atuin/src/command/CONTRIBUTORS
 
 %build
-# Omit feature "check-update" and disable defaults
-%{cargo_build} --no-default-features -F "client,sync,server,clipboard"
+%{cargo_build} --no-default-features -F "atuin/client,atuin/sync,atuin/daemon,atuin/clipboard"
 
 for shell in "zsh" "bash" "fish"
 do
