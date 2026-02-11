@@ -2,7 +2,7 @@
 # spec file for package liburing
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define lname   liburing2
 Name:           liburing
-Version:        2.13
+Version:        2.14
 Release:        0
 Summary:        Linux-native io_uring I/O access library
 License:        (GPL-2.0-only AND LGPL-2.1-or-later) OR MIT
@@ -92,22 +92,16 @@ export CPPFLAGS="%{optflags} -fno-stack-protector"
 # io_uring syscalls not supported as of qemu 7.0.0 and would test the host
 # kernel anyway not the target kernel..
 %if !0%{?qemu_user_space_build}
-declare -a TEST_EXCLUDE=( resize-rings.t conn-unreach.t min-timeout-wait.t )
+declare -a TEST_EXCLUDE=( conn-unreach.t io-wq-unused-exit.t )
 
-%if 0%{?sle_version} == 150500
-TEST_EXCLUDE+=( fallocate.t fd-pass.t fixed-buf-merge.t msg-ring-overflow.t nop.t poll-race-mshot.t reg-hint.t sqwait.t wq-aff.t )
-%endif
 %if 0%{?sle_version} == 150600
-TEST_EXCLUDE+=( register-restrictions.t sqpoll-sleep.t )
-%endif
-%if 0%{?sle_version} == 150600 || 0%{?sle_version} == 150700
-TEST_EXCLUDE+=( accept-non-empty.t bind-listen.t fallocate.t nop.t recvsend_bundle.t recvsend_bundle-inc.t sqwait.t timeout.t )
+TEST_EXCLUDE+=( fallocate.t register-restrictions.t timeout.t )
 %endif
 %if 0%{?sle_version} == 150700
-TEST_EXCLUDE+=( fifo-futex-poll.t )
+TEST_EXCLUDE+=( accept-non-empty.t bind-listen.t fallocate.t fifo-futex-poll.t min-timeout.t min-timeout-wait.t )
 %endif
 %if 0%{?suse_version} == 1600
-TEST_EXCLUDE+=( read-inc-file.t sqwait.t timeout.t )
+TEST_EXCLUDE+=( io-wq-exit.t min-timeout.t min-timeout-wait.t )
 %endif
 
 echo "TEST_EXCLUDE=\"${TEST_EXCLUDE[@]}\"" > test/config.local
@@ -130,7 +124,7 @@ rm -v %{buildroot}%{_libdir}/%{name}*.a
 
 %files -n liburing-ffi2
 %license COPYING COPYING.GPL LICENSE
-%{_libdir}/liburing-ffi.so.*
+%{_libdir}/liburing-ffi.so.2{,.*}
 
 %files devel
 %license COPYING COPYING.GPL LICENSE

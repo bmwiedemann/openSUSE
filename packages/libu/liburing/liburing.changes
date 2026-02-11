@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb  8 11:05:55 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.14:
+  * updates to man pages, the entire liburing API is now documented
+  * updates to tests
+  * various bug fixes
+
+-------------------------------------------------------------------
 Sun Dec 21 09:14:57 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.13:
