@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Feb  6 14:52:25 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.13.0:
+  * Too many changes to list, see
+    https://github.com/opencv/opencv/wiki/OpenCV-Change-Logs#version4130
+- Drop upstreamed patches:
+  * 86df531.patch
+  * opencv-ppc64le-power9.patch
+  * opencv-qt6_9-highgui-linking-test.patch
+- Update URL of patch opencv-ppc64le-power9_fixup.patch to new
+  upstream commit.
+- Add BuildRequires: dlpack-devel needed for updated version.
+- Specifically use so version in shared library (file)names.
+- Pass CMAKE_SKIP_RPATH=ON to cmake when building python library
+  since rpath is baked into objects otherwise.
+- Add gtk3 flavour.
+
+-------------------------------------------------------------------
+Wed Jan 14 19:06:16 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Replace patches with actual upstream changes:
+  - Updated opencv-ppc64le-power9.patch
+  - Added opencv-ppc64le-power9_fixup.patch
+  - Updated opencv-qt6_9-highgui-linking-test.patch
+- Add ldconfig_scriptlets for Qt5 libopencv*_highgui
+
+-------------------------------------------------------------------
 Thu Sep 25 14:49:49 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 86df531.patch: FFmpeg 8.0 support (boo#1249045).

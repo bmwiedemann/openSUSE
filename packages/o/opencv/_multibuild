@@ -1,4 +1,5 @@
 <multibuild>
+	<package>gtk3</package>
 	<package>qt6</package>
 	<package>nogui</package>
 </multibuild>

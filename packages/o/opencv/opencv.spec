@@ -1,7 +1,7 @@
 #
 # spec file for package opencv
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,13 @@ ExclusiveArch: do_not_build
 %endif
 %endif
 
+%if "%flavor" == "gtk3"
+%define gtk_ver 3
+%bcond_without gui
+%bcond_with python3
+%define psuffix -%{flavor}
+%endif
+
 %if "%flavor" == "nogui"
 %bcond_with gui
 %bcond_with python3
@@ -50,7 +57,7 @@ ExclusiveArch: do_not_build
 %endif
 
 %define libname lib%{pname}
-%define soname 412
+%define so_ver 413
 # disabled by default as many fail
 %bcond_with    tests
 %bcond_without gapi
@@ -63,7 +70,7 @@ ExclusiveArch: do_not_build
 %define __builder ninja
 
 Name:           %{pname}%{psuffix}
-Version:        4.12.0
+Version:        4.13.0
 Release:        0
 Summary:        Collection of algorithms for computer vision
 # GPL-2.0 AND Apache-2.0 files are in 3rdparty/ittnotify which is not build
@@ -74,15 +81,11 @@ Source0:        https://github.com/opencv/opencv/archive/%{version}.tar.gz#/%{pn
 # Several modules from the opencv_contrib package
 Source1:        https://github.com/opencv/opencv_contrib/archive/%{version}.tar.gz#/opencv_contrib-%{version}.tar.gz
 Source99:       opencv-rpmlintrc
-# PATCH-FIX-UPSTREAM opencv-qt6_9-highgui-linking-test.patch gh#opencv/opencv#27223 badshah400@gmail.com -- Fix highgui module linking against Qt 6.9; patch sent upstream
-Patch0:         opencv-qt6_9-highgui-linking-test.patch
-# PATCH-FIX-UPSTREAM opencv-ppc64le-power9.patch hillwood@opensuse.org - Fix missing vec_cvfo on POWER9 due to unavailable VSX float64 conversion
-# https://github.com/opencv/opencv/pull/27633
-Patch1:         opencv-ppc64le-power9.patch
-# PATCH-FIX-UPSTREAM 86df531.patch -- FFmpeg 8.0 support.
-Patch2:         https://github.com/opencv/opencv/commit/86df531.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         https://github.com/opencv/opencv/commit/4db66beb609e77b906dab81aba0ea1ce53e936cd.patch#/opencv-ppc64le-power9_fixup.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  dlpack-devel
 BuildRequires:  libeigen3-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  memory-constraints
@@ -106,7 +109,7 @@ BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(zlib)
 %if %{with gui}
-%if %{qt_ver} < 6
+%if 0%{?qt_ver} == 5
 Provides:       opencv-qt5 = %{version}
 Obsoletes:      opencv-qt5 < %{version}
 %endif
@@ -126,29 +129,32 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  python3-base
 BuildRequires:  python3-setuptools
 %endif
-%if %{with gui}
+%if 0%{?qt_ver}
 BuildRequires:  pkgconfig(Qt%{qt_ver}Concurrent) >= 5.2.0
 BuildRequires:  pkgconfig(Qt%{qt_ver}Gui) >= 5.2.0
 BuildRequires:  pkgconfig(Qt%{qt_ver}Test) >= 5.2.0
-%if 0%{?qt_ver} < 6
+%if 0%{?qt_ver} == 5
 BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.0
 %else
 BuildRequires:  pkgconfig(Qt6OpenGLWidgets)
 %endif
 %endif
+%if 0%{?gtk_ver}
+BuildRequires:  pkgconfig(gtk+-3.0)
+%endif
 %if "%{flavor}" != ""
-BuildRequires:  %{libname}%{soname} = %{version}
-BuildRequires:  libopencv_aruco%{soname} = %{version}
-BuildRequires:  libopencv_face%{soname} = %{version}
-BuildRequires:  libopencv_gapi%{soname} = %{version}
-BuildRequires:  libopencv_imgcodecs%{soname} = %{version}
-BuildRequires:  libopencv_objdetect%{soname} = %{version}
-BuildRequires:  libopencv_optflow%{soname} = %{version}
-BuildRequires:  libopencv_superres%{soname} = %{version}
-BuildRequires:  libopencv_videoio%{soname} = %{version}
-BuildRequires:  libopencv_videostab%{soname} = %{version}
-BuildRequires:  libopencv_ximgproc%{soname} = %{version}
+BuildRequires:  %{libname}%{so_ver} = %{version}
+BuildRequires:  libopencv_aruco%{so_ver} = %{version}
+BuildRequires:  libopencv_face%{so_ver} = %{version}
+BuildRequires:  libopencv_gapi%{so_ver} = %{version}
+BuildRequires:  libopencv_imgcodecs%{so_ver} = %{version}
+BuildRequires:  libopencv_objdetect%{so_ver} = %{version}
+BuildRequires:  libopencv_optflow%{so_ver} = %{version}
+BuildRequires:  libopencv_superres%{so_ver} = %{version}
+BuildRequires:  libopencv_videoio%{so_ver} = %{version}
+BuildRequires:  libopencv_videostab%{so_ver} = %{version}
+BuildRequires:  libopencv_ximgproc%{so_ver} = %{version}
 %endif
 %if %{with ffmpeg}
 BuildRequires:  pkgconfig(libavcodec)
@@ -157,7 +163,7 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswscale)
 %endif
 %if %{with gui}
-Requires:       libopencv_highgui%{soname}%{psuffix} = %{version}
+Requires:       libopencv_highgui%{so_ver}%{psuffix} = %{version}
 %endif
 %if %{with python3}
 %if "%pythons" != "python3"
@@ -190,140 +196,155 @@ BuildArch:      noarch
 %description -n %{pname}4-cascades-data
 Haar and LBP cascades for face and object detecton
 
-%package -n %{libname}%{soname}
+%package -n %{libname}%{so_ver}
 Summary:        Libraries to use OpenCV computer vision
 License:        BSD-3-Clause
 Group:          System/Libraries
 
-%description -n %{libname}%{soname}
+%description -n %{libname}%{so_ver}
 The Open Computer Vision Library is a collection of algorithms and sample code
 for various computer vision problems. The library is compatible with IPL and
 utilizes Intel Integrated Performance Primitives for better performance.
 
-%package -n libopencv_aruco%{soname}
+%package -n libopencv_aruco%{so_ver}
 Summary:        Pattern grid detection libraries for OpenCV
 License:        BSD-3-Clause
 Group:          System/Libraries
 
-%description -n libopencv_aruco%{soname}
+%description -n libopencv_aruco%{so_ver}
 Pattern grid detectiion libraries for OpenCV
 
-%package -n libopencv_face%{soname}
+%package -n libopencv_face%{so_ver}
 Summary:        Face detection libraries for OpenCV
 License:        BSD-3-Clause
 Group:          System/Libraries
-Conflicts:      %{libname}%{soname} < %{version}-%{release}
+Conflicts:      %{libname}%{so_ver} < %{version}-%{release}
 Requires:       %{pname}4-cascades-data
 
-%description -n libopencv_face%{soname}
+%description -n libopencv_face%{so_ver}
 Face detection libraries for OpenCV
 
-%package -n libopencv_gapi%{soname}
+%package -n libopencv_gapi%{so_ver}
 Summary:        G-API library component for OpenCV
 License:        BSD-3-Clause
 Group:          System/Libraries
 
-%description -n libopencv_gapi%{soname}
+%description -n libopencv_gapi%{so_ver}
 G-API library component for OpenCV
 
 %if %{with gui}
-%package -n libopencv_highgui%{soname}%{psuffix}
+%package -n libopencv_highgui%{so_ver}%{psuffix}
 Summary:        Higlevel GUI libraries for OpenCV
 License:        BSD-3-Clause
 Group:          System/Libraries
-Conflicts:      libopencv_highgui%{soname} = %{version}
+%if 0%{?qt_ver} == 6
+Conflicts:      libopencv_highgui%{so_ver} = %{version}
+Conflicts:      libopencv_highgui%{so_ver}-gtk3 = %{version}
+%endif
+%if 0%{?gtk_ver} == 3
+Conflicts:      libopencv_highgui%{so_ver} = %{version}
+Conflicts:      libopencv_highgui%{so_ver}-qt6 = %{version}
+%endif
 
-%description -n libopencv_highgui%{soname}%{psuffix}
+%description -n libopencv_highgui%{so_ver}%{psuffix}
 Higlevel GUI libraries for OpenCV
 %endif
 
-%package -n libopencv_imgcodecs%{soname}
+%package -n libopencv_imgcodecs%{so_ver}
 Summary:        Image codec libraries for OpenCV
 License:        BSD-3-Clause
 Group:          System/Libraries
 
-%description -n libopencv_imgcodecs%{soname}
+%description -n libopencv_imgcodecs%{so_ver}
 Image codec libraries for OpenCV
 
-%package -n libopencv_superres%{soname}
+%package -n libopencv_superres%{so_ver}
 Summary:        Superresolution libraries for OpenCV
 License:        BSD-3-Clause
 Group:          System/Libraries
 
-%description -n libopencv_superres%{soname}
+%description -n libopencv_superres%{so_ver}
 Superresolution libraries for OpenCV
 
-%package -n libopencv_objdetect%{soname}
+%package -n libopencv_objdetect%{so_ver}
 Summary:        Face detection libraries for OpenCV
 License:        BSD-3-Clause
 Group:          System/Libraries
 Requires:       %{pname}4-cascades-data
 
-%description -n libopencv_objdetect%{soname}
+%description -n libopencv_objdetect%{so_ver}
 Object detection libraries for OpenCV
 
-%package -n libopencv_optflow%{soname}
+%package -n libopencv_optflow%{so_ver}
 Summary:        Optical flow calculation libraries for OpenCV
 License:        BSD-3-Clause
 Group:          System/Libraries
 
-%description -n libopencv_optflow%{soname}
+%description -n libopencv_optflow%{so_ver}
 Optical flow calculation libraries for OpenCV
 
-%package -n libopencv_videoio%{soname}
+%package -n libopencv_videoio%{so_ver}
 Summary:        Video IO libraries for OpenCV
 License:        BSD-3-Clause
 Group:          System/Libraries
 
-%description -n libopencv_videoio%{soname}
+%description -n libopencv_videoio%{so_ver}
 Video IO libraries for OpenCV
 
-%package -n libopencv_videostab%{soname}
+%package -n libopencv_videostab%{so_ver}
 Summary:        Video stabilization libraries for OpenCV
 License:        BSD-3-Clause
 Group:          System/Libraries
 
-%description -n libopencv_videostab%{soname}
+%description -n libopencv_videostab%{so_ver}
 Video stabilization libraries for OpenCV
 
-%package -n libopencv_ximgproc%{soname}
+%package -n libopencv_ximgproc%{so_ver}
 Summary:        Image processing libraries for OpenCV
 License:        BSD-3-Clause
 Group:          System/Libraries
 
-%description -n libopencv_ximgproc%{soname}
+%description -n libopencv_ximgproc%{so_ver}
 Image processing libraries for OpenCV
 
 %package devel
 Summary:        Development files for using the OpenCV library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Requires:       %{libname}%{soname} = %{version}
-Requires:       libopencv_aruco%{soname} = %{version}
-Requires:       libopencv_face%{soname} = %{version}
-Requires:       libopencv_gapi%{soname} = %{version}
+Requires:       %{libname}%{so_ver} = %{version}
+Requires:       libopencv_aruco%{so_ver} = %{version}
+Requires:       libopencv_face%{so_ver} = %{version}
+Requires:       libopencv_gapi%{so_ver} = %{version}
 %if %{with gui}
-Requires:       libopencv_highgui%{soname}%{psuffix} = %{version}
+Requires:       libopencv_highgui%{so_ver}%{psuffix} = %{version}
 %endif
 %if "%flavor" == ""
-Conflicts:      opencv-qt6-devel = %{version}
+Conflicts:      opencv-gtk3-devel = %{version}
 Conflicts:      opencv-nogui-devel = %{version}
+Conflicts:      opencv-qt6-devel = %{version}
+%endif
+%if "%flavor" == "gtk3"
+Conflicts:      opencv-devel = %{version}
+Conflicts:      opencv-nogui-devel = %{version}
+Conflicts:      opencv-qt6-devel = %{version}
 %endif
 %if "%flavor" == "qt6"
 Conflicts:      opencv-devel = %{version}
+Conflicts:      opencv-gtk3-devel = %{version}
 Conflicts:      opencv-nogui-devel = %{version}
 %endif
 %if "%flavor" == "nogui"
 Conflicts:      opencv-devel = %{version}
+Conflicts:      opencv-gtk3-devel = %{version}
 Conflicts:      opencv-qt6-devel = %{version}
 %endif
-Requires:       libopencv_imgcodecs%{soname} = %{version}
-Requires:       libopencv_objdetect%{soname} = %{version}
-Requires:       libopencv_optflow%{soname} = %{version}
-Requires:       libopencv_superres%{soname} = %{version}
-Requires:       libopencv_videoio%{soname} = %{version}
-Requires:       libopencv_videostab%{soname} = %{version}
-Requires:       libopencv_ximgproc%{soname} = %{version}
+Requires:       libopencv_imgcodecs%{so_ver} = %{version}
+Requires:       libopencv_objdetect%{so_ver} = %{version}
+Requires:       libopencv_optflow%{so_ver} = %{version}
+Requires:       libopencv_superres%{so_ver} = %{version}
+Requires:       libopencv_videoio%{so_ver} = %{version}
+Requires:       libopencv_videostab%{so_ver} = %{version}
+Requires:       libopencv_ximgproc%{so_ver} = %{version}
 Requires:       %{name} = %{version}
 Requires:       pkgconfig(gl)
 Requires:       pkgconfig(glu)
@@ -332,7 +353,7 @@ Requires:       pkgconfig(sm)
 Requires:       pkgconfig(x11)
 Requires:       pkgconfig(xext)
 %if %{with gui}
-%if %{qt_ver} < 6
+%if 0%{?qt_ver} == 5
 Provides:       %{name}-qt5-devel = %{version}
 Obsoletes:      %{name}-qt5-devel < %{version}
 %endif
@@ -349,8 +370,8 @@ Summary:        Python %{python_version} bindings for apps which use OpenCV
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 %if %{with gui}
-Requires:       libopencv_highgui%{soname} = %{version}
-%if %{qt_ver} < 6
+Requires:       libopencv_highgui%{so_ver} = %{version}
+%if %{qt_ver} == 5
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 Provides:       python-%{name}-qt5 = %{version}
 Obsoletes:      python-%{name}-qt5 < %{version}
@@ -367,7 +388,7 @@ Summary:        Python 3 bindings for apps which use OpenCV
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 %if %{with gui}
-%if %{qt_ver} < 6
+%if 0%{?qt_ver} == 5
 Provides:       python3-%{name}-qt5 = %{version}
 Obsoletes:      python3-%{name}-qt5 < %{version}
 %endif
@@ -384,7 +405,7 @@ Group:          Documentation/Other
 # Since this package also contains examples that need -devel to be compiled
 Suggests:       %{name}-devel
 %if %{with gui}
-%if %{qt_ver} < 6
+%if 0%{?qt_ver} == 5
 Provides:       %{name}-qt5-doc = %{version}
 Obsoletes:      %{name}-qt5-doc < %{version}
 %endif
@@ -428,7 +449,8 @@ pushd $PWD
       -DINSTALL_C_EXAMPLES=ON \
       -DINSTALL_PYTHON_EXAMPLES=ON \
       -DENABLE_OMIT_FRAME_POINTER=ON \
-      -DWITH_QT=%{?with_gui:ON}%{!?with_gui:OFF} \
+      -DWITH_GTK=%{?gtk_ver:ON}%{!?gtk_ver:OFF} \
+      -DWITH_QT=%{?qt_ver:ON}%{!?qt_ver:OFF} \
       -DBUILD_opencv_highgui=%{?with_gui:ON}%{!?with_gui:OFF} \
       -DWITH_OPENGL=%{?with_gui:ON}%{!?with_gui:OFF} \
       -DOpenGL_GL_PREFERENCE:STRING="GLVND" \
@@ -463,6 +485,7 @@ pushd $PWD
       -DCPU_DISPATCH=FP16 \
 %endif
 %if %{with python3}
+      -DCMAKE_SKIP_RPATH=ON \
       -DOPENCV_SKIP_PYTHON_LOADER=ON \
       -DOPENCV_PYTHON3_VERSION=%{python3_version} \
       -DOPENCV_PYTHON3_INSTALL_PATH=%{python3_sitearch} \
@@ -487,6 +510,7 @@ pushd pythonbuilds
 if [ "py%{$python_version}" != "py%{python3_version}" ]; then
   pushd $PWD
   %cmake \
+      -DCMAKE_SKIP_RPATH=ON \
       -DOpenCV_BINARY_DIR=../../build/ \
       -DOPENCV_SKIP_PYTHON_LOADER=ON \
       -DOPENCV_PYTHON_VERSION=%{$python_version} \
@@ -577,74 +601,96 @@ grep -E 'model|stepping|flags' /proc/cpuinfo | head -n4
 %endif
 
 %if "%flavor" == ""
-%ldconfig_scriptlets -n %{libname}%{soname}
-%ldconfig_scriptlets -n libopencv_aruco%{soname}
-%ldconfig_scriptlets -n libopencv_face%{soname}
-%ldconfig_scriptlets -n libopencv_gapi%{soname}
-%ldconfig_scriptlets -n libopencv_imgcodecs%{soname}
-%ldconfig_scriptlets -n libopencv_objdetect%{soname}
-%ldconfig_scriptlets -n libopencv_optflow%{soname}
-%ldconfig_scriptlets -n libopencv_superres%{soname}
-%ldconfig_scriptlets -n libopencv_videoio%{soname}
-%ldconfig_scriptlets -n libopencv_videostab%{soname}
-%ldconfig_scriptlets -n libopencv_ximgproc%{soname}
-%else
-%if %{with gui}
-%ldconfig_scriptlets -n libopencv_highgui%{soname}%{psuffix}
+%ldconfig_scriptlets -n %{libname}%{so_ver}
+%ldconfig_scriptlets -n libopencv_aruco%{so_ver}
+%ldconfig_scriptlets -n libopencv_face%{so_ver}
+%ldconfig_scriptlets -n libopencv_gapi%{so_ver}
+%ldconfig_scriptlets -n libopencv_imgcodecs%{so_ver}
+%ldconfig_scriptlets -n libopencv_objdetect%{so_ver}
+%ldconfig_scriptlets -n libopencv_optflow%{so_ver}
+%ldconfig_scriptlets -n libopencv_superres%{so_ver}
+%ldconfig_scriptlets -n libopencv_videoio%{so_ver}
+%ldconfig_scriptlets -n libopencv_videostab%{so_ver}
+%ldconfig_scriptlets -n libopencv_ximgproc%{so_ver}
 %endif
+%if %{with gui}
+%ldconfig_scriptlets -n libopencv_highgui%{so_ver}%{psuffix}
 %endif
 
 %if "%flavor" == ""
 %files -n %{pname}4-cascades-data
 %{_datadir}/opencv4/*cascades
 
-%files -n %{libname}%{soname}
+%files -n %{libname}%{so_ver}
 %license LICENSE LICENSE.contrib
-%{_libdir}/libopencv_calib3d.so.*
-%{_libdir}/libopencv_core.so.*
-%{_libdir}/libopencv_dnn.so.*
-%{_libdir}/libopencv_features2d.so.*
-%{_libdir}/libopencv_flann.so.*
-%{_libdir}/libopencv_imgproc.so.*
-%{_libdir}/libopencv_ml.so.*
-%{_libdir}/libopencv_photo.so.*
-%{_libdir}/libopencv_plot.so.*
-%{_libdir}/libopencv_shape.so.*
-%{_libdir}/libopencv_stitching.so.*
-%{_libdir}/libopencv_tracking.so.*
-%{_libdir}/libopencv_video.so.*
+%{_libdir}/libopencv_calib3d.so.%{so_ver}
+%{_libdir}/libopencv_calib3d.so.%{version}
+%{_libdir}/libopencv_core.so.%{so_ver}
+%{_libdir}/libopencv_core.so.%{version}
+%{_libdir}/libopencv_dnn.so.%{so_ver}
+%{_libdir}/libopencv_dnn.so.%{version}
+%{_libdir}/libopencv_features2d.so.%{so_ver}
+%{_libdir}/libopencv_features2d.so.%{version}
+%{_libdir}/libopencv_flann.so.%{so_ver}
+%{_libdir}/libopencv_flann.so.%{version}
+%{_libdir}/libopencv_imgproc.so.%{so_ver}
+%{_libdir}/libopencv_imgproc.so.%{version}
+%{_libdir}/libopencv_ml.so.%{so_ver}
+%{_libdir}/libopencv_ml.so.%{version}
+%{_libdir}/libopencv_photo.so.%{so_ver}
+%{_libdir}/libopencv_photo.so.%{version}
+%{_libdir}/libopencv_plot.so.%{so_ver}
+%{_libdir}/libopencv_plot.so.%{version}
+%{_libdir}/libopencv_shape.so.%{so_ver}
+%{_libdir}/libopencv_shape.so.%{version}
+%{_libdir}/libopencv_stitching.so.%{so_ver}
+%{_libdir}/libopencv_stitching.so.%{version}
+%{_libdir}/libopencv_tracking.so.%{so_ver}
+%{_libdir}/libopencv_tracking.so.%{version}
+%{_libdir}/libopencv_video.so.%{so_ver}
+%{_libdir}/libopencv_video.so.%{version}
 
-%files -n libopencv_aruco%{soname}
-%{_libdir}/libopencv_aruco.so.*
+%files -n libopencv_aruco%{so_ver}
+%{_libdir}/libopencv_aruco.so.%{so_ver}
+%{_libdir}/libopencv_aruco.so.%{version}
 
-%files -n libopencv_face%{soname}
-%{_libdir}/libopencv_face.so.*
+%files -n libopencv_face%{so_ver}
+%{_libdir}/libopencv_face.so.%{so_ver}
+%{_libdir}/libopencv_face.so.%{version}
 
 %if %{with gapi}
-%files -n libopencv_gapi%{soname}
-%{_libdir}/libopencv_gapi.so.*
+%files -n libopencv_gapi%{so_ver}
+%{_libdir}/libopencv_gapi.so.%{so_ver}
+%{_libdir}/libopencv_gapi.so.%{version}
 %endif
 
-%files -n libopencv_imgcodecs%{soname}
-%{_libdir}/libopencv_imgcodecs.so.*
+%files -n libopencv_imgcodecs%{so_ver}
+%{_libdir}/libopencv_imgcodecs.so.%{so_ver}
+%{_libdir}/libopencv_imgcodecs.so.%{version}
 
-%files -n libopencv_objdetect%{soname}
-%{_libdir}/libopencv_objdetect.so.*
+%files -n libopencv_objdetect%{so_ver}
+%{_libdir}/libopencv_objdetect.so.%{so_ver}
+%{_libdir}/libopencv_objdetect.so.%{version}
 
-%files -n libopencv_optflow%{soname}
-%{_libdir}/libopencv_optflow.so.*
+%files -n libopencv_optflow%{so_ver}
+%{_libdir}/libopencv_optflow.so.%{so_ver}
+%{_libdir}/libopencv_optflow.so.%{version}
 
-%files -n libopencv_superres%{soname}
-%{_libdir}/libopencv_superres.so.*
+%files -n libopencv_superres%{so_ver}
+%{_libdir}/libopencv_superres.so.%{so_ver}
+%{_libdir}/libopencv_superres.so.%{version}
 
-%files -n libopencv_videoio%{soname}
-%{_libdir}/libopencv_videoio.so.*
+%files -n libopencv_videoio%{so_ver}
+%{_libdir}/libopencv_videoio.so.%{so_ver}
+%{_libdir}/libopencv_videoio.so.%{version}
 
-%files -n libopencv_videostab%{soname}
-%{_libdir}/libopencv_videostab.so.*
+%files -n libopencv_videostab%{so_ver}
+%{_libdir}/libopencv_videostab.so.%{so_ver}
+%{_libdir}/libopencv_videostab.so.%{version}
 
-%files -n libopencv_ximgproc%{soname}
-%{_libdir}/libopencv_ximgproc.so.*
+%files -n libopencv_ximgproc%{so_ver}
+%{_libdir}/libopencv_ximgproc.so.%{so_ver}
+%{_libdir}/libopencv_ximgproc.so.%{version}
 
 %if %{with python3}
 %files %{python_files %{name}}
@@ -657,8 +703,9 @@ grep -E 'model|stepping|flags' /proc/cpuinfo | head -n4
 %endif
 
 %if %{with gui}
-%files -n libopencv_highgui%{soname}%{psuffix}
-%{_libdir}/libopencv_highgui.so.*
+%files -n libopencv_highgui%{so_ver}%{psuffix}
+%{_libdir}/libopencv_highgui.so.%{so_ver}
+%{_libdir}/libopencv_highgui.so.%{version}
 %endif
 
 %files
