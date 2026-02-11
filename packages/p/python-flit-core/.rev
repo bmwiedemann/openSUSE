@@ -241,4 +241,13 @@
     <comment>- Use %bcond_with macro for test flavor</comment>
     <requestid>1329821</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>b0f0fd29ca46a83105cf85da921bdec4</srcmd5>
+    <version>3.12.0</version>
+    <time>1770832022</time>
+    <user>anag_factory</user>
+    <comment>- Add pythons_for_pypi macro. This macro will help to build the python
+  minimal stack for different python versions.</comment>
+    <requestid>1331997</requestid>
+  </revision>
 </revisionlist>

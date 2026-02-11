@@ -19,7 +19,7 @@
 %define modname flit-core
 %global flavor @BUILD_FLAVOR@%{nil}
 %define plainpython python
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1600
 # The primary python flavor is built in Factory Ring0
 %if "%{flavor}" == "primary"
 %define pprefix %{primary_python}
@@ -49,6 +49,9 @@ ExclusiveArch:  do-not-build
 %bcond_with test
 %endif
 
+%if "%{flavor}" == ""
+%{?pythons_for_pypi}
+%endif
 %{?sle15_python_module_pythons}
 
 %if "%{flavor}" == "" && "%{shrink:%{pythons}}" == ""
