@@ -1,7 +1,7 @@
 #
 # spec file for package libblockdev
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,7 @@
 %define         soversion  3
 
 Name:           libblockdev
-Version:        3.3.1
+Version:        3.4.0
 Release:        0
 Summary:        A library for low-level manipulation with block devices
 License:        LGPL-2.1-only

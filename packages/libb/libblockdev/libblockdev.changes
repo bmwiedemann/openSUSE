@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 10 08:00:41 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.4.0:
+  + bd_nvme_connect() now defaults to port 4420 or 8009 for
+    discovery NQN respectively when the transport_svcid argument is
+    not specified.
+
+-------------------------------------------------------------------
 Sat Jan 17 09:20:46 UTC 2026 - Martin Wilck <martin.wilck@suse.com>
 
 - Remove dependency from dmraid (already removed upstream in 3.0)
