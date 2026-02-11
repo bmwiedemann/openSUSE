@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Dec 26 12:08:53 UTC 2025 - Ruediger Oertel <ro@suse.com>
+
+- Update to version 0.20251217:
+  * Fix sha2 on big endian
+  * [Windows] Reduce the number of worker threads on many-core machines
+  * Add a sha256 hash implementation and use it for string_hash
+  * Opt-in to the Windows SegmentHeap
+  * Add a `module_name` flag to source_set.
+  * Refactor module name to be dynamic.
+  * Optimize vector creation in compile_commands_writer.cc.
+  * Run 'tools/run_formatter.sh'
+  * Implement `string_hash` function.
+  * Support weak_libraries
+  * Do not add .inputdeps paths to --ninja-outputs-file
+  * Make clang modules output -fmodule-file=foo=<pcm>.
+  * infra: Revert CIPD autoconf
+  * infra: Include autoconf bin directory to PATH
+  * infra: Fix autoconf executable path
+  * infra: Use CIPD autoconf
+  * Allow led access in GN via http://go/ciba
+  * Revert "Build non-linkable deps async with Ninja's validaitons"
+  * Upgrade linux bots from ubuntu 22.04 to ubuntu 24.04
+  * Use unordered_map instead of map in HeaderChecker
+  * Add --file_relation to gn refs command
+  * Optimize vector initialization and preallocation in desc_builder.cc.
+  * Add `reserve` statement when vector size is known beforehand.
+  * Refactor container update by preferring the range insert.
+  * Handle symlinked directories correctly during gn clean on Windows.
+  * Fix relative imports from args.gn.
+
+-------------------------------------------------------------------
 Fri Oct  3 07:58:10 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.20250918:

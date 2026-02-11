@@ -221,4 +221,38 @@
     <comment>gn 0.20250918</comment>
     <requestid>1308821</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>900995fe53d5ba2553b5a75cef24a0e8</srcmd5>
+    <version>0.20251217</version>
+    <time>1770834608</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.20251217:  (needed for chromium 145)
+  * Fix sha2 on big endian
+  * [Windows] Reduce the number of worker threads on many-core machines
+  * Add a sha256 hash implementation and use it for string_hash
+  * Opt-in to the Windows SegmentHeap
+  * Add a `module_name` flag to source_set.
+  * Refactor module name to be dynamic.
+  * Optimize vector creation in compile_commands_writer.cc.
+  * Run 'tools/run_formatter.sh'
+  * Implement `string_hash` function.
+  * Support weak_libraries
+  * Do not add .inputdeps paths to --ninja-outputs-file
+  * Make clang modules output -fmodule-file=foo=&lt;pcm&gt;.
+  * infra: Revert CIPD autoconf
+  * infra: Include autoconf bin directory to PATH
+  * infra: Fix autoconf executable path
+  * infra: Use CIPD autoconf
+  * Allow led access in GN via http://go/ciba
+  * Revert &quot;Build non-linkable deps async with Ninja's validaitons&quot;
+  * Upgrade linux bots from ubuntu 22.04 to ubuntu 24.04
+  * Use unordered_map instead of map in HeaderChecker
+  * Add --file_relation to gn refs command
+  * Optimize vector initialization and preallocation in desc_builder.cc.
+  * Add `reserve` statement when vector size is known beforehand.
+  * Refactor container update by preferring the range insert.
+  * Handle symlinked directories correctly during gn clean on Windows.
+  * Fix relative imports from args.gn.</comment>
+    <requestid>1332437</requestid>
+  </revision>
 </revisionlist>
