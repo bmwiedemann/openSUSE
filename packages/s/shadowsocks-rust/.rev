@@ -150,4 +150,12 @@
   * Fix bugs (forwarded request 1323669 from hillwood)</comment>
     <requestid>1323670</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>82e1434067505e402f3cc66748f73486</srcmd5>
+    <version>1.24.0</version>
+    <time>1770832175</time>
+    <user>anag_factory</user>
+    <comment>- Fix boo#1256041 (forwarded request 1332468 from hillwood)</comment>
+    <requestid>1332469</requestid>
+  </revision>
 </revisionlist>
