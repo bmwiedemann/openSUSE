@@ -1,7 +1,7 @@
 #
 # spec file for package freerdp2
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,6 +58,22 @@ Patch8:         0006-warnings-fix-Wincompatible-pointer-types.patch
 Patch9:         0007-server-proxy-deactivate-capture-module.patch
 # PATCH-FIX-UPSTREAM -- ffmpeg 7 compat
 Patch10:        0001-Fix-build-with-ffmpeg-7.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-22852.patch bsc#1256718 yfjiang@suse.com -- free up old audio formats
+Patch12:        freerdp-CVE-2026-22852.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-22854.patch bsc#1256720 yfjiang@suse.com -- fix constant type
+Patch13:        freerdp-CVE-2026-22854.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-22856.patch bsc#1256722 yfjiang@suse.com -- explicitly lock serial->IrpThreads
+Patch15:        freerdp-CVE-2026-22856.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-22859.patch bsc#1256725 yfjiang@suse.com -- check interface indices before use
+Patch17:        freerdp-CVE-2026-22859.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-23530.patch bsc#1256940 yfjiang@suse.com -- [codec,planar] fix decoder length checks
+Patch18:        freerdp-CVE-2026-23530.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-23531.patch bsc#1256941 yfjiang@suse.com -- [codec,clear] fix missing length checks
+Patch19:        freerdp-CVE-2026-23531.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-23532.patch bsc#1256942 yfjiang@suse.com -- [gdi,gfx] properly clamp SurfaceToSurface
+Patch20:        freerdp-CVE-2026-23532.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-23534.patch bsc#1256944 yfjiang@suse.com -- [codec,clear] fix off by one length check
+Patch22:        freerdp-CVE-2026-23534.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel
 BuildRequires:  ed

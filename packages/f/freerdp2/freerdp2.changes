@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb  6 07:57:57 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
+
+- Add patches to fix CVE issues:
+  + freerdp-CVE-2026-22852.patch (CVE-2026-22852, bsc#1256718)
+  + freerdp-CVE-2026-22854.patch (CVE-2026-22854, bsc#1256720)
+  + freerdp-CVE-2026-22856.patch (CVE-2026-22856, bsc#1256722)
+  + freerdp-CVE-2026-22859.patch (CVE-2026-22859, bsc#1256725)
+  + freerdp-CVE-2026-23530.patch (CVE-2026-23530, bsc#1256940)
+  + freerdp-CVE-2026-23531.patch (CVE-2026-23531, bsc#1256941)
+  + freerdp-CVE-2026-23532.patch (CVE-2026-23532, bsc#1256942)
+  + freerdp-CVE-2026-23534.patch (CVE-2026-23534, bsc#1256944)
+
+-------------------------------------------------------------------
 Fri Oct 24 07:57:48 UTC 2025 - Yifan Jiang <yfjiang@suse.com>
 
 - Update 0001-Fix-build-with-ffmpeg-7.patch: fix build issue in
@@ -80,7 +93,7 @@ Tue Mar 26 09:28:11 UTC 2024 - Joan Torres <joan.torres@suse.com>
 Thu Mar 14 19:55:22 UTC 2024 - Joan Torres <joan.torres@suse.com>
 
 - Update to version 2.11.5:
-  * Fix integer overflow in progressive decoder
+  * Fix integer overflow in progressive decoder (bsc#1219049, CVE-2024-22211)
   * Update OpenSSL API usage for compatiblility with newer versions (#9747)
   * Prevent NULL dereference for single thread decoder (#9712)
 
