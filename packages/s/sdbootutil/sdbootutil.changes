@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 10 12:49:11 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260210.81c4815:
+  * Recover old predictions if service fails
+
+-------------------------------------------------------------------
+Tue Feb 10 07:19:12 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260210.1bc4b9e (bsc#1257612):
+  * Limit kernel measures because combinatorial explosion
+
+-------------------------------------------------------------------
 Fri Feb 06 10:20:57 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20260206.54f4a16:
