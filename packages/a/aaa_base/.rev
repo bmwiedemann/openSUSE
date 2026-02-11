@@ -4352,4 +4352,14 @@
   * Avoid nasty exceptions running tput</comment>
     <requestid>1326771</requestid>
   </revision>
+  <revision rev="516" vrev="1">
+    <srcmd5>6bb1955be002f25df24a377411a80004</srcmd5>
+    <version>84.87+git20260210.ecce285</version>
+    <time>1770832064</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 84.87+git20260210.ecce285:
+  * For boo#1257875 get intrinsic DEFAULT_WM back
+  * DIR_COLORS: add vt220 and .jxl</comment>
+    <requestid>1332197</requestid>
+  </revision>
 </revisionlist>
