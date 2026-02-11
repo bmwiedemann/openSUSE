@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  4 13:57:06 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Revert multibuild and fix kernel selection in tests 
+
+-------------------------------------------------------------------
+Mon Feb  2 13:38:42 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Convert to multibuild with separate flavor testing to fix the issue
+  with jupyter kernel detection
+
+-------------------------------------------------------------------
 Mon Oct 20 15:11:47 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.31.0

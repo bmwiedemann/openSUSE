@@ -625,4 +625,15 @@
     <comment></comment>
     <requestid>1313518</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>206d7a20347501c748616892d94c0a2e</srcmd5>
+    <version>6.31.0</version>
+    <time>1770832034</time>
+    <user>anag_factory</user>
+    <comment>- Revert multibuild and fix kernel selection in tests 
+- Convert to multibuild with separate flavor testing to fix the issue
+  with jupyter kernel detection
+</comment>
+    <requestid>1331001</requestid>
+  </revision>
 </revisionlist>

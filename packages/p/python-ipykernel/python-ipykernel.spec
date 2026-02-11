@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipykernel
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -118,7 +118,19 @@ donttest="test_init_ipc_socket"
 # we don't want ipyparallel and its dependencies in Ring1
 ignoretests="$ignoretests --ignore tests/test_pickleutil.py"
 donttest="$donttest or test_do_apply"
-%pytest -k "not ($donttest)" $ignoretests
+%python_flavored_alternatives
+export PYTHONDONTWRITEBYTECODE=1
+%{python_expand #
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
+# install single kernelspecs for each flavor, so that it is taken by default
+mkdir testjupyter-{$python_bin_suffix}
+export JUPYTER_DATA_DIR=$PWD/testjupyter-%{$python_bin_suffix}
+$python -m ipykernel install \
+    --prefix=$JUPYTER_DATA_DIR \
+    --name python%{$python_bin_suffix} \
+    --display-name 'Python %{$python_bin_suffix} (ipykernel)'
+$python -m pytest -v -k "not ($donttest)" $ignoretests
+}
 
 %files %{python_files}
 %doc README.md
