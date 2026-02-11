@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 11 08:04:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.1:
+  * Translation updates: Croatian, Estonian, Portuguese, Romanian,
+    Russian, Slovenian, Ukrainian.
+
+-------------------------------------------------------------------
 Sat Nov 22 21:16:52 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.
@@ -7,18 +14,18 @@ Sat Nov 22 21:16:52 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 Sat Nov  1 10:05:51 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to version 4.2.0
-  * Exaile now uses an SQLite database for the music library, replacing 
-    Berkeley DB. Note that you still need the Python bsddb3 or berkeleydb 
-    module installed in order to migrate your existing library to the new 
+  * Exaile now uses an SQLite database for the music library, replacing
+    Berkeley DB. Note that you still need the Python bsddb3 or berkeleydb
+    module installed in order to migrate your existing library to the new
     format; without it, Exaile will fail to start.
-  * Fixed sporadic build error due to race condition while processing the 
-    desktop and appdata files 
-  * The somafm plugin should now work on Python >= 3.12 
+  * Fixed sporadic build error due to race condition while processing the
+    desktop and appdata files
+  * The somafm plugin should now work on Python >= 3.12
   * Fixed showing lyrics with the lyricsmania plugin
-  * Fixed error in Preferences → Plugins 
-  * Fixed exporting playlists when the "Use relative paths to tracks" option 
+  * Fixed error in Preferences → Plugins
+  * Fixed exporting playlists when the "Use relative paths to tracks" option
     is not selected
-  * There is now an option to show hidden audio devices in 
+  * There is now an option to show hidden audio devices in
     Preferences → Playback
   * Translation updates
 
@@ -26,8 +33,8 @@ Sat Nov  1 10:05:51 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
   * Bugfix: .desktop & appdata generation
   * Bugfix: Exaile stopped playing at end of queue instead of continuing the
     last playlist
-  * Bugfix: Don’t remove tracks twice during scan 
-  * Bugfix: Create really unique engine names to prevent PulseAudio from 
+  * Bugfix: Don’t remove tracks twice during scan
+  * Bugfix: Create really unique engine names to prevent PulseAudio from
     remember last volume set
   * Bugfix: Queue page breaks when all tracks is removed
   * Bugfix: Library scan freezes when scanning corrupt wav files
@@ -54,7 +61,7 @@ Fri Jan 17 11:40:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
   * Track start and end is now triggered also for streams
   * AppData files now uses more translations
   * Added preference to remove a track from queue after playing
-  * Users can override built-in plugins with newer versions and 
+  * Users can override built-in plugins with newer versions and
     remove the overrides as well
   * Users can remove custom installed plugins via plugin manager
   * BerkeleyDB is used instead of bsddb, if available
@@ -162,8 +169,8 @@ Sun Mar 29 10:30:42 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
 - Update to version 4.0.2
   * Fixed Unicode errors on the tracklist view
   * Fixed icon display on Plasma/Wayland
-  * Translation updates: Asturian, Catalan, Chinese 
-    (Simplified), Croatian, Danish, Finnish, Hindi, Italian, 
+  * Translation updates: Asturian, Catalan, Chinese
+    (Simplified), Croatian, Danish, Finnish, Hindi, Italian,
     Portuguese, Spanish, Swedish, Turkish.
 
 -------------------------------------------------------------------
@@ -370,7 +377,7 @@ Sun Nov 18 00:00:00 UTC 2012 - propstmatthias@googlemail.com
       the case.
   * Fixed plugins: ContextInfo, mini-mode, osd, last.fm
 
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 Sat Sep 29 00:00:00 UTC 2012 - propstmatthias@googlemail.com
 
 - Fix python-bytecode-inconsistent-mtime.

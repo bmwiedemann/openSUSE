@@ -199,4 +199,29 @@
     <comment></comment>
     <requestid>1319553</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>4249b5005f6aa8a4c3808e45649c7715</srcmd5>
+    <version>4.2.1</version>
+    <time>1770832141</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.2.1:
+  * Translation updates: Croatian, Estonian, Portuguese, Romanian,
+    Russian, Slovenian, Ukrainian.
+
+  * Exaile now uses an SQLite database for the music library, replacing
+    Berkeley DB. Note that you still need the Python bsddb3 or berkeleydb
+    module installed in order to migrate your existing library to the new
+  * Fixed sporadic build error due to race condition while processing the
+    desktop and appdata files
+  * The somafm plugin should now work on Python &gt;= 3.12
+  * Fixed error in Preferences → Plugins
+  * Fixed exporting playlists when the &quot;Use relative paths to tracks&quot; option
+  * There is now an option to show hidden audio devices in
+  * Bugfix: Don’t remove tracks twice during scan
+  * Bugfix: Create really unique engine names to prevent PulseAudio from
+  * Users can override built-in plugins with newer versions and
+  * Translation updates: Asturian, Catalan, Chinese
+    (Simplified), Croatian, Danish, Finnish, Hindi, Italian,</comment>
+    <requestid>1332410</requestid>
+  </revision>
 </revisionlist>
