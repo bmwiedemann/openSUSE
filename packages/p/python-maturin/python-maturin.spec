@@ -23,13 +23,16 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-maturin
-Version:        1.11.2
+Version:        1.11.5
 Release:        0
 Summary:        Rust/Python Interoperability
 License:        Apache-2.0 OR MIT
 URL:            https://github.com/PyO3/maturin
 Source:         https://files.pythonhosted.org/packages/source/m/maturin/maturin-%{version}.tar.gz
 Source1:        vendor.tar.xz
+# PATCH-FIX-UPSTREAM CVE-2026-25727.patch bsc#1257918
+# note that this patch also needs to be applied before running the cargo vendor service
+Patch0:         CVE-2026-25727.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-rust >= 1.4.0}

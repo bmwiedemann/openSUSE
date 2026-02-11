@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb  9 13:16:25 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 1.11.5
+  * Allow combining --compatibility pypi with other --compatibility values
+- Update to 1.11.4
+  * Support armv6l and armv7l in pypi compatibility
+  * Improve the reliability of maturin's own CI
+- Add CVE-2026-25727.patch to bump time crate to 0.3.47
+  to fix CVE-2026-25727 (bsc#1257918)
+
+-------------------------------------------------------------------
 Wed Jan  7 14:22:35 UTC 2026 - Mia Herkt <mia@0x0.st>
 
 - Update to version 1.11.2 (version bump only)
