@@ -1,7 +1,7 @@
 #
 # spec file for package munge
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,24 +21,13 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-%if 0%{?suse_version} >= 1210
-%define have_systemd 1
- %if 0%{?sle_version} >= 150000 || 0%{?is_opensuse}
-  %define have_sysuser 1
- %endif
-%endif
 %define lversion 2
 
 %define munge_g %name
-%if 0%{?have_systemd}
- %define munge_u %name
-%else
- %define munge_u daemon
-%endif
-%define munge_descr "MUNGE authentication service"
+%define munge_u %name
 
 Name:           munge
-Version:        0.5.16
+Version:        0.5.18
 Release:        0
 Summary:        An authentication service for creating and validating credentials
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -65,12 +54,10 @@ Requires(pre):  pwdutils
 Requires(pre):  shadow
 %endif
 Requires(post): coreutils
-%if 0%{?have_systemd}
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(systemd)
-%{?have_sysuser:BuildRequires:  sysuser-tools}
 %{?systemd_requires}
-%endif
 Requires(post): coreutils
 Requires(postun): coreutils
 
@@ -104,7 +91,6 @@ A header file and libraries for building applications using the %{name}
 authenication service.
 
 %{!?_rundir:%define _rundir %_localstatedir/run}
-%{!?_tmpfilesdir:%global _tmpfilesdir /usr/lib/tmpfiles.d}
 %define munge_run %_rundir/munge
 
 %prep
@@ -119,7 +105,7 @@ cp %{SOURCE3} .
     --with-crypto-lib=openssl \
     --with-logrotateddir=%{_sysconfdir}/logrotate.d \
     --with-pkgconfigdir=%{_libdir}/pkgconfig \
-%{?have_systemd:--with-systemdunitdir=%{_unitdir}} \
+    --with-systemdunitdir=%{_unitdir} \
     --with-runstatedir=%{_rundir}
 %if 0%{!?make_build:1}
 %define make_build make %{?_smp_mflags}
@@ -136,33 +122,16 @@ mkdir -p %{buildroot}%{_datarootdir}/licenses
 install -m 0755 -d %{buildroot}%{_fillupdir}
 sed -i -e "/missingok/a\ \ \ \ su munge munge" %{buildroot}/%{_sysconfdir}/logrotate.d/munge
 # We don't want systemd file on SLE 11
-%if 0%{!?have_systemd:1}
-   test -d %{buildroot}%{_prefix}/lib/systemd && \
-      rm -rf %{buildroot}%{_prefix}/lib/systemd
-   test -f %{buildroot}/lib/systemd/system/munge.service && \
-      rm -f %{buildroot}/lib/systemd/system/munge.service
-   sed -i 's/USER="munge"/USER="%munge_u"/g' %{buildroot}/%{_initrddir}/%{name}
-   ln -s -f %{_initrddir}/%{name} %{buildroot}%{_sbindir}/rc%{name}
-   rm -f %{buildroot}%{_sysconfdir}/sysconfig/munge
-   cp -p %{S:2} %{buildroot}%{_fillupdir}/sysconfig.munge
-%else
   sed -i 's/User=munge/User=%munge_u/g' %{buildroot}%{_unitdir}/munge.service
   sed -i 's/Group=munge/Group=%munge_g/g' %{buildroot}%{_unitdir}/munge.service
   rm -f %{buildroot}%{_initddir}/munge
   rm -Rf %{buildroot}/%{munge_run}
   rm -Rf %{buildroot}/%{_rundir}
-  mkdir -p %{buildroot}%{_tmpfilesdir}
-  cp src/etc/munge.tmpfiles.conf %{buildroot}%{_tmpfilesdir}/munge.conf
-  sed -i 's/munge \+munge/%munge_u %munge_g/g' %{buildroot}%{_tmpfilesdir}/munge.conf
   ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
   mv %{buildroot}%{_sysconfdir}/sysconfig/munge \
      %{buildroot}%{_fillupdir}/sysconfig.munge
-  %if 0%{?have_sysuser}
-  echo -e "u %munge_u - \"%munge_descr\" %{munge_run}\n" > system-user-%{name}.conf
-  %sysusers_generate_pre system-user-%{name}.conf %{name} system-user-%{name}.conf
-  install -D -m 644 system-user-%{name}.conf %{buildroot}%{_sysusersdir}/system-user-%{name}.conf
-  %endif
-%endif
+  sed -i -e 's/^\(u \)[^ ]*\(.*\)/\1%munge_u\2/' %{buildroot}%{_sysusersdir}/%{name}.conf
+  %sysusers_generate_pre %{buildroot}%{_sysusersdir}/%{name}.conf %{name} %{name}.conf
 
 %check
 # To debug add verbose=t to T_LOG_DRIVER variable in t/Makefile.am
@@ -172,24 +141,11 @@ make check
 
 %postun -n lib%{name}%{lversion} -p /sbin/ldconfig
 
-%pre %{?have_sysuser:-f %{name}.pre}
-%if 0%{?have_systemd}
+%pre -f %{name}.pre
 %service_add_pre munge.service
-%endif
-%if 0%{!?have_sysuser:1}
-getent group %munge_g >/dev/null || groupadd -r %munge_g
-[ "%munge_u" = "daemon" ] || \
-{ getent passwd %munge_u >/dev/null \
-    || useradd -r -g %munge_g -d %munge_run -s /bin/false -c %munge_descr %munge_u; }
-exit 0
-%endif
 
 %preun
-%if 0%{?have_systemd}
 %service_del_preun munge.service
-%else
-%stop_on_removal munge
-%endif
 
 %define fixperm() [ -e %1 ] && /bin/chown -h %munge_u:%munge_g %1
 
@@ -202,12 +158,7 @@ then
 else
     rm -f %{_sysconfdir}/munge/munge.key
 fi
-%if 0%{?have_systemd}
 %service_del_postun munge.service
-%else
-%restart_on_update munge
-%insserv_cleanup
-%endif
 
 %post
 if [ $1 -eq 1 ]
@@ -242,12 +193,8 @@ if [ -n "$tmpfile" ]; then
     /bin/mv -f $tmpfile %{_sysconfdir}/munge/munge.key
 fi
 /usr/bin/rm -rf ${tmpdir}
-%if 0%{?have_systemd}
 %service_add_post munge.service
 %{fillup_only}
-%else
-%{fillup_and_insserv -i munge}
-%endif
 
 %files
 %doc AUTHORS
@@ -277,16 +224,10 @@ fi
 %{_bindir}/*
 %{_sbindir}/*
 %{_mandir}/*[^3]/*
-%if 0%{?have_systemd}
 %dir %attr(0755,%munge_u,%munge_g) %ghost %{munge_run}
 %{_unitdir}/munge.service
-%{_tmpfilesdir}/munge.conf
-%else
-%dir %attr(0755,%munge_u,%munge_g) %{munge_run}
-%{_initddir}/munge
-%endif
 %dir %attr(0755,munge,munge) %ghost %{munge_run}/munged.pid
-%{?have_sysuser:%{_sysusersdir}/system-user-%{name}.conf}
+%{_sysusersdir}/%{name}.conf
 
 %files devel
 %{_includedir}/*
