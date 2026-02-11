@@ -1,7 +1,7 @@
 #
 # spec file for package eigen3
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,17 +30,17 @@
 # Docs for version 3.4.1 do not build with doxygen 1.14.0 or later: https://gitlab.com/libeigen/eigen/-/issues/2976
 # So, we do not build them but just extract a pre-generated doc tarball from upstream and package its contents
 
-%define major_ver 3.4
+%define major_ver 5.0
 %define api_docdir %{_docdir}/%{name}/api
 
 Name:           eigen3
-Version:        %{major_ver}.1
+Version:        %{major_ver}.0
 Release:        0
 Summary:        C++ Template Library for Linear Algebra
 License:        BSD-3-Clause AND LGPL-2.1-only AND MPL-2.0 AND LGPL-2.1-or-later
-URL:            http://eigen.tuxfamily.org/
+URL:            https://libeigen.gitlab.io/
 Source0:        https://gitlab.com/libeigen/eigen/-/archive/%{version}/%{srcname}-%{version}.tar.bz2
-Source1:        https://libeigen.gitlab.io/eigen/docs-%{major_ver}/eigen-doc.tgz#/%{srcname}-doc-%{major_ver}.tar.bz2
+Source1:        https://libeigen.gitlab.io/eigen/docs-%{major_ver}/eigen-doc.tgz
 Patch0:         0001-Disable-Altivec-for-ppc64le.patch
 Patch1:         0001-Do-stack-allignment-on-ppc.patch
 %if %{with tests}

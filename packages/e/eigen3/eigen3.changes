@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Feb  3 14:51:01 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.0.0
+  * Eigen 5.X.X requires C++14. Some macros such as EIGEN_HAS_CXX11
+    have been removed in this regard.
+  * Unsupported code has been removed, e.g. Constrained Conjugate
+    Gradient.
+  * Due to name conflicts with other projects, Eigen::all and
+    Eigen::last have been moved to Eigen::placeholders::all and
+    Eigen::placeholders::last.
+  * Runtime SVD options for computing thin/full U/V have been
+    deprecated: use compile-time options instead.
+  * Scalar (i.e. non-vectorized) comparisons now return masks with
+    values of Scalar(1) rather than having all bits set to avoid
+    undefined behavior.
+  * BLAS return types have been changed for Eigen BLAS to `void`
+    instead of `int` for compatibility with other BLAS
+    implementations.
+  * Eigen::aligned_allocator no longer inherits from std::allocator
+    due to a change in the standard and the use of
+    allocate_at_least.
+  * Euler angles are now returned in a more canonical form,
+    potentially resulting in a change of behavior.
+  * Eigen's random number generation has changed, resulting in a
+    change of behavior. Do not rely on specific random numbers from
+    Eigen.
+
+-------------------------------------------------------------------
 Mon Oct 27 15:19:14 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.4.1:
