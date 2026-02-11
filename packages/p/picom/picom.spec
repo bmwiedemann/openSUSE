@@ -1,7 +1,7 @@
 #
 # spec file for package picom
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           picom
-Version:        12.5
+Version:        13
 Release:        0
 Summary:        Stand-alone compositor for X11
 License:        MIT AND MPL-2.0
@@ -39,7 +39,6 @@ BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libconfig) >= 1.7
-BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libev)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libxdg-basedir)
@@ -68,6 +67,13 @@ Picom is a stand-alone compositor for X11. It supports both GLX and
 XRender backends and has various options to control shadows, blur
 and fade animations.
 
+%package devel
+Summary:        Development headers for picom
+BuildArch:      noarch
+
+%description devel
+Development headers for picom
+
 %prep
 %autosetup -p1
 
@@ -75,7 +81,7 @@ and fade animations.
 %if 0%{?suse_version} <= 1500
 export CC=gcc-12
 %endif
-%meson -Dwith_docs=true -Dcompton=false -Dvsync_drm=true
+%meson -Dwith_docs=true -Dcompton=false
 %meson_build
 
 %install
@@ -101,5 +107,10 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/%{name}.desktop
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_mandir}/man1/%{name}-trans.1%{?ext_man}
 %{_mandir}/man1/%{name}-inspect.1%{?ext_man}
+
+%files devel
+%dir %{_includedir}/picom
+%{_includedir}/picom/api.h
+%{_includedir}/picom/backend.h
 
 %changelog
