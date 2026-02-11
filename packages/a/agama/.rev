@@ -679,4 +679,12 @@
   they are None (related to bsc#1257230).</comment>
     <requestid>1331727</requestid>
   </revision>
+  <revision rev="37" vrev="37">
+    <srcmd5>d11203cfd36b8221e4708ace281f9971</srcmd5>
+    <version>0</version>
+    <time>1770832431</time>
+    <user>anag_factory</user>
+    <comment>- Prevent set config and install actions to run at the same time (bsc#1257935).</comment>
+    <requestid>1332403</requestid>
+  </revision>
 </revisionlist>
