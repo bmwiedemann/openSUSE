@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  9 11:40:01 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Remove mentions to libdnf-plugin-txnupd from base-packagekit.
+  This is now obsolete with the switch to DNF5. (boo#1257508)
+
+-------------------------------------------------------------------
 Thu Feb  5 17:20:24 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require zypp-excludedocs, zypp-no-multiversion, and

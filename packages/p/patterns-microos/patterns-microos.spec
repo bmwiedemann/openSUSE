@@ -174,7 +174,6 @@ Provides:       pattern-order() = 9013
 Provides:       pattern-visible()
 Requires:       PackageKit
 Requires:       PackageKit-branding-openSUSE
-Requires:       libdnf-plugin-txnupd
 Requires:       pattern() = microos_base
 # We need repository configuration from somewhere, so
 # make sure one gets installed
