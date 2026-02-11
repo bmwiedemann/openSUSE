@@ -1,0 +1,22 @@
+From cf95edab0c3be47ab934f0425f12743745dd2da5 Mon Sep 17 00:00:00 2001
+From: Ned Batchelder <ned@nedbatchelder.com>
+Date: Tue, 21 Oct 2025 06:30:12 -0400
+Subject: [PATCH] test: a Python error message changed slightly
+
+---
+ tests/test_execfile.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_execfile.py b/tests/test_execfile.py
+index ab39b70f4..2cc4e55f8 100644
+--- a/tests/test_execfile.py
++++ b/tests/test_execfile.py
+@@ -284,7 +284,7 @@ def test_running_py_from_binary(self) -> None:
+         path = python_reported_file("binary")
+         msg = (
+             re.escape(f"Couldn't run '{path}' as Python code: ")
+-            + r"(ValueError|SyntaxError): source code string cannot contain null bytes"
++            + r"(ValueError|SyntaxError): source code (string )?cannot contain null bytes"
+         )
+         with pytest.raises(Exception, match=msg):
+             run_python_file([bf])

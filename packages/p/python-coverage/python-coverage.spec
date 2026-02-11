@@ -1,7 +1,7 @@
 #
 # spec file for package python-coverage
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,8 @@ Summary:        Code coverage measurement for Python
 License:        Apache-2.0
 URL:            https://github.com/nedbat/coveragepy
 Source:         https://files.pythonhosted.org/packages/source/c/coverage/coverage-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/coveragepy/coveragepy/commit/cf95edab0c3be47ab934f0425f12743745dd2da5 test: a Python error message changed slightly
+Patch0:         string.patch
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
