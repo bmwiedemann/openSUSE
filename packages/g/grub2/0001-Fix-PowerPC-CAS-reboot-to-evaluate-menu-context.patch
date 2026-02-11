@@ -35,6 +35,9 @@ resulting format in boot-last-label looks like this:
       echo	'Loading initial ramdisk ...'
       initrd	/boot/initrd-6.4.0-150600.23.25-default
 
+v2: Make sure cas_entry_id is freed in the last step, and that no
+aliased reference remains (bsc#1254299).
+
 Signed-off-by: Michael Chang <mchang@suse.com>
 ---
  grub-core/normal/main.c       | 60 ++++++++++++++++++++++--------
@@ -130,7 +133,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  
  /* Time to delay after displaying an error message about a default/fallback
     entry failing to boot.  */
-@@ -318,8 +321,31 @@
+@@ -318,8 +321,30 @@
      grub_env_set ("default", ptr + 1);
    else
      grub_env_unset ("default");
@@ -155,14 +158,13 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +
 + exec_new_scope:
 +  grub_script_execute_new_scope (sourcecode, entry->argc, entry->args);
-+  grub_free (cas_entry_id);
 +#else
    grub_script_execute_new_scope (entry->sourcecode, entry->argc, entry->args);
 +#endif
  
    if (errs_before != grub_err_printed_errors)
      grub_wait_after_message ();
-@@ -327,8 +353,23 @@
+@@ -327,8 +352,26 @@
    errs_before = grub_err_printed_errors;
  
    if (grub_errno == GRUB_ERR_NONE && grub_loader_is_loaded ())
@@ -185,6 +187,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +      grub_ieee1275_set_boot_last_label ("");
 +#endif
 +    }
++#ifdef GRUB_MACHINE_IEEE1275
++  grub_free (cas_entry_id);
++#endif
  
    if (errs_before != grub_err_printed_errors)
      grub_wait_after_message ();
@@ -312,7 +317,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  
  /* Max digits for a char is 3 (0xFF is 255), similarly for an int it
     is sizeof (int) * 3, and one extra for a possible -ve sign.  */
-@@ -903,10 +900,6 @@
+@@ -905,10 +902,6 @@
    grub_err_t ret = 0;
    struct grub_script *parsed_script;
  

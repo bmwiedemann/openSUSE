@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  9 10:18:38 UTC 2026 - Michael Chang <mchang@suse.com>
+
+- Fix error "grub-core/script/lexer.c:352:out of memory" after PowerPC CAS
+  Reboot (bsc#1254299)
+  * 0001-Fix-PowerPC-CAS-reboot-to-evaluate-menu-context.patch
+
+-------------------------------------------------------------------
 Mon Feb  9 03:53:04 UTC 2026 - Michael Chang <mchang@suse.com>
 
 - Fix screen flickering in BLS due to rendering graphical and text terminals at
