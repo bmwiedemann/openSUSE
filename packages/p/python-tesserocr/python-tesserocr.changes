@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 11 04:17:47 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not call setup.py develop during the testsuite.
+- Use correct pytest macro.
+- List directories under python_sitearch explicitly.
+
+-------------------------------------------------------------------
 Fri Dec 19 01:56:36 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to 2.9.2

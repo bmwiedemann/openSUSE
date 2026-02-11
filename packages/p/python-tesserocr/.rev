@@ -264,4 +264,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1324423</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>97db19ede6392949b27fca626bff40e1</srcmd5>
+    <version>2.9.2</version>
+    <time>1770832082</time>
+    <user>anag_factory</user>
+    <comment>- Do not call setup.py develop during the testsuite.
+- Use correct pytest macro.
+- List directories under python_sitearch explicitly.</comment>
+    <requestid>1332355</requestid>
+  </revision>
 </revisionlist>

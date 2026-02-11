@@ -1,7 +1,7 @@
 #
 # spec file for package python-tesserocr
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,18 +64,20 @@ GIL while processing an image in tesseract.
 %fdupes %{buildroot}
 
 %check
+mv tesserocr tesserocr-do-not-use
 export TESSDATA_PREFIX=%{_datadir}/tessdata
-%python_exec setup.py develop --user
 # test_LSTM_choices failure: https://github.com/sirfz/tesserocr/issues/214
 # https://github.com/sirfz/tesserocr/issues/295
 donttest="test_LSTM_choices"
 donttest+=" or test_detect_os"
 donttest+=" or test_init"
-%pytest -k "not ($donttest)"
+%pytest_arch -k "not ($donttest)"
+mv tesserocr-do-not-use tesserocr
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitearch}/tesserocr*
+%{python_sitearch}/tesserocr
+%{python_sitearch}/tesserocr-%{version}.dist-info
 
 %changelog
