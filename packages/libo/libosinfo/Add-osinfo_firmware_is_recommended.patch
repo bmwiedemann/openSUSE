@@ -1,0 +1,102 @@
+Subject: Add osinfo_firmware_is_recommended()
+From: Charles Arnold carnold@suse.com Mon Feb 9 10:29:46 2026 -0700
+Date: Mon Feb 9 22:48:58 2026 +0100:
+Git: 2229c890d4ee1dcae59fa60aec7b7f6a058e3189
+
+The function allows an OS to declare efi as recommended for
+its security features while still supporting legacy bios.
+Tools like virt-manager may then query the database for this
+attribute and default to the recommended firmware if specified.
+
+Signed-off-by: Charles Arnold <carnold@suse.com>
+
+diff --git a/osinfo/libosinfo.syms b/osinfo/libosinfo.syms
+index ae5fee3..a47fbc7 100644
+--- a/osinfo/libosinfo.syms
++++ b/osinfo/libosinfo.syms
+@@ -646,6 +646,12 @@ LIBOSINFO_1.10.0 {
+ 	osinfo_tree_matches;
+ } LIBOSINFO_1.8.0;
+ 
++LIBOSINFO_1.13.0 {
++    global:
++
++	osinfo_firmware_is_recommended;
++} LIBOSINFO_1.10.0;
++
+ /* Symbols in next release...
+ 
+   LIBOSINFO_0.0.2 {
+diff --git a/osinfo/osinfo_firmware.c b/osinfo/osinfo_firmware.c
+index c397c70..3be35ad 100644
+--- a/osinfo/osinfo_firmware.c
++++ b/osinfo/osinfo_firmware.c
+@@ -214,3 +214,19 @@ gboolean osinfo_firmware_is_supported(OsinfoFirmware *firmware)
+     return osinfo_entity_get_param_value_boolean(OSINFO_ENTITY(firmware),
+                                                  OSINFO_FIRMWARE_PROP_SUPPORTED);
+ }
++
++/**
++ * osinfo_firmware_is_recommended:
++ * @firmware: an #OsinfoFirmware instance
++ *
++ * Whether the @firmware is recommended or not
++ *
++ * Returns: TRUE if recommended, FALSE otherwise.
++ *
++ * Since: 1.13.0
++ */
++gboolean osinfo_firmware_is_recommended(OsinfoFirmware *firmware)
++{
++    return osinfo_entity_get_param_value_boolean(OSINFO_ENTITY(firmware),
++                                         OSINFO_FIRMWARE_PROP_RECOMMENDED);
++}
+diff --git a/osinfo/osinfo_firmware.h b/osinfo/osinfo_firmware.h
+index 5959788..d7379d9 100644
+--- a/osinfo/osinfo_firmware.h
++++ b/osinfo/osinfo_firmware.h
+@@ -36,8 +36,10 @@ OSINFO_DECLARE_TYPE_WITH_PRIVATE_AND_CLASS(OsinfoFirmware,
+ #define OSINFO_FIRMWARE_PROP_ARCHITECTURE   "architecture"
+ #define OSINFO_FIRMWARE_PROP_TYPE           "type"
+ #define OSINFO_FIRMWARE_PROP_SUPPORTED      "supported"
++#define OSINFO_FIRMWARE_PROP_RECOMMENDED    "recommended"
+ 
+ OsinfoFirmware *osinfo_firmware_new(const gchar *id, const gchar *architecture, const gchar *type);
+ const gchar *osinfo_firmware_get_architecture(OsinfoFirmware *firmware);
+ const gchar *osinfo_firmware_get_firmware_type(OsinfoFirmware *firmware);
+ gboolean osinfo_firmware_is_supported(OsinfoFirmware *firmware);
++gboolean osinfo_firmware_is_recommended(OsinfoFirmware *firmware);
+diff --git a/osinfo/osinfo_loader.c b/osinfo/osinfo_loader.c
+index b3fd453..0775167 100644
+--- a/osinfo/osinfo_loader.c
++++ b/osinfo/osinfo_loader.c
+@@ -1350,7 +1350,9 @@ static OsinfoFirmware *osinfo_loader_firmware(OsinfoLoader *loader,
+     gchar *arch = (gchar *)xmlGetProp(root, BAD_CAST "arch");
+     gchar *type = (gchar *)xmlGetProp(root, BAD_CAST "type");
+     gchar *supported = (gchar *)xmlGetProp(root, BAD_CAST "supported");
++    gchar *recommended = (gchar *)xmlGetProp(root, BAD_CAST "recommended");
+     gboolean is_supported = TRUE;
++    gboolean is_recommended = FALSE;
+ 
+     OsinfoFirmware *firmware = osinfo_firmware_new(id, arch, type);
+     xmlFree(arch);
+@@ -1361,10 +1363,19 @@ static OsinfoFirmware *osinfo_loader_firmware(OsinfoLoader *loader,
+         xmlFree(supported);
+     }
+ 
++    if (recommended != NULL) {
++        is_recommended = g_str_equal(recommended, "true");
++        xmlFree(recommended);
++    }
++
+     osinfo_entity_set_param_boolean(OSINFO_ENTITY(firmware),
+                                     OSINFO_FIRMWARE_PROP_SUPPORTED,
+                                     is_supported);
+ 
++    osinfo_entity_set_param_boolean(OSINFO_ENTITY(firmware),
++                                    OSINFO_FIRMWARE_PROP_RECOMMENDED,
++                                    is_recommended);
++
+     return firmware;
+ }
+ 

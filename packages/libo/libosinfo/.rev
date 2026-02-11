@@ -480,4 +480,12 @@ New package for Factory, dependency for gnome-boxes. Hardware seems to be the be
     <comment></comment>
     <requestid>1306963</requestid>
   </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>5a89439377212bd6115c53c82893a6ca</srcmd5>
+    <version>1.12.0</version>
+    <time>1770832413</time>
+    <user>anag_factory</user>
+    <comment>jsc#PED-14636 - UEFI as default for new VMs. This adds a new API allowing OS database definitions to recommend UEFI as a default firmware.</comment>
+    <requestid>1332310</requestid>
+  </revision>
 </revisionlist>

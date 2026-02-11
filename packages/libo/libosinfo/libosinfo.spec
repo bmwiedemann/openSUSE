@@ -1,7 +1,7 @@
 #
 # spec file for package libosinfo
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,6 +29,7 @@ URL:            https://gitlab.com/libosinfo/libosinfo
 Source0:        https://releases.pagure.org/libosinfo/%{name}-%{version}.tar.xz
 # https://gitlab.com/libosinfo/libosinfo/-/commit/0adf38535637ec668e658d43f04f60f11f51574f
 Patch0:         libosinfo-libxml2-2.14.patch
+Patch1:         Add-osinfo_firmware_is_recommended.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  hwdata
