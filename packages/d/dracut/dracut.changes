@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 11 15:24:02 UTC 2026 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Update to version 109+suse.37.geed860c2:
+  * fix(dracut): remove wrong auto-detection logic for output file (bsc#1258071)
+  * feat(dracut-install): do not return non-zero if a dependency cannot be resolved (bsc#1258038)
+
+-------------------------------------------------------------------
 Mon Feb 09 09:44:08 UTC 2026 - Antonio Feijoo <antonio.feijoo@suse.com>
 
 - Update to version 109+suse.35.g1fdbb27e:

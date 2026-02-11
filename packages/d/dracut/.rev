@@ -2576,4 +2576,15 @@ and stuff that has no relevance to the end user (i.e CI related commits) (forwar
     <comment>Switch from dracutdevs to dracut-ng</comment>
     <requestid>1331995</requestid>
   </revision>
+  <revision rev="253" vrev="1">
+    <srcmd5>7c9138069543a0c5d94d4e6b9cae5790</srcmd5>
+    <version>109+suse.37.geed860c2</version>
+    <time>1770833535</time>
+    <user>anag_factory</user>
+    <comment>
+- Update to version 109+suse.37.geed860c2:
+  * fix(dracut): remove wrong auto-detection logic for output file (bsc#1258071)
+  * feat(dracut-install): do not return non-zero if a dependency cannot be resolved (bsc#1258038)</comment>
+    <requestid>1332509</requestid>
+  </revision>
 </revisionlist>
