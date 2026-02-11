@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  9 19:12:02 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 3.10.2:
+  * Fix a regression related to comment handling (#1590).
+  * More reliable fix for </ (#1593).
+
+-------------------------------------------------------------------
 Fri Jan 23 16:12:26 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 3.10.1:
