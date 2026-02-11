@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 11 16:41:20 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- CVE-2026-25727: Update time dependency to v0.3.47 (bsc#1257927)
+
+-------------------------------------------------------------------
 Fri Nov 14 19:26:26 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 - Update to version 0.10.0:

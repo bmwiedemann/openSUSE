@@ -1,7 +1,7 @@
 #
 # spec file for package snpguest
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 # Copyright (C) 2023 VirTEE
 #
 # All modifications and additions to the file contributed by third parties

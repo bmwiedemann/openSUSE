@@ -74,4 +74,12 @@
     <comment></comment>
     <requestid>1318363</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d4bcd08ed0da34c013ac1b72c864f66a</srcmd5>
+    <version>0.10.0</version>
+    <time>1770832436</time>
+    <user>anag_factory</user>
+    <comment>- CVE-2026-25727: Update time dependency to v0.3.47 (bsc#1257927)</comment>
+    <requestid>1332546</requestid>
+  </revision>
 </revisionlist>
