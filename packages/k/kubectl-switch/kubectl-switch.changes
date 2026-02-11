@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Feb 11 05:58:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.7:
+  * Bug Fixes
+    - 74f7ba1: fix(go): update kubernetes packages ( v0.35.0 →
+      v0.35.1 ) (@mr-borboto[bot])
+- Update to version 2.4.6:
+  * Bug Fixes
+    - 4eb210f: fix(go): Update github.com/charmbracelet/bubbles (
+      v0.21.1 → v1.0.0 ) (#224) (@mr-borboto[bot])
+  * CI/CD
+    - 884ae57: ci(github-action): update github/codeql-action (
+      v4.32.1 → v4.32.2 ) (@mr-borboto[bot])
+    - 15bcb0b: ci(github-action): update renovatebot/github-action
+      ( v46.0.1 → v46.0.2 ) (@mr-borboto[bot])
+  * Chores
+    - 4b39193: chore(mise): update go ( 1.25.6 → 1.25.7 ) (#223)
+      (@mr-borboto[bot])
+
+-------------------------------------------------------------------
 Tue Feb 03 09:21:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.5:
