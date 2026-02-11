@@ -1,7 +1,7 @@
 #
 # spec file for package perl-NetPacket
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,21 @@
 #
 
 
-Name:           perl-NetPacket
-Version:        1.7.2
-Release:        0
 %define cpan_name NetPacket
-Summary:        Assemble/disassemble network packets at the protocol level
+Name:           perl-NetPacket
+Version:        1.8.0
+Release:        0
 License:        Artistic-2.0
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+Summary:        Assemble/disassemble network packets at the protocol level
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/Y/YA/YANICK/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Socket) >= 1.87
+BuildRequires:  perl(Test2::Bundle::More)
 BuildRequires:  perl(parent)
 Requires:       perl(Socket) >= 1.87
 Requires:       perl(parent)
@@ -52,11 +52,11 @@ the IP, UDP and TCP protocols) would make things like tunneling or other
 unusual situations difficult.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -67,8 +67,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes CODE_OF_CONDUCT.md CONTRIBUTORS doap.xml README README.mkdn
+%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md CONTRIBUTORS doap.xml README README.mkdn SECURITY.md
 %license LICENSE
 
 %changelog

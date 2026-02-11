@@ -10,6 +10,5 @@ other than each protocol module being a &quot;NetPacket&quot;. This was seen to 
 too restrictive as imposing inheritance relationships (for example between
 the IP, UDP and TCP protocols) would make things like tunneling or other
 unusual situations difficult.</description>
-  <devel project="devel:languages:perl" package="perl-NetPacket" />
   <url>http://search.cpan.org/dist/NetPacket</url>
 </package>

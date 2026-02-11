@@ -134,4 +134,29 @@ One potential bugfix (forwarded request 197795 from gregfreemyer)</comment>
     <comment></comment>
     <requestid>717518</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>001cb50aec9017287e452ccaee6efa23</srcmd5>
+    <version>1.8.0</version>
+    <time>1770833466</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.8.0
+   see /usr/share/doc/packages/perl-NetPacket/Changes
+  1.8.0 2026-02-04
+   [API CHANGES]
+   [BUG FIXES]
+   - Add a test for checksum calculation in ICMPv6 which also uses the same
+     IPv6 pseudo-header as UDP and TCP (Grinnz, GH#17)
+   - Fix IPv6 pseudo-header formation (fixes Wrong pseudoheader created for
+     checksum calculation #16) (Grinnz, GH#17)
+   - Fix ICMPv6 packet length used for checksum (Grinnz, GH#17)
+   [DOCUMENTATION]
+   [ENHANCEMENTS]
+   - Add support for SLL and SLL2 (Linux cooked capture) (Grinnz, GH#18)
+   [MISC]
+   - Move to Test2 for the testing
+   [NEW FEATURES]
+   [STATISTICS]
+   - code churn: 25 files changed, 749 insertions(+), 66 deletions(-)</comment>
+    <requestid>1332527</requestid>
+  </revision>
 </revisionlist>

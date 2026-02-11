@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Feb  5 06:14:41 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.8.0
+   see /usr/share/doc/packages/perl-NetPacket/Changes
+
+  1.8.0 2026-02-04
+   [API CHANGES]
+   [BUG FIXES]
+   - Add a test for checksum calculation in ICMPv6 which also uses the same
+     IPv6 pseudo-header as UDP and TCP (Grinnz, GH#17)
+   - Fix IPv6 pseudo-header formation (fixes Wrong pseudoheader created for
+     checksum calculation #16) (Grinnz, GH#17)
+   - Fix ICMPv6 packet length used for checksum (Grinnz, GH#17)
+   [DOCUMENTATION]
+   [ENHANCEMENTS]
+   - Add support for SLL and SLL2 (Linux cooked capture) (Grinnz, GH#18)
+   [MISC]
+   - Move to Test2 for the testing
+   [NEW FEATURES]
+   [STATISTICS]
+   - code churn: 25 files changed, 749 insertions(+), 66 deletions(-)
+
+-------------------------------------------------------------------
 Sun Jul 21 11:45:09 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.7.2
