@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 10 15:20:22 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1770715824.6a80a85:
+  * style: Fix crop.py style issues
+  * workaround: Remove "get_mempolicy" warning from qemu-img output
+  * parse_extra_log: Allow passing additional args to upload_logs
+  * refactor: Distinguish tests by the script path in `loadtest`
+  * refactor: Simplify approach for avoiding redefine warnings
+  * test: Allow running tests with `Test::Warnings<0.033`
+  * test: Format test of `loadtestdir` in a more compact way
+
+-------------------------------------------------------------------
 Thu Feb 05 14:22:35 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1770127521.c249fe9:
@@ -6455,8 +6467,7 @@ Fri Dec 22 11:27:27 UTC 2017 - okurz@suse.com
   * Do not reset NUMDISKS if RAIDLEVEL is not present (#901)
   * svirt: Add {start,stop}_serial_grab interface (#899)
   * Retidy - perltidy 20171214 changed output (#896)
-  * Simply ignore '
-' in type string (#894)
+  * Simply ignore '\r' in type string (#894)
   * Change the logs timestamp to ISO8601. (#893)
   * Add method to get files content and integration test
   * Add possibility to share files on worker directly
@@ -6705,4 +6716,4 @@ Mon Mar 10 13:21:22 UTC 2014 - tchvatal@suse.com
 -------------------------------------------------------------------
 Tue May 14 15:09:56 UTC 2013 - lnussel@suse.de
 
-- initial package[0m
+- initial package

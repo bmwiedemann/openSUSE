@@ -5356,4 +5356,12 @@
     <user>dimstar_suse</user>
     <comment>RelEng override - invalid chars in changelog</comment>
   </revision>
+  <revision rev="564" vrev="1">
+    <srcmd5>54ddbae609bc28c5eab9e93640bcef0e</srcmd5>
+    <version>5.1770715824.6a80a85</version>
+    <time>1770832074</time>
+    <user>anag_factory</user>
+    <comment>Fix changelog</comment>
+    <requestid>1332327</requestid>
+  </revision>
 </revisionlist>
