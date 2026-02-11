@@ -20,7 +20,8 @@
 # in order to avoid rewriting for subpackage generator
 %define mypython python
 %global flavor @BUILD_FLAVOR@%{nil}
-%if 0%{?suse_version} >= 1650
+%if 0%{?suse_version} >= 1600
+
 %if "%{flavor}" == "primary"
 # this one is goes into Ring0:  Bootstrap for primary python stack
 %define pprefix %{primary_python}
@@ -53,7 +54,18 @@ ExclusiveArch:  do-not-build
 %bcond_with test
 %endif
 
+%if "%{flavor}" == ""
+%{?pythons_for_pypi}
+%endif
 %{?sle15_python_module_pythons}
+
+%if "%{flavor}" == "" && "%{shrink:%{pythons}}" == ""
+# Exclude for local osc build: unresolvable
+%define python_module() empty-python-buildset
+# Exclude for obs server
+ExclusiveArch:  do-not-build
+%endif
+
 Name:           %{pprefix}-packaging%{?psuffix}
 Version:        26.0
 Release:        0

@@ -473,4 +473,13 @@ update to 25.0</comment>
 </comment>
     <requestid>1330019</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>a0d92ac6940a1623753d22f732540acb</srcmd5>
+    <version>26.0</version>
+    <time>1770832022</time>
+    <user>anag_factory</user>
+    <comment>- Add pythons_for_pypi macro. This macro will help to build the python
+  minimal stack for different python versions.</comment>
+    <requestid>1331998</requestid>
+  </revision>
 </revisionlist>

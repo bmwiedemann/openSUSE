@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  9 11:07:43 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add pythons_for_pypi macro. This macro will help to build the python
+  minimal stack for different python versions.
+
+-------------------------------------------------------------------
 Fri Jan 30 10:34:36 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - update to 26.0:
