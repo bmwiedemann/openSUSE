@@ -1,4 +1,468 @@
 -------------------------------------------------------------------
+Tue Feb 10 19:27:55 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.26.0 (released 2026-02-10) is a major release of Go.
+  go1.26.x minor releases will be provided through February 2027.
+  https://github.com/golang/go/wiki/Go-Release-Cycle
+  go1.26 arrives six months after Go 1.25. Most of its changes are
+  in the implementation of the toolchain, runtime, and
+  libraries. As always, the release maintains the Go 1 promise of
+  compatibility. We expect almost all Go programs to continue to
+  compile and run as before.
+  Refs boo#1255111 go1.26 release tracking
+  * Language change: The built-in new function, which creates a new
+    variable, now allows its operand to be an expression,
+    specifying the initial value of the variable.
+  * Language change: The restriction that a generic type may not
+    refer to itself in its type parameter list has been lifted. It
+    is now possible to specify type constraints that refer to the
+    generic type being constrained.
+  * go command: The venerable go fix command has been completely
+    revamped and is now the home of Go’s modernizers. It provides a
+    dependable, push-button way to update Go code bases to the
+    latest idioms and core library APIs. The initial suite of
+    modernizers includes dozens of fixers to make use of modern
+    features of the Go language and library, as well a source-level
+    inliner that allows users to automate their own API migrations
+    using //go:fix inline directives. These fixers should not
+    change the behavior of your program, so if you encounter any
+    issues with a fix performed by go fix, please report it.
+  * go command: The rewritten go fix command builds atop the exact
+    same Go analysis framework as go vet. This means the same
+    analyzers that provide diagnostics in go vet can be used to
+    suggest and apply fixes in go fix. The go fix command’s
+    historical fixers, all of which were obsolete, have been
+    removed.
+  * go command: Two upcoming Go blog posts will go into more detail
+    on modernizers, the inliner, and how to get the most out of go
+    fix.
+  * go command: go mod init now defaults to a lower go version in
+    new go.mod files. Running go mod init using a toolchain of
+    version 1.N.X will create a go.mod file specifying the Go
+    version go 1.(N-1).0. Pre-release versions of 1.N will create
+    go.mod files specifying go 1.(N-2).0. For example, the Go 1.26
+    release candidates will create go.mod files with go 1.24.0, and
+    Go 1.26 and its minor releases will create go.mod files with go
+    1.25.0. This is intended to encourage the creation of modules
+    that are compatible with currently supported versions of
+    Go. For additional control over the go version in new modules,
+    go mod init can be followed up with go get go@version.
+  * go command: cmd/doc, and go tool doc have been deleted. go doc
+    can be used as a replacement for go tool doc: it takes the same
+    flags and arguments and has the same behavior.
+  * pprof: The pprof tool web UI, enabled with the -http flag, now
+    defaults to the flame graph view. The previous graph view is
+    available in the “View -> Graph” menu, or via /ui/graph.
+  * Runtime: The new Green Tea garbage collector, previously
+    available as an experiment in Go 1.25, is now enabled by
+    default after incorporating feedback. This garbage collector’s
+    design improves the performance of marking and scanning small
+    objects through better locality and CPU scalability. Benchmark
+    results vary, but we expect somewhere between a 10–40%
+    reduction in garbage collection overhead in real-world programs
+    that heavily use the garbage collector. Further improvements,
+    on the order of 10% in garbage collection overhead, are
+    expected when running on newer amd64-based CPU platforms (Intel
+    Ice Lake or AMD Zen 4 and newer), as the garbage collector now
+    leverages vector instructions for scanning small objects when
+    possible. The new garbage collector may be disabled by setting
+    GOEXPERIMENT=nogreenteagc at build time. This opt-out setting
+    is expected to be removed in Go 1.27. If you disable the new
+    garbage collector for any reason related to its performance or
+    behavior, please file an issue.
+  * Runtime: cgo: The baseline runtime overhead of cgo calls has
+    been reduced by ~30%.
+  * Runtime: Heap base address randomization: On 64-bit platforms,
+    the runtime now randomizes the heap base address at
+    startup. This is a security enhancement that makes it harder
+    for attackers to predict memory addresses and exploit
+    vulnerabilities when using cgo. This feature may be disabled by
+    setting GOEXPERIMENT=norandomizedheapbase64 at build time. This
+    opt-out setting is expected to be removed in a future Go
+    release.
+  * Runtime: Experimental goroutine leak profile: A new profile
+    type that reports leaked goroutines is now available as an
+    experiment. The new profile type, named goroutineleak in the
+    runtime/pprof package, may be enabled by setting
+    GOEXPERIMENT=goroutineleakprofile at build time. Enabling the
+    experiment also makes the profile available as a net/http/pprof
+    endpoint, /debug/pprof/goroutineleak. A leaked goroutine is a
+    goroutine blocked on some concurrency primitive (channels,
+    sync.Mutex, sync.Cond, etc) that cannot possibly become
+    unblocked. The runtime detects leaked goroutines using the
+    garbage collector: if a goroutine G is blocked on concurrency
+    primitive P, and P is unreachable from any runnable goroutine
+    or any goroutine that those could unblock, then P cannot be
+    unblocked, so goroutine G can never wake up. While it is
+    impossible to detect permanently blocked goroutines in all
+    cases, this approach detects a large class of such
+    leaks. Because this technique builds on reachability, the
+    runtime may fail to identify leaks caused by blocking on
+    concurrency primitives reachable through global variables or
+    the local variables of runnable goroutines. Special thanks to
+    Vlad Saioc at Uber for contributing this work. The underlying
+    theory is presented in detail in a publication by Saioc et
+    al. The implementation is production-ready, and is only
+    considered an experiment for the purposes of collecting
+    feedback on the API, specifically the choice to make it a new
+    profile. The feature is also designed to not incur any
+    additional run-time overhead unless it is actively in-use. We
+    encourage users to try out the new feature in the Go
+    playground, in tests, in continuous integration, and in
+    production. We welcome additional feedback on the proposal
+    issue. We aim to enable goroutine leak profiles by default in
+    Go 1.27.
+  * Compiler: The compiler can now allocate the backing store for
+    slices on the stack in more situations, which improves
+    performance. If this change is causing trouble, the bisect tool
+    can be used to find the allocation causing trouble using the
+    -compile=variablemake flag. All such new stack allocations can
+    also be turned off using -gcflags=all=-d=variablemakehash=n. If
+    you encounter issues with this optimization, please file an
+    issue.
+  * Linker: On 64-bit ARM-based Windows (the windows/arm64 port),
+    the linker now supports internal linking mode of cgo programs,
+    which can be requested with the -ldflags=-linkmode=internal
+    flag.
+  * Linker: There are several minor changes to executable
+    files. These changes do not affect running Go programs. They
+    may affect programs that analyze Go executables, and they may
+    affect people who use external linking mode with custom linker
+    scripts.
+  * Linker: The moduledata structure is now in its own section,
+    named .go.module.
+  * Linker: The moduledata cutab field, which is a slice, now has
+    the correct length; previously the length was four times too
+    large.
+  * Linker: The pcHeader found at the start of the .gopclntab
+    section no longer records the start of the text section. That
+    field is now always zero.
+  * Linker: That pcHeader change was made so that the .gopclntab
+    section no longer contains any relocations. On platforms that
+    support relro, the section has moved from the relro segment to
+    the rodata segment.
+  * Linker: The funcdata symbols and the findfunctab have moved
+    from the .rodata section to the .gopclntab section.
+  * Linker: The .gosymtab section has been removed. It was
+    previously always present but empty.
+  * Linker: When using internal linking, ELF sections now appear in
+    the section header list sorted by address. The previous order
+    was somewhat unpredictable.
+  * Linker: The references to section names here use the ELF names
+    as seen on Linux and other systems. The Mach-O names as seen on
+    Darwin start with a double underscore and do not contain any
+    dots.
+  * Bootstrap: As mentioned in the Go 1.24 release notes, Go 1.26
+    now requires Go 1.24.6 or later for bootstrap. We expect that
+    Go 1.28 will require a minor release of Go 1.26 or later for
+    bootstrap.
+  * Standard Library: New crypto/hpke package: The new crypto/hpke
+    package implements Hybrid Public Key Encryption (HPKE) as
+    specified in RFC 9180, including support for post-quantum
+    hybrid KEMs.
+  * Standard Library: New experimental simd/archsimd package: Go
+    1.26 introduces a new experimental simd/archsimd package, which
+    can be enabled by setting the environment variable
+    GOEXPERIMENT=simd at build time. This package provides access
+    to architecture-specific SIMD operations. It is currently
+    available on the amd64 architecture and supports 128-bit,
+    256-bit, and 512-bit vector types, such as Int8x16 and
+    Float64x8, with operations such as Int8x16.Add. The API is not
+    yet considered stable. We intend to provide support for other
+    architectures in future versions, but the API intentionally
+    architecture-specific and thus non-portable. In addition, we
+    plan to develop a high-level portable SIMD package in the
+    future.
+  * Standard Library: New experimental runtime/secret package: The
+    new runtime/secret package is available as an experiment, which
+    can be enabled by setting the environment variable
+    GOEXPERIMENT=runtimesecret at build time. It provides a
+    facility for securely erasing temporaries used in code that
+    manipulates secret information—typically cryptographic in
+    nature—such as registers, stack, new heap allocations. This
+    package is intended to make it easier to ensure forward
+    secrecy. It currently supports the amd64 and arm64
+    architectures on Linux.
+  * bytes: The new Buffer.Peek method returns the next n bytes from
+    the buffer without advancing it.
+  * crypto: The new Encapsulator and Decapsulator interfaces allow
+    accepting abstract KEM encapsulation or decapsulation keys.
+  * crypto/dsa: The random parameter to GenerateKey is now
+    ignored. Instead, it now always uses a secure source of
+    cryptographically random bytes. For deterministic testing, use
+    the new testing/cryptotest.SetGlobalRandom function. The new
+    GODEBUG setting cryptocustomrand=1 temporarily restores the old
+    behavior.
+  * crypto/ecdh: The random parameter to Curve.GenerateKey is now
+    ignored. Instead, it now always uses a secure source of
+    cryptographically random bytes. For deterministic testing, use
+    the new testing/cryptotest.SetGlobalRandom function. The new
+    GODEBUG setting cryptocustomrand=1 temporarily restores the old
+    behavior. The new KeyExchanger interface, implemented by
+    PrivateKey, makes it possible to accept abstract ECDH private
+    keys, e.g. those implemented in hardware.
+  * crypto/ecdsa: The big.Int fields of PublicKey and PrivateKey
+    are now deprecated. The random parameter to GenerateKey,
+    SignASN1, Sign, and PrivateKey.Sign is now ignored. Instead,
+    they now always use a secure source of cryptographically random
+    bytes. For deterministic testing, use the new
+    testing/cryptotest.SetGlobalRandom function. The new GODEBUG
+    setting cryptocustomrand=1 temporarily restores the old
+    behavior.
+  * crypto/ed25519: If the random parameter to GenerateKey is nil,
+    GenerateKey now always uses a secure source of
+    cryptographically random bytes, instead of crypto/rand.Reader
+    (which could have been overridden). The new GODEBUG setting
+    cryptocustomrand=1 temporarily restores the old behavior.
+  * crypto/fips140: The new WithoutEnforcement and Enforced
+    functions now allow running in GODEBUG=fips140=only mode while
+    selectively disabling the strict FIPS 140-3 checks. Version
+    returns the resolved FIPS 140-3 Go Cryptographic Module version
+    when building against a frozen module with GOFIPS140.
+  * crypto/mlkem: The new DecapsulationKey768.Encapsulator and
+    DecapsulationKey1024.Encapsulator methods implement the new
+    crypto.Decapsulator interface.
+  * crypto/mlkem/mlkemtest: The new crypto/mlkem/mlkemtest package
+    exposes the Encapsulate768 and Encapsulate1024 functions which
+    implement derandomized ML-KEM encapsulation, for use with
+    known-answer tests.
+  * crypto/rand: The random parameter to Prime is now
+    ignored. Instead, it now always uses a secure source of
+    cryptographically random bytes. For deterministic testing, use
+    the new testing/cryptotest.SetGlobalRandom function. The new
+    GODEBUG setting cryptocustomrand=1 temporarily restores the old
+    behavior.
+  * crypto/rsa: The new EncryptOAEPWithOptions function allows
+    specifying different hash functions for OAEP padding and MGF1
+    mask generation.
+  * crypto/rsa: The random parameter to GenerateKey,
+    GenerateMultiPrimeKey, and EncryptPKCS1v15 is now
+    ignored. Instead, they now always use a secure source of
+    cryptographically random bytes. For deterministic testing, use
+    the new testing/cryptotest.SetGlobalRandom function. The new
+    GODEBUG setting cryptocustomrand=1 temporarily restores the old
+    behavior.
+  * crypto/rsa: If PrivateKey fields are modified after calling
+    PrivateKey.Precompute, PrivateKey.Validate now fails.
+  * crypto/rsa: PrivateKey.D is now checked for consistency with
+    precomputed values, even if it is not used.
+  * crypto/rsa: Unsafe PKCS #1 v1.5 encryption padding (implemented
+    by EncryptPKCS1v15, DecryptPKCS1v15, and
+    DecryptPKCS1v15SessionKey) is now deprecated.
+  * crypto/subtle: The WithDataIndependentTiming function no longer
+    locks the calling goroutine to the OS thread while executing
+    the passed function. Additionally, any goroutines which are
+    spawned during the execution of the passed function and their
+    descendants now inherit the properties of
+    WithDataIndependentTiming for their lifetime. This change also
+    affects cgo in the following ways:
+  * crypto/subtle: Any C code called via cgo from within the
+    function passed to WithDataIndependentTiming, or from a
+    goroutine spawned by the function passed to
+    WithDataIndependentTiming and its descendants, will also have
+    data independent timing enabled for the duration of the
+    call. If the C code disables data independent timing, it will
+    be re-enabled on return to Go.
+  * crypto/subtle: If C code called via cgo, from the function
+    passed to WithDataIndependentTiming or elsewhere, enables or
+    disables data independent timing then calling into Go will
+    preserve that state for the duration of the call.
+  * crypto/tls: The hybrid SecP256r1MLKEM768 and SecP384r1MLKEM1024
+    post-quantum key exchanges are now enabled by default. They can
+    be disabled by setting Config.CurvePreferences or with the
+    tlssecpmlkem=0 GODEBUG setting.
+  * crypto/tls: The new ClientHelloInfo.HelloRetryRequest field
+    indicates if the ClientHello was sent in response to a
+    HelloRetryRequest message. The new
+    ConnectionState.HelloRetryRequest field indicates if the server
+    sent a HelloRetryRequest, or if the client received a
+    HelloRetryRequest, depending on connection role.
+  * crypto/tls: The QUICConn type used by QUIC implementations
+    includes a new event for reporting TLS handshake errors.
+  * crypto/tls: If Certificate.PrivateKey implements
+    crypto.MessageSigner, its SignMessage method is used instead of
+    Sign in TLS 1.2 and later.
+  * crypto/tls: The following GODEBUG settings introduced in Go
+    1.22 and Go 1.23 will be removed in the next major Go
+    release. Starting in Go 1.27, the new behavior will apply
+    regardless of GODEBUG setting or go.mod language version.
+  * crypto/tls: GODEBUG tlsunsafeekm:
+    ConnectionState.ExportKeyingMaterial will require TLS 1.3 or
+    Extended Master Secret.
+  * crypto/tls: GODEBUG tlsrsakex: legacy RSA-only key exchanges
+    without ECDH won’t be enabled by default.
+  * crypto/tls: GODEBUG tls10server: the default minimum TLS
+    version for both clients and servers will be TLS 1.2.
+  * crypto/tls: GODEBUG tls3des: the default cipher suites will not
+    include 3DES.
+  * crypto/tls: GODEBUG x509keypairleaf: X509KeyPair and
+    LoadX509KeyPair will always populate the Certificate.Leaf
+    field.
+  * crypto/x509: The ExtKeyUsage and KeyUsage types now have String
+    methods that return the corresponding OID names as defined in
+    RFC 5280 and other registries.
+  * crypto/x509: The ExtKeyUsage type now has an OID method that
+    returns the corresponding OID for the EKU.
+  * crypto/x509: The new OIDFromASN1OID function allows converting
+    an encoding/asn1.ObjectIdentifier into an OID.
+  * debug/elf: Additional R_LARCH_* constants from LoongArch ELF
+    psABI v20250521 (global version v2.40) are defined for use with
+    LoongArch systems.
+  * errors: The new AsType function is a generic version of As. It
+    is type-safe, faster, and, in most cases, easier to use.
+  * fmt: For unformatted strings, fmt.Errorf("x") now allocates
+    less and generally matches the allocations for errors.New("x").
+  * go/ast: The new ParseDirective function parses directive
+    comments, which are comments such as //go:generate. Source code
+    tools can support their own directive comments and this new API
+    should help them implement the conventional syntax.
+  * go/ast: The new BasicLit.ValueEnd field records the precise end
+    position of a literal so that the BasicLit.End method can now
+    always return the correct answer. (Previously it was computed
+    using a heuristic that was incorrect for multi-line raw string
+    literals in Windows source files, due to removal of carriage
+    returns.)
+  * go/ast: Programs that update the ValuePos field of BasicLits
+    produced by the parser may need to also update or clear the
+    ValueEnd field to avoid minor differences in formatted output.
+  * go/token: The new File.End convenience method returns the
+    file’s end position.
+  * go/types: The gotypesalias GODEBUG setting introduced in Go
+    1.22 will be removed in the next major Go release. Starting in
+    Go 1.27, the go/types package will always produce an Alias type
+    for the representation of type aliases regardless of GODEBUG
+    setting or go.mod language version.
+  * image/jpeg: The JPEG encoder and decoder have been replaced
+    with new, faster, more accurate implementations. Code that
+    expects specific bit-for-bit outputs from the encoder or
+    decoder may need to be updated.
+  * io: ReadAll now allocates less intermediate memory and returns
+    a minimally sized final slice. It is often about two times
+    faster while typically allocating around half as much total
+    memory, with more benefit for larger inputs.
+  * log/slog: The NewMultiHandler function creates a MultiHandler
+    that invokes all the given Handlers. Its Enabled method reports
+    whether any of the handlers’ Enabled methods return true. Its
+    Handle, WithAttrs and WithGroup methods call the corresponding
+    method on each of the enabled handlers.
+  * net: The new Dialer methods DialIP, DialTCP, DialUDP, and
+    DialUnix permit dialing specific network types with context
+    values.
+  * net/http: The new HTTP2Config.StrictMaxConcurrentRequests field
+    controls whether a new connection should be opened if an
+    existing HTTP/2 connection has exceeded its stream limit.
+  * net/http: The new Transport.NewClientConn method returns a
+    client connection to an HTTP server. Most users should continue
+    to use Transport.RoundTrip to make requests, which manages a
+    pool of connections. NewClientConn is useful for users who need
+    to implement their own connection management.
+  * net/http: Client now uses and sets cookies scoped to URLs with
+    the host portion matching Request.Host when
+    available. Previously, the connection address host was always
+    used.
+  * net/http/httptest: The HTTP client returned by Server.Client
+    will now redirect requests for example.com and any subdomains
+    to the server being tested.
+  * net/http/httputil: The ReverseProxy.Director configuration
+    field is deprecated in favor of ReverseProxy.Rewrite.
+  * net/http/httputil: A malicious client can remove headers added
+    by a Director function by designating those headers as
+    hop-by-hop. Since there is no way to address this problem
+    within the scope of the Director API, we added a new Rewrite
+    hook in Go 1.20. Rewrite hooks are provided with both the
+    unmodified inbound request received by the proxy and the
+    outbound request which will be sent by the proxy. Since the
+    Director hook is fundamentally unsafe, we are now deprecating
+    it.
+  * net/netip: The new Prefix.Compare method compares two prefixes.
+  * net/url: Parse now rejects malformed URLs containing colons in
+    the host subcomponent, such as http://::1/ or
+    http://localhost:80:80/. URLs containing bracketed IPv6
+    addresses, such as http://[::1]/ are still accepted. The new
+    GODEBUG setting urlstrictcolons=0 restores the old behavior.
+  * os: The new Process.WithHandle method provides access to an
+    internal process handle on supported platforms (pidfd on Linux
+    5.4 or later, Handle on Windows).
+  * os: On Windows, the OpenFile flag parameter can now contain any
+    combination of Windows-specific file flags, such as
+    FILE_FLAG_OVERLAPPED and FILE_FLAG_SEQUENTIAL_SCAN, for control
+    of file or device caching behavior, access modes, and other
+    special-purpose flags.
+  * os/signal: NotifyContext now cancels the returned context with
+    context.CancelCauseFunc and an error indicating which signal
+    was received.
+  * reflect: The new methods Type.Fields, Type.Methods, Type.Ins
+    and Type.Outs return iterators for a type’s fields (for a
+    struct type), methods, inputs and outputs parameters (for a
+    function type), respectively. Similarly, the new methods
+    Value.Fields and Value.Methods return iterators over a value’s
+    fields or methods, respectively. Each iteration yields the type
+    information (StructField or Method) of a field or method, along
+    with the field or method Value.
+  * runtime/metrics: Several new scheduler metrics have been added,
+    including counts of goroutines in various states (waiting,
+    runnable, etc.) under the /sched/goroutines prefix, the number
+    of OS threads the runtime is aware of with
+    /sched/threads:threads, and the total number of goroutines
+    created by the program with
+    /sched/goroutines-created:goroutines.
+  * testing: The new methods T.ArtifactDir, B.ArtifactDir, and
+    F.ArtifactDir return a directory in which to write test output
+    files (artifacts).
+  * testing: When the -artifacts flag is provided to go test, this
+    directory will be located under the output directory (specified
+    with -outputdir, or the current directory by
+    default). Otherwise, artifacts are stored in a temporary
+    directory which is removed after the test completes.
+  * testing: The first call to ArtifactDir when -artifacts is
+    provided writes the location of the directory to the test log.
+  * testing: The B.Loop method no longer prevents inlining in the
+    loop body, which could lead to unanticipated allocation and
+    slower benchmarks. With this fix, we expect that all benchmarks
+    can be converted from the old B.N style to the new B.Loop style
+    with no ill effects. Within the body of a for b.Loop() { ... }
+    loop, function call parameters, results, and assigned variables
+    are still kept alive, preventing the compiler from optimizing
+    away entire parts of the benchmark.
+  * testing/cryptotest: The new SetGlobalRandom function configures
+    a global, deterministic cryptographic randomness source for the
+    duration of the test. It affects crypto/rand, and all implicit
+    sources of cryptographic randomness in the crypto/... packages.
+  * time: The asynctimerchan GODEBUG setting introduced in Go 1.23
+    will be removed in the next major Go release. Starting in Go
+    1.27, the time package will always use unbuffered (synchronous)
+    channels for timers regardless of GODEBUG setting or go.mod
+    language version.
+  * Ports: Darwin: Go 1.26 is the last release that will run on
+    macOS 12 Monterey. Go 1.27 will require macOS 13 Ventura or
+    later.
+  * Ports: FreeBSD: The freebsd/riscv64 port (GOOS=freebsd
+    GOARCH=riscv64) has been marked broken. See issue 76475 for
+    details.
+  * Ports: Windows: As announced in the Go 1.25 release notes, the
+    broken 32-bit windows/arm port (GOOS=windows GOARCH=arm) has
+    been removed.
+  * Ports: PowerPC: Go 1.26 is the last release that supports the
+    ELFv1 ABI on the big-endian 64-bit PowerPC port on Linux
+    (GOOS=linux GOARCH=ppc64). It will switch to the ELFv2 ABI in
+    Go 1.27. As the port does not currently support linking against
+    other ELF objects, we expect this change to be transparent to
+    users.
+  * Ports: RISC-V: The linux/riscv64 port now supports the race
+    detector.
+  * Ports: S390X: The s390x port now supports passing function
+    arguments and results using registers.
+  * Ports: WebAssembly: The compiler now unconditionally makes use
+    of the sign extension and non-trapping floating-point to
+    integer conversion instructions. These features have been
+    standardized since at least Wasm 2.0. The corresponding GOWASM
+    settings, signext and satconv, are now ignored.
+  * Ports: WebAssembly: For WebAssembly applications, the runtime
+    now manages chunks of heap memory in much smaller increments,
+    leading to significantly reduced memory usage for applications
+    with heaps less than around 16 MiB in size.
+
+-------------------------------------------------------------------
 Wed Feb  4 15:46:44 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.26rc3 (released 2026-02-04) is a release candidate version of

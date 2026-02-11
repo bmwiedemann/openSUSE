@@ -34,4 +34,41 @@
   Refs boo#1255111 go1.26 release tracking</comment>
     <requestid>1332057</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>08b36e2808a6a7b3aca27e6a6d291a61</srcmd5>
+    <version>1.26.0</version>
+    <time>1770832102</time>
+    <user>anag_factory</user>
+    <comment>- go1.26.0 (released 2026-02-10) is a major release of Go.
+  go1.26.x minor releases will be provided through February 2027.
+  https://github.com/golang/go/wiki/Go-Release-Cycle
+  go1.26 arrives six months after Go 1.25. Most of its changes are
+  in the implementation of the toolchain, runtime, and
+  libraries. As always, the release maintains the Go 1 promise of
+  compatibility. We expect almost all Go programs to continue to
+  compile and run as before.
+  Refs boo#1255111 go1.26 release tracking
+  * Language change: The built-in new function, which creates a new
+    variable, now allows its operand to be an expression,
+    specifying the initial value of the variable.
+  * Language change: The restriction that a generic type may not
+    refer to itself in its type parameter list has been lifted. It
+    is now possible to specify type constraints that refer to the
+    generic type being constrained.
+  * go command: The venerable go fix command has been completely
+    revamped and is now the home of Go’s modernizers. It provides a
+    dependable, push-button way to update Go code bases to the
+    latest idioms and core library APIs. The initial suite of
+    modernizers includes dozens of fixers to make use of modern
+    features of the Go language and library, as well a source-level
+    inliner that allows users to automate their own API migrations
+    using //go:fix inline directives. These fixers should not
+    change the behavior of your program, so if you encounter any
+    issues with a fix performed by go fix, please report it.
+  * go command: The rewritten go fix command builds atop the exact
+    same Go analysis framework as go vet. This means the same
+    analyzers that provide diagnostics in go vet can be used to
+    suggest and apply fixes in go fix. The go fix command’s</comment>
+    <requestid>1332369</requestid>
+  </revision>
 </revisionlist>
