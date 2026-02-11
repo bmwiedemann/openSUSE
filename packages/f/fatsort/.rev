@@ -87,4 +87,30 @@
     <comment></comment>
     <requestid>1072717</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>16fc0b49a66014af2b4ce89a53f07f7f</srcmd5>
+    <version>1.7.679</version>
+    <time>1770832152</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.7.679:
+  * fixed exfat directory entry type values for primary benign
+    directory entries
+  * added exfat text cases for regex option
+  * updated help information
+  * use strxfrm and strcmp instead of strcoll for faster string comparison
+  * fixed out-of-bound array indexes
+  * fixed a bug with string comparison using the current locale
+    that can occur with long filenames with multi-byte characters
+  * fixed an endianness bug relevant for FAT12/16 filesystems
+  * fixed a bug that caused an undefined behaviour during case
+    insensitive sorting
+  * added error handling to remove compiler warnings
+  * implemented buffered block-based file I/O to reduce to number
+    of read/write operations
+  * fatsort now checks that all FAT copies in a filesystem are
+    the same before sorting
+
+  * added test cases for randomization option</comment>
+    <requestid>1332422</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Feb 11 08:25:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.679:
+  * fixed exfat directory entry type values for primary benign
+    directory entries
+  * added exfat text cases for regex option
+  * updated help information
+  * use strxfrm and strcmp instead of strcoll for faster string comparison
+  * fixed out-of-bound array indexes
+  * fixed a bug with string comparison using the current locale
+    that can occur with long filenames with multi-byte characters
+  * fixed an endianness bug relevant for FAT12/16 filesystems
+  * fixed a bug that caused an undefined behaviour during case
+    insensitive sorting
+  * added error handling to remove compiler warnings
+  * implemented buffered block-based file I/O to reduce to number
+    of read/write operations
+  * fatsort now checks that all FAT copies in a filesystem are
+    the same before sorting
+
+-------------------------------------------------------------------
 Fri Mar 17 16:59:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.5.640:
@@ -12,7 +33,7 @@ Mon Dec 20 21:52:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.4.625:
   * Fixed randomization for fatXX.
-  * added test cases for randomization option 
+  * added test cases for randomization option
 
 -------------------------------------------------------------------
 Wed Aug 12 11:03:50 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
