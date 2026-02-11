@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydantic
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,6 +33,8 @@ Summary:        Data validation and settings management using python type hintin
 License:        MIT
 URL:            https://github.com/pydantic/pydantic
 Source:         https://github.com/pydantic/pydantic/archive/v%{version}.tar.gz#/pydantic-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pydantic/pydantic/pull/12609 Remove xfail marker on a PEP 649 related test
+Patch0:         test.patch
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module packaging}
@@ -61,6 +63,7 @@ Requires:       python-annotated-types >= 0.6.0
 Requires:       python-pydantic-core = 2.41.5
 Requires:       python-typing-extensions >= 4.14.1
 Requires:       python-typing-inspection
+Recommends:     python-email-validator >= 2.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -85,7 +88,8 @@ sed -i '/.*Programming Language :: Python :: 3\.14.*/d' pyproject.toml
 
 %check
 %if %{with test}
-%pytest
+# test_base64url[Base64UrlBytes-bytes-alphabet-vanilla] fails with patched python314 https://github.com/pydantic/pydantic/issues/12778
+%pytest -k "not Base64UrlBytes-bytes-alphabet-vanilla"
 %endif
 
 %if %{without test}

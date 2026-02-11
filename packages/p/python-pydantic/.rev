@@ -644,4 +644,12 @@
   py314.patch, and support-pydantic-core-2.39.0.patch as they've merged upstream.</comment>
     <requestid>1322568</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>ebccfd1ae394c23a9938b86e87e2261a</srcmd5>
+    <version>2.12.5</version>
+    <time>1770832036</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1331658</requestid>
+  </revision>
 </revisionlist>

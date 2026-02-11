@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb  5 13:58:33 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream test.patch to fix tests with Python 3.14
+
+-------------------------------------------------------------------
+Thu Feb  5 12:34:34 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Recommend email-validator
+  (this was previously dropped as Requires, but is needed by pydantic.networks)
+
+-------------------------------------------------------------------
 Wed Dec  3 20:31:21 UTC 2025 - Guang Yee <gyee@suse.com>
 
 - Update to 2.12.5
