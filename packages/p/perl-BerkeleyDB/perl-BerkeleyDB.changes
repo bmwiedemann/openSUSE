@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Feb  2 06:16:36 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.670.0 (0.67)
+   see /usr/share/doc/packages/perl-BerkeleyDB/Changes
+
+  0.67 1 February 2-26
+          * Update to version 0.67
+            Sun Feb 1 16:44:47 2026 +0000
+            e21f44f1ff462094395fae116dbe0c214f993764
+          * Remove Test::More and Test::Builder from MANIFEST
+            Sun Feb 1 16:44:47 2026 +0000
+            dbe85692c99d8c2a3974311cbb6f4de8803d91dd
+          * Merge pull request #15 from pmqs/dependabot/github_actions/actions/cache-5
+            Sun Feb 1 16:42:41 2026 +0000
+            6f754d3fb497df0592f00b1f0e3903477d90af86
+          * Merge pull request #14 from pmqs/dependabot/github_actions/actions/checkout-6
+            Sun Feb 1 16:42:27 2026 +0000
+            e522422e73d8feff9c9903ebdbd596ac1362d5b5
+          * Bump actions/cache from 3 to 5
+            Fri Jan 30 09:53:35 2026 +0000
+            d1dedee227e1cd7238e7b19472a8ae339b34d269
+          * Bump actions/checkout from 1 to 6
+            Fri Jan 30 09:53:16 2026 +0000
+            af078f45874ed71f1d3a41b9042f9ccbcd170106
+          * Configure Dependabot for GitHub Actions updates
+            Fri Jan 30 09:52:25 2026 +0000
+            95a010bcbcafe71e7f85dfa713d3f8cb4e8b09f9
+          * Add perl 5.42 to workflow files
+            Thu Sep 4 17:35:52 2025 +0100
+            56b6000cbebc11d5a44617f35c2096a6628b200c
+          * fix typo in META.json
+            Mon Oct 14 16:24:03 2024 +0100
+            4ff765bc17937c097ed36c2a0a4b3401aaa0474e
+
+-------------------------------------------------------------------
 Tue Oct 15 05:32:12 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.660.0 (0.66)

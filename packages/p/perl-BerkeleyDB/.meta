@@ -6,5 +6,4 @@ interface provided here to be identical to the Berkeley DB interface. The main
 changes have been to make the Berkeley DB API work in a Perl way. Note that if
 you are using Berkeley DB 2.x, the new features available in
 Berkeley DB 3.x or DB 4.x are not available via this module.</description>
-  <devel project="devel:languages:perl" package="perl-BerkeleyDB"/>
 </package>

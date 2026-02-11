@@ -1,7 +1,7 @@
 #
 # spec file for package perl-BerkeleyDB
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name BerkeleyDB
 Name:           perl-BerkeleyDB
-Version:        0.660.0
+Version:        0.670.0
 Release:        0
-# 0.66 -> normalize -> 0.660.0
-%define cpan_version 0.66
+# 0.67 -> normalize -> 0.670.0
+%define cpan_version 0.67
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl extension for Berkeley DB version 2, 3, 4, 5 or 6
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PM/PMQS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 Provides:       perl(BerkeleyDB) = %{version}
@@ -43,8 +44,6 @@ Provides:       perl(BerkeleyDB::Term)
 Provides:       perl(BerkeleyDB::Txn)
 Provides:       perl(BerkeleyDB::TxnMgr)
 Provides:       perl(BerkeleyDB::Unknown)
-Provides:       perl(BerkeleyDB::_tiedArray)
-Provides:       perl(BerkeleyDB::_tiedHash)
 %undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
@@ -72,7 +71,7 @@ particularly relevant.
 The interface to Berkeley DB is implemented with a number of Perl classes.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
