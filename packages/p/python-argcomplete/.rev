@@ -481,4 +481,18 @@
     <comment>- Make the libalternatives transition conditional</comment>
     <requestid>1298824</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>4aa4526f9c6d6218b4a3a90d37df4732</srcmd5>
+    <version>3.6.3</version>
+    <time>1770832410</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.6.3:
+  * Make RE PCRE compatible. Fixes #539
+  * Only execute Python interpreters (#536)
+  * fish: set variable scope to local to avoid clobbering global or
+    universal variables (#534)
+  * Documentation and help improvements
+- Add %pythons_for_pypi macro</comment>
+    <requestid>1330905</requestid>
+  </revision>
 </revisionlist>

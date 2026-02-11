@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  4 09:07:21 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.6.3:
+  * Make RE PCRE compatible. Fixes #539
+  * Only execute Python interpreters (#536)
+  * fish: set variable scope to local to avoid clobbering global or
+    universal variables (#534)
+  * Documentation and help improvements
+- Add %pythons_for_pypi macro
+
+-------------------------------------------------------------------
 Mon Aug 11 12:08:58 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make the libalternatives transition conditional

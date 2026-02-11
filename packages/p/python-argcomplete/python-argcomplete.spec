@@ -1,7 +1,7 @@
 #
 # spec file for package python-argcomplete
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013 Darin Perusich.
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,9 +30,10 @@
 %else
 %bcond_with libalternatives
 %endif
+%{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-argcomplete%{psuffix}
-Version:        3.6.2
+Version:        3.6.3
 Release:        0
 Summary:        Bash tab completion for argparse
 License:        Apache-2.0
@@ -99,12 +100,17 @@ resources over the network).
 %if %{with test}
 export LANG=en_US.UTF-8
 export TERM=xterm-mono
+cp -rf test test.bak
 %{python_expand \
   # https://github.com/kislyuk/argcomplete/issues/255
   # https://github.com/kislyuk/argcomplete/issues/299
   sed -i -e "1s|#!.*python.*|#!%{__$python}|" test/prog test/*.py
   sed -i -e "s|python3 |$python |g" test/test.py
+  sed -i -e "s|pip install|$python -mpip install --no-build-isolation|g" test/test.py
   $python ./test/test.py -v
+
+  rm -rf test
+  cp -r test.bak test
 }
 %endif
 
