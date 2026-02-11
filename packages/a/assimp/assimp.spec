@@ -1,7 +1,7 @@
 #
 # spec file for package assimp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 6
 Name:           assimp
-Version:        6.0.2
+Version:        6.0.4
 Release:        0
 Summary:        Library to load and process 3D scenes from various data formats
 License:        BSD-3-Clause AND MIT
@@ -26,6 +26,14 @@ URL:            https://github.com/assimp/assimp
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM -- don't reject 'find_package(assimp 5)' calls
 Patch0:         0001-Accept-find_package-Assimp-5.x-calls.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         CVE-2025-5167.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         CVE-2025-5200.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         CVE-2025-2756.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         0001-Fix-invalid-verifying-in-OpenDDLParser-parseStringLi.patch
 BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -132,7 +140,7 @@ popd
 %{_libdir}/libassimp.so.*
 
 %files devel
-%doc CHANGES CREDITS
+%doc CHANGES.md CREDITS
 %{_bindir}/assimp
 %{_includedir}/assimp/
 %{_libdir}/libassimp.so

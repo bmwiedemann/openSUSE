@@ -345,4 +345,41 @@
   * Fixes CVE-2025-3548, boo#1241364</comment>
     <requestid>1284185</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b015327f7a774eed61f120d9ff199b82</srcmd5>
+    <version>6.0.4</version>
+    <time>1770832038</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream changes:
+  * CVE-2025-5167.patch (CVE-2025-5167)
+  * CVE-2025-5200.patch (CVE-2025-5200, boo#1243689)
+  * CVE-2025-2756.patch (CVE-2025-2756, boo#1240026, CVE-2025-2754, boo#1240024)
+  * 0001-Fix-invalid-verifying-in-OpenDDLParser-parseStringLi.patch
+
+- Update to 6.0.4
+  * Fix some recently implemented comparisons of token string
+  * Fix building on Haiku
+  * Reduce memory consumption in JoinVerticesProcess::ProcessMesh()
+    significantly
+  * Fix: Add check for invalid input argument
+  * Replace an assert by a error log.
+  * Extension of skinning data export to GLB/GLTF format
+  * Fix output floating-point values to fbx
+  * Update ImproveCacheLocality.cpp
+  * Deep arsdk bone double free
+  * Fix Spelling error
+  * use size in order to be compatible with float and double
+  * Fix: Add missing transformation for normalized normals.
+  * Fix: Implicit Conversion Error
+  * Fix add checks for indices
+  * Update FBXBinaryTokenizer.cpp
+  * link to external minizip with full path
+  * utf8 header not found
+  * Rm unnecessary deg-&gt;radian conversion in FBX exporter
+  * Fix empty mesh handling
+  * Refactoring: Some cleanups
+  * Fix invalid read of uint from uvwsrc
+  * Remove double delete</comment>
+    <requestid>1332041</requestid>
+  </revision>
 </revisionlist>

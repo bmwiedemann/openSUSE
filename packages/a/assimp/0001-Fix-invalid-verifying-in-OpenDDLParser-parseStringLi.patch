@@ -1,0 +1,33 @@
+From 36c3a19aa853d75c7cb2bb843dd75468f001ab66 Mon Sep 17 00:00:00 2001
+From: Kyungjoon Ko <kj2648@naver.com>
+Date: Fri, 6 Feb 2026 21:34:23 +0900
+Subject: [PATCH] Fix invalid verifying in OpenDDLParser::parseStringLiteral
+ (#6314)
+
+Co-authored-by: Kim Kulling <kimkulling@users.noreply.github.com>
+---
+ contrib/openddlparser/code/OpenDDLParser.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/contrib/openddlparser/code/OpenDDLParser.cpp b/contrib/openddlparser/code/OpenDDLParser.cpp
+index 1e14f5fd0..e065f9410 100644
+--- a/contrib/openddlparser/code/OpenDDLParser.cpp
++++ b/contrib/openddlparser/code/OpenDDLParser.cpp
+@@ -796,10 +796,13 @@ char *OpenDDLParser::parseStringLiteral(char *in, char *end, Value **stringData)
+     if (*start == '\"') {
+         ++start;
+         ++in;
+-        while (*in != '\"' && in != end) {
++        while (in != end && *in != '\"') {
+             ++in;
+             ++len;
+         }
++        if (in == end) {
++            return in;
++        }
+ 
+         *stringData = ValueAllocator::allocPrimData(Value::ValueType::ddl_string, len);
+         ::strncpy((char *)(*stringData)->m_data, start, len);
+-- 
+2.52.0
+

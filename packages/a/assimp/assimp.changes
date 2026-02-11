@@ -1,4 +1,483 @@
 -------------------------------------------------------------------
+Mon Feb  9 12:50:36 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes:
+  * CVE-2025-5167.patch (CVE-2025-5167)
+  * CVE-2025-5200.patch (CVE-2025-5200, boo#1243689)
+  * CVE-2025-2756.patch (CVE-2025-2756, boo#1240026, CVE-2025-2754, boo#1240024)
+  * 0001-Fix-invalid-verifying-in-OpenDDLParser-parseStringLi.patch
+
+-------------------------------------------------------------------
+Sat Jan 31 08:20:39 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.0.4
+  * Fix some recently implemented comparisons of token string
+  * Fix building on Haiku
+  * Reduce memory consumption in JoinVerticesProcess::ProcessMesh()
+    significantly
+  * Fix: Add check for invalid input argument
+  * Replace an assert by a error log.
+  * Extension of skinning data export to GLB/GLTF format
+  * Fix output floating-point values to fbx
+  * Update ImproveCacheLocality.cpp
+  * Deep arsdk bone double free
+  * Fix Spelling error
+  * use size in order to be compatible with float and double
+  * Fix: Add missing transformation for normalized normals.
+  * Fix: Implicit Conversion Error
+  * Fix add checks for indices
+  * Update FBXBinaryTokenizer.cpp
+  * link to external minizip with full path
+  * utf8 header not found
+  * Rm unnecessary deg->radian conversion in FBX exporter
+  * Fix empty mesh handling
+  * Refactoring: Some cleanups
+  * Fix invalid read of uint from uvwsrc
+  * Remove double delete
+  * fix mesh-name error.
+  * COLLADA fixes for textures in C4D input
+  * Use the correct allocator for deleting objects in case of
+    duplicate animation Ids
+  * Fix container overflow in MMD parser
+  * Fix: PLY heap buffer overflow
+  * Fix: Check if index for mesh access is out of range
+  * Update FBXConverter.cpp
+  * FBX: Use correct time scaling
+  * Drop explicit inclusion of contrib/ headers
+  * Update Build.md
+  * Fix buffer overflow in FBX::Util::DecodeBase64()
+  * Readme.md: correct 2 errors in section headers
+  * Fix double free in Video::~Video()
+  * FBXMeshGeometry: solve issue #5116 using patch provided
+  * Fix target names not being imported on some gLTF2 models
+  * correct grammar/typographic errors in comments (8 files)
+  * KHR_materials_specular fixes
+  * Disable Hunter
+  * fixed several issues
+  * Fix leak
+  * Check validity of archive without parsing
+  * Fix integer overflow
+  * Add a test before generating the txture folder
+  * Build: Disable building zlib for non-windows
+  * null check.
+  * fix: KHR_materials_pbrSpecularGlossiness/diffuseFactor convert
+    to pbrMetallicRoughness/baseColorFactor
+  * fix building errors for MinGW
+  * dynamic_cast error.
+  * Add missing IRR textures
+  * Update Dockerfile
+  * Fix handling of X3D IndexedLineSet nodes
+  * Improve acc file loading
+  * Readme.md: present hyperlinks in a more uniform style
+  * FBX Blendshape FullWeight: Vec<Float> -> FullWeight: Vec<Double>
+  * Fix for issues #5422, #3411, and #5443 -- DXF insert scaling fix
+    and colour fix
+  * Update StbCommon.h to stay up-to-date with stb_image.h.
+  * Introduce aiBuffer
+  * Add bounds checks to the parsing utilities.
+  * Fix crash in viewer
+  * Static code analysis fixes
+  * Kimkulling/fix bahavior of remove redundat mats
+  * Fix X importer breakage introduced in commit f844c33
+  * Fileformats.md: clarify that import of .blend files is deprecated
+  * feat:1.add 3mf vertex color read 2.fix 3mf read texture bug
+  * More GLTF loading hardening
+  * Update CMakeLists.txt
+  * Blendshape->Geometry in FBX Export
+  * Fix identity matrix check
+  * Fix PyAssimp under Python >= 3.12 and macOS library search support
+  * Add ISC LICENSE file
+  * ColladaParser: check values length
+  * Include defs in not cpp-section
+  * Add correct double zero check
+  * Add zlib-header to ZipArchiveIOSystem.h
+  * Add 2024 to copyright infos
+  * Append a new setting "AI_CONFIG_EXPORT_FBX_TRANSPARENCY_FACTOR_REFER_TO_OPACITY"
+  * Eliminate non-ascii comments in clipper
+  * Fix compilation for MSVC14.
+  * Add correction of fbx model rotation
+  * Delete tools/make directory
+  * Delete packaging/windows-mkzip directory
+  * Fix #5420 duplicate degrees to radians conversion in fbx importer
+  * Respect merge identical vertices in ObjExporter
+  * Fix utDefaultIOStream test under MinGW
+  * Fix typos
+  * Add initial macOS support to C4D importer
+  * Update hunter into CMakeLists.txt
+  * Fix: add missing import for AI_CONFIG_CHECK_IDENTITY_MATRIX_EPSILON_DEFAULT
+  * updated json
+  * Cleanup: Fix review findings
+  * Update CMakeLists.txt
+  * CMake: Allow linking draco statically if ASSIMP_BUILD_DRACO_STATIC is set.
+  * updated minizip to last version
+  * updated STBIMAGElib
+  * fix issue #5461 (segfault after removing redundant materials)
+  * Update ComputeUVMappingProcess.cpp
+  * add some ASSIMP_INSTALL checks
+  * Fix SplitByBoneCount typo that prevented node updates
+  * Q3DLoader: Fix possible material string overflow
+  * Reverts the changes introduced by commit ad766cb in February 2022.
+  * fix a collada import bug
+  * mention IQM loader in Fileformats.md
+  * Kimkulling/fix pyassimp compatibility
+  * fix ASE loader crash when *MATERIAL_COUNT or *NUMSUBMTLS is not specified or is 0
+  * Add checks for invalid buffer and size
+  * Make sure for releases revision will be zero
+  * glTF2Importer: Support .vrm extension
+  * Prepare v5.4.1
+  * Remove deprecated c++11 warnings
+  * fix ci by disabling tests
+  * Fix integer overflow
+  * Assimp viewer fixes
+  * Optimize readability
+  * Temporary fix for #5557 GCC 13+ build issue -Warray-bounds
+  * Fix a bug that could cause assertion failure.
+  * Fix possible nullptr dereferencing.
+  * Update ObjFileParser.cpp
+  * Fix for #5592 Disabled maybe-uninitialized error for AssetLib/Obj/ObjFileParser.cpp
+  * updated zip
+  * Postprocessing: Fix endless loop
+  * Build: Fix compilation for VS-2022 debug mode - warning
+  * Converted a size_t to mz_uint that was being treated as an error
+  * Add trim to xml string parsing
+  * Replace duplicated trim
+  * Move aiScene constructor
+  * Move revision.h and revision.h.in to include folder
+  * Update MDLMaterialLoader.cpp
+  * Create inno_setup
+  * clean HunterGate.cmake
+  * Draft: Update init of aiString
+  * Fix init aistring issue 5622 inpython module
+  * update dotnet example
+  * Make stepfile schema validation more robust.
+  * fix PLY binary export color from float to uchar
+  * Some FBXs do not have "Materials" information, which can cause parsing errors
+  * Fix collada uv channels - temporary was stored and then updated.
+  * remove ASE parsing break
+  * FBX-Exporter: Fix nullptr dereferencing
+  * Fix FBX exporting incorrect bone order
+  * fixes potential memory leak on malformed obj file
+  * Update zip.c
+  * Fixes some uninit bool loads
+  * Fix names of enum values in docstring of aiProcess_FindDegenerates
+  * Fix: StackAllocator Undefined Reference fix
+  * Plx: Fix out of bound access
+  * Docker: Fix security finding
+  * Fix potential heapbuffer overflow in md5 parsing
+  * Replace raw pointers by std::string
+  * Fix compile warning
+  * Allow empty slots in mTextureCoords
+  * [USD] Integrate "tinyusdz" project
+  * Kimkulling/fix double precision tests
+  * Update Python structs with missing fields that were causing core dumps
+  * Introduce interpolation mode to vectro and quaternion keys
+  * Fix a fuzz test heap buffer overflow in mdl material loader
+  * Mosfet80 updatedpoli2tri
+  * CalcTangents: zero vector is invalid for tangent/bitangent
+  * Fix: A fuzzed stride could cause the max count to become negative and
+    hence wrap around uint
+  * Return false instead of crash
+  * Make coord transfor for hs1 files optional
+  * Update DefaultIOSystem.cpp
+  * FBX exporter - handle multiple vertex color channels
+  * Fixing static builds on Windows
+  * Added ADD condition in poly2tri dll_symbol.h to only define macros for
+    dynamic library linking if assimp is ordered to build as DLL
+  * Fix MSVC PDBs and permit them to be disabled if required
+  * Use DRACO_GLTF_BITSTREAM
+  * include Exceptional.h in 3DSExporter.cpp
+  * Remove recursive include
+  * Fix: Possible out-of-bound read in findDegenerate
+  * Revert variable name
+  * Add compile option /source-charset:utf-8 for MSVC
+  * Fix leak in loader
+  * Expose aiGetEmbeddedTexture to C-API
+  * Sparky kitty studios master
+  * Added more Maya materials
+  * Fix to check both types of slashes in GetShortFilename
+  * Fix copying private data when source pointer is NULL
+  * Fix potential memory leak in SceneCombiner for LWS/IRR/MD3 loader
+  * Fix to correctly determine 'multi-configuration' on Windows
+  * Fix casting typo in D3MFExporter::writeBaseMaterials
+  * FBX: add metadata of ainode as properties
+  * feat: add option for creating XCFramework and configure minimum iOS target
+  * Update PyAssimp structs with Skeleton & SkeletonBone members
+  * The total length is incorrect when exporting gltf2
+  * build: Add ccache support
+  * Update ccpp.yml
+  * Ply-Importer: Fix vulnerability
+  * Zero-length mChildren arrays should be nullptr
+  * Allow usage of pugixml from a superproject
+  * Prevents PLY from parsing duplicate defined elements
+  * Add option to ignore FBX custom axes
+  * Kimkulling/mark blender versions as not supported
+  * Fix leak
+  * Fix invalid access
+  * Fix buffer overflow in MD3Loader
+  * Fix stack overflow
+  * FBX Import - Restored Absolute Transform Calculation
+  * Fix naming in aiMaterial comment
+  * Update dll_symbol.h
+  * Fix for build with ASSIMP_BUILD_NO_VALIDATEDS_PROCESS
+  * Update CMakeLists.txt
+  * FBX Blendshapes: Do not require normals
+  * Update Build.md
+  * SplitLargeMeshes: Fix crash
+  * Installer: fix images for installer
+  * Bugfix/installer add missing images
+  * Fix bug introduced in commit 168ae22 of 27 Oct 2019
+  * Fix issue 5767: Can't load USD from memory
+  * Fix FBX animation bug (issue 3390)
+  * [Fix issue 5823] Hotfix for broken lightwave normals
+  * Fixed bug in DefaultLogger::set
+  * Fix a bug in the assbin loader that reads uninitialized memory
+  * Fix issue 2889 (molecule_ascii.cob load failure): change integers to
+    floating point values in color triplets
+  * Add unit tests for X3D models which were broken at 5 Oct 2020 commit 3b9d4cf
+  * Update inno_setup-actions
+  * Simplify re-enabling M3D build support
+  * Update hunter
+  * Store current exception when caught in ASSIMP_CATCH_GLOBAL_EXCEPTIONS
+  * Fix issue 5816 (cone.nff load failure): repair faulty line in 3D model file
+  * Readme: Add project activity view item
+  * Cleanup Unit Tests Output
+  * USD Skinned Mesh
+  * Update tinyusdz
+  * +Add vertex duplication during face normal generation
+  * Fix use of uninitialized value.
+  * Update CMakeLists.txt to fix gcc/clang++ issue
+  * Add reference screenshots for complex bundled test 3D model files
+  * Obj: Fix Sonarcube findings
+  * Try to resolve image paths by replacing backslashes or forward slashes
+    in EmbedTexturesProcess
+  * Material: Fix the build for c compiler
+  * Material: Fix sonarcube finding
+  * Remove strcpy.
+  * Fix potential uninitialized variable in clipper
+  * Check that mMaterials not null before access
+  * Cleanup: Delete code/.editorconfig
+  * Readme.md: Add sonarcube badge
+  * Obj: fix nullptr access.
+  * Update cpp-pm / hunter
+  * Add CI to automatically build and attach binaries to releases
+  * Simplify JoinVerticesProcess
+  * USD Keyframe Animations
+  * Fix compiler error when double precision is selected,
+  * Synchronize DefaultLogger
+  * Do not create GLTF Mesh if no faces
+  * FBX Blendshape: export float & same # verts
+  * bugfix: Fixed the issue that draco compressed gltf files cannot be
+    loaded normally
+  * pbrt: Validate mesh in WriteMesh before AttributeBegin call
+  * Introducing assimp Guru on Gurubase.io
+  * Fix: Fix build for mingw10
+  * Fix use after free in the CallbackToLogRedirector
+  * USD Mesh Node Fix
+  * Fixed warnings
+  * Replace C# port with maintained fork
+  * Fix heap-buffer-overflow in OpenDDLParser
+  * Fix parsing of comments at the end of lines for tokens with variable
+    number of elements.
+  * Fix buffer overflow in MD5Parser::SkipSpacesAndLineEnd
+  * Fix: Fix name collision
+  * Bug/evaluate matrix4x4 access
+  * glTF importers: Avoid strncpy truncating away the ' \0' character
+  * Export tangents in GLTF
+  * Disable logs for fuzzer by default
+  * Fix docs for aiImportFileExWithProperties to not talk about the importer
+    keeping the Scene alive
+  * Fix stack overflow in LWS loader
+  * Introduce VRML format (.wrl and .x3dv) 3D model support
+  * Verify negative values in Quake1 MDL header
+  * Fix heap buffer overflow in HMP loader
+  * pragma warning bug fix when using g++ on windows
+  * AssbinImporter::ReadInternFile now closes stream before throwing
+  * Updated Material.cpp to Add Missing Texture Types to String
+  * Docker: Optimize usage
+  * Bugfix/cosmetic code cleanup
+  * Add arm64-simulator support to iOS build script
+  * Add aiProcess_ValidateDataStructure flag to the fuzzer
+  * Update OpenDDLParser.cpp
+  * [AMF] Fix texture mapping
+  * [FBX] Allow export multi materials per node
+  * Assimp master head fixes for failure to compile
+  * Prefix MTL textures with the MTL directory path
+  * Add customExtension support to the scene
+  * Avoid exporting all primitives, which are not triangles.
+  * Added GLTF Extension KHR_materials_anisotropy
+  * Add POST_BUILD option to ADD_CUSTOM_COMMAND
+  * Fix heap buffer overflow in PLY parser
+  * Optimise building tinyusd library
+  * Add gltf metallic-roughness texture type
+  * fix: reduce gltf2 export time
+  * Flag Documentation Fix
+  * Doc: Make hint clearer
+  * Clean STEPFileReader.cpp
+  * Doc: Separate viewer
+  * Use correct data type for animation key
+  * Use ear-cutting library for triangulation
+  * Fixing PyAssimp misalignment errors with certain structures
+  * Bugfix/fix mingw issue 5975
+  * IFC: Remove redundand check
+  * Obj: remove smooth-normals postprocessing
+  * Refactorings: glTF cleanups
+  * Fix memory leak in OpenGEXImporter
+  * Use std::copy to copy array and remove user destructor to make sure
+    is_trivially_copyable in order to avoid -Wno-error=nontrivial-memcall
+  * Fix: Let OpenGEX accept color3 types
+  * ASE: Fix possible out of bound access.
+  * MDL: Limit max texture sizes
+  * MDL: Fix overflow check
+  * Fix: Avoid override in line parsing
+  * Bugfix: Fix possible nullptr dereferencing
+  * Potential fix for code scanning alert no. 63: Potential use after free
+  * ASE: Use correct vertex container
+  * CMS: Fix possible overflow access
+  * [OpenGEX] disable partial implementation of light import (causes
+    model load failure)
+  * Update tinyusdz git hash (fix USD animation)
+  * [draft] Check the hunter build
+  * NDO: Fix possible overflow access
+  * Fix Cinema4D Import
+  * Remove Redundant virtual
+  * feat: created the aiGetStringC_Str() function.
+  * Fix Whitespace
+  * Harmonize Importer #includes
+  * More constexpr
+  * Renamed and inlined hasSkeletons() to HasSkeletons() for API consistency
+  * Fix set
+  * Bugfix/ensure collada parsing works issue 1488
+  * Not to export empty "LayerElementNormal" or "LayerElementColor" nodes to fbx
+  * Use unique pointer to fix possible leak
+  * Refactoring of PR #6092
+  * fix: Fix build on armv6/armv7
+  * Bugfix: Handling no of texture coordinates correctly
+  * fix: possible Heap-based Buffer Overflow in ConvertToUTF8 function
+  * Refactor
+  * support for cmake findpackage module mode
+  * Replace exception by error in log
+  * Fix a out of bound buffer access in ParsingUtils GetNextLine
+  * Fix a bug where string erases throws out of range
+  * Fix: Support uint16 indices in OpenGEX as well
+  * add missing constants
+  * Fix warning abut inexistent warning
+  * Fix: Fix leak when sortbyp failes with exception
+  * Update contrib/zip to fix data loss warning
+  * Fix out-of-bounds dereferencing
+  * Fix bugs introduced in fbx export
+  * Doc: add C++ / c minimum
+  * Unreal refactorings
+  * update draco lib
+  * fix: missing OS separator in outfile
+  * Add Missing Strings to aiTextureTypeToString
+  * Fix issue compiling when assimp added as subdirectory
+  * Add clamping logic for to_ktime
+  * Add explicit "fallthrough" to switch
+  * Fix HUNTER_ERROR_PAGE
+  * Fix a bug in importing binary PLY file (#1)
+  * Fix export fbx PolygonVertexIndex
+  * Fix: Add "preservePivots" condition when importing FBX animation
+  * Version: Adapt version
+  * Fix: export fbx wrong to_ktime in FBXExporter.cpp
+  * Update Importer.hpp
+  * Refactoring: Add nupptr-checks
+  * bugfix: Fixed the memory leak when texture transforming
+  * Refix export fbx PolygonVertexIndex
+  * Fix sonarcube findings
+  * Add windows clang to CI
+  * Update Build.md
+  * X3D: Fix invalid vector::back usage
+  * Refactoring: use using types
+  * AC: Support Double-Sided Faces
+  * Fix to fail in the function fast_atoreal_move when the flag
+    ASSIMP_DOUBLE_PRESICION is enabled
+  * Add CMakePreset file
+  * Fixed a container-overflow error
+  * Fix SEGV write in Assimp::SortByPTypeProcess::Execute
+  * Fix OOB read in OpenDDLParser::parseReference
+  * Fix OOB read (2) in OpenDDLParser::parsePrimitiveDataType
+  * Fixed a heap-buffer-overflow in the Half-Life 1 MDL loader.
+  * Fixed a heap-use-after-free in SortByPTypeProcess.
+  * test/unit/utProfiler.cpp: fix gcc-16 build failure
+  * Fix OOB read in OpenDDLParser::parsePrimitiveDataType
+  * Fix endiannes issues regarding floats on s390x
+  * Update LICENSE for 2025
+  * FBX: Fix offset calculation by adding cursor check
+  * [CMake] fix zlib linking
+  * Add null check for aiNode in AddNode method
+  * Fix import of large GLB files by providing a proper helper for size_t
+    reading
+  * Updated doc/Preamble.txt & SECURITY.md
+  * Fix vc140 compile error.
+  * Better README! Fixed discord link as well
+  * PyAssimp: Re-add 'aiProcess_Triangulate'
+  * Fixed Build.md
+  * Fix hasTangentsAndBitangents method in jassimp's AiMesh.java
+  * Added tangent handedness to glTF export
+  * Restore merging of near-identical vertices for JoinIdenticalVertices
+  * Add BOM skip and fix mtl parsing
+  * Clone meshlab/tinyusdz repos in default location
+  * Fix an invalid offsetof warning-as-error
+  * Add unit test for subdivision modifier on Blender importer
+  * Change strcpy to strncpy for format hint safety
+  * Update default material name handling
+  * Bugfix/fix sonarcube findings
+  * Update texture output format in AssxmlFileWriter
+  * Collada: Fix overflow in CopyVertex
+  * COB: fix validation for ascii header
+  * MD5: Fix face index allocation in MD5Parser
+  * Removed unnecessary copy constructor declaration in aiVector3t
+  * Made the README more tidy & fix Build.md
+  * Fix out-of-range access cause of aiProcess_GenNormals : array size
+    inconsistency of members of mesh after process
+  * Fix Heap-buffer-overflow in Q3DImporter::InternReadFile
+  * Revert "Refactoring: use using types (#6266)"
+  * fix: write textures to folder of PBRT file
+  * Refactor condition checks for empty vectors
+  * Fix sonarcube stuff
+  * Update contact email for reporting vulnerabilities
+  * [PyAssimp] Create pyproject.toml
+  * glTF2: Avoid lookups for generating IDs
+  * Refactor string checks and variable declarations
+  * Fix the doxygen documentation from public headers
+  * Added static cast for conversion from uLong to unsigned int for
+    compiler error
+  * Reorganize code top prevent security warning.
+  * Fix linkage
+  * Update LineSplitter.h
+  * Added missing scene extras properties for glTF2Importer
+  * Work In Progress: USD Referencing
+  * Delete test/other/streamload.py
+  * Fixed DXFHelper using float instead of ai_real
+  * Feature/pjoe fix fbx export
+  * Update copyright year in materialgen.py
+  * Only build collada test when importer/exporter is build
+  * Revert buggy PR
+  * Implement overflow check in Q3DLoader
+  * Update stb_image.h to version 2.30
+  * Delete cmake-modules/FindDevIL.cmake
+  * Update project details in Doxyfile
+  * Delete tools/coverity/assimp_modeling.cpp
+  * Fix incorrect FBX connection order
+  * Add new CMake preset for static build with double precision
+  * Add closing brace to CMakePresets.json
+  * Test against possible nullptr dereferencing
+  * Fix UTF-8 flag check in CMakeLists.txt
+  * Feature: Add EXT_texture_webp extension to glb importer
+  * Fuzzing: Add OSS-Fuzz integration and multiple format-specific fuzzers
+  * Add CHANGES.md file
+  * MDL: Fix synctype validation in MDLImporter to prevent OOB
+  * MDC: Fix heap OOB read by validating vertex buffer boundaries
+  * fuzz: Fix memory leak in ForceFormat helper
+  * MD5: Fix uninitialized pointer dereference for file with invalid
+    vertex index
+  * OBJ: avoid extra scanning while reading faces in ObjFileParser.cpp
+  * MDC: Fix MDCImporter surface header bounds and endianness checks
+  * MDL/HL1: bounds-checked buffers and safer parsing
+  * MD3: Fix MD3Importer surface header bounds checks to prevent
+    heap overflow
+
+-------------------------------------------------------------------
 Mon Jun  9 11:25:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.0.2
