@@ -587,4 +587,12 @@
   * Fix #14107 (GUI: add menu option to show EULA for cppcheck premium)</comment>
     <requestid>1304153</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>2459c4f8fa076c56107a55b29634bf11</srcmd5>
+    <version>2.19.0</version>
+    <time>1770832069</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1332320</requestid>
+  </revision>
 </revisionlist>

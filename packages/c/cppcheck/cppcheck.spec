@@ -1,7 +1,7 @@
 #
 # spec file for package cppcheck
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,26 +21,35 @@
 %else
 %bcond_without rules
 %endif
+%{?sle15_python_module_pythons}
+%if 0%{?suse_version} == 1500
+%define pyver python311
+%define pyexecutable python3.11
+%else
+# latest
+%define pyver python3
+%define pyexecutable python3
+%endif
 Name:           cppcheck
-Version:        2.18.3
+Version:        2.19.0
 Release:        0
 Summary:        A tool for static C/C++ code analysis
 License:        GPL-3.0-or-later
 URL:            https://github.com/danmar/cppcheck
 Source:         https://github.com/danmar/cppcheck/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         testcondition.patch
+BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  python3-base
-BuildRequires:  qt6-linguist-devel
+BuildRequires:  %{pyver}-base >= 3.7
 BuildRequires:  xsltproc
 BuildRequires:  z3-devel
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Help)
+BuildRequires:  pkgconfig(Qt6Linguist)
 BuildRequires:  pkgconfig(Qt6Network)
 BuildRequires:  pkgconfig(Qt6PrintSupport)
 BuildRequires:  pkgconfig(Qt6Test)
@@ -49,7 +58,7 @@ BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(libpcre)
 %endif
 ExcludeArch:    %ix86 %arm
-Requires:       python3-Pygments
+Requires:       %{pyver}-Pygments
 
 %description
 This program tries to detect bugs that your C/C++ compiler don't see. Cppcheck
@@ -85,7 +94,9 @@ doesn't see.
 %autosetup -p1
 
 %build
-%cmake \
+sed -i 's#/usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl#%{_datadir}/xml/docbook/stylesheet/nwalsh/current/manpages/docbook.xsl#' man/CMakeLists.txt
+
+%cmake_qt6 \
   -DCMAKE_CXX_FLAGS="%{optflags} -UNDEBUG" \
   -DFILESDIR="%{_datadir}/%{name}" \
   -DBUILD_GUI=ON \
@@ -95,17 +106,15 @@ doesn't see.
 %else
   -DHAVE_RULES=OFF \
 %endif
-  -DUSE_QT6=yes \
-  -DUSE_Z3=yes
-%cmake_build
+  -DUSE_Z3=yes \
+  -DBUILD_MANPAGE=ON
 
-# does not work with CMake, directly call provided Makefile from source directory
-cd ..
-%make_build man \
-    DB2MAN=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/manpages/docbook.xsl
+%qt6_build
+
+cmake --build %{__qt6_builddir} -t man
 
 # use python3 as interpreter
-sed -i "s|env python3|python3|g" htmlreport/cppcheck-htmlreport
+sed -i "s|env python3|%{pyexecutable}|g" htmlreport/cppcheck-htmlreport
 
 %check
 export CXXFLAGS="%{optflags}"
@@ -119,7 +128,7 @@ install -Dpm 0755 htmlreport/cppcheck-htmlreport \
   %{buildroot}%{_bindir}/cppcheck-htmlreport
 install -Dpm 0755 build/bin/cppcheck-gui \
   %{buildroot}%{_bindir}/cppcheck-gui
-install -Dpm 0644  cppcheck.1 \
+install -Dpm 0644 build/man/cppcheck.1 \
   %{buildroot}%{_mandir}/man1/cppcheck.1
 install -d %{buildroot}%{_datadir}/%{name}/cfg
 install -pm 0644 cfg/*.cfg %{buildroot}%{_datadir}/%{name}/cfg
@@ -130,9 +139,12 @@ install -pm 0644 addons/*.py %{buildroot}%{_datadir}/%{name}/addons
 # Give execute permission to python addons with a shebang to fix non-executable-script
 find %{buildroot}%{_datadir}/%{name}/addons -type f -size +0 -exec awk 'NR == 1 && /^#!.*python/ { exit } { exit 1 }' {} \; -print0 | xargs -0 chmod +x
 # Correct shebang to fix env-script-interpreter
-find %{buildroot}%{_datadir}/%{name}/addons -type f -size +0 -exec awk 'NR == 1 && /^#!.*python/ { exit } { exit 1 }' {} \; -print0 | xargs -0 sed -i "s|env python3|python3|g"
+find %{buildroot}%{_datadir}/%{name}/addons -type f -size +0 -exec awk 'NR == 1 && /^#!.*python/ { exit } { exit 1 }' {} \; -print0 | xargs -0 sed -i "s|env python3|%{pyexecutable}|g"
+#Cleanup rpath references
+chrpath --delete %{buildroot}%{_bindir}/cppcheck
+chrpath --delete %{buildroot}%{_bindir}/cppcheck-gui
 # Remove duplicate files
-%fdupes -s %{buildroot}%{_datadir}/%{name}/platforms
+%fdupes %{buildroot}%{_datadir}/%{name}/platforms
 
 %files
 %doc AUTHORS

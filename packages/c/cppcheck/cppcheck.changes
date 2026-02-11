@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Feb  7 20:29:34 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- TW fix and enable build for 15.6
+
+-------------------------------------------------------------------
+Sun Dec 21 19:05:24 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to 2.19.0
+  New checks:
+  * Detect zero initialization of unions in which its largest member
+    is not declared as the first one.
+  * Added warning when main() throws an exception
+  C/C++ support:
+  * Fixed syntax error for C++23 lambda without parameter clause
+  * Added support for typeof and __typeof operators
+- Drop testcondition.patch which is part of the release.
+- Use chrpath to fix rpath use in binaries
+
+-------------------------------------------------------------------
 Thu Sep 11 20:17:25 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.18.3:
