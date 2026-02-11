@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Feb 11 05:52:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.42.0:
+  * Added Features
+    - Add support for scanning GGUF models from OCI registries
+      [#4335 @spiffcs]
+    - yarn lockfile scan doesnt catch dev dependencies [#4548 #4549
+      @rezmoss]
+  * Additional Changes
+    - CPE detection for APK libavif to use aomedia vendor [#4597
+      @naag]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#4613)
+    - chore(deps): bump github.com/go-git/go-git/v5 from 5.16.4 to
+      5.16.5 (#4612)
+    - chore(deps): update CPE dictionary index (#4610)
+    - chore(deps): bump github.com/bmatcuk/doublestar/v4 (#4606)
+    - chore(deps): bump the actions-minor-patch group across 2
+      directories with 2 updates (#4607)
+    - chore(deps): update CPE dictionary index (#4601)
+    - chore(deps): update tools to latest versions (#4594)
+
+-------------------------------------------------------------------
 Wed Feb 04 06:04:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.41.2:
