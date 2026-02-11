@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 10 22:56:53 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Update license tag to curl 
+
+-------------------------------------------------------------------
 Tue Aug 19 14:27:03 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - Add trurl-395-exculdes-uppercase.patch to fix failing test,
