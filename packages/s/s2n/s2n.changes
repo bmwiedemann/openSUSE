@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb  6 11:23:25 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.7.0
+  * (chore): Rust bindings bump 0.3.33 (#5694)
+  * build(deps): update reqwest requirement from 0.12.7 to 0.13.1 in
+    /tests/pcap in the all-cargo-updates group across 1 directory (#5690)
+  * chore: bump to nixpkgs 2025.05 (#5489)
+  * chore: bump standard MSRV to 1.83 (#5700)
+  * Mark Kyber as unsupported on all LibCrypto variants (#5701)
+  * chore: update s2n-tls-hyper crates version to 0.1.0 (#5702)
+  * chore: move s2n-tls-bench to Codebuild (#5693)
+  * test(integration): add rust test for session resumption (#5683)
+  * test (integration): add renegotiate rust test (#5689)
+  * feat(bindings): expose disable_x509_intent_verification API (#5703)
+  * chore: add static lists of supported TLS parameters (#5698)
+  * chore: rust binding release v0.3.34 (#5707)
+
+-------------------------------------------------------------------
 Fri Jan  9 13:27:04 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.6.4
