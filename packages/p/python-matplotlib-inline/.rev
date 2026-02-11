@@ -60,4 +60,42 @@
     <comment></comment>
     <requestid>1169690</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9d91246601992c60c13538cda72dcfbd</srcmd5>
+    <version>0.2.1</version>
+    <time>1770832032</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.2.1:
+  * python 3.13 support
+  * move to flit
+  * test on python 3.14
+  * docstring fixes
+- Update to version 0.1.7
+  * Use short matplotlib backend name
+  * Add matplotlib.backend entry point
+  * Use pyproject.toml instead of setup.cfg
+- Use pyproject-based install
+- Skip testing with python 3.9: python39-ipython is no longer
+  available.
+- Add %{?sle15_python_module_pythons}
+- specfile:
+  * update copyright year
+- update to version 0.1.6:
+  * Return manager instead of None
+- changes from version 0.1.5:
+  * replace 0.1.4 on pypi, no changes
+- changes from version 0.1.4:
+  * Fix: always clear _draw_called
+  * Move draw_if_interactive logic to new_figure_manager_given_figure.
+  * Remove matplotlib rc overrides.
+  * Create __version__ attribute
+- Update to version 0.3
+  * Update project URL
+- initial specfile for version 0.2
+- new requirement for IPython 7.25 and IPyKernel 6
+- multibuild for rudimentary test in order to avoid depcycle with
+  ipython
+</comment>
+    <requestid>1330432</requestid>
+  </revision>
 </revisionlist>

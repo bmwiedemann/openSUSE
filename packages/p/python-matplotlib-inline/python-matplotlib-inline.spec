@@ -1,7 +1,7 @@
 #
 # spec file for package python-matplotlib-inline
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,14 +28,14 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-matplotlib-inline%{psuffix}
-Version:        0.1.7
+Version:        0.2.1
 Release:        0
 Summary:        Inline Matplotlib backend for Jupyter
 License:        BSD-3-Clause
 URL:            https://github.com/ipython/matplotlib-inline
 Source:         https://files.pythonhosted.org/packages/source/m/matplotlib-inline/matplotlib_inline-%{version}.tar.gz
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module traitlets}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
