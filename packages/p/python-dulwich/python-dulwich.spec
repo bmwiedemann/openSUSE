@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1650
 %bcond_without test
 %else
 %bcond_with test
@@ -25,7 +25,7 @@
 %{?sle15_python_module_pythons}
 %define oldpython python
 Name:           python-dulwich
-Version:        0.25.2
+Version:        1.0.0
 Release:        0
 Summary:        Pure-Python Git Library
 License:        Apache-2.0 OR GPL-2.0-or-later

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 11 11:14:14 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 1.0.0.
+  * More tests by @jelmer in #2066
+  * Document C git compatibility by @jelmer in #2067
+  * Remove deprecated functions by @jelmer in #2068
+
+-------------------------------------------------------------------
 Fri Jan 16 10:24:18 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.25.2
