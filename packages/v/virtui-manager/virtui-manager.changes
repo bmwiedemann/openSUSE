@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Feb 11 09:34:40 UTC 2026 - Antoine Ginies <aginies@suse.com>
+
+- version 1.8.0:
+  * add migration in bulk operation
+  * add copy/paste in GUI
+  * Fix issue freezing UI: card no more present
+  * update doc and images
+  * vmanager_cmd:
+    * add bash, vm_info, hibernate, snapshot capabilities
+    * improve vm selection to avoid error (VMNAME:UUID:SERVER)
+    * improve clone_vm
+    * fix issue with list vm (dict error)
+
+-------------------------------------------------------------------
+Mon Feb  9 16:03:44 UTC 2026 - Antoine Ginies <aginies@suse.com>
+
+- version 1.7.0:
+  * pylint and ruff check fixes
+  * fix wrong volume info (size)
+  * update doc
+  * update translations
+
+- version 1.6.2:
+  * faster quit GUI (threading)
+  * stop libvirt event loop before exiting
+  * fix ssh connexion while exiting
+  * fix missing constants text
+  * refactor vmcard for stats, buttons, duplicate code (get_uri and get_vm_identity_info)
+  * add vmcard pool stats
+
+- version 1.6.1:
+  * consistant naming fixes
+  * fix GUI wrapper
+  * update doc
+
+- version 1.6.0:
+  * check numatune and cputune before migration
+  * improve gui: new tabs: Log and Vmanager Command. add shortcuts and tab management
+  * vmanager_cmd: use autoconnect, add network management, virsh capabilities
+  * update the doc
+  * flatpak now use the default GUI as default
+
+-------------------------------------------------------------------
 Wed Feb  4 18:20:05 UTC 2026 - Antoine Ginies <aginies@suse.com>
 
 - version 1.5.0:
