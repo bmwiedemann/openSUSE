@@ -16,6 +16,7 @@
 #
 
 
+%{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-pathspec
 Version:        1.0.4

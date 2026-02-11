@@ -225,4 +225,13 @@
       pathspec.pathspec.PathSpec._match_file() (with a leading</comment>
     <requestid>1330656</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>d1374a4b44cd84f2eb14ef565664bc00</srcmd5>
+    <version>1.0.4</version>
+    <time>1770832024</time>
+    <user>anag_factory</user>
+    <comment>- Add pythons_for_pypi macro. This macro will help to build the python
+  minimal stack for different python versions.</comment>
+    <requestid>1331999</requestid>
+  </revision>
 </revisionlist>
