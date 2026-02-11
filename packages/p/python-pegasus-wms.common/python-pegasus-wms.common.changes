@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 11 09:17:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.9:
+  * Re-enabled PDF documentation
+  * PM-1953: Copied the method from the deprecated module's code
+    base into the file to fix the ModuleNotFoundError in Python 3.12
+  * PM-1736, PM-1910, PM-1943 cleanup of logic
+  * PM-1943 preserve PEGASUS_UPDATE_PYTHONPATH in the environment
+
+-------------------------------------------------------------------
 Tue Jan  3 11:58:52 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add pegasus-wms-python3-to-sys.executable.patch for compatibility

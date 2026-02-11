@@ -1,7 +1,7 @@
 #
 # spec file for package python-pegasus-wms.common
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%define skip_python2 1
 Name:           python-pegasus-wms.common
-Version:        5.0.3
+Version:        5.0.9
 Release:        0
 Summary:        Pegasus Workflow Management System Python Commons
 License:        Apache-2.0
@@ -62,6 +61,6 @@ sed -i 's/version=read_version(),/version="%{version}",/' setup.py
 %doc README.md
 %license LICENSE
 %{python_sitelib}/Pegasus
-%{python_sitelib}/pegasus_wms.common-%{version}.dist-info
+%{python_sitelib}/pegasus_wms_common-%{version}.dist-info
 
 %changelog
