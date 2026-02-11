@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Feb 11 11:58:36 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-azurestackhcivm
+  + python-azure-mgmt-carbonoptimization
+  + python-azure-mgmt-cloudhealth
+  + python-azure-mgmt-computerecommender
+  + python-azure-mgmt-containerservicesafeguards
+  + python-azure-mgmt-dependencymap
+  + python-azure-mgmt-kubernetesconfiguration-extensions
+  + python-azure-mgmt-kubernetesconfiguration-extensiontypes
+  + python-azure-mgmt-kubernetesconfiguration-fluxconfigurations
+  + python-azure-mgmt-lambdatesthyperexecute
+  + python-azure-mgmt-migrationdiscoverysap
+  + python-azure-mgmt-mongodbatlas
+  + python-azure-mgmt-neonpostgres
+  + python-azure-mgmt-onlineexperimentation
+  + python-azure-mgmt-planetarycomputer
+  + python-azure-mgmt-playwright
+  + python-azure-mgmt-purestorageblock
+  + python-azure-mgmt-resource-bicep
+  + python-azure-mgmt-sitemanager
+  + python-azure-mgmt-storageactions
+  + python-azure-mgmt-storagediscovery
+  + python-azure-mgmt-terraform
+  + python-azure-mgmt-trustedsigning
+  + python-azure-mgmt-workloadorchestration
+  + python-azure-mgmt-workloadssapvirtualinstance
+
+-------------------------------------------------------------------
 Wed Apr 30 08:05:48 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add additional packages from the Azure SDK to Requires

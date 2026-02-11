@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,19 +55,23 @@ Requires:       python-azure-mgmt-azureadb2c
 Requires:       python-azure-mgmt-azurearcdata
 Requires:       python-azure-mgmt-azurestack
 Requires:       python-azure-mgmt-azurestackhci
+Requires:       python-azure-mgmt-azurestackhcivm
 Requires:       python-azure-mgmt-baremetalinfrastructure
 Requires:       python-azure-mgmt-batch
 Requires:       python-azure-mgmt-batchai
 Requires:       python-azure-mgmt-billing
 Requires:       python-azure-mgmt-billingbenefits
 Requires:       python-azure-mgmt-botservice
+Requires:       python-azure-mgmt-carbonoptimization
 Requires:       python-azure-mgmt-cdn
 Requires:       python-azure-mgmt-chaos
+Requires:       python-azure-mgmt-cloudhealth
 Requires:       python-azure-mgmt-cognitiveservices
 Requires:       python-azure-mgmt-commerce
 Requires:       python-azure-mgmt-communication
 Requires:       python-azure-mgmt-compute
 Requires:       python-azure-mgmt-computefleet
+Requires:       python-azure-mgmt-computerecommender
 Requires:       python-azure-mgmt-computeschedule
 Requires:       python-azure-mgmt-confidentialledger
 Requires:       python-azure-mgmt-confluent
@@ -79,6 +83,7 @@ Requires:       python-azure-mgmt-containerorchestratorruntime
 Requires:       python-azure-mgmt-containerregistry
 Requires:       python-azure-mgmt-containerservice
 Requires:       python-azure-mgmt-containerservicefleet
+Requires:       python-azure-mgmt-containerservicesafeguards
 Requires:       python-azure-mgmt-core
 Requires:       python-azure-mgmt-cosmosdb
 Requires:       python-azure-mgmt-cosmosdbforpostgresql
@@ -98,6 +103,7 @@ Requires:       python-azure-mgmt-datamigration
 Requires:       python-azure-mgmt-dataprotection
 Requires:       python-azure-mgmt-datashare
 Requires:       python-azure-mgmt-defendereasm
+Requires:       python-azure-mgmt-dependencymap
 Requires:       python-azure-mgmt-deploymentmanager
 Requires:       python-azure-mgmt-desktopvirtualization
 Requires:       python-azure-mgmt-devcenter
@@ -147,8 +153,12 @@ Requires:       python-azure-mgmt-iothubprovisioningservices
 Requires:       python-azure-mgmt-iotoperations
 Requires:       python-azure-mgmt-keyvault
 Requires:       python-azure-mgmt-kubernetesconfiguration
+Requires:       python-azure-mgmt-kubernetesconfiguration-extensions
+Requires:       python-azure-mgmt-kubernetesconfiguration-extensiontypes
+Requires:       python-azure-mgmt-kubernetesconfiguration-fluxconfigurations
 Requires:       python-azure-mgmt-kusto
 Requires:       python-azure-mgmt-labservices
+Requires:       python-azure-mgmt-lambdatesthyperexecute
 Requires:       python-azure-mgmt-largeinstance
 Requires:       python-azure-mgmt-loadtesting
 Requires:       python-azure-mgmt-loadtestservice
@@ -167,11 +177,14 @@ Requires:       python-azure-mgmt-maps
 Requires:       python-azure-mgmt-marketplaceordering
 Requires:       python-azure-mgmt-media
 Requires:       python-azure-mgmt-migrationassessment
+Requires:       python-azure-mgmt-migrationdiscoverysap
 Requires:       python-azure-mgmt-mixedreality
 Requires:       python-azure-mgmt-mobilenetwork
+Requires:       python-azure-mgmt-mongodbatlas
 Requires:       python-azure-mgmt-monitor
 Requires:       python-azure-mgmt-msi
 Requires:       python-azure-mgmt-mysqlflexibleservers
+Requires:       python-azure-mgmt-neonpostgres
 Requires:       python-azure-mgmt-netapp
 Requires:       python-azure-mgmt-network
 Requires:       python-azure-mgmt-networkanalytics
@@ -182,11 +195,14 @@ Requires:       python-azure-mgmt-nginx
 Requires:       python-azure-mgmt-notificationhubs
 Requires:       python-azure-mgmt-nspkg
 Requires:       python-azure-mgmt-oep
+Requires:       python-azure-mgmt-onlineexperimentation
 Requires:       python-azure-mgmt-oracledatabase
 Requires:       python-azure-mgmt-orbital
 Requires:       python-azure-mgmt-paloaltonetworksngfw
 Requires:       python-azure-mgmt-peering
 Requires:       python-azure-mgmt-pineconevectordb
+Requires:       python-azure-mgmt-planetarycomputer
+Requires:       python-azure-mgmt-playwright
 Requires:       python-azure-mgmt-playwrighttesting
 Requires:       python-azure-mgmt-policyinsights
 Requires:       python-azure-mgmt-portal
@@ -195,6 +211,7 @@ Requires:       python-azure-mgmt-postgresqlflexibleservers
 Requires:       python-azure-mgmt-powerbidedicated
 Requires:       python-azure-mgmt-powerbiembedded
 Requires:       python-azure-mgmt-privatedns
+Requires:       python-azure-mgmt-purestorageblock
 Requires:       python-azure-mgmt-purview
 Requires:       python-azure-mgmt-quantum
 Requires:       python-azure-mgmt-qumulo
@@ -211,6 +228,7 @@ Requires:       python-azure-mgmt-regionmove
 Requires:       python-azure-mgmt-relay
 Requires:       python-azure-mgmt-reservations
 Requires:       python-azure-mgmt-resource
+Requires:       python-azure-mgmt-resource-bicep
 Requires:       python-azure-mgmt-resourceconnector
 Requires:       python-azure-mgmt-resourcegraph
 Requires:       python-azure-mgmt-resourcehealth
@@ -230,13 +248,16 @@ Requires:       python-azure-mgmt-servicefabricmanagedclusters
 Requires:       python-azure-mgmt-servicelinker
 Requires:       python-azure-mgmt-servicenetworking
 Requires:       python-azure-mgmt-signalr
+Requires:       python-azure-mgmt-sitemanager
 Requires:       python-azure-mgmt-sphere
 Requires:       python-azure-mgmt-springappdiscovery
 Requires:       python-azure-mgmt-sql
 Requires:       python-azure-mgmt-sqlvirtualmachine
 Requires:       python-azure-mgmt-standbypool
 Requires:       python-azure-mgmt-storage
+Requires:       python-azure-mgmt-storageactions
 Requires:       python-azure-mgmt-storagecache
+Requires:       python-azure-mgmt-storagediscovery
 Requires:       python-azure-mgmt-storageimportexport
 Requires:       python-azure-mgmt-storagemover
 Requires:       python-azure-mgmt-storagepool
@@ -245,9 +266,11 @@ Requires:       python-azure-mgmt-streamanalytics
 Requires:       python-azure-mgmt-subscription
 Requires:       python-azure-mgmt-support
 Requires:       python-azure-mgmt-synapse
+Requires:       python-azure-mgmt-terraform
 Requires:       python-azure-mgmt-testbase
 Requires:       python-azure-mgmt-timeseriesinsights
 Requires:       python-azure-mgmt-trafficmanager
+Requires:       python-azure-mgmt-trustedsigning
 Requires:       python-azure-mgmt-videoanalyzer
 Requires:       python-azure-mgmt-vmwarecloudsimple
 Requires:       python-azure-mgmt-voiceservices
@@ -255,7 +278,9 @@ Requires:       python-azure-mgmt-web
 Requires:       python-azure-mgmt-webpubsub
 Requires:       python-azure-mgmt-weightsandbiases
 Requires:       python-azure-mgmt-workloadmonitor
+Requires:       python-azure-mgmt-workloadorchestration
 Requires:       python-azure-mgmt-workloads
+Requires:       python-azure-mgmt-workloadssapvirtualinstance
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-mgmt <= 4.0.0

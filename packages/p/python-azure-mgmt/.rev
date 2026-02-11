@@ -356,4 +356,37 @@
     <comment></comment>
     <requestid>1273602</requestid>
   </revision>
+  <revision rev="31" vrev="28">
+    <srcmd5>c83ea2e8eed6814edc2c675dfd1cf570</srcmd5>
+    <version>4.0.0</version>
+    <time>1770832182</time>
+    <user>anag_factory</user>
+    <comment>- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-azurestackhcivm
+  + python-azure-mgmt-carbonoptimization
+  + python-azure-mgmt-cloudhealth
+  + python-azure-mgmt-computerecommender
+  + python-azure-mgmt-containerservicesafeguards
+  + python-azure-mgmt-dependencymap
+  + python-azure-mgmt-kubernetesconfiguration-extensions
+  + python-azure-mgmt-kubernetesconfiguration-extensiontypes
+  + python-azure-mgmt-kubernetesconfiguration-fluxconfigurations
+  + python-azure-mgmt-lambdatesthyperexecute
+  + python-azure-mgmt-migrationdiscoverysap
+  + python-azure-mgmt-mongodbatlas
+  + python-azure-mgmt-neonpostgres
+  + python-azure-mgmt-onlineexperimentation
+  + python-azure-mgmt-planetarycomputer
+  + python-azure-mgmt-playwright
+  + python-azure-mgmt-purestorageblock
+  + python-azure-mgmt-resource-bicep
+  + python-azure-mgmt-sitemanager
+  + python-azure-mgmt-storageactions
+  + python-azure-mgmt-storagediscovery
+  + python-azure-mgmt-terraform
+  + python-azure-mgmt-trustedsigning
+  + python-azure-mgmt-workloadorchestration
+  + python-azure-mgmt-workloadssapvirtualinstance (forwarded request 1332463 from glaubitz)</comment>
+    <requestid>1332486</requestid>
+  </revision>
 </revisionlist>
