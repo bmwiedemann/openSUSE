@@ -17,12 +17,12 @@
 
 %define skip_python311 1
 Name:           python-mistral-vibe
-Version:        1.3.5
+Version:        2.0.2
 Release:        0
 Summary:        Minimal CLI coding agent by Mistral
 License:        Apache-2.0
 URL:            https://github.com/mistralai/mistral-vibe
-Source:         https://files.pythonhosted.org/packages/source/m/mistral-vibe/mistral_vibe-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/m/mistral_vibe/mistral_vibe-%{version}.tar.gz
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module base >= 3.12}
 BuildRequires:  %{python_module editables}
@@ -31,7 +31,7 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 # SECTION test requirements
 BuildRequires:  %{python_module agent-client-protocol >= 0.6.3}
-BuildRequires:  %{python_module aiofiles >= 24.1.0}
+BuildRequires:  %{python_module anyio >= 4.12.0}
 BuildRequires:  %{python_module httpx >= 0.28.1}
 BuildRequires:  %{python_module jinja2}
 BuildRequires:  %{python_module jsonschema}
@@ -50,9 +50,11 @@ BuildRequires:  %{python_module pytest-textual-snapshot >= 1.1.0}
 BuildRequires:  %{python_module pytest-timeout >= 2.4.0}
 BuildRequires:  %{python_module pytest-xdist >= 3.8.0}
 BuildRequires:  %{python_module python-dotenv >= 1.0.0}
+BuildRequires:  %{python_module PyYAML >= 6.0.0}
 BuildRequires:  %{python_module respx >= 0.22.0}
 BuildRequires:  %{python_module rich >= 14.0.0}
 BuildRequires:  %{python_module textual >= 6.3.0}
+BuildRequires:  %{python_module textual-speedups >= 0.2.1}
 BuildRequires:  %{python_module tomli-w >= 1.2.0}
 BuildRequires:  %{python_module watchfiles >= 1.1.1}
 # /SECTION
@@ -71,6 +73,7 @@ Requires:       python-pytest-xdist >= 3.8.0
 Requires:       python-python-dotenv >= 1.0.0
 Requires:       python-rich >= 14.0.0
 Requires:       python-textual >= 6.3.0
+Requires:       python-textual-speedups >= 0.2.1
 Requires:       python-tomli-w >= 1.2.0
 Requires:       python-watchfiles >= 1.1.1
 Requires:       python-tree-sitter
