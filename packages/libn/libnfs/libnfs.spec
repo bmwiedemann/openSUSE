@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2015 Bjørn Lie, Bryne, Norway.
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +27,7 @@ License:        BSD-2-Clause AND LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          Productivity/Networking/NFS
 URL:            https://github.com/sahlberg/libnfs
 Source0:        %{url}/archive/libnfs-%{version}.tar.gz
+Patch0:         libnfs-5.0.3-glibc-2_43.patch
 BuildRequires:  autoconf
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -84,20 +86,21 @@ autoreconf -fiv
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libnfs%{sover} -p /sbin/ldconfig
-%postun -n libnfs%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libnfs%{sover}
 
 %files -n libnfs%{sover}
 %license COPYING LICENCE-LGPL-2.1.txt LICENCE-BSD.txt LICENCE-GPL-3.txt
 %doc README
-%{_libdir}/libnfs.so.*
+%{_libdir}/libnfs.so.%{sover}{,.*}
 
 %files devel
+%license COPYING LICENCE-LGPL-2.1.txt LICENCE-BSD.txt LICENCE-GPL-3.txt
 %{_libdir}/libnfs.so
 %{_includedir}/nfsc/
 %{_libdir}/pkgconfig/libnfs.pc
 
 %files -n utils-libnfs
+%license COPYING LICENCE-LGPL-2.1.txt LICENCE-BSD.txt LICENCE-GPL-3.txt
 %{_bindir}/nfs-*
 %{_mandir}/man1/nfs-*.1%{?ext_man}
 
