@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 11 10:43:21 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Update to version 2.7.0+git.1770801532.e9b787e5:
+  * Dev: replace 'cibadmin -!' with 'pacemakerd -F'
+
+-------------------------------------------------------------------
 Wed Feb  4 17:06:55 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
 
 - Strengthen hawk2 against immutable Mode (ped#14729) 
