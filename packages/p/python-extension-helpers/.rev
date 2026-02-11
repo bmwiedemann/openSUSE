@@ -66,4 +66,12 @@
     <comment></comment>
     <requestid>1293085</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5db2564ac34b1520107fc825c200299a</srcmd5>
+    <version>1.4.0</version>
+    <time>1770832079</time>
+    <user>anag_factory</user>
+    <comment>- Skip a test that is broken upstream.</comment>
+    <requestid>1332354</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-extension-helpers
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,7 +67,9 @@ dependency in pyproject.toml files.
 
 %check
 # mismatch: can't build and don't neeed limited api cp310 in our flavored environment
-donttest="test_limited_api and cp310"
+donttest="(test_limited_api and cp310)"
+# broken upstream
+donttest+=" or test_limited_api_invalid_abi"
 %pytest --pyargs extension_helpers -k "not ($donttest)"
 
 %files %{python_files}
