@@ -1,7 +1,7 @@
 #
 # spec file for package python-SQLAlchemy
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-SQLAlchemy
-Version:        2.0.44
+Version:        2.0.46
 Release:        0
 Summary:        Database Abstraction Library
 License:        MIT
@@ -34,9 +34,9 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python
-Requires:       python-greenlet > 0.4.17
-Requires:       python-typing_extensions >= 4.2.0
+Requires:       python >= 3.7
+Requires:       python-greenlet >= 1
+Requires:       python-typing_extensions >= 4.6.0
 Provides:       python-sqlalchemy = %{version}
 Obsoletes:      python-sqlalchemy < %{version}
 Conflicts:      python-SQLAlchemy1
@@ -46,7 +46,9 @@ Requires:       python-importlib-metadata
 # SECTION test requirements
 BuildRequires:  %{python_module greenlet > 0.4.17}
 BuildRequires:  %{python_module importlib-metadata}
-BuildRequires:  %{python_module pytest >= 4.4.0}
+BuildRequires:  %{python_module pytest < 10}
+BuildRequires:  %{python_module pytest >= 7.0.0}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module typing_extensions >= 4.2.0}
 # /SECTION
@@ -87,7 +89,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest_arch -n2 -q --nomemory --notimingintensive --nomypy -k 'not (test_parseconnect and CreateEngineTest and test_bad_args)'
+%pytest_arch -n2 -q --nomemory --notimingintensive --nomypy
 
 %files %{python_files}
 %license LICENSE

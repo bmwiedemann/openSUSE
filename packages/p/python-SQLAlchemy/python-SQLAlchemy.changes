@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb  9 18:17:05 UTC 2026 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Update to version 2.0.46
+  * Add BuildRequires for
+    - python-pytest-cov
+  * Reinstate tests
+    - test_parseconnect
+    - CreateEngineTest
+    - test_bad_args
+    These tests are passing with version 2.0.46
+  * Change version numbers according to specification
+  * Changelog:
+  https://docs.sqlalchemy.org/en/21/changelog/changelog_20.html#change-2.0.46
+
+- Changes in version 2.0.45
+  * Changelog:
+  https://docs.sqlalchemy.org/en/21/changelog/changelog_20.html#change-2.0.45
+
+-------------------------------------------------------------------
 Mon Nov 10 08:31:29 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.44:
