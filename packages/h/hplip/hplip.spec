@@ -1,7 +1,7 @@
 #
 # spec file for package hplip
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -627,11 +627,11 @@ pushd %{buildroot}%{_datadir}/cups/model/manufacturer-PPDs/%{name}
 set +x
 
 # Create appropriate sub-directories for PPDs:
-install -d %{buildroot}%{_datadir}/cups/model/manufacturer-PPDs/%{name}-ps
-install -d %{buildroot}%{_datadir}/cups/model/manufacturer-PPDs/%{name}-hpps
-install -d %{buildroot}%{_datadir}/cups/model/manufacturer-PPDs/%{name}-plugin
-install -d %{buildroot}%{_datadir}/cups/model/manufacturer-PPDs/%{name}-hpcups
-install -d %{buildroot}%{_datadir}/cups/model/manufacturer-PPDs/%{name}-fax
+install -d %{buildroot}%{_datadir}/cups/model/manufacturer-PPDs/%{name}/ps
+install -d %{buildroot}%{_datadir}/cups/model/manufacturer-PPDs/%{name}/hpps
+install -d %{buildroot}%{_datadir}/cups/model/manufacturer-PPDs/%{name}/plugin
+install -d %{buildroot}%{_datadir}/cups/model/manufacturer-PPDs/%{name}/hpcups
+install -d %{buildroot}%{_datadir}/cups/model/manufacturer-PPDs/%{name}/fax
 
 gunzip *.ppd.gz
 for p in *.ppd
@@ -642,7 +642,7 @@ do
     echo -en '\n' >>"$p"
     # Move PPDs into appropriate sub-directories:
     if grep -q '^\*NickName:.*requires proprietary plugin' "$p"; then
-        dir=../%{name}-plugin
+        dir=./plugin
     else
 	filter=$( grep -m1 cupsFilter "$p" ) || true
 	case $filter in
@@ -651,13 +651,13 @@ do
 		# see https://bugzilla.suse.com/show_bug.cgi?id=1250481#c1
 		continue;;
 	    *hpcupsfax*|*hpcdmfax*)
-		dir=../%{name}-fax;;
+		dir=./fax;;
 	    *hpcups*)
-		dir=../%{name}-hpcups;;
+		dir=./hpcups;;
 	    *hpps*)
-		dir=../%{name}-hpps;;
+		dir=./hpps;;
 	    "")
-		dir=../%{name}-ps;;
+		dir=./ps;;
 	esac
    fi
    gzip -n -9 "$p"
@@ -796,6 +796,7 @@ exit 0
 %dir %{_datadir}/cups
 %dir %{_datadir}/cups/model
 %dir %{_datadir}/cups/model/manufacturer-PPDs
+%dir %{_datadir}/cups/model/manufacturer-PPDs/%{name}
 # Use fixed "/var/log/hp" because this is hardcoded in the HPLIP sources.
 # Regarding attr(0775,root,lp) see the comment for /var/log/hp/tmp below:
 %dir %attr(0775,root,lp) %{_localstatedir}/log/hp
@@ -828,19 +829,19 @@ exit 0
 %{drvdir}/hpcups.drv
 
 %files ppds-hpcups
-%{_datadir}/cups/model/manufacturer-PPDs/%{name}-hpcups
+%{_datadir}/cups/model/manufacturer-PPDs/%{name}/hpcups
 
 %files ppds-hpps
-%{_datadir}/cups/model/manufacturer-PPDs/%{name}-hpps
+%{_datadir}/cups/model/manufacturer-PPDs/%{name}/hpps
 
 %files ppds-postscript
-%{_datadir}/cups/model/manufacturer-PPDs/%{name}-ps
+%{_datadir}/cups/model/manufacturer-PPDs/%{name}/ps
 
 %files ppds-plugin
-%{_datadir}/cups/model/manufacturer-PPDs/%{name}-plugin
+%{_datadir}/cups/model/manufacturer-PPDs/%{name}/plugin
 
 %files ppds-fax
-%{_datadir}/cups/model/manufacturer-PPDs/%{name}-fax
+%{_datadir}/cups/model/manufacturer-PPDs/%{name}/fax
 
 %files sane
 %dir %{_libdir}/sane

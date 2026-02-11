@@ -1620,4 +1620,12 @@ Fixes build in Staging_A (python 3.13) - and seems to address the real reaason w
     <comment>Remove dependency on update-desktop-files for factory</comment>
     <requestid>1320016</requestid>
   </revision>
+  <revision rev="167" vrev="4">
+    <srcmd5>f551f17ad1c87372dac65681a39b6620</srcmd5>
+    <version>3.25.6</version>
+    <time>1770833528</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1332210</requestid>
+  </revision>
 </revisionlist>
