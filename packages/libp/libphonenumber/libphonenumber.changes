@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Feb 10 21:10:02 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 9.0.23:
+  * Updated alternate formatting data for country calling code(s):
+    595
+  * Updated phone metadata for region code(s):
+    AS, BE, CD, EH, GY, IR, JM, MA, MU, PY, SA, US
+  * Updated short number metadata for region code(s):
+    PY
+  * Updated carrier data for country calling code(s):
+    98 (en, fa), 243 (en), 357 (en), 966 (en), 1658 (en)
+- includes changes from 9.0.22:
+  * Updated phone metadata for region code(s):
+    AE, AG, AI, AS, BB, BM, BS, CA, DM, DO, GD, GU, HK, JM, KN, KR,
+    KY, LC, MA, MP, MS, PR, SG, SX, TC, TT, UG, US, VC, VG, VI
+  * Updated geocoding data for country calling code(s):
+    1305 (en)
+  * Updated carrier data for country calling code(s):
+    33 (en), 34 (en), 39 (en), 41 (en), 65 (en), 81 (en), 255 (en),
+    256 (en), 852 (en, zh, zh_Hant), 971 (en)
+
+-------------------------------------------------------------------
 Wed Dec 24 06:26:43 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 9.0.21:

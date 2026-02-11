@@ -2,7 +2,7 @@
 # spec file for package libphonenumber
 #
 # Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define lib_ver 9
 %define lib_ver2 9.0
 Name:           libphonenumber
-Version:        9.0.21
+Version:        9.0.23
 Release:        0
 Summary:        Library for parsing, formatting, and validating international phone numbers
 License:        Apache-2.0
