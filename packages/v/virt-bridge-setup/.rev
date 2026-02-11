@@ -145,4 +145,12 @@ version 2.0:
   * clarify indentation</comment>
     <requestid>1331015</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>56854c5a8623a9248a824066eeaa114d</srcmd5>
+    <version>2.9</version>
+    <time>1770832155</time>
+    <user>anag_factory</user>
+    <comment>fix getting source, now get it from github</comment>
+    <requestid>1332432</requestid>
+  </revision>
 </revisionlist>

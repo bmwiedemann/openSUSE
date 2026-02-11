@@ -22,7 +22,7 @@ Summary:        Script to setup virtual bridges
 License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://github.com/aginies/virt-bridge-setup
-Source0:        https://github.com/aginies/virt-bridge-setup/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/aginies/virt-bridge-setup/archive/refs/tags/%{version}.tar.gz
 BuildArch:      noarch
 Requires:       NetworkManager
 Requires: 	python3-dbus-python

@@ -1,0 +1,8 @@
+<services>
+  <service name="download_url" mode="manual">
+    <param name="host">github.com</param>
+    <param name="protocol">https</param>
+    <param name="path">/aginies/virt-bridge-setup/archive/refs/tags/2.9.tar.gz</param>
+    <param name="filename">2.9.tar.gz</param>
+  </service>
+</services>
