@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Feb 10 23:10:37 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to the version 4.54.0:
+  - Update Translations
+  - Plugin BG settings: Remove 'old' vs 'new' BG handling
+    verbiage
+  - adapter_ficbooknet: Change how replace_text_formatting
+    converts to text.
+  - BrowserCache: Add comment about py2 and gzip.decompress
+  - Don't give format section warnings for fix_excess_space
+  - adapter_storiesonlinenet: Site changed, get series number
+    from series page now.
+  - adapter_ficbooknet: Add replace_text_formatting option to
+    replace CSS paragraphing with tags, for txt output.
+  - adapter_royalroadcom: Fix login failure reporting #1302
+  - Image Handling Changes
+  - base_xenforo2forum_adapter: Fix include_nonauthor_poster: Had
+    left testing conditional
+
+-------------------------------------------------------------------
 Tue Jan 27 16:44:19 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to the version 4.53.0:
