@@ -1,7 +1,7 @@
 #
 # spec file for package python3-pyside6
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define tar_name pyside-setup-everywhere-src
-%define tar_version 6.10.1
+%define tar_version 6.10.2
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%flavor" == ""
@@ -43,7 +43,7 @@ ExclusiveArch:  donotbuild
 %endif
 
 Name:           %{mypython}-%{pyside_flavor}
-Version:        6.10.1
+Version:        6.10.2
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        (GPL-2.0-only AND (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-3.0-only WITH Qt-GPL-exception-1.0) OR LGPL-3.0-only
@@ -232,6 +232,9 @@ Python bindings for the Qt cross-platform application and UI framework
 
 # Restore 6.6.1 RPATH value. rpmlint will complain otherwise
 sed -i 's#${base}/../shiboken6/##' sources/pyside6/CMakeLists.txt
+
+# The fix for https://qt-project.atlassian.net/browse/PYSIDE-3233 breaks our builds
+sed -i 's#Development.Module#Development#' sources/shiboken6/cmake/ShibokenHelpers.cmake
 
 %build
 _libsuffix=$(echo %{_lib} | cut -b4-)
