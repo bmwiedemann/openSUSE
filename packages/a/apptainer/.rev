@@ -504,4 +504,18 @@
   * GO-2025-4116 - CVE-2025-47913</comment>
     <requestid>1325744</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>50fcc83261784354629e94aeb5cccf65</srcmd5>
+    <version>1.4.5</version>
+    <time>1770832166</time>
+    <user>anag_factory</user>
+    <comment>- Fix HTML parser misimplementation of a part of the HTML
+  specification for table related tags (CVE-2025-58190,
+  GO-2026-4441, bsc#1258047).
+- Fix issue where the HTML parser takes a very long time or
+  even never returns (CVE-2025-47911, GO-2026-4440, bsc#1258048).
+
+  * GO-2025-4134 - CVE-2025-58181 - bsc#1253924 (forwarded request 1332450 from eeich)</comment>
+    <requestid>1332454</requestid>
+  </revision>
 </revisionlist>

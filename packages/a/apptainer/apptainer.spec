@@ -46,6 +46,10 @@ BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  git
 BuildRequires:  go >= 1.19
+%if 0%{?install_vulncheck:1}
+BuildRequires:  govulncheck
+BuildRequires:  govulncheck-vulndb
+%endif
 BuildRequires:  libseccomp-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  make
