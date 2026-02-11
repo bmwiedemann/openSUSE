@@ -175,4 +175,41 @@
     exit code when test passed on rerun.</comment>
     <requestid>1226221</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>bac806eed1cf7d83b790a2c765570fbd</srcmd5>
+    <version>16.1</version>
+    <time>1770832049</time>
+    <user>anag_factory</user>
+    <comment> - Update to version 16.1
+   * Change version requirements to specification.
+   * Change source path to reflect change in source name.
+   * Drop support for Python 3.9.
+   * Changed &quot;localhost&quot; to &quot;127.0.0.1&quot; to avoid bad 
+     hostname resolution.
+   * Added ``--force-reruns`` to override rerun count globally.
+     Fixes #306 
+     &lt;https://github.com/pytest-dev/pytest-rerunfailures/issues/306&gt;.
+- Changes in version 16.0.1
+  * Reverted the ability to access error attributes because of an 
+    incompatibility with 
+    `pytest-xdist &lt;https://github.com/pytest-dev/pytest-xdist/issues/843&gt;.
+    Fixes #302 
+    &lt;https://github.com/pytest-dev/pytest-rerunfailures/issues/302&gt;,
+    and  #303 
+    &lt;https://github.com/pytest-dev/pytest-rerunfailures/issues/303&gt;.
+- Changes in version 16.0
+  * Drop support for pytest &lt; 8.
+  * Add support for pytest 8.4.x.
+  * Add support for upcoming Python 3.14.
+  * Allow ``@pytest.mark.flaky(condition)`` to accept a callable or
+    a string to be evaluated. The evaluated string has access to 
+    the exception instance via the ``error`` object. #230
+    &lt;https://github.com/pytest-dev/pytest-rerunfailures/issues/230&gt;.
+- Changes in version 15.1
+  * Fix ``--fail-on-flaky`` option to fail the test run with custom 
+    exit code only when reruns are detected. #287 
+    &lt;https://github.com/pytest-dev/pytest-rerunfailures/issues/287&gt;
+  * Switched to using the SPDX license identifier in the</comment>
+    <requestid>1332173</requestid>
+  </revision>
 </revisionlist>

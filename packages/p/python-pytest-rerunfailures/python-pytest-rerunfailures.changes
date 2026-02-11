@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Feb  9 16:40:28 UTC 2026 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+ - Update to version 16.1
+   * Change version requirements to specification.
+   * Change source path to reflect change in source name.
+   * Drop support for Python 3.9.
+   * Changed "localhost" to "127.0.0.1" to avoid bad 
+     hostname resolution.
+   * Added ``--force-reruns`` to override rerun count globally.
+     Fixes #306 
+     <https://github.com/pytest-dev/pytest-rerunfailures/issues/306>.
+- Changes in version 16.0.1
+  * Reverted the ability to access error attributes because of an 
+    incompatibility with 
+    `pytest-xdist <https://github.com/pytest-dev/pytest-xdist/issues/843>.
+    Fixes #302 
+    <https://github.com/pytest-dev/pytest-rerunfailures/issues/302>,
+    and  #303 
+    <https://github.com/pytest-dev/pytest-rerunfailures/issues/303>.
+- Changes in version 16.0
+  * Drop support for pytest < 8.
+  * Add support for pytest 8.4.x.
+  * Add support for upcoming Python 3.14.
+  * Allow ``@pytest.mark.flaky(condition)`` to accept a callable or
+    a string to be evaluated. The evaluated string has access to 
+    the exception instance via the ``error`` object. #230
+    <https://github.com/pytest-dev/pytest-rerunfailures/issues/230>.
+- Changes in version 15.1
+  * Fix ``--fail-on-flaky`` option to fail the test run with custom 
+    exit code only when reruns are detected. #287 
+    <https://github.com/pytest-dev/pytest-rerunfailures/issues/287>
+  * Switched to using the SPDX license identifier in the 
+    project metadata.
+  * Change exception filtering logic to match ``AssertionError`` 
+    raised via ``assert`` statements when filtering by 
+    "AssertionError".#292 
+    <https://github.com/pytest-dev/pytest-rerunfailures/issues/292>
+-------------------------------------------------------------------
 Mon Nov 25 09:07:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 15.0:
