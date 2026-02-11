@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Feb  3 20:43:56 UTC 2026 - munix9@googlemail.com
+
+- Use system libusb library (>= 1.0.28 with SuperSpeedPlus
+  support) for Leap 16
+
+-------------------------------------------------------------------
+Tue Feb  3 10:45:10 UTC 2026 - munix9@googlemail.com
+
+- Add fix-legacy-USB-driver-default.patch
+  * Make legacy USB driver default on Linux (gh#nmeum/android-tools#190)
+- Add fix-missing-cstdint-includes-for-gcc16.patch
+  * Include missing cstdint header (gh#nmeum/android-tools#191)
+- Remove 'go' as a build requirement (only needed eg. for the
+  boringssl test suite)
+- Fix build on SLFO_Main (use system fmt)
+
+-------------------------------------------------------------------
 Tue Jul 22 10:20:58 UTC 2025 - munix9@googlemail.com
 
 - Add fix-libusb-enumeration.patch

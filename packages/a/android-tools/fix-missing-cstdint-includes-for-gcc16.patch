@@ -1,0 +1,58 @@
+From 5b417e7577075ebef7c80bfdb75f89a4be4cd8de Mon Sep 17 00:00:00 2001
+From: meator <meator.dev@gmail.com>
+Date: Wed, 14 Jan 2026 11:57:22 +0100
+Subject: [PATCH 1/2] Include missing cstdint header
+
+This code relied on the fact that some system headers pulled <cstdint>,
+so it did not bother to include it itself. However, this behavior is not
+specified, so compiler updates can break the code by no longer including
+this header.
+---
+ vendor/libbase/hex.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/vendor/libbase/hex.cpp b/vendor/libbase/hex.cpp
+index a4b7715..c46f42d 100644
+--- a/vendor/libbase/hex.cpp
++++ b/vendor/libbase/hex.cpp
+@@ -18,6 +18,8 @@
+ 
+ #include "android-base/logging.h"
+ 
++#include <cstdint>
++
+ namespace android {
+ namespace base {
+ 
+-- 
+2.52.0
+
+
+From f97ee86871920bdf4c7bd3278c1ad0234cd81251 Mon Sep 17 00:00:00 2001
+From: meator <meator.dev@gmail.com>
+Date: Wed, 14 Jan 2026 12:13:37 +0100
+Subject: [PATCH 2/2] Include missing cstdint header
+
+This code relied on the fact that some system headers pulled <cstdint>,
+so it did not bother to include it itself. However, this behavior is not
+specified, so compiler updates can break the code by no longer including
+this header.
+---
+ vendor/libziparchive/include/ziparchive/zip_writer.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/vendor/libziparchive/include/ziparchive/zip_writer.h b/vendor/libziparchive/include/ziparchive/zip_writer.h
+index 268e8b6..c85be2a 100644
+--- a/vendor/libziparchive/include/ziparchive/zip_writer.h
++++ b/vendor/libziparchive/include/ziparchive/zip_writer.h
+@@ -18,6 +18,7 @@
+ 
+ #include <cstdio>
+ #include <ctime>
++#include <cstdint>
+ 
+ #include <gtest/gtest_prod.h>
+ #include <memory>
+-- 
+2.52.0
+

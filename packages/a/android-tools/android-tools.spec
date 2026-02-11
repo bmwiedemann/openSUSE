@@ -1,7 +1,7 @@
 #
 # spec file for package android-tools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 %bcond_without  bundled_libfmt
 %bcond_without  bundled_libusb
 %else
@@ -37,8 +37,11 @@ Patch0:         fix-install-completion.patch
 Patch1:         fix-protobuf-30-compat.patch
 # PATCH-FIX-UPSTREAM fix-libusb-enumeration.patch gh#nmeum/android-tools#153
 Patch2:         fix-libusb-enumeration.patch
+# PATCH-FIX-UPSTREAM fix-legacy-USB-driver-default.patch gh#nmeum/android-tools#190
+Patch3:         fix-legacy-USB-driver-default.patch
+# PATCH-FIX-UPSTREAM fix-missing-cstdint-includes-for-gcc16.patch gh#nmeum/android-tools#191
+Patch4:         fix-missing-cstdint-includes-for-gcc16.patch
 BuildRequires:  cmake >= 3.12
-BuildRequires:  go
 BuildRequires:  llvm-gold
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -51,8 +54,8 @@ BuildRequires:  pkgconfig(libunwind-generic)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(protobuf) >= 21
 BuildRequires:  pkgconfig(zlib)
-Suggests:       %{name}-mkbootimg = %{version}
-Suggests:       %{name}-partition = %{version}
+Suggests:       %{name}-mkbootimg
+Suggests:       %{name}-partition
 Suggests:       android-udev-rules
 Provides:       %{name}-python3 = %{version}-%{release}
 Obsoletes:      %{name}-python3 < %{version}-%{release}
@@ -112,7 +115,6 @@ Bash command line completion support for android-tools.
 
 %build
 %define __builder ninja
-export GOFLAGS="-buildmode=pie -trimpath -ldflags=-buildid="
 
 %cmake \
 %if 0%{?suse_version} < 1600
