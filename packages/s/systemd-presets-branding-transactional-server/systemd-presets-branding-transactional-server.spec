@@ -23,7 +23,7 @@ Release:        0
 Summary:        Systemd presets for Transactional Server System Role
 License:        MIT
 Group:          System/Base
-Source0:        50-transactional-server.preset
+Source0:        transactional-server.preset
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  systemd-presets-common-SUSE-devel
 Requires(pre):  coreutils
@@ -43,7 +43,7 @@ Service presets for systemd for Transactional Server System Role.
 %install
 mkdir -p %{buildroot}%{_prefix}/lib/%{generic_name}
 mkdir -p %{buildroot}%{_prefix}/lib/systemd/system-preset
-install -m644 %{SOURCE0}  %{buildroot}%{_prefix}/lib/systemd/system-preset/
+install -Dm0644 %{SOURCE0}  %{buildroot}%{_prefix}/lib/systemd/system-preset/87-transactional-server.preset
 
 %pre
 %systemd_preset_pre

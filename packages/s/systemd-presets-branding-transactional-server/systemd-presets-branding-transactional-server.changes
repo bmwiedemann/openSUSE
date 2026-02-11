@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 15 11:28:25 UTC 2026 - Callum Farmer <gmbr3@opensuse.org>
+
+- Re-number role/sub-distro preset to 87
+  (SUSE default is 95, openSUSE sub is 90, display managers
+  will be 85 - systemd counts down regardless of directory)
+
+-------------------------------------------------------------------
 Fri Jan  9 15:04:09 UTC 2026 - Callum Farmer <gmbr3@opensuse.org>
 
 - Modernize specfile
