@@ -1905,7 +1905,6 @@
     <package name="libepub0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libepubgen-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liberation-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libesmtp6_2_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libespeak-ng1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libestr0" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
     <package name="libetebase0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2446,7 +2445,7 @@
     <package name="libopenconnect5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libopencore-amrnb0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libopencore-amrwb0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libopencv412" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libopencv413" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libopenh264-8" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libopeniscsiusr0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libopenjp2-7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

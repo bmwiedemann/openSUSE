@@ -228,6 +228,7 @@ unsorted:
   - PDAL-bash-completion 
   - PDAL-devel 
   - PDAL-doc 
+  - PackageKit-backend-dnf5 
   - PackageKit-branding-upstream 
   - PackageKit-devel 
   - PgTcl 
@@ -3329,6 +3330,7 @@ unsorted:
   - dmraid 
   - dmraid-devel 
   - dmz-icon-theme-cursors 
+  - dnf-data 
   - dnf-plugins-core 
   - dnf-plugins-core-lang 
   - dnf4 
@@ -3989,6 +3991,7 @@ unsorted:
   - fatrace 
   - fatsort 
   - faugus-launcher 
+  - faugus-launcher-lang 
   - faust 
   - faust-android-devel 
   - faust-devel 
@@ -12979,12 +12982,15 @@ unsorted:
   - libdnet-devel 
   - libdnet1 
   - libdnf-devel 
+  - libdnf2 
   - libdnf5-cli-devel 
   - libdnf5-cli3 
   - libdnf5-devel 
   - libdnf5-plugin-actions 
+  - libdnf5-plugin-appstream 
   - libdnf5-plugin-expired-pgp-keys 
   - libdnf5-plugin-local 
+  - libdnf5_2 
   - libdnnl3 
   - libdns_sd 
   - libdns_sd-32bit 
@@ -13111,6 +13117,7 @@ unsorted:
   - libesedb-tools 
   - libesedb1 
   - libesmtp-devel 
+  - libesmtp6_2_0 
   - libestr-devel 
   - libetebase-devel 
   - libetonyek-devel 
@@ -13333,6 +13340,7 @@ unsorted:
   - libfmos-devel 
   - libfmos1 
   - libfmt10 
+  - libfmt12 
   - libfmt12-32bit 
   - libfmt9 
   - libfole-devel 
@@ -15150,18 +15158,19 @@ unsorted:
   - libopencsd1 
   - libopencsd_c_api1 
   - libopencsg1 
-  - libopencv_aruco412 
-  - libopencv_face412 
-  - libopencv_gapi412 
-  - libopencv_highgui412 
-  - libopencv_highgui412-qt6 
-  - libopencv_imgcodecs412 
-  - libopencv_objdetect412 
-  - libopencv_optflow412 
-  - libopencv_superres412 
-  - libopencv_videoio412 
-  - libopencv_videostab412 
-  - libopencv_ximgproc412 
+  - libopencv_aruco413 
+  - libopencv_face413 
+  - libopencv_gapi413 
+  - libopencv_highgui413 
+  - libopencv_highgui413-gtk3 
+  - libopencv_highgui413-qt6 
+  - libopencv_imgcodecs413 
+  - libopencv_objdetect413 
+  - libopencv_optflow413 
+  - libopencv_superres413 
+  - libopencv_videoio413 
+  - libopencv_videostab413 
+  - libopencv_ximgproc413 
   - libopendkim11 
   - libopenh264-8-32bit 
   - libopenh264-devel 
@@ -16041,6 +16050,7 @@ unsorted:
   - libreplaygain-devel 
   - libreplaygain1 
   - librepo-devel 
+  - librepo0 
   - librepods 
   - libreport 
   - libreport-anaconda 
@@ -16179,6 +16189,7 @@ unsorted:
   - libscrypt0 
   - libscrypt0-x86-64-v3 
   - libsdb2_2_4 
+  - libsdbus-c++2 
   - libseafile0 
   - libseagull0 
   - libsearpc-devel 
@@ -18839,7 +18850,6 @@ unsorted:
   - miao-fonts 
   - micro-editor 
   - microcom 
-  - microdnf 
   - microos-devel-tools 
   - micropython 
   - micropython-lib 
@@ -20576,8 +20586,10 @@ unsorted:
   - openSUSE-release-tools-metrics-access 
   - openSUSE-release-tools-origin-manager 
   - openSUSE-release-tools-pkglistgen 
+  - openSUSE-release-tools-plat 
   - openSUSE-release-tools-publish-distro 
   - openSUSE-release-tools-repo-checker 
+  - openSUSE-release-tools-scm 
   - openSUSE-release-tools-slsa-build-service 
   - openSUSE-release-tools-staging-bot 
   - openSUSE-release-usb-gnome 
@@ -20643,6 +20655,8 @@ unsorted:
   - opencv 
   - opencv-devel 
   - opencv-doc 
+  - opencv-gtk3 
+  - opencv-gtk3-devel 
   - opencv-nogui 
   - opencv-nogui-devel 
   - opencv-qt6 
@@ -22984,6 +22998,7 @@ unsorted:
   - picom 
   - picom-conf 
   - picom-conf-lang 
+  - picom-devel 
   - picotool 
   - picplanner 
   - picplanner-lang 
