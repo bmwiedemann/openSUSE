@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Feb 11 05:58:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.17:
+  * build(deps): bump github.com/charmbracelet/bubbles from
+    0.21.1-0.20250623103423-23b8fd6302d7 to 0.21.1 (#693)
+  * build(deps): bump github.com/sirupsen/logrus from 1.9.3 to
+    1.9.4 (#598)
+  * refactor(robot): dynamically fetch and sort permissions with
+    improved error handling (#690)
+  * #fix: improve replication policy config logging and credential
+    error m… (#649)
+  * feat: adding sbom generation in release pipeline (#646)
+  * fix: add refresh-interval validation (#678)
+  * remove redeclaration of projectName (#677)
+  * fix: correct typos across codebase (#630)
+  * feat(user): add confirm password field to user create command
+    (#683)
+  * Fix harbor-cli project logs returning no output (#587)
+  * feat : vulnerability-summary-table-format (#618)
+  * test: Add unit tests for documentation generation (#597)
+  * fix(member): add username validation in member creation view
+    (#615)
+  * docs: add Community call details to README (#602)
+  * fix: missing sign for multiple tags release workflow (#612)
+  * fix: vulnerability check should not fail pipeline (#610)
+  * Fix Two Release Workflows running (#608)
+  * fix: release workflow (#605)
+  * fix: fixing release error (#601)
+  * fix: main pipeline push image fix (#599)
+
+-------------------------------------------------------------------
 Tue Jan 20 15:08:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.16:
