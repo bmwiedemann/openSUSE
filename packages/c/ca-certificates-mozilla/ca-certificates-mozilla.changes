@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Feb 10 12:24:31 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 2.84 state (bsc#1258002)
+  - Removed:
+    - Baltimore CyberTrust Root
+    - CommScope Public Trust ECC Root-01
+    - CommScope Public Trust ECC Root-02
+    - CommScope Public Trust RSA Root-01
+    - CommScope Public Trust RSA Root-02
+    - DigiNotar Root CA
+
+  - Added: 
+    - e-Szigno TLS Root CA 2023
+    - OISTE Client Root ECC G1
+    - OISTE Client Root RSA G1
+    - OISTE Server Root ECC G1
+    - OISTE Server Root RSA G1
+    - SwissSign RSA SMIME Root CA 2022 - 1
+    - SwissSign RSA TLS Root CA 2022 - 1
+    - TrustAsia SMIME ECC Root CA
+    - TrustAsia SMIME RSA Root CA
+    - TrustAsia TLS ECC Root CA
+    - TrustAsia TLS RSA Root CA
+
+-------------------------------------------------------------------
 Fri Apr 11 10:42:18 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - reenable the distrusted certs again. the distrust is only for certs

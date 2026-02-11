@@ -912,4 +912,31 @@
   remove: remove-distrusted.patch</comment>
     <requestid>1268602</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>196725ee4992f5591c2a10948a639734</srcmd5>
+    <version>2.84</version>
+    <time>1770833534</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 2.84 state (bsc#1258002)
+  - Removed:
+    - Baltimore CyberTrust Root
+    - CommScope Public Trust ECC Root-01
+    - CommScope Public Trust ECC Root-02
+    - CommScope Public Trust RSA Root-01
+    - CommScope Public Trust RSA Root-02
+    - DigiNotar Root CA
+  - Added: 
+    - e-Szigno TLS Root CA 2023
+    - OISTE Client Root ECC G1
+    - OISTE Client Root RSA G1
+    - OISTE Server Root ECC G1
+    - OISTE Server Root RSA G1
+    - SwissSign RSA SMIME Root CA 2022 - 1
+    - SwissSign RSA TLS Root CA 2022 - 1
+    - TrustAsia SMIME ECC Root CA
+    - TrustAsia SMIME RSA Root CA
+    - TrustAsia TLS ECC Root CA
+    - TrustAsia TLS RSA Root CA (forwarded request 1332268 from msmeissn)</comment>
+    <requestid>1332269</requestid>
+  </revision>
 </revisionlist>
