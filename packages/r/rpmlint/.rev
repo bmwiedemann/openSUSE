@@ -5509,4 +5509,24 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1331698</requestid>
   </revision>
+  <revision rev="526" vrev="1">
+    <srcmd5>4206b4e844114d995df4c368dba9163b</srcmd5>
+    <version>2.9.0+git20260211.ecf25fcf</version>
+    <time>1770832063</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.9.0+git20260211.ecf25fcf:
+  * Release 2.9.0
+  * Bump github/codeql-action from 4.32.1 to 4.32.2
+  * Bump github/codeql-action from 4.31.11 to 4.32.1
+  * Manually bump github/codeql-action/* versions to latest v4.31.11 with pinned format
+  * Manually bump actions/checkout version to latest v6.0.2 with pinned format
+  * Add dependabot check for Github actions
+  * Pin actions to specific version SHA
+  * Disable broken mageia images
+  * Fix TagsCheck for multiple InvalidRequires
+
+- Update to version 2.8.0+git20260209.02a4eea2:
+  * systemd-tmpfiles: whitelist libpulp-tools (bsc#1257865)</comment>
+    <requestid>1332424</requestid>
+  </revision>
 </revisionlist>

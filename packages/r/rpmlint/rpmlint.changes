@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Feb 11 08:17:03 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 2.9.0+git20260211.ecf25fcf:
+  * Release 2.9.0
+  * Bump github/codeql-action from 4.32.1 to 4.32.2
+  * Bump github/codeql-action from 4.31.11 to 4.32.1
+  * Manually bump github/codeql-action/* versions to latest v4.31.11 with pinned format
+  * Manually bump actions/checkout version to latest v6.0.2 with pinned format
+  * Add dependabot check for Github actions
+  * Pin actions to specific version SHA
+  * Disable broken mageia images
+  * Fix TagsCheck for multiple InvalidRequires
+
+-------------------------------------------------------------------
+Mon Feb 09 13:14:57 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 2.8.0+git20260209.02a4eea2:
+  * systemd-tmpfiles: whitelist libpulp-tools (bsc#1257865)
+
+-------------------------------------------------------------------
 Fri Feb 06 14:55:57 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.8.0+git20260206.eac6dd56:
