@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 10 05:56:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.1.1:
+  * Notable Changes
+    - fix: fine-grained context options for waiting #31735
+    - fix: kstatus do not wait forever on failed resources #31730
+    - fix: Revert "Consider GroupVersionKind when matching
+      resources" #31772
+    - fix: handle nil elements in slice copying #31751
+
+-------------------------------------------------------------------
 Thu Jan 22 06:01:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.1.0:
@@ -11,7 +22,7 @@ Thu Jan 22 06:01:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
     - Feature: improved the --wait flag by allowing explicit
       strategy selection (including explicit --wait=hookOnly) and
       preventing SDK timeout errors when timeout is not specified
-#31421
+      #31421
     - Feature: allow concurrent dependency build with atomic file
       write #30984
     - Feature: added a --no-headers flag to the 'helm repo list'
