@@ -2603,4 +2603,20 @@ successfully tested on Tumbleweed x86_64</comment>
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1257523</comment>
   </revision>
+  <revision rev="264" vrev="6">
+    <srcmd5>e1d95c213cfc257ae4b0eb9d1eead253</srcmd5>
+    <version>3.10.7</version>
+    <time>1770832044</time>
+    <user>anag_factory</user>
+    <comment>- (bsc#1257199) [SELinux] postalias denied - fatal: open database /etc/aliases.lmdb: Permission denied
+  Add proposed ExecStartPre.
+- (jsc#PED-14859) Fix packages for Immutable Mode - postfix
+  Pack /var/spool/postfix/* /var/lib/postfix using tmpfiles.d
+
+- (bsc#1257199) [SELinux] postalias denied - fatal: open database /etc/aliases.lmdb: Permission denied
+  Add proposed ExecStartPre.
+- (jsc#PED-14859) Fix packages for Immutable Mode - postfix
+  Pack /var/spool/postfix/* /var/lib/postfix using tmpfiles.d</comment>
+    <requestid>1332092</requestid>
+  </revision>
 </revisionlist>
