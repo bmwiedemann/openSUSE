@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 11 02:26:43 UTC 2026 - William Brown <william.brown@suse.com>
+
+- bsc#1257923 - CVE-2026-25727 - rfc 2822 format parsing may lead to stack exhaustion.
+
+-------------------------------------------------------------------
 Tue Jan 20 03:39:35 UTC 2026 - william.brown@suse.com
 
 - Update to version 0.13.0~1:
