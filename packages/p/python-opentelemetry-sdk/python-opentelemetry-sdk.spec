@@ -1,7 +1,7 @@
 #
 # spec file for package python-opentelemetry-sdk
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,8 @@ BuildRequires:  %{python_module typing-extensions >= 3.7.4}
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# PATCH-FIX-UPSTREAM cherry-pick from https://github.com/open-telemetry/opentelemetry-python/pull/4798 add python 3.14 support
+Patch0:         python314.patch
 Requires:       python-opentelemetry-api = %{version}
 Requires:       python-opentelemetry-semantic-conventions = 0.60b0
 Requires:       python-typing-extensions >= 3.7.4
@@ -69,9 +71,7 @@ OpenTelemetry Python SDK for the OpenTelemetry Project <https://opentelemetry.io
 %check
 %if %{with test}
 rm -rvf tests/performance tests/trace/test_trace.py
-# gh#open-telemetry/opentelemetry-python#4630
-skipttest="test_simple_log_record_processor_shutdown"
-%pytest -k "not ($skipttest)"
+%pytest
 %endif
 
 %if !%{with test}

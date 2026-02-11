@@ -1,0 +1,43 @@
+From 9645f38e4d552b5b1799264aa1621ab78b916c59 Mon Sep 17 00:00:00 2001
+From: emdneto <9735060+emdneto@users.noreply.github.com>
+Date: Thu, 6 Nov 2025 10:32:01 -0300
+Subject: [PATCH] fix opentelemetry-sdk CI
+
+---
+ opentelemetry-sdk/tests/context/test_asyncio.py | 4 +++-
+ opentelemetry-sdk/tests/logs/test_export.py     | 4 +++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/tests/context/test_asyncio.py b/tests/context/test_asyncio.py
+index 7c5288a274e..2c5b27a135b 100644
+--- a/tests/context/test_asyncio.py
++++ b/tests/context/test_asyncio.py
+@@ -60,10 +60,12 @@ def setUp(self):
+         self.memory_exporter = InMemorySpanExporter()
+         span_processor = export.SimpleSpanProcessor(self.memory_exporter)
+         self.tracer_provider.add_span_processor(span_processor)
+-        self.loop = asyncio.get_event_loop()
++        self.loop = asyncio.new_event_loop()
++        asyncio.set_event_loop(self.loop)
+ 
+     def tearDown(self):
+         context.detach(self.token)
++        self.loop.close()
+ 
+     @patch(
+         "opentelemetry.context._RUNTIME_CONTEXT", ContextVarsRuntimeContext()
+diff --git a/tests/logs/test_export.py b/tests/logs/test_export.py
+index 7570ed3a74f..4f65ab6b56d 100644
+--- a/tests/logs/test_export.py
++++ b/tests/logs/test_export.py
+@@ -17,7 +17,9 @@
+ import os
+ import time
+ import unittest
+-from concurrent.futures import ThreadPoolExecutor
++from concurrent.futures import (
++    ThreadPoolExecutor,  # pylint: disable=no-name-in-module
++)
+ from sys import version_info
+ from unittest.mock import Mock, patch
+ 
