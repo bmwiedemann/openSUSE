@@ -625,7 +625,7 @@ Signed-off-by: Borislav Petkov <bp@suse.de>
  	TT_INSTR = 0,
 --- a/mcelog.c
 +++ b/mcelog.c
-@@ -152,8 +152,8 @@
+@@ -148,8 +148,8 @@
  	/* Filter out known broken MCEs */
  	if (cputype >= CPU_INTEL)
  		return mce_filter_intel(m, recordlen);
@@ -636,7 +636,7 @@ Signed-off-by: Borislav Petkov <bp@suse.de>
  
  	return 1;
  }
-@@ -284,9 +284,7 @@
+@@ -280,9 +280,7 @@
  	case X86_VENDOR_INTEL:
  	        return select_intel_cputype(family, model);
  	case X86_VENDOR_AMD:
@@ -647,7 +647,7 @@ Signed-off-by: Borislav Petkov <bp@suse.de>
  	default:
  		Eprintf("Unknown CPU type vendor %u family %u model %u",
  			cpuvendor, family, model);
-@@ -348,7 +346,7 @@
+@@ -344,7 +342,7 @@
  		Wprintf("TIME %llu %s", m->time, ctime(&t));
  	} 
  	if CASE_AMD_CPUS
@@ -656,7 +656,7 @@ Signed-off-by: Borislav Petkov <bp@suse.de>
  	else if (cputype >= CPU_INTEL)
  		decode_intel_mc(m, cputype, &ismemerr, recordlen);
  	/* else add handlers for other CPUs here */
-@@ -464,14 +462,9 @@
+@@ -460,14 +458,9 @@
  
  		} 
  		if (seen == ALL) {

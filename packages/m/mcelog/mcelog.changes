@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 04 14:25:46 UTC 2026 - trenn@suse.de
+
+- Remove not mainlined
+  email notification feature for sle_version above 1600
+  This removes these dependencies:
+      BuildRequires:  libesmtp-devel
+      Requires(pre):  %fillup_prereq
+- Adopt for logrotate for /usr/etc changes
+- Set file attributes for /run/mcelog ghost file
+- Update to version 210 (jsc#PED-14429, jsc#PED-14285):
+  * mcelog: Add new model numbers for Nova Lake
+  * mcelog: Improve cache-error-trigger script
+  * mcelog: New model number for Wildcat Lake
+
+-------------------------------------------------------------------
 Wed Oct 15 06:46:11 UTC 2025 - Arvin Schnell <aschnell@suse.com>
 
 - Update to version 207:

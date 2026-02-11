@@ -4,15 +4,15 @@
 
 --- a/mcelog.c
 +++ b/mcelog.c
-@@ -37,6 +37,7 @@
- #include <assert.h>
- #include <signal.h>
- #include <pwd.h>
+@@ -32,6 +32,7 @@
+ #include <poll.h>
+ #include <time.h>
+ #include <getopt.h>
 +#include <grp.h>
- #include <sys/wait.h>
- #include <fnmatch.h>
- #include "mcelog.h"
-@@ -1169,6 +1170,14 @@
+ #include <errno.h>
+ #include <stddef.h>
+ #include <assert.h>
+@@ -1163,6 +1164,14 @@
  
  static void drop_cred(void)
  {

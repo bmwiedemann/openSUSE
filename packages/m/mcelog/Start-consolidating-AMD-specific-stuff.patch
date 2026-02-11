@@ -20,7 +20,7 @@ Signed-off-by: Borislav Petkov <bp@suse.de>
 
 --- a/Makefile
 +++ b/Makefile
-@@ -31,7 +31,7 @@
+@@ -30,7 +30,7 @@
  
  .PHONY: install install-nodoc clean depend FORCE
  
@@ -697,7 +697,7 @@ Signed-off-by: Borislav Petkov <bp@suse.de>
 -#define K8_MCELOG_THRESHOLD_FBDIMM   (4 * 9 + 3)
 --- a/mcelog.c
 +++ b/mcelog.c
-@@ -41,7 +41,7 @@
+@@ -40,7 +40,7 @@
  #include <fnmatch.h>
  #include "mcelog.h"
  #include "paths.h"
@@ -706,7 +706,7 @@ Signed-off-by: Borislav Petkov <bp@suse.de>
  #include "intel.h"
  #include "p4.h"
  #include "dmi.h"
-@@ -347,8 +347,8 @@
+@@ -343,8 +343,8 @@
  		time_t t = m->time;
  		Wprintf("TIME %llu %s", m->time, ctime(&t));
  	} 

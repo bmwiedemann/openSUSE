@@ -1,6 +1,7 @@
 #
 # spec file for package mcelog
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,12 +17,15 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir %{_localstatedir}/adm/fillup-templates
+%if 0%{?suse_version} > 1600
+%bcond_with email_notify
+%endif
+# Taken over from chrony
+%if 0%{?suse_version} > 1500
+%bcond_without usr_etc
 %endif
 Name:           mcelog
-Version:        207
+Version:        210
 Release:        0
 Summary:        Log Machine Check Events
 License:        GPL-2.0-only
@@ -31,8 +35,10 @@ Source:         mcelog-%{version}.tar.gz
 Source2:        mcelog.sysconfig
 Source3:        mcelog.systemd
 Source5:        mcelog.tmpfiles
+%if %{with email_notify}
 Source6:        README.email_setup
 Patch1:         email.patch
+%endif
 Patch2:         mcelog_invert_prefill_db_warning.patch
 Patch3:         Start-consolidating-AMD-specific-stuff.patch
 Patch4:         add_new_amd_cpu_defines
@@ -44,11 +50,13 @@ Patch9:         patches/add-f15h-support.patch
 Patch10:        patches/add-f16h-support.patch
 Patch11:        mcelog-socket-path.patch
 Patch12:        fix_setgroups_missing_call.patch
+%if %{with email_notify}
 BuildRequires:  libesmtp-devel
+Requires(pre):  %fillup_prereq
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)
 Requires:       logrotate
-Requires(pre):  %fillup_prereq
 ExclusiveArch:  %{ix86} x86_64
 %{?systemd_requires}
 
@@ -65,6 +73,7 @@ In addition, it allows decoding machine check kernel panic messages.
 %autosetup
 
 %build
+echo "SUSE VERSION %{?suse_version}"
 echo "%{version}" > .os_version
 %make_build CFLAGS="%{optflags} -fpie -pie"
 
@@ -72,28 +81,57 @@ echo "%{version}" > .os_version
 export prefix=%{buildroot}%{_prefix}
 export etcprefix=%{buildroot}
 make -e install
+%if %{with usr_etc}
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d/
+install -m644 mcelog.logrotate \
+	%{buildroot}%{_distconfdir}/logrotate.d/mcelog
+%else
 mkdir -p %{buildroot}%{_sysconfdir}/logrotate.d/
-install -m644 mcelog.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/mcelog
-
-mkdir -p %{buildroot}%{_fillupdir}
-install -m 644 %{SOURCE2} %{buildroot}%{_fillupdir}/sysconfig.mcelog
+install -m644 mcelog.logrotate \
+	%{buildroot}%{_sysconfdir}/logrotate.d/mcelog
+%endif
 
 mkdir -p %{buildroot}/%{_docdir}/%{name}
-install -m 644 %{SOURCE6} %{buildroot}/%{_docdir}/%{name}/README.email_setup
+
 install -m 644 lk10-mcelog.pdf %{buildroot}/%{_docdir}/%{name}/lk10-mcelog.pdf
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/mcelog.service
 install -D -m 0644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/mcelog.conf
+
+%if %{with email_notify}
+mkdir -p %{buildroot}%{_fillupdir}
+install -m 644 %{SOURCE2} %{buildroot}%{_fillupdir}/sysconfig.mcelog
+install -m 644 %{SOURCE6} %{buildroot}/%{_docdir}/%{name}/README.email_setup
+%else
+sed -i '\#EnvironmentFile=-/etc/sysconfig/mcelog#d' %{buildroot}%{_unitdir}/mcelog.service
+%endif
+
 %if 0%{?suse_version} < 1600
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcmcelog
 %endif
 
 %pre
 %service_add_pre %{name}.service
+%if %{with usr_etc}
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in logrotate.d/mcelog ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
+
+%if %{with usr_etc}
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in logrotate.d/mcelog ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %post
+%if %{with email_notify}
 %fillup_only
+%endif
+%tmpfiles_create mcelog.conf
 %service_add_post %{name}.service
-%{?tmpfiles_create:%tmpfiles_create %{_tmpfilesdir}/mcelog.conf}
 
 %preun
 %service_del_preun %{name}.service
@@ -106,10 +144,18 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcmcelog
 %{_mandir}/man8/*
 %{_mandir}/man5/*
 %{_sbindir}/mcelog
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/mcelog
+%else
 %config %{_sysconfdir}/logrotate.d/mcelog
+%endif
+
+%if %{with email_notify}
+%{_fillupdir}/sysconfig.mcelog
+%endif
+
 %dir %{_sysconfdir}/mcelog
 %config %{_sysconfdir}/mcelog/mcelog.conf
-%{_fillupdir}/sysconfig.mcelog
 %{_sysconfdir}/mcelog/*trigger
 %{_unitdir}/mcelog.service
 %{_tmpfilesdir}/mcelog.conf
@@ -117,6 +163,6 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcmcelog
 %if 0%{?suse_version} < 1600
 %{_sbindir}/rcmcelog
 %endif
-%ghost /run/mcelog
+%ghost %attr(0755,root,root) %{_rundir}/mcelog
 
 %changelog
