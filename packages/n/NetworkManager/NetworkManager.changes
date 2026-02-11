@@ -82,6 +82,8 @@ Thu Aug  7 19:29:33 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
     (NBFT) to configure networking during early boot.
   + Add systemd services to provide networking in the initrd.
 - Drop 2069.patch: Fixed in an alternative way upstream.
+- Drop NetworkManager-accept-localhost-if-static.patch:
+  Fixed upstream.
 - Rebase patches with quilt.
 - Add pkgconfig(libnvme) BuildRequires: New dependency.
 
@@ -96,6 +98,13 @@ Thu Aug  7 19:17:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
     NetworkManager creates firewall rules to ensure that the
     incoming packets are not dropped by kernel reverse path
     filtering.
+
+-------------------------------------------------------------------
+Thu Jun 12 09:44:12 UTC 2025 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add NetworkManager-accept-localhost-if-static.patch:
+  policy: accept localhost hostnames if static
+  (bsc#1257366, glfd#NetworkManager/NetworkManager/commit/152d71a1).
 
 -------------------------------------------------------------------
 Wed Jun 11 06:59:12 UTC 2025 - Thomas Blume <thomas.blume@suse.com>

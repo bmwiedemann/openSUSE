@@ -2547,4 +2547,12 @@ New stable release</comment>
     <comment>- Use tmpfiles to create /var/lib/NetworkManager/ (PED-14769). (forwarded request 1325256 from JonathanKang)</comment>
     <requestid>1325359</requestid>
   </revision>
+  <revision rev="291" vrev="3">
+    <srcmd5>a449fe30aeaee9db2a835dcf899f03ce</srcmd5>
+    <version>1.54.3</version>
+    <time>1770832077</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1332405</requestid>
+  </revision>
 </revisionlist>
