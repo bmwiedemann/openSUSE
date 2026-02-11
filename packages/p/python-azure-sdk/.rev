@@ -208,4 +208,15 @@
     <comment></comment>
     <requestid>1273601</requestid>
   </revision>
+  <revision rev="20" vrev="17">
+    <srcmd5>85cfa9b4a8c86289db531cd1a068520f</srcmd5>
+    <version>4.0.0</version>
+    <time>1770832182</time>
+    <user>anag_factory</user>
+    <comment>- Add additional packages from the Azure SDK to Requires
+  + python-azure-monitor-querymetrics
+  + python-azure-onlineexperimentation
+  + python-azure-storage-blob-changefeed (forwarded request 1332464 from glaubitz)</comment>
+    <requestid>1332487</requestid>
+  </revision>
 </revisionlist>

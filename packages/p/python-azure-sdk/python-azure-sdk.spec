@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-sdk
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -136,8 +136,10 @@ Requires:       python-azure-mixedreality-authentication
 Requires:       python-azure-monitor-ingestion
 Requires:       python-azure-monitor-opentelemetry-exporter
 Requires:       python-azure-monitor-query
+Requires:       python-azure-monitor-querymetrics
 Requires:       python-azure-multiapi-storage
 Requires:       python-azure-nspkg
+Requires:       python-azure-onlineexperimentation
 Requires:       python-azure-purview-account
 Requires:       python-azure-purview-administration
 Requires:       python-azure-purview-catalog
@@ -153,6 +155,7 @@ Requires:       python-azure-servicebus
 Requires:       python-azure-servicefabric
 Requires:       python-azure-servicemanagement-legacy
 Requires:       python-azure-storage-blob
+Requires:       python-azure-storage-blob-changefeed
 Requires:       python-azure-storage-common
 Requires:       python-azure-storage-file
 Requires:       python-azure-storage-file-datalake
