@@ -170,4 +170,13 @@
     <comment></comment>
     <requestid>1322837</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>72a9c526db5260ff7e299b9dec376d29</srcmd5>
+    <version>4.0.2</version>
+    <time>1770832153</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0.2:
+  * Reworked `lrc` API.</comment>
+    <requestid>1332425</requestid>
+  </revision>
 </revisionlist>
