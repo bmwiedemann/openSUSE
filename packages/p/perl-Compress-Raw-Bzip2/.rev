@@ -27,4 +27,17 @@
           efd6a1b6cb0e2be7a26747b427575d6aa4bee6d6</comment>
     <requestid>1315478</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>010759e6d9a4aca1bb4563ff169f9e74</srcmd5>
+    <version>2.217</version>
+    <time>1770833463</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.217
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+    2.217 31 January 2026
+        * Update version to 2.217
+          Sat Jan 31 11:52:54 2026 +0000
+          773773f59082a73134212a2d63368683027122ed</comment>
+    <requestid>1332517</requestid>
+  </revision>
 </revisionlist>
