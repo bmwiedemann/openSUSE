@@ -160,4 +160,12 @@ Redis 8.0.0 supported atomic HGETDEL, HGETEX and HSETEX, and AGPL-3.0-only licen
   * Fixed CLUSTER SLOT-STATS few memory tracking bugs.</comment>
     <requestid>1331921</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f2d9e4800513c56f318a409bf6b279a8</srcmd5>
+    <version>8.6.0</version>
+    <time>1770832415</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1332334</requestid>
+  </revision>
 </revisionlist>
