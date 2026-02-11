@@ -201,4 +201,13 @@ tools.</comment>
   * new compat method for handling SOURCE_DATE_EPOCH</comment>
     <requestid>1307723</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>6dbac2f425025d05b2486f2a38532467</srcmd5>
+    <version>4.7</version>
+    <time>1770832411</time>
+    <user>anag_factory</user>
+    <comment>- Do not test examples, they are difficult to install in isolated
+  environments.</comment>
+    <requestid>1331091</requestid>
+  </revision>
 </revisionlist>

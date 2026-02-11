@@ -1,7 +1,7 @@
 #
 # spec file for package python-argparse-manpage
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ URL:            https://github.com/praiskup/argparse-manpage
 Source:         https://github.com/praiskup/argparse-manpage/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools-wheel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  ca-certificates
 BuildRequires:  fdupes
@@ -71,9 +70,8 @@ support for (deprecated) optparse objects, too.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PIP_NO_INDEX=1
-export PIP_FIND_LINKS=$(ls -1 %{_prefix}/lib/python3.*/wheels | head -n 1)
-%pytest -k 'not test_old_example_file_name'
+# Can't install examples in an isolated environment
+%pytest -k 'not (test_old_example_file_name or TestAllExamples)'
 
 %pre
 %python_libalternatives_reset_alternative argparse-manpage
