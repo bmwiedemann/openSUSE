@@ -30,6 +30,8 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
+%{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-wheel%{psuffix}
 Version:        0.46.3
