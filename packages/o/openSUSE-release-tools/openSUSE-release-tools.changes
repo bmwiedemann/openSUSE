@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Feb 04 07:04:24 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260204.08a2a831:
+  * gocd: sles.target: release SLES_immutable images
+
+-------------------------------------------------------------------
+Tue Feb 03 13:30:10 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260203.323cb26b:
+  * feat: add branch info in gitea request implementation
+
+-------------------------------------------------------------------
+Tue Feb 03 13:13:41 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260203.ca9d7371:
+  * BCI Pipelines: Remove SP6
+
+-------------------------------------------------------------------
+Tue Feb 03 12:37:42 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260203.00c4d09a:
+  * Remove BCI pipelines for SP5
+  * Remove trailing whitespace
+
+-------------------------------------------------------------------
+Tue Feb 03 10:28:51 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260203.280e785a:
+  * update RPM spec file for gitea support
+
+-------------------------------------------------------------------
+Wed Jan 28 14:13:03 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260128.b75a72c2:
+  * Hardcode base project name to openSUSE
+
+-------------------------------------------------------------------
 Tue Jan 20 11:59:03 UTC 2026 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20260120.7ecaa0c8:
