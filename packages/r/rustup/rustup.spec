@@ -1,6 +1,7 @@
 #
 # spec file for package rustup
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2021 William Brown <william@blackhats.net.au>
 #
@@ -40,7 +41,7 @@ Source1:        vendor.tar.zst
 Source3:        %{name}-rpmlintrc
 BuildRequires:  cargo-packaging
 BuildRequires:  rust+cargo >= 1.79
-BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(openssl) >= 3
 # For system linker
 Requires:       gcc
 ExclusiveArch:  %{rust_tier1_arches}
