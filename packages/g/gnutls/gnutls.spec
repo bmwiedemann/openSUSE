@@ -1,7 +1,7 @@
 #
 # spec file for package gnutls
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -42,7 +42,7 @@
 %bcond_with tpm
 %bcond_without leancrypto
 Name:           gnutls
-Version:        3.8.11
+Version:        3.8.12
 Release:        0
 Summary:        The GNU Transport Layer Security Library
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later

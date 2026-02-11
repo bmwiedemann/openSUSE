@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Feb 10 08:50:55 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.8.12:
+  * Security fixes:
+    - CVE-2026-1584: NULL pointer dereference in PSK binder verification (bsc#1257978)
+    - CVE-2025-14831: Fix name constraint processing performance issue (bsc#1257960)
+  * libgnutls: Fix NULL pointer dereference in PSK binder verification
+    A TLS 1.3 resumption attempt with an invalid PSK binder value in ClientHello
+    could lead to a denial of service attack via crashing the server.
+    The updated code guards against the problematic dereference.
+    [Fixes: GNUTLS-SA-2026-02-09-1, CVSS: high] [CVE-2026-1584]
+  * libgnutls: Fix name constraint processing performance issue
+    Verifying certificates with pathological amounts of name constraints
+    could lead to a denial of service attack via resource exhaustion.
+    Reworked processing algorithms exhibit better performance characteristics.
+    [Fixes: GNUTLS-SA-2026-02-09-2, CVSS: medium] [CVE-2025-14831]
+  * libgnutls: Fix multiple unexploitable overflows (#1783, #1786).
+  * libgnutls: Fall back to thread-unsafe module initialization
+    Improve fallback handling for PKCS#11 modules that
+    don't support thread-safe initialization (#1774).
+    Also return filename from p11_kit_module_get_name() for unconfigured modules.
+  * libgnutls: Accept NULL as digest argument for gnutls_hash_output
+    The accelerated implementation of gnutls_hash_output() now
+    properly accepts NULL as the digest argument, matching the
+    behavior of the reference implementation (#1769).
+  * srptool: Avoid a stack buffer overflow when processing large SRP groups (#1777).
+  * Rebase patches:
+    - gnutls-FIPS-jitterentropy.patch
+    - gnutls-FIPS-140-3-references.patch
+
+-------------------------------------------------------------------
 Mon Nov 24 09:54:39 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Reduce the number of patches:
