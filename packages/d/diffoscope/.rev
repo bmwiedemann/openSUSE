@@ -793,4 +793,26 @@ https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/284#note_280561
     <comment></comment>
     <requestid>1324454</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>5a556718c96c0541f76ac5dc96c15fe3</srcmd5>
+    <version>312</version>
+    <time>1770832149</time>
+    <user>anag_factory</user>
+    <comment>- update to 312:
+  * Adjust u-boot-tools/fit diff to match new lines.
+  * Fix test compatibility with u-boot-tools 2026-01. Thanks,
+    Jelle!
+  * Bump Standards-Version to 4.7.3.
+  * Drop implied &quot;Priority: optional&quot; from debian/control.
+  * Also drop implied &quot;Rules-Requires-Root: no&quot; entry in
+    debian/control.
+  * Update copyright years.
+  * Reference the Debian 'ocaml' package instead of 'ocaml-nox'.
+  * Attempt to fix automatic deployment to PyPi by explictly
+    installing setuptools.
+  * Attempt to fix compatability with LLVM 21.
+  * Update copyright years.
+  * Update CI to try and deploy to PyPI upon tagging a release.</comment>
+    <requestid>1332413</requestid>
+  </revision>
 </revisionlist>

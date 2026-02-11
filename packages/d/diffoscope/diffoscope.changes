@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Feb 11 08:06:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 312:
+  * Adjust u-boot-tools/fit diff to match new lines.
+  * Fix test compatibility with u-boot-tools 2026-01. Thanks,
+    Jelle!
+  * Bump Standards-Version to 4.7.3.
+  * Drop implied "Priority: optional" from debian/control.
+  * Also drop implied "Rules-Requires-Root: no" entry in
+    debian/control.
+  * Update copyright years.
+  * Reference the Debian 'ocaml' package instead of 'ocaml-nox'.
+  * Attempt to fix automatic deployment to PyPi by explictly
+    installing setuptools.
+  * Attempt to fix compatability with LLVM 21.
+  * Update copyright years.
+  * Update CI to try and deploy to PyPI upon tagging a release.
+
+-------------------------------------------------------------------
 Fri Dec 26 11:56:43 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Avoid influences from checks on build result
