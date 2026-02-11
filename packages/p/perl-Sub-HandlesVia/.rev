@@ -140,4 +140,41 @@
   0.050004	2025-11-10</comment>
     <requestid>1320466</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>806ca5e72b35bf9e13f6fb3a0237027f</srcmd5>
+    <version>0.053005</version>
+    <time>1770833465</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.053005
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+  0.053005	2026-02-04
+   [ Test Suite ]
+   - Make t/99shvxs.t into an author-only test. Set the AUTHOR_TESTING
+     environment variable to true if you really want to run it.
+  0.053004	2026-02-01
+   [ Documentation ]
+   - Document exactly which methods may be accelerated by installing
+     Sub::HandlesVia::XS.
+   [ Other ]
+   - Added: Array:none.
+   - Added: XS implemention of Array:not_all_true.
+  0.053003	2026-01-31
+   - A lot of the array handlers which accepted a coderef which operated on
+     $_ would also pass $_ to the coderef in @_. There were no test cases for
+     this and it was undocumented (apart from for_each). This feature has
+     been removed (apart from for_each).
+   - Added: The new for_each2 array handler only makes the array element
+     available as $_, not in @_.
+  0.053002	2026-01-30
+   - Updated: Don't use Sub::HandlesVia::XS versions older than 0.002000 as
+     they are buggy.
+   - Use Sub::HandlesVia::XS for some Enum and String handlers.
+  0.053001	2026-01-28
+   [ Packaging ]
+   - Add Sub::HandlesVia::XS as a runtime recommends dependency.
+   [ Other ]
+   - Updated: Don't use Sub::HandlesVia::XS versions older than 0.001004 as
+     they are buggy.</comment>
+    <requestid>1332525</requestid>
+  </revision>
 </revisionlist>
