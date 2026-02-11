@@ -1,7 +1,7 @@
 #
 # spec file for package spice-vdagent
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
