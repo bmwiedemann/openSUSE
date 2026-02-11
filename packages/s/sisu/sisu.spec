@@ -1,7 +1,7 @@
 #
 # spec file for package sisu
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%global reltype milestones
+%global reltype releases
 Name:           sisu
-Version:        0.9.0.M4
+Version:        1.0.0
 Release:        0
 Summary:        Eclipse dependency injection framework
 License:        BSD-3-Clause AND EPL-1.0 AND EPL-2.0
@@ -26,9 +26,9 @@ Group:          Development/Libraries/Java
 URL:            https://www.eclipse.org/sisu/
 Source0:        https://github.com/eclipse-sisu/sisu-project/archive/refs/tags/%{reltype}/%{version}.tar.gz#/sisu-project-%{version}.tar.gz
 Source1:        %{name}-build.tar.xz
-Patch1:         sisu-no-dependency-on-glassfish-servlet-api.patch
-Patch3:         sisu-osgi-api.patch
-Patch4:         sisu-reproducible-index.patch
+Patch0:         sisu-no-dependency-on-glassfish-servlet-api.patch
+Patch1:         sisu-osgi-api.patch
+Patch2:         sisu-reproducible-index.patch
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  cdi-api
@@ -83,9 +83,9 @@ This package contains %{summary}.
 %prep
 %setup -q -n sisu-project-%{reltype}-%{version} -a1
 
+%patch -P 0 -p1
 %patch -P 1 -p1
-%patch -P 3 -p1
-%patch -P 4 -p2
+%patch -P 2 -p1
 
 %build
 mkdir -p lib

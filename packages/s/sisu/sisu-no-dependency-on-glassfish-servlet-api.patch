@@ -1,24 +1,21 @@
---- sisu-inject/org.eclipse.sisu.inject/src/main/java/org/eclipse/sisu/inject/Implementations.java	2024-04-09 19:53:29.797479006 +0200
-+++ sisu-inject/org.eclipse.sisu.inject/src/main/java/org/eclipse/sisu/inject/Implementations.java	2024-04-09 19:59:23.506494426 +0200
-@@ -39,17 +39,6 @@
+--- a/org.eclipse.sisu.inject/src/main/java/org/eclipse/sisu/inject/Implementations.java	2026-02-11 14:25:02.494361564 +0100
++++ b/org.eclipse.sisu.inject/src/main/java/org/eclipse/sisu/inject/Implementations.java	2026-02-11 14:28:52.321660010 +0100
+@@ -36,14 +36,6 @@
+     // ----------------------------------------------------------------------
  
-     static
-     {
+     static {
 -        boolean hasGuiceServlet;
--        try
--        {
--            hasGuiceServlet = BindingTargetVisitor.class.isInstance( ServletFinder.THIS );
--        }
--        catch ( final LinkageError e )
--        {
+-        try {
+-            hasGuiceServlet = BindingTargetVisitor.class.isInstance(ServletFinder.THIS);
+-        } catch (final LinkageError e) {
 -            hasGuiceServlet = false;
 -        }
 -        HAS_GUICE_SERVLET = hasGuiceServlet;
 -
          boolean hasJsr250Priority;
-         try
-         {
-@@ -66,8 +55,6 @@
+         try {
+             hasJsr250Priority = javax.annotation.Priority.class.isAnnotation();
+@@ -57,8 +49,6 @@
      // Constants
      // ----------------------------------------------------------------------
  
@@ -27,17 +24,16 @@
      private static final boolean HAS_JSR250_PRIORITY;
  
      // ----------------------------------------------------------------------
-@@ -107,8 +94,7 @@
- 
+@@ -96,7 +86,7 @@
          final Class<?> annotationSource =
-             // when looking for @Priority also consider annotations on providers (and servlets/filters if available)
--            binding.acceptTargetVisitor( isPriority ? ( HAS_GUICE_SERVLET ? ServletFinder.THIS : ProviderFinder.THIS )
--                                                    : ClassFinder.THIS );
-+            binding.acceptTargetVisitor( isPriority ? ProviderFinder.THIS : ClassFinder.THIS );
+                 // when looking for @Priority also consider annotations on providers (and servlets/filters if available)
+                 binding.acceptTargetVisitor(
+-                        isPriority ? (HAS_GUICE_SERVLET ? ServletFinder.THIS : ProviderFinder.THIS) : ClassFinder.THIS);
++                        isPriority ? ProviderFinder.THIS : ClassFinder.THIS);
  
          T annotation = null;
-         if ( null != annotationSource )
-@@ -253,45 +239,4 @@
+         if (null != annotationSource) {
+@@ -223,43 +213,4 @@
              return binding.getProviderKey().getTypeLiteral().getRawType();
          }
      }
@@ -45,39 +41,37 @@
 -    /**
 -     * {@link ProviderFinder} that also returns servlet/filter implementations.
 -     */
--    static final class ServletFinder
--        extends ProviderFinder
--        implements com.google.inject.servlet.ServletModuleTargetVisitor<Object, Class<?>>
--    {
+-    static final class ServletFinder extends ProviderFinder
+-            implements com.google.inject.servlet.ServletModuleTargetVisitor<Object, Class<?>> {
 -        // ----------------------------------------------------------------------
 -        // Constants
 -        // ----------------------------------------------------------------------
 -
--        @SuppressWarnings( "hiding" )
+-        @SuppressWarnings("hiding")
 -        static final BindingTargetVisitor<Object, Class<?>> THIS = new ServletFinder();
 -
 -        // ----------------------------------------------------------------------
 -        // Public methods
 -        // ----------------------------------------------------------------------
 -
--        public Class<?> visit( final com.google.inject.servlet.InstanceFilterBinding binding )
--        {
+-        @Override
+-        public Class<?> visit(final com.google.inject.servlet.InstanceFilterBinding binding) {
 -            return binding.getFilterInstance().getClass();
 -        }
 -
--        public Class<?> visit( final com.google.inject.servlet.InstanceServletBinding binding )
--        {
+-        @Override
+-        public Class<?> visit(final com.google.inject.servlet.InstanceServletBinding binding) {
 -            return binding.getServletInstance().getClass();
 -        }
 -
--        public Class<?> visit( final com.google.inject.servlet.LinkedFilterBinding binding )
--        {
+-        @Override
+-        public Class<?> visit(final com.google.inject.servlet.LinkedFilterBinding binding) {
 -            // this assumes only one level of indirection: api-->impl
 -            return binding.getLinkedKey().getTypeLiteral().getRawType();
 -        }
 -
--        public Class<?> visit( final com.google.inject.servlet.LinkedServletBinding binding )
--        {
+-        @Override
+-        public Class<?> visit(final com.google.inject.servlet.LinkedServletBinding binding) {
 -            // this assumes only one level of indirection: api-->impl
 -            return binding.getLinkedKey().getTypeLiteral().getRawType();
 -        }

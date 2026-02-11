@@ -1,7 +1,7 @@
 #
 # spec file for package sisu-mojos
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
-%global reltype milestones
+%global reltype releases
 Name:           sisu-mojos
-Version:        0.9.0.M4
+Version:        1.0.0
 Release:        0
 Summary:        Sisu plugin for Apache Maven
 License:        EPL-1.0 AND EPL-2.0
 Group:          Development/Libraries/Java
 URL:            https://www.eclipse.org/sisu
 Source0:        https://github.com/eclipse-sisu/sisu-project/archive/refs/tags/%{reltype}/%{version}.tar.gz#/sisu-project-%{version}.tar.gz
-Patch1:         sisu-no-dependency-on-glassfish-servlet-api.patch
-Patch3:         sisu-osgi-api.patch
-Patch4:         sisu-reproducible-index.patch
+Patch0:         sisu-no-dependency-on-glassfish-servlet-api.patch
+Patch1:         sisu-osgi-api.patch
+Patch2:         sisu-reproducible-index.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
@@ -37,10 +37,11 @@ BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-build-api)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.inject) >= %{version}
+BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.plexus) >= %{version}
 BuildRequires:  mvn(org.slf4j:slf4j-nop)
-BuildRequires:  mvn(org.sonatype.plexus:plexus-build-api)
 #!BuildRequires: maven-compiler-plugin-bootstrap
 #!BuildRequires: maven-jar-plugin-bootstrap
 #!BuildRequires: maven-javadoc-plugin-bootstrap
@@ -62,12 +63,13 @@ This package contains %{summary}.
 %prep
 %setup -q -n sisu-project-%{reltype}-%{version}
 
+%patch -P 0 -p1
 %patch -P 1 -p1
-%patch -P 3 -p1
-%patch -P 4 -p2
+%patch -P 2 -p1
 
 %pom_remove_plugin -r :maven-enforcer-plugin
 %pom_remove_plugin -r :maven-invoker-plugin
+%pom_remove_plugin -r :spotless-maven-plugin
 # it is scope "import" but used only for tests that we don't run
 %pom_remove_dep :junit-bom
 %pom_xpath_remove pom:project/pom:build/pom:extensions
