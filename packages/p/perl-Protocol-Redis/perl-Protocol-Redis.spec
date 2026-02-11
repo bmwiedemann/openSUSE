@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Protocol-Redis
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,24 @@
 
 %define cpan_name Protocol-Redis
 Name:           perl-Protocol-Redis
-Version:        1.0021
+Version:        2.0.100
 Release:        0
+# 2.0001 -> normalize -> 2.0.100
+%define cpan_version 2.0001
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Redis protocol parser/encoder with asynchronous capabilities
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/U/UN/UNDEF/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/U/UN/UNDEF/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.94
 Requires:       perl(Test::More) >= 0.94
+Provides:       perl(Protocol::Redis) = %{version}
+Provides:       perl(Protocol::Redis::Test)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -37,9 +43,7 @@ Redis protocol parser/encoder with asynchronous capabilities and at
 http://redis.io/topics/pipelining support.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -55,5 +59,6 @@ make test
 
 %files -f %{name}.files
 %doc Changes examples
+%license LICENSE
 
 %changelog

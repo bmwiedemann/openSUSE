@@ -31,4 +31,17 @@
     <comment></comment>
     <requestid>1233982</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6c5c87b96fa377d3062dac410f0454e2</srcmd5>
+    <version>2.0.100</version>
+    <time>1770833466</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.0.100 (2.0001)
+   see /usr/share/doc/packages/perl-Protocol-Redis/Changes
+  2.0001  04.02.2026 00:00:00
+           - Test and fix encoding 0 as a double in RESP3 (Grinnz).
+  2.0000  18.01.2026 00:00:00
+           - Add support for RESP2 and RESP3 versions (Grinnz).</comment>
+    <requestid>1332526</requestid>
+  </revision>
 </revisionlist>
