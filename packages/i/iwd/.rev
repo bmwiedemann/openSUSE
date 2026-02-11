@@ -560,4 +560,12 @@
   * Fix issue with handling roaming and old frequencies. (forwarded request 1311184 from alois)</comment>
     <requestid>1311209</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>734555bae40a0f087b066f9043d4b017</srcmd5>
+    <version>3.11</version>
+    <time>1770832140</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1332391</requestid>
+  </revision>
 </revisionlist>
