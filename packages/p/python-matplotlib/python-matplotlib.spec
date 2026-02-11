@@ -1,7 +1,7 @@
 #
 # spec file for package python-matplotlib
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@ ExclusiveArch:  x86_64 aarch64
 
 %{?sle15_python_module_pythons}
 Name:           python-matplotlib%{psuffix}
-Version:        3.10.7
+Version:        3.10.8
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
@@ -59,6 +59,8 @@ Source99:       https://downloads.sourceforge.net/project/freetype/freetype2/2.6
 Source100:      python-matplotlib.rpmlintrc
 # PATCH-FEATURE-OPENSUSE matplotlib-meson-options-opensuse.patch code@bnavigator.de -- Custom build options for meson-python
 Patch1:         matplotlib-meson-options-opensuse.patch
+# PATCH-FIX-UPSTREAM https://github.com/matplotlib/matplotlib/pull/30918 TST: account for asyncio changes in py314
+Patch2:         py314.patch
 Recommends:     ghostscript
 Recommends:     libxml2-tools
 Recommends:     poppler-tools

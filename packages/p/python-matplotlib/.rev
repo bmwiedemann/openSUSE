@@ -1100,4 +1100,12 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
     <comment>- Revert the skipped test with gc, fixed in gc upstream (bsc#1252721)</comment>
     <requestid>1317076</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>0a501b7f6cc0026fec312852b97937bf</srcmd5>
+    <version>3.10.8</version>
+    <time>1770832060</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1332282</requestid>
+  </revision>
 </revisionlist>

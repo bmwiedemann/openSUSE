@@ -1,0 +1,27 @@
+From 2a94a7ff1338708e49dbc23ed48734b260faafd2 Mon Sep 17 00:00:00 2001
+From: Thomas A Caswell <tcaswell@gmail.com>
+Date: Wed, 31 Dec 2025 09:55:20 -0500
+Subject: [PATCH] TST: account for asyncio changes in py314
+
+An EventLoop will no longer be implicitly created by `get_event_loop()`
+
+Closes #30917
+---
+ lib/matplotlib/tests/test_backends_interactive.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/lib/matplotlib/tests/test_backends_interactive.py b/lib/matplotlib/tests/test_backends_interactive.py
+index 6bc7de433825..101c1cb81cad 100644
+--- a/lib/matplotlib/tests/test_backends_interactive.py
++++ b/lib/matplotlib/tests/test_backends_interactive.py
+@@ -208,6 +208,10 @@ def check_alt_backend(alt_backend):
+     if fig.canvas.toolbar:  # i.e toolbar2.
+         fig.canvas.toolbar.draw_rubberband(None, 1., 1, 2., 2)
+ 
++    if backend == 'webagg' and sys.version_info >= (3, 14):
++        import asyncio
++        asyncio.set_event_loop(asyncio.new_event_loop())
++
+     timer = fig.canvas.new_timer(1.)  # Test that floats are cast to int.
+     timer.add_callback(KeyEvent("key_press_event", fig.canvas, "q")._process)
+     # Trigger quitting upon draw.
