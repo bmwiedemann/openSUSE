@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Compress-Raw-Lzma
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Compress-Raw-Lzma
 Name:           perl-Compress-Raw-Lzma
-Version:        2.214.0
+Version:        2.217.0
 Release:        0
-# 2.214 -> normalize -> 2.214.0
-%define cpan_version 2.214
+# 2.217 -> normalize -> 2.217.0
+%define cpan_version 2.217
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Low-Level Perl Interface to lzma compression library
 URL:            https://metacpan.org/release/%{cpan_name}

@@ -219,4 +219,25 @@
           ba88d230309e89d869d7eb41786fe13453b8fd17</comment>
     <requestid>1315477</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a81c75ea27f559f5894dc78910192ce7</srcmd5>
+    <version>2.217.0</version>
+    <time>1770833464</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.217.0 (2.217)
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+    2.217 31 January 2026
+        * Delete XZ environment variable before running interop tests
+          Sat Jan 31 12:23:05 2026 +0000
+          90030862fe32789f6e772bc31931fafcbdf2c79b
+        * Update version to 2.217
+          Sat Jan 31 11:53:07 2026 +0000
+        * add support for xz 5.8.2
+          Sat Dec 20 12:35:48 2025 +0000
+          1b043bdb5616f410e78861dcee7062a1d03fe163
+        * Update copyright year
+          Sat Dec 20 12:30:39 2025 +0000
+          2980b3d6cd4b6e382a3955741fcfd39d89dcb22c</comment>
+    <requestid>1332518</requestid>
+  </revision>
 </revisionlist>
