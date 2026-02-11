@@ -24,8 +24,8 @@ Release:        0
 Summary:        Systemd default presets for openSUSE Aeon
 License:        MIT
 Group:          System/Base
-Source0:        50-default-Aeon.preset
-Source1:        50-default-Aeon-user.preset
+Source0:        default-Aeon.preset
+Source1:        default-Aeon-user.preset
 BuildRequires:  systemd-presets-branding-openSUSE
 BuildRequires:  systemd-presets-common-SUSE-devel
 BuildRequires:  pkgconfig(systemd)
@@ -52,10 +52,10 @@ Default presets for systemd on openSUSE Aeon
 mkdir -p %{buildroot}%{_prefix}/lib/systemd/system-preset
 mkdir -p %{buildroot}%{_prefix}/lib/systemd/user-preset
 
-install -m644 %{SOURCE0}  %{buildroot}%{_prefix}/lib/systemd/system-preset/
-install -m644 %{SOURCE1}  %{buildroot}%{_prefix}/lib/systemd/user-preset/
+install -Dm0644 %{SOURCE0}  %{buildroot}%{_prefix}/lib/systemd/system-preset/87-default-Aeon.preset
+install -Dm0644 %{SOURCE1}  %{buildroot}%{_prefix}/lib/systemd/user-preset/87-default-Aeon-user.preset
 # Copy default presets and script
-install -m644 %{_prefix}/lib/systemd/system-preset/90-default-openSUSE.preset %{buildroot}%{_prefix}/lib/systemd/system-preset/
+install -m0644 %{_prefix}/lib/systemd/system-preset/90-default-openSUSE.preset %{buildroot}%{_prefix}/lib/systemd/system-preset/
 
 %pre
 %systemd_preset_pre
@@ -72,6 +72,6 @@ install -m644 %{_prefix}/lib/systemd/system-preset/90-default-openSUSE.preset %{
 %files
 %defattr(-,root,root)
 %{_prefix}/lib/systemd/system-preset/*
-%{_prefix}/lib/systemd/user-preset/50-default-Aeon-user.preset
+%{_prefix}/lib/systemd/user-preset/87-default-Aeon-user.preset
 
 %changelog
