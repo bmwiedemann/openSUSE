@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Compress-Raw-Zlib
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Compress-Raw-Zlib
 Name:           perl-Compress-Raw-Zlib
-Version:        2.214
+Version:        2.218
 Release:        0
 #Upstream: Artistic-1.0 or GPL-1.0-or-later
 License:        (Artistic-1.0 OR GPL-1.0-or-later) AND Zlib

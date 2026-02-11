@@ -62,4 +62,24 @@
           83be37e0a911eb374ea18737c4fa77550d501354</comment>
     <requestid>1315476</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>061e919340e8ca17e4a736a9b2432ca8</srcmd5>
+    <version>2.218</version>
+    <time>1770833465</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.218
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+    2.218 3 February 2026
+        * Update version to 2.218
+          Tue Feb 3 10:29:39 2026 +0000
+          ad08cfc854823793fb1fa4f6f5e2dda644f4c581
+        * Fix for regression of #34
+          Tue Feb 3 10:17:49 2026 +0000
+          4133174c92633fb7d8562f514746d08baf667ad3
+    2.217 31 January 2026
+        * Update version to 2.217
+          Sat Jan 31 11:52:15 2026 +0000
+          937b7c2da2052fa09483b7c5db3eca86e74fee52</comment>
+    <requestid>1332523</requestid>
+  </revision>
 </revisionlist>

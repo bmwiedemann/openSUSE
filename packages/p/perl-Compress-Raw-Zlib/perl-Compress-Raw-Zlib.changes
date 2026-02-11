@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb  5 06:12:28 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.218
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.218 3 February 2026
+        * Update version to 2.218
+          Tue Feb 3 10:29:39 2026 +0000
+          ad08cfc854823793fb1fa4f6f5e2dda644f4c581
+        * Fix for regression of #34
+          Tue Feb 3 10:17:49 2026 +0000
+          4133174c92633fb7d8562f514746d08baf667ad3
+    2.217 31 January 2026
+        * Update version to 2.217
+          Sat Jan 31 11:52:15 2026 +0000
+          937b7c2da2052fa09483b7c5db3eca86e74fee52
+
+-------------------------------------------------------------------
 Sat Oct 25 05:31:40 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.214
