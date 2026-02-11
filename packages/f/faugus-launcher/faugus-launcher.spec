@@ -26,13 +26,13 @@
 %endif
 
 Name:           faugus-launcher
-Version:        1.14.1
+Version:        1.14.2
 Release:        0
 Summary:        A simple and lightweight app for running Windows games using UMU-Launcher
-
 License:        MIT
 URL:            https://github.com/Faugus/faugus-launcher
 Group:          System/Emulators/PC
+
 # Get the source from tar_scm
 Source0:        %{name}-%{version}.tar.xz
 # Exclusions
@@ -43,6 +43,8 @@ BuildArch:      noarch
 # Faugus BuildDeps
 BuildRequires:  meson
 BuildRequires:  gtk4-tools
+BuildRequires:  desktop-file-utils
+BuildRequires:  appstream-glib
 
 # To remove duplicated files
 BuildRequires:  fdupes
@@ -52,14 +54,14 @@ BuildRequires:  python-rpm-macros
 
 Requires:       ImageMagick
 Requires:       canberra-gtk-play
-Requires:       python%{python3_version_nodots}
-Requires:       python%{python3_version_nodots}-Pillow
-Requires:       python%{python3_version_nodots}-filelock
-Requires:       python%{python3_version_nodots}-gobject
-Requires:       python%{python3_version_nodots}-icoextract
-Requires:       python%{python3_version_nodots}-psutil
-Requires:       python%{python3_version_nodots}-requests
-Requires:       python%{python3_version_nodots}-vdf
+Requires:       %{python_module base}
+Requires:       %{python_module Pillow}
+Requires:       %{python_module filelock}
+Requires:       %{python_module gobject}
+Requires:       %{python_module icoextract}
+Requires:       %{python_module psutil}
+Requires:       %{python_module requests}
+Requires:       %{python_module vdf}
 Requires:       typelib-1_0-AyatanaAppIndicator3-0_1
 
 # Only install gaming selinux policy on SLE +16 / Leap +16 / Tumbleweed / Slowroll
@@ -76,14 +78,29 @@ Recommends:     mangohud%{?_isa}
 Recommends:     ntsync-autoload
 Recommends:     ntsync-autoload-udev-rules
 
-Provides:       faugus-launcher = %{version}
 Obsoletes:      faugus-launcher < %{version}
 
 %description
 A simple and lightweight app for running Windows games using UMU-Launcher/UMU-Proton.
 
+# Lang subpackage
+%lang_package
+
 %prep
 %autosetup -n %{name}-%{version}
+
+# Fix for shebangs
+sed -i '1s|/usr/bin/env python3|%{__python3}|' faugus_launcher.py
+sed -i '1s|/usr/bin/env python3|%{__python3}|' faugus_run.py
+sed -i '1s|/usr/bin/env python3|%{__python3}|' faugus_proton_manager.py
+sed -i '1s|/usr/bin/env python3|%{__python3}|' faugus/proton_downloader.py
+
+# Fix for non-executable scripts on older versions than 1.14.2
+%if "%{version}" <= "1.14.1"
+sed -i '1{/^#!.*python/d}' faugus/components.py
+sed -i '1{/^#!.*python/d}' faugus/path_manager.py
+sed -i '1{/^#!.*python/d}' faugus/proton_downloader.py
+%endif
 
 %build
 # Compile faugus-launcher
@@ -94,15 +111,12 @@ A simple and lightweight app for running Windows games using UMU-Launcher/UMU-Pr
 # Install faugus-launcher
 %meson_install
 
-# Fix for shebangs
-sed -i '1s|/usr/bin/env python3|/usr/bin/python3|' %{buildroot}%{_bindir}/faugus-launcher
-sed -i '1s|/usr/bin/env python3|/usr/bin/python3|' %{buildroot}%{_bindir}/faugus-run
-sed -i '1s|/usr/bin/env python3|/usr/bin/python3|' %{buildroot}%{_bindir}/faugus-proton-manager
-
-# Fix for non-executable scripts
-sed -i '1{/^#!.*python/d}' %{buildroot}%{python3_sitelib}/faugus/components.py
-sed -i '1{/^#!.*python/d}' %{buildroot}%{python3_sitelib}/faugus/path_manager.py
-sed -i '1{/^#!.*python/d}' %{buildroot}%{python3_sitelib}/faugus/proton_downloader.py
+# Fix bytecode mtime for SLE 15 SP6 / Leap 15.6
+%if 0%{?sle_version} == 150600
+find %{buildroot}%{python3_sitelib} -name "*.pyc" -delete
+find %{buildroot}%{python3_sitelib} -name "*.py" -exec touch -d "1970-01-01 00:00:03" {} +
+%{__python3} -m compileall -d %{python3_sitelib} %{buildroot}%{python3_sitelib}/faugus/
+%endif
 
 # Remove duplicated files
 %fdupes %{buildroot}%{_datadir}
@@ -114,8 +128,11 @@ sed -i '1{/^#!.*python/d}' %{buildroot}%{python3_sitelib}/faugus/proton_download
 cat faugus-proton-manager.lang faugus-run.lang >> %{name}.lang
 
 %check
+# Checks for desktop files and appstream metadata
+desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 
-%files -f %{name}.lang
+%files
 %license LICENSE
 # Application data
 %dir %{_datadir}/faugus-launcher
@@ -132,5 +149,8 @@ cat faugus-proton-manager.lang faugus-run.lang >> %{name}.lang
 %{_datadir}/metainfo/faugus-launcher.metainfo.xml
 # Python modules
 %{python3_sitelib}/faugus/
+
+# Language files for the subpackage
+%files lang -f %{name}.lang
 
 %changelog

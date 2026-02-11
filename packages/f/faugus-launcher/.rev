@@ -23,4 +23,25 @@
   * Updated Dutch translation</comment>
     <requestid>1331738</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>19a7de55a211bc4ed7a3a19b95c7952d</srcmd5>
+    <version>1.14.2</version>
+    <time>1770832077</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.14.2
+- Upstream changes for 1.14.2:
+  * Fixed Proton being redownloaded
+  * perf: optimize search by toggling flowbox child visibility
+  * Fix permission for Python executables
+  * perf: attach game references to flowbox children
+- For .spec file:
+  * Added shebang fix for proton_downloader.py
+  * Added %if conditional to fix non-executable scripts for older faugus-launcher versions
+  * Moved some of the fixes to the %prep step
+  * Added proper lang subpackage for translations
+  * Fix python bytecode mtime warnings for SLE 15 SP6 / Leap 15.6
+  * Better use of macros
+  * Minor fixes</comment>
+    <requestid>1332348</requestid>
+  </revision>
 </revisionlist>

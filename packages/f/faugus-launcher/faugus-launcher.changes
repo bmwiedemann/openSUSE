@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Feb 10 19:02:03 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.14.2
+- Upstream changes for 1.14.2:
+  * Fixed Proton being redownloaded
+  * perf: optimize search by toggling flowbox child visibility
+  * Fix permission for Python executables
+  * perf: attach game references to flowbox children
+- For .spec file:
+  * Added shebang fix for proton_downloader.py
+  * Added %if conditional to fix non-executable scripts for older faugus-launcher versions
+  * Moved some of the fixes to the %prep step
+  * Added proper lang subpackage for translations
+  * Fix python bytecode mtime warnings for SLE 15 SP6 / Leap 15.6
+  * Better use of macros
+  * Minor fixes
+
+-------------------------------------------------------------------
+Mon Feb  9 07:14:29 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- .spec enhancements for %check
+
+-------------------------------------------------------------------
+Sun Feb  8 00:22:58 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Minor .spec fixes 
+
+-------------------------------------------------------------------
 Fri Feb 06 16:27:52 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 - Bump to version 1.14.1
 - Upstream changes for 1.14.1:
