@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Feb 12 04:43:50 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.5.4:
+  * remove python2 leftovers
+  * add support for Ascend-Data-Filter "delete" keyword
+  * Drop support of Python 2.x
+  * Add salt decryption of encrypted attributes
+  * Fix #194 salt-encryption
+  * Fix #213 EncodeIPv6Prefix
+  * Fix for UTF-8
+  * Migrate packaging to PEP 621 / PEP 517 (setuptools)
+  * Fix fix usage of socket.getaddrinfo
+  * Fix #197 KeyError when handling CoA packet for 0.0.0.0
+  * Fix create CoA packet in client_async
+  * Fix #152 and add corresponding unittests
+  * Fixed unittests
+- Drop patch use-correct-assertion-methods.patch, merged upstream.
+- Drop patch support-poetry-core-2.patch, no longer required.
+- Ship README.rst as documentation in the binary packages.
+
+-------------------------------------------------------------------
 Fri Jan 10 03:56:53 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-poetry-core-2.patch:

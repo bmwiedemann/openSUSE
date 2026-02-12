@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyrad
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,20 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyrad
-Version:        2.4
+Version:        2.5.4
 Release:        0
 Summary:        RADIUS tools
 License:        BSD-3-Clause
 URL:            https://github.com/pyradius/pyrad
 Source0:        https://github.com/pyradius/pyrad/archive/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#pyradius/pyrad#162
-Patch0:         use-correct-assertion-methods.patch
-# PATCH-FIX-UPSTREAM Based on gh#pyradius/pyrad#208
-Patch1:         support-poetry-core-2.patch
 BuildRequires:  %{python_module netaddr}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module setuptools >= 68}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  netcfg
 BuildRequires:  python-rpm-macros
 Requires:       python-netaddr
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,12 +48,16 @@ them and decoding responses.
 
 %install
 %pyproject_install
+# Do not ship docs and examples under sitelib
+%python_expand rm -r %{buildroot}%{$python_sitelib}/docs
+%python_expand rm -r %{buildroot}%{$python_sitelib}/example
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pyunittest discover -v
 
 %files %{python_files}
+%doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/pyrad
 %{python_sitelib}/pyrad-%{version}.dist-info
