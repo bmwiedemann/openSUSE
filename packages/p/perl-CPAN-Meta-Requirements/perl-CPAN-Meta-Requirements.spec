@@ -18,7 +18,7 @@
 
 %define cpan_name CPAN-Meta-Requirements
 Name:           perl-CPAN-Meta-Requirements
-Version:        2.144
+Version:        2.145
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Set of version requirements for a CPAN dist

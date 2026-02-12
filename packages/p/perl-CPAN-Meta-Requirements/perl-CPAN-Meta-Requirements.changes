@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb  1 06:09:53 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.145
+   see /usr/share/doc/packages/perl-CPAN-Meta-Requirements/Changes
+
+  2.145     2026-01-31 12:17:04+01:00 Europe/Brussels
+      - Correct "normalization of 0" code to work correctly with vstrings
+        (thanks, Graham Knop!)
+
+-------------------------------------------------------------------
 Sat Jan 24 05:40:45 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.144

@@ -122,4 +122,16 @@
       - Normalize away &quot;&gt;= 0&quot; in compount version requirements, it's meaningless.</comment>
     <requestid>1331904</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4bd2e40736b6f085305b25af1421b00f</srcmd5>
+    <version>2.145</version>
+    <time>1770913548</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.145
+   see /usr/share/doc/packages/perl-CPAN-Meta-Requirements/Changes
+  2.145     2026-01-31 12:17:04+01:00 Europe/Brussels
+      - Correct &quot;normalization of 0&quot; code to work correctly with vstrings
+        (thanks, Graham Knop!)</comment>
+    <requestid>1332516</requestid>
+  </revision>
 </revisionlist>
