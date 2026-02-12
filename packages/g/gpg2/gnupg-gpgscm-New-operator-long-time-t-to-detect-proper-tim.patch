@@ -1,0 +1,140 @@
+From 86baca6e62b3323d516056bf6cfbf9014cf3a8ec Mon Sep 17 00:00:00 2001
+From: Werner Koch <wk@gnupg.org>
+Date: Tue, 10 Feb 2026 15:42:26 +0100
+Subject: [PATCH 2/2] gpgscm: New operator "*long-time-t?" to detect proper
+ time_t systems.
+
+* tests/gpgscm/opdefines.h (OP_LONG_TIME_T): New.
+* tests/gpgscm/scheme.c (Eval_Cycle): Implement it.
+
+* tests/openpgp/quick-key-manipulation.scm (last-pgp-date): new.
+(last-pgp-date-5min): New.
+(last-pgp-seconds): New.
+(last-pgp-seconds-5min): New.
+("Checking that we can add subkeys..."): Use the new functions instead
+of the year 20238 constants.
+--
+
+This is actually a system constant but it is easier to provide it as a
+new function to get this value.  This makes the tests run properly on
+64 bit system when building after 2038.
+
+GnuPG-bug-id: 8096, 2988
+Fixes-commit: de3838372ae3cdecbd83eea2c53c8e2656d93052
+
+diff --git a/tests/gpgscm/Manual.txt b/tests/gpgscm/Manual.txt
+index b1469269a..17286a4c8 100644
+--- a/tests/gpgscm/Manual.txt
++++ b/tests/gpgscm/Manual.txt
+@@ -232,6 +232,10 @@ Please read accompanying file COPYING.
+      the library in a directory other than the current one. Please refer to the
+      appropriate 'man' page.
+ 
++          System predicates
++     (*long-time-t?*) returns true if the C type_t is either unsigned
++     or larger than 32 bits.
++
+           Esoteric procedures
+      (oblist)
+      Returns the oblist, an immutable list of all the symbols.
+diff --git a/tests/gpgscm/opdefines.h b/tests/gpgscm/opdefines.h
+index a31c35be9..db5f7cf34 100644
+--- a/tests/gpgscm/opdefines.h
++++ b/tests/gpgscm/opdefines.h
+@@ -201,5 +201,6 @@ _OP_DEF(OP_GET_CLOSURE,         "get-closure-code",               1,  1,       T
+ _OP_DEF(OP_CLOSUREP,            "closure?",                       1,  1,       TST_NONE                          )
+ _OP_DEF(OP_MACROP,              "macro?",                         1,  1,       TST_NONE                          )
+ _OP_DEF(OP_VM_HISTORY,          "*vm-history*",                   0,  0,       TST_NONE                          )
++_OP_DEF(OP_LONG_TIME_T,         "*long-time-t?*",                 0,  0,       TST_NONE                           )
+ 
+ #undef _OP_DEF
+diff --git a/tests/gpgscm/scheme.c b/tests/gpgscm/scheme.c
+index 43cfa837b..c0b3b727d 100644
+--- a/tests/gpgscm/scheme.c
++++ b/tests/gpgscm/scheme.c
+@@ -5329,6 +5329,8 @@ Eval_Cycle(scheme *sc, enum scheme_opcodes op) {
+           s_retbool(is_macro(car(sc->args)));
+      CASE(OP_VM_HISTORY):          /* *vm-history* */
+           s_return(sc, history_flatten(sc));
++     CASE(OP_LONG_TIME_T):
++          s_retbool (sizeof (time_t) > 4 || ((time_t)(-2) > 0));
+      default:
+           snprintf(sc->strbuff,STRBUFFSIZE,"%d: illegal operator", op);
+           Error_0(sc,sc->strbuff);
+diff --git a/tests/openpgp/quick-key-manipulation.scm b/tests/openpgp/quick-key-manipulation.scm
+index 71d222a22..c6c98102f 100755
+--- a/tests/openpgp/quick-key-manipulation.scm
++++ b/tests/openpgp/quick-key-manipulation.scm
+@@ -38,6 +38,22 @@
+ (define delta "Delta <delta@invalid.example.net>")
+ (define deltahash "359DC5EFF98B14A58AAA615C638E8BD0CEDA537B")
+ 
++;; The last year PGP can represent is 2105 but in our tests we can
++;; only use 2038 for signed 32 bit time_t systems.
++(define last-pgp-date
++  (if (*long-time-t?*) "2105-01-01" "2038-01-01"))
++(define last-pgp-date-5min
++  (if (*long-time-t?*) "21050101T115500" "20380101T115500"))
++
++;; UTC 2105-01-01 12:00:00 or 2038-01-01 12:00:00
++(define last-pgp-seconds
++  (if (*long-time-t?*) 4260254400 2145960000))
++;; And the same but 5 minutes earlier:
++;; UTC 2105-01-01 11:55:00 or 2038-01-01 11:55:00
++(define last-pgp-seconds-5min
++  (if (*long-time-t?*) 4260254100 2145959700))
++
++
+ (define (key-data key)
+   (filter (lambda (x) (or (string=? (car x) "pub")
+                           (string=? (car x) "sub")))
+@@ -144,22 +160,17 @@
+      (assert (= count (length subkeys)))
+      (if check (check (last subkeys)))))
+  ;; A bunch of arguments...
+- '(()
++ `(()
+    (- - -)
+    (default default never)
+    (rsa "sign auth encr" "seconds=600") ;; GPGME uses this
+    (rsa "auth,encr" "2") ;; "without a letter, days is assumed"
+-   ;; Sadly, the timestamp is truncated by the use of time_t on
+-   ;; systems where time_t is a signed 32 bit value.
+-   (rsa "sign" "2038-01-01")      ;; unix millennium
+-   (rsa "sign" "20380101T115500") ;; unix millennium
+-   ;; Once fixed, we can use later timestamps:
+-   ;; (rsa "sign" "2105-01-01")      ;; "last year GnuPG can represent is 2105"
+-   ;; (rsa "sign" "21050101T115500") ;; "last year GnuPG can represent is 2105"
++   (rsa "sign" ,last-pgp-date)
++   (rsa "sign" ,last-pgp-date-5min)
+    (rsa sign "2d")
+    (rsa1024 sign "2w")
+    (rsa2048 encr "2m")
+-   (rsa4096 sign,auth "2y")
++   (rsa4096 "sign,auth" "2y")
+    (future-default))
+  ;; ... with functions to check that the created key matches the
+  ;; expectations (or #f for no tests).
+@@ -186,8 +197,7 @@
+   (lambda (subkey)
+     (assert (= 1 (:alg subkey)))
+     (assert (string-contains? (:cap subkey) "s"))
+-    (assert (time-matches? 2145960000    ;; UTC 2038-01-01 12:00:00
+-			   ;; 4260254400 ;; UTC 2105-01-01 12:00:00
++    (assert (time-matches? last-pgp-seconds
+ 			   (string->number (:expire subkey))
+ 			   ;; GnuPG choses the middle of the day (local time)
+ 			   ;; when no hh:mm:ss is specified
+@@ -195,8 +205,7 @@
+   (lambda (subkey)
+     (assert (= 1 (:alg subkey)))
+     (assert (string-contains? (:cap subkey) "s"))
+-    (assert (time-matches? 2145959700    ;; UTC 2038-01-01 11:55:00
+-			   ;; 4260254100 ;; UTC 2105-01-01 11:55:00
++    (assert (time-matches? last-pgp-seconds-5min
+ 			   (string->number (:expire subkey))
+ 			   (minutes->seconds 5))))
+   (lambda (subkey)
+-- 
+2.52.0
+

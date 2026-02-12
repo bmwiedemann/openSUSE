@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 11 10:27:56 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix Y2K38 FTBFS:
+  * gpg2 quick-key-manipulation test FTBFS-2038 (bsc#1251214)
+  * Upstream issue: dev.gnupg.org/T8096
+  * Add gnupg-gpgscm-New-operator-long-time-t-to-detect-proper-tim.patch
+
+-------------------------------------------------------------------
 Tue Jan 27 17:07:54 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2.5.17:

@@ -47,6 +47,8 @@ Patch11:        gnupg-allow-large-rsa.patch
 Patch12:        gnupg-revert-rfc4880bis.patch
 #PATCH-FIX-OPENSUSE Do not pull revision info from GIT when autoconf is run
 Patch13:        gnupg-nobetasuffix.patch
+#PATCH-FIX-UPSTREAM bsc#1251214 gpg2 quick-key-manipulation test FTBFS-2038
+Patch14:        gnupg-gpgscm-New-operator-long-time-t-to-detect-proper-tim.patch
 BuildRequires:  expect
 BuildRequires:  fdupes
 BuildRequires:  makeinfo
