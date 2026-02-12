@@ -873,4 +873,12 @@ known issue: KMPs not yet propetly supported</comment>
     <comment>update longterm</comment>
     <requestid>1331764</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>a61c6edeea2443e08471d01f232ef576</srcmd5>
+    <version>6.12.70</version>
+    <time>1770913563</time>
+    <user>anag_factory</user>
+    <comment>update longterm</comment>
+    <requestid>1332636</requestid>
+  </revision>
 </revisionlist>
