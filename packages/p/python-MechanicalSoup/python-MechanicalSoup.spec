@@ -1,7 +1,7 @@
 #
 # spec file for package python-MechanicalSoup
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,9 @@ Summary:        A Python library for automating interaction with websites
 License:        MIT
 URL:            https://github.com/hickford/MechanicalSoup
 Source:         https://files.pythonhosted.org/packages/source/m/mechanicalsoup/mechanicalsoup-%{version}.tar.gz
+Source100:      python-MechanicalSoup.rpmlintrc
+# PATCH-FIX-UPSTREAM fix-unclosed-textarea.patch -- gh#MechanicalSoup/MechanicalSoup#454
+Patch0:         fix-unclosed-textarea.patch
 BuildRequires:  %{python_module beautifulsoup4 >= 4.7}
 BuildRequires:  %{python_module httpbin}
 BuildRequires:  %{python_module jsonschema >= 2.5.1}
@@ -39,8 +42,10 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-beautifulsoup4 >= 4.7
+Requires:       python-certifi
 Requires:       python-lxml
 Requires:       python-requests >= 2.22.0
+Requires:       python-urllib3
 Recommends:     python-httpbin
 Recommends:     python-jsonschema >= 2.5.1
 BuildArch:      noarch
@@ -58,7 +63,7 @@ Python giants Requests (for http sessions) and BeautifulSoup (for
 document navigation).
 
 %prep
-%setup -q -n mechanicalsoup-%{version}
+%autosetup -p1 -n mechanicalsoup-%{version}
 # do not require cov/xdist/etc
 sed -i -e '/addopts/d' setup.cfg
 

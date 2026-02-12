@@ -1,0 +1,26 @@
+From cad2ef13ed952e0589daa4b7837f289f57c8d423 Mon Sep 17 00:00:00 2001
+From: Dan Hemberger <daniel.hemberger@gmail.com>
+Date: Mon, 30 Jun 2025 18:44:56 -0700
+Subject: [PATCH] test_stateful_browser.py: fix unclosed textarea element
+
+Fixes #450.
+
+The HTML parser in libxml2 2.14 is more strict about closing textarea
+elements.
+---
+ tests/test_stateful_browser.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: mechanicalsoup-1.4.0/tests/test_stateful_browser.py
+===================================================================
+--- mechanicalsoup-1.4.0.orig/tests/test_stateful_browser.py
++++ mechanicalsoup-1.4.0/tests/test_stateful_browser.py
+@@ -498,7 +498,7 @@ def test_select_form_tag_object():
+ 
+ def test_select_form_associated_elements():
+     """Test associated elements outside the form tag"""
+-    forms = """<form id="a"><input><textarea></form><input form="a">
++    forms = """<form id="a"><input><textarea></textarea></form><input form="a">
+                <textarea form="a"/><input form="b">
+                <form id="ab" action="/test.php"><input></form>
+                <textarea form="ab"></textarea>

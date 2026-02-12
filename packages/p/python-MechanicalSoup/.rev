@@ -127,4 +127,17 @@
     <comment></comment>
     <requestid>1298936</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>355d15b8c4eb3193daede144da4441c6</srcmd5>
+    <version>1.4.0</version>
+    <time>1770913756</time>
+    <user>anag_factory</user>
+    <comment>- fix unclosed textarea element
+  Add fix-unclosed-textarea.patch from upstream
+  gh#MechanicalSoup/MechanicalSoup#454
+- Add missing dependencies
+- Add python-MechanicalSoup.rpmlintrc to filter
+  &quot;explicit-lib-dependency: python.*-urllib3&quot;</comment>
+    <requestid>1332639</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 12 08:40:13 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- fix unclosed textarea element
+  Add fix-unclosed-textarea.patch from upstream
+  gh#MechanicalSoup/MechanicalSoup#454
+- Add missing dependencies
+- Add python-MechanicalSoup.rpmlintrc to filter
+  "explicit-lib-dependency: python.*-urllib3"
+
+-------------------------------------------------------------------
 Mon Aug 11 12:52:15 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.4.0
