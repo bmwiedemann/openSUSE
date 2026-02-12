@@ -8,4 +8,12 @@
   * Full changelog - https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.35.md#v1350</comment>
     <requestid>1323449</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b8bd2ec4dc37fa342dc68b3fd64f63fa</srcmd5>
+    <version>1.35.1</version>
+    <time>1770913741</time>
+    <user>anag_factory</user>
+    <comment>Monthly Patch Release – Feb, 2026: Update to version 1.35.1</comment>
+    <requestid>1332630</requestid>
+  </revision>
 </revisionlist>

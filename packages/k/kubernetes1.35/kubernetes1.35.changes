@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Feb 12 06:04:04 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.35.1:
+  * Apparently some EC2 images we use do not have /proc/net/nf_conntrack
+  * test: Fix KubeProxy CLOSE_WAIT test for IPv6 environments
+  * test: Read /proc/net/nf_conntrack instead of using conntrack binary
+  * csi: raise kubelet CSI init backoff to cover ~140s DNS delays
+  * test(ut/dra): add unit test for pod requesting prepared and new claims
+  * test(e2e/dra): add test for pod requesting allocated and new claims
+  * DRA integration: more pods per node, more parallelism
+  * DRA integration: add "uses all resources" test
+  * DRA scheduler: fix another root cause of double device allocation
+  * DRA scheduler: fix one root cause of double device allocation
+  * fix(kubelet): convert V().Error() to V().Info() for verbosity-aware logging
+  * fix(expansion):Resolve the issue of UTF-8 characters being truncated, resulting in invalid UTF-8
+  * Bump images and versions to go 1.25.6 and distroless iptables
+  * kubelet(dra): fix multiple claims handling
+  * Fix for preferred dualstack and required dualstack in winkernel proxier.
+  * kubeadm: waiting for etcd learner member to be started before promoting during 'kubeadm join'
+  * kubectl: Fix panic in exec terminal size queue
+  * bump go to 1.25.6 for CVE fixes
+  * kubeadm: fix a bug where kubeadm upgrade is failed if the content of the `kubeadm-flags.env` file is `KUBELET_KUBEADM_ARGS=""`
+  * Switch ipvs and winkernel back to more regular forced syncs
+  * mark QuotaMonitor as not running and invalidate monitors list
+  * Add unit test with CSIDriver.SELinuxMount=false
+  * Added e2e tests with disabled SELinux
+  * Use only enqueuePod to add pods to the controller queue
+  * Fix policy of Pods with unknown SELinux label
+  * selinux: add e2e test with a completed pod
+  * Rework unit tests to builder pattern
+  * selinux: Do not report conflits with finished pods
+  * refactoring: use a common function to enqueue Pod
+  * add StatefulSetAvailabilityCheck test
+  * replace "k8s.io/klog/v2/ktesting" with "k8s.io/kubernetes/test/utils/ktesting"
+  * schedule pod availability checks at the correct time in StatefulSets
+  * wire now (time) to the availability checks in the StatefulSet controller
+  * Fix race condition in DRA health e2e test pod status update
+  * kubeadm: always retry Patch() Node API calls
+  * Disable SchedulerAsyncAPICalls in v1.35 due to performance issues
+  * kubeadm: do not sort extraArgs alpha-numerically
+  * Update vendored hnslib to v0.1.2
+  * refactor: Ensure metricIdentifier uses scheme for kind resolution
+  * Fix apiserver_watch_events_sizes metric.
+  * hack/lib/util.sh: support uutils' `date` command
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.25.6`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.35.1/build/dependencies.yaml#L119-L120
+
+-------------------------------------------------------------------
 Thu Dec 18 06:17:34 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - initial package for Kubernetes v1.35.0

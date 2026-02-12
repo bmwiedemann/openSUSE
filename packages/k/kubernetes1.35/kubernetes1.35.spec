@@ -22,7 +22,7 @@
 %define baseversionminus1 1.34
 
 Name:           kubernetes%{baseversion}
-Version:        1.35.0
+Version:        1.35.1
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -51,7 +51,7 @@ Patch4:         kubeadm-opensuse-flexvolume.patch
 Patch5:         revert-coredns-image-renaming.patch
 BuildRequires:  fdupes
 BuildRequires:  git
-BuildRequires:  go >= 1.25.5
+BuildRequires:  go >= 1.25.6
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
