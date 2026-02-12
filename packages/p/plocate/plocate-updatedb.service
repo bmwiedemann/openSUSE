@@ -29,7 +29,10 @@ SystemCallFilter=@system-service @chown
 Type=oneshot
 ExecStart=/bin/sh -c \
           "chown -R ${RUN_UPDATEDB_AS}:root /var/lib/plocate && \
-          su --shell=/bin/sh ${RUN_UPDATEDB_AS} -c 'umask 0022; /usr/sbin/updatedb'"
+           su --shell=/bin/sh ${RUN_UPDATEDB_AS} -c \
+             'umask 0022; /usr/sbin/updatedb --require-visibility 0'; \
+           chown -R root:root /var/lib/plocate; \
+           chmod 0644 /var/lib/plocate/plocate.db"
 
 # Unfortunately, the umask we set here is lost because we invoke updatedb
 # through 'su' to change to the user ${RUN_UPDATEDB_AS}. See bnc#941296 and

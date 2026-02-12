@@ -1,8 +1,21 @@
 -------------------------------------------------------------------
+Sun Jan 25 17:12:44 UTC 2026 - Manfred Schwarb <manfred99@gmx.ch>
+
+- spec file: add %attr statement to %ghost declaration to placate rpmlint
+- remove patch disable-visibility.patch and provide the same functionality
+  by invoking updatedb with "--require-visibility 0" and subsequent
+  invocation of "chmod 644" to gain flexibility for different usage patterns
+  Additionally, database is now owned by root, as nobody should not own any files.
+- update to version 1.1.24:
+  * Improve error handling on synchronous reads
+  * Remove ConditionACPower=true from the systemd unit file
+  * Add a new option --config-file for changing the path of updatedb.conf
+
+-------------------------------------------------------------------
 Wed Feb 26 14:12:16 UTC 2025 - Manfred Schwarb <manfred99@gmx.ch>
 
 - split off apparmor support into its own subpackage, using a conditional
-  dependency for it in the main package (boo#1237689). 
+  dependency for it in the main package (boo#1237689).
 
 -------------------------------------------------------------------
 Wed Dec  4 23:40:23 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
@@ -24,7 +37,7 @@ Wed Jun 19 08:06:03 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
 - remove ConditionACPower systemd condition. Updates are generally
     fast, so no excessive battery drainage has to be expected.
     Reason for missing updates on laptops is not easy to figure out.
-- remove rc* service link, sysV init has long gone. 
+- remove rc* service link, sysV init has long gone.
 
 -------------------------------------------------------------------
 Wed Jun 12 15:04:47 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>

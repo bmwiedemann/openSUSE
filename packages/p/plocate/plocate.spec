@@ -1,7 +1,7 @@
 #
 # spec file for package plocate
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without  apparmor
 
 Name:           plocate
-Version:        1.1.23
+Version:        1.1.24
 Release:        0
 Summary:        A much faster locate(1)
 License:        GPL-2.0-only
@@ -33,7 +33,6 @@ Source3:        sysconfig.locate
 Source5:        usr.bin.plocate
 Source6:        usr.sbin.updatedb
 %endif
-Patch0:         disable-visibility.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -126,7 +125,7 @@ install -Dm644 %{SOURCE6} %{buildroot}%{_sysconfdir}/apparmor.d/usr.sbin.updated
 %{_fillupdir}/sysconfig.locate
 %dir %{_sharedstatedir}/%{name}/
 %{_sharedstatedir}/%{name}/CACHEDIR.TAG
-%ghost %{_sharedstatedir}/%{name}/%{name}.db
+%ghost %attr(0644,root,root) %{_sharedstatedir}/%{name}/%{name}.db
 %config(noreplace) %{_sysconfdir}/updatedb.conf
 
 %if %{with apparmor}
