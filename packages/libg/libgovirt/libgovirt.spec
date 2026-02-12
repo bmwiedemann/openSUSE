@@ -1,7 +1,7 @@
 #
 # spec file for package libgovirt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           libgovirt
-Version:        0.3.9
+Version:        0.3.11
 Release:        0
 Summary:        GObject based oVirt bindings
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://gitlab.gnome.org/GNOME/libgovirt
 Source0:        https://download.gnome.org/sources/libgovirt/0.3/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM bae26c0033d649722b5a3fc48df3adf2172490f1.patch -- Suppress error 'cast increases required alignment of target type'
-Patch0:         https://gitlab.gnome.org/GNOME/libgovirt/-/commit/bae26c0033d649722b5a3fc48df3adf2172490f1.patch
 
 BuildRequires:  gobject-introspection-devel >= 1.30.0
 BuildRequires:  intltool
@@ -34,7 +32,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(rest-1.0) >= 0.9
+BuildRequires:  pkgconfig(rest-1.0) >= 0.10.2
 
 %description
 GoVirt is a GObject wrapper for the oVirt REST API [1]. It will
@@ -88,9 +86,12 @@ bindings.
 
 %install
 %meson_install
-%find_lang govirt-1.0 %{?no_lang_C}
+%find_lang libgovirt %{?no_lang_C}
 
 %ldconfig_scriptlets -n libgovirt2
+
+%check
+%meson_test
 
 %files -n libgovirt2
 %license COPYING
@@ -106,6 +107,6 @@ bindings.
 %{_libdir}/libgovirt.so
 %{_libdir}/pkgconfig/govirt-1.0.pc
 
-%files lang -f govirt-1.0.lang
+%files lang -f libgovirt.lang
 
 %changelog
