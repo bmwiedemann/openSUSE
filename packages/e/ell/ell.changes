@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 10 09:05:56 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.81
+  * Fix issue with systemd watchdog protocol handling.
+
+-------------------------------------------------------------------
 Mon Oct 13 16:09:34 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.80
