@@ -22,5 +22,4 @@ Digest::Perl::MD5 and use Digest::MD5 as normal, it falls back to
 Digest::Perl::MD5 if it cannot load its object files.
 
 For a detailed Documentation see the 'Digest::MD5' module.</description>
-  <devel project="devel:languages:perl" package="perl-Digest-Perl-MD5"/>
 </package>

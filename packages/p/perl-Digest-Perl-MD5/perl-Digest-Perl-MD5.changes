@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Feb  1 06:12:09 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.910.0 (1.91)
+   see /usr/share/doc/packages/perl-Digest-Perl-MD5/CHANGES
+
+  1.91:	Performance and maintenance release:
+  	- ~11% performance improvement on 64-bit systems (reduced masking overhead)
+  	- Added GitHub Actions CI workflows
+  	- Code reformatted with perltidy
+
+  1.9:	Bug fix release:
+  	- RT#78392: Localize $_ to protect calling modules from clobbering
+  	- RT#85872: Fixed /usr/bin/false shebang in tools/md5
+  	- RT#86853: Fixed typos in documentation
+
+-------------------------------------------------------------------
 Thu Feb  6 22:23:44 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version
