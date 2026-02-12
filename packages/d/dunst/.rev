@@ -214,4 +214,12 @@
     <comment>New upstream release 1.12.2 (forwarded request 1250579 from dancermak)</comment>
     <requestid>1251715</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b13d23478d18815ac507545ed73c6fc9</srcmd5>
+    <version>1.13.1</version>
+    <time>1770913796</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1332687</requestid>
+  </revision>
 </revisionlist>

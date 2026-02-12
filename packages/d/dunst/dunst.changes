@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb  3 06:30:17 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- update to version 1.13.1
+  * Added basic zsh and bash completions for dunstify
+  * Install shell completions in the meson build
+  * Connect dunstctl reload to systemctl service reloading
+  * Add an option to pause timeout while the notification is
+    being hovered
+- update to version 1.13.0
+  * With the new remove_current action, you will be able to close
+    and directly remove from history a notification.
+  * Now you can set a pause level at startup with the
+    default_pause_level setting.
+ *  The Wayland support has seen several improvements
+
+-------------------------------------------------------------------
 Thu Mar  6 08:45:17 UTC 2025 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 1.12.2

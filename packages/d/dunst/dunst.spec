@@ -1,7 +1,7 @@
 #
 # spec file for package dunst
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?_userunitdir:%define _userunitdir %{_prefix}/lib/systemd/user}
 Name:           dunst
-Version:        1.12.2
+Version:        1.13.1
 Release:        0
 Summary:        A customizable notification daemon
 License:        BSD-3-Clause
@@ -48,6 +48,8 @@ BuildRequires:  awk
 BuildRequires:  dbus-1-daemon
 # https://github.com/dunst-project/dunst/issues/1404#issuecomment-2562077336
 BuildRequires:  dejavu
+BuildRequires:  gdk-pixbuf-loader-rsvg
+BuildRequires:  glycin-loaders
 
 
 %description
