@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Feb 12 06:37:07 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.32.12:
+  * Bump dependencies, images and versions used to Go 1.24.12 and distroless iptables
+  * Apparently some EC2 images we use do not have /proc/net/nf_conntrack
+  * test: Fix KubeProxy CLOSE_WAIT test for IPv6 environments
+  * test: Read /proc/net/nf_conntrack instead of using conntrack binary
+  * DRA scheduler: fix another root cause of double device allocation
+  * DRA scheduler: fix one root cause of double device allocation
+  * kubeadm: waiting for etcd learner member to be started before promoting during 'kubeadm join'
+  * mark QuotaMonitor as not running and invalidate monitors list
+  * kubeadm: always retry Patch() Node API calls
+  * kubeadm: do not sort extraArgs alpha-numerically
+  * hack/lib/util.sh: support uutils' `date` command
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.24.12`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.32.12/build/dependencies.yaml#L113-L115
+
+-------------------------------------------------------------------
 Wed Dec 17 12:45:48 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.32.11:

@@ -1,7 +1,7 @@
 #
 # spec file for package kubernetes1.32
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define baseversionminus1 1.31
 
 Name:           kubernetes%{baseversion}
-Version:        1.32.11
+Version:        1.32.12
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -54,7 +54,7 @@ Patch5:         revert-coredns-image-renaming.patch
 Patch6:         cve-2025-22872-x-net-html-properly-handle-trailing-solidus.patch
 BuildRequires:  fdupes
 BuildRequires:  git
-BuildRequires:  go >= 1.24.11
+BuildRequires:  go >= 1.24.12
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
