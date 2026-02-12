@@ -2292,4 +2292,18 @@ Now one could consider building emacs with gsettings support (both debian and fe
   update-desktop-files (jsc#PED-15201)</comment>
     <requestid>1327401</requestid>
   </revision>
+  <revision rev="215" vrev="5">
+    <srcmd5>5d67bea7adc073c0ffa57701d643d59b</srcmd5>
+    <version>30.2</version>
+    <time>1770913509</time>
+    <user>anag_factory</user>
+    <comment>- Add patch emacs-30.2-fix-zoom.patch
+  * Avoid the currently broken zoom test 
+
+- Clarify when bubblewrap is required at runtime
+- Make %check work again
+
+- Enable %check again</comment>
+    <requestid>1332476</requestid>
+  </revision>
 </revisionlist>

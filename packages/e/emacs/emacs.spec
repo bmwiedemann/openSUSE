@@ -37,6 +37,7 @@
 %bcond_with     tex4pdf
 %bcond_without  memmmap
 %bcond_with     checks
+%bcond_with     bubblewrap
 %bcond_with     debug
 # webkit2gtk-4.1 >= 2.41.92 triggers crash as described in PROBLEMS
 %bcond_with     webkit
@@ -196,7 +197,15 @@ Obsoletes:      nxml-mode < 20041004
 Provides:       epg = 1.0.0
 Obsoletes:      epg < 1.0.0
 Provides:       emacs(ELPA)
+%if %{with bubblewrap}
+# See lisp/progmodes/elisp-mode.el
+# Once if bwrap is used the macro bubblewrap in
+#  (elisp--safe-macroexpand-all)
+# and/or
+#  (elisp-flymake-byte-compile)
+# has to be enabled ...
 Requires:       bubblewrap
+%endif
 Requires:       emacs-info = %{version}
 Requires:       emacs_program = %{version}-%{release}
 Requires:       etags
@@ -246,6 +255,7 @@ Patch52:        0012-Add-inhibit-native-compilation.patch
 Patch53:        0013-Rename-to-inhibit-automatic-native-compilation.patch
 Patch55:        0015-Change-native-comp-async-jobs-number-default-to-1.patch
 Patch56:        0016-Change-native-comp-async-report-warnings-errors-to-s.patch
+Patch57:        emacs-30.2-fix-zoom.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{expand: %%global include_info %(test -s /usr/share/info/info.info* && echo 0 || echo 1)}
@@ -423,6 +433,7 @@ and most assembler-like syntaxes.
 %patch -P53 -p1
 %patch -P55 -p1
 %patch -P56 -p1
+%patch -P57 -p1
 %patch -P1  -p0 -b .xauth
 %if %{with memmmap}
 %patch -P2  -p0 -b .glibc
@@ -1067,10 +1078,14 @@ mkdir -p %{buildroot}%{_sysconfdir}/permissions.d
 
 %if %{with checks}
 %check
-if test "$(stat -c %d:%i /)" != "$(stat -c %d:%i /proc/1/root/)"
+if ! bwrap --ro-bind / / /bin/true > /dev/null 2>&1
 then
-  exit 0
+    echo No checks within chroot environment
+    exit 0
 fi
+# This is patch emacs-30.2-fix-zoom.patch
+ZOOM_IMAGE_TESTS=broken
+export ZOOM_IMAGE_TESTS
 mkdir -p native-lisp
 rm -rf native-lisp/%{version}-*
 ln -sf %{buildroot}%{_libdir}/emacs/%{version}/native-lisp/%{version}-* native-lisp/

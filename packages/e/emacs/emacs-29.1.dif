@@ -411,7 +411,8 @@
  		  :help ,(purecopy "Supply explicit dictionary file name")))
 --- site-lisp/term/func-keys.el
 +++ site-lisp/term/func-keys.el	2025-03-03 14:13:31.015626331 +0000
-@@ -0,0 +1,33 @@
+@@ -0,0 +1,34 @@
++;;; func-keys.el --- define general function key sequences in function-key-map  -*- lexical-binding:t -*-
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;; term/func-keys.el for site-lisp path
 +;;; Copyright (c) 1996-2001 SuSE Gmbh Nuernberg, Germany.
@@ -447,9 +448,10 @@
 +;; Ende von func-keys.el
 --- site-lisp/term/gnome.el
 +++ site-lisp/term/gnome.el	2025-03-03 14:13:31.015626331 +0000
-@@ -0,0 +1,97 @@
+@@ -0,0 +1,98 @@
++;;; gnome.el --- define gnome function key sequences in function-key-map  -*- lexical-binding:t -*-
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-+;;; term/gnomw.el for site-lisp path
++;;; term/gnome.el for site-lisp path
 +;;; Copyright (c) 2000 SuSE Gmbh Nuernberg, Germany.  All rights reserved.
 +;;;
 +;;; Author: Werner Fink  <werner@suse.de>, No warranty of any kind
@@ -547,7 +549,8 @@
 +;; Ende von gnomw.el
 --- site-lisp/term/kvt.el
 +++ site-lisp/term/kvt.el	2025-03-03 14:13:31.015626331 +0000
-@@ -0,0 +1,97 @@
+@@ -0,0 +1,98 @@
++;;; kvt.el --- define kvt function key sequences in function-key-map  -*- lexical-binding:t -*-
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;; term/kvt.el for site-lisp path
 +;;; Copyright (c) 2000 SuSE Gmbh Nuernberg, Germany.  All rights reserved.
@@ -647,7 +650,8 @@
 +;; Ende von kvt.el
 --- site-lisp/term/linux.el
 +++ site-lisp/term/linux.el	2025-03-03 14:13:31.015626331 +0000
-@@ -0,0 +1,79 @@
+@@ -0,0 +1,78 @@
++;;; linux.el --- define linux function key sequences in function-key-map  -*- lexical-binding:t -*-
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;; term/linux.el for site-lisp path
 +;;; Copyright (c) 1996 SuSE Gmbh Nuernberg, Germany.  All rights reserved.
@@ -729,7 +733,8 @@
 +;; Ende von linux.el
 --- site-lisp/term/locale.el
 +++ site-lisp/term/locale.el	2025-03-03 14:13:31.015626331 +0000
-@@ -0,0 +1,13 @@
+@@ -0,0 +1,14 @@
++;;; locale.el --- use hook to load function key sequences in function-key-map  -*- lexical-binding:t -*-
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;; term/locale.el for site-lisp path
 +;;; Copyright (c) 1996-2003 SuSE Linux AG Nuernberg, Germany.

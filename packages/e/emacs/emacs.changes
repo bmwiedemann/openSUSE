@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb 11 09:26:04 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch emacs-30.2-fix-zoom.patch
+  * Avoid the currently broken zoom test 
+
+-------------------------------------------------------------------
+Tue Feb 10 14:03:20 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Clarify when bubblewrap is required at runtime
+- Make %check work again
+
+-------------------------------------------------------------------
+Tue Feb 10 12:34:46 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Enable %check again 
+
+-------------------------------------------------------------------
 Wed Jan 14 13:09:16 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 * Add patch desktop.patch and then remove dependency on
