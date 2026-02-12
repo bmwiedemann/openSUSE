@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Wed Feb 11 16:33:54 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#339
+- fix incorrect check of open() return value (bsc#1257832)
+- better logging of url_t type variables
+- 9.6
+
+--------------------------------------------------------------------
 Mon May 12 09:03:51 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#338
