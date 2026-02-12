@@ -1,7 +1,7 @@
 #
 # spec file for package tree
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tree
-Version:        2.2.1
+Version:        2.3.1
 Release:        0
 Summary:        File listing as a tree
 License:        GPL-2.0-or-later
