@@ -1,7 +1,7 @@
 #
 # spec file for package python-stomp.py
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-stomp.py
 Version:        8.2.0
@@ -29,12 +28,12 @@ URL:            https://github.com/jasonrbriggs/stomp.py
 #github is missing the tag: https://github.com/jasonrbriggs/stomp.py/issues/415
 Source0:        https://files.pythonhosted.org/packages/source/s/stomp.py/stomp_py-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %{?python_enable_dependency_generator}
 BuildArch:      noarch
 %python_subpackages
@@ -66,6 +65,6 @@ sed -i 's/\^/>=/' pyproject.toml
 %license LICENSE
 %python_alternative %{_bindir}/stomp
 %{python_sitelib}/stomp/
-%{python_sitelib}/stomp_py-%{version}*-info
+%{python_sitelib}/stomp_py-%{version}.dist-info
 
 %changelog

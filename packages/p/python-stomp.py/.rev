@@ -168,4 +168,12 @@
   - Use Python 3.11 on SLE-15 by default</comment>
     <requestid>1320607</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>afbb33dde3291e8b7dd82487230755ef</srcmd5>
+    <version>8.2.0</version>
+    <time>1770913630</time>
+    <user>anag_factory</user>
+    <comment>- Use poetry-core for building rather than poetry.</comment>
+    <requestid>1332594</requestid>
+  </revision>
 </revisionlist>
