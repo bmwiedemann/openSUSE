@@ -1728,4 +1728,41 @@
     <comment>	elevated privileges (CVE-2025-43904, bsc#1243666).</comment>
     <requestid>1280446</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>938eb17733fa55d37929c05b0d453539</srcmd5>
+    <version>25.11.2</version>
+    <time>1770913781</time>
+    <user>anag_factory</user>
+    <comment>- Removed the testsuite as it's not part of normal release any more
+- Removed Fix-test7.2-to-find-libpmix-under-lib64-as-well.patch
+- Update to version 25.11.2.1
+  * slurmstepd - Revert regression that would apply job environment to
+    container runtime invocation.
+  * Fix issue where reservations may start while required GRES resources are
+    still being used by jobs.
+  * Fix slurmctld segfault when using --consolidate-segments.
+  * Expose slurm.CONSOLIDATE_SEGMENTS flag in lua.
+  * Expose the job record's segment_size in lua.
+  * job_submit/lua - Expose the job_desc's segment_size in lua.
+  * Prevent PMIx 5.0.8 and 5.0.9 clients from hanging when connecting to the
+    PMIx server.
+  * Clarify warning when BPF tokens are not supported.
+  * slurmctld - Ensure we close already accepted conn before RPC flush check
+  * slurmctld - Fix rpc_queue feature causing statesave corruption while
+    shutdown
+  * slurmctld - Ensure backfill has finished before saving state.
+  * slurmctld - Ensure main scheduler has finished before saving state.
+  * slurmctld - Fix error message while shutting down and state cannot be
+    saved.
+  * Fix slurmctld double free that occurs when purging array jobs from memory
+    only when using the topology/block plugin.
+  * Fix steps being rejected inside a batch job when using --cpus-per-task and
+    --mem-per-cpu, and the job was submitted to multiple partitions, but not
+    all of them had the same MaxMemPerCPU limit in place.
+  * slurmctld - Fix crash after failed reconfiguration while running jobs and
+    priority/multifactor enabled.
+  * slurmctld - Fix jobs' QOS/association usage leading to potential underflow
+    errors after a failed reconfiguration attempt.</comment>
+    <requestid>1332670</requestid>
+  </revision>
 </revisionlist>

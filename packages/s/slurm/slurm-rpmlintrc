@@ -30,25 +30,3 @@ addFilter(".*: E: logrotate-log-dir-not-packaged /var/log")
 # which we define if it is not defined. This needs to be kept
 # as long as we need to support the HPC module for SLE-12.
 addFilter("slurm(|-node|-slurmdbd)\..*: systemd-service-without-service_del_postun .*")
-
-# Testsuite is not meant to be installed on a user system.
-# The idea is to place the test suite into a package mostly unaltered
-# to place it to a test rig without requiring to install the full Slurm
-# sources.
-# This is by intention - the test suite requires a test suite specific
-# systemd unit file.
-addFilter("slurm(|_.*)-testsuite.*: E: filelist-forbidden-systemd-userdirs")
-# We want to give root a script to set up the test system
-addFilter("slurm(|_.*)-testsuite.*: E: (suse-|)filelist-forbidden-fhs23 /root")
-# Testsuite needs this as it builds test binaries.
-addFilter("slurm(|_.*)-testsuite.*: devel-dependency libnuma-devel")
-addFilter("slurm(|_.*)-testsuite.*: E: explicit-lib-dependency libnuma-devel")
-# To reduce the amount of preparation, the test suite supplies all required
-# settings.
-addFilter("slurm(|_.*)-testsuite.*: sudoers-file-unauthorized .*")
-# Testsuite needs to override default slurmd.service
-addFilter("slurm(|_.*)-testsuite.x86_64: W: suse-filelist-forbidden-systemd-userdirs /etc/systemd/system/slurmd.service")
-# dito
-addFilter("slurm(|_.*)-testsuite.x86_64: W: systemd-unit-in-etc /etc/systemd/system/slurmd.service")
-# No lib dependency - test suite needs devel package to compile tests
-addFilter("slurm-testsuite.x86_64: W: explicit-lib-dependency .*")

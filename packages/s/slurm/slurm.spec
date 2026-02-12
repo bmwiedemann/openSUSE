@@ -1,7 +1,7 @@
 #
 # spec file for package slurm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
-%define so_version 42
+%define so_version 44
 # Make sure to update `upgrades` as well if version is to be released with SLES!
-%define ver 24.11.5
-%define _ver _24_11
+%define ver 25.11.2
+%define _ver _25_11
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable
 %define pmi_so 0
@@ -29,8 +29,6 @@
 %define ver_major %(ver=%{version}; echo ${ver%.*})
 
 %define pname slurm
-
-%define slurm_testsuite 1
 
 ExcludeArch:    i586 %arm s390
 %if 0%{?suse_version} < 1500
@@ -165,19 +163,15 @@ Summary:        Simple Linux Utility for Resource Management
 License:        SUSE-GPL-2.0-with-openssl-exception
 Group:          Productivity/Clustering/Computing
 URL:            https://www.schedmd.com
-Source:         https://download.schedmd.com/slurm/%{pname}-%{dl_ver}.tar.bz2
+Source0:        https://download.schedmd.com/slurm/%{pname}-%{dl_ver}.tar.bz2
 Source1:        %upgrade_versions
 Source2:        slurm-rpmlintrc
 Source10:       slurmd.xml
 Source11:       slurmctld.xml
 Source12:       slurmdbd.xml
-# create: tar --owner=nobody --group=nogroup --exclude=*~ -cvzf test_setup.tar.gz test_setup
-Source20:       test_setup.tar.gz
-Source21:       README_Testsuite.md
 Source22:       regression.py.sle12
 Patch0:         Remove-rpath-from-build.patch
 Patch2:         pam_slurm-Initialize-arrays-and-pass-sizes.patch
-Patch15:        Fix-test7.2-to-find-libpmix-under-lib64-as-well.patch
 
 %{upgrade_dep %pname}
 Requires:       %{name}-config = %{version}
@@ -208,22 +202,14 @@ BuildRequires:  libnuma-devel
 BuildRequires:  mysql-devel >= 5.0.0
 BuildRequires:  ncurses-devel
 %{?with_pmix:BuildRequires:  pmix-devel}
+BuildRequires:  libhwloc-devel
+BuildRequires:  libibmad-devel
+BuildRequires:  libibumad-devel
 BuildRequires:  openssl-devel >= 0.9.6
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
-%if 0%{?suse_version} > 1310 || 0%{?sle_version}
- %if 0%{?sle_version} >= 120400 && 0%{?sle_version} < 150000
-BuildRequires:  infiniband-diags-devel
- %else
-BuildRequires:  libibmad-devel
- %endif
-BuildRequires:  libibumad-devel
-%endif
-%if 0%{?suse_version} > 1140
-BuildRequires:  libhwloc-devel
 %ifarch %{ix86} x86_64
 BuildRequires:  freeipmi-devel
-%endif
 %endif
 BuildRequires:  libcurl-devel
 BuildRequires:  libjson-c-devel
@@ -279,12 +265,8 @@ Documentation (HTML) for the SLURM cluster managment software.
 Summary:        Perl API to SLURM
 Group:          Development/Languages/Perl
 Requires:       %{name} = %{version}
-%if 0%{?suse_version} < 1140
-Requires:       perl = %{perl_version}
-%else
 %{libperl_requires}
 %{perl_requires}
-%endif
 %{upgrade_dep perl-%{pname}}
 
 %description -n perl-%{name}
@@ -374,9 +356,7 @@ Group:          Productivity/Clustering/Computing
 Requires(pre):  %{name}-config = %{version}
 Requires:       %{name}-plugins = %{version}
 Requires:       %{name}-sql = %{version}
-%if 0%{?suse_version} > 1310
 Recommends:     mariadb
-%endif
 %if 0%{?have_boolean_deps}
 Recommends:     (%{name}-munge = %version if munge)
 %else
@@ -451,11 +431,7 @@ Group:          Productivity/Clustering/Computing
 Requires:       %{name} = %{version}
 BuildArch:      noarch
 %{upgrade_dep %{pname}-sjstat}
-%if 0%{?suse_version} < 1140
-Requires:       perl = %{perl_version}
-%else
 %{perl_requires}
-%endif
 
 %description sjstat
 This package contains a Perl tool to print SLURM job state information.
@@ -524,11 +500,7 @@ Group:          Productivity/Clustering/Computing
 %{?sysusers_requires}
 Requires:       logrotate
 BuildArch:      noarch
-%if 0%{?suse_version} <= 1140
-Requires(pre):  pwdutils
-%else
 Requires(pre):  shadow
-%endif
 %{?systemd_ordering}
 %{upgrade_dep %{pname}-config}
 
@@ -569,56 +541,6 @@ Contains also cray specific documentation.
 # Certain packages are not shipped with SLE.
 %define ts_depends %{?sle_version:Recommends}%{!?sle_version:Requires}
 
-%package testsuite
-Summary:        Regression tests from Slurm sources
-Group:          Productivity/Clustering/Computing
-%{upgrade_dep %{pname}-testsuite}
-Requires:       %{name} = %version
-Requires:       %{name}-auth-none = %version
-Requires:       %{name}-cray = %version
-Requires:       %{name}-devel = %version
-%{?have_hdf5:%ts_depends:     %{name}-hdf5 = %version}
-Requires:       %{name}-lua = %version
-Requires:       %{name}-munge = %version
-Requires:       %{name}-node = %version
-Requires:       %{name}-openlava = %version
-%if 0%{?build_slurmrestd}
-Requires:       %{name}-rest = %version
-%endif
-Requires:       %{name}-seff = %version
-Requires:       %{name}-sjstat = %version
-Requires:       %{name}-slurmdbd = %version
-Requires:       %{name}-sql = %version
-Requires:       %{name}-torque = %version
-Requires:       mariadb
-%{?with_pmix:Requires:       pmix-devel}
-Requires:       bind-utils
-Requires:       bzip2
-Requires:       expect
-Requires:       gcc-c++
-Requires:       libnuma-devel
-%if 0%{?sle_version} && 0%{?sle_version} < 160000
-%ts_depends:     openmpi4-gnu-hpc-devel
-%endif
-Requires:       pam
-Requires:       pdsh
-Requires:       perl-%{name} = %version
-Requires:       readline-devel
-Requires:       sudo
-Requires:       tar
-BuildRequires:  sudo
-
-%description testsuite
-NOTE: THIS PACKAGE IS FOR TESTING PURPOSES ONLY. IT REQUIRES A
-DEDICATED TESTING ENVIRONMENT.
-
-DO NOT INSTALL ON A PRODUCTION SYSTEM!
-
-Slurm provides a test set implemented as 'expect' scripts.
-Not all of the tests are expected to pass, some require a modified
-configuration. This test package is meant for internal purposes.
-Do not run test suite and file bug reports for each failed test!
-
 %prep
 %setup -q -n %{pname}-%{dl_ver}
 %autopatch -p1
@@ -631,14 +553,6 @@ mkdir -p mybin; ln -s /usr/bin/python2 mybin/python3
 %build
 # needed as slurm works that way bsc#1200030
 export SUSE_ZNOW=0
-
-# To make stripped object files work which we ship in the
-# testsuite package we need to build with -ffat-lto-objects.
-# This should not affect anything as we do not ship static
-# libraries and object files - except for the testsuite.
-%if "%{?_lto_cflags}" != ""
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%endif
 
 autoreconf
 [ -e $(pwd)/mybin ] && PATH=$(pwd)/mybin:$PATH
@@ -851,114 +765,7 @@ cat > %{buildroot}/%{_sysconfdir}/%{pname}/nss_slurm.conf <<EOF
 # NodeName myname
 EOF
 
-# Install testsuite
-%if 0%{?slurm_testsuite}
-# bug in testsuite
-ln -sf %{_libdir}/libslurm.so %{buildroot}%{_libdir}/slurm/libslurm.so
-
-mkdir -p %{buildroot}/srv/slurm-testsuite
-cd testsuite/expect
-filelist="$(grep '#include' *.c | sed -ne 's/.*:#include *\"\([^\"]*\)\".*/\1/p' | sort | uniq)"
-while true; do
-    oldfilelist=$filelist; tlist=""
-    for i in $filelist; do
-        nlist=" $(grep '#include' ../../$i | sed -ne 's@#include *\"\([^\"]*\)\".*@\1@p')"
-        tlist+=" $(for j in $nlist; do [ -e ../../$j ] && echo $j || true; done)"
-    done
-    # Cater for erroneous: `#include <src/[slurm_internal_header]>`
-    for i in $filelist; do
-        nlist=" $(grep '#include' ../../$i | sed -ne 's@#include *<\(src/\)\([^>]*\)>.*@\1\2@p')"
-        tlist+=" $(for j in $nlist; do [ -e ../../$j ] && echo $j || true; done)"
-    done
-    filelist="$(for i in $filelist $tlist; do echo $i; done | sort | uniq)"
-    [ "$filelist" = "$oldfilelist" ] && break
-done
-filelist+=" $(grep -Ehor '\{*build_dir\}*[^ ]*\.[oa]' | sed -e "s@{*build_dir}*/@@" | sort | uniq)"
-cd -
-newlist=""
-for i in $filelist; do
-    dir=$(dirname $i)
-    [ -d %{buildroot}/srv/slurm-testsuite/$dir ] || mkdir -p %{buildroot}/srv/slurm-testsuite/$dir
-    cp -a $i %{buildroot}/srv/slurm-testsuite/$dir/
-done
-mkdir -p %{buildroot}/srv/slurm-testsuite/testsuite/expect
-cp -ax testsuite/expect %{buildroot}/srv/slurm-testsuite/testsuite/
-cat > %{buildroot}/srv/slurm-testsuite/testsuite/expect/globals.local <<EOF
-set slurm_dir "/usr"
-set build_dir "/srv/slurm-testsuite"
-set src_dir "/srv/slurm-testsuite"
-if {[ catch { set mpicc [ exec which mpicc 2>/dev/null ]}]} {
-  set mpicc ""
-}
-set testsuite_user "auser"
-#set testsuite_cleanup_on_failure false
-EOF
-mkdir -p %{buildroot}/srv/slurm-testsuite/shared
-mkdir -p %{buildroot}%_localstatedir/lib/slurm/shared
-cd %{buildroot}/srv/slurm-testsuite
-find -type f -name "*.[ao]" -print | while read f; do
-  # drop non-deterministic lto bits from .o files
-  strip -p --discard-locals -R .gnu.lto_* -R .gnu.debuglto_* -N __gnu_lto_v1 $f
-done
-# on versions < SLE15 replace regression.py with one compatible with py 3.4
-%if 0%{?sle_version:1} && 0%{?sle_version} < 150000
-install -m 755 %{S:22} %{buildroot}/srv/slurm-testsuite/testsuite/expect/regression.py
-%endif
-%if 0%{?suse_version} >= 1500
-%define tar_sort --sort=name
-%endif
-tar --group=%slurm_g --owner=%slurm_u \
-  %{?tar_sort} --mtime="@${SOURCE_DATE_EPOCH:-`date +%%s`}" --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime \
-  -cjf /tmp/slurmtest.tar.bz2 *
-cd -
-rm -rf %{buildroot}/srv/slurm-testsuite
-mkdir -p %{buildroot}/srv/slurm-testsuite
-mkdir -p %{buildroot}/%{_datadir}/%{name}
-mv /tmp/slurmtest.tar.bz2 %{buildroot}/%{_datadir}/%{name}
-
-mkdir -p %{buildroot}/etc/sudoers.d
-echo "slurm ALL=(auser) NOPASSWD:ALL" > %{buildroot}/etc/sudoers.d/slurm
-chmod 0440 %{buildroot}/etc/sudoers.d/slurm
-
-SLURMD_SERVICE=%{buildroot}%_sysconfdir/systemd/system/slurmd.service
-mkdir -p `dirname $SLURMD_SERVICE`
-cp %{buildroot}/%_unitdir/slurmd.service  $SLURMD_SERVICE
-if grep -qE "^LimitNPROC" $SLURMD_SERVICE; then
-    sed -i -e '/LimitNPROC/s@=.*@=infinity@' $SLURMD_SERVICE
-else
-    sed -i -e '/LimitSTACK/aLimitNPROC=infinity' $SLURMD_SERVICE
-fi
-if grep -qE "^LimitNOFILE" $SLURMD_SERVICE; then
-    sed -i -e '/LimitNOFILE/s@=.*@=131072:infinity@' $SLURMD_SERVICE
-else
-    sed -i -e '/LimitSTACK/aLimitNOFILE=131072:infinity' $SLURMD_SERVICE
-fi
-sed -i -e '/ExecStart/aExecStartPre=/bin/bash -c "for i in 0 1 2 3; do test -e /dev/nvidia$i || mknod /dev/nvidia$i c 10 $((i+2)); done"' $SLURMD_SERVICE
-
-tar -xzf %{S:20}
-# on versions < SLE15 turn off AcctGatherProfileType and pmix
-%if 0%{?sle_version:1} && 0%{?sle_version} < 150000
-sed -i -e "/AcctGatherProfileType/s@^@#@" \
-    -e "/MpiDefault/s@pmix_v3@pmi2@" test_setup/slurm.conf
-sed -i -e "/ProfileHDF5Dir/s@^@#@" test_setup/acct_gather.conf
-%endif
-mkdir -p %{buildroot}%{_pam_secconfdir}/limits.d
-mv test_setup/slurm.conf.limits %{buildroot}%_pam_secconfdir/limits.d/slurm.conf
-%if 0%{?sle_version} < 150200
-sed -i -e '/hard[[:space:]]*nofile/s@unlimited@1048576@' %{buildroot}%_pam_secconfdir/limits.d/slurm.conf
-%endif
-
-mkdir -p %{buildroot}/root
-mv test_setup/setup-testsuite.sh %{buildroot}/root
-
-mkdir -p %{buildroot}/srv/slurm-testsuite/config/plugstack.conf.d
-cp %{S:21} .
-%endif
-
 %fdupes -s %{buildroot}
-# For testsuite - do after fdupes!
-[ -d test_setup -a -d %{buildroot}/srv/slurm-testsuite/config ] && \
-    mv test_setup/* %{buildroot}/srv/slurm-testsuite/config
 
 # Temporary - remove when build is fixed upstream.
 %if !0%{?build_slurmrestd}
@@ -1053,25 +860,6 @@ exit 0
 %post -n libnss_%{pname}%{nss_so}%{?upgrade:%{_ver}} -p /sbin/ldconfig
 %postun -n libnss_%{pname}%{nss_so}%{?upgrade:%{_ver}} -p /sbin/ldconfig
 
-%post testsuite
-rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite /srv/slurm-testsuite/config.h
-runuser -u %slurm_u -- tar --same-owner -C /srv/slurm-testsuite -xjf %{_datadir}/%{name}/slurmtest.tar.bz2
-
-%preun testsuite
-rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
-   /srv/slurm-testsuite/slurm /srv/slurm-testsuite/shared \
-   /srv/slurm-testsuite/config.h
-
-%if 0%{!?_restart_on_update:1}
-%define _restart_on_update() %{?nil: [ $1 -ge 1 ] && { DISABLE_RESTART_ON_UPDATE=no; \
-				       [ -e /etc/sysconfig/services ] && . /etc/sysconfig/services || : \
-				         case "$DISABLE_RESTART_ON_UPDATE" in \
-				           yes|1) ;; \
-				           *) /usr/bin/systemctl try-restart %{*} || : ;; \
-				         esac; } \
-			      }
-%endif
-
 %posttrans
 %_restart_on_update slurmctld
 
@@ -1091,7 +879,7 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %endif
 
 %files
-%doc AUTHORS NEWS RELEASE_NOTES DISCLAIMER
+%doc AUTHORS DISCLAIMER
 %my_license COPYING
 %{_bindir}/sacct
 %{_bindir}/sacctmgr
@@ -1227,11 +1015,13 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/acct_gather_energy_rapl.so
 %{_libdir}/slurm/acct_gather_interconnect_sysfs.so
 %{_libdir}/slurm/acct_gather_filesystem_lustre.so
+%{_libdir}/slurm/acct_gather_profile_influxdb.so
 %{_libdir}/slurm/burst_buffer_lua.so
 %{_libdir}/slurm/burst_buffer_datawarp.so
 %{_libdir}/slurm/data_parser_v0_0_42.so
+%{_libdir}/slurm/data_parser_v0_0_43.so
+%{_libdir}/slurm/data_parser_v0_0_44.so
 %{_libdir}/slurm/data_parser_v0_0_41.so
-%{_libdir}/slurm/data_parser_v0_0_40.so
 %{_libdir}/slurm/cgroup_v1.so
 %if 0%{?suse_version} >= 1500
 %{_libdir}/slurm/cgroup_v2.so
@@ -1254,7 +1044,6 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/jobcomp_filetxt.so
 %{_libdir}/slurm/jobcomp_lua.so
 %{_libdir}/slurm/jobcomp_script.so
-%{_libdir}/slurm/job_container_tmpfs.so
 %{_libdir}/slurm/job_submit_all_partitions.so
 %{_libdir}/slurm/job_submit_defaults.so
 %{_libdir}/slurm/job_submit_logging.so
@@ -1290,9 +1079,8 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/switch_nvidia_imex.so
 %{_libdir}/slurm/task_affinity.so
 %{_libdir}/slurm/task_cgroup.so
-%{_libdir}/slurm/topology_3d_torus.so
 %{_libdir}/slurm/topology_block.so
-%{_libdir}/slurm/topology_default.so
+%{_libdir}/slurm/topology_flat.so
 %{_libdir}/slurm/topology_tree.so
 %if 0%{?suse_version} > 1310
 %{_libdir}/slurm/acct_gather_interconnect_ofed.so
@@ -1303,12 +1091,15 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/acct_gather_energy_xcc.so
 %endif
 %endif
-%{_libdir}/slurm/node_features_knl_generic.so
-%{_libdir}/slurm/acct_gather_profile_influxdb.so
 %{_libdir}/slurm/jobcomp_elasticsearch.so
 %{_libdir}/slurm/certmgr_script.so
+%{_libdir}/slurm/certgen_script.so
 %{_libdir}/slurm/gpu_nvidia.so
 %{_libdir}/slurm/mcs_label.so
+%{_libdir}/slurm/http_parser_libhttp_parser.so
+%{_libdir}/slurm/metrics_openmetrics.so
+%{_libdir}/slurm/namespace_linux.so
+%{_libdir}/slurm/namespace_tmpfs.so
 
 %files lua
 %{_libdir}/slurm/job_submit_lua.so
@@ -1343,6 +1134,7 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_mandir}/man8/slurmrestd.*
 %{_libdir}/slurm/openapi_slurmctld.so
 %{_libdir}/slurm/openapi_slurmdbd.so
+%{_libdir}/slurm/openapi_util.so
 %{_libdir}/slurm/rest_auth_local.so
 %endif
 
@@ -1385,9 +1177,10 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_mandir}/man5/helpers.*
 %{_mandir}/man5/oci.conf.5.gz
 %{_mandir}/man5/topology.*
-%{_mandir}/man5/knl.conf.5.*
 %{_mandir}/man5/job_container.conf.5.*
 %{_mandir}/man5/mpi.conf.5.*
+%{_mandir}/man5/namespace.yaml.5.*
+%{_mandir}/man5/resources.yaml.5.*
 
 %if 0%{?have_hdf5}
 %files hdf5
@@ -1398,25 +1191,5 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 
 %files cray
 %{_libdir}/slurm/mpi_cray_shasta.so
-
-%if 0%{?slurm_testsuite}
-%files testsuite
-%defattr(-, %slurm_u, %slurm_u, -)
-%dir %attr(-, %slurm_u, %slurm_u) /srv/slurm-testsuite
-%attr(-, root, root) %{_datadir}/%{name}
-%if 0%{?sle_version} == 120200 || 0%{?suse_version} >= 1550
-%dir %attr(-, root, root) %{_pam_secconfdir}/limits.d
-%endif
-%doc testsuite/expect/README
-%doc %{basename: %{S:21}}
-%config %attr( -, root, root) %{_sysconfdir}/systemd/system/slurmd.service
-%config %attr(0440, root, root) %{_sysconfdir}/sudoers.d/slurm
-%config %attr( -, root, root) %{_pam_secconfdir}/limits.d/slurm.conf
-%{_libdir}/slurm/libslurm.so
-%attr(0600, %slurm_u, %slurm_g) /srv/slurm-testsuite/config/slurmdbd.conf
-/srv/slurm-testsuite/*
-%dir %attr(-, %slurm_u, %slurm_g) %_localstatedir/lib/slurm/shared
-%attr( -, root, root) /root/setup-testsuite.sh
-%endif
 
 %changelog
