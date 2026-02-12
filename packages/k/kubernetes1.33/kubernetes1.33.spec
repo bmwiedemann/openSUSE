@@ -22,7 +22,7 @@
 %define baseversionminus1 1.32
 
 Name:           kubernetes%{baseversion}
-Version:        1.33.7
+Version:        1.33.8
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -51,7 +51,7 @@ Patch4:         kubeadm-opensuse-flexvolume.patch
 Patch5:         revert-coredns-image-renaming.patch
 BuildRequires:  fdupes
 BuildRequires:  git
-BuildRequires:  go >= 1.24.11
+BuildRequires:  go >= 1.24.12
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
@@ -378,11 +378,11 @@ ln -s -f %{_sysconfdir}/alternatives/kubectl %{buildroot}%{_bindir}/kubectl
 
 %fdupes -s %{buildroot}
 
-%post client-common
+%post client
 %{_sbindir}/update-alternatives \
   --install %{_bindir}/kubectl kubectl %{_bindir}/kubectl%{baseversion} %(echo %{baseversion} | tr -d .)
 
-%postun client-common
+%postun client
 if [ ! -f %{_bindir}/kubectl%{baseversion} ] ; then
   update-alternatives --remove kubectl %{_bindir}/kubectl%{baseversion}
 fi

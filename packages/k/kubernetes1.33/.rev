@@ -65,4 +65,12 @@
     <comment>Monthly Patch Release – Dec, 2025: Update to version 1.33.7</comment>
     <requestid>1323349</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5ec8c010a7ef238c7ab8d244bf7ea009</srcmd5>
+    <version>1.33.8</version>
+    <time>1770913742</time>
+    <user>anag_factory</user>
+    <comment>Monthly Patch Release – Feb, 2026: Update to version 1.33.8</comment>
+    <requestid>1332632</requestid>
+  </revision>
 </revisionlist>

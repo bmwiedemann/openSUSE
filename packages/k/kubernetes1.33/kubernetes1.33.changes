@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Feb 12 07:08:27 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.33.8:
+  * Bump dependencies, images and versions used to Go 1.24.12 and distroless iptables
+  * Apparently some EC2 images we use do not have /proc/net/nf_conntrack
+  * test: Fix KubeProxy CLOSE_WAIT test for IPv6 environments
+  * test: Read /proc/net/nf_conntrack instead of using conntrack binary
+  * csi: raise kubelet CSI init backoff to cover ~140s DNS delays
+  * DRA scheduler: fix another root cause of double device allocation
+  * DRA scheduler: fix one root cause of double device allocation
+  * fix(kubelet): convert V().Error() to V().Info() for verbosity-aware logging
+  * Fix for preferred dualstack and required dualstack in winkernel proxier.
+  * kubeadm: waiting for etcd learner member to be started before promoting during 'kubeadm join'
+  * Add unit test with CSIDriver.SELinuxMount=false
+  * Added e2e tests with disabled SELinux
+  * Use only enqueuePod to add pods to the controller queue
+  * Fix policy of Pods with unknown SELinux label
+  * selinux: add e2e test with a completed pod
+  * selinux: Do not report conflits with finished pods
+  * refactoring: use a common function to enqueue Pod
+  * mark QuotaMonitor as not running and invalidate monitors list
+  * kubeadm: always retry Patch() Node API calls
+  * kubeadm: do not sort extraArgs alpha-numerically
+  * hack/lib/util.sh: support uutils' `date` command
+  * Update pod resize test to accept new cpu.weight conversion
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.24.12`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.33.8/build/dependencies.yaml#L113-L115
+
+-------------------------------------------------------------------
 Mon Dec 15 06:28:33 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.33.7:
@@ -90,6 +121,12 @@ Thu Sep 18 12:35:33 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - wrap kubernetes (server- and client-)side components in if/else conditionals, such that:
   On openSUSE build all (no PIE on s390x), elsewhere build only kubectl (no PIE on s390x).
+
+-------------------------------------------------------------------
+Mon Aug 25 15:07:22 UTC 2025 - Ignaz Forster <iforster@suse.com>
+
+- Update .spec file to fix RPM ordering:
+  * The -client-common %post script was installing files contained in the -client package
 
 -------------------------------------------------------------------
 Thu Aug 14 07:45:25 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
