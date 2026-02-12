@@ -1,7 +1,7 @@
 #
 # spec file for package goffice
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           goffice
-Version:        0.10.59
+Version:        0.10.60
 Release:        0
 Summary:        GLib/GTK+ Set of Document-Centric Objects and Utilities
 License:        GPL-2.0-only OR GPL-3.0-only

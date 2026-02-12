@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 11 08:15:26 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.10.60:
+  + Fix fraction format problem.
+  + Doc fixes.
+  + Remove workaround for ancient gtk+ bug.
+  + I18N fix for format selector.
+
+-------------------------------------------------------------------
 Wed Nov 12 07:06:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Pass --without-long-double to configure in order to fix the build
