@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 12 12:41:57 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- (bsc#1257523) [QE][Build 20260129] postfix: missing tmpfiles
+   configuration for /var/spool/postfix/trace 
+
+-------------------------------------------------------------------
 Wed Jan 28 02:01:50 UTC 2026 - Peter Varkoly <varkoly@suse.com>
 
 - (bsc#1257199) [SELinux] postalias denied - fatal: open database /etc/aliases.lmdb: Permission denied
