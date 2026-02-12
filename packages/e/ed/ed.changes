@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 10 20:29:08 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU ed 1.22.5:
+  * Use 'sizeof active_list[0]' instead of 'sizeof (line_node **)'
+  * A file name ending in slash '/' is now diagnosed as 'Invalid
+    filename'instead of 'Is a directory'
+
+-------------------------------------------------------------------
 Mon Jan  5 19:14:53 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU ed 1.22.4:
