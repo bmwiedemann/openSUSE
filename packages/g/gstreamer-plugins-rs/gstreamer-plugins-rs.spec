@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-rs
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with aws
 
 Name:           gstreamer-plugins-rs
-Version:        1.26.10
+Version:        1.28.0
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -33,8 +33,6 @@ URL:            https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs
 Source:         %{_name}-%{version}.tar.zst
 Source2:        vendor.tar.zst
 Source4:        gstreamer-plugins-rs.appdata.xml
-#PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs/-/merge_requests/2162
-Patch1:         0001-cargo_wrapper-deduplicate-Libs_private.patch
 
 BuildRequires:  cargo-c >= 0.10.12
 BuildRequires:  cargo-packaging >= 1.2.0+3
@@ -51,6 +49,7 @@ BuildRequires:  pkgconfig(dav1d) >= 1.3.0
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
+BuildRequires:  pkgconfig(gstreamer-validate-1.0)
 BuildRequires:  pkgconfig(gstreamer-webrtc-1.0)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libsodium)
@@ -103,7 +102,7 @@ mkdir -p %{buildroot}%{_datadir}/appdata
 cp %{SOURCE4} %{buildroot}%{_datadir}/appdata/
 
 %files
-%license LICENSE-APACHE LICENSE-LGPLv2 LICENSE-MIT
+%license LICENSE-APACHE LICENSE-MIT LICENSE-MPL-2.0
 %doc README.md
 %dir %{_libdir}/gstreamer-%{gst_branch}
 %if %{with aws}
@@ -115,7 +114,6 @@ cp %{SOURCE4} %{buildroot}%{_datadir}/appdata/
 %{_libdir}/gstreamer-%{gst_branch}/libgstelevenlabs.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfallbackswitch.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstffv1.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstfmp4.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstgif.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstgopbuffer.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstgtk4.so
@@ -124,7 +122,6 @@ cp %{SOURCE4} %{buildroot}%{_datadir}/appdata/
 %{_libdir}/gstreamer-%{gst_branch}/libgstjson.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstlewton.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstlivesync.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstmp4.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmpegtslive.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstndi.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstoriginalbuffer.so
@@ -158,6 +155,16 @@ cp %{SOURCE4} %{buildroot}%{_datadir}/appdata/
 %{_libdir}/gstreamer-%{gst_branch}/libgsthlsmultivariantsink.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstspeechmatics.so
 %{_libdir}/gstreamer-%{gst_branch}/libgststreamgrouper.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstburn.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstdeepgram.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstdemucs.so
+%{_libdir}/gstreamer-%{gst_branch}/libgsticecast.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstisobmff.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstrsaudioparsers.so
+%{_libdir}/gstreamer-%{gst_branch}/libgsttextaccumulate.so
+%dir %{_libdir}/gstreamer-%{gst_branch}/validate
+%{_libdir}/gstreamer-%{gst_branch}/validate/libgstrsvalidate.so
+
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/gstreamer-plugins-rs.appdata.xml
 %{_bindir}/gst-webrtc-signalling-server
