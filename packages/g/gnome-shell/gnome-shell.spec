@@ -21,7 +21,7 @@
 %define mutter_req 49.0
 
 Name:           gnome-shell
-Version:        49.3
+Version:        49.4
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -41,11 +41,6 @@ Patch1:         gnome-shell-fix-cursor-on-hide-preedit.patch
 
 # PATCH-FEATURE-OPENSUSE -- Do not ask to launch gnome-tour; openSUSE handles the logic in opensuse-welcome-launcher
 Patch100:       gnome-shell-no-gnome-tour.patch
-
-# PATCH-FIX-UPSTREAM - High patch ID nummber, as it needs to be manually applied in the gvc submodule directory
-Patch2000:      https://gitlab.gnome.org/GNOME/libgnome-volume-control/-/merge_requests/31.patch
-# PATCH-FIX-UPSTREAM 32.patch bsc#1257512, glgo#GNOME/libgnome-volume-control#39 alynx.zhou@suse.com -- Fix duplicated new devices introduced by glgo#GNOME/libgnome-volume-control!31
-Patch2001:      https://gitlab.gnome.org/GNOME/libgnome-volume-control/-/merge_requests/32.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gnome-shell-gdm-login-applet.patch fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
@@ -188,17 +183,13 @@ This package contains an optional extensions app for managing GNOME Shell extens
 pushd subprojects
 tar xf %{SOURCE1}
 mv libgnome-volume-control-0.gitmodule gvc
-pushd gvc
-%patch -P 2000 -p1
-%patch -P 2001 -p1
-popd
 tar xf %{SOURCE2}
 mv libshew-0.gitmodule libshew
 popd
 %autopatch -p1 -M 999
 
 %if !0%{?is_opensuse} || 0%{?suse_version} <= 1600
-%autopatch -p1 -m 1000 -M 1999
+%autopatch -p1 -m 1000
 %endif
 
 cp %{SOURCE100} data/theme/

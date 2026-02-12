@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 10 23:01:22 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.4:
+  + Fix screen time tracking with idle inhibitors
+  + Do not recreate default folders after they were removed
+  + Fix tab focus behavior in quick settings menu
+  + Do not expose password text in IM pre-edits
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Update libgnome-volume-control (gvc) tarball following upstreams
+  changes.
+- Following the above, drop 31.patch and 32.patch, merged upstream.
+
+-------------------------------------------------------------------
 Fri Jan 30 13:29:53 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add 32.patch: Fix duplicated new devices introduced by
