@@ -2043,4 +2043,12 @@ Changes:
 - Revert VCS indenting change to fix reproducible builds</comment>
     <requestid>1330437</requestid>
   </revision>
+  <revision rev="181" vrev="2">
+    <srcmd5>bed6bf63b3a75ace84ba9d7db654e915</srcmd5>
+    <version>20260202</version>
+    <time>1770913536</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1332642</requestid>
+  </revision>
 </revisionlist>
