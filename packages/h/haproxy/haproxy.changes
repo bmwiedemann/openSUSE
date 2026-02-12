@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Feb 12 15:16:46 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.3.3+git0.465d8e2fc:
+  (boo#1257976 CVE-2026-26081 CVE-2026-26080)
+  * [RELEASE] Released version 3.3.3
+  * BUG/MAJOR: quic: fix parsing frame type
+  * BUG/MAJOR: quic: reject invalid token
+  * BUG/MINOR: backend: fix access on shared counters array
+  * BUG/MINOR: quic: ensure handshake speed up is only run once per conn
+  * BUG/MINOR: ssl: SSL_CERT_DIR environment variable doesn't affect haproxy
+  * MINOR: activity: allow to switch per-task lock/memory profiling at runtime
+  * MEDIUM: activity: apply and use new finegrained task profiling settings
+  * MINOR: activity: support setting/clearing lock/memory watching for task profiling
+  * BUG/MINOR: startup: handle a possible strdup() failure
+  * BUG/MINOR: startup: fix allocation error message of progname string
+  * BUG/MINOR: config: Fix setting of alt_proto
+  * MEDIUM: backend: make "balance random" consider req rate when loads are equal
+  * DOC: config: mention the limitation on server id range for consistent hash
+  * BUG/MEDIUM: lb-chash: always properly initialize lb_nodes with dynamic servers
+  * CLEANUP: lb-chash: free lb_nodes from chash's deinit(), not global
+  * BUG/MINOR: cpu-topo: count cores not cpus to distinguish core types
+  * CLEANUP: haproxy: fix bad line wrapping in run_poll_loop()
+  * BUG/MEDIUM: threads: Atomically set TH_FL_SLEEPING and clr FL_NOTIFIED
+
+-------------------------------------------------------------------
 Fri Jan 30 13:28:03 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.3.2+git3.bc0fb5969:
