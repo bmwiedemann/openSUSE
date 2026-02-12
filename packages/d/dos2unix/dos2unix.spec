@@ -2,7 +2,7 @@
 # spec file for package dos2unix
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           dos2unix
-Version:        7.5.2
+Version:        7.5.4
 Release:        0
 Summary:        Text converters to and from DOS/MAC to UNIX
 License:        BSD-2-Clause

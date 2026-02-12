@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  4 18:44:46 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 7.5.4:
+  * Don't return an error code if a binary file is skipped
+- includes changes from 7.5.3:
+  * Exit with non-zero code if the conversion is aborted due to a
+    binary file
+  * Fix: Exit with zero code when an unicode conversion error
+    occurs in quiet mode
+  * Updated translations
+
+-------------------------------------------------------------------
 Tue Jan 23 19:56:06 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 7.5.2:
