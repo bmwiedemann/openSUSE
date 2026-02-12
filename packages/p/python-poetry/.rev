@@ -771,4 +771,13 @@
 </comment>
     <requestid>1329253</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>75cf33f0ae9f34bf98d0bad584469786</srcmd5>
+    <version>2.3.2</version>
+    <time>1770913770</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.2:
+  * Allow dulwich&gt;=1.0 (bsc#1258092)</comment>
+    <requestid>1332600</requestid>
+  </revision>
 </revisionlist>

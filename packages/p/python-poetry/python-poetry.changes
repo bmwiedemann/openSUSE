@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 12 03:44:38 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.3.2:
+  * Allow dulwich>=1.0 (bsc#1258092)
+
+-------------------------------------------------------------------
 Sun Jan 25 11:51:06 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.3.1
