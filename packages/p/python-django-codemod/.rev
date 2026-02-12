@@ -63,4 +63,20 @@
   * Support Click 8.2+ changes.</comment>
     <requestid>1297621</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d1fef8a8574586308e4013353f99f4b7</srcmd5>
+    <version>2.4.5</version>
+    <time>1770913633</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.5:
+  * Update dependency pathspec to v1
+  * Update signature for codemodchoice.get_metavar
+  * Update dependency libcst to v1.8.6
+  * Update dependency click to &lt;8.4
+  * Add support for python 3.14
+  * Drop support for python 3.9
+  * Use spdx expression for license
+- Drop patch support-click-8.2.patch, no longer required.</comment>
+    <requestid>1332603</requestid>
+  </revision>
 </revisionlist>

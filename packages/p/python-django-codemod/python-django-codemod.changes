@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 12 05:05:01 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.4.5:
+  * Update dependency pathspec to v1
+  * Update signature for codemodchoice.get_metavar
+  * Update dependency libcst to v1.8.6
+  * Update dependency click to <8.4
+  * Add support for python 3.14
+  * Drop support for python 3.9
+  * Use spdx expression for license
+- Drop patch support-click-8.2.patch, no longer required.
+
+-------------------------------------------------------------------
 Tue Aug  5 06:18:12 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.3.5:

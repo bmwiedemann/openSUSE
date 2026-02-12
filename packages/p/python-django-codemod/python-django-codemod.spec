@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-codemod
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,16 @@
 
 
 Name:           python-django-codemod
-Version:        2.3.5
+Version:        2.4.5
 Release:        0
 Summary:        Collections of libCST codemodders to upgrade Django
 License:        MIT
 URL:            https://github.com/browniebroke/django-codemod
 Source:         https://files.pythonhosted.org/packages/source/d/django-codemod/django_codemod-%{version}.tar.gz
 Source1:        conftest.py
-# PATCH-FIX-OPENSUSE Support click 8.2+
-Patch0:         support-click-8.2.patch
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module setuptools >= 77}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
@@ -36,7 +34,6 @@ Requires:       python-libcst
 Requires:       python-pathspec
 Requires:       python-rich
 Requires:       python-rich-click
-Recommends:     python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -46,7 +43,9 @@ BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module libcst}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pathspec}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rich-click}
 # /SECTION
 %python_subpackages
@@ -57,8 +56,6 @@ Collections of libCST codemodders to upgrade Django.
 %prep
 %autosetup -p1 -n django_codemod-%{version}
 cp %{SOURCE1} .
-sed -i 's/rich = ".*"/rich = "*"/' pyproject.toml
-sed -i '/addopts/d' pyproject.toml
 
 %build
 %pyproject_wheel
