@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 12 11:00:36 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.0.3. Check the CHANGELOG.md file for the full list
+  of changes
+  * Fixes CVE-2025-64441
+- Drop patch, merged upstream:
+  * owncloud-qt68.patch
+
+-------------------------------------------------------------------
 Tue Dec 17 15:39:28 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add patch:

@@ -7,9 +7,8 @@ licenses.
 
 In particular, the owncloudclient_os tarball was created by
 
-rm -rf src/3rdparty/libcrashreporter-qt
-rm -rf shell_integration/windows
-rm -rf shell_integration/MacOSX
+rm -r shell_integration/windows
+rm -r shell_integration/MacOSX
 
 Apart from that, the tarball is unchanged compared to the upstream one.
 
