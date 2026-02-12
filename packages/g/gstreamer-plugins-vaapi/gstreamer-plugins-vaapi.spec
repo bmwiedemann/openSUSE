@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-vaapi
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
 Source0:        gstreamer-vaapi-%{version}.tar.zst
+Patch0:         gstreamer-vaapi-1.28-build-fix.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  Mesa-libGLESv3-devel
@@ -65,7 +66,11 @@ libraries that allow hardware accelerated video decoding through
 VA-API.
 
 %prep
-%autosetup -n gstreamer-vaapi-%{version} -p1
+%autosetup -n gstreamer-vaapi-%{version} -N
+%if %{?pkg_vcmp:%{pkg_vcmp gstreamer >= 1.28.0}}
+%patch -P 0 -p1
+%endif
+%autopatch -m 1 -p1
 
 %build
 %meson \

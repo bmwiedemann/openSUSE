@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 11 11:27:11 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Fix build with gstreamer 1.28:
+  + Add conditional gstreamer-vaapi-1.28-build-fix.patch
+
+-------------------------------------------------------------------
 Tue Dec 30 10:24:52 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.10:

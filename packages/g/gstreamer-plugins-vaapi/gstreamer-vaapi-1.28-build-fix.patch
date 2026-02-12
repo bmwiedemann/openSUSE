@@ -1,0 +1,15 @@
+---
+ gst/vaapi/gstvaapivideobufferpool.h |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/gst/vaapi/gstvaapivideobufferpool.h
++++ b/gst/vaapi/gstvaapivideobufferpool.h
+@@ -23,7 +23,7 @@
+ #ifndef GST_VAAPI_VIDEO_BUFFER_POOL_H
+ #define GST_VAAPI_VIDEO_BUFFER_POOL_H
+ 
+-#include <gst/video/gstvideopool.h>
++#include <gst/video/gstvideodmabufpool.h>
+ #include <gst/vaapi/gstvaapidisplay.h>
+ #include <gst/vaapi/gstvaapisurfaceproxy.h>
+ 
