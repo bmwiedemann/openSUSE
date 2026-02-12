@@ -1701,4 +1701,20 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     <comment></comment>
     <requestid>1329170</requestid>
   </revision>
+  <revision rev="163" vrev="4">
+    <srcmd5>80176bb311705fe125e24363805c5c38</srcmd5>
+    <version>3.0.23</version>
+    <time>1770913546</time>
+    <user>anag_factory</user>
+    <comment>- Replace the content of vlc-gstreamer-1.28-build-fix.patch with
+  the upstream proposed variant from
+  https://code.videolan.org/videolan/vlc/-/merge_requests/8479
+
+- Fix build with gstreamer 1.28:
+  vlc-gstreamer-1.28-build-fix.patch
+
+- Disable faad support on Leap 15.x, unless in BUILD_ORIG case (3rd
+  party repos): faad2 does not exist in Leap 15.x.</comment>
+    <requestid>1332491</requestid>
+  </revision>
 </revisionlist>

@@ -30,7 +30,11 @@
 %bcond_with    vdpau
 # VNC support - the module is not really usable in most cases tested so far (e.g. against qemu-kvm -vnc :xx)
 %bcond_with vnc
+%if 0%{?suse_version} >= 1600 || 0%{?BUILD_ORIG}
 %bcond_without faad
+%else
+%bcond_with faad
+%endif
 %define chromecast 0%{?suse_version} > 1500 || 0%{?sle_version} > 150600
 # vlc needs a c++17 compiler at least
 %if 0%{?sle_version} && 0%{?sle_version} < 160000
@@ -56,6 +60,8 @@ Patch4:         fix-build-with-fdk-2.0.patch
 Patch100:       vlc-projectM-qt5.patch
 # PATCH-FIX-UPSTREAM -- Use OpenCV C++ API
 Patch103:       0001-Port-OpenCV-facedetect-example-to-C-API.patch
+# PATCH-FIX-OPENSUSE vlc-gstreamer-1.28-build-fix.patch -- Fix building with gstreamer-1.28vlc-gstreamer-1.28-build-fix.patch
+Patch104:       vlc-gstreamer-1.28-build-fix.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  aalib-devel
@@ -389,6 +395,7 @@ default when `vlc` is invoked from an X session.
 %patch -P 100 -p1
 %endif
 %patch -P 103 -p1
+%patch -P 104 -p1
 
 ### And LUA 5.3.1 has some more API changes
 if pkg-config --atleast-version 5.3.1 lua; then

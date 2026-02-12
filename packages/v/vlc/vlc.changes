@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Feb 11 14:00:16 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace the content of vlc-gstreamer-1.28-build-fix.patch with
+  the upstream proposed variant from
+  https://code.videolan.org/videolan/vlc/-/merge_requests/8479
+
+-------------------------------------------------------------------
+Wed Feb 11 11:21:20 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Fix build with gstreamer 1.28:
+  vlc-gstreamer-1.28-build-fix.patch
+
+-------------------------------------------------------------------
+Thu Feb  5 15:28:23 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable faad support on Leap 15.x, unless in BUILD_ORIG case (3rd
+  party repos): faad2 does not exist in Leap 15.x.
+
+-------------------------------------------------------------------
 Fri Jan 23 17:27:18 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Disable chromecast for Leap 15.6, fixes building
