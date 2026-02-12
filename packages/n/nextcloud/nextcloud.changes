@@ -1,4 +1,122 @@
 -------------------------------------------------------------------
+Thu Feb 12 11:06:04 UTC 2026 - ecsos <ecsos@opensuse.org> - 32.0.6
+
+- Update to 32.0.6
+  * server
+    - Fix(files_sharing): Allow removing password from link shares (server#56915)
+    - Fix(admin-delegation): Prevent delegation to group if delegation already (server#57013)
+    - Fix(admin_audit): Fix typo in visibility log message (server#57432)
+    - Fix interval option in `occ background-job:worker` (server#57435)
+    - Feat: also send x-user-id for dav responses (server#57460)
+    - Fix: Make User_Proxy IGetDisplayNameBackend complient (server#57487)
+    - Fix(settings): Display group displayName consistently when editing a user (server#57489)
+    - Fix(federatedfilesharing): `pre` must not be a child of `p` (server#57496)
+    - Fix(NavigationManager): Remove break to return all defaultEntryIds (server#57501)
+    - Fix(files): Update sidebar on node rename (server#57507)
+    - Perf(dav): Avoid getting DB Connection inside callback (server#57516)
+    - Use strict array search (server#57518)
+    - Fix(files): Inhibit download for non downloadable nodes in all contexts (server#57531)
+    - Fix: handle InvalidArumentException as availability failure in smb->getFileInfo (server#57537)
+    - Fix(CalDAV): adjust calendar manager imip options signature (server#57582)
+    - Fix(TaskProcessing): Fix occ commands to cast strings to integer (server#57647)
+    - Fix(theming): Fix favicon and touchicon ratios (server#57657)
+    - Docs(settings): Removing the developerDocsUrl (server#57661)
+    - Fix(files_sharing): Fix BeforeZipCreatedListener path handling (server#57663)
+    - Fix(UserPlugin): Rewrite from scratch (server#57675)
+    - Fix(security): Update Expires time (server#57687)
+    - Fix(caldav): Enhance UID check for base component (server#57770)
+    - Feat(flake): Add reuse cli (server#57807)
+    - Chore: remove X from social links (server#57818)
+    - Fix(search): All elements are included regardless of their keys (server#57824)
+    - Fix(composer): Set overwrite.cli.url in serve script (server#57831)
+    - Calendar: Fix typos in import/export (server#57837)
+    - Ci(actions): Satisfy zizmor (server#57851)
+    - Fix(user_ldap): Fix crash in some code path when a DN is longer that 64 (server#57869)
+    - Fix: Add support for AscDesktopEditor browser user agent (server#57888)
+    - Fix: log memory usage for requests based on configured memory limit (server#57896)
+    - Fix(settings): update all button only updates a single app (server#57903)
+    - Stable32 `pinact run` (server#57904)
+    - Add InstallationCompletedEvent for post-installation actions (server#57925)
+    - Fix(files_external): Respect explicit port configuration (server#57996)
+    - Fix(app-settings): limit app to group initial state (server#58004)
+    - Fix(federation): Don't ask the database for an empty url (server#58013)
+    - Test(dispatcher): Add some tests with input 0 (server#58016)
+    - Fix(comments): Put a limit to the limit (server#58045)
+    - Test(Updater): Harden flaky test (server#58053)
+    - Chore: Improve SVG handling in link previews (server#58102)
+    - Feat: Add SetupCheck to warn about missing second factor provider (server#58119)
+    - Fix: correctly quote tablenames for truncating with oracle (server#58269)
+  * activity
+    - Fix: rework attributes (activity#2357)
+    - Chore(CI): Adjust version on stable32 (activity#2359)
+  * app_api
+    - Fix(daemon-name): check for forbidden character in daemon name (app_api#743)
+    - Fix(setup-check): change missing daemon from error to info (app_api#752)
+    - Chore(readme-description): update app description and README.md (app_api#754)
+    - Chore(deps): update NPM axios package (app_api#775)
+    - Feat(HaRP): automatically register HaRP when it is installed (app_api#780)
+    - Fix(HaRP): use correct path for FRP address validation (app_api#782)
+  * bruteforcesettings
+    - Chore(CI): Adjust version on stable32 (bruteforcesettings#961)
+  * circles
+    - Fix(population): exclude nested circles from population counts (circles#2306)
+    - Allow admins to edit circle details (circles#2315)
+    - Fix(groups): add repair step for group circles sync and adjust 'circles:sync --groups' command (circles#2322)
+  * files_pdfviewer
+    - Fix: Show save button in secondary toolbar for editable files (files_pdfviewer#1338)
+    - Chore(CI): Adjust version on stable32 (files_pdfviewer#1349)
+    - Chore(deps-dev): Bump phpunit/phpunit from 9.6.22 to 9.6.33 (files_pdfviewer#1351)
+    - Adjust package.json version according to app version (files_pdfviewer#1352)
+  * firstrunwizard
+    - Fix: use correct prop to pass server URL (firstrunwizard#1875)
+    - Fix: handle disabled auto-play in other browsers than Firefox (firstrunwizard#1882)
+    - Fix: resolve Typescript issues (firstrunwizard#1908)
+    - Refactor: Switch to composer-bin (firstrunwizard#1910)
+    - Fix: start with HUB release animation when only updating (firstrunwizard#1911)
+    - Fix: only run composer bin scripts in dev mode (firstrunwizard#1913)
+    - Fix: do not show scrollbars on animation (firstrunwizard#1917)
+    - Fix: properly handle closing the modal (firstrunwizard#1919)
+    - Chore(CI): Adjust version on stable32 (firstrunwizard#1921)
+  * logreader
+    - Chore: fix the version to 5.0.0, update workflows (logreader#1881)
+    - Chore(deps-dev): bump phpunit/phpunit from 9.6.22 to 9.6.33 (logreader#1905)
+  * nextcloud_announcements
+    - Fix(crawler): Skip notifications code completely in first run (nextcloud_announcements#565)
+  * notifications
+    - Fix(push): Limit device deletion by push-proxy (notifications#2775)
+    - Chore: Set the version to a stable one (notifications#2777)
+  * password_policy
+    - Chore(CI): Adjust version on stable32 (password_policy#893)
+  * photos
+    - Chore(CI): Adjust version on stable32 (photos#3404)
+    - Fix filtered albums (photos#3405)
+  * privacy
+    - Chore(CI): Adjust version on stable32 (privacy#1255)
+  * recommendations
+    - Chore(CI): Adjust version on stable32 (recommendations#980)
+  * related_resources
+    - Chore(CI): Adjust version on stable32 (related_resources#844)
+    - Chore(deps-dev): bump phpunit/phpunit from 10.5.25 to 10.5.62 (related_resources#845)
+  * serverinfo
+    - Chore(CI): Adjust version on stable32 (serverinfo#944)
+  * survey_client
+    - Chore(CI): Adjust version on stable32 (survey_client#383)
+  * suspicious_login
+    - Fix(oracle): Use function builder to create sum and count SQL function (suspicious_login#1067)
+    - Ci(actions): Apply some hardenings for zizmor (suspicious_login#1070)
+    - Chore(CI): Adjust version on stable32 (suspicious_login#1081)
+  * text
+    - Fix: preserve OCA.Text properties in public share script (text#8161)
+    - Ci(actions): Satisfy zizmor (text#8200)
+    - Migrate to playwright to update cypress (text#8223)
+    - Chore(deps-dev): bump phpunit/phpunit from 9.6.29 to 9.6.33 (text#8224)
+    - Chore: Improve session validation (text#8236)
+  * twofactor_nextcloud_notification
+    - Chore(CI): Adjust version on stable32 (twofactor_nextcloud_notification#1199)
+  * viewer
+    - Chore(CI): Adjust version on stable32 (viewer#3060)
+
+-------------------------------------------------------------------
 Fri Jan 16 13:37:54 UTC 2026 - ecsos <ecsos@opensuse.org> - 32.0.5
 
 - Update to 32.0.5
