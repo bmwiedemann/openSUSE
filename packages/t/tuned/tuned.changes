@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 11 22:16:45 UTC 2026 - Thomas Renninger <trenn@suse.de>
+
+- Update to mainline version v2.27.0-rc.1, but rewrite it to
+  v2.26.1+git.d6ff925 to stay rpm conform
+  (no -rc tag allowed in version)
+
+-------------------------------------------------------------------
 Tue Feb 10 17:01:47 UTC 2026 - trenn@suse.de
 
 - Correctly mark /var/log and /run log and pid files as ghost

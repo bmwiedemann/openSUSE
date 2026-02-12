@@ -5,13 +5,29 @@
 
 <!--
     Use this for non rc candidates, -rc is not allowed (by darix)
-    <param name="revision">v1.99.0rc1</param>
-    <param name="versionrewrite-pattern">v([\.\d]+)(rc.*)</param>
-    <param name="versionrewrite-replacement">\1~\2</param>
+    Update by trenn: simply count rc.X at the end of the previous full
+    version, e.g.:
+    Original:
+    v2.25.1
+    v2.26.0
+    v2.26.0-rc.1
+    v2.27.0-rc.1
+    Adopted:
+    v2.25.1
+    v2.25.2 -> v2.26.0-rc.1
+    v2.26.0
+    v2.26.1 -> v2.27.0-rc.1
+    Do this manually:
 -->
+    <param name="revision">v2.27.0-rc.1</param>
+    <param name="versionformat">v2.26.1+git.%h</param>
+<!--
+    and get the next full version via generic
+    versionrewrite asap:
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@+git.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
+-->
   </service>
   <service name="set_version" mode="manual"/>
   <service name="tar" mode="buildtime"/>
