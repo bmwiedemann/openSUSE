@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb  7 15:57:00 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.21:
+  * Fix the `eval' builtin compatibility with C
+  * Fix the `define' and `pushdef' builtins portability
+  * Fix build with glibc 2.43
+- drop obsolete texinfo spec macros
+- restrict upstream signing key, using the GNU group is discouraged
+
+-------------------------------------------------------------------
 Mon May 19 08:33:20 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Skip all stack overflow tests in qemu linux-user emulation

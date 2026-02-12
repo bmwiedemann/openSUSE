@@ -2,6 +2,7 @@
 # spec file for package m4
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           m4
-Version:        1.4.20
+Version:        1.4.21
 Release:        0
 Summary:        GNU m4
 License:        GPL-3.0-or-later
@@ -25,10 +26,8 @@ Group:          Development/Languages/Other
 URL:            https://www.gnu.org/software/m4/
 Source0:        https://ftp.gnu.org/pub/gnu/m4/%{name}-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/pub/gnu/m4/%{name}-%{version}.tar.xz.sig
-Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=m4&download=1#/%{name}.keyring
-BuildRequires:  xz
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+# https://savannah.gnu.org/users/ericb 0x71C2CC22B1C4602927D2F3AAA7A16B4A2527436A
+Source2:        %{name}.keyring
 Provides:       base:%{_bindir}/m4
 
 %description
@@ -73,12 +72,6 @@ echo 'int main () { return 77; }' > tests/test-sigsegv-catch-stackoverflow2.c
 %make_install
 # info's dir file is not auto ignored on some systems
 rm -rf %{buildroot}%{_infodir}/dir
-
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
 
 %files
 %doc README NEWS THANKS TODO ChangeLog

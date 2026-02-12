@@ -387,4 +387,12 @@
     <comment>- Skip all stack overflow tests in qemu linux-user emulation (forwarded request 1278367 from Andreas_Schwab)</comment>
     <requestid>1279279</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>28119d3804ca0d17865ca81ecb834a9e</srcmd5>
+    <version>1.4.21</version>
+    <time>1770913481</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1332398</requestid>
+  </revision>
 </revisionlist>
