@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Feb 12 06:57:32 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.34.4:
+  * Bump dependencies, images and versions used to Go 1.24.12 and distroless iptables
+  * Apparently some EC2 images we use do not have /proc/net/nf_conntrack
+  * test: Fix KubeProxy CLOSE_WAIT test for IPv6 environments
+  * test: Read /proc/net/nf_conntrack instead of using conntrack binary
+  * csi: raise kubelet CSI init backoff to cover ~140s DNS delays
+  * DRA scheduler: fix another root cause of double device allocation
+  * DRA scheduler: fix one root cause of double device allocation
+  * fix(kubelet): convert V().Error() to V().Info() for verbosity-aware logging
+  * test(ut/dra): add unit test for pod requesting prepared and new claims
+  * fix(expansion):Resolve the issue of UTF-8 characters being truncated, resulting in invalid UTF-8
+  * test(e2e/dra): add test for pod requesting allocated and new claims
+  * kubelet(dra): fix multiple claims handling
+  * reorder kube-cross to be under go version and dedupe it from the go version
+  * bump go to 1.24.12
+  * Fix for preferred dualstack and required dualstack in winkernel proxier.
+  * kubeadm: waiting for etcd learner member to be started before promoting during 'kubeadm join'
+  * Switch ipvs and winkernel back to more regular forced syncs
+  * mark QuotaMonitor as not running and invalidate monitors list
+  * Add unit test with CSIDriver.SELinuxMount=false
+  * Added e2e tests with disabled SELinux
+  * Use only enqueuePod to add pods to the controller queue
+  * Fix policy of Pods with unknown SELinux label
+  * selinux: add e2e test with a completed pod
+  * Rework unit tests to builder pattern
+  * selinux: Do not report conflits with finished pods
+  * refactoring: use a common function to enqueue Pod
+  * kubeadm: always retry Patch() Node API calls
+  * kubeadm: do not sort extraArgs alpha-numerically
+  * Fix apiserver_watch_events_sizes metric.
+  * hack/lib/util.sh: support uutils' `date` command
+  * local-up-cluster.sh: support more recent containerd like 2.2
+  * downgrade reflector watchlist fallback log to V(4)
+  * fix panic for the crd with status subresource but lose openAPIV3Schema fileds
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.24.12`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.34.4/build/dependencies.yaml#L113-L116
+
+-------------------------------------------------------------------
 Mon Dec 15 06:26:34 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.34.3:
