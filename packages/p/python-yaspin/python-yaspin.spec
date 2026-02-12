@@ -1,7 +1,7 @@
 #
 # spec file for package python-yaspin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,23 @@
 
 
 Name:           python-yaspin
-Version:        0.18.0
+Version:        3.4.0
 Release:        0
 Summary:        Yet Another Terminal Spinner
 License:        MIT
 URL:            https://github.com/pavdmyt/yaspin
 Source:         https://files.pythonhosted.org/packages/source/y/yaspin/yaspin-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module poetry-core >= 1.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-termcolor
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module termcolor}
 # /SECTION
 %python_subpackages
 
@@ -51,7 +54,7 @@ Yet Another Terminal Spinner.
 %pytest
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %{python_sitelib}/yaspin
 %{python_sitelib}/yaspin-%{version}*-info

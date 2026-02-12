@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Feb 12 04:22:05 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.4.0:
+  * Drop Python 3.9 support
+  * Fix Spinner.frames type hint (#261)
+  * Support custom streams via stream argument (#235)
+  * Update cli-spinners to v3.3.0
+  * Deprecate is_jupyter() method
+  * Add Python 3.14 support (#253)
+  * Add @inject_spinner decorator (#256)
+  * Update cli-spinners to v3.2.1
+  * termcolor version >=3 support (#254)
+  * Fix long messages behavior by truncating them via custom ellipsis (#240)
+  * Add Python 3.13 support
+  * Update cli-spinners to v3.2.0
+  * Add py.typed marker file to be compliant with PEP561 (#237)
+  * Update cli-spinners to v2.9.2
+  * Fix NameError when using yaspin as a decorator (#230)
+  * Drop Python 3.8 support
+  * Drop Python 3.7 support
+  * Add Python 3.12 support
+  * Update cli-spinners to v2.9.0
+  * Add Python 3.11 support (#217)
+  * Simple type hints for better IDE completions (#214)
+  * Replace termcolor-whl with renewed termcolor (#218)
+  * Support new colors and highlights from termcolor v2.2.0 (#218)
+  * Fix ANSI control sequences in Jupyter notebooks (#176, #193, #195)
+  * Drop Python 3.6 support
+  * Add Python 3.10 support
+  * Replace termcolor with termcolor-whl (#171)
+  * Update cli-spinners to v2.7.0
+  * Ensure cursor is visible in case of failures (#152)
+  * Convert Spinner to dataclass; make it mutable (#151)
+  * Support for dynamic text objects (#147)
+  * Remove extra files from site-packages (#135)
+  * Drop Python 2.7 and 3.5 support
+  * Make termcolor an external dependency
+  * Update cli-spinners to v2.6.0
+  * Fix timer round-up behavior (#118)
+  * Add spinner timer (#99, #108)
+  * fix(#107): use poetry_core as build backend
+  * fix(#34): allow write() to print non-string objects
+  * Optimization: wait of stop event instead of sleep
+  * Update cli-spinners to v2.5.0
+  * Add support for Python 3.9
+  * Add hidden() context manager #68
+  * fix(#70): hidden() exceptions handling
+  * "Stabilize" yaspin; 1.* branch will contain stable release with Python 2
+
+-------------------------------------------------------------------
 Fri Jun 13 12:50:30 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
