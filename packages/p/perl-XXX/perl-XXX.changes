@@ -1,0 +1,76 @@
+-------------------------------------------------------------------
+Thu Jun 24 03:10:34 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.38
+   see /usr/share/doc/packages/perl-XXX/Changes
+
+  0.38 Wed 23 Jun 2021 04:39:29 PM PDT
+   - Add `DDD` Enbugger debugger breakpoint invocation function
+
+  0.37 Sat 19 Jun 2021 10:49:06 AM PDT
+   - Support calling `->$::XXX` with global - mst++ Devel::Dwarn++
+
+  0.36 Fri 18 Jun 2021 05:12:02 PM PDT
+   - Support calling `::XXX` without needing `use XXX;`
+
+-------------------------------------------------------------------
+Tue Jan 21 03:20:21 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.35
+   see /usr/share/doc/packages/perl-XXX/Changes
+
+  0.35 Mon Jan 20 15:08:01 PST 2020
+   - Add Perl schema to YAML::PP dumping
+  
+  0.34 Mon Jan 20 12:38:24 PST 2020
+   - Use YAML::PP as default dumper
+
+-------------------------------------------------------------------
+Fri Jun 14 05:41:52 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.33
+   see /usr/share/doc/packages/perl-XXX/Changes
+
+  0.33 Thu 13 Jun 2019 10:17:10 PM CEST
+   - Make 5.8 compatible again (TINITA)
+
+-------------------------------------------------------------------
+Thu Dec  6 16:33:35 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.32
+   see /usr/share/doc/packages/perl-XXX/Changes
+
+  0.32 Tue Dec  4 23:29:52 CET 2018
+   - Allow to specify a dump module as an environment variable PR#11, TINITA
+   - Warn about deprecated options -dumper, -yaml PR#12, TINITA
+
+-------------------------------------------------------------------
+Fri Jan  6 07:27:22 UTC 2017 - coolo@suse.com
+
+- updated to 0.31
+   see /usr/share/doc/packages/perl-XXX/Changes
+
+  0.31 Thu Jan  5 12:07:51 PST 2017
+   - Fix dumping global regex vars. @EvanCarroll++ PR/2
+
+-------------------------------------------------------------------
+Thu May  5 10:30:20 UTC 2016 - coolo@suse.com
+
+- updated to 0.30
+   see /usr/share/doc/packages/perl-XXX/Changes
+
+  0.30 Wed Apr 27 06:54:32 PDT 2016
+   - Apply PR/9 by @mienaikage++.
+
+-------------------------------------------------------------------
+Tue Apr 14 18:28:41 UTC 2015 - coolo@suse.com
+
+- updated to 0.29
+   see /usr/share/doc/packages/perl-XXX/Changes
+
+-------------------------------------------------------------------
+Fri Dec  3 09:01:59 UTC 2010 - coolo@novell.com
+
+- initial package 0.17
+  * created by cpanspec 1.78.03
+
