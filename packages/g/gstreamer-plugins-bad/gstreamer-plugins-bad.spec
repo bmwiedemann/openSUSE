@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-bad
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,7 +81,7 @@
 %endif
 
 Name:           gstreamer-plugins-bad
-Version:        1.26.10
+Version:        1.28.0
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -174,7 +174,7 @@ BuildRequires:  pkgconfig(SvtAv1Enc)
 %endif
 BuildRequires:  pkgconfig(mjpegtools)
 BuildRequires:  pkgconfig(neon)
-BuildRequires:  pkgconfig(nice) >= 0.1.20
+BuildRequires:  pkgconfig(nice) >= 0.1.23
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(openh264) >= 1.3.0
 BuildRequires:  pkgconfig(openssl) >= 0.9.5
@@ -319,6 +319,17 @@ Summary:        GStreamer Streaming-Media Framework Plug-Ins
 Group:          System/Libraries
 
 %description -n libgstcodecs-1_0-0
+GStreamer is a streaming media framework based on graphs of filters
+that operate on media data. Applications using this library can do
+anything media-related,from real-time sound processing to playing
+videos. Its plug-in-based architecture means that new data types or
+processing capabilities can be added simply by installing new plug-ins.
+
+%package -n libgsthip-1_0-0
+Summary:        GStreamer Streaming-Media Framework Plug-Ins
+Group:          System/Libraries
+
+%description -n libgsthip-1_0-0
 GStreamer is a streaming media framework based on graphs of filters
 that operate on media data. Applications using this library can do
 anything media-related,from real-time sound processing to playing
@@ -535,6 +546,7 @@ Requires:       libgstcodecparsers-1_0-0 = %{version}
 Requires:       libgstcodecs-1_0-0 = %{version}
 Requires:       libgstcuda-1_0-0 = %{version}
 Requires:       libgstdxva-1_0-0 = %{version}
+Requires:       libgsthip-1_0-0 = %{version}
 Requires:       libgstinsertbin-1_0-0 = %{version}
 Requires:       libgstisoff-1_0-0 = %{version}
 Requires:       libgstmpegts-1_0-0 = %{version}
@@ -556,6 +568,8 @@ Requires:       typelib-1_0-GstBadAudio-1_0 = %{version}
 Requires:       typelib-1_0-GstCodecs-1_0 = %{version}
 Requires:       typelib-1_0-GstCuda-1_0 = %{version}
 Requires:       typelib-1_0-GstDxva-1_0 = %{version}
+Requires:       typelib-1_0-GstHip-1_0 = %{version}
+Requires:       typelib-1_0-GstHipGL-1_0 = %{version}
 Requires:       typelib-1_0-GstInsertBin-1_0 = %{version}
 Requires:       typelib-1_0-GstMpegts-1_0 = %{version}
 Requires:       typelib-1_0-GstMse-1_0 = %{version}
@@ -614,6 +628,28 @@ Summary:        Introspection bindings for GStreamer Streaming-Media Framework P
 Group:          System/Libraries
 
 %description -n typelib-1_0-GstDxva-1_0
+GStreamer is a streaming media framework based on graphs of filters
+that operate on media data. Applications using this library can do
+anything media-related, from real-time sound processing to playing
+videos. Its plug-in-based architecture means that new data types or
+processing capabilities can be added simply by installing new plug-ins.
+
+%package -n typelib-1_0-GstHip-1_0
+Summary:        Introspection bindings for GStreamer Streaming-Media Framework Plug-Ins
+Group:          System/Libraries
+
+%description -n typelib-1_0-GstHip-1_0
+GStreamer is a streaming media framework based on graphs of filters
+that operate on media data. Applications using this library can do
+anything media-related, from real-time sound processing to playing
+videos. Its plug-in-based architecture means that new data types or
+processing capabilities can be added simply by installing new plug-ins.
+
+%package -n typelib-1_0-GstHipGL-1_0
+Summary:        Introspection bindings for GStreamer Streaming-Media Framework Plug-Ins
+Group:          System/Libraries
+
+%description -n typelib-1_0-GstHipGL-1_0
 GStreamer is a streaming media framework based on graphs of filters
 that operate on media data. Applications using this library can do
 anything media-related, from real-time sound processing to playing
@@ -904,6 +940,9 @@ export PYTHON=%{_bindir}/python3
 	-D lcevcdecoder=disabled \
 	-D lcevcencoder=disabled \
 	-D svtjpegxs=disabled \
+	-D mpeghdec=disabled \
+	-D tflite=disabled \
+	-D wpe2=disabled \
 	%{nil}
 %meson_build
 
@@ -940,6 +979,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %ldconfig_scriptlets -n libgstcodecparsers-1_0-0
 %ldconfig_scriptlets -n libgstcuda-1_0-0
 %ldconfig_scriptlets -n libgstdxva-1_0-0
+%ldconfig_scriptlets -n libgsthip-1_0-0
 %ldconfig_scriptlets -n libgstinsertbin-1_0-0
 %ldconfig_scriptlets -n libgstisoff-1_0-0
 %ldconfig_scriptlets -n libgstmpegts-1_0-0
@@ -1012,6 +1052,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstgeometrictransform.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstgme.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstgsm.so
+%{_libdir}/gstreamer-%{gst_branch}/libgsthip.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsthls.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstinsertbin.so
 %if %{with ldacBT}
@@ -1090,6 +1131,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstvideoframe_audiolevel.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvideoparsersbad.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvideosignal.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstvmaf.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvmnc.so
 %if %{with voamrwbenc}
 %{_datadir}/gstreamer-%{gst_branch}/presets/GstVoAmrwbEnc.prs
@@ -1108,7 +1150,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %if %{with webrtc_audio_processing_1}
 %{_libdir}/gstreamer-%{gst_branch}/libgstwebrtcdsp.so
 %endif
-%{_libdir}/gstreamer-%{gst_branch}/libgsty4mdec.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstuvch264.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstwebp.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstcodectimestamper.so
@@ -1203,6 +1244,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n libgstdxva-1_0-0
 %{_libdir}/libgstdxva-%{gst_branch}.so.0*
 
+%files -n libgsthip-1_0-0
+%{_libdir}/libgsthip.so.0*
+
 %files -n libgstmse-1_0-0
 %{_libdir}/libgstmse-%{gst_branch}.so.0*
 
@@ -1254,13 +1298,21 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n typelib-1_0-GstVa-1_0
 %{_libdir}/girepository-1.0/GstVa-1.0.typelib
 
+%files -n typelib-1_0-GstHip-1_0
+%{_libdir}/girepository-1.0/GstHip-1.0.typelib
+
+%files -n typelib-1_0-GstHipGL-1_0
+%{_libdir}/girepository-1.0/GstHipGL-1.0.typelib
+
 %files devel
-%doc AUTHORS NEWS README.md RELEASE REQUIREMENTS
+%doc NEWS README.md RELEASE
 %{_includedir}/gstreamer-%{gst_branch}
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/gstreamer-analytics-%{gst_branch}.pc
 %{_libdir}/pkgconfig/gstreamer-bad-audio-%{gst_branch}.pc
 %{_libdir}/pkgconfig/gstreamer-codecparsers-%{gst_branch}.pc
+%{_libdir}/pkgconfig/gstreamer-hip-%{gst_branch}.pc
+%{_libdir}/pkgconfig/gstreamer-hip-gl-%{gst_branch}.pc
 %{_libdir}/pkgconfig/gstreamer-insertbin-%{gst_branch}.pc
 %{_libdir}/pkgconfig/gstreamer-mpegts-%{gst_branch}.pc
 %{_libdir}/pkgconfig/gstreamer-mse-%{gst_branch}.pc
