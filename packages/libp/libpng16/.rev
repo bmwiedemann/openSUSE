@@ -978,4 +978,12 @@
 - fixes [bsc#1256526] and [bsc#1256525]</comment>
     <requestid>1327363</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>1d0e7da2dd612b85e1c2e47d48e01d33</srcmd5>
+    <version>1.6.55</version>
+    <time>1770913528</time>
+    <user>anag_factory</user>
+    <comment>CVE-2026-25646, [bsc#1258020]</comment>
+    <requestid>1332493</requestid>
+  </revision>
 </revisionlist>

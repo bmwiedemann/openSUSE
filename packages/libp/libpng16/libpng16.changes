@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 11 14:06:43 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 1.6.55:
+  * Fixed CVE-2026-25646 (high severity):
+      Heap buffer overflow in `png_set_quantize`.
+      (Reported and fixed by Joshua Inscoe.)
+  * Resolved an oss-fuzz build issue involving nalloc.
+      (Contributed by Philippe Antoine.)
+- fixes [bsc#1258020]
+
+-------------------------------------------------------------------
 Thu Jan 15 11:00:13 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 1.6.54:
