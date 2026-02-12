@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 29 06:01:08 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.200.0 (2.2000)
+   see /usr/share/doc/packages/perl-Authen-SASL/Changes
+
+  2.2000  2026-01-28
+    [Added]
+       - Documentation for the security layer
+    [Fixed]
+       - Several public functions missing from the API documentation
+
+-------------------------------------------------------------------
 Fri Aug 22 20:27:29 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Remove perl-Authen-SASL-CVE-2025-40918.patch (fixed upstream)

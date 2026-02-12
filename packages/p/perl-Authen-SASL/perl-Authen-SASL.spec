@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Authen-SASL
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Authen-SASL
 Name:           perl-Authen-SASL
-Version:        2.190.0
+Version:        2.200.0
 Release:        0
-# 2.1900 -> normalize -> 2.190.0
-%define cpan_version 2.1900
+# 2.2000 -> normalize -> 2.200.0
+%define cpan_version 2.2000
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        SASL Authentication framework
 URL:            https://metacpan.org/release/%{cpan_name}

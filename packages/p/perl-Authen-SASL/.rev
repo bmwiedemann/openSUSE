@@ -250,4 +250,18 @@
    see /usr/share/doc/packages/perl-Authen-SASL/Changes</comment>
     <requestid>1301194</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>5a2ba58576f22279f5e0852617887948</srcmd5>
+    <version>2.200.0</version>
+    <time>1770913546</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.200.0 (2.2000)
+   see /usr/share/doc/packages/perl-Authen-SASL/Changes
+  2.2000  2026-01-28
+    [Added]
+       - Documentation for the security layer
+    [Fixed]
+       - Several public functions missing from the API documentation</comment>
+    <requestid>1332515</requestid>
+  </revision>
 </revisionlist>
