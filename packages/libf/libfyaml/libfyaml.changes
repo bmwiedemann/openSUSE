@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Feb 11 08:47:21 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.9.4
+  * Major: Full Windows Support
+  * Major: Comment Support Now Stable
+  * API Additions:
+    + fy_node_set_style(): Set the style of a node (block, flow,
+      plain, etc.) - Fixes #78
+    + fy_token_set_comment(): Attach comments to tokens
+      programmatically
+    + fy_event_to_string(): Convert events to string
+      representation
+    + fy_diag_get_collect_errors(): Query if error collection
+      is enabled
+    + fy_atom_lines_containing(): Get lines containing an atom
+      (useful for diagnostics)
+  * Critical Fixes:
+    + Token creation now properly clears memory (prevents UB on
+      invalid input)
+    + Reference loop nesting now respected when checking link
+      validity
+    + Fixed crash when setting document root to NULL; input size
+      clamping fix
+    + Walk expression bugs with improved debug infrastructure
+    + Early error on FYECF_EXTENDED_CFG with helper emit methods
+    + Walk double-free on node delete
+    + Walk error path handling for recursive alias resolution
+    + Off-by-one error in fy_accel_grow
+    + Parser crash on corrupted UTF-8 at end of file
+    + Superfluous document end marker with version/tag directives
+    + Depth limit for node copy (prevents stack overflow)
+  * Other Fixes:
+    + Document root now correctly marked as attached
+    + Emit state reset at end of document (fixes multi-document
+      streams)
+    + Flow quoting error on ANY style
+    + Empty file/stream handling on various platforms
+    + Removed notice for multiple alias declarations (valid YAML)
+
+-------------------------------------------------------------------
 Tue Feb  3 10:32:08 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.9.3. Check https://github.com/pantoniou/libfyaml/releases
