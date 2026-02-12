@@ -92,4 +92,12 @@
     <comment>- Update to release 1.2.74</comment>
     <requestid>1331057</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>6b4efec7924630e53ff36cb2941668df</srcmd5>
+    <version>1.2.74</version>
+    <time>1770913505</time>
+    <user>anag_factory</user>
+    <comment>- Update license tag to Zlib AND (Unlicense OR MIT-0) AND MIT:</comment>
+    <requestid>1332442</requestid>
+  </revision>
 </revisionlist>

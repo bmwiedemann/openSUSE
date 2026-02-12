@@ -22,7 +22,10 @@ Name:           sdl12_compat
 Version:        1.2.74
 Release:        0
 Summary:        SDL-1.2 Compatibility Layer for Simple DirectMedia Layer 2.0
-License:        MIT
+# Main project is licensed as Zlib
+# include/SDL/SDL_opengl.h is licensed as Zlib and MIT
+# src/dr_mp3.h is Unlicense OR MIT-0
+License:        Zlib AND (Unlicense OR MIT-0) AND MIT
 Group:          Development/Libraries/X11
 URL:            https://github.com/libsdl-org/sdl12-compat
 Source:         https://github.com/libsdl-org/sdl12-compat/releases/download/release-%version/sdl12-compat-%version.tar.gz

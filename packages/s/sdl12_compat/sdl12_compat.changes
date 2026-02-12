@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 10 21:05:21 UTC 2026 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- Update license tag to Zlib AND (Unlicense OR MIT-0) AND MIT:
+  * Main project is licensed as Zlib
+  * include/SDL/SDL_opengl.h is licensed as Zlib and MIT
+  * src/dr_mp3.h is Unlicense OR MIT-0
+
+-------------------------------------------------------------------
 Wed Feb  4 19:52:17 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.74
