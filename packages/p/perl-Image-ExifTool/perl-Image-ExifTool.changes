@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Feb 10 13:19:09 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.50:
+  * Added a few new Sony lenses
+  * Added a couple of new Canon lenses
+  * Decode another Samsung trailer tag
+  * Decode BlackLevels from some Canon CRW files (#387)
+  * Updated Sony maker note decoding for the ILCE-7M5
+  * Patched potential MacOS security issue
+  * Fixed -list options so reading image files beforehand
+    doesn't add tags to the output when running multiple
+    commands using the -execute feature
+
+-------------------------------------------------------------------
+Tue Feb 10 13:18:53 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.49:
+  * Decode a couple of new Samsung trailer tags
+  * Disabled decoding of MenuSettings for the Nikon Z6III
+    firmware 2.0 until the changes can be worked through in
+    detail
+  * Fixed problem where Google Photos had problems
+    displaying ExifTool-edited HEIC MotionPhoto images.
+    Files written by older versions of ExifTool may be
+    repaired by re-writing with 13.49 or later
+
+-------------------------------------------------------------------
 Mon Feb  2 12:04:58 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 13.48:
