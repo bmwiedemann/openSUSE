@@ -517,4 +517,41 @@
     (#3301)</comment>
     <requestid>1242801</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3b8c0f20e001ae84e077826ecbf55f6c</srcmd5>
+    <version>2.26.6</version>
+    <time>1770913778</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.26.6:
+  - Support `packaging==26.0` changes for version comparison
+- Release v2.26.5 (2026-01-21)
+  - Respect the project path when using cookiecutter template in `pdm
+    init` command.
+  - Fix a bug that `resolution.excludes` is not applied when
+    evaluating candidates from the lock file.
+  ## Documentation
+  - Remove chatbot from the docs page footer.
+  - Generate llms.txt for docs powered by `mkdocs-llmstxt`.
+- Release v2.26.4 (2026-01-09)
+  - Make sure cursor closing for fixing PyPy different gc mode also
+    add PyPy in CI.
+  - Fix a bug that old HTTP cache directories cause PDM to crash when
+    trying to clear them.
+- Release v2.26.3 (2025-12-24)
+  - Port to `hishel` 1.0.0.
+  - Update `.gitignore` file in the default template.
+  - Correct the sysconfig variables for Python standalone build
+    installations.
+  - Ignore `packages.vcs.requested-revision` if it's None when
+    formatting pylock.toml.
+  - Fix test failures with uv test cases using non-venv Python
+    interpreters.
+- Release v2.26.2 (2025-11-24)
+  - Only parse TOML document with `tomlkit` when writing is required.
+  - Add SHA256 checksums for binary releases during the release
+    workflow and create an installer script that downloads binaries
+    from GitHub releases with automatic platform detection and
+    checksum verification.</comment>
+    <requestid>1332679</requestid>
+  </revision>
 </revisionlist>

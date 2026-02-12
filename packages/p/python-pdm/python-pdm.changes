@@ -1,4 +1,201 @@
 -------------------------------------------------------------------
+Thu Feb 12 09:09:04 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 2.26.6:
+  - Support `packaging==26.0` changes for version comparison
+- Release v2.26.5 (2026-01-21)
+  - Respect the project path when using cookiecutter template in `pdm
+    init` command.
+  - Fix a bug that `resolution.excludes` is not applied when
+    evaluating candidates from the lock file.
+  ## Documentation
+  - Remove chatbot from the docs page footer.
+  - Generate llms.txt for docs powered by `mkdocs-llmstxt`.
+- Release v2.26.4 (2026-01-09)
+  - Make sure cursor closing for fixing PyPy different gc mode also
+    add PyPy in CI.
+  - Fix a bug that old HTTP cache directories cause PDM to crash when
+    trying to clear them.
+- Release v2.26.3 (2025-12-24)
+  - Port to `hishel` 1.0.0.
+  - Update `.gitignore` file in the default template.
+  - Correct the sysconfig variables for Python standalone build
+    installations.
+  - Ignore `packages.vcs.requested-revision` if it's None when
+    formatting pylock.toml.
+  - Fix test failures with uv test cases using non-venv Python
+    interpreters.
+- Release v2.26.2 (2025-11-24)
+  - Only parse TOML document with `tomlkit` when writing is required.
+  - Add SHA256 checksums for binary releases during the release
+    workflow and create an installer script that downloads binaries
+    from GitHub releases with automatic platform detection and
+    checksum verification.
+  - Fix test_use_python_write_file_multiple_versions to match PDM's
+    actual behavior.
+  - Correctly calculate the venv path for `UV_PROJECT_ENVIRONMENT` env
+    var when using uv mode.
+  - Ensure `implementation.gil_disabled` is a boolean in
+    `get_current_env_spec`. This fix an issue that free-threaded
+    wheels get rejected incorrectly.
+  - Fix CLI help formatting on Python 3.14+.
+  - Make `PdmBasicAuth` a `cached_property` to accelerate execution.
+  ## Removals and Deprecations
+  - Add deprecation warning for `pdm search` command as PyPI no longer
+    supports search API.
+  ## Miscellany
+  - Add tests to utils.fs_supports_link_method and
+    utils.convert_to_datetime.
+- Release v2.26.1 (2025-10-29)
+  - Substitute missing env vars with empty string in
+    `expand_env_vars`.
+  - Constrained hishel to be less than 1.0.0 due to its refactor
+- Release v2.26.0 (2025-10-11)
+  - Limit the log file size to 100MB and truncate the log output if
+    exceeded.
+  - Speed up dependency resolution in the bad path by skipping
+    candidates of the same version when resolving.
+  - Reload project files after running hook scripts.
+  - Fix a bug when using UV as the resolver does not respect the
+    venv.location configuration.
+  - Fix `publish --skip-existing` for Nexus Repository OSS >= 3.70
+  - Fix a resolution failure when both prerelease and non-prerelease
+    requirements exist.
+  - Ignore invalid `python` requirement during locking.
+  - Isolate PDM loggers with the root logger to avoid log leakage.
+  - Fix a crash when resolving URL dependencies under `use_uv=true`.
+- Release v2.25.9 (2025-08-22)
+  - No significant changes.
+- Release v2.25.8 (2025-08-22)
+  - Fix a careless error by fast apply in AI coding.
+- Release v2.25.7 (2025-08-22)
+  - Show the path to site-packages in the output of `pdm info`.
+  - Fix `uv python dir` path resolution on Windows
+  - Strip local version in version specifiers when writing package
+    locks.
+  - Show an error message when 'default' is used in optional
+    dependencies or dependency groups.
+  - Prevent hash clearing when appending to lockfile with env_spec.
+- Release v2.25.6 (2025-08-14)
+  - The `pdm python install -v` command now shows the download URL for
+    the Python interpreter.
+  - Ensure `make_array` always returns a tomlkit array type.
+  - Preserve multi-line help text in the CLI help output.
+  - Re-caculate artifact files and hashes when the lock target
+    changes.
+  - Require packaging>22.0 and remove conditional PACKAGING_22 version
+    checks.
+  - Bump truststore to version 0.10.4.
+- Release v2.25.5 (2025-07-30)
+  - Tell the difference between free-threaded Python and normal ones.
+    Users need to request for free-threaded versions explicitly by
+    adding `t` to the version string, otherwise the normal build will
+    be preferred.
+  - Fix a bug that editable local package URLs are empty when using
+    `pylock.toml`.
+  - Fix a bug where `pdm export` with `--lockfile pylock.toml`
+    produced empty requirements.txt files due to missing group
+    information extraction from pylock format markers.
+  - Read metadata from installed distribution when using
+    reuse-installed strategy.
+  - Fix a lockfile writing error when locking git dependencies in the
+    pylock.toml format.
+- Release v2.25.4 (2025-06-30)
+  - Add credentials when passing source urls to uv resolver.
+  - Redact credentials in source urls in the log output, and inject
+    credentials into the source url for uv sync command as well.
+  - Fix a bug that extra dependencies of transitive dependencies are
+    not properly installed when USE_UV=true
+  - Improve the terminal output when setting up a script environment.
+  - Skip non-existent library paths in post-install steps when trying
+    to fix the pth files.
+  - Update `resolvelib` to 1.2.0.
+- Release v2.25.3 (2025-06-22)
+  - Fix a bug that local file package metadata was missing when
+    reading the lockfile.
+  - Extract `dependency-groups` and `extras` markers from `marker`
+    value when parsing pylock.toml.
+- Release v2.25.2 (2025-06-16)
+  - No significant changes.
+- Release v2.25.1 (2025-06-14)
+  - Fix duplicated dependencies added to the lock file when the same
+    dependency with extras is requested.
+  - Stabilize order of the `extras` and `dependency-groups` fields in
+    pylock output.
+- Release v2.25.0 (2025-06-13)
+  - Support pylock as alternative lock format and make it opt-in by
+    config.
+  - Search for package metadata in lock file first when reuse strategy
+    is used.
+  - Fix Windows 11 install pdm error, which is because of msgpack
+    install failure.
+  - Change the return type of `array_of_inline_tables` to list[dict]
+    from list[str]
+  - Ensure uv resolver to include hash for package files.
+  - Avoid infinite recursion when reading pyproject.toml with circular
+    file dependencies.
+- Release v2.24.2 (2025-05-23)
+  - Reinstalling local wheel if its checksum changes.
+  - Ignore HTTP cache entries if deserialization fails.
+  - Fetch missing URLs when `static_urls` is not enabled when running
+    `pdm export -f pylock`.
+  - Missing self package when `--self` or `--editable-self` is passed
+    to `pdm export -f pylock`.
+- Release v2.24.1 (2025-04-23)
+  - Install the project when using the `BaseSynchronizer` with
+    `install_self` set to `True`. This fixes the bug that when calling
+    `pdm sync --quiet`, it skips installing the project itself.
+  - Mark one additional test as requiring network, and fix another one
+    not to require it anymore.
+- Release v2.24.0 (2025-04-18)
+  - New command `pdm new` that behaves like `pdm init` but creates a
+    new project.
+  - Support use `--name` as project name for command `pdm new` e.g.
+    `pdm new hello --name world`
+  - Support exporting to pylock.toml format as described by PEP 751.
+  - Pass the `--quiet` option to `pdm sync` command.
+  - If a `.python-version` file is found and it contains multiple
+    lines, the file will be ignored. The usage of the
+    `.python-version` file can be disabled, if configuration value
+    `python.use_python_version` (or environment variable
+    `PDM_USE_PYTHON_VERSION`) is `False`.
+  - fix `pdm config -e` command to open read-only file under linux
+  - Replace project names and import names in both `README.md` and
+    `pyproject.toml` when running `pdm init <template>`.
+  - Fix a bug that URL dependency hashes are not updated if running
+    `pdm lock --update-reuse`.
+- Release v2.23.1 (2025-04-09)
+  - Use `pyapp` to wrap `pdm` as a Python application that bootstrap
+    itself at runtime.
+  - Support all providers `id` is supporting currently for OIDC
+    trusted publishing
+  - Installation error for local plugins specified with file URL
+    without a name.
+  - Eliminate the warning about inherit_metadata when using uv mode.
+  - Fix an installation failure when installing editable local
+    dependencies on Windows and Python 3.13.
+  - Fix a bug that overridden requirements in lock file get rewritten
+    when adding a new requirement.
+  - Cyclic group inclusion is detected incorrectly. Also show the
+    cyclic group names in the error message.
+  - Fix a bug that `pdm remove` doesn't handle dependency groups
+    include correctly.
+  - Update `unearth` to address an issue downloading git repos with
+    short commit hash.
+- Release v2.23.0 (2025-04-01)
+  - Add `pdm python find` command to search for a python interpreter.
+  - `pdm import` now converts `package-mode` from Poetry's settings
+    table to `distribution`.
+  - Excluding non-existing groups for `pdm remove`.
+  - Fix a bug that `pdm add` and `pdm update` remove dependency groups
+    incorrectly.
+  - Fix a bug that using resolution overrides drops extra
+    dependencies.
+- Release v2.22.4 (2025-03-07)
+  - Ensure dev-dependencies are added to the correct group when the
+    `tool.pdm.dev-dependencies` table has groups.
+
+-------------------------------------------------------------------
 Mon Feb  3 11:11:24 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update 2.22.3

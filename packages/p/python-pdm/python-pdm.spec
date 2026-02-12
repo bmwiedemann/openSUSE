@@ -1,7 +1,7 @@
 #
 # spec file for package python-pdm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pdm%{psuffix}
-Version:        2.22.3
+Version:        2.26.6
 Release:        0
 Summary:        Python Development Master
 License:        MIT
@@ -44,12 +44,12 @@ Requires:       python-certifi
 Requires:       python-dep-logic >= 0.4.4
 Requires:       python-filelock >= 3.13
 Requires:       python-findpython >= 0.6
-Requires:       python-hishel >= 0.0.24
+Requires:       python-hishel >= 1.0.0
 Requires:       python-httpcore
 Requires:       python-httpx >= 0.20
+Requires:       python-id
 Requires:       python-installer >= 0.7
-Requires:       python-msgpack >= 1.0
-Requires:       python-packaging >= 20.9
+Requires:       python-packaging >= 22.0
 Requires:       python-pbs-installer >= 2024.4.18
 Requires:       python-platformdirs
 Requires:       python-pyproject-hooks
@@ -77,6 +77,7 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module pdm = %{version}}
 BuildRequires:  %{python_module pytest-httpserver}
+BuildRequires:  %{python_module pytest-httpx}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -150,6 +151,10 @@ donttest="$donttest or test_use_command"
 donttest="$donttest or test_init_project_respect_version_file"
 donttest="$donttest or test_resolve_local_artifacts or test_resolve_two_extras_from_the_same_package or test_resolve_file_req_with_prerelease"
 donttest="$donttest or test_init_auto_create_venv"
+donttest="$donttest or test_use_python_write_file_with_use_python_version"
+donttest="$donttest or test_use_python_write_file_without_use_python_version"
+# Different requires python
+donttest="$donttest or test_new_command"
 
 %pytest -v -k "not ($donttest)"
 %endif
