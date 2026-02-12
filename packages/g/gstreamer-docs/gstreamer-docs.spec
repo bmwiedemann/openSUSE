@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-docs
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         gst_branch      1.0
 
 Name:           gstreamer-docs
-Version:        1.26.10
+Version:        1.28.0
 Release:        0
 Summary:        GStreamer documentation
 License:        (BSD-2-Clause OR LGPL-2.1-or-later OR MIT) AND OPL-1.0 AND CC-BY-SA-4.0
