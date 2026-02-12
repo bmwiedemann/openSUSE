@@ -744,4 +744,31 @@
   * chore(deps): bump actions/upload-artifact from 4.6.2 to 5.0.0 (#4502) (forwarded request 1322929 from msmeissn)</comment>
     <requestid>1323778</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>96eb5bfa800c7ad3231e6bc2c64399b8</srcmd5>
+    <version>3.0.4</version>
+    <time>1770913749</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.0.4:
+  * Fix bundle verify path for old bundle/trusted root (#4623)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go (#4616)
+  * chore(deps): bump cuelang.org/go in the gomod group (#4615)
+  * Optimize cosign tree performance by caching digest resolution (#4612)
+  * Don't require a trusted root to verify offline with a key (#4613)
+  * Support default services for trusted-root and signing-config creation (#4592)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go (#4602)
+  * chore(deps): bump github.com/sigstore/sigstore-go (#4578)
+  * chore(deps): bump github.com/buildkite/agent/v3 from 3.114.1 to 3.115.2 (#4601)
+  * chore(deps): bump google.golang.org/api from 0.257.0 to 0.258.0 (#4611)
+  * chore(deps): bump k8s.io/client-go from 0.34.3 to 0.35.0 (#4604)
+  * chore(deps): bump actions/upload-artifact from 5.0.0 to 6.0.0 (#4588)
+  * chore(deps): bump golang.org/x/oauth2 from 0.33.0 to 0.34.0 (#4586)
+  * chore(deps): bump the gomod group with 5 updates (#4599)
+  * chore(deps): bump github.com/open-policy-agent/opa from 1.10.1 to 1.12.1 (#4600)
+  * chore(deps): bump golang.org/x/term from 0.37.0 to 0.38.0 (#4584)
+  * chore(deps): bump the actions group with 3 updates (#4587)
+  * chore(deps): bump actions/cache from 4.3.0 to 5.0.1 (#4589)
+  * chore(deps): bump the gomod group with 9 updates (#4577) (forwarded request 1332573 from msmeissn)</comment>
+    <requestid>1332629</requestid>
+  </revision>
 </revisionlist>
