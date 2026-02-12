@@ -1,4 +1,35 @@
 --------------------------------------------------------------------
+Wed Feb 4 11:44:40 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#176
+- fix compiler warnings (bsc#1257658)
+- 25.2
+
+--------------------------------------------------------------------
+Wed Feb 4 11:17:42 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#174
+- docs: Updates source repository URL to GitHub(#131)
+
+--------------------------------------------------------------------
+Wed Feb 4 11:14:12 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#173
+- fix: incorrect format specifier for sizeof in logging(#140)
+
+--------------------------------------------------------------------
+Wed Feb 4 11:13:22 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#172
+- fix: file descriptor not closes after WLAN scan(#166)
+
+--------------------------------------------------------------------
+Wed Feb 4 11:11:34 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#171
+- resolve memory leaks in net, monitor and hddb
+
+--------------------------------------------------------------------
 Mon Jan 26 14:42:09 UTC 2026 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#175
