@@ -16,9 +16,9 @@
 #
 
 
-%define sover 7
+%define sover 8
 Name:           libqxmpp
-Version:        1.13.0
+Version:        1.14.1
 Release:        0
 Summary:        Qt XMPP Library
 License:        LGPL-2.1-or-later

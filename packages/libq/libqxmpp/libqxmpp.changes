@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 12 09:56:53 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.14.1
+  * Updated and completed audio/video calls implementation
+  * Enable visibility=hidden on linux
+
+-------------------------------------------------------------------
 Mon Dec 29 12:04:37 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.13.0
