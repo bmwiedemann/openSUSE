@@ -2,10 +2,10 @@
   <service name="cargo_vendor" mode="manual">
     <param name="src">https://github.com/atuinsh/atuin</param>
     <param name="update">true</param>
-    <param name="revision">v18.11.0</param>
+    <param name="revision">v18.12.1</param>
     <param name="versionrewriteregex">^v?(.*)</param>
     <param name="versionrewritepattern">${1}</param>
-    <param name="changesgenerate">true</param>
+    <param name="changesgenerate">false</param>
     <!-- param name="i-accept-the-risk">RUSTSEC-2023-0071</param -->
     <!-- param name="i-accept-the-risk">RUSTSEC-2022-0093</param -->
     <!-- param name="i-accept-the-risk">RUSTSEC-2021-0041</param -->

@@ -1381,4 +1381,12 @@
 - Update to version 18.12.0: (forwarded request 1332270 from develop7)</comment>
     <requestid>1332271</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>49278c57a171ffd39a22f7a138209746</srcmd5>
+    <version>18.12.1</version>
+    <time>1770913784</time>
+    <user>anag_factory</user>
+    <comment>Update to version 18.12.1 (forwarded request 1332676 from develop7)</comment>
+    <requestid>1332677</requestid>
+  </revision>
 </revisionlist>

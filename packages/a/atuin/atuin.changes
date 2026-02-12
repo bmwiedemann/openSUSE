@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 12 11:13:10 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 18.12.1:
+  * chore(release): prepare for release 18.12.1 (#3172)
+  * feat: Add original-input-empty keybind condition (#3171)
+  * fix(shell): fix ATUIN_SESSION errors in tmux popup (#3170)
+  * fix: Server start commands for Docker. (#3160)
+  * feat: expand keybinding system with vim motions, media keys, and inspector improvements (#3161)
+  * fix(tui): enter in vim normal mode, shift-tab keybind (#3158)
+  * chore(deps): bump debian from bookworm-20260112-slim to bookworm-20260202-slim (#3150)
+  * chore(deps): Update to tiny-bip39 2.0.0 (#3151)
+  * chore: update changelog
+
+-------------------------------------------------------------------
 Tue Feb 10 13:09:37 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
 
 - bump Rust to 1.93 (see upstream changelog)
