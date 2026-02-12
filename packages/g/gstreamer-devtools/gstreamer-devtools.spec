@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-devtools
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           gstreamer-devtools
-Version:        1.26.10
+Version:        1.28.0
 Release:        0
 Summary:        Development and debugging tools for GStreamer
 License:        LGPL-2.1-or-later
@@ -41,14 +41,12 @@ BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.26.0
-BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= 1.26.0
-BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0) >= 1.26.0
-BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= 1.26.0
-%if 0%{?suse_version} >= 1500
-BuildRequires:  pkgconfig(gstreamer-rtsp-server-1.0) >= 1.26.0
-%endif
-BuildRequires:  pkgconfig(gstreamer-transcoder-1.0)
+BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.28.0
+BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= 1.28.0
+BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0) >= 1.28.0
+BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= 1.28.0
+BuildRequires:  pkgconfig(gstreamer-rtsp-server-1.0) >= 1.28.0
+BuildRequires:  pkgconfig(gstreamer-transcoder-1.0) >= 1.28.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(json-glib-1.0)
 Obsoletes:      gstreamer-validate < 1.18.1
