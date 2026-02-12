@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-ugly
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 
 Name:           gstreamer-plugins-ugly
-Version:        1.26.10
+Version:        1.28.0
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -120,7 +120,7 @@ export PYTHON=%{_bindir}/python3
 
 %files
 %license COPYING
-%doc AUTHORS NEWS README.md RELEASE REQUIREMENTS
+%doc NEWS README.md RELEASE
 %{_libdir}/gstreamer-%{gst_branch}/libgsta52dec.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstasf.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstcdio.so
