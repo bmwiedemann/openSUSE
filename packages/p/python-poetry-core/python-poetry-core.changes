@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 12 03:44:00 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.3.1:
+  * Fix an issue where platform_release could not be parsed on Windows Server
+
+-------------------------------------------------------------------
 Sun Jan 25 11:56:18 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.3.0

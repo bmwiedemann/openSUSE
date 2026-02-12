@@ -456,4 +456,13 @@
 </comment>
     <requestid>1329254</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>5893e5293c328cc5dcb596274eb85976</srcmd5>
+    <version>2.3.1</version>
+    <time>1770913557</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.1:
+  * Fix an issue where platform_release could not be parsed on Windows Server</comment>
+    <requestid>1332599</requestid>
+  </revision>
 </revisionlist>
