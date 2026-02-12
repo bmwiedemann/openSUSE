@@ -1,0 +1,11 @@
+--- a/libfprint/tod/meson.build	2026-02-11 19:28:06.946827977 +0100
++++ b/libfprint/tod/meson.build	2026-02-11 19:30:55.395942914 +0100
+@@ -18,7 +18,7 @@
+ if meson.version().version_compare('>=1.4')
+     mapfile_path = mapfile.full_path()
+ else
+-    mapfile_path = meson.project_source_root() / '@0@'.format(mapfile)
++    mapfile_path = meson.project_build_root() / '@0@'.format(mapfile)
+ endif
+ 
+ libfprint_tod_private = static_library('fprint-tod-private',

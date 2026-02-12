@@ -1,22 +1,38 @@
-diff -purN a/libfprint/drivers/realtek/realtek.c b/libfprint/drivers/realtek/realtek.c
---- a/libfprint/drivers/realtek/realtek.c	2025-02-20 19:15:46.000000000 +0100
-+++ b/libfprint/drivers/realtek/realtek.c	2025-02-21 19:08:26.808065191 +0100
-@@ -1026,6 +1026,8 @@ fp_enroll_sm_run_state (FpiSsm *ssm, FpD
-   GVariant *data = NULL;
-   gsize user_id_len;
-   guint finger;
-+  gchar *valid_uid = NULL;
-+  gint payload_len;
- 
-   switch (fpi_ssm_get_cur_state (ssm))
-     {
-@@ -1071,9 +1073,6 @@ fp_enroll_sm_run_state (FpiSsm *ssm, FpD
+--- a/libfprint/drivers/goodixmoc/goodix_proto.c	2026-02-11 19:28:06.940568418 +0100
++++ b/libfprint/drivers/goodixmoc/goodix_proto.c	2026-02-11 19:58:20.273234447 +0100
+@@ -345,7 +345,7 @@
+         g_debug ("Power button shield feature not supported!\n");
        break;
  
-     case FP_RTK_ENROLL_COMMIT:
--      gchar *valid_uid = NULL;
--      gint payload_len;
--
-       payload_len = UID_PAYLOAD_LEN_DEFAULT;
+-    case MOC_CMD0_GET_VERSION:
++    case MOC_CMD0_GET_VERSION: {
+       const uint8_t *version_info;
  
-       fpi_device_get_enroll_data (device, &print);
+       if (!fpi_byte_reader_get_data (byte_reader, sizeof (gxfp_version_info_t), &version_info))
+@@ -353,6 +353,7 @@
+ 
+       memcpy (&presp->version_info, version_info, sizeof (gxfp_version_info_t));
+       break;
++    }
+ 
+     case MOC_CMD0_CAPTURE_DATA:
+       if (LOBYTE (cmd) == MOC_CMD1_DEFAULT)
+--- a/libfprint/drivers/realtek/realtek.c	2026-02-11 19:28:06.940728820 +0100
++++ b/libfprint/drivers/realtek/realtek.c	2026-02-11 19:59:38.769970332 +0100
+@@ -1071,7 +1071,7 @@
+       rtk_sensor_bulk_cmd (self, cmd_buf, NULL, FP_RTK_MSG_NO_STATUS, 0, fp_check_duplicate_cb);
+       break;
+ 
+-    case FP_RTK_ENROLL_COMMIT:
++    case FP_RTK_ENROLL_COMMIT: {
+       gchar *valid_uid = NULL;
+       gint payload_len;
+ 
+@@ -1109,6 +1109,7 @@
+       rtk_sensor_bulk_cmd (self, cmd_buf, g_steal_pointer (&payload),
+                            FP_RTK_MSG_DEFAULT, 1, fp_enroll_commit_cb);
+       break;
++    }
+ 
+     case FP_RTK_ENROLL_CANCEL_CAPTURE:
+       co_cancel_capture.param[0] = self->fp_purpose;
