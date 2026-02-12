@@ -3303,6 +3303,7 @@ unsorted:
   - distcc-server 
   - distribution-gpg-keys 
   - distribution-logos-openSUSE 
+  - distribution-logos-openSUSE-Aeon 
   - distribution-logos-openSUSE-Kubic 
   - distribution-logos-openSUSE-Slowroll 
   - distribution-registry 
@@ -11403,7 +11404,7 @@ unsorted:
   - libQCoro6Qml0 
   - libQCoro6Quick0 
   - libQCoro6WebSockets0 
-  - libQXmppQt6-7 
+  - libQXmppQt6-8 
   - libQXmppQt6-devel 
   - libQgpsmm32 
   - libQt53DAnimation-devel 
@@ -13367,7 +13368,6 @@ unsorted:
   - libfpm_helper-devel 
   - libfpm_helper0 
   - libfprint-2-2-32bit 
-  - libfprint-2-tod1 
   - libfprint-2-tod1-32bit 
   - libfprint-devel 
   - libfprint-doc 
@@ -13841,6 +13841,7 @@ unsorted:
   - libgstdxva-1_0-0-32bit 
   - libgstfft-1_0-0-32bit 
   - libgstgl-1_0-0-32bit 
+  - libgsthip-1_0-0-32bit 
   - libgstinsertbin-1_0-0-32bit 
   - libgstisoff-1_0-0-32bit 
   - libgstmpegts-1_0-0-32bit 
@@ -13864,7 +13865,6 @@ unsorted:
   - libgsttranscoder-1_0-0-32bit 
   - libgsturidownloader-1_0-0-32bit 
   - libgstva-1_0-0-32bit 
-  - libgstvalidate-1_0-0 
   - libgstvideo-1_0-0-32bit 
   - libgstvulkan-1_0-0-32bit 
   - libgstwayland-1_0-0-32bit 
@@ -15431,7 +15431,7 @@ unsorted:
   - libpkgmanifest-devel 
   - libpkgmanifest0 
   - libplacebo-devel 
-  - libplacebo351-32bit 
+  - libplacebo360-32bit 
   - libplacebo5-devel 
   - libplanarity2 
   - libplanify-0 
@@ -16290,7 +16290,7 @@ unsorted:
   - libsleef3 
   - libslirp-devel 
   - libslopy7_7 
-  - libslurm42 
+  - libslurm44 
   - libsmartcols-devel 
   - libsmartcols-devel-32bit 
   - libsmartcols-devel-static 
@@ -22013,6 +22013,7 @@ unsorted:
   - perl-Import-Into 
   - perl-Importer 
   - perl-Inline 
+  - perl-Inline-C 
   - perl-Inline-Lua 
   - perl-Inline-Python 
   - perl-Iterator 
@@ -22343,6 +22344,7 @@ unsorted:
   - perl-Path-IsDev 
   - perl-Path-Router 
   - perl-Path-Tiny 
+  - perl-Pegex 
   - perl-Perl-Critic 
   - perl-Perl-Critic-Community 
   - perl-Perl-Critic-Policy-Plicease-ProhibitArrayAssignAref 
@@ -22794,6 +22796,7 @@ unsorted:
   - perl-XS-Parse-Sublike 
   - perl-XSLoader 
   - perl-XString 
+  - perl-XXX 
   - perl-YAML 
   - perl-YAML-LibYAML 
   - perl-YAML-LibYAML-API 
@@ -24501,6 +24504,7 @@ unsorted:
   - python311-antlr4-python3-runtime 
   - python311-anyascii 
   - python311-anymarkup-core 
+  - python311-anysqlite 
   - python311-anywidget 
   - python311-apache-libcloud 
   - python311-apacheconfig 
@@ -26845,6 +26849,7 @@ unsorted:
   - python311-pyhcl 
   - python311-pyhibp 
   - python311-pyicumessageformat 
+  - python311-pyinfra 
   - python311-pyinstaller-hooks-contrib 
   - python311-pyipp 
   - python311-pyjavaproperties 
@@ -28318,6 +28323,7 @@ unsorted:
   - python312-anyascii 
   - python312-anyio 
   - python312-anymarkup-core 
+  - python312-anysqlite 
   - python312-anywidget 
   - python312-apache-libcloud 
   - python312-apacheconfig 
@@ -30719,6 +30725,7 @@ unsorted:
   - python312-pyhcl 
   - python312-pyhibp 
   - python312-pyicumessageformat 
+  - python312-pyinfra 
   - python312-pyinotify 
   - python312-pyinstaller-hooks-contrib 
   - python312-pyipp 
@@ -32205,6 +32212,7 @@ unsorted:
   - python313-anyascii 
   - python313-anyio 
   - python313-anymarkup-core 
+  - python313-anysqlite 
   - python313-anywidget 
   - python313-apache-libcloud 
   - python313-apacheconfig 
@@ -34571,12 +34579,14 @@ unsorted:
   - python313-pyhcl 
   - python313-pyhibp 
   - python313-pyicumessageformat 
+  - python313-pyinfra 
   - python313-pyinstaller-hooks-contrib 
   - python313-pyipp 
   - python313-pyjavaproperties 
   - python313-pyjokes 
   - python313-pyjsparser 
   - python313-pyjwkest 
+  - python313-pykanidm 
   - python313-pykdumpfile 
   - python313-pykeepass 
   - python313-pykerberos 
@@ -37812,7 +37822,6 @@ unsorted:
   - slurm-slurmdbd 
   - slurm-sql 
   - slurm-sview 
-  - slurm-testsuite 
   - slurm-torque 
   - slurm-webdoc 
   - slurp 
@@ -48870,6 +48879,8 @@ unsorted:
   - typelib-1_0-GstGLEGL-1_0 
   - typelib-1_0-GstGLWayland-1_0 
   - typelib-1_0-GstGLX11-1_0 
+  - typelib-1_0-GstHip-1_0 
+  - typelib-1_0-GstHipGL-1_0 
   - typelib-1_0-GstInsertBin-1_0 
   - typelib-1_0-GstMpegts-1_0 
   - typelib-1_0-GstMse-1_0 
@@ -49046,6 +49057,9 @@ unsorted:
   - udunits2 
   - udunits2-devel 
   - ueberzugpp 
+  - uefi-shell-aarch64 
+  - uefi-shell-riscv64 
+  - uefi-shell-x86_64 
   - ufiformat 
   - ufraw 
   - ufraw-lang 
