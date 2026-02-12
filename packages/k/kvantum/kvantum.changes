@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb 12 02:19:08 UTC 2026 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 1.1.6
+  * Workaround for the translucency of Kvantum Manager's window on
+    changing the theme under Wayland.
+  * Removed the obsolete variables and keys related to GTK DEs.
+
+- Version 1.1.5 changes:
+  * Removed an old workaround about translations, which prevented some
+    languages from being loaded by recent versions of Qt.
+  * Disabled kinetic scrolling completely because its Qt bugs aren't
+    fixed after a long time.
+  * Silenced Qt's debug messages about the animations of Kvantum Manager.
+  * Modified a few themes.
+  * Wrapped forward declarations within QT_NAMESPACE.
+
+-------------------------------------------------------------------
 Mon Mar  3 23:57:23 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Version 1.1.4
