@@ -1448,4 +1448,12 @@ then, coreutils doesn't need this patch from the kernel v4.10-rc1. (forwarded re
     <comment></comment>
     <requestid>1331131</requestid>
   </revision>
+  <revision rev="169" vrev="2">
+    <srcmd5>9232d727bab7293d216ada7ba5fa8ff4</srcmd5>
+    <version>9.10</version>
+    <time>1770913479</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1332389</requestid>
+  </revision>
 </revisionlist>

@@ -196,6 +196,10 @@ ln -v lib/parse-datetime.{c,y} .
 
 # ================================================
 %check
+%if 0%{?qemu_user_space_build}
+# qemu emulation supports only 28 RT signals
+echo 'exit 77' > tests/env/env-signal-handler.sh
+%endif
 %if "%{name}" == "coreutils-testsuite"
   # Make our multi-byte test for sort executable
   chmod a+x tests/misc/sort-mb-tests.sh

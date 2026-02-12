@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  9 13:44:35 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Skip env-signal-handler test in qemu emulation
+
+-------------------------------------------------------------------
 Wed Feb  4 19:40:40 UTC 2026 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - Update to 9.10:
