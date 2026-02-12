@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 12 12:50:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.49.1:
+  * Bug fixes
+    - [BACKPORT] pkg: columns: Escape strings before printing them.
+      #5275
+
+-------------------------------------------------------------------
 Tue Feb 03 06:09:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.49.0:
