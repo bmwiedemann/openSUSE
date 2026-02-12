@@ -449,4 +449,13 @@
   * Revert &quot;snap: attempt 6 to fix close_range() snap build with Linux 5.8&quot;</comment>
     <requestid>1324714</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>bdd55978b0cabd7d8e356f8d9a9db943</srcmd5>
+    <version>2.3.4+git23.b3631012</version>
+    <time>1770913810</time>
+    <user>anag_factory</user>
+    <comment>- Clean up spec file. Remove not used rpmlint and deprecated %if-s
+- Provide only systemd, remove patch keepalive-init.patch</comment>
+    <requestid>1332696</requestid>
+  </revision>
 </revisionlist>

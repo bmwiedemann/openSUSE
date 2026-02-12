@@ -1,7 +1,7 @@
 #
 # spec file for package keepalived
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,6 @@
 %bcond_with    keepalived_regex
 %endif
 %bcond_without json
-%bcond_without systemd
 
 Name:           keepalived
 Version:        2.3.4+git23.b3631012
@@ -45,10 +44,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Routing
 URL:            https://www.keepalived.org/
 Source:         %{name}-%{version}.tar.xz
-Source2:        keepalive-rpmlintrc
 Source3:        tmpfile.conf
 Source4:        users.conf
-Patch0:         keepalive-init.patch
 Patch1:         harden_keepalived.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -79,15 +76,11 @@ BuildRequires:  pkgconfig(popt)
 BuildRequires:  pkgconfig(xtables)
 Requires(pre):  pwdutils
 Requires(pre):  %fillup_prereq
-%if %{with systemd}
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(libsystemd)
 %{?systemd_ordering}
 %sysusers_requires
-%else
-Requires(pre):  %insserv_prereq
-%endif
 
 %description
 This project provides facilities for load balancing and high-availability to
@@ -133,13 +126,9 @@ export CFLAGS="%optflags -DOPENSSL_NO_SSL_INTERN"
   --enable-iptables \
   --enable-libipset \
   %endif
-  %if %{with systemd}
   --enable-systemd \
   --with-init=systemd \
   --with-systemdsystemunitdir="%{_unitdir}" \
-  %else
-  --with-init=SUSE \
-  %endif
   --enable-sha1 \
   --enable-gnu-std-paths \
   --enable-hardening \
@@ -159,12 +148,7 @@ make %{?_smp_mflags}
 install -dD -m 0750 %{buildroot}%{_var}/lib/%{name}
 install -D  -m 0644 %{buildroot}/etc/sysconfig/%{name} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 
-%if %{with systemd}
 ln -s /sbin/service %{buildroot}%{_sbindir}/rckeepalived
-%else
-install -D -m 0750 %{name}/etc/init.d/%{name}.suse.init %{buildroot}/etc/init.d/%{name}
-ln -s /etc/init.d/keepalived %{buildroot}%{_sbindir}/rckeepalived
-%endif
 
 chmod -R o= %{buildroot}/etc/%{name}
 rm -rv %{buildroot}/etc/%{name}/samples/ %{buildroot}/etc/sysconfig/%{name}
@@ -184,30 +168,17 @@ if ! grep -q "#define _WITH_LVS_ *1" lib/config.h; then
 fi
 
 %pre  -f %{name}.pre
-%if %{with systemd}
 %service_add_pre %{name}.service
-%endif
 
 %preun
-%if %{with systemd}
 %service_del_preun %{name}.service
-%else
-%stop_on_removal %{name}
-%endif
 
 %post
 %fillup_only %{name}
-%if %{with systemd}
 %service_add_post %{name}.service
-%endif
 
 %postun
-%if %{with systemd}
 %service_del_postun %{name}.service
-%else
-%insserv_cleanup
-%restart_on_update %{name}
-%endif
 
 %files
 %defattr(-,root,root)
@@ -235,10 +206,6 @@ fi
 %{_datadir}/dbus-1/interfaces/org.%{name}.Vrrp1.Vrrp.xml
 %endif
 #
-%if %{with systemd}
 %{_unitdir}/%name.service
-%else
-/etc/init.d/%{name}
-%endif
 
 %changelog

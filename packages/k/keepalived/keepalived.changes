@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 11 04:47:03 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- Clean up spec file. Remove not used rpmlint and deprecated %if-s
+- Provide only systemd, remove patch keepalive-init.patch
+
+-------------------------------------------------------------------
 Mon Dec 29 14:25:27 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - Fix packages for Immutable Mode (jsc#PED-14858)
