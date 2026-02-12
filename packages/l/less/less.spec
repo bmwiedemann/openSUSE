@@ -1,7 +1,7 @@
 #
 # spec file for package less
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@
 %define use_usretc 1
 %endif
 Name:           less
-Version:        685
+Version:        692
 Release:        0
 Summary:        Text File Browser and Pager Similar to more
 License:        BSD-2-Clause OR GPL-3.0-or-later
@@ -38,13 +38,12 @@ Source4:        lesskey.src
 Source6:        https://www.greenwoodsoftware.com/less/pubkey.asc#/%{name}.keyring
 Patch0:         less-429-shell.patch
 Patch2:         less-429-more.patch
-BuildRequires:  automake
 BuildRequires:  groff
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
+Recommends:     %{_bindir}/which
 # weak dependencies required only by preprocessor, which is disabled by default
 Recommends:     file
-Recommends:     /usr/bin/which
 
 %description
 less is a text file browser and pager similar to more. It allows
@@ -54,22 +53,15 @@ start an editor at any time from within less.
 
 %prep
 %autosetup -p1
-#
-# the ./configure script is not writable for the normal user
-# rather fix permissions for all files
-chmod u+w *
-#
 cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} .
 
 %build
-autoreconf -fiv
 export CFLAGS="%{optflags} -fPIE"
 export LDFLAGS="-pie"
 %configure
 #
 # regenerate help.c because less.hlp was patched
 perl mkhelp.pl < less.hlp > help.c
-grep -h "^public [^;]*$" *.c *.h | sed "s/$/;/" >funcs.h
 #
 # build less
 %make_build
@@ -89,8 +81,15 @@ chmod -x LICENSE COPYING NEWS README.SUSE
 %files
 %license LICENSE COPYING
 %doc NEWS README.SUSE
-%{_mandir}/*/*
-%{_distconfdir}/*
-%{_bindir}/*
+%{_mandir}/man1/less.1%{?ext_man}
+%{_mandir}/man1/lessecho.1%{?ext_man}
+%{_mandir}/man1/lesskey.1%{?ext_man}
+%{_distconfdir}/lesskey
+%{_distconfdir}/lesskey.bin
+%{_bindir}/less
+%{_bindir}/lessclose.sh
+%{_bindir}/lessecho
+%{_bindir}/lesskey
+%{_bindir}/lessopen.sh
 
 %changelog
