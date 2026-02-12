@@ -20,6 +20,13 @@
 %define kanidm_profile release_linux
 %define configdir %{_sysconfdir}/kanidm
 
+%bcond_without pykanidm
+%if %{defined primary_python}
+%global pythons %{primary_python}
+%else
+%global pythons python311
+%endif
+
 Name:           kanidm
 Version:        1.8.6~git0.268c71d0a
 Release:        0
@@ -50,6 +57,13 @@ BuildRequires:  systemd
 %{?systemd_requires}
 %else
 BuildRequires:  libopenssl-3-devel
+%endif
+%if %{with pykanidm}
+BuildRequires:  %{pythons}-flit-core
+BuildRequires:  %{pythons}-pdm-backend
+BuildRequires:  %{pythons}-pip
+BuildRequires:  %{pythons}-poetry-core
+BuildRequires:  %{pythons}-wheel
 %endif
 
 Requires:       %{name}-clients
@@ -106,6 +120,19 @@ License:        MPL-2.0
 %description docs
 Documentation for using and configuring Kanidm.
 
+%if %{with pykanidm}
+%package -n %{pythons}-pykanidm
+Summary:        Python API to talk to kanidm
+License:        MPL-2.0
+Requires:       %{pythons}-Authlib >= 1.2.0
+Requires:       %{pythons}-aiohttp >= 3.8.1
+Requires:       %{pythons}-pydantic >= 2.0.0
+Requires:       %{pythons}-toml >= 0.10.2
+
+%description -n %{pythons}-pykanidm
+Python API to talk to kanidm.
+%endif
+
 %prep
 %setup -q -n kanidm-%{version} -a 0
 %setup -q -n kanidm-%{version} -a 1 -D -T
@@ -126,6 +153,12 @@ rustc --print target-cpus
 CARGO_INCREMENTAL=0 CARGO_FEATURE_VENDORED=1 RUSTFLAGS="-Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2 -C strip=none" cargo build --release --features=kanidm_unix_int/selinux
 %else
 %{cargo_build} --features=kanidm_unix_int/tpm,kanidm_unix_int/selinux
+%endif
+
+%if %{with pykanidm}
+cd pykanidm
+%pyproject_wheel
+cd ..
 %endif
 
 %install
@@ -183,6 +216,11 @@ install -m 0755 %{_builddir}/kanidm-%{version}/target/release/build/completions/
 cp -r %{_builddir}/kanidm-%{version}/book/src/ %{buildroot}%{_datadir}/kanidm/docs/
 cp -r %{_builddir}/kanidm-%{version}/server/core/static %{buildroot}%{_datadir}/kanidm/ui/hpkg
 
+%if %{with pykanidm}
+cd pykanidm
+%pyproject_install
+cd ..
+%endif
 ## End install
 
 %if 0%{?rhel} > 7 || 0%{?fedora}
@@ -308,5 +346,11 @@ cp -r %{_builddir}/kanidm-%{version}/server/core/static %{buildroot}%{_datadir}/
 %dir %{_datadir}/kanidm
 %dir %{_datadir}/kanidm/docs
 %doc %{_datadir}/kanidm/docs/*
+
+%if %{with pykanidm}
+%files -n %{pythons}-pykanidm
+%{python_sitelib}/kanidm-*.dist-info
+%{python_sitelib}/kanidm/
+%endif
 
 %changelog

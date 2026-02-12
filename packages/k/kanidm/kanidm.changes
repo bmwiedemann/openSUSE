@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 10 11:35:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Enable python bindings for the primary python version on newer
+  distributions and 3.11 on 15.x
+
+-------------------------------------------------------------------
 Tue Feb 10 05:03:58 UTC 2026 - william.brown@suse.com
 
 - Update to version 1.8.6~git0.268c71d0a:
