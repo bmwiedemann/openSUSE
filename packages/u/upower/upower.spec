@@ -1,6 +1,7 @@
 #
 # spec file for package upower
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -36,6 +37,7 @@ Group:          System/Daemons
 URL:            https://upower.freedesktop.org/
 #Source:         https://gitlab.freedesktop.org/upower/upower/-/archive/v%%{version}/upower-v%%{version}.tar.bz2
 Source:         %{name}-%{version}.tar.zst
+Source1:        upower.rpmlintrc
 # PATCH-FIX-OPENSUSE: Skip installation of test-only dependencies
 Patch1:         skip-tests-install.patch
 BuildRequires:  gobject-introspection-devel >= 0.9.9
@@ -149,7 +151,7 @@ system) are restricted using PolicyKit.
 
 %files
 %license COPYING
-%doc AUTHORS NEWS README.md
+%doc NEWS AUTHORS HACKING.md README.md
 %dir %{_sysconfdir}/UPower
 %config(noreplace) %{_sysconfdir}/UPower/UPower.conf
 %dir %{_sysconfdir}/UPower/UPower.conf.d
@@ -168,9 +170,13 @@ system) are restricted using PolicyKit.
 %{_mandir}/man1/upower.1%{?ext_man}
 %{_mandir}/man7/UPower.7%{?ext_man}
 %{_mandir}/man8/upowerd.8%{?ext_man}
-%dir %{_localstatedir}/lib/upower
 %{_datadir}/polkit-1/actions/org.freedesktop.upower.policy
 %{_datadir}/zsh/site-functions/_upower
+
+# This is created via systemd upower.service nowadays
+# ReadWritePaths=/var/lib/upower
+# StateDirectory=upower
+%ghost %dir %attr(0755, root, root) %{_localstatedir}/lib/upower
 
 %files -n libupower-glib3
 %{_libdir}/libupower-glib.so.*

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  5 15:00:11 UTC 2026 - Thomas Renninger <trenn@suse.de>
+
+- Mark /var/lib/upower as ghost (jsc#PED-14851)
+  This is created at runtime via systemd upower.service nowadays
+- Add NEWS and HACKING.md to %docs
+- Fix rpmlint warning by correcting changelog:
+[   47s] upower.spec:252: W: non-break-space line 252, char 70
+
+-------------------------------------------------------------------
 Tue Dec 30 10:39:01 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.91.0:
@@ -62,7 +71,7 @@ Mon Aug 11 22:52:21 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
   * rules: 95-upower-hid.hwdb: update hwdb for HID devices
   * linux: integration-test: Handle connecting the low-power charger
   * linux: up-device-supply-battery: reset the status to discharging when current_now is negative
-  * up-daemon: Handle the AC is online but the battery is discharging      
+  * up-daemon: Handle the AC is online but the battery is discharging
   * linux: rules: fix warnings from `udevadm verify`
 
 -------------------------------------------------------------------
