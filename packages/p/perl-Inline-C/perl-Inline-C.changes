@@ -1,0 +1,135 @@
+-------------------------------------------------------------------
+Thu Mar  3 03:07:45 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.82
+   see /usr/share/doc/packages/perl-Inline-C/Changes
+
+  0.82 Wed  2 Mar 15:36:50 GMT 2022
+   - full release of -I to sub-Perls
+   - doc improvements from @oodler577
+
+  0.81_001 Sun Jan 12 12:07:20 PST 2020
+   - Pass on correct -I flags to sub-Perls
+
+-------------------------------------------------------------------
+Sun May 12 05:12:22 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.81
+   see /usr/share/doc/packages/perl-Inline-C/Changes
+
+  0.81 Sat 11 May 2019 12:46:41 PM CEST
+   - test - Adjust excpected number of lines in log to Inline-0.82_001 (PR#89
+     @ppisar++)
+   - Fix pod document link (PR#68 PR#90 @manwar++)
+   - Fix docs to work with strict mode (use Inline 'C'; instead of use Inline
+     C;) (PR#70 @akarelas-pt++)
+   - Add test, and Cookbook example, of array-ref arg (PR#39 @mohawk2++)
+
+-------------------------------------------------------------------
+Fri Apr 19 05:11:03 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.80
+   see /usr/share/doc/packages/perl-Inline-C/Changes
+
+  0.80 Thu 18 Apr 2019 10:42:30 AM CEST
+   - Apply PR#71 (ETJ++) Support perl 5.8.1 again
+   - Apply PR#74 and PR#76 (WBRASWELL++) Fix Include Dir Behavior, replace -I
+     with -iquote or -I- respectively
+   - Apply PR#77 (WBRASWELL++) Fix Include Dir Behavior, Non-GCC Compilers
+   - More fixes for include dir behaviour (@sisyphus++)
+
+-------------------------------------------------------------------
+Wed May 31 05:54:35 UTC 2017 - coolo@suse.com
+
+- updated to 0.78
+   see /usr/share/doc/packages/perl-Inline-C/Changes
+
+  0.78 Tue 30 May 22:56:30 CEST 2017
+   - Apply PR#66 (TINITA++) Remove system calls `rm` and `diff`
+
+-------------------------------------------------------------------
+Tue May 16 05:59:02 UTC 2017 - coolo@suse.com
+
+- updated to 0.77
+   see /usr/share/doc/packages/perl-Inline-C/Changes
+
+-------------------------------------------------------------------
+Thu Jul  2 09:01:46 UTC 2015 - coolo@suse.com
+
+- updated to 0.76
+   see /usr/share/doc/packages/perl-Inline-C/Changes
+
+-------------------------------------------------------------------
+Mon Jun 15 13:19:20 UTC 2015 - malcolmlewis@opensuse.org
+
+- Updated to version 0.75:
+  + See /usr/share/doc/packages/perl-Inline-C/Changes.
+- Drop Inline-CPR-0.12.diff as not needed with new version.
+- Drop perl-Inline-C-0.12-implicit.diff as not needed with new
+  version.
+- Spec file clean up.
+
+-------------------------------------------------------------------
+Wed Mar 16 14:07:38 UTC 2011 - cfarrell@novell.com
+
+- license update: GPL+ or Artistic.
+  License indiLicense indication comes from CPR.pod (same terms as
+  Perl which is GPL+ or Artistic as per our rpm spec file license
+  syntax).
+
+-------------------------------------------------------------------
+Mon Dec  6 15:53:04 UTC 2010 - coolo@novell.com
+
+- readd patch that was lost in build service magic
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:20 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:14 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Fri Jan 26 11:44:41 CET 2007 - anicka@suse.cz
+
+- compile with $RPM_OPT_FLAGS and fix implicit definitions of
+  special functions 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:47 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Jan 11 11:02:13 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 22 15:06:43 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Thu Jul 17 11:53:44 CEST 2003 - freitag@suse.de
+
+- used vendor macros and perl_process_packlist in filelist
+
+-------------------------------------------------------------------
+Mon May 26 00:12:14 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot
+
+-------------------------------------------------------------------
+Tue Dec  3 16:18:26 CET 2002 - freitag@suse.de
+
+- new package version
+
