@@ -1,7 +1,7 @@
 #
 # spec file for package perl-libintl-perl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name libintl-perl
 Name:           perl-libintl-perl
-Version:        1.350.0
+Version:        1.370.0
 Release:        0
-# 1.35 -> normalize -> 1.350.0
-%define cpan_version 1.35
+# 1.37 -> normalize -> 1.370.0
+%define cpan_version 1.37
 #Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
 License:        GPL-3.0-or-later
 Summary:        High-Level Interface to Uniforum Message Translation
@@ -29,14 +29,14 @@ URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/G/GU/GUIDO/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        libintl-perl-rpmlintrc
 Source2:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(version) >= 0.77
 Requires:       perl(version) >= 0.77
 Provides:       perl(Locale::Messages) = %{version}
+Provides:       perl(Locale::Messages::Debug)
 Provides:       perl(Locale::Recode)
-Provides:       perl(Locale::Recode::_Aliases)
-Provides:       perl(Locale::Recode::_Conversions)
 Provides:       perl(Locale::RecodeData)
 Provides:       perl(Locale::RecodeData::ASMO_449)
 Provides:       perl(Locale::RecodeData::ATARI_ST)
@@ -175,13 +175,13 @@ Provides:       perl(Locale::RecodeData::TIS_620)
 Provides:       perl(Locale::RecodeData::US_ASCII)
 Provides:       perl(Locale::RecodeData::UTF_8)
 Provides:       perl(Locale::RecodeData::VISCII)
-Provides:       perl(Locale::RecodeData::_Encode)
 Provides:       perl(Locale::TextDomain) = %{version}
 Provides:       perl(Locale::Util)
 Provides:       perl(Locale::gettext_dumb)
 Provides:       perl(Locale::gettext_pp)
+Provides:       perl(Locale::gettext_xs)
 Provides:       perl(MyInstall)
-Provides:       perl(__TiedTextDomain)
+Provides:       perl(SimpleCal)
 %undefine       __perllib_provides
 Recommends:     perl(File::ShareDir)
 %{perl_requires}
@@ -195,7 +195,7 @@ compatible with the Uniforum message translations system as implemented
 for example in GNU gettext.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

@@ -294,4 +294,26 @@
     <comment></comment>
     <requestid>1239806</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>2b698d7ab3dad56cf97e171ba0bae766</srcmd5>
+    <version>1.370.0</version>
+    <time>1770913555</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.370.0 (1.37)
+   see /usr/share/doc/packages/perl-libintl-perl/Changes
+  Version 1.37 - 07 Feb 2026
+  * Bugs fixed:
+    https://github.com/gflohr/libintl-perl/issues/23
+  Version 1.36 - 06 Feb 2026
+  * Important: The library now tries to implement the effect of environment
+    variables exactly as described in the GNU gettext documentation at
+    https://www.gnu.org/software/gettext/manual/html_node/Locale-Environment-Variables.html
+    and
+    https://www.gnu.org/software/gettext/manual/html_node/The-LANGUAGE-variable.html.
+    That will probably slightly alter the behaviour in edge cases.
+  * Bugs fixed:
+    https://github.com/gflohr/libintl-perl/issues/11
+    https://github.com/gflohr/libintl-perl/issues/14</comment>
+    <requestid>1332531</requestid>
+  </revision>
 </revisionlist>
