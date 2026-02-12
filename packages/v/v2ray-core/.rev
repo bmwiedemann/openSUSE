@@ -489,4 +489,17 @@
 - Drop fix-CVE-2025-47911.patch, fixed by upstream (forwarded request 1323676 from hillwood)</comment>
     <requestid>1323677</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>2e3d7b3bf9e844b6326492eba558c16b</srcmd5>
+    <version>5.44.1</version>
+    <time>1770913826</time>
+    <user>anag_factory</user>
+    <comment>- Update version to 5.44.1
+  * uTLS: bundled library updated to v1.8.2 for Chrome120 imitation profile
+    identification
+  * Update golang toolchain to v1.25.6, which fixed an vulnerable
+    (tls.Config).Clone function
+  * Fix bugs (forwarded request 1332694 from hillwood)</comment>
+    <requestid>1332695</requestid>
+  </revision>
 </revisionlist>
