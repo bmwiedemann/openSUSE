@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Feb 11 08:17:56 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12.60:
+  + Fix problem with whole-column references in ods.
+  + ODS Export and import of marker fill and outline opacity.
+  + ODS Export and import of graph line stroke opacity.
+  + Fix XLSX import for files lacking cell addresses.
+  + GUI improvement when saving file loaded from cvs.
+  + Improve LOG with base argument.
+  + Doc system improvements.
+  + Fix GEOMEAN problem.
+  + Fix dialog accel collision.
+  + Introspection improvements.
+  + Named expression fixes.
+  + Speed up large-range copies.
+  + Add missing undo/redo for sheet display options.
+  + Style the progress bar we use for menu tooltips.
+  + Clean out old references to mailing list and irc.
+  + Documentation updates.
+  + Print using pango context from GtkPrintContext for constistency
+    between gui and non-gui.
+  + GUI files relating to cell sizes.
+  + Fix rare undo problem.
+  + Experiment with AI translation (+human editing) for the da.po
+    files.
+
+-------------------------------------------------------------------
 Wed Nov 12 07:15:34 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop %{ix86} ExcludeArch: No longer needed after fixes made to

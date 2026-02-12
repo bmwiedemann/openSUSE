@@ -1,7 +1,7 @@
 #
 # spec file for package gnumeric
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnumeric
-Version:        1.12.59
+Version:        1.12.60
 Release:        0
 Summary:        Spreadsheet Application
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -156,7 +156,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %license COPYING COPYING-gpl2 COPYING-gpl3
-%doc AUTHORS BEVERAGES BUGS HACKING MAINTAINERS NEWS README ChangeLog
+%doc AUTHORS BEVERAGES MAINTAINERS NEWS README ChangeLog
 %{_bindir}/*
 %{_libdir}/*.so
 %dir %{_libdir}/gnumeric
