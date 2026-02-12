@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define gst_branch 1.0
 
 Name:           gstreamer
-Version:        1.26.10
+Version:        1.28.0
 Release:        0
 Summary:        Streaming-Media Framework Runtime
 License:        LGPL-2.1-or-later
@@ -220,7 +220,7 @@ install -m755 -D %{SOURCE2} %{buildroot}%{_rpmconfigdir}/gstreamer-provides
 %{_mandir}/man?/*-%{gst_branch}*%{ext_man}
 
 %files devel
-%doc AUTHORS README.md
+%doc README.md
 %{_datadir}/aclocal/*.m4
 # Own these directories to avoid build requirement on gdb
 # only for directories ownership
