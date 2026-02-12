@@ -1,0 +1,149 @@
+From aea108e613c18567ea1bd3bce753aaf013d5fb1e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Fri, 30 May 2025 16:55:46 +0200
+Subject: [PATCH 11/13] vnc-server: Hook up VNC server to the throttler
+
+This allows us to replace existing single session limitation with
+limiting the throttler to one accepted connection at any given time.
+
+Part-of: <https://gitlab.gnome.org/GNOME/gnome-remote-desktop/-/merge_requests/321>
+---
+ src/grd-session-vnc.c |  2 ++
+ src/grd-vnc-server.c  | 48 +++++++++++++++++++++++++++++++------------
+ 2 files changed, 37 insertions(+), 13 deletions(-)
+
+diff --git a/src/grd-session-vnc.c b/src/grd-session-vnc.c
+index f7e1408..7cd41e9 100644
+--- a/src/grd-session-vnc.c
++++ b/src/grd-session-vnc.c
+@@ -34,6 +34,7 @@
+ #include "grd-prompt.h"
+ #include "grd-settings.h"
+ #include "grd-stream.h"
++#include "grd-utils.h"
+ #include "grd-vnc-server.h"
+ #include "grd-vnc-pipewire-stream.h"
+ 
+@@ -827,6 +828,7 @@ grd_session_vnc_stop (GrdSession *session)
+ 
+   grd_session_vnc_detach_source (session_vnc);
+ 
++  grd_close_connection_and_notify (session_vnc->connection);
+   g_clear_object (&session_vnc->connection);
+   g_clear_object (&session_vnc->clipboard_vnc);
+   g_clear_pointer (&session_vnc->rfb_screen->frameBuffer, g_free);
+diff --git a/src/grd-vnc-server.c b/src/grd-vnc-server.c
+index 8322065..4cfbcad 100644
+--- a/src/grd-vnc-server.c
++++ b/src/grd-vnc-server.c
+@@ -30,6 +30,7 @@
+ #include "grd-context.h"
+ #include "grd-debug.h"
+ #include "grd-session-vnc.h"
++#include "grd-throttler.h"
+ #include "grd-utils.h"
+ 
+ enum
+@@ -43,6 +44,8 @@ struct _GrdVncServer
+ {
+   GSocketService parent;
+ 
++  GrdThrottler *throttler;
++
+   GList *sessions;
+ 
+   GList *stopped_sessions;
+@@ -53,6 +56,11 @@ struct _GrdVncServer
+ 
+ G_DEFINE_TYPE (GrdVncServer, grd_vnc_server, G_TYPE_SOCKET_SERVICE)
+ 
++static void
++allow_connection_cb (GrdThrottler      *throttler,
++                     GSocketConnection *connection,
++                     gpointer           user_data);
++
+ GrdContext *
+ grd_vnc_server_get_context (GrdVncServer *vnc_server)
+ {
+@@ -103,22 +111,15 @@ on_session_stopped (GrdSession *session, GrdVncServer *vnc_server)
+     }
+ }
+ 
+-static gboolean
+-on_incoming (GSocketService    *service,
+-             GSocketConnection *connection)
++static void
++allow_connection_cb (GrdThrottler      *throttler,
++                     GSocketConnection *connection,
++                     gpointer           user_data)
+ {
+-  GrdVncServer *vnc_server = GRD_VNC_SERVER (service);
++  GrdVncServer *vnc_server = GRD_VNC_SERVER (user_data);
+   GrdSessionVnc *session_vnc;
+ 
+-  g_debug ("New incoming VNC connection");
+-
+-  if (vnc_server->sessions)
+-    {
+-      /* TODO: Add the rfbScreen instance to GrdVncServer to support multiple
+-       * sessions. */
+-      g_message ("Refusing new VNC connection: already an active session");
+-      return TRUE;
+-    }
++  g_debug ("Creating new VNC session");
+ 
+   session_vnc = grd_session_vnc_new (vnc_server, connection);
+   vnc_server->sessions = g_list_append (vnc_server->sessions, session_vnc);
+@@ -126,7 +127,16 @@ on_incoming (GSocketService    *service,
+   g_signal_connect (session_vnc, "stopped",
+                     G_CALLBACK (on_session_stopped),
+                     vnc_server);
++}
+ 
++static gboolean
++on_incoming (GSocketService    *service,
++             GSocketConnection *connection)
++{
++  GrdVncServer *vnc_server = GRD_VNC_SERVER (service);
++
++  grd_throttler_handle_connection (vnc_server->throttler,
++                                   connection);
+   return TRUE;
+ }
+ 
+@@ -187,6 +197,8 @@ grd_vnc_server_stop (GrdVncServer *vnc_server)
+   grd_vnc_server_cleanup_stopped_sessions (vnc_server);
+   g_clear_handle_id (&vnc_server->cleanup_sessions_idle_id,
+                      g_source_remove);
++
++  g_clear_object (&vnc_server->throttler);
+ }
+ 
+ static void
+@@ -235,6 +247,7 @@ grd_vnc_server_dispose (GObject *object)
+   g_assert (!vnc_server->sessions);
+   g_assert (!vnc_server->stopped_sessions);
+   g_assert (!vnc_server->cleanup_sessions_idle_id);
++  g_assert (!vnc_server->throttler);
+ 
+   G_OBJECT_CLASS (grd_vnc_server_parent_class)->dispose (object);
+ }
+@@ -253,6 +266,15 @@ grd_vnc_server_constructed (GObject *object)
+ static void
+ grd_vnc_server_init (GrdVncServer *vnc_server)
+ {
++  GrdThrottlerLimits *limits;
++
++  limits = grd_throttler_limits_new ();
++  /* TODO: Add the rfbScreen instance to GrdVncServer to support multiple
++   * sessions. */
++  grd_throttler_limits_set_max_global_connections (limits, 1);
++  vnc_server->throttler = grd_throttler_new (limits,
++                                             allow_connection_cb,
++                                             vnc_server);
+ }
+ 
+ static void
+-- 
+2.53.0
+

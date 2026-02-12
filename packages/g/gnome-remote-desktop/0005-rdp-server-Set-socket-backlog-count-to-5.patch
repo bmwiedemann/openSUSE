@@ -1,0 +1,37 @@
+From f1e6d6dd2e995b15d65f86f39d4aec17d2b56eaa Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Wed, 28 May 2025 22:33:54 +0200
+Subject: [PATCH 05/13] rdp-server: Set socket backlog count to 5
+
+This limits the number of pending connections.
+
+Part-of: <https://gitlab.gnome.org/GNOME/gnome-remote-desktop/-/merge_requests/321>
+---
+ src/grd-rdp-server.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/grd-rdp-server.c b/src/grd-rdp-server.c
+index 0ac486d..2691a65 100644
+--- a/src/grd-rdp-server.c
++++ b/src/grd-rdp-server.c
+@@ -36,6 +36,7 @@
+ 
+ #define RDP_SERVER_N_BINDING_ATTEMPTS 10
+ #define RDP_SERVER_BINDING_ATTEMPT_INTERVAL_MS 500
++#define RDP_SERVER_SOCKET_BACKLOG_COUNT 5
+ 
+ enum
+ {
+@@ -312,6 +313,9 @@ bind_socket (GrdRdpServer  *rdp_server,
+   uint16_t selected_rdp_port = 0;
+   gboolean negotiate_port;
+ 
++  g_socket_listener_set_backlog (G_SOCKET_LISTENER (rdp_server),
++                                 RDP_SERVER_SOCKET_BACKLOG_COUNT);
++
+   g_object_get (G_OBJECT (settings),
+                 "rdp-port", &rdp_port,
+                 "rdp-negotiate-port", &negotiate_port,
+-- 
+2.53.0
+

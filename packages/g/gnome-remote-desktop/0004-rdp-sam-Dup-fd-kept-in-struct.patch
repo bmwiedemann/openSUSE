@@ -1,0 +1,77 @@
+From 99d246dfae3562640c65cb08a369e172947c7210 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Wed, 28 May 2025 14:08:12 +0200
+Subject: [PATCH 04/13] rdp-sam: Dup fd kept in struct
+
+The SAM file instance intends to keeps the file descriptor alive so that
+it doesn't go away; however it failed to do this due to fdopen() taking
+ownership of it, thus closing it during fclose(). This meant we'd close
+an arbitrary potentially reused file descriptor when the SAM file
+instance eventually got cleaned up. Address this by reordering things a
+bit, while putting a duplicated file descriptor in the SAM file instance
+struct.
+
+Part-of: <https://gitlab.gnome.org/GNOME/gnome-remote-desktop/-/merge_requests/321>
+---
+ src/grd-rdp-sam.c | 28 +++++++++++++++++++---------
+ 1 file changed, 19 insertions(+), 9 deletions(-)
+
+diff --git a/src/grd-rdp-sam.c b/src/grd-rdp-sam.c
+index 5898825..daa3ebb 100644
+--- a/src/grd-rdp-sam.c
++++ b/src/grd-rdp-sam.c
+@@ -72,11 +72,12 @@ grd_rdp_sam_create_sam_file (const char *username,
+ {
+   const char *grd_path = "/gnome-remote-desktop";
+   const char *template = "/rdp-sam-XXXXXX";
++  int duped_fd;
+   GrdRdpSAMFile *rdp_sam_file;
+   g_autofree char *file_dir = NULL;
+   g_autofree char *filename = NULL;
+   g_autofree char *sam_string = NULL;
+-  int fd;
++  g_autofd int fd = -1;
+   FILE *sam_file;
+ 
+   file_dir = g_strdup_printf ("%s%s", g_get_user_runtime_dir (), grd_path);
+@@ -98,20 +99,29 @@ grd_rdp_sam_create_sam_file (const char *username,
+       return NULL;
+     }
+ 
+-  rdp_sam_file = g_new0 (GrdRdpSAMFile, 1);
+-  rdp_sam_file->fd = fd;
+-  rdp_sam_file->filename = g_steal_pointer (&filename);
+-
+-  sam_string = create_sam_string (username, password);
+-
+-  sam_file = fdopen (rdp_sam_file->fd, "w+");
++  sam_file = fdopen (fd, "w+");
+   if (!sam_file)
+     {
+       g_warning ("[RDP] Failed to open SAM database: %s", g_strerror (errno));
+-      grd_rdp_sam_free_sam_file (rdp_sam_file);
+       return NULL;
+     }
+ 
++  duped_fd = dup (fd);
++  if (duped_fd < 0)
++    {
++      fclose (sam_file);
++      g_warning ("[RDP] Failed to dup fd: %s", g_strerror (errno));
++      return NULL;
++    }
++
++  rdp_sam_file = g_new0 (GrdRdpSAMFile, 1);
++  rdp_sam_file->fd = duped_fd;
++  rdp_sam_file->filename = g_steal_pointer (&filename);
++
++  g_steal_fd (&fd);
++
++  sam_string = create_sam_string (username, password);
++
+   fputs (sam_string, sam_file);
+   fclose (sam_file);
+ 
+-- 
+2.53.0
+

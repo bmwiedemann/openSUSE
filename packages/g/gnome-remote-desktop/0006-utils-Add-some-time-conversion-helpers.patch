@@ -1,0 +1,41 @@
+From b09acfa1a8d88113bc500135a712c0d067e26fa3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Wed, 28 May 2025 22:55:20 +0200
+Subject: [PATCH 06/13] utils: Add some time conversion helpers
+
+Useful when converting between second, microseconds, etc.
+
+Part-of: <https://gitlab.gnome.org/GNOME/gnome-remote-desktop/-/merge_requests/321>
+---
+ src/grd-utils.h | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/src/grd-utils.h b/src/grd-utils.h
+index 30a3b9e..099da56 100644
+--- a/src/grd-utils.h
++++ b/src/grd-utils.h
+@@ -99,3 +99,21 @@ gboolean grd_systemd_get_unit (GBusType     bus_type,
+ gboolean grd_systemd_unit_get_active_state (GDBusProxy                 *unit_proxy,
+                                             GrdSystemdUnitActiveState  *active_state,
+                                             GError                    **error);
++
++static inline int64_t
++us (int64_t us)
++{
++  return us;
++}
++
++static inline int64_t
++ms2us (int64_t ms)
++{
++  return us (ms * 1000);
++}
++
++static inline int64_t
++s2us (uint64_t s)
++{
++  return ms2us (s * 1000);
++}
+-- 
+2.53.0
+

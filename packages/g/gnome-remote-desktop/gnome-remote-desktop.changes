@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Feb 10 23:09:37 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Backport connection throttling (bsc#1244053 CVE-2025-5024
+  glgo#GNOME/gnome-desktop!321):
+  + 0001-control-Allow-controlling-all-daemon-types.patch
+  + 0002-daemon-Use-GError-auto-pointer.patch
+  + 0004-rdp-sam-Dup-fd-kept-in-struct.patch
+  + 0005-rdp-server-Set-socket-backlog-count-to-5.patch
+  + 0006-utils-Add-some-time-conversion-helpers.patch
+  + 0007-utils-Add-helper-to-close-connection-and-notify.patch
+  + 0008-Introduce-throttler-class.patch
+  + 0009-rdp-server-Throttle-connections-using-GrdThrottler.patch
+  + 0010-throttler-Introduce-limits-struct.patch
+  + 0011-vnc-server-Hook-up-VNC-server-to-the-throttler.patch
+  + 0013-throttler-Allow-overriding-hard-coded-parallel-conne.patch
+
+-------------------------------------------------------------------
 Mon Dec  8 15:32:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.2:

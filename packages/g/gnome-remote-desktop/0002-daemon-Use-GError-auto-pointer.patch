@@ -1,0 +1,42 @@
+From e724ea4439b3e58aeec4b80406691b787af38519 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Mon, 26 May 2025 16:09:45 +0200
+Subject: [PATCH 02/13] daemon: Use GError auto pointer
+
+Part-of: <https://gitlab.gnome.org/GNOME/gnome-remote-desktop/-/merge_requests/321>
+---
+ src/grd-daemon.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src/grd-daemon.c b/src/grd-daemon.c
+index c082c6b..9895420 100644
+--- a/src/grd-daemon.c
++++ b/src/grd-daemon.c
+@@ -989,7 +989,7 @@ main (int argc, char **argv)
+   };
+   g_autoptr (GOptionContext) option_context = NULL;
+   g_autoptr (GrdDaemon) daemon = NULL;
+-  GError *error = NULL;
++  g_autoptr (GError) error = NULL;
+   GrdRuntimeMode runtime_mode;
+ 
+   g_set_application_name (_("GNOME Remote Desktop"));
+@@ -999,7 +999,6 @@ main (int argc, char **argv)
+   if (!g_option_context_parse (option_context, &argc, &argv, &error))
+     {
+       g_printerr ("Invalid option: %s\n", error->message);
+-      g_error_free (error);
+       return EXIT_FAILURE;
+     }
+ 
+@@ -1048,7 +1047,6 @@ main (int argc, char **argv)
+   if (!daemon)
+     {
+       g_printerr ("Failed to initialize: %s\n", error->message);
+-      g_error_free (error);
+       return EXIT_FAILURE;
+     }
+ 
+-- 
+2.53.0
+

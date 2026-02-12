@@ -1,0 +1,46 @@
+From 800ea5c29fac579fc6660175075d3333a2d9786c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Mon, 30 Jun 2025 16:16:31 +0200
+Subject: [PATCH 07/13] utils: Add helper to close connection and notify
+
+Closing doesn't notify that it was closed, so lets add a helper that
+does so, that we then can uses to rely on the closed property being up
+to date.
+
+Part-of: <https://gitlab.gnome.org/GNOME/gnome-remote-desktop/-/merge_requests/321>
+---
+ src/grd-utils.c | 7 +++++++
+ src/grd-utils.h | 2 ++
+ 2 files changed, 9 insertions(+)
+
+diff --git a/src/grd-utils.c b/src/grd-utils.c
+index 32739a9..bf20882 100644
+--- a/src/grd-utils.c
++++ b/src/grd-utils.c
+@@ -478,3 +478,10 @@ grd_systemd_unit_get_active_state (GDBusProxy                 *unit_proxy,
+ 
+   return TRUE;
+ }
++
++void
++grd_close_connection_and_notify (GSocketConnection *connection)
++{
++  g_io_stream_close (G_IO_STREAM (connection), NULL, NULL);
++  g_object_notify (G_OBJECT (connection), "closed");
++}
+diff --git a/src/grd-utils.h b/src/grd-utils.h
+index 099da56..4703db8 100644
+--- a/src/grd-utils.h
++++ b/src/grd-utils.h
+@@ -100,6 +100,8 @@ gboolean grd_systemd_unit_get_active_state (GDBusProxy                 *unit_pro
+                                             GrdSystemdUnitActiveState  *active_state,
+                                             GError                    **error);
+ 
++void grd_close_connection_and_notify (GSocketConnection *connection);
++
+ static inline int64_t
+ us (int64_t us)
+ {
+-- 
+2.53.0
+

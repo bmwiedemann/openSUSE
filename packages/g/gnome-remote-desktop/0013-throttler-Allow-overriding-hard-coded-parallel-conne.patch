@@ -1,0 +1,263 @@
+From 0af092962ecadcff3e06d595fa9607395b412761 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Mon, 30 Jun 2025 16:01:37 +0200
+Subject: [PATCH 13/13] throttler: Allow overriding hard coded parallel
+ connections limit
+
+Overriding is done via an argument passed to the daemon. This allows
+using the same daemon with a larger amount of users, which one would
+achieve by overriding the relevant systemd service file by both adding
+the --max-parallel-connections argument, as well as bumping the limit of
+number of open file descriptors to something adequate.
+
+Part-of: <https://gitlab.gnome.org/GNOME/gnome-remote-desktop/-/merge_requests/321>
+---
+ src/grd-daemon.c     | 24 ++++++++++++++++++++++++
+ src/grd-rdp-server.c |  7 ++++---
+ src/grd-settings.c   | 19 +++++++++++++++++++
+ src/grd-settings.h   |  5 +++++
+ src/grd-throttler.c  |  9 ++++++---
+ src/grd-throttler.h  |  4 +++-
+ src/grd-vnc-server.c | 20 +++++++++++---------
+ 7 files changed, 72 insertions(+), 16 deletions(-)
+
+diff --git a/src/grd-daemon.c b/src/grd-daemon.c
+index ea17df1..7e1a0a3 100644
+--- a/src/grd-daemon.c
++++ b/src/grd-daemon.c
+@@ -49,6 +49,8 @@
+ 
+ #define RDP_SERVER_RESTART_DELAY_MS 3000
+ 
++#define DEFAULT_MAX_PARALLEL_CONNECTIONS 10
++
+ enum
+ {
+   PROP_0,
+@@ -92,6 +94,9 @@ typedef struct _GrdDaemonPrivate
+ 
+ G_DEFINE_TYPE_WITH_PRIVATE (GrdDaemon, grd_daemon, G_TYPE_APPLICATION)
+ 
++#define QUOTE1(a) #a
++#define QUOTE(a) QUOTE1(a)
++
+ #ifdef HAVE_RDP
+ static void maybe_start_rdp_server (GrdDaemon *daemon);
+ #endif
+@@ -969,6 +974,7 @@ main (int argc, char **argv)
+   gboolean handover = FALSE;
+   int rdp_port = -1;
+   int vnc_port = -1;
++  int max_parallel_connections = DEFAULT_MAX_PARALLEL_CONNECTIONS;
+ 
+   GOptionEntry entries[] = {
+     { "version", 0, 0, G_OPTION_ARG_NONE, &print_version,
+@@ -985,6 +991,10 @@ main (int argc, char **argv)
+       "RDP port", NULL },
+     { "vnc-port", 0, 0, G_OPTION_ARG_INT, &vnc_port,
+       "VNC port", NULL },
++    { "max-parallel-connections", 0, 0,
++      G_OPTION_ARG_INT, &max_parallel_connections,
++      "Max number of parallel connections (0 for unlimited, "
++      "default: " QUOTE(DEFAULT_MAX_PARALLEL_CONNECTIONS) ")", NULL },
+     { NULL }
+   };
+   g_autoptr (GOptionContext) option_context = NULL;
+@@ -1014,6 +1024,17 @@ main (int argc, char **argv)
+       return EXIT_FAILURE;
+     }
+ 
++  if (max_parallel_connections == 0)
++    {
++      max_parallel_connections = INT_MAX;
++    }
++  else if (max_parallel_connections < 0)
++    {
++      g_printerr ("Invalid number of max parallel connections: %d\n",
++                  max_parallel_connections);
++      return EXIT_FAILURE;
++    }
++
+   if (headless)
+     runtime_mode = GRD_RUNTIME_MODE_HEADLESS;
+   else if (system)
+@@ -1060,5 +1081,8 @@ main (int argc, char **argv)
+   if (vnc_port != -1)
+     grd_settings_override_vnc_port (settings, vnc_port);
+ 
++  grd_settings_override_max_parallel_connections (settings,
++                                                  max_parallel_connections);
++
+   return g_application_run (G_APPLICATION (daemon), argc, argv);
+ }
+diff --git a/src/grd-rdp-server.c b/src/grd-rdp-server.c
+index d823063..cb3ce4d 100644
+--- a/src/grd-rdp-server.c
++++ b/src/grd-rdp-server.c
+@@ -541,9 +541,10 @@ grd_rdp_server_constructed (GObject *object)
+ 
+   if (allow_callback)
+     {
+-      rdp_server->throttler = grd_throttler_new (grd_throttler_limits_new (),
+-                                                 allow_callback,
+-                                                 rdp_server);
++      rdp_server->throttler =
++        grd_throttler_new (grd_throttler_limits_new (rdp_server->context),
++                           allow_callback,
++                           rdp_server);
+     }
+ 
+   rdp_server->pending_binding_attempts = RDP_SERVER_N_BINDING_ATTEMPTS;
+diff --git a/src/grd-settings.c b/src/grd-settings.c
+index 8393ace..afe09ee 100644
+--- a/src/grd-settings.c
++++ b/src/grd-settings.c
+@@ -85,6 +85,8 @@ typedef struct _GrdSettingsPrivate
+     GrdVncScreenShareMode screen_share_mode;
+     GrdVncAuthMethod auth_method;
+   } vnc;
++
++  int max_parallel_connections;
+ } GrdSettingsPrivate;
+ 
+ G_DEFINE_TYPE_WITH_PRIVATE (GrdSettings, grd_settings, G_TYPE_OBJECT)
+@@ -101,6 +103,23 @@ grd_settings_get_runtime_mode (GrdSettings *settings)
+   return priv->runtime_mode;
+ }
+ 
++void
++grd_settings_override_max_parallel_connections (GrdSettings *settings,
++                                                int          max_parallel_connections)
++{
++  GrdSettingsPrivate *priv = grd_settings_get_instance_private (settings);
++
++  priv->max_parallel_connections = max_parallel_connections;
++}
++
++int
++grd_settings_get_max_parallel_connections (GrdSettings *settings)
++{
++  GrdSettingsPrivate *priv = grd_settings_get_instance_private (settings);
++
++  return priv->max_parallel_connections;
++}
++
+ void
+ grd_settings_override_rdp_port (GrdSettings *settings,
+                                 int          port)
+diff --git a/src/grd-settings.h b/src/grd-settings.h
+index 6660b96..94dfd3b 100644
+--- a/src/grd-settings.h
++++ b/src/grd-settings.h
+@@ -37,6 +37,11 @@ struct _GrdSettingsClass
+ 
+ GrdRuntimeMode grd_settings_get_runtime_mode (GrdSettings *settings);
+ 
++void grd_settings_override_max_parallel_connections (GrdSettings *settings,
++                                                     int          max_parallel_connections);
++
++int grd_settings_get_max_parallel_connections (GrdSettings *settings);
++
+ void grd_settings_override_rdp_port (GrdSettings *settings,
+                                      int          port);
+ 
+diff --git a/src/grd-throttler.c b/src/grd-throttler.c
+index 5c404ed..8f19783 100644
+--- a/src/grd-throttler.c
++++ b/src/grd-throttler.c
+@@ -21,9 +21,10 @@
+ 
+ #include "grd-throttler.h"
+ 
++#include "grd-context.h"
++#include "grd-settings.h"
+ #include "grd-utils.h"
+ 
+-#define DEFAULT_MAX_GLOBAL_CONNECTIONS 10
+ #define DEFAULT_MAX_CONNECTIONS_PER_PEER 5
+ #define DEFAULT_MAX_PENDING_CONNECTIONS 5
+ #define DEFAULT_MAX_ATTEMPTS_PER_SECOND 10
+@@ -440,12 +441,14 @@ grd_throttler_limits_set_max_global_connections (GrdThrottlerLimits *limits,
+ }
+ 
+ GrdThrottlerLimits *
+-grd_throttler_limits_new (void)
++grd_throttler_limits_new (GrdContext *context)
+ {
++  GrdSettings *settings = grd_context_get_settings (context);
+   GrdThrottlerLimits *limits;
+ 
+   limits = g_new0 (GrdThrottlerLimits, 1);
+-  limits->max_global_connections = DEFAULT_MAX_GLOBAL_CONNECTIONS;
++  limits->max_global_connections =
++    grd_settings_get_max_parallel_connections (settings);
+   limits->max_connections_per_peer = DEFAULT_MAX_CONNECTIONS_PER_PEER;
+   limits->max_pending_connections = DEFAULT_MAX_PENDING_CONNECTIONS;
+   limits->max_attempts_per_second = DEFAULT_MAX_ATTEMPTS_PER_SECOND;
+diff --git a/src/grd-throttler.h b/src/grd-throttler.h
+index 9e72b8f..a955420 100644
+--- a/src/grd-throttler.h
++++ b/src/grd-throttler.h
+@@ -23,6 +23,8 @@
+ #include <gio/gio.h>
+ #include <glib-object.h>
+ 
++#include "grd-types.h"
++
+ typedef struct _GrdThrottlerLimits GrdThrottlerLimits;
+ 
+ #define GRD_TYPE_THROTTLER (grd_throttler_get_type())
+@@ -41,7 +43,7 @@ grd_throttler_limits_set_max_global_connections (GrdThrottlerLimits *limits,
+                                                  int                 limit);
+ 
+ GrdThrottlerLimits *
+-grd_throttler_limits_new (void);
++grd_throttler_limits_new (GrdContext *context);
+ 
+ GrdThrottler *
+ grd_throttler_new (GrdThrottlerLimits        *limits,
+diff --git a/src/grd-vnc-server.c b/src/grd-vnc-server.c
+index 4cfbcad..49f1605 100644
+--- a/src/grd-vnc-server.c
++++ b/src/grd-vnc-server.c
+@@ -255,26 +255,28 @@ grd_vnc_server_dispose (GObject *object)
+ static void
+ grd_vnc_server_constructed (GObject *object)
+ {
++  GrdVncServer *vnc_server = GRD_VNC_SERVER (object);
++  GrdThrottlerLimits *limits;
++
+   if (grd_get_debug_flags () & GRD_DEBUG_VNC)
+     rfbLogEnable (1);
+   else
+     rfbLogEnable (0);
+ 
+-  G_OBJECT_CLASS (grd_vnc_server_parent_class)->constructed (object);
+-}
+-
+-static void
+-grd_vnc_server_init (GrdVncServer *vnc_server)
+-{
+-  GrdThrottlerLimits *limits;
+-
+-  limits = grd_throttler_limits_new ();
++  limits = grd_throttler_limits_new (vnc_server->context);
+   /* TODO: Add the rfbScreen instance to GrdVncServer to support multiple
+    * sessions. */
+   grd_throttler_limits_set_max_global_connections (limits, 1);
+   vnc_server->throttler = grd_throttler_new (limits,
+                                              allow_connection_cb,
+                                              vnc_server);
++
++  G_OBJECT_CLASS (grd_vnc_server_parent_class)->constructed (object);
++}
++
++static void
++grd_vnc_server_init (GrdVncServer *vnc_server)
++{
+ }
+ 
+ static void
+-- 
+2.53.0
+
