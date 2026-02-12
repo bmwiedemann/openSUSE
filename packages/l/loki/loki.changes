@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 09 06:19:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.6.5:
+  * Features
+    - add loki health command (backport release-3.6.x) (#20590)
+      (dfdbe2a)
+    - Update to go 1.25.7 (#20694) (#20717) (1967a6a)
+  * Bug Fixes
+    - bump go version for 3.6.x (#20667) (b06b508)
+    - LineFilterLabelFilter.String() regexp correct delimiters
+      (backport release-3.6.x) (#20649) (9d5fb5f)
+
+-------------------------------------------------------------------
 Wed Jan 21 13:57:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.6.4:
