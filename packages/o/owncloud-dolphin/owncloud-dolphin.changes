@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 12 11:50:15 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Spec cleanup
+- Install owncloud-dolphin if both owncloud-client and dolphin
+  are installed
+
+-------------------------------------------------------------------
 Wed Jul 16 21:46:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Fix %install

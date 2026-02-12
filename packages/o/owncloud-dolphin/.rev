@@ -41,4 +41,14 @@ to its own tarball.</comment>
     <comment>- Fix %install</comment>
     <requestid>1293962</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ff6249a06e105db6e087dbb3aff1af63</srcmd5>
+    <version>6.0.0</version>
+    <time>1770913791</time>
+    <user>anag_factory</user>
+    <comment>- Spec cleanup
+- Install owncloud-dolphin if both owncloud-client and dolphin
+  are installed</comment>
+    <requestid>1332688</requestid>
+  </revision>
 </revisionlist>
