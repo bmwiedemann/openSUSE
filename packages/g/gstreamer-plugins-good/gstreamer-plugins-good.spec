@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-good
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 %endif
 
 Name:           gstreamer-plugins-good
-Version:        1.26.10
+Version:        1.28.0
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -215,7 +215,7 @@ fi
 
 %files
 %license COPYING
-%doc AUTHORS README.md RELEASE REQUIREMENTS NEWS
+%doc README.md RELEASE NEWS
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/gstreamer-plugins-good.appdata.xml
 %{_datadir}/gstreamer-%{gst_branch}/presets/GstAmrnbEnc.prs
@@ -288,7 +288,7 @@ fi
 %{_libdir}/gstreamer-%{gst_branch}/libgstwavparse.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstximagesrc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstxingmux.so
-%{_libdir}/gstreamer-%{gst_branch}/libgsty4menc.so
+%{_libdir}/gstreamer-%{gst_branch}/libgsty4m.so
 
 %files extra
 %{_libdir}/gstreamer-%{gst_branch}/libgst1394.so
