@@ -274,4 +274,13 @@
   * systemd-status-mail doc</comment>
     <requestid>1305321</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3875e22cfb2e63c89e438175bc47533e</srcmd5>
+    <version>1.21+git.20260212</version>
+    <time>1770913757</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.21+git.20260212:
+  * Support Slowroll</comment>
+    <requestid>1332637</requestid>
+  </revision>
 </revisionlist>
