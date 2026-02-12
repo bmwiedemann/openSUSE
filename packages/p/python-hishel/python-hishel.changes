@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Thu Feb 12 10:07:35 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.1.9
+  - chore: drop python 3.9 support
+- Update to 1.1.8
+  - fix: prevent race conditions
+- Update to 1.1.7
+  - refactor(storage): create sqlite database path only when creating
+    connections
+  - fix(cache): Lambda parameter name clashes the loop variable being
+    closed over
+  - add release process guidelines for maintainers
+  - Feature/accept pathlib path in SqliteStorage
+- Update to 1.1.6
+  - remove some stale httpx configs
+  - Add support for request no-cache directive
+- Update to 1.1.5
+  - filter out soft-deleted, expired and incomplete entries in `get_entries`
+- Update to 1.1.4
+  - don't raise an error on consumed streams that were read into
+    memory
+  - close sqlite connections properly
+- Update to 1.1.3
+  - improve git-cliff docs
+  - fix: add BaseFilter to __all__ exports
+  - fix: set `after_revalidation=True` for `NeedsToBeUpdated` -> `FromCache` transition
+- Update to 1.1.2
+  - respect shared option when excluding unstorable headers
+  - remove s-maxage consideration for private caches
+  - ensure 304 responses don't leak
+- Update to 1.1.1
+  - chore(deps-dev): bump the python-packages group with 10 updates
+- Update to 1.1.0
+  - add in memory example
+  - pass any response with non-expected status code on revalidation to client
+  - pass any response with non-expected status code on revalidation to client
+  - allow setting storage base with via `database_path` for sqlite storage
+- Update to 1.0.0
+  - add examples, improve docs
+- Update to 1.0.0b1
+  - add policies
+  - add graphql docs
+  - improve sans-io diagram colors
+  - filter out `Transfer-Encoding` header for asgi responses
+  - body-sensitive responses caching
+  - add global `use_body_key` setting
+- Update to 1.0.0.dev3
+  - automatically generate httpx sync integration from async
+  - replace pairs with entries, simplify storage API
+  - more robust compressed response caching
+  - add custom integrations docs
+  - simplify metadata docs
+  - add date header for proper age calculation
+  - handle httpx iterable usage instead of iterator correctly
+  - fix compressed data caching for requests
+  - raise on consumed httpx streams, which we can't store as is (it's already decoded)
+  - add missing permissions into `publish.yml`
+  - add logging for asgi
+  - add blacksheep integration examples
+  - add integrations with fastapi and asgi
+- Update to 1.0.0.dev2
+  - fix time travel date, explicitly specify the timezone
+  - add import without extras check in ci
+  - remove redundant utils and tests
+  - don't raise an error on 3xx during revalidation
+  - fix check for storing auth requests
+  - add hishel_created_at response metadata
+- Update to 1.0.0.dev1
+  - remove some redundant utils methods
+  - improve git-cliff
+  - install async extra with httpx
+  - make `anysqlite` optional dependency
+  - make httpx and async libs optional dependencies
+- Update to 1.0.0.dev0
+  - improve docs versioning, deploy dev doc on ci
+  - use mike powered versioning
+- Update to 0.1.5
+  - remove some redundant files from repo
+  - increase requests buffer size to 128KB, disable charset detection
+  - feat: add close method to storages API
+  - better cache-control parsing
+  - set chunk size to 128KB for httpx to reduce SQLite read/writes
+- Update to 0.1.4
+  - move some tests to beta
+  - add sqlite tests for new storage
+  - temporary remove python3.14 from CI
+  - chore(internal): remove src folder
+  - chore: improve CI
+  - fix beta imports
+  - create an sqlite file in a cache folder
+  - better async implemetation for sqlite storage
+  - get rid of some locks from sqlite storage
+  - add sqlite storage for beta storages
+  - feat: allow already consumed streams with `CacheTransport`
+  - feat: add support for a sans-IO API
+
+-------------------------------------------------------------------
 Fri Aug 15 09:23:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.1.3

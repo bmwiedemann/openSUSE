@@ -88,4 +88,41 @@
 </comment>
     <requestid>1299815</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2f7afb1486ac0648fdf38ab835fa879c</srcmd5>
+    <version>1.1.9</version>
+    <time>1770913774</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.1.9
+  - chore: drop python 3.9 support
+- Update to 1.1.8
+  - fix: prevent race conditions
+- Update to 1.1.7
+  - refactor(storage): create sqlite database path only when creating
+    connections
+  - fix(cache): Lambda parameter name clashes the loop variable being
+    closed over
+  - add release process guidelines for maintainers
+  - Feature/accept pathlib path in SqliteStorage
+- Update to 1.1.6
+  - remove some stale httpx configs
+  - Add support for request no-cache directive
+- Update to 1.1.5
+  - filter out soft-deleted, expired and incomplete entries in `get_entries`
+- Update to 1.1.4
+  - don't raise an error on consumed streams that were read into
+    memory
+  - close sqlite connections properly
+- Update to 1.1.3
+  - improve git-cliff docs
+  - fix: add BaseFilter to __all__ exports
+  - fix: set `after_revalidation=True` for `NeedsToBeUpdated` -&gt; `FromCache` transition
+- Update to 1.1.2
+  - respect shared option when excluding unstorable headers
+  - remove s-maxage consideration for private caches
+  - ensure 304 responses don't leak
+- Update to 1.1.1
+  - chore(deps-dev): bump the python-packages group with 10 updates</comment>
+    <requestid>1332674</requestid>
+  </revision>
 </revisionlist>

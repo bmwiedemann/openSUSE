@@ -1,7 +1,7 @@
 #
 # spec file for package python-hishel
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-hishel
-Version:        0.1.3
+Version:        1.1.9
 Release:        0
-Summary:        Persistent cache implementation for httpx and httpcore
+Summary:        Persistent cache implementation for popular HTTP clients
 License:        BSD-3-Clause
 URL:            https://github.com/karpetrosyan/hishel
 Source:         https://github.com/karpetrosyan/hishel/archive/refs/tags/%{version}.tar.gz#/hishel-%{version}.tar.gz
@@ -29,17 +29,24 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module httpx >= 0.28.0}
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module anysqlite}
+BuildRequires:  %{python_module httpx}
+BuildRequires:  %{python_module inline-snapshot}
+BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis >= 6.0.0}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module time-machine}
 BuildRequires:  %{python_module trio}
 BuildRequires:  %{python_module typing_extensions >= 4.8.0}
 BuildRequires:  %{pythons}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-httpx >= 0.28.0
+Requires:       python-msgpack
 Requires:       python-typing_extensions >= 4.8.0
+Suggests:       python-httpx
+Suggests:       python-requests
 Suggests:       python-pyyaml >= 6.0.2
 Suggests:       python-redis >= 6.0.0
 Suggests:       python-anysqlite >= 0.0.5
@@ -48,9 +55,10 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Hishel (հիշել, remember) is a library that implements HTTP Caching for
-HTTPX and HTTP Core libraries in accordance with RFC 9111, the most
-recent caching specification.
+Hishel (հիշել, to remember in Armenian) is a modern HTTP caching
+library for Python that implements RFC 9111 specifications. It
+provides seamless caching integration for popular HTTP clients with
+minimal code changes.
 
 %prep
 %autosetup -p1 -n hishel-%{version}
@@ -63,7 +71,9 @@ recent caching specification.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest --ignore tests/_async/test_storages.py --ignore tests/_sync/test_storages.py
+# Need network access
+donttest="test_simple_caching or test_encoded_content_caching"
+%pytest --ignore tests/_async/test_storages.py --ignore tests/_sync/test_storages.py -k "not ($donttest)"
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
