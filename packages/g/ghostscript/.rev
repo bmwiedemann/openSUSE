@@ -680,4 +680,12 @@ https://build.opensuse.org/requests/1305216
 </comment>
     <requestid>1315981</requestid>
   </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>a576b32717e47e772dfac75f4216accc</srcmd5>
+    <version>10.06.0</version>
+    <time>1770913542</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1332668</requestid>
+  </revision>
 </revisionlist>

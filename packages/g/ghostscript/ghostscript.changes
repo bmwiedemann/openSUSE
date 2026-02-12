@@ -29,7 +29,7 @@ Mon Aug  4 07:14:46 UTC 2025 - Johannes Meixner <jsmeix@suse.com>
   See 'Recent Changes in Ghostscript' at Ghostscript upstream
   https://ghostscript.readthedocs.io/en/gs10.05.1/News.html
   * This release addresses CVEs:
-    + CVE-2025-46646
+    + CVE-2025-46646 (bsc#1257699)
     + CVE-2025-48708 (bsc#1243701)
   * The 10.05.1 patch release addresses:
     + An overflow issue in Freetype on platforms
