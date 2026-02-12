@@ -8,7 +8,7 @@ Mon Feb  2 11:22:35 UTC 2026 - Michael Vetter <mvetter@suse.com>
 Tue Dec 16 04:19:11 UTC 2025 - Richard Lyu <richard.lyu@suse.com>
 
 - Update to edk2-stable202511
-    - Patches (git log --oneline --date-order edk2-stable202505..edk2-stable202508):
+    - Patches (git log --oneline --date-order edk2-stable202508..edk2-stable202511):
         46548b1ada MdeModulePkg: Update brotli submodule
         9e4d3b3163 BaseTools: Update brotli submodule
         6c6d4d2d52 MdePkg: Add PCI Express 7.0 Header Support

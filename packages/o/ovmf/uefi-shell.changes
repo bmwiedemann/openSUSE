@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Tue Feb 10 05:28:41 UTC 2026 - Richard Lyu <richard.lyu@suse.com>
+
+- Remove #needssslcertforbuild because the UEFI shell 
+  will not be signed by the SUSE key for security reasons.
+
+-------------------------------------------------------------------
+Thu Feb  5 14:59:50 UTC 2026 - Richard Lyu <richard.lyu@suse.com>
+
+- Add UEFI Shell to ovmf package (jsc#PED-15388)
+  - Add uefi-shell.spec 
+    - uefi-shell-x86_64: UEFI Shell binary for X86_64
+    - uefi-shell-aarch64: UEFI Shell binary for AARCH64
+    - uefi-shell-riscv64: UEFI Shell binary for RISCV64
