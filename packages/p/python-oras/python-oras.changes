@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 12 06:55:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.2.38:
+  * fix Python 3.7+ compatibility by avoiding union syntax and rely
+    on typing by @tarilabs in #213
+  * Fix: runtime error can not be emitted successfully by @kerthcet
+    in #218
+  * [tributors] contributors/update-2025-09-15 by
+    @github-actions[bot] in #219
+  * feat: API to copy from oci-layout to OCI registry by @tarilabs
+    in #228
+
+-------------------------------------------------------------------
 Wed Jun 18 05:06:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package python-oras, required by python-flux-local: OCI

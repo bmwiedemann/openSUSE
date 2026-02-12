@@ -1,7 +1,7 @@
 #
 # spec file for package python-oras
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-oras
-Version:        0.2.37
+Version:        0.2.38
 Release:        0
 Summary:        OCI Registry as Storage Python SDK
 License:        Apache-2.0
