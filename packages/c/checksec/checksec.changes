@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 12 15:54:09 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- set the version reported by the go tool to the package version (bsc#1257384)
+
+-------------------------------------------------------------------
 Sat Jan 24 15:54:42 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - updated to 3.1.0

@@ -19,6 +19,8 @@
 
 Name:           checksec
 Version:        3.1.0
+# use the one from the release tag
+%define gitcommit 3c42e52
 Release:        0
 Summary:        Utility to check binaries for system hardening
 License:        BSD-3-Clause
@@ -49,7 +51,7 @@ tar xf %SOURCE1
 %build
 mkdir build
 cd build
-go build -buildmode=pie ..
+go build -buildmode=pie -ldflags="-X main.version=%{version} -X main.date=${SOURCE_DATE_EPOCH:=unknown} -X main.commit=%{gitcommit}" ..
 
 %install
 cd build

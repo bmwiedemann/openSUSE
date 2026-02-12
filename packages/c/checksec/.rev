@@ -95,4 +95,12 @@
   - pkg/utils/files.go: parse all directories (forwarded request 1329007 from msmeissn)</comment>
     <requestid>1329008</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>560b6565c42f1ebf35b0151461785fe5</srcmd5>
+    <version>3.1.0</version>
+    <time>1770921468</time>
+    <user>anag_factory</user>
+    <comment>- set the version reported by the go tool to the package version (bsc#1257384) (forwarded request 1332737 from msmeissn)</comment>
+    <requestid>1332738</requestid>
+  </revision>
 </revisionlist>
