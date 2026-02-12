@@ -9,8 +9,8 @@
     <param name="versionrewrite-replacement">\1\3</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service mode="buildtime" name="tar" />
-  <service mode="buildtime" name="recompress">
+  <service mode="manual" name="tar" />
+  <service mode="manual" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>

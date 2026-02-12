@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 11 02:26:51 UTC 2026 - William Brown <william.brown@suse.com>
+
+- bsc#1257928 - CVE-2026-25727 - rfc 2822 format parsing may lead to stack exhaustion.
+
+-------------------------------------------------------------------
 Sat Sep 13 08:14:57 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix _service file to have proper versioning:
