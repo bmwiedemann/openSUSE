@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 11 20:39:18 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Remove temporary version override
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Apr  4 13:02:38 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Switch package to modern Python Stack on SLE-15

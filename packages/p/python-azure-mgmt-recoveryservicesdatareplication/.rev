@@ -7,4 +7,18 @@
     <comment>- New component of Azure SDK</comment>
     <requestid>1165429</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>265fdc8468c17aa907ae92691ee4936b</srcmd5>
+    <version>1.0.0</version>
+    <time>1770913619</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Remove temporary version override
+- Update Requires from setup.py (forwarded request 1332570 from glaubitz)</comment>
+    <requestid>1332572</requestid>
+  </revision>
 </revisionlist>
