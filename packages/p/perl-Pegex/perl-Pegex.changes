@@ -1,0 +1,194 @@
+-------------------------------------------------------------------
+Fri Feb 14 03:12:40 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.75
+   see /usr/share/doc/packages/perl-Pegex/Changes
+
+  0.75 Thu Feb 13 11:59:58 PST 2020
+   - Use YAML::PP 0.19 and remove special cases that it fixed. tinita++
+
+-------------------------------------------------------------------
+Thu Jan 23 03:12:22 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.74
+   see /usr/share/doc/packages/perl-Pegex/Changes
+
+  0.74 Wed Jan 22 14:57:47 PST 2020
+   - Fix YAML::PP and float interaction for older perls
+  
+  0.73 Wed Jan 22 12:03:38 PST 2020
+   - Make ./ rule / same as .(/ rule /)
+   - Use YAML::PP and JSON::PP
+   - No XS dependencies
+
+-------------------------------------------------------------------
+Mon Jan  6 03:10:52 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.72
+   see /usr/share/doc/packages/perl-Pegex/Changes
+
+  0.72 Sun Jan  5 14:03:42 PST 2020
+   - Apply https://github.com/ingydotnet/pegex-pm/pull/75 (for real) Fix
+     P::P::Grammar title - not "::Name" @mohawk2++
+  
+  0.71 Sun Jan  5 10:59:17 PST 2020
+   - Apply https://github.com/ingydotnet/pegex-pm/pull/75 Fix P::P::Grammar
+     title - not "::Name" @mohawk2++
+
+-------------------------------------------------------------------
+Thu Dec  6 16:06:46 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.70
+   see /usr/share/doc/packages/perl-Pegex/Changes
+
+  0.70 Sun Nov 11 16:47:51 PST 2018
+   - Use new Dist-Zilla-Plugin-TestMLIncluder (spaces in windows paths)
+  
+  0.69 Sun Nov 11 12:10:38 PST 2018
+   - https://github.com/ingydotnet/pegex-pm/pull/72 @mohawk2++
+  
+  0.68 Sun Nov 11 10:57:31 PST 2018
+   - https://github.com/ingydotnet/pegex-pm/pull/71 @mohawk2++
+
+-------------------------------------------------------------------
+Wed Sep 19 05:49:21 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.67
+   see /usr/share/doc/packages/perl-Pegex/Changes
+
+-------------------------------------------------------------------
+Thu Aug 30 05:50:45 UTC 2018 - coolo@suse.com
+
+- updated to 0.65
+   see /usr/share/doc/packages/perl-Pegex/Changes
+
+  0.65 Wed Aug 29 09:53:13 PDT 2018
+   - Use new TestML for tests
+   - Support back to perl5.8.3
+
+-------------------------------------------------------------------
+Mon Sep 18 06:02:46 UTC 2017 - coolo@suse.com
+
+- updated to 0.64
+   see /usr/share/doc/packages/perl-Pegex/Changes
+
+  0.64 Sun Sep 17 19:26:03 PDT 2017
+   - Applied 3 small PRs from @mohawk2++ (60,61,62)
+
+-------------------------------------------------------------------
+Mon Feb 13 12:48:10 UTC 2017 - coolo@suse.com
+
+- updated to 0.63
+   see /usr/share/doc/packages/perl-Pegex/Changes
+
+  0.63 Sat Jan 14 09:31:43 PST 2017
+   - Fixed colors on older perls. TINITA++
+   - Changed on/off to always/never. TINITA++
+  
+  0.62 Fri Jan 13 22:37:55 PST 2017
+   - Debug color and indent options added by TINITA++
+   - Recursion controls. Apply PR/46 by @pdl++ (refactored)
+   - Support Perl regex look-behind assertions
+
+-------------------------------------------------------------------
+Thu Jun 23 06:52:03 UTC 2016 - coolo@suse.com
+
+- updated to 0.61
+   see /usr/share/doc/packages/perl-Pegex/Changes
+
+  0.61 Mon Jun 13 18:10:24 PDT 2016
+   - Performance improvements by @agentzh++
+   - See PR/52
+
+-------------------------------------------------------------------
+Mon Apr 13 18:34:37 UTC 2015 - coolo@suse.com
+
+- updated to 0.60
+   see /usr/share/doc/packages/perl-Pegex/Changes
+
+  0.60 Wed Jan 28 10:44:38 PST 2015
+   - Added EMPTY atom
+   - Fix small bug in a helper function. Issue
+   - Update docs and Meta for 2015
+  
+  0.59 Sun Dec 28 14:25:13 PST 2014
+   - Release with new TestML-0.52
+  
+  0.58 Fri Dec 12 11:10:16 PST 2014
+   - Fix test for windows (issue
+   - Share Pegex grammar for Pegex
+  
+  0.57 Mon Oct  6 14:30:28 CEST 2014
+   - Added 'rule' helper method to Pegex::Receiver
+   - Refactored the calculator examples to be dry
+  
+  0.56 Fri Oct  3 22:55:58 CEST 2014
+   - Upgrade Mo to 0.39
+   - Fix problems with %
+   - Fix whitespace matching at start of regex
+  
+  0.55 Sun Aug 24 10:03:26 PDT 2014
+   - Doc tweak
+  
+  0.54 Sat Aug 16 14:14:34 PDT 2014
+   - Remove =travis section
+  
+  0.53 Sat Aug 16 11:55:44 PDT 2014
+   - Meta 0.0.2
+  
+  0.52 Sat Aug 16 02:33:53 PDT 2014
+   - Eliminate File::Basename from test/
+  
+  0.51 Fri Aug 15 20:26:26 PDT 2014
+   - Remove Pegex::Mo
+   - Add t/000-compile-modules.t
+  
+  0.50 Fri Aug 15 09:30:56 PDT 2014
+   - Fixed a Mo bug directly
+   - Added regression test
+   - Mo still needs fix
+   - See https://github.com/ingydotnet/jsony-pm/issues/2
+  
+  0.49 Tue Aug 12 11:01:28 PDT 2014
+   - Add `receiver` accessor back into parser
+   - Other modules use it
+   - Add test for it
+  
+  0.48 Sun Aug 10 18:18:35 PDT 2014
+   - Refactor Pegex.pm to match CafeScript
+  
+  0.47 Sat Aug  9 12:00:13 PDT 2014
+   - Refactor to match CafeScript
+   - https://github.com/ingydotnet/pegex-cafe
+  
+  0.46 Fri Aug  8 19:29:32 PDT 2014
+   - Fix swim errors
+  
+  0.45 Mon Aug  4 00:17:27 PDT 2014
+   - Remove (c) from Copyright
+   - Doc fixes
+  
+  0.44 Tue Jul 29 16:35:34 PDT 2014
+   - Some Parser refactoring.
+   - Add a new example parser called `self-parser.pl`
+   - Get the devel tests working again
+  
+  0.43 Wed Jul 23 14:21:29 PDT 2014
+   - Add inlining support for text to Pegex::Grammar
+   - Add a line_column method to Pegex::Parser
+  
+  0.42 Mon Jul 21 17:25:50 PDT 2014
+   - Fix copyright year stuff
+  
+  0.41 Thu Jul 17 10:28:16 PDT 2014
+   - ZD put an incorrect dep on TestML. @rurban++
+  
+  0.40 Mon Jul 14 09:56:50 PDT 2014
+   - Fix Meta and add Contributing file
+
+-------------------------------------------------------------------
+Wed Jul 16 08:02:36 UTC 2014 - coolo@suse.com
+
+- initial package 0.39
+    * created by cpanspec 1.78.08
+
