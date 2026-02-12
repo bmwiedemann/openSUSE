@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Feb 12 06:41:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.0~beta.60.2:
+  no code changes compared to 1.0.0~beta.60.1
+- Update to version 1.0.0~beta.60.1:
+  * Complete transfer of kpt updates from Porch to kpt (#4355)
+  * fix(live): validate annotation values to prevent silent data
+    loss (#4371)
+  * fix: add shell language specifier to fn doc Flags code block
+  * fix: Add stdin support to kpt fn doc for KRM functions
+    expecting input (#4352)
+  * Removing kpt mailing list from issue_template & managed Docs
+  * Adding instruction for copyright notices (#4366)
+  * docs: remove manual ToC, add svg source, and suggest Podman
+  * Docs: clarify Windows setup for documentation site (#4350)
+  * Fix #3756: added CI user guide and image
+  * Fix #3756-added CI user guide in docs and added chapter 9 in
+    index of book
+  * Fix #3756-added CI user guide in docs
+  * Docs: clarify kpt install via source and Docker
+  * Fix documentation npm scripts on Windows
+
+-------------------------------------------------------------------
+Fri Jan 23 07:16:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.0~beta.60:
+  https://github.com/kptdev/kpt/releases/tag/v1.0.0-beta.60
+- Update to version 1.0.0~beta.59:
+  https://github.com/kptdev/kpt/releases/tag/v1.0.0-beta.59
+- Update to version 1.0.0~beta.58:
+  https://github.com/kptdev/kpt/releases/tag/v1.0.0-beta.58
+- Update to version 1.0.0~beta.57:
+  https://github.com/kptdev/kpt/releases/tag/v1.0.0-beta.57
+- Update to version 1.0.0~beta.56:
+  https://github.com/kptdev/kpt/releases/tag/v1.0.0-beta.56
+
+-------------------------------------------------------------------
 Sat Sep 14 08:57:12 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.0.0~beta.55:

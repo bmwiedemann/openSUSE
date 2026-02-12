@@ -1,7 +1,7 @@
 #
 # spec file for package kpt-cli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,19 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 %define repo_name kpt
 %define executable_name kpt
 
 Name:           kpt-cli
-Version:        1.0.0~beta.55
+Version:        1.0.0~beta.60.2
 Release:        0
 Summary:        CLI for kpt - automate Kubernetes Configuration Editing
 License:        Apache-2.0
 URL:            https://github.com/kptdev/kpt
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.22
 BuildRequires:  git-core
+BuildRequires:  go1.25 >= 1.25.6
 
 %description
 kpt is a package-centric toolchain that enables a WYSIWYG configuration
