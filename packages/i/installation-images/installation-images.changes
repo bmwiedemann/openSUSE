@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Wed Feb 11 16:33:16 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#784
+- follow immutable system change in hwinfo: create missing udi
+  directory (jsc#PED-14832)
+- 17.174
+
+--------------------------------------------------------------------
 Mon Feb 9 12:24:24 UTC 2026 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#782
