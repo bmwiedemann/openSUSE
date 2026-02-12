@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 11 15:57:04 UTC 2026 - llyyr <llyyr@yukari.in>
+
+- Update libplacebo to version 7.360.0. See details in:
+    https://code.videolan.org/videolan/libplacebo/-/tags/v7.360.0
+- Drops 12509c0f1ee8c22ae163017f0a5e7b8a9d983a17.patch
+
+-------------------------------------------------------------------
 Mon Oct 20 16:16:20 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Grab 12509c0f1ee8c22ae163017f0a5e7b8a9d983a17.patch from upstream

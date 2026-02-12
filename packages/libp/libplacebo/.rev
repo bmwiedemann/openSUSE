@@ -1135,4 +1135,15 @@ Fixes:
 - Clean up spec file</comment>
     <requestid>1312450</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e0597f80fb5216f7c762db27f714303f</srcmd5>
+    <version>7.360.0</version>
+    <time>1770913530</time>
+    <user>anag_factory</user>
+    <comment>- Update libplacebo to version 7.360.0. See details in:
+    https://code.videolan.org/videolan/libplacebo/-/tags/v7.360.0
+- Drops 12509c0f1ee8c22ae163017f0a5e7b8a9d983a17.patch
+</comment>
+    <requestid>1332533</requestid>
+  </revision>
 </revisionlist>
