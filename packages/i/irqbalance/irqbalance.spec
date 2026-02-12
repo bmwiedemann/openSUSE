@@ -1,7 +1,7 @@
 #
 # spec file for package irqbalance
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_with meson
 Name:           irqbalance
-Version:        1.9.5.0.git+cf76396
+Version:        1.9.5.3.git+48ab93a
 Release:        0
 Summary:        Daemon to balance IRQs on SMP machines
 License:        GPL-2.0-only

@@ -713,4 +713,12 @@ A irqbalance_banmod.diff
     <comment></comment>
     <requestid>1328132</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>66c03b07185cb9031c8b4ff2dd85a295</srcmd5>
+    <version>1.9.5.3.git+48ab93a</version>
+    <time>1770913527</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1332484</requestid>
+  </revision>
 </revisionlist>
