@@ -417,4 +417,25 @@ https://www.postgresql.org/about/news/postgresql-176-1610-1514-1419-1322-and-18-
     <comment></comment>
     <requestid>1323489</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>007066b3340551077cf4f6c33a3413ba</srcmd5>
+    <version>14.21</version>
+    <time>1770921477</time>
+    <user>anag_factory</user>
+    <comment>- Update to 14.21:
+  * https://www.postgresql.org/about/news/p-3235/
+  * https://www.postgresql.org/docs/release/14.21/
+  * bsc#1258008, CVE-2026-2003: Guard against unexpected
+    dimensions of oidvector/int2vector
+  * bsc#1258009, CVE-2026-2004: Harden selectivity estimators
+    against being attached to operators that accept unexpected
+    data types.
+  * bsc#1258010, CVE-2026-2005: Fix buffer overrun in
+    contrib/pgcrypto's PGP decryption functions.
+  * bsc#1258011, CVE-2026-2006: Fix inadequate validation of
+    multibyte character lengths.
+  * obsoletes llvm-21-aarch64.patch
+- Disown /var/lib/pgsql to support transactional updates.</comment>
+    <requestid>1332748</requestid>
+  </revision>
 </revisionlist>

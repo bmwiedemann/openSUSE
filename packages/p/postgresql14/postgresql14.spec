@@ -1,7 +1,7 @@
 #
 # spec file for package postgresql14
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define pgmajor 14
-%define pgminor 20
+%define pgminor 21
 
 ### CUT HERE ###
 %define pgname postgresql%pgmajor
@@ -218,8 +218,6 @@ Patch9:         postgresql-var-run-socket.patch
 %if %{with llvm}
 Patch10:        postgresql-llvm-optional.patch
 Patch11:        0001-jit-Workaround-potential-datalayout-mismatch-on-s390.patch
-# PATCH-FIX-UPSTREAM - commit 0dceba2
-Patch12:        llvm-21-aarch64.patch
 %endif
 URL:            https://www.postgresql.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -552,7 +550,6 @@ touch -r configure tmp
 %if %{with llvm}
 %patch -P 10
 %patch -P 11
-%patch -P 12 -p1
 %endif
 touch -r tmp configure
 rm tmp
@@ -688,7 +685,6 @@ find %buildroot -type f -cnewer flag -printf "/%%P\n" |
      grep -v -e %_docdir -e %pgbindir -e %pgincludedir -e %pglibdir/bitcode \
      > contrib.files
 rm flag
-install -d -m 750 %buildroot/var/lib/pgsql
 install -d -m 755 %buildroot%pgdocdir
 cp doc/KNOWN_BUGS doc/MISSING_FEATURES COPYRIGHT \
    README* HISTORY  %buildroot%pgdocdir
@@ -956,7 +952,6 @@ fi
 %pglibdir/euc2004_sjis2004.so
 %pglibdir/libpqwalreceiver.so
 %pgextensiondir/plpgsql*
-%attr(750,postgres,postgres) %dir /var/lib/pgsql
 
 %if %{with llvm}
 %dir %pglibdir/bitcode
