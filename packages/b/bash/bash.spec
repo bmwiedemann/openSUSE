@@ -1,7 +1,7 @@
 #
 # spec file for package bash
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -289,12 +289,6 @@ rl1=($(sed -rn '/RL_VERSION_MAJOR/p' lib/readline/readline.h))
 test ${rl1[2]} = %{rl_major} || exit 1
 rl2=($(sed -rn '/RL_VERSION_MINOR/p' lib/readline/readline.h))
 test ${rl1[2]}.${rl2[2]} = %{rl_version} || exit 1
-
-%if 0%{?qemu_user_space_build}
-# Something in qemu clobbers the signal mask to block SIGALRM during the
-# execution of this test, causing it to hang.  Skip it.
-echo exit 0 > tests/read7.sub
-%endif
 
 %build
   SOURCE_DATE_EPOCH="$(sed -n '/^----/n;s/ - .*$//;p;q' %{SOURCE99} | date -u -f - +%%s)"
