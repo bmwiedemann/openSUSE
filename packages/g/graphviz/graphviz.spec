@@ -1,7 +1,8 @@
 #
 # spec file for package graphviz
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +27,19 @@
 %define mname graphviz
 # name of the plugin config file that dot creates
 %define config_file config6
+%if 0%{?suse_version} <= 1500
+%define gcc_pkg gcc13
+%define gcc gcc-13
+%define gxx g++-13
+%define pyversion 3.11
+%define pyversion_nodot 311
+%else
+%define gcc_pkg gcc
+%define gcc gcc
+%define gxx g++
+%define pyversion 3
+%define pyversion_nodot 3
+%endif
 %if "%{flavor}" == "addons"
 %define phpconf_dir %{_sysconfdir}/php%{php_version}/conf.d
 %define phpext_dir  %(%{__php_config} --extension-dir)
@@ -50,7 +64,7 @@
 %bcond_with    java
 %bcond_with    ocaml
 Name:           graphviz%{psuffix}
-Version:        14.0.0
+Version:        14.1.2
 Release:        0
 Summary:        Graph Visualization Tools
 License:        EPL-1.0
@@ -58,21 +72,21 @@ Group:          Productivity/Graphics/Visualization/Graph
 URL:            https://www.graphviz.org/
 Source0:        https://gitlab.com/graphviz/graphviz/-/archive/%version/graphviz-%{version}.tar.bz2
 Source1:        graphviz-rpmlintrc
-#PATCH-FIX-UPSTREAM add flags to also link against libGLU and libGL
 Patch0:         graphviz-smyrna-link_against_glu.patch
 Patch1:         graphviz-fix-pkgIndex.patch
+Patch2:         Fix-build-with-non-standard-python-binary.patch
+BuildRequires:  %{gcc_pkg}-c++
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
-BuildRequires:  gcc-c++
 BuildRequires:  groff
 BuildRequires:  guile-devel
 BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  python3-base >= 3.9
+BuildRequires:  python%pyversion_nodot-base >= 3.9
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(gts)
 BuildRequires:  pkgconfig(zlib)
@@ -86,7 +100,8 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libwebp-devel
 BuildRequires:  perl
-BuildRequires:  python3-setuptools
+BuildRequires:  python%pyversion_nodot-devel
+BuildRequires:  python%pyversion_nodot-setuptools
 BuildRequires:  ruby-devel
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(fontconfig)
@@ -102,7 +117,6 @@ BuildRequires:  pkgconfig(libglade-2.0)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(pango)
-BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(tcl)
 BuildRequires:  pkgconfig(x11)
@@ -368,10 +382,8 @@ The graphviz-devel package contains all that's necessary for developing
 programs that use the graphviz libraries including man3 pages.
 
 %prep
-#autosetup breaks graphviz-addons
-%setup -q -n %{mname}-%{version}
-%patch -P 0 -p1
-%patch -P 1 -p1
+%autosetup -p1 -n %{mname}-%{version}
+[ -f README ] || ln -s README.md README
 
 # pkg-config returns 0 (TRUE) when guile-2.2 is present
 if pkg-config --atleast-version=2.2 guile-2.2; then
@@ -391,6 +403,7 @@ sed -i \
 sed -i -e 's@LANGUAGE php7@LANGUAGE php8@' tclpkg/gv/CMakeLists.txt
 
 %build
+sed -i -e 's/python3 /python%pyversion /g' autogen.sh
 ./autogen.sh RUBY_VER=%{?ruby_version}
 CFLAGS="%{optflags} -ffast-math -fno-strict-aliasing -fno-strict-overflow -fPIC"
 
@@ -402,9 +415,12 @@ CFLAGS="$CFLAGS -I/usr/include/ruby-%{ruby_version}.0 -fpermissive"
 
 %endif
 
+export CC="%gcc"
+export CXX="%gxx"
 export CFLAGS="$CFLAGS"
 export CPPFLAGS="$CFLAGS"
 export LDFLAGS="-pie"
+export PYTHON3="python%pyversion"
 %configure \
       --disable-static \
       --without-included-ltdl \
@@ -620,8 +636,8 @@ if test -x %{_bindir}/dot; then rm -f %{_libdir}/graphviz/%{config_file} ; %{_bi
 %config(noreplace) %{phpconf_dir}/gv.ini
 
 %files -n python3-gv
-%{python3_sitearch}/_gv.so
-%{python3_sitearch}/gv.py
+%{lua: print(rpm.expand('%python' .. rpm.expand('%pyversion_nodot') .. '_sitearch'))}/_gv.so
+%{lua: print(rpm.expand('%python' .. rpm.expand('%pyversion_nodot') .. '_sitearch'))}/gv.py
 %{_mandir}/man3/gv.3python%{ext_man}
 
 %files -n graphviz-ruby
@@ -659,7 +675,7 @@ if test -x %{_bindir}/dot; then %{_bindir}/dot -c ; fi
 
 %if "%{flavor}" == ""
 %files
-%doc doc/FAQ.html AUTHORS README NEWS CHANGELOG.md
+%doc doc/FAQ.html AUTHORS README.md NEWS CHANGELOG.md
 %license epl-v10.txt
 %{_bindir}/acyclic
 %{_bindir}/bcomps

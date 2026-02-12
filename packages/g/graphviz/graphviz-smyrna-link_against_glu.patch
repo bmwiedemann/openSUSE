@@ -1,15 +1,26 @@
+From 5bca434c221b43ceee510948a522a42975f81978 Mon Sep 17 00:00:00 2001
+From: Philipp Thomas <pth@suse.de>
+Date: Thu, 24 Oct 2013 11:16:01 +0200
+Subject: [PATCH] smyrna: Add libGLU and libGL as libraries to link to which
+ was missing
+
 ---
- configure.ac |    2 +-
+ configure.ac | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/configure.ac b/configure.ac
+index 0fda040e3..0575bda72 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1897,7 +1897,7 @@
+@@ -1860,7 +1860,7 @@ else
  
    AC_CHECK_HEADER(GL/glut.h,
      AC_CHECK_LIB(glut,main,
 -      [GLUT_LIBS="$GLUT_LIBS -lglut"
 +      [GLUT_LIBS="$GLUT_LIBS -lglut $(pkg-config --libs glu)"
        use_glut="Yes"
-       AC_DEFINE_UNQUOTED(HAVE_GLUT,1,[Define if you have the GLUT library])],
+       AC_DEFINE(HAVE_GLUT,1,[Define if you have the GLUT library])],
        use_glut="No (missing libglut)"
+-- 
+2.51.0
+

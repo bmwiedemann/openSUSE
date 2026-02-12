@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Feb 10 18:02:31 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to 14.1.2
+  * The `colorscheme` attribute when applied to edge labels works once again.
+- Update to 14.1.1
+  * When seeding random number generators with `time(NULL)`, the result of
+    `getpid()` is no longer also mixed in. Previously this was the case on
+    non-Windows platforms, impeding reproducibility and portability
+- Update to 14.1.0
+  * Added option `neato -n3` for fit ends of edges to nodes' borders when edge
+    trajectory is set.
+  * Orthogonal edges now support rounded corners via the `radius` edge attribute.
+- Update to 14.0.5
+  * When filtering attribute lists, Smyrna no longer accesses out of bounds memory
+  * osage should now handle clusters that become empty when nodes are incorrectly
+    assigned to sibling clusters.
+- Update to 14.0.4
+  * Internal timing operations now use `clock()` on all platforms
+  * `diffimg` now notices failures when calling Ghostscript
+  * `dtstat` no longer reads/writes out of bounds memory
+  * A null pointer dereference in edge pair analysis within the circo algorithm
+    has been fixed.
+- Update to 14.0.2
+  * Memory corruption when using the Java bindings to render to a string has been
+    corrected
+- Update to 14.0.1
+  * Points generated as curves by the dot layout algorithm are once again placed
+    correctly.
+- Refresh graphviz-smyrna-link_against_glu.patch
+- Added   Fix-build-with-non-standard-python-binary.patch
+
+-------------------------------------------------------------------
+Tue Feb 10 16:12:50 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- On SLE 15 build with GCC 13 and python 3.11
+
+-------------------------------------------------------------------
 Wed Oct 29 08:03:39 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop graphviz-2.20.2-interpreter_names.patch: do not set the
@@ -18,7 +55,6 @@ D graphviz-no_php_extra_libs.patch
 D    graphviz-useless_warnings.patch
 D    swig-4.1.0.patch
 - Remove old, unneeded condition: if 0%{?suse_version} == 1315
-
 
 -------------------------------------------------------------------
 Fri May 30 10:49:41 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>

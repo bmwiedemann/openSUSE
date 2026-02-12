@@ -1,0 +1,64 @@
+From 416e3641211c189438e30307fc7f2282820d9399 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Tue, 10 Feb 2026 17:08:10 +0100
+Subject: [PATCH] Fix build with non-standard python binary
+
+---
+ lib/common/Makefile.am | 4 ++--
+ tclpkg/gv/Makefile.am  | 6 +++---
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/lib/common/Makefile.am b/lib/common/Makefile.am
+index 258842901..9c8aa34cb 100644
+--- a/lib/common/Makefile.am
++++ b/lib/common/Makefile.am
+@@ -39,7 +39,7 @@ colortbl.h: $(top_srcdir)/lib/common/brewer_colors \
+             $(top_srcdir)/lib/common/svgcolor_names \
+             $(top_srcdir)/lib/common/color_names \
+             $(top_srcdir)/lib/common/make_colortbl.py
+-	python3 $(top_srcdir)/lib/common/make_colortbl.py \
++	$(PYTHON3) $(top_srcdir)/lib/common/make_colortbl.py \
+ 	  $(top_srcdir)/lib/common/brewer_colors \
+ 	  $(top_srcdir)/lib/common/svgcolor_names \
+ 	  $(top_srcdir)/lib/common/color_names colortbl.h
+@@ -48,7 +48,7 @@ utils.$(OBJEXT) utils.lo: entities.h
+ 
+ entities.h: $(top_srcdir)/lib/common/entities.html \
+             $(top_srcdir)/lib/common/entities.py
+-	python3 $(top_srcdir)/lib/common/entities.py "$@"
++	$(PYTHON3) $(top_srcdir)/lib/common/entities.py "$@"
+ 
+ htmllex.$(OBJEXT) htmllex.lo: htmllex.c htmllex.h htmlparse.h
+ htmlparse.$(OBJEXT) htmlparse.lo: htmlparse.c htmlparse.h
+diff --git a/tclpkg/gv/Makefile.am b/tclpkg/gv/Makefile.am
+index bfacef153..fcd6af763 100644
+--- a/tclpkg/gv/Makefile.am
++++ b/tclpkg/gv/Makefile.am
+@@ -288,7 +288,7 @@ DEVTSTS += test_tcl
+ all-local: pkgIndex.tcl
+ 
+ pkgIndex.tcl:
+-	python3 $(top_srcdir)/tclpkg/mkpkgindex.py \
++	$(PYTHON3) $(top_srcdir)/tclpkg/mkpkgindex.py \
+ 	  --file libgv_tcl$(SHARED_LIBRARY_SUFFIX) \
+ 	  --name gv \
+ 	  --version 0
+@@ -304,7 +304,7 @@ $(man): gv_doc_writer.intermediate ;
+ 
+ .INTERMEDIATE: gv_doc_writer.intermediate
+ gv_doc_writer.intermediate: gv.i gv_doc_writer.py
+-	python3 $(srcdir)/gv_doc_writer.py
++	$(PYTHON3) $(srcdir)/gv_doc_writer.py
+ 
+ .3sharp.3sharp.pdf:
+ 	rm -f $@; pdffile=$@; psfile=$${pdffile%pdf}ps; \
+@@ -476,4 +476,4 @@ CLEANFILES = test_*/* \
+ 	gv_R.cpp $(R_data) \
+ 	gv_ruby.cpp $(RUBY_data) \
+ 	gv_tcl.cpp $(TCL_data)
+-DISTCLEANFILES = $(pdf_DATA) pkgIndex.tcl
+\ No newline at end of file
++DISTCLEANFILES = $(pdf_DATA) pkgIndex.tcl
+-- 
+2.51.0
+
