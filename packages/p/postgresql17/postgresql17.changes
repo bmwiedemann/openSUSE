@@ -1,11 +1,29 @@
 -------------------------------------------------------------------
-Fri Dec 12 07:56:41 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+Wed Feb 11 18:46:17 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Update to 17.8:
+  * https://www.postgresql.org/about/news/p-3235/
+  * https://www.postgresql.org/docs/release/17.8/
+  * bsc#1258008, CVE-2026-2003: Guard against unexpected
+    dimensions of oidvector/int2vector
+  * bsc#1258009, CVE-2026-2004: Harden selectivity estimators
+    against being attached to operators that accept unexpected
+    data types.
+  * bsc#1258010, CVE-2026-2005: Fix buffer overrun in
+    contrib/pgcrypto's PGP decryption functions.
+  * bsc#1258011, CVE-2026-2006: Fix inadequate validation of
+    multibyte character lengths.
+  * obsoletes llvm-21-aarch64.patch
+- Disown /var/lib/pgsql to support transactional updates.
+
+-------------------------------------------------------------------
+Tue Dec  9 08:23:44 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on aarch64 with upstream commit 0dceba2:
   * llvm-21-aarch64.patch
 
 -------------------------------------------------------------------
-Mon Nov 24 16:32:47 UTC 2025 - Reinhard Max <max@suse.com>
+Mon Nov 24 16:22:39 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Fix build with uring for post SLE15 code streams.
 
