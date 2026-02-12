@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DB_File
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,16 @@
 
 %define cpan_name DB_File
 Name:           perl-DB_File
-Version:        1.859.0
+Version:        1.860
 Release:        0
-%define cpan_version 1.859
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Summary:        Perl5 access to Berkeley DB version 1.x
+Summary:        Perl access to Berkeley DB 1.x
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/P/PM/PMQS/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PM/PMQS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
-Provides:       perl(DB_File) = 1.859.0
-Provides:       perl(DB_File::BTREEINFO)
-Provides:       perl(DB_File::HASHINFO)
-Provides:       perl(DB_File::RECNOINFO)
-%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 %if 0%{?suse_version} >= 1140
@@ -84,7 +79,7 @@ manipulated using the same key/value pair interface as in DB_HASH and
 DB_BTREE. In this case the key will consist of a record (line) number.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

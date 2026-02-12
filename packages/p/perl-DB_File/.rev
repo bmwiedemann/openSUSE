@@ -7,4 +7,35 @@
     <comment>Perl core will no longer have this.</comment>
     <requestid>1254682</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>97281ae02a0e6369bb4b488af7f944dd</srcmd5>
+    <version>1.860</version>
+    <time>1770913551</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.860
+   see /usr/share/doc/packages/perl-DB_File/Changes
+  1.860 1 February 2026
+  * Add automation to the workflows to detect and use all the available versions of perl  available.
+    Sun Feb 1 16:12:39 2026 +0000
+    b7ccaa172ae2d844b7bae7a9829bcaee463ad186
+  * Update to version 1.860
+    Sun Feb 1 16:05:15 2026 +0000
+    9f759912ce94924c64c933f9586fc6fb50eb4b35
+  * Update copyright date to 2026
+    Thu Jan 1 15:33:59 2026 +0000
+    8fac218ef6f153294ab3bdba2742210950c751a7
+  * Bump actions/cache from 4 to 5
+    Thu Jan 1 15:30:37 2026 +0000
+    8ee97cff1e0d237682558b8be3e2fbfeb385ac1f
+  * Bump actions/checkout from 5 to 6
+    Mon Dec 1 14:20:34 2025 +0000
+    ebdcc8e2a307ab5ad1b0487c93fa41e7fa643ee0
+  * Add dependabot.yml to police workflow files
+    Thu Sep 4 17:33:28 2025 +0100
+    ba0fc74444a846a76eb670daf1b87cfa0ac2f215
+  * Fix links to dbopen manpage (#17)
+    Thu Apr 10 11:53:24 2025 +0100
+    06ea397e5d654ebeb9d22a6993c8aaebf710ce9b</comment>
+    <requestid>1332521</requestid>
+  </revision>
 </revisionlist>
