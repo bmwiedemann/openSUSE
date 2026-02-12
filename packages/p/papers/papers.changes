@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 10 10:14:25 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.4:
+  + Bug fixes: Ctrl+F sometimes does not focus search box when
+    query is blank
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Jan  4 13:21:40 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.3:
