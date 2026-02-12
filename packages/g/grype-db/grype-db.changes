@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Feb 12 06:11:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.52.0:
+  * Added Features
+    - batch database operations to reduce network storage overhead
+      [#818 @jamestexas]
+    - support photon OS [#872 @willmurphyscode]
+  * Additional Changes
+    - enable photon vunnel provider [#876 @willmurphyscode]
+  * Dependencies
+    - chore(deps): Bump the python-minor-and-patch group with 2
+      updates (#878)
+    - chore(deps): update tools to latest versions (#879)
+    - chore(deps): Bump cryptography from 44.0.1 to 46.0.5 (#877)
+    - chore(deps): update anchore dependencies (#875)
+    - chore(deps): Bump boto3 in the python-minor-and-patch group
+      (#874)
+    - chore(deps): Bump github.com/go-git/go-git/v5 from 5.16.4 to
+      5.16.5 (#873)
+    - chore(deps): Bump zizmorcore/zizmor-action from 0.4.1 to
+      0.5.0 (#870)
+    - chore(deps): Bump boto3 in the python-minor-and-patch group
+      (#871)
+
+-------------------------------------------------------------------
 Mon Feb 09 06:20:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.51.0:
