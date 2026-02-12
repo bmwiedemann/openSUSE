@@ -64,7 +64,8 @@ case "${machine}" in
   8562) echo "${machine} = z15 T02 IBM z15 T02" ;;
   3931) echo "${machine} = z16 A01 IBM z16 A01" ;;
   3932) echo "${machine} = z16 A02 IBM z16 A02" ;;
-  9175) echo "${machine} = z17     IBM z17    " ;;
+  9175) echo "${machine} = z17 ME1 IBM z17 ME1" ;;
+  9176) echo "${machine} = z17     IBM z17    " ;;
   *) echo "An unknown machine type was reported: ${machine}" >&2
      echo "Please file a bug report with this output:" >&2
      /bin/cat /proc/cpuinfo >&2

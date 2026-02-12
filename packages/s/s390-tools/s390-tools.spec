@@ -75,7 +75,7 @@ Source23:       README.SUSE.opensuse
 Source23:       README.SUSE.suse
 %endif
 Source24:       cputype
-Source25:       cputype.1
+Source25:       cputype.8
 Source26:       cio_ignore.service
 Source27:       setup_cio_ignore.sh
 Source28:       59-prng.rules

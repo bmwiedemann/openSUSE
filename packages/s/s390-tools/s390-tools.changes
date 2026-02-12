@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 12 09:59:56 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Updated a logic error in:
+  * s390-tools-combined.patch
+- Update the code for IBM z17 machine type 9176:
+  * read_values.c
+  * cputype
+  * Renamed cputype.1 to cputype.8 and amended
+  * Amended read_values.8
+- "Improved" the read_values.c: 
+  * Added functionalities for '-a' and '-L attributes'
+- Re-vendor-ed vendor.tar.zst
+
+-------------------------------------------------------------------
 Fri Feb  6 10:12:57 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Reworked and combined all s390-tools patches 

@@ -237,8 +237,8 @@ diff -Naur a/zdev/dracut/95zdev/parse-dasd.sh b/zdev/dracut/95zdev/parse-dasd.sh
  
 diff -Naur a/zdev/dracut/95zdev/parse-zfcp.sh b/zdev/dracut/95zdev/parse-zfcp.sh
 --- a/zdev/dracut/95zdev/parse-zfcp.sh	2025-12-11 17:03:28.000000000 +0100
-+++ b/zdev/dracut/95zdev/parse-zfcp.sh	2026-02-06 14:18:29.630327561 +0100
-@@ -11,26 +11,44 @@
++++ b/zdev/dracut/95zdev/parse-zfcp.sh	2026-02-12 10:49:05.939509610 +0100
+@@ -11,26 +11,43 @@
  #
  
  zdev_zfcp_base_args="--no-settle --yes --no-root-update --force"
@@ -261,9 +261,6 @@ diff -Naur a/zdev/dracut/95zdev/parse-zfcp.sh b/zdev/dracut/95zdev/parse-zfcp.sh
 -        IFS="$IFS_SAVED"
 -        echo "rd.zfcp ${zdev_zfcp_arg} :" | zdev_vinfo
 -        if [ "$#" -eq 1 ]; then
--            # shellcheck disable=SC2086
--            chzdev --enable --persistent $zdev_zfcp_base_args \
--                   zfcp-host "$args" 2>&1 | zdev_vinfo
 +# autodetect active bootdev from zipl device
 +if ! getargbool 0 'rd.zfcp' \
 +    && [[ -f /sys/firmware/ipl/ipl_type ]] \
@@ -275,8 +272,11 @@ diff -Naur a/zdev/dracut/95zdev/parse-zfcp.sh b/zdev/dracut/95zdev/parse-zfcp.sh
 +        (
 +            IFS_SAVED="$IFS"
 +            IFS="," # did not work in front of built-in set command below
-         else
              # shellcheck disable=SC2086
+-            chzdev --enable --persistent $zdev_zfcp_base_args \
+-                   zfcp-host "$args" 2>&1 | zdev_vinfo
+-        else
+-            # shellcheck disable=SC2086
 -            chzdev --enable --persistent $zdev_zfcp_base_args \
 -                   zfcp-lun "$args" 2>&1 | zdev_vinfo
 -        fi
