@@ -11,6 +11,7 @@
     <param name="exclude">bundles/menhirLib</param>
     <param name="exclude">bundles/parmap</param>
     <param name="exclude">bundles/pcre</param>
+    <param name="exclude">bundles/pcre2</param>
     <param name="exclude">bundles/pyml</param>
     <param name="exclude">bundles/stdcompat</param>
     <param name="exclude">bundles</param>
@@ -32,7 +33,7 @@
     <param name="exclude">tools/distributed</param>
     <param name="exclude">tools/obsolete</param>
     <param name="filename">coccinelle</param>
-    <param name="revision">09b475bb3dd2b29c6bd904cc455d4c25c6641649</param>
+    <param name="revision">b231de0db3f9513f6ea936caea5428fe627af1b9</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://gitlab.inria.fr/coccinelle/coccinelle.git</param>

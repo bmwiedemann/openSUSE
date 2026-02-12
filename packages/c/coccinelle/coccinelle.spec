@@ -42,7 +42,6 @@ Group:          Productivity/Text/Utilities
 URL:            http://coccinelle.lip6.fr/
 Source0:        %pkg-%version.tar.xz
 Source1:        %pkg.rpmlintrc
-Patch0:         %pkg.patch
 %if "%build_flavor" == ""
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -86,7 +85,6 @@ fixing bugs in systems code.
 
 %prep
 %setup -q -n %pkg-%version
-%patch -P 0 -p1
 
 %build
 %if "%build_flavor" == ""
