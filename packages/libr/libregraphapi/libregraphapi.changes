@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 12 10:47:56 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add compatibility parameter for CMake >= 4.0
+
+-------------------------------------------------------------------
 Sun Feb 11 19:31:21 UTC 2024 - Klaas Freitag <opensuse@freisturz.de>
 
 - remove unneeded build requires for compilers 

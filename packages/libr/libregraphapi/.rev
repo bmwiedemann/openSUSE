@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>1149604</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>8a972d3fbb973849fd276c8a219618b1</srcmd5>
+    <version>1.0.4</version>
+    <time>1770913772</time>
+    <user>anag_factory</user>
+    <comment>- Add compatibility parameter for CMake &gt;= 4.0</comment>
+    <requestid>1332665</requestid>
+  </revision>
 </revisionlist>

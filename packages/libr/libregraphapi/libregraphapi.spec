@@ -53,7 +53,10 @@ This package contains development files for libregraphapi.
 
 %build
 cd client
-%cmake_qt6 -DBUILD_SHARED_LIBS=ON
+%cmake_qt6 \
+  -DBUILD_SHARED_LIBS:BOOL=TRUE \
+  -DCMAKE_POLICY_VERSION_MINIMUM:STRING=3.5
+
 %qt6_build
 
 %install
