@@ -1,7 +1,7 @@
 #
 # spec file for package pgadmin4
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -139,7 +139,11 @@ BuildRequires:  %{python_module sqlparse >= %{python3_sqlparse_min_version}}
 BuildRequires:  %{python_module sshtunnel >= %{python3_sshtunnel_min_version}}
 BuildRequires:  %{python_module testscenarios}
 BuildRequires:  %{python_module typer >= %{python3_typer_min_version}}
+%if %python_version_nodots < 310
 BuildRequires:  %{python_module urllib3 < 2}
+%else
+BuildRequires:  %{python_module urllib3}
+%endif
 BuildRequires:  %{python_module user-agents >= %{python3_user_agents_min_version}}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -183,7 +187,11 @@ Requires:       %{python_module qrcode >= %{python3_qrcode_min_version}}
 Requires:       %{python_module sqlparse >= %{python3_sqlparse_min_version}}
 Requires:       %{python_module sshtunnel >= %{python3_sshtunnel_min_version}}
 Requires:       %{python_module typer >= %{python3_typer_min_version}}
+%if %python_version_nodots < 310
 Requires:       %{python_module urllib3 < 2}
+%else
+Requires:       %{python_module urllib3}
+%endif
 Requires:       %{python_module user-agents >= %{python3_user_agents_min_version}}
 Requires:       system-user-pgadmin
 Requires(postun): system-user-pgadmin

@@ -286,4 +286,14 @@
     <comment></comment>
     <requestid>1322263</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>ece14ab32c50be9801e316eeeee7a6b0</srcmd5>
+    <version>9.11</version>
+    <time>1770921459</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1326309 from nkrapp
+
+- Use new urllib3 with newer python version</comment>
+    <requestid>1332732</requestid>
+  </revision>
 </revisionlist>

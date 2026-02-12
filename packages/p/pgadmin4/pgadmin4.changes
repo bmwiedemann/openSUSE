@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  9 09:47:30 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Use new urllib3 with newer python version
+
+-------------------------------------------------------------------
 Thu Dec 11 17:43:48 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 9.11 
