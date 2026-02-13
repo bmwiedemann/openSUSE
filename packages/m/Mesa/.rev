@@ -6675,4 +6675,26 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   - u_d3d12.patch</comment>
     <requestid>1331065</requestid>
   </revision>
+  <revision rev="569" vrev="1">
+    <srcmd5>484813357123a04a1cb415436c6c331c</srcmd5>
+    <version>26.0.0</version>
+    <time>1770982815</time>
+    <user>anag_factory</user>
+    <comment>- Update to Mesa 26.0.0 final version
+  * Since Mesa 25.3, RADV has seen significant raytracing
+    performance improvements.
+  * Its `RADV_DEBUG` environment variable has removed the following
+    deprecated options: invariantgeom, nodynamicbounds, nongg_gs
+    and splitfma. Use the driconf variables radv_invariant_geom,
+    radv_no_dynamic_bounds, radv_disable_ngg_gs, and
+    radv_split_fma instead.
+  * RadeonSI switched to ACO by default for better and faster ISA
+    code generation and better GPU performance and better compile
+    times.
+  * This release also introduces KosmicKrisp, a Vulkan to Metal
+    layered driver for macOS.
+  * Users can expect the usual flurry of improvements across all
+    drivers and components,</comment>
+    <requestid>1332567</requestid>
+  </revision>
 </revisionlist>

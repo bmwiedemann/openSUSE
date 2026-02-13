@@ -131,9 +131,9 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        26.0.0~rc3
+Version:        26.0.0
 Release:        0
-%define pkg_version 26.0.0-rc3
+%define pkg_version 26.0.0
 Summary:        System for rendering 3-D graphics
 License:        MIT
 Group:          System/Libraries

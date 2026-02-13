@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Feb 11 18:46:39 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to Mesa 26.0.0 final version
+  * Since Mesa 25.3, RADV has seen significant raytracing
+    performance improvements.
+  * Its `RADV_DEBUG` environment variable has removed the following
+    deprecated options: invariantgeom, nodynamicbounds, nongg_gs
+    and splitfma. Use the driconf variables radv_invariant_geom,
+    radv_no_dynamic_bounds, radv_disable_ngg_gs, and
+    radv_split_fma instead.
+  * RadeonSI switched to ACO by default for better and faster ISA
+    code generation and better GPU performance and better compile
+    times.
+  * This release also introduces KosmicKrisp, a Vulkan to Metal
+    layered driver for macOS.
+  * Users can expect the usual flurry of improvements across all
+    drivers and components,
+- supersedes u_ppc64le-fix.patch
+
+-------------------------------------------------------------------
+Tue Feb 10 16:13:07 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_ppc64le-fix.patch: fixes build on pp64le
+
+-------------------------------------------------------------------
 Wed Feb  4 20:05:47 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - python36-buildfix1.patch
