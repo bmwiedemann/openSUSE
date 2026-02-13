@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 12 11:58:02 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix terminal rendering errors
+  * gitea-tea-Fix-termenv-OSC-RGBA-handling.patch
+
+-------------------------------------------------------------------
 Fri Nov 28 09:35:29 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Do not make config file group-readable.

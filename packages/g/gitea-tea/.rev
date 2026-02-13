@@ -149,4 +149,13 @@
     <comment></comment>
     <requestid>1320465</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>3c24b89c2eef45d00e5673f64b89ed06</srcmd5>
+    <version>0.11.1</version>
+    <time>1770995619</time>
+    <user>anag_factory</user>
+    <comment>- Fix terminal rendering errors
+  * gitea-tea-Fix-termenv-OSC-RGBA-handling.patch (forwarded request 1332684 from michals)</comment>
+    <requestid>1332849</requestid>
+  </revision>
 </revisionlist>

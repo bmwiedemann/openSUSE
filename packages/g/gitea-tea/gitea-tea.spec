@@ -1,7 +1,7 @@
 #
 # spec file for package gitea-tea
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Patch0:         fix-CVE-2025-58190.patch
 Patch1:         fix-CVE-2025-47911.patch
+Patch2:         gitea-tea-Fix-termenv-OSC-RGBA-handling.patch
 Patch3:         remove-config-file-group-readwrite-permission-856.patch
 BuildRequires:  golang(API) >= 1.24
 Conflicts:      tea
