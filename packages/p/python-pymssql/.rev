@@ -111,4 +111,12 @@
     * Fix build with Cython-3.2.0</comment>
     <requestid>1320601</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f79f00119847fd35ef9a7889ddfcfee6</srcmd5>
+    <version>2.3.12</version>
+    <time>1770995622</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1332858</requestid>
+  </revision>
 </revisionlist>

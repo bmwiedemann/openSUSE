@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 13 07:55:52 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.12
+  * Update manylinux base image to manylinux_2_28 to fix
+    CVE-2023-0464.
+- Update to version 2.3.11
+  * Improve executemany to get every batch result and check for
+    the total query size (for #952).
+- Update to version 2.3.10
+  * Add get_cur_db() method to MSSQLConnection (PR #979).
+
+-------------------------------------------------------------------
 Fri Nov 28 10:32:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.3.9

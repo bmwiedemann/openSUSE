@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymssql
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pymssql
-Version:        2.3.9
+Version:        2.3.12
 Release:        0
 Summary:        A simple database interface to MS-SQL for Python
 License:        LGPL-2.1-only
