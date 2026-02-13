@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Fri Feb 13 09:24:40 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.25.2:
+  - Fix: Revert atomic os.replace for package binary downloads due
+    to antivirus Windows issues (gh#conan-io/conan#19565).
+- Changes from version 2.25.0:
+  - Fix: Do "retry" over the os.replace() in Windows to avoid
+    antivirus blocking issues (gh#conan-io/conan#19532).
+- Changes from version 2.25.0:
+  * Features:
+    - Make the download of package binaries more atomic to make
+      cancellations more robust (gh#conan-io/conan#19510).
+    - Add public docs for InstallAPI subapi
+      (gh#conan-io/conan#19497).
+    - conan new with no positional arguments creates a default
+      CMake basic conanfile (gh#conan-io/conan#19496).
+    - Further optimize the number of DB calls for upload,
+      download, and package builds (gh#conan-io/conan#19485).
+    - Add public documentation for CacheAPI and ConfigAPI subapis
+      (gh#conan-io/conan#19479).
+    - Deprecate MesonToolchain.preprocessor_definitions in favor
+      of extra_defines (gh#conan-io/conan#19468).
+    - Add conan require command to add/remove requirements to/from
+      your local conanfile (gh#conan-io/conan#19457).
+    - Support for CPS CMake round trip with components with
+      requires (gh#conan-io/conan#19446).
+    - Add a way to specify link features ($<LINK_LIBRARY:...>) in
+      CMakeConfigDeps (gh#conan-io/conan#19444).
+    - Update settings with new versions of supported tools
+      (gh#conan-io/conan#19442).
+    - CPS CMake-Conan round trip support for components
+      (gh#conan-io/conan#19428).
+    - Move CMakeConfigDeps from incubating to experimental
+      (gh#conan-io/conan#19421).
+    - Support CPS shared libs from CMake
+      (gh#conan-io/conan#19417).
+    - Support full CPS CMake round trip in CMakeConfigDeps
+      (gh#conan-io/conan#19410).
+    - Optimize package cache DB access, reducing connections and
+      queries by half for the dependency graph construction
+      (gh#conan-io/conan#19398).
+    - Add root_profile_name to the profile jinja2 context to allow
+      tracing back the root profile from included profiles
+      (gh#conan-io/conan#19393).
+    - Optimize package cache DB access by doing batch updates of
+      the LRU recipes and packages (gh#conan-io/conan#19392).
+    - Define the Python version used by PipEnv using UV
+      (gh#conan-io/conan#19388).
+    - (Experimental) Support built-in xz and zstd compression for
+      Conan artifacts (gh#conan-io/conan#19337).
+  * Fixes:
+    - Check Python version in PyEnv init
+      (gh#conan-io/conan#19520).
+    - Populate <library>_DEFINITIONS legacy variables in
+      CMakeConfigDeps for compatibility with old
+      check_symbol_exists and similar (gh#conan-io/conan#19519).
+    - Use dnf as the default system package manager for Almalinux,
+      Rocky and Oracle Linux instead of legacy yum
+      (gh#conan-io/conan#19487).
+    - Display packages even when a system package manager install
+      is a no-op (gh#conan-io/conan#19483).
+    - Remove --lockfile-out generation arguments in workspace
+      commands that cannot generate a lockfile (orchestrated conan
+      workspace install/build/complete) (gh#conan-io/conan#19475).
+    - Reduce the sqlite DB connection scope to try to optimize DB
+      locking. Remove the yield DB return that could create
+      operational issues (gh#conan-io/conan#19394).
+    - Avoid potential None and PackageType comparison when
+      deducing cpp_info (gh#conan-io/conan#19494).
+    - Solve PipEnv failure when using version ranges
+      (gh#conan-io/conan#19478).
+    - Correct pattern comparison for symlink with files.copy
+      function (gh#conan-io/conan#19437).
+    - Solve issue in CMakeConfigDeps when building transitive
+      libraries in the "build" context (gh#conan-io/conan#19429).
+    - Allow updating to newer remote revisions that already exist
+      in the Conan cache with an older timestamp
+      (gh#conan-io/conan#19402).
+    - Fix unintended packages showing up when using conan list ...
+      --graph-context={build-only,host-only} when there are
+      package binary mismatches (gh#conan-io/conan#19368).
+
+-------------------------------------------------------------------
 Sat Jan 17 15:18:11 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.24.0:
