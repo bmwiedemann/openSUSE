@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 11 16:49:53 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 4.1.6
+  - various bugfixes
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.1.4
+    https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.1.5 and
+    https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.1.6
+    for the detailed upstream changelogs
+  - update %files for new python LibAppArmor location
+- refresh kerberosclient-usrmerge.diff
+
+-------------------------------------------------------------------
 Sat Jan 10 10:29:59 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
 
 - update to AppArmor 4.1.3

@@ -1,17 +1,17 @@
-diff --git a/profiles/apparmor.d/abstractions/kerberosclient b/profiles/apparmor.d/abstractions/kerberosclient
-index e5f3a934f..d01bfe804 100644
---- a/profiles/apparmor.d/abstractions/kerberosclient
-+++ b/profiles/apparmor.d/abstractions/kerberosclient
+Index: apparmor-v4.1.6/profiles/apparmor.d/abstractions/kerberosclient
+===================================================================
+--- apparmor-v4.1.6.orig/profiles/apparmor.d/abstractions/kerberosclient	2026-02-10 09:37:34.000000000 +0100
++++ apparmor-v4.1.6/profiles/apparmor.d/abstractions/kerberosclient	2026-02-11 19:36:35.213870071 +0100
 @@ -28,9 +28,9 @@
    /usr/lib/@{multiarch}/krb5/plugins/authdata/* mr,
  
-   /etc/krb5.keytab            rk,
--  /etc/krb5.conf              r,
--  /etc/krb5.conf.d/           r,
--  /etc/krb5.conf.d/*          r,
-+  @{etc_ro}/krb5.conf         r,
-+  @{etc_ro}/krb5.conf.d/      r,
-+  @{etc_ro}/krb5.conf.d/*     r,
+   /etc/{,krb5/}krb5.keytab    rk,
+-  /etc/{,krb5/}krb5.conf      r,
+-  /etc/{,krb5/}krb5.conf.d/   r,
+-  /etc/{,krb5/}krb5.conf.d/*  r,
++  @{etc_ro}/{,krb5/}krb5.conf      r,
++  @{etc_ro}/{,krb5/}krb5.conf.d/   r,
++  @{etc_ro}/{,krb5/}krb5.conf.d/*  r,
  
-   # config files found via strings on libs
-   /etc/krb.conf               r,
+   # Path included by configuration file installed by SSSD
+   /var/lib/sss/pubconf/krb5.include.d/   r,

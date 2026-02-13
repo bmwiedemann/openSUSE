@@ -51,11 +51,11 @@
 %define CATALINA_HOME /usr/share/tomcat6
 %define JAR_FILE changeHatValve.jar
 
-%define tarversion v4.1.3
-%define pyeggversion 4.1.3
+%define tarversion v4.1.6
+%define pyeggversion 4.1.6
 
 Name:           apparmor
-Version:        4.1.3
+Version:        4.1.6
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
@@ -801,13 +801,9 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %files -n python3-apparmor
 %defattr(-,root,root)
 %{python3_sitearch}/LibAppArmor-%{pyeggversion}-py*.egg-info
-%dir %{python3_sitearch}/LibAppArmor
-%dir %{python3_sitearch}/LibAppArmor/__pycache__
-%{python3_sitearch}/LibAppArmor/_LibAppArmor.cpython-*.so
-%{python3_sitearch}/LibAppArmor/__pycache__/__init__.cpython-*.pyc
-%{python3_sitearch}/LibAppArmor/__pycache__/LibAppArmor.cpython-*.pyc
-%{python3_sitearch}/LibAppArmor/__init__.py
-%{python3_sitearch}/LibAppArmor/LibAppArmor.py
+%{python3_sitearch}/LibAppArmor.py
+%{python3_sitearch}/_LibAppArmor.cpython-*-linux-gnu.so
+%{python3_sitearch}/__pycache__/LibAppArmor.cpython-*.pyc
 %{python3_sitelib}/apparmor/
 %{python3_sitelib}/apparmor-%{pyeggversion}-py*.egg-info
 %endif

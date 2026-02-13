@@ -3072,4 +3072,19 @@ Also note that the &quot;mailserver_setup&quot; test in https://openqa.opensuse.
   - dovecot24-part3-mr1822.diff (forwarded request 1326517 from cboltz)</comment>
     <requestid>1326518</requestid>
   </revision>
+  <revision rev="231" vrev="1">
+    <srcmd5>3e260ca090bd4848c4bedb68f933eac0</srcmd5>
+    <version>4.1.6</version>
+    <time>1770982828</time>
+    <user>anag_factory</user>
+    <comment>- update to AppArmor 4.1.6
+  - various bugfixes
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.1.4
+    https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.1.5 and
+    https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.1.6
+    for the detailed upstream changelogs
+  - update %files for new python LibAppArmor location
+- refresh kerberosclient-usrmerge.diff (forwarded request 1332579 from cboltz)</comment>
+    <requestid>1332580</requestid>
+  </revision>
 </revisionlist>
