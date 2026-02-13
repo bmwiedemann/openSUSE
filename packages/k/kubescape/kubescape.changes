@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 13 06:17:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.1:
+  * Enhance version testing in smoke tests to extract and validate
+    output version
+  * fix isRuleKubescapeVersionCompatible bug with version 4.0.0
+
+-------------------------------------------------------------------
 Thu Feb 05 06:14:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.0.0:
