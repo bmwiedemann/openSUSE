@@ -1,7 +1,7 @@
 #
 # spec file for package aws-c-s3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define library_version 1.0.0
 %define library_soversion 0unstable
 Name:           aws-c-s3
-Version:        0.11.4
+Version:        0.11.5
 Release:        0
 Summary:        AWS Cross-Platform, C99 wrapper for cryptography primitives
 License:        Apache-2.0

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  6 11:59:20 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.11.5
+  * Fix S3express backpressure by @TingDaoK in (#612)
+
+-------------------------------------------------------------------
 Fri Jan  9 13:24:04 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.11.4
