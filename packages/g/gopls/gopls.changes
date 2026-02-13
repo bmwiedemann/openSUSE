@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 13 03:54:34 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.21.1:
+  * gopls: update go.mod for v0.21.1-pre.1
+  * all: assume GODEBUG=gotypesalias=1 and simplify
+  * go/ast/inspector: FindByPos returns the first innermost node
+
+-------------------------------------------------------------------
 Wed Dec 17 20:36:09 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.21.0:

@@ -383,4 +383,15 @@
   * gopls/internal/test/marker: avoid BasicLit in fill_struct.txt (forwarded request 1323424 from jfkw)</comment>
     <requestid>1323425</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>fc52036bdc17a5180ae2f5cf585628ac</srcmd5>
+    <version>0.21.1</version>
+    <time>1770983276</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.21.1:
+  * gopls: update go.mod for v0.21.1-pre.1
+  * all: assume GODEBUG=gotypesalias=1 and simplify
+  * go/ast/inspector: FindByPos returns the first innermost node (forwarded request 1332792 from jfkw)</comment>
+    <requestid>1332793</requestid>
+  </revision>
 </revisionlist>
