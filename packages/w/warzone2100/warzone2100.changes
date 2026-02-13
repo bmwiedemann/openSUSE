@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Feb  5 18:47:34 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 4.6.3
+  General:
+  * Fix: Detect disconnected research categories
+  * Fix: Video sequence skip time delay for powerful systems
+  * Fix: VTOLs floating motionless in mid-air after failed embark
+  * Fix: Auto-embark transporter selection behavior
+    in skirmish / mp
+  * Fix: Trigger screenSizeDidChange if already started
+    in *TitleUI::start
+  * Fix: History console position and sizing when layout changes
+  * Fix: Various potential crashes / asserts
+  Graphics:
+  * Add: Terrain Shadows graphics option, terrain can now cast
+    actual shadows on itself and everything else
+  * Add: Numerous improvements for shadows, lighting, and fog
+  * Change: Remove old fallback terrain renderer
+  * Fix: Vulkan: Default-disable additional problematic layers
+  * Fix: Black borders when changing display scale while
+    fullscreen on some platforms
+  Multiplayer:
+  * Add: locked.cheats option, to reject debug mode / cheat voting
+  * Add: Right-clicking on a human player copies the player id to
+    the clipboard
+  * Change: Display the player id (b64) instead of the old player
+     hash
+  * Fix: handlePlayerLeftInGame leftWhilePlayer value
+  * Fix: Auto-not-ready kick behavior
+  * Fix: Improve tmp bad IPs list with expiry 
+  * Fix: Return immediately after startMultiplayerGame() in
+    frontendMultiMessages
+  * Fix: Skip additional graphics or display-related tasks in
+    headless mode
+  * Fix: Reduce amount of host / system message spam when joining
+    lobbies and while in a lobby
+  * Fix: Handle poll connection-related errors in
+    PendingWritesManager
+  * Fix: Improve accuracy of multiStatsResearchPerformance
+    accumulation
+  * Fix: Various possible causes of rare desyncs
+  Scripting:
+  * Add: Optional "quiet" param to includeJSON() 
+  * Fix: Remove or change some defensive checks in skirmish bots 
+  * Fix: Handle circular references when converting JSValue
+    to json
+  AI:
+  * Change: Cobra AI: Improve cyborg style games
+  * Fix: Nexus AI: Send help chat messages to allies only
+  Translations:
+  * Add: Serbian translation
+  * Change: Translation updates
+  Other:
+  * Fix: Various Wformat warnings and correctness issues
+  * Fix: get-dependencies_linux.sh: Debian / Ubuntu
+    version-handling
+  * Fix: Various documentation cleanups
+
+-------------------------------------------------------------------
 Tue Dec  9 18:17:17 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 4.6.2
