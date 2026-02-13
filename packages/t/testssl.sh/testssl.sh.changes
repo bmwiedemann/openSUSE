@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 12 14:11:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.3
+  * label missing KEMs as low severity to indicate that people
+    should start using it changing in CA stores.
+  * changes in unit tests.
+  * clientHello contains <= 118 ciphers as more could cause problem
+    for picky servers.
+  * fixed ROBOT check for STARTTLS which sometimes caused
+    inconsistent test results.
+  * fixed confused "ADDTL_CA_FILES" enviroment variable.
+  * fixed word pattern matching in /etc/hosts where anystring
+    matched alos 192.168.0.11 anystring-tomcat.
+  * several minor fixes
+-------------------------------------------------------------------
 Thu Sep 18 19:03:42 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.2.2
