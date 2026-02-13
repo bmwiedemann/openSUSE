@@ -1607,4 +1607,18 @@ mostly-working synapse than nothing at all) and the package has been update to
 - refresh 0001-pyo3-Disable-abi3-feature.patch</comment>
     <requestid>1332291</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>12506f1993f43fe854a6d679aa2dafaa</srcmd5>
+    <version>1.147.1</version>
+    <time>1770982978</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1332740 from darix
+
+- Update to 1.147.1
+  Block federation requests and events authenticated using a known
+  insecure signing key. See CVE-2026-24044 / ELEMENTSEC-2025-1670.
+  (#19459)
+  https://github.com/element-hq/ess-helm/security/advisories/GHSA-qwcj-h6m8-vp6q</comment>
+    <requestid>1332741</requestid>
+  </revision>
 </revisionlist>

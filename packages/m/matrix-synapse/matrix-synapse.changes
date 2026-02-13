@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 12 16:44:19 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.147.1
+  Block federation requests and events authenticated using a known
+  insecure signing key. See CVE-2026-24044 / ELEMENTSEC-2025-1670.
+  (#19459)
+
+  https://github.com/element-hq/ess-helm/security/advisories/GHSA-qwcj-h6m8-vp6q
+
+-------------------------------------------------------------------
 Tue Feb 10 16:29:39 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.147.0
