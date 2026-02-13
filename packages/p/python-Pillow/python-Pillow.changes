@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 12 10:22:27 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 12.1.1 (fixes CVE-2026-25990, bsc#1258125)
+  * Patch libavif for svt-av1 4.0 compatibility #9413 [@hugovk]
+  * Fix OOB Write with invalid tile extents #9427 [@radarhere]
+
+-------------------------------------------------------------------
 Tue Jan 20 06:54:31 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 12.1.0

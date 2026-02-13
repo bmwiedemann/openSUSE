@@ -925,4 +925,12 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
     * Correct variable type #9335 [@radarhere]</comment>
     <requestid>1328176</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>fbd7f1fcc967a3286b1b6b69960e7d15</srcmd5>
+    <version>12.1.1</version>
+    <time>1770982872</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1332702</requestid>
+  </revision>
 </revisionlist>
