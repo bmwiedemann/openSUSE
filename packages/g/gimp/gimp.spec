@@ -100,6 +100,8 @@ Source2:        openSUSE.gpl
 Patch1:         gimp-2.99.19-cm-system-monitor-profile-by-default.patch
 Patch2:         gimp-2.99.19-external-help-browser.patch
 Patch3:         gimp-2.99.19-no-phone-home-default.patch
+# PATCH-FIX-UPSTREAM gimp-2026-2239.patch bsc#1257959 mgorse@suse.com -- fix heap buffer overflow in psd-util.c.
+Patch4:         gimp-CVE-2026-2239.patch
 %if %{with debug_in_build_gimp}
 BuildRequires:  gdb
 %endif

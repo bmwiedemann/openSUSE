@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 11 15:32:17 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add gimp-CVE-2026-2239.patch: fix a heap buffer overflow in
+  psd-util.c (bsc#1257959 CVE-2026-2239 glgo#GNOME/gimp#15812).
+
+-------------------------------------------------------------------
 Sun Jan 25 03:00:53 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.0.8
