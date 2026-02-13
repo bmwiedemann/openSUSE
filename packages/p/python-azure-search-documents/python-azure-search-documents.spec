@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-search-documents
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           python-azure-search-documents
 Version:        11.6.0
 Release:        0
 Summary:        Microsoft Azure Service Bus Runtime Client Library
-License:        Apache-2.0
+License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure_search_documents/azure_search_documents-%{version}.tar.gz

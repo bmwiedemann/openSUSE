@@ -166,4 +166,12 @@
     CHANGELOG.md file provided with this package (forwarded request 1310491 from glaubitz)</comment>
     <requestid>1310604</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>207ff2ccc3a3348a61d736ccb9d3b66e</srcmd5>
+    <version>11.6.0</version>
+    <time>1770983404</time>
+    <user>anag_factory</user>
+    <comment>- Replace bogus Apache-2.0 with MIT in License field</comment>
+    <requestid>1332825</requestid>
+  </revision>
 </revisionlist>
