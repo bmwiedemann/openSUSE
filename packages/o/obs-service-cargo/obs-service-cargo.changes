@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 13 00:16:00 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 7.2.1:
+  * chore(release): bump to v7.2.1
+  * chore: bump deps
+  * fix: update build badge link in README to point to the correct CI workflow
+
+-------------------------------------------------------------------
+Sun Oct 05 05:29:03 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 7.2.0+git1.gef54bead96208ab4bfead4aee86a332c90c06f59:
+  * deps: update libroast to v10.0.2 in Cargo.lock
+
+-------------------------------------------------------------------
 Sat Oct 04 14:01:17 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 7.2.0:
