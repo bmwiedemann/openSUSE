@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Thu Feb 12 09:35:46 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 6.17
+- new and rewritten pages
+  * grepc.1
+  * grepc_c.1
+  * mansectf.1
+  * F_GETDELEG.2const        
+  * IPPROTO_IP.2const
+  * IPPROTO_IPV6.2const
+  * IPV6_ADDRFORM.2const
+  * IPV6_ADD_MEMBERSHIP.2const
+  * IPV6_MTU.2const
+  * IPV6_MTU_DISCOVER.2const
+  * IPV6_MULTICAST_HOPS.2const
+  * IPV6_MULTICAST_IF.2const
+  * IPV6_MULTICAST_LOOP.2const
+  * IPV6_RECVERR.2const
+  * IPV6_RECVPKTINFO.2const
+  * IPV6_ROUTER_ALERT.2const
+  * IPV6_RTHDR.2const
+  * IPV6_UNICAST_HOPS.2const
+  * IPV6_V6ONLY.2const
+  * IP_ADD_MEMBERSHIP.2constA
+  * IP_ADD_SOURCE_MEMBERSHIP.2const
+  * IP_BIND_ADDRESS_NO_PORT.2const
+  * IP_BLOCK_SOURCE.2const
+  * IP_DROP_MEMBERSHIP.2const
+  * IP_DROP_SOURCE_MEMBERSHIP.2const
+  * IP_FREEBIND.2const
+  * IP_HDRINCL.2const
+  * IP_LOCAL_PORT_RANGE.2const
+  * IP_MSFILTER.2const
+  * IP_MTU.2const
+  * IP_MTU_DISCOVER.2const
+  * IP_MULTICAST_ALL.2const
+  * IP_MULTICAST_IF.2const
+  * IP_MULTICAST_LOOP.2const
+  * IP_MULTICAST_TTL.2const
+  * IP_NODEFRAG.2const
+  * IP_OPTIONS.2const
+  * IP_PASSSEC.2const
+  * IP_PKTINFO.2const
+  * IP_RECVERR.2const
+  * IP_RECVOPTS.2const
+  * IP_RECVORIGDSTADDR.2const
+  * IP_RECVTOS.2const
+  * IP_RECVTTL.2const
+  * IP_RETOPTS.2const
+  * IP_ROUTER_ALERT.2const
+  * IP_TOS.2const
+  * IP_TRANSPARENT.2const
+  * IP_TTL.2const
+  * IP_UNBLOCK_SOURCE.2const
+  * SO_PEERSEC.2const
+  * in_pktinfo.2type
+  * ip_mreq_source.2type
+  * ip_mreqn.2type
+  * _Maxof.3
+  * aligned_alloc.3
+  * memalign.3
+  * getopt.3
+  * getopt_long.3
+  * getopt_long_only.3
+  * snprintf.3
+  * sprintf.3
+  * posix_memalign.3
+  * printf.3
+  * pvalloc.3
+  * valloc.3
+  * gnu::warning.3attr
+  * proc_sys_net_ipv4.5
+  * ip.7
+  * ipv6.7
+- see https://lwn.net/Articles/1058323/ for details
+- modified patches
+  * man-pages-tcp_fack.patch (refreshed)
+  * man-pages_gai.conf-reference.patch (refreshed)
+
+-------------------------------------------------------------------
 Thu Oct 30 07:35:17 UTC 2025 - pgajdos@suse.com
 
 - version update to 6.16

@@ -2324,4 +2324,41 @@
   * man-pages_gai.conf-reference.patch (refreshed)</comment>
     <requestid>1314514</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>756f76b7e350ac39a49d32ea7458c0a5</srcmd5>
+    <version>6.17</version>
+    <time>1770982842</time>
+    <user>anag_factory</user>
+    <comment>- version update to 6.17
+- new and rewritten pages
+  * grepc.1
+  * grepc_c.1
+  * mansectf.1
+  * F_GETDELEG.2const        
+  * IPPROTO_IP.2const
+  * IPPROTO_IPV6.2const
+  * IPV6_ADDRFORM.2const
+  * IPV6_ADD_MEMBERSHIP.2const
+  * IPV6_MTU.2const
+  * IPV6_MTU_DISCOVER.2const
+  * IPV6_MULTICAST_HOPS.2const
+  * IPV6_MULTICAST_IF.2const
+  * IPV6_MULTICAST_LOOP.2const
+  * IPV6_RECVERR.2const
+  * IPV6_RECVPKTINFO.2const
+  * IPV6_ROUTER_ALERT.2const
+  * IPV6_RTHDR.2const
+  * IPV6_UNICAST_HOPS.2const
+  * IPV6_V6ONLY.2const
+  * IP_ADD_MEMBERSHIP.2constA
+  * IP_ADD_SOURCE_MEMBERSHIP.2const
+  * IP_BIND_ADDRESS_NO_PORT.2const
+  * IP_BLOCK_SOURCE.2const
+  * IP_DROP_MEMBERSHIP.2const
+  * IP_DROP_SOURCE_MEMBERSHIP.2const
+  * IP_FREEBIND.2const
+  * IP_HDRINCL.2const
+  * IP_LOCAL_PORT_RANGE.2const</comment>
+    <requestid>1332649</requestid>
+  </revision>
 </revisionlist>
