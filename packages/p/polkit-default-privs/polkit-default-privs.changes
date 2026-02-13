@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 12 14:26:29 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 1550+20260212.d84c6be:
+  * profiles: systemd v258.4 ask-password (bsc#1257943)
+  * add GDM manage-user-displays action (bsc#1258025)
+  * build(deps): bump actions/checkout from 6.0.1 to 6.0.2
+
+-------------------------------------------------------------------
 Fri Jan 23 15:23:30 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 1550+20260122.bb2b3c5:
