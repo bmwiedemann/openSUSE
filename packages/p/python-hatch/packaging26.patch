@@ -1,0 +1,288 @@
+From bc31cfccc15283a49f62024d3607c7bfad01abe0 Mon Sep 17 00:00:00 2001
+From: Damian Shaw <damian.peter.shaw@gmail.com>
+Date: Fri, 23 Jan 2026 09:43:35 -0500
+Subject: [PATCH] Fix warning and tests with packaging 26.0 (#2159)
+
+* Fix `reset_version_parts` to use `__replace__` when available
+
+* Fix test formatting to comply with packaging 26.0+
+---
+ .../src/hatchling/version/scheme/standard.py  | 41 ++++++++++++-------
+ tests/backend/metadata/test_core.py           |  8 ++--
+ tests/backend/metadata/test_spec.py           | 12 +++---
+ tests/cli/env/test_show.py                    | 18 ++++----
+ tests/env/plugin/test_interface.py            |  4 +-
+ tests/helpers/templates/licenses/__init__.py  | 19 ++++++---
+ 6 files changed, 62 insertions(+), 40 deletions(-)
+
+diff --git a/backend/src/hatchling/version/scheme/standard.py b/backend/src/hatchling/version/scheme/standard.py
+index 479a39a07..e8efc76b6 100644
+--- a/backend/src/hatchling/version/scheme/standard.py
++++ b/backend/src/hatchling/version/scheme/standard.py
+@@ -1,6 +1,6 @@
+ from __future__ import annotations
+ 
+-from typing import TYPE_CHECKING, Any, cast
++from typing import TYPE_CHECKING, Any, Literal, cast
+ 
+ from hatchling.version.scheme.plugin.interface import VersionSchemeInterface
+ 
+@@ -28,13 +28,15 @@ def update(
+ 
+         for version in versions:
+             if version == "release":
+-                reset_version_parts(original, release=original.release)
++                original = reset_version_parts(original, release=original.release)
+             elif version == "major":
+-                reset_version_parts(original, release=update_release(original, [original.major + 1]))
++                original = reset_version_parts(original, release=update_release(original, [original.major + 1]))
+             elif version == "minor":
+-                reset_version_parts(original, release=update_release(original, [original.major, original.minor + 1]))
++                original = reset_version_parts(
++                    original, release=update_release(original, [original.major, original.minor + 1])
++                )
+             elif version in {"micro", "patch", "fix"}:
+-                reset_version_parts(
++                original = reset_version_parts(
+                     original, release=update_release(original, [original.major, original.minor, original.micro + 1])
+                 )
+             elif version in {"a", "b", "c", "rc", "alpha", "beta", "pre", "preview"}:
+@@ -44,13 +46,13 @@ def update(
+                     if phase == current_phase:
+                         number = current_number + 1
+ 
+-                reset_version_parts(original, pre=(phase, number))
++                original = reset_version_parts(original, pre=(phase, number))
+             elif version in {"post", "rev", "r"}:
+                 number = 0 if original.post is None else original.post + 1
+-                reset_version_parts(original, post=parse_letter_version(version, number))
++                original = reset_version_parts(original, post=number)
+             elif version == "dev":
+                 number = 0 if original.dev is None else original.dev + 1
+-                reset_version_parts(original, dev=(version, number))
++                original = reset_version_parts(original, dev=number)
+             else:
+                 if len(versions) > 1:
+                     message = "Cannot specify multiple update operations with an explicit version"
+@@ -66,9 +68,13 @@ def update(
+         return str(original)
+ 
+ 
+-def reset_version_parts(version: Version, **kwargs: Any) -> None:
+-    # https://github.com/pypa/packaging/blob/20.9/packaging/version.py#L301-L310
+-    internal_version = version._version  # noqa: SLF001
++def reset_version_parts(version: Version, **kwargs: Any) -> Version:
++    """
++    Update version parts and clear all subsequent parts in the sequence.
++
++    When __replace__ is available (packaging 26.0+), returns a new Version instance.
++    Otherwise mutates version via private ._version and returns the same instance.
++    """
+     parts: dict[str, Any] = {}
+     ordered_part_names = ("epoch", "release", "pre", "post", "dev", "local")
+ 
+@@ -80,9 +86,16 @@ def reset_version_parts(version: Version, **kwargs: Any) -> None:
+             parts[part_name] = kwargs[part_name]
+             reset = True
+         else:
+-            parts[part_name] = getattr(internal_version, part_name)
++            parts[part_name] = getattr(version, part_name)
++
++    # Use __replace__ if available for efficiency
++    if hasattr(version, "__replace__"):
++        return version.__replace__(**parts)
+ 
++    # Reference: https://github.com/pypa/packaging/blob/20.9/packaging/version.py#L301-L310
++    internal_version = version._version  # noqa: SLF001
+     version._version = type(internal_version)(**parts)  # noqa: SLF001
++    return version
+ 
+ 
+ def update_release(original_version: Version, new_release_parts: list[int]) -> tuple[int, ...]:
+@@ -92,7 +105,7 @@ def update_release(original_version: Version, new_release_parts: list[int]) -> t
+     return tuple(new_release_parts)
+ 
+ 
+-def parse_letter_version(*args: Any, **kwargs: Any) -> tuple[str, int]:
++def parse_letter_version(*args: Any, **kwargs: Any) -> tuple[Literal["a", "b", "rc"], int]:
+     from packaging.version import _parse_letter_version  # noqa: PLC2701
+ 
+-    return cast(tuple[str, int], _parse_letter_version(*args, **kwargs))
++    return cast(tuple[Literal["a", "b", "rc"], int], _parse_letter_version(*args, **kwargs))
+diff --git a/tests/backend/metadata/test_core.py b/tests/backend/metadata/test_core.py
+index a51fe3cb8..23440b725 100644
+--- a/tests/backend/metadata/test_core.py
++++ b/tests/backend/metadata/test_core.py
+@@ -1163,7 +1163,7 @@ def test_direct_reference_allowed(self, isolation):
+             },
+         )
+ 
+-        assert metadata.core.dependencies == ["proj@ git+https://github.com/org/proj.git@v1"]
++        assert metadata.core.dependencies == ["proj @ git+https://github.com/org/proj.git@v1"]
+ 
+     def test_context_formatting(self, isolation, uri_slash_prefix):
+         metadata = ProjectMetadata(
+@@ -1176,7 +1176,7 @@ def test_context_formatting(self, isolation, uri_slash_prefix):
+         )
+ 
+         normalized_path = str(isolation).replace("\\", "/")
+-        assert metadata.core.dependencies == [f"proj@ file:{uri_slash_prefix}{normalized_path}"]
++        assert metadata.core.dependencies == [f"proj @ file:{uri_slash_prefix}{normalized_path}"]
+ 
+     def test_correct(self, isolation):
+         metadata = ProjectMetadata(
+@@ -1343,7 +1343,7 @@ def test_context_formatting(self, isolation, uri_slash_prefix):
+         )
+ 
+         normalized_path = str(isolation).replace("\\", "/")
+-        assert metadata.core.optional_dependencies == {"foo": [f"proj@ file:{uri_slash_prefix}{normalized_path}"]}
++        assert metadata.core.optional_dependencies == {"foo": [f"proj @ file:{uri_slash_prefix}{normalized_path}"]}
+ 
+     def test_direct_reference_allowed(self, isolation):
+         metadata = ProjectMetadata(
+@@ -1358,7 +1358,7 @@ def test_direct_reference_allowed(self, isolation):
+             },
+         )
+ 
+-        assert metadata.core.optional_dependencies == {"foo": ["proj@ git+https://github.com/org/proj.git@v1"]}
++        assert metadata.core.optional_dependencies == {"foo": ["proj @ git+https://github.com/org/proj.git@v1"]}
+ 
+     def test_correct(self, isolation):
+         metadata = ProjectMetadata(
+diff --git a/tests/backend/metadata/test_spec.py b/tests/backend/metadata/test_spec.py
+index ea47bf06e..311832092 100644
+--- a/tests/backend/metadata/test_spec.py
++++ b/tests/backend/metadata/test_spec.py
+@@ -216,7 +216,7 @@ def test_dependencies(self):
+ Requires-Dist: bar==5; extra == 'feature2'
+ Requires-Dist: foo==1; (python_version < '3') and extra == 'feature2'
+ Provides-Extra: feature3
+-Requires-Dist: baz@ file:///path/to/project ; extra == 'feature3'
++Requires-Dist: baz @ file:///path/to/project ; extra == 'feature3'
+ """
+         assert project_metadata_from_core_metadata(core_metadata) == {
+             "name": "My.App",
+@@ -225,7 +225,7 @@ def test_dependencies(self):
+             "optional-dependencies": {
+                 "feature1": ['bar==5; python_version < "3"', "foo==1"],
+                 "feature2": ["bar==5", 'foo==1; python_version < "3"'],
+-                "feature3": ["baz@ file:///path/to/project"],
++                "feature3": ["baz @ file:///path/to/project"],
+             },
+         }
+ 
+@@ -990,7 +990,7 @@ def test_all(self, constructor, helpers, temp_dir):
+             Requires-Dist: bar==5; extra == 'feature2'
+             Requires-Dist: foo==1; (python_version < '3') and extra == 'feature2'
+             Provides-Extra: feature3
+-            Requires-Dist: baz@ file:///path/to/project ; extra == 'feature3'
++            Requires-Dist: baz @ file:///path/to/project ; extra == 'feature3'
+             Description-Content-Type: text/markdown
+ 
+             test content
+@@ -1459,7 +1459,7 @@ def test_all(self, constructor, helpers, temp_dir):
+             Requires-Dist: bar==5; extra == 'feature2'
+             Requires-Dist: foo==1; (python_version < '3') and extra == 'feature2'
+             Provides-Extra: feature3
+-            Requires-Dist: baz@ file:///path/to/project ; extra == 'feature3'
++            Requires-Dist: baz @ file:///path/to/project ; extra == 'feature3'
+             Description-Content-Type: text/markdown
+ 
+             test content
+@@ -1898,7 +1898,7 @@ def test_all(self, constructor, temp_dir, helpers):
+             Requires-Dist: bar==5; extra == 'feature2'
+             Requires-Dist: foo==1; (python_version < '3') and extra == 'feature2'
+             Provides-Extra: feature3
+-            Requires-Dist: baz@ file:///path/to/project ; extra == 'feature3'
++            Requires-Dist: baz @ file:///path/to/project ; extra == 'feature3'
+             Description-Content-Type: text/markdown
+ 
+             test content
+@@ -2364,7 +2364,7 @@ def test_all(self, constructor, temp_dir, helpers):
+             Requires-Dist: bar==5; extra == 'feature2'
+             Requires-Dist: foo==1; (python_version < '3') and extra == 'feature2'
+             Provides-Extra: feature3
+-            Requires-Dist: baz@ file:///path/to/project ; extra == 'feature3'
++            Requires-Dist: baz @ file:///path/to/project ; extra == 'feature3'
+             Description-Content-Type: text/markdown
+ 
+             test content
+diff --git a/tests/cli/env/test_show.py b/tests/cli/env/test_show.py
+index 53070394f..fd26a3741 100644
+--- a/tests/cli/env/test_show.py
++++ b/tests/cli/env/test_show.py
+@@ -451,15 +451,15 @@ def test_context_formatting(hatch, helpers, temp_dir, config_file):
+         +======+=========+==============+=======================+
+         | foo  | virtual | pydantic     | BAR=FOO_BAR           |
+         +------+---------+--------------+-----------------------+
+-                                 Matrices
+-        +---------+---------+------------+------------------------+
+-        | Name    | Type    | Envs       | Dependencies           |
+-        +=========+=========+============+========================+
+-        | default | virtual | py39-9000  | foo@ {root:uri}/../foo |
+-        |         |         | py39-3.14  |                        |
+-        |         |         | py310-9000 |                        |
+-        |         |         | py310-3.14 |                        |
+-        +---------+---------+------------+------------------------+
++                                  Matrices
++        +---------+---------+------------+-------------------------+
++        | Name    | Type    | Envs       | Dependencies            |
++        +=========+=========+============+=========================+
++        | default | virtual | py39-9000  | foo @ {root:uri}/../foo |
++        |         |         | py39-3.14  |                         |
++        |         |         | py310-9000 |                         |
++        |         |         | py310-3.14 |                         |
++        +---------+---------+------------+-------------------------+
+         """
+     )
+ 
+diff --git a/tests/env/plugin/test_interface.py b/tests/env/plugin/test_interface.py
+index 842472f8e..5c337d42e 100644
+--- a/tests/env/plugin/test_interface.py
++++ b/tests/env/plugin/test_interface.py
+@@ -1194,7 +1194,7 @@ def test_context_formatting(self, isolation, isolated_data_dir, platform, temp_a
+         )
+ 
+         normalized_path = str(isolation).replace("\\", "/")
+-        assert environment.dependencies == ["dep2", f"proj@ file:{uri_slash_prefix}{normalized_path}", "dep1"]
++        assert environment.dependencies == ["dep2", f"proj @ file:{uri_slash_prefix}{normalized_path}", "dep1"]
+ 
+     def test_project_dependencies_context_formatting(
+         self, temp_dir, isolated_data_dir, platform, temp_application, uri_slash_prefix
+@@ -1244,7 +1244,7 @@ def test_project_dependencies_context_formatting(
+         )
+ 
+         normalized_parent_path = str(temp_dir.parent).replace("\\", "/")
+-        expected_dep = f"sibling-project@ file:{uri_slash_prefix}{normalized_parent_path}/sibling-project"
++        expected_dep = f"sibling-project @ file:{uri_slash_prefix}{normalized_parent_path}/sibling-project"
+ 
+         # Verify the dependency was formatted correctly
+         assert expected_dep in environment.dependencies
+diff --git a/tests/helpers/templates/licenses/__init__.py b/tests/helpers/templates/licenses/__init__.py
+index b9ffea3f2..a0698081b 100644
+--- a/tests/helpers/templates/licenses/__init__.py
++++ b/tests/helpers/templates/licenses/__init__.py
+@@ -194,9 +194,18 @@
+ 
+ Copyright (c) <year> <copyright holders>
+ 
+-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+-
+-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-
+-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
++associated documentation files (the "Software"), to deal in the Software without restriction, including
++without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
++following conditions:
++
++The above copyright notice and this permission notice shall be included in all copies or substantial
++portions of the Software.
++
++THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
++LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO
++EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
++IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
++USE OR OTHER DEALINGS IN THE SOFTWARE.
+ """

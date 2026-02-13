@@ -55,6 +55,8 @@ Source23:       https://files.pythonhosted.org/packages/py3/t/trove_classifiers/
 Source24:       https://files.pythonhosted.org/packages/py3/u/urllib3/urllib3-2.6.2-py3-none-any.whl
 # PATCH-FIX-UPSTREAM https://github.com/pypa/hatch/pull/2165 keep_env TypeError
 Patch0:         shell.patch
+# PATCH-FIX-UPSTREAM https://github.com/pypa/hatch/pull/2159 Fix warning and tests with packaging 26.0
+Patch1:         packaging26.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch-vcs >= 0.3}
 BuildRequires:  %{python_module hatchling >= 1.27}
