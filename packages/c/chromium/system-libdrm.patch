@@ -31,8 +31,8 @@ Index: chromium-142.0.7444.3/ui/ozone/platform/drm/gpu/hardware_display_controll
 ===================================================================
 --- chromium-142.0.7444.3.orig/ui/ozone/platform/drm/gpu/hardware_display_controller.cc
 +++ chromium-142.0.7444.3/ui/ozone/platform/drm/gpu/hardware_display_controller.cc
-@@ -19,7 +19,7 @@
- #include "base/metrics/histogram_macros.h"
+@@ -18,7 +18,7 @@
+ #include "base/logging.h"
  #include "base/trace_event/typed_macros.h"
  #include "components/viz/common/resources/shared_image_format_utils.h"
 -#include "third_party/libdrm/src/include/drm/drm_fourcc.h"

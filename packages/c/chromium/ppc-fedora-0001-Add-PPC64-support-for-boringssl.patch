@@ -4169,9 +4169,9 @@ Index: chromium-138.0.7204.35/third_party/boringssl/src/crypto/fipsmodule/aes/in
 --- chromium-138.0.7204.35.orig/third_party/boringssl/src/crypto/fipsmodule/aes/internal.h
 +++ chromium-138.0.7204.35/third_party/boringssl/src/crypto/fipsmodule/aes/internal.h
 @@ -81,6 +81,12 @@ inline int vpaes_capable(void) { return
- inline int vpaes_capable(void) { return CRYPTO_is_NEON_capable(); }
- #endif
- 
+ #define VPAES
+ #define VPAES_CBC
+ inline int vpaes_capable() { return CRYPTO_is_NEON_capable(); }
 +#elif defined(OPENSSL_PPC64LE)
 +#define HWAES
 +
@@ -4180,9 +4180,9 @@ Index: chromium-138.0.7204.35/third_party/boringssl/src/crypto/fipsmodule/aes/in
 +}
  #endif
  
- #endif  // !NO_ASM
+ #endif
 @@ -501,6 +507,13 @@ void aes_gcm_dec_kernel(const uint8_t *i
-                         const u128 Htable[16]);
+                                    const AES_KEY *key, const u128 Htable[16]);
  #endif
  
 +#elif defined(OPENSSL_PPC64LE)
@@ -4214,7 +4214,7 @@ Index: chromium-138.0.7204.35/third_party/boringssl/src/crypto/fipsmodule/bn/bn.
 @@ -330,6 +330,23 @@ int bn_expand(BIGNUM *bn, size_t bits) {
  }
  
- int bn_resize_words(BIGNUM *bn, size_t words) {
+ int bssl::bn_resize_words(BIGNUM *bn, size_t words) {
 +#if defined(OPENSSL_PPC64LE)
 +  // This is a workaround for a miscompilation bug in Clang 7.0.1 on POWER.
 +  // The unittests catch the miscompilation, if it occurs, and it manifests
@@ -4946,7 +4946,7 @@ Index: chromium-138.0.7204.35/third_party/boringssl/src/crypto/fipsmodule/aes/gc
 ===================================================================
 --- chromium-138.0.7204.35.orig/third_party/boringssl/src/crypto/fipsmodule/aes/gcm_test.cc
 +++ chromium-138.0.7204.35/third_party/boringssl/src/crypto/fipsmodule/aes/gcm_test.cc
-@@ -169,5 +169,15 @@ TEST(GCMTest, ABI) {
+@@ -169,6 +169,16 @@ TEST(GCMTest, ABI) {
      }
    }
  #endif
@@ -4962,6 +4962,7 @@ Index: chromium-138.0.7204.35/third_party/boringssl/src/crypto/fipsmodule/aes/gc
 +#endif  // GHASH_ASM_PPC64LE
  }
  #endif  // SUPPORTS_ABI_TEST && !OPENSSL_NO_ASM
+ 
 Index: chromium-138.0.7204.35/third_party/boringssl/src/crypto/rand/getrandom_fillin.h
 ===================================================================
 --- chromium-138.0.7204.35.orig/third_party/boringssl/src/crypto/rand/getrandom_fillin.h
@@ -6740,8 +6741,8 @@ Index: chromium-138.0.7204.35/third_party/boringssl/src/util/fipstools/delocate/
 +}
 +
  func isSynthesized(symbol string) bool {
- 	return strings.HasSuffix(symbol, "_bss_get") ||
- 		strings.HasPrefix(symbol, "BORINGSSL_bcm_text_")
+ 	return strings.HasSuffix(symbol, "_bss_get")
+ }
 @@ -1872,6 +2348,8 @@ func detectProcessor(input inputFile) pr
  		switch instructionName {
  		case "movq", "call", "leaq":

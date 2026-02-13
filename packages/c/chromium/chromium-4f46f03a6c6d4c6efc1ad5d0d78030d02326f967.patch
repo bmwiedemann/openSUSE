@@ -1,0 +1,615 @@
+commit 4f46f03a6c6d4c6efc1ad5d0d78030d02326f967
+Author: Sergio Solano <sergiosolano@google.com>
+Date:   Mon Jan 5 01:50:52 2026 -0800
+
+    Spanification of jpeg_parser and related files
+    
+    This is the result of running the automatic spanification on linux and
+    updating code to use and pass spans where size is known.
+    
+    The original patch was fully automated using script:
+    //tools/clang/spanify/rewrite-multiple-platforms.sh -platforms=linux
+    Then refined with gemini-cli
+    
+    gemini-run/batch-run-1761710114/group_45
+    
+    BUG=439964610
+    
+    Convert JpegHuffmanTable::code_value from c-style array to `std::array`.
+    
+    This change updates the `JpegHuffmanTable::code_value` member from a C-style array to a `std::array<uint8_t, 162>`. Consequently, usages in `jpeg_decoder_fuzzertest.cc`, `vaapi_jpeg_encoder.cc`, and `jpeg_parser.cc` are updated to use `std::array` methods like `.size()` and `.data()`. In `vaapi_jpeg_encoder.cc`, `SafeArrayMemcpy` calls are replaced with `memcpy` and static assertions to handle the type change.
+    
+    spanification: automatically spanify media/parsers/jpeg_parser.cc etc.
+    
+    This is the result of running the automatic spanification on linux and
+    updating code to use and pass spans where size is known.
+    
+    The original patch was fully automated using script:
+    //tools/clang/spanify/rewrite-multiple-platforms.sh -platforms=linux
+    Then refined with gemini-cli
+    
+    gemini-run/batch-run-1761710114/group_45
+    
+    BUG=439964610
+    
+    Change-Id: Iea6219e18571ec93001cedd0ccd6d3925bbfd21b
+    Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/7229449
+    Auto-Submit: Sergio Solano <sergiosolano@google.com>
+    Reviewed-by: Colin Blundell <blundell@chromium.org>
+    Commit-Queue: Colin Blundell <blundell@chromium.org>
+    Reviewed-by: Stephen Nusko <nuskos@chromium.org>
+    Cr-Commit-Position: refs/heads/main@{#1564243}
+
+diff --git a/media/gpu/vaapi/fuzzers/jpeg_decoder/jpeg_decoder_fuzzertest.cc b/media/gpu/vaapi/fuzzers/jpeg_decoder/jpeg_decoder_fuzzertest.cc
+index 3791e59f21c0d..cd8c7593f911b 100644
+--- a/media/gpu/vaapi/fuzzers/jpeg_decoder/jpeg_decoder_fuzzertest.cc
++++ b/media/gpu/vaapi/fuzzers/jpeg_decoder/jpeg_decoder_fuzzertest.cc
+@@ -50,12 +50,17 @@ media::JpegHuffmanTable ConvertToJpegHuffmanTable(
+     const media::fuzzing::JpegHuffmanTable& proto_huffman_table) {
+   media::JpegHuffmanTable huffman_table{};
+   huffman_table.valid = proto_huffman_table.valid();
+-  memcpy(huffman_table.code_length, proto_huffman_table.code_length().data(),
+-         std::min(std::size(huffman_table.code_length),
+-                  proto_huffman_table.code_length().size()));
+-  memcpy(huffman_table.code_value, proto_huffman_table.code_value().data(),
+-         std::min(std::size(huffman_table.code_value),
+-                  proto_huffman_table.code_value().size()));
++  const size_t code_length_min_size =
++      std::min(huffman_table.code_length.size(),
++               proto_huffman_table.code_length().size());
++  base::span(huffman_table.code_length)
++      .copy_prefix_from(base::span(proto_huffman_table.code_value())
++                            .first(code_length_min_size));
++  const size_t code_value_min_size = std::min(
++      huffman_table.code_value.size(), proto_huffman_table.code_value().size());
++  base::span(huffman_table.code_value)
++      .copy_prefix_from(base::span(proto_huffman_table.code_value())
++                            .first(code_value_min_size));
+   return huffman_table;
+ }
+ 
+@@ -121,9 +126,12 @@ media::JpegParseResult ConvertToJpegParseResult(
+     const media::fuzzing::JpegQuantizationTable& input_q_table =
+         proto_parse_result.q_table()[i];
+     parse_result.q_table[i].valid = input_q_table.valid();
+-    memcpy(parse_result.q_table[i].value, input_q_table.value().data(),
+-           std::min(std::size(parse_result.q_table[i].value),
+-                    input_q_table.value().size()));
++    const size_t value_min_size = std::min(
++        std::size(parse_result.q_table[i].value), input_q_table.value().size());
++    base::span(parse_result.q_table[i].value)
++        .first(value_min_size)
++        .copy_from_nonoverlapping(
++            base::span(input_q_table.value()).first(value_min_size));
+   }
+ 
+   // Convert the scan header.
+diff --git a/media/gpu/vaapi/vaapi_jpeg_decoder.cc b/media/gpu/vaapi/vaapi_jpeg_decoder.cc
+index 6501edd34d225..bb3d426ff4509 100644
+--- a/media/gpu/vaapi/vaapi_jpeg_decoder.cc
++++ b/media/gpu/vaapi/vaapi_jpeg_decoder.cc
+@@ -8,6 +8,7 @@
+ #include <va/va.h>
+ 
+ #include <iostream>
++#include <numeric>
+ #include <type_traits>
+ 
+ #include "base/compiler_specific.h"
+@@ -33,15 +34,17 @@ static void FillPictureParameters(
+   pic_param->picture_height = frame_header.coded_height;
+   pic_param->num_components = frame_header.num_components;
+ 
+-  for (int i = 0; i < pic_param->num_components; i++) {
+-    UNSAFE_TODO(pic_param->components[i]).component_id =
+-        frame_header.components[i].id;
+-    UNSAFE_TODO(pic_param->components[i]).h_sampling_factor =
+-        frame_header.components[i].horizontal_sampling_factor;
+-    UNSAFE_TODO(pic_param->components[i]).v_sampling_factor =
+-        frame_header.components[i].vertical_sampling_factor;
+-    UNSAFE_TODO(pic_param->components[i]).quantiser_table_selector =
+-        frame_header.components[i].quantization_table_selector;
++  const auto pic_param_components = base::span(pic_param->components);
++  const auto frame_header_components = base::span(frame_header.components);
++
++  for (size_t i = 0; i < frame_header_components.size(); i++) {
++    pic_param_components[i].component_id = frame_header_components[i].id;
++    pic_param_components[i].h_sampling_factor =
++        frame_header_components[i].horizontal_sampling_factor;
++    pic_param_components[i].v_sampling_factor =
++        frame_header_components[i].vertical_sampling_factor;
++    pic_param_components[i].quantiser_table_selector =
++        frame_header_components[i].quantization_table_selector;
+   }
+ }
+ 
+@@ -53,13 +56,17 @@ static void FillIQMatrix(base::span<const JpegQuantizationTable> q_table,
+   static_assert(
+       sizeof(iq_matrix->quantiser_table[0]) == sizeof(q_table[0].value),
+       "number of quantization entries mismatched");
++
++  auto load_quantiser_table = base::span(iq_matrix->load_quantiser_table);
++  auto iq_matrix_quantiser_table = base::span(iq_matrix->quantiser_table);
++
+   for (size_t i = 0; i < kJpegMaxQuantizationTableNum; i++) {
+     if (!q_table[i].valid)
+       continue;
+-    UNSAFE_TODO(iq_matrix->load_quantiser_table[i]) = 1;
+-    for (size_t j = 0; j < std::size(q_table[i].value); j++)
+-      UNSAFE_TODO(iq_matrix->quantiser_table[i][j]) =
+-          UNSAFE_TODO(q_table[i].value[j]);
++    load_quantiser_table[i] = 1;
++
++    auto dest_span = base::span(iq_matrix_quantiser_table[i]);
++    dest_span.copy_from_nonoverlapping(q_table[i].value);
+   }
+ }
+ 
+@@ -88,42 +95,49 @@ static void FillHuffmanTable(base::span<const JpegHuffmanTable> dc_table,
+   static_assert(sizeof(huffman_table->huffman_table[0].dc_values[0]) ==
+                     sizeof(dc_table[0].code_value[0]),
+                 "size of huffman table code value mismatch");
++
++  auto load_huffman_table_span = base::span(huffman_table->load_huffman_table);
+   for (size_t i = 0; i < kJpegMaxHuffmanTableNumBaseline; i++) {
+     if (!dc_table[i].valid || !ac_table[i].valid)
+       continue;
+-    UNSAFE_TODO(huffman_table->load_huffman_table[i]) = 1;
+-
+-    UNSAFE_TODO(memcpy(huffman_table->huffman_table[i].num_dc_codes,
+-                       dc_table[i].code_length,
+-                       sizeof(huffman_table->huffman_table[i].num_dc_codes)));
+-    UNSAFE_TODO(memcpy(huffman_table->huffman_table[i].dc_values,
+-                       dc_table[i].code_value,
+-                       sizeof(huffman_table->huffman_table[i].dc_values)));
+-    UNSAFE_TODO(memcpy(huffman_table->huffman_table[i].num_ac_codes,
+-                       ac_table[i].code_length,
+-                       sizeof(huffman_table->huffman_table[i].num_ac_codes)));
+-    UNSAFE_TODO(memcpy(huffman_table->huffman_table[i].ac_values,
+-                       ac_table[i].code_value,
+-                       sizeof(huffman_table->huffman_table[i].ac_values)));
++    load_huffman_table_span[i] = 1;
++    auto huffman_tbl = base::span(huffman_table->huffman_table);
++
++    base::span(huffman_tbl[i].num_dc_codes)
++        .copy_from_nonoverlapping(base::span(dc_table[i].code_length));
++    auto dc_values = base::span(huffman_tbl[i].dc_values);
++    dc_values.copy_from_nonoverlapping(
++        base::span(dc_table[i].code_value).first(dc_values.size()));
++    base::span(huffman_tbl[i].num_ac_codes)
++        .copy_from_nonoverlapping(base::span(ac_table[i].code_length));
++    auto ac_values = base::span(huffman_tbl[i].ac_values);
++    ac_values.copy_from_nonoverlapping(
++        base::span(ac_table[i].code_value).first(ac_values.size()));
+   }
+ }
+ 
+ static void FillSliceParameters(
+     const JpegParseResult& parse_result,
+     VASliceParameterBufferJPEGBaseline* slice_param) {
+-  slice_param->slice_data_size = parse_result.data_size;
++  slice_param->slice_data_size = parse_result.data.size();
+   slice_param->slice_data_offset = 0;
+   slice_param->slice_data_flag = VA_SLICE_DATA_FLAG_ALL;
+   slice_param->slice_horizontal_position = 0;
+   slice_param->slice_vertical_position = 0;
+   slice_param->num_components = parse_result.scan.num_components;
+-  for (int i = 0; i < slice_param->num_components; i++) {
+-    UNSAFE_TODO(slice_param->components[i]).component_selector =
+-        parse_result.scan.components[i].component_selector;
+-    UNSAFE_TODO(slice_param->components[i]).dc_table_selector =
+-        parse_result.scan.components[i].dc_selector;
+-    UNSAFE_TODO(slice_param->components[i]).ac_table_selector =
+-        parse_result.scan.components[i].ac_selector;
++
++  const auto slice_param_components =
++      base::span(slice_param->components).first(slice_param->num_components);
++  const auto scan_components = base::span(parse_result.scan.components)
++                                   .first(slice_param->num_components);
++
++  for (size_t i = 0; i < slice_param->num_components; i++) {
++    slice_param_components[i].component_selector =
++        scan_components[i].component_selector;
++    slice_param_components[i].dc_table_selector =
++        scan_components[i].dc_selector;
++    slice_param_components[i].ac_table_selector =
++        scan_components[i].ac_selector;
+   }
+   slice_param->restart_interval = parse_result.restart_interval;
+ 
+@@ -369,8 +383,8 @@ bool VaapiJpegDecoder::SubmitBuffers(const JpegParseResult& parse_result) {
+        {VAIQMatrixBufferType, sizeof(iq_matrix), &iq_matrix},
+        {VAHuffmanTableBufferType, sizeof(huffman_table), &huffman_table},
+        {VASliceParameterBufferType, sizeof(slice_param), &slice_param},
+-       {VASliceDataBufferType, parse_result.data_size,
+-        const_cast<char*>(parse_result.data)}});
++       {VASliceDataBufferType, parse_result.data.size(),
++        parse_result.data.data()}});
+ }
+ 
+ }  // namespace media
+diff --git a/media/gpu/vaapi/vaapi_jpeg_encoder.cc b/media/gpu/vaapi/vaapi_jpeg_encoder.cc
+index 97e4f9f077489..e87494c736341 100644
+--- a/media/gpu/vaapi/vaapi_jpeg_encoder.cc
++++ b/media/gpu/vaapi/vaapi_jpeg_encoder.cc
+@@ -9,6 +9,7 @@
+ 
+ #include <algorithm>
+ #include <array>
++#include <ranges>
+ #include <type_traits>
+ 
+ #include "base/check_op.h"
+@@ -80,42 +81,44 @@ void FillQMatrix(VAQMatrixBufferJPEG* q_matrix) {
+ 
+ void FillHuffmanTableParameters(
+     VAHuffmanTableBufferJPEGBaseline* huff_table_param) {
+-  static_assert(std::size(kDefaultDcTable) == std::size(kDefaultAcTable),
++  static_assert(kDefaultDcTable.size() == kDefaultAcTable.size(),
+                 "DC table and AC table size mismatch.");
+-  static_assert(std::size(kDefaultDcTable) ==
+-                    std::extent<decltype(huff_table_param->huffman_table)>(),
++  auto huffman_tables = base::span(huff_table_param->huffman_table);
++  static_assert(kDefaultDcTable.size() == huffman_tables.size(),
+                 "DC table and destination table size mismatch.");
+ 
+-  for (size_t i = 0; i < std::size(kDefaultDcTable); ++i) {
+-    const JpegHuffmanTable& dcTable = UNSAFE_TODO(kDefaultDcTable[i]);
+-    const JpegHuffmanTable& acTable = UNSAFE_TODO(kDefaultAcTable[i]);
+-    UNSAFE_TODO(huff_table_param->load_huffman_table[i]) = true;
++  auto load_huffman_table = base::span(huff_table_param->load_huffman_table);
++  static_assert(load_huffman_table.size() == huffman_tables.size(),
++                "Destination table sizes do not match.");
++
++  for (size_t i = 0; i < kDefaultDcTable.size(); ++i) {
++    const JpegHuffmanTable& dcTable = kDefaultDcTable[i];
++    const JpegHuffmanTable& acTable = kDefaultAcTable[i];
++    load_huffman_table[i] = true;
+ 
+     // Load DC Table.
+-    SafeArrayMemcpy(
+-        UNSAFE_TODO(huff_table_param->huffman_table[i]).num_dc_codes,
+-        dcTable.code_length);
++    auto num_dc_codes = base::span(huffman_tables[i].num_dc_codes);
++    static_assert(num_dc_codes.size() == dcTable.code_length.size());
++    num_dc_codes.copy_from_nonoverlapping(dcTable.code_length);
+     // |code_values| of JpegHuffmanTable needs to hold DC and AC code values
+     // so it has different size than
+     // |huff_table_param->huffman_table[i].dc_values|. Therefore we can't use
+     // SafeArrayMemcpy() here.
+-    static_assert(
+-        std::extent<decltype(huff_table_param->huffman_table[i].dc_values)>() <=
+-            std::extent<decltype(dcTable.code_value)>(),
+-        "DC table code value array too small.");
+-    UNSAFE_TODO(memcpy(huff_table_param->huffman_table[i].dc_values,
+-                       &dcTable.code_value[0],
+-                       sizeof(huff_table_param->huffman_table[i].dc_values)));
++    auto dc_values = base::span(huffman_tables[i].dc_values);
++    static_assert(dc_values.size() <= dcTable.code_value.size());
++    dc_values.copy_from_nonoverlapping(
++        base::span(dcTable.code_value).first(dc_values.size()));
+ 
+     // Load AC Table.
+-    SafeArrayMemcpy(
+-        UNSAFE_TODO(huff_table_param->huffman_table[i]).num_ac_codes,
+-        acTable.code_length);
+-    SafeArrayMemcpy(UNSAFE_TODO(huff_table_param->huffman_table[i]).ac_values,
+-                    acTable.code_value);
+-
+-    UNSAFE_TODO(memset(huff_table_param->huffman_table[i].pad, 0,
+-                       sizeof(huff_table_param->huffman_table[i].pad)));
++    auto num_ac_codes = base::span(huffman_tables[i].num_ac_codes);
++    static_assert(num_ac_codes.size() == acTable.code_length.size());
++    num_ac_codes.copy_from_nonoverlapping(acTable.code_length);
++
++    auto ac_values = base::span(huffman_tables[i].ac_values);
++    static_assert(ac_values.size() == acTable.code_value.size());
++    ac_values.copy_from_nonoverlapping(acTable.code_value);
++
++    std::ranges::fill(huffman_tables[i].pad, 0);
+   }
+ }
+ 
+@@ -287,11 +290,11 @@ size_t FillJpegHeader(const gfx::Size& input_size,
+     // Type (4-bit high) = 0:DC, Index (4-bit low).
+     header[idx++] = static_cast<uint8_t>(i);
+ 
+-    const JpegHuffmanTable& dcTable = UNSAFE_TODO(kDefaultDcTable[i]);
++    const JpegHuffmanTable& dcTable = kDefaultDcTable[i];
+     for (size_t j = 0; j < kNumDcRunSizeBits; ++j)
+-      header[idx++] = UNSAFE_TODO(dcTable.code_length[j]);
++      header[idx++] = dcTable.code_length[j];
+     for (size_t j = 0; j < kNumDcCodeWordsHuffVal; ++j)
+-      header[idx++] = UNSAFE_TODO(dcTable.code_value[j]);
++      header[idx++] = dcTable.code_value[j];
+ 
+     // AC Table.
+     UNSAFE_TODO(
+@@ -301,11 +304,11 @@ size_t FillJpegHeader(const gfx::Size& input_size,
+     // Type (4-bit high) = 1:AC, Index (4-bit low).
+     header[idx++] = 0x10 | static_cast<uint8_t>(i);
+ 
+-    const JpegHuffmanTable& acTable = UNSAFE_TODO(kDefaultAcTable[i]);
++    const JpegHuffmanTable& acTable = kDefaultAcTable[i];
+     for (size_t j = 0; j < kNumAcRunSizeBits; ++j)
+-      header[idx++] = UNSAFE_TODO(acTable.code_length[j]);
++      header[idx++] = acTable.code_length[j];
+     for (size_t j = 0; j < kNumAcCodeWordsHuffVal; ++j)
+-      header[idx++] = UNSAFE_TODO(acTable.code_value[j]);
++      header[idx++] = acTable.code_value[j];
+   }
+ 
+   // Start of Scan.
+diff --git a/media/parsers/jpeg_parser.cc b/media/parsers/jpeg_parser.cc
+index e5ace9db6d4e8..ddd501e0821a0 100644
+--- a/media/parsers/jpeg_parser.cc
++++ b/media/parsers/jpeg_parser.cc
+@@ -36,62 +36,65 @@
+ 
+ namespace media {
+ 
+-const JpegHuffmanTable kDefaultDcTable[kJpegMaxHuffmanTableNumBaseline] = {
+-    // luminance DC coefficients
+-    {
+-        true,
+-        {0, 1, 5, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0},
+-        {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a,
+-         0x0b},
+-    },
+-    // chrominance DC coefficients
+-    {
+-        true,
+-        {0, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0},
+-        {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0xa, 0xb},
+-    },
+-};
+-
+-const JpegHuffmanTable kDefaultAcTable[kJpegMaxHuffmanTableNumBaseline] = {
+-    // luminance AC coefficients
+-    {
+-        true,
+-        {0, 2, 1, 3, 3, 2, 4, 3, 5, 5, 4, 4, 0, 0, 1, 0x7d},
+-        {0x01, 0x02, 0x03, 0x00, 0x04, 0x11, 0x05, 0x12, 0x21, 0x31, 0x41, 0x06,
+-         0x13, 0x51, 0x61, 0x07, 0x22, 0x71, 0x14, 0x32, 0x81, 0x91, 0xa1, 0x08,
+-         0x23, 0x42, 0xb1, 0xc1, 0x15, 0x52, 0xd1, 0xf0, 0x24, 0x33, 0x62, 0x72,
+-         0x82, 0x09, 0x0a, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x25, 0x26, 0x27, 0x28,
+-         0x29, 0x2a, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3a, 0x43, 0x44, 0x45,
+-         0x46, 0x47, 0x48, 0x49, 0x4a, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59,
+-         0x5a, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6a, 0x73, 0x74, 0x75,
+-         0x76, 0x77, 0x78, 0x79, 0x7a, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89,
+-         0x8a, 0x92, 0x93, 0x94, 0x95, 0x96, 0x97, 0x98, 0x99, 0x9a, 0xa2, 0xa3,
+-         0xa4, 0xa5, 0xa6, 0xa7, 0xa8, 0xa9, 0xaa, 0xb2, 0xb3, 0xb4, 0xb5, 0xb6,
+-         0xb7, 0xb8, 0xb9, 0xba, 0xc2, 0xc3, 0xc4, 0xc5, 0xc6, 0xc7, 0xc8, 0xc9,
+-         0xca, 0xd2, 0xd3, 0xd4, 0xd5, 0xd6, 0xd7, 0xd8, 0xd9, 0xda, 0xe1, 0xe2,
+-         0xe3, 0xe4, 0xe5, 0xe6, 0xe7, 0xe8, 0xe9, 0xea, 0xf1, 0xf2, 0xf3, 0xf4,
+-         0xf5, 0xf6, 0xf7, 0xf8, 0xf9, 0xfa},
+-    },
+-    // chrominance AC coefficients
+-    {
+-        true,
+-        {0, 2, 1, 2, 4, 4, 3, 4, 7, 5, 4, 4, 0, 1, 2, 0x77},
+-        {0x00, 0x01, 0x02, 0x03, 0x11, 0x04, 0x05, 0x21, 0x31, 0x06, 0x12, 0x41,
+-         0x51, 0x07, 0x61, 0x71, 0x13, 0x22, 0x32, 0x81, 0x08, 0x14, 0x42, 0x91,
+-         0xa1, 0xb1, 0xc1, 0x09, 0x23, 0x33, 0x52, 0xf0, 0x15, 0x62, 0x72, 0xd1,
+-         0x0a, 0x16, 0x24, 0x34, 0xe1, 0x25, 0xf1, 0x17, 0x18, 0x19, 0x1a, 0x26,
+-         0x27, 0x28, 0x29, 0x2a, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3a, 0x43, 0x44,
+-         0x45, 0x46, 0x47, 0x48, 0x49, 0x4a, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58,
+-         0x59, 0x5a, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6a, 0x73, 0x74,
+-         0x75, 0x76, 0x77, 0x78, 0x79, 0x7a, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87,
+-         0x88, 0x89, 0x8a, 0x92, 0x93, 0x94, 0x95, 0x96, 0x97, 0x98, 0x99, 0x9a,
+-         0xa2, 0xa3, 0xa4, 0xa5, 0xa6, 0xa7, 0xa8, 0xa9, 0xaa, 0xb2, 0xb3, 0xb4,
+-         0xb5, 0xb6, 0xb7, 0xb8, 0xb9, 0xba, 0xc2, 0xc3, 0xc4, 0xc5, 0xc6, 0xc7,
+-         0xc8, 0xc9, 0xca, 0xd2, 0xd3, 0xd4, 0xd5, 0xd6, 0xd7, 0xd8, 0xd9, 0xda,
+-         0xe2, 0xe3, 0xe4, 0xe5, 0xe6, 0xe7, 0xe8, 0xe9, 0xea, 0xf2, 0xf3, 0xf4,
+-         0xf5, 0xf6, 0xf7, 0xf8, 0xf9, 0xfa},
+-    },
+-};
++const std::array<JpegHuffmanTable, kJpegMaxHuffmanTableNumBaseline>
++    kDefaultDcTable = {{
++        // luminance DC coefficients
++        {
++            true,
++            {0, 1, 5, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0},
++            {{0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a,
++              0x0b}},
++        },
++        // chrominance DC coefficients
++        {
++            true,
++            {0, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0},
++            {{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0xa, 0xb}},
++        },
++    }};
++const std::array<JpegHuffmanTable, kJpegMaxHuffmanTableNumBaseline>
++    kDefaultAcTable = {{
++        // luminance AC coefficients
++        {
++            true,
++            {0, 2, 1, 3, 3, 2, 4, 3, 5, 5, 4, 4, 0, 0, 1, 0x7d},
++            {{0x01, 0x02, 0x03, 0x00, 0x04, 0x11, 0x05, 0x12, 0x21, 0x31, 0x41,
++              0x06, 0x13, 0x51, 0x61, 0x07, 0x22, 0x71, 0x14, 0x32, 0x81, 0x91,
++              0xa1, 0x08, 0x23, 0x42, 0xb1, 0xc1, 0x15, 0x52, 0xd1, 0xf0, 0x24,
++              0x33, 0x62, 0x72, 0x82, 0x09, 0x0a, 0x16, 0x17, 0x18, 0x19, 0x1a,
++              0x25, 0x26, 0x27, 0x28, 0x29, 0x2a, 0x34, 0x35, 0x36, 0x37, 0x38,
++              0x39, 0x3a, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4a, 0x53,
++              0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5a, 0x63, 0x64, 0x65, 0x66,
++              0x67, 0x68, 0x69, 0x6a, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79,
++              0x7a, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8a, 0x92, 0x93,
++              0x94, 0x95, 0x96, 0x97, 0x98, 0x99, 0x9a, 0xa2, 0xa3, 0xa4, 0xa5,
++              0xa6, 0xa7, 0xa8, 0xa9, 0xaa, 0xb2, 0xb3, 0xb4, 0xb5, 0xb6, 0xb7,
++              0xb8, 0xb9, 0xba, 0xc2, 0xc3, 0xc4, 0xc5, 0xc6, 0xc7, 0xc8, 0xc9,
++              0xca, 0xd2, 0xd3, 0xd4, 0xd5, 0xd6, 0xd7, 0xd8, 0xd9, 0xda, 0xe1,
++              0xe2, 0xe3, 0xe4, 0xe5, 0xe6, 0xe7, 0xe8, 0xe9, 0xea, 0xf1, 0xf2,
++              0xf3, 0xf4, 0xf5, 0xf6, 0xf7, 0xf8, 0xf9, 0xfa}},
++        },
++        // chrominance AC coefficients
++        {
++            true,
++            {0, 2, 1, 2, 4, 4, 3, 4, 7, 5, 4, 4, 0, 1, 2, 0x77},
++            {{0x00, 0x01, 0x02, 0x03, 0x11, 0x04, 0x05, 0x21, 0x31, 0x06, 0x12,
++              0x41, 0x51, 0x07, 0x61, 0x71, 0x13, 0x22, 0x32, 0x81, 0x08, 0x14,
++              0x42, 0x91, 0xa1, 0xb1, 0xc1, 0x09, 0x23, 0x33, 0x52, 0xf0, 0x15,
++              0x62, 0x72, 0xd1, 0x0a, 0x16, 0x24, 0x34, 0xe1, 0x25, 0xf1, 0x17,
++              0x18, 0x19, 0x1a, 0x26, 0x27, 0x28, 0x29, 0x2a, 0x35, 0x36, 0x37,
++              0x38, 0x39, 0x3a, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4a,
++              0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5a, 0x63, 0x64, 0x65,
++              0x66, 0x67, 0x68, 0x69, 0x6a, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78,
++              0x79, 0x7a, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8a,
++              0x92, 0x93, 0x94, 0x95, 0x96, 0x97, 0x98, 0x99, 0x9a, 0xa2, 0xa3,
++              0xa4, 0xa5, 0xa6, 0xa7, 0xa8, 0xa9, 0xaa, 0xb2, 0xb3, 0xb4, 0xb5,
++              0xb6, 0xb7, 0xb8, 0xb9, 0xba, 0xc2, 0xc3, 0xc4, 0xc5, 0xc6, 0xc7,
++              0xc8, 0xc9, 0xca, 0xd2, 0xd3, 0xd4, 0xd5, 0xd6, 0xd7, 0xd8, 0xd9,
++              0xda, 0xe2, 0xe3, 0xe4, 0xe5, 0xe6, 0xe7, 0xe8, 0xe9, 0xea, 0xf2,
++              0xf3, 0xf4, 0xf5, 0xf6, 0xf7, 0xf8, 0xf9, 0xfa}},
++        },
++    }};
+ 
+ constexpr uint8_t kZigZag8x8[64] = {
+     0,  1,  8,  16, 9,  2,  3,  10, 17, 24, 32, 25, 18, 11, 4,  5,
+@@ -265,8 +268,9 @@ static bool ParseDHT(base::span<const uint8_t> buffer,
+     if (!reader.ReadCopy(table->code_length)) {
+       return false;
+     }
+-    for (size_t i = 0; i < std::size(table->code_length); i++)
+-      count += UNSAFE_TODO(table->code_length[i]);
++    for (uint8_t code_len : table->code_length) {
++      count += code_len;
++    }
+ 
+     if (!InRange(count, 0u, sizeof(table->code_value))) {
+       DVLOG(1) << "Invalid code count " << count;
+@@ -354,8 +358,8 @@ static bool ParseSOS(base::span<const uint8_t> buffer,
+ // EOI marker) after search succeeds. Returns true on EOI marker found, or false
+ // otherwise.
+ static bool SearchEOI(base::span<const uint8_t> buffer,
+-                      const char** eoi_begin_ptr,
+-                      const char** eoi_end_ptr) {
++                      const unsigned char** eoi_begin_ptr,
++                      const unsigned char** eoi_end_ptr) {
+   DCHECK(eoi_begin_ptr);
+   DCHECK(eoi_end_ptr);
+   auto reader = base::SpanReader(buffer);
+@@ -393,9 +397,8 @@ static bool SearchEOI(base::span<const uint8_t> buffer,
+       case JPEG_RST7:
+         break;
+       case JPEG_EOI: {
+-        auto buffer_chars = base::as_chars(buffer);
+-        *eoi_begin_ptr = buffer_chars.subspan(marker1_in_buffer).data();
+-        *eoi_end_ptr = buffer_chars.subspan(reader.num_read()).data();
++        *eoi_begin_ptr = &buffer[marker1_in_buffer];
++        *eoi_end_ptr = reader.remaining_span().data();
+         return true;
+       }
+       default:
+@@ -524,9 +527,7 @@ static bool ParseSOI(base::span<const uint8_t> buffer,
+   }
+ 
+   // Scan data follows scan header immediately.
+-  auto remain = base::as_chars(reader.remaining_span());
+-  result->data = remain.data();
+-  result->data_size = remain.size();
++  result->data = reader.remaining_span();
+   return true;
+ }
+ 
+@@ -549,22 +550,22 @@ bool ParseJpegPicture(base::span<const uint8_t> buffer,
+   if (!ParseSOI(reader.remaining_span(), result)) {
+     return false;
+   }
+-  base::span<const uint8_t> result_span = base::as_bytes(
+-      // TODO(crbug.com/40284755): Make this span part of JpegParseResult.
+-      UNSAFE_TODO(base::span(result->data, result->data_size)));
+ 
+-  // Update the sizes: |result->data_size| should not include the EOI marker or
++  // Update the sizes: |result->data| should not include the EOI marker or
+   // beyond.
+-  const char* eoi_begin_ptr = nullptr;
+-  const char* eoi_end_ptr = nullptr;
+-  if (!SearchEOI(result_span, &eoi_begin_ptr, &eoi_end_ptr)) {
++  const unsigned char* eoi_begin_ptr = nullptr;
++  const unsigned char* eoi_end_ptr = nullptr;
++  if (!SearchEOI(result->data, &eoi_begin_ptr, &eoi_end_ptr)) {
+     DLOG(ERROR) << "SearchEOI failed";
+     return false;
+   }
+   DCHECK(eoi_begin_ptr);
+   DCHECK(eoi_end_ptr);
+-  result->data_size = eoi_begin_ptr - result->data;
+-  result->image_size = eoi_end_ptr - base::as_chars(buffer).data();
++
++  ptrdiff_t scan_data_size = eoi_begin_ptr - result->data.data();
++  CHECK_GE(scan_data_size, 0);
++  result->data = result->data.first(base::checked_cast<size_t>(scan_data_size));
++  result->image_size = eoi_end_ptr - buffer.data();
+   return true;
+ }
+ 
+diff --git a/media/parsers/jpeg_parser.h b/media/parsers/jpeg_parser.h
+index 874284a99b6da..0d03664402347 100644
+--- a/media/parsers/jpeg_parser.h
++++ b/media/parsers/jpeg_parser.h
+@@ -11,6 +11,7 @@
+ #include <array>
+ 
+ #include "base/containers/span.h"
++#include "base/memory/raw_span.h"
+ #include "media/base/media_export.h"
+ 
+ namespace media {
+@@ -80,17 +81,19 @@ const size_t kJpegMaxQuantizationTableNum = 4;
+ // Parsing result of JPEG DHT marker.
+ struct JpegHuffmanTable {
+   bool valid;
+-  uint8_t code_length[16];
+-  uint8_t code_value[162];
++  std::array<uint8_t, 16> code_length;
++  std::array<uint8_t, 162> code_value;
+ };
+ 
+ // K.3.3.1 "Specification of typical tables for DC difference coding"
+ MEDIA_EXPORT
+-extern const JpegHuffmanTable kDefaultDcTable[kJpegMaxHuffmanTableNumBaseline];
++extern const std::array<JpegHuffmanTable, kJpegMaxHuffmanTableNumBaseline>
++    kDefaultDcTable;
+ 
+ // K.3.3.2 "Specification of typical tables for AC coefficient coding"
+ MEDIA_EXPORT
+-extern const JpegHuffmanTable kDefaultAcTable[kJpegMaxHuffmanTableNumBaseline];
++extern const std::array<JpegHuffmanTable, kJpegMaxHuffmanTableNumBaseline>
++    kDefaultAcTable;
+ 
+ // Parsing result of JPEG DQT marker.
+ struct JpegQuantizationTable {
+@@ -141,9 +144,7 @@ struct JpegParseResult {
+   JpegQuantizationTable q_table[kJpegMaxQuantizationTableNum];
+   uint16_t restart_interval;
+   JpegScanHeader scan;
+-  const char* data;
+-  // The size of compressed data of the first image.
+-  size_t data_size;
++  base::raw_span<const uint8_t> data;
+   // The size of the first entire image including header.
+   size_t image_size;
+ };
+diff --git a/media/parsers/jpeg_parser_unittest.cc b/media/parsers/jpeg_parser_unittest.cc
+index d446cf93a92e6..8f5d9a8bb2c16 100644
+--- a/media/parsers/jpeg_parser_unittest.cc
++++ b/media/parsers/jpeg_parser_unittest.cc
+@@ -77,7 +77,7 @@ TEST(JpegParserTest, Parsing) {
+   EXPECT_EQ(3, result.scan.components[2].component_selector);
+   EXPECT_EQ(1, result.scan.components[2].dc_selector);
+   EXPECT_EQ(1, result.scan.components[2].ac_selector);
+-  EXPECT_EQ(121148u, result.data_size);
++  EXPECT_EQ(121148u, result.data.size());
+   EXPECT_EQ(121358u, result.image_size);
+ }
+ 
+@@ -100,7 +100,7 @@ TEST(JpegParserTest, TrailingZerosShouldBeIgnored) {
+   // Verify selected fields
+ 
+   // SOS fields
+-  EXPECT_EQ(121148u, result.data_size);
++  EXPECT_EQ(121148u, result.data.size());
+   EXPECT_EQ(121358u, result.image_size);
+ }
+ 

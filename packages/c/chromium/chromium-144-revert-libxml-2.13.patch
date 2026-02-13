@@ -12,7 +12,7 @@
  
    // libxml should not be configured with catalogs enabled, so it
 @@ -756,18 +760,7 @@
-   InitializeLibXMLIfNecessary();
+   EnsureLibXMLInitialized();
    xmlParserCtxtPtr parser =
        xmlCreatePushParserCtxt(handlers, nullptr, nullptr, 0, nullptr);
 -

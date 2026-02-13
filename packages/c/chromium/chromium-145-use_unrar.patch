@@ -1,0 +1,158 @@
+--- chromium-145.0.7587.4/chrome/services/file_util/BUILD.gn	2025/12/26 12:24:52	1.1
++++ chromium-145.0.7587.4/chrome/services/file_util/BUILD.gn	2025/12/26 12:27:01
+@@ -25,10 +25,13 @@
+     "//components/safe_browsing:buildflags",
+     "//extensions/buildflags",
+     "//mojo/public/cpp/bindings",
+-    "//third_party/unrar",
+     "//third_party/zlib",
+   ]
+ 
++  if (safe_browsing_use_unrar) {
++    deps += [ "//third_party/unrar" ]
++  }
++
+   public_deps = [
+     "//chrome/services/file_util/public/mojom",
+     "//components/safe_browsing/core/common",
+--- chromium-145.0.7587.4/chrome/services/file_util/obfuscated_archive_analysis_delegate.cc	2025/12/26 12:31:33	1.1
++++ chromium-145.0.7587.4/chrome/services/file_util/obfuscated_archive_analysis_delegate.cc	2025/12/26 12:33:45
+@@ -115,6 +115,7 @@
+   bool closed_ = false;
+ };
+ 
++#if USE_UNRAR
+ class ObfuscatedRarReaderDelegate
+     : public third_party_unrar::RarReaderDelegate {
+  public:
+@@ -186,6 +187,7 @@
+   std::unique_ptr<enterprise_obfuscation::DownloadObfuscator> obfuscator_;
+   bool init_ = false;
+ };
++#endif
+ 
+ }  // namespace
+ 
+@@ -214,6 +216,7 @@
+   return std::make_unique<ObfuscatedZipWriterDelegate>(std::move(file));
+ }
+ 
++#if USE_UNRAR
+ std::unique_ptr<third_party_unrar::RarReaderDelegate>
+ ObfuscatedArchiveAnalysisDelegate::CreateRarReaderDelegate(base::File file) {
+   base::expected<enterprise_obfuscation::ObfuscatedFileReader,
+@@ -231,6 +234,7 @@
+ ObfuscatedArchiveAnalysisDelegate::CreateRarWriterDelegate(base::File file) {
+   return std::make_unique<ObfuscatedRarWriterDelegate>(std::move(file));
+ }
++#endif
+ 
+ std::unique_ptr<ArchiveAnalysisDelegate>
+ ObfuscatedArchiveAnalysisDelegate::CreateNestedDelegate(
+--- chromium-145.0.7587.4/chrome/services/file_util/obfuscated_archive_analysis_delegate.h	2025/12/26 12:33:53	1.1
++++ chromium-145.0.7587.4/chrome/services/file_util/obfuscated_archive_analysis_delegate.h	2025/12/26 12:34:20
+@@ -7,7 +7,9 @@
+ 
+ #include "chrome/utility/safe_browsing/archive_analysis_delegate.h"
+ #include "components/enterprise/obfuscation/core/utils.h"
++#if USE_UNRAR
+ #include "third_party/unrar/google/unrar_wrapper.h"
++#endif
+ 
+ namespace safe_browsing {
+ 
+@@ -22,10 +24,12 @@
+       base::File file) override;
+   std::unique_ptr<SafeBrowsingZipWriterDelegate> CreateZipWriterDelegate(
+       base::File file) override;
++#if USE_UNRAR
+   std::unique_ptr<third_party_unrar::RarReaderDelegate> CreateRarReaderDelegate(
+       base::File file) override;
+   std::unique_ptr<third_party_unrar::RarWriterDelegate> CreateRarWriterDelegate(
+       base::File file) override;
++#endif
+   std::unique_ptr<ArchiveAnalysisDelegate> CreateNestedDelegate(
+       base::File extracted_file) override;
+ 
+--- chromium-145.0.7587.4/chrome/services/file_util/regular_archive_analysis_delegate.cc	2025/12/26 12:35:30	1.1
++++ chromium-145.0.7587.4/chrome/services/file_util/regular_archive_analysis_delegate.cc	2025/12/26 12:36:02
+@@ -8,8 +8,10 @@
+ 
+ #include "base/files/file.h"
+ #include "chrome/utility/safe_browsing/zip_writer_delegate.h"
++#if USE_UNRAR
+ #include "third_party/unrar/google/unrar_delegates.h"
+ #include "third_party/unrar/google/unrar_wrapper.h"
++#endif
+ #include "third_party/zlib/google/zip_reader.h"
+ 
+ namespace safe_browsing {
+@@ -91,6 +93,7 @@
+   return std::make_unique<ZipWriterDelegate>(std::move(file));
+ }
+ 
++#if USE_UNRAR
+ std::unique_ptr<third_party_unrar::RarReaderDelegate>
+ RegularArchiveAnalysisDelegate::CreateRarReaderDelegate(base::File file) {
+   return std::make_unique<third_party_unrar::FileReader>(std::move(file));
+@@ -100,6 +103,7 @@
+ RegularArchiveAnalysisDelegate::CreateRarWriterDelegate(base::File file) {
+   return std::make_unique<third_party_unrar::FileWriter>(std::move(file));
+ }
++#endif
+ 
+ std::unique_ptr<ArchiveAnalysisDelegate>
+ RegularArchiveAnalysisDelegate::CreateNestedDelegate(
+--- chromium-145.0.7587.4/chrome/services/file_util/regular_archive_analysis_delegate.h	2025/12/26 12:36:04	1.1
++++ chromium-145.0.7587.4/chrome/services/file_util/regular_archive_analysis_delegate.h	2025/12/26 12:36:44
+@@ -6,7 +6,9 @@
+ #define CHROME_SERVICES_FILE_UTIL_REGULAR_ARCHIVE_ANALYSIS_DELEGATE_H_
+ 
+ #include "chrome/utility/safe_browsing/archive_analysis_delegate.h"
++#if USE_UNRAR
+ #include "third_party/unrar/google/unrar_delegates.h"
++#endif
+ 
+ namespace safe_browsing {
+ 
+@@ -20,10 +22,12 @@
+       base::File file) override;
+   std::unique_ptr<SafeBrowsingZipWriterDelegate> CreateZipWriterDelegate(
+       base::File file) override;
++#if USE_UNRAR
+   std::unique_ptr<third_party_unrar::RarReaderDelegate> CreateRarReaderDelegate(
+       base::File file) override;
+   std::unique_ptr<third_party_unrar::RarWriterDelegate> CreateRarWriterDelegate(
+       base::File file) override;
++#endif
+   std::unique_ptr<ArchiveAnalysisDelegate> CreateNestedDelegate(
+       base::File extracted_file) override;
+ };
+--- chromium-145.0.7587.4/chrome/utility/safe_browsing/archive_analysis_delegate.h	2025/12/26 12:37:02	1.1
++++ chromium-145.0.7587.4/chrome/utility/safe_browsing/archive_analysis_delegate.h	2025/12/26 12:37:35
+@@ -9,7 +9,9 @@
+ 
+ #include "base/files/file.h"
+ #include "chrome/utility/safe_browsing/zip_writer_delegate.h"
++#if USE_UNRAR
+ #include "third_party/unrar/google/unrar_delegates.h"
++#endif
+ #include "third_party/zlib/google/zip_reader.h"
+ 
+ namespace safe_browsing {
+@@ -28,6 +30,7 @@
+   virtual std::unique_ptr<SafeBrowsingZipWriterDelegate>
+   CreateZipWriterDelegate(base::File file) = 0;
+ 
++#if USE_UNRAR
+   // Creates a reader delegate for reading the RAR archive.
+   virtual std::unique_ptr<third_party_unrar::RarReaderDelegate>
+   CreateRarReaderDelegate(base::File file) = 0;
+@@ -35,6 +38,7 @@
+   // Creates a writer delegate for writing extracted RAR entries.
+   virtual std::unique_ptr<third_party_unrar::RarWriterDelegate>
+   CreateRarWriterDelegate(base::File file) = 0;
++#endif
+ 
+   // Creates a delegate for analyzing a nested archive extracted from the
+   // current archive. Returns nullptr if the nested archive cannot be handled

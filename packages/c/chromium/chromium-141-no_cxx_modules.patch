@@ -1,14 +1,13 @@
---- chromium-141.0.7390.37/third_party/pthreadpool/chromium/jobs.cc	2025/10/02 13:48:22	1.1
-+++ chromium-141.0.7390.37/third_party/pthreadpool/chromium/jobs.cc	2025/10/02 13:50:01
-@@ -22,9 +22,10 @@
+Index: chromium-145.0.7561.2/third_party/pthreadpool/chromium/jobs.cc
+===================================================================
+--- chromium-145.0.7561.2.orig/third_party/pthreadpool/chromium/jobs.cc
++++ chromium-145.0.7561.2/third_party/pthreadpool/chromium/jobs.cc
+@@ -23,7 +23,7 @@
  // Note that we can't use #if !defined(__cpp_module) due to it not actually
  // being defined - see https://github.com/llvm/llvm-project/issues/71364 and
  // https://github.com/llvm/llvm-project/blob/b251c29af45d3440374f53bb4c1645e5968593f7/clang/lib/Frontend/InitPreprocessor.cpp#L747
--#ifndef USE_LIBCXX_MODULES
+-#if !defined(USE_LIBCXX_MODULES) || defined(_MSC_VER)
 +#if 1
  #include <atomic>
  #define _LIBCPP_STDATOMIC_H
-+#define __CLANG_STDATOMIC_H
  using namespace std;
- #endif
- 

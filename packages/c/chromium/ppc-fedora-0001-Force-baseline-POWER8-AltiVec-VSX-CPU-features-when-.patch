@@ -16,7 +16,7 @@ Index: chromium-130.0.6723.44/v8/BUILD.gn
    if (v8_current_cpu == "ppc64") {
      defines += [ "V8_TARGET_ARCH_PPC64" ]
      cflags += [ "-ffp-contract=off" ]
--    if (current_os == "aix") {
+-    if (current_os == "aix" && !is_clang) {
 +    if (current_os == "linux") {
 +        cflags += [
 +        # Enable usage of AltiVec, VSX, and other POWER8 and higher features
@@ -24,7 +24,7 @@ Index: chromium-130.0.6723.44/v8/BUILD.gn
 +        "-maltivec",
 +        "-mvsx",
 +      ]
-+    } else if (current_os == "aix") {
++    } else if (current_os == "aix" && !is_clang) {
        cflags += [
          # Work around AIX ceil, trunc and round oddities.
          "-mcpu=power5+",

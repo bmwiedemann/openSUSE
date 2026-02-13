@@ -1,7 +1,7 @@
 #
 # spec file for package chromium
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2024 Callum Farmer <gmbr3@opensuse.org>
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -75,8 +75,10 @@
 %endif
 # GCC version
 %define gcc_version 14
-# esbuild version
+# minimal esbuild version
 %define esbuild_version 0.25.1
+# minimal gn version
+%define gn_version 0.20251217
 %if 0%{?suse_version} <= 1699
 %bcond_with system_webp
 %bcond_with system_re2
@@ -127,7 +129,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        144.0.7559.132
+Version:        145.0.7632.45
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -145,6 +147,10 @@ Source104:      chromium-symbolic.svg
 Source105:      INSTALL.sh
 #
 Source106:      chrome-wrapper
+# upstream only contains x86 binary still needed:
+Source201:      https://npm.skia.org/chrome-devtools/@rollup%2frollup-linux-arm64-gnu/-/rollup-linux-arm64-gnu-4.22.4.tgz
+Source202:      https://npm.skia.org/chrome-devtools/@rollup%2frollup-linux-powerpc64le-gnu/-/rollup-linux-powerpc64le-gnu-4.22.4.tgz
+# global patches
 Patch0:         chromium-libusb_interrupt_event_handler.patch
 # PATCH-FIX-OPENSUSE Make the 1-click-install ymp file always download [bnc#836059]
 Patch1:         exclude_ymp.patch
@@ -184,6 +190,8 @@ Patch386:       chromium-143-libpng-unbundle.patch
 Patch387:       chromium-143-cookie_string_view.patch
 Patch389:       chromium-143-revert_rust_is_multiple_of.patch
 Patch390:       chromium-144-revert_gfx_value_or.patch
+Patch391:       chromium-145-blink_missing_include.patch
+Patch392:       chromium-145-use_unrar.patch
 Patch393:       force-rust-nightly.patch
 # conditionally applied patches ppc64le only
 Patch401:       ppc-fedora-add-ppc64-architecture-string.patch
@@ -244,6 +252,7 @@ Patch458:       ppc-fedora-0001-add-xnn-ppc64el-support.patch
 # https://src.fedoraproject.org/rpms/chromium/blob/rawhide/f/0002-regenerate-xnn-buildgn.patch
 Patch459:       ppc-fedora-0002-regenerate-xnn-buildgn.patch
 Patch460:       ppc-debian-0003-third_party-ffmpeg-Add-ppc64-generated-config.patch
+Patch461:       ppc-fedora-0009-sandbox-ignore-byte-span-error.patch
 # conditionally applied patches
 # patch where libxml < 2.12
 Patch1010:      chromium-124-system-libxml.patch
@@ -254,6 +263,11 @@ Patch1040:      gtk-414.patch
 Patch1041:      gtk-414-2.patch
 # flac is too old
 Patch1050:      chromium-140-old-flac.patch
+# revert upstream patch ending in compile error
+# error: static assertion expression is not an integral constant expression
+Patch1060:       chromium-24264eefbfd3464161764f31a2752c5327719452.patch
+Patch1061:       chromium-4f46f03a6c6d4c6efc1ad5d0d78030d02326f967.patch
+
 # end conditionally applied patches
 BuildRequires:  SDL-devel
 BuildRequires:  bison
@@ -263,7 +277,7 @@ BuildRequires:  elfutils
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  git
-BuildRequires:  gn >= 0.20250619
+BuildRequires:  gn >= %{gn_version}
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  golang(API)
@@ -279,8 +293,8 @@ BuildRequires:  nasm
 BuildRequires:  ninja >= 1.7.2
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} >= 1600
-BuildRequires:  nodejs-common
+%if 0%{?suse_version} >= 1600 || 0%{?sle_version} >= 150700
+BuildRequires:  nodejs-default
 %else
 BuildRequires:  nodejs22
 %endif
@@ -521,6 +535,22 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %if %{without flac_1_5}
 %patch -p1 -P 1050
 %endif
+
+clang_version="$(clang --version | sed -n 's/clang version //p')"
+if [[ $(echo ${clang_version} | cut -d. -f1) -lt 21 ]]; then
+%patch -p1 -R -P 1060
+%patch -p1 -R -P 1061
+fi
+
+# unpack rollup binary for aarch64
+%ifarch aarch64
+tar xf %{SOURCE201} && mv package third_party/devtools-frontend/src/node_modules/@rollup/rollup-linux-arm64-gnu
+%endif
+
+#unpack rollup binary for ppc64le
+%ifarch ppc64le
+tar xf %{SOURCE202} && mv package third_party/devtools-frontend/src/node_modules/@rollup/rollup-linux-powerpc64le-gnu
+%endif 
 
 %build
 # esbuild
@@ -794,7 +824,6 @@ keeplibs=(
     third_party/webrtc/modules/third_party/fft
     third_party/webrtc/modules/third_party/g711
     third_party/webrtc/modules/third_party/g722
-    third_party/webrtc/rtc_base/third_party/sigslot
     third_party/webrtc/rtc_tools
     third_party/widevine
     third_party/woff2

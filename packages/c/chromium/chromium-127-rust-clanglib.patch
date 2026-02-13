@@ -11,8 +11,8 @@ Index: chromium-144.0.7524.0/build/rust/rust_bindgen.gni
  }
  
  # Template to build Rust/C bindings with bindgen.
-@@ -129,6 +129,13 @@ template("rust_bindgen") {
-       deps += [ ":${_rust_bindgen_generator_name}_static_fns" ]
+@@ -135,6 +135,13 @@
+       deps += [ ":${_rust_bindgen_generator_target_name}_static_fns" ]
      }
  
 +    # Default configs include "-fvisibility=hidden", and for some reason this
@@ -22,9 +22,9 @@ Index: chromium-144.0.7524.0/build/rust/rust_bindgen.gni
 +      args += [ "-fvisibility=default" ]
 +    }
 +
-     if (defined(cpp) && cpp) {
-       # This cfg is used to control the bindings public export.
-       rustflags = [
+     rustflags = [
+       # Don't warn about unused code in the generated bindings.
+       "-Adead_code",
 Index: chromium-144.0.7524.0/build/rust/rust_bindgen_generator.gni
 ===================================================================
 --- chromium-144.0.7524.0.orig/build/rust/rust_bindgen_generator.gni

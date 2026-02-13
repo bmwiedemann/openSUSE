@@ -1,0 +1,62 @@
+commit 24264eefbfd3464161764f31a2752c5327719452
+Author: Nic Champagne Williamson <champnic@microsoft.com>
+Date:   Thu Jan 8 17:12:28 2026 -0800
+
+    Fix vaapi jpeg fuzzer
+    
+    As part of semi-automated spanification effort, the
+    jpeg_decoder_fuzzertest.cc was spanified. However, this fuzzer is marked
+    as "no_clusterfuzz" and must be built and run manually, so the fuzz
+    build pipelines skipped it and it was never verified.
+    https://chromium-review.googlesource.com/c/chromium/src/+/7229449
+    
+    This change fixes the minor compilation issues with the fuzzer, mostly
+    by using "as_byte_span" for the arrays created by the protobuf code,
+    which default to std::string.
+    
+    Bug: 474097238
+    Change-Id: I575a9d90c546b2702517347245f857ce7f0ac4bc
+    Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/7411409
+    Reviewed-by: Dale Curtis <dalecurtis@chromium.org>
+    Reviewed-by: Michael Tang <tangm@microsoft.com>
+    Commit-Queue: Nic Williamson <champnic@microsoft.com>
+    Cr-Commit-Position: refs/heads/main@{#1566648}
+
+diff --git a/media/gpu/vaapi/fuzzers/jpeg_decoder/jpeg_decoder_fuzzertest.cc b/media/gpu/vaapi/fuzzers/jpeg_decoder/jpeg_decoder_fuzzertest.cc
+index cd8c7593f911b..28e5914c7035c 100644
+--- a/media/gpu/vaapi/fuzzers/jpeg_decoder/jpeg_decoder_fuzzertest.cc
++++ b/media/gpu/vaapi/fuzzers/jpeg_decoder/jpeg_decoder_fuzzertest.cc
+@@ -54,12 +54,12 @@ media::JpegHuffmanTable ConvertToJpegHuffmanTable(
+       std::min(huffman_table.code_length.size(),
+                proto_huffman_table.code_length().size());
+   base::span(huffman_table.code_length)
+-      .copy_prefix_from(base::span(proto_huffman_table.code_value())
++      .copy_prefix_from(base::as_byte_span(proto_huffman_table.code_length())
+                             .first(code_length_min_size));
+   const size_t code_value_min_size = std::min(
+       huffman_table.code_value.size(), proto_huffman_table.code_value().size());
+   base::span(huffman_table.code_value)
+-      .copy_prefix_from(base::span(proto_huffman_table.code_value())
++      .copy_prefix_from(base::as_byte_span(proto_huffman_table.code_value())
+                             .first(code_value_min_size));
+   return huffman_table;
+ }
+@@ -131,7 +131,7 @@ media::JpegParseResult ConvertToJpegParseResult(
+     base::span(parse_result.q_table[i].value)
+         .first(value_min_size)
+         .copy_from_nonoverlapping(
+-            base::span(input_q_table.value()).first(value_min_size));
++            base::as_byte_span(input_q_table.value()).first(value_min_size));
+   }
+ 
+   // Convert the scan header.
+@@ -153,8 +153,7 @@ media::JpegParseResult ConvertToJpegParseResult(
+   // Convert the coded data. Note that we don't do a deep copy, so we assume
+   // that |proto_parse_result| will live for as long as |parse_result|.data is
+   // needed.
+-  parse_result.data = proto_parse_result.data().data();
+-  parse_result.data_size = proto_parse_result.data().size();
++  parse_result.data = base::as_byte_span(proto_parse_result.data());
+ 
+   // Convert the rest of the fields.
+   parse_result.restart_interval =

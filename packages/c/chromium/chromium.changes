@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Feb  4 22:46:39 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- Chromium 145.0.7632.45 (boo#1258116)
+  * jpeg-xl support has been readded
+  * CVE-2026-2313: Use after free in CSS
+  * CVE-2026-2314: Heap buffer overflow in Codecs
+  * CVE-2026-2315: Inappropriate implementation in WebGPU
+  * CVE-2026-2316: Insufficient policy enforcement in Frames
+  * CVE-2026-2317: Inappropriate implementation in Animation
+  * CVE-2026-2318: Inappropriate implementation in PictureInPicture
+  * CVE-2026-2319: Race in DevTools
+  * CVE-2026-2320: Inappropriate implementation in File input
+  * CVE-2026-2321: Use after free in Ozone
+  * CVE-2026-2322: Inappropriate implementation in File input
+  * CVE-2026-2323: Inappropriate implementation in Downloads
+- modified patches:
+  * chromium-127-rust-clanglib.patch (context)
+  * chromium-144-revert-libxml-2.13.patch (context)
+  * ppc-fedora-0001-Force-baseline-POWER8-AltiVec-VSX-CPU-features-when-.patch
+    (context)
+  * ppc-debian-0003-third_party-ffmpeg-Add-ppc64-generated-config.patch
+    (drop ref to ppc/lossless_audiodsp_altivec.o, dropped upstream)
+  * chromium-141-no_cxx_modules.patch
+  * ppc-fedora-0001-Add-PPC64-support-for-boringssl.patch (context)
+  * ppc-fedora-0002-regenerate-xnn-buildgn.patch (regenerated)
+  * system-libdrm.patch (context)
+  * ppc-fedora-0002-third_party-libvpx-Remove-bad-ppc64-config.patch
+- added patches:
+  * chromium-145-blink_missing_include.patch
+  * chromium-145-use_unrar.patch
+    (properly respect disabling unrar in recent code changes)
+  * ppc-fedora-0009-sandbox-ignore-byte-span-error.patch
+  * chromium-4f46f03a6c6d4c6efc1ad5d0d78030d02326f967.patch
+    (revert spanification for jpeg_parser ending in compile error)
+  * chromium-24264eefbfd3464161764f31a2752c5327719452.patch
+    (also to revert jpeg_encoder spanification for older llvm)
+- bump BR for gn to 0.20251217
+  * need the string_hash function for rust gni
+- add rollup binaries for arm64 and powerpc64le, missing upstream
+  using tarballs from npm.skia.org
+
+-------------------------------------------------------------------
 Wed Feb  4 09:55:40 UTC 2026 - Ruediger Oertel <ro@suse.com>
 
 - Chromium 144.0.7559.132 (boo#1257650)

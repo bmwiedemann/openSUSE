@@ -6158,4 +6158,41 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
   points to nodejs14 there)</comment>
     <requestid>1330919</requestid>
   </revision>
+  <revision rev="500" vrev="1">
+    <srcmd5>502f4adb0bd0f987565295f36e270baa</srcmd5>
+    <version>145.0.7632.45</version>
+    <time>1770982896</time>
+    <user>anag_factory</user>
+    <comment>- Chromium 145.0.7632.45 (boo#1258116)
+  * jpeg-xl support has been readded
+  * CVE-2026-2313: Use after free in CSS
+  * CVE-2026-2314: Heap buffer overflow in Codecs
+  * CVE-2026-2315: Inappropriate implementation in WebGPU
+  * CVE-2026-2316: Insufficient policy enforcement in Frames
+  * CVE-2026-2317: Inappropriate implementation in Animation
+  * CVE-2026-2318: Inappropriate implementation in PictureInPicture
+  * CVE-2026-2319: Race in DevTools
+  * CVE-2026-2320: Inappropriate implementation in File input
+  * CVE-2026-2321: Use after free in Ozone
+  * CVE-2026-2322: Inappropriate implementation in File input
+  * CVE-2026-2323: Inappropriate implementation in Downloads
+- modified patches:
+  * chromium-127-rust-clanglib.patch (context)
+  * chromium-144-revert-libxml-2.13.patch (context)
+  * ppc-fedora-0001-Force-baseline-POWER8-AltiVec-VSX-CPU-features-when-.patch
+    (context)
+  * ppc-debian-0003-third_party-ffmpeg-Add-ppc64-generated-config.patch
+    (drop ref to ppc/lossless_audiodsp_altivec.o, dropped upstream)
+  * chromium-141-no_cxx_modules.patch
+  * ppc-fedora-0001-Add-PPC64-support-for-boringssl.patch (context)
+  * ppc-fedora-0002-regenerate-xnn-buildgn.patch (regenerated)
+  * system-libdrm.patch (context)
+  * ppc-fedora-0002-third_party-libvpx-Remove-bad-ppc64-config.patch
+- added patches:
+  * chromium-145-blink_missing_include.patch
+  * chromium-145-use_unrar.patch
+    (properly respect disabling unrar in recent code changes)
+  * ppc-fedora-0009-sandbox-ignore-byte-span-error.patch</comment>
+    <requestid>1332708</requestid>
+  </revision>
 </revisionlist>

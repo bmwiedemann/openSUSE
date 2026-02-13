@@ -9384,7 +9384,7 @@ Index: chromium-141.0.7390.37/third_party/ffmpeg/ffmpeg_generated.gni
 ===================================================================
 --- chromium-141.0.7390.37.orig/third_party/ffmpeg/ffmpeg_generated.gni
 +++ chromium-141.0.7390.37/third_party/ffmpeg/ffmpeg_generated.gni
-@@ -469,6 +469,40 @@ if ((use_linux_config && current_cpu ==
+@@ -320,6 +320,39 @@
    ]
  }
  
@@ -9403,7 +9403,6 @@ Index: chromium-141.0.7390.37/third_party/ffmpeg/ffmpeg_generated.gni
 +    "libavcodec/ppc/h264chroma_init.c",
 +    "libavcodec/ppc/hpeldsp_altivec.c",
 +    "libavcodec/ppc/idctdsp.c",
-+    "libavcodec/ppc/lossless_audiodsp_altivec.c",
 +    "libavcodec/ppc/lossless_videodsp_altivec.c",
 +    "libavcodec/ppc/me_cmp.c",
 +    "libavcodec/ppc/mpegaudiodsp_altivec.c",
@@ -9423,8 +9422,8 @@ Index: chromium-141.0.7390.37/third_party/ffmpeg/ffmpeg_generated.gni
 +}
 +
  if ((current_cpu == "x64" && ffmpeg_branding == "Chrome") ||
-     (is_android && current_cpu == "x86" && ffmpeg_branding == "Chrome") ||
      (is_win && current_cpu == "x86" && ffmpeg_branding == "Chrome") ||
+     (use_linux_config && current_cpu == "x86" && ffmpeg_branding == "Chrome")) {
 Index: chromium-141.0.7390.37/third_party/ffmpeg/libavcodec/ppc/h264dsp_ppc.c
 ===================================================================
 --- /dev/null

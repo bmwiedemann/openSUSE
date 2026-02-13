@@ -2,7 +2,7 @@
 +++ /dev/null
 @@ -1,186 +0,0 @@
 -/*
-- *  Copyright (c) 2025 The WebM project authors. All Rights Reserved.
+- *  Copyright (c) 2026 The WebM project authors. All Rights Reserved.
 - *
 - *  Use of this source code is governed by a BSD-style license
 - *  that can be found in the LICENSE file in the root of the source
@@ -191,7 +191,7 @@
 +++ /dev/null
 @@ -1,119 +0,0 @@
 -/*
-- *  Copyright (c) 2025 The WebM project authors. All Rights Reserved.
+- *  Copyright (c) 2026 The WebM project authors. All Rights Reserved.
 - *
 - *  Use of this source code is governed by a BSD-style license
 - *  that can be found in the LICENSE file in the root of the source
@@ -311,7 +311,7 @@
 -#endif  // VP9_RTCD_H_
 --- chromium-136.0.7103.48.orig/third_party/libvpx/source/config/linux/ppc64/vpx_config.asm	2025/05/14 22:49:40	1.1
 +++ /dev/null
-@@ -1,107 +0,0 @@
+@@ -1,108 +0,0 @@
 -@ This file was created from a .asm file
 -@  using the ads2gas.pl script.
 -.syntax unified
@@ -354,6 +354,7 @@
 -.equ HAVE_LASX ,  0
 -.equ HAVE_VPX_PORTS ,  1
 -.equ HAVE_PTHREAD_H ,  1
+-.equ HAVE_PTHREAD_SETNAME_NP ,  1
 -.equ HAVE_UNISTD_H ,  0
 -.equ CONFIG_DEPENDENCY_TRACKING ,  1
 -.equ CONFIG_EXTERNAL_BUILD ,  1
@@ -434,7 +435,7 @@
 -const char *vpx_codec_build_config(void) {return cfg;}
 --- chromium-136.0.7103.48.orig/third_party/libvpx/source/config/linux/ppc64/vpx_config.h	2025/05/14 22:49:40	1.1
 +++ /dev/null
-@@ -1,116 +0,0 @@
+@@ -1,117 +0,0 @@
 -/* Copyright (c) 2011 The WebM project authors. All Rights Reserved. */
 -/*  */
 -/* Use of this source code is governed by a BSD-style license */
@@ -486,6 +487,7 @@
 -#define HAVE_LASX 0
 -#define HAVE_VPX_PORTS 1
 -#define HAVE_PTHREAD_H 1
+-#define HAVE_PTHREAD_SETNAME_NP 1
 -#define HAVE_UNISTD_H 0
 -#define CONFIG_DEPENDENCY_TRACKING 1
 -#define CONFIG_EXTERNAL_BUILD 1
@@ -555,7 +557,7 @@
 +++ /dev/null
 @@ -1,858 +0,0 @@
 -/*
-- *  Copyright (c) 2025 The WebM project authors. All Rights Reserved.
+- *  Copyright (c) 2026 The WebM project authors. All Rights Reserved.
 - *
 - *  Use of this source code is governed by a BSD-style license
 - *  that can be found in the LICENSE file in the root of the source
@@ -1416,7 +1418,7 @@
 +++ /dev/null
 @@ -1,83 +0,0 @@
 -/*
-- *  Copyright (c) 2025 The WebM project authors. All Rights Reserved.
+- *  Copyright (c) 2026 The WebM project authors. All Rights Reserved.
 - *
 - *  Use of this source code is governed by a BSD-style license
 - *  that can be found in the LICENSE file in the root of the source

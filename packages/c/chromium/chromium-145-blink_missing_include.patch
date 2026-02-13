@@ -1,0 +1,22 @@
+--- chromium-145.0.7572.2/third_party/blink/renderer/modules/xr/xr_cpu_depth_information.h	2025/12/16 14:51:38	1.1
++++ chromium-145.0.7572.2/third_party/blink/renderer/modules/xr/xr_cpu_depth_information.h	2025/12/16 14:51:49
+@@ -9,6 +9,8 @@
+ #include "device/vr/public/mojom/xr_session.mojom-blink-forward.h"
+ #include "third_party/blink/renderer/core/typed_arrays/dom_array_buffer.h"
+ #include "third_party/blink/renderer/modules/xr/xr_depth_information.h"
++#include "ui/gfx/geometry/size.h"
++#include "ui/gfx/geometry/transform.h"
+ 
+ namespace gfx {
+ class Size;
+--- chromium-145.0.7572.2/third_party/blink/renderer/modules/xr/xr_rigid_transform.h	2025/12/17 11:11:31	1.1
++++ chromium-145.0.7572.2/third_party/blink/renderer/modules/xr/xr_rigid_transform.h	2025/12/17 11:12:00
+@@ -11,6 +11,8 @@
+ #include "third_party/blink/renderer/core/typed_arrays/dom_typed_array.h"
+ #include "third_party/blink/renderer/modules/modules_export.h"
+ #include "third_party/blink/renderer/platform/bindings/script_wrappable.h"
++#include "ui/gfx/geometry/size.h"
++#include "ui/gfx/geometry/transform.h"
+ 
+ namespace gfx {
+ class Transform;
