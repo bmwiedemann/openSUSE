@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8753b25476093b58970400cabf1fa5c1</srcmd5>
+    <version>4.0.0</version>
+    <time>1770983302</time>
+    <user>anag_factory</user>
+    <comment>- Rename package to terminaltables3.
+- Update to 4.0.0:
+  ## Changed
+  * New namespace and package name: terminaltables3
+  * No changes made to the License.
+  ## Added
+  * Started on type annotations
+  ## Removed
+  * Removed Python 2 support.
+- Update URL.
+- Run the testsuite.</comment>
+    <requestid>1332789</requestid>
+  </revision>
+</revisionlist>
