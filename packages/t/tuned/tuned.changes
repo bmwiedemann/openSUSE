@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 13 13:20:32 UTC 2026 - Thomas Renninger <trenn@suse.de>
+
+- Fix version by reverting "v" prefix which unintentionally slipped
+  in on last commit
+
+-------------------------------------------------------------------
 Wed Feb 11 22:16:45 UTC 2026 - Thomas Renninger <trenn@suse.de>
 
 - Update to mainline version v2.27.0-rc.1, but rewrite it to

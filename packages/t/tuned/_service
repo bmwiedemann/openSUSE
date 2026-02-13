@@ -20,7 +20,7 @@
     Do this manually:
 -->
     <param name="revision">v2.27.0-rc.1</param>
-    <param name="versionformat">v2.26.1+git.%h</param>
+    <param name="versionformat">2.26.1+git.%h</param>
 <!--
     and get the next full version via generic
     versionrewrite asap:
