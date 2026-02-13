@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 13 13:23:16 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.10.3:
+  * Fix an issue where blocklist bypass is possible when using curve P256
+    Any newly issued P256 based certificates will have their signature clamped
+    to the low-s form.  Nebula will assert the low-s signature form when
+    validating certificates in a future version
+
+-------------------------------------------------------------------
 Wed Jan 21 20:34:05 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.10.2:

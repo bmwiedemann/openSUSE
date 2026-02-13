@@ -125,4 +125,16 @@
   * Fix panic when using use_system_route_table (forwarded request 1328569 from rrahl0)</comment>
     <requestid>1328570</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9803d9b25fd5b96ad07964a35f6d8741</srcmd5>
+    <version>1.10.3</version>
+    <time>1770997205</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.10.3:
+  * Fix an issue where blocklist bypass is possible when using curve P256
+    Any newly issued P256 based certificates will have their signature clamped
+    to the low-s form.  Nebula will assert the low-s signature form when
+    validating certificates in a future version (forwarded request 1332860 from rrahl0)</comment>
+    <requestid>1332861</requestid>
+  </revision>
 </revisionlist>
