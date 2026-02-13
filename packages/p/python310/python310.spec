@@ -160,7 +160,6 @@ Patch07:        bpo-31046_ensurepip_honours_prefix.patch
 # PATCH-FIX-SLE no-skipif-doctests.patch jsc#SLE-13738 mcepl@suse.com
 # SLE-15 version of Sphinx doesn't know about skipif directive in doctests.
 Patch11:        no-skipif-doctests.patch
-
 # PATCH-FIX-SLE skip-test_pyobject_freed_is_freed.patch mcepl@suse.com
 # skip a test failing on SLE-15
 Patch15:        skip-test_pyobject_freed_is_freed.patch
@@ -216,6 +215,25 @@ Patch32:        CVE-2025-12084-minidom-quad-search.patch
 # PATCH-FIX-UPSTREAM CVE-2025-13837-plistlib-mailicious-length.patch bsc#1254401 mcepl@suse.com
 # protect against OOM when loading malicious content
 Patch33:        CVE-2025-13837-plistlib-mailicious-length.patch 
+# PATCH-FIX-UPSTREAM CVE-2025-11468-email-hdr-fold-comment.patch bsc#1257029 mcepl@suse.com
+# this patch makes things totally awesome
+Patch34:        CVE-2025-11468-email-hdr-fold-comment.patch
+# PATCH-FIX-UPSTREAM CVE-2026-0672-http-hdr-inject-cookie-Morsel.patch bsc#1257031 mcepl@suse.com
+# rejects control characters in http cookies.
+Patch35:        CVE-2026-0672-http-hdr-inject-cookie-Morsel.patch
+# PATCH-FIX-UPSTREAM CVE-2026-0865-wsgiref-ctrl-chars.patch bsc#1257042 mcepl@suse.com
+# Reject control characters in wsgiref.headers.Headers
+Patch37:        CVE-2026-0865-wsgiref-ctrl-chars.patch
+# PATCH-FIX-UPSTREAM CVE-2025-15366-imap-ctrl-chars.patch bsc#1257044 mcepl@suse.com
+# Reject control characters in wsgiref.headers.Headers
+Patch38:        CVE-2025-15366-imap-ctrl-chars.patch
+# PATCH-FIX-UPSTREAM CVE-2025-15282-urllib-ctrl-chars.patch bsc#1257046 mcepl@suse.com
+# Reject control characters in urllib
+Patch39:        CVE-2025-15282-urllib-ctrl-chars.patch
+# PATCH-FIX-UPSTREAM CVE-2025-15367-poplib-ctrl-chars.patch bsc#1257041 mcepl@suse.com
+# Reject control characters in poplib
+Patch40:        CVE-2025-15367-poplib-ctrl-chars.patch
+### END OF PATCHES                                                              
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
