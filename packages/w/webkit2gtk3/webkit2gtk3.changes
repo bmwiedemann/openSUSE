@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 10 12:53:28 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.50.5:
+  + Fix several crashes and rendering issues.
+- Drop webkit2gtk3-a11y-fix-role-mapping.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Sun Feb  1 15:09:13 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Build with Clang. The Skia documentation strongly recommends

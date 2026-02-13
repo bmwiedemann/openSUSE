@@ -2057,4 +2057,12 @@ Add bug/CVE refs to changes (forwarded request 1319842 from mgorse)</comment>
     <comment></comment>
     <requestid>1330261</requestid>
   </revision>
+  <revision rev="236" vrev="1">
+    <srcmd5>dc04e1c311f3156fe24b15b0c74e222d</srcmd5>
+    <version>2.50.5</version>
+    <time>1770982807</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1332559</requestid>
+  </revision>
 </revisionlist>
