@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1204068</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1510050989f67829f3b5ae7ac3ba97d3</srcmd5>
+    <version>1.2.1</version>
+    <time>1770983214</time>
+    <user>anag_factory</user>
+    <comment>- Use poetry-core for building, rather than poetry.</comment>
+    <requestid>1332786</requestid>
+  </revision>
 </revisionlist>

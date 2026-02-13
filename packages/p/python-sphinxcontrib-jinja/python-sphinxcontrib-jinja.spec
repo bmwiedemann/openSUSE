@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-jinja
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,8 @@ Summary:        Designing beautiful, view size responsive web components
 License:        MIT
 URL:            https://github.com/tardyp/sphinx-jinja
 Source:         https://github.com/tardyp/sphinx-jinja/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module poetry-core >= 1.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2

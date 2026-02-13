@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 13 03:14:33 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use poetry-core for building, rather than poetry.
+
+-------------------------------------------------------------------
 Thu Sep 26 16:22:51 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - first version
