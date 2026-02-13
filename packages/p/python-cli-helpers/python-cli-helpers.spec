@@ -1,7 +1,7 @@
 #
 # spec file for package python-cli-helpers
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,11 +28,11 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Pygments >= 2.4
 Requires:       python-configobj >= 5.0.5
-Requires:       python-tabulate >= 0.8.2
-Requires:       python-terminaltables >= 3.0.0
+Requires:       python-tabulate >= 0.9.0
+# install_requires lists tabulate[widechars]
 Requires:       python-wcwidth
+Suggests:       python-Pygments >= 2.4
 BuildArch:      noarch
 # SECTION test requirements
 # Package dependencies
@@ -40,15 +40,7 @@ BuildRequires:  %{python_module Pygments >= 2.4}
 BuildRequires:  %{python_module configobj >= 5.0.5}
 BuildRequires:  %{python_module pytest >= 3.0.7}
 BuildRequires:  %{python_module tabulate >= 0.8.2}
-BuildRequires:  %{python_module terminaltables >= 3.0.0}
 BuildRequires:  %{python_module wcwidth}
-%if %{with python2}
-BuildRequires:  python2-backports.csv >= 1.0.0
-%endif
-# /SECTION
-%ifpython2
-Requires:       python2-backports.csv >= 1.0.0
-%endif
 %python_subpackages
 
 %description
@@ -81,6 +73,6 @@ other libraries.
 %license LICENSE
 %doc README.rst AUTHORS CHANGELOG docs
 %{python_sitelib}/cli[-_]helpers
-%{python_sitelib}/cli[-_]helpers-%{version}*-info
+%{python_sitelib}/cli[-_]helpers-%{version}.dist-info
 
 %changelog

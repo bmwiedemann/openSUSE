@@ -120,4 +120,13 @@
   * Make JSON formats able to encode Decimals and None/NULLs.</comment>
     <requestid>1304689</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>ff2817f8c5f472a68e773696a3d5e63b</srcmd5>
+    <version>2.7.0</version>
+    <time>1770983297</time>
+    <user>anag_factory</user>
+    <comment>- Update {Build,}Requires to match reality.
+- Remove Python 2 bits.</comment>
+    <requestid>1332788</requestid>
+  </revision>
 </revisionlist>
