@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Feb  3 07:18:29 UTC 2026 - Justin Hales <justindhales@gmail.com>
+
+- Update to version 6.0.1:
+  * Fix default color map
+  * Fixed problem where the Adjust Camera dialog could be opened
+    only once during a ParaView session.
+  * Fixed crash on rescale to data range over all timesteps.
+  * Pick center now works correctly when picking vertices. If on
+    pick an intersection is expected but none is found, snap to the
+    closest mesh point.
+  * Removed warning about OSPRayMaterial property not being found
+    when enabling ray tracing.
+  * Fixed black screen that could result under certain conditions.
+  * Append Geometry filter cell connectivity has been fixed when
+    appending polygons.
+  * Quadric Decimation no longer crashes when processing degenerate
+    cells.
+  * The Tetrahedralize filter no longer gives incorrect results due
+    to uninitialized memory reads.
+  * More info:
+    <https://www.kitware.com/paraview-6-0-1-release-notes/>
+- Dropped patches:
+  * vtk-sqlite-fix-typo-in-cmake-variable-for-external-dep.patch
+
+-------------------------------------------------------------------
+Wed Jan 07 00:01:00 UTC 2026 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com>
+
+- Use external VTK.
+
+-------------------------------------------------------------------
+Thu Oct 09 00:01:00 UTC 2025 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com>
+
+- Use internal GL2PS.
+
+-------------------------------------------------------------------
 Fri Oct 03 00:01:00 UTC 2025 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com>
 
 - Use internal fmt in Tumbleweed and external in Leap 16.
@@ -979,4 +1014,3 @@ Sat Apr  2 16:13:00 UTC 2011 - badshah400@gmail.com
 Thu Mar 31 00:30:36 UTC 2011 - badshah400@gmail.com
 
 - Initial package (version 3.10.0) 
-

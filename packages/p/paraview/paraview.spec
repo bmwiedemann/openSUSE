@@ -1,7 +1,7 @@
 #
 # spec file for package paraview
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,33 +21,8 @@
 %define short_ver %{major_ver}.%{minor_ver}
 %define shlib libparaview%{major_ver}_%{minor_ver}
 
-%if 0%{?suse_version} <= 1600
-%bcond_with    fast_float
-%bcond_with    haru
-%bcond_with    jsoncpp
-%bcond_with    proj
-%bcond_with    nlohmann
-%bcond_with    pugixml
-%bcond_with    cli11
-%bcond_without fmt
-%bcond_without gl2ps
-%else
-%bcond_with    fmt
-%bcond_with    gl2ps
-%bcond_without fast_float
-%bcond_without haru
-%bcond_without jsoncpp
-%bcond_without proj
-%bcond_without nlohmann
-%bcond_without pugixml
-%bcond_without cli11
-%endif
-
-%bcond_without verdict
-%bcond_without netcdf
-
 Name:           paraview
-Version:        %{short_ver}.0
+Version:        %{short_ver}.1
 Release:        0
 Summary:        Data analysis and visualization application
 License:        BSD-3-Clause
@@ -56,7 +31,7 @@ URL:            https://www.paraview.org
 Source0:        https://www.paraview.org/files/v%{short_ver}/ParaView-v%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 # CAUTION: GettingStarted may or may not be updated with each minor version
-Source2:        https://www.paraview.org/files/v%{short_ver}/ParaViewGettingStarted-%{major_ver}.%{minor_ver}.0.pdf
+Source2:        https://www.paraview.org/files/v%{short_ver}/ParaViewGettingStarted-%{major_ver}.%{minor_ver}.1.pdf
 # PATCH-FIX-UPSTREAM paraview-desktop-entry-fix.patch badshah400@gmail.com -- Fix desktop menu entry by inserting proper required categories
 Patch0:         paraview-desktop-entry-fix.patch
 # PATCH-FIX-OPENSUSE fix-libharu-missing-m.patch -- missing libraries for linking (gh#libharu/libharu#213)
@@ -65,8 +40,6 @@ Patch1:         fix-libharu-missing-m.patch
 Patch2:         fix-soversion-soname.patch
 # PATCH-FIX-UPSTREAM
 Patch3:         0001-Add-missing-libm-link-library-for-bundled-ExodusII.patch
-# PATCH-FIX-UPSTREAM https://gitlab.kitware.com/vtk/vtk/-/merge_requests/12449
-Patch4:         vtk-sqlite-fix-typo-in-cmake-variable-for-external-dep.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cgns-devel
 BuildRequires:  cmake >= 3.13
@@ -97,6 +70,7 @@ BuildRequires:  readline-devel
 BuildRequires:  sqlite3
 BuildRequires:  utfcpp-devel
 BuildRequires:  wget
+BuildRequires:  cmake(vtk) >= 9.5.0
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Help)
@@ -117,44 +91,9 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(zlib)
-%if %{with proj}
-BuildRequires:  pkgconfig(proj) >= 5.0.0
-%endif
-%if %{with cli11}
-BuildRequires:  pkgconfig(CLI11)
-%endif
-%if %{with fmt}
-BuildRequires:  fmt-devel
-BuildConflicts: fmt-devel >= 12
-%endif
-%if %{with gl2ps}
-BuildRequires:  gl2ps-devel >= 1.4.1
-%endif
-%if %{with haru}
-BuildRequires:  libharu-devel > 2.4.0
-%endif
-%if %{with fast_float}
-BuildRequires:  cmake(FastFloat)
-%endif
-%if %{with netcdf}
-BuildRequires:  pkgconfig(netcdf)
-%endif
-%if %{with jsoncpp}
-BuildRequires:  pkgconfig(jsoncpp) >= 1.9.4
-%endif
-%if %{with nlohmann}
-BuildRequires:  pkgconfig(nlohmann_json)
-%endif
-%if %{with pugixml}
-BuildRequires:  pkgconfig(pugixml) >= 1.11
-%endif
-%if %{with verdict}
-BuildRequires:  verdict-devel
-%endif
 Requires:       gnuplot
 Requires:       graphviz
 Recommends:     %{name}-plugins
@@ -226,9 +165,6 @@ This package provides the paraview plugins bundled with the upstream release.
 # FIX env BASED HASHBANG
 sed -Ei "1{s|#!%{_bindir}/env python3|#!%{_bindir}/python3|}" Clients/CommandLineExecutables/paraview-config.in
 
-# Allow other versions for fast_float
-sed -i -e '/VERSION .*/ d' VTK/ThirdParty/fast_float/CMakeLists.txt
-
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 %global __builder ninja
@@ -249,29 +185,8 @@ sed -i -e '/VERSION .*/ d' VTK/ThirdParty/fast_float/CMakeLists.txt
        -DPARAVIEW_USE_QT:BOOL=ON \
        -DPARAVIEW_USE_VTKM:BOOL=OFF \
        -DQtTesting_INSTALL_NO_DEVELOPMENT:BOOL=ON \
-       -DVTK_BUILD_QT_DESIGNER_PLUGIN:BOOL=OFF \
-       -DVTK_ENABLE_CATALYST:BOOL=ON \
-       -DVTK_PYTHON_OPTIONAL_LINK:BOOL=OFF \
-       -DVTK_WRAP_PYTHON:BOOL=ON \
        -DOpenGL_GL_PREFERENCE:STRING='GLVND' \
-       -DVTK_MODULE_ENABLE_VTK_libharu:BOOL=YES \
-       -DVTK_MODULE_ENABLE_VTK_pegtl:BOOL=YES \
-       -DVTK_MODULE_USE_EXTERNAL_VTK_cli11=%{?with_cli11:ON}%{!?with_cli11:OFF} \
-       -DVTK_MODULE_USE_EXTERNAL_VTK_exprtk:BOOL=OFF \
-       -DVTK_MODULE_USE_EXTERNAL_VTK_fast_float:BOOL=%{?with_fast_float:ON}%{!?with_fast_float:OFF} \
-       -DVTK_MODULE_USE_EXTERNAL_VTK_fmt:BOOL=%{?with_fmt:ON}%{!?with_fmt:OFF} \
-       -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=%{?with_gl2ps:ON}%{!?with_gl2ps:OFF} \
-       -DVTK_MODULE_USE_EXTERNAL_VTK_ioss:BOOL=OFF \
-       -DVTK_MODULE_USE_EXTERNAL_VTK_jsoncpp=%{?with_jsoncpp:ON}%{!?with_jsoncpp:OFF} \
-       -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=%{?with_haru:ON}%{!?with_haru:OFF} \
-       -DVTK_MODULE_USE_EXTERNAL_VTK_libproj=%{?with_proj:ON}%{!?with_proj:OFF} \
-       -DVTK_MODULE_USE_EXTERNAL_VTK_netcdf=%{?with_netcdf:ON}%{!?with_netcdf:OFF} \
-       -DVTK_MODULE_USE_EXTERNAL_VTK_nlohmannjson=%{?with_nlohmann:ON}%{!?with_nlohmann:OFF} \
-       -DVTK_MODULE_USE_EXTERNAL_VTK_pegtl=OFF  \
-       -DVTK_MODULE_USE_EXTERNAL_VTK_pugixml=%{?with_pugixml:ON}%{!?with_pugixml:OFF} \
-       -DVTK_MODULE_USE_EXTERNAL_VTK_sqlite:BOOL=ON \
-       -DVTK_MODULE_USE_EXTERNAL_VTK_token:BOOL=OFF \
-       -DVTK_MODULE_USE_EXTERNAL_VTK_verdict=%{?with_verdict:ON}%{!?with_verdict:OFF} \
+       -DPARAVIEW_USE_EXTERNAL_VTK:BOOL=ON \
        -Wno-dev \
        %{nil}
 
@@ -286,10 +201,6 @@ sed -i 's/,-ffat-lto-objects/ -ffat-lto-objects/g' ./build.ninja
 find . \( -name \*.txt -o -name \*.xml -o -name '*.[ch]' -o -name '*.[ch][px][px]' \) -exec chmod -x "{}" +
 
 %cmake_install
-
-# Unnecessary hash-bang
-sed -i "1{\@%{_bindir}/env@d}" %{buildroot}%{python3_sitearch}/paraview/vtkmodules/generate_pyi.py
-sed -i "1{\@%{_bindir}/env@d}" %{buildroot}%{python3_sitearch}/paraview/vtkmodules/test/rtImageTest.py
 
 # INSTALL DOCUMENTATION USED BY THE HELP MENU IN MAIN APP
 install -Dm0644 %{SOURCE2} %{buildroot}%{_datadir}/%{name}-%{short_ver}/doc/GettingStarted.pdf
@@ -313,12 +224,9 @@ install -Dm0644 %{SOURCE2} %{buildroot}%{_datadir}/%{name}-%{short_ver}/doc/Gett
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_docdir}/paraview/
-%dir %{_libdir}/vtk/
-%dir %{_libdir}/vtk/hierarchy
+%{_libdir}/vtk/
+%{_libdir}/vtk/hierarchy/
 %{_libdir}/vtk/hierarchy/ParaView/
-%if %{without proj}
-%{_datadir}/vtk-pv%{major_ver}.%{minor_ver}/
-%endif
 
 %files -n %{shlib}
 %{_libdir}/*.so.*
@@ -330,7 +238,6 @@ install -Dm0644 %{SOURCE2} %{buildroot}%{_datadir}/%{name}-%{short_ver}/doc/Gett
 %{_libdir}/*.so
 %{_libdir}/cmake/paraview-%{short_ver}/
 %{_bindir}/smTest*
-%{_bindir}/vtk*
 %{_includedir}/%{name}*
 
 %files devel-static
