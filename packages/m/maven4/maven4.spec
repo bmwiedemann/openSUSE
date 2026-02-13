@@ -83,6 +83,7 @@ BuildRequires:  maven-wagon-file
 BuildRequires:  maven-wagon-http
 BuildRequires:  maven-wagon-http-shared
 BuildRequires:  maven-wagon-provider-api
+BuildRequires:  methanol
 BuildRequires:  modello
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-classworlds
@@ -154,6 +155,7 @@ Requires:       maven-wagon-file
 Requires:       maven-wagon-http
 Requires:       maven-wagon-http-shared
 Requires:       maven-wagon-provider-api
+Requires:       methanol
 Requires:       objectweb-asm
 Requires:       plexus-classworlds
 Requires:       plexus-containers-component-annotations
@@ -190,8 +192,8 @@ BuildArch:      noarch
 %patch -P 4 -p1
 %patch -P 5 -p1
 
-# New plexus-xml4
 %pom_xpath_set pom:project/pom:properties/pom:plexusXmlVersion 4
+%pom_xpath_set pom:project/pom:properties/pom:resolverVersion 2
 
 %pom_remove_dep -r :junit-bom
 %pom_remove_dep -r :mockito-bom
@@ -281,6 +283,7 @@ build-jar-repository -s lib \
     maven-resolver/maven-resolver-transport-wagon-2 \
     maven-resolver/maven-resolver-util-2 \
     maven-wagon/provider-api \
+    methanol \
     objectweb-asm/asm \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
@@ -394,6 +397,7 @@ build-jar-repository -p %{buildroot}%{homedir}/lib \
     maven-wagon/http \
     maven-wagon/http-shared \
     maven-wagon/provider-api \
+    methanol \
     objectweb-asm/asm \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \

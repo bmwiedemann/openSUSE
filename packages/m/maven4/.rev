@@ -47,4 +47,12 @@
     <comment>Require the compatibility version of plexus-xml4</comment>
     <requestid>1332223</requestid>
   </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>e26438eb34d403af62e8e9f9df956e4a</srcmd5>
+    <version>4.0.0~rc5</version>
+    <time>1770995611</time>
+    <user>anag_factory</user>
+    <comment>Prepare for maven-resolver2 2.0.15</comment>
+    <requestid>1332844</requestid>
+  </revision>
 </revisionlist>

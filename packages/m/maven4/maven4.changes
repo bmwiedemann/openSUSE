@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 12 19:26:11 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Use the compatibility version of maven-resolver2, since the
+  version 2.0.15 is backward compatible with the version 2.0.14
+- Require methanol that is now dependency of maven-resolver2
+
+-------------------------------------------------------------------
 Tue Feb 10 06:14:07 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Require the compatibility version of plexus-xml4 to avoid breaking

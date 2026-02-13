@@ -83,6 +83,9 @@ BuildArch:      noarch
 %patch -P 4 -p1
 %patch -P 5 -p1
 
+%pom_xpath_set pom:project/pom:properties/pom:plexusXmlVersion 4
+%pom_xpath_set pom:project/pom:properties/pom:resolverVersion 2
+
 %pom_remove_dep -r :junit-bom
 %pom_remove_dep -r :mockito-bom
 %pom_remove_plugin -r :maven-enforcer-plugin
