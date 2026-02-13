@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 13 02:02:55 UTC 2026 - william.brown@suse.com
+
+- Update to version 20260213:
+  * Assigned RUSTSEC-2025-0150 to finch-rst, RUSTSEC-2025-0151 to sha-rst, RUSTSEC-2025-0152 to finch_cli_rust
+  * Add advisories for the second finch attack in December.
+  * Add patched versions to RUSTSEC-2025-0142
+  * Bump actions/cache from 5.0.2 to 5.0.3
+  * Synchronize IDs (2026-02-08)
+  * Assigned RUSTSEC-2025-0149 to below
+  * below: add information about CVE-2025-27591 (#2585)
+  * Assigned RUSTSEC-2026-0010 to polymarket-clients-sdk
+  * Advisory for deleted malicious crate polymarket-clients-sdk
+  * Assigned RUSTSEC-2025-0145 to uniswap-utils, RUSTSEC-2025-0146 to sha-rust, RUSTSEC-2025-0147 to evm-units, RUSTSEC-2025-0148 to finch-rust
+
+-------------------------------------------------------------------
 Thu Feb 05 00:29:04 UTC 2026 - william.brown@suse.com
 
 - Update to version 20260205:
