@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 13 09:44:34 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU moe 1.16:
+  * New option '-p, --preserve-links'
+  * The UTF-8 decoder now removes the Byte Order Mark and decodes
+    Arabic-Indic digits
+  * Exclude 80-9F for compatibility with UTF-8
+
+-------------------------------------------------------------------
 Sat Jan 11 12:34:36 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU moe 1.15:

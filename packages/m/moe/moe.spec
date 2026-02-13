@@ -2,7 +2,7 @@
 # spec file for package moe
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           moe
-Version:        1.15
+Version:        1.16
 Release:        0
 Summary:        A Text Editor
 License:        GPL-2.0-or-later
