@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 13 10:25:24 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.78.0:
+  * aio: fix race condition causing asyncio.run() to hang forever
+    during the shutdown process (gh#grpc/grpc#40989).
+  * Migrate to pyproject.toml build system from setup.py builds
+    (gh#grpc/grpc#40833).
+  * Log error details when ExecuteBatchError occurs (at DEBUG
+    level) (gh#grpc/grpc#40921).
+
+-------------------------------------------------------------------
 Sun Nov  9 14:16:34 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.76.0:
