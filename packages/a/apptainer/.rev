@@ -518,4 +518,13 @@
   * GO-2025-4134 - CVE-2025-58181 - bsc#1253924 (forwarded request 1332450 from eeich)</comment>
     <requestid>1332454</requestid>
   </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>5344a5f13975738b9a29e91b0f0e6515</srcmd5>
+    <version>1.4.5</version>
+    <time>1770995610</time>
+    <user>anag_factory</user>
+    <comment>  GO-2026-4441, bsc#1258048).
+  even never returns (CVE-2025-47911, GO-2026-4440, bsc#1258047).</comment>
+    <requestid>1332841</requestid>
+  </revision>
 </revisionlist>

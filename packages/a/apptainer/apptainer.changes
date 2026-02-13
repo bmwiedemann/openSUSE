@@ -3,9 +3,9 @@ Tue Feb 10 10:04:31 UTC 2026 - Egbert Eich <eich@suse.com>
 
 - Fix HTML parser misimplementation of a part of the HTML
   specification for table related tags (CVE-2025-58190,
-  GO-2026-4441, bsc#1258047).
+  GO-2026-4441, bsc#1258048).
 - Fix issue where the HTML parser takes a very long time or
-  even never returns (CVE-2025-47911, GO-2026-4440, bsc#1258048).
+  even never returns (CVE-2025-47911, GO-2026-4440, bsc#1258047).
 
 -------------------------------------------------------------------
 Tue Jan  6 18:21:04 UTC 2026 - Egbert Eich <eich@suse.com>
