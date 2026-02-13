@@ -451,4 +451,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1319928 from glaubitz)</comment>
     <requestid>1319938</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>df8b76b4eb6f213a47a50d497a9fb137</srcmd5>
+    <version>30.2.0</version>
+    <time>1770995616</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 30.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1332817 from glaubitz)</comment>
+    <requestid>1332846</requestid>
+  </revision>
 </revisionlist>
