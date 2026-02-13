@@ -62,31 +62,31 @@
  strtol_error
 --- a/src/lrz.c
 +++ b/src/lrz.c
-@@ -42,9 +42,9 @@
+@@ -41,12 +41,6 @@
+ #include "xstrtoul.h"
  #include "error.h"
  
- #ifndef STRICT_PROTOTYPES
+-#ifndef STRICT_PROTOTYPES
 -extern time_t time();
 -extern char *strerror();
 -extern char *strstr();
-+extern time_t time(time_t *tloc);
-+extern char *strerror(int errnum);
-+extern char *strstr(const char *s1, const char *s2);
- #endif
- 
+-#endif
+-
  #ifndef HAVE_ERRNO_DECLARATION
+ extern int errno;
+ #endif
 --- a/src/lsz.c
 +++ b/src/lsz.c
-@@ -51,9 +51,9 @@ void *mm_addr=NULL;
+@@ -50,12 +50,6 @@ void *mm_addr=NULL;
+ #include "xstrtoul.h"
  #include "error.h"
  
- #ifndef STRICT_PROTOTYPES
+-#ifndef STRICT_PROTOTYPES
 -extern time_t time();
 -extern char *strerror();
 -extern char *strstr();
-+extern time_t time(time_t *tloc);
-+extern char *strerror(int errnum);
-+extern char *strstr(const char *s1, const char *s2);
- #endif
- 
+-#endif
+-
  #ifndef HAVE_ERRNO_DECLARATION
+ extern int errno;
+ #endif
