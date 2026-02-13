@@ -1,0 +1,39 @@
+Index: envs-1.4/envs/cli.py
+===================================================================
+--- envs-1.4.orig/envs/cli.py
++++ envs-1.4/envs/cli.py
+@@ -2,7 +2,7 @@ import os
+ 
+ import click
+ import jinja2
+-from terminaltables import AsciiTable
++from terminaltables3 import AsciiTable
+ 
+ from envs.exceptions import EnvsValueException
+ from . import env
+Index: envs-1.4/pyproject.toml
+===================================================================
+--- envs-1.4.orig/pyproject.toml
++++ envs-1.4/pyproject.toml
+@@ -9,7 +9,7 @@ license = "Apache-2.0"
+ python = "^3.6"
+ click = {version = "^8.0.3", extras = ["cli"]}
+ Jinja2 = {version = "^3.0.3", extras = ["cli"]}
+-terminaltables = {version = "^3.1.10", extras = ["cli"]}
++terminaltables3 = {version = "^3.1.10", extras = ["cli"]}
+ 
+ [tool.poetry.extras]
+ cli = ["click", "Jinja2", "terminaltables"]
+Index: envs-1.4/setup.py
+===================================================================
+--- envs-1.4.orig/setup.py
++++ envs-1.4/setup.py
+@@ -10,7 +10,7 @@ package_data = \
+ extras_require = \
+ {':extra == "cli"': ['click[cli]>=8.0.3,<9.0.0',
+                      'Jinja2[cli]>=3.0.3,<4.0.0',
+-                     'terminaltables[cli]>=3.1.10,<4.0.0']}
++                     'terminaltables3[cli]>=3.1.10,<4.0.0']}
+ 
+ entry_points = \
+ {'console_scripts': ['envs = envs.cli:envs']}

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 13 04:15:54 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-terminaltables3.patch:
+  * Use terminaltables3, rather than terminaltables.
+- Add missing Requires on update-alternatives.
+
+-------------------------------------------------------------------
 Fri Oct  4 07:47:13 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Initial version 1.4

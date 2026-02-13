@@ -1,7 +1,7 @@
 #
 # spec file for package python-envs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,28 +22,30 @@ Version:        1.4
 Release:        0
 Summary:        Easy access of environment variables from Python
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/capless/envs
 Source:         https://files.pythonhosted.org/packages/source/e/envs/envs-%{version}.tar.gz
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+# PATCH-FIX-OPENSUSE Use terminaltables3, rather than terminaltables
+Patch0:         use-terminaltables3.patch
+BuildRequires:  %{python_module Jinja2 >= 3.0.3}
 BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module click >= 8.0.3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.0.0}
-BuildRequires:  %{python_module click >= 8.0.3}
-BuildRequires:  %{python_module Jinja2 >= 3.0.3}
-BuildRequires:  %{python_module terminaltables >= 3.1.10}
-BuildRequires:  %{python_module poetry-core >= 1.0.0}
-Requires:  python-click >= 8.0.3
-Requires:  python-Jinja2 >= 3.0.3
-Requires:  python-terminaltables >= 3.1.10
+BuildRequires:  %{python_module terminaltables3}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-Jinja2 >= 3.0.3
+Requires:       python-click >= 8.0.3
+Requires:       python-terminaltables3
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
 %description
-Easy access of environment variables from Python with support for typing 
+Easy access of environment variables from Python with support for typing
 (ex. booleans, strings, lists, tuples, integers, floats, and dicts).
-Now with CLI settings file converter. 
+Now with CLI settings file converter.
 
 %prep
 %autosetup -p1 -n envs-%{version}
@@ -53,11 +55,6 @@ Now with CLI settings file converter.
 
 %install
 %pyproject_install
-# Fix python-bytecode-inconsistent-mtime
-pushd %{buildroot}%{python_sitelib}
-find . -name '*.pyc' -exec rm -f '{}' ';'
-python%python_bin_suffix -m compileall *.py ';'
-popd
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/envs
 

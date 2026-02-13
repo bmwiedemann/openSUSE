@@ -7,4 +7,14 @@
     <comment>needed for python-moto</comment>
     <requestid>1205698</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c7df6de784611473be66b575a9b5c0ed</srcmd5>
+    <version>1.4</version>
+    <time>1770983307</time>
+    <user>anag_factory</user>
+    <comment>- Add patch use-terminaltables3.patch:
+  * Use terminaltables3, rather than terminaltables.
+- Add missing Requires on update-alternatives.</comment>
+    <requestid>1332790</requestid>
+  </revision>
 </revisionlist>
