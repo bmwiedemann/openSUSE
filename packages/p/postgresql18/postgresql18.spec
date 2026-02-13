@@ -17,7 +17,7 @@
 
 
 %define pgmajor 18
-%define pgminor 1
+%define pgminor 2
 
 ### CUT HERE ###
 %define pgname postgresql%pgmajor
@@ -155,8 +155,8 @@ BuildRequires:  libicu-devel
 BuildRequires:  libselinux-devel
 %endif
 %if %{with llvm}
-BuildRequires:  clang%{product_libs_llvm_ver}
 BuildRequires:  gcc-c++
+BuildRequires:  clang%{product_libs_llvm_ver}
 BuildRequires:  llvm%{product_libs_llvm_ver}-devel
 %endif
 BuildRequires:  libxslt-devel
@@ -218,8 +218,6 @@ Patch9:         postgresql-var-run-socket.patch
 %if %{with llvm}
 Patch10:        postgresql-llvm-optional.patch
 Patch11:        0001-jit-Workaround-potential-datalayout-mismatch-on-s390.patch
-# PATCH-FIX-UPSTREAM - commit 0dceba2
-Patch12:        llvm-21-aarch64.patch
 %endif
 URL:            https://www.postgresql.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -552,7 +550,6 @@ touch -r configure tmp
 %if %{with llvm}
 %patch -P 10
 %patch -P 11
-%patch -P 12 -p1
 %endif
 touch -r tmp configure
 rm tmp
@@ -688,7 +685,6 @@ find %buildroot -type f -cnewer flag -printf "/%%P\n" |
      grep -v -e %_docdir -e %pgbindir -e %pgincludedir -e %pglibdir/bitcode \
      > contrib.files
 rm flag
-install -d -m 750 %buildroot/var/lib/pgsql
 install -d -m 755 %buildroot%pgdocdir
 cp doc/KNOWN_BUGS doc/MISSING_FEATURES COPYRIGHT \
    README* HISTORY  %buildroot%pgdocdir
@@ -956,7 +952,6 @@ fi
 %pglibdir/euc2004_sjis2004.so
 %pglibdir/libpqwalreceiver.so
 %pgextensiondir/plpgsql*
-%attr(750,postgres,postgres) %dir /var/lib/pgsql
 
 %if %{with llvm}
 %dir %pglibdir/bitcode
