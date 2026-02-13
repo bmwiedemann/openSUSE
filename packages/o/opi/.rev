@@ -817,4 +817,13 @@
   * Add antigravity (fixes #214)</comment>
     <requestid>1328070</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>d585428d41281d52172bb5e723764faa</srcmd5>
+    <version>5.11.0</version>
+    <time>1770997210</time>
+    <user>anag_factory</user>
+    <comment>- Version 5.11.0
+  * Explicitly install libatomic1 required by dotnet</comment>
+    <requestid>1332875</requestid>
+  </revision>
 </revisionlist>
