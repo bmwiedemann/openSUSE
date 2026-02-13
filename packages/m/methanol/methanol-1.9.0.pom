@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- This module was also published with a richer model, Gradle metadata,  -->
+  <!-- which should be used instead. Do not delete the following line which  -->
+  <!-- is to indicate to Gradle or any Gradle module metadata file consumer  -->
+  <!-- that they should prefer consuming it instead. -->
+  <!-- do_not_remove: published-with-gradle-metadata -->
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.github.mizosoft.methanol</groupId>
+  <artifactId>methanol</artifactId>
+  <version>1.9.0</version>
+  <name>methanol</name>
+  <description>Lightweight HTTP extensions for Java</description>
+  <url>https://mizosoft.github.io/methanol</url>
+  <inceptionYear>2019</inceptionYear>
+  <licenses>
+    <license>
+      <name>MIT license</name>
+      <url>https://opensource.org/licenses/MIT</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>mizosoft</id>
+      <name>mizosoft</name>
+      <email>moataz.nasser20@gmail.com</email>
+      <url>https://github.com/mizosoft</url>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git:https://github.com/mizosoft/methanol.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/mizosoft/methanol.git</developerConnection>
+    <url>https://github.com/mizosoft/methanol</url>
+  </scm>
+</project>

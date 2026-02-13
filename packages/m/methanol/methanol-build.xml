@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="methanol" default="package" basedir=".">
+
+  <!-- ====================================================================== -->
+  <!-- Build environment properties                                           -->
+  <!-- ====================================================================== -->
+
+  <property file="build.properties"/>
+
+  <property name="project.groupId" value="com.github.mizosoft.methanol"/>
+  <property name="project.artifactId" value="methanol"/>
+  <property name="project.version" value="1.9.0"/>
+
+  <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
+  <property name="build.dir" value="target"/>
+  <property name="build.outputDir" value="${build.dir}/classes"/>
+  <property name="build.srcDir" value="src/main/java"/>
+  <property name="build.resourceDir" value="src/main/resources"/>
+
+  <property name="compiler.release" value="11"/>
+  <property name="compiler.source" value="${compiler.release}"/>
+  <property name="compiler.target" value="${compiler.source}"/>
+
+  <property name="reporting.outputDirectory" value="${build.dir}/site"/>
+
+  <!-- ====================================================================== -->
+  <!-- Defining classpaths                                                    -->
+  <!-- ====================================================================== -->
+
+  <path id="build.classpath">
+    <fileset dir="lib">
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+  <!-- ====================================================================== -->
+  <!-- Cleaning up target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="clean" description="Clean the output directory">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Compilation target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="compile" description="Compile the code">
+    <mkdir dir="${build.outputDir}"/>
+    <javac destdir="${build.outputDir}" 
+           nowarn="false" 
+           debug="true" 
+           optimize="false" 
+           deprecation="true" 
+           release="${compiler.release}" 
+           verbose="false" 
+           fork="false">
+      <src>
+        <pathelement location="${build.srcDir}"/>
+      </src>
+      <modulepath refid="build.classpath"/>
+    </javac>
+    <copy todir="${build.outputDir}">
+      <fileset dir="${build.resourceDir}"/>
+    </copy>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Javadoc target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="javadoc" description="Generates the Javadoc of the application">
+    <javadoc sourcepath="${build.srcDir}" 
+             packagenames="*" 
+             destdir="${reporting.outputDirectory}/apidocs" 
+             access="protected" 
+             source="${compiler.source}" 
+             verbose="false" 
+             version="true" 
+             use="true" 
+             author="true" 
+             splitindex="false" 
+             nodeprecated="false" 
+             nodeprecatedlist="false" 
+             notree="false" 
+             noindex="false" 
+             nohelp="false" 
+             nonavbar="false" 
+             serialwarn="false" 
+             charset="ISO-8859-1" 
+             linksource="false" 
+             breakiterator="false">
+      <modulepath refid="build.classpath"/>
+    </javadoc>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Package target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="package" depends="compile" description="Package the application">
+    <jar jarfile="${build.dir}/${build.finalName}.jar" 
+         compress="true" 
+         index="false" 
+         basedir="${build.outputDir}" 
+         excludes="**/package.html">
+      <manifest>
+		<attribute name="Bundle-Description" value="Lightweight HTTP extensions for Java"/>
+		<attribute name="Bundle-ManifestVersion" value="2"/>
+		<attribute name="Bundle-Name" value="${project.artifactId}"/>
+		<attribute name="Bundle-SymbolicName" value="${project.artifactId}"/>
+		<attribute name="Bundle-Version" value="${project.version}"/>
+		<attribute name="Export-Package" value="com.github.mizosoft.methanol.adapter;uses:=&quot;com.github.mizosoft.methanol&quot;;version=&quot;${project.version}&quot;,com.github.mizosoft.methanol.decoder;uses:=&quot;com.github.mizosoft.methanol&quot;;version=&quot;${project.version}&quot;,com.github.mizosoft.methanol.function;version=&quot;${project.version}&quot;,com.github.mizosoft.methanol.internal.cache;x-internal:=true;x-friends:=&quot;methanol-redis,methanol-testing&quot;;version=&quot;${project.version}&quot;;uses:=&quot;com.github.mizosoft.methanol,com.github.mizosoft.methanol.internal.concurrent&quot;,com.github.mizosoft.methanol.internal.concurrent;x-internal:=true;x-friends:=&quot;methanol-jackson,methanol-redis,methanol-testing,methanol-brotli&quot;;version=&quot;${project.version}&quot;,com.github.mizosoft.methanol.internal.extensions;x-internal:=true;x-friends:=&quot;methanol-kotlin,methanol-jackson-flux,methanol-jackson3-flux&quot;;version=&quot;${project.version}&quot;;uses:=&quot;com.github.mizosoft.methanol,com.github.mizosoft.methanol.internal.concurrent,com.github.mizosoft.methanol.internal.flow&quot;,com.github.mizosoft.methanol.internal.flow;x-internal:=true;x-friends:=&quot;methanol-redis,methanol-testing,methanol-jackson-flux,methanol-jackson3-flux&quot;;version=&quot;${project.version}&quot;;uses:=&quot;com.github.mizosoft.methanol.internal.concurrent&quot;,com.github.mizosoft.methanol.internal.function;x-internal:=true;x-friends:=&quot;methanol-testing,methanol-brotli&quot;;version=&quot;${project.version}&quot;;uses:=&quot;com.github.mizosoft.methanol.function&quot;,com.github.mizosoft.methanol.internal;x-internal:=true;x-friends:=&quot;methanol-redis,methanol-testing,methanol-jaxb-jakarta,methanol-jaxb,methanol-brotli&quot;;version=&quot;${project.version}&quot;;uses:=&quot;com.github.mizosoft.methanol&quot;,com.github.mizosoft.methanol;uses:=&quot;com.github.mizosoft.methanol.function,javax.net.ssl&quot;;version=&quot;${project.version}&quot;"/>
+		<attribute name="Import-Package" value="com.github.mizosoft.methanol.internal.concurrent,com.github.mizosoft.methanol.internal.extensions,com.github.mizosoft.methanol.internal.flow,com.github.mizosoft.methanol.internal.function,java.io,java.lang,java.lang.annotation,java.lang.invoke,java.lang.reflect,java.net,java.net.http,java.nio,java.nio.channels,java.nio.channels.spi,java.nio.charset,java.nio.file,java.nio.file.attribute,java.security,java.security.cert,java.time,java.time.chrono,java.time.format,java.time.temporal,java.util,java.util.concurrent,java.util.concurrent.atomic,java.util.concurrent.locks,java.util.function,java.util.stream,java.util.zip,javax.net.ssl,javax.security.auth.x500,javax.security.cert"/>
+		<attribute name="Private-Package" value="com.github.mizosoft.methanol.internal.adapter,com.github.mizosoft.methanol.internal.annotations,com.github.mizosoft.methanol.internal.decoder,com.github.mizosoft.methanol.internal.spi,com.github.mizosoft.methanol.internal.text,com.github.mizosoft.methanol.internal.util"/>
+		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- A dummy target for the package named after the type it creates         -->
+  <!-- ====================================================================== -->
+
+  <target name="jar" depends="package" description="Builds the jar for the application"/>
+
+</project>
