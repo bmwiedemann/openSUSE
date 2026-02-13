@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Feb 12 16:51:33 UTC 2026 - Charles Arnold <carnold@suse.com>
+
+- Update to version 1.46.2: (jsc#PED-14625)
+  * Version 1.46.2.
+  * sparse-random: Parse runlength parameter using nbdkit_parse_size
+  * vram: Link to blkdiscard(8)
+  * tests/functions.sh.in: Remove obsolete comment
+  * common/utils/utils.h: Add C++ boilerplate
+  * map: Fix documentation about changing the size of the disk
+  * configure.ac: Remove use of "which" command
+  * vddk: Test with VDDK 9.0.1.0
+  * qcow2dec: Don't pass flags from .extents through to .pread
+  * file: Change calculations of block size hints for block devices
+  * todo: Add note about problems with file plugin block_size
+  * file: Don't advertise minimum_io_size > 64K (the max supported by NBD)
+  * blocksize-policy: Fix assertion failure on unaligned block status
+  * python: Sort documentation for module functions in order
+  * python: Link to C man pages for module functions
+
+-------------------------------------------------------------------
 Mon Jan 05 20:33:24 UTC 2026 - Charles Arnold <carnold@suse.com>
 
 - Update to version 1.46.1: (jsc#PED-14625)

@@ -27,7 +27,7 @@
 %global broken_test_arches %{arm} aarch64 %{ix86}
 
 Name:           nbdkit
-Version:        1.46.1
+Version:        1.46.2
 Release:        0
 Summary:        Network Block Device server
 License:        BSD-3-Clause
@@ -182,6 +182,7 @@ This package contains example plugins for %{name}.
 
 
 
+
 # The plugins below have non-trivial dependencies are so are
 # packaged separately.
 %package cdi-plugin
@@ -199,6 +200,7 @@ Requires:       %{name}-server = %{version}-%{release}
 
 %description curl-plugin
 This package contains cURL (HTTP/FTP) support for %{name}.
+
 
 
 
