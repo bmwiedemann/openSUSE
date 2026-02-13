@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Feb  3 09:37:10 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 1.9.23:
+  * Fixed a regression in list handling that caused a crash for empty list items
+    (Issue #553)
+  * Fixed a regression in the number of rendered table of contents levels in PDF
+    and PostScript output (Issue #554)
+- version update to 1.9.22:
+  * Added a "--without-http" configure option to build without CUPS HTTP/HTTPS
+    support (Issue #547)
+  * Updated HTTP/HTTPS support to work with both CUPS 2.x and 3.x.
+  * Updated the maximum image dimension to prevent integer overflow on 32-bit
+    platforms (Issue #550)
+  * Updated the HTML parser to correctly report the line number of errors in files
+    with more than 2^32-1 lines (Issue #551)
+  * Fixed a crash bug with certain markdown files (Issue #548)
+  * Fixed an unrestricted recursion bug when reading and formatting HTML
+    (Issue #552)
+- version update to 1.9.21
+  * Updated HTTP/HTTPS connection error reporting to include the reason.
+  * Updated markdown parser.
+  * Updated the HTTP/HTTPS connection timeout to 5 minutes (Issue #541)
+  * Fixed a bug in the new PDF link code (Issue #536)
+  * Fixed a bug in the number-up code (Issue #539)
+  * Fixed a regression in leading whitespace handling (Issue #540)
+  * Fixed a bug in numbered heading support (Issue #543)
+  * Fixed a bug with setting the header on the first page (Issue #544)
+  * Fixed paths in the HTMLDOC snap (Issue #545)
+
+-------------------------------------------------------------------
 Sat May 24 07:35:46 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.9.20:

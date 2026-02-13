@@ -308,4 +308,12 @@ Fixed buffer-overflow CVE-2021-20308 ( boo#1184424 ) (forwarded request 896478 f
     <comment></comment>
     <requestid>1283664</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>df76e576127e7cc73d28a3ca8361729d</srcmd5>
+    <version>1.9.23</version>
+    <time>1770982865</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1332699</requestid>
+  </revision>
 </revisionlist>
