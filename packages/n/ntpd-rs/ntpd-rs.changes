@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 12 19:30:03 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.1
+  * Updated dependencies.
+  * Fixed issue that could result in excessive CPU usage on
+    receiving NTS messages asking for many cookies.
+  * Fixed network-triggerable log spam.
+
+-------------------------------------------------------------------
 Fri Jan 30 13:31:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.0
