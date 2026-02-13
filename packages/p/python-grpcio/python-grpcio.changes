@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 13 09:36:11 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.78.0:
+  * aio: fix race condition causing asyncio.run() to hang forever
+    during the shutdown process (gh#grpc/grpc#40989).
+  * Migrate to pyproject.toml build system from setup.py builds
+    (gh#grpc/grpc#40833).
+  * Log error details when ExecuteBatchError occurs (at DEBUG
+    level) (gh#grpc/grpc#40921).
+- Drop missing-includes.patch: included upstream.
+
+-------------------------------------------------------------------
 Sun Jan 25 02:23:41 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add missing-includes.patch: add missed headers previously

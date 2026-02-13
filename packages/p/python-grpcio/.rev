@@ -641,4 +641,12 @@
     <comment>Add missing-includes.patch: add missed headers previously included via absl (gh#grpc/grpc#41305); upstream commit. (forwarded request 1329029 from badshah400)</comment>
     <requestid>1329282</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>1148b5a1a7ab46190992248249cd3f25</srcmd5>
+    <version>1.78.0</version>
+    <time>1770997197</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1332856</requestid>
+  </revision>
 </revisionlist>
