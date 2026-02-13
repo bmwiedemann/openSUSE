@@ -623,4 +623,15 @@
     <comment>- Add missing Bugzilla and CVE references for CVE-2026-21226 (forwarded request 1331548 from glaubitz)</comment>
     <requestid>1331638</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>c88ffa0710185ee9e835b627b3ccd5f0</srcmd5>
+    <version>1.38.1</version>
+    <time>1770982861</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.38.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1332685 from glaubitz)</comment>
+    <requestid>1332690</requestid>
+  </revision>
 </revisionlist>
