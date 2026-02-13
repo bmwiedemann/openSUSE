@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 26 16:48:15 UTC 2026 - Frederic Crozat <fcrozat@suse.com>
+
+- Drop update-desktop-files usage (jsc#PED-15198).
+
+-------------------------------------------------------------------
 Wed Dec 30 15:08:41 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
 
 - Move call-browser and desktop-launch symlink to xdg-utils.

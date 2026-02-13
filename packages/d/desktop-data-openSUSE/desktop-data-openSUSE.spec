@@ -1,7 +1,7 @@
 #
 # spec file for package desktop-data-openSUSE
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2018-2020 Stasiek Michalski <hellcp@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -42,7 +42,6 @@ PreReq:         %fillup_prereq
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  perl-RPC-XML
-BuildRequires:  update-desktop-files
 BuildRequires:  wallpaper-branding
 BuildRequires:  xdg-menu
 %if 0%{?is_opensuse}
@@ -73,12 +72,6 @@ applications menu structure.
 %install
 cp -a * %{buildroot}/
 mkdir -p %{buildroot}%{_sysconfdir}/xdg/menus/applications-merged
-
-# Update all desktop files
-for i in %{buildroot}%{_datadir}/desktop-directories/*.directory
-do
-    %suse_update_desktop_file "$i"
-done
 
 # Define the default mouse cursor
 mkdir -p %{buildroot}%{_fillupdir}/
