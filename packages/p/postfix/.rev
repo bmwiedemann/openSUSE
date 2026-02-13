@@ -2631,4 +2631,12 @@ successfully tested on Tumbleweed x86_64</comment>
    configuration for /var/spool/postfix/trace</comment>
     <requestid>1332727</requestid>
   </revision>
+  <revision rev="266" vrev="8">
+    <srcmd5>fad55bf0d69a76d3d4dfed4311cbb311</srcmd5>
+    <version>3.10.7</version>
+    <time>1770983079</time>
+    <user>anag_factory</user>
+    <comment>Still not usable - now https://bugzilla.opensuse.org/show_bug.cgi?id=1258160; back to a working state</comment>
+    <requestid>1332823</requestid>
+  </revision>
 </revisionlist>
