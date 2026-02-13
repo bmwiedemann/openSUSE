@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 12 17:26:51 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Enable go-race on riscv64
+
+-------------------------------------------------------------------
 Tue Feb 10 19:27:55 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.26.0 (released 2026-02-10) is a major release of Go.

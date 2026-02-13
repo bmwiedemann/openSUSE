@@ -1,7 +1,7 @@
 #
 # spec file for package go1.26
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 # Build go-race only on platforms where C++14 is supported (SLE-15)
 %if 0%{?suse_version} >= 1500 || 0%{?sle_version} >= 150000
-%define tsan_arch x86_64 aarch64 s390x ppc64le
+%define tsan_arch x86_64 aarch64 s390x ppc64le riscv64
 %else
 # Cannot use {nil} here (ifarch doesn't like it) so just make up a fake
 # architecture that no build will ever match.
@@ -35,7 +35,11 @@
 #
 # In order to update the TSAN version, modify _service. See boo#1052528 for
 # more details.
+%ifarch riscv64
+%define tsan_commit c3c24be13f7928460ca1e2fe613a1146c868854e
+%else
 %define tsan_commit 51bfeff0e4b0757ff773da6882f4d538996c9b04
+%endif
 
 # go_api is the major version of Go.
 # Used by go1.x packages and go metapackage for:
@@ -121,6 +125,7 @@ Source6:        go.gdbinit
 # Preferred form when all arches share llvm race version
 # Source100:      llvm-tsan_commit.tar.xz
 Source100:      llvm-51bfeff0e4b0757ff773da6882f4d538996c9b04.tar.xz
+Source101:      llvm-c3c24be13f7928460ca1e2fe613a1146c868854e.tar.xz
 # PATCH-FIX-OPENSUSE: https://go-review.googlesource.com/c/go/+/391115
 Patch7:         dont-force-gold-on-arm64.patch
 Patch9:         go-fixseccomp.patch
@@ -146,7 +151,7 @@ BuildRequires:  rpm >= 4.11.1
 %if 0%{?suse_version} && 0%{?suse_version} < 1500
 Requires:       gcc7
 %else
-Requires:  	gcc
+Requires:       gcc
 %endif
 Provides:       go = %{version}
 Provides:       go-devel = go%{version}
@@ -157,7 +162,7 @@ Obsoletes:      go-devel < go%{version}
 Obsoletes:      go-emacs <= 1.3.3
 Obsoletes:      go-vim <= 1.3.3
 ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc64 ppc64le s390x riscv64 loongarch64
-Requires(post):   update-alternatives
+Requires(post): update-alternatives
 %if %{with_libalternatives}
 BuildRequires:  alts
 Requires:       alts
@@ -211,7 +216,12 @@ Go standard library compiled to a dynamically loadable shared object libstd.so
 %prep
 %ifarch %{tsan_arch}
 # compiler-rt (from LLVM)
-%setup -q -T -b 100 -n llvm-%{tsan_commit}
+%ifarch riscv64
+%define tsan_src 101
+%else
+%define tsan_src 100
+%endif
+%setup -q -T -b %tsan_src -n llvm-%{tsan_commit}
 %endif
 
 # go

@@ -71,4 +71,12 @@
     suggest and apply fixes in go fix. The go fix command’s</comment>
     <requestid>1332369</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a2f31679a3b7e7ab666a96da6cb1b6c0</srcmd5>
+    <version>1.26.0</version>
+    <time>1770983138</time>
+    <user>anag_factory</user>
+    <comment>- Enable go-race on riscv64</comment>
+    <requestid>1332785</requestid>
+  </revision>
 </revisionlist>
