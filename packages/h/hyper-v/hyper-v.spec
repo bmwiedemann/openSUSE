@@ -1,7 +1,7 @@
 #
 # spec file for package hyper-v
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,8 +36,8 @@ BuildRequires:  pkgconfig(systemd)
 Conflicts:      kernel < 4.2
 Summary:        Microsoft Hyper-V tools
 License:        GPL-2.0-only
-Supplements:    modalias(dmi:*svnMicrosoftCorporation*pnVirtualMachine*rnVirtualMachine*)
-Supplements:    modalias(pci:v00001414d00005353sv*sd*bc*sc*i*)
+Supplements:    (kernel and modalias(dmi:*svnMicrosoftCorporation*pnVirtualMachine*rnVirtualMachine*))
+Supplements:    (kernel and modalias(pci:v00001414d00005353sv*sd*bc*sc*i*))
 URL:            http://www.kernel.org
 # Arbitrary version number
 Version:        9

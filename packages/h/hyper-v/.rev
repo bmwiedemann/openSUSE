@@ -534,4 +534,12 @@
 - fcopy: Fix incorrect file path conversion (0d86a8d6)</comment>
     <requestid>1294750</requestid>
   </revision>
+  <revision rev="50" vrev="5">
+    <srcmd5>95682542c6fb902c27c9fa0a120d3140</srcmd5>
+    <version>9</version>
+    <time>1770982852</time>
+    <user>anag_factory</user>
+    <comment>- Adjust Supplements to trigger automatic pkg selection (bsc#1257499)</comment>
+    <requestid>1332686</requestid>
+  </revision>
 </revisionlist>

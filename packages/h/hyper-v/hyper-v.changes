@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 12 12:12:12 UTC 2026 - ohering@suse.de
+
+- Adjust Supplements to trigger automatic pkg selection (bsc#1257499)
+
+-------------------------------------------------------------------
 Sun Jul 20 20:20:20 UTC 2025 - ohering@suse.de
 
 - fcopy: Fix irregularities with size of ring buffer (a4131a50)
