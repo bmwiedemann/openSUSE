@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-managementgroups
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,15 @@
 #
 
 
-%define realversion 1.0.0
-
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-managementgroups
-Version:        1.0.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Microsoft Azure Management Groups Client Library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-managementgroups/azure-mgmt-managementgroups-%{realversion}.zip
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_mgmt_managementgroups/azure_mgmt_managementgroups-%{version}.tar.gz
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -35,12 +32,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.6.21
+Requires:       python-typing_extensions >= 4.6.0
 Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
-Requires:       (python-azure-mgmt-core >= 1.2.0 with python-azure-mgmt-core < 2.0.0)
+Requires:       (python-azure-mgmt-core >= 1.6.0 with python-azure-mgmt-core < 2.0.0)
+Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-mgmt-managementgroups <= 1.0.0.0
@@ -58,10 +55,9 @@ replace the old Azure Service Management (ASM).
 This package has been tested with Python 2.7, 3.4, 3.5, 3.6 and 3.7.
 
 %prep
-%setup -q -n azure-mgmt-managementgroups-%{realversion}
+%setup -q -n azure_mgmt_managementgroups-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-managementgroups-%{realversion}
 %pyproject_wheel
 
 %install
@@ -76,7 +72,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/mgmt/managementgroups
 %{python_sitelib}/azure_mgmt_managementgroups-*.dist-info
 
