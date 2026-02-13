@@ -16,17 +16,17 @@
 #
 
 
+%define sover 3
 Name:           libbbf
-Version:        1.1.0
+Version:        3.0.1
 Release:        0
 Summary:        Bound Book Format container for comics and manga
 License:        MIT
 URL:            https://github.com/ef1500/libbbf/
 Source:         https://github.com/ef1500/libbbf/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# https://github.com/ef1500/libbbf/pull/2/commits/010b08997edba655246ce6d10abdd581dbcf3ff4
-Patch0:         libbbf-1.1.0-add_cmake.patch
+Patch0:         libbbf-3.0.1-cmake_install.patch
 BuildRequires:  c++_compiler
-BuildRequires:  cmake >= 3.16
+BuildRequires:  cmake >= 3.20
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libxxhash)
 %if 0%{?suse_version} < 1600
@@ -38,6 +38,29 @@ Bound Book Format (.bbf) is a high-performance binary container designed
 specifically for digital comic books and manga. Unlike CBR/CBZ, BBF is built
 for DirectSotrage/mmap, easy integrity checks, and mixed-codec
 containerization.
+
+%package -n %{name}%{sover}
+Summary:        Bound Book Format container for comics and manga
+
+%description -n %{name}%{sover}
+Bound Book Format (.bbf) is a high-performance binary container designed
+specifically for digital comic books and manga. Unlike CBR/CBZ, BBF is built
+for DirectSotrage/mmap, easy integrity checks, and mixed-codec
+containerization.
+
+This package contains the shared library
+
+%package devel
+Summary:        Development files for %{name}
+Requires:       %{name}%{sover} = %{version}
+
+%description devel
+Bound Book Format (.bbf) is a high-performance binary container designed
+specifically for digital comic books and manga. Unlike CBR/CBZ, BBF is built
+for DirectSotrage/mmap, easy integrity checks, and mixed-codec
+containerization.
+
+This package contains the files needed to build using %{name}.
 
 %prep
 %autosetup -p1
@@ -55,8 +78,21 @@ export CXX=g++-12
 %check
 %ctest
 
+%ldconfig_scriptlets -n %{name}%{sover}
+
 %files
 %license LICENSE
 %{_bindir}/bbfmux
+
+%files -n %{name}%{sover}
+%license LICENSE
+%{_libdir}/liblibbbf.so.%{sover}{,.*}
+%{_libdir}/liblibbbf_shared.so.%{sover}{,.*}
+
+%files devel
+%license LICENSE
+%{_libdir}/liblibbbf.so
+%{_libdir}/liblibbbf_shared.so
+%{_includedir}/libbbf.h
 
 %changelog

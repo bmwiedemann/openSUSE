@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb  5 22:37:05 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.0.1:
+  * Update petrification logic so headers and footers of petrified
+    BBF files can truly be read in one single read
+  * Fixed bugs in bbfcodec.cpp
+  * Fixed the --offsets option in bbfmux
+  * Changed the error log messages for bbfcodec.cpp to show
+    [BBFCODEC] instead of [BBFMUX]
+  * Fixed a small typo in the windows memory mapping code
+- drop libbbf-1.1.0-add_cmake.patch
+- add libbbf-3.0.1-cmake_install.patch
+
+-------------------------------------------------------------------
 Sun Jan 25 18:38:40 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - initial version

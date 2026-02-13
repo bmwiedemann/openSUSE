@@ -1,0 +1,41 @@
+From ac5727028c0694a0c5a20fa98b99ce73a94935dd Mon Sep 17 00:00:00 2001
+From: Andreas Stieger <andreasstieger@users.noreply.github.com>
+Date: Thu, 5 Feb 2026 21:50:11 +0100
+Subject: [PATCH] CMakeLists.txt: add install target for bbfmux
+
+Adds install target for bbfmux
+
+Fixes: 9d31abf
+---
+ CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+Index: libbbf-3.0.1/CMakeLists.txt
+===================================================================
+--- libbbf-3.0.1.orig/CMakeLists.txt
++++ libbbf-3.0.1/CMakeLists.txt
+@@ -41,11 +41,24 @@ target_include_directories(libbbf_shared
+ )
+ 
+ target_compile_definitions(libbbf_shared PRIVATE LIBBBF_EXPORT_SYMBOLS)
++set_target_properties(libbbf PROPERTIES PUBLIC_HEADER src/libbbf.h)
++set_target_properties(libbbf PROPERTIES VERSION ${PROJECT_VERSION})
++set_target_properties(libbbf PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR})
++set_target_properties(libbbf_shared PROPERTIES VERSION ${PROJECT_VERSION})
++set_target_properties(libbbf_shared PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR})
++
++
++install(TARGETS libbbf libbbf_shared
++    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
++)
+ 
+ add_executable(bbfmux src/muxer/bbfmux.cpp)
+ 
+ target_link_libraries(bbfmux PRIVATE libbbf)
+ 
++install(TARGETS bbfmux DESTINATION bin)
++
+ if ( Catch2_FOUND )
+ 
+     add_executable(bbfbench src/bench/bbfbench.cpp src/bench/miniz.c)
