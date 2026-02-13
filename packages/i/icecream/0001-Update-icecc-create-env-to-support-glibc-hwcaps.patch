@@ -1,0 +1,98 @@
+From 8653840281218f891b7f445a9974ffd0fef9d177 Mon Sep 17 00:00:00 2001
+From: Thiago Macieira <thiago.macieira@intel.com>
+Date: Mon, 2 May 2022 09:04:10 -0700
+Subject: [PATCH] Update icecc-create-env to support glibc-hwcaps
+
+Now in use in Clear Linux. For example:
+
+$ ldd /bin/clang
+        linux-vdso.so.1 (0x00007ffce4aa9000)
+        libclang-cpp.so.14 => /bin/../lib64/libclang-cpp.so.14 (0x00007f8459df9000)
+        libLLVM.so.14 => /bin/../lib64/libLLVM.so.14 (0x00007f8453be0000)
+        libstdc++.so.6 => /bin/../lib64/libstdc++.so.6 (0x00007f8453988000)
+        libc.so.6 => /bin/../lib64/haswell/libc.so.6 (0x00007f8453759000)
+        libm.so.6 => /bin/../lib64/../lib64/haswell/avx512_1/libm.so.6 (0x00007f8453671000)
+        /lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x00007f845d253000)
+        libffi.so.7 => /bin/../lib64/../lib64/libffi.so.7 (0x00007f8453662000)
+        libedit.so.0 => /bin/../lib64/../lib64/libedit.so.0 (0x00007f845361f000)
+        libz.so.1 => /bin/../lib64/../lib64/libz.so.1 (0x00007f84535f8000)
+        libtinfo.so.6 => /bin/../lib64/../lib64/libtinfo.so.6 (0x00007f84535c4000)
+        libxml2.so.2 => /bin/../lib64/../lib64/libxml2.so.2 (0x00007f8453414000)
+        libgcc_s.so.1 => /bin/../lib64/../lib64/glibc-hwcaps/x86-64-v3/libgcc_s.so.1 (0x00007f84533f3000)
+        liblzma.so.5 => /bin/../lib64/../lib64/liblzma.so.5 (0x00007f84533c5000)
+
+Without this patch, we get in the compiler package:
+
+$ tar -tf /var/cache/icecream/native/d42be071c8d51f1b74d5c7d9b563c714.tar.gz | grep libgcc_s
+usr/lib64/glibc-hwcaps/x86-64-v3/libgcc_s.so.1
+
+With it, we get both the optimised and base lib:
+
+$ tar -tf c81cea00f3ab11f349a8b8caa6e1eb37.tar.gz | grep libgcc_s
+usr/lib64/glibc-hwcaps/x86-64-v3/libgcc_s.so.1
+usr/lib64/libgcc_s.so.1
+
+I don't have any x86-64-v4 libs to test with right now.
+---
+ client/icecc-create-env.in | 43 +++++++++++++++++++++++++-------------
+ 1 file changed, 29 insertions(+), 14 deletions(-)
+
+diff --git a/client/icecc-create-env.in b/client/icecc-create-env.in
+index b2ab74b..d9fd3ed 100755
+--- a/client/icecc-create-env.in
++++ b/client/icecc-create-env.in
+@@ -152,22 +152,37 @@ add_file ()
+                 add_file "skipldd" "$lib"
+               fi
+ 
+-              # Add the non-haswell and non-avx512_1 libraries too
++              # Add the non-hwcaps, non-haswell and non-avx512_1 libraries too
+               case "$lib" in
+-                 */haswell/*|*/avx512_1/*)
+-                    ;;
+-                 *)
+-                    continue
+-                    ;;
++                */haswell/*|*/avx512_1/*)
++                  local lib_non_avx512=$(echo "$lib" | sed s,/avx512_1/,/,)
++                  local lib_non_hsw=$(echo "$lib_non_avx512" | sed s,/haswell/,/,)
++                  if [ "$lib" != "$lib_non_avx512" ] && [ -f "$lib_non_avx512" ]; then
++                    add_file "$lib_non_avx512"
++                  fi
++                  if [ "$lib" != "$lib_non_hsw" ] && [ -f "$lib_non_hsw" ]; then
++                    add_file "$lib_non_hsw"
++                  fi
++                  ;;
++               */glibc-hwcaps/*/*)
++                 local lib_non_hwcaps=$(echo "$lib" | sed 's,/glibc-hwcaps/.*/,/,')
++                 local lib_basename=${lib##*/}
++                 if [ "$lib" != "$lib_non_hwcaps" ] && [ -f "$lib_non_hwcaps" ]; then
++                   add_file "$lib_non_hwcaps"
++                 fi
++
++                 # Add the other hwcaps too
++                 local hwcaplib
++                 for hwcaplib in ${lib_non_hwcaps%$lib_basename}/glibc-hwcaps/*/$lib_basename; do
++                   if [ "$lib" != "$hwcaplib" ]; then
++                     add_file $hwcaplib
++                   fi
++                 done
++                 ;;
++               *)
++                 continue
++                 ;;
+               esac
+-              local lib_non_avx512=$(echo "$lib" | sed s,/avx512_1/,/,)
+-              local lib_non_hsw=$(echo "$lib_non_avx512" | sed s,/haswell/,/,)
+-              if [ "$lib" != "$lib_non_avx512" ] && [ -f "$lib_non_avx512" ]; then
+-                add_file "$lib_non_avx512"
+-              fi
+-              if [ "$lib" != "$lib_non_hsw" ] && [ -f "$lib_non_hsw" ]; then
+-                add_file "$lib_non_hsw"
+-              fi
+            done
+         fi
+     elif test "$is_darwin" = 1; then
+-- 
+2.52.0
+

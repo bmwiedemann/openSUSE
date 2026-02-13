@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 30 01:14:39 UTC 2026 - Thiago Macieira <thiago.macieira@intel.com>
+
+- Add upstream patches
+  * 0001-Update-icecc-create-env-to-support-glibc-hwcaps.patch
+  * 0002-icecc-create-env-work-around-ldd-printing-cached-rea.patch
+  * 0003-icecc-create-env-fix-adding-the-glibc-hwcaps-libs.patch
+
+-------------------------------------------------------------------
 Mon Mar 18 08:59:30 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add provides for user+group (boo#1221417)
@@ -688,7 +696,7 @@ Sun Sep  3 15:37:44 CEST 2006 - coolo@suse.de
           files
 
 --------------------------------------------------------------------
--Sat Sep  2 19:01:02 CEST 2006 - ro@suse.de
+Sat Sep  2 19:01:02 CEST 2006 - ro@suse.de
 
 - 0.7.8:
         - fd leak fix, which caused a deadlock under

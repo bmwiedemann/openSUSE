@@ -1,7 +1,7 @@
 #
 # spec file for package icecream
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,11 @@ Source5:        icecc-scheduler.service.in
 Source6:        icecc-scheduler-wrapper
 Source7:        icecream-tmpfiles.conf
 Source8:        sysconfig.icecream
+# https://github.com/icecc/icecream/pull/602
+Patch1:         0001-Update-icecc-create-env-to-support-glibc-hwcaps.patch
+# https://github.com/icecc/icecream/pull/653
+Patch2:         0002-icecc-create-env-work-around-ldd-printing-cached-rea.patch
+Patch3:         0003-icecc-create-env-fix-adding-the-glibc-hwcaps-libs.patch
 BuildRequires:  clang-devel
 BuildRequires:  docbook2x
 BuildRequires:  firewall-macros
@@ -84,7 +89,7 @@ Supplements:    (icecream and clang)
 Wrapper symlinks for clang/clang++ for icecream distributed building.
 
 %prep
-%setup -q -n icecc-%{version}
+%autosetup -p1 -n icecc-%{version}
 cp %{SOURCE8} suse/
 # DO NOT ADD PATCHES without github reference
 

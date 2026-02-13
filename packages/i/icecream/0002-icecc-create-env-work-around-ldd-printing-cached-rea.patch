@@ -1,0 +1,63 @@
+From 245728f0687e23d33f1c82202a51445a891f868c Mon Sep 17 00:00:00 2001
+From: Thiago Macieira <thiago.macieira@intel.com>
+Date: Thu, 29 Jan 2026 16:17:43 -0800
+Subject: [PATCH] icecc-create-env: work around ldd printing cached realpaths
+
+Since a recent upgrade of glibc (I'm not exactly certain when it
+happened, but it may have been a while), ldd prints the real path of a
+glibc-hwcap library that may have been cached. For example:
+
+```
+$ ldd /lib64/gcc/x86_64-suse-linux/15/cc1
+        linux-vdso.so.1 (0x00007fad93d6f000)
+        libisl.so.23 => /lib64/libisl.so.23 (0x00007fad93a00000)
+        libmpc.so.3 => /lib64/libmpc.so.3 (0x00007fad93d27000)
+        libmpfr.so.6 => /lib64/libmpfr.so.6 (0x00007fad93c6a000)
+        libgmp.so.10 => /lib64/libgmp.so.10 (0x00007fad93956000)
+        libz.so.1 => /lib64/glibc-hwcaps/x86-64-v3/libz.so.1.3.1 (0x00007fad93c4e000)
+        libzstd.so.1 => /lib64/glibc-hwcaps/x86-64-v3/libzstd.so.1.5.7 (0x00007fad9387d000)
+        libm.so.6 => /lib64/libm.so.6 (0x00007fad93782000)
+        libc.so.6 => /lib64/libc.so.6 (0x00007fad93400000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007fad93d71000)
+```
+
+This results in icecc-create-env storing /lib64/libz.so.1.3.1 but no
+/lib64/libz.so.1, which in turn causes the compiler to fail to start.
+---
+ client/icecc-create-env.in | 18 ++++++++++++++----
+ 1 file changed, 14 insertions(+), 4 deletions(-)
+
+diff --git a/client/icecc-create-env.in b/client/icecc-create-env.in
+index d9fd3ed..6620138 100755
+--- a/client/icecc-create-env.in
++++ b/client/icecc-create-env.in
+@@ -451,12 +451,22 @@ fi
+ tempdir=$(mktemp -d /tmp/iceccenvXXXXXX)
+ 
+ # for testing the environment is usable at all
+-if test -x /bin/true; then
+-    add_file /bin/true
+-elif test -x /usr/bin/true; then
+-    add_file /usr/bin/true /bin/true
++bintrue=/bin/true
++if ! test -x "$bintrue"; then
++    bintrue=/usr/bin/true
+ fi
+ 
++if test -x /sbin/ldconfig -a "$is_linux" = 1; then
++    # find the dynamic loader
++    dyld=`ldd "$bintrue" | sed -n '/ld-linux/s,^[^/]*\(/[^ ]*\).*,\1,p'`
++    if test -x "$dyld"; then
++        # replace ldd with a function so we can inhibit the cache
++        function ldd() { LD_TRACE_LOADED_OBJECTS=1 $dyld --inhibit-cache "$@"; }
++    fi
++fi
++
++add_file "$bintrue" /bin/true
++
+ if test -n "$gcc"; then
+     # getting compilers resolved path
+     added_gcc=$(resolve_path $added_gcc)
+-- 
+2.52.0
+

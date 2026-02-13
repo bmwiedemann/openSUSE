@@ -556,4 +556,15 @@ now with fixed sed line</comment>
     <comment>Add provides for user+group (boo#1221417)</comment>
     <requestid>1158924</requestid>
   </revision>
+  <revision rev="62" vrev="4">
+    <srcmd5>2184255d4ebac64d8472eb04dd6a0f80</srcmd5>
+    <version>1.4.0</version>
+    <time>1770983317</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream patches
+  * 0001-Update-icecc-create-env-to-support-glibc-hwcaps.patch
+  * 0002-icecc-create-env-work-around-ldd-printing-cached-rea.patch
+  * 0003-icecc-create-env-fix-adding-the-glibc-hwcaps-libs.patch</comment>
+    <requestid>1332802</requestid>
+  </revision>
 </revisionlist>
