@@ -704,4 +704,12 @@
     <comment>Add support for SLES-16.1 and openSUSE Leap 16.1 to the database.</comment>
     <requestid>1329867</requestid>
   </revision>
+  <revision rev="89" vrev="3">
+    <srcmd5>145d5809485c07b48a640d481998ceff</srcmd5>
+    <version>20251212</version>
+    <time>1770982821</time>
+    <user>anag_factory</user>
+    <comment>Add support for recommended firmware attribute. jsc#PED-14636 - UEFI as default for new VMs.</comment>
+    <requestid>1332578</requestid>
+  </revision>
 </revisionlist>

@@ -24,6 +24,7 @@ License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          System/Management
 URL:            https://gitlab.com/libosinfo/osinfo-db
 Source:         https://releases.pagure.org/libosinfo/%{name}-%{version}.tar.xz
+Patch1:         Add-optional-recommended-attribute-to-firmware.patch
 Patch21:        add-oes-support.patch
 Patch22:        add-caasp40-support.patch
 Patch23:        add-win-2k19-media-info.patch

@@ -1,7 +1,7 @@
-Index: osinfo-db-20250124/os/suse.com/sles-16.xml
+Index: osinfo-db-20251212/os/suse.com/sles-16.xml
 ===================================================================
 --- /dev/null
-+++ osinfo-db-20250124/os/suse.com/sles-16.xml
++++ osinfo-db-20251212/os/suse.com/sles-16.xml
 @@ -0,0 +1,77 @@
 +<?xml version="1.0"?>
 +<libosinfo version="0.0.1">
@@ -32,7 +32,7 @@ Index: osinfo-db-20250124/os/suse.com/sles-16.xml
 +    <distro>sles</distro>
 +    <upgrades id="http://suse.com/sle/15.7"/>
 +    <derives-from id="http://suse.com/sle/15.7"/>
-+    <firmware arch="x86_64" type="efi"/>
++    <firmware arch="x86_64" type="efi" recommended="true"/>
 +    <media arch="x86_64">
 +      <iso>
 +        <system-id></system-id>

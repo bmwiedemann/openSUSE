@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 10 10:52:18 MST 2026 - carnold@suse.com
+
+- jsc#PED-14636 - UEFI as default for new VMs
+  Add-optional-recommended-attribute-to-firmware.patch
+  add-sles16-support.patch
+  add-sles16.1-support.patch
+
+-------------------------------------------------------------------
 Wed Jan 28 08:47:42 MST 2026 - carnold@suse.com
 
 - Add support for SLES-16.1 (jsc#PED-14625)

@@ -1,0 +1,26 @@
+Subject: Add optional recommended attribute to <firmware/>
+From: Charles Arnold carnold@suse.com Tue Jan 20 11:38:34 2026 -0700
+Date: Tue Jan 20 11:38:34 2026 -0700:
+Git: 2697651bde8adddfc472184531612e5e8ef4cb66
+
+The recommended attribute allows an OS to declare efi as
+preferred for its security features while still supporting legacy
+bios. Tools like virt-manager may then query the database for
+this and default to the recommended firmware if specified.
+
+Signed-off-by: Charles Arnold <carnold@suse.com>
+
+--- osinfo-db-20251212/schema/osinfo.rng.orig	2026-02-10 10:55:55.466546913 -0700
++++ osinfo-db-20251212/schema/osinfo.rng	2026-02-10 10:56:21.382548069 -0700
+@@ -597,6 +597,11 @@
+           <ref name='bool'/>
+         </attribute>
+       </optional>
++      <optional>
++        <attribute name='recommended'>
++          <ref name='bool'/>
++        </attribute>
++      </optional>
+     </element>
+   </define>
+ 
