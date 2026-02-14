@@ -434,4 +434,19 @@
   (gh#agama-project/agama#3089)</comment>
     <requestid>1329820</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>731f7e4633688f972096b4c9f47ab429</srcmd5>
+    <version>19.pre.0.0</version>
+    <time>1771101421</time>
+    <user>dimstar_suse</user>
+    <comment>- Installer: configure libzypp through drop-in config snippet when
+  supported (jsc#PED-14658).
+
+- Do display a message if &quot;UEFI Firmware Settings&quot; boot menu entry
+  fails  (gh#agama-project/agama#3109)
+
+- Enable agama-proxy-setup service for configuring the proxy if
+  given through the kernel cmdline (gh#agama-project/agama#3069).</comment>
+    <requestid>1332499</requestid>
+  </revision>
 </revisionlist>
