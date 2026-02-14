@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  9 16:26:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use zypp-* configuration packages and patch zypp.conf only when
+  it still exists (i.e when libzypp is not yet updated)
+  (jsc#PED-14658).
+
+-------------------------------------------------------------------
 Tue Oct 28 09:05:56 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Drop systemd-experimental as systemd-pcrlock is in udev

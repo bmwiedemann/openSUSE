@@ -804,6 +804,10 @@
              so avoid using namedCollection at least for basesystem -->
         <package name="patterns-microos-basesystem"/>
         <package name="patterns-microos-base-zypper"/>
+        <!-- Configure zypper for no-recommends, no-multiversion and excludedocs -->
+        <package name="zypp-excludedocs"/>
+        <package name="zypp-no-multiversion"/>
+        <package name="zypp-no-recommends"/>
         <package name="patterns-microos-defaults"/>
         <package name="patterns-microos-selinux"/>
         <package name="kernel-default"/>

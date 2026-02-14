@@ -62,9 +62,6 @@ if [ -x /usr/sbin/add-yast-repos ]; then
 	zypper --non-interactive rm -u live-add-yast-repos
 fi
 
-# Adjust zypp conf
-sed -i 's/^multiversion =.*/multiversion =/g' /etc/zypp/zypp.conf
-
 #=====================================
 # Configure snapper
 #-------------------------------------
@@ -141,15 +138,21 @@ cat >/etc/dracut.conf.d/50-microos-growfs.conf <<"EOF"
 install_items+=" /usr/lib/systemd/systemd-growfs "
 EOF
 
-#======================================
-# Disable recommends on virtual images (keep hardware supplements, see bsc#1089498)
-#--------------------------------------
-sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = true/g' /etc/zypp/zypp.conf
-
-#======================================
-# Disable installing documentation
-#--------------------------------------
-sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp/zypp.conf
+# if /etc/zypp/zypp.conf exists, patch it - otherwise rely on packages providing functionality
+if [ -f /etc/zypp/zypp.conf ]; then
+        #======================================
+        # Disable recommends on virtual images (keep hardware supplements, see bsc#1089498)
+        #--------------------------------------
+        sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = true/g' /etc/zypp/zypp.conf
+        
+        #======================================
+        # Disable installing documentation
+        #--------------------------------------
+        sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp/zypp.conf
+        
+        # Adjust zypp conf
+        sed -i 's/^multiversion =.*/multiversion =/g' /etc/zypp/zypp.conf
+fi
 
 # # we need this for trans file triggers
 # echo "techpreview.ZYPP_SINGLE_RPMTRANS = 1" >> /etc/zypp/zypp.conf
