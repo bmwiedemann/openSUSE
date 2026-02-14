@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Feb 12 16:31:39 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 46.0.5 (fixes CVE-2026-26007, bsc#1258074)
+  * An attacker could create a malicious public key that reveals portions of
+    your private key when using certain uncommon elliptic curves (binary
+    curves). This version now includes additional security checks to prevent
+    this attack. This issue only affects binary elliptic curves, which are
+    rarely used in real-world applications. Credit to XlabAI Team of Tencent
+    Xuanwu Lab and Atuin Automated Vulnerability Discovery Engine for reporting
+    the issue. CVE-2026-26007
+  * Support for SECT* binary elliptic curves is deprecated and will be removed
+    in the next release.
+- Update to 46.0.4
+  * Dropped support for win_arm64 wheels.
+  * Updated Windows, macOS, and Linux wheels to be compiled with OpenSSL 3.5.5.
+- Update to 46.0.3
+  * Fixed compilation when using LibreSSL 4.2.0.
+
+-------------------------------------------------------------------
 Mon Dec  8 04:29:15 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Only require pytest-subtests with pytest < 9.

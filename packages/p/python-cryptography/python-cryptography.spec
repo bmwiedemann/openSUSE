@@ -1,7 +1,7 @@
 #
 # spec file for package python-cryptography
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-cryptography%{psuffix}
 # ALWAYS KEEP IN SYNC WITH python-cryptography-vectors!
-Version:        46.0.2
+Version:        46.0.5
 Release:        0
 Summary:        Python library which exposes cryptographic recipes and primitives
 License:        Apache-2.0 OR BSD-3-Clause
