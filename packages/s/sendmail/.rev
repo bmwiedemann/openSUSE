@@ -1348,4 +1348,12 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
   * Note that still sendmail is not part of SLES-16 and above</comment>
     <requestid>1325711</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>026943562c6f30d331876558b760624a</srcmd5>
+    <version>8.18.2</version>
+    <time>1771101389</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1332866</requestid>
+  </revision>
 </revisionlist>

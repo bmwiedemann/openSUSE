@@ -120,7 +120,7 @@ Conflicts:      postfix
 Conflicts:      postfix-tls
 Conflicts:      smail
 Obsoletes:      sendmail-tls
-Version:        8.18.1
+Version:        8.18.2
 Release:        0
 Summary:        BSD Sendmail
 License:        Sendmail

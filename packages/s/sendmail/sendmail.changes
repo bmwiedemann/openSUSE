@@ -1,8 +1,43 @@
 -------------------------------------------------------------------
+Wed Feb 11 09:31:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.12.2:
+  * Avoid adding a second To: header to DSNs, instead any
+    additional addresses are appended to an existing
+    To: header (this also applies to Cc: and Bcc:).
+  * Fix matching of wildcard SANs in the experimental support
+    for SMTP MTA Strict Transport Security (MTA-STS).
+    Problem reported by Dilyan Palauzo.
+  * The experimental support for SMTP MTA Strict Transport
+    Security has been significantly rewritten to handle
+    the problems caused by it being tied to the domain
+    of a RCPT address (instead to an SMTP server for
+    all the domains it handles - compare DANE).
+    The most visible change is that an SMTP transaction
+    where the first RCPT has an STS policy will have
+    only RCPTs with the same domain instead of all
+    RCPTs going to the same servers (MX).
+    Accordingly, MTA-STS can be disabled per RCPT domain
+    by adding access map entries of the form
+    STS:domain      NO
+    Successful deliveries to RCPTs which have an STS
+    policy show STS=OK in the to=... stat=Sent log entry.
+    If an STS policy for a RCPT could not be fulfilled
+    then the RCPT is not being sent and an error containing
+    the string "STS" is logged.
+  * MaxQueueAge is now observed for all types of QueueSortOrder
+    even those which internally skip some code (including
+    the MaxQueueAge check).
+  * On some systems the rejection of a RCPT by a milter could
+    silently be ignored.
+  * Increase size for an internal buffer which can contain AUTH
+    data because XOAUTH2 could use very long tokens.
+
+-------------------------------------------------------------------
 Wed Jan  7 07:21:04 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Correct group permission of /var/spool/clientmqueue to make
-  sendmail work again (boo#1255437) 
+  sendmail work again (boo#1255437)
 
 -------------------------------------------------------------------
 Wed Dec 17 12:43:20 UTC 2025 - Dr. Werner Fink <werner@suse.de>
@@ -25,7 +60,7 @@ Tue Apr  8 20:30:53 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 -------------------------------------------------------------------
 Mon Mar 17 14:24:06 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
-- Update keyring 
+- Update keyring
 
 -------------------------------------------------------------------
 Wed Feb 12 11:42:54 UTC 2025 - Dr. Werner Fink <werner@suse.de>
@@ -36,12 +71,12 @@ Wed Feb 12 11:42:54 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Thu Feb  6 09:23:52 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
-- Avoid rpmlint warning 
+- Avoid rpmlint warning
 
 -------------------------------------------------------------------
 Thu Feb  6 07:38:18 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
-- Skip sysvinit 
+- Skip sysvinit
 
 -------------------------------------------------------------------
 Tue Jan 28 10:33:28 UTC 2025 - Dr. Werner Fink <werner@suse.de>
@@ -164,25 +199,25 @@ Tue Jan 30 11:44:50 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Tue Jan 30 08:00:47 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
-- Fix file provides of openssl and timeout 
+- Fix file provides of openssl and timeout
 
 -------------------------------------------------------------------
 Thu Jan 25 13:58:48 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Avoid error messages of chkstat as this tools does not
-  accept slashes at the end of directory paths! 
+  accept slashes at the end of directory paths!
 - Move sendmails permissions files to /usr/share/permissions/
 
 -------------------------------------------------------------------
 Wed Jan 17 13:22:30 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
-- Work on certificates usage of smart and relay host 
+- Work on certificates usage of smart and relay host
 - Work on certificates for running sendmail
 
 -------------------------------------------------------------------
 Mon Dec 18 18:14:45 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
-- There is no such beast called var-run.mount anymore 
+- There is no such beast called var-run.mount anymore
 
 -------------------------------------------------------------------
 Fri Jun 23 08:20:27 UTC 2023 - Dr. Werner Fink <werner@suse.de>
@@ -289,7 +324,7 @@ Wed May 31 12:13:28 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Tue Feb 14 10:17:30 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
-- Drop NIS/NISPLUS support for Tumbleweed (boo#1208221) 
+- Drop NIS/NISPLUS support for Tumbleweed (boo#1208221)
 
 -------------------------------------------------------------------
 Tue Jan 24 12:22:12 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -315,7 +350,7 @@ Wed Dec 28 16:41:20 UTC 2022 - Stefan Schubert <schubi@suse.com>
 -------------------------------------------------------------------
 Tue Oct 25 09:32:15 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
-- Remove maybe perilous shell script code from sm-client.pre (boo#1202937) 
+- Remove maybe perilous shell script code from sm-client.pre (boo#1202937)
 
 -------------------------------------------------------------------
 Wed Oct  5 12:16:22 UTC 2022 - Dr. Werner Fink <werner@suse.de>
@@ -328,7 +363,7 @@ Fri Sep 16 14:06:55 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 - Do not start sendmail-client as user mail as this one is not
   allowed to check port smtp aka 25
 - Fix sm-client.pre script as ports are not only numbers but
-  also alias names 
+  also alias names
 
 -------------------------------------------------------------------
 Fri Sep 16 13:26:12 UTC 2022 - Dr. Werner Fink <werner@suse.de>
@@ -336,7 +371,7 @@ Fri Sep 16 13:26:12 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 - Rework system service unit files
   * sendmail-client now use user and group mail which requires
   * /etc/mail/system/ becomes readable by all users e.g. mail
-  * sendmail now uses -bD to avoid a fork, this requires Type=exec 
+  * sendmail now uses -bD to avoid a fork, this requires Type=exec
 - Various bug fixes
 - Require user and group mail for post and verify scriptlets
 - Add a %ghost for /run/sendmail whic his created by
@@ -351,7 +386,7 @@ Tue Sep  6 09:12:58 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 Thu Jul 14 08:23:00 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Avoid older alias.db
-- Avoid that sendmail can not write its pid file 
+- Avoid that sendmail can not write its pid file
 - Allow sendmail and its helper like maildrop and procmail
   to write into the users mail folder
 
@@ -387,17 +422,17 @@ Tue Nov 16 15:35:19 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 -------------------------------------------------------------------
 Tue Jul  6 14:47:19 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
-- Require libopenssl-1_1-devel on older SLE-11 
+- Require libopenssl-1_1-devel on older SLE-11
 
 -------------------------------------------------------------------
 Thu Jul  1 10:59:08 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
-- Re-add 'sysvinit(network)' build dependency 
+- Re-add 'sysvinit(network)' build dependency
 
 -------------------------------------------------------------------
 Tue Jun 29 09:36:04 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
-- Use %set_permissions on path /var/spool/clientmqueue/ as well (boo#1187809) 
+- Use %set_permissions on path /var/spool/clientmqueue/ as well (boo#1187809)
 
 -------------------------------------------------------------------
 Fri Jun 25 09:44:58 UTC 2021 - Dr. Werner Fink <werner@suse.de>
@@ -547,7 +582,7 @@ Sun May 16 14:08:29 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 -------------------------------------------------------------------
 Tue Mar 23 16:04:45 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
-- Make IPv6 work even with IPv4 in parallel 
+- Make IPv6 work even with IPv4 in parallel
 
 -------------------------------------------------------------------
 Tue Feb  9 08:24:10 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -588,7 +623,7 @@ Tue Jan 26 18:32:51 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add better support for IPv6
 - Fix bug in udage of fillup_only macro to get sysconfig file for
-  sendmail written by fillup 
+  sendmail written by fillup
 
 -------------------------------------------------------------------
 Tue Oct 27 14:38:07 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
@@ -610,7 +645,7 @@ Thu Oct  8 07:58:21 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
 -------------------------------------------------------------------
 Tue Jul 28 11:20:52 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
-- Fix same strange permissions below /usr/share/sendmail 
+- Fix same strange permissions below /usr/share/sendmail
 
 -------------------------------------------------------------------
 Tue Jul 28 07:54:33 UTC 2020 - Dr. Werner Fink <werner@suse.de>
@@ -764,7 +799,7 @@ Thu Jan 30 10:36:21 UTC 2020 - Dr. Werner Fink <werner@suse.de>
   * If sendmail tried to reuse an SMTP session which had already been
     closed by the server, then the connection cache could have invalid
     information about the session.  One possible consequence was that
-    STARTTLS was not used even if offered. 
+    STARTTLS was not used even if offered.
 
 -------------------------------------------------------------------
 Thu Dec 19 14:47:17 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -775,7 +810,7 @@ Thu Dec 19 14:47:17 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Mon Oct 14 10:25:24 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
-- Avoid recursion trouble in spec file cause by undefined _lto_cflags 
+- Avoid recursion trouble in spec file cause by undefined _lto_cflags
 
 -------------------------------------------------------------------
 Sat Sep 28 07:32:14 UTC 2019 - Dr. Werner Fink <werner@suse.de>
@@ -786,7 +821,7 @@ Sat Sep 28 07:32:14 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Mon Sep  9 08:00:18 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
-- Use FAT LTO objects in order to provide proper static library. 
+- Use FAT LTO objects in order to provide proper static library.
 
 -------------------------------------------------------------------
 Fri Jul 26 09:37:21 UTC 2019 - matthias.gerstner@suse.com
@@ -810,7 +845,7 @@ Fri Jul 27 07:56:17 UTC 2018 - jengelh@inai.de
 Mon Jul 16 08:09:53 UTC 2018 - werner@suse.de
 
 - Remove left over from last patch
-- Group daemon is required 
+- Group daemon is required
 
 -------------------------------------------------------------------
 Tue Dec  5 05:30:57 UTC 2017 - bwiedemann@suse.com
@@ -821,18 +856,18 @@ Tue Dec  5 05:30:57 UTC 2017 - bwiedemann@suse.com
 Wed Nov 29 10:55:02 UTC 2017 - werner@suse.de
 
 - Add _FFR_TLS_EC m4 macro definition for site configuration as
-  well (boo#1070065) 
+  well (boo#1070065)
 
 -------------------------------------------------------------------
 Thu Nov 23 13:43:24 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
 Thu Nov  9 10:21:44 UTC 2017 - werner@suse.de
 
-- Apply former patches only if openssl 1.1.0+ are installed 
+- Apply former patches only if openssl 1.1.0+ are installed
 
 -------------------------------------------------------------------
 Wed Nov  8 15:42:28 UTC 2017 - vcizek@suse.com
@@ -856,12 +891,12 @@ Wed Jul 19 10:53:07 UTC 2017 - werner@suse.de
 -------------------------------------------------------------------
 Thu May 11 06:14:34 UTC 2017 - werner@suse.de
 
-- Require user and group mail 
+- Require user and group mail
 
 -------------------------------------------------------------------
 Wed Apr 12 13:36:38 UTC 2017 - werner@suse.de
 
-- Add bitdomain and uudomain to possible targets for refresh 
+- Add bitdomain and uudomain to possible targets for refresh
 
 -------------------------------------------------------------------
 Wed Apr 12 08:43:12 UTC 2017 - werner@suse.de
@@ -878,7 +913,7 @@ Tue Apr 11 11:33:02 UTC 2017 - jengelh@inai.de
 Thu Mar 23 09:34:38 UTC 2017 - werner@suse.de
 
 - New package libmilter1_0 for the shared library version of
-  libmilter, the  Sendmail Content Management API 
+  libmilter, the  Sendmail Content Management API
 - Also new package libmilter-doc for the substantial documentation
   about Sendmail Content Management API (milter)
 - Make sendmail-tls a noarch package
@@ -886,7 +921,7 @@ Thu Mar 23 09:34:38 UTC 2017 - werner@suse.de
 -------------------------------------------------------------------
 Mon Mar  6 10:08:23 UTC 2017 - werner@suse.de
 
-- Require m4 at build time 
+- Require m4 at build time
 
 -------------------------------------------------------------------
 Mon Feb 20 10:55:11 CET 2017 - kukuk@suse.de
@@ -947,7 +982,7 @@ Thu Jun 16 13:45:25 UTC 2016 - tchvatal@suse.com
 Thu May 19 12:40:21 UTC 2016 - werner@suse.de
 
 - Do not use http://license.opensuse.org/ as reference for the Sendmail
-  license even if stated by rpmlint but https://spdx.org/licenses/Sendmail.html 
+  license even if stated by rpmlint but https://spdx.org/licenses/Sendmail.html
 
 -------------------------------------------------------------------
 Thu Apr 14 14:49:20 UTC 2016 - werner@suse.de
@@ -1139,7 +1174,7 @@ Fri May 23 09:03:04 UTC 2014 - werner@suse.de
 Wed Apr  2 09:59:06 UTC 2014 - werner@suse.de
 
 - In systemd mail-transfer-agent.target is gone even if there are
-  MTAs around which will be started without socket/bus activation 
+  MTAs around which will be started without socket/bus activation
 
 -------------------------------------------------------------------
 Tue Apr  1 08:56:06 UTC 2014 - werner@suse.de
@@ -1206,7 +1241,7 @@ Wed Dec 18 08:03:28 UTC 2013 - werner@suse.de
 -------------------------------------------------------------------
 Tue Oct  8 12:00:16 UTC 2013 - werner@suse.de
 
-- Add config.starttls script to ask mail/imap server for certificates 
+- Add config.starttls script to ask mail/imap server for certificates
 
 -------------------------------------------------------------------
 Tue Oct  1 08:34:03 UTC 2013 - werner@suse.de
@@ -1225,7 +1260,7 @@ Mon Sep  9 12:32:40 UTC 2013 - werner@suse.de
 -------------------------------------------------------------------
 Thu Aug  8 08:50:50 UTC 2013 - werner@suse.de
 
-- Use /etc/os-release instead of /etc/SuSE-release (bnc#833953) 
+- Use /etc/os-release instead of /etc/SuSE-release (bnc#833953)
 
 -------------------------------------------------------------------
 Mon Jul 15 13:13:56 UTC 2013 - werner@suse.de
@@ -1344,12 +1379,12 @@ Thu Oct 11 09:24:38 UTC 2012 - coolo@suse.com
 -------------------------------------------------------------------
 Fri Jul 13 16:22:57 UTC 2012 - werner@suse.de
 
-- Make if build even with older distributions 
+- Make if build even with older distributions
 
 -------------------------------------------------------------------
 Fri Jul 13 15:27:54 UTC 2012 - werner@suse.de
 
-- Use UTF-8 messages 
+- Use UTF-8 messages
 
 -------------------------------------------------------------------
 Fri Jul 13 14:52:55 UTC 2012 - werner@suse.de
@@ -1364,7 +1399,7 @@ Tue Jun 19 15:05:38 UTC 2012 - werner@suse.de
 -------------------------------------------------------------------
 Fri May 25 15:37:22 UTC 2012 - werner@suse.de
 
-- Help to do systemctl the obvoisly (bnc#754544) 
+- Help to do systemctl the obvoisly (bnc#754544)
 
 -------------------------------------------------------------------
 Thu Feb  9 13:31:50 UTC 2012 - cfarrell@suse.com
@@ -1382,7 +1417,7 @@ Mon Nov 21 10:55:39 UTC 2011 - werner@suse.de
 -------------------------------------------------------------------
 Thu Aug 18 13:32:41 UTC 2011 - werner@suse.de
 
-- Expand systemd configuration at build time 
+- Expand systemd configuration at build time
 
 -------------------------------------------------------------------
 Fri Aug 12 14:47:38 UTC 2011 - werner@suse.de
@@ -1398,7 +1433,7 @@ Thu Aug 11 15:17:58 UTC 2011 - werner@suse.de
 -------------------------------------------------------------------
 Mon Aug  8 15:14:52 UTC 2011 - werner@suse.de
 
-- The approach of using makefiles requires make for sendmail 
+- The approach of using makefiles requires make for sendmail
 
 -------------------------------------------------------------------
 Fri Aug  5 12:23:05 UTC 2011 - werner@suse.de
@@ -1509,12 +1544,12 @@ Wed Jan 27 14:36:13 CET 2010 - werner@suse.de
 -------------------------------------------------------------------
 Tue Nov 11 17:10:11 CET 2008 - ro@suse.de
 
-- drop klogd prereq (prereq cycle) 
+- drop klogd prereq (prereq cycle)
 
 -------------------------------------------------------------------
 Mon Nov 10 15:42:31 CET 2008 - ro@suse.de
 
-- drop sysconfig prereq 
+- drop sysconfig prereq
 
 -------------------------------------------------------------------
 Tue Sep 30 15:18:11 CEST 2008 - werner@suse.de
@@ -1524,12 +1559,12 @@ Tue Sep 30 15:18:11 CEST 2008 - werner@suse.de
 -------------------------------------------------------------------
 Mon Aug 25 00:27:18 CEST 2008 - ro@suse.de
 
-- fix fillup_and_insserv options 
+- fix fillup_and_insserv options
 
 -------------------------------------------------------------------
 Wed Aug  6 13:41:29 CEST 2008 - varkoly@suse.de
 
-- (bnc#414960) sendmail doesn't have any "Name: " tag in firewall definition 
+- (bnc#414960) sendmail doesn't have any "Name: " tag in firewall definition
 
 -------------------------------------------------------------------
 Wed Jul 30 16:04:30 CEST 2008 - werner@suse.de
@@ -1588,7 +1623,7 @@ Fri Dec 14 14:08:30 CET 2007 - werner@suse.de
     control characters during a queue run and trigger various
     consistency checks.
   * fix the handling of lines longer than MAXLINE-1 characters in
-    certain cases. 
+    certain cases.
 
 -------------------------------------------------------------------
 Fri Jul 20 07:47:51 CEST 2007 - coolo@suse.de
@@ -1641,7 +1676,7 @@ Thu Feb  1 15:13:53 CET 2007 - werner@suse.de
 -------------------------------------------------------------------
 Fri Jan 19 19:25:41 CET 2007 - werner@suse.de
 
-- update uucp configuration 
+- update uucp configuration
 
 -------------------------------------------------------------------
 Thu Aug 10 11:44:42 CEST 2006 - werner@suse.de
@@ -1769,7 +1804,7 @@ Sun May  1 10:44:25 CEST 2005 - werner@suse.de
 -------------------------------------------------------------------
 Wed Mar 30 18:45:48 CEST 2005 - ro@suse.de
 
-- fix version number for devel subpackage 
+- fix version number for devel subpackage
 
 -------------------------------------------------------------------
 Wed Mar 30 15:22:47 CEST 2005 - werner@suse.de
@@ -1780,7 +1815,7 @@ Wed Mar 30 15:22:47 CEST 2005 - werner@suse.de
 -------------------------------------------------------------------
 Sun Feb 27 23:07:04 CET 2005 - ro@suse.de
 
-- package /usr/bin/cu as 755 
+- package /usr/bin/cu as 755
 
 -------------------------------------------------------------------
 Wed Feb 23 18:21:32 CET 2005 - werner@suse.de
@@ -2117,7 +2152,7 @@ Tue Jul  9 13:24:40 CEST 2002 - werner@suse.de
 -------------------------------------------------------------------
 Thu Jul  4 14:53:23 CEST 2002 - ro@suse.de
 
-- fix compilation with openldap-2.1 
+- fix compilation with openldap-2.1
 
 -------------------------------------------------------------------
 Tue Apr 30 16:37:32 CEST 2002 - werner@suse.de
@@ -2227,7 +2262,7 @@ Wed Feb 13 15:37:51 CET 2002 - werner@suse.de
 -------------------------------------------------------------------
 Sun Feb 10 12:17:02 CET 2002 - ro@suse.de
 
-- new option for bz2 tar is "j" 
+- new option for bz2 tar is "j"
 
 -------------------------------------------------------------------
 Tue Feb  5 01:21:52 CET 2002 - ro@suse.de
@@ -2262,7 +2297,7 @@ Mon Jan 21 16:59:24 CET 2002 - werner@suse.de
 Sun Jan 20 22:19:24 MET 2002 - link@suse.de
 
 - for compiling a milter client, we need /usr/lib/libsm.a and
-  /usr/include/sm  
+  /usr/include/sm
 
 -------------------------------------------------------------------
 Fri Jan 18 16:55:52 CET 2002 - werner@suse.de
@@ -2303,7 +2338,7 @@ Tue Jan 15 15:44:14 CET 2002 - egmont@suselinux.hu
 -------------------------------------------------------------------
 Fri Dec 14 01:10:28 CET 2001 - ro@suse.de
 
-- moved rc.config.d -> sysconfig, removed SMTP variable 
+- moved rc.config.d -> sysconfig, removed SMTP variable
 
 -------------------------------------------------------------------
 Thu Nov 22 18:33:08 CET 2001 - werner@suse.de
@@ -2377,7 +2412,7 @@ Wed Mar 21 19:34:24 CET 2001 - werner@suse.de
 -------------------------------------------------------------------
 Thu Mar 15 18:10:01 CET 2001 - ro@suse.de
 
-- changed for openldap2 
+- changed for openldap2
 
 -------------------------------------------------------------------
 Thu Mar 15 01:08:35 CET 2001 - ro@suse.de
@@ -2397,15 +2432,15 @@ Wed Jan 17 17:04:28 CET 2001 - werner@suse.de
 -------------------------------------------------------------------
 Tue Jan  9 23:40:10 CET 2001 - ro@suse.de
 
-- re-added sfio compile fix from Andreas Schwab 
+- re-added sfio compile fix from Andreas Schwab
 
 -------------------------------------------------------------------
 Tue Jan  9 19:01:51 CET 2001 - werner@suse.de
 
 - Update to 8.11.2 due BUG fixes
-  * Sendmail, Inc. and the Sendmail Consortium are proud to 
-    announce the release of sendmail 8.11.2. This is a maintenance 
-    release which contains bug fixes for problems found after 
+  * Sendmail, Inc. and the Sendmail Consortium are proud to
+    announce the release of sendmail 8.11.2. This is a maintenance
+    release which contains bug fixes for problems found after
     8.11.1 was released.
 
 -------------------------------------------------------------------
@@ -2438,7 +2473,7 @@ Fri Nov 24 17:48:48 CET 2000 - werner@suse.de
 -------------------------------------------------------------------
 Mon Nov  6 02:44:54 CET 2000 - ro@suse.de
 
-- fixed neededforbuild 
+- fixed neededforbuild
 
 -------------------------------------------------------------------
 Wed Sep 27 14:25:56 CEST 2000 - werner@suse.de
@@ -2554,7 +2589,7 @@ Mon Feb 21 16:19:42 CET 2000 - ke@suse.de
 -------------------------------------------------------------------
 Mon Feb 14 08:59:54 CET 2000 - ro@suse.de
 
-- move man to /usr/share using macro 
+- move man to /usr/share using macro
 
 -------------------------------------------------------------------
 Fri Feb 11 22:35:12 CET 2000 - werner@suse.de
@@ -2576,7 +2611,7 @@ Thu Dec 23 16:27:46 CET 1999 - werner@suse.de
 -------------------------------------------------------------------
 Tue Dec 14 13:52:25 CET 1999 - ro@suse.de
 
-- create directory /var/lib/uucp (no longer in aaa_dir) 
+- create directory /var/lib/uucp (no longer in aaa_dir)
 
 -------------------------------------------------------------------
 Thu Dec  2 19:48:05 CET 1999 - werner@suse.de
@@ -2835,7 +2870,7 @@ Mon Feb  9 13:13:06 MET 1998 - florian@suse.de
 -------------------------------------------------------------------
 Fri Jan 16 11:43:26 MET 1998 - bs@suse.de
 
-- minor bugfix in /sbin/conf.d/SuSEconfig.sendmail 
+- minor bugfix in /sbin/conf.d/SuSEconfig.sendmail
   (exit if no rc.config exists)
 
 -------------------------------------------------------------------
