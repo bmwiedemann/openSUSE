@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Feb 13 09:04:01 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.12.7:
+  * Added: Rendering of lists with both tasks and normal bullet
+    points (glgo#World/iotas#258).
+  * Fixed: Inconsistency in rendering the tick for completed
+    tasks in the render view (glgo#World/iotas#262).
+- Changes from verion 0.12.6:
+  * Fixed:
+    - Strikethrough around markdown with asterisks broken
+      (glgo#World/iotas#254).
+    - Crash in migration from pre v0.9.0 (glgo#World/iotas#259).
+  * New and updated translations.
+- Changes from version 0.12.5:
+  * Added: Open previous note can skip over a deleted most recent
+    note for the one before.
+  * Fixed:
+    - Possibility of ending up editing text behind one of the
+      header bars. Allows header and formatting bars to hide if
+      mouse cursor is over them.
+    - Inability to interact with text in editor just above and
+      below header bars.
+    - Focus being lost in the index when a remote sync empties the
+      currently focused list section.
+    - Focus being lost in the index via timestamp or category
+      update in editor.
+    - Tasklist sub items lacking top spacing.
+    - Content hiding behind header bar in render view on mobile
+      when header bar hiding enabled.
+  * New and updated translations.
+
+-------------------------------------------------------------------
 Sat Nov  8 19:02:09 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.12.4:
