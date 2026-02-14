@@ -18,14 +18,12 @@
 
 %define sover 0
 Name:           xdigest
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Digest algorithm library designed for speed
 License:        Apache-2.0
 URL:            https://github.com/rinrab/xdigest
 Source:         https://github.com/rinrab/xdigest/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         xdigest-0.4.0-pkgconfig_version.patch
-Patch1:         xdigest-0.4.0-noexecstack.patch
 BuildRequires:  cmake
 
 %description

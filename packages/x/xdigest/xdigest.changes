@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 13 17:12:47 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.4.1, dropping the patches we upstreamed:
+  * xdigest-0.4.0-pkgconfig_version.patch
+  * xdigest-0.4.0-noexecstack.patch
+
+-------------------------------------------------------------------
 Sun Feb  8 11:32:46 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - initial package
