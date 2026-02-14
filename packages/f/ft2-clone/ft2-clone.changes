@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 11 19:31:55 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.04
+  * Fixed possible crash on startup on some platforms (BMP graphics
+    loader).
+  * Fixed possible crash when entering Disk Op. (dir. read thread
+    started twice).
+  * Fixed possible bug with button rendering in 'system request'
+    dialogs.
+  * Fixed possible issue with creating threads on some platforms.
+    Apparently it's wrong to pass NULL for the thread name
+    parameter in SDL_CreateThread() on some SDL2 ports (Sony PSP,
+    for instance).
+
+-------------------------------------------------------------------
 Sun Dec 14 19:58:23 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.03
