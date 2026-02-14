@@ -1,7 +1,7 @@
 #
 # spec file for package marisa
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_with perl
 %bcond_with ruby
 Name:           marisa
-Version:        0.2.6
+Version:        0.3.1
 Release:        0
 Summary:        Matching Algorithm with Recursively Implemented StorAge
 License:        BSD-2-Clause OR LGPL-2.1-or-later
@@ -28,8 +28,14 @@ Group:          System/I18n/Japanese
 URL:            https://github.com/s-yata/marisa-trie/
 Source:         https://github.com/s-yata/marisa-trie/archive/v%{version}/%{name}-trie-%{version}.tar.gz
 Source99:       baselibs.conf
+Patch0:         marisa-trie-%{version}-bindings-python3.patch
+BuildRequires:  chrpath
+BuildRequires:  cmake
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc15-c++
+%else
 BuildRequires:  gcc-c++
-BuildRequires:  libtool
+%endif
 %if %{with perl}
 BuildRequires:  perl
 %endif
@@ -124,15 +130,23 @@ developing applications that use %{name}.
 
 %prep
 %setup -q -n marisa-trie-%{version}
+%autopatch -p1
 
 %build
-autoreconf -fiv
-%configure
+%if 0%{?suse_version} < 1600
+export CC=%{_bindir}/gcc-15
+export CXX=%{_bindir}/g++-15
+%cmake -DCMAKE_C_COMPILER=%{_bindir}/gcc-15 \
+       -DCMAKE_CXX_COMPILER=%{_bindir}/g++-15 \
+       -DENABLE_TOOLS=ON
+%else
+%cmake -DENABLE_TOOLS=ON
+%endif
 make %{?_smp_mflags}
 
 # build ruby
 %if %{with ruby}
-pushd bindings/ruby
+pushd ../bindings/ruby
 ruby extconf.rb --with-opt-include=../../include --with-opt-lib=../../lib/marisa/.libs --vendor
 make %{?_smp_mflags}
 popd
@@ -140,26 +154,39 @@ popd
 
 # build python
 %if %{with python}
-pushd bindings/python
-swig -Wall -c++ -python -py3 -outdir . ../marisa-swig.i
-mv ../marisa-swig_wrap.cxx .
-export CPPFLAGS="-I../../include -L../../lib/marisa/.libs"
+pushd ../bindings/python3
+#swig -Wall -c++ -python -py3 -outdir . ../marisa-swig.i
+#mv ../marisa-swig_wrap.cxx .
+export CFLAGS="-I%{_builddir}/%{name}-trie-%{version}/include -L%{_builddir}/%{name}-trie-%{version}/build"
+export CXXFLAGS="-I%{_builddir}/%{name}-trie-%{version}/include -L%{_builddir}/%{name}-trie-%{version}/build"
 %pyproject_wheel
 popd
 %endif
 
 # build perl
 %if %{with perl}
-pushd bindings/perl
+pushd ../bindings/perl
 %{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}" INC="-I../../include" LIBS="-L../../lib/marisa/.libs"
 make %{?_smp_mflags}
 popd
 %endif
 
 %install
-make install DESTDIR=%{buildroot}
+%cmake_install
 
 rm -rf %{buildroot}%{_libdir}/libmarisa.{la,a}
+# install libs
+mkdir -p %{buildroot}%{_libdir}
+install -m 0755 build/libmarisa.so.0.3.1 %{buildroot}%{_libdir}
+ln -sf %{_libdir}/libmarisa.so.0.3.1 %{buildroot}%{_libdir}/libmarisa.so
+ln -sf %{_libdir}/libmarisa.so.0.3.1 %{buildroot}%{_libdir}/libmarisa.so.0
+
+# install tools
+mkdir -p %{buildroot}%{_bindir}
+for i in benchmark build common-prefix-search dump lookup predictive-search reverse-lookup; do
+  chrpath -d build/marisa-$i;
+  install -m 0755 build/marisa-$i %{buildroot}%{_bindir}/marisa-$i;
+done
 
 # install ruby
 %if %{with ruby}
@@ -170,7 +197,7 @@ popd
 
 # install python
 %if %{with python}
-pushd bindings/python
+pushd bindings/python3
 %pyproject_install
 popd
 %endif
@@ -205,7 +232,7 @@ sed -i '1s/^=head2 .*:/=head2/' %{buildroot}%{perl_archlib}/perllocal.pod
 %files -n libmarisa0
 %defattr(-,root,root)
 %{_libdir}/libmarisa.so.0
-%{_libdir}/libmarisa.so.0.0.0
+%{_libdir}/libmarisa.so.%{version}
 
 %if %{with ruby}
 %files -n ruby-marisa
@@ -237,5 +264,6 @@ sed -i '1s/^=head2 .*:/=head2/' %{buildroot}%{perl_archlib}/perllocal.pod
 %{_includedir}/%{name}.h
 %{_libdir}/libmarisa.so
 %{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/cmake/Marisa
 
 %changelog

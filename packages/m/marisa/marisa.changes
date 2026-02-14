@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb  8 13:14:53 UTC 2026 - Marguerite Su <i@marguerite.su>
+
+- update version 0.3.1
+  * see git commits
+- add marisa-trie-0.3.1-bindings-python3.patch
+  * fix MARISA_MEMORY_ERROR ErrorCode in MARISA_THROW_IF
+
+-------------------------------------------------------------------
 Tue Jun 17 07:04:15 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros to build and install the Python bindings.
