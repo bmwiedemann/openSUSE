@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Feb 10 15:29:57 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Update plymouth.spec:
+  Fix packages for Immutable Mode - plymouth: The introduction of
+  Immutable Mode in SLES 16.1 has the effect of 'raising the bar'
+  of what is acceptable in our RPM spec files.
+  This is because the Immutable Mode is not just integrating Micro
+  into the SLES product, but also needs to support use cases and
+  usage patterns which were considered secondary or unsupported in Micro.
+  Immutable Mode is also forming the base of our Unified Core offerings.
+  Therefore the goal is to minimise any manipulation of user-owned
+  portions of the filesystem from all RPM spec files to an absolute minimum.
+  As Immutable Mode is considered a mandatory feature for SLES 16.1,
+  any package that fails to support it fully may struggle to be
+  shipped as part of that release.
+  (PED-14817)
+- Add conditions to initrd update action to avoid OBS install test
+  failure.
+
+-------------------------------------------------------------------
 Sat Nov 22 21:23:15 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.

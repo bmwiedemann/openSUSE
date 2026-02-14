@@ -1,7 +1,7 @@
 #
 # spec file for package plymouth
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ License:        GPL-2.0-or-later
 Group:          System/Base
 URL:            https://www.freedesktop.org/wiki/Software/Plymouth
 Source0:        %{name}-%{version}.tar.xz
+Source100:      plymouth.tmpfiles
 # PATCH-FIX-OPENSUSE plymouth-dracut-path.patch tittiatcoke@gmail.com -- Prefix is /usr/sbin and /usr/bin
 Patch0:         plymouth-dracut-path.patch
 # PATCH-FIX-OPENSUSE plymouth-some-greenish-openSUSE-colors.patch bnc#886148 fcrozat@suse.com -- To use suse colors in tribar.
@@ -56,7 +57,6 @@ Patch10:        plymouth-crash-avoid-on-keyboard-remove-input-handler.patch
 Patch13:        plymouth-support-multi-monitor-hotplugin.patch
 # PATCH-FIX-SLE plymouth-select_fb_for_vmware.patch bsc#1234643 qzhao@suse.com -- use frame-buffer in vmware VM platform.
 Patch100:       plymouth-select_fb_for_vmware.patch
-
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcc
@@ -82,6 +82,7 @@ BuildRequires:  pkgconfig(systemd) >= 186
 %if %{with x11_renderer}
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
 %endif
+BuildRequires:  systemd-rpm-macros
 Recommends:     %{name}-lang
 Requires:       %{name}-branding
 Requires:       systemd >= 186
@@ -396,7 +397,6 @@ autoreconf -ivf
            --with-background-start-color-stop=0x1A3D1F           \
            --with-background-end-color-stop=0x4EA65C             \
            --with-background-color=0x3391cd                      \
-           --runstatedir=/run                                    \
            --without-rhgb-compat-link                            \
            --without-system-root-install
 
@@ -423,23 +423,33 @@ mv %{buildroot}%{_sysconfdir}/logrotate.d/bootlog %{buildroot}%{_distconfdir}/lo
 # Split lang to seperate package.
 %find_lang %{name}
 
+mkdir -p %{buildroot}%{_tmpfilesdir}
+install -m 0644 %{SOURCE100} %{buildroot}%{_tmpfilesdir}/%{name}.conf
+
 %post
+[ -e /.buildenv ] && exit 0
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 %{?regenerate_initrd_post}
 
 %postun
+[ -e /.buildenv ] && exit 0
 %{?regenerate_initrd_post}
+
 %if 0%{?suse_version} > 1500
 %service_del_postun_without_restart plymouth-halt.service plymouth-kexec.service plymouth-poweroff.service plymouth-quit-wait.service plymouth-quit.service plymouth-read-write.service plymouth-reboot.service plymouth-start.service
 %else
 %systemd_postun
 %endif
+
 if [ $1 -eq 0 ]; then
     rm -f %{_libdir}/plymouth/default.so
     rm -f /boot/initrd-plymouth.img
 fi
 
 %posttrans
+if [ ! -e /.buildenv ]; then
 %{?regenerate_initrd_posttrans}
+fi
 
 %if 0%{?suse_version} > 1500
 %ldconfig_scriptlets -n libply-boot-client%{soversion}
@@ -475,7 +485,12 @@ fi
 if [ $1 -eq 0 ]; then
     export LIB=%{_libdir}
     if [ "$(%{_sbindir}/plymouth-set-default-theme)" = "spinfinity" ]; then
-        %{_sbindir}/plymouth-set-default-theme -R --reset
+        if [ ! -e /.buildenv ]; then
+            %{_sbindir}/plymouth-set-default-theme -R --reset
+        else
+            %{_sbindir}/plymouth-set-default-theme --reset
+        fi
+
     fi
 fi
 
@@ -497,7 +512,12 @@ fi
 if [ $1 -eq 0 ]; then
     export LIB=%{_libdir}
     if [ "$(%{_sbindir}/plymouth-set-default-theme)" = "fade-in" ]; then
-        %{_sbindir}/plymouth-set-default-theme -R --reset
+        if [ ! -e /.buildenv ]; then
+            %{_sbindir}/plymouth-set-default-theme -R --reset
+        else
+            %{_sbindir}/plymouth-set-default-theme --reset
+        fi
+
     fi
 fi
 
@@ -519,7 +539,11 @@ fi
 if [ $1 -eq 0 ]; then
     export LIB=%{_libdir}
     if [ "$(%{_sbindir}/plymouth-set-default-theme)" = "solar" ]; then
-        %{_sbindir}/plymouth-set-default-theme -R --reset
+        if [ ! -e /.buildenv ]; then
+            %{_sbindir}/plymouth-set-default-theme -R --reset
+        else
+            %{_sbindir}/plymouth-set-default-theme --reset
+        fi
     fi
 fi
 
@@ -547,13 +571,11 @@ fi
 %{_datadir}/plymouth/themes/details/details.plymouth
 %{_datadir}/plymouth/themes/text/text.plymouth
 %{_datadir}/plymouth/bizcom.png
-%ghost /run/plymouth
 %{_localstatedir}/spool/plymouth
 %{_mandir}/man?/*
-%ghost %{_localstatedir}/lib/plymouth/boot-duration
 %{_unitdir}/*
-%ghost %{_localstatedir}/log/boot.log
 %{_libexecdir}/plymouth/plymouthd-fd-escrow
+%{_tmpfilesdir}/plymouth.conf
 %doc AUTHORS NEWS README.md ply_header.svg
 %license COPYING
 

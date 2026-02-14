@@ -1,0 +1,15 @@
+# Plymouth runtime directory
+d /run/plymouth 0755 root root -
+z /run/plymouth 0755 root root -
+
+# Persistent state directory
+d /var/lib/plymouth 0755 root root -
+
+# Boot duration file
+f /var/lib/plymouth/boot-duration 0644 root root -
+
+# Plymouth spool directory
+d /var/spool/plymouth 0755 root root -
+
+# Optional boot log file
+f /var/log/boot.log 0644 root root -

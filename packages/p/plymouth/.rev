@@ -1236,4 +1236,12 @@ https://bugzilla.suse.com/show_bug.cgi?id=1233675</comment>
     <comment></comment>
     <requestid>1319605</requestid>
   </revision>
+  <revision rev="140" vrev="20">
+    <srcmd5>5c0ea9354dd197048d9ec87446d018ce</srcmd5>
+    <version>22.02.122+94.4bd41a3</version>
+    <time>1771101379</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1332830</requestid>
+  </revision>
 </revisionlist>
