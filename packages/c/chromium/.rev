@@ -6195,4 +6195,12 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
   * ppc-fedora-0009-sandbox-ignore-byte-span-error.patch</comment>
     <requestid>1332708</requestid>
   </revision>
+  <revision rev="501" vrev="1">
+    <srcmd5>dd6667ae0a34083c0effde2ec5a50db0</srcmd5>
+    <version>145.0.7632.75</version>
+    <time>1771101463</time>
+    <user>dimstar_suse</user>
+    <comment>Chromium 145.0.7632.75 boo#1258185</comment>
+    <requestid>1332983</requestid>
+  </revision>
 </revisionlist>

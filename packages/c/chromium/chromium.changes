@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 13 19:51:45 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 145.0.7632.75:
+  * CVE-2026-2441: Use after free in CSS (boo#1258185)
+
+-------------------------------------------------------------------
+Fri Feb 13 17:21:22 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 145.0.7632.67:
+  * Revert a change in url_fixer that may have caused crashes
+
+-------------------------------------------------------------------
 Wed Feb  4 22:46:39 UTC 2026 - Ruediger Oertel <ro@suse.com>
 
 - Chromium 145.0.7632.45 (boo#1258116)
