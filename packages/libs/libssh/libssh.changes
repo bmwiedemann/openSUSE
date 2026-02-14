@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb 11 11:28:10 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 0.11.4:
+  * Security fixes:
+    - CVE-2026-0964: SCP Protocol Path Traversal in ssh_scp_pull_request()
+      (bsc#1258049)
+    - CVE-2026-0965: Possible Denial of Service when parsing unexpected
+      configuration files (bsc#1258045)
+    - CVE-2026-0966: Buffer underflow in ssh_get_hexa() on invalid input
+      (bsc#1258054)
+    - CVE-2026-0967: Specially crafted patterns could cause DoS (bsc#1258081)
+    - CVE-2026-0968: OOB Read in sftp_parse_longname() (bsc#1258080)
+    - libssh-2026-sftp-extensions: Read buffer overrun when handling SFTP extensions
+  * Other fixes:
+    - Stability and compatibility improvements of ProxyJump
+  * Remove patch upstream: libssh-cmake-Add-option-WITH_HERMETIC_USR.patch
+
+-------------------------------------------------------------------
 Tue Sep  9 15:19:24 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 0.11.3

@@ -1,7 +1,7 @@
 #
 # spec file for package libssh
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %endif
 
 Name:           libssh%{pkg_suffix}
-Version:        0.11.3
+Version:        0.11.4
 Release:        0
 Summary:        The SSH library
 License:        LGPL-2.1-or-later
@@ -44,8 +44,6 @@ Source2:        https://www.libssh.org/files/0x03D5DF8CFDD3E8E7_libssh_libssh_or
 Source3:        libssh_client.config
 Source4:        libssh_server.config
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM: libssh tries to read config from wrong crypto-policies location (bsc#1222716)
-Patch0:         libssh-cmake-Add-option-WITH_HERMETIC_USR.patch
 # PATCH-FIX-SUSE: fix hang in torture_channel tests (bsc#1243799)
 Patch1:         libssh-tests-Fix-an-issue-where-torture_session-request-a-SIGTERM-too-early.patch
 BuildRequires:  cmake
