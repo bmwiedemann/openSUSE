@@ -1,7 +1,6 @@
 #
 # spec file for package php8
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -58,7 +57,7 @@
 %bcond_without	sodium
 
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.4.17
+Version:        8.4.18
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        MIT AND PHP-3.01

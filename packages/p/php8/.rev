@@ -1651,4 +1651,47 @@
   * php8-tmpfiles.conf</comment>
     <requestid>1330069</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>7f06d88766339c192b04a7f251afcb1b</srcmd5>
+    <version>8.4.18</version>
+    <time>1771101374</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 8.4.18
+    Core:
+        Fixed bug GH-20837 (NULL dereference when calling ob_start() in shutdown function triggered by bailout in php_output_lock_error()).
+        Fix OSS-Fuzz #471533782 (Infinite loop in GC destructor fiber).
+        Fix OSS-Fuzz #472563272 (Borked block_pass JMP[N]Z optimization).
+        Fixed bug GH-GH-20914 (Internal enums can be cloned and compared).
+        Fix OSS-Fuzz #474613951 (Leaked parent property default value).
+        Fixed bug GH-20766 (Use-after-free in FE_FREE with GC interaction).
+        Fix OSS-Fuzz #471486164 (Broken by-ref assignment to uninitialized hooked backing value).
+        Fix OSS-Fuzz #438780145 (Nested finally with repeated return type check may uaf).
+        Fixed bug GH-20905 (Lazy proxy bailing __clone assertion).
+        Fixed bug GH-20479 (Hooked object properties overflow).
+    Date:
+        Update timelib to 2022.16.
+    DOM:
+        Fixed GH-21041 (Dom\HTMLDocument corrupts closing tags within scripts).
+    MbString:
+        Fixed bug GH-20833 (mb_str_pad() divide by zero if padding string is invalid in the encoding).
+        Fixed bug GH-20836 (Stack overflow in mb_convert_variables with recursive array references).
+    Opcache:
+        Fixed bug GH-20818 (Segfault in Tracing JIT with object reference).
+    OpenSSL:
+        Fix memory leaks when sk_X509_new_null() fails.
+        Fix crash when in openssl_x509_parse() when i2s_ASN1_INTEGER() fails.
+        Fix crash in openssl_x509_parse() when X509_NAME_oneline() fails.
+    Phar:
+        Fixed bug GH-20882 (buildFromIterator breaks with missing base directory).
+    PGSQL:
+        Fixed INSERT/UPDATE queries building with PQescapeIdentifier() and possible UB.
+    Readline:
+        Fixed bug GH-18139 (Memory leak when overriding some settings via readline_info()).
+    SPL:
+        Fixed bug GH-20856 (heap-use-after-free in SplDoublyLinkedList iterator when modifying during iteration).
+    Standard:
+        Fixed bug #74357 (lchown fails to change ownership of symlink with ZTS)
+        Fixed bug GH-20843 (var_dump() crash with nested objects) (forwarded request 1332762 from adkorte)</comment>
+    <requestid>1332809</requestid>
+  </revision>
 </revisionlist>
