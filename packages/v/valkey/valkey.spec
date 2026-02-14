@@ -1,7 +1,7 @@
 #
 # spec file for package valkey
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) Jonathan Wright
 # Copyright (c) Neal Gompa
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
@@ -23,10 +23,10 @@
 %define _log_dir        %{_localstatedir}/log/%{name}
 %define _conf_dir       %{_sysconfdir}/%{name}
 
-%global make_flags CFLAGS="%{build_cflags}" DEBUG="" V="echo" PREFIX=%{buildroot}%{_prefix} BUILD_WITH_SYSTEMD=yes BUILD_TLS=yes
+%global make_flags CFLAGS="%{build_cflags}" DEBUG="" V="echo" PREFIX=%{buildroot}%{_prefix} USE_SYSTEMD=yes BUILD_TLS=yes BUILD_RDMA=yes
 
 Name:           valkey
-Version:        9.0.1
+Version:        9.0.2
 Release:        0
 Summary:        Persistent key-value database
 License:        BSD-3-Clause
@@ -43,6 +43,8 @@ Source8:        %{name}-sentinel.target
 Source9:        %{name}-user.conf
 Source10:       macros.%{name}
 Source11:       migrate_redis_to_valkey.bash
+# PATCH-FIX-UPSTREAM fix-pointer-to-int.patch -- Fix pointer-to-int-cast build errors for i586 and armv7l
+Patch0:         fix-pointer-to-int.patch
 # PATCH-FIX-OPENSUSE -- Adjust configs for openSUSE
 Patch1001:      %{name}-conf.patch
 BuildRequires:  jemalloc-devel
@@ -53,6 +55,8 @@ BuildRequires:  python3
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  tcl
+BuildRequires:  pkgconfig(libibverbs)
+BuildRequires:  pkgconfig(librdmacm)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
 # there is no tcl-tls package yet, which is said to be needed for testing tls support
@@ -61,6 +65,7 @@ Recommends:     logrotate
 
 %global valkey_modules_abi 1
 %global valkey_modules_dir %{_libdir}/%{name}/modules
+%global valkey_modules_cfg %{_sysconfdir}/%{name}/modules
 Provides:       valkey(modules_abi)%{?_isa} = %{valkey_modules_abi}
 
 %description
@@ -201,12 +206,12 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 %{_unitdir}/%{name}-sentinel@.service
 %{_unitdir}/%{name}-sentinel.target
 %dir %{_libdir}/%{name}
-%dir %{_libdir}/%{name}/modules
+%dir %{valkey_modules_dir}
 %doc README.SUSE
 %config(noreplace) %attr(-,root,%{name}) %{_conf_dir}/
-%dir %attr(0750,%{name},%{name}) %{_data_dir}
-%dir %attr(0750,%{name},%{name}) %{_data_dir}/default
-%dir %attr(0750,%{name},%{name}) %{_log_dir}
+%ghost %dir %attr(0750,%{name},%{name}) %{_data_dir}
+%ghost %dir %attr(0750,%{name},%{name}) %{_data_dir}/default
+%ghost %dir %attr(0750,%{name},%{name}) %{_log_dir}
 %ghost %dir %attr(0755,%{name},%{name}) /run/%{name}
 
 %files devel
