@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  4 11:23:53 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 8.1.2
+  * Fixed a regression that could cause some plugins to create loud
+    sounds when PipeWire changed latency.
+  * Fixed a random crash caused by use after free in some plugins
+    while they were being removed from the pipeline.
+
+-------------------------------------------------------------------
 Sun Feb  1 03:41:56 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 8.1.1
@@ -12,7 +21,7 @@ Sun Feb  1 03:41:56 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
     when easyeffects resumes operation after a new audio player
     becomes active.
   * Fixed a regression in the crystalizer plugin that caused noises
-    in some situations
+    in some situations.
 
 -------------------------------------------------------------------
 Thu Jan 22 06:47:59 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
