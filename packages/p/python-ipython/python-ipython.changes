@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Feb 11 10:18:08 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 9.10.0
+  * https://ipython.readthedocs.io/en/stable/whatsnew/version9.html#ipython-9-10
+  * https://ipython.readthedocs.io/en/stable/whatsnew/version9.html#ipython-9-9
+
+-------------------------------------------------------------------
+Sat Dec 13 11:40:49 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.8.0:
+  * https://ipython.readthedocs.io/en/stable/whatsnew/version9.html#ipython-9-8
+
+-------------------------------------------------------------------
+Tue Dec  2 21:32:00 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.7.0:
+  * https://ipython.readthedocs.io/en/stable/whatsnew/version9.html#ipython-9-7
+  * https://ipython.readthedocs.io/en/stable/whatsnew/version9.html#ipython-9-6
+  * https://ipython.readthedocs.io/en/stable/whatsnew/version9.html#ipython-9-5
+
+-------------------------------------------------------------------
+Mon Dec  1 22:22:56 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.4.0:
+  * https://ipython.readthedocs.io/en/stable/whatsnew/version9.html#ipython-9-4
+
+-------------------------------------------------------------------
+Mon Dec  1 21:00:13 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.3.0:
+  * https://ipython.readthedocs.io/en/stable/whatsnew/version9.html#ipython-9-3
+  * https://ipython.readthedocs.io/en/stable/whatsnew/version9.html#ipython-9-2
+  * https://ipython.readthedocs.io/en/stable/whatsnew/version9.html#ipython-9-1
+  * https://ipython.readthedocs.io/en/stable/whatsnew/version9.html#ipython-9-0
+- drop pytest-warnings.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Aug  4 09:29:55 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream pytest-warnings.patch to fix tests with pytest 8.4+

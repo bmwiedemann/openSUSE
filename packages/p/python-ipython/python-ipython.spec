@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipython
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,15 +33,13 @@
 %bcond_with localtest
 %{?sle15_python_module_pythons}
 Name:           python-ipython%{psuffix}
-Version:        8.37.0
+Version:        9.10.0
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
 URL:            https://github.com/ipython/ipython
 Source:         https://files.pythonhosted.org/packages/source/i/ipython/ipython-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/jupyter/qtconsole/4.0.0/qtconsole/resources/icon/JupyterConsole.svg
-# PATCH-FIX-UPSTREAM https://github.com/ipython/ipython/commit/9dc9414beec774e0857d655299231fb8e311d9b8 Fix a number of pytest warnings
-Patch0:         pytest-warnings.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
@@ -52,6 +50,7 @@ BuildRequires:  python-rpm-macros >= 20210929
 # requires the full stdlib including sqlite3
 Requires:       python
 Requires:       python-decorator
+Requires:       python-ipython-pygments-lexers
 Requires:       python-jedi >= 0.16
 Requires:       python-matplotlib-inline
 Requires:       python-pexpect >= 4.3
@@ -59,10 +58,7 @@ Requires:       python-pygments >= 2.4.0
 Requires:       python-stack-data
 Requires:       python-traitlets >= 5.13.0
 Requires:       (python-prompt_toolkit >= 3.0.41 with python-prompt_toolkit < 3.1)
-%if %{python_version_nodots} < 311
-Requires:       python-exceptiongroup
-%endif
-%if %{python_version_nodots} < 312
+%if 0%{python_version_nodots} < 312
 Requires:       python-typing_extensions >= 4.6
 %endif
 Recommends:     jupyter
