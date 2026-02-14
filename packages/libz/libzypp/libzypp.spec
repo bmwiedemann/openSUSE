@@ -71,8 +71,24 @@
 %bcond_with visibility_hidden
 %endif
 
+# We're going successively to move our default configuration into /usr/etc/.
+# The final configuration data will then be merged according to the rules
+# defined by the UAPI.6 Configuration Files Specification from:
+#   system-wide configuration (/etc    /zypp/zypp.conf[.d/*.conf])
+#   vendor configuration      (/usr/etc/zypp/zypp.conf[.d/*.conf])
+# Note: Kind of related to '_distconfdir', but 'zyppconfdir' refers to
+# where we install and lookup our own config files. While '_distconfdir'
+# tells where we install other packages config snippets (e.g. logrotate).
+%define zyppconfdir %{_prefix}/etc
+%if 0%{?suse_version} && 0%{?suse_version} < 1610
+# legacy disto tools may not be prepared for having no /etc/zypp.conf
+%bcond_without keep_legacy_zyppconf
+%else
+%bcond_with keep_legacy_zyppconf
+%endif
+
 Name:           libzypp
-Version:        17.37.18
+Version:        17.38.2
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
@@ -99,6 +115,7 @@ Provides:       libzypp(plugin:system) = 1
 Provides:       libzypp(plugin:urlresolver) = 0
 Provides:       libzypp(plugin:repoverification) = 0
 Provides:       libzypp(repovarexpand) = 1.1
+Provides:       libzypp(econf) = 0
 
 %if 0%{?suse_version}
 Recommends:     logrotate
@@ -197,6 +214,7 @@ BuildRequires:	fcgi-devel
 
 %define min_curl_version 7.19.4
 BuildRequires:  libcurl-devel >= %{min_curl_version}
+BuildRequires:  ( libcurl4 without libcurl-mini4 )
 %if 0%{?suse_version}
 # Code11+
 Requires:       libcurl4   >= %{min_curl_version}
@@ -341,6 +359,7 @@ cmake .. $CMAKE_FLAGS \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_SKIP_RPATH=1 \
       -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir} \
+      %{?with_keep_legacy_zyppconf:-DKEEP_LEGACY_ZYPPCONF=1} \
       %{?with_visibility_hidden:-DENABLE_VISIBILITY_HIDDEN=1} \
       %{?with_zchunk:-DENABLE_ZCHUNK_COMPRESSION=1} \
       %{?with_zstd:-DENABLE_ZSTD_COMPRESSION=1} \
@@ -359,6 +378,7 @@ ln -s %{_sysconfdir}/yum.repos.d %{buildroot}/%{_sysconfdir}/zypp/repos.d
 %else
 mkdir -p %{buildroot}/%{_sysconfdir}/zypp/repos.d
 %endif
+# system wide config only:
 mkdir -p %{buildroot}/%{_sysconfdir}/zypp/services.d
 mkdir -p %{buildroot}/%{_sysconfdir}/zypp/systemCheck.d
 mkdir -p %{buildroot}/%{_sysconfdir}/zypp/vars.d
@@ -366,6 +386,10 @@ mkdir -p %{buildroot}/%{_sysconfdir}/zypp/vendors.d
 mkdir -p %{buildroot}/%{_sysconfdir}/zypp/multiversion.d
 mkdir -p %{buildroot}/%{_sysconfdir}/zypp/needreboot.d
 mkdir -p %{buildroot}/%{_sysconfdir}/zypp/credentials.d
+# system and vendor config supported:
+mkdir -p %{buildroot}/%{_sysconfdir}/zypp/zypp.conf.d
+mkdir -p %{buildroot}/%{zyppconfdir}/zypp/zypp.conf.d
+#
 mkdir -p %{buildroot}/%{_prefix}/lib/zypp
 mkdir -p %{buildroot}/%{_prefix}/lib/zypp/plugins
 mkdir -p %{buildroot}/%{_prefix}/lib/zypp/plugins/appdata
@@ -393,21 +417,27 @@ pushd build
 LD_LIBRARY_PATH="$(pwd)/../zypp:$LD_LIBRARY_PATH" ctest --output-on-failure .
 popd
 
-%if %{defined _distconfdir}
 %pre
 # Prepare for migration to /usr/etc; save any old .rpmsave
-for i in logrotate.d/zypp-history.lr; do
+%if %{defined _distconfdir}
+myNOTFORZYPP='logrotate.d/zypp-history.lr'
+%else
+myNOTFORZYPP=''
+%endif
+for i in zypp/zypp.conf $myNOTFORZYPP; do
    test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
 done
-%endif
 
-%if %{defined _distconfdir}
 %posttrans
 # Migration to /usr/etc, restore just created .rpmsave
-for i in logrotate.d/zypp-history.lr; do
+%if %{defined _distconfdir}
+myNOTFORZYPP='logrotate.d/zypp-history.lr'
+%else
+myNOTFORZYPP=''
+%endif
+for i in zypp/zypp.conf $myNOTFORZYPP; do
    test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
-%endif
 
 %post -p /sbin/ldconfig
 
@@ -432,8 +462,22 @@ done
 %config(noreplace) %{_sysconfdir}/zypp/needreboot
 %dir               %{_sysconfdir}/zypp/needreboot.d
 %dir               %{_sysconfdir}/zypp/credentials.d
-%config(noreplace) %{_sysconfdir}/zypp/zypp.conf
 %config(noreplace) %{_sysconfdir}/zypp/systemCheck
+# system and vendor config supported:
+%if %{undefined _distconfdir}
+%dir %{zyppconfdir}
+%endif
+%dir %{zyppconfdir}/zypp
+#
+%{zyppconfdir}/zypp/zypp.conf
+%if %{with keep_legacy_zyppconf}
+%config(noreplace) %{_sysconfdir}/zypp/zypp.conf
+%else
+%{_sysconfdir}/zypp/zypp.conf.README
+%endif
+%dir %{zyppconfdir}/zypp/zypp.conf.d
+%dir %{_sysconfdir}/zypp/zypp.conf.d
+#
 %if %{defined _distconfdir}
 %{_distconfdir}/logrotate.d/zypp-history.lr
 %else
