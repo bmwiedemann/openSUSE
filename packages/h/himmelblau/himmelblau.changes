@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 13 15:30:47 UTC 2026 - David Mulder <david.mulder@suse.com>
+
+- Update to version 2.3.5+git0.9dd526c:
+  * Better handle Intune API version
+  * deps(rust): bump the all-cargo-updates group with 8 updates; (bsc#1257904), (CVE-2026-25727)
+  * Update make vet from main branch
+  * pam_himmelblau: call split_username once in chauthtok
+  * pam_himmelblau: return PAM_IGNORE in chauthtok for local users
+  * Don't attempt a DAG when Hello fails with SSPR demand
+
+-------------------------------------------------------------------
 Fri Feb 06 16:58:20 UTC 2026 - David Mulder <david.mulder@suse.com>
 
 - Update to version 2.3.4+git0.db5df80:
