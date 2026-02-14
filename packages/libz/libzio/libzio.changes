@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb  6 14:32:13 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Version 1.10: Allow fdzopen() to detect magic bytes as well in
+  the stream of the file descriptor.  Note that this does not work
+  if reading from a pipe or socketpair as it is not possible to
+  reset the reposition of the file descriptor. Today it is
+  impossible to use fdzopen in a pipe.
+
+-------------------------------------------------------------------
 Wed Feb  4 14:32:39 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Move from sourceforge to gitlab 
