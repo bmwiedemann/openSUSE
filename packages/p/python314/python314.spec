@@ -124,7 +124,7 @@
 # %%define tarversion %%{version}
 # %%endif
 # We don't process beta signs well
-%define         folderversion 3.14.2
+%define         folderversion 3.14.3
 %define         sitedir         %{_libdir}/python%{python_version}
 # three possible ABI kinds: m - pymalloc, d - debug build; see PEP 3149
 %define         abi_kind   %{nil}
@@ -162,7 +162,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.14.2
+Version:        3.14.3
 %define         tarversion %{version}
 %define         tarname    Python-%{tarversion}
 Release:        0
@@ -203,6 +203,9 @@ Patch02:        F00251-change-user-install-location.patch
 Patch03:        python-3.3.0b1-localpath.patch
 # replace DATE, TIME and COMPILER by fixed definitions to aid reproducible builds
 Patch04:        python-3.3.0b1-fix_date_time_compiler.patch
+# PATCH-FIX-OPENSUSE configure-drop-autoconf-ver-req.patch mcepl@suse.com
+# don't require minimal version of Autoconf
+Patch05:        configure-drop-autoconf-ver-req.patch
 # PATCH-FEATURE-UPSTREAM bpo-31046_ensurepip_honours_prefix.patch bpo#31046 mcepl@suse.com
 # ensurepip should honour the value of $(prefix)
 Patch07:        bpo-31046_ensurepip_honours_prefix.patch
@@ -220,17 +223,21 @@ Patch40:        fix-test-recursion-limit-15.6.patch
 # PATCH-FIX-UPSTREAM bsc1243155-sphinx-non-determinism.patch bsc#1243155 mcepl@suse.com
 # Doc: Generate ids for audit_events using docname
 Patch41:        bsc1243155-sphinx-non-determinism.patch
-# PATCH-FIX-UPSTREAM gh138131-exclude-pycache-from-digest.patch bsc#1244680 daniel.garcia@suse.com
-Patch44:        gh138131-exclude-pycache-from-digest.patch
 # PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
 Patch45:        gh139257-Support-docutils-0.22.patch
 # PATCH-FIX-UPSTREAM CVE-2024-6923-follow-up-EOL-email-headers.patch bsc#1257181 mcepl@suse.com
 # Encode newlines in headers when using ByteGenerator
 # patch from gh#python/cpython#144125
 Patch46:        CVE-2024-6923-follow-up-EOL-email-headers.patch
-# PATCH-FIX-UPSTREAM CVE-2025-11468-email-hdr-fold-comment.patch bsc#1257029 mcepl@suse.com
-# Email preserve parens when folding comments
-Patch47:        CVE-2025-11468-email-hdr-fold-comment.patch
+# PATCH-FIX-UPSTREAM CVE-2025-12781-b64decode-alt-chars.patch bsc#1257108 mcepl@suse.com
+# Fix decoding with non-standard Base64 alphabet gh#python/cpython#125346
+Patch49:        CVE-2025-12781-b64decode-alt-chars.patch
+# PATCH-FIX-UPSTREAM CVE-2025-15366-imap-ctrl-chars.patch bsc#1257044 mcepl@suse.com
+# Reject control characters in wsgiref.headers.Headers
+Patch50:        CVE-2025-15366-imap-ctrl-chars.patch
+# PATCH-FIX-UPSTREAM CVE-2025-15367-poplib-ctrl-chars.patch bsc#1257041 mcepl@suse.com
+# Reject control characters in poplib
+Patch51:        CVE-2025-15367-poplib-ctrl-chars.patch
 #### Python 3.14 END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -516,12 +523,6 @@ other applications.
 %prep
 %autosetup -p1 -n %{tarname}
 
-# Fix devhelp doc build gh#python/cpython#120150
-echo "master_doc = 'contents'" >> Doc/conf.py
-
-# drop Autoconf version requirement
-sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
-
 %if %{primary_interpreter}
 # fix shebangs - convert /usr/local/bin/python and /usr/bin/env/python to /usr/bin/python3
 for dir in Lib Tools; do
@@ -541,7 +542,7 @@ done
 sed -i -e '/Breakpoint 3 at ...pdb.py:97/s/97/96/' Lib/test/test_pdb.py
 %endif
 
-# Cannot remove it because of gh#python/cpython#92875
+# Removing vendored expat gh#python/cpython#92875
 rm -r Modules/expat
 
 # drop duplicate README from site-packages
@@ -549,9 +550,6 @@ rm Lib/site-packages/README.txt
 
 # Add vendored bluez-devel files
 tar xvf %{SOURCE21}
-
-# Don't fail on warnings when building documentation
-sed -i -e '/^SPHINXERRORHANDLING/s/--fail-on-warning//' Doc/Makefile
 
 %build
 export SUSE_VERSION="0%{?suse_version}"

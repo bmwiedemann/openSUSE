@@ -2744,4 +2744,41 @@
       bsc#1257181)</comment>
     <requestid>1329832</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>168ace2b5129407ac124b505759a7999</srcmd5>
+    <version>3.14.3</version>
+    <time>1771101486</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2025-12781: All `*b64decode` functions should not accept
+  non-altchars. (bsc#1257108, gh#python/cpython#125346)
+  CVE-2025-12781-b64decode-alt-chars.patch
+- CVE-2025-15366: IMAP protocol should not accept non-altchars as
+  well. (bsc#1257044, gh-143921)
+  CVE-2025-15366-imap-ctrl-chars.patch
+- CVE-2025-15367: basically the same as the previous patch but for
+  the poplib library. (bsc#1257041, gh#python/cpython#143923)
+  CVE-2025-15367-poplib-ctrl-chars.patch
+- Remove upstreamed patches:
+  - CVE-2025-11468-email-hdr-fold-comment.patch
+  - CVE-2026-0672-http-hdr-inject-cookie-Morsel.patch
+- Add configure-drop-autoconf-ver-req.patch to move some `sed`
+  modifications to patch.
+
+- Update to 3.14.3:
+  - Tools/Demos
+    - gh-142095: Make gdb ‘py-bt’ command use frame from thread
+      local state when available. Patch by Sam Gross and Victor
+      Stinner.
+  - Tests
+    - gh-144415: The Android testbed now distinguishes between
+      stdout/stderr messages which were triggered by a newline,
+      and those triggered by a manual call to flush. This fixes
+      logging of progress indicators and similar content.
+    - gh-143460: Skip tests relying on infinite recusion if stack
+      size is unlimited.
+    - gh-65784: Add support for parametrized resource wantobjects
+      in regrtests, which allows to run Tkinter tests with the
+      specified value of tkinter.wantobjects, for example -u</comment>
+    <requestid>1332989</requestid>
+  </revision>
 </revisionlist>

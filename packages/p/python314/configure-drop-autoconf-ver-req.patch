@@ -1,0 +1,17 @@
+---
+ configure.ac |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: Python-3.14.3/configure.ac
+===================================================================
+--- Python-3.14.3.orig/configure.ac	2026-02-03 16:32:20.000000000 +0100
++++ Python-3.14.3/configure.ac	2026-02-13 20:23:46.066774038 +0100
+@@ -12,7 +12,7 @@
+ # Set VERSION so we only need to edit in one place (i.e., here)
+ m4_define([PYTHON_VERSION], [3.14])
+ 
+-AC_PREREQ([2.72])
++dnl AC_PREREQ([2.72])
+ 
+ AC_INIT([python],[PYTHON_VERSION],[https://github.com/python/cpython/issues/])
+ 

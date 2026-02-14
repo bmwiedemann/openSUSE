@@ -4,13 +4,39 @@ Date: Tue, 23 Sep 2025 10:20:16 +0200
 Subject: [PATCH 1/2] gh-139257: Support docutils >= 0.22
 
 ---
+ Doc/Makefile                       |    2 -
+ Doc/conf.py                        |    3 +
  Doc/tools/extensions/pyspecific.py |   68 +++++++++++++++++++++++++------------
- 1 file changed, 46 insertions(+), 22 deletions(-)
+ 3 files changed, 50 insertions(+), 23 deletions(-)
 
-Index: Python-3.14.2/Doc/tools/extensions/pyspecific.py
+Index: Python-3.14.3/Doc/Makefile
 ===================================================================
---- Python-3.14.2.orig/Doc/tools/extensions/pyspecific.py	2025-12-05 17:49:16.000000000 +0100
-+++ Python-3.14.2/Doc/tools/extensions/pyspecific.py	2025-12-11 18:15:44.936875242 +0100
+--- Python-3.14.3.orig/Doc/Makefile	2026-02-03 16:32:20.000000000 +0100
++++ Python-3.14.3/Doc/Makefile	2026-02-13 20:28:48.460059340 +0100
+@@ -14,7 +14,7 @@
+ SOURCES      =
+ DISTVERSION  = $(shell $(PYTHON) tools/extensions/patchlevel.py)
+ REQUIREMENTS = requirements.txt
+-SPHINXERRORHANDLING = --fail-on-warning
++SPHINXERRORHANDLING =
+ 
+ # Internal variables.
+ PAPEROPT_a4     = --define latex_elements.papersize=a4paper
+Index: Python-3.14.3/Doc/conf.py
+===================================================================
+--- Python-3.14.3.orig/Doc/conf.py	2026-02-03 16:32:20.000000000 +0100
++++ Python-3.14.3/Doc/conf.py	2026-02-13 20:21:11.034520886 +0100
+@@ -582,3 +582,6 @@
+         '<meta property="og:image:width" content="200">',
+         '<meta property="og:image:height" content="200">',
+     )
++
++# Fix devhelp doc build gh#python/cpython#120150
++master_doc = 'contents'
+Index: Python-3.14.3/Doc/tools/extensions/pyspecific.py
+===================================================================
+--- Python-3.14.3.orig/Doc/tools/extensions/pyspecific.py	2026-02-03 16:32:20.000000000 +0100
++++ Python-3.14.3/Doc/tools/extensions/pyspecific.py	2026-02-13 17:09:31.987767795 +0100
 @@ -1,12 +1,12 @@
  # -*- coding: utf-8 -*-
  """
