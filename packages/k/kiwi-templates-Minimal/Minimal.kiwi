@@ -443,6 +443,9 @@
         <!-- <package name="rsyslog"/> for SLE -->
         <package name="systemd-logger"/> <!-- for openSUSE -->
         <package name="zypper-needs-restarting"/> <!-- Some deployment script use this (bsc#1173548) -->
+        <!-- Configure zypper for no-recommends and excludedocs -->
+        <package name="zypp-excludedocs"/>
+        <package name="zypp-no-recommends"/>
         <package name="combustion &gt;= 1.2"/> <!-- 1.2+ has improved firstboot detection -->
         <package name="NetworkManager"/>
         <package name="dracut-kiwi-oem-repart"/>

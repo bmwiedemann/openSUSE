@@ -279,4 +279,14 @@
     <comment>- editbootinstall_rpi.sh: Fix loopdev substitute (forwarded request 1317626 from favogt)</comment>
     <requestid>1317632</requestid>
   </revision>
+  <revision rev="35" vrev="35">
+    <srcmd5>2c2fdc895e69831a60bf7ec99b50ce08</srcmd5>
+    <version>84.87.1</version>
+    <time>1771101402</time>
+    <user>dimstar_suse</user>
+    <comment>- Use zypp-* configuration packages and patch zypp.conf only when
+  it still exists (i.e when libzypp is not yet updated)
+  (jsc#PED-14658).</comment>
+    <requestid>1332071</requestid>
+  </revision>
 </revisionlist>

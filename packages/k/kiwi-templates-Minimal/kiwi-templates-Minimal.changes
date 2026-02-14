@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 20 11:06:49 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use zypp-* configuration packages and patch zypp.conf only when
+  it still exists (i.e when libzypp is not yet updated)
+  (jsc#PED-14658).
+
+-------------------------------------------------------------------
 Thu Nov 13 15:16:53 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - editbootinstall_rpi.sh: Fix loopdev substitute

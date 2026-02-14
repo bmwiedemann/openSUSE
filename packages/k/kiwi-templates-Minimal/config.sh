@@ -158,15 +158,18 @@ else
 	exit 1
 fi
 
-#======================================
-# Disable recommends on virtual images (keep hardware supplements, see bsc#1089498)
-#--------------------------------------
-sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = true/g' /etc/zypp/zypp.conf
+# if /etc/zypp/zypp.conf exists, patch it - otherwise rely on packages providing functionality
+if [ -f /etc/zypp/zypp.conf ]; then
+	#======================================
+	# Disable recommends on virtual images (keep hardware supplements, see bsc#1089498)
+	#--------------------------------------
+	sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = true/g' /etc/zypp/zypp.conf
 
-#======================================
-# Disable installing documentation
-#--------------------------------------
-sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp/zypp.conf
+	#======================================
+	# Disable installing documentation
+	#--------------------------------------
+	sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp/zypp.conf
+fi
 
 #======================================
 # Configure FDE/BLS specifics
