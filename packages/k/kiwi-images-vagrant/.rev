@@ -115,4 +115,17 @@
     <comment>Explicitly require dracut (was implicitly pulled in by the kernel)</comment>
     <requestid>1269493</requestid>
   </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>c69492e02b97c7dd803fbd5e918949e8</srcmd5>
+    <version>1.0</version>
+    <time>1771101406</time>
+    <user>dimstar_suse</user>
+    <comment>- Prepare for libzypp supportng UAPI-style configuration: pull in
+  zypp-{no-recommends,excludedocs,no-multiversion} and stop
+  patching zypp.conf if the used libzypp version actually does
+  support those drop-in configuation packages.
+
+Should fix the build seen with new libzypp - see Staging:K (forwarded request 1332079 from dimstar)</comment>
+    <requestid>1332083</requestid>
+  </revision>
 </revisionlist>

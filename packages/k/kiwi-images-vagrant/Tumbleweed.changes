@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb  7 12:15:45 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Prepare for libzypp supportng UAPI-style configuration: pull in
+  zypp-{no-recommends,excludedocs,no-multiversion} and stop
+  patching zypp.conf if the used libzypp version actually does
+  support those drop-in configuation packages.
+
+-------------------------------------------------------------------
 Tue Apr 15 08:38:50 UTC 2025 - Dan Čermák <dcermak@suse.com>
 
 - Explicitly require dracut (was implicitly pulled in by the kernel)

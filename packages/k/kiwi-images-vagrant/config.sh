@@ -46,6 +46,10 @@ suseSetupProduct
 #--------------------------------------
 suseImportBuildKey
 
+if [ -f /etc/zypp/zypp.conf ]; then
+# in case /etc/zypp.zypp.conf exists, we attempt to patch it. With recent libzypp
+# versions, this will not happen; In this case, we have zypp-* packages in the packages
+# list taking care of the configuration
 #======================================
 # Disable recommends
 #--------------------------------------
@@ -60,6 +64,7 @@ sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp
 # Exclude the installation of multiversion kernels
 #--------------------------------------
 sed -i 's/^multiversion/# multiversion/' /etc/zypp/zypp.conf
+fi
 
 #======================================
 # Setup default target, multi-user

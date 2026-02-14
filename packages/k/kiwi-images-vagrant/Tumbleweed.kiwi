@@ -92,6 +92,12 @@
         <package name="kernel-default"/>
         <package name="timezone"/>
 
+        <!-- Configure libzypp accordingly: no-recommends, excludedocs, no multiversion -->
+        <package name="zypp-excludedocs"/>
+        <package name="zypp-no-multiversion"/>
+        <package name="zypp-no-recommends"/>
+
+
         <!-- For Ansible's zypper module -->
         <package name="python3"/>
         <package name="python3-xml"/>
