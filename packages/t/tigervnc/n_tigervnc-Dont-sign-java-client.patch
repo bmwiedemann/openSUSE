@@ -7,11 +7,11 @@ The signing was necessary for accessing the system clipboard
 when the Java client runs as an applet.
 (This shouldn't harm due to the deprecation of Java applets 
 was done in version 9).
-Index: tigervnc-1.13.1/java/CMakeLists.txt
+Index: tigervnc-1.16.0/java/CMakeLists.txt
 ===================================================================
---- tigervnc-1.13.1.orig/java/CMakeLists.txt
-+++ tigervnc-1.13.1/java/CMakeLists.txt
-@@ -163,18 +163,6 @@ add_custom_command(OUTPUT VncViewer.jar
+--- tigervnc-1.16.0.orig/java/CMakeLists.txt
++++ tigervnc-1.16.0/java/CMakeLists.txt
+@@ -157,18 +157,6 @@ add_custom_command(OUTPUT VncViewer.jar
      com/jcraft/jsch/jce/*.class
      com/jcraft/jsch/*.class
      com/tigervnc/vncviewer/*.png

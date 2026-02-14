@@ -2,12 +2,12 @@ Our /usr/bin/vncviewer is symlink to alternatives. This desktop file is named
 specifically "TigerVNC Viewer", so lets start /usr/bin/vncviewer-tigervnc, no
 matter what the currently selected alternative is.
 
-diff --git a/vncviewer/vncviewer.desktop.in.in b/vncviewer/vncviewer.desktop.in.in
-index 1a91755c..b1e881a9 100644
---- a/vncviewer/vncviewer.desktop.in.in
-+++ b/vncviewer/vncviewer.desktop.in.in
+Index: tigervnc-1.16.0/vncviewer/vncviewer.desktop.in.in
+===================================================================
+--- tigervnc-1.16.0.orig/vncviewer/vncviewer.desktop.in.in
++++ tigervnc-1.16.0/vncviewer/vncviewer.desktop.in.in
 @@ -2,7 +2,7 @@
- Name=TigerVNC viewer
+ Name=TigerVNC
  GenericName=Remote desktop viewer
  Comment=Connect to VNC server and display remote desktop
 -Exec=@CMAKE_INSTALL_FULL_BINDIR@/vncviewer
@@ -15,4 +15,3 @@ index 1a91755c..b1e881a9 100644
  Icon=tigervnc
  Terminal=false
  Type=Application
-

@@ -19,7 +19,7 @@ Index: tigervnc-1.12.0/unix/vncconfig/CMakeLists.txt
  target_include_directories(vncconfig PUBLIC ${CMAKE_SOURCE_DIR}/common)
  target_include_directories(vncconfig PUBLIC ${CMAKE_SOURCE_DIR}/unix/tx)
  
--target_link_libraries(vncconfig tx rfb network rdr ${X11_LIBRARIES})
+-target_link_libraries(vncconfig core tx rfb ${X11_LIBRARIES})
 +include(GNUInstallDirs)
 +
 +add_library(Xvnc SHARED
@@ -31,7 +31,7 @@ Index: tigervnc-1.12.0/unix/vncconfig/CMakeLists.txt
 +    SOVERSION 1
 +)
 +
-+target_link_libraries(vncconfig tx rfb network rdr Xvnc ${X11_LIBRARIES})
++target_link_libraries(vncconfig tx rfb Xvnc ${X11_LIBRARIES})
  
  install(TARGETS vncconfig DESTINATION ${CMAKE_INSTALL_FULL_BINDIR})
 +install(TARGETS Xvnc LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} RENAME libXvnc.so)

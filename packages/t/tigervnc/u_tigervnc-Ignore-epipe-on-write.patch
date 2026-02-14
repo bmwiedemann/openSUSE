@@ -14,12 +14,12 @@ Index: tigervnc-1.15.0/common/rdr/FdOutStream.cxx
    } while (n < 0 && (errorNumber == EINTR));
  
 -  if (n < 0)
--    throw socket_error("write", errorNumber);
+-    throw core::socket_error("write", errorNumber);
 +  if (n < 0) {
 +    if (errorNumber == EPIPE)
 +      n = length; // Ignore EPIPE and fake successfull write, it doesn't matter that we are writing to closed socket, we will find out once we try to read from it.
 +    else
-+      throw socket_error("write", errorNumber);
++      throw core::socket_error("write", errorNumber);
 +  }
  
    gettimeofday(&lastWrite, nullptr);

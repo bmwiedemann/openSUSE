@@ -1,7 +1,7 @@
 #
 # spec file for package tigervnc
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@
 %bcond_with selinux
 %endif
 Name:           tigervnc
-Version:        1.15.0
+Version:        1.16.0
 Release:        0
 Summary:        An implementation of VNC
 License:        GPL-2.0-only AND MIT
@@ -117,10 +117,12 @@ BuildRequires:  pkgconfig(fontsproto)
 BuildRequires:  pkgconfig(fontutil)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(glproto)
 BuildRequires:  pkgconfig(gnutls) >= 3.6.0
 BuildRequires:  pkgconfig(inputproto)  >= 1.9.99.902
 BuildRequires:  pkgconfig(kbproto) >= 1.0.3
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libtasn1)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(pciaccess) >= 0.8.0
@@ -132,6 +134,7 @@ BuildRequires:  pkgconfig(renderproto) >= 0.11
 BuildRequires:  pkgconfig(resourceproto)
 BuildRequires:  pkgconfig(scrnsaverproto) >= 1.1
 BuildRequires:  pkgconfig(videoproto)
+BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(xau)
 BuildRequires:  pkgconfig(xcmiscproto) >= 1.2.0
 BuildRequires:  pkgconfig(xdmcp)
@@ -139,6 +142,7 @@ BuildRequires:  pkgconfig(xextproto) >= 7.0.99.3
 BuildRequires:  pkgconfig(xf86driproto) >= 2.1.1
 BuildRequires:  pkgconfig(xfont2)
 BuildRequires:  pkgconfig(xineramaproto)
+BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.14
 BuildRequires:  pkgconfig(xproto)  >= 7.0.17
@@ -284,6 +288,7 @@ sed "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE16} > xvnc-novnc.service
 cmake -DCMAKE_VERBOSE_MAKEFILE=ON \
   -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
   -DCMAKE_INSTALL_LIBEXECDIR:PATH=%{_libexecdir} \
+  -DENABLE_WAYLAND=ON \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo .
 %make_build
 
@@ -531,6 +536,8 @@ fi
 %{_bindir}/vncpasswd
 %{_bindir}/vncpasswd.arg
 %{_bindir}/x0vncserver
+%{_bindir}/w0vncserver
+%{_bindir}/w0vncserver-forget
 %{_sbindir}/vncsession
 
 %{_libexecdir}/vncserver
@@ -541,6 +548,8 @@ fi
 %{_mandir}/man1/vncconfig.1%{?ext_man}
 %{_mandir}/man1/vncpasswd.1%{?ext_man}
 %{_mandir}/man1/x0vncserver.1%{?ext_man}
+%{_mandir}/man1/w0vncserver.1%{?ext_man}
+%{_mandir}/man1/w0vncserver-forget.1%{?ext_man}
 %{_mandir}/man8/vncserver.8%{?ext_man}
 %{_mandir}/man8/vncsession.8%{?ext_man}
 

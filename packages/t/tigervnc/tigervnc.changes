@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Feb  4 17:48:46 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- enabled build of w0vncserver by enabling wayland support
+  ("-DENABLE_WAYLAND=ON") requiring now glib-2.0, libpipewire-0.3,
+  wayland-client and xkbcommon libs
+
+-------------------------------------------------------------------
+Wed Feb  4 14:44:49 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.16.0
+  * The native viewer has a new keyboard shortcut system to control
+    the viewer, replacing the F8 shortcut and allowing easier
+    access to toggle full-screen mode and redirecting system keys
+  * The native viewer now supports sending system keys even in
+    windowed mode
+  * Added a new server called w0vncserver for sharing Wayland
+    desktops
+  * The Java viewer has more fine-grained control of scaling the
+    session
+  * The native viewer uses a different method to intercept system
+    keys on macOS, which will require explicit user approval
+  * The native viewer has an improved server field, with searchable
+    history
+  * The native viewer now intercepts and forwards all¹ system keys
+    on Windows
+  * The native viewer is now more responsive when resizing the
+    remote session
+  * Red Hat Enterprise Linux 10 packages have been added, although
+    without libvnc.so
+  * Ubuntu 20.04 and Red Hat Enterprise Linux 7 packages have been
+    removed
+- adjusted the following patches
+  * n_tigervnc-Correct-path-in-desktop-file.patch
+  * n_tigervnc-Date-time.patch
+  * n_tigervnc-Dont-sign-java-client.patch
+  * n_tigervnc-Vncserver.patch
+  * u_tigervnc-Build-libXvnc-as-separate-library.patch
+  * u_tigervnc-Ignore-epipe-on-write.patch
+  * n_tigervnc-reproducible-jar-mtime.patch
+
+-------------------------------------------------------------------
 Tue Nov 25 07:58:59 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove dbus-launch requires, dbus-launch is no longer used

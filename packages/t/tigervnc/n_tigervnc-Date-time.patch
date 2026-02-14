@@ -1,48 +1,48 @@
-Index: tigervnc-1.13.1/unix/xserver/hw/vnc/buildtime.c
+Index: tigervnc-1.16.0/unix/xserver/hw/vnc/buildtime.c
 ===================================================================
---- tigervnc-1.13.1.orig/unix/xserver/hw/vnc/buildtime.c
-+++ tigervnc-1.13.1/unix/xserver/hw/vnc/buildtime.c
+--- tigervnc-1.16.0.orig/unix/xserver/hw/vnc/buildtime.c
++++ tigervnc-1.16.0/unix/xserver/hw/vnc/buildtime.c
 @@ -15,4 +15,4 @@
   * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,
   * USA.
   */
 -char buildtime[] = __DATE__ " " __TIME__;
 +char buildtime[] = "??? ?? ???? ??:??:??";
-Index: tigervnc-1.13.1/unix/vncconfig/buildtime.c
+Index: tigervnc-1.16.0/unix/vncconfig/buildtime.c
 ===================================================================
---- tigervnc-1.13.1.orig/unix/vncconfig/buildtime.c
-+++ tigervnc-1.13.1/unix/vncconfig/buildtime.c
+--- tigervnc-1.16.0.orig/unix/vncconfig/buildtime.c
++++ tigervnc-1.16.0/unix/vncconfig/buildtime.c
 @@ -15,4 +15,4 @@
   * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,
   * USA.
   */
 -char buildtime[] = __DATE__ " " __TIME__;
 +char buildtime[] = "??? ?? ???? ??:??:??";
-Index: tigervnc-1.13.1/unix/x0vncserver/buildtime.c
+Index: tigervnc-1.16.0/unix/x0vncserver/buildtime.c
 ===================================================================
---- tigervnc-1.13.1.orig/unix/x0vncserver/buildtime.c
-+++ tigervnc-1.13.1/unix/x0vncserver/buildtime.c
+--- tigervnc-1.16.0.orig/unix/x0vncserver/buildtime.c
++++ tigervnc-1.16.0/unix/x0vncserver/buildtime.c
 @@ -15,4 +15,4 @@
   * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,
   * USA.
   */
 -char buildtime[] = __DATE__ " " __TIME__;
 +char buildtime[] = "??? ?? ???? ??:??:??";
-Index: tigervnc-1.13.1/win/winvnc/buildTime.cxx
+Index: tigervnc-1.16.0/win/winvnc/buildTime.cxx
 ===================================================================
---- tigervnc-1.13.1.orig/win/winvnc/buildTime.cxx
-+++ tigervnc-1.13.1/win/winvnc/buildTime.cxx
+--- tigervnc-1.16.0.orig/win/winvnc/buildTime.cxx
++++ tigervnc-1.16.0/win/winvnc/buildTime.cxx
 @@ -15,4 +15,4 @@
   * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,
   * USA.
   */
 -const char* buildTime = "Built on " __DATE__ " at " __TIME__;
 +const char* buildTime = "Built on ??? ?? ???? at ??:??:??";
-Index: tigervnc-1.13.1/CMakeLists.txt
+Index: tigervnc-1.16.0/CMakeLists.txt
 ===================================================================
---- tigervnc-1.13.1.orig/CMakeLists.txt
-+++ tigervnc-1.13.1/CMakeLists.txt
-@@ -40,10 +40,6 @@ if(MSVC)
+--- tigervnc-1.16.0.orig/CMakeLists.txt
++++ tigervnc-1.16.0/CMakeLists.txt
+@@ -39,10 +39,6 @@ if(MSVC)
    message(FATAL_ERROR "TigerVNC cannot be built with Visual Studio.  Please use MinGW")
  endif()
  
@@ -53,27 +53,27 @@ Index: tigervnc-1.13.1/CMakeLists.txt
  # Default to optimised builds instead of debug ones. Our code has no bugs ;)
  # (CMake makes it fairly easy to toggle this back to Debug if needed)
  if(NOT CMAKE_BUILD_TYPE)
-Index: tigervnc-1.13.1/vncviewer/vncviewer.cxx
+Index: tigervnc-1.16.0/vncviewer/vncviewer.cxx
 ===================================================================
---- tigervnc-1.13.1.orig/vncviewer/vncviewer.cxx
-+++ tigervnc-1.13.1/vncviewer/vncviewer.cxx
-@@ -102,10 +102,9 @@ static const char *about_text()
+--- tigervnc-1.16.0.orig/vncviewer/vncviewer.cxx
++++ tigervnc-1.16.0/vncviewer/vncviewer.cxx
+@@ -101,10 +101,9 @@ static const char *about_text()
    // time.
    snprintf(buffer, sizeof(buffer),
-            _("TigerVNC viewer v%s\n"
+            _("TigerVNC v%s\n"
 -             "Built on: %s\n"
               "Copyright (C) 1999-%d TigerVNC team and many others (see README.rst)\n"
               "See https://www.tigervnc.org for information on TigerVNC."),
--           PACKAGE_VERSION, BUILD_TIMESTAMP, 2025);
-+           PACKAGE_VERSION, 2025);
+-           PACKAGE_VERSION, BUILD_TIMESTAMP, 2026);
++           PACKAGE_VERSION, 2026);
  
    return buffer;
  }
-Index: tigervnc-1.13.1/java/CMakeLists.txt
+Index: tigervnc-1.16.0/java/CMakeLists.txt
 ===================================================================
---- tigervnc-1.13.1.orig/java/CMakeLists.txt
-+++ tigervnc-1.13.1/java/CMakeLists.txt
-@@ -25,12 +25,6 @@ set(JAVA_PKCS11_PROVIDER_ARG NOTFOUND CACHE STRING "Path to the PKCS11 security
+--- tigervnc-1.16.0.orig/java/CMakeLists.txt
++++ tigervnc-1.16.0/java/CMakeLists.txt
+@@ -25,12 +25,6 @@ set(JAVA_PKCS11_PROVIDER_ARG NOTFOUND CA
  set(JAVA_TSA_URL NOTFOUND CACHE STRING "URL of Time Stamping Authority (TSA)")
  set(JAVA_CERT_CHAIN NOTFOUND CACHE STRING "Path to CA certificate chain file")
  
