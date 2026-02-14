@@ -72,7 +72,7 @@ Version:        7.2.6
 %define rversion 7.2.6
 Release:        0
 Summary:        %{package_summary}
-License:        GPL-3.0-or-later
+License:        GPL-3.0-only
 %if %{kmp_package}
 Group:          System/Kernel
 %else
