@@ -18,8 +18,8 @@
 
 %global featurever   17
 %global interimver   0
-%global updatever    11
-%global buildver     3
+%global updatever    18
+%global buildver     2
 %global jfx_repo     jfx17u
 %global jfx_tag      %{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global jfx_dir      %{jfx_repo}-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}

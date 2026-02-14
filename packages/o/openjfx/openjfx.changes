@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Fri Feb 13 23:47:13 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag 17.0.18+2 (January 2026 CPU)
+- JavaFX 17.0.18
+  * Security fixes
+    + JDK-8361719, CVE-2026-21947, bsc#1257077: Enhance Handling of
+      URIs
+    + JDK-8362535: Update libxslt support
+    + JDK-8368704: Better glyph handling
+  * Fixed Bugs
+    + JDK-8368691: Update libxml2 to 2.14.6
+    + JDK-8370632: Additional libxslt 1.1.43 fixes
+- JavaFX 17.0.17
+  * Fixed Bugs
+    + JDK-8328684: HellowWebView demo crashes when a webpage is
+      scrolled
+    + JDK-8356982: Update WebKit to 622.1
+    + JDK-8360270: Websocket communication issues with Vaadin
+      applications through webview
+- JavaFX 17.0.16
+  * Fixed Bugs
+    + JDK-8352162: Update libxml2 to 2.13.8
+    + JDK-8352164: Update libxslt to 1.1.43
+    + JDK-8354876: Update SQLite to 3.49.1
+    + JDK-8354940: Fail to sign in to Microsoft sites with WebView
+- JavaFX 17.0.15
+  * Fixed Bugs
+    + JDK-8336939: Update Glib to 2.80.4
+    + JDK-8336940: Update GStreamer to 1.24.6
+    + JDK-8346228: Update GStreamer to 1.24.10
+    + JDK-8346229: Update Glib to 2.82.4
+    + JDK-8323880: Caret rendered at wrong position in case of a
+      click event on RTL text
+    + JDK-8340322: Update WebKit to 620.1
+    + JDK-8349924: Additional WebKit 620.1 fixes from WebKitGTK
+      2.46.6
+- JavaFX 17.0.14
+  * Security fixes
+    + JDK-8335714: Enhance playing MP3s
+    + JDK-8335715: Improve Direct Show support
+  * Fixed Bugs
+    + JDK-8311806: Class ButtonAccessibility is implemented twice
+    + JDK-8333374: Cannot invoke
+      "com.sun.prism.RTTexture.contentsUseful()" because "this.txt"
+      is null
+    + JDK-8318388: Update libxslt to 1.1.39
+    + JDK-8334124: Rendering issues with CSS "text-shadow" in
+      WebView
+    + JDK-8336798: DRT test cssrounding.html test for linear layout
+      fails with WebKit 619.1
+    + JDK-8336941: Update libxslt to 1.1.42
+    + JDK-8337481: File API: file.name contains path instead of
+      name
+    + JDK-8338306: WebView Drag and Drop fails with WebKit 619.1
+    + JDK-8338307: Additional WebKit 619.1 fixes from WebKitGTK
+      2.44.3
+    + JDK-8340208: Additional WebKit 619.1 fixes from WebKitGTK
+      2.44.4
+- JavaFX 17.0.13
+  * Fixed Bugs
+    + JDK-8236689: macOS 10.15 Catalina: LCD text renders badly
+    + JDK-8328994: Update WebKit to 619.1
+    + JDK-8329011: Update SQLite to 3.45.3
+    + JDK-8331765: Websocket callbacks are not executed after
+      WebKit 617.1 update
+    + JDK-8334713: WebKit build failed on LoongArch64 because
+      currentStackPointer is undefined
+- JavaFX 17.0.12
+  * Enhancements
+    + JDK-8301312: Create implementation of NSAccessibilityButton
+      protocol
+  * Fixed Bugs
+    + JDK-8329705: Add missing Application thread checks to platform
+      specific a11y methods
+    + JDK-8331748: Update libxml2 to 2.12.6
+    + JDK-8332539: Update libxml2 to 2.12.7
+
+-------------------------------------------------------------------
 Thu Sep 19 15:12:51 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use SOURCE_DATE_EPOCH for reproducible builds
