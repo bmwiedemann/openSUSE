@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb 10 07:55:53 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.11.0:
+  + ATA SMART handling has been ported over to libblockdev which
+    now offers two plugins, based on libatasmart (default,
+    recommended) and smartmontools (experimental). There is an
+    additional attribute validation layer in place in libblockdev,
+    some attributes may now be reported as 'unknown' or 'untrusted'.
+    Drive temperature reporting has been reworked as well.
+  + ATA SMART functionality has been made optional through
+    the --disable-smart configure switch (default: Enabled).
+  + ATA SMART can be also selectively turned off for some drives by
+    setting ID_ATA_SMART_ACCESS udev property to none. In such a case,
+    the Drive.Ata.SmartUpdated property will remain set to zero to
+    indicate it was never updated for a particular drive.
+  + ATA feature flags are now mostly retrieved from udev, skipping
+    additional probing done by UDisks in case of udev >= 257.
+
+-------------------------------------------------------------------
 Thu Nov 13 08:22:41 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Fix dbus daemon requires, it's dbus-service, not dbus-1
