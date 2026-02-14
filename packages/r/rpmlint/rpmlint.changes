@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 12 17:42:03 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.9.0+git20260211.72e34881:
+  * whitelistings: add gdm-50 D-Bus and Polkit changes (bsc#1258025)
+  * dbus-services: remove no longer necessary gdm.conf compatibility entry
+  * SUIDPermissionsCheck: support permissions package coupling
+
+-------------------------------------------------------------------
 Wed Feb 11 08:17:03 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to version 2.9.0+git20260211.ecf25fcf:
