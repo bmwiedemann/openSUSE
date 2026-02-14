@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  9 16:31:14 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use zypp-* configuration packages and patch zypp.conf only when
+  it still exists (i.e when libzypp is not yet updated)
+  (jsc#PED-14658).
+
+-------------------------------------------------------------------
 Wed May  7 08:25:02 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - systemd-network got split, install networkd and resolved explicitly

@@ -24,15 +24,18 @@ zypper --non-interactive rm -u live-add-yast-repos jdupes
 # which would avoid it being installed by the filesystem package
 rpm -e compat-usrmerge-tools
 
-#======================================
-# Disable recommends
-#--------------------------------------
-sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = true/g' /etc/zypp/zypp.conf
-
-#======================================
-# Exclude docs installation
-#--------------------------------------
-sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp/zypp.conf
+# if /etc/zypp/zypp.conf exists, patch it - otherwise rely on packages providing functionality
+if [ -f /etc/zypp/zypp.conf ]; then
+        #======================================
+        # Disable recommends
+        #--------------------------------------
+        sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = true/g' /etc/zypp/zypp.conf
+        
+        #======================================
+        # Exclude docs installation
+        #--------------------------------------
+        sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp/zypp.conf
+fi
 
 #======================================
 # Remove locale files

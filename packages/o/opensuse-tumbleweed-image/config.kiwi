@@ -95,6 +95,9 @@
     <package name="timezone"/>
     <package name="user(nobody)"/> <!-- Needed for Podman, see bsc#1212118 -->
     <package name="zypper"/>
+    <!-- Configure zypper for no-recommends and excludedocs -->
+    <package name="zypp-excludedocs"/>
+    <package name="zypp-no-recommends"/>
     <!-- Only used in config.sh and then removed again -->
     <package name="jdupes"/>
     <package name="live-add-yast-repos"/>
