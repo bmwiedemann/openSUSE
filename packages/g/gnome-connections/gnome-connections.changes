@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 12 20:36:27 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.0+22:
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Sep 17 10:24:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace appstream-glib with AppStream BuildRequires: meson_test

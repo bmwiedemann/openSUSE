@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/gnome-connections.git</param>
-    <param name="revision">49.0</param>
+    <param name="revision">3492c343af7f4634cca12ce97b69a8ce47be695e</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v?(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>

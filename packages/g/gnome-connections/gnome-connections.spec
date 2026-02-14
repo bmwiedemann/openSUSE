@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-connections
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-connections
-Version:        49.0
+Version:        49.0+22
 Release:        0
 Summary:        A remote desktop client for GNOME
 License:        GPL-3.0-or-later

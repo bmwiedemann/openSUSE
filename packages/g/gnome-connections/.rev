@@ -163,4 +163,12 @@
 - Add pkgconfig(spice-client-gtk-3.0) BuildRequires: new dependency (forwarded request 1305349 from iznogood)</comment>
     <requestid>1305520</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>39807bbcab638e73a4a391aa004a36f8</srcmd5>
+    <version>49.0+22</version>
+    <time>1771101507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1333051</requestid>
+  </revision>
 </revisionlist>
