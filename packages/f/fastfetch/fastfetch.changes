@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb 14 00:23:24 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.59.0:
+  * Chore: silences a compiler warning
+  * Packages (Windows): code cleanups
+  * Platform (Windows): adds init / destroy of field `sid`
+  * Release: v2.59.0
+  * Windows: defines `NtCurrentProcess` and uses it
+  * Bluetooth (Windows): use modern dlls
+  * Swap (Windows): removes unused code
+  * Common: fixes discarded-qualifiers warnings (#2181)
+  * Doc: update changelog
+
+-------------------------------------------------------------------
 Sat Jan 24 17:43:46 UTC 2026 - RN <R_Nik_C@proton.me>
 
 - Update to version 2.58.0:
