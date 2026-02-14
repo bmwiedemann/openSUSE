@@ -143,6 +143,8 @@ Patch19:        util-linux-lib-configs-fix6.patch
 Patch20:        util-linux-agetty-escape-erase.patch
 # PATCH-FIX-BUILD util-linux-man-generated.patch sbrabec@suse.com -- Update generated man pages modified by patches.
 Patch21:        util-linux-man-generated.patch
+# PATCH-FIX-OPENSUSE bsc#1222465: fdisk creates broken partition table
+Patch22:        util-linux-bsc-1222465.patch
 BuildRequires:  audit-devel
 BuildRequires:  bc
 BuildRequires:  binutils-devel

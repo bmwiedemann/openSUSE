@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 10 20:43:03 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Fix bsc#1222465.
+- Add patch:
+  * util-linux-bsc-1222465.patch
+- Patch has already been merged upstream,
+  and may be deleted during the next release.
+
+-------------------------------------------------------------------
 Thu Jan 15 17:58:48 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
 
 - Fix filelist for systemd flavor.
