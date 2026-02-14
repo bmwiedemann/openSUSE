@@ -12241,6 +12241,8 @@ unsorted:
   - libbaseencode1 
   - libbasicobjects-devel 
   - libbbf 
+  - libbbf-devel 
+  - libbbf3 
   - libbcc0 
   - libbcg729-0 
   - libbcmatroska2-0 
@@ -18830,6 +18832,8 @@ unsorted:
   - metatheme-yaru-mate-common 
   - metatheme-yuyo-common 
   - meterbridge 
+  - methanol 
+  - methanol-javadoc 
   - metis 
   - metis-devel 
   - metis-doc 
@@ -26187,6 +26191,7 @@ unsorted:
   - python311-link-traits 
   - python311-linkify-it-py 
   - python311-linode-cli 
+  - python311-linode-metadata 
   - python311-linstor 
   - python311-linstor-client 
   - python311-linux-procfs 
@@ -27638,6 +27643,7 @@ unsorted:
   - python311-termcolor 
   - python311-terminado 
   - python311-terminaltables 
+  - python311-terminaltables3 
   - python311-termstyle 
   - python311-tesserocr 
   - python311-testfixtures 
@@ -30039,6 +30045,7 @@ unsorted:
   - python312-link-traits 
   - python312-linkify-it-py 
   - python312-linode-cli 
+  - python312-linode-metadata 
   - python312-linstor 
   - python312-linstor-client 
   - python312-linux-procfs 
@@ -31528,6 +31535,7 @@ unsorted:
   - python312-termcolor 
   - python312-terminado 
   - python312-terminaltables 
+  - python312-terminaltables3 
   - python312-termstyle 
   - python312-tesserocr 
   - python312-testfixtures 
@@ -33899,6 +33907,7 @@ unsorted:
   - python313-link-traits 
   - python313-linkify-it-py 
   - python313-linode-cli 
+  - python313-linode-metadata 
   - python313-linstor 
   - python313-linstor-client 
   - python313-lit 
@@ -35376,6 +35385,7 @@ unsorted:
   - python313-termcolor 
   - python313-terminado 
   - python313-terminaltables 
+  - python313-terminaltables3 
   - python313-termstyle 
   - python313-tesserocr 
   - python313-testfixtures 
