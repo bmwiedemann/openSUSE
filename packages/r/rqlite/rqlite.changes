@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 13 19:23:23 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 9.4.1:
+  * Add proxy layer between HTTP layer and Store
+  * Use maps and slices packages where possible
+  * Check if DB context contains an error and return it if so
+
+-------------------------------------------------------------------
 Sat Feb 07 11:51:30 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 9.4.0:
