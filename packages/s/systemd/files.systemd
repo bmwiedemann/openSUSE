@@ -14,6 +14,9 @@
 %dir %{_datadir}/dbus-1/system.d
 %dir %{_datadir}/factory
 %dir %{_datadir}/systemd
+%if %{with upstream}
+%dir %{_datadir}/user-tmpfiles.d
+%endif
 %if %{without bootstrap}
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
@@ -22,9 +25,6 @@
 %dir %{_journalcatalogdir}
 %dir %{_libdir}/systemd
 %dir %{_localstatedir}/lib/systemd
-%dir %{_localstatedir}/lib/systemd/catalog
-%dir %{_localstatedir}/lib/systemd/coredump
-%dir %{_localstatedir}/lib/systemd/rpm
 %dir %{_modprobedir}
 %dir %{_sysconfdir}/X11/xorg.conf.d
 %dir %{_sysconfdir}/binfmt.d
@@ -93,7 +93,6 @@
 %ghost %config(noreplace) %{_sysconfdir}/locale.conf
 %ghost %config(noreplace) %{_sysconfdir}/machine-info
 %ghost %dir %attr(2755, root, systemd-journal) %{_localstatedir}/log/journal
-%ghost %{_localstatedir}/lib/systemd/catalog/database
 # Main config files have been replaced in favor of drop-ins.
 %ghost %{_sysconfdir}/systemd/journald.conf
 %ghost %{_sysconfdir}/systemd/logind.conf
@@ -208,6 +207,7 @@
 %{_datadir}/dbus-1/system.d/org.freedesktop.timedate1.conf
 %{_datadir}/mime/packages/io.systemd.xml
 %{_datadir}/pkgconfig/systemd.pc
+%{_datadir}/polkit-1/actions/io.systemd.ask-password.policy
 %{_datadir}/polkit-1/actions/io.systemd.credentials.policy
 %if %{with upstream}
 %{_datadir}/polkit-1/actions/io.systemd.sysext.policy
@@ -223,6 +223,9 @@
 %endif
 %{_datadir}/systemd/kbd-model-map
 %{_datadir}/systemd/language-fallback-map
+%if %{with upstream}
+%{_datadir}/user-tmpfiles.d/20-systemd-varlink.conf
+%endif
 %if %{without bootstrap}
 %{_datadir}/zsh/site-functions/_busctl
 %{_datadir}/zsh/site-functions/_coredumpctl
@@ -551,6 +554,9 @@
 %{_sysusersdir}/systemd-journal.conf
 %if %{with sd_boot}
 %{_tmpfilesdir}/20-systemd-stub.conf
+%endif
+%if %{with upstream}
+%{_tmpfilesdir}/20-systemd-varlink.conf
 %endif
 %{_tmpfilesdir}/credstore.conf
 %{_tmpfilesdir}/journal-nocow.conf

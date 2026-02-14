@@ -4,7 +4,6 @@
 %dir %{_datadir}/systemd/gatewayd
 %dir %{_sysconfdir}/systemd/journal-remote.conf.d
 %dir %{_sysconfdir}/systemd/journal-upload.conf.d
-%ghost %dir %{_localstatedir}/log/journal/remote
 # Main config files have been replaced in favor of drop-ins.
 %ghost %{_sysconfdir}/systemd/journal-remote.conf
 %ghost %{_sysconfdir}/systemd/journal-upload.conf

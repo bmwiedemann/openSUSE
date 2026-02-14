@@ -7883,4 +7883,33 @@ handle manual pages that consist only of a .so directive such as
   consumed (no functional changes).</comment>
     <requestid>1329291</requestid>
   </revision>
+  <revision rev="463" vrev="1">
+    <srcmd5>0084c327aae4d8d0375e3e5a83f9f93e</srcmd5>
+    <version>258.4</version>
+    <time>1771101370</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit 8838beb6f391a98ba74c4b4ab2880271af443c54
+  8838beb6f3 units: restore runlevel[0-6].target aliases
+  2b9447c81d getty: remove --issue-file parameter (bsc#1257587)
+- Restore the runlevel[0-6].target aliases in the systemd-sysvcompat
+  sub-package. These targets will remain supported until the SysV init script
+  support is officially removed.
+
+- Avoid shipping (empty) directories and ghost files in /var (jsc#PED-14853)
+  This was originally intended to ensure these paths had a designated package
+  owner. However the existing list was neither exhaustive nor up to date. To
+  better support immutable images, we are removing these entries and will now
+  keep only /var/lib/systemd as owned by the systemd package. Maintaining the
+  broader list provided little value due to its ongoing inconsistency anyways.
+
+- Move systemd-bless-boot from systemd-boot to udev subpackage,
+  as it is used by grub2-bls as well
+
+- Import commit 3f291a53256445d192243b71332c3602ef6ee93a (merge of v258.4)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/2ffdb7879d1913b91d75fb7638023689ad49d6ff...3f291a53256445d192243b71332c3602ef6ee93a
+
+    b27f791691 terminal-util: stop doing 0/upper bound check in tty_is_vc() (bsc#1255326)</comment>
+    <requestid>1332808</requestid>
+  </revision>
 </revisionlist>

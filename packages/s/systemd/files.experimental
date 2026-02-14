@@ -26,6 +26,7 @@
 %{_bindir}/oomctl
 %if %{with upstream}
 %{_bindir}/systemd-mute-console
+%{_bindir}/systemd-report
 %endif
 %{_bindir}/systemd-vmspawn
 %{_bindir}/updatectl
@@ -51,6 +52,7 @@
 %{_mandir}/man1/systemd-mute-console.1.gz
 %{_mandir}/man1/systemd-mute-console.socket.1.gz
 %{_mandir}/man1/systemd-mute-console@.service.1.gz
+%{_mandir}/man1/systemd-report.1.gz
 %endif
 %{_mandir}/man1/systemd-sbsign.1.gz
 %{_mandir}/man1/systemd-ssh-issue.1.gz
@@ -107,9 +109,7 @@
 %{_mandir}/man8/systemd-sysupdated.service.8.gz
 %if %{with sd_boot}
 %{_mandir}/man8/systemd-tpm2-clear.service.8.gz
-%endif
 %{_mandir}/man8/systemd-tpm2-generator.8.gz
-%if %{with sd_boot}
 %{_mandir}/man8/systemd-tpm2-setup-early.service.8.gz
 %{_mandir}/man8/systemd-tpm2-setup.8.gz
 %{_mandir}/man8/systemd-tpm2-setup.service.8.gz

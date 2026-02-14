@@ -8,3 +8,10 @@
 %{_systemdgeneratordir}/systemd-rc-local-generator
 %{_systemdgeneratordir}/systemd-sysv-generator
 %{_unitdir}/rc-local.service
+%{_unitdir}/runlevel0.target
+%{_unitdir}/runlevel1.target
+%{_unitdir}/runlevel2.target
+%{_unitdir}/runlevel3.target
+%{_unitdir}/runlevel4.target
+%{_unitdir}/runlevel5.target
+%{_unitdir}/runlevel6.target

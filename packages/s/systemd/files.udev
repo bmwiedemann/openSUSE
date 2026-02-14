@@ -43,7 +43,6 @@
 %ghost %attr(444, root, root) %{_sysconfdir}/udev/hwdb.bin
 %ghost %attr(644, root, root) %{_prefix}/lib/udev/compat-symlink-generation
 %ghost %config(noreplace) %{_sysconfdir}/vconsole.conf
-%ghost %{_localstatedir}/lib/systemd/backlight
 # Main config files have been replaced in favor of drop-ins.
 %ghost %{_sysconfdir}/systemd/pstore.conf
 %ghost %{_sysconfdir}/systemd/sleep.conf
@@ -107,6 +106,11 @@
 %{_mandir}/man8/systemd-backlight@.service.8.gz
 %{_mandir}/man8/systemd-battery-check.8.gz
 %{_mandir}/man8/systemd-battery-check.service.8.gz
+%if %{with sd_boot}
+%{_mandir}/man8/systemd-bless-boot-generator.8.gz
+%{_mandir}/man8/systemd-bless-boot.8.gz
+%{_mandir}/man8/systemd-bless-boot.service.8.gz
+%endif
 %{_mandir}/man8/systemd-cryptsetup-generator.8.gz
 %{_mandir}/man8/systemd-cryptsetup.8.gz
 %{_mandir}/man8/systemd-cryptsetup@.service.8.gz
@@ -225,6 +229,9 @@
 %endif
 %{_systemd_util_dir}/systemd-backlight
 %{_systemd_util_dir}/systemd-battery-check
+%if %{with sd_boot}
+%{_systemd_util_dir}/systemd-bless-boot
+%endif
 %if %{without bootstrap}
 %{_systemd_util_dir}/systemd-cryptsetup
 %endif
@@ -256,6 +263,9 @@
 %endif
 %{_systemd_util_dir}/systemd-volatile-root
 %{_systemd_util_dir}/timesyncd.conf
+%if %{with sd_boot}
+%{_systemdgeneratordir}/systemd-bless-boot-generator
+%endif
 %if %{without bootstrap}
 %{_systemdgeneratordir}/systemd-cryptsetup-generator
 %endif
@@ -419,6 +429,7 @@
 %{_unitdir}/systemd-backlight@.service
 %{_unitdir}/systemd-battery-check.service
 %if %{with sd_boot}
+%{_unitdir}/systemd-bless-boot.service
 %{_unitdir}/systemd-bootctl.socket
 %{_unitdir}/systemd-bootctl@.service
 %endif

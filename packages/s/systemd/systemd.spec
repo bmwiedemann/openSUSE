@@ -2,7 +2,7 @@
 # spec file for package systemd
 #
 # Copyright (c) 2026 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,9 +32,9 @@
 %bcond_with obs_service_set_version
 
 %if %{without obs_service_set_version}
-%define systemd_version    258.3
+%define systemd_version    258.4
 %define systemd_release    0
-%define archive_version    +suse.15.g2ffdb7879d
+%define archive_version    +suse.18.g8838beb6f3
 %endif
 
 %define _testsuitedir %{_systemd_util_dir}/tests
@@ -146,8 +146,6 @@ Requires:       this-is-only-for-build-envs
 #!BuildIgnore:  udev
 Requires:       aaa_base >= 13.2
 Requires:       dbus-service
-# Temporary workaround for bsc#1255655
-Requires:       dbus-1-common
 Requires:       kbd
 Requires:       netcfg >= 11.5
 Requires:       systemd-default-settings-branding
@@ -740,8 +738,10 @@ for the C APIs.
         -Dsysvinit-path= \
         -Dsysvrcnd-path= \
         -Drc-local= \
+        -Dcompat-sysv-interfaces=false \
 %else
         -Drc-local=/etc/init.d/boot.local \
+        -Dcompat-sysv-interfaces=true \
 %endif
         -Dcreate-log-dirs=false \
         -Ddebug-shell=/bin/bash \
@@ -950,11 +950,6 @@ mkdir -p %{buildroot}%{_sysconfdir}/sysusers.d/
 # system will complain. This is odd since we simply own a ghost file in it...
 mkdir -p %{buildroot}%{_sysconfdir}/X11/xorg.conf.d
 
-# Make sure directories in /var exist.
-mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/coredump
-mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/catalog
-mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/rpm
-
 # Make sure the NTP units dir exists.
 mkdir -p %{buildroot}%{_ntpunitsdir}
 
@@ -985,15 +980,11 @@ mkdir -p %{buildroot}%{_userpresetdir}
 mkdir -p %{buildroot}%{_systemd_system_env_generator_dir}
 mkdir -p %{buildroot}%{_systemd_user_env_generator_dir}
 
-# ghost directories with default permissions.
-mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/backlight
-
 # ghost files with default permisssions.
 touch %{buildroot}%{_sysconfdir}/X11/xorg.conf.d/00-keyboard.conf
 touch %{buildroot}%{_sysconfdir}/vconsole.conf
 touch %{buildroot}%{_sysconfdir}/locale.conf
 touch %{buildroot}%{_sysconfdir}/machine-info
-touch %{buildroot}%{_localstatedir}/lib/systemd/catalog/database
 
 %fdupes -s %{buildroot}%{_mandir}
 

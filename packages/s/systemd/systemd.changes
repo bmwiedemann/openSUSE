@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Feb 11 13:15:55 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Import commit 8838beb6f391a98ba74c4b4ab2880271af443c54
+
+  8838beb6f3 units: restore runlevel[0-6].target aliases
+  2b9447c81d getty: remove --issue-file parameter (bsc#1257587)
+
+- Restore the runlevel[0-6].target aliases in the systemd-sysvcompat
+  sub-package. These targets will remain supported until the SysV init script
+  support is officially removed.
+
+-------------------------------------------------------------------
+Tue Feb 10 14:39:06 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Avoid shipping (empty) directories and ghost files in /var (jsc#PED-14853)
+
+  This was originally intended to ensure these paths had a designated package
+  owner. However the existing list was neither exhaustive nor up to date. To
+  better support immutable images, we are removing these entries and will now
+  keep only /var/lib/systemd as owned by the systemd package. Maintaining the
+  broader list provided little value due to its ongoing inconsistency anyways.
+
+-------------------------------------------------------------------
+Mon Feb  9 10:25:00 UTC 2026 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Move systemd-bless-boot from systemd-boot to udev subpackage,
+  as it is used by grub2-bls as well
+
+-------------------------------------------------------------------
+Mon Feb  9 09:10:47 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Import commit 3f291a53256445d192243b71332c3602ef6ee93a (merge of v258.4)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/2ffdb7879d1913b91d75fb7638023689ad49d6ff...3f291a53256445d192243b71332c3602ef6ee93a
+
+-------------------------------------------------------------------
 Mon Jan 26 10:02:37 UTC 2026 - Franck Bui <fbui@suse.com>
 
 - Import commit 2ffdb7879d1913b91d75fb7638023689ad49d6ff
@@ -141,6 +178,7 @@ Mon Oct 20 07:54:34 UTC 2025 - Franck Bui <fbui@suse.com>
 
     c058ff41cb timer: don't run service immediately after restart of a timer (bsc#1254563)
     3e14d02500 detect-virt: bare-metal GCE only for x86 and i386 (bsc#1254293)
+    b27f791691 terminal-util: stop doing 0/upper bound check in tty_is_vc() (bsc#1255326)
 
 - Drop 0001-Drop-support-for-efivar-SystemdOptions.patch, upstream removed
   support for SystemdOptions efi var, see 14871a652925d08926c2d2d7cf2a95cd.
