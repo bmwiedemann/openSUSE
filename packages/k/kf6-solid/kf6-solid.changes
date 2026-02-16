@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Feb  6 14:26:03 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.23.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.23.0
+- Changes since 6.22.0:
+  * Update dependency version to 6.23.0
+  * fix(fstab): Return valid URLs for NetworkShare for smb mountpoints
+  * Documentation fixes
+  * Add displayName() implementation to UDev backend with vendor/product deduplication
+  * Extract vendor/product fallback logic into reusable utility function
+  * Improve device vendor/product lookup with hwdb fallback
+  * [UdevQt] Reduce allocations in decodePropertyValue helper
+  * Free lexer-allocated data also when parsing fails
+  * Enable LSAN in CI
+  * Use delete instead of deleteLater() when DevicePrivate refcount drops to 0 (kde#513508)
+  * avoid crash on device removal (kde#514791)
+  * Add missing ejectRequested to OpticalDrive interface
+  * Add missing override in winopticaldrive
+  * Add missing signals to StorageAccess backends (kde#514176)
+  * Add missing overrride in winstorageaccess
+  * Fix macOS build: Replace make_unique with explicit new for private IOKitDevice constructor
+  * Use more precise type for m_reverseMap
+  * Replace _k_destroyed slot with lambda
+  * Don't call setBackendObject() in DevicePrivate dtor
+  * Remove unneeded intermediate variables
+  * Manage backend object using unique_ptr
+  * Remove unneeded destroyed handling for backend object
+  * Manage DeviceInterface using unique_ptr
+  * devicemanager: remove unused includes
+  * Update version to 6.23.0
+
+-------------------------------------------------------------------
 Sun Jan  4 14:47:23 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.22.0
