@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 16 09:08:19 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix build with latest python-pip bsc#1258173
+- Add patch sepolicy-build-isolation.patch
+
+-------------------------------------------------------------------
 Thu Feb  5 16:30:31 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 3.10
