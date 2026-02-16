@@ -44,4 +44,41 @@
     <comment></comment>
     <requestid>1320299</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fc5c04e0eda2af9a6348d4ea2a12c377</srcmd5>
+    <version>5.1.0</version>
+    <time>1771244069</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.1.0:
+  * --update / -u flag: Pull the latest changes for all git-backed
+    cheatpaths from the CLI. Reports per-path status (ok, skipped, error).
+    Works with --path filtering to update specific cheatpaths. Supports
+    SSH remotes via key file discovery and SSH agent. (#552)
+  Documentation:
+  * Fixed config filename references in man page (conf.yaml → conf.yml)
+  * Added missing /etc/cheat/conf.yml config search path to man page
+  * Fixed stale code references in CLAUDE.md, HACKING.md, and ADRs
+  * Updated Go version requirement in INSTALLING.md
+
+- Update to 5.0.0:
+  * Migrated from docopt to cobra (#768, #705, #632, #476)
+  * Dynamic shell completions
+  Breaking changes:
+  * The static completion scripts under scripts/ have been removed. Users must
+    regenerate completions using cheat --completion &lt;shell&gt;.
+  * The CHEAT_USE_FZF environment variable is no longer supported.
+  Bug fixes:
+  * Fixed _init_completion: command not found error (#768)
+  * Fixed autocompletion not working (#705)
+  * Fixed zsh autocompletion not resolving cheatsheet names (#632)
+
+- Update to 4.7.1:
+  * Internal cleanup and project restructuring. No user-facing behavior changes
+
+- Update to 4.7.0:
+  * Brief list output (-b/--brief)
+
+- Update to 4.6.0:</comment>
+    <requestid>1333282</requestid>
+  </revision>
 </revisionlist>

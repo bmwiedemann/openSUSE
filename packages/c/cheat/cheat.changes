@@ -1,4 +1,117 @@
 -------------------------------------------------------------------
+Mon Feb 16 08:55:59 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.1.0:
+  * --update / -u flag: Pull the latest changes for all git-backed
+    cheatpaths from the CLI. Reports per-path status (ok, skipped, error).
+    Works with --path filtering to update specific cheatpaths. Supports
+    SSH remotes via key file discovery and SSH agent. (#552)
+  Documentation:
+  * Fixed config filename references in man page (conf.yaml → conf.yml)
+  * Added missing /etc/cheat/conf.yml config search path to man page
+  * Fixed stale code references in CLAUDE.md, HACKING.md, and ADRs
+  * Updated Go version requirement in INSTALLING.md
+
+-------------------------------------------------------------------
+Mon Feb 16 08:55:01 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.0.0:
+  * Migrated from docopt to cobra (#768, #705, #632, #476)
+  * Dynamic shell completions
+  Breaking changes:
+  * The static completion scripts under scripts/ have been removed. Users must
+    regenerate completions using cheat --completion <shell>.
+  * The CHEAT_USE_FZF environment variable is no longer supported.
+  Bug fixes:
+  * Fixed _init_completion: command not found error (#768)
+  * Fixed autocompletion not working (#705)
+  * Fixed zsh autocompletion not resolving cheatsheet names (#632)
+
+-------------------------------------------------------------------
+Mon Feb 16 08:54:40 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.7.1:
+  * Internal cleanup and project restructuring. No user-facing behavior changes
+
+-------------------------------------------------------------------
+Mon Feb 16 08:54:08 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.7.0:
+  * Brief list output (-b/--brief)
+
+-------------------------------------------------------------------
+Mon Feb 16 08:53:17 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.6.0:
+  New Features:
+  * Recursive .cheat directory discovery: cheat now walks up the directory
+    tree to find .cheat directories, mirroring how git discovers .git
+    directories. Place a .cheat directory at your project root and it
+    will be available from any subdirectory. (#602)
+  Documentation:
+  * ADR-004: documents the design decisions for recursive .cheat discovery
+  * Updated README and package docs to describe the new behaviour
+
+-------------------------------------------------------------------
+Mon Feb 16 08:52:48 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.5.2:
+  Bug Fixes:
+  * Static binaries: Build with CGO_ENABLED=0 to produce fully static binaries (#744)
+  * Editor env vars: Respect $VISUAL and $EDITOR environment variables at runtime (#589)
+  * .git in path: Fix cheatsheets being silently skipped when the cheatpath contains a directory ending in .git (#711)
+  Other Changes:
+  * Remove dead Homebrew formula bump workflow
+  * Move ADRs from doc/adr/ to adr/ for discoverability
+
+-------------------------------------------------------------------
+Mon Feb 16 08:51:14 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.5.1:
+  * Fix first-run experience (#721, #730, #771): Declining community
+    cheatsheets during initial setup no longer causes errors on subsequent
+    runs. config.New() now skips missing cheatpaths with a warning instead of a fatal error.
+  * Fix --init output (#773): cheat --init now comments out the community
+    cheatpath by default and includes clone instructions, so the output
+    works as a config file without modification.
+  * Fix stdin buffering in installer prompts: The installer's interactive
+    prompts now read stdin without buffering, allowing cheat to be
+    scripted (e.g., printf "y\nn\n" | cheat).
+  * Fix frontmatter parsing on Windows: Line ending detection in cheatsheet
+    frontmatter now inspects file content instead of checking runtime.GOOS,
+    fixing parsing failures when files have Unix line endings on Windows.
+  * CI modernized: Go 1.26, GitHub Actions v4/v5, Windows added to test matrix
+  * Dependencies updated (addresses dependabot CVEs in golang.org/x/crypto, golang.org/x/net)
+  * End-to-end integration tests added for first-run experience
+  * Dockerfile updated to Go 1.26
+
+-------------------------------------------------------------------
+Mon Feb 16 08:50:19 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.5.0:
+  Bug Fixes:
+  * Fix inverted pager detection logic (returned error string instead of path)
+  * Fix repo.Clone ignoring destination directory parameter
+  * Fix sheet loading using append on pre-sized slices, causing nil entries
+  * Clean up partial files on copy failure
+  * Trim whitespace from editor config during loading
+  Security:
+  * Add path traversal protection for cheatsheet names
+  Performance:
+  * Move regex compilation outside search loop
+  * Replace O(n²) string concatenation with strings.Join in search
+  Build & Testing:
+  * Remove go:generate; embed config and usage as string literals
+  * Parallelize release builds
+  * Add fuzz testing infrastructure
+  * Improve test coverage from 38.9% to 50.2%
+  Documentation:
+  * Fix inaccurate code examples in HACKING.md
+  * Add missing --conf and --all options to man page
+  * Add ADRs for path traversal, env parsing, and search parallelization
+  * Update CONTRIBUTING.md to reflect project policy
+
+-------------------------------------------------------------------
 Thu Nov 27 08:11:59 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Security:

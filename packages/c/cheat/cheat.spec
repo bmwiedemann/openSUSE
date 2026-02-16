@@ -1,7 +1,7 @@
 #
 # spec file for package cheat
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cheat
-Version:        4.4.2
+Version:        5.1.0
 Release:        0
 Summary:        Allows you to create and view interactive cheatsheets on the command-line
 License:        MIT
@@ -25,7 +25,7 @@ Group:          Productivity/Other
 URL:            https://github.com/cheat/cheat
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.24
+BuildRequires:  golang(API) >= 1.26
 
 %description
 cheat allows you to create and view interactive cheatsheets on the command-line. It was designed to help remind *nix system administrators of options for commands that they use frequently, but not frequently enough to remember.
