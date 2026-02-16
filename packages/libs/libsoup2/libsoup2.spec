@@ -90,6 +90,12 @@ Patch30:        libsoup2-CVE-2026-1761.patch
 Patch31:        libsoup2-CVE-2026-0716.patch
 # PATCH-FIX-UPSTREAM libsoup2-CVE-2025-4476.patch boo#1243422 mgorse@suse.com -- fix crash in soup_auth_digest_get_protection_space.
 Patch32:        libsoup2-CVE-2025-4476.patch
+# PATCH-FIX-OPENSUSE libsoup2-CVE-2025-32049.patch bsc#1240751 mgorse@suse.com -- add size limit for total message size.
+Patch33:        libsoup2-CVE-2025-32049.patch
+# PATCH-FIX-UPSTREAM libsoup2-CVE-2026-2443.patch bsc#1243170 mgorse@suse.com -- fix out-of-bounds read when processing range headers.
+Patch34:        libsoup2-CVE-2026-2443.patch
+# PATCH-FIX-UPSTREAM libsoup2-CVE-2026-2369.patch bsc#1258120 mgorse@suse.com -- handle potential underflow in the content sniffer.
+Patch35:        libsoup2-CVE-2026-2369.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.50

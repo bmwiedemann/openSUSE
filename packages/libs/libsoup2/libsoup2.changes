@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 14 13:39:29 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add more CVE fixes:
+  + libsoup2-CVE-2025-32049.patch (bsc#1240751 CVE-2025-32049
+    glgo#GNOME/libsoup#390)
+  + libsoup2-CVE-2026-2443.patch (bsc#1258170 CVE-2026-2443
+    glgo#GNOME/libsoup#487)
+  + libsoup2-CVE-2026-2369.patch (bsc#1258120 CVE-2026-2369
+    glgo#GNOME/libsoup!508)
+
+-------------------------------------------------------------------
 Mon Feb  9 23:48:35 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Add libsoup2-CVE-2025-4476.patch: fix crash in
