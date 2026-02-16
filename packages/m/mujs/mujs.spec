@@ -1,7 +1,7 @@
 #
 # spec file for package mujs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define ucd_ver 16.0.0
 Name:           mujs
-Version:        1.3.7
+Version:        1.3.8
 Release:        0
 Summary:        An embeddable Javascript interpreter
 License:        ISC
 Group:          Development/Languages/C and C++
-URL:            https://github.com/ccxvii/%{name}
-Source0:        https://github.com/ccxvii/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://mujs.com/
+Source0:        https://codeberg.org/ccxvii/mujs/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # v=16.0.0 && u=https://www.unicode.org/Public/$v/ucd && f1=SpecialCasing.txt && f2=UnicodeData.txt && f=ucd-$v.tar.xz && cd /tmp && curl -O $u/$f1 -O $u/$f2 && tar c --remove-files "$f1" "$f2" | xz -9e > "$f"
 Source1:        ucd-%{ucd_ver}.tar.xz
 BuildRequires:  pkgconfig
@@ -43,7 +43,7 @@ Provides:       %{name}-static = %{version}
 This package provides the MuJS static library.
 
 %prep
-%autosetup -p1 -a1
+%autosetup -p1 -a1 -n %{name}
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
