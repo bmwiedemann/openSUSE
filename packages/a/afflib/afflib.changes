@@ -1,0 +1,73 @@
+-------------------------------------------------------------------
+Sat Feb 14 19:05:01 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- afflib 3.7.22:
+  * FUSE 3 support
+
+-------------------------------------------------------------------
+Mon Aug  4 19:49:14 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.7.21, new upstream:
+  * Support .iso extension as a raw file
+  * Support for current versions of dependency libraries and gcc
+- entirely reworked spec file, drop python for now
+- drop patches:
+  * afflib-3.6.12-fix-sha256-display.patch
+  * afflib-3.6.12-fix-vvfat-overflow.patch
+  * afflib-3.6.12-no-strict-aliasing.patch
+
+-------------------------------------------------------------------
+Mon Apr  2 20:32:56 UTC 2012 - Greg.Freemyer@gmail.com
+
+- Updated to v3.7.0
+
+	* Per upstream: Changed license from BSD with advertising to BSD without advertising.
+	* I still found lots of BSD 4-clause references in the source, so I left specfile license field as BSD 4-clause
+
+	* ALL FILES: Audited for copyright.
+	* COPYING: Clarified that Basis copyright only applies to
+	* .gitignore: created file in preparation for move to github
+
+-------------------------------------------------------------------
+Thu Mar  8 23:11:09 UTC 2012 - Greg.Freemyer@gmail.com
+
+- upgrade to v3.6.15
+        * configure.ac: incorporated Greg Freemyer's patch to address some
+        ncurses problems.
+        * lib/utils.h: created virtual destructore
+        * configure.ac: added AC_PROG_CXX
+        * tools/affxml.cpp (main): removed unused bflag variable
+        * lib/vnode_afd.cpp: max() is now always defined, even on windows.
+	* lib/aftimer.h (aftimer::eta_time): added std:: before string
+	* lib/utils.h: added virtual destructor for seginfo
+	* lib/afflib_pages.cpp (af_get_pagesize): having af_page_size() as
+	a macro was causing problems, so now there is both af_page_size
+	and af_get_pagesize, both of which do the same. Please use af_get_pagesize.
+	* aftimer.h (timestamp): updated aftimer for higher resolution on win32
+	* lib/afflib.cpp (af_get_pagesize): created af_get_pagesize, which
+	for some reason was missing.
+	* lib/afflib.h: added int af_get_pagesize(AFFILE *af);
+
+-------------------------------------------------------------------
+Mon Feb 13 17:22:48 UTC 2012 - Greg.Freemyer@gmail.com
+
+- use the %{__make} %{?_smp_mflags} macro in the specfile
+
+-------------------------------------------------------------------
+Wed Dec 14 20:23:26 UTC 2011 - Greg.Freemyer@gmail.com
+
+- Removed the ncurses patch.  The issue was addressed in the ncurses package directly.
+
+-------------------------------------------------------------------
+Tue Nov 22 17:07:14 UTC 2011 - Greg.Freemyer@gmail.com
+
+- Add a patch to handle ncurses tinfo split introduced for 12.2
+
+-------------------------------------------------------------------
+Sun Sep  4 15:45:23 UTC 2011 - toganm@opensuse.org
+
+- Initial packaging based on spec from  sebastien@sebbraun.de
+
+  The Advanced Forensics Format (AFF) is an openly specified, extensible
+  file format for storing and analyzing hard disk images and other types
+  of digital evidence.
