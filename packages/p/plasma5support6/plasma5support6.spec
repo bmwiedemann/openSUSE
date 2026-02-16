@@ -26,14 +26,14 @@
 %bcond_without released
 # Note: despite being in the plasma namespace upstream, the build system follows the frameworks conventions
 Name:           plasma5support6
-Version:        6.5.5
+Version:        6.6.0
 Release:        0
 Summary:        KF6 Porting aid
 License:        LGPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  doxygen
@@ -115,6 +115,7 @@ Development Files for the plasma5support framework.
 %{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_apps.so
 %{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_devicenotifications.so
 %{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_favicons.so
+%{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_executable.so
 %{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_geolocation.so
 %{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_hotplug.so
 %{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_keystate.so
@@ -128,6 +129,7 @@ Development Files for the plasma5support framework.
 %{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_dwd.so
 %{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_envcan.so
 %{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_noaa.so
+%{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_time.so
 %{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_weather.so
 %{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_wettercom.so
 %dir %{_kf6_plugindir}/plasma5support/geolocationprovider
