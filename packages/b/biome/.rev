@@ -164,4 +164,41 @@
   * see CHANGELOG.md for changes across 216 commits and 1,974 files</comment>
     <requestid>1327310</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4680c9b4f35e2d873e609e1e0b3bb02a</srcmd5>
+    <version>2.3.15</version>
+    <time>1771243790</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.15:
+  * docs: fix website sync
+  * chore(deps): update rust crate git2 to v0.20.4 [security]
+  * fix: jsx dependency detection in useexhaustivedependencies
+  * chore(doc): update formatter contributing doc
+  * fix(useAwait): treat yield* as async operation in async generators
+  * fix(css): ignore @supports queries in useGenericFontNames rule
+  * fix(html/parser): distinguish interpolations inside and outside tags
+  * chore(deps): update rust:1.93.0-bookworm docker digest to d0a4aa3
+  * chore(deps): update rust:1.93.0-bullseye docker digest to 3ebcc2d
+  * fix(codegen): remove duplicate preamble in generated analyzer files
+  * chore(deps): update rust crate anyhow to 1.0.101
+  * chore(deps): update rust crate bpaf to 0.9.23
+  * chore(deps): update rust crate insta to 1.46.3
+  * chore(deps): update dependency tombi to v0.7.27
+  * chore(deps): update github-actions
+  * chore(deps): update dependency @types/node to v24.10.11
+  * fix(js_analyze): typo in noPositiveTabindex's action suggestion
+  * fix(useAwaitThenable): treat unresolved call expressions as uninferred
+  * fix(linter): allow assignment in arrow function expression body
+  * feat(migrate): some more migration metadata
+  * fix(linter): useExhaustiveDependencies revert object method call behavior change, fixes
+  * fix(linter): add export {} when noUnusedImports removes last import in TypeScript
+  * fix(useJsxKeyInIterable): ignore rule in Map constructor
+  * docs: correct default value for useEditorconfig schema setting
+  * fix(lint): remove import source check from is_global_react_import()
+  * chore: upgrade CVE'ed crates, remove unmaintaned crates
+  * feat(lint/js): add noNestedPromises
+  * fix: resolve glob patterns relative to project root when extending
+  * feat(lint): add nursery rule noUselessReturn</comment>
+    <requestid>1333145</requestid>
+  </revision>
 </revisionlist>
