@@ -191,4 +191,12 @@
     <comment></comment>
     <requestid>1327894</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9e549c9596e2668094c740e4168ef8ef</srcmd5>
+    <version>6.23.0</version>
+    <time>1771243461</time>
+    <user>anag_factory</user>
+    <comment>KDE Frameworks 6.23 (forwarded request 1332889 from krop)</comment>
+    <requestid>1332957</requestid>
+  </revision>
 </revisionlist>
