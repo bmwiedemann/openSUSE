@@ -1,0 +1,25 @@
+diff -ruN rusty_v8-145.0.0.orig/build.rs rusty_v8-145.0.0/build.rs
+--- rusty_v8-145.0.0.orig/build.rs	2026-02-14 14:15:46.377977611 +0800
++++ rusty_v8-145.0.0/build.rs	2026-02-14 15:13:06.103012265 +0800
+@@ -120,7 +120,7 @@
+ 
+   print_prebuilt_src_binding_path();
+ 
+-  download_static_lib_binaries();
++  // download_static_lib_binaries();
+ }
+ 
+ fn acquire_lock() -> LockFile {
+@@ -248,10 +248,10 @@
+   }
+ 
+   if need_gn_ninja_download() {
+-    download_ninja_gn_binaries();
++    // download_ninja_gn_binaries();
+   }
+ 
+-  download_rust_toolchain();
++  // download_rust_toolchain();
+ 
+   // `#[cfg(...)]` attributes don't work as expected from build.rs -- they refer to the configuration
+   // of the host system which the build.rs script will be running on. In short, `cfg!(target_<os/arch>)`

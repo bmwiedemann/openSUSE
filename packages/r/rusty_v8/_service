@@ -1,7 +1,7 @@
 <services>
   <service name="cargo_vendor" mode="manual">
      <param name="src">https://github.com/denoland/rusty_v8</param>
-     <param name="revision">v137.2.1</param>
+     <param name="revision">v145.0.0</param>
      <param name="versionrewriteregex">^v?(.*)</param>
      <param name="versionrewritepattern">$1</param>
      <param name="compression">zst</param>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 15 00:38:48 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 145.0.0
+- Add disable-rust-toolchain-download.patch
+- Add chromium-rust-toolchain.tar.xz. This was based from the python script
+  located at `tools/rust-toolchain.py`
+
+-------------------------------------------------------------------
 Thu Jul 17 23:21:08 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 137.2.1:

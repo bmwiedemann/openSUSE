@@ -1,4 +1,7 @@
 # This is not C, dear
+addFilter("E: backup-file-in-package")
+addFilter("E: filelist-forbidden")
+addFilter("W: hidden-file-or-dir")
 addFilter("E: devel-file-in-non-devel-package")
 addFilter("E: bin-sh-syntax-error")
 addFilter("E: env-script-interpreter")

@@ -95,4 +95,15 @@
   * fix: backport explicit resource management fixes and release 134.5.0</comment>
     <requestid>1294651</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4e3043b01c7c260b9772a2854295e217</srcmd5>
+    <version>145.0.0</version>
+    <time>1771243775</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 145.0.0
+- Add disable-rust-toolchain-download.patch
+- Add chromium-rust-toolchain.tar.xz. This was based from the python script
+  located at `tools/rust-toolchain.py`</comment>
+    <requestid>1333139</requestid>
+  </revision>
 </revisionlist>

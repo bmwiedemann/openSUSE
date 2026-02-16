@@ -19,7 +19,7 @@
 %global __requires_exclude_from ^%{_libdir}/crates/rusty_v8/.*$
 
 Name:           rusty_v8
-Version:        137.2.1
+Version:        145.0.0
 Release:        0
 Summary:        Build tooling for Deno (do not install or use!)
 License:        MIT
@@ -27,21 +27,27 @@ Group:          Productivity/Other
 URL:            https://github.com/denoland/rusty_v8
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+Source2:        https://storage.googleapis.com/chromium-browser-clang/Linux_x64/rust-toolchain-a4cfac7093a1c1c7fbdb6bc75d6b6dc4d385fc69-2-llvmorg-22-init-17020-gbd1bd178.tar.xz#/chromium-rust-toolchain.tar.xz
 Source100:      rusty_v8-rpmlintrc
 Patch0:         deno-v8-arm.patch
 # Based on https://gitlab.archlinux.org/archlinux/packaging/packages/chromium/-/raw/main/compiler-rt-adjust-paths.patch
 Patch1:         compiler-rt-adjust-paths.patch
+Patch2:         disable-rust-toolchain-download.patch
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
-BuildRequires:  clang19
+BuildRequires:  clang21
+BuildRequires:  clang21-devel
 BuildRequires:  fdupes
 BuildRequires:  gn
-BuildRequires:  lld19
-BuildRequires:  llvm19
+BuildRequires:  lld21
+BuildRequires:  rust-bindgen
+BuildRequires:  llvm21
+BuildRequires:  llvm21-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  zstd
+BuildRequires:  rust-src
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -67,16 +73,25 @@ Chromium, etc.
 # lib to lib64
 sed -i 's|lib/clang|lib64/clang|g' build/config/clang/BUILD.gn
 %endif
+mkdir -p third_party/rust-toolchain
+tar xf %{SOURCE2} -C third_party/rust-toolchain
 
 %build
 # Ensure that the clang version matches. This command came from Archlinux. Thanks.
 export CLANG_VERSION=$(clang --version | grep -m1 version | sed 's/.* \([0-9]\+\).*/\1/')
+export LIBCLANG_PATH=%{_libdir}
 export V8_FROM_SOURCE=1
 export CLANG_BASE_PATH=%{_prefix}
 export CC=clang
 export CXX=clang++
 # https://www.chromium.org/developers/gn-build-configuration
-export GN_ARGS="clang_version=${CLANG_VERSION} use_lld=true enable_nacl = false blink_symbol_level = 0 v8_symbol_level = 0"
+export RUSTC_SYSROOT=$(rustc --print sysroot)
+export RUSTC_VERSION=$(rustc -V | cut -d' ' -f2)
+export GN="/usr/bin/gn"
+export NINJA="/usr/bin/ninja"
+export RUSTC="/usr/bin/rustc"
+export GN_ARGS="clang_version=${CLANG_VERSION} use_lld=true v8_symbol_level=0"
+# export EXTRA_GN_ARGS="rust_sysroot_absolute=${RUSTC_SYSROOT} rustc_version=${RUSTC_VERSION}"
 export CFLAGS="%{optflags} -Wno-unknown-warning-option"
 export CXXFLAGS="%{optflags} -Wno-unknown-warning-option"
 export RUST_BACKTRACE=full
@@ -100,8 +115,12 @@ rm .prettierrc.json
 rm .rustfmt.toml
 rm -rf vendor
 rm -rf target
+rm -rf third_party/rust-toolchain
 %fdupes $PWD
 popd
+
+# Remove Windows-specific vendored libs that break readelf/rpmlint
+find %{buildroot}%{_libdir}/crates/rusty_v8/third_party -name "windows_*" -type d -exec rm -rf {} +
 
 %files
 %license LICENSE
