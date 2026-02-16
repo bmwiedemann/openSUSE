@@ -237,4 +237,13 @@ GStreamer.</comment>
     <comment></comment>
     <requestid>1325655</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>07798879fe09afac46d66ac385eff9be</srcmd5>
+    <version>2.16.1</version>
+    <time>1771243869</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.16.1
+  * Fixed warnings in USBSID builder.</comment>
+    <requestid>1333183</requestid>
+  </revision>
 </revisionlist>
