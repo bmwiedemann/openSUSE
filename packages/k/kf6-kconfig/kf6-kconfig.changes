@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Feb  6 14:25:46 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.23.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.23.0
+- Changes since 6.22.0:
+  * Update dependency version to 6.23.0
+  * kconfigwatcher: prevent a QThreadLocal to be creatde when exiting
+  * Fix macos standard shortcut conflicts (kde#512817)
+  * kconfigwatcher: Add context argument to connect
+  * kconfigskeletontest: Fix memory leak
+  * Enable LSAN in CI
+  * KConfigIni: parseConfig simplify implementation
+  * KConfig: better handle Anonymous case
+  * autotests/qiodevice: add a test for the QFile case
+  * kconfig_target_kcfg_file: use newer built-in cmake code to create kcfgc file
+  * kconfigxt: Add KCONFIG_CONSTRUCTOR option
+  * kconfigskeleton: Add ctor using std::unique_ptr<KConfig>
+  * kconfig: support passing in a QIODevice
+  * Update version to 6.23.0
+
+-------------------------------------------------------------------
 Sun Jan  4 14:47:07 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.22.0
