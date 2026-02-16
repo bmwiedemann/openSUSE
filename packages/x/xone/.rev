@@ -39,4 +39,15 @@ Now that xone-dongle-firmware is also in Factory, the driver can easily be insta
 Requires: https://build.opensuse.org/requests/1330200</comment>
     <requestid>1330202</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e32ddd0e7024676a593ed875c0832b03</srcmd5>
+    <version>0.5.5</version>
+    <time>1771243754</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 0.5.5
+  * Add sysfs interface to power off wireless controllers 
+
+I also made the version dependencies a bit stricter. xone now requires the kernel module in the same version. xone-dongle-firmware needs to be in the new version format introduced with the latest version which zypper unfortunately recognizes as lower version and doesn't want to update to. So I enforce a &quot;lower&quot; version for now.</comment>
+    <requestid>1333055</requestid>
+  </revision>
 </revisionlist>

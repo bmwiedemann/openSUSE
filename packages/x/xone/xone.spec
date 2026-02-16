@@ -17,7 +17,7 @@
 
 
 Name:           xone
-Version:        0.5.4
+Version:        0.5.5
 Release:        0
 Summary:        Driver for Xbox One and Xbox Series X|S controllers
 License:        GPL-2.0-or-later
@@ -28,8 +28,9 @@ Source1:        preamble
 BuildRequires:  %kernel_module_package_buildreqs
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
-Requires:       xone-dongle-firmware >= 0+git20251208.d8be599
-Requires:       xone-kmp
+Requires:       xone-dongle-firmware
+Conflicts:      xone-dongle-firmware >= 0.1
+Requires:       xone-kmp = %{version}
 
 %kernel_module_package -n %name -p %_sourcedir/preamble
 
