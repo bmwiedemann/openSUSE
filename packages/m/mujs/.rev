@@ -168,4 +168,11 @@
 - update urls to codeberg and new website</comment>
     <requestid>1332991</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>7b6ec9e8f920fa3eb2ee8da6c2d915da</srcmd5>
+    <version>1.3.7</version>
+    <time>1771251778</time>
+    <user>anag_factory</user>
+    <comment>Breaks mpv and many packages are unbuildable because of this</comment>
+  </revision>
 </revisionlist>
