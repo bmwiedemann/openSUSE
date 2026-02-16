@@ -254,4 +254,17 @@
   * Add myip function</comment>
     <requestid>1328189</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b1426e2b42f5311739aca9003f00d96a</srcmd5>
+    <version>0.19.27</version>
+    <time>1771244073</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.27:
+  * zshrc: fix ROT13 alias (abk R)
+  * Install grml-chroot into /usr/sbin
+  * Conflict with old grml-scripts
+  * Import grml-chroot manpage
+  * zshrc: switch to myip.grml.org with IPv6 support</comment>
+    <requestid>1333292</requestid>
+  </revision>
 </revisionlist>
