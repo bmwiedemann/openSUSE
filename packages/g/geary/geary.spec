@@ -1,7 +1,7 @@
 #
 # spec file for package geary
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           geary
-Version:        46.0+61
+Version:        46.0+109
 Release:        0
 Summary:        An email reader for the GNOME desktop
 License:        BSD-2-Clause AND CC-BY-3.0 AND LGPL-2.1-or-later
@@ -37,8 +37,8 @@ BuildRequires:  xml2po
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(enchant-2) >= 2.1
 BuildRequires:  pkgconfig(folks)
-BuildRequires:  pkgconfig(gck-1)
-BuildRequires:  pkgconfig(gcr-3) >= 3.10.1
+BuildRequires:  pkgconfig(gck-2)
+BuildRequires:  pkgconfig(gcr-4)
 BuildRequires:  pkgconfig(gee-0.8) >= 0.8.5
 BuildRequires:  pkgconfig(gio-2.0) >= 2.68.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.68.0
@@ -54,8 +54,7 @@ BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(javascriptcoregtk-4.1)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libhandy-1) >= 1.6.0
-BuildRequires:  pkgconfig(libpeas-1.0) >= 1.24.0
-BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.24.0
+BuildRequires:  pkgconfig(libpeas-2)
 BuildRequires:  pkgconfig(libsecret-1) >= 0.11
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libunwind)

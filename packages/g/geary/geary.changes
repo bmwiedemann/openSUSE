@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Feb 12 10:34:49 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 46.0+109:
+  * vala-unit: use the build architecture g-ir-compiler
+  * vala-unit: meson: Bump minimal meson version to 1.7
+  * ComposerPageStateTest: Don't use NBSP directly
+  * Migrate to gcr-4 and gck-2
+  * Port plugins from libpeas-1 to libpeas-2
+  * Remove subprojects/.wraplock
+  * Follow GNOME Code of Conduct
+  * Rename meson_options.txt to meson.options
+  * meson: Bump minimal meson version to 1.7
+  * meson: Use SPDX identifier in project license
+  * Remvoe .gitattibutes
+  * Point old wiki links to the new Geary Gitlab wiki
+  * Drop COPYING.pyyaml
+  * Adapt vala-unit and tests to GLib 2.70 and later
+  * Create a config.vapi for config.h
+  * Remove .gitignore
+  * tests: Fix ComposerWebViewTest:get_html_for_draft
+  * desktop: Fix circular component name
+  * desktop: Remove the deprecated ".desktop" suffix from AppStream
+    app id
+  * webview: Don't register the same resources twice
+  * Updated translations.
+- Following upstreams ports: Drop pkgconfig(gck-1),
+  pkgconfig(gcr-3), pkgconfig(libpeas-1.0) and
+  pkgconfig(libpeas-gtk-1.0) BuildRequires. Add
+  pkgconfig(libpeas-2), pkgconfig(gck-2) and pkgconfig(gcr-4).
+
+-------------------------------------------------------------------
 Fri Nov 07 09:39:11 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 46.0+61:

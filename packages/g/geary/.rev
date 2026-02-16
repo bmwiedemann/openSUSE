@@ -633,4 +633,38 @@
     <comment></comment>
     <requestid>1318429</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>e0bb29728e9bb36d992b656d410cbb68</srcmd5>
+    <version>46.0+109</version>
+    <time>1771244020</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 46.0+109:
+  * vala-unit: use the build architecture g-ir-compiler
+  * vala-unit: meson: Bump minimal meson version to 1.7
+  * ComposerPageStateTest: Don't use NBSP directly
+  * Migrate to gcr-4 and gck-2
+  * Port plugins from libpeas-1 to libpeas-2
+  * Remove subprojects/.wraplock
+  * Follow GNOME Code of Conduct
+  * Rename meson_options.txt to meson.options
+  * meson: Bump minimal meson version to 1.7
+  * meson: Use SPDX identifier in project license
+  * Remvoe .gitattibutes
+  * Point old wiki links to the new Geary Gitlab wiki
+  * Drop COPYING.pyyaml
+  * Adapt vala-unit and tests to GLib 2.70 and later
+  * Create a config.vapi for config.h
+  * Remove .gitignore
+  * tests: Fix ComposerWebViewTest:get_html_for_draft
+  * desktop: Fix circular component name
+  * desktop: Remove the deprecated &quot;.desktop&quot; suffix from AppStream
+    app id
+  * webview: Don't register the same resources twice
+  * Updated translations.
+- Following upstreams ports: Drop pkgconfig(gck-1),
+  pkgconfig(gcr-3), pkgconfig(libpeas-1.0) and
+  pkgconfig(libpeas-gtk-1.0) BuildRequires. Add
+  pkgconfig(libpeas-2), pkgconfig(gck-2) and pkgconfig(gcr-4). (forwarded request 1333026 from iznogood)</comment>
+    <requestid>1333273</requestid>
+  </revision>
 </revisionlist>
