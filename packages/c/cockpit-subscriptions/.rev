@@ -113,4 +113,13 @@ outside of Factory
 - Update to version 14.4 for bsc#1257325/CVE-2025-13465</comment>
     <requestid>1331135</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>46757cb3c52d40f13de5717fd3a1ffd8</srcmd5>
+    <version>14.4</version>
+    <time>1771244061</time>
+    <user>anag_factory</user>
+    <comment>- Patch esbuild to use native runtime on ppc64 (bsc#1257698)
+  * added esbuild-ppc64.patch</comment>
+    <requestid>1333286</requestid>
+  </revision>
 </revisionlist>

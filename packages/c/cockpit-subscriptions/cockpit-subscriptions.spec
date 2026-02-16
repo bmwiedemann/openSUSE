@@ -27,6 +27,7 @@ Source11:       node_modules.spec.inc
 Source12:       update_version.sh
 %include %_sourcedir/node_modules.spec.inc
 Patch10:        load-css-overrides.patch
+Patch11:        esbuild-ppc64.patch
 
 BuildArch: noarch
 BuildRequires: local-npm-registry

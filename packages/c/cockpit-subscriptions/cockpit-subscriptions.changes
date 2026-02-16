@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 11 17:23:37 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Patch esbuild to use native runtime on ppc64 (bsc#1257698)
+  * added esbuild-ppc64.patch
+
+-------------------------------------------------------------------
 Thu Jan 29 09:14:56 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
 
 - Update to version 14.4 for bsc#1257325/CVE-2025-13465
