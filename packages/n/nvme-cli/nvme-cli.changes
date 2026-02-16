@@ -49,7 +49,7 @@ Fri Jan 09 16:22:17 UTC 2026 - Daniel Wagner <dwagner@suse.de>
   * plugins/memblaze: update smart-log-add-x ids
   * plugin/solidigm: Added EXTENDED vs-internal-log option.
   * nvme: fix timeout ioctl arguments
-  * nvme-list: make verbose JSON output backward compatible
+  * nvme-list: make verbose JSON output backward compatible (bsc#1250332)
   * nvme: Fix get-feature on big-endian systems
   * plugin/solidigm: Additional product Telemetry parsing support.
   * sndk: Add support for the Sandisk UUID
@@ -69,7 +69,7 @@ Fri Jul 25 11:09:41 UTC 2025 - Daniel Wagner <dwagner@suse.de>
   * build: bump libnvme wrap
   * sndk: Add support for retrieving data area 4
   * sndk: Add support for new PCI device id
-  * nvme-list: fix verbose JSON output for 'nvme list' command
+  * nvme-list: fix verbose JSON output for 'nvme list' command (bsc#1250332)
   * nvme-wrap: add power management and arbitration features functions
   * build: bump libnvme wrap
   * wdc: Fix for get-drive-status wdc plugin command
