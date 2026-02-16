@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Feb 12 19:43:48 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.0
+- Changes since 6.5.91:
+  * Update version for new release 6.6.0
+  * table: Ensure there is only one entry for nameAttribute
+  * table: Properly cleanup sorted columns
+
+-------------------------------------------------------------------
+Wed Jan 28 16:15:54 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.91
+- Changes since 6.5.90:
+  * Update version for new release 6.5.91
+  * applications: Match details header height to toolbar when visible
+  * applications: Replace custom splitter with SplitView
+  * applications: Change details pane charts to a more scalable layout (kde#506150)
+  * Fix table translation
+  * applicationstable: Base command column on sortfiler column
+  * processtable: Add columnMapping and use it for command column alignment
+  * faces: Adjust Signal to match changes to ProcessController
+  * faces: Change table context menu to be modal (kde#505793)
+  * faces/applications: Add some more services to Background Services group
+  * faces/applications: Show Show Details action instead of Configure Columns (kde#511855)
+  * table: Make ReniceDialog modal (kde#514707)
+  * faces: Round context menu popup location for tables (kde#514785)
+
+-------------------------------------------------------------------
+Sat Jan 17 20:29:16 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Jan 13 14:41:27 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.5.5:
