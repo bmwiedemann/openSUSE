@@ -1,8 +1,8 @@
 #
 # spec file for package hexyl
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2022-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2022-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,17 @@
 
 
 Name:           hexyl
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        A command-line hex viewer
-License:        Apache-2.0
+License:        Apache-2.0 OR MIT
 Group:          Development/Tools/Other
 #Git-Clone:     https://github.com/sharkdp/hexyl.git
 URL:            https://github.com/sharkdp/hexyl
 Source:         https://github.com/sharkdp/hexyl/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
-BuildRequires:  cargo
 BuildRequires:  cargo-packaging
-BuildRequires:  rust
+BuildRequires:  pandoc
 
 %description
 hexyl is a simple hex viewer for the terminal. It uses a colored output
@@ -40,20 +38,25 @@ and non-ASCII).
 
 %prep
 %autosetup -p 1 -a 1
-install -D -m 0644 %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}
+pandoc --standalone --to man ./doc/hexyl.1.md -o hexyl.1
 
 %check
 %{cargo_test}
 
 %install
 cargo install --no-track --root=%{buildroot}%{_prefix} --path .
+install -Dm 0644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
+%{buildroot}%{_bindir}/%{name} --completion bash > %{name}.bash
+install -Dm 0644 %{name}.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 
 %files
-%license LICENSE-APACHE
+%license LICENSE-APACHE LICENSE-MIT
 %doc CHANGELOG.md README.md
 %{_bindir}/hexyl
+%{_datadir}/bash-completion/completions/%{name}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Feb 14 15:14:11 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.17.0
+  * Enable custom colors with environment variables.
+  * Add new braille character table and color schemes.
+  * Add shell completion.
+  * Add option to output result in C include file style.
+  * Fix some clippy warnings.
+  * Fix issue #238.
+  * Check if terminal_width is less than offset and return 1 (#244)
+  * Add colors to --help.
+  * feat: handle standard input "-".
+- Package bash-completion.
+- Package manpage.
+
+-------------------------------------------------------------------
 Sun Jan 26 16:48:27 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.16.0
