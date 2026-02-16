@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Feb  6 14:25:54 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.23.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.23.0
+- Changes since 6.22.0:
+  * Update dependency version to 6.23.0
+  * ToolbarLayout: Don't draw frames with an empty toolbar (kde#512396)
+  * Make the global background actually invisible
+  * Enable back button on first page in RTL (kde#511295)
+  * ActionToolBar: fix actions showing both in toolbar and in hidden actions menu
+  * Add new Kirigami logo
+  * Revert "Temporarily drop test case that is broken with Qt 6.11"
+  * MnemonicAttached: move to primitives
+  * Fix inline drawers in RTL layout
+  * Do an opacity animation for the menu layers
+  * GlobalDrawer: default size according to contents (kde#505693)
+  * SelectableLabel: don't break coordinates of global ToolTip instance (kde#510860)
+  * controls/SwipeListItem: fix action positions in RtL
+  * ShadowedRectangle: Improve visuals when blending a texture
+  * make types more explicit for tooling
+  * make action handling linter-friendly
+  * templates/private: fix qmldir
+  * placeholdermessage: don't bind maximum to explicit width
+  * PlaceholderMessage: handle unusually long text better (kde#514164)
+  * BannerImage: Don't shadow implicitWidth property
+  * Fix Android icon bundling
+  * Update version to 6.23.0
+
+-------------------------------------------------------------------
 Sun Jan  4 14:47:14 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.22.0

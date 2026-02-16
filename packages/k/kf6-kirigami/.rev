@@ -244,4 +244,12 @@
     <comment>KDE Frameworks 6.22 (forwarded request 1325304 from krop)</comment>
     <requestid>1326433</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5957c5915607724964cca0aec2c2ccff</srcmd5>
+    <version>6.23.0</version>
+    <time>1771243367</time>
+    <user>anag_factory</user>
+    <comment>KDE Frameworks 6.23 (forwarded request 1332889 from krop)</comment>
+    <requestid>1332936</requestid>
+  </revision>
 </revisionlist>
