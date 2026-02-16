@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 14 08:26:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.223.0:
+  * Features
+    - add support to policy for pod-identity-association create and
+      update (#8674)
+  * Bug Fixes
+    - change ubuntu ami family to 2404 (#8670)
+
+-------------------------------------------------------------------
 Mon Feb 09 06:27:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.222.0:
