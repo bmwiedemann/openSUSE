@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Jan 25 18:12:49 UTC 2026 - Nicolas Morey <nmorey@suse.com>
+
+- Update to v5.0.0
+  - ADI
+    - MPID_Comm_get_lpid removed
+    - MPID_Intercomm_exchange_map renamed to MPID_Intercomm_exchange
+      and parameters now include tag, context_id, and will
+      perform context_id exchange and lpid exchange.
+  - CH4:OFI
+    - added native RNDV feature
+  - General
+    - MPI_VERSION/MPI_SUBVERSION updated to 5 and 0.
+      MPICH now supports the MPI 5.0 standard.
+    - MPIR_CHKLMEM_ and MPIR_CHKPMEM_ macros are simplified
+    - Rename MPIR_CVAR_DEBUG_PROGRESS_TIMEOUT to MPIR_CVAR_PROGRESS_TIMEOUT
+    - MPICH now generates the MPI-IO bindings when ROMIO is build inside MPICH.
+    - Yaksa is now maintained inside MPICH rather than as an external submodule.
+    - Added internal builtin datatypes and external builtin datatypes are mapped to internal types
+    - Removed MPIR_Find_{local,external}. Added in MPIR_Comm struct.
+    - Use MPIR_Comm_get_{node,node_roots}_comm to obtain node_comm and node_roots_comm.
+    - Added MPI_LOGICAL1, MPI_LOGICAL2, MPI_LOGICAL4, MPI_LOGICAL8, and MPI_LOGICAL16.
+    - Added MPIX_BFLOAT16, and added software reduction support for
+      MPIX_BFLOAT16 and MPIX_C_FLOAT16.
+    - Reworked AVX and AVX512 support.
+    - PMI 2 is now deprecated. Please consider switching to PMI 1.
+    - PMI 2 thread support is removed.
+    - PMI 1 upgraded to PMI 1.2, adding new API PMI_Barrier_group.
+    - MPI_Session_init default to MPI_THREAD_MULTIPLE. Thread levels are global.
+    - Internal collective interface replaces the last parameter
+      "MPIR_Errflag_t errflag" with "int coll_attr".
+- Refresh ch4-shm-fix-data-type-for-recv_bytes-in-MPIDI_POSIX_mpi_release_gather_release.patch
+- Drop patch picked upstream romio-test-fix-bad-snprintf-arguments.patch
+
+-------------------------------------------------------------------
 Tue Nov  4 17:54:18 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Use external hwloc

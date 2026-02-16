@@ -70,7 +70,7 @@ ExclusiveArch:  do_not_build
 %define package_name %{pname}%{?pack_suff}
 
 Name:           %{package_name}%{?testsuite:-testsuite}
-Version:        4.3.2
+Version:        5.0.0
 Release:        0
 Summary:        High-performance and widely portable implementation of MPI
 License:        MIT
@@ -83,8 +83,7 @@ Source100:      _multibuild
 Source101:      README.md
 Patch1:         autogen-only-deal-with-json-yaksa-if-enabled.patch
 Patch2:         autoconf-pull-dynamic-and-not-static-libs-from-pkg-config.patch
-Patch3:         romio-test-fix-bad-snprintf-arguments.patch
-Patch4:         ch4-shm-fix-data-type-for-recv_bytes-in-MPIDI_POSIX_mpi_release_gather_release.patch
+Patch3:         ch4-shm-fix-data-type-for-recv_bytes-in-MPIDI_POSIX_mpi_release_gather_release.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  fdupes
