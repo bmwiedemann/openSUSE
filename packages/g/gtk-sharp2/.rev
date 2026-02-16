@@ -375,4 +375,12 @@
     <comment>- Drop gtkhtml2-devel BuildRequires: Not used, nor needed. (forwarded request 1309755 from iznogood)</comment>
     <requestid>1311705</requestid>
   </revision>
+  <revision rev="55" vrev="6">
+    <srcmd5>28db3859a896c480e9fa30b6562c76dc</srcmd5>
+    <version>2.12.45</version>
+    <time>1771243780</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1333146</requestid>
+  </revision>
 </revisionlist>

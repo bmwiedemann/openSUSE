@@ -1,7 +1,7 @@
 #
 # spec file for package gtk-sharp2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,6 @@ BuildRequires:  mono-devel
 BuildRequires:  monodoc-core
 %endif
 BuildRequires:  pkg-config
-BuildRequires:  update-desktop-files
 BuildRequires:  vte-devel
 Version:        2.12.45
 Release:        0
