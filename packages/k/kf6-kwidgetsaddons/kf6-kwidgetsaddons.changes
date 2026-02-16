@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb  6 14:26:01 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.23.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.23.0
+- Changes since 6.22.0:
+  * Update dependency version to 6.23.0
+  * KPageView: Check for valid indices during list search (kde#496143)
+  * kactionmenu: Use delegating constructor
+  * Add test for KActionMenu
+  * Clean up touch device in tests
+  * kpageview: Don't leak NoPaddingToolBarProxyStyle
+  * kacceleratormanagertest: Don't leak action
+  * KCollapsibleGroupBox: Fix arrow indicator not updating immediately
+  * Update version to 6.23.0
+
+-------------------------------------------------------------------
 Sun Jan  4 14:47:21 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.22.0
