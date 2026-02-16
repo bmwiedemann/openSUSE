@@ -1,4 +1,133 @@
 -------------------------------------------------------------------
+Sun Feb 15 12:17:31 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 1.19.8:
+  * chore: Release juliaup version 1.19.8
+  * Try to use .dmg installers on macOS before .tar.gz (#1320)
+  * Pin cross-rs i686-unknown-linux-gnu image to fix GLIBC_2.28 build failure (#1415)
+
+-------------------------------------------------------------------
+Sat Sep 20 01:28:18 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 1.18.0:
+  * chore: Release juliaup version 1.18.0
+  * Expand `link` to handle aliases. DRY tests mechanics. (#1237)
+  * README: Give explicit example of the `--path` argument for installing Juliaup into a custom location (#1247)
+  * Update version db (#1244)
+  * feat: colored + wrapped help menu (#1234)
+  * Offer to / automatically install versions via channel selection (#1218)
+  * Fix clippy warnings (#1233)
+  * add nushell completions (#1232)
+  * Replace unmaintained human_sort with numeric_sort (#1222)
+  * Merge pull request #1205 from ghyatzo/patch-fixgc
+  * Merge pull request #1189 from christiangnrd/issue1170
+  * Only check for direct download versions when necessary
+  * Merge pull request #1220 from nategphillips/curl-v8.10.0-tls_cipher-fix
+  * fix: incorrect TLS and cipher warnings with curl v8.10.0
+  * Update version db (#1217)
+  * Update version db (#1215)
+  * Update version db (#1214)
+  * Update version db (#1209)
+  * chore: Release juliaup version 1.17.21
+  * Fix store submission error
+  * Update version db (#1207)
+  * canonicalize path to delete
+  * print something when there is nothing to delete
+  * use pattern matching instead
+  * don't orphan previous julia version if failed to remove them
+  * chore: Release juliaup version 1.17.20
+  * Use latest PowerShell for StoreBroker
+  * Update version db (#1202)
+  * chore: Release juliaup version 1.17.19
+  * chore: Release juliaup version 1.17.18
+  * Merge pull request #1199 from JuliaLang/deps-update
+  * Update deps
+  * Update version db (#1197)
+  * chore: Release juliaup version 1.17.17
+  * Run all tests on FreeBSD
+  * Update FreeBSD version
+  * Fix tests on FreeBSD
+  * chore: Release juliaup version 1.17.16
+  * Fix small bug
+  * chore: Release juliaup version 1.17.15
+  * Disable a test
+  * chore: Release juliaup version 1.17.14
+  * Use julia name and ID for msstore install (#1192)
+  * Update version db (#1193)
+  * Update version db (#1181)
+  * chore: Release juliaup version 1.17.13
+  * Merge branch 'main' of https://github.com/JuliaLang/juliaup
+  * Update a github action
+  * Merge pull request #1140 from JuliaLang/dependabot/github_actions/azure/trusted-signing-action-0.5.1
+  * chore: Release juliaup version 1.17.12
+  * Merge pull request #1158 from JuliaLang/update-deps
+  * Update deps
+  * Merge pull request #1155 from JuliaLang/fix-unavailable-pr-channels
+  * Merge branch 'main' into fix-unavailable-pr-channels
+  * Format
+  * Fix unavailable PR download on non Windows platforms
+  * Update version db (#1154)
+  * Fix unavailable PR channels on Windows
+  * Merge pull request #1145 from KristofferC/kc/nightly_release
+  * Update version db (#1152)
+  * support `x.y-nightly` channel to allow testing nightlies on release branches
+  * chore: Release juliaup version 1.17.11
+  * Merge pull request #1142 from JuliaLang/update-deps
+  * Fix a bug
+  * Update deps
+  * chore(deps): bump azure/trusted-signing-action from 0.4.0 to 0.5.1
+  * Merge pull request #1131 from JuliaLang/update-deps
+  * Make a test more Julia version agnostic
+  * Update deps
+  * Update version db (#1119)
+  * Update version db (#1118)
+  * Merge pull request #1097 from JuliaLang/ib/inform_slow_nightly_check
+  * Update deps
+  * Merge pull request #1106 from JuliaLang/update-deps
+  * Update deps
+  * fix imports
+  * Apply suggestions from code review
+  * make specific to channel via generic run_with_slow_message
+  * restore imports
+  * Apply suggestions from code review
+  * If nightly check is going slowly inform user
+  * Update deps
+  * Merge pull request #1094 from JuliaLang/revert-1087-manifest
+  * Revert "Launch the manifest-specified Julia version v2"
+  * Merge pull request #1087 from JuliaLang/manifest
+  * Format
+  * Format
+  * Fix default --project handling
+  * Update version db (#1091)
+  * chore: Release juliaup version 1.17.10
+  * Update deps
+  * Merge pull request #1084 from christiangnrd/emptyversion
+  * Update src/command_update.rs
+  * Add some tests
+  * Fix a call signature bug
+  * Merge branch 'main' into manifest-destiny
+  * Format
+  * Prevent compiler warning without panicking
+  * Merge pull request #1082 from JuliaLang/ui-for-versiondb-update
+  * Format
+  * Update src/operations.rs
+  * Fix a test
+  * Add a eprintln! when the version db is updated
+  * Update deps
+  * Merge pull request #1081 from JuliaLang/dependabot/github_actions/dawidd6/action-homebrew-bump-formula-4
+  * Merge pull request #1077 from JuliaLang/create-pull-request/patch
+  * chore(deps): bump dawidd6/action-homebrew-bump-formula from 3 to 4
+  * Update version db
+  * Merge branch 'main' into pr/tecosaur/1059
+  * Merge branch 'main' into pr/tecosaur/1059
+  * Use correct way to show error message when launching from manifest
+  * Merge branch 'main' into pr/tecosaur/1059
+  * Use config setting for manifest launch
+  * Launch exact Julia version from manifest
+  * Add featuremanifestsupport config option
+  * Launch the manifest-specified Julia version
+
+-------------------------------------------------------------------
 Fri May  9 18:32:05 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.17.19:
