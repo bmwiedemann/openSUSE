@@ -277,4 +277,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1300018</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>963b0b90d3fa3450aed05e04b9e7ea5e</srcmd5>
+    <version>5.24.0</version>
+    <time>1771243876</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 5.24.0:
+  * Add texlab.hover.symbols setting to allow turning off image preview for symbol-like commands
+  * Add command definitions to document and workspace symbols
+  * Add texlab.experimental.glossaryReferenceCommands setting
+  * Treat \includefrom as \include-like command
+</comment>
+    <requestid>1333191</requestid>
+  </revision>
 </revisionlist>

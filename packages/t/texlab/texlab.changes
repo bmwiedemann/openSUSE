@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb 15 12:06:07 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 5.24.0:
+  * Add texlab.hover.symbols setting to allow turning off image preview for symbol-like commands
+  * Add command definitions to document and workspace symbols
+  * Add texlab.experimental.glossaryReferenceCommands setting
+  * Treat \includefrom as \include-like command
+
+-------------------------------------------------------------------
 Mon Aug 11 06:48:41 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 5.23.1:
