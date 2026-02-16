@@ -25,6 +25,7 @@ Source:         %{name}-%{version}.tar.xz
 Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 Patch10:        load-css-overrides.patch
+Patch11:        esbuild-ppc64.patch
 %include %_sourcedir/node_modules.spec.inc
 BuildArch: noarch
 %if ! 0%{?suse_version}
@@ -56,6 +57,7 @@ A cockpit module for (un)installing packages
 %prep
 %setup -q -n %{name}-%{version}
 %patch -P 10 -p1
+%patch -P 11 -p1
 rm -rf node_modules
 rm -f package-lock.json
 local-npm-registry %{_sourcedir} install --include=dev --ignore-scripts
