@@ -54,6 +54,12 @@ Patch11:        libsoup-CVE-2026-0716.patch
 Patch12:        libsoup-CVE-2026-1536.patch
 # PATCH-FIX-UPSTREAM libsoup-CVE-2026-1761.patch bsc#1257598, CVE-2026-1761, glgo#GNOME/libsoup!496 sckang@suse.com -- multipart: check length of bytes read soup_filter_input_stream_read_until()
 Patch13:        libsoup-CVE-2026-1761.patch
+# PATCH-FIX-OPENSUSE libsoup-CVE-2025-32049.patch bsc#1240751 mgorse@suse.com -- add size limit for total message size.
+Patch14:        libsoup-CVE-2025-32049.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2026-2443.patch bsc#1243170 mgorse@suse.com -- fix out-of-bounds read when processing range headers.
+Patch15:        libsoup-CVE-2026-2443.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2026-2369.patch bsc#1258120 mgorse@suse.com -- handle potential underflow in the content sniffer.
+Patch16:        libsoup-CVE-2026-2369.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.53

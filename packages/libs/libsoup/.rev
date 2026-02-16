@@ -1372,4 +1372,12 @@
   (bsc#1257598, CVE-2026-1761, glgo#GNOME/libsoup!496). (forwarded request 1330655 from JonathanKang)</comment>
     <requestid>1330729</requestid>
   </revision>
+  <revision rev="164" vrev="13">
+    <srcmd5>3532e524af5cf2edc828de5c1496bcdc</srcmd5>
+    <version>3.6.5</version>
+    <time>1771244591</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1333050</requestid>
+  </revision>
 </revisionlist>

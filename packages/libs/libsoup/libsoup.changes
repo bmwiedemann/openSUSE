@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 14 09:45:23 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add more CVE fixes:
+  + libsoup-CVE-2025-32049.patch (bsc#1240751 CVE-2025-32049
+    glgo#GNOME/libsoup#390)
+  + libsoup-CVE-2026-2443.patch (bsc#1258170 CVE-2026-2443
+    glgo#GNOME/libsoup#487)
+  + libsoup-CVE-2026-2369.patch (bsc#1258120 CVE-2026-2369
+    glgo#GNOME/libsoup!508)
+
+-------------------------------------------------------------------
 Tue Feb  3 01:52:48 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add libsoup-CVE-2026-1536.patch: Always validate the headers
