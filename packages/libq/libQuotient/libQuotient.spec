@@ -1,7 +1,7 @@
 #
 # spec file for package libQuotient
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ ExclusiveArch:  do_not_build
 %define sonum 0.9
 %define rname libQuotient
 Name:           libQuotient%{?pkg_suffix}
-Version:        0.9.5
+Version:        0.9.6
 Release:        0
 Summary:        Library for Qt Matrix Clients
 License:        LGPL-2.1-only

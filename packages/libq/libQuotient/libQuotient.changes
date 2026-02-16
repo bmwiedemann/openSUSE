@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Feb 15 21:09:13 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.9.6
+  * Connection object name now actually includes device id once
+    authentication is done
+  * emit SSSSHandler::keyBackupUnlocked when receiving backup
+    key from another device
+  * Deprecate encryption pickle operations in AccountSettings
+  * Improving build configuration with libQuotient
+  * Assume authenticated media API is available before the homeserver
+    returns versions - helps with avatars sometimes not showing
+  * Fix potential undefined behaviour when marking messages as read
+  * Make stable branch compatible with Qt 6.10
+  * Add missing hasOlmSession check in sendToDevice
+  * Connection::join(AndGet)Room(): return the right room object
+  * Make sure the original messages get hidden when an edit is
+    available
+  * Performance improvement for rooms with many leaves
+    accumulating over time
+
+-------------------------------------------------------------------
 Sat Sep 20 13:12:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.9.5
