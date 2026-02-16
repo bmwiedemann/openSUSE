@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Feb  6 14:25:53 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.23.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.23.0
+- Changes since 6.22.0:
+  * Update dependency version to 6.23.0
+  * Fix oss-fuzz AFL build (again)
+  * Fix OSS-Fuzz AFL builds
+  * IFF: add uncompressed RGFX support
+  * IFF: add CD-i Rle7 support
+  * Decode Atari ST VDAT chunks
+  * IFF: add support for CD-i YUVS chunk (and minor code improvements)
+  * Add support for CD-I IFF images
+  * Add JXL testfile which previously triggered crash
+  * jxl: fix crash on lossy gray images
+  * Add gray AVIF files with various transfer functions
+  * avif: Improved color profiles support
+  * Update version to 6.23.0
+
+-------------------------------------------------------------------
 Sun Jan  4 14:47:13 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.22.0
