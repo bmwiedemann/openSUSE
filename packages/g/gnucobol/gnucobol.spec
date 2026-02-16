@@ -50,6 +50,7 @@ BuildRequires:  pkgconfig(ncurses) >= 5.4
 # esql
 BuildRequires:  unixODBC-devel
 BuildRequires:  gcc-c++
+Requires:       gcc
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
 Provides:       gnu-cobol = %{version}
@@ -83,7 +84,7 @@ Summary:        ESQL for GnuCOBOL
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 
 %description -n esql
-Esql provides the possibility to use Cobol code in combination with databases.
+Provides the possibility to use Cobol code in combination with databases.
 
 %package -n esql-devel
 Summary:        Devel package for ESQL
@@ -91,7 +92,7 @@ License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Requires:       unixODBC
 
 %description -n esql-devel
-Devel package for ESQL for GnuCOBOL
+ESQL Devel package for GnuCOBOL
 
 %prep
 %autosetup -p1 -n %{name}-%{version}
@@ -106,8 +107,8 @@ export CFLAGS
 %configure \
         --with-db \
         --with-xml2 \
-        --with-curses \
-        --with-json \
+        --with-curses=ncursesw \
+        --with-json=json-c \
         --enable-hardening \
         --enable-static=no
 %make_build
@@ -152,7 +153,14 @@ make -j4 test
 %{_libdir}/libcob.so
 %dir %{_libdir}/gnucobol/
 %{_libdir}/gnucobol/CBL_OC_DUMP.so
-%{_includedir}/*
+%{_includedir}/libcob.h
+%dir %{_includedir}/libcob
+%{_includedir}/libcob/cobgetopt.h
+%{_includedir}/libcob/common.h
+%{_includedir}/libcob/exception-io.def
+%{_includedir}/libcob/exception.def
+%{_includedir}/libcob/statement.def
+%{_includedir}/libcob/version.h
 %{_mandir}/man1/cob-config.1%{ext_info}
 %{_mandir}/man1/cobc.1%{ext_info}
 %{_mandir}/man1/cobcrun.1%{ext_info}

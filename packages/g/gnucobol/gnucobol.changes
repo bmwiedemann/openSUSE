@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  6 16:42:32 UTC 2026 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Extension of build options --with-curses and --with-json
+- Fix warnings
+
+-------------------------------------------------------------------
 Mon Feb  2 16:30:56 UTC 2026 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Update keyring from the latest version from gnu ftp server
