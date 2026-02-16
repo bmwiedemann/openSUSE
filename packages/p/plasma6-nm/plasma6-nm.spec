@@ -30,14 +30,14 @@
 %bcond_without openconnect
 %endif
 Name:           plasma6-nm
-Version:        6.5.5
+Version:        6.6.0
 Release:        0
 Summary:        Plasma applet written in QML for managing network connections
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
@@ -86,6 +86,8 @@ Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kf6-networkmanager-qt-imports >= %{kf6_version}
 Requires:       kf6-prison-imports >= %{kf6_version}
 Requires:       kwalletd6
+# It uses QRCA for adding WiFi networks through QR codes
+Requires:       qrca
 # The KCM desktop files launch systemsettings
 Requires:       systemsettings6
 Recommends:     mobile-broadband-provider-info
@@ -285,6 +287,7 @@ FortiGate SSL VPN plugin for plasma-nm components.
 %{_kf6_applicationsdir}/kcm_cellular_network.desktop
 %{_kf6_applicationsdir}/kcm_mobile_hotspot.desktop
 %{_kf6_applicationsdir}/kcm_mobile_wifi.desktop
+%{_kf6_applicationsdir}/kcm_mobile_wired.desktop
 %{_kf6_applicationsdir}/kcm_networkmanagement.desktop
 %{_kf6_applicationsdir}/org.kde.vpnimport.desktop
 %{_kf6_debugdir}/plasma-nm.categories
@@ -295,6 +298,7 @@ FortiGate SSL VPN plugin for plasma-nm components.
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_cellular_network.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mobile_hotspot.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mobile_wifi.so
+%{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mobile_wired.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_networkmanagement.so
 %dir %{_kf6_plugindir}/plasma/applets/
 %{_kf6_plugindir}/plasma/applets/org.kde.plasma.networkmanagement.so
