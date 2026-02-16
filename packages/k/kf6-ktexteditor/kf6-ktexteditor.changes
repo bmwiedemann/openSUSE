@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb  6 14:25:59 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.23.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.23.0
+- Too many changes since 6.22.0, only listing bugfixes:
+  * proper handling of tabs in virtual cursor setting (kde#513898)
+  * clear m_speechEngineLastUser early to avoid that it is used in error handling for speechError (kde#514375)
+
+-------------------------------------------------------------------
 Sun Jan  4 14:47:19 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.22.0
