@@ -18,11 +18,9 @@
 #!BuildTag: opensuse/bci/nodejs:%%nodejs_version%%-%RELEASE%
 #!BuildTag: opensuse/bci/nodejs:%%nodejs_version%%
 #!BuildTag: opensuse/bci/nodejs:22
-#!BuildTag: opensuse/bci/nodejs:latest
 #!BuildTag: opensuse/bci/node:%%nodejs_version%%-%RELEASE%
 #!BuildTag: opensuse/bci/node:%%nodejs_version%%
 #!BuildTag: opensuse/bci/node:22
-#!BuildTag: opensuse/bci/node:latest
 
 FROM opensuse/tumbleweed:latest
 
