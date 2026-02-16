@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Feb  6 14:25:51 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.23.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.23.0
+- Changes since 6.22.1:
+  * Update dependency version to 6.23.0
+  * Add Android support for idle inhibition
+  * WaylandClipboard: fix pasting text when QMimeData also has an image (kde#513701)
+  * add KSystemInhibitor as frontend to the xdg-desktop-portal inhibition system
+  * Restore building with wayland < 1.23.0
+  * ksystemclipboard: Check m_thread in destructor (kde#514512)
+  * examples/python: add an example for KSystemClipboard
+  * python: fix crash when using KSystemClipboard::setMimeData
+  * python: specify enum type for KKeySequenceRecorder::Pattern
+  * KImageCache: make findPixmap destination QPixmap have alpha channel if inserted QPixmap had alpha channel
+  * Add another explicit moc include to source file for moc-covered header
+  * Update version to 6.23.0
+
+-------------------------------------------------------------------
 Tue Jan 13 17:57:44 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.22.1
