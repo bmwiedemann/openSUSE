@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Feb 12 19:44:08 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.0
+- Changes since 6.5.91:
+  * Update version for new release 6.6.0
+  * appchooserdialog: add a convenience property for the cast to itemdelegate
+  * appchooserdialog: set a shortcut on the search field
+  * appchooserdialog: repair single selection logic (kde#515531)
+  * appchooserdialog: force claim the focus for the search field (kde#515530)
+  * appchooserprivate: Resolve history to names (kde#506513)
+  * clipboard: Run data fetching in the correct thread
+
+-------------------------------------------------------------------
+Wed Jan 28 16:18:07 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.91
+- Changes since 6.5.90:
+  * Update version for new release 6.5.91
+  * appchooserdialog: fix focus handling
+  * globalshortcutsdialog: simplify
+  * usbdialog: simplify
+  * typo--
+  * portaldialog: let impls disable the content padding
+  * portaldialog: prevent excess flexbox spacing even more reliably
+  * portaldialog: make flexbox height calculation easier to understand
+  * screenchooserdialog: do not try to access buttons that do not exist
+  * screenchooserdialog: coalesce to bool to fix warning
+  * screenchooserdialog: make the models null when not applicable
+  * pipewiredelegate: make sure the card has hover and click feedback
+  * screenchooserdialog: use more space by default
+  * portaldialog: use more space by default
+  * pipewirelayout: squeeze more synthetic delegates into a cell
+  * portaldialog: drop excess colorset setting
+  * appchooser,globalshortcuts,usbdialog: port to new scrollable tech
+  * userinfodialog: fix excess i18n argument
+  * screenchooserdialog: delegate scrollability to portaldialog
+  * portaldialog: add new property to set the main content scrollable
+  * screenchooserdialog: add filter/search capability
+
+-------------------------------------------------------------------
+Sat Jan 17 20:31:00 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Jan 13 14:42:26 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.5.5:
