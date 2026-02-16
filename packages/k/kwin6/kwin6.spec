@@ -29,14 +29,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwin6
-Version:        6.5.5
+Version:        6.6.0
 Release:        0
 Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  doxygen
@@ -295,8 +295,11 @@ This package provides development files.
 %{_kf6_plugindir}/kwin/plugins/BounceKeysPlugin.so
 %{_kf6_plugindir}/kwin/plugins/KeyNotificationPlugin.so
 %{_kf6_plugindir}/kwin/plugins/StickyKeysPlugin.so
+%{_kf6_plugindir}/kwin/plugins/SlowKeysPlugin.so
 %{_kf6_plugindir}/kwin/plugins/buttonsrebind.so
+%if %{pkg_vcmp pkgconfig(libeis-1.0) >= 1.4}
 %{_kf6_plugindir}/kwin/plugins/eis.so
+%endif
 %{_kf6_plugindir}/kwin/plugins/krunnerintegration.so
 %{_kf6_plugindir}/kwin/plugins/nightlight.so
 %{_kf6_plugindir}/kwin/plugins/MouseKeysPlugin.so
