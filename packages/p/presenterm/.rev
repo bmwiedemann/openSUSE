@@ -469,4 +469,41 @@
   * Follow custom theme symlinks (#692).</comment>
     <requestid>1297399</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a5b93ca2e851037ef2e8c539c4872e72</srcmd5>
+    <version>0.16.0</version>
+    <time>1771244077</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.16.0:
+  Breaking changes:
+  * Sixel is now supported in all platform and enabled by default. The will
+    break any build scripts that enable the sixel feature flag since that is
+    now gone. Any maintainer that is building the package and enabling that
+    flag should no longer do so (#828).
+  New features:
+  * Allow executing snippets inside a PTY. This allows you to run tools that
+    move the cursor around and redraw the terminal inside a slide (e.g. top,
+    htop, etc). (#781) (#794) (#809) (#788) (#808) (#807) (#789).
+  * Use icy_sixel crate instead of sixel-rs. icy_sixel is a pure rust crate
+    which simplifies code distribution and allows enabling sixel support by
+    default (#818)
+  * Add support for user comments in presentation rendering (#773).
+  * Allow passing in a mermaid config file (#833).
+  * Allow specifying mmdc puppeteer config path (#830) (#842).
+  * Add keymap to toggle layout grid (#718).
+  * Add +auto_exec attribute to snippets (#732).
+  * Update bat themes/syntaxes to latest to support a few new themes (#811).
+  * Add tokyonight moon/day/night themes (#751)
+  * Allow configuring a global alignment in theme (#801).
+  * Add dynamic theme option (light/dark) based on terminal color (#778)
+  * Add common es executors and support jsx and ts(x) snippets (#783)
+  * Allow configuring code block line numbers at theme level (#771).
+  * Allow setting prefix on slide titles (#739).
+  * Allow configuring whether first h1 heading is slide title (#738) (#756).
+  * Allow styling bold/italics (#737).
+  * Respect pause in speaker notes (#735).
+  * Add --list-comment-commands cli option (#723)
+  * Allow setting headings to be bold/italics/underlined (#721).</comment>
+    <requestid>1333290</requestid>
+  </revision>
 </revisionlist>

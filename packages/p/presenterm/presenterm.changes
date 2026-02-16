@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon Feb 16 08:59:36 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  Breaking changes:
+  * Sixel is now supported in all platform and enabled by default. The will
+    break any build scripts that enable the sixel feature flag since that is
+    now gone. Any maintainer that is building the package and enabling that
+    flag should no longer do so (#828).
+  New features:
+  * Allow executing snippets inside a PTY. This allows you to run tools that
+    move the cursor around and redraw the terminal inside a slide (e.g. top,
+    htop, etc). (#781) (#794) (#809) (#788) (#808) (#807) (#789).
+  * Use icy_sixel crate instead of sixel-rs. icy_sixel is a pure rust crate
+    which simplifies code distribution and allows enabling sixel support by
+    default (#818)
+  * Add support for user comments in presentation rendering (#773).
+  * Allow passing in a mermaid config file (#833).
+  * Allow specifying mmdc puppeteer config path (#830) (#842).
+  * Add keymap to toggle layout grid (#718).
+  * Add +auto_exec attribute to snippets (#732).
+  * Update bat themes/syntaxes to latest to support a few new themes (#811).
+  * Add tokyonight moon/day/night themes (#751)
+  * Allow configuring a global alignment in theme (#801).
+  * Add dynamic theme option (light/dark) based on terminal color (#778)
+  * Add common es executors and support jsx and ts(x) snippets (#783)
+  * Allow configuring code block line numbers at theme level (#771).
+  * Allow setting prefix on slide titles (#739).
+  * Allow configuring whether first h1 heading is slide title (#738) (#756).
+  * Allow styling bold/italics (#737).
+  * Respect pause in speaker notes (#735).
+  * Add --list-comment-commands cli option (#723)
+  * Allow setting headings to be bold/italics/underlined (#721).
+  * Add typescript-react/tsx highlighting (#777)
+  * Add dart code highlighting #779 (#780)
+  * Add ms windows executors and highlight (cmd, wsl, bat, pwsh) (#799)
+  * Add Elixir to executors (#709)
+  * Support gdscript syntax highlighting (#820)
+  Fixes:
+  * Use right size for footer images (#840).
+  * Don't crash when exporting +image snippets (#827).
+  * Clippy useless conversion (#805)
+  * Preserve footnote definition location (#803).
+  * Respect global alignment for lists (#802).
+  * Don't crash sending event if presentation is in error state (#800).
+  * Highlight php code even if it doesn't start with "<?php" (#796).
+  * Handle dark/light colors properly when converting from 8bt (#793).
+  * Use legible color in tokyonight-day's block quote/alert style (#792).
+  * Allow column layouts in included files (#776).
+  * Use show_pauses in sample config (#745).
+  * Don't consider prefix part of the title (#740).
+  * Keep state between pauses on pause-new-slide (#731).
+  * Don't add extra heading lines depending on font size (#719).
+  * Consider color range 0x08.. - 0x0f.. in bat themes (#706).
+  Chore:
+  * Increase async render polling speed (#806).
+  * Add script to generate config file json schema (#791).
+  * Restructure snippet execution attributes (#787).
+  * Bump dependencies (#772).
+  * Unify text styling based on theme (#734).
+  Docs:
+  * Fix typo in config theme section (#804)
+  * Fix typo in code execution docs (#782)
+  * Sync supported terminals (#722)
+  * Document overflow validation (#712).
+  * Add new sample presentation about ratatui on embedded (#817)
+  * Add new sample presentation about Hayasen library (#813)
+
+-------------------------------------------------------------------
 Mon Aug  4 06:57:12 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.15.1:
