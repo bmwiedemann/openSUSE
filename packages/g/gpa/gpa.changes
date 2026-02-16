@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 12 21:44:18 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.11.1:
+  + Fix a crash due to bad marshaling
+- drop patches included upstream:
+  + gpa-0.11.0-drop-trustlist.patch
+  + gpa-0.11.0-fix-implicit-declaration.patch
+
+-------------------------------------------------------------------
 Fri Jul 18 07:03:27 UTC 2025 - Yifan Jiang <yfjiang@suse.com>
 
 - Add gpa-0.11.0-drop-trustlist.patch: the trustlist is no longer

@@ -2,7 +2,7 @@
 # spec file for package gpa
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           gpa
-Version:        0.11.0
+Version:        0.11.1
 Release:        0
 Summary:        GNU Privacy Assistant
 License:        GPL-3.0-only
@@ -28,9 +28,6 @@ Source:         https://gnupg.org/ftp/gcrypt/gpa/%{name}-%{version}.tar.bz2
 Source1:        https://gnupg.org/ftp/gcrypt/gpa/%{name}-%{version}.tar.bz2.sig
 # https://www.gnupg.org/signature_key.html
 Source2:        gpa.keyring
-Patch0:         gpa-0.11.0-fix-implicit-declaration.patch
-# PATCH-FIX-UPSTREAM gpa-0.11.0-drop-trustlist.patch bsc#1246682 yfjiang@suse.com -- Drop trustlist as it has been dropped in gpgme
-Patch1:         gpa-0.11.0-drop-trustlist.patch
 BuildRequires:  gnupg
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gpg-error) >= 1.27
