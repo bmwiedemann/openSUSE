@@ -21,16 +21,13 @@
 %global version_current 1.93.0
 %global version_previous 1.92.0
 
-%if 0%{?gcc_version} < 13
+%if 0%{?gcc_version} < 15
 # We may need a minimum gcc version for some linker flags
 # This is especially true on leap/sle
 #
 # ⚠️   11 or greater is required for a number of linker flags to be supported in sle.
 #
 %global need_gcc_version 15
-%else
-# Work around SLFO gcc mess.
-%global need_gcc_version %gcc_version
 %endif
 
 # Use correct python-version for SLE-12
@@ -428,6 +425,8 @@ Summary:        The Rust package manager
 License:        Apache-2.0 OR MIT
 Group:          Development/Languages/Rust
 Requires:       rust-std = %{version}
+# We have to requires gcc here on cargo, because if we requires it on *rust* it won't actually install
+Requires:       gcc
 Obsoletes:      cargo-vendor < %{version}
 Provides:       cargo-vendor = %{version}
 Provides:       rust+cargo = %{version}
