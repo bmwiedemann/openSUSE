@@ -26,14 +26,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdeplasma6-addons
-Version:        6.5.5
+Version:        6.6.0
 Release:        0
 Summary:        Additional Plasma6 Widgets
 License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-only
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -118,7 +118,6 @@ the Plasma desktop.
 %{_kf6_debugdir}/kdeplasma-addons.categories
 %{_kf6_debugdir}/kdeplasma-addons.renamecategories
 %{_kf6_iconsdir}/hicolor/scalable/apps/accessories-dictionary.svgz
-%{_kf6_iconsdir}/hicolor/scalable/apps/fifteenpuzzle.svgz
 %{_kf6_knsrcfilesdir}/comic.knsrc
 %{_kf6_libdir}/libplasmaweatherdata.so.*
 %{_kf6_libdir}/libplasmaweatherion.so.*
