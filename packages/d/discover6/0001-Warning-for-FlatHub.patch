@@ -1,16 +1,16 @@
-From 74a4eff529e6b71f6a822841d9112d9b71b44d24 Mon Sep 17 00:00:00 2001
+From 89a0cb7cad9848316987d53f10eb9ad65f70e2c4 Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Date: Sat, 13 Jan 2018 15:16:39 +0100
 Subject: [PATCH] Warning for FlatHub
 
 ---
- .../backends/FlatpakBackend/FlatpakSourcesBackend.cpp      | 14 +++++++++++++-
+ .../FlatpakBackend/FlatpakSourcesBackend.cpp       | 14 +++++++++++++-
  1 file changed, 13 insertions(+), 1 deletion(-)
 
-Index: discover-%{_plasma6_version}git.20240314T013804~34410c0/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
-===================================================================
---- discover-%{_plasma6_version}git.20240314T013804~34410c0.orig/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
-+++ discover-%{_plasma6_version}git.20240314T013804~34410c0/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
+diff --git a/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp b/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
+index cee00f2ec..9b44c5089 100644
+--- a/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
++++ b/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
 @@ -18,6 +18,8 @@
  
  #include <QStandardPaths>
@@ -20,7 +20,7 @@ Index: discover-%{_plasma6_version}git.20240314T013804~34410c0/libdiscover/backe
  #include <glib.h>
  #include <resources/DiscoverAction.h>
  #include <resources/StoredResultsStream.h>
-@@ -99,7 +101,17 @@ FlatpakSourcesBackend::FlatpakSourcesBac
+@@ -105,7 +107,17 @@ FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *
      m_flathubAction->setObjectName(QStringLiteral("flathub"));
      m_flathubAction->setToolTip(i18n("Makes it possible to easily install the applications listed in https://flathub.org"));
      connect(m_flathubAction, &DiscoverAction::triggered, this, [this]() {
@@ -39,3 +39,6 @@ Index: discover-%{_plasma6_version}git.20240314T013804~34410c0/libdiscover/backe
      });
  
      m_noSourcesItem->setEnabled(false);
+-- 
+2.51.0
+

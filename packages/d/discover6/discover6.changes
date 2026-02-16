@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Feb 12 19:42:39 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.0
+- Changes since 6.5.91:
+  * Update version for new release 6.6.0
+  * ResourcesModel: Adjust updateAction.enabled by progress instead
+  * Fix padding of the Progress item delegate
+  * snap: Reduce thread waiting timeout (kde#507217)
+  * discoverobject: further simplify the amount tracking
+  * discoverobject: update job amounts when transactions get added (kde#513676)
+  * discoverobject: do not change amounts during start() & refine assertion
+  * discoverobject: don't impliclity convert signedness
+
+-------------------------------------------------------------------
+Wed Jan 28 16:13:23 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.91
+- Changes since 6.5.90:
+  * Update version for new release 6.5.91
+  * flatpak: debug when resolving a parent ref fails (kde#513111)
+  * *backendupdater: a cancelled transaction is not done
+  * DiscoverObject: When clicking SNI, show window normally
+  * DiscoverObject: Use alert instead of show (kde#503801)
+  * Move KAuth dependency to the snap backend
+
+-------------------------------------------------------------------
+Sat Jan 17 20:24:56 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.90
+- Too many changes to list here
+
+- Refresh 0001-Warning-for-FlatHub.patch
+
+-------------------------------------------------------------------
 Tue Jan 13 14:39:09 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.5.5:
