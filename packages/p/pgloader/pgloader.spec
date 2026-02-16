@@ -1,7 +1,7 @@
 #
 # spec file for package pgloader
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        PostgreSQL
 Group:          Productivity/Databases/Tools
 URL:            https://pgloader.io
 Source:         https://github.com/dimitri/%{name}/releases/download/v%{version}/%{name}-bundle-%{version}.tgz
+Patch0:         fix-unbreak-after-SBCL-internals-change.patch
 BuildRequires:  fdupes
 BuildRequires:  freetds-devel
 BuildRequires:  pkgconfig
@@ -60,7 +61,7 @@ indexes in PostgreSQL. In the MySQL case it's possible to edit CASTing rules
 from the pgloader command directly.
 
 %prep
-%autosetup -n %{name}-bundle-%{version}
+%autosetup -n %{name}-bundle-%{version} -p1
 
 %build
 export CFLAGS="%{optflags}"

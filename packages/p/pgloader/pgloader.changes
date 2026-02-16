@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 15 20:44:08 UTC 2026 - munix9@googlemail.com
+
+- Add fix-unbreak-after-SBCL-internals-change.patch based on
+  https://github.com/melisgl/named-readtables/commit/6eea56674442b884a4fee6ede4c8aad63541aa5b
+
+-------------------------------------------------------------------
 Fri Aug  8 12:07:30 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - disable also i586 as building fails

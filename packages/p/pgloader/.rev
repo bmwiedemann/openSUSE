@@ -27,4 +27,14 @@
 also cleanup old changes entry</comment>
     <requestid>1298377</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>981536bebd365d43c388af145a444cde</srcmd5>
+    <version>3.6.9</version>
+    <time>1771244040</time>
+    <user>anag_factory</user>
+    <comment>- Add fix-unbreak-after-SBCL-internals-change.patch based on
+  https://github.com/melisgl/named-readtables/commit/6eea56674442b884a4fee6ede4c8aad63541aa5b
+</comment>
+    <requestid>1333275</requestid>
+  </revision>
 </revisionlist>
