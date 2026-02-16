@@ -26,14 +26,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           aurorae6
-Version:        6.5.5
+Version:        6.6.0
 Release:        0
 Summary:        Themeable window decoration for KWin
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source0:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source0:        %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -45,6 +45,7 @@ BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
 BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
 BuildRequires:  cmake(KF6Package) >= %{kf6_version}
+BuildRequires:  cmake(KF6Svg) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
@@ -90,6 +91,7 @@ module of KWin decorations.
 %{_kf6_knsrcfilesdir}/aurorae.knsrc
 %dir %{_kf6_plugindir}/org.kde.kdecoration3
 %{_kf6_plugindir}/org.kde.kdecoration3/org.kde.kwin.aurorae.so
+%{_kf6_plugindir}/org.kde.kdecoration3/org.kde.kwin.aurorae.v2.so
 %dir %{_kf6_plugindir}/org.kde.kdecoration3.kcm
 %{_kf6_plugindir}/org.kde.kdecoration3.kcm/kcm_auroraedecoration.so
 %dir %{_kf6_qmldir}/org/kde/kwin
