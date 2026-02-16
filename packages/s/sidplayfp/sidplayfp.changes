@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 15 11:10:54 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.16.1
+  * Parse float arguments as locale independent (#118).
+
+-------------------------------------------------------------------
 Tue Jan  6 12:49:36 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.16.0
