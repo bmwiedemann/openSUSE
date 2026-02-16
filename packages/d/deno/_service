@@ -8,7 +8,7 @@
     <param name="respect-lockfile">true</param>
     <param name="method">registry</param>
     <param name="url">https://github.com/denoland/deno</param>
-    <param name="revision">v2.4.5</param>
+    <param name="revision">v2.6.9</param>
     <param name="versionrewriteregex">^v?(.*)</param>
     <param name="versionrewritepattern">$1</param>
     <param name="changesgenerate">true</param>

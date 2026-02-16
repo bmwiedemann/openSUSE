@@ -1,4 +1,196 @@
 -------------------------------------------------------------------
+Sun Feb 15 16:05:45 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Remove requirement `rust-src`
+
+-------------------------------------------------------------------
+Sun Feb 15 15:49:38 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Remove gcc switch. Set clang minver to 19. Ensure we use the LLVM toolchain
+  and not GCC for the C compiler. Only pp64 requires gcc-c++
+
+-------------------------------------------------------------------
+Sun Feb 15 14:33:34 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Add back bcond with clang but set it to clang21. rusty_v8 requires
+  clang20 and above
+
+-------------------------------------------------------------------
+Sat Feb 14 14:07:00 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 2.6.9:
+  * 2.6.9 (#32110)
+  * ci: use code blocks for test lists in Node compat Slack messages (#32103)
+  * fix(repl): handle EOF gracefully in JSON REPL mode (#32108)
+  * fix(compile): use a temporary directory with a node_modules folder when compiling npm specifiers (#32084)
+  * fix(ext/node): serialize workerData before resolving worker filename (#32091)
+  * fix(ext/node): `fs.writeFile` and `FileHandle.writeFile` compatibility (#32077)
+  * fix(ext/node): emit close on both paired MessagePorts (#32092)
+  * fix(ext/webgpu): GPUQuene writeBuffer size given in elements of TA (#32031)
+  * fix(ext/node): read from stdin when spawns node with no args (#32088)
+  * fix(ext/node): unref stdin on pause to allow process exit (#32086)
+  * fix(test): user input clearing test runner output (#32082)
+  * fix(ext/node): add `threadName` to worker_threads module (#32072)
+  * fix(ext/node): set exitCode/signalCode correctly for killed child processes (#32081)
+  * fix(ext/node): emit error event for worker with missing main module (#32062)
+  * ci: add detailed Node compat test insights as Slack thread reply (#32080)
+  * fix(ext/node): unref child_process stdio streams by default (#32071)
+  * test: disable test-worker-fshandles-open-close-on-termination.js (#32079)
+  * fix: support loading `npm:` and `jsr:` specifiers in required ES modules (#31974)
+  * fix(ext/node): fix 'test-worker-process-{argv,env}.js' tests (#32065)
+  * fix(ext/otel): use correct severity for `console.trace` (#32068)
+  * fix(ext/node): validate execArgv and NODE_OPTIONS in worker_threads (#32066)
+  * fix(ext/node): emit error event for worker_threads terminal errors (#32052)
+  * fix(ext/node): add `worker.cpuUsage([prev])` API (#32050)
+  * fix(ext/node): propagate worker exit code from process.exit() (#32061)
+  * fix(ext/node): Fix `.only` tests compatibilty (#32043)
+  * chore: make approve_scripts tests less flaky (#32059)
+  * feat(upgrade): ability to verify zip archive against checksum (#31804)
+  * fix(ext/node): handle raw fd instead rid in isatty (#31912)
+  * feat(upgrade): add context to error messages for better troubleshooting (#32018)
+  * fix(ext/node): implement Symbol.asyncDispose for node Worker (#32051)
+  * feat(doc): support markdown files (#32024)
+  * fix: `deno info` npm subpath import (#32056)
+  * fix(node/crypto): randomBytes returns buffer with dedicated ArrayBuffer (#32048)
+  * fix: unstable_cron_socket_serve_reject flakiness caused by control socket coordination (#32053)
+  * fix(audit): make 'Path' property more readable (#32049)
+  * fix(ext/node): fix multiple node:zlib compatibility issues (#32039)
+  * fix(ext/node): add hasColors() to process.stdout and process.stderr (#31985)
+  * fix(ext/node): implement Node worker BroadcastChannel ref/unref (#32036)
+  * fix(ext/node): implement `DatabaseSync.setAuthorizer()` (#32009)
+  * fix(flags): extra trailing space in zsh directory completions (#32042)
+  * feat: Send reject-ack message through cron socket (#32035)
+  * fix(ext/node): add stub for ServerResponse.writeEarlyHints (#32029)
+  * fix(cli): pull in tunnel fix for windows (#32033)
+  * fix(ext/node): add zstd compression support to node:zlib (#32025)
+  * fix: add raw.esm.sh to default `--allow-import` list (#32030)
+  * chore: remove some top level entries from repo (#32022)
+  * fix: flaky cron socket tests (#32023)
+  * fix(ext/node): make `child_process` stdio streams Socket instances (#31975)
+  * fix: support DENO_SERVE_ADDRESS not being applied to the first server (#31982)
+  * fix: run on pre-Windows 10 version 1709 (#32002)
+
+-------------------------------------------------------------------
+Sat Feb 14 13:31:06 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Add chromium-rust-toolchain.tar.xz. This was based from the python script
+  located at `tools/rust-toolchain.py` in rusty_v8.
+
+-------------------------------------------------------------------
+Tue Nov 18 13:12:51 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- use macro bcond to select BuildRequires clang/gcc
+- use BuildRequires clang19 by default
+  * allow to select BuildRequires gcc only for tumbleweed since
+    for leap build doesn't work
+
+-------------------------------------------------------------------
+Wed Sep 24 12:50:55 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 2.5.0:
+  * chore: release deno_bundle_runtime (#30674)
+  * 2.5.0 (#30673)
+  * fix(lsp): auto-import dep entries from workspace member import maps (#30667)
+  * feat(bundle): support html entrypoint (#29856)
+  * fix(publish): unfurl import.meta.resolve calls (#30663)
+  * fix(dts): align crypto.getRandomValues in lib.deno_crypto.d.ts with lib.dom.d.ts and lib.webworker.d.ts (#30647)
+  * ci: disable symcache generation on Windows, part 4 (#30661)
+  * test: disable test-dgram-send-empty-buffer.js on mac (#30660)
+  * ci: disable symcache generation on Windows, part 3 (#30654)
+  * bench: disable type-checking std submodule (#30653)
+  * ci: disable symcache generation on Windows, part 2 (#30651)
+  * test: de-flake specs tests in `deno install` (#30645)
+  * chore: remove flake in permissions_audit_with_traces test (#30649)
+  * feat(ext/node): add sqlite-type symbol for DatabaseSync (#30511)
+  * feat(unstable): use Node.js `setTimeout` and `setInterval` (#29993)
+  * ci: disable symcache generation on Windows (#30646)
+  * chore: upgrade hickory-dns to 0.25.2 (#30582)
+  * feat(install): update warning for npm package build scripts (#30527)
+  * fix(ext/node): set socket.authorized to true for https request (#30641)
+  * feat: V8 14.0.0 (#30629)
+  * feat(BREAKING/fmt): prompt or require `deno fmt .` when providing no files and no config files discovered (#30623)
+  * fix(dts): specify the underlying buffer type in more places (#30640)
+  * feat: permission audit log (#30575)
+  * feat(install): refresh install report (#30615)
+  * fix(tests): Switch from --nocapture to --no-capture (#30638)
+  * fix(ext/node): readline line separators (#30630)
+  * fix(ext/node): `fs.mkdtemp` and `fs.mkdtempSync` compatibility (#30602)
+  * fix(lsp): import rewrites in moved file (#30628)
+  * fix(bundle): avoid cloning parsed source, restore owned transpile assertion (#30624)
+  * fix(unstable): make QuicListener yield QuicIncoming (#30150)
+  * fix(ext/node): fix hang induced by maxSockets bounds (#30622)
+  * fix(bundle): properly display error on invalid config in watch mode (#30621)
+  * fix(node): improve directory import error suggestion (#30619)
+  * fix(cache): cache and uninstall are package manager subcommands (#30613)
+  * feat(bundle): runtime API for deno bundle (#29949)
+  * fix(check): support "moduleResolution": "bundler" in compiler options (#30603)
+  * feat(cli): reload environment variables with `--watch` and `--env-file` (#30197)
+  * fix(ext/node): ignore Node.js' `--experimental-*` flags when spawning child process (#26351)
+  * fix(cli/run): resolve conflict when dir has same name as a task (#29538)
+  * feat(lint): no-unversioned-import rule (#30609)
+  * fix(ext/node): fs.symlink and fs.symlinkSync compatibility (#30555)
+  * fix(install/cache): better discovery for config file based on entrypoint (#30608)
+  * refactor(webgpu): make cppgc arguments safer  (#30563)
+  * feat: `deno run` with no arguments prints list of available tasks (#30592)
+  * feat: TypeScript 5.9.2 (#30601)
+  * fix(ext/fetch): only uppercase known methods (#30290)
+  * feat(node): implement async hooks for nextTick TickObject tracking (#30578)
+  * feat(lint): no-import-prefix workspace rule (#30598)
+  * fix(types): specify `ArrayBuffer` as a backing buffer type for `Response.body` and `Response.bytes` (#30435)
+  * fix(types): specify `ArrayBuffer` as a backing buffer type for `TextEncoder.encode()` (#30434)
+  * feat(ext/fetch): Parse unix socket and vsock proxies from env var (#30377)
+  * fix(check): support "compilerOptions.rootDirs" in tsconfig (#30495)
+  * chore(deps): bump tracing-subscriber from 0.3.19 to 0.3.20 (#30565)
+  * feat(test): Add setup and teardown APIs to `Deno.test` API (#30504)
+  * feat: permissions in the config file (#30330)
+  * fix(check): don't ignore ambient declarations for existent files (#30591)
+  * feat(ext/process): add collector utilities to `ChildProcess.stdout` & `ChildProcess.stderr` (#30552)
+  * chore(test): add `reason` field to node compat test config (#30469)
+  * refactor: reorganize `tools/test` module (#30590)
+  * fix(ext/node): implement http.res.setHeaders (#30586)
+  * fix(ext/webgpu): add illegal constructor errors (#30500)
+  * fix(ext/node): path.relative compatibility (#30566)
+  * fix(ext/node): Readable adapter cancel semantics (#30526)
+  * fix(lsp): goto-type-definition for builtin on startup (#30499)
+  * fix(cli): support data urls in preload by not splitting on comma. (#30544)
+  * fix(init): use temp `node_modules` folders for `deno init --npm ...` (#30492)
+  * fix: upgrade to swc_ecma_parser 23 (#30564)
+  * feat(fmt): apply object spacing to import/export lines (#30371)
+  * refactor(permissions): remove `all` state in permissions (#30548)
+  * fix(ext/node): support JS underlying stream in TLS (#30465)
+  * feat(unstable): WebSocket headers field (#30321)
+  * fix(install): print install report on `add`, `cache`, and all `install` variants, move scripts and deprecation warnings after the report (#30549)
+  * feat: add `tcpBacklog` arg to `Deno.listen{Tls}` and `Deno.serve` (#30541)
+  * fix(install): don't try to re-symlink binaries in node_modules if the symlink is correct (#30546)
+  * fix(bundle): do not error on fallible dynamic imports/requires (#30522)
+  * fix(node): regression where Node fs APIs required elevated permissions on Windows (#30535)
+  * fix(ext/node): path.normalize compatibility (#30537)
+  * feat(npm): support `bundleDependencies` in npm dependencies (#30521)
+  * fix: add another space after warning symbol (#30482)
+  * fix(bundle): don't error when using npm package without bin as entrypoint (#30523)
+  * fix(unstable): support unstable-raw-imports when prewarmed (#30530)
+  * fix(ext/node): `fs.exists` and `fs.existsSync` compatibility (#30507)
+  * refactor: rename internal flag to --trace-ops (#30520)
+  * fix(node_resolver): incorrect resolution of `require("..")` (#30524)
+  * fix(install): force refresh if cannot find version (#30483)
+  * fix(ext/node): handle `null` keypair in tls connect (#30516)
+  * fix(ext/node): http.server.listen to handle signal option (#30515)
+  * chore: fix wpt_epoch CI (#30501)
+  * fix(napi): buffer finalizer is nullable (#30514)
+  * fix(ext/node): `fs.path`' `makelong` and `resolve` compatibility (#30503)
+  * fix(ext/node): `crypto.hkdfSync` returns wrong result for non-Uint8Array TypedArray inputs (#30463)
+  * feat: allow disable hostname verification in TLS (#30409)
+  * fix: pass npm process state when spawning script in npm package via Node APIs (#30490)
+  * fix(init): eliminate flickering progress bar (#30496)
+  * chore: mark inspector_does_not_hang test as flaky (#30493)
+  * fix: do not have duplicate progress bars for post install scripts (#30489)
+  * chore: make deprecation_warnings_no_repeat as flaky (#30491)
+  * chore(test): preserve node test fixtures line endings (#30488)
+  * chore: add test for top level return statement with unstable-detect-cjs (#30480)
+  * fix(npm): do not error on failure to write warned script file (#30479)
+  * refactor: remove WorkspaceDirectoryProvider (#30467)
+
+-------------------------------------------------------------------
 Mon Sep 15 14:53:43 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 2.4.5:

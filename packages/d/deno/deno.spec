@@ -17,11 +17,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %global _lto_cflags %nil
-%global _v8_version 137.2.1
+%global _v8_version 145.0.0
+%global _min_clang_version 19
 Name:           deno
-Version:        2.4.5
+Version:        2.6.9
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT
@@ -29,25 +29,26 @@ Group:          Productivity/Other
 URL:            https://github.com/denoland/deno
 Source0:        %{name}-%{version}.tar.zst
 Source1:        registry.tar.zst
+Source2:        https://storage.googleapis.com/chromium-browser-clang/Linux_x64/rust-toolchain-a4cfac7093a1c1c7fbdb6bc75d6b6dc4d385fc69-2-llvmorg-22-init-17020-gbd1bd178.tar.xz#/chromium-rust-toolchain.tar.xz
 BuildRequires:  cargo-packaging
-
-%if 0%{?suse_version} > 1600
-BuildRequires:  clang19
-%else
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
-%endif
 
 # needed by `libz-ng-sys` after 1.36.1
 # see: https://build.opensuse.org/package/show/devel:languages:javascript/deno#comment-1808174
 BuildRequires:  cmake
-BuildRequires:  cargo >= 1.80
+BuildRequires:  cargo
+BuildRequires:  cargo-packaging
+BuildRequires:  fdupes
 BuildRequires:  gn
-BuildRequires:  lld
-BuildRequires:  llvm
-BuildRequires:  llvm-gold
+BuildRequires:  rust-bindgen
+BuildRequires:  clang >= %{_min_clang_version}
+BuildRequires:  clang-devel >= %{_min_clang_version}
+BuildRequires:  llvm >= %{_min_clang_version}
+BuildRequires:  llvm-devel >= %{_min_clang_version}
+BuildRequires:  lld >= %{_min_clang_version}
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  python3-base
+BuildRequires:  zstd
 BuildRequires:  python3-base
 BuildRequires:  rusty_v8 = %{_v8_version}
 BuildRequires:  zstd
@@ -57,6 +58,9 @@ BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(protobuf)
 ExclusiveArch:  %{rust_tier1_arches}
+%ifarch ppc64 # wants g++ for some reason
+BuildRequires:  gcc-c++
+%endif
 # PATCH-FIX-OPENSUSE - Disable LTO (to reduce req memory)
 Patch10:        deno-disable-lto.patch
 
@@ -107,27 +111,31 @@ updated with the --reload flag.
 %autosetup -a1 -p1
 
 unlink rusty_v8 || true
-ln -sf %{_libdir}/crates/rusty_v8/ $PWD/rusty_v8
+mkdir -p $PWD/rusty_v8
+cp -a %{_libdir}/crates/rusty_v8/. $PWD/rusty_v8/
+mkdir -p $PWD/rusty_v8/third_party/rust-toolchain
+tar xf %{SOURCE2} \
+ -C $PWD/rusty_v8/third_party/rust-toolchain
 echo -e "\n[patch.crates-io]\nv8 = { path = './rusty_v8' }" >> Cargo.toml
 
 %build
 export CARGO_HOME="$PWD/.cargo"
 # Ensure that the clang version matches. This command came from Archlinux. Thanks.
 export CLANG_VERSION=$(clang --version | grep -m1 version | sed 's/.* \([0-9]\+\).*/\1/')
+export LIBCLANG_PATH=%{_libdir}
 export V8_FROM_SOURCE=1
 export CLANG_BASE_PATH=%{_prefix}
-%if 0%{?suse_version} > 1600
 export CC=clang
 export CXX=clang++
 export CFLAGS="%{optflags} -Wno-unknown-warning-option"
 export CXXFLAGS="%{optflags} -Wno-unknown-warning-option"
-%else
-export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags}"
-%endif
-
 # https://www.chromium.org/developers/gn-build-configuration
-export GN_ARGS="clang_version=${CLANG_VERSION} use_lld=true enable_nacl = false blink_symbol_level = 0 v8_symbol_level = 0"
+export RUSTC_SYSROOT=$(rustc --print sysroot)
+export RUSTC_VERSION=$(rustc -V | cut -d' ' -f2)
+export GN="/usr/bin/gn"
+export NINJA="/usr/bin/ninja"
+export RUSTC="/usr/bin/rustc"
+export GN_ARGS="clang_version=${CLANG_VERSION} use_lld=true v8_symbol_level=0"
 %{__cargo} update v8 --offline
 %{cargo_build}
 

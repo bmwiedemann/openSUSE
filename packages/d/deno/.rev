@@ -4251,4 +4251,41 @@
   * refactor(ext/node): rewrite net.Socket and net.Server to use ES5 class (#30419)</comment>
     <requestid>1305786</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>35e55d2f982c4258c6fa07dbe7b42651</srcmd5>
+    <version>2.6.9</version>
+    <time>1771243777</time>
+    <user>anag_factory</user>
+    <comment>- Remove requirement `rust-src`
+
+- Remove gcc switch. Set clang minver to 19. Ensure we use the LLVM toolchain
+  and not GCC for the C compiler. Only pp64 requires gcc-c++
+
+- Add back bcond with clang but set it to clang21. rusty_v8 requires
+  clang20 and above
+
+- Update to version 2.6.9:
+  * 2.6.9 (#32110)
+  * ci: use code blocks for test lists in Node compat Slack messages (#32103)
+  * fix(repl): handle EOF gracefully in JSON REPL mode (#32108)
+  * fix(compile): use a temporary directory with a node_modules folder when compiling npm specifiers (#32084)
+  * fix(ext/node): serialize workerData before resolving worker filename (#32091)
+  * fix(ext/node): `fs.writeFile` and `FileHandle.writeFile` compatibility (#32077)
+  * fix(ext/node): emit close on both paired MessagePorts (#32092)
+  * fix(ext/webgpu): GPUQuene writeBuffer size given in elements of TA (#32031)
+  * fix(ext/node): read from stdin when spawns node with no args (#32088)
+  * fix(ext/node): unref stdin on pause to allow process exit (#32086)
+  * fix(test): user input clearing test runner output (#32082)
+  * fix(ext/node): add `threadName` to worker_threads module (#32072)
+  * fix(ext/node): set exitCode/signalCode correctly for killed child processes (#32081)
+  * fix(ext/node): emit error event for worker with missing main module (#32062)
+  * ci: add detailed Node compat test insights as Slack thread reply (#32080)
+  * fix(ext/node): unref child_process stdio streams by default (#32071)
+  * test: disable test-worker-fshandles-open-close-on-termination.js (#32079)
+  * fix: support loading `npm:` and `jsr:` specifiers in required ES modules (#31974)
+  * fix(ext/node): fix 'test-worker-process-{argv,env}.js' tests (#32065)
+  * fix(ext/otel): use correct severity for `console.trace` (#32068)
+  * fix(ext/node): validate execArgv and NODE_OPTIONS in worker_threads (#32066)</comment>
+    <requestid>1333240</requestid>
+  </revision>
 </revisionlist>
