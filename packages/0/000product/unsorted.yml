@@ -464,6 +464,8 @@ unsorted:
   - aer-inject 
   - aerc 
   - aespipe 
+  - afflib-devel 
+  - afflib-tools 
   - afl 
   - afl-devel 
   - afterburn 
@@ -2171,6 +2173,7 @@ unsorted:
   - cherrytree 
   - cherrytree-lang 
   - chewing-cli 
+  - chewing-data 
   - chezdav 
   - chezmoi 
   - chezmoi-bash-completion 
@@ -3690,6 +3693,7 @@ unsorted:
   - encfs-lang 
   - enchant-1-backend-voikko 
   - enchant-1-backend-zemberek 
+  - enchant-1-backends 
   - enchant-1-data 
   - enchant-1-devel 
   - enchant-1-tools 
@@ -4003,60 +4007,6 @@ unsorted:
   - fcft-devel 
   - fcgiwrap 
   - fcgiwrap-nginx 
-  - fcitx-anthy 
-  - fcitx-devel 
-  - fcitx-fbterm 
-  - fcitx-gtk2-32bit 
-  - fcitx-gtk3-32bit 
-  - fcitx-hangul 
-  - fcitx-m17n 
-  - fcitx-pinyin-tools 
-  - fcitx-quwei 
-  - fcitx-rime 
-  - fcitx-sayura 
-  - fcitx-skin-classic 
-  - fcitx-skin-dark 
-  - fcitx-skin-new-air 
-  - fcitx-sunpinyin 
-  - fcitx-table-amharic 
-  - fcitx-table-arabic 
-  - fcitx-table-cn-bingchan 
-  - fcitx-table-cn-cangjie 
-  - fcitx-table-cn-cantonese 
-  - fcitx-table-cn-cns11643 
-  - fcitx-table-cn-dianbao 
-  - fcitx-table-cn-erbi 
-  - fcitx-table-cn-wanfeng 
-  - fcitx-table-cn-wu 
-  - fcitx-table-cn-zhengma 
-  - fcitx-table-cn-zhengma-large 
-  - fcitx-table-cn-ziran 
-  - fcitx-table-emoji 
-  - fcitx-table-hk-cantonese 
-  - fcitx-table-hk-jyutping 
-  - fcitx-table-hk-stroke5 
-  - fcitx-table-ipa-x-sampa 
-  - fcitx-table-latex 
-  - fcitx-table-malayalam-compose 
-  - fcitx-table-malayalam-phonetic 
-  - fcitx-table-other 
-  - fcitx-table-ru-rustrad 
-  - fcitx-table-ru-translit 
-  - fcitx-table-ru-yawerty 
-  - fcitx-table-t9 
-  - fcitx-table-tamil-remington 
-  - fcitx-table-thai 
-  - fcitx-table-tools 
-  - fcitx-table-tw-array30 
-  - fcitx-table-tw-array30-large 
-  - fcitx-table-tw-cangjie3 
-  - fcitx-table-tw-easy-large 
-  - fcitx-table-tw-quick-classic 
-  - fcitx-table-tw-quick3 
-  - fcitx-table-tw-quick5 
-  - fcitx-table-ua-translit 
-  - fcitx-table-vi-qr 
-  - fcitx-ui-light 
   - fcitx5 
   - fcitx5-anthy 
   - fcitx5-chewing 
@@ -4074,7 +4024,6 @@ unsorted:
   - fcitx5-libthai 
   - fcitx5-lua 
   - fcitx5-lua-devel 
-  - fcitx5-lua-migration-reminder 
   - fcitx5-m17n 
   - fcitx5-mozc 
   - fcitx5-pinyindictmanager6 
@@ -10130,7 +10079,6 @@ unsorted:
   - kf6-kguiaddons-devel 
   - kf6-kholidays-devel 
   - kf6-ki18n-devel 
-  - kf6-ki18n-imports 
   - kf6-kiconthemes-devel 
   - kf6-kidletime-devel 
   - kf6-kimageformats-devel 
@@ -10464,7 +10412,6 @@ unsorted:
   - kpublictransport-imports 
   - kpublictransport-lang 
   - kquickimageeditor6-devel 
-  - kquickimageeditor6-imports 
   - kraft 
   - krb5-appl-clients 
   - krb5-appl-servers 
@@ -11181,6 +11128,7 @@ unsorted:
   - libFcitx5Config6 
   - libFcitx5Core7 
   - libFcitx5GClient-devel 
+  - libFcitx5GClient2 
   - libFcitx5Qt5DBusAddons1 
   - libFcitx5Qt5WidgetsAddons2 
   - libFcitx5Qt6DBusAddons1 
@@ -11287,14 +11235,12 @@ unsorted:
   - libKPim6IdentityManagementQuick6 
   - libKPublicTransport1 
   - libKPublicTransportOnboard1 
-  - libKQuickImageEditor1 
   - libKSeExpr4 
   - libKTorrent6 
   - libKTorrent6-lang 
   - libKWeatherCore6 
   - libKWeatherCore6-lang 
   - libKasten4 
-  - libKirigamiApp6 
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_5_5 
@@ -12000,6 +11946,7 @@ unsorted:
   - libadwaitaqt6-1 
   - libaec-devel 
   - libaec0 
+  - libafflib0 
   - libagdb-devel 
   - libagdb-tools 
   - libagdb1 
@@ -12658,6 +12605,7 @@ unsorted:
   - libcheck0 
   - libcheese-gtk25 
   - libchewing-devel 
+  - libchewing3 
   - libchipcard 
   - libchipcard-devel 
   - libchipcard6 
@@ -13103,6 +13051,7 @@ unsorted:
   - libenca0 
   - libenca0-32bit 
   - libenchant-2-2-32bit 
+  - libenchant1 
   - libenet7 
   - libeot-devel 
   - libeot-tools 
@@ -13231,10 +13180,6 @@ unsorted:
   - libfcache1 
   - libfcft4 
   - libfcgi0 
-  - libfcitx-config4-32bit 
-  - libfcitx-core0-32bit 
-  - libfcitx-gclient1-32bit 
-  - libfcitx-utils0-32bit 
   - libfcrypto-devel 
   - libfcrypto1 
   - libfdata-devel 
@@ -13768,6 +13713,7 @@ unsorted:
   - libgoocanvas-2_0-9 
   - libgoocanvas-3_0-9 
   - libgooglepinyin-devel 
+  - libgooglepinyin0 
   - libgovirt-devel 
   - libgovirt-lang 
   - libgovirt2 
@@ -15531,6 +15477,7 @@ unsorted:
   - libpqxx-devel 
   - libpresage-devel 
   - libpresage-doc 
+  - libpresage1 
   - libprimecount-devel 
   - libprimecount8 
   - libprimesieve-devel 
@@ -19051,6 +18998,7 @@ unsorted:
   - mkvtoolnix-gui 
   - mkvtoolnix-tools 
   - mlterm 
+  - mlterm-fcitx 
   - mlterm-lang 
   - mlterm-m17n 
   - mm-common 
@@ -20206,6 +20154,8 @@ unsorted:
   - obs-service-tar 
   - obs-service-tar_scm 
   - obs-service-verify_file 
+  - obs-studio 
+  - obs-studio-devel 
   - oc 
   - oc-bash-completion 
   - oc-fish-completion 
@@ -23538,6 +23488,7 @@ unsorted:
   - prek-fish-completion 
   - prek-zsh-completion 
   - presage 
+  - presage-data 
   - presenterm 
   - primecount 
   - primesieve 
@@ -26460,6 +26411,7 @@ unsorted:
   - python311-openapi-core 
   - python311-openapi-schema-validator 
   - python311-openapi-spec-validator 
+  - python311-openapi3 
   - python311-opencensus 
   - python311-opencensus-context 
   - python311-opencensus-ext-azure 
@@ -30324,6 +30276,7 @@ unsorted:
   - python312-openapi-core 
   - python312-openapi-schema-validator 
   - python312-openapi-spec-validator 
+  - python312-openapi3 
   - python312-opencensus 
   - python312-opencensus-context 
   - python312-opencensus-ext-azure 
@@ -34195,6 +34148,7 @@ unsorted:
   - python313-openapi-core 
   - python313-openapi-schema-validator 
   - python313-openapi-spec-validator 
+  - python313-openapi3 
   - python313-opencensus 
   - python313-opencensus-context 
   - python313-opencensus-ext-azure 
@@ -35950,8 +35904,6 @@ unsorted:
   - qqc2-desktop-style-devel 
   - qqwing 
   - qqwing-devel 
-  - qrca 
-  - qrca-lang 
   - qrencode-devel 
   - qrq 
   - qrtool 
@@ -38406,7 +38358,6 @@ unsorted:
   - syslog-ng-python-modules 
   - syslog-ng-redis 
   - syslog-ng-smtp 
-  - syslog-ng-snmp 
   - syslog-ng-sql 
   - syslogd 
   - sysprof 
@@ -48810,7 +48761,6 @@ unsorted:
   - typelib-1_0-Eom-1_0 
   - typelib-1_0-FPrint-2_0 
   - typelib-1_0-Farstream-0_2 
-  - typelib-1_0-Fcitx-1_0 
   - typelib-1_0-FcitxG-1_0 
   - typelib-1_0-Flatpak-1_0 
   - typelib-1_0-Folks-0_7 

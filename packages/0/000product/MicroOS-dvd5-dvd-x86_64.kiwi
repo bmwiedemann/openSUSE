@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20260214" schemaversion="4.1">
+<image name="OBS__MicroOS___20260216" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20260214</productvar>
+      <productvar name="VERSION">20260216</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260214,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260216,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260214/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260216/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -355,6 +355,7 @@
       <repopackage name="kf6-kconfig"/>
       <repopackage name="kf6-kconfig-imports"/>
       <repopackage name="kf6-kconfigwidgets"/>
+      <repopackage name="kf6-kcontacts"/>
       <repopackage name="kf6-kcoreaddons"/>
       <repopackage name="kf6-kcoreaddons-imports"/>
       <repopackage name="kf6-kcrash"/>
@@ -371,6 +372,7 @@
       <repopackage name="kf6-kholidays"/>
       <repopackage name="kf6-kholidays-imports"/>
       <repopackage name="kf6-ki18n"/>
+      <repopackage name="kf6-ki18n-imports"/>
       <repopackage name="kf6-kiconthemes"/>
       <repopackage name="kf6-kiconthemes-imports"/>
       <repopackage name="kf6-kidletime"/>
@@ -434,6 +436,7 @@
       <repopackage name="kpartx"/>
       <repopackage name="kpipewire6-imports"/>
       <repopackage name="kpmcore"/>
+      <repopackage name="kquickimageeditor6-imports"/>
       <repopackage name="krb5"/>
       <repopackage name="kscreen6"/>
       <repopackage name="kscreenlocker6"/>
@@ -813,6 +816,7 @@
       <repopackage name="libKF6ConfigGui6"/>
       <repopackage name="libKF6ConfigQml6"/>
       <repopackage name="libKF6ConfigWidgets6"/>
+      <repopackage name="libKF6Contacts6"/>
       <repopackage name="libKF6CoreAddons6"/>
       <repopackage name="libKF6Crash6"/>
       <repopackage name="libKF6DBusAddons6"/>
@@ -875,6 +879,7 @@
       <repopackage name="libKGlobalAccelD6-0"/>
       <repopackage name="libkioarchive6-6"/>
       <repopackage name="libKirigamiAddonsStatefulApp6"/>
+      <repopackage name="libKirigamiApp6"/>
       <repopackage name="libKirigamiPlatform6"/>
       <repopackage name="libkmod2"/>
       <repopackage name="libKNightTime0"/>
@@ -884,6 +889,7 @@
       <repopackage name="libKPipeWireDmaBuf6"/>
       <repopackage name="libKPipeWireRecord6"/>
       <repopackage name="libkpmcore13"/>
+      <repopackage name="libKQuickImageEditor1"/>
       <repopackage name="libksba8"/>
       <repopackage name="libkscreen6-plugin"/>
       <repopackage name="libKScreenLocker6"/>
@@ -1583,6 +1589,7 @@
       <repopackage name="qca-qt6"/>
       <repopackage name="qemu-guest-agent"/>
       <repopackage name="qqc2-breeze-style6"/>
+      <repopackage name="qrca"/>
       <repopackage name="qrencode"/>
       <repopackage name="qt6-declarative-imports"/>
       <repopackage name="qt6-imageformats"/>

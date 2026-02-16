@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20260214" schemaversion="4.1">
+<image name="OBS__openSUSE___20260216" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20260214</productvar>
+      <productvar name="VERSION">20260216</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20260214,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20260216,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20260214/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20260216/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -229,7 +229,6 @@
       <repopackage name="certmonger"/>
       <repopackage name="checkmedia"/>
       <repopackage name="checkpolicy"/>
-      <repopackage name="chewing-data"/>
       <repopackage name="chrony"/>
       <repopackage name="chrony-pool-openSUSE"/>
       <repopackage name="cifs-utils"/>
@@ -351,7 +350,6 @@
       <repopackage name="emacs-jinx"/>
       <repopackage name="emacs-nox"/>
       <repopackage name="emacs-vterm"/>
-      <repopackage name="enchant-1-backends"/>
       <repopackage name="enchant-2-backend-hunspell"/>
       <repopackage name="enchant-data"/>
       <repopackage name="envsubst"/>
@@ -379,26 +377,6 @@
       <repopackage name="expat"/>
       <repopackage name="expect"/>
       <repopackage name="f2fs-tools"/>
-      <repopackage name="fcitx"/>
-      <repopackage name="fcitx-branding-openSUSE"/>
-      <repopackage name="fcitx-chewing"/>
-      <repopackage name="fcitx-cloudpinyin"/>
-      <repopackage name="fcitx-config-gtk3"/>
-      <repopackage name="fcitx-googlepinyin"/>
-      <repopackage name="fcitx-gtk2"/>
-      <repopackage name="fcitx-gtk3"/>
-      <repopackage name="fcitx-mozc"/>
-      <repopackage name="fcitx-pinyin"/>
-      <repopackage name="fcitx-table"/>
-      <repopackage name="fcitx-table-cn-wubi"/>
-      <repopackage name="fcitx-table-cn-wubi-large"/>
-      <repopackage name="fcitx-table-cn-wubi-pinyin"/>
-      <repopackage name="fcitx-table-extra-lang"/>
-      <repopackage name="fcitx-table-tw-boshiamy"/>
-      <repopackage name="fcitx-table-tw-cangjie-large"/>
-      <repopackage name="fcitx-table-tw-cangjie5"/>
-      <repopackage name="fcitx-table-tw-smart-cangjie6"/>
-      <repopackage name="fcitx-zhuyin"/>
       <repopackage name="fd0ssh"/>
       <repopackage name="fdupes"/>
       <repopackage name="feh"/>
@@ -945,6 +923,7 @@
       <repopackage name="kf6-kholidays"/>
       <repopackage name="kf6-kholidays-imports"/>
       <repopackage name="kf6-ki18n"/>
+      <repopackage name="kf6-ki18n-imports"/>
       <repopackage name="kf6-kiconthemes"/>
       <repopackage name="kf6-kiconthemes-imports"/>
       <repopackage name="kf6-kidletime"/>
@@ -1089,6 +1068,7 @@
       <repopackage name="kpipewire6-imports"/>
       <repopackage name="kpkpass"/>
       <repopackage name="kqtquickcharts"/>
+      <repopackage name="kquickimageeditor6-imports"/>
       <repopackage name="krb5"/>
       <repopackage name="krb5-32bit"/>
       <repopackage name="krb5-client"/>
@@ -1349,7 +1329,6 @@
       <repopackage name="libcgraph8"/>
       <repopackage name="libcheese-common"/>
       <repopackage name="libcheese8"/>
-      <repopackage name="libchewing3"/>
       <repopackage name="libcholmod5"/>
       <repopackage name="libchromaprint1"/>
       <repopackage name="libcjson1"/>
@@ -1469,7 +1448,6 @@
       <repopackage name="libelf1"/>
       <repopackage name="libell0"/>
       <repopackage name="libenchant-2-2"/>
-      <repopackage name="libenchant1"/>
       <repopackage name="libeot0"/>
       <repopackage name="libepoxy0"/>
       <repopackage name="libepub0"/>
@@ -1498,11 +1476,6 @@
       <repopackage name="libfa1"/>
       <repopackage name="libfaad2"/>
       <repopackage name="libfastjson4"/>
-      <repopackage name="libfcitx-config4"/>
-      <repopackage name="libfcitx-core0"/>
-      <repopackage name="libfcitx-gclient1"/>
-      <repopackage name="libfcitx-utils0"/>
-      <repopackage name="libFcitx5GClient2"/>
       <repopackage name="libfdisk1"/>
       <repopackage name="libfdk-aac2"/>
       <repopackage name="libfdt1"/>
@@ -1630,7 +1603,6 @@
       <repopackage name="libgobject-2_0-0"/>
       <repopackage name="libgom-1_0-0"/>
       <repopackage name="libgomp1"/>
-      <repopackage name="libgooglepinyin0"/>
       <repopackage name="libgpg-error0"/>
       <repopackage name="libgpg-error0-32bit"/>
       <repopackage name="libgpgme45"/>
@@ -2030,6 +2002,7 @@
       <repopackage name="libkImageAnnotator-Qt6-0"/>
       <repopackage name="libkioarchive6-6"/>
       <repopackage name="libKirigamiAddonsStatefulApp6"/>
+      <repopackage name="libKirigamiApp6"/>
       <repopackage name="libKirigamiPlatform6"/>
       <repopackage name="libkleo"/>
       <repopackage name="libkleo-lang"/>
@@ -2105,6 +2078,7 @@
       <repopackage name="libKPipeWire6-lang"/>
       <repopackage name="libKPipeWireDmaBuf6"/>
       <repopackage name="libKPipeWireRecord6"/>
+      <repopackage name="libKQuickImageEditor1"/>
       <repopackage name="libksane-icons"/>
       <repopackage name="libksane-lang"/>
       <repopackage name="libKSaneCore6-1"/>
@@ -2402,7 +2376,6 @@
       <repopackage name="libppd"/>
       <repopackage name="libppd2"/>
       <repopackage name="libpq5"/>
-      <repopackage name="libpresage1"/>
       <repopackage name="libproc2-1"/>
       <repopackage name="libprojectM3"/>
       <repopackage name="libprotobuf-c1"/>
@@ -3088,7 +3061,6 @@
       <repopackage name="mkfontscale"/>
       <repopackage name="mkisofs"/>
       <repopackage name="mlterm-common"/>
-      <repopackage name="mlterm-fcitx"/>
       <repopackage name="mlterm-ibus"/>
       <repopackage name="mlterm-sdl2"/>
       <repopackage name="mobile-broadband-provider-info"/>
@@ -3565,7 +3537,6 @@
       <repopackage name="pragha-lang"/>
       <repopackage name="pragha-plugins"/>
       <repopackage name="prctl"/>
-      <repopackage name="presage-data"/>
       <repopackage name="procinfo"/>
       <repopackage name="procmail"/>
       <repopackage name="procps"/>
@@ -3799,6 +3770,8 @@
       <repopackage name="qqc2-breeze-style6"/>
       <repopackage name="qqc2-desktop-style"/>
       <repopackage name="qqc2-desktop-style-lang"/>
+      <repopackage name="qrca"/>
+      <repopackage name="qrca-lang"/>
       <repopackage name="qrencode"/>
       <repopackage name="qt6-declarative-imports"/>
       <repopackage name="qt6-imageformats"/>
