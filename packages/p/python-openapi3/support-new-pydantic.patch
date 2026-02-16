@@ -1,0 +1,27 @@
+Index: openapi3-1.8.2/tests/api/schema.py
+===================================================================
+--- openapi3-1.8.2.orig/tests/api/schema.py
++++ openapi3-1.8.2/tests/api/schema.py
+@@ -1,6 +1,6 @@
+ from typing import List, Optional
+ 
+-from pydantic import BaseModel, Field
++from pydantic import BaseModel, Field, RootModel
+ 
+ 
+ class PetBase(BaseModel):
+@@ -16,10 +16,10 @@ class Pet(PetBase):
+     id: int
+ 
+ 
+-class Pets(BaseModel):
+-    __root__: List[Pet] = Field(..., description='list of pet')
++class Pets(RootModel[List[Pet]]):
++    pass
+ 
+ 
+ class Error(BaseModel):
+     code: int
+-    message: str
+\ No newline at end of file
++    message: str

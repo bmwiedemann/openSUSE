@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>16fd97255419e1d7aadd4a7391cb63c1</srcmd5>
+    <version>1.8.2</version>
+    <time>1771243925</time>
+    <user>anag_factory</user>
+    <comment>- Initial release of 1.8.2.
+- Add patch support-new-pydantic.patch:
+  * Support Pydantic v2 RootModel changes.</comment>
+    <requestid>1333238</requestid>
+  </revision>
+</revisionlist>

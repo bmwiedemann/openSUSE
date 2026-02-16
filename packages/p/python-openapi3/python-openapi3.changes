@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Mon Feb 16 05:04:34 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Initial release of 1.8.2.
+- Add patch support-new-pydantic.patch:
+  * Support Pydantic v2 RootModel changes.
