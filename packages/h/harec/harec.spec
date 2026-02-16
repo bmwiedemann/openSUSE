@@ -1,7 +1,7 @@
 #
 # spec file for package harec
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 Name:           harec
 Release:        0
-Version:        0.25.2+git.1750492315.966012b
+Version:        0.26.0
 Summary:        Bootstrap compiler for hare
 Group:          Development/Tools/Building
 URL:            https://git.sr.ht/~sircmpwn/harec
-Source0:        https://git.sr.ht/~sircmpwn/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.zst
 Source1:        README-suse-maint.md
+Source2:        roast_scm.info
 BuildRequires:  make
 BuildRequires:  qbe = 1.2
 BuildRequires:  zstd

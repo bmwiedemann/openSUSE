@@ -161,4 +161,41 @@
   * check: improve some error messages</comment>
     <requestid>1294958</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6a42d83b9d961536338a0480369f252e</srcmd5>
+    <version>0.26.0</version>
+    <time>1771243992</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.26.0:
+  * scripts/version: update to 0.26.0
+  * reduce_result: return invalid rather than NULL
+  * eval: use ctx-&gt;id for the name of compile-time pointer targets.
+  * Hash size for structs and unions
+  * Replace error flag with STORAGE_ERROR
+  * Rename internal error type to invalid
+  * Improve some more error messages
+  * Improve some error messages
+  * MAINTAINERS: bgs steps down
+  * Replace dealiasing ... with tagged union reduction
+  * Add support for DragonFly
+  * Improve error messages for decl attrs.
+  * Fix order of attributes on free and netbsd.
+  * Remove multi-binding global declarations
+  * Disallow @packed on unions at parse time.
+  * MAINTAINERS: Add Joe Finney
+  * Error out on hash collisions within tagged unions
+  * Add type_equal
+  * Add ident_equal
+  * Add expr_equal
+  * Allow assignability between void and void aliases
+  * for: give else-less loops an implicit `else void`
+  * gen_expr: drop int cast
+  * Give unions a default value.
+  * gen: fix gen_expr result for for/else loops.
+  * Remove duplicate intern_init.
+  * Do not disallow multiple embedded _ = fields.
+  * Implement undefined initializers
+  * Implement break with value and for/else.</comment>
+    <requestid>1333138</requestid>
+  </revision>
 </revisionlist>

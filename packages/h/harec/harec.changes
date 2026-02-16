@@ -1,4 +1,222 @@
 -------------------------------------------------------------------
+Fri Feb 13 13:42:38 UTC 2026 - uncomfyhalomacro@opensuse.org
+
+- Update to version 0.26.0:
+  * scripts/version: update to 0.26.0
+  * reduce_result: return invalid rather than NULL
+  * eval: use ctx->id for the name of compile-time pointer targets.
+  * Hash size for structs and unions
+  * Replace error flag with STORAGE_ERROR
+  * Rename internal error type to invalid
+  * Improve some more error messages
+  * Improve some error messages
+  * MAINTAINERS: bgs steps down
+  * Replace dealiasing ... with tagged union reduction
+  * Add support for DragonFly
+  * Improve error messages for decl attrs.
+  * Fix order of attributes on free and netbsd.
+  * Remove multi-binding global declarations
+  * Disallow @packed on unions at parse time.
+  * MAINTAINERS: Add Joe Finney
+  * Error out on hash collisions within tagged unions
+  * Add type_equal
+  * Add ident_equal
+  * Add expr_equal
+  * Allow assignability between void and void aliases
+  * for: give else-less loops an implicit `else void`
+  * gen_expr: drop int cast
+  * Give unions a default value.
+  * gen: fix gen_expr result for for/else loops.
+  * Remove duplicate intern_init.
+  * Do not disallow multiple embedded _ = fields.
+  * Implement undefined initializers
+  * Implement break with value and for/else.
+  * gen: extend bools for loops and asserts.
+  * parse: add and use a try function.
+  * parse: Allow trailing comma in binding list
+  * check: fix multiple unpack bindings
+  * check_expr_binding: add missing space
+  * check_expr_for_each: fix typo and wrap
+  * check_expr_for_each: mark default case unreachable
+  * Reapply "Implement discarding bindings and assignment."
+  * Revert "Implement discarding bindings and assignment."
+  * Implement discarding bindings and assignment.
+  * parse: further improve error msg for tuple unpacking def
+  * check: recover from for-each binding error
+  * Ignore flags when generating tagged union matches
+  * Replace @offset with _: fields.
+  * Ensure that unnamed parameters end up in the ABI.
+  * scripts/version: upgrade to 0.25.2
+  * tests/06-structs.ha: add difficult sample case from stdlib
+  * Revert replacing @offset with _: fields
+  * tests/12-loops: fix whitespace
+  * Dealias tuples when unpacking in for-each
+  * Disallow all types of unnamed types in parameter lists.
+  * Allow nameless parameters in corporeal functions.
+  * Use _: type in function prototypes.
+  * Fix miscellaneous gcc warnings
+  * Remove @offset and add "_: type" struct fields.
+  * Enable -Wformat errors for more functions
+  * check: fix -Wformat issues with 'error'
+  * tests/21-tuples: add offset expr tests
+  * type_store: fix offset of zero-sized tuple members
+  * tests/37-annotations: expand tests
+  * tests/26-regression: re-add minimal repro for old buggy switch test
+  * tests/14-switch: re-add pointer switch tests as fail tests
+  * lex: fix colno with tabs
+  * lex: fix order of xcalloc arguments
+  * tests/12-loops: remove unnecessary heap allocation
+  * tests/26-regression: add free after alloc
+  * type_store: disallow error flag on done and never
+  * check: improve yield and return errors
+  * utf8: switch to an off-the-shelf decoder.
+  * lex: Require identifier in #[annotation]
+  * lex: disallow sign/whitespace in hex literal
+  * Makefile: add -- to install command
+  * Makefile: remove unused suffixes
+  * types: make alignment of 64-bit types arch-dependent
+  * Gradually remove usage of "iconst" et al
+  * Move struct dimensions to type_store.h
+  * check: improve error message
+  * qinstr: remove outdated comment
+  * gen: fix inaccurate comment
+  * qbe: drop unused qbe_aggregate global
+  * tests/06-structs: fix invariant tests
+  * parse: improve empty block error message
+  * check: improve some error messages
+  * eval: fix typo in comment
+  * tests/29-unarithm: add bnot tests
+  * type_store: make a couple functions static
+  * lex: compare strcmp to 0 instead of negating
+  * gen: don't generate defers on assertion failure
+  * typedef: output pointer literals.
+  * eval: allow taking address of arbitrary expressions
+  * lex: scan and discard #[annotations]
+  * Save sources unaffected by -M for places using them as full paths
+  * types: add missing newline to "Unsupported or unrecognized target" error message
+  * parse: better error report in invalid local defines
+  * check: don't autodereference append/insert value
+  * check: disallow C variadism in @init/@fini/@test
+  * check: don't do type promotion on arrays
+  * gen: move an alloc instruction to function preamble
+  * parse: simplify parse_binding_unpack
+  * gen: fix expandable array gen_value type
+  * check: use explicit false as nullability parameter
+  * gen: handle a switch corner case
+  * tests: test string comparison
+  * fix regression introduced in 7c980a13
+  * gen: fix a regression introduced in 13a6fc7df4c4
+  * handle allocation failure by returning nomem
+  * scope: remove split object init and insert functions
+  * scan: make incomplete_decl just a field in scope_object
+  * all: intern names & identifiers
+  * tests: expand @symbol tests
+  * parse: parse symbol names as string literals
+  * parse: improve merging of consecutive string literals
+  * gen: generalize non-C-ABI-compatible type support
+  * check: use switch case dupe detection for enum case count
+  * check: simplify switch case duplicate checking
+  * check: remove switching on pointers
+  * check: simplify switch result type reduction
+  * check: don't allow offsetting into a slice with opaque members
+  * gen: adapt gen_expr_binarithm for usage in gen_expr_switch
+  * gen: handle expressions with not result better
+  * gen: fix iterator variable intialization
+  * gen: convert most gen_value constructions to mkgtemp + mklval
+  * gen: separate type assertion and type test generation
+  * gen: improve the way autoderefence generation is called
+  * gen: remove qval_dup
+  * gen: use better conditions for function return value checks
+  * temporarily fix an issue with flags
+  * check: ignore abinding flags
+  * rt: improve compile() error reporting
+  * check: give synthetic expressions loc information
+  * all: sort switch cases alphabetically
+  * all: make pointer nullability a boolean
+  * tests: more subslicing tests
+  * fix segmalloc failure on NetBSD
+  * tests/09-funcs: fix OpenBSD breakage introduced in 73f794603
+  * typedef: cast null to pointer type
+  * tests: update comment for rewrite of 30-reduction
+  * check: minor fixes to error messages
+  * rt+openbsd: write(1) returns size
+  * rt: simplify & modernize
+  * check: add dummy else branch to else-less if
+  * gen: simplify branch generation
+  * parse: Further simplify parse_binding_list()
+  * gen: add explicit supertype parameter to gen_nested_match_tests
+  * gen: swap type and subtype in gen_nested_match_tests
+  * gen: use ctx->arch.ptr as appropriate in gen_literal_slice
+  * gen: use slice helpers in gen_literal_slice_at
+  * gen: silence a warning about not requiring "type_store.h"
+  * Drop Lennart as OpenBSD maintainer
+  * check: don't pass location to mkerror
+  * tests: test some previously untaken parser codepaths
+  * rt: drop rt::exit_status
+  * makefiles: remove unused variable
+  * type_store: fix type_store_lookup_alias behavior
+  * type_store: make padding calculation explicit where required
+  * type_store: disentangle the internal resolution functions mess
+  * tests/30-reduction: rewrite in Hare (instead of C)
+  * lex: generalize and export append_buffer
+  * lex: enforce lexer->buf trailing 0 byte only where needed
+  * lex: explicitly initialize struct lexer
+  * check: add checked pointer autodereference function
+  * parse: simplify and fix a leak in parse_binding_list
+  * tests/32-copy: add slice copying tests
+  * gen: don't extend lvalue in gen_expr_assign
+  * qbe: use subword types in function calls and declarations
+  * testmod: add test for uintptr enums
+  * qbe: remove an unused global
+  * type_store: don't capitalize never in error msg
+  * Make const flag a no-op
+  * fix segmalloc failure on FreeBSD
+  * eval: disallow pointer comparison
+  * gen: fix ... placement in C-style variadic calls
+  * gen: fix type assertions to zero-sized types
+  * typedef: fix literals with alias of floating type
+  * check: only check match case assignability when hint provided
+  * lex: handle truncation in error messages
+  * lex: s/T_NUMBER/T_LITERAL/g
+  * tests/00-literals: remove unused import
+  * gen: make vaarg with zero-size type a no-op
+  * gen: return early from gen_store with zero-size aggregate
+  * check: disallow vaarg with undefined size type
+  * Redefine vaarg() as vaarg(object-selector, type)
+  * Makefile: delete unused rule
+  * Makefile: output assembly to tmp file
+  * util: use __has_attribute to check for format attribute
+  * typedef: remove dead branch
+  * types: Fix enum castability check
+  * check: fix a spurious error
+  * fix gen_literal_slice_at for new eval_slice
+  * eval: literal_default: fix arrays
+  * check: improve an error message
+  * fix tagged_qtype for (!void | void)
+  * parse: fix insert indexing expression error message
+  * lex: preserve lexer->require_int through comments
+  * eval: operate on f32s with f32 precision
+  * eval: truncate integer literals which overflow suffix
+  * eval: remove STORAGE_BOOL from itrunc
+  * types: return early from struct_subtype when offset > 0
+  * gen: use ctx->arch.ptr for more globals
+  * gen: only allocate word for tag in gen_match_with_tagged
+  * gen: use hlt when result of function body is never
+  * gen: remove unused functype field
+  * type_store: drop unused tagged_to_union function
+  * check: minor correction in error message
+  * check: make check_function static
+  * check: s/Object/Type/
+  * types: remove universal castability to done
+  * Allow matching on pointers to tagged unions.
+  * Disallow c-style variadism in hosted main.
+  * eval: copy location over to result
+  * check: fail when return type has undefined size
+  * type_store: Handle check error for default values
+  * docs: fix typo
+  * eval: Implement slicing expressions
+
+-------------------------------------------------------------------
 Thu Jul 17 15:10:36 UTC 2025 - uncomfyhalomacro@opensuse.org
 
 - Update to version 1750492315.966012b:
