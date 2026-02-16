@@ -1,7 +1,7 @@
 #
 # spec file for package bulk_extractor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,26 @@
 
 
 Name:           bulk_extractor
-Version:        2.0.0
+Version:        2.1.1
 Release:        0
 Summary:        Bulk Email and URL extraction tool
 License:        GPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/simsong/bulk_extractor/wiki/Introducing-bulk_extractor
-Source:         https://github.com/simsong/bulk_extractor/releases/download/v2.0.0/bulk_extractor-2.0.0.tar.gz
+Source:         https://github.com/simsong/bulk_extractor/releases/download/v%version/bulk_extractor-%version.tar.gz
 Patch1:         gcc13.diff
-# https://github.com/dfxml-working-group/dfxml_cpp/issues/15
-Patch2:         cpuid-check.patch
+Patch2:         libewf-wide.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  java-devel
-BuildRequires:  libewf-devel
-BuildRequires:  libexiv2-devel
-BuildRequires:  liblightgrep-devel
-BuildRequires:  openssl-devel
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(exiv2)
+BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libewf)
+BuildRequires:  pkgconfig(lightgrep)
+BuildRequires:  pkgconfig(re2)
+BuildRequires:  pkgconfig(zlib)
 # We need fiwalk which was added to sleuthkit in v4.1.0
 Requires:       sleuthkit >= 4.1
 
@@ -61,11 +61,11 @@ autoreconf -fi
 install -dm 0755 "%{buildroot}/%{_datadir}/%{name}"
 
 %files
-%doc ChangeLog README COPYING
+%doc ChangeLog README
 %doc doc
+%license COPYING
 %{_mandir}/man1/bulk_extractor.1.gz
 %{_bindir}/bulk_extractor
-%{_bindir}/test_be
 %{_datadir}/%{name}
 
 %changelog

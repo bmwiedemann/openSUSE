@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 16 09:58:51 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1.1
+  * BE2 is significantly faster on multi-core systems than BE1.
+  * `scan_outlook` and `scan_hiberfile` are now disabled by default
+    because they did not have unit tests. These scanners can be
+    re-enabled by specifying -eoutlook and -ehiberfile on the command
+    line.
+  * Renamed `jpeg_carved` feature extractor to jpeg so that the flag
+    `-S jpeg_carve_mode=2` enables carving of all contiguous JPEGs.
+- Delete cpuid-check.patch (merged), redo gcc13.diff for current
+  source, add libewf-wide.diff.
+
+-------------------------------------------------------------------
 Mon Jul 31 07:52:06 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - cpuid-check.patch: robustify cpuid check

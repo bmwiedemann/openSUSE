@@ -1,0 +1,23 @@
+From: <ej@inai.de>
+Date: 2026-02-16 12:37:18.724333259 +0100
+
+Just because libewf offers wchar_t interface does not mean
+we should be using them on Linux.
+
+---
+ src/image_process.cpp |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: bulk_extractor-2.1.1/src/image_process.cpp
+===================================================================
+--- bulk_extractor-2.1.1.orig/src/image_process.cpp
++++ bulk_extractor-2.1.1/src/image_process.cpp
+@@ -110,7 +110,7 @@ std::string image_process::make_list_tem
+  ** process_ewf
+  */
+ 
+-#if defined( LIBEWF_HAVE_WIDE_CHARACTER_TYPE )
++#if 0
+ #define LIBEWF_GLOB      libewf_glob_wide
+ #define LIBEWF_OPEN      libewf_open_wide
+ #define LIBEWF_GLOB_FREE libewf_glob_wide_free
