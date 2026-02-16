@@ -1,7 +1,7 @@
 #
 # spec file for package libinput
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@
 %define lname	libinput10
 %define pname	libinput
 Name:           libinput%{?xsuffix}
-Version:        1.30.1
+Version:        1.31.0
 Release:        0
 Summary:        Input device and event processing library
 License:        MIT
@@ -66,11 +66,11 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(wayland-protocols)
 %endif
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libevdev) >= 0.4
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libwacom) >= 0.20
 BuildRequires:  pkgconfig(mtdev) >= 1.1.0
-BuildRequires:  systemd-rpm-macros
 
 %description
 libinput is a library that handles input devices for display servers and

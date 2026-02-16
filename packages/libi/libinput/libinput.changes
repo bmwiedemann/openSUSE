@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  4 21:46:05 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.31.0
+  * Support for fast 3-finger swipes when 3-finger drag is enabled
+  * Configurable timeouts on the disable-while-typing and
+    disable-while-trackpointing timeouts for laptops
+
+-------------------------------------------------------------------
 Mon Dec  8 10:09:17 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.30.1
