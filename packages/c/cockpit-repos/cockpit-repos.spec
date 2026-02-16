@@ -27,6 +27,7 @@ Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 %include %_sourcedir/node_modules.spec.inc
 Patch10:        load-css-overrides.patch
+Patch11:        esbuild-ppc64.patch
 
 BuildArch: noarch
 %if ! 0%{?suse_version}
