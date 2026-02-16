@@ -26,14 +26,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-welcome
-Version:        6.5.5
+Version:        6.6.0
 Release:        0
 Summary:        Onboarding wizard for Plasma
 License:        GPL-2.0-only OR GPL-3.0-only
 URL:            https://invent.kde.org/plasma/plasma-welcome
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -96,7 +96,7 @@ rm %{buildroot}%{_kf6_libdir}/libplasma-welcome-publicplugin.a
 %{_kf6_debugdir}/welcome.categories
 %dir %{_kf6_qmldir}/org/kde/plasma
 %{_kf6_qmldir}/org/kde/plasma/welcome/
-%{_kf6_plugindir}/kf6/kded/kded_plasma-welcome.so
+%{_kf6_plugindir}/kf6/kded/kded_plasma_welcome.so
 
 %files lang -f plasma-welcome.lang
 
