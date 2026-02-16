@@ -1,0 +1,20 @@
+
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/Swordfish90/cool-retro-term</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="exclude">.github</param>
+    <param name="exclude">scripts</param>
+    <param name="exclude">snap</param>
+    <param name="revision">refs/tags/2.0.0-beta1</param>
+    <param name="version">2.0.0b1</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="tar" mode="manual">
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+</services>

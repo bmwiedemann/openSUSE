@@ -1,0 +1,13 @@
+diff --git a/app.pro.1 b/app.pro
+index 685fdc1..3199422 100644
+--- a/app/app.pro.1
++++ b/app/app.pro
+@@ -1,7 +1,6 @@
+ QT += qml quick widgets sql quickcontrols2
+ TARGET = cool-retro-term
+-APP_VERSION = $$system(git -C $$PWD/.. describe --tags --always --dirty=-dirty)
+-isEmpty(APP_VERSION): APP_VERSION = "unknown"
++APP_VERSION = "2.0.0-beta1"
+ DEFINES += APP_VERSION=\\\"$$APP_VERSION\\\"
+ 
+ # TODO: When migrating to CMake, use KDSingleApplication's CMakeLists.txt instead of these manual sources.

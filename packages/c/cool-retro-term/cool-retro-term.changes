@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 30 03:44:06 UTC 2026 - Avindra Goolcharan <aavindraa@gmail.com>
+
+- Update to version 2.0.0b1:
+  * update to Qt6
+  * Fix fullscreen menu not added on linux.
+  * Fix warning in terminal destruction.
+  * Fix menu behaviour on Linux.
+  * Revert "Make actions between the different menus global."
+  * Fix shortcuts on macOS.
+- add crt-set-version.patch to set version number without git
+
+-------------------------------------------------------------------
 Fri May 26 23:24:44 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Require QtQuick at runtime (else c-r-t exits with

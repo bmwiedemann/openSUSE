@@ -1,7 +1,7 @@
 #
 # spec file for package cool-retro-term
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2015, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,24 +18,26 @@
 
 
 Name:           cool-retro-term
-Version:        1.2.0
+Version:        2.0.0b1
 Release:        0
 Summary:        Terminal emulator which mimics old screens
 License:        GPL-3.0-or-later
 Group:          System/X11/Terminals
 URL:            https://github.com/Swordfish90/cool-retro-term
-Source:         https://github.com/Swordfish90/cool-retro-term/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.zst
+Patch0:         crt-set-version.patch
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5QuickControls2)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  zstd
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Qml)
+BuildRequires:  pkgconfig(Qt6QuickControls2)
+BuildRequires:  pkgconfig(Qt6Sql)
+BuildRequires:  pkgconfig(Qt6Widgets)
+Requires:       libQt6QuickControls2-6
+Requires:       qt6-qt5compat-imports
+Requires:       qt6-sql-sqlite
 Recommends:     int10h-oldschoolpc-fonts
-Requires:       libqt5-qtquickcontrols
-Requires:       libqt5-qtquickcontrols2
 Conflicts:      qmltermwidget
 
 %description
@@ -44,25 +46,25 @@ of the old cathode tube screens. It has been designed to be eye-candy,
 customizable, and reasonably lightweight.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%qmake5
-%make_jobs
+%{qmake6}
+%{qmake6_build}
 
 %install
-%qmake5_install
-install -Dpm 0644 cool-retro-term.desktop %{buildroot}/%{_datadir}/applications/%{name}.desktop
-install -Dpm 0644 packaging/debian/cool-retro-term.1 %{buildroot}/%{_mandir}/man1/%{name}.1
+%{qmake6_install}
+install -Dpm 0644 %{name}.desktop %{buildroot}/%{_datadir}/applications/%{name}.desktop
+install -Dpm 0644 packaging/debian/%{name}.1 %{buildroot}/%{_mandir}/man1/%{name}.1
 
 %files
 %license gpl-2.0.txt gpl-3.0.txt
 %doc README.md
-%{_bindir}/cool-retro-term
+%{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/*/%{name}.png
 %{_mandir}/man1/%{name}.1%{?ext_man}
-%{_libdir}/qt5/qml/QMLTermWidget/*
-%dir %{_libdir}/qt5/qml/QMLTermWidget
+%{_libdir}/qt6/qml/QMLTermWidget/*
+%dir %{_libdir}/qt6/qml/QMLTermWidget
 
 %changelog
