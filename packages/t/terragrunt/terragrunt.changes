@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Feb 14 08:30:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.99.2:
+  * Bug Fixes
+    - Interrupt signal propagation to OpenTofu/Terraform fixed
+      The mechanism by which Terragrunt sends interrupt signals to
+      OpenTofu/Terraform processes it started has been made more
+      robust. Terragrunt will now send the interrupt signal in the
+      event that a user explicitly sends an interrupt signal to
+      Terragrunt in addition to scenarios where Terragrunt’s
+      context cancellation is triggered (e.g. in the event of a
+      timeout).
+    - SOPS decryption race condition fixed
+      A race condition in the concurrent access to SOPS decrypted
+      secrets in different environments combined with usage of the
+      --auth-provider-cmd flag resulted in authentication failures.
+      Synchronization controls have been introduced to ensure
+      authentication proceeds correctly for each environment
+      independently.
+  * What's Changed
+    - SOPS decode change porting to v0.99 (#5549)
+    - chore: Backporting #5518 to `v0.99` (#5547)
+
+-------------------------------------------------------------------
 Fri Jan 30 07:09:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.99.1:
