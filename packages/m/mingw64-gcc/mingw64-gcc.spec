@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-gcc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Patch0:         gcc-make-xmmintrin-header-cplusplus-compatible.patch
 Patch1:         gcc-12.1.0-fix-install-gdb-support-files.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
+BuildRequires:  makeinfo
 BuildRequires:  mingw64-cross-binutils
 BuildRequires:  mingw64-cross-gcc >= %{version}
 BuildRequires:  mingw64-cross-gcc-c++ >= %{version}
@@ -46,7 +47,6 @@ BuildRequires:  mingw64-runtime >= 3.1.0
 BuildRequires:  mingw64-zlib-devel
 BuildRequires:  mpc-devel
 BuildRequires:  mpfr-devel
-BuildRequires:  texinfo
 BuildRequires:  unzip
 BuildRequires:  xz
 BuildRequires:  zip
