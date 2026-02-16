@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb 15 12:49:17 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 1.4.6:
+  * All other dependencies have been updated to their latest versions.
+  * Support for Python 3.14 has been added.
+  * Support for Python < 3.12 has been dropped.
+  * All characters from the current Unicode standard 16.0 are now fully supported.
+
+-------------------------------------------------------------------
 Tue Mar  5 17:55:41 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Modernized rust in specfile and enabled tests

@@ -23,4 +23,17 @@
     <comment></comment>
     <requestid>1155759</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2db80f3521b4f092f45d605b25985014</srcmd5>
+    <version>1.4.6</version>
+    <time>1771243898</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.6:
+  * All other dependencies have been updated to their latest versions.
+  * Support for Python 3.14 has been added.
+  * Support for Python &lt; 3.12 has been dropped.
+  * All characters from the current Unicode standard 16.0 are now fully supported.
+</comment>
+    <requestid>1333192</requestid>
+  </revision>
 </revisionlist>
