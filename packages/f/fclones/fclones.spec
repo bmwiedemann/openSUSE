@@ -1,7 +1,7 @@
 #
 # spec file for package fclones
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,15 +76,17 @@ install -m 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildro
 
 # create the bash completion file
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
-%{buildroot}/%{_bindir}/%{name} complete bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+# to create the completions use the binary from the build dir in all cases,
+# otherwise the build fails with "file-contains-buildroot".
+%{_builddir}/%{name}-%{version}/target/release/%{name} complete bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
 
 # create the fish completion file
 mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
-%{buildroot}/%{_bindir}/%{name} complete fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+%{_builddir}/%{name}-%{version}/target/release/%{name} complete fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 # create the zsh completion file
 mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
-%{buildroot}/%{_bindir}/%{name} complete zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+%{_builddir}/%{name}-%{version}/target/release/%{name} complete zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
 
 %files
 %license LICENSE

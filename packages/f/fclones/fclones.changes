@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 14 11:04:26 UTC 2026 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Fix the build in Factory by using the binary from %{_builddir}
+  instead of the one from %{buildroot} to create all shell
+  completion files.
+
+-------------------------------------------------------------------
 Sat Apr 26 09:04:25 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.35.0:
