@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Feb 12 19:43:45 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.0
+- Changes since 6.5.91:
+  * Update version for new release 6.6.0
+
+-------------------------------------------------------------------
+Wed Jan 28 16:15:44 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.91
+- Changes since 6.5.90:
+  * Update version for new release 6.5.91
+  * kded/marker-levels: Add support for checking (waste) receptacles (kde#514525)
+
+-------------------------------------------------------------------
+Sat Jan 17 20:29:09 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.90
+- Changes since 6.5.5:
+  * Update version for new release 6.5.90
+  * Delay deleting the KCupsRequest in MarkerLevelChecker (kde#514415)
+  * Update readme, remove section for external dependencies
+  * kded: Show all marker level warnings in one notification
+  * kded: Fix marker-level checker for CUPS unknown levels (kde#512602)
+  * Provide accurate bug reporting instructions in README
+  * Follow HIG a bit more with the buttons
+  * libkcups, configure-printer: fix typos Fixes various source documentation typos
+  * libkcups: Fix call to datetime create from CUPS (kde#427632)
+  * kded: Refactor sanity check on the marker levels/boundaries
+  * Update version for new release 6.5.80
+
+-------------------------------------------------------------------
 Tue Jan 13 14:41:21 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.5.5:
