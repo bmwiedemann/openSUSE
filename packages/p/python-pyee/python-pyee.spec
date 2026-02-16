@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyee
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyee
-Version:        13.0.0
+Version:        13.0.1
 Release:        0
 Summary:        A port of node.js's EventEmitter to python
 License:        MIT
 URL:            https://github.com/jfhbrook/pyee
 Source:         https://files.pythonhosted.org/packages/source/p/pyee/pyee-%{version}.tar.gz
-# https://github.com/jfhbrook/pyee/pull/184
-Patch0:         gh-pr184_tests.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -47,8 +45,6 @@ from Node.js.
 
 %prep
 %autosetup -n pyee-%{version} -p1
-# https://github.com/jfhbrook/pyee/issues/189
-sed -ie 's/\(tool.pytest\)/\1.ini_options/' pyproject.toml
 
 %build
 %pyproject_wheel

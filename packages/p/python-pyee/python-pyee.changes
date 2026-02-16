@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 16 04:43:55 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 13.0.1:
+  * Check for listener's existence before attempting to remove it
+  * Update pytest configuration to support pytest 9
+- Drop patch gh-pr184_tests.patch, merged upstream.
+
+-------------------------------------------------------------------
 Tue Dec 16 04:47:59 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Fix pytest section in pyproject.toml.

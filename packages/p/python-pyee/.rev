@@ -178,4 +178,15 @@ Add missing BuildRequires</comment>
     <comment>- Fix pytest section in pyproject.toml.</comment>
     <requestid>1323042</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2f108d78e9e34350dbbd79be77ce8339</srcmd5>
+    <version>13.0.1</version>
+    <time>1771243921</time>
+    <user>anag_factory</user>
+    <comment>- Update to 13.0.1:
+  * Check for listener's existence before attempting to remove it
+  * Update pytest configuration to support pytest 9
+- Drop patch gh-pr184_tests.patch, merged upstream.</comment>
+    <requestid>1333237</requestid>
+  </revision>
 </revisionlist>
