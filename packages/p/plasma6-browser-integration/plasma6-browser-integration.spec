@@ -29,14 +29,14 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           plasma6-browser-integration
-Version:        6.5.5
+Version:        6.6.0
 Release:        0
 Summary:        Helper for the KDE Plasma Browser Integration
 License:        GPL-3.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -100,11 +100,8 @@ KDE Plasma.
 
 if [ "%{_lib}" != "lib" ]; then
   # Move mozilla native messaging file to correct location
-  mv %{buildroot}%{_prefix}/lib/mozilla %{buildroot}%{_libdir}
+  mv %{buildroot}%{_prefix}/lib/{mozilla,librewolf,waterfox} %{buildroot}%{_libdir}
 fi
-
-# Doesn't exist in openSUSE
-rm -r %{buildroot}%{_prefix}/lib/librewolf
 
 %find_lang %{name} --all-name
 
@@ -113,8 +110,8 @@ rm -r %{buildroot}%{_prefix}/lib/librewolf
 %{_kf6_bindir}/plasma-browser-integration-host
 %{_kf6_plugindir}/kf6/kded/browserintegrationreminder.so
 %{_kf6_plugindir}/kf6/kded/browserintegrationflatpakintegrator.so
-%dir %{_libdir}/mozilla
-%{_libdir}/mozilla/native-messaging-hosts/
+%dir %{_libdir}/{mozilla,librewolf,waterfox}
+%{_libdir}/{mozilla,librewolf,waterfox}/native-messaging-hosts/
 %dir %{_sysconfdir}/chromium
 %{_sysconfdir}/chromium/native-messaging-hosts/
 %dir %{_sysconfdir}/opt/chrome
