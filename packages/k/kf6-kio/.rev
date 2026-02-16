@@ -220,4 +220,12 @@
     <comment>hotfix release, dependent packages will likely need to be rebuilt</comment>
     <requestid>1328561</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>11bb70d79357973c79c966fb5bcaaa3a</srcmd5>
+    <version>6.23.0</version>
+    <time>1771243352</time>
+    <user>anag_factory</user>
+    <comment>KDE Frameworks 6.23 (forwarded request 1332889 from krop)</comment>
+    <requestid>1332935</requestid>
+  </revision>
 </revisionlist>

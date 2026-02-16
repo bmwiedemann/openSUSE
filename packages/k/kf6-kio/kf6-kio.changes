@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb  6 14:25:53 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.23.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.23.0
+- Too many changes since 6.22.1, only listing bugfixes:
+  * KFilePlacesEventWatcher: Set drag disabled on invalid index and on headers (kde#499952)
+  * dropjob: add DropJobFlag::ExcludePluginsActions flag support
+  * dropjob: handle drop from Places View properly
+  * KFilePreviewGenerator: pass dpi to the PreviewJob (kde#489298)
+  * KDirOperator: implement single tap gesture (kde#513606)
+  * KCoreDirLister: Add parentDirs of dirs that have not been deleted to pendingUpdates list (kde#497259)
+
+-------------------------------------------------------------------
 Wed Jan 21 17:57:06 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.22.1
