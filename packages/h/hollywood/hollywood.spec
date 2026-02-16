@@ -1,7 +1,7 @@
 #
 # spec file for package hollywood
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,14 @@
 #
 
 Name:           hollywood
-Version:        1.21
+Version:        1.25
 Release:        0
 Summary:        Program to fill the console with Hollywood melodrama technobabble
 License:        Apache-2.0 AND CC0-1.0
 Group:          Amusements/Toys/Other
 URL:            https://launchpad.net/hollywood
-Source:         https://launchpad.net/hollywood/trunk/%{version}/+download/hollywood_%{version}.orig.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/dustinkirkland/hollywood/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE libexec_fix.patch -- rewrite module paths from /usr/lib/ to /usr/libexec/
-Patch0:         libexec_fix.patch
 Recommends:     apg
 Recommends:     bmon
 Recommends:     byobu
@@ -45,6 +44,7 @@ Recommends:     openssh-client
 Recommends:     speedometer
 Recommends:     tree
 Requires:       %name-data
+Requires:       man
 # for /usr/bin/pygmentize
 Requires:       python3-Pygments
 Requires:       tmux
@@ -87,6 +87,8 @@ and statistics, like any good computer screen on Wall Street.
 
 %prep
 %autosetup -p0
+sed -i '1s/env //' bin/* lib/*/*
+sed -i 's/lib/libexec/' bin/*
 
 %build
 
@@ -101,17 +103,14 @@ install -Dm 0755 -t %buildroot/%_libexecdir/wallstreet/ lib/wallstreet/*
 install -Dm 0644 -t %buildroot/%_datarootdir/wallstreet share/wallstreet/*
 
 %files
-%defattr(-,root,root)
 %_bindir/hollywood
 %_libexecdir/hollywood/
 %_mandir/man1/hollywood.1*
 
 %files data
-%defattr(-,root,root)
 %_datarootdir/hollywood
 
 %files -n wallstreet
-%defattr(-,root,root)
 %_bindir/wallstreet
 %_libexecdir/wallstreet/
 %_datarootdir/wallstreet
