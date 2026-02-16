@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Feb 15 19:59:53 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.4.1+git76.10d7a2e:
+  * Bump chainguard-dev/actions from 1.6.0 to 1.6.1 in the all group
+  * Bump chainguard-dev/actions from 1.5.16 to 1.6.0 in the all group
+  * Bump chainguard-dev/actions from 1.5.14 to 1.5.16 in the all group
+  * Bump chainguard-dev/actions from 1.5.13 to 1.5.14 in the all group
+  * Bump the all group across 1 directory with 2 updates
+  * Bump github.com/sigstore/rekor from 1.4.3 to 1.5.0
+  * Bump github.com/theupdateframework/go-tuf/v2 from 2.3.0 to 2.4.1
+  * Bump the all group across 1 directory with 2 updates
+  * Bump actions/setup-go from 6.1.0 to 6.2.0 in the all group
+  * Bump github.com/sigstore/fulcio from 1.8.4 to 1.8.5
+  * Bump github.com/sigstore/cosign/v2 from 2.6.1 to 2.6.2 in the all group
+  * Bump chainguard-dev/actions from 1.5.10 to 1.5.11 in the all group
+  * Bump github.com/sigstore/fulcio from 1.7.1 to 1.8.3
+  * Bump github.com/sigstore/sigstore
+  * Bump github.com/secure-systems-lab/go-securesystemslib
+  * Bump actions/upload-artifact from 5.0.0 to 6.0.0
+  * bump golangci-lint
+  * update gorelease sing to works with cosign 3.0+
+  * Bump github.com/spf13/cobra from 1.10.1 to 1.10.2 in the all group
+  * Bump golangci/golangci-lint-action from 9.1.0 to 9.2.0 in the all group
+  * Bump actions/checkout from 6.0.0 to 6.0.1 in the all group
+  * Bump softprops/action-gh-release from 2.4.2 to 2.5.0 in the all group
+  * Bump github.com/google/go-containerregistry in the all group
+  * Bump chainguard-dev/actions from 1.5.9 to 1.5.10 in the all group
+  * Bump golangci/golangci-lint-action from 8.0.0 to 9.1.0
+  * Bump actions/checkout from 5.0.1 to 6.0.0
+  * Bump actions/setup-go from 6.0.0 to 6.1.0 in the all group
+  * Bump golang.org/x/crypto from 0.43.0 to 0.45.0
+  * Bump the all group across 1 directory with 3 updates
+  * Bump github.com/sigstore/rekor from 1.4.2 to 1.4.3 in the all group
+  * Bump actions/upload-artifact from 4.6.2 to 5.0.0
+  * Bump chainguard-dev/actions from 1.5.6 to 1.5.7 in the all group
+  * Bump sigstore/cosign-installer from 3.10.0 to 4.0.0
+  * Bump chainguard-dev/actions from 1.5.4 to 1.5.6 in the all group
+  * Bump the all group with 2 updates
+  * Bump softprops/action-gh-release from 2.3.4 to 2.4.0 in the all group
+  * Bump the all group with 2 updates
+  * Bump github.com/sigstore/cosign/v2 from 2.6.0 to 2.6.1 in the all group
+
+-------------------------------------------------------------------
 Tue Nov 04 14:35:57 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.4.1:
