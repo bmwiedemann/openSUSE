@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Feb  6 14:25:43 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.23.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.23.0
+- Changes since 6.22.0:
+  * Update dependency version to 6.23.0
+  * K7ZipPrivate::folderItem: Limit the amount of folderInfos to a "reasonable" amount
+  * 7zip: defines to constexpr (or commented out if unused)
+  * 7zip: make it clear we only support an int number of files
+  * 7zip: convert a bunch of int to qsizetype
+  * 7zip: Remove unused defines
+  * 7zip: Add names to function parameters
+  * 7zip: Use ranges::any_of
+  * 7zip: Convert loops into range-for loops
+  * 7zip: Add [[nodiscard]]
+  * 7zip: Mark 3 qlist parameters as const
+  * 7zip: Mark sngle argument constructors as explicit
+  * 7zip: Use "proper" C++ include
+  * 7zip: Remove unused BUFFER_SIZE
+  * 7zip: Use default member initializer
+  * Enable LSAN in CI
+  * KLimitedIODevice: mark two member variables as const
+  * kzip: Bail out if the reported size of the file is negative
+  * Fix OSS-Fuzz AFL builds
+  * Update version to 6.23.0
+
+-------------------------------------------------------------------
 Sun Jan  4 14:47:04 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.22.0
