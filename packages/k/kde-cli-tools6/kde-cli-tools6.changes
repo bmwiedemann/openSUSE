@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Feb 12 19:42:44 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.0
+- Changes since 6.5.91:
+  * Update version for new release 6.6.0
+
+-------------------------------------------------------------------
+Wed Jan 28 16:13:36 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.91
+- Changes since 6.5.90:
+  * Update version for new release 6.5.91
+  * kioclient: Explicitely clear desktopFileName (kde#512650)
+
+-------------------------------------------------------------------
+Sat Jan 17 20:25:34 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.90
+- Changes since 6.5.5:
+  * Update version for new release 6.5.90
+  * kioclient: Don't set appname (kde#512650)
+  * Update version for new release 6.5.80
+
+-------------------------------------------------------------------
 Tue Jan 13 14:39:21 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.5.5:
