@@ -28,14 +28,14 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           kinfocenter6
-Version:        6.5.5
+Version:        6.6.0
 Release:        0
 Summary:        Utility that provides information about a computer system
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -111,6 +111,7 @@ KDE Utility that provides information about a computer system.
 %files
 %license LICENSES/*.txt
 %doc %lang(en) %{_kf6_htmldir}/en/kinfocenter/
+%{_libexecdir}/kinfocenter-vulkan-helper
 %{_kf6_applicationsdir}/kcm_about-distro.desktop
 %{_kf6_applicationsdir}/kcm_energyinfo.desktop
 %{_kf6_applicationsdir}/org.kde.kinfocenter.desktop
@@ -144,7 +145,9 @@ KDE Utility that provides information about a computer system.
 %{_kf6_dbuspolicydir}/org.kde.kinfocenter.dmidecode.conf
 %dir %{_kf6_sharedir}/kinfocenter/
 %dir %{_kf6_sharedir}/kinfocenter/edid
+%dir %{_kf6_sharedir}/kinfocenter/network
 %{_kf6_sharedir}/kinfocenter/edid/edid.sh
+%{_kf6_sharedir}/kinfocenter/network/ip.sh
 %{_kf6_sharedir}/kinfocenter/categories/
 %{_kf6_sharedir}/kinfocenter/firmware_security/
 %{_kf6_sharedir}/polkit-1/actions/org.kde.kinfocenter.dmidecode.policy
