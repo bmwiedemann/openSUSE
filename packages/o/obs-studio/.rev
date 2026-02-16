@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a0feb87b283425c69912f1996f2878a2</srcmd5>
+    <version>32.0.4</version>
+    <time>1771243763</time>
+    <user>anag_factory</user>
+    <comment>This submission provides OBS Studio packaged in a modular and maintainable way, with careful dependency handling and reduced bundled components.
+
+Clean dependency model and simplified packaging
+
+The spec has been designed to avoid hardcoded or redundant dependencies and to rely on system-provided components whenever possible:
+
+Uses the c++_compiler virtual provide instead of hardcoding specific GCC versions.
+
+Avoids obsolete or redundant BuildRequires (Qt private headers, duplicated FFmpeg pkgconfig entries, unnecessary Qt6Gui pkgconfig).
+
+Uses python3-devel instead of version-specific Python dependencies.
+
+Relies on pkgconfig(libudev) for portability.
+
+Avoids manual include path overrides and relies on CMake auto-detection.
+
+Delegates encoder support to system-provided FFmpeg libraries instead of embedding optional codec integrations directly.
+
+This approach:
+
+Reduces maintenance complexity.
+
+Improves multi-architecture compatibility.
+
+Avoids over-constraining dependency versions.
+
+Ensures better integration with the system multimedia stack.
+
+The built-in obs-x264 plugin is intentionally disabled.
+
+The internal x264 integration introduces licensing implications when distributed as part of the core OBS binary. Instead, encoder functionality is provided through system FFmpeg libraries (libx264, libx265, VAAPI, OpenH264, etc.), when available.
+
+This ensures:
+
+No direct embedding of x264 inside OBS.
+
+Clear separation between the application and codec implementations.
+
+Reduced legal and redistribution complexity.
+
+Equivalent functionality via the system multimedia stack.
+
+The bundled obs-browser and obs-websocket plugins are disabled in this package.
+
+obs-browser depends on a precompiled Chromium Embedded Framework (CEF) binary distributed upstream. This introduces several technical concerns:
+
+Inclusion of a large precompiled binary component.
+
+Embedded Chromium runtime within the main package.
+
+Increased attack surface.
+
+Higher complexity for vulnerability tracking and updates.
+
+Tight coupling between OBS and a bundled browser engine.
+
+Instead:
+
+The core OBS package remains smaller and more modular.
+
+Browser and websocket functionality can be provided externally as separate plugins.
+
+Optional components remain available without being tightly integrated into the core build.
+
+Security handling and lifecycle management are simplified.
+
+Overall, this submission provides a clean and modular OBS package that integrates properly with system libraries, avoids embedded binary components, and keeps optional functionality decoupled from the core application.
+
+There are still minor multi-architecture adjustments to refine, but the package builds correctly and is ready for regular use.</comment>
+    <requestid>1333136</requestid>
+  </revision>
+</revisionlist>

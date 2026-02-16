@@ -1,0 +1,2103 @@
+diff '--color=auto' -rubN obs-studio.orig/cmake/finders/FindLibx264.cmake obs-studio/cmake/finders/FindLibx264.cmake
+--- obs-studio.orig/cmake/finders/FindLibx264.cmake	2025-10-20 20:23:38.037600245 -0300
++++ obs-studio/cmake/finders/FindLibx264.cmake	2025-10-21 20:22:34.866193323 -0300
+@@ -38,6 +38,11 @@
+ 
+ include(FindPackageHandleStandardArgs)
+ 
++set(Libx264_FOUND FALSE CACHE BOOL "Disable x264 detection")
++set(Libx264_INCLUDE_DIR "")
++set(Libx264_LIBRARY "")
++message(STATUS "Libx264 detection forcibly disabled by build spec.")
++
+ find_package(PkgConfig QUIET)
+ if(PKG_CONFIG_FOUND)
+   pkg_search_module(PC_Libx264 QUIET x264)
+diff '--color=auto' -rubN obs-studio.orig/frontend/plugins/decklink-output-ui/CMakeLists.txt obs-studio/frontend/plugins/decklink-output-ui/CMakeLists.txt
+--- obs-studio.orig/frontend/plugins/decklink-output-ui/CMakeLists.txt	2025-10-20 20:23:38.175086646 -0300
++++ obs-studio/frontend/plugins/decklink-output-ui/CMakeLists.txt	2025-10-27 08:34:13.089442454 -0300
+@@ -8,7 +8,7 @@
+ find_package(Qt6 REQUIRED Widgets)
+ 
+ if(OS_LINUX OR OS_FREEBSD OR OS_OPENBSD)
+-  find_package(Qt6 REQUIRED Gui)
++  find_package(Qt6 REQUIRED Gui GuiPrivate)
+ 
+   find_package(X11 REQUIRED)
+ endif()
+diff '--color=auto' -rubN obs-studio.orig/frontend/settings/OBSBasicSettings.cpp obs-studio/frontend/settings/OBSBasicSettings.cpp
+--- obs-studio.orig/frontend/settings/OBSBasicSettings.cpp	2025-10-20 20:23:38.183784350 -0300
++++ obs-studio/frontend/settings/OBSBasicSettings.cpp	2025-10-20 21:34:38.457164356 -0300
+@@ -4734,8 +4734,12 @@
+ 	ADD_QUALITY("HQ");
+ 	ADD_QUALITY("Lossless");
+ 
+-	ui->simpleOutRecEncoder->addItem(ENCODER_STR("Software"), QString(SIMPLE_ENCODER_X264));
+-	ui->simpleOutRecEncoder->addItem(ENCODER_STR("SoftwareLowCPU"), QString(SIMPLE_ENCODER_X264_LOWCPU));
++	if (EncoderAvailable("obs_x264")) {
++		ui->simpleOutRecEncoder->addItem(ENCODER_STR("Software"),
++		QString(SIMPLE_ENCODER_X264));
++		ui->simpleOutRecEncoder->addItem(ENCODER_STR("SoftwareLowCPU"),
++		QString(SIMPLE_ENCODER_X264_LOWCPU));
++	}
+ 	if (EncoderAvailable("obs_qsv11"))
+ 		ui->simpleOutRecEncoder->addItem(ENCODER_STR("Hardware.QSV.H264"), QString(SIMPLE_ENCODER_QSV));
+ 	if (EncoderAvailable("obs_qsv11_av1"))
+diff '--color=auto' -rubN obs-studio.orig/frontend/settings/OBSBasicSettings_Stream.cpp obs-studio/frontend/settings/OBSBasicSettings_Stream.cpp
+--- obs-studio.orig/frontend/settings/OBSBasicSettings_Stream.cpp	2025-10-20 20:23:38.184299890 -0300
++++ obs-studio/frontend/settings/OBSBasicSettings_Stream.cpp	2025-10-20 21:39:13.845652492 -0300
+@@ -1675,7 +1675,9 @@
+ 
+ #define ENCODER_STR(str) QTStr("Basic.Settings.Output.Simple.Encoder." str)
+ 
+-	ui->simpleOutStrEncoder->addItem(ENCODER_STR("Software"), QString(SIMPLE_ENCODER_X264));
++	if (service_supports_encoder(vcodecs, "obs_x264"))
++		ui->simpleOutStrEncoder->addItem(ENCODER_STR("Software"),
++		QString(SIMPLE_ENCODER_X264));
+ #ifdef _WIN32
+ 	if (service_supports_encoder(vcodecs, "obs_qsv11"))
+ 		ui->simpleOutStrEncoder->addItem(ENCODER_STR("Hardware.QSV.H264"), QString(SIMPLE_ENCODER_QSV));
+diff '--color=auto' -rubN obs-studio.orig/frontend/utility/SimpleOutput.cpp obs-studio/frontend/utility/SimpleOutput.cpp
+--- obs-studio.orig/frontend/utility/SimpleOutput.cpp	2025-10-20 20:23:38.189157662 -0300
++++ obs-studio/frontend/utility/SimpleOutput.cpp	2025-10-20 20:52:38.438094788 -0300
+@@ -112,7 +112,7 @@
+ #endif
+ 	}
+ 
+-	return "obs_x264";
++	return "ffmpeg_aom_av1";
+ }
+ 
+ void SimpleOutput::LoadRecordingPreset()
+Binary files obs-studio.orig/.git/index and obs-studio/.git/index differ
+diff '--color=auto' -rubN obs-studio.orig/plugins/CMakeLists.txt obs-studio/plugins/CMakeLists.txt
+--- obs-studio.orig/plugins/CMakeLists.txt	2025-10-20 20:23:38.235672621 -0300
++++ obs-studio/plugins/CMakeLists.txt	2025-10-21 20:08:52.352768880 -0300
+@@ -79,7 +79,7 @@
+ 
+ check_obs_websocket()
+ 
+-add_obs_plugin(obs-x264)
++#add_obs_plugin(obs-x264)
+ add_obs_plugin(oss-audio PLATFORMS FREEBSD OPENBSD)
+ add_obs_plugin(rtmp-services)
+ add_obs_plugin(sndio PLATFORMS LINUX FREEBSD OPENBSD)
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/cmake/windows/obs-module.rc.in obs-studio/plugins/obs-x264/cmake/windows/obs-module.rc.in
+--- obs-studio.orig/plugins/obs-x264/cmake/windows/obs-module.rc.in	2025-10-20 20:23:38.375812253 -0300
++++ obs-studio/plugins/obs-x264/cmake/windows/obs-module.rc.in	1969-12-31 21:00:00.000000000 -0300
+@@ -1,24 +0,0 @@
+-1 VERSIONINFO
+-FILEVERSION ${OBS_VERSION_MAJOR},${OBS_VERSION_MINOR},${OBS_VERSION_PATCH},0
+-BEGIN
+-  BLOCK "StringFileInfo"
+-  BEGIN
+-    BLOCK "040904B0"
+-    BEGIN
+-      VALUE "CompanyName", "${OBS_COMPANY_NAME}"
+-      VALUE "FileDescription", "OBS x264 encoder"
+-      VALUE "FileVersion", "${OBS_VERSION_CANONICAL}"
+-      VALUE "ProductName", "${OBS_PRODUCT_NAME}"
+-      VALUE "ProductVersion", "${OBS_VERSION_CANONICAL}"
+-      VALUE "Comments", "${OBS_COMMENTS}"
+-      VALUE "LegalCopyright", "${OBS_LEGAL_COPYRIGHT}"
+-      VALUE "InternalName", "obs-x264"
+-      VALUE "OriginalFilename", "obs-x264"
+-    END
+-  END
+-
+-  BLOCK "VarFileInfo"
+-  BEGIN
+-    VALUE "Translation", 0x0409, 0x04B0
+-  END
+-END
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/cmake/x264-test.cmake obs-studio/plugins/obs-x264/cmake/x264-test.cmake
+--- obs-studio.orig/plugins/obs-x264/cmake/x264-test.cmake	2025-10-20 20:23:38.375812253 -0300
++++ obs-studio/plugins/obs-x264/cmake/x264-test.cmake	1969-12-31 21:00:00.000000000 -0300
+@@ -1,11 +0,0 @@
+-add_executable(obs-x264-test)
+-
+-target_sources(obs-x264-test PRIVATE obs-x264-test.c)
+-
+-target_compile_options(obs-x264-test PRIVATE $<$<COMPILE_LANG_AND_ID:C,AppleClang,Clang>:-Wno-strict-prototypes>)
+-
+-target_link_libraries(obs-x264-test PRIVATE OBS::opts-parser)
+-
+-add_test(NAME obs-x264-test COMMAND obs-x264-test)
+-
+-set_target_properties(obs-x264-test PROPERTIES FOLDER plugins/obs-x264)
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/CMakeLists.txt obs-studio/plugins/obs-x264/CMakeLists.txt
+--- obs-studio.orig/plugins/obs-x264/CMakeLists.txt	2025-10-20 20:23:38.375093218 -0300
++++ obs-studio/plugins/obs-x264/CMakeLists.txt	1969-12-31 21:00:00.000000000 -0300
+@@ -1,22 +0,0 @@
+-cmake_minimum_required(VERSION 3.28...3.30)
+-
+-find_package(Libx264 REQUIRED)
+-
+-if(NOT TARGET OBS::opts-parser)
+-  add_subdirectory("${CMAKE_SOURCE_DIR}/shared/opts-parser" "${CMAKE_BINARY_DIR}/shared/opts-parser")
+-endif()
+-
+-add_library(obs-x264 MODULE)
+-add_library(OBS::x264 ALIAS obs-x264)
+-
+-target_sources(obs-x264 PRIVATE obs-x264.c obs-x264-plugin-main.c)
+-target_link_libraries(obs-x264 PRIVATE OBS::opts-parser Libx264::Libx264)
+-
+-if(OS_WINDOWS)
+-  configure_file(cmake/windows/obs-module.rc.in obs-x264.rc)
+-  target_sources(obs-x264 PRIVATE obs-x264.rc)
+-endif()
+-
+-set_target_properties_obs(obs-x264 PROPERTIES FOLDER plugins/obs-x264 PREFIX "")
+-
+-include(cmake/x264-test.cmake)
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/af-ZA.ini obs-studio/plugins/obs-x264/data/locale/af-ZA.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/af-ZA.ini	2025-10-20 20:23:38.376028260 -0300
++++ obs-studio/plugins/obs-x264/data/locale/af-ZA.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,8 +0,0 @@
+-Bitrate="Bistempo"
+-CustomBufsize="Gebruik pasgemaakte buffergrootte"
+-BufferSize="Buffergrootte"
+-KeyframeIntervalSec="sleutelraaminterval (0=outomaties)"
+-Profile="Profiel"
+-None="(Geen)"
+-EncoderOptions="x264 opties (geskei deur spasies)"
+-VFR="Reëlbare beeldduur (VFR)"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ar-SA.ini obs-studio/plugins/obs-x264/data/locale/ar-SA.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ar-SA.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/ar-SA.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="معدل النقل"
+-CustomBufsize="استخدام حجم Buffer مخصص"
+-BufferSize="حجم المخزون المؤقت"
+-RateControl="التحكم بمعدل النقل"
+-KeyframeIntervalSec="الفاصل الزمني للإطار المفتاح (0=تلقائي)"
+-CPUPreset="إعداد مسبق لاستخدام CPU (الأعلى = CPU أقل)"
+-Profile="الملف الشخصي"
+-Tune="لحن"
+-None="(بلا)"
+-EncoderOptions="خيارات x264 (مفصولة بمسافة)"
+-VFR="معدل إطارات متغيّر (VFR)"
+-HighPrecisionUnsupported="لا يدعم OBS استخدام x264 بتنسيقات عالية الجودة إلى الألوان"
+-HdrUnsupported="OBS لا يدعم استخدام x264 مع Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/az-AZ.ini obs-studio/plugins/obs-x264/data/locale/az-AZ.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/az-AZ.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/az-AZ.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Bit sürəti"
+-CustomBufsize="Xüsusi Bufer Ölçüsü İstifadə Et"
+-BufferSize="Bufer Ölçüsü"
+-RateControl="Bitreytə Nəzarət"
+-KeyframeIntervalSec="Açar Kadr İntervalı (0=avto)"
+-CPUPreset="CPU İstifadəsi İlkin Sazlaması (yüksək = daha az CPU)"
+-Profile="Profil"
+-Tune="Sazlama"
+-None="(Heç biri)"
+-EncoderOptions="x264 Parametrləri (boşluqla ayrılmış)"
+-VFR="Dəyişən Kadr Tezliyi (VFR)"
+-HighPrecisionUnsupported="OBS, x264-ün yüksək dəqiqlikli rəng formatları ilə istifadəsini dəstəkləmir."
+-HdrUnsupported="OBS, x264-ün Rec. 2100 ilə istifadəsini dəstəkləmir."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ba-RU.ini obs-studio/plugins/obs-x264/data/locale/ba-RU.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ba-RU.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/ba-RU.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,4 +0,0 @@
+-Bitrate="Битрейт"
+-BufferSize="Буфер ҙурлығы"
+-Tune="Көйләү"
+-None="(Юҡ)"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/be-BY.ini obs-studio/plugins/obs-x264/data/locale/be-BY.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/be-BY.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/be-BY.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Бітрэйт"
+-CustomBufsize="Выкарыстоўваць карыстальніцкі памер буфера"
+-BufferSize="Памер буфера"
+-RateControl="Кіраванне бітрейтам"
+-KeyframeIntervalSec="Інтэрвал ключавых кадраў (0=аўта)"
+-CPUPreset="Набор налад выкарыстання ЦП (вышэй = менш ЦП)"
+-Profile="Профіль"
+-Tune="Налады"
+-None="(Няма)"
+-EncoderOptions="Налады x264 (падзеленыя прабелам)"
+-VFR="Пераменная частата кадраў (VFR)"
+-HighPrecisionUnsupported="OBS не падтрымлівае выкарыстанне x264 з высокадакладнымі фарматамі колеру."
+-HdrUnsupported="OBS не падтрымлівае выкарыстанне x264 з Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/bg-BG.ini obs-studio/plugins/obs-x264/data/locale/bg-BG.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/bg-BG.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/bg-BG.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,11 +0,0 @@
+-Bitrate="Битрейт"
+-CustomBufsize="Използвай персонализиран буферен размер"
+-BufferSize="Размер на буфера"
+-RateControl="Управление на битрейта"
+-KeyframeIntervalSec="Интервал между ключови кадри (0=автоматично)"
+-CPUPreset="Шаблони за процесорно ползване (по-висок = по-малко процесор)"
+-Profile="Профил"
+-Tune="Настрой"
+-EncoderOptions="x264 Опции (отделени с разстояние)"
+-HighPrecisionUnsupported="OBS не поддържа изпозлването на x264 с високопрецизни формати за цветове."
+-HdrUnsupported="OBS не поддържа използването на x264 с Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/bn-BD.ini obs-studio/plugins/obs-x264/data/locale/bn-BD.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/bn-BD.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/bn-BD.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,10 +0,0 @@
+-Bitrate="বিটরেট"
+-CustomBufsize="ব্যবহার স্বনির্বাচিত বাফারের আকার"
+-BufferSize="বাফারের আকার"
+-RateControl="হার নিয়ন্ত্রণ"
+-CPUPreset="সিপিইউ ব্যবহারের প্রিসেট (উচ্চতর = কম সিপিইউ)"
+-Profile="প্রোফাইল"
+-Tune="টিউন"
+-None="(একটিও না)"
+-EncoderOptions="x264 বিকল্প (স্পেইস দিয়ে)"
+-VFR="পরিবর্তনশীল ফ্রেমরেট (ভিএফআর)"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ca-ES.ini obs-studio/plugins/obs-x264/data/locale/ca-ES.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ca-ES.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/ca-ES.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Taxa de bits"
+-CustomBufsize="Utilitza una mida de memòria intermèdia personalitzada"
+-BufferSize="Mida de la memòria intermèdia"
+-RateControl="Control de freqüència"
+-KeyframeIntervalSec="Interval de fotogrames clau (0=auto)"
+-CPUPreset="Preconfiguració d'ús de la CPU (més alt = menys CPU)"
+-Profile="Perfil"
+-Tune="Ajustament"
+-None="(Cap)"
+-EncoderOptions="Opcions x264 (separades amb espais)"
+-VFR="Velocitat de fotogrames variable (VFR)"
+-HighPrecisionUnsupported="L'OBS no admet l'ús de x264 amb formats d'alta precisió de color."
+-HdrUnsupported="L'OBS no admet l'ús de x264 amb Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/cs-CZ.ini obs-studio/plugins/obs-x264/data/locale/cs-CZ.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/cs-CZ.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/cs-CZ.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,12 +0,0 @@
+-CustomBufsize="Použít vlastní velikost vyrovnávací paměti"
+-BufferSize="Velikost vyrovnávací paměti"
+-RateControl="Řízení toku"
+-KeyframeIntervalSec="Interval klíč. snímků (0=auto)"
+-CPUPreset="Předvolba využití CPU (vyšší = méně CPU)"
+-Profile="Profil"
+-Tune="Ladění"
+-None="(Žádné)"
+-EncoderOptions="Možnosti x264 (odděleny mezerou)"
+-VFR="Měnící se snímkování (VFR)"
+-HighPrecisionUnsupported="OBS nepodporuje použití x264 s vysoce přesnými barevnými formáty."
+-HdrUnsupported="OBS nepodporuje použití x264 s Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/da-DK.ini obs-studio/plugins/obs-x264/data/locale/da-DK.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/da-DK.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/da-DK.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Bit-hastighed"
+-CustomBufsize="Benyt tilpasset bufferstørrelse"
+-BufferSize="Bufferstørrelse"
+-RateControl="Rate kontrol"
+-KeyframeIntervalSec="Keyframe-interval (0=auto)"
+-CPUPreset="CPU-forbrugsforvalg (højere = mindre CPU)"
+-Profile="Profil"
+-Tune="Tuning"
+-None="(Ingen)"
+-EncoderOptions="x264-indstillinger (adskilt af mellemrum)"
+-VFR="Variable billedhastighed (VFR)"
+-HighPrecisionUnsupported="OBS understøtter ikke brug af x264 med farveformater med høj præcision."
+-HdrUnsupported="OBS understøtter ikke brug af x264 med Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/de-DE.ini obs-studio/plugins/obs-x264/data/locale/de-DE.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/de-DE.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/de-DE.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,10 +0,0 @@
+-CustomBufsize="Benutzerdefinierte Puffergröße verwenden"
+-BufferSize="Puffergröße"
+-RateControl="Qualitätsregulierungsmethode"
+-KeyframeIntervalSec="Keyframeintervall (0 = automatisch)"
+-CPUPreset="CPU-Auslastungsvoreinstellung (Höher = niedrigere CPU-Nutzung)"
+-Profile="Profil"
+-None="(Nichts)"
+-EncoderOptions="x264-Optionen (Durch Leerzeichen getrennt)"
+-HighPrecisionUnsupported="Das Verwenden von x264 mit Farbformaten mit hoher Präzision wird nicht unterstützt."
+-HdrUnsupported="Das Verwenden von x264 mit Rec. 2100 wird nicht unterstützt."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/el-GR.ini obs-studio/plugins/obs-x264/data/locale/el-GR.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/el-GR.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/el-GR.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Ρυθμός μετάδοσης bit"
+-CustomBufsize="Χρήση Προσαρμοσμένου Μεγέθους Buffer"
+-BufferSize="Μέγεθος buffer"
+-RateControl="Έλεγχος ρυθμού"
+-KeyframeIntervalSec="Διάστημα Πλαισίου Αναφοράς (0=αυτόματο)"
+-CPUPreset="Προφίλ Χρήσης CPU (υψηλότερο = λιγότερη CPU)"
+-Profile="Προφίλ"
+-Tune="Βελτιστοποίηση"
+-None="(Κανένα)"
+-EncoderOptions="Επιλογές x264 (διαχωρισμένες από κενό)"
+-VFR="Μεταβλητός Ρυθμός καρέ (VFR)"
+-HighPrecisionUnsupported="Το OBS δεν υποστηρίζει τη χρήση x264 με μορφές χρώματος υψηλής ακρίβειας."
+-HdrUnsupported="Το OBS δεν υποστηρίζει τη χρήση x264 με Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/en-GB.ini obs-studio/plugins/obs-x264/data/locale/en-GB.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/en-GB.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/en-GB.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1 +0,0 @@
+-HighPrecisionUnsupported="OBS does not support using x264 with high-precision colour formats."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/en-US.ini obs-studio/plugins/obs-x264/data/locale/en-US.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/en-US.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/en-US.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,14 +0,0 @@
+-Bitrate="Bitrate"
+-CustomBufsize="Use Custom Buffer Size"
+-BufferSize="Buffer Size"
+-RateControl="Rate Control"
+-CRF="CRF"
+-KeyframeIntervalSec="Keyframe Interval (0=auto)"
+-CPUPreset="CPU Usage Preset (higher = less CPU)"
+-Profile="Profile"
+-Tune="Tune"
+-None="(None)"
+-EncoderOptions="x264 Options (separated by space)"
+-VFR="Variable Framerate (VFR)"
+-HighPrecisionUnsupported="OBS does not support using x264 with high-precision color formats."
+-HdrUnsupported="OBS does not support using x264 with Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/es-ES.ini obs-studio/plugins/obs-x264/data/locale/es-ES.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/es-ES.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/es-ES.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Tasa de bits"
+-CustomBufsize="Usar tamaño de caché personalizado"
+-BufferSize="Tamaño de la memoria intermedia"
+-RateControl="Control de la frecuencia"
+-KeyframeIntervalSec="Intervalo de fotogramas clave (0=auto)"
+-CPUPreset="Perfíl de uso de CPU (superior = menos CPU)"
+-Profile="Perfil"
+-Tune="Sintonizar"
+-None="(Ninguno)"
+-EncoderOptions="Opciones x264 (separadas por espacio)"
+-VFR="Framerate Variable (VFR)"
+-HighPrecisionUnsupported="OBS no admite el uso de x264 con formatos de color de alta precisión."
+-HdrUnsupported="OBS no admite el uso de x264 con Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/et-EE.ini obs-studio/plugins/obs-x264/data/locale/et-EE.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/et-EE.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/et-EE.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Bitikiirus"
+-CustomBufsize="Kasuta kohandatud puhvri suurust"
+-BufferSize="Puhvri suurus"
+-RateControl="Bitrite kontroll"
+-KeyframeIntervalSec="Võtmekaadri intervall (0=automaatne)"
+-CPUPreset="CPU kasutus eelseadistus(kõrgem = vähem CPU)"
+-Profile="Profiil"
+-Tune="Häälestus"
+-None="(Määramata)"
+-EncoderOptions="x264 suvandid (eraldatud tühikutega)"
+-VFR="Muutuv kaadrisagedus (VFR)"
+-HighPrecisionUnsupported="OBS ei toeta x264 kasutamist ülitäpsete värvivormingutega."
+-HdrUnsupported="OBS ei toeta x264 kasutamist koos Rec. 2100-ga."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/eu-ES.ini obs-studio/plugins/obs-x264/data/locale/eu-ES.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/eu-ES.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/eu-ES.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,12 +0,0 @@
+-Bitrate="Bit-tasa"
+-CustomBufsize="Erabili buffer tamaina pertsonalizatua"
+-BufferSize="Buffer tamaina"
+-RateControl="Tasaren kontrola"
+-KeyframeIntervalSec="Gako-fotogramen tartea (0=automatikoa)"
+-CPUPreset="PUZ erabilera aurrezarrita (handiagoa = PUZ gutxiago)"
+-Profile="Profila"
+-Tune="Sintonizatu"
+-None="(Bat ere ez)"
+-EncoderOptions="x264 aukerak (tarte batez bananduta)"
+-VFR="Fotograma-tasa aldakorra (VFR)"
+-HdrUnsupported="OBSk ez du onartzen x264 erabiltzea Rec. 2100-rekin."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/fa-IR.ini obs-studio/plugins/obs-x264/data/locale/fa-IR.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/fa-IR.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/fa-IR.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="نرخ بیت"
+-CustomBufsize="استفاده از اندازه بافر سفارشی"
+-BufferSize="اندازه بافر"
+-RateControl="کنترل نرخ"
+-KeyframeIntervalSec="فاصله فریم کلیدی (0=خودکار)"
+-CPUPreset="استفاده پیشفرض از CPU (بالاتر = CPU کمتر)"
+-Profile="نمایه"
+-Tune="تون"
+-None="(هیچ کدام)"
+-EncoderOptions="آپشن های x264 (با فضای جدا شده )"
+-VFR="فریم های متغیر (وی اف ار)"
+-HighPrecisionUnsupported="OBS از استفاده از x264 با فرمت های رنگی با دقت بالا پشتیبانی نمی کند."
+-HdrUnsupported="OBS از استفاده از x264 با ضبط 2100 پشتیبانی نمی کند."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/fi-FI.ini obs-studio/plugins/obs-x264/data/locale/fi-FI.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/fi-FI.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/fi-FI.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Bittinopeus"
+-CustomBufsize="Käytä mukautettua puskurin kokoa"
+-BufferSize="Puskurin koko"
+-RateControl="Bittinopeuden säätely"
+-KeyframeIntervalSec="Avainruutujen väli (0=automaattinen)"
+-CPUPreset="Suorittimen käytön esiasetus (korkeampi = vähemmän intensiivinen CPU)"
+-Profile="Profiili"
+-Tune="Hienosäätö"
+-None="(Ei mitään)"
+-EncoderOptions="x264-asetukset (erotetaan välilyönnillä)"
+-VFR="Muuttuva ruutunopeus (Variable Framerate (VFR))"
+-HighPrecisionUnsupported="OBS ei tue x264:n käyttöä tarkkojen väriformaattien kanssa."
+-HdrUnsupported="OBS ei tue x264:n käyttöä Rec. 2100:n kanssa."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/fil-PH.ini obs-studio/plugins/obs-x264/data/locale/fil-PH.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/fil-PH.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/fil-PH.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,12 +0,0 @@
+-Bitrate="Bitreyt"
+-CustomBufsize="Gamitin ang Pasadyang Sukat ng Buffer"
+-BufferSize="Sukat Buffer"
+-RateControl="Kontrolin ang Singil"
+-KeyframeIntervalSec="Pagitan ng Keyframe (segundo, 0 = awto)"
+-CPUPreset="Paggamit sa Preset ng CPU (mataas = konti CPU)"
+-Profile="Propayl"
+-Tune="Tono"
+-None="(Wala)"
+-EncoderOptions="x264 Pagpipilian (magkahiwalay sa pamamagitan ng patlang)"
+-VFR="Pabago-bago ng Framerate (VFR)"
+-HdrUnsupported="Hindi sinusuportahan ng OBS ang paggamit ng x264 na may Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/fr-FR.ini obs-studio/plugins/obs-x264/data/locale/fr-FR.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/fr-FR.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/fr-FR.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Débit"
+-CustomBufsize="Utiliser une taille de tampon personnalisée"
+-BufferSize="Taille du tampon"
+-RateControl="Contrôle du débit"
+-KeyframeIntervalSec="Intervalle d'images clés (0 = auto)"
+-CPUPreset="Pré-réglages (plus rapide = charge CPU plus faible)"
+-Profile="Profil"
+-Tune="Réglage fin"
+-None="(Aucun)"
+-EncoderOptions="Options x264 (séparées par un espace)"
+-VFR="Débit d'images variable (VFR)"
+-HighPrecisionUnsupported="OBS ne prend pas en charge l'utilisation de x264 avec des formats de couleur à haute précision."
+-HdrUnsupported="OBS ne prend pas en charge l'utilisation de l'encodeur x264 avec Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/gd-GB.ini obs-studio/plugins/obs-x264/data/locale/gd-GB.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/gd-GB.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/gd-GB.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,10 +0,0 @@
+-Bitrate="Reat bhiodan"
+-CustomBufsize="Cleachd meud bufair gnàthaichte"
+-BufferSize="Meud a’ bhufair"
+-RateControl="Smachd air an reat"
+-CPUPreset="Ro-shuidheachadh cleachdadh a’ CPU (nas àirde = nas lugha dhen CPU)"
+-Profile="Pròifil"
+-Tune="Gleus"
+-None="(Chan eil gin)"
+-EncoderOptions="Roghainnean x264 (’gan sgaradh le geal-spàs)"
+-VFR="Reat fhrèamaichean caochlaideach (VFR)"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/gl-ES.ini obs-studio/plugins/obs-x264/data/locale/gl-ES.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/gl-ES.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/gl-ES.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Taxa de bits"
+-CustomBufsize="Utilizar tamaño personalizado da memoria temporal"
+-BufferSize="Tamaño da memoria temporal"
+-RateControl="Control da taxa"
+-KeyframeIntervalSec="Intervalo de fotogramas clave (0=auto)"
+-CPUPreset="Uso predefinido da CPU (superior = menos CPU)"
+-Profile="Perfil"
+-Tune="Sintonizar"
+-None="(Ningún)"
+-EncoderOptions="Opcións x264 (separadas por un espazo)"
+-VFR="Taxa variábel de fotogramas (VFR)"
+-HighPrecisionUnsupported="OBS non admite o uso de x264 con formatos de cor de alta precisión."
+-HdrUnsupported="OBS non admite o uso de x264 con Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/he-IL.ini obs-studio/plugins/obs-x264/data/locale/he-IL.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/he-IL.ini	2025-10-20 20:23:38.376158594 -0300
++++ obs-studio/plugins/obs-x264/data/locale/he-IL.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="קצב סיביות"
+-CustomBufsize="שימוש בגודל מטמון מותאם אישית"
+-BufferSize="גודל מטמון"
+-RateControl="בקרת קצב"
+-KeyframeIntervalSec="מרווח תמונות מפתח (0=אוטומטי)"
+-CPUPreset="ערך שימוש במעבד (גבוה יותר = פחות מעבד)"
+-Profile="פרופיל"
+-Tune="כיוון"
+-None="(ללא)"
+-EncoderOptions="אפשרויות x264 (מופרדות באמצעות רווח)"
+-VFR="קצב פריימים משתנה (VFR)"
+-HighPrecisionUnsupported="OBS לא תומך בשימוש ב־x264 עם תצורות של צבעים בדיוק גבוה."
+-HdrUnsupported="OBS לא תומך בשימוש ב־x264 עם Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/hi-IN.ini obs-studio/plugins/obs-x264/data/locale/hi-IN.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/hi-IN.ini	2025-10-20 20:23:38.377093284 -0300
++++ obs-studio/plugins/obs-x264/data/locale/hi-IN.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="बिटदर"
+-CustomBufsize="निर्मित बफ़र आकार का प्रयोग करें"
+-BufferSize="बफ़र आकार"
+-RateControl="दर नियंत्रण"
+-KeyframeIntervalSec="कीफ़्रेम अंतराल (0=स्वतः)"
+-CPUPreset="CPU उपयोग प्रीसेट (उच्च = कम CPU)"
+-Profile="प्रोफ़ाइल"
+-Tune="अनुकूल"
+-None="(कोई नहीं)"
+-EncoderOptions="x264 विकल्प (बीच में खाली स्थान)"
+-VFR="गतिशील फ़्रेमरेट (VFR)"
+-HighPrecisionUnsupported="OBS उच्च-परिशुद्धता रंग स्वरूपों के साथ x264 का उपयोग करने का समर्थन नहीं करता है."
+-HdrUnsupported="OBS, Rec. 2100 के साथ x264 का उपयोग करने का समर्थन नहीं करता है."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/hr-HR.ini obs-studio/plugins/obs-x264/data/locale/hr-HR.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/hr-HR.ini	2025-10-20 20:23:38.377093284 -0300
++++ obs-studio/plugins/obs-x264/data/locale/hr-HR.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Protok"
+-CustomBufsize="Koristi specifičnu veličinu bafera"
+-BufferSize="Veličina buffer-a"
+-RateControl="Kontrola protoka"
+-KeyframeIntervalSec="Interval kadrova (0=auto)"
+-CPUPreset="Koristi CPU šablon (veće = manje CPU-a)"
+-Profile="Profil"
+-Tune="Doterivanje"
+-None="(Nijedno)"
+-EncoderOptions="x264 opcije (odvojene razmakom)"
+-VFR="Promenjivi framerate (VFR)"
+-HighPrecisionUnsupported="OBS ne podržava uporabu formata x264 s visokopreciznim bojama."
+-HdrUnsupported="OBS ne podržava uporabu formata x264 s Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/hu-HU.ini obs-studio/plugins/obs-x264/data/locale/hu-HU.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/hu-HU.ini	2025-10-20 20:23:38.377309417 -0300
++++ obs-studio/plugins/obs-x264/data/locale/hu-HU.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Bitsebesség"
+-CustomBufsize="Egyéni pufferméret használata"
+-BufferSize="Pufferméret"
+-RateControl="Sebesség Vezérlés"
+-KeyframeIntervalSec="Kulcsképkockák időköze (0=automatikus)"
+-CPUPreset="CPU készlet (magasabb = kevesebb CPU igény)"
+-Profile="Profil"
+-Tune="Hangolás"
+-None="(Nincs)"
+-EncoderOptions="x264 Opciók (szóközzel elválasztva)"
+-VFR="Változó képkockasebesség (VFR)"
+-HighPrecisionUnsupported="Az OBS nem támogatja az x264 használatát magas pontosságú színformátumokkal."
+-HdrUnsupported="Az OBS nem támogatja az x264 és a Rec. 2100 használatát."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/hy-AM.ini obs-studio/plugins/obs-x264/data/locale/hy-AM.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/hy-AM.ini	2025-10-20 20:23:38.377309417 -0300
++++ obs-studio/plugins/obs-x264/data/locale/hy-AM.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Բիթրեյթ"
+-CustomBufsize="Օգտագործել հատուկ բուֆերի չափը"
+-BufferSize="Բուֆերի չափը"
+-RateControl="Բիթերի կառավարում"
+-KeyframeIntervalSec="Հիմնական կադրերի ընդմիջում (0=ավտոմատ)"
+-CPUPreset="ԿՄՀ-ի օգտագործման նախադրված (ավելի բարձր = պակաս)"
+-Profile="Պրոֆիլ"
+-Tune="Կարգավորել"
+-None="(Ոչ մի)"
+-EncoderOptions="x264 կարգավորումներ (տարանջատված տարածք)"
+-VFR="Փոփոխական կադրերի արագություն (VFR)"
+-HighPrecisionUnsupported="OBS-ը չի աջակցում x264-ի օգտագործումը բարձր ճշգրտության գունային ձևաչափեր:"
+-HdrUnsupported="OBS-ը չի աջակցում x264-ի օգտագործումը Rec.-ով 2100 թ."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/id-ID.ini obs-studio/plugins/obs-x264/data/locale/id-ID.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/id-ID.ini	2025-10-20 20:23:38.377309417 -0300
++++ obs-studio/plugins/obs-x264/data/locale/id-ID.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,11 +0,0 @@
+-CustomBufsize="Gunakan Modifikasi Ukuran Buffer"
+-BufferSize="Ukuran Buffer"
+-RateControl="Kontrol Rate"
+-KeyframeIntervalSec="Interval Keyframe (0=otomatis)"
+-CPUPreset="Preset Penggunaan CPU (lebih tinggi = lebih sedikit CPU)"
+-Profile="Profil"
+-None="(Tidak ada)"
+-EncoderOptions="Opsi x264 (dipisah oleh spasi)"
+-VFR="Framerate Variabel (VFR)"
+-HighPrecisionUnsupported="OBS tidak mendukung penggunaan x264 dengan format warna berpresisi tinggi."
+-HdrUnsupported="OBS tidak mendukung penggunaan x264 dengan Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/it-IT.ini obs-studio/plugins/obs-x264/data/locale/it-IT.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/it-IT.ini	2025-10-20 20:23:38.377309417 -0300
++++ obs-studio/plugins/obs-x264/data/locale/it-IT.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Velocità in bit"
+-CustomBufsize="Utilizza una dimensione personalizzata del buffer"
+-BufferSize="Dimensione del buffer"
+-RateControl="Tipo di controllo della frequenza"
+-KeyframeIntervalSec="Intervallo fotogramma chiave (0=automatico)"
+-CPUPreset="Preset dell'utilizzo della CPU (superiore = meno CPU)"
+-Profile="Profilo"
+-Tune="Regolazione di precisione"
+-None="(nessuno)"
+-EncoderOptions="Parametri x264 (separati da uno spazio)"
+-VFR="Frequenza fotogrammi variabile (VFR)"
+-HighPrecisionUnsupported="OBS non supporta l'uso di x264 con formati di colore ad alta precisione."
+-HdrUnsupported="OBS non supporta l'uso di x264 con Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ja-JP.ini obs-studio/plugins/obs-x264/data/locale/ja-JP.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ja-JP.ini	2025-10-20 20:23:38.377309417 -0300
++++ obs-studio/plugins/obs-x264/data/locale/ja-JP.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="ビットレート"
+-CustomBufsize="カスタムバッファサイズを使用"
+-BufferSize="バッファサイズ"
+-RateControl="レート制御"
+-KeyframeIntervalSec="キーフレーム間隔 (0 = 自動)"
+-CPUPreset="CPU使用プリセット (上に行くほど = CPU使用率低い)"
+-Profile="プロファイル"
+-Tune="チューン"
+-None="(なし)"
+-EncoderOptions="x264 オプション (スペースで区切る)"
+-VFR="可変フレームレート (VFR)"
+-HighPrecisionUnsupported="OBSは高精度カラーフォーマットでの x264 の使用をサポートしていません。"
+-HdrUnsupported="OBSは Rec. 2100 で x264 の使用をサポートしていません。"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/kaa.ini obs-studio/plugins/obs-x264/data/locale/kaa.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/kaa.ini	2025-10-20 20:23:38.377309417 -0300
++++ obs-studio/plugins/obs-x264/data/locale/kaa.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,5 +0,0 @@
+-Bitrate="Bit tezligi"
+-CustomBufsize="Arnawlı bufer kólemin qollanıw"
+-BufferSize="Bufer kólemi"
+-Profile="Profil"
+-None="(Joq)"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/kab-KAB.ini obs-studio/plugins/obs-x264/data/locale/kab-KAB.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/kab-KAB.ini	2025-10-20 20:23:38.377309417 -0300
++++ obs-studio/plugins/obs-x264/data/locale/kab-KAB.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,10 +0,0 @@
+-Bitrate="Aktum"
+-CustomBufsize="Seqdec tiddi yugnen i tkatut n weḥraz"
+-BufferSize="Tiddi n tkatut n uḥraz"
+-RateControl="Asenqed n uktum"
+-CPUPreset="Azwirɣewwar n useqdec n CPU (afellay= drus n CPU)"
+-Profile="Amaɣnu"
+-Tune="Gerrez"
+-None="(Ulac)"
+-EncoderOptions="tinefrunin x264 (berzent s tallunt)"
+-VFR="Aktum n yikataren ameskil (VFR)"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ka-GE.ini obs-studio/plugins/obs-x264/data/locale/ka-GE.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ka-GE.ini	2025-10-20 20:23:38.377309417 -0300
++++ obs-studio/plugins/obs-x264/data/locale/ka-GE.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="ბიტსიხშირე"
+-CustomBufsize="მომარაგების მითითებული ზომა"
+-BufferSize="მომარაგების ზომა"
+-RateControl="სიხშირის მართვა"
+-KeyframeIntervalSec="საკვანძო კადრ. შუალედი (0=თვითშერჩევა)"
+-CPUPreset="პროცესორის მზა პარამეტრ. (მაღალი = ნაკლები CPU)"
+-Profile="პროფილი"
+-Tune="გამართვა"
+-None="(არცერთი)"
+-EncoderOptions="x264 პარამეტრები (ადგილის გამოტოვებით)"
+-VFR="კადრის ცვლადი სიხშირე (VFR)"
+-HighPrecisionUnsupported="OBS-ში ვერ გამოიყენება x264 მაღალი სიზუსტის ფერების მქონე ფორმატებისთვის."
+-HdrUnsupported="OBS-ში ვერ იქნება გამოყენებული ერთად x264 და Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/kmr-TR.ini obs-studio/plugins/obs-x264/data/locale/kmr-TR.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/kmr-TR.ini	2025-10-20 20:23:38.377660499 -0300
++++ obs-studio/plugins/obs-x264/data/locale/kmr-TR.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,12 +0,0 @@
+-Bitrate="Rêjeya bitê"
+-CustomBufsize="Mezinahiya pêşbîra demkî ya kesanekirî bi kar bîne"
+-BufferSize="Mezinahiya pêşbîra demkî"
+-RateControl="Kontrola rêjeyê"
+-KeyframeIntervalSec="Dabeşkera demkî di navbera çarçoveyan de (0=xweber)"
+-CPUPreset="Pêşsazkirina bikaranîna YKN (bilindtir = kêmtir YKN)"
+-Profile="Profîl"
+-Tune="Awaz"
+-None="(Ne yek)"
+-EncoderOptions="Vebijarkên x264 (bi cîh veqetandî)"
+-VFR="Rêjeya çarçoveya guherbar (VFR)"
+-HdrUnsupported="OBS piştgiriya bikaranîna x264 bi Rec. 2100 re nake."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ko-KR.ini obs-studio/plugins/obs-x264/data/locale/ko-KR.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ko-KR.ini	2025-10-20 20:23:38.377704240 -0300
++++ obs-studio/plugins/obs-x264/data/locale/ko-KR.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="비트레이트"
+-CustomBufsize="사용자 정의 버퍼 크기 설정"
+-BufferSize="버퍼 크기"
+-RateControl="데이터율 제어"
+-KeyframeIntervalSec="키프레임 간격 (0=자동)"
+-CPUPreset="CPU 사용량 사전 설정 (높을수록 = 낮은 CPU부담)"
+-Profile="프로파일"
+-Tune="조정"
+-None="(없음)"
+-EncoderOptions="x264 설정 (공백으로 구분)"
+-VFR="가변 프레임레이트 (VFR)"
+-HighPrecisionUnsupported="OBS는 고정밀 색상 형식의 x264 인코딩을 지원하지 않습니다."
+-HdrUnsupported="OBS는 x264로 Rec. 2100을 지원하지 않습니다."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/lv-LV.ini obs-studio/plugins/obs-x264/data/locale/lv-LV.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/lv-LV.ini	2025-10-20 20:23:38.377704240 -0300
++++ obs-studio/plugins/obs-x264/data/locale/lv-LV.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,4 +0,0 @@
+-BufferSize="Bufera izmērs"
+-Profile="Profils"
+-None="(Nav)"
+-EncoderOptions="x264 izvēles (ar baltstarpas rakstzīmes)"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/mn-MN.ini obs-studio/plugins/obs-x264/data/locale/mn-MN.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/mn-MN.ini	2025-10-20 20:23:38.377786560 -0300
++++ obs-studio/plugins/obs-x264/data/locale/mn-MN.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,10 +0,0 @@
+-Bitrate="Битийн хурд"
+-CustomBufsize="Өөр Хэмжээг Хэрэглэх"
+-BufferSize="Өөр Хэмжээ"
+-RateControl="Чанарын Хяналт"
+-CPUPreset="CPU-ны хэрэглэх хурд (илүү өндөр = бага CPU)"
+-Profile="Профайл"
+-Tune="Тааруулах"
+-None="(Байхгүй)"
+-EncoderOptions="x264 Сонголт (зайгаар тусгаарлагдсан)"
+-VFR="Тогтмол Биш Фрэйм-ийн хэмжээ (VFR)"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ms-MY.ini obs-studio/plugins/obs-x264/data/locale/ms-MY.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ms-MY.ini	2025-10-20 20:23:38.377833365 -0300
++++ obs-studio/plugins/obs-x264/data/locale/ms-MY.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Kadar Bit"
+-CustomBufsize="Guna Saiz Penimbal Suai"
+-BufferSize="Saiz Penimbal"
+-RateControl="Kawalan Kadar"
+-KeyframeIntervalSec="Sela bingkai kunci (0=auto)"
+-CPUPreset="Praset Penggunaan CPU (lebih tinggi = CPU kurang guna)"
+-Profile="Profil"
+-Tune="Tala"
+-None="(Tiada)"
+-EncoderOptions="Pilihan x264 (diasing dengan tanda jarak)"
+-VFR="Kadar Bingkai Boleh Ubah (VFR)"
+-HighPrecisionUnsupported="OBS tidak menyokong penggunaan x264 bersama format warna ketepatan-tinggi."
+-HdrUnsupported="OBS tidak menyokong penggunaan x264 dengan Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/nb-NO.ini obs-studio/plugins/obs-x264/data/locale/nb-NO.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/nb-NO.ini	2025-10-20 20:23:38.377833365 -0300
++++ obs-studio/plugins/obs-x264/data/locale/nb-NO.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,9 +0,0 @@
+-CustomBufsize="Bruk egendefinert bufferstørrelse"
+-BufferSize="Buffer størrelse"
+-RateControl="Hastighetskontroll"
+-CPUPreset="Forhåndsinnstilling for prosessorbruk (raskere = mindre CPU-bruk)"
+-Profile="Profil"
+-Tune="Still inn"
+-None="(Ingen)"
+-EncoderOptions="x264 alternativer (separert med mellomrom)"
+-VFR="Variabel bildefrekvens (VFR)"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/nl-NL.ini obs-studio/plugins/obs-x264/data/locale/nl-NL.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/nl-NL.ini	2025-10-20 20:23:38.377918322 -0300
++++ obs-studio/plugins/obs-x264/data/locale/nl-NL.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,11 +0,0 @@
+-CustomBufsize="Aangepaste buffergrootte gebruiken"
+-BufferSize="Buffergrootte"
+-KeyframeIntervalSec="Tijd tussen keyframes (0=auto)"
+-CPUPreset="CPU-gebruik instelling (hoger = minder CPU)"
+-Profile="Profiel"
+-Tune="Afstemmen"
+-None="(Geen)"
+-EncoderOptions="x264 Opties (gescheiden door spaties)"
+-VFR="Variabele Framerate (VFR)"
+-HighPrecisionUnsupported="OBS ondersteunt niet het gebruiken van x264 met hoge precissie kleur formaten."
+-HdrUnsupported="OBS ondersteunt niet het gebruiken van x264 met Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/nn-NO.ini obs-studio/plugins/obs-x264/data/locale/nn-NO.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/nn-NO.ini	2025-10-20 20:23:38.377918322 -0300
++++ obs-studio/plugins/obs-x264/data/locale/nn-NO.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1 +0,0 @@
+-Profile="Profil"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/oc-FR.ini obs-studio/plugins/obs-x264/data/locale/oc-FR.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/oc-FR.ini	2025-10-20 20:23:38.377918322 -0300
++++ obs-studio/plugins/obs-x264/data/locale/oc-FR.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1 +0,0 @@
+-Profile="Perfil"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/pl-PL.ini obs-studio/plugins/obs-x264/data/locale/pl-PL.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/pl-PL.ini	2025-10-20 20:23:38.378031769 -0300
++++ obs-studio/plugins/obs-x264/data/locale/pl-PL.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Przepływność bitowa"
+-CustomBufsize="Użyj własnego rozmiaru bufora"
+-BufferSize="Rozmiar bufora"
+-RateControl="Typ przepływności"
+-KeyframeIntervalSec="Odstęp między klatkami kluczowymi (0=automatyczny)"
+-CPUPreset="Ustawienie obciążenia CPU (wyższe = mniej CPU)"
+-Profile="Profil"
+-Tune="Dostrajanie"
+-None="(Brak)"
+-EncoderOptions="Opcje x264 (rozdzielone spacją)"
+-VFR="Zmienna liczba klatek na sekundę (VFR)"
+-HighPrecisionUnsupported="OBS nie obsługuje kodeka x264 z formatami kolorów o wysokiej precyzji."
+-HdrUnsupported="OBS nie obsługuje użycia x264 z Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/pt-BR.ini obs-studio/plugins/obs-x264/data/locale/pt-BR.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/pt-BR.ini	2025-10-20 20:23:38.378031769 -0300
++++ obs-studio/plugins/obs-x264/data/locale/pt-BR.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Taxa de bits"
+-CustomBufsize="Utilizar um tamanho de buffer personalizado"
+-BufferSize="Tamanho do buffer"
+-RateControl="Controle da taxa de bits"
+-KeyframeIntervalSec="Intervalo de keyframes (0=auto)"
+-CPUPreset="Predef. de uso de CPU (maior = menos CPU)"
+-Profile="Perfil"
+-Tune="Ajustar para"
+-None="(Nenhum)"
+-EncoderOptions="Opções do x264 (separadas por espaço)"
+-VFR="Taxa de quadros variável (VFR)"
+-HighPrecisionUnsupported="OBS não suporta o uso de x264 com formatos de cor de alta precisão."
+-HdrUnsupported="OBS não suporta o uso de x264 com Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/pt-PT.ini obs-studio/plugins/obs-x264/data/locale/pt-PT.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/pt-PT.ini	2025-10-20 20:23:38.378120104 -0300
++++ obs-studio/plugins/obs-x264/data/locale/pt-PT.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Taxa de bits"
+-CustomBufsize="Utilizar tamanho de memória personalizado"
+-BufferSize="Tamanho da memória temporária"
+-RateControl="Controlo da frequência"
+-KeyframeIntervalSec="Intervalo de fotogramas-chave ( 0=automático)"
+-CPUPreset="Predefinição de uso do CPU (maior = menos CPU)"
+-Profile="Perfil"
+-Tune="Afinar"
+-None="(nenhum)"
+-EncoderOptions="Opções x264 (separadas por espaço)"
+-VFR="Taxa de fotogramas variável (VFR)"
+-HighPrecisionUnsupported="O OBS não suporta o uso de x264 com formatos de cores de alta precisão."
+-HdrUnsupported="OBS não suporta o uso de x264 com Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ro-RO.ini obs-studio/plugins/obs-x264/data/locale/ro-RO.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ro-RO.ini	2025-10-20 20:23:38.378163337 -0300
++++ obs-studio/plugins/obs-x264/data/locale/ro-RO.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Rată de biți"
+-CustomBufsize="Folosește dimensiune personalizată pentru buffer"
+-BufferSize="Dimensiune pentru buffer"
+-RateControl="Controlul ratei"
+-KeyframeIntervalSec="Interval de cadre cheie (0=auto)"
+-CPUPreset="Presetare pentru utilizare CPU (mai mare = mai puțin CPU)"
+-Profile="Profil"
+-Tune="Reglaj"
+-None="(Niciunul)"
+-EncoderOptions="Opţiuni x264 (separate prin spațiu)"
+-VFR="Frecvență de cadre variabilă (VFR)"
+-HighPrecisionUnsupported="OBS nu acceptă utilizarea x264 cu formate de culoare de mare precizie."
+-HdrUnsupported="OBS nu suportă utilizarea x264 cu Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ru-RU.ini obs-studio/plugins/obs-x264/data/locale/ru-RU.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ru-RU.ini	2025-10-20 20:23:38.378163337 -0300
++++ obs-studio/plugins/obs-x264/data/locale/ru-RU.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Битрейт"
+-CustomBufsize="Использовать свой размер буфера"
+-BufferSize="Размер буфера"
+-RateControl="Управление битрейтом"
+-KeyframeIntervalSec="Интервал ключевых кадров (0: авто)"
+-CPUPreset="Предустановка нагрузки на ЦП (выше = меньше)"
+-Profile="Профиль"
+-Tune="Настройка"
+-None="(Нет)"
+-EncoderOptions="Параметры x264 (через пробел)"
+-VFR="Переменная частота кадров (VFR)"
+-HighPrecisionUnsupported="OBS не поддерживает использование x264 с высокоточными цветовыми форматами."
+-HdrUnsupported="OBS не поддерживает использование x264 с Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/si-LK.ini obs-studio/plugins/obs-x264/data/locale/si-LK.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/si-LK.ini	2025-10-20 20:23:38.378264598 -0300
++++ obs-studio/plugins/obs-x264/data/locale/si-LK.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,8 +0,0 @@
+-Bitrate="බිටුඅනුපා."
+-CustomBufsize="අභිරුචි අන්තරාචය ප්‍රමාණය"
+-BufferSize="අන්තරාචය තරම"
+-RateControl="අනුපාතය පාලනය"
+-Profile="පැතිකඩ"
+-Tune="සුසරය"
+-None="(කිසිත් නැත)"
+-EncoderOptions="x264 විකල්ප (හිස්තැනකින් වෙන්කර)"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/sk-SK.ini obs-studio/plugins/obs-x264/data/locale/sk-SK.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/sk-SK.ini	2025-10-20 20:23:38.378310671 -0300
++++ obs-studio/plugins/obs-x264/data/locale/sk-SK.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,12 +0,0 @@
+-CustomBufsize="Použiť vlastnú veľkosť medzipamäte"
+-BufferSize="Veľkosť medzipamäte"
+-RateControl="Riadenie toku"
+-KeyframeIntervalSec="Interval kľúčových snímkov (0=automaticky)"
+-CPUPreset="CPU predvoľba používania (vyššie = menej CPU)"
+-Profile="Profil"
+-Tune="Vyladenie"
+-None="(Žiadne)"
+-EncoderOptions="Možnosti enkodéra x264 (oddelené medzerou)"
+-VFR="Premenlivá rýchlosť snímkov (VFR)"
+-HighPrecisionUnsupported="OBS nepodporuje použitie x264 s vysoko-precíznymi farebnými formátmi."
+-HdrUnsupported="OBS nepodporuje použitie x264 s Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/sl-SI.ini obs-studio/plugins/obs-x264/data/locale/sl-SI.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/sl-SI.ini	2025-10-20 20:23:38.378364941 -0300
++++ obs-studio/plugins/obs-x264/data/locale/sl-SI.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Bitna hitrost"
+-CustomBufsize="Uporabi velikost medpomnilnika po meri"
+-BufferSize="Velikost medpomnilnika"
+-RateControl="Nadzor hitrosti"
+-KeyframeIntervalSec="Razmik med ključnimi sličicami (0=samodejno)"
+-CPUPreset="Prednastavitev porabe CPE-ja (višja = manj CPE-ja)"
+-Profile="Profil"
+-Tune="Uglasi"
+-None="(brez)"
+-EncoderOptions="Možnosti x264 (ločene s presledkom)"
+-VFR="Spremenljiva hitrost sličic"
+-HighPrecisionUnsupported="OBS ne podpira rabo x264 z visoko-natančnimi zapisi barv."
+-HdrUnsupported="OBS ne podpira rabe x264 z Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/sq-AL.ini obs-studio/plugins/obs-x264/data/locale/sq-AL.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/sq-AL.ini	2025-10-20 20:23:38.378417091 -0300
++++ obs-studio/plugins/obs-x264/data/locale/sq-AL.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,3 +0,0 @@
+-Profile="Profili"
+-None="(Asnjë)"
+-EncoderOptions="Parametrat e x264 (ndarë me hapësire)"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/sr-CS.ini obs-studio/plugins/obs-x264/data/locale/sr-CS.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/sr-CS.ini	2025-10-20 20:23:38.378417091 -0300
++++ obs-studio/plugins/obs-x264/data/locale/sr-CS.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,10 +0,0 @@
+-Bitrate="Protok"
+-CustomBufsize="Koristi specifičnu veličinu bafera"
+-BufferSize="Veličina buffer-a"
+-RateControl="Kontrola protoka"
+-CPUPreset="Koristi CPU šablon (veće = manje CPU-a)"
+-Profile="Profil"
+-Tune="Doterivanje"
+-None="(Nijedno)"
+-EncoderOptions="x264 opcije (odvojene razmakom)"
+-VFR="Promenjivi framerate (VFR)"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/sr-SP.ini obs-studio/plugins/obs-x264/data/locale/sr-SP.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/sr-SP.ini	2025-10-20 20:23:38.378525300 -0300
++++ obs-studio/plugins/obs-x264/data/locale/sr-SP.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Проток"
+-CustomBufsize="Користи специфичну величину бафера"
+-BufferSize="Величина buffer-а"
+-RateControl="Контрола протока"
+-KeyframeIntervalSec="Интервал кључних кадрова (0=аутоматски)"
+-CPUPreset="Користи CPU шаблон (веће = мање CPU-а)"
+-Profile="Профил"
+-Tune="Дотеривање"
+-None="(Ниједно)"
+-EncoderOptions="x264 опције (одвојене размаком)"
+-VFR="Промењиви framerate (VFR)"
+-HighPrecisionUnsupported="OBS не подржава коришћење x264 са високопрецизним форматима боја."
+-HdrUnsupported="OBS не подржава коришћење x264 са Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/sv-SE.ini obs-studio/plugins/obs-x264/data/locale/sv-SE.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/sv-SE.ini	2025-10-20 20:23:38.378525300 -0300
++++ obs-studio/plugins/obs-x264/data/locale/sv-SE.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,12 +0,0 @@
+-Bitrate="Bithastighet"
+-CustomBufsize="Använd anpassad buffertstorlek"
+-BufferSize="Buffertstorlek"
+-RateControl="Hastighetskontroll"
+-KeyframeIntervalSec="Intervall för keyframes (0=automatiskt)"
+-CPUPreset="CPU-användning förinställning (högre = mindre CPU)"
+-Profile="Profil"
+-None="(Inga)"
+-EncoderOptions="x264-alternativ (separerade med blanksteg)"
+-VFR="Varierande bildfrekvens (VFR)"
+-HighPrecisionUnsupported="OBS har inte stöd för användning av x264 med färg-format med högprecision."
+-HdrUnsupported="OBS saknar stöd för att använda x264 med Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/szl-PL.ini obs-studio/plugins/obs-x264/data/locale/szl-PL.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/szl-PL.ini	2025-10-20 20:23:38.378618913 -0300
++++ obs-studio/plugins/obs-x264/data/locale/szl-PL.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,9 +0,0 @@
+-CustomBufsize="Użyj włosnyj miary bufōra"
+-BufferSize="Miara bufōra"
+-RateControl="Zorta przepływności"
+-CPUPreset="Ôpcyje ôciōnżynio CPU (wyższe = mynij CPU)"
+-Profile="Profil"
+-Tune="Dostrajanie"
+-None="(Brak)"
+-EncoderOptions="Ôpcyje x264 (roztajlowane spacyjōm)"
+-VFR="Zmiynno wielość klotek na sekōnda (VFR)"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ta-IN.ini obs-studio/plugins/obs-x264/data/locale/ta-IN.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ta-IN.ini	2025-10-20 20:23:38.378663648 -0300
++++ obs-studio/plugins/obs-x264/data/locale/ta-IN.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,4 +0,0 @@
+-Bitrate="பிட்விகிதம்"
+-Profile="சுயவிவரம்"
+-None="(எதுவுமில்லை)"
+-EncoderOptions="x264 விருப்பங்கள் (இடைவெளி விட்டு பிரிக்கப்பட்டவை)"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/th-TH.ini obs-studio/plugins/obs-x264/data/locale/th-TH.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/th-TH.ini	2025-10-20 20:23:38.378713590 -0300
++++ obs-studio/plugins/obs-x264/data/locale/th-TH.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="บิตเรท"
+-CustomBufsize="กำหนดขนาดของบัฟเฟอร์เอง"
+-BufferSize="ขนาดของบัฟเฟอร์"
+-RateControl="การควบคุมบิตเรต"
+-KeyframeIntervalSec="ช่วงคีย์เฟรม (0=อัตโนมัติ)"
+-CPUPreset="การใช้ CPU (ยิ่งเร็ว = ยิ่งใช้ CPU น้อย)"
+-Profile="โปรไฟล์"
+-Tune="จูน"
+-None="(ไม่ใช้)"
+-EncoderOptions="ตัวเลือก x264 (แบ่งโดยเว้นวรรค)"
+-VFR="บิตเรทแปรผัน (VBR)"
+-HighPrecisionUnsupported="OBS ไม่รองรับการใช้งาน x264 กับรูปแบบสีที่มีความแม่นยำสูง"
+-HdrUnsupported="OBS ไม่รองรับการใช้งานรูปแบบ x264 กับ Rec 2100"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/tl-PH.ini obs-studio/plugins/obs-x264/data/locale/tl-PH.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/tl-PH.ini	2025-10-20 20:23:38.378765245 -0300
++++ obs-studio/plugins/obs-x264/data/locale/tl-PH.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,9 +0,0 @@
+-Bitrate="Ang Bitrate"
+-CustomBufsize="Gamitin ang Custom Buffer Size"
+-BufferSize="Laki ng Buffer"
+-RateControl="Kontrol ng Rate"
+-CPUPreset="Ang Usage Preset ng CPU (mataas = mababang CPU)"
+-Profile="Ang Profile"
+-Tune="Ang tono"
+-None="(Wala)"
+-EncoderOptions="x264 Mga opsyon (pinaghiwalay ng espasyo)"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/tr-TR.ini obs-studio/plugins/obs-x264/data/locale/tr-TR.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/tr-TR.ini	2025-10-20 20:23:38.378817571 -0300
++++ obs-studio/plugins/obs-x264/data/locale/tr-TR.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Bit hızı"
+-CustomBufsize="İsteğe Bağlı Arabellek Boyutu Kullan"
+-BufferSize="Arabellek Boyutu"
+-RateControl="Oran Kontrolü"
+-KeyframeIntervalSec="Anahtar Kare Aralığı (0=otomatik)"
+-CPUPreset="CPU Kullanım Önayarı (yüksek = az CPU kullanımı)"
+-Profile="Profil"
+-Tune="Ayarla"
+-None="(Yok)"
+-EncoderOptions="x264 Ayarları (boşlukla ayrılmış)"
+-VFR="Değişken Kare Hızı (VFR)"
+-HighPrecisionUnsupported="OBS, x264'ün yüksek hassasiyetli renk biçimleriyle kullanılmasını desteklemez."
+-HdrUnsupported="OBS, x264'ün Rec. 2100 ile kullanımını desteklemiyor."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/tt-RU.ini obs-studio/plugins/obs-x264/data/locale/tt-RU.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/tt-RU.ini	2025-10-20 20:23:38.378817571 -0300
++++ obs-studio/plugins/obs-x264/data/locale/tt-RU.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,4 +0,0 @@
+-Bitrate="Битрейт"
+-Profile="Профиль"
+-Tune="Көйләү"
+-None="(Юк)"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ug-CN.ini obs-studio/plugins/obs-x264/data/locale/ug-CN.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ug-CN.ini	2025-10-20 20:23:38.378912047 -0300
++++ obs-studio/plugins/obs-x264/data/locale/ug-CN.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="بايت نىسبىتى"
+-CustomBufsize="ئىختىيارى غەملەك چوڭلۇقىنى ئىشلىتىدۇ"
+-BufferSize="غەملەك چوڭلۇقى"
+-RateControl="نىسبەت تىزگىنى"
+-KeyframeIntervalSec="ئاچقۇچلۇق كېشەك ئارىلىقى (0=ئۆزلۈكىدىن)"
+-CPUPreset="CPU ئىشلىتىشنىڭ ئالدىن تەڭشىكى (يۇقىرىراق= CPU نى ئازراق ئىشلىتىدۇ)"
+-Profile="سەپلىمە ھۆججەت"
+-Tune="تەڭشەك"
+-None="(يوق)"
+-EncoderOptions="x264 تاللانما (بوشلۇق بىلەن ئايرىلىدۇ)"
+-VFR="ئۆزگىرىشچان كېشەك نىسبىتى (VFR)"
+-HighPrecisionUnsupported="OBS يۇقىرى ئېنىقلىقتىكى رەڭ پىچىمىدىكى x264 ئىشلىتىشنى قوللىمايدۇ"
+-HdrUnsupported="OBS  بۇ Rec. 2100 ھالىتىدە x264 ئىشلىتىشنى قوللىمايدۇ."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/uk-UA.ini obs-studio/plugins/obs-x264/data/locale/uk-UA.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/uk-UA.ini	2025-10-20 20:23:38.378964225 -0300
++++ obs-studio/plugins/obs-x264/data/locale/uk-UA.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Бітрейт"
+-CustomBufsize="Використовувати настроюваний розмір буфера"
+-BufferSize="Розмір буфера"
+-RateControl="Керування бітрейтом"
+-KeyframeIntervalSec="Інтервал ключових кадрів (0=авто)"
+-CPUPreset="Профіль використання ЦП (вище = менше ЦП)"
+-Profile="Профіль"
+-Tune="Настроювання"
+-None="(Немає)"
+-EncoderOptions="Параметри x264 (відокремлені пробілом)"
+-VFR="Змінна частота кадрів (VFR)"
+-HighPrecisionUnsupported="OBS не підтримує використання x264 з високоточними кольоровими форматами."
+-HdrUnsupported="OBS не підтримує використання x264 з Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ur-PK.ini obs-studio/plugins/obs-x264/data/locale/ur-PK.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ur-PK.ini	2025-10-20 20:23:38.379008161 -0300
++++ obs-studio/plugins/obs-x264/data/locale/ur-PK.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1 +0,0 @@
+-Bitrate="بٹریٹ"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/vi-VN.ini obs-studio/plugins/obs-x264/data/locale/vi-VN.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/vi-VN.ini	2025-10-20 20:23:38.379008161 -0300
++++ obs-studio/plugins/obs-x264/data/locale/vi-VN.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="Tốc độ bit"
+-CustomBufsize="Sử dụng tùy chỉnh bộ đệm kích thước"
+-BufferSize="Bộ nhớ đệm lớn nhất"
+-RateControl="Cách kiểm soát tốc độ bit"
+-KeyframeIntervalSec="Khoảng thời gian giữa các khung chính (0=tự động)"
+-CPUPreset="CPU sử dụng (cao hơn = ít sử dụng CPU)"
+-Profile="Hồ sơ"
+-Tune="Điều chỉnh"
+-None="(Trống)"
+-EncoderOptions="Các tuỳ chọn cho x264 (cách nhau bằng dấu cách)"
+-VFR="Framerate thay đổi được (VFR)"
+-HighPrecisionUnsupported="OBS không hỗ trợ sử dụng x264 với các định dạng màu có độ chính xác cao."
+-HdrUnsupported="OBS không hỗ trợ sử dụng x264 với Rec. 2100."
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/zh-CN.ini obs-studio/plugins/obs-x264/data/locale/zh-CN.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/zh-CN.ini	2025-10-20 20:23:38.379129458 -0300
++++ obs-studio/plugins/obs-x264/data/locale/zh-CN.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="码率"
+-CustomBufsize="使用自定义缓存大小"
+-BufferSize="缓冲大小"
+-RateControl="码率控制"
+-KeyframeIntervalSec="关键帧间隔（0 = 自动）"
+-CPUPreset="CPU 使用预设（高 = 较少的 CPU占用）"
+-Profile="配置（Profile）"
+-Tune="微调（Tune）"
+-None="（无）"
+-EncoderOptions="x264 选项（用空格分隔）"
+-VFR="可变帧率（VFR）"
+-HighPrecisionUnsupported="OBS不支持使用高精度颜色格式的x264。"
+-HdrUnsupported="OBS 不支持在 Rec. 2100 下使用 x264。"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/zh-TW.ini obs-studio/plugins/obs-x264/data/locale/zh-TW.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/zh-TW.ini	2025-10-20 20:23:38.379129458 -0300
++++ obs-studio/plugins/obs-x264/data/locale/zh-TW.ini	1969-12-31 21:00:00.000000000 -0300
+@@ -1,13 +0,0 @@
+-Bitrate="位元率"
+-CustomBufsize="使用自訂的緩衝區大小"
+-BufferSize="緩衝區大小"
+-RateControl="位元率控制"
+-KeyframeIntervalSec="關鍵訊框間隔（0 = 自動）"
+-CPUPreset="CPU 使用率設定 (越快 ＝ 越少CPU使用率)"
+-Profile="配置"
+-Tune="微調類別"
+-None="(無)"
+-EncoderOptions="x264 參數（以空格分隔）"
+-VFR="可變畫面播放速率 (VFR)"
+-HighPrecisionUnsupported="OBS 不支援將 x264 與高精度色彩格式搭配使用。"
+-HdrUnsupported="OBS 不支援將 x264 與 Rec. 2100 搭配使用。"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/obs-x264.c obs-studio/plugins/obs-x264/obs-x264.c
+--- obs-studio.orig/plugins/obs-x264/obs-x264.c	2025-10-20 20:23:38.379129458 -0300
++++ obs-studio/plugins/obs-x264/obs-x264.c	1969-12-31 21:00:00.000000000 -0300
+@@ -1,865 +0,0 @@
+-/******************************************************************************
+-    Copyright (C) 2023 by Lain Bailey <lain@obsproject.com>
+-
+-    This program is free software: you can redistribute it and/or modify
+-    it under the terms of the GNU General Public License as published by
+-    the Free Software Foundation, either version 2 of the License, or
+-    (at your option) any later version.
+-
+-    This program is distributed in the hope that it will be useful,
+-    but WITHOUT ANY WARRANTY; without even the implied warranty of
+-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-    GNU General Public License for more details.
+-
+-    You should have received a copy of the GNU General Public License
+-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-******************************************************************************/
+-
+-#include <stdio.h>
+-#include <string.h>
+-#include <util/bmem.h>
+-#include <util/dstr.h>
+-#include <util/darray.h>
+-#include <util/platform.h>
+-#include <obs-module.h>
+-#include <opts-parser.h>
+-
+-#ifndef _STDINT_H_INCLUDED
+-#define _STDINT_H_INCLUDED
+-#endif
+-
+-#include <x264.h>
+-
+-#define do_log_enc(level, encoder, format, ...) \
+-	blog(level, "[x264 encoder: '%s'] " format, obs_encoder_get_name(encoder), ##__VA_ARGS__)
+-#define do_log(level, format, ...) do_log_enc(level, obsx264->encoder, format, ##__VA_ARGS__)
+-
+-#define warn(format, ...) do_log(LOG_WARNING, format, ##__VA_ARGS__)
+-#define warn_enc(encoder, format, ...) do_log_enc(LOG_WARNING, encoder, format, ##__VA_ARGS__)
+-#define info(format, ...) do_log(LOG_INFO, format, ##__VA_ARGS__)
+-#define debug(format, ...) do_log(LOG_DEBUG, format, ##__VA_ARGS__)
+-
+-//#define ENABLE_VFR
+-
+-/* ------------------------------------------------------------------------- */
+-
+-struct obs_x264 {
+-	obs_encoder_t *encoder;
+-
+-	x264_param_t params;
+-	x264_t *context;
+-
+-	DARRAY(uint8_t) packet_data;
+-
+-	uint8_t *extra_data;
+-	uint8_t *sei;
+-
+-	size_t extra_data_size;
+-	size_t sei_size;
+-
+-	os_performance_token_t *performance_token;
+-
+-	uint32_t roi_increment;
+-	float *quant_offsets;
+-};
+-
+-/* ------------------------------------------------------------------------- */
+-
+-static const char *obs_x264_getname(void *unused)
+-{
+-	UNUSED_PARAMETER(unused);
+-	return "x264";
+-}
+-
+-static void clear_data(struct obs_x264 *obsx264)
+-{
+-	if (obsx264->context) {
+-		x264_encoder_close(obsx264->context);
+-		bfree(obsx264->sei);
+-		bfree(obsx264->extra_data);
+-		bfree(obsx264->quant_offsets);
+-
+-		obsx264->context = NULL;
+-		obsx264->sei = NULL;
+-		obsx264->extra_data = NULL;
+-	}
+-}
+-
+-static void obs_x264_destroy(void *data)
+-{
+-	struct obs_x264 *obsx264 = data;
+-
+-	if (obsx264) {
+-		os_end_high_performance(obsx264->performance_token);
+-		clear_data(obsx264);
+-		da_free(obsx264->packet_data);
+-		bfree(obsx264);
+-	}
+-}
+-
+-static void obs_x264_defaults(obs_data_t *settings)
+-{
+-	obs_data_set_default_int(settings, "bitrate", 6000);
+-	obs_data_set_default_bool(settings, "use_bufsize", false);
+-	obs_data_set_default_int(settings, "buffer_size", 6000);
+-	obs_data_set_default_int(settings, "keyint_sec", 0);
+-	obs_data_set_default_int(settings, "crf", 23);
+-#ifdef ENABLE_VFR
+-	obs_data_set_default_bool(settings, "vfr", false);
+-#endif
+-	obs_data_set_default_string(settings, "rate_control", "CBR");
+-
+-	obs_data_set_default_string(settings, "preset", "veryfast");
+-	obs_data_set_default_string(settings, "profile", "");
+-	obs_data_set_default_string(settings, "tune", "");
+-	obs_data_set_default_string(settings, "x264opts", "");
+-	obs_data_set_default_bool(settings, "repeat_headers", false);
+-}
+-
+-static inline void add_strings(obs_property_t *list, const char *const *strings)
+-{
+-	while (*strings) {
+-		obs_property_list_add_string(list, *strings, *strings);
+-		strings++;
+-	}
+-}
+-
+-#define TEXT_RATE_CONTROL obs_module_text("RateControl")
+-#define TEXT_BITRATE obs_module_text("Bitrate")
+-#define TEXT_CUSTOM_BUF obs_module_text("CustomBufsize")
+-#define TEXT_BUF_SIZE obs_module_text("BufferSize")
+-#define TEXT_VFR obs_module_text("VFR")
+-#define TEXT_CRF obs_module_text("CRF")
+-#define TEXT_KEYINT_SEC obs_module_text("KeyframeIntervalSec")
+-#define TEXT_PRESET obs_module_text("CPUPreset")
+-#define TEXT_PROFILE obs_module_text("Profile")
+-#define TEXT_TUNE obs_module_text("Tune")
+-#define TEXT_NONE obs_module_text("None")
+-#define TEXT_X264_OPTS obs_module_text("EncoderOptions")
+-
+-static bool use_bufsize_modified(obs_properties_t *ppts, obs_property_t *p, obs_data_t *settings)
+-{
+-	bool use_bufsize = obs_data_get_bool(settings, "use_bufsize");
+-	const char *rc = obs_data_get_string(settings, "rate_control");
+-	bool rc_crf = astrcmpi(rc, "CRF") == 0;
+-
+-	p = obs_properties_get(ppts, "buffer_size");
+-	obs_property_set_visible(p, use_bufsize && !rc_crf);
+-	return true;
+-}
+-
+-static bool rate_control_modified(obs_properties_t *ppts, obs_property_t *p, obs_data_t *settings)
+-{
+-	const char *rc = obs_data_get_string(settings, "rate_control");
+-	bool use_bufsize = obs_data_get_bool(settings, "use_bufsize");
+-	bool abr = astrcmpi(rc, "CBR") == 0 || astrcmpi(rc, "ABR") == 0;
+-	bool rc_crf = astrcmpi(rc, "CRF") == 0;
+-
+-	p = obs_properties_get(ppts, "crf");
+-	obs_property_set_visible(p, !abr);
+-
+-	p = obs_properties_get(ppts, "bitrate");
+-	obs_property_set_visible(p, !rc_crf);
+-	p = obs_properties_get(ppts, "use_bufsize");
+-	obs_property_set_visible(p, !rc_crf);
+-	p = obs_properties_get(ppts, "buffer_size");
+-	obs_property_set_visible(p, !rc_crf && use_bufsize);
+-	return true;
+-}
+-
+-static obs_properties_t *obs_x264_props(void *unused)
+-{
+-	UNUSED_PARAMETER(unused);
+-
+-	obs_properties_t *props = obs_properties_create();
+-	obs_property_t *list;
+-	obs_property_t *p;
+-	obs_property_t *headers;
+-
+-	list = obs_properties_add_list(props, "rate_control", TEXT_RATE_CONTROL, OBS_COMBO_TYPE_LIST,
+-				       OBS_COMBO_FORMAT_STRING);
+-	obs_property_list_add_string(list, "CBR", "CBR");
+-	obs_property_list_add_string(list, "ABR", "ABR");
+-	obs_property_list_add_string(list, "VBR", "VBR");
+-	obs_property_list_add_string(list, "CRF", "CRF");
+-
+-	obs_property_set_modified_callback(list, rate_control_modified);
+-
+-	p = obs_properties_add_int(props, "bitrate", TEXT_BITRATE, 50, 10000000, 50);
+-	obs_property_int_set_suffix(p, " Kbps");
+-
+-	p = obs_properties_add_bool(props, "use_bufsize", TEXT_CUSTOM_BUF);
+-	obs_property_set_modified_callback(p, use_bufsize_modified);
+-	obs_properties_add_int(props, "buffer_size", TEXT_BUF_SIZE, 0, 10000000, 1);
+-
+-	obs_properties_add_int(props, "crf", TEXT_CRF, 0, 51, 1);
+-
+-	p = obs_properties_add_int(props, "keyint_sec", TEXT_KEYINT_SEC, 0, 20, 1);
+-	obs_property_int_set_suffix(p, " s");
+-
+-	list = obs_properties_add_list(props, "preset", TEXT_PRESET, OBS_COMBO_TYPE_LIST, OBS_COMBO_FORMAT_STRING);
+-	add_strings(list, x264_preset_names);
+-
+-	list = obs_properties_add_list(props, "profile", TEXT_PROFILE, OBS_COMBO_TYPE_LIST, OBS_COMBO_FORMAT_STRING);
+-	obs_property_list_add_string(list, TEXT_NONE, "");
+-	obs_property_list_add_string(list, "baseline", "baseline");
+-	obs_property_list_add_string(list, "main", "main");
+-	obs_property_list_add_string(list, "high", "high");
+-
+-	list = obs_properties_add_list(props, "tune", TEXT_TUNE, OBS_COMBO_TYPE_LIST, OBS_COMBO_FORMAT_STRING);
+-	obs_property_list_add_string(list, TEXT_NONE, "");
+-	add_strings(list, x264_tune_names);
+-
+-#ifdef ENABLE_VFR
+-	obs_properties_add_bool(props, "vfr", TEXT_VFR);
+-#endif
+-
+-	obs_properties_add_text(props, "x264opts", TEXT_X264_OPTS, OBS_TEXT_DEFAULT);
+-
+-	headers = obs_properties_add_bool(props, "repeat_headers", "repeat_headers");
+-	obs_property_set_visible(headers, false);
+-
+-	return props;
+-}
+-
+-static const char *validate(struct obs_x264 *obsx264, const char *val, const char *name, const char *const *list)
+-{
+-	if (!val || !*val)
+-		return val;
+-
+-	while (*list) {
+-		if (strcmp(val, *list) == 0)
+-			return val;
+-
+-		list++;
+-	}
+-
+-	warn("Invalid %s: %s", name, val);
+-	return NULL;
+-}
+-
+-static void override_base_param(struct obs_x264 *obsx264, struct obs_option option, char **preset, char **profile,
+-				char **tune)
+-{
+-	const char *name = option.name;
+-	const char *val = option.value;
+-	if (astrcmpi(name, "preset") == 0) {
+-		const char *valid_name = validate(obsx264, val, "preset", x264_preset_names);
+-		if (valid_name) {
+-			bfree(*preset);
+-			*preset = bstrdup(val);
+-		}
+-
+-	} else if (astrcmpi(name, "profile") == 0) {
+-		const char *valid_name = validate(obsx264, val, "profile", x264_profile_names);
+-		if (valid_name) {
+-			bfree(*profile);
+-			*profile = bstrdup(val);
+-		}
+-
+-	} else if (astrcmpi(name, "tune") == 0) {
+-		const char *valid_name = validate(obsx264, val, "tune", x264_tune_names);
+-		if (valid_name) {
+-			bfree(*tune);
+-			*tune = bstrdup(val);
+-		}
+-	}
+-}
+-
+-static inline void override_base_params(struct obs_x264 *obsx264, const struct obs_options *options, char **preset,
+-					char **profile, char **tune)
+-{
+-	for (size_t i = 0; i < options->count; ++i)
+-		override_base_param(obsx264, options->options[i], preset, profile, tune);
+-}
+-
+-#define OPENCL_ALIAS "opencl_is_experimental_and_potentially_unstable"
+-
+-static inline void set_param(struct obs_x264 *obsx264, struct obs_option option)
+-{
+-	const char *name = option.name;
+-	const char *val = option.value;
+-	if (strcmp(name, "preset") != 0 && strcmp(name, "profile") != 0 && strcmp(name, "tune") != 0 &&
+-	    strcmp(name, "fps") != 0 && strcmp(name, "force-cfr") != 0 && strcmp(name, "width") != 0 &&
+-	    strcmp(name, "height") != 0 && strcmp(name, "opencl") != 0 && strcmp(name, "stats") != 0 &&
+-	    strcmp(name, "qpfile") != 0 && strcmp(name, "pass") != 0) {
+-		if (strcmp(option.name, OPENCL_ALIAS) == 0)
+-			name = "opencl";
+-		if (x264_param_parse(&obsx264->params, name, val) != 0)
+-			warn("x264 param: %s=%s failed", name, val);
+-	}
+-}
+-
+-static inline void apply_x264_profile(struct obs_x264 *obsx264, const char *profile)
+-{
+-	if (!obsx264->context && profile && *profile) {
+-		int ret = x264_param_apply_profile(&obsx264->params, profile);
+-		if (ret != 0)
+-			warn("Failed to set x264 profile '%s'", profile);
+-	}
+-}
+-
+-static inline const char *validate_preset(struct obs_x264 *obsx264, const char *preset)
+-{
+-	const char *new_preset = validate(obsx264, preset, "preset", x264_preset_names);
+-	return new_preset ? new_preset : "veryfast";
+-}
+-
+-static bool reset_x264_params(struct obs_x264 *obsx264, const char *preset, const char *tune)
+-{
+-	int ret = x264_param_default_preset(&obsx264->params, validate_preset(obsx264, preset),
+-					    validate(obsx264, tune, "tune", x264_tune_names));
+-	return ret == 0;
+-}
+-
+-static void log_x264(void *param, int level, const char *format, va_list args)
+-{
+-	static const int level_map[] = {
+-		LOG_ERROR,
+-		LOG_WARNING,
+-		LOG_INFO,
+-		LOG_DEBUG,
+-	};
+-
+-	UNUSED_PARAMETER(param);
+-	if (level < X264_LOG_ERROR)
+-		level = X264_LOG_ERROR;
+-	else if (level > X264_LOG_DEBUG)
+-		level = X264_LOG_DEBUG;
+-
+-	blogva(level_map[level], format, args);
+-}
+-
+-static inline int get_x264_cs_val(const char *const name, const char *const names[])
+-{
+-	int idx = 0;
+-	do {
+-		if (strcmp(names[idx], name) == 0)
+-			return idx;
+-	} while (!!names[++idx]);
+-
+-	return 0;
+-}
+-
+-static void obs_x264_video_info(void *data, struct video_scale_info *info);
+-
+-enum rate_control { RATE_CONTROL_CBR, RATE_CONTROL_VBR, RATE_CONTROL_ABR, RATE_CONTROL_CRF };
+-
+-static void update_params(struct obs_x264 *obsx264, obs_data_t *settings, const struct obs_options *options,
+-			  bool update)
+-{
+-	video_t *video = obs_encoder_video(obsx264->encoder);
+-	const struct video_output_info *voi = video_output_get_info(video);
+-	struct video_scale_info info;
+-
+-	info.format = voi->format;
+-	info.colorspace = voi->colorspace;
+-	info.range = voi->range;
+-
+-	obs_x264_video_info(obsx264, &info);
+-
+-	const char *rate_control = obs_data_get_string(settings, "rate_control");
+-
+-	int bitrate = (int)obs_data_get_int(settings, "bitrate");
+-	int buffer_size = (int)obs_data_get_int(settings, "buffer_size");
+-	int keyint_sec = (int)obs_data_get_int(settings, "keyint_sec");
+-	int crf = (int)obs_data_get_int(settings, "crf");
+-	int width = (int)obs_encoder_get_width(obsx264->encoder);
+-	int height = (int)obs_encoder_get_height(obsx264->encoder);
+-	int bf = (int)obs_data_get_int(settings, "bf");
+-	bool use_bufsize = obs_data_get_bool(settings, "use_bufsize");
+-	bool cbr_override = obs_data_get_bool(settings, "cbr");
+-	enum rate_control rc;
+-
+-#ifdef ENABLE_VFR
+-	bool vfr = obs_data_get_bool(settings, "vfr");
+-#endif
+-
+-	/* XXX: "cbr" setting has been deprecated */
+-	if (cbr_override) {
+-		warn("\"cbr\" setting has been deprecated for all encoders!  "
+-		     "Please set \"rate_control\" to \"CBR\" instead.  "
+-		     "Forcing CBR mode.  "
+-		     "(Note to all: this is why you shouldn't use strings for "
+-		     "common settings)");
+-		rate_control = "CBR";
+-	}
+-
+-	if (astrcmpi(rate_control, "ABR") == 0) {
+-		rc = RATE_CONTROL_ABR;
+-		crf = 0;
+-
+-	} else if (astrcmpi(rate_control, "VBR") == 0) {
+-		rc = RATE_CONTROL_VBR;
+-
+-	} else if (astrcmpi(rate_control, "CRF") == 0) {
+-		rc = RATE_CONTROL_CRF;
+-		bitrate = 0;
+-		buffer_size = 0;
+-
+-	} else { /* CBR */
+-		rc = RATE_CONTROL_CBR;
+-		crf = 0;
+-	}
+-
+-	if (keyint_sec)
+-		obsx264->params.i_keyint_max = keyint_sec * voi->fps_num / voi->fps_den;
+-
+-	if (!use_bufsize)
+-		buffer_size = bitrate;
+-
+-#ifdef ENABLE_VFR
+-	obsx264->params.b_vfr_input = vfr;
+-#else
+-	obsx264->params.b_vfr_input = false;
+-#endif
+-	obsx264->params.rc.i_vbv_max_bitrate = bitrate;
+-	obsx264->params.rc.i_vbv_buffer_size = buffer_size;
+-	obsx264->params.rc.i_bitrate = bitrate;
+-	obsx264->params.i_width = width;
+-	obsx264->params.i_height = height;
+-	obsx264->params.i_fps_num = voi->fps_num;
+-	obsx264->params.i_fps_den = voi->fps_den;
+-	obsx264->params.i_timebase_num = voi->fps_den;
+-	obsx264->params.i_timebase_den = voi->fps_num;
+-	obsx264->params.pf_log = log_x264;
+-	obsx264->params.p_log_private = obsx264;
+-	obsx264->params.i_log_level = X264_LOG_WARNING;
+-
+-	if (obs_data_has_user_value(settings, "bf"))
+-		obsx264->params.i_bframe = bf;
+-
+-	static const char *const smpte170m = "smpte170m";
+-	static const char *const bt709 = "bt709";
+-	const char *colorprim = bt709;
+-	const char *transfer = bt709;
+-	const char *colmatrix = bt709;
+-	switch (info.colorspace) {
+-	case VIDEO_CS_DEFAULT:
+-	case VIDEO_CS_709:
+-		colorprim = bt709;
+-		transfer = bt709;
+-		colmatrix = bt709;
+-		break;
+-	case VIDEO_CS_601:
+-		colorprim = smpte170m;
+-		transfer = smpte170m;
+-		colmatrix = smpte170m;
+-		break;
+-	case VIDEO_CS_SRGB:
+-		colorprim = bt709;
+-		transfer = "iec61966-2-1";
+-		colmatrix = bt709;
+-		break;
+-	default:
+-		break;
+-	}
+-
+-	obsx264->params.vui.i_sar_height = 1;
+-	obsx264->params.vui.i_sar_width = 1;
+-	obsx264->params.vui.b_fullrange = info.range == VIDEO_RANGE_FULL;
+-	obsx264->params.vui.i_colorprim = get_x264_cs_val(colorprim, x264_colorprim_names);
+-	obsx264->params.vui.i_transfer = get_x264_cs_val(transfer, x264_transfer_names);
+-	obsx264->params.vui.i_colmatrix = get_x264_cs_val(colmatrix, x264_colmatrix_names);
+-
+-	/* use the new filler method for CBR to allow real-time adjusting of
+-	 * the bitrate */
+-	if (rc == RATE_CONTROL_CBR || rc == RATE_CONTROL_ABR) {
+-		obsx264->params.rc.i_rc_method = X264_RC_ABR;
+-
+-		if (rc == RATE_CONTROL_CBR) {
+-#if X264_BUILD >= 139
+-			obsx264->params.rc.b_filler = true;
+-#else
+-			obsx264->params.i_nal_hrd = X264_NAL_HRD_CBR;
+-#endif
+-		}
+-	} else {
+-		obsx264->params.rc.i_rc_method = X264_RC_CRF;
+-		obsx264->params.rc.f_rf_constant = (float)crf;
+-	}
+-
+-	if (info.format == VIDEO_FORMAT_NV12)
+-		obsx264->params.i_csp = X264_CSP_NV12;
+-	else if (info.format == VIDEO_FORMAT_I420)
+-		obsx264->params.i_csp = X264_CSP_I420;
+-	else if (info.format == VIDEO_FORMAT_I444)
+-		obsx264->params.i_csp = X264_CSP_I444;
+-	else
+-		obsx264->params.i_csp = X264_CSP_NV12;
+-
+-	for (size_t i = 0; i < options->ignored_word_count; ++i)
+-		warn("ignoring invalid x264 option: %s", options->ignored_words[i]);
+-	for (size_t i = 0; i < options->count; ++i)
+-		set_param(obsx264, options->options[i]);
+-
+-	if (!update) {
+-		info("settings:\n"
+-		     "\trate_control: %s\n"
+-		     "\tbitrate:      %d\n"
+-		     "\tbuffer size:  %d\n"
+-		     "\tcrf:          %d\n"
+-		     "\tfps_num:      %d\n"
+-		     "\tfps_den:      %d\n"
+-		     "\twidth:        %d\n"
+-		     "\theight:       %d\n"
+-		     "\tkeyint:       %d\n",
+-		     rate_control, obsx264->params.rc.i_vbv_max_bitrate, obsx264->params.rc.i_vbv_buffer_size,
+-		     (int)obsx264->params.rc.f_rf_constant, voi->fps_num, voi->fps_den, width, height,
+-		     obsx264->params.i_keyint_max);
+-	}
+-}
+-
+-static void log_custom_options(struct obs_x264 *obsx264, const struct obs_options *options)
+-{
+-	if (options->count == 0) {
+-		return;
+-	}
+-	size_t settings_string_length = 0;
+-	for (size_t i = 0; i < options->count; ++i)
+-		settings_string_length += strlen(options->options[i].name) + strlen(options->options[i].value) + 5;
+-	size_t buffer_size = settings_string_length + 1;
+-	char *settings_string = bmalloc(settings_string_length + 1);
+-	char *p = settings_string;
+-	size_t remaining_buffer_size = buffer_size;
+-	for (size_t i = 0; i < options->count; ++i) {
+-		int chars_written = snprintf(p, remaining_buffer_size, "\n\t%s = %s", options->options[i].name,
+-					     options->options[i].value);
+-		assert(chars_written >= 0);
+-		assert((size_t)chars_written <= remaining_buffer_size);
+-		p += chars_written;
+-		remaining_buffer_size -= chars_written;
+-	}
+-	assert(remaining_buffer_size == 1);
+-	assert(*p == '\0');
+-	info("custom settings: %s", settings_string);
+-	bfree(settings_string);
+-}
+-
+-static bool update_settings(struct obs_x264 *obsx264, obs_data_t *settings, bool update)
+-{
+-	char *preset = bstrdup(obs_data_get_string(settings, "preset"));
+-	char *profile = bstrdup(obs_data_get_string(settings, "profile"));
+-	char *tune = bstrdup(obs_data_get_string(settings, "tune"));
+-	struct obs_options options = obs_parse_options(obs_data_get_string(settings, "x264opts"));
+-	bool repeat_headers = obs_data_get_bool(settings, "repeat_headers");
+-
+-	bool success = true;
+-
+-	if (!update)
+-		blog(LOG_INFO, "---------------------------------");
+-
+-	if (!obsx264->context) {
+-		override_base_params(obsx264, &options, &preset, &profile, &tune);
+-
+-		if (preset && *preset)
+-			info("preset: %s", preset);
+-		if (profile && *profile)
+-			info("profile: %s", profile);
+-		if (tune && *tune)
+-			info("tune: %s", tune);
+-
+-		success = reset_x264_params(obsx264, preset, tune);
+-	}
+-
+-	if (repeat_headers) {
+-		obsx264->params.b_repeat_headers = 1;
+-		obsx264->params.b_annexb = 1;
+-		obsx264->params.b_aud = 1;
+-	}
+-
+-	if (success) {
+-		update_params(obsx264, settings, &options, update);
+-		if (!update) {
+-			log_custom_options(obsx264, &options);
+-		}
+-
+-		if (!obsx264->context)
+-			apply_x264_profile(obsx264, profile);
+-	}
+-
+-	obs_free_options(options);
+-	bfree(preset);
+-	bfree(profile);
+-	bfree(tune);
+-
+-	return success;
+-}
+-
+-static bool obs_x264_update(void *data, obs_data_t *settings)
+-{
+-	struct obs_x264 *obsx264 = data;
+-	bool success = update_settings(obsx264, settings, true);
+-	int ret;
+-
+-	if (success) {
+-		ret = x264_encoder_reconfig(obsx264->context, &obsx264->params);
+-		if (ret != 0)
+-			warn("Failed to reconfigure: %d", ret);
+-		return ret == 0;
+-	}
+-
+-	return false;
+-}
+-
+-static void load_headers(struct obs_x264 *obsx264)
+-{
+-	x264_nal_t *nals;
+-	int nal_count;
+-	DARRAY(uint8_t) header;
+-	DARRAY(uint8_t) sei;
+-
+-	da_init(header);
+-	da_init(sei);
+-
+-	x264_encoder_headers(obsx264->context, &nals, &nal_count);
+-
+-	for (int i = 0; i < nal_count; i++) {
+-		x264_nal_t *nal = nals + i;
+-
+-		if (nal->i_type == NAL_SEI)
+-			da_push_back_array(sei, nal->p_payload, nal->i_payload);
+-		else
+-			da_push_back_array(header, nal->p_payload, nal->i_payload);
+-	}
+-
+-	obsx264->extra_data = header.array;
+-	obsx264->extra_data_size = header.num;
+-	obsx264->sei = sei.array;
+-	obsx264->sei_size = sei.num;
+-}
+-
+-static void *obs_x264_create(obs_data_t *settings, obs_encoder_t *encoder)
+-{
+-	video_t *video = obs_encoder_video(encoder);
+-	const struct video_output_info *voi = video_output_get_info(video);
+-	switch (voi->format) {
+-	case VIDEO_FORMAT_I010:
+-	case VIDEO_FORMAT_P010:
+-	case VIDEO_FORMAT_P216:
+-	case VIDEO_FORMAT_P416:
+-		obs_encoder_set_last_error(encoder, obs_module_text("HighPrecisionUnsupported"));
+-		warn_enc(encoder, "OBS does not support using x264 with high-precision formats");
+-		return NULL;
+-	default:
+-		if (voi->colorspace == VIDEO_CS_2100_PQ || voi->colorspace == VIDEO_CS_2100_HLG) {
+-			obs_encoder_set_last_error(encoder, obs_module_text("HdrUnsupported"));
+-			warn_enc(encoder, "OBS does not support using x264 with Rec. 2100");
+-			return NULL;
+-		}
+-		break;
+-	}
+-
+-	struct obs_x264 *obsx264 = bzalloc(sizeof(struct obs_x264));
+-	obsx264->encoder = encoder;
+-
+-	if (update_settings(obsx264, settings, false)) {
+-		obsx264->context = x264_encoder_open(&obsx264->params);
+-
+-		if (obsx264->context == NULL)
+-			warn("x264 failed to load");
+-		else
+-			load_headers(obsx264);
+-	} else {
+-		warn("bad settings specified");
+-	}
+-
+-	if (!obsx264->context) {
+-		bfree(obsx264);
+-		return NULL;
+-	}
+-
+-	obsx264->performance_token = os_request_high_performance("x264 encoding");
+-
+-	return obsx264;
+-}
+-
+-static void parse_packet(struct obs_x264 *obsx264, struct encoder_packet *packet, x264_nal_t *nals, int nal_count,
+-			 x264_picture_t *pic_out)
+-{
+-	if (!nal_count)
+-		return;
+-
+-	da_resize(obsx264->packet_data, 0);
+-
+-	for (int i = 0; i < nal_count; i++) {
+-		x264_nal_t *nal = nals + i;
+-		da_push_back_array(obsx264->packet_data, nal->p_payload, nal->i_payload);
+-	}
+-
+-	packet->data = obsx264->packet_data.array;
+-	packet->size = obsx264->packet_data.num;
+-	packet->type = OBS_ENCODER_VIDEO;
+-	packet->pts = pic_out->i_pts;
+-	packet->dts = pic_out->i_dts;
+-	packet->keyframe = pic_out->b_keyframe != 0;
+-}
+-
+-static inline void init_pic_data(struct obs_x264 *obsx264, x264_picture_t *pic, struct encoder_frame *frame)
+-{
+-	x264_picture_init(pic);
+-
+-	pic->i_pts = frame->pts;
+-	pic->img.i_csp = obsx264->params.i_csp;
+-
+-	if (obsx264->params.i_csp == X264_CSP_NV12)
+-		pic->img.i_plane = 2;
+-	else if (obsx264->params.i_csp == X264_CSP_I420)
+-		pic->img.i_plane = 3;
+-	else if (obsx264->params.i_csp == X264_CSP_I444)
+-		pic->img.i_plane = 3;
+-
+-	for (int i = 0; i < pic->img.i_plane; i++) {
+-		pic->img.i_stride[i] = (int)frame->linesize[i];
+-		pic->img.plane[i] = frame->data[i];
+-	}
+-}
+-
+-/* H.264 always uses 16x16 macroblocks */
+-static const uint32_t MB_SIZE = 16;
+-
+-struct roi_params {
+-	uint32_t mb_width;
+-	uint32_t mb_height;
+-	float *map;
+-};
+-
+-static void roi_cb(void *param, struct obs_encoder_roi *roi)
+-{
+-	const struct roi_params *rp = param;
+-
+-	const uint32_t roi_left = roi->left / MB_SIZE;
+-	const uint32_t roi_top = roi->top / MB_SIZE;
+-	const uint32_t roi_right = (roi->right - 1) / MB_SIZE;
+-	const uint32_t roi_bottom = (roi->bottom - 1) / MB_SIZE;
+-	/* QP range is 0..51 */
+-	const float qp_offset = -51.0f * roi->priority;
+-
+-	for (uint32_t mb_y = 0; mb_y < rp->mb_height; mb_y++) {
+-		if (mb_y < roi_top || mb_y > roi_bottom)
+-			continue;
+-
+-		for (uint32_t mb_x = 0; mb_x < rp->mb_width; mb_x++) {
+-			if (mb_x < roi_left || mb_x > roi_right)
+-				continue;
+-
+-			rp->map[mb_y * rp->mb_width + mb_x] = qp_offset;
+-		}
+-	}
+-}
+-
+-static void add_roi(struct obs_x264 *obsx264, x264_picture_t *pic)
+-{
+-	const uint32_t increment = obs_encoder_get_roi_increment(obsx264->encoder);
+-
+-	if (obsx264->quant_offsets && obsx264->roi_increment == increment) {
+-		pic->prop.quant_offsets = obsx264->quant_offsets;
+-		return;
+-	}
+-
+-	const uint32_t width = obs_encoder_get_width(obsx264->encoder);
+-	const uint32_t height = obs_encoder_get_height(obsx264->encoder);
+-	const uint32_t mb_width = (width + MB_SIZE - 1) / MB_SIZE;
+-	const uint32_t mb_height = (height + MB_SIZE - 1) / MB_SIZE;
+-	const size_t map_size = sizeof(float) * mb_width * mb_height;
+-
+-	float *map = bzalloc(map_size);
+-
+-	struct roi_params par = {mb_width, mb_height, map};
+-
+-	obs_encoder_enum_roi(obsx264->encoder, roi_cb, &par);
+-
+-	pic->prop.quant_offsets = map;
+-	obsx264->quant_offsets = map;
+-	obsx264->roi_increment = increment;
+-}
+-
+-static bool obs_x264_encode(void *data, struct encoder_frame *frame, struct encoder_packet *packet,
+-			    bool *received_packet)
+-{
+-	struct obs_x264 *obsx264 = data;
+-	x264_nal_t *nals;
+-	int nal_count;
+-	int ret;
+-	x264_picture_t pic, pic_out;
+-
+-	if (!frame || !packet || !received_packet)
+-		return false;
+-
+-	if (frame)
+-		init_pic_data(obsx264, &pic, frame);
+-
+-	if (obs_encoder_has_roi(obsx264->encoder))
+-		add_roi(obsx264, &pic);
+-
+-	ret = x264_encoder_encode(obsx264->context, &nals, &nal_count, (frame ? &pic : NULL), &pic_out);
+-	if (ret < 0) {
+-		warn("encode failed");
+-		return false;
+-	}
+-
+-	*received_packet = (nal_count != 0);
+-	parse_packet(obsx264, packet, nals, nal_count, &pic_out);
+-
+-	return true;
+-}
+-
+-static bool obs_x264_extra_data(void *data, uint8_t **extra_data, size_t *size)
+-{
+-	struct obs_x264 *obsx264 = data;
+-
+-	if (!obsx264->context)
+-		return false;
+-
+-	*extra_data = obsx264->extra_data;
+-	*size = obsx264->extra_data_size;
+-	return true;
+-}
+-
+-static bool obs_x264_sei(void *data, uint8_t **sei, size_t *size)
+-{
+-	struct obs_x264 *obsx264 = data;
+-
+-	if (!obsx264->context)
+-		return false;
+-
+-	*sei = obsx264->sei;
+-	*size = obsx264->sei_size;
+-	return true;
+-}
+-
+-static inline bool valid_format(enum video_format format)
+-{
+-	return format == VIDEO_FORMAT_I420 || format == VIDEO_FORMAT_NV12 || format == VIDEO_FORMAT_I444;
+-}
+-
+-static void obs_x264_video_info(void *data, struct video_scale_info *info)
+-{
+-	struct obs_x264 *obsx264 = data;
+-	enum video_format pref_format;
+-
+-	pref_format = obs_encoder_get_preferred_video_format(obsx264->encoder);
+-
+-	if (!valid_format(pref_format)) {
+-		pref_format = valid_format(info->format) ? info->format : VIDEO_FORMAT_NV12;
+-	}
+-
+-	info->format = pref_format;
+-}
+-
+-struct obs_encoder_info obs_x264_encoder = {
+-	.id = "obs_x264",
+-	.type = OBS_ENCODER_VIDEO,
+-	.codec = "h264",
+-	.get_name = obs_x264_getname,
+-	.create = obs_x264_create,
+-	.destroy = obs_x264_destroy,
+-	.encode = obs_x264_encode,
+-	.update = obs_x264_update,
+-	.get_properties = obs_x264_props,
+-	.get_defaults = obs_x264_defaults,
+-	.get_extra_data = obs_x264_extra_data,
+-	.get_sei_data = obs_x264_sei,
+-	.get_video_info = obs_x264_video_info,
+-	.caps = OBS_ENCODER_CAP_DYN_BITRATE | OBS_ENCODER_CAP_ROI,
+-};
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/obs-x264-plugin-main.c obs-studio/plugins/obs-x264/obs-x264-plugin-main.c
+--- obs-studio.orig/plugins/obs-x264/obs-x264-plugin-main.c	2025-10-20 20:23:38.379129458 -0300
++++ obs-studio/plugins/obs-x264/obs-x264-plugin-main.c	1969-12-31 21:00:00.000000000 -0300
+@@ -1,16 +0,0 @@
+-#include <obs-module.h>
+-
+-OBS_DECLARE_MODULE()
+-OBS_MODULE_USE_DEFAULT_LOCALE("obs-x264", "en-US")
+-MODULE_EXPORT const char *obs_module_description(void)
+-{
+-	return "x264 based encoder";
+-}
+-
+-extern struct obs_encoder_info obs_x264_encoder;
+-
+-bool obs_module_load(void)
+-{
+-	obs_register_encoder(&obs_x264_encoder);
+-	return true;
+-}
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/obs-x264-test.c obs-studio/plugins/obs-x264/obs-x264-test.c
+--- obs-studio.orig/plugins/obs-x264/obs-x264-test.c	2025-10-20 20:23:38.379129458 -0300
++++ obs-studio/plugins/obs-x264/obs-x264-test.c	1969-12-31 21:00:00.000000000 -0300
+@@ -1,71 +0,0 @@
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <string.h>
+-#include <opts-parser.h>
+-
+-#define CHECK(condition)                                                                                     \
+-	do {                                                                                                 \
+-		if (!(condition)) {                                                                          \
+-			fprintf(stderr, "%s:%d: error: check failed: %s\n", __FILE__, __LINE__, #condition); \
+-			exit(1);                                                                             \
+-		}                                                                                            \
+-	} while (0)
+-
+-static void test_obs_parse_options()
+-{
+-	struct obs_options options;
+-
+-	options = obs_parse_options(NULL);
+-	CHECK(options.count == 0);
+-	CHECK(options.ignored_word_count == 0);
+-	obs_free_options(options);
+-
+-	options = obs_parse_options("");
+-	CHECK(options.count == 0);
+-	CHECK(options.ignored_word_count == 0);
+-	obs_free_options(options);
+-
+-	options = obs_parse_options("ref=3");
+-	CHECK(options.count == 1);
+-	CHECK(strcmp(options.options[0].name, "ref") == 0);
+-	CHECK(strcmp(options.options[0].value, "3") == 0);
+-	CHECK(options.ignored_word_count == 0);
+-	obs_free_options(options);
+-
+-	options = obs_parse_options("ref=3 bframes=8");
+-	CHECK(options.count == 2);
+-	CHECK(strcmp(options.options[0].name, "ref") == 0);
+-	CHECK(strcmp(options.options[0].value, "3") == 0);
+-	CHECK(strcmp(options.options[1].name, "bframes") == 0);
+-	CHECK(strcmp(options.options[1].value, "8") == 0);
+-	CHECK(options.ignored_word_count == 0);
+-	obs_free_options(options);
+-
+-	// Invalid options are ignored.
+-	options = obs_parse_options("ref=3 option_with_no_equal_sign bframes=8 1234");
+-	CHECK(options.count == 2);
+-	CHECK(strcmp(options.options[0].name, "ref") == 0);
+-	CHECK(strcmp(options.options[0].value, "3") == 0);
+-	CHECK(strcmp(options.options[1].name, "bframes") == 0);
+-	CHECK(strcmp(options.options[1].value, "8") == 0);
+-	CHECK(options.ignored_word_count == 2);
+-	CHECK(strcmp(options.ignored_words[0], "option_with_no_equal_sign") == 0);
+-	CHECK(strcmp(options.ignored_words[1], "1234") == 0);
+-	obs_free_options(options);
+-
+-	// Extra whitespace is ignored between and around options.
+-	options = obs_parse_options("  ref=3   bframes=8  ");
+-	CHECK(options.count == 2);
+-	CHECK(strcmp(options.options[0].name, "ref") == 0);
+-	CHECK(strcmp(options.options[0].value, "3") == 0);
+-	CHECK(strcmp(options.options[1].name, "bframes") == 0);
+-	CHECK(strcmp(options.options[1].value, "8") == 0);
+-	CHECK(options.ignored_word_count == 0);
+-	obs_free_options(options);
+-}
+-
+-int main()
+-{
+-	test_obs_parse_options();
+-	return 0;
+-}

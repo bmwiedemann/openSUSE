@@ -1,0 +1,25 @@
+diff '--color=auto' -rubN obs-studio.orig/plugins/CMakeLists.txt obs-studio/plugins/CMakeLists.txt
+--- obs-studio.orig/plugins/CMakeLists.txt	2026-02-09 22:55:08.614323461 -0300
++++ obs-studio/plugins/CMakeLists.txt	2026-02-09 23:33:53.155798703 -0300
+@@ -12,7 +12,9 @@
+ macro(check_obs_browser)
+   if((OS_WINDOWS AND CMAKE_VS_PLATFORM_NAME MATCHES "(ARM64|x64)") OR OS_MACOS OR OS_LINUX)
+     if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/obs-browser/CMakeLists.txt")
+-      message(FATAL_ERROR "Required submodule 'obs-browser' not available.")
++      message(STATUS "obs-browser submodule not available, browser plugin disabled.")
++      add_custom_target(obs-browser)
++      target_disable(obs-browser)
+     else()
+       add_subdirectory(obs-browser)
+     endif()
+@@ -24,7 +26,9 @@
+ 
+ macro(check_obs_websocket)
+   if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/obs-websocket/CMakeLists.txt")
+-    message(FATAL_ERROR "Required submodule 'obs-websocket' not available.")
++    message(STATUS "obs-websocket submodule not available, websocket plugin disabled.")
++    add_custom_target(obs-websocket)
++    target_disable(obs-websocket)
+   else()
+     add_subdirectory(obs-websocket)
+   endif()

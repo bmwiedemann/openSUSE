@@ -1,0 +1,302 @@
+-------------------------------------------------------------------
+Fri Feb 13 21:25:20 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Spec cleanup:
+  * Use c++_compiler virtual provides instead of gcc/gcc13.
+  * Remove obsolete Qt5 private headers build dependency.
+  * Drop redundant FFmpeg pkgconfig BuildRequires and rely on
+    ffmpeg-7-mini-devel.
+  * Drop redundant pkgconfig(Qt6Gui) BuildRequires.
+  * Use python3-devel instead of version-specific Python BuildRequires.
+  * Simplify libudev BuildRequires using pkgconfig(libudev). 
+
+-------------------------------------------------------------------
+Thu Feb 12 03:14:18 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Simplify build section by removing manual include path overrides
+  for LuaJIT and Python and rely on CMake auto-detection.
+  * Drop explicit libfdk-aac support and rely on system FFmpeg AAC
+    encoder instead, avoiding additional optional codec dependencies.
+
+-------------------------------------------------------------------
+Wed Feb 11 17:27:35 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Removing "global debug_package %{nil}", this is only for testing and causes 
+  the error "Installed (but unpackaged) file(s) found"
+
+-------------------------------------------------------------------
+Wed Feb 11 17:25:30 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 32.0.4:
+  * Add disable-x264.patch to disable built-in obs-x264 plugin due to
+    licensing restrictions. OBS will rely on system FFmpeg encoders 
+    (libx264, libx265, OpenH264, VAAPI, etc.) when available.
+  * Add optional-browser-websocket.patch to disable bundled obs-browser and
+    obs-websocket plugins and allow them to be provided as external plugins.
+    Adjust encoder selection logic to only expose x264 when available.
+  * libobs: Update version to 32.0.4
+  * docs: Add API disclaimer to canvases
+  * libobs: Fix default macOS monitoring device
+  * linux-pulseaudio: Add monitoring deduplication calls
+  * mac-capture: Add monitoring deduplication calls
+  * win-wasapi: Add monitoring deduplication calls
+  * libobs: Improve monitoring deduplication
+  * frontend: Fix transition duration not loading correctly
+  * frontend: Switch off deleted scenes immediately
+  * libobs: Do not wait for audio of removed sources
+
+-------------------------------------------------------------------
+Mon Oct 20 23:23:40 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 32.0.1:
+  * libobs: Update version to 32.0.1
+  * frontend: Fix runtime check failure issue
+  * libobs: Log monitoring audio deduplication
+  * libobs: Fix for monitoring deduplication edge case
+  * frontend: Enable multitrack RTMP option for custom RTMP services
+  * obs-browser: Update version to 2.26.2
+  * CI: Pin patch generation workflows to windows-2022
+  * docs: Fix Rendering Graphics documentation
+  * CI: Update Flatpak action
+  * ci: Limit use of Ccache option to enforce second preprocessor call
+  * cmake: Remove Ccache option to enforce second preprocessor call
+  * frontend, plugins: Set default bitrate to 6000 kbps
+  * libobs: Raise out of memory exception manually when out of memory
+  * obs-websocket: Update version to 5.6.3
+  * obs-browser: Update version to 2.26.1
+  * frontend: Remove help text for shutdown check
+  * rtmp-services: Remove defunct servers/services
+  * frontend/api: Remove obs_frontend_get_global_config from internal code
+  * frontend: Don't attempt multitrack without config url
+  * frontend: Fix UI deadlock
+  * docs: Clarify some aspects of OBS_PROPERTY_BUTTON
+  * frontend: Remove "BETA" from Hybrid MP4/MOV and make them the default
+  * libobs: Treat os_dlopen failure as module load failure
+  * libobs: Differentiate between plugin load failures
+  * libobs: Rename MODULE_FILE_NOT_FOUND code to MODULE_FAILED_TO_OPEN
+  * frontend: Update Plugin Manager v1 UI
+  * libobs/util: Fix memory leak at failure condition
+  * Update translations from Crowdin
+  * frontend: Change renderer combo box to use custom data
+  * Reapply "cmake: Use fixed SOVERSION everywhere"
+  * Reapply "cmake: Avoid breaking ABI through major version bump on Linux"
+  * Revert "cmake: Remove library compat symlink on Linux"
+  * rtmp-services: Update MasterStream.iR ingest
+  * libobs-metal: Added README file for current state of implementation
+  * libobs: Update default draw effect to also provide D65P3 conversion
+  * frontend: Add Metal to available list of renderers in basic settings
+  * libobs-metal: Add Metal renderer
+  * CI: Update macOS runner for building to use Xcode 16.4
+  * libobs: Add prerequisites for Metal and Swift support
+  * cmake: Enable DEBUG flag for Swift
+  * CI: Update swift-format configuration with more explicit rules
+  * libobs: Remove Qt5 module check
+  * Revert "libobs/util: Reject plugins linking Qt5 library for Linux"
+  * Revert "libobs: Assume Qt 6, always warn about Qt 5 plugins"
+  * Revert "libobs/util: Prevent locking mutex in child process when checking Qt5"
+  * cmake: Remove library compat symlink on Linux
+  * Revert "cmake: Avoid breaking ABI through major version bump on Linux"
+  * Revert "cmake: Use fixed SOVERSION everywhere"
+  * libobs: Re-include groups in obs_enum_scenes
+  * CI,build-aux: Use rebuilt CEF on Linux and macOS
+  * frontend/data: Remove unused context bar string
+  * shared/idian: Make checked status of collapsible rows public
+  * shared/idian: Make title and description common to all row types
+  * shared/idian: Pass "this" instead of "=" to lambda
+  * frontend: Include OBSIdianPlayground MOC
+  * frontend/themes: Remove Idian test rule
+  * rtmp-services: Remove defunct servers/services
+  * nv-filters: Guard function introduced in sdk >= 1.6.0
+  * libobs: Use RTLD_NOW to load modules
+  * libobs: Fix comment typo
+  * frontend: Fix plugin manager module type loading
+  * libobs: Set module for outputs
+  * libobs: Remove unused obs_*_info module pointer
+  * libobs: Fix scene and group load state
+  * plugins: Ensure that graphics device type checks use graphics context
+  * frontend: Change crash sentinel location to separate subdirectory
+  * obs-ffmpeg: Null-check url query parameters
+  * frontend: Fix plugin manager config loading crash
+  * frontend: Do not enable crash log upload without log file
+  * frontend: Remove unneeded argument from log upload privacy notice
+  * libobs: Update version to 32.0.0
+  * obs-ffmpeg: Fix build with FFMPEG 8 and above
+  * CI: Update deps to 2025-08-23 release
+  * cmake: Use precise 4-component SDK version for Windows SDK
+  * CI: Remove explicit QT_HOST_PATH definition from Windows build script
+  * cmake: Add detection of cross compiled Qt dependencies for Windows
+  * frontend/api: Fix deprecation warning message for global config
+  * frontend: Provide UI for phase 1 of plugin manager
+  * libobs: Add core logic for phase 1 plugin manager
+  * obs-outputs: Reset start time and remove unnecessary timestamp adjustments
+  * obs-browser: Update version to 2.26.0
+  * libobs: Deprecate obs_data_autoselect_*
+  * shared/properties-view: Tolerate deprecated autoselect functions
+  * win-dshow: Temporarily tolerate deprecated autoselect functions
+  * mac-avcapture/legacy: Remove autoselect feedback
+  * libobs/util: Add PRAGMA_DISABLE_DEPRECATION macro
+  * Revert "UI: Work around Qt dock restore crash"
+  * frontend: Change overflow texture rendering to be sRGB-aware
+  * frontend: Set cursor width for OBSHotkeyEdit to 0
+  * frontend: Use signal to update log viewer
+  * rtmp-services: Remove defunct servers/services
+  * obs-webrtc: Add version IFDEFs for 0.23.0
+  * libobs: Remove unused code
+  * libobs: Add Flatpak commit logging
+  * libobs: Fix audio duplication for monitored source
+  * obs-ffmpeg: Fix crash when using a pkt_size != 1316
+  * obs-ffmpeg: Log SRT listener waiting for a connection
+  * obs-ffmpeg: Change OBS-OUTPUT-XXX returns for RIST protocol
+  * obs-ffmpeg: Fix a crash with invalid URL
+  * obs-ffmpeg: Reimplement reconnection logic in mpegts muxer
+  * obs-ffmpeg: Fix reconnection for SRT protocol
+  * obs-ffmpeg: Cleanup for mpegts muxer
+  * obs-outputs: Allow enabling BPM for Hybrid MP4 output
+  * libobs: Reject plugins compiled with newer libobs
+  * frontend: Replace transition duration spinbox direct access
+  * frontend: Reduce reliance on transition indexes
+  * frontend: Replace transitions combobox direct access
+  * frontend: Remove some shadowing
+  * shared/idian: Rename OBSIdianUtils
+  * shared/idian: Rename component classes
+  * shared/idian: Rename widget classes
+  * shared/idian: Rename all-in-one include to Idian.hpp
+  * frontend: Move idian widgets to shared/qt
+  * frontend: Unify naming of Idian Playground
+  * cmake: Don't add Idian playground when feature is disabled
+  * frontend: Add new Idian widgets
+  * libobs: Fix audio duplication
+  * Revert libobs: Mix audio of each source in a scene only once
+  * frontend: Update crash handling and log upload functionality
+  * frontend: Add LogUploadDialog class
+  * frontend: Add CrashHandler class
+  * cmake: Enable interprocedural optimization for Release configuration
+  * linux-pipewire: Add aspect ratio to video capture format name
+  * linux-pipewire: Add framerates to video capture format name
+  * linux-pipewire: Use list-based format selector for video capture
+  * frontend: Fix multiview not decrementing showing state count
+  * obs-nvenc: Add SDK 13.0 features
+  * obs-nvenc-test: Add SDK 13.0 features and Blackwell
+  * obs-nvenc-test: Add error message for session limit being hit
+  * obs-nvenc-test: Query device info even if NVENC fails
+  * obs-nvenc-test: Add device architecture to device info
+  * frontend: Make Hybrid MOV the default for beta builds on macOS
+  * frontend: Add Hybrid MOV to format list
+  * obs-outputs: Add support for Hybrid MOV
+  * obs-outputs: Remove FFmpeg-style timebase adjustment
+  * obs-ffmpeg: Add missing color range property setting for AMD AV1 encoder
+  * nv-filters: Remove from video fx header redundant define
+  * obs-filters: Purge NVIDIA Noise suppression
+  * nv-filters: Premultiply correctly for Blur FX
+  * nv-filters: Fix for size changes with video fx
+  * nv-filters: For Blur FX, do not set mask image
+  * nv-filters: Fix load of video FX during reset
+  * nv-filters: Set NvVFX_Run to SYNC mode
+  * nv-filters: Process Background Blur FX on same CudaStream as Background Removal FX
+  * nv-filters: Change Background Blur to perf mode
+  * obs-filters: Remove unused NVIDIA effect
+  * nv-filters: Add chair removal option to background removal
+  * nv-filters: Add voice optimization for audio filters
+  * nv-filters: Enable new logger function for audio effects
+  * nv-filters: Enable new logger function for Video Effects
+  * nv-filters: Disable audio filter instead of destroying in case of issues
+  * libobs: Include all audio priming packets if closest is start
+  * libobs,cmake: Replace vendored SIMD Everywhere by prefix/system install
+  * cmake: Add a finder for SIMD Everywhere
+  * obs-ffmpeg: Correct P-frame packet priority in AMF encoder
+  * obs-nvenc: Set packet priority
+  * libobs: Improve HEVC packet priority determination
+  * libobs: Use os_oom() for out of memory crash
+  * libobs: Duplicate os_breakpoint to os_oom
+  * libobs: Allow interleaver to recover from temporary stalls
+  * frontend/api: Remove obs_frontend_add_dock
+  * libobs: Remove v1 scene item transform API
+  * libobs: Remove obs_scene_sceneitem_from_source
+  * libobs: Remove obs_view_get_video_info
+  * libobs: Remove circlebuf
+  * libobs-opengl: Clean up macOS code with better error handling
+  * libobs-opengl: Improve macOS error handling for swapchain code
+  * libobs: Update sharpness effect to enable compilation for Metal
+  * libobs: Fix clear color mismatch in Metal and OpenGL on Apple Silicon
+  * plugins: Update plugins to use default draw effect for Metal
+  * obs-outputs: Use packet time callback for frame-accurate chapter markers
+  * obs-ffmpeg: Add Pre-Analysis checkbox for AMD encoder
+  * obs-ffmpeg: Update default AMD encoding settings
+  * frontend: Remove channel change signal handler from transform dialog
+  * obs-transitions: Fix stinger showing count for update during transition
+  * frontend: Auto release OBSDataArray objects
+  * obs-outputs: Fix tkhd/mvhd box version with 64-bit timestamps
+  * mac-capture: Set minimum frame interval in capture initialization
+  * frontend: Fix and simplify initialization of supported_codecs
+  * mac-avcapture: Remove unneeded macOS SDK ifdef
+  * cmake: Remove enforced architectures for macOS builds
+  * build-aux: Remove unused Flatpak static permission
+  * frontend: Don't mark OBSHotkeyEdit as read-only on macOS
+  * shared/icon-label: Split into header and source file
+  * shared: Rename icon-label.hpp to IconLabel.hpp
+  * build-aux: Add test directory to clang-format file list
+  * frontend: Remove unused macOS window icons
+  * frontend: Remove unused OBSContextBarProxyStyle
+  * media-playback: Fix null pointer dereference
+  * frontend: Fix invisible scrollbar in Light theme
+  * frontend: Fix invisible scrollbar in Rachni theme
+  * CI: Handle possible error condition in gersemi branch of format script
+  * cmake: Update formatting introduced by gersemi 0.21.0
+  * cmake: Remove outdated and incorrect code comment in osconfig module
+  * cmake: Remove settings from gersemirc only supported via command-line
+  * libobs: Update version to 31.1.2
+  * CI: Update obs-crowdin-sync action
+  * libobs: Start video output even if there is no mix
+  * Revert "linux-pipewire: Fix 10- and 16-bit captures"
+  * CI: Fix failures of analyze workflow runs due to GitHub policy change
+  * linux-pipewire: Ensure the release point is always signaled
+  * linux-pipewire: Dup syncobj fds
+  * linux-pipewire: Require Gio 2.76
+  * libobs-opengl: Make some includes unconditional
+  * frontend: Fix settings scrollbar size
+  * frontend: Fix progress bar appearance
+  * linux-v4l2: Avoid stopping capture on AVERROR(EAGAIN)
+  * frontend: Do not set maximum_video_tracks if user has set it to "Auto"
+  * CI: Update sphinx-publish-action commit
+  * frontend: Fix build failure with Clang 20+ in OBSCanvas
+  * build-aux: Use rebuilt CEF on Linux with backported API on Flatpak
+  * CI: Add checkout to fix gh CLI usage
+
+-------------------------------------------------------------------
+Tue Jul 15 02:47:01 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 31.1.1:
+  * libobs: Update version to 31.1.1
+  * build-aux: Revert libsrt to v1.5.3
+  * build-aux: Update Flatpak module for mbedTLS to v3.6.4
+  * CI: Update deps to 2025-07-11 release
+  * obs-browser: Update version to 2.25.3
+  * CI: Use rebuilt CEF on Linux with backported API
+  * frontend: Avoid recreating YouTube dock
+  * CI: Add GH_TOKEN to fix usage of GitHub CLI
+  * frontend: Enforce minimum height for QList items
+  * CI: Prevent hotfixes from overwriting Flathub beta
+
+-------------------------------------------------------------------
+Mon Jul  7 23:02:00 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 31.0.4
+  - Fixed a crash with Media Sources with no video frame size, such as audio files [RytoEX/jeiea]
+  - Fixed a crash on macOS 13 or older if a Browser Source or Browser Dock was used [jcm93/PatTheMav/RytoEX]
+  - Fixed a freeze if an item was cropped further than its original dimensions [Lain-B]
+  - Fixed a possible crash when reordering scene items [zavitax]
+  - Fixed a possible crash when adding a procedure handler [norihiro]
+  - Fixed an issue on macOS where menu items would launch unintended actions when OBS was set to certain languages [gxalpha]
+  - Fixed an issue on Linux and macOS where POSIX pipes could fail silently [franga2000]
+  - Fixed an issue where obs-browser cookie folder names could start with spaces [RytoEX]
+  - Fixed V4L2 virtual camera start failure on Linux [stephematician] 
+
+-------------------------------------------------------------------
+Sun Jun 15 04:10:51 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 31.0.2
+
+-------------------------------------------------------------------
+Sat Apr  9 02:16:54 UTC 2016 - mrueckert@suse.de
+
+- initial package
