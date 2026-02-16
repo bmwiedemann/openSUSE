@@ -279,4 +279,12 @@
     <comment>Plasma 6.5.5, hopefully boring (forwarded request 1327258 from Vogtinator)</comment>
     <requestid>1327828</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>5e18c6c4594d297b10a5da809b5a8a64</srcmd5>
+    <version>6.6.0</version>
+    <time>1771243528</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.6.0 maybe final tars. K:F already publish disabled (forwarded request 1333048 from Vogtinator)</comment>
+    <requestid>1333060</requestid>
+  </revision>
 </revisionlist>
