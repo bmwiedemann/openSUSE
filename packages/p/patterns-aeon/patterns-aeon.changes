@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 16 08:45:48 UTC 2026 - Richard Brown <rbrown@suse.com>
+
+- Use zypp-* config packages when available, removed from Aeon.kiwi 
+
+-------------------------------------------------------------------
 Thu Sep 25 07:53:23 UTC 2025 - Richard Brown <rbrown@suse.com>
 
 - Replace gdk-pixbuf-thumbnailer with Glycin 

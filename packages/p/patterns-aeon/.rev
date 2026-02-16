@@ -212,4 +212,12 @@
 - Replace gdk-pixbuf-thumbnailer with Glycin</comment>
     <requestid>1307061</requestid>
   </revision>
+  <revision rev="26" vrev="26">
+    <srcmd5>d103e02c9a15f239996950d6d5b7e69b</srcmd5>
+    <version>5.0</version>
+    <time>1771244049</time>
+    <user>anag_factory</user>
+    <comment>- Use zypp-* config packages when available, removed from Aeon.kiwi</comment>
+    <requestid>1333280</requestid>
+  </revision>
 </revisionlist>

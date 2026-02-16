@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-aeon
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -132,6 +132,9 @@ Requires:       zypper
 # zypper ps is useless in transactional mode. It also checks for
 # /run/reboot-needed though which is created by transactional-update
 Requires:       zypper-needs-restarting
+Requires:       zypp-excludedocs
+Requires:       zypp-no-multiversion
+Requires:       zypp-no-recommends
 
 ### Packages formerly provided by defaults
 Requires:       audit
