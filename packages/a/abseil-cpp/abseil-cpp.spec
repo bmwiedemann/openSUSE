@@ -20,7 +20,7 @@
 %global soversion so.2601.0.0
 %global lname_suffix 2601_0_0
 Name:           abseil-cpp
-Version:        20260107.0
+Version:        20260107.1
 Release:        0
 Summary:        C++ libraries which augment the C++ stdlib
 License:        Apache-2.0

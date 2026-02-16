@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 13 18:35:09 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 20260107.1:
+  * Fix sign-extension issue in absl::HexStringToBytes()
+  * Restrict MSVC CRC32 intrinsics to x64
+
+-------------------------------------------------------------------
 Thu Jan 15 07:46:13 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
