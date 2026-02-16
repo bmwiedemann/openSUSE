@@ -34,14 +34,14 @@
 %bcond_without scim
 %endif
 Name:           plasma6-desktop
-Version:        6.5.5
+Version:        6.6.0
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -324,8 +324,15 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %{_kf6_plugindir}/kf6/kded/kded_touchpad.so
 %{_kf6_plugindir}/kf6/krunner/
 %{_kf6_plugindir}/plasma/applets/org.kde.panel.so
+%{_kf6_plugindir}/plasma/applets/org.kde.plasma.keyboardlayout.so
 %{_kf6_plugindir}/plasma/applets/org.kde.plasma.kicker.so
 %{_kf6_plugindir}/plasma/applets/org.kde.plasma.kickoff.so
+%{_kf6_plugindir}/plasma/applets/org.kde.plasma.kimpanel.so
+%{_kf6_plugindir}/plasma/applets/org.kde.plasma.marginsseparator.so
+%{_kf6_plugindir}/plasma/applets/org.kde.plasma.pager.so
+%{_kf6_plugindir}/plasma/applets/org.kde.plasma.showActivityManager.so
+%{_kf6_plugindir}/plasma/applets/org.kde.plasma.showdesktop.so
+%{_kf6_plugindir}/plasma/applets/org.kde.plasma.taskmanager.so
 %{_kf6_plugindir}/plasma/applets/org.kde.plasma.trash.so
 %{_kf6_plugindir}/plasma/applets/org.kde.plasma.windowlist.so
 %dir %{_kf6_plugindir}/plasma/kcms/desktop/

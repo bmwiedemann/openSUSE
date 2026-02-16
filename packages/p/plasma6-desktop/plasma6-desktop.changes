@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Feb 12 19:43:36 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.0
+- Changes since 6.5.91:
+  * applets/kickoff: handle accepted instead of iconNameChanged
+  * Update version for new release 6.6.0
+  * applets/taskmanager: don't base tooltip implicit size on actual size
+  * applets/kicker: make No Matches placeholder child of mainRow
+  * applets/kicker: use dedicated TapHandler in SideBarItem
+  * applets/pager: avoid binding order issue on vdesktop layout changes
+  * kcms/keys: Categorize user-added applications as Application, not SystemService (kde#513565)
+  * kcms/gamecontroller: Disable gamepad input emulation by default
+  * applets/kickoff: specify header arrow targets explicitly
+  * documentation.yml is no more needed
+  * applets/taskmanager: Guard external input for progress (kde#513312)
+  * applets/kickoff: forward key events from header buttons (kde#515004)
+  * applets/kickoff: make Return/Enter work with single favorite (kde#515058)
+  * applets/kicker: don't activate dash hover until mouse moved (kde#510777)
+  * emojier: port away from deprecated invalidateFilter()
+  * FolderView: Clear press state onListingCompleted (kde#514954)
+  * kcms/gamecontroller: Don't let SDL install signal handlers
+  * Panel: Save applet position before deleting (kde#515107)
+  * applets/kicker: make kickerdash keyboard navigation work better (kde#511146,kde#510871)
+
+-------------------------------------------------------------------
+Wed Jan 28 16:15:13 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.91
+- Changes since 6.5.90:
+  * Update version for new release 6.5.91
+  * applets/kickoff: Move description below icon section
+  * applets/kicker: make sidebar scrollbar depend on maximum size
+  * desktoppackage/configuration: allow re-adding action button (kde#449389)
+  * kcms/gamecontroller: Port to KConfigXT
+  * applets/kickoff: don't use compact padding for category list (kde#514772)
+  * kcm/access: Fix incorrect color blindness mode after Defaults + re-enable (kde#513489)
+  * applets/taskmanager: fix implicitHeight (kde#514911)
+  * applets/taskmanager: ensure submenus have translucent background (kde#513307)
+  * desktoppackage/applet: don't make applet huge when changing location (kde#512273)
+  * applets/kicker: properly close view after activating runner match
+  * lockscreen: Activate window for lockscreen window showing greeter (kde#512028)
+  * kcms/gamecontroller: Fix displaying idle inhibition warning
+  * kcms/gamecontroller: Fix plasma integration switch (kde#514493)
+
+-------------------------------------------------------------------
+Sat Jan 17 20:28:14 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Jan 13 14:40:55 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.5.5:
