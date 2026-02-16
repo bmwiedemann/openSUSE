@@ -23,4 +23,17 @@
     <comment>- Remove changes to GNOME Software autostart as GNOME 49 should no longer need it</comment>
     <requestid>1307308</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>cae15f0ab71ca7d367508e35d5442242</srcmd5>
+    <version>0.1.0</version>
+    <time>1771244052</time>
+    <user>anag_factory</user>
+    <comment>- Remove zypper config hacks to be replaced by zypp- config
+  packages when possible.
+- Move singletrans config to /usr/etc/zypp/zypp.conf.d
+- Remove zypper config hacks to be replaced by zypp- config
+  packages when possible.
+- Move singletrans config to /usr/etc/zypp/zypp.conf.d</comment>
+    <requestid>1333283</requestid>
+  </revision>
 </revisionlist>

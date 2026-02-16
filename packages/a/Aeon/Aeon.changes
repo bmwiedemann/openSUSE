@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 16 08:43:52 UTC 2026 - Richard Brown <rbrown@suse.com>
+
+- Remove zypper config hacks to be replaced by zypp- config
+  packages when possible.
+- Move singletrans config to /usr/etc/zypp/zypp.conf.d
+
+-------------------------------------------------------------------
 Fri Sep 26 08:07:08 UTC 2025 - Richard Brown <rbrown@suse.com>
 
 - Remove changes to GNOME Software autostart as GNOME 49 should no longer need it 

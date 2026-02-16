@@ -62,9 +62,6 @@ if [ -x /usr/sbin/add-yast-repos ]; then
 	zypper --non-interactive rm -u live-add-yast-repos
 fi
 
-# Adjust zypp conf
-sed -i 's/^multiversion =.*/multiversion =/g' /etc/zypp/zypp.conf
-
 #=====================================
 # Configure snapper
 #-------------------------------------
@@ -116,19 +113,10 @@ chmod a+x /etc/fstab.script
 systemctl enable NetworkManager
 
 #======================================
-# Disable recommends on virtual images (keep hardware supplements, see bsc#1089498)
-#--------------------------------------
-sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = true/g' /etc/zypp/zypp.conf
-
-#======================================
-# Disable installing documentation
-#--------------------------------------
-sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp/zypp.conf
-
-#======================================
 # Enable ZYPP_SINGLE_RPMTRANS
 #--------------------------------------
-echo 'techpreview.ZYPP_SINGLE_RPMTRANS=1' >> /etc/zypp/zypp.conf
+echo '[main]' > /usr/etc/zypp/zypp.conf.d/singletrans.conf
+echo 'techpreview.ZYPP_SINGLE_RPMTRANS=1' >> /usr/etc/zypp/zypp.conf.d/singletrans.conf
 
 #======================================
 # Add default kernel boot options
