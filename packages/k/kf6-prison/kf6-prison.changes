@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Feb  6 14:26:02 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.23.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.23.0
+- Changes since 6.22.0:
+  * Update dependency version to 6.23.0
+  * Consistently namespace ZXing version defines
+  * Remove workarounds for ZXing 3.0 not having bumped its version yet
+  * Adapt to more ZXing 3.0 API changes
+  * Actually search for ZXing 3
+  * Fix build without ZXing
+  * Support ZXing 3 for barcode generation
+  * Auto-detect text vs binary content for GS1 Databar barcodes
+  * Enable LSAN in CI
+  * Adapt barcode scanner to ZXing 3 changes
+  * Port away from deprecated ZXing API
+  * Update version to 6.23.0
+
+-------------------------------------------------------------------
 Sun Jan  4 14:47:22 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.22.0
