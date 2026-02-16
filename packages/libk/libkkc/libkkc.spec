@@ -1,7 +1,7 @@
 #
 # spec file for package libkkc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,9 +34,10 @@ Patch1:         libkkc-gettext.patch
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org - public some classes to make vala 0.38 happy
 Patch2:         libkkc-public.patch
 BuildRequires:  fdupes
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc15-c++
+%else
 BuildRequires:  gcc-c++
-%if 0%{?suse_version} > 1600
-BuildRequires:  gcc13-c++
 %endif
 # for autogen.sh
 BuildRequires:  libtool
@@ -103,9 +104,10 @@ This package contains its development headers and vala bindings.
 NOCONFIGURE=1 ./autogen.sh
 
 %build
-%if 0%{?suse_version} > 1600
-export CC=%{_bindir}/gcc-13
-export CXX=%{_bindir}/g++-13
+%if 0%{?suse_version} < 1600
+export CC=%{_bindir}/gcc-15
+export CXX=%{_bindir}/g++-15
+export CFLAGS+="-Wno-incompatible-pointer-types"
 %endif
 %configure --enable-introspection=yes \
 	--enable-vala=yes \

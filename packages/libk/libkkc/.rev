@@ -118,4 +118,12 @@
   BuildRequires. (forwarded request 1274238 from iznogood)</comment>
     <requestid>1274535</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>b5e3e9967415fea1d642f057dc80d5de</srcmd5>
+    <version>0.3.6~git20240902.ce17a35</version>
+    <time>1771243768</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1333141</requestid>
+  </revision>
 </revisionlist>
