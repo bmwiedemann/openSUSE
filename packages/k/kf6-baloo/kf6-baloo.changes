@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Feb  6 14:25:41 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.23.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.23.0
+- Changes since 6.22.0:
+  * [Extractor] Open the DB in ReadWrite mode from the beginning
+  * Add missing include for syscall()
+  * Update dependency version to 6.23.0
+  * [IndexCleaner] Use one transaction for each excludeFolder during cleanup
+  * [Extractor] Split long extraction runs into multiple transactions
+  * [Extractor] Release DB write lock while content is extracted
+  * [Benchmarks] Replace QTextStream::readLine with QStringTokenizer
+  * [Benchmarks] Verify /proc open result for IO stats
+  * Enable LSAN in CI
+  * [Engine] Replace remaining raw PostingIterator* with unique_ptr
+  * [SearchStore] Replace raw PostingIterator* with unique_ptr
+  * [PostingIterator] Clean up unused headers
+  * [AdvancedQueryParser] Use categorized logging for debug message
+  * [Transaction] Fix invalid qWarning macro usage
+  * Use categorized logging in priority setup code
+  * Clean up priority setup code
+  * [baloo_file] Use categorized logging for warnings
+  * [QueryTest] Fix leak of iterator returned from executed query
+  * [Engine] Fix possible memory leaks in PhraseAndIterator
+  * [Engine] Fix possible memory leaks in {And,Or}PostingIterator
+  * [FileIndexScheduler] Emit correct state on startup
+  * [FileIndexScheduler] Simplify startup/cleanup logic
+  * [IndexerConfig] Properly deprecate obsolete API
+  * [BalooSettings] Enable Notifiers for changes
+  * [FileIndexerConfig] Move filter update to constructor
+  * [balooctl] Minor config command output cleanup, fix error message
+  * [PendingFile] Add proper debug stream operator
+  * Update version to 6.23.0
+
+-------------------------------------------------------------------
 Sun Jan  4 14:47:03 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.22.0
