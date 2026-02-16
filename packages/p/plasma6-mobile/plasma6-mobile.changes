@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Feb 12 19:43:41 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.0
+- Changes since 6.5.91:
+  * Update version for new release 6.6.0
+  * statusbar: Remove system tray
+
+-------------------------------------------------------------------
+Wed Jan 28 16:15:30 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.91
+- Changes since 6.5.90:
+  * Update version for new release 6.5.91
+  * lockscreen: Fix failed login attempt causing no more authentication requests
+  * kcms/time: Fix timezone picker dialog width
+  * folio: Fix folder view delegates using page view delegate dimensions
+  * folio: Fix delegate drop placement not accounting for view padding
+  * Guard coroutine calls
+
+-------------------------------------------------------------------
+Sat Jan 17 20:28:40 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Jan 13 14:41:07 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.5.5:

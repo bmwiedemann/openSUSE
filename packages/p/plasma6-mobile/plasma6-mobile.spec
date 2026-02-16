@@ -30,7 +30,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-mobile
-Version:        6.5.5
+Version:        6.6.0
 Release:        0
 # Full Plasma 6 version (e.g. 5.9.3)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -39,9 +39,9 @@ Release:        0
 Summary:        Plasma shell for mobile devices
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
@@ -138,14 +138,15 @@ echo > quicksettings/flashlight/kauth/CMakeLists.txt
 %files
 %license LICENSES/*
 %{_kf6_applicationsdir}/kcm_mobile_info.desktop
-%{_kf6_applicationsdir}/kcm_mobile_onscreenkeyboard.desktop
 %{_kf6_applicationsdir}/kcm_mobile_time.desktop
 %{_kf6_applicationsdir}/kcm_mobileshell.desktop
 %{_kf6_applicationsdir}/kcm_navigation.desktop
 %{_kf6_applicationsdir}/kcm_waydroidintegration.desktop
+%{_kf6_appstreamdir}/org.kde.plasma.mobileshell.metainfo.xml
 %{_kf6_bindir}/plasma-mobile-envmanager
 %{_kf6_bindir}/plasma-mobile-initial-start
 %{_kf6_bindir}/startplasmamobile
+%{_kf6_dbusinterfacesdir}/org.kde.plasmashell.Mobile.Panels.xml
 %{_kf6_dbusinterfacesdir}/org.kde.plasmashell.Mobile.xml
 %{_kf6_dbusinterfacesdir}/org.kde.plasmashell.Waydroid.xml
 %{_kf6_dbusinterfacesdir}/org.kde.plasmashell.WaydroidApplication.xml
@@ -195,7 +196,6 @@ echo > quicksettings/flashlight/kauth/CMakeLists.txt
 %{_kf6_plugindir}/plasma/applets/org.kde.plasma.mobile.taskpanel.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mobile_info.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_navigation.so
-%{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mobile_onscreenkeyboard.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mobile_time.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mobileshell.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_waydroidintegration.so
@@ -219,6 +219,10 @@ echo > quicksettings/flashlight/kauth/CMakeLists.txt
 %{_kf6_sharedir}/kwin/scripts/convergentwindows/
 %dir %{_kf6_sharedir}/plasma-mobile-apn-info
 %{_kf6_sharedir}/plasma-mobile-apn-info/apns-full-conf.xml
+%dir %{_kf6_sharedir}/plasma-mobile-device-presets
+%{_kf6_sharedir}/plasma-mobile-device-presets/default.conf
+%{_kf6_sharedir}/plasma-mobile-device-presets/google,sargo.conf
+%{_kf6_sharedir}/plasma-mobile-device-presets/oneplus,enchilada.conf
 %dir %{_kf6_sharedir}/wayland-sessions
 %{_kf6_sharedir}/wayland-sessions/plasma-mobile.desktop
 
