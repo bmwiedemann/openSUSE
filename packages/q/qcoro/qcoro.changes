@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb 13 21:54:24 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.13.0
+  * misc doc fixup
+  * README: Fix fibonacci() demo generator produces infinite zero sequence
+  * AsyncGenerator: implement await_transform in promise type
+  * Make generator's .end() method const
+  * qcoro.h: include network and dbus headers conditionally
+  * Fix QCoroNetworkReply test on Qt 6.10
+  * Use dbus-run-session to run D-Bus tests instead of dbus-launch
+  * Fix include paths for use with FetchContent
+  * Fix BUILD_INTERFACE expression
+  * Fix memory leak in QFuture coro wrapper
+  * Enable users to construct an invalid GeneratorIterator
+  * Update documentation link
+  * Fix typo in reading.md
+
+-------------------------------------------------------------------
 Fri Apr  4 08:24:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.12.0
