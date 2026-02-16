@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Feb 13 14:34:24 UTC 2026 - Marius Tomaschewski <mt@suse.com>
+
+- Switch to logrotate config correcting log file empty issue
+  (gh#FRRouting/frr/issues/15818) depending if syslog or file
+  logging is used in the frr.conf.
+- Fix /var/run leftovers in logrotate config and service file,
+  create /var/log and /var/lib via tmpfiles.d (jsc#PED-14796).
+- Adjust rpm requires for service macros and log rotation (lsof).
+
+-------------------------------------------------------------------
+Thu Feb 12 12:53:01 UTC 2026 - Marius Tomaschewski <mt@suse.com>
+
+- Apply upstream ospfd NULL Pointer Dereference fixes.
+  The vulnerability allowed attackers to cause a Denial of Service
+  (DoS) via crafted OSPF packets
+  (bsc#1252838,bsc#1252829,bsc#1252833,bsc#1252835,bsc#1252810,
+   bsc#1252811,bsc#1252761,bsc#1252812,bsc#1252813,CVE-2025-61099,
+   CVE-2025-61100,CVE-2025-61101,CVE-2025-61102,CVE-2025-61103,
+   CVE-2025-61104,CVE-2025-61105,CVE-2025-61106,CVE-2025-61107,
+   https://github.com/FRRouting/frr/pull/19983)
+  [+ 0003-ospfd-NULL-Pointer-Dereference-fixes.patch]
+- Add -Wno-error=declaration-after-statement to avoid C90 errors;
+  frr requires C11 compiler with atomic support and sets -std=gnu11
+
+-------------------------------------------------------------------
 Fri Oct  3 20:47:21 UTC 2025 - Erico Mendonca <erico.mendonca@suse.com>
 
 - Adding updated copyright notice

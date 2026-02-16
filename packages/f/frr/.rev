@@ -359,4 +359,29 @@
     <comment></comment>
     <requestid>1308926</requestid>
   </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>c89dd1ab3056afe3b2667f2ef03c4802</srcmd5>
+    <version>10.2.1</version>
+    <time>1771244106</time>
+    <user>anag_factory</user>
+    <comment>- Switch to logrotate config correcting log file empty issue
+  (gh#FRRouting/frr/issues/15818) depending if syslog or file
+  logging is used in the frr.conf.
+- Fix /var/run leftovers in logrotate config and service file,
+  create /var/log and /var/lib via tmpfiles.d (jsc#PED-14796).
+- Adjust rpm requires for service macros and log rotation (lsof).
+
+- Apply upstream ospfd NULL Pointer Dereference fixes.
+  The vulnerability allowed attackers to cause a Denial of Service
+  (DoS) via crafted OSPF packets
+  (bsc#1252838,bsc#1252829,bsc#1252833,bsc#1252835,bsc#1252810,
+   bsc#1252811,bsc#1252761,bsc#1252812,bsc#1252813,CVE-2025-61099,
+   CVE-2025-61100,CVE-2025-61101,CVE-2025-61102,CVE-2025-61103,
+   CVE-2025-61104,CVE-2025-61105,CVE-2025-61106,CVE-2025-61107,
+   https://github.com/FRRouting/frr/pull/19983)
+  [+ 0003-ospfd-NULL-Pointer-Dereference-fixes.patch]
+- Add -Wno-error=declaration-after-statement to avoid C90 errors;
+  frr requires C11 compiler with atomic support and sets -std=gnu11</comment>
+    <requestid>1333301</requestid>
+  </revision>
 </revisionlist>

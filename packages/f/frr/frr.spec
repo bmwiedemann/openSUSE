@@ -25,6 +25,7 @@
 %define frr_user frr
 %define frr_group frr
 %define frrvty_group frrvty
+%define frr_logs %{_localstatedir}/log/%{name}
 # see configure: frr_libstatedir=/var/lib/frr
 %define frr_home %{_localstatedir}/lib/%{name}
 # see configure: frr_runstatedir=[/var]/run/frr
@@ -44,6 +45,7 @@ Source1:        %{name}-tmpfiles.d
 Patch0:         harden_frr.service.patch
 Patch1:         0001-disable-zmq-test.patch
 Patch2:         0002-frr-logrotate.patch
+Patch3:         0003-ospfd-NULL-Pointer-Dereference-fixes.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison >= 2.7
@@ -82,9 +84,18 @@ BuildRequires:  pkgconfig(libzmq) >= 4.0.0
 BuildRequires:  pkgconfig(rtrlib) >= 0.5.0
 BuildRequires:  pkgconfig(sqlite3)
 %sysusers_requires
-Requires(post): %{install_info_prereq}
 Requires(pre):  %{install_info_prereq}
+Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
+# /usr/lib/frr/*.sh aka service macros need:
+%{?systemd_ordering}
+Requires:         grep util-linux
+Requires(pre):    grep util-linux
+Requires(post):   grep util-linux
+Requires(preun):  grep util-linux
+Requires(postun): grep util-linux
+# logrotation needs:
+Requires:       lsof
 Recommends:     logrotate
 Conflicts:      quagga
 Provides:       zebra = %{version}
@@ -205,7 +216,9 @@ developing OSPF-API and frr applications.
 
 %build
 # GCC LTO objects must be "fat" to avoid assembly errors
-export CFLAGS="-ffat-lto-objects"
+# Make sure -Werror=declaration-after-statement is not applied;
+# frr sets -std=gnu11 as it requires C11 with atomic support.
+export CFLAGS="-ffat-lto-objects -Wno-error=declaration-after-statement"
 
 autoreconf -fiv
 %configure \
@@ -293,8 +306,9 @@ mv %{buildroot}/%{_datadir}/doc/frr/html %{buildroot}/%{_docdir}/%{name}
 # remove stray buildinfo files
 find %{buildroot}/%{_docdir}/%{name} -type f -name .buildinfo -delete
 
-# systemd init scripts
+# systemd service + daemons file
 install -D -m 0644 tools/frr.service %{buildroot}%{_unitdir}/frr.service
+sed -e "s|/var/run/frr|%{frr_statedir}|g" -i %{buildroot}%{_unitdir}/frr.service
 install -D -m 0644 tools%{_sysconfdir}/frr/daemons %{buildroot}%{_sysconfdir}/frr/daemons
 
 # add rpki module to daemon
@@ -307,16 +321,23 @@ install -D -m 0644 redhat/frr.pam %{buildroot}%{_pam_vendordir}/frr
 install -D -m 0644 redhat/frr.pam %{buildroot}%{_sysconfdir}/pam.d/frr
 %endif
 %if 0%{?suse_version} > 1500
-install -D -m 0644 redhat/frr.logrotate %{buildroot}%{_distconfdir}/logrotate.d/frr
+install -D -m 0644 tools/etc/logrotate.d/frr %{buildroot}%{_distconfdir}/logrotate.d/frr
+sed -e "s|/var/log/frr|%{frr_logs}|g" -e "s|/var/run/frr|%{frr_statedir}|g" \
+    -i %{buildroot}%{_distconfdir}/logrotate.d/frr
 %else
-install -D -m 0644 redhat/frr.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/frr
+install -D -m 0644 tools/etc/logrotate.d/frr %{buildroot}%{_sysconfdir}/logrotate.d/frr
+sed -e "s|/var/log/frr|%{frr_logs}|g" -e "s|/var/run/frr|%{frr_statedir}|g" \
+    -i %{buildroot}%{_sysconfdir}/logrotate.d/frr
 %endif
 
-install -d -m 0750 %{buildroot}%{frr_home}
-install -d -m 0751 %{buildroot}%{frr_statedir}
-install -d -m 0750 %{buildroot}%{_localstatedir}/log/frr
 install -D -m 0644 %{SOURCE1} %{buildroot}/%{_tmpfilesdir}/%{name}.conf
-sed -e "s|@frr_statedir@|%{frr_statedir}|g" -i %{buildroot}/%{_tmpfilesdir}/%{name}.conf
+sed -e "s|@frr_user@|%{frr_user}|g" \
+    -e "s|@frr_group@|%{frr_group}|g" \
+    -e "s|@frrvty_group@|%{frrvty_group}|g" \
+    -e "s|@frr_logs@|%{frr_logs}|g" \
+    -e "s|@frr_home@|%{frr_home}|g" \
+    -e "s|@frr_statedir@|%{frr_statedir}|g" \
+    -i %{buildroot}/%{_tmpfilesdir}/%{name}.conf
 
 rm -f %{buildroot}%{frr_daemondir}/ssd
 
@@ -326,7 +347,7 @@ cat > %{buildroot}%{_sysconfdir}/frr/frr.conf << __EOF__
 !password frr
 !enable password frr
 
-log file %{_localstatedir}/log/frr/frr.log
+log file %{frr_logs}/frr.log
 __EOF__
 cat > %{buildroot}%{_sysconfdir}/frr/vtysh.conf << __EOF__
 ! vtysh is using PAM authentication allowing root to use it.
@@ -420,9 +441,9 @@ done
 %{_unitdir}/%{name}.service
 %dir %{_tmpfilesdir}
 %{_tmpfilesdir}/%{name}.conf
-%dir %attr(0750,%{frr_user},%{frr_group}) %{_localstatedir}/log/frr
-%dir %attr(0751,%{frr_user},%{frr_group}) %ghost %{frr_statedir}
-%dir %attr(0750,%{frr_user},%{frr_group}) %{frr_home}
+%dir %attr(0750,%{frr_user},%{frr_group}) %ghost %{frr_logs}
+%dir %attr(0750,%{frr_user},%{frr_group}) %ghost %{frr_home}
+%dir %attr(0751,%{frr_user},%{frrvty_group}) %ghost %{frr_statedir}
 %dir %{_prefix}/lib/frr
 %{_prefix}/lib/frr/fabricd
 %{_prefix}/lib/frr/vrrpd
