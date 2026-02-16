@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Feb 12 19:43:15 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.0
+- Changes since 6.5.91:
+  * Update version for new release 6.6.0
+
+-------------------------------------------------------------------
+Wed Jan 28 16:14:37 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.91
+- Changes since 6.5.90:
+  * Update version for new release 6.5.91
+  * processcore: Drop filtering of dbus-prefixed applications in AppDataModel
+  * processcore: Add "dbus" as a valid prefix for cgroup app ID matching (kde#510235)
+
+-------------------------------------------------------------------
+Sat Jan 17 20:27:09 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.90
+- Changes since 6.5.5:
+  * Update version for new release 6.5.90
+  * processcore: Make ProcessController::window a proper property
+  * processcore: Cleanup unnecessary KSysGuard:: usages in ProcessController
+  * processcore: Remove change to BestEffort if setting IoScheduler::None
+  * processcore: Add getters to ProcessController for properties of mulitple PIDs
+  * processcore: Expose a bunch of common enums to QML
+  * Added `getPriority`, `getCPUScheduler` functions in ProcessController
+  * Require passing tests on all platforms
+  * colorgrid: Fix using sensor colors (kde#513037)
+  * processcore: Properly add the swap attribute (kde#510969)
+  * faces/text: Use proper type for lists of sensors (kde#509671)
+  * Fix busy-looping due to 0 QTimer interval on FreeBSD
+  * gpu plugin: Check returned value to avoid crash
+  * Fix getParentPid in the FreeBSD implementation
+  * Fix crash when saving preset (kde#509953)
+  * SensorFaceController: Possibility to reload the config from a given group
+  * Update version for new release 6.5.80
+
+-------------------------------------------------------------------
 Tue Jan 13 14:40:22 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.5.5:
