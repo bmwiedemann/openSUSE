@@ -31,14 +31,14 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           bluedevil6
-Version:        6.5.5
+Version:        6.6.0
 Release:        0
 Summary:        Bluetooth Manager for KDE Plasma
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -101,13 +101,15 @@ Bluetooth daemon for KDE Plasma, handling connections.
 %{_kf6_bindir}/bluedevil-wizard
 %{_kf6_debugdir}/bluedevil.categories
 %{_kf6_notificationsdir}/bluedevil.notifyrc
-%{_kf6_plasmadir}/plasmoids/org.kde.plasma.bluetooth/
-%{_kf6_plugindir}/kf6/kded/bluedevil.so
-%{_kf6_plugindir}/kf6/kio/kio_bluetooth.so
-%{_kf6_plugindir}/kf6/kio/kio_obexftp.so
-%{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_bluetooth.so
+%{_kf6_pluginsdir}/kf6/kded/bluedevil.so
+%{_kf6_pluginsdir}/kf6/kio/kio_bluetooth.so
+%{_kf6_pluginsdir}/kf6/kio/kio_obexftp.so
+%{_kf6_pluginsdir}/plasma/applets/org.kde.plasma.bluetooth.so
+%{_kf6_pluginsdir}/plasma/kcms/systemsettings/kcm_bluetooth.so
 %dir %{_kf6_qmldir}/org/kde/plasma/private
 %{_kf6_qmldir}/org/kde/plasma/private/bluetooth/
+%dir %{_kf6_qmldir}/org/kde/bluedevil/
+%{_kf6_qmldir}/org/kde/bluedevil/components/
 %dir %{_kf6_sharedir}/bluedevilwizard
 %{_kf6_sharedir}/bluedevilwizard/pin-code-database.xml
 %{_kf6_sharedir}/mime/packages/bluedevil-mime.xml
