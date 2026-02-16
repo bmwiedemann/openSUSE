@@ -1,7 +1,7 @@
 #
 # spec file for package syslog-ng
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -90,11 +90,11 @@ BuildRequires:  protobuf-devel
 # prepaing for Leap 16.0
 %if 0%{?suse_version} == 1600
 %bcond_with	pythondeps
-%bcond_with	snmp
 %else
 %bcond_without	pythondeps
-%bcond_without	snmp
 %endif
+# turning it off for now, check again once syslog-ng 4.11 is available
+%bcond_with	snmp
 Name:           syslog-ng
 Version:        4.9.0
 Release:        0
