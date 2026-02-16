@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Feb 14 17:03:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.17.0:
+  https://github.com/semaphoreui/semaphore/releases/tag/v2.17.0
+  Semaphore 2.17 Release Details
+  * Syslog support
+  * CLI improvements:
+    - Import project
+    - --register flag for runner command
+  * UI improvements:
+    - Custom views
+    - New expended textarea behavior
+  * Stop all tasks button for a template
+
+-------------------------------------------------------------------
 Tue Jan 13 06:06:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.16.51:
