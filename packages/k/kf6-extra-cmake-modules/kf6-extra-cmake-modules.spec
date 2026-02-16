@@ -23,12 +23,12 @@
 
 %define rname extra-cmake-modules
 
-# Full KF6 version (e.g. 6.22.0)
+# Full KF6 version (e.g. 6.23.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without doc
 %bcond_without released
 Name:           kf6-extra-cmake-modules%{?pkg_suffix}
-Version:        6.22.0
+Version:        6.23.0
 Release:        0
 Summary:        CMake modules
 License:        BSD-3-Clause
@@ -38,7 +38,7 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  cmake >= 3.16
+BuildRequires:  cmake >= 3.27
 %if 0%{?suse_version} > 1600
 BuildRequires:  gcc-c++
 Requires:       gcc-c++
@@ -59,7 +59,7 @@ Requires:       gcc15-PIE
 %endif
 BuildRequires:  kf6-filesystem
 %if "%{flavor}" != "doc"
-Requires:       cmake >= 3.16
+Requires:       cmake >= 3.27
 
 # kf6-extra-cmake-modules is used to build both kf5 and kf6 based packages
 # it has to require the resp. -filesystem package
