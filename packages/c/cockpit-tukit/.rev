@@ -177,4 +177,13 @@
   * Fix non-x86 builds</comment>
     <requestid>1328081</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>9d1508a83e7b2fc0375c6aebcd057507</srcmd5>
+    <version>0.1.7~git0.61e54f1</version>
+    <time>1771244056</time>
+    <user>anag_factory</user>
+    <comment>- Patch esbuild to use native runtime on ppc64 (bsc#1257698)
+  * added esbuild-ppc64.patch</comment>
+    <requestid>1333284</requestid>
+  </revision>
 </revisionlist>

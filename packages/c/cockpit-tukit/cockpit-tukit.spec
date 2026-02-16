@@ -27,6 +27,7 @@ Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 %include %_sourcedir/node_modules.spec.inc
 Patch2:         load-css-overrides.patch
+Patch3:         esbuild-ppc64.patch
 BuildArch:      noarch
 BuildRequires:  appstream-glib
 BuildRequires:  cockpit-devel >= 293
