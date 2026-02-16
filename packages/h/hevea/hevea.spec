@@ -1,8 +1,7 @@
 #
 # spec file for package hevea
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 Aaron Puchert.
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2017 Peter Trommler.
 # Copyright (c) 2008 Gernot Hillier.
 #
@@ -20,7 +19,7 @@
 
 
 Name:           hevea
-Version:        2.37
+Version:        2.38
 Release:        0
 Summary:        A fast LaTeX to HTML translator
 License:        LGPL-2.0-only AND QPL-1.0

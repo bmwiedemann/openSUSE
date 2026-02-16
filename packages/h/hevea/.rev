@@ -71,4 +71,24 @@
 </comment>
     <requestid>1295975</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ee6add45c60d80a6111146303fdb0eed</srcmd5>
+    <version>2.38</version>
+    <time>1771243916</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.38.
+  * Fix some minor bugs and add minor enhancements.
+  * Important change of behaviour: spaces are no longer replicated
+    in output as non-breaking spaces in display mode.
+    Math-display now behaves as inline-math in that aspect.
+  * New implementation of the fancyvrb package using CSS.
+  * Minor improvements for the mathpartir package.
+  * New option `-fix0` for performing one step of main fixpoint
+    loop (option `-fix`, by Chris Spiel).
+  * Many changes and improvements suggested by Xaver Leroy.
+  * Option `-mathml` that was barely usable is deprecated.
+  * Windows adaptation, by Mohamed Hernouf.
+</comment>
+    <requestid>1333234</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Feb 15 22:28:07 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 2.38.
+  * Fix some minor bugs and add minor enhancements.
+  * Important change of behaviour: spaces are no longer replicated
+    in output as non-breaking spaces in display mode.
+    Math-display now behaves as inline-math in that aspect.
+  * New implementation of the fancyvrb package using CSS.
+  * Minor improvements for the mathpartir package.
+  * New option `-fix0` for performing one step of main fixpoint
+    loop (option `-fix`, by Chris Spiel).
+  * Many changes and improvements suggested by Xaver Leroy.
+  * Option `-mathml` that was barely usable is deprecated.
+  * Windows adaptation, by Mohamed Hernouf.
+
+-------------------------------------------------------------------
 Sun Jul 27 17:25:22 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 2.37.
