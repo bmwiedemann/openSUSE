@@ -127,4 +127,12 @@
 - Drop obsolete update-desktop-files BuildRequires and macro. (forwarded request 1274242 from iznogood)</comment>
     <requestid>1274533</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>94222f492bcda202cca3d03c2ba3fef7</srcmd5>
+    <version>0.5.15</version>
+    <time>1771243999</time>
+    <user>anag_factory</user>
+    <comment>- Add fix-build-with-gcc15.patch (forwarded request 1333267 from hillwood)</comment>
+    <requestid>1333268</requestid>
+  </revision>
 </revisionlist>

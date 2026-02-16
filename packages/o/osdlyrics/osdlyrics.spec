@@ -1,7 +1,7 @@
 #
 # spec file for package osdlyrics
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Productivity/Multimedia/Sound/Visualization
 URL:            https://github.com/osdlyrics/osdlyrics
 Source0:        https://github.com/osdlyrics/osdlyrics/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.appdata.xml
+Patch0:         fix-build-with-gcc15.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  glibc-devel
@@ -66,7 +67,7 @@ This package contains python3 module for osdlyrics
 %lang_package
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh

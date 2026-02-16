@@ -1,0 +1,25 @@
+From 66166e51ab2eddee5d9a0f036b9d30899a4d0dcf Mon Sep 17 00:00:00 2001
+From: nekoside <qwqnekoo@gmail.com>
+Date: Mon, 19 Jan 2026 14:04:33 +0800
+Subject: [PATCH] Fix Build Error this fixes my build error on archlinux, gcc
+
+---
+ src/ol_keybindings.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/ol_keybindings.c b/src/ol_keybindings.c
+index 135e8cd9..ff3510fa 100644
+--- a/src/ol_keybindings.c
++++ b/src/ol_keybindings.c
+@@ -51,8 +51,8 @@ ol_keybinding_init ()
+   gtk_accel_group_connect_by_path (accel,
+                                    "<OSD Lyrics>/Switch OSD",
+                                    hide_closure);
+-  ol_keybinder_bind ("<Ctrl><Shift>H", ol_osd_switch_display, NULL);
+-  ol_keybinder_bind ("<Ctrl><Shift>L", ol_osd_lock_unlock, NULL);
++  ol_keybinder_bind ("<Ctrl><Shift>H", (OlBindkeyHandler)ol_osd_switch_display, NULL);
++  ol_keybinder_bind ("<Ctrl><Shift>L", (OlBindkeyHandler)ol_osd_lock_unlock, NULL);
+ }
+ 
+ GtkAccelGroup*
+
