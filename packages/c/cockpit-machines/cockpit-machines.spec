@@ -17,7 +17,7 @@
 
 
 Name:           cockpit-machines
-Version:        346
+Version:        347
 Release:        0
 Summary:        Cockpit user interface for virtual machines
 License:        LGPL-2.1-or-later AND MIT
@@ -30,6 +30,7 @@ Source12:       update_version.sh
 Patch10:        hide-docs.patch
 Patch11:        load-css-overrides.patch
 Patch12:        uefi-default-firmware.patch
+Patch13:        esbuild-ppc64.patch
 BuildArch:      noarch
 BuildRequires:  appstream-glib
 BuildRequires:  make
@@ -62,6 +63,7 @@ If "virt-install" is installed, you can also create new virtual machines.
 %prep
 %autosetup -p1
 local-npm-registry %{_sourcedir} install --include=dev --ignore-scripts || ( find ~/.npm/_logs -name '*-debug.log' -print0 | xargs -0 cat; false)
+echo "{}" > package-lock.json
 
 %build
 export PREFIX=%_prefix

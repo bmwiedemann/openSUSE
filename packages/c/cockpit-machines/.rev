@@ -380,4 +380,16 @@ outside of Factory
 - Update dependencies for bsc#1257325/CVE-2025-13465</comment>
     <requestid>1331137</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2b9a6607d722951dd0b4ee3b84e04a3e</srcmd5>
+    <version>347</version>
+    <time>1771244067</time>
+    <user>anag_factory</user>
+    <comment>- Update to 347
+  * Bug fixes and translation updates
+- Fix esbuild for ppc64le bsc#1257698
+  * Include esbuild-ppc64.patch
+  * Update update_version.sh</comment>
+    <requestid>1333288</requestid>
+  </revision>
 </revisionlist>
