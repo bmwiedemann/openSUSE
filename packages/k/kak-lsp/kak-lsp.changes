@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb 15 04:03:26 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 19.0.1:
+  * v19.0.1
+  * Don't print Hover: prefix if there are no diagnostics
+  * Changelog for regression fix
+  * Fix lsp-find-error incorrectly handling --previous flag
+  * ci/commit-new-release.sh: support jj
+  * start new cycle
+
+-------------------------------------------------------------------
 Tue Jun 24 00:39:31 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Remove _servicedata file. I don't think we ever use it. Besides, we

@@ -4,7 +4,7 @@
     <param name="url">https://github.com/kakoune-lsp/kakoune-lsp.git</param>
     <param name="versionrewriteregex">^v?(.*)</param>
     <param name="versionrewritepattern">${1}</param>
-    <param name="revision">v18.2.0</param>
+    <param name="revision">v19.0.1</param>
     <param name="changesgenerate">true</param>
     <param name="set-name">kak-lsp</param>
     <param name="changesauthor">Soc Virnyl Estela</param>

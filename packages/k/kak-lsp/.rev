@@ -706,4 +706,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1289375</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>50904706cb5b4090045c4ce2fee1df5a</srcmd5>
+    <version>19.0.1</version>
+    <time>1771243882</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 19.0.1:
+  * v19.0.1
+  * Don't print Hover: prefix if there are no diagnostics
+  * Changelog for regression fix
+  * Fix lsp-find-error incorrectly handling --previous flag
+  * ci/commit-new-release.sh: support jj
+  * start new cycle
+</comment>
+    <requestid>1333190</requestid>
+  </revision>
 </revisionlist>
