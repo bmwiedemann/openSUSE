@@ -160,6 +160,11 @@ Requires:       fcitx5
 Requires:       mozc = %{version}
 Requires:       mozc-gui-tools = %{version}
 Provides:       locale(fcitx5:ja)
+%if 0%{?suse_version > 1600}
+# fcitx4 is dropped from TW
+Provides:       fcitx-mozc = %{version}
+Obsoletes:      fcitx-mozc <= %{version}
+%endif
 
 %description -n fcitx5-mozc
 The Mozc backend for Fcitx 5 provides a Japanese input method.

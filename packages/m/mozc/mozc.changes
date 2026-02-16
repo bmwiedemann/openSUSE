@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 16 10:24:12 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Drop _multibuild for Fcitx4;
+  Fcitx4 is dropped from Tumbleweed, so drop the build of fcitx-mozc
+  sub-package as well.  If you need fcitx4-mozc package, link the
+  package, and revive _multibuild there.
+- Add Provides/Obsoletes for fcitx-mozc for Tumbleweed
+
+-------------------------------------------------------------------
 Mon Jan 19 02:51:42 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
 - Update mozc.spec to get rid of update-desktop-files:
