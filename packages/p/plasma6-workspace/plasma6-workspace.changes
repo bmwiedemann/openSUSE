@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Feb 12 19:43:51 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.0
+- Changes since 6.5.91:
+  * Call updateExclusiveZone in refreshContainment
+  * Check if containment exists before using it. (kde#511428)
+  * Update version for new release 6.6.0
+  * wallpapers/image: Check whether images_dark path is empty before using it
+  * applets/systemtray: don't show multi-line names in config or header (kde#515699)
+  * components/batterycontrol: update plugged-in state with battery updates
+  * components/batterycontrol: update percent only when battery is present
+  * KAStatsFavoritesModel: retrieve launched entry by normalized id from m_items list (kde#512332)
+  * applets/lock_logout: add index as required property (kde#515744)
+  * servicerunner: do not repeat allocate PatternMasks (kde#514698)
+  * Scripting: don't crash when trying to create invalid panels (kde#515385)
+  * shell: Set explicit screen for panel ruler
+  * Show more warnings in logout greeter when something goes wrong
+  * Close logout greeter if it lost or failed to gain focus (kde#511258)
+  * SystemDialog: Guard against zero window sizes (kde#515139)
+  * components: deprecate systemdialog
+
+-------------------------------------------------------------------
+Wed Jan 28 16:16:33 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.91
+- Changes since 6.5.90:
+  * Update version for new release 6.5.91
+  * applets/notifications: Explicitly set Server inhibition before showing summary
+  *  add missing region_language doc generation
+  * applets/systemtray: don't continuously reparent popups between panel and popup (kde#475646)
+  * krunner: Port away from LayerShellQt::Window::setScreenConfiguration() (kde#514771)
+  * Systemtray: update opacity *after* geometry (kde#514674)
+  * PanelView: remove setPosition on wayland (kde#514081)
+  * wallpapers/slideshow: fix dynamic mode not working in slideshow mode (kde#514369)
+  * sddm-wayland-session: Switch to using plasma-keyboard for the input method
+  * Disk Mounting: Skip checking disk when clicking mount and open (kde#505852)
+  * libkmpris/kded: Assign default shortcuts to short seek forward and backward actions (kde#514680)
+  * devicenotifications: Fix kde_output_device_mode_v2 leak
+  * devicenotifications: Fix wl_callback memory leak
+  * kcms/notifications: fix position of selector dialog with long titles (kde#514534)
+  * devicenotifications: Fix dangling reference (kde#512971)
+  * Drop knotifyconfig dependency
+
+-------------------------------------------------------------------
+Sat Jan 17 20:29:43 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.90
+- Too many changes to list here
+- Refreshed patches:
+  * 0001-Use-qdbus6.patch
+  * 0001-Revert-krunner-Remove-kconf_update-code.patch
+  * 0001-Revert-No-icons-on-the-desktop-by-default.patch
+  * 0001-Ignore-default-sddm-face-icons.patch
+
+-------------------------------------------------------------------
 Tue Jan 13 14:41:44 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.5.5:

@@ -30,14 +30,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-workspace
-Version:        6.5.5
+Version:        6.6.0
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        sddm.conf
@@ -105,7 +105,6 @@ BuildRequires:  cmake(KScreenLocker) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KSysGuard) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KWayland) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(LayerShellQt) >= %{_plasma6_bugfix}
-BuildRequires:  cmake(Phonon4Qt6)
 BuildRequires:  cmake(Plasma) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(Plasma5Support) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(PlasmaActivities) >= %{_plasma6_bugfix}
@@ -347,7 +346,7 @@ This package confirms defaults for SDDM suitable for Plasma 6.
 %cmake_kf6 \
   -DGLIBC_LOCALE_GENERATED:BOOL=TRUE \
   -DGLIBC_LOCALE_GEN:BOOL=FALSE \
-  -DPLASMA_X11_DEFAULT_SESSION:BOOL=TRUE
+  -DWITH_X11_SESSION=ON
 
 %kf6_build
 
@@ -360,8 +359,9 @@ This package confirms defaults for SDDM suitable for Plasma 6.
 mkdir -p %{buildroot}%{_kf6_iconsdir}/hicolor/32x32/apps/
 cp %{_kf6_iconsdir}/breeze/preferences/32/preferences-desktop-color.svg %{buildroot}%{_kf6_iconsdir}/hicolor/32x32/apps/
 
-# Rename upstream session file to oS location
-mv %{buildroot}%{_kf6_sharedir}/xsessions/{plasma,plasma6}.desktop
+# Rename upstream session files to oS locations, to keep DM configs and user state working
+mv %{buildroot}%{_kf6_sharedir}/xsessions/{plasmax11,plasma6}.desktop
+mv %{buildroot}%{_kf6_sharedir}/wayland-sessions/{plasma,plasmawayland}.desktop
 
 # Install compatibility symlink
 ln -s %{_kf6_sharedir}/xsessions/plasma6.desktop %{buildroot}%{_kf6_sharedir}/xsessions/kde-plasma.desktop
@@ -407,7 +407,6 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %dir %{_kf6_configdir}/menus
 %config %{_kf6_configdir}/menus/plasma-applications.menu
 %config %{_kf6_configdir}/plasmanotifyrc
-%config %{_kf6_configdir}/taskmanagerrulesrc
 %doc %lang(en) %{_kf6_htmldir}/en/PolicyKit-kde/
 %doc %lang(en) %{_kf6_htmldir}/en/kcontrol/
 %doc %lang(en) %{_kf6_htmldir}/en/klipper/
@@ -435,6 +434,7 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_applicationsdir}/kcm_style.desktop
 %{_kf6_applicationsdir}/kcm_users.desktop
 %{_kf6_applicationsdir}/kcm_wallpaper.desktop
+%{_kf6_applicationsdir}/org.kde.baloorunner.desktop
 %{_kf6_applicationsdir}/org.kde.plasma-interactiveconsole.desktop
 %{_kf6_applicationsdir}/org.kde.kcolorschemeeditor.desktop
 %{_kf6_applicationsdir}/org.kde.kfontinst.desktop
@@ -443,6 +443,7 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_applicationsdir}/org.kde.plasma-fallback-session-save.desktop
 %{_kf6_applicationsdir}/org.kde.plasmashell.desktop
 %{_kf6_applicationsdir}/org.kde.plasmawindowed.desktop
+%{_kf6_applicationsdir}/org.kde.secretprompter.desktop
 %{_kf6_bindir}/gmenudbusmenuproxy
 %{_kf6_bindir}/kcminit
 %{_kf6_bindir}/kcminit_startup
@@ -514,7 +515,6 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_notificationsdir}/freespacenotifier.notifyrc
 %{_kf6_notificationsdir}/libnotificationmanager.notifyrc
 %{_kf6_notificationsdir}/oom-notifier.notifyrc
-%{_kf6_notificationsdir}/phonon.notifyrc
 %{_kf6_plasmadir}/avatars/
 %{_kf6_plasmadir}/look-and-feel/
 %{_kf6_plasmadir}/plasmoids/
@@ -526,14 +526,13 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_plugindir}/kf6/packagestructure/
 %{_kf6_plugindir}/kf6/parts/
 %{_kf6_plugindir}/kf6/thumbcreator/
-%{_kf6_plugindir}/phonon_platform/
 %{_kf6_plugindir}/plasma/
-%{_kf6_plugindir}/plasma5support/
 %{_kf6_plugindir}/plasmacalendarplugins/
 %{_kf6_qmldir}/org/kde/breeze/
 %{_kf6_qmldir}/org/kde/notificationmanager/
 %{_kf6_qmldir}/org/kde/plasma/
 %{_kf6_qmldir}/org/kde/taskmanager/
+%{_kf6_sharedir}/dbus-1/services/org.kde.secretprompter.service
 %{_kf6_sharedir}/dbus-1/services/org.kde.KSplash.service
 %{_kf6_sharedir}/dbus-1/services/org.kde.LogoutPrompt.service
 %{_kf6_sharedir}/dbus-1/services/org.kde.Shutdown.service
@@ -554,7 +553,6 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_sharedir}/konqsidebartng/
 %{_kf6_sharedir}/krunner/dbusplugins/plasma-runner-baloosearch.desktop
 %{_kf6_sharedir}/kstyle/
-%{_kf6_sharedir}/plasma5support/
 %{_kf6_sharedir}/polkit-1/actions/org.kde.fontinst.policy
 %{_kf6_sharedir}/solid/
 %dir %{_kf6_sharedir}/timezonefiles/
@@ -562,6 +560,7 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %dir %{_kf6_sharedir}/xdg-desktop-portal/
 %{_kf6_sharedir}/xdg-desktop-portal/kde-portals.conf
 %{_libexecdir}/baloorunner
+%{_libexecdir}/ksecretprompter
 %{_kf6_libexecdir}/kauth/fontinst
 %{_kf6_libexecdir}/kauth/fontinst_helper
 %{_kf6_libexecdir}/kauth/fontinst_x11

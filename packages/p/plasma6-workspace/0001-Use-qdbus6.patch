@@ -7,11 +7,11 @@ Subject: [PATCH] Use qdbus6
  startkde/startplasma-wayland.cpp | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/startkde/startplasma-wayland.cpp b/startkde/startplasma-wayland.cpp
-index caeadd70a..f7ae977de 100644
---- a/startkde/startplasma-wayland.cpp
-+++ b/startkde/startplasma-wayland.cpp
-@@ -56,7 +56,7 @@ int main(int argc, char **argv)
+Index: plasma-workspace-6.1.80git.20260105T020024~1b657a4813/startkde/startplasma-wayland.cpp
+===================================================================
+--- plasma-workspace-6.1.80git.20260105T020024~1b657a4813.orig/startkde/startplasma-wayland.cpp
++++ plasma-workspace-6.1.80git.20260105T020024~1b657a4813/startkde/startplasma-wayland.cpp
+@@ -66,7 +66,7 @@ int main(int argc, char **argv)
      runEnvironmentScripts();
  
      if (!qEnvironmentVariableIsSet("DBUS_SESSION_BUS_ADDRESS")) {
@@ -20,6 +20,3 @@ index caeadd70a..f7ae977de 100644
          return 1;
      }
      setupPlasmaEnvironment();
--- 
-2.41.0
-
