@@ -1,7 +1,7 @@
 #
 # spec file for package mingw32-cross-gcc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ Patch0:         gcc-make-xmmintrin-header-cplusplus-compatible.patch
 Patch1:         gcc-13.2.0-build-with-fpie.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel >= 4.2.0
+BuildRequires:  makeinfo
 BuildRequires:  mingw32-cross-binutils
 BuildRequires:  mingw32-filesystem
 BuildRequires:  mingw32-headers >= 3.1.0
@@ -43,7 +44,6 @@ BuildConflicts: mingw32-headers-dummy-pthread
 BuildRequires:  mingw32-runtime >= 3.1.0
 BuildRequires:  mpc-devel >= 0.8.0
 BuildRequires:  mpfr-devel >= 2.4.0
-BuildRequires:  texinfo
 BuildRequires:  unzip
 BuildRequires:  xz
 BuildRequires:  zip

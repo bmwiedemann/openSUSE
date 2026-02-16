@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 11 12:48:22 UTC 2026 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Use the makeinfo package instead of texinfo to reduce the
+  number of packages required for building
+
+-------------------------------------------------------------------
 Tue Jun  4 08:05:39 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Fix not stripping some executables (boo#1225877)
