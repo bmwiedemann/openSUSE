@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb 14 00:07:47 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.14.3
+- Upstream changes for 1.14.3:
+  * Prevent empty title when duplicating entry
+  * Updated Portugue translation
+  * Added Present Mode option for Lossless Scaling
+  * Fix LSFG_PERFORMANCE_MODE and LSFG_HDR_MODE always set to 0
+- For .spec file:
+  * Added python bytecode mtime fix for modern SUSE releases
+
+-------------------------------------------------------------------
 Tue Feb 10 19:02:03 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.14.2

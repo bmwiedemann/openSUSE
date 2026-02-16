@@ -26,7 +26,7 @@
 %endif
 
 Name:           faugus-launcher
-Version:        1.14.2
+Version:        1.14.3
 Release:        0
 Summary:        A simple and lightweight app for running Windows games using UMU-Launcher
 License:        MIT
@@ -111,10 +111,13 @@ sed -i '1{/^#!.*python/d}' faugus/proton_downloader.py
 # Install faugus-launcher
 %meson_install
 
-# Fix bytecode mtime for SLE 15 SP6 / Leap 15.6
+# Fix bytecode mtime for SLE 15 / SLE 16 / Leap 15.x / Leap 16.x / Tumbleweed / Slowroll
 %if 0%{?sle_version} == 150600
 find %{buildroot}%{python3_sitelib} -name "*.pyc" -delete
 find %{buildroot}%{python3_sitelib} -name "*.py" -exec touch -d "1970-01-01 00:00:03" {} +
+%{__python3} -m compileall -d %{python3_sitelib} %{buildroot}%{python3_sitelib}/faugus/
+%else
+find %{buildroot}%{python3_sitelib} -name "*.pyc" -delete
 %{__python3} -m compileall -d %{python3_sitelib} %{buildroot}%{python3_sitelib}/faugus/
 %endif
 

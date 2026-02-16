@@ -44,4 +44,19 @@
   * Minor fixes</comment>
     <requestid>1332348</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2d7c975c8c0824adeb70d0ab437deed1</srcmd5>
+    <version>1.14.3</version>
+    <time>1771243718</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.14.3
+- Upstream changes for 1.14.3:
+  * Prevent empty title when duplicating entry
+  * Updated Portugue translation
+  * Added Present Mode option for Lossless Scaling
+  * Fix LSFG_PERFORMANCE_MODE and LSFG_HDR_MODE always set to 0
+- For .spec file:
+  * Added python bytecode mtime fix for modern SUSE releases</comment>
+    <requestid>1332994</requestid>
+  </revision>
 </revisionlist>
