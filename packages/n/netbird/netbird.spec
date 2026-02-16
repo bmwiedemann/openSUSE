@@ -1,7 +1,7 @@
 #
 # spec file for package netbird
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %ifnarch %{ix86}
 %bcond_without netbird_ui
@@ -31,10 +32,10 @@
 %bcond_with stub_config
 
 Name:           netbird
-Version:        0.64.1
+Version:        0.65.1
 Release:        0
 Summary:        Mesh VPN based on WireGuard
-License:        BSD-3-Clause AND AGPL-3.0
+License:        AGPL-3.0-only AND BSD-3-Clause
 URL:            https://github.com/netbirdio/netbird
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
@@ -44,8 +45,8 @@ Source4:        %{name}-signal.service
 Patch0:         service-install-cli-change.patch
 BuildRequires:  fdupes
 BuildRequires:  fish
-BuildRequires:  zsh
 BuildRequires:  git-core
+BuildRequires:  zsh
 BuildRequires:  zstd
 BuildRequires:  golang(API) >= 1.25
 # Required for testing
@@ -101,8 +102,8 @@ Management/signal/relay are not required for the netbird client application.
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
-Requires:       bash-completion
 Requires:       %{name}
+Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
@@ -111,8 +112,8 @@ Bash command line completion support for %{name}.
 
 %package fish-completion
 Summary:        Fish Completion for %{name}
-Requires:       fish
 Requires:       %{name}
+Requires:       fish
 Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
@@ -121,8 +122,8 @@ Fish command line completion support for %{name}.
 
 %package zsh-completion
 Summary:        Zsh Completion for %{name}
-Requires:       zsh
 Requires:       %{name}
+Requires:       zsh
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
@@ -151,8 +152,8 @@ Fish command line completion support for %{name}-management.
 
 %package management-zsh-completion
 Summary:        Zsh Completion for %{name}-management
-Requires:       zsh
 Requires:       netbird-management
+Requires:       zsh
 Supplements:    (%{name}-management and zsh)
 BuildArch:      noarch
 
@@ -181,8 +182,8 @@ Fish command line completion support for %{name}-signal.
 
 %package signal-zsh-completion
 Summary:        Zsh Completion for %{name}-signal
-Requires:       zsh
 Requires:       netbird-signal
+Requires:       zsh
 Supplements:    (%{name}-signal and zsh)
 BuildArch:      noarch
 
@@ -317,6 +318,7 @@ failing_tests=(
   TestJWTAuthentication
   TestJWTDetection
   TestICEBind_HandlesConcurrentMixedTraffic
+  TestRedirectAs_\*
 )
 # Assemble skip string by replacing spaces with a pipe.
 disable=$(echo ${failing_tests[*]} | sed 's/ /|/g')

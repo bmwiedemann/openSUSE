@@ -1,4 +1,180 @@
 -------------------------------------------------------------------
+Sat Feb 14 19:37:54 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.65.1:
+  - [misc] Fix reverse proxy getting started messaging by
+    @braginini in #5317
+  - [management] Move service reload outside transaction in account
+    settings update by @bcmmbaga in #5325
+
+-------------------------------------------------------------------
+Fri Feb 13 20:55:21 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.65.0:
+  NetBird now includes a built-in reverse proxy in the management
+  server, enabling proxied access to backend services through your
+  NetBird network. Allowing you to expose your services to the
+  public with the option to secure them with SSO, PINs, or
+  passwords.
+
+  No VPN client required for end users. Just point a custom domain
+  at your NetBird server, configure the proxy in the dashboard, and
+  your internal services are securely accessible from any browser.
+  Think of it as a self-hosted alternative to Cloudflare Tunnels,
+  but without the MITM and fully under your control.
+
+  Key features:
+  - Custom domains - Map your own domains to internal services and
+    let NetBird handle TLS and routing via CNAME verification
+  - Built-in authentication - Protect exposed services with SSO
+    (via your configured IdP), PIN codes, passwords, or magic links
+    directly from the dashboard
+  - Multiple targets - Route traffic to one or more backend peers
+    or resources with optional path-based routing
+  - Access logs - Monitor who's accessing your proxied services
+    with built-in logging
+  - Proxy settings - Fine-tune behavior with options like host
+    header passthrough and redirect rewriting
+
+  🏗️ Self-Hosted Improvements
+  - Added combined NetBird server binary for simplified self-hosted
+    deployments, reducing the number of containers needed to run
+    NetBird. #5232
+  🔒 Management Improvements
+  - Enforced access control on accessible peers, ensuring proper
+    authorization checks when querying the accessible peers
+    endpoint. #5301
+  - Added cloud API spec to the public OpenAPI definition with REST
+    client support. #5222
+  🖥️ Client Improvements
+  - Added early message buffer for the relay client, preventing
+    message loss during connection establishment. #5282
+  - Refactored relay connection container for improved reliability
+    and code maintainability. #5271
+
+-------------------------------------------------------------------
+Thu Feb 12 09:24:03 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.64.6:
+  🚨 Security Fix
+  Security: Fixed account impersonation validation in management
+  API
+
+  Fixed a vulnerability in the management server's authentication
+  middleware where the ?account= query parameter could be used to
+  impersonate arbitrary accounts without proper validation when
+  getting a list of accessible peers. It requires the attacker to
+  have prior knowledge of the target accounts' and peer IDs.
+
+  The fix adds explicit validation via IsValidChildAccount() before
+  allowing account switching. Account impersonation is now only
+  permitted when the target account is confirmed as a legitimate
+  child account of the requesting user's parent account.
+
+  Affected component: Management server HTTP middleware
+  (auth_middleware.go) and /api/peers/<peer_id>/accessible-peers
+  endpoint
+
+  Severity: High — an authenticated user could potentially access
+  or act on behalf of accounts they should not have access to by
+  passing an arbitrary account parameter and fetching the list of
+  accessible peers.
+
+  Recommendation: All self-hosted deployments should upgrade to
+  this version.
+
+  - Client Improvements
+    - Added missing BSD flags to the debug bundle. #5254
+    - Cached the result of wgInterface.ToInterface() using
+      sync.Once for better performance. #5256
+    - Fixed nil pointer panic in the ICE agent during sleep/wake
+      cycles. #5261
+    - Always log DNS forwarder responses for improved
+      troubleshooting. #5262
+    - Fixed netstack detection and added a WireGuard port option.
+      #5251
+    - Corrected wrong URL logging for DefaultAdminURL. #5252
+    - Added timing measurements to handleSync for better
+      observability. #5228
+    - Fixed duplicate firewall rules in USP filter. #5269
+    - Added environment variable to skip DNS probing when needed.
+      #5270
+    - Fixed race condition and ensured correct message ordering in
+      Relay. #5265
+    - Ensured login is checked in foreground mode when required.
+      #5295
+    - Fixed multiple panics in device and engine code. #5287
+    - Cleaned up stale nftables entries without handle. #5272
+  - Management Improvements
+    - Fixed incorrectly setting disconnected status for connected
+      peers. #5247
+    - Added gRPC debounce for message types to reduce noise. #5239
+    - Added validation of stream start time for connecting peers.
+      #5267
+    - Fixed ischild check logic. #5279
+
+-------------------------------------------------------------------
+Tue Feb  3 20:12:12 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.64.5:
+  - Add selfhosting video by @braginini in #5235
+  - [management] adding account id validation to accessible peers
+    handler by @pascal-fischer in #5246
+
+-------------------------------------------------------------------
+Sun Feb  1 20:26:40 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.64.4:
+  - [client] Add macOS default resolvers as fallback by @lixmal in
+    #5201
+  - [client] Add block inbound option to the embed client by
+    @lixmal in #5215
+  - [management] Disable local users for a smooth single-idp mode
+    by @braginini in #5226
+    https://docs.netbird.io/selfhosted/identity-providers/disable-local-authentication
+  - [management] disable sync lim by @crn4 in #5233
+  - [management] run cancelPeerRoutines in goroutine in sync by
+    @crn4 in #5234
+
+-------------------------------------------------------------------
+Thu Jan 29 19:23:15 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.64.3:
+  - [client] Remove redundant square bracket trimming in USP
+    endpoint parsing by @pappz in #5197
+  - [client] Refactor/optimise raw socket headers by @pappz in
+    #5174
+  - [management] fix ephemeral peers being not removed by @crn4 in
+    #5203
+  - [management] fix skip of ephemeral peers on deletion by @crn4
+    in #5206
+  - [client] Stop NetBird on firewall init failure by @lixmal in
+    #5208
+  - [management] Streamline domain validation by @lixmal in #5211
+  - [client] Fix WG watcher missing initial handshake by @pappz in
+    #5213
+
+-------------------------------------------------------------------
+Tue Jan 27 11:40:48 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.64.2:
+  - Client Improvements
+    - Consolidated authentication logic to improve maintainability
+      and consistency. #5010
+    - Added IPv6 support to the UDP WireGuard proxy. #5169
+    - Fixed a flaky JWT SSH test to improve CI stability. #5181
+    - Updated Fyne UI and added retry handling to the exit menu.
+      #5187
+    - Prevented eBPF traffic from being tracked in conntrack. #5166
+    - Added support for non-PTY, no-command interactive SSH
+      sessions. #5093
+  - Management & Identity
+    - Fixed validator warning messages to improve clarity. #5168
+    - Improved peer deletion error handling. #5188
+    - Included default groups claim in the CLI audience. #5186
+    - Added user invite link support for the embedded IdP. #5157
+
+-------------------------------------------------------------------
 Fri Jan 23 19:27:54 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.64.1:
