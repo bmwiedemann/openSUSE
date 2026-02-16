@@ -1,21 +1,8 @@
-Index: pip-24.2/src/pip/_vendor/requests/adapters.py
+Index: pip-26.0/src/pip/_internal/cli/index_command.py
 ===================================================================
---- pip-24.2.orig/src/pip/_vendor/requests/adapters.py
-+++ pip-24.2/src/pip/_vendor/requests/adapters.py
-@@ -81,7 +81,7 @@ try:
-     _preloaded_ssl_context.load_verify_locations(
-         extract_zipped_paths(DEFAULT_CA_BUNDLE_PATH)
-     )
--except ImportError:
-+except (ImportError, FileNotFoundError, ssl.SSLError):
-     # Bypass default SSLContext creation when Python
-     # interpreter isn't built with the ssl module.
-     _preloaded_ssl_context = None
-Index: pip-24.2/src/pip/_internal/cli/index_command.py
-===================================================================
---- pip-24.2.orig/src/pip/_internal/cli/index_command.py
-+++ pip-24.2/src/pip/_internal/cli/index_command.py
-@@ -43,7 +43,11 @@ def _create_truststore_ssl_context() ->
+--- pip-26.0.orig/src/pip/_internal/cli/index_command.py
++++ pip-26.0/src/pip/_internal/cli/index_command.py
+@@ -49,7 +49,11 @@ def _create_truststore_ssl_context() ->
          return None
  
      ctx = truststore.SSLContext(ssl.PROTOCOL_TLS_CLIENT)

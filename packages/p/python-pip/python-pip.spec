@@ -1,7 +1,7 @@
 #
 # spec file for package python-pip
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,9 +31,10 @@
 %endif
 # in order to avoid rewriting for subpackage generator
 %define mypython python
+%{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-pip%{psuffix}
-Version:        25.2
+Version:        26.0.1
 Release:        0
 Summary:        A Python package management system
 License:        MIT
@@ -44,9 +45,6 @@ Source:         https://github.com/pypa/pip/archive/%{version}.tar.gz#/pip-%{ver
 Patch0:         pip-shipped-requests-cabundle.patch
 # PATCH-FIX-OPENSUSE: deal missing ca-certificates as "ssl not available"
 Patch1:         disable-ssl-context-in-buildenv.patch
-# PATCH-FIX-UPSTREAM https://github.com/pypa/pip/pull/13473 Use flit-core to build pip distributions
-# setuptools was unable to handle the new license expression for some reason
-Patch2:         flit-core.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module flit-core >= 3.11}
 # The rpm python-wheel build is bootstrap friendly since 0.42

@@ -3,10 +3,10 @@
  tests/unit/test_options.py      |    5 +
  2 files changed, 13 insertions(+), 97 deletions(-)
 
-Index: pip-25.2/src/pip/_vendor/certifi/core.py
+Index: pip-26.0/src/pip/_vendor/certifi/core.py
 ===================================================================
---- pip-25.2.orig/src/pip/_vendor/certifi/core.py
-+++ pip-25.2/src/pip/_vendor/certifi/core.py
+--- pip-26.0.orig/src/pip/_vendor/certifi/core.py
++++ pip-26.0/src/pip/_vendor/certifi/core.py
 @@ -3,81 +3,14 @@ certifi.py
  ~~~~~~~~~~
  
@@ -97,10 +97,10 @@ Index: pip-25.2/src/pip/_vendor/certifi/core.py
 -        return read_text("pip._vendor.certifi", "cacert.pem", encoding="ascii")
 +def contents() -> str:
 +    return read_text(encoding="ascii")
-Index: pip-25.2/tests/unit/test_options.py
+Index: pip-26.0/tests/unit/test_options.py
 ===================================================================
---- pip-25.2.orig/tests/unit/test_options.py
-+++ pip-25.2/tests/unit/test_options.py
+--- pip-26.0.orig/tests/unit/test_options.py
++++ pip-26.0/tests/unit/test_options.py
 @@ -1,6 +1,7 @@
  from __future__ import annotations
  
@@ -109,15 +109,15 @@ Index: pip-25.2/tests/unit/test_options.py
  from collections.abc import Iterator
  from contextlib import contextmanager
  from optparse import Values
-@@ -13,6 +14,7 @@ import pip._internal.configuration
- from pip._internal.cli.main import main
+@@ -15,6 +16,7 @@ from pip._internal.cli.main import main
  from pip._internal.commands import create_command
  from pip._internal.commands.configuration import ConfigurationCommand
+ from pip._internal.exceptions import CommandError, PipError
 +from pip._vendor.certifi import where
- from pip._internal.exceptions import PipError
  
  from tests.lib.options_helpers import AddFakeCommandMixin
-@@ -621,6 +623,9 @@ class TestOptionsConfigFiles:
+ 
+@@ -537,6 +539,9 @@ class TestOptionsConfigFiles:
          else:
              assert expect == cmd._determine_file(options, need_value=False)
  

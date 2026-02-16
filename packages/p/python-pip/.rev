@@ -1035,4 +1035,41 @@
     <comment></comment>
     <requestid>1299256</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>ffc9ee816fc1d63a08197758838339fe</srcmd5>
+    <version>26.0.1</version>
+    <time>1771245649</time>
+    <user>anag_factory</user>
+    <comment>- Update to 26.0.1:
+  * Fix --pre not being respected from the command line when a
+    requirement file includes an option e.g. -extra-index-url.
+    (#13788)
+
+- Add %{?pythons_for_pypi} macro, to be used in Leap 16.x for short
+  term interpreter.
+- Drop upstreamed patch flit-core.patch
+- Update to 26.0 (bsc#1257599, CVE-2026-1703):
+  # Deprecations and Removals
+  - Remove support for non-bare project names in egg fragments.
+    Affected users should use the Direct URL requirement syntax.
+    (#13157)
+  # Features
+  - Display pip’s command-line help in colour, if possible. (#12134)
+  - Support installing dependencies declared with inline script
+    metadata (PEP 723) with --requirements-from-script. (#12891)
+  - Add --all-releases and --only-final options to control pre-release
+    and final release selection during package installation. (#13221)
+  - Add --uploaded-prior-to option to only consider packages uploaded
+    prior to a given datetime when the upload-time field is available
+    from a remote index. (#13625)
+  - Add --use-feature inprocess-build-deps to request that build
+    dependencies are installed within the same pip install process.
+    This new mechanism is faster, supports --no-clean and
+    --no-cache-dir reliably, and supports prompting for
+    authentication.
+  - Enabling this feature will also enable --use-feature
+    build-constraints. This feature will become the default in a
+    future pip version. (#9081)</comment>
+    <requestid>1331110</requestid>
+  </revision>
 </revisionlist>
