@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 15 10:19:37 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 1.1.23
+  - lots of new ids
+  - disabled incorrect id that caused a Lenovo crash
+  - small bugfixes
+
+-------------------------------------------------------------------
 Mon Apr 14 08:22:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Fix rules installation issue (boo#1234772)
@@ -7,7 +15,7 @@ Mon Apr 14 08:22:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
 -------------------------------------------------------------------
 Wed Nov 20 13:11:04 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
-- updated to 1.1.21 release
+- updated to 1.1.22 release
   - bugfixes
   - lots of new ids
 

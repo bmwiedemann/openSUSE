@@ -741,4 +741,17 @@
     <comment>Fix installation issue (forwarded request 1269169 from krop)</comment>
     <requestid>1269182</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>4339b921b849a78058dcf8e80b902b9b</srcmd5>
+    <version>1.1.23</version>
+    <time>1771244594</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.1.23
+  - lots of new ids
+  - disabled incorrect id that caused a Lenovo crash
+  - small bugfixes
+
+- updated to 1.1.22 release (forwarded request 1333176 from msmeissn)</comment>
+    <requestid>1333177</requestid>
+  </revision>
 </revisionlist>
