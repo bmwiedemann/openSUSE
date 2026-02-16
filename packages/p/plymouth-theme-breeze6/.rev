@@ -300,4 +300,12 @@ Without this, the theme can't be selected:
     <comment>Plasma 6.5.5, hopefully boring (forwarded request 1327258 from Vogtinator)</comment>
     <requestid>1327881</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0650c6b4a4e3740f238f793bd835d3c7</srcmd5>
+    <version>6.6.0</version>
+    <time>1771243693</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.6.0 maybe final tars. K:F already publish disabled (forwarded request 1333048 from Vogtinator)</comment>
+    <requestid>1333113</requestid>
+  </revision>
 </revisionlist>
