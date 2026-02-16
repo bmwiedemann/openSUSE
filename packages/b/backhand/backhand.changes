@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb 15 09:01:45 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.25.0:
+  backhand
+  * Update depends.
+  * Update lzma-rust2 to v0.16.0.
+  * Fix handling of adding files larger than 4 GiB.
+  * Add window size impl for gzip.
+  backhand-cli
+  * Update depends.
+  * Remove libc depend.
+
+-------------------------------------------------------------------
 Sun Jan 18 19:04:33 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.24.1:
