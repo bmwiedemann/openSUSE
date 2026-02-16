@@ -1,10 +1,32 @@
 -------------------------------------------------------------------
+Wed Feb 11 08:18:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.6:
+  * bugfix #144: '--exclude-other-filesystems' corrupted
+    generated command line, thx David Epping
+  * bugfix #143: parse duplicity 3.0.4 version fails, thx Mischa
+    ter Smitten
+  * clean out some compatibility code with ancient duplicity
+    versions
+  * bugfix #142: batch cmds with consecutive '_' fail, thx
+    Dominik Sommer
+  * allow undocumented space separated batch cmd list e.g. "pre
+    bkp post"
+  * fix mawk incompatibility in gpg version detection
+  * fix and/or conditions skipped one too many commands
+  * simplify batch command parsing, remove superfluous 'read -ra'
+  * bugfix #140,141: "GPG_OPTS broken"
+  * detect gpg version and add '--pinentry-mode loopback' as
+    duplicity does
+  * no need to add it manually in GPG_OPTS anymore
+
+-------------------------------------------------------------------
 Sat Dec  2 16:20:23 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
-- update to 2.5.2 
+- update to 2.5.2
   * fix bug #139: "ampersand (&) in gpg passphrase breaks gpg tests"
 
-- update to 2.5.1 
+- update to 2.5.1
   * quotewrap only strings with quotes ('") or spaces from now on
   * add --verbosity only if set in profile conf
   * bugfix #138: fix quoting when filtering params, thx Eric
@@ -62,11 +84,11 @@ Wed Jul  6 06:28:27 UTC 2022 - hsk17@mail.de
 Tue Sep  1 08:36:27 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.2.2:
-  - bugfix 120: Failures in "Autoset trust of key" during restore 
+  - bugfix 120: Failures in "Autoset trust of key" during restore
     because of gpg2.2 fingerprint output change
   - featreq 46: Example systemd units & Howto, courtesy of Jozef Riha
   - featreq 47: Clarify message about keeping the profile, also by Jozef Riha
-  - fix abbreviation spelling of 'e.g.' 
+  - fix abbreviation spelling of 'e.g.'
 
 -------------------------------------------------------------------
 Fri Oct 18 11:42:12 UTC 2019 - malcolmlewis@opensuse.org
@@ -159,7 +181,7 @@ Mon Sep 26 01:42:40 UTC 2016 - malcolmlewis@opensuse.org
   + Add PYTHON conf var to allow global override of used python
     interpreter.
   + Enforced usage of "python2" in PATH as default interpreter for
-    internal use _and_ to run duplicity (setup.py changed the 
+    internal use _and_ to run duplicity (setup.py changed the
     shebang to the fixed path /usr/bin/python until 0.7.05, which
     we circumvent this way).
   + Feature 36: Support gpg-connect-agent as a means to detect if
@@ -226,21 +248,21 @@ Wed Jul  9 14:54:52 UTC 2014 - kruber@zib.de
 - Update to version 1.7.3:
   + bugfix: test routines, gpg2 asked for passphrase although GPG_PW was set
 - Update to version 1.7.2:
-  + bugfix: debian Bug#743190 "duply no longer allows restoration without 
+  + bugfix: debian Bug#743190 "duply no longer allows restoration without
     gpg passphrase in conf file"
     GPG_AGENT_INFO env var is now needed to trigger --use-agent
   + bugfix: gpg keyenc test routines didn't work if GPG_PW was not set
 - Update to version 1.7.1:
-  + bugfix: purge-* commands renamed to purgeFull, purgeIncr due to 
-    incompatibility with new minus batch separator 
+  + bugfix: purge-* commands renamed to purgeFull, purgeIncr due to
+    incompatibility with new minus batch separator
 - Update to version 1.7.0:
   + disabled gpg key id plausibility check, too many valid possibilities
   + featreq 7 "Halt if precondition fails":
     added and(+), or(-) batch command(separator) support
-  + featreq 26 "pre/post script with shebang line": 
-    if a script is flagged executable it's executed in a subshell 
+  + featreq 26 "pre/post script with shebang line":
+    if a script is flagged executable it's executed in a subshell
     now as opposed to sourced to bash, which is the default
-  + bugfix: do not check if dpbx, swift credentials are set anymore 
+  + bugfix: do not check if dpbx, swift credentials are set anymore
   + bugfix: properly escape profile name, archdir if used as arguments
   + add DUPL_PRECMD conf setting for use with e.g. trickle
 
@@ -332,5 +354,5 @@ Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
 -------------------------------------------------------------------
 Wed Aug 17 21:12:49 UTC 2011 - malcolmlewis@opensuse.org
 
-- Initial build. 
+- Initial build.
 
