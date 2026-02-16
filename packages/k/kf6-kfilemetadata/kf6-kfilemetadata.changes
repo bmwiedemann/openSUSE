@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb  6 14:25:51 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.23.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.23.0
+- Changes since 6.22.0:
+  * Update dependency version to 6.23.0
+  * usermetadata: prevent returning UnknownError when removing a not-present attribute
+  * [PopplerExtractor] Use ReadingOrder text layout from poppler 26.01
+  * [TaglibExtractorTest] Fix FLAC-in-ogg testfile
+  * Update version to 6.23.0
+  * Fix finding of poppler-version.h (Bad include)
+
+-------------------------------------------------------------------
 Sun Jan  4 14:47:11 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.22.0
