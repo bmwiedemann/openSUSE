@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 16 11:01:52 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- fix INSTALL.sh again to replace the tags in desktop file,
+  appdata and manpage (boo#1258199) 
+
+-------------------------------------------------------------------
 Fri Feb 13 19:51:45 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 145.0.7632.75:

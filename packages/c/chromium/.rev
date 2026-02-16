@@ -6203,4 +6203,13 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
     <comment>Chromium 145.0.7632.75 boo#1258185</comment>
     <requestid>1332983</requestid>
   </revision>
+  <revision rev="502" vrev="2">
+    <srcmd5>e425db99a49ee2151fc11f7e1bdaf9c5</srcmd5>
+    <version>145.0.7632.75</version>
+    <time>1771245805</time>
+    <user>dimstar_suse</user>
+    <comment>- fix INSTALL.sh again to replace the tags in desktop file,
+  appdata and manpage (boo#1258199)</comment>
+    <requestid>1333313</requestid>
+  </revision>
 </revisionlist>

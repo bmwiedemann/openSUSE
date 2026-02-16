@@ -138,8 +138,8 @@ fi
 
 # launcher script and symlink
 sed \
-    -e "s#@@PROGNAME@@#${PROGNAME}#g" \
-    -e "s#@@CHANNEL@@#${CHANNEL}#g" \
+    -e "s#@@PROGNAME#${PROGNAME}#g" \
+    -e "s#@@CHANNEL#${CHANNEL}#g" \
     "chrome/installer/linux/common/wrapper" > "${STAGEDIR}/${INSTALLDIR}/chrome-wrapper"
 chmod 755 "${STAGEDIR}/${INSTALLDIR}/chrome-wrapper"
 ln -s "${INSTALLDIR}/chrome-wrapper" "${STAGEDIR}/usr/bin/${PACKAGE}" 
@@ -161,32 +161,32 @@ done
 # desktop integration
 ## AppData
 sed \
-    -e "s#@@PACKAGE@@#${PACKAGE}#g" \
-    -e "s#@@MAINTMAIL@@#${MAINTMAIL}#g" \
-    -e "s#@@PROJECT_LICENSE@@#${PROJECT_LICENSE}#g" \
-    -e "s#@@MENUNAME@@#${MENUNAME}#g" \
-    -e "s#@@SHORTDESC@@#${SHORTDESC}#g" \
-    -e "s#@@FULLDESC@@#${FULLDESC}#g" \
-    -e "s#@@PRODUCTURL@@#${PRODUCTURL}#g" \
-    -e "s#@@DEVELOPER_NAME@@#${DEVELOPER_NAME}#g" \
-    -e "s#@@BUGTRACKERURL@@#${BUGTRACKERURL}#g" \
-    -e "s#@@HELPURL@@#${HELPURL}#g" \
+    -e "s#@@PACKAGE#${PACKAGE}#g" \
+    -e "s#@@MAINTMAIL#${MAINTMAIL}#g" \
+    -e "s#@@PROJECT_LICENSE#${PROJECT_LICENSE}#g" \
+    -e "s#@@MENUNAME#${MENUNAME}#g" \
+    -e "s#@@SHORTDESC#${SHORTDESC}#g" \
+    -e "s#@@FULLDESC#${FULLDESC}#g" \
+    -e "s#@@PRODUCTURL#${PRODUCTURL}#g" \
+    -e "s#@@DEVELOPER_NAME#${DEVELOPER_NAME}#g" \
+    -e "s#@@BUGTRACKERURL#${BUGTRACKERURL}#g" \
+    -e "s#@@HELPURL#${HELPURL}#g" \
     "chrome/installer/linux/common/appdata.xml.template" > "${STAGEDIR}/usr/share/metainfo/${PACKAGE}.appdata.xml"
 
 ## Desktop file
 sed \
-    -e "s#@@MENUNAME@@#${MENUNAME}#g" \
-    -e "s#@@USR_BIN_SYMLINK_NAME@@#${PACKAGE}#g" \
-    -e "s#@@PACKAGE@@#${PACKAGE}#g" \
-    -e "s#@@URI_SCHEME@@#${URI_SCHEME}#g" \
-    -e "s#@@EXTRA_DESKTOP_ENTRIES@@#${EXTRA_DESKTOP_ENTRIES}#g" \
+    -e "s#@@MENUNAME#${MENUNAME}#g" \
+    -e "s#@@USR_BIN_SYMLINK_NAME#${PACKAGE}#g" \
+    -e "s#@@PACKAGE#${PACKAGE}#g" \
+    -e "s#@@URI_SCHEME#${URI_SCHEME}#g" \
+    -e "s#@@EXTRA_DESKTOP_ENTRIES#${EXTRA_DESKTOP_ENTRIES}#g" \
     "chrome/installer/linux/common/desktop.template" > "${STAGEDIR}/usr/share/applications/${PACKAGE}.desktop"
 chmod 644 "${STAGEDIR}/usr/share/applications/${PACKAGE}.desktop"
 
 # documentation
 sed \
-    -e "s#@@MENUNAME@@#${MENUNAME}#g" \
-    -e "s#@@PACKAGE@@#${PACKAGE}#g" \
+    -e "s#@@MENUNAME#${MENUNAME}#g" \
+    -e "s#@@PACKAGE#${PACKAGE}#g" \
     "chrome/app/resources/manpage.1.in" > "${STAGEDIR}/usr/share/man/man1/${PACKAGE}.1"
 gzip -9n "${STAGEDIR}/usr/share/man/man1/${PACKAGE}.1"
 chmod 644 "${STAGEDIR}/usr/share/man/man1/${PACKAGE}.1.gz"
