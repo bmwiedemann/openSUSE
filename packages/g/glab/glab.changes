@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Sat Feb 14 08:25:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.85.1:
+  * Maintenance
+    - ccff6d6b: chore(mcp): add exclude annotation commands when
+      running mcp (Kai Armstrong karmstrong@gitlab.com)
+
+-------------------------------------------------------------------
+Fri Feb 13 13:11:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.85.0:
+  * Features
+    - b9acbf32: feat(runner-controller): add runner controller
+      scope create command (Timo Furrer tfurrer@gitlab.com)
+    - 440e067e: feat(runner-controller): add runner controller
+      scope delete command (Timo Furrer tfurrer@gitlab.com)
+    - 17584dfd: feat(runner-controller): add runner controller
+      scope list command (Timo Furrer tfurrer@gitlab.com)
+    - a60d14e8: feat: allow to skip commands for MCP (Timo Furrer
+      tfurrer@gitlab.com)
+    - 1426c9ff: feat: support generic credential helper (Timo
+      Furrer tfurrer@gitlab.com)
+  * Bug Fixes
+    - fb5725e5: fix(download): propagate context for same‑host
+      asset download (David Grieser gitlab@david-grieser.de)
+  * Dependencies
+    - 89ad9a1d: chore(deps): bump GitLab client-go (Timo Furrer
+      tfurrer@gitlab.com)
+    - 699e23b9: chore(deps): update module
+      github.com/modelcontextprotocol/go-sdk to v1.3.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 056a9c97: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go to v1.32.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - f5d08210: chore(deps): update module golang.org/x/crypto to
+      v0.48.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - fb83e882: chore(deps): update module k8s.io/client-go to
+      v0.35.1 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+  * Maintenance
+    - b1de8584: refactor(test): support api client with auth source
+      (Timo Furrer tfurrer@gitlab.com)
+    - 61e07344: refactor: use unauthenticated auth source from
+      GitLab client-go (Timo Furrer tfurrer@gitlab.com)
+
+-------------------------------------------------------------------
+Fri Feb 13 06:16:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.84.0:
+  * Bug Fixes
+    - 032e82b0: fix(auth): store tokens in keyring when
+      --use-keyring is specified (Kai Armstrong
+      karmstrong@gitlab.com)
+    - c6b792d5: fix(token): respect --active flag in JSON output
+      (Kai Armstrong karmstrong@gitlab.com)
+  * Documentation
+    - aa792b84: docs: Update the text for experiment string
+      (Brendan Lynch blynch@gitlab.com)
+
+-------------------------------------------------------------------
+Thu Feb 12 08:46:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.83.0:
+  * Features
+    - 402b39f8: feat(runner-controller): add runner controller
+      create command (Timo Furrer tfurrer@gitlab.com)
+    - 1ee82efe: feat(runner-controller): add runner controller
+      delete command (Timo Furrer tfurrer@gitlab.com)
+    - 265eef13: feat(runner-controller): add runner controller list
+      command (Timo Furrer tfurrer@gitlab.com)
+    - 13c7a4f7: feat(runner-controller): add runner controller
+      token create command (Timo Furrer tfurrer@gitlab.com)
+    - b0ce395b: feat(runner-controller): add runner controller
+      token list command (Timo Furrer tfurrer@gitlab.com)
+    - f561b857: feat(runner-controller): add runner controller
+      token revoke command (Timo Furrer tfurrer@gitlab.com)
+    - e57ddb48: feat(runner-controller): add runner controller
+      token rotate command (Timo Furrer tfurrer@gitlab.com)
+    - 890f1cd2: feat(runner-controller): add runner controller
+      update command (Timo Furrer tfurrer@gitlab.com)
+    - fed9d351: feat(stack): add git push options support to stack
+      sync command (Swapnaneel Patra swapnaneel06@gmail.com)
+  * Bug Fixes
+    - cfc236d9: fix(ci): add merge result pipeline support to glab
+      ci status trace and glab ci trace <job_name> (Tomas Vik
+      tvik@gitlab.com)
+    - a146646e: fix(ci): prevent crash when ci view used in
+      non-interactive environments (Kai Armstrong
+      karmstrong@gitlab.com)
+    - 43bc0a2a: fix(config): detect symlinked config paths as same
+      file (Miroslav Vadkerti mvadkert@redhat.com)
+    - 238aced4: fix(mr): allow boolean flags to explicitly override
+      project defaults (Kai Armstrong karmstrong@gitlab.com)
+    - 4cb5c2c2: fix: Download gotestsum with correct arch (Patrick
+      Bajao ebajao@gitlab.com)
+    - 23759fcc: fix: correct MCP server flag schema (Caio Ramos
+      caioramos97@gmail.com)
+    - 9f4a05d9: fix: properly set gitlab base URL in tests (Timo
+      Furrer tfurrer@gitlab.com)
+  * Documentation
+    - e7b5bb2b: docs(repo): improve clone command documentation and
+      examples (Kai Armstrong karmstrong@gitlab.com)
+    - b44a4394: docs: Fix issue related to capitalization error
+      (Brendan blynch@gitlab.com)
+    - c97e0d17: docs: avoid using redirecting GitLab Handbook links
+      (Evan Read eread@gitlab.com)
+    - f509cae1: docs: clarifies that duo ask uses classic, add link
+      to duo cli (Uma Chandran uchandran@gitlab.com)
+    - 0ffa4ec3: docs: fix link to DPoP information (Evan Read
+      eread@gitlab.com)
+    - abedc299: docs: updates the issue link for consolidating the
+      CLI tools (Uma Chandran uchandran@gitlab.com)
+  * Dependencies
+    - cfc51ba1: chore(deps): update dependency
+      @commitlint/config-conventional to ^20.4.0 (GitLab Renovate
+      Bot gitlab-bot@gitlab.com)
+    - 326ae073: chore(deps): update dependency
+      @commitlint/config-conventional to ^20.4.0 (GitLab Renovate
+      Bot gitlab-bot@gitlab.com)
+    - cc091c98: chore(deps): update dependency
+      @commitlint/config-conventional to ^20.4.1 (GitLab Renovate
+      Bot gitlab-bot@gitlab.com)
+    - 13fad6f6: chore(deps): update dependency @commitlint/format
+      to ^20.4.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 97c32d06: chore(deps): update dependency @commitlint/read to
+      ^20.4.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - c8ed4b79: chore(deps): update module
+      github.com/avast/retry-go/v4 to v5 (GitLab Dependency Bot
+      tfurrer+gitlab-renovate-bot@gitlab.com)
+    - 8d780b56: chore(deps): update module
+      github.com/charmbracelet/fang to v0.4.4 (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - 07d97c27: chore(deps): update module github.com/docker/cli to
+      v29.2.1+incompatible (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - 2b5931dc: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go to v1.29.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+  * Maintenance
+    - 19b9ebdc: chore: Update linting configuration from GitLab
+      project (Evan Read eread@gitlab.com)
+    - 7f4416e4: chore: update appsec handle in vulnerability issue
+      template (Félix Veillette-Potvin fveillette@gitlab.com)
+    - 0739d003: refactor(mcp): migrate to official MCP SDK (Kai
+      Armstrong karmstrong@gitlab.com)
+    - f16c985a: refactor: support ~string types enum flag values
+      (Timo Furrer tfurrer@gitlab.com)
+
+-------------------------------------------------------------------
 Fri Jan 30 06:20:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.82.0:
