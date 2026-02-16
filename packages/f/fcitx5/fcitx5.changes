@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Feb  7 04:05:20 UTC 2026 - Marguerite Su <i@marguerite.su>
+
+- Update version 5.1.17
+  * Fix potential crash if a dbus client ends abnormally
+  * Integrate new key name added in xkbcommon, you can now bind key to
+    some new names in config e.g. Assistant (however configtool may not
+    support it yet, but at least manually set in the config file should
+    work).
+  * SNI tray icon added tooltip
+  * some small Ui improvement
+- Changes in 5.1.14-5.1.16
+  * Fix a bug found in 5.1.15 release that may prevent fcitx function
+    in certain wayland compositor that supports both ext-data-control and
+    wlr-data-control
+  * Stability fix for some crash related bugs
+  * Fix isKDE() check
+- drop fcitx5-5.1.13-xcb.patch, add fcitx5-5.1.17-xcb.patch
+- add fcitx5-5.1.17-waylandprotocols-revert-ext-data-control.patch
+  * leap 15.6's waylandprotocols version is lower than 1.39, thus no
+    ext-data-control protocol support
+
+-------------------------------------------------------------------
 Wed Dec 17 15:30:13 UTC 2025 - Fuminobu Takeyama <ftake@geeko.jp>
 
 - Use return instead of exit in 20-fcitx-plasma-setup.sh

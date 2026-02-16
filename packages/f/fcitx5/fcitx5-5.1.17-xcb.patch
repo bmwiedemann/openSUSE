@@ -1,8 +1,8 @@
-Index: fcitx5-5.1.13/src/modules/xcb/xcbmodule.cpp
+Index: fcitx5-5.1.17/src/modules/xcb/xcbmodule.cpp
 ===================================================================
---- fcitx5-5.1.13.orig/src/modules/xcb/xcbmodule.cpp
-+++ fcitx5-5.1.13/src/modules/xcb/xcbmodule.cpp
-@@ -212,6 +212,7 @@ bool XCBModule::exists(const std::string
+--- fcitx5-5.1.17.orig/src/modules/xcb/xcbmodule.cpp
++++ fcitx5-5.1.17/src/modules/xcb/xcbmodule.cpp
+@@ -213,6 +213,7 @@ bool XCBModule::exists(const std::string
      return conns_.contains(name);
  }
  
@@ -10,27 +10,25 @@ Index: fcitx5-5.1.13/src/modules/xcb/xcbmodule.cpp
  bool XCBModule::isClientDisconnectModeTerminate() const {
      return *config_.clientDisconnectModeTerminate ==
                 ClientDisconnectModeTerminate::Yes ||
-@@ -219,6 +220,7 @@ bool XCBModule::isClientDisconnectModeTe
+@@ -220,6 +221,7 @@ bool XCBModule::isClientDisconnectModeTe
                  ClientDisconnectModeTerminate::Auto &&
-             getDesktopType() == DesktopType::GNOME);
+             getDesktopType() == DesktopType::GNOME && !isInFlatpak());
  }
 +#endif
  
  class XCBModuleFactory : public AddonFactory {
  public:
-Index: fcitx5-5.1.13/src/modules/xcb/xcbmodule.h
+Index: fcitx5-5.1.17/src/modules/xcb/xcbmodule.h
 ===================================================================
---- fcitx5-5.1.13.orig/src/modules/xcb/xcbmodule.h
-+++ fcitx5-5.1.13/src/modules/xcb/xcbmodule.h
-@@ -113,9 +113,9 @@ public:
-     void setXkbOption(const std::string &name, const std::string &option);
+--- fcitx5-5.1.17.orig/src/modules/xcb/xcbmodule.h
++++ fcitx5-5.1.17/src/modules/xcb/xcbmodule.h
+@@ -114,7 +114,9 @@ public:
  
      bool exists(const std::string &name);
--
+ 
 +#ifdef XCB_XFIXES_SET_CLIENT_DISCONNECT_MODE
      bool isClientDisconnectModeTerminate() const;
--
 +#endif
+ 
      FCITX_ADDON_DEPENDENCY_LOADER(notifications, instance_->addonManager());
      FCITX_ADDON_DEPENDENCY_LOADER(waylandim, instance_->addonManager());
- 

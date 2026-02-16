@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define _environmentdir %{_prefix}/lib/environment.d
 %endif
 Name:           fcitx5
-Version:        5.1.13
+Version:        5.1.17
 Release:        0
 Summary:        Next generation of fcitx
 License:        LGPL-2.1-or-later
@@ -38,7 +38,10 @@ Source6:        20-fcitx5-plasma-setup.sh
 Source102:      fcitx5.service
 Patch1:         fcitx5-gcc7.patch
 Patch2:         fcitx5-5.0.13-memfd.patch
-Patch3:         fcitx5-5.1.13-xcb.patch
+%if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
+Patch3:         fcitx5-5.1.17-xcb.patch
+Patch4:         fcitx5-5.1.17-waylandprotocols-revert-ext-data-control.patch
+%endif
 BuildRequires:  cmake
 BuildRequires:  dbus-1-devel
 BuildRequires:  extra-cmake-modules
@@ -57,9 +60,9 @@ BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(iso-codes)
-BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libuv)
+BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(wayland-client)

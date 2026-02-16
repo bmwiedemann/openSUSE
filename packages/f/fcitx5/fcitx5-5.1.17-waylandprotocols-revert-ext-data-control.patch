@@ -1,0 +1,524 @@
+diff -urN fcitx5-5.1.17/CMakeLists.txt fcitx5-5.1.17.new/CMakeLists.txt
+--- fcitx5-5.1.17/CMakeLists.txt	2025-12-22 14:18:01.000000000 +0800
++++ fcitx5-5.1.17.new/CMakeLists.txt	2026-02-07 13:09:14.689438272 +0800
+@@ -169,7 +169,7 @@
+     set(REQUIRED_WAYLAND_COMPONENTS Client Cursor)
+     find_package(Wayland 1.22 REQUIRED COMPONENTS ${REQUIRED_WAYLAND_COMPONENTS})
+     find_package(WaylandScanner REQUIRED)
+-    find_package(WaylandProtocols 1.39 REQUIRED)
++    find_package(WaylandProtocols REQUIRED)
+     pkg_check_modules(Gio IMPORTED_TARGET gio-2.0)
+ endif()
+ 
+diff -urN fcitx5-5.1.17/src/lib/fcitx-wayland/CMakeLists.txt fcitx5-5.1.17.new/src/lib/fcitx-wayland/CMakeLists.txt
+--- fcitx5-5.1.17/src/lib/fcitx-wayland/CMakeLists.txt	2025-12-22 14:18:01.000000000 +0800
++++ fcitx5-5.1.17.new/src/lib/fcitx-wayland/CMakeLists.txt	2026-02-07 13:09:52.981927150 +0800
+@@ -2,7 +2,6 @@
+ add_subdirectory(input-method)
+ add_subdirectory(input-method-v2)
+ add_subdirectory(wlr-data-control)
+-add_subdirectory(ext-data-control)
+ add_subdirectory(blur)
+ add_subdirectory(plasma-window-management)
+ add_subdirectory(wlr-foreign-toplevel-management-unstable-v1)
+diff -urN fcitx5-5.1.17/src/lib/fcitx-wayland/ext-data-control/ext_data_control_source_v1.cpp fcitx5-5.1.17.new/src/lib/fcitx-wayland/ext-data-control/ext_data_control_source_v1.cpp
+--- fcitx5-5.1.17/src/lib/fcitx-wayland/ext-data-control/ext_data_control_source_v1.cpp	2025-12-22 14:18:01.000000000 +0800
++++ fcitx5-5.1.17.new/src/lib/fcitx-wayland/ext-data-control/ext_data_control_source_v1.cpp	1970-01-01 08:00:00.000000000 +0800
+@@ -1,37 +0,0 @@
+-#include "ext_data_control_source_v1.h"
+-#include <cassert>
+-namespace fcitx::wayland {
+-const struct ext_data_control_source_v1_listener
+-    ExtDataControlSourceV1::listener = {
+-        [](void *data, ext_data_control_source_v1 *wldata, const char *mimeType,
+-           int32_t fd) {
+-            auto *obj = static_cast<ExtDataControlSourceV1 *>(data);
+-            assert(*obj == wldata);
+-            {
+-                return obj->send()(mimeType, fd);
+-            }
+-        },
+-        [](void *data, ext_data_control_source_v1 *wldata) {
+-            auto *obj = static_cast<ExtDataControlSourceV1 *>(data);
+-            assert(*obj == wldata);
+-            {
+-                return obj->cancelled()();
+-            }
+-        },
+-};
+-ExtDataControlSourceV1::ExtDataControlSourceV1(ext_data_control_source_v1 *data)
+-    : version_(ext_data_control_source_v1_get_version(data)), data_(data) {
+-    ext_data_control_source_v1_set_user_data(*this, this);
+-    ext_data_control_source_v1_add_listener(
+-        *this, &ExtDataControlSourceV1::listener, this);
+-}
+-void ExtDataControlSourceV1::destructor(ext_data_control_source_v1 *data) {
+-    auto version = ext_data_control_source_v1_get_version(data);
+-    if (version >= 1) {
+-        return ext_data_control_source_v1_destroy(data);
+-    }
+-}
+-void ExtDataControlSourceV1::offer(const char *mimeType) {
+-    return ext_data_control_source_v1_offer(*this, mimeType);
+-}
+-} // namespace fcitx::wayland
+diff -urN fcitx5-5.1.17/src/lib/fcitx-wayland/ext-data-control/ext_data_control_source_v1.h fcitx5-5.1.17.new/src/lib/fcitx-wayland/ext-data-control/ext_data_control_source_v1.h
+--- fcitx5-5.1.17/src/lib/fcitx-wayland/ext-data-control/ext_data_control_source_v1.h	2025-12-22 14:18:01.000000000 +0800
++++ fcitx5-5.1.17.new/src/lib/fcitx-wayland/ext-data-control/ext_data_control_source_v1.h	1970-01-01 08:00:00.000000000 +0800
+@@ -1,41 +0,0 @@
+-#ifndef EXT_DATA_CONTROL_SOURCE_V1
+-#define EXT_DATA_CONTROL_SOURCE_V1
+-#include <memory>
+-#include <wayland-client.h>
+-#include "fcitx-utils/signals.h"
+-#include "wayland-ext-data-control-unstable-v1-client-protocol.h"
+-namespace fcitx::wayland {
+-class ExtDataControlSourceV1 final {
+-public:
+-    static constexpr const char *interface = "ext_data_control_source_v1";
+-    static constexpr const wl_interface *const wlInterface =
+-        &ext_data_control_source_v1_interface;
+-    static constexpr const uint32_t version = 1;
+-    typedef ext_data_control_source_v1 wlType;
+-    operator ext_data_control_source_v1 *() { return data_.get(); }
+-    ExtDataControlSourceV1(wlType *data);
+-    ExtDataControlSourceV1(ExtDataControlSourceV1 &&other) noexcept = delete;
+-    ExtDataControlSourceV1 &
+-    operator=(ExtDataControlSourceV1 &&other) noexcept = delete;
+-    auto actualVersion() const { return version_; }
+-    void *userData() const { return userData_; }
+-    void setUserData(void *userData) { userData_ = userData; }
+-    void offer(const char *mimeType);
+-    auto &send() { return sendSignal_; }
+-    auto &cancelled() { return cancelledSignal_; }
+-
+-private:
+-    static void destructor(ext_data_control_source_v1 *);
+-    static const struct ext_data_control_source_v1_listener listener;
+-    fcitx::Signal<void(const char *, int32_t)> sendSignal_;
+-    fcitx::Signal<void()> cancelledSignal_;
+-    uint32_t version_;
+-    void *userData_ = nullptr;
+-    UniqueCPtr<ext_data_control_source_v1, &destructor> data_;
+-};
+-static inline ext_data_control_source_v1 *
+-rawPointer(ExtDataControlSourceV1 *p) {
+-    return p ? static_cast<ext_data_control_source_v1 *>(*p) : nullptr;
+-}
+-} // namespace fcitx::wayland
+-#endif
+diff -urN fcitx5-5.1.17/src/modules/clipboard/CMakeLists.txt fcitx5-5.1.17.new/src/modules/clipboard/CMakeLists.txt
+--- fcitx5-5.1.17/src/modules/clipboard/CMakeLists.txt	2025-12-22 14:18:01.000000000 +0800
++++ fcitx5-5.1.17.new/src/modules/clipboard/CMakeLists.txt	2026-02-07 13:08:13.279364482 +0800
+@@ -10,11 +10,7 @@
+ 
+ if (WAYLAND_FOUND)
+     target_sources(clipboard PRIVATE waylandclipboard.cpp)
+-    target_link_libraries(clipboard
+-        Fcitx5::Module::Wayland
+-        Fcitx5::Wayland::WLRDataControl
+-        Fcitx5::Wayland::ExtDataControl
+-        Pthread::Pthread)
++    target_link_libraries(clipboard Fcitx5::Module::Wayland Fcitx5::Wayland::WLRDataControl Pthread::Pthread)
+ endif()
+ 
+ install(TARGETS clipboard DESTINATION "${FCITX_INSTALL_ADDONDIR}")
+diff -urN fcitx5-5.1.17/src/modules/clipboard/waylandclipboard.cpp fcitx5-5.1.17.new/src/modules/clipboard/waylandclipboard.cpp
+--- fcitx5-5.1.17/src/modules/clipboard/waylandclipboard.cpp	2025-12-22 14:18:01.000000000 +0800
++++ fcitx5-5.1.17.new/src/modules/clipboard/waylandclipboard.cpp	2026-02-07 13:54:56.155120036 +0800
+@@ -25,18 +25,13 @@
+ #include "fcitx-utils/unixfd.h"
+ #include "clipboard.h"
+ #include "display.h"
+-#include "ext_data_control_manager_v1.h"
+ #include "wl_seat.h"
+ #include "zwlr_data_control_manager_v1.h"
++#include "zwlr_data_control_offer_v1.h"
+ 
+ namespace fcitx {
+ 
+-DataOfferInterface::~DataOfferInterface() = default;
+-
+-DataDeviceInterface::~DataDeviceInterface() = default;
+-
+-uint64_t DataReaderThread::addTask(DataOfferInterface *offer,
+-                                   std::shared_ptr<UnixFD> fd,
++uint64_t DataReaderThread::addTask(DataOffer *offer, std::shared_ptr<UnixFD> fd,
+                                    DataOfferDataCallback callback) {
+     auto id = nextId_++;
+     if (id == 0) {
+@@ -75,7 +70,7 @@
+ }
+ 
+ void DataReaderThread::addTaskOnWorker(
+-    uint64_t id, TrackableObjectReference<DataOfferInterface> offer,
++    uint64_t id, TrackableObjectReference<DataOffer> offer,
+     std::shared_ptr<UnixFD> fd, DataOfferDataCallback callback) {
+     // std::unordered_map's ref/pointer to element is stable.
+     auto &task = tasks_[id];
+@@ -133,25 +128,22 @@
+     tasks_.erase(task->id_);
+ }
+ 
+-template <typename DataControlOffer>
+-DataOffer<DataControlOffer>::DataOffer(DataControlOffer *offer,
+-                                       bool ignorePassword)
++DataOffer::DataOffer(wayland::ZwlrDataControlOfferV1 *offer,
++                     bool ignorePassword)
+     : offer_(offer), ignorePassword_(ignorePassword) {
+     offer_->setUserData(this);
+     conns_.emplace_back(offer_->offer().connect(
+         [this](const char *offer) { mimeTypes_.insert(offer); }));
+ }
+ 
+-template <typename DataControlOffer>
+-DataOffer<DataControlOffer>::~DataOffer() {
++DataOffer::~DataOffer() {
+     if (thread_) {
+         thread_->removeTask(taskId_);
+     }
+ }
+ 
+-template <typename DataControlOffer>
+-void DataOffer<DataControlOffer>::receiveData(DataReaderThread &thread,
+-                                              DataOfferCallback callback) {
++void DataOffer::receiveData(DataReaderThread &thread,
++                            DataOfferCallback callback) {
+     if (thread_) {
+         return;
+     }
+@@ -181,9 +173,7 @@
+     }
+ }
+ 
+-template <typename DataControlOffer>
+-void DataOffer<DataControlOffer>::receiveRealData(
+-    DataOfferDataCallback callback) {
++void DataOffer::receiveRealData(DataOfferDataCallback callback) {
+     if (!thread_) {
+         return;
+     }
+@@ -202,9 +192,8 @@
+     receiveDataForMime(mime, std::move(callback));
+ }
+ 
+-template <typename DataControlOffer>
+-void DataOffer<DataControlOffer>::receiveDataForMime(
+-    const std::string &mime, DataOfferDataCallback callback) {
++void DataOffer::receiveDataForMime(const std::string &mime,
++                                   DataOfferDataCallback callback) {
+     if (!thread_) {
+         return;
+     }
+@@ -222,22 +211,20 @@
+         std::move(callback));
+ }
+ 
+-template <typename DataControlDevice>
+-DataDevice<DataControlDevice>::DataDevice(WaylandClipboard *clipboard,
+-                                          DataControlDevice *device)
++DataDevice::DataDevice(WaylandClipboard *clipboard,
++                       wayland::ZwlrDataControlDeviceV1 *device)
+     : clipboard_(clipboard), device_(device),
+       thread_(clipboard_->parent()->instance()->eventDispatcher()) {
+-    conns_.emplace_back(
+-        device_->dataOffer().connect([this](DataControlOfferType *offer) {
++    conns_.emplace_back(device_->dataOffer().connect(
++        [this](wayland::ZwlrDataControlOfferV1 *offer) {
+             new DataOffer(offer, *clipboard_->parent()
+                                       ->config()
+                                       .ignorePasswordFromPasswordManager);
+         }));
+-    conns_.emplace_back(
+-        device_->selection().connect([this](DataControlOfferType *offer) {
++    conns_.emplace_back(device_->selection().connect(
++        [this](wayland::ZwlrDataControlOfferV1 *offer) {
+             clipboardOffer_.reset(
+-                offer ? static_cast<DataOfferType *>(offer->userData())
+-                      : nullptr);
++                offer ? static_cast<DataOffer *>(offer->userData()) : nullptr);
+             if (!clipboardOffer_) {
+                 return;
+             }
+@@ -249,10 +236,9 @@
+                 });
+         }));
+     conns_.emplace_back(device_->primarySelection().connect(
+-        [this](DataControlOfferType *offer) {
++        [this](wayland::ZwlrDataControlOfferV1 *offer) {
+             primaryOffer_.reset(
+-                offer ? static_cast<DataOfferType *>(offer->userData())
+-                      : nullptr);
++                offer ? static_cast<DataOffer *>(offer->userData()) : nullptr);
+             if (!primaryOffer_) {
+                 clipboard_->setPrimary("", false);
+                 return;
+@@ -278,97 +264,57 @@
+     : parent_(clipboard), name_(std::move(name)),
+       display_(
+           static_cast<wayland::Display *>(wl_display_get_user_data(display))) {
+-    display_->requestGlobals<wayland::ExtDataControlManagerV1>();
+     display_->requestGlobals<wayland::ZwlrDataControlManagerV1>();
+     globalConn_ = display_->globalCreated().connect(
+         [this](const std::string &interface, const std::shared_ptr<void> &ptr) {
+-            if (interface == wayland::ExtDataControlManagerV1::interface) {
+-                if (ptr != extManager_) {
+-                    extDeviceMap_.clear();
+-                    extManager_ =
+-                        display_->getGlobal<wayland::ExtDataControlManagerV1>();
+-                }
+-                parent_->instance()->eventDispatcher().schedule(
+-                    [this]() { refreshSeat(); });
+-                deferRefreshSeat();
+-            } else if (interface ==
+-                       wayland::ZwlrDataControlManagerV1::interface) {
+-                if (ptr != wlrManager_) {
+-                    wlrDeviceMap_.clear();
+-                    wlrManager_ =
++            if (interface == wayland::ZwlrDataControlManagerV1::interface) {
++                if (ptr != manager_) {
++                    deviceMap_.clear();
++                    manager_ =
+                         display_
+                             ->getGlobal<wayland::ZwlrDataControlManagerV1>();
+                 }
+-                deferRefreshSeat();
++                refreshSeat();
+             } else if (interface == wayland::WlSeat::interface) {
+-                deferRefreshSeat();
++                refreshSeat();
+             }
+         });
+     globalRemoveConn_ = display_->globalRemoved().connect(
+         [this](const std::string &interface, const std::shared_ptr<void> &ptr) {
+-            if (interface == wayland::ExtDataControlManagerV1::interface) {
+-                extDeviceMap_.clear();
+-                if (extManager_ == ptr) {
+-                    extManager_.reset();
+-                }
+-            } else if (interface ==
++            if (interface ==
+                        wayland::ZwlrDataControlManagerV1::interface) {
+-                wlrDeviceMap_.clear();
+-                if (wlrManager_ == ptr) {
+-                    wlrManager_.reset();
++                deviceMap_.clear();
++                if (manager_ == ptr) {
++                    manager_.reset();
+                 }
+             } else if (interface == wayland::WlSeat::interface) {
+-                wlrDeviceMap_.erase(static_cast<wayland::WlSeat *>(ptr.get()));
+-                extDeviceMap_.erase(static_cast<wayland::WlSeat *>(ptr.get()));
++                deviceMap_.erase(static_cast<wayland::WlSeat *>(ptr.get()));
+             }
+         });
+ 
+     if (auto manager =
+             display_->getGlobal<wayland::ZwlrDataControlManagerV1>()) {
+-        wlrManager_ = std::move(manager);
++        manager_ = std::move(manager);
+     }
+     refreshSeat();
+ }
+ 
+-void WaylandClipboard::deferRefreshSeat() {
+-    // The initial global registration update is more likely happen in one
+-    // message loop, so we defer so we can decide to only initialize ext or wlr.
+-    parent_->instance()->eventDispatcher().scheduleWithContext(
+-        watch(), [this]() { refreshSeat(); });
+-}
+-
+ void WaylandClipboard::refreshSeat() {
+-    if (!wlrManager_ && !extManager_) {
++    if (!manager_) {
+         return;
+     }
+ 
+     auto seats = display_->getGlobals<wayland::WlSeat>();
+     for (const auto &seat : seats) {
+-        if (extManager_) {
+-            if (extDeviceMap_.contains(seat.get())) {
+-                continue;
+-            }
+-            auto *device = extManager_->getDataDevice(seat.get());
+-            extDeviceMap_.emplace(
+-                seat.get(),
+-                std::make_unique<DataDevice<wayland::ExtDataControlDeviceV1>>(
+-                    this, device));
++        if (deviceMap_.contains(seat.get())) {
+             continue;
+-        } else if (wlrManager_) {
+-            if (wlrDeviceMap_.contains(seat.get())) {
+-                continue;
+-            }
+-            auto *device = wlrManager_->getDataDevice(seat.get());
+-            wlrDeviceMap_.emplace(
+-                seat.get(),
+-                std::make_unique<DataDevice<wayland::ZwlrDataControlDeviceV1>>(
+-                    this, device));
+         }
+-    }
+ 
+-    // If both are available, prefer ext.
+-    if (extManager_ && wlrManager_) {
+-        wlrDeviceMap_.clear();
++        auto *device = manager_->getDataDevice(seat.get());
++        deviceMap_.emplace(
++                seat.get(),
++                std::make_unique<DataDevice>(
++                    this, device));
+     }
+ }
+ 
+diff -urN fcitx5-5.1.17/src/modules/clipboard/waylandclipboard.h fcitx5-5.1.17.new/src/modules/clipboard/waylandclipboard.h
+--- fcitx5-5.1.17/src/modules/clipboard/waylandclipboard.h	2025-12-22 14:18:01.000000000 +0800
++++ fcitx5-5.1.17.new/src/modules/clipboard/waylandclipboard.h	2026-02-07 13:47:21.644558508 +0800
+@@ -25,12 +25,8 @@
+ #include "fcitx-utils/trackableobject.h"
+ #include "fcitx-utils/unixfd.h"
+ #include "display.h"
+-#include "ext_data_control_device_v1.h"
+-#include "ext_data_control_manager_v1.h"
+-#include "ext_data_control_offer_v1.h"
+ #include "zwlr_data_control_device_v1.h"
+ #include "zwlr_data_control_manager_v1.h"
+-#include "zwlr_data_control_offer_v1.h"
+ 
+ namespace fcitx {
+ 
+@@ -44,12 +40,6 @@
+ using DataOfferCallback =
+     std::function<void(const std::vector<char> &data, bool password)>;
+ 
+-class DataOfferInterface : public TrackableObject<DataOfferInterface> {
+-public:
+-    virtual ~DataOfferInterface();
+-};
+-
+-template <typename DataControlOffer>
+ class DataOffer;
+ 
+ struct DataOfferTask {
+@@ -61,7 +51,7 @@
+     DataOfferTask &operator=(DataOfferTask &&) = delete;
+ 
+     uint64_t id_ = 0;
+-    TrackableObjectReference<DataOfferInterface> offer_;
++    TrackableObjectReference<DataOffer> offer_;
+     DataOfferDataCallback callback_;
+     std::shared_ptr<UnixFD> fd_;
+     std::vector<char> data_;
+@@ -98,15 +88,14 @@
+ 
+     static void run(DataReaderThread *self) { self->realRun(); }
+ 
+-    uint64_t addTask(DataOfferInterface *offer, std::shared_ptr<UnixFD> fd,
++    uint64_t addTask(DataOffer *offer, std::shared_ptr<UnixFD> fd,
+                      DataOfferDataCallback callback);
+     void removeTask(uint64_t token);
+ 
+ private:
+     // Function that run on reader thread
+     void realRun();
+-    void addTaskOnWorker(uint64_t id,
+-                         TrackableObjectReference<DataOfferInterface> offer,
++    void addTaskOnWorker(uint64_t id, TrackableObjectReference<DataOffer> offer,
+                          std::shared_ptr<UnixFD> fd,
+                          DataOfferDataCallback callback);
+     void handleTaskIO(DataOfferTask *task, IOEventFlags flags);
+@@ -127,11 +116,10 @@
+     std::unordered_map<uint64_t, DataOfferTask> tasks_;
+ };
+ 
+-template <typename DataControlOffer>
+-class DataOffer : public DataOfferInterface {
++class DataOffer : public TrackableObject<DataOffer> {
+ public:
+-    DataOffer(DataControlOffer *offer, bool ignorePassword);
+-    ~DataOffer() override;
++    DataOffer(wayland::ZwlrDataControlOfferV1 *offer, bool ignorePassword);
++    ~DataOffer();
+ 
+     void receiveData(DataReaderThread &thread, DataOfferCallback callback);
+ 
+@@ -142,7 +130,7 @@
+ 
+     std::list<ScopedConnection> conns_;
+     std::unordered_set<std::string> mimeTypes_;
+-    std::unique_ptr<DataControlOffer> offer_;
++    std::unique_ptr<wayland::ZwlrDataControlOfferV1> offer_;
+     bool ignorePassword_ = true;
+     bool isPassword_ = false;
+     UnixFD fd_;
+@@ -153,39 +141,17 @@
+ class WaylandClipboard;
+ class Clipboard;
+ 
+-class DataDeviceInterface {
+-public:
+-    virtual ~DataDeviceInterface();
+-};
+-
+-template <typename DataControlDevice>
+-struct DataControlDeviceTraits;
+-
+-template <>
+-struct DataControlDeviceTraits<wayland::ExtDataControlDeviceV1> {
+-    using DataControlOfferType = wayland::ExtDataControlOfferV1;
+-};
+-
+-template <>
+-struct DataControlDeviceTraits<wayland::ZwlrDataControlDeviceV1> {
+-    using DataControlOfferType = wayland::ZwlrDataControlOfferV1;
+-};
+-
+-template <typename DataControlDevice>
+-class DataDevice : public DataDeviceInterface {
+-    using DataControlOfferType = typename DataControlDeviceTraits<
+-        DataControlDevice>::DataControlOfferType;
+-    using DataOfferType = DataOffer<DataControlOfferType>;
+-
++class DataDevice {
+ public:
+-    DataDevice(WaylandClipboard *clipboard, DataControlDevice *device);
++    DataDevice(WaylandClipboard *clipboard,
++               wayland::ZwlrDataControlDeviceV1 *device);
+ 
+ private:
+     WaylandClipboard *clipboard_;
+-    std::unique_ptr<DataControlDevice> device_;
++    std::unique_ptr<wayland::ZwlrDataControlDeviceV1> device_;
+     DataReaderThread thread_;
+-    std::unique_ptr<DataOfferType> primaryOffer_;
+-    std::unique_ptr<DataOfferType> clipboardOffer_;
++    std::unique_ptr<DataOffer> primaryOffer_;
++    std::unique_ptr<DataOffer> clipboardOffer_;
+     std::list<ScopedConnection> conns_;
+ };
+ 
+@@ -201,23 +167,14 @@
+     auto parent() const { return parent_; }
+ 
+ private:
+-    void deferRefreshSeat();
+     void refreshSeat();
+     Clipboard *parent_;
+     std::string name_;
+     wayland::Display *display_;
+     ScopedConnection globalConn_;
+     ScopedConnection globalRemoveConn_;
+-    std::shared_ptr<wayland::ExtDataControlManagerV1> extManager_;
+-    std::shared_ptr<wayland::ZwlrDataControlManagerV1> wlrManager_;
+-    std::unordered_map<
+-        wayland::WlSeat *,
+-        std::unique_ptr<DataDevice<wayland::ExtDataControlDeviceV1>>>
+-        extDeviceMap_;
+-    std::unordered_map<
+-        wayland::WlSeat *,
+-        std::unique_ptr<DataDevice<wayland::ZwlrDataControlDeviceV1>>>
+-        wlrDeviceMap_;
++    std::shared_ptr<wayland::ZwlrDataControlManagerV1> manager_;
++    std::unordered_map<wayland::WlSeat *, std::unique_ptr<DataDevice>> deviceMap_;
+ };
+ 
+ } // namespace fcitx
