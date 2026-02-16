@@ -53,4 +53,15 @@
 </comment>
     <requestid>1309920</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>49ce62933f5ee9aa9fdb6d620f96a033</srcmd5>
+    <version>1.5.0</version>
+    <time>1771243799</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5.0:
+  * Added 4:4:4/4:2:2 chroma subsampling support for VideoConverter
+    color space conversion and scaling
+</comment>
+    <requestid>1333150</requestid>
+  </revision>
 </revisionlist>
