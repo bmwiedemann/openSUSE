@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb  8 13:25:34 UTC 2026 - Marguerite Su <i@marguerite.su>
+
+- add fcitx5-libthai-cmake3.28.patch
+  * leap 15.6 use cmake 3.28 without CMP0175
+
+-------------------------------------------------------------------
 Sun Feb  8 06:15:52 UTC 2026 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.8
