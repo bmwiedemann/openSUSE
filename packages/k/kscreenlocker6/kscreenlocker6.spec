@@ -26,14 +26,14 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           kscreenlocker6
-Version:        6.5.5
+Version:        6.6.0
 Release:        0
 Summary:        Library and components for secure lock screen architecture
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        kde
@@ -74,6 +74,7 @@ BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xi)
 Requires:       pam-config
 Provides:       kscreenlocker = %{version}
+Provides:       qt6qmlimport(org.kde.kscreenlocker) = 0
 Provides:       qt6qmlimport(org.kde.kscreenlocker.1) = 0
 Obsoletes:      kscreenlocker < %{version}
 Obsoletes:      kscreenlocker-lang < %{version}
