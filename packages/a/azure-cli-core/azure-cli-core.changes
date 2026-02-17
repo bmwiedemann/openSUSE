@@ -120,7 +120,7 @@ Wed Mar 12 13:16:29 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 -------------------------------------------------------------------
 Thu Feb 13 07:46:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
-- New upstream release
+- New upstream release (bsc#1239460, CVE-2025-24049)
   + Version 2.69.0
   + For detailed information about changes see the
     HISTORY.rst file provided with this package
