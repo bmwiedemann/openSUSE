@@ -1,26 +1,37 @@
 -------------------------------------------------------------------
+Fri Feb 13 12:16:01 UTC 2026 - David Anes <david.anes@suse.com>
+
+- CVE-2026-0990: call stack overflow leading to application crash 
+  due to infinite recursion in `xmlCatalogXMLResolveURI` (bsc#1256807, bsc#1256811)
+  * Add patch libxml2-CVE-2026-0990.patch
+
+- CVE-2026-0992: excessive resource consumption when processing XML 
+  catalogs due to exponential behavior when handling `<nextCatalog>` elements (bsc#1256808, bsc#1256809, bsc#1256812)
+  * Add patch libxml2-CVE-2026-0992.patch
+
+- CVE-2025-8732: infinite recursion in catalog parsing functions when processing malformed SGML catalog files (bsc#1247858, bsc#1247850)
+  * Add patch libxml2-CVE-2025-8732.patch
+
+-------------------------------------------------------------------
 Wed Feb  4 13:40:16 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
-- security update
-- added patches
-  CVE-2026-1757 [bsc#1257593], memory leak in the `xmllint` interactive shell
-  * libxml2-CVE-2026-1757.patch
+- CVE-2026-1757: memory leak in the `xmllint` interactive shell (bsc#1257593, bsc#1257594, bsc#1257595)
+  * Add patch libxml2-CVE-2026-1757.patch
 
 -------------------------------------------------------------------
 Wed Feb  4 09:39:12 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
-- security update
-- added patches
-  CVE-2025-10911 [bsc#1250553], use-after-free with key data stored cross-RVT
-  * libxml2-CVE-2025-10911.patch
+- CVE-2025-10911: use-after-free with key data stored cross-RVT (bsc#1250553)
+  * Add patch libxml2-CVE-2025-10911.patch
 
 -------------------------------------------------------------------
 Wed Jan 21 13:38:18 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
-- Add patch libxml2-CVE-2026-0989.patch, to fix call stack exhaustion
-  leading to application crash due to RelaxNG parser not limiting the
-  recursion depth when resolving `<include>` directives
-  CVE-2026-0989, bsc#1256805, https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/374
+- CVE-2026-0989: call stack exhaustion leading to application crash 
+  due to RelaxNG parser not limiting the recursion depth when 
+  resolving `<include>` directives (bsc#1256804, bsc#1256805, bsc#1256810)
+  * Add patch libxml2-CVE-2026-0989.patch
+  * https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/374
 
 -------------------------------------------------------------------
 Wed Aug 27 13:33:48 UTC 2025 - pgajdos@suse.com

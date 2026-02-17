@@ -1,7 +1,6 @@
 #
 # spec file for package libxml2
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -46,13 +45,28 @@ Patch0:         libxml2-python3-unicode-errors.patch
 Patch1:         libxml2-python3-string-null-check.patch
 # CVE-2025-7425 [bsc#1246296], Heap Use-After-Free in libxslt caused by atype corruption in xmlAttrPtr
 Patch2:         libxml2-CVE-2025-7425.patch
-# PATCH-FIX-UPSTREAM libxml2-CVE-2026-0989.patch bsc#1256805 daniel.garcia@suse.com
-# https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/374
-Patch3:         libxml2-CVE-2026-0989.patch
-# CVE-2025-10911 [bsc#1250553], use-after-free with key data stored cross-RVT
-Patch4:         libxml2-CVE-2025-10911.patch
-# CVE-2026-1757 [bsc#1257593], memory leak in the `xmllint` interactive shell
-Patch5:         libxml2-CVE-2026-1757.patch
+# CVE-2025-8732: infinite recursion in catalog parsing functions when processing malformed SGML catalog files (bsc#1247858, bsc#1247850)
+# - https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/337
+Patch3:         libxml2-CVE-2025-8732.patch
+# CVE-2026-0989: call stack exhaustion leading to application crash due to RelaxNG parser not limiting the recursion depth when resolving `<include>` directives (bsc#1256804, bsc#1256805, bsc#1256810)
+# - https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/374
+Patch4:         libxml2-CVE-2026-0989.patch
+# CVE-2025-10911: use-after-free with key data stored cross-RVT (bsc#1250553)
+# - https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/345
+Patch5:         libxml2-CVE-2025-10911.patch
+# CVE-2026-1757: memory leak in the `xmllint` interactive shell (bsc#1257593, bsc#1257594, bsc#1257595)
+# - https://gitlab.gnome.org/GNOME/libxml2/-/commit/160c8a43ba37dfb07ebe6446fbad9d0973d9279d
+# - https://gitlab.gnome.org/GNOME/libxml2/-/issues/1009
+Patch6:         libxml2-CVE-2026-1757.patch
+# CVE-2026-0990: call stack overflow leading to application crash due to infinite recursion in `xmlCatalogXMLResolveURI` (bsc#1256806, bsc#1256807, bsc#1256811)
+# - https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/368
+Patch7:         libxml2-CVE-2026-0990.patch
+# CVE-2026-0992: excessive resource consumption when processing XML catalogs due to exponential behavior when handling `<nextCatalog>` elements (bsc#1256808, bsc#1256809, bsc#1256812)
+# - https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/377
+Patch8:         libxml2-CVE-2026-0992.patch
+# IMPORTANT NOTE: remove automake, libtool buildrequires (+ autoreconf in prep section) once CVE-2026-0992 patch is not needed anymore
+BuildRequires:  automake
+BuildRequires:  libtool
 #
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -158,6 +172,7 @@ either at parse time or later once the document has been modified.
 
 %prep
 %autosetup -p1 -n libxml2-%{version}
+autoreconf -ifv # Required by patch for CVE-2026-0992
 sed -i '1 s|/usr/bin/env python|/usr/bin/python3|' doc/apibuild.py
 
 %build

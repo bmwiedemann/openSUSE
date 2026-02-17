@@ -1394,4 +1394,29 @@
     <comment></comment>
     <requestid>1331970</requestid>
   </revision>
+  <revision rev="140" vrev="4">
+    <srcmd5>27235193eaf2f4ebe68c870d31ced154</srcmd5>
+    <version>2.14.5</version>
+    <time>1771342544</time>
+    <user>anag_factory</user>
+    <comment>- CVE-2026-0990: call stack overflow leading to application crash 
+  due to infinite recursion in `xmlCatalogXMLResolveURI` (bsc#1256807, bsc#1256811)
+  * Add patch libxml2-CVE-2026-0990.patch
+- CVE-2026-0992: excessive resource consumption when processing XML 
+  catalogs due to exponential behavior when handling `&lt;nextCatalog&gt;` elements (bsc#1256808, bsc#1256809, bsc#1256812)
+  * Add patch libxml2-CVE-2026-0992.patch
+- CVE-2025-8732: infinite recursion in catalog parsing functions when processing malformed SGML catalog files (bsc#1247858, bsc#1247850)
+  * Add patch libxml2-CVE-2025-8732.patch
+
+- CVE-2026-1757: memory leak in the `xmllint` interactive shell (bsc#1257593, bsc#1257594, bsc#1257595)
+  * Add patch libxml2-CVE-2026-1757.patch
+- CVE-2025-10911: use-after-free with key data stored cross-RVT (bsc#1250553)
+  * Add patch libxml2-CVE-2025-10911.patch
+- CVE-2026-0989: call stack exhaustion leading to application crash 
+  due to RelaxNG parser not limiting the recursion depth when 
+  resolving `&lt;include&gt;` directives (bsc#1256804, bsc#1256805, bsc#1256810)
+  * Add patch libxml2-CVE-2026-0989.patch
+  * https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/374 (forwarded request 1333025 from david.anes)</comment>
+    <requestid>1333305</requestid>
+  </revision>
 </revisionlist>
