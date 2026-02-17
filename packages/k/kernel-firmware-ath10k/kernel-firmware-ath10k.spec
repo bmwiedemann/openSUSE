@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 536cc58d9db164b0e2a47f7f33996b0cf194691a
+%define git_version f2dbd7a7a74be0d309d8058a55308dcea33a41d6
 
 Name:           kernel-firmware-ath10k
-Version:        20251205
+Version:        20260206
 Release:        0
 Summary:        Kernel firmware files for Atheros QCA988x WiFi drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20251118.tar.gz#/kernel-firmware-tools-20251118.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260203.tar.gz#/kernel-firmware-tools-20260203.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases

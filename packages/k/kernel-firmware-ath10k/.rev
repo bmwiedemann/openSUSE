@@ -59,4 +59,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * ath10k: QCA4019 hw1.0: update board-2.bin</comment>
     <requestid>1321332</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e2c112dd8ae217f41988674029954bd1</srcmd5>
+    <version>20260206</version>
+    <time>1771342593</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260206 (git commit f2dbd7a7a74b):
+  * ath10k: WCN3990 hw1.0: update board-2.bin</comment>
+    <requestid>1333330</requestid>
+  </revision>
 </revisionlist>
