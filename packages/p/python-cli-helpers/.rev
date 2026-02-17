@@ -129,4 +129,16 @@
 - Remove Python 2 bits.</comment>
     <requestid>1332788</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9f149688bf9e39f96f71d6f8ddf5df0b</srcmd5>
+    <version>2.10.0</version>
+    <time>1771343280</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.10.0:
+  * Allow TrueColor Pygments formatters, based on the `COLORTERM`
+    env variable.
+  * Add optional `convert_to_undecoded_string` preprocessor.
+  * Pass `colalign` argument through to `tabulate`.</comment>
+    <requestid>1333407</requestid>
+  </revision>
 </revisionlist>

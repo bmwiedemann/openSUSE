@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 16 17:07:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10.0:
+  * Allow TrueColor Pygments formatters, based on the `COLORTERM`
+    env variable.
+  * Add optional `convert_to_undecoded_string` preprocessor.
+  * Pass `colalign` argument through to `tabulate`.
+
+-------------------------------------------------------------------
 Fri Feb 13 04:03:03 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update {Build,}Requires to match reality.
