@@ -17,7 +17,7 @@
 
 
 Name:           librecad
-Version:        2.2.1.2
+Version:        2.2.1.3
 Release:        0
 Summary:        Computer-aided design (CAD) software package for 2D design and drafting
 License:        (Apache-2.0 OR SUSE-GPL-3.0+-with-font-exception) AND GPL-2.0-only

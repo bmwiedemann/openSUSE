@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 17 07:42:12 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to release 2.2.1.3:
+  * Issue #2069: dlgmtext default to unicode fonts
+  * Add global Shift+Spacebar keyboard shortcut
+  * Issue #2304: actionhandler cleanup
+  * Issue #2308: fixed loop validation
+  * Issue #2403: aarch64 AppImage qt plugin folder fixes
+  * Issue #2214: disable PenWizard by default
+  * Issue #2410: duplicateLayerEntity() issue
+
+-------------------------------------------------------------------
 Tue Jul 22 10:10:22 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to release 2.2.1.2:
