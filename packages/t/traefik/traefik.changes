@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Feb 16 10:56:51 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+Updated permissions for /var/lib/traefik to 0775 with owner root:traefik
+
+CVE fixed:
+  * CVE-2026-25949 (Advisory GHSA-89p3-4642-cr2w), boo#1258162
+    Denial of Service via stalled STARTTLS requests
+
+Version 3.6.8
+- Bug fixes:
+    * acme
+      - Alter TLS renewal period
+      - Remove invalid private key in log
+    * healthcheck
+      - Reject absolute URL in healthcheck path configuration
+      - Validate healthcheck path configuration
+    * http3
+      - Bump github.com/quic-go/quic-go to v0.59.0
+    * metrics,tracing,accesslogs
+      - Fix ObservabilityConfig SetDefaults
+    * server
+      - Remove conn deadline after STARTTLS negociation
+    * service
+      - Avoid recursion with services
+    * tls
+      - Fix verifyServerCertMatchesURI function behavior
+    * tls, server
+      - Cap TLS record length to RFC 8446 limit in ClientHello peeking
+    * tracing,otel
+      - Use ParentBased sampler to respect parent span sampling decision
+    * webui
+      - Bump dependencies of documentation and webui
+      - Use url.Parse to validate X-Forwarded-Prefix value
+
+-------------------------------------------------------------------
 Sat Jan 31 13:06:29 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 Breaking change:
