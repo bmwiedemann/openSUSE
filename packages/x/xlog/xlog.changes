@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 16 20:27:11 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix Tumbleweed build,
+  xlog-2.0.25-fix_old-style_function_definition.patch
+
+-------------------------------------------------------------------
 Fri Feb 14 20:48:50 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Fix spec file for openSUSE Tumbleweed inclusion, including doc
@@ -6,7 +12,6 @@ Fri Feb 14 20:48:50 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 - package license is GPL-3.0-or-later
 
 -------------------------------------------------------------------
-
 Thu Sep 16 20:10:30 UTC 2024 - Mariusz Woźniak <sp6ina@pzk.pl>
 
 * Changes for xlog version 2.0.25 - 2024-Sep-16

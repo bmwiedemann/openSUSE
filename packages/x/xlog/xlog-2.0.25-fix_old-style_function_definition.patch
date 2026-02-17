@@ -1,0 +1,64 @@
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Mon, 16 Feb 2026 21:21:15 +0100
+Subject: [PATCH] fix old-style function definitions
+Upstream: sent
+
+[   21s] strptime.c: In function ‘my_localtime_r’:
+[   21s] strptime.c:52:23: error: old-style function definition [-Werror=old-style-definition]
+[   21s]    52 | #  define localtime_r my_localtime_r
+[   21s]       |                       ^~~~~~~~~~~~~~
+[   21s] strptime.c:55:1: note: in expansion of macro ‘localtime_r’
+[   21s]    55 | localtime_r (t, tp)
+[   21s]       | ^~~~~~~~~~~
+[   21s] strptime.c: In function ‘strptime_internal’:
+[   21s] strptime.c:257:1: error: old-style function definition [-Werror=old-style-definition]
+[   21s]   257 | strptime_internal (rp, fmt, tm, decided, era_cnt)
+[   21s]       | ^~~~~~~~~~~~~~~~~
+[   21s] strptime.c: In function ‘mystrptime’:
+[   21s] strptime.c:991:1: error: old-style function definition [-Werror=old-style-definition]
+[   21s]   991 | mystrptime (buf, format, tm)
+[   21s]       | ^~~~~~~~~~
+[   21s] cc1: all warnings being treated as errors
+[   21s] make[2]: *** [Makefile:628: strptime.o] Error 1
+
+Index: xlog-2.0.25/src/strptime.c
+===================================================================
+--- xlog-2.0.25.orig/src/strptime.c
++++ xlog-2.0.25/src/strptime.c
+@@ -52,9 +52,7 @@
+ #  define localtime_r my_localtime_r
+ static struct tm *localtime_r __P ((const time_t *, struct tm *));
+ static struct tm *
+-localtime_r (t, tp)
+-     const time_t *t;
+-     struct tm *tp;
++localtime_r(const time_t *t, struct tm *tp)
+ {
+   struct tm *l = localtime (t);
+   if (! l)
+@@ -254,12 +252,7 @@ static char *
+ #ifdef _LIBC
+ internal_function
+ #endif
+-strptime_internal (rp, fmt, tm, decided, era_cnt)
+-     const char *rp;
+-     const char *fmt;
+-     struct tm *tm;
+-     enum locale_status *decided;
+-     int era_cnt;
++strptime_internal(const char *rp, const char *fmt, struct tm *tm, enum locale_status *decided, int era_cnt)
+ {
+   const char *rp_backup;
+   int cnt;
+@@ -988,10 +981,7 @@ strptime_internal (rp, fmt, tm, decided,
+ 
+ 
+ char *
+-mystrptime (buf, format, tm)
+-     const char *buf;
+-     const char *format;
+-     struct tm *tm;
++mystrptime( const char *buf, const char *format, struct tm *tm)
+ {
+   enum locale_status decided;
+ 

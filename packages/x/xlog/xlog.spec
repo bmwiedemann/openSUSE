@@ -2,7 +2,7 @@
 # spec file for package xlog
 #
 # Copyright (c) 2019 Walter Fey DL8FCL
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # This file is under MIT license
 
@@ -18,6 +18,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Hamradio/Logging
 URL:            https://www.nongnu.org/xlog/
 Source:         https://download.savannah.nongnu.org/releases/xlog/%{name}-%{version}.tar.gz
+Patch0:         xlog-2.0.25-fix_old-style_function_definition.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk+-2.0)
