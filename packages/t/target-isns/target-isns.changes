@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 12 17:51:04 UTC 2026 - Lee Duncan <lduncan@suse.com>
+
+- Update to version v0.6.8+11.8a2bdcc:
+  * replaces previous tarball
+  * Fix compiler warning. (fixes factory issue)
+  * Update cmake minimum version.
+  * Fix CMake warnings about min version required.
+  * removes need for target-isns-handle-newer-cmake.patch,
+    since updated code includes similar changes
+  * SPEC file updated to use %autosetup macro
+
+-------------------------------------------------------------------
 Wed Feb 07 18:50:18 UTC 2024 - lduncan@suse.com
 
 - Changed _service file to name retrieved tarball
@@ -218,4 +230,3 @@ Thu Sep 25 10:30:26 PDT 2014 - lduncan@suse.com
 - First attempt at importing this github project
   into OBS
 
--------------------------------------------------------------------

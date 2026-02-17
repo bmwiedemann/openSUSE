@@ -1,7 +1,7 @@
 #
 # spec file for package target-isns
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,9 @@ Name:           target-isns
 Summary:        Supplies iSNS support for Linux kernel target
 License:        GPL-2.0-or-later
 Group:          System/Kernel
-Version:        v0.6.8+2.f9922c2be69e
+Version:        v0.6.8+11.8a2bdcc
 Release:        0
 Source:         %{name}-%{version}.tar.xz
-Patch1:         %{name}-handle-newer-cmake.patch
 URL:            https://github.com/open-iscsi/target-isns
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cmake
@@ -45,8 +44,7 @@ initiators can be configured to discover the targets by asking the
 iSNS server.
 
 %prep
-%setup -n %{name}-%{version}
-%patch -p1 -P 1
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
