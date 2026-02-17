@@ -998,4 +998,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1331424</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>88f9008651b1034e34842453b7e2da36</srcmd5>
+    <version>580.126.18</version>
+    <time>1771350272</time>
+    <user>anag_factory</user>
+    <comment>- update non-CUDA variant to version 580.126.18 (boo#1258154)
+- updated CUDA variant to version 580.126.16
+
+- kernel-6.19.patch: fixes build against kernel 6.19</comment>
+    <requestid>1333591</requestid>
+  </revision>
 </revisionlist>

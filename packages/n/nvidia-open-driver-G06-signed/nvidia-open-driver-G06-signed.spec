@@ -16,14 +16,14 @@
 #
 
 
-%define gfx_aarch64_version 580.126.09
+%define gfx_aarch64_version 580.126.18
 
 %ifarch aarch64
 %define gfx_version %gfx_aarch64_version
 %else
-%define gfx_version 580.126.09
+%define gfx_version 580.126.18
 %endif
-%define cuda_version 580.126.09
+%define cuda_version 580.126.16
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 
@@ -103,6 +103,9 @@ Source17:       kmp-post.sh
 Source18:       Check4WrongSupplements.sh
 %if 0%{?sle_version} < 150600
 Patch0:         kernel-5.14.patch
+%endif
+%if "%{flavor}" == "cuda"
+Patch1:         kernel-6.19.patch
 %endif
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes

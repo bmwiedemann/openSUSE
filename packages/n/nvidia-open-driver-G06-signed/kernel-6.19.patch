@@ -1,0 +1,23 @@
+--- open-gpu-kernel-modules-580.126.09/kernel-open/conftest.sh.orig	2026-02-10 11:27:43.966176000 +0100
++++ open-gpu-kernel-modules-580.126.09/kernel-open/conftest.sh	2026-02-10 11:28:58.024494000 +0100
+@@ -1403,7 +1403,8 @@ compile_test() {
+             #include <linux/memremap.h>
+             void init_page(void) {
+                 struct page *page;
+-                zone_device_page_init(page, 0);
++                struct dev_pagemap *pgmap;
++                zone_device_page_init(page, NULL, 0);
+             }"
+             compile_check_conftest "$CODE" "NV_ZONE_DEVICE_PAGE_INIT_HAS_ORDER_ARG" "" "types"
+         ;;
+--- open-gpu-kernel-modules-580.126.09/kernel-open/nvidia-uvm/uvm_hmm.c.orig	2026-02-10 11:19:02.429363000 +0100
++++ open-gpu-kernel-modules-580.126.09/kernel-open/nvidia-uvm/uvm_hmm.c	2026-02-10 11:29:16.167092000 +0100
+@@ -79,7 +79,7 @@ module_param(uvm_disable_hmm, bool, 0444
+ // function will need to be revisited
+ //
+ #if defined(NV_ZONE_DEVICE_PAGE_INIT_HAS_ORDER_ARG)
+-#define ZONE_DEVICE_PAGE_INIT(page)   zone_device_page_init(page, 0)
++#define ZONE_DEVICE_PAGE_INIT(page)   zone_device_page_init(page, NULL, 0)
+ #else
+ #define ZONE_DEVICE_PAGE_INIT(page)   zone_device_page_init(page)
+ #endif
