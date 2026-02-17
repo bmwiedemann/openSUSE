@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Thu Feb 12 19:43:40 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.0
+- Changes since 6.5.91:
+  * Update version for new release 6.6.0
+
+-------------------------------------------------------------------
+Wed Jan 28 16:15:26 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.91
+- Changes since 6.5.90:
+  * Update version for new release 6.5.91
+
+-------------------------------------------------------------------
+Sat Jan 24 18:48:46 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.90:
+  * New component of Plasma
+  * For more details see https://kde.org/announcements/plasma/6/6.5.90
+
+-------------------------------------------------------------------
+Sat Jan 24 17:27:24 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Reshuffle %files section a bit
+- Avoid %conf to fix build on Leap 15
+
+-------------------------------------------------------------------
+Sat Jan 10 01:53:59 UTC 2026 - Shawn Dunn <sfalken@opensuse.org>
+
+- Initial Packaging
