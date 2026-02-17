@@ -203,4 +203,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * xe: Add GSC 105.0.2.1301 for PTL</comment>
     <requestid>1327792</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c7332cc4211349a8d0fb24fc9a629e30</srcmd5>
+    <version>20260214</version>
+    <time>1771342607</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260214 (git commit 3a0e2a540dca):
+  * xe: Update GUC to v70.58.0 for LNL, BMG, PTL</comment>
+    <requestid>1333334</requestid>
+  </revision>
 </revisionlist>
