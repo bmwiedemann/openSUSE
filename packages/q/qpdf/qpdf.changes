@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun Feb 15 13:35:48 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Include bash and zsh completions
+- Update to version 12.3.2:
+  * Full changelog at https://qpdf.readthedocs.io/en/12.3/release-notes.html
+  * Fix bug introduced in 12.3.0. If the --password was specified
+    for the same file multiple times a usage error was thrown
+  * Fix failure of QPDFJob::run and QPDFJob::createQPDF when called
+    with a copy of a destroyed QPDFJob object
+  * Always set the is_different flag in
+    QPDFFormFieldObjectHelper::getTopLevelField
+  * When parsing qpdf JSON input files allow empty name objects, as
+    allowed by the PDF specification
+  * Add QPDFNameTreeObjectHelper and QPDFNumberTreeObjectHelper
+    constructor overloads that allow a function to be passed to
+    validate the values in the tree.
+  * Add new QPDFNameTreeObjectHelper and QPDFNumberTreeObjectHelper
+    validate method to validate and optionally repair the
+    name/number tree.
+  * Add new get and validate methods to all DocumentHelper classes.
+  * Add new Buffer methods move, view, data, size and empty.
+    The new methods present the Buffer as a char container
+  * Add various new functions in the qpdf::`global namespace to
+    access and set/modify global settings and limits.
+    See Global Options and header file qpdf/global.hh
+  * Add new C-API functions qpdf_global_get_uint32 and
+    qpdf_global_set_uint32 to access and set/modify various global
+    settings and limits.
+  * Attempt to detect if any > C++17 changes snuck into any public
+    headers and check all private headers compile stand-alone.
+  * Disallow option --deterministic-id to be used together with the
+    incompatible options --encrypt or --copy-encryption.
+  * Option --check now includes additional basic checks of the
+    AcroForm, Dests, Outlines, and PageLabels structures.
+  * Add new option --global to set or modify various global options
+    and limits.
+  * Fix completion scripts and handling to avoid leaking arguments
+    into the environment during completion and to correctly handle
+    bashcompinit for zsh users.
+  * Add new --remove-acroform option to exclude the AcroForm
+    dictionary from the output PDF. This option can be useful
+    particularly when the --flatten-annotations option is used on
+    damaged PDF files.
+  * Add new inspection mode to help with the inspection and manual
+    repair of damaged PDF files.
+  * QPDFWriter will no longer add filters when writing empty streams.
+  * More sanity checks have been added when files with damaged xref
+    tables are recovered.
+
+-------------------------------------------------------------------
 Tue Sep  9 18:35:56 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Enable Zopfli compression:

@@ -19,7 +19,7 @@
 %define so_version 30
 %bcond_without zopfli
 Name:           qpdf
-Version:        12.2.0
+Version:        12.3.2
 Release:        0
 Summary:        Command-line tools and library for transforming PDF files
 License:        Apache-2.0
@@ -61,8 +61,8 @@ existing PDF files.
 %package doc
 Summary:        Documentation files for qpdf
 Group:          Documentation/HTML
-BuildArch:      noarch
 Obsoletes:      %{name}-htmldoc
+BuildArch:      noarch
 
 %description doc
 This package contains the documentation for qpdf
@@ -120,6 +120,10 @@ pushd build/manual/doc-dist
   cp -a manual-single-page-html/* %{buildroot}%{_docdir}/%{name}/singlehtml/
   install -Dm644 qpdf-manual.pdf %{buildroot}%{_docdir}/%{name}/qpdf-manual.pdf
 popd
+
+install -D -m 0644 completions/bash/qpdf %{buildroot}%{_datadir}/bash-completion/completions/qpdf
+install -D -m 0644 completions/zsh/_qpdf %{buildroot}%{_datadir}/zsh/site-functions/_qpdf
+
 # create symlinks for html and singlehtml duplicate docs
 %fdupes -s %{buildroot}%{_docdir}/%{name}
 
@@ -131,6 +135,10 @@ popd
 %license Artistic-2.0 LICENSE.txt
 %{_bindir}/{fix-qdf,qpdf,zlib-flate}
 %{_mandir}/man1/{fix-qdf,qpdf,zlib-flate}.1%{?ext_man}
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/bash-completion/completions/qpdf
+%{_datadir}/zsh/site-functions/_qpdf
 
 %files doc
 %doc %{_docdir}/%{name}/html
