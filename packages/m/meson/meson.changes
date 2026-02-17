@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 10 11:45:57 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update 14001.patch: ensure to get valid rich deps with
+  version constraints.
+
+-------------------------------------------------------------------
 Mon Jan 19 07:23:47 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.10.1:
