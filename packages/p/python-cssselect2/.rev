@@ -91,4 +91,14 @@
     <comment></comment>
     <requestid>1254703</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>25e1e4af586e94318fa2b0de73faf37c</srcmd5>
+    <version>0.9.0</version>
+    <time>1771342675</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.9.0:
+  * Drop support of Python 3.9, support 3.14
+  * Support :host</comment>
+    <requestid>1333412</requestid>
+  </revision>
 </revisionlist>
