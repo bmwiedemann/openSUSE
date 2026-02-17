@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 16 16:48:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Remove shebang.
+  * Synced with python/cpython@f912e5a2f6.
+  * Declare the backports namespace package.
+  * Backported tests from CPython.
+  * Fixed a bug in _proc_gnulong on Python 3.8 where removesuffix
+    was used.
+
+-------------------------------------------------------------------
 Tue Apr  1 13:08:39 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make it compatible with older setuptools

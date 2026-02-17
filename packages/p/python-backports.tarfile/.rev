@@ -25,4 +25,18 @@
 - Normalize metadata directory name.</comment>
     <requestid>1266169</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>88e288f7a412e3f99fd6d794d103988f</srcmd5>
+    <version>1.2.0</version>
+    <time>1771342655</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.2.0:
+  * Remove shebang.
+  * Synced with python/cpython@f912e5a2f6.
+  * Declare the backports namespace package.
+  * Backported tests from CPython.
+  * Fixed a bug in _proc_gnulong on Python 3.8 where removesuffix
+    was used.</comment>
+    <requestid>1333396</requestid>
+  </revision>
 </revisionlist>

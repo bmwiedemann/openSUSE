@@ -1,7 +1,7 @@
 #
 # spec file for package python-backports.tarfile
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-backports.tarfile
-Version:        1.0.0
+Version:        1.2.0
 Release:        0
 Summary:        Backport of CPython tarfile module
 License:        MIT
 URL:            https://github.com/jaraco/backports.tarfile
-Source:         https://files.pythonhosted.org/packages/source/b/backports.tarfile/backports.tarfile-1.0.0.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/b/backports.tarfile/backports_tarfile-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 56}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
@@ -39,7 +39,7 @@ BuildArch:      noarch
 Backport of CPython tarfile module
 
 %prep
-%autosetup -p1 -n backports.tarfile-%{version}
+%autosetup -p1 -n backports_tarfile-%{version}
 
 %build
 %pyproject_wheel
