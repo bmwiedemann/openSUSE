@@ -78,4 +78,14 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Add the missing Supplements (bsc#1250952)</comment>
     <requestid>1311172</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bb81ff30957f7acf3ea5f3e75f58f9e7</srcmd5>
+    <version>20260202</version>
+    <time>1771342599</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260202 (git commit 40c017e718f9):
+  * ath12k: WCN7850 hw2.0: update board-2.bin
+  * ath12k: QCN9274 hw2.0: update to WLAN.WBE.1.6-01243-QCAHKSWPL_SILICONZ-1</comment>
+    <requestid>1333332</requestid>
+  </revision>
 </revisionlist>

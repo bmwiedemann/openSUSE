@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  2 10:21:08 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260202 (git commit 40c017e718f9):
+  * ath12k: WCN7850 hw2.0: update board-2.bin
+  * ath12k: QCN9274 hw2.0: update to WLAN.WBE.1.6-01243-QCAHKSWPL_SILICONZ-1
+
+-------------------------------------------------------------------
 Mon Oct 13 15:23:22 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Add the missing Supplements (bsc#1250952)
