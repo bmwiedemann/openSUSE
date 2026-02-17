@@ -314,4 +314,20 @@ After this PR, there will be a delete request for kernel-firmware.
   * rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x06EB_C65F</comment>
     <requestid>1327791</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>27b2d214433a7088fc244bee9eb5fb22</srcmd5>
+    <version>20260206</version>
+    <time>1771342602</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260206 (git commit f2dbd7a7a74b):
+  * Bluetooth: Add symbolic links for Intel Solar JfP2/1 firmware variants
+  * Bluetooth: Add symbolic links for Intel Solar firmware variants
+  * Bluetooth: Add symbolic links for Intel Pulsar firmware variants
+  * Bluetooth: Add symbolic links for Intel AX201 firmware variants
+
+- Update to version 20260203 (git commit ce97e4b1cb87):
+  * linux-firmware: Update firmware file for Intel Solar core
+  * rtl_bt: Update RTL8822C BT USB and UART firmware to 0x0673</comment>
+    <requestid>1333333</requestid>
+  </revision>
 </revisionlist>
