@@ -211,4 +211,16 @@
       context, e.g. when used with ``asyncio.gather()``.</comment>
     <requestid>1321928</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7ba28af449fc5c99126c30d69c7efe1f</srcmd5>
+    <version>3.11.1</version>
+    <time>1771342671</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.11.1 (bsc#1257403, CVE-2025-14550):
+  * Fixed sync_to_async wrapping callables with attribute named context
+  * CVE-2025-14550: Fixed duplicate header handling in WsgiToAsgi.
+
+    context, e.g. when used with ``asyncio.gather()``.</comment>
+    <requestid>1333411</requestid>
+  </revision>
 </revisionlist>

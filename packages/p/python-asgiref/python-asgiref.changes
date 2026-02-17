@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 16 17:10:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.11.1 (bsc#1257403, CVE-2025-14550):
+  * Fixed sync_to_async wrapping callables with attribute named context
+  * CVE-2025-14550: Fixed duplicate header handling in WsgiToAsgi.
+
+-------------------------------------------------------------------
 Wed Dec  3 22:15:38 UTC 2025 - Guang Yee <gyee@suse.com>
 
 - Update to 3.11.0
@@ -7,7 +14,7 @@ Wed Dec  3 22:15:38 UTC 2025 - Guang Yee <gyee@suse.com>
     control the context used by the underlying task.
     The parent context is already propagated by default but the additional
     control is useful if multiple ``sync_to_async`` calls need to share the same
-    context, e.g. when used with ``asyncio.gather()``. 
+    context, e.g. when used with ``asyncio.gather()``.
 
 -------------------------------------------------------------------
 Mon Sep 29 10:29:32 UTC 2025 - Dirk Müller <dmueller@suse.com>
