@@ -1,7 +1,7 @@
 #
 # spec file for package mupdf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define gcc_ver 11
 %endif
 Name:           mupdf
-Version:        1.26.3
+Version:        1.27.1
 Release:        0
 Summary:        PDF and XPS Viewer and Parser and Rendering Library
 License:        AGPL-3.0-or-later
@@ -31,6 +31,8 @@ Source0:        https://mupdf.com/downloads/archive/%{name}-%{version}-source.ta
 Source1:        %{name}.desktop
 Source2:        %{name}-gl.desktop
 Patch0:         mupdf-no-strip.patch
+# PATCH-FIX-UPSTREAM cve-2026-25556.patch -- based on commit d4743b6092d513321c23c6f7fe5cff87cde043c1
+Patch1:         cve-2026-25556.patch
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
