@@ -222,4 +222,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * rtw89: 8852c: update REGD R73-R60, txpwr R82 and element of diag MAC</comment>
     <requestid>1330136</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c04b122e8a31f5147459c34f0e8ddf36</srcmd5>
+    <version>20260214</version>
+    <time>1771342638</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260214 (git commit 3a0e2a540dca):
+  * rtw89: 8851b: add format-1 for fw v0.29.41.5 with fw elements
+  * rtw89: 8852a: add format-1 for fw v0.13.36.2 with fw elements
+  * rtw89: 8852bt: add regd and diag_mac and update txpwr to R09
+  * rtw89: 8852b: update txpwr element to R43</comment>
+    <requestid>1333339</requestid>
+  </revision>
 </revisionlist>

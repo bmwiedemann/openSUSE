@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 16 08:29:47 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260214 (git commit 3a0e2a540dca):
+  * rtw89: 8851b: add format-1 for fw v0.29.41.5 with fw elements
+  * rtw89: 8852a: add format-1 for fw v0.13.36.2 with fw elements
+  * rtw89: 8852bt: add regd and diag_mac and update txpwr to R09
+  * rtw89: 8852b: update txpwr element to R43
+
+-------------------------------------------------------------------
 Fri Jan 30 08:15:45 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260130 (git commit 82e3e0e4c96f):
