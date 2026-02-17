@@ -15,10 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%bcond_with     polkit_rules
-
 Name:           run0-wrappers
-Version:        0.4+git20260109.43967c3
+Version:        0.4+git20260203.bbbfcf8
 Release:        0
 Summary:        Configs and scripts to simulate some sudo and su behavior with run0
 License:        BSD-2-Clause
@@ -42,7 +40,6 @@ The run0 polkit rule tries to be compatible with the
 sudo-policy-auth-wheel-self RPM as far as possible. Supported are
 "nopasswd" and self authentication if an user is in the wheel group.
 
-%if %{with polkit_rules}
 %package -n run0-policy-wheel-auth-self
 Summary:        Users in the wheel group can authenticate as admin
 Requires:       %{name} = %{version}
@@ -52,7 +49,6 @@ BuildArch:      noarch
 %description -n run0-policy-wheel-auth-self
 run0 authentication policy that allows users in the wheel group to
 authenticate as root with their own password.
-%endif
 
 %prep
 %autosetup
@@ -60,18 +56,12 @@ authenticate as root with their own password.
 %build
 %meson --sysconfdir=%{_prefix}/etc -Dpkexec-compat=true -Dsudo-compat=true
 %meson_build
-%if %{with polkit_rules}
 sed -i -e 's|"wheel";|"";|g' polkit/50-run0-sudo.rules
-%endif
 
 %install
 %meson_install
 install -Dm0644 %{SOURCE1} %{buildroot}%{_tmpfilesdir}/run0-wrappers.conf
-%if %{with polkit_rules}
 echo 'polkit._run0_admin_group = "wheel";' > %{buildroot}%{_datadir}/polkit-1/rules.d/51-run0-admin-group.rules
-%else
-rm -fv %{buildroot}%{_datadir}/polkit-1/rules.d/50-run0-sudo.rules
-%endif
 
 %files
 %license LICENSE
@@ -82,10 +72,8 @@ rm -fv %{buildroot}%{_datadir}/polkit-1/rules.d/50-run0-sudo.rules
 %{_bindir}/run0-sudo
 %{_bindir}/sudo
 %{_prefix}%{_sysconfdir}/profile.d/run0-wrappers.sh
-%if %{with polkit_rules}
 %attr(0555, root, root) %dir %{_datadir}/polkit-1/rules.d
 %{_datadir}/polkit-1/rules.d/50-run0-sudo.rules
-%endif
 %{_tmpfilesdir}/run0-wrappers.conf
 %{_mandir}/man1/run0-pkexec.1%{?ext_man}
 %{_mandir}/man1/pkexec.1%{?ext_man}
@@ -94,9 +82,7 @@ rm -fv %{buildroot}%{_datadir}/polkit-1/rules.d/50-run0-sudo.rules
 %{_mandir}/man1/sudo.1%{?ext_man}
 %{_mandir}/man5/sudo.conf.5%{?ext_man}
 
-%if %{with polkit_rules}
 %files -n run0-policy-wheel-auth-self
 %{_datadir}/polkit-1/rules.d/51-run0-admin-group.rules
-%endif
 
 %changelog

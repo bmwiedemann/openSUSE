@@ -7,4 +7,17 @@
     <comment></comment>
     <requestid>1326718</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c56ad92f94e90f6dbe7cf45b1fc71168</srcmd5>
+    <version>0.4+git20260203.bbbfcf8</version>
+    <time>1771343081</time>
+    <user>anag_factory</user>
+    <comment>- Always enable polkit rules
+
+- Update to version 0.4+git20260203.bbbfcf8:
+  * Change all upper case variables to internal lowercase ones (#3)
+  * tests: run shellcheck on all scripts
+  * run0-sudo: unset secure_path before calling run0 (test 5)</comment>
+    <requestid>1333372</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 16 14:09:39 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Always enable polkit rules
+
+-------------------------------------------------------------------
+Tue Feb 10 16:12:24 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20260203.bbbfcf8:
+  * Change all upper case variables to internal lowercase ones (#3)
+  * tests: run shellcheck on all scripts
+  * run0-sudo: unset secure_path before calling run0 (test 5)
+
+-------------------------------------------------------------------
 Fri Jan 09 13:30:19 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.4+git20260109.43967c3:
