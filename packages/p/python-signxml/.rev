@@ -7,4 +7,14 @@
     <comment>- Initial release of 4.2.0.</comment>
     <requestid>1302531</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6217c67d96876c756af82ef55a270423</srcmd5>
+    <version>4.3.0</version>
+    <time>1771343227</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.3.0:
+  * Remove registration for ec.SECT* ECDSA curves
+  * Fix key info matching behavior</comment>
+    <requestid>1333380</requestid>
+  </revision>
 </revisionlist>
