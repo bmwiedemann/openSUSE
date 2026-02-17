@@ -1,7 +1,7 @@
-Index: chromium-136.0.7103.48/third_party/libvpx/source/libvpx/vp9/encoder/ppc/vp9_quantize_vsx.c
+Index: chromium-144.0.7559.59/third_party/libvpx/source/libvpx/vp9/encoder/ppc/vp9_quantize_vsx.c
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/libvpx/source/libvpx/vp9/encoder/ppc/vp9_quantize_vsx.c
-+++ chromium-136.0.7103.48/third_party/libvpx/source/libvpx/vp9/encoder/ppc/vp9_quantize_vsx.c
+--- chromium-144.0.7559.59.orig/third_party/libvpx/source/libvpx/vp9/encoder/ppc/vp9_quantize_vsx.c
++++ chromium-144.0.7559.59/third_party/libvpx/source/libvpx/vp9/encoder/ppc/vp9_quantize_vsx.c
 @@ -38,6 +38,28 @@ static INLINE int16x8_t vec_max_across(i
    return vec_max(a, vec_perm(a, a, vec_perm16));
  }
@@ -137,10 +137,10 @@ Index: chromium-136.0.7103.48/third_party/libvpx/source/libvpx/vp9/encoder/ppc/v
  
      eob = vec_max(eob, vec_or(scan0, zero_coeff0));
      eob2 = vec_max(vec_or(scan1, zero_coeff1), vec_or(scan2, zero_coeff2));
-Index: chromium-136.0.7103.48/third_party/libvpx/source/libvpx/vpx_dsp/ppc/fdct32x32_vsx.c
+Index: chromium-144.0.7559.59/third_party/libvpx/source/libvpx/vpx_dsp/ppc/fdct32x32_vsx.c
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/libvpx/source/libvpx/vpx_dsp/ppc/fdct32x32_vsx.c
-+++ chromium-136.0.7103.48/third_party/libvpx/source/libvpx/vpx_dsp/ppc/fdct32x32_vsx.c
+--- chromium-144.0.7559.59.orig/third_party/libvpx/source/libvpx/vpx_dsp/ppc/fdct32x32_vsx.c
++++ chromium-144.0.7559.59/third_party/libvpx/source/libvpx/vpx_dsp/ppc/fdct32x32_vsx.c
 @@ -15,6 +15,28 @@
  #include "vpx_dsp/ppc/txfm_common_vsx.h"
  #include "vpx_dsp/ppc/types_vsx.h"
@@ -255,10 +255,10 @@ Index: chromium-136.0.7103.48/third_party/libvpx/source/libvpx/vpx_dsp/ppc/fdct3
  }
  
  // Returns 1 if negative 0 if positive
-Index: chromium-136.0.7103.48/third_party/libvpx/source/libvpx/vpx_dsp/ppc/quantize_vsx.c
+Index: chromium-144.0.7559.59/third_party/libvpx/source/libvpx/vpx_dsp/ppc/quantize_vsx.c
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/libvpx/source/libvpx/vpx_dsp/ppc/quantize_vsx.c
-+++ chromium-136.0.7103.48/third_party/libvpx/source/libvpx/vpx_dsp/ppc/quantize_vsx.c
+--- chromium-144.0.7559.59.orig/third_party/libvpx/source/libvpx/vpx_dsp/ppc/quantize_vsx.c
++++ chromium-144.0.7559.59/third_party/libvpx/source/libvpx/vpx_dsp/ppc/quantize_vsx.c
 @@ -13,6 +13,28 @@
  #include "./vpx_dsp_rtcd.h"
  #include "vpx_dsp/ppc/types_vsx.h"

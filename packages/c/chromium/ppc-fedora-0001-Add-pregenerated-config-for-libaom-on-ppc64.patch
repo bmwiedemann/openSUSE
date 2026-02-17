@@ -1,10 +1,10 @@
-Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/config/aom_config.asm
+Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/aom_config.asm
 ===================================================================
 --- /dev/null
-+++ chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/config/aom_config.asm
-@@ -0,0 +1,95 @@
++++ chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/aom_config.asm
+@@ -0,0 +1,100 @@
 +;
-+; Copyright (c) 2024, Alliance for Open Media. All rights reserved.
++; Copyright (c) 2025, Alliance for Open Media. All rights reserved.
 +;
 +; This source code is subject to the terms of the BSD 2 Clause License and
 +; the Alliance for Open Media Patent License 1.0. If the BSD 2 Clause License
@@ -16,6 +16,7 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +AOM_ARCH_AARCH64 equ 0
 +AOM_ARCH_ARM equ 0
 +AOM_ARCH_PPC equ 1
++AOM_ARCH_RISCV equ 0
 +AOM_ARCH_X86 equ 0
 +AOM_ARCH_X86_64 equ 0
 +CONFIG_ACCOUNTING equ 0
@@ -33,6 +34,7 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +CONFIG_COLLECT_PARTITION_STATS equ 0
 +CONFIG_COLLECT_RD_STATS equ 0
 +CONFIG_CWG_C013 equ 0
++CONFIG_CWG_E050 equ 0
 +CONFIG_DEBUG equ 0
 +CONFIG_DENOISE equ 1
 +CONFIG_DISABLE_FULL_PIXEL_SPLIT_8X8 equ 1
@@ -42,11 +44,12 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +CONFIG_GCC equ 1
 +CONFIG_GCOV equ 0
 +CONFIG_GPROF equ 0
++CONFIG_HIGHWAY equ 0
 +CONFIG_INSPECTION equ 0
 +CONFIG_INTERNAL_STATS equ 0
 +CONFIG_INTER_STATS_ONLY equ 0
 +CONFIG_LIBVMAF_PSNR_PEAK equ 1
-+CONFIG_LIBYUV equ 0
++CONFIG_LIBYUV equ 1
 +CONFIG_MAX_DECODE_PROFILE equ 2
 +CONFIG_MISMATCH_DEBUG equ 0
 +CONFIG_MULTITHREAD equ 1
@@ -80,12 +83,14 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +HAVE_ARM_CRC32 equ 0
 +HAVE_AVX equ 0
 +HAVE_AVX2 equ 0
++HAVE_AVX512 equ 0
 +HAVE_FEXCEPT equ 1
 +HAVE_MMX equ 0
 +HAVE_NEON equ 0
 +HAVE_NEON_DOTPROD equ 0
 +HAVE_NEON_I8MM equ 0
 +HAVE_PTHREAD_H equ 1
++HAVE_RVV equ 0
 +HAVE_SSE equ 0
 +HAVE_SSE2 equ 0
 +HAVE_SSE3 equ 0
@@ -98,13 +103,13 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +HAVE_VSX equ 1
 +HAVE_WXWIDGETS equ 0
 +STATIC_LINK_JXL equ 0
-Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/config/aom_config.c
+Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/aom_config.c
 ===================================================================
 --- /dev/null
-+++ chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/config/aom_config.c
++++ chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/aom_config.c
 @@ -0,0 +1,13 @@
 +/*
-+ * Copyright (c) 2024, Alliance for Open Media. All rights reserved.
++ * Copyright (c) 2025, Alliance for Open Media. All rights reserved.
 + *
 + * This source code is subject to the terms of the BSD 2 Clause License and
 + * the Alliance for Open Media Patent License 1.0. If the BSD 2 Clause License
@@ -114,15 +119,15 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 + * PATENTS file, you can obtain it at www.aomedia.org/license/patent.
 + */
 +#include "aom/aom_codec.h"
-+static const char* const cfg = "cmake ../source/libaom -G \"Unix Makefiles\" -DCMAKE_TOOLCHAIN_FILE=\"../source/libaom/build/cmake/toolchains/ppc-linux-gcc.cmake\" -DCONFIG_AV1_DECODER=0 -DCONFIG_AV1_ENCODER=1 -DCONFIG_LIBYUV=0 -DCONFIG_AV1_HIGHBITDEPTH=0 -DCONFIG_AV1_TEMPORAL_DENOISING=1 -DCONFIG_QUANT_MATRIX=0 -DCONFIG_REALTIME_ONLY=1 -DCONFIG_SIZE_LIMIT=1 -DDECODE_HEIGHT_LIMIT=16384 -DDECODE_WIDTH_LIMIT=16384";
++static const char* const cfg = "cmake ../source/libaom -G \"Unix Makefiles\" -DCMAKE_TOOLCHAIN_FILE=\"../source/libaom/build/cmake/toolchains/ppc-linux-gcc.cmake\" -DCONFIG_AV1_DECODER=0 -DCONFIG_AV1_ENCODER=1 -DCONFIG_AV1_HIGHBITDEPTH=0 -DCONFIG_AV1_TEMPORAL_DENOISING=1 -DCONFIG_QUANT_MATRIX=0 -DCONFIG_REALTIME_ONLY=1 -DCONFIG_SIZE_LIMIT=1 -DDECODE_HEIGHT_LIMIT=16384 -DDECODE_WIDTH_LIMIT=16384";
 +const char *aom_codec_build_config(void) {return cfg;}
-Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/config/aom_config.h
+Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/aom_config.h
 ===================================================================
 --- /dev/null
-+++ chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/config/aom_config.h
-@@ -0,0 +1,98 @@
++++ chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/aom_config.h
+@@ -0,0 +1,103 @@
 +/*
-+ * Copyright (c) 2024, Alliance for Open Media. All rights reserved.
++ * Copyright (c) 2025, Alliance for Open Media. All rights reserved.
 + *
 + * This source code is subject to the terms of the BSD 2 Clause License and
 + * the Alliance for Open Media Patent License 1.0. If the BSD 2 Clause License
@@ -136,6 +141,7 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +#define AOM_ARCH_AARCH64 0
 +#define AOM_ARCH_ARM 0
 +#define AOM_ARCH_PPC 1
++#define AOM_ARCH_RISCV 0
 +#define AOM_ARCH_X86 0
 +#define AOM_ARCH_X86_64 0
 +#define CONFIG_ACCOUNTING 0
@@ -153,6 +159,7 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +#define CONFIG_COLLECT_PARTITION_STATS 0
 +#define CONFIG_COLLECT_RD_STATS 0
 +#define CONFIG_CWG_C013 0
++#define CONFIG_CWG_E050 0
 +#define CONFIG_DEBUG 0
 +#define CONFIG_DENOISE 1
 +#define CONFIG_DISABLE_FULL_PIXEL_SPLIT_8X8 1
@@ -162,11 +169,12 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +#define CONFIG_GCC 1
 +#define CONFIG_GCOV 0
 +#define CONFIG_GPROF 0
++#define CONFIG_HIGHWAY 0
 +#define CONFIG_INSPECTION 0
 +#define CONFIG_INTERNAL_STATS 0
 +#define CONFIG_INTER_STATS_ONLY 0
 +#define CONFIG_LIBVMAF_PSNR_PEAK 1
-+#define CONFIG_LIBYUV 0
++#define CONFIG_LIBYUV 1
 +#define CONFIG_MAX_DECODE_PROFILE 2
 +#define CONFIG_MISMATCH_DEBUG 0
 +#define CONFIG_MULTITHREAD 1
@@ -200,12 +208,14 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +#define HAVE_ARM_CRC32 0
 +#define HAVE_AVX 0
 +#define HAVE_AVX2 0
++#define HAVE_AVX512 0
 +#define HAVE_FEXCEPT 1
 +#define HAVE_MMX 0
 +#define HAVE_NEON 0
 +#define HAVE_NEON_DOTPROD 0
 +#define HAVE_NEON_I8MM 0
 +#define HAVE_PTHREAD_H 1
++#define HAVE_RVV 0
 +#define HAVE_SSE 0
 +#define HAVE_SSE2 0
 +#define HAVE_SSE3 0
@@ -219,13 +229,13 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +#define HAVE_WXWIDGETS 0
 +#define STATIC_LINK_JXL 0
 +#endif  // AOM_CONFIG_H_
-Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/config/aom_dsp_rtcd.h
+Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/aom_dsp_rtcd.h
 ===================================================================
 --- /dev/null
-+++ chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/config/aom_dsp_rtcd.h
-@@ -0,0 +1,1501 @@
++++ chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/aom_dsp_rtcd.h
+@@ -0,0 +1,1177 @@
 +/*
-+ * Copyright (c) 2024, Alliance for Open Media. All rights reserved.
++ * Copyright (c) 2025, Alliance for Open Media. All rights reserved.
 + *
 + * This source code is subject to the terms of the BSD 2 Clause License and
 + * the Alliance for Open Media Patent License 1.0. If the BSD 2 Clause License
@@ -298,12 +308,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_dc_128_predictor_16x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_128_predictor_16x32 aom_dc_128_predictor_16x32_c
 +
-+void aom_dc_128_predictor_16x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_128_predictor_16x4 aom_dc_128_predictor_16x4_c
-+
-+void aom_dc_128_predictor_16x64_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_128_predictor_16x64 aom_dc_128_predictor_16x64_c
-+
 +void aom_dc_128_predictor_16x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_128_predictor_16x8 aom_dc_128_predictor_16x8_c
 +
@@ -316,20 +320,11 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_dc_128_predictor_32x64_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_128_predictor_32x64 aom_dc_128_predictor_32x64_c
 +
-+void aom_dc_128_predictor_32x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_128_predictor_32x8 aom_dc_128_predictor_32x8_c
-+
-+void aom_dc_128_predictor_4x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_128_predictor_4x16 aom_dc_128_predictor_4x16_c
-+
 +void aom_dc_128_predictor_4x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_128_predictor_4x4 aom_dc_128_predictor_4x4_c
 +
 +void aom_dc_128_predictor_4x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_128_predictor_4x8 aom_dc_128_predictor_4x8_c
-+
-+void aom_dc_128_predictor_64x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_128_predictor_64x16 aom_dc_128_predictor_64x16_c
 +
 +void aom_dc_128_predictor_64x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_128_predictor_64x32 aom_dc_128_predictor_64x32_c
@@ -339,9 +334,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +
 +void aom_dc_128_predictor_8x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_128_predictor_8x16 aom_dc_128_predictor_8x16_c
-+
-+void aom_dc_128_predictor_8x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_128_predictor_8x32 aom_dc_128_predictor_8x32_c
 +
 +void aom_dc_128_predictor_8x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_128_predictor_8x4 aom_dc_128_predictor_8x4_c
@@ -355,12 +347,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_dc_left_predictor_16x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_left_predictor_16x32 aom_dc_left_predictor_16x32_c
 +
-+void aom_dc_left_predictor_16x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_left_predictor_16x4 aom_dc_left_predictor_16x4_c
-+
-+void aom_dc_left_predictor_16x64_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_left_predictor_16x64 aom_dc_left_predictor_16x64_c
-+
 +void aom_dc_left_predictor_16x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_left_predictor_16x8 aom_dc_left_predictor_16x8_c
 +
@@ -373,20 +359,11 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_dc_left_predictor_32x64_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_left_predictor_32x64 aom_dc_left_predictor_32x64_c
 +
-+void aom_dc_left_predictor_32x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_left_predictor_32x8 aom_dc_left_predictor_32x8_c
-+
-+void aom_dc_left_predictor_4x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_left_predictor_4x16 aom_dc_left_predictor_4x16_c
-+
 +void aom_dc_left_predictor_4x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_left_predictor_4x4 aom_dc_left_predictor_4x4_c
 +
 +void aom_dc_left_predictor_4x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_left_predictor_4x8 aom_dc_left_predictor_4x8_c
-+
-+void aom_dc_left_predictor_64x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_left_predictor_64x16 aom_dc_left_predictor_64x16_c
 +
 +void aom_dc_left_predictor_64x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_left_predictor_64x32 aom_dc_left_predictor_64x32_c
@@ -396,9 +373,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +
 +void aom_dc_left_predictor_8x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_left_predictor_8x16 aom_dc_left_predictor_8x16_c
-+
-+void aom_dc_left_predictor_8x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_left_predictor_8x32 aom_dc_left_predictor_8x32_c
 +
 +void aom_dc_left_predictor_8x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_left_predictor_8x4 aom_dc_left_predictor_8x4_c
@@ -412,12 +386,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_dc_predictor_16x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_predictor_16x32 aom_dc_predictor_16x32_c
 +
-+void aom_dc_predictor_16x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_predictor_16x4 aom_dc_predictor_16x4_c
-+
-+void aom_dc_predictor_16x64_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_predictor_16x64 aom_dc_predictor_16x64_c
-+
 +void aom_dc_predictor_16x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_predictor_16x8 aom_dc_predictor_16x8_c
 +
@@ -430,20 +398,11 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_dc_predictor_32x64_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_predictor_32x64 aom_dc_predictor_32x64_c
 +
-+void aom_dc_predictor_32x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_predictor_32x8 aom_dc_predictor_32x8_c
-+
-+void aom_dc_predictor_4x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_predictor_4x16 aom_dc_predictor_4x16_c
-+
 +void aom_dc_predictor_4x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_predictor_4x4 aom_dc_predictor_4x4_c
 +
 +void aom_dc_predictor_4x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_predictor_4x8 aom_dc_predictor_4x8_c
-+
-+void aom_dc_predictor_64x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_predictor_64x16 aom_dc_predictor_64x16_c
 +
 +void aom_dc_predictor_64x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_predictor_64x32 aom_dc_predictor_64x32_c
@@ -453,9 +412,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +
 +void aom_dc_predictor_8x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_predictor_8x16 aom_dc_predictor_8x16_c
-+
-+void aom_dc_predictor_8x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_predictor_8x32 aom_dc_predictor_8x32_c
 +
 +void aom_dc_predictor_8x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_predictor_8x4 aom_dc_predictor_8x4_c
@@ -469,12 +425,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_dc_top_predictor_16x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_top_predictor_16x32 aom_dc_top_predictor_16x32_c
 +
-+void aom_dc_top_predictor_16x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_top_predictor_16x4 aom_dc_top_predictor_16x4_c
-+
-+void aom_dc_top_predictor_16x64_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_top_predictor_16x64 aom_dc_top_predictor_16x64_c
-+
 +void aom_dc_top_predictor_16x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_top_predictor_16x8 aom_dc_top_predictor_16x8_c
 +
@@ -487,20 +437,11 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_dc_top_predictor_32x64_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_top_predictor_32x64 aom_dc_top_predictor_32x64_c
 +
-+void aom_dc_top_predictor_32x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_top_predictor_32x8 aom_dc_top_predictor_32x8_c
-+
-+void aom_dc_top_predictor_4x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_top_predictor_4x16 aom_dc_top_predictor_4x16_c
-+
 +void aom_dc_top_predictor_4x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_top_predictor_4x4 aom_dc_top_predictor_4x4_c
 +
 +void aom_dc_top_predictor_4x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_top_predictor_4x8 aom_dc_top_predictor_4x8_c
-+
-+void aom_dc_top_predictor_64x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_top_predictor_64x16 aom_dc_top_predictor_64x16_c
 +
 +void aom_dc_top_predictor_64x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_top_predictor_64x32 aom_dc_top_predictor_64x32_c
@@ -511,113 +452,11 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_dc_top_predictor_8x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_top_predictor_8x16 aom_dc_top_predictor_8x16_c
 +
-+void aom_dc_top_predictor_8x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_dc_top_predictor_8x32 aom_dc_top_predictor_8x32_c
-+
 +void aom_dc_top_predictor_8x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_top_predictor_8x4 aom_dc_top_predictor_8x4_c
 +
 +void aom_dc_top_predictor_8x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_dc_top_predictor_8x8 aom_dc_top_predictor_8x8_c
-+
-+void aom_dist_wtd_comp_avg_pred_c(uint8_t *comp_pred, const uint8_t *pred, int width, int height, const uint8_t *ref, int ref_stride, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_comp_avg_pred aom_dist_wtd_comp_avg_pred_c
-+
-+unsigned int aom_dist_wtd_sad128x128_avg_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sad128x128_avg aom_dist_wtd_sad128x128_avg_c
-+
-+unsigned int aom_dist_wtd_sad128x64_avg_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sad128x64_avg aom_dist_wtd_sad128x64_avg_c
-+
-+unsigned int aom_dist_wtd_sad16x16_avg_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sad16x16_avg aom_dist_wtd_sad16x16_avg_c
-+
-+unsigned int aom_dist_wtd_sad16x32_avg_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sad16x32_avg aom_dist_wtd_sad16x32_avg_c
-+
-+unsigned int aom_dist_wtd_sad16x8_avg_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sad16x8_avg aom_dist_wtd_sad16x8_avg_c
-+
-+unsigned int aom_dist_wtd_sad32x16_avg_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sad32x16_avg aom_dist_wtd_sad32x16_avg_c
-+
-+unsigned int aom_dist_wtd_sad32x32_avg_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sad32x32_avg aom_dist_wtd_sad32x32_avg_c
-+
-+unsigned int aom_dist_wtd_sad32x64_avg_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sad32x64_avg aom_dist_wtd_sad32x64_avg_c
-+
-+unsigned int aom_dist_wtd_sad4x4_avg_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sad4x4_avg aom_dist_wtd_sad4x4_avg_c
-+
-+unsigned int aom_dist_wtd_sad4x8_avg_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sad4x8_avg aom_dist_wtd_sad4x8_avg_c
-+
-+unsigned int aom_dist_wtd_sad64x128_avg_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sad64x128_avg aom_dist_wtd_sad64x128_avg_c
-+
-+unsigned int aom_dist_wtd_sad64x32_avg_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sad64x32_avg aom_dist_wtd_sad64x32_avg_c
-+
-+unsigned int aom_dist_wtd_sad64x64_avg_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sad64x64_avg aom_dist_wtd_sad64x64_avg_c
-+
-+unsigned int aom_dist_wtd_sad8x16_avg_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sad8x16_avg aom_dist_wtd_sad8x16_avg_c
-+
-+unsigned int aom_dist_wtd_sad8x4_avg_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sad8x4_avg aom_dist_wtd_sad8x4_avg_c
-+
-+unsigned int aom_dist_wtd_sad8x8_avg_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sad8x8_avg aom_dist_wtd_sad8x8_avg_c
-+
-+uint32_t aom_dist_wtd_sub_pixel_avg_variance128x128_c(const uint8_t *src_ptr, int source_stride, int xoffset, int  yoffset, const uint8_t *ref_ptr, int ref_stride, uint32_t *sse, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sub_pixel_avg_variance128x128 aom_dist_wtd_sub_pixel_avg_variance128x128_c
-+
-+uint32_t aom_dist_wtd_sub_pixel_avg_variance128x64_c(const uint8_t *src_ptr, int source_stride, int xoffset, int  yoffset, const uint8_t *ref_ptr, int ref_stride, uint32_t *sse, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sub_pixel_avg_variance128x64 aom_dist_wtd_sub_pixel_avg_variance128x64_c
-+
-+uint32_t aom_dist_wtd_sub_pixel_avg_variance16x16_c(const uint8_t *src_ptr, int source_stride, int xoffset, int  yoffset, const uint8_t *ref_ptr, int ref_stride, uint32_t *sse, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sub_pixel_avg_variance16x16 aom_dist_wtd_sub_pixel_avg_variance16x16_c
-+
-+uint32_t aom_dist_wtd_sub_pixel_avg_variance16x32_c(const uint8_t *src_ptr, int source_stride, int xoffset, int  yoffset, const uint8_t *ref_ptr, int ref_stride, uint32_t *sse, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sub_pixel_avg_variance16x32 aom_dist_wtd_sub_pixel_avg_variance16x32_c
-+
-+uint32_t aom_dist_wtd_sub_pixel_avg_variance16x8_c(const uint8_t *src_ptr, int source_stride, int xoffset, int  yoffset, const uint8_t *ref_ptr, int ref_stride, uint32_t *sse, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sub_pixel_avg_variance16x8 aom_dist_wtd_sub_pixel_avg_variance16x8_c
-+
-+uint32_t aom_dist_wtd_sub_pixel_avg_variance32x16_c(const uint8_t *src_ptr, int source_stride, int xoffset, int  yoffset, const uint8_t *ref_ptr, int ref_stride, uint32_t *sse, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sub_pixel_avg_variance32x16 aom_dist_wtd_sub_pixel_avg_variance32x16_c
-+
-+uint32_t aom_dist_wtd_sub_pixel_avg_variance32x32_c(const uint8_t *src_ptr, int source_stride, int xoffset, int  yoffset, const uint8_t *ref_ptr, int ref_stride, uint32_t *sse, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sub_pixel_avg_variance32x32 aom_dist_wtd_sub_pixel_avg_variance32x32_c
-+
-+uint32_t aom_dist_wtd_sub_pixel_avg_variance32x64_c(const uint8_t *src_ptr, int source_stride, int xoffset, int  yoffset, const uint8_t *ref_ptr, int ref_stride, uint32_t *sse, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sub_pixel_avg_variance32x64 aom_dist_wtd_sub_pixel_avg_variance32x64_c
-+
-+uint32_t aom_dist_wtd_sub_pixel_avg_variance4x4_c(const uint8_t *src_ptr, int source_stride, int xoffset, int  yoffset, const uint8_t *ref_ptr, int ref_stride, uint32_t *sse, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sub_pixel_avg_variance4x4 aom_dist_wtd_sub_pixel_avg_variance4x4_c
-+
-+uint32_t aom_dist_wtd_sub_pixel_avg_variance4x8_c(const uint8_t *src_ptr, int source_stride, int xoffset, int  yoffset, const uint8_t *ref_ptr, int ref_stride, uint32_t *sse, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sub_pixel_avg_variance4x8 aom_dist_wtd_sub_pixel_avg_variance4x8_c
-+
-+uint32_t aom_dist_wtd_sub_pixel_avg_variance64x128_c(const uint8_t *src_ptr, int source_stride, int xoffset, int  yoffset, const uint8_t *ref_ptr, int ref_stride, uint32_t *sse, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sub_pixel_avg_variance64x128 aom_dist_wtd_sub_pixel_avg_variance64x128_c
-+
-+uint32_t aom_dist_wtd_sub_pixel_avg_variance64x32_c(const uint8_t *src_ptr, int source_stride, int xoffset, int  yoffset, const uint8_t *ref_ptr, int ref_stride, uint32_t *sse, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sub_pixel_avg_variance64x32 aom_dist_wtd_sub_pixel_avg_variance64x32_c
-+
-+uint32_t aom_dist_wtd_sub_pixel_avg_variance64x64_c(const uint8_t *src_ptr, int source_stride, int xoffset, int  yoffset, const uint8_t *ref_ptr, int ref_stride, uint32_t *sse, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sub_pixel_avg_variance64x64 aom_dist_wtd_sub_pixel_avg_variance64x64_c
-+
-+uint32_t aom_dist_wtd_sub_pixel_avg_variance8x16_c(const uint8_t *src_ptr, int source_stride, int xoffset, int  yoffset, const uint8_t *ref_ptr, int ref_stride, uint32_t *sse, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sub_pixel_avg_variance8x16 aom_dist_wtd_sub_pixel_avg_variance8x16_c
-+
-+uint32_t aom_dist_wtd_sub_pixel_avg_variance8x4_c(const uint8_t *src_ptr, int source_stride, int xoffset, int  yoffset, const uint8_t *ref_ptr, int ref_stride, uint32_t *sse, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sub_pixel_avg_variance8x4 aom_dist_wtd_sub_pixel_avg_variance8x4_c
-+
-+uint32_t aom_dist_wtd_sub_pixel_avg_variance8x8_c(const uint8_t *src_ptr, int source_stride, int xoffset, int  yoffset, const uint8_t *ref_ptr, int ref_stride, uint32_t *sse, const uint8_t *second_pred, const DIST_WTD_COMP_PARAMS *jcp_param);
-+#define aom_dist_wtd_sub_pixel_avg_variance8x8 aom_dist_wtd_sub_pixel_avg_variance8x8_c
 +
 +void aom_fdct4x4_c(const int16_t *input, tran_low_t *output, int stride);
 +#define aom_fdct4x4 aom_fdct4x4_c
@@ -643,9 +482,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_get_blk_sse_sum_c(const int16_t *data, int stride, int bw, int bh, int *x_sum, int64_t *x2_sum);
 +#define aom_get_blk_sse_sum aom_get_blk_sse_sum_c
 +
-+unsigned int aom_get_mb_ss_c(const int16_t *);
-+#define aom_get_mb_ss aom_get_mb_ss_c
-+
 +void aom_get_var_sse_sum_16x16_dual_c(const uint8_t *src_ptr, int source_stride, const uint8_t *ref_ptr, int ref_stride, uint32_t *sse16x16, unsigned int *tot_sse, int *tot_sum, uint32_t *var16x16);
 +#define aom_get_var_sse_sum_16x16_dual aom_get_var_sse_sum_16x16_dual_c
 +
@@ -657,12 +493,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +
 +void aom_h_predictor_16x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_h_predictor_16x32 aom_h_predictor_16x32_c
-+
-+void aom_h_predictor_16x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_h_predictor_16x4 aom_h_predictor_16x4_c
-+
-+void aom_h_predictor_16x64_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_h_predictor_16x64 aom_h_predictor_16x64_c
 +
 +void aom_h_predictor_16x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_h_predictor_16x8 aom_h_predictor_16x8_c
@@ -676,20 +506,11 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_h_predictor_32x64_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_h_predictor_32x64 aom_h_predictor_32x64_c
 +
-+void aom_h_predictor_32x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_h_predictor_32x8 aom_h_predictor_32x8_c
-+
-+void aom_h_predictor_4x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_h_predictor_4x16 aom_h_predictor_4x16_c
-+
 +void aom_h_predictor_4x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_h_predictor_4x4 aom_h_predictor_4x4_c
 +
 +void aom_h_predictor_4x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_h_predictor_4x8 aom_h_predictor_4x8_c
-+
-+void aom_h_predictor_64x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_h_predictor_64x16 aom_h_predictor_64x16_c
 +
 +void aom_h_predictor_64x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_h_predictor_64x32 aom_h_predictor_64x32_c
@@ -699,9 +520,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +
 +void aom_h_predictor_8x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_h_predictor_8x16 aom_h_predictor_8x16_c
-+
-+void aom_h_predictor_8x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_h_predictor_8x32 aom_h_predictor_8x32_c
 +
 +void aom_h_predictor_8x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_h_predictor_8x4 aom_h_predictor_8x4_c
@@ -949,12 +767,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_paeth_predictor_16x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_paeth_predictor_16x32 aom_paeth_predictor_16x32_c
 +
-+void aom_paeth_predictor_16x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_paeth_predictor_16x4 aom_paeth_predictor_16x4_c
-+
-+void aom_paeth_predictor_16x64_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_paeth_predictor_16x64 aom_paeth_predictor_16x64_c
-+
 +void aom_paeth_predictor_16x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_paeth_predictor_16x8 aom_paeth_predictor_16x8_c
 +
@@ -967,20 +779,11 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_paeth_predictor_32x64_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_paeth_predictor_32x64 aom_paeth_predictor_32x64_c
 +
-+void aom_paeth_predictor_32x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_paeth_predictor_32x8 aom_paeth_predictor_32x8_c
-+
-+void aom_paeth_predictor_4x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_paeth_predictor_4x16 aom_paeth_predictor_4x16_c
-+
 +void aom_paeth_predictor_4x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_paeth_predictor_4x4 aom_paeth_predictor_4x4_c
 +
 +void aom_paeth_predictor_4x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_paeth_predictor_4x8 aom_paeth_predictor_4x8_c
-+
-+void aom_paeth_predictor_64x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_paeth_predictor_64x16 aom_paeth_predictor_64x16_c
 +
 +void aom_paeth_predictor_64x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_paeth_predictor_64x32 aom_paeth_predictor_64x32_c
@@ -990,9 +793,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +
 +void aom_paeth_predictor_8x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_paeth_predictor_8x16 aom_paeth_predictor_8x16_c
-+
-+void aom_paeth_predictor_8x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_paeth_predictor_8x32 aom_paeth_predictor_8x32_c
 +
 +void aom_paeth_predictor_8x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_paeth_predictor_8x4 aom_paeth_predictor_8x4_c
@@ -1108,9 +908,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +unsigned int aom_sad4x4_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride);
 +#define aom_sad4x4 aom_sad4x4_c
 +
-+unsigned int aom_sad4x4_avg_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride, const uint8_t *second_pred);
-+#define aom_sad4x4_avg aom_sad4x4_avg_c
-+
 +void aom_sad4x4x3d_c(const uint8_t *src_ptr, int src_stride, const uint8_t * const ref_ptr[4], int ref_stride, uint32_t sad_array[4]);
 +#define aom_sad4x4x3d aom_sad4x4x3d_c
 +
@@ -1119,9 +916,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +
 +unsigned int aom_sad4x8_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride);
 +#define aom_sad4x8 aom_sad4x8_c
-+
-+unsigned int aom_sad4x8_avg_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride, const uint8_t *second_pred);
-+#define aom_sad4x8_avg aom_sad4x8_avg_c
 +
 +void aom_sad4x8x3d_c(const uint8_t *src_ptr, int src_stride, const uint8_t * const ref_ptr[4], int ref_stride, uint32_t sad_array[4]);
 +#define aom_sad4x8x3d aom_sad4x8x3d_c
@@ -1180,9 +974,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +unsigned int aom_sad8x4_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride);
 +#define aom_sad8x4 aom_sad8x4_c
 +
-+unsigned int aom_sad8x4_avg_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride, const uint8_t *second_pred);
-+#define aom_sad8x4_avg aom_sad8x4_avg_c
-+
 +void aom_sad8x4x3d_c(const uint8_t *src_ptr, int src_stride, const uint8_t * const ref_ptr[4], int ref_stride, uint32_t sad_array[4]);
 +#define aom_sad8x4x3d aom_sad8x4x3d_c
 +
@@ -1225,12 +1016,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_sad_skip_16x32x4d_c(const uint8_t *src_ptr, int src_stride, const uint8_t * const ref_ptr[4], int ref_stride, uint32_t sad_array[4]);
 +#define aom_sad_skip_16x32x4d aom_sad_skip_16x32x4d_c
 +
-+unsigned int aom_sad_skip_16x8_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride);
-+#define aom_sad_skip_16x8 aom_sad_skip_16x8_c
-+
-+void aom_sad_skip_16x8x4d_c(const uint8_t *src_ptr, int src_stride, const uint8_t * const ref_ptr[4], int ref_stride, uint32_t sad_array[4]);
-+#define aom_sad_skip_16x8x4d aom_sad_skip_16x8x4d_c
-+
 +unsigned int aom_sad_skip_32x16_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride);
 +#define aom_sad_skip_32x16 aom_sad_skip_32x16_c
 +
@@ -1248,18 +1033,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +
 +void aom_sad_skip_32x64x4d_c(const uint8_t *src_ptr, int src_stride, const uint8_t * const ref_ptr[4], int ref_stride, uint32_t sad_array[4]);
 +#define aom_sad_skip_32x64x4d aom_sad_skip_32x64x4d_c
-+
-+unsigned int aom_sad_skip_4x4_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride);
-+#define aom_sad_skip_4x4 aom_sad_skip_4x4_c
-+
-+void aom_sad_skip_4x4x4d_c(const uint8_t *src_ptr, int src_stride, const uint8_t * const ref_ptr[4], int ref_stride, uint32_t sad_array[4]);
-+#define aom_sad_skip_4x4x4d aom_sad_skip_4x4x4d_c
-+
-+unsigned int aom_sad_skip_4x8_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride);
-+#define aom_sad_skip_4x8 aom_sad_skip_4x8_c
-+
-+void aom_sad_skip_4x8x4d_c(const uint8_t *src_ptr, int src_stride, const uint8_t * const ref_ptr[4], int ref_stride, uint32_t sad_array[4]);
-+#define aom_sad_skip_4x8x4d aom_sad_skip_4x8x4d_c
 +
 +unsigned int aom_sad_skip_64x128_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride);
 +#define aom_sad_skip_64x128 aom_sad_skip_64x128_c
@@ -1285,18 +1058,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_sad_skip_8x16x4d_c(const uint8_t *src_ptr, int src_stride, const uint8_t * const ref_ptr[4], int ref_stride, uint32_t sad_array[4]);
 +#define aom_sad_skip_8x16x4d aom_sad_skip_8x16x4d_c
 +
-+unsigned int aom_sad_skip_8x4_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride);
-+#define aom_sad_skip_8x4 aom_sad_skip_8x4_c
-+
-+void aom_sad_skip_8x4x4d_c(const uint8_t *src_ptr, int src_stride, const uint8_t * const ref_ptr[4], int ref_stride, uint32_t sad_array[4]);
-+#define aom_sad_skip_8x4x4d aom_sad_skip_8x4x4d_c
-+
-+unsigned int aom_sad_skip_8x8_c(const uint8_t *src_ptr, int src_stride, const uint8_t *ref_ptr, int ref_stride);
-+#define aom_sad_skip_8x8 aom_sad_skip_8x8_c
-+
-+void aom_sad_skip_8x8x4d_c(const uint8_t *src_ptr, int src_stride, const uint8_t * const ref_ptr[4], int ref_stride, uint32_t sad_array[4]);
-+#define aom_sad_skip_8x8x4d aom_sad_skip_8x8x4d_c
-+
 +int aom_satd_c(const tran_low_t *coeff, int length);
 +#define aom_satd aom_satd_c
 +
@@ -1312,12 +1073,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_smooth_h_predictor_16x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_h_predictor_16x32 aom_smooth_h_predictor_16x32_c
 +
-+void aom_smooth_h_predictor_16x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_smooth_h_predictor_16x4 aom_smooth_h_predictor_16x4_c
-+
-+void aom_smooth_h_predictor_16x64_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_smooth_h_predictor_16x64 aom_smooth_h_predictor_16x64_c
-+
 +void aom_smooth_h_predictor_16x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_h_predictor_16x8 aom_smooth_h_predictor_16x8_c
 +
@@ -1330,20 +1085,11 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_smooth_h_predictor_32x64_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_h_predictor_32x64 aom_smooth_h_predictor_32x64_c
 +
-+void aom_smooth_h_predictor_32x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_smooth_h_predictor_32x8 aom_smooth_h_predictor_32x8_c
-+
-+void aom_smooth_h_predictor_4x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_smooth_h_predictor_4x16 aom_smooth_h_predictor_4x16_c
-+
 +void aom_smooth_h_predictor_4x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_h_predictor_4x4 aom_smooth_h_predictor_4x4_c
 +
 +void aom_smooth_h_predictor_4x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_h_predictor_4x8 aom_smooth_h_predictor_4x8_c
-+
-+void aom_smooth_h_predictor_64x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_smooth_h_predictor_64x16 aom_smooth_h_predictor_64x16_c
 +
 +void aom_smooth_h_predictor_64x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_h_predictor_64x32 aom_smooth_h_predictor_64x32_c
@@ -1353,9 +1099,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +
 +void aom_smooth_h_predictor_8x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_h_predictor_8x16 aom_smooth_h_predictor_8x16_c
-+
-+void aom_smooth_h_predictor_8x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_smooth_h_predictor_8x32 aom_smooth_h_predictor_8x32_c
 +
 +void aom_smooth_h_predictor_8x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_h_predictor_8x4 aom_smooth_h_predictor_8x4_c
@@ -1369,12 +1112,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_smooth_predictor_16x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_predictor_16x32 aom_smooth_predictor_16x32_c
 +
-+void aom_smooth_predictor_16x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_smooth_predictor_16x4 aom_smooth_predictor_16x4_c
-+
-+void aom_smooth_predictor_16x64_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_smooth_predictor_16x64 aom_smooth_predictor_16x64_c
-+
 +void aom_smooth_predictor_16x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_predictor_16x8 aom_smooth_predictor_16x8_c
 +
@@ -1387,20 +1124,11 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_smooth_predictor_32x64_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_predictor_32x64 aom_smooth_predictor_32x64_c
 +
-+void aom_smooth_predictor_32x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_smooth_predictor_32x8 aom_smooth_predictor_32x8_c
-+
-+void aom_smooth_predictor_4x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_smooth_predictor_4x16 aom_smooth_predictor_4x16_c
-+
 +void aom_smooth_predictor_4x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_predictor_4x4 aom_smooth_predictor_4x4_c
 +
 +void aom_smooth_predictor_4x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_predictor_4x8 aom_smooth_predictor_4x8_c
-+
-+void aom_smooth_predictor_64x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_smooth_predictor_64x16 aom_smooth_predictor_64x16_c
 +
 +void aom_smooth_predictor_64x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_predictor_64x32 aom_smooth_predictor_64x32_c
@@ -1410,9 +1138,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +
 +void aom_smooth_predictor_8x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_predictor_8x16 aom_smooth_predictor_8x16_c
-+
-+void aom_smooth_predictor_8x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_smooth_predictor_8x32 aom_smooth_predictor_8x32_c
 +
 +void aom_smooth_predictor_8x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_predictor_8x4 aom_smooth_predictor_8x4_c
@@ -1426,12 +1151,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_smooth_v_predictor_16x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_v_predictor_16x32 aom_smooth_v_predictor_16x32_c
 +
-+void aom_smooth_v_predictor_16x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_smooth_v_predictor_16x4 aom_smooth_v_predictor_16x4_c
-+
-+void aom_smooth_v_predictor_16x64_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_smooth_v_predictor_16x64 aom_smooth_v_predictor_16x64_c
-+
 +void aom_smooth_v_predictor_16x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_v_predictor_16x8 aom_smooth_v_predictor_16x8_c
 +
@@ -1444,20 +1163,11 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_smooth_v_predictor_32x64_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_v_predictor_32x64 aom_smooth_v_predictor_32x64_c
 +
-+void aom_smooth_v_predictor_32x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_smooth_v_predictor_32x8 aom_smooth_v_predictor_32x8_c
-+
-+void aom_smooth_v_predictor_4x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_smooth_v_predictor_4x16 aom_smooth_v_predictor_4x16_c
-+
 +void aom_smooth_v_predictor_4x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_v_predictor_4x4 aom_smooth_v_predictor_4x4_c
 +
 +void aom_smooth_v_predictor_4x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_v_predictor_4x8 aom_smooth_v_predictor_4x8_c
-+
-+void aom_smooth_v_predictor_64x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_smooth_v_predictor_64x16 aom_smooth_v_predictor_64x16_c
 +
 +void aom_smooth_v_predictor_64x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_v_predictor_64x32 aom_smooth_v_predictor_64x32_c
@@ -1467,9 +1177,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +
 +void aom_smooth_v_predictor_8x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_v_predictor_8x16 aom_smooth_v_predictor_8x16_c
-+
-+void aom_smooth_v_predictor_8x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_smooth_v_predictor_8x32 aom_smooth_v_predictor_8x32_c
 +
 +void aom_smooth_v_predictor_8x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_smooth_v_predictor_8x4 aom_smooth_v_predictor_8x4_c
@@ -1597,12 +1304,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_v_predictor_16x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_v_predictor_16x32 aom_v_predictor_16x32_c
 +
-+void aom_v_predictor_16x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_v_predictor_16x4 aom_v_predictor_16x4_c
-+
-+void aom_v_predictor_16x64_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_v_predictor_16x64 aom_v_predictor_16x64_c
-+
 +void aom_v_predictor_16x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_v_predictor_16x8 aom_v_predictor_16x8_c
 +
@@ -1615,20 +1316,11 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_v_predictor_32x64_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_v_predictor_32x64 aom_v_predictor_32x64_c
 +
-+void aom_v_predictor_32x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_v_predictor_32x8 aom_v_predictor_32x8_c
-+
-+void aom_v_predictor_4x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_v_predictor_4x16 aom_v_predictor_4x16_c
-+
 +void aom_v_predictor_4x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_v_predictor_4x4 aom_v_predictor_4x4_c
 +
 +void aom_v_predictor_4x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_v_predictor_4x8 aom_v_predictor_4x8_c
-+
-+void aom_v_predictor_64x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_v_predictor_64x16 aom_v_predictor_64x16_c
 +
 +void aom_v_predictor_64x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_v_predictor_64x32 aom_v_predictor_64x32_c
@@ -1639,17 +1331,11 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_v_predictor_8x16_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_v_predictor_8x16 aom_v_predictor_8x16_c
 +
-+void aom_v_predictor_8x32_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
-+#define aom_v_predictor_8x32 aom_v_predictor_8x32_c
-+
 +void aom_v_predictor_8x4_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_v_predictor_8x4 aom_v_predictor_8x4_c
 +
 +void aom_v_predictor_8x8_c(uint8_t *dst, ptrdiff_t y_stride, const uint8_t *above, const uint8_t *left);
 +#define aom_v_predictor_8x8 aom_v_predictor_8x8_c
-+
-+uint64_t aom_var_2d_u16_c(uint8_t *src, int src_stride, int width, int height);
-+#define aom_var_2d_u16 aom_var_2d_u16_c
 +
 +uint64_t aom_var_2d_u8_c(uint8_t *src, int src_stride, int width, int height);
 +#define aom_var_2d_u8 aom_var_2d_u8_c
@@ -1724,14 +1410,14 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +}  // extern "C"
 +#endif
 +
-+#endif
-Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/config/aom_scale_rtcd.h
++#endif  // AOM_DSP_RTCD_H_
+Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/aom_scale_rtcd.h
 ===================================================================
 --- /dev/null
-+++ chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/config/aom_scale_rtcd.h
++++ chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/aom_scale_rtcd.h
 @@ -0,0 +1,91 @@
 +/*
-+ * Copyright (c) 2024, Alliance for Open Media. All rights reserved.
++ * Copyright (c) 2025, Alliance for Open Media. All rights reserved.
 + *
 + * This source code is subject to the terms of the BSD 2 Clause License and
 + * the Alliance for Open Media Patent License 1.0. If the BSD 2 Clause License
@@ -1820,14 +1506,14 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +}  // extern "C"
 +#endif
 +
-+#endif
-Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/config/av1_rtcd.h
++#endif  // AOM_SCALE_RTCD_H_
+Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/av1_rtcd.h
 ===================================================================
 --- /dev/null
-+++ chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/config/av1_rtcd.h
-@@ -0,0 +1,438 @@
++++ chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/av1_rtcd.h
+@@ -0,0 +1,405 @@
 +/*
-+ * Copyright (c) 2024, Alliance for Open Media. All rights reserved.
++ * Copyright (c) 2025, Alliance for Open Media. All rights reserved.
 + *
 + * This source code is subject to the terms of the BSD 2 Clause License and
 + * the Alliance for Open Media Patent License 1.0. If the BSD 2 Clause License
@@ -1928,9 +1614,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +                                          const MV *const mv, uint8_t *comp_pred, int width, int height, int subpel_x_q3,
 +                                          int subpel_y_q3, const uint8_t *ref, int ref_stride, int subpel_search);
 +#define aom_upsampled_pred aom_upsampled_pred_c
-+
-+int av1_apply_selfguided_restoration_c(const uint8_t *dat, int width, int height, int stride, int eps, const int *xqd, uint8_t *dst, int dst_stride, int32_t *tmpbuf, int bit_depth, int highbd);
-+#define av1_apply_selfguided_restoration av1_apply_selfguided_restoration_c
 +
 +int64_t av1_block_error_c(const tran_low_t *coeff, const tran_low_t *dqcoeff, intptr_t block_size, int64_t *ssz);
 +#define av1_block_error av1_block_error_c
@@ -2166,19 +1849,11 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void av1_round_shift_array_c(int32_t *arr, int size, int bit);
 +#define av1_round_shift_array av1_round_shift_array_c
 +
-+int av1_selfguided_restoration_c(const uint8_t *dgd8, int width, int height,
-+                                int dgd_stride, int32_t *flt0, int32_t *flt1, int flt_stride,
-+                                int sgr_params_idx, int bit_depth, int highbd);
-+#define av1_selfguided_restoration av1_selfguided_restoration_c
-+
 +void av1_txb_init_levels_c(const tran_low_t *const coeff, const int width, const int height, uint8_t *const levels);
 +#define av1_txb_init_levels av1_txb_init_levels_c
 +
 +void av1_upsample_intra_edge_c(uint8_t *p, int sz);
 +#define av1_upsample_intra_edge av1_upsample_intra_edge_c
-+
-+void av1_warp_affine_c(const int32_t *mat, const uint8_t *ref, int width, int height, int stride, uint8_t *pred, int p_col, int p_row, int p_width, int p_height, int p_stride, int subsampling_x, int subsampling_y, ConvolveParams *conv_params, int16_t alpha, int16_t beta, int16_t gamma, int16_t delta);
-+#define av1_warp_affine av1_warp_affine_c
 +
 +void av1_wedge_compute_delta_squares_c(int16_t *d, const int16_t *a, const int16_t *b, int N);
 +#define av1_wedge_compute_delta_squares av1_wedge_compute_delta_squares_c
@@ -2188,12 +1863,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +
 +uint64_t av1_wedge_sse_from_residuals_c(const int16_t *r1, const int16_t *d, const uint8_t *m, int N);
 +#define av1_wedge_sse_from_residuals av1_wedge_sse_from_residuals_c
-+
-+void av1_wiener_convolve_add_src_c(const uint8_t *src, ptrdiff_t src_stride, uint8_t *dst, ptrdiff_t dst_stride, const int16_t *filter_x, int x_step_q4, const int16_t *filter_y, int y_step_q4, int w, int h, const WienerConvolveParams *conv_params);
-+#define av1_wiener_convolve_add_src av1_wiener_convolve_add_src_c
-+
-+void cdef_copy_rect8_16bit_to_16bit_c(uint16_t *dst, int dstride, const uint16_t *src, int sstride, int width, int height);
-+#define cdef_copy_rect8_16bit_to_16bit cdef_copy_rect8_16bit_to_16bit_c
 +
 +void cdef_copy_rect8_8bit_to_16bit_c(uint16_t *dst, int dstride, const uint8_t *src, int sstride, int width, int height);
 +#define cdef_copy_rect8_8bit_to_16bit cdef_copy_rect8_8bit_to_16bit_c
@@ -2228,22 +1897,6 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +void cdef_find_dir_dual_c(const uint16_t *img1, const uint16_t *img2, int stride, int32_t *var1, int32_t *var2, int coeff_shift, int *out1, int *out2);
 +#define cdef_find_dir_dual cdef_find_dir_dual_c
 +
-+cfl_subsample_lbd_fn cfl_get_luma_subsampling_420_lbd_c(TX_SIZE tx_size);
-+#define cfl_get_luma_subsampling_420_lbd cfl_get_luma_subsampling_420_lbd_c
-+
-+cfl_subsample_lbd_fn cfl_get_luma_subsampling_422_lbd_c(TX_SIZE tx_size);
-+#define cfl_get_luma_subsampling_422_lbd cfl_get_luma_subsampling_422_lbd_c
-+
-+cfl_subsample_lbd_fn cfl_get_luma_subsampling_444_lbd_c(TX_SIZE tx_size);
-+#define cfl_get_luma_subsampling_444_lbd cfl_get_luma_subsampling_444_lbd_c
-+
-+cfl_predict_lbd_fn cfl_get_predict_lbd_fn_c(TX_SIZE tx_size);
-+#define cfl_get_predict_lbd_fn cfl_get_predict_lbd_fn_c
-+
-+cfl_subtract_average_fn cfl_get_subtract_average_fn_c(TX_SIZE tx_size);
-+cfl_subtract_average_fn cfl_get_subtract_average_fn_vsx(TX_SIZE tx_size);
-+#define cfl_get_subtract_average_fn cfl_get_subtract_average_fn_vsx
-+
 +void av1_rtcd(void);
 +
 +#include "config/aom_config.h"
@@ -2263,4 +1916,4 @@ Index: chromium-134.0.6998.35/third_party/libaom/source/config/linux/ppc64/confi
 +}  // extern "C"
 +#endif
 +
-+#endif
++#endif  // AV1_RTCD_H_

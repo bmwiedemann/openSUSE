@@ -24,11 +24,11 @@ inconsistency in data layouts when targeting this particular platform.
 The error reported by the linker is not technically an error, however, only
 a warning goosed up by a --fatal-warnings flag.
 
-Index: chromium-128.0.6613.113/build/config/compiler/BUILD.gn
+Index: chromium-144.0.7559.59/build/config/compiler/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.113.orig/build/config/compiler/BUILD.gn
-+++ chromium-128.0.6613.113/build/config/compiler/BUILD.gn
-@@ -380,7 +380,7 @@ config("compiler") {
+--- chromium-144.0.7559.59.orig/build/config/compiler/BUILD.gn
++++ chromium-144.0.7559.59/build/config/compiler/BUILD.gn
+@@ -470,7 +470,7 @@ config("compiler") {
  
      # Linker warnings.
      if (fatal_linker_warnings && !is_apple && current_os != "aix" &&

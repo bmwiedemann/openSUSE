@@ -1,7 +1,7 @@
-Index: chromium-136.0.7103.48/third_party/libvpx/source/config/linux/ppc64/vp8_rtcd.h
+Index: chromium-144.0.7559.59/third_party/libvpx/source/config/linux/ppc64/vp8_rtcd.h
 ===================================================================
 --- /dev/null
-+++ chromium-136.0.7103.48/third_party/libvpx/source/config/linux/ppc64/vp8_rtcd.h
++++ chromium-144.0.7559.59/third_party/libvpx/source/config/linux/ppc64/vp8_rtcd.h
 @@ -0,0 +1,316 @@
 +// This file is generated. Do not edit.
 +#ifndef VP8_RTCD_H_
@@ -319,10 +319,10 @@ Index: chromium-136.0.7103.48/third_party/libvpx/source/config/linux/ppc64/vp8_r
 +#endif
 +
 +#endif
-Index: chromium-136.0.7103.48/third_party/libvpx/source/config/linux/ppc64/vp9_rtcd.h
+Index: chromium-144.0.7559.59/third_party/libvpx/source/config/linux/ppc64/vp9_rtcd.h
 ===================================================================
 --- /dev/null
-+++ chromium-136.0.7103.48/third_party/libvpx/source/config/linux/ppc64/vp9_rtcd.h
++++ chromium-144.0.7559.59/third_party/libvpx/source/config/linux/ppc64/vp9_rtcd.h
 @@ -0,0 +1,267 @@
 +// This file is generated. Do not edit.
 +#ifndef VP9_RTCD_H_
@@ -591,10 +591,10 @@ Index: chromium-136.0.7103.48/third_party/libvpx/source/config/linux/ppc64/vp9_r
 +#endif
 +
 +#endif
-Index: chromium-136.0.7103.48/third_party/libvpx/source/config/linux/ppc64/vpx_config.asm
+Index: chromium-144.0.7559.59/third_party/libvpx/source/config/linux/ppc64/vpx_config.asm
 ===================================================================
 --- /dev/null
-+++ chromium-136.0.7103.48/third_party/libvpx/source/config/linux/ppc64/vpx_config.asm
++++ chromium-144.0.7559.59/third_party/libvpx/source/config/linux/ppc64/vpx_config.asm
 @@ -0,0 +1,107 @@
 +@ This file was created from a .asm file
 +@  using the ads2gas.pl script.
@@ -703,10 +703,10 @@ Index: chromium-136.0.7103.48/third_party/libvpx/source/config/linux/ppc64/vpx_c
 +.equ DECODE_WIDTH_LIMIT ,  16384
 +.equ DECODE_HEIGHT_LIMIT ,  16384
 +    .section .note.GNU-stack,"",%progbits
-Index: chromium-136.0.7103.48/third_party/libvpx/source/config/linux/ppc64/vpx_config.c
+Index: chromium-144.0.7559.59/third_party/libvpx/source/config/linux/ppc64/vpx_config.c
 ===================================================================
 --- /dev/null
-+++ chromium-136.0.7103.48/third_party/libvpx/source/config/linux/ppc64/vpx_config.c
++++ chromium-144.0.7559.59/third_party/libvpx/source/config/linux/ppc64/vpx_config.c
 @@ -0,0 +1,10 @@
 +/* Copyright (c) 2011 The WebM project authors. All Rights Reserved. */
 +/*  */
@@ -718,10 +718,10 @@ Index: chromium-136.0.7103.48/third_party/libvpx/source/config/linux/ppc64/vpx_c
 +#include "vpx/vpx_codec.h"
 +static const char* const cfg = "--target=generic-gnu --enable-vp9-highbitdepth --enable-external-build --enable-postproc --enable-multi-res-encoding --enable-temporal-denoising --enable-vp9-temporal-denoising --enable-vp9-postproc --size-limit=16384x16384 --enable-realtime-only --disable-install-docs --disable-libyuv";
 +const char *vpx_codec_build_config(void) {return cfg;}
-Index: chromium-136.0.7103.48/third_party/libvpx/source/config/linux/ppc64/vpx_config.h
+Index: chromium-144.0.7559.59/third_party/libvpx/source/config/linux/ppc64/vpx_config.h
 ===================================================================
 --- /dev/null
-+++ chromium-136.0.7103.48/third_party/libvpx/source/config/linux/ppc64/vpx_config.h
++++ chromium-144.0.7559.59/third_party/libvpx/source/config/linux/ppc64/vpx_config.h
 @@ -0,0 +1,116 @@
 +/* Copyright (c) 2011 The WebM project authors. All Rights Reserved. */
 +/*  */
@@ -839,10 +839,10 @@ Index: chromium-136.0.7103.48/third_party/libvpx/source/config/linux/ppc64/vpx_c
 +#define DECODE_WIDTH_LIMIT 16384
 +#define DECODE_HEIGHT_LIMIT 16384
 +#endif /* VPX_CONFIG_H */
-Index: chromium-136.0.7103.48/third_party/libvpx/source/config/linux/ppc64/vpx_dsp_rtcd.h
+Index: chromium-144.0.7559.59/third_party/libvpx/source/config/linux/ppc64/vpx_dsp_rtcd.h
 ===================================================================
 --- /dev/null
-+++ chromium-136.0.7103.48/third_party/libvpx/source/config/linux/ppc64/vpx_dsp_rtcd.h
++++ chromium-144.0.7559.59/third_party/libvpx/source/config/linux/ppc64/vpx_dsp_rtcd.h
 @@ -0,0 +1,4128 @@
 +// This file is generated. Do not edit.
 +#ifndef VPX_DSP_RTCD_H_
@@ -4972,10 +4972,10 @@ Index: chromium-136.0.7103.48/third_party/libvpx/source/config/linux/ppc64/vpx_d
 +#endif
 +
 +#endif
-Index: chromium-136.0.7103.48/third_party/libvpx/source/config/linux/ppc64/vpx_scale_rtcd.h
+Index: chromium-144.0.7559.59/third_party/libvpx/source/config/linux/ppc64/vpx_scale_rtcd.h
 ===================================================================
 --- /dev/null
-+++ chromium-136.0.7103.48/third_party/libvpx/source/config/linux/ppc64/vpx_scale_rtcd.h
++++ chromium-144.0.7559.59/third_party/libvpx/source/config/linux/ppc64/vpx_scale_rtcd.h
 @@ -0,0 +1,96 @@
 +// This file is generated. Do not edit.
 +#ifndef VPX_SCALE_RTCD_H_

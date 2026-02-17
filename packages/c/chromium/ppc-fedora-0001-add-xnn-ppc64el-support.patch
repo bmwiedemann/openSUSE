@@ -1,18 +1,24 @@
---- a/third_party/xnnpack/generate_build_gn.py
-+++ b/third_party/xnnpack/generate_build_gn.py
-@@ -219,6 +219,9 @@
-     _Platform(gn_cpu='arm64',
-               bazel_cpu='aarch64',
+Index: chromium-144.0.7559.59/third_party/xnnpack/generate_build_gn.py
+===================================================================
+--- chromium-144.0.7559.59.orig/third_party/xnnpack/generate_build_gn.py
++++ chromium-144.0.7559.59/third_party/xnnpack/generate_build_gn.py
+@@ -239,7 +239,10 @@ _PLATFORMS = [
                bazel_platform='//:linux_aarch64'),
-+    _Platform(gn_cpu='ppc64',
-+              bazel_cpu='ppc64le',
-+              bazel_platform='//:linux_ppc64le'),
      _Platform(gn_cpu='riscv64',
                bazel_cpu='riscv64',
-               bazel_platform='//:linux_riscv64')
---- a/third_party/xnnpack/bazelroot/BUILD
-+++ b/third_party/xnnpack/bazelroot/BUILD
-@@ -21,6 +21,14 @@
+-              bazel_platform='//:linux_riscv64')
++              bazel_platform='//:linux_riscv64'),
++    _Platform(gn_cpu='ppc64',
++              bazel_cpu='ppc64le',
++              bazel_platform='//:linux_ppc64le')
+ ]
+ 
+ 
+Index: chromium-144.0.7559.59/third_party/xnnpack/bazelroot/BUILD
+===================================================================
+--- chromium-144.0.7559.59.orig/third_party/xnnpack/bazelroot/BUILD
++++ chromium-144.0.7559.59/third_party/xnnpack/bazelroot/BUILD
+@@ -29,6 +29,14 @@ platform(
      ],
  )
  

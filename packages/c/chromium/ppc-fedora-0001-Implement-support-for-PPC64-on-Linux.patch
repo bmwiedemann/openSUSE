@@ -40,20 +40,20 @@ This patch implements support for the PPC64 architecture on Linux hosts.
  util/misc/capture_context_test_util_linux.cc  |   6 +
  36 files changed, 932 insertions(+), 12 deletions(-)
 
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/CONTRIBUTORS
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/CONTRIBUTORS
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/CONTRIBUTORS
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/CONTRIBUTORS
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/CONTRIBUTORS
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/CONTRIBUTORS
 @@ -13,3 +13,5 @@ Mark Mentovai <mark@chromium.org>
  Robert Sesek <rsesek@chromium.org>
  Scott Graham <scottmg@chromium.org>
  Joshua Peraza <jperaza@chromium.org>
 +Shawn Anastasio <sanastasio@raptorengineering.com>
 +Timothy Pearson <tpearson@raptorengineering.com>
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/minidump/minidump_context.h
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/minidump/minidump_context.h
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/minidump/minidump_context.h
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/minidump/minidump_context.h
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/minidump/minidump_context.h
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/minidump/minidump_context.h
 @@ -686,6 +686,70 @@ struct MinidumpContextRISCV64 {
    uint32_t fcsr;
  };
@@ -125,10 +125,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/minidump/minidump_co
  }  // namespace crashpad
  
  #endif  // CRASHPAD_MINIDUMP_MINIDUMP_CONTEXT_H_
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/minidump/minidump_context_writer.cc
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/minidump/minidump_context_writer.cc
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/minidump/minidump_context_writer.cc
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/minidump/minidump_context_writer.cc
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/minidump/minidump_context_writer.cc
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/minidump/minidump_context_writer.cc
 @@ -110,6 +110,13 @@ MinidumpContextWriter::CreateFromSnapsho
        break;
      }
@@ -192,10 +192,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/minidump/minidump_co
 +}
  
  }  // namespace crashpad
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/minidump/minidump_context_writer.h
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/minidump/minidump_context_writer.h
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/minidump/minidump_context_writer.h
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/minidump/minidump_context_writer.h
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/minidump/minidump_context_writer.h
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/minidump/minidump_context_writer.h
 @@ -413,6 +413,49 @@ class MinidumpContextRISCV64Writer final
    MinidumpContextRISCV64 context_;
  };
@@ -246,10 +246,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/minidump/minidump_co
  }  // namespace crashpad
  
  #endif  // CRASHPAD_MINIDUMP_MINIDUMP_CONTEXT_WRITER_H_
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/minidump/minidump_context_writer_test.cc
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/minidump/minidump_context_writer_test.cc
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/minidump/minidump_context_writer_test.cc
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/minidump/minidump_context_writer_test.cc
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/minidump/minidump_context_writer_test.cc
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/minidump/minidump_context_writer_test.cc
 @@ -322,6 +322,21 @@ TYPED_TEST(MinidumpContextWriter, RISCV6
                     TypeParam>(context, ExpectMinidumpContextRISCV64, kSeed);
  }
@@ -272,10 +272,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/minidump/minidump_co
  }  // namespace
  }  // namespace test
  }  // namespace crashpad
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/minidump/minidump_misc_info_writer.cc
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/minidump/minidump_misc_info_writer.cc
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/minidump/minidump_misc_info_writer.cc
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/minidump/minidump_misc_info_writer.cc
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/minidump/minidump_misc_info_writer.cc
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/minidump/minidump_misc_info_writer.cc
 @@ -177,6 +177,8 @@ std::string MinidumpMiscInfoDebugBuildSt
    static constexpr char kCPU[] = "mips64";
  #elif defined(ARCH_CPU_RISCV64)
@@ -285,10 +285,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/minidump/minidump_mi
  #else
  #error define kCPU for this CPU
  #endif
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/minidump/test/minidump_context_test_util.cc
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/minidump/test/minidump_context_test_util.cc
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/minidump/test/minidump_context_test_util.cc
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/minidump/test/minidump_context_test_util.cc
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/minidump/test/minidump_context_test_util.cc
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/minidump/test/minidump_context_test_util.cc
 @@ -297,6 +297,40 @@ void InitializeMinidumpContextRISCV64(Mi
    context->fcsr = value++;
  }
@@ -369,10 +369,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/minidump/test/minidu
 +
  }  // namespace test
  }  // namespace crashpad
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/minidump/test/minidump_context_test_util.h
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/minidump/test/minidump_context_test_util.h
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/minidump/test/minidump_context_test_util.h
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/minidump/test/minidump_context_test_util.h
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/minidump/test/minidump_context_test_util.h
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/minidump/test/minidump_context_test_util.h
 @@ -90,6 +90,9 @@ void ExpectMinidumpContextMIPS64(uint32_
  void ExpectMinidumpContextRISCV64(uint32_t expect_seed,
                                    const MinidumpContextRISCV64* observed,
@@ -383,10 +383,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/minidump/test/minidu
  //! \}
  
  }  // namespace test
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/capture_memory.cc
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/capture_memory.cc
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/snapshot/capture_memory.cc
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/capture_memory.cc
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/snapshot/capture_memory.cc
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/capture_memory.cc
 @@ -123,6 +123,11 @@ void CaptureMemory::PointedToByContext(c
    for (size_t i = 0; i < std::size(context.riscv64->regs); ++i) {
      MaybeCaptureMemoryAround(delegate, context.riscv64->regs[i]);
@@ -399,10 +399,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/capture_mem
  #else
  #error Port.
  #endif
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/cpu_architecture.h
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/cpu_architecture.h
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/snapshot/cpu_architecture.h
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/cpu_architecture.h
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/snapshot/cpu_architecture.h
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/cpu_architecture.h
 @@ -47,6 +47,9 @@ enum CPUArchitecture {
  
    //! \brief 64-bit RISC-V.
@@ -413,10 +413,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/cpu_archite
  };
  
  }  // namespace crashpad
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/cpu_context.cc
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/cpu_context.cc
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/snapshot/cpu_context.cc
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/cpu_context.cc
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/snapshot/cpu_context.cc
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/cpu_context.cc
 @@ -173,6 +173,8 @@ uint64_t CPUContext::InstructionPointer(
        return arm64->pc;
      case kCPUArchitectureRISCV64:
@@ -443,10 +443,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/cpu_context
      case kCPUArchitectureRISCV64:
        return true;
      case kCPUArchitectureX86:
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/cpu_context.h
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/cpu_context.h
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/snapshot/cpu_context.h
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/cpu_context.h
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/snapshot/cpu_context.h
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/cpu_context.h
 @@ -371,6 +371,24 @@ struct CPUContextRISCV64 {
    uint32_t fcsr;
  };
@@ -480,10 +480,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/cpu_context
    };
  };
  
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/cpu_context_linux.h
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/linux/cpu_context_linux.h
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/snapshot/linux/cpu_context_linux.h
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/cpu_context_linux.h
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/snapshot/linux/cpu_context_linux.h
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/linux/cpu_context_linux.h
 @@ -15,6 +15,7 @@
  #ifndef CRASHPAD_SNAPSHOT_LINUX_CPU_CONTEXT_LINUX_H_
  #define CRASHPAD_SNAPSHOT_LINUX_CPU_CONTEXT_LINUX_H_
@@ -571,10 +571,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/cpu_c
  }  // namespace internal
  }  // namespace crashpad
  
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/debug_rendezvous_test.cc
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/linux/debug_rendezvous_test.cc
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/snapshot/linux/debug_rendezvous_test.cc
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/debug_rendezvous_test.cc
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/snapshot/linux/debug_rendezvous_test.cc
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/linux/debug_rendezvous_test.cc
 @@ -194,12 +194,15 @@ void TestAgainstTarget(PtraceConnection*
                device == 0 && inode == 0 && mapping_name == "[vdso]";
  #if defined(ARCH_CPU_X86)
@@ -592,10 +592,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/debug
          },
          module_mapping->name,
          module_mapping->device,
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/exception_snapshot_linux.cc
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/linux/exception_snapshot_linux.cc
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/snapshot/linux/exception_snapshot_linux.cc
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/exception_snapshot_linux.cc
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/snapshot/linux/exception_snapshot_linux.cc
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/linux/exception_snapshot_linux.cc
 @@ -367,6 +367,69 @@ bool ExceptionSnapshotLinux::ReadContext
    return internal::ReadContext(reader, context_address, context_.riscv64);
  }
@@ -666,10 +666,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/excep
  #endif  // ARCH_CPU_X86_FAMILY
  
  bool ExceptionSnapshotLinux::Initialize(
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/exception_snapshot_linux.h
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/linux/exception_snapshot_linux.h
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/snapshot/linux/exception_snapshot_linux.h
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/exception_snapshot_linux.h
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/snapshot/linux/exception_snapshot_linux.h
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/linux/exception_snapshot_linux.h
 @@ -94,6 +94,8 @@ class ExceptionSnapshotLinux final : pub
      CPUContextMIPS64 mips64;
  #elif defined(ARCH_CPU_RISCV64)
@@ -679,10 +679,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/excep
  #endif
    } context_union_;
    CPUContext context_;
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/exception_snapshot_linux_test.cc
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/linux/exception_snapshot_linux_test.cc
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/snapshot/linux/exception_snapshot_linux_test.cc
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/exception_snapshot_linux_test.cc
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/snapshot/linux/exception_snapshot_linux_test.cc
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/linux/exception_snapshot_linux_test.cc
 @@ -325,7 +325,28 @@ void ExpectContext(const CPUContext& act
                     sizeof(actual.riscv64->fpregs)),
              0);
@@ -712,10 +712,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/excep
  #else
  #error Port.
  #endif
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/process_reader_linux.cc
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/linux/process_reader_linux.cc
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/snapshot/linux/process_reader_linux.cc
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/process_reader_linux.cc
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/snapshot/linux/process_reader_linux.cc
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/linux/process_reader_linux.cc
 @@ -129,6 +129,8 @@ void ProcessReaderLinux::Thread::Initial
                                      : thread_info.thread_context.t32.regs[29];
  #elif defined(ARCH_CPU_RISCV64)
@@ -725,10 +725,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/proce
  #else
  #error Port.
  #endif
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/signal_context.h
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/linux/signal_context.h
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/snapshot/linux/signal_context.h
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/signal_context.h
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/snapshot/linux/signal_context.h
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/linux/signal_context.h
 @@ -456,6 +456,89 @@ static_assert(offsetof(UContext<ContextT
                    offsetof(ucontext_t, uc_mcontext.__fpregs),
                "context offset mismatch");
@@ -819,11 +819,11 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/signa
  #else
  #error Port.
  #endif  // ARCH_CPU_X86_FAMILY
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/system_snapshot_linux.cc
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/linux/system_snapshot_linux.cc
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/snapshot/linux/system_snapshot_linux.cc
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/system_snapshot_linux.cc
-@@ -208,6 +208,8 @@ CPUArchitecture SystemSnapshotLinux::Get
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/snapshot/linux/system_snapshot_linux.cc
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/linux/system_snapshot_linux.cc
+@@ -229,6 +229,8 @@ CPUArchitecture SystemSnapshotLinux::Get
                                      : kCPUArchitectureMIPSEL;
  #elif defined(ARCH_CPU_RISCV64)
    return kCPUArchitectureRISCV64;
@@ -832,7 +832,7 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/syste
  #else
  #error port to your architecture
  #endif
-@@ -226,6 +228,9 @@ uint32_t SystemSnapshotLinux::CPURevisio
+@@ -247,6 +249,9 @@ uint32_t SystemSnapshotLinux::CPURevisio
  #elif defined(ARCH_CPU_RISCV64)
    // Not implemented
    return 0;
@@ -842,7 +842,7 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/syste
  #else
  #error port to your architecture
  #endif
-@@ -249,6 +254,9 @@ std::string SystemSnapshotLinux::CPUVend
+@@ -270,6 +275,9 @@ std::string SystemSnapshotLinux::CPUVend
  #elif defined(ARCH_CPU_RISCV64)
    // Not implemented
    return std::string();
@@ -852,7 +852,7 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/syste
  #else
  #error port to your architecture
  #endif
-@@ -380,6 +388,9 @@ bool SystemSnapshotLinux::NXEnabled() co
+@@ -401,6 +409,9 @@ bool SystemSnapshotLinux::NXEnabled() co
  #elif defined(ARCH_CPU_RISCV64)
    // Not implemented
    return false;
@@ -862,10 +862,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/syste
  #else
  #error Port.
  #endif  // ARCH_CPU_X86_FAMILY
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/thread_snapshot_linux.cc
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/linux/thread_snapshot_linux.cc
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/snapshot/linux/thread_snapshot_linux.cc
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/thread_snapshot_linux.cc
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/snapshot/linux/thread_snapshot_linux.cc
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/linux/thread_snapshot_linux.cc
 @@ -196,6 +196,14 @@ bool ThreadSnapshotLinux::Initialize(
    InitializeCPUContextRISCV64(thread.thread_info.thread_context.t64,
                                thread.thread_info.float_context.f64,
@@ -881,10 +881,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/threa
  #else
  #error Port.
  #endif
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/thread_snapshot_linux.h
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/linux/thread_snapshot_linux.h
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/snapshot/linux/thread_snapshot_linux.h
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/thread_snapshot_linux.h
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/snapshot/linux/thread_snapshot_linux.h
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/linux/thread_snapshot_linux.h
 @@ -79,6 +79,8 @@ class ThreadSnapshotLinux final : public
      CPUContextMIPS64 mips64;
  #elif defined(ARCH_CPU_RISCV64)
@@ -894,10 +894,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/linux/threa
  #else
  #error Port.
  #endif  // ARCH_CPU_X86_FAMILY
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/test/test_cpu_context.cc
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/test/test_cpu_context.cc
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/snapshot/test/test_cpu_context.cc
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/test/test_cpu_context.cc
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/snapshot/test/test_cpu_context.cc
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/test/test_cpu_context.cc
 @@ -317,5 +317,38 @@ void InitializeCPUContextRISCV64(CPUCont
    riscv64->fcsr = value++;
  }
@@ -937,10 +937,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/test/test_c
 +
  }  // namespace test
  }  // namespace crashpad
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/test/test_cpu_context.h
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/test/test_cpu_context.h
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/snapshot/test/test_cpu_context.h
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/test/test_cpu_context.h
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/snapshot/test/test_cpu_context.h
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/snapshot/test/test_cpu_context.h
 @@ -64,6 +64,7 @@ void InitializeCPUContextARM64(CPUContex
  void InitializeCPUContextMIPS(CPUContext* context, uint32_t seed);
  void InitializeCPUContextMIPS64(CPUContext* context, uint32_t seed);
@@ -949,10 +949,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/snapshot/test/test_c
  //! \}
  
  }  // namespace test
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/test/linux/get_tls.cc
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/test/linux/get_tls.cc
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/test/linux/get_tls.cc
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/test/linux/get_tls.cc
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/test/linux/get_tls.cc
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/test/linux/get_tls.cc
 @@ -51,6 +51,8 @@ LinuxVMAddress GetTLS() {
        : "$3");
  #elif defined(ARCH_CPU_RISCV64)
@@ -962,10 +962,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/test/linux/get_tls.c
  #else
  #error Port.
  #endif  // ARCH_CPU_ARMEL
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/test/multiprocess_posix.cc
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/test/multiprocess_posix.cc
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/test/multiprocess_posix.cc
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/test/multiprocess_posix.cc
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/test/multiprocess_posix.cc
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/test/multiprocess_posix.cc
 @@ -162,7 +162,8 @@ void Multiprocess::SetExpectedChildTermi
  }
  
@@ -976,10 +976,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/test/multiprocess_po
    SetExpectedChildTermination(kTerminationSignal, SIGTRAP);
  #else
    SetExpectedChildTermination(kTerminationSignal, SIGILL);
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/util/linux/auxiliary_vector.cc
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/util/linux/auxiliary_vector.cc
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/util/linux/auxiliary_vector.cc
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/util/linux/auxiliary_vector.cc
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/util/linux/auxiliary_vector.cc
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/util/linux/auxiliary_vector.cc
 @@ -56,6 +56,11 @@ bool AuxiliaryVector::Read(PtraceConnect
      if (type == AT_IGNORE) {
        continue;
@@ -992,10 +992,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/util/linux/auxiliary
      if (!MapInsertOrReplace(&values_, type, value, nullptr)) {
        LOG(ERROR) << "duplicate auxv entry";
        return false;
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/util/linux/ptracer.cc
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/util/linux/ptracer.cc
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/util/linux/ptracer.cc
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/util/linux/ptracer.cc
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/util/linux/ptracer.cc
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/util/linux/ptracer.cc
 @@ -430,6 +430,64 @@ bool GetThreadArea64(pid_t tid,
    return true;
  }
@@ -1071,10 +1071,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/util/linux/ptracer.c
             GetThreadArea64(tid,
                             info->thread_context,
                             &info->thread_specific_data_address,
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/util/linux/thread_info.h
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/util/linux/thread_info.h
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/util/linux/thread_info.h
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/util/linux/thread_info.h
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/util/linux/thread_info.h
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/util/linux/thread_info.h
 @@ -34,6 +34,10 @@
  #include <asm/ptrace.h>
  #endif
@@ -1193,10 +1193,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/util/linux/thread_in
    //! \brief The thread-local storage address for the thread.
    LinuxVMAddress thread_specific_data_address;
  };
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/util/misc/capture_context.h
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/util/misc/capture_context.h
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/util/misc/capture_context.h
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/util/misc/capture_context.h
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/util/misc/capture_context.h
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/util/misc/capture_context.h
 @@ -70,6 +70,7 @@ using NativeCPUContext = ucontext_t;
  //!     Linux               | ARM/ARM64    | `r0`/`x0`
  //!     Linux               | MIPS/MIPS64  | `$a0`
@@ -1205,10 +1205,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/util/misc/capture_co
  //!
  //!     Additionally, the value `LR` on ARM/ARM64 will be the return address of
  //!     this function.
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/util/misc/capture_context_linux.S
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/util/misc/capture_context_linux.S
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/util/misc/capture_context_linux.S
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/util/misc/capture_context_linux.S
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/util/misc/capture_context_linux.S
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/util/misc/capture_context_linux.S
 @@ -30,7 +30,7 @@
    .globl CAPTURECONTEXT_SYMBOL2
  #if defined(__i386__) || defined(__x86_64__)
@@ -1435,10 +1435,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/util/misc/capture_co
  #elif defined(__riscv)
  
    #define MCONTEXT_GREGS_OFFSET 176
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/util/misc/capture_context_test.cc
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/util/misc/capture_context_test.cc
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/util/misc/capture_context_test.cc
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/util/misc/capture_context_test.cc
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/util/misc/capture_context_test.cc
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/util/misc/capture_context_test.cc
 @@ -48,7 +48,7 @@ void TestCaptureContext() {
    uintptr_t pc = ProgramCounterFromContext(context_1);
  
@@ -1448,10 +1448,10 @@ Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/util/misc/capture_co
    // Sanitizers can cause enough code bloat that the “nearby” check would
    // likely fail.
    const uintptr_t kReferencePC =
-Index: chromium-136.0.7103.48/third_party/crashpad/crashpad/util/misc/capture_context_test_util_linux.cc
+Index: chromium-144.0.7559.59/third_party/crashpad/crashpad/util/misc/capture_context_test_util_linux.cc
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/crashpad/crashpad/util/misc/capture_context_test_util_linux.cc
-+++ chromium-136.0.7103.48/third_party/crashpad/crashpad/util/misc/capture_context_test_util_linux.cc
+--- chromium-144.0.7559.59.orig/third_party/crashpad/crashpad/util/misc/capture_context_test_util_linux.cc
++++ chromium-144.0.7559.59/third_party/crashpad/crashpad/util/misc/capture_context_test_util_linux.cc
 @@ -38,6 +38,8 @@ void SanityCheckContext(const NativeCPUC
  #elif defined(ARCH_CPU_RISCV64)
    EXPECT_EQ(context.uc_mcontext.__gregs[10],

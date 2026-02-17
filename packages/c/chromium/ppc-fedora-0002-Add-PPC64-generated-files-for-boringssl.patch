@@ -1,7 +1,7 @@
-Index: chromium-136.0.7103.48/third_party/boringssl/src/gen/bcm/aesp8-ppc-linux.S
+Index: chromium-144.0.7559.59/third_party/boringssl/src/gen/bcm/aesp8-ppc-linux.S
 ===================================================================
 --- /dev/null
-+++ chromium-136.0.7103.48/third_party/boringssl/src/gen/bcm/aesp8-ppc-linux.S
++++ chromium-144.0.7559.59/third_party/boringssl/src/gen/bcm/aesp8-ppc-linux.S
 @@ -0,0 +1,3673 @@
 +// This file is generated from a similarly-named Perl script in the BoringSSL
 +// source tree. Do not edit by hand.
@@ -3676,10 +3676,10 @@ Index: chromium-136.0.7103.48/third_party/boringssl/src/gen/bcm/aesp8-ppc-linux.
 +// See https://www.airs.ccom/blog/archives/518.
 +.section .note.GNU-stack,"",%progbits
 +#endif
-Index: chromium-136.0.7103.48/third_party/boringssl/src/gen/bcm/ghashp8-ppc-linux.S
+Index: chromium-144.0.7559.59/third_party/boringssl/src/gen/bcm/ghashp8-ppc-linux.S
 ===================================================================
 --- /dev/null
-+++ chromium-136.0.7103.48/third_party/boringssl/src/gen/bcm/ghashp8-ppc-linux.S
++++ chromium-144.0.7559.59/third_party/boringssl/src/gen/bcm/ghashp8-ppc-linux.S
 @@ -0,0 +1,590 @@
 +// This file is generated from a similarly-named Perl script in the BoringSSL
 +// source tree. Do not edit by hand.
@@ -4271,11 +4271,11 @@ Index: chromium-136.0.7103.48/third_party/boringssl/src/gen/bcm/ghashp8-ppc-linu
 +// See https://www.airs.ccom/blog/archives/518.
 +.section .note.GNU-stack,"",%progbits
 +#endif
-Index: chromium-136.0.7103.48/third_party/boringssl/src/gen/sources.cmake
+Index: chromium-144.0.7559.59/third_party/boringssl/src/gen/sources.cmake
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/boringssl/src/gen/sources.cmake
-+++ chromium-136.0.7103.48/third_party/boringssl/src/gen/sources.cmake
-@@ -120,6 +120,7 @@ set(
+--- chromium-144.0.7559.59.orig/third_party/boringssl/src/gen/sources.cmake
++++ chromium-144.0.7559.59/third_party/boringssl/src/gen/sources.cmake
+@@ -122,6 +122,7 @@ set(
    gen/bcm/aesni-x86-linux.S
    gen/bcm/aesni-x86_64-apple.S
    gen/bcm/aesni-x86_64-linux.S
@@ -4283,7 +4283,7 @@ Index: chromium-136.0.7103.48/third_party/boringssl/src/gen/sources.cmake
    gen/bcm/aesv8-armv7-linux.S
    gen/bcm/aesv8-armv8-apple.S
    gen/bcm/aesv8-armv8-linux.S
-@@ -151,6 +152,7 @@ set(
+@@ -153,6 +154,7 @@ set(
    gen/bcm/ghash-x86-linux.S
    gen/bcm/ghash-x86_64-apple.S
    gen/bcm/ghash-x86_64-linux.S
@@ -4291,7 +4291,7 @@ Index: chromium-136.0.7103.48/third_party/boringssl/src/gen/sources.cmake
    gen/bcm/ghashv8-armv7-linux.S
    gen/bcm/ghashv8-armv8-apple.S
    gen/bcm/ghashv8-armv8-linux.S
-@@ -347,6 +349,7 @@ set(
+@@ -352,6 +354,7 @@ set(
    crypto/cpu_arm_freebsd.cc
    crypto/cpu_arm_linux.cc
    crypto/cpu_intel.cc
@@ -4299,7 +4299,7 @@ Index: chromium-136.0.7103.48/third_party/boringssl/src/gen/sources.cmake
    crypto/crypto.cc
    crypto/curve25519/curve25519.cc
    crypto/curve25519/curve25519_64_adx.cc
-@@ -2864,6 +2867,7 @@ set(
+@@ -2980,6 +2983,7 @@ set(
    gen/test_support/trampoline-armv8-apple.S
    gen/test_support/trampoline-armv8-linux.S
    gen/test_support/trampoline-armv8-win.S
@@ -4307,11 +4307,11 @@ Index: chromium-136.0.7103.48/third_party/boringssl/src/gen/sources.cmake
    gen/test_support/trampoline-x86-apple.S
    gen/test_support/trampoline-x86-linux.S
    gen/test_support/trampoline-x86_64-apple.S
-Index: chromium-136.0.7103.48/third_party/boringssl/src/gen/sources.json
+Index: chromium-144.0.7559.59/third_party/boringssl/src/gen/sources.json
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/boringssl/src/gen/sources.json
-+++ chromium-136.0.7103.48/third_party/boringssl/src/gen/sources.json
-@@ -98,6 +98,7 @@
+--- chromium-144.0.7559.59.orig/third_party/boringssl/src/gen/sources.json
++++ chromium-144.0.7559.59/third_party/boringssl/src/gen/sources.json
+@@ -100,6 +100,7 @@
        "gen/bcm/aesni-x86-linux.S",
        "gen/bcm/aesni-x86_64-apple.S",
        "gen/bcm/aesni-x86_64-linux.S",
@@ -4319,7 +4319,7 @@ Index: chromium-136.0.7103.48/third_party/boringssl/src/gen/sources.json
        "gen/bcm/aesv8-armv7-linux.S",
        "gen/bcm/aesv8-armv8-apple.S",
        "gen/bcm/aesv8-armv8-linux.S",
-@@ -129,6 +130,7 @@
+@@ -131,6 +132,7 @@
        "gen/bcm/ghash-x86-linux.S",
        "gen/bcm/ghash-x86_64-apple.S",
        "gen/bcm/ghash-x86_64-linux.S",
@@ -4327,7 +4327,7 @@ Index: chromium-136.0.7103.48/third_party/boringssl/src/gen/sources.json
        "gen/bcm/ghashv8-armv7-linux.S",
        "gen/bcm/ghashv8-armv8-apple.S",
        "gen/bcm/ghashv8-armv8-linux.S",
-@@ -317,6 +319,7 @@
+@@ -322,6 +324,7 @@
        "crypto/cpu_arm_freebsd.cc",
        "crypto/cpu_arm_linux.cc",
        "crypto/cpu_intel.cc",
@@ -4335,7 +4335,7 @@ Index: chromium-136.0.7103.48/third_party/boringssl/src/gen/sources.json
        "crypto/crypto.cc",
        "crypto/curve25519/curve25519.cc",
        "crypto/curve25519/curve25519_64_adx.cc",
-@@ -2784,6 +2787,7 @@
+@@ -2892,6 +2895,7 @@
        "gen/test_support/trampoline-armv8-apple.S",
        "gen/test_support/trampoline-armv8-linux.S",
        "gen/test_support/trampoline-armv8-win.S",
@@ -4343,10 +4343,10 @@ Index: chromium-136.0.7103.48/third_party/boringssl/src/gen/sources.json
        "gen/test_support/trampoline-x86-apple.S",
        "gen/test_support/trampoline-x86-linux.S",
        "gen/test_support/trampoline-x86_64-apple.S",
-Index: chromium-136.0.7103.48/third_party/boringssl/src/gen/test_support/trampoline-ppc-linux.S
+Index: chromium-144.0.7559.59/third_party/boringssl/src/gen/test_support/trampoline-ppc-linux.S
 ===================================================================
 --- /dev/null
-+++ chromium-136.0.7103.48/third_party/boringssl/src/gen/test_support/trampoline-ppc-linux.S
++++ chromium-144.0.7559.59/third_party/boringssl/src/gen/test_support/trampoline-ppc-linux.S
 @@ -0,0 +1,1413 @@
 +// This file is generated from a similarly-named Perl script in the BoringSSL
 +// source tree. Do not edit by hand.

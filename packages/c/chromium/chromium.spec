@@ -79,6 +79,8 @@
 %define esbuild_version 0.25.1
 # minimal gn version
 %define gn_version 0.20251217
+# local rollup override to run without binaries
+%define rollup_version 3.29.5
 %if 0%{?suse_version} <= 1699
 %bcond_with system_webp
 %bcond_with system_re2
@@ -140,6 +142,9 @@ NoSource:       0
 Source1:        esbuild-%{esbuild_version}.tar.gz
 Source2:        esbuild-%{esbuild_version}-vendor.tar.gz
 Source3:        README.openSUSE
+# upstream only contains x86 binary of 4.x, other archs do not work reliably
+# try to use an old version like in debian package
+Source4:        https://registry.npmjs.org/rollup/-/rollup-%{rollup_version}.tgz
 # Toolchain definitions
 Source30:       master_preferences
 Source104:      chromium-symbolic.svg
@@ -147,9 +152,6 @@ Source104:      chromium-symbolic.svg
 Source105:      INSTALL.sh
 #
 Source106:      chrome-wrapper
-# upstream only contains x86 binary still needed:
-Source201:      https://npm.skia.org/chrome-devtools/@rollup%2frollup-linux-arm64-gnu/-/rollup-linux-arm64-gnu-4.22.4.tgz
-Source202:      https://npm.skia.org/chrome-devtools/@rollup%2frollup-linux-powerpc64le-gnu/-/rollup-linux-powerpc64le-gnu-4.22.4.tgz
 # global patches
 Patch0:         chromium-libusb_interrupt_event_handler.patch
 # PATCH-FIX-OPENSUSE Make the 1-click-install ymp file always download [bnc#836059]
@@ -193,66 +195,73 @@ Patch390:       chromium-144-revert_gfx_value_or.patch
 Patch391:       chromium-145-blink_missing_include.patch
 Patch392:       chromium-145-use_unrar.patch
 Patch393:       force-rust-nightly.patch
+Patch394:       chromium-145-swiftshader-missing-include.patch
 # conditionally applied patches ppc64le only
-Patch401:       ppc-fedora-add-ppc64-architecture-string.patch
-Patch402:       ppc-fedora-0001-linux-seccomp-bpf-ppc64-glibc-workaround-in-SIGSYS-h.patch
-Patch403:       ppc-fedora-0001-sandbox-Enable-seccomp_bpf-for-ppc64.patch
-Patch404:       ppc-fedora-0001-services-service_manager-sandbox-linux-Fix-TCGETS-de.patch
-Patch405:       ppc-fedora-0001-sandbox-linux-bpf_dsl-Update-syscall-ranges-for-ppc6.patch
-Patch406:       ppc-fedora-0001-sandbox-linux-Implement-partial-support-for-ppc64-sy.patch
-Patch407:       ppc-fedora-0001-sandbox-linux-Update-IsSyscallAllowed-in-broker_proc.patch
-Patch408:       ppc-fedora-0001-sandbox-linux-Update-syscall-helpers-lists-for-ppc64.patch
-Patch409:       ppc-fedora-0002-sandbox-linux-bpf_dsl-Modify-seccomp_macros-to-add-s.patch
-Patch410:       ppc-fedora-0003-sandbox-linux-system_headers-Update-linux-seccomp-he.patch
-Patch411:       ppc-fedora-0004-sandbox-linux-system_headers-Update-linux-signal-hea.patch
-Patch412:       ppc-fedora-0005-sandbox-linux-seccomp-bpf-Add-ppc64-syscall-stub.patch
-Patch413:       ppc-fedora-0005-sandbox-linux-update-unit-test-for-ppc64.patch
-Patch414:       ppc-fedora-0006-sandbox-linux-disable-timedwait-time64-ppc64.patch
-Patch415:       ppc-fedora-0007-sandbox-linux-add-ppc64-stat.patch
-Patch416:       ppc-fedora-Sandbox-linux-services-credentials.cc-PPC.patch
-Patch417:       ppc-fedora-0008-sandbox-fix-ppc64le-glibc234.patch
-Patch418:       ppc-fedora-0001-third_party-angle-Include-missing-header-cstddef-in-.patch
-Patch419:       ppc-fedora-0001-Add-PPC64-support-for-boringssl.patch
-Patch420:       ppc-fedora-0001-third_party-libvpx-Properly-generate-gni-on-ppc64.patch
-Patch421:       ppc-fedora-0001-third_party-pffft-Include-altivec.h-on-ppc64-with-SI.patch
-Patch422:       ppc-fedora-0002-Add-PPC64-generated-files-for-boringssl.patch
-Patch423:       ppc-fedora-0002-third_party-lss-kernel-structs.patch
-Patch424:       ppc-fedora-0001-swiftshader-fix-build.patch
-Patch425:       ppc-fedora-Rtc_base-system-arch.h-PPC.patch
-Patch426:       ppc-fedora-0002-Include-cstddef-to-fix-build.patch
-Patch427:       ppc-fedora-0004-third_party-crashpad-port-curl-transport-ppc64.patch
-Patch428:       ppc-fedora-HACK-third_party-libvpx-use-generic-gnu.patch
-Patch429:       ppc-fedora-0001-third-party-hwy-wrong-include.patch
-Patch430:       ppc-fedora-HACK-debian-clang-disable-base-musttail.patch
-Patch431:       ppc-fedora-0001-Add-ppc64-target-to-libaom.patch
-Patch432:       ppc-fedora-0001-Add-pregenerated-config-for-libaom-on-ppc64.patch
-Patch433:       ppc-fedora-0002-third_party-libvpx-Remove-bad-ppc64-config.patch
-Patch434:       ppc-fedora-0003-third_party-libvpx-Add-ppc64-generated-config.patch
-Patch435:       ppc-fedora-0004-third_party-libvpx-work-around-ambiguous-vsx.patch
-Patch436:       ppc-fedora-skia-vsx-instructions.patch
-Patch437:       ppc-fedora-0001-Implement-support-for-ppc64-on-Linux.patch
-Patch438:       ppc-fedora-0001-Implement-support-for-PPC64-on-Linux.patch
-Patch439:       ppc-fedora-0001-Force-baseline-POWER8-AltiVec-VSX-CPU-features-when-.patch
-Patch442:       ppc-fedora-fix-rust-linking.patch
-Patch443:       ppc-fedora-fix-breakpad-compile.patch
-Patch444:       ppc-fedora-fix-partition-alloc-compile.patch
-Patch445:       ppc-fedora-fix-study-crash.patch
-Patch446:       ppc-fedora-memory-allocator-dcheck-assert-fix.patch
-Patch447:       ppc-fedora-fix-different-data-layouts.patch
-Patch448:       ppc-fedora-0002-Add-ppc64-trap-instructions.patch
-Patch449:       ppc-fedora-fix-ppc64-linux-syscalls-headers.patch
-Patch450:       ppc-fedora-use-sysconf-page-size-on-ppc64.patch
-Patch451:       ppc-fedora-0001-Enable-ppc64-pointer-compression.patch
-Patch452:       ppc-fedora-dawn-fix-ppc64le-detection.patch
-Patch453:       ppc-fedora-add-ppc64-architecture-to-extensions.diff
-Patch454:       ppc-fedora-fix-unknown-warning-option-messages.diff
-Patch455:       ppc-fedora-add-ppc64-pthread-stack-size.patch
-Patch457:       ppc-chromium-136-clang-config.patch
-Patch458:       ppc-fedora-0001-add-xnn-ppc64el-support.patch
+# where applicable patch numbers from fedora specfile + 100
+Patch400:       chromium-141-glibc-2.42-SYS_SECCOMP.patch
+Patch402:       ppc-fedora-memory-allocator-dcheck-assert-fix.patch
+# similar to patch 483 but in llvm-10 tree
+# so we do not use chromium-143-swiftshader-llvm-16.0.patch
+Patch403:       0001-swiftshader-fix-build-llvm10.patch
+#
+Patch459:       ppc-fedora-add-ppc64-architecture-string.patch
+Patch461:       ppc-fedora-0001-sandbox-Enable-seccomp_bpf-for-ppc64.patch
+#
+Patch476:       ppc-fedora-0001-third_party-angle-Include-missing-header-cstddef-in-.patch
+Patch477:       ppc-fedora-0001-Add-PPC64-support-for-boringssl.patch
+Patch478:       ppc-fedora-0001-third_party-libvpx-Properly-generate-gni-on-ppc64.patch
+Patch480:       ppc-fedora-0001-third_party-pffft-Include-altivec.h-on-ppc64-with-SI.patch
+Patch481:       ppc-fedora-0002-Add-PPC64-generated-files-for-boringssl.patch
+Patch482:       ppc-fedora-0002-third_party-lss-kernel-structs.patch
+#
+Patch483:       ppc-fedora-0001-swiftshader-fix-build.patch
+#
+Patch484:       ppc-fedora-Rtc_base-system-arch.h-PPC.patch
+#
+Patch486:       ppc-fedora-0004-third_party-crashpad-port-curl-transport-ppc64.patch
+#
+Patch487:       ppc-fedora-HACK-third_party-libvpx-use-generic-gnu.patch
+Patch489:       ppc-fedora-HACK-debian-clang-disable-base-musttail.patch
+Patch490:       ppc-fedora-HACK-debian-clang-disable-pa-musttail.patch
+Patch491:       ppc-fedora-0001-Add-ppc64-target-to-libaom.patch
+Patch492:       ppc-fedora-0001-Add-pregenerated-config-for-libaom-on-ppc64.patch
+#
+Patch493:       ppc-fedora-0002-third_party-libvpx-Remove-bad-ppc64-config.patch
+Patch494:       ppc-fedora-0003-third_party-libvpx-Add-ppc64-generated-config.patch
+#
+Patch495:       ppc-fedora-0004-third_party-libvpx-work-around-ambiguous-vsx.patch
+#
+Patch496:       ppc-fedora-skia-vsx-instructions.patch
+#
+Patch497:       ppc-fedora-0001-Implement-support-for-ppc64-on-Linux.patch
+Patch498:       ppc-fedora-0001-Implement-support-for-PPC64-on-Linux.patch
+Patch499:       ppc-fedora-0001-Force-baseline-POWER8-AltiVec-VSX-CPU-features-when-.patch
+Patch501:       ppc-fedora-fix-rustc.patch
+Patch502:       ppc-fedora-fix-rust-linking.patch
+Patch503:       ppc-fedora-fix-breakpad-compile.patch
+Patch504:       ppc-fedora-fix-partition-alloc-compile.patch
+Patch505:       ppc-fedora-fix-study-crash.patch
+Patch507:       ppc-fedora-fix-different-data-layouts.patch
+Patch508:       ppc-fedora-0002-Add-ppc64-trap-instructions.patch
+#
+Patch509:       ppc-fedora-fix-page-allocator-overflow.patch
+Patch510:       ppc-fedora-0001-Enable-ppc64-pointer-compression.patch
+#
+Patch511:       ppc-fedora-dawn-fix-ppc64le-detection.patch
+Patch512:       ppc-fedora-add-ppc64-architecture-to-extensions.diff
+#
+Patch513:       ppc-fedora-fix-unknown-warning-option-messages.diff
+Patch515:       ppc-fedora-add-ppc64-pthread-stack-size.patch
+#
+Patch517:       ppc-fedora-0001-add-xnn-ppc64el-support.patch
 # https://src.fedoraproject.org/rpms/chromium/blob/rawhide/f/0002-regenerate-xnn-buildgn.patch
-Patch459:       ppc-fedora-0002-regenerate-xnn-buildgn.patch
-Patch460:       ppc-debian-0003-third_party-ffmpeg-Add-ppc64-generated-config.patch
-Patch461:       ppc-fedora-0009-sandbox-ignore-byte-span-error.patch
+Patch518:       ppc-fedora-0002-regenerate-xnn-buildgn.patch
+Patch519:       ppc-fedora-0009-sandbox-ignore-byte-span-error.patch
+# fedora does this in chromium-144-rust-clanglib.patch
+# while we do this without ppc in chromium-121-rust-clang_lib.patch
+Patch550:       ppc-chromium-136-clang-config.patch
+# from debian
+Patch551:       ppc-debian-0003-third_party-ffmpeg-Add-ppc64-generated-config.patch
 # conditionally applied patches
 # patch where libxml < 2.12
 Patch1010:      chromium-124-system-libxml.patch
@@ -267,6 +276,7 @@ Patch1050:      chromium-140-old-flac.patch
 # error: static assertion expression is not an integral constant expression
 Patch1060:       chromium-24264eefbfd3464161764f31a2752c5327719452.patch
 Patch1061:       chromium-4f46f03a6c6d4c6efc1ad5d0d78030d02326f967.patch
+Patch1080:       rollup.patch
 
 # end conditionally applied patches
 BuildRequires:  SDL-devel
@@ -516,7 +526,7 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %autopatch -p1 -M 399
 
 %ifarch ppc64le
-%autopatch -p1 -m 400 -M 499
+%autopatch -p1 -m 400 -M 599
 %endif
 
 %if %{without libxml2_2_12}
@@ -542,15 +552,13 @@ if [[ $(echo ${clang_version} | cut -d. -f1) -lt 21 ]]; then
 %patch -p1 -R -P 1061
 fi
 
-# unpack rollup binary for aarch64
-%ifarch aarch64
-tar xf %{SOURCE201} && mv package third_party/devtools-frontend/src/node_modules/@rollup/rollup-linux-arm64-gnu
-%endif
-
-#unpack rollup binary for ppc64le
-%ifarch ppc64le
-tar xf %{SOURCE202} && mv package third_party/devtools-frontend/src/node_modules/@rollup/rollup-linux-powerpc64le-gnu
-%endif 
+## ROLLUP_HACK
+rm -rf third_party/devtools-frontend/src/node_modules/rollup
+rm -rf third_party/devtools-frontend/src/node_modules/@rollup/rollup-linux-*
+tar xf %{SOURCE4} && mv package third_party/devtools-frontend/src/node_modules/rollup
+rm -rf third_party/node/node_modules/rollup
+tar xf %{SOURCE4} && mv package third_party/node/node_modules/rollup
+%patch -p1 -P 1080
 
 %build
 # esbuild

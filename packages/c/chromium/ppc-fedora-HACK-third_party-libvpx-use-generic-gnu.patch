@@ -1,8 +1,8 @@
-Index: chromium-136.0.7103.48/third_party/libvpx/generate_gni.sh
+Index: chromium-144.0.7559.59/third_party/libvpx/generate_gni.sh
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/libvpx/generate_gni.sh
-+++ chromium-136.0.7103.48/third_party/libvpx/generate_gni.sh
-@@ -433,7 +433,7 @@ gen_config_files linux/mipsel "--target=
+--- chromium-144.0.7559.59.orig/third_party/libvpx/generate_gni.sh
++++ chromium-144.0.7559.59/third_party/libvpx/generate_gni.sh
+@@ -429,7 +429,7 @@ gen_config_files linux/mipsel "--target=
  gen_config_files linux/mips64el "--target=mips64-linux-gcc ${all_platforms}"
  gen_config_files linux/loongarch \
    "--target=loongarch64-linux-gcc ${all_platforms}"
@@ -11,10 +11,10 @@ Index: chromium-136.0.7103.48/third_party/libvpx/generate_gni.sh
  gen_config_files linux/generic "--target=generic-gnu $HIGHBD ${all_platforms}"
  gen_config_files win/arm64-highbd \
    "--target=arm64-win64-vs15 ${all_platforms} ${HIGHBD} ${disable_sve}"
-Index: chromium-136.0.7103.48/third_party/libvpx/source/libvpx/build/make/rtcd.pl
+Index: chromium-144.0.7559.59/third_party/libvpx/source/libvpx/build/make/rtcd.pl
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/libvpx/source/libvpx/build/make/rtcd.pl
-+++ chromium-136.0.7103.48/third_party/libvpx/source/libvpx/build/make/rtcd.pl
+--- chromium-144.0.7559.59.orig/third_party/libvpx/source/libvpx/build/make/rtcd.pl
++++ chromium-144.0.7559.59/third_party/libvpx/source/libvpx/build/make/rtcd.pl
 @@ -527,8 +527,9 @@ if ($opts{arch} eq 'x86') {
    }
    arm;
@@ -27,11 +27,11 @@ Index: chromium-136.0.7103.48/third_party/libvpx/source/libvpx/build/make/rtcd.p
  } elsif ($opts{arch} =~ /loongarch/ ) {
    @ALL_ARCHS = filter(qw/lsx lasx/);
    loongarch;
-Index: chromium-136.0.7103.48/third_party/libvpx/BUILD.gn
+Index: chromium-144.0.7559.59/third_party/libvpx/BUILD.gn
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/libvpx/BUILD.gn
-+++ chromium-136.0.7103.48/third_party/libvpx/BUILD.gn
-@@ -102,6 +102,14 @@ config("libvpx_config") {
+--- chromium-144.0.7559.59.orig/third_party/libvpx/BUILD.gn
++++ chromium-144.0.7559.59/third_party/libvpx/BUILD.gn
+@@ -98,6 +98,14 @@ config("libvpx_config") {
        "-Wno-sign-compare",
      ]
    }

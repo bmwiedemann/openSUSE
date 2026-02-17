@@ -176,10 +176,10 @@ sed \
 ## Desktop file
 sed \
     -e "s#@@MENUNAME#${MENUNAME}#g" \
-    -e "s#@@USR_BIN_SYMLINK_NAME#${PACKAGE}#g" \
+    -e "s#@@usr_bin_symlink_name#${PACKAGE}#g" \
     -e "s#@@PACKAGE#${PACKAGE}#g" \
-    -e "s#@@URI_SCHEME#${URI_SCHEME}#g" \
-    -e "s#@@EXTRA_DESKTOP_ENTRIES#${EXTRA_DESKTOP_ENTRIES}#g" \
+    -e "s#@@uri_scheme#${URI_SCHEME}#g" \
+    -e "s#@@extra_desktop_entries#${EXTRA_DESKTOP_ENTRIES}#g" \
     "chrome/installer/linux/common/desktop.template" > "${STAGEDIR}/usr/share/applications/${PACKAGE}.desktop"
 chmod 644 "${STAGEDIR}/usr/share/applications/${PACKAGE}.desktop"
 

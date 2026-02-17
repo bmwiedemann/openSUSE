@@ -1,0 +1,12 @@
+--- a/third_party/node/node_modules.py
++++ b/third_party/node/node_modules.py
+@@ -18,7 +21,7 @@ def PathToEsLint():
+ 
+ 
+ def PathToRollup():
+-  return _path_in_node_modules('@rollup', 'wasm-node', 'dist', 'bin', 'rollup')
++  return _path_in_node_modules('rollup', 'dist', 'bin', 'rollup')
+ 
+ 
+ def PathToSvgo():
+

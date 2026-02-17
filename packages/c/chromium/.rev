@@ -6212,4 +6212,41 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
   appdata and manpage (boo#1258199)</comment>
     <requestid>1333313</requestid>
   </revision>
+  <revision rev="503" vrev="3">
+    <srcmd5>4e7741e1a6ecae3fe5b27a7f7de6f51a</srcmd5>
+    <version>145.0.7632.75</version>
+    <time>1771343525</time>
+    <user>anag_factory</user>
+    <comment>- more fixes for desktop file, some variables were lowercased,
+  further adaptions in INSTALL script (boo#1258199)
+- modified patches:
+  * chromium-141-glibc-2.42-SYS_SECCOMP.patch
+    (trigger only with glibc-2.43)
+
+- also copy rollup into third_party/node/node_modules
+- stay on llvm-10 for swiftshader but bring a similar patch
+  * added patches:
+    0001-swiftshader-fix-build-llvm10.patch
+  * removed patches:
+    chromium-143-swiftshader-llvm-16.0.patch
+
+- drop use of rollup binaries and use rollup-3.x which does not
+  use prebuilt binaries (that fail at least on older ppc64le)
+  follow the approach of the debian packaging
+  * added patches:
+    rollup.patch 
+
+- update/resync ppc64le patches from fedora:
+  * modified patches:
+    ppc-fedora-0001-Add-PPC64-support-for-boringssl.patch
+    ppc-fedora-0001-Add-ppc64-target-to-libaom.patch
+    ppc-fedora-0001-Add-pregenerated-config-for-libaom-on-ppc64.patch
+    ppc-fedora-0001-Enable-ppc64-pointer-compression.patch
+    ppc-fedora-0001-Force-baseline-POWER8-AltiVec-VSX-CPU-features-when-.patch
+    ppc-fedora-0001-Implement-support-for-PPC64-on-Linux.patch
+    ppc-fedora-0001-Implement-support-for-ppc64-on-Linux.patch
+    ppc-fedora-0001-add-xnn-ppc64el-support.patch
+    ppc-fedora-0001-sandbox-Enable-seccomp_bpf-for-ppc64.patch</comment>
+    <requestid>1333500</requestid>
+  </revision>
 </revisionlist>

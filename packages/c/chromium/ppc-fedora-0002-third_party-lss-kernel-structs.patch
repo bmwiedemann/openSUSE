@@ -1,7 +1,7 @@
-Index: chromium-136.0.7103.48/third_party/lss/linux_syscall_support.h
+Index: chromium-144.0.7559.59/third_party/lss/linux_syscall_support.h
 ===================================================================
---- chromium-136.0.7103.48.orig/third_party/lss/linux_syscall_support.h
-+++ chromium-136.0.7103.48/third_party/lss/linux_syscall_support.h
+--- chromium-144.0.7559.59.orig/third_party/lss/linux_syscall_support.h
++++ chromium-144.0.7559.59/third_party/lss/linux_syscall_support.h
 @@ -86,7 +86,7 @@
   * Porting to other related platforms should not be difficult.
   */
@@ -11,7 +11,7 @@ Index: chromium-136.0.7103.48/third_party/lss/linux_syscall_support.h
       defined(__aarch64__) || defined(__s390__) || defined(__e2k__) ||  \
       (defined(__riscv) && __riscv_xlen == 64) || defined(__loongarch_lp64))  \
    && (defined(__linux) || defined(__ANDROID__))
-@@ -398,7 +398,7 @@ struct kernel_stat64 {
+@@ -400,7 +400,7 @@ struct kernel_stat64 {
    unsigned           __pad2;
    unsigned long long st_blocks;
  };
@@ -20,7 +20,7 @@ Index: chromium-136.0.7103.48/third_party/lss/linux_syscall_support.h
  struct kernel_stat64 {
    unsigned long long st_dev;
    unsigned long long st_ino;
-@@ -420,6 +420,28 @@ struct kernel_stat64 {
+@@ -422,6 +422,28 @@ struct kernel_stat64 {
    unsigned long      __unused4;
    unsigned long      __unused5;
  };
@@ -49,7 +49,7 @@ Index: chromium-136.0.7103.48/third_party/lss/linux_syscall_support.h
  #elif defined(__e2k__)
  struct kernel_stat64 {
    unsigned long long st_dev;
-@@ -536,7 +558,7 @@ struct kernel_stat {
+@@ -538,7 +560,7 @@ struct kernel_stat {
    uint64_t           st_ctime_nsec_;
    int64_t            __unused4[3];
  };
@@ -58,7 +58,7 @@ Index: chromium-136.0.7103.48/third_party/lss/linux_syscall_support.h
  typedef unsigned long kernel_blkcnt_t;
  typedef unsigned long kernel_blksize_t;
  typedef unsigned kernel_dev_t;
-@@ -567,6 +589,37 @@ struct kernel_stat {
+@@ -569,6 +591,37 @@ struct kernel_stat {
    unsigned long      __unused4;
    unsigned long      __unused5;
  };
@@ -96,7 +96,7 @@ Index: chromium-136.0.7103.48/third_party/lss/linux_syscall_support.h
  #elif (defined(__mips__) && _MIPS_SIM != _MIPS_SIM_ABI64)
  typedef int kernel_blkcnt_t;
  typedef int kernel_blksize_t;
-@@ -1823,6 +1876,28 @@ struct kernel_statx {
+@@ -1825,6 +1878,28 @@ struct kernel_statx {
  #ifndef __NR_getcpu
  #define __NR_getcpu             302
  #endif
@@ -125,7 +125,7 @@ Index: chromium-136.0.7103.48/third_party/lss/linux_syscall_support.h
  /* End of powerpc definitions                                              */
  #elif defined(__s390__)
  #ifndef __NR_quotactl
-@@ -4824,7 +4899,7 @@ struct kernel_statx {
+@@ -4826,7 +4901,7 @@ struct kernel_statx {
      LSS_INLINE _syscall6(void*, mmap, void*, addr, size_t, length, int, prot,
                           int, flags, int, fd, int64_t, offset)
    #endif
@@ -134,7 +134,7 @@ Index: chromium-136.0.7103.48/third_party/lss/linux_syscall_support.h
      #undef LSS_SC_LOADARGS_0
      #define LSS_SC_LOADARGS_0(dummy...)
      #undef LSS_SC_LOADARGS_1
-@@ -5214,7 +5289,11 @@ struct kernel_statx {
+@@ -5216,7 +5291,11 @@ struct kernel_statx {
  #endif
  
  #if !defined(__NR_pipe)

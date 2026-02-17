@@ -1,0 +1,11 @@
+--- chromium-145.0.7632.45/third_party/swiftshader/third_party/llvm-10.0/BUILD.gn	2026/02/17 00:06:48	1.1
++++ chromium-145.0.7632.45/third_party/swiftshader/third_party/llvm-10.0/BUILD.gn	2026/02/17 00:07:30
+@@ -1261,6 +1261,8 @@
+     "llvm/lib/Target/PowerPC/PPCVSXFMAMutate.cpp",
+     "llvm/lib/Target/PowerPC/PPCVSXSwapRemoval.cpp",
+     "llvm/lib/Target/PowerPC/TargetInfo/PowerPCTargetInfo.cpp",
++    "llvm/lib/MC/MCXCOFFObjectTargetWriter.cpp",
++    "llvm/lib/MC/MCAsmInfoXCOFF.cpp",
+   ]
+ }
+ 
