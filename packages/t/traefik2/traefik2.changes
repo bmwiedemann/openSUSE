@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 16 10:39:04 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 1.11.37
+  * healthcheck
+    - Validate healthcheck path configuration
+  * tls,server
+    - Cap TLS record length to RFC 8446 limit in ClientHello peeking
+
+- Version 1.11.36
+  * service
+    - Avoid recursion with services
+  * webui
+    - Bump dependencies of documentation and webui
+
+-------------------------------------------------------------------
 Sat Jan 31 13:14:32 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 1.11.35
