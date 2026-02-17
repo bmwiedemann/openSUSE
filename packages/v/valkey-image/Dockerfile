@@ -28,6 +28,9 @@ COPY --from=target / /target
 RUN set -euo pipefail; \
     export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1; \
     zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends valkey sed
+
+RUN set -euo pipefail; zypper -n install --no-recommends systemd && \
+    systemd-tmpfiles --create --root /target valkey.conf
 # sanity check that the version from the tag is equal to the version of valkey that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' valkey | \
