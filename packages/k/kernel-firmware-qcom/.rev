@@ -382,4 +382,21 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Remove ADSP SensorPD json for Radxa Dragon Q6A</comment>
     <requestid>1330135</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a126fb2838770c4060bd747d2242e9e6</srcmd5>
+    <version>20260214</version>
+    <time>1771342634</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260214 (git commit 3a0e2a540dca):
+  * qcom: Update DSP firmware for qcs8300 platform
+  * qcom: Update DSP firmware for sa8775p platform
+
+- Update to version 20260209 (git commit d87f4693ed96):
+  * qcom: Add gpu firmwares for Glymur chipset
+
+- Update to version 20260206 (git commit f2dbd7a7a74b):
+  * qcom: add QUPv3 firmware for x1e80100 platform
+  * qcom: add ADSP, CDSP firmware for glymur platform</comment>
+    <requestid>1333338</requestid>
+  </revision>
 </revisionlist>

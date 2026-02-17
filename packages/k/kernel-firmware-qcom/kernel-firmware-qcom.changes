@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Feb 16 08:29:28 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260214 (git commit 3a0e2a540dca):
+  * qcom: Update DSP firmware for qcs8300 platform
+  * qcom: Update DSP firmware for sa8775p platform
+
+-------------------------------------------------------------------
+Tue Feb 10 07:56:36 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260209 (git commit d87f4693ed96):
+  * qcom: Add gpu firmwares for Glymur chipset
+
+-------------------------------------------------------------------
+Fri Feb  6 08:18:40 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260206 (git commit f2dbd7a7a74b):
+  * qcom: add QUPv3 firmware for x1e80100 platform
+  * qcom: add ADSP, CDSP firmware for glymur platform
+
+-------------------------------------------------------------------
 Wed Jan 28 08:25:51 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260128 (git commit 2e5a8b0550ba):
