@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 17 12:57:55 UTC 2026 - aburlakov@suse.com
+
+- Update to version 2.7.0+git.1771332649.1644092c (ped#14519):
+  * Dev: rename STONITH --> FENCING
+
+-------------------------------------------------------------------
 Thu Feb 12 09:47:23 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
 
 - Update to version 2.7.0+git.1770826098.9bda3c96 (ped#14519):
