@@ -44,4 +44,40 @@
     unsupported binary architectures.</comment>
     <requestid>1324453</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7ba371021f71a731286faca32024a3a9</srcmd5>
+    <version>3.9.0</version>
+    <time>1771343475</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.9.0
+  Headline features:
+  * pmb.aportgen.device: Don't require chassis
+  * pmb.export.symlinks: add &quot;*.dtb&quot; glob symlinks
+  * pmb.install: add XFS filesystem support
+  * pmb.kconfig: Allow matching on multiple categories for entries
+  * pmb.kconfig: Generate generic kconfig fragment from kconfig-generic.toml
+  * pmb.parse.deviceinfo: Don't require chassis
+  * pmb: Add --changed argument to checksum subcommand
+    * pmb.commands.kconfig: Use Path instead of string for self.file
+  * pmb.helpers.git: Add utilities for getting changed packages and files
+  
+  Fixes:
+  * Added changes rule to deploy-docs
+  * flasher/frontend.py: fix &quot;The recovery zip has not been generated yet&quot;
+  * pmb, test: Format docstrings consistently with D2 Ruff rules
+  * pmb.aportgen.core: Add empty maintainer variable
+  * pmb.aportgen.core: Remove empty lines in header
+  * pmb.commands.kconfig: Conditionally construct path from args.file
+  * pmb.helpers.args: make `--no-ccache` actually work
+  * pmb.helpers.other: Check for 0-character hostnames in validate_hostname()
+  * pmb.install.format: fix xfs mkfs command
+  * pmb.parse.deviceinfo: Fix deviceinfo_drm being a str rather than a bool
+  * pmb.types: Fix type hint for PmbArgs.file
+  * pmb/install/format: f2fs: Add recommended robustness options
+  * pmb: Fix whitespace in docstrings
+  * pyproject.toml: Don't ignore FURB101
+  * pyproject.toml: Don't ignore FURB103
+  * pyproject.toml: Use ignore instead of extend-ignore</comment>
+    <requestid>1333458</requestid>
+  </revision>
 </revisionlist>

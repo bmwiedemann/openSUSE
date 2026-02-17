@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Feb 16 20:50:40 UTC 2026 - Tomas Cech <sleep_walker@opensuse.org>
+
+- Update to version 3.9.0
+  Headline features:
+  * pmb.aportgen.device: Don't require chassis
+  * pmb.export.symlinks: add "*.dtb" glob symlinks
+  * pmb.install: add XFS filesystem support
+  * pmb.kconfig: Allow matching on multiple categories for entries
+  * pmb.kconfig: Generate generic kconfig fragment from kconfig-generic.toml
+  * pmb.parse.deviceinfo: Don't require chassis
+  * pmb: Add --changed argument to checksum subcommand
+    * pmb.commands.kconfig: Use Path instead of string for self.file
+  * pmb.helpers.git: Add utilities for getting changed packages and files
+  
+  Fixes:
+  * Added changes rule to deploy-docs
+  * flasher/frontend.py: fix "The recovery zip has not been generated yet"
+  * pmb, test: Format docstrings consistently with D2 Ruff rules
+  * pmb.aportgen.core: Add empty maintainer variable
+  * pmb.aportgen.core: Remove empty lines in header
+  * pmb.commands.kconfig: Conditionally construct path from args.file
+  * pmb.helpers.args: make `--no-ccache` actually work
+  * pmb.helpers.other: Check for 0-character hostnames in validate_hostname()
+  * pmb.install.format: fix xfs mkfs command
+  * pmb.parse.deviceinfo: Fix deviceinfo_drm being a str rather than a bool
+  * pmb.types: Fix type hint for PmbArgs.file
+  * pmb/install/format: f2fs: Add recommended robustness options
+  * pmb: Fix whitespace in docstrings
+  * pyproject.toml: Don't ignore FURB101
+  * pyproject.toml: Don't ignore FURB103
+  * pyproject.toml: Use ignore instead of extend-ignore
+
+-------------------------------------------------------------------
+Wed Jan  7 07:33:27 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.8.0
+  Features:
+  * pmb.chroot: set up PTY support and std I/O nodes.
+  * pmb.qemu.run: Add armv7 support.
+  Fixes:
+  * kconfigcheck: fix x64_64 typo.
+  * pmb.helpers.pmaports: skip provider search when subpkg
+    definition is empty.
+  Other:
+  * pmb.config.pmaports: automatically switch pmaports branch from
+    master to main.
+
+-------------------------------------------------------------------
 Mon Dec 15 07:34:28 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.7.0
