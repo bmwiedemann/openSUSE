@@ -37,4 +37,14 @@
     * Wrong :rtype: in StaticToken.random_token docstring</comment>
     <requestid>1315970</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eccffe00edfbba251ff46cb271f69191</srcmd5>
+    <version>1.7.0</version>
+    <time>1771348442</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.7.0:
+  * #185: Make OTPMiddleware async capable
+  * #182: Correct missing Spanish translations</comment>
+    <requestid>1333421</requestid>
+  </revision>
 </revisionlist>

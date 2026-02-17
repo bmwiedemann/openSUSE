@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 16 17:27:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * #185: Make OTPMiddleware async capable
+  * #182: Correct missing Spanish translations
+
+-------------------------------------------------------------------
 Wed Nov  5 09:18:40 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 1.6.3
