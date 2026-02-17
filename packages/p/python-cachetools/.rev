@@ -278,4 +278,37 @@
     <comment></comment>
     <requestid>1325975</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4f7c2cb8c75d6260af94ebf6574fdf8b</srcmd5>
+    <version>7.0.1</version>
+    <time>1771342651</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.0.1:
+  * Various test improvements.
+  * Update Copilot Instructions.
+  * Require Python 3.10 or later (breaking change).
+  * Drop support for passing info as fourth positional parameter
+    to @cached (breaking change).
+  * Drop support for cache(self) returning None with
+    @cachedmethod (breaking change).
+  * Convert the @cachedmethod wrappers to descriptors,
+    deprecating its use with class methods and instances that do
+    not provide a mutable __dict__ attribute (potentially
+    breaking change).
+  * Convert the previously undocumented @cachedmethod attributes
+    (cache, cache_lock, etc.) to properties for instance methods,
+    providing official support and documentation (potentially
+    breaking change).
+  * Add an optional info parameter to the @cachedmethod decorator
+    for reporting per-instance cache statistics.  Note that this
+    requires the instance's __dict__ attribute to be a mutable
+    mapping.
+  * Improve typedkey performance.
+  * Minor documentation improvements.
+  * Minor testing improvements.
+  * Minor code readability improvements.
+  * Improve documentation regarding @cachedmethod with lock
+    parameter.</comment>
+    <requestid>1333393</requestid>
+  </revision>
 </revisionlist>
