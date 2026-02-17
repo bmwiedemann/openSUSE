@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 16 17:36:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.0:
+  * Add support for isort 7.0.0.
+  * Drop python 3.9 support and add Python 3.14 support.
+  * Bump pypy minimum version to 3.10.
+
+-------------------------------------------------------------------
 Mon Sep 29 10:41:54 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.2:

@@ -84,4 +84,15 @@
   * Drop python 3.8, and add python 3.13. [SukiCZ]</comment>
     <requestid>1307732</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fe298aa7fae01028046615757896bfbe</srcmd5>
+    <version>7.0.0</version>
+    <time>1771348452</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.0.0:
+  * Add support for isort 7.0.0.
+  * Drop python 3.9 support and add Python 3.14 support.
+  * Bump pypy minimum version to 3.10.</comment>
+    <requestid>1333424</requestid>
+  </revision>
 </revisionlist>

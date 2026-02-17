@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-isort
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flake8-isort
-Version:        6.1.2
+Version:        7.0.0
 Release:        0
 Summary:        Plugin integrating isort in flake8
 License:        GPL-2.0-only
@@ -27,7 +27,7 @@ URL:            https://github.com/gforcada/flake8-isort
 Source:         https://files.pythonhosted.org/packages/source/f/flake8-isort/flake8_isort-%{version}.tar.gz
 BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module isort >= 4.3.5}
+BuildRequires:  %{python_module isort >= 5.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testfixtures}
@@ -36,7 +36,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-flake8
-Requires:       python-isort >= 4.3.5
+Requires:       python-isort >= 5.0.0
 Requires:       python-testfixtures
 BuildArch:      noarch
 %python_subpackages
