@@ -8296,4 +8296,41 @@ always built-in because vim has direct perl dependencies anyway.
  * runtime(doc): Fix some overlength lines</comment>
     <requestid>1331491</requestid>
   </revision>
+  <revision rev="395" vrev="1">
+    <srcmd5>4add874c8481aa96e687f9efd2b73d8a</srcmd5>
+    <version>9.2.0010</version>
+    <time>1771342677</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.2.0010:
+ * patch 9.2.0010: Using Wayland compositor is still slow
+ * patch 9.2.0009: tests: test_cindent are not ordered
+ * runtime(zip): use system() instead of :!
+ * patch 9.2.0008: MS-Windows: font size calculation may be wrong
+ * patch 9.2.0007: cindent: recognizing labels within commented lines
+ * patch 9.2.0006: powershell commands wrongly wrapped when executed
+ * patch 9.2.0005: Coverity reports unreachable code
+ * runtime(fstab): Add cgroup2 to valid device types
+ * runtime(hare): update syntax script for Hare 0.26.0
+ * runtime(vim): Error codes should not be highlighed with vim9CommentTitle
+ * runtime(netrw): Use right file system commands initialization for Windows
+ * patch 9.2.0004: Changing hidden prompt buffer cancels :startinsert/:stopinsert
+ * patch 9.2.0003: tests: invalid indent in message.c
+ * Makefile: dosrt target fails because of duplicate lang directories
+ * runtime(sh): fix spurious nextgroup=shComment on shEscape
+ * patch 9.2.0002: str2specialbuf() can be improved
+ * README: Updated version from 91 to 92 in various READMEs
+ * patch 9.1.0001: tests: Test_popup_setbuf() fails
+ * patch 9.2.0: Need a new Vim release
+ * runtime(doc): Update todo.txt and remove solved issues
+ * runtime(doc): Clarify :bd behaviour
+ * patch 9.1.2148: [security]: Buffer overflow in netbeans interface
+ * runtime(doc): Fix typos in version9.txt
+ * runtime(systemverilog): use correct matchit pattern for the covergroup block
+ * runtime(doc): Fix typos in markdown READMEs
+ * runtime(go,gleam): Remove 'formatprg' from ftplugins
+ * runtime(sudoers): highlight usernames with hyphens, digits, underscores
+ * runtime(doc): Use ellipses for overlength example comments at :help vim9.txt
+ * runtime(css): Add missing numeric units</comment>
+    <requestid>1333427</requestid>
+  </revision>
 </revisionlist>

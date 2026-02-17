@@ -17,10 +17,10 @@
 #
 
 
-%define pkg_version 9.1
-%define patchlevel 2132
+%define pkg_version 9.2
+%define patchlevel 0010
 %define patchlevel_compact %{patchlevel}
-%define VIM_SUBDIR vim91
+%define VIM_SUBDIR vim92
 %define site_runtimepath %{_datadir}/vim/site
 %define make make VIMRCLOC=%{_sysconfdir} VIMRUNTIMEDIR=%{_datadir}/vim/current MAKE="make -e" %{?_smp_mflags}
 %if 0%{?suse_version} > 1500

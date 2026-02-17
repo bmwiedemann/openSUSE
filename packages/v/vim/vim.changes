@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Mon Feb 16 17:38:41 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.2.0010:
+ * patch 9.2.0010: Using Wayland compositor is still slow
+ * patch 9.2.0009: tests: test_cindent are not ordered
+ * runtime(zip): use system() instead of :!
+ * patch 9.2.0008: MS-Windows: font size calculation may be wrong
+ * patch 9.2.0007: cindent: recognizing labels within commented lines
+ * patch 9.2.0006: powershell commands wrongly wrapped when executed
+ * patch 9.2.0005: Coverity reports unreachable code
+ * runtime(fstab): Add cgroup2 to valid device types
+ * runtime(hare): update syntax script for Hare 0.26.0
+ * runtime(vim): Error codes should not be highlighed with vim9CommentTitle
+ * runtime(netrw): Use right file system commands initialization for Windows
+ * patch 9.2.0004: Changing hidden prompt buffer cancels :startinsert/:stopinsert
+ * patch 9.2.0003: tests: invalid indent in message.c
+ * Makefile: dosrt target fails because of duplicate lang directories
+ * runtime(sh): fix spurious nextgroup=shComment on shEscape
+ * patch 9.2.0002: str2specialbuf() can be improved
+ * README: Updated version from 91 to 92 in various READMEs
+ * patch 9.1.0001: tests: Test_popup_setbuf() fails
+ * patch 9.2.0: Need a new Vim release
+ * runtime(doc): Update todo.txt and remove solved issues
+ * runtime(doc): Clarify :bd behaviour
+ * patch 9.1.2148: [security]: Buffer overflow in netbeans interface
+ * runtime(doc): Fix typos in version9.txt
+ * runtime(systemverilog): use correct matchit pattern for the covergroup block
+ * runtime(doc): Fix typos in markdown READMEs
+ * runtime(go,gleam): Remove 'formatprg' from ftplugins
+ * runtime(sudoers): highlight usernames with hyphens, digits, underscores
+ * runtime(doc): Use ellipses for overlength example comments at :help vim9.txt
+ * runtime(css): Add missing numeric units
+ * installman: Update the sed patterns in installman.sh
+ * patch 9.1.2147: Compile warning in strings.c
+ * runtime(doc): various netrw related corrections
+ * patch 9.1.2146: filetype: cel files are not recognized
+ * runtime(sh): Fix some ksh-specific deficiencies in syntax script
+ * runtime(sshdconfig): Update syntax
+ * patch 9.1.2145: intstalltutor Makefile target does not create the tutor/sv dir
+ * runtime(django): add syntax support for partial
+ * tests(commondumps): Mark and fold lines in screendump views
+ * runtime(vimgoto): Fix gf in Vim script
+ * runtime(java): Allow for org.TopLevelType<T>.NestedType return types
+ * runtime(doc): Fix typo in runtime/doc/cmdline.txt
+ * runtime(ruby): Update for Vim 9.2 release
+ * runtime(doc): clarify the use of 'iskeyword' option value
+ * patch 9.1.2144: garbage collection may invalidate the recorded buffer changes
+ * runtime(doc): Mark 'scrollfocus' as non-functional
+ * patch 9.1.2143: wrong rendering of popups when overlapping wide char
+ * patch 9.1.2142: MS-Windows: mouse scroll events not handled for popups
+ * runtime(doc): add Swedish entries to Make_all.mak, add conversion rule to Makefile
+ * runtime(nginx): Update nginx syntax script
+ * runtime(nginx): highlight Lua in set_by_lua_block in syntax script
+ * patch 9.1.2141: Truncation when serializing libsodium encryption parameters
+ * runtime(gdb): Update syntax and ftplugin
+ * translation(ru): Update Russian translation and fix typos in tutor
+ * Revert "CI: Manage multibyte characters in syntax tests"
+ * patch 9.1.2140: tests: Test_wayland_protocol_error_overflow() fails
+ * runtime(python3complete): remove trailing white space
+ * runtime(compiler): fix space escape in pyright
+ * patch 9.1.2139: Buffer overflow in :wlrestore command
+ * patch 9.1.2138: win_execute() and 'autochdir' can corrupt buffer name
+ * patch 9.1.2137: test: Update tests for OpenBSD
+ * patch 9.1.2136: :tab sbuffer may close old tabpage
+ * runtime(tar): Make the path traversal detection more robust
+ * runtime(doc): clarify term_cols allowed range in terminal.txt
+ * runtime(doc): Add Swedish to help-translated list
+ * runtime(doc): Remove Swedish translation help.svx
+ * runtime(doc): fix pattern problem in cmdline.txt
+ * patch 9.1.2135: tests: tar plugin does not consider 'nowrapscan'
+ * runtime(lf): update syntax to support lf version r41
+ * patch 9.1.2134: Terminal doesn't handle split UTF-8 sequence after ASCII
+ * runtime(hare): update to match upstream
+ * patch 9.1.2133: Another case of buffer overflow with 'helpfile'
+
+-------------------------------------------------------------------
 Thu Feb  5 23:22:54 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.1.2132 
