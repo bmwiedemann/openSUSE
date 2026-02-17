@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 16 22:31:17 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.5.3:
+  * elements/text: fix a possible texture race that would result
+    in an empty texture asset
+  * config: add rounding_large and _small
+
+-------------------------------------------------------------------
 Fri Jan  9 08:59:00 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim filler wording from descriptions

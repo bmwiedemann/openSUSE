@@ -19,7 +19,7 @@
 %define sover 5
 %define libname lib%{name}%{sover}
 Name:           hyprtoolkit
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 Summary:        A C++ GUI toolkit for native Wayland applications
 License:        BSD-3-Clause
