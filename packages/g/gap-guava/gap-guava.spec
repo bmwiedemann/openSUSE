@@ -1,7 +1,7 @@
 #
 # spec file for package gap-guava
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-guava
-Version:        3.20
+Version:        3.21
 Release:        0
 Summary:        GAP package for computing with error-correcting codes
 License:        GPL-2.0-or-later
@@ -29,7 +29,7 @@ BuildRequires:  gap-devel >= 4.8.0
 BuildRequires:  gap-rpm-devel
 BuildRequires:  libtool
 Requires:       gap-core >= 4.8.0
-Suggests:       gap-sonata >= 2.3
+Requires:       gap-sonata >= 2.3
 
 %description
 GUAVA is a package that implements coding theory algorithms in GAP.
@@ -42,7 +42,7 @@ isomorphism testing functions. Several algorithms that need the speed
 are integrated in the GAP kernel.
 
 %prep
-%setup -qn guava-%version
+%autosetup -n guava-%version
 
 %build
 ./configure "%gapdir"

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 17 09:24:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.21
+  * Fix logical AND in `assignGenName`, a function in the C code.
+
+-------------------------------------------------------------------
 Thu Feb 27 23:00:16 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Make specfile conform to POSIX sh
