@@ -1,0 +1,68 @@
+From c7e0fde828e5b2d5fb22c11ad4cf0dcfc6de0292 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 14 Jan 2026 21:47:05 +0100
+Subject: [PATCH 3/4] [gdb/symtab] Cache dw2_get_file_names result for dummy CU
+
+Consider function dw2_get_file_names:
+...
+static struct quick_file_names *
+dw2_get_file_names (dwarf2_per_cu *this_cu, dwarf2_per_objfile *per_objfile)
+{
+  /* This should never be called for TUs.  */
+  gdb_assert (!this_cu->is_debug_types ());
+
+  if (this_cu->files_read)
+    return this_cu->file_names;
+
+  cutu_reader reader (*this_cu, *per_objfile, nullptr,
+                      per_objfile->get_cu (this_cu), true, language_minimal,
+                      nullptr);
+  if (!reader.is_dummy ())
+    dw2_get_file_names_reader (reader.cu (), reader.top_level_die ());
+
+  return this_cu->file_names;
+}
+...
+
+If dw2_get_file_names_reader is called, the result is cached in
+this_cu->file_names, and this fact is tracked in this_cu->files_read, allowing
+subsequent calls to access the cached value.
+
+But for dummy CUs, while the result (nullptr) is cached in
+this_cu->file_names, this is not noted in this_cu->files_read, and
+consequently subsequent calls will read the top-level DIE in the CU again.
+
+Fix this by setting this_cu->files_read also for dummy CUs.
+
+Tested on x86_64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33777
+(cherry picked from commit 5a8351167a8b4547d6583a5d713936c1aec39565) master
+(cherry picked from commit 0ac91006f95d5b8dd4c1610069628f31b252a175) gdb-17-branch
+---
+ gdb/dwarf2/read.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
+index f4a1eaf0f53..d6722a01376 100644
+--- a/gdb/dwarf2/read.c
++++ b/gdb/dwarf2/read.c
+@@ -1957,7 +1957,12 @@ dw2_get_file_names (dwarf2_per_cu_data *this_cu,
+     return this_cu->file_names;
+ 
+   cutu_reader reader (this_cu, per_objfile);
+-  if (!reader.dummy_p)
++  if (reader.dummy_p)
++    {
++      /* Make sure we don't re-read the dummy CU.  */
++      this_cu->files_read = true;
++    }
++  else
+     dw2_get_file_names_reader (&reader, reader.comp_unit_die);
+ 
+   return this_cu->file_names;
+-- 
+2.51.0
+

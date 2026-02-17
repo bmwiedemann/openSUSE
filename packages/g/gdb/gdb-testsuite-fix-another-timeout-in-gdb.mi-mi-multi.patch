@@ -1,0 +1,166 @@
+From 6da3492819000aa16136905bab03c312b290ab67 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 16 Dec 2025 10:31:33 +0100
+Subject: [PATCH] [gdb/testsuite] Fix another timeout in
+ gdb.mi/mi-multi-commands.exp
+
+On aarch64-linux, with a gdb version 16.3 based package, I ran into (edited
+for readability):
+...
+(gdb)
+<LOTS-OF-SPACES>-data-evaluate-expression $a
+^done,value="\"FIRST COMMAND\""
+(gdb) -data-evaluate-expression $b
+
+^done,value="\"TEST COMPLETE\""
+(gdb)
+PASS: $exp: look for first command output, command length $n
+FAIL: $exp: look for second command output, command length $n (timeout)
+...
+
+For contrast, a passing example looks like:
+...
+(gdb)
+<LOTS-OF-SPACES>-data-evaluate-expression $a
+-data-evaluate-expression $b
+^done,value="\"FIRST COMMAND\""
+(gdb)
+PASS: $exp: look for first command output, command length $n
+^done,value="\"TEST COMPLETE\""
+(gdb)
+PASS: $exp: look for second command output, command length $n
+...
+
+The setup is that the test-case issues these two commands at once:
+...
+-data-evaluate-expression $a
+-data-evaluate-expression $b
+...
+where the length of the first command is artificially increased by prefixing
+it with spaces, show as <LOTS-OF-SPACES> above.
+
+What happens is that gdb, after parsing the first command, executes it, which
+generates output and a prompt.  Then that prompt intermixes with the echoing
+of the second command, and consequently the matching of the prompt fails.
+
+This is very similar to what was fixed in commit 59c9bc5fb6c ("[gdb/testsuite]
+Fix timeout in gdb.mi/mi-multi-commands.exp").
+
+Fix this by making the matching of the first prompt optional.
+
+While we're at it, make the test-case more readable using {}, string_to_regexp
+and multi_line_input.
+
+PR testsuite/33671
+Bug https://sourceware.org/bugzilla/show_bug.cgi?id=33671
+---
+ gdb/testsuite/gdb.mi/mi-multi-commands.exp | 59 +++++++++++-----------
+ 1 file changed, 29 insertions(+), 30 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.mi/mi-multi-commands.exp b/gdb/testsuite/gdb.mi/mi-multi-commands.exp
+index 028e187366a..f5f86059288 100644
+--- a/gdb/testsuite/gdb.mi/mi-multi-commands.exp
++++ b/gdb/testsuite/gdb.mi/mi-multi-commands.exp
+@@ -45,15 +45,15 @@ proc run_test { args } {
+     set start 1
+     set limit 2049
+ 
+-    mi_gdb_test "set \$a = \"FIRST COMMAND\"" ".*"
+-    mi_gdb_test "set \$b = \"TEST COMPLETE\"" ".*"
++    mi_gdb_test {set $a = "FIRST COMMAND"} ".*"
++    mi_gdb_test {set $b = "TEST COMPLETE"} ".*"
+ 
+     for { set i $start } { $i < $limit } { incr i } {
+ 
+ 	set cmd ""
+ 
+ 	# Create a command that is at least `i` characters long.
+-	set first_cmd "-data-evaluate-expression \$a"
++	set first_cmd {-data-evaluate-expression $a}
+ 	while { [string length $first_cmd] < $i } {
+ 	    set first_cmd " $first_cmd"
+ 	}
+@@ -68,7 +68,10 @@ proc run_test { args } {
+ 	set i [string length $first_cmd]
+ 	verbose -log "length of first command is $i"
+ 
+-	set cmd "${first_cmd}\n-data-evaluate-expression \$b\n"
++	set cmd \
++	    [multi_line_input \
++		 $first_cmd \
++		 {-data-evaluate-expression $b}]
+ 
+ 	# We need to call send_gdb ourselves here as gdb_test_multiple
+ 	# will try to send each line of the command separately (breaking
+@@ -76,44 +79,40 @@ proc run_test { args } {
+ 	# than likely mean that gdb will see and process the first command
+ 	# before the second command arrives, this prevents the bug from
+ 	# triggering.
+-	send_gdb "$cmd"
++	send_gdb "$cmd\n"
+ 
+ 	# Now check for output from the two commands.  We do this
+-	# using two calls to gdb_test_multiple, this is because the
++	# using one call to gdb_test_multiple, this is because the
+ 	# echoing of the second command can sometime get mixed
+-	# unexpectedly with the command output, this is especially
+-	# likely when running using the read1 technique.
+-	#
+-	# When using a single gdb_test_multiple we need to anchor
+-	# patterns using a ^, however, this requires us to consume and
+-	# discard all lines that are not part of the output that we're
+-	# looking for.  However, due to the unpredictable
+-	# intermingling, it's much easier if we drop the ^ anchor.
+-	# However, with this gone dejagnu would sometimes match the
+-	# second comand output before the first commands output.
+-	#
+-	# This approach just looks for the first command output, then,
+-	# once that has been found, we start looking for the second
+-	# command output, this seems pretty reliable.
++	# unexpectedly with the command output, or the prompt.  This is
++	# especially likely when running using the read1 technique.
++
++	# We may or may not recognize the prompt after the first command.  If
++	# so, accept it to prevent the default clause from triggering, and
++	# continue.
++
++	set re_first_message {\^done.*,value="\\\"FIRST COMMAND\\\""}
++	set re_second_message [string_to_regexp {^done,value="\"TEST COMPLETE\""}]
+ 	set seen_first_message false
+ 	set seen_second_message false
+-
+-	gdb_test_multiple "" "look for first command output, command length $i" -prompt "$mi_gdb_prompt" {
+-	    -re "\\^done.*,value=\"\\\\\"FIRST COMMAND\\\\\"\"" {
++	set test "look for command output, command length $i"
++	gdb_test_multiple "" $test -prompt "$mi_gdb_prompt" {
++	    -re $re_first_message {
+ 		set seen_first_message true
+ 		exp_continue
+ 	    }
++	    -re "$re_second_message\r\n$mi_gdb_prompt" {
++		set seen_second_message true
++	    }
+ 	    -re "$mi_gdb_prompt" {
+-		gdb_assert $seen_first_message $gdb_test_name
++		exp_continue
+ 	    }
+ 	}
+ 
+-	gdb_test_multiple "" "look for second command output, command length $i" -prompt "$mi_gdb_prompt" {
+-	    -re "\\^done,value=\"\\\\\"TEST COMPLETE\\\\\"\"\r\n$mi_gdb_prompt" {
+-		pass $gdb_test_name
+-		set seen_second_message true
+-	    }
+-	}
++	gdb_assert $seen_first_message \
++	    "look for first command output, command length $i"
++	gdb_assert $seen_second_message \
++	    "look for second command output, command length $i"
+ 
+ 	# If one of the above tests failed then lets no waste our time
+ 	# checking different command lengths.  The actual bug this
+
+base-commit: 58257123680969c03a46d7e877e6a7143bd134c5
+-- 
+2.51.0
+

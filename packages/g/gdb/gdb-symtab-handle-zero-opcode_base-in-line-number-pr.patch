@@ -1,0 +1,82 @@
+From 7f92f322e022082e211bd8f264ec86fbd25a90ec Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 19 Jan 2026 19:14:11 +0100
+Subject: [PATCH 4/4] [gdb/symtab] Handle zero opcode_base in line number
+ program header
+
+I build gdb with TSAN, and with test-case gdb.dwarf2/malformed-line-header.exp
+ran into a heap-use-after-free:
+...
+(gdb) info line 1
+==================
+WARNING: ThreadSanitizer: heap-use-after-free (pid=897504)
+  Write of size 1 at 0x72040000d000 by main thread:
+    #0 dwarf_decode_line_header() gdb/dwarf2/line-header.c:356 (gdb+0xa0618c)
+  ...
+
+  Previous write of size 8 at 0x72040000d000 by main thread:
+    #0 operator delete[](void*) <null> (libtsan.so.2+0xa6128)
+    #1 std::enable_if<std::is_convertible<unsigned char (*) [], unsigned char (*) []>::value, void>::type std::default_delete<unsigned char []>::operator()<unsigned char>(unsigned char*) const /usr/include/c++/15/bits/unique_ptr.h:134 (gdb+0xa08479)
+    #2 std::unique_ptr<unsigned char [], std::default_delete<unsigned char []> >::~unique_ptr() /usr/include/c++/15/bits/unique_ptr.h:685 (gdb+0xa07324)
+    #3 line_header::~line_header() gdb/dwarf2/line-header.h:86 (gdb+0xa0914a)
+    #4 std::default_delete<line_header>::operator()(line_header*) const /usr/include/c++/15/bits/unique_ptr.h:93 (gdb+0xa091a4)
+    #5 std::unique_ptr<line_header, std::default_delete<line_header> >::~unique_ptr() /usr/include/c++/15/bits/unique_ptr.h:399 (gdb+0xa07f18)
+    #6 dw2_get_file_names_reader gdb/dwarf2/read.c:1839 (gdb+0xa648ee)
+ ...
+
+  Location is heap block of size 0 at 0x72040000d000 allocated by main thread:
+    #0 operator new[](unsigned long) <null> (libtsan.so.2+0xa6b01)
+    #1 dwarf_decode_line_header() gdb/dwarf2/line-header.c:354 (gdb+0xa06159)
+...
+
+This is caused by allocating a zero-sized array (lh->opcode_base == 0), and
+writing to it:
+...
+  lh->standard_opcode_lengths.reset (new unsigned char[lh->opcode_base]);
+
+  lh->standard_opcode_lengths[0] = 1;  /* This should never be used anyway.  */
+...
+
+Fix this by skipping this code if lh->opcode_base == 0.
+
+Tested on x86_64-linux.
+
+Approved-By: Simon Marchi <simon.marchi@efficios.com>
+---
+ gdb/dwarf2/line-header.c | 19 +++++++++++++------
+ 1 file changed, 13 insertions(+), 6 deletions(-)
+
+diff --git a/gdb/dwarf2/line-header.c b/gdb/dwarf2/line-header.c
+index 0f4407f2fb2..1de709e29f0 100644
+--- a/gdb/dwarf2/line-header.c
++++ b/gdb/dwarf2/line-header.c
+@@ -352,13 +352,20 @@ dwarf_decode_line_header  (sect_offset sect_off, bool is_dwz,
+   line_ptr += 1;
+   lh->opcode_base = read_1_byte (abfd, line_ptr);
+   line_ptr += 1;
+-  lh->standard_opcode_lengths.reset (new unsigned char[lh->opcode_base]);
+-
+-  lh->standard_opcode_lengths[0] = 1;  /* This should never be used anyway.  */
+-  for (i = 1; i < lh->opcode_base; ++i)
++  if (lh->opcode_base > 0)
+     {
+-      lh->standard_opcode_lengths[i] = read_1_byte (abfd, line_ptr);
+-      line_ptr += 1;
++      lh->standard_opcode_lengths.reset (new unsigned char[lh->opcode_base]);
++
++      /* The first element should never be used, because there's no standard
++	 opcode encoded as 0.  Give it some defined value.  */
++      lh->standard_opcode_lengths[0] = 1;
++
++      /* Read the standard_opcode_lengths array.  */
++      for (i = 1; i < lh->opcode_base; ++i)
++	{
++	  lh->standard_opcode_lengths[i] = read_1_byte (abfd, line_ptr);
++	  line_ptr += 1;
++	}
+     }
+ 
+   if (lh->version >= 5)
+-- 
+2.51.0
+

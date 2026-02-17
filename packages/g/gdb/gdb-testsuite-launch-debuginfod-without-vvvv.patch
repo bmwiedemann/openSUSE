@@ -1,0 +1,28 @@
+From ad06ed5638c51ca0213d327b6e685455c67975be Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 12 Feb 2026 15:42:19 +0100
+Subject: [PATCH] [gdb/testsuite] Launch debuginfod without -vvvv
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33901
+---
+ gdb/testsuite/lib/debuginfod-support.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/lib/debuginfod-support.exp b/gdb/testsuite/lib/debuginfod-support.exp
+index 0096448567e..93c724a7b05 100644
+--- a/gdb/testsuite/lib/debuginfod-support.exp
++++ b/gdb/testsuite/lib/debuginfod-support.exp
+@@ -127,7 +127,7 @@ proc start_debuginfod { db debugdir } {
+ 	    set old_spawn_id $spawn_id
+ 	}
+ 
+-	spawn debuginfod -vvvv -d $db -p $port -F $debugdir
++	spawn debuginfod -d $db -p $port -F $debugdir
+ 	set debuginfod_spawn_id $spawn_id
+ 
+ 	if { [info exists old_spawn_id] } {
+
+base-commit: a7a70544ba0f74633d4473955018fa8277382812
+-- 
+2.51.0
+

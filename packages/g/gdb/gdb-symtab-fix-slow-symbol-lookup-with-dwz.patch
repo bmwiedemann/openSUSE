@@ -1,0 +1,137 @@
+From 8b5dc3da60d6c07991821c447f183288c4aac69e Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 10 Feb 2026 10:30:59 +0100
+Subject: [PATCH] [gdb/symtab] Fix slow symbol lookup with dwz
+
+Consider the following setup on openSUSE Leap 16.0 x86_64:
+...
+$ sudo zypper install qt6-tools-assistant qt6-tools-assistant-debuginfo \
+    libQt6Core6-debuginfo
+$ gdb -q \
+    -iex "set debuginfod enabled off" \
+    -iex "set pagination off" \
+    /usr/bin/assistant6 \
+    -ex "break BookmarkManager::setupFinished" \
+    -ex run
+Reading symbols from /usr/bin/assistant6...
+Reading symbols from /usr/lib/debug/usr/lib64/qt6/bin/assistant.debug...
+   ...
+Thread 1 "assistant6" hit Breakpoint 1, BookmarkManager::setupFinished (...)
+    at .../bookmarkmanager.cpp:297
+297	{
+(gdb) maint time 1
+(gdb)
+...
+
+[ Note that we need packages:
+- qt6-tools-assistant for /usr/bin/assistant6
+- qt6-tools-assistant-debuginfo to be able to set the breakpoint, and
+- libQt6Core6-debuginfo to have debuginfo for shared library
+  /lib64/libQt6Core.so.6. ]
+
+This lookup is slow with an -O2 build of gdb-17-branch:
+...
+(gdb) print *bookmarkWidget
+  ...
+Command execution time: 17.712828 (cpu), 17.712880 (wall)
+(gdb)
+...
+
+[ Note that a second lookup takes roughly the same time, so the slowness is
+not due to symtab expansion.
+
+Also note that the slowness is gone:
+...
+Command execution time: 0.091105 (cpu), 0.091100 (wall)
+...
+if we de-install libQt6Core6-debuginfo. ]
+
+This is PR symtab/33825, originally reported for gdb 16.3 on openSUSE
+Tumbleweed x86_64.
+
+With current trunk, we have instead:
+...
+Command execution time: 0.009536 (cpu), 0.009509 (wall)
+...
+
+The slowness is gone at commit ce889924a72 ("Simplify
+basic_lookup_transparent_type"), but the commit is part of a patch series of
+31 patches, so the commit cannot be trivially backported to gdb-17-branch.
+
+The slowness with the gdb-17-branch is caused by the following.
+
+In basic_lookup_transparent_type_1, we have this bit of code:
+...
+   for (compunit_symtab *cust : objfile->compunits ())
+     {
+       bv = cust->blockvector ();
+       block = bv->block (block_index);
+       sym = block_find_symbol (block, name, flags, nullptr);
+...
+and via block_find_symbol -> block_iterator_range -> block_iterator_first ->
+initialize_block_iterator we get to this code:
+...
+  compunit_symtab *cu = block->global_block ()->compunit ();
+
+  /* If this is an included symtab, find the canonical includer and
+     use it instead.  */
+  while (cu->user != NULL)
+    cu = cu->user;
+...
+
+Say we have an objfile with two cus, CU1 and CU2, where:
+- CU1 represents a DWARF compilation unit, and
+- CU2 represents a DWARF partial unit imported by CU1.
+
+In symtab terms, CU2 is an "included symtab", and CU1 is its "canonical
+includer", so we have:
+- CU1->user == nullptr, and
+- CU2->user == CU1.
+
+In the for loop shown above, we have subsequently:
+- cust == CU1: during block_find_symbol, we visit both CU1 and included symtab
+  CU2.
+- cust == CU2: during block_find symbol, we walk up from CU2 to its canonical
+  includer CU1, and again visit CU1 and included symtab CU2.
+So, instead of visiting CU1 and CU2 each once, we visited them twice.
+
+Fix this by skipping included symtabs in the for loop, getting us instead the
+faster:
+...
+Command execution time: 0.293385 (cpu), 0.293386 (wall)
+...
+
+The fix can be trivially backported to the gdb-16-branch.
+
+Tested on x86_64-linux, with target boards unix, cc-with-dwz and
+cc-with-dwz-m.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33825
+(cherry picked from commit 36356c77b8969b684566c96b01cc97ace6a449bf)
+---
+ gdb/symtab.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/gdb/symtab.c b/gdb/symtab.c
+index 106e540ca48..569fd18e5e4 100644
+--- a/gdb/symtab.c
++++ b/gdb/symtab.c
+@@ -2785,6 +2785,11 @@ basic_lookup_transparent_type_1 (struct objfile *objfile,
+ 
+   for (compunit_symtab *cust : objfile->compunits ())
+     {
++      /* Skip included compunits, to avoid searching them and their canonical
++	 includers more than once.  */
++      if (cust->user != nullptr)
++	continue;
++
+       bv = cust->blockvector ();
+       block = bv->block (block_index);
+       sym = block_find_symbol (block, name, flags, nullptr);
+
+base-commit: 6da3492819000aa16136905bab03c312b290ab67
+-- 
+2.51.0
+

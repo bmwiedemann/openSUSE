@@ -1,0 +1,263 @@
+From 086e925fa1347aecc69eb674cc3a81400e4c27a7 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sat, 17 Jan 2026 08:44:57 +0100
+Subject: [PATCH 2/4] [gdb/tdep] Fix gdb.base/siginfo.exp on s390x-linux
+
+On s390x-linux (SLES 15 SP5), I'm running into:
+...
+FAIL: gdb.base/siginfo.exp: backtrace for nexti (pattern 2)
+FAIL: gdb.base/siginfo.exp: step out of handler
+...
+
+The first FAIL is caused by a failure to unwind:
+...
+ (gdb) bt^M
+ #0  handler (sig=26, info=0x3ffffffe428, context=0x3ffffffe4a8) at \
+   gdb.base/siginfo.c:31^M
+ Backtrace stopped: Cannot access memory at address 0x1a00000088^M
+ (gdb)
+...
+
+In contrast, on x86_64-linux I get instead:
+...
+ (gdb) bt^M
+ #0  handler (sig=26, info=0x7fffffffc170, context=0x7fffffffc040) at \
+   gdb.base/siginfo.c:31^M
+ #1  <signal handler called>^M
+ #2  0x0000000000401201 in main () at gdb.base/siginfo.c:67^M
+ (gdb)
+...
+
+The memory access error is triggered here in s390_sigtramp_frame_unwind_cache:
+...
+  /* Restore the previous frame's SP.  */
+  prev_sp = read_memory_unsigned_integer (
+			info->saved_regs[S390_SP_REGNUM].addr (),
+                        word_size, byte_order);
+...
+while trying to read an "Old-style RT frame" (for syscall sigreturn).
+
+The problem is that we actually have a "New-style RT frame" (for syscall
+rt_sigreturn).
+
+[ See linux kernel source file arch/s390/kernel/signal.c for a detailed
+explanation of the two. ]
+
+The choice between the two is made earlier in that same function:
+...
+  /* New-style RT frame:
+	retcode + alignment (8 bytes)
+	siginfo (128 bytes)
+	ucontext (contains sigregs at offset 5 words).  */
+  if (next_ra == next_cfa)
+    {
+      ...
+    }
+
+  /* Old-style RT frame and all non-RT frames:
+	old signal mask (8 bytes)
+	pointer to sigregs.  */
+  else
+...
+
+I'm not sure why the check gives the wrong result, but I noticed that
+s390_sigtramp_frame_sniffer is able to distinguish between the two, so fix
+this by:
+- factoring out new function s390_sigtramp_p out of
+  s390_sigtramp_frame_sniffer, and
+- using s390_sigtramp_p in s390_sigtramp_frame_unwind_cache to distinguish
+  between the "Old-style RT frame" and "New-style RT frame".
+
+This fixes the backtrace.
+
+The second failure is:
+...
+(gdb) step^M
+32      } /* handler */^M
+1: x/i $pc^M
+=> 0x1000772 <handler+50>:      nopr^M
+(gdb) step^M
+0x000003fffdffe490 in __kernel_rt_sigreturn ()^M
+1: x/i $pc^M
+=> 0x3fffdffe490 <__kernel_rt_sigreturn>:       svc     173^M
+(gdb) FAIL: gdb.base/siginfo.exp: step out of handler
+...
+
+There is some code in process_event_stop_test that is supposed to trigger:
+...
+  if (ecs->event_thread->control.step_range_end != 1
+      && (ecs->event_thread->control.step_over_calls == STEP_OVER_UNDEBUGGABLE
+	  || ecs->event_thread->control.step_over_calls == STEP_OVER_ALL)
+      && get_frame_type (frame) == SIGTRAMP_FRAME)
+    {
+      infrun_debug_printf ("stepped into signal trampoline");
+      /* The inferior, while doing a "step" or "next", has ended up in
+	 a signal trampoline (either by a signal being delivered or by
+	 the signal handler returning).  Just single-step until the
+	 inferior leaves the trampoline (either by calling the handler
+	 or returning).  */
+      keep_going (ecs);
+      return;
+    }
+...
+but it doesn't because frame is a NORMAL_FRAME instead of a SIGTRAMP_FRAME.
+
+This is caused by the "dwarf2" unwinder triggering, which has higher priority
+than the "s390 linux sigtramp" unwinder:
+...
+(gdb) maint info frame-unwinders
+Name                        Type                      Class     Enabled
+dummy                       DUMMY_FRAME               GDB       Y
+dwarf2 tailcall             TAILCALL_FRAME            DEBUGINFO Y
+inline                      INLINE_FRAME              GDB       Y
+jit                         NORMAL_FRAME              EXTENSION Y
+python                      NORMAL_FRAME              EXTENSION Y
+dwarf2                      NORMAL_FRAME              DEBUGINFO Y
+dwarf2 signal               SIGTRAMP_FRAME            DEBUGINFO Y
+s390 linux sigtramp         SIGTRAMP_FRAME            ARCH      Y
+s390 stub                   NORMAL_FRAME              ARCH      Y
+s390 prologue               NORMAL_FRAME              ARCH      Y
+...
+
+I found some code in dwarf2_frame_sniffer:
+...
+  /* On some targets, signal trampolines may have unwind information.
+     We need to recognize them so that we set the frame type
+     correctly.  */
+
+  if (fde->cie->signal_frame
+      || dwarf2_frame_signal_frame_p (get_frame_arch (this_frame),
+				      this_frame))
+    return self->type () == SIGTRAMP_FRAME;
+...
+and an example implementation i386_linux_dwarf_signal_frame_p, and after
+copying this approach, indeed the stepping failure was fixed, but the
+backtrace broken again.
+
+Instead, fix this by giving the "s390 linux sigtramp" unwinder a higher
+priority:
+...
+(gdb) maint info frame-unwinders
+Name                        Type                      Class     Enabled
+dummy                       DUMMY_FRAME               GDB       Y
+dwarf2 tailcall             TAILCALL_FRAME            DEBUGINFO Y
+inline                      INLINE_FRAME              GDB       Y
+jit                         NORMAL_FRAME              EXTENSION Y
+python                      NORMAL_FRAME              EXTENSION Y
+s390 linux sigtramp         SIGTRAMP_FRAME            ARCH      Y
+dwarf2                      NORMAL_FRAME              DEBUGINFO Y
+dwarf2 signal               SIGTRAMP_FRAME            DEBUGINFO Y
+s390 stub                   NORMAL_FRAME              ARCH      Y
+s390 prologue               NORMAL_FRAME              ARCH      Y
+...
+
+Also fixes test-case gdb.base/sigaltstack.exp and gdb.base/sigbpt.exp.
+
+Tested on s390x-linux.
+
+Reviewed-By: Keith Seitz <keiths@redhat.com>
+
+PR tdep/33708
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33708
+---
+ gdb/s390-linux-tdep.c | 50 +++++++++++++++++++++++++++----------------
+ 1 file changed, 32 insertions(+), 18 deletions(-)
+
+diff --git a/gdb/s390-linux-tdep.c b/gdb/s390-linux-tdep.c
+index bc1db550d2e..90f51a47336 100644
+--- a/gdb/s390-linux-tdep.c
++++ b/gdb/s390-linux-tdep.c
+@@ -382,6 +382,30 @@ struct s390_sigtramp_unwind_cache {
+   trad_frame_saved_reg *saved_regs;
+ };
+ 
++/* Return true if the frame pc of THIS_FRAME points to either
++   __kernel_rt_sigreturn or __kernel_sigreturn.  Return the corresponding
++   syscall number in SYSCALL_NR.  */
++
++static bool
++s390_sigtramp_p (const frame_info_ptr &this_frame, int *syscall_nr_ptr)
++{
++  CORE_ADDR pc = get_frame_pc (this_frame);
++  bfd_byte sigreturn[2];
++
++  if (target_read_memory (pc, sigreturn, 2))
++    return false;
++
++  if (sigreturn[0] != op_svc)
++    return false;
++
++  int syscall_nr = sigreturn[1];
++  if (syscall_nr_ptr != nullptr)
++    *syscall_nr_ptr = syscall_nr;
++
++  return (syscall_nr == 119 /* sigreturn */
++	  || syscall_nr == 173 /* rt_sigreturn */);
++}
++
+ /* Unwind THIS_FRAME and return the corresponding unwind cache for
+    s390_sigtramp_frame_unwind.  */
+ 
+@@ -395,7 +419,7 @@ s390_sigtramp_frame_unwind_cache (const frame_info_ptr &this_frame,
+   enum bfd_endian byte_order = gdbarch_byte_order (gdbarch);
+   struct s390_sigtramp_unwind_cache *info;
+   ULONGEST this_sp, prev_sp;
+-  CORE_ADDR next_ra, next_cfa, sigreg_ptr, sigreg_high_off;
++  CORE_ADDR next_cfa, sigreg_ptr, sigreg_high_off;
+   int i;
+ 
+   if (*this_prologue_cache)
+@@ -406,14 +430,17 @@ s390_sigtramp_frame_unwind_cache (const frame_info_ptr &this_frame,
+   info->saved_regs = trad_frame_alloc_saved_regs (this_frame);
+ 
+   this_sp = get_frame_register_unsigned (this_frame, S390_SP_REGNUM);
+-  next_ra = get_frame_pc (this_frame);
+   next_cfa = this_sp + 16*word_size + 32;
+ 
++  int syscall_nr;
++  bool res = s390_sigtramp_p (this_frame, &syscall_nr);
++  gdb_assert (res);
++
+   /* New-style RT frame:
+ 	retcode + alignment (8 bytes)
+ 	siginfo (128 bytes)
+ 	ucontext (contains sigregs at offset 5 words).  */
+-  if (next_ra == next_cfa)
++  if (syscall_nr == 173 /* rt_sigreturn */)
+     {
+       sigreg_ptr = next_cfa + 8 + 128 + align_up (5*word_size, 8);
+       /* sigregs are followed by uc_sigmask (8 bytes), then by the
+@@ -523,20 +550,7 @@ s390_sigtramp_frame_sniffer (const struct frame_unwind *self,
+ 			     const frame_info_ptr &this_frame,
+ 			     void **this_prologue_cache)
+ {
+-  CORE_ADDR pc = get_frame_pc (this_frame);
+-  bfd_byte sigreturn[2];
+-
+-  if (target_read_memory (pc, sigreturn, 2))
+-    return 0;
+-
+-  if (sigreturn[0] != op_svc)
+-    return 0;
+-
+-  if (sigreturn[1] != 119 /* sigreturn */
+-      && sigreturn[1] != 173 /* rt_sigreturn */)
+-    return 0;
+-
+-  return 1;
++  return s390_sigtramp_p (this_frame, nullptr) ? 1 : 0;
+ }
+ 
+ /* S390 sigtramp frame unwinder.  */
+@@ -1145,7 +1159,7 @@ s390_linux_init_abi_any (struct gdbarch_info info, struct gdbarch *gdbarch)
+   set_gdbarch_get_syscall_number (gdbarch, s390_linux_get_syscall_number);
+ 
+   /* Frame handling.  */
+-  frame_unwind_append_unwinder (gdbarch, &s390_sigtramp_frame_unwind);
++  frame_unwind_prepend_unwinder (gdbarch, &s390_sigtramp_frame_unwind);
+   set_gdbarch_skip_trampoline_code (gdbarch, find_solib_trampoline_target);
+ 
+   /* Enable TLS support.  */
+-- 
+2.51.0
+

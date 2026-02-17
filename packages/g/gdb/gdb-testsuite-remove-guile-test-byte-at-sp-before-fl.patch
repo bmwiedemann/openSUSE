@@ -1,0 +1,106 @@
+From d74f40d50f2f10f1d211339c2dd46e91b1a59eb7 Mon Sep 17 00:00:00 2001
+From: Simon Marchi <simon.marchi@efficios.com>
+Date: Thu, 8 Jan 2026 14:51:54 -0500
+Subject: [PATCH 3/4] gdb/testsuite: remove guile "test byte at sp, before
+ flush" test
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+When I run:
+
+    $ while make check TESTS="gdb.guile/scm-ports.exp" RUNTESTFLAGS="--target_board=native-extended-gdbserver"; do done
+
+I eventually get:
+
+    FAIL: gdb.guile/scm-ports.exp: buffered=1: test byte at sp, before flush
+
+I don't know why I only see this (or see this more often) with the
+native-extended-gdbserver board, I guess because it changes the timing
+of things.  Also, this is with a debug/ASan/UBSan build of GDB, if that
+matters.  This is with guile 3.0.
+
+This is what the test attempts to do:
+
+ 1. create a rw memory port that is supposed to be buffered
+ 2. write the byte at $sp with a new value, expecting that byte to only
+    be in the port's buffer
+ 3. read the memory at $sp (using parse-and-eval, bypassing the rw
+    memory port), expecting to see the old byte value
+ 4. flush the memory port, expecting that to write to new byte value at
+    $sp
+ 5. read the memory at $sp (using parse-and-eval again), expecting to
+    see the new value
+
+It is step 3 that fails.  My hypothesis is that even if the memory port
+we write to is buffered, the write to the underlying memory can happen
+before the "before flush" test happens.  The Guile Buffering doc [1]
+says this:
+
+    If you write data to a buffered port, it probably doesn’t go out to
+    the mutable store directly. (This “probably” introduces some
+    indeterminism in your program: what goes to the store, and when,
+    depends on how full the buffer is. It is something that the user
+    needs to explicitly be aware of.) The data is written to the store
+    later – when the buffer fills up due to another write, or when
+    force-output is called, or when close-port is called, or when the
+    program exits, or even when the garbage collector runs.
+
+Because of the mention of the garbage collector, I tried putting some
+calls to gc-disable and gc-enable around that area, but it doesn't fix
+it.
+
+Given that the flushing behavior of the buffered port seems
+non-deterministic, I think that the buffering behavior can't easily be
+tested.  I propose to get rid of that specific aspect of the test.
+
+As suggested by Tom de Vries, replace the "test byte at sp, before
+flush" test with a "test byte at sp, before write" one.  I think this is
+useful as a sanity check to help prove that the memory write did in fact
+change the state of the program.
+
+Change-Id: I2f0afd7b2ebb7738e675f58397677f2f9a4e06bb
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=29825
+Reviewed-By: Thiago Jung Bauermann <thiago.bauermann@linaro.org>
+---
+ gdb/testsuite/gdb.guile/scm-ports.exp | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.guile/scm-ports.exp b/gdb/testsuite/gdb.guile/scm-ports.exp
+index 2f186dddbc9..f06b0e6c6a8 100644
+--- a/gdb/testsuite/gdb.guile/scm-ports.exp
++++ b/gdb/testsuite/gdb.guile/scm-ports.exp
+@@ -113,20 +113,25 @@ proc test_mem_port_rw { buffered } {
+ 	"define old-value"
+     gdb_test_no_output "guile (define new-value (logxor old-value 1))" \
+ 	"define new-value"
++
++    # Sanity check before the write.
++    gdb_test "guile (print (value=? (parse-and-eval \"*(char*) \$sp\") byte-at-sp))" \
++	"= #t" \
++	"test byte at sp, before write"
++
++    # Write new byte at *SP.
+     gdb_test "guile (print (put-bytevector rw-mem-port (make-bytevector 1 new-value)))" \
+ 	"= #<unspecified>"
+     if $buffered {
+-	# Value shouldn't be in memory yet.
+-	gdb_test "guile (print (value=? (parse-and-eval \"*(char*) \$sp\") byte-at-sp))" \
+-	    "= #t" \
+-	    "test byte at sp, before flush"
+ 	gdb_test_no_output "guile (force-output rw-mem-port)" \
+ 	    "flush port"
+     }
++
+     # Value should be in memory now.
+     gdb_test "guile (print (value=? (parse-and-eval \"*(char*) \$sp\") byte-at-sp))" \
+ 	"= #f" \
+-	"test byte at sp, after flush"
++	"test byte at sp, after write"
++
+     # Restore the value for cleanliness sake, and to verify close-port
+     # flushes the buffer.
+     gdb_test "guile (print (seek rw-mem-port (value->integer sp-reg) SEEK_SET))" \
+-- 
+2.51.0
+

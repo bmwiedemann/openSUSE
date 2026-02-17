@@ -1,0 +1,247 @@
+From a7a70544ba0f74633d4473955018fa8277382812 Mon Sep 17 00:00:00 2001
+From: Andrew Burgess <aburgess@redhat.com>
+Date: Wed, 21 Jan 2026 13:25:43 +0100
+Subject: [PATCH 4/4] gdb: fix gdb.base/inline-frame-cycle-unwind.exp for s390x
+
+With test-case gdb.base/inline-frame-cycle-unwind.exp on s390x-linux, I run
+into:
+
+  ...
+  (gdb) bt
+   #0  inline_func () at inline-frame-cycle-unwind.c:49
+   #1  normal_func () at inline-frame-cycle-unwind.c:32
+   #2  0x000000000100065c in inline_func () at inline-frame-cycle-unwind.c:45
+   #3  normal_func () at inline-frame-cycle-unwind.c:32
+   Backtrace stopped: previous frame identical to this frame (corrupt stack?)
+  (gdb) FAIL: $exp: bt: cycle at level 5: backtrace when the unwind is broken \
+    at frame 5
+  ...
+
+In contrast, on x86_64-linux, I get:
+
+  ...
+  (gdb) bt
+   #0  inline_func () at inline-frame-cycle-unwind.c:49
+   #1  normal_func () at inline-frame-cycle-unwind.c:32
+   #2  0x0000000000401157 in inline_func () at inline-frame-cycle-unwind.c:45
+   #3  normal_func () at inline-frame-cycle-unwind.c:32
+   #4  0x0000000000401157 in inline_func () at inline-frame-cycle-unwind.c:45
+   #5  normal_func () at inline-frame-cycle-unwind.c:32
+   Backtrace stopped: previous frame identical to this frame (corrupt stack?)
+  (gdb) PASS: $exp: bt: cycle at level 5: backtrace when the unwind is broken \
+    at frame 5
+  ...
+
+To understand what's going wrong here, we first need to understand
+what this test was trying to do.
+
+The test tries to create a frame-cycle using a custom Python
+unwinder.  A frame-cycle occurs when a frame in the backtrace has the
+same frame-id as an earlier frame.  As soon as GDB finds a frame with
+a frame-id that it has seen before then the backtrace will be
+terminated with the message:
+
+   Backtrace stopped: previous frame identical to this frame (corrupt stack?)
+
+A Python frame unwinder does two jobs:
+
+  - It provides the frame-id for a frame #n, and
+
+  - it provides the unwound register values for the previous (#n + 1)
+    frame.
+
+For a frame not claimed by a Python frame unwinder, GDB will compute
+the frame-id based off of the register values.  Particularly, the $pc
+and $sp, or $fp registers (or the architecture's equivalent).
+
+In this test then, our frame unwinder does something a little
+strange.  When we want to stop at frame #5, the frame unwinder claims
+frame #5.  The frame unwinder then tries to give frame #5 its "normal"
+frame-id, but, instead of unwinding the register values, we provide
+frame #6 with all of the register values from frame #5 unmodified.
+
+The frame unwinder does not claim frame #6, instead GDB uses its
+"normal" logic to compute the frame-id.  As the registers in frame #6
+are identical to the values in frame #5, GDB computes the same
+frame-id for frame #6 as we supplied for frame #5, and thus a frame
+cycle is created.
+
+Notice I said that we try to give frame #5 its "normal" frame-id.
+
+When this test was originally written there was no easy way to access
+the frame-id for a frame.  So instead, the test was written to try and
+recreate the frame-id based on the frame stack pointers, and the frame
+size (difference between subsequent frames).  And this worked fine for
+a bunch of common architectures, like x86-64 and AArch64.
+
+But unfortunately this frame-id computation doesn't work on s390.
+
+For this explanation we only care about two parts of the frame-id, the
+code address, and the stack address.  The code address part is usually
+the start of the function for a particular frame.  Our computation of
+this was fine.
+
+The stack address in the frame-id isn't the actual $sp value.
+Instead, this is usually the Call Frame Address (CFA) as defined in
+the DWARF.  How this is calculated really depends on the DWARF, but is
+often influenced by the architectures ABI.
+
+On x86-64 and AArch64 the CFA is usually the $sp immediately on entry
+to a frame, before any stack adjustment is performed.  Thus, if we
+take the frame size (difference between $sp in two frames), and add
+this to the current $sp value, we successfully calculate the CFA,
+which we can use in the frame-id.
+
+On s390 though, this is not the case, the calculation of the CFA is
+more complex as the s390 ABI requires that caller frames allocate a
+160 byte Register Save Area below the stack pointer.  Because of this,
+when the Python unwinder ties to calculate the real frame-id for a
+frame, it gets the CFA wrong, and inadvertently ends up calculating a
+frame-id which matches an earlier frame-id.  In the example above,
+frame #5 ends up matching frame #3.  Because frame #4 is an inline
+frame GDB ends up terminating the backtrace after frame #3.
+
+The fix for this is actually pretty simple.  Since this test was
+originally written GDB has gained the 'maint print frame-id' command.
+So instead of trying to calculate the frame-id we can just capture the
+frame-ids that GDB generates, and then, once the Python frame unwinder
+is in use, we can repeat the previously captured frame-id back to
+GDB.
+
+This fixes the issues seen on s390, and doesn't impact testing on the
+other architectures.
+
+Tested on x86_64-linux and s390x-linux.
+
+Co-Authored-By: Tom de Vries <tdevries@suse.de>
+---
+ .../gdb.base/inline-frame-cycle-unwind.exp    |  3 +
+ .../gdb.base/inline-frame-cycle-unwind.py     | 76 ++++++++++++++-----
+ 2 files changed, 60 insertions(+), 19 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/inline-frame-cycle-unwind.exp b/gdb/testsuite/gdb.base/inline-frame-cycle-unwind.exp
+index 46561a9c9fb..66c59ccfbae 100644
+--- a/gdb/testsuite/gdb.base/inline-frame-cycle-unwind.exp
++++ b/gdb/testsuite/gdb.base/inline-frame-cycle-unwind.exp
+@@ -72,6 +72,9 @@ gdb_continue_to_breakpoint "stop at test breakpoint"
+ gdb_test_no_output "source ${pyfile}"\
+     "import python scripts"
+ 
++# Print the captured frame IDs.
++gdb_test "python print_frame_ids()"
++
+ # Test with and without filters.
+ foreach bt_cmd { "bt" "bt -no-filters" } {
+     with_test_prefix "$bt_cmd" {
+diff --git a/gdb/testsuite/gdb.base/inline-frame-cycle-unwind.py b/gdb/testsuite/gdb.base/inline-frame-cycle-unwind.py
+index 278fa857d5d..17233165d0c 100644
+--- a/gdb/testsuite/gdb.base/inline-frame-cycle-unwind.py
++++ b/gdb/testsuite/gdb.base/inline-frame-cycle-unwind.py
+@@ -13,6 +13,8 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
++import re
++
+ import gdb
+ from gdb.unwinder import Unwinder
+ 
+@@ -21,10 +23,17 @@ from gdb.unwinder import Unwinder
+ # was written for.
+ stop_at_level = None
+ 
+-# Set this to the stack frame size of frames 1, 3, and 5.  These
+-# frames will all have the same stack frame size as they are the same
+-# function called recursively.
+-stack_adjust = None
++# List of FrameId instances, one for each stack frame.  This list is
++# populated when this file is sourced into GDB.
++frame_ids = []
++
++
++# To aid debugging, print the captured FrameId instances.
++def print_frame_ids():
++    for level, fid in enumerate(frame_ids):
++        print(
++            "frame-id for frame #%s: {stack=0x%x,code=0x%x}" % (level, fid.sp, fid.pc)
++        )
+ 
+ 
+ class FrameId(object):
+@@ -52,17 +61,39 @@ class TestUnwinder(Unwinder):
+         if stop_at_level is None or pending_frame.level() != stop_at_level:
+             return None
+ 
+-        if stack_adjust is None:
+-            raise gdb.GdbError("invalid stack_adjust")
++        if len(frame_ids) < stop_at_level:
++            raise gdb.GdbError("not enough parsed frame-ids")
+ 
+         if not stop_at_level in [1, 3, 5]:
+             raise gdb.GdbError("invalid stop_at_level")
+ 
+-        sp_desc = pending_frame.architecture().registers().find("sp")
+-        sp = pending_frame.read_register(sp_desc) + stack_adjust
+-        pc = (gdb.lookup_symbol("normal_func"))[0].value().address
+-        unwinder = pending_frame.create_unwind_info(FrameId(sp, pc))
+-
++        # Set the frame-id for this frame to its actual, expected
++        # frame-id, which we captured in the FRAME_IDS list.
++        unwinder = pending_frame.create_unwind_info(frame_ids[stop_at_level])
++
++        # Provide the register values for the caller frame, that is,
++        # the frame at 'STOP_AT_LEVEL + 1'.
++        #
++        # We forward all of the register values unchanged from this
++        # frame.
++        #
++        # What this means is that, as far as GDB is concerned, the
++        # caller frame will appear to be identical to this frame.  Of
++        # particular importance, we send $pc and $sp unchanged to the
++        # caller frame.
++        #
++        # Because the caller frame has the same $pc and $sp as this
++        # frame, GDB will compute the same frame-id for the caller
++        # frame as we just supplied for this frame (above).  This
++        # creates the artificial frame cycle which is the whole point
++        # of this test.
++        #
++        # NOTE: Forwarding all registers unchanged like this to the
++        # caller frame is not how you'd normally write a frame
++        # unwinder.  Some registers might indeed be unmodified between
++        # frames, but we'd usually expect the $sp and/or the $pc to
++        # change.  This test is deliberately doing something weird in
++        # order to force a cycle, and so test GDB.
+         for reg in pending_frame.architecture().registers("general"):
+             val = pending_frame.read_register(reg)
+             unwinder.add_saved_register(reg, val)
+@@ -75,11 +106,18 @@ gdb.unwinder.register_unwinder(None, TestUnwinder(), True)
+ #
+ #   main -> normal_func -> inline_func -> normal_func -> inline_func -> normal_func -> inline_func
+ #
+-# Compute the stack frame size of normal_func, which has inline_func
+-# inlined within it.
+-f0 = gdb.newest_frame()
+-f1 = f0.older()
+-f2 = f1.older()
+-f0_sp = f0.read_register("sp")
+-f2_sp = f2.read_register("sp")
+-stack_adjust = f2_sp - f0_sp
++# Iterate through frames 0 to 6, parse their frame-id and store it
++# into the global FRAME_IDS list.
++for i in range(7):
++    # Get the frame-id in a verbose text form.
++    output = gdb.execute("maint print frame-id %d" % i, to_string=True)
++
++    # Parse the frame-id in OUTPUT, find the stack and code addresses.
++    match = re.search(r"stack=(0x[0-9a-fA-F]+).*?code=(0x[0-9a-fA-F]+)", output)
++    if not match:
++        raise gdb.GdbError("Could not parse frame-id for frame #%d" % i)
++
++    # Create the FrameId object.
++    sp_addr = int(match.group(1), 16)
++    pc_addr = int(match.group(2), 16)
++    frame_ids.append(FrameId(sp_addr, pc_addr))
+-- 
+2.51.0
+

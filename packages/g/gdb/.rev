@@ -4238,4 +4238,33 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
     <comment>Fix bsc#1251213</comment>
     <requestid>1320297</requestid>
   </revision>
+  <revision rev="191" vrev="5">
+    <srcmd5>f9422c9497f3d6ef78a6229f7b9077f2</srcmd5>
+    <version>16.3</version>
+    <time>1771342587</time>
+    <user>anag_factory</user>
+    <comment>- Fix slow symbol lookup with dwz-compressed debuginfo (swo#33825,
+  bsc#1257111).  Patches added:
+  * gdb-symtab-fix-slow-symbol-lookup-with-dwz.patch
+- Fix failure to list source file with dwz-compressed debuginfo
+  (brc#2403580). Patches added:
+  * fix-rhbz2403580-misplaced-symtabs-due-to-dwz.patch
+  * gdb-test-for-misplaced-symtab-causing-file-not-found.patch
+  * gdb-testsuite-add-missing-require-in-gdb.debuginfod-.patch
+  * gdb-testsuite-launch-debuginfod-without-vvvv.patch
+- Fix slow symbol table reading with dwz-compressed debuginfo
+  (swo#33777).  Patches added:
+  * gdb-symtab-cache-dw2_get_file_names-result-for-dummy.patch
+- Fix heap-use-after-free, reported by TSAN.  Patches added:
+  * gdb-symtab-handle-zero-opcode_base-in-line-number-pr.patch
+- Fix backtrace through signal trampoline on s390x (swo#33708).
+  Patches added:
+  * gdb-tdep-fix-gdb.base-siginfo.exp-on-s390x-linux.patch
+- Testsuite fixes.  Patches added:
+  * gdb-testsuite-fix-another-timeout-in-gdb.mi-mi-multi.patch
+  * gdb-testsuite-remove-guile-test-byte-at-sp-before-fl.patch
+  * gdb-fix-gdb.base-inline-frame-cycle-unwind.exp-for-s.patch
+</comment>
+    <requestid>1333328</requestid>
+  </revision>
 </revisionlist>

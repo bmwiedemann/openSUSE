@@ -1,0 +1,1066 @@
+From 45ee15e70771cc4c8019a19519570e743b2def35 Mon Sep 17 00:00:00 2001
+From: Andrew Burgess <aburgess@redhat.com>
+Date: Fri, 14 Nov 2025 15:19:58 +0000
+Subject: [PATCH 2/4] gdb: test for misplaced symtab causing file not found
+ error
+
+This patch adds a new test that checks for a bug that was, if not
+fixed, then at least, worked around, by commit:
+
+  commit a736ff7d886dbcc85026264c3ce11c125a8409b2
+  Date:   Sat Sep 27 22:29:24 2025 -0600
+
+      Clean up iterate_over_symtabs
+
+The bug was reported against Fedora GDB which, at the time the bug was
+reported, is based off GDB 16, and so doesn't include the above
+commit.  The bug report can be found here:
+
+  https://bugzilla.redhat.com/show_bug.cgi?id=2403580
+
+To summarise the bug report: a user is inspecting an application
+backtrace.  The original bug report was from a core file, but the same
+issue will trigger for a live inferior.  It's the inspection of the
+stack frames which is important.  The user moves up the stack with the
+'up' command and eventually finds an interesting frame.  They use
+'list' to view the source code at the current location, this works and
+displays lines 6461 to 6470 from the source file '../glib/gmain.c'.
+The user then does 'list 6450' to try and display some earlier lines
+from the same source file, at which point GDB gives the message:
+
+   warning: 6445  ../glib/gmain.c: No such file or directory
+
+So GDB initially manages to find the source file, but for the very
+next command, GDB now claims that the source file doesn't exist.
+
+As I said, commit a736ff7d886d appears to fix this issue, but it
+wasn't clear to me (from the commit message) if this commit was
+intended to fix any bugs, or if the bug was being hidden by this
+commit.  I've spent some time trying to understand what's going on,
+and have come up with this test case.
+
+I think there might still be an issue in GDB, but I do think that the
+above commit really is making it so that the issue (if it is an issue)
+doesn't occur in that particular situation any more, so I think we can
+consider the above commit a fix, and testing for this bug is worth
+while to ensure it doesn't get reintroduced.
+
+In order to trigger this bug we need these high level requirements:
+
+  1. Multiple shared libraries compiled from the same source tree.  In
+     this case it was glib, but the test in this commit uses a much
+     smaller library.
+
+  2. Common DWARF must be pulled from the libraries using the 'dwz'
+     tool.
+
+  3. Debuginfod must be in use for at least downloading the source
+     code.  In the original bug, and in the test presented here,
+     debuginfod is used for fetching both the debug info, and the
+     source code for the library.
+
+There are some additional specific requirements for the DWARF in order
+to trigger the bug, but to make discussing this easier, lets look at
+the structure of the test presented here.  When discussing the source
+files I'll drop the solib-with-dwz- prefix, e.g. when I mention
+'foo.c' I really mean 'solib-with-dwz-foo.c'.
+
+There are three shared libraries built for this test, libbar.so,
+libfoo.so, and libfoo-2.so.  The source file bar.c is used to create
+libbar.so, and foo.c is used to create libfoo.so and libfoo-2.so.
+
+The main test executable is built from main.c, and links against
+libbar.so and libfoo.so.  libfoo-2.so is not used by the main
+executable, and just exists to trigger some desired behaviour from the
+dwz tool.
+
+The debug information for each shared library is extracted into a
+corresponding .debug file, and the dwz tool is used to extract common
+debug from the three .debug files into a file called 'common.dwz'.
+
+Given all this then, in order to trigger the bug, the following
+additional requirements must be met:
+
+  4. libbar.so must NOT make use of foo.c.  In this test libbar.so is
+     built from bar.c (and some headers) only.
+
+  5. A reference to foo.c must be placed into common.dwz.  This is why
+     libfoo-2.so exists, as this library is almost identical to
+     libfoo.so, there is lots of shared DWARF between libfoo.so and
+     libfoo-2.so which can be moved into common.dwz, this shared DWARF
+     includes references to foo.c, so an entry for foo.c is added to
+     the file table list in common.dwz.
+
+  6. There must be a DWARF construct within libbar.so.debug that
+     references common.dwz, and which causes GDB to parse the line
+     table from within common.dwz.  For more details on this, see
+     below.
+
+  7. We need libbar.so to appear before libfoo.so in GDB's
+     comunit_symtab lists.  This means that GDB will scan the symtabs
+     for libbar.so before checking the symtabs of libfoo.so.  I
+     achieve this by mentioning libbar.so first when building the
+     executable, but this is definitely the most fragile part of the
+     test.
+
+To satisfy requirement (6) the inline function 'add_some_int' is added
+to the test.  This function appears in both libbar.so and libfoo.so,
+this means that the DW_TAG_subprogram representing the abstract
+instance tree will be moved into common.dwz.  However, as this is an
+inline function, the DW_TAG_inlined_subroutine DIEs for each concrete
+instance, will be left in libbar.so.debug and libfoo.so.debug, with a
+DW_AT_abstract_origin that points into common.dwz.
+
+When GDB parses libbar.so.debug it finds the DW_TAG_inlined_subroutine
+and begins processing it.  It sees the DW_AT_abstract_origin and so
+jumps into common.dwz to read the DIEs that define the inline
+function.  Here is the DWARF from libbar.so.debug for the inlined
+instance:
+
+ <2><91>: Abbrev Number: 3 (DW_TAG_inlined_subroutine)
+    <92>   DW_AT_abstract_origin: <alt 0x1b>
+    <96>   DW_AT_low_pc      : 0x1121
+    <9e>   DW_AT_high_pc     : 31
+    <9f>   DW_AT_call_file   : 1
+    <a0>   DW_AT_call_line   : 26
+    <a1>   DW_AT_call_column : 15
+ <3><a2>: Abbrev Number: 5 (DW_TAG_formal_parameter)
+    <a3>   DW_AT_abstract_origin: <alt 0x2c>
+    <a7>   DW_AT_location    : 2 byte block: 91 68      (DW_OP_fbreg: -24)
+ <3><aa>: Abbrev Number: 5 (DW_TAG_formal_parameter)
+    <ab>   DW_AT_abstract_origin: <alt 0x25>
+    <af>   DW_AT_location    : 2 byte block: 91 6c      (DW_OP_fbreg: -20)
+
+And here's the DWARF from common.dwz for the abstract instance tree:
+
+ <1><1b>: Abbrev Number: 7 (DW_TAG_subprogram)
+    <1c>   DW_AT_name        : (indirect string, offset: 0x18a): add_some_int
+    <20>   DW_AT_decl_file   : 1
+    <21>   DW_AT_decl_line   : 24
+    <22>   DW_AT_decl_column : 1
+    <23>   DW_AT_prototyped  : 1
+    <23>   DW_AT_type        : <0x14>
+    <24>   DW_AT_inline      : 3        (declared as inline and inlined)
+ <2><25>: Abbrev Number: 8 (DW_TAG_formal_parameter)
+    <26>   DW_AT_name        : a
+    <28>   DW_AT_decl_file   : 1
+    <29>   DW_AT_decl_line   : 24
+    <2a>   DW_AT_decl_column : 19
+    <2b>   DW_AT_type        : <0x14>
+ <2><2c>: Abbrev Number: 8 (DW_TAG_formal_parameter)
+    <2d>   DW_AT_name        : b
+    <2f>   DW_AT_decl_file   : 1
+    <30>   DW_AT_decl_line   : 24
+    <31>   DW_AT_decl_column : 26
+    <32>   DW_AT_type        : <0x14>
+
+While processing the common.dwz DIEs GDB sees the DW_AT_decl_file
+attributes, and this triggers a read of the file table within
+common.dwz, which creates symtabs for any files mentioned, if the
+symtabs don't already exist.
+
+But, and this is the important bit, when doing this, GDB is creating a
+compunit_symtab for libbar.so.debug, so any symtabs created will be
+attached to the libbar.so.debug objfile.
+
+Remember requirement (5), the file list in common.dwz mentions
+'foo.c', so even though libbar.so doesn't use 'foo.c' we end up with a
+symtab for 'foo.c' created within the compunit_symtab for
+libbar.so.debug!
+
+I don't think this is ideal.  This wastes memory and time; we have
+more symtabs to search through even if, as I'll discuss below, we
+usually end up ignoring these symtabs.
+
+The exact path that triggers this weird symtab creation starts with a
+call to 'new_symbol' (dwarf2/read.c) for the DW_TAG_formal_parameter
+in the abstract instance tree.  These include DW_AT_decl_file, which
+is read in 'new_symbol'.  In 'new_symbol' GDB spots that the
+line_header has not yet been read in, so handle_DW_AT_stmt_list is
+called which reads the file/line table and then calls
+'dwarf_decode_lines' (line_program.c), which then creates symtabs for
+all the files mentioned.
+
+This symtab creation issue still exists today in GDB, though I've not
+been able to find any real issues that this is causing after commit
+a736ff7d886d fixed the issue I'm discussing here.
+
+So, having tricked GDB into creating a misplaced symtab, what problem
+did this cause prior to commit a736ff7d886d?
+
+To answer this, we need to take a diversion to understand how a
+command like 'list 6450' works.  The two interesting functions are
+create_sals_line_offset and decode_digits_list_mode, which is called
+from the former.  The create_sals_line_offset is called indirectly
+from list_command via the initial call to decode_line_1.
+
+In create_sals_line_offset, if the incoming linespec doesn't specify a
+specific symtab, then GDB uses the name of the default symtab to
+lookup every symtab with a matching name, this is done with the line:
+
+  ls->file_symtabs
+    = collect_symtabs_from_filename (self->default_symtab->filename (),
+                                     self->search_pspace);
+
+In our case, when the default symtab is 'foo.c', this is going to
+return multiple symtabs, these will include the correct 'foo.c' symtab
+from libfoo.so, but will also include the misplaced 'foo.c' symtab
+from libbar.so.  This is where the ordering is important.  As list
+will only ever list one file, at a later point in this process we're
+going to toss out everything except the first result.  So, to trigger
+the bug, it is critical that the FIRST result returned here be the
+misplaced 'foo.c' symtab from libbar.so.  In the test I try to ensure
+this by mentioning libbar.so before libfoo.so when building the
+executable, which currently means we get back the misplaced symtab
+first, but this could change in the future and wouldn't necessarily
+mean that the problem has gone away.
+
+Having got the symtab list GDB then calls decode_digits_list_mode
+which iterates over the symtabs and converts them into symtab_and_line
+objects, at the heart of which is a call to find_line_symtab, which
+checks if a given symtab has a line table entry for the desired line.
+If it does then the symtab is returned.  If it doesn't then GDB looks
+for another symtab with the same name that does have a line table
+entry.  If no suitably named symtab has an exact match, then the
+symtab with the closest line above the required line is returned.  If
+no symtab has a matching line table entry then find_line_symtab
+returns NULL.
+
+Remember, the misplaced symtab was only created as a side effect of
+trying to attach the DW_TAG_formal_parameter symbol to a symtab.
+The actual line table for libbar.so (in libbar.so.debug) has no line
+table entries for 'foo.c'.  What this means is that the line table for
+'foo.c' attached to libbar.so.debug is empty.  So normally what
+happens is that find_line_symtab will instead find a line table entry
+for 'foo.c' in libfoo.so.debug that does have a suitable line table
+entry, and will switch GDB back to that symtab, effectively avoiding
+the problem.  However, that is not what happens in the bug case.  In
+the bug case find_line_symtab returns NULL, which means that
+decode_digits_list_mode just uses the original symtab, in this case
+the symtab for 'foo.c' from libbar.so.debug.
+
+In the original bug, the code is compiled with -O2, and this
+optimisation has left the line table covering the problem file pretty
+sparse.  In fact, there are no line table entries for any line after
+the line that the user is trying to list.  This is why
+find_line_symtab doesn't find a better alternative symtab, and instead
+just returns NULL.
+
+In the test I've replicated this by having a comment at the end of the
+source file, and asking GDB to list a line within this comment.  The
+result is that there are no line table entries for that line in any
+'foo.c' symtab, and so find_line_symtab returns NULL.
+
+After decode_digits_list_mode sees the NULL from find_line_symtab, it
+just uses the initial symtab.
+
+After this we eventually return back to list_command (cli/cli-cmds.c)
+with a list of symtab_and_line objects.  The first entry in this list
+is for the symtab 'foo.c' from libbar.so.  In list_command we call
+filter_sals which throws away everything but the first entry as all
+the symtabs have the same filename (and are in the same program
+space).
+
+Using the symtab we build an absolute path to the source file.
+
+Now, if the source is installed locally, GDB performs no additional
+checks; we found a symtab, the symtab gave us a source filename, if
+the source file exists on disk, then the requires lines are listed for
+the user.
+
+But if the source file doesn't exist on disk, then we are going to ask
+debuginfod for the source file.  To do that we use two pieces of
+information; the absolute path to the source file, which we have; and
+the build-id of an objfile, this is the objfile that owns the symtab
+we are trying to get the source for.  In this case libbar.so.  And so
+we send the build-id and filename to debuginfod.
+
+Now debuginfod isn't going to just serve any file to anyone, that
+would be a security issue for the server.  Instead, debuginfod scans
+the DWARF and builds up its own model of which objfiles use which
+source files, and for a given build-id, debuginfod will only serve
+back files that the objfile matching that build-id, actually uses.
+So, in this case, when we ask for 'foo.c' from libbar.so, debuginfod
+correctly realises the 'foo.c' is not part of libbar.so, and refuses
+to send the file back.
+
+And this is how the original bug occurred.
+
+So, why does commit a736ff7d886d fix this problem?  The answer is in
+iterate_over_symtabs, which is used by collect_symtabs_from_filename
+to find the matching symtabs.
+
+Prior to this commit, iterate_over_symtabs had two phases, first a
+call to iterate_over_some_symtabs which walks over compunit_symtabs
+that already exist looking for matches, during this phase only the
+symtab filenames are considered.  The second phase uses
+objfile::map_symtabs_matching_filename to look through the objfiles
+and expand new symtabs that match the required name.  In our case, by
+the time iterate_over_symtabs is called, all of the interesting
+symtabs have already been expanded, so we only perform the filename
+check in iterate_over_some_symtabs, this passes, and so 'foo.c' from
+libbar.so is considered a suitable symtab.
+
+After commit a736ff7d886d the initial call to
+iterate_over_some_symtabs has been removed from iterate_over_symtabs,
+and only the objfile::map_symtabs_matching_filename call remains.
+This ends up in cooked_index_functions::search (dwarf2/read.c) to
+search for matching symtabs.
+
+The first think cooked_index_functions::search does is setup a vector
+of CUs to skip by calling dw_search_file_matcher, this then calls
+dw2_get_file_names to get the file and line table for a CU, this
+function in turn creates a cutu_reader object, passing true for the
+'skip_partial' argument to its constructor.
+
+As our 'foo.c' symtab was created from within the dwz extracted DWARF,
+then it is associated with the DW_TAG_partial_unit that held the
+DW_TAG_subprogram DIEs that were being processed when the misplaced
+symtab was original created; this is a partial unit.  As this is a
+partial unit, and the skip_partial flag was passed true, the
+cutu_reader::is_dummy function will return true.
+
+Back in dw2_get_file_names, if cutu_reader::is_dummy is true then
+dw2_get_file_names_reader is never called, and the file names are
+never read.  This means that back in dw_search_file_matcher, the file
+data, returned from dw2_get_file_names is NULL, and so this CU is
+marked to be skipped.  Which is exactly what we want, this misplaced
+symtab, which was created for a partial unit and associated with
+libbar.so, is skipped and never considered as a possible match.
+
+There is a remaining problem, which is marked in the test with an
+xfail.  That is, when the test does the 'list LINENO', GDB still tries
+to download the source for 'foo.c' from libbar.so.  The reason for
+this is that, while it is true that the initial
+collect_symtabs_from_filename call no longer returns 'foo.c' from
+libbar.so, when decode_digits_list_mode calls find_line_symtab for the
+correct 'foo.c' from libfoo.so, it is still the case that there is no
+exact match for LINENO in that symtabs line table.
+
+As a result, GDB looks through all the other symtabs for 'foo.c' to
+see if any are a better match.  Checking if another symtab is a
+possible better match requires a full comparison of the symtabs source
+file name, which in this case triggers an attempt to download the
+source file from debuginfod.  Here's the backtrace at the time of the
+rogue source download request, which appears as an xfail in the test
+presented here:
+
+  #0  debuginfod_source_query (build_id=..., build_id_len=..., srcpath=..., destname=...) at ../../src/gdb/debuginfod-support.c:332
+  #1  0x0000000000f0bb3b in open_source_file (s=...) at ../../src/gdb/source.c:1152
+  #2  0x0000000000f0be42 in symtab_to_fullname (s=...) at ../../src/gdb/source.c:1214
+  #3  0x0000000000f6dc40 in find_line_symtab (sym_tab=..., line=..., index=...) at ../../src/gdb/symtab.c:3314
+  #4  0x0000000000aea319 in decode_digits_list_mode (self=..., ls=..., line=...) at ../../src/gdb/linespec.c:3939
+  #5  0x0000000000ae4684 in create_sals_line_offset (self=..., ls=...) at ../../src/gdb/linespec.c:2039
+  #6  0x0000000000ae557f in convert_linespec_to_sals (state=..., ls=...) at ../../src/gdb/linespec.c:2289
+  #7  0x0000000000ae6546 in parse_linespec (parser=..., arg=..., match_type=...) at ../../src/gdb/linespec.c:2647
+  #8  0x0000000000ae7605 in location_spec_to_sals (parser=..., locspec=...) at ../../src/gdb/linespec.c:3045
+  #9  0x0000000000ae7c7f in decode_line_1 (locspec=..., flags=..., search_pspace=..., default_symtab=..., default_line=...) at ../../src.dev-m/gdb/linespec.c:3167
+
+I think that this might not be what we really want to do here.  After
+downloading the source file we'll end up with a filename within the
+debuginfod download cache, which will be different for each
+objfile (the cache partitions downloads based on build-id).  So if two
+symtabs originate from the same source file, but are in two different
+objfiles, then, when the source is on disk, the filenames for these
+symtabs will be identical, and the symtabs will be considered
+equivalent by find_line_symtab.  But when debuginfod is downloading
+the source the source paths will be different, and find_line_symtab
+will consider the symtabs different.  This doesn't seem right to me.
+But I'm going to leave worrying about that for another day.
+
+Given this last bug, I am of the opinion that the misplaced symtab is
+likely a bug, though after commit a736ff7d886d, the only issue I can
+find is the extra debuginfod download request, which isn't huge.  But
+still, maybe just reducing the number of symtabs would be worth it?
+
+But this patch isn't about fixing any bugs, it's about adding a test
+case for an issue that was a problem, but isn't any longer.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ .../gdb.debuginfod/solib-with-dwz-bar.c       |  36 ++
+ .../gdb.debuginfod/solib-with-dwz-bar.h       |  25 ++
+ .../gdb.debuginfod/solib-with-dwz-common.h    |  32 ++
+ .../gdb.debuginfod/solib-with-dwz-foo.c       |  79 ++++
+ .../gdb.debuginfod/solib-with-dwz-foo.h       |  27 ++
+ .../gdb.debuginfod/solib-with-dwz-main.c      |  34 ++
+ .../gdb.debuginfod/solib-with-dwz.exp         | 347 ++++++++++++++++++
+ gdb/testsuite/lib/gdb.exp                     |  34 ++
+ 8 files changed, 614 insertions(+)
+ create mode 100644 gdb/testsuite/gdb.debuginfod/solib-with-dwz-bar.c
+ create mode 100644 gdb/testsuite/gdb.debuginfod/solib-with-dwz-bar.h
+ create mode 100644 gdb/testsuite/gdb.debuginfod/solib-with-dwz-common.h
+ create mode 100644 gdb/testsuite/gdb.debuginfod/solib-with-dwz-foo.c
+ create mode 100644 gdb/testsuite/gdb.debuginfod/solib-with-dwz-foo.h
+ create mode 100644 gdb/testsuite/gdb.debuginfod/solib-with-dwz-main.c
+ create mode 100644 gdb/testsuite/gdb.debuginfod/solib-with-dwz.exp
+
+diff --git a/gdb/testsuite/gdb.debuginfod/solib-with-dwz-bar.c b/gdb/testsuite/gdb.debuginfod/solib-with-dwz-bar.c
+new file mode 100644
+index 00000000000..bd70ff52458
+--- /dev/null
++++ b/gdb/testsuite/gdb.debuginfod/solib-with-dwz-bar.c
+@@ -0,0 +1,36 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2025 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++#include "solib-with-dwz-bar.h"
++#include "solib-with-dwz-common.h"
++
++static int bar_data = 0;
++
++void
++process_bar_data (int value)
++{
++  bar_data += add_some_int (3, value);
++
++}
++
++volatile int *ptr = 0;
++
++void bar_func (void)
++{
++  /* This will hopefully trigger a segfault.  */
++  *ptr = 0;	/* Crash here.  */
++}
+diff --git a/gdb/testsuite/gdb.debuginfod/solib-with-dwz-bar.h b/gdb/testsuite/gdb.debuginfod/solib-with-dwz-bar.h
+new file mode 100644
+index 00000000000..d7b014bc90a
+--- /dev/null
++++ b/gdb/testsuite/gdb.debuginfod/solib-with-dwz-bar.h
+@@ -0,0 +1,25 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2025 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++#ifndef SOLIB_WITH_DWZ_BAR_H
++#define SOLIB_WITH_DWZ_BAR_H
++
++extern void process_bar_data (int value);
++
++extern void bar_func (void);
++
++#endif /* SOLIB_WITH_DWZ_BAR_H */
+diff --git a/gdb/testsuite/gdb.debuginfod/solib-with-dwz-common.h b/gdb/testsuite/gdb.debuginfod/solib-with-dwz-common.h
+new file mode 100644
+index 00000000000..653d5d497c3
+--- /dev/null
++++ b/gdb/testsuite/gdb.debuginfod/solib-with-dwz-common.h
+@@ -0,0 +1,32 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2025 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++#ifndef SOLIB_WITH_DWZ_COMMON_H
++#define SOLIB_WITH_DWZ_COMMON_H
++
++void breakpt (int a, int b);
++
++static inline int __attribute__((always_inline))
++add_some_int (int a, int b)
++{
++  if (a > b)
++    breakpt (a, b);
++
++  return a + b;
++}
++
++#endif /* SOLIB_WITH_DWZ_COMMON_H */
+diff --git a/gdb/testsuite/gdb.debuginfod/solib-with-dwz-foo.c b/gdb/testsuite/gdb.debuginfod/solib-with-dwz-foo.c
+new file mode 100644
+index 00000000000..145a2e29c86
+--- /dev/null
++++ b/gdb/testsuite/gdb.debuginfod/solib-with-dwz-foo.c
+@@ -0,0 +1,79 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2025 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++#include "solib-with-dwz-foo.h"
++#include "solib-with-dwz-common.h"
++
++struct foo_data_type
++{
++  int positive_value;
++  int negative_value;
++};
++
++static struct foo_data_type foo_data;
++
++void
++do_callback (foo_callback_type cb)
++{
++  cb ();	/* Call line.  */
++}
++
++void
++process_foo_data (int input)
++{
++#ifdef FOO2
++  int other_value = 4;
++#else
++  int other_value = 6;
++#endif
++
++  if (input > 0)
++    foo_data.positive_value += add_some_int (input, other_value);
++  else
++    foo_data.negative_value += add_some_int (other_value, input);
++}
++
++/* This comment must appear at the end of the source file with no compiled
++   code after it.  When looking for a line number LINENO, GDB looks for a
++   symtab with a line table entry for LINENO or a later line.  It is
++   important for this test that there be no suitable line table entry.  The
++   numbers have no real meaning, I just want to ensure that the 'XXX' line,
++   which is what the test lists is far from any previous source listing.
++
++   0
++   1
++   2
++   3
++   4
++   5
++   6
++   7
++   8
++   9
++   10
++   XXX: Second line to list.
++   10
++   9
++   8
++   7
++   6
++   5
++   4
++   3
++   2
++   1
++   0 */
+diff --git a/gdb/testsuite/gdb.debuginfod/solib-with-dwz-foo.h b/gdb/testsuite/gdb.debuginfod/solib-with-dwz-foo.h
+new file mode 100644
+index 00000000000..65eb58ae28c
+--- /dev/null
++++ b/gdb/testsuite/gdb.debuginfod/solib-with-dwz-foo.h
+@@ -0,0 +1,27 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2025 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++#ifndef SOLIB_WITH_DWZ_FOO_H
++#define SOLIB_WITH_DWZ_FOO_H
++
++extern void process_foo_data (int value);
++
++typedef void (*foo_callback_type) (void);
++
++extern void do_callback (foo_callback_type cb);
++
++#endif /* SOLIB_WITH_DWZ_FOO_H */
+diff --git a/gdb/testsuite/gdb.debuginfod/solib-with-dwz-main.c b/gdb/testsuite/gdb.debuginfod/solib-with-dwz-main.c
+new file mode 100644
+index 00000000000..10214a7e40a
+--- /dev/null
++++ b/gdb/testsuite/gdb.debuginfod/solib-with-dwz-main.c
+@@ -0,0 +1,34 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2025 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++#include "solib-with-dwz-foo.h"
++#include "solib-with-dwz-bar.h"
++
++void
++breakpt (int a, int b)
++{
++  (void) a;
++  (void) b;
++}
++
++int
++main (void)
++{
++  do_callback (bar_func);
++
++  return 0;
++}
+diff --git a/gdb/testsuite/gdb.debuginfod/solib-with-dwz.exp b/gdb/testsuite/gdb.debuginfod/solib-with-dwz.exp
+new file mode 100644
+index 00000000000..e26595420c5
+--- /dev/null
++++ b/gdb/testsuite/gdb.debuginfod/solib-with-dwz.exp
+@@ -0,0 +1,347 @@
++# Copyright 2025 Free Software Foundation, Inc.
++#
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++# This test covers a bug where GDB would try to list source lines from an
++# invalid symtab, and as a result would print a message saying that the
++# source file doesn't exist.
++#
++# Three shared libraries are compiled and their debug information is split
++# into separate .debug files.  Common debug is then extracted using the
++# 'dwz' tool.
++#
++# There are a few critical things required for the bug to manifest:
++#
++# 1. 'foo.c' must be mentioned in the dwz extracted common debug.  To
++#    achieve this two versions of libfoo are compiled with a small
++#    difference.
++#
++# 2. 'foo.c' must NOT be used by libbar.  This is why two copies of libfoo
++#    are created alongside libbar.
++#
++# 3. There must be a DWARF construct in libbar which causes the line table
++#    of the 'dwz' extracted DWARF to be read within the context of parsing
++#    libbar.  In this case we have the 'add_some_int' inlined function that
++#    is used in libbar and libfoo, as such the DW_TAG_subprogram is placed
++#    into the 'dwz' extracted DWARF, but there is a
++#    DW_TAG_inlined_subroutine in the DWARF for both libfoo and libbar.  The
++#    DW_AT_abstract_origin for the inlined subroutine points to the 'dwz'
++#    extracted DWARF file.
++#
++# What happens then is that when GDB interprets the DW_TAG_inlined_subroutine,
++# it goes off to find the DW_AT_abstract_origin, which is in the 'dwz'
++# extracted DWARF.
++#
++# While processing the DW_AT_abstract_origin GDB parses the line table from
++# the 'dwz' extracted DWARF, and creates symtabs (if not exist already).
++#
++# As the 'dwz' extracted DWARF mentions 'foo.c' in its line table, then GDB
++# ends up creating a symtab in libbar, for 'foo.c'.
++#
++# This used to be a problem as GDB could end up trying to use this symtab
++# when listing source code.  This isn't normally an issue as the symtab for
++# 'foo.c' within libbar, though misplaced, is identical to the symtab for
++# 'foo.c' that exists within libfoo.  As such, when GDB computes the source
++# path for either, the same full source path is computed, GDB will then read
++# the same file on disk.
++#
++# However, if debuginfod is involved, then the source lookup has an extra
++# check.  To fetch the source from debuginfod GDB must supply the source
++# filename AND the build-id for the original objfile, in our problematic
++# case this ends up being the build-id for libbar.
++#
++# As 'foo.c' is not a source file that is part of libbar, debuginfod refuses
++# to send this source file back, and claims the file doesn't exist.  GDB
++# would then say that the source file couldn't be found.
++#
++# However, changes in GDB means that this problem no longer exists.  When
++# looking for a source file by name, symtabs that are created for a
++# DW_TAG_partial_unit are ignored, at least in the places we care about.  As
++# a result, GDB now ignores the symtab for 'foo.c' that is created within
++# libbar.
++#
++# There is one remaining issue though, which this test does expose.  While
++# searching the symtabs, GDB will still trigger an attempt to download the
++# source code for 'foo.c' within libbar, even if, later on, GDB decides that
++# the symtab should be ignore on account of it being a DW_TAG_partial_unit.
++# This source code download is unfortunate as to the user it appears like a
++# second (unnecessary) download of the file.  There's an XFAIL in this test
++# related to this issue.
++
++load_lib debuginfod-support.exp
++
++require allow_shlib_tests
++require {istarget "*-linux*"}
++require {!is_remote host}
++require {dwz_version_at_least 0.13}
++
++standard_testfile -main.c -bar.c -foo.c
++
++set libbar_filename [standard_output_file "libbar.so"]
++set libfoo_filename [standard_output_file "libfoo.so"]
++set libfoo_2_filename [standard_output_file "libfoo-2.so"]
++
++# Compile libbar.so.
++if {[build_executable "build libbar.so" $libbar_filename \
++	 $srcfile2 { debug shlib build-id }] == -1} {
++    return
++}
++
++# If we are running with a board that splits the debug information out and
++# adds a .gnu_debuglink, then this test isn't going to work.  We want to be
++# in control of splitting out the debug information, and we definitely don't
++# want a .gnu_debuglink otherwise debuginfod isn't going to be needed.
++# BACKPORT NOTE: Disabled because section_get is missing in 16.3 sources.
++#if {[section_get $libbar_filename ".gnu_debuglink"] ne ""} {
++#    unsupported "debug information has already been split out"
++#    return
++#}
++
++# Compile libfoo.so.
++if {[build_executable "build libfoo.so" $libfoo_filename \
++	 $srcfile3 { debug shlib build-id }] == -1} {
++    return
++}
++
++# Compile libfoo-2.so.
++if {[build_executable "build libfoo-2.so" $libfoo_2_filename \
++	 $srcfile3 { debug shlib build-id additional_flags=-DFOO2}] == -1} {
++    return
++}
++
++# Build the executable.
++if { [build_executable "build executable" ${binfile} ${srcfile} \
++	  [list debug shlib=${libbar_filename} shlib=${libfoo_filename} shlib_load]] == -1 } {
++    return
++}
++
++# For each library file, move the debug information into a .debug
++# file.  Don't add the gnu-debuglink from the library to the debug
++# file yet as the generated CRC depends on the debug information in
++# the .debug file, and in the next step we will change that debug
++# information using the DWZ tool.
++foreach filename [list $libbar_filename $libfoo_filename $libfoo_2_filename] {
++    if {[gdb_gnu_strip_debug $filename no-debuglink]} {
++	unsupported "produce separate debug info for [file tail $filename]"
++	return
++    }
++}
++
++# Move the .debug files into the debug/ directory.
++set debug_dir [standard_output_file "debug"]
++remote_exec build "mkdir \"$debug_dir\""
++remote_exec build "mv \"${libbar_filename}.debug\" \"${debug_dir}/\""
++remote_exec build "mv \"${libfoo_filename}.debug\" \"${debug_dir}/\""
++remote_exec build "mv \"${libfoo_2_filename}.debug\" \"${debug_dir}/\""
++
++# Run DWZ tool on the separate debug files.  This moves shared debug
++# information into a 'common.dwz' file.  First move into DEBUG_DIR
++# then run DWZ using relative filenames, this means that the link
++# placed into the *.debug files will be relative, and GDB will not be
++# able to find the common.dwz file itself; as a result it will have to
++# download the file via debuginfod.
++with_cwd $debug_dir {
++    set status \
++	[remote_exec build "dwz -m ./common.dwz \
++				   ./libbar.so.debug \
++				   ./libfoo.so.debug \
++				   ./libfoo-2.so.debug"]
++    if {[lindex $status 0] != 0} {
++	unsupported "unable to run dwz tool"
++	return
++    }
++}
++
++# Some earlier versions of dwz would fail to process the .debug files,
++# producing some error output, but still exit with code 0.  A
++# successful execution of dwz should produce no output.
++if {[lindex $status 1] ne ""} {
++    unsupported "unexpected output from dwz tool"
++    return
++}
++
++# Check the debuginfod client cache directory CACHE, look in the directory
++# corresponding to libbar.so, and check to see if the *-foo.c source file,
++# global SRCFILE3, was downloaded.  Return true if the file was downloaded,
++# otherwise, return false.
++proc check_cache_for_foo { cache } {
++    set build_id [get_build_id $::libbar_filename]
++    set cache_dir $cache/$build_id
++    set files [glob -nocomplain -tails -directory $cache_dir \*$::srcfile3]
++    if { [llength $files] > 0 } {
++	return true
++    }
++    return false
++}
++
++# Use DB and DEBUG_DIR to start debuginfod, then start GDB.  Configure GDB
++# so that it cannot find the test source code; we'll download this from
++# debuginfod.  Load the test executable and run until it crashes.  Move up
++# the stack until we're in libfoo.so, specifically, in the file
++# solib-with-dwz-foo.c, then use 'list', this displays source lines around
++# the current location, and sets the default symtab within GDB.  The source
++# will have been downloaded from debuginfod.
++#
++# Now use 'list LINENO', this should display LINENO within the default
++# symtab.
++proc run_test { cache db debug_dir use_filename } {
++    set url [start_debuginfod $db $debug_dir]
++    if { $url == "" } {
++	unresolved "start debuginfod server"
++	return
++    }
++
++    # Point the client to the server.
++    setenv DEBUGINFOD_URLS $url
++
++    clean_restart
++
++    # Set the substitute-path, this prevents GDB from reading the
++    # source code directly from the file system.
++    gdb_test_no_output "set substitute-path $::srcdir /dev/null" \
++	"set substitute-path"
++
++    # And remove SRCDIR from the source directory path, this prevents
++    # GDB from reading the source files relative to this location.
++    gdb_test "with confirm off -- dir" \
++	"^Source directories searched: \\\$cdir:\\\$cwd" \
++	"reset source directory path"
++
++    # Turn on support for debuginfod.
++    gdb_test_no_output "set debuginfod enabled on" \
++	"enabled debuginfod for initial test"
++
++    # Now GDB is configured, load the executable.
++    gdb_load $::binfile
++
++    if { ![runto_main] } {
++	return
++    }
++
++    # This test relies on reading address zero triggering a SIGSEGV.
++    # If address zero is readable then give up now.
++    if { [is_address_zero_readable] } {
++	unsupported "address zero in readable"
++	return
++    }
++
++    set crash_line_num [gdb_get_line_number "Crash here" $::srcfile2]
++
++    gdb_test "continue" \
++	"\r\n$crash_line_num\\s+[string_to_regexp {*ptr = 0;	/* Crash here.  */}]"
++
++    set call_line_num [gdb_get_line_number "Call line" $::srcfile3]
++
++    gdb_test "up" \
++	"\r\n$call_line_num\\s+[string_to_regexp {cb ();	/* Call line.  */}]"
++
++    gdb_test "list" \
++	"\r\n$call_line_num\\s+[string_to_regexp {cb ();	/* Call line.  */}]\r\n.*" \
++	"list default location in $::srcfile3"
++
++    set list_line_num [gdb_get_line_number "Second line to list" $::srcfile3]
++
++    # Try 'list LINENO' or 'list FILE:LINENO'.  GDB will perform a search
++    # for the current symtab or the symtab matching FILE, and could end up
++    # finding the wrong symtab, resulting in a file not found message
++    # instead of the source code being printed.
++
++    if { $use_filename } {
++	set filename_prefix "${::srcfile3}:"
++    } else {
++	set filename_prefix ""
++    }
++
++    set saw_missing_source_warning false
++    set saw_source_download false
++    set saw_expected_source_line false
++    gdb_test_multiple "list $filename_prefix$list_line_num" "list by line number in $::srcfile3" {
++	-re "^list $filename_prefix$list_line_num\r\n" {
++	    exp_continue
++	}
++	-re "^Downloading source file \[^\r\n\]+\r\n" {
++	    set saw_source_download true
++	    exp_continue
++	}
++	-re "^warning:\\s+$::decimal\\s+\[^\r\n\]+: No such file or directory\r\n" {
++	    set saw_missing_source_warning true
++	    exp_continue
++	}
++	-re "^$list_line_num\\s+[string_to_regexp {XXX: Second line to list.}]\r\n" {
++	    set saw_expected_source_line true
++	    exp_continue
++	}
++	-re "^$::gdb_prompt $" {
++	    # If the source download reply from debuginfod is very quick,
++	    # then debuginfod might not even print a line indicating that
++	    # anything was downloaded.  If we get here an still think that
++	    # the source wasn't downloaded, then check the cache, just to
++	    # confirm.
++	    if { !$saw_source_download } {
++		set saw_source_download [check_cache_for_foo $cache]
++	    }
++
++	    # GDB ends up creating a symtab for solib-with-dwz-foo.c
++	    # associated with libbar.so.  This isn't ideal as *-foo.c wasn't
++	    # used within libbar.so.  The symtab is a result of loading the
++	    # file/line table from the DWZ file while processing the DWARF
++	    # for libbar.so.
++	    #
++	    # While performing the 'list LINENO' or 'list FILE:LINENO'
++	    # command GDB performs a search of all symtabs, as part of this
++	    # process GDB tries to establish the full source filename for
++	    # the *-foo.c symtab associated with libbar.so, this in turn
++	    # causes GDB to try and download the source from debuginfod.
++	    #
++	    # This download will fail as *-foo.c is not used within
++	    # libbar.so, but having GDB try to download the file is not
++	    # ideal, even if it is harmless.
++	    #
++	    # If/when this xfail is addressed, the comment at the start of
++	    # this file will need updating too.
++	    # BACKPORT NOTE: Disabled xfail, seems to be unnecessary with
++	    # 16.3.
++	    #setup_xfail "*-*-*"
++	    gdb_assert { !$saw_source_download } \
++		"$gdb_test_name, no source download"
++
++	    gdb_assert { $saw_expected_source_line \
++			     && !$saw_missing_source_warning } \
++		"$gdb_test_name, saw source line"
++	}
++	-re "^\[^\r\n\]*\r\n" {
++	    exp_continue
++	}
++    }
++}
++
++# Create CACHE and DB directories ready for debuginfod to use.
++prepare_for_debuginfod cache db
++
++with_debuginfod_env $cache {
++    foreach_with_prefix use_filename { true false } {
++
++	# Cleanup state the will be created in run_test.  Do this before the
++	# call to make debugging the test easier; the state remains after
++	# calling run_test.
++	unset -nocomplain env(DEBUGINFOD_URLS)
++	file delete -force $cache
++	file delete -force $db
++
++	# Now run the test.
++	run_test $cache $db $debug_dir $use_filename
++	stop_debuginfod
++    }
++}
++
+diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
+index ac1de76a696..68a22eea1f3 100644
+--- a/gdb/testsuite/lib/gdb.exp
++++ b/gdb/testsuite/lib/gdb.exp
+@@ -11106,5 +11106,39 @@ proc expect_build_id_in_core_file { filename } {
+ }
+ 
+ 
++# Return the version number of the 'dwz' tool as a list.  If the 'dwz'
++# tool is not found, or the version cannot be established, an empty
++# list is returned.
++#
++# The 'dwz' version is currently of the form 0.12, 0.13, 0.14, etc.
++# So the returned list will have two elements, e.g. { 0 12 }.
++
++proc dwz_version { } {
++    set dwz_program "dwz"
++    set res [catch {exec $dwz_program --version} output]
++
++    # Don't check the exit value of 'dwz' process as 'dwz' doesn't
++    # exit immediately after displaying the version number, and for
++    # some reason, version 0.13 always seems to exit with a code of 1.
++    # The version number is still displayed though.
++
++    set lines [split $output \n]
++    set line [lindex $lines 0]
++    set res [regexp {dwz version[ \t]+([0-9]+)[.]([0-9]+)[^ \t]*$} \
++		 $line dummy dwz_major dwz_minor]
++    if { $res != 1 } {
++	return [list]
++    }
++
++    return [list $dwz_major $dwz_minor]
++}
++
++# Return true if the version of the 'dwz' tool is at least VER.  The
++# VER should have the same form as a 'dwz' version number, e.g. 0.12,
++# 0.13, 0.14, etc.
++proc dwz_version_at_least { ver } {
++    return [version_compare [split $ver .] <= [dwz_version]]
++}
++
+ # Always load compatibility stuff.
+ load_lib future.exp
+-- 
+2.51.0
+

@@ -1,0 +1,29 @@
+From f7147942b6b9e9bc0736564952e1cb503a9f561e Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 8 Jan 2026 08:16:14 +0100
+Subject: [PATCH 1/4] [gdb/testsuite] Add missing require in
+ gdb.debuginfod/solib-with-dwz.exp
+
+Add missing "require allow_debuginfod_tests" in test-case
+gdb.debuginfod/solib-with-dwz.exp.
+---
+ gdb/testsuite/gdb.debuginfod/solib-with-dwz.exp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/gdb/testsuite/gdb.debuginfod/solib-with-dwz.exp b/gdb/testsuite/gdb.debuginfod/solib-with-dwz.exp
+index e26595420c5..de44aa063ed 100644
+--- a/gdb/testsuite/gdb.debuginfod/solib-with-dwz.exp
++++ b/gdb/testsuite/gdb.debuginfod/solib-with-dwz.exp
+@@ -81,6 +81,7 @@
+ 
+ load_lib debuginfod-support.exp
+ 
++require allow_debuginfod_tests
+ require allow_shlib_tests
+ require {istarget "*-linux*"}
+ require {!is_remote host}
+
+base-commit: 7f92f322e022082e211bd8f264ec86fbd25a90ec
+-- 
+2.51.0
+

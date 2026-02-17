@@ -212,6 +212,8 @@ Patch1506:      gdb-cli-print-at_hwcap3-and-at_hwcap4.patch
 Patch1508:      gdb-testsuite-fix-gdb_py_module_available-for-python.patch
 # https://sourceware.org/bugzilla/show_bug.cgi?id=32850
 Patch1509:      gdb-testsuite-work-around-pr32850.patch
+# https://sourceware.org/bugzilla/show_bug.cgi?id=33901
+Patch1510:      gdb-testsuite-launch-debuginfod-without-vvvv.patch
 
 # Backports from master, available in GDB 17.
 
@@ -266,6 +268,7 @@ Patch2150:      gdb-fix-handling-of-aborted-inferior-call.patch
 Patch2151:      gdb-testsuite-fix-possible-tcl-errors-in-gdb.threads.patch
 Patch2152:      gdb-testsuite-fix-xfail-in-gdb.ada-array_of_variant..patch
 Patch2153:      gdb-testsuite-fix-gdb.mi-mi-sym-info.exp.patch
+Patch2154:      gdb-symtab-cache-dw2_get_file_names-result-for-dummy.patch
 
 # Backports from master, available in GDB 18.
 
@@ -287,6 +290,14 @@ Patch2514:      gdb-rust-fix-handling-of-unsigned-discriminant.patch
 Patch2515:      gdb-testsuite-force-dwarf-in-gdb.pascal.patch
 Patch2516:      gdb-testsuite-fix-main-in-gdb.trace-mi-trace-frame-c.patch
 Patch2517:      mark-pascal-as-case-insensitive.patch
+Patch2518:      gdb-testsuite-fix-another-timeout-in-gdb.mi-mi-multi.patch
+Patch2519:      fix-rhbz2403580-misplaced-symtabs-due-to-dwz.patch
+Patch2520:      gdb-test-for-misplaced-symtab-causing-file-not-found.patch
+Patch2521:      gdb-symtab-handle-zero-opcode_base-in-line-number-pr.patch
+Patch2522:      gdb-testsuite-add-missing-require-in-gdb.debuginfod-.patch
+Patch2523:      gdb-tdep-fix-gdb.base-siginfo.exp-on-s390x-linux.patch
+Patch2524:      gdb-testsuite-remove-guile-test-byte-at-sp-before-fl.patch
+Patch2525:      gdb-fix-gdb.base-inline-frame-cycle-unwind.exp-for-s.patch
 
 # Backport from gdb-patches
 
@@ -329,6 +340,9 @@ Patch3020:      powerpc-mark-rtti-typeid-tests-as-expected-fail-befo.patch
 #
 
 # Other.  Needs comment for each patch.
+
+# Backport from gdb-17-branch, not available in master.
+Patch3500:      gdb-symtab-fix-slow-symbol-lookup-with-dwz.patch
 
 # fix build failure w/ cmake-4; cf. github.com/intel/libipt/commit/fa7d42d
 Patch4001:      libipt-cmake4-patch
@@ -663,6 +677,7 @@ find -name "*.info*"|xargs rm -f
 %patch -P 1506 -p1
 %patch -P 1508 -p1
 %patch -P 1509 -p1
+%patch -P 1510 -p1
 
 %patch -P 2100 -p1
 %patch -P 2101 -p1
@@ -715,6 +730,7 @@ find -name "*.info*"|xargs rm -f
 %patch -P 2151 -p1
 %patch -P 2152 -p1
 %patch -P 2153 -p1
+%patch -P 2154 -p1
 
 %patch -P 2500 -p1
 %patch -P 2501 -p1
@@ -734,6 +750,14 @@ find -name "*.info*"|xargs rm -f
 %patch -P 2515 -p1
 %patch -P 2516 -p1
 %patch -P 2517 -p1
+%patch -P 2518 -p1
+%patch -P 2519 -p1
+%patch -P 2520 -p1
+%patch -P 2521 -p1
+%patch -P 2522 -p1
+%patch -P 2523 -p1
+%patch -P 2524 -p1
+%patch -P 2525 -p1
 
 %patch -P 3000 -p1
 %patch -P 3001 -p1
@@ -749,6 +773,8 @@ find -name "*.info*"|xargs rm -f
 %patch -P 3018 -p1
 %patch -P 3019 -p1
 %patch -P 3020 -p1
+
+%patch -P 3500 -p1
 
 #unpack libipt
 %if 0%{have_libipt}
