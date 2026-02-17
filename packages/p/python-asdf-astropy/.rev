@@ -176,4 +176,15 @@ This is just to get rid of the build failure in d:l:p. It is not suitable for an
 </comment>
     <requestid>1328501</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>087090e1162cc1a76a548607765cd999</srcmd5>
+    <version>0.10.0</version>
+    <time>1771343250</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.10.0:
+  * Add support for astronomy-1.2.0 manifest
+  * Add TETE and TEME coordinate frames
+  * Fix magunit serialization to match unit</comment>
+    <requestid>1333402</requestid>
+  </revision>
 </revisionlist>
