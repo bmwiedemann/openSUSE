@@ -190,4 +190,14 @@
     py impl, if `frozendict` is hashable</comment>
     <requestid>1219196</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d08ba1b7a59b14e80e4d8bbbdd0cc14f</srcmd5>
+    <version>2.4.7</version>
+    <time>1771348435</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.4.7:
+  * Now pickle is only marginally slower than dict for C
+    Extension!</comment>
+    <requestid>1333414</requestid>
+  </revision>
 </revisionlist>

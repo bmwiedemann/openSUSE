@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 16 17:17:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.7:
+  * Now pickle is only marginally slower than dict for C
+    Extension!
+
+-------------------------------------------------------------------
 Tue Oct 29 21:35:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.6:
