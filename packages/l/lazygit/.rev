@@ -279,4 +279,12 @@ expertise with the git command line.</comment>
     <comment>Update to 0.58.0 (forwarded request 1325259 from ecsos)</comment>
     <requestid>1325270</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>17c3d962de33c201b60e75736d3489b6</srcmd5>
+    <version>0.59.0</version>
+    <time>1771343492</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.59.0 (forwarded request 1331881 from ecsos)</comment>
+    <requestid>1333471</requestid>
+  </revision>
 </revisionlist>

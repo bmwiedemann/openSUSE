@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Feb 08 15:01:55 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.59.0:
+  * Update docs and schema for release
+  * Auto-update cheatsheets after updating translation
+  * Update translations from Crowdin
+  * fix(config): add Nushell support for nvim-remote preset
+  * Update README to mention GitArbor as an alternative
+  * Disable the automatic, scheduled release
+  * Fix rendering of the Reflog panel when using up/down to scroll it
+  * Fix gitignore path collisions
+  * Bump gocui
+  * When moving commits up/down and the selection leaves the view, scroll to make it visible again
+  * Support using the selected commit's message in a fixup
+  * Pass todo flag to EditRebaseTodo
+  * Show -C for fixup todos in rebase if present
+  * Add ActionFlag field to Commit
+  * Remove the "old cherry-pick key" warning
+  * Limit popup panel widths to a maximum width
+  * Fix opening a menu when a previous menu was scrolled down
+  * Don't log the "git rev-list" call when marking bisect commits
+  * Bump gocui
+  * chore: Update outdated GitHub Actions versions
+  * Ignore fixup commits for a found base commit when doing ctrl-f
+  * Extract a helper method getCommitsForHashes
+  * Make getHashesAndSubjects a free-standing function
+  * Move isFixupCommit to FixupHelper
+  * Add a test that documents the current behavior
+  * README.md: Update Sponsors
+  * Update devcontainer `VARIANT` to `1-trixie`
+
+-------------------------------------------------------------------
+Sun Feb 08 15:01:27 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.58.1:
+  * Bump tcell
+  * Don't log the "git ls-remote" call when opening a PR
+  * Ask users to provide information about their terminal
+  * Remove git version
+  * bump tcell
+  * Bump gocui
+  * When doing ctrl-f, and the resulting commit is not visible, scroll it into view
+  * Update search position (match x of y) when changing the selection in a list view
+  * Bump gocui and adapt code accordingly
+
+-------------------------------------------------------------------
 Sun Jan 04 12:48:38 UTC 2026 - ecsos@opensuse.org
 
 - Update to version 0.58.0:
