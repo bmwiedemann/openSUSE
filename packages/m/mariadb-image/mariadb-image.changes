@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 17 11:19:45 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- rerender templates with generalized tmpfiles generation logic
+
+-------------------------------------------------------------------
 Mon Feb  9 10:23:34 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - use systemd-tmpfiles
