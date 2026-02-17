@@ -81,4 +81,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * ath11k: QCA2066 hw2.1: update board-2.bin</comment>
     <requestid>1321333</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>65e17e9ce2f125b13dd39c09ccf21887</srcmd5>
+    <version>20260202</version>
+    <time>1771342596</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260202 (git commit 40c017e718f9):
+  * ath11k: WCN6855 hw2.0: update board-2.bin
+  * ath11k: QCA6698AQ hw2.1: update board-2.bin</comment>
+    <requestid>1333331</requestid>
+  </revision>
 </revisionlist>
