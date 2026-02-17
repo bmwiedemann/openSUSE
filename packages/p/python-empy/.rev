@@ -63,4 +63,13 @@
 - List modules explicitly in %files.</comment>
     <requestid>1287771</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>42c8a11711256baf3e864b3ad9a18d3d</srcmd5>
+    <version>4.2.1</version>
+    <time>1771348438</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.2.1:
+  * http://www.alcyone.com/software/empy/ANNOUNCE.html#empy-4-2-1-release-announcement</comment>
+    <requestid>1333419</requestid>
+  </revision>
 </revisionlist>
