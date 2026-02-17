@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 16 17:35:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.3:
+  * Fixed: Button styles for choose, remove and reset permissions
+  * Fixed: Removed "font-weight: bold" style for "a" selector
+  * Improved: Minor layout correction for ui-datepicker-titles.
+  * Fixed: ChangeList filter template
+  * Fixed: Dynamic grappelli dashboard size based on columns from
+    Dashboard class
+  * Fixed: Integration of ui-datepicker prev/next icons (#1057).
+  * Fixed: Selections with TextField and Collapsibles (#1063,
+    #1064).
+  * Fixed: Submit row in change/add view partially hides
+    datepicker (#1062).
+  * Fixed translation string (#1055).
+
+-------------------------------------------------------------------
 Thu Sep  5 06:11:42 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop unneeded BuildRequires on pylib. 

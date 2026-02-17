@@ -293,4 +293,24 @@
     <comment>- Drop unneeded BuildRequires on pylib.</comment>
     <requestid>1198873</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>0853946397310bcbddbc25a5d171ba16</srcmd5>
+    <version>4.0.3</version>
+    <time>1771348444</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0.3:
+  * Fixed: Button styles for choose, remove and reset permissions
+  * Fixed: Removed &quot;font-weight: bold&quot; style for &quot;a&quot; selector
+  * Improved: Minor layout correction for ui-datepicker-titles.
+  * Fixed: ChangeList filter template
+  * Fixed: Dynamic grappelli dashboard size based on columns from
+    Dashboard class
+  * Fixed: Integration of ui-datepicker prev/next icons (#1057).
+  * Fixed: Selections with TextField and Collapsibles (#1063,
+    #1064).
+  * Fixed: Submit row in change/add view partially hides
+    datepicker (#1062).
+  * Fixed translation string (#1055).</comment>
+    <requestid>1333423</requestid>
+  </revision>
 </revisionlist>
