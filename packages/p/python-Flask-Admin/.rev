@@ -197,4 +197,17 @@
     - The default query for pymongo can be overridden</comment>
     <requestid>1314079</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b43f8c10b0ffd162a5e95d4fca5dcb86</srcmd5>
+    <version>2.0.2</version>
+    <time>1771348458</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.0.2:
+  * Add support for Python 3.14
+  * Add a MenuDivider item for bootstrap themes
+  * Field errors are now shown in red text for bootstrap themes
+  * Fix documentation
+  * Update arabic translations</comment>
+    <requestid>1333428</requestid>
+  </revision>
 </revisionlist>

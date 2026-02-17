@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Admin
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask-Admin
-Version:        2.0.0
+Version:        2.0.2
 Release:        0
 Summary:        Extensible admin interface framework for Flask
 License:        BSD-3-Clause
