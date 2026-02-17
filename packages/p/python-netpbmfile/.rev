@@ -54,4 +54,15 @@
   * Drop support for Python 3.9, support Python 3.13.</comment>
     <requestid>1281101</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>63764e6dcceb3f26ff8b1bc87f6b708f</srcmd5>
+    <version>2026.1.29</version>
+    <time>1771348464</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.1.29:
+  * Fix code review issues.
+  * Improve code quality.
+  * Drop support for Python 3.10, support Python 3.14.</comment>
+    <requestid>1333447</requestid>
+  </revision>
 </revisionlist>
