@@ -373,4 +373,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * cirrus: cs35l56: Add WHENCE links for 17aa233c spkid0 firmware</comment>
     <requestid>1330137</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>32f670355499ca10ad5142a08d6ab46c</srcmd5>
+    <version>20260214</version>
+    <time>1771342642</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260214 (git commit 3a0e2a540dca):
+  * cirrus: cs35l41: Add Firmware for ASUS Zenbook Laptop using CS35L41 HDA
+
+- Update to version 20260203 (git commit ce97e4b1cb87):
+  * ASoC: tas2783: Add Firmware files for tas2783A</comment>
+    <requestid>1333340</requestid>
+  </revision>
 </revisionlist>
