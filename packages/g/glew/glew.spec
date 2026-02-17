@@ -33,7 +33,7 @@
 %define shlib libGLEW%{?pkg_suffix}%{so_ver}
 
 Name:           %{pname}%{?pkg_suffix}
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        OpenGL Extension Wrangler Library
 # was http://glew.sourceforge.net/
