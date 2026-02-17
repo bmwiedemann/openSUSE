@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb  8 10:53:22 UTC 2026 - Dave Plater <davejplater@gmail.com>
+
+- Fix boo#1257023 (CVE-2025-63648) with patch from git:
+  0001-dacp-Fix-segfault-from-invalid-queries.patch.
+
+-------------------------------------------------------------------
 Fri Oct 17 05:37:06 UTC 2025 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - update to version 29.0:

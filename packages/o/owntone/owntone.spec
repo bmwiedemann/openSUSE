@@ -1,7 +1,7 @@
 #
 # spec file for package owntone
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2018 Scott Shambarger
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,6 +35,7 @@ URL:            https://github.com/owntone/owntone-server
 Source0:        %url/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        owntone_logrotate
 Patch0:         harden_owntone.service.patch
+Patch1:         0001-dacp-Fix-segfault-from-invalid-queries.patch
 Provides:       forked-daapd = %version
 Obsoletes:      forked-daapd < 28
 BuildRequires:  antlr3-tool

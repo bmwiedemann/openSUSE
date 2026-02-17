@@ -170,4 +170,14 @@ and a version update</comment>
     <comment></comment>
     <requestid>1312138</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>d19b4fa78fe701335dcb069624ff3cfd</srcmd5>
+    <version>29.0</version>
+    <time>1771347537</time>
+    <user>anag_factory</user>
+    <comment>- Fix boo#1257023 (CVE-2025-63648) with patch from git:
+  0001-dacp-Fix-segfault-from-invalid-queries.patch.
+</comment>
+    <requestid>1333544</requestid>
+  </revision>
 </revisionlist>
