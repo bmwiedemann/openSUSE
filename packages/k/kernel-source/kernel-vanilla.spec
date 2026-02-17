@@ -17,9 +17,9 @@
 # needssslcertforbuild
 
 
-%define srcversion 6.18
-%define patchversion 6.18.9
-%define git_commit 6d9f8a821c2b821c69323a94d40a2f5e8af36052
+%define srcversion 6.19
+%define patchversion 6.19.2
+%define git_commit 07469219d2b52fcced8671778315f04b2a638a58
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-vanilla
-Version:        6.18.9
+Version:        6.19.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g6d9f8a8
+Release:        <RELEASE>.g0746921
 %else
 Release:        0
 %endif
