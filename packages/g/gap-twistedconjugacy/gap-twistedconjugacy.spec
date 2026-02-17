@@ -1,7 +1,7 @@
 #
 # spec file for package gap-twistedconjugacy
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-twistedconjugacy
-Version:        3.1.1
+Version:        3.2.0
 Release:        0
 Summary:        GAP: Computation with twisted conjugacy classes
 License:        GPL-2.0-or-later
@@ -27,8 +27,8 @@ URL:            https://stertooy.github.io/TwistedConjugacy/
 Source:         https://github.com/stertooy/TwistedConjugacy/releases/download/v%version/TwistedConjugacy-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.14
 Requires:       gap-autpgrp >= 1.11
+Requires:       gap-core >= 4.14
 Requires:       gap-polycyclic >= 2.16
 
 %description

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 17 09:43:35 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.0
+  * Renamed many of the existing functions available for
+    Reidemeister zeta functions.
+  * Added support for Reidemeister generating functions.
+
+-------------------------------------------------------------------
 Wed Oct 15 10:31:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.1.1
