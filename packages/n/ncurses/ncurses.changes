@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb  9 07:59:15 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260207
+  + improve infocmp "-i" option, to make it easier to see unrecognized
+    escape sequences in initialization strings, as well as extending the
+    tables.
+  + correct DECKPNM in vt220 is2 (Aaro Koskinen)
+  + correct DECSTR in some Wyse terminfo entries -TD
+
+-------------------------------------------------------------------
 Mon Feb  2 08:17:52 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20260131
