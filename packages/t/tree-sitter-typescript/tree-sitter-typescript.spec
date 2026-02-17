@@ -42,19 +42,9 @@ BuildRequires:  treesitter_grammar_src(tree-sitter-javascript)
 %treesitter_install
 %treesitter_devel_install common/define-grammar.js
 
-#neovim stuff
-install -d %{buildroot}%{_libdir}/tree_sitter
-ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
-ln -s %{_libdir}/libtree-sitter-tsx.so %{buildroot}%{_libdir}/tree_sitter/tsx.so
-
 %files
 %license LICENSE
 %treesitter_files
-%{_libdir}/tree_sitter/%{_name}.so
-%{_libdir}/tree_sitter/tsx.so
-%if 0%{?suse_version} < 1600
-%dir %{_libdir}/tree_sitter
-%endif
 
 %treesitter_devel_package
 
