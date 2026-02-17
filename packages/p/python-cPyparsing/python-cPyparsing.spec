@@ -1,7 +1,7 @@
 #
 # spec file for package python-cPyparsing
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-cPyparsing
-Version:        2.4.7.2.4.1
+Version:        2.4.7.2.4.3
 Release:        0
 Summary:        Cython implementation of PyParsing
 License:        Apache-2.0

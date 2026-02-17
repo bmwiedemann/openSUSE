@@ -126,4 +126,13 @@ Requires python-setuptools 78 to build successfully.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1288105</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c2a98577f62ed603b9d9189dea297064</srcmd5>
+    <version>2.4.7.2.4.3</version>
+    <time>1771343255</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.4.7.2.4.3:
+  * Some additional performance optimizations</comment>
+    <requestid>1333403</requestid>
+  </revision>
 </revisionlist>
