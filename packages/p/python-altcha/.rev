@@ -33,4 +33,14 @@
     <comment></comment>
     <requestid>1286391</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6c7208d9d58651c4cec16fe1594c0567</srcmd5>
+    <version>1.0.0</version>
+    <time>1771343260</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.0:
+  * fix: expires with utc datetime
+  * fix: salt parameter splicing</comment>
+    <requestid>1333405</requestid>
+  </revision>
 </revisionlist>
