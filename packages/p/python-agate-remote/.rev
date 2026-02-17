@@ -43,4 +43,14 @@
 - No more greedy globs in %files.</comment>
     <requestid>1275958</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2bba34b56ca9fdd82c6c15043b637e28</srcmd5>
+    <version>0.2.3</version>
+    <time>1771343295</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.2.3:
+  * Add Python 3.13 and 3.14 support. Drop support for end-of-
+    life versions 3.8 and 3.9.</comment>
+    <requestid>1333413</requestid>
+  </revision>
 </revisionlist>
