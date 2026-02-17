@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb 16 20:07:52 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.10.3: 
+ * Enhancements
+  * Don't open file locks for writing 
+  * Make Windows trampoline error messages consistent with uv proper 
+  * Log which preview features are enabled 
+ * Preview features
+  * Add support for ruff version constraints and exclude-newer in uv format 
+  * Fix script path handling when target-workspace-discovery is enabled 
+  * Use version constraints to select the default ruff version used by uv format 
+ * Bug fixes
+  * Avoid matching managed Python versions by prefixes, e.g. don't match CPython 3.10 when cpython-3.1 is specified 
+  * Fix handling of --allow-existing with minor version links on Windows 
+  * Fix panic when encountering unmanaged workspace members 
+  * Improve accuracy of request timing 
+  * Reject u64::MAX in version segments to prevent overflow 
+
+-------------------------------------------------------------------
 Wed Feb 11 11:12:57 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.10.2
