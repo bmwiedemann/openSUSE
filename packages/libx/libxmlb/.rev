@@ -225,4 +225,12 @@ Needed for future versions of fwupd</comment>
     <comment></comment>
     <requestid>1305531</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>cfab3bb59f772019d729f289fa1e24ab</srcmd5>
+    <version>0.3.25</version>
+    <time>1771342568</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1333271</requestid>
+  </revision>
 </revisionlist>
