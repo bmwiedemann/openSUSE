@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 15 16:42:37 UTC 2026 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add 0001-fix-freezes-on-laptops.patch (boo#1257873)
+  * Reverts 642ddd5 and 316fcb9
+
+-------------------------------------------------------------------
 Fri Feb  6 23:49:19 UTC 2026 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 2.2.5
