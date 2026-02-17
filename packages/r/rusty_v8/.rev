@@ -106,4 +106,23 @@
   located at `tools/rust-toolchain.py`</comment>
     <requestid>1333139</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>5155231457d95be76b80db5ae50ace71</srcmd5>
+    <version>145.0.0</version>
+    <time>1771347548</time>
+    <user>anag_factory</user>
+    <comment>- Update _constraints. Set physical memory to 18GB
+- Remove unknown GN arg system_zlib
+- Cleanup specfile
+- Copy _constraints from chromium
+- Try with mold if tumbleweed
+- Test with thin LTO and limit our debug info because it still OOMs
+- update GN_ARGS
+- Update _constraints. Set physical memory to 16GB
+- It seems binutils is required if we want to use the host toolchain
+- Remove rust-src as build requirement
+- Remove gcc switch. Set clang minver to 19. Ensure we use the LLVM toolchain
+  and not GCC for the C compiler. Only pp64 requires gcc-c++</comment>
+    <requestid>1333562</requestid>
+  </revision>
 </revisionlist>

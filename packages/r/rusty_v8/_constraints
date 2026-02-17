@@ -1,20 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <constraints>
   <hardware>
+    <disk>
+      <size unit="G">30</size>
+    </disk>
     <physicalmemory>
-      <size unit="G">8</size>
+      <size unit="G">18</size>
     </physicalmemory>
   </hardware>
-  <!-- Use a fast aarch64 host to avoid log idle timeout -->
   <overwrite>
     <conditions>
       <arch>aarch64</arch>
     </conditions>
     <hardware>
       <cpu>
-        <flag>asimdrdm</flag>
+      <flag>asimdrdm</flag>
       </cpu>
-      <jobs>5</jobs>
-   </hardware>
+      <memory>
+        <size unit="G">11</size>
+      </memory>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>ppc64le</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">50</size>
+      </disk>
+    </hardware>
   </overwrite>
 </constraints>

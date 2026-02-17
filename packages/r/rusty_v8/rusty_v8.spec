@@ -16,7 +16,21 @@
 #
 
 
+%global _min_clang_version 19
 %global __requires_exclude_from ^%{_libdir}/crates/rusty_v8/.*$
+
+%if 0%{?suse_version} > 1600
+%bcond_without mold
+%else
+%bcond_with    mold
+%endif
+
+%if %{with mold}
+%global build_rustflags "-C" "linker=clang++" "-C" "link-arg='-fuse-ld=/usr/bin/mold -Wl,-z,relro,-z,now,-zstack-size=8388608'" "-C" "debuginfo=2" "-C" "incremental=false" "-C" "strip=none" "-A" "warnings"
+%else
+%global build_rustflags "-C" "linker=clang++" "-C" "link-arg='-fuse-ld=/usr/bin/ld.lld -Wl,-z,relro,-z,now,-zstack-size=8388608'" "-C" "debuginfo=2" "-C" "incremental=false" "-C" "strip=none" "-A" "warnings"
+%endif
+
 
 Name:           rusty_v8
 Version:        145.0.0
@@ -35,19 +49,23 @@ Patch1:         compiler-rt-adjust-paths.patch
 Patch2:         disable-rust-toolchain-download.patch
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
-BuildRequires:  clang21
-BuildRequires:  clang21-devel
+BuildRequires:  clang >= %{_min_clang_version}
+BuildRequires:  clang-devel >= %{_min_clang_version}
+BuildRequires:  llvm >= %{_min_clang_version}
+BuildRequires:  llvm-devel >= %{_min_clang_version}
+BuildRequires:  lld >= %{_min_clang_version}
+BuildRequires:  lld >= %{_min_clang_version}
+%if 0%{?suse_version} > 1600
+BuildRequires:  mold
+%endif
+BuildRequires:  binutils
 BuildRequires:  fdupes
 BuildRequires:  gn
-BuildRequires:  lld21
-BuildRequires:  rust-bindgen
-BuildRequires:  llvm21
-BuildRequires:  llvm21-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
+BuildRequires:  rust-bindgen
 BuildRequires:  zstd
-BuildRequires:  rust-src
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -55,7 +73,7 @@ BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(icu-i18n)
 # Rusty V8 does not guarantee builds for 32 bit and ppc
-ExclusiveArch:  %{rust_tier1_arches}
+ExclusiveArch:  x86_64 x86_64_v3
 %ifarch ppc64 # wants g++ for some reason
 BuildRequires:  gcc-c++
 %endif
@@ -77,6 +95,9 @@ mkdir -p third_party/rust-toolchain
 tar xf %{SOURCE2} -C third_party/rust-toolchain
 
 %build
+%ifarch aarch64
+export RUSTC_BOOTSTRAP=1
+%endif
 # Ensure that the clang version matches. This command came from Archlinux. Thanks.
 export CLANG_VERSION=$(clang --version | grep -m1 version | sed 's/.* \([0-9]\+\).*/\1/')
 export LIBCLANG_PATH=%{_libdir}
@@ -84,17 +105,32 @@ export V8_FROM_SOURCE=1
 export CLANG_BASE_PATH=%{_prefix}
 export CC=clang
 export CXX=clang++
+export AR=ar NM=nm
+export CFLAGS="%{optflags} -Wno-unknown-warning-option"
+export CXXFLAGS="%{optflags} -Wno-unknown-warning-option"
 # https://www.chromium.org/developers/gn-build-configuration
 export RUSTC_SYSROOT=$(rustc --print sysroot)
 export RUSTC_VERSION=$(rustc -V | cut -d' ' -f2)
 export GN="/usr/bin/gn"
 export NINJA="/usr/bin/ninja"
 export RUSTC="/usr/bin/rustc"
-export GN_ARGS="clang_version=${CLANG_VERSION} use_lld=true v8_symbol_level=0"
-# export EXTRA_GN_ARGS="rust_sysroot_absolute=${RUSTC_SYSROOT} rustc_version=${RUSTC_VERSION}"
-export CFLAGS="%{optflags} -Wno-unknown-warning-option"
-export CXXFLAGS="%{optflags} -Wno-unknown-warning-option"
-export RUST_BACKTRACE=full
+export GN_ARGS="
+	clang_version=${CLANG_VERSION} 
+	v8_symbol_level=0 
+	custom_toolchain=\"//build/toolchain/linux/unbundle:default\" 
+	host_toolchain=\"//build/toolchain/linux/unbundle:default\"
+	fatal_linker_warnings=false
+	is_debug=false
+	use_system_libffi=true
+	use_custom_libcxx=false
+	use_sysroot=false
+	"
+export EXTRA_GN_ARGS="use_custom_libcxx=false"
+
+# Included limited debug info.
+export CARGO_PROFILE_RELEASE_DEBUG=1
+# Use "thin" instead of "fat" to speed up builds (it costs +4% binary size).
+export CARGO_PROFILE_RELEASE_LTO="thin"
 %{cargo_build}
 
 %install

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Feb 17 11:27:38 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update _constraints. Set physical memory to 18GB
+
+-------------------------------------------------------------------
+Tue Feb 17 08:59:43 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Remove unknown GN arg system_zlib
+
+-------------------------------------------------------------------
+Tue Feb 17 07:15:10 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Cleanup specfile
+- Copy _constraints from chromium
+- Try with mold if tumbleweed
+- Test with thin LTO and limit our debug info because it still OOMs
+- update GN_ARGS
+- Update _constraints. Set physical memory to 16GB
+- It seems binutils is required if we want to use the host toolchain
+- Remove rust-src as build requirement
+
+-------------------------------------------------------------------
+Sun Feb 15 15:59:49 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Remove gcc switch. Set clang minver to 19. Ensure we use the LLVM toolchain
+  and not GCC for the C compiler. Only pp64 requires gcc-c++
+
+-------------------------------------------------------------------
 Sun Feb 15 00:38:48 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 145.0.0
