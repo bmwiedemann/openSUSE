@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 16 14:12:40 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.14+git.20260216:
+  * Define  constructors ordering
+
+-------------------------------------------------------------------
 Tue Jan 20 10:59:52 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add libeconf to BuildRequires
