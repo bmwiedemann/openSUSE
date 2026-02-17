@@ -1,0 +1,4 @@
+<package name="nodejs-24-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed BCI Node.js 24 development</title>
+  <description>Node.js 24 development container based on the openSUSE Tumbleweed Base Container Image.</description>
+</package>
