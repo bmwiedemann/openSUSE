@@ -170,4 +170,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: vpu: update video firmware binary for SM8250</comment>
     <requestid>1324921</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9843f5cb36a559836850cf4678581f78</srcmd5>
+    <version>20260207</version>
+    <time>1771342618</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260207 (git commit 9ccffb608733):
+  * qcom: vpu: add video firmware for Glymur</comment>
+    <requestid>1333335</requestid>
+  </revision>
 </revisionlist>
