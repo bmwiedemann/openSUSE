@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Feb 15 08:46:14 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.13.1:
+  * docs: Update DigitalOcean referral information in README
+  * test: update ini tests
+  * chore: fix ansible test order
+  * test: fix transform tests
+  * chore: fix golangci-lint
+  * chore: fix golangci-lint
+  * chore: fix golangci-lint
+  * Fix #1046 - handle xsd as xml (#1067)
+  * Fix handling of xslt path and possible args pollution for xslt calls (#1066)
+  * chore(deps): bump github.com/expr-lang/expr from 1.17.0 to 1.17.7 (#1061)
+  * test: ansible case and example
+  * chore: bump Go version in Docker
+  * chore(deps): bump golang.org/x/crypto from 0.36.0 to 0.45.0 (#1054)
+
+-------------------------------------------------------------------
 Thu Oct 23 02:14:39 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.13.0:
