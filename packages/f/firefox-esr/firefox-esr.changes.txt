@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 16 10:29:19 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox Extended Support Release 140.7.1 ESR
+  * Fixed: Security fix.
+- Mozilla Firefox ESR 140.7.1
+  https://www.mozilla.org/security/advisories/mfsa2026-10
+  MFSA 2026-10 (boo#???????)
+  * CVE-2026-2447 (bmo#2014390)
+    Heap buffer overflow in libvpx
+
+-------------------------------------------------------------------
 Sun Feb  8 12:50:09 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update MozillaFirefox.desktop from a fresh Factory/Tumbleweed
