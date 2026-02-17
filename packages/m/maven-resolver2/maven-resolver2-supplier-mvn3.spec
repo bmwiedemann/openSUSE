@@ -21,7 +21,7 @@
 %define fragment_name supplier-mvn3
 %define _buildshell /bin/bash
 Name:           %{base_name}%{version_suffix}-%{fragment_name}
-Version:        2.0.14
+Version:        2.0.15
 Release:        0
 Summary:        Maven Artifact Resolver Instance Supplier Maven3
 License:        Apache-2.0
@@ -29,7 +29,6 @@ Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/resolver/
 Source0:        https://archive.apache.org/dist/maven/resolver/%{base_name}-%{version}-source-release.zip
 Source1:        %{base_name}%{version_suffix}-build.tar.xz
-Patch0:         0001-Revert-Use-Methanol-for-support-of-response-compress.patch
 BuildRequires:  %{base_name}%{version_suffix}-api
 BuildRequires:  %{base_name}%{version_suffix}-connector-basic
 BuildRequires:  %{base_name}%{version_suffix}-impl
@@ -66,8 +65,6 @@ This package provides %{summary}.
 
 %prep
 %setup -q -n %{base_name}-%{version} -a1
-%patch -P 0 -p1
-%pom_remove_dep -r com.github.mizosoft.methanol:methanol
 
 %pom_remove_dep :jetty-bom
 

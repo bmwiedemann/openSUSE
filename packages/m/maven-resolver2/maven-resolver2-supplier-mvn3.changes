@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Feb 12 17:23:07 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.0.15
+  * New features and improvements
+    + Align configuration properties and more
+    + Better checksum control
+    + JDK Transport: Do no longer leverage temp file for transfering
+      artifact
+    + Log retries in JDK HTTP Client
+    + GH-1773: Treat 410 Gone as 404 Not Found
+    + GH-1737: Revert partially parallel upload change
+    + Update to Jetty 12.1
+    + Add retries for JDK HTTP client
+  * Bug Fixes
+    + Minor bugfix: If proxy host cannot be resolved, fail
+    + GH-1768: Drastically simplify auth caching
+    + Fix preemptive proxy authentication in JDK Client
+  * Documentation updates
+    + Document how resolver works internally
+    + Improve clarity and correctness in RRF documentation
+    + Document known transport issues
+    + Clarify description of JDK Transport modules
+    + Remove generated configuration.md from Git
+    + Fix typos and improve clarity in using resolver docs
+  * Maintenance
+    + Fix javadoc errors on new class
+    + Update parent 46
+  * Dependency updates
+    + Bump sisuVersion from 0.9.0.M4 to 1.0.0
+    + Bump org.redisson:redisson from 3.52.0 to 4.2.0
+    + Deps: Jetty 12.1.6
+    + Bump commons-codec:commons-codec from 1.20.0 to 1.21.0
+    + Bump org.codehaus.plexus:plexus-xml from 4.1.0 to 4.1.1
+    + Bump com.github.siom79.japicmp:japicmp-maven-plugin from
+      0.25.0 to 0.25.4
+    + Bump biz.aQute.bnd:bnd-maven-plugin from 7.1.0 to 7.2.1
+    + Bump org.apache.maven:maven-parent from 46 to 47
+    + Bump roasterVersion from 2.30.3.Final to 2.31.0.Final
+    + Bump org.codehaus.plexus:plexus-testing from 2.0.2 to 2.1.0
+    + Bump com.github.mizosoft.methanol:methanol from 1.8.4 to 1.9.0
+    + Bump testcontainersVersion from 2.0.2 to 2.0.3
+    + Bump org.codehaus.mojo:exec-maven-plugin from 3.6.2 to 3.6.3
+    + Bump org.ow2.asm:asm from 9.9 to 9.9.1
+    + Bump maven3Version from 3.9.11 to 3.9.12
+- Removed patch:
+  * 0001-Revert-Use-Methanol-for-support-of-response-compress.patch
+    + the new dependency has been packaged, since with this version
+      it became unavoidable.
+
+-------------------------------------------------------------------
 Wed Dec 17 07:11:41 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 2.0.14

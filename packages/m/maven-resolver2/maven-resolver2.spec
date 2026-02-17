@@ -20,7 +20,7 @@
 %define version_suffix 2
 %define _buildshell /bin/bash
 Name:           %{base_name}%{version_suffix}
-Version:        2.0.14
+Version:        2.0.15
 Release:        0
 Summary:        Apache Maven Artifact Resolver library
 License:        Apache-2.0
@@ -28,7 +28,6 @@ Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/resolver/
 Source0:        https://archive.apache.org/dist/maven/resolver/%{base_name}-%{version}-source-release.zip
 Source1:        %{name}-build.tar.xz
-Patch0:         0001-Revert-Use-Methanol-for-support-of-response-compress.patch
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  bouncycastle
@@ -39,7 +38,7 @@ BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
 BuildRequires:  java-devel >= 17
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  maven-wagon-provider-api
+BuildRequires:  maven-wagon-provider-api methanol
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-xml
@@ -186,8 +185,6 @@ This package provides %{summary}.
 
 %prep
 %setup -q -n %{base_name}-%{version} -a1
-%patch -P 0 -p1
-%pom_remove_dep -r com.github.mizosoft.methanol:methanol
 
 %pom_remove_dep :jetty-bom
 
@@ -224,6 +221,7 @@ build-jar-repository -s lib \
   httpcomponents/httpclient \
   httpcomponents/httpcore \
   maven-wagon/provider-api \
+  methanol \
   objectweb-asm/asm \
   org.eclipse.sisu.inject \
   org.eclipse.sisu.plexus \
