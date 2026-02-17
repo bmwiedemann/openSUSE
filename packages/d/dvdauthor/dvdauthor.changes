@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 17 15:07:54 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Pass -f to autoreconf to work around the build breakage with
+  autoconf-2.73:
+  dvdauthor-bootstrap-workaround-for-autoconf-2.73.patch
+
+-------------------------------------------------------------------
 Fri Oct 17 10:37:18 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Add all patches from upstream git since last release, they're 

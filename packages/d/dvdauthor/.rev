@@ -50,4 +50,12 @@ Fix build failures on FACTORY due to the new gettext:
     <comment></comment>
     <requestid>1312068</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>69d4ef60a9e11c3eb6380471ff128c9a</srcmd5>
+    <version>0.7.2</version>
+    <time>1771350281</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1333603</requestid>
+  </revision>
 </revisionlist>

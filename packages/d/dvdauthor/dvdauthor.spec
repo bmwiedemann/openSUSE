@@ -1,7 +1,7 @@
 #
 # spec file for package dvdauthor
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source0:        https://github.com/ldo/dvdauthor/archive/%{version}.tar.gz#/dvda
 #PATCH-FIX-UPSTREAM dvdauthor-0.7.0_glibc-2.20.patch avvissu@yandex.ru -- Fix build with glibc-2.20
 Patch0:         dvdauthor-0.7.0_glibc-2.20.patch
 Patch1:         dvdauthor-0.7.2-imagemagick7.patch
+
 # Patches from upstream's git:
 Patch3:         0001-change-to-interim-version-number.patch
 Patch4:         0002-fix-to-build-with-GraphicsMagick.patch
@@ -41,6 +42,8 @@ Patch12:        0010-fix-some-build-warnings.patch
 Patch13:        0011-Use-PKG_CHECK_MODULES-to-detect-the-libxml2-library.patch
 Patch14:        0012-Fix-another-build-warning.patch
 Patch15:        gettext-fix.patch
+
+Patch20:        dvdauthor-bootstrap-workaround-for-autoconf-2.73.patch
 
 BuildRequires:  ImageMagick-devel
 BuildRequires:  bison

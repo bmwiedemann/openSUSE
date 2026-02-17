@@ -1,0 +1,13 @@
+---
+ bootstrap |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/bootstrap
++++ b/bootstrap
+@@ -16,5 +16,5 @@
+ #-
+ mkdir autotools m4
+ cp /usr/share/gettext/config.rpath autotools/
+-autoreconf -i -I /usr/share/gettext/m4
++autoreconf -f -i -I /usr/share/gettext/m4
+ 
