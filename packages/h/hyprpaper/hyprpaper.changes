@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 16 22:25:24 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.8.3:
+  * matcher: fix matching in getSetting
+  * matcher: fix empty desc
+  * desc typo and keep state stable
+- Changes from version 0.8.2:
+  * config: bring back desc: for description matching
+  * core: add version argument
+  * fix(config): support * as wildcard monitor for default
+    wallpapers
+
+-------------------------------------------------------------------
 Fri Jan  9 19:59:19 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 0.8.1
