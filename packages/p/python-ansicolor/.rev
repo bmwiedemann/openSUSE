@@ -49,4 +49,15 @@
     <comment></comment>
     <requestid>1277196</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a868dd173b470541a48e7f9c76a759b4</srcmd5>
+    <version>0.3.3</version>
+    <time>1771343232</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.3.3:
+  * Fixed SyntaxWarning for :func:`ansicolor.strip_escapes`.
+
+  * python 3.8+ fixed</comment>
+    <requestid>1333392</requestid>
+  </revision>
 </revisionlist>
