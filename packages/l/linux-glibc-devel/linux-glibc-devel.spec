@@ -1,7 +1,7 @@
 #
 # spec file for package linux-glibc-devel
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           linux-glibc-devel
-Version:        6.18
+Version:        6.19
 Release:        0
 Summary:        Linux headers for userspace development
 License:        GPL-2.0-only

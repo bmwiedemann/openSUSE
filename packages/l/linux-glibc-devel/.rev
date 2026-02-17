@@ -836,4 +836,12 @@
     <comment>- Update to kernel headers 6.18 (forwarded request 1320722 from Andreas_Schwab)</comment>
     <requestid>1320723</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>f5dc55de8d6d629b3d953b05477267cc</srcmd5>
+    <version>6.19</version>
+    <time>1771350259</time>
+    <user>anag_factory</user>
+    <comment>- Update to kernel headers 6.19 (forwarded request 1331979 from Andreas_Schwab)</comment>
+    <requestid>1331980</requestid>
+  </revision>
 </revisionlist>
