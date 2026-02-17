@@ -1,7 +1,7 @@
 #
 # spec file for package python-fritzconnection
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pythons python3
 Name:           python-fritzconnection
-Version:        1.15.0
+Version:        1.15.1
 Release:        0
 Summary:        A Python module to talk to a AVM fritzbox
 License:        MIT

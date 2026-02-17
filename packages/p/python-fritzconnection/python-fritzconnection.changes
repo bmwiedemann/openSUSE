@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 16 17:39:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.15.1:
+  * bugfix: remove syntax-warning from error in redaction regex.
+  * bugfix: corrected typo in documentation (#252)
+  * documentation: reset colors to furo-default for better
+    readability in dark mode
+
+-------------------------------------------------------------------
 Sun Jul 13 13:09:15 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.15.0:

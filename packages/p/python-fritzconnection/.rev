@@ -181,4 +181,16 @@
       deprecated in 1.9.0</comment>
     <requestid>1292503</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8b52fb53089869fe1cb65e4b3a9db703</srcmd5>
+    <version>1.15.1</version>
+    <time>1771348454</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.15.1:
+  * bugfix: remove syntax-warning from error in redaction regex.
+  * bugfix: corrected typo in documentation (#252)
+  * documentation: reset colors to furo-default for better
+    readability in dark mode</comment>
+    <requestid>1333426</requestid>
+  </revision>
 </revisionlist>
