@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 16 17:08:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Bump supported Python up to 3.13 ; Remove support for
+    < 3.10
+
+-------------------------------------------------------------------
 Mon May 26 11:46:33 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
@@ -6,7 +13,7 @@ Mon May 26 11:46:33 UTC 2025 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Wed Oct 12 03:04:03 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 1.1.0 
+- Update to version 1.1.0
   * cb9f9e5 Handle double braces when linting
 
 -------------------------------------------------------------------

@@ -54,4 +54,16 @@
 </comment>
     <requestid>1280150</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0c33369a7983f2338fff5e996ceee9ba</srcmd5>
+    <version>1.2.0</version>
+    <time>1771343288</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.2.0:
+  * Bump supported Python up to 3.13 ; Remove support for
+    &lt; 3.10
+
+- Update to version 1.1.0</comment>
+    <requestid>1333408</requestid>
+  </revision>
 </revisionlist>
