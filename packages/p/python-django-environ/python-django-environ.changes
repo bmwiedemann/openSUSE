@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 16 16:46:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.1:
+  * Fixed PostgreSQL cluster URL parsing with bracketed IPv6
+    hosts in recent Python versions, preventing failures in
+    runtime URL parsing and related regression tests #574.
+  * Fixed debug logging in Env.get_value() to avoid evaluating
+    lazy default objects when DEBUG logging is enabled #571.
+
+-------------------------------------------------------------------
 Mon Feb 24 10:38:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12.0:

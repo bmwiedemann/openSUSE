@@ -83,4 +83,17 @@
   * Removed support of Django 1.x. #538.</comment>
     <requestid>1248083</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>904ad900bd150936955e7d9107f8e664</srcmd5>
+    <version>0.12.1</version>
+    <time>1771343236</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.12.1:
+  * Fixed PostgreSQL cluster URL parsing with bracketed IPv6
+    hosts in recent Python versions, preventing failures in
+    runtime URL parsing and related regression tests #574.
+  * Fixed debug logging in Env.get_value() to avoid evaluating
+    lazy default objects when DEBUG logging is enabled #571.</comment>
+    <requestid>1333394</requestid>
+  </revision>
 </revisionlist>
