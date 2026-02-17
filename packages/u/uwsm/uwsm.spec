@@ -1,7 +1,7 @@
 #
 # spec file for package uwsm
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           uwsm
-Version:        0.26.2
+Version:        0.26.3
 Release:        0
 Summary:        Universal Wayland Session Manager
 License:        MIT
@@ -52,12 +52,12 @@ Enhances:       rofi
 Enhances:       tofi
 Enhances:       wmenu
 Enhances:       wofi
-Provides:       fumon = %{version}
-Provides:       uuctl = %{version}
 Provides:       %{name}-app = %{version}
 Provides:       %{name}-terminal = %{version}
 Provides:       %{name}-terminal-scope = %{version}
 Provides:       %{name}-terminal-service = %{version}
+Provides:       fumon = %{version}
+Provides:       uuctl = %{version}
 BuildArch:      noarch
 
 %description

@@ -32,4 +32,13 @@ Meson clean up and fixes regression on Leap 15.6.</comment>
   * Added Mango Wayland Compositor support</comment>
     <requestid>1331896</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6e7b9520ca093829b9af86324ffc31f3</srcmd5>
+    <version>0.26.3</version>
+    <time>1771343342</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.26.3:
+  * Added support for DESKTOP_ENTRY_* metadata vars in app wrapper</comment>
+    <requestid>1333434</requestid>
+  </revision>
 </revisionlist>
