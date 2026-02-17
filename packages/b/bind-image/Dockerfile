@@ -29,10 +29,11 @@ RUN set -euo pipefail; \
     export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1; \
     zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends bind bind-utils
 
+RUN set -euo pipefail; zypper -n install --no-recommends systemd && \
+    systemd-tmpfiles --create --root /target bind.conf
+
 # patch named.prep to not call logger (provided by systemd)
 # and just log to stdout
-RUN set -euo pipefail; zypper -n install --no-recommends systemd && \
-    systemd-tmpfiles --create --root /target
 RUN set -euo pipefail; \
     mkdir -p /target/usr/local/lib/bind; \
     cp /target//usr/libexec/bind/named.prep /target/usr/local/lib/bind/named.prep; \
@@ -85,8 +86,5 @@ RUN set -euo pipefail; \
     install -d -m 755 -o root -g root /var/lib/named/master; \
     install -d -m 755 -o named -g named /var/lib/named/slave; \
     install -d -m 750 -o named -g named /var/log/named;
-# create files that tmpfiles.d would create for us
-RUN set -euo pipefail; touch /var/lib/named/127.0.0.zone /var/lib/named/localhost.zone /var/lib/named/named.root.key /var/lib/named/root.hint
-
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 HEALTHCHECK --interval=10s --timeout=5s --retries=10 CMD dig +retry=0 +short @127.0.0.1 conncheck.opensuse.org >/dev/null && echo OK
