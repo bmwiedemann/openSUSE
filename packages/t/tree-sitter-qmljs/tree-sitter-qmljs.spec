@@ -41,16 +41,8 @@ BuildRequires:  treesitter_grammar_src(tree-sitter-typescript)
 %install
 %treesitter_install
 
-#neovim stuff
-install -d %{buildroot}%{_libdir}/tree_sitter
-ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
-
 %files
 %license LICENSE
 %treesitter_files
-%{_libdir}/tree_sitter/%{_name}.so
-%if 0%{?suse_version} < 1600
-%dir %{_libdir}/tree_sitter
-%endif
 
 %changelog
