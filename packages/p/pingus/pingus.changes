@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 17 09:07:32 UTC 2026 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Fix format of changes file
+
+-------------------------------------------------------------------
+Sat Dec 13 04:55:46 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- BuildRequire glu to make it build
+
+-------------------------------------------------------------------
 Thu Mar 13 11:19:47 UTC 2025 - pgajdos@suse.com
 
 - added patches
@@ -415,7 +425,6 @@ Fri Jul 16 14:08:46 MEST 1999 - sndirsch@suse.de
 - updated OpenPTC sources to version 1.0.0-2
 
 -------------------------------------------------------------------
-
 Fri Jun 11 13:58:28 MEST 1999 - sndirsch@suse.de
 
 - updated pingus sources to version 0.0.15
@@ -423,13 +432,11 @@ Fri Jun 11 13:58:28 MEST 1999 - sndirsch@suse.de
 - updated hermes sources to version 1.2.5
 
 -------------------------------------------------------------------------------
-
 Tue May 11 15:08:06 MEST 1999 - sndirsch@suse.de
 
 - updated package to release 0.0.14 (now two additional levels)
 
 -------------------------------------------------------------------------------
-
 Mon May 10 13:02:52 MEST 1999 - sndirsch@suse.de
 
 - created SPEC file

@@ -1,7 +1,7 @@
 #
 # spec file for package pingus
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,6 +53,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  scons
 BuildRequires:  pkgconfig(SDL_image)
 BuildRequires:  pkgconfig(SDL_mixer)
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(xi)
 %if 0%{?suse_version}
 BuildRequires:  fdupes

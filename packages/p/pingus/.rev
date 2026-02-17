@@ -236,4 +236,12 @@
     <comment></comment>
     <requestid>1265940</requestid>
   </revision>
+  <revision rev="34" vrev="20">
+    <srcmd5>9373659373b8d38092e4f9fead324827</srcmd5>
+    <version>0.7.6</version>
+    <time>1771343604</time>
+    <user>anag_factory</user>
+    <comment>- Fix format of changes file (forwarded request 1333508 from tdz)</comment>
+    <requestid>1333526</requestid>
+  </revision>
 </revisionlist>
