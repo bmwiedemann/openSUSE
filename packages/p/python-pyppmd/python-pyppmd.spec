@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyppmd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyppmd
-Version:        1.2.0
+Version:        1.3.1
 Release:        0
 Summary:        PPMd compression/decompression library
 License:        LGPL-2.1-or-later
-URL:            https://codeberg.org/miurahr/pyppmd
+URL:            https://github.com/miurahr/pyppmd
 Source:         https://files.pythonhosted.org/packages/source/p/pyppmd/pyppmd-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm >= 6.0.1}
 BuildRequires:  %{python_module wheel}
@@ -35,6 +35,7 @@ BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module py-cpuinfo}
 BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module pytest-benchmark}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-timeout}
 # /SECTION
 %python_subpackages
@@ -65,7 +66,6 @@ hypothesis.settings.register_profile(
 sed -i 's/milliseconds=300/milliseconds=5000/g' tests/test_fuzzer.py
 
 %build
-export CFLAGS="%{optflags}"
 %pyproject_wheel
 
 %install
@@ -73,7 +73,10 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest_arch --hypothesis-profile=obs
+# test_ppmd8 hangs randomly in automated pytest runs.
+# This test is run separately in the build process to ensure it passes.
+%pytest_arch --hypothesis-profile=obs -k "not test_ppmd8"
+%pytest_arch --hypothesis-profile=obs tests/test_ppmd8.py
 
 %files %{python_files}
 %doc Changelog.rst README.rst
