@@ -2634,7 +2634,6 @@ unsorted:
   - coredns-for-k8s1.35-extras 
   - coreos-installer 
   - corepack-default 
-  - corepack22 
   - corepack24 
   - coreutils-doc 
   - coreutils-single 
@@ -19938,9 +19937,6 @@ unsorted:
   - nodejs-electron-doc 
   - nodejs-packaging 
   - nodejs-underscore 
-  - nodejs22 
-  - nodejs22-devel 
-  - nodejs22-docs 
   - nodejs24 
   - nodejs24-devel 
   - nodejs24-docs 
@@ -19983,7 +19979,6 @@ unsorted:
   - novprog-lang 
   - npkg 
   - npm-default 
-  - npm22 
   - npm24 
   - npth-devel 
   - nqp 
@@ -23055,6 +23050,8 @@ unsorted:
   - plasma6-activities-tools 
   - plasma6-firewall 
   - plasma6-firewall-lang 
+  - plasma6-keyboard 
+  - plasma6-keyboard-kcm 
   - plasma6-mobile 
   - plasma6-mobile-lang 
   - plasma6-nano 
@@ -24384,6 +24381,7 @@ unsorted:
   - python311-ZConfig-doc 
   - python311-ZEO 
   - python311-ZODB 
+  - python311-a2wsgi 
   - python311-abimap 
   - python311-abimap-doc 
   - python311-abseil 
@@ -24667,6 +24665,7 @@ unsorted:
   - python311-azure-maps-geolocation 
   - python311-azure-maps-render 
   - python311-azure-maps-route 
+  - python311-azure-maps-search 
   - python311-azure-maps-timezone 
   - python311-azure-media-nspkg 
   - python311-azure-media-videoanalyzer-edge 
@@ -24676,6 +24675,7 @@ unsorted:
   - python311-azure-mgmt 
   - python311-azure-mgmt-advisor 
   - python311-azure-mgmt-agfood 
+  - python311-azure-mgmt-agricultureplatform 
   - python311-azure-mgmt-agrifood 
   - python311-azure-mgmt-alertsmanagement 
   - python311-azure-mgmt-apicenter 
@@ -24761,6 +24761,7 @@ unsorted:
   - python311-azure-mgmt-dnsresolver 
   - python311-azure-mgmt-durabletask 
   - python311-azure-mgmt-dynatrace 
+  - python311-azure-mgmt-edgeactions 
   - python311-azure-mgmt-edgegateway 
   - python311-azure-mgmt-edgeorder 
   - python311-azure-mgmt-edgezones 
@@ -24977,6 +24978,7 @@ unsorted:
   - python311-backports.tarfile 
   - python311-backports.zstd 
   - python311-backrefs 
+  - python311-baize 
   - python311-baron 
   - python311-base-32bit 
   - python311-base58 
@@ -25257,6 +25259,7 @@ unsorted:
   - python311-dbus_fast 
   - python311-dbus_next 
   - python311-ddg3 
+  - python311-ddgs 
   - python311-ddsketch 
   - python311-ddt 
   - python311-deap 
@@ -25445,7 +25448,6 @@ unsorted:
   - python311-dsinternals 
   - python311-dtaidistance 
   - python311-dtfabric 
-  - python311-duckduckgo-search 
   - python311-duckduckgo2 
   - python311-duet 
   - python311-dukpy 
@@ -28204,6 +28206,7 @@ unsorted:
   - python312-ZConfig-doc 
   - python312-ZEO 
   - python312-ZODB 
+  - python312-a2wsgi 
   - python312-abimap 
   - python312-abimap-doc 
   - python312-abseil 
@@ -28492,6 +28495,7 @@ unsorted:
   - python312-azure-maps-geolocation 
   - python312-azure-maps-render 
   - python312-azure-maps-route 
+  - python312-azure-maps-search 
   - python312-azure-maps-timezone 
   - python312-azure-media-nspkg 
   - python312-azure-media-videoanalyzer-edge 
@@ -28501,6 +28505,7 @@ unsorted:
   - python312-azure-mgmt 
   - python312-azure-mgmt-advisor 
   - python312-azure-mgmt-agfood 
+  - python312-azure-mgmt-agricultureplatform 
   - python312-azure-mgmt-agrifood 
   - python312-azure-mgmt-alertsmanagement 
   - python312-azure-mgmt-apicenter 
@@ -28586,6 +28591,7 @@ unsorted:
   - python312-azure-mgmt-dnsresolver 
   - python312-azure-mgmt-durabletask 
   - python312-azure-mgmt-dynatrace 
+  - python312-azure-mgmt-edgeactions 
   - python312-azure-mgmt-edgegateway 
   - python312-azure-mgmt-edgeorder 
   - python312-azure-mgmt-edgezones 
@@ -28802,6 +28808,7 @@ unsorted:
   - python312-backports.tarfile 
   - python312-backports.zstd 
   - python312-backrefs 
+  - python312-baize 
   - python312-baron 
   - python312-base 
   - python312-base-32bit 
@@ -29093,6 +29100,7 @@ unsorted:
   - python312-dbus_fast 
   - python312-dbus_next 
   - python312-ddg3 
+  - python312-ddgs 
   - python312-ddsketch 
   - python312-ddt 
   - python312-deap 
@@ -29283,7 +29291,6 @@ unsorted:
   - python312-dsinternals 
   - python312-dtaidistance 
   - python312-dtfabric 
-  - python312-duckduckgo-search 
   - python312-duckduckgo2 
   - python312-duet 
   - python312-dukpy 
@@ -32097,6 +32104,7 @@ unsorted:
   - python313-ZConfig-doc 
   - python313-ZEO 
   - python313-ZODB 
+  - python313-a2wsgi 
   - python313-abimap 
   - python313-abimap-doc 
   - python313-abseil 
@@ -32381,6 +32389,7 @@ unsorted:
   - python313-azure-maps-geolocation 
   - python313-azure-maps-render 
   - python313-azure-maps-route 
+  - python313-azure-maps-search 
   - python313-azure-maps-timezone 
   - python313-azure-media-nspkg 
   - python313-azure-media-videoanalyzer-edge 
@@ -32390,6 +32399,7 @@ unsorted:
   - python313-azure-mgmt 
   - python313-azure-mgmt-advisor 
   - python313-azure-mgmt-agfood 
+  - python313-azure-mgmt-agricultureplatform 
   - python313-azure-mgmt-agrifood 
   - python313-azure-mgmt-alertsmanagement 
   - python313-azure-mgmt-apicenter 
@@ -32475,6 +32485,7 @@ unsorted:
   - python313-azure-mgmt-dnsresolver 
   - python313-azure-mgmt-durabletask 
   - python313-azure-mgmt-dynatrace 
+  - python313-azure-mgmt-edgeactions 
   - python313-azure-mgmt-edgegateway 
   - python313-azure-mgmt-edgeorder 
   - python313-azure-mgmt-edgezones 
@@ -32691,6 +32702,7 @@ unsorted:
   - python313-backports.tarfile 
   - python313-backports.zstd 
   - python313-backrefs 
+  - python313-baize 
   - python313-barbicanclient 
   - python313-baron 
   - python313-base-32bit 
@@ -32969,6 +32981,7 @@ unsorted:
   - python313-dbus_fast 
   - python313-dbus_next 
   - python313-ddg3 
+  - python313-ddgs 
   - python313-ddsketch 
   - python313-ddt 
   - python313-deap 
@@ -33158,7 +33171,6 @@ unsorted:
   - python313-dsinternals 
   - python313-dtaidistance 
   - python313-dtfabric 
-  - python313-duckduckgo-search 
   - python313-duckduckgo2 
   - python313-duet 
   - python313-dukpy 
@@ -37245,6 +37257,7 @@ unsorted:
   - rubygem-passenger-apache2 
   - rubygem-passenger-nginx 
   - rumdl 
+  - run0-policy-wheel-auth-self 
   - runawk 
   - runawk-examples 
   - rungetty 
