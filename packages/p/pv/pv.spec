@@ -24,18 +24,12 @@ Summary:        Tool for monitor the progress of data through pipes
 License:        GPL-3.0-or-later
 Group:          System/Base
 URL:            http://ivarch.com/programs/pv.shtml
-
-#Git-Clone:     https://github.com/a-j-wood/pv
+#Git-Clone:     https://codeberg.org/ivarch/pv
 Source:         http://ivarch.com/programs/sources/%name-%version.tar.gz
 Source2:        http://ivarch.com/programs/sources/%name-%version.tar.gz.txt#/%name-%version.tar.gz.asc
 Source3:        %name.keyring
-BuildRequires:  gcc
-BuildRequires:  gettext
-BuildRequires:  gettext-devel
-BuildRequires:  glibc-devel
-BuildRequires:  intltool
-BuildRequires:  make
-BuildRequires:  sysvinit-tools
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools
 
 %description
 PV ("Pipe Viewer") is a tool for monitoring the progress of data through a
@@ -57,9 +51,7 @@ will be until completion.
 rm %buildroot/%_docdir/pv/INSTALL
 
 %check
-%ifnarch s390x
 %make_build test
-%endif
 
 %files -f %name.lang
 %license docs/COPYING

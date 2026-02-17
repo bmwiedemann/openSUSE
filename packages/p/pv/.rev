@@ -244,4 +244,12 @@
     <comment>- Update to version 1.10.3</comment>
     <requestid>1324705</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>e928d44458448ff014fb103261c33d72</srcmd5>
+    <version>1.10.3</version>
+    <time>1771342559</time>
+    <user>anag_factory</user>
+    <comment>- Enable testsuite for s390x</comment>
+    <requestid>1333188</requestid>
+  </revision>
 </revisionlist>
