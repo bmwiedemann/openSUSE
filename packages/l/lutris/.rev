@@ -574,4 +574,41 @@
 - Drop noarch</comment>
     <requestid>1332085</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f63c53de1b3968deee275213c683023a</srcmd5>
+    <version>0.5.20</version>
+    <time>1771343412</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.5.20:
+  * Proton-GE launched via umu is now the default. Umu takes care of keeping Proton-GE up to date.
+  * Fix Proton integration bugs so Proton-fixes are applied
+  * Do not offer VKD3D, D3D Extras or DXVK-NVAPI on Proton versions; Proton will handle these.
+  * The &quot;Enable Esync&quot; and &quot;Enable Fsync&quot; and &quot;DXVK&quot; settings are now passed on to Proton
+  * DXVK's integrated D8VK will be enabled in Proton
+  * Wine runner adds an option to select Wine's &quot;Wayland driver&quot;
+  * Add little buttons to select covert-art, banner and icons via URL in game configuration
+  * Cover-art or banners from sources will be used when Lutris media is not available
+  * Emulator BIOS file location (used by libretro) may be set in Preferences
+  * Fix for updated Flathub API
+  * Change Itch.io over to the use of API keys instead of usernames and passwords
+  * Update EA App source to their new API
+  * Simplify Itcho.io collections- if you have no collection named &quot;Lutris&quot;, we will show all games
+  * MAME Machine setting uses a searchable entry for its enormous list
+  * Obtain the release year from GOG and Itch.io
+  * Add &quot;Azahar&quot; runner
+  * Add &quot;ZOOM Platform&quot; source
+  * Add &quot;Steam Family&quot; source to support Steam Families
+  * Updated versions of runners for TIC-80, EasyRPG, mGBA, Rosalie's Mupen GUI, Ruffle, 86Box
+  * Ryujinx runner can now specific 'application ID' for your multi-game XCIs.
+  * Support for importing Commodore 64 ROMs
+  * Support ICDs for Intel Xe GPUs
+  * Add option for 'ptyxis' terminal
+  * Redundant &quot;Add Games&quot; menu item removed; use the plus button in the corner
+  * Option to hide a source's games from also appearing in the Games view
+  * &quot;Manual Script&quot; for the context menu will now see the game's environment variables
+  * Add &quot;Create Steam Big Picture shortcut&quot; to the context menu
+  * Add a file association to run .lutris installer files via double-click
+  * Fix compatibility with Python 3.14</comment>
+    <requestid>1333444</requestid>
+  </revision>
 </revisionlist>

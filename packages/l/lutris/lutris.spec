@@ -21,7 +21,7 @@
 %define         appid net.lutris.Lutris
 %{?sle15_python_module_pythons}
 Name:           lutris
-Version:        0.5.19
+Version:        0.5.20
 Release:        0
 Summary:        Manager for game installation and execution
 License:        GPL-3.0-or-later
@@ -161,11 +161,16 @@ install -Dm0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/apparmor.d/usr.bin.%{name}
 %{_mandir}/man?/%{name}.?%{?ext_man}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{appid}.desktop
+%{_datadir}/applications/%{appid}1.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{appid}.svg
 %{_datadir}/icons/hicolor/??x??/apps/%{appid}.png
 %{_datadir}/icons/hicolor/???x???/apps/%{appid}.png
+%{_datadir}/icons/hicolor/scalable/mimetypes/application-x-lutris.svg
+%{_datadir}/icons/hicolor/??x??/mimetypes/application-x-lutris.png
+%{_datadir}/icons/hicolor/???x???/mimetypes/application-x-lutris.png
 %{python_sitelib}/%{name}
 %{_datadir}/metainfo/%{appid}.metainfo.xml
+%{_datadir}/mime/packages/application-x-lutris.xml
 
 %if 0%{?suse_version} >= 1600
 %files lang -f %{name}.lang
