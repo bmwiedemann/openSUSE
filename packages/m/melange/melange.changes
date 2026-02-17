@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb 16 05:52:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.42.0:
+  * feat: optimize QEMU microVM startup time and resource usage
+    (#2345)
+  * build(deps): bump golang.org/x/term from 0.39.0 to 0.40.0
+    (#2343)
+  * build(deps): bump golang.org/x/crypto from 0.47.0 to 0.48.0
+    (#2344)
+  * build(deps): bump step-security/harden-runner in the actions
+    group (#2339)
+  * build(deps): bump golang.org/x/sys from 0.40.0 to 0.41.0
+    (#2342)
+  * build(deps): bump golang.org/x/text from 0.33.0 to 0.34.0
+    (#2341)
+  * build(deps): bump the gomod group with 3 updates (#2340)
+
+-------------------------------------------------------------------
 Mon Feb 09 06:18:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.41.1:
