@@ -183,4 +183,13 @@
     <comment>Update to 0.9.6</comment>
     <requestid>1333229</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>3624da8ef8b98a023152982679b3e94c</srcmd5>
+    <version>0.9.6</version>
+    <time>1771343540</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream change:
+  * 0001-Fix-ABI-breakage.patch</comment>
+    <requestid>1333509</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,42 @@
+From edb38103ec35d603d96e814081676f426bdfcd84 Mon Sep 17 00:00:00 2001
+From: Alexey Rusakov <Kitsune-Ral@users.sf.net>
+Date: Mon, 16 Feb 2026 20:53:25 +0100
+Subject: [PATCH 1/4] Fix ABI breakage
+
+...caused by extra pieces accidentally slipping in a backport.
+---
+ Quotient/events/roomevent.cpp | 1 -
+ Quotient/events/roomevent.h   | 4 ----
+ 2 files changed, 5 deletions(-)
+
+diff --git a/Quotient/events/roomevent.cpp b/Quotient/events/roomevent.cpp
+index 1ebb5645..b907074e 100644
+--- a/Quotient/events/roomevent.cpp
++++ b/Quotient/events/roomevent.cpp
+@@ -133,7 +133,6 @@ void RoomEvent::addId(const QString& newId)
+     Q_ASSERT(id().isEmpty());
+     Q_ASSERT(!newId.isEmpty());
+     editJson().insert(EventIdKey, newId);
+-    _id = newId;
+     qCDebug(EVENTS) << "Event txnId -> id:" << transactionId() << "->" << id();
+     Q_ASSERT(id() == newId);
+ }
+diff --git a/Quotient/events/roomevent.h b/Quotient/events/roomevent.h
+index f78e9a57..58fdc4c0 100644
+--- a/Quotient/events/roomevent.h
++++ b/Quotient/events/roomevent.h
+@@ -98,11 +98,7 @@ protected:
+     explicit RoomEvent(const QJsonObject& json);
+     void dumpTo(QDebug dbg) const override;
+ 
+-    virtual void afterRelationChange() {}
+-
+ private:
+-    QString _id;
+-
+     // RedactionEvent is an incomplete type here so we cannot inline
+     // constructors using it and also destructors (with 'using', in particular).
+     event_ptr_tt<RedactionEvent> _redactedBecause;
+-- 
+2.53.0
+

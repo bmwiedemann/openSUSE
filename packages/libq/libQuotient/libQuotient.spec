@@ -35,6 +35,8 @@ Summary:        Library for Qt Matrix Clients
 License:        LGPL-2.1-only
 URL:            https://github.com/quotient-im/libQuotient
 Source0:        https://github.com/quotient-im/%{rname}/archive/%{version}/%{rname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-ABI-breakage.patch
 BuildRequires:  cmake >= 3.26
 BuildRequires:  pkgconfig
 %if 0%{?qt6}
