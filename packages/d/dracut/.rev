@@ -2587,4 +2587,15 @@ and stuff that has no relevance to the end user (i.e CI related commits) (forwar
   * feat(dracut-install): do not return non-zero if a dependency cannot be resolved (bsc#1258038)</comment>
     <requestid>1332509</requestid>
   </revision>
+  <revision rev="254" vrev="1">
+    <srcmd5>f0c0e077e304a3774fbb2906a3e924f9</srcmd5>
+    <version>109+suse.39.g53459763</version>
+    <time>1771342687</time>
+    <user>anag_factory</user>
+    <comment>
+- Update to version 109+suse.39.g53459763:
+  * feat(virtfs, virtiofs): auto-add dracut module if qemu included (bsc#1258314)
+  * fix(systemd-tmpfiles): do not include tmpfiles configured in /etc (bsc#1258186)</comment>
+    <requestid>1333518</requestid>
+  </revision>
 </revisionlist>

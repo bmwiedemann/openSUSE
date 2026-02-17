@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 17 10:10:40 UTC 2026 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Update to version 109+suse.39.g53459763:
+  * feat(virtfs, virtiofs): auto-add dracut module if qemu included (bsc#1258314)
+  * fix(systemd-tmpfiles): do not include tmpfiles configured in /etc (bsc#1258186)
+
+-------------------------------------------------------------------
 Wed Feb 11 15:24:02 UTC 2026 - Antonio Feijoo <antonio.feijoo@suse.com>
 
 - Update to version 109+suse.37.geed860c2:
