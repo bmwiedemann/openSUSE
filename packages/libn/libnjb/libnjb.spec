@@ -1,7 +1,7 @@
 #
 # spec file for package libnjb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Development/Libraries/Other
 URL:            http://libnjb.sourceforge.net
 Source:         %{name}-%{version}.tar.gz
 Patch0:         libnjb-no_m4_dir.diff
+Patch1:         libnjb-function-def-params.diff
 BuildRequires:  libtool
 BuildRequires:  libusb-devel
 BuildRequires:  zlib-devel
@@ -54,6 +55,7 @@ Nomad Jukebox API
 %autosetup -p0
 
 %build
+export CFLAGS="$CFLAGS -std=gnu89"
 autoreconf -fiv
 %configure --program-prefix=njb- --disable-static --with-pic
 %make_build

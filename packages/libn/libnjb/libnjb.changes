@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 16 23:36:46 UTC 2026 - Yasuhiko Kamata <belphegor@belbel.or.jp>
+
+- Added patch libnjb-function-def-params.diff to fix a build error
+  in openSUSE:Factory:Rebuild.
+
+-------------------------------------------------------------------
 Thu Feb 29 18:13:57 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
@@ -26,5 +32,3 @@ Fri Aug 26 03:42:34 UTC 2011 - anixx@opensuse.org
 
 - update version to 2.2.7
 - remove dependency on HAL
-
--------------------------------------------------------------------

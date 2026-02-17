@@ -1,0 +1,16 @@
+diff -Naru libnjb-2.2.7_orig/src/protocol3.c libnjb-2.2.7/src/protocol3.c
+--- src/protocol3.c.orig	2011-06-25 20:59:03.000000000 +0900
++++ src/protocol3.c	2026-02-17 07:54:23.068444121 +0900
+@@ -1812,9 +1812,9 @@
+      njb_t *njb;
+      unsigned char *command_block;
+      int command_block_size;
+-     int (*create_metadata_post) ();
+-     int (*add_to_metadata_post) ();
+-     int (*terminate_metadata_post) ();
++     int (*create_metadata_post) (postid, target);
++     int (*add_to_metadata_post) (frameid, framelen, data, target);
++     int (*terminate_metadata_post) (njb, target);
+ {
+   __dsub= "get_metadata_chunks";
+ 
