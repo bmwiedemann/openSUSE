@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Fri Feb 13 17:47:46 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to 0.15.0:
+  * fix: close sni menu on item destruction
+  * Fix example in waybar-niri-language.5.scd
+  * fix: handle null GDK window reference in surface initialization
+  * fix: changed *waybar-styles(5)" to waybar-styles(5) in the last line
+  * fix(river): hide vacant tags on initial startup
+  * docs(temperature): add missed warning style
+  * ext/workspaces: fix appearing of hidden workspaces
+  * Cava backend. Comminication using signals
+  * fix(temperature): critical style not being removed
+  * feat(makefile): support more detailed test output
+  * Clock Module: Independent clock tooltip formatting and fix for blank line at the end of the timezone list
+  * flake.lock: Update
+  * docs: fix waybar menu example and formatting
+  * clock: fix use after scope
+  * Prevent child zombie process from tearing down Hyprland IPC
+  * Support millisecond precision for script intervals
+  * bugfix: expanding wildcards in config includes
+  * Moved workspace id failing to parse from an error to part of the trace
+  * fix(flake): fix formatter configuration
+  * Fix module and tray item staying in hover state after opening menu
+  * fix: display icons for userwide installed applications
+  * [hyprland/workspaces] Taskbar improvements
+  * feat(niri/language): add CSS classes
+  * Fix: style: show active workspace on hyprland
+  * Fix: styling: set gamemode icon size and spacing to 0 if use-icon is false
+  * feat: Add ISO 8601 calendar to clock module
+  * Fixes #4521 and #4522
+  * fix: Correct the error in converting network speed units
+  * fix: right and middle button not work in ext/workspace module
+  * Fix Hyprland IPC thread sanitizer warning, other IPC & general fixes
+  * fix: resolve memory leak
+  * fix(pulseaudio-slider): Use background in CSS example
+  * fix: FMT version update from 11.0.2 to 12.0.0
+  * backlight: gracefully handle a null epoll device
+  * cava bump & fixing memory leaks
+  * fix(nix): bump cava and fix nix build
+  * fix(subprojects): fmt hash mismatch
+  * fix(clock): fix freebsd compatibility
+  * flake.lock: Update
+  * fix(wireplumber): reorder initializer list to match header and fix -Wreorder
+  * fix(docs): pulseaudio man page example
+  * Cava GLSL
+  * cava nonsafe threads
+  * fix: prevent duplicate layer surfaces on monitor hotplug
+  * fix: crash on group scrolling
+  * Improve multiple battery support
+  * modules: memory: fix fully utilized swap percentage calculation
+  * Fix example error about update moudle
+  * feat(dwl/tags): add empty tag option
+  * Try: Make battery module update on plugging/unplugging again
+  * cava man
+  * nix: bump cava again
+  * fix-cava-config
+  * fix(sway/workspaces): window-rewrite: do not check for window-format
+  * flake.lock: Update
+  * chore: update .gitingore
+  * docs(arch): install build deps as deps to keep system clean
+  * docs: add missing reverse-mouse-scrolling to pulseaudio module man page
+  * hyprland/workspaces: don't show persistent special workspaces if show-special is disabled
+  * fix(json): use local CharReaderBuilder for thread safety
+  * flake.lock: Update
+  * feat: Disambiguate wayland layer namespace
+  * Fix return type of input to gtk_layer_set_namespace
+  * docs: add fraudulent site notice on proj README.md
+  * fix-cava-audio-height-init
+  * Fix Pango NULL layout crash in cava module
+  * Fix unhandled JSON exception in signal handler
+  * Fix heap corruption from GTK operations on IPC thread in Hyprland modules
+  * Fix Pango markup rendering in bluetooth module tooltips
+  * Fix custom module tooltip not updating on exec output change
+  * Fix menu freezing when launching applications
+  * fix: backlight/slider fix rounding issue on scroll up
+
+-------------------------------------------------------------------
 Mon Aug 11 06:20:27 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.14.0:
