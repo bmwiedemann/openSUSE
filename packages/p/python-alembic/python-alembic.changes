@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Feb 16 16:52:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to el_1_18_4:
+  * **[bug] [operations]** Reverted the behavior of
+    `Operations.add_column()` that would
+    automatically render the "PRIMARY KEY" keyword inline when a
+    `Column` with `primary_key=True` is added.
+  * **[bug] [autogenerate]** Fixed regression in version 1.18.0
+    due to #1771 where autogenerate would raise
+    `NoReferencedTableError` when a foreign key constraint
+    referenced a table that was not part of the initial table
+    load, including tables filtered out by the
+    `EnvironmentContext.configure.include_name` callable or
+    tables in remote schemas that were not included in the initial
+    reflection run.
+  * Changed the minimum requirements to require version 1.4.23
+    rather than 1.4.0.
+  * **[usecase] [operations]** The `primary_key` parameter on
+    `Column` is now honored when
+    `Operations.add_column()` is used, and will emit the "PRIMARY
+    KEY" keyword inline within the ADD COLUMN directive.  This is
+    strictly a syntax enhancement; no attempt is made to reconcile
+    the column's primary key status with any existing primary key
+    constraint or particular backend limitations on adding columns
+    to the primary key.
+  * **[bug] [autogenerate]** Fixed issue in new plugin system
+    where the configured logger was not correctly using the
+    `__name__` token to identify the logger.
+  * **[feature] [operations]** When alembic is run in "verbose"
+    mode, alembic now logs a message to indicate from which file
+    is used to load the configuration.
+  * **[feature] [autogenerate]** Autogenerate reflection sweeps
+    now use the "bulk" inspector methods introduced in SQLAlchemy
+    2.0, which for selected dialects including PostgreSQL and
+    Oracle use batched queries to reflect whole collections of
+    tables using O(1) queries rather than O(N).
+
+-------------------------------------------------------------------
 Wed Dec  3 22:05:51 UTC 2025 - Guang Yee <gyee@suse.com>
 
 - Update to 1.17.2

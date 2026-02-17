@@ -1843,4 +1843,41 @@
       also before the column's type is changed.</comment>
     <requestid>1321929</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>21278af4b123d10ecfdc488f3fe2d165</srcmd5>
+    <version>1.18.4</version>
+    <time>1771342658</time>
+    <user>anag_factory</user>
+    <comment>- update to el_1_18_4:
+  * **[bug] [operations]** Reverted the behavior of
+    `Operations.add_column()` that would
+    automatically render the &quot;PRIMARY KEY&quot; keyword inline when a
+    `Column` with `primary_key=True` is added.
+  * **[bug] [autogenerate]** Fixed regression in version 1.18.0
+    due to #1771 where autogenerate would raise
+    `NoReferencedTableError` when a foreign key constraint
+    referenced a table that was not part of the initial table
+    load, including tables filtered out by the
+    `EnvironmentContext.configure.include_name` callable or
+    tables in remote schemas that were not included in the initial
+    reflection run.
+  * Changed the minimum requirements to require version 1.4.23
+    rather than 1.4.0.
+  * **[usecase] [operations]** The `primary_key` parameter on
+    `Column` is now honored when
+    `Operations.add_column()` is used, and will emit the &quot;PRIMARY
+    KEY&quot; keyword inline within the ADD COLUMN directive.  This is
+    strictly a syntax enhancement; no attempt is made to reconcile
+    the column's primary key status with any existing primary key
+    constraint or particular backend limitations on adding columns
+    to the primary key.
+  * **[bug] [autogenerate]** Fixed issue in new plugin system
+    where the configured logger was not correctly using the
+    `__name__` token to identify the logger.
+  * **[feature] [operations]** When alembic is run in &quot;verbose&quot;
+    mode, alembic now logs a message to indicate from which file
+    is used to load the configuration.
+  * **[feature] [autogenerate]** Autogenerate reflection sweeps</comment>
+    <requestid>1333398</requestid>
+  </revision>
 </revisionlist>
