@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Feb 16 20:34:32 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 4.7.0:
+  * Revamp Kenwood voice memory handler - Fixes TS-890S & TS-990S
+  * libusb is now detected using the pkg-config facility.
+  * Functions rig_get_conf, rot_get_conf, amp_get_conf deprecated
+    use *_get_conf2() instead
+  * rig_set_trn and rig_get_trn deprecated.
+  * Many fixes for SWIG binding generation and improved Python
+    support and testing
+  * Fix AGC for IC-R75, fix AGC for all Icom rigs
+  * New Drake R8 backend
+  * New AF6SA WRC rotator backend
+  * New Yaesu FTX-1 model support (alpha)
+  * Update QRPLabs QMX backend for max serial rate of 230400 bps
+  * Updates to Icom IC-F8101
+  * New rig model Icom ID-52A/W Plus
+  * Fix memory leaks in rigctld and rigctltcp
+  * Fix Skywatcher backend for firmware that doesn't echo commands
+  * Additional Yaesu FTX-1 capabilities
+  * Add extended commands for the IC-7300MK2--
+  * Revert updating FLRig model name
+  * Add manual pages for rigctltcp, rigtestlibusb, rigtestmcast,
+    and rigtestmcastrx
+  * Pause building rigfreqwalk as the code does not align with the
+    required commandline parameters
+  * Developer visible changes, code moves and refactoring
+
+-------------------------------------------------------------------
 Sat Sep  6 18:51:26 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 4.6.5:

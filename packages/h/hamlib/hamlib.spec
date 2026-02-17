@@ -2,7 +2,7 @@
 # spec file for package hamlib
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define sover   4
 Name:           hamlib
-Version:        4.6.5
+Version:        4.7.0
 Release:        0
 Summary:        Run-time library to control radio transcievers and receivers
 License:        LGPL-2.1-only
@@ -149,7 +149,6 @@ mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
 %{_bindir}/rigctld
 %{_bindir}/rigctlsync
 %{_bindir}/rigctltcp
-%{_bindir}/rigfreqwalk
 %{_bindir}/rigmem
 %{_bindir}/rigsmtr
 %{_bindir}/rigswr
@@ -161,20 +160,8 @@ mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
 %{_bindir}/ampctld
 %{_bindir}/rigctlcom
 %{_bindir}/rigtestlibusb
-%{_mandir}/man1/rigctl.1%{?ext_man}
-%{_mandir}/man1/rigctld.1%{?ext_man}
-%{_mandir}/man1/rigctlsync.1%{?ext_man}
-%{_mandir}/man1/rigmem.1%{?ext_man}
-%{_mandir}/man1/rigsmtr.1%{?ext_man}
-%{_mandir}/man1/rigswr.1%{?ext_man}
-%{_mandir}/man1/rotctl.1%{?ext_man}
-%{_mandir}/man1/rotctld.1%{?ext_man}
-%{_mandir}/man1/ampctl.1%{?ext_man}
-%{_mandir}/man1/ampctld.1%{?ext_man}
-%{_mandir}/man1/rigctlcom.1%{?ext_man}
-%{_mandir}/man7/hamlib-primer.7%{?ext_man}
-%{_mandir}/man7/hamlib-utilities.7%{?ext_man}
-%{_mandir}/man7/hamlib.7%{?ext_man}
+%{_mandir}/man1/*.1%{?ext_man}
+%{_mandir}/man7/*.7%{?ext_man}
 %{_docdir}/hamlib
 %exclude %{_docdir}/hamlib/COPYING*
 %exclude %{_docdir}/hamlib/LICENSE
