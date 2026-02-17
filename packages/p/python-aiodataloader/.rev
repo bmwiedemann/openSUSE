@@ -54,4 +54,16 @@ changes since last submit:
     <comment></comment>
     <requestid>1254750</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7f463ed677bc516d172b673fdaf30c9c</srcmd5>
+    <version>0.4.3</version>
+    <time>1771343270</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.4.3:
+  * Change future checks from .cancelled() to .done() before
+    setting future results.
+  * Import `iscoroutinefunction()` from the `inspect` module on
+    Python &gt;= 3.14</comment>
+    <requestid>1333406</requestid>
+  </revision>
 </revisionlist>
