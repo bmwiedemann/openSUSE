@@ -1108,4 +1108,13 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
     <comment></comment>
     <requestid>1332282</requestid>
   </revision>
+  <revision rev="126" vrev="2">
+    <srcmd5>72ab9beffb1a272cbc04e4ccf2c8e003</srcmd5>
+    <version>3.10.8</version>
+    <time>1771430685</time>
+    <user>anag_factory</user>
+    <comment>- TST: Use correct method of clearing mock objects
+- Upstream patch correct-reset-mock.patch, gh#matplotlib/matplotlib#31153</comment>
+    <requestid>1333726</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 18 10:11:22 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- TST: Use correct method of clearing mock objects
+- Upstream patch correct-reset-mock.patch, gh#matplotlib/matplotlib#31153
+
+-------------------------------------------------------------------
 Tue Feb 10 14:16:59 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Add py314.patch to fix tests with python 3.14

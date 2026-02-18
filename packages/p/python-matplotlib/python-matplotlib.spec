@@ -61,6 +61,8 @@ Source100:      python-matplotlib.rpmlintrc
 Patch1:         matplotlib-meson-options-opensuse.patch
 # PATCH-FIX-UPSTREAM https://github.com/matplotlib/matplotlib/pull/30918 TST: account for asyncio changes in py314
 Patch2:         py314.patch
+# PATCH-FIX-UPSTREAM correct-reset-mock.patch gh#matplotlib/matplotlib#31153
+Patch3:         correct-reset-mock.patch
 Recommends:     ghostscript
 Recommends:     libxml2-tools
 Recommends:     poppler-tools

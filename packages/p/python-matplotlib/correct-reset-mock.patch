@@ -1,0 +1,41 @@
+From 63207bbc8c5f791d1ca5565db39a8e2400165e7b Mon Sep 17 00:00:00 2001
+From: Elliott Sales de Andrade <quantum.analyst@gmail.com>
+Date: Fri, 13 Feb 2026 23:21:46 +0530
+Subject: [PATCH] TST: Use correct method of clearing mock objects
+
+In Python 3.13.12 and 3.14.3, fixes for thread-safety of mock
+`call_count` meant that manually changing it no longer works [1].
+Instead use the more correct `reset_mock` method.
+
+[1] https://github.com/python/cpython/issues/142651#issuecomment-3872242970
+---
+ lib/matplotlib/tests/test_backends_interactive.py | 2 +-
+ lib/matplotlib/tests/test_colors.py               | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/matplotlib/tests/test_backends_interactive.py b/lib/matplotlib/tests/test_backends_interactive.py
+index 101c1cb81cad..188983816372 100644
+--- a/lib/matplotlib/tests/test_backends_interactive.py
++++ b/lib/matplotlib/tests/test_backends_interactive.py
+@@ -669,7 +669,7 @@ def _impl_test_interactive_timers():
+     assert mock.call_count > 1
+ 
+     # Now turn it into a single shot timer and verify only one gets triggered
+-    mock.call_count = 0
++    mock.reset_mock()
+     timer.single_shot = True
+     timer.start()
+     plt.pause(pause_time)
+diff --git a/lib/matplotlib/tests/test_colors.py b/lib/matplotlib/tests/test_colors.py
+index 1c4cebf037e4..0aef16428f9f 100644
+--- a/lib/matplotlib/tests/test_colors.py
++++ b/lib/matplotlib/tests/test_colors.py
+@@ -1646,7 +1646,7 @@ def test_norm_callback():
+     assert increment.call_count == 2
+ 
+     # We only want autoscale() calls to send out one update signal
+-    increment.call_count = 0
++    increment.reset_mock()
+     norm.autoscale([0, 1, 2])
+     assert increment.call_count == 1
+ 
