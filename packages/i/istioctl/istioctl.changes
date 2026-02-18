@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Feb 17 06:02:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.28.4:
+  https://istio.io/latest/news/releases/1.28.x/announcing-1.28.4/
+  Security update
+  * CVE-2025-61732 (CVSS score 8.6, High): A discrepancy between
+    how Go and C/C++ comments were parsed allowed for code
+    smuggling into the resulting cgo binary.
+  * CVE-2025-68121 (CVSS score 4.8, Moderate): A flaw in crypto/tls
+    session resumption allows resumed handshakes to succeed when
+    they should fail if ClientCAs or RootCAs are mutated between
+    the initial and resumed handshake. This can occur when using
+    Config.Clone with mutations or Config.GetConfigForClient. As a
+    result, clients may resume sessions with unintended servers,
+    and servers may resume sessions with unintended clients.
+  istioctl-related changes	
+  * Fixed translation function lookup errors for MeshConfig and
+    MeshNetworks in istioctl. (Issue #57967)
+  
+-------------------------------------------------------------------
 Tue Jan 20 14:27:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.28.3:
