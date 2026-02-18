@@ -1,7 +1,7 @@
 #
 # spec file for package namdhinggo-fonts
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,46 +12,43 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define fontname NamdhinggoSIL
 
 Name:           namdhinggo-fonts
-Version:        1.004
+Version:        3.100
 Release:        0
 Summary:        SIL Limbu Font
 License:        OFL-1.1
-Group:          System/X11/Fonts
-Url:            http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=NamdhinggoSIL
-Source0:        %{fontname}%{version}.zip
+URL:            https://software.sil.org/namdhinggo/
+Source0:        https://software.sil.org/downloads/r/namdhinggo/Namdhinggo-%{version}.zip
 BuildRequires:  dos2unix
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
-%reconfigure_fonts_prereq
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
+%reconfigure_fonts_prereq
 
 %description
-The Limbu, or Kirat Sirijonga, script is used by around 400,000 people 
-in Nepal and India. This Unicode-encoded font has been designed to 
-support literacy and materials development in the Limbu language.
+Namdhinggo is a Unicode Limbu font for this elegant writing system of Nepal.
+It provides glyphs for the full range of Limbu characters (U+1900..U+194F)
+as well as basic Latin.
 
 %prep
-%setup -q -n %{fontname}
+%autosetup -c
+find -type f -exec chmod -x {} +
+find -name '*.txt' -exec dos2unix {} +
 
 %build
-dos2unix *.txt
 
 %install
-mkdir -p %{buildroot}%{_ttfontsdir}
-install -m 0644 *.ttf %{buildroot}%{_ttfontsdir}/
+mkdir -p %{buildroot}%{_ttfontsdir}/
+install -c -m 644 Namdhinggo-%{version}/*.ttf %{buildroot}%{_ttfontsdir}
 
 %reconfigure_fonts_scriptlets
 
 %files
-%defattr(-,root,root)
-%doc OFL*.txt README.txt FONTLOG.txt
+%doc Namdhinggo-%{version}/*.txt  Namdhinggo-%{version}/documentation/pdf/*.pdf
 %{_ttfontsdir}
 
 %changelog

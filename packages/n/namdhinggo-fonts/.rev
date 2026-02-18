@@ -14,4 +14,12 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b5e7a7a57cbe74dcabfb1479ea890b51</srcmd5>
+    <version>3.100</version>
+    <time>1771430865</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.100</comment>
+    <requestid>1333640</requestid>
+  </revision>
 </revisionlist>
