@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Feb 18 08:07:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.2.1:
+  * build(deps): bump github.com/emicklei/proto from 1.14.2 to
+    1.14.3 (#14911)
+  * build(deps): bump tj-actions/changed-files from 47.0.1 to
+    47.0.2 (#14915)
+  * build(deps): bump @fortawesome/free-regular-svg-icons in
+    /web/app (#14933)
+  * build(deps): bump google.golang.org/grpc/cmd/protoc-gen-go-grpc
+    (#14909)
+  * build(deps): bump golang.org/x/tools from 0.41.0 to 0.42.0
+    (#14914)
+  * build(deps): bump the kube group with 7 updates (#14917)
+  * build(deps): bump @fortawesome/fontawesome-svg-core in /web/app
+    (#14935)
+  * build(deps): bump indexmap from 2.12.1 to 2.13.0 (#14941)
+  * build(deps): bump data-encoding from 2.9.0 to 2.10.0 (#14940)
+  * build(deps): bump tonic from 0.14.3 to 0.14.4 in the grpc group
+    (#14939)
+  * build(deps): bump the futures group with 8 updates (#14938)
+  * build(deps-dev): bump webpack from 5.105.0 to 5.105.2 in
+    /web/app (#14934)
+  * build(deps): bump @fortawesome/free-solid-svg-icons in /web/app
+    (#14932)
+  * chore(deps): upgrade proxy-init and extension-init (#14931)
+  * build(deps): bump google.golang.org/grpc from 1.78.0 to 1.79.0
+    (#14924)
+  * build(deps): bump docker/build-push-action from 6.19.1 to
+    6.19.2 (#14929)
+  * build(deps): bump zerocopy from 0.8.33 to 0.8.39 (#14928)
+  * build(deps): bump unicode-ident from 1.0.22 to 1.0.23 (#14927)
+  * build(deps): bump regex from 1.12.2 to 1.12.3 (#14926)
+  * build(deps): bump the pest group with 4 updates (#14925)
+  * build(deps): bump proc-macro2 from 1.0.105 to 1.0.106 (#14899)
+  * build(deps): bump qs from 6.14.1 to 6.14.2 in /web/app (#14923)
+  * build(deps-dev): bump @babel/preset-env in /web/app (#14904)
+  * build(deps): bump bytes from 1.11.0 to 1.11.1 (#14907)
+  * build(deps-dev): bump webpack-bundle-analyzer in /web/app
+    (#14903)
+  * build(deps-dev): bump css-loader from 7.1.2 to 7.1.3 in
+    /web/app (#14902)
+  * build(deps): bump the clap group across 1 directory with 4
+    updates (#14921)
+  * build(deps): bump tokio-stream from 0.1.17 to 0.1.18 (#14898)
+  * build(deps): bump tonic from 0.14.2 to 0.14.3 in the grpc group
+    (#14897)
+  * chore(deps): upgrade to go 1.25.7 (#14920)
+  * build(deps-dev): bump webpack from 5.104.1 to 5.105.0 in
+    /web/app (#14912)
+  * build(deps-dev): bump @babel/core from 7.28.6 to 7.29.0 in
+    /web/app (#14913)
+  * build(deps): bump docker/build-push-action from 6.18.0 to
+    6.19.1 (#14922)
+
+-------------------------------------------------------------------
 Fri Jan 30 06:27:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.1.4:
