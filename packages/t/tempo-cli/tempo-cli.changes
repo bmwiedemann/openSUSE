@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 17 12:59:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.10.1:
+  * chore(deps): lock file maintenance (#6465)
+  * Upgrade go 1.25.7 (#6449)
+
+-------------------------------------------------------------------
 Tue Jan 27 06:12:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.10.0:
