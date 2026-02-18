@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 27 07:47:53 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix old changelog entry: remove control char which are forbidden
+  in rpm spec/changelogs. createrepo_c fails to build repodata when
+  encountering such entries. The specific one here did not cause a
+  problem as it's old enough to be clamped away when building RPMs,
+  but we plan on introducing an rpmlint check failing on such
+  errors in the changelog. Consequently, fix this here before it
+  becomes an actual error.
+
+-------------------------------------------------------------------
 Wed Apr  9 08:07:59 UTC 2025 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - Updated to version 3.3.7.4
@@ -327,8 +338,8 @@ updated to version 3.0.0.0
   Bugs fixed:
    * lexer.rl: don't perform lookahead after tASSOC. (#764) (Ilya Bylich)
 
-v2.7.2.0 (2020-10-06)
----------------------
+  v2.7.2.0 (2020-10-06)
+  ---------------------
 
 API modifications:
  * Bump 2.7 branch to 2.7.2 (#748) (Koichi ITO)
@@ -719,7 +730,7 @@ Sun Sep 18 04:43:54 UTC 2016 - coolo@suse.com
    * Builders::Default: "a&.b &&= c": fix safe navigation in lhs of op-assignment. (Ilya Bylich)
    * AST::Processor: handle "csend" as "send". (#301) (Ilya Bylich)
    * Parser::AST::Processor: do not spuriously modify ASTs. (Ilya Bylich)
-   * lexer.rl: "%w b\": lex backslash-delimited words literals. (Masataka Kuwabara)
+   * lexer.rl: "%w b\": lex backslash-delimited words literals. (Masataka Kuwabara)
 
 -------------------------------------------------------------------
 Thu Jun  2 04:32:20 UTC 2016 - coolo@suse.com
