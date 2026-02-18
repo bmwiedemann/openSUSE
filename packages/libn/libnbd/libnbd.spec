@@ -19,7 +19,7 @@
 %define sover 0
 
 Name:           libnbd
-Version:        1.24.0
+Version:        1.24.1
 Release:        0
 Summary:        NBD client library in userspace
 License:        LGPL-2.1-or-later

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb 17 14:19:04 UTC 2026 - Charles Arnold <carnold@suse.com>
+
+- Update to version 1.24.1: (jsc#PED-14625)
+  * Version 1.24.1.
+  * tests/socket-activation-name.c: Fix test for nbdkit >= 1.47.5
+  * lib/utils.c: Fix whitespace
+  * fuse/operations.c: Remove out of date comment
+  * tests/aio-connect-port.c: Delete this test
+  * tests/aio-connect-port.c: Replace broken link in comment
+  * configure.ac: Remove use of "which" command
+  * info/nbdinfo.pod: Document what --can connect actually does
+  * info: Split nbdinfo --is tls into separate test
+  * info: Don't check for nbdkit --no-sr flag in tests that don't use it
+  * lib/lib/test-fork-safe: Use set -x
+  * generator: Link from nbd_connect_uri to nbdkit-ssh-plugin
+  * docs/libnbd-security.pod: Document CVE-2025-14946
+  * docs/libnbd-release-notes-1.24.pod: Fix typo in C<> markup
+
+-------------------------------------------------------------------
 Tue Dec 16 16:29:46 UTC 2025 - Charles Arnold <carnold@suse.com>
 
 - Update to version 1.24.0: (jsc#PED-14625)
