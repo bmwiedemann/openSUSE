@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Feb 16 12:09:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.7.18:
+  Skipped 17.7.17 due to a build pipeline issue.
+  * Revised help messages for event handler CLI commands. #63642
+  * Fixed tsh ssh user@foo=bar uptime from running serially if
+    users did not have role:read permissions. #63611
+  * The minimum version of macOS required to run Teleport or
+    associated client tools is now macOS 12 (Monterey). #63588
+  * The minimal macOS version required by Teleport Connect is now
+    macOS 12. #63570
+  * Fixed bug where event handler would get stuck on DynamoDB
+    backend when handling large events. #63562
+  * Updated Go to 1.25.7. #63561
+  * Fixed bug where event handler would throw an error on Athena
+    backend when handling large events. #63551
+  * Fixed an issue where a role requiring a trusted device could
+    incorrectly block access to all applications. #63528
+  * Updated tsh/Linux to correctly capture the OS login user for
+    device trust. #63453
+  * Fixed a server error when rejecting a headless authentication
+    request in the Web UI. #63432
+  * Fixed tsh/Linux sending a too-large username for device trust.
+    #63388
+  * Fixed teleport join openssh on recent versions of Ubuntu.
+    #63042
+  * Fix an issue in the Teleport SSH Service where interactive PAM
+    Auth modules always fail when trying to run exec sessions with
+    tty allocated. e.g. tsh ssh --tty <node> ls. #62065
+
+-------------------------------------------------------------------
 Tue Feb  3 06:21:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 17.7.16:
