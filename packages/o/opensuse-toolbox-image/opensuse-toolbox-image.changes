@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 18 07:49:48 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not sed /etc/zypp/zypp.conf anymore: libzypp switched to UAPI
+  style configurations. There seems no replacement needed, as the
+  default libzypp configuration is to include docs already.
+
+-------------------------------------------------------------------
 Wed May 15 07:27:08 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Add procps (boo#1224254)

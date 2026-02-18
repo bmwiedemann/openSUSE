@@ -18,9 +18,4 @@ set -euo pipefail
 
 echo "Configure image: [$kiwi_iname]..."
 
-#======================================
-# Include docs intallation
-#--------------------------------------
-sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = no/g' /etc/zypp/zypp.conf
-
 exit 0
