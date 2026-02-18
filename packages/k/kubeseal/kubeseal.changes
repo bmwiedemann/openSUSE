@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Feb 12 12:50:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.35.0:
+  * Release notes for 0.35.0 (#1879)
+  * Bump go 1.25.7 (#1880)
+  * Update k8s versions (#1877)
+  * Bump various GitHub action versions (#1878)
+  * Bump golang.org/x/crypto from 0.47.0 to 0.48.0 (#1875)
+  * Bump github.com/onsi/ginkgo/v2 from 2.27.5 to 2.28.1 (#1873)
+  * Bump github.com/onsi/gomega from 1.39.0 to 1.39.1 (#1872)
+  * Bump distroless/static from `cd64bec` to `972618c` in /docker
+    (#1874)
+  * use my namespace as key namespace (#1867)
+  * Update client-go and api 0.35.0 (#1868)
+  * Bump golang.org/x/crypto from 0.46.0 to 0.47.0 (#1863)
+  * Bump github.com/onsi/gomega from 1.38.3 to 1.39.0 (#1865)
+  * Bump github.com/onsi/ginkgo/v2 from 2.27.3 to 2.27.5 (#1864)
+  * Bump distroless/static from `4b2a093` to `cd64bec` in /docker
+    (#1866)
+  * Bump k8s.io/code-generator from 0.34.3 to 0.35.0 (#1858)
+  * Release carvel package 2.18.0 (#1857)
+  * Release chart 2.18.0 (#1856)
+
+-------------------------------------------------------------------
 Thu Dec 18 13:38:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.34.0:

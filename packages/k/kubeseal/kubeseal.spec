@@ -1,7 +1,7 @@
 #
 # spec file for package kubeseal
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           kubeseal
-Version:        0.34.0
+Version:        0.35.0
 Release:        0
 Summary:        CLI for encrypting secrets to SealedSecrets
 License:        Apache-2.0
 URL:            https://github.com/bitnami-labs/sealed-secrets
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.25 >= 1.25.4
+BuildRequires:  go1.25 >= 1.25.7
 
 %description
 Problem: "I can manage all my K8s config in git, except Secrets."
