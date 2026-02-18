@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Feb 18 09:21:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.25.0:
+  * Highlights
+    - feat: add sprig support (#672)
+    - feat: improve errors and add deletion message (#661)
+    - feat: validate ignoreFiles patterns early (#658)
+  * Dependency bumps
+    - feat: add Go 1.26 compatibility by adding ModulePath method
+      (#667)
+    - chore(deps): bump the kubernetes group with several updates
+      (#660, #662, #673)
+    - chore(deps): bump github.com/google/cel-go from 0.26.1 to
+      0.27.0 (#671)
+    - chore(deps): bump sigs.k8s.io/controller-runtime from 0.22.4
+      to 0.23.1 in the kubernetes group (#669, #670)
+    - chore(deps): bump github.com/spf13/cobra from 1.10.1 to
+      1.10.2 (#659)
+  * Other Changes
+    - tests: skip TestAddContainers temporarily (#674)
+    - fix: lint (#665)
+    - chore: cleanup README (#666)
+
+-------------------------------------------------------------------
 Thu Dec 04 07:00:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.24.0:
