@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 18 09:54:45 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- update to 1.7.2:
+  * PR-171 Fix colors overlapping with Python 3.14.0+ which enabled
+    colors by default in the help formatter.
+- Add upstream patch fix-tests.patch, gh#hamdanal/rich-argparse#178
+
+-------------------------------------------------------------------
 Mon Sep  8 13:11:09 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Initial packaging (v1.7.1), needed by python-cmd2

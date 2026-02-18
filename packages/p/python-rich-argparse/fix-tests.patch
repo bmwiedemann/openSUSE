@@ -1,0 +1,43 @@
+From 92fe8a5f5fb754ad27b20ead065b8bf9fa10fc1c Mon Sep 17 00:00:00 2001
+From: Ali Hamdan <ali.hamdan.dev@gmail.com>
+Date: Sun, 25 Jan 2026 11:12:30 +0100
+Subject: [PATCH 1/2] Update pre-commit and fix nightly tests
+
+---
+ .pre-commit-config.yaml |  4 ++--
+ pyproject.toml          |  1 +
+ tests/test_argparse.py  | 12 ++++--------
+ 3 files changed, 7 insertions(+), 10 deletions(-)
+
+Index: rich_argparse-1.7.2/pyproject.toml
+===================================================================
+--- rich_argparse-1.7.2.orig/pyproject.toml
++++ rich_argparse-1.7.2/pyproject.toml
+@@ -68,6 +68,7 @@ flake8-tidy-imports.ban-relative-imports
+ python_version = "3.8"
+ strict = true
+ local_partial_types = true
++allow_redefinition_new = true
+ 
+ [[tool.mypy.overrides]]
+ module = ["tests.*"]
+Index: rich_argparse-1.7.2/tests/test_argparse.py
+===================================================================
+--- rich_argparse-1.7.2.orig/tests/test_argparse.py
++++ rich_argparse-1.7.2/tests/test_argparse.py
+@@ -899,11 +899,11 @@ def test_rich_renderables():
+ 
+     This is a \x1b[1mdescription\x1b[0m
+ 
+-    \x1b[33m──────────────────────────────────────────────────────────────────────────────────────────────────\x1b[0m
++    \x1b[2m--------------------------------------------------------------------------------------------------\x1b[0m
+ 
+-     \x1b[1m \x1b[0m\x1b[1mfoo\x1b[0m\x1b[1m \x1b[0m \x1b[1m \x1b[0m\x1b[1mbar\x1b[0m
+-     ━━━━━━━━━━━
+-      1     2
++    \x1b[36m \x1b[0m\x1b[36mfoo\x1b[0m\x1b[1m \x1b[0m\x1b[36m \x1b[0m\x1b[36mbar\x1b[0m
++    \x1b[36m ────────\x1b[0m
++    \x1b[36m \x1b[0m1   \x1b[36m \x1b[0m2
+ 
+     \x1b[38;5;208mOptional Arguments:\x1b[0m
+       \x1b[36m-h\x1b[0m, \x1b[36m--help\x1b[0m  \x1b[39mshow this help message and exit\x1b[0m

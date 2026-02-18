@@ -1,7 +1,7 @@
 #
 # spec file for package python-rich-argparse
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,17 @@
 
 
 Name:           python-rich-argparse
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        Rich help formatters for argparse and optparse
 License:        MIT
 URL:            https://github.com/hamdanal/rich-argparse
 Source:         https://files.pythonhosted.org/packages/source/r/rich-argparse/rich_argparse-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+# PATCH-FIX-UPSTREAM fix-tests.patch https://github.com/hamdanal/rich-argparse/pull/178
+Patch0:         fix-tests.patch
 BuildRequires:  %{python_module hatchling >= 1.11.0}
 BuildRequires:  %{python_module pip}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rich >= 11.0.0}
