@@ -474,4 +474,14 @@
   * Add config snippets for zypp.conf</comment>
     <requestid>1329645</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>9e0226f592617171a1ace256f60ed386</srcmd5>
+    <version>4.0+git23</version>
+    <time>1771430739</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.0+git23:
+  * zypp-*: require libzypp(econf)
+  * test: Work around missing 9pnet_virtio in the initrd (boo#1258314)</comment>
+    <requestid>1333556</requestid>
+  </revision>
 </revisionlist>
