@@ -201,4 +201,41 @@
   * format::ini: prepend syntaxerr string with &quot;line &quot;</comment>
     <requestid>1295107</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>feb52917ff9ed7ef2450d01e293570b3</srcmd5>
+    <version>0.26.0</version>
+    <time>1771430745</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.26.0:
+  * scripts/version: update to 0.26.0
+  * rt+freebsd+aarch64: fix _start
+  * hare-version(1): print tool paths
+  * getopt: print help text to stdout when -h is provided
+  * hare test: fails when a module dependency is missing
+  * Add io::unreader
+  * make bootstrap
+  * os::exec: add path argument to lookup
+  * os::exec: add flags to wait functions
+  * unix::tty: add tcgetpgrp
+  * path: correct ownership documentation
+  * typo psuedo
+  * hare::unparse: fix recent new leak
+  * Filter out non-permission bits in fs::move
+  * hare::parse: drop leading whitespace from loc
+  * hare::parse: don't handle negative integer literals
+  * mime: fix memory leaks from unfree hash table slices
+  * uuid: fix typo in README
+  * hare::module::gather: dedupe on names
+  * hare::ast: update for error types
+  * MAINTAINERS: missed a spot for bgs
+  * net::dns::resolve: fix error handling
+  * Added time::sleep_until, added optional clock argument to time::sleep. sleep_until is implemented using clock_nanosleep(...TIMER_ABSTIME...).
+  * Use relative links for the breadcrumb bar
+  * Use relative links across modules
+  * Makefile: build configured hare(1) from all target
+  * Makefile: s/-install/-configured/g for $BINOUT/*
+  * encoding::asn1::wrap_err: fix wild write
+  * MAINTAINERS: bgs steps down</comment>
+    <requestid>1333531</requestid>
+  </revision>
 </revisionlist>

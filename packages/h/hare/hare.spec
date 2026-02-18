@@ -20,14 +20,15 @@
 %define relver 0.25.2
 Name:           hare
 Release:        0
-Version:        0.25.2+git.1750492346.e07d36b3
+Version:        0.26.0
 Summary:        Hare system programming language
 Group:          Development/Tools/Building
 License:        MPL-2.0
 URL:            https://harelang.org
-Source0:        https://git.sr.ht/~sircmpwn/hare/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.zst
 Source1:        %{name}-rpmlintrc
 Source2:        README-suse-maint.md
+Source3:        roast_scm.info
 BuildRequires:  binutils
 BuildRequires:  gcc
 # Hare and the HareC compiler should have the same version

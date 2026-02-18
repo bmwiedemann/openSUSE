@@ -1,4 +1,495 @@
 -------------------------------------------------------------------
+Fri Feb 13 14:22:21 UTC 2026 - uncomfyhalomacro@opensuse.org
+
+- Update to version 0.26.0:
+  * scripts/version: update to 0.26.0
+  * rt+freebsd+aarch64: fix _start
+  * hare-version(1): print tool paths
+  * getopt: print help text to stdout when -h is provided
+  * hare test: fails when a module dependency is missing
+  * Add io::unreader
+  * make bootstrap
+  * os::exec: add path argument to lookup
+  * os::exec: add flags to wait functions
+  * unix::tty: add tcgetpgrp
+  * path: correct ownership documentation
+  * typo psuedo
+  * hare::unparse: fix recent new leak
+  * Filter out non-permission bits in fs::move
+  * hare::parse: drop leading whitespace from loc
+  * hare::parse: don't handle negative integer literals
+  * mime: fix memory leaks from unfree hash table slices
+  * uuid: fix typo in README
+  * hare::module::gather: dedupe on names
+  * hare::ast: update for error types
+  * MAINTAINERS: missed a spot for bgs
+  * net::dns::resolve: fix error handling
+  * Added time::sleep_until, added optional clock argument to time::sleep. sleep_until is implemented using clock_nanosleep(...TIMER_ABSTIME...).
+  * Use relative links for the breadcrumb bar
+  * Use relative links across modules
+  * Makefile: build configured hare(1) from all target
+  * Makefile: s/-install/-configured/g for $BINOUT/*
+  * encoding::asn1::wrap_err: fix wild write
+  * MAINTAINERS: bgs steps down
+  * Replace dealiasing ... with tagged union reduction
+  * Drop hare::types, hare::unit, and cmd/haretype
+  * rt: make rem *timespec of nanosleep nullable
+  * Fix syntax issues on +dragonfly+libc
+  * Add support for DragonFly BSD
+  * Remove multi-binding global declarations
+  * Add hare::ast::location
+  * MAINTAINERS: fix my name
+  * MAINTAINERS: Add Joe Finney
+  * Update for looser void assignability rules
+  * genbootsrap: use some for-each
+  * all: use _ for padding/reserved/unused struct fields
+  * Fix parsing @undefined in struct initializer.
+  * Implement @undefined initializers
+  * Add kqueue and kevent syscalls to 'rt'
+  * hare::lex: new finish method to cleanup leaks from register_annotation
+  * Implement break with value and for/else.
+  * crypto::ec: fix documentation unterminated reference
+  * hare::parse:: export synassert
+  * Makefile: Install the stdlib README.
+  * hare::*: implement discarding bindings and assignment
+  * all: replace void casts with discarding assignment
+  * hare::ast: use empty string for _ in binding_unpack
+  * rt: Added syscall wrappers for sched_{get,set}scheduler() and sched_yield().
+  * rt: Added clock_nanosleep().
+  * haredoc: Colors iff FORCE_COLOR || (isatty && !NO_COLOR)
+  * haredoc: print shorter types in table of contents
+  * hare-tool(1): Document HARE_TOOLPATH.
+  * cmd::hare::tool: Use HARE_TOOLPATH when available.
+  * haredoc: don't lookup via @symbol
+  * haredoc: remove obsolete parseident function
+  * haredoc: don't show @symbol
+  * os: fix typos
+  * crypto::sha3: add module summary to the README
+  * crypto: Add SHA-3 implementation
+  * regex::compile: remove double free on err
+  * test: fix memory leak in require()
+  * regex: fix memory leak in compile()
+  * bufio: fix memory leaks in tests
+  * bytes::{split,splitn,rsplitn}: new functions
+  * Further fixes required to pass resolve flags to openat2
+  * os+linux: fix open_file bug
+  * Reapply "Remove @offset and allow _: type in structs."
+  * all: fix minor docs issues
+  * sort: Fix off-by-one in sort::shuffle
+  * math: add checked and non-checked integer power function
+  * sort: add sort::shuffle
+  * hare/parse: fix leak of struct field names
+  * hare/parse: fix leaks of comments
+  * hare/lex: comment() now resets the comment buffer
+  * hare/lex: document lex_rn_str and ltok invarient
+  * hare/ast: fix multiple leaks (and use foreach)
+  * scripts/version: update version to 0.25.2
+  * time: add timespec_to_duration
+  * io: add io::vector_buf
+  * stdoid: add more oids required by x509.
+  * rt: make rt::iovec buffer nullable
+  * Revert "Remove @offset and allow _: type in structs."
+  * strings::tokenize: improve documentation
+  * netbsd: add back __sigtramp_siginfo_2.
+  * Use _: type throughout Hare.
+  * test: add current()
+  * Use _: type in function signatures.
+  * debug: Use .skip instead of .balign for altstack definition
+  * Remove @offset and allow _: type in structs.
+  * lex: disallow invalid Unicode in escapes.
+  * lex: use for-each loops.
+  * lex: fix memory leak in lex_literal.
+  * lex: restrict whitespace to the spec.
+  * lex: fix up comments.
+  * rt+linux: Fix the size of siginfo
+  * crypto::ed25519: change return type of verify_buf
+  * crypto::ed25519: new verification api
+  * cmd/hare: only gather rt when building binaries.
+  * hare::lex: fix lossy file offset maintenance on unget
+  * Revert "builds: remove email to hare-dev on build error"
+  * builds: remove email to hare-dev on build error
+  * Makefile: install docs/hare-tool.1
+  * os::exec: fix clearenv
+  * cmd/hare: Break out of loops on boolean latches
+  * cmd/hare: Flatten link rendering inner loop
+  * cmd/hare: Ignore missing modules in 'hare deps'
+  * hare::module: Tolerate missing dependencies
+  * hare::module: Remove unused recursive flags
+  * cmd/hare: Handle direct dependencies when rendering
+  * cmd/hare: Plug 'hare deps' depth leak
+  * strings: add bytesub
+  * debug: cleanup scan_strtab
+  * path: clarify MAX docs
+  * encoding::utf8: simplify utf8sz implementation
+  * encoding::utf8, strings: add position function
+  * os::exec::exec: document error handling
+  * os: nomem changes
+  * docs/hare-tool.1: minor stylistic changes
+  * ascii: Make cclass an array, rather than a slice.
+  * encoding::utf8: document behavior of next on invalid codepoint
+  * encoding::base{32,64}: remove @init
+  * hare::module: unexport locstr
+  * hare::build: replace os::move with os::rename in cleanup_task
+  * hare::parse::doc: remove strerror
+  * bytes: disallow no variadic args in trim functions
+  * hare deps: make it colorful :)
+  * types::c, sort::cmp: add C string comparison functions
+  * io: document that io::off is compatible with off_t
+  * regex: fix `\\` in replace targetstr
+  * linux: delete start+libc.ha
+  * format::ini: prepend syntaxerr string with "line "
+  * format::ini: improve docs all around
+  * rt: fix return types of bind and connect
+  * rt: rename ucontext to ucontext_t
+  * strings: document end type
+  * hare(1): add hare tool subcommand
+  * hare::parse: s/non-c-style/for-each/
+  * debug::dwarf: add missing `ok = true`
+  * types::c: actually propagate nomem errors from fromstr
+  * path: replace static delete with slice assignment
+  * crypto::math: remove unnecessary casts when negating
+  * all: style: remove space before colon in cast exprs
+  * encoding::pem: change globals into constants
+  * types::c: improve docs all around
+  * docs/haredoc.5: clarify that haredoc only doesn't format in default mode
+  * hare::parse::doc: add examples to decl_ref/mod_ref docs
+  * haredoc.1: add trailing :: to example
+  * test: document that functions can't be called outside test
+  * encoding::utf8: remove mention of strings from README
+  * crypto::math: document precondition in eqslice
+  * crypto: improve compare docs
+  * fs, os: improve iter docs
+  * hare::module: unexport _gather_submodules
+  * hare::module: fix typo in docs
+  * wordexp: s/returned/resulted in/ in utf8::invalid err msg
+  * wordexp: improve wording in README
+  * encoding::utf8: add sentence to decode docs
+  * time::date: add error assertions to date::parse examples
+  * time::date: remove "shall" from parsefail docs
+  * os::exec: line-wrap docs
+  * Add period to some docs
+  * all: improve some strerror docs
+  * test: mention hare-test(1) in README
+  * fmt: improve README wording
+  * sort: mention sort::cmp:: in cmpfunc docs
+  * strings: s/runewise/rune-wise/ in sub docs
+  * Add one-line module summary to haredoc
+  * os: add open_buffered et al
+  * bufio: add managed bufio::stream modes
+  * unix: add getrlimit/setrlimit
+  * unix::resolvconf::parse fix memory leak
+  * unix::passwd: fix _dup methods returing 0 as uid/gid
+  * Remove most unused imports.
+  * ascii: comment ctype constants.
+  * mime: nomem updates
+  * mime: Use tuple destructuring
+  * memio: add "nonblocking" mode
+  * utf8::utf8sz: use for-each loop.
+  * haredoc: fix link template for symbols
+  * time: nomem updates
+  * Document various undocumented modules
+  * hare::parse: export parsing utilities
+  * hare::lex: add registration for user annotations
+  * hare::lex: scan & discard annotations
+  * sort: add sort::inplace
+  * regex: nomem updates
+  * test: sort tests by name
+  * bufio::scanner: address my own feedback
+  * io+linux: fix rt::dup3 flags
+  * hare::lex: add save, restore functions
+  * bufio::scanner: implement io::seek
+  * io::dup, io::dup2: make flags optional
+  * debug: print context on assertion failure
+  * rt::strcmp: O(1) if data pointers are equal
+  * io::copier: accept io::handle for "from"
+  * strings::dup: update comment for nomem changes
+  * net::dial::dial_uri: don't return nomem
+  * net::dns: do not abort on fetch tcp errors
+  * net: nomem updates
+  * hare::lex: add io::off to location
+  * haredoc(1): add source links to HTML output
+  * haredoc(1): add option to show line numbers
+  * linux::keyctl: nomem api update
+  * all: fix incorrect indentation
+  * sort: Handle allocation failure
+  * types::c: return nomem on allocation failure
+  * unix::tty::ptsname: use static allocation everywhere
+  * unix: update more apis for nomem
+  * format::ini: fix entry_dup
+  * format::ini: handle nomem
+  * unix::passwd: handle nomem
+  * unix::hosts: handle nomem
+  * unix::resolvconf: handle nomem
+  * all: fix fmt:: oversights on -linux
+  * make bootstrap
+  * mime: improve documentation on lifetimes
+  * fs: nomem changes
+  * net::uri: Fix memory leak in percent_decode
+  * fmt: nomem api updates
+  * strconv: nomem updates
+  * encoding::base64: return nomem
+  * encoding::base32: return nomem
+  * encoding::hex: handle nomem
+  * cmd/hare: print relative paths in error messages
+  * ascii::*: return nomem on allocation failures
+  * MAINTAINERS: update Vlad's email address
+  * make bootstrap
+  * Refactor glob for nomem
+  * Refactor getopt for nomem
+  * rt+linux: add waitid syscall wrapper
+  * rt+linux::clone3: new syscall wrapper
+  * rt+linux: add pidfd bits
+  * debug::dwarf: fix double-free
+  * linux::keyctl: add set_timeout
+  * wordexp: handle nomem
+  * linux::keyctl: add additional wrapper functions
+  * shlex: handle nomem errors
+  * debug: handle nomem errors
+  * path::local: too_long instead of abort on exceeding max
+  * make bootstrap
+  * bufio::read_tok: free buf on nomem
+  * io::drain: free result on nomem
+  * io::drain: nomem
+  * time::date: fix realize(); rm lack error type
+  * time::date: repurpose tz() to tzdb()
+  * time::date: add docs for path constants
+  * time::date: update fixedzone()
+  * time::chrono: add TODOs
+  * time::date: rm TODO
+  * time: update READMEs, docs
+  * time::date: implement PETZ (Posix Extending TZ)
+  * time::date: add zfunresolved enum type workaround
+  * time::date: improve TZDB_PATH, init_tz_local()
+  * time: from_nsec(): abort on invalid nsec
+  * time: add from_nsec(), INSTANT_ZERO
+  * time: rm unix functions; add new(); reorgnise code
+  * time::date: rm simultaneous()
+  * time::date: simultaneous(), coincident() docs
+  * time::date: repurpose coincident()
+  * time::chrono: mv coincident, simultaneous to date
+  * time::chrono: improve UTC init
+  * time::chrono: rm invalid; add utciniterror str
+  * time::date: rename /transition/zonetransition/
+  * time::date: rename /zone/zonephase/
+  * time::date: lookupzone: handle past instants
+  * time::date: add lookupzone field to timezone
+  * time::date: date: add observer comments inline
+  * time::date: add formatspan()
+  * time::date: traverse(), hop() docs
+  * time::date: improve traverse()
+  * time::date: rename span arithm functions
+  * time::date: rename /pdiff/traverse/
+  * time::date: mv parithm.ha to step.ha
+  * time::date: add truncate.ha
+  * time::date: add hop.ha
+  * time::date: add pdiff.ha
+  * time::date: move duration file
+  * time::date: rename /period/span/
+  * time::date: update step enum type, add TODOs
+  * time::date: rename /unit/step/, /unitdiff()/hop()/
+  * time::chrono: rm discontinuity error type
+  * time::chrono: refactor convert(); rm analytical
+  * time::date: rearrange daydate, daytime code
+  * time::date: improve add()
+  * time::chrono: improve add()
+  * time: add to_ functions
+  * time::chrono: add tscmismatch type, date strerror
+  * time: overhaul modules
+  * time::date: format: tidy, add fmtzoff()
+  * time::date: new(): clarify code
+  * time::date: realize: locality dependent gap sizes
+  * time::date: realize_gapstart(): rm TODO
+  * time::chrono: fix LOCAL.name init
+  * time::chrono: rename, unexport def SECS_1900_1970
+  * bufio: return nomem rather than assert
+  * bufio:newscanner: defer allocation to the first read
+  * memio: pass on nomem on dynamic_write
+  * io: add nomem to error
+  * errors: add nomem to strerror
+  * crypto::ec: fix broken docstring reference
+  * crypto::keystore: return nomem on allocation failure
+  * crypto::argon2: pass on nomem
+  * crypto::hmac: use hash::close where appropriate
+  * bytes, strings: drop non-constant assertion messages
+  * unix/tty+netbsd: update for strings::dup() change
+  * haredoc: show functions with same siguature as alias
+  * strings::pad: return nomem on alloc failure
+  * strings::split: return nomem on alloc failure
+  * strings::template::compile: return nomem on alloc failure
+  * strings::{from,to}runes: return nomem on allocation failure
+  * strings::replace: return nomem on allocation failure
+  * strings::dup{,all}: return nomem on allocation failure
+  * strings::join: return nomem on allocation failure
+  * strings::concat: return nomem on allocation failure
+  * unix::poll::poll: add default timout
+  * unix::poll::INDEF: fix typo
+  * os::exec::lookup: always return static result
+  * os::exec::lookup: return errors if appropriate
+  * os::exec::lookup: fix lookup of paths
+  * hare::unparse: mark end of output in error message
+  * hare::parse: fix nomem literal parsing
+  * all: style: rewrite functions with bare match
+  * errors::opaque: note utility of unwrap functions in docs
+  * updates for the allocation failure RFC
+  * test: Fix memory leak
+  * crypto::cipher: add gcm_unlink_block
+  * cmd/hare: limit executability error to exe output
+  * cmd/hare: rebuild on binary change based on mtime
+  * debug: swap in default abort handler on begin_fatal
+  * test: store backtrace on abort
+  * rt: add heap management utilities
+  * debug: add stack trace storage solution
+  * cmd/hare: Skip replacing the output file if possible
+  * net: add sockflag::DGRAM to +linux
+  * scripts/genbootstrap: respect $HARE
+  * os::exec: update pipe() code examples
+  * malloc+libc: ensure that malloc(0) returns null
+  * hare::doc: don't introduce own error type
+  * sort::cmp: Document module
+  * NetBSD: fix rt::sigaction
+  * all: update for removal of switching on pointers
+  * regex: change extraneous increment to assertion
+  * regex: fix `jump_idxs` interference
+  * regex: remove unused charclass type
+  * regex: implement nested capture groups
+  * regex: fix memory leaks
+  * regex: add tests for jump bugs
+  * regex: remember charset_class name, for introspectability
+  * regex: fix comments
+  * sort: don't use left sublicing operand on opaque slice
+  * unix::passwd: fix test examples
+  * bufio: fix EOF_GREEDY scan mode
+  * all: refer to a function by its name, not identifier
+  * hare(1) version: add -vv for extra verbose
+  * regex: document and test split insertion
+  * debug::dwarf: re-introduce bufio::read_* functions
+  * cmd/hare/build: Drop unused function
+  * cmd/hare/build: Simplify binary path lookup
+  * cmd/haredoc: build with $HARE_DEFINES
+  * cmd/hare/build: rebuild on cmd binary change
+  * unix::tty: make pty_test +test
+  * hare::module: remove format and format_srcset
+  * Revert "math::random: seed from current time if seed not provided"
+  * glob: remove outdated sentence in docs for next
+  * uuid: update RFC number in README
+  * rt: use pid_t in more places
+  * rt: make sigact function pointer fields nullable
+  * types::c: add sig_atomic
+  * math::random: seed from current time if seed not provided
+  * strconv: add default arguments to ftosf and fftosf
+  * unix::signal: change handle interface to use default args
+  * Makefile: Add $(LDFLAGS) to the environment
+  * Makefile: Install hare(1) built by hare
+  * TREES: add my harec and hare-spec trees
+  * rt: rename jmpbuf to jmp_buf
+  * mime: get rid of errors dependency
+  * fnmatch: get rid of errors dependency
+  * math: use tuple unpacking in trig_reduce
+  * math: use constants in nearbyint
+  * math::complex+test: remove double casts
+  * math+test: use STANDARD_TOL for more tests
+  * math: change type of F32_*_MASK to u32
+  * strconv: remove generic *tos functions
+  * math: remove generic int functions
+  * math: rename F(32|64)_MIN to F(32|64)_MIN_SUBNORMAL
+  * math: remove generic float functions
+  * math: improve docs for mulu, divu, and remu
+  * math: add messages to mulu* and divu* assertions
+  * math: s/panic/abort/g
+  * math: delete addu* and subu* functions
+  * math: drop UINT_SIZE
+  * math: merge bit_size functions
+  * math: make some constants flexible
+  * math: merge isclose with eqwithin
+  * math: replace dead link with archived version
+  * math::checked: add functions for int, uint, and size
+  * hash::fnv: add optional basis parameter
+  * os: add fcntl F_GETFL/F_SETFL wrappers
+  * strconv: use type/error assertion in stof tests
+  * haredoc: add trailing :: to submodules
+  * debug::image: fix typo in README
+  * crypto::argon2: remove old copyright headers
+  * strings: minor docs adjustments
+  * hare::module: mention 'find' in context docs
+  * haredoc: omit newscanner's optional param
+  * types::c: fix header in wint docs
+  * ecdh::newkey: fix size interpeted as underread
+  * time::chrono: fix loading TZ filepaths
+  * cmd/hare: Print dependencies to a t
+  * cmd/hare: Print modules without dependencies
+  * hare::module: Highlight results from gather*() calls
+  * cmd/hare: New options for hare deps recursivity
+  * hare::module: Resolve submodules from a location
+  * hare::module: Optionally gather modules recursively
+  * cmd/hare: Move gather_submodules() to stdlib
+  * cmd/hare: Move unwrap_module_error() logic to stdlib
+  * bufio::scanner: add options to fine-tune the behavior of a scanner
+  * cmd/hare/build: don't write commands run to cache
+  * linux::vdso: fix memory leak
+  * log: remove @init
+  * rt+linux: add sigqueueinfo
+  * rt+linux: support real-time signals in sigsets
+  * hare::unparse: always include decimal point for fconst
+  * strconv: don't fall back to multiprecision for scientific notation
+  * hare::unparse: fix memory leaks in test
+  * strings::template: allow underscores in variable names
+  * encoding::asn1::stdoid: fix anyExtendedKeyUsage
+  * encoding::asn1::stdoid: add extended key usage ids
+  * Update documentation for os::exec::pipe
+  * asn1::stdoid: add more ids required for x.509 (RFC 5280)
+  * crypto::rsa: add pss signature support
+  * Add io::fsync, io::fdatasync
+  * Makefile: Build haredoc with $(HAREFLAGS)
+  * hare::parse::type: fix typo
+  * errors: guarantee 8-byte alignment for opaque data
+  * Update test runner
+  * hare::parse: redefine vaarg() as vaarg(object-selector, type)
+  * disable debug on openbsd
+  * hare+libc.sc: Separate .test_array from RELRO sections
+  * Revert "rt+freebsd: fix some types"
+  * make bootstrap
+  * strconv: merge multiprecision implementations.
+  * encoding::utf8: add remaining and slice functions
+  * hare::parse::doc: improve invalid utf-8 location
+  * fs: handle path::too_long in rmdirall
+  * time::chrono: handle path::too_long in tz
+  * haredoc: handle path::too_long
+  * rt+freebsd: fix some types
+  * rt+linux: fix name of field in st_flock
+  * rt: fix name of field in sigval
+  * ascii: overwrite buf in str(upper|lower)_buf
+  * ascii: improve str_(upper|lower) docs
+  * test: use math:: wrappers for resetting fp env
+  * types::c: s/SHORT/SHRT/g
+  * all: fix misaligned memory accesses
+  * net::unix: use types::c::fromstr_buf
+  * stdoid: add OIDs for the RSA PSS signature algorithm
+  * crypto::rsa: improve bitlen
+  * net::uri: Clean up memory handling after failure
+  * errors: add netunreachable
+  * scripts/version: achieve shellcheck compliance
+  * build: verify the stdoid database
+  * genoiddb: generate comments for exported oids
+  * cmd/genoiddb: fix buggy foreach conversion
+  * strings: update docstring to show next returns done
+  * time::date: realize: support ISO week dates
+  * time::date: parse() %G and %V
+  * regex: allow ^ at start of every whole-expression alternation
+  * regex: allow $ at end of every whole-expression alternation
+  * regex: fix anchor bug in whole-expression alternations
+  * regex: remove duplicate tests
+  * docs/rfc.md: remove
+  * net/uri: fix silly usage of wantrune()
+  * net/uri: fix absolute path when no authority
+  * debug::dwarf: eliminate use of bufio::read_* functions
+  * encoding::pem: replace bufio::read_line with scanner
+  * net::uri: remove unused import
+  * net/uri: fix some leaks
+  * hare.1: add note about poor error message quality
+  * NetBSD: add os::shm_open()
+  * time::date: fix typo
+
+-------------------------------------------------------------------
 Thu Jul 17 15:19:08 UTC 2025 - uncomfyhalomacro@opensuse.org
 
 - Update to version 0.25.2+git.1750492346.e07d36b3:
