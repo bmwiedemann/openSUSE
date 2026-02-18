@@ -1101,4 +1101,41 @@
   * build(deps): bump golangci/golangci-lint-action from 9.1.0 to 9.2.0 in the github-actions group (#6248) (forwarded request 1326004 from jfkw)</comment>
     <requestid>1326009</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>ac91c3bb97255f6f9913ab0026182798</srcmd5>
+    <version>2.10.1</version>
+    <time>1771430794</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.10.1:
+  * chore: prepare release
+  * dev: refactor to use waitgroup.Go (#6377)
+  * fix: make markDepsForAnalyzingSource recursive to fix buildssa panic (#6376)
+  * docs: update GitHub Action assets (#6374)
+  * docs: update documentation assets (#6373)
+
+- Update to version 2.10.0:
+  * chore: prepare release
+  * build(deps): bump github.com/godoc-lint/godoc-lint from 0.11.1 to 0.11.2 (#6372)
+  * build(deps): bump honnef.co/go/tools from 0.6.1 to 0.7.0 (#6367)
+  * chore: improve the support of large numbers of packages (FilenameUnadjuster) (#6369)
+  * build(deps): bump github.com/securego/gosec/v2 from 2.22.11 to 2.23.0 (#6366)
+  * build(deps): bump github.com/nunnatsa/ginkgolinter from 0.22.0 to 0.23.0 (#6368)
+  * docs: fix linter names in changelog (#6364)
+  * docs: fix changelog (#6362)
+  * docs: update GitHub Action assets (#6361)
+  * docs: update documentation assets (#6360)
+
+- Update to version 2.9.0:
+  * chore: prepare release
+  * chore: minor changes
+  * go1.26 support (#6271)
+  * build(deps): bump github.com/mgechev/revive from 1.13.0 to 1.14.0 (#6359)
+  * build(deps): bump github.com/golangci/misspell from 0.7.0 to 0.8.0 (#6358)
+  * build(deps): bump golang.org/x/tools from 0.41.0 to 0.42.0 (#6357)
+  * build(deps): bump golang.org/x/sys from 0.40.0 to 0.41.0 (#6356)
+  * build(deps): bump golang.org/x/mod from 0.32.0 to 0.33.0 (#6355)
+  * build(deps): bump github.com/golangci/golines from 0.14.0 to 0.15.0 (#6354)
+  * build(deps): bump golang.org/x/oauth2 from 0.34.0 to 0.35.0 in /scripts/gen_github_action_config in the scripts group (#6352) (forwarded request 1333624 from jfkw)</comment>
+    <requestid>1333625</requestid>
+  </revision>
 </revisionlist>

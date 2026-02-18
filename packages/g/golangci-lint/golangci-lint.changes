@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Tue Feb 17 15:21:47 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.10.1:
+  * chore: prepare release
+  * dev: refactor to use waitgroup.Go (#6377)
+  * fix: make markDepsForAnalyzingSource recursive to fix buildssa panic (#6376)
+  * docs: update GitHub Action assets (#6374)
+  * docs: update documentation assets (#6373)
+
+-------------------------------------------------------------------
+Tue Feb 17 12:43:33 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.10.0:
+  * chore: prepare release
+  * build(deps): bump github.com/godoc-lint/godoc-lint from 0.11.1 to 0.11.2 (#6372)
+  * build(deps): bump honnef.co/go/tools from 0.6.1 to 0.7.0 (#6367)
+  * chore: improve the support of large numbers of packages (FilenameUnadjuster) (#6369)
+  * build(deps): bump github.com/securego/gosec/v2 from 2.22.11 to 2.23.0 (#6366)
+  * build(deps): bump github.com/nunnatsa/ginkgolinter from 0.22.0 to 0.23.0 (#6368)
+  * docs: fix linter names in changelog (#6364)
+  * docs: fix changelog (#6362)
+  * docs: update GitHub Action assets (#6361)
+  * docs: update documentation assets (#6360)
+
+-------------------------------------------------------------------
+Tue Feb 10 23:06:57 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.9.0:
+  * chore: prepare release
+  * chore: minor changes
+  * go1.26 support (#6271)
+  * build(deps): bump github.com/mgechev/revive from 1.13.0 to 1.14.0 (#6359)
+  * build(deps): bump github.com/golangci/misspell from 0.7.0 to 0.8.0 (#6358)
+  * build(deps): bump golang.org/x/tools from 0.41.0 to 0.42.0 (#6357)
+  * build(deps): bump golang.org/x/sys from 0.40.0 to 0.41.0 (#6356)
+  * build(deps): bump golang.org/x/mod from 0.32.0 to 0.33.0 (#6355)
+  * build(deps): bump github.com/golangci/golines from 0.14.0 to 0.15.0 (#6354)
+  * build(deps): bump golang.org/x/oauth2 from 0.34.0 to 0.35.0 in /scripts/gen_github_action_config in the scripts group (#6352)
+  * unqueryvet: change default (#6350)
+  * feat: do not collect VCS information when loading code (#6349)
+  * build(deps): bump github.com/ghostiam/protogetter from 0.3.19 to 0.3.20 (#6346)
+  * build(deps): bump the linter-testdata group across 1 directory with 2 updates (#6343)
+  * build(deps): bump github.com/shirou/gopsutil/v4 from 4.25.12 to 4.26.1 (#6342)
+  * build(deps): bump github.com/MirrexOne/unqueryvet from 1.5.0 to 1.5.3 (#6332)
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.23.0 to 2.23.1 (#6338)
+  * dev: fix modernize lint issues (#6335)
+  * build(deps): bump github.com/bombsimon/wsl/v5 from 5.3.0 to 5.6.0 (#6333)
+  * feat: log information about files when configuration verification (#6330)
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.22.0 to 2.23.0 (#6328)
+  * build(deps): bump github.com/ghostiam/protogetter from 0.3.18 to 0.3.19 (#6326)
+  * build(deps): bump github.com/sirupsen/logrus from 1.9.3 to 1.9.4 (#6325)
+  * mnd: add more tests (#6324)
+  * fix: emit an error when no linters enabled (#6323)
+  * build(deps): bump github.com/MirrexOne/unqueryvet from 1.4.0 to 1.5.0 (#6320)
+  * build(deps): bump golang.org/x/tools from 0.40.0 to 0.41.0 (#6319)
+  * build(deps): bump github.com/go-viper/mapstructure/v2 from 2.4.0 to 2.5.0 (#6318)
+  * build(deps): bump golang.org/x/mod from 0.31.0 to 0.32.0 (#6317)
+  * docs: fix link to the swaggo/swag (#6314)
+  * build(deps): bump go.augendre.info/arangolint from 0.3.1 to 0.4.0 (#6304)
+  * build(deps): bump github.com/nunnatsa/ginkgolinter from 0.21.2 to 0.22.0 (#6306)
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.21.1 to 2.22.0 (#6308)
+  * build(deps): bump github.com/alexkohler/prealloc from 1.0.1 to 1.0.2 (#6307)
+  * build(deps): bump golang.org/x/sys from 0.39.0 to 0.40.0 (#6305)
+  * docs: update GitHub Action assets (#6302)
+  * docs: update documentation assets (#6301)
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.25 matching go.mod
+
+-------------------------------------------------------------------
 Thu Jan 08 19:37:40 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 2.8.0:
