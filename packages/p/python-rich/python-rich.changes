@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jan 27 16:20:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 14.3.1:
+  * Fixed characters out of unicode range reporting a cell size
+    if 0
+  * IPython now respects when a `Console` instance is passed to
+    `pretty.install`
+  * Fixed extraneous blank line on non-interactive disabled
+    `Progress`
+  * Fixed extra padding on first cell in columns
+  * Fixed trailing whitespace removed when soft_wrap=True
+  * Fixed style new-lines when soft_wrap = True and a print style
+    is set
+  * Added support for some multi-codepopint glyphs (will fix
+    alignment issues for these characters)
+  * Added support for `UNICODE_VERSION` environment variable
+  * Added `last_render_height` property to LiveRender
+  * Expose locals_max_depth and locals_overflow in
+    traceback.install
+  * Added `Segment.split_lines_terminator`
+  * `cells.cell_len` now has a `unicode_version` parameter (that
+    you probably should never change)
+  * Live will not write a new line if there was nothing rendered
+  * Changed style of Markdown headers
+  * Changed style of Markdown tables, added
+    `markdown.table.header` and `markdown.table.border` styles
+  * Changed style of Markdown rules
+
+-------------------------------------------------------------------
 Mon Oct 20 08:17:48 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 14.2.0
