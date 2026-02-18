@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Wed Feb 18 08:35:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.17.7:
+  * Improvements
+    - RFC 5424 syslog support
+    - Syslog output now follows the RFC 5424 standard, improving
+      compatibility with enterprise logging systems and SIEM
+      platforms.
+  * Docker
+    - Config path for import fixed
+    - Docker deployments now correctly provide the configuration
+      path when importing settings.
+  * Changelog
+    - 7c3cc4f fix(docker): provide config path for import
+- Update to version 2.17.6: (not released)
+- Update to version 2.17.5:
+  * Fixes
+    - Scheduled task properties saving issue resolved
+    - Fixed a bug where task properties were not saved or updated
+      correctly when working with schedules. This improves
+      reliability and consistency of scheduled task configuration.
+  * Changelog
+    - 23d300c fix(schedule): saving/updating task props (#3304)
+
+-------------------------------------------------------------------
+Tue Feb 17 13:52:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.17.4:
+  This release focuses on performance improvements, permission
+  fixes, and small usability enhancements, along with routine
+  dependency updates and test coverage improvements.
+  * Performance
+    - Reduced database queries for tasks, improving overall
+      performance and responsiveness.
+  * Permissions & UI fixes
+    - Template role permissions are now correctly enforced in the
+      UI.
+    - Integration and role permission checks in the UI have been
+      fixed.
+  * Improvements
+    - Semaphore task details are now available to shell
+      applications via environment variables.
+    - Adjustments to template directory handling.
+  * Testing & Maintenance
+    - Added unit tests for getHomeDir.
+    - Upgraded core-js dependency.
+    - Internal optimizations and minor fixes.
+  * Changelog
+    - e49d030 Merge pull request #3619 from
+      semaphoreui/perf/optimize_db_queries
+  * What's Changed
+    - [Snyk] Upgrade core-js from 3.47.0 to 3.48.0 by @fiftin in
+      #3611
+    - Add semaphore task details to shell apps as environment
+      variables by @riton in #3597
+    - test: add unit tests for getHomeDir function by @Copilot in
+      #3615
+    - home to template dir by @fiftin in #3612
+    - fix(perms): respect role permisisons for templates on ui by
+      @fiftin in #3617
+    - fix(ui): check permissions for intergrations and roles by
+      @fiftin in #3618
+    - perf(tasks): descrese db queries by @fiftin in #3619
+
+-------------------------------------------------------------------
+Mon Feb 16 12:05:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.17.2 (.1 was not released):
+  * feat(ui): upload subscr file
+  * feat(config): allow profile subscription key file
+  * feat: add active-active ha (#3608)
+  * chore(deps): bump qs and express in /web
+  * fix(deps): update module github.com/go-git/go-git/v5 to v5.16.5
+    [security]
+  * chore(deps): update dependency axios to v1.13.5 [security]
+  * chore(deps): bump axios from 1.13.2 to 1.13.5 in /web
+  * feat: Add more context to X-Semaphore headers in integration
+    response
+  * feat: Allow integration to return created task details through
+    headers
+  * chore(deps-dev): bump webpack from 5.95.0 to 5.105.0 in /web
+  * chore(deps-dev): bump lodash from 4.17.21 to 4.17.23 in /web
+
+-------------------------------------------------------------------
 Sat Feb 14 17:03:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.17.0:
