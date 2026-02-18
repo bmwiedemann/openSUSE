@@ -2607,4 +2607,23 @@ Note: The previously pushed version 3.89.0 never existed. This was a typo, which
     <comment>update to 3.93.0 (forwarded request 1330981 from ojkastl_buildservice)</comment>
     <requestid>1330991</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>41830f185ddcff394aeb7cf65fa8ec8b</srcmd5>
+    <version>3.93.3</version>
+    <time>1771430876</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.93.3:
+  * OpenAI Admin Key Detector (#4689)
+
+- Update to version 3.93.2:
+  * [INS-285] Fix custom detectors line number reporting to match
+    the full regex instead of capture group (#4697)
+  * Fix pre-receive hook hangs and missing logs by flushing logs on
+    signal and using CommandContext for git commands (#4714)
+
+- Update to version 3.93.1:
+  * Allow logging of caller info (#4731)
+  * Enhance security reporting guidelines in SECURITY.md (#4725)</comment>
+    <requestid>1333648</requestid>
+  </revision>
 </revisionlist>

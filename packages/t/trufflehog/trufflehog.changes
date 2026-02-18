@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Feb 12 06:11:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.93.3:
+  * OpenAI Admin Key Detector (#4689)
+
+-------------------------------------------------------------------
+Wed Feb 11 05:56:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.93.2:
+  * [INS-285] Fix custom detectors line number reporting to match
+    the full regex instead of capture group (#4697)
+  * Fix pre-receive hook hangs and missing logs by flushing logs on
+    signal and using CommandContext for git commands (#4714)
+
+-------------------------------------------------------------------
+Mon Feb 09 06:30:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.93.1:
+  * Allow logging of caller info (#4731)
+  * Enhance security reporting guidelines in SECURITY.md (#4725)
+
+-------------------------------------------------------------------
 Wed Feb 04 14:25:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.93.0:
