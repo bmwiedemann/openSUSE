@@ -516,4 +516,29 @@
 </comment>
     <requestid>1324490</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>0859baae23f881c7a6e7548fa20bf4bb</srcmd5>
+    <version>4.3.1</version>
+    <time>1771431098</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.3.1:
+  * Made countdown colors configurable.
+  * Added support for selecting the countdown display type (numeric value or cake-style).
+  * Wired the validity countdown switch to disable color pickers when “show countdown as seconds” is enabled, and stored those widgets in the settings state for reuse in callbacks.
+  * Added a dedicated handler to update color picker sensitivity whenever the display mode switch changes (including on dialog initialization).
+  * Added persistence for tree view column widths by loading saved widths on startup and saving current widths to the configuration on shutdown.
+  * Renamed the “OTP Value” column header to “OTP” and tagged columns with IDs to support width tracking.
+  * Added polished empty-state screens with direct call-to-action buttons.
+  * Improved consistency and clarity across menus, headers, and dialogs.
+  * Enhanced OTP list readability with resizable columns, ellipsized labels, and monospace formatting.
+  * Replaced the validity text column with a progress bar showing remaining TOTP time.
+  * Switched visual indicators from bar-based to filled pie charts for clearer status at a glance.
+  * Improved CLI usability and feedback.
+  * Refactored the codebase to follow proper GTK coding patterns and lifecycle management.
+  * Removed obsolete option-migration logic.
+  * Added an explicit shutdown event.
+  * Hardened shutdown cleanup to safely handle partially initialized components, avoiding GTK critical warnings while still persisting window state when possible.
+</comment>
+    <requestid>1333720</requestid>
+  </revision>
 </revisionlist>
