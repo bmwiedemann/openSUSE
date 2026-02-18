@@ -1,0 +1,10 @@
+<package name="python-hatanaka" project="openSUSE:Factory">
+  <title>Effortless compression / decompression of RINEX files in Python and on the command line.</title>
+  <description>Effortless compression / decompression of RINEX files in Python and on the command line.
+
+Supports all compression formats allowed by the RINEX 2, 3 and 4 standards:
+* Hatanaka compression for Observation Data Files,
+* LZW (.Z), gzip (.gz), bzip2 (.bz2) and .zip.
+</description>
+  <url>https://github.com/valgur/hatanaka</url>
+</package>
