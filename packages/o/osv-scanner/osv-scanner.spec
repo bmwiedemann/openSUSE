@@ -17,14 +17,14 @@
 
 
 Name:           osv-scanner
-Version:        2.3.2
+Version:        2.3.3
 Release:        0
 Summary:        Vulnerability scanner written in Go
 License:        Apache-2.0
 URL:            https://github.com/google/osv-scanner
 Source:         osv-scanner-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.25 >= 1.25.4
+BuildRequires:  go1.25 >= 1.25.7
 
 %description
 Use OSV-Scanner to find existing vulnerabilities affecting your project's

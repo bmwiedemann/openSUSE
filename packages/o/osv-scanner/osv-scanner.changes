@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Feb 12 06:28:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.3.3:
+  * Features:
+    - Feature #2458 Add --exclude flag to skip paths during
+      scanning.
+    - Feature #2477 Add pylock extractor.
+    - Feature #2475 Add base image info to container scanning
+      output header (in table, markdown and vertical formats).
+  * Misc:
+    - Update Go version to 1.25.7.
+    - Update osv-scalibr from v0.4.1 to v0.4.2. Release note.
+    - Refactor to better align with osv-scalibr plugins and
+      inventory data structure.
+  * Dependencies
+    - build(deps): bump github.com/go-git/go-git/v5 from 5.16.4 to
+      5.16.5 in the go_modules group across 1 directory (#2504)
+    - build(deps-dev): bump faraday from 2.14.0 to 2.14.1 in /docs
+      in the bundler group across 1 directory (#2503)
+    - chore(deps): update workflows (#2471)
+    - chore: update Go version to v1.25.6 (#2490)
+    - fix(deps): update osv-scanner minor (#2470)
+    - fix: bump Go to v1.25.7 (#2506)
+
+-------------------------------------------------------------------
 Thu Jan 15 05:56:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.3.2:
