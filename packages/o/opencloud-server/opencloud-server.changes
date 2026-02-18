@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Feb 17 06:11:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.1.0:
+  * Bug Fixes
+    - [full-ci] Bump reva v2.42.4 [#2348]
+    - fix: fix typo in variable description [#2333]
+    - fix: include sessionID in sse logout event [#2327]
+    - fix: fix typo in gateway service documentation [#2332]
+    - Sanitize web config only once [#2286]
+  * Enhancement
+    - external tenant id [#2258]
+  * Documentation
+    - fix: make file urls [#2304]
+  * Dependencies
+    - build(deps): bump github.com/gabriel-vasile/mimetype from
+      1.4.12 to 1.4.13 [#2316]
+    - build(deps): bump
+      go.opentelemetry.io/otel/exporters/stdout/stdouttrace from
+      1.39.0 to 1.40.0 [#2279]
+    - update reva after merge #514 [#2309]
+    - build(deps): bump github.com/go-chi/chi/v5 from 5.2.4 to
+      5.2.5 [#2278]
+
+-------------------------------------------------------------------
 Fri Feb 06 06:01:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.0.2:
