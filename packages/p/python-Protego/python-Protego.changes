@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 17 08:58:19 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 0.6.0: 
+  * Added official support for Python 3.14.
+  * Dropped support for Python 3.9 and PyPy 3.10.
+  * CI fixes and improvements.
+
+-------------------------------------------------------------------
 Thu Jul  3 13:13:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.5.0
