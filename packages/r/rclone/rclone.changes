@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Feb 17 18:57:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.73.1:
+  * Version v1.73.1
+  * build: fix build using go 1.26.0 instead of go 1.25.7
+  * fs/march: fix runtime: program exceeds 10000-thread limit
+  * accounting: fix missing server side stats from core/stats rc
+  * pacer: re-read the sleep time as it may be stale
+  * pacer: fix deadlock between pacer token and --max-connections
+  * build: fix CVE-2025-68121 by updating go to 1.25.7 or later - fixes #9167
+  * drime: fix files and directories being created in the default workspace
+  * docs: update sponsors
+  * copyurl: Extend copyurl docs with an example of CSV FILENAMEs starting with a path.
+  * internxt: implement re-login under refresh logic, improve retry logic - fixes #9174
+  * docs: add ExchangeRate-API as a sponsor
+  * build: bump github.com/go-chi/chi/v5 from 5.2.3 to 5.2.5 to fix GO-2026-4316
+  * Set list_version to 2 for FileLu S3 configuration
+  * filelu: add multipart upload support with configurable cutoff
+  * filelu: add multipart init response type
+  * filelu: add comment for response body wrapping
+  * filelu: avoid buffering entire file in memory
+  * docs: update sponsor logos
+  * filen: fix potential panic in case of error during upload
+  * filen: fix 32 bit targets not being able to list directories Fixes #9142
+  * Start v1.73.1-DEV development
+
+-------------------------------------------------------------------
 Fri Jan 30 22:22:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 1.73.0:

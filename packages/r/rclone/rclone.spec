@@ -18,7 +18,7 @@
 
 
 Name:           rclone
-Version:        1.73.0
+Version:        1.73.1
 Release:        0
 Summary:        Rsync for cloud storage
 License:        MIT
@@ -27,7 +27,7 @@ URL:            https://rclone.org/
 Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 BuildRequires:  fdupes
-BuildRequires:  go >= 1.20
+BuildRequires:  go >= 1.25
 BuildRequires:  golang-packaging
 %if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
 BuildRequires:  gcc11
