@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Feb 17 07:46:58 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- Update to 0.26.3:
+  * Bug fix out of range values #248
+    Using versions 0.26.1 and 0.26.2 is not recommended
+
+-------------------------------------------------------------------
+Tue Feb 17 06:28:32 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.26.2:
+  * Fix a bug when the number of tiles is 0, and, in
+    resilient mode, when the the start of tile-part segment
+    (SOT) has an incorrect index, Isot #245
+
+-------------------------------------------------------------------
+Mon Feb 16 09:04:35 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.26.1:
+  * Add ARM CPU feature detection for FreeBSD and OpenBSD #238
+  * Bug fix: some HTJ2K codestream parameters are now qualified before being
+    used #244
+
+-------------------------------------------------------------------
 Mon Jan 19 08:31:46 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - update to 0.26.0:
