@@ -19872,6 +19872,7 @@ unsorted:
   - nghttp3-devel 
   - nginx 
   - nginx-macros 
+  - nginx-module-acme 
   - nginx-module-brotli 
   - nginx-module-echo 
   - nginx-module-geoip2 
@@ -23292,7 +23293,6 @@ unsorted:
   - postgresql13-llvmjit-devel 
   - postgresql13-orafce 
   - postgresql13-pg_cron 
-  - postgresql13-pg_rrule 
   - postgresql13-pgagent 
   - postgresql13-pgaudit 
   - postgresql13-pgsql-ogr-fdw 
@@ -23316,7 +23316,6 @@ unsorted:
   - postgresql14-llvmjit-devel 
   - postgresql14-orafce 
   - postgresql14-pg_cron 
-  - postgresql14-pg_rrule 
   - postgresql14-pgagent 
   - postgresql14-pgaudit 
   - postgresql14-pgsql-ogr-fdw 
@@ -23340,7 +23339,6 @@ unsorted:
   - postgresql15-llvmjit-devel 
   - postgresql15-orafce 
   - postgresql15-pg_cron 
-  - postgresql15-pg_rrule 
   - postgresql15-pgagent 
   - postgresql15-pgaudit 
   - postgresql15-pgsql-ogr-fdw 
@@ -23365,7 +23363,6 @@ unsorted:
   - postgresql16-llvmjit-devel 
   - postgresql16-orafce 
   - postgresql16-pg_cron 
-  - postgresql16-pg_rrule 
   - postgresql16-pgagent 
   - postgresql16-pgaudit 
   - postgresql16-pgsql-ogr-fdw 
@@ -23390,7 +23387,6 @@ unsorted:
   - postgresql17-llvmjit-devel 
   - postgresql17-orafce 
   - postgresql17-pg_cron 
-  - postgresql17-pg_rrule 
   - postgresql17-pgagent 
   - postgresql17-pgaudit 
   - postgresql17-pgsql-ogr-fdw 
@@ -23412,7 +23408,6 @@ unsorted:
   - postgresql18-libversion 
   - postgresql18-llvmjit-devel 
   - postgresql18-orafce 
-  - postgresql18-pg_rrule 
   - postgresql18-pgagent 
   - postgresql18-pgaudit 
   - postgresql18-pgvector 
@@ -24687,6 +24682,7 @@ unsorted:
   - python311-azure-mgmt-applicationinsights 
   - python311-azure-mgmt-appplatform 
   - python311-azure-mgmt-arizeaiobservabilityeval 
+  - python311-azure-mgmt-artifactsigning 
   - python311-azure-mgmt-astro 
   - python311-azure-mgmt-attestation 
   - python311-azure-mgmt-authorization 
@@ -24814,6 +24810,7 @@ unsorted:
   - python311-azure-mgmt-maintenance 
   - python311-azure-mgmt-managedapplications 
   - python311-azure-mgmt-managednetworkfabric 
+  - python311-azure-mgmt-managedops 
   - python311-azure-mgmt-managedservices 
   - python311-azure-mgmt-managementgroups 
   - python311-azure-mgmt-managementpartner 
@@ -25671,6 +25668,7 @@ unsorted:
   - python311-glob2 
   - python311-glucat 
   - python311-gmpy2 
+  - python311-gnssanalysis 
   - python311-gnureadline 
   - python311-gobject-devel 
   - python311-gobject-stubs 
@@ -25760,6 +25758,7 @@ unsorted:
   - python311-haproxyctl 
   - python311-hardware 
   - python311-hashids 
+  - python311-hatanaka 
   - python311-hatch 
   - python311-hatch-fancy-pypi-readme 
   - python311-hatch-jupyter-builder 
@@ -26605,6 +26604,7 @@ unsorted:
   - python311-platformdirs 
   - python311-platformio 
   - python311-plette 
+  - python311-plotext 
   - python311-plotly 
   - python311-pluggy 
   - python311-pluginbase 
@@ -28517,6 +28517,7 @@ unsorted:
   - python312-azure-mgmt-applicationinsights 
   - python312-azure-mgmt-appplatform 
   - python312-azure-mgmt-arizeaiobservabilityeval 
+  - python312-azure-mgmt-artifactsigning 
   - python312-azure-mgmt-astro 
   - python312-azure-mgmt-attestation 
   - python312-azure-mgmt-authorization 
@@ -28644,6 +28645,7 @@ unsorted:
   - python312-azure-mgmt-maintenance 
   - python312-azure-mgmt-managedapplications 
   - python312-azure-mgmt-managednetworkfabric 
+  - python312-azure-mgmt-managedops 
   - python312-azure-mgmt-managedservices 
   - python312-azure-mgmt-managementgroups 
   - python312-azure-mgmt-managementpartner 
@@ -29515,6 +29517,7 @@ unsorted:
   - python312-glob2 
   - python312-glucat 
   - python312-gmpy2 
+  - python312-gnssanalysis 
   - python312-gnureadline 
   - python312-gobject 
   - python312-gobject-Gdk 
@@ -29610,6 +29613,7 @@ unsorted:
   - python312-haproxyctl 
   - python312-hardware 
   - python312-hashids 
+  - python312-hatanaka 
   - python312-hatch 
   - python312-hatch-fancy-pypi-readme 
   - python312-hatch-jupyter-builder 
@@ -30479,6 +30483,7 @@ unsorted:
   - python312-platformdirs 
   - python312-platformio 
   - python312-plette 
+  - python312-plotext 
   - python312-plotly 
   - python312-pluggy 
   - python312-pluginbase 
@@ -32411,6 +32416,7 @@ unsorted:
   - python313-azure-mgmt-applicationinsights 
   - python313-azure-mgmt-appplatform 
   - python313-azure-mgmt-arizeaiobservabilityeval 
+  - python313-azure-mgmt-artifactsigning 
   - python313-azure-mgmt-astro 
   - python313-azure-mgmt-attestation 
   - python313-azure-mgmt-authorization 
@@ -32538,6 +32544,7 @@ unsorted:
   - python313-azure-mgmt-maintenance 
   - python313-azure-mgmt-managedapplications 
   - python313-azure-mgmt-managednetworkfabric 
+  - python313-azure-mgmt-managedops 
   - python313-azure-mgmt-managedservices 
   - python313-azure-mgmt-managementgroups 
   - python313-azure-mgmt-managementpartner 
@@ -33398,6 +33405,7 @@ unsorted:
   - python313-glob2 
   - python313-glucat 
   - python313-gmpy2 
+  - python313-gnssanalysis 
   - python313-gnureadline 
   - python313-gobject-devel 
   - python313-gobject-stubs 
@@ -33486,6 +33494,7 @@ unsorted:
   - python313-haproxyctl 
   - python313-hardware 
   - python313-hashids 
+  - python313-hatanaka 
   - python313-hatch 
   - python313-hatch-fancy-pypi-readme 
   - python313-hatch-jupyter-builder 
@@ -34354,6 +34363,7 @@ unsorted:
   - python313-platformdirs 
   - python313-platformio 
   - python313-plette 
+  - python313-plotext 
   - python313-plotly 
   - python313-pluggy 
   - python313-pluginbase 
