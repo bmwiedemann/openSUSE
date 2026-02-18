@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 18 08:12:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.12.3:
+  * Others
+    - clusterctl: Update cert-manager to v1.19.3 (#13314)
+    - clusterctl: Update to cert-manager v1.19.2 (#13278)
+    - Dependency: Go bump 1.24.13 (#13324)
+
+-------------------------------------------------------------------
 Wed Jan 21 06:13:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.12.2:
