@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 17 15:43:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- build with cython0
+
+-------------------------------------------------------------------
 Wed Feb 11 04:17:47 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not call setup.py develop during the testsuite.

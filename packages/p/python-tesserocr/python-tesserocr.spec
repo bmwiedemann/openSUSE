@@ -24,7 +24,7 @@ Summary:        A Python wrapper around tesseract-ocr
 License:        MIT
 URL:            https://github.com/sirfz/tesserocr
 Source:         https://files.pythonhosted.org/packages/source/t/tesserocr/tesserocr-%{version}.tar.gz
-BuildRequires:  %{python_module Cython3 < 3.2.0}
+BuildRequires:  %{python_module Cython0}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}

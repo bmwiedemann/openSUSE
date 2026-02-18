@@ -274,4 +274,12 @@
 - List directories under python_sitearch explicitly.</comment>
     <requestid>1332355</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>2ffd2dd85bc81be7d25304af56b5da02</srcmd5>
+    <version>2.9.2</version>
+    <time>1771430761</time>
+    <user>anag_factory</user>
+    <comment>- build with cython0</comment>
+    <requestid>1333598</requestid>
+  </revision>
 </revisionlist>
