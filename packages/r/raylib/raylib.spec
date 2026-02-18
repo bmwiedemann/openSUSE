@@ -22,6 +22,7 @@ Release:        0
 Summary:        C library for learning video game programming
 License:        Zlib
 Group:          Development/Libraries/C and C++
+# Legal-Review-Notice: exmaples containing files under CC BY-NC 4.0 are not distributed
 URL:            https://www.raylib.com
 Source:         raylib-%{version}.tar.xz
 Patch0:         raylib-CVE-2025-15533-CVE-2025-15534.patch

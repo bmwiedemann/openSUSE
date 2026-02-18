@@ -332,4 +332,13 @@
   * Add raylib-CVE-2025-15533-CVE-2025-15534.patch</comment>
     <requestid>1328092</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>907c601df2f8a2c05e1800e7cdbde754</srcmd5>
+    <version>5.5</version>
+    <time>1771431141</time>
+    <user>anag_factory</user>
+    <comment>- Add a legal notice about examples not being distributed
+  As some files under examples/* are under CC BY-NC 4.0</comment>
+    <requestid>1333742</requestid>
+  </revision>
 </revisionlist>
