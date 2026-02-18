@@ -1,0 +1,12 @@
+Index: dnsdist-2.0.2/dnsdist-protobuf.cc
+===================================================================
+--- dnsdist-2.0.2.orig/dnsdist-protobuf.cc
++++ dnsdist-2.0.2/dnsdist-protobuf.cc
+@@ -26,6 +26,7 @@
+ #include "dnsdist.hh"
+ #include "dnsdist-protobuf.hh"
+ #include "protozero.hh"
++#include "dolog.hh"
+ 
+ DNSDistProtoBufMessage::DNSDistProtoBufMessage(const DNSQuestion& dnsquestion) :
+   d_dq(dnsquestion)

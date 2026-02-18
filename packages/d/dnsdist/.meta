@@ -8,6 +8,5 @@ dnsdist is dynamic, in the sense that its configuration can be changed at
 runtime, and that its statistics can be queried from a console-like interface.
 
 </description>
-  <devel project="server:dns" package="dnsdist"/>
   <url>http://www.powerdns.com/</url>
 </package>

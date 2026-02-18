@@ -16,8 +16,6 @@
 #
 
 
-%define home           %{_var}/lib/%{name}
-
 %if 0%{?suse_version} == 1500
 %global force_gcc_version 14
 %endif
@@ -48,7 +46,7 @@
 %bcond_with     dnsdist_quiche
 %bcond_with     dnsdist_xdp
 Name:           dnsdist
-Version:        2.0.0
+Version:        2.0.2
 Release:        0
 Summary:        A highly DNS-, DoS- and abuse-aware loadbalancer
 License:        GPL-2.0-only
@@ -63,9 +61,13 @@ Source11:       dnsdist.lua
 Source12:       usr.sbin.dnsdist
 Source13:       local.usr.sbin.dnsdist
 Source99:       series
+Source100:      README.md
+Patch1:         fix_compilation.patch
 BuildRequires:  gcc%{?force_gcc_version}
 BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  libboost_headers-devel
+# Because meson failure detecting boost without a linkable binary, even if we do not need one
+BuildRequires:  libboost_filesystem-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gnutls)
@@ -185,7 +187,6 @@ install -D -m 0644 %{SOURCE12} %{buildroot}%{_sysconfdir}/apparmor.d/usr.sbin.dn
 install -D -m 0644 %{SOURCE13} %{buildroot}%{_sysconfdir}/apparmor.d/local/usr.sbin.dnsdist
 %endif
 
-install -Dd -m 0750    %{buildroot}%{_sysconfdir}/%{name}/ %{buildroot}%{home}/
 install -m 0640 %{SOURCE11} %{buildroot}%{_sysconfdir}/%{name}/dnsdist.conf
 
 install -D -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/dnsdist.conf
@@ -230,6 +231,5 @@ perl -p -i -e 's|\r\n|\n|g ; s|\r|\n|g' docs/reference/logging.rst
 %config(noreplace) %{_sysconfdir}/apparmor.d/local/usr.sbin.dnsdist
 %endif
 %config(noreplace) %attr(-,root,%{name}) %{_sysconfdir}/%{name}/
-%dir %attr(700,%{name},%{name}) %{home}
 
 %changelog
