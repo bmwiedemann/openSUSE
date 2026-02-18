@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 17 21:07:00 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Thunderbird 140.7.2 ESR
+  MFSA 2026-11 (boo#1258231)
+  * CVE-2026-2447 (bmo#2014390)
+    Heap buffer overflow in libvpx
+
+-------------------------------------------------------------------
 Fri Jan 30 18:41:56 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Thunderbird 140.7.1 ESR
