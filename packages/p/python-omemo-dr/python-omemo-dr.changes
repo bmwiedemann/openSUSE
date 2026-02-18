@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 16 19:34:40 UTC 2026 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.2.0:
+  * SessionManager: Add convenience methods to modify group
+    members.
+
+-------------------------------------------------------------------
+Tue Dec 17 10:00:08 UTC 2025 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.1.0:
+  * Allow encryption only to our own devices.
+- Drop omemo-dr-python-3.9.patch.
+
+-------------------------------------------------------------------
 Wed Nov  8 22:12:26 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.0.1:

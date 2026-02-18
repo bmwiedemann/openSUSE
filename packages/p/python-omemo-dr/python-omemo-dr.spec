@@ -1,7 +1,7 @@
 #
 # spec file for package python-omemo-dr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,17 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %define _name   omemo-dr
+%{?sle15_python_module_pythons}
 Name:           python-omemo-dr
-Version:        1.0.1
+Version:        1.2.0
 Release:        0
 Summary:        OMEMO Encryption Library
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://dev.gajim.org/gajim/omemo-dr
 Source:         %{url}/-/archive/v%{version}/%{_name}-v%{version}.tar.bz2
-# PATCH-FIX-OPENSUSE omemo-dr-python-3.9.patch -- Reduce required Python version to 3.9.
-Patch0:         omemo-dr-python-3.9.patch
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module packaging}
