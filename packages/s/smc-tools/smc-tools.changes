@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb 18 12:35:00 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade smc-tools to version 1.8.7 (jsc#PED-14601)
+- Bug fixes:
+  * smc_rnics: fix regression when PFT not available
+  * smcd/smcr: prevent DoS on statistics workfile present in /tmp/
+- Removed obsolete patch (the fix is included in this version)
+  * smc-tools-smcd-smcr-prevent-DoS-on-statistics-workfile-present-in-tmp-dir.patch 
+
+-------------------------------------------------------------------
+Wed Feb 18 08:11:30 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch (bsc#1230052) for VUL-1: smc-tools: 
+        predictable /tmp file allows for local denial of service
+  * smc-tools-smcd-smcr-prevent-DoS-on-statistics-workfile-present-in-tmp-dir.patch 
+
+-------------------------------------------------------------------
 Thu Dec 11 09:17:40 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade smc-tools to v1.8.6 (jsc#PED-14601)
