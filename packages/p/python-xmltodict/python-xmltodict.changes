@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 15 09:18:35 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.3
+  Bug Fixes
+  * unparse: serialize None text/attrs as empty values
+    (fixes #401) (aa16511).
+
+-------------------------------------------------------------------
 Mon Nov 24 09:03:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.0.2
