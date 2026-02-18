@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbxmpp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,29 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %define _name   nbxmpp
+%{?sle15_python_module_pythons}
 Name:           python-nbxmpp
-Version:        6.3.0
+Version:        7.0.0
 Release:        0
 Summary:        XMPP library by Gajim team
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://dev.gajim.org/gajim/python-nbxmpp
 Source:         %{url}/-/archive/%{version}/python-nbxmpp-%{version}.tar.bz2
-BuildRequires:  %{python_module base >= 3.10}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 65.0}
-BuildRequires:  %{python_module wheel}
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-generators >= 20220912
-BuildRequires:  python-rpm-macros >= 20220912
+BuildRequires:  %{python_module base >= 3.11}
 # For testing
 BuildRequires:  %{python_module gobject-Gdk >= 3.42}
 BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module precis-i18n}
+BuildRequires:  %{python_module setuptools >= 65.0}
 BuildRequires:  %{python_module sqlite3}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-generators >= 20220912
+BuildRequires:  python-rpm-macros >= 20220912
 BuildRequires:  typelib(Soup) = 3.0
 Requires:       python-gobject >= 3.42
 Requires:       python-idna
@@ -58,7 +56,7 @@ This library is initialy a fork of xmpppy one, but using
 non-blocking sockets.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %pyproject_wheel

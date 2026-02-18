@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Dec 17 10:00:08 UTC 2025 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 6.3.1:
+  * Log details about invalid MUC affiliation items.
+  * Log details about invalid roster items.
+  * Leave text condition in place in CommonError.get_text().
+  * Do not treat thread subject as MUC subject.
+  * Websocket: Disconnect signals on finalize.
+- Update to version 6.4.0:
+  * Pubsub: Add subscribe/unsubscribe methods.
+  * VCard4: Parse notification events.
+  * VCard4: Add get_parameter() method for easier access.
+  * Support for open graph data embedded in message.
+  * Add support for reaction restrictions.
+  * Add pronouns field to VCard4.
+  * Support for hats "hue" attribute.
+  * Connection: Allow DNS requests for "direct" proxies.
+- Update to version 7.0.0:
+  * Remove HTTP Requests API
+  * Client: Add set_host_meta_data()
+
+-------------------------------------------------------------------
 Sun Sep 21 19:36:01 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.3.0:
