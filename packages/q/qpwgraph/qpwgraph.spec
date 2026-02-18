@@ -17,7 +17,7 @@
 
 
 Name:           qpwgraph
-Version:        0.9.8
+Version:        0.9.9
 Release:        0
 Summary:        PipeWire Graph Qt GUI Interface
 License:        GPL-2.0-or-later
