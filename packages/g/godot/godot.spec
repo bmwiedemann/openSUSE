@@ -29,7 +29,7 @@
 %define compiler_version_leap 13
 
 Name:           godot
-Version:        4.6
+Version:        4.6.1
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -37,10 +37,6 @@ Group:          Development/Tools/Other
 URL:            https://godotengine.org/
 Source0:        https://github.com/godotengine/%{name}/releases/download/%{version}-stable/%{name}-%{version}-stable.tar.xz
 Source1:        https://github.com/godotengine/%{name}/releases/download/%{version}-stable/%{name}-%{version}-stable.tar.xz.sha256
-# PATCH-FIX-UPSTREAM LSP__add_godot_to_known_language_ids.patch more details inside
-Patch0:         LSP__add_godot_to_known_language_ids.patch
-# PATCH-FIX-UPSTREAM LSP__handle_clients_that_do_not_support_CompletionContext.patch more details inside
-Patch1:         LSP__handle_clients_that_do_not_support_CompletionContext.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -177,7 +173,7 @@ Provides:       bundled(polyclipping)
 Provides:       bundled(polypartition)
 Provides:       bundled(pvrtccompressor)
 Provides:       bundled(qoa)
-Provides:       bundled(re-spirv) = 5af3b606e6aaf11bae8dc7b5cd236c943e24865e
+Provides:       bundled(re-spirv) = c1853b0221cd43866b792406f55c4ab10a0b4503
 Provides:       bundled(smaa)
 Provides:       bundled(smaz)
 Provides:       bundled(spirv-cross)
@@ -212,7 +208,7 @@ Provides:       bundled(embree) = 4.4.0
 #Provides:       bundled(brotli) = 1.2.0
 #Provides:       bundled(freetype2) = 2.14.1
 #Provides:       bundled(graphite) = 1.3.14
-#Provides:       bundled(libpng) = 1.6.53
+#Provides:       bundled(libpng) = 1.6.54
 #Provides:       bundled(libzstd) = 1.5.7
 #Provides:       bundled(zlib) = 1.3.1.2
 %endif

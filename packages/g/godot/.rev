@@ -462,4 +462,12 @@
 - added patch LSP__handle_clients_that_do_not_support_CompletionContext.patch</comment>
     <requestid>1331459</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>78cc09b2bf530962d54e23099c845e4e</srcmd5>
+    <version>4.6.1</version>
+    <time>1771431154</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1333743</requestid>
+  </revision>
 </revisionlist>

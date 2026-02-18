@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 17 12:00:00 UTC 2026 - cunix@mail.de
+
+- Update to 4.6.1
+  * LSP: Add "godot" to known language ids
+  * LSP: Handle clients that do not support "CompletionContext"
+  * Wayland Embedder: Fix FD leak with inert objects
+  * and more: https://godotengine.github.io/godot-interactive-changelog/#4.6.1
+
+- deleted LSP__add_godot_to_known_language_ids.patch
+- deleted LSP__handle_clients_that_do_not_support_CompletionContext.patch
+
+-------------------------------------------------------------------
 Sat Jan 31 12:00:00 UTC 2026 - cunix@mail.de
 
 - added patch LSP__add_godot_to_known_language_ids.patch
