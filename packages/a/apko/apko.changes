@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Feb 17 12:44:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.8:
+  * build(deps): bump chainguard-dev/actions from 1.6.0 to 1.6.1
+    (#2076)
+  * build(deps): bump github/codeql-action from 4.32.2 to 4.32.3
+    (#2073)
+  * Add LockImageConfigurationWithPackages to return package
+    metadata (#2061)
+
+-------------------------------------------------------------------
+Mon Feb 16 05:51:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.7:
+  * build(deps): bump k8s.io/apimachinery from 0.35.0 to 0.35.1
+    (#2071)
+  * build(deps): bump google.golang.org/api from 0.265.0 to 0.266.0
+    (#2072)
+  * build(deps): bump chainguard-dev/actions from 1.5.15 to 1.6.0
+    (#2070)
+  * build(deps): bump step-security/harden-runner from 2.14.1 to
+    2.14.2 (#2065)
+  * build(deps): bump golang.org/x/sys from 0.40.0 to 0.41.0
+    (#2064)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.16.4 to
+    5.16.5 (#2068)
+  * build(deps): bump github.com/klauspost/compress from 1.18.3 to
+    1.18.4 (#2066)
+
+-------------------------------------------------------------------
 Mon Feb 09 06:18:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.6:
