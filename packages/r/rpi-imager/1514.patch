@@ -1,0 +1,43 @@
+From fb74bd7ae8e8fbe4654908b068d53336de22ec05 Mon Sep 17 00:00:00 2001
+From: uro <5954927+uro666@users.noreply.github.com>
+Date: Sun, 15 Feb 2026 14:11:40 +0000
+Subject: [PATCH] Fix GenerateTimezones.cmake FALLBACK_FILE path.
+
+This fixes the build when built in isolation with no access to the internet.
+
+Prior to this patch `rpi-imager` would fail to find its actual FALLBACK_FILE `timezones.txt` in the source as it was seeking `timezones.txt.fallback`.
+
+This results in builds where users are unable to select nor set their timezone within the `rpi-imager` application and being left with a blank dropdown gui element.
+---
+ src/cmake/GenerateTimezones.cmake | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/cmake/GenerateTimezones.cmake b/src/cmake/GenerateTimezones.cmake
+index 098c1d078..edf839e84 100644
+--- a/src/cmake/GenerateTimezones.cmake
++++ b/src/cmake/GenerateTimezones.cmake
+@@ -42,7 +42,7 @@ if(download_error)
+     message(STATUS "Attempting to use fallback timezone list...")
+     
+     # Try to find a fallback timezone file
+-    set(FALLBACK_FILE "${SOURCE_DIR}/timezones.txt.fallback")
++    set(FALLBACK_FILE "${SOURCE_DIR}/timezones.txt")
+     if(EXISTS "${FALLBACK_FILE}")
+         message(STATUS "Using fallback timezone file: ${FALLBACK_FILE}")
+         file(READ "${FALLBACK_FILE}" fallback_content)
+@@ -141,7 +141,7 @@ list(LENGTH timezone_list num_timezones)
+ message(STATUS "Generated ${num_timezones} timezone entries in ${OUTPUT_FILE}")
+ 
+ # Compare with fallback file if it exists
+-set(FALLBACK_FILE "${SOURCE_DIR}/timezones.txt.fallback")
++set(FALLBACK_FILE "${SOURCE_DIR}/timezones.txt")
+ if(EXISTS "${FALLBACK_FILE}")
+     message(STATUS "Comparing with existing timezone list...")
+     
+@@ -231,4 +231,4 @@ endif()
+ # Clean up downloaded archive to save space
+ file(REMOVE "${TZDATA_ARCHIVE}")
+ 
+-message(STATUS "Timezone generation completed successfully")
+\ No newline at end of file
++message(STATUS "Timezone generation completed successfully")

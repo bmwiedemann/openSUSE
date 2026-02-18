@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Feb 17 14:00:35 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Version 2.0.6
+  * Changes
+    + New UI
+    + New installer for Windows
+    + New back-end writing algorithms
+    + New download algorithms
+    + Accessbility annotations throughout
+    + Raspberry Pi Connect integration
+    + Keyboard navigation
+    + Enhanced guardrails
+    + New CLI-only package
+- Removed patch:
+  * fix_cmake.patch
+    + not needed anymore
+- Changed patch:
+  * 0000-remove-vendoring.patch -> remove-vendoring.patch
+    + adapt to the new code and to our dependencies
+- Added patches:
+  * 1505.patch
+    + fixes fallback file dialog that was entirely non-functional
+      due to incorrect use of a Qt model role
+  * 1514.patch
+    + fixes the build in isolation with no access to the internet
+  * 1515.patch
+    + fixes Non-existent attached object exception for the
+      ProgressBar in WritingStep
+
+-------------------------------------------------------------------
 Wed Nov 19 16:14:35 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Fix issue in CMakefile.

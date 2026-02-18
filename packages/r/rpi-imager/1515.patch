@@ -1,0 +1,70 @@
+From ac51d675f7ec65556287a441d42cd18a86c15fe3 Mon Sep 17 00:00:00 2001
+From: uro <5954927+uro666@users.noreply.github.com>
+Date: Sun, 15 Feb 2026 18:03:27 +0000
+Subject: [PATCH] Add missing import to WritingStep.qml
+
+The WritingStep.qml file is missing an import for `QtQuick.Controls.Material` which causes the application to throw a `Non-attached object` exception for the ProgressBar in WritingStep and ultimately `rpi-imager` fails to run through pkexec or its .desktop file:
+
+```
+$ pkexec /usr/bin/rpi-imager
+Running as root via pkexec
+Original user: uro
+Original UID: 1001
+Original home directory: /home/uro
+DISPLAY already set to: :0
+XAUTHORITY already set to: /run/user/1001/xauth_ygrJgv
+Set HOME to: /home/uro
+Set XDG_CACHE_HOME to: /home/uro/.cache
+Set XDG_CONFIG_HOME to: /home/uro/.config
+Set XDG_DATA_HOME to: /home/uro/.local/share
+Set XDG_RUNTIME_DIR to: /run/user/1001
+Set DBUS_SESSION_BUS_ADDRESS to: unix:path=/run/user/1001/bus
+No D-Bus session bus available
+QQmlApplicationEngine failed to load component
+qrc:/qt/qml/RpiImager/main.qml:107:9: Type WizardContainer unavailable
+qrc:/qt/qml/RpiImager/wizard/WizardContainer.qml:1066:9: Type WritingStep unavailable
+qrc:/qt/qml/RpiImager/wizard/WritingStep.qml:327:17: Non-existent attached object
+Qt has caught an exception thrown from an event handler. Throwing
+exceptions from an event handler is not supported in Qt.
+You must not let any exception whatsoever propagate through Qt code.
+
+(process:162315): GLib-CRITICAL **: 17:50:38.315: g_source_unref_internal: assertion 'source != NULL' failed
+```
+With the patch applied the `rpi-imager` application runs successfully being launched from the terminal with pkexec or with its .desktop file ( which runs rpi-imager via pkexec ) and does not throw any exceptions:
+
+```
+ $ pkexec /usr/bin/rpi-imager
+Running as root via pkexec
+Original user: uro
+Original UID: 1001
+Original home directory: /home/uro
+DISPLAY already set to: :0
+XAUTHORITY already set to: /run/user/1001/xauth_ygrJgv
+Set HOME to: /home/uro
+Set XDG_CACHE_HOME to: /home/uro/.cache
+Set XDG_CONFIG_HOME to: /home/uro/.config
+Set XDG_DATA_HOME to: /home/uro/.local/share
+Set XDG_RUNTIME_DIR to: /run/user/1001
+Set DBUS_SESSION_BUS_ADDRESS to: unix:path=/run/user/1001/bus
+No D-Bus session bus available
+OSListModel: Pruning OS entry with no valid subitems: "RetroPie"
+OSListModel: Pruning OS entry with no valid subitems: "Batocera.linux"
+OSListModel: Pruning OS entry with no valid subitems: "IPFire"
+OSListModel: Pruning OS entry with no valid subitems: "vetra player"
+```
+---
+ src/wizard/WritingStep.qml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/wizard/WritingStep.qml b/src/wizard/WritingStep.qml
+index b50909104..06da20ebf 100644
+--- a/src/wizard/WritingStep.qml
++++ b/src/wizard/WritingStep.qml
+@@ -5,6 +5,7 @@
+ 
+ import QtQuick
+ import QtQuick.Controls
++import QtQuick.Controls.Material
+ import QtQuick.Layouts
+ import "../qmlcomponents"
+ 
