@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Feb 11 19:09:06 CET 2026 - Matej Cepl <mcepl@suse.com>
+
+- CVE-2025-11468: preserving parens when folding comments in
+  email headers (bsc#1257029, gh#python/cpython#143935).
+  CVE-2025-11468-email-hdr-fold-comment.patch
+- CVE-2026-0672: rejects control characters in http cookies.
+  (bsc#1257031, gh#python/cpython#143919)
+  CVE-2026-0672-http-hdr-inject-cookie-Morsel.patch
+- CVE-2026-0865: rejecting control characters in
+  wsgiref.headers.Headers, which could be abused for injecting
+  false HTTP headers. (bsc#1257042, gh#python/cpython#143916)
+  CVE-2026-0865-wsgiref-ctrl-chars.patch
+- CVE-2025-15366: basically the same as the previous patch for
+  IMAP protocol. (bsc#1257044, gh#python/cpython#143921)
+  CVE-2025-15366-imap-ctrl-chars.patch
+- CVE-2025-15282: basically the same as the previous patch for
+  urllib library. (bsc#1257046, gh#python/cpython#143925)
+  CVE-2025-15282-urllib-ctrl-chars.patch
+- CVE-2025-15367: basically the same as the previous patch for
+  poplib library. (bsc#1257041, gh#python/cpython#143923)
+  CVE-2025-15367-poplib-ctrl-chars.patch
+- CVE-2025-12781: fix decoding with non-standard Base64 alphabet
+  (bsc#1257108, gh#python/cpython#125346)
+  CVE-2025-12781-b64decode-alt-chars.patch
+
+-------------------------------------------------------------------
 Thu Dec 18 10:33:44 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2025-13836-http-resp-cont-len.patch (bsc#1254400,
