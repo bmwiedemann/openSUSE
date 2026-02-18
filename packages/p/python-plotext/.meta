@@ -1,0 +1,12 @@
+<package name="python-plotext" project="openSUSE:Factory">
+  <title>Plots directly on terminal</title>
+  <description>plotext plots directly on terminal
+
+- it allows for scatter, line, bar, histogram and date-time plots (including candlestick),
+- it can also plot error bars, confusion matrices, and add extra text, lines and shapes to the plot,
+- you could use it to plot images (including GIFs) and stream video with audio (including YouTube),
+- it can save plots as text or as colored html,
+- it provides a simple function to color strings,
+- it comes with a dedicated command line tool</description>
+  <url>https://github.com/piccolomo/plotext</url>
+</package>
