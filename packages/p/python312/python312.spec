@@ -204,6 +204,28 @@ Patch50:        CVE-2025-12084-minidom-quad-search.patch
 # PATCH-FIX-UPSTREAM CVE-2025-13837-plistlib-mailicious-length.patch bsc#1254401 mcepl@suse.com
 # protect against OOM when loading malicious content
 Patch51:        CVE-2025-13837-plistlib-mailicious-length.patch 
+# PATCH-FIX-UPSTREAM CVE-2025-11468-email-hdr-fold-comment.patch bsc#1257029 mcepl@suse.com
+# Email preserve parens when folding comments
+Patch52:        CVE-2025-11468-email-hdr-fold-comment.patch
+# PATCH-FIX-UPSTREAM CVE-2025-12781-b64decode-alt-chars.patch bsc#1257108 mcepl@suse.com
+# Fix decoding with non-standard Base64 alphabet gh#python/cpython#125346
+Patch53:        CVE-2025-12781-b64decode-alt-chars.patch
+# PATCH-FIX-UPSTREAM CVE-2026-0672-http-hdr-inject-cookie-Morsel.patch bsc#1257031 mcepl@suse.com
+# Reject control characters in http cookies
+Patch54:        CVE-2026-0672-http-hdr-inject-cookie-Morsel.patch
+# PATCH-FIX-UPSTREAM CVE-2026-0865-wsgiref-ctrl-chars.patch bsc#1257042 mcepl@suse.com
+# Reject control characters in wsgiref.headers.Headers
+Patch55:        CVE-2026-0865-wsgiref-ctrl-chars.patch
+# PATCH-FIX-UPSTREAM CVE-2025-15366-imap-ctrl-chars.patch bsc#1257044 mcepl@suse.com
+# Reject control characters in wsgiref.headers.Headers
+Patch56:        CVE-2025-15366-imap-ctrl-chars.patch
+# PATCH-FIX-UPSTREAM CVE-2025-15282-urllib-ctrl-chars.patch bsc#1257046 mcepl@suse.com
+# Reject control characters in urllib
+Patch57:        CVE-2025-15282-urllib-ctrl-chars.patch
+# PATCH-FIX-UPSTREAM CVE-2025-15367-poplib-ctrl-chars.patch bsc#1257041 mcepl@suse.com
+# Reject control characters in poplib
+Patch58:        CVE-2025-15367-poplib-ctrl-chars.patch
+### END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes

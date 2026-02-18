@@ -1,16 +1,43 @@
 -------------------------------------------------------------------
+Fri Feb  6 00:07:20 CET 2026 - Matej Cepl <mcepl@suse.com>
+  
+- CVE-2025-11468: to preserve parens when folding comments.
+  (bsc#1257029, gh#python/cpython#143935)
+  CVE-2025-11468-email-hdr-fold-comment.patch
+- CVE-2025-12781: fix decoding with non-standard Base64 alphabet
+  (bsc#1257108, gh#python/cpython#125346)
+  CVE-2025-12781-b64decode-alt-chars.patch
+- CVE-2026-0672: rejects control characters in http cookies.
+  (bsc#1257031, gh#python/cpython#143919)
+  CVE-2026-0672-http-hdr-inject-cookie-Morsel.patch
+- CVE-2026-0865: rejecting control characters in
+  wsgiref.headers.Headers, which could be abused for injecting
+  false HTTP headers. (bsc#1257042, gh#python/cpython#143916)
+  CVE-2026-0865-wsgiref-ctrl-chars.patch
+- CVE-2025-15366: basically the same as the previous patch for
+  IMAP protocol. (bsc#1257044, gh#python/cpython#143921)
+  CVE-2025-15366-imap-ctrl-chars.patch
+- CVE-2025-15282: basically the same as the previous patch for
+  urllib library. (bsc#1257046, gh#python/cpython#143925)
+  CVE-2025-15282-urllib-ctrl-chars.patch
+- CVE-2025-15367: basically the same as the previous patch for
+  poplib library. (bsc#1257041, gh#python/cpython#143923)
+  CVE-2025-15367-poplib-ctrl-chars.patch
+
+-------------------------------------------------------------------
 Thu Dec 18 10:33:44 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
-- Add CVE-2025-13836-http-resp-cont-len.patch (bsc#1254400,
-  CVE-2025-13836) to prevent reading an HTTP response from
+- CVE-2025-13836: to prevent reading an HTTP response from
   a server, if no read amount is specified, with using
-  Content-Length per default as the length.
-- Add CVE-2025-12084-minidom-quad-search.patch prevent quadratic
-  behavior in node ID cache clearing (CVE-2025-12084,
-  bsc#1254997).
-- Add CVE-2025-13837-plistlib-mailicious-length.patch protect
-  against OOM when loading malicious content (CVE-2025-13837,
-  bsc#1254401).
+  Content-Length per default as the length. (bsc#1254400,
+  gh#python/cpython#119451)
+  CVE-2025-13836-http-resp-cont-len.patch
+- CVE-2025-12084: prevent quadratic behavior in node ID cache
+  clearing. (bsc#1254997, gh#python/cpython#142145)
+  CVE-2025-12084-minidom-quad-search.patch
+- CVE-2025-13837: protect against OOM when loading malicious
+  content. (bsc#1254401, gh#python/cpython#119342)
+  CVE-2025-13837-plistlib-mailicious-length.patch
 
 -------------------------------------------------------------------
 Wed Nov 19 19:21:41 UTC 2025 - Matej Cepl <mcepl@suse.com>
@@ -1208,25 +1235,23 @@ Wed Aug  7 18:05:57 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
   - Tests
     - gh-59022: Add tests for pkgutil.extend_path(). Patch by
       Andreas Stocker.
-    - gh-99242: os.getloadavg() may throw OSError when
-      running regression tests under certain conditions (e.g.
-      chroot). This error is now caught and ignored, since
-      reporting load average is optional.
+    - gh-99242: os.getloadavg() may throw OSError when running
+      regression tests under certain conditions (e.g. chroot).
+      This error is now caught and ignored, since reporting load
+      average is optional.
     - gh-121084: Fix test_typing random leaks. Clear typing ABC
       caches when running tests for refleaks (-R option): call
       _abc_caches_clear() on typing abstract classes and their
       subclasses. Patch by Victor Stinner.
-    - gh-121160: Add a test for
-      readline.set_history_length(). Note that this test may fail
-      on readline libraries.
-    - gh-121200: Fix test_expanduser_pwd2() of
-      test_posixpath. Call getpwnam() to get pw_dir, since it
-      can be different than getpwall() pw_dir. Patch by Victor
-      Stinner.
-    - gh-121188: When creating the JUnit XML file, regrtest
-      now escapes characters which are invalid in XML, such
-      as the chr(27) control character used in ANSI escape
-      sequences. Patch by Victor Stinner.
+    - gh-121160: Add a test for readline.set_history_length().
+      Note that this test may fail on readline libraries.
+    - gh-121200: Fix test_expanduser_pwd2() of test_posixpath.
+      Call getpwnam() to get pw_dir, since it can be different
+      than getpwall() pw_dir. Patch by Victor Stinner.
+    - gh-121188: When creating the JUnit XML file, regrtest now
+      escapes characters which are invalid in XML, such as the
+      chr(27) control character used in ANSI escape sequences.
+      Patch by Victor Stinner.
   - Security
     - gh-121957: Fixed missing audit events around interactive
       use of Python, now also properly firing for python -i, as
@@ -1249,12 +1274,12 @@ Wed Aug  7 18:05:57 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
       filecmp.dircmp and filecmp.cmpfiles(). Patch by Bénédikt
       Tran.
     - gh-122311: Fix some error messages in pickle.
-    - gh-121650: email headers with embedded newlines are
-      now quoted on output. The generator will now refuse to
-      serialize (write) headers that are unsafely folded or
-      delimited; see verify_generated_headers. (Contributed by
-      Bas Bloemsaat and Petr Viktorin in gh-121650; bsc#1228780,
-      CVE-2024-6923).
+    - CVE-2026-1299 and CVE-2024-6923: email headers with
+      embedded newlines are now quoted on output. The generator
+      will now refuse to serialize (write) headers that are
+      unsafely folded or delimited; see verify_generated_headers.
+      (Contributed by Bas Bloemsaat and Petr Viktorin in
+      bsc#1228780, gh-121650; bsc#1257181, gh-121650).
     - gh-122332: Fixed segfault with asyncio.Task.get_coro() when
       using an eager task factory.
     - gh-122170: Handle ValueErrors raised by os.stat() in
@@ -1291,8 +1316,8 @@ Wed Aug  7 18:05:57 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
       even when the command is from cmdqueue.
     - gh-120732: Fix name passing to unittest.mock.Mock object
       when using unittest.mock.create_autospec().
-    - gh-120495: Fix incorrect exception handling in Tab
-      Nanny. Patch by Wulian233.
+    - gh-120495: Fix incorrect exception handling in Tab Nanny.
+      Patch by Wulian233.
     - gh-120343: Fix column offset reporting for tokens that come
       after multiline f-strings in the tokenize module.
     - gh-119600: Fix unittest.mock.patch() to not read attributes
@@ -1301,9 +1326,9 @@ Wed Aug  7 18:05:57 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
     - gh-120289: Fixed the use-after-free issue in cProfile by
       disallowing disable() and clear() in external timers.
     - gh-114053: Fix edge-case bug where typing.get_type_hints()
-      would produce incorrect results if type parameters in a
-      class scope were overridden by assignments in a class scope
-      and from __future__ import annotations semantics were
+      would produce incorrect results if type parameters in
+      a class scope were overridden by assignments in a class
+      scope and from __future__ import annotations semantics were
       enabled. Patch by Alex Waygood.
     - gh-114053: Fix erroneous NameError when calling
       inspect.get_annotations() with eval_str=True` on a class
@@ -1328,11 +1353,11 @@ Wed Aug  7 18:05:57 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
     - gh-112672: Support building tkinter with Tcl 9.0.
     - gh-65454: unittest.mock.Mock.attach_mock() no longer
       triggers a call to a PropertyMock being attached.
-    - gh-81936: help() and showtopic() methods now respect a
-      configured output argument to pydoc.Helper and not use the
-      pager in such cases. Patch by Enrico Tröger.
-    - gh-119577: The DeprecationWarning emitted when testing
-      the truth value of an xml.etree.ElementTree.Element now
+    - gh-81936: help() and showtopic() methods now respect
+      a configured output argument to pydoc.Helper and not use
+      the pager in such cases. Patch by Enrico Tröger.
+    - gh-119577: The DeprecationWarning emitted when testing the
+      truth value of an xml.etree.ElementTree.Element now
       describes unconditionally returning True in a future
       version rather than raising an exception in Python 3.14.
     - gh-119506: Fix io.TextIOWrapper.write() method breaks
@@ -1361,16 +1386,16 @@ Wed Aug  7 18:05:57 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
       multiprocessing.Queue.empty() and
       multiprocessing.SimpleQueue.empty() on closed queues. Patch
       by Bénédikt Tran.
-    - gh-121871: Documentation HTML varies from timestamp. Patch by
-      Bernhard M. Wiedemann (bsc#1227999).
+    - gh-121871: Documentation HTML varies from timestamp. Patch
+      by Bernhard M. Wiedemann (bsc#1227999).
   - Core and Builtins
     - gh-122208: Dictionary watchers now only deliver the
       PyDict_EVENT_ADDED event when the insertion is in a known
       good state to succeed.
     - gh-122300: Preserve AST nodes for f-string with
       single-element format specifiers. Patch by Pablo Galindo
-    - gh-122029: Emit c_call events in sys.setprofile() when a
-      PyMethodObject pointing to a PyCFunction is called.
+    - gh-122029: Emit c_call events in sys.setprofile() when
+      a PyMethodObject pointing to a PyCFunction is called.
     - gh-122026: Fix a bug that caused the tokenizer to not
       correctly identify mismatched parentheses inside f-strings
       in some situations. Patch by Pablo Galindo
@@ -1387,11 +1412,11 @@ Wed Aug  7 18:05:57 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
     - gh-120384: Fix an array out of bounds crash in
       list_ass_subscript, which could be invoked via some
       specificly tailored input: including concurrent
-      modification of a list object, where one thread assigns a
-      slice and another clears it.
+      modification of a list object, where one thread assigns
+      a slice and another clears it.
     - gh-120380: Fix Python implementation of pickle.Pickler for
-      bytes and bytearray objects when using protocol version
-      5. Patch by Bénédikt Tran.
+      bytes and bytearray objects when using protocol version 5.
+      Patch by Bénédikt Tran.
     - gh-93691: Fix source locations of instructions generated
       for the iterator of a for statement.
     - gh-120198: Fix a crash when multiple threads read and write
