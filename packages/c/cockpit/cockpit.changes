@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 11 16:52:06 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Fix esbuild for ppc64le bsc#1257698
+  * Include esbuild-ppc64.patch
+  * Update update_version.sh
+- Update to 356
+  * changes since 354
+    - 356
+      * systemd: Allow editing timers created by Cockpit
+      * Convert license headers to SPDX format
+    - 355
+      * ws: Remove obsolete pam_cockpit_cert module
+      * shell: add StartTransientUnit as a sudo alternative
+
+-------------------------------------------------------------------
 Wed Jan 28 14:40:23 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
 
 - Update dependencies for bsc#1257324/CVE-2025-13465

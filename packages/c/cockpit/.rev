@@ -881,4 +881,22 @@ outside of Factory
 - Update dependencies for bsc#1257324/CVE-2025-13465</comment>
     <requestid>1331134</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>055c223ebfab3ccd9c4871ffe6c0ab0f</srcmd5>
+    <version>356</version>
+    <time>1771430712</time>
+    <user>anag_factory</user>
+    <comment>- Fix esbuild for ppc64le bsc#1257698
+  * Include esbuild-ppc64.patch
+  * Update update_version.sh
+- Update to 356
+  * changes since 354
+    - 356
+      * systemd: Allow editing timers created by Cockpit
+      * Convert license headers to SPDX format
+    - 355
+      * ws: Remove obsolete pam_cockpit_cert module
+      * shell: add StartTransientUnit as a sudo alternative</comment>
+    <requestid>1333523</requestid>
+  </revision>
 </revisionlist>

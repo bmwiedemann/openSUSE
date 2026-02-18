@@ -1,9 +1,7 @@
 diff --git a/pkg/metrics/metrics.jsx b/pkg/metrics/metrics.jsx
 index 80f1087..fda6049 100644
---- a/pkg/metrics/metrics.jsx
-+++ b/pkg/metrics/metrics.jsx
-@@ -17,7 +17,7 @@
-  * along with Cockpit; If not, see <https://www.gnu.org/licenses/>.
+@@ -3,7 +3,7 @@
+  * SPDX-License-Identifier: LGPL-2.1-or-later
   */
  
 -import React, { useState, createRef } from 'react';

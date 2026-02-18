@@ -1,18 +1,6 @@
 #
 # Copyright (C) 2014-2020 Red Hat, Inc.
-#
-# Cockpit is free software; you can redistribute it and/or modify it
-# under the terms of the GNU Lesser General Public License as published by
-# the Free Software Foundation; either version 2.1 of the License, or
-# (at your option) any later version.
-#
-# Cockpit is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-# Lesser General Public License for more details.
-#
-# You should have received a copy of the GNU Lesser General Public License
-# along with Cockpit; If not, see <https://www.gnu.org/licenses/>.
+# SPDX-License-Identifier: LGPL-2.1-or-later
 #
 
 #
@@ -53,17 +41,22 @@
 %endif
 
 # distributions which ship nodejs-esbuild can rebuild the bundle during package build
+# allow override from command line (e.g. for development builds)
 %if 0%{?fedora} >= 42
-%define rebuild_bundle 1
+%{!?rebuild_bundle: %define rebuild_bundle 1}
+%endif
+
+# to avoid using asciidoc-py in RHEL and CentOS we use the prebuilt docs
+%if 0%{?rhel}
+%define bundle_docs 1
 %endif
 
 Name:           cockpit
 Summary:        Web Console for Linux servers
-
-License:        LGPL-2.1-or-later
+License:        LGPL-2.1-or-later AND GPL-3.0-or-later AND MIT AND CC-BY-SA-3.0 AND BSD-3-Clause
 URL:            https://cockpit-project.org/
 
-Version:        354
+Version:        356
 Release:        0
 Source0:        cockpit-%{version}.tar.gz
 Source2:        cockpit-rpmlintrc
@@ -80,6 +73,7 @@ Patch2:         suse_docs.patch
 Patch3:         suse-microos-branding.patch
 Patch4:         css-overrides.patch
 Patch5:         storage-btrfs.patch
+Patch6:         esbuild-ppc64.patch
 # SLE Micro specific patches
 Patch101:       hide-pcp.patch
 Patch102:       0002-selinux-temporary-remove-setroubleshoot-section.patch
@@ -162,7 +156,7 @@ BuildRequires: libxslt-devel
 BuildRequires: glib-networking
 BuildRequires: sed
 
-BuildRequires: glib2-devel >= 2.50.0
+BuildRequires: glib2-devel >= 2.68.0
 # this is for runtimedir in the tls proxy ace21c8879
 BuildRequires: pkgconfig(libsystemd) >= 235
 %if 0%{?suse_version}
@@ -178,17 +172,13 @@ BuildRequires: openssh-clients
 BuildRequires: krb5-server
 BuildRequires: gdb
 
-%if %{defined rebuild_bundle}
+%if 0%{?rebuild_bundle}
 BuildRequires: nodejs
+BuildRequires: %{_bindir}/node
 BuildRequires: nodejs-esbuild
 %endif
 
-# For documentation
-%if 0%{?rhel} || 0%{?centos}
-# Only has legacy asciidoc-py and not asciidoctor.
-# asciidoc-py includes a2x package which can generate man-pages.
-BuildRequires: asciidoc
-%else
+%if !%{defined bundle_docs}
 %if 0%{?suse_version}
 BuildRequires: rubygem(asciidoctor)
 %else
@@ -217,7 +207,7 @@ Requires: cockpit-system
 Recommends: (cockpit-storaged if udisks2)
 Recommends: (cockpit-packagekit if (dnf or zypper))
 %if 0%{?suse_version} == 0
-Recommends: (dnf5-daemonserver if dnf5)
+Recommends: (dnf5daemon-server if dnf5)
 %endif
 Recommends: (cockpit-firewalld if firewalld)
 
@@ -242,6 +232,10 @@ BuildRequires:  python3-pytest-timeout
 
 %prep
 %setup -q -n cockpit-%{version} -a 3
+%if 0%{?rebuild_bundle}
+%setup -q -D -T -a 1 -n cockpit-%{version}
+%endif
+
 %patch -P 1 -p1
 %patch -P 2 -p1
 
@@ -253,6 +247,7 @@ BuildRequires:  python3-pytest-timeout
 
 %patch -P 4 -p1
 %patch -P 5 -p1
+%patch -P 6 -p1
 
 %patch -P 101 -p1
 %patch -P 106 -p1
@@ -295,6 +290,15 @@ local-npm-registry %{_sourcedir} install --include=dev --ignore-scripts
 echo "{}" > package-lock.json
 
 %build
+%if 0%{?rebuild_bundle}
+rm -rf dist
+# HACK: node module packaging is currently broken in Fedora ≤ 43, should be in
+# common location, not major version specific one
+NODE_ENV=production NODE_PATH=/usr/lib/node_modules:$(echo /usr/lib/node_modules_*) ./build.js
+%else
+# Use pre-built bundle on distributions without nodejs-esbuild
+%endif
+
 find node_modules -name \*.node -print -delete
 touch node_modules/.stamp
 
@@ -312,6 +316,9 @@ autoreconf -fvi -I tools
     --with-pamdir='%{pamdir}' \
 %if %{enable_multihost}
     --enable-multihost \
+%endif
+%if %{defined bundle_docs}
+    --disable-doc \
 %endif
 
 %if 0%{?with_selinux}
@@ -339,7 +346,21 @@ make install-tests DESTDIR=%{buildroot}
 mkdir -p $RPM_BUILD_ROOT%{pamconfdir}
 install -p -m 644 %{pamconfig} $RPM_BUILD_ROOT%{pamconfdir}/cockpit
 rm -f %{buildroot}/%{_libdir}/cockpit/*.so
-install -D -p -m 644 AUTHORS COPYING README.md %{buildroot}%{_docdir}/cockpit/
+install -D -p -m 644 AUTHORS README.md %{buildroot}%{_docdir}/cockpit/
+
+# We install the upstream pre-built docs as we can't build them
+%if %{defined bundle_docs}
+%define docbundledir %{_builddir}/%{name}-%{version}/doc/output/html
+install -d %{buildroot}%{_docdir}/cockpit/guide
+cp -rp %{docbundledir}/* %{buildroot}%{_docdir}/cockpit/guide/
+# Install pre-built man pages
+%define manbundledir %{_builddir}/%{name}-%{version}/doc/output/man
+for section in 1 5 8; do
+  for manpage in %{manbundledir}/*.${section}; do
+    install -D -p -m 644 "$manpage" %{buildroot}%{_mandir}/man${section}/$(basename "$manpage")
+  done
+done
+%endif
 
 # selinux
 %if 0%{?with_selinux}
@@ -499,9 +520,8 @@ It offers network configuration, log inspection, diagnostic reports, SELinux
 troubleshooting, interactive command-line sessions, and more.
 
 %files
-%license COPYING
+%license LICENSES/LGPL-2.1.txt
 %{_docdir}/cockpit/AUTHORS
-%{_docdir}/cockpit/COPYING
 %{_docdir}/cockpit/README.md
 %{_datadir}/metainfo/org.cockpit_project.cockpit.appdata.xml
 %dir %{_datadir}/icons/hicolor/128x128/apps
@@ -520,7 +540,7 @@ The Cockpit bridge component installed server side and runs commands on the
 system on behalf of the web based user interface.
 
 %files bridge -f base.list
-%license COPYING
+%license LICENSES/GPL-3.0.txt
 %doc %{_mandir}/man1/cockpit-bridge.1.gz
 %{_bindir}/cockpit-bridge
 %{_libexecdir}/cockpit-askpass
@@ -536,9 +556,8 @@ deploy Cockpit on their machines as well as helps developers who want to
 embed or extend Cockpit.
 
 %files doc
-%license COPYING
+%license LICENSES/LGPL-2.1.txt
 %exclude %{_docdir}/cockpit/AUTHORS
-%exclude %{_docdir}/cockpit/COPYING
 %exclude %{_docdir}/cockpit/README.md
 %{_docdir}/cockpit
 
@@ -582,14 +601,13 @@ Recommends: (reportd if abrt)
 This package contains the Cockpit shell and system configuration interfaces.
 
 %files system -f system.list
-%license COPYING
+%license LICENSES/LGPL-2.1.txt
 %dir %{_datadir}/cockpit/shell/images
 
 %package ws
 Summary: Cockpit Web Service
-Requires: glib-networking
 Requires: openssl
-Requires: glib2 >= 2.50.0
+Requires: glib2 >= 2.68.0
 %if 0%{?with_selinux}
 Requires: (%{name}-ws-selinux = %{version}-%{release} if selinux-policy-base)
 Requires: (selinux-policy >= %{_selinux_policy_version} if selinux-policy-%{selinuxtype})
@@ -628,7 +646,7 @@ If sssd-dbus is installed, you can enable client certificate/smart card
 authentication via sssd/FreeIPA.
 
 %files ws -f static.list
-%license COPYING
+%license LICENSES/LGPL-2.1.txt
 %doc %{_mandir}/man1/cockpit-desktop.1.gz
 %doc %{_mandir}/man5/cockpit.conf.5.gz
 %doc %{_mandir}/man8/cockpit-ws.8.gz
@@ -665,7 +683,6 @@ authentication via sssd/FreeIPA.
 %{_unitdir}/system-cockpithttps.slice
 %{_prefix}/%{__lib}/tmpfiles.d/cockpit-ws.conf
 %{pamdir}/pam_ssh_add.so
-%{pamdir}/pam_cockpit_cert.so
 %{_libexecdir}/cockpit-ws
 %{_libexecdir}/cockpit-wsinstance-factory
 %{_libexecdir}/cockpit-tls
@@ -734,14 +751,6 @@ fi
 # firewalld only partially picks up changes to its services files without this
 test -f %{_bindir}/firewall-cmd && firewall-cmd --reload --quiet || true
 
-# check for deprecated PAM config
-if test -f %{_sysconfdir}/pam.d/cockpit &&  grep -q pam_cockpit_cert %{_sysconfdir}/pam.d/cockpit; then
-    echo '**** WARNING:'
-    echo '**** WARNING: pam_cockpit_cert is a no-op and will be removed in a'
-    echo '**** WARNING: future release; remove it from your /etc/pam.d/cockpit.'
-    echo '**** WARNING:'
-fi
-
 # remove obsolete system user on upgrade (replaced with DynamicUser in version 330)
 if getent passwd cockpit-wsinstance >/dev/null; then
     userdel cockpit-wsinstance
@@ -780,7 +789,7 @@ Obsoletes: %{name}-selinux-policies < 338
 SELinux policy module for the cockpit-ws package.
 
 %files ws-selinux
-%license COPYING
+%license LICENSES/LGPL-2.1.txt
 %{_datadir}/selinux/packages/%{selinuxtype}/%{name}.pp.bz2
 %{_mandir}/man8/%{name}_session_selinux.8cockpit.*
 %{_mandir}/man8/%{name}_ws_selinux.8cockpit.*
@@ -816,7 +825,7 @@ BuildArch: noarch
 The Cockpit component for configuring kernel crash dumping.
 
 %files kdump -f kdump.list
-%license COPYING
+%license LICENSES/LGPL-2.1.txt
 %{_datadir}/metainfo/org.cockpit_project.cockpit_kdump.metainfo.xml
 
 # sosreport is not supported on opensuse yet
@@ -833,7 +842,7 @@ The Cockpit component for creating diagnostic reports with the
 sosreport tool.
 
 %files sosreport -f sosreport.list
-%license COPYING
+%license LICENSES/LGPL-2.1.txt
 %{_datadir}/metainfo/org.cockpit_project.cockpit_sosreport.metainfo.xml
 %{_datadir}/icons/hicolor/64x64/apps/cockpit-sosreport.png
 %endif
@@ -852,7 +861,7 @@ BuildArch: noarch
 The Cockpit component for managing networking.  This package uses NetworkManager.
 
 %files networkmanager -f networkmanager.list
-%license COPYING
+%license LICENSES/LGPL-2.1.txt
 %{_datadir}/metainfo/org.cockpit_project.cockpit_networkmanager.metainfo.xml
 
 %endif
@@ -874,7 +883,7 @@ This package contains the Cockpit user interface integration with the
 utility setroubleshoot to diagnose and resolve SELinux issues.
 
 %files selinux -f selinux.list
-%license COPYING
+%license LICENSES/LGPL-2.1.txt
 %{_datadir}/metainfo/org.cockpit_project.cockpit_selinux.metainfo.xml
 
 %endif
@@ -905,7 +914,7 @@ BuildArch: noarch
 The Cockpit component for managing storage.  This package uses udisks.
 
 %files -n cockpit-storaged -f storaged.list
-%license COPYING
+%license LICENSES/LGPL-2.1.txt
 %{_datadir}/metainfo/org.cockpit_project.cockpit_storaged.metainfo.xml
 
 %post storaged
@@ -938,7 +947,7 @@ The Cockpit components for installing OS updates and Cockpit add-ons,
 via PackageKit.
 
 %files -n cockpit-packagekit -f packagekit.list
-%license COPYING
+%license LICENSES/LGPL-2.1.txt
 
 %package firewalld
 Summary: Allows Cockpit access through the firewall
@@ -950,7 +959,7 @@ BuildArch: noarch
 This package allows Cockpit access through the firewall
 
 %files firewalld
-%license COPYING
+%license LICENSES/LGPL-2.1.txt
 
 %postun firewalld
 if test -f %{_bindir}/firewall-cmd && firewall-cmd --state &>/dev/null; then

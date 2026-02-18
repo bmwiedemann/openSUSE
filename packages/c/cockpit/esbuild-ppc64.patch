@@ -1,0 +1,25 @@
+From 22fe8bdedc8bb40cf2c9857fa73eb94985a1f664 Mon Sep 17 00:00:00 2001
+From: Alice Brooks <alice.brooks@suse.com>
+Date: Mon Feb 16 12:06:57 2026 +0000
+Subject: Never use wasm
+
+---
+ build.js | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build.js b/build.js
+index 49fc9900a..5e57ebc62 100755
+--- a/build.js
++++ b/build.js
+@@ -10,7 +10,7 @@ import process from 'node:process';
+ import { getFiles, getTestFiles, all_subdirs } from './files.js';
+ 
+ const production = process.env.NODE_ENV === 'production';
+-const useWasm = os.arch() != 'x64';
++const useWasm = false;
+ 
+ // ensure node_modules is present and up to date
+ child_process.spawnSync('tools/node-modules', ['make_package_lock_json'], { stdio: 'inherit' });
+ [Don't use esbuild wasm on ppc64
+-- 
+2.52.0

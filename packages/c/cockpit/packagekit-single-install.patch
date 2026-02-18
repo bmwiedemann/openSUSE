@@ -21,16 +21,14 @@ tens of seconds when there are thousands of packages.
 
 diff --git a/pkg/packagekit/updates.jsx b/pkg/packagekit/updates.jsx
 index 40fca0a..abc8c70 100644
---- a/pkg/packagekit/updates.jsx
-+++ b/pkg/packagekit/updates.jsx
-@@ -81,6 +81,7 @@ import { read_os_release } from "os-release.js";
+@@ -67,6 +67,7 @@ import { read_os_release } from "os-release.js";
  import callTracerScript from './callTracer.py';
  
  import "./updates.scss";
 +import { Checkbox } from '@patternfly/react-core';
  import { Truncate } from '@patternfly/react-core/dist/esm/components/Truncate/index.js';
  import { Severity } from '_internal/packagemanager-abstract';
- 
+ import { getPackageManager } from 'packagemanager';
 @@ -95,6 +96,7 @@ const UPDATES = {
      ALL: 0,
      SECURITY: 1,

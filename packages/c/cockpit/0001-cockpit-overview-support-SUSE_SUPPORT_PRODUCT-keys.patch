@@ -48,8 +48,8 @@ index 868469d68..186fcf59e 100644
                          { show_superuser && <SuperuserIndicator proxy={this.superuser} /> }
 diff --git a/src/common/cockpitsystem.c b/src/common/cockpitsystem.c
 index 83e2965f7..73716fff7 100644
---- a/src/common/cockpitsystem.c
-+++ b/src/common/cockpitsystem.c
+--- a/src/ws/cockpitsystem.c
++++ b/src/ws/cockpitsystem.c
 @@ -107,6 +107,12 @@ cockpit_system_load_os_release (void)
          }
      }
