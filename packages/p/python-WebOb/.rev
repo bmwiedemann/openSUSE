@@ -459,4 +459,12 @@ Drop sphinx doctrees for reproducible builds</comment>
     <comment></comment>
     <requestid>1304241</requestid>
   </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>b8e3df6cccd048dade6994a20396baa4</srcmd5>
+    <version>1.8.9</version>
+    <time>1771430735</time>
+    <user>anag_factory</user>
+    <comment>- Skip boken test with latest cpython interpreters, bsc#1258223</comment>
+    <requestid>1333538</requestid>
+  </revision>
 </revisionlist>

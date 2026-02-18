@@ -1,7 +1,7 @@
 #
 # spec file for package python-WebOb
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,7 +69,11 @@ PYTHONPATH=./src sphinx-build -b html docs build/sphinx/html && rm -r build/sphi
 
 %check
 # test_interrupted_request fails with Python 3.14 https://github.com/Pylons/webob/issues/479
-%pytest -k "not test_interrupted_request"
+donttest="test_interrupted_request"
+# test_client_cookies adds \r\n to the header, that's not allowed
+# since https://github.com/python/cpython/issues/143916
+donttest+=" or test_client_cookies"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %license docs/license.txt

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 17 12:18:39 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip boken test with latest cpython interpreters, bsc#1258223
+
+-------------------------------------------------------------------
 Thu Sep 11 09:54:38 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Skip test failing on Python 3.14
