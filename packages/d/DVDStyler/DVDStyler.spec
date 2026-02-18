@@ -1,7 +1,7 @@
 #
 # spec file for package DVDStyler
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012-2014 Mariusz Fik <fisiu@opensuse.org>
 # Copyright (c) 2011-2012 Pascal Bleser <pascal.bleser@opensuse.org>
 # Copyright (c) 2007-2011 Detlef Reichelt <detlef@links2linux.de>
@@ -45,7 +45,6 @@ BuildRequires:  dvdauthor
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
-#BuildRequires:  mc
 BuildRequires:  mkisofs >= 2.01
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
@@ -53,13 +52,14 @@ BuildRequires:  update-desktop-files
 BuildRequires:  wxGTK3-3_2-devel
 BuildRequires:  xmlto
 BuildRequires:  zip
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavfilter)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
+#doesn't build with ffmpeg 8 yet
+BuildRequires:  pkgconfig(libavcodec) < 62
+BuildRequires:  pkgconfig(libavfilter) < 11
+BuildRequires:  pkgconfig(libavformat) < 62
+BuildRequires:  pkgconfig(libavutil) < 60
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libjpeg)
-BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig(libswscale) < 9
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libwxsvg) >= 1.5.19
 BuildRequires:  pkgconfig(mjpegtools)

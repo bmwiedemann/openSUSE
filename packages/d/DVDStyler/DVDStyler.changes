@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 17 16:12:21 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Force ffmpeg version < 8 without relying on the -mini package.
+
+-------------------------------------------------------------------
+Tue Feb 17 11:06:51 UTC 2026 - Dave Plater <davejplater@gmail.com>
+
+ - Force to build with ffmpeg-7, won't build with ffmpeg-8 yet.
+
+-------------------------------------------------------------------
 Thu Oct 10 15:56:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add DVDStyler-ffmpeg7.patch: Support building against FFmpeg 7.
