@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-image
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,15 +27,15 @@
 %endif
 
 Name:           python-scikit-image%{psuffix}
-Version:        0.25.2
+Version:        0.26.0
 Release:        0
 Summary:        Collection of algorithms for image processing in Python
 License:        BSD-3-Clause
 URL:            https://scikit-image.org/
 # SourceRepository: https://github.com/scikit-image/scikit-image
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-image/%{srcname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM scikit-image-pr7828-pillow-deprecations.patch gh#scikit-image/scikit-image#7828
-Patch0:         https://github.com/scikit-image/scikit-image/pull/7828.patch#/scikit-image-pr7828-pillow-deprecations.patch
+# PATCH-FIX-UPSTREAM Based on gh#scikit-image/scikit-image#8010
+Patch0:         support-new-pillow.patch
 BuildRequires:  %{python_module Cython >= 3.0.4}
 BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module meson-python >= 0.15}
@@ -74,6 +74,7 @@ BuildRequires:  %{python_module matplotlib >= 3.7}
 BuildRequires:  %{python_module numpydoc >= 1.7}
 BuildRequires:  %{python_module pytest >= 8}
 BuildRequires:  %{python_module pytest-localserver}
+BuildRequires:  %{python_module pytest-pretty}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module scikit-image = %{version}}
 %endif
@@ -85,15 +86,11 @@ Scikit-image is a collection of algorithms for image processing in Python.
 It is available free of charge and free of restriction.
 
 %prep
-%if !%{with test}
 %autosetup -p1 -n %{srcname}-%{version}
-sed -Ei "1{s@/usr/bin/env python\$@%{_bindir}/python3@}" ./skimage/_build_utils/*.py
+sed -Ei "1{s@/usr/bin/env python\$@%{_bindir}/python3@}" ./src/skimage/_build_utils/*.py
 # don't install the header file
-sed -i '/fast_exp.h/d' ./skimage/_shared/meson.build
-chmod -x skimage/measure/{__init__,_find_contours}.py
-%else
-%setup -q -c scikit-image-%{version}-test -D -T
-%endif
+sed -i '/fast_exp.h/d' ./src/skimage/_shared/meson.build
+chmod -x src/skimage/measure/{__init__,_find_contours}.py
 
 %build
 %if !%{with test}
@@ -127,8 +124,8 @@ if [ $(getconf LONG_BIT) -eq 32 ]; then
     donttest+=" or test_independent_rng"
 fi
 export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
-%pytest_arch -v --pyargs skimage -n auto -k "not ($donttest or $notparallel)"
-%pytest_arch -v --pyargs skimage -k "not ($donttest) and ($notparallel)"
+%pytest_arch -v --pyargs skimage -n auto -k "not ($donttest or $notparallel)" tests
+%pytest_arch -v --pyargs skimage -k "not ($donttest) and ($notparallel)" tests
 %endif
 
 %if !%{with test}
@@ -136,6 +133,7 @@ export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 %license LICENSE.txt
 %doc CONTRIBUTORS.md TODO.txt
 %{python_sitearch}/skimage/
+%{python_sitearch}/skimage2/
 %{python_sitearch}/scikit_image-%{version}.dist-info
 %endif
 

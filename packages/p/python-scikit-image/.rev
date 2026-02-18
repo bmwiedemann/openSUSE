@@ -304,4 +304,41 @@
   dependencies, you can't have the package. See sr#1293826</comment>
     <requestid>1294071</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>54b766a67cb8b6473636c5a311cd5968</srcmd5>
+    <version>0.26.0</version>
+    <time>1771431025</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.26.0:
+  ## New Features
+  * Add new parameter max_step_cost to skimage.graph.MCP.find_costs which
+    allows limiting the maximal stepping cost between points (#7625).
+  * In skimage.transform, add the identity class constructor to all geometric
+    transforms. For example, you can now use
+    skimage.transform.PolynomialTransform(dimensionality=2) (#7754).
+  * Add new property intensity_median to skimage.measure.regionprops (#7745).
+  * binary_blobs now supports a mode parameter for the Gaussian filter,
+    allowing periodic boundary conditions with mode=&quot;wrap&quot; (#7909).
+  ## Performance
+  * Use greedy einsum optimization in skimage.measure.moments_central
+    (#7947).
+  * Add lazy loading to skimage.segmentation (#7035).
+  ## Bug Fixes
+  * Make deconvolution example scientifically sensible (#7589).
+  * In skimage.filters.sobel/scharr/prewitt/farid, when mode=&quot;constant&quot; is
+    used ensure that cval has an effect. It didn't previously (#7826).
+  * Ensure skimage.graph.cut_normalized is deterministic when seeded with the
+    rng parameter and when SciPy 1.17.0.dev0 or newer is installed. With
+    earlier SciPy versions the internally used function scipy.linalg.eigsh is
+    not deterministic and can lead to different results (#7912).
+  * Avoid potential integer overflow in skimage.morphology.reconstruction
+    (#7938).
+  * Handle negative axis lengths due to numerical errors in axis_major_length
+    and axis_minor_length properties of skimage.measure.regionprops (#7916).
+  * In skimage.util.random_noise, ensure that clip argument is handled
+    consistently for various modes (#7924).
+  * Apparent fix for Hough transform stray j (#7974).
+- Unpack as normal in %prep, regardless of flavor.</comment>
+    <requestid>1333657</requestid>
+  </revision>
 </revisionlist>
