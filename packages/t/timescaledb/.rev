@@ -528,4 +528,22 @@ Stop storing build machine kernel version (boo#1101107)</comment>
     <comment>- Update to version 2.25.0</comment>
     <requestid>1329783</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>a667dd81870dbaa97fd9fd2b8cd6c7bc</srcmd5>
+    <version>2.25.1</version>
+    <time>1771430768</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.25.1
+  - #9215 Add missing handling for em_parent to sort_transform
+  - #9223 Clean up orphaned entries in continuous aggregate
+    invalidaton logs
+  - #9226 Fix invalidation and batching issues for variable bucket
+    continuous aggregates.
+  - #9256 Error &quot;record type has no extended hash function&quot; on some
+    queries using a sparse bloom filter index on a column of
+    composite type.
+  - #9257 Handle type coercion for metadata column equivalence
+    members</comment>
+    <requestid>1333606</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 17 16:19:39 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.25.1
+  - #9215 Add missing handling for em_parent to sort_transform
+  - #9223 Clean up orphaned entries in continuous aggregate
+    invalidaton logs
+  - #9226 Fix invalidation and batching issues for variable bucket
+    continuous aggregates.
+  - #9256 Error "record type has no extended hash function" on some
+    queries using a sparse bloom filter index on a column of
+    composite type.
+  - #9257 Handle type coercion for metadata column equivalence
+    members
+
+-------------------------------------------------------------------
 Thu Jan 29 09:09:02 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 2.25.0
