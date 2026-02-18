@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 17 08:38:21 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 1.6.8:
+  * Add EdDSA to default jwt instance
+- 1.6.7:
+  * Set supported algorithms for the default jwt instance
+
+-------------------------------------------------------------------
 Fri Jan  9 08:29:28 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.6.6 (bsc#1256414, CVE-2025-68158)
