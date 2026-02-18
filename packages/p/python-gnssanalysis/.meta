@@ -1,0 +1,5 @@
+<package name="python-gnssanalysis" project="openSUSE:Factory">
+  <title>GNSS-related functionality from Geoscience Australia</title>
+  <description>The package encompasses various GNSS-related functionality such as efficient reading and writing GNSS files (e.g. SINEX, SP3, CLK, IONEX and many others), advanced analysis and comparison, various coordinate transformations including geodetic frame rotations, predictions and combinations. Package Solver.</description>
+  <url>https://github.com/GeoscienceAustralia/gnssanalysis</url>
+</package>
