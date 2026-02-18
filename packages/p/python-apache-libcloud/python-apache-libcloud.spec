@@ -1,7 +1,7 @@
 #
 # spec file for package python-apache-libcloud
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-apache-libcloud
-Version:        3.8.0
+Version:        3.9.0
 Release:        0
 Summary:        Abstraction over multiple cloud provider APIs
 License:        Apache-2.0
@@ -29,16 +29,15 @@ Source1:        https://downloads.apache.org/libcloud/apache-libcloud-%{version}
 Source2:        https://www.apache.org/dist/libcloud/KEYS#/%{name}.keyring
 Patch1:         gce_image_projects.patch
 Patch2:         ec2_create_node.patch
-# PATCH-FIX-UPSTREAM gh#apache/libcloud#1994
-Patch3:         support-pytest-8.patch
-# PATCH-FIX-UPSTREAM gh#apache/libcloud#2033
-Patch4:         support-pytest-8.2.patch
+# PATCH-FIX-UPSTREAM gh#apache/libcloud#2121
+Patch3:         fix-tests-python313.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module fasteners}
 BuildRequires:  %{python_module libvirt-python}
 BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyOpenSSL}
+BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module setuptools}
@@ -59,10 +58,8 @@ Apache Libcloud is a standard Python library that abstracts away
 differences among multiple cloud provider APIs.
 
 %prep
-%autosetup -p1 -n apache-libcloud-%{version}
-sed -i '/^#!/d' demos/gce_demo.py
-chmod a-x demos/gce_demo.py
-# Setup tests
+%autosetup -p1 -n apache_libcloud-%{version}
+# # Setup tests
 cp libcloud/test/secrets.py-dist libcloud/test/secrets.py
 
 %build
@@ -100,7 +97,7 @@ donttest+=" or test_init_once_and_debug_mode"
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGES.rst README.rst demos/ example_*.py
+%doc CHANGES.rst README.rst example_*.py
 %{python_sitelib}/libcloud
 %{python_sitelib}/apache_libcloud-%{version}.dist-info
 

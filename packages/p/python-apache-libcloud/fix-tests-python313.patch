@@ -1,0 +1,40 @@
+From c2bd6f4c096982d89a2e99114697b0ff1fa80176 Mon Sep 17 00:00:00 2001
+From: Miguel Caballer <micafer1@upv.es>
+Date: Tue, 17 Feb 2026 08:55:42 +0100
+Subject: [PATCH] Fix error in py313
+
+---
+ libcloud/test/common/test_openstack_identity.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+Index: apache_libcloud-3.9.0/libcloud/test/common/test_openstack_identity.py
+===================================================================
+--- apache_libcloud-3.9.0.orig/libcloud/test/common/test_openstack_identity.py
++++ apache_libcloud-3.9.0/libcloud/test/common/test_openstack_identity.py
+@@ -235,7 +235,7 @@ class OpenStackIdentityConnectionTestCas
+         osa.auth_token = None
+         osa.auth_token_expires = YESTERDAY
+ 
+-        mocked_auth_method.call_count = 0
++        mocked_auth_method.reset_mock()
+         self.assertEqual(mocked_auth_method.call_count, 0)
+ 
+         for i in range(0, count):
+@@ -246,7 +246,7 @@ class OpenStackIdentityConnectionTestCas
+         # No force reauth, valid / non-expired token
+         osa.auth_token = None
+ 
+-        mocked_auth_method.call_count = 0
++        mocked_auth_method.reset_mock()
+         self.assertEqual(mocked_auth_method.call_count, 0)
+ 
+         for i in range(0, count):
+@@ -264,7 +264,7 @@ class OpenStackIdentityConnectionTestCas
+         )
+         osa.auth_token = None
+ 
+-        mocked_auth_method.call_count = 0
++        mocked_auth_method.reset_mock()
+         self.assertEqual(mocked_auth_method.call_count, 0)
+ 
+         for i in range(0, count):

@@ -1,8 +1,8 @@
-Index: apache-libcloud-3.5.1/libcloud/compute/drivers/ec2.py
+Index: apache_libcloud-3.9.0/libcloud/compute/drivers/ec2.py
 ===================================================================
---- apache-libcloud-3.5.1.orig/libcloud/compute/drivers/ec2.py
-+++ apache-libcloud-3.5.1/libcloud/compute/drivers/ec2.py
-@@ -1622,12 +1622,18 @@ class BaseEC2NodeDriver(NodeDriver):
+--- apache_libcloud-3.9.0.orig/libcloud/compute/drivers/ec2.py
++++ apache_libcloud-3.9.0/libcloud/compute/drivers/ec2.py
+@@ -1620,12 +1620,18 @@ class BaseEC2NodeDriver(NodeDriver):
                                         on-demand price will be used.
          :type       ex_spot_max_price: ``float``
          """

@@ -567,4 +567,41 @@ https://github.com/apache/libcloud/blob/trunk/CHANGES.rst#changes-in-apache-libc
   * The existing patch unintentionally skips a lot of the testsuite.</comment>
     <requestid>1198394</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>43e9da6e262c417ce584498d7d29d12d</srcmd5>
+    <version>3.9.0</version>
+    <time>1771430666</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.9.0
+  * Common
+    - Support for Python 3.9 which is EOL has been removed.
+    - Indicate we also support Python 3.12 (non beta) and Python 3.13.
+    - Support for Python 3.8 which is EOL has been removed.
+    - Support for Python 3.7 which is EOL has been removed.
+    - Types inheriting from ``libcloud.common.types.Type`` have been made hashable.
+    - [NTT CIS] Fix invalid comparison in the ``XmlListConfig.__init__()`` method.
+    - Update versions of build and packaging tools required to build the package.
+  * Compute
+    - [OpenStack] Add optional node port ID to attach the floating IP
+      in OpenStack ex_attach_floating_ip_to_node function.
+    - [OpenStack] Add metadata fields ``os_distro`` and ``os_version``
+      provided by OpenStack Image API (if set) to the ``extra`` field
+      of the OpenStack NodeImage.
+    - [LINODE] Add support for cloud-init metadata support to
+      create_node() Add new functions ``create_key_pair``,
+      ``list_key_pairs``, and ``get_image``
+    - [Azure ARM] Add a new argument to destroy_node() to also delete
+      node's managed OS disk as part of the node's deletion.
+    - [ECS] Add VPC IP and Elastic IP to ECS node as private and public IP.
+    - [Azure ARM] When deleting a node, delete VM OS disk if it's a managed disk.
+    - [Azure ARM] Add ``ex_resize_node()`` method.
+    - [Equinix Metal] Fix ``list_nodes()`` method so it correctly
+      handles NodeSize.ram attribute in case TB is returned.
+    - [Equinix Metal] Deprecate facility API and replace it with metros location.
+    - [Equinix Metal] Remove all the methods for managing volumes and
+      volume snapshots. This functionality hasn't been supported on
+      the server side for many years already.
+    - [Amazon EC2] Update pricing and sizing data.</comment>
+    <requestid>1333659</requestid>
+  </revision>
 </revisionlist>

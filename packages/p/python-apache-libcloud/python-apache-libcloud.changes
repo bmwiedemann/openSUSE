@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Feb 17 13:52:08 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.9.0
+  * Common
+    - Support for Python 3.9 which is EOL has been removed.
+    - Indicate we also support Python 3.12 (non beta) and Python 3.13.
+    - Support for Python 3.8 which is EOL has been removed.
+    - Support for Python 3.7 which is EOL has been removed.
+    - Types inheriting from ``libcloud.common.types.Type`` have been made hashable.
+    - [NTT CIS] Fix invalid comparison in the ``XmlListConfig.__init__()`` method.
+    - Update versions of build and packaging tools required to build the package.
+  * Compute
+    - [OpenStack] Add optional node port ID to attach the floating IP
+      in OpenStack ex_attach_floating_ip_to_node function.
+    - [OpenStack] Add metadata fields ``os_distro`` and ``os_version``
+      provided by OpenStack Image API (if set) to the ``extra`` field
+      of the OpenStack NodeImage.
+    - [LINODE] Add support for cloud-init metadata support to
+      create_node() Add new functions ``create_key_pair``,
+      ``list_key_pairs``, and ``get_image``
+    - [Azure ARM] Add a new argument to destroy_node() to also delete
+      node's managed OS disk as part of the node's deletion.
+    - [ECS] Add VPC IP and Elastic IP to ECS node as private and public IP.
+    - [Azure ARM] When deleting a node, delete VM OS disk if it's a managed disk.
+    - [Azure ARM] Add ``ex_resize_node()`` method.
+    - [Equinix Metal] Fix ``list_nodes()`` method so it correctly
+      handles NodeSize.ram attribute in case TB is returned.
+    - [Equinix Metal] Deprecate facility API and replace it with metros location.
+    - [Equinix Metal] Remove all the methods for managing volumes and
+      volume snapshots. This functionality hasn't been supported on
+      the server side for many years already.
+    - [Amazon EC2] Update pricing and sizing data.
+    - [OpenStack] Add `is_default` and `tags` extra fields to the
+      OpenStack Network Object (`OpenStackNetwork`).
+    - [KubeVirt] Various improvements and fixes in the driver:
+       * Improve compatibility with the base NodeDriver class
+       * Support for deployment (`deploy_node()`)
+       * Support for general volume (disks) types that KubeVirt supports
+       * Add support for the `ex_template` parameter in `create_node()` method
+       * Various improvements in `_to_node()` related to node information parsing
+       * Improved test suite
+       * Code refactoring and improvements
+    - [Amazon S3] Add support for ``me-central-1`` region.
+  * Storage
+    - [Amazon S3] Add support for ``eu-south-1`` region.
+    - [Amazon S3] Add support for ``eu-west-3`` region.
+  * Other / Development
+    - Adopt uv for dependency management.
+    - pytest library used for running tests and microbenchmarks has
+      been upgraded to v8.1.
+    - Add a workaround so tests work with pytest >= 8.2. Also use
+      latest version of pytest for running tests.
+
+- Drop upstreamed patches:
+  * support-pytest-8.2.patch
+  * support-pytest-8.patch
+
+- New patch fix-tests-python313.patch to fix compatibility with latest
+  python3.13, bsc#1258223
+
+-------------------------------------------------------------------
 Tue Sep  3 04:49:42 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Replace support-pytest-8.2.patch:
@@ -15,7 +76,7 @@ Thu Jun  6 02:51:26 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
   * Support running under pytest 8.2.x.
 
 -------------------------------------------------------------------
-Tue Sep 26 00:00:00 PM CEST 2023 - ecsosa <ecsos@opensuse.org>
+Tue Sep 26 00:00:00 CEST 2023 - ecsosa <ecsos@opensuse.org>
 
 - Update to 3.8.0
   * Compute
