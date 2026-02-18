@@ -31,6 +31,11 @@
 %bcond_with qhull_support
 %bcond_with deflate_support
 %bcond_with tests_support
+%ifarch s390 s390x i586 armv7l
+%bcond_with netcdf_support
+%else
+%bcond_without netcdf_support
+%endif
 
 %if 0%{suse_version} > 1500
 %define pythons python3
@@ -43,7 +48,7 @@
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 
 Name:           gdal
-Version:        3.12.1
+Version:        3.12.2
 Release:        0
 Summary:        GDAL/OGR - a translator library for raster and vector geospatial data formats
 License:        BSD-3-Clause AND MIT AND SUSE-Public-Domain
@@ -51,8 +56,6 @@ URL:            https://www.gdal.org/
 Source0:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz
 Source1:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz.md5
 Source2:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}autotest-%{version}.zip
-# PATCH-FIX-UPSTREAM gdal-pr13664-poppler26.patch gh#OSGeo/gdal#13664 -- add compatibility with poppler 26.01.0
-Patch0:         https://github.com/OSGeo/gdal/commit/979604d.patch#/gdal-pr13664-poppler26.patch
 BuildRequires:  KEALib-devel
 BuildRequires:  bison
 BuildRequires:  blas-devel
@@ -107,7 +110,9 @@ BuildRequires:  pkgconfig(libwebpdecoder)
 BuildRequires:  pkgconfig(libwebpdemux)
 BuildRequires:  pkgconfig(libwebpmux)
 BuildRequires:  pkgconfig(libxml-2.0)
+%if %{with netcdf_support}
 BuildRequires:  pkgconfig(netcdf)
+%endif
 BuildRequires:  pkgconfig(ocl-icd)
 BuildRequires:  pkgconfig(poppler) >= 0.86
 BuildRequires:  pkgconfig(proj) >= 6.3
@@ -285,7 +290,11 @@ sed -e 's|gdal_optional_format(libertiff "GeoTIFF support through libertiff libr
   -DGDAL_USE_LIBLZMA=ON \
   -DGDAL_USE_LIBXML2=ON \
   -DGDAL_USE_MYSQL=ON \
+%if %{with netcdf_support}
   -DGDAL_USE_NETCDF=ON \
+%else
+  -DGDAL_USE_NETCDF=OFF \
+%endif
   -DGDAL_USE_ODBC=ON \
   -DGDAL_USE_OGDI=OFF \
   -DGDAL_USE_OPENCL=ON \
