@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Wed Feb 18 08:05:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.54.1:
+  The release v0.54.0 and v0.54.1 are the same. During the release
+  of v0.54.0 there was an issue for the snapcraft release and this
+  blocked some further releases. To release it in all other package
+  manager and avoid potential conflicts we created a new release
+  v0.54.1.
+  * chore: disable temporary snapcraft release
+
+-------------------------------------------------------------------
+Tue Feb 17 12:44:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.54.0:
+  * chore(deps): bump golang.org/x/oauth2 from 0.34.0 to 0.35.0
+    (#1291)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/authorization
+    (#1295)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/rabbitmq
+    (#1297)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/ske (#1296)
+  * update read me (#1294)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/redis (#1290)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/kms (#1292)
+  * chore(deps): bump github.com/lmittmann/tint from 1.1.2 to 1.1.3
+    (#1280)
+  * fix(release): don't put license in root directory on apt
+    installation (#1285)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/iaas (#1286)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/resourcemanager
+    (#1287)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/cdn (#1288)
+  * feat(logs): onboard access-token commands (#1253)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serviceenablement
+    (#1283)
+  * feat(intake): implement subcommands to manage intakes (#1124)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/mariadb (#1282)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/edge (#1279)
+  * update logs service from beta to v1 (#1284)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/loadbalancer
+    (#1270)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/alb (#1272)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex
+    (#1276)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/dns (#1277)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/rabbitmq
+    (#1278)
+  * feat(iaas): list NICs for project (#1242)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/authorization
+    (#1273)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/postgresflex
+    (#1274)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/opensearch
+    (#1275)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/intake (#1271)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/logme (#1269)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/git (#1268)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serverupdate
+    (#1267)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/observability
+    (#1261)
+  * Dependabot/go modules/GitHub.com/stackitcloud/stackit sdk
+    go/services/observability 0.16.1 (#1263)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/runcommand from
+    1.3.3 to 1.4.3 (#1262)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/ske (#1260)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/objectstorage
+    (#1259)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serverbackup
+    (#1258)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/secretsmanager
+    (#1247)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/mongodbflex
+    (#1246)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serviceaccount
+    (#1245)
+
+-------------------------------------------------------------------
 Wed Feb 04 12:44:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.53.1:
