@@ -37,7 +37,7 @@
 %define libgthread libgthread-%{libver}
 %define libgirepository libgirepository-%{libver}
 Name:           glib2%{psuffix}
-Version:        2.86.3
+Version:        2.86.4
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later
@@ -67,12 +67,7 @@ Patch2:         glib2-suppress-schema-deprecated-path-warning.patch
 Patch4:         glib2-gdbus-codegen-version.patch
 # PATCH-FIX-UPSTREAM glib2-CVE-2026-0988.patch bsc#1256049 mgorse@suse.com -- fix a potential integer overflow in g_buffered_input_stream_peek.
 Patch5:         glib2-CVE-2026-0988.patch
-# PATCH-FIX-UPSTREAM glib2-CVE-2026-1484.patch bsc#1257355 mgorse@suse.com -- fix potential overflow in base64 encoding.
-Patch6:         glib2-CVE-2026-1484.patch
-# PATCH-FIX-UPSTREAM glib2-CVE-2026-1485.patch bsc#1257354 mgorse@suse.com -- fix underflow in content parsing logic.
-Patch7:         glib2-CVE-2026-1485.patch
-# PATCH-FIX-UPSTREAM glib2-CVE-2026-1489.patch bsc#1257353 mgorse@suse.com -- fix overflow with Unicode case conversion.
-Patch8:         glib2-CVE-2026-1489.patch
+
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

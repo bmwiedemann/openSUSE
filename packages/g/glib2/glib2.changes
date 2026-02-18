@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 14 09:48:50 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.86.4:
+  + Fix several security vulnerabilities of varying severity
+  + Updated translations.
+- Drop patches fixed upstream:
+  + glib2-CVE-2026-1484.patch
+  + glib2-CVE-2026-1485.patch
+  + glib2-CVE-2026-1489.patch
+
+-------------------------------------------------------------------
 Tue Jan 27 20:00:13 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Add CVE fixes:

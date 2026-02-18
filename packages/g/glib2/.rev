@@ -2485,4 +2485,18 @@ Extra note: I see glib2 in G:N is missing its link - manual merge needed after a
     <comment>- Add CVE fixes (forwarded request 1329590 from mgorse)</comment>
     <requestid>1329620</requestid>
   </revision>
+  <revision rev="303" vrev="1">
+    <srcmd5>b620142e5cdf8079d781bddfeaadb9ac</srcmd5>
+    <version>2.86.4</version>
+    <time>1771430723</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.86.4:
+  + Fix several security vulnerabilities of varying severity
+  + Updated translations.
+- Drop patches fixed upstream:
+  + glib2-CVE-2026-1484.patch
+  + glib2-CVE-2026-1485.patch
+  + glib2-CVE-2026-1489.patch (forwarded request 1333019 from iznogood)</comment>
+    <requestid>1333533</requestid>
+  </revision>
 </revisionlist>
