@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb 17 16:57:41 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.2.0
+  * cmd2 now has a dependency on rich for rich text and pretty formatting
+    in the terminal. Previously, cmd2 had a large amount of custom code
+    for this purpose that predated the existence of rich.
+  * Removed the legacy table_creator.py module in favor of rich tables
+  * Moved most string-related functions from utils.py and ansi.py to
+    string_utils.py
+  * Added colors.py and styles.py to provide easy access to rich color
+    names
+  * cmd2 no longer has a dependency on cmd and cmd2.Cmd no longer inherits
+    from cmd.Cmd
+  * Fixed incompatibilities with Python 3.14.3.
+  * To avoid future incompatibilities with argparse, we removed most of
+    our overridden help functions.
+  * Many more potentially breaking changes, see CHANGELOG.md
+
+-------------------------------------------------------------------
 Mon Sep  8 12:59:18 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.7.0

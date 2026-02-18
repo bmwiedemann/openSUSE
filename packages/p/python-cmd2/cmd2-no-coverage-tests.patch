@@ -1,8 +1,8 @@
-Index: cmd2-2.5.11/pyproject.toml
+Index: cmd2-3.2.0/pyproject.toml
 ===================================================================
---- cmd2-2.5.11.orig/pyproject.toml
-+++ cmd2-2.5.11/pyproject.toml
-@@ -104,12 +104,6 @@ warn_unused_ignores = false
+--- cmd2-3.2.0.orig/pyproject.toml
++++ cmd2-3.2.0/pyproject.toml
+@@ -97,12 +97,6 @@ warn_unused_ignores = false
  
  [tool.pytest.ini_options]
  testpaths = ["tests"]
@@ -13,5 +13,5 @@ Index: cmd2-2.5.11/pyproject.toml
 -    "--cov-report=html",
 -]
  
- [tool.ruff]
- # Exclude a variety of commonly ignored directories.
+ [tool.setuptools]
+ packages = ["cmd2"]

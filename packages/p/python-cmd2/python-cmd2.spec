@@ -1,7 +1,7 @@
 #
 # spec file for package python-cmd2
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-cmd2
-Version:        2.7.0
+Version:        3.2.0
 Release:        0
 Summary:        Extra features for standard library's cmd module
 License:        MIT
@@ -31,16 +31,16 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  vim
 Requires:       python
-Requires:       python-pyperclip >= 1.8
+Requires:       python-pyperclip >= 1.8.2
+Requires:       python-rich >= 14.3.0
 Requires:       python-rich-argparse >= 1.7.1
-Requires:       python-wcwidth >= 0.2.10
 BuildArch:      noarch
 # SECTION Test requirements
-BuildRequires:  %{python_module pyperclip >= 1.8}
+BuildRequires:  %{python_module pyperclip >= 1.8.2}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module rich >= 14.3.0}
 BuildRequires:  %{python_module rich-argparse >= 1.7.1}
-BuildRequires:  %{python_module wcwidth >= 0.2.10}
 BuildRequires:  vim
 # /SECTION
 %python_subpackages
