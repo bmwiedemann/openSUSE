@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 18 09:24:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.13.2:
+  This release updates the version of Go used to build the OPA
+  binaries and images to 1.25.7.
+  That version of the Go standard library contains a fix for
+  GO-2026-4337.
+
+-------------------------------------------------------------------
 Fri Jan 30 07:19:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.13.1:

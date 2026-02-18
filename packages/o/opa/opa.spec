@@ -17,7 +17,7 @@
 
 
 Name:           opa
-Version:        1.13.1
+Version:        1.13.2
 Release:        0
 Summary:        Open source, general-purpose policy engine
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.24 >= 1.24.6
+BuildRequires:  go1.25 >= 1.25.7
 BuildRequires:  zsh
 
 %description
