@@ -123,6 +123,10 @@
     <package name="syslinux" arch="x86_64"/>
     <package name="usbutils"/>
     <package name="xfsprogs"/>
+
+    <!-- Configure libzypp -->
+    <package name="zypp-excludedocs"/>
+    <package name="zypp-no-recommends"/>
   </packages>
   <packages type="image" profiles="pxeboot">
     <package name="dracut-kiwi-oem-repart"/>

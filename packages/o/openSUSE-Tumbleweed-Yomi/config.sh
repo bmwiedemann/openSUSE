@@ -111,16 +111,6 @@ if [ -f /etc/chrony.conf ]; then
 fi
 
 #======================================
-# Disable recommends on virtual images (keep hardware supplements, see bsc#1089498)
-#--------------------------------------
-sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = true/g' /etc/zypp/zypp.conf
-
-#======================================
-# Disable installing documentation
-#--------------------------------------
-sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp/zypp.conf
-
-#======================================
 # Configure salt-minion (Yomi)
 #--------------------------------------
 # Add a random UUID grains to identify as a valid image

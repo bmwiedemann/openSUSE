@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 18 07:55:32 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add the zypp config packages zypp-excludedocs and
+  zypp-no-recommends instead of changing the libzypp configuration
+  via sed commands.
+
+-------------------------------------------------------------------
 Wed Oct 15 07:12:26 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop issue-generator in favor of agetty'd own implementation.
