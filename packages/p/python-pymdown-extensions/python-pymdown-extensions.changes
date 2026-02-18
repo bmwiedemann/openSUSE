@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 16 21:32:50 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 10.21:
+  * NEW: Caption: Add support for specifying not only IDs but
+    classes and arbitrary attributes. Initial work by @joapuiib.
+  * FIX: MagicLink: Fix a matching pattern for Bitbucket repo.
+
+-------------------------------------------------------------------
 Thu Jan  1 15:09:16 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 10.20:
