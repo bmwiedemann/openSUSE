@@ -1,9 +1,52 @@
 -------------------------------------------------------------------
+Tue Feb 17 04:24:15 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing Requires on typing-inspection.
+- Add missing BuildRequires on a2wsgi and uvicorn for the testsuite.
+
+-------------------------------------------------------------------
+Mon Feb 16 17:53:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.129.0:
+  * Drop support for Python 3.9.
+  * Fix grammar in `docs/en/docs/tutorial/first-steps.md`.
+  * Tweak PDM hook script.
+  * Show a clear error on attempt to include router into
+    itself.
+  * Replace `dict` by `Mapping` on `HTTPException.headers`. PR
+  * Simplify reading files in memory, do it sequentially
+    instead of (fake) parallel.
+  * Fix `on_startup` and `on_shutdown` parameters of
+    `APIRouter`.
+  * Update translations for zh (update-outdated).
+  * Fix parameterized tests with snapshots.
+  * Refactor and simplify Pydantic v2 (and v1) compatibility
+    internal utils.
+  * Add inline snapshot tests for OpenAPI before changes from
+    Pydantic v2.
+  * Update translations for fr (outdated pages).
+  * Update translations for tr (outdated and missing).
+  * Upgrade Starlette supported version range to
+    `starlette>=0.40.0,<1.0.0`.
+  * Add support for PEP695 `TypeAliasType`.
+  * Allow `Response` type hint as dependency annotation.
+  * Add `viewport` meta tag to improve Swagger UI on mobile
+    devices.
+  * Update `ValidationError` schema to include `input` and
+    `ctx`.
+  * Fix TYPE_CHECKING annotations for Python 3.14 (PEP 649).
+  * Strip whitespaces from `Authorization` header credentials.
+    PR
+  * Fix OpenAPI duplication of `anyOf` refs for app-level
+    responses with specified `content` and `model` as `Union`.
+  * Drop support for `pydantic.v1`.
+
+-------------------------------------------------------------------
 Fri Nov 28 11:00:24 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 
 - Update to version 0.122.0:
   * Use 401 status code in security classes when credentials are missing
-  * Configure labeler to exclude files that start from underscore for lang-all label. 
+  * Configure labeler to exclude files that start from underscore for lang-all label.
   * Add pre-commit config with local script for permalinks.
   * Use font Fira Code to fix display of Rich panels in docs in Windows
   * Add custom pre-commit CI

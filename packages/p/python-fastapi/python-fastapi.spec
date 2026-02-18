@@ -1,7 +1,7 @@
 #
 # spec file for package python-fastapi
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-fastapi%{psuffix}
-Version:        0.122.0
+Version:        0.129.0
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
@@ -44,8 +44,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-annotated-doc >= 0.0.2
 Requires:       python-pydantic >= 1.8.2
+Requires:       python-typing-inspection >= 0.4.2
 Requires:       python-typing_extensions >= 4.8.0
-Requires:       (python-starlette >= 0.40.0 with python-starlette < 0.50.0)
+Requires:       (python-starlette >= 0.40.0 with python-starlette < 1.0.0)
 BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
@@ -60,6 +61,7 @@ BuildRequires:  %{python_module Flask >= 1.1.2}
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module PyYAML >= 5.3.1}
 BuildRequires:  %{python_module SQLAlchemy}
+BuildRequires:  %{python_module a2wsgi >= 1.9.0}
 BuildRequires:  %{python_module aiosqlite}
 BuildRequires:  %{python_module anyio >= 3.2.1}
 BuildRequires:  %{python_module argon2-cffi}
@@ -80,6 +82,7 @@ BuildRequires:  %{python_module python-multipart >= 0.0.18}
 BuildRequires:  %{python_module sqlmodel}
 BuildRequires:  %{python_module trio}
 BuildRequires:  %{python_module ujson >= 5.6}
+BuildRequires:  %{python_module uvicorn >= 0.12}
 %endif
 # /SECTION
 %python_subpackages
@@ -111,7 +114,9 @@ donttest+=" or test_fastapi_cli"
 donttest+=" or test_openapi"
 # seems to hang in OBS and only for 3.9 which we don't support anymore
 donttest+=" or test_tutorial003_py39.py"
-%pytest -W ignore::DeprecationWarning -W ignore::PendingDeprecationWarning -W ignore::ResourceWarning -k "not ($donttest)" tests
+# strawberry-graphql not packaged
+ignore="--ignore tests/test_tutorial/test_graphql/test_tutorial001.py"
+%pytest -W ignore::DeprecationWarning -W ignore::PendingDeprecationWarning -W ignore::ResourceWarning $ignore -k "not ($donttest)" tests
 %endif
 
 %pre

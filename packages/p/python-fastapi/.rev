@@ -626,4 +626,41 @@
     * Refactor internals of dependencies, simplify using dataclasses</comment>
     <requestid>1320604</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>8dba510b7e864363d352f49fbb040917</srcmd5>
+    <version>0.129.0</version>
+    <time>1771430703</time>
+    <user>anag_factory</user>
+    <comment>- Add missing Requires on typing-inspection.
+- Add missing BuildRequires on a2wsgi and uvicorn for the testsuite.
+
+- update to 0.129.0:
+  * Drop support for Python 3.9.
+  * Fix grammar in `docs/en/docs/tutorial/first-steps.md`.
+  * Tweak PDM hook script.
+  * Show a clear error on attempt to include router into
+    itself.
+  * Replace `dict` by `Mapping` on `HTTPException.headers`. PR
+  * Simplify reading files in memory, do it sequentially
+    instead of (fake) parallel.
+  * Fix `on_startup` and `on_shutdown` parameters of
+    `APIRouter`.
+  * Update translations for zh (update-outdated).
+  * Fix parameterized tests with snapshots.
+  * Refactor and simplify Pydantic v2 (and v1) compatibility
+    internal utils.
+  * Add inline snapshot tests for OpenAPI before changes from
+    Pydantic v2.
+  * Update translations for fr (outdated pages).
+  * Update translations for tr (outdated and missing).
+  * Upgrade Starlette supported version range to
+    `starlette&gt;=0.40.0,&lt;1.0.0`.
+  * Add support for PEP695 `TypeAliasType`.
+  * Allow `Response` type hint as dependency annotation.
+  * Add `viewport` meta tag to improve Swagger UI on mobile
+    devices.
+  * Update `ValidationError` schema to include `input` and
+    `ctx`.</comment>
+    <requestid>1333468</requestid>
+  </revision>
 </revisionlist>
