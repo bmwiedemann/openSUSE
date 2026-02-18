@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 18 08:09:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.9.3:
+  * CLI-related changes
+    - chore(backport release-1.9): fix(cli): correct promotion
+      response unmarshaling (#5702)
+  Dependencies:
+  * chore(backport release-1.9): fix: bump go-githubauth (#5716)
+
+-------------------------------------------------------------------
 Mon Feb 02 13:47:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.9.2:
