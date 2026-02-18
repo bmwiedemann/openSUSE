@@ -17,7 +17,7 @@
 
 
 Name:           golang-github-prometheus-alertmanager
-Version:        0.31.0
+Version:        0.31.1
 Release:        0
 Summary:        Prometheus Alertmanager
 License:        Apache-2.0
