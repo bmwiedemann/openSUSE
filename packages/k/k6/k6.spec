@@ -17,7 +17,7 @@
 
 
 Name:           k6
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Modern load testing tool, using Go and JavaScript
 License:        AGPL-3.0
@@ -26,7 +26,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23
+BuildRequires:  golang(API) >= 1.24
 BuildRequires:  zsh
 
 # # github.com/grafana/xk6-output-prometheus-remote/pkg/remote
