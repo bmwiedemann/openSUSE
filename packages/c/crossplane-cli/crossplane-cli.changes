@@ -1,4 +1,271 @@
 -------------------------------------------------------------------
+Wed Feb 18 08:07:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.0:
+  * Upgrade from v2.1
+    It is strongly advised to upgrade to v2.2 from the previous
+    minor version, which is v2.1. Upon upgrade for each minor
+    release, Crossplane performs any necessary migrations of its
+    CRDs to ensure the latest versions are stored in the Kubernetes
+    API server. Therefore, it is important to upgrade sequentially
+    through one minor version at a time as described in the upgrade
+    docs.
+  * Notable and Breaking Changes
+    - Input CRDs included in Function packages are no longer
+      installed by the package manager, following the xpkg
+      specification. Unknown or disallowed resources in a package
+      are now ignored instead of causing package installation to
+      fail. See #6976.
+    - The on-disk structure of the package cache has changed. This
+      breaks an undocumented behavior via which packages could be
+      side-loaded into Crossplane, which was especially useful for
+      testing. See #6981 for details on the change and #7147 for
+      discussion of the test changes necessary to accommodate it.
+  * Highlights
+    - ImageConfig can now be used to configure the
+      DeploymentRuntimeConfig used for packages, including those
+      installed as dependencies. Note that a matching ImageConfig
+      takes precedence over the runtimeConfigRef in a package spec
+      if both are present. See #6382.
+    - The MRD controller now uses server-side apply to update CRDs,
+      improving reliability. See #6934.
+    - The pipeline inspector is now available as an alpha feature
+      (disabled by default). When enabled, the inspector forwards
+      function requests and responses to a user-configured gRPC
+      endpoint for debugging or observability. See #7025 and #7031.
+    - XRDs can now configure x-kubernetes-validations outside of
+      the spec. This allows for validation of metadata such as
+      names and labels. See #7018.
+    - Composition and operation functions can now request OpenAPI
+      schemas for any resource kind in the cluster using the
+      RequiredSchemas field in the function response. Crossplane
+      now advertises capabilities (including required schemas) to
+      functions in a new function request field. See #7022.
+    - The crossplane beta trace CLI command now supports tracing
+      all resources of a given kind, and supports watching
+      resources. See #6552 and #7015.
+    - New documentation has been added regarding connection details
+      for composite resources and workload identity with
+      Crossplane.
+  * What's Changed
+    - chore(deps): bump crossplane-runtime to v2.2.0-rc.0 by
+      @jbw976 in #6888
+    - build: add release-2.1 to renovate baseBranches by @jbw976 in
+      #6892
+    - Fix Docker port binding race condition on macOS by using
+      HostPort "0" by @kaessert in #6897
+    - v2.1 release follow ups by @jbw976 in #6903
+    - Fix XR circuit breaker to account for double token
+      consumption by @negz in #6911
+    - chore: add Evaneos to adopters list by @jbw976 in #6916
+    - chore(deps): update docker/login-action digest to 5e57cd1
+      (main) by @crossplane-renovate[bot] in #6890
+    - chore(deps): update module golang.org/x/crypto to v0.43.0
+      [security] (main) by @crossplane-renovate[bot] in #6921
+    - chore: add ambev tech as adopter by @rafaelvilarinho in #6925
+    - Update ADOPTERS.md by @O5ten in #6900
+    - Fix claim controller watch startup after transient failures
+      by @negz in #6929
+    - Add option to prevent events from being emitted in default
+      namespace by @frigaut-orange in #6733
+    - Allow configuring custom annotations on Crossplane helm chart
+      secret resources by @ravilr in #6917
+    - Use server-side apply for MRD controller by @negz in #6934
+    - fix: Add TLS as app protocol to function service by
+      @ezgidemirel in #6943
+    - pkg: Allow configuration of DeploymentRuntimeConfig via
+      ImageConfig by @adamwg in #6940
+    - chore(deps): update module github.com/jmattheis/goverter to
+      v1.9.2 (main) by @crossplane-renovate[bot] in #6918
+    - chore(deps): update github/codeql-action digest to d3ced5c
+      (main) by @crossplane-renovate[bot] in #6891
+    - chore(deps): update module golang.org/x/crypto to v0.45.0
+      [security] (main) by @crossplane-renovate[bot] in #6937
+    - chore(deps): update actions/checkout digest to 34e1148 (main)
+      by @crossplane-renovate[bot] in #6954
+    - add yaml support to render --context-files and
+      --context-values flag by @u-kai in #6830
+    - chore(deps): update github/codeql-action digest to 497990d
+      (main) by @crossplane-renovate[bot] in #6955
+    - Add Netclab to adopters list with usage details by
+      @mbakalarski in #6972
+    - fix(render): propagate root composite identity through nested
+      XR trees by @jcogilvie in #6957
+    - Add Sumo Logic to adopters by @jcogilvie in #6958
+    - Update ADOPTERS.md by @TheBelgarion in #6754
+    - fix(deps): update module google.golang.org/protobuf to
+      v1.36.11 (main) by @crossplane-renovate[bot] in #6960
+    - Disable CodeRabbit issue enrichment beta feature by @negz in
+      #6993
+    - chore: update run function proto comments for v2 connection
+      details by @jbw976 in #6992
+    - pkg: Stop installing function input CRDs and ignore
+      disallowed kinds by @adamwg in #6976
+    - fix broken link by @cahillsf in #6995
+    - chore: Remove ESS leftovers by @ezgidemirel in #7001
+    - tests: add error handling test for printPodsTable by
+      @intojhanurag in #6944
+    - feat: Support list of resources for crossplane beta trace by
+      @twobiers in #6552
+    - Introduce xpkg.Client to consolidate package fetching by
+      @negz in #6981
+    - Bump golangci-lint to v2.6.2 by @negz in #7009
+    - apis: Eliminate imports of internal packages in apis by
+      @adamwg in #7002
+    - Add sidecar container support to Crossplane Helm chart by
+      @phisco in #7007
+    - feat(helm): Set automountServiceAccountToken on service
+      accounts by @bradyz7 in #6873
+    - chore: add adamwg as maintainer, move turkenh to emeritus by
+      @jbw976 in #7027
+    - docs: fix typo in comments by @NAM-MAN in #7028
+    - Pipeline inspector hook one-pager by @phisco in #7025
+    - chore(deps): update module github.com/go-chi/chi/v5 to v5.2.4
+      [security] (main) by @crossplane-renovate[bot] in #7033
+    - Add Cosign v3 support by @jonasz-lasut in #6985
+    - pkg: Fix upgrading packages with common transitive
+      dependencies by @adamwg in #7030
+    - Add an option to prevent caching of resources in other
+      namespaces by @frigaut-orange in #6732
+    - feat: add defaultCompositionRevisionSelector for v1 and v2
+      APIs by @markussiebert in #7032
+    - docs(links): update links in crds by @haarchri in #7045
+    - Migrate build system from Earthly to Nix by @negz in #6999
+    - Fix Renovate local preset syntax to use owner/repo//path
+      format by @negz in #7055
+    - Fix Nix config for Renovate post-upgrade tasks by @negz in
+      #7058
+    - Disable Nix build-users-group for Renovate by @negz in #7059
+    - fix(deps): update module github.com/sigstore/cosign/v3 to
+      v3.0.4 [security] (main) by @crossplane-renovate[bot] in
+      #7047
+    - chore(deps): pin dependencies (main) by
+      @crossplane-renovate[bot] in #7057
+    - skip checklist-completed check for comments by @lsviben in
+      #7061
+    - chore(deps): update module github.com/go-chi/chi/v5 to v5.2.4
+      [security] (main) by @crossplane-renovate[bot] in #7046
+    - chore(deps): update module
+      github.com/theupdateframework/go-tuf/v2 to v2.4.1 [security]
+      (main) by @crossplane-renovate[bot] in #7048
+    - chore(deps): update module github.com/sigstore/rekor to
+      v1.5.0 [security] (main) by @crossplane-renovate[bot] in
+      #7034
+    - fix(deps): update module github.com/sigstore/sigstore to
+      v1.10.4 [security] (main) by @crossplane-renovate[bot] in
+      #7035
+    - chore(deps): update module github.com/quic-go/quic-go to
+      v0.57.0 [security] (main) by @crossplane-renovate[bot] in
+      #6977
+    - fix(fn-cache): prevent caching responses with unfulfilled
+      requirements by @haarchri in #6961
+    - fix: improve errors for malformed xpkg examples by
+      @majiayu000 in #6990
+    - Add Christopher Haar as a maintainer by @negz in #7069
+    - chore(deps): update docker/login-action digest to c94ce9f
+      (main) by @crossplane-renovate[bot] in #7070
+    - chore(deps): update github/codeql-action digest to 439137e
+      (main) by @crossplane-renovate[bot] in #7071
+    - Remove Earthfile and .ko.yaml by @negz in #7073
+    - chore(deps): update module github.com/jmattheis/goverter to
+      v1.9.3 (main) by @crossplane-renovate[bot] in #7074
+    - chore(deps): update actions/checkout action to v4.3.1 (main)
+      by @crossplane-renovate[bot] in #7076
+    - chore(deps): update aquasecurity/trivy-action action to
+      v0.33.1 (main) by @crossplane-renovate[bot] in #7077
+    - fix(deps): update module github.com/sirupsen/logrus to v1.9.4
+      (main) by @crossplane-renovate[bot] in #7075
+    - chore(deps): update buildpulse/buildpulse-action action to
+      v0.12.0 (main) by @crossplane-renovate[bot] in #7078
+    - fix(deps): update module github.com/alecthomas/kong to
+      v1.13.0 (main) by @crossplane-renovate[bot] in #7081
+    - fix(deps): update module github.com/emicklei/dot to v1.10.0
+      (main) by @crossplane-renovate[bot] in #7083
+    - fix(deps): update module github.com/go-git/go-billy/v5 to
+      v5.7.0 (main) by @crossplane-renovate[bot] in #7087
+    - Remove unused tools/ dir by @negz in #7085
+    - Use lockFileMaintenance to update flake.lock by @negz in
+      #7084
+    - feat(trace): add watch for trace by @haarchri in #7015
+    - Pipeline inspector implementation by @phisco in #7031
+    - chore(deps): update github/codeql-action digest to 2588666
+      (main) by @crossplane-renovate[bot] in #7092
+    - fix(deps): update module github.com/go-git/go-git/v5 to
+      v5.16.4 (main) by @crossplane-renovate[bot] in #7088
+    - fix(deps): update module github.com/docker/go-connections to
+      v0.6.0 (main) by @crossplane-renovate[bot] in #7082
+    - chore(deps): update actions/checkout action to v6 (main) by
+      @crossplane-renovate[bot] in #7095
+    - chore(deps): update actions/upload-artifact action to v6
+      (main) by @crossplane-renovate[bot] in #7098
+    - chore(deps): lock file maintenance (main) by
+      @crossplane-renovate[bot] in #7102
+    - chore(deps): update actions/create-github-app-token action to
+      v2 (main) by @crossplane-renovate[bot] in #7096
+    - chore(deps): update actions/stale action to v10 (main) by
+      @crossplane-renovate[bot] in #7097
+    - chore(deps): update codecov/codecov-action action to v5
+      (main) by @crossplane-renovate[bot] in #7099
+    - chore(deps): update renovatebot/github-action action to v46
+      (main) by @crossplane-renovate[bot] in #7100
+    - chore(deps): update zeebe-io/backport-action action to v4
+      (main) by @crossplane-renovate[bot] in #7101
+    - chore(deps): update dependency ubuntu to v24 (main) by
+      @crossplane-renovate[bot] in #7103
+    - chore(deps): update github/codeql-action action to v4 (main)
+      by @crossplane-renovate[bot] in #7104
+    - fix(deps): update module github.com/in-toto/in-toto-golang to
+      v0.10.0 (main) by @crossplane-renovate[bot] in #7093
+    - build: add args support for hack target, add new unhack
+      target by @jbw976 in #7106
+    - fix: exclude ClusterProviderConfigUsages from CRD to MRD
+      conversion by @LukeTimeWalker in #7090
+    - Handle CronOperation and WatchOperation in alpha render op by
+      @bobh66 in #7021
+    - build: add values file support for hack target by @phisco in
+      #7107
+    - fix(deps): update module github.com/posener/complete to v2
+      (main) by @crossplane-renovate[bot] in #7105
+    - feat(install.sh): download and unpack the compressed file by
+      @tampakrap in #6436
+    - Add shell script linting and expand lint app to format all
+      code by @negz in #7112
+    - Add CLI argument support to hack Nix app by @negz in #7111
+    - fix: check correct condition in package reconciler by
+      @tenstad in #7091
+    - Add support for composition functions to request OpenAPI
+      schemas by @negz in #7022
+    - Use function-python:v0.4.0 in required schemas E2Es by @negz
+      in #7117
+    - Use --watched-resource flag for WatchOperations by @negz in
+      #7113
+    - chore(deps): update gomod2nix digest to 0629af8 (main) by
+      @crossplane-renovate[bot] in #7115
+    - chore(deps): update gomod2nix digest to 75c2866 (main) by
+      @crossplane-renovate[bot] in #7120
+    - chore(deps): update github/codeql-action digest to 45cbd0c
+      (main) by @crossplane-renovate[bot] in #7119
+    - fix(deps): update module github.com/posener/complete to v2
+      (main) by @crossplane-renovate[bot] in #7116
+    - Allow XRDs to configure x-kubernetes-validations outside of
+      spec by @jonasz-lasut in #7018
+    - feat(helm): make sidecars, extra volumes, and volume mounts
+      templatable by @phisco in #7122
+    - fix(deps): update module github.com/posener/complete to v2
+      (main) by @crossplane-renovate[bot] in #7121
+    - fix(deps): update module github.com/alecthomas/kong to
+      v1.14.0 (main) by @crossplane-renovate[bot] in #7125
+    - chore: update steering committee table for 2026 election
+      results by @jbw976 in #7127
+    - chore(deps): update renovatebot/github-action action to
+      v46.0.2 (main) by @crossplane-renovate[bot] in #7132
+    - Bump crossplane-runtime dependency to v2.2.0-rc.1 by @adamwg
+      in #7135
+    - [Backport release-2.2] Use foreground cascading deletion for
+      unneeded composed resources by @github-actions[bot] in #7144
+    - deps: Update crossplane-runtime to v2.2.0 by @adamwg in #7150
+
+-------------------------------------------------------------------
 Wed Feb 04 12:42:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.4:
