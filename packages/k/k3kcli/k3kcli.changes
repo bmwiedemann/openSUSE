@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Feb 17 05:59:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.2:
+  * Pin QEMU setup to use tonistiigi/binfmt:qemu-v10.0.4-56 image
+    (#669)
+  * Bump Charts to `1.0.2-rc1` (#652)
+  * Update registry.suse.com/bci/bci-base Docker tag to v15.7
+    (#651)
+  * Bump kubernetes dependencies (v1.33) (#647)
+  * Show correct allocatable resources when a Policy is applied
+    (#638)
+  * SecretMounts feature and private registries (#570)
+  * Update Update Kubernetes dependencies to v1.32.10 [SECURITY]
+    (#626)
+  * Bump testcontainers-go (v0.40.0), containerd (v1.7.30) and
+    x/crypto (v0.45.0) (#640)
+  * Update helm.sh/helm/v3 to v3.18.5 (#641)
+  * Update module github.com/sirupsen/logrus to v1.9.4 (#631)
+  * Update dependency golangci/golangci-lint to v2.8.0 (#635)
+  * Update github/codeql-action digest to 38e701f (#634)
+  * Update module go.uber.org/zap to v1.27.1 (#633)
+  * Update module github.com/spf13/cobra to v1.10.2 (#632)
+  * Update module github.com/go-logr/logr to v1.4.3 (#629)
+  * Pin dependencies (#628)
+  * Migrate config .github/renovate.json (#627)
+  * Make the storageRequestSize immutable.
+  * Only reconcile the server resource on the StatefullSet
+    Controller (fix #618)
+  * Fix lint issues and failing test.
+  * Use resource.Quantity for storageRequestSize
+  * Bump to Go 1.25 (#620)
+  * Add initial Renovate configuration (#621)
+  * CLI cluster update (#595)
+  * fix virtual pod NodeSelector #572 (#616)
+  * Add a dedicated Validate GitHub Actions workflow (#614)
+  * Dev doc update (#611)
+  * Fixed resource allocation fetching the stats from the node
+    where the (#610)
+  * Bump Charts to `1.0.2-rc1` (#609)
+  * Add FOSSA scanning workflow (#606)
+  * Added AsciiDoc K3k CRDs docs automation (#600)
+  * Refactor startup command to wait for node IP changes (#598)
+  * Added AsciiDoc `k3kcli` automation (#597)
+  * fix for missing label update in creation, added tests (#592)
+  * Attach creation of Pseudo PV to the PVC instead of the pods
+    (#577)
+  * Fixed CreatePod and UpdatePod in Virtual Kubelet for Downward
+    API (#573)
+  * Bump Charts to `1.0.1` (#588)
+
+-------------------------------------------------------------------
 Thu Dec 11 06:48:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.0.1:

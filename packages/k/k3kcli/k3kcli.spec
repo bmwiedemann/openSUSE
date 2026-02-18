@@ -1,7 +1,7 @@
 #
 # spec file for package k3kcli
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           k3kcli
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Kubernetes in Kubernetes
 License:        Apache-2.0
 URL:            https://github.com/rancher/k3k
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.24 >= 1.24.10
+BuildRequires:  golang(API) >= 1.25
 
 %description
 A Kubernetes in Kubernetes tool, k3k provides a way to run multiple embedded
