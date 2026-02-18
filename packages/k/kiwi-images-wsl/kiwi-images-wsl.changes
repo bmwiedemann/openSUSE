@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 16 19:18:48 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating config.sh to remove sed command for solver.onlyRequires
+
+-------------------------------------------------------------------
 Thu Jul 11 14:48:18 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Updating config.sh to 'Include BCI free rpm repository also in SLE WSL' via

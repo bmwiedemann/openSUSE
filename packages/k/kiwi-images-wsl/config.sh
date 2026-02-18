@@ -47,7 +47,14 @@ fi
 #======================================
 # Disable recommends
 #--------------------------------------
-sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = true/g' /etc/zypp/zypp.conf
+### 20260216: libzypp v17.38.2 removes /etc/zypp/zypp.conf (by default)
+###   and uses a very basic /usr/etc/zypp/zypp.conf which doesn't include
+###   any solver stanzas
+#sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = true/g' /etc/zypp/zypp.conf
+### This could potentially put it back in place, but image size was no different
+###   with/without it
+#echo "solver.onlyRequires = true" >>/usr/etc/zypp/zypp.conf.d/01-onlyRequires.conf
+#####
 
 if [ -e /etc/sysconfig/firstboot -a -e /etc/YaST2/firstboot-wsl.xml ]; then
 	# set custom firstboot control file

@@ -168,4 +168,12 @@
     <comment></comment>
     <requestid>1200707</requestid>
   </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>ba4b765a8d63ca312d98a851a3a7d6d1</srcmd5>
+    <version>1.0.0</version>
+    <time>1771430806</time>
+    <user>anag_factory</user>
+    <comment>- Updating config.sh to remove sed command for solver.onlyRequires</comment>
+    <requestid>1333635</requestid>
+  </revision>
 </revisionlist>
