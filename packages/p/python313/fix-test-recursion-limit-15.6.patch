@@ -2,9 +2,11 @@
  Lib/test/test_compile.py |    5 +++++
  1 file changed, 5 insertions(+)
 
---- a/Lib/test/test_compile.py
-+++ b/Lib/test/test_compile.py
-@@ -21,6 +21,9 @@ from test.support import (script_helper,
+Index: Python-3.13.12/Lib/test/test_compile.py
+===================================================================
+--- Python-3.13.12.orig/Lib/test/test_compile.py	2026-02-03 18:53:27.000000000 +0100
++++ Python-3.13.12/Lib/test/test_compile.py	2026-02-06 11:32:39.221208472 +0100
+@@ -21,6 +21,9 @@
  from test.support.bytecode_helper import instructions_with_positions
  from test.support.os_helper import FakePath
  
@@ -14,7 +16,7 @@
  class TestSpecifics(unittest.TestCase):
  
      def compile_single(self, source):
-@@ -117,6 +120,7 @@ class TestSpecifics(unittest.TestCase):
+@@ -117,6 +120,7 @@
          self.assertEqual(d['z'], 12)
  
      @unittest.skipIf(support.is_wasi, "exhausts limited stack on WASI")
@@ -22,7 +24,7 @@
      def test_extended_arg(self):
          repeat = int(get_c_recursion_limit() * 0.9)
          longexpr = 'x = x or ' + '-x' * repeat
-@@ -701,6 +705,7 @@ class TestSpecifics(unittest.TestCase):
+@@ -716,6 +720,7 @@
  
      @support.cpython_only
      @unittest.skipIf(support.is_wasi, "exhausts limited stack on WASI")

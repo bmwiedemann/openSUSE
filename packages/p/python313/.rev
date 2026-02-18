@@ -1143,4 +1143,42 @@
 - Core and Builtins</comment>
     <requestid>1324012</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c1019373f44e964bdb61542aa9a90901</srcmd5>
+    <version>3.13.12</version>
+    <time>1771430664</time>
+    <user>anag_factory</user>
+    <comment>Update to 3.13.12: Python 3.13.12 final Release date:
+
+  2026-02-03
+  - Tools/Demos
+    - gh-142095: Make gdb ‘py-bt’ command use frame from thread
+      local state when available. Patch by Sam Gross and Victor
+      Stinner.
+  - Tests
+    - gh-144415: The Android testbed now distinguishes between
+      stdout/stderr messages which were triggered by a newline,
+      and those triggered by a manual call to flush. This fixes
+      logging of progress indicators and similar content.
+    - gh-65784: Add support for parametrized resource wantobjects
+      in regrtests, which allows to run Tkinter tests with the
+      specified value of tkinter.wantobjects, for example -u
+      wantobjects=0.
+    - gh-143553: Add support for parametrized resources, such as
+      -u xpickle=2.7.
+    - gh-142836: Accommodated Solaris in
+      test_pdb.test_script_target_anonymous_pipe.
+    - gh-129401: Fix a flaky test in test_repr_rlock that checks
+      the representation of multiprocessing.RLock.
+    - bpo-31391: Forward-port test_xpickle from Python 2 to
+      Python 3 and add the resource back to test’s command line.
+  - Security
+    - gh-144125: BytesGenerator will now refuse to serialize
+      (write) headers that are unsafely folded or delimited; see
+      verify_generated_headers. (Contributed by Bas Bloemsaat and
+      Petr Viktorin in gh-121650).
+    - gh-143935: Fixed a bug in the folding of comments when
+      flattening an email message using a modern email policy.</comment>
+    <requestid>1332992</requestid>
+  </revision>
 </revisionlist>

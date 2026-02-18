@@ -27,10 +27,10 @@
  Doc/tools/extensions/pydoc_topics.py          |   22 +++++-----
  18 files changed, 159 insertions(+), 130 deletions(-)
 
-Index: Python-3.13.11/Doc/Makefile
+Index: Python-3.13.12/Doc/Makefile
 ===================================================================
---- Python-3.13.11.orig/Doc/Makefile	2025-12-05 17:06:33.000000000 +0100
-+++ Python-3.13.11/Doc/Makefile	2025-12-18 23:36:11.845184450 +0100
+--- Python-3.13.12.orig/Doc/Makefile	2026-02-03 18:53:27.000000000 +0100
++++ Python-3.13.12/Doc/Makefile	2026-02-06 11:32:43.257524049 +0100
 @@ -14,15 +14,15 @@
  SOURCES      =
  DISTVERSION  = $(shell $(PYTHON) tools/extensions/patchlevel.py)
@@ -51,10 +51,10 @@ Index: Python-3.13.11/Doc/Makefile
                  $(PAPEROPT_$(PAPER)) \
                  $(SPHINXOPTS) $(SPHINXERRORHANDLING) \
                  . build/$(BUILDER) $(SOURCES)
-Index: Python-3.13.11/Doc/c-api/arg.rst
+Index: Python-3.13.12/Doc/c-api/arg.rst
 ===================================================================
---- Python-3.13.11.orig/Doc/c-api/arg.rst	2025-12-05 17:06:33.000000000 +0100
-+++ Python-3.13.11/Doc/c-api/arg.rst	2025-12-18 23:36:11.845570257 +0100
+--- Python-3.13.12.orig/Doc/c-api/arg.rst	2026-02-03 18:53:27.000000000 +0100
++++ Python-3.13.12/Doc/c-api/arg.rst	2026-02-06 11:32:43.257960130 +0100
 @@ -334,7 +334,6 @@
     should raise an exception and leave the content of *address* unmodified.
  
@@ -63,10 +63,10 @@ Index: Python-3.13.11/Doc/c-api/arg.rst
  
     If the *converter* returns :c:macro:`!Py_CLEANUP_SUPPORTED`, it may get called a
     second time if the argument parsing eventually fails, giving the converter a
-Index: Python-3.13.11/Doc/c-api/typeobj.rst
+Index: Python-3.13.12/Doc/c-api/typeobj.rst
 ===================================================================
---- Python-3.13.11.orig/Doc/c-api/typeobj.rst	2025-12-05 17:06:33.000000000 +0100
-+++ Python-3.13.11/Doc/c-api/typeobj.rst	2025-12-18 23:36:11.846211337 +0100
+--- Python-3.13.12.orig/Doc/c-api/typeobj.rst	2026-02-03 18:53:27.000000000 +0100
++++ Python-3.13.12/Doc/c-api/typeobj.rst	2026-02-06 11:32:43.258653093 +0100
 @@ -610,7 +610,7 @@
     Functions like :c:func:`PyObject_NewVar` will take the value of N as an
     argument, and store in the instance's :c:member:`~PyVarObject.ob_size` field.
@@ -97,10 +97,10 @@ Index: Python-3.13.11/Doc/c-api/typeobj.rst
     include :c:type:`PyObject` or :c:type:`PyVarObject` (depending on
     whether :c:member:`~PyVarObject.ob_size` should be included). These are
     usually defined by the macro :c:macro:`PyObject_HEAD` or
-Index: Python-3.13.11/Doc/conf.py
+Index: Python-3.13.12/Doc/conf.py
 ===================================================================
---- Python-3.13.11.orig/Doc/conf.py	2025-12-05 17:06:33.000000000 +0100
-+++ Python-3.13.11/Doc/conf.py	2025-12-18 23:36:11.846742416 +0100
+--- Python-3.13.12.orig/Doc/conf.py	2026-02-06 11:32:20.252483695 +0100
++++ Python-3.13.12/Doc/conf.py	2026-02-06 11:32:43.259159426 +0100
 @@ -11,6 +11,8 @@
  from importlib import import_module
  from importlib.util import find_spec
@@ -172,10 +172,10 @@ Index: Python-3.13.11/Doc/conf.py
  # Options for c_annotations extension
  # -----------------------------------
  
-Index: Python-3.13.11/Doc/library/doctest.rst
+Index: Python-3.13.12/Doc/library/doctest.rst
 ===================================================================
---- Python-3.13.11.orig/Doc/library/doctest.rst	2025-12-05 17:06:33.000000000 +0100
-+++ Python-3.13.11/Doc/library/doctest.rst	2025-12-18 23:36:11.847131855 +0100
+--- Python-3.13.12.orig/Doc/library/doctest.rst	2026-02-03 18:53:27.000000000 +0100
++++ Python-3.13.12/Doc/library/doctest.rst	2026-02-06 11:32:43.259497242 +0100
 @@ -310,7 +310,6 @@
  .. currentmodule:: None
  
@@ -184,10 +184,10 @@ Index: Python-3.13.11/Doc/library/doctest.rst
  
  .. currentmodule:: doctest
  
-Index: Python-3.13.11/Doc/library/email.compat32-message.rst
+Index: Python-3.13.12/Doc/library/email.compat32-message.rst
 ===================================================================
---- Python-3.13.11.orig/Doc/library/email.compat32-message.rst	2025-12-05 17:06:33.000000000 +0100
-+++ Python-3.13.11/Doc/library/email.compat32-message.rst	2025-12-18 23:36:11.847579332 +0100
+--- Python-3.13.12.orig/Doc/library/email.compat32-message.rst	2026-02-03 18:53:27.000000000 +0100
++++ Python-3.13.12/Doc/library/email.compat32-message.rst	2026-02-06 11:32:43.259906983 +0100
 @@ -7,7 +7,6 @@
     :synopsis: The base class representing email messages in a fashion
                backward compatible with Python 3.2
@@ -196,10 +196,10 @@ Index: Python-3.13.11/Doc/library/email.compat32-message.rst
  
  
  The :class:`Message` class is very similar to the
-Index: Python-3.13.11/Doc/library/xml.etree.elementtree.rst
+Index: Python-3.13.12/Doc/library/xml.etree.elementtree.rst
 ===================================================================
---- Python-3.13.11.orig/Doc/library/xml.etree.elementtree.rst	2025-12-05 17:06:33.000000000 +0100
-+++ Python-3.13.11/Doc/library/xml.etree.elementtree.rst	2025-12-18 23:36:11.847865126 +0100
+--- Python-3.13.12.orig/Doc/library/xml.etree.elementtree.rst	2026-02-03 18:53:27.000000000 +0100
++++ Python-3.13.12/Doc/library/xml.etree.elementtree.rst	2026-02-06 11:32:43.260169777 +0100
 @@ -873,7 +873,6 @@
  
  .. module:: xml.etree.ElementTree
@@ -208,10 +208,10 @@ Index: Python-3.13.11/Doc/library/xml.etree.elementtree.rst
  
  .. class:: Element(tag, attrib={}, **extra)
  
-Index: Python-3.13.11/Doc/tools/check-warnings.py
+Index: Python-3.13.12/Doc/tools/check-warnings.py
 ===================================================================
---- Python-3.13.11.orig/Doc/tools/check-warnings.py	2025-12-05 17:06:33.000000000 +0100
-+++ Python-3.13.11/Doc/tools/check-warnings.py	2025-12-18 23:36:11.848175434 +0100
+--- Python-3.13.12.orig/Doc/tools/check-warnings.py	2026-02-03 18:53:27.000000000 +0100
++++ Python-3.13.12/Doc/tools/check-warnings.py	2026-02-06 11:32:43.260451727 +0100
 @@ -228,7 +228,8 @@
              print(filename)
              for warning in warnings:
@@ -222,7 +222,7 @@ Index: Python-3.13.11/Doc/tools/check-warnings.py
                          print("  {line}: {msg}".format_map(match))
          return -1
      return 0
-@@ -316,7 +317,7 @@
+@@ -319,7 +320,7 @@
  
      cwd = str(Path.cwd()) + os.path.sep
      files_with_nits = {
@@ -231,10 +231,10 @@ Index: Python-3.13.11/Doc/tools/check-warnings.py
          for warning in warnings
          if "Doc/" in warning
      }
-Index: Python-3.13.11/Doc/tools/extensions/audit_events.py
+Index: Python-3.13.12/Doc/tools/extensions/audit_events.py
 ===================================================================
---- Python-3.13.11.orig/Doc/tools/extensions/audit_events.py	2025-12-05 17:06:33.000000000 +0100
-+++ Python-3.13.11/Doc/tools/extensions/audit_events.py	2025-12-18 23:36:11.848442160 +0100
+--- Python-3.13.12.orig/Doc/tools/extensions/audit_events.py	2026-02-03 18:53:27.000000000 +0100
++++ Python-3.13.12/Doc/tools/extensions/audit_events.py	2026-02-06 11:32:43.260742655 +0100
 @@ -1,9 +1,6 @@
  """Support for documenting audit events."""
  
@@ -370,10 +370,10 @@ Index: Python-3.13.11/Doc/tools/extensions/audit_events.py
      ) -> nodes.row:
          row = nodes.row()
          name_node = nodes.paragraph("", nodes.Text(name))
-Index: Python-3.13.11/Doc/tools/extensions/availability.py
+Index: Python-3.13.12/Doc/tools/extensions/availability.py
 ===================================================================
---- Python-3.13.11.orig/Doc/tools/extensions/availability.py	2025-12-05 17:06:33.000000000 +0100
-+++ Python-3.13.11/Doc/tools/extensions/availability.py	2025-12-18 23:36:11.848697922 +0100
+--- Python-3.13.12.orig/Doc/tools/extensions/availability.py	2026-02-03 18:53:27.000000000 +0100
++++ Python-3.13.12/Doc/tools/extensions/availability.py	2026-02-06 11:32:43.260981454 +0100
 @@ -1,8 +1,6 @@
  """Support for documenting platform availability"""
  
@@ -427,10 +427,10 @@ Index: Python-3.13.11/Doc/tools/extensions/availability.py
      app.add_directive("availability", Availability)
  
      return {
-Index: Python-3.13.11/Doc/tools/extensions/c_annotations.py
+Index: Python-3.13.12/Doc/tools/extensions/c_annotations.py
 ===================================================================
---- Python-3.13.11.orig/Doc/tools/extensions/c_annotations.py	2025-12-05 17:06:33.000000000 +0100
-+++ Python-3.13.11/Doc/tools/extensions/c_annotations.py	2025-12-18 23:37:01.590377119 +0100
+--- Python-3.13.12.orig/Doc/tools/extensions/c_annotations.py	2026-02-03 18:53:27.000000000 +0100
++++ Python-3.13.12/Doc/tools/extensions/c_annotations.py	2026-02-06 11:32:43.261164228 +0100
 @@ -9,22 +9,26 @@
  * Set ``stable_abi_file`` to the path to stable ABI list.
  """
@@ -569,10 +569,10 @@ Index: Python-3.13.11/Doc/tools/extensions/c_annotations.py
      return {
          "version": "1.0",
          "parallel_read_safe": True,
-Index: Python-3.13.11/Doc/tools/extensions/changes.py
+Index: Python-3.13.12/Doc/tools/extensions/changes.py
 ===================================================================
---- Python-3.13.11.orig/Doc/tools/extensions/changes.py	2025-12-05 17:06:33.000000000 +0100
-+++ Python-3.13.11/Doc/tools/extensions/changes.py	2025-12-18 23:36:11.849240594 +0100
+--- Python-3.13.12.orig/Doc/tools/extensions/changes.py	2026-02-03 18:53:27.000000000 +0100
++++ Python-3.13.12/Doc/tools/extensions/changes.py	2026-02-06 11:32:43.261401915 +0100
 @@ -1,7 +1,5 @@
  """Support for documenting version of changes, additions, deprecations."""
  
@@ -608,10 +608,10 @@ Index: Python-3.13.11/Doc/tools/extensions/changes.py
      # Override Sphinx's directives with support for 'next'
      app.add_directive("versionadded", PyVersionChange, override=True)
      app.add_directive("versionchanged", PyVersionChange, override=True)
-Index: Python-3.13.11/Doc/tools/extensions/glossary_search.py
+Index: Python-3.13.12/Doc/tools/extensions/glossary_search.py
 ===================================================================
---- Python-3.13.11.orig/Doc/tools/extensions/glossary_search.py	2025-12-05 17:06:33.000000000 +0100
-+++ Python-3.13.11/Doc/tools/extensions/glossary_search.py	2025-12-18 23:36:11.849448932 +0100
+--- Python-3.13.12.orig/Doc/tools/extensions/glossary_search.py	2026-02-03 18:53:27.000000000 +0100
++++ Python-3.13.12/Doc/tools/extensions/glossary_search.py	2026-02-06 11:32:43.261561375 +0100
 @@ -1,21 +1,27 @@
  """Feature search results for glossary items prominently."""
  
@@ -655,10 +655,10 @@ Index: Python-3.13.11/Doc/tools/extensions/glossary_search.py
      app.connect('doctree-resolved', process_glossary_nodes)
      app.connect('build-finished', write_glossary_json)
  
-Index: Python-3.13.11/Doc/tools/extensions/implementation_detail.py
+Index: Python-3.13.12/Doc/tools/extensions/implementation_detail.py
 ===================================================================
---- Python-3.13.11.orig/Doc/tools/extensions/implementation_detail.py	2025-12-05 17:06:33.000000000 +0100
-+++ Python-3.13.11/Doc/tools/extensions/implementation_detail.py	2025-12-18 23:36:11.849650427 +0100
+--- Python-3.13.12.orig/Doc/tools/extensions/implementation_detail.py	2026-02-03 18:53:27.000000000 +0100
++++ Python-3.13.12/Doc/tools/extensions/implementation_detail.py	2026-02-06 11:32:43.261759899 +0100
 @@ -1,17 +1,10 @@
  """Support for marking up implementation details."""
  
@@ -709,10 +709,10 @@ Index: Python-3.13.11/Doc/tools/extensions/implementation_detail.py
      app.add_directive("impl-detail", ImplementationDetail)
  
      return {
-Index: Python-3.13.11/Doc/tools/extensions/issue_role.py
+Index: Python-3.13.12/Doc/tools/extensions/issue_role.py
 ===================================================================
---- Python-3.13.11.orig/Doc/tools/extensions/issue_role.py	2025-12-05 17:06:33.000000000 +0100
-+++ Python-3.13.11/Doc/tools/extensions/issue_role.py	2025-12-18 23:36:11.849838302 +0100
+--- Python-3.13.12.orig/Doc/tools/extensions/issue_role.py	2026-02-03 18:53:27.000000000 +0100
++++ Python-3.13.12/Doc/tools/extensions/issue_role.py	2026-02-06 11:32:43.261920641 +0100
 @@ -1,22 +1,18 @@
  """Support for referencing issues in the tracker."""
  
@@ -758,10 +758,10 @@ Index: Python-3.13.11/Doc/tools/extensions/issue_role.py
      app.add_role("issue", BPOIssue())
      app.add_role("gh", GitHubIssue())
  
-Index: Python-3.13.11/Doc/tools/extensions/misc_news.py
+Index: Python-3.13.12/Doc/tools/extensions/misc_news.py
 ===================================================================
---- Python-3.13.11.orig/Doc/tools/extensions/misc_news.py	2025-12-05 17:06:33.000000000 +0100
-+++ Python-3.13.11/Doc/tools/extensions/misc_news.py	2025-12-18 23:36:11.850033510 +0100
+--- Python-3.13.12.orig/Doc/tools/extensions/misc_news.py	2026-02-03 18:53:27.000000000 +0100
++++ Python-3.13.12/Doc/tools/extensions/misc_news.py	2026-02-06 11:32:43.262085421 +0100
 @@ -1,7 +1,5 @@
  """Support for including Misc/NEWS."""
  
@@ -814,10 +814,10 @@ Index: Python-3.13.11/Doc/tools/extensions/misc_news.py
      app.add_directive("miscnews", MiscNews)
  
      return {
-Index: Python-3.13.11/Doc/tools/extensions/patchlevel.py
+Index: Python-3.13.12/Doc/tools/extensions/patchlevel.py
 ===================================================================
---- Python-3.13.11.orig/Doc/tools/extensions/patchlevel.py	2025-12-05 17:06:33.000000000 +0100
-+++ Python-3.13.11/Doc/tools/extensions/patchlevel.py	2025-12-18 23:36:11.850217264 +0100
+--- Python-3.13.12.orig/Doc/tools/extensions/patchlevel.py	2026-02-03 18:53:27.000000000 +0100
++++ Python-3.13.12/Doc/tools/extensions/patchlevel.py	2026-02-06 11:32:43.262245612 +0100
 @@ -3,7 +3,7 @@
  import re
  import sys
@@ -855,10 +855,10 @@ Index: Python-3.13.11/Doc/tools/extensions/patchlevel.py
      version = f"{info.major}.{info.minor}"
      release = f"{info.major}.{info.minor}.{info.micro}"
      if info.releaselevel != "final":
-Index: Python-3.13.11/Doc/tools/extensions/pydoc_topics.py
+Index: Python-3.13.12/Doc/tools/extensions/pydoc_topics.py
 ===================================================================
---- Python-3.13.11.orig/Doc/tools/extensions/pydoc_topics.py	2025-12-05 17:06:33.000000000 +0100
-+++ Python-3.13.11/Doc/tools/extensions/pydoc_topics.py	2025-12-18 23:36:11.850437755 +0100
+--- Python-3.13.12.orig/Doc/tools/extensions/pydoc_topics.py	2026-02-03 18:53:27.000000000 +0100
++++ Python-3.13.12/Doc/tools/extensions/pydoc_topics.py	2026-02-06 11:32:43.262420171 +0100
 @@ -1,21 +1,23 @@
  """Support for building "topic help" for pydoc."""
  
@@ -890,8 +890,8 @@ Index: Python-3.13.11/Doc/tools/extensions/pydoc_topics.py
  
  logger = logging.getLogger(__name__)
  
-@@ -162,7 +164,7 @@
-         self.outdir.joinpath("topics.py").write_text(topics, encoding="utf-8")
+@@ -188,7 +190,7 @@
+         )
  
  
 -def _display_labels(item: tuple[str, Sequence[tuple[str, str]]]) -> str:
@@ -899,7 +899,7 @@ Index: Python-3.13.11/Doc/tools/extensions/pydoc_topics.py
      _docname, label_ids = item
      labels = [name for name, _id in label_ids]
      if len(labels) > 4:
-@@ -170,7 +172,7 @@
+@@ -196,7 +198,7 @@
      return ", ".join(labels)
  
  
@@ -908,7 +908,7 @@ Index: Python-3.13.11/Doc/tools/extensions/pydoc_topics.py
      """Return a triple-single-quoted representation of text."""
      if "'''" not in text:
          return f"r'''{text}'''"
-@@ -178,7 +180,7 @@
+@@ -204,7 +206,7 @@
      return f"'''{text}'''"
  
  

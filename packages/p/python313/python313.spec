@@ -167,7 +167,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.13.11
+Version:        3.13.12
 %define         tarversion %{version}
 %define         tarname    Python-%{tarversion}
 Release:        0
@@ -231,13 +231,12 @@ Patch42:        gh126985-mv-pyvenv.cfg2getpath.patch
 # PATCH-FIX-UPSTREAM bsc1243155-sphinx-non-determinism.patch bsc#1243155 mcepl@suse.com
 # Doc: Generate ids for audit_events using docname
 Patch43:        bsc1243155-sphinx-non-determinism.patch
-# PATCH-FIX-UPSTREAM gh138131-exclude-pycache-from-digest.patch bsc#1244680 daniel.garcia@suse.com
-Patch44:        gh138131-exclude-pycache-from-digest.patch
 # PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
 Patch45:        gh139257-Support-docutils-0.22.patch
 # PATCH-FIX-UPSTREAM pass-test_write_read_limited_history.patch bsc#[0-9]+ mcepl@suse.com
 # Fix readline history truncation when length is reduced
 Patch48:        pass-test_write_read_limited_history.patch
+#### END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
