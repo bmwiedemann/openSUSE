@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Feb 19 06:12:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.42.1:
+  * Bug Fixes
+    - Use redhat as namespace for hummingbird rpms [#4615 @scoheb]
+    - False Positive: Emacs snap package version CVE-2024-39331
+      [#4485]
+  * Additional Changes
+    - call cleanup on tmpfile and replace some io.ReadAlls with
+      streams [#4629 @willmurphyscode]
+    - bumps go mod version to 1.25; ci takes latest patch [#4628
+      @spiffcs]
+  * Dependencies
+    - chore(deps): update tools to latest versions (#4614)
+    - chore(deps): bump the actions-minor-patch group across 1
+      directory with 2 updates (#4622)
+    - chore(deps): bump the go-minor-patch group with 2 updates
+      (#4621)
+    - chore(deps): update CPE dictionary index (#4623)
+
+-------------------------------------------------------------------
 Wed Feb 11 05:52:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.42.0:

@@ -17,7 +17,7 @@
 
 
 Name:           syft
-Version:        1.42.0
+Version:        1.42.1
 Release:        0
 Summary:        CLI tool and library for generating a Software Bill of Materials
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Source:         syft-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.24
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.25
 
 %description
 A CLI tool and Go library for generating a Software Bill of Materials (SBOM)
