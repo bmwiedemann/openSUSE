@@ -17,7 +17,7 @@
 
 
 Name:           ssh-pairing
-Version:        0.2
+Version:        0.3
 Release:        0
 Summary:        Passwordless SSH key exchange through pairing
 License:        GPL-2.0-or-later

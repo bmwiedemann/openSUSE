@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 17 16:29:09 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 0.3:
+  * Configure libssh to listen on IPv6 (bsc#1253117)
+
+-------------------------------------------------------------------
 Fri Apr 12 13:20:34 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 0.2:

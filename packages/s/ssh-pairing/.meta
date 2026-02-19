@@ -6,6 +6,5 @@ It is arguably also more secure, as no passwords are involved, not even temporar
 This tool is design to be used as part of some CLI or TUI, but can also be used manually.
 
 </description>
-  <devel project="devel:openSUSE:Factory" package="ssh-pairing"/>
   <url>https://github.com/Vogtinator/ssh-pairing</url>
 </package>
