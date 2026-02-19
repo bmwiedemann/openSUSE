@@ -10,7 +10,7 @@ Index: virt-manager-5.1.0/virtinst/devices/disk.py
 ===================================================================
 --- virt-manager-5.1.0.orig/virtinst/devices/disk.py
 +++ virt-manager-5.1.0/virtinst/devices/disk.py
-@@ -961,6 +961,17 @@ class DeviceDisk(Device):
+@@ -977,6 +977,17 @@ class DeviceDisk(Device):
          :returns: generated target
          """
          prefix, maxnode = self.get_target_prefix()
@@ -28,17 +28,17 @@ Index: virt-manager-5.1.0/virtinst/devices/disk.py
          skip_targets = [t for t in skip_targets if t and t.startswith(prefix)]
          skip_targets.sort()
  
-@@ -968,11 +979,18 @@ class DeviceDisk(Device):
-             first_found = None
- 
-             for i in range(maxnode):
--                gen_t = prefix + self.num_to_target(i + 1)
-+                postfix = self.num_to_target(i + 1)
-+                gen_t = prefix + postfix
-+                if self.conn.is_xen() and postfix in postfix_targets:
-+                    if gen_t in skip_targets:
-+                        skip_targets.remove(gen_t)
-+                    continue
+@@ -990,11 +1001,18 @@ class DeviceDisk(Device):
+                 if self.bus == "nvme":
+                     gen_t = f"{prefix}{nvmen}n{i + 1}"
+                 else:
+-                    gen_t = prefix + self.num_to_target(i + 1)
++                    postfix = self.num_to_target(i + 1)
++                    gen_t = prefix + postfix
++                    if self.conn.is_xen() and postfix in postfix_targets:
++                        if gen_t in skip_targets:
++                            skip_targets.remove(gen_t)
++                        continue
                  if gen_t in skip_targets:
                      skip_targets.remove(gen_t)
                      continue

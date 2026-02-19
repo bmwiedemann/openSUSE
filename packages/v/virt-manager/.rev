@@ -2262,4 +2262,12 @@
     <comment>Fix for bsc#1257182 - A VM will fail to boot with Intel TDX or AMD SNP with a TPM device defined in the VM. Adjusted SLES media detection while preserving old.</comment>
     <requestid>1330617</requestid>
   </revision>
+  <revision rev="286" vrev="8">
+    <srcmd5>c42eb189469993522e1842bc74d63c81</srcmd5>
+    <version>5.1.0</version>
+    <time>1771507166</time>
+    <user>dimstar_suse</user>
+    <comment>Upstream features and bug fixes (bsc#1027942, jsc#PED-14625) and add support for UEFI as default for new SLES 16 VMs (jsc#PED-14636)</comment>
+    <requestid>1333633</requestid>
+  </revision>
 </revisionlist>

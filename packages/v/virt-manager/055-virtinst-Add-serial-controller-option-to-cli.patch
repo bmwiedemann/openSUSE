@@ -1,0 +1,56 @@
+Subject: virtinst: Add serial controller option to cli
+From: 6543 6543@obermui.de Thu Jan 8 21:43:38 2026 +0100
+Date: Sun Jan 11 18:36:09 2026 +0100:
+Git: 6f1adcc9251429e1dc9f15ec68e3b00affdb9638
+
+
+diff --git a/tests/data/cli/compare/virt-install-many-devices.xml b/tests/data/cli/compare/virt-install-many-devices.xml
+index ddfbbe058..fd972ef32 100644
+--- a/tests/data/cli/compare/virt-install-many-devices.xml
++++ b/tests/data/cli/compare/virt-install-many-devices.xml
+@@ -507,6 +507,9 @@
+     <controller type="usb" model="ich9-uhci3">
+       <master startport="4"/>
+     </controller>
++    <controller type="nvme">
++      <serial>1</serial>
++    </controller>
+     <filesystem type="mount" accessmode="mapped">
+       <driver ats="on" iommu="off" packed="on" page_per_vq="off"/>
+       <alias name="testfsalias"/>
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index 99f4a59dc..b0b236615 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -709,6 +709,7 @@ source.reservations.managed=no,source.reservations.source.type=unix,source.reser
+ --controller usb3
+ --controller scsi,model=virtio-scsi
+ --controller usb2
++--controller nvme,serial=1
+ 
+ 
+ --input type=keyboard,bus=usb
+diff --git a/virtinst/cli.py b/virtinst/cli.py
+index 346043287..1081cf115 100644
+--- a/virtinst/cli.py
++++ b/virtinst/cli.py
+@@ -4495,6 +4495,7 @@ class ParserController(VirtCLIParser):
+         cls.add_arg("target.memReserve", "target_memReserve")
+         cls.add_arg("pcihole64", "pcihole64")
+         cls.add_arg("pcihole64.unit", "pcihole64_unit")
++        cls.add_arg("serial", "serial")
+ 
+         cls.add_arg("address", None, lookup_cb=None, cb=cls.set_address_cb)
+         cls.add_arg("num_pcie_root_ports", None, lookup_cb=None, cb=cls.noset_cb)
+diff --git a/virtinst/devices/controller.py b/virtinst/devices/controller.py
+index f3c4ce61d..def85f10e 100644
+--- a/virtinst/devices/controller.py
++++ b/virtinst/devices/controller.py
+@@ -77,6 +77,7 @@ class DeviceController(Device):
+     ports = XMLProperty("./@ports", is_int=True)
+     maxGrantFrames = XMLProperty("./@maxGrantFrames", is_int=True)
+     index = XMLProperty("./@index", is_int=True)
++    serial = XMLProperty("./serial")
+ 
+     driver_iothread = XMLProperty("./driver/@iothread", is_int=True)
+     driver_queues = XMLProperty("./driver/@queues", is_int=True)

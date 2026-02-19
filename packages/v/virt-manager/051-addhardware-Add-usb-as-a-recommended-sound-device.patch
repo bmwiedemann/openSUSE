@@ -1,0 +1,23 @@
+Subject: addhardware: Add usb as a recommended sound device
+From: Akihiko Odaki odaki@rsg.ci.i.u-tokyo.ac.jp Wed Aug 6 15:04:55 2025 +0900
+Date: Sat Jan 10 19:25:58 2026 +0100:
+Git: 10014e1505ac20569df8f92078073f9aa5f621f4
+
+usb is an architecture-independent sound device and useful for
+Windows on Arm, which does not support PC sound devices.
+
+Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+
+diff --git a/virtManager/addhardware.py b/virtManager/addhardware.py
+index 7ce8db23c..e4db35d5b 100644
+--- a/virtManager/addhardware.py
++++ b/virtManager/addhardware.py
+@@ -562,7 +562,7 @@ class vmmAddHardware(vmmGObjectUI):
+ 
+     @staticmethod
+     def sound_recommended_models(_guest):
+-        return ["ich6", "ich9", "ac97"]
++        return ["ich6", "ich9", "ac97", "usb"]
+ 
+     @staticmethod
+     def sound_pretty_model(model):

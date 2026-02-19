@@ -61,6 +61,14 @@ Patch9:         019-virtinst-guest-introduce-can_use_device_boot_order.patch
 Patch10:        020-virtinst-remove-legacy-attribute-from-set_boot_order-get_boot_order.patch
 Patch11:        021-installer-add-support-to-use-device-boot-order.patch
 Patch12:        024-virtinst-Fix-XDG_DATA_HOME-handling.patch
+Patch13:        051-addhardware-Add-usb-as-a-recommended-sound-device.patch
+Patch14:        055-virtinst-Add-serial-controller-option-to-cli.patch
+Patch15:        056-virtinst-Add-NVMe-Controller.patch
+Patch16:        057-virtinst-implement-NVMe-disk-target-generation.patch
+Patch17:        058-virtManager-Add-NVMe-disk-type.patch
+Patch18:        059-ui-Show-NVMe-Controller-details.patch
+Patch19:        060-virtinst-fix-locale-when-running-in-flatpak.patch
+Patch20:        061-virtinst-add-support-for-iommufd.patch
 # SUSE Only
 Patch150:       virtman-desktop.patch
 Patch151:       virtman-kvm.patch
@@ -82,6 +90,7 @@ Patch224:       virtinst-s390x-disable-graphics.patch
 Patch225:       virtinst-add-caasp-support.patch
 Patch226:       virtinst-add-sle15-detection-support.patch
 Patch227:       virtinst-media-detection.patch
+Patch228:       virtinst-query-recommended-firmware.patch
 # Bug Fixes
 Patch251:       virtman-increase-setKeepAlive-count.patch
 Patch252:       virtman-allow-destroy-from-shutdown-menu-of-crashed-vm.patch

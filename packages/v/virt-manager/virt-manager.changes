@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb 17 11:37:25 MST 2026 - carnold@suse.com
+
+- jsc#PED-14636 - UEFI as default for new SLES 16 VMs
+  virtinst-query-recommended-firmware.patch
+
+-------------------------------------------------------------------
+Wed Feb  4 14:51:19 MST 2026 - carnold@suse.com
+
+- Upstream features and bug fixes (bsc#1027942) (jsc#PED-14625)
+  051-addhardware-Add-usb-as-a-recommended-sound-device.patch
+  055-virtinst-Add-serial-controller-option-to-cli.patch
+  056-virtinst-Add-NVMe-Controller.patch
+  057-virtinst-implement-NVMe-disk-target-generation.patch
+  058-virtManager-Add-NVMe-disk-type.patch
+  059-ui-Show-NVMe-Controller-details.patch
+  060-virtinst-fix-locale-when-running-in-flatpak.patch
+  061-virtinst-add-support-for-iommufd.patch
+
+-------------------------------------------------------------------
 Fri Jan 23 12:05:21 MST 2026 - carnold@suse.com
 
 - bsc#1257182 - A VM will fail to boot with Intel TDX or AMD SNP

@@ -1,0 +1,87 @@
+Subject: ui: Show NVMe Controller details
+From: 6543 6543@obermui.de Thu Dec 18 03:40:08 2025 +0100
+Date: Sun Jan 11 18:36:09 2026 +0100:
+Git: 90e425b59a30f1dd4827de5cc480031d89391d3d
+
+display serial and atached disks
+
+diff --git a/ui/details.ui b/ui/details.ui
+index ead89a8c0..2eb0d8a44 100644
+--- a/ui/details.ui
++++ b/ui/details.ui
+@@ -4243,6 +4243,31 @@
+                                         <property name="top-attach">1</property>
+                                       </packing>
+                                     </child>
++                                    <child>
++                                      <object class="GtkLabel" id="controller-serial-label">
++                                        <property name="visible">True</property>
++                                        <property name="can-focus">False</property>
++                                        <property name="halign">end</property>
++                                        <property name="label" translatable="yes">Serial:</property>
++                                      </object>
++                                      <packing>
++                                        <property name="left-attach">0</property>
++                                        <property name="top-attach">2</property>
++                                      </packing>
++                                    </child>
++                                    <child>
++                                      <object class="GtkLabel" id="controller-serial">
++                                        <property name="visible">True</property>
++                                        <property name="can-focus">False</property>
++                                        <property name="halign">start</property>
++                                        <property name="label">-</property>
++                                        <property name="selectable">True</property>
++                                      </object>
++                                      <packing>
++                                        <property name="left-attach">1</property>
++                                        <property name="top-attach">2</property>
++                                      </packing>
++                                    </child>
+                                     <child>
+                                       <object class="GtkLabel" id="device-list-label">
+                                         <property name="visible">True</property>
+@@ -4255,7 +4280,7 @@
+                                       </object>
+                                       <packing>
+                                         <property name="left-attach">0</property>
+-                                        <property name="top-attach">2</property>
++                                        <property name="top-attach">3</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+@@ -4290,7 +4315,7 @@
+                                       </object>
+                                       <packing>
+                                         <property name="left-attach">1</property>
+-                                        <property name="top-attach">2</property>
++                                        <property name="top-attach">3</property>
+                                       </packing>
+                                     </child>
+                                   </object>
+diff --git a/virtManager/details/details.py b/virtManager/details/details.py
+index 6cadf8bf0..c927f1045 100644
+--- a/virtManager/details/details.py
++++ b/virtManager/details/details.py
+@@ -2161,7 +2161,7 @@ class vmmDetails(vmmGObjectUI):
+             self._disable_device_remove(_("Hypervisor does not support removing this device"))
+         if controller.type == "pci":
+             self._disable_device_remove(_("Hypervisor does not support removing this device"))
+-        elif controller.type in ["scsi", "sata", "ide", "fdc"]:
++        elif controller.type in ["nvme", "scsi", "sata", "ide", "fdc"]:
+             model = self.widget("controller-device-list").get_model()
+             model.clear()
+             disks = controller.get_attached_devices(self.vm.xmlobj)
+@@ -2188,6 +2188,12 @@ class vmmDetails(vmmGObjectUI):
+         type_label = vmmAddHardware.controller_pretty_desc(controller)
+         self.widget("controller-type").set_text(type_label)
+ 
++        has_serial = controller.type == "nvme" and controller.serial
++        if has_serial:
++            self.widget("controller-serial").set_text(controller.serial)
++        uiutil.set_grid_row_visible(self.widget("controller-serial"), has_serial)
++        uiutil.set_grid_row_visible(self.widget("controller-serial-label"), has_serial)
++
+         combo = self.widget("controller-model")
+         vmmAddHardware.populate_controller_model_combo(combo, controller.type)
+         show_model = controller.model or len(combo.get_model()) > 1

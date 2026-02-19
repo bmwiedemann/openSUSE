@@ -1,0 +1,23 @@
+Subject: virtinst: fix locale when running in flatpak
+From: Pavel Hrdina phrdina@redhat.com Sun Jan 11 20:48:22 2026 +0100
+Date: Sun Jan 11 21:20:42 2026 +0100:
+Git: d13271422e47d9bc827d6ede3e7d5154568115c7
+
+Module locale is used to configure C libraries. When running in flatpak
+we need to set correct path using locale module as well.
+
+Resolves: https://github.com/virt-manager/virt-manager/issues/1023
+Signed-off-by: Pavel Hrdina <phrdina@redhat.com>
+
+diff --git a/virtinst/__init__.py b/virtinst/__init__.py
+index 621acb238..eb874063a 100644
+--- a/virtinst/__init__.py
++++ b/virtinst/__init__.py
+@@ -24,6 +24,7 @@ def _setup_i18n():
+ 
+     gettext.install("virt-manager", BuildConfig.gettext_dir, names=["ngettext"])
+     gettext.bindtextdomain("virt-manager", BuildConfig.gettext_dir)
++    locale.bindtextdomain("virt-manager", BuildConfig.gettext_dir)
+ 
+ 
+ def _set_libvirt_error_handler():
