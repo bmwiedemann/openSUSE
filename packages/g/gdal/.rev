@@ -1016,4 +1016,12 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
     <comment></comment>
     <requestid>1333736</requestid>
   </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>012050e10a3369ff4a7cba82407ff0b3</srcmd5>
+    <version>3.12.2</version>
+    <time>1771507412</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1333890</requestid>
+  </revision>
 </revisionlist>

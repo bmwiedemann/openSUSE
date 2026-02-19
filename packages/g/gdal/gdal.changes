@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 18 22:57:05 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with Poppler 26.02.0:
+  * Add gdal-pr13850-poppler26_02.patch
+
+-------------------------------------------------------------------
 Tue Feb 17 10:34:58 UTC 2026 - Libor Pechacek <lpechacek@gmx.com>
 
 - Make dependency on NetCDF optional and set the default for

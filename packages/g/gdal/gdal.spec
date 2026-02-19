@@ -56,6 +56,8 @@ URL:            https://www.gdal.org/
 Source0:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz
 Source1:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz.md5
 Source2:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}autotest-%{version}.zip
+# PATCH-FIX-UPSTREAM rebased gdal-pr13664-poppler26_02.patch gh#OSGeo/gdal#13850 -- add compatibility with poppler 26.01.0
+Patch0:         gdal-pr13850-poppler26_02.patch
 BuildRequires:  KEALib-devel
 BuildRequires:  bison
 BuildRequires:  blas-devel
@@ -223,7 +225,7 @@ BuildArch:      noarch
 bash command line completion support for GDAL
 
 %prep
-%autosetup -p1 -n %{sourcename}-%{version} -a2
+%autosetup -p1 -n %{sourcename}-%{version} -a2 -v
 # Delete bundled libraries
 # keep zlib due to missing frmts/zlib/contrib/infback9 in our package
 # rm -rv frmts/zlib
