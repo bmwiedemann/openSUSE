@@ -1,7 +1,7 @@
 #
 # spec file for package python-py7zr
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,31 +26,29 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-py7zr%{psuffix}
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Library and utility to support 7zip
 License:        LGPL-2.1-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/miurahr/py7zr
-Source0:        https://files.pythonhosted.org/packages/source/p/py7zr/py7zr-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+Source0:        https://github.com/miurahr/py7zr/archive/refs/tags/v%{version}.tar.gz#/py7zr-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 63}
 BuildRequires:  %{python_module setuptools_scm >= 7.0.5}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Brotli >= 1.1.0
+Requires:       python-Brotli >= 1.2.0
+Requires:       python-inflate64 >= 1.0.4
 Requires:       python-multivolumefile >= 0.2.3
 Requires:       python-psutil
+Requires:       python-pybcj >= 1.0.6
 Requires:       python-pycryptodomex >= 3.20.0
-Requires:       python-pyzstd >= 0.16.1
+Requires:       python-pyppmd >= 1.3.1
 Requires:       python-texttable
-Requires:       (python-inflate64 >= 1.0.0 with python-inflate64 < 1.1.0)
-Requires:       (python-pybcj >= 1.0.0 with python-pybcj < 1.1.0)
-Requires:       (python-pyppmd >= 1.1.0 with python-pyppmd < 1.3.0)
-%if 0%{?python_version_nodots} < 38
-Requires:       python-importlib_metadata
+%if 0%{?python_version_nodots} < 314
+Requires:       python-backports.zstd
 %endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -87,7 +85,9 @@ sed -i '1{/#!/d}' py7zr/*.py
 
 %if %{with test}
 %check
+mv py7zr py7zr-do-not-use
 %pytest
+mv py7zr-do-not-use py7zr
 %endif
 
 %post

@@ -117,4 +117,26 @@
     <comment></comment>
     <requestid>1287720</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e8f1e246941ebf75b5356c60704f436a</srcmd5>
+    <version>1.1.0</version>
+    <time>1771507318</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  ## Security
+  * CVE-2025-6176: bump brotli@1.2.0
+  ## What's Changed
+  * fix(is_7zfile): accept any path-like instead of just pathlib.Path
+  * Accept IO[bytes] instead of BinaryIO
+  * feat(cli): add support for extracting specific archive members
+  * fix: SevenZipFile.getinfo() now returns FileInfo as originally intended
+  * feat: make FileInfo and ArchiveInfo dataclasses
+  * feat: add is_file and is_symlink to FileInfo
+  * Use zstandard implementation from stdlib (PEP-784)
+  * chore: bump minimum Python version to 3.10 and update development deps
+  * chore: tox configuration in pyproject.toml native
+  * Use 3.10 type hint syntax
+- Switch to GitHub tarball for the testsuite.</comment>
+    <requestid>1333842</requestid>
+  </revision>
 </revisionlist>

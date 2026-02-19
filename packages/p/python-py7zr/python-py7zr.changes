@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Feb 19 03:22:22 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.1.0:
+  ## Security
+  * CVE-2025-6176: bump brotli@1.2.0
+  ## What's Changed
+  * fix(is_7zfile): accept any path-like instead of just pathlib.Path
+  * Accept IO[bytes] instead of BinaryIO
+  * feat(cli): add support for extracting specific archive members
+  * fix: SevenZipFile.getinfo() now returns FileInfo as originally intended
+  * feat: make FileInfo and ArchiveInfo dataclasses
+  * feat: add is_file and is_symlink to FileInfo
+  * Use zstandard implementation from stdlib (PEP-784)
+  * chore: bump minimum Python version to 3.10 and update development deps
+  * chore: tox configuration in pyproject.toml native
+  * Use 3.10 type hint syntax
+- Switch to GitHub tarball for the testsuite.
+
+-------------------------------------------------------------------
 Fri Jun 20 09:43:34 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.0.0
