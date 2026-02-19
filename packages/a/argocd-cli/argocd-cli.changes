@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 19 06:51:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.3.1:
+  No CLI-related changes
+  * chore(deps): Upgrade Kustomize to 5.8.1 (cherry-pick #26367 for
+    3.3) (#26369)
+
+-------------------------------------------------------------------
 Mon Feb 02 08:38:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.3.0:
