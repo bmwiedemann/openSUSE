@@ -19,4 +19,17 @@
 **Goal:** Ensure that users and packagers have a reliable, integrated source for the 'libdatachannel' library required by modern WebRTC applications, especially the current stable versions of OBS Studio.</comment>
     <requestid>1313910</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b9b1179e3fbb57b5eb57de11dff554b8</srcmd5>
+    <version>0.24.1</version>
+    <time>1771507311</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.24.1
+  - Add SetThreadPoolSize to configure the global thread count by @paullouisageneau in #1486
+  - Add sessionId() accessor on Description class by @aronrosenberg in #1496
+  - Fix crash if WebSocket is deleted in onError callback by @paullouisageneau in #1482
+  - Fix AV1 RTP packetizer to handle frames without temporal unit delimiters by @rsanting in #1495
+  - Bump checkout action to v6 by @xavier2k6 in #1480 </comment>
+    <requestid>1333836</requestid>
+  </revision>
 </revisionlist>

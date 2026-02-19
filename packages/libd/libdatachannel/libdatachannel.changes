@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Feb 18 23:31:39 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 0.24.1
+  - Add SetThreadPoolSize to configure the global thread count by @paullouisageneau in #1486
+  - Add sessionId() accessor on Description class by @aronrosenberg in #1496
+  - Fix crash if WebSocket is deleted in onError callback by @paullouisageneau in #1482
+  - Fix AV1 RTP packetizer to handle frames without temporal unit delimiters by @rsanting in #1495
+  - Bump checkout action to v6 by @xavier2k6 in #1480 
+
+-------------------------------------------------------------------
+Wed Dec 10 00:12:02 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 0.24.0
+  - Add ICE-TCP support with libjuice by @paullouisageneau in #1475
+  - Add getter for sync NTPTS and RTPTS values in RtcpReceivingSession by @petersomers in #1429
+  - Added color space extension support by @LeeTaekLim in #1441
+  - Fix consent-freshness property handling for compatibility with older libnice versions by @kunkundi in #1468
+  - Document proxyServer field in rtcWsConfiguration by @egnima in #1458
+  - Fix WebSocket example in Readme (add std::endl) by @NathanFouere in #1474
+  - Update libjuice to v1.7.0 
+
+-------------------------------------------------------------------
+Wed Oct 29 06:26:13 UTC 2025 - ecsos <ecsos@opensuse.org> - 0.23.2
+
+- Update to 0.23.2
+  - Adds fraction and packet lost calculation in RR packetsin #1413
+  - libsrtp2 v2.7.0 requires cmake >= v3.21.0 in #1417
+  - Add a comment on RTP header extension size alignment in #1430
+  - Jamfile: Bump Visual Studio target to 2022 in #1433
+  - Test sending and receiving RTP packets in #1426
+  - Improve testing framework in #1428
+  - Fix useless wait in SctpTransport::sendReset() in #1439
+  - Copy datachannel PDB files when compiling for Windows in #1438
+  - Fix SctpTransport::Instances lifecycle in #1444
+  - Fix shared_ptr in DtlsTransport::enqueueRecv in #1446
+  - Fix python signaling server example with websockets v14+ in #1450
+  - Fix missing SSRC cache update breaking RTCP feedback handling in #1451
+
+-------------------------------------------------------------------
 Fri Jul  4 10:48:06 UTC 2025 - ecsos <ecsos@opensuse.org> - 0.23.1
 
 - Update to 0.23.1

@@ -1,7 +1,7 @@
 #
 # spec file for package libdatachannel
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 #%%define soversion() %%(echo "%%{1}" | awk -F. '{print $1"."$2}')
-%define son 23
+%define son 24
 %define soversion 0_%{son}
 %define libname %{name}%{soversion}
 Name:           libdatachannel
-Version:        0.23.1
+Version:        0.24.1
 Release:        0
 Summary:        WebRTC network library featuring Data Channels, Media Transport, and WebSockets
 License:        MPL-2.0
