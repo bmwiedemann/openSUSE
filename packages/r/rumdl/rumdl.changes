@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Feb 19 06:18:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.23:
+  * Added
+    - MD033: Relaxed fix mode that converts HTML tags with extra
+      attributes (e.g. target, rel, width, height) by dropping
+      non-essential attributes during conversion. Event handler
+      attributes (on*) are never dropped. Enable via config.
+      (#397)
+  * Fixed
+    - Fix mode: Rules depending on ctx.source_file (MD057, MD074)
+      no longer silently skip validation during re-lint, preventing
+      false "no issues found" results and exit code 0 when
+      violations remained (#435)
+    - Fix coordinator: Non-convergence now reports the conflicting
+      rules, observed cycle path, and concrete remediation steps
+      (unfixable/disable/config options)
+    - MD012: Blank line sequences adjacent to ATX or Setext
+      headings are now skipped, preventing conflicts with MD022's
+      lines-above/lines-below settings (#429)
+    - MD063: Proper-name preservation now uses unicode-safe
+      case-folding with title/sentence/all-caps handling and link
+      text coverage (#431)
+    - Import: Generated TOML output no longer has a trailing blank
+      line (#433)
+
+-------------------------------------------------------------------
 Mon Feb 16 12:04:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.22:
