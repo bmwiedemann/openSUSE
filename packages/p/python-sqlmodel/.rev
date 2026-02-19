@@ -50,4 +50,19 @@
     with the latest Pydantic versions. PR #1595 by @spazm.</comment>
     <requestid>1316824</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ea1f8115a7611524217a8331b3e6455b</srcmd5>
+    <version>0.0.34</version>
+    <time>1771507322</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.0.34:
+  * Fix support for Annotated fields with Pydantic 2.12+.
+  * Drop support for Pydantic v1.
+  * Drop support for Python 3.8.
+  * Fix alias support for Pydantic v2.
+  * Fix RuntimeError: dictionary changed size during iteration in
+    sqlmodel_update().
+  * Add PEP-639 license metadata.</comment>
+    <requestid>1333843</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-sqlmodel
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,21 +26,19 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sqlmodel%{psuffix}
-Version:        0.0.27
+Version:        0.0.34
 Release:        0
 Summary:        SQL databases in Python, designed for simplicity, compatibility, and robustness
 License:        MIT
 URL:            https://github.com/fastapi/sqlmodel
 Source:         https://files.pythonhosted.org/packages/source/s/sqlmodel/sqlmodel-%{version}.tar.gz
-BuildRequires:  %{python_module SQLAlchemy >= 2.0.14}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pydantic >= 1.10.13}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-SQLAlchemy >= 2.0.14
-Requires:       python-pydantic >= 1.10.13
+Requires:       python-pydantic >= 2.11.0
 BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
@@ -51,6 +49,7 @@ BuildRequires:  %{python_module fastapi}
 BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module sqlmodel = %{version}}
 %endif
 # /SECTION
 %python_subpackages
@@ -76,7 +75,8 @@ powered by Pydantic and SQLAlchemy.
 %check
 %if %{with test}
 export PYTHONPATH=$(pwd):$PYTHONPATH
-%pytest -v tests
+# coverage appears to not a write a file/can't be found
+%pytest -v tests -k 'not (test_create_db_and_table and tutorial001)'
 %endif
 
 %if !%{with test}
