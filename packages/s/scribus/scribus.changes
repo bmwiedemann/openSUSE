@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 17 21:28:50 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add upstream build fix for Poppler 26.02.0
+  * 0001-17740-Failure-to-build-with-poppler-26.02.0.patch
+
+-------------------------------------------------------------------
 Wed Feb  4 13:16:45 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change (boo#1257664)

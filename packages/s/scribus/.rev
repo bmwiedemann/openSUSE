@@ -801,4 +801,13 @@
   * 0001-Fix-build-failure-with-poppler-26.01.0.patch</comment>
     <requestid>1330958</requestid>
   </revision>
+  <revision rev="97" vrev="3">
+    <srcmd5>367296daaa8300b7bfa7012325120901</srcmd5>
+    <version>1.6.5</version>
+    <time>1771507191</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream build fix for Poppler 26.02.0
+  * 0001-17740-Failure-to-build-with-poppler-26.02.0.patch (forwarded request 1333628 from StefanBruens)</comment>
+    <requestid>1333697</requestid>
+  </revision>
 </revisionlist>
