@@ -18,7 +18,7 @@
 
 %define         short_name openQA-devel
 Name:           %{short_name}-test
-Version:        5.1770718745.ce2072d3
+Version:        5.1771422749.560a3b26
 Release:        0
 Summary:        Test package for %{short_name}
 License:        GPL-2.0-or-later

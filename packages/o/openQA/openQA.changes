@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Feb 18 17:13:05 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1771422749.560a3b26:
+  * fix(mcp): set navbar check expression to read-only
+  * feat: support inverted result filters in /tests/overview
+  * fix(test): Enable helm install-chart test again
+  * git subrepo pull (merge) --force external/os-autoinst-common
+  * feat: Make allowed hosts for SCENARIO_DEFINITIONS_YAML_FILE configurable
+  * test: Consider everything under `lib/OpenQA/Shared/` covered
+  * fix: Provide specific error message if job was removed `enqueue_…_track`
+  * refactor: Remove useless error message in `enqueue_and_keep_track`
+  * test: Cover case of successful executing in `enqueue_and_keep_track`
+  * refactor: Simplify error handling of `enqueue_and_keep_track`
+  * test: Cover error handling of `enqueue_and_keep_track`
+  * test: Consider shared session controller fully covered
+  * refactor: Avoid duplications in sessions controller
+  * refactor: Use signatures in session controller code
+  * test: Cover error handling in case of a bad CRSF token
+  * test: Cover test route for session
+  * fix(worker): reject jobs explicitly when worker is stopping
+  * feat: Remove workaround for codecov and gpg
+  * feat: Switch to Leap 16 in Helm charts
+  * feat: Switch to Leap 16.0 in openqa_data container
+  * feat: Replace all Leap 15.6 with 16.0 in docs and scripts
+  * test: Cover showing special image when backend has terminated
+  * fix: Use new apachectl command
+  * Update openQA containers to Leap 16.0
+  * test: Extend tests for controller handling live view
+  * refactor: Move throttling into its own function
+  * feat(throttling): throttle jobs resources based on parameters size
+  * refactor: Avoid repeated use of `$t->app->minion` in gru tasks tests
+  * feat: Allow archiving jobs with infinite important storage durations
+  * feat: Flag jobs without results as archived for consistency
+  * feat: Remove one corner case preventing jobs from being archived
+
+-------------------------------------------------------------------
 Tue Feb 10 13:08:35 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1770718745.ce2072d3:
