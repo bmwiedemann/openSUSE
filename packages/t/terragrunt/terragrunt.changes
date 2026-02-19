@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 19 07:09:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.99.3:
+  * Bug Fixes
+    - Over-warning on strict controls prevented
+      Using --strict-mode resulted in over-warning on completed
+      controls. Those warnings will no longer appear when using
+      strict mode.
+  * What's Changed
+    - chore: Backport #5501 by @yhakbar in #5566
+
+-------------------------------------------------------------------
 Sat Feb 14 08:30:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.99.2:
