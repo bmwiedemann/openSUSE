@@ -54,7 +54,6 @@ BuildRequires:  clang-devel >= %{_min_clang_version}
 BuildRequires:  llvm >= %{_min_clang_version}
 BuildRequires:  llvm-devel >= %{_min_clang_version}
 BuildRequires:  lld >= %{_min_clang_version}
-BuildRequires:  lld >= %{_min_clang_version}
 %if 0%{?suse_version} > 1600
 BuildRequires:  mold
 %endif
@@ -149,6 +148,7 @@ pushd %{buildroot}%{_libdir}/crates/rusty_v8
 rm -rf .github
 rm .prettierrc.json
 rm .rustfmt.toml
+rm -rf false
 rm -rf vendor
 rm -rf target
 rm -rf third_party/rust-toolchain

@@ -125,4 +125,12 @@
   and not GCC for the C compiler. Only pp64 requires gcc-c++</comment>
     <requestid>1333562</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>a8b47f214ae54c254f0c3c11e0cc7954</srcmd5>
+    <version>145.0.0</version>
+    <time>1771507315</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove generated directory called &quot;false&quot;</comment>
+    <requestid>1333841</requestid>
+  </revision>
 </revisionlist>
