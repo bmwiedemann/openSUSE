@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 18 08:32:15 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix version rewrite to show the exact tag when there is no
+  offset. 'Downgrades' version to 7.14.0.
+- Add set_Version to _service definitions: one more automated step
+
+-------------------------------------------------------------------
 Mon Feb 09 13:47:17 UTC 2026 - aplanas@suse.com
 
 - Update to version 7.14.0+0 (CVE-2026-1709, bsc#1257895):

@@ -5,13 +5,13 @@
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="scm">git</param>
     <param name="revision">v7.14.0</param>
-    <param name="revision">master</param>
     <param name="match-tag">*</param>
-    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
-    <param name="versionrewrite-replacement">\1</param>
+    <param name="versionrewrite-pattern">(v)?([^+]+)(\+0)?(\+[1-9][0-9]*)?</param>
+    <param name="versionrewrite-replacement">\2\4</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">aplanas@suse.com</param>
   </service>
+  <service mode="manual" name="set_version"/>
   <service mode="manual" name="tar" />
   <service mode="manual" name="recompress">
     <param name="file">*.tar</param>

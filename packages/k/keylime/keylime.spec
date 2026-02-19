@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           keylime
-Version:        7.14.0+0
+Version:        7.14.0
 Release:        0
 Summary:        Open source TPM software for Bootstrapping and Maintaining Trust
 License:        Apache-2.0 AND MIT AND BSD-3-Clause
