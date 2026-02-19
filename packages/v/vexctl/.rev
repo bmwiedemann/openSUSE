@@ -126,4 +126,41 @@ VEX can be thought of as a &quot;negative security advisory&quot;. Using VEX, so
   * Bump the all group across 1 directory with 3 updates (forwarded request 1333221 from jfkw)</comment>
     <requestid>1333227</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>154dcf24420669d0bb6a2799b7e7c073</srcmd5>
+    <version>0.4.1+git78.f951e3a</version>
+    <time>1771507293</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.1+git78.f951e3a:
+  * Bump chainguard-dev/actions from 1.6.1 to 1.6.2 in the all group
+- Security vulnerability advisements: Go code or dependencies cited
+  in CVE reports are addressed or closed in this or previous
+  releases. Eventually vexctl will be used to provide structured
+  data documents with these use-specific advisements in a
+  standardized computer readable format.
+  * Fix bsc#1239186 CVE-2025-22868: vexctl: golang.org/x/oauth2/jws: Unexpected memory consumption during token parsing in golang.org/x/oauth2
+    - govulncheck reports current version not affected by this CVE
+    - golang.org/x/oauth2/jws is not used in current version
+  * Fix bsc#1234486 CVE-2024-45337: vexctl: golang.org/x/crypto/ssh: Misuse of ServerConfig.PublicKeyCallback may cause authorization bypass in golang.org/x/crypto
+    - govulncheck reports current version not affected by this CVE
+    - golang.org/x/crypto/ssh is not used in current version
+  * Fix bsc#1237611 CVE-2025-27144: vexctl: github.com/go-jose/go-jose/v4,github.com/go-jose/go-jose/v3: Go JOSE's Parsing Vulnerable to Denial of Service
+    - govulncheck reports current version not affected by this CVE
+    - github.com/go-jose/go-jose/v4   v4.1.3
+  * Fix bsc#1238683 CVE-2025-22870: vexctl: golang.org/x/net/proxy: proxy bypass using IPv6 zone IDs
+    - govulncheck reports current version not affected by this CVE
+    - golang.org/x/net/proxy is not used in current version
+  * Fix bsc#1239323 CVE-2025-22869: vexctl: golang.org/x/crypto/ssh: Denial of Service in the Key Exchange of golang.org/x/crypto/ssh
+    - govulncheck reports current version not affected by this CVE
+    - golang.org/x/crypto/ssh is not used in current version
+  * Fix bsc#1240444 CVE-2025-30204: vexctl: github.com/golang-jwt/jwt/v4: jwt-go allows excessive memory allocation during header parsing
+    - govulncheck reports current version not affected by this CVE
+    - github.com/golang-jwt/jwt/v4    v4.5.2
+  * Fix bsc#1253802 CVE-2025-58181: vexctl: golang.org/x/crypto/ssh: invalidated number of mechanisms can cause unbounded memory consumption
+    - govulncheck reports current version not affected by this CVE
+    - golang.org/x/crypto/ssh is not used in current version
+  * Fix bsc#1256535 CVE-2026-22772: vexctl: github.com/sigstore/fulcio: bypass MetaIssuer URL validation bypass can trigger SSRF to arbitrary internal services
+    - govulncheck reports current version not affected by this CVE (forwarded request 1333819 from jfkw)</comment>
+    <requestid>1333820</requestid>
+  </revision>
 </revisionlist>
