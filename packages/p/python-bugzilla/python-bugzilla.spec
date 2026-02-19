@@ -20,14 +20,13 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-bugzilla
-Version:        3.2.0+git.1726768917.5eedea3
+Version:        3.3.0
 Release:        0
 Summary:        Python library for Bugzilla
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Python
 URL:            https://github.com/python-bugzilla/python-bugzilla
-# Source:         https://files.pythonhosted.org/packages/source/p/python-bugzilla/python-bugzilla-%%{version}.tar.gz
-Source:         python-bugzilla-%{version}.tar.gz
+Source:         python-bugzilla-%{version}.tar
 # PATCH-FIX-UPSTREAM 106-basic-auth.diff bsc#1098219 mcepl@suse.com
 # Fix basic authentication on bugzilla.suse.com
 Patch0:         106-basic-auth.diff
@@ -45,6 +44,7 @@ Requires:       python-requests
 Suggests:       osc
 Conflicts:      %{oldpython}-bugzillatools
 Obsoletes:      python2-bugzilla
+Obsoletes:      python3-bugzilla
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,9 +59,9 @@ ad-hoc bugzilla jiggery-pokery.
 %prep
 %autosetup -p1
 
+%build
 sed -i -e '1{/^#!\/usr\/bin\/env python/d}' bugzilla/_cli.py
 
-%build
 export CFLAGS="%{optflags}"
 %pyproject_wheel
 
@@ -78,6 +78,7 @@ export CFLAGS="%{optflags}"
 %pytest
 
 %files %{python_files}
+%doc NEWS.md
 %python_alternative %{_bindir}/bugzilla
 %python_alternative %{_mandir}/man1/bugzilla.1%{ext_man}
 %{python_sitelib}/bugzilla

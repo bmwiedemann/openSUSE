@@ -345,4 +345,12 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1286308</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>92abd445b25b7a99d01e19ef5608f159</srcmd5>
+    <version>3.3.0</version>
+    <time>1771507190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1333696</requestid>
+  </revision>
 </revisionlist>
