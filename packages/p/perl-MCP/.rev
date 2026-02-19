@@ -51,4 +51,15 @@
     - Fixed bug in MCP::Prompt where text prompts had the wrong format.</comment>
     <requestid>1328815</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>10ae0005a08d5f94758b424e041a79b9</srcmd5>
+    <version>0.80.0</version>
+    <time>1771507489</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.80.0 (0.08)
+   see /usr/share/doc/packages/perl-MCP/Changes
+  0.08  2026-02-17
+    - Added support for tool annotations. (d3flex)</comment>
+    <requestid>1333898</requestid>
+  </revision>
 </revisionlist>
