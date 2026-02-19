@@ -1438,4 +1438,41 @@
   | SRF-AP/SP      | C0       | 06-af-03/01 | 03000362 | 03000382 | Xeon 6900/6700-Series Processors with E-Cores (forwarded request 1317336 from msmeissn)</comment>
     <requestid>1317337</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>fa179f6ab1faf7d390556434a6975d39</srcmd5>
+    <version>20260210</version>
+    <time>1771507161</time>
+    <user>dimstar_suse</user>
+    <comment>- Intel CPU Microcode was updated to the 20260210 release (bsc#1258046)
+  - CVE-2024-24853: Updated fix for incorrect behavior order in transition
+    between executive monitor and SMI transfer monitor (STM) in some Intel(R)
+    Processor may allow a privileged user to potentially enable escalation
+    of privilege via local access. (bsc#1229129)
+  - CVE-2025-31648: Improper handling of values in the
+    microcode flow for some Intel Processor Family may allow
+    an escalation of privilege. (bsc#1258046 INTEL-SA-01396
+    https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01396.html)
+  - Update for various functional issues.
+- Updated Platforms:
+  | Processor      | Stepping | F-M-S/PI    | Old Ver  | New Ver  | Products
+  |:---------------|:---------|:------------|:---------|:---------|:---------
+  | ADL            | C0       | 06-97-02/07 | 0000003d | 0000003e | Core Gen12
+  | ADL            | H0       | 06-97-05/07 | 0000003d | 0000003e | Core Gen12
+  | ADL            | L0       | 06-9a-03/80 | 0000043a | 0000043b | Core Gen12
+  | ADL            | R0       | 06-9a-04/80 | 0000043a | 0000043b | Core Gen12
+  | ADL-N          | N0       | 06-be-00/19 | 0000001e | 00000021 | Core i3-N305/N300, N50/N97/N100/N200, Atom x7211E/x7213E/x7425E
+  | ARL-H          | A1       | 06-c5-02/82 | 0000011a | 0000011b | Core Ultra Processor (Series 2)
+  | ARL-S/HX (8P)  | B0       | 06-c6-02/82 | 0000011a | 0000011b | Core Ultra Processor (Series 2)
+  | ARL-U          | A0       | 06-b5-00/80 | 0000000a | 0000000d | Core Ultra Processor (Series 2)
+  | AZB            | A0/R0    | 06-9a-04/40 | 0000000b | 0000000c | Atom C1100
+  | EMR-SP         | A1       | 06-cf-02/87 | 210002c0 | 210002d3 | Xeon Scalable Gen5
+  | GNR-AP/SP      | Bx/Hx/Lx | 06-ad-01/95 | 010003f0 | 01000405 | Xeon 6900/6700/6500 Series Processors with P-Cores
+  | GNR-D          | B0/B1    | 06-ae-01/97 | 01000273 | 010002f3 | Xeon 6700P-B/6500P-B Series SoC with P-Cores 
+  | GNR-SP R1S     | Bx/Hx/Lx | 06-ad-01/20 | 0a000124 | 0a000133 | Xeon 6700/6500-Series Processors with P-Cores
+  | ICL-D          | B0       | 06-6c-01/10 | 010002e0 | 010002f1 | Xeon D-17xx, D-27xx
+  | ICL-U/Y        | D1       | 06-7e-05/80 | 000000ca | 000000cc | Core Gen10 Mobile
+  | ICX-SP         | Dx/M1    | 06-6a-06/87 | 0d000410 | 0d000421 | Xeon Scalable Gen3
+  | MTL            | C0       | 06-aa-04/e6 | 00000025 | 00000028 | Core Ultra Processor (forwarded request 1333609 from msmeissn)</comment>
+    <requestid>1333610</requestid>
+  </revision>
 </revisionlist>
