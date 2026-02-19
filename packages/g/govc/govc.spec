@@ -1,7 +1,7 @@
 #
 # spec file for package govc
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,19 @@
 
 
 Name:           govc
-Version:        0.52.0
+Version:        0.53.0
 Release:        0
 Summary:        vSphere CLI built on top of govmomi
 License:        Apache-2.0
 URL:            https://github.com/vmware/govmomi
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.21
+BuildRequires:  go1.24 >= 1.24.13
 
 %description
-The CLI is designed to be a user friendly CLI alternative to the GUI and well suited for automation tasks. It also acts as a test harness for the govmomi APIs and provides working examples of how to use the APIs.
+The CLI is designed to be a user friendly CLI alternative to the GUI and well
+suited for automation tasks. It also acts as a test harness for the govmomi
+APIs and provides working examples of how to use the APIs.
 
 %prep
 %autosetup -p 1 -a 1

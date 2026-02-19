@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Feb 19 06:37:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.53.0:
+  * Fix
+    - [4dddb93] cluster configuration enablement and draft APIs
+      (#3944) (#3944)
+    - [5ef2d64] change controllerKey and unitNumber to *int32
+      (#3880) (#3880)
+    - [7b6d459] unit tests for sync volume (#3881) (#3881)
+    - [5e3df8a] EAM 2.0 bindings typo (#3879 (#3879)
+    - [e481fdd] guard against nil role in permissions.ls (#3840)
+      (#3840)
+  * API Changes
+    - [65ee37d] add TransitGateway mo type
+    - [5c62627] Fix volumeEncrypted in CNS
+    - [e6688c7] Fix OVF userConfigurable in ToConfigSpec
+    - [75fed5c] CnsVolumeBackingType (#3918) (#3918)
+    - [31d4775] Update ofvEnvelop.ToConfigSpec and
+      configInfo.ToConfigSpec to handle nil ovfProperty
+      userConfigurable
+    - [c80b625] Handle OVF defaultVal/val correctly
+    - [35b20e6] Fix OVF defVal & ConfigSpec vAppConfig
+    - [21d7947] Update VmPlacementPolicy interfaces to use
+      vim.TagId
+    - [01373c9] Support OVF->ConfigSpec VirtSysColl index (#3865)
+      (#3865)
+    - [c580122] remove podVMOverheadInfo host capability (#3869)
+      (#3869)
+    - [68080d3] Updated API bindings
+    - [9e1f60a] Updated API bindings
+    - [434104b] Support vmx-22
+    - [79587cc] Make ClusterInitialPlacementAction iface
+    - [b0607e6] Helpers for GuestID->Family/CIMOSType
+  * govc (CLI)
+    - [a7a23f8] Fix vm.clone full path example root from
+      ClusterName to DatacenterName (#3959) (#3959)
+    - [2a3fd10] add device.sata.add (#3936) (#3936)
+    - [08dfb41] type alias support for ls -t (#3901) (#3901)
+  * vcsim (Simulator)
+    - [a9a1a9e] Consider default devs from VM spec
+    - [770f3fe] Support tags in VM reconfig
+    - [b1ee1fb] Support encrypt-on-copy virtual disk
+    - [3bf69d1] fix snapshot state handling
+    - [5b5c932] Deep copy the vm config to snapshot
+  * Chore
+    - [029d112] Update version.go for v0.53.0
+  * Reverts
+    - [d784925] Revert vmware/govmomi#3911 (#3911)
+  * BREAKING
+    - [429bf0f]: Change backingObjectId from string to *string
+
+-------------------------------------------------------------------
 Tue Aug 19 06:57:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.52.0:
