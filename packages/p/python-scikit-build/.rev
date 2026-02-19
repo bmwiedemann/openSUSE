@@ -300,4 +300,12 @@ This is for updated setuptools in Staging:B</comment>
   * Check for a different cache error message as well as the original.</comment>
     <requestid>1305283</requestid>
   </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>1d1bae6a6db1eb9527ad8a07240a19d5</srcmd5>
+    <version>0.18.1</version>
+    <time>1771507307</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not test 'setup.py develop'.</comment>
+    <requestid>1333833</requestid>
+  </revision>
 </revisionlist>

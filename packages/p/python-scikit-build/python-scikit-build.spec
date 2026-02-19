@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-build
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -108,7 +108,8 @@ cp %{S:99} tests/samples/issue-334-configure-cmakelist-non-cp1252-encoding/setup
 donttestmarker="isolated"
 # setuptools_scm is a dependency of hatch_vcs
 donttestmarker+=" or nosetuptoolsscm"
-%pytest -m "not ($donttestmarker)"
+# avoid setup.py develop, which is heavily deprecated
+%pytest -m "not ($donttestmarker)" -k "not test_hello_develop"
 %endif
 
 %if !%{with test}
