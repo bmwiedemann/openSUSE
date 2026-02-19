@@ -1,7 +1,7 @@
 #
 # spec file for package python-slixmpp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-slixmpp
-Version:        1.12.0
+Version:        1.13.2
 Release:        0
 Summary:        Python XMPP (Jabber) Library that Implements Everything as a Plugin
 License:        MIT
@@ -31,6 +31,7 @@ BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xml}
 BuildRequires:  cargo-packaging
@@ -70,7 +71,6 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitearch}/slixmpp
-%{python_sitearch}/slixmpp-%{version}.dist-info
+%{python_sitelib}/slixmpp*
 
 %changelog

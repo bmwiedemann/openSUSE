@@ -117,4 +117,12 @@
   - Add _service and vendor.tar.zst because of rust bits</comment>
     <requestid>1318489</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2bacfe9c4859236b558d15971bf725c0</srcmd5>
+    <version>1.13.2</version>
+    <time>1771507268</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1333801</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Feb 18 16:07:43 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.13.2:
+  * 1.13.0 has shipped with a packaging bug that affects people
+    trying to build wheels using setuptools. 1.13.1 is an attempt to fix that
+    (made packaging from git work somehow), and 1.13.2 is the correct fix
+    thanks to one single additional character.
+
+-------------------------------------------------------------------
+Wed Feb 18 16:06:16 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.13:
+  Fixes:
+  * A lot of deprecation warnings for current and future python versions
+  * A bug in the JID implementation where bool() would always be true, which
+    would prevent joining rooms with the XEP-0045 plugin
+  * Plenty of typos in the documentation and docstrings, thanks to the typos tool
+  * Removes most known "unknown stanza interface" messages
+  * XEP-0356: Check the correct domain for privileges
+  * XEP-0356: Set inner stanza namespace to jabber:client
+  * XEP-0363: Do not advertise the httpupload feature by default
+  * XEP-0054: Allow datetime.date for birthday info
+  Doc:
+  * Improve documentation by adding missing events to the index
+  * Fix markup that prevented texinfo documentation generation
+  Features:
+  * XEP-0045: New groupchat_affiliation_change for affiliation changes of non-joined JIDs
+  * XEP-0363: Give a human readable error message for large files
+  * XEP-0421: add optional args to has_feature
+  * Stanza objects: Add a get_toplevel_attr to get the xml attributes of the
+    stanza instead of going through the plugin machinery
+  * Roster: track pending_in subscription state for clients
+  * Add a room_cleanup.py example script
+  Internal:
+  * Use of setuptools-scm for release version detection, and new release helper script
+  * Integration test for component with CI container
+  * CI fixes and tweaks
+  * Brings good compatibility with aiodns 4
+
+-------------------------------------------------------------------
 Tue Nov 18 17:18:05 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.12.0
