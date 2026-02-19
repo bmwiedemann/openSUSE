@@ -1,7 +1,7 @@
 #
 # spec file for package vimb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           vimb
-Version:        3.7.0
+Version:        3.7.1
 Release:        0
 Summary:        The vim-like browser
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://fanglingsu.github.io/vimb/
 Source:         https://github.com/fanglingsu/vimb/archive/%{version}.tar.gz
-BuildRequires:  desktop-file-utils
 BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
 
@@ -46,7 +46,7 @@ plugin for Firefox, and has usage paradigms from the editor vim.
 make test
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/vimb.metainfo.xml
- 
+
 %files
 %{_bindir}/vimb
 %dir %{_prefix}/lib/vimb
