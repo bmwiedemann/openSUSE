@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Thu Feb 19 07:26:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.146.0:
+  No telemetrygen-related changes, only dependency changes:
+  * Update All github.com/aws packages (#46168)
+  * Update module modernc.org/sqlite to v1.46.0 - abandoned
+    (#46164)
+  * Update module gitlab.com/gitlab-org/api/client-go to v1.36.0
+    (#46167)
+  * Update module github.com/aws/aws-sdk-go-v2/config to v1.32.8
+    (#46166)
+  * Update module gitlab.com/gitlab-org/api/client-go to v1
+    (#44690)
+  * Update module github.com/DataDog/agent-payload/v5 to v5.0.181
+    (#46160)
+  * Update helm/kind-action action to v1.14.0 (#46152)
+  * [chore] Update core dependencies (#46156)
+  * Update module github.com/DataDog/datadog-api-client-go/v2 to
+    v2.55.0 (#46146)
+  * Update module github.com/rhysd/actionlint to v1.7.11 (#46131)
+  * Update module google.golang.org/grpc to v1.79.1 (#46142)
+  * Update module github.com/SAP/go-hdb to v1.15.0 (#46139)
+  * Update module github.com/aerospike/aerospike-client-go/v8 to
+    v8.6.0 (#46134)
+  * Update module github.com/cloudfoundry/go-cfclient/v3 to
+    v3.0.0-alpha.18 (#46128)
+  * Update dependency simple-git to v3.31.1 (#46132)
+  * Update module github.com/envoyproxy/go-control-plane/envoy to
+    v1.37.0 (#46136)
+  * Update module github.com/redis/go-redis/v9 to v9.18.0 (#46138)
+  * Update module
+    github.com/open-telemetry/opentelemetry-collector-contrib/pkg/ottl
+    to v0.145.0 (#46137)
+  * Update github-actions deps (#46124)
+  * Update module github.com/expr-lang/expr to v1.17.8 (#46130)
+  * Update module github.com/containerd/cgroups/v3 to v3.1.3
+    (#46129)
+  * Update module github.com/aws/aws-sdk-go-v2/service/ec2 to
+    v1.289.1 (#46135)
+  * Update dockerfile deps (#46123)
+  * [chore] Update datadog-agent pseudoversion to main (#46104)
+  * Update module sigs.k8s.io/controller-runtime to v0.23.1
+    (#45508)
+  * [chore] Update core dependencies (#46070)
+  * Update dependencies on the datadog-agent repository (#46051)
+  * Update kubernetes packages to v0.35.1 (#45125)
+  * Update All golang.org/x packages (#44509)
+  * Update module github.com/rdforte/gomaxecs to v1.1.2 (#45663)
+  * Update module github.com/nginx/nginx-prometheus-exporter to
+    v1.5.1 (#40430)
+  * Update module github.com/ClickHouse/clickhouse-go/v2 to v2.43.0
+    - abandoned (#45824)
+  * Update module bitbucket.org/atlassian/go-asap/v2 to v2.15.3
+    (#45999)
+  * Update dockerfile deps (#45998)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.48 (#45995)
+  * Update redis Docker tag to v8.6.0 (#45996)
+  * Update module cloud.google.com/go/storage to v1.60.0 (#45992)
+  * Update module github.com/DataDog/agent-payload/v5 to v5.0.180
+    (#45981)
+  * Update All github.com/aws packages (#45962)
+  * Update module github.com/bmatcuk/doublestar/v4 to v4.10.0
+    (#45970)
+  * Update module github.com/prometheus-community/pro-bing to
+    v0.8.0 (#45973)
+  * Update the outdated configuration structure of the Kafka
+    receiver (#45975)
+  * Update module modernc.org/sqlite to v1.45.0 (#45977)
+  * Update module github.com/klauspost/compress to v1.18.4 (#45969)
+  * Update docker-compose deps to v0.145.0 (#45963)
+  * Update module
+    github.com/open-telemetry/opentelemetry-collector-contrib/pkg/translator/pprof
+    to v0.145.0 (#45972)
+  * Update github-actions deps (#45966)
+  * Update module cloud.google.com/go/pubsub/v2 to v2.4.0 (#45967)
+  * Update module github.com/klauspost/compress to v1.18.4 (#45958)
+  * Update module github.com/SAP/go-hdb to v1.14.22 (#45960)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.47 (#45961)
+  * Update module github.com/linode/go-metadata to v0.2.4 (#45959)
+  * Update All github.com/datadog packages to v0.76.0-rc.4 (#45955)
+  * Update golang:1.25 Docker digest to cc73743 (#45954)
+  * Bump github.com/go-git/go-git/v5 from 5.16.3 to 5.16.5 in
+    /internal/tools (#45956)
+  * [stef] Update STEF to v0.1.1 (#45910)
+  * Update datadogagent module (#45882)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.44 (#45850)
+  * Update module
+    github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue to
+    v1.20.32 (#45851)
+  * Update All github.com/aws packages (#45848)
+  * Update module github.com/googleapis/gax-go/v2 to v2.17.0
+    (#45847)
+  * Update All github.com/datadog packages to v0.76.0-rc.3 (#45840)
+  * Update module go.opentelemetry.io/ebpf-profiler to v0.0.202606
+    (#45832)
+  * Update All opentelemetry-go-contrib packages (#45823)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.43 (#45822)
+  * Update actions/checkout digest to de0fac2 (#45842)
+  * Update opentelemetry-go monorepo (#45827)
+  * Update module github.com/snowflakedb/gosnowflake to v1.19.0
+    (#45833)
+  * Update golang:1.25 Docker digest to 06d1251 (#45839)
+  * Update module cloud.google.com/go/storage to v1.59.2 (#45815)
+  * Update All github.com/aws packages (#45814)
+
+-------------------------------------------------------------------
 Wed Feb 04 10:24:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.145.0:
