@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 18 16:16:06 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1771353921.c8005c9:
+  * git subrepo pull (merge) --force external/os-autoinst-common
+  * style: Fix crop.py style issues
+  * workaround: Remove "get_mempolicy" warning from qemu-img output
+  * parse_extra_log: Allow passing additional args to upload_logs
+  * refactor: Distinguish tests by the script path in `loadtest`
+  * refactor: Simplify approach for avoiding redefine warnings
+
+-------------------------------------------------------------------
 Tue Feb 10 15:20:22 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1770715824.6a80a85:
