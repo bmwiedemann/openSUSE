@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 16 12:04:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.0~beta.61:
+  * Fix the kpt releaae job (#4385)
+  * type: upgrade go version to 1.25.7 to address security vulns
+  * type: upgrade go version to 1.26.0 to address security vulns
+
+-------------------------------------------------------------------
 Thu Feb 12 06:41:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.0.0~beta.60.2:

@@ -3,8 +3,8 @@
     <param name="url">https://github.com/kptdev/kpt</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v1.0.0-beta.60.2</param>
-    <param name="match-tag">v1.0.0-beta.60.2</param>
+    <param name="revision">v1.0.0-beta.61</param>
+    <param name="match-tag">v1.0.0-beta.61</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)-(beta\.*)</param>

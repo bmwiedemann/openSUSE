@@ -20,7 +20,7 @@
 %define executable_name kpt
 
 Name:           kpt-cli
-Version:        1.0.0~beta.60.2
+Version:        1.0.0~beta.61
 Release:        0
 Summary:        CLI for kpt - automate Kubernetes Configuration Editing
 License:        Apache-2.0
@@ -28,7 +28,7 @@ URL:            https://github.com/kptdev/kpt
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  git-core
-BuildRequires:  go1.25 >= 1.25.6
+BuildRequires:  go1.25 >= 1.25.7
 
 %description
 kpt is a package-centric toolchain that enables a WYSIWYG configuration
