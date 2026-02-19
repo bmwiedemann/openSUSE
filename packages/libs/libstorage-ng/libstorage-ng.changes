@@ -1,4 +1,38 @@
 --------------------------------------------------------------------
+Tue Feb 17 13:01:16 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1058
+- avoid repetitive code
+- 4.5.300
+
+--------------------------------------------------------------------
+Tue Feb 17 10:20:19 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1057
+- query blkid version
+- 4.5.299
+
+--------------------------------------------------------------------
+Tue Feb 17 00:56:12 UTC 2026 - aschnell@suse.com
+
+- Translated using Weblate (Japanese) (bsc#1149754)
+- 4.5.298
+
+--------------------------------------------------------------------
+Mon Feb 16 13:04:49 UTC 2026 - aschnell@suse.com
+
+- Translated using Weblate (Russian) (bsc#1149754)
+- 4.5.297
+
+--------------------------------------------------------------------
+Mon Feb 16 11:45:15 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1056
+- added function to query version of blkid
+- towards consistend names
+- 4.5.296
+
+--------------------------------------------------------------------
 Fri Feb 13 16:22:31 UTC 2026 - aschnell@suse.com
 
 - Translated using Weblate (Indonesian) (bsc#1149754)
