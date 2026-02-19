@@ -23,4 +23,18 @@
     <comment></comment>
     <requestid>1205521</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>96e3277d8b0540779df1434dc946aad7</srcmd5>
+    <version>16</version>
+    <time>1771507290</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lkocman's hyprland wallpaper with Prague subway
+  * Intended to be used in hyprland-branding-openSUSE
+  * Prague subway ride at night (view on Charles bridge)
+  * Barely noticable openSUSE Conference poster left from the door
+  * Gimp overlay (badges, logo) on top of ChatGPT-5.2
+  * 4k upscaled in Pixela (paid/donated by lkocman)
+  * Based on hyprland wallpaper from Kath</comment>
+    <requestid>1333814</requestid>
+  </revision>
 </revisionlist>
