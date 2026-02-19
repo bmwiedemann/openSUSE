@@ -1227,4 +1227,15 @@
     <comment></comment>
     <requestid>1329552</requestid>
   </revision>
+  <revision rev="153" vrev="3">
+    <srcmd5>e4865184f27fcfc2969b148ee513ff3c</srcmd5>
+    <version>1.4.3+git2.fcd0343856</version>
+    <time>1771507170</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1333626 from StefanBruens
+
+- Fix build with Poppler 26.02.0, add
+  Fix_Poppler_26_02_0_compat.patch</comment>
+    <requestid>1333672</requestid>
+  </revision>
 </revisionlist>

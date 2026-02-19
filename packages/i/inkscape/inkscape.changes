@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 17 19:49:57 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with Poppler 26.02.0, add
+  Fix_Poppler_26_02_0_compat.patch
+
+-------------------------------------------------------------------
 Mon Jan 26 23:13:03 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with Poppler 26.01.00, add
