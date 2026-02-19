@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Feb 19 08:16:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.29.0:
+  https://istio.io/latest/news/releases/1.29.x/announcing-1.29/
+  https://istio.io/latest/news/releases/1.29.x/announcing-1.29/change-notes/
+  istioctl-related changes
+  * Added a --wait flag to the istioctl waypoint status command to
+    specify whether to wait for the waypoint to become ready
+    (default is true).
+    Specifying this flag with --wait=false will not wait for the
+    waypoint to be ready, and will directly display the status of
+    the waypoint. (Issue #57075)
+  * Added the printing of headers to the istioctl ztunnel-config all
+    and istioctl proxy-config all commands.
+  * Added --all-namespaces flag for the istioctl waypoint status
+    command to display the status of waypoints in all namespaces.
+  * Added support for specifying the proxy admin port in istioctl
+    ztunnel-config.
+  * Fixed translation function lookup errors for MeshConfig and
+    MeshNetworks in istioctl (Issue #57967)
+
+-------------------------------------------------------------------
 Tue Feb 17 06:02:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.28.4:
@@ -17,7 +39,7 @@ Tue Feb 17 06:02:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
   istioctl-related changes	
   * Fixed translation function lookup errors for MeshConfig and
     MeshNetworks in istioctl. (Issue #57967)
-  
+
 -------------------------------------------------------------------
 Tue Jan 20 14:27:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
