@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Feb 19 06:21:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.17.8:
+  * New Features
+    - Force stop all tasks
+    - Added the ability to stop all running tasks with force
+      option, giving administrators faster control in emergency or
+      cleanup scenarios.
+  * Improvements & Fixes
+    - Integration value priority fix
+    - Extracted values in integrations now correctly take
+      precedence, ensuring more predictable configuration behavior.
+  * Changelog
+    - 38d2d2a fix(integrations): extracted values has priority
+  * What's Changed
+    - chore(deps): update dependency cron-parser to v5.5.0 by
+      @renovate[bot] in #3632
+    - feat: add stop all force by @fiftin in #3633
+    - chore(deps): update dependency dotenv to v17.3.1 by
+      @renovate[bot] in #3634
+
+-------------------------------------------------------------------
 Wed Feb 18 08:35:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.17.7:
