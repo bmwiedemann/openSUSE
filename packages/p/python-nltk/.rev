@@ -251,4 +251,15 @@
 - Remove not needed skip-networked-test.patch</comment>
     <requestid>1218976</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>32d6985c2cfc0fdceb1af39a399542c6</srcmd5>
+    <version>3.9.1</version>
+    <time>1771507494</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1258436, Fix: Secure ZIP extraction, CVE-2025-14009
+- Add upstream patch CVE-2025-14009.patch, Secure ZIP extraction to
+  prevent Zip-Slip and RCE in nltk.downloader.
+  (gh#nltk/nltk#3468)</comment>
+    <requestid>1333907</requestid>
+  </revision>
 </revisionlist>

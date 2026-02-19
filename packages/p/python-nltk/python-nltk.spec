@@ -1,7 +1,7 @@
 #
 # spec file for package python-nltk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,6 +65,8 @@ Source0:        nltk-%{version}.tar.xz
 ############################
 # Source1:        nltk_data.tar.xz
 Source99:       python-nltk.rpmlintrc
+# PATCH-FIX-UPSTREAM CVE-2025-14009.patch gh#nltk/nltk#3468
+Patch0:         CVE-2025-14009.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

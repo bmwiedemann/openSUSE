@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 19 10:18:32 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- bsc#1258436, Fix: Secure ZIP extraction, CVE-2025-14009
+- Add upstream patch CVE-2025-14009.patch, Secure ZIP extraction to
+  prevent Zip-Slip and RCE in nltk.downloader.
+  (gh#nltk/nltk#3468)
+
+-------------------------------------------------------------------
 Tue Oct 29 08:37:43 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Use _service to download source and exclude documentation that has
