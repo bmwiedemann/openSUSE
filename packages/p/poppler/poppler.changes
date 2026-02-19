@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan 26 21:51:05 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Version update to 26.01.0:
+  * core:
+    + Improve signature compatibility on some files
+    + Add support for de-facto standard annotation icons
+    + Splash: Implement more blending modes for mono1/8
+    + Internal code improvements
+    + Fix crashes in malformed documents
+  * utils:
+    + pdfinfo: Print alt text in -struct
+  * cpp:
+    + Remove deprecated time functions
+  * qt:
+    + Add reading order option for getText()
+- Remove support for SLE/Leap 15.3 from spec file
+
+-------------------------------------------------------------------
 Tue Dec  9 14:12:46 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 25.12.0:

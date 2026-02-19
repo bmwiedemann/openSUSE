@@ -2335,4 +2335,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1323155</requestid>
   </revision>
+  <revision rev="222" vrev="1">
+    <srcmd5>cf6794e27c2a158d27bbe9a4f7fc3b30</srcmd5>
+    <version>26.01.0</version>
+    <time>1771507065</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1330429</requestid>
+  </revision>
 </revisionlist>

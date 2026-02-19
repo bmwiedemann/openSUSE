@@ -1,8 +1,7 @@
 #
 # spec file for package poppler
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,15 +24,15 @@
 %endif
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.11
-%define poppler_sover 155
-%define poppler_cpp_sover 2
+%define poppler_sover 156
+%define poppler_cpp_sover 3
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
 %define poppler_qt6_sover 3
 %define poppler_api 0.18
 %define poppler_apipkg 0_18
 Name:           poppler%{?psuffix}
-Version:        25.12.0
+Version:        26.01.0
 Release:        0
 Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -76,13 +75,7 @@ BuildRequires:  gcc12-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-%if 0%{?sle_version} >= 150300
 BuildRequires:  extra-cmake-modules
-%endif
-# Don't build poppler-qt6 on Leap <= 15.3
-%if "%{flavor}" == "qt6" && (0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300)
-ExclusiveArch:  do_not_build
-%endif
 # Don't build poppler-qt5 on SLE16
 %if "%{flavor}" == "qt5" && (0%{suse_version} == 1600 && ! 0%{?is_opensuse})
 ExclusiveArch:  do_not_build
