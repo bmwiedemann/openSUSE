@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 19 07:35:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.9:
+  * sbom: Include predicate type as the output SBOM. (#2005)
+  * build(deps): bump google.golang.org/api from 0.266.0 to 0.267.0
+    (#2078)
+  * build(deps): bump chainguard-dev/actions from 1.6.1 to 1.6.2
+    (#2077)
+  * docs: update GoVersion to go1.25. (#2075)
+  * spdx: set purpose on OCI layers (#2046)
+
+-------------------------------------------------------------------
 Tue Feb 17 12:44:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.8:
