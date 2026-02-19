@@ -3,7 +3,7 @@
     <param name="url">https://gitlab.com/gitlab-org/cli.git</param>
     <param name="scm">git</param>
     <param name="package-meta">yes</param>
-    <param name="revision">v1.85.1</param>
+    <param name="revision">v1.86.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>

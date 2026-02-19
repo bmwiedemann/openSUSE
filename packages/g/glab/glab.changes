@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Feb 19 06:13:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.86.0:
+  * Features
+    - adfbc234: feat(config): support per-host https proxy config
+      (Filipe Pina french-ember-gap@duck.com)
+    - 5df7c2b5: feat(mcp): auto-enable JSON output for better LLM
+      parsing (Kai Armstrong karmstrong@gitlab.com)
+  * Bug Fixes
+    - 5f8bc6cc: fix(ci): resolve SIGTTOU hang in ci view for snap
+      installations (Kai Armstrong karmstrong@gitlab.com)
+    - 8602557a: fix(mcp): return only content field in tool
+      responses (Kai Armstrong karmstrong@gitlab.com)
+    - 4fdb0082: fix(release-download): checkbox should be green
+      (Filip Aleksic faleksic@gitlab.com)
+  * Dependencies
+    - 38f8bc43: chore(deps): bump golangci-lint to v2.10.1 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 0c39bcc6: chore(deps): update module
+      github.com/modelcontextprotocol/go-sdk to v1.3.1 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+  * Maintenance
+    - b32b2865: refactor(config): split config command into
+      subcommand packages (Kai Armstrong karmstrong@gitlab.com)
+    - d2241b81: refactor(mcp): add MCP annotations to commands that
+      were missing it (Timo Furrer tfurrer@gitlab.com)
+    - d40ec1eb: refactor(mcp): do not register unannotated commands
+      as MCP tools (Timo Furrer tfurrer@gitlab.com)
+
+-------------------------------------------------------------------
+Wed Feb 18 08:06:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.85.3:
+  * Bug Fixes
+    - 0a42506b: fix(auth): prevent legacy keyring ambiguity causing
+      401 errors (Kai Armstrong karmstrong@gitlab.com)
+    - fe12c08d: fix(token): preserve JSON field names in list
+      output (Kai Armstrong karmstrong@gitlab.com)
+  * Documentation
+    - f14c3fd0: docs: Minor changes to runner controller scopes
+      docs (Brendan Lynch blynch@gitlab.com)
+    - 9724cb17: docs: avoid bare URLs in YAML frontmatter in
+      documentation (Evan Read eread@gitlab.com)
+  * Dependencies
+    - d5dc84ba: chore(deps): update dependency @commitlint/cli to
+      ^20.4.1 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - bd2b3bcf: chore(deps): update dependency markdownlint-cli2 to
+      v0.21.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+
+-------------------------------------------------------------------
+Mon Feb 16 05:51:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.85.2:
+  * Features
+    - feat(cred-helper): fallback to default configured host in
+      non-git folders
+
+-------------------------------------------------------------------
 Sat Feb 14 08:25:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.85.1:
