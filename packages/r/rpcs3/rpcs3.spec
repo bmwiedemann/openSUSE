@@ -1,7 +1,7 @@
 #
 # spec file for package rpcs3
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rpcs3
-Version:        0.0.38~git20251029
+Version:        0.0.39~git20260214
 Release:        0
 Summary:        PS3 emulator/debugger
 License:        GPL-2.0-only
@@ -25,10 +25,10 @@ URL:            https://rpcs3.net
 Source0:        %{name}-%{version}.tar.xz
 Source1:        intel-ittapi.tar.xz
 Patch1:         fix-test-files.patch
-Patch2:         fix-build-glew-egl.patch
 BuildRequires:  cmake >= 3.28.0
 BuildRequires:  gcc-c++
-BuildRequires:  llvm19-devel
+BuildRequires:  llvm21-devel
+BuildRequires:  cmake(absl)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libevdev)
@@ -44,9 +44,13 @@ BuildRequires:  pkgconfig(zlib)
 #graphics backend dependencies:
 #-------------------------------------------------
 ##opengl:
+%if 0%{?suse_version} > 1600
+BuildRequires:  pkgconfig(glew) >= 2.3.1
+%else
 BuildRequires:  pkgconfig(glew) >= 1.13.0
+%endif
 BuildRequires:  pkgconfig(egl)
-BuildRequires:  pkgconfig(sdl3)
+BuildRequires:  pkgconfig(sdl3) >= 3.2.0
 
 ##vulkan:
 BuildRequires:  pkgconfig(vulkan) >= 1.2.0
@@ -66,7 +70,7 @@ BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(openal)
 
 ##faudio:
-BuildRequires:  pkgconfig(sdl3)
+BuildRequires:  pkgconfig(sdl3) >= 3.2.0
 #-------------------------------------------------
 
 #ffmpeg dependencies

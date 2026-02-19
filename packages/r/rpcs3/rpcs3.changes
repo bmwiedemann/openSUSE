@@ -1,4 +1,520 @@
 -------------------------------------------------------------------
+Wed Feb 18 19:31:23 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Bump LLVM from 19 to 21 (upstream has been building with llvm21 
+  since 20251029): https://github.com/RPCS3/rpcs3/pull/17630
+
+-------------------------------------------------------------------
+Sat Feb 14 15:13:48 UTC 2026 - ecsos@opensuse.org
+
+- Remove fix-build-glew-egl.patch
+- Update to version 0.0.39~git20260214:
+  * Fix glsl_invalid_program not fitting within 3 bits
+  * Ignore gcc strict aliasing warnings on __sync_lock_test_and_set
+  * Microphone fixes
+
+-------------------------------------------------------------------
+Sat Feb 14 13:03:22 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.0.39~git20260211:
+  * macOS: Check for hw.optional.neon as fallback
+  * ARM64: Detect some arm features and let LLVM know if they are or aren't present via attributes - On x86, LLVM has robust detection for the CPU name. If a CPU like skylake has AVX disabled, it will fall back to something without AVX (nehalem) - On ARM, detection is not as robust. For instance, on my snapdragon 8 gen 2, it assumes that we have SVE support, as the cortex-x3 supports SVE. - If an ARM cpu is paired with other cpus from another generation which doesn't support the same instructions as the cortex-x3, or if the cortex-x3 just has SVE disabled for no apparant reason (in the case of the snapdragon 8 gen 2) - We need to actually detect that ourselves. - Beyond SVE also detect support for some instructions that might be useful SPU LLVM when optimized with intrinsics.
+  * Qt: adjust ansi colors based on background color
+  * Qt: Fix duplicate ansi highlighter creation
+  * input: fix input guard button offsets for closing native overlays
+  * Guard async transactions against spurious wakeups
+  * rsx/sync: Do not allow short-circuiting behavior when releasing GCM labels via host queue
+  * Improve add friend logging/dialogs
+  * ARM: Use ISB instead of yield in place of x86 pause ISB isn't an exact match for pause, but it does slow down execution at least a litle. Unfortunately, yield does nothing on machines without SMT (99% of aarch64 machines)
+  * Fixed typos in rpcs3/System.cpp
+  * MouseHandler: minor cleanup
+  * Update Qt to 6.10.2
+  * Update libpng to 1.6.54
+  * Qt: allow to exclude strings in log viewer
+  * Qt: simplify log level filtering in log viewer
+  * Qt: don't filter log if the input dialog was canceled
+  * Switch from FFmpeg av_opt_set_* to swr_alloc_set_opts2 (#18138)
+  * Qt: try to fix update downloader
+  * vk: Fix NVIDIA crash when resizing the game window quickly
+  * rsx: Conservative MM flush during CPU handling of nv3089_image_in
+  * Add mouse-based gyro emulation (#18113)
+  * Force disable RPCN IPv6 support for now
+  * Fix generic_async_transaction_context thread handling
+  * Implement sceNpMatching2GetRoomMemberDataExternalList
+  * Fix sceNpBasicLimited_0xEB42E2E6
+  * Improve Message ComId handling
+  * Add Message logging
+  * Fix for an emulation shutdown hang
+  * hle: Register missing functions
+  * Implement sceNpMatching2GetCbQueueInfo
+  * Implement sceNpMatching2GetMemoryInfo
+  * Implement sceNpMatching2GetSignalingOptParamLocal
+  * sceNpBasicLimitedSendMessage
+  * Revert adrenalin crash workaround
+  * vk: Drain the pending frame queue before resizing the swapchain
+  * vk: Fix flood of VVL synchronization violations appearing when capturing media
+  * vk: Prevent WAW hazard when the window size exceeds the output draw box
+  * vk: Fix CPU frame misalignment bug
+  * vk: Always specify LATE_FRAGMENT_TESTS and EARLY_FRAGMENT_TESTS together when declaring barriers
+  * vk: Invalidate renderpass key in post-cyclic-z barrier
+  * vk: Fix WAW hazard when preparing copy commands for texture uploads using scratch
+  * vk: Force strict query scopes quirk if SRM is enabled
+  * vk: Tighten image barriers to account for IMAGE_OP_LOAD operation when starting a renderpass
+  * vk: Set debug names for image views
+  * vk: Persist debug name in the image wrapper to aid in debugging
+  * Qt: allow to disable logging to the log frame while it is hidden
+  * USB: Complete Summonride figures
+  * rsx: Lower harmless errors to warnings
+  * rsx: Fix convolution filter decoding
+  * vk: Include GCM format in debug name for temp texture-cache resources
+  * rsx/zcull: Fix silly copypasta
+  * CI: download dependency if the filename is the same but the checksum changed
+  * Address review comments
+  * [macOS] Specify plist version
+  * [macOS] Fix release naming
+  * cellVdec: Remove resolved TODOs
+  * cellVdec: Document all supported codecs
+  * cellVdec: Add support for all MPEG4 profile levels
+  * change velocity for RB3 pro guitar when it stays the same twice in a row (#18064)
+  * Qt: change UI labels based on device product type
+  * Migration bugfixes
+  * Flatbuffers to Protobuf (#18082)
+  * USB: Summonride updates
+  * Define source encoding for iconv
+  * Explicitly install iconv
+  * utils: Scale busy_wait according to arm timer frequency > - This is a fatal issue that was impacting arm builds, since busy_waits were written assuming an approx 3Ghz x86 machine > and most arm machines have a hardware timer that runs south of 100mhz, meaning the top items in the profiler were calls to busy_wait(); > all over the code. Fixing this is a very significant speedup, on my snapdragon 8 gen 2 device. 27->37FPS in Metal Gear Rising, but almost > all games benefit when run on ARM.
+  * PPU LLVM: Use arm fmax/fmin for vmaxfp/vminfp - Arm fmax/fmin match altivec behaviour regarding nan behaviour
+  * LLVM: enable FMA for ARM cpus unconditionally - All armv8 machines should have FMA. - Should be a speedup for snapdragon elite and apple machines.
+  * cellVdec: Add MPEG4 profile 3
+  * Prepend _win64_
+  * Prepend win64 on all Windows artifacts
+  * Qt: just remove the entire .app dir on macOs
+  * VS: Fix ISO filters
+  * Qt: remove all shortcut files if requested
+  * Export AVVER for Release Title name
+  * rsx: Fixup get_address() after #18038
+  * rsx: Make get_address(MAIN) more strict
+  * rsx/nv3089: Fix wrong suggestion
+  * rsx/gcm: Do not rely on GCM IOMAP table in HLE gcmIoOffsetToAddress
+  * rsx/gcm: Fix cellGcmGetTimeStampLocation
+  * Add Delete command to RPCN
+  * Fix windows aarch64 deploy
+  * Add async suffix to TODO sceNpLookupUserProfileAsync
+  * Loader: Fix graceful Emu Restart
+  * Qt: Restart game even if there's no savestate when using the restart shortcut
+  * ISO: reset m_path to original path during Restart
+  * rsx/nv3089: Fix image_in source line length estimation
+  * rsx/zcull: Stop any running when the clear command is processed
+  * rsx/zcull: Rename write_enabled to surface_active to make the meaning clear
+  * gcm: Implement cellGcmGetTimeStampLocation as HLE to improve timestamp reports detection
+  * rsx: Fix context_dma enum naming
+  * rsx: Remove surface management hack breaking savestate capture
+  * Setup to deploy aarch64 binaries
+  * Fixed more SingStar previews
+  * USB: Usbd support for microphones
+  * VS: update googletest package
+  * cellVdec: impove error logging
+  * Fixed more SingStar previews, this time for v05.00
+  * Windows ARM build
+  * Cut sceNpDrmIsAvailable sleep time
+  * sys_fs: Add PPU sleep
+  * Fixed SingStar previews
+  * cellVdec: also use ctx->framerate to calculate the timestamps
+  * Update ffmpeg to 7.1.2
+  * gl: fix some cppcheck issues
+  * UI: ANSI colors, code fix suggestion
+  * UI: ANSI TTY colors, fix git submodule versions and correct include
+  * UI: ANSI colors, more explicit `erase` check
+  * UI: ANSI colors, further fix-ups
+  * UI: colored ANSI logs fix-ups
+  * UI: colored ANSI logs
+  * ISO: optimize byteswap and utf16 string conversion
+  * ISO: use string_view in retrieve
+  * ISO: Remove psf hack
+  * ISO: add some logging
+  * Qt: fix shortcut creation for ISO
+  * Qt: fix appicon for ISO
+  * Qt: Allow to boot iso files from menu
+  * Qt: Allow to add iso files from menu
+  * Qt: fix missing mice menu
+  * Qt: ISO clean up
+  * Qt: some cleanup
+  * ISO: Move load_icon
+  * ISO: Fix save states in games with multiple executables
+  * ISO: Fix argv[0] being set to a garbage value
+  * ISO: Game loading fixes
+  * ISO: Fix recent actions created when launching ISO games
+  * ISO: Use clearer code to set game.icon_in_archive
+  * ISO: Move icon loading to a common function in qt_utils.h
+  * ISO: Move game size assignment to size_calc_func in game_list_table.cpp
+  * ISO: Add ISO games through Emulator::AddGamesFromDir
+  * ISO: Move code to load psf::registry into iso_archive
+  * ISO: Add empty path check to iso_archive::retrieve
+  * ISO: Fix loading games in continuous mode
+  * ISO: Remove resolve_path hack
+  * ISO: Unload the iso_device on shutdown
+  * ISO: Loader improvements
+  * ISO: Don't access m_game_info from icon_load_func
+  * ISO: Move game image loading to game_list_base::IconLoadFunction
+  * ISO: Small clean up
+  * ISO: Add UI support
+  * ISO: Fix game movie icons
+  * ISO: Fix icons in savestate_manager_dialog
+  * ISO: Fix for save states
+  * ISO: Add games to games list
+  * ISO: Modify game boot for ISOs
+  * ISO: Add ISO reader code and ISO device
+  * Qt/input: fix pressure intensity button availability
+  * gl: Do not overwrite texture-cache image dimensions when updating format
+  * Qt: Add mulit selection to game grid
+  * Update FAudio to 26.01
+  * Update SDL to 3.4.0
+  * Embed qt.conf in RPCS3 binary
+  * Add Qt translations to Windows Clang
+  * move disk usage dialog box to game list's context menu (#17977)
+  * Qt: Fix game list multi-selection after Refresh
+  * Refactor game_list_frame
+  * Add multi-selection context menu
+  * USB: Fixed G27 crash during reinitialization
+  * Qt: try to fix drag and drop issues
+  * Update SDL to 3.2.30
+  * Revert "Update SDL to 3.4.0"
+  * [macOS Updater] Cleanup remnants of the old app bundle post-update
+  * rsx/fp: Harden the FP decompiler a bit when bogus inputs are passed in.
+  * Try and cut down unnecessary Qt translations
+  * Unify Mac CI action
+  * Unify & cleanup Mac deploy script
+  * Unify & optimise Mac build script
+  * Add SDL camera handler
+  * Qt: Fix image dimensions passed to camera_video_sink::present
+  * macOs: Deploy Qt translations
+  * Qt: deploy and apply Qt translations
+  * vk: Disable VK_EXT_attachment_feedback_loop_layout support for adrenalin driver
+  * [BSD] Use FreeBSD 14.3 vm
+  * Refactor camera code to support different camera handlers
+  * Update SDL to 3.4.0
+  * Update OpenAl to 1.25.0
+  * Update libpng to 1.6.53
+  * rpcs3_version: Bump to 0.0.39
+  * USB: Added support for G27 compatibility modes
+  * Build Freebsd update LLVM dev (22)
+  * Improve Utilities and Log menus (#17944)
+  * improve menus
+  * cellPhotoImport: Try to create unique filenames
+  * Adjust media list dialog for larger folder depth
+  * cellPhotoExport: Use roughly same path as cellScreenShot
+  * cellScreenshot: escape photo_title in path
+  * cellScreenshot: update filenames
+  * Remove call to glxewInit
+  * RPCN menu changes (#17936)
+  * Qt: remove unused NotifyBatchedGameActionFinished signal
+  * Qt: ask user for install options before starting the installation
+  * Qt: Allow user to precompile caches on demand when installing packages or adding disc games
+  * rsx: Improve framebuffer layout change detection
+  * vk: Fix crash when shuffling between cyclic and non-cyclic Z-buffer in one logical pass
+  * rsx/gl: Clear cyclic Z barrier flag
+  * rsx/vk: Add post-cyclic-z barriers allowing us to keep early Z optimizations
+  * rsx: Improve early-Z disablement mechanism
+  * rsx/fp: Stop using m_ctrl and use the correct object from m_prog
+  * rsx: Disable early-Z optimizations if a loopback on the depth texture is active
+  * vk/fp: Only emit alpha-testing variables when required
+  * rsx: Fix alpha testing
+  * rsx: Fix texcoord clamp regression
+  * rsx: Drop pointless ROP control bit check
+  * rxs: Improve alpha-to-coverage emulation
+  * rsx: Propagate state changes to trigger permutation lookup
+  * rsx: Fix sRGB control flag propagation to shader control
+  * rsx: Propagate shader kill flag and refactor texture flags processing a bit
+  * rsx: Fix MSAA sampling operations
+  * rsx: Move heavy codegen capabilities to permutation flags from runtime checks
+  * vk: Hoist texture param loads
+  * rsx/vk/gl: Make texture parameter reads backend-dependent
+  * rsx/fp: Stop referencing wpos when the value is just getting discarded.
+  * vk/gl: Mark unused FP outputs as unused
+  * USB: Fix an incorrect log
+  * USB: Remove a duplicate PSP entry
+  * USB: Remove unused method
+  * USB: Update Kamen Rider Summonride virtual portal
+  * Docs: Update clone instructions
+  * Fix lld warning LNK4286
+  * fix lld warning LNK4217
+  * Improve Manage menu (#17919)
+  * Qt/cheats: don't accept imported cheats unless valid
+  * [macOS] Don’t compile in GL-related code or link GLEW
+  * Improve usb timing accuracy
+  * Clean UsbTransfer state
+  * sceNpClans: cleanup
+  * overlays: log font lookup info on exception (#17903)
+  * Clans: fix graphical bug displaying JID instead of username (#17906)
+  * [macOS] Force max pthread priority, fix throttling
+  * Clans: Emulator and server implementation (#17835)
+  * [macOS] General cleanup/fixups
+  * Build 3rdparty/soundtouch include as system
+  * Build LLVM wrap getFirstNonPHI by version
+  * Build LLVM wrap getDeclaration by version
+  * Build 3rdparty include as system
+  * Build LLVM some API dont support iterator so use pointer
+  * Build LLVM deprecated getFirstNonPHI
+  * Build LLVM-22 fix removed getDeclaration
+  * Refuse to abort sceNp2 requests that change state
+  * Add Extra sceNp2 logging
+  * [macOS] Use native os_sync calls for futexes
+  * sys_fs: Optimize split files handling
+  * Revert "SPU/config: Make SPU LLVM Mega block size default"
+  * Switch macOS atomics to futexes, bump min ver to 14.4
+  * rsx/cfg: Increase valid register file size to 768 bytes per pixel pipe
+  * SPU Analyzer: Fix missing jump table entries in Mega mode
+  * [macOS] Update to MVK 1.4.1 with private API support (fixes panics, improves feature support)
+  * Revert "Fix hypervisor context memory placement"
+  * Fix hypervisor context memory placement
+  * Util/sync.h: Fix iterator invalidation in futex emulation
+  * Fixup futex emulation
+  * PPU: Prevent repeated notifications
+  * Prevent atomic cache line collisions
+  * Fix compilation with older Qt versions
+  * Fix RPCN replies ordering
+  * cellGem: improve bayer demosaicing
+  * Fix logging of gem configs
+  * vk: Ignore memory pressure handling when allocating data heaps into ReBAR memory.
+  * vk: Extend memory allocation system to explicitly allow requesting no VRAM recovery on allocation fail.
+  * cellGem: Fix YUV conversions, implement gain, averaging and basic outlier detection
+  * rsx/cfg: Fix edge case where an empty block is defined
+  * Fix int -> float conversion warning
+  * overlays fix c++23 elifndef
+  * cellGem: Implement CELL_CAMERA_RAW8 to CELL_GEM_BAYER_RESTORED_RASTERIZED
+  * cellGem: Implement CELL_CAMERA_RAW8 to CELL_GEM_BAYER_RESTORED_RGGB
+  * Update fusion to 1.2.11
+  * ps_move_handler: enable orientation by default
+  * ps_move_handler: fix decoding of ZCM1 sensor values
+  * cellGem: fix compilation
+  * ps_move_handler: fix trigger values depending on ps move version
+  * move ps_move_data to own file
+  * cellGem: implement world coordinate orientation in cellGemGetState
+  * cellGem: fix default orientation
+  * cellGem: fix division by zero
+  * cellGem: fix default accelerometer value
+  * cellGem: clarify member descriptions
+  * rsx/gtest: Drop unused function
+  * rsx/cfg: Fix delay-slot detection when copying from the same register index but different precision.
+  * C++ Pro
+  * rsx/cfg/fp: Fix back-traversal for IF-ELSE pairs
+  * rsx/common: Implement list insert for simple_array
+  * rsx/fp: Fix pre-branch epilogue emit
+  * rsx/gtest: Enable unit tests for nix builds
+  * rsx/fp: Warning cleanup
+  * rsx/cfg/fp: Add delay-slot detection to remove unnecessary barriers
+  * rsx/cfg: Fix instruction injection when more than one barrier is needed for a single instruction
+  * rsx/fp: Implement OR16_LO and OR16_HI instructions
+  * rsx/cfg: Implement partial barriers for 32-bit register channels
+  * rsx/cfg: Fix grouping barrier16 instructions when lane is shared.
+  * rsx/fp/cfg: Fix input mask for DIV and DIVSQ instructions
+  * rsx/fp: Re-implement ROP output resolve
+  * rsx/fp: Reimplement GLSL code generation from CFG
+  * rsx/cfg: Handle nested IF/LOOP blocks falling out to unsuitable nodes (ELSE).
+  * rsx/fp: Enable CFG passes and emit block epilogues
+  * rsx/fp: Fix issues with FP decompiler using new CFG system
+  * rsx/cfg: Fix dependency injection tests for FP
+  * rsx/fp/cfg: Fix IF/ELSE and LOOP node linkage
+  * rsx/fp/asm: Fix ELSE encoding
+  * rsx/cfg/gtest: Rewrite CFG tests using the assembler
+  * rsx/cfg/gtest: Update unit tests
+  * rsx/fp/asm: Implement asm support for branches
+  * rsx/cfg: Implement dependency injection pass with branches
+  * rsx/cfg: Skip literal constants when annotating instructions
+  * rsx/fp/cfg: Insert bi-directional edges correctly during traversal
+  * rsx/fp/asm: Add support for more instructions
+  * rsx/asm: Implement dependency barrier injection pass
+  * rsx/asm: Add support for more opcodes and add tests for mixed block IO
+  * rsx/shaders: Fix nix builds
+  * rsx: Add UTs for register annotation pass and fix uncovered bugs
+  * rsx/fp: Add a basic assembler to aid in test authoring
+  * rsx: Implement register annotation pass
+  * rsx/asm: Stub out register annotation and dependency passes
+  * overlays/macOs: add some fallback fonts for cyrillic
+  * fmt: add more string_view versions of string functions
+  * bit_set.h: forward declare fmt_unveil
+  * Remove RPCN test server
+  * RPCN v1.5.0
+  * Check available and required size when installing a package (#17829)
+  * UI: remove unnecessary QOverloads
+  * (macOS) Support loading VK ICDs (in preparation for KosmicKrisp)
+  * Add OpenCV to macOS builds
+  * Make RSX FIFO Atomic fetching default (#17810)
+  * Update Qt for macOs to 6.10.1
+  * Update Qt for macOs to 6.9.3
+  * Qt/macOS: Fix GUI freezes on Qt 6.8+
+  * Qt: fix game list refresh order when changing the language
+  * Qt: revert setting UserRole. this doesn't seem to have been the culprit for multiselection
+  * cellPad: fix pad mode setters
+  * hidapi: switch to official libusb remote
+  * rsx/common - work around macos posix_memalign quirks
+  * Update SDL to 3.2.28
+  * Update FAudio to 25.12
+  * Qt: Relax game_list deselection checks
+  * Qt: fix update note visiblity on linux/macOs
+  * YoRHa: Fix the height of QSpinBox
+  * Qt: fix translation of update dialog if the language was changed between downloading the json and clicking on update
+  * Qt: update main window elements on language change
+  * Qt: fix game list table multiselection
+  * rsx: clear unused parameters on capture boot
+  * rsx: fix capture path if title id is empty
+  * Qt: Update header texts and actions when language changes
+  * Qt: save spinbox values with fmt::format
+  * Add notes for VS 2026 to BUILDING.md
+  * Test: Disable PUTLLC0
+  * SPU: Tame PUTLLC16
+  * SPU Analyzer: Be more strict with loads
+  * SPU Cache debug
+  * Update libpng to 1.6.51
+  * Update Qt to 6.10.1
+  * ppu: move alignment below llvm check
+  * Qt: Add sound effect manager
+  * overlays: use enum for sound effects
+  * SPU Analyzer: Ignore large switch state
+  * SPU/config: Make SPU LLVM Mega block size default
+  * SPU LLVM (Mega): Fix quarter of missing jumptable discoveries
+  * Emu/UX: Automatic Cache Precompilation for PKG instal
+  * SPU LLVM: Reduce notifications for PUTLLC16
+  * UTs: Fix AlignedAllocator.Realloc test
+  * SPU: Enable PUTLLC16 by default
+  * PPU LLVM: Fixup PPU Profiler for PRX
+  * SPU LLVM: Permit relative-PC in PUTLLC16 with alignment check
+  * SPU Analyzer: Contnue with failed patterns until they proven failure
+  * SPU Analyzer: Try to detect no-return in BISL/BRSL
+  * rsx: Clean up aligned realloc implementation
+  * rsx: Free previous pointer after reallocating memory
+  * Fix possible ambiguity of utils::bless (#17757)
+  * rsx/cfg: Check for end flag before handling any instruction including NOP
+  * Fixup ::narrow (#17756)
+  * Add an entry on Log panel's contextual menu to show the main disk usa… (#17715)
+  * util/types.hpp: Fix signed/unsigned comparison error
+  * vk: Fall back to host-visible pool if we cannot place resources in Re-BAR pool
+  * vk: Allow buffer creation to fail gracefully if placement is not possible
+  * rsx: Fix saw-tooth artifacts when using GPU deswizzle for small texel widths
+  * rsx/cfg: Fix arm64 build
+  * rsx/gtest: Fix unit tests build on GCC
+  * rsx/cfg: Replace 'avx512' intrinsics with SSE2-compatible ones
+  * rsx/gtest: Add tests for CFG BB succ edges and fix UT failures
+  * rsx/fp: Use CFG to decompile fragment programs
+  * rsx/fp: Use CFG for fragment program
+  * rsx/cfg: Add support for multi-slot instructions with literals
+  * rsx: Add flow information to flow edges
+  * rsx: Implement FP to CFG analyzer
+  * rsx: Add find_if operation for simple_array<T>
+  * SPU Analyzer: Fix jumptable append
+  * SPU Analyzer: Fix jumptable analysis for SPU Block Mega
+  * sys_fs: Remove PPU sleep hacks
+  * Fix Clang build and other small fixes (#17736)
+  * Fix typo
+  * Fix windows clang builds
+  * gl: Use 16-byte alignment on staging buffers
+  * rsx: Enforce natural data alignment for IO buffers span cast
+  * test: Add unit tests for simple array alignment
+  * vk: Fix build using new simple_array guard-rails
+  * rsx: Properly implement data alignment in simple_array<T>
+  * rsx: Rework GPU deswizzle kernel to prevent hangs
+  * Fix ppu_register_function_at with unaligned parameters (#17718)
+  * rsx: Fix 16-bit format hardware deswizzle
+  * gl: Lower the GPU decoding requirements since each level is decoded separately
+  * gl: Fix crashes when creating new context
+  * gl: Implement hardware deswizzle for small texel formats
+  * rsx/vk: Add support for 8 and 16-bit texel GPU-accelerated deswizzle
+  * rsx: Drop meaningless log message
+  * Update install-freebsd.sh
+  * restore [[noreturn]]
+  * PPU Profiler
+  * kernel_explorer: Order PPUs by priority
+  * cellGam/celCamera: Add more wait flags
+  * SPU: Optimize check for args sharing page with Effective-Address
+  * SPU: Exclude reservation_check address receptacle from writer_lock
+  * vm/sys_memory: Remove VM locking in sys_memory_get_page_attribute
+  * overlays: remove unnecessary cast
+  * overlays: Use SCE-PS3-DH-R-CGB.TTF for chinese characters
+  * cmake: fix build with USE_FAUDIO if system SDL is not found
+  * Overlays: check return value of stbtt_InitFont
+  * overlays: add some more chinese fallback fonts
+  * overlays: Check if a font actually contains the character
+  * overlays: use get_font instead of duplicate font fallback
+  * overlays: use std::string_view for font functions
+  * SPU Analyzer: Fix spu_thread::is_exec_code for BRSL
+  * Core: Remove Intel-TSX ISA Extension based code
+  * Qt: fix image flip warning on newer Qt
+  * rsx_debugger: fix gcc index access warning
+  * Fix some warnings
+  * Qt: forward declare gui_settings
+  * SPU Analyzer: use std::lexicographical_compare_three_way
+  * asm.hpp: replace custom functions with C++20 functions
+  * StrFmt.h: fix build with Clang
+  * Fix mask calculation in SPUThread.cpp
+  * SPU: Use CMPXCHG16B for atomic store if possible
+  * sys_ppu_thread: Fix warning
+  * Qt: add button to remove gamepad config
+  * utils: replace hex_to_u64 with std::from_chars
+  * [Mac Arm64] Use runner ccache
+  * rsx: add simple pair and tuple types
+  * rsx: only allow trivially copyable types in simple_array
+  * rsx: fix some warnings
+  * overlays: take screenshot after exiting the home menu
+  * cheats: fix cheat type on apply
+  * sys_spu: Improve arguments accuracy
+  * sys_ppu_thread: Fix u64 stack size argument
+  * PPU/x64: Fix gv_cvtu32_tofs
+  * Overlays/SaveStates: Add multi-slot support to controller menu
+  * rsx: Fix an oops causing DEVICE_LOST
+  * ZSTD: Fixup threads terminations
+  * Add wait flag in cellGemConvertVideoFinish
+  * More logging to sys_memory_allocate_from_container
+  * SaveStates/ZSTD: Improve termination and file handling
+  * vm.cpp: Skip memory clearing on emulation stop
+  * Savestates/TAR: Extract files asynchronously
+  * rsx: Fix shader interpreter
+  * vk: Fix hang when doing typeless copy in the resource assembler
+  * vk: Reduce number of barriers for each copy transfer sequence
+  * rsx: Speed up slice gathering for large datasets
+  * rsx: Refactor texture cache lookup core to be easier to read
+  * SPU: Fix race in PUTLLC with unchanged data
+  * sys_usbd: Small tidyups
+  * Bump MoltenVK to v1.4.0
+  * gl: Ensure overlays render in fill mode
+  * gl: Implement polygon render modes
+  * Synced Skylander variant IDs with values from Dolphin for #13315
+  * download from releases instead
+  * Update deploy-windows-clang.sh
+  * Update deploy-windows-clang.sh
+  * eh update macos-arm path again
+  * update macos path again
+  * change translations location to a correct one (probably)
+  * forgot mkdir
+  * macos support maybe?
+  * linux support
+  * remove echo
+  * comment
+  * Update deploy-windows.sh
+  * input: change default squircle value to 4000
+  * rsx: fix some warnings
+  * Update curl to 8.17.0
+  * Update FAudio to 25.11
+  * rsx: Implement pixel_center_origin decorator for WPOS
+  * rsx: Whitespace fix
+  * rsx: Invalidate surface cache slots that are trampled by buffer writes.
+  * sys_usbd: fix id/type combo for Kamen Rider Display (#17662)
+  * System.cpp: Check if the original EBOOT.BIN is valid for disc game updates
+  * cmake: simplify code
+  * PSF.cpp: Fixup
+  * Remove std::strcpy
+  * input: always apply stick multiplier when no analog limiter button is set
+  * Qt: fix type conversion warning
+  * Update SDL to 3.2.26
+  * sys_usbd: Emulate Kamen Rider Summonride Ride Gate (#17605)
+  * cellGame: Fix cellHddGameCheck dataVersion parameter
+  * Explicitly copy libunwind for x86
+  * Copy libc++abi to Frameworks instead of lib
+  * Cleaner export of LDFLAGS
+  * Make hack for removing rpath failable
+  * Workaround for issues with Python and brew libc++ linkage on x86
+  * Bump llvm version from 19 to 21
+
+-------------------------------------------------------------------
 Tue Nov 18 22:31:32 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Remove fusion 1.2.9 git files
