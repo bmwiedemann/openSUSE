@@ -1,0 +1,25 @@
+From 9d1bd9e585824efd386cb5fe488c11e3ec21c297 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 19 Feb 2026 02:12:15 +0100
+Subject: [PATCH] Fix return value in readnewmesh
+
+---
+ src/readnewmesh.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ccx_2.23/src/readnewmesh.c b/ccx_2.23/src/readnewmesh.c
+index 7cc45f2..52b53cb 100644
+--- a/src/readnewmesh.c
++++ b/src/readnewmesh.c
+@@ -465,7 +465,7 @@ void readnewmesh(char *jobnamec,ITG *nboun,ITG *nodeboun,ITG *iamboun,
+   *ipkonp=ipkon;*lakonp=lakon;*iamt1p=iamt1;*ipobodyp=ipobody;
+   *iprfnp=iprfn;*konrfnp=konrfn;*ratiorfnp=ratiorfn;
+   
+-  return NULL;
++  return;
+ 
+ }
+ 
+-- 
+2.53.0
+

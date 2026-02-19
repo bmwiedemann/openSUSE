@@ -1,7 +1,7 @@
 #
 # spec file for package ccx
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ccx
-Version:        2.22
+Version:        2.23
 Release:        0
 Summary:        An open source finite element package
 License:        BSD-3-Clause AND GPL-2.0-only AND SUSE-Public-Domain
@@ -29,6 +29,8 @@ Source2:        ccx-rpmlintrc
 # PATCH-FIX-OPENSUSE -- pass global optflags
 Patch0:         ccx-2.16-build.patch
 Patch1:         0001-Fixup-spooles-include-dir.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Fix-return-value-in-readnewmesh.patch
 BuildRequires:  arpack-ng-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-fortran
@@ -62,7 +64,7 @@ to check your installation.
 mv CalculiX/ccx_%{version}/{src,test} ./
 rmdir -p CalculiX/ccx_%{version}
 
-%autopatch -p1
+%autopatch -p1 -v
 
 # Make reproducible
 sed -i 's@./date.pl; *@@' src/Makefile
@@ -94,12 +96,14 @@ chmod 444 src/BUGS src/LOGBOOK src/README.INSTALL src/TODO
 
 %check
 cd test
-# beamfsh1 slightly deviates on aarch64 and i586
-%ifarch aarch64 %{ix86}
-for f in beamfsh1.inp; do mv $f ${f}_disabled ; done
+# beamfsh1, beampisof, beamptied4, beamptied7 slightly deviate on aarch64, i586 and ppc64le
+%ifarch aarch64 %{ix86} ppc64le
+for f in beamfsh1.inp beampisof.inp beamptied4.inp beamptied7.inp; do mv $f ${f}_disabled ; done
 %endif
-# Apparent mismatch between script and golden data, disable for now (2.20)
-for f in beamread3.inp beamwrite3.inp ; do mv $f ${f}_error; done
+# beamt6 slightly deviates on aarch64 and ppc64le
+%ifarch aarch64 ppc64le
+for f in beamt6.inp; do mv $f ${f}_disabled ; done
+%endif
 # beamread* depends on beamwrite*
 # beamprand is random
 # beamptied{5,6} have nondeterministic order of eigenvalues

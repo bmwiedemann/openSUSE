@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Feb 19 00:49:47 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 2.23:
+  * Procedures
+    + Extended submodels to heat transfer analyses.
+  * Materials
+    + Introduced the *DAMAGE INITIATION keyword.
+  * Elements
+    + Correction to the C3D8I-element.
+    + Kept the node numbering while smoothing an existing mesh using
+      the *REFINE MESH,SMOOTHING ONLY keyword.
+    + Allowed for the use of composite shells in *HEAT TRANSFER
+      calculations.
+  * Boundary conditions
+    + Definition of a linear temperature distribution on a
+      *TEMPERATURE or *BOUNDARY card.
+    + Allowed for contact within cyclic symmetry calculations using
+      the *CYCLIC SYMMETRY MODEL,CONTACT card.
+    + Axisymmetric results from a global model can be used as
+      boundary conditions for a three-dimensional submodel.
+    + The first term in an *EQUATION can be a node set. As many
+      equations are generated as nodes in the set.
+  * For a full list of changes see the included LOGBOOK.
+- Rebase ccx-2.16-build.patch
+- Add 0001-Fix-return-value-in-readnewmesh.patch
+
+-------------------------------------------------------------------
 Sat Nov 16 20:56:33 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 2.22:
