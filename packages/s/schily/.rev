@@ -482,4 +482,13 @@ make glibc-2.34 happy</comment>
     <comment>- Add -std=gnu17 to compilation flags in order to allow building with GCC 15. [boo#1241945]</comment>
     <requestid>1280716</requestid>
   </revision>
+  <revision rev="53" vrev="53">
+    <srcmd5>8626b67722e32323f6c975c574bec2b0</srcmd5>
+    <version>unknown</version>
+    <time>1771507072</time>
+    <user>dimstar_suse</user>
+    <comment>- Migrate from update-alternatives to libalternatives
+  (bsc#1245915), (bsc#1245916)</comment>
+    <requestid>1333576</requestid>
+  </revision>
 </revisionlist>

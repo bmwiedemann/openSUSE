@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 17 03:59:20 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Migrate from update-alternatives to libalternatives
+  (bsc#1245915), (bsc#1245916)
+
+-------------------------------------------------------------------
 Tue May 27 21:35:22 UTC 2025 - Martin Jambor <mjambor@suse.com>
 
 - Add -std=gnu17 to compilation flags in order to allow building with
@@ -448,7 +454,6 @@ Fri Jun 14 07:18:30 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
     to globbing.
 
 -------------------------------------------------------------------
-
 Sun Jun  2 07:30:57 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 2019.05.28

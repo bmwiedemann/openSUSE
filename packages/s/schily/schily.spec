@@ -1,7 +1,7 @@
 #
 # spec file for package schily
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,7 @@ Source1:        README-FIRST
 Patch1:         iconv-name.diff
 Patch2:         schily-2018-05-25_star_configuration.patch
 Patch3:         81.patch
+BuildRequires:  alts
 BuildRequires:  autoconf
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -104,8 +105,7 @@ write BluRay media on a BluRay recorder.
 Summary:        A program to generate tag files for ex/vi
 License:        BSD-2-Clause AND CDDL-1.0 AND GPL-2.0-only AND GPL-2.0-or-later AND BSD-3-Clause AND HPND AND ISC
 Group:          Development/Tools/Building
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       alts
 
 %description ctags
 Ctags makes a tags file for ex(1) from the specified C, Pascal,
@@ -331,7 +331,7 @@ Group:          Productivity/Multimedia/CD/Record
 Version:        %cdr_version
 Release:        0
 Requires(post): permissions
-Provides:       cdrecord:/usr/bin/readcd
+Provides:       cdrecord:%_bindir/readcd
 
 %description -n readcd
 The readcd program can be used to read optical media and write the
@@ -343,7 +343,7 @@ use cdrecord which supports a lot more media types.
 Summary:        Remote SCSI server
 License:        CDDL-1.0
 Group:          Productivity/Multimedia/CD/Record
-Provides:       cdrecord:/usr/sbin/rscsi
+Provides:       cdrecord:%_sbindir/rscsi
 
 %description -n rscsi
 The rscsi command is a remote generic SCSI transport server program.
@@ -361,9 +361,8 @@ License:        CDDL-1.0
 Group:          Productivity/Archiving/Backup
 Provides:       mt
 Obsoletes:      star-rmt
-Provides:       star-rmt:/usr/bin/smt
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Provides:       star-rmt:%_bindir/smt
+Conflicts:      mt
 
 %description mt
 The mt/smt program sends commands to a local or a remote magnetic
@@ -375,9 +374,8 @@ License:        CDDL-1.0
 Group:          Productivity/Archiving/Backup
 Provides:       rmt
 Obsoletes:      star-rmt
-Provides:       star-rmt:/usr/bin/srmt
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Provides:       star-rmt:%_bindir/srmt
+Conflicts:      rmt
 
 %description rmt
 rmt is a program that can be used by e.g. star and ufsdump
@@ -463,7 +461,7 @@ GB).
 %prep
 %autosetup -n %name-%rver -p1
 find . "(" -type d -o -type f ")" -exec chmod u+w "{}" "+"
-cp %{SOURCE1} .
+cp %SOURCE1 .
 
 %build
 %define _lto_cflags %nil
@@ -543,7 +541,8 @@ mv -v "$b/%_bindir/ctags" "$b/%_bindir/ctags-schily"
 cp -v ctags/vctags.1 "$b/%_mandir/man1/"
 
 # mt/rmt
-rm -fv "$b/%_bindir/mt" # handled up u-a
+ln -sv srmt "$b/%_bindir/rmt"
+ln -sv smt "$b/%_bindir/mt"
 ln -sv smt.1 "$b/%_mandir/man1/mt.1"
 ln -sv srmt.1 "$b/%_mandir/man1/rmt.1"
 
@@ -661,6 +660,16 @@ rm -Rfv \
 # Remove documentation (will be added in %_datadir/doc/packages/*)
 #rm -Rf "$b/%_datadir/doc"/*
 
+# alternatives configuration directories
+mkdir -p "$b/%_datadir/libalternatives/ctags"
+ln -sf "%_bindir/alts" "$b/%_bindir/ctags"
+# ctags implementation (schily)
+cat >"$b/%_datadir/libalternatives/ctags/15.conf" <<-EOF
+binary=%_bindir/vctags
+man=vctags.1
+group=ctags
+EOF
+
 %fdupes -s %buildroot/%_prefix
 
 %check
@@ -676,41 +685,9 @@ true
 %set_permissions %_bindir/cdda2wav
 true
 
-%post ctags
-"%_sbindir/update-alternatives" \
-	--install "%_bindir/ctags" ctags "%_bindir/ctags-schily" 20
-"%_sbindir/update-alternatives" --auto ctags
-
-%postun ctags
-if test "$1" = 0; then
-	"%_sbindir/update-alternatives" --remove ctags "%_bindir/ctags-schily"
-fi
-
 %post -n readcd
 %set_permissions %_bindir/readcd
 true
-
-%post mt
-"%_sbindir/update-alternatives" \
-	--install "%_bindir/mt" mt "%_bindir/smt" 10 \
-	--slave "%_mandir/man1/mt.1%ext_man" "mt.1%ext_man" "%_mandir/man1/smt.1%ext_man"
-"%_sbindir/update-alternatives" --auto mt
-
-%postun mt
-if test "$1" = 0; then
-	"%_sbindir/update-alternatives" --remove mt "%_bindir/smt"
-fi
-
-%post rmt
-"%_sbindir/update-alternatives" \
-	--install "%_bindir/rmt" rmt "%_bindir/srmt" 10 \
-	--slave "%_mandir/man1/rmt.1%ext_man" "rmt.1%ext_man" "%_mandir/man1/srmt.1%ext_man"
-"%_sbindir/update-alternatives" --auto rmt
-
-%postun rmt
-if test "$1" = 0; then
-	"%_sbindir/update-alternatives" --remove rmt "%_bindir/srmt"
-fi
 
 %ldconfig_scriptlets -n libcdrdeflt1_0
 %ldconfig_scriptlets -n libdeflt1_0
@@ -784,9 +761,13 @@ fi
 
 %files ctags
 %license CDDL.Schily.txt
+%_bindir/ctags
 %_bindir/ctags-schily
 %_bindir/vctags
 %_mandir/man1/vctags.1*
+%dir %_datadir/libalternatives/
+%dir %_datadir/libalternatives/ctags/
+%_datadir/libalternatives/ctags/15.conf
 
 %files -n libcdrdeflt1_0
 %license CDDL.Schily.txt
@@ -1016,22 +997,20 @@ fi
 
 %files -n schily-mt
 %license CDDL.Schily.txt
+%_bindir/mt
 %_bindir/smt
-%_mandir/man1/smt.1*
-%ghost %_sysconfdir/alternatives/mt
-%ghost %_sysconfdir/alternatives/mt.1%ext_man
-%ghost %_mandir/man1/mt.1%ext_man
+%_mandir/man1/mt.1%ext_man
+%_mandir/man1/smt.1%ext_man
 
 %files -n schily-rmt
 %license CDDL.Schily.txt
 %config(noreplace) %_sysconfdir/default/rmt
 %_docdir/rmt/
 %_docdir/schily-rmt
+%_bindir/rmt
 %_bindir/srmt
-%_mandir/man1/srmt.1*
-%ghost %_sysconfdir/alternatives/rmt
-%ghost %_sysconfdir/alternatives/rmt.1%ext_man
-%ghost %_mandir/man1/rmt.1%ext_man
+%_mandir/man1/rmt.1%ext_man
+%_mandir/man1/srmt.1%ext_man
 
 %files -n smake
 %_bindir/smake
