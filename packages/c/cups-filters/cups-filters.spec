@@ -1,6 +1,7 @@
 #
 # spec file for package cups-filters
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -110,6 +111,9 @@ Patch109:       cups-filters-1.28.17-CVE-2024-47076.patch
 # backported to cups-filters 1.28.17 to fix CVE-2024-47175
 # "lack of input sanitization in _ppdCreateFromIPP()"
 # see https://bugzilla.suse.com/show_bug.cgi?id=1230932
+# and https://bugzilla.suse.com/show_bug.cgi?id=1246533
+# and https://bugzilla.suse.com/show_bug.cgi?id=1256868
+# and https://bugzilla.suse.com/show_bug.cgi?id=1256977
 Patch110:       cups-filters-1.28.17-CVE-2024-47175.patch
 # https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=285412
 # newer cups code in git does not use qpdf, no upstream handling required

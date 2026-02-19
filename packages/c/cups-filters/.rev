@@ -502,4 +502,12 @@
     <comment></comment>
     <requestid>1318601</requestid>
   </revision>
+  <revision rev="62" vrev="7">
+    <srcmd5>06a8d6a128be1624c395c46914bc5146</srcmd5>
+    <version>1.28.17</version>
+    <time>1771507199</time>
+    <user>dimstar_suse</user>
+    <comment>Updated fix for CVE-2024-47175 to fix regression boo#1256868 and bsc#1256977</comment>
+    <requestid>1333703</requestid>
+  </revision>
 </revisionlist>

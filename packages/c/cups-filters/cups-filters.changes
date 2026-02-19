@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 12 12:16:20 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
+
+- Updated cups-filters-1.28.17-CVE-2024-47175.patch
+  because the former version caused a regression
+  "Error about PPD file during 'driverless' printer setup"
+  (boo#1256868) and
+  "ppd pull out from [driverless] printer feature broken"
+  (bsc#1256977)
+
+-------------------------------------------------------------------
 Wed Nov 19 08:15:32 UTC 2025 - pgajdos@suse.com
 
 - added patches [bsc#1253678]
