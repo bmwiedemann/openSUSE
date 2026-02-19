@@ -129,4 +129,32 @@
 - Switch to github tarball.</comment>
     <requestid>1296682</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d26b7196f2b4ca439a778ff0dcab9ef7</srcmd5>
+    <version>1.9.7</version>
+    <time>1771507325</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.7:
+  * Fix click_version check when build metadata is included.
+  * Fix minor Typer incompatibilities, most notably default panel placements.
+  * Added default_panels_first config option which places default panels
+    above user-defined panels.
+  * Fix no_args_is_help for Typer CLIs.
+  * Added Typer 0.20 support
+  * Fix lack of support for flag_value=....
+  * Fixed subcommand discovery in help text. Behavior should now be the same
+    as 1.8.
+  * Fix issue with parent click.Group and child rich_click.RichCommand error
+    formatter not resolving.
+  * Add headers to tables (by default these are not shown).
+  * Fixed bug where running the rich-click CLI on a @rich_click.argument()
+    sometimes caused arguments show up in the option panel when it shouldn't.
+  * Fixed Click 8.3 compatibility with rendering defaults in help text.
+  * Python 3.7 support is removed. The minimum supported Python version
+    is 3.8.
+  * Click 7 support is removed. The minimum supported Click version is 8.0.
+  * Rich 10 and 11 support is removed. The minimum supported Rich version
+    is 12.</comment>
+    <requestid>1333844</requestid>
+  </revision>
 </revisionlist>

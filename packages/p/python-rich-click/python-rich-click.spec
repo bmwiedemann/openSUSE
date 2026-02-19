@@ -1,7 +1,7 @@
 #
 # spec file for package python-rich-click
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %bcond_without libalternatives
 Name:           python-rich-click
-Version:        1.8.9
+Version:        1.9.7
 Release:        0
 Summary:        Format click help output nicely with rich
 License:        MIT
 URL:            https://github.com/ewels/rich-click
 Source:         https://github.com/ewels/rich-click/archive/refs/tags/v%{version}.tar.gz#/rich_click-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -33,13 +33,18 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       alts
 Requires:       python-click >= 8
-Requires:       python-rich >= 10.7.0
+Requires:       python-rich >= 12
+%if %{python3_version_nodots} < 311
 Requires:       python-typing_extensions >= 4
+%endif
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click >= 8}
+BuildRequires:  %{python_module inline-snapshot >= 0.24}
+BuildRequires:  %{python_module pytest-cov >= 5}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module rich >= 10.7.0}
+BuildRequires:  %{python_module rich >= 12}
+BuildRequires:  %{python_module typer >= 0.15}
 BuildRequires:  %{python_module typing_extensions >= 4}
 # /SECTION
 %python_subpackages
