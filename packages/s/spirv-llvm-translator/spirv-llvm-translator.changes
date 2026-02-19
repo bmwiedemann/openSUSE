@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 15 22:56:43 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 21.1.4.
+  * Implement SPV_KHR_fma extension.
+  * Fix FMA name check in LLVM->SPIRV.
+  * Enhance handling of umul_with_overflow in reverse translation.
+
+-------------------------------------------------------------------
 Sat Dec 13 21:29:44 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 21.1.3.
