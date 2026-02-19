@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 19 06:33:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.2 (.1 was not released):
+  * fix: add --provenance=false for build flags (#410)
+  * chore(deps): update anchore dependencies (#409)
+  * chore: bump to go 1.25.7 (#408)
+  * chore(deps): update tools to latest versions (#404)
+  * chore(deps): bump modernc.org/sqlite from 1.44.3 to 1.45.0
+    (#405)
+  * chore(deps): bump golang.org/x/term from 0.39.0 to 0.40.0
+    (#406)
+
+-------------------------------------------------------------------
 Wed Feb 11 05:55:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.0:
