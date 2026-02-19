@@ -19,7 +19,7 @@
 %define executable_name jf
 
 Name:           jfrog-cli
-Version:        2.91.0
+Version:        2.92.0
 Release:        0
 Summary:        A client that automates access to the JFrog products
 License:        Apache-2.0

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb 19 06:32:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.92.0:
+  * Improvements
+    - Support nested path for docker build by @fluxxBot in #3330
+    - Support npm run native by @fluxxBot in #3359
+  * Bug Fixes
+    - Fix: Latest jfrog cli version check failure by @bhanurp in
+      #3353
+  * Other Changes
+    - Added e2e tests for new release bundle finalize command by
+      @jongler in #3340
+    - Fix GOSEC by @fluxxBot in #3357
+    - Added native huggingface native commands and e2e and workflow
+      tests by @naveenku-jfrog in #3341
+    - Added CLI e2e Pipeline by @neha-mishraa in #3354
+
+-------------------------------------------------------------------
 Fri Feb 06 06:00:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.91.0:
