@@ -167,4 +167,12 @@
     <comment>1.18.3</comment>
     <requestid>1324002</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>0c136f8435b8dab71b57cda2b4fa6edf</srcmd5>
+    <version>1.18.3</version>
+    <time>1771507273</time>
+    <user>dimstar_suse</user>
+    <comment>Shade the asm classes again; for uyuni's sake</comment>
+    <requestid>1333805</requestid>
+  </revision>
 </revisionlist>

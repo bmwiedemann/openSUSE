@@ -1,7 +1,7 @@
 #
 # spec file for package byte-buddy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,6 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://bytebuddy.net/
 Source0:        https://github.com/raphw/%{name}/archive/refs/tags/%{name}-%{version}.tar.gz
-Patch0:         0001-Avoid-bundling-asm.patch
 BuildRequires:  fdupes
 BuildRequires:  jurand
 BuildRequires:  maven-local
@@ -35,6 +34,7 @@ BuildRequires:  mvn(net.java.dev.jna:jna-platform)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-shade-plugin)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.apache.maven:maven-resolver-provider)
@@ -77,7 +77,6 @@ API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-%patch -P0 -p1
 
 # Remove Windows-specific resources
 rm -rf %{name}-agent/src/main/resources/win32-x86{,-64}
@@ -113,8 +112,6 @@ rm -rf %{name}-agent/src/main/resources/win32-x86{,-64}
 
 %pom_remove_dep org.ow2.asm:asm-deprecated
 %pom_remove_dep codes.rafael.asmjdkbridge:asm-jdk-bridge %{name}-dep
-
-%pom_remove_plugin -r :maven-shade-plugin
 
 %pom_add_dep org.apache.maven:maven-resolver-provider:\${version.maven}:provided \
     byte-buddy-maven-plugin

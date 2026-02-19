@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 18 16:30:14 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * 0001-Avoid-bundling-asm.patch
+    + needed for migration of uyuni to hibernate 7 which imports the
+      shaded asm classes
+
+-------------------------------------------------------------------
 Fri Dec 19 15:36:15 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v1.18.3
