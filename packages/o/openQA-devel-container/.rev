@@ -1463,4 +1463,12 @@
     <comment>Fix changelog</comment>
     <requestid>1332293</requestid>
   </revision>
+  <revision rev="184" vrev="184">
+    <srcmd5>c5d31135b59aa8f4987d4cbd4a338e79</srcmd5>
+    <version>unknown</version>
+    <time>1771507265</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.1771422749.560a3b26b</comment>
+    <requestid>1333796</requestid>
+  </revision>
 </revisionlist>
