@@ -12823,7 +12823,7 @@ unsorted:
   - libdar64-6000 
   - libdat2-2 
   - libdatachannel-devel 
-  - libdatachannel0_23 
+  - libdatachannel0_24 
   - libdataquay0 
   - libdatovka 
   - libdatovka-devel 
@@ -15441,14 +15441,14 @@ unsorted:
   - libpolymake4_15 
   - libpolys-4_4_1 
   - libpolys-devel 
-  - libpoppler-cpp2-32bit 
+  - libpoppler-cpp3-32bit 
   - libpoppler-devel 
   - libpoppler-glib-devel 
   - libpoppler-glib8-32bit 
   - libpoppler-qt5-1 
   - libpoppler-qt5-devel 
   - libpoppler-qt6-devel 
-  - libpoppler155-32bit 
+  - libpoppler156-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -24753,6 +24753,7 @@ unsorted:
   - python311-azure-mgmt-devspaces 
   - python311-azure-mgmt-devtestlabs 
   - python311-azure-mgmt-digitaltwins 
+  - python311-azure-mgmt-disconnectedoperations 
   - python311-azure-mgmt-dns 
   - python311-azure-mgmt-dnsresolver 
   - python311-azure-mgmt-durabletask 
@@ -27828,6 +27829,7 @@ unsorted:
   - python311-webauthn 
   - python311-webcolors 
   - python311-webencodings 
+  - python311-weblate-fonts 
   - python311-weblate-language-data 
   - python311-weblate-schemas 
   - python311-webruntime 
@@ -28588,6 +28590,7 @@ unsorted:
   - python312-azure-mgmt-devspaces 
   - python312-azure-mgmt-devtestlabs 
   - python312-azure-mgmt-digitaltwins 
+  - python312-azure-mgmt-disconnectedoperations 
   - python312-azure-mgmt-dns 
   - python312-azure-mgmt-dnsresolver 
   - python312-azure-mgmt-durabletask 
@@ -31734,6 +31737,7 @@ unsorted:
   - python312-webauthn 
   - python312-webcolors 
   - python312-webencodings 
+  - python312-weblate-fonts 
   - python312-weblate-language-data 
   - python312-weblate-schemas 
   - python312-webruntime 
@@ -32487,6 +32491,7 @@ unsorted:
   - python313-azure-mgmt-devspaces 
   - python313-azure-mgmt-devtestlabs 
   - python313-azure-mgmt-digitaltwins 
+  - python313-azure-mgmt-disconnectedoperations 
   - python313-azure-mgmt-dns 
   - python313-azure-mgmt-dnsresolver 
   - python313-azure-mgmt-durabletask 
@@ -35588,6 +35593,7 @@ unsorted:
   - python313-webassets 
   - python313-webauthn 
   - python313-webcolors 
+  - python313-weblate-fonts 
   - python313-weblate-language-data 
   - python313-weblate-schemas 
   - python313-webruntime 
