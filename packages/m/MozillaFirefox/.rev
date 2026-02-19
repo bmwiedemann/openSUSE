@@ -7998,4 +7998,17 @@
     <comment></comment>
     <requestid>1331914</requestid>
   </revision>
+  <revision rev="478" vrev="1">
+    <srcmd5>4dc49048fd00972a98e11dff186fc1ec</srcmd5>
+    <version>147.0.4</version>
+    <time>1771507074</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 147.0.4
+  * Fixed an issue that could cause the New Tab Page to appear
+    blank for some users (bmo#2014616)
+  MFSA 2026-10 (bsc#1258231)
+  * CVE-2026-2447 (bmo#2014390)
+    Heap buffer overflow in libvpx</comment>
+    <requestid>1333580</requestid>
+  </revision>
 </revisionlist>

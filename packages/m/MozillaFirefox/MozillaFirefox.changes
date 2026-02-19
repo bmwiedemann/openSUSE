@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 17 11:46:38 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 147.0.4
+  * Fixed an issue that could cause the New Tab Page to appear
+    blank for some users (bmo#2014616)
+  MFSA 2026-10 (bsc#1258231)
+  * CVE-2026-2447 (bmo#2014390)
+    Heap buffer overflow in libvpx
+
+-------------------------------------------------------------------
 Sun Feb  8 16:40:46 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 147.0.3
