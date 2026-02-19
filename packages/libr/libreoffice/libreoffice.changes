@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 17 22:07:01 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with Poppler 26.01.0/26.02.0 (boo#1257664):
+  * Add fix_poppler_26.01.0.patch
+  * Add fix_poppler_26.02.0.patch
+
+-------------------------------------------------------------------
 Tue Nov 18 22:44:42 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 25.8.3.2:

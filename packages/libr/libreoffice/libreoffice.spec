@@ -152,6 +152,10 @@ Patch11:        fix_webp_on_sle12_sp5.patch
 Patch15:        fix-sdk-idl.patch
 # PATCH-FIX-UPSTREAM
 Patch16:        boost-1_89_0.patch
+# PATCH-FIX-UPSTREAM
+Patch17:        fix_poppler_26.01.0.patch
+# PATCH-FIX-UPSTREAM
+Patch18:        fix_poppler_26.02.0.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -1124,6 +1128,8 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %endif
 %patch -P 15 -p1
 %patch -P 16 -p1
+%patch -P 17 -p1
+%patch -P 18 -p1
 %patch -P 990 -p1
 %patch -P 991 -p1
 %if 0%{?suse_version} < 1550
