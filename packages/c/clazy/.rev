@@ -333,4 +333,12 @@
     <comment>- Build the clang-tidy plugin. The required headers are no longer deleted.</comment>
     <requestid>1312829</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>703297ff8fb35d1fb425a24623d176d2</srcmd5>
+    <version>1.17</version>
+    <time>1771507498</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.17</comment>
+    <requestid>1333912</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package clazy
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-%define release_ver v1.16
+%define release_ver v1.17
 Name:           clazy
-Version:        1.16.0
+Version:        1.17
 Release:        0
 Summary:        Qt oriented code checker based on the Clang framework
 License:        LGPL-2.0-or-later
 URL:            https://apps.kde.org/clazy/
-Source0:        https://download.kde.org/stable/clazy/%{release_ver}/src/%{name}-%{release_ver}.tar.xz
-Source1:        https://download.kde.org/stable/clazy/%{release_ver}/src/%{name}-%{release_ver}.tar.xz.sig
+Source0:        https://download.kde.org/stable/clazy/%{version}/src/%{name}-%{version}.tar.xz
+Source1:        https://download.kde.org/stable/clazy/%{version}/src/%{name}-%{version}.tar.xz.sig
 # https://invent.kde.org/sysadmin/release-keyring/-/blob/master/keys/alex@key1.asc?ref_type=heads
 Source2:        clazy.keyring
 BuildRequires:  clang
