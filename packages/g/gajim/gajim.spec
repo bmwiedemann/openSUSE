@@ -1,7 +1,7 @@
 #
 # spec file for package gajim
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define __requires_exclude ^typelib\\(AppIndicator3\\).*$
+%define __requires_exclude ^typelib\\(AppIndicator3|GdkWin32\\).*$
 %if 0%{?suse_version} > 1500
 # Build only one time
 %define pythons %{primary_python}
@@ -25,13 +25,13 @@
 %{?sle15_python_module_pythons}
 %endif
 Name:           gajim
-Version:        2.2.0
+Version:        2.4.3
 Release:        0
 Summary:        XMPP client written in Python and GTK
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Talk/Clients
 URL:            https://gajim.org/
-Source:         https://gajim.org/downloads/2.2/gajim-%{version}.tar.gz
+Source:         https://gajim.org/downloads/2.4/gajim-%{version}.tar.gz
 BuildRequires:  %{python_module nbxmpp >= 6.2.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module precis-i18n >= 1.0.0}
@@ -49,26 +49,26 @@ BuildRequires:  python-rpm-macros >= 20220912
 BuildRequires:  python3-base >= 3.11
 BuildRequires:  sqlite3 >= 3.35.0
 BuildRequires:  update-desktop-files
+#Requires:       %{python_flavor}-Pango >= 1.50.0
+Requires:       %{python_flavor}-Pillow >= 9.1.0
+Requires:       %{python_flavor}-SQLAlchemy >= 2.0.0
 Requires:       %{python_flavor}-cryptography >= 3.4.8
 Requires:       %{python_flavor}-css-parser
 Requires:       %{python_flavor}-emoji >= 2.6.0
 Requires:       %{python_flavor}-gobject-Gdk
 Requires:       %{python_flavor}-gobject-cairo >= 1.16.0
 Requires:       %{python_flavor}-gssapi
-Requires:       %{python_flavor}-nbxmpp >= 6.2.0
-Requires:       %{python_flavor}-omemo-dr >= 1.0.0
-Requires:       %{python_flavor}-qrcode >= 7.3.1
-Requires:       python3-base >= 3.11
 #Requires:       %{python_flavor}-GLib >= 2.66.0
 #Requires:       %{python_flavor}-Gtk4 >= 4.14.0
 #Requires:       %{python_flavor}-GtkSourceView5
 Requires:       %{python_flavor}-keyring
+Requires:       %{python_flavor}-nbxmpp >= 7.0.0
+Requires:       %{python_flavor}-omemo-dr >= 1.2.0
 Requires:       %{python_flavor}-packaging
-#Requires:       %{python_flavor}-Pango >= 1.50.0
-Requires:       %{python_flavor}-Pillow >= 9.1.0
-Requires:       %{python_flavor}-SQLAlchemy >= 2.0.0
 Requires:       %{python_flavor}-precis-i18n
+Requires:       %{python_flavor}-qrcode >= 7.3.1
 Requires:       ca-certificates-mozilla
+Requires:       python3-base >= 3.11
 Requires:       sqlite3 >= 3.35.0
 Requires:       typelib(GtkSource) = 4
 Requires:       typelib(Soup) = 3.0

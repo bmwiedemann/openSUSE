@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon Feb 16 19:34:40 UTC 2026 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.4.2:
+  * Support link previews (open graph).
+  * Allow drag and drop for previews (forwarding).
+  * Shortcuts: Make shortcut for correcting messages configurable.
+  * Shortcuts: Add shortcuts for "Paste as Quote" and
+    "Paste as Code Block".
+  * Shortcuts: Add shortcuts for text formatting actions.
+  * Shortcuts: Add new shortcut for focusing the message input.
+  * Contact name entry: Improve editing flow and fix layout issue.
+  * Group Chat Creation: Improve layout.
+  * Preferences: Rework archiving page for more clarity.
+  * HTTPUpload: Raise timeout.
+  * ChatStateIndicator: Align with message row elements.
+  * Main: Group share and invite buttons.
+  * Chat: Don't draw shadow at the top.
+  * Main: Make small design improvements.
+  * ManageRoster: Narrow down row format to prevent errors.
+  * ManageRoster: Catch errors when trying to import unsuitable
+    files.
+  * MessageRowActions: Always hide when switching contacts.
+  * ConversationView: Catch exception when computing row actions
+    update.
+  * Reload user styles after dark/light mode switch.
+  * Contact popover: Fix XMPP address icon.
+  * AboutDialog: Show correct installation.
+  * Contact details: Make avatar management buttons opaque.
+  * MessageInput: Fix case where emojis were missing from the emoji
+    chooser.
+  * AdHoc: Fix label wrapping of notes in rare cases.
+  * MessageInput: Don't highlight brackets.
+  * Reset unread count after closing chat with mouse middle button.
+  * OMEMO: React to group chat config change.
+  * ChatBanner: Fix voice request button layout.
+  * FileTransfer: Focus input after sending file.
+  * Chat: Fix showing reply if message contains previewable content.
+  * Dropdowns: Add item tooltip and make popover bigger.
+  * Compare version requirements correctly.
+  * Use spawn context for multiprocessing Manager.
+  * HTTPUpload: Fix file transfer only available after chat switch.
+  * VoiceMessageRecorderWidget: Don't fail on switching input
+    device.
+  * Fix reply-to JID for self-messages in direct chats (XEP-0461).
+  * Don't fail to start Gajim when not all Gst dependencies are
+    installed.
+  * Main: Correctly bind ESC key.
+- Update to version 2.4.3:
+  * ErrorReports: Add the Python version to reports.
+  * FileTransferManager: Catch errors when trying to get aesgcm URL
+    fragment.
+  * AccountWizard: Handle disconnect correctly.
+  * Fix showing feedback box for error reports.
+  * AddContact: Fix error making it unable to add new contact.
+
+-------------------------------------------------------------------
+Tue Dec 17 10:00:08 UTC 2025 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.4.1:
+  * See https://dev.gajim.org/gajim/gajim/-/blob/2.4.1/ChangeLog
+
+-------------------------------------------------------------------
 Fri Jun 13 19:46:18 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 2.2.0:
