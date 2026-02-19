@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 19 11:32:45 UTC 2026 - Jan Baier <jbaier@suse.com>
+
+- update to 13.30
+  * dh_installsystemd[user]: ensure excluded units via -X do not get
+    processed due to `Also=`
+  * dh_clean: Catch missing trailing `/` on directories
+  * d/control: Drop unnecessary `Priority: optional`
+  * dh_installchangelogs: Keep more entries if timestamp cannot be parsed
+    (Closes: #1126043)
+  * Update on Portuguese translation of the man pages (Closes: #1124415)
+
+-------------------------------------------------------------------
 Thu Jan  8 11:11:19 UTC 2026 - Jan Baier <jbaier@suse.com>
 
 - update to 13.29
