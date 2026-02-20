@@ -662,4 +662,12 @@ You added ec_access.c with a GPL-2.0 (only) license. Now the spec file has to be
     <comment></comment>
     <requestid>1269218</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>047bcddabf2a05fe493d515d2d365060</srcmd5>
+    <version>20251212</version>
+    <time>1771605615</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1333788</requestid>
+  </revision>
 </revisionlist>

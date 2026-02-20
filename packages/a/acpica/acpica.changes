@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 18 12:15:56 UTC 2026 - Thomas Renninger <trenn@suse.de>
+
+- Update to 20251212
+  * Update many existing ACPI tables to follow the ACPI 6.6 Specification
+    changes and/or newly approved ASWG ECRs
+  * Add a few new ACPI tables: IOVT, SWFT, KEYP
+  * Add many new UUIDs, Hardware/PnP/ACPI IDs
+  * Support a few new special methods (_xxx format) and modify a few
+    existing ones to stay compliant with the latest ACPI Specification changes
+    Improve existing tools/utilities and fix/clean up some problematic usages,
+    along with patching certain vulnerabilities
+
+-------------------------------------------------------------------
 Fri Apr 11 11:18:34 UTC 2025 - Thomas Renninger <trenn@suse.de>
 
 - Update to 20250404
