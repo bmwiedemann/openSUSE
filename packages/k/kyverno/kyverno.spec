@@ -17,7 +17,7 @@
 
 
 Name:           kyverno
-Version:        1.17.0
+Version:        1.17.1
 Release:        0
 Summary:        CLI and kubectl plugin for Kyverno
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.25 >= 1.25.3
+BuildRequires:  go1.25 >= 1.25.7
 BuildRequires:  zsh
 
 %description

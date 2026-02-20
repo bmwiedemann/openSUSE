@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 19 12:05:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.17.1:
+  * fix: eliminate memcache error spam and expose isFake in CLI
+    helper functions (#15187) (#15193)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.16.4 to
+    5.16.5 (#15164) (#15278)
+  * chore(deps): bump the kubernetes group across 3 directories
+    with 7 updates (#15183) (#15284)
+  * fix: CVE-2025-68121 (#15203) (#15212)
+
+-------------------------------------------------------------------
 Mon Feb 02 11:42:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.17.0:
