@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 13 13:44:52 UTC 2026 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- Fix arbitrary file modification and privilege escalation via
+  unvalidated tar archive entries (CVE-2026-26158, bsc#1258167)
+  * 0001-tar-strip-unsafe-hardlink-components-GNU-tar-does-th.patch
+  * 0002-tar-only-strip-unsafe-components-from-hardlinks-not-.patch
+
+-------------------------------------------------------------------
 Fri Dec 19 07:56:40 UTC 2025 - Radoslav Kolev <radoslav.kolev@suse.com>
 
 - Fix tar hidden files via escape sequence (CVE-2025-46394, bsc#1241661)

@@ -1,7 +1,7 @@
 #
 # spec file for package busybox
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,6 +63,10 @@ Patch13:        0001-archival-libarchive-sanitize-filenames-on-output-pre.patch
 Patch14:        wget-don-t-allow-control-characters-in-url.patch
 # PATCH-FIX-UPSTREAM - Fix bsc#1249237, from upstream commit 362159593
 Patch15:        0001-nsenter-unshare-don-t-use-xvfork_parent_waits_and_ex.patch
+# PATCH-FIX-UPSTREAM - Fix bsc#1258163 from upstream commit 3fb6b31c716669e12f75a2accd31bb7685b1a1cb
+Patch16:        0001-tar-strip-unsafe-hardlink-components-GNU-tar-does-th.patch
+# PATCH-FIX-UPSTREAM - The fix above introducesa problem rewriting symlink targets too
+Patch17:        0002-tar-only-strip-unsafe-components-from-hardlinks-not-.patch
 
 # other patches
 Patch100:       busybox.install.patch
