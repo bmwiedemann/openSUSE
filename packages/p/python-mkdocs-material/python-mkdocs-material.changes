@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 19 07:04:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.7.2:
+  * Opened up version ranges of optional dependencies for
+    forward-compatibility
+  * Added warning to mkdocs build about impending MkDocs 2.0
+    incompatibility (doesn't affect strict mode)
+
+-------------------------------------------------------------------
 Thu Dec 18 11:59:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.7.1:
