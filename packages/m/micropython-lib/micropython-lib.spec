@@ -1,7 +1,7 @@
 #
 # spec file for package micropython-lib
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           micropython-lib
-Version:        1.26.1
+Version:        1.27.0
 Release:        0
 Summary:        Core Python libraries ported to MicroPython
 License:        MIT AND Python-2.0

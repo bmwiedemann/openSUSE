@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Feb 19 12:33:16 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Update to 1.27.0
+  * aioble/examples: Change variable name to _ADV_INTERVAL_US.
+  * all: Fix spelling and typos in comments and docstring.
+  * pyproject.toml: Add codespell configuration, CI and precommit.
+  * argparse: Add support for custom argument types.
+  * tarfile: Fix FileSection.skip to not rely on extended readinto args.
+  * tarfile: Add basic unittest for tarfile.TarFile.
+  * unix-ffi/socket: Remove ip add/drop membership from socket.
+  * iperf3: Fix server UDP mode.
+  * iperf3: Factor out data transfer logic to separate function.
+  * iperf3: Fix use as a CLI on the unix port of MicroPython.
+  * aiohttp: Correctly handle WebSocket message fragmentation.
+  * umqtt.simple: Add unsubscribe method.
+  * usb-device-hid: Use report protocol after report descriptor requested.
+  * usb-device-hid: Fix descriptor protocol config and set correct default.
+  * inspect: Support closures/generators/async-funcs in inspect.signature.
+  * lora: Fix import error detection for missing drivers.
+  * all: Correct various typos in comments and docs.
+  * pyproject.toml: Reorganize ruff lint settings for newer ruff.
+  * cbor2: Silence missing `__eq__` warning.
+  * CONTRIBUTING: Add guidelines for module documentation and versioning.
+  * all: Fix formatting errors in docstrings.
+  * requests: Update example for fetching using requests.
+  * copy: Fix typo in _deepcopy_dispatch.
+  * aioble: Fix typo in README in aioble.ADDR_PUBLIC.
+  * aioble/examples: Change variable name to _ADV_INTERVAL_US.
+  * mip: Optimize _CHUNK_SIZE const for code size.
+  * sdcard: Updating sector calculation for SDXC.
+  * datetime: Optimize for code size.
+  * datetime: Apply localtz patch to include naive date/time support.
+  * inspect: Implement a very basic signature function.
+  * usb-device-hid: Return True after submit_xfer.
+  * usb-device: Raise RuntimeError when DCD error occurs.
+
+-------------------------------------------------------------------
 Mon Oct 27 14:00:57 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Update to 1.26.1
