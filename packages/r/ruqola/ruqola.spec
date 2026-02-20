@@ -23,7 +23,7 @@
 # Disabled in the KDE:Extra repo for plain 16.0
 %bcond_without textautogeneratetext
 Name:           ruqola
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        Rocket.chat Client
 License:        GPL-2.0-or-later
