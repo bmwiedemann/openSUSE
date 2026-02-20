@@ -1,8 +1,7 @@
 #
 # spec file for package upower
 #
-# Copyright (c) 2026 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +28,7 @@
 %define idevice disabled
 %endif
 Name:           upower
-Version:        1.91.0
+Version:        1.91.1
 Release:        0
 Summary:        Power Device Enumeration Framework
 License:        GPL-2.0-or-later

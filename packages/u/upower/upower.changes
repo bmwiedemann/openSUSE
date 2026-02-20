@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 13 11:04:02 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.91.1:
+  + Fix: a resource leak
+  + Fix: a NULL exception caused by a Non-NULL GError pointer
+  + Fix client API: crashing when printing the error message from
+    a NULL GError pointer
+  + Fix: ACPI reports -NaN capacity value
+  + Feature: Skip CriticalPowerAction when performing battery
+    recalibration
+  + Deprecate: capacity_level and luminosity property
+  + CI: Add a tartan LLVM static analysis
+  + Feature: History supports voltage item
+
+-------------------------------------------------------------------
 Thu Feb  5 15:00:11 UTC 2026 - Thomas Renninger <trenn@suse.de>
 
 - Mark /var/lib/upower as ghost (jsc#PED-14851)
