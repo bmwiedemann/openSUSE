@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Feb 12 14:14:01 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.15.0
+  * Features:
+  * Add support for audio/video calls
+  * Show busy indicator while saving captured image/video data
+  * Notify on receiving reply to own group chat message if 'On
+    mention' notification setting is enabled
+  * Select file after opening in folder on Linux if supported
+  * Improve media capturing look/behavior (including preview after
+    capturing image until image is saved)
+  * Restore focusing of last focused user interface elements
+    (especially message input field) for various use cases
+  * Keep message bubble highlighted on reacting/correcting
+  * Allow to select message for correction via Ctrl+Up/Ctrl+Down
+  * Integrate search field into main toolbar increasing space for
+    messages and, on mobile devices, even for chats in chat list
+  * Show message search field via Ctrl+Shift+F
+  * Display toolbar buttons on mobile devices exactly as on
+    desktop devices
+  * Hide horizontal separator above top-most chat unless chat list
+    is scrolled
+  * Store passwords in unencrypted file if no password manager is
+    available or corresponding command-line option provided
+  * Migrate unencrypted passwords to password manager if available
+    on start
+  * Bugfixes:
+  * Fix overlapping message bubble tail
+  * Fix medium preview hovering if hidden drop area info is hovered
+  * Fix updating OMEMO 2 keys for all use cases
+  * Fix deadlock on logout during upload of multiple files
+  * Fix creating additional database connection on wrong thread
+  * Fix sending/resetting whether message is being composed for
+    various corner cases (switching chat, logging out, disabling
+    corresponding setting)
+  * Fix updating last message on receiving initial message after
+    setting up existing account in Kaidan for first time
+  * Fix resetting draft message after canceling message correction
+  * Fix resending failed message reaction
+  * Fix selecting previously selected message after changing reactions
+  * Fix restoring message highlighting and cancel ongoing
+    correction/reply on removing corresponding message
+  * Fix displaying last message sender in chat list after draft
+    message removal
+
+-------------------------------------------------------------------
 Sat Jan 24 11:24:42 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.14.0

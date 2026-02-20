@@ -125,4 +125,12 @@
     <comment>Update to 0.14.0</comment>
     <requestid>1328989</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>25c5f8a34ac41b871bd01cd2dfc84bd1</srcmd5>
+    <version>0.15.0</version>
+    <time>1771605733</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1333989</requestid>
+  </revision>
 </revisionlist>
