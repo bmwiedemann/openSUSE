@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 19 08:39:23 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.59:
+  * Take care of POSIX semaphore "shared" semantics. This fixes a
+    problem on NetBSD. [T8065]
+  * Fix preparing the environment block on Windows. [T8052]
+  * Fix for GPGRT_PROCESS_*_KEEP flags on Windows. [T8052]
+  * Update Russian and Swedish translations.
+  * Introduce autogen.rc variable autogen_use_force.
+
+-------------------------------------------------------------------
 Sun Dec 14 08:47:47 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 1.58:
