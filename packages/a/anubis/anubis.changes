@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Feb 18 16:58:51 UTC 2026 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Update to the new upstream release 1.25.0
+  * Add IP mapped Perplexity user agents by @tdgroot in #1393
+  * Fix a CI warning: "The set-output command is deprecated" by @kurtmckee in #1443
+  * Improve Dutch translations by @louwers in #1446
+  * Revert "build(deps): bump the gomod group across 1 directory with 3 updates" by @JasonLovesDoggo in #1386
+  * Update check-spelling metadata by @JasonLovesDoggo in #1379
+  * build(deps): bump astral-sh/setup-uv from 7.1.6 to 7.2.0 in the github-actions group by @dependabot[bot] in #1413
+  * build(deps): bump preact from 10.28.0 to 10.28.1 in the npm group by @dependabot[bot] in #1387
+  * build(deps): bump preact from 10.28.1 to 10.28.2 in the npm group by @dependabot[bot] in #1412
+  * build(deps): bump the github-actions group across 1 directory with 6 updates by @dependabot[bot] in #1453
+  * build(deps): bump the github-actions group with 3 updates by @dependabot[bot] in #1369
+  * build(deps): bump the github-actions group with 4 updates by @dependabot[bot] in #1355
+  * build(deps): bump the github-actions group with 4 updates by @dependabot[bot] in #1425
+  * build(deps): bump the gomod group across 1 directory with 3 updates by @dependabot[bot] in #1370
+  * build(deps): bump the npm group across 1 directory with 2 updates by @dependabot[bot] in #1452
+  * build(deps-dev): bump esbuild from 0.27.1 to 0.27.2 in the npm group by @dependabot[bot] in #1368
+  * chore: add comments back to Challenge struct. by @JasonLovesDoggo in #1419
+  * chore: set up commitlint, husky, and prettier by @Xe in #1451
+  * chore: sync logo submissions by @Xe in #1455
+  * docs(known-instances): Alphabetical order + Add Valve Corporation by @p0008874 in #1352
+  * docs: add AI coding tools policy by @Xe in #1454
+  * docs: clarify botstopper kubernetes instructions by @tarrow in #1404
+  * docs: document how to import the default config by @Xe in #1392
+  * feat(apps): add updown.io policy by @hyperdefined in #1444
+  * feat(docs): Add ANEXIA Sponsor logo by @Earl0fPudding in #1409
+  * feat(docs): Add HAProxy Configurations to Docs by @Earl0fPudding in #1424
+  * feat(localization): add Polish language translation by @btomaev in #1363
+  * feat: iplist2rule utility command by @Xe in #1373
+  * fix sponsor (Databento) logo size by @ayoung5555 in #1395
+  * fix(test): remove interactive flag from nginx smoke test docker run c… by @JasonLovesDoggo in #1371
+  * fix(web): include base prefix in generated URLs by @Xe in #1403
+  * fix: Update SSL Labs IP addresses by @majiayu000 in #1377
+  * fix: correct typos by @antonkesy in #1398
+  * fix: respect Accept-Language quality factors in language detection by @majiayu000 in #1380
+  * performance: remove significant overhead of decaymap/memory by @brainexe in #1420
+  * test(nginx): fix tests to work in GHA by @Xe in #1372
+  * test: basic nginx smoke test by @Xe in #1365
+  * web: fix spacing/indent by @bjacquin in #1423 
+
+-------------------------------------------------------------------
 Sat Dec 27 18:14:49 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
 
 - Update to the new upstream release 1.24.0

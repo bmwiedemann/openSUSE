@@ -17,7 +17,7 @@
 
 
 Name:           anubis
-Version:        1.24.0
+Version:        1.25.0
 Release:        0
 Summary:        Web AI Firewall Utility
 License:        MIT
@@ -42,10 +42,12 @@ export GO_LDFLAGS="-buildmode=pie -mod=vendor -X 'github.com/TecharoHQ/%{name}.V
 
 go build -o .%{_localstatedir}/%{name} ./cmd/%{name}
 go build -o .%{_localstatedir}/robots2policy ./cmd/robots2policy
+go build -o .%{_localstatedir}/iplist2rule ./utils/cmd/iplist2rule
 
 %install
 install -D -m 0755 var/%{name} %{buildroot}%{_bindir}/%{name}
 install -D -m 0755 var/robots2policy %{buildroot}%{_bindir}/robots2policy
+install -D -m 0755 var/iplist2rule %{buildroot}%{_bindir}/iplist2rule
 install -D -m 0644 run/default.env %{buildroot}%{_sysconfdir}/%{name}/default.env
 
 # # service
@@ -73,6 +75,7 @@ install -D -p -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}@.service
 %doc README.md
 %{_bindir}/%{name}
 %{_bindir}/robots2policy
+%{_bindir}/iplist2rule
 %{_unitdir}/%{name}@.service
 
 %changelog
