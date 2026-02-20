@@ -1,7 +1,7 @@
 #
 # spec file for package scx
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define libbpf_min_ver 1.4
 %define llvm_min_ver 17
 Name:           scx
-Version:        1.0.19
+Version:        1.0.20
 Release:        0
 Summary:        Sched_ext CPU schedulers
 License:        GPL-2.0-only
@@ -44,7 +44,9 @@ BuildRequires:  pkgconfig(libbpf) >= %{libbpf_min_ver}
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(systemd)
+
 ExclusiveArch:  %{rust_arches}
+ExcludeArch:    %{ix86}
 
 %description
 sched_ext is a Linux kernel feature which enables implementing kernel thread schedulers in BPF and dynamically loading them. This package contains various scheduler implementations and support utilities.
@@ -79,6 +81,7 @@ for path in ./tools/scxtop \
 	./scheds/rust/scx_lavd \
 	./scheds/rust/scx_cosmos \
 	./scheds/rust/scx_layered \
+	./scheds/rust/scx_beerland \
 	./scheds/rust/scx_bpfland; do
 pushd "${path}"
 %{cargo_install}

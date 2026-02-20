@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Feb 10 20:01:41 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to version 1.0.20:
+  * scx_p2dq: Add fork-time load balancing across LLCs
+  * scx_lavd: Account for time stolen from tasks from steal/irq_time
+  * scx_p2dq: Add energy-aware scheduling with thermal and frequency awareness
+  * scx_cosmos: Add perfmon based scheduling
+  * scx_mitosis: make independent of cpu cg controller presence
+  * scxtop: Add support for parsing wprof perfetto traces
+  * scx_p2dq: add Intel uncore frequency, turbo, and EPP controls
+  * scx_lavd: Improve core compaction to use effective capacity
+  * scx_mitosis: Reject partial multi-CPU pinning by default
+  * scx_layered: add partial core allocation mode
+  * scx_lavd: Increase greedy factor in deadline calculation
+  * scx_lavd: Inherit scheduling context from parent on fork
+  * scx_lavd: Optimize task migration for execve
+- Exclude 32-bit x86 builds
+- Include scx_beerland scheduler in package
+
+-------------------------------------------------------------------
 Sat Dec  6 09:57:43 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - Update to version 1.0.19:
