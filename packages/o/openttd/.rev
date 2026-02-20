@@ -1344,4 +1344,12 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
     <comment>Update to 15.1</comment>
     <requestid>1329303</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>ce302820d8ad54ba5873ff0bff90a922</srcmd5>
+    <version>15.2</version>
+    <time>1771605640</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 15.2</comment>
+    <requestid>1333919</requestid>
+  </revision>
 </revisionlist>

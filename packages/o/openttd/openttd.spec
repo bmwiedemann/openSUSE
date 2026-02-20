@@ -22,7 +22,7 @@
 %global force_gcc_version 12
 %endif
 Name:           openttd
-Version:        15.1
+Version:        15.2
 Release:        0
 Summary:        A clone of Chris Sawyer's Transport Tycoon Deluxe
 License:        GPL-2.0-only
