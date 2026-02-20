@@ -42,7 +42,9 @@ Patch7:         bcm2712-fix-compatible.patch
 Patch8:         0001-Amend-the-RP1-ethernet-node-to-work-with-upstream-dr.patch
 Patch9:         0001-dts-overlays-Adjust-them-for-RPi5.patch
 Patch10:	0001-dts-bcm2712-Extend-PCIe-range-to-encompass-firmware-.patch
+Patch11:	0001-dts-arm64-rp1-Fix-PCIe-topology.patch
 Requires:       raspberrypi-firmware
+Requires:       kernel >= 6.19.0
 BuildRequires:  dtc
 BuildRequires:  raspberrypi-firmware
 BuildArch:      noarch
