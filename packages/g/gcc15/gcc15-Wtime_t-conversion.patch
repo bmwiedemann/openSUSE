@@ -1,0 +1,217 @@
+From a95f47d38935765a38c65ee7ddda73ff7b438979 Mon Sep 17 00:00:00 2001
+From: Richard Biener <rguenther@suse.de>
+Date: Thu, 26 Jun 2025 10:14:54 +0200
+Subject: [PATCH] c/96570 - diagnostics for conversions to/from time_t
+To: gcc-patches@gcc.gnu.org
+
+The following prototypes diagnostics for conversions to/from time_t
+where the source/destination does not have sufficient precision for it.
+I've lumped this into a new -Wtime_t-conversion for the moment and
+didn't bother fixing up the testcase for !ilp32.
+
+This does not diagnose time_t to long conversion on 64bit long
+platforms (in anticipation of a problem with -m32), so actual audits
+would need to build for 32bit long targets and with 64bit time_t.
+
+The alternative is to implement this with 64bit time_t in mind
+(even when it's actually 32bit) and base it solely on types
+that would be safe on targets.  This get's hard for long vs.
+long long then, esp. if typedefs are involved.
+
+Any known problematic constructs out in the wild we'd like to
+have test coverage for?
+
+Thanks,
+Richard.
+
+	PR c/96570
+gcc/
+	* doc/invoke.texi (Wtime_t-conversion): Document.
+
+gcc/c-family/
+	* c.opt (Wtime_t-conversion): New flag.
+	* c-warn.cc (is_time_t): New.
+	(warnings_for_convert_and_check): When not otherwise diagnosed
+	diagnose conversions to/from time_t and loss/lack of precision.
+
+	* c-c++-common/Wtime_t-1.c: New testcase.
+---
+ gcc/c-family/c-warn.cc                 | 30 +++++++++-
+ gcc/c-family/c.opt                     |  4 ++
+ gcc/doc/invoke.texi                    |  6 ++
+ gcc/testsuite/c-c++-common/Wtime_t-1.c | 83 ++++++++++++++++++++++++++
+ 4 files changed, 122 insertions(+), 1 deletion(-)
+ create mode 100644 gcc/testsuite/c-c++-common/Wtime_t-1.c
+
+diff --git a/gcc/c-family/c-warn.cc b/gcc/c-family/c-warn.cc
+index d547b08f55d..0ee86a65e88 100644
+--- a/gcc/c-family/c-warn.cc
++++ b/gcc/c-family/c-warn.cc
+@@ -1394,6 +1394,17 @@ conversion_warning (location_t loc, tree type, tree expr, tree result)
+   return false;
+ }
+ 
++static bool
++is_time_t (tree type)
++{
++  tree name = TYPE_NAME (type);
++  if (name
++      && TREE_CODE (name) == TYPE_DECL
++      && strcmp (IDENTIFIER_POINTER (DECL_NAME (name)), "time_t") == 0)
++    return true;
++  return false;
++}
++
+ /* Produce warnings after a conversion. RESULT is the result of
+    converting EXPR to TYPE.  This is a helper function for
+    convert_and_check and cp_convert_and_check.  */
+@@ -1506,7 +1517,24 @@ warnings_for_convert_and_check (location_t loc, tree type, tree expr,
+ 		    exprtype, type, expr);
+     }
+   else
+-    conversion_warning (loc, type, expr, result);
++    {
++      if (conversion_warning (loc, type, expr, result))
++	return;
++
++      if (TREE_CODE (result) == INTEGER_CST)
++	;
++      else if (is_time_t (TREE_TYPE (expr))
++	       && INTEGRAL_TYPE_P (type)
++	       && TYPE_PRECISION (type) < TYPE_PRECISION (TREE_TYPE (expr)))
++	warning_at (loc, OPT_Wtime_t_conversion,
++		    "conversion from %<time_t%> to %qT loses precision", type);
++      else if (is_time_t (type)
++	       && INTEGRAL_TYPE_P (TREE_TYPE (expr))
++	       && TYPE_PRECISION (type) > TYPE_PRECISION (TREE_TYPE (expr)))
++	warning_at (loc, OPT_Wtime_t_conversion,
++		    "source %qE of conversion to %<time_t%> lacks precision",
++		    expr);
++    }
+ }
+ 
+ /* Subroutines of c_do_switch_warnings, called via splay_tree_foreach.
+diff --git a/gcc/c-family/c.opt b/gcc/c-family/c.opt
+index 75b6531860e..c94a1e32ec8 100644
+--- a/gcc/c-family/c.opt
++++ b/gcc/c-family/c.opt
+@@ -589,6 +589,10 @@ Wconversion-null
+ C++ ObjC++ Var(warn_conversion_null) Init(1) Warning
+ Warn for converting NULL from/to a non-pointer type.
+ 
++Wtime_t-conversion
++C ObjC C++ ObjC++ Var(warn_time_t_conversion) Warning
++Warn for conversions to or from time_t that are not 64bit clean.
++
+ Wcpp
+ C ObjC C++ ObjC++ CppReason(CPP_W_WARNING_DIRECTIVE)
+ ; Documented in common.opt
+diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
+index e7af79e09ae..a40b47c870d 100644
+--- a/gcc/doc/invoke.texi
++++ b/gcc/doc/invoke.texi
+@@ -9725,6 +9725,12 @@ unsigned integers are disabled by default in C++ unless
+ Warnings about conversion from arithmetic on a small type back to that
+ type are only given with @option{-Warith-conversion}.
+ 
++@opindex Wtime_t-conversion
++@opindex Wno-time_t-conversion
++@item -Wconversion
++Warn for conversions to or from @code{time_t} that are not able to
++carry the whole 64bit value range.
++
+ @opindex Wdangling-else
+ @opindex Wno-dangling-else
+ @item -Wdangling-else
+diff --git a/gcc/testsuite/c-c++-common/Wtime_t-1.c b/gcc/testsuite/c-c++-common/Wtime_t-1.c
+new file mode 100644
+index 00000000000..8193bd3d01f
+--- /dev/null
++++ b/gcc/testsuite/c-c++-common/Wtime_t-1.c
+@@ -0,0 +1,83 @@
++/* Test for diagnostics for conversions between time_t and integer types
++   These tests are based on gcc.dg/Wconversion-integer.c   */
++
++/* { dg-do compile { target ilp32 } } */
++/* { dg-options "-std=c99 -fsigned-char -Wtime_t-conversion" } */
++
++#define __USE_TIME_BITS64
++#include <time.h>
++
++void fsc (signed char sc);
++void fuc (unsigned char uc);
++unsigned fui (unsigned int  ui);
++int fsi (signed int si);
++unsigned long ful (unsigned long  ul);
++signed long fsl (signed long  sl);
++time_t ft(time_t t);
++
++void h (int x)
++{
++  unsigned char uc = 3;
++  signed char   sc = 3;
++  unsigned short us = 3;
++  signed short   ss = 3;
++  unsigned int ui = 3;
++  signed int   si = 3;
++  unsigned long int ul = 3;
++  signed long int   sl = 3;
++  unsigned long long int ull = 3;
++  signed long long int   sll = 3;
++  time_t t = 3;
++  time_t t2 = -3;
++
++  uc = t; /* { dg-warning "conversion" } */
++  sc = t; /* { dg-warning "conversion" } */
++  us = t; /* { dg-warning "conversion" } */
++  ss = t; /* { dg-warning "conversion" } */
++  si = t; /* { dg-warning "conversion" } */
++  ui = t; /* { dg-warning "conversion" } */
++  sl = t; /* { dg-warning "conversion" } */
++  ul = t; /* { dg-warning "conversion" } */
++  ull = t; /* { dg-warning "sign" } */
++  t = uc; /* { dg-warning "conversion" } */
++  t = sc; /* { dg-warning "conversion" } */
++  t = si; /* { dg-warning "conversion" } */
++  t = ui; /* { dg-warning "conversion" } */
++  t = sl; /* { dg-warning "conversion" } */
++  t = ul; /* { dg-warning "conversion" } */
++  fuc (t); /* { dg-warning "conversion" } */
++  fuc (t); /* { dg-warning "conversion" } */
++  fsc (t); /* { dg-warning "conversion" } */
++  fsc (t); /* { dg-warning "conversion" } */
++  si = ft(t); /* { dg-warning "conversion" } */
++  ui = ft(t); /* { dg-warning "conversion" } */
++  sl = ft(t); /* { dg-warning "conversion" } */
++  ul = ft(t); /* { dg-warning "conversion" } */
++  ful(t);     /* { dg-warning "conversion" } */
++  fsl(t);     /* { dg-warning "conversion" } */
++  t = fsi(si); /* { dg-warning "conversion" } */
++  t = fui(ui); /* { dg-warning "conversion" } */
++  t = fsl(sl); /* { dg-warning "conversion" } */
++  t = ful(sl); /* { dg-warning "conversion" } */
++  ull = ft(t); /* { dg-warning "sign" } */
++
++  fsi (t); /* { dg-warning "sign" } */
++  fui (t); /* { dg-warning "sign" } */
++  fsi (t); /* { dg-warning "conversion" } */
++  t = ft(t);
++  sll = ft(t);
++  ft(sll);
++  t2 = t;
++  sll = t;
++  t = sll;
++  si = (int)t;
++  ui = (unsigned)t;
++  sl = (long)t;
++  ul = (unsigned long)t;
++  ull = (unsigned long long)t;
++  t = (time_t)si;
++  t = (time_t)ui;
++  t = (time_t)sl;
++  t = (time_t)ul;
++  t = (time_t)ull;
++}
+-- 
+2.51.0
+

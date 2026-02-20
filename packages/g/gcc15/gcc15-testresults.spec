@@ -1,7 +1,7 @@
 #
 # spec file for package gcc15-testresults
 #
-# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,7 +64,7 @@
 %define build_ada 0
 %endif
 
-%define quadmath_arch %ix86 x86_64 ia64 ppc64le loongarch64
+%define quadmath_arch %ix86 x86_64 ia64 ppc64le
 %define tsan_arch x86_64 aarch64 ppc ppc64 ppc64le s390 s390x riscv64 loongarch64
 %define asan_arch x86_64 %ix86 ppc ppc64 ppc64le s390 s390x %sparc %arm aarch64 riscv64 loongarch64
 %define hwasan_arch aarch64 x86_64
@@ -408,6 +408,7 @@ Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch19:        gcc11-gdwarf-4-default.patch
 Patch20:        gcc15-bsc1253043.patch
 Patch21:        gcc15-pr120424.patch
+Patch22:        gcc15-Wtime_t-conversion.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -541,7 +542,7 @@ ln -s newlib-4.5.0.20241231/newlib .
 %patch -p1 -P 19
 %patch -p1 -P 20
 %endif
-%patch -p1 -P 21
+%patch -p1 -P 21 -P 22
 %patch -P 51
 %patch -p1 -P 60 -P 61
 

@@ -1,7 +1,7 @@
 #
 # spec file for package cross-pru-gcc15-bootstrap
 #
-# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -126,6 +126,7 @@ Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch19:        gcc11-gdwarf-4-default.patch
 Patch20:        gcc15-bsc1253043.patch
 Patch21:        gcc15-pr120424.patch
+Patch22:        gcc15-Wtime_t-conversion.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -333,7 +334,7 @@ ln -s newlib-4.5.0.20241231/newlib .
 %patch -p1 -P 19
 %patch -p1 -P 20
 %endif
-%patch -p1 -P 21
+%patch -p1 -P 21 -P 22
 %patch -P 51
 %patch -p1 -P 60 -P 61
 

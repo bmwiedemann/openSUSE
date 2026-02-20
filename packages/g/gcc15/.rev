@@ -221,4 +221,16 @@ since we bumped libgo SONAME as well for 15</comment>
   even when not available at build time.  [bsc#1253043]</comment>
     <requestid>1330698</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>0d33cf53b81d4e1bb4693dfee70204df</srcmd5>
+    <version>15.2.1+git10776</version>
+    <time>1771605629</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc15-Wtime_t-conversion.patch, SUSE-local
+  -Wtime_t-conversion.  [jsc#PED-15601] 
+
+- Remove loongarch64 from quadmath_arch. On LoongArch long double
+  is IEEE quad, so libquadmath is not needed and no longer built.</comment>
+    <requestid>1333776</requestid>
+  </revision>
 </revisionlist>
