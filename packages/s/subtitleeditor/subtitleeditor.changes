@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 19 12:57:49 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.56.2
+  * Make compilation work with newer (actually all) libxml++ and
+    bump C++ mininimum version to 17. 
+
+-------------------------------------------------------------------
 Thu Jan 29 15:24:43 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.56.1

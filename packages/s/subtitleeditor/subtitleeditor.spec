@@ -19,7 +19,7 @@
 %define _sover  0
 %define _fname  org.kitone.subtitleeditor
 Name:           subtitleeditor
-Version:        0.56.1
+Version:        0.56.2
 Release:        0
 Summary:        A GTK+3 tool to edit subtitles
 License:        GPL-3.0-or-later
