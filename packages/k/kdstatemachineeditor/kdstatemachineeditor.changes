@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 12 14:38:48 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.3.0:
+  * Bump to Graphviz 14.0.5
+
+-------------------------------------------------------------------
 Sun Nov 23 14:02:52 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update 0001-CMake-Find-gvplugin_dot_layout-on-openSUSE.patch to

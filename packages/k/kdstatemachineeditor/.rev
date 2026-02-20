@@ -121,4 +121,12 @@
   build with graphviz 14.*</comment>
     <requestid>1319531</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5ad4079c251269c2a5fb4a4fab2b5c39</srcmd5>
+    <version>2.3.0</version>
+    <time>1771605738</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1333990</requestid>
+  </revision>
 </revisionlist>

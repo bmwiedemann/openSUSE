@@ -21,7 +21,7 @@
 %global sover 2
 #
 Name:           kdstatemachineeditor
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        A framework for creating Qt State Machine metacode using a GUI
 # Legal: NOTE the EULA mentioned in LICENSE.txt only applies to "Licensed Product" users.
