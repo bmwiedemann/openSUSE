@@ -5541,4 +5541,14 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1332753</requestid>
   </revision>
+  <revision rev="528" vrev="1">
+    <srcmd5>b526a58b0186ccdc6ccddde589c49ff2</srcmd5>
+    <version>2.9.0+git20260218.93cd649d</version>
+    <time>1771605604</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.9.0+git20260218.93cd649d:
+  * systemd-tmpfiles: whitelist postfix spool directory (bsc#1258381)
+</comment>
+    <requestid>1333728</requestid>
+  </revision>
 </revisionlist>

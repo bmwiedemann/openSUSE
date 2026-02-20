@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 18 10:43:47 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.9.0+git20260218.93cd649d:
+  * systemd-tmpfiles: whitelist postfix spool directory (bsc#1258381)
+
+-------------------------------------------------------------------
 Thu Feb 12 17:42:03 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.9.0+git20260211.72e34881:
