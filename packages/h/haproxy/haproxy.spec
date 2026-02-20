@@ -49,7 +49,7 @@
 %bcond_with ech
 
 Name:           haproxy
-Version:        3.3.3+git0.465d8e2fc
+Version:        3.3.4+git0.c2bffae0a
 Release:        0
 #
 Summary:        The Reliable, High Performance TCP/HTTP Load Balancer

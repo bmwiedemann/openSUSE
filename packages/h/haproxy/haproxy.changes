@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Feb 19 13:52:23 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.3.4+git0.c2bffae0a:
+  * [RELEASE] Released version 3.3.4
+  * BUG/MINOR: backend: check delay MUX before conn_prepare()
+  * BUG/MINOR: acme: fix X509_NAME leak when X509_set_issuer_name() fails
+  * CLEANUP: mux-h1: Remove unneeded null check
+  * BUG/MEDIUM: ssl: SSL backend sessions used after free
+  * CI: github: disable windows.yml by default on unofficials repo
+  * CI: vtest: move the vtest2 URL to vinyl-cache.org
+  * MINOR: stconn: Add missing SC_FL_NO_FASTFWD flag in sc_show_flags
+  * BUG/MINOR: http-ana: Stop to wait for body on client error/abort
+  * CLEANUP: compression: Remove unused static buffers
+  * BUG/MINOR: flt-trace: Properly compute length of the first DATA block
+  * DEV: term-events: Fix hanshake events decoding
+  * BUG/MEDIUM: applet: Fix test on shut flags for legacy applets (v2)
+  * BUG/MEDIUM: mux-h1: Stop sending vi fast-forward for unexpected states
+  * BUG/MEDIUM: mux-h2/quic: Stop sending via fast-forward if stream is closed
+  * BUG/MEDIUM: h3: reject frontend CONNECT as currently not implemented
+  * BUG/MAJOR: Revert "MEDIUM: mux-quic: add BUG_ON if sending on locally closed QCS"
+  * BUG/MINOR: ssl: error with ssl-f-use when no "crt"
+  * BUG/MINOR: ssl: clarify ssl-f-use errors in post-section parsing
+  * BUG/MINOR: ssl: fix leak in ssl-f-use parser upon error
+  * BUG/MINOR: ssl: double-free on error path w/ ssl-f-use parser
+  * BUG/MINOR: ssl: lack crtlist_dup_ssl_conf() declaration
+  * BUG/MINOR: deviceatlas: set cache_size on hot-reloaded atlas instance
+  * BUG/MINOR: deviceatlas: fix deinit to only finalize when initialized
+  * BUG/MINOR: deviceatlas: fix resource leak on hot-reload compile failure
+  * BUG/MINOR: deviceatlas: fix double-checked locking race in checkinst
+  * BUG/MINOR: deviceatlas: fix cookie vlen using wrong length after extraction
+  * BUG/MINOR: deviceatlas: fix off-by-one in da_haproxy_conv()
+  * BUG/MEDIUM: deviceatlas: fix resource leaks on init error paths
+  * BUG/MINOR: deviceatlas: add NULL checks on strdup() results in config parsers
+  * BUG/MINOR: deviceatlas: add missing return on error in config parsers
+  * DOC: proxy-proto: underline the packed attribute for struct pp2_tlv_ssl
+  * DOC: internals: addd mworker V3 internals
+
+-------------------------------------------------------------------
 Thu Feb 12 15:16:46 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.3.3+git0.465d8e2fc:

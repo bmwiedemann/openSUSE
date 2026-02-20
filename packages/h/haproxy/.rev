@@ -1862,4 +1862,12 @@
   * BUG/MEDIUM: threads: Atomically set TH_FL_SLEEPING and clr FL_NOTIFIED</comment>
     <requestid>1332730</requestid>
   </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>1b324471c5dc89bd9c5f8664c4ee2982</srcmd5>
+    <version>3.3.4+git0.c2bffae0a</version>
+    <time>1771605726</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.4+git0.c2bffae0a:</comment>
+    <requestid>1333967</requestid>
+  </revision>
 </revisionlist>
