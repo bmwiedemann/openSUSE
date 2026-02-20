@@ -20,7 +20,7 @@
 %{?sle15_python_module_pythons}
 
 Name:           micropython
-Version:        1.26.1
+Version:        1.27.0
 Release:        0
 Summary:        Implementation of Python 3 with very low memory footprint
 License:        MIT

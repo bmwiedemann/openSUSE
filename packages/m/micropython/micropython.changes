@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Feb 19 12:26:50 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.27.0
+  * remove Python 2.7 support
+  * use "static inline" consistently in function definitions
+  * replace legacy name with MicroPython and MPy as applicable
+  * simplify mp_int_t/mp_uint_t definition
+  * update ruff configuration to target Python 3.8
+  * increase stack sizes if running with sanitizers
+  * don't crash if heap locked in prompt_write_history
+  * unlock heap before readline
+  * modsocket: use type-checking mp_obj_get_int
+  * Makefile: add additional testing targets
+  * modsocket: set file descriptor to -1 on close
+  * main: ensure atexit function is called with -m
+  * Makefile: run all possible tests when using --via-mpy
+  * variants/minimal: enable C stack checking
+  * Makefile: allow out-of-tree tests
+  * modtime: add type casting for mktime return value
+  * main: use standard pyexec REPL for unix and windows ports
+  * enable compile-only mode with shared pyexec REPL
+  * main: replace execute_from_lexer with pyexec in do_file and do_str
+  * enable exit code handling for sys.exit()
+  * modsocket: add IP ADD and DROP MEMBERSHIP to socket constants
+
+-------------------------------------------------------------------
 Fri Feb  6 16:13:57 UTC 2026 - Dominik Heidler <dheidler@suse.de>
 
 - Add CVE-2026-1998.patch for CVE-2026-1998 / bsc#1257803
