@@ -1,7 +1,7 @@
 #
 # spec file for package systemtap
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           systemtap
-Version:        5.2
+Version:        5.4
 Release:        0
 Summary:        Instrumentation System
 License:        GPL-2.0-or-later
@@ -32,12 +32,14 @@ Source2:        %{name}.keyring
 Source3:        README-BEFORE-ADDING-PATCHES
 Source4:        README-KEYRING
 Source5:        stap-server.conf
+Source6:        stap.conf
 Patch1:         systemtap-build-source-dir.patch
-Patch2:         linux-6.13-fedora-compatibility.patch
-Patch3:         rawhide-6.13-kbuild-compatibility.patch
+Patch2:         elaborate.cxx-fix-32-bit-build.patch
+Patch3:         guard-usage-of-vmlinux.h.patch
 
 BuildRequires:  autoconf >= 2.71
 BuildRequires:  automake
+BuildRequires:  boost-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libavahi-devel
@@ -127,11 +129,16 @@ touch %{buildroot}%{_localstatedir}/log/stap-server.log
 # config file for stap-server (/run now on tmpfs)
 mkdir -p %{buildroot}%{_tmpfilesdir}
 install -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}
+install -m 644 %{SOURCE6} %{buildroot}%{_tmpfilesdir}
 
 %fdupes %{buildroot}%{_datadir}/%{name}
 %python3_fix_shebang
 
 %find_lang systemtap
+
+%post
+# Create tmpfiles
+%tmpfiles_create %{_tmpfilesdir}/stap.conf
 
 %post server
 # Create tmpfiles
@@ -149,8 +156,7 @@ install -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}
 %{_datadir}/%{name}/runtime
 %{_datadir}/%{name}/interactive-notebook
 %{_datadir}/%{name}/tapset
-#packaged by systemtap-initscript in upstream
-%dir %{_localstatedir}/cache/systemtap
+%{_tmpfilesdir}/stap.conf
 
 %files runtime -f systemtap.lang
 %doc %{_docdir}/systemtap

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 19 21:59:13 UTC 2026 - Tony Jones <tonyj@suse.com>
+
+- Add R section headers to sed rule (for support_section_retain added
+  in 5.4). Solves build error for packages which BuildRequire: this.
+
+-------------------------------------------------------------------
+Fri Jan 23 02:36:56 UTC 2026 - Tony Jones <tonyj@suse.com>
+
+- Upgrade to version 5.4. See systemtap.changes for changelog
+
+-------------------------------------------------------------------
 Mon Feb 24 18:14:46 UTC 2025 - Tony Jones <tonyj@suse.com>
 
 - Upgrade to version 5.2. See systemtap.changes for changelog 

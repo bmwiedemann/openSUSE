@@ -1,7 +1,7 @@
 #
 # spec file for package systemtap-headers
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           systemtap-headers
-Version:        5.2
+Version:        5.4
 Release:        0
 Summary:        SystemTap headers
 License:        GPL-2.0-or-later
@@ -32,10 +32,6 @@ Group:          Development/Tools/Debuggers
 URL:            http://sourceware.org/systemtap/
 Source0:        https://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz
 Source1:        https://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz.asc
-Source2:        systemtap.keyring
-Source3:        README-BEFORE-ADDING-PATCHES
-Source4:        README-KEYRING
-Source5:        stap-server.conf
 Patch1:         systemtap-build-source-dir.patch
 
 # sdt-devel provides the same header files as us, so we
@@ -53,9 +49,10 @@ systemtap-sdt-devel, which also contains these headers.
 %autopatch -p1
 
 %build
-# Our binutils always support '?' in the section characters on all
-# architectures, no need for configure tests
-sed -e 's/@support_section_question@/1/' < includes/sys/sdt-config.h.in > includes/sys/sdt-config.h
+# Directly set necessary config flags without need to depend/run autoconf.
+#
+# Our binutils always support '?'/'R' in the section characters on all archs.
+sed -e 's/@support_section_question@/1/' -e 's/@support_section_retain@/1/' < includes/sys/sdt-config.h.in > includes/sys/sdt-config.h
 
 %install
 mkdir -p %{buildroot}%{_includedir}/sys

@@ -4,7 +4,7 @@ How to update the systemtap keyring
 2. run 'osc service localrun download_files' to download the new tarball and signatrure files (the signature file may be .sig or .asc, it varies depending on who
 made the release)
 3. run 'gpg systemtap-${ver}.tar.gz.{sig,asc}' -- look for "gpg: Signature made {date} using RSA key ID {key}" in output
-4. run 'gpg --keyserver pgp.mit.edu --recv-key $key' to obtain the key from the public keyserver
+4. run 'gpg --keyserver https://keys.openpgp.org/ --recv-key $key' to obtain the key from the public keyserver
 5. run 'gpg --export --armor --output systemtap.keyring $key'.   Select 'y' to
    overwrite existing file (previous is backed up in .osc)
 

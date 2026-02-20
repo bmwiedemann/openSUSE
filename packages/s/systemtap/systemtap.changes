@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Jan 21 18:37:14 UTC 2026 - Tony Jones <tonyj@suse.com>
+
+- Upgrade to version 5.4
+
+  Drop patch: rawhide-6.13-kbuild-compatibility.patch (upstream)
+  Drop patch: linux-6.13-fedora-compatibility.patch (upstream)
+  Add patch:  elaborate.cxx-fix-32-bit-build.patch (resolve 32-bit build error)
+  Add patch:  guard-usage-of-vmlinux.h.patch (temporary fix)
+
+  Drop explicit packaging of /var/cache/systemtap (jsc#PED-14770)
+
+  Summary of changes (v5.4):
+    - The kernel-context @cast operator now implicitly searches a kernel's
+      <vmlinux.h> generated header file first, if available (kernel 5.7+),
+      for type declarations.  This can make some debuginfo access
+      unnecessary, and thus processing faster.  It can work around kernel
+      API changes where type declarations move between headers.
+      Use --compatible=5.3 to disable this behaviour.
+      Use @cast(..., "kernel<vmlinux.h>") manually if desired.
+
+    - Type checking and autocast processing have been made more thorough,
+      so elided variables are checked more and @defined() tests may be
+      more complicated.  Preexisting scripts that rely on elision for
+      bypassing type violations may now get caught.  No --compatible
+      option exists to suppress this new behaviour.
+
+    - The sys/sdt.h file now arranges to include the section flag "R"
+      (RETAIN) for the .stapsdt.base elf sections related to sdt markers,
+       for compatibility with aggressive GC operations in some linkers.
+
+    - Kernel portability changes
+
+    - The dropwatch.stp [script] adds numeric drop-reason codes to the 
+      statistics.
+
+  Summary of changes (v5.3):
+
+    - The first pass (-p1) now runs parse operations concurrently over of
+      the hundreds of tapset .stp files, potentially saving seconds of
+      time at startup.
+
+    - Numerous kernel portability changes
+
+-------------------------------------------------------------------
 Tue Feb 25 21:07:47 UTC 2025 - Tony Jones <tonyj@suse.com>
 
 - Resolve errors with linux-6.13 based kernels.

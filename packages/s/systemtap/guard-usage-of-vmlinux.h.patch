@@ -1,0 +1,28 @@
+From: Tony Jones <tonyj@suse.de>
+Subject: guard usage of vmlinux.h
+References: jsc#PED-15105
+Upstream: pending
+Signed-off-by: Tony Jones <tonyj@suse.de>
+
+Temporary workaround until jsc#PED-15105 is resolved.
+Check that .../build/vmlinux.h actually exists before using it.
+
+diff --git a/buildrun.cxx b/buildrun.cxx
+index c3e38a2db..4c9251653 100644
+--- a/buildrun.cxx
++++ b/buildrun.cxx
+@@ -1209,8 +1209,12 @@ make_typequery_kmod(systemtap_session& s, const vector<string>& headers, string&
+       const string& h = headers[i];
+       if (h == string("vmlinux.h")) // PR33428: vmlinux.h special case
+         {
+-          omf << " -include " << lex_cast_qstring(s.kernel_build_tree) << "/" << lex_cast_qstring("vmlinux.h");
+-          no_vmlinux_h = false;
++          string vh = s.kernel_build_tree + "/vmlinux.h";
++          if (access(vh.c_str(), R_OK) == 0)
++            {
++              omf << " -include " << lex_cast_qstring(s.kernel_build_tree) << "/" << lex_cast_qstring("vmlinux.h");
++              no_vmlinux_h = false;
++            }
+         }
+       else
+         omf << " -include " << lex_cast_qstring(h); // XXX right quoting?
