@@ -149,4 +149,12 @@
   * Detect cyclic references when retrieving outlines</comment>
     <requestid>1329730</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ada09128d86fa667b76a18bb160c562a</srcmd5>
+    <version>6.7.1</version>
+    <time>1771605676</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1333951</requestid>
+  </revision>
 </revisionlist>

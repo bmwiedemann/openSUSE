@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb 19 12:39:32 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 6.7.1
+  * Deprecate support for abbreviations in decode_stream_data
+  * Add ability to add font resources for 14 Adobe Core fonts in text
+    widget annotations
+  * Avoid invalid load for ICCBased FlateDecode images in mode 1
+  * Fix AESV2 decryption when /Length missing in encrypt dict
+  * Fix merging when annotations point to NullObject
+  * Check for self._info being None in compress_identical_objects
+  * Detect cyclic references when accessing TreeObject.children
+  * Limit size of /ToUnicode entries
+  * Limit FlateDecode recovery attempts
+  * Avoid own object replacement logic in PageObject.replace_contents
+  * Fix UnboundLocalError when update_page_form_field_values with /Sig
+  * Avoid divison by zero when decoding FlateDecode PNG prediction
+
+-------------------------------------------------------------------
 Wed Jan 28 21:09:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.6.2 (bsc#1257385, CVE-2026-24688):
