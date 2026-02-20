@@ -6249,4 +6249,15 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
     ppc-fedora-0001-sandbox-Enable-seccomp_bpf-for-ppc64.patch</comment>
     <requestid>1333500</requestid>
   </revision>
+  <revision rev="504" vrev="1">
+    <srcmd5>f0bb0a6d2fd1fb588881d6f697ae8788</srcmd5>
+    <version>145.0.7632.109</version>
+    <time>1771605635</time>
+    <user>dimstar_suse</user>
+    <comment>- Chromium 145.0.7632.109 (boo#1258438):
+  * CVE-2026-2648: Heap buffer overflow in PDFium
+  * CVE-2026-2649: Integer overflow in V8
+  * CVE-2026-2650: Heap buffer overflow in Media</comment>
+    <requestid>1333826</requestid>
+  </revision>
 </revisionlist>

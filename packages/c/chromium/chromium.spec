@@ -131,7 +131,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        145.0.7632.75
+Version:        145.0.7632.109
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later

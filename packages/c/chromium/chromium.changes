@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 18 23:40:10 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 145.0.7632.109 (boo#1258438):
+  * CVE-2026-2648: Heap buffer overflow in PDFium
+  * CVE-2026-2649: Integer overflow in V8
+  * CVE-2026-2650: Heap buffer overflow in Media
+
+-------------------------------------------------------------------
 Tue Feb 17 07:44:37 UTC 2026 - Ruediger Oertel <ro@suse.com>
 
 - more fixes for desktop file, some variables were lowercased,
