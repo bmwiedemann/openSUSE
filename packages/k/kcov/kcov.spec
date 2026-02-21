@@ -1,7 +1,7 @@
 #
 # spec file for package kcov
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,7 @@ long-running applications.
 rm -frv external/
 
 %build
-%if 0%{?suse_version} > 1500 || (0%{?suse_version} == 1500 && 0%{?sle_version} > 150400)
+%if 0%{?suse_version} >= 1500
 export CFLAGS="%{optflags} -lsframe -lzstd"
 %endif
 %cmake
