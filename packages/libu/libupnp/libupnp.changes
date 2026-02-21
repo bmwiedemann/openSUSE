@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 10 04:21:34 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.18.0
+  * Update readFromSSDPSocket to not return an error when a zero
+    length packet is received.
+  * Fix a crash in ixml element set attribute node ns.
+  * Signature change involving ``const`` in: ``Upnp_FunPtr``,
+    ``TvCtrlPointCallbackEventHandler``,
+    ``SSDPResultData_get_Param``, ``SSDPResultData_Callback``
+
+-------------------------------------------------------------------
 Sun Nov  9 19:07:04 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Switch to cmake
@@ -30,7 +41,7 @@ Mon Jun  2 21:24:49 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Mon Jun  2 08:05:18 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
-- Update to release 1.4.21
+- Update to release 1.14.21
   * IXML fuzzer fixes
   * Bind SSDP UDP response to port 1900
 

@@ -360,4 +360,12 @@
     <comment>- Switch to cmake</comment>
     <requestid>1316701</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>ad51b04fe7e3a90a55c9850151ab9679</srcmd5>
+    <version>1.18.0</version>
+    <time>1771704026</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.18.0</comment>
+    <requestid>1332128</requestid>
+  </revision>
 </revisionlist>

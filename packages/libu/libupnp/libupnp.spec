@@ -1,7 +1,7 @@
 #
 # spec file for package libupnp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011, Sascha Peilicke <saschpe@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%define pnpver 17
+%define pnpver 20
 %define ixmlver 11
 Name:           libupnp
-Version:        1.14.25
+Version:        1.18.0
 Release:        0
 Summary:        An implementation of Universal Plug and Play (UPnP)
 License:        BSD-3-Clause
