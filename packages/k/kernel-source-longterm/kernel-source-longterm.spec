@@ -17,8 +17,8 @@
 
 
 %define srcversion 6.12
-%define patchversion 6.12.73
-%define git_commit 5ad194772973f9da9db4b67538358fc02f3cbe12
+%define patchversion 6.12.74
+%define git_commit bd5d4c2ccc3fe8659f3ec78f6f1d1c20f15753ce
 %define variant -longterm%{nil}
 %define gcc_package gcc
 %define gcc_compiler gcc
@@ -28,9 +28,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-source-longterm
-Version:        6.12.73
+Version:        6.12.74
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g5ad1947
+Release:        <RELEASE>.gbd5d4c2
 %else
 Release:        0
 %endif
