@@ -7949,6 +7949,7 @@ unsorted:
   - greetd-branding-openSUSE 
   - greetd-branding-upstream 
   - greetd-fakegreet 
+  - greetd-gtkgreet-hyprland 
   - greetd-gtkgreet-xfce-wayland 
   - grepcidr 
   - grepmail 
@@ -11351,6 +11352,8 @@ unsorted:
   - libQCoro6WebSockets0 
   - libQXmppQt6-8 
   - libQXmppQt6-devel 
+  - libQZint-devel 
+  - libQZint2_16 
   - libQgpsmm32 
   - libQt53DAnimation-devel 
   - libQt53DAnimation5 
@@ -17423,6 +17426,8 @@ unsorted:
   - libzim9 
   - libzimg2-32bit 
   - libzinnia0 
+  - libzint-devel 
+  - libzint2_16 
   - libzio-devel 
   - libzio1-32bit 
   - libzip-devel 
@@ -21189,6 +21194,8 @@ unsorted:
   - patterns-enlightenment-enlightenment 
   - patterns-gnome-devel_gnome 
   - patterns-gnome-gnome_ide 
+  - patterns-hyprland-hyprland 
+  - patterns-hyprland-hyprland_extra 
   - patterns-kde-devel_kde_frameworks 
   - patterns-kde-devel_kde_frameworks6 
   - patterns-kde-devel_qt5 
@@ -23788,6 +23795,7 @@ unsorted:
   - python-khal-bash-completion 
   - python-khal-fish-completion 
   - python-khal-zsh-completion 
+  - python-kiwi-keg 
   - python-langtable-data 
   - python-libcomps-doc 
   - python-libeconf-doc 
@@ -24708,7 +24716,9 @@ unsorted:
   - python311-azure-mgmt-commerce 
   - python311-azure-mgmt-communication 
   - python311-azure-mgmt-compute 
+  - python311-azure-mgmt-computebulkactions 
   - python311-azure-mgmt-computefleet 
+  - python311-azure-mgmt-computelimit 
   - python311-azure-mgmt-computerecommender 
   - python311-azure-mgmt-computeschedule 
   - python311-azure-mgmt-confidentialledger 
@@ -24883,6 +24893,7 @@ unsorted:
   - python311-azure-mgmt-scheduler 
   - python311-azure-mgmt-scvmm 
   - python311-azure-mgmt-search 
+  - python311-azure-mgmt-secretsstoreextension 
   - python311-azure-mgmt-security 
   - python311-azure-mgmt-securitydevops 
   - python311-azure-mgmt-securityinsight 
@@ -26019,7 +26030,6 @@ unsorted:
   - python311-kismetdb 
   - python311-kiss-headers 
   - python311-kitchen 
-  - python311-kiwi-keg 
   - python311-kiwisolver 
   - python311-kmatch 
   - python311-knack 
@@ -26070,6 +26080,7 @@ unsorted:
   - python311-lexicon 
   - python311-lfdfiles 
   - python311-lhafile 
+  - python311-lib4sbom 
   - python311-libarchive 
   - python311-libarchive-c 
   - python311-libbde 
@@ -27039,6 +27050,7 @@ unsorted:
   - python311-pytest-sugar 
   - python311-pytest-svn 
   - python311-pytest-system-statistics 
+  - python311-pytest-test-groups 
   - python311-pytest-testconfig 
   - python311-pytest-testinfra 
   - python311-pytest-textual-snapshot 
@@ -28545,7 +28557,9 @@ unsorted:
   - python312-azure-mgmt-commerce 
   - python312-azure-mgmt-communication 
   - python312-azure-mgmt-compute 
+  - python312-azure-mgmt-computebulkactions 
   - python312-azure-mgmt-computefleet 
+  - python312-azure-mgmt-computelimit 
   - python312-azure-mgmt-computerecommender 
   - python312-azure-mgmt-computeschedule 
   - python312-azure-mgmt-confidentialledger 
@@ -28720,6 +28734,7 @@ unsorted:
   - python312-azure-mgmt-scheduler 
   - python312-azure-mgmt-scvmm 
   - python312-azure-mgmt-search 
+  - python312-azure-mgmt-secretsstoreextension 
   - python312-azure-mgmt-security 
   - python312-azure-mgmt-securitydevops 
   - python312-azure-mgmt-securityinsight 
@@ -29885,7 +29900,6 @@ unsorted:
   - python312-kismetdb 
   - python312-kiss-headers 
   - python312-kitchen 
-  - python312-kiwi-keg 
   - python312-kiwisolver 
   - python312-kmatch 
   - python312-knack 
@@ -29937,6 +29951,7 @@ unsorted:
   - python312-lexicon 
   - python312-lfdfiles 
   - python312-lhafile 
+  - python312-lib4sbom 
   - python312-libarchive 
   - python312-libarchive-c 
   - python312-libbde 
@@ -30932,6 +30947,7 @@ unsorted:
   - python312-pytest-sugar 
   - python312-pytest-svn 
   - python312-pytest-system-statistics 
+  - python312-pytest-test-groups 
   - python312-pytest-testconfig 
   - python312-pytest-testinfra 
   - python312-pytest-textual-snapshot 
@@ -32446,7 +32462,9 @@ unsorted:
   - python313-azure-mgmt-commerce 
   - python313-azure-mgmt-communication 
   - python313-azure-mgmt-compute 
+  - python313-azure-mgmt-computebulkactions 
   - python313-azure-mgmt-computefleet 
+  - python313-azure-mgmt-computelimit 
   - python313-azure-mgmt-computerecommender 
   - python313-azure-mgmt-computeschedule 
   - python313-azure-mgmt-confidentialledger 
@@ -32621,6 +32639,7 @@ unsorted:
   - python313-azure-mgmt-scheduler 
   - python313-azure-mgmt-scvmm 
   - python313-azure-mgmt-search 
+  - python313-azure-mgmt-secretsstoreextension 
   - python313-azure-mgmt-security 
   - python313-azure-mgmt-securitydevops 
   - python313-azure-mgmt-securityinsight 
@@ -33761,7 +33780,6 @@ unsorted:
   - python313-kismetdb 
   - python313-kiss-headers 
   - python313-kitchen 
-  - python313-kiwi-keg 
   - python313-kiwisolver 
   - python313-kmatch 
   - python313-knack 
@@ -33811,6 +33829,7 @@ unsorted:
   - python313-lexicon 
   - python313-lfdfiles 
   - python313-lhafile 
+  - python313-lib4sbom 
   - python313-libarchive 
   - python313-libarchive-c 
   - python313-libbde 
@@ -34800,6 +34819,7 @@ unsorted:
   - python313-pytest-sugar 
   - python313-pytest-svn 
   - python313-pytest-system-statistics 
+  - python313-pytest-test-groups 
   - python313-pytest-testconfig 
   - python313-pytest-testinfra 
   - python313-pytest-textual-snapshot 
@@ -50539,6 +50559,8 @@ unsorted:
   - zinnia 
   - zinnia-devel 
   - zinnia-tomoe 
+  - zint 
+  - zint-qt 
   - zipios-devel 
   - zipios-devel-doc 
   - zipkin-api-source 
