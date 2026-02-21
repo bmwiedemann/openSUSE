@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Feb 20 20:29:50 UTC 2026 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 2.5.0:
+  The new features in LyX 2.5 are detailed in
+  https://wiki.lyx.org/LyX/NewInLyX25
+
+  The major changes include:
+
+  * Update the cross-referencing framework to allow additional backends
+    (e.g., zref and cleverref) and to allow range references (e.g., sections
+    2-3).
+  * Improve LyX's support for color both in the user interace and in output,
+    especially tables.
+  * Greatly improve LyX's support for 'input methods', which are important for
+    languages in which the number of available characters exceeds the number of
+    keys.
+- Remove upstream patch: e98b6ad533360500528b48043e20c79f5cb67b07.patch
+- Switch to cmake build system
+- Remove "%suse_update_desktop_file lyx Office WordProcessor" from spec
+
+-------------------------------------------------------------------
 Tue Nov 18 22:09:37 UTC 2025 - Cor Blom <cornelis@solcon.nl>
 
 - Add upstream e98b6ad533360500528b48043e20c79f5cb67b07.patch to

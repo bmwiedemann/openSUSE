@@ -1,7 +1,7 @@
 #
 # spec file for package lyx
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,22 +21,19 @@
 %endif
 
 Name:           lyx
-Version:        2.4.4
+Version:        2.5.0
 Release:        0
 Summary:        WYSIWYM (What You See Is What You Mean) document processor
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            http://www.lyx.org/
-Source:         http://ftp.lyx.org/pub/lyx/stable/2.4.x/lyx-%{version}.tar.xz
+Source:         http://ftp.lyx.org/pub/lyx/stable/2.5.x/lyx-%{version}.tar.xz
 Source1:        lyxrc.dist
 Source2:        lyx.keyring
-Source3:        http://ftp.lyx.org/pub/lyx/stable/2.4.x/lyx-%{version}.tar.xz.sig
+Source3:        http://ftp.lyx.org/pub/lyx/stable/2.5.x/lyx-%{version}.tar.xz.sig
 Source4:        README.SUSE
-# PATCH-QSTRING
-Patch0:         e98b6ad533360500528b48043e20c79f5cb67b07.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  bc
+BuildRequires:  cmake
 BuildRequires:  enchant-devel
 BuildRequires:  fdupes
 BuildRequires:  file-devel
@@ -51,27 +48,27 @@ BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
 %if %{with qt6}
 BuildRequires:  qt6-gui-private-devel
-BuildRequires:  pkgconfig(Qt6Concurrent)
-BuildRequires:  pkgconfig(Qt6Core)
-BuildRequires:  pkgconfig(Qt6Core5Compat)
-BuildRequires:  pkgconfig(Qt6DBus)
-BuildRequires:  pkgconfig(Qt6Gui)
-BuildRequires:  pkgconfig(Qt6PrintSupport)
-BuildRequires:  pkgconfig(Qt6Sql)
-BuildRequires:  pkgconfig(Qt6Svg)
-BuildRequires:  pkgconfig(Qt6Widgets)
-BuildRequires:  pkgconfig(Qt6Xml)
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Core5Compat)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6PrintSupport)
+BuildRequires:  cmake(Qt6Sql)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
 %else
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Script)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Script)
+BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 %endif
 #!BuildIgnore: lyx
 Requires:       %{name}-fonts
@@ -157,22 +154,23 @@ A collection of Math symbol fonts for LyX.
 
 %build
 TEXMF=%{_datadir}/texmf
-%configure \
-    --enable-build-type=rel \
-    --without-included-boost \
-    --without-aspell \
-    --with-hunspell \
-    --with-enchant \
+%cmake -DLYX_INSTALL=ON \
+    -DLYX_REQUIRE_SPELLCHECK=ON \
+    -DLYX_ENCHANT=ON \
+    -DLYX_HUNSPELL=ON \
+    -DLYX_RELEASE=ON \
+    -DLYX_PACKAGE_SUFFIX=OFF \
+    -DLYX_PROGRAM_SUFFIX=OFF \
 %if %{with qt6}
-    --enable-qt6
+    -DLYX_USE_QT=QT6
 %else
-    --enable-qt5
+    -DLYX_USE_QT=QT5
 %endif
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 TEXMF=%{_datadir}/texmf
-%make_install TEXMF=$TEXMF
+%cmake_install TEXMF=$TEXMF
 %python3_fix_shebang
 
 # some defaults
@@ -200,8 +198,6 @@ mv %{buildroot}%{_datadir}/lyx/fonts/*.ttf %{buildroot}%{_fontsdir}/lyx/
 rm -rf %{buildroot}%{_datadir}/lyx/fonts
 
 install -p -D -m 0644 lib/scripts/bash_completion %{buildroot}%{_datadir}/bash-completion/completions/lyx
-
-%suse_update_desktop_file lyx Office WordProcessor
 
 %fdupes -s %{buildroot}%{_prefix}
 

@@ -971,4 +971,26 @@
   fix build fix Qt 6.10 (contributed by aggplanta)</comment>
     <requestid>1318508</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>ae4177ed3b63f0ebfb3b832936857656</srcmd5>
+    <version>2.5.0</version>
+    <time>1771704167</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.0:
+  The new features in LyX 2.5 are detailed in
+  https://wiki.lyx.org/LyX/NewInLyX25
+  The major changes include:
+  * Update the cross-referencing framework to allow additional backends
+    (e.g., zref and cleverref) and to allow range references (e.g., sections
+    2-3).
+  * Improve LyX's support for color both in the user interace and in output,
+    especially tables.
+  * Greatly improve LyX's support for 'input methods', which are important for
+    languages in which the number of available characters exceeds the number of
+    keys.
+- Remove upstream patch: e98b6ad533360500528b48043e20c79f5cb67b07.patch
+- Switch to cmake build system
+- Remove &quot;%suse_update_desktop_file lyx Office WordProcessor&quot; from spec</comment>
+    <requestid>1334245</requestid>
+  </revision>
 </revisionlist>
