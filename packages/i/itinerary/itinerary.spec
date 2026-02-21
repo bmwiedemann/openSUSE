@@ -80,6 +80,7 @@ BuildRequires:  qt6qmlimport(org.kde.kosmindoormap)
 # QML imports
 Requires:       kf6-kcalendarcore-imports >= %{kf6_version}
 Requires:       kf6-kcontacts-imports >= %{kf6_version}
+Requires:       kf6-kcoreaddons-imports >= %{kf6_version}
 Requires:       kf6-ki18n-imports >= %{kf6_version}
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kf6-kitemmodels-imports >= %{kf6_version}
@@ -89,6 +90,7 @@ Requires:       khealthcertificate-imports
 Requires:       kirigami-addons6
 Requires:       kopeninghours-imports
 Requires:       kosmindoormap-imports
+Requires:       kpkpass-imports
 Requires:       kpublictransport-imports
 Requires:       qt6-declarative-imports
 Requires:       qt6-location
