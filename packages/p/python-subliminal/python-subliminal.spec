@@ -1,7 +1,7 @@
 #
 # spec file for package python-subliminal
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-subliminal
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        Python library to search and download subtitles
 License:        MIT

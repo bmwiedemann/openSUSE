@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 20 19:16:08 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.6.0
+  * Replace opensubtitlescom _search recursion with a generator
+    implementation
+  * Add Subtis provider for Spanish subtitles
+  * Cache the result of hash_opensubtitles to be reused
+  * Fix scheduled tests
+  * Add gif for CLI usage
+
+-------------------------------------------------------------------
 Mon Dec 15 09:22:38 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.5.0
