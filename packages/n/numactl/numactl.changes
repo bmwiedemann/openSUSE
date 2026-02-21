@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb 19 15:05:53 UTC 2026 - trenn@suse.de
+
+- Update to version 2.0.19.27.gc9475de:
+  * Fix: distance test avoid out-of-bounds write causing segfault
+  * test: use sizeof(int) instead of sizeof(int *) for status and nodes
+  * Fix off-by-one bug in arguments to mbind/get_mempolicy/set_mempolicy
+  * __atomic_compare_exchange_n may fail and cause a segmentation fault so use strong variation
+  * remove extra whitespace
+  * Set _GNU_SOURCE more broadly
+  * Change a #warning to #pragma message
+  * Handle parallel allocation races with other thread for node mask
+  * Fix numademo regression on kernels without weighted interleave
+  * Enable numa_fail_alloc_on_error to improve error messages
+  * Add numa_fail_alloc_on_error
+  * Add numa_exit_on_warn to header file
+  * Fix out of memory handling buffer growing for nodes probing
+
+-------------------------------------------------------------------
 Mon Aug  4 13:34:03 UTC 2025 - Thomas Renninger <trenn@suse.de>
 
 - bsc#1247093 bsc#1246858

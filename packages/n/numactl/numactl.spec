@@ -1,7 +1,7 @@
 #
 # spec file for package numactl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           numactl
-Version:        2.0.19.14.g690a72c
+Version:        2.0.19.27.gc9475de
 Release:        0
 Summary:        NUMA Policy Control
 License:        GPL-2.0-only
