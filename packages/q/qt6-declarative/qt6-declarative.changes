@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 19 10:48:08 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes (kde#513527, QTBUG-142514):
+  * 0001-QtQml-Fix-corner-cases-around-dead-contexts-in-AOT-a.patch
+  * 0001-QtQml-Do-not-clear-objects-propertyCaches-on-last-GC.patch
+  * 0001-QtQml-Handle-the-case-of-getFallbackMethod-returning.patch
+
+-------------------------------------------------------------------
 Sat Jan 31 08:10:35 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.10.2:

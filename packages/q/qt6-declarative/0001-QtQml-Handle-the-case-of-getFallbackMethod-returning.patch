@@ -1,0 +1,131 @@
+From b3e98b1955b7e5515d938ab9b8c3bafd2e4a035b Mon Sep 17 00:00:00 2001
+From: Ulf Hermann <ulf.hermann@qt.io>
+Date: Mon, 12 Jan 2026 15:36:40 +0100
+Subject: [PATCH] QtQml: Handle the case of getFallbackMethod returning
+ non-methods
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In virtualResolveLookupGetter, we can theoretically encounter an object
+without property cache of which we retrieve a property (as opposed to a
+method). There have been reports of this case being triggered, but as of
+yet it's unknown how this is done. The interpreter will not call the
+lookup resolution at all in such a case, and the AOT-generated code
+optimizes non-method lookup initialization, and won't call
+virtualResolveLookupGetter() either.
+
+However, the code was clearly wrong. If the result of the lookup is not
+a QObjectMethod, what we have is a fallback property lookup, which needs
+to be initialized as such.
+
+Dissolve getFallbackMethod() since it is misnamed and hardly does any
+work to begin with. Since we need the QQmlPropertyData retrieved by it
+in the case mentioned above, we could only call it in one place anyway.
+
+Task-number: QTBUG-142514
+Change-Id: Ia340ca48be7a87e81fbc2c6e362ef0192d351f05
+Reviewed-by: Fabian Kosmale <fabian.kosmale@qt.io>
+Reviewed-by: Olivier De Cannière <olivier.decanniere@qt.io>
+(cherry picked from commit 6e61618b3f601c6e2d580c9be5dd6fdbdb45d2be)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+(cherry picked from commit 24490553874b0135b9fbd7a235fc10eac4e9e3f1)
+---
+ src/qml/jsruntime/qv4lookup.cpp         | 10 ++++++--
+ src/qml/jsruntime/qv4qobjectwrapper.cpp | 34 ++++++++++++-------------
+ src/qml/jsruntime/qv4qobjectwrapper_p.h |  4 ---
+ 3 files changed, 25 insertions(+), 23 deletions(-)
+
+diff --git a/src/qml/jsruntime/qv4lookup.cpp b/src/qml/jsruntime/qv4lookup.cpp
+index e97e40be61..858f9fff7b 100644
+--- a/src/qml/jsruntime/qv4lookup.cpp
++++ b/src/qml/jsruntime/qv4lookup.cpp
+@@ -479,9 +479,15 @@ ReturnedValue Lookup::getterFallbackMethod(Lookup *lookup, ExecutionEngine *engi
+             scope,
+             engine->currentStackFrame->v4Function->compilationUnit->runtimeStrings[lookup->nameIndex]);
+ 
++    QQmlPropertyData local;
++    const QQmlPropertyData *property = QQmlPropertyCache::property(
++            qobj, name, engine->callingQmlContext(), &local);
++    if (!property)
++        return Encode::undefined();
++
+     QV4::ScopedValue result(
+-            scope, QObjectWrapper::getMethodFallback(
+-                           engine, This->d(), qobj, name,
++            scope, QObjectWrapper::getProperty(
++                           engine, This->d(), qobj, property,
+                            lookup->forCall ? QObjectWrapper::NoFlag : QObjectWrapper::AttachMethods));
+ 
+     // In the general case we cannot rely on the method to exist or stay the same across calls.
+diff --git a/src/qml/jsruntime/qv4qobjectwrapper.cpp b/src/qml/jsruntime/qv4qobjectwrapper.cpp
+index 6887d86f4c..a99a46a627 100644
+--- a/src/qml/jsruntime/qv4qobjectwrapper.cpp
++++ b/src/qml/jsruntime/qv4qobjectwrapper.cpp
+@@ -389,18 +389,6 @@ ReturnedValue QObjectWrapper::getProperty(
+     }
+ }
+ 
+-ReturnedValue QObjectWrapper::getMethodFallback(
+-        ExecutionEngine *engine, Heap::Object *wrapper, QObject *qobject,
+-        QV4::String *name, Flags flags)
+-{
+-    QQmlPropertyData local;
+-    const QQmlPropertyData *property = QQmlPropertyCache::property(
+-            qobject, name, engine->callingQmlContext(), &local);
+-    return property
+-            ? getProperty(engine, wrapper, qobject, property, flags)
+-            : Encode::undefined();
+-}
+-
+ static OptionalReturnedValue getDestroyOrToStringMethod(
+         ExecutionEngine *v4, String *name, Heap::Object *qobj, bool *hasProperty = nullptr)
+ {
+@@ -1132,12 +1120,24 @@ ReturnedValue QObjectWrapper::virtualResolveLookupGetter(const Object *object, E
+     }
+ 
+     if (!ddata || !ddata->propertyCache) {
+-        QV4::ScopedValue result(scope, getMethodFallback(
+-                engine, This->d(), qobj, name, lookup->forCall ? NoFlag : AttachMethods));
+-        lookup->qobjectMethodLookup.ic.set(engine, object->internalClass());
+-        if (QObjectMethod *method = result->as<QObjectMethod>())
++        QQmlPropertyData local;
++        const QQmlPropertyData *property = QQmlPropertyCache::property(
++                qobj, name, engine->callingQmlContext(), &local);
++        if (!property)
++            return Encode::undefined();
++        QV4::ScopedValue result(scope, getProperty(
++                engine, This->d(), qobj, property, lookup->forCall ? NoFlag : AttachMethods));
++        if (QObjectMethod *method = result->as<QObjectMethod>()) {
++            lookup->qobjectMethodLookup.ic.set(engine, object->internalClass());
+             lookup->qobjectMethodLookup.method.set(engine, method->d());
+-        lookup->call = Lookup::Call::GetterQObjectMethodFallback;
++            lookup->call = Lookup::Call::GetterQObjectMethodFallback;
++        } else {
++            lookup->qobjectFallbackLookup.metaObject = quintptr(qobj->metaObject()) + 1;
++            lookup->qobjectFallbackLookup.coreIndex = property->coreIndex();
++            lookup->qobjectFallbackLookup.notifyIndex = property->notifyIndex();
++            lookup->qobjectFallbackLookup.isConstant = property->isConstant() ? 1 : 0;
++            lookup->call = Lookup::Call::GetterQObjectPropertyFallback;
++        }
+         return result->asReturnedValue();
+     }
+     const QQmlPropertyData *property = ddata->propertyCache->property(name.getPointer(), qobj, qmlContext);
+diff --git a/src/qml/jsruntime/qv4qobjectwrapper_p.h b/src/qml/jsruntime/qv4qobjectwrapper_p.h
+index cf88a2e4ef..1b3eb8bc1f 100644
+--- a/src/qml/jsruntime/qv4qobjectwrapper_p.h
++++ b/src/qml/jsruntime/qv4qobjectwrapper_p.h
+@@ -180,10 +180,6 @@ struct Q_QML_EXPORT QObjectWrapper : public Object
+             ExecutionEngine *engine, Heap::Object *wrapper, QObject *object,
+             const QQmlPropertyData *property, Flags flags);
+ 
+-    static ReturnedValue getMethodFallback(
+-            ExecutionEngine *engine, Heap::Object *wrapper, QObject *object,
+-            QV4::String *name, Flags flags);
+-
+     static ReturnedValue virtualResolveLookupGetter(const Object *object, ExecutionEngine *engine, Lookup *lookup);
+ 
+     template <typename ReversalFunctor> static ReturnedValue lookupPropertyGetterImpl(
+-- 
+2.53.0
+

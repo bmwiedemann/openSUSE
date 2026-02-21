@@ -1,0 +1,337 @@
+From 897406ec04b339800765854c6d05cafa3a30cae2 Mon Sep 17 00:00:00 2001
+From: Ulf Hermann <ulf.hermann@qt.io>
+Date: Fri, 9 Jan 2026 16:37:53 +0100
+Subject: [PATCH] QtQml: Fix corner cases around dead contexts in AOT adapter
+ code
+
+When trying to call methods in contexts that have already been torn
+down, interesting things happen. We need to check the return value of
+the lookup getter in various places and throw the appropriate
+exceptions.
+
+We do not actually need to reset the lookups when that happens. In a
+different context they can still be valid. Instead of resetting them, we
+now check in both, the initialization and the actual call.
+
+Amends commit 4381eaf567337c2b2892adeec0d2fef878c1eed3.
+
+Task-number: QTBUG-142514
+Change-Id: Id8dc5079cdfe600310294046f35815c0c4bcba20
+Reviewed-by: Fabian Kosmale <fabian.kosmale@qt.io>
+(cherry picked from commit e9f023457c5abd1952025456ed974156068a4590)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+(cherry picked from commit 70252e2481fa48c01f83a0bb8e252dafea065de8)
+---
+ src/qml/qml/qqml.cpp                          | 56 ++++++++-----------
+ .../qml/qmlcppcodegen/data/CMakeLists.txt     |  2 +
+ .../qml/qmlcppcodegen/data/deadContext2.qml   | 43 ++++++++++++++
+ .../qml/qmlcppcodegen/data/deadContext3.qml   | 46 +++++++++++++++
+ .../qml/qmlcppcodegen/tst_qmlcppcodegen.cpp   | 25 +++++++--
+ 5 files changed, 136 insertions(+), 36 deletions(-)
+ create mode 100644 tests/auto/qml/qmlcppcodegen/data/deadContext2.qml
+ create mode 100644 tests/auto/qml/qmlcppcodegen/data/deadContext3.qml
+
+diff --git a/src/qml/qml/qqml.cpp b/src/qml/qml/qqml.cpp
+index 3f0d9e332b..a3861552a9 100644
+--- a/src/qml/qml/qqml.cpp
++++ b/src/qml/qml/qqml.cpp
+@@ -2247,6 +2247,15 @@ static bool callArrowFunction(
+     Q_UNREACHABLE_RETURN(false);
+ }
+ 
++static void throwIsNotAFunctionError(
++        const AOTCompiledContext *aotContext, QV4::Lookup *lookup, const QString &object)
++{
++    aotContext->engine->handle()->throwTypeError(
++            QStringLiteral("Property '%1' of object %2 is not a function").arg(
++                    aotContext->compilationUnit->runtimeStrings[lookup->nameIndex]->toQString(),
++                    object));
++};
++
+ bool AOTCompiledContext::callQmlContextPropertyLookup(uint index, void **args, int argc) const
+ {
+     QV4::Lookup *lookup = compilationUnit->runtimeLookups + index;
+@@ -2254,17 +2263,18 @@ bool AOTCompiledContext::callQmlContextPropertyLookup(uint index, void **args, i
+     if (lookup->call == QV4::Lookup::Call::ContextGetterScopeObjectMethod)
+         return callQObjectMethod(engine->handle(), lookup, qmlScopeObject, args, argc);
+ 
+-    const auto doCall = [&](auto &&call) {
++    if (lookup->call == QV4::Lookup::Call::ContextGetterScopeObjectProperty) {
+         QV4::Scope scope(engine->handle());
+         QV4::ScopedValue undefined(scope);
+         QV4::Scoped<QV4::ArrowFunction> function(
+                 scope, lookup->contextGetter(scope.engine, undefined));
+-        Q_ASSERT(function);
+-        return call(scope.engine, function, qmlScopeObject, args, argc);
+-    };
++        if (function)
++            return callArrowFunction(scope.engine, function, qmlScopeObject, args, argc);
+ 
+-    if (lookup->call == QV4::Lookup::Call::ContextGetterScopeObjectProperty)
+-        return doCall(&callArrowFunction);
++        QV4::Scoped<QV4::QObjectWrapper> object(
++                scope, QV4::QObjectWrapper::wrap(scope.engine, qmlScopeObject));
++        throwIsNotAFunctionError(this, lookup, object->toQStringNoThrow());
++    }
+ 
+     return false;
+ }
+@@ -2344,13 +2354,7 @@ void AOTCompiledContext::initCallQmlContextPropertyLookup(uint index, int relati
+ 
+     QV4::Scoped<QV4::QObjectWrapper> object(
+             scope, QV4::QObjectWrapper::wrap(scope.engine, qmlScopeObject));
+-    scope.engine->throwTypeError(
+-            QStringLiteral("Property '%1' of object %2 is not a function").arg(
+-                    compilationUnit->runtimeStrings[lookup->nameIndex]->toQString(),
+-                    object->toQStringNoThrow()));
+-
+-    lookup->releasePropertyCache();
+-    lookup->call = QV4::Lookup::Call::ContextGetterGeneric;
++    throwIsNotAFunctionError(this, lookup, object->toQStringNoThrow());
+ }
+ 
+ bool AOTCompiledContext::loadContextIdLookup(uint index, void *target) const
+@@ -2447,10 +2451,10 @@ bool AOTCompiledContext::callObjectPropertyLookup(
+         // The getter mustn't touch the asVariant bit
+         Q_ASSERT(!lookup->asVariant);
+ 
+-        // If the method can't be shadowed, it has to stay the same.
+-        Q_ASSERT(function);
++        if (function)
++            return callArrowFunction(scope.engine, function, object, args, argc);
+ 
+-        return callArrowFunction(scope.engine, function, qmlScopeObject, args, argc);
++        throwIsNotAFunctionError(this, lookup, thisObject->toQStringNoThrow());
+     }
+     default:
+         break;
+@@ -2469,16 +2473,10 @@ void AOTCompiledContext::initCallObjectPropertyLookupAsVariant(uint index, QObje
+     QV4::Lookup *lookup = compilationUnit->runtimeLookups + index;
+     QV4::Scope scope(engine->handle());
+ 
+-    const auto throwInvalidObjectError = [&](const QString &object) {
+-        scope.engine->throwTypeError(
+-                QStringLiteral("Property '%1' of object %2 is not a function").arg(
+-                        compilationUnit->runtimeStrings[lookup->nameIndex]->toQString(), object));
+-    };
+-
+     const auto *ddata = QQmlData::get(object, false);
+     if (ddata && ddata->hasVMEMetaObject && ddata->jsWrapper.isNullOrUndefined()) {
+         // We cannot lookup functions on an object with VME metaobject but no QObjectWrapper
+-        throwInvalidObjectError(QStringLiteral("[object Object]"));
++        throwIsNotAFunctionError(this, lookup, QStringLiteral("[object Object]"));
+         return;
+     }
+ 
+@@ -2496,7 +2494,7 @@ void AOTCompiledContext::initCallObjectPropertyLookupAsVariant(uint index, QObje
+         return;
+     }
+ 
+-    throwInvalidObjectError(thisObject->toQStringNoThrow());
++    throwIsNotAFunctionError(this, lookup, thisObject->toQStringNoThrow());
+ }
+ 
+ void AOTCompiledContext::initCallObjectPropertyLookup(
+@@ -2510,16 +2508,10 @@ void AOTCompiledContext::initCallObjectPropertyLookup(
+     QV4::Lookup *lookup = compilationUnit->runtimeLookups + index;
+     QV4::Scope scope(engine->handle());
+ 
+-    const auto throwInvalidObjectError = [&]() {
+-        scope.engine->throwTypeError(
+-                QStringLiteral("Property '%1' of object [object Object] is not a function")
+-                        .arg(compilationUnit->runtimeStrings[lookup->nameIndex]->toQString()));
+-    };
+-
+     const auto *ddata = QQmlData::get(object, false);
+     if (ddata && ddata->hasVMEMetaObject && ddata->jsWrapper.isNullOrUndefined()) {
+         // We cannot lookup functions on an object with VME metaobject but no QObjectWrapper
+-        throwInvalidObjectError();
++        throwIsNotAFunctionError(this, lookup, QStringLiteral("[object Object]"));
+         return;
+     }
+ 
+@@ -2538,7 +2530,7 @@ void AOTCompiledContext::initCallObjectPropertyLookup(
+         return;
+     }
+ 
+-    throwInvalidObjectError();
++    throwIsNotAFunctionError(this, lookup, thisObject->toQStringNoThrow());
+ }
+ 
+ bool AOTCompiledContext::loadGlobalLookup(uint index, void *target) const
+diff --git a/tests/auto/qml/qmlcppcodegen/data/CMakeLists.txt b/tests/auto/qml/qmlcppcodegen/data/CMakeLists.txt
+index 67cdefa30d..88cc102509 100644
+--- a/tests/auto/qml/qmlcppcodegen/data/CMakeLists.txt
++++ b/tests/auto/qml/qmlcppcodegen/data/CMakeLists.txt
+@@ -152,6 +152,8 @@ set(qml_files
+     dateConstruction.qml
+     dateConversions.qml
+     deadContext.qml
++    deadContext2.qml
++    deadContext3.qml
+     deadShoeSize.qml
+     deadStoreLoop.qml
+     destroyAndToString.qml
+diff --git a/tests/auto/qml/qmlcppcodegen/data/deadContext2.qml b/tests/auto/qml/qmlcppcodegen/data/deadContext2.qml
+new file mode 100644
+index 0000000000..29667585a5
+--- /dev/null
++++ b/tests/auto/qml/qmlcppcodegen/data/deadContext2.qml
+@@ -0,0 +1,43 @@
++pragma ComponentBehavior: Bound
++import QtQuick
++
++Item {
++    id: root
++
++    property Component a: Item {
++        Timer {
++            id: timer1
++            interval: 1
++            running: root.choice < 4
++
++            function doit() {}
++            onTriggered: {
++                ++root.choice
++                timer1.doit()
++            }
++        }
++    }
++
++    property Component b: Item {
++        Timer {
++            id: timer2
++            interval: 1
++            running: root.choice < 4
++
++            function doit() {}
++            onTriggered: {
++                ++root.choice
++                timer2.doit()
++            }
++        }
++    }
++
++    property int choice: 0
++
++    Loader {
++        sourceComponent: switch (root.choice % 2) {
++            case 0: return root.a
++            case 1: return root.b
++        }
++    }
++}
+diff --git a/tests/auto/qml/qmlcppcodegen/data/deadContext3.qml b/tests/auto/qml/qmlcppcodegen/data/deadContext3.qml
+new file mode 100644
+index 0000000000..fcf3228c9f
+--- /dev/null
++++ b/tests/auto/qml/qmlcppcodegen/data/deadContext3.qml
+@@ -0,0 +1,46 @@
++pragma ComponentBehavior: Bound
++import QtQuick
++
++Item {
++    id: root
++
++    property Component a: Item {
++        Timer {
++            interval: 1
++            running: root.choice < 8
++
++            function doit() {}
++            onTriggered: {
++                ++root.choice
++                doit()
++            }
++        }
++    }
++
++    property Component b: Item {
++        Timer {
++            id: timer2
++            interval: 1
++            running: root.choice < 8
++
++            function doit() {}
++            onTriggered: {
++                ++root.choice
++                timer2.doit()
++            }
++        }
++    }
++
++    property int choice: 0
++
++    Loader {
++        sourceComponent: switch (root.choice % 4) {
++            case 0:
++            case 1:
++                return root.a
++            case 2:
++            case 3:
++                return root.b
++        }
++    }
++}
+diff --git a/tests/auto/qml/qmlcppcodegen/tst_qmlcppcodegen.cpp b/tests/auto/qml/qmlcppcodegen/tst_qmlcppcodegen.cpp
+index 2cbcb1d918..46696acacf 100644
+--- a/tests/auto/qml/qmlcppcodegen/tst_qmlcppcodegen.cpp
++++ b/tests/auto/qml/qmlcppcodegen/tst_qmlcppcodegen.cpp
+@@ -100,6 +100,7 @@ private slots:
+     void cppValueTypeList();
+     void dateConstruction();
+     void dateConversions();
++    void deadContext_data();
+     void deadContext();
+     void deadShoeSize();
+     void deduplicateConversionOrigins();
+@@ -1715,10 +1716,26 @@ void tst_QmlCppCodegen::dateConversions()
+ 
+ }
+ 
++void tst_QmlCppCodegen::deadContext_data()
++{
++    QTest::addColumn<QUrl>("url");
++    QTest::addColumn<int>("end");
++
++    QTest::addRow("Unqualified lookups in dead context")
++            << QUrl(u"qrc:/qt/qml/TestTypes/deadContext.qml"_s) << 4;
++    QTest::addRow("Qualified lookups in dead context")
++            << QUrl(u"qrc:/qt/qml/TestTypes/deadContext2.qml"_s) << 4;
++    QTest::addRow("Alternating lookups in live and dead contexts")
++            << QUrl(u"qrc:/qt/qml/TestTypes/deadContext3.qml"_s) << 8;
++}
++
+ void tst_QmlCppCodegen::deadContext()
+ {
++    QFETCH(QUrl, url);
++    QFETCH(int, end);
++
+     QQmlEngine engine;
+-    QQmlComponent c(&engine, QUrl(u"qrc:/qt/qml/TestTypes/deadContext.qml"_s));
++    QQmlComponent c(&engine, url);
+     QVERIFY2(c.isReady(), qPrintable(c.errorString()));
+     QScopedPointer<QObject> o(c.create());
+     QVERIFY(o);
+@@ -1726,15 +1743,15 @@ void tst_QmlCppCodegen::deadContext()
+     const char *vmeError = "QQmlVMEMetaObject: Internal error "
+                            "- attempted to evaluate a function in an invalid context";
+     static const QRegularExpression timerError(
+-                u"qrc:/qt/qml/TestTypes/deadContext\\.qml:[0-9]+: TypeError: Property 'doit' of "
+-                 "object QQmlTimer_QML_[0-9]+\\(0x[0-9a-f]+\\) is not a function"_s);
++                u"qrc:/qt/qml/TestTypes/deadContext[0-9]*\\.qml:[0-9]+: TypeError: Property 'doit' "
++                "of object QQmlTimer_QML_[0-9]+\\(0x[0-9a-f]+\\) is not a function"_s);
+ 
+     for (int i = 0; i < 4; ++i) {
+         QTest::ignoreMessage(QtWarningMsg,  vmeError);
+         QTest::ignoreMessage(QtWarningMsg,  timerError);
+     }
+ 
+-    QTRY_COMPARE(o->property("choice").toInt(), 4);
++    QTRY_COMPARE(o->property("choice").toInt(), end);
+ }
+ 
+ void tst_QmlCppCodegen::deadShoeSize()
+-- 
+2.53.0
+
