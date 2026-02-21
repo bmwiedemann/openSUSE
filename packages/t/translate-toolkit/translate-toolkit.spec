@@ -38,19 +38,19 @@
 
 %define binaries_and_manpages %{shrink:\
     pretranslate poclean pocompile poconflicts podebug pofilter pogrep pomerge porestructure posegment poswap poterminology \
-    android2po csv2po csv2tbx dtd2po flatxml2po html2po ical2po idml2po ini2po json2po \
+    android2po arb2po asciidoc2po csv2po csv2tbx dtd2po flatxml2po fluent2po html2po ical2po idml2po ini2po json2po \
     moz2po mozfunny2prop mozlang2po odf2xliff oo2po oo2xliff php2po phppo2pypo \
-    po2csv po2dtd po2flatxml po2html po2ical po2idml po2ini po2json po2moz po2mozlang po2odf po2oo \
+    po2asciidoc po2csv po2dtd po2flatxml po2html po2ical po2idml po2ini po2json po2moz po2mozlang po2odf po2oo \
     po2php po2prop po2rc po2resx po2symb po2tiki po2tmx po2toml po2ts po2txt po2web2py \
     po2wordfast po2xliff po2yaml pot2po prop2po pypo2phppo rc2po resx2po symb2po \
     tbx2po tiki2po toml2po ts2po txt2po web2py2po xliff2odf xliff2oo xliff2po yaml2po}
 %define binaries %{shrink: %binaries_and_manpages\
     pocommentclean pocompendium pocount pomigrate2 popuretext poreencode posplit prop2mozfunny \
-    build_tmdb pydiff tmserver junitmsgfmt md2po po2md po2sub sub2po}
+    pydiff junitmsgfmt md2po po2md po2sub sub2po}
 %define manpages translatetoolkit %binaries_and_manpages
 
 Name:           translate-toolkit%{psuffix}
-Version:        3.18.0
+Version:        3.19.1
 Release:        0
 Summary:        Tools and API to assist with translation and software localization
 License:        GPL-2.0-or-later
@@ -90,6 +90,7 @@ Recommends:     python-aeidon >= 1.14.1
 Recommends:     python-beautifulsoup4 >= 4.13.0
 Recommends:     python-charset-normalizer >= 3.4.0
 Recommends:     python-cheroot >= 10
+Recommends:     python-fluent.syntax >= 0.19.0
 Recommends:     python-iniparse >= 0.5
 Recommends:     python-mistletoe >= 1.4.0
 Recommends:     python-phply >= 1.2.6
@@ -107,6 +108,7 @@ BuildRequires:  %{python_module Levenshtein >= 0.21.0}
 BuildRequires:  %{python_module aeidon >= 1.14.1}
 BuildRequires:  %{python_module beautifulsoup4 >= 4.13.0}
 BuildRequires:  %{python_module charset-normalizer >= 3.3.2}
+BuildRequires:  %{python_module fluent.syntax >= 0.19.0}
 BuildRequires:  %{python_module mistletoe >= 1.4.0}
 BuildRequires:  %{python_module pyenchant >= 3.2.2}
 BuildRequires:  %{python_module pyparsing >= 3.2.0}
@@ -119,6 +121,7 @@ BuildRequires:  gaupol
 %endif
 %if %{with doc}
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module fluent.syntax >= 0.19.0}
 BuildRequires:  %{python_module furo}
 BuildRequires:  %{python_module sphinxcontrib-copybutton}
 BuildRequires:  %{python_module sphinxext-opengraph}
