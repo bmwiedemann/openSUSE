@@ -1,7 +1,7 @@
 #
 # spec file for package icingaweb2-module-director
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define icingadirector_user icingadirector
 
 Name:           icingaweb2-module-director
-Version:        1.11.5
+Version:        1.11.6
 Release:        0
 Summary:        Config module for Icinga Web 2
 License:        GPL-2.0-or-later
