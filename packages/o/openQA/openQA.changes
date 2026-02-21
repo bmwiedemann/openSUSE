@@ -1,9 +1,28 @@
 -------------------------------------------------------------------
-Wed Feb 18 17:13:05 UTC 2026 - okurz@suse.com
+Fri Feb 20 17:09:47 UTC 2026 - okurz@suse.com
 
-- Update to version 5.1771422749.560a3b26:
+- Update to version 5.1771589939.8f8502b4:
+  * feat: Improve default `PRODUCTDIR` after ef229dc2
+  * refactor(ui): simplify removal of empty query parameters (after rebase)
+  * test(45-make-update-deps): allow bypassing dependency update check
+  * fix(test): improve UI test robustness by using state-based waiting
+  * test: Improve workaround for candidates menu not opening sometimes
+  * docs: Mention use of relative paths in `CASEDIR` to avoid symlinking
+  * fix: Fix wrong uses of "checkout" that should be "check out"
+  * feat: support filtering by meta-results+states in /tests/overview
+  * Revert "feat: Add symlink for aeon in openqa-bootstrap script"
+  * fix(43-scheduling-and-worker-scalability): prevent sporadic issues
+  * refactor: use join for properties in determine_free_workers
+  * fix: do not cache websocket_api_version if not set
+
+-------------------------------------------------------------------
+Thu Feb 19 13:10:12 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1771473096.98530511:
+  * feat(ui): remove empty query parameters from /tests/overview URL
   * fix(mcp): set navbar check expression to read-only
   * feat: support inverted result filters in /tests/overview
+  * feat: Allow specifying `CASEDIR` to avoid symlinking
   * fix(test): Enable helm install-chart test again
   * git subrepo pull (merge) --force external/os-autoinst-common
   * feat: Make allowed hosts for SCENARIO_DEFINITIONS_YAML_FILE configurable
