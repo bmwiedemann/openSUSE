@@ -1,6 +1,6 @@
 <services>
   <service name="cargo_vendor" mode="manual">
-     <param name="srcdir">spotifyd-0.4.1</param>
+     <param name="srcdir">spotifyd-0.4.2</param>
      <param name="compression">xz</param>
   </service>
 </services>
