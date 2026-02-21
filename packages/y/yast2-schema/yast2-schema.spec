@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-schema
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Name:           yast2-schema
 Name:           yast2-schema-%{flavor}
 %endif
 
-Version:        5.0.2
+Version:        5.0.3
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -95,7 +95,6 @@ BuildRequires:  yast2-installation
 BuildRequires:  yast2-tftp-server >= 4.1.7
 # add 'iface' element
 BuildRequires:  yast2-iscsi-client >= 4.3.3
-BuildRequires:  yast2-mail >= 4.3.3
 BuildRequires:  yast2-nfs-client
 BuildRequires:  yast2-nfs-server
 # YaST NIS packages are dropped from TW (bsc#1183893)
