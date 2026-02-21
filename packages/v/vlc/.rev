@@ -1717,4 +1717,12 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
   party repos): faad2 does not exist in Leap 15.x.</comment>
     <requestid>1332491</requestid>
   </revision>
+  <revision rev="164" vrev="5">
+    <srcmd5>4e8e843caa18699bf1cc9ec3d1252904</srcmd5>
+    <version>3.0.23</version>
+    <time>1771704034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1333889</requestid>
+  </revision>
 </revisionlist>

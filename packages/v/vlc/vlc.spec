@@ -62,6 +62,7 @@ Patch100:       vlc-projectM-qt5.patch
 Patch103:       0001-Port-OpenCV-facedetect-example-to-C-API.patch
 # PATCH-FIX-OPENSUSE vlc-gstreamer-1.28-build-fix.patch -- Fix building with gstreamer-1.28vlc-gstreamer-1.28-build-fix.patch
 Patch104:       vlc-gstreamer-1.28-build-fix.patch
+Patch105:       libupnp-1.18.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  aalib-devel
@@ -396,6 +397,7 @@ default when `vlc` is invoked from an X session.
 %endif
 %patch -P 103 -p1
 %patch -P 104 -p1
+%patch -P 105 -p1
 
 ### And LUA 5.3.1 has some more API changes
 if pkg-config --atleast-version 5.3.1 lua; then
