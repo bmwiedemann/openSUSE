@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 20 10:45:10 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Enable CONFIG_EXT_PASSWORD_FILE to be able to load PSK and password
+  from an external file.
+
+-------------------------------------------------------------------
 Mon Jun  2 09:00:04 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Update build config:
