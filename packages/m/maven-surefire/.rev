@@ -136,4 +136,12 @@ put into adi:2</comment>
     <comment>Avoid useless utf-8 in changes</comment>
     <requestid>1307122</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0bd0d64cb4488408da5f67cacc5b7608</srcmd5>
+    <version>3.5.5</version>
+    <time>1771704214</time>
+    <user>dimstar_suse</user>
+    <comment>3.5.5</comment>
+    <requestid>1334272</requestid>
+  </revision>
 </revisionlist>

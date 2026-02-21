@@ -1,4 +1,4 @@
-From 69069e82a010ca50e7d3a6979b12177827343f2d Mon Sep 17 00:00:00 2001
+From 15452ca2e258bf013b3d5fd527d8871419d6b677 Mon Sep 17 00:00:00 2001
 From: Mikolaj Izdebski <mizdebsk@redhat.com>
 Date: Mon, 10 Jul 2017 10:37:50 +0200
 Subject: [PATCH 1/2] Port to TestNG 7.4.0
@@ -16,20 +16,20 @@ Subject: [PATCH 1/2] Port to TestNG 7.4.0
  9 files changed, 104 insertions(+), 31 deletions(-)
 
 diff --git a/pom.xml b/pom.xml
-index d81d39e54..3ff20299c 100644
+index 0d7109920..cc39bac47 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -98,7 +98,7 @@
      <mavenSharedUtilsVersion>3.3.4</mavenSharedUtilsVersion>
      <powermockVersion>2.0.9</powermockVersion>
-     <jacocoVersion>0.8.13</jacocoVersion>
+     <jacocoVersion>0.8.14</jacocoVersion>
 -    <testngVersion>5.11</testngVersion>
 +    <testngVersion>7.4.0</testngVersion>
      <maven.surefire.scm.devConnection>scm:git:https://github.com/apache/maven-surefire.git</maven.surefire.scm.devConnection>
      <maven.site.path>surefire-archives/surefire-LATEST</maven.site.path>
      <maven.compiler.testSource>${javaVersion}</maven.compiler.testSource>
 diff --git a/surefire-providers/surefire-testng-utils/pom.xml b/surefire-providers/surefire-testng-utils/pom.xml
-index 8bf422dc2..bc0de1d3c 100644
+index 209a92c2f..7324964bc 100644
 --- a/surefire-providers/surefire-testng-utils/pom.xml
 +++ b/surefire-providers/surefire-testng-utils/pom.xml
 @@ -47,7 +47,6 @@
@@ -240,7 +240,7 @@ index c0e7838bd..5f180624d 100644
      }
  }
 diff --git a/surefire-providers/surefire-testng/pom.xml b/surefire-providers/surefire-testng/pom.xml
-index 2fdfe3c08..0ac85cd25 100644
+index 303c9ecf9..ae2be8983 100644
 --- a/surefire-providers/surefire-testng/pom.xml
 +++ b/surefire-providers/surefire-testng/pom.xml
 @@ -61,7 +61,6 @@
@@ -280,7 +280,7 @@ index b73b9bacd..6ab5a626d 100644
  
      @Override
 diff --git a/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/conf/TestNGMapConfigurator.java b/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/conf/TestNGMapConfigurator.java
-index d91e76afc..4bb4fe0b0 100755
+index dd08caf61..64d8938c3 100755
 --- a/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/conf/TestNGMapConfigurator.java
 +++ b/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/conf/TestNGMapConfigurator.java
 @@ -33,12 +33,7 @@
@@ -353,5 +353,5 @@ index 097a74d1e..8b34db85d 100755
      }
  
 -- 
-2.51.0
+2.53.0
 
