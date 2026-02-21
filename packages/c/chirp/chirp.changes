@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb 21 10:11:23 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260220:
+  * Add TD-M11 test .img files
+  * Add new models TIDRADIO TD-M11 22 FRS and TD-M11 16 PMR
+  * th9800: Fix newer variant with short ident block
+  * Add Baofeng GM-21 and Radioddity GM-30 Pro
+  * Fix bulk-editing memories where empties are included
+  * Baofeng GM-15Pro as subclass of Radioddity GM-30
+  * Update Japanese translation
+
+-------------------------------------------------------------------
 Fri Feb 13 20:59:17 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260213:
