@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb 19 12:50:52 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20260219:
+  * Allow syslog_t access ISC dhcpd /dev/log socket (bsc#1255725)
+  * Update rules for snapper sdbootutil plugin (bsc#1257624)
+  * privoxy: account for openSUSE chroot configuration (bsc#1237375)
+  * Fix gitlab-ci throwing false warnings
+  * Add diffutils explicitly to .gitlab-ci
+  * Fix gitlab CI
+
+-------------------------------------------------------------------
+Tue Feb 17 12:55:43 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Fix hash in _servicedata
+  - was: a1c0fcdf4397f03534deaa8a4596b9da7f2bb674
+  - should be: ecd7927a3d5f06cff0b645b4146d355fede80922
+
+-------------------------------------------------------------------
 Tue Feb 03 09:55:20 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Update to version 20260203:
