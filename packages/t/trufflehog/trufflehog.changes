@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 20 05:57:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.93.4:
+  * optimize the regex pattern in the artifactory access token
+    detector (#4685)
+  * Changed matchingKey, found := keySet.LookupKeyID(kid) to be
+    determinate if not found (#4745)
+  * Pre-allocate anthropic analyzer bindings slice capacity with
+    zero length (#4746)
+  * Fix typo in CODEOWNERS for pkg/analyzer (#4748)
+  * Add a new NDJSON / JSONL input source (#4721)
+
+-------------------------------------------------------------------
 Thu Feb 12 06:11:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.93.3:
