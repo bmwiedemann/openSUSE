@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 19 15:14:17 UTC 2026 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 2.246.0:
+  * Allow containers to mount on container_var_run_t directories
+  * Allow container_runtime_domain runtime fifo_files transition
+  * Allow TUN/TAP device access for container_engine_t
+  * Add the container_signull() interface
+
+-------------------------------------------------------------------
 Mon Dec 15 15:58:25 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 2.245.0:
