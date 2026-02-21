@@ -723,4 +723,12 @@ GPL version does not have ^or later^ due to inclusion of numerous GPL 2 ^only^ f
     <comment>- Provide ebtables for SLES16</comment>
     <requestid>1274083</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>71a360e7f0f03507cb2f593ecfc5f2dd</srcmd5>
+    <version>1.8.12</version>
+    <time>1771704098</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.8.12</comment>
+    <requestid>1334184</requestid>
+  </revision>
 </revisionlist>
