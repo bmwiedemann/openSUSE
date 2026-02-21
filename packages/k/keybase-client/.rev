@@ -326,4 +326,12 @@
   bsc#1253864.</comment>
     <requestid>1319278</requestid>
   </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>6db840479691abf28899d79573cfeac4</srcmd5>
+    <version>6.5.1</version>
+    <time>1771704175</time>
+    <user>dimstar_suse</user>
+    <comment>- Add update-filippo.io-edwards25519.patch to address bsc#1258591.</comment>
+    <requestid>1334244</requestid>
+  </revision>
 </revisionlist>

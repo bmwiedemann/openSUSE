@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 20 19:58:37 UTC 2026 - Matthias Bach <marix@marix.org>
+
+- Add update-filippo.io-edwards25519.patch to address bsc#1258591.
+
+-------------------------------------------------------------------
 Sat Nov 22 20:22:35 UTC 2025 - Matthias Bach <marix@marix.org> - 6.5.1
 
 - Update update-go-crypto.patch to address bsc#1254023 and

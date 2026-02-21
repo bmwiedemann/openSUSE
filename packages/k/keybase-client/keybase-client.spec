@@ -1,7 +1,7 @@
 #
 # spec file for package keybase-client
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2021 Matthias Bach <marix@marix.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,6 +33,7 @@ Source5:        README.tool.SUSE
 Patch1:         ensure-mount-dir-exists.patch
 Patch2:         ensure-service-stop-unmounts-filesystem.patch
 Patch3:         update-go-crypto.patch
+Patch4:         update-filippo.io-edwards25519.patch
 BuildRequires:  fdupes
 BuildRequires:  go1.24
 BuildRequires:  golang-packaging
