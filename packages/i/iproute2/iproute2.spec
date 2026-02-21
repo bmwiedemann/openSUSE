@@ -1,7 +1,7 @@
 #
 # spec file for package iproute2
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           iproute2
-Version:        6.18
+Version:        6.19
 Release:        0
 Summary:        Linux network configuration utilities
 License:        GPL-2.0-only

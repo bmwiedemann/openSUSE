@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 20 12:51:57 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.19
+  * devlink: Introduce burst period for health reporter
+  * ip-xfrm: add pcpu-num support
+  * devlink: Add support for 64bit parameters
+  * genl: add json support
+  * mptcp: add 'laminar' endpoint support
+  * iplink_can: add initial CAN XL support
+
+-------------------------------------------------------------------
 Fri Dec  5 07:47:55 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.18
