@@ -18,4 +18,12 @@
 - Add upstream patch fix-tests.patch, gh#hamdanal/rich-argparse#178</comment>
     <requestid>1333717</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>acbc26825c973eaa26755c23dc66fee3</srcmd5>
+    <version>1.7.2</version>
+    <time>1771704032</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream py3141.patch to fix tests on Python 3.14.1+</comment>
+    <requestid>1333857</requestid>
+  </revision>
 </revisionlist>

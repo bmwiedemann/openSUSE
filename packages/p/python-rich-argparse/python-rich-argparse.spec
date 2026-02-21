@@ -25,6 +25,8 @@ URL:            https://github.com/hamdanal/rich-argparse
 Source:         https://files.pythonhosted.org/packages/source/r/rich-argparse/rich_argparse-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-tests.patch https://github.com/hamdanal/rich-argparse/pull/178
 Patch0:         fix-tests.patch
+# PATCH-FIX-UPSTREAM py3141.patch https://github.com/hamdanal/rich-argparse/pull/172
+Patch1:         py3141.patch
 BuildRequires:  %{python_module hatchling >= 1.11.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
