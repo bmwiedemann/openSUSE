@@ -1486,4 +1486,12 @@
     <comment></comment>
     <requestid>1330890</requestid>
   </revision>
+  <revision rev="145" vrev="2">
+    <srcmd5>ed79f7da531f0f3ea2aa18bc541f4fb5</srcmd5>
+    <version>5.2.11</version>
+    <time>1771704095</time>
+    <user>dimstar_suse</user>
+    <comment>- Add skip-flaky-tests.patch to skip tests which randomly fail</comment>
+    <requestid>1334170</requestid>
+  </revision>
 </revisionlist>

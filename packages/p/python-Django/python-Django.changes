@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 20 11:45:55 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add skip-flaky-tests.patch to skip tests which randomly fail
+
+-------------------------------------------------------------------
 Tue Feb  3 14:07:21 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.2.11

@@ -40,6 +40,8 @@ Patch1:         support-msgfmt-0.25.patch
 # PATCH-FIX-UPSTREAM https://github.com/django/django/pull/19639 Fixed #36499 -- Adjusted utils_tests.test_html.TestUtilsHtml.test_strip_tags following Python's HTMLParser new behavior.
 # fixed and refined upstream, but some of our interpreters weren't updated to a new version yet and still only carry the patch, so providing the non-conditional version
 Patch2:         test_strip_tags.patch
+# PATCH-FIX-OPENSUSE skip-flaky-tests.patch skip tests which are erratic on OBS
+Patch3:         skip-flaky-tests.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9.2}
 BuildRequires:  %{python_module Pillow >= 6.2.0}
 BuildRequires:  %{python_module PyYAML}
