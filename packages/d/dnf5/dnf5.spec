@@ -59,7 +59,7 @@
 
 %global libmodulemd_version 2.5.0
 %global librepo_version 1.20.0
-%global libsolv_version 0.7.32
+%global libsolv_version 0.7.35
 %global sqlite_version 3.35.0
 %global swig_version 4
 %global zchunk_version 0.9.11
@@ -78,7 +78,7 @@
 %global devcliname %{libcliprefix}-devel
 
 Name:           dnf5
-Version:        5.3.0.0
+Version:        5.4.0.0
 Release:        0
 Summary:        Next generation RPM package manager
 License:        GPL-2.0-or-later
@@ -86,9 +86,6 @@ URL:            https://github.com/rpm-software-management/dnf5
 Source0:        %{url}/archive/%{version}/dnf5-%{version}.tar.gz
 
 # Backports from upstream
-Patch1:         0001-test_conf.cpp-make-comparing-size_type-cross-platfor.patch
-Patch2:         0002-python_plugins_loader-disable-sign-compare-check-err.patch
-Patch3:         0003-Move-libdnf5-conf-config.h-creation-after-feature-de.patch
 
 # Proposed upstream
 
@@ -167,6 +164,7 @@ BuildRequires:  gettext
 BuildRequires:  git-core
 BuildRequires:  toml11-devel
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(libacl)
 BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(json-c)
@@ -174,7 +172,7 @@ BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(librepo) >= %{librepo_version}
 BuildRequires:  pkgconfig(libsolv) >= %{libsolv_version}
 BuildRequires:  pkgconfig(libsolvext) >= %{libsolv_version}
-BuildRequires:  pkgconfig(rpm) >= 4.17.0
+BuildRequires:  pkgconfig(rpm) >= 4.19.0
 BuildRequires:  pkgconfig(sqlite3) >= %{sqlite_version}
 BuildRequires:  pkgconfig(systemd)
 
@@ -375,7 +373,7 @@ It supports RPM packages, modulemd modules, and comps groups & environments.
 %{_mandir}/man7/dnf*-specs.7.*
 %{_mandir}/man7/dnf*-system-state.7.*
 %{_mandir}/man5/dnf*.conf.5.*
-%{_mandir}/man5/dnf*.conf-vendorpolicy.5.*
+%{_mandir}/man5/dnf*.conf-vendorpolicy*.5.*
 %{_mandir}/man5/dnf*.conf-todo.5.*
 %{_mandir}/man5/dnf*.conf-deprecated.5.*
 
@@ -425,6 +423,7 @@ Package management library.
 %verify(not md5 size mtime) %attr(0644, root, root) %ghost %{_prefix}/lib/sysimage/libdnf5/packages.toml
 %verify(not md5 size mtime) %attr(0644, root, root) %ghost %{_prefix}/lib/sysimage/libdnf5/system.toml
 %verify(not md5 size mtime) %attr(0644, root, root) %ghost %{_prefix}/lib/sysimage/libdnf5/transaction_history.sqlite{,-shm,-wal}
+%verify(not md5 size mtime) %attr(0664, root, root) %ghost %{_prefix}/lib/sysimage/libdnf5/system-repo.lock
 %dir %{_datadir}/dnf5/libdnf.conf.d
 %dir %{_sysconfdir}/dnf/libdnf5.conf.d
 %dir %{_datadir}/dnf5/repos.override.d
@@ -434,6 +433,7 @@ Package management library.
 %dir %{_datadir}/dnf5/repos.d
 %dir %{_datadir}/dnf5/vars.d
 %dir %{_datadir}/dnf5/vendors.d
+%dir %{_datadir}/dnf5/libdnf.plugins.conf.d
 %dir %{_sysconfdir}/dnf/vendors.d
 
 
@@ -900,6 +900,7 @@ DNF5 plugin for working with RPM package manifest files.
     -DWITH_PLUGIN_MANIFEST=%{?with_plugin_manifest:ON}%{!?with_plugin_manifest:OFF} \
     -DWITH_PYTHON_PLUGINS_LOADER=%{?with_python_plugins_loader:ON}%{!?with_python_plugins_loader:OFF} \
     \
+    -DWITH_ACL=ON \
     -DWITH_COMPS=%{?with_comps:ON}%{!?with_comps:OFF} \
     -DWITH_MODULEMD=%{?with_modulemd:ON}%{!?with_modulemd:OFF} \
     -DWITH_ZCHUNK=%{?with_zchunk:ON}%{!?with_zchunk:OFF} \
@@ -935,7 +936,8 @@ for files in \
     groups.toml modules.toml nevras.toml packages.toml \
     system.toml transaction_history.sqlite \
     transaction_history.sqlite-shm \
-    transaction_history.sqlite-wal userinstalled.toml
+    transaction_history.sqlite-wal userinstalled.toml \
+    system-repo.lock
 do
     touch %{buildroot}%{_prefix}/lib/sysimage/dnf/$files
 done

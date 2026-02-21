@@ -149,4 +149,21 @@
 - Add Provides to libdnf5 package for /etc/dnf/dnf.conf for dnf4</comment>
     <requestid>1328584</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b0c006fe8c47ec1243601190b7359bda</srcmd5>
+    <version>5.4.0.0</version>
+    <time>1771704030</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.4.0.0
+  + 5.4.0.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.4.0.0
+- Drop patches included in this release
+  + Patch: 0001-test_conf.cpp-make-comparing-size_type-cross-platfor.patch
+  + Patch: 0002-python_plugins_loader-disable-sign-compare-check-err.patch
+  + Patch: 0003-Move-libdnf5-conf-config.h-creation-after-feature-de.patch
+- Refresh patches
+  + dnf5-Use-usr-lib-sysimage-for-the-persistent-state-dir.patch
+  + dnf5-Switch-default-reposdir-to-etc-dnf-repos.d.patch
+  + dnf5-disable-Werror.patch</comment>
+    <requestid>1333830</requestid>
+  </revision>
 </revisionlist>

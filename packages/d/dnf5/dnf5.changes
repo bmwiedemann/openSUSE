@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 19 00:00:18 UTC 2026 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to 5.4.0.0
+  + 5.4.0.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.4.0.0
+- Drop patches included in this release
+  + Patch: 0001-test_conf.cpp-make-comparing-size_type-cross-platfor.patch
+  + Patch: 0002-python_plugins_loader-disable-sign-compare-check-err.patch
+  + Patch: 0003-Move-libdnf5-conf-config.h-creation-after-feature-de.patch
+- Refresh patches
+  + dnf5-Use-usr-lib-sysimage-for-the-persistent-state-dir.patch
+  + dnf5-Switch-default-reposdir-to-etc-dnf-repos.d.patch
+  + dnf5-disable-Werror.patch
+
+-------------------------------------------------------------------
 Wed Jan 21 23:54:41 UTC 2026 - Neal Gompa <ngompa@opensuse.org>
 
 - Add Provides to libdnf5 package for /etc/dnf/dnf.conf for dnf4
