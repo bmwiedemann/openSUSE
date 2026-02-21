@@ -148,7 +148,9 @@ find %{buildroot} \( -name '.keepme' -o -name '.gitkeep' \) -delete
 %license COPYING COMMITMENT
 %doc README.rst CONTRIBUTING.rst
 %{_bindir}/obs
+%ifarch x86_64
 %{_bindir}/obs-nvenc-test
+%endif
 %{_bindir}/obs-ffmpeg-mux
 %{_libdir}/obs-plugins
 %dir %{_libdir}/obs-scripting

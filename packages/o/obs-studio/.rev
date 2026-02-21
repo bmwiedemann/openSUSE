@@ -75,4 +75,13 @@ Overall, this submission provides a clean and modular OBS package that integrate
 There are still minor multi-architecture adjustments to refine, but the package builds correctly and is ready for regular use.</comment>
     <requestid>1333136</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8d644959ced34f655d92fa9e818022eb</srcmd5>
+    <version>32.0.4</version>
+    <time>1771704208</time>
+    <user>dimstar_suse</user>
+    <comment>- Restrict obs-nvenc-test installation to x86_64 architecture,
+  as the binary is not built on aarch64.</comment>
+    <requestid>1334270</requestid>
+  </revision>
 </revisionlist>
