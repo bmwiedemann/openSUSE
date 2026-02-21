@@ -400,4 +400,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1309560 from glaubitz)</comment>
     <requestid>1309585</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>3a944b5a0cc443b58bd32dcaabcdf449</srcmd5>
+    <version>1.25.2</version>
+    <time>1771704028</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.25.2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1333676 from glaubitz)</comment>
+    <requestid>1333808</requestid>
+  </revision>
 </revisionlist>
