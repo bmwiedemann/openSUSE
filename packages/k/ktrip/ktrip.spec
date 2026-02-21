@@ -52,7 +52,7 @@ Requires:       kf6-breeze-icons
 # QML imports
 Requires:       kf6-kitemmodels-imports >= %{kf6_version}
 Requires:       kirigami-addons6 >= 0.11.0
-Requires:       kpublictransport
+Requires:       kpublictransport-imports
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 
 %description

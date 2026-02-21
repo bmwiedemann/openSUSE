@@ -271,4 +271,12 @@
     <comment>KDE release gear 25.12.2 (forwarded request 1330785 from krop)</comment>
     <requestid>1331339</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>07213e326a9b24de78e936de879b335a</srcmd5>
+    <version>25.12.2</version>
+    <time>1771704189</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix runtime dependency</comment>
+    <requestid>1334257</requestid>
+  </revision>
 </revisionlist>
