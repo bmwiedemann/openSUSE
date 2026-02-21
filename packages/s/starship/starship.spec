@@ -1,7 +1,7 @@
 #
 # spec file for package starship
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           starship
-Version:        1.24.0
+Version:        1.24.2
 Release:        0
 Summary:        A customizable prompt for many shells
 License:        ISC
