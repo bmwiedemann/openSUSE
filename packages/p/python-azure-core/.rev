@@ -634,4 +634,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1332685 from glaubitz)</comment>
     <requestid>1332690</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>f87fe149165f6bc71e2179d759022371</srcmd5>
+    <version>1.38.2</version>
+    <time>1771704048</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.38.2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1333891 from glaubitz)</comment>
+    <requestid>1333957</requestid>
+  </revision>
 </revisionlist>
