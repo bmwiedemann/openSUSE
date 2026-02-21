@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-yast
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with betatest
 
 Name:           patterns-yast
-Version:        20220411
+Version:        20260219
 Release:        0
 Summary:        Patterns for Installation (YaST)
 License:        MIT
@@ -129,7 +129,6 @@ Provides:       pattern-visible()
 # Included for the release notes client
 Requires:       yast2-installation
 Requires:       yast2-ldap
-Requires:       yast2-mail
 # Useless on desktop, since NM is the default there
 Requires:       yast2-network
 Requires:       yast2-security
@@ -260,28 +259,28 @@ Provides:       pattern-icon() = pattern-yast-devel
 Provides:       pattern-order() = 3460
 Provides:       pattern-visible()
 
+Recommends:     osc
 Recommends:     yast2-devtools
 Recommends:     yast2-testsuite
-Recommends:     osc
-Recommends:     rubygem(%{rb_default_ruby_abi}:yast-rake)
 Recommends:     rubygem(%{rb_default_ruby_abi}:byebug)
 Recommends:     rubygem(%{rb_default_ruby_abi}:parallel_tests)
 Recommends:     rubygem(%{rb_default_ruby_abi}:rspec)
 Recommends:     rubygem(%{rb_default_ruby_abi}:simplecov)
 Recommends:     rubygem(%{rb_default_ruby_abi}:yard)
+Recommends:     rubygem(%{rb_default_ruby_abi}:yast-rake)
 # only in OBS YaST:Head, but install it when available
 # YaST currently requires version 0.41.2
 Recommends:     rubygem(%{rb_default_ruby_abi}:rubocop) = 0.41.2
 Suggests:       yast2-ycp-ui-bindings-devel
 # Bug 304645 gives the list below:
 Recommends:     yast2-core-devel
-Recommends:     yast2-perl-bindings
-Recommends:     yast2-ruby-bindings
 Recommends:     git
+Recommends:     libyui-ncurses-devel
+Recommends:     libyui-qt-devel
 Recommends:     libzypp-devel
 Recommends:     yast2-libyui-devel
-Recommends:     libyui-qt-devel
-Recommends:     libyui-ncurses-devel
+Recommends:     yast2-perl-bindings
+Recommends:     yast2-ruby-bindings
 
 %description devel_yast
 Tools and libraries for developing YaST modules, the setup and configuration tool for openSUSE.
