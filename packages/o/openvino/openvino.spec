@@ -1,7 +1,7 @@
 #
 # spec file for package openvino
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Alessandro de Oliveira Faria (A.K.A. CABELO) <cabelo@opensuse.org> or <alessandro.faria@owasp.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -197,6 +197,14 @@ OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
 
 This package provides the intel CPU plugin for OpenVINO for %{x86_64} archs.
 
+%package -n %{name}-intel-gpu-plugin
+Summary:        Intel GPU plugin for OpenVINO toolkit
+
+%description -n %{name}-intel-gpu-plugin
+OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
+
+This package provides the intel GPU plugin for OpenVINO for %{x86_64} archs.
+
 %package -n %{name}-intel-npu-plugin
 Summary:        Intel NPU plugin for OpenVINO toolkit
 
@@ -292,7 +300,11 @@ export CC=gcc-12 CXX=g++-12
       -DENABLE_OV_IR_FRONTEND=ON \
       -DENABLE_OV_TF_FRONTEND=ON \
       -DENABLE_OV_TF_LITE_FRONTEND=ON \
+%ifarch %{x86_64}
+      -DENABLE_INTEL_GPU=ON \
+%else
       -DENABLE_INTEL_GPU=OFF \
+%endif
       -DENABLE_OV_JAX_FRONTEND=OFF \
       -DENABLE_JS=OFF \
       -DENABLE_PYTHON=ON \
@@ -378,6 +390,11 @@ rm -fr %{buildroot}%{_datadir}/licenses/*
 %files -n %{name}-intel-cpu-plugin
 %dir %{_libdir}/%{prj_name}
 %{_libdir}/%{prj_name}/libopenvino_intel_cpu_plugin.so
+
+%files -n %{name}-intel-gpu-plugin
+%dir %{_libdir}/%{prj_name}
+%{_libdir}/%{prj_name}/cache.json
+%{_libdir}/%{prj_name}/libopenvino_intel_gpu_plugin.so
 
 %files -n %{name}-intel-npu-plugin
 %dir %{_libdir}/%{prj_name}
