@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 21 09:21:31 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file, added:
+  * BuildRequires:  cryptsetup-devel >= 2.8.2
+
+-------------------------------------------------------------------
+Fri Feb 20 09:42:02 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file (bsc#1258506)
+  * "Installing" all shipped rules from etc/udev/rules.d to /usr/lib/udev/rules.d
+- Re-vendor-ed vendor.tar.zst
+
+-------------------------------------------------------------------
 Wed Feb 18 11:59:43 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade s390-tools to version 2.41.0 (jsc#PED-14586, jsc#PED-15488) 

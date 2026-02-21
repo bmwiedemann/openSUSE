@@ -1197,4 +1197,20 @@ Build succeeded on IBS (in a home project).</comment>
     <comment></comment>
     <requestid>1333755</requestid>
   </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>f6c9a56819bcbd33ce4b8917d1df552c</srcmd5>
+    <version>2.41.0</version>
+    <time>1771605939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1334156</requestid>
+  </revision>
+  <revision rev="109" vrev="3">
+    <srcmd5>52474d369c2278bf9ca49fa83b10a60c</srcmd5>
+    <version>2.41.0</version>
+    <time>1771704194</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1334266</requestid>
+  </revision>
 </revisionlist>

@@ -141,6 +141,7 @@ Patch901:       s390-tools-dasdfmt-reworked.patch
 Patch910:       s390-tools-ALP-zdev-live.patch
 ###
 
+BuildRequires:  cryptsetup-devel >= 2.8.2
 BuildRequires:  curl-devel
 BuildRequires:  dracut
 BuildRequires:  fuse3-devel
@@ -407,10 +408,8 @@ install -D -m600 /boot/image-*-zfcpdump %{buildroot}%{_prefix}/lib/s390-tools/zf
 %endif
 
 install -D -m644 etc/cpuplugd.conf %{buildroot}%{_sysconfdir}/cpuplugd.conf
-install -D -m644 etc/udev/rules.d/40-z90crypt.rules %{buildroot}%{_prefix}/lib/udev/rules.d/40-z90crypt.rules
-install -D -m644 etc/udev/rules.d/57-osasnmpd.rules %{buildroot}%{_prefix}/lib/udev/rules.d/57-osasnmpd.rules
-install -D -m644 etc/udev/rules.d/59-dasd.rules %{buildroot}%{_prefix}/lib/udev/rules.d/59-dasd.rules
-install -D -m644 etc/udev/rules.d/90-cpi.rules %{buildroot}%{_prefix}/lib/udev/rules.d/90-cpi.rules
+install -d -m755 %{buildroot}/usr/lib/udev/rules.d
+install -m644 etc/udev/rules.d/*.rules %{buildroot}/usr/lib/udev/rules.d/
 mv iucvterm/doc/ts-shell/iucvconn_on_login %{buildroot}%{_bindir}/iucvconn_on_login
 install -D -m644 %{SOURCE26} %{buildroot}/%{_unitdir}/cio_ignore.service
 install -D -m755 %{SOURCE27} %{buildroot}%{_prefix}/lib/systemd/scripts/setup_cio_ignore.sh
