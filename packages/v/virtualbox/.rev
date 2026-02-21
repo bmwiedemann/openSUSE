@@ -2818,4 +2818,12 @@ we must have vb7.1.10.</comment>
     <comment>- Update license tag to GPL-3.0-only</comment>
     <requestid>1332433</requestid>
   </revision>
+  <revision rev="301" vrev="3">
+    <srcmd5>571be4236f2ee1c79ad9114077f14652</srcmd5>
+    <version>7.2.6</version>
+    <time>1771704088</time>
+    <user>dimstar_suse</user>
+    <comment>- add kernel-6.19.patch (bsc#1258115)</comment>
+    <requestid>1334141</requestid>
+  </revision>
 </revisionlist>
