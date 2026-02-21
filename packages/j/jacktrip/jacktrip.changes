@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 20 14:04:01 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.7.2:
+  * Log client name with UDP port
+  * Don't crash when jack runs out of ports
+  * Asked GPT-5 to write docs on the network protocol
+  * Regulator updates to further minimize unnecessary glitches
+
+-------------------------------------------------------------------
 Sat Jul  5 14:35:47 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.7.1:

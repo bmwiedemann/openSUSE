@@ -1,7 +1,7 @@
 #
 # spec file for package jacktrip
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           jacktrip
-Version:        2.7.1
+Version:        2.7.2
 Release:        0
 Summary:        Multi-machine network music performance over the Internet
 License:        GPL-3.0-only AND MIT AND LGPL-3.0-only
