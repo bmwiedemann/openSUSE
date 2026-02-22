@@ -8231,8 +8231,6 @@ unsorted:
   - gtksourceview-devel 
   - gtksourceview-lang 
   - gtksourceview-theme-yaru 
-  - gtksourceview2-devel 
-  - gtksourceview2-lang 
   - gtksourceview4-devel 
   - gtksourceview5-devel 
   - gtksourceviewmm-devel 
@@ -13837,7 +13835,6 @@ unsorted:
   - libgtkhotkey1 
   - libgtkimageview0 
   - libgtkmm-2_4-1 
-  - libgtksourceview-2_0-0 
   - libgtksourceview-3_0-1 
   - libgtksourceviewmm-4_0-0 
   - libgtkspell0 
@@ -17292,12 +17289,10 @@ unsorted:
   - libxmi0 
   - libxml++-2_6-2 
   - libxml++-3_0-1-32bit 
-  - libxml++-4_0-1 
   - libxml++-5_0-1 
   - libxml++-devel 
   - libxml++26-devel 
   - libxml++30-devel 
-  - libxml++40-devel 
   - libxml-security-c-devel 
   - libxml-security-c30 
   - libxml2-16-32bit 
@@ -20754,6 +20749,7 @@ unsorted:
   - openvino-devel 
   - openvino-hetero-plugin 
   - openvino-intel-cpu-plugin 
+  - openvino-intel-gpu-plugin 
   - openvino-intel-npu-plugin 
   - openvino-sample 
   - openvpn-devel 
@@ -25108,7 +25104,6 @@ unsorted:
   - python311-cfgdiff 
   - python311-cfgv 
   - python311-cfn-lint 
-  - python311-cfscrape 
   - python311-cftime 
   - python311-changelog-chug 
   - python311-chardet 
@@ -28953,7 +28948,6 @@ unsorted:
   - python312-cfgdiff 
   - python312-cfgv 
   - python312-cfn-lint 
-  - python312-cfscrape 
   - python312-cftime 
   - python312-changelog-chug 
   - python312-chardet 
@@ -32853,7 +32847,6 @@ unsorted:
   - python313-cfgdiff 
   - python313-cfgv 
   - python313-cfn-lint 
-  - python313-cfscrape 
   - python313-cftime 
   - python313-changelog-chug 
   - python313-chardet 
@@ -50413,6 +50406,7 @@ unsorted:
   - yast2-installation-control 
   - yast2-iplb 
   - yast2-iscsi-lio-server 
+  - yast2-mail 
   - yast2-multipath 
   - yast2-rdp 
   - yast2-rear 
