@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 23 13:38:16 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 1.9.27
+  * Bug Fixes
+    + Sync TrackingFileManager with 2.x
+
+-------------------------------------------------------------------
 Thu Feb 12 17:14:40 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 1.9.26

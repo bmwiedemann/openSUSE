@@ -19,7 +19,7 @@
 %global base_name maven-resolver
 %define _buildshell /bin/bash
 Name:           %{base_name}
-Version:        1.9.26
+Version:        1.9.27
 Release:        0
 Summary:        Apache Maven Artifact Resolver library
 License:        Apache-2.0
