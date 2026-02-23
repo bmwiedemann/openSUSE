@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Sun Feb 15 12:25:48 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.5.4+git68.g11abfdfce1a3064790b1a1b507a0d5eeb66a6d6b:
+  * feat!(MSRV): update MSRV to 1.88.0 (#1351)
+  * [leftwm-check] fix printing outdated release tag (#1356)
+  * chore(deps): bump bytes from 1.11.0 to 1.11.1 (#1352)
+  * flake update, and fix two nix eval warnings (#1354)
+  * chore: clippy lints, updates for rust 1.92.0 (#1349)
+  * Merge pull request #1347 from VuiMuich/main
+  * fix some pedantic clippy lints
+  * update flake.lock
+  * Merge pull request #1346 from Lieunoir/main
+  * Don't follow mouse on unmanaged windows
+  * Add ewmh 1.4draft window types
+  * Merge pull request #1339 from mautamu/875-remove-toml
+  * Merge remote-tracking branch 'mau/875-remove-toml' into 875-remove-toml
+  * chore: clippies
+  * Merge branch 'main' into 875-remove-toml
+  * chore: format
+  * chore: bump dependencies
+  * feat: add note about additional changes needed when updating ThemeConfig
+  * Merge pull request #1343 from leftwm/dependabot/cargo/slab-0.4.11
+  * chore(deps): bump slab from 0.4.10 to 0.4.11
+  * Merge pull request #1342 from leftwm/dependabot/cargo/tracing-subscriber-0.3.20
+  * chore(deps): bump tracing-subscriber from 0.3.19 to 0.3.20
+  * config: Add SerializableRegex to serialize Regex (#1307) (#1341)
+  * feat!(config): Remove TOML support (implement #875) BREAKING CHANGELOG
+  * Merge pull request #1338 from mautamu/2024-edition
+  * chore: remove outdated lefthk build warning, explain unsafe code
+  * more clippy fixes
+  * update lockfiles after `lefthk` 0.3.0 release
+  * flake.nix formatting and remove `inputs.nixpkgs.follow` from `crane`
+  * chore: update versions
+  * chore: update formatting to 2024 edition
+  * feat(MSRV): update edition to 2024, MSRV to 1.85.0
+  * Merge pull request #1337 from hosfeld/fix/warn-include-trimmed-path
+  * fix: include path in warning when path does not exists
+  * Merge pull request #1333 from StikyPiston/patch-2
+  * Update README.md
+  * Update README.md (#1332)
+  * Merge pull request #1328 from VuiMuich/main
+  * README update xmobar url
+  * Merge pull request #1324 from mautamu/revert-1192-fix-1323
+  * fix: typo
+  * feat(watchdog): deprecate leftwm-watchdog bin; gate leftwm behind feat
+  * chore(deps): bump crossbeam-channel from 0.5.14 to 0.5.15 (#1322)
+  * chore(deps): bump tokio from 1.43.0 to 1.43.1; update workflows to check MSRV clippies (#1321)
+  * Merge pull request #1320 from fransklaver/simplify-code-by-removing-macro
+  * scratchpad_handler: remove try_bool macro
+  * Merge pull request #1319 from fransklaver/x11rb-fix-getting-output-name
+  * Merge pull request #1318 from fransklaver/x11rb-fix-opening-qt-dialogs
+  * x11rb: getters: fix getting the output name
+  * x11rb: allow legacy name to not exist
+  * Merge pull request #1316 from fransklaver/x11rb-fix-opening-scratchpad-window
+  * fix creating a scratchpad window on x11rb
+  * changelog: fix the spelling of my name (#1314)
+  * Merge pull request #1301 from AnthonyMichaelTDM/issue-1296
+  * Merge pull request #1313 from leftwm/mautamu-patch-1
+  * Update CHANGELOG.md
+  * Merge pull request #1311 from fransklaver/force-window-focus-on-sloppy-focus
+  * Merge pull request #1312 from fransklaver/fix-clickto-focus-after-tag-switch
+  * xlib, x11rb: fix ClickTo focus after switching tags
+  * fix sloppy focus with margins
+  * fix: respect default_layout regardless of layout_mode
+  * Merge pull request #1308 from mautamu/v0.5.4
+  * chore(clippy): correct needless pass by value
+  * fix(test): switch failing test to use EVEN_VERTICAL as default layout instead of LEFT_MAIN
+  * fix: bump MSRV consistently
+  * chore: add small comment to trigger actions so this can be merged
+  * chore: bump flake
+  * chore: version to 0.5.4, MSRV to 1.83.0
+
+-------------------------------------------------------------------
 Fri Jun 13 09:51:17 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 0.5.4+git34.g94cf2e35965379238d0f4f9f76d044d08ba3ff81:

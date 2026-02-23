@@ -1,7 +1,7 @@
 #
 # spec file for package leftwm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           leftwm
-Version:        0.5.4+git34.g94cf2e35965379238d0f4f9f76d044d08ba3ff81
+Version:        0.5.4+git68.g11abfdfce1a3064790b1a1b507a0d5eeb66a6d6b
 Release:        0
 Summary:        A tiling window manager for adventurers
 License:        Apache-2.0 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR MPL-2.0) AND BSD-2-Clause AND BSD-3-Clause AND (MIT OR Unlicense)
