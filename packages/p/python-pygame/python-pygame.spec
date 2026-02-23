@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygame
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        A Python Module for Interfacing with the SDL Multimedia Library
 License:        Apache-2.0 AND LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause AND libpng-2.0
 URL:            https://github.com/pygame/pygame
 Source0:        %{url}/archive/%{version}.tar.gz#/pygame-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE skip-broken-tests.patch
+Patch0:         skip-broken-tests.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
@@ -102,6 +104,12 @@ chmod a-x docs/licenses/LICENSE.sdl_gfx.txt
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
+
+# -mavx2 fixes the build for i586
+%ifarch %ix86
+export CFLAGS="${CFLAGS} -mavx2"
+%endif
+
 export PORTMIDI_INC_PORTTIME=1
 %pyproject_wheel
 

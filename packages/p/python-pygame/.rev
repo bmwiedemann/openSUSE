@@ -805,4 +805,15 @@
     <comment></comment>
     <requestid>1250014</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>e2d14c86424174b1b368e7d9eb7f109c</srcmd5>
+    <version>2.6.1</version>
+    <time>1771859597</time>
+    <user>anag_factory</user>
+    <comment>- Add &quot;-mavx2&quot; to CFLAGS to fix build in i586, gh#pygame/pygame#4573
+
+- Skip broken tests in OBS build env, new patch:
+  skip-broken-tests.patch</comment>
+    <requestid>1334467</requestid>
+  </revision>
 </revisionlist>

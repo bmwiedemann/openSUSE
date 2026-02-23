@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 23 10:09:03 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add "-mavx2" to CFLAGS to fix build in i586, gh#pygame/pygame#4573
+
+-------------------------------------------------------------------
+Mon Feb 23 09:13:25 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip broken tests in OBS build env, new patch:
+  skip-broken-tests.patch
+
+-------------------------------------------------------------------
 Mon Mar  3 12:31:38 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - Update to 2.6.1
