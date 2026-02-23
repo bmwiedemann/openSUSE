@@ -5800,4 +5800,19 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 11.1 release</comment>
     <requestid>1332184</requestid>
   </revision>
+  <revision rev="486" vrev="1">
+    <srcmd5>55a13526a48674ff7a0f9540ecd250cc</srcmd5>
+    <version>11.3</version>
+    <time>1771859546</time>
+    <user>anag_factory</user>
+    <comment>- updated to 11.3 release
+  - Mono engine updated to version 11.0.0
+  - Bundled vkd3d upgraded to version 1.19.
+  - Improved FIR filter in DirectSound.
+  - More optimizations in PDB loading.
+  - Light theme renamed to Aero for compatibility.
+  - Various bug fixes.
+- update staging to 11.3 release</comment>
+    <requestid>1334356</requestid>
+  </revision>
 </revisionlist>

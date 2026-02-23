@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb 21 10:11:03 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 11.3 release
+  - Mono engine updated to version 11.0.0
+  - Bundled vkd3d upgraded to version 1.19.
+  - Improved FIR filter in DirectSound.
+  - More optimizations in PDB loading.
+  - Light theme renamed to Aero for compatibility.
+  - Various bug fixes.
+- update staging to 11.3 release
+
+-------------------------------------------------------------------
 Sun Feb  8 16:38:53 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - updated to 11.2 release

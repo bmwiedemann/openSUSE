@@ -68,8 +68,8 @@
 
 %define         _lto_cflags %{nil}
 Name:           wine%{psuffix}
-%define downloadver  11.2
-Version:        11.2
+%define downloadver  11.3
+Version:        11.3
 Release:        0
 Summary:        An MS Windows Emulator
 Group:          System/Emulators/PC
@@ -203,7 +203,7 @@ Requires:       wine-32bit = %{version}
 Requires:       samba-winbind
 Recommends:     ntsync-autoload
 Recommends:     wine-gecko >= 2.47.4
-Recommends:     wine-mono >= 10.1.0
+Recommends:     wine-mono >= 11.0.0
 Recommends:     winetricks
 Conflicts:      wine
 Conflicts:      wine-gecko < 2.47.4
