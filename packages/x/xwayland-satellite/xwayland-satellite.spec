@@ -1,7 +1,7 @@
 #
 # spec file for package xwayland-satellite
 #
-# Copyright (c) 2025 mantarimay
+# Copyright (c) 2026 mantarimay
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with test
 Name:           xwayland-satellite
-Version:        0.8
+Version:        0.8.1
 Release:        0
 Summary:        Rootless Xwayland integration for Wayland compositors
 License:        MPL-2.0
@@ -47,6 +47,7 @@ sed -i 's|/usr/local|/usr|' resources/%{name}.service
 %install
 install -Dm755 target/release/%{name} -t %{buildroot}%{_bindir}
 install -Dm644 resources/%{name}.service -t %{buildroot}%{_userunitdir}
+install -Dm644 %{name}.man %{buildroot}%{_mandir}/man1/%{name}.1
 
 %if %{with test}
 %check
@@ -58,5 +59,6 @@ install -Dm644 resources/%{name}.service -t %{buildroot}%{_userunitdir}
 %doc README*
 %{_bindir}/%{name}
 %{_userunitdir}/%{name}.service
+%{_mandir}/man1/%{name}*
 
 %changelog
