@@ -28,12 +28,11 @@ Source1:        https://github.com/netblue30/%{name}/releases/download/%{version
 # https://firejail.wordpress.com/download-2/
 Source2:        %{name}.keyring
 Source3:        %{name}-group.conf
-BuildRequires:  apparmor-rpm-macros
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  libapparmor-devel
 BuildRequires:  sysuser-tools
 BuildRequires:  xz
+BuildRequires:  pkgconfig(libselinux)
 Requires(post): permissions
 %sysusers_requires
 
@@ -74,8 +73,9 @@ sed -i '1s/^#!\/usr\/bin\/env /#!\/usr\/bin\//' contrib/fj-mkdeb.py contrib/fjcl
 
 %build
 %sysusers_generate_pre %{SOURCE3} %{name} %{name}-group.conf
+
 %configure --docdir=%{_docdir}/%{name} \
-	   --enable-apparmor
+	    --enable-selinux
 %make_build
 
 %install
@@ -88,7 +88,6 @@ rm %{buildroot}%{_docdir}/firejail/COPYING
 
 %post
 %set_permissions %{_bindir}/firejail
-%apparmor_reload %{_sysconfdir}/apparmor.d/firejail-default
 
 %verifyscript
 %verify_permissions -e %{_bindir}/firejail
@@ -105,12 +104,6 @@ rm %{buildroot}%{_docdir}/firejail/COPYING
 %{_mandir}/man5/*
 %dir %{_sysconfdir}/%{name}
 %config %{_sysconfdir}/%{name}/*
-%config %{_sysconfdir}/apparmor.d/firejail-default
-%config %{_sysconfdir}/apparmor.d/local/firejail-default
-%dir %{_sysconfdir}/apparmor.d
-%dir %{_sysconfdir}/apparmor.d/local
-%dir %{_sysconfdir}/apparmor.d/abstractions
-%dir %{_sysconfdir}/apparmor.d/abstractions/base.d
 %dir %{_datadir}/vim
 %dir %{_datadir}/vim/vimfiles
 %dir %{_datadir}/vim/vimfiles/ftdetect
@@ -122,7 +115,6 @@ rm %{buildroot}%{_docdir}/firejail/COPYING
 %dir %{_datadir}/gtksourceview-5
 %dir %{_datadir}/gtksourceview-5/language-specs
 %{_datadir}/gtksourceview-5/language-specs/firejail-profile.lang
-%config /etc/apparmor.d/abstractions/base.d/firejail-base
 %{_sysusersdir}/%{name}-group.conf
 
 %files bash-completion
