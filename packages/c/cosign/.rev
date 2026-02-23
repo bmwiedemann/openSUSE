@@ -771,4 +771,54 @@
   * chore(deps): bump the gomod group with 9 updates (#4577) (forwarded request 1332573 from msmeissn)</comment>
     <requestid>1332629</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>b7df13f152ff7caca2d03d2676b9a58b</srcmd5>
+    <version>3.0.4</version>
+    <time>1771605755</time>
+    <user>dimstar_suse</user>
+    <comment>  * CVE-2025-11065: Fixed github.com/go-viper/mapstructure/v2: sensitive
+    Information leak in logs (bsc#1250620)
+  * CVE-2026-22703: Fixed that cosign verification accepts any valid
+    Rekor entry under certain conditions (bsc#1256496)
+  * CVE-2025-58181: Fixed golang.org/x/crypto/ssh: invalidated number
+    of mechanisms can cause unbounded memory consumption (bsc#1253913)</comment>
+    <requestid>1333995</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1880002ba37876ca1aba122d42b02f2f</srcmd5>
+    <version>3.0.5</version>
+    <time>1771859574</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.0.5:
+  * CVE-2026-24122: Fixed improper validation of certificates that
+    outlive expired CA certificates (bsc#1258542)
+  * CVE-2026-26958: Fixed filippo.io/edwards25519: failure to initialize
+    receiver in MultiScalarMult can produce invalid results and lead to
+    undefined behavior (bsc#1258612)
+  * CVE-2026-24137: Fixed github.com/sigstore/sigstore/pkg/tuf: legacy
+    TUF client allows for arbitrary file writes with target cache path
+    traversal (bsc#1257139)
+  * CVE-2026-22772: Fixed github.com/sigstore/fulcio: bypass MetaIssuer
+    URL validation bypass can trigger SSRF to arbitrary internal services
+    (bsc#1256562)
+  * CVE-2026-23991: Fixed github.com/theupdateframework/go-tuf/v2: denial
+    of service due to invalid TUF metadata JSON returned by TUF repository
+    (bsc#1257080)
+  * CVE-2026-23992: Fixed github.com/theupdateframework/go-tuf/v2:
+    unauthorized modification to TUF metadata files due to a compromised
+    or misconfigured TUF repository (bsc#1257085)
+  * chore(deps): bump google.golang.org/api from 0.260.0 to 0.264.0 (#4679)
+  * chore(deps): bump github.com/sigstore/rekor-tiles/v2 from 2.0.1 to 2.1.0 (#4670)
+  * chore(deps): bump filippo.io/edwards25519 from 1.1.0 to 1.1.1 (#4712)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go (#4680)
+  * chore(deps): bump the gomod group across 1 directory with 4 updates (#4702)
+  * chore(deps): bump the actions group with 3 updates (#4703)
+  * update golang builder to use go1.25.7 (#4687)
+  * update golangci-lint to v2.8.x (#4688)
+  * Fix typo in CLI help (#4701)
+  * Support DSSE signing conformance test (#4685)
+  * chore(deps): bump the actions group across 1 directory with 8 updates (#4689)
+  * Deprecate rekor-entry-type flag (#4691) (forwarded request 1334417 from msmeissn)</comment>
+    <requestid>1334418</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,70 @@
 -------------------------------------------------------------------
+Sun Feb 22 12:25:59 UTC 2026 - meissner@suse.com
+
+- Update to version 3.0.5:
+  * CVE-2026-24122: Fixed improper validation of certificates that
+    outlive expired CA certificates (bsc#1258542)
+  * CVE-2026-26958: Fixed filippo.io/edwards25519: failure to initialize
+    receiver in MultiScalarMult can produce invalid results and lead to
+    undefined behavior (bsc#1258612)
+  * CVE-2026-24137: Fixed github.com/sigstore/sigstore/pkg/tuf: legacy
+    TUF client allows for arbitrary file writes with target cache path
+    traversal (bsc#1257139)
+  * CVE-2026-22772: Fixed github.com/sigstore/fulcio: bypass MetaIssuer
+    URL validation bypass can trigger SSRF to arbitrary internal services
+    (bsc#1256562)
+  * CVE-2026-23991: Fixed github.com/theupdateframework/go-tuf/v2: denial
+    of service due to invalid TUF metadata JSON returned by TUF repository
+    (bsc#1257080)
+  * CVE-2026-23992: Fixed github.com/theupdateframework/go-tuf/v2:
+    unauthorized modification to TUF metadata files due to a compromised
+    or misconfigured TUF repository (bsc#1257085)
+
+  * chore(deps): bump google.golang.org/api from 0.260.0 to 0.264.0 (#4679)
+  * chore(deps): bump github.com/sigstore/rekor-tiles/v2 from 2.0.1 to 2.1.0 (#4670)
+  * chore(deps): bump filippo.io/edwards25519 from 1.1.0 to 1.1.1 (#4712)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go (#4680)
+  * chore(deps): bump the gomod group across 1 directory with 4 updates (#4702)
+  * chore(deps): bump the actions group with 3 updates (#4703)
+  * update golang builder to use go1.25.7 (#4687)
+  * update golangci-lint to v2.8.x (#4688)
+  * Fix typo in CLI help (#4701)
+  * Support DSSE signing conformance test (#4685)
+  * chore(deps): bump the actions group across 1 directory with 8 updates (#4689)
+  * Deprecate rekor-entry-type flag (#4691)
+  * Deprecate cosign triangulate (#4676)
+  * Deprecate cosign copy (#4681)
+  * Enforce TSA requirement for Rekor v2, Fuclio signing (#4683)
+  * chore(deps): bump github.com/theupdateframework/go-tuf/v2 (#4668)
+  * chore(deps): bump golang from 1.25.5 to 1.25.6 in the all group (#4673)
+  * Automatically require signed timestamp with Rekor v2 entries (#4666)
+  * Fix syntax issue in conformance test, update nightly (#4664)
+  * Add mTLS support for TSA client connections when signing with a signing config (#4620)
+  * fix: avoid panic on malformed tlog entry body (#4652)
+  * Verify validity of chain rather than just certificate (#4663)
+  * Allow --local-image with --new-bundle-format for v2 and v3 signatures (#4626)
+  * chore(deps): bump the gomod group across 1 directory with 3 updates (#4662)
+  * Bump sigstore/sigstore to resolve GHSA (#4660)
+  * Gracefully fail if bundle payload body is not a string (#4648)
+  * fix: avoid panic on malformed replace payload (#4653)
+  * chore(deps): bump github.com/sigstore/rekor from 1.4.3 to 1.5.0 (#4659)
+  * fix: avoid panic on malformed attestation payload (#4651)
+  * fix: avoid panic on malformed tlog entries (#4649)
+  * Update conformance to latest
+  * docs(cosign): clarify RFC3161 revocation semantics (#4642)
+  * Add empty predicate to cosign sign when payload type is application/vnd.in-toto+json (#4635)
+  * chore(deps): bump github.com/sigstore/fulcio from 1.8.4 to 1.8.5 (#4637)
+  * Add origin key for ctfe trusted root
+  * Add changelog updates for v3.0.4 and v2.6.2 (#4625)
+
+-------------------------------------------------------------------
 Wed Feb 11 16:54:41 UTC 2026 - meissner@suse.com
 
 - Update to version 3.0.4:
+  * CVE-2025-11065: Fixed github.com/go-viper/mapstructure/v2: sensitive
+    Information leak in logs (bsc#1250620)
+  * CVE-2026-22703: Fixed that cosign verification accepts any valid
+    Rekor entry under certain conditions (bsc#1256496)
   * Fix bundle verify path for old bundle/trusted root (#4623)
   * chore(deps): bump gitlab.com/gitlab-org/api/client-go (#4616)
   * chore(deps): bump cuelang.org/go in the gomod group (#4615)
@@ -46,6 +109,8 @@ Wed Dec 10 14:35:48 UTC 2025 - meissner@suse.com
   * chore(deps): bump github.com/sigstore/fulcio from 1.7.1 to 1.8.1 (#4519)
   * chore(deps): bump golang.org/x/crypto in /test/fakeoidc (#4535)
   * chore(deps): bump golang.org/x/crypto from 0.43.0 to 0.45.0 (#4536)
+  * CVE-2025-58181: Fixed golang.org/x/crypto/ssh: invalidated number
+    of mechanisms can cause unbounded memory consumption (bsc#1253913)
   * update go builder and cosign (#4529)
   * chore(deps): bump the gomod group across 1 directory with 7 updates (#4528)
   * chore(deps): bump sigstore/cosign-installer from 3.10.0 to 4.0.0 (#4478)
