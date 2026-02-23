@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 23 13:27:14 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.5.0
+  * Improve transf exceptions
+  * Improve lookbehind in ToddCoxeter
+
+-------------------------------------------------------------------
 Sat Jan 17 14:55:06 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.4.0
