@@ -194,4 +194,16 @@
     them with pytest.warns().</comment>
     <requestid>1296683</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c46764a7da1dddb1bb51e532bed98a39</srcmd5>
+    <version>5.3.3</version>
+    <time>1771859572</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.3.3:
+  * Fix frame order for single-frame DICOM files (pr/1387)
+    (Brendan Moloney, reviewed by CM)
+  * Replace :class:`dict` literal with :class:`set` in test.
+    (pr/1382) (CM)</comment>
+    <requestid>1334428</requestid>
+  </revision>
 </revisionlist>

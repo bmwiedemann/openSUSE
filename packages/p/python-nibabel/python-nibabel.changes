@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 23 09:17:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.3:
+  * Fix frame order for single-frame DICOM files (pr/1387)
+    (Brendan Moloney, reviewed by CM)
+  * Replace :class:`dict` literal with :class:`set` in test.
+    (pr/1382) (CM)
+
+-------------------------------------------------------------------
 Thu Jul 31 02:59:03 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch ignore-userwarnings.patch:

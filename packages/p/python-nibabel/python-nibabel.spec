@@ -1,7 +1,7 @@
 #
 # spec file for package python-nibabel
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define binaries nib-conform nib-convert nib-dicomfs nib-diff nib-ls nib-nifti-dx nib-roi nib-stats nib-tck2trk nib-trk2tck parrec2nii
 Name:           python-nibabel
-Version:        5.3.2
+Version:        5.3.3
 Release:        0
 Summary:        Tool to access multiple neuroimaging data formats
 License:        MIT
