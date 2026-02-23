@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb 15 09:52:24 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.2
+  * Make exports consistent by @DmitriyMusatkin in (#73)
+  * Remove Windows 2019 and add Windows 2025 with MSVC-17
+    by @TingDaoK in (#74)
+  * Change stale issue and discussion handling to run
+    once a week by @DmitriyMusatkin in (#76)
+
+-------------------------------------------------------------------
 Thu Jan 30 12:25:28 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.3.1
