@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 11 12:27:37 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Removed "ProtectSystem=full" from proftpd.service. That directive
+  prevents proftpd from writing to the /usr directory hierarchy,
+  which means that logged-in and properly authorized FTP users
+  cannot upload files or create directories there either. This is
+  not what system administrators who set up FTP access for local
+  users expect and it's inconsistent with how others FTP servers
+  like vsftpd are configured by default. [bsc#1256827]
+
+-------------------------------------------------------------------
 Tue Jul 22 08:28:53 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Explicitly list all installed proftpd modules in the %files

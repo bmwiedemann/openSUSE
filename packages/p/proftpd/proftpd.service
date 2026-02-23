@@ -5,7 +5,6 @@ After=systemd-user-sessions.service network.target nss-lookup.target local-fs.ta
 [Service]
 # added automatically, for details please see
 # https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
-ProtectSystem=full
 PrivateDevices=true
 ProtectHostname=true
 ProtectClock=true

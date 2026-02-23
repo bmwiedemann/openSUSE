@@ -490,4 +490,12 @@ notice when changes to the package break the installation of any
 of those modules -- as has happened in bsc#1246853.</comment>
     <requestid>1318252</requestid>
   </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>172e1d8dbf08ec22d797d173b4f3b22d</srcmd5>
+    <version>1.3.9</version>
+    <time>1771859582</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1334432</requestid>
+  </revision>
 </revisionlist>
