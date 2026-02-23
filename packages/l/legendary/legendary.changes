@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 22 03:09:11 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 0.20.41 - Freeman Pontifex (Hotfix) Latest
+  * Hotfix to change the Zipapp version to look for "python3" instead of "python". 
+    Some distros still ship "python" as Python 2 (or don't ship "python" at all 
+    and only have "python3").
+
+-------------------------------------------------------------------
 Thu Jan 29 23:27:58 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Fix error "Failed to execute script 'cli' due to unhandled exception"

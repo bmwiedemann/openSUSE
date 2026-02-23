@@ -25,4 +25,15 @@ This is also a dependency for heroic-games-launcher package.</comment>
   * Add requests_futures python module.</comment>
     <requestid>1329901</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9c01aeb225dd349bca5de6d9c9b7931c</srcmd5>
+    <version>0.20.41</version>
+    <time>1771859533</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.20.41 - Freeman Pontifex (Hotfix) Latest
+  * Hotfix to change the Zipapp version to look for &quot;python3&quot; instead of &quot;python&quot;. 
+    Some distros still ship &quot;python&quot; as Python 2 (or don't ship &quot;python&quot; at all 
+    and only have &quot;python3&quot;).</comment>
+    <requestid>1334317</requestid>
+  </revision>
 </revisionlist>
