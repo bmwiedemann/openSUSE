@@ -1,7 +1,7 @@
 #
 # spec file for package iptables
 #
-# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %endif
 
 Name:           iptables
-Version:        1.8.12
+Version:        1.8.11
 Release:        0
 Summary:        IP packet filter administration utilities
 License:        Artistic-2.0 AND GPL-2.0-only
@@ -43,6 +43,8 @@ Source4:        baselibs.conf
 Patch1:         iptables-batch.patch
 Patch2:         iptables-batch-lock.patch
 Patch3:         iptables-1.8.2-dont_read_garbage.patch
+Patch4:         iptables-nft-fix-interface-comparisons.patch
+
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex >= 2.5.33
@@ -64,8 +66,8 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
 %else
-Provides:       %name-backend-nft = %version-%release
-Obsoletes:      %name-backend-nft < %version-%release
+Provides:		%name-backend-nft = %version-%release
+Obsoletes:		%name-backend-nft < %version-%release
 Provides:       ebtables
 %endif
 # During the update to iptables 1.8, ip6tables-restore-translate, ip6tables-translate,

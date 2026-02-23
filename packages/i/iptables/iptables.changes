@@ -1,22 +1,4 @@
 -------------------------------------------------------------------
-Fri Feb 20 12:48:25 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
-
-- Update to release 1.8.12
-  * Fix null dereference parsing bitwise operations.
-  * Refuse to run under file capabilities, i.e. getauxval(AT_SECURE).
-  * Fix for all-zero mask on big endian in arptables-nft.
-  * Support adding and replacing a rule in the same batch in
-    iptables-nft.
-  * Print -X in xtables-monitor command for base chains.
-  * Remove incorrect libebt_redirect translations.
-  * Translate bare `-m sctp` match to `-p sctp` just like
-   TCP and UDP.
-  * Support for `info-request` and `info-reply` ICMP types.
-  * Fix interface comparisons in `-C` commands in iptables-nft.
-  * Document flush behaviour with --noflush for user-defined chains.
-- Delete iptables-nft-fix-interface-comparisons.patch (merged)
-
--------------------------------------------------------------------
 Mon Apr 28 19:46:06 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Provide ebtables for SLES16

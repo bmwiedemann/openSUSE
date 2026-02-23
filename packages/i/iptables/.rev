@@ -731,4 +731,11 @@ GPL version does not have ^or later^ due to inclusion of numerous GPL 2 ^only^ f
     <comment>- Update to release 1.8.12</comment>
     <requestid>1334184</requestid>
   </revision>
+  <revision rev="89" vrev="5">
+    <srcmd5>0a1859659bbe14325f5e78cf2a4ab1e2</srcmd5>
+    <version>1.8.11</version>
+    <time>1771834861</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.suse.com/show_bug.cgi?id=1215008</comment>
+  </revision>
 </revisionlist>
