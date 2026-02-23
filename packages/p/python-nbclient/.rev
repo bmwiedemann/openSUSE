@@ -358,4 +358,21 @@
 - Skip more failing tests due to new Exception message format</comment>
     <requestid>1322780</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>64bab02315059f30829ff928cbe4451d</srcmd5>
+    <version>0.10.4</version>
+    <time>1771859573</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.10.4:
+  * Allow `display_id` to be `None` #338 (@davidbrochart,
+    @YannickJadoul, @slayoo)
+
+- Update to 0.10.3
+  * Drop Python 3.9, test 3.14 and pypy-3.11 #337 (@davidbrochart)
+  * correct execution count in test for ipython 9.8 and above #335
+    (@drorspei, @davidbrochart)
+  * Update contribution with pytest instructions, remove tox. #331
+    (@dgrahn, @davidbrochart)</comment>
+    <requestid>1334431</requestid>
+  </revision>
 </revisionlist>

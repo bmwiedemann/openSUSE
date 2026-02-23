@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbclient
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@
 %{?sle15_python_module_pythons}
 
 Name:           python-nbclient%{psuffix}
-Version:        0.10.2
+Version:        0.10.4
 Release:        0
 Summary:        A client library for executing notebooks
 License:        BSD-3-Clause
@@ -46,7 +46,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jupyter-client >= 6.1.12
-Requires:       python-nbformat >= 5.1
+Requires:       python-nbformat >= 5.1.3
 Requires:       python-traitlets >= 5.4
 Requires:       ((python-jupyter-core >= 4.12 with python-jupyter-core < 5) or python-jupyter-core >= 5.1)
 BuildArch:      noarch
@@ -64,8 +64,8 @@ BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module nbclient = %{version}}
 BuildRequires:  %{python_module nbconvert >= 7}
-BuildRequires:  %{python_module pytest >= 7}
-BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest >= 9.0.1}
+BuildRequires:  %{python_module pytest-asyncio >= 1.3.0}
 BuildRequires:  %{python_module testpath}
 BuildRequires:  %{python_module xmltodict}
 %endif

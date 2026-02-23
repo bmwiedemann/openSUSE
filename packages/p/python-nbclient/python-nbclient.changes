@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 23 09:18:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.4:
+  * Allow `display_id` to be `None` #338 (@davidbrochart,
+    @YannickJadoul, @slayoo)
+
+-------------------------------------------------------------------
+Sat Dec 20 17:30:30 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.10.3
+  * Drop Python 3.9, test 3.14 and pypy-3.11 #337 (@davidbrochart)
+  * correct execution count in test for ipython 9.8 and above #335
+    (@drorspei, @davidbrochart)
+  * Update contribution with pytest instructions, remove tox. #331
+    (@dgrahn, @davidbrochart)
+
+-------------------------------------------------------------------
 Sat Dec 13 14:37:39 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.10.2:
