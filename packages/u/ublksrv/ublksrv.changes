@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Fri Feb 20 12:41:51 UTC 2026 - Markus Ebner <info@ebner-markus.de>
+
+- Initial packaging of ublksrv:
+  * Version 1.6.
+  * targets: fix ublk execution from sub-shell by closing stdio
+  * targets: fix signedness comparison warnings
+  * targets: fix signedness comparison warnings
+  * libublksrv: workaround NLOHMANN json parsing
+  * targets: iscsi: kill building warning "the frame size of 8256 bytes is larger than 5000 bytes"
+  * libublksrv: add helper ublksrv_prep_epoll_sqe()
+  * libublksrv: fix build warning in ublkdrv_process_epollfd()
+  * libublksrv: fix build warning In function 'ublk_make_cpuset'
+  * ublk.iscsi: convert ublk.iscsi to use the epollfd instead of a thread
+  * ublk.nfs: switch to use epoll for managing the nfs socket.

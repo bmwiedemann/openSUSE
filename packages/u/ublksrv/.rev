@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1f1d1131664340cab2f6628db16bd529</srcmd5>
+    <version>1.6</version>
+    <time>1771859518</time>
+    <user>anag_factory</user>
+    <comment>This package (libublksrv) is required for the ublk feature of nbdkit/libnbd</comment>
+    <requestid>1334240</requestid>
+  </revision>
+</revisionlist>

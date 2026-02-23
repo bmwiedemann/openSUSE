@@ -1,0 +1,5 @@
+<package name="ublksrv" project="openSUSE:Factory">
+  <title>Userspace daemon part (ublksrv) of the ublk framework</title>
+  <description>This is the userspace daemon part(ublksrv) of the ublk framework.</description>
+  <url>https://github.com/ublk-org/ublksrv</url>
+</package>
