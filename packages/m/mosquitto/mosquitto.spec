@@ -2,6 +2,7 @@
 # spec file for package mosquitto
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +21,7 @@
 %define c_lib   libmosquitto1
 %define cpp_lib libmosquittopp1
 Name:           mosquitto
-Version:        2.0.22
+Version:        2.0.23
 Release:        0
 Summary:        A MQTT v3.1/v3.1.1 Broker
 License:        EPL-1.0
@@ -151,10 +152,8 @@ install -D -m 644 %{SOURCE2} %{buildroot}%{_sysusersdir}/%{name}-user.conf
 %postun
 %service_del_postun %{name}.service
 
-%post -n %{c_lib} -p /sbin/ldconfig
-%postun -n %{c_lib} -p /sbin/ldconfig
-%post -n %{cpp_lib} -p /sbin/ldconfig
-%postun -n %{cpp_lib} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{c_lib}
+%ldconfig_scriptlets -n %{cpp_lib}
 
 %files
 %license edl-v10 epl-v20 LICENSE.txt
@@ -200,6 +199,7 @@ install -D -m 644 %{SOURCE2} %{buildroot}%{_sysusersdir}/%{name}-user.conf
 %{_libdir}/libmosquittopp.so.*
 
 %files devel
+%license edl-v10 epl-v20 LICENSE.txt
 %{_libdir}/libmosquitto.so
 %{_libdir}/libmosquittopp.so
 %{_includedir}/mosquitto.h

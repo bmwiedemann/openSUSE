@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Feb 21 11:09:25 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.0.23 (boo#1258671)
+  * Fix handling of disconnected sessions for `per_listener_settings
+    true`
+  * Check return values of openssl *_get_ex_data() and
+    *_set_ex_data() to prevent possible crash. This could occur only
+    in extremely unlikely situations
+  * Check return value of openssl ASN1_string_[get0_]data()
+    functions for NULL. This prevents a crash in case of incorrect
+    certificate handling in openssl
+  * Fix potential crash on startup if a malicious/corrupt
+    persistence file from mosquitto 1.5 or earlier is loaded
+  * Limit auto_id_prefix to 50 characters
+
+-------------------------------------------------------------------
 Mon Jul 14 12:28:00 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.22

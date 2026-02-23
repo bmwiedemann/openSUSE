@@ -315,4 +315,14 @@
     <comment></comment>
     <requestid>1294184</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>cbb9558493c7505ed0c8bc2468e6873d</srcmd5>
+    <version>2.0.23</version>
+    <time>1771859549</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1334263 from AndreasStieger
+
+mosquitto 2.0.23 (boo#1258671)</comment>
+    <requestid>1334368</requestid>
+  </revision>
 </revisionlist>
