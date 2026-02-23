@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Sun Feb 22 21:09:00 UTC 2026 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to 0.2.0
+  + Port to libdnf5
+
+-------------------------------------------------------------------
+Mon Mar 22 14:36:00 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.1.3
+  + Properly disable SWDB in any transactional update mode
+
+-------------------------------------------------------------------
+Fri Mar  5 19:50:03 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.1.2
+  + Add handling for externally invoked transactional updates
+
+-------------------------------------------------------------------
+Thu Mar  4 13:44:04 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.1.1
+  + Disable protection of the running kernel in transactions
+
+-------------------------------------------------------------------
+Tue Mar  2 04:02:59 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update libdnf build dependency to require 0.60+
+
+-------------------------------------------------------------------
+Thu Feb 25 04:10:34 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Use GCC 10 on openSUSE Leap 15
+
+-------------------------------------------------------------------
+Fri Feb 19 03:36:33 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Initial release 0.1.0
+- Update libdnf build dependency to require 0.58+
+- Update tukit build dependency to require 3.1.2+
+- Add dnf-data dependency for protected.d files
+- Tweak to permit either 'PackageKit' or 'microdnf' as the frontend
+
+-------------------------------------------------------------------
+Mon Feb  8 23:11:24 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Require 'microdnf' for the CLI frontend
+
+-------------------------------------------------------------------
+Fri Feb  5 19:31:36 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update libdnf build dependency to require 0.56+
+
+-------------------------------------------------------------------
+Mon Feb  1 00:28:22 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update tukit build dependency to require 3.0+
+
+-------------------------------------------------------------------
+Tue Dec 29 13:14:36 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Add dracut-transactional-update dependency
+
+-------------------------------------------------------------------
+Wed Dec 23 23:34:08 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Initial packaging

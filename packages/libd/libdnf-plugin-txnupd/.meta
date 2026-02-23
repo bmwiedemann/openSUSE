@@ -1,0 +1,8 @@
+<package name="libdnf-plugin-txnupd" project="openSUSE:Factory">
+  <title>libdnf-plugin-txnupd - libdnf5 plugin to implement transactional updates</title>
+  <description>This package contains the plugin to implement transactional updates
+as a libdnf plugin. This plugin hooks into libdnf5 for DNF and
+PackageKit to enable this functionality in normal use.
+</description>
+  <url>https://gitlab.com/VelocityLimitless/Projects/libdnf-plugin-txnupd</url>
+</package>
