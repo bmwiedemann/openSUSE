@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 21 20:10:39 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1771626210.b82f14f2:
+  * refactor(test/overview): use signatures and clean up code
+  * refactor(test/overview): reduce duplication
+
+-------------------------------------------------------------------
 Fri Feb 20 17:09:47 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1771589939.8f8502b4:
