@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 23 13:41:43 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.0.16
+  * Bug Fixes
+    + Undo some changes TrackingFileManager happened in 1.9.25
+    + Catch IOException with message "Resource deadlock avoided"
+      which can happen on Unix level when multiple process try to
+      lock same file
+    + Set content length for PUT in JDK transport
+
+-------------------------------------------------------------------
 Thu Feb 12 17:23:07 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 2.0.15

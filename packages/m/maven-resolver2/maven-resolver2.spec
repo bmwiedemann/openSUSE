@@ -1,7 +1,7 @@
 #
 # spec file for package maven-resolver2
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define version_suffix 2
 %define _buildshell /bin/bash
 Name:           %{base_name}%{version_suffix}
-Version:        2.0.15
+Version:        2.0.16
 Release:        0
 Summary:        Apache Maven Artifact Resolver library
 License:        Apache-2.0
@@ -38,7 +38,8 @@ BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
 BuildRequires:  java-devel >= 17
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  maven-wagon-provider-api methanol
+BuildRequires:  maven-wagon-provider-api
+BuildRequires:  methanol
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-xml
@@ -147,8 +148,8 @@ A transport implementation for repositories using file:// URLs.
 %package transport-jdk11
 Summary:        Maven Artifact Resolver Transport JDK 11
 Group:          Development/Libraries/Java
-Provides: %{name}-transport-jdk-11 = %{version}
-Obsoletes: %{name}-transport-jdk-11 < %{version}
+Provides:       %{name}-transport-jdk-11 = %{version}
+Obsoletes:      %{name}-transport-jdk-11 < %{version}
 
 %description transport-jdk11
 Maven Artifact Transport JDK Java 11+.
@@ -156,8 +157,8 @@ Maven Artifact Transport JDK Java 11+.
 %package transport-jdk8
 Summary:        Maven Artifact Resolver Transport JDK 8
 Group:          Development/Libraries/Java
-Provides: %{name}-transport-jdk-8 = %{version}
-Obsoletes: %{name}-transport-jdk-8 < %{version}
+Provides:       %{name}-transport-jdk-8 = %{version}
+Obsoletes:      %{name}-transport-jdk-8 < %{version}
 
 %description transport-jdk8
 Maven Artifact Transport JDK Java 8+.

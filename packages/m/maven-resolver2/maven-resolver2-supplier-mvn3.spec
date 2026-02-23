@@ -1,7 +1,7 @@
 #
 # spec file for package maven-resolver2-supplier-mvn3
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define fragment_name supplier-mvn3
 %define _buildshell /bin/bash
 Name:           %{base_name}%{version_suffix}-%{fragment_name}
-Version:        2.0.15
+Version:        2.0.16
 Release:        0
 Summary:        Maven Artifact Resolver Instance Supplier Maven3
 License:        Apache-2.0
