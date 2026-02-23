@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 23 09:18:33 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches [bsc#1256978]
+  fix build with gcc16
+  * ortp-gcc16.patch
+
+-------------------------------------------------------------------
 Mon Feb 17 07:46:20 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.3.105 (no changelog).

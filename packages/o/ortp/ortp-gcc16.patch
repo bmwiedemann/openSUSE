@@ -1,0 +1,13 @@
+--- ortp-5.3.105.orig/src/rtpsession.c	2026-02-23 09:09:51.518794331 +0000
++++ ortp-5.3.105/src/rtpsession.c	2026-02-23 09:10:56.605628922 +0000
+@@ -1897,8 +1897,7 @@ void rtp_session_unregister_event_queue(
+ 
+ void rtp_session_dispatch_event(RtpSession *session, OrtpEvent *ev) {
+ 	OList *it;
+-	int i;
+-	for (i = 0, it = session->eventqs; it != NULL; it = it->next, ++i) {
++	for (it = session->eventqs; it != NULL; it = it->next) {
+ 		ortp_ev_queue_put((OrtpEvQueue *)it->data, ortp_event_dup(ev));
+ 	}
+ 	ortp_event_destroy(ev);
+

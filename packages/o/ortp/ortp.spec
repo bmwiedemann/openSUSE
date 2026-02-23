@@ -1,7 +1,7 @@
 #
 # spec file for package ortp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2014 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,6 +32,8 @@ Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE deps.diff
 Patch0:         deps.diff
 Patch1:         set_current_version.patch
+# fix build with gcc16
+Patch2:         ortp-gcc16.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++
