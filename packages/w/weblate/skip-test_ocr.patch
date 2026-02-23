@@ -2,28 +2,28 @@
  weblate/screenshots/tests.py |    3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-Index: weblate-weblate-5.15.1/weblate/screenshots/tests.py
+Index: weblate-weblate-5.16/weblate/screenshots/tests.py
 ===================================================================
---- weblate-weblate-5.15.1.orig/weblate/screenshots/tests.py
-+++ weblate-weblate-5.15.1/weblate/screenshots/tests.py
-@@ -18,6 +18,8 @@ from django.urls import reverse
- from django.utils import timezone
+--- weblate-weblate-5.16.orig/weblate/screenshots/tests.py
++++ weblate-weblate-5.16/weblate/screenshots/tests.py
+@@ -19,6 +19,8 @@ from django.utils import timezone
+ from PIL import Image
  from rest_framework.test import APITestCase
  
 +from unittest import skip
 +
+ from weblate.auth.models import Group
  from weblate.lang.models import Language
  from weblate.screenshots.models import Screenshot
- from weblate.screenshots.views import get_tesseract, ocr_get_strings
-@@ -182,6 +184,7 @@ class ViewTest(TransactionsTestMixin, Fi
+@@ -223,6 +225,7 @@ class ViewTest(TransactionsTestMixin, Fi
          self.assertEqual(removed_changes.count(), 1)
          self.assertEqual(removed_changes[0].user, self.user)
  
 +    @skip("Test fails, gh#WeblateOrg/weblate#8931")
      def test_ocr_backend(self) -> None:
          # Extract strings
-         with get_tesseract(Language.objects.get(code="en")) as api:
-@@ -199,6 +202,7 @@ class ViewTest(TransactionsTestMixin, Fi
+         with (
+@@ -247,6 +250,7 @@ class ViewTest(TransactionsTestMixin, Fi
              matches, f"Could not find string in tesseract results: {result}"
          )
  

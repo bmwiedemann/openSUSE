@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 19 12:23:52 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.16 (CVE-2026-21889, bsc#1256765, CVE 2026-24126, bsc#1258479)
+  * Information leak via screenshots (CVE-2026-21889)
+  * Argument injection in the management console (CVE 2026-24126)
+  * Statistics generator is now triggered upon installation.
+  * Multiple capitals quality check.
+  * XML surrounding characters reduce translation errors for strings with XML entities.
+  * Bulk accepting suggestions from a specific user in Suggestions.
+  * Added Anthropic machinery integration.
+  * Regular expression no longer marks matched portions as non-translatable to allow
+    generic regular-expression-based checking of strings. Use Placeholders for checking
+    regular expression matched placeholders.
+
+-------------------------------------------------------------------
 Wed Jan  7 13:52:46 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.15.1
