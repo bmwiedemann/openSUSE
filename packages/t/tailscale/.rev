@@ -530,4 +530,16 @@
     feature (forwarded request 1330020 from rrahl0)</comment>
     <requestid>1330022</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>0dbb29b87777126942a5d24da11c7a76</srcmd5>
+    <version>1.94.2</version>
+    <time>1771863327</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.94.2:
+  * Memory leak caused by high network map response rates is resolved
+- fix typo in changelog (version)
+
+- Update to version 1.94.1: (forwarded request 1334509 from rrahl0)</comment>
+    <requestid>1334510</requestid>
+  </revision>
 </revisionlist>
