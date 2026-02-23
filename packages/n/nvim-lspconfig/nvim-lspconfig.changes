@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Feb 23 13:44:09 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 2.6.0:
+  * refactor!: deprecate old framework/configs, Nvim 0.10
+  * feat(apex_ls): add vim.lsp.config support
+  * docs: deprecation info
+  * fix(leanls): migrate to vim.lsp.config
+  * fix(utils): use fs_realpath to normalize paths in root_dir detection
+  * docs: enhance descripton of bitbake_language_server
+  * feat: add django-language-server
+  * feat: resupport force stop language server
+  * Add 'terraform' to supported filetypes
+  * fix: LspRestart/LspStop with arguments
+  * fix: exclude deno from biome/eslint/ts_ls/tsgo/vtsls
+  * docs: add deprecation notice to lua/lspconfig/configs
+  * feat: add cmd for java-language-server
+  * feat: systemd_lsp
+  * docs: ":LspInfo" in Nvim 0.12
+  * fix: deprecate systemd_ls in future version
+  * fix: drop unmaintained LS lsp/erlangls.lua
+  * fix: disable telemetry in the intelephense lsp server
+  * fix: show deprecation messages on_init
+
+-------------------------------------------------------------------
 Sat Sep 20 14:42:45 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 2.5.0:
