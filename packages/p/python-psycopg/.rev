@@ -202,4 +202,16 @@
     reliably with the GSSAPI.</comment>
     <requestid>1329586</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0dd793127dab9cd3a3313796bd8442c8</srcmd5>
+    <version>3.3.3</version>
+    <time>1771859571</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.3.3:
+  * Retain Error.pgconn when raising a single exception for
+    multiple connection attempt errors
+  * Return a proper error when server sends ErrorResponse for a
+    Sync after a Parse</comment>
+    <requestid>1334421</requestid>
+  </revision>
 </revisionlist>
