@@ -288,4 +288,24 @@
   * Declares support for Python 3.13 &amp; 3.14</comment>
     <requestid>1325684</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b8d3983bf51f0f4925c856be5d313c4f</srcmd5>
+    <version>5.5.1</version>
+    <time>1771859562</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.5.1:
+  * Fixed typographical issue in README examples, closing GHI
+    #209.
+  * Fixed typographical issue in docstring found by codespell.
+  * Aligned Project URLs in `pyproject.toml` with PEP 753
+  * Brought `pyproject.toml` (e.g., packaging metadata) into
+    alignment with PEP 639 and related packaging guidance.
+  * Improved `MANIFEST.in` to `setuptools-scm` build logic with
+    better filtering, closing GHI #266
+  * Fixed a regression in linting via `black` by deprecating
+    support for python 3.9, closing GHI #264
+  * Applied `black 26.1.0`suggestions to codebase, closing GHI
+    #269</comment>
+    <requestid>1334409</requestid>
+  </revision>
 </revisionlist>

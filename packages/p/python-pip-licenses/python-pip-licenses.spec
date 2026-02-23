@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pip-licenses
-Version:        5.5.0
+Version:        5.5.1
 Release:        0
 Summary:        Python packages license list
 License:        MIT
