@@ -18,7 +18,7 @@
 
 Name:           libzio
 %define lname   libzio1
-Version:        1.10
+Version:        1.12
 Release:        0
 Summary:        A Library for Accessing Compressed Text Files
 License:        GPL-2.0-or-later
@@ -26,8 +26,11 @@ Group:          System/Libraries
 URL:            https://libzio.sourceforge.net/
 Source0:        https://gitlab.com/bitstreamout/%{name}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
+BuildRequires:  bzip2
+BuildRequires:  gzip
 BuildRequires:  libbz2-devel
 BuildRequires:  libzstd-devel
+BuildRequires:  xz
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
 BuildRequires:  zstd
@@ -40,7 +43,7 @@ files with FILE streams.
 %package -n %lname
 Summary:        A Library for Accessing Compressed Text Files
 Group:          System/Libraries
-Provides:       libzio = 1.06
+Provides:       libzio = %{version}
 Obsoletes:      libzio <= 1.00
 
 %description -n %lname
@@ -58,7 +61,7 @@ Libzio development files including zio.h, the manual page fzopen(3),
 and static library.
 
 %prep
-%setup -q
+%autosetup -p0
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

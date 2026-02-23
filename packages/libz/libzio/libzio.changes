@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Feb 19 20:23:55 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 1.12
+  * Correct version number
+  * Only give those bytes back which had been readed
+  * Get manconv work even for 1 byte files
+  * Allow to open undetected file descriptor
+  * Avoid NULL pointer dereference in fdzopen
+- Remove patch libzio-1.11.patch now upstream
+
+-------------------------------------------------------------------
+Thu Feb 19 14:22:13 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch libzio-1.11.patch
+  * Avoid problems in fdzopen with NULL as what argument
+  * Allow to open regular files as well even if from pipes 
+
+-------------------------------------------------------------------
+Thu Feb 19 11:39:35 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 1.11
+  Modernize xz and zstd usage and much more which is to allow to
+  detect the compression type even if not reading from a file or
+  rewindable standard input but from a pipe or socket.
+  Update the manual page as well. 
+
+-------------------------------------------------------------------
 Fri Feb  6 14:32:13 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Version 1.10: Allow fdzopen() to detect magic bytes as well in
