@@ -59,4 +59,29 @@
   * Added python bytecode mtime fix for modern SUSE releases</comment>
     <requestid>1332994</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a1bcb75a8e5f393b21ac82275905705c</srcmd5>
+    <version>1.14.4</version>
+    <time>1771605882</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 1.14.4
+- Upstream changes for 1.14.4:
+  * Prevent non latin title when creating shortcut too
+  * Added jxl image support
+  * Prevent non latin characters on title
+  * Added a backup system for games.json</comment>
+    <requestid>1334102</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e935db9a71e2c1c644a2fb79127f5474</srcmd5>
+    <version>1.15.1</version>
+    <time>1771859554</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.15.1
+- Upstream changes for 1.15.1:
+  * Updated Portuguese translation
+  * Select first child when update
+  * Added favorites</comment>
+    <requestid>1334378</requestid>
+  </revision>
 </revisionlist>

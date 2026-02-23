@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Feb 21 04:20:06 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.15.1
+- Upstream changes for 1.15.1:
+  * Updated Portuguese translation
+  * Select first child when update
+  * Added favorites
+
+-------------------------------------------------------------------
+Fri Feb 20 01:07:20 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.14.4
+- Upstream changes for 1.14.4:
+  * Prevent non latin title when creating shortcut too
+  * Added jxl image support
+  * Prevent non latin characters on title
+  * Added a backup system for games.json
+
+-------------------------------------------------------------------
 Sat Feb 14 00:07:47 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.14.3
