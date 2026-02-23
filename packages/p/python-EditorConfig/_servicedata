@@ -1,4 +1,6 @@
 <servicedata>
-<service name="tar_scm">
-                <param name="url">https://github.com/editorconfig/editorconfig-core-py.git</param>
-              <param name="changesrevision">8dca1b6fb5606082f9f95fa312ecb08f0382ee4a</param></service></servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/editorconfig/editorconfig-core-py.git</param>
+    <param name="changesrevision">7ccd8d6a6e372f2678a37ccc40dd0a47468ac50c</param>
+  </service>
+</servicedata>

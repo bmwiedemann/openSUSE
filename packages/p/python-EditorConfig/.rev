@@ -100,4 +100,17 @@
 </comment>
     <requestid>1265435</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3bed3ec01dd02f063ea8c6655d51ae8d</srcmd5>
+    <version>0.17.1+git.1766559334.7ccd8d6</version>
+    <time>1771859603</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.17.1+git.1766559334.7ccd8d6:
+  * Sync Python version classifiers with requires-python &gt;= 3.10
+  * Fix deprecated APIs and correct Python version requirement
+  * update dependencies
+  * Remove python 2 compatibility, add type hints
+</comment>
+    <requestid>1334491</requestid>
+  </revision>
 </revisionlist>

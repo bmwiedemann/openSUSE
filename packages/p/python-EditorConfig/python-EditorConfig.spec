@@ -1,7 +1,7 @@
 #
 # spec file for package python-EditorConfig
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define modname editorconfig
 Name:           python-EditorConfig
-Version:        0.17.0+git.1743012229.8dca1b6
+Version:        0.17.1+git.1766559334.7ccd8d6
 Release:        0
 Summary:        File Locator and Interpreter for Python
 License:        BSD-2-Clause AND Python-2.0

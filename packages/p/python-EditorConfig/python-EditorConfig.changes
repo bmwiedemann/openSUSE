@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb 22 18:21:55 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.17.1+git.1766559334.7ccd8d6:
+  * Sync Python version classifiers with requires-python >= 3.10
+  * Fix deprecated APIs and correct Python version requirement
+  * update dependencies
+  * Remove python 2 compatibility, add type hints
+
+-------------------------------------------------------------------
 Sat Mar 29 21:11:42 UTC 2025 - mcepl@cepl.eu
 
 - Update to version 0.17.0+git.1743012229.8dca1b6:
