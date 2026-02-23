@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 23 08:44:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.3:
+  * Retain Error.pgconn when raising a single exception for
+    multiple connection attempt errors
+  * Return a proper error when server sends ErrorResponse for a
+    Sync after a Parse
+
+-------------------------------------------------------------------
 Tue Jan 27 07:37:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.2:
