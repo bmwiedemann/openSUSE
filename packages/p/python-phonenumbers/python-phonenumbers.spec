@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-phonenumbers
-Version:        9.0.22
+Version:        9.0.24
 Release:        0
 Summary:        Python version of Google's common library for international phone numbers
 License:        Apache-2.0
