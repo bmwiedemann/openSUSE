@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Feb 16 09:23:07 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 06.02.04 - 2026-02-15
+
+- IMPROVEMENT: remind: Add the mblower and mbupper functions, which are
+  multibyte counterparts to lower and upper.
+
+- MINOR NEW FEATURE: remind: Add the $Shaded system variable that counts
+  how many times a "SPECIAL SHADE" reminder has triggered.  See the
+  man page for an example of how this can be useful.
+
+- MINOR IMPROVEMENT: Make all programs that ship with Remind (remind,
+  rem2ps, rem2pdf, rem2html and tkremind) accept a --version long
+  option.
+
+- CHANGE: remind: Remind used to warn if the POP-OMIT-CONTEXT, POP-VARS
+  or POP-FUNCS command corresponding to the relevant PUSH command was
+  in a different file than the PUSH command.  But there are valid use
+  cases for this, so Remind no longer emits the warning unless you use
+  the "-dp" debugging flag.
+
+-------------------------------------------------------------------
 Thu Feb  5 23:17:05 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 06.02.03 - 2026-02-05
