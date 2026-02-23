@@ -48,14 +48,15 @@
 %bcond_without omemo_qrcode
 #
 Name:           %{pname}
-Version:        0.15.1
+Version:        0.16.0
 Release:        0
 Summary:        Console-based XMPP client
 License:        SUSE-GPL-3.0+-with-openssl-exception
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://profanity-im.github.io
-Source:         https://github.com/profanity-im/profanity/releases/download/%{version}/profanity-%{version}.tar.gz
+Source:         https://github.com/profanity-im/profanity/releases/download/%{version}/profanity-%{version}_meson.tar.xz
 BuildRequires:  pkgconfig
+BuildRequires:  meson
 # mandatory requirements
 BuildRequires:  pkgconfig(glib-2.0) >= 2.62
 BuildRequires:  pkgconfig(libcurl) >= 7.62.0
@@ -139,46 +140,42 @@ This package contains the files needed to build with libprofanity.
 
 %prep
 %autosetup -p1 -n %{sname}-%{version}
-sed -i -e "s/python-config/python3-config/g" configure
 
 %build
-%configure \
+%meson \
 %if %{with notifications}
-	--enable-notifications \
+	-Dnotifications=enabled \
 %endif
 %if %{with python}
-	PYTHON_VERSION=3 \
-	--enable-python-plugins \
+	-Dpython-plugins=enabled\
 %endif
-	--enable-c-plugins \
-	--enable-plugins \
+	-Dc-plugins=enabled \
 %if %{with otr}
-	--enable-otr \
+	-Dotr=enabled \
 %endif
 %if %{with gpg}
-	--enable-pgp \
+	-Dpgp=enabled \
 %endif
 %if %{with omemo}
-	--enable-omemo \
+	-Domemo=enabled \
 %endif
 %if %{with xscreensaver}
-	--with-xscreensaver \
+	-Dxscreensaver=enabled \
 %endif
-	--with-themes \
 %if %{with icons}
-	--enable-icons-and-clipboard \
+	-Dicons-and-clipboard=enabled \
 %endif
 %if %{with scaled_avatars}
-	--enable-gdk-pixbuf \
+	-Dgdk-pixbuf=enabled \
 %endif
 %if %{with omemo_qrcode}
-	--enable-omemo-qrcode \
+	-Domemo-qrcode=enabled \
 %endif
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %if "%{flavor}" == "mini"
 rm %{buildroot}%{_includedir}/profapi.h
@@ -187,7 +184,7 @@ rm %{buildroot}%{_libdir}/libprofanity.so*
 
 %check
 %if %{with tests}
-%make_build check
+%meson_test
 %endif
 
 # only standard flavor builds the plugin library
@@ -200,6 +197,7 @@ rm %{buildroot}%{_libdir}/libprofanity.so*
 %{_bindir}/profanity
 %{_mandir}/man1/*1%{?ext_man}
 %{_datadir}/profanity/
+%{_datadir}/doc/profanity/
 
 # only standard flavor builds the plugin library
 %if "%{flavor}" == ""

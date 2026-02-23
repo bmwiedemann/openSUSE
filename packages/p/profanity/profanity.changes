@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Feb 23 09:40:24 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  * Add new command /changes (#2080)
+  * With that command one can see the modifications of the runtime
+    configuration vs. the saved configuration.
+  * Explain the different kinds of messages in the manpage (#2063)
+  * Fix OTR detection (#1957, #2072)
+  * Fix OMEMO startup (79ff9ba)
+  * Fix overwriting new accounts when running multiple instances (#2080)
+  * Fix reconnect when no account has been set up yet (#2080)
+  * Don't publish keys if the server doesn't support pubsub (#2078, #2080)
+  * Fix compilation on Apple silicon macs (#2075)
+  * Handle SIGTERM and SIGHUP (#2082)
+  * Cleanup (#2067, #2080)
+  * Add cygwin CI (#2066)
+  * Replace ACX_PTHREAD with AX_PTHREAD (#2062)
+  * Add meson build system (#2086)
+
+-------------------------------------------------------------------
 Fri Aug 22 07:37:02 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.15.1:
