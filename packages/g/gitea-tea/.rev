@@ -158,4 +158,12 @@
   * gitea-tea-Fix-termenv-OSC-RGBA-handling.patch (forwarded request 1332684 from michals)</comment>
     <requestid>1332849</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c3ad83f9d17246806c725e569315b06a</srcmd5>
+    <version>0.12.0</version>
+    <time>1771859593</time>
+    <user>anag_factory</user>
+    <comment>update to 0.12.0 (remove all four patches, currently checking if they are upstream already) (forwarded request 1334120 from ojkastl_buildservice)</comment>
+    <requestid>1334459</requestid>
+  </revision>
 </revisionlist>

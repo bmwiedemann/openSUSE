@@ -3,7 +3,7 @@
   <service name="tar_scm" mode="manual">
     <param name="url">https://gitea.com/gitea/tea.git</param>
     <param name="scm">git</param>
-    <param name="revision">61d4e571a7e086f53f5f8a7713151839e1a32151</param>
+    <param name="revision">refs/tags/v0.12.0</param>
     <param name="filename">gitea-tea</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v(.*)\+0</param>

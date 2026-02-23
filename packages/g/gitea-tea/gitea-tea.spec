@@ -17,18 +17,14 @@
 
 
 Name:           gitea-tea
-Version:        0.11.1
+Version:        0.12.0
 Release:        0
 Summary:        A command line tool to interact with Gitea servers
 License:        MIT
 URL:            https://gitea.com/gitea/tea
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Patch0:         fix-CVE-2025-58190.patch
-Patch1:         fix-CVE-2025-47911.patch
-Patch2:         gitea-tea-Fix-termenv-OSC-RGBA-handling.patch
-Patch3:         remove-config-file-group-readwrite-permission-856.patch
-BuildRequires:  golang(API) >= 1.24
+BuildRequires:  golang(API) >= 1.25
 Conflicts:      tea
 
 %description
@@ -85,6 +81,7 @@ go run \
 install -v -m 0755 -D -t %{buildroot}%{_bindir} tea
 
 ./tea completion bash > contrib/autocomplete.sh
+sed -i '1d' contrib/autocomplete.sh
 install -v -m 0644 -D contrib/autocomplete.sh \
     %{buildroot}%{_datadir}/bash-completion/completions/tea
 

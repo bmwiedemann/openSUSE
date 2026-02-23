@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Fri Feb 20 05:59:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.12.0:
+  * New Features
+    - Add tea actions commands for managing workflow runs and
+      workflows in #880, #796
+    - Add tea api subcommand for arbitrary API calls not covered by
+      existing commands in #879
+    - Add repository webhook management commands in #798
+    - Add JSON output support for single PR view in #864
+    - Add JSON output and file redirection for issue detail view in
+      #841
+    - Support creating AGit flow pull requests in #867
+  * Bug Fixes
+    - Fix authentication via environment variables when specifying
+      repo argument in #809
+    - Fix issue detail view ignoring --owner flag in #899
+    - Fix PR create crash in #823
+    - Fix TTY prompt handling in #897
+    - Fix termenv OSC RGBA handling in #907
+    - Fix labels delete command and --id flag type in #865
+    - Fix delete repo command description in #858
+    - Fix pagination flags for secrets list, webhooks list, and
+      pull requests list in #853, #852,
+    - #851
+    - Enable git worktree support and improve PR create error
+      handling in #850
+    - Only prompt for SSH passphrase when necessary in #844
+    - Only prompt for login confirmation when no default login is
+      set in #839
+    - Skip token uniqueness check when using SSH authentication in
+      #898
+    - Require non-empty token in GetLoginByToken in #895
+    - Fix config file permissions to remove group read/write in
+      #856
+  * Improvements
+    - Add file locking for safe concurrent access to config file in
+      #881
+    - Improve error messages throughout the CLI in #871
+    - Send consistent HTTP request headers in #888
+    - Revert requiring HTTP/HTTPS login URLs; restore SSH as a
+      login method in #891
+    - Refactor context into dedicated subpackages in #873, #888
+    - General code cleanup and improvements in #869, #870
+    - Add test coverage for login matching in #820
+  * Build & Dependencies
+    - Build with Go 1.25 in #886
+    - Build for Windows aarch64
+    - Update Gitea SDK version in #868
+    - Update Nix flake in #872
+    - Update dependencies including lipgloss v2, urfave/cli v3.6.2,
+      go-git v5.16.5, and various Go modules in #849, #875, #876,
+      #878, #884, #885, #900, #901, #904, #905
+    - Update CI actions (checkout v6, setup-go v6) in #882, #883
+- remove patches that do no longer apply:
+  - fix-CVE-2025-58190.patch
+  - fix-CVE-2025-47911.patch
+  - gitea-tea-Fix-termenv-OSC-RGBA-handling.patch
+  - remove-config-file-group-readwrite-permission-856.patch
+
+-------------------------------------------------------------------
 Thu Feb 12 11:58:02 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix terminal rendering errors
