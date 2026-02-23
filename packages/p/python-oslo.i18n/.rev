@@ -377,4 +377,18 @@
   * Update master for stable/2025.2</comment>
     <requestid>1318329</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ee75f1d6e639a5af098da7273f964a74</srcmd5>
+    <version>6.7.2</version>
+    <time>1771859563</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.7.2:
+  * Add typing classifier
+  * Enable logging related ruff checks
+  * ruff: Enable missing E5 check
+  * Run mypy from tox
+  * Delay string interpolations at logging calls
+  * Add missing py.typed file</comment>
+    <requestid>1334410</requestid>
+  </revision>
 </revisionlist>
