@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 23 09:29:32 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- fix CVE-2025-69725 by updating chi
+  added _service for module fixing
+
+-------------------------------------------------------------------
 Mon Jan 19 13:48:50 UTC 2026 - Christian Goll <cgoll@suse.com>
 
 - updated to v4.6.5 with following changes:
