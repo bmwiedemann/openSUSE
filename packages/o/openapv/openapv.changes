@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 23 12:40:21 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.2.1.1:
+  * Applies the pretection code to avoid to access over the boundary of input
+    bitstream memory
+
+-------------------------------------------------------------------
 Fri Jan 30 11:30:49 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.2.1.0:

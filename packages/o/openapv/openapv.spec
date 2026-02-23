@@ -19,7 +19,7 @@
 %define         sover 2
 %define         sname oapv
 Name:           openapv
-Version:        0.2.1.0
+Version:        0.2.1.1
 Release:        0
 Summary:        Open Advanced Professional Video Codec
 License:        BSD-3-Clause

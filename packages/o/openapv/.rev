@@ -82,4 +82,12 @@
   * Fixed bug in tile calculation in ImHex pattern file (forwarded request 1330007 from rrahl0)</comment>
     <requestid>1330008</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>280b6921d8eb122466ea1a1b3c3ae23b</srcmd5>
+    <version>0.2.1.1</version>
+    <time>1771859611</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1334496</requestid>
+  </revision>
 </revisionlist>
