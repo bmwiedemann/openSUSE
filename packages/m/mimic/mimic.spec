@@ -1,7 +1,7 @@
 #
 # spec file for package mimic
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ Group:          Productivity/Text/Convertors
 URL:            https://mimic.mycroft.ai
 Source:         https://github.com/MycroftAI/mimic/archive/%{version}.tar.gz
 Patch0:         mimic-HTS_Free.patch
+# fix build with gcc16
+Patch1:         mimic-gcc16.patch
 BuildRequires:  automake
 BuildRequires:  gcc
 BuildRequires:  libtool

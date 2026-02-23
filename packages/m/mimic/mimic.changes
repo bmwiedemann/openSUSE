@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 23 10:22:02 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches [bsc#1256974]
+  fix build with gcc16
+  * mimic-gcc16.patch
+
+-------------------------------------------------------------------
 Mon Oct 31 14:45:25 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add mimic-HTS_Free.patch: use HTS_free instead of libc's free()

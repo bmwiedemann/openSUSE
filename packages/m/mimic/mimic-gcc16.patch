@@ -1,0 +1,94 @@
+diff -upr mimic1-1.3.0.1.orig/src/audio/audio.c mimic1-1.3.0.1/src/audio/audio.c
+--- mimic1-1.3.0.1.orig/src/audio/audio.c	2026-02-23 10:03:35.461454158 +0000
++++ mimic1-1.3.0.1/src/audio/audio.c	2026-02-23 10:04:35.547223632 +0000
+@@ -310,7 +310,7 @@ int mimic_play_wave(cst_wave *w)
+ int mimic_play_wave_sync(cst_wave *w, cst_relation *rel,
+                    int (*call_back) (cst_item *))
+ {
+-    int q, i, n, r;
++    int i, n, r;
+     cst_audiodev *ad;
+     float r_pos;
+     cst_item *item;
+@@ -328,7 +328,6 @@ int mimic_play_wave_sync(cst_wave *w, cs
+                          CST_AUDIO_LINEAR16)) == NULL)
+         return CST_ERROR_FORMAT;
+ 
+-    q = 0;
+     item = relation_head(rel);
+     r_pos = w->sample_rate * 0;
+     for (i = 0; i < w->num_samples; i += r / 2)
+@@ -350,7 +349,6 @@ int mimic_play_wave_sync(cst_wave *w, cs
+             n = w->num_samples - i;
+ 
+         r = mimic_audio_write(ad, &w->samples[i], n * 2);
+-        q += r;
+         if (r <= 0)
+             cst_errmsg("failed to write %d samples\n", n);
+     }
+diff -upr mimic1-1.3.0.1.orig/src/hts/hts_engine_API/lib/HTS_engine.c mimic1-1.3.0.1/src/hts/hts_engine_API/lib/HTS_engine.c
+--- mimic1-1.3.0.1.orig/src/hts/hts_engine_API/lib/HTS_engine.c	2026-02-23 10:03:35.467307112 +0000
++++ mimic1-1.3.0.1/src/hts/hts_engine_API/lib/HTS_engine.c	2026-02-23 10:05:33.232960633 +0000
+@@ -432,7 +432,7 @@ double HTS_Engine_get_generated_speech(H
+ /* HTS_Engine_generate_state_sequence: genereate state sequence (1st synthesis step) */
+ static HTS_Boolean HTS_Engine_generate_state_sequence(HTS_Engine * engine)
+ {
+-   size_t i, state_index, model_index;
++   size_t i, state_index;
+    double f;
+ 
+    if (HTS_SStreamSet_create(&engine->sss, &engine->ms, &engine->label, engine->condition.phoneme_alignment_flag, engine->condition.speed, engine->condition.duration_iw, engine->condition.parameter_iw, engine->condition.gv_iw) != TRUE) {
+@@ -441,7 +441,6 @@ static HTS_Boolean HTS_Engine_generate_s
+    }
+    if (engine->condition.additional_half_tone != 0.0) {
+       state_index = 0;
+-      model_index = 0;
+       for (i = 0; i < HTS_Engine_get_total_state(engine); i++) {
+          f = HTS_Engine_get_state_mean(engine, 1, i, 0);
+          f += engine->condition.additional_half_tone * HALF_TONE;
+@@ -453,7 +452,6 @@ static HTS_Boolean HTS_Engine_generate_s
+          state_index++;
+          if (state_index >= HTS_Engine_get_nstate(engine)) {
+             state_index = 0;
+-            model_index++;
+          }
+       }
+    }
+diff -upr mimic1-1.3.0.1.orig/src/synth/cst_ssml.c mimic1-1.3.0.1/src/synth/cst_ssml.c
+--- mimic1-1.3.0.1.orig/src/synth/cst_ssml.c	2026-02-23 10:03:35.470454273 +0000
++++ mimic1-1.3.0.1/src/synth/cst_ssml.c	2026-02-23 10:06:57.816041285 +0000
+@@ -82,7 +82,6 @@ static cst_features *ssml_get_attributes
+     cst_features *a = new_features();
+     const char *name, *val;
+     const char *fnn, *vnn;
+-    int i = 0;
+ 
+     set_charclasses(ts,
+                     ts->p_whitespacesymbols,
+@@ -132,7 +131,6 @@ static cst_features *ssml_get_attributes
+             return 0;
+         }
+         name = ts_get(ts);
+-        i++;
+     }
+ 
+     set_charclasses(ts,
+diff -upr mimic1-1.3.0.1.orig/src/synth/mimic.c mimic1-1.3.0.1/src/synth/mimic.c
+--- mimic1-1.3.0.1.orig/src/synth/mimic.c	2026-02-23 10:03:35.470454273 +0000
++++ mimic1-1.3.0.1/src/synth/mimic.c	2026-02-23 10:08:06.051913077 +0000
+@@ -265,7 +265,6 @@ int mimic_ts_to_speech(cst_tokenstream *
+     const char *token;
+     cst_item *t;
+     cst_relation *tokrel;
+-    float durs = 0;
+     int num_tokens;
+     cst_wave *w;
+     cst_breakfunc breakfunc = default_utt_break;
+@@ -322,7 +321,6 @@ int mimic_ts_to_speech(cst_tokenstream *
+                 err = mimic_process_output(utt, outtype, TRUE, &new_durs);
+                 if (err < 0)
+                     goto cleanup;
+-                durs += new_durs;
+                 delete_utterance(utt);
+                 utt = NULL;
+             }
