@@ -158,4 +158,41 @@
     MySQLCursor.statement when query text contains code comments</comment>
     <requestid>1290773</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>443e88c4571df095cf01e1d5a7d8a612</srcmd5>
+    <version>9.6.0</version>
+    <time>1771859615</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.6.0:
+  * WL#17049: Remove usage of SQL functions MD5() and SHA1()
+  * WL#17088: MySQL Connector Python HeatWave GenAI and ML SDK
+  * WL#17048: Remove Python 3.9 support
+  * WL#17045: Add support for Python 3.14
+  * WL#16966: Upgrade Python lz4 version
+  * WL#16963: Update the OpenTelemetry version
+  * WL#16962: Update the Python Protobuf version
+  * WL#16954: Make sdist packages pip installable
+  * BUG#38072835: Authentication OCI plugin option parameters not
+    being supported by the aio connector
+  * BUG#37868219: RPM packages have incorrect copyright year in
+    their metadata
+  * BUG#37859771: mysql/connector python version 9.3.0 has a
+    regression which cannot persist binary data with percent
+    signs in it
+  * BUG#37820231: Text based django ORM filters doesn't work with
+    Connector/Python
+  * BUG#37806057: Rename extra option (when installing wheel
+    package) to install webauthn functionality dependencies
+  * BUG#37774513: Inconsistent conversion to_sql for cext vs pure
+    python
+  * BUG#37642447: The license type is missing from RPM package
+  * BUG#37627508: mysql/connector python fetchmany() has an off
+    by one bug when argument given as 1
+  * BUG#37047789: Python connector does not support Django enum
+  * BUG#36733242: Contribution: Add Connection Pooling Support
+    for AsyncIO Connector
+  * BUG#36452514: Missing version info resources
+  * BUG#34950958: MySQL Python Connector doesn't work with ssh in</comment>
+    <requestid>1334402</requestid>
+  </revision>
 </revisionlist>
