@@ -1,7 +1,7 @@
 #
 # spec file for package SwayNotificationCenter
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global alt_pkg_name swaync
 
 Name:           SwayNotificationCenter
-Version:        0.12.3
+Version:        0.12.4
 Release:        0
 Summary:        A simple GTK notification daemon
 License:        GPL-3.0-only
@@ -104,6 +104,7 @@ Fish command line completion support for %{name}
 %{_bindir}/swaync-client
 %{_userunitdir}/swaync.service
 %{_datadir}/dbus-1/services/org.erikreider.swaync.service
+%{_datadir}/dbus-1/services/org.erikreider.swaync.cc.service
 %{_datadir}/glib-2.0/schemas/org.erikreider.swaync.gschema.xml
 %{_mandir}/man1/swaync-client.1%{?ext_man}
 %{_mandir}/man1/swaync.1%{?ext_man}

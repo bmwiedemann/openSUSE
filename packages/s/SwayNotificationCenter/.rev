@@ -112,4 +112,20 @@
     <comment></comment>
     <requestid>1319121</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>98b7170a994c0dabddfbf5a0ae60e47a</srcmd5>
+    <version>0.12.4</version>
+    <time>1771859558</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.12.4:
+  - Major notification logic refactor + made some DBus methods private
+  - Improve large notification groups performance
+  - Don't focus incoming notifications in the Control Center
+  - Fixed not being able to use inline replies in the Control Center
+  - Fixed swaync-client not working on some systems
+  - Fixed keyboard shortcuts sometimes not working
+  - docs: fixed typo 'acton' to 'action'
+</comment>
+    <requestid>1334215</requestid>
+  </revision>
 </revisionlist>

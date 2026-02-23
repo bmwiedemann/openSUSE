@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 13 18:01:02 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 0.12.4:
+  - Major notification logic refactor + made some DBus methods private
+  - Improve large notification groups performance
+  - Don't focus incoming notifications in the Control Center
+  - Fixed not being able to use inline replies in the Control Center
+  - Fixed swaync-client not working on some systems
+  - Fixed keyboard shortcuts sometimes not working
+  - docs: fixed typo 'acton' to 'action'
+
+-------------------------------------------------------------------
 Thu Nov 20 10:53:26 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 0.12.3:
