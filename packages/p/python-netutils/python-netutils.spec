@@ -1,7 +1,7 @@
 #
 # spec file for package python-netutils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-netutils
-Version:        1.15.2
+Version:        1.17.1
 Release:        0
 Summary:        Common helper functions useful in network automation
 License:        Apache-2.0

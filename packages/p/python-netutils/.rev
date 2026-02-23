@@ -181,4 +181,31 @@
     <comment></comment>
     <requestid>1325973</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c006f0a62d3e6a150e1338b8b379b855</srcmd5>
+    <version>1.17.1</version>
+    <time>1771859569</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.17.1:
+  * #803 - Fixed an issue where an empty config would raise an
+    error when parsing Palo Alto Networks PanOS.
+- update to 1.17.0:
+  * #752 - Added custom parsing of HP Network OS devices.
+  * #793 - Added hp_comware running configuration command to the
+    RUNNING_CONFIG_MAPPER.
+  * #780 - Fixed parsing of login banner in Palo Alto Networks
+    config.
+- update to 1.16.0:
+  * #748 - Added parsing for FSP150F2 and FSP150F3 ADVA AOS
+    device configs.
+  * #778 - Added ConfigParser class for Ciena SAOS/10 devices.
+  * #723 - Fixed the GitHub release failures occurring in CI.
+  * #741 - Fixed the logic error where `salt=0` was ignored in
+    `encrypt_cisco_type7`.
+  * #745 - Fixed OUI GitHub Actions workflow to correctly fetch
+    and generate OUI mappings.
+  * #750 - Fixed PAN-OS banner parsing by removing IOS-style
+    banner end normalization.</comment>
+    <requestid>1334416</requestid>
+  </revision>
 </revisionlist>
