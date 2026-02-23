@@ -20,7 +20,7 @@
 %define library_version 1.0.0
 %define library_soversion 1
 Name:           aws-checksums
-Version:        0.2.8
+Version:        0.2.10
 Release:        0
 Summary:        Checksums package for AWS SDK for C
 License:        Apache-2.0

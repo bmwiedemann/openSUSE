@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 15 09:53:04 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.10
+  * Add flag to disable unknown pragmas on ARM by @DmitriyMusatkin in (#111)
+- from version 0.2.9
+  * Add XXHash algos by @DmitriyMusatkin in (#110)
+
+-------------------------------------------------------------------
 Fri Jan  2 13:04:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2.8:
