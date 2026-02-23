@@ -1,7 +1,7 @@
 #
 # spec file for package mousam
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           mousam
-Version:        1.4.0
+Version:        1.4.2
 Release:        0
 Summary:        A lightweight weather app
 License:        GPL-3.0-or-later
 URL:            https://github.com/amit9838/mousam
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM mousam-toggle-unit-settings-button.patch gh#amit9838/mousam#179 badshah400@gmail.com -- fix: use Gtk.ToggleButton.toggled for setting unit; upstream commit
-Patch1:         https://github.com/amit9838/mousam/commit/0ec1d98a02c2a10e8520e21e5002709905ac799c.patch#/mousam-toggle-unit-settings-button.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme

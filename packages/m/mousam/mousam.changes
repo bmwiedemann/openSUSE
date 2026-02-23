@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Feb 18 18:20:51 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.4.2:
+  * Added option to reset app data from settings.
+  * Fixed issue where bar showing incorrect data.
+- Changes from version 1.4.1:
+  * UI & Performance Improvements:
+    - Updated and corrected several UI icons.
+    - Improved spacing and overall visual consistency.
+    - General performance improvements and smoother interactions.
+    - Updated runtime dependencies to improve stability and
+      maintainability.
+  * Bug Fixes:
+    - Fixed an application crash caused by timeapi.io.
+    - Fixed unit toggle handling using Gtk.ToggleButton.toggled.
+    - Fixed hourly weather API issue by using timezone=auto.
+    - Enabled smooth scrolling for hourly forecasts without
+      requiring the Shift key.
+    - Added proper imperial unit conversions and handling for
+      inHg.
+    - Fixed minor typos and small UI inconsistencies.
+- Drop mousam-toggle-unit-settings-button.patch: upstreamed.
+
+-------------------------------------------------------------------
 Sat May 10 07:35:36 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.4.0:
