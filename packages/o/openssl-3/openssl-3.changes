@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Jan 30 19:14:25 UTC 2026 - Giuliano Belinassi <giuliano.belinassi@suse.com>
+
+- Do not guard ulp-macros with arch x86-64.
+
+-------------------------------------------------------------------
+Tue Jan 27 14:04:21 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Security fixes:
+  * Missing ASN1_TYPE validation in PKCS#12 parsing
+    - openssl-CVE-2026-22795.patch [bsc#1256839, CVE-2026-22795]
+  * ASN1_TYPE Type Confusion in the PKCS7_digest_from_attributes() function
+    - openssl-CVE-2026-22795.patch [bsc#1256840, CVE-2026-22796]
+  * Missing ASN1_TYPE validation in TS_RESP_verify_response() function
+    - openssl-CVE-2025-69420.patch [bsc#1256837, CVE-2025-69420]
+  * NULL Pointer Dereference in PKCS12_item_decrypt_d2i_ex function
+    - openssl-CVE-2025-69421.patch [bsc#1256838, CVE-2025-69421]
+  * Out of bounds write in PKCS12_get_friendlyname() UTF-8 conversion
+    - openssl-CVE-2025-69419.patch [bsc#1256836, CVE-2025-69419]
+  * TLS 1.3 CompressedCertificate excessive memory allocation
+    - openssl-CVE-2025-66199.patch [bsc#1256833, CVE-2025-66199]
+  * Heap out-of-bounds write in BIO_f_linebuffer on short writes
+    - openssl-CVE-2025-68160.patch [bsc#1256834, CVE-2025-68160]
+  * Unauthenticated/unencrypted trailing bytes with low-level OCB function calls
+    - openssl-CVE-2025-69418.patch [bsc#1256835, CVE-2025-69418]
+  * 'openssl dgst' one-shot codepath silently truncates inputs greater than 16MB
+    - openssl-CVE-2025-15469.patch [bsc#1256832, CVE-2025-15469]
+  * Stack buffer overflow in CMS AuthEnvelopedData parsing
+    - openssl-CVE-2025-15467.patch [bsc#1256830, CVE-2025-15467]
+    - openssl-CVE-2025-15467-comments.patch
+    - openssl-CVE-2025-15467-test.patch
+  * Improper validation of PBMAC1 parameters in PKCS#12 MAC verification
+    - openssl-CVE-2025-11187.patch [bsc#1256829, CVE-2025-11187]
+  * NULL dereference in SSL_CIPHER_find() function on unknown cipher ID
+    - openssl-CVE-2025-15468.patch [bsc#1256831, CVE-2025-15468]
+- Enable livepatching support for ppc64le [bsc#1257274]
+
+-------------------------------------------------------------------
+Wed Oct  1 00:08:17 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Security fix: [bsc#1250232 CVE-2025-9230]
+  * Fix out-of-bounds read & write in RFC 3211 KEK unwrap
+  * Add patch openssl-CVE-2025-9230.patch
+- Security fix: [bsc#1250233 CVE-2025-9231]
+  * Fix timing side-channel in SM2 algorithm on 64 bit ARM
+  * Add patch openssl-CVE-2025-9231.patch
+- Security fix: [bsc#1250234 CVE-2025-9232]
+  * Fix out-of-bounds read in HTTP client no_proxy handling
+  * Add patch openssl-CVE-2025-9232.patch
+
+-------------------------------------------------------------------
 Wed Sep 17 00:56:31 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 3.5.3:

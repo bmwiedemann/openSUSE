@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-3
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -126,12 +126,41 @@ Patch43:        openssl-FIPS-Allow-SHA1-in-seclevel-2-if-rh-allow-sha1-signature
 Patch44:        openssl-FIPS-Fix-openssl-speed-KMAC.patch
 # PATCH-FIX-SUSE Fix a bogus warning caused by -Wfree-nonheap-object
 Patch45:        openssl-Fix-Wfree-nonheap-object-warning.patch
+# PATCH-FIX-UPSTREAM bsc#1250232 CVE-2025-9230: Fix out-of-bounds read & write in RFC 3211 KEK Unwrap
+Patch46:        openssl-CVE-2025-9230.patch
+# PATCH-FIX-UPSTREAM bsc#1250233 CVE-2025-9231: Fix timing side-channel in SM2 algorithm on 64 bit ARM
+Patch47:        openssl-CVE-2025-9231.patch
+# PATCH-FIX-UPSTREAM bsc#1250234 CVE-2025-9232: Fix out-of-bounds read in HTTP client no_proxy handling
+Patch48:        openssl-CVE-2025-9232.patch
+# PATCH-FIX-UPSTREAM bsc#1256839 CVE-2026-22795: Missing ASN1_TYPE validation in PKCS#12 parsing
+# PATCH-FIX-UPSTREAM bsc#1256840 CVE-2026-22796: ASN1_TYPE Type Confusion in the PKCS7_digest_from_attributes() function
+Patch50:        openssl-CVE-2026-22795.patch
+# PATCH-FIX-UPSTREAM bsc#1256837 CVE-2025-69420: Missing ASN1_TYPE validation in TS_RESP_verify_response() function
+Patch51:        openssl-CVE-2025-69420.patch
+# PATCH-FIX-UPSTREAM bsc#1256838 CVE-2025-69421: NULL Pointer Dereference in PKCS12_item_decrypt_d2i_ex function
+Patch52:        openssl-CVE-2025-69421.patch
+# PATCH-FIX-UPSTREAM bsc#1256836 CVE-2025-69419: Out of bounds write in PKCS12_get_friendlyname() UTF-8 function
+Patch53:        openssl-CVE-2025-69419.patch
+# PATCH-FIX-UPSTREAM bsc#1256833 CVE-2025-66199: TLS 1.3 CompressedCertificate excessive memory allocation
+Patch54:        openssl-CVE-2025-66199.patch
+# PATCH-FIX-UPSTREAM bsc#1256834 CVE-2025-68160: Heap out-of-bounds write in BIO_f_linebuffer on short writes
+Patch55:        openssl-CVE-2025-68160.patch
+# PATCH-FIX-UPSTREAM bsc#1256835 CVE-2025-69418: Unauthenticated/unencrypted trailing bytes with low-level OCB function calls
+Patch56:        openssl-CVE-2025-69418.patch
+# PATCH-FIX-UPSTREAM bsc#1256832 CVE-2025-15469: 'openssl dgst' one-shot codepath silently truncates inputs greater than 16MB
+Patch57:        openssl-CVE-2025-15469.patch
+# PATCH-FIX-UPSTREAM bsc#1256830 CVE-2025-15467: Stack buffer overflow in CMS AuthEnvelopedData parsing
+Patch58:        openssl-CVE-2025-15467.patch
+Patch59:        openssl-CVE-2025-15467-comments.patch
+Patch60:        openssl-CVE-2025-15467-test.patch
+# PATCH-FIX-UPSTREAM bsc#1256829 CVE-2025-11187: Improper validation of PBMAC1 parameters in PKCS#12 MAC verification
+Patch61:        openssl-CVE-2025-11187.patch
+# PATCH-FIX-UPSTREAM bsc#1256831 CVE-2025-15468: NULL dereference in SSL_CIPHER_find() function on unknown cipher ID
+Patch62:        openssl-CVE-2025-15468.patch
 
 # ulp-macros is available according to SUSE version.
-%ifarch x86_64
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1540
 BuildRequires:  ulp-macros
-%endif
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
