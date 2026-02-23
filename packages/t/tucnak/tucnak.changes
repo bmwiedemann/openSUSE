@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb 21 18:02:55 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.71:
+  * New rainviewer API
+  * Chmi radar URL fix after site update
+  * Removed Weatheronline rain provider
+  * Oct8tor display up to 3 channels, fixes
+  * KST Use also in log lines
+  * DOK list update
+- drop add tucnak-4.70-gcc16.patch
+
+-------------------------------------------------------------------
 Mon Jan 26 23:13:52 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.70:
