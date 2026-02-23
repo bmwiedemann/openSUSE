@@ -1,7 +1,7 @@
 #
 # spec file for package pastel
 #
-# Copyright (c) 2025 mantarimay
+# Copyright (c) 2026 mantarimay
 # Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           pastel
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        CLI to generate, analyze, convert and manipulate colors
 License:        Apache-2.0 AND MIT

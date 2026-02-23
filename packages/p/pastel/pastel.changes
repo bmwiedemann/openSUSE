@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 21 22:12:53 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.12.0:
+  * Replace atty dependency with std::io::IsTerminal (breaking)
+  * Add ANSI 8-bit parsing
+
+-------------------------------------------------------------------
 Mon Oct 20 18:50:27 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.11.0:
