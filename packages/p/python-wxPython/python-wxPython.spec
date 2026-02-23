@@ -1,7 +1,7 @@
 #
 # spec file for package python-wxPython
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,6 +59,9 @@ ExclusiveArch:  donotbuild
 %endif
 %if "%flavor" != "python313"
 %define skip_python313 1
+%endif
+%if "%flavor" != "python314"
+%define skip_python314 1
 %endif
 %else
 # SLE/Leap

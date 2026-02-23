@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 11 08:24:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- drop python 3.12 from testing, prepare for python 3.14 being
+  added
+
+-------------------------------------------------------------------
 Fri Oct 17 12:45:18 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems
