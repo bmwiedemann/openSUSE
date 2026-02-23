@@ -134,4 +134,16 @@
     same way as paths in tool.poetry-dynamic-versioning.substitution.files (forwarded request 1292088 from rrahl0)</comment>
     <requestid>1292089</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1976406e0a3244f281b469e68018a6f9</srcmd5>
+    <version>1.10.0</version>
+    <time>1771859620</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.10.0:
+  * Option tool.poetry-dynamic-versioning.highest-tag, to select the
+    numerically highest version even if it is not the chronologically latest
+    tag
+- require dunamai 1.26+ for latest features (forwarded request 1334517 from rrahl0)</comment>
+    <requestid>1334518</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 23 13:57:05 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.10.0:
+  * Option tool.poetry-dynamic-versioning.highest-tag, to select the
+    numerically highest version even if it is not the chronologically latest
+    tag
+- require dunamai 1.26+ for latest features
+
+-------------------------------------------------------------------
 Fri Jul 11 13:43:52 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.9.1:
