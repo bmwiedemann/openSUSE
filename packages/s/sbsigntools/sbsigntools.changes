@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 18 11:15:46 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches [bsc#1256984]
+  fix gcc16 build failure
+  * sbsigntools-gcc16.patch
+
+-------------------------------------------------------------------
 Thu Mar 27 16:16:26 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - test-binary-format.patch: Use efi-app-$EFI_ARCH also for aarch64 and

@@ -1,7 +1,7 @@
 #
 # spec file for package sbsigntools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Release:        0
 URL:            http://git.kernel.org/pub/scm/linux/kernel/git/jejb/sbsigntools.git
 Source:         %{name}-%{version}.tar.gz
 Patch0:         test-binary-format.patch
+# fix gcc16 build failure
+Patch1:         sbsigntools-gcc16.patch
 BuildRequires:  binutils-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  openssl-devel
