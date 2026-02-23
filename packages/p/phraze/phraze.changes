@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 23 08:11:59 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 0.3.25:
+  * upgrades rand dependency and bumps version
+  * update dist version used
+  * word swap in Orchard Street long list
+  * adds a word to readme for great clarity
+  * fix minor issue in CHANGELOG
+
+-------------------------------------------------------------------
 Tue Jul 29 06:57:44 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 0.3.24:
