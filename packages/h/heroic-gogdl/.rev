@@ -26,4 +26,14 @@ Fix URL to use upstream GitHub release tarball as Source0</comment>
   * Add use-system-xdelta3.patch</comment>
     <requestid>1329911</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5934a775a9be5426433abeb228c5ad9d</srcmd5>
+    <version>1.2.1</version>
+    <time>1771859532</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.2.1
+  * Remove setuptools from runtime dependencies by @TomaSajt in #71
+  * Fix download sizes not being calculated properly. @imLinguin in ec9d52b</comment>
+    <requestid>1334316</requestid>
+  </revision>
 </revisionlist>

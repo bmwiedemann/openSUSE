@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 22 02:15:57 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 1.2.1
+  * Remove setuptools from runtime dependencies by @TomaSajt in #71
+  * Fix download sizes not being calculated properly. @imLinguin in ec9d52b
+ 
+-------------------------------------------------------------------
 Fri Jan 30 01:26:07 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Use system xdelta3 instead of bundled Python module
