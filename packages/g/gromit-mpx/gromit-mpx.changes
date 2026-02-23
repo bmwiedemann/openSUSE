@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 20 18:33:27 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.8.0:
+  + Draw and erase cursors are now customisable by replacing PNGs
+  + Add CIRCLE, RECT and LINE tools
+  + New "smooth" and "orthogonal" drawing tools
+  + Unlimited (100x) undo buffer with compression
+  + Add arrowtype option that allows to set arrow position
+  + Add a maxsize config parameter to be able to disable pen
+    pressure sensitivity
+  + Add error dialog that's shown on encountering invalid config
+  + Add multiple translations
+  + Various UI tweaks, hotkey fixes, icon fixes
+
+-------------------------------------------------------------------
 Wed Feb 10 15:18:39 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - bump gtk version to match cmake
