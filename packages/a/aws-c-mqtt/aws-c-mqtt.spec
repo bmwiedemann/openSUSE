@@ -1,7 +1,7 @@
 #
 # spec file for package aws-c-mqtt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global library_version 1_0_0
 Name:           aws-c-mqtt
-Version:        0.13.3
+Version:        0.14.0
 Release:        0
 Summary:        AWS C99 implementation of the MQTT 3.1.1 specification
 License:        Apache-2.0

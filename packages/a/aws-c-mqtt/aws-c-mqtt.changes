@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb 18 09:16:32 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.14.0
+  * Add Platform Metrics Support For Mqtt3 Client by @xiazhvera in (#412)
+- from version 0.13.5
+  * Change stale issue and discussion handling to run once a week
+    by @DmitriyMusatkin in (#406)
+  * Log Fix by @sbSteveK in (#409)
+  * Fix MQTT3 connection configuration functions by @xiazhvera in (#416)
+  * Fix auto-generated client id getting skipped by @bretambrose in (#418)
+- from version 0.13.4
+  * (identical to 0.13.5)
+
+-------------------------------------------------------------------
 Tue Jul 22 08:42:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.13.3
