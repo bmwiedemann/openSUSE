@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 23 08:36:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.27.1:
+  * remove float_precision for protobuf 7
+
+-------------------------------------------------------------------
 Fri Jan  9 13:12:53 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.27.0

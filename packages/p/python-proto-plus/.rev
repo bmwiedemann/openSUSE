@@ -153,4 +153,13 @@
     <comment></comment>
     <requestid>1326348</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>82a006ab57a8bf1a3992364f0acd9649</srcmd5>
+    <version>1.27.1</version>
+    <time>1771859561</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.27.1:
+  * remove float_precision for protobuf 7</comment>
+    <requestid>1334408</requestid>
+  </revision>
 </revisionlist>
