@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb 22 08:42:59 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use ldconfig_scriptlets for post(un) ldconfig.
+
+-------------------------------------------------------------------
 Mon Jan 26 21:10:44 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - fix source URL and add https to URL

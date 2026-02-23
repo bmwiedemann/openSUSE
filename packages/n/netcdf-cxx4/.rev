@@ -7,4 +7,12 @@
     <comment>fix build</comment>
     <requestid>1329372</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e60d13b1e559623e30863302f74ce83b</srcmd5>
+    <version>4.3.1</version>
+    <time>1771859537</time>
+    <user>anag_factory</user>
+    <comment>use ldconfig_scriptlets for post(un) ldconfig.</comment>
+    <requestid>1334333</requestid>
+  </revision>
 </revisionlist>

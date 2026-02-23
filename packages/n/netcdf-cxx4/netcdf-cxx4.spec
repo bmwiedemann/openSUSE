@@ -87,10 +87,7 @@ make check || {
 	exit 1
 }
 
-%post -n %{libname -s %{sover}} -p /sbin/ldconfig
-
-%postun -n %{libname -s %{sover}}
-/sbin/ldconfig
+%ldconfig_scriptlets -n %{libname -s %{sover}}
 
 %files -n %{libname -s %{sover}}
 %license COPYRIGHT
