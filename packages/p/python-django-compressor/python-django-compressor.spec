@@ -31,7 +31,7 @@ BuildRequires:  %{python_module Brotli >= 1.0.6}
 BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module calmjs}
+BuildRequires:  %{python_module calmjs.parse}
 BuildRequires:  %{python_module csscompressor}
 BuildRequires:  %{python_module django-appconf >= 1.0.3}
 BuildRequires:  %{python_module django-sekizai >= 2.0.0}

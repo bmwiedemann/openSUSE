@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 23 15:20:31 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Correct test requirement onto calmjs.parse
+  * https://github.com/django-compressor/django-compressor/pull/1323
+
+-------------------------------------------------------------------
 Tue Jan  6 12:41:12 UTC 2026 - Andreas Prittwitz <m4ng4n@gmx.de>
 
 - Update to version 4.6.0

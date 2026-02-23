@@ -147,4 +147,13 @@
     <comment></comment>
     <requestid>1325636</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>594ddde6ada4ddf1cdffdc71d2506603</srcmd5>
+    <version>4.6.0</version>
+    <time>1771868007</time>
+    <user>anag_factory</user>
+    <comment>- Correct test requirement onto calmjs.parse
+  * https://github.com/django-compressor/django-compressor/pull/1323</comment>
+    <requestid>1334542</requestid>
+  </revision>
 </revisionlist>
