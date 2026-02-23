@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-whiskermenu-plugin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define panel_version 4.16
 %define plugin whiskermenu
 Name:           xfce4-whiskermenu-plugin
-Version:        2.10.0
+Version:        2.10.1
 Release:        0
 Summary:        Alternate Xfce Menu
 License:        GPL-2.0-or-later
@@ -30,15 +30,16 @@ BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(accountsservice) >= 0.6.45
-BuildRequires:  pkgconfig(exo-2) >= 4.16
+BuildRequires:  pkgconfig(exo-2) >= 4.16.0
 BuildRequires:  pkgconfig(garcon-1) >= 0.6.4
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(gtk-layer-shell-0) >= 0.7
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.16
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.16
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.16.0
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.16.0
 # BuildRequires:  xfce4-dev-tools
 Recommends:     %{name}-lang
 # package was renamed in 2019 after Leap 15.1

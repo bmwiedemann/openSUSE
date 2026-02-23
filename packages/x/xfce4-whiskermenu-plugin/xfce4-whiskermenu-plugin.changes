@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 22 10:25:11 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 2.10.1
+  * Fix meson to make minsize an optimized build
+  * Bring settings dialog to front if already shown
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu May 22 03:12:26 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Update to version 2.10.0
