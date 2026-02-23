@@ -254,4 +254,41 @@
   * Docs: Marking for experimental features</comment>
     <requestid>1331149</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0aa465f596a5d85d296d06b876276531</srcmd5>
+    <version>0.29.5</version>
+    <time>1771859542</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.29.5:
+  * fix: remove `ask_user` tool from non-interactive modes
+  * fix(cli): allow restricted .env loading in untrusted
+    sandboxed folders
+  * Encourage agent to utilize ecosystem tools to perform work
+  * feat(plan): unify workflow location in system prompt to
+    optimize caching
+  * feat(core): enable getUserTierName in config
+  * feat(core): add default execution limits for subagents
+  * Fix issue where agent gets stuck at interactive commands.
+  * feat(core): remove hardcoded policy bypass for local
+    subagents
+  * feat(plan): implement `plan` slash command
+  * feat: increase `ask_user` label limit to 16 characters
+  * feat(core): add `enter_plan_mode` tool
+  * Stop showing an error message in `/plan`
+  * fix(hooks): remove unnecessary logging for hook registration
+  * fix(mcp): ensure MCP transport is closed to prevent memory
+    leaks
+  * feat(skills): implement linking for agent skills
+  * feat(admin): Implement admin allowlist for MCP server
+    configurations
+  * fix(core): add retry logic for transient SSL/TLS errors
+  * fix(core): handle non-compliant mcpbridge responses from
+    Xcode 26.3
+  * feat(cli): Add W, B, E Vim motions and operator support
+  * fix: Windows Specific Agent Quality &amp; System Prompt
+  * feat(plan): support `replace` tool in plan mode to edit plans
+  * fix(cli): reload skills and agents on extension restart
+  * fix(core): expand excludeTools with legacy aliases for</comment>
+    <requestid>1334352</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Sun Feb 22 13:08:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.29.5:
+  * fix: remove `ask_user` tool from non-interactive modes
+  * fix(cli): allow restricted .env loading in untrusted
+    sandboxed folders
+  * Encourage agent to utilize ecosystem tools to perform work
+  * feat(plan): unify workflow location in system prompt to
+    optimize caching
+  * feat(core): enable getUserTierName in config
+  * feat(core): add default execution limits for subagents
+  * Fix issue where agent gets stuck at interactive commands.
+  * feat(core): remove hardcoded policy bypass for local
+    subagents
+  * feat(plan): implement `plan` slash command
+  * feat: increase `ask_user` label limit to 16 characters
+  * feat(core): add `enter_plan_mode` tool
+  * Stop showing an error message in `/plan`
+  * fix(hooks): remove unnecessary logging for hook registration
+  * fix(mcp): ensure MCP transport is closed to prevent memory
+    leaks
+  * feat(skills): implement linking for agent skills
+  * feat(admin): Implement admin allowlist for MCP server
+    configurations
+  * fix(core): add retry logic for transient SSL/TLS errors
+  * fix(core): handle non-compliant mcpbridge responses from
+    Xcode 26.3
+  * feat(cli): Add W, B, E Vim motions and operator support
+  * fix: Windows Specific Agent Quality & System Prompt
+  * feat(plan): support `replace` tool in plan mode to edit plans
+  * fix(cli): reload skills and agents on extension restart
+  * fix(core): expand excludeTools with legacy aliases for
+    renamed tools
+  * feat(core): overhaul system prompt for rigor, integrity, and
+    intent alignment
+  * Patch for generate changelog docs yaml file
+  * Code review fixes for show question mark pr.
+  * fix(cli): add SS3 Shift+Tab support for Windows terminals
+  * feat(core): exempt high-signal tools from output masking
+  * refactor(core): remove memory tool instructions from Gemini 3
+    prompt
+  * chore: remove feedback instruction from system prompt
+  * feat(context): add remote configuration for tool output
+    masking thresholds
+  * feat(core): pause agent timeout budget while waiting for tool
+    confirmation
+
+-------------------------------------------------------------------
+Mon Feb 16 20:59:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.28.2:
+  * feat(commands): add /prompt-suggest slash command
+  * feat(cli): align hooks enable/disable with skills and improve
+    completion
+  * docs: add CLI reference documentation
+  * feat(skills): final stable promotion cleanup
+  * test(core): mock fetch in OAuth transport fallback tests
+  * feat(cli): include auth method in /bug
+  * Add a email privacy note to bug_report template
+  * Rewind documentation
+  * fix: verify audio/video MIME types with content check
+  * feat(core): add support for positron ide
+  * /oncall dedup - wrap texts to nextlines
+  * fix(admin): rename advanced features admin setting
+  * fix(core): suppress duplicate hook failure warnings during
+    streaming
+  * test: add more tests for AskUser
+  * feat(cli): enable activity logging for non-interactive mode
+    and evals
+  * feat(core): add support for custom deny messages in policy
+    rules
+  * Fix unintended credential exposure to MCP Servers
+  * feat(extensions): add support for custom themes in extensions
+  * fix: persist and restore workspace directories on session
+    resume
+  * Update release notes pages for 0.26.0 and 0.27.0-preview.
+  * feat(ux): update cell border color and created test file for
+    table rendering
+  * Change height for the ToolConfirmationQueue.
+  * feat(cli): add user identity info to stats command
+  * fix(ux): fixed off-by-some wrapping caused by fixed-width
+    characters
+  * feat(cli): update undo/redo keybindings to Cmd+Z/Alt+Z and
+    Shift+Cmd+Z/Shift+Alt+Z
+  * fix(evals): use absolute path for activity log directory
+  * test: add integration test to verify stdout/stderr routing
+  * fix(cli): list installed extensions when update target
+    missing
+  * fix(cli): handle PAT tokens and credentials in git remote URL
+    parsing
+  * fix(core): use returnDisplay for error result display
+  * feat(cli): show hooksConfig.enabled in settings dialog
+  * feat(cli): Display user identity (auth, email, tier) on
+    startup
+  * fix(admin): Rename secureModeEnabled to strictModeDisabled
+  * feat(ux): update truncate dots to be shorter in tables
+  * fix(core): resolve DEP0040 punycode deprecation via patch-
+    package
+  * feat(plan): create generic Checklist component and refactor
+    Todo
+  * Refactoring of disabling of mouse tracking in e2e tests
+  * feat(core): Add GOOGLE_GENAI_API_VERSION environment variable
+
+-------------------------------------------------------------------
 Thu Feb  5 09:56:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.27.0:
