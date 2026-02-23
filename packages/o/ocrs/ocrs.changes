@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Feb 21 22:23:27 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Removed cargo_audit from _service due that contains vendor now
+- Update to version 0.12.1:
+  + Added
+    - support for reading from the clipboard in the CLI
+- version 0.12.0:
+  + Updated to rten v0.24.
+    - Adds ability to load custom models in ONNX format instead of
+      .rten format (requires enabling the onnx feature)
+  + Improved image preprocessing performance.
+- version 0.11.0:
+  + Updated to rten v0.22.
+    - Enables AVX-512 on stable Rust
+    - Updates MSRV to Rust v1.89
+- version 0.10.4:
+  + Updated compatible rten version v0.21
+- version 0.10.3:
+  + Updated to rten v0.18.
+    - Improves performance on Arm by 20–30%
+- version 0.10.2:
+  + Disabled IDNA support in ocrs-cli's url dependency.
+    - Removes various Unicode-related dependencies
+- version 0.10.1:
+  + Updated ureq to v3.x.
+    - Removes a number of unnecessary indirect dependencies
+- version 0.10.0:
+  + Updated compatible rten version range set to >= 0.14, < 0.17
+
+-------------------------------------------------------------------
 Mon Dec  2 09:33:08 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.9.0:
