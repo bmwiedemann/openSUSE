@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 23 09:15:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.7.0:
+  * Delay string interpolations at logging calls
+  * Remove reference to tag framework
+  * reno: Update master for unmaintained/2024.1
+  * Bump pyupgrade target to 3.10+
+  * Migrate bandit options to pyproject.toml
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2
+
+-------------------------------------------------------------------
 Sun Nov  9 13:55:42 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.6.0:
