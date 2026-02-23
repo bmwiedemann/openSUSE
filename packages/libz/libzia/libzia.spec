@@ -10,9 +10,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define soname 4_70
+%define soname 4_71
 Name:           libzia
-Version:        4.70
+Version:        4.71
 Release:        0
 Summary:        Libraries for tucnak
 License:        GPL-2.0-or-later
