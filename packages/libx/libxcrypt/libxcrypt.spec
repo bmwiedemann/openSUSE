@@ -1,7 +1,7 @@
 #
 # spec file for package libxcrypt
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source0:        https://github.com/besser82/libxcrypt/releases/download/v%{versi
 Source1:        https://github.com/besser82/libxcrypt/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        https://github.com/besser82/libxcrypt/releases/download/v%{version}/libxcrypt-gpgkey.asc#/%{name}.keyring
 Source3:        baselibs.conf
+# PATCH-FIX-UPSTREAM: bsc#1258487 Package libxcrypt doesn't build with glibc 2.43: fix const qualifiers
+Patch1:         libxcrypt-fix-const-qualifiers.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 

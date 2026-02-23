@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 19 14:12:56 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
+
+- Fix building with glibc 2.43, Fixes: bsc#1258487
+  * Add libxcrypt-fix-const-qualifiers.patch
+
+-------------------------------------------------------------------
 Tue Nov 11 13:49:50 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 4.5.2:
