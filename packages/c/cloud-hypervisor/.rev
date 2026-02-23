@@ -141,4 +141,33 @@
   * Fix live migration (and snapshot/restore) with AMX state (forwarded request 1323731 from rrahl0)</comment>
     <requestid>1323732</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>236ad17674ad42357ef29e8ba9e8920e</srcmd5>
+    <version>51.1</version>
+    <time>1771859612</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 51.1:
+  * Fix image_type in OpenAPI definition
+- Update to version 51.0:
+  * This release fixes a security vulnerability in disk image handling
+  * Significant QCOW2 v3 Improvements
+  * ACPI Generic Initiator Support
+  * Block Device DISCARD and WRITE_ZEROES Support
+  * Transparent Huge Pages (THP) support has been extended
+  * The vhost-user-net device now uses the default set of vhost-user
+    virtio features
+  * Fix VFIO device hot-remove leaving group and container file
+    descriptors open, preventing re-add
+  * Fix snapshot restore when backing file is on read-only storage
+  * Enforce VIRTIO_BLK_F_RO even if guest does not negotiate it
+  * Fix read-only block device FLUSH requests from OVMF
+  * Fix vhost-user device not properly dropping unowned file descriptors
+  * Fix vhost-user-block get_config interoperability
+  * Add gettid() to all seccomp filters
+  * Fix MAC address parsing that wrongly allowed + instead of hex chars
+  * Improve UUID parse error message and --net fd help text
+  * Fix various inconsistencies in our OpenAPI specification file
+  * Various documentation fixes (forwarded request 1334498 from rrahl0)</comment>
+    <requestid>1334499</requestid>
+  </revision>
 </revisionlist>

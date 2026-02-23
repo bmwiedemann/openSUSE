@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Feb 23 12:32:31 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 51.1:
+  * Fix image_type in OpenAPI definition
+- Update to version 51.0:
+  * This release fixes a security vulnerability in disk image handling
+  * Significant QCOW2 v3 Improvements
+  * ACPI Generic Initiator Support
+  * Block Device DISCARD and WRITE_ZEROES Support
+  * Transparent Huge Pages (THP) support has been extended
+  * The vhost-user-net device now uses the default set of vhost-user
+    virtio features
+  * Fix VFIO device hot-remove leaving group and container file
+    descriptors open, preventing re-add
+  * Fix snapshot restore when backing file is on read-only storage
+  * Enforce VIRTIO_BLK_F_RO even if guest does not negotiate it
+  * Fix read-only block device FLUSH requests from OVMF
+  * Fix vhost-user device not properly dropping unowned file descriptors
+  * Fix vhost-user-block get_config interoperability
+  * Add gettid() to all seccomp filters
+  * Fix MAC address parsing that wrongly allowed + instead of hex chars
+  * Improve UUID parse error message and --net fd help text
+  * Fix various inconsistencies in our OpenAPI specification file
+  * Various documentation fixes
+
+-------------------------------------------------------------------
 Fri Dec 19 11:23:48 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 50.0:
