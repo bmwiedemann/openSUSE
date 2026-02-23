@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Sun Feb 22 22:06:26 UTC 2026 - Neal Gompa <ngompa@opensuse.org>
+
+- Move configuration file to /usr
+
+-------------------------------------------------------------------
+Mon Jun 24 05:51:11 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
+
+- Add missing runtime dependencies
+
+-------------------------------------------------------------------
+Mon Jun 24 05:50:40 UTC 2024 - Tobias Görgens <tobi.goergens@gmail.com>
+
+- Initial package

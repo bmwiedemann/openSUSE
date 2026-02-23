@@ -1,0 +1,4 @@
+<package name="dnf5-actions-snapper" project="openSUSE:Factory">
+  <title>dnf5-actions-snapper</title>
+  <description>Allows dnf5 to create snapshots after/before every transaction</description>
+</package>
