@@ -21,7 +21,9 @@ Name:           librepods
 Version:        0.1.0
 Release:        0
 Summary:        AirPods liberated from Apple's ecosystem
-License:        GPL-3.0-or-later
+License:        AGPL-3.0-only
+# Legal-Review-Notice: according to the flatpak metainfo, the project is AGPL-3.0-only
+# you can find that file in linux-rust/flatpak
 URL:            https://github.com/kavishdevar/librepods
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst

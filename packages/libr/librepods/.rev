@@ -18,4 +18,13 @@
   run out of memory</comment>
     <requestid>1324421</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c15aae02fe6c4c3061693cef51c302ab</srcmd5>
+    <version>0.1.0</version>
+    <time>1771859589</time>
+    <user>anag_factory</user>
+    <comment>- Update License to the correct AGPL-3.0-only tag and add a notice
+  for legal review (Leap16.0) (forwarded request 1334442 from rrahl0)</comment>
+    <requestid>1334443</requestid>
+  </revision>
 </revisionlist>

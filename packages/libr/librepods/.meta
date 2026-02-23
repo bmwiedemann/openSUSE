@@ -1,4 +1,5 @@
 <package name="librepods" project="openSUSE:Factory">
   <title></title>
   <description></description>
+  <devel project="X11:Utilities" package="librepods"/>
 </package>
