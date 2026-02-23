@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb 23 12:36:44 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.5.17:
+  * fix: avoid unnecessary re-downloads of the same runner as an "update"
+  * feat: CLI support
+  * Add Vietnamese translations
+  * Fix Lutris install directory
+- Update to version 0.5.16:
+  * Add Math library to dependencies
+  * Add DW-Proton Latest
+  * Refresh "Games" tab runners when installing/removing a runner
+  * Add more latest runners
+  * Fix network errors not appearing when they should
+  * Updated translations
+
+-------------------------------------------------------------------
 Sun Jan  4 20:21:38 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.5.15:
