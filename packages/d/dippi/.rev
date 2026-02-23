@@ -91,4 +91,16 @@
   * update dependencies for GNOME 49</comment>
     <requestid>1324228</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a6faa34a4baed1d97e341e8d01a61fc4</srcmd5>
+    <version>5.0.2</version>
+    <time>1771867750</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 5.0.2:
+  * Refactor for GNOME 49/Adwaita
+  * metainfo: correct launchable tag
+  * metainfo: add VCS link
+  * add blueprint-compiler (forwarded request 1334523 from rrahl0)</comment>
+    <requestid>1334524</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package dippi
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid com.cassidyjames.dippi
 Name:           dippi
-Version:        4.2.0
+Version:        5.0.2
 Release:        0
 Summary:        Tool for calculating display info like DPI and aspect ratio
 License:        GPL-3.0-or-later
@@ -31,6 +31,7 @@ BuildRequires:  libxml2-tools
 BuildRequires:  meson >= 1.5.2
 BuildRequires:  pkgconfig
 BuildRequires:  vala
+BuildRequires:  pkgconfig(blueprint-compiler)
 BuildRequires:  pkgconfig(gtk4) >= 4.19.4
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.1
 

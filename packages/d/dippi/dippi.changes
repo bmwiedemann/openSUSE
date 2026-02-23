@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 23 14:16:23 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 5.0.2:
+  * Refactor for GNOME 49/Adwaita
+  * metainfo: correct launchable tag
+  * metainfo: add VCS link
+  * add blueprint-compiler
+
+-------------------------------------------------------------------
 Sun Dec 21 09:18:18 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 4.2.0:
