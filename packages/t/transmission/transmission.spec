@@ -1,7 +1,7 @@
 #
 # spec file for package transmission
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %define webui_opt OFF
 %endif
 Name:           transmission
-Version:        4.0.6
+Version:        4.1.1
 Release:        0
 Summary:        A BitTorrent client with multiple UIs
 License:        (GPL-2.0-only OR GPL-3.0-only) AND MIT
@@ -192,10 +192,6 @@ export CXX=g++-13
 %suse_update_desktop_file transmission-gtk
 %suse_update_desktop_file transmission-qt
 
-# The installation scripts don't install the Systemd service file for some
-# reason.
-install -v -m 0644 daemon/transmission-daemon.service \
-    -D -t %{buildroot}%{_unitdir}
 mkdir -p %{buildroot}%{_localstatedir}/lib/transmission
 
 # fix doc
@@ -284,10 +280,6 @@ install -D -m 0644 %{SOURCE98} %{buildroot}%{_sysusersdir}/system-user-transmiss
 %files common
 %{_bindir}/%{name}
 %{_datadir}/icons/*/*/apps/%{name}*.svg
-# English translations should be generally available
-%{_datadir}/locale/en_AU/LC_MESSAGES/
-%{_datadir}/locale/en_CA/LC_MESSAGES/
-%{_datadir}/locale/en_GB/LC_MESSAGES/
 %{_datadir}/%{name}/translations/transmission_en.qm
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/public_html

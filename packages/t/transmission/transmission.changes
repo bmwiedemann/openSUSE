@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Feb 20 11:33:41 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.1.1:
+  * Fixed a 4.1.0 bug that failed to report some filesystem errors to RPC
+    clients who were querying the system's free space available. (#8258)
+  * Fixed a 4.1.0 bug that kept a a torrent's updated queue position from being shown. (#8298)
+  * Fixed a 4.1.0 bug that caused torrents' queuing order to sometimes be lost between sessions. (#8306)
+  * Fixed "assertion failed: no timezone" error on OpenSolaris. (#8358)
+  * Fixed a 4.0.0 bug that displayed the wrong mime-type icon for mp4 video files. (#8411)
+  * Hardened .torrent parsing by exiting sooner if pieces has an invalid size. (#8412)
+  * Reverted a 4.1.0 RPC change that broke some 3rd party code by returning
+    floating-point numbers, rather than integers, for speed limit fields.  (#8416)
+  * Fixed crash that could happen if a user paused a torrent and edited its
+    tracker list at the same time. (#8478)
+  * Fixed 4.1.0 crash on arm32 by switching crc32 libraries to Mark Madler's crcany. (#8529)
+  * Require UTF-8 filenames in .torrent files, as required by the BitTorrent spec. (#8541)
+  * Fixed crash that could occur when parsing a .torrent file with a bad pieces key. (#8542)
+  * Fixed potential file descriptor leak when launching scripts on POSIX systems. (#8549)
+  * Changed the network traffic algorithm to spread bandwidth more evenly amongst peers. (#8259)
+  * Improved laggy user interface when bandwidth usage is high. (#8454)
+  * For more see: https://github.com/transmission/transmission/releases/tag/4.1.1
+
+-------------------------------------------------------------------
+Fri Feb 20 10:50:43 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.1.0:
+  * Improved µTP download performance. (#6508)
+  * Added support for IPv6 and dual-stack UDP trackers. (#6687)
+  * Support trackers that only support the old BEP-7 with &ipv4= and &ipv6=. (#7481)
+  * New JSON-RPC 2.0-compliant RPC API. (#7269)
+  * Added optional sequential downloading. (#4795)
+  * Use native icons for menus and toolbars: SF Symbols on macOS, Segoe Fluent
+    on Windows 11, Segoe MDL2 on Windows 10, and XDG standard icon names
+    everywhere else. (#7819, Qt Client)
+  * Fixed 4.0.6 bug where Transmission might spam HTTP tracker announces. (#7086)
+  * For more see: https://github.com/transmission/transmission/releases/tag/4.1.0
+- Cleanup .changes file (proper date and header in general)
+- Update harden_transmission-daemon.service.patch
+
+-------------------------------------------------------------------
 Wed May  7 11:43:47 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
@@ -2313,167 +2353,129 @@ Fri Apr  4 16:06:48 CEST 2008 - vuntz@suse.de
 - Import from the build service, with cleanups.
 
 -------------------------------------------------------------------
-Thu Apr 3 2008 - awafaa@opensuse.org
+Thu Apr  3 00:00:00 UTC 2008 - awafaa@opensuse.org
 
 - Initial build in new repository
-
 - Create a .changes file
 
 -------------------------------------------------------------------
-
-Sat Mar 29 2008 Pascal Bleser <guru@unixtech.be> 1.10
-
-- new upstream version
-
--------------------------------------------------------------------
-
-Wed Feb 27 2008 Pascal Bleser <guru@unixtech.be> 1.06
+Sat Mar 29 00:00:00 UTC 2008 - Pascal Bleser <guru@unixtech.be> 1.10
 
 - new upstream version
 
 -------------------------------------------------------------------
-
-Sat Feb  9 2008 Pascal Bleser <guru@unixtech.be> 1.05
-
-- new upstream version
-
--------------------------------------------------------------------
-
-Sat Feb  2 2008 Pascal Bleser <guru@unixtech.be> 1.04
+Wed Feb 27 00:00:00 UTC 2008 - Pascal Bleser <guru@unixtech.be> 1.06
 
 - new upstream version
 
 -------------------------------------------------------------------
-
-Wed Jan 30 2008 Pascal Bleser <guru@unixtech.be> 1.03
-
-- new upstream version
-
--------------------------------------------------------------------
-
-Wed Jan 23 2008 Pascal Bleser <guru@unixtech.be> 1.02
+Sat Feb  9 00:00:00 UTC 2008 - Pascal Bleser <guru@unixtech.be> 1.05
 
 - new upstream version
 
 -------------------------------------------------------------------
+Sat Feb  2 00:00:00 UTC 2008 - Pascal Bleser <guru@unixtech.be> 1.04
 
-Sat Jan 12 2008 Pascal Bleser <guru@unixtech.be> 1.01
+- new upstream version
+
+-------------------------------------------------------------------
+Wed Jan 30 00:00:00 UTC 2008 - Pascal Bleser <guru@unixtech.be> 1.03
+
+- new upstream version
+
+-------------------------------------------------------------------
+Wed Jan 23 00:00:00 UTC 2008 - Pascal Bleser <guru@unixtech.be> 1.02
+
+- new upstream version
+
+-------------------------------------------------------------------
+Sat Jan 12 00:00:00 UTC 2008 - Pascal Bleser <guru@unixtech.be> 1.01
 
 - update to 1.01
 
 -------------------------------------------------------------------
-
-Sat Jan  5 2008 Pascal Bleser <guru@unixtech.be> 1.00
+Sat Jan  5 00:00:00 UTC 2008 - Pascal Bleser <guru@unixtech.be> 1.00
 
 - update to 1.00
 
 -------------------------------------------------------------------
-
-Wed Jan  2 2008 Pascal Bleser <guru@unixtech.be> 0.96
+Wed Jan  2 00:00:00 UTC 2008 - Pascal Bleser <guru@unixtech.be> 0.96
 
 - update to 0.96
 
 -------------------------------------------------------------------
-
-Wed Dec  5 2007 Pascal Bleser <guru@unixtech.be> 0.95
+Wed Dec  5 00:00:00 UTC 2007 - Pascal Bleser <guru@unixtech.be> 0.95
 
 - update to 0.95
 
 -------------------------------------------------------------------
-
-Tue Nov 27 2007 Pascal Bleser <guru@unixtech.be> 0.94
+Tue Nov 27 00:00:00 UTC 2007 - Pascal Bleser <guru@unixtech.be> 0.94
 
 - update to 0.94
 
 -------------------------------------------------------------------
-
-Tue Nov 13 2007 Pascal Bleser <guru@unixtech.be> 0.93
+Tue Nov 13 00:00:00 UTC 2007 - Pascal Bleser <guru@unixtech.be> 0.93
 
 - update to 0.93
 
 -------------------------------------------------------------------
-
-Mon Oct 29 2007 Pascal Bleser <guru@unixtech.be> 0.91
+Mon Oct 29 00:00:00 UTC 2007 - Pascal Bleser <guru@unixtech.be> 0.91
 
 - removed libevent BuildRequires, has an in-tree copy that is used anyway
-
 - update to 0.91
 
 -------------------------------------------------------------------
-
-Thu Oct 25 2007 Pascal Bleser <guru@unixtech.be> 0.90
+Thu Oct 25 00:00:00 UTC 2007 - Pascal Bleser <guru@unixtech.be> 0.90
 
 - lots of upstream cleanups, dropped patches
-
 - gettext translations are now in the main package instead of in -gtk
-
 - several binary renames
-
 - man pages have been removed by upstream
-
 - uses autotools now
-
 - zsh completion has been removed by upstream
-
 - update to 0.90
 
 -------------------------------------------------------------------
-
-Wed Oct  3 2007 Pascal Bleser <guru@unixtech.be> 0.82
+Wed Oct  3 00:00:00 UTC 2007 - Pascal Bleser <guru@unixtech.be> 0.82
 
 - cli subpackage merged in (and provided by main package)
-
 - gtk subpackage split out
-
 - merged with Carlos Rodgriguez' transmission spec file
-
 - moved to openSUSE Build Service
 
 -------------------------------------------------------------------
-
-Sun Sep 23 2007 Pascal Bleser <guru@unixtech.be> 0.82-0.pm.1
+Sun Sep 23 00:00:00 UTC 2007 - Pascal Bleser <guru@unixtech.be> 0.82-0.pm.1
 
 - moved to Packman
+- new upstream version
+
+-------------------------------------------------------------------
+Tue Aug  7 00:00:00 UTC 2007 - Pascal Bleser <guru@unixtech.be> 0.80-1
 
 - new upstream version
 
 -------------------------------------------------------------------
-
-Tue Aug  7 2007 Pascal Bleser <guru@unixtech.be> 0.80-1
-
-- new upstream version
-
--------------------------------------------------------------------
-
-Tue May  1 2007 Pascal Bleser <guru@unixtech.be> 0.72-1
+Tue May  1 00:00:00 UTC 2007 - Pascal Bleser <guru@unixtech.be> 0.72-1
 
 - now builds transmission daemon, proxy and remote
+- new upstream version
+
+-------------------------------------------------------------------
+Tue Apr 24 00:00:00 UTC 2007 - Pascal Bleser <guru@unixtech.be> 0.71-1
+- new upstream version
+
+-------------------------------------------------------------------
+Wed Apr 18 00:00:00 UTC 2007 - Pascal Bleser <guru@unixtech.be> 0.70-1
 
 - new upstream version
 
 -------------------------------------------------------------------
-
-Tue Apr 24 2007 Pascal Bleser <guru@unixtech.be> 0.71-1
-
-- new upstream version
-
--------------------------------------------------------------------
-
-Wed Apr 18 2007 Pascal Bleser <guru@unixtech.be> 0.70-1
-
-- new upstream version
-
--------------------------------------------------------------------
-
-Fri Nov 10 2006 Pascal Bleser <guru@unixtech.be> 0.6.1-2
+Fri Nov 10 00:00:00 UTC 2006 - Pascal Bleser <guru@unixtech.be> 0.6.1-2
 
 - added patch to disable broken gtk2 version test in configure, to build properly on 10.2beta with GTK2 2.10.x and enforce >= 2.6.0 through BuildRequires instead
 
 -------------------------------------------------------------------
-
-Tue Aug  8 2006 Pascal Bleser <guru@unixtech.be> 0.6.1-1
+Tue Aug  8 01:01:00 UTC 2006 - Pascal Bleser <guru@unixtech.be>
 
 - new package
-
--------------------------------------------------------------------
 
