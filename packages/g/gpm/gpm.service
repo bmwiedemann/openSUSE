@@ -16,9 +16,9 @@ ProtectKernelModules=true
 ProtectKernelLogs=true
 ProtectControlGroups=true
 RestrictRealtime=true
-# end of automatic additions 
+# end of automatic additions
 EnvironmentFile=-/etc/sysconfig/mouse
-ExecStart=/usr/sbin/gpm -m /dev/input/mice -t exps2
+ExecStart=/usr/sbin/gpm -m $MOUSEDEVICE -t $MOUSETYPE $GPM_PARAM
 Type=forking
 PIDFile=/run/gpm.pid
 

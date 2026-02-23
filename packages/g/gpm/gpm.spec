@@ -184,8 +184,6 @@ fi
 
 # Do not package static library
 rm -fv %{buildroot}/%{_libdir}/libgpm.a
-mkdir -p %{buildroot}/run
-touch %{buildroot}/run/gpm.pid
 
 %pre
 %service_add_pre gpm.service
@@ -219,7 +217,6 @@ touch %{buildroot}/run/gpm.pid
 %{_bindir}/*
 %{_sbindir}/*
 %{_fillupdir}/*
-%ghost /run/gpm.pid
 
 %files -n %lname
 %defattr(-,root,root)

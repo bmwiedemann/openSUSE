@@ -23,15 +23,8 @@ MOUSETYPE="imps2"
 ## Default:     ""
 #
 # You can define your own options to start gpm here. If the variable is empty
-# then the gpm will start with the option "-m $MOUSEDEVICE -t $MOUSETYPE"
+# then the gpm will start with the option "-m $MOUSEDEVICE -t $MOUSETYPE" otherwise
+# GPM_PARAM is appended to the parameter list.
 #
 GPM_PARAM=""
 
-## Type:        string(raw,imps2,ms,ms3,msc,mman,ps2,syn,synps2)
-## Default:     ""
-#
-# Define type of repeating for gpm. This is usually needed when you want to
-# use gpm together with XFree. All mouse data will be repeated in fifo
-# /dev/gpmdata. Use "raw" for repeating same data as received by gpm.
-#
-GPM_REPEAT=""

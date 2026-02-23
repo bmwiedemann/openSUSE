@@ -422,4 +422,15 @@ Scripts git-archive-tarbz2.sh and report_success.sh are GPL-3.0+ licensed (forwa
     <comment></comment>
     <requestid>1265243</requestid>
   </revision>
+  <revision rev="58" vrev="23">
+    <srcmd5>9fef4fb1b275bc49c4c892669d03d5b5</srcmd5>
+    <version>1.20.7</version>
+    <time>1771859508</time>
+    <user>anag_factory</user>
+    <comment>- Make the package installable on atomically updatable systems
+  (jsc#PED-14720)
+- Use env variables when starting service instead of hardcoded
+- Remove GPM_REPEAT as it's unused</comment>
+    <requestid>1333616</requestid>
+  </revision>
 </revisionlist>

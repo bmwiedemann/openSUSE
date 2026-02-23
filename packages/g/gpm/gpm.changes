@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 17 15:42:46 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- Make the package installable on atomically updatable systems
+  (jsc#PED-14720)
+- Use env variables when starting service instead of hardcoded
+- Remove GPM_REPEAT as it's unused
+
+-------------------------------------------------------------------
 Fri Mar 21 12:29:13 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Use -std=gnu11 to avoid the C23 default of GCC 15 which no longer
