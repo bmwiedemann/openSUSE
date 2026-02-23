@@ -2155,6 +2155,7 @@ unsorted:
   - chart-testing 
   - chasen 
   - chasen-devel 
+  - chawan 
   - chayang 
   - chck-devel 
   - chealpix-devel 
@@ -3339,6 +3340,7 @@ unsorted:
   - dnf4 
   - dnf4-lang 
   - dnf5 
+  - dnf5-actions-snapper 
   - dnf5-devel 
   - dnf5-plugin-automatic 
   - dnf5-plugin-manifest 
@@ -12941,6 +12943,7 @@ unsorted:
   - libdnf5-plugin-appstream 
   - libdnf5-plugin-expired-pgp-keys 
   - libdnf5-plugin-local 
+  - libdnf5-plugin-txnupd 
   - libdnf5_2 
   - libdnnl3 
   - libdns_sd 
@@ -16720,6 +16723,7 @@ unsorted:
   - libtw1 
   - libtwolame-devel 
   - libtwolame0-32bit 
+  - libublksrv0 
   - libubsan0 
   - libubsan0-32bit 
   - libubsan1-32bit 
@@ -17415,7 +17419,7 @@ unsorted:
   - libzen-devel 
   - libzen0 
   - libzfp1 
-  - libzia-4_70 
+  - libzia-4_71 
   - libzia-devel 
   - libzim-devel 
   - libzim9 
@@ -19711,6 +19715,8 @@ unsorted:
   - neko 
   - neko-devel 
   - neko-mysql 
+  - nekobox 
+  - nekobox-core 
   - nekohtml 
   - nekohtml-demo 
   - nekohtml-javadoc 
@@ -26666,7 +26672,6 @@ unsorted:
   - python311-proton-client 
   - python311-proton-core 
   - python311-proton-vpn-api-core 
-  - python311-proton-vpn-killswitch-network-manager 
   - python311-proton-vpn-local-agent 
   - python311-proton-vpn-network-manager 
   - python311-protonvpn-nm-lib 
@@ -27710,6 +27715,7 @@ unsorted:
   - python311-txaio 
   - python311-txt2tags 
   - python311-txtorcon 
+  - python311-ty 
   - python311-typedload 
   - python311-typeguard 
   - python311-typepy 
@@ -30551,7 +30557,6 @@ unsorted:
   - python312-proton-client 
   - python312-proton-core 
   - python312-proton-vpn-api-core 
-  - python312-proton-vpn-killswitch-network-manager 
   - python312-proton-vpn-local-agent 
   - python312-proton-vpn-network-manager 
   - python312-protonvpn-nm-lib 
@@ -31619,6 +31624,7 @@ unsorted:
   - python312-txaio 
   - python312-txt2tags 
   - python312-txtorcon 
+  - python312-ty 
   - python312-typedload 
   - python312-typeguard 
   - python312-typepy 
@@ -31776,7 +31782,6 @@ unsorted:
   - python312-wsproto 
   - python312-wtf-peewee 
   - python312-wurlitzer 
-  - python312-wxPython 
   - python312-wyoming 
   - python312-x86-64-v3 
   - python312-xapian 
@@ -34434,7 +34439,6 @@ unsorted:
   - python313-proton-client 
   - python313-proton-core 
   - python313-proton-vpn-api-core 
-  - python313-proton-vpn-killswitch-network-manager 
   - python313-proton-vpn-local-agent 
   - python313-proton-vpn-network-manager 
   - python313-protonvpn-nm-lib 
@@ -35481,6 +35485,7 @@ unsorted:
   - python313-txaio 
   - python313-txt2tags 
   - python313-txtorcon 
+  - python313-ty 
   - python313-typedload 
   - python313-typeguard 
   - python313-typepy 
@@ -49024,6 +49029,8 @@ unsorted:
   - uacme 
   - uasm 
   - ubi_reader 
+  - ublksrv 
+  - ublksrv-devel 
   - ubridge 
   - ubuntu-fonts 
   - ubuntu-mate-icon-theme 
@@ -49474,6 +49481,7 @@ unsorted:
   - virtualbox-websrv 
   - virtui-manager 
   - virtui-manager-doc 
+  - virtui-manager-lang 
   - virtui-remote-viewer 
   - virtx 
   - virtx-bash-completion 
@@ -50406,7 +50414,6 @@ unsorted:
   - yast2-installation-control 
   - yast2-iplb 
   - yast2-iscsi-lio-server 
-  - yast2-mail 
   - yast2-multipath 
   - yast2-rdp 
   - yast2-rear 
