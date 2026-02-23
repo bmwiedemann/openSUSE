@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-noqa
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flake8-noqa
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Flake8 noqa comment validation
 License:        LGPL-3.0-only
 URL:            https://github.com/plinss/flake8-noqa
 Source:         https://files.pythonhosted.org/packages/source/f/flake8-noqa/flake8-noqa-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module flake8 >= 3.8.0}
-BuildRequires:  %{python_module typing_extensions >= 3.7.4.2}
 BuildRequires:  %{python_module flake8-docstrings}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module typing_extensions >= 3.7.4.2}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-flake8 >= 3.8.0
@@ -65,7 +65,7 @@ BuildArch:      noarch
 Flake8 noqa comment validation
 
 %prep
-%autosetup -p1 -n flake8-noqa-%{version}
+%autosetup -p1 -n flake8_noqa-%{version}
 
 %build
 %pyproject_wheel

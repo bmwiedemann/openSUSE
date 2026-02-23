@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>1233959</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b50a99b054cefce0bcbb220896b78cdb</srcmd5>
+    <version>1.5.0</version>
+    <time>1771863808</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5.0:
+  * Stop using processor to find filename
+  * Drop Python 3.7 and 3.8 (forwarded request 1334520 from rrahl0)</comment>
+    <requestid>1334521</requestid>
+  </revision>
 </revisionlist>
