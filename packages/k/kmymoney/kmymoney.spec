@@ -1,7 +1,7 @@
 #
 # spec file for package kmymoney
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kmymoney
-Version:        5.2.1
+Version:        5.2.2
 Release:        0
 Summary:        A Personal Finance Manager by KDE
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -31,8 +31,6 @@ Source0:        https://download.kde.org/stable/kmymoney/%{version}/%{name}-%{ve
 Source1:        https://download.kde.org/stable/kmymoney/%{version}/%{name}-%{version}.tar.xz.sig
 Source2:        kmymoney.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Add-missing-find_package-for-QtSqlPrivate.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -77,10 +75,10 @@ BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
-BuildRequires:  cmake(aqbanking) >= 6.6.1
+BuildRequires:  cmake(aqbanking) >= 6.8.4
 BuildRequires:  cmake(gwengui-cpp)
 BuildRequires:  cmake(gwengui-qt6)
-BuildRequires:  cmake(gwenhywfar) >= 5.12.1
+BuildRequires:  cmake(gwenhywfar) >= 5.14.1
 BuildRequires:  pkgconfig(libical)
 BuildRequires:  pkgconfig(sqlcipher)
 BuildRequires:  pkgconfig(sqlite3)
@@ -134,7 +132,6 @@ Development files and headers need to build software using KMyMoney.
 %dir %{_kf6_iconsdir}/hicolor/20x20/apps
 %{_datadir}/mime/packages/x-kmymoney.xml
 %{_kf6_applicationsdir}/org.kde.kmymoney.desktop
-%{_kf6_sharedir}/kmymoney/
 %{_kf6_appstreamdir}/org.kde.kmymoney.appdata.xml
 %{_kf6_bindir}/kmymoney
 %{_kf6_configkcfgdir}/

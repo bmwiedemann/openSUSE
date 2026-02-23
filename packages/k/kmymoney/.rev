@@ -679,4 +679,12 @@
   * 0001-Add-missing-find_package-for-QtSqlPrivate.patch</comment>
     <requestid>1311122</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>6381f64857a11de5950316ad2fd38034</srcmd5>
+    <version>5.2.2</version>
+    <time>1771859548</time>
+    <user>anag_factory</user>
+    <comment>Update to 5.2.2</comment>
+    <requestid>1334359</requestid>
+  </revision>
 </revisionlist>

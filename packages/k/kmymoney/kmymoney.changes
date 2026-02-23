@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 22 12:36:12 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.2.2
+  https://kmymoney.org/2026/02/22/kmymoney-5-2-2-released.html
+- Drop patch, merged upstream:
+  * 0001-Add-missing-find_package-for-QtSqlPrivate.patch
+
+-------------------------------------------------------------------
 Mon Oct 13 12:31:50 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:
