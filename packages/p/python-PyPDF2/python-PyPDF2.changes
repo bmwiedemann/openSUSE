@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 23 10:42:53 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add security patches:
+  * CVE-2025-55197.patch (bsc#1248089)
+  * CVE-2026-27024.patch (bsc#1258691)
+  * CVE-2026-27025.patch (bsc#1258692)
+  * CVE-2026-27026.patch (bsc#1258693) 
+
+-------------------------------------------------------------------
 Mon May 12 10:44:03 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyPDF2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,14 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/py-pdf/PyPDF2
 Source:         https://github.com/py-pdf/PyPDF2/archive/refs/tags/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM CVE-2025-55197.patch bsc#1248089
+Patch0:         CVE-2025-55197.patch
+# PATCH-FIX-UPSTREAM CVE-2026-27024.patch bsc#1258691
+Patch1:         CVE-2026-27024.patch
+# PATCH-FIX-UPSTREAM CVE-2026-27025.patch bsc#1258692
+Patch2:         CVE-2026-27025.patch
+# PATCH-FIX-UPSTREAM CVE-2026-27026.patch bsc#1258693
+Patch3:         CVE-2026-27026.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -49,7 +57,7 @@ objects rather than file streams, allowing for PDF manipulation in memory.
 It is therefore a useful tool for websites that manage or manipulate PDFs.
 
 %prep
-%setup -q -n PyPDF2-%{version}
+%autosetup -p1 -n PyPDF2-%{version}
 #remove unwanted shebang
 sed -i '/^#!/ d' PyPDF2/pagerange.py
 
@@ -60,6 +68,8 @@ sed -i '/^#!/ d' PyPDF2/pagerange.py
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 chmod a-x CHANGELOG.md LICENSE README.md
+
+# many tests need internet connection, cannot be run on OBS
 
 %files %{python_files}
 %license LICENSE
