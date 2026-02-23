@@ -122,4 +122,14 @@
     names are escaped. (forwarded request 1290818 from rrahl0)</comment>
     <requestid>1290819</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f3b9829a593fbe3fe67bbda419c9649e</srcmd5>
+    <version>1.26.0</version>
+    <time>1771859619</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.26.0:
+  * Added --highest-tag option to select the numerically highest version, even
+    if it is not the chronologically latest tag (forwarded request 1334515 from rrahl0)</comment>
+    <requestid>1334516</requestid>
+  </revision>
 </revisionlist>

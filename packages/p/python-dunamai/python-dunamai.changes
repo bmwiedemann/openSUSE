@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 23 13:55:02 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.26.0:
+  * Added --highest-tag option to select the numerically highest version, even
+    if it is not the chronologically latest tag
+
+-------------------------------------------------------------------
 Sat Jul  5 18:20:36 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.25.0:
