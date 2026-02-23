@@ -24,4 +24,15 @@
   * ci related changes</comment>
     <requestid>1268613</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5b3771173d2526c147b1e2cc4a16642b</srcmd5>
+    <version>1.5.0</version>
+    <time>1771859570</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.5.0:
+  * CI config updates
+  * label python 3.10+ as supported
+  * enable free-threaded builds</comment>
+    <requestid>1334420</requestid>
+  </revision>
 </revisionlist>
