@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 23 09:41:21 UTC 2026 - Manfred Schwarb <manfred99@gmx.ch>
+
+- update to version 1.4 snapshot t20260222:
+  * configure updates
+  * adjusted use of "const"
+  * regenerate parser.c and lexer.c
+
+-------------------------------------------------------------------
 Tue Oct  7 09:35:41 UTC 2025 - Manfred Schwarb <manfred99@gmx.ch>
 
 - update to version 1.4 snapshot t20251006:
