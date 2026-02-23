@@ -19,7 +19,7 @@
 %define pythons python3
 
 Name:           virtui-manager
-Version:        1.8.0
+Version:        1.9.4
 Release:        0
 Summary:        Terminal-based interface to manage virtual machines using libvirt
 License:        GPL-3.0-or-later
@@ -65,6 +65,8 @@ Recommends:     typelib(SpiceClientGtk) = 3.0
 A simple remote viewer application bundled with virtui-manager.
 It supports VNC and SPICE protocols.
 
+%lang_package
+
 %prep
 %setup -q
 
@@ -75,6 +77,10 @@ bash src/vmanager/manage_translation.sh compile-mo
 
 %install
 %python3_pyproject_install
+rm %{buildroot}%{python3_sitelib}/vmanager/remote_viewer_gtk4.py
+chmod 755 %{buildroot}%{python3_sitelib}/vmanager/remote_viewer.py
+chmod 755 %{buildroot}%{python3_sitelib}/vmanager/gui_wrapper.py
+chmod 755 %{buildroot}%{python3_sitelib}/vmanager/virtui_dev.py
 
 # Install docs
 mkdir -p %{buildroot}%{_docdir}/%{name}/html
@@ -88,6 +94,8 @@ cp README.md %{buildroot}%{_docdir}/%{name}/
 %fdupes %{buildroot}%{python3_sitelib}
 %fdupes %{buildroot}%{_docdir}/%{name}
 
+%find_lang %{name}
+
 %files
 %license LICENSE
 %doc README.md
@@ -95,7 +103,12 @@ cp README.md %{buildroot}%{_docdir}/%{name}/
 %{_bindir}/virtui-manager-cmd
 %{_bindir}/virtui-gui
 %{python3_sitelib}/vmanager
+%exclude %{python3_sitelib}/vmanager/locale
 %{python3_sitelib}/virtui_manager-*-info
+
+%files lang -f %{name}.lang
+%defattr(-,root,root,-)
+%{python3_sitelib}/vmanager/locale
 
 %files doc
 %dir %{_docdir}/%{name}

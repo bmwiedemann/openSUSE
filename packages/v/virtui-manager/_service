@@ -2,8 +2,8 @@
   <service name="download_url" mode="manual">
     <param name="host">github.com</param>
     <param name="protocol">https</param>
-    <param name="path">/aginies/virtui-manager/archive/refs/tags/1.8.0.tar.gz</param>
-    <param name="filename">virtui-manager-1.8.0.tar.gz</param>
+    <param name="path">/aginies/virtui-manager/archive/refs/tags/1.9.4.tar.gz</param>
+    <param name="filename">virtui-manager-1.9.4.tar.gz</param>
   </service>
 </services>
 <!--

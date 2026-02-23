@@ -140,4 +140,59 @@
   * update the doc</comment>
     <requestid>1332441</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>73f76997476c6fd21185627d472a66c7</srcmd5>
+    <version>1.9.4</version>
+    <time>1771867747</time>
+    <user>anag_factory</user>
+    <comment>use %lang_package
+
+
+
+- version 1.9.4:
+* black code reformater
+* fix nix build
+* update docs
+* add more tests
+* Fix Server selection issue
+* fix Pause/resume freezing UI
+* delete storage delete also delete nvram
+* add backup support in vmnager_cmd
+* add floppy support
+* add vim in flatpack
+* improve tmux checker
+* cleanup lru cache
+* move config yaml to documentation
+* webconsole:
+* remove time sleep
+* be sure to use correct port
+* add lock to avoid race condition
+
+- version 1.9.2:
+* Vmanager command:
+* add pipeline capability
+* add history capability
+* fix long prompt (too much VM to be listed)
+* fix cursor issue
+
+- version 1.9.1:
+* firmware fixes
+* remove XP for clone and migration
+* major fix firmware selection; add qemu-img in flatpak
+* dont select any distribution by default
+* pylint fixes
+
+- version 1.9.0:
+* fix display issue in remote viewer
+* lot of pylint fixes
+* fix race condition in timer management
+* udpate docs
+* Wrap untranslated strings in provisioning_modals.py with i18n constants
+* use more constant in provisioning
+* Internationalize hardcoded UI strings in modal dialogs
+* Move hardcoded UI strings to constants.py for i18n support
+
+</comment>
+    <requestid>1334528</requestid>
+  </revision>
 </revisionlist>
