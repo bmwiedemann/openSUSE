@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 23 14:40:23 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20260222.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20260222
+  * Add JRuby 10.0.3.0 by @headius in #2602
+  * Fix OpenSSL version requirement range for Ruby >= 4 by @glaszig in #2601
+  * Fix `jruby-dev` to use updated URLs, add arm64 support by @eregon in #2603
+  * Support building `ruby-dev` from arbitrary git revision by @byroot in #2604
+
+-------------------------------------------------------------------
 Thu Jan 22 14:27:00 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20260121.
