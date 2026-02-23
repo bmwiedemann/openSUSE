@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb 23 13:06:09 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 12.7.0:
+  * feat: introduce secret URLs to runner configuration
+  * feat: allow config server.connections config to poll multiple Forgejo servers simultaneously
+  * feat: add connections to Runner configuration
+  * fix: do not emit warnings if max_retries, initial_delay are absent
+  * fix: ensure log buffer flush even if a command error occurs in host & lxc executor
+  * fix: kill containers explicitly, make Podman behave like Docker
+  * fix: premature task completion when chaining multiple reusable workflows
+  * fix: permit larger single-line output sizes to be parsed from FORGEJO_OUTPUT file
+  * refactor: introduce String() for Label
+  * introducing ephemeral-runners
+  * refactor: separate Config from on-disk format
+  * Preallocate space for variables in run_context
+  * refactor: pull cache server management out of runner
+  * refactor: add 1-to-1 client-to-runner relationship into poller
+
+-------------------------------------------------------------------
 Fri Jan 30 22:40:17 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 12.6.3:

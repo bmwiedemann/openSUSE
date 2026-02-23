@@ -530,4 +530,26 @@
   * fix: host-based executor, clarify error message from missing working-directory (forwarded request 1330162 from rrahl0)</comment>
     <requestid>1330163</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>03a082d038552626d8f4faf7b4b488cb</srcmd5>
+    <version>12.7.0</version>
+    <time>1771862661</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 12.7.0:
+  * feat: introduce secret URLs to runner configuration
+  * feat: allow config server.connections config to poll multiple Forgejo servers simultaneously
+  * feat: add connections to Runner configuration
+  * fix: do not emit warnings if max_retries, initial_delay are absent
+  * fix: ensure log buffer flush even if a command error occurs in host &amp; lxc executor
+  * fix: kill containers explicitly, make Podman behave like Docker
+  * fix: premature task completion when chaining multiple reusable workflows
+  * fix: permit larger single-line output sizes to be parsed from FORGEJO_OUTPUT file
+  * refactor: introduce String() for Label
+  * introducing ephemeral-runners
+  * refactor: separate Config from on-disk format
+  * Preallocate space for variables in run_context
+  * refactor: pull cache server management out of runner
+  * refactor: add 1-to-1 client-to-runner relationship into poller (forwarded request 1334502 from rrahl0)</comment>
+    <requestid>1334503</requestid>
+  </revision>
 </revisionlist>
