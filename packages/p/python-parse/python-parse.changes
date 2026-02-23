@@ -1,7 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 23 09:09:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.21.1:
+  * Fix microsecond precision loss in timestamp parsing
+- update to 1.21.0:
+  * allow triggering CI manually
+  * Actually raise exception
+  * readme: Clarify 'd' type
+
+-------------------------------------------------------------------
 Thu Sep 26 21:25:03 UTC 2024 - Thiago Bertoldi <thiago.bertoldi@suse.com>
 
-- use modern python version on Leap15.6 
+- use modern python version on Leap15.6
 
 -------------------------------------------------------------------
 Thu Jun 20 12:40:24 UTC 2024 - Dirk Müller <dmueller@suse.com>

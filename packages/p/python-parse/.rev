@@ -130,4 +130,19 @@
     <comment></comment>
     <requestid>1218157</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6a435e0816790b4ed766b7e38d2bd6d8</srcmd5>
+    <version>1.21.1</version>
+    <time>1771859570</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.21.1:
+  * Fix microsecond precision loss in timestamp parsing
+- update to 1.21.0:
+  * allow triggering CI manually
+  * Actually raise exception
+  * readme: Clarify 'd' type
+
+- use modern python version on Leap15.6</comment>
+    <requestid>1334419</requestid>
+  </revision>
 </revisionlist>

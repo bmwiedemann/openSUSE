@@ -1,7 +1,7 @@
 #
 # spec file for package python-parse
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-parse
-Version:        1.20.2
+Version:        1.21.1
 Release:        0
 Summary:        Python module for parsing strings using a "format" syntax
 License:        MIT
