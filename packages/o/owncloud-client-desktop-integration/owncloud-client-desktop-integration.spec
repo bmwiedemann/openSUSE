@@ -1,7 +1,7 @@
 #
 # spec file for package owncloud-client-desktop-integration
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           owncloud-client-desktop-integration
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        Integration for the ownCloud desktop client with various file managers
 License:        GPL-2.0-or-later

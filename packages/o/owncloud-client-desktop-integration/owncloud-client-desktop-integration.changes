@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 19 09:09:01 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.1.0:
+  * Replace deprecated GObject calls with GLib equivalents
+    (gh#owncloud/client-desktop-shell-integration-nautilus#4).
+
+-------------------------------------------------------------------
 Fri Oct 25 06:35:53 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.0.0:
