@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 23 08:39:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.26.1:
+  * Dependencies:
+  * pandas >= 1.24.0
+  * attrs >= 22.2.0
+  * Miscellaneous:
+  * Added support for Python 3.14.
+  * CI and tests:
+  * Updates and improvements to pre-commit hooks and CI YAML
+    files.
+
+-------------------------------------------------------------------
 Fri Oct 10 16:40:20 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.26.0:

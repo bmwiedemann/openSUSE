@@ -201,4 +201,20 @@
     files.</comment>
     <requestid>1310618</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4d777629ff48e30c9eab83582eeda876</srcmd5>
+    <version>0.26.1</version>
+    <time>1771859616</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.26.1:
+  * Dependencies:
+  * pandas &gt;= 1.24.0
+  * attrs &gt;= 22.2.0
+  * Miscellaneous:
+  * Added support for Python 3.14.
+  * CI and tests:
+  * Updates and improvements to pre-commit hooks and CI YAML
+    files.</comment>
+    <requestid>1334403</requestid>
+  </revision>
 </revisionlist>
