@@ -1,7 +1,7 @@
 #
 # spec file for package aws-c-auth
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define library_pkg 1_0_0
 %define library_soversion 1
 Name:           aws-c-auth
-Version:        0.9.5
+Version:        0.9.6
 Release:        0
 Summary:        AWS C99 library implementation of AWS client-side authentication
 License:        Apache-2.0
@@ -29,16 +29,16 @@ URL:            https://github.com/awslabs/aws-c-auth
 Source0:        https://github.com/awslabs/%{name}/archive/v%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  ninja
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(aws-c-cal)
 BuildRequires:  cmake(aws-c-common)
 BuildRequires:  cmake(aws-c-compression)
-BuildRequires:  cmake(aws-c-cal)
 BuildRequires:  cmake(aws-c-http)
 BuildRequires:  cmake(aws-c-io)
 BuildRequires:  cmake(aws-c-sdkutils)
 BuildRequires:  cmake(s2n)
 BuildRequires:  pkgconfig(libssl)
-BuildRequires:  ninja
-BuildRequires:  pkgconfig
 
 %description
 C99 library implementation of AWS client-side authentication: standard

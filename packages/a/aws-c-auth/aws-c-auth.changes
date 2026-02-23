@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 18 09:35:47 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.6
+  * Prioritizing profile credentials over credential_process when
+    both are present by @sbiscigl in (#288)
+
+-------------------------------------------------------------------
 Wed Jan 14 10:54:05 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.5
