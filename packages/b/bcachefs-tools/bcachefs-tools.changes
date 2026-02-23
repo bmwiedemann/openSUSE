@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Feb  7 21:14:00 UTC 2026 - Holden Fried <holden@opensuse.org>
+
+- Update to release v1.36.1
+  * Interactive TUI for monitoring various filesystem internals,
+    slowpaths and device performance, with duration and frequency
+    tracking for various events. Helpful for diagnosing performance
+    issues.
+  * `encoded_extent_max` default bumped to 256k; new filesystems
+    now initialize `BCH_SB_EXTENT_BP_SHIFT` to 16, so higher
+    settings won't require rebuilding backpointers.
+  * `--rotational` flag now works correctly during format
+  * Copygc now waits until a device is less than 20% free before
+    starting.
+  * Improved `bcachefs reconcile status` output.
+  * Large batch of erasure coding cleanup and hardening: better
+    error reporting for EC reconstruct reads, fix a race between EC
+    and data moves, and various other EC bugfixes.
+  * Fix write buffer `move_keys_from_inc_to_flushing()` regression,
+    which was causing occasional oopses under load for some users.
+  * Snapshot deletion is now much faster when deleting large
+    numbers of snapshos; we now use an eytzinger tree for the list
+    of nodes being deleted.
+  * Fix sporadic superblock checksum failures during device scan.
+
+-------------------------------------------------------------------
 Thu Feb  5 10:40:08 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.36.0
