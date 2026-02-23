@@ -2079,4 +2079,12 @@ Now with compat code so it does not break on SLE12 (forwarded request 892030 fro
     <comment></comment>
     <requestid>1323505</requestid>
   </revision>
+  <revision rev="222" vrev="1">
+    <srcmd5>e878156483b755485c18ebc7cdb44927</srcmd5>
+    <version>1.24.0</version>
+    <time>1771859605</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1334492</requestid>
+  </revision>
 </revisionlist>
