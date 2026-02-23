@@ -1,0 +1,7 @@
+<package name="chawan" project="openSUSE:Factory">
+  <title>Modern terminal-based web browser and pager</title>
+  <description>Chawan is a text-based web browser and pager designed to run entirely
+in a terminal. The browser supports HTML with CSS styling, inline image rendering in compatible terminals, and JavaScript execution for interactive pages.
+</description>
+  <url>https://git.sr.ht/~bptato/chawan</url>
+</package>
