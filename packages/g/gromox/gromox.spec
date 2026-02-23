@@ -28,6 +28,7 @@ URL:            https://grommunio.com/
 Source:         https://github.com/grommunio/gromox/releases/download/%name-%version/%name-%version.tar.zst
 Source2:        https://github.com/grommunio/gromox/releases/download/%name-%version/%name-%version.tar.asc
 Source8:        %name.keyring
+Patch1:         gcc16.patch
 BuildRequires:  fdupes
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
 BuildRequires:  gcc12-c++

@@ -440,4 +440,12 @@
     <comment>- Update to release 3.4</comment>
     <requestid>1330396</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>432e90828daf86e16c77641b24b4ab03</srcmd5>
+    <version>3.4</version>
+    <time>1771859556</time>
+    <user>anag_factory</user>
+    <comment>- Add gcc16.patch [boo#1258491]</comment>
+    <requestid>1334380</requestid>
+  </revision>
 </revisionlist>

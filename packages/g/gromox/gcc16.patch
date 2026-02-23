@@ -1,0 +1,36 @@
+From 110a4c51726c8b2fed18077e40cdbc7c6ba6606a Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Sun, 22 Feb 2026 09:34:23 +0100
+Subject: [PATCH] build: resolve compiler errors with gcc-16
+
+<climits> was implicitly included via <atomic>, which changed in
+gcc-16 and is no longer the case.
+---
+ mda/lda.cpp         |    1 +
+ tests/exrpctest.cpp |    1 +
+ 2 files changed, 2 insertions(+)
+
+Index: gromox-3.4/mda/lda.cpp
+===================================================================
+--- gromox-3.4.orig/mda/lda.cpp
++++ gromox-3.4/mda/lda.cpp
+@@ -1,6 +1,7 @@
+ // SPDX-License-Identifier: AGPL-3.0-or-later
+ // SPDX-FileCopyrightText: 2025–2026 grommunio GmbH
+ // This file is part of Gromox.
++#include <climits>
+ #include <cstdio>
+ #include <cstdlib>
+ #include <cstring>
+Index: gromox-3.4/tests/exrpctest.cpp
+===================================================================
+--- gromox-3.4.orig/tests/exrpctest.cpp
++++ gromox-3.4/tests/exrpctest.cpp
+@@ -1,6 +1,7 @@
+ // SPDX-License-Identifier: AGPL-3.0-or-later
+ // SPDX-FileCopyrightText: 2024–2025 grommunio GmbH
+ // This file is part of Gromox.
++#include <climits>
+ #include <cstdint>
+ #include <cstdlib>
+ #include <vector>
