@@ -1405,4 +1405,11 @@ This is a bug fix only release.
     <comment></comment>
     <requestid>1334105</requestid>
   </revision>
+  <revision rev="97" vrev="9">
+    <srcmd5>a6196286375dd07bb74cd4fedb9ccb8e</srcmd5>
+    <version>2.1.2</version>
+    <time>1771834815</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1258688</comment>
+  </revision>
 </revisionlist>
