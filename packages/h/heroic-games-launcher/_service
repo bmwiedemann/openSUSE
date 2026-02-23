@@ -1,18 +1,18 @@
 <services>
-  <service name="tar_scm" mode="manual">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git</param>
     <param name="scm">git</param>
     <param name="submodules">enable</param>
     <param name="filename">heroic-games-launcher</param>
-    <param name="revision">v2.19.1</param>
+    <param name="revision">v2.20.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v([\.\d]+)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
-
-  <service name="set_version" mode="manual"/>
-  <service name="recompress" mode="manual">
+  <service name="tar" mode="buildtime" />
+  <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
-    <param name="compression">xz</param>
+    <param name="compression">gz</param>
   </service>
+  <service name="set_version" mode="manual" />
 </services>

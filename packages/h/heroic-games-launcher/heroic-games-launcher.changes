@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Feb 22 01:25:38 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 2.20.0
+  * [FIX] Dropdown vertical scroll by @arielj in #5222
+  * [UI] Set html's "lang" attribute to the current language by @arielj in #5252
+  * [FIX] Only use fake epic exe when turned on with env variable by @arielj in #5240
+    (you can remove the USE_FAKE_EPIC_EXE=0 env variable now)
+  * [UI] Fix macOS small icon by @arielj in #5242
+  * Sync Flathub manifest changes with repo template by @CommandMC in #5254
+  * [UI] Fix text wrapping for CJK fonts by @SheffeyG in #5291
+  * [Zoom] Fix conditionals to show zoom by @arielj in #5267
+  * [UI] Fix dropdown style and settings back in RTL layout by @arielj in #5277
+  * [UI/UX] Move FPS limit option to new "Legacy" Game Settings Tab on Linux by 
+    @flavioislima in #5292
+  * [FIX] Launch Epic Games while offline for games that supports it by @flavioislima in #5302
+  * [UX] Log if a game does not support offlineMode but offlineMode is on by @arielj in #5318
+  * [UX] Prevent multiple Play clicks by @arielj in #5320
+  * [FIX] Launch options fixes by @flavioislima in #5230
+  * [UX] Better GOG errors handling by @arielj in #5324
+  * [Fix] Don't fail to check for updates if there isn't a beta release by @CommandMC in #5327
+  * [UI] Hide the Saves-Sync Quick on the game page menu behind a setting by @flavioislima in #5323
+  * [UX] Fix incorrect loading state in Wine Manager when library was refreshed by @arielj in #5293
+  * [DOC] Mention projects we use inside Heroic for more visibility by @arielj in #5274
+  * [FIX] Check alternative folders when installing DXVK by @arielj in #5342
+  * Bump Legendary by @CommandMC in #5341
+  * [UI] Show update message to game cards by @flavioislima in #5325
+  * [i18n] Updated Translations by @weblate in #5244
+  * [UX] Tell users to manually upload log if upload button failed by @arielj 
+    in https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/
+  * [FIX] Fix How Long To Beat implementation by @flavioislima in #5334
+  End of update.
+  * Security: Fix CVE-2026-26278
+    Force fast-xml-parser to 5.3.6 via pnpm override to prevent
+    entity expansion DoS (GHSA-jmr7-xgp7-cmfj).
+  * Change sources to use obscpio
+  * Remove pnpm list and why, this is only for test
+  * Otimize get-sources.sh file
+
+-------------------------------------------------------------------
+Fri Feb  6 22:44:05 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Enforce brace-expansion >= 5.0.1 via pnpm overrides to address CVE-2026-25547 
+
+-------------------------------------------------------------------
 Sun Feb  1 12:13:22 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Integrate SELinux policy via Supplements in accordance with openSUSE Factory policies 

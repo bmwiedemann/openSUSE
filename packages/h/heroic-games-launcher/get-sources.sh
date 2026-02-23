@@ -14,8 +14,9 @@ echo "++++++++++++++++++++++++++++++++++++++++++++++"
 echo "patching service file and downloading sources"
 echo "++++++++++++++++++++++++++++++++++++++++++++++"
 
-sed -i -e 's|<param name="revision">refs/tags/v.*|<param name="revision">refs/tags/v'${VERSION}'</param>|g' _service
-osc service runall
+sed -i -E 's|(<param name="revision">).*?(</param>)|\1v'"${VERSION}"'\2|' _service
+osc service mr obs_scm
+osc service mr set_version
 
 if [ -f "pnpm-offline-store.tar.gz" ]; then rm pnpm-offline-store.tar.gz; fi
 
@@ -48,7 +49,7 @@ jq --indent 2 \
       "electron-builder": .devDependencies["electron-builder"]
     }
 
-  | .packageManager = "pnpm@>=10.17.1"
+  | .packageManager = "pnpm@10.28.2"
 
   | .scripts.build = "electron-vite build"
   | .scripts["dist:linux"] =
@@ -102,7 +103,15 @@ jq --indent 2 \
           "react-router-dom": "^7.12.0"
         }
     )
-' package.json > package.json.new && mv package.json.new package.json
+
+  # === CVE-2026-26278: fast-xml-parser DoS fix ===
+  | .pnpm.overrides = (
+      (.pnpm.overrides // {})
+      + {
+          "fast-xml-parser": "5.3.6"
+        }
+    )
+' package.json > temp.json && mv temp.json package.json
 
 echo "++++++++++++++++++++++++++++++++++++++++++++++"
 echo "Cleanup Step"
@@ -118,10 +127,9 @@ echo "++++++++++++++++++++++++++++++++++++++++++++++"
 pnpm config set store-dir .pnpm-store
 pnpm install --lockfile-only --force --ignore-scripts
 
-##npm install --package-lock-only --legacy-peer-deps --strict-peer-dependencies --no-frozen-lockfile  --ignore-scripts
 pnpm install --ignore-scripts
 
-tar cJf ../pnpm-offline-store.tar.xz .pnpm-store node_modules package.json pnpm-lock.yaml
+tar cJf ../pnpm-offline-store.tar.gz .pnpm-store node_modules package.json pnpm-lock.yaml
 
 echo "++++++++++++++++++++++++++++++++++++++++++++++"
 echo "Done! Have fun building and testing"

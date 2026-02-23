@@ -27,13 +27,13 @@
 %endif
 
 Name:           heroic-games-launcher
-Version:        2.19.1
+Version:        2.20.0
 Release:        0
 Summary:        Native Games launcher for GOG, Epic and Amazon
 License:        GPL-3.0-only
 URL:            https://heroicgameslauncher.com/
-Source:         %{name}-%{version}.tar.xz
-Source1:        pnpm-offline-store.tar.xz
+Source:         %{name}-%{version}.tar.gz
+Source1:        pnpm-offline-store.tar.gz
 Source2:        heroic-games-launcher.rpmlintrc
 Source3:        get-sources.sh
 Source4:        release_tags
