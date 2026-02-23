@@ -1,7 +1,7 @@
 #
 # spec file for package aws-lc
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         sover 0
 %define         __builder ninja
 Name:           aws-lc
-Version:        1.67.0
+Version:        1.68.0
 Release:        0
 Summary:        Checksums package for AWS SDK for C
 License:        Apache-2.0
@@ -81,7 +81,10 @@ Summary:        Benchmarktool for %{name}
 %autosetup -a1 -p1
 
 %build
-%cmake -DCMAKE_C_FLAGS="-Wno-error=unused-variable -Wno-error=stringop-overflow=" -DENABLE_PRE_SONAME_BUILD=0
+%cmake -DCMAKE_C_FLAGS="-Wno-error=unused-variable -Wno-error=stringop-overflow=" \
+  -DENABLE_PRE_SONAME_BUILD=0 \
+  -DGENERATE_RUST_BINDINGS=0 \
+  %{nil}
 %cmake_build
 
 %install

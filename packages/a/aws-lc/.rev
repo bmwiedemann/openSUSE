@@ -260,4 +260,37 @@
 - remove vendor-fix.patch, as upstream finally fixed the issue (forwarded request 1330034 from rrahl0)</comment>
     <requestid>1330035</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2c35b5fc542cc32059ff88cb88e5ecfd</srcmd5>
+    <version>1.68.0</version>
+    <time>1771863326</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.68.0:
+  * Enable Hybrid PQ KeyShares by default
+  * Remove AVX conditional from cmake script
+  * openssl-ca command implementation for self-sign certificates
+  * Initial Framework for Using Doxygen to Document Public Header Files
+  * Move md4 out of FIPS module
+  * Remove FIPS counter framework and other tidying up
+  * Adds a new randomness generation API
+  * Ensure pkcs7 checks ASN1_TYPE-&gt;type
+  * Integrate Wycheproof ML-DSA test vectors
+  * Simplify FIPS conditional in top-level build script
+  * Add method to get type of ML-DSA instance configured under EVP PKEY
+  * Nmap build needs liblinear
+  * Disable SLP vectorizer for FIPS shared library builds on GCC 14+
+  * Address some CMake findings
+  * Support GCC 4.8 for aarch64
+  * Free potential memory before assigning new pointer
+  * Ensure index argument is not negative in ASN1_BIT_STRING_set_bit
+  * Ensure no overflow in signed output length in do_buf
+  * Ensure public key is set before verifying through ML-DSA verify
+  * Correct CCM nids in object definition
+  * Address Reported Bug Findings
+  * Fix OPENSSL_memchr per C23
+  * Fix argument order in hmac_copy
+  * Support WASM/Emscripten
+  * Generate Rust Bindings (forwarded request 1334511 from rrahl0)</comment>
+    <requestid>1334512</requestid>
+  </revision>
 </revisionlist>

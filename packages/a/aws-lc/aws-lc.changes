@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Feb 23 12:57:27 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.68.0:
+  * Enable Hybrid PQ KeyShares by default
+  * Remove AVX conditional from cmake script
+  * openssl-ca command implementation for self-sign certificates
+  * Initial Framework for Using Doxygen to Document Public Header Files
+  * Move md4 out of FIPS module
+  * Remove FIPS counter framework and other tidying up
+  * Adds a new randomness generation API
+  * Ensure pkcs7 checks ASN1_TYPE->type
+  * Integrate Wycheproof ML-DSA test vectors
+  * Simplify FIPS conditional in top-level build script
+  * Add method to get type of ML-DSA instance configured under EVP PKEY
+  * Nmap build needs liblinear
+  * Disable SLP vectorizer for FIPS shared library builds on GCC 14+
+  * Address some CMake findings
+  * Support GCC 4.8 for aarch64
+  * Free potential memory before assigning new pointer
+  * Ensure index argument is not negative in ASN1_BIT_STRING_set_bit
+  * Ensure no overflow in signed output length in do_buf
+  * Ensure public key is set before verifying through ML-DSA verify
+  * Correct CCM nids in object definition
+  * Address Reported Bug Findings
+  * Fix OPENSSL_memchr per C23
+  * Fix argument order in hmac_copy
+  * Support WASM/Emscripten
+  * Generate Rust Bindings
+
+-------------------------------------------------------------------
 Fri Jan 30 11:59:39 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.67.0:
