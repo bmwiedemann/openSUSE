@@ -2,7 +2,7 @@
 # spec file for package helmfile
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-#               2021-2025 Manfred Hollstein <manfred.h@gmx.net>
+#               2021-2026 Manfred Hollstein <manfred.h@gmx.net>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 #
 
 
-%define git_commit 61f4a316a643f86ba86f9e9d683d9a08003544f0
+%define git_commit c63947483ce8c6a0ea3c011ad43af4fa0f28f975
 Name:           helmfile
-Version:        1.2.3
+Version:        1.3.1
 Release:        0
 Summary:        Deploy Kubernetes Helm Charts
 License:        MIT
@@ -31,7 +31,7 @@ Requires:       helm >= 3.13.1
 Recommends:     helm >= 3.19.4
 BuildRequires:  golang-packaging
 BuildRequires:  xz
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) < 1.26
 
 %description
 Helmfile is a declarative spec for deploying helm charts. It lets you...
