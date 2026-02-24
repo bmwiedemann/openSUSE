@@ -468,4 +468,69 @@ CVE-2023-51448 boo#1218381
     <comment></comment>
     <requestid>1266914</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>151df1853fda25e99d45028112e47535</srcmd5>
+    <version>1.2.30+git231.bca15e70c</version>
+    <time>1771943923</time>
+    <user>anag_factory</user>
+    <comment>- Update to latest release/1.2.30+git231.bca15e70c:
+ - Updates since 1.2.30:
+  * security#GHSA-6RVG-2VM8-5WRF: CVE-2026-22802 Authentication Bypass leads to information disclosure
+  * security: CVE-2026-1513 billboard.js before 3.18.0 Improper Input Sanitization Allows Remote JavaScript Execution
+  * issue#6168: When purging RRD files, paths are not correctly handled
+  * issue#6202: When using automation, devices may not be added as expected
+  * issue#6204: Attempting to match a field in automation may cause unexpected errors
+  * issue#6210: Ensure column names are escaped to prevent reserved word issues
+  * issue#6240: Improve sort order for incorrect RRA's
+  * issue#6249: Unable to send Email to users without a domain name
+  * issue#6251: When viewing a graph, do not produce unnecessary errors if graph has been removed
+  * issue#6253: When i18n formatting numbers, assume null means 0 by xmacan
+  * issue#6257: When data sources are removed, ensure only RRD files are removed by xmacan
+  * issue#6262: When the database connection drops during query, retry to ensure success
+  * issue#6270: Incorrect escaping may prevent drop downs working as intended
+  * issue#6271: When validation errors occur, provide more information to help diagnosis
+  * issue#6283: When calculating total pages, ensure math errors do not occur
+  * issue#6292: When validating null request variables, fatal errors may occur
+  * issue#6294: Automation may produce unexpected warnings when detecting the OS
+  * issue#6296: Process timeouts may not end processes as expected
+  * issue#6297: Improve support for Secure SMTP
+  * issue#6299: Improve email address handling to support UTF8
+  * issue#6313: When editing multiple devices, unexpected errors may be recorded
+  * issue#6314: When editing an Aggregation Graph, total count may not reflect number of items correctly
+  * issue#6315: When duplicating a Data Input Method, unexpected errors may occur
+  * issue#6326: Improve SNMP v3 support for Cisco devices
+  * issue#6327: Implement Autocomplete standards for Login and Change Password
+  * issue#6329: When using LDAP, checking a user's groups may cause unexpected errors
+  * issue#6331: When upgrading from pre-1.0.5, unexpected errors may occur by YATV
+  * issue#6334: When creating Aggregate graphs, unable to hide HRULE and COMMENT based items
+  * issue#6335: Email addresses with leading or trailing spaces can cause issues
+  * issue#6441: Spikekill uses the wrong option for retention periods by 3432
+  * issue#6444: When a Data Input's Title is applied, unexpected errors and values may be seen
+  * issue#6490: When using Clear All on Selective Debug, first item is reselected
+  * issue#6507: Importing packages may not work as expected by xmacan
+  * issue#6508: When exporting graphs, data issues may lead to unexpected errors by xmacan
+  * issue#6516: When modifying Graph Automation Rules, unexpected errors may be logged
+  * issue#6518: Improve security of CSRF Secret by SMark-Black
+  * issue#6519: When using Real Time graphing, unexpected errors may appear if graph is removed
+  * issue#6546: Restore some missing SNMP Script Server configurations
+  * issue#6551: Improve support for FreeBSD when Auditing Databases by xmacan
+  * issue#6573: Create new device_change_javascript hook for THOLD plugin by xmacan
+  * issue#6598: Improve PHP 8 support by TheWitness
+  * issue#6600: When replicating plugins, unexpected errors may appear due to missing tables
+  * issue#6605: Prevent Row Data Loss When Rebuilding RRD Files
+  * issue#6606: When using SpikeKill, actions would not always lead to expected results
+  * feature#6523: When disabling users, ensure that their authentication cookies and sessions cleared
+  * feature#6524: When changing your password, log off from all sessions
+  * feature#6534: Improve Cacti Session ID security
+  * feature#6607: Implement session security on Password change
+  * feature: Update DOMPurify to 3.3.0
+  * feature: Update PHPMailer to 6.10 to support SMTPUTF8
+  * feature: Update phpseclib for the Service Check plugi
+- Add _service file for easier package source management
+- Update requires/recommends for better fresh install experience
+ - Requires: php-intl
+ - Recommends: php-gettext php-pcntl mysql-tools
+</comment>
+    <requestid>1334575</requestid>
+  </revision>
 </revisionlist>

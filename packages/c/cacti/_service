@@ -1,0 +1,26 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/Cacti/cacti.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="revision">1.2.x</param>
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
+    <!-- Removes "release/" from the beginning of the version string -->
+    <param name="versionrewrite-pattern">release/(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="filename">cacti</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">obs@mtlfab.com</param>
+  </service>
+
+  <service name="set_version" mode="manual">
+    <param name="file">cacti.spec</param>
+  </service>
+  
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+
+</services>

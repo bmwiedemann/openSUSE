@@ -32,7 +32,7 @@
 %bcond_with systemd
 %endif
 Name:           cacti
-Version:        1.2.30
+Version:        1.2.30+git231.bca15e70c
 Release:        0
 Summary:        Web Front-End to Monitor System Data via RRDtool
 License:        GPL-2.0-or-later
@@ -56,6 +56,7 @@ Requires:       net-snmp
 Requires:       php-ctype
 Requires:       php-gd
 Requires:       php-gmp
+Requires:       php-intl
 Requires:       php-json
 Requires:       php-ldap
 Requires:       php-mbstring
@@ -64,6 +65,9 @@ Requires:       php-posix
 Requires:       php-snmp >= 7.0
 Requires:       php-zlib
 Requires:       rrdtool
+Recommends:     php-gettext
+Recommends:     php-pcntl
+Recommends:     mysql-tools
 Conflicts:      cacti-spine < %{version}
 Conflicts:      cacti-spine > %{version}
 Provides:       cacti-system = %{version}-%{release}
