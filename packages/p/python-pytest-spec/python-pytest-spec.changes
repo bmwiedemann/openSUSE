@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 24 01:03:57 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 6.0.0:
+  * Update pytest hook implementation marker to use pluggy API
+  * Drop support for pytest 4.x.x
+  * Drop support for pytest 5.x.x
+  * Added support for pytest 9.x.x
+  * Drop support for Python 3.9
+  * Added support for Python 3.14
+  * Improved class name and patameter string
+
+-------------------------------------------------------------------
 Mon Sep 29 21:24:32 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.0:

@@ -18,12 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-spec
-Version:        5.1.0
+Version:        6.0.0
 Release:        0
 Summary:        Plugin to display pytest execution output like a specification
 License:        GPL-2.0-only
 URL:            https://github.com/pchomik/pytest-spec
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-spec/pytest_spec-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -31,7 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 6}
 # /SECTION
 %python_subpackages
 

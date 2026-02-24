@@ -102,4 +102,19 @@
   * Fixed case when parametrization arguments were ignored</comment>
     <requestid>1308070</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fb5a3e1ded0346e1219d5bf2ac34ee4e</srcmd5>
+    <version>6.0.0</version>
+    <time>1771943965</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.0.0:
+  * Update pytest hook implementation marker to use pluggy API
+  * Drop support for pytest 4.x.x
+  * Drop support for pytest 5.x.x
+  * Added support for pytest 9.x.x
+  * Drop support for Python 3.9
+  * Added support for Python 3.14
+  * Improved class name and patameter string</comment>
+    <requestid>1334609</requestid>
+  </revision>
 </revisionlist>
