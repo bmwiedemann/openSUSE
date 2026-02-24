@@ -1,0 +1,87 @@
+From 4c61a450d4a843c66baab6d5d9a42ce0554e99d7 Mon Sep 17 00:00:00 2001
+From: ohemorange <erica@eff.org>
+Date: Fri, 13 Feb 2026 13:08:06 -0800
+Subject: [PATCH] Reset mock call count using reset_mock since new thread-safe
+ implementation means it can no longer just be set to 0 (#10576)
+
+This should fix our failing tests.
+
+Python 3.14.3 has the following in its changelog:
+
+> [gh-142651](https://github.com/python/cpython/issues/142651):
+[unittest.mock](https://docs.python.org/3/library/unittest.mock.html#module-unittest.mock):
+fix a thread safety issue where
+[Mock.call_count](https://docs.python.org/3/library/unittest.mock.html#unittest.mock.Mock.call_count)
+may return inaccurate values when the mock is called concurrently from
+multiple threads.
+
+As a result, we have to call `reset_mock()` instead of using
+`.call_count = 0`. See example
+[here](https://github.com/matplotlib/matplotlib/pull/31153).
+
+Tests on my machine showing that this change fixes things, and it's the
+only place to fix:
+```bash
+$ brew upgrade pyenv
+$ pyenv install 3.14.3
+$ pyenv global 3.14.3
+$ tools/venv.py
+$ source venv/bin/activate
+$ pytest certbot -k "test_rollback_too_many"
+====================================================================== test session starts =======================================================================
+platform darwin -- Python 3.14.3, pytest-9.0.2, pluggy-1.6.0
+rootdir: /Users/erica/certbot
+configfile: pytest.ini
+plugins: anyio-4.12.1, xdist-3.8.0, cov-7.0.0
+collected 1039 items / 1038 deselected / 1 selected
+
+certbot/src/certbot/_internal/tests/reverter_test.py .                                                                                                     [100%]
+
+=============================================================== 1 passed, 1038 deselected in 2.94s ===============================================================
+$ git grep 'call_count = 0'
+$ git checkout main
+$ pytest certbot -k "test_rollback_too_many"
+====================================================================== test session starts =======================================================================
+platform darwin -- Python 3.14.3, pytest-9.0.2, pluggy-1.6.0
+rootdir: /Users/erica/certbot
+configfile: pytest.ini
+plugins: anyio-4.12.1, xdist-3.8.0, cov-7.0.0
+collected 1039 items / 1038 deselected / 1 selected
+
+certbot/src/certbot/_internal/tests/reverter_test.py F                                                                                                     [100%]
+
+============================================================================ FAILURES ============================================================================
+_______________________________________________________ TestFullCheckpointsReverter.test_rollback_too_many _______________________________________________________
+
+self = <certbot._internal.tests.reverter_test.TestFullCheckpointsReverter testMethod=test_rollback_too_many>
+mock_logger = <MagicMock name='logger' id='4463351456'>
+
+>   ???
+E   AssertionError: assert 2 == 1
+E    +  where 2 = <MagicMock name='logger.warning' id='4463351792'>.call_count
+E    +    where <MagicMock name='logger.warning' id='4463351792'> = <MagicMock name='logger' id='4463351456'>.warning
+
+certbot/src/certbot/_internal/tests/reverter_test.py:363: AssertionError
+==================================================================== short test summary info =====================================================================
+FAILED certbot/src/certbot/_internal/tests/reverter_test.py::TestFullCheckpointsReverter::test_rollback_too_many - AssertionError: assert 2 == 1
+=============================================================== 1 failed, 1038 deselected in 0.48s ===============================================================
+$ git grep 'call_count = 0'
+certbot/src/certbot/_internal/tests/reverter_test.py:        mock_logger.warning.call_count = 0
+```
+---
+ certbot/src/certbot/_internal/tests/reverter_test.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/certbot/_internal/tests/reverter_test.py b/src/certbot/_internal/tests/reverter_test.py
+index 146bd7eadcd..50cdd68c996 100644
+--- a/src/certbot/_internal/tests/reverter_test.py
++++ b/src/certbot/_internal/tests/reverter_test.py
+@@ -358,7 +358,7 @@ def test_rollback_too_many(self, mock_logger):
+ 
+         # Test Generic warning
+         self._setup_three_checkpoints()
+-        mock_logger.warning.call_count = 0
++        mock_logger.warning.reset_mock()
+         self.reverter.rollback_checkpoints(4)
+         assert mock_logger.warning.call_count == 1
+ 

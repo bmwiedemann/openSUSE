@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 24 14:52:26 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.3.1
+  * We rebuilt our snaps to include updated versions our dependencies.
+- Add upstream reset-mock-call-count.patch to fix tests
+
+-------------------------------------------------------------------
 Mon Feb  9 12:50:01 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.3.0

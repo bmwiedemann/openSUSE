@@ -23,12 +23,14 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-certbot
-Version:        5.3.0
+Version:        5.3.1
 Release:        0
 Summary:        ACME client
 License:        Apache-2.0
 URL:            https://github.com/certbot/certbot
 Source0:        https://files.pythonhosted.org/packages/source/c/certbot/certbot-%{version}.tar.gz
+# https://github.com/certbot/certbot/pull/10576 Reset mock call count using reset_mock since new thread-safe implementation means it can no longer just be set to 0
+Patch0:         reset-mock-call-count.patch
 BuildRequires:  %{python_module acme >= %{version}}
 BuildRequires:  %{python_module configargparse >= 1.5.3}
 BuildRequires:  %{python_module configobj >= 5.0.6}
