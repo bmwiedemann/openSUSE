@@ -1,0 +1,43 @@
+diff -upr lal-7.7.0.orig/lib/vectorops/VectorMath_AVXx.c lal-7.7.0/lib/vectorops/VectorMath_AVXx.c
+--- lal-7.7.0.orig/lib/vectorops/VectorMath_AVXx.c	2026-02-23 12:01:39.110956379 +0000
++++ lal-7.7.0/lib/vectorops/VectorMath_AVXx.c	2026-02-23 12:08:02.586751834 +0000
+@@ -227,7 +227,7 @@ XLALVectorMath_S2s_AVXx ( REAL4 *out, co
+         }
+ 
+       // deal with the remaining (<=7) terms separately
+-      for ( UINT4 i = i8Max, j=0; i < len; i ++, j++ ) {
++      for ( UINT4 i = i8Max; i < len; i ++ ) {
+         *out = (*op)( *out, in[i] );
+       }
+ 
+@@ -621,7 +621,7 @@ XLALVectorMath_D2d_AVXx ( REAL8 *out, co
+         }
+ 
+       // deal with the remaining (<=3) terms separately
+-      for ( UINT4 i = i4Max, j=0; i < len; i ++, j++ ) {
++      for ( UINT4 i = i4Max; i < len; i ++ ) {
+         *out = (*op)( *out, in[i] );
+       }
+ 
+diff -upr lal-7.7.0.orig/lib/vectorops/VectorMath_SSEx.c lal-7.7.0/lib/vectorops/VectorMath_SSEx.c
+--- lal-7.7.0.orig/lib/vectorops/VectorMath_SSEx.c	2026-02-23 12:01:39.110956379 +0000
++++ lal-7.7.0/lib/vectorops/VectorMath_SSEx.c	2026-02-23 12:06:29.860571346 +0000
+@@ -192,7 +192,7 @@ XLALVectorMath_S2s_SSEx ( REAL4 *out, co
+         }
+ 
+       // deal with the remaining (<=3) terms separately
+-      for ( UINT4 i = i4Max, j=0; i < len; i ++, j++ ) {
++      for ( UINT4 i = i4Max; i < len; i ++ ) {
+         *out = (*op)( *out, in[i] );
+       }
+ 
+@@ -382,7 +382,7 @@ XLALVectorMath_D2d_SSEx ( REAL8 *out, co
+         }
+ 
+       // deal with the remaining (<=1) terms separately
+-      for ( UINT4 i = i2Max, j=0; i < len; i ++, j++ ) {
++      for ( UINT4 i = i2Max; i < len; i ++ ) {
+         *out = (*op)( *out, in[i] );
+       }
+ 
+

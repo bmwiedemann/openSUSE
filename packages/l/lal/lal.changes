@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 23 12:58:24 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches [bsc#1256968]
+  fix build with gcc16
+  * lal-gcc16.patch
+
+-------------------------------------------------------------------
 Mon Nov 17 16:53:42 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 7.7.0:

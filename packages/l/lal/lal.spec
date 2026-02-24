@@ -1,6 +1,7 @@
 #
 # spec file for package lal
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -44,6 +45,8 @@ Source:         https://software.igwn.org/sources/source/lalsuite/lal-%{version}
 Patch0:         lal-swig-4_4-compat.patch
 # PATCH-FIX-UPSTREAM lal-disable-erroneous-test.patch badshah400@gmail.com -- Disable a test that gives 'SystemError: error return without exception set'
 Patch2:         lal-disable-erroneous-test.patch
+# fix build with gcc16
+Patch3:         lal-gcc16.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module numpy}
@@ -148,6 +151,7 @@ This package provides the octave module for lal.
 %autosetup -N -n lal-%{version}
 %patch -P0 -p2
 %patch -P2 -p1
+%patch -P3 -p1
 
 %build
 autoreconf -fvi
