@@ -924,4 +924,13 @@
     during object creation.</comment>
     <requestid>1332023</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>1527625a4962b40eb5baa2f6c91dfca6</srcmd5>
+    <version>5.3.1</version>
+    <time>1771954272</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.3.1
+  * sync with the main certbot package</comment>
+    <requestid>1334773</requestid>
+  </revision>
 </revisionlist>
