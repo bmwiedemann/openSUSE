@@ -1,7 +1,7 @@
 #
 # spec file for package gvisor-tap-vsock
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gvisor-tap-vsock
-Version:        0.8.6
+Version:        0.8.8
 Release:        0
 Summary:        Go replacement for libslirp and VPNKit
 License:        Apache-2.0

@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Fri Feb 20 11:58:32 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 0.8.8:
+  * build(deps): bump github.com/onsi/gomega from 1.39.0 to 1.39.1
+  * build: Update .gitignore
+  * tap: Switch no longer need to know the MTU
+  * deps: Switch back to github.com/inetaf/tcpproxy
+  * build(deps): bump github.com/miekg/dns from 1.1.70 to 1.1.72
+  * build(deps): bump github.com/sirupsen/logrus from 1.9.3 to 1.9.4
+  * Add notification feature documentation and unit tests - Document the --notification flag usage in README with examples - Add unit tests for NotificationSender
+  * Trigger connection established and closed events at switch layer Send connection_established and connection_closed directly from the switch when MAC is learned or connection with the VM closes.
+  * feat: add notification mechanism for network lifecycle events Introduces a channel-based notification sender that sends JSON messages over Unix domain sockets for key events: - Ready: network stack is ready for connections - ConnectionEstablished: VM connection accepted - HypervisorError: error during VM connection setup - ConnectionClosed: VM connection closed
+  * build(deps): bump golang.org/x/crypto from 0.46.0 to 0.47.0
+  * build(deps): bump golang.org/x/mod from 0.31.0 to 0.32.0
+  * build(deps): bump github.com/miekg/dns from 1.1.69 to 1.1.70
+  * build(deps): bump golang.org/x/sys from 0.39.0 to 0.40.0
+  * build(deps): bump github.com/onsi/gomega from 1.38.3 to 1.39.0
+  * build(deps): bump github.com/golangci/golangci-lint/v2 in /tools
+  * doc: Explain how to update the gvisor go module
+  * gha: Stop using go-version-file with actions/setup-go
+  * build(deps): bump github.com/foxcpp/go-mockdns from 1.1.0 to 1.2.0
+  * build(deps): bump actions/upload-artifact from 5 to 6
+  * build(deps): bump github.com/miekg/dns from 1.1.68 to 1.1.69
+  * build(deps): bump golang.org/x/mod from 0.30.0 to 0.31.0
+  * build(deps): bump github.com/onsi/gomega from 1.38.2 to 1.38.3
+  * build(deps): bump golang.org/x/crypto from 0.45.0 to 0.46.0
+  * build(deps): bump github.com/golangci/golangci-lint/v2 in /tools
+  * build(deps): bump golang.org/x/mod from 0.29.0 to 0.30.0
+  * build(deps): bump actions/checkout from 5 to 6
+  * build(deps): bump golang.org/x/crypto from 0.43.0 to 0.45.0
+  * build(deps): bump github.com/golangci/golangci-lint/v2 in /tools
+  * build: Remove `// +build` tags
+  * build(deps): bump github.com/golangci/golangci-lint/v2 in /tools
+  * Rename SSH keys files
+  * build(deps): bump actions/upload-artifact from 4 to 5
+  * use go-mockdns for pkg/service/dns tests
+  * add go-mockdns
+  * Fix TXT lookups for long or multiple TXT records
+  * build(deps): bump golang.org/x/mod from 0.28.0 to 0.29.0
+  * build(deps): bump golang.org/x/crypto from 0.42.0 to 0.43.0
+  * Stop using github.com/pkg/errors
+  * pkg: Stop using errors.Wrap
+  * gvproxy: Stop using errors.Wrap
+  * ssh-over-vsock: Stop using errors.Wrap
+  * gvforwarder: Stop using errors.Wrap
+  * Omit empty regexp in REST API results
+  * Use maps.Copy instead of open coding it
+  * Add documentation for REST api and client package
+  * Add go API for /services/dhcp/leases
+  * build(deps): bump github.com/golangci/golangci-lint/v2 in /tools
+  * gvforwarder: Add more logging during startup
+  * gvforwarder: Report error on int16 overflow
+  * gvforwarder: Use slices.Contains
+  * build(deps): bump github.com/coreos/stream-metadata-go
+  * gha: Switch to go 1.24 and 1.25
+  * gvproxy: Enable config file based configuration
+  * build(deps): bump golang.org/x/mod from 0.27.0 to 0.28.0
+  * build(deps): bump github.com/onsi/gomega from 1.38.0 to 1.38.2
+  * lint: Fix error appearing after the go 1.24 go.mod change
+  * build(deps): bump golang.org/x/crypto from 0.41.0 to 0.42.0
+  * Fix linting error
+  * Fix compilation on arm32
+  * Use net.JoinHostPort()
+  * Replace VFKT handshake with MSG_PEEK for vfkit connection identification
+  * build(deps): bump github.com/onsi/gomega from 1.37.0 to 1.38.0
+  * build(deps): bump actions/setup-go from 5 to 6
+  * ci: Use cross-lint in GitHub Actions workflow
+  * Fix all linting errors found by cross-lint
+  * build(deps): bump github.com/stretchr/testify from 1.10.0 to 1.11.1
+  * Add make cross-lint target for cross-platform linting
+  * build(deps): bump github.com/golangci/golangci-lint/v2 in /tools
+
+-------------------------------------------------------------------
+Fri Sep 26 09:46:08 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 0.8.7:
+  * build(deps): bump actions/checkout from 4 to 5
+  * build(deps): bump golang.org/x/mod from 0.26.0 to 0.27.0
+  * build(deps): bump golang.org/x/crypto from 0.40.0 to 0.41.0
+  * build(deps): bump github.com/golangci/golangci-lint/v2 in /tools
+  * build(deps): bump github.com/miekg/dns from 1.1.67 to 1.1.68
+  * Don't show an ERROR when ignoring a RELEASE message
+  * build(deps): bump github.com/onsi/gomega from 1.37.0 to 1.38.0
+  * build(deps): bump golang.org/x/mod from 0.25.0 to 0.26.0
+  * build(deps): bump github.com/coreos/stream-metadata-go
+  * build(deps): bump golang.org/x/crypto from 0.39.0 to 0.40.0
+  * golangci-lint: disable var-naming to prevent package name errors
+  * build(deps): bump github.com/miekg/dns from 1.1.66 to 1.1.67
+  * build(deps): bump github.com/golangci/golangci-lint/v2 in /tools
+  * build(deps): bump github.com/go-viper/mapstructure/v2 in /tools
+  * Remove deprecated ssh.KeyAlgoDSA from HostKeyAlgorithms
+  * build(deps): bump github.com/coreos/stream-metadata-go
+  * build(deps): bump golang.org/x/crypto from 0.38.0 to 0.39.0
+  * build(deps): bump golang.org/x/sync from 0.14.0 to 0.15.0
+  * build(deps): bump golang.org/x/mod from 0.24.0 to 0.25.0
+  * lint fix: fix linter errors after migrating to v2
+  * golangci-lint: migrate configuration to v2 schema
+  * packit: Switch back to fedora-all alias
+  * Added EC2 Metadata Service Access Flag
+  * Do not use RUN statement (only rely on COPY for busybox image)
+  * build(deps): bump github.com/vishvananda/netlink from 1.3.0 to 1.3.1
+  * build(deps): bump github.com/miekg/dns from 1.1.65 to 1.1.66
+
+-------------------------------------------------------------------
 Fri Jul 04 09:13:43 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 0.8.6:
