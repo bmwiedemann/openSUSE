@@ -1,7 +1,7 @@
 #
 # spec file for package certinfo
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 Name:           certinfo
-Version:        1.0.39+git20251105.c09d0f8
+Version:        1.0.40+git20260221.5574ad1
 Release:        0
 Summary:        Print x509 certificate info
 License:        MIT
@@ -24,9 +24,9 @@ URL:            https://github.com/pete911/%{name}
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source100:      README.md
-### Temporary until go1.22 is default
-BuildRequires:  golang-packaging
-#BuildRequires:  go >= 1.24
+### Temporary until go1.26 is default
+#BuildRequires:  golang-packaging
+BuildRequires:  go >= 1.26
 #####
 BuildRequires:  pkgconfig(x11)
 

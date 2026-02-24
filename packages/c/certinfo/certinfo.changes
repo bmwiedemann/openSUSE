@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb 21 17:06:35 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.0.40+git20260221.5574ad1:
+  * format imports and add unit tests for host arg
+  * Added functionality for protocal specification (#50)
+  * udpate go version
+  * add kubernetes example
+
+-------------------------------------------------------------------
 Wed Nov 05 15:18:57 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding 'Source100: README.md' as the README is suggested at src.opensuse.org
