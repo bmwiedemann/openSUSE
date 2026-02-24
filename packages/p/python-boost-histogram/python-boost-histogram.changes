@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Feb 16 16:58:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.1:
+  * `MultiCell` storage, supporting a variable number of values,
+  * Record `growth=True` in writer-info (serialization), and
+    respect it if present
+  * Drop Python 3.9
+  * Drop Python 3.13t (use 3.14t instead)
+  * Don't add empty metadata dicts
+  * Avoid compiler warning: declaration of 'i' hides previous
+    local declaration
+  * Refactor `__getitem__` using pattern matching
+  * pytest `log_level` is better than `log_cli_level`
+  * Setting `__file__` no longer required (pybind11 3.0)
+  * Support `__dict__` on histogram like axes
+  * Allow library to be specified in `writer_info` removal
+  * Avoid mutating lists given in indexing
+  * Histogram metadata not being serialized correctly
+  * Unset classic metadata shouldn't show up in serialization
+  * Set dict correctly when unserializing
+  * Serialization was broken for N>1D complex storage histograms
+  * Initial support for uhi's serialization [#997][], [#1030][],
+    [#1033][], [#1034][],
+  * Drop Python 3.8
+  * Support Windows ARM
+  * Support Python 3.14 and 3.14t
+  * Support iOS [#1020][],
+  * Added diagnostics test
+  * Recommend/use `np.s_` for slicing in dicts
+
+-------------------------------------------------------------------
 Sat Jul 12 17:25:32 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.2:

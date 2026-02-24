@@ -101,4 +101,12 @@
   * Prepare for an potential upcoming pybind11 3 change</comment>
     <requestid>1292435</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f07822ffefc1be8f5cc01ec7f5c0d038</srcmd5>
+    <version>1.7.1</version>
+    <time>1771943914</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1334566</requestid>
+  </revision>
 </revisionlist>
