@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 16 10:55:47 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Drop unused GTK dependency.
+
+-------------------------------------------------------------------
 Tue Dec 25 12:34:06 UTC 2018 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.3.1:

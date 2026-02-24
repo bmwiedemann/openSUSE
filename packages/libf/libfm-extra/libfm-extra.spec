@@ -1,7 +1,7 @@
 #
 # spec file for package libfm-extra
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,9 @@ Release:        0
 Summary:        A glib/gio-based lib used to develop file managers
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.lxde.org/
+URL:            http://www.lxde.org/
 Source:         https://github.com/lxde/libfm/archive/%{version}.tar.gz
 BuildRequires:  gcc-c++
-BuildRequires:  gtk2-devel
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkg-config

@@ -91,4 +91,12 @@
 </comment>
     <requestid>661339</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>91b86bbb33afb417e891b8257431943a</srcmd5>
+    <version>1.3.1</version>
+    <time>1771944672</time>
+    <user>anag_factory</user>
+    <comment>- Drop unused GTK dependency.</comment>
+    <requestid>1334726</requestid>
+  </revision>
 </revisionlist>
