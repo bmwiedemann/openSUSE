@@ -17,14 +17,14 @@
 
 
 Name:           upplay
-Version:        1.9.9
+Version:        1.9.10
 Release:        0
 Summary:        UPnP and OpenHome audio Control Point
 License:        GPL-2.0-or-later
 URL:            https://www.lesbonscomptes.com/upplay/
 Source0:        https://www.lesbonscomptes.com/upplay/downloads/upplay-%{version}.tar.gz
 Source1:        https://www.lesbonscomptes.com/upplay/downloads/upplay-%{version}.tar.gz.asc
-Source2:        https://www.lesbonscomptes.com/pages/jf-at-dockes.org.pub#/%{name}.keyring
+Source2:        https://www.lesbonscomptes.com/pages/lesbonscomptes.gpg#/%{name}.keyring
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme

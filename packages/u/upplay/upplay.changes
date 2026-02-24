@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 24 11:16:14 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- updated upplay.keyring
+- Update to 1.9.10:
+  * Use regular dialog to show metadata from the player area instead of the
+    "tooltip-like" window which did not wrap lines
+  * Browser: fix popup popping up again if left-clicked in the same second.
+  * Browser: popup entry for searching artist
+ 
+-------------------------------------------------------------------
 Mon Jan 26 15:08:41 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 1.9.9:
