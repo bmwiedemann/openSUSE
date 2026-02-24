@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 24 13:35:26 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 8.22.1
+  * Compile wheels for Inten macOS and Windows ARM
+  * [PATCH] Fix float16 pack/unpack on big-endian systems
+- from version 8.22.0
+  * Add Python 3.14 to test matrix
+  * Version 8.22.0.
+  * GitHub removed MacOS 13.
+
+-------------------------------------------------------------------
 Tue May 20 09:11:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 8.21.0
