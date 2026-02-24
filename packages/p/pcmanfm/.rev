@@ -423,4 +423,19 @@
     <comment></comment>
     <requestid>1226198</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>69362cb537d8f02508e432aff35e2a2f</srcmd5>
+    <version>1.4.0+git20251208.0908744</version>
+    <time>1771944675</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.0+git20251208.0908744:
+  * Translation update
+  * Bump version to 1.4.0
+  * Use the same icon for all menu actions to open a new tab
+  * Add an option to open files with a single middle-click
+- Produce tarball by service, not obscpio.  This fixes buiding the package
+  with rpmbuild and makes the package more space efficient when using git.
+- Switch to GTK3</comment>
+    <requestid>1334743</requestid>
+  </revision>
 </revisionlist>

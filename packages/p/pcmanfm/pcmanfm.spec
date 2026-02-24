@@ -1,7 +1,7 @@
 #
 # spec file for package pcmanfm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pcmanfm
-Version:        1.3.2+git20241103.1312f60
+Version:        1.4.0+git20251208.0908744
 Release:        0
 Summary:        The LXDE file manager
 License:        GPL-2.0-or-later
@@ -29,9 +29,10 @@ BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libfm)
-BuildRequires:  pkgconfig(libfm-gtk)
+BuildRequires:  pkgconfig(libfm-gtk3)
 BuildRequires:  pkgconfig(libmenu-cache)
 BuildRequires:  pkgconfig(x11)
 # needed for trash
@@ -54,7 +55,7 @@ Summary:        Development files for PCManFM
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       gtk3-devel
-Requires:       libfm-gtk4
+Requires:       libfm-gtk3-4
 Requires:       libfm4
 Requires:       pkgconfig
 BuildArch:      noarch
@@ -68,7 +69,7 @@ find . -name COPYING -exec chmod -c 644 {} \;
 
 %build
 ./autogen.sh
-%configure
+%configure --with-gtk=3
 %make_build
 
 %install
