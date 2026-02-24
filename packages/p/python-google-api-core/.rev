@@ -475,4 +475,15 @@
   * Remove dependency on packaging and pkg_resources (#852)</comment>
     <requestid>1328093</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>103cd841197c2ded298bada83fab7c04</srcmd5>
+    <version>2.30.0</version>
+    <time>1771951532</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.30.0
+  * preserve exception cause
+  * require Python ≥ 3.9, protobuf ≥ 4.25.8
+- Update BuildRequires from pyproject.toml (forwarded request 1334753 from glaubitz)</comment>
+    <requestid>1334762</requestid>
+  </revision>
 </revisionlist>

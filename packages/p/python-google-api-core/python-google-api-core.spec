@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-google-api-core
-Version:        2.29.0
+Version:        2.30.0
 Release:        0
 Summary:        Google API client core library
 License:        Apache-2.0
@@ -55,7 +55,7 @@ Requires:       python-grpcio >= 1.49.1
 Requires:       python-grpcio-status >= 1.49.1
 Requires:       python-requests >= 2.18.0
 Requires:       (python-proto-plus >= 1.25.0 with python-proto-plus < 2.0.0)
-Requires:       (python-protobuf >= 3.19.5 with python-protobuf < 7.0.0)
+Requires:       (python-protobuf >= 4.25.8 with python-protobuf < 7.0.0)
 BuildArch:      noarch
 %python_subpackages
 

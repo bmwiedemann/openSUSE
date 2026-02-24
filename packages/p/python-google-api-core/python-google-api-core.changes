@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 24 13:53:15 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.30.0
+  * preserve exception cause
+  * require Python ≥ 3.9, protobuf ≥ 4.25.8
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Mon Jan 19 13:44:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - fix tests
