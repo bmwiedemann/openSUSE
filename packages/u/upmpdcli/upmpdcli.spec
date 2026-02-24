@@ -19,7 +19,7 @@
 
 %bcond_without confgui
 Name:           upmpdcli
-Version:        1.9.12
+Version:        1.9.14
 Release:        0
 Summary:        UPnP AV and OpenHome Media Renderer front-end to MPD, the Music Player Daemon
 License:        GPL-2.0-or-later
@@ -28,8 +28,6 @@ Source0:        https://www.lesbonscomptes.com/upmpdcli/downloads/upmpdcli-%{ver
 Source1:        https://www.lesbonscomptes.com/upmpdcli/downloads/upmpdcli-%{version}.tar.gz.asc
 Source2:        https://www.lesbonscomptes.com/pages/lesbonscomptes.gpg#/%{name}.keyring
 Patch0:         harden_upmpdcli.service.patch
-# PATCH-FIX-UPSTREAM fix-confgui.patch
-Patch1:         fix-confgui.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  pkgconfig

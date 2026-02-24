@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb 24 10:16:30 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- removed upstream fix-confgui.patch
+- Update to 1.9.14:
+  * Media server: let the plugins specify custom HTTP header for fetching
+    from the streaming service. Allows, e.g., for specific authentication
+    using the headers
+  * Media server: proxy mode: fix rare deadlock when seeking or switching
+    tracks rapidly
+  * Media server: subsonic and tidal updates
+- Update to 1.9.13:
+  * Renderer: improve behaviour when switching between Radio and Playlist
+    OpenHome sources
+  * Media server: subsonic update
+
+-------------------------------------------------------------------
 Tue Feb 10 12:49:20 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - updated upmpdcli.keyring
