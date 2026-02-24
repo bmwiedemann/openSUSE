@@ -17,7 +17,7 @@
 
 
 Name:           steampipe
-Version:        2.3.5
+Version:        2.3.6
 Release:        0
 Summary:        Query various APIs and services via SQL language
 License:         	AGPL-3.0-only
@@ -25,7 +25,7 @@ URL:            https://github.com/turbot/steampipe
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.22
+BuildRequires:  golang(API) >= 1.24
 %{go_nostrip}
 
 %description

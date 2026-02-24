@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 23 08:15:40 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.3.6:
+  * v2.3.6
+  * Update FDW version to 2.1.5 and SDK to v5.13.2 (#4939)
+  * Fix date and timestamptz display. closes #4450
+  * Add steampipe architecture and development context to CLAUDE.md
+  * Add release process documentation to CLAUDE.md
+
+-------------------------------------------------------------------
 Mon Feb 09 09:50:29 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.3.5:
