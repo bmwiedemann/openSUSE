@@ -1,7 +1,7 @@
 #
 # spec file for package form
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,15 @@
 
 %bcond_without doc
 Name:           form
-Version:        4.3.1
+Version:        5.0.0
 Release:        0
 Summary:        A Symbolic Manipulation System
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://github.com/form-dev/form/
-Source0:        https://github.com/form-dev/form/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.zst
 # PATCH-FEATURE-OPENSUSE form-dont-use-DATE.patch badshah400@gmail.com -- Do not use __DATE__ in source code to avoid issues with reproducibility
 Patch0:         form-dont-use-DATE.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         https://github.com/form-dev/form/commit/5c01278accf52cb4ef9f164ce3b5c0aca08c3f16.patch#/form-build-docs-without-git-repo.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         https://github.com/form-dev/form/commit/6531a2529d04aaa4a40dd8e312fb3c728ba632ff.patch#/form-fix-doxygen-failure.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -41,6 +37,7 @@ BuildRequires:  gmp-devel
 BuildRequires:  libtool
 BuildRequires:  openmpi-macros-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(mpfr)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     %{name}-doc = %{version}
 %{openmpi_requires}
@@ -82,6 +79,7 @@ disk space and not by the available RAM.
 %package doc
 Summary:        Additional documentation for %{name} - A Symbolic Manipulation System
 Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description doc
 FORM is a Symbolic Manipulation System. It reads symbolic expressions from files
