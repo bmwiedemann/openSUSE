@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Feb 23 05:08:17 UTC 2026 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to v1.6.2
+  * Prevented xdpsock from looping forever on RX.
+  * Fixed 32-bit compile errors for xdpsock.
+  * Addressed build failures involving "-Werror=stringop-overread".
+  * Added documentation for XSK commands.
+- Update to v1.6.1
+  * Added -lpthread to all userspace builds in lib/common.
+  * Fixed build issues with older versions of libbpf.
+  * Fixed xdp-trafficgen support for mlx5 devices.
+  * Enabled multibuf for the xdp-pass program in xdp-trafficgen.
+  * Fixed builds regarding GCC maybe-uninitialized warnings.
+  * Avoided the use of stddef.h and size_t in BPF headers.
+- Update to v1.6.0
+  * Added devmap egress action option and drop mode for egress action in xdp-bench.
+  * Updated linux headers bpf.h to kernel version 6.3.
+  * Added device binding support.
+  * Enhanced params library to support parsing integer values as hex and U64 as option types.
+  * Added 'xsk' command in xdp-bench for running AF_XDP benchmarks.
+  * Imported xdpsock code from bpf_examples into lib/util.
+  * Added xsk-udp mode for xsksock operation in xdp-trafficgen.
+  * Added probing for XSK busy poll support in lib/util.
+
+-------------------------------------------------------------------
 Tue Dec 23 15:19:23 UTC 2025 - Hoyeon Lee <hoyeon.lee@suse.com>
 
 - Update to v1.5.8
