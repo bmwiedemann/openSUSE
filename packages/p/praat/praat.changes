@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Feb 18 17:11:11 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.60:
+  * Scripting: fixed an interaction between pause windows and
+    exitScript.
+  * Scripting: turned cases of multiple identical procedure names
+    into once-warnings instead of errors.
+
+-------------------------------------------------------------------
+Thu Feb  5 18:27:32 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.59:
+  * Made nested scripts with pause windows and/or Demo window work
+    again.
+  * Fixed a bug by which SpeechRecognizer creation could make
+    Praat crash on some platforms.
+- Changes from version 6.4.58:
+  * Sound: To PowerCepstrogram... now averages the power over
+    channels instead of taking only channel 1.
+  * Opening TIFF files with Read from file..., as well as Insert
+    picture from file...: rid a bug that would show monochrome
+    TIFF files in four vertical stripes.
+  * Made Insert picture from file... work for PDF files again (bug
+    since 6.4.28).
+  * Backslash trigraph for apico-postalveolars: ṣ (s.v), following
+    Ladefoged & Maddieson (1996), who wanted to distinguish them
+    from the more extreme retroflexes, i.e. apico-palatals such as
+    ʂ (\s.).
+  * Prevented a crash when a “barren” edition tried to run
+    runAllTests_batch.praat.
+  * Scripting: runSubprocess and runSystem now support
+    asynchronous, with which you can spawn a subprocess without
+    waiting for it to finish.
+  * Scripting: randomImax.
+  * Scripting: in pause forms, allow vector expressions as
+    defaults in vector fields.
+  * Scripting: syntax check against duplicate procedure names.
+  * Scripting: no longer any limits on the number of labels and
+    procedures.
+
+-------------------------------------------------------------------
 Mon Jan 19 02:48:33 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.55:
