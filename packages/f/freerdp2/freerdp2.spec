@@ -74,6 +74,24 @@ Patch19:        freerdp-CVE-2026-23531.patch
 Patch20:        freerdp-CVE-2026-23532.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2026-23534.patch bsc#1256944 yfjiang@suse.com -- [codec,clear] fix off by one length check
 Patch22:        freerdp-CVE-2026-23534.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-24491.patch bsc#1257981 mgorse@suse.com -- [channels,drdynvc] reset channel_callback before close
+Patch23:        freerdp-CVE-2026-24491.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-24675.patch bsc#1257982 mgorse@suse.com -- [channels,urbdrc] do not free MsConfig on failure
+Patch24:        freerdp-CVE-2026-24675.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-24676.patch bsc#1257983 mgorse@suse.com -- [channels,audin] reset audin->format
+Patch25:        freerdp-CVE-2026-24676.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-24679.patch bsc#1257986 mgorse@suse.com -- [channels,urbdrc] ensure InterfaceNumber is within range
+Patch26:        freerdp-CVE-2026-24679.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-24681.patch bsc#1257988 mgorse@suse.com -- [channels,urbdrc] cancel all usb transfers on channel close
+Patch27:        freerdp-CVE-2026-24681.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-24682.patch bsc#1257989 mgorse@suse.com -- [channels,audin] fix audin_server_recv_formats cleanup
+Patch28:        freerdp-CVE-2026-24682.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-24683.patch bsc#1257990 mgorse@suse.com -- [channels,ainput] lock context when updating listener
+Patch29:        freerdp-CVE-2026-24683.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-24684.patch bsc#1257991 mgorse@suse.com -- [channels,rdpsnd] terminate thread before free
+Patch30:        freerdp-CVE-2026-24684.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-24684-2.patch bsc#1257991 mgorse@suse.com -- [channel,rdpsnd] only clean up thread before free
+Patch31:        freerdp-CVE-2026-24684-2.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel
 BuildRequires:  ed

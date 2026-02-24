@@ -1,0 +1,33 @@
+From 026b81ae5831ac1598d8f7371e0d0996fac7db00 Mon Sep 17 00:00:00 2001
+From: akallabeth <akallabeth@posteo.net>
+Date: Mon, 26 Jan 2026 10:20:23 +0100
+Subject: [PATCH] [channels,audin] reset audin->format
+
+Whenever the underlying structure changes reset the pointer to NULL
+---
+ channels/audin/client/audin_main.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/channels/audin/client/audin_main.c b/channels/audin/client/audin_main.c
+index c57c65a62..76d87bb9c 100644
+--- a/channels/audin/client/audin_main.c
++++ b/channels/audin/client/audin_main.c
+@@ -207,6 +207,7 @@ static UINT audin_process_formats(AUDIN_PLUGIN* audin, AUDIN_CHANNEL_CALLBACK* c
+ 
+ 	Stream_Seek_UINT32(s); /* cbSizeFormatsPacket */
+ 
++	audin->format = NULL;
+ 	audio_formats_free(callback->formats, callback->formats_count);
+ 	callback->formats_count = 0;
+ 
+@@ -284,6 +285,7 @@ out:
+ 
+ 	if (error != CHANNEL_RC_OK)
+ 	{
++		audin->format = NULL;
+ 		audio_formats_free(callback->formats, NumFormats);
+ 		callback->formats = NULL;
+ 	}
+-- 
+2.53.0
+
