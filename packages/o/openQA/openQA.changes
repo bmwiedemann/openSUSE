@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 23 16:01:06 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1771846996.b67911c1:
+  * fix: update ajv to fix moderate severity ReDoS vulnerability
+  * fix: update minimatch override to fix high severity ReDoS vulnerability
+  * openqa-load-templates: Slightly simplify
+
+-------------------------------------------------------------------
 Sat Feb 21 20:10:39 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1771626210.b82f14f2:
