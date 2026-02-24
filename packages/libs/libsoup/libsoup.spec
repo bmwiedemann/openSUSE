@@ -18,7 +18,7 @@
 
 %define api_version 3.0
 Name:           libsoup
-Version:        3.6.5
+Version:        3.6.6
 Release:        0
 Summary:        HTTP client/server library for GNOME
 License:        LGPL-2.1-or-later
@@ -26,40 +26,15 @@ Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/libsoup
 Source0:        %{name}-%{version}.tar.zst
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM libsoup-CVE-2025-32914.patch boo#1241164 mgorse@suse.com -- fix read out of buffer bounds under soup_multipart_new_from_message.
-Patch0:         libsoup-CVE-2025-32914.patch
-# PATCH-FIX-UPSTREAM libsoup-CVE-2025-32908.patch boo#1241223 mgorse@suse.com -- soup-server-http2: Check validity of the constructed connection URI.
-Patch1:         libsoup-CVE-2025-32908.patch
-# PATCH-FIX-UPSTREAM libsoup-CVE-2025-32907.patch boo#1241222 mgorse@suse.com -- correct merge of ranges.
-Patch2:         libsoup-CVE-2025-32907.patch
-# PATCH-FIX-UPSTREAM libsoup-CVE-2025-4476.patch boo#1243422 mgorse@suse.com -- fix crash in soup_auth_digest_get_protection_space.
-Patch3:         libsoup-CVE-2025-4476.patch
-# PATCH-FIX-UPSTREAM libsoup-CVE-2025-4948.patch boo#1243332 mgorse@suse.com -- verify boundary limits for multipart body.
-Patch4:         libsoup-CVE-2025-4948.patch
-# PATCH-FIX-UPSTREAM libsoup-CVE-2025-4969.patch boo#1243423 mgorse@suse.com -- soup-multipart: Verify array bounds before accessing its members.
-Patch5:         libsoup-CVE-2025-4969.patch
-# PATCH-FIX-UPSTREAM libsoup-CVE-2025-4945.patch boo#1243314 mgorse@suse.com -- add value checks for date/time parsing.
-Patch6:         libsoup-CVE-2025-4945.patch
-# PATCH-FIX-UPSTREAM libsoup-CVE-2025-11021.patch bsc#1250562, CVE-2025-11021, glgo#GNOME/libsoup!482 alynx.zhou@suse.com -- Ignore invalid date when processing cookie
-Patch7:         libsoup-CVE-2025-11021.patch
-# PATCH-FIX-UPSTREAM libsoup-CVE-2025-12105.patch bsc#1252555 mgorse@suse.com -- fix use after free caused by 'finishing' queued item twice.
-Patch8:         libsoup-CVE-2025-12105.patch
-# PATCH-FIX-UPSTREAM libsoup-CVE-2025-14523.patch bsc#1254876, CVE-2025-14523, glgo#GNOME/libsoup!491 alynx.zhou@suse.com -- Reject duplicated Host in headers
-Patch9:         libsoup-CVE-2025-14523.patch
+
 # PATCH-FIX-UPSTREAM libsoup-CVE-2026-0719.patch bsc#1256399, CVE-2026-0719, glgo#GNOME/libsoup!493 alynx.zhou@suse.com -- Fix overflow for password md4sum
 Patch10:        libsoup-CVE-2026-0719.patch
-# PATCH-FIX-UPSTREAM libsoup-CVE-2026-0716.patch bsc#1256418, CVE-2026-0716, glgo#GNOME/libsoup!494 alynx.zhou@suse.com -- Fix out-of-bounds read for websocket
-Patch11:        libsoup-CVE-2026-0716.patch
-# PATCH-FIX-UPSTREAM libsoup-CVE-2026-1536.patch bsc#1257440, CVE-2026-1536, glgo#GNOME/libsoup/commit/5c1a2e9c sckang@suse.com -- Always validate the headers value when coming from untrusted source
-Patch12:        libsoup-CVE-2026-1536.patch
-# PATCH-FIX-UPSTREAM libsoup-CVE-2026-1761.patch bsc#1257598, CVE-2026-1761, glgo#GNOME/libsoup!496 sckang@suse.com -- multipart: check length of bytes read soup_filter_input_stream_read_until()
-Patch13:        libsoup-CVE-2026-1761.patch
+
 # PATCH-FIX-OPENSUSE libsoup-CVE-2025-32049.patch bsc#1240751 mgorse@suse.com -- add size limit for total message size.
 Patch14:        libsoup-CVE-2025-32049.patch
-# PATCH-FIX-UPSTREAM libsoup-CVE-2026-2443.patch bsc#1243170 mgorse@suse.com -- fix out-of-bounds read when processing range headers.
-Patch15:        libsoup-CVE-2026-2443.patch
-# PATCH-FIX-UPSTREAM libsoup-CVE-2026-2369.patch bsc#1258120 mgorse@suse.com -- handle potential underflow in the content sniffer.
-Patch16:        libsoup-CVE-2026-2369.patch
+
+# PATCH-FIX-UPSTREAM libsoup-CVE-2026-2708.patch bsc#1258508 mgorse@suse.com -- do not allow adding multiple content length values to headers.
+Patch17:        libsoup-CVE-2026-2708.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.53

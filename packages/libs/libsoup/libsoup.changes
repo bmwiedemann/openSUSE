@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Fri Feb 20 16:21:32 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Rebase and re-enable libsoup-CVE-2026-2708.patch.
+
+-------------------------------------------------------------------
+Fri Feb 20 15:30:11 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.6.6:
+  + websocket: Fix out-of-bounds read in process_frame
+  + Check nulls returned by soup_date_time_new_from_http_string()
+  + Numerous fixes to handling of Range headers
+  + server: close the connection after responsing a request
+    containing Content-Length and Transfer-Encoding
+  + Use CRLF as line boundary when parsing chunked enconding data
+  + websocket: do not accept messages frames after closing due to
+    an error
+  + Sanitize filename of content disposition header values
+  + Always validate the headers value when coming from untrusted
+    source
+  + uri-utils: do host validation when checking if a GUri is valid
+  + multipart: check length of bytes read
+    soup_filter_input_stream_read_until()
+  + message-headers: Reject duplicate Host headers
+  + server: null-check soup_date_time_to_string()
+  + auth-digest: fix crash in
+    soup_auth_digest_get_protection_space()
+  + session: fix 'heap-use-after-free' caused by 'finishing' queue
+    item twice
+  + cookies: Avoid expires attribute if date is invalid
+  + http1: Set EOF flag once content-length bytes have been read
+  + date-utils: Add value checks for date/time parsing
+  + multipart: Fix multiple boundry limits
+  + Fixed multiple possible memory leaks
+  + message-headers: Correct merge of ranges
+  + body-input-stream: Correct chunked trailers end detection
+  + server-http2: Correctly validate URIs
+  + multipart: Fix read out of buffer bounds under
+    soup_multipart_new_from_message()
+  + headers: Ensure Request-Line comprises entire first line
+  + tests: Fix MSVC build error
+  + Fix possible deadlock on init from gmodule usage
+  + Updated translations.
+- Drop upstream merged patches:
+  + libsoup-CVE-2025-11021.patch
+  + libsoup-CVE-2025-12105.patch
+  + libsoup-CVE-2025-14523.patch
+  + libsoup-CVE-2025-32907.patch
+  + libsoup-CVE-2025-32908.patch
+  + libsoup-CVE-2025-32914.patch
+  + libsoup-CVE-2025-4476.patch
+  + libsoup-CVE-2025-4945.patch
+  + libsoup-CVE-2025-4948.patch
+  + libsoup-CVE-2025-4969.patch
+  + libsoup-CVE-2026-0716.patch
+  + libsoup-CVE-2026-1536.patch
+  + libsoup-CVE-2026-1761.patch
+  + libsoup-CVE-2026-2369.patch
+  + libsoup-CVE-2026-2443.patch
+- libsoup-CVE-2026-2708.patch temporarily disabled while we need to
+  rebase it.  
+
+-------------------------------------------------------------------
+Thu Feb 19 20:50:20 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add libsoup-CVE-2026-2708.patch: do not allow adding multiple
+  content length values to headers (bsc#1258508 CVE-2026-2708
+  glgo#GNOME/libsoup#500).
+
+-------------------------------------------------------------------
 Sat Feb 14 09:45:23 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Add more CVE fixes:
