@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-certbot-dns-cloudflare
-Version:        5.3.0
+Version:        5.3.1
 Release:        0
 Summary:        Cloudflare Authenticator plugin for Certbot
 License:        Apache-2.0
