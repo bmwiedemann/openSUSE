@@ -1,7 +1,7 @@
 #
 # spec file for package lxpanel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,30 +17,33 @@
 
 
 Name:           lxpanel
-Version:        0.10.1
+Version:        0.11.1
 Release:        0
 Summary:        Lightweight X11 desktop panel based on fbpanel
 License:        GPL-2.0-only
 Group:          System/GUI/LXDE
 URL:            http://www.lxde.org/
-Source0:        https://sourceforge.net/projects/lxde/files/LXPanel%20%28desktop%20panel%29/LXPanel%200.10.x/%{name}-%{version}.tar.xz
+Source0:        https://github.com/lxde/lxpanel/archive/refs/tags/%{version}.tar.gz#/%name-%version.tar.gz
 Patch0:         lxpanel-0.9.3-default_config.patch
 Patch1:         lxpanel-0.9.3-panel_config.patch
 BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  intltool
-BuildRequires:  libfm-gtk-devel
+BuildRequires:  libfm-gtk3-devel
 BuildRequires:  libiw-devel
+BuildRequires:  libtool
 BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  wireless-tools
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(keybinder)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(keybinder-3.0)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libfm-gtk3)
 BuildRequires:  pkgconfig(libmenu-cache)
-BuildRequires:  pkgconfig(libwnck-1.0)
+BuildRequires:  pkgconfig(libwnck-3.0)
 Requires:       lxmenu-data
 Requires:       menu-cache
 Provides:       %{name}-plugins >= %{version}
@@ -84,9 +87,10 @@ Headers and development files for lxpanel.
 %autosetup -p1
 
 %build
-export CFLAGS="%{optflags} -Wno-incompatible-pointer-types"
+export CFLAGS="%{optflags} -Wno-error=incompatible-pointer-types -Wno-error=return-type"
 # autoconf
-%configure --with-plugins=all
+sh autogen.sh
+%configure --enable-gtk3 --with-plugins=all
 %make_build
 
 %install

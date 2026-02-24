@@ -55,4 +55,41 @@
     <comment></comment>
     <requestid>1227046</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7b3f08b5e6259ffebc1c3a39d87920b0</srcmd5>
+    <version>0.11.1</version>
+    <time>1771944674</time>
+    <user>anag_factory</user>
+    <comment>- Switch to GTK3
+- Update to 0.11.1
+  * Less restrictive location query and more detailed display of results
+      in the weather plugin.
+  * Minor fixes related to the new icons.
+  * Updated translations.
+- Update to 0.11.0
+  * Added tooltips to application launch bar and panel settings.
+  * Added option to battery monitor to hide number of battery in tooltip.
+  * Added option to resource monitors to show cached and buffered memory as
+      used.
+  * Improved translations and design fix of ALSA volume control popup.
+  * Made netstatus_icon_set_tooltips_enabled() work.
+  * Fixed a sometimes incorrectly placed icon in the netstatus plugin.
+  * Improved weather plugin: correct local time, normal closing of dialog,
+      easier to recognize information in dialog and tooltip, better quality
+      of weather conditions icon and image.
+  * HiDPI support on GTK+ 3.
+  * Extended battery life check to about a minute before triggering battery
+      alarm.
+  * Added an option to disable square brackets around minimized window names.
+  * Reworked xkb plugin.
+  * Improved tracking of minimized windows.
+  * Implemented check for sensors returning error instead of temperature.
+  * Restored disabled CPUFreq plugin.
+  * Improved icons and updated icon names.
+  * Updated the default configuration files.
+  * Various fixes for GTK+ 3 compatibility.
+  * Various bug fixes and improvements.
+  * Updated translations.</comment>
+    <requestid>1334728</requestid>
+  </revision>
 </revisionlist>
