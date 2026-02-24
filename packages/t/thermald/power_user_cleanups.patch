@@ -1,0 +1,100 @@
+commit a61ee71126ed8b6b50baa50032ed729780ba321f
+Author: Thomas Renninger <trenn@suse.de>
+Date:   Mon Feb 23 09:29:06 2026 +0100
+
+    Remove power group leftovers
+    
+    This is more or less a revert of:
+    cbc36d6062098f5d6384d966f3d562d84fa763a6
+
+diff --git a/configure.ac b/configure.ac
+index c82da71..86d0838 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -25,14 +25,6 @@ else
+ fi
+ AC_SUBST(DBUS_SYS_DIR)
+ 
+-AC_ARG_WITH(dbus-power-group, AS_HELP_STRING([--with-dbus-power-group=GROUP], [group that is allowed to connect to D-BUS service]))
+-if test -n "$with_dbus_power_group" ; then
+-    DBUS_POWER_GROUP="$with_dbus_power_group"
+-else
+-    DBUS_POWER_GROUP="power"
+-fi
+-AC_SUBST(DBUS_POWER_GROUP)
+-
+ # paths
+ AC_SUBST(tdbinary, "$sbindir/$PACKAGE", [Binary executable])
+ AC_SUBST(tdconfdir, "$sysconfdir/$PACKAGE", [Configuration directory])
+diff --git a/data/Makefile.am b/data/Makefile.am
+index a08d88e..edca1f4 100644
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -23,16 +23,8 @@ service_edit = sed \
+ 
+ endif # HAVE_SYSTEMD
+ 
+-dbusservice_edit = sed \
+-	-e 's|@dbusservicepowergrp[@]|$(dbusservicepowergrp)|g'
+-
+-org.freedesktop.thermald.conf: org.freedesktop.thermald.conf.in
+-	@$(dbusservice_edit) $< >$@
+-
+-dbusservicepowergrp = $(DBUS_POWER_GROUP)
+ dbusservicedir = $(DBUS_SYS_DIR)
+-dbusservice_in_files = org.freedesktop.thermald.conf.in
+-dbusservice_DATA = $(dbusservice_in_files:.conf.in=.conf)
++dbusservice_DATA = org.freedesktop.thermald.conf
+ 
+ tdconfigdir = $(tdconfdir)
+ tdconfig_DATA = \
+diff --git a/data/org.freedesktop.thermald.conf b/data/org.freedesktop.thermald.conf
+new file mode 100644
+index 0000000..43b359d
+--- /dev/null
++++ b/data/org.freedesktop.thermald.conf
+@@ -0,0 +1,18 @@
++<?xml version="1.0"?> <!--*-nxml-*-->
++<!DOCTYPE busconfig PUBLIC "-//freedesktop//DTD D-BUS Bus Configuration 1.0//EN"
++        "http://www.freedesktop.org/standards/dbus/1.0/busconfig.dtd">
++
++<busconfig>
++
++        <policy user="root">
++                <allow own="org.freedesktop.thermald"/>
++                <allow send_destination="org.freedesktop.thermald"/>
++                <allow receive_sender="org.freedesktop.thermald"/>
++        </policy>
++
++        <policy context="default">
++                <deny send_destination="org.freedesktop.thermald"/>
++                <allow receive_sender="org.freedesktop.thermald"/>
++        </policy>
++
++</busconfig>
+diff --git a/data/org.freedesktop.thermald.conf.in b/data/org.freedesktop.thermald.conf.in
+deleted file mode 100644
+index f95525c..0000000
+--- a/data/org.freedesktop.thermald.conf.in
++++ /dev/null
+@@ -1,20 +0,0 @@
+-<?xml version="1.0"?> <!--*-nxml-*-->
+-<!DOCTYPE busconfig PUBLIC "-//freedesktop//DTD D-BUS Bus Configuration 1.0//EN"
+-        "http://www.freedesktop.org/standards/dbus/1.0/busconfig.dtd">
+-
+-<busconfig>
+-
+-        <policy user="root">
+-                <allow own="org.freedesktop.thermald"/>
+-                <allow send_destination="org.freedesktop.thermald"/>
+-                <allow receive_sender="org.freedesktop.thermald"/>
+-        </policy>
+-
+-        <!-- Only allow members of the @dbusservicepowergrp@ group to communicate
+-             with the daemon -->
+-        <policy context="default">
+-                <deny send_destination="org.freedesktop.thermald"/>
+-                <allow receive_sender="org.freedesktop.thermald"/>
+-        </policy>
+-
+-</busconfig>

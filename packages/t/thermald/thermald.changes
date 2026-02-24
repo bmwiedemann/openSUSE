@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Mon Feb 23 09:02:47 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- Remove power group
+- Adjust URL to github repository
+A power_user_cleanups.patch
+D thermald-group.conf
+
+-------------------------------------------------------------------
+Wed Feb 18 15:07:21 UTC 2026 - trenn@suse.de
+
+- Remove thermal-monitor package (compare with last commit message
+  of mainline update changelog below)
+D thermal-monitor.desktop
+D thermal-monitor.png
+D 0001-ThermalMonitor.pro-Don-t-hardcode-the-qcustomplot-li.patch
+- Update to version 2.5.10.58.git+49457fb:
+  * Add NovaLake
+  * Auto discover paths for int3400
+  * Change to const ref for blockedlist_paths
+  * Add ARM backend and enable ARM platform detection
+  * Invoke parser_init before platform_match
+  * Refactor Intel-specific logic into separate files
+  * Use delegating constructors to avoid duplication
+  * Annotate overridden methods with override
+  * Update Release to 2.5.11
+  * Check for start path instead of anywhere
+  * 2.5.11-rc release
+  * Add NOT_EQUAL(4) comparison type for APCT
+  * Fix some dbus test script and handling
+  * Fix bug introduced while shuffling rapl cdev
+  * Return error on non when file not present
+  * Fix clang-tidy warning for thd_gddv
+  * Change trip_pt_cdev_t to class
+  * Avoid copy-by-value for sorting functions
+  * Use C++11 default copy constructor and operator=
+  * XML config file sanity
+  * Add sysfs path for Wildcat Lake
+  * Add Wildcat Lake to support list
+  * Fix test scripts
+  * Add rapl_controller back
+  * Fix loglevel=debug
+  * Change the config file path
+  * Coverity fixes
+  * Use unique_ptr to avoid manual memory management
+  * Allow root only sender and allow only sysfs paths
+  * Fix clang-tidy nits
+  * Configure clang-tidy
+  * Fix data type
+  * Update policy config
+  * Update README for starting service
+  * Make some globals const
+  * Android main lockfile
+  * Do not build string when debug logs are disabled
+  * Call csys_fs::read helpers where possible
+  * Remove unnecessary calls to std::string::c_str
+  * Use more specific ostringstream where appropriate
+  * Fix unnecessary pass-by-value via clang-tidy
+  * Return std::string by const ref instead of value
+  * Plug minor leak in initialization
+  * Fix miscellaneous clang-tidy nits
+  * Deprecate thermal monitor
+
+-------------------------------------------------------------------
 Sat Jan 31 12:26:45 UTC 2026 - Thomas Renninger <trenn@suse.de>
 
 - Move update-desktop-file dependency into with_thermalmonitor which

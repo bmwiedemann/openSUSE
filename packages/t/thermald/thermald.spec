@@ -22,23 +22,18 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 
-%global with_thermalmonitor 0%{?is_opensuse}
-
 Name:           thermald
-Version:        2.5.10.4.git+f284686
+Version:        2.5.11.9.git+49457fb
 Release:        0
 Summary:        The Linux Thermal Daemon program from 01.org
 License:        GPL-2.0-or-later
 Group:          System/Daemons
-URL:            https://01.org/linux-thermal-daemon
+URL:            https://github.com/intel/thermal_daemon.git
 Source0:        thermal_daemon-%{version}.tar.xz
 Source1:        %{name}.conf
-Source2:        %{name}-group.conf
 Source3:        sysconfig.%{name}
-Source10:       thermal-monitor.desktop
-Source11:       thermal-monitor.png
 Patch0:         fix-systemd-service.patch
-Patch1:         0001-ThermalMonitor.pro-Don-t-hardcode-the-qcustomplot-li.patch
+Patch1:         power_user_cleanups.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -46,14 +41,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
-%if %{with_thermalmonitor}
-BuildRequires:  qcustomplot-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Widgets)
-%endif
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk-doc)
@@ -64,24 +51,12 @@ BuildRequires:  pkgconfig(upower-glib)
 Requires(post): %fillup_prereq
 Suggests:       acpica
 Suggests:       dptfxtract
-Suggests:       thermal-monitor
 ExclusiveArch:  %{ix86} x86_64
 %sysusers_requires
 
 %description
 Thermald is a Linux daemon used to prevent the overheating of platforms.
 This daemon monitors temperature and applies compensation using available cooling methods.
-
-%package -n thermal-monitor
-Summary:        Displays current temperature readings
-License:        GPL-3.0-or-later
-Group:          Hardware/Other
-Requires:       %{name} >= 1.4.3
-Requires:       group(power)
-
-%description -n thermal-monitor
-Thermal Monitor displays current temperature readings on a graph.
-To communicate with thermald via dbus, the user has to be member of "power" group.
 
 %prep
 %autosetup -n thermal_daemon-%{version} -p1
@@ -90,14 +65,6 @@ To communicate with thermald via dbus, the user has to be member of "power" grou
 NO_CONFIGURE=1 ./autogen.sh
 %configure --disable-werror
 %make_build CFLAGS="%{optflags}"
-%sysusers_generate_pre %{SOURCE2} power
-
-%if %{with_thermalmonitor}
-pushd tools/thermal_monitor
-%qmake5 ThermalMonitor.pro LIBS+="$(pkg-config --libs qcustomplot)"
-%make_build
-popd
-%endif
 
 %install
 %make_install
@@ -105,17 +72,9 @@ popd
 ln -s service %{buildroot}%{_sbindir}/rcthermald
 install -D -m 0755 -t %{buildroot}%{_sbindir}/ tools/thermald_set_pref.sh
 install -D -m 0644 -t %{buildroot}%{_prefix}/lib/modules-load.d/ %{SOURCE1}
-install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/%{name}.conf
 install -D -m 0644 -t %{buildroot}%{_fillupdir}/ %{SOURCE3}
 
-%if %{with_thermalmonitor}
-install -D -m 0755 -t %{buildroot}%{_bindir}/ tools/thermal_monitor/ThermalMonitor
-install -D -m 0644 -t %{buildroot}%{_datadir}/applications/ %{SOURCE10}
-install -D -m 0644 -t %{buildroot}%{_datadir}/pixmaps/ %{SOURCE11}
-%suse_update_desktop_file thermal-monitor
-%endif
-
-%pre -f power.pre
+%pre
 %service_add_pre thermald.service
 
 %post
@@ -146,15 +105,6 @@ install -D -m 0644 -t %{buildroot}%{_datadir}/pixmaps/ %{SOURCE11}
 %{_sbindir}/rcthermald
 %{_sbindir}/thermald
 %{_sbindir}/thermald_set_pref.sh
-%{_sysusersdir}/%{name}.conf
 %{_unitdir}/thermald.service
-
-%if %{with_thermalmonitor}
-%files -n thermal-monitor
-%license tools/thermal_monitor/COPYING
-%{_bindir}/ThermalMonitor
-%{_datadir}/applications/thermal-monitor.desktop
-%{_datadir}/pixmaps/thermal-monitor.png
-%endif
 
 %changelog
