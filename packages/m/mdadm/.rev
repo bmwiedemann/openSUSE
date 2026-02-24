@@ -1705,4 +1705,15 @@ which haven't landed upstream yet
   * Do not start reshape before switchroot</comment>
     <requestid>1329525</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>66fe52eab11d9f5da98b2583aa694031</srcmd5>
+    <version>4.5+43.gdc69a22f</version>
+    <time>1771943884</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.5+43.gdc69a22f:
+  * Fix slowdown probing non-RAID devices (bsc#1258255)
+  * platform-intel: Deal with hot-unplugged devices (bsc#1258265)
+  * imsm: Fix UEFI backward compatibility for RAID10D4 (bsc#1257009)</comment>
+    <requestid>1334563</requestid>
+  </revision>
 </revisionlist>

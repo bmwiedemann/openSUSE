@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 23 16:49:21 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 4.5+43.gdc69a22f:
+  * Fix slowdown probing non-RAID devices (bsc#1258255)
+  * platform-intel: Deal with hot-unplugged devices (bsc#1258265)
+  * imsm: Fix UEFI backward compatibility for RAID10D4 (bsc#1257009)
+
+-------------------------------------------------------------------
 Tue Jan 27 15:47:34 UTC 2026 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 4.5+39.g1aa6e5de:
