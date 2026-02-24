@@ -58,4 +58,13 @@
 - Remove fix_bigendian.patch: upstreamed</comment>
     <requestid>789724</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>dc87cb14dd903648b9b1dadb71742aa4</srcmd5>
+    <version>2.3.3</version>
+    <time>1771946844</time>
+    <user>anag_factory</user>
+    <comment>- CVE-2022-48468: Integer overflow in parse_required_member in protobuf-c (bsc#1210323)
+  * Add CVE-2022-48468.patch taken from Fedora</comment>
+    <requestid>1334730</requestid>
+  </revision>
 </revisionlist>

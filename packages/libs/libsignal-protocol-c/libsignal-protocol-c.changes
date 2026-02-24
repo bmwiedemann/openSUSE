@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 24 12:52:13 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- CVE-2022-48468: Integer overflow in parse_required_member in protobuf-c (bsc#1210323)
+  * Add CVE-2022-48468.patch taken from Fedora
+
+-------------------------------------------------------------------
 Mon Mar 30 11:27:27 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.3.3:
