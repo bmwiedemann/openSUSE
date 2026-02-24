@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 23 10:46:41 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Set build parameter VBOX_WITHOUT_SPLIT_SOAPC=1
+
+-------------------------------------------------------------------
 Fri Feb 20 05:23:41 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - add kernel-6.19.patch (bsc#1258115)

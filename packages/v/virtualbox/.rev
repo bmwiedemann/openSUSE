@@ -2826,4 +2826,14 @@ we must have vb7.1.10.</comment>
     <comment>- add kernel-6.19.patch (bsc#1258115)</comment>
     <requestid>1334141</requestid>
   </revision>
+  <revision rev="302" vrev="4">
+    <srcmd5>1873e3d5495aa8e3b08ccb0d4f093057</srcmd5>
+    <version>7.2.6</version>
+    <time>1771943875</time>
+    <user>anag_factory</user>
+    <comment>this is for Staging:M/gsoap (2.8.140)
+
+- Set build parameter VBOX_WITHOUT_SPLIT_SOAPC=1</comment>
+    <requestid>1334468</requestid>
+  </revision>
 </revisionlist>

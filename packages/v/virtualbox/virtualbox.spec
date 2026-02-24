@@ -475,6 +475,10 @@ source ./env.sh
 #
 #  	VBOX_PATH_PACKAGE_DOCS set propper path for link to pdf in .desktop file
 # 	VBOX_WITH_REGISTRATION_REQUEST= VBOX_WITH_UPDATE_REQUEST= just disable some functionality in gui
+#
+# split-soapC (a virtualbox program) splits the gsoap-generated file at
+# silly boundaries, producing something unbuildable.
+#
 echo "build basic parts"
 	%{_bindir}/kmk %{?_smp_mflags} \
 	VBOX_GCC_WERR= \
@@ -483,7 +487,8 @@ echo "build basic parts"
 	TOOL_YASM_AS=yasm \
 	VBOX_BUILD_PUBLISHER=_SUSE \
 	TOOL_GCC3_CFLAGS="%{optflags}" TOOL_GCC3_CXXFLAGS="%{optflags}" \
-	VBOX_GCC_OPT="%{optflags}"
+	VBOX_GCC_OPT="%{optflags}" \
+	VBOX_WITHOUT_SPLIT_SOAPC=1
 
 echo "build VNC extension pack"
 # tar must use GNU, not POSIX, format here
