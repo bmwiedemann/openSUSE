@@ -1,6 +1,7 @@
 #
 # spec file for package qpdf
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,6 +17,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without doc
+%else
+%bcond_with doc
+%endif
+
 %define so_version 30
 %bcond_without zopfli
 Name:           qpdf
@@ -30,7 +37,11 @@ Source1:        https://github.com/qpdf/qpdf/releases/download/v%{version}/qpdf-
 Source2:        qpdf.keyring
 BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
+%if 0%{suse_version} > 1500
 BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc15-c++
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-Sphinx-latex
@@ -90,14 +101,21 @@ package.
 %autosetup -p1
 
 %build
+%if 0%{suse_version} == 1500
+export CXX=g++-15
+%endif
 %global optflags %{optflags} -fexcess-precision=fast
 %cmake \
   -DSHOW_FAILED_TEST_OUTPUT=ON \
   -DWERROR=ON \
+%if %{with doc}
   -DBUILD_DOC=ON \
   -DBUILD_DOC_DIST=ON \
   -DBUILD_DOC_HTML=ON \
   -DBUILD_DOC_PDF=ON \
+%else
+   -DBUILD_DOC=OFF \
+%endif
 %if %{with zopfli}
   -DZOPFLI=ON \
 %endif
@@ -113,6 +131,7 @@ rm qpdf/qtest/inline-images.test
 
 %install
 %cmake_install
+%if %{with doc}
 mkdir -m755 -p %{buildroot}%{_docdir}/%{name}/html
 mkdir -m755 -p %{buildroot}%{_docdir}/%{name}/singlehtml
 pushd build/manual/doc-dist
@@ -120,7 +139,7 @@ pushd build/manual/doc-dist
   cp -a manual-single-page-html/* %{buildroot}%{_docdir}/%{name}/singlehtml/
   install -Dm644 qpdf-manual.pdf %{buildroot}%{_docdir}/%{name}/qpdf-manual.pdf
 popd
-
+%endif
 install -D -m 0644 completions/bash/qpdf %{buildroot}%{_datadir}/bash-completion/completions/qpdf
 install -D -m 0644 completions/zsh/_qpdf %{buildroot}%{_datadir}/zsh/site-functions/_qpdf
 
@@ -140,10 +159,12 @@ install -D -m 0644 completions/zsh/_qpdf %{buildroot}%{_datadir}/zsh/site-functi
 %{_datadir}/bash-completion/completions/qpdf
 %{_datadir}/zsh/site-functions/_qpdf
 
+%if %{with doc}
 %files doc
 %doc %{_docdir}/%{name}/html
 %doc %{_docdir}/%{name}/singlehtml
 %doc %{_docdir}/%{name}/qpdf-manual.pdf
+%endif
 
 %files -n libqpdf%{so_version}
 %license Artistic-2.0 LICENSE.txt
