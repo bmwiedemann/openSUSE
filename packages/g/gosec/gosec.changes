@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Feb 23 08:19:44 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.23.0:
+  * feat: Support for adding taint analysis engine (#1486)
+  * chore(deps): update all dependencies (#1494)
+  * chore(deps): update all dependencies (#1494)
+  * chore(deps): update all dependencies (#1488)
+  *  Fix G602 analyzer panic that kills gosec process (#1491)
+  * update go version to 1.25.7 (#1492)
+  * Fix URL regexp and remove redundant Google regex patterns (#1485)
+  * feat: implement global cache usage in rules (#1480)
+  * chore(deps): update module google.golang.org/genai to v1.43.0 (#1484)
+  * refactor: optimize nosec parsing and reduce allocations (#1478)
+  * Fix SARIF artifactChanges null validation error (#1483)
+  * feat: optimize GetCallInfo with per-package sync.Pool caching (#1481)
+  * feat: implement entropy pre-filtering to optimize secret detection (#1479)
+  * feat: ensure GoVersion is cached using sync.Once (#1477)
+  * Fix #1240: nosec comments now work with trailing open brackets (#1475)
+  * Debug Build Profiling Support: Code improvement suggestions for PR#1471 (#1476)
+  * Update the go version to 1.25.6 and 1.24.12 (#1474)
+  * G115: Enhance RangeAnalyzer with constant propagation and chained arithmetic support (#1470)
+  * chore(deps): update all dependencies (#1473)
+  * feat: support path-based rule exclusions via exclude-rules (#1465)
+  * Optimize analyzer with parallel package processing (#1466)
+  * feat: add goanalysis package for nogo (#1449)
+  * Refactor Analyzers: Unify Range Logic & Optimize Allocations (#1464)
+  * Optimize G115, G602, G407 analyzers to reduce allocations and memory (#1463)
+  * refactor(g115): improve coverage (#1462)
+  * Refine G407 to improve detection and coverage of hardcoded nonces (#1460)
+  * chore(deps): update all dependencies (#1461)
+  * Refactor rules to use callListRule base structure (#1458)
+  * feat(slice): enhance slice bounds analysis with dynamic bounds handling (#1457)
+  * remove deprecated ast.Object (#1455)
+  * feat(sql): enhance SQL injection detection with improved string concatenation checks (#1454)
+  * feat(rules): enhance subprocess variable checks (#1453)
+  * feat(resolve): enhance TryResolve to handle KeyValueExpr, IndexExpr, and SliceExpr (#1452)
+  * feat: add secrets serialization G117 (#1451)
+  * feat(rules): add support for detecting high entropy strings in composite literals (#1447)
+  * whitelist crypto/rand Read from error checks (#1446)
+  * chore(deps): update all dependencies (#1443)
+  * Improve slice bound check (#1442)
+  * docs: add documentation for using gosec with private modules (#1441)
+  * chore(deps): update all dependencies (#1440)
+  * docs: add G116 rule description to README (#1439)
+  * Update GitHub action to gosec 2.22.11 (#1438)
+
+-------------------------------------------------------------------
 Thu Dec 11 12:38:36 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.22.11:

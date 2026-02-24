@@ -17,7 +17,7 @@
 
 
 Name:           gosec
-Version:        2.22.11
+Version:        2.23.0
 Release:        0
 Summary:        CLI tool to scan the Go AST and SSA code representations for security problems
 License:        Apache-2.0
@@ -25,7 +25,7 @@ Group:          Development/Languages/Go
 URL:            https://github.com/securego/gosec
 Source:         gosec-%{version}.tar.xz
 Source1:        vendor.tar.xz
-BuildRequires:  golang(API) >= 1.20
+BuildRequires:  golang(API) >= 1.25
 
 %description
 CLI tool to inspect Go source code for security problems by scanning the
