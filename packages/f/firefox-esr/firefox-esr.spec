@@ -41,8 +41,8 @@
 # major 69
 # mainver %%major.99
 %define major          140
-%define mainver        %major.7.1
-%define orig_version   140.7.1
+%define mainver        %major.8.0
+%define orig_version   140.8.0
 %define orig_suffix    esr
 %define update_channel esr
 %define branding       1

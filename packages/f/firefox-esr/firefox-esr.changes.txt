@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Tue Feb 24 13:56:01 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox Extended Support Release 140.8.0 ESR
+  * Fixed: Various security fixes.
+- Mozilla Firefox ESR 140.8
+  https://www.mozilla.org/security/advisories/mfsa2026-15
+  MFSA 2026-15 (boo#1258568)
+  * CVE-2026-2757 (bmo#2001637)
+    Incorrect boundary conditions in the WebRTC: Audio/Video
+    component
+  * CVE-2026-2758 (bmo#2009608)
+    Use-after-free in the JavaScript: GC component
+  * CVE-2026-2759 (bmo#2010933)
+    Incorrect boundary conditions in the Graphics: ImageLib
+    component
+  * CVE-2026-2760 (bmo#2011062)
+    Sandbox escape due to incorrect boundary conditions in the
+    Graphics: WebRender component
+  * CVE-2026-2761 (bmo#2011063)
+    Sandbox escape in the Graphics: WebRender component
+  * CVE-2026-2762 (bmo#2011649)
+    Integer overflow in the JavaScript: Standard Library
+    component
+  * CVE-2026-2763 (bmo#2012018)
+    Use-after-free in the JavaScript Engine component
+  * CVE-2026-2764 (bmo#2012608)
+    JIT miscompilation, use-after-free in the JavaScript Engine:
+    JIT component
+  * CVE-2026-2765 (bmo#2013562)
+    Use-after-free in the JavaScript Engine component
+  * CVE-2026-2766 (bmo#2013583)
+    Use-after-free in the JavaScript Engine: JIT component
+  * CVE-2026-2767 (bmo#2013741)
+    Use-after-free in the JavaScript: WebAssembly component
+  * CVE-2026-2768 (bmo#2014101)
+    Sandbox escape in the Storage: IndexedDB component
+  * CVE-2026-2769 (bmo#2014550)
+    Use-after-free in the Storage: IndexedDB component
+  * CVE-2026-2770 (bmo#2014585)
+    Use-after-free in the DOM: Bindings (WebIDL) component
+  * CVE-2026-2771 (bmo#2014593)
+    Undefined behavior in the DOM: Core & HTML component
+  * CVE-2026-2772 (bmo#2014827)
+    Use-after-free in the Audio/Video: Playback component
+  * CVE-2026-2773 (bmo#2014832)
+    Incorrect boundary conditions in the Web Audio component
+  * CVE-2026-2774 (bmo#2014883)
+    Integer overflow in the Audio/Video component
+  * CVE-2026-2775 (bmo#2015199)
+    Mitigation bypass in the DOM: HTML Parser component
+  * CVE-2026-2776 (bmo#2015266)
+    Sandbox escape due to incorrect boundary conditions in the
+    Telemetry component in External Software
+  * CVE-2026-2777 (bmo#2015305)
+    Privilege escalation in the Messaging System component
+  * CVE-2026-2778 (bmo#2016358)
+    Sandbox escape due to incorrect boundary conditions in the
+    DOM: Core & HTML component
+  * CVE-2026-2779 (bmo#1164141)
+    Incorrect boundary conditions in the Networking: JAR
+    component
+  * CVE-2026-2780 (bmo#2007829)
+    Privilege escalation in the Netmonitor component
+  * CVE-2026-2781 (bmo#2009552)
+    Integer overflow in the Libraries component in NSS
+  * CVE-2026-2782 (bmo#2010743)
+    Privilege escalation in the Netmonitor component
+  * CVE-2026-2783 (bmo#2010943)
+    Information disclosure due to JIT miscompilation in the
+    JavaScript Engine: JIT component
+  * CVE-2026-2784 (bmo#2012984)
+    Mitigation bypass in the DOM: Security component
+  * CVE-2026-2785 (bmo#2013549)
+    Invalid pointer in the JavaScript Engine component
+  * CVE-2026-2786 (bmo#2013612)
+    Use-after-free in the JavaScript Engine component
+  * CVE-2026-2787 (bmo#2014560)
+    Use-after-free in the DOM: Window and Location component
+  * CVE-2026-2788 (bmo#2014824)
+    Incorrect boundary conditions in the Audio/Video: GMP
+    component
+  * CVE-2026-2789 (bmo#2015179)
+    Use-after-free in the Graphics: ImageLib component
+  * CVE-2026-2790 (bmo#2008426)
+    Same-origin policy bypass in the Networking: JAR component
+  * CVE-2026-2791 (bmo#2015220)
+    Mitigation bypass in the Networking: Cache component
+  * CVE-2026-2792 (bmo#2008912, bmo#2010050, bmo#2010275,
+    bmo#2012331)
+    Memory safety bugs fixed in Firefox ESR 140.8, Thunderbird
+    ESR 140.8, Firefox 148 and Thunderbird 148
+  * CVE-2026-2793 (bmo#2015196, bmo#2016423, bmo#2016498)
+    Memory safety bugs fixed in Firefox ESR 115.33, Firefox ESR
+    140.8, Thunderbird ESR 140.8, Firefox 148 and Thunderbird 148
+
+-------------------------------------------------------------------
 Mon Feb 16 10:29:19 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Firefox Extended Support Release 140.7.1 ESR
