@@ -1,4 +1,6 @@
 <multibuild>
   <package>python311</package>
+  <package>python312</package>
   <package>python313</package>
+  <package>python314</package>
 </multibuild>

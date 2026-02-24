@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 23 16:22:19 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- reenable build on python 3.12 while it is still needed on Factory
+- create python 3.14 build (it will be excluded until switched on)
+
+-------------------------------------------------------------------
 Wed Feb 11 08:24:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - drop python 3.12 from testing, prepare for python 3.14 being
