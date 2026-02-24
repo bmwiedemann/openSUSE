@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 20 10:52:02 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 64.0
+  * NumPy 2.4 support
+  * Add support for np.moveaxis
+  * Fix scalar handling in np.all and np.any
+  * Fix precision loss in integer power operations on Python 3.11
+  * cleanup on python 3.14 official support
+
+-------------------------------------------------------------------
 Sun Dec 28 14:04:50 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.63.1:

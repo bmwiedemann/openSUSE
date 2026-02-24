@@ -548,4 +548,18 @@ Python2 support was turned off by accident.  I don't go out of my way to support
 - Fix version requirements</comment>
     <requestid>1324581</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>00e3f6d42ef3e04751ede66f120b5f37</srcmd5>
+    <version>0.64.0</version>
+    <time>1771943915</time>
+    <user>anag_factory</user>
+    <comment>- update to 64.0
+  * NumPy 2.4 support
+  * Add support for np.moveaxis
+  * Fix scalar handling in np.all and np.any
+  * Fix precision loss in integer power operations on Python 3.11
+  * cleanup on python 3.14 official support
+</comment>
+    <requestid>1334568</requestid>
+  </revision>
 </revisionlist>

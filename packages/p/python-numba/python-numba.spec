@@ -1,7 +1,7 @@
 #
 # spec file for package python-numba
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define plainpython python
 # upper bound is exclusive: min-numpy_ver <= numpy < max_numpy_ver
 %define min_numpy_ver 2.0
-%define max_numpy_ver 2.4
+%define max_numpy_ver 2.5
 
 %{?sle15_python_module_pythons}
 
@@ -32,9 +32,6 @@ ExclusiveArch:  x86_64 %ix86 ppc64le %arm aarch64
 %else
 %bcond_without test
 %define psuffix -%{flavor}
-%if "%{flavor}" != "test-py310"
-%define skip_python310 1
-%endif
 %if "%{flavor}" != "test-py311"
 %define skip_python311 1
 %endif
@@ -44,10 +41,11 @@ ExclusiveArch:  x86_64 %ix86 ppc64le %arm aarch64
 %if "%{flavor}" != "test-py313"
 %define skip_python313 1
 %endif
-# Python 3.14 not supported yet
+%if "%{flavor}" != "test-py314"
 %define skip_python314 1
-# The obs server-side interpreter cannot use lua or rpm shrink
-%if "%pythons" == "" || "%pythons" == " " || "%pythons" == "  " || "%pythons" == "   " || "%pythons" == "    " || ( "%pythons" == "python311" && 0%{?skip_python311} )
+%endif
+# Skip empty buildsets on tumbleweed and leap16 or flavors other than python311 on leap with sle15_python_module_pythons
+%if "%{shrink:%{pythons}}" == "" || ("%pythons" == "python311" && 0%{?skip_python311})
 ExclusiveArch:  donotbuild
 %define python_module() %flavor-not-enabled-in-buildset-for-suse-%{?suse_version}
 %else
@@ -56,7 +54,7 @@ ExcludeArch:    s390x ppc64 %ix86 %arm
 %endif
 %endif
 Name:           python-numba%{?psuffix}
-Version:        0.63.1
+Version:        0.64.0
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause
