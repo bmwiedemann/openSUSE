@@ -435,4 +435,13 @@
     <comment>Qt 6.10.2</comment>
     <requestid>1330609</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>d34522add00e8cb67b3a1b6ed1bc9817</srcmd5>
+    <version>6.10.2</version>
+    <time>1771943876</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream change (boo#1258695):
+  * 0001-sandbox-Fix-build-with-glibc-2.43-and-above.patch</comment>
+    <requestid>1334472</requestid>
+  </revision>
 </revisionlist>

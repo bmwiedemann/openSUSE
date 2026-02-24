@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 23 11:01:52 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change (boo#1258695):
+  * 0001-sandbox-Fix-build-with-glibc-2.43-and-above.patch
+
+-------------------------------------------------------------------
 Sat Jan 31 08:10:44 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.10.2:
