@@ -5551,4 +5551,18 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1333728</requestid>
   </revision>
+  <revision rev="529" vrev="1">
+    <srcmd5>a05533a3f0ca5da4b08831f2dff1da42</srcmd5>
+    <version>2.9.0+git20260223.9c46177b</version>
+    <time>1771943899</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.9.0+git20260223.9c46177b:
+  * dbus-services: update thermald whitelisting (bsc#1258704)
+  * dbus-services: whitelist intel-lpmd (bsc#1255977)
+  * dbus-services: whitelist gnome-remote-desktop version 50 (bsc#1258407)
+  * tests: adjust expected output for missing-call-to-setgroups-before-setuid
+  * BinariesCheck: fix logic for missing-call-to-setgroups-before-setuid
+</comment>
+    <requestid>1334526</requestid>
+  </revision>
 </revisionlist>
