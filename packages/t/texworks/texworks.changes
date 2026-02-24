@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Feb 18 16:56:15 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.6.11:
+  * New features and improvements:
+    - Add additional cleanup patterns for LaTeXmk, biblatex,
+      minitoc.
+    - List dictionary folders in the "Settings & Resources"
+      dialog.
+  * Changes:
+    - Include prefix in selection if at the beginning of a line.
+    - Make spell checker backend accept multiple languages.
+    - Updated translations.
+    - Refactor and modernize parts of the code.
+  * Fixes:
+    - Enlarge drawing rect to avoid artifacts in the PDF preview.
+    - Fix magnifier shadow position when ruler is shown.
+    - Correctly detect PDF 2.x.
+    - Fix Scripts menu for nested folders.
+    - Fix error handling of QSaveFile::commit.
+    - Fix exit code when transferring to other instance.
+    - Fix missing application's taskbar icon on Linux.
+    - Fix CMake warning when enabling coverage.
+
+-------------------------------------------------------------------
 Tue Oct  7 19:49:12 UTC 2025 - Olivier Belleux <o.g.m.belleux@gmail.com>
 
 - change %define gcc_ver 8 to %define gcc_ver 13 
