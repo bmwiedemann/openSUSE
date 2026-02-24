@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        5.1771353921.c8005c9
+Version:        5.1771858186.01b8328
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -121,7 +121,7 @@ Source0:        %{name}-%{version}.tar.xz
 # The following line is generated from dependencies.yaml
 %define test_version_only_requires perl(Mojo::IOLoop::ReadWriteProcess) >= 0.28
 # The following line is generated from dependencies.yaml
-%define test_requires %build_requires %lua_support_requires %ocr_requires %python_support_requires %spellcheck_requires %test_base_requires %test_non_s390_requires %yamllint_requires ffmpeg python3-Pillow-tk
+%define test_requires %build_requires %lua_support_requires %ocr_requires %python_support_requires %spellcheck_requires %test_base_requires %test_non_s390_requires %yamllint_requires ffmpeg python3-Pillow-tk python3-gitlint
 %ifnarch s390x
 # The following line is generated from dependencies.yaml
 %define devel_non_s390_requires ShellCheck

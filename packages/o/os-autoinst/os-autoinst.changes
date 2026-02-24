@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Feb 23 16:33:17 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1771858186.01b8328:
+  * test: implement conventional commits check with gitlint
+  * fix: Fix wrong uses of "checkout" that should be "check out"
+  * git subrepo pull (merge) --force external/os-autoinst-common
+  * style: Fix crop.py style issues
+  * workaround: Remove "get_mempolicy" warning from qemu-img output
+
+-------------------------------------------------------------------
+Thu Feb 19 19:58:34 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1771520411.2601197:
+  * fix: Fix wrong uses of "checkout" that should be "check out"
+  * git subrepo pull (merge) --force external/os-autoinst-common
+  * style: Fix crop.py style issues
+  * workaround: Remove "get_mempolicy" warning from qemu-img output
+  * parse_extra_log: Allow passing additional args to upload_logs
+
+-------------------------------------------------------------------
 Wed Feb 18 16:16:06 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1771353921.c8005c9:
