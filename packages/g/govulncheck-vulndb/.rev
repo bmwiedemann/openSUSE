@@ -1706,4 +1706,41 @@
   * GO-2026-4425 CVE-2025-62878 GHSA-jr3w-9vfr-c746 (forwarded request 1331470 from jfkw)</comment>
     <requestid>1331471</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>a2829691e634374502303bdf2b4cbcd0</srcmd5>
+    <version>0.0.20260223T182315</version>
+    <time>1771943968</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.0.20260223T182315 2026-02-23T18:23:15Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2026-4358 CVE-2026-24137 GHSA-fcv2-xgw5-pqxf
+  * GO-2026-4361 GHSA-c32p-wcqj-j677
+  * GO-2026-4392 CVE-2026-24845 GHSA-9m43-p3cx-w8j5
+  * GO-2026-4394 CVE-2026-24051 GHSA-9h8m-3fm2-qjrq
+  * GO-2026-4399 CVE-2026-25518 GHSA-gx3x-vq4p-mhhv
+  * GO-2026-4434 CVE-2023-43635 GHSA-4jvr-vj2c-8q37
+  * GO-2026-4435 CVE-2023-43636 GHSA-5h7v-g49c-h887
+  * GO-2026-4436 CVE-2023-43637 GHSA-g7vp-j25f-h34p
+  * GO-2026-4442 GHSA-x9p2-77v6-6vhf
+  * GO-2026-4444 CVE-2026-23989 GHSA-9j2f-3rj3-wgpg
+  * GO-2026-4445 CVE-2026-25760 GHSA-2286-hxv5-cmp2
+  * GO-2026-4446 CVE-2026-24851 GHSA-jq9f-gm9w-rwm9
+  * GO-2026-4447 GHSA-vf5j-r2hw-2hrw
+  * GO-2026-4448 CVE-2025-64111 GHSA-gg64-xxr9-qhjp
+  * GO-2026-4449 CVE-2025-64175 GHSA-p6x6-9mx6-26wj
+  * GO-2026-4450 CVE-2026-23632 GHSA-5qhx-gwfj-6jqr
+  * GO-2026-4451 CVE-2026-22592 GHSA-cr88-6mqm-4g57
+  * GO-2026-4452 CVE-2026-24135 GHSA-jp7c-wj6q-3qf2
+  * GO-2026-4453 CVE-2026-23633 GHSA-mrph-w4hh-gx3g
+  * GO-2026-4454 GHSA-26gq-grmh-6xm6
+  * GO-2026-4455 CVE-2025-70963 GHSA-9f8m-9547-2gqm
+  * GO-2026-4456 CVE-2025-13523 GHSA-ffx7-34p2-vm3w
+  * GO-2026-4457 CVE-2025-65852 GHSA-rjv5-9px2-fqw6
+  * GO-2026-4458 CVE-2026-25793 GHSA-69x3-g4r3-p962
+  * GO-2026-4459 CVE-2017-18907 GHSA-42x9-rr3c-gr59
+  * GO-2026-4460 CVE-2017-18918 GHSA-5ghq-28r7-qwfj
+  * GO-2026-4461 CVE-2026-25804 GHSA-86x4-wp9f-wrr9 (forwarded request 1334622 from jfkw)</comment>
+    <requestid>1334623</requestid>
+  </revision>
 </revisionlist>
