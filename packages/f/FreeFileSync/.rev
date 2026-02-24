@@ -340,4 +340,23 @@ It would be nice to have this application available in the default repos. </comm
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1322139</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a3b8c0e2de572f782c7c3bf0ec4cb632</srcmd5>
+    <version>14.8</version>
+    <time>1771943976</time>
+    <user>anag_factory</user>
+    <comment>- Update to 14.8:
+  * Automatically detect proxy settings for Google Drive (Windows)
+  * Fixed file filter considering parent folder as match candidate
+  * Fixed bitmap button being trimmed (Linux)
+  * Fixed window flash when starting silent batch job (Windows, macOS)
+  * Try to set modification time on open file handle (Linux, macOS)
+  * Mitigate invalid main window size and position on startup
+  * Improved spin control arrow key handling (macOs)
+  * Run (S)FTP and HTTP session cleanup threads on demand
+  * Fixed mouse highlight when showing file grid context menu
+  * Avoid percentage format precision flicker when copying large file
+</comment>
+    <requestid>1334643</requestid>
+  </revision>
 </revisionlist>

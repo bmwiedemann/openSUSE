@@ -1,8 +1,8 @@
-Index: FreeFileSync-14.3/FreeFileSync/Source/application.cpp
+Index: FreeFileSync-14.8/FreeFileSync/Source/application.cpp
 ===================================================================
---- FreeFileSync-14.3.orig/FreeFileSync/Source/application.cpp
-+++ FreeFileSync-14.3/FreeFileSync/Source/application.cpp
-@@ -239,10 +239,6 @@ wxLayoutDirection Application::GetLayout
+--- FreeFileSync-14.8.orig/FreeFileSync/Source/application.cpp
++++ FreeFileSync-14.8/FreeFileSync/Source/application.cpp
+@@ -222,10 +222,6 @@ wxLayoutDirection Application::GetLayout
  
  int Application::OnRun()
  {
@@ -13,11 +13,11 @@ Index: FreeFileSync-14.3/FreeFileSync/Source/application.cpp
      //exception => Windows: let it crash and create mini dump!!! Linux/macOS: std::exception::what() logged to console
          [[maybe_unused]] const int rc = wxApp::OnRun();
      return static_cast<int>(exitCode_);
-Index: FreeFileSync-14.3/FreeFileSync/Source/RealTimeSync/application.cpp
+Index: FreeFileSync-14.8/FreeFileSync/Source/RealTimeSync/application.cpp
 ===================================================================
---- FreeFileSync-14.3.orig/FreeFileSync/Source/RealTimeSync/application.cpp
-+++ FreeFileSync-14.3/FreeFileSync/Source/RealTimeSync/application.cpp
-@@ -213,10 +213,6 @@ wxLayoutDirection Application::GetLayout
+--- FreeFileSync-14.8.orig/FreeFileSync/Source/RealTimeSync/application.cpp
++++ FreeFileSync-14.8/FreeFileSync/Source/RealTimeSync/application.cpp
+@@ -203,10 +203,6 @@ wxLayoutDirection Application::GetLayout
  
  int Application::OnRun()
  {

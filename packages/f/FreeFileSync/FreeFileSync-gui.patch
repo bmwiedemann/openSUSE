@@ -1,7 +1,8 @@
-diff --git a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source/ui/gui_status_handler.cpp
---- a/FreeFileSync/Source/ui/gui_status_handler.cpp
-+++ b/FreeFileSync/Source/ui/gui_status_handler.cpp
-@@ -70,27 +70,33 @@ void StatusHandlerTemporaryPanel::showStatsPanel()
+Index: FreeFileSync-14.8/FreeFileSync/Source/ui/gui_status_handler.cpp
+===================================================================
+--- FreeFileSync-14.8.orig/FreeFileSync/Source/ui/gui_status_handler.cpp
++++ FreeFileSync-14.8/FreeFileSync/Source/ui/gui_status_handler.cpp
+@@ -70,27 +70,33 @@ void StatusHandlerTemporaryPanel::showSt
                  //case wxAUI_DOCK_CENTRE:
          }
  
@@ -38,10 +39,11 @@ diff --git a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source
          //------------------------------------------------------------------
  
          statusPanel.Show();
-
---- a/wx+/darkmode.cpp
-+++ b/wx+/darkmode.cpp
-@@ -60,7 +60,7 @@ void zen::colorThemeInit(wxApp& app, Col
+Index: FreeFileSync-14.8/wx+/darkmode.cpp
+===================================================================
+--- FreeFileSync-14.8.orig/wx+/darkmode.cpp
++++ FreeFileSync-14.8/wx+/darkmode.cpp
+@@ -53,7 +53,7 @@ void zen::colorThemeInit(wxApp& app, Col
  {
      assert(!refGlobalColorHook());
  
@@ -50,7 +52,7 @@ diff --git a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source
      ZEN_ON_SCOPE_EXIT(if (!refGlobalColorHook()) refGlobalColorHook() = std::make_unique<SysColorsHook>()); //*after* SetAppearance() and despite errors
  
      //caveat: on macOS there are more themes than light/dark: https://developer.apple.com/documentation/appkit/nsappearance/name-swift.struct
-@@ -93,10 +93,6 @@ void zen::changeColorTheme(ColorTheme colTheme) //throw FileError
+@@ -86,10 +86,6 @@ void zen::changeColorTheme(ColorTheme co
      try
      {
          ZEN_ON_SCOPE_SUCCESS(refGlobalColorHook() = std::make_unique<SysColorsHook>()); //*after* SetAppearance()
@@ -61,8 +63,10 @@ diff --git a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source
      }
      catch (const SysError& e) { throw FileError(_("Failed to update the color theme."), e.toString()); }
  }
---- a/wx+/darkmode.h
-+++ b/wx+/darkmode.h
+Index: FreeFileSync-14.8/wx+/darkmode.h
+===================================================================
+--- FreeFileSync-14.8.orig/wx+/darkmode.h
++++ FreeFileSync-14.8/wx+/darkmode.h
 @@ -9,14 +9,16 @@
  
  #include <zen/file_error.h>
@@ -81,7 +85,7 @@ diff --git a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source
  
  void colorThemeInit(wxApp& app, ColorTheme colTheme); //throw FileError
  void colorThemeCleanup();
-@@ -25,4 +27,28 @@ bool equalAppearance(ColorTheme colTheme1, ColorTheme colTheme2);
+@@ -25,4 +27,28 @@ bool equalAppearance(ColorTheme colTheme
  void changeColorTheme(ColorTheme colTheme); //throw FileError
  }
  
@@ -110,9 +114,11 @@ diff --git a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source
 +};
 +
  #endif //DARKMODE_H_754298057018
---- a/FreeFilesync/Source/ui/main_dlg.cpp
-+++ b/FreeFileSync/Source/ui/main_dlg.cpp
-@@ -1279,11 +1279,11 @@ void MainDialog::setGlobalCfgOnInit(const GlobalConfig& globalCfg)
+Index: FreeFileSync-14.8/FreeFileSync/Source/ui/main_dlg.cpp
+===================================================================
+--- FreeFileSync-14.8.orig/FreeFileSync/Source/ui/main_dlg.cpp
++++ FreeFileSync-14.8/FreeFileSync/Source/ui/main_dlg.cpp
+@@ -1277,11 +1277,11 @@ void MainDialog::setGlobalCfgOnInit(cons
  
      //--------------------------------------------------------------------------------
      m_checkBoxMatchCase->SetValue(globalCfg_.mainDlg.textSearchRespectCase);
@@ -127,7 +133,7 @@ diff --git a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source
  
      //compare progress dialog minimum sizes are layout-dependent + can't be changed by user => don't load stale values from config
      std::vector<std::tuple<wxAuiPaneInfo*, wxSize /*min size*/, wxSize /*best size*/>> paneConstraints;
-@@ -3147,8 +3147,8 @@ void MainDialog::onSetLayoutContext(wxMouseEvent& event)
+@@ -3145,8 +3145,8 @@ void MainDialog::onSetLayoutContext(wxMo
      //----------------------------------------------------------------------------------------
  
      bool addedSeparator = false;
@@ -138,7 +144,7 @@ diff --git a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source
          if (!paneInfo.IsShown() &&
              paneInfo.window != compareStatus_->getAsWindow() &&
              paneInfo.window != m_panelLog                    &&
-@@ -3166,7 +3166,7 @@ void MainDialog::onSetLayoutContext(wxMouseEvent& event)
+@@ -3164,7 +3164,7 @@ void MainDialog::onSetLayoutContext(wxMo
                  this->auiMgr_.Update();
              });
          }
