@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 24 13:43:09 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.9.3
+  * Fix several memory leaks in ``input.c``.
+  * Raise the minimum supported Python version to 3.9
+    and the setuptools version to 77.0.
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Thu May  1 20:11:01 UTC 2025 - Matthias Bach <marix@marix.org> - 1.9.2
 
 - Update to 1.9.2
