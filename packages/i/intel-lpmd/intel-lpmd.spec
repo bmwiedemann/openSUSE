@@ -1,7 +1,7 @@
 #
 # spec file for package intel-lpmd
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            https://github.com/intel/intel-lpmd
 Source:         https://github.com/intel/intel-lpmd/archive/refs/tags/v%version.tar.gz
+Patch1:         install.patch
 BuildRequires:  automake
 BuildRequires:  gtk-doc >= 1.11
 BuildRequires:  pkg-config
@@ -56,13 +57,26 @@ autoreconf -fi
 
 %install
 %make_install
-find | grep xml
-rm -Rf "%buildroot/etc"
+
+%pre
+%service_add_pre intel_lpmd.service
+
+%post
+%service_add_post intel_lpmd.service
+
+%preun
+%service_del_preun intel_lpmd.service
+
+%postun
+%service_del_postun intel_lpmd.service
 
 %files
 %_bindir/intel*
 %_sbindir/intel*
 %_mandir/man*/*.[0-9]*
+%_unitdir/*.service
+%_datadir/dbus-1/
+%_datadir/intel_lpmd/
 %doc data/intel_lpmd_config.xml data/intel_lpmd_config_F6_M170.xml README.md
 %license COPYING
 

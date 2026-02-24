@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 16 11:18:51 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add install.patch and ship XML config files
+
+-------------------------------------------------------------------
+Mon Jan  5 12:25:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve build failure on Tumbleweed due to unpackaged files
+
+-------------------------------------------------------------------
 Mon Nov 24 21:26:25 UTC 2025 - Thomas Renninger <trenn@suse.de>
 
 - Update to version 0.1.0:
@@ -6,7 +16,6 @@ Mon Nov 24 21:26:25 UTC 2025 - Thomas Renninger <trenn@suse.de>
   * Added support for checking graphics threshold
   * Graphics utilization is now calculated based on sysfs and MSR
   * Added Power Slider support
-- Introduce _service to retrieve sources, version and changes from github repo
 - Delete fix_cpuid_double_include.patch (merged as
   a9a95bbb7436e38a62e357)
 

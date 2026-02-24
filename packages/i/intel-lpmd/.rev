@@ -15,4 +15,13 @@
     <comment>- Update to version 0.1.0:</comment>
     <requestid>1319893</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>aa7798db1e3b16d5588a22d2b3f76813</srcmd5>
+    <version>0.1.0</version>
+    <time>1771944029</time>
+    <user>anag_factory</user>
+    <comment>- Add install.patch and ship XML config files
+- Resolve build failure on Tumbleweed due to unpackaged files</comment>
+    <requestid>1327623</requestid>
+  </revision>
 </revisionlist>

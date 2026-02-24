@@ -1,0 +1,31 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Fri, 16 Jan 2026 11:27:48 +0100
+Subject: [PATCH] build: switch default DBUS_SYS_DIR from /etc to ${datadir}
+
+/etc is for machine-local configuration; `make install` (of any
+software source packages) produces generic defaults, not
+site-specific policy.
+---
+ configure.ac |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: intel-lpmd-0.1.0/configure.ac
+===================================================================
+--- intel-lpmd-0.1.0.orig/configure.ac
++++ intel-lpmd-0.1.0/configure.ac
+@@ -21,13 +21,13 @@ AC_ARG_WITH(dbus-sys-dir, AS_HELP_STRING
+ if test -n "$with_dbus_sys_dir" ; then
+     DBUS_SYS_DIR="$with_dbus_sys_dir"
+ else
+-    DBUS_SYS_DIR="/etc/dbus-1/system.d"
++    DBUS_SYS_DIR='${datadir}/dbus-1/system.d'
+ fi
+ AC_SUBST(DBUS_SYS_DIR)
+ 
+ # paths
+ AC_SUBST(lpmd_binary, "$sbindir/$PACKAGE", [Binary executable])
+-AC_SUBST(lpmd_confdir, "$sysconfdir/$PACKAGE", [Configuration directory])
++AC_SUBST(lpmd_confdir, "$datadir/$PACKAGE", [Configuration directory])
+ AC_SUBST(lpmd_rundir, "$localstatedir/run/$PACKAGE", [Runtime state directory])
+ 
+ PKG_PROG_PKG_CONFIG
