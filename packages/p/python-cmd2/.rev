@@ -678,4 +678,19 @@
     <comment></comment>
     <requestid>1333674</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>34196c09edb0ac1b214ba34836c94689</srcmd5>
+    <version>3.2.2</version>
+    <time>1771943886</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.2.2:
+  * Updated `rich_utils.ANSI_STYLE_SEQUENCE_RE` to only match
+    ANSI SGR (Select Graphic Rendition) sequences for text styling.
+  * The `async_alert` and `async_prompt_update` methods of
+    `cmd2.Cmd` now respect the current value of the `allow_style`
+    settable
+  * If `allow_style` is `NEVER`, all style-related ANSI escape
+    codes will be stripped to ensure plain text output</comment>
+    <requestid>1334455</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           python-cmd2
-Version:        3.2.0
+Version:        3.2.2
 Release:        0
 Summary:        Extra features for standard library's cmd module
 License:        MIT
