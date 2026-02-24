@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Feb 23 19:01:28 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 9.2.0045:
+  * Patch 9.1.0011: regexp cannot match combining chars in
+    collection.
+  * Patch 9.1.0012: regression with empty inner blocks introduced
+    (after v9.1.0007).
+  * Patch 9.1.0013: Modula2 filetype support lacking.
+  * Patch 9.1.0014: incorrect use of W_WINROW in edit.c.
+  * Patch 9.1.0015: i_CTRL-R- no longer works in replace mode.
+  * Patch 9.1.0016: default diff highlighting is too noisy.
+  * Patch 9.1.0017: use-after-free in eval1_emsg() when an empty
+    line follows a lambda.
+  * Patch 9.1.0018: use of #if instead of #ifdef.
+  * Patch 9.1.0019: cmdline may disappear when changing
+    'cmdheight' (after Patch 9.0.0190).
+  * Patch 9.1.0020: Vim9: cannot compile all methods in a class.
+  * Patch 9.1.0021: i_CTRL-R- doesn't work for multibyte chars in
+    Replace mode, Coverity complains missing return value for
+    u_save_cursor().
+  * Patch 9.1.0022: Coverity complains about improper use of
+    negative value.
+  * Patch 9.1.0023: xxd: few problems with EBCDIC for z/OS (MVS).
+  * Patch 9.1.0024: z/OS (MVS) support can be improved.
+  * Patch 9.1.0025: A few typos in tests and justify.vim.
+  * Patch 9.1.0027: Vim is missing a foreach() func.
+  * Patch 9.1.0029: Cannot act on various terminal response codes.
+  * Patch 9.1.0030: Cannot use terminal alternate fonts (PMunch).
+  * Patch 9.1.0033: Insert mode not stopped if an autocommand
+    modifies a hidden buffer while closing a prompt buffer.
+  * Patch 9.1.0034: Window may unexpectedly scroll when
+    'scrollbind' is set and setting a buffer-local option using
+    setbufvar().
+  * Patch 9.1.0035: i_CTRL-] triggers InsertCharPre.
+  * Patch 9.1.0037: Calling get_breakindent_win() repeatedly when
+    computing virtual column, and get_breakindent_win() does a
+    STRCMP() on the whole line since Patch 9.0.0016.
+  * Patch 9.1.0038: Unnecessary loop in getvcol().
+  * Patch 9.1.0039: too vague errors for 'listchars'/'fillchars'.
+  * Patch 9.1.0040: Modifying a hidden buffer still interferes
+    with prompt buffer mode changes.
+  * Patch 9.1.0041: xxd -i may generate incorrect C statements.
+  * Patch 9.1.0042: Missing test for Chuck filetype after.
+  * Patch 9.1.0043: ml_get: invalid lnum when :s replaces visual
+    selection.
+  * Patch 9.1.0044: po Makefiles can be improved.
+  * Patch 9.1.0045:  --remote-silent applies the wildignore option
+    to each argument, which may result in "E479: No match"
+    (hebaronson).
+
+-------------------------------------------------------------------
 Mon Feb 16 17:38:41 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.2.0010:
