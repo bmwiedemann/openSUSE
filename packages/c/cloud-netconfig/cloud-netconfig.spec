@@ -1,7 +1,7 @@
 #
 # spec file for package cloud-netconfig
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{base_name}%{flavor_suffix}
-Version:        1.16
+Version:        1.17
 Release:        0
 License:        GPL-3.0-or-later
 Summary:        Network configuration scripts for %{csp_string}
