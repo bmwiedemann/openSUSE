@@ -1,7 +1,7 @@
 #
 # spec file for package consoleet-fixedsys-fonts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           consoleet-fixedsys-fonts
-Version:        3.02.9.1
+Version:        3.09.10
 Release:        0
 Summary:        Smooth-edge version of Fixedsys Excelsior
 License:        SUSE-Public-Domain
 Group:          System/X11/Fonts
 URL:            https://inai.de/projects/consoleet/
-Source:         https://inai.de/files/consoleet/consoleet-fixedsys-%version.tar.zst
-Source2:        https://inai.de/files/consoleet/consoleet-fixedsys-%version.tar.asc
+Source:         https://inai.de/files/consoleet/consoleet-fixedsys-%version.zip
+Source2:        https://inai.de/files/consoleet/consoleet-fixedsys-%version.zip.asc
 Source3:        %name.keyring
 BuildRequires:  fontpackages-devel
-BuildRequires:  zstd
+BuildRequires:  unzip
 BuildArch:      noarch
 %reconfigure_fonts_prereq
 
@@ -35,8 +35,7 @@ BuildArch:      noarch
 Smooth-edge versions of the Fixedsys Excelsior font.
 
 %prep
-%setup -Tcq
-tar --use=zstd --strip-components=1 -xf %SOURCE0
+%autosetup -n consoleet-fixedsys-%version
 
 %build
 

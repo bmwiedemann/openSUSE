@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 24 09:29:36 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.09.10
+  * Added a few arrows used for keyboard design (U+21B9 et al)
+    and a numlock glyph instead of lock emoji.
+  * Fixed 6-part braille dots for better visualization of ASCII art.
+  * Added 8-part braille glyphs.
+
+-------------------------------------------------------------------
 Mon Sep  4 10:08:26 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.02.9.1
