@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb 23 13:31:00 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.103.0:
+  * [In-app notifications] Fixed incorrect positioning of the message box
+  * [Reader] Webtoon mode: Added keyboard/mouse zoom
+  * [Servers] DocTruyen3Q (VI): Update
+  * [Servers] Dragon Ball Multiverse: Added 17 Webcomics and 9 languages
+  * [Servers] MangaReader(to): Disabled
+  * [L10n] Updated French, Portuguese (Brazil) and Vietnamese translations
+- Update to version 1.102.0:
+  * [Servers] DocTruyen3Q (VI): Update
+  * [Servers] LegacyScans (FR): Disabled
+  * [Servers] MangaBin (EN): Disabled
+  * [Servers] Toonily (EN): Update
+  * [Servers] Added copyright information about content
+  * [L10n] Updated French, Portuguese (Brazil) and Russian translations
+
+-------------------------------------------------------------------
 Thu Jan 29 12:34:46 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.101.0:

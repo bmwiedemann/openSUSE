@@ -733,4 +733,25 @@
   new feature got implemented to read local files (forwarded request 1330093 from rrahl0)</comment>
     <requestid>1330715</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>8e95cffce610a972ab24ec610baffcb8</srcmd5>
+    <version>1.103.0</version>
+    <time>1771951530</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.103.0:
+  * [In-app notifications] Fixed incorrect positioning of the message box
+  * [Reader] Webtoon mode: Added keyboard/mouse zoom
+  * [Servers] DocTruyen3Q (VI): Update
+  * [Servers] Dragon Ball Multiverse: Added 17 Webcomics and 9 languages
+  * [Servers] MangaReader(to): Disabled
+  * [L10n] Updated French, Portuguese (Brazil) and Vietnamese translations
+- Update to version 1.102.0:
+  * [Servers] DocTruyen3Q (VI): Update
+  * [Servers] LegacyScans (FR): Disabled
+  * [Servers] MangaBin (EN): Disabled
+  * [Servers] Toonily (EN): Update
+  * [Servers] Added copyright information about content
+  * [L10n] Updated French, Portuguese (Brazil) and Russian translations (forwarded request 1334504 from rrahl0)</comment>
+    <requestid>1334748</requestid>
+  </revision>
 </revisionlist>
