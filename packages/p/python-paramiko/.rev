@@ -813,4 +813,14 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1284620</requestid>
   </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>6dfa2f5bedd3f5224772a33cf810886a</srcmd5>
+    <version>3.5.1</version>
+    <time>1771943868</time>
+    <user>anag_factory</user>
+    <comment>- Split the test execution because pytest on 32-bit python 3.14 opens
+  too many threds when executing in one run
+</comment>
+    <requestid>1333583</requestid>
+  </revision>
 </revisionlist>

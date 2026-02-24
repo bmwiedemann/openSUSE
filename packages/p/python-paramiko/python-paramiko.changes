@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 17 15:04:47 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Split the test execution because pytest on 32-bit python 3.14 opens
+  too many threds when executing in one run
+
+-------------------------------------------------------------------
 Wed Jun 11 05:49:23 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

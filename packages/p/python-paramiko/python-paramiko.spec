@@ -1,7 +1,7 @@
 #
 # spec file for package python-paramiko
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -87,7 +87,10 @@ find demos -name "*.py" -exec sed -i "/#\!\/usr\/bin\/.*/d" {} \; -exec chmod -x
 export LANG=en_US.UTF-8
 # Do not test k5shell to avoid dependency
 donttest="k5shell"
-%pytest tests/test_*.py  -k "not $donttest"
+# workaround for an issue with too many threads open https://github.com/paramiko/paramiko/issues/2571
+%pytest tests/test_transport.py
+rm tests/test_transport.py
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE
