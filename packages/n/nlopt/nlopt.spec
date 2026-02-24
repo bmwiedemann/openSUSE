@@ -1,7 +1,7 @@
 #
 # spec file for package nlopt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,14 +33,12 @@
 %endif
 
 Name:           nlopt%{?psuffix}
-Version:        2.10.0
+Version:        2.10.1
 Release:        0
 Summary:        A library for nonlinear optimization
 License:        LGPL-2.1-or-later
 URL:            https://nlopt.readthedocs.io/en/latest/
 Source0:        https://github.com/stevengj/nlopt/archive/v%{version}.tar.gz#/%{pname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM nlopt-dont-force-cxx-standard.patch gh#stevengj/nlopt#597 badshah400@gmail.com -- Do not force c++11 standard; this allows building octave bindings against octave 10+
-Patch0:         nlopt-dont-force-cxx-standard.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?gcc_ver}-c++

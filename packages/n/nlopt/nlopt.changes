@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 18 17:30:28 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.10.1:
+  * Fixed octave 10.x build [gh#stevengj/nlopt#616].
+  * Fixed slsqp constraints count [gh#stevengj/nlopt#598].
+  * Fixed build with libstdc++ debug iterators
+    [gh#stevengj/nlopt#627].
+  * Fixed PRAXIS evaluations count [gh#stevengj/nlopt#606].
+- Drop nlopt-dont-force-cxx-standard.patch: upstreamed.
+
+-------------------------------------------------------------------
 Thu May 22 12:14:08 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add nlopt-dont-force-cxx-standard.patch: Don't force c++11 std
