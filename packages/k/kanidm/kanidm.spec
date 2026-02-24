@@ -20,7 +20,12 @@
 %define kanidm_profile release_linux
 %define configdir %{_sysconfdir}/kanidm
 
+%if 0%{?is_opensuse} == 1 && 0%{?suse_version} >= 1699
 %bcond_without pykanidm
+%else
+%bcond_with pykanidm
+%endif
+
 %if %{defined primary_python}
 %global pythons %{primary_python}
 %else
@@ -28,7 +33,7 @@
 %endif
 
 Name:           kanidm
-Version:        1.8.6~git0.268c71d0a
+Version:        1.9.1~git0.36055feca
 Release:        0
 Summary:        A identity management service and clients.
 License:        ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR ISC OR MIT ) AND ( Apache-2.0 OR MIT ) AND ( Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT ) AND ( CC0-1.0 OR Apache-2.0 ) AND ( MIT OR Apache-2.0 OR Zlib ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT AND MPL-2.0 AND MPL-2.0+
@@ -41,7 +46,7 @@ BuildRequires:  clang
 BuildRequires:  libselinux-devel
 BuildRequires:  libudev-devel
 BuildRequires:  pam-devel
-BuildRequires:  rust >= 1.90.0
+BuildRequires:  rust >= 1.93.0
 BuildRequires:  sqlite-devel
 %if 0%{?rhel} > 7 || 0%{?fedora}
 BuildRequires:  tpm2-tss-devel
@@ -220,7 +225,10 @@ cp -r %{_builddir}/kanidm-%{version}/server/core/static %{buildroot}%{_datadir}/
 cd pykanidm
 %pyproject_install
 cd ..
+# We don't need the openapi gen script.
+rm %{buildroot}%{_bindir}/kanidm_openapi_codegen
 %endif
+
 ## End install
 
 %if 0%{?rhel} > 7 || 0%{?fedora}
@@ -311,7 +319,6 @@ cd ..
 %dir %{_datadir}/kanidm/ui/hpkg
 %dir %{_datadir}/kanidm/ui/hpkg/external
 %{_datadir}/kanidm/ui/hpkg/*
-%{_datadir}/kanidm/ui/hpkg/external/*
 %dir %{configdir}
 %config(noreplace) %{configdir}/server.toml
 %dir %{_sysconfdir}/zsh_completion.d
@@ -351,6 +358,7 @@ cd ..
 %files -n %{pythons}-pykanidm
 %{python_sitelib}/kanidm-*.dist-info
 %{python_sitelib}/kanidm/
+%{python_sitelib}/kanidm_openapi_client/
 %endif
 
 %changelog
