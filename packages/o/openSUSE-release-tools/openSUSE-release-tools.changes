@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 17 11:42:45 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260217.9242c97e:
+  * fix: port review state change code to platform independent interface
+
+-------------------------------------------------------------------
+Fri Feb 13 08:51:08 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260213.dedeb6c5:
+  * factory-package-news-web.py: Return 404 if requested distro does not exist
+  * factory-package-news-web.service: Drop obsolete StandardError=syslog
+
+-------------------------------------------------------------------
 Wed Feb 04 07:04:24 UTC 2026 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20260204.08a2a831:
