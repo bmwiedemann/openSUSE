@@ -1,7 +1,7 @@
 #
 # spec file for package bibletime
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012-2014 Lars Vogdt
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %global __requires_exclude qmlimport\\(BibleTime.*
 
 Name:           bibletime
-Version:        3.1.1
+Version:        3.2.0
 Release:        0
 Summary:        A Bible study tool
 License:        GPL-2.0-or-later
@@ -29,7 +29,7 @@ Group:          Productivity/Scientific/Other
 URL:            http://www.bibletime.info/
 Source0:        https://github.com/bibletime/bibletime/releases/download/v%{version}/bibletime-%{version}.tar.xz
 Source1:        bibletime-rpmlintrc
-BuildRequires:  cmake >= 3.12
+BuildRequires:  cmake >= 3.25
 BuildRequires:  curl-devel
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -43,6 +43,7 @@ BuildRequires:  cmake(Qt6Quick)
 BuildRequires:  cmake(Qt6QuickWidgets)
 BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(Qt6Test)
+BuildRequires:  cmake(Qt6TextToSpeech)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(libclucene-core) >= 2.0

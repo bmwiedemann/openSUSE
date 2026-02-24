@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 23 21:07:26 UTC 2026 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 3.2.0. Key features:
+  * Added basic Text-to-Speech (TTS) for selected text
+  * Added option to search works open in the active window, now the
+    default action for Ctrl+O
+  * Improved dark theme detection
+- Update minimal cmake version to 3.25
+- Add cmake(Qt6TextToSpeech) to BuildRequires
+
+-------------------------------------------------------------------
 Fri Mar 21 21:04:18 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 3.1.1

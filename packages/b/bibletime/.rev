@@ -240,4 +240,18 @@
     <comment></comment>
     <requestid>1255139</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>47f6da720667d81b74455a614570099a</srcmd5>
+    <version>3.2.0</version>
+    <time>1771943954</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.2.0. Key features:
+  * Added basic Text-to-Speech (TTS) for selected text
+  * Added option to search works open in the active window, now the
+    default action for Ctrl+O
+  * Improved dark theme detection
+- Update minimal cmake version to 3.25
+- Add cmake(Qt6TextToSpeech) to BuildRequires</comment>
+    <requestid>1334602</requestid>
+  </revision>
 </revisionlist>
