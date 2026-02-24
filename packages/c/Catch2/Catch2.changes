@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Feb 18 10:54:41 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.13.0:
+  * Fixes:
+    - --benchmark-samples 0 no longer hard crashes
+      (gh#catchorg/Catch2#3056); the CLI validation fails instead.
+  * Improvements:
+    - Suppressed static analysis 26426 diagnostic for MSVC
+      (gh#catchorg/Catch2#3057).
+    - Renamed the internal deprecation macro from DEPRECATED to
+      CATCH_DEPRECATED to avoid conflicts
+      (gh#catchorg/Catch2#3058).
+    - Added UNSCOPED_CAPTURE macro (gh#catchorg/Catch2#2954).
+    - Added ConcatGenerator to combine multiple separate generator
+      into one; The short form is cat.
+    - Generators can now jump forward to nth element efficiently;
+      Custom generators that can jump forward efficiently should
+      override skipToNthElementImpl.
+    - Generators can declare themselves infinite; Custom
+      generators should override isFinite() to return the proper
+      value.
+    - Added --warn InfiniteGenerators to error out on GENERATE
+      being given an infinite generator.
+    - Extended options for section filtering from CLI to include
+      generators.
+    - MapGenerator only calls the mapping function if the output
+      will be used.
+
+-------------------------------------------------------------------
 Thu Jan 15 18:33:24 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.12.0:
