@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 24 12:28:02 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Used libnpupnp instead of libupnp,
+  https://github.com/pupnp/pupnp/issues/528
+
+-------------------------------------------------------------------
 Fri Feb  6 22:52:20 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 0.24.8

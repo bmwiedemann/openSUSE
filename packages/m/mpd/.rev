@@ -885,4 +885,13 @@
   * fixed build with glibc 2.43 and liburing &lt; 2.4</comment>
     <requestid>1331757</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>15058a82045309d8e344cc5eb6e135aa</srcmd5>
+    <version>0.24.8</version>
+    <time>1771943999</time>
+    <user>anag_factory</user>
+    <comment>- Used libnpupnp instead of libupnp,
+  https://github.com/pupnp/pupnp/issues/528</comment>
+    <requestid>1334722</requestid>
+  </revision>
 </revisionlist>
