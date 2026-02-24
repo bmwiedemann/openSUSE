@@ -1,0 +1,22 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2025-12-29 09:59:20.000000000 -0600
++++ b/CMakeLists.txt	2026-02-23 07:44:21.832838026 -0600
+@@ -57,12 +57,15 @@
+   deps
+   REQUIRED
+   IMPORTED_TARGET
++  aquamarine
++  cairo
++  hyprgraphics
+   hyprlang>=0.6.0
+-  hyprutils>=0.10.2
+   hyprtoolkit>=0.4.0
++  hyprutils>=0.10.2
+   pixman-1
+-  xkbcommon
+-  libdrm)
++  libdrm
++  xkbcommon)
+ 
+ add_subdirectory(utils/dialog)
+ add_subdirectory(utils/donate-screen)

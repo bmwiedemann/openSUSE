@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Mon Feb 23 13:34:09 UTC 2026 - malcolmlewis@opensuse.org
+
+- Initial package at version 0.2.1.
+- Add hyprland-guiutils-add-dependencies.patch: Add missing
+  dependencies to build, (gh#hyprwm/hyprland-guiutils#16).
+
