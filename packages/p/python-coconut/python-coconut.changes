@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 16 17:09:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * Add t-string support #866: Coconut now supports Python 3.14
+    template strings (`t"..."` syntax). On Python 3.14+, native
+    t-string syntax is used. On Python 3.10-3.13, Coconut
+    compiles t-strings to use the `tstr` backport library.
+  * Add memoize.RECURSIVE #858: Added `memoize.RECURSIVE` option
+    that allows unbounded cache growth during recursive calls but
+    automatically clears the cache after the outermost call
+    completes. This prevents memory leaks while still supporting
+    recursive functions effectively.
+  * Support Python 3.14 #873: Full support for Python 3.14,
+    including compatibility with the new interpreter changes and
+    native t-string support.
+
+-------------------------------------------------------------------
 Thu Aug 21 11:25:20 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix install requirements
@@ -37,7 +54,7 @@ Fri Sep 13 10:56:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Fri May 24 03:06:34 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
-- Add conflicts with python2 version since we are dropping 
+- Add conflicts with python2 version since we are dropping
   update-alternatives.
 
 -------------------------------------------------------------------
