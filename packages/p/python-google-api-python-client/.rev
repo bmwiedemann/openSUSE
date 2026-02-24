@@ -1639,4 +1639,41 @@ eplacement for google-api-python-client, follow our naming convention</comment>
   * **container:** Update the api (forwarded request 1332217 from glaubitz)</comment>
     <requestid>1332238</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>7509e98c01d7579c62f5b46c919f1857</srcmd5>
+    <version>2.190.0</version>
+    <time>1771951533</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.190.0
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **androidpublisher:** Update the api
+  * **apigee:** Update the api
+  * **appengine:** Update the api
+  * **clouddeploy:** Update the api
+  * **cloudkms:** Update the api
+  * **connectors:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **containeranalysis:** Update the api
+  * **dataflow:** Update the api
+  * **datafusion:** Update the api
+  * **datalabeling:** Update the api
+  * **datalineage:** Update the api
+  * **discoveryengine:** Update the api
+  * **displayvideo:** Update the api
+  * **documentai:** Update the api
+  * **domains:** Update the api
+  * **eventarc:** Update the api
+  * **fcm:** Update the api
+  * **firebasedataconnect:** Update the api
+  * **gkebackup:** Update the api
+  * **kmsinventory:** Update the api
+  * **logging:** Update the api
+  * **managedidentities:** Update the api
+  * **merchantapi:** Update the api
+  * **networkmanagement:** Update the api
+  * **ondemandscanning:** Update the api
+  * **redis:** Update the api (forwarded request 1334763 from glaubitz)</comment>
+    <requestid>1334765</requestid>
+  </revision>
 </revisionlist>

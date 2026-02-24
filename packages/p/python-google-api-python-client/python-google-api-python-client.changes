@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Feb 24 14:22:49 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.190.0
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **androidpublisher:** Update the api
+  * **apigee:** Update the api
+  * **appengine:** Update the api
+  * **clouddeploy:** Update the api
+  * **cloudkms:** Update the api
+  * **connectors:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **containeranalysis:** Update the api
+  * **dataflow:** Update the api
+  * **datafusion:** Update the api
+  * **datalabeling:** Update the api
+  * **datalineage:** Update the api
+  * **discoveryengine:** Update the api
+  * **displayvideo:** Update the api
+  * **documentai:** Update the api
+  * **domains:** Update the api
+  * **eventarc:** Update the api
+  * **fcm:** Update the api
+  * **firebasedataconnect:** Update the api
+  * **gkebackup:** Update the api
+  * **kmsinventory:** Update the api
+  * **logging:** Update the api
+  * **managedidentities:** Update the api
+  * **merchantapi:** Update the api
+  * **networkmanagement:** Update the api
+  * **ondemandscanning:** Update the api
+  * **redis:** Update the api
+  * **saasservicemgmt:** Update the api
+  * **secretmanager:** Update the api
+  * **securityposture:** Update the api
+  * **storage:** Update the api
+  * **threatintelligence:** Update the api
+  * **walletobjects:** Update the api
+  * **youtube:** Update the api
+  * **datastore:** Update the api
+  * **firestore:** Update the api
+  * **run:** Update the api
+
+-------------------------------------------------------------------
 Tue Feb 10 11:23:05 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.189.0
