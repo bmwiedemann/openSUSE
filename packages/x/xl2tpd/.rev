@@ -227,4 +227,25 @@
   + xl2tpd-gcc15.patch (forwarded request 1246877 from pgajdos)</comment>
     <requestid>1248394</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>38d4ff578a436e68dfc0a5e9fbaf55fb</srcmd5>
+    <version>1.3.20</version>
+    <time>1771943874</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.3.20
+  * xl2tpd: Close calls when underlying pppd terminate.
+  * Fix compiling with C23.
+- Drop patch:
+  * xl2tpd-gcc15.patch
+- Adjust one &quot;invalid&quot; date from the changelog
+  Running source_service 'source_validator' ...
+  date: invalid date &quot;Wed Mar 6 21:15:13 YEKT 2013&quot;
+
+- Update to version 1.3.19
+  * Only force userspace when ipsec saref enabled.
+  * Control: avoid compiler warnings.
+  * Fix typo.
+  * Fix a gcc-warning related to 'struct payload_hdr' pointer.</comment>
+    <requestid>1334454</requestid>
+  </revision>
 </revisionlist>

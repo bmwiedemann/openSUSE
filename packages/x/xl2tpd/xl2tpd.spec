@@ -1,7 +1,7 @@
 #
 # spec file for package xl2tpd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,9 @@
 #
 
 
-%if 0%{?suse_version} <= 1310
-%define rundir %{_localstatedir}/run
-%else
 %define rundir /run
-%endif
 Name:           xl2tpd
-Version:        1.3.18
+Version:        1.3.20
 Release:        0
 Summary:        Layer 2 Tunnelling Protocol Daemon (RFC 2661)
 License:        GPL-2.0-only
@@ -33,7 +29,6 @@ Source1:        %{name}.service
 Source2:        %{name}.conf
 Patch0:         Makefile.patch
 Patch1:         xl2tpd.init.patch
-Patch2:         xl2tpd-gcc15.patch
 BuildRequires:  libpcap
 BuildRequires:  libpcap-devel
 BuildRequires:  linux-kernel-headers >= 2.6.19
