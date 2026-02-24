@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Feb 23 14:21:35 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 10.8.0:
+  * Limine boot protocol: Implement base revision 5.
+  * Limine boot protocol: Implement x86-64 Keep IOMMU feature.
+  * Fix font autoscaling not resetting per display in multi-display
+    configurations.
+  * Fix undefined behaviour in memmove() due to direct pointer
+    comparisons.
+  * Skip GOP and VBE modes with invalid pitch values.
+  * GOP: Work around firmware reporting incorrect pitch via QueryMode()
+    by fetching from gop->Mode->Info after SetMode().
+  * GOP: Ensure SetMode() is called at least once per handle to work
+    around firmware not initialising state without that.
+  * Fall back to EFI/BIOS console instead of panicking on small
+    terminals.
+  * Disable Intel VT-d and AMD-Vi IOMMUs before kernel entry by default
+    for the Limine, multiboot1, and multiboot2 protocols.
+  * Try to gracefully disable x2APIC before handoff for the Limine
+    (unless kernel asks for it), multiboot1, and multiboot2 protocols.
+  * Replace cycle-based delay() with wall time calibrated stall().
+  * Prefer physical memory allocations below 4 GiB on x86.
+  * Align ACPI table memory map entries to page size where safe.
+  * Undo several overzealous limits and bounds checks added in prior
+    releases.
+  * Updated limine-protocol subproject to latest revision.
+
+-------------------------------------------------------------------
 Tue Feb 10 10:48:46 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 10.7.0:
