@@ -16,17 +16,9 @@
 #
 
 
-%global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test"
-%define psuffix -test
-%bcond_without test
-%else
-%define psuffix %{nil}
-%bcond_with test
-%endif
 %{?sle15_python_module_pythons}
-Name:           python-pytest-codspeed%{psuffix}
-Version:        3.1.2
+Name:           python-pytest-codspeed
+Version:        4.3.0
 Release:        0
 Summary:        A pytest plugin to create CodSpeed benchmarks
 License:        MIT
@@ -42,18 +34,14 @@ BuildRequires:  %{python_module cffi >= 1.17.1}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-benchmark}
+BuildRequires:  %{python_module pytest >= 3.8}
 BuildRequires:  %{python_module rich >= 13.8.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  valgrind-devel
 Requires:       python-cffi >= 1.17.1
 Requires:       python-pytest >= 3.8
 Requires:       python-rich >= 13.8.1
-%if %{with test}
-BuildRequires:  %{python_module pytest >= 3.8}
-BuildRequires:  %{python_module pytest-codspeed = %{version}}
-%endif
 %python_subpackages
 
 %description
@@ -63,30 +51,23 @@ A pytest plugin to create CodSpeed benchmarks.
 %autosetup -p1 -n pytest_codspeed-%{version}
 
 %build
-%if %{without test}
-export PYTEST_CODSPEED_FORCE_EXTENSION_BUILD=1
+# Required due to zig generated code
+export CFLAGS="-std=c11"
 %pyproject_wheel
-%endif
 
 %install
-%if %{without test}
 %pyproject_install
+# Remove source code for instrument-hooks
+%python_expand rm -rv %{buildroot}%{$python_sitearch}/pytest_codspeed/instruments/hooks/instrument-hooks
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-%endif
 
 %check
-%if %{with test}
-export PYTEST_CODSPEED_FORCE_VALGRIND_TESTS=1
-%pytest
-%endif
+%pytest_arch
 
-%if %{without test}
 %files %{python_files}
 %license LICENSE
 %doc README.md
 %{python_sitearch}/pytest_codspeed
-%{python_sitearch}/pytest_codspeed-%{version}*-info
-%exclude %{python_sitearch}/pytest_codspeed/instruments/valgrind/_wrapper/wrapper.[ch]
-%endif
+%{python_sitearch}/pytest_codspeed-%{version}.dist-info
 
 %changelog

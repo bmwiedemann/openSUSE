@@ -7,4 +7,27 @@
     <comment>needed for python-dbus_fast 2.29</comment>
     <requestid>1241326</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8119525258f96cd7136cd0dcecd58de3</srcmd5>
+    <version>4.3.0</version>
+    <time>1771943966</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.3.0:
+  ## Features
+  * Support for the memory instrument, which enables you to track memory
+    usage, heap allocations, and memory leaks in your benchmarks.
+  * Support python 3.14
+  * Bump instrument-hooks
+  * Support perf profiling in Python walltime instrument
+  * Support pytest-benchmark marker attributes
+  * Support the pedantic API
+  * Increase the min round time to a bigger value (+/- 1ms)
+  * Fix the random seed while measuring with instruments
+  ## Bug Fixes
+  * Use ParamSpec in instrument definition instead of tuple and dict
+  * Use ParamSpec in the plugin call definition
+  * Use time per iteration instead of total round time in stats
+- Remove pointless multibuild.</comment>
+    <requestid>1334610</requestid>
+  </revision>
 </revisionlist>

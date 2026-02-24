@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Feb 23 23:58:19 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.3.0:
+  ## Features
+  * Support for the memory instrument, which enables you to track memory
+    usage, heap allocations, and memory leaks in your benchmarks.
+  * Support python 3.14
+  * Bump instrument-hooks
+  * Support perf profiling in Python walltime instrument
+  * Support pytest-benchmark marker attributes
+  * Support the pedantic API
+  * Increase the min round time to a bigger value (+/- 1ms)
+  * Fix the random seed while measuring with instruments
+  ## Bug Fixes
+  * Use ParamSpec in instrument definition instead of tuple and dict
+  * Use ParamSpec in the plugin call definition
+  * Use time per iteration instead of total round time in stats
+- Remove pointless multibuild.
+
+-------------------------------------------------------------------
 Thu Jan 30 06:27:34 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Make tests work (and also add the patch make_tests_work.patch)
