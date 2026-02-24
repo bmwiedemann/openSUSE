@@ -164,6 +164,26 @@ Requires:       zypp-no-recommends
 This is the openSUSE MicroOS runtime system using the Zypper package manager.
 It contains only a minimal multiuser booting system.
 
+%package base-dnf5
+Summary:        openSUSE MicroOS using DNF5
+Group:          Metapackages
+Provides:       pattern() = microos_base_dnf5
+Provides:       pattern-category() = MicroOS
+Provides:       pattern-icon() = pattern-kubic
+Provides:       pattern-order() = 9012
+Provides:       pattern-visible()
+Requires:       dnf5
+Requires:       libdnf5-plugin-txnupd
+Requires:       pattern() = microos_base
+# We need repository configuration from somewhere, so
+# make sure one gets installed
+Requires:       (libdnf-repo-config-zypp or rpm-repos-openSUSE)
+Suggests:       libdnf-repo-config-zypp
+
+%description base-dnf5
+This is the openSUSE MicroOS runtime system using the DNF5 package manager.
+It contains only a minimal multiuser booting system.
+
 %package base-packagekit
 Summary:        openSUSE MicroOS using PackageKit
 Group:          Metapackages
@@ -174,6 +194,7 @@ Provides:       pattern-order() = 9013
 Provides:       pattern-visible()
 Requires:       PackageKit
 Requires:       PackageKit-branding-openSUSE
+Requires:       libdnf5-plugin-txnupd
 Requires:       pattern() = microos_base
 # We need repository configuration from somewhere, so
 # make sure one gets installed
@@ -646,7 +667,7 @@ Alternative additional packages on a openSUSE MicroOS DVD.
 %install
 mkdir -p %{buildroot}%{_docdir}/patterns-microos/
 PATTERNS='
-    basesystem base base_zypper base_packagekit defaults hardware
+    basesystem base base_zypper base_dnf5 base_packagekit defaults hardware
     sssd_ldap ima_evm ra_agent ra_verifier selinux cockpit cloud
     desktop-common desktop-kde onlyDVD alt_onlyDVD
 '
@@ -666,6 +687,10 @@ done
 %files base-zypper
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/base_zypper.txt
+
+%files base-dnf5
+%dir %{_docdir}/patterns-microos
+%{_docdir}/patterns-microos/base_dnf5.txt
 
 %files base-packagekit
 %dir %{_docdir}/patterns-microos

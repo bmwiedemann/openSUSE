@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 22 18:49:50 UTC 2026 - Neal Gompa <ngompa@opensuse.org>
+
+- Add base-dnf5 pattern
+- Add libdnf5-plugin-txnupd to base-packagekit
+
+-------------------------------------------------------------------
 Mon Feb  9 11:40:01 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Remove mentions to libdnf-plugin-txnupd from base-packagekit.
