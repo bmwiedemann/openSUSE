@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb 19 18:18:23 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.140
+  * Improved heap memory management (for deserialization storage)
+    with a much faster `soap_unlink()` implementation by using
+    pointer hash tables.
+  * Faster JSON parsers `json.c` (via `xml-rpc.c`) and `json.cpp`
+    (via `xml-rpc.cpp`) with faster `soap_unlink()`.
+  * Changed `soap_link()` (an internal API function) to another
+    fail-safe combination `soap_new_link()` and `soap_set_link()`.
+  * Fixed wsdl2h issue with a missing namespace URI (not found but
+    needed to form a valid QName) when a schema A imports a schema
+    B and schema B includes a chameleon schema C that defines an
+    attributeGroup that is referenced by an attributeGroup
+    reference in schema A.
+
+-------------------------------------------------------------------
 Fri Aug 15 15:02:00 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.139
