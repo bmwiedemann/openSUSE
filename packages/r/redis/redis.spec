@@ -20,7 +20,7 @@
 %define _log_dir        %{_localstatedir}/log/%{name}
 %define _conf_dir       %{_sysconfdir}/%{name}
 Name:           redis
-Version:        8.6.0
+Version:        8.6.1
 Release:        0
 Summary:        Persistent key-value database
 License:        AGPL-3.0-only

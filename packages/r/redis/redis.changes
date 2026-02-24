@@ -1,7 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 23 10:07:40 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 8.6.1 (boo#1258706)
+  * https://github.com/redis/redis/releases/tag/8.6.1
+  * Fixed user can manipulate data read by a connection by
+    injecting \r\n sequences into a Redis error reply.
+  * Fixed INFO command may display module information,
+    and the missing HOTKEYS HELP subcommand has been added.
+  * Fixed RDB loading prevented hash table expansion.
+
+-------------------------------------------------------------------
 Tue Feb 10 15:50:29 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
-- Updated to 8.6.0 Major changes compared to 8.4
+- Updated to 8.6.0
+  Major changes compared to 8.4
   - Substantial performance improvements
   - Substantial memory reduction for hashes (hashtable-encoded) and
     sorted sets (skiplist-encoded)
