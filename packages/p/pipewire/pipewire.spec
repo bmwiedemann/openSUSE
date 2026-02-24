@@ -430,6 +430,34 @@ This package provides an ld.so.conf file that makes all JACK clients
 use the JACK implementation based on PipeWire instead of the original
 JACK libraries.
 
+%package config-rates
+Summary:        PipeWire media server multirate configuration
+License:        MIT
+Requires:       %{libpipewire} >= %{version}-%{release}
+Requires:       %{name} >= %{version}-%{release}
+
+%description config-rates
+This package contains the configuration files to support multiple
+sample rates.
+
+%package config-upmix
+Summary:        PipeWire media server upmixing configuration
+License:        MIT
+Requires:       %{libpipewire} >= %{version}-%{release}
+Requires:       %{name} >= %{version}-%{release}
+
+%description config-upmix
+This package contains the configuration files to support upmixing.
+
+%package config-raop
+Summary:        PipeWire configuration enabling the raop module
+License:        MIT
+Requires:       %{libpipewire} >= %{version}-%{release}
+Requires:       %{name} >= %{version}-%{release}
+
+%description config-raop
+This package contains the configuration files to enable the RAOP module.
+
 %lang_package
 
 %prep
@@ -531,6 +559,25 @@ for wrapper in pw-jack ; do
     mv  %{buildroot}%{_bindir}/$wrapper   %{buildroot}%{_bindir}/$wrapper-%{apiver}
     ln -s -f %{_sysconfdir}/alternatives/$wrapper %{buildroot}%{_bindir}/$wrapper
 done
+
+# rates config
+mkdir -p %{buildroot}%{_datadir}/pipewire/pipewire.conf.d
+ln -s ../pipewire.conf.avail/10-rates.conf \
+		%{buildroot}%{_datadir}/pipewire/pipewire.conf.d/10-rates.conf
+
+# upmix config
+ln -s ../pipewire.conf.avail/20-upmix.conf \
+		%{buildroot}%{_datadir}/pipewire/pipewire.conf.d/20-upmix.conf
+mkdir -p %{buildroot}%{_datadir}/pipewire/client.conf.d
+ln -s ../client.conf.avail/20-upmix.conf \
+		%{buildroot}%{_datadir}/pipewire/client.conf.d/20-upmix.conf
+mkdir -p %{buildroot}%{_datadir}/pipewire/pipewire-pulse.conf.d
+ln -s ../pipewire-pulse.conf.avail/20-upmix.conf \
+		%{buildroot}%{_datadir}/pipewire/pipewire-pulse.conf.d/20-upmix.conf
+
+# raop config
+ln -s ../pipewire.conf.avail/50-raop.conf \
+		%{buildroot}%{_datadir}/pipewire/pipewire.conf.d/50-raop.conf
 
 for manpage in pw-jack ; do
     mv  %{buildroot}%{_mandir}/man1/$manpage.1 %{buildroot}%{_mandir}/man1/$manpage-%{apiver}.1
@@ -671,6 +718,7 @@ fi
 
 %dir %{_datadir}/pipewire/
 %{_datadir}/pipewire/pipewire.conf
+%dir %{_datadir}/pipewire/pipewire.conf.d/
 %{_datadir}/pipewire/pipewire.conf.avail/
 %{_datadir}/pipewire/filter-chain.conf
 %dir %{_datadir}/pipewire/filter-chain/
@@ -702,6 +750,7 @@ fi
 %{_datadir}/alsa-card-profile/mixer/*
 %{_udevrulesdir}/90-pipewire-alsa.rules
 %{_datadir}/pipewire/client.conf
+%dir %{_datadir}/pipewire/client.conf.d/
 %{_datadir}/pipewire/client.conf.avail/
 %{_datadir}/pipewire/minimal.conf
 %{_mandir}/man7/libpipewire-modules.7%{?ext_man}
@@ -844,6 +893,7 @@ fi
 %{_mandir}/man7/pipewire-pulse-modules.7%{?ext_man}
 %{_userunitdir}/pipewire-pulse.*
 %{_datadir}/pipewire/pipewire-pulse.conf
+%dir %{_datadir}/pipewire/pipewire-pulse.conf.d/
 %{_datadir}/pipewire/pipewire-pulse.conf.avail/
 %ghost %{_localstatedir}/lib/pipewire/pipewire-pulseaudio_post_workaround
 %{_datadir}/glib-2.0/schemas/org.freedesktop.pulseaudio.gschema.xml
@@ -867,6 +917,17 @@ fi
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-jack-tunnel.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-jackdbus-detect.so
 %{_libdir}/spa-%{spa_ver}/jack/
+
+%files config-rates
+%{_datadir}/pipewire/pipewire.conf.d/10-rates.conf
+
+%files config-upmix
+%{_datadir}/pipewire/pipewire.conf.d/20-upmix.conf
+%{_datadir}/pipewire/client.conf.d/20-upmix.conf
+%{_datadir}/pipewire/pipewire-pulse.conf.d/20-upmix.conf
+
+%files config-raop
+%{_datadir}/pipewire/pipewire.conf.d/50-raop.conf
 
 %files lang -f %{name}.lang
 

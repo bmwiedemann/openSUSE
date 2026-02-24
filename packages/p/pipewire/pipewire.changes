@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 20 11:43:49 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add subpackages config-rates, config-upmix and config-raop to
+  easily enable the example config files, just like in Fedora 
+  (fixes boo#1258217)
+
+-------------------------------------------------------------------
 Thu Feb 19 10:03:08 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.6.0:
