@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 24 16:17:20 UTC 2026 - mvetter@suse.com
+
+- Update to version 0~20260224.7ad9595:
+  * Add support for TLS variables
+  * Ignore -Wfree-labels and -Wmissing-parameter-name
+
+-------------------------------------------------------------------
 Mon Oct 20 15:12:01 UTC 2025 - mvetter@suse.com
 
 - Update to version 0~20251020.19c1329:
