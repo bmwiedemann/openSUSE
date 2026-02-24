@@ -1,0 +1,11 @@
+--- keybinder-0.3.1/docs/keybinder-docs.sgml	2015-11-06 16:08:46.000000000 +0100
++++ keybinder-0.3.1/docs/keybinder-docs.sgml	2020-05-27 23:08:53.420091878 +0200
+@@ -23,7 +23,7 @@
+   </chapter>
+   <chapter id="object-tree">
+     <title>Object Hierarchy</title>
+-     <xi:include href="xml/tree_index.sgml"/>
++     <xi:include href="xml/tree_index.sgml"><xi:fallback /></xi:include>
+   </chapter>
+   <index id="api-index-full">
+     <title>API Index</title>
