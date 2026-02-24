@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Feb 23 19:34:06 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.68.0:
+  * Implemented word wrapping in the list section
+  * Implemented word wrapping in the preview window
+  * Added support for underline style variants in --color:
+    underline-double, underline-curly, underline-dotted, underline-dashed
+  * Added --preview-wrap-sign to set a different wrap indicator
+    for the preview window
+  * Added alt-gutter color option (#4602)
+  * Added $FZF_WRAP environment variable to child processes (char
+    or word when wrapping is enabled) (#4672)
+  * fish: Improved command history (CTRL-R) (#4672)
+  * Added fish completion support (#4605)
+  * zsh: Handle multi-line history selection (#4595)
+  * Fixed _fzf_compgen_{path,dir} to respect
+    FZF_COMPLETION_{PATH,DIR}_OPTS (#4592)
+  * Fixed --preview-window follow not working correctly with
+    wrapping (#3243, #4258)
+  * Fixed symlinks to directories being returned as files (#4676)
+  * Fixed SIGHUP signal handling (#4668)
+  * Fixed preview process not killed on exit (#4667)
+  * Fixed coloring of items with zero-width characters (#4620)
+  * Fixed track-current unset after a combined movement action (#4649)
+  * Fixed --accept-nth being ignored in filter mode (#4636)
+  * Fixed display width calculation with maxWidth (#4596)
+  * Fixed clearing of the rest of the current line on start (#4652)
+  * Fixed x-api-key header not required for GET requests (#4627)
+  * Fixed key reading not cancelled when execute triggered via a
+    server request (#4653)
+  * Fixed rebind of readline command redraw-current-line (#4635)
+  * Fixed fzf-tmux TERM quoting and added mktemp usage (#4664)
+  * Do not allow very long queries in FuzzyMatchV2 (#4608)
+
+-------------------------------------------------------------------
 Sun Nov 16 17:09:47 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.67.0:
