@@ -1,7 +1,7 @@
 #
 # spec file for package python-certbot-dns-ovh
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-certbot-dns-ovh
-Version:        5.3.0
+Version:        5.3.1
 Release:        0
 Summary:        OVH DNS Authenticator plugin for Certbot
 License:        Apache-2.0
