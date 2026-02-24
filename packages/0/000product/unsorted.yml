@@ -228,7 +228,6 @@ unsorted:
   - PDAL-bash-completion 
   - PDAL-devel 
   - PDAL-doc 
-  - PackageKit-backend-dnf5 
   - PackageKit-branding-upstream 
   - PackageKit-devel 
   - PgTcl 
@@ -3334,7 +3333,6 @@ unsorted:
   - dmraid 
   - dmraid-devel 
   - dmz-icon-theme-cursors 
-  - dnf-data 
   - dnf-plugins-core 
   - dnf-plugins-core-lang 
   - dnf4 
@@ -8669,6 +8667,7 @@ unsorted:
   - hyprland-bash-completion 
   - hyprland-devel 
   - hyprland-fish-completion 
+  - hyprland-guiutils 
   - hyprland-plugin-borders-plus-plus 
   - hyprland-plugin-csgo-vulkan-fix 
   - hyprland-plugin-hyprbars 
@@ -10028,8 +10027,6 @@ unsorted:
   - key-rack 
   - keybase-client 
   - keybinder-3.0-devel 
-  - keybinder-devel 
-  - keybinder-lua 
   - keychain 
   - keyd 
   - keylightctl 
@@ -12940,11 +12937,8 @@ unsorted:
   - libdnf5-cli3 
   - libdnf5-devel 
   - libdnf5-plugin-actions 
-  - libdnf5-plugin-appstream 
   - libdnf5-plugin-expired-pgp-keys 
   - libdnf5-plugin-local 
-  - libdnf5-plugin-txnupd 
-  - libdnf5_2 
   - libdnnl3 
   - libdns_sd 
   - libdns_sd-32bit 
@@ -13275,8 +13269,8 @@ unsorted:
   - libfm-doc 
   - libfm-extra-devel 
   - libfm-extra4 
-  - libfm-gtk-devel 
-  - libfm-gtk4 
+  - libfm-gtk3-4 
+  - libfm-gtk3-devel 
   - libfm-lang 
   - libfm-qt5-14 
   - libfm-qt5-devel 
@@ -13291,7 +13285,6 @@ unsorted:
   - libfmos-devel 
   - libfmos1 
   - libfmt10 
-  - libfmt12 
   - libfmt12-32bit 
   - libfmt9 
   - libfole-devel 
@@ -13775,7 +13768,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit 
   - libgsmsd8 
-  - libgsoap-2_8_139 
+  - libgsoap-2_8_140 
   - libgssdp-1_6-0-32bit 
   - libgssdp-devel 
   - libgstadaptivedemux-1_0-0-32bit 
@@ -14278,7 +14271,6 @@ unsorted:
   - libkeduvocdocument-devel 
   - libkeepalive 
   - libkexiv2-qt6-devel 
-  - libkeybinder0 
   - libkeyfinder-devel 
   - libkeyfinder2 
   - libkgantt-lang 
@@ -15451,7 +15443,7 @@ unsorted:
   - libpoppler-qt5-1 
   - libpoppler-qt5-devel 
   - libpoppler-qt6-devel 
-  - libpoppler156-32bit 
+  - libpoppler157-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -16001,7 +15993,6 @@ unsorted:
   - libreplaygain-devel 
   - libreplaygain1 
   - librepo-devel 
-  - librepo0 
   - librepods 
   - libreport 
   - libreport-anaconda 
@@ -16140,7 +16131,6 @@ unsorted:
   - libscrypt0 
   - libscrypt0-x86-64-v3 
   - libsdb2_2_4 
-  - libsdbus-c++2 
   - libseafile0 
   - libseagull0 
   - libsearpc-devel 
@@ -21221,6 +21211,7 @@ unsorted:
   - patterns-mate-mate_office 
   - patterns-mate-mate_office_opt 
   - patterns-mate-mate_utilities 
+  - patterns-microos-base-dnf5 
   - patterns-network-network_admin 
   - patterns-openSUSEway 
   - patterns-rpm-macros 
@@ -23016,6 +23007,9 @@ unsorted:
   - pipenightdreams 
   - piper 
   - pipewire-alsa-32bit 
+  - pipewire-config-raop 
+  - pipewire-config-rates 
+  - pipewire-config-upmix 
   - pipewire-devel 
   - pipewire-doc 
   - pipewire-libjack-0_3-32bit 
@@ -24174,6 +24168,7 @@ unsorted:
   - python311-Delorean 
   - python311-Deprecated 
   - python311-Django 
+  - python311-Django4 
   - python311-Dumper 
   - python311-Durus 
   - python311-EasyProcess 
@@ -28000,6 +27995,7 @@ unsorted:
   - python312-Delorean 
   - python312-Deprecated 
   - python312-Django 
+  - python312-Django4 
   - python312-Django6 
   - python312-Dumper 
   - python312-Durus 
@@ -31782,6 +31778,7 @@ unsorted:
   - python312-wsproto 
   - python312-wtf-peewee 
   - python312-wurlitzer 
+  - python312-wxPython 
   - python312-wyoming 
   - python312-x86-64-v3 
   - python312-xapian 
@@ -31913,6 +31910,7 @@ unsorted:
   - python313-Delorean 
   - python313-Deprecated 
   - python313-Django 
+  - python313-Django4 
   - python313-Django6 
   - python313-Dumper 
   - python313-Durus 
@@ -36883,7 +36881,6 @@ unsorted:
   - rrdtool-doc 
   - rrep 
   - rscsi 
-  - rshim 
   - rsibreak 
   - rsibreak-lang 
   - rsign2 
@@ -48924,7 +48921,6 @@ unsorted:
   - typelib-1_0-JavaScriptCore-4_0 
   - typelib-1_0-Jcat-1_0 
   - typelib-1_0-Jsonrpc-1_0 
-  - typelib-1_0-Keybinder-0_0 
   - typelib-1_0-Keybinder-3_0 
   - typelib-1_0-Lfb-0_0 
   - typelib-1_0-Libags-8_0 

@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20260223" schemaversion="4.1">
+<image name="OBS__MicroOS___20260224" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20260223</productvar>
+      <productvar name="VERSION">20260224</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260223,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260224,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260223/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260224/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -164,6 +164,7 @@
       <repopackage name="distrobox"/>
       <repopackage name="distrobox-bash-completion"/>
       <repopackage name="dmidecode"/>
+      <repopackage name="dnf-data"/>
       <repopackage name="docbook-xsl-stylesheets"/>
       <repopackage name="docbook_4"/>
       <repopackage name="docker"/>
@@ -620,6 +621,9 @@
       <repopackage name="libdisplay-info3"/>
       <repopackage name="libdmtx0"/>
       <repopackage name="libdnf-repo-config-zypp"/>
+      <repopackage name="libdnf5-plugin-appstream"/>
+      <repopackage name="libdnf5-plugin-txnupd"/>
+      <repopackage name="libdnf5_2"/>
       <repopackage name="libdolphinvcs6"/>
       <repopackage name="libdouble-conversion3"/>
       <repopackage name="libdovi3"/>
@@ -661,6 +665,7 @@
       <repopackage name="libflashrom1"/>
       <repopackage name="libflatpak0"/>
       <repopackage name="libflite1"/>
+      <repopackage name="libfmt12"/>
       <repopackage name="libfontconfig1"/>
       <repopackage name="libfontenc1"/>
       <repopackage name="libfreebl3"/>
@@ -1019,7 +1024,7 @@
       <repopackage name="libpolkit-qt6-1-1"/>
       <repopackage name="libpoppler-cpp3"/>
       <repopackage name="libpoppler-qt6-3"/>
-      <repopackage name="libpoppler156"/>
+      <repopackage name="libpoppler157"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libppd"/>
       <repopackage name="libppd2"/>
@@ -1152,6 +1157,7 @@
       <repopackage name="libraw23"/>
       <repopackage name="libreadline8"/>
       <repopackage name="libref_array1"/>
+      <repopackage name="librepo0"/>
       <repopackage name="librist4"/>
       <repopackage name="librsvg-2-2"/>
       <repopackage name="librubberband3"/>
@@ -1159,6 +1165,7 @@
       <repopackage name="libsasl2-3"/>
       <repopackage name="libsbc1"/>
       <repopackage name="libschroedinger-1_0-0"/>
+      <repopackage name="libsdbus-c++2"/>
       <repopackage name="libSDL2-2_0-0"/>
       <repopackage name="libSDL3-0"/>
       <repopackage name="libseccomp2"/>
@@ -1186,6 +1193,7 @@
       <repopackage name="libsodium26"/>
       <repopackage name="libsoftokn3"/>
       <repopackage name="libsolv-tools-base"/>
+      <repopackage name="libsolv1"/>
       <repopackage name="libsord-0-0"/>
       <repopackage name="libsoup-3_0-0"/>
       <repopackage name="libsoxr0"/>
@@ -1438,7 +1446,7 @@
       <repopackage name="p11-kit"/>
       <repopackage name="p11-kit-tools"/>
       <repopackage name="PackageKit"/>
-      <repopackage name="PackageKit-backend-zypp"/>
+      <repopackage name="PackageKit-backend-dnf5"/>
       <repopackage name="PackageKit-branding-openSUSE"/>
       <repopackage name="pam"/>
       <repopackage name="pam-config"/>
