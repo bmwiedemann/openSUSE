@@ -572,4 +572,14 @@ No GPL-2.0 (i.e. version 2 &quot;only&quot;) licenses found in the package (forw
   * Updated Catalan translation.</comment>
     <requestid>1328215</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>0d25a9a3757659586f9c113aed9fed1e</srcmd5>
+    <version>1.4.1</version>
+    <time>1771944675</time>
+    <user>anag_factory</user>
+    <comment>- Switch to GTK3. libfm is used by lxpanel which in turn uses keybinder. The
+  gtk2 keybinder in turn uses obsolete lua version which is being removed from
+  Factory.</comment>
+    <requestid>1334737</requestid>
+  </revision>
 </revisionlist>

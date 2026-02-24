@@ -1,7 +1,7 @@
 #
 # spec file for package libfm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 # Optional: HTML developers documentation
 BuildRequires:  gtk-doc >= 1.14
-BuildRequires:  gtk2-devel >= 2.18.0
+BuildRequires:  gtk3-devel
 BuildRequires:  intltool >= 0.40.0
 # Optional: needed to load embbeded thumbnails in jpeg
 BuildRequires:  libexif-devel
@@ -62,11 +62,12 @@ Recommends:     %{name}
 %description -n libfm4
 libfm main library
 
-%package -n libfm-gtk4
+%package -n libfm-gtk3-4
 Summary:        GTK libfm libraries
 Group:          System/Libraries
+Obsoletes:      libfm-gtk4 < %{version}-%{release}
 
-%description -n libfm-gtk4
+%description -n libfm-gtk3-4
 GTK system libraries for libfm
 
 %package -n lxshortcut
@@ -89,16 +90,17 @@ Requires:       pkgconfig(libfm-extra)
 A glib/gio-based lib used to develop file managers providing some
 file management utilities and related-widgets missing in gtk+/glib.
 
-%package -n libfm-gtk-devel
+%package -n libfm-gtk3-devel
 Summary:        GTK devel files for libfm
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
-Requires:       gtk2-devel
-Requires:       libfm-gtk4 = %{version}
+Requires:       gtk3-devel
+Requires:       libfm-gtk3-4 = %{version}
 Requires:       libfm4 = %{version}
 Requires:       pkgconfig
+Obsoletes:      libfm-gtk-devel < %{version}-%{release}
 
-%description -n libfm-gtk-devel
+%description -n libfm-gtk3-devel
 GTK libfm libraries for development
 
 %package doc
@@ -115,6 +117,7 @@ libfm developers documentation
 %build
 ./autogen.sh
 %configure \
+        --with-gtk=3 \
         --enable-gtk-doc \
         --enable-udisks \
         --disable-static
@@ -122,11 +125,11 @@ libfm developers documentation
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
 sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 # macro for parallel make
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-rm -f %{buildroot}%{_libdir}/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 rm -f %{buildroot}%{_bindir}/libfm-pref-apps
 rm -f %{buildroot}%{_datadir}/applications/libfm-pref-apps.desktop
 # using libfm-pref-apps.1.gz fails!
@@ -147,8 +150,8 @@ rm -rf %{buildroot}%{_libdir}/%{name}-extra.so*
 %postun -p /sbin/ldconfig
 %post   -n libfm4 -p /sbin/ldconfig
 %postun -n libfm4 -p /sbin/ldconfig
-%post   -n libfm-gtk4 -p /sbin/ldconfig
-%postun -n libfm-gtk4 -p /sbin/ldconfig
+%post   -n libfm-gtk3-4 -p /sbin/ldconfig
+%postun -n libfm-gtk3-4 -p /sbin/ldconfig
 
 %files
 %dir %{_sysconfdir}/xdg/%{name}
@@ -174,10 +177,10 @@ rm -rf %{buildroot}%{_libdir}/%{name}-extra.so*
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/%{name}.so
 
-%files -n libfm-gtk-devel
+%files -n libfm-gtk3-devel
 %{_includedir}/%{name}-1.0/fm-gtk*.h
-%{_libdir}/pkgconfig/%{name}-gtk.pc
-%{_libdir}/%{name}-gtk.so
+%{_libdir}/pkgconfig/%{name}-gtk3.pc
+%{_libdir}/%{name}-gtk3.so
 
 %files doc
 %{_datadir}/gtk-doc/html/%{name}
@@ -187,8 +190,8 @@ rm -rf %{buildroot}%{_libdir}/%{name}-extra.so*
 %files -n libfm4
 %{_libdir}/libfm.so.*
 
-%files -n libfm-gtk4
-%{_libdir}/libfm-gtk.so.*
+%files -n libfm-gtk3-4
+%{_libdir}/libfm-gtk3.so.*
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/ui
 %{_datadir}/%{name}/archivers.list
