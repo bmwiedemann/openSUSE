@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 20 08:58:00 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to 0.15.3.1
+- Add upstream shell-Fix-unsigned-char-promotion-and-truncation.patch:
+  fix unsigned char promotion and truncation
+- Use autosetup
+- Update license
+
+-------------------------------------------------------------------
 Tue Dec 27 10:30:43 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

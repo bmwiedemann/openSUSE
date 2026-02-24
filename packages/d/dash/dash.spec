@@ -1,7 +1,7 @@
 #
 # spec file for package dash
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,16 @@
 
 
 Name:           dash
-Version:        0.5.12
+Version:        0.5.13.1
 Release:        0
 Summary:        POSIX-compliant Implementation of /bin/sh
-License:        BSD-3-Clause
+License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          System/Shells
 URL:            http://gondor.apana.org.au/~herbert/dash/
 Source0:        http://gondor.apana.org.au/~herbert/dash/files/%{name}-%{version}.tar.gz
-BuildRequires:  libedit-devel
+Patch0:         shell-Fix-unsigned-char-promotion-and-truncation.patch
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libedit)
 
 %description
 DASH is a POSIX-compliant implementation of /bin/sh that aims to be as small as
@@ -43,8 +45,7 @@ BuildArch:      noarch
 Use dash as /bin/sh implementation.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %global optflags %{optflags} -fcommon
