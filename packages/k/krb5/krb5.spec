@@ -1,7 +1,7 @@
 #
 # spec file for package krb5
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           krb5
-Version:        1.22.1
+Version:        1.22.2
 Release:        0
 Summary:        MIT Kerberos5 implementation
 License:        MIT
@@ -40,6 +40,7 @@ Patch6:         0006-krb5-1.12-api.patch
 Patch7:         0007-SELinux-integration.patch
 Patch8:         0008-krb5-1.9-debuginfo.patch
 Patch9:         0009-UsrEtc-support.patch
+Patch10:        0010-Fix-strchr-conformance-to-C23.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  cyrus-sasl-devel

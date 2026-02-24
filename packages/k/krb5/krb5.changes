@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb  2 12:16:38 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 1.22.2
+  * Fix a SPNEGO packet parsing bug which could cause GSS mechanism
+    negotiation failure. 
+- Fix building with glibc 2.43; (bsc#1257257); Add patch
+  0010-Fix-strchr-conformance-to-C23.patch
+
+-------------------------------------------------------------------
 Thu Jan  8 18:47:04 UTC 2026 - Noel Power <nopower@suse.com>
 
 - Immutable mode support, create /var/log/krb5 dir via
