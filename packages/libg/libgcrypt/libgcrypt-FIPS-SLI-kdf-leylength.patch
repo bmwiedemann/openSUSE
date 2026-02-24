@@ -1,8 +1,8 @@
-Index: libgcrypt-1.11.0/src/fips.c
+Index: libgcrypt-1.12.0/src/fips.c
 ===================================================================
---- libgcrypt-1.11.0.orig/src/fips.c
-+++ libgcrypt-1.11.0/src/fips.c
-@@ -523,10 +523,15 @@ int
+--- libgcrypt-1.12.0.orig/src/fips.c
++++ libgcrypt-1.12.0/src/fips.c
+@@ -594,10 +594,15 @@ int
  _gcry_fips_indicator_kdf (va_list arg_ptr)
  {
    enum gcry_kdf_algos alg = va_arg (arg_ptr, enum gcry_kdf_algos);
@@ -18,11 +18,11 @@ Index: libgcrypt-1.11.0/src/fips.c
        return GPG_ERR_NO_ERROR;
      default:
        return GPG_ERR_NOT_SUPPORTED;
-Index: libgcrypt-1.11.0/doc/gcrypt.texi
+Index: libgcrypt-1.12.0/doc/gcrypt.texi
 ===================================================================
---- libgcrypt-1.11.0.orig/doc/gcrypt.texi
-+++ libgcrypt-1.11.0/doc/gcrypt.texi
-@@ -983,12 +983,13 @@ is approved under the current FIPS 140-3
+--- libgcrypt-1.12.0.orig/doc/gcrypt.texi
++++ libgcrypt-1.12.0/doc/gcrypt.texi
+@@ -992,12 +992,13 @@ is approved under the current FIPS 140-3
  combination is approved, this function returns @code{GPG_ERR_NO_ERROR}.
  Otherwise @code{GPG_ERR_NOT_SUPPORTED} is returned.
  
@@ -40,10 +40,10 @@ Index: libgcrypt-1.11.0/doc/gcrypt.texi
  
  @item GCRYCTL_FIPS_SERVICE_INDICATOR_FUNCTION; Arguments: const char *
  
-Index: libgcrypt-1.11.0/tests/t-kdf.c
+Index: libgcrypt-1.12.0/tests/t-kdf.c
 ===================================================================
---- libgcrypt-1.11.0.orig/tests/t-kdf.c
-+++ libgcrypt-1.11.0/tests/t-kdf.c
+--- libgcrypt-1.12.0.orig/tests/t-kdf.c
++++ libgcrypt-1.12.0/tests/t-kdf.c
 @@ -1889,7 +1889,12 @@ check_fips_indicators (void)
    for (i = 0; i < sizeof(kdf_algos) / sizeof(*kdf_algos); i++)
      {

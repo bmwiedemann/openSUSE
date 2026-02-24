@@ -1,7 +1,7 @@
 #
 # spec file for package libgcrypt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define libsoname %{name}%{libsover}
 %define hmac_key orboDeJITITejsirpADONivirpUkvarP
 Name:           libgcrypt
-Version:        1.11.2
+Version:        1.12.1
 Release:        0
 Summary:        The GNU Crypto Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -38,8 +38,6 @@ Source99:       libgcrypt.changes
 Patch1:         libgcrypt-1.10.0-allow_FSM_same_state.patch
 #PATCH-FIX-OPENSUSE Do not pull revision info from GIT when autoconf is run
 Patch2:         libgcrypt-nobetasuffix.patch
-#PATCH-FIX-SUSE: Make the revamped SLI api public
-Patch3:         libgcrypt-1.11.1-public-SLI-API.patch
 # FIPS patches:
 #PATCH-FIX-SUSE bsc#1190700 FIPS: Provide a service-level indicator for PK
 Patch100:       libgcrypt-FIPS-SLI-pk.patch
@@ -61,10 +59,10 @@ Patch108:       libgcrypt-rol64-redefinition.patch
 Patch109:       libgcrypt-CVE-2024-2236.patch
 
 BuildRequires:  automake >= 1.14
-BuildRequires:  pkgconfig(gpg-error) >= 1.49
 BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gpg-error) >= 1.56
 %{?suse_build_hwcaps_libs}
 
 %description
@@ -114,7 +112,7 @@ sed -i "s/libgcrypt\.so\.hmac/\.libgcrypt\.so\.%{libsover}\.hmac/g" src/Makefile
 find . -type f -name "jitterentropy*" -print -delete
 
 %build
-export PUBKEYS="dsa elgamal rsa ecc kyber"
+export PUBKEYS="dsa elgamal rsa ecc kyber dilithium"
 export CIPHERS="arcfour blowfish cast5 des aes twofish serpent rfc2268 seed camellia idea salsa20 gost28147 chacha20 sm4 aria"
 export DIGESTS="crc gostr3411-94 md4 md5 rmd160 sha1 sha256 sha512 sha3 tiger whirlpool stribog blake2 sm3"
 export KDFS="s2k pkdf2 scrypt"

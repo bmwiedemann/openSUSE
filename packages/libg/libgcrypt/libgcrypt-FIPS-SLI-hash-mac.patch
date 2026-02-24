@@ -1,8 +1,8 @@
-Index: libgcrypt-1.11.1/doc/gcrypt.texi
+Index: libgcrypt-1.12.0/doc/gcrypt.texi
 ===================================================================
---- libgcrypt-1.11.1.orig/doc/gcrypt.texi
-+++ libgcrypt-1.11.1/doc/gcrypt.texi
-@@ -998,13 +998,21 @@ certification. If the function is approv
+--- libgcrypt-1.12.0.orig/doc/gcrypt.texi
++++ libgcrypt-1.12.0/doc/gcrypt.texi
+@@ -1007,13 +1007,21 @@ certification. If the function is approv
  @code{GPG_ERR_NO_ERROR} (other restrictions might still apply).
  Otherwise @code{GPG_ERR_NOT_SUPPORTED} is returned.
  
@@ -28,11 +28,11 @@ Index: libgcrypt-1.11.1/doc/gcrypt.texi
  @item GCRYCTL_FIPS_SERVICE_INDICATOR_MD; Arguments: enum gcry_md_algos
  
  Check if the given message digest algorithm is approved under the current
-Index: libgcrypt-1.11.1/src/fips.c
+Index: libgcrypt-1.12.0/src/fips.c
 ===================================================================
---- libgcrypt-1.11.1.orig/src/fips.c
-+++ libgcrypt-1.11.1/src/fips.c
-@@ -512,31 +512,6 @@ _gcry_fips_indicator_pk (va_list arg_ptr
+--- libgcrypt-1.12.0.orig/src/fips.c
++++ libgcrypt-1.12.0/src/fips.c
+@@ -538,31 +538,6 @@ _gcry_fips_indicator_pk (va_list arg_ptr
  }
  
  int
@@ -64,7 +64,7 @@ Index: libgcrypt-1.11.1/src/fips.c
  _gcry_fips_indicator_md (va_list arg_ptr)
  {
    enum gcry_md_algos alg = va_arg (arg_ptr, enum gcry_md_algos);
-@@ -647,6 +622,62 @@ _gcry_fips_indicator_pk_flags (va_list a
+@@ -673,6 +648,62 @@ _gcry_fips_indicator_pk_flags (va_list a
    return GPG_ERR_NOT_SUPPORTED;
  }
  
@@ -127,11 +127,11 @@ Index: libgcrypt-1.11.1/src/fips.c
  
  /* This is a test on whether the library is in the error or
     operational state. */
-Index: libgcrypt-1.11.1/src/g10lib.h
+Index: libgcrypt-1.12.0/src/g10lib.h
 ===================================================================
---- libgcrypt-1.11.1.orig/src/g10lib.h
-+++ libgcrypt-1.11.1/src/g10lib.h
-@@ -478,6 +478,7 @@ void _gcry_fips_signal_error (const char
+--- libgcrypt-1.12.0.orig/src/g10lib.h
++++ libgcrypt-1.12.0/src/g10lib.h
+@@ -485,6 +485,7 @@ void _gcry_fips_signal_error (const char
  gpg_err_code_t _gcry_fips_indicator (void);
  
  int _gcry_fips_indicator_cipher (va_list arg_ptr);
@@ -139,11 +139,11 @@ Index: libgcrypt-1.11.1/src/g10lib.h
  int _gcry_fips_indicator_mac (va_list arg_ptr);
  int _gcry_fips_indicator_md (va_list arg_ptr);
  int _gcry_fips_indicator_kdf (va_list arg_ptr);
-Index: libgcrypt-1.11.1/src/gcrypt.h.in
+Index: libgcrypt-1.12.0/src/gcrypt.h.in
 ===================================================================
---- libgcrypt-1.11.1.orig/src/gcrypt.h.in
-+++ libgcrypt-1.11.1/src/gcrypt.h.in
-@@ -338,7 +338,8 @@ enum gcry_ctl_cmds
+--- libgcrypt-1.12.0.orig/src/gcrypt.h.in
++++ libgcrypt-1.12.0/src/gcrypt.h.in
+@@ -345,7 +345,8 @@ enum gcry_ctl_cmds
      GCRYCTL_MD_CUSTOMIZE = 88,
      GCRYCTL_FIPS_SERVICE_INDICATOR = 89,
      GCRYCTL_FIPS_REJECT_NON_FIPS = 90,
@@ -153,10 +153,10 @@ Index: libgcrypt-1.11.1/src/gcrypt.h.in
    };
  
  /* Perform various operations defined by CMD. */
-Index: libgcrypt-1.11.1/src/global.c
+Index: libgcrypt-1.12.0/src/global.c
 ===================================================================
---- libgcrypt-1.11.1.orig/src/global.c
-+++ libgcrypt-1.11.1/src/global.c
+--- libgcrypt-1.12.0.orig/src/global.c
++++ libgcrypt-1.12.0/src/global.c
 @@ -808,6 +808,12 @@ _gcry_vcontrol (enum gcry_ctl_cmds cmd,
        rc = _gcry_fips_indicator_cipher (arg_ptr);
        break;

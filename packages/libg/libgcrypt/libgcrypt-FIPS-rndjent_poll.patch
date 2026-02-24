@@ -1,7 +1,7 @@
-Index: libgcrypt-1.10.0/random/rndoldlinux.c
+Index: libgcrypt-1.12.0/random/rndoldlinux.c
 ===================================================================
---- libgcrypt-1.10.0.orig/random/rndoldlinux.c
-+++ libgcrypt-1.10.0/random/rndoldlinux.c
+--- libgcrypt-1.12.0.orig/random/rndoldlinux.c
++++ libgcrypt-1.12.0/random/rndoldlinux.c
 @@ -132,7 +132,7 @@ _gcry_rndoldlinux_gather_random (void (*
    volatile pid_t apid;
    int fd;
@@ -80,35 +80,34 @@ Index: libgcrypt-1.10.0/random/rndoldlinux.c
                _gcry_pre_syscall ();
                ret = getentropy (buffer, nbytes);
                _gcry_post_syscall ();
-Index: libgcrypt-1.10.0/random/rndjent.c
+Index: libgcrypt-1.12.0/random/rndjent.c
 ===================================================================
---- libgcrypt-1.10.0.orig/random/rndjent.c
-+++ libgcrypt-1.10.0/random/rndjent.c
-@@ -279,13 +279,24 @@ _gcry_rndjent_poll (void (*add)(const vo
-       if (!jent_rng_is_initialized)
-         {
-           /* Auto-initialize.  */
--          jent_rng_is_initialized = 1;
-           jent_entropy_collector_free (jent_rng_collector);
+--- libgcrypt-1.12.0.orig/random/rndjent.c
++++ libgcrypt-1.12.0/random/rndjent.c
+@@ -294,15 +294,23 @@ _gcry_rndjent_poll (void (*add)(const vo
            jent_rng_collector = NULL;
            if ( !(_gcry_random_read_conf () & RANDOM_CONF_DISABLE_JENT))
              {
 -              if (!jent_entropy_init ())
--                jent_rng_collector = jent_entropy_collector_alloc (1, 0);
-+              if (!jent_entropy_init_ex (1, 0))
-+                {
-+                  jent_rng_collector = jent_entropy_collector_alloc (1, 0);
++                if (!jent_entropy_init_ex (1, 0))
+                 {
+                   jent_rng_collector = jent_entropy_collector_alloc (1, 0);
+-                  if (jent_rng_collector != NULL)
+-                    jent_rng_is_initialized = 1;
 +                  jent_rng_is_initialized = 1;
-+                }
-+            }
-+        }
-+
+                 }
+             }
+         }
+ 
 +      if (!jent_rng_collector)
 +        {
 +          if (!jent_entropy_init_ex (1, 0))
 +            {
-+               jent_rng_collector = jent_entropy_collector_alloc (1, 0);
-+               jent_rng_is_initialized = 1;
-             }
-         }
- 
++              jent_rng_collector = jent_entropy_collector_alloc (1, 0);
++              jent_rng_is_initialized = 1;
++             }
++         }
++
+       if (jent_rng_collector && add)
+         {
+           /* We have a working JENT and it has not been disabled.  */

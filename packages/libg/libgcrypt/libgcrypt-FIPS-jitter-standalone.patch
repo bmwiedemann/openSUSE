@@ -1,7 +1,7 @@
-Index: libgcrypt-1.11.1/random/Makefile.am
+Index: libgcrypt-1.12.0/random/Makefile.am
 ===================================================================
---- libgcrypt-1.11.1.orig/random/Makefile.am
-+++ libgcrypt-1.11.1/random/Makefile.am
+--- libgcrypt-1.12.0.orig/random/Makefile.am
++++ libgcrypt-1.12.0/random/Makefile.am
 @@ -21,7 +21,7 @@
  # Need to include ../src in addition to top_srcdir because gcrypt.h is
  # a built header.
@@ -50,10 +50,10 @@ Index: libgcrypt-1.11.1/random/Makefile.am
 -            $(srcdir)/jitterentropy-base.c $(srcdir)/jitterentropy.h
 +rndjent.lo: $(srcdir)/rndjent.c
  	`echo $(LTCOMPILE) -c $(srcdir)/rndjent.c | $(o_flag_munging) `
-Index: libgcrypt-1.11.1/random/rndjent.c
+Index: libgcrypt-1.12.0/random/rndjent.c
 ===================================================================
---- libgcrypt-1.11.1.orig/random/rndjent.c
-+++ libgcrypt-1.11.1/random/rndjent.c
+--- libgcrypt-1.12.0.orig/random/rndjent.c
++++ libgcrypt-1.12.0/random/rndjent.c
 @@ -94,17 +94,12 @@
   * jitterentropy-user-base.h file.   */
  
@@ -74,10 +74,10 @@ Index: libgcrypt-1.11.1/random/rndjent.c
  
  /* This is the lock we use to serialize access to this RNG.  The extra
   * integer variable is only used to check the locking state; that is,
-Index: libgcrypt-1.11.1/random/Makefile.in
+Index: libgcrypt-1.12.0/random/Makefile.in
 ===================================================================
---- libgcrypt-1.11.1.orig/random/Makefile.in
-+++ libgcrypt-1.11.1/random/Makefile.in
+--- libgcrypt-1.12.0.orig/random/Makefile.in
++++ libgcrypt-1.12.0/random/Makefile.in
 @@ -147,12 +147,7 @@ am__v_at_1 =
  DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
  depcomp = $(SHELL) $(top_srcdir)/build-aux/depcomp
@@ -92,7 +92,7 @@ Index: libgcrypt-1.11.1/random/Makefile.in
  	./$(DEPDIR)/random-csprng.Plo ./$(DEPDIR)/random-drbg.Plo \
  	./$(DEPDIR)/random-system.Plo ./$(DEPDIR)/random.Plo \
  	./$(DEPDIR)/rndegd.Plo ./$(DEPDIR)/rndgetentropy.Plo \
-@@ -375,7 +370,7 @@ top_srcdir = @top_srcdir@
+@@ -379,7 +374,7 @@ top_srcdir = @top_srcdir@
  # Need to include ../src in addition to top_srcdir because gcrypt.h is
  # a built header.
  AM_CPPFLAGS = -I../src -I$(top_srcdir)/src
@@ -101,7 +101,7 @@ Index: libgcrypt-1.11.1/random/Makefile.in
  noinst_LTLIBRARIES = librandom.la
  GCRYPT_MODULES = @GCRYPT_RANDOM@
  librandom_la_DEPENDENCIES = $(GCRYPT_MODULES)
-@@ -394,14 +389,7 @@ rndgetentropy.c \
+@@ -398,14 +393,7 @@ rndgetentropy.c \
  rndoldlinux.c \
  rndegd.c \
  rndunix.c \
@@ -117,7 +117,7 @@ Index: libgcrypt-1.11.1/random/Makefile.in
  
  @ENABLE_O_FLAG_MUNGING_FALSE@o_flag_munging = cat
  
-@@ -461,12 +449,6 @@ mostlyclean-compile:
+@@ -465,12 +453,6 @@ mostlyclean-compile:
  distclean-compile:
  	-rm -f *.tab.c
  
@@ -130,7 +130,7 @@ Index: libgcrypt-1.11.1/random/Makefile.in
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/random-csprng.Plo@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/random-drbg.Plo@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/random-system.Plo@am__quote@ # am--include-marker
-@@ -636,12 +618,6 @@ clean-am: clean-generic clean-libtool cl
+@@ -640,12 +622,6 @@ clean-am: clean-generic clean-libtool cl
  	mostlyclean-am
  
  distclean: distclean-am
@@ -143,7 +143,7 @@ Index: libgcrypt-1.11.1/random/Makefile.in
  	-rm -f ./$(DEPDIR)/random-csprng.Plo
  	-rm -f ./$(DEPDIR)/random-drbg.Plo
  	-rm -f ./$(DEPDIR)/random-system.Plo
-@@ -698,12 +674,6 @@ install-ps-am:
+@@ -702,12 +678,6 @@ install-ps-am:
  installcheck-am:
  
  maintainer-clean: maintainer-clean-am
@@ -156,7 +156,7 @@ Index: libgcrypt-1.11.1/random/Makefile.in
  	-rm -f ./$(DEPDIR)/random-csprng.Plo
  	-rm -f ./$(DEPDIR)/random-drbg.Plo
  	-rm -f ./$(DEPDIR)/random-system.Plo
-@@ -752,22 +722,10 @@ uninstall-am:
+@@ -756,22 +726,10 @@ uninstall-am:
  .PRECIOUS: Makefile
  
  

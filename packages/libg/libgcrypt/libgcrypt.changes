@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Feb 20 13:49:25 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to 1.12.1
+  * Various fixes
+  - Drop libgcrypt-1.12.0-ec_regression.patch 
+
+-------------------------------------------------------------------
+Thu Jan 29 14:10:34 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to 1.12.0
+  * New and extended interfaces:
+    - Allow access to the FIPS service indicator via the new
+      GCRYCTL_FIPS_SERVICE_INDICATOR control code.
+    - Make SHA-1 non-FIPS internally for the 1.12 API
+    - Add Dilithium (ML-DSA) support
+    - Support optional random-override and support byte string data
+   * Bug fixes:
+    - Use secure MPI in _gcry_mpi_assign_limb_space.  
+    - Use CSIDL_COMMON_APPDATA instead of /etc on Windows.
+    - Apply a Kyber patch from upstream. 
+    - Fix an edge case in Jent initialization.  
+    - mceliece6688128f: Fix stack overflow crash on win64/wine
+  * Performance:
+    - Many performance improvements, new AVX512 implementations for modern CPUs. 
+    - Add RISC-V Zbb+Zbc implementation of CRC.
+    - Add RISC-V vector cryptography implementation of GHASH, AES, SHA256 and SHA512
+    - Add AVX2 and AVX512 code paths to improve CRC. 
+  For a full changelog, see:
+  https://dev.gnupg.org/source/libgcrypt/history/master/;libgcrypt-1.12.0   
+  * Dropped libgcrypt-1.11.1-public-SLI-API.patch - applied upstream
+  * Rebased libgcrypt-CVE-2024-2236.patch
+  * Rebased libgcrypt-FIPS-SLI-hash-mac.patch
+  * Rebased libgcrypt-FIPS-SLI-kdf-leylength.patch
+  * Rebased libgcrypt-FIPS-SLI-pk.patch
+  * Rebased libgcrypt-FIPS-jitter-standalone.patch
+  * Rebased libgcrypt-FIPS-rndjent_poll.patch
+  * Rebased libgcrypt-nobetasuffix.patch
+  * Rebased libgcrypt-rol64-redefinition.patch
+  * Added libgcrypt-1.12.0-ec_regression.patch
+    * libgcrypt 1.12.0: gcry_mpi_ec_curve_point corrupts point
+
+-------------------------------------------------------------------
 Wed Jan  7 19:47:57 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - enable the Kyber PQ KEM (boo#1256108)
