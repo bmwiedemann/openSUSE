@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 20 09:43:48 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to version 0.36.1
+  * Sync BCC with libbpf submodule update (afb8b17)
+  * libbpf-tools: Sync blazesym submodule and migrate tools to new C API
+
+-------------------------------------------------------------------
 Wed Feb  4 10:54:13 UTC 2026 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to version 0.36.0
