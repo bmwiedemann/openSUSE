@@ -1,7 +1,7 @@
 #
 # spec file for package adcli
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,29 @@
 #
 
 
-%define filehash ea560656ac921b3fe0d455976aaae9be
-%define sighash 429430e8cf4ddac8a95fb90379adc120
+%define filehash 5a1c55410c0965835b81fbd28d820d46
+%define sighash b680d6103309863ce62e9acae98fd5bf
 Name:           adcli
-Version:        0.9.2
+Version:        0.9.3.1
 Release:        0
 Summary:        Tool for performing actions on an Active Directory domain
 License:        LGPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://gitlab.freedesktop.org/realmd/adcli
-Source0:        https://gitlab.freedesktop.org/realmd/adcli/uploads/%{filehash}/%{name}-%{version}.tar.gz
-Source2:        https://gitlab.freedesktop.org/realmd/adcli/uploads/%{sighash}/%{name}-%{version}.tar.gz.sig
+Source0:        https://gitlab.freedesktop.org/-/project/1196/uploads/%{filehash}/%{name}-%{version}.tar.gz
+Source1:        https://gitlab.freedesktop.org/-/project/1196/uploads/%{sighash}/%{name}-%{version}.tar.gz.sig
 # https://keys.openpgp.org/vks/v1/by-fingerprint/287939DF062AD8C53876A535C2D7B98A934EEC17
 Source3:        %{name}.keyring
 BuildRequires:  automake
 BuildRequires:  libxslt-tools
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
+BuildRequires:  selinux-policy-devel
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(libsasl2)
+BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(mit-krb5)
+BuildRequires:  pkgconfig(netapi)
 
 %description
 A command line tool that can perform actions in an Active Directory domain.
@@ -75,6 +78,8 @@ rm %{buildroot}/%{_datadir}/doc/%{name}/adcli-docs.proc
 %doc AUTHORS ChangeLog NEWS README
 %{_sbindir}/%{name}
 %{_mandir}/man8/adcli.8%{?ext_man}
+%dir %{_datadir}/selinux/packages/targeted
+%{_datadir}/selinux/packages/targeted/adcli.pp
 
 %files doc
 %license COPYING
