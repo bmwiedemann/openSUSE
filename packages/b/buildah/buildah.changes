@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 20 09:25:29 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 1.43.0:
+  * [release-1.43] Bump Buildah to v1.43.0
+  * [release-1.43] fix source test
+  * [release-1.43] Bump common 0.67.0, image 5.39.1, storage 1.62.0
+  * [release-1.43] Bump dest branch in cirrus to 1.43
+  * fix(build): make --tag oci-archive:xxx.tar work with simple images
+  * test: do not untar archive into fs when checking file names
+  * tests: use cached images instead of fedoraproject.org
+  * chroot.bats(chroot with overlay root): ensure we can overlay
+  * Run: don't try to encode SystemContext with json
+
+-------------------------------------------------------------------
 Mon Dec 22 09:15:09 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 1.42.2:
