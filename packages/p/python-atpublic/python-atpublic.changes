@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 16 16:51:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.0:
+  * Drop Python 3.9.
+  * Documentation improvements.  furo has been fixed, so we no
+    longer need the workaround.
+  * pyproject.toml updates and improvements.
+
+-------------------------------------------------------------------
 Mon Oct 27 15:31:42 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add missing test dependency importlib-resources for Python 3.11
