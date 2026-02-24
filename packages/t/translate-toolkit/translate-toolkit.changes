@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 24 11:00:44 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Don't build test flavor on %ix86: it runs constantly for > 2
+  hours while on x86_64 it passes in 15 minutes.
+
+-------------------------------------------------------------------
 Wed Feb 18 13:36:53 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.19.1

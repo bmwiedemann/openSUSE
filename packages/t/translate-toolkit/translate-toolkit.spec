@@ -21,6 +21,7 @@
 %define psuffix -test
 %bcond_without test
 %bcond_with doc
+ExcludeArch: %ix86
 %endif 
 %if "%{flavor}" == "man+doc"
 %define psuffix -man
