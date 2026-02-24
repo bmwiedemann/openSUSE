@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb  5 15:26:34 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Version update to 26.02.0:
+  * core:
+    + Improvements in signature checking
+    + Improve rendering of files using the CalGray color space
+    + Internal code improvements
+    + Fix crashes in malformed documents
+  * utils:
+    + pdftotext: Fix page level bounds calculation in tsv mode
+  * build system:
+    + unmaintained value for some options has been replaced by
+      UnmaintainedWillBeRemovedInJuly2026
+- Bump dependencies required versions in spec file to match
+  versions in CMakeLists.txt
+
+-------------------------------------------------------------------
 Mon Jan 26 21:51:05 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Version update to 26.01.0:

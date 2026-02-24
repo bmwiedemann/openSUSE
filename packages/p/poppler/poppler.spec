@@ -24,7 +24,7 @@
 %endif
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.11
-%define poppler_sover 156
+%define poppler_sover 157
 %define poppler_cpp_sover 3
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
@@ -32,7 +32,7 @@
 %define poppler_api 0.18
 %define poppler_apipkg 0_18
 Name:           poppler%{?psuffix}
-Version:        26.01.0
+Version:        26.02.0
 Release:        0
 Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -43,21 +43,21 @@ Source1:        %{url}/%{sname}-%{version}.tar.xz.sig
 Source90:       poppler.keyring
 Source99:       baselibs.conf
 
-BuildRequires:  cmake >= 3.10
+BuildRequires:  cmake >= 3.22
 BuildRequires:  gtk-doc
-BuildRequires:  libboost_headers-devel >= 1.66
+BuildRequires:  libboost_headers-devel >= 1.74
 BuildRequires:  libgpgmepp-devel >= 1.19
 BuildRequires:  openjpeg2
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(cairo) >= 1.10.0
+BuildRequires:  pkgconfig(cairo) >= 1.16.0
 BuildRequires:  pkgconfig(cairo-ft)
 BuildRequires:  pkgconfig(cairo-pdf)
 BuildRequires:  pkgconfig(cairo-ps)
 BuildRequires:  pkgconfig(cairo-svg)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2) >= 24.0.18
-BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.36
-BuildRequires:  pkgconfig(glib-2.0) >= 2.56
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.40
+BuildRequires:  pkgconfig(glib-2.0) >= 2.72
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.41
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(lcms2)
@@ -81,14 +81,14 @@ BuildRequires:  extra-cmake-modules
 ExclusiveArch:  do_not_build
 %endif
 %if "%{flavor}" == "qt5"
-BuildRequires:  pkgconfig(Qt5Core) >= 5.9
+BuildRequires:  pkgconfig(Qt5Core) >= 5.15
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 %endif
 %if "%{flavor}" == "qt6"
-BuildRequires:  cmake(Qt6Core) >= 6.1
+BuildRequires:  cmake(Qt6Core) >= 6.2
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6Test)
 BuildRequires:  cmake(Qt6Widgets)
