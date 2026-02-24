@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 23 09:17:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.14.1:
+  * Update PyPy version in GitHub Actions workflow
+  * Refactor 'hosts' script
+  * Fix PyPy CI
+  * Adding type hints and docstrings
+
+-------------------------------------------------------------------
 Tue Jan  6 13:43:58 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Explicitly BuildRequire python-httpx for the test suite. This

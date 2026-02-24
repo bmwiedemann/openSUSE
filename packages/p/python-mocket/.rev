@@ -671,4 +671,16 @@
     <comment></comment>
     <requestid>1325633</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>2aacc777192515ca3fc58e8971d504d3</srcmd5>
+    <version>3.14.1</version>
+    <time>1771943885</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.14.1:
+  * Update PyPy version in GitHub Actions workflow
+  * Refactor 'hosts' script
+  * Fix PyPy CI
+  * Adding type hints and docstrings</comment>
+    <requestid>1334426</requestid>
+  </revision>
 </revisionlist>
