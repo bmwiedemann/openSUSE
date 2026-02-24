@@ -1,7 +1,7 @@
 #
 # spec file for package lalsimulation
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,39 +25,35 @@
 # octave >= 6 not supported
 %bcond_with octave
 Name:           lalsimulation
-Version:        6.0.0
+Version:        6.2.0
 Release:        0
 Summary:        LSC Algorithm Simulation Library
 License:        GPL-2.0-only
 URL:            https://wiki.ligo.org/Computing/DASWG/LALSuite
 Source:         https://software.igwn.org/sources/source/lalsuite/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         https://git.ligo.org/lscsoft/lalsuite/-/commit/9dba245ab3692ecf691247a442704f13c075ed34.patch#/lalsimulation-swig-stringval-not-value.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module lal >= 7.2.0}
+BuildRequires:  %{python_module lal >= 7.7.0}
 BuildRequires:  %{python_module numpy >= 1.7}
 BuildRequires:  %{python_module numpy-devel >= 1.7}
-# python-py - remove with next update -- https://git.ligo.org/lscsoft/lalsuite/-/merge_requests/2033
-BuildRequires:  %{python_module py}
 BuildRequires:  fdupes
-BuildRequires:  help2man
-BuildRequires:  pkgconfig
+BuildRequires:  help2man >= 1.37
+BuildRequires:  pkgconfig >= 0.18.0
 BuildRequires:  python-rpm-macros
 %if 0%{?suse_version} < 1550
 BuildRequires:  python-xml
 %endif
-BuildRequires:  swig >= 3.0.10
+BuildRequires:  swig >= 3.0.11
 BuildRequires:  pkgconfig(gsl)
-BuildRequires:  pkgconfig(lal) >= 7.2.0
+BuildRequires:  pkgconfig(lal) >= 7.7.0
 BuildRequires:  pkgconfig(zlib)
 %if %{with octave}
-BuildRequires:  octave-lal >= 7.2.0
+BuildRequires:  octave-lal >= 7.7.0
 BuildRequires:  pkgconfig(octave)
 %endif
 # SECTION For tests
 BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-lal >= 7.2.0
+Requires:       python-lal >= 7.7.0
 Requires:       python-numpy >= 1.7
 # FOR PYTHON PACKAGE
 Requires:       lalsimulation-data = %{version}
@@ -81,7 +77,7 @@ Summary:        Headers and source files for building against LALSimulation
 Requires:       %{name}-data = %{version}
 Requires:       %{shlib} = %{version}
 Requires:       pkgconfig(gsl)
-Requires:       pkgconfig(lal) >= 7.2.0
+Requires:       pkgconfig(lal) >= 7.7.0
 Requires:       pkgconfig(zlib)
 
 %description -n %{name}-devel
@@ -99,7 +95,7 @@ lalsimulation.
 %package -n octave-lalsimulation
 Summary:        Octave bindings for LALSimulation
 Requires:       %{name}-data = %{version}
-Requires:       octave-lal
+Requires:       octave-lal >= 7.7.0
 %requires_eq    octave-cli
 
 %description -n octave-lalsimulation
@@ -113,6 +109,7 @@ This package provides the necessary files for using LALSimulation with octave.
 %build
 %{python_expand # Necessary to run configure with multiple py3 flavors
 export PYTHON=%{_bindir}/$python
+export SWIG_FEATURES="-w999"
 mkdir ../$python
 cp -pr ./ ../$python
 pushd ../$python
@@ -175,8 +172,7 @@ pushd ../$python
 popd
 }
 
-%post -n %{shlib} -p /sbin/ldconfig
-%postun -n %{shlib} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{shlib}
 
 %files -n %{shlib}
 %{_libdir}/*.so.*

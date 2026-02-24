@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 19 16:23:18 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Pass export SWIG_FEATURES="-w999" to fix build failures due to
+  swig minor versions mismatch.
+
+-------------------------------------------------------------------
+Tue Feb  3 17:26:22 UTC 2026 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Update to version 6.2.0
+  * No release notes provided
+  * Remove lalsimulation-swig-stringval-not-value.patch, fixed
+    upstream.
+  * Remove BuildRequires for python-py, fixed upstream.
+  * Change versions numbers for requirements.
+
+-------------------------------------------------------------------
 Sun Dec  1 11:27:36 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add lalsimulation-swig-stringval-not-value.patch: For
