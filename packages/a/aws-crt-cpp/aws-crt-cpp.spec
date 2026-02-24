@@ -1,7 +1,7 @@
 #
 # spec file for package aws-crt-cpp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define library_soversion 1
 
 Name:           aws-crt-cpp
-Version:        0.37.1
+Version:        0.37.2
 Release:        0
 Summary:        AWS C++ wrapper for AWS SDK C libraries
 License:        Apache-2.0

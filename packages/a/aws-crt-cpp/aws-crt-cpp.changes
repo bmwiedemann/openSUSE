@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 10 13:05:03 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.37.2
+  * Canary refactor by @bretambrose in (#808)
+  * XXHash support by @DmitriyMusatkin in (#816)
+
+-------------------------------------------------------------------
 Fri Jan 23 09:31:32 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.37.1
