@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 19 23:08:22 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add libsoup2-CVE-2026-2708.patch: do not allow adding multiple
+  content length values to headers (bsc#1258508 CVE-2026-2708
+  glgo#GNOME/libsoup#500).
+
+-------------------------------------------------------------------
 Sat Feb 14 13:39:29 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Add more CVE fixes:

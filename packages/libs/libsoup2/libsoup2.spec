@@ -96,6 +96,8 @@ Patch33:        libsoup2-CVE-2025-32049.patch
 Patch34:        libsoup2-CVE-2026-2443.patch
 # PATCH-FIX-UPSTREAM libsoup2-CVE-2026-2369.patch bsc#1258120 mgorse@suse.com -- handle potential underflow in the content sniffer.
 Patch35:        libsoup2-CVE-2026-2369.patch
+# PATCH-FIX-UPSTREAM libsoup2-CVE-2026-2708.patch bsc#1258508 mgorse@suse.com -- do not allow adding multiple content length values to headers.
+Patch36:        libsoup2-CVE-2026-2708.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.50
