@@ -186,4 +186,12 @@
   * added esbuild-ppc64.patch</comment>
     <requestid>1333284</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>1cbe137bd311f1921f2a87198cba92a0</srcmd5>
+    <version>0.1.7~git0.61e54f1</version>
+    <time>1772050324</time>
+    <user>anag_factory</user>
+    <comment>- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996</comment>
+    <requestid>1335040</requestid>
+  </revision>
 </revisionlist>
