@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Feb 25 09:26:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.1.0:
+  * Fixes
+    - emit container status events after network reconnection
+      (fixes #13524) by @MaheshThakur9152 in #13529
+    - Fix potential nil pointer dereference in container event
+      monitoring by @Nepomuk5665 in #13551
+    - compose: recreate container when mounted image digest changes
+      by @ibrahimypr in #13549
+    - fix panic by @ndeloof in #13562
+    - Fix invalid path error when using OCI artifacts on Windows by
+      @mikesir87 in #13574
+    - fix: execute post_start hooks in docker compose run by
+      @veeceey in #13607
+    - Fix panic when watch rebuilds without up by @maxproske in
+      #13610
+  * Internal
+    - fsnotify is set in Dockerfile by @ndeloof in #13533
+    - Dockerfile: update golangci-lint to v2.8.0 by @thaJeztah in
+      #13535
+    - replace some uses of strings.Split(N) for strings.Cut by
+      @thaJeztah in #13542
+    - Upgrade GitHub Actions to latest versions by @salmanmkc in
+      #13546
+    - pkg/compose: remove dependency on
+      github.com/docker/buildx/driver by @thaJeztah in #13563
+    - use Docker GitHub Builder to build and sign binaries and bin
+      image by @crazy-max in #13568
+    - ci: fix bin-image job by @crazy-max in #13569
+    - pkg/compose: defaultNetworkSettings: refactor by @thaJeztah
+      in #13580
+    - pkg/compose: un-export consts by @thaJeztah in #13584
+    - modernize some code by @thaJeztah in #13588
+  * Dependencies
+    - update to go1.25.7 by @thaJeztah in #13573
+    - build(deps): bump golang.org/x/sys from 0.40.0 to 0.41.0 by
+      @dependabot[bot] in #13578
+    - build(deps): bump go.yaml.in/yaml/v4 from 4.0.0-rc.3 to
+      4.0.0-rc.4 by @dependabot[bot] in #13541
+    - migrate to moby modules by @thaJeztah in #13078
+
+-------------------------------------------------------------------
 Wed Jan 21 12:49:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.0.2:
