@@ -6260,4 +6260,15 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
   * CVE-2026-2650: Heap buffer overflow in Media</comment>
     <requestid>1333826</requestid>
   </revision>
+  <revision rev="505" vrev="1">
+    <srcmd5>e869b6bce3b7fbec1ee11b59937fb136</srcmd5>
+    <version>145.0.7632.116</version>
+    <time>1772049999</time>
+    <user>anag_factory</user>
+    <comment>- Chromium 145.0.7632.116 (boo#1258733):
+  * CVE-2026-3061: Out of bounds read in Media
+  * CVE-2026-3062: Out of bounds read and write in Tint
+  * CVE-2025-3063: Inappropriate implementation in DevTools</comment>
+    <requestid>1334611</requestid>
+  </revision>
 </revisionlist>

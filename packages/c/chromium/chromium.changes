@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 24 01:22:42 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 145.0.7632.116 (boo#1258733):
+  * CVE-2026-3061: Out of bounds read in Media
+  * CVE-2026-3062: Out of bounds read and write in Tint
+  * CVE-2025-3063: Inappropriate implementation in DevTools
+
+-------------------------------------------------------------------
 Wed Feb 18 23:40:10 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 145.0.7632.109 (boo#1258438):
