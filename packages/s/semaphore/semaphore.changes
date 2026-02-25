@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Feb 20 10:02:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.17.12 (no releases between .8 and this one):
+  * Highlights
+    - BoltDB → SQL migration tool (major step forward)
+      A new backend migration utility allows moving from BoltDB to
+      SQL databases.
+      This is a key improvement for scalability and aligns with the
+      future removal of BoltDB support.
+  * Maintenance & Security
+    - Updated multiple Go modules (crypto, OAuth2, PostgreSQL
+      driver).
+    - Updated frontend tooling (Prettier).
+    - Edwards25519 dependency updated (core and Pro).
+    - General dependency fixes and stability improvements.
+  * Changelog
+    - 3e5e0de ci(github): return GH_TOKEN for docker
+  * What's Changed
+    - Added host limit values in Task parameters instead of just
+      Yes by @darcystan in #3637
+    - chore(deps): bump filippo.io/edwards25519 from 1.1.0 to 1.1.1
+      by @dependabot[bot] in #3642
+    - chore(deps): update dependency prettier to v3.8.1 by
+      @renovate[bot] in #3635
+    - feat(be): boltdb to sql migration tool by @mgukov in #3620
+    - chore(deps): bump filippo.io/edwards25519 from 1.1.0 to 1.1.1
+      in /pro by @dependabot[bot] in #3644
+    - fix(deps): update module github.com/lib/pq to v1.11.2 by
+      @renovate[bot] in #3645
+    - fix(deps): update module golang.org/x/crypto to v0.48.0 by
+      @renovate[bot] in #3646
+    - fix(deps): update module golang.org/x/oauth2 to v0.35.0 by
+      @renovate[bot] in #3648
+
+-------------------------------------------------------------------
 Thu Feb 19 06:21:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.17.8:
