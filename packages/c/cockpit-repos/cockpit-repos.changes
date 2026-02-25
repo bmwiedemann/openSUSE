@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 25 08:14:23 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258637/CVE-2026-26996
+
+-------------------------------------------------------------------
 Tue Feb 10 19:10:42 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>
 
 - Patch esbuild to use native runtime on ppc64 (bsc#1257698)
