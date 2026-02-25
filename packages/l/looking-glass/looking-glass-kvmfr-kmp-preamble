@@ -1,0 +1,6 @@
+# looking-glass-kvmfr-kmp-preamble
+
+%define kernel_module_package_moddir extra/looking-glass
+
+Requires:       kernel-%1
+Supplements:    (kernel-%1 and looking-glass)

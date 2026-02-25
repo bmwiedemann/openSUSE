@@ -1,0 +1,14 @@
+diff '--color=auto' -rub LookingGlass.orig/common/cmake/FindBFD.cmake LookingGlass/common/cmake/FindBFD.cmake
+--- LookingGlass.orig/common/cmake/FindBFD.cmake	2026-02-17 16:34:54.318920455 -0300
++++ LookingGlass/common/cmake/FindBFD.cmake	2026-02-17 16:42:55.907015447 -0300
+@@ -11,6 +11,10 @@
+ find_path(BFD_INCLUDE_DIR NAMES bfd.h)
+ find_library(BFD_LIBRARIES NAMES bfd)
+ 
++find_library(BFD_CTF_LIBRARY NAMES ctf)\
++find_library(BFD_ZSTD_LIBRARY NAMES zstd)\
++list(APPEND BFD_LIBRARIES ${BFD_CTF_LIBRARY} ${BFD_ZSTD_LIBRARY})
++
+ include(FindPackageHandleStandardArgs)
+ 
+ if (";${BFD_LIBRARIES};" MATCHES "bfd.a;")

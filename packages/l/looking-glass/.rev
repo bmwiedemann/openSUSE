@@ -1,0 +1,15 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>11293e4747f65d9171a30bfd8ed9e0bd</srcmd5>
+    <version>B7</version>
+    <time>1772050057</time>
+    <user>anag_factory</user>
+    <comment>- Fix Windows host package dependencies and portability:
+  * Add 'AutoReqProv: no' to windows-host subpackage to prevent 
+    RPM from generating fake dependencies on Windows DLLs (e.g. avrt.dll).
+  * Pass '-static' to CMAKE_EXE_LINKER_FLAGS during MinGW cross-compilation
+    to ensure the resulting executable is standalone and doesn't 
+    require external MinGW runtime DLLs.</comment>
+    <requestid>1334901</requestid>
+  </revision>
+</revisionlist>

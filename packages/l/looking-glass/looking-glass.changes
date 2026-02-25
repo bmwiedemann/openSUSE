@@ -1,0 +1,285 @@
+-------------------------------------------------------------------
+Wed Feb 25 02:06:31 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fix Windows host package dependencies and portability:
+  * Add 'AutoReqProv: no' to windows-host subpackage to prevent 
+    RPM from generating fake dependencies on Windows DLLs (e.g. avrt.dll).
+  * Pass '-static' to CMAKE_EXE_LINKER_FLAGS during MinGW cross-compilation
+    to ensure the resulting executable is standalone and doesn't 
+    require external MinGW runtime DLLs. 
+
+-------------------------------------------------------------------
+Sun Feb 22 07:17:30 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- remove unused fix-pipewire-uninitialized-warning.patch 
+
+-------------------------------------------------------------------
+Sun Feb 22 07:02:15 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- remove build.log, this is only for test 
+
+-------------------------------------------------------------------
+Sun Feb 22 06:13:09 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Consolidated build process for client, host and OBS plugin.
+  * Added cross-compilation support for Windows host executable
+    using mingw64 toolchain.
+  * Fixed .desktop file binary path using sed during %prep.
+  * Corrected unstripped binaries (OBS plugins)
+  * Fixed rpmlint error regarding unused filters.
+  * Reorganized subpackages:
+    * Added looking-glass-windows-host for easy access to the 
+    Windows guest executable.
+    * Adjusted KMP dependencies to match new naming convention.
+  * Applied fix-bfd-ctf-zstd.patch to resolve binutils compatibility
+    issues on Tumbleweed.
+  * Added missing %changelog in looking-glass-kvmfr 
+
+-------------------------------------------------------------------
+Sun Feb 22 03:13:39 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Modernize and clean up the spec file:
+  * Replace manual directory management with a unified 'build_dir' helper function.
+  * Ensure consistent CFLAGS/CXXFLAGS propagation across Client, Host, and OBS Plugin.
+  * Fix incorrect icon and desktop file installation paths in the %install section.
+  * Add automatic stripping of unneeded symbols for binaries and OBS plugins. 
+
+-------------------------------------------------------------------
+Thu Feb 19 02:32:41 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Change _multibuild to proper name looking-glass-kvmfr 
+
+-------------------------------------------------------------------
+Thu Feb 19 02:22:18 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Align with openSUSE KMP packaging guidelines
+  - Remove invalid Requires/Supplements from main spec
+  - Use proper %kernel_module_package invocation
+  - Add rpmlintrc to filter suse-zypp-packageand false positive
+  - Rename KMP subpackage to follow Factory conventions
+  - Add missing %changelog section in looking-glass-kvmfr.spec 
+
+-------------------------------------------------------------------
+Wed Feb 18 23:10:14 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Cleanup BuildRequires and optimize package dependencies:
+  * Remove redundant or unused BuildRequires: zlib-devel-static, zstd,
+    libzstd-devel, libSDL2_ttf-2_0-0, libdecor-0-0, libctf0, clang,
+    glibc-locale-base, libconfig-devel, nerd-dejavu-sansmono-fonts,
+    and libavutil57.
+  * Replace generic pkgconf-pkg-config with pkgconfig(fontconfig).
+  * Improve OBS plugin recommendation logic using rich dependencies.
+  * Move runtime dependencies (Mesa-libGL1, KMP, and OBS recommendation)
+    specifically to the %package client to ensure a leaner base package.
+  * Use pkgconfig(gl, egl, glesv2) for standardized dependency resolution.
+  * Keep explicit Mesa-libGLESv3-devel as the GLESv3 provider is not
+    available via pkgconfig in the current build environment. 
+
+-------------------------------------------------------------------
+Tue Feb 17 19:56:33 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Refactor: Modernize toolchain and fix build dependencies
+  * add conditional recommendation for OBS-Studio plugin
+
+-------------------------------------------------------------------
+Thu Dec  4 02:20:20 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fix %kernel_module_package_moddir by change name to looking-glass
+  * Fix unstriped binary warning
+
+-------------------------------------------------------------------
+Thu Dec  4 01:35:59 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fix OBS plugin build: add simde-devel, disable BFD, enforce shared linking
+  * Remove obscpio to use only tarball 
+
+-------------------------------------------------------------------
+Mon Jul  7 20:40:36 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version B7:
+  * [obs] dmabuf: enable dmabuf by default
+  * [obs] cosmetics: adhere to 80 column rule
+  * [host] d12: perform full re-initialization if the heapTest fails
+  * [host] app: fix complation on windows with mingw
+  * [github] build: add libfontconfig-dev dependency
+  * [github] build: use native packages now ubuntu 24.04 is available
+  * [client] app: fix broken keyboard input after imgui update
+  * [client] overlay: use graph address as imgui id
+  * Revert "[client] overlay/status: don't return damage rect if nothing was drawn"
+  * [client] cimgui: update to 1.91.8
+  * [github] linux-host: add missing dependency for xcb/shm
+  * [github] linux-host: add missing dependency for gio/gio-unix
+  * [all] common: fix compilation on clang
+  * [all] repos: update LGMP and PureSpice submodules
+  * [cmake] all: update cmake_minimum_required version to 3.10
+  * [doc] all: update copyright year
+  * [client] linux: Install .desktop file and icon
+  * [doc] requirements: Modify language of DMABUF for iGPUS
+  * [doc] Add hypervisor and framebuffer to words.txt
+  * [doc] install_libvirt: Link to iGPUs should use DMABUF
+  * [doc] requirements: Add section encouraging DMABUF use for iGPUs
+  * [github] pr-check: Automatically add review requesting changes when PR author is not found in AUTHORS
+  * [client] overlay/msg: fix race condition in render
+  * [client] overlay/status: don't return damage rect if nothing was drawn
+  * [client] egl: fix desktop render dimensions check
+  * [host] app: fix app state race in lgmpTimer thread
+  * [module] MODULE_IMPORT_NS now requires a string literal in 6.13
+  * d12: implement indirectCopy fallback for compatibillity
+  * [obs] dmabuf: fix failure to display frames in both buffers
+  * [client] x11/wayland: add application id
+  * [common] ivshmem: default to /dev/kvmfr0 if it's found
+  * [common] rect: fix avx unaligned bytes copy
+  * [module] check vmf->pgoff before using it
+  * [client] fix typo
+  * [module] fix build on linux 6.10
+  * [client] pipewire: Add pipewire application name
+  * [doc] kvmfr/libvirt: change double quotes to single quotes
+  * [all] update authors
+  * [client] egl: fix line copy size computation in `texBufferStreamUpdate`
+  * [client] egl: fix misuse of stride vs. pitch in `texBufferStreamUpdate`
+  * [client] egl: fix unintended vertical clipping in `spiceDrawFill`
+  * [client] opengl: fix unintended vertical clipping in `spiceDrawFill`
+  * [host] dxgi: fix crash during init due to out of order accesses
+  * [client] wayland: fix failure to select libdecor
+  * [client] wayland: Let viewporter use full wl_buffer
+  * [doc] Update module libvirt setup
+  * [obs] fix compilation for older versions of OBS
+  * [obs] tell OBS if we are operating in HDR
+  * [client] x11/i3: fix fullscreen at launch via parameter/config
+  * [client] cmake: move X11 config directives to `displayservers`
+  * [client] egl: do not use DMA when using the spice display
+  * [client] egl: fix desktop spice toggle race
+  * [host] d12: fix error output string format
+  * [host] d12: check if the device was removed during init
+  * [host] d12: check for failure to obtain d3d12 functions
+  * [host] d12: add additional debug tracing
+  * [host/common] d12: add debug tracing
+  * [host] d12: limit the dx11 interop level to one version
+  * [host] nvfbc: mark NvFBC as deprecated
+  * [host] app: do not try to use deprecated interfaces automatically
+  * [host] d12: test if creating resources in the heap works at init
+  * [doc] consistency fix in example output
+  * [doc] remove NvFBC tuning recommendation now D12 is faster  
+
+-------------------------------------------------------------------
+Sun May 26 04:42:06 UTC 2024 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version B7rc1 with all packages (host, client, dkms, obs)
+  * Added the ability to specify the default playback and record devices
+  for PipeWire
+  * [EGL] fixed a rounding issue in the shaders on hardware that actually
+  uses half precision floats (nvidia)
+  * [X11] fixed issue with window managers (i3) that prevented focus
+  following the mouse from working correctly
+  * Detect and warn on improper guest CPU configuration
+  * Update LGMP to support building under MSVC for the incoming Idd
+  support
+  * Fixed RGB10 support to handle both HDR and non-HDR content by means of
+  HDR to SDR mapping (this does not mean HDR support in linux yet!)
+  * added new input:captureOnFocus feature to automatically enter capture
+  mode when the window has been focused by the user.
+  * If the client is running on i3, make use of the IPC to allow LG to run
+  global full screen (spans all monitors) if the new option
+  i3:globalFullScreen is enabled.
+  * added new win:requestActivation option to opt-out of activation
+  requests from the guest
+  * [X11] changed the cursor dot to a more visible cursor and added an
+  optional larger cursor for the vision impared which may be enabled
+  with the new option spice:largeCursorDot
+  * [EGL] Added configuration parameters to disable and adjust the HDR to
+  SDR mapping
+  * [D12] Implemented new DirectX12 capture engine using DXGI Desktop
+  Duplication
+  * [DXGI & D12] Convert RGB16 to RGB10 when in HDR for a 50% memory
+  transfer bandwidth saving (note that this has overheads and may not
+  benefit everyone)
+  * [DXGI] Removed buggy/broken D3D12 copyBackend
+  * [doc] updated and restructured the documentation addressing various
+  issues people have had with the installation and configuraiton of
+  Looking Glass. 
+
+-------------------------------------------------------------------
+Tue May 21 07:07:47 UTC 2024 - dead_mozay@opensuse.org
+
+- Update to version B7rc1:
+  * [doc] fix ivshmem_kvmfr tree structure
+  * [host] d12: revert ivshmem heap order change
+  * [host] d12: move ivshmem heap creation to later in init
+  * [doc] fix lack of consistency of `Recommended`
+  * [host] windows: fix crash on failure to init a capture interface
+  * [host] d12: don't attempt to use realtime priority
+  * [doc] ammend ivshmem_kvmfr to make cgroups and permissions clearer
+  * [doc] the nvidia open drivers now support DMABUF
+  * [doc] fix broken reference
+  * [doc] remove the `module` page as it's now part of `installation`
+
+-------------------------------------------------------------------
+Tue May 21 06:53:37 UTC 2024 - dead_mozay@opensuse.org
+
+- Update to version B7rc1:
+  * [doc] fix ivshmem_kvmfr tree structure
+  * [host] d12: revert ivshmem heap order change
+  * [host] d12: move ivshmem heap creation to later in init
+  * [doc] fix lack of consistency of `Recommended`
+  * [host] windows: fix crash on failure to init a capture interface
+  * [host] d12: don't attempt to use realtime priority
+  * [doc] ammend ivshmem_kvmfr to make cgroups and permissions clearer
+  * [doc] the nvidia open drivers now support DMABUF
+  * [doc] fix broken reference
+  * [doc] remove the `module` page as it's now part of `installation`
+
+-------------------------------------------------------------------
+Tue May 21 06:42:08 UTC 2024 - dead_mozay@opensuse.org
+
+- Update to version B7rc1:
+  * [doc] fix ivshmem_kvmfr tree structure
+  * [host] d12: revert ivshmem heap order change
+  * [host] d12: move ivshmem heap creation to later in init
+  * [doc] fix lack of consistency of `Recommended`
+  * [host] windows: fix crash on failure to init a capture interface
+  * [host] d12: don't attempt to use realtime priority
+  * [doc] ammend ivshmem_kvmfr to make cgroups and permissions clearer
+  * [doc] the nvidia open drivers now support DMABUF
+  * [doc] fix broken reference
+  * [doc] remove the `module` page as it's now part of `installation`
+
+-------------------------------------------------------------------
+Tue May 21 06:02:54 UTC 2024 - dead_mozay@opensuse.org
+
+- Update to version B7rc1:
+  * [doc] fix ivshmem_kvmfr tree structure
+  * [host] d12: revert ivshmem heap order change
+  * [host] d12: move ivshmem heap creation to later in init
+  * [doc] fix lack of consistency of `Recommended`
+  * [host] windows: fix crash on failure to init a capture interface
+  * [host] d12: don't attempt to use realtime priority
+  * [doc] ammend ivshmem_kvmfr to make cgroups and permissions clearer
+  * [doc] the nvidia open drivers now support DMABUF
+  * [doc] fix broken reference
+  * [doc] remove the `module` page as it's now part of `installation`
+
+-------------------------------------------------------------------
+Mon May 20 07:38:04 UTC 2024 - jonatas.sgoncalves@gmail.com
+
+- Update to version B7-rc1:
+  * [host] dxgi: fix crash during init due to out of order accesses
+  * [client] wayland: fix failure to select libdecor
+  * [client] wayland: Let viewporter use full wl_buffer
+  * [doc] Update module libvirt setup
+  * [obs] fix compilation for older versions of OBS
+  * [obs] tell OBS if we are operating in HDR
+  * [client] x11/i3: fix fullscreen at launch via parameter/config
+  * [client] cmake: move X11 config directives to `displayservers`
+  * [client] egl: do not use DMA when using the spice display
+  * [client] egl: fix desktop spice toggle race
+
+-------------------------------------------------------------------
+Wed Mar 15 22:17:17 UTC 2023 - Simon Heise <l0rdp4z1f1st@gmail.com>
+
+Verion B6: package initially build with this version
+Verion B6: package initially build with this version
+Verion B6: package initially build with this version
+Verion B6: package initially build with this version
+Verion B6: package initially build with this version
+Verion B6: package initially build with this version
+- 
