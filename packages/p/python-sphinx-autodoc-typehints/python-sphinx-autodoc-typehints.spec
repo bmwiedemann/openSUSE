@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-autodoc-typehints
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,7 +54,7 @@ BuildRequires:  %{python_module sphobjinv >= 2.3.1}
 BuildRequires:  %{python_module typing_extensions >= 4.11}
 
 # Do not depend on nptyping for SLFO:Main
-%if 0%{suse_version} > 1600
+%if 0%{suse_version} >= 1699
 BuildRequires:  %{python_module nptyping >= 2.5}
 %endif
 

@@ -302,4 +302,12 @@
   - Replace docutils private API use w/ public</comment>
     <requestid>1316807</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>1dadef0008147247839565f114fcf7a0</srcmd5>
+    <version>3.5.2</version>
+    <time>1772050321</time>
+    <user>anag_factory</user>
+    <comment>- Fix the condition with suse_version macro on SLFO (jsc#PED-15846)</comment>
+    <requestid>1335055</requestid>
+  </revision>
 </revisionlist>
