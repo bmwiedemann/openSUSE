@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 25 01:38:42 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fix incorrect python dependency macros usage
+  * Replace %{python_module} with python3-* BuildRequires
+  * Remove unnecessary runtime Requires pulled by macro expansion
+
+-------------------------------------------------------------------
 Sun Feb 22 02:15:57 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Update to 1.2.1

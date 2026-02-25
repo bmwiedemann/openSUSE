@@ -23,10 +23,10 @@ License:        GPL-3.0-only
 URL:            https://github.com/Heroic-Games-Launcher/heroic-gogdl
 Source0:        %{name}-%{version}.tar.gz
 Patch0:         use-system-xdelta3.patch
-BuildRequires:  python313-PyInstaller
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module requests < 3.0}
+BuildRequires:  python3-PyInstaller
+BuildRequires:  python3-pip
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-requests < 3.0
 Requires:       xdelta3
 %ifarch aarch64
 ExclusiveArch: aarch64

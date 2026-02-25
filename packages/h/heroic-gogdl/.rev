@@ -36,4 +36,14 @@ Fix URL to use upstream GitHub release tarball as Source0</comment>
   * Fix download sizes not being calculated properly. @imLinguin in ec9d52b</comment>
     <requestid>1334316</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6e06fedfdb29b034629740ef77b73ef9</srcmd5>
+    <version>1.2.1</version>
+    <time>1772050059</time>
+    <user>anag_factory</user>
+    <comment>- Fix incorrect python dependency macros usage
+  * Replace %{python_module} with python3-* BuildRequires
+  * Remove unnecessary runtime Requires pulled by macro expansion</comment>
+    <requestid>1334899</requestid>
+  </revision>
 </revisionlist>
