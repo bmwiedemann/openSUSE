@@ -1,7 +1,7 @@
 #
 # spec file for package libxmp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libxmp
 %define lname	libxmp4
-Version:        4.6.3
+Version:        4.7.0
 Release:        0
 Summary:        Module Player library for MOD, S3M, IT and others
 License:        MIT

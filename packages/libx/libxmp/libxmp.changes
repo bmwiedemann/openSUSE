@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Feb 25 09:46:55 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.7.0
+  * `xmp_seek_time` now always seeks (even if the position is the
+    same as the current position) and uses the start row detected
+    by the scan.
+  * New functions `xmp_seek_time_frame`,
+    `xmp_set_tempo_factor_relative`, `xmp_get_tempo_factor`.
+  * New API defines `XMP_FORMAT_32BIT`, `XMP_INST_NO_DEFAULT_PAN`,
+    `XMP_MARK_SKIP`, `XMP_MARK_END`.
+  * Add support for Software Visions DMF (Apocalypse Abyss MOD
+    variant) and Pack-Ice ("Ice!", "ICE!") unpacking.
+  * All internal module time/duration calculations are now in
+    doubles (fixes off-by-one module time on final tick of some
+    modules).
+  * IFF format loading is now more permissive toward errors in the
+    IFF tag structure.
+  * Various fixed to playback of IMF, LIQ, MED, XM, XMF, IT, MTM,
+    PTM, STM, GDM modules.
+
+-------------------------------------------------------------------
 Mon May 12 05:15:16 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.6.3
