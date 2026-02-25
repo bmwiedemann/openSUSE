@@ -85,4 +85,13 @@
     <comment></comment>
     <requestid>1309948</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>04df641954a6dbd5cfffd77bcc697d8d</srcmd5>
+    <version>3.3.1</version>
+    <time>1772050003</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.1:
+  * fix an issue with semver &gt;=1 (forwarded request 1334879 from rrahl0)</comment>
+    <requestid>1334880</requestid>
+  </revision>
 </revisionlist>

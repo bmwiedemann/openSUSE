@@ -1,7 +1,7 @@
 #
 # spec file for package distrobuilder
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,14 @@
 
 
 Name:           distrobuilder
-Version:        3.2
+Version:        3.3.1
 Release:        0
 Summary:        System container image builder for LXC and LXD/Incus
 License:        Apache-2.0
 URL:            https://github.com/lxc/distrobuilder
-Source0:        %{url}/archive/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Patch0:         pie.patch
-Patch1:         fix-CVE-2025-22872.patch
-Patch2:         fix-CVE-2025-58190.patch
-Patch3:         fix-CVE-2025-47911.patch
 BuildRequires:  debootstrap
 BuildRequires:  git-core
 BuildRequires:  gpg2
@@ -35,7 +32,7 @@ BuildRequires:  make
 BuildRequires:  rsync
 BuildRequires:  squashfs
 BuildRequires:  zstd
-BuildRequires:  golang(API) >= 1.23
+BuildRequires:  golang(API) >= 1.25
 Requires:       btrfsprogs
 Requires:       bzip2
 Requires:       debootstrap
@@ -62,7 +59,7 @@ Requires:       zstd
 %{summary}.
 
 %prep
-%autosetup -a1 -p1 -n %{name}-%{name}-%{version}
+%autosetup -a1 -p1
 
 %build
 %make_build

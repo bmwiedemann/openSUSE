@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Feb 24 22:05:34 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 3.3.1:
+  * fix an issue with semver >=1
+
+-------------------------------------------------------------------
+Tue Feb 24 07:04:03 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 3.3.0:
+  * Usage: Set image.os for Windows installation
+  * Use Incus 6.12
+  * utils_test.go: TestRecvGPGKeys add missing cleanup
+  * chroot: Don't empty mount targets
+  * Add support for disabling qcow2 compression
+  * windows: Add 2k25 to supported list
+  * openwrt: verify checksum and signature by default
+  * Update almalinux-http.go
+  * rockylinux: Add RockyLinux 10 support
+  * Align Alma Linux logic with Rocky Linux
+  * fedora-http: Use RsyncLocal
+  * Add support for CentOS Stream 10
+  * Update GPGKey and mirror for Centos Stream 9 onwards
+  * Add viosock driver support
+  * windows: Fix lib dir location
+  * systemd-generator: Fix console-getty handling
+  * docker: use umoci library and podman image library
+  * Tweak HTTP client handling
+  * Drop support for OpenWRT 22.x
+  * Update OpenWRT config to build also release candidates
+  * sources/almalinux-http: Use CHECKSUM for AlmaLinux 8, 9 and 10
+  * Enforce GPG verification across multiple distros
+  * Fix GPG verification for CentOS, Gentoo, Rocky Linux, and VoidLinux
+  * Fix CentOS Stream 10 checksum file retrieval
+  * Fix portage snapshot GPG verification
+  * source.md: source.same_is is a string
+  * systemd-generator: fix escape sequence
+  * Viosock fixes
+  * windows: Remove catalog injection
+  * Fix documentation
+- remove patches fix-CVE-2025-47911.patch, fix-CVE-2025-58190.patch and
+  fix-CVE-2025-22872.patch, CVE-2025-58190.patch fixed upstream
+
+-------------------------------------------------------------------
 Thu Oct  9 10:10:59 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - add patch fix-CVE-2025-47911.patch, fixing bsc#1251479
