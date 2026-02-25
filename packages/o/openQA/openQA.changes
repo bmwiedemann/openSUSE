@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Feb 24 21:52:18 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1771942065.808b073f:
+  * test(t/44-scripts): extend to cover Python scripts
+  * test(t/44-scripts): implement individual timeouts
+  * fix(script): add early argument validation where missing
+  * test: harmonize Test::More call format using '+' prefix
+  * Dependency cron 2026-02-24
+  * test: refine style check and fix ambiguous test calls
+  * Replace Ingress with Kubernetes Gateway API for external access
+  * refactor: ensure consistent test call parentheses format
+  * chore: add dependency for python3-gitlint commit checks
+  * tweak: Improve logging of Git output
+  * tweak: Avoid warnings about invalid revision ranges
+  * tweak: Use normal warning log messages when encountering Git problems
+  * fix: Avoid Perl warnings if URL passed to `git_commit_url` is invalid
+  * docs: Add section about security
+  * Fix tools/test_helm_chart after Helm chart reorganization
+  * Update Helm chart documentation
+  * Move worker subchart under openqa/ and fix connectivity
+  * Add single openqa parent chart with ingress and nginx
+  * Remove old helm chart structure
+
+-------------------------------------------------------------------
 Mon Feb 23 16:01:06 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1771846996.b67911c1:
