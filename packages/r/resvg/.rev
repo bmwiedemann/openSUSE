@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dd1290f1639797a14b640c7244397866</srcmd5>
+    <version>0.47.0</version>
+    <time>1772050001</time>
+    <user>anag_factory</user>
+    <comment>Hi. I would like to add this package to openSUSE:Factory. Fuzzel will default to this backend in the next release and will remove other backends. </comment>
+    <requestid>1334660</requestid>
+  </revision>
+</revisionlist>

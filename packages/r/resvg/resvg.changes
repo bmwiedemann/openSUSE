@@ -1,0 +1,105 @@
+-------------------------------------------------------------------
+Tue Feb 24 06:28:03 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Cleanup specfile:
+  * rename from `-c-api-devel` to `devel` and `devel-static` to conform with
+    guidelines
+
+-------------------------------------------------------------------
+Sun Feb 15 15:49:10 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 0.47.0
+ - Added
+   * Focal radius (fr) supported for Radial Gradients.
+   * Support for variable fonts based on font-variation-settings CSS
+     property.
+ - Changed
+   * tiny-skia has a major version bump from 0.11 to 0.12.
+
+-------------------------------------------------------------------
+Tue Jan 13 06:04:06 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 0.46.0
+- Added
+  * Support SVGs without the xmlns attribute on the root. Thanks to
+    @JosefKuchar.
+  * Add a from_data_nested method to usvg::Tree
+  * Use cache for glyph outlining
+  * Support loading nested embedded images
+- Changed
+  * Bump dependencies, bump MSRV to 1.87, Upgrade to edition 2024
+  * Upgraded kurbo to 0.13 and svgtypes to 0.16.1. Thanks to @HaHa421.
+  * Bump zune_jpeg
+  * Fix abs_bounding_box calculation for image
+  * Fix crash caused by glyph splitting
+  * Fix a bug with incorrect resolving of fill/stroke color
+  * Fix inverted condition in has_text_nodes method
+  * Do not write empty defs nodes
+  * Check if text paths need to be written out
+  * Use checked arithmetic when computing bounding box
+  * Fix bug in rewriting of clip paths with transformed path
+- Removed
+  * Remove unused phf dependency
+
+-------------------------------------------------------------------
+Mon Apr 21 16:37:49 UTC 2025 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 0.45.1
+- Added
+  * Support SVGs without the xmlns attribute on the root.
+- Removed
+  * tools/kde-dolphin-thumbnailer.
+
+-------------------------------------------------------------------
+Thu Feb 27 06:08:13 UTC 2025 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 0.45.0
+- Added
+  * Support for the background-color attribute.
+  * Support for additional image-rendering attributes.
+  * Support for the !important CSS flag.
+  * Support for Luma JPEG images.
+  * (c-api) resvg_options_set_stylesheet. Thanks to @michabay05.
+  * (svgtypes) Support for floating point hue in hsl() and hsla().
+- Changed
+  * License to Apache-2.0 OR MIT. See resvg#838 for more information.
+  * Updated WebP decoder for bug fixes and improved performance. Thanks to @Shnatsel.
+  * MSRV of resvg and c-api bumped to 1.67.1.
+  * fontdb and rustybuzz have been updated.
+  * Updated other dependencies.
+  * (svgtypes) Simplified color component rounding and bounds checking.
+  * Improved handling of paths with paint order markers but no actual markers.
+ - Fixed
+  * Relative unit handling when use references symbol.
+  * (svgtypes) Rounding of hues in HSL to RGB conversion.
+  * (svgtypes) Rounding of alpha.
+
+-------------------------------------------------------------------
+Mon Oct  7 19:51:12 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 0.44.0
+- Added
+  * Stylesheet injection support. Thanks to @LaurenzV.
+  * (c-api) resvg_get_object_bbox
+  * (c-api) cargo-c metadata. Thanks to @lu-zero.
+  * Implement From for fontdb and usvg font types. Thanks to @dhardy.
+- Changed
+  * (c-api) resvg_get_image_bbox returns a layer and not object bounding box now.
+    Use resvg_get_object_bbox to preserve the old behavior.
+- Fixed
+  * (svgtypes) Path parsing with S or T segments after A.
+  * Bounding box calculation for the root group used for viewBox flattening.
+
+-------------------------------------------------------------------
+Thu Sep 12 04:26:49 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Release 0.43.0
+- Added
+  * Support WebP images. Thanks to @notjosh.
+- Changed
+  * Use zune-jpeg instead of jpeg-decoder. Thanks to @mattfbacon.
+  * Update dependencies.
+- Fixed
+  * Canvas size limits calculation.
+  * SVG fonts handling. Thanks to @LaurenzV.
+  * Transforms in COLR fonts. Thanks to @LaurenzV.
