@@ -1,7 +1,7 @@
 #
 # spec file for package python-zopfli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zopfli
-Version:        0.2.3.post1
+Version:        0.4.1
 Release:        0
 Summary:        Zopfli module for python
 License:        Apache-2.0

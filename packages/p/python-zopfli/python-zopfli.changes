@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Feb 24 17:13:11 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.4.1
+  * The upstream google/zopfli repo is archived, so we switched the
+    submodule to the fonttools fork which includes a fix for unaligned
+    memory access that caused SIGBUS on strict-alignment architectures
+    such as SPARC (fonttools/zopfli#1, #28).
+- from version 0.4.0
+  * Use CPython's Py_LIMITED_API to build and upload a single abi3-tagged
+    wheel per platform instead of one for each python minor version,
+    reducing the number of wheels published to PyPI from 40+ to 10 or so,
+    and avoiding the need to build new set of wheels once a new python
+    (e.g. 3.15) is out next year.
+- from version 0.4.0b1
+  * Testing upload of abi3 wheels to PyPI
+- from version 0.3.0
+  * Dropped support for python 3.8 and 3.9, we now require 3.10+.
+  * Added wheels for Python 3.14 and PyPy 3.11.
+  * No other code changes since the previous version.
+- from version 0.2.4b1
+  * Testing PyPI upload still works
+
+-------------------------------------------------------------------
 Sun Nov 10 21:42:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2.3.post1:
