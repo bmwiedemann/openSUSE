@@ -1,7 +1,7 @@
 Source: gpxsee
 Section: Graphics
 Priority: optional
-Maintainer: Martin Tuma <tumic@cbox.cz>
+Maintainer: Martin Tuma <tumic@gpxsee.org>
 Build-Depends: debhelper (>= 9), qt6-base-dev, qt6-base-private-dev, qt6-positioning-dev, qt6-svg-dev, qt6-serialport-dev, qmake6, qt6-l10n-tools, qt6-tools-dev-tools, zlib1g-dev
 Homepage: http://www.gpxsee.org
 
