@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 25 01:34:44 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fix incorrect python dependency macros usage
+  * Replace %{python_module} with python3-* BuildRequires
+  * Remove unnecessary runtime Requires pulled by macro expansion 
+
+-------------------------------------------------------------------
 Sun Feb 22 03:09:11 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Update to 0.20.41 - Freeman Pontifex (Hotfix) Latest

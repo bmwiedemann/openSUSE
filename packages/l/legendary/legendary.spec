@@ -22,13 +22,12 @@ Summary:        An Epic Games Launcher alternative
 License:        GPL-3.0-only
 URL:            https://github.com/Heroic-Games-Launcher/legendary.git
 Source:         %{name}-%{version}.tar.gz
-BuildRequires:  python313-filelock
-BuildRequires:  python313-PyInstaller
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module requests < 3.0}
-BuildRequires:  %{python_module requests-futures}
-Requires:       %{python_module requests-futures}
+BuildRequires:  python3-filelock
+BuildRequires:  python3-PyInstaller
+BuildRequires:  python3-pip
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-requests < 3.0
+BuildRequires:  python3-requests-futures
 %ifarch aarch64
 ExclusiveArch: aarch64
 %endif

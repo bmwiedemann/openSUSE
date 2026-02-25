@@ -36,4 +36,14 @@ This is also a dependency for heroic-games-launcher package.</comment>
     and only have &quot;python3&quot;).</comment>
     <requestid>1334317</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>79a6e240db7f13ad36cf97ad111ff2b8</srcmd5>
+    <version>0.20.41</version>
+    <time>1772050058</time>
+    <user>anag_factory</user>
+    <comment>- Fix incorrect python dependency macros usage
+  * Replace %{python_module} with python3-* BuildRequires
+  * Remove unnecessary runtime Requires pulled by macro expansion</comment>
+    <requestid>1334897</requestid>
+  </revision>
 </revisionlist>
