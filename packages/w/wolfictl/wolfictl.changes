@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 16 05:51:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.1:
+  * build(deps): bump chainguard-dev/actions from 1.5.16 to 1.6.0
+    (#1866)
+  * build(deps): bump chainguard-dev/actions from 1.5.13 to 1.5.16
+    (#1863)
+  * build(deps): bump step-security/harden-runner from 2.14.1 to
+    2.14.2 (#1864)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.16.4 to
+    5.16.5 (#1865)
+
+-------------------------------------------------------------------
 Wed Feb  4 06:11:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.39.0:

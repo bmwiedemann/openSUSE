@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="revision">main</param>
-    <param name="versionformat">v0.39.0</param>
+    <param name="versionformat">v0.39.1</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
   </service>
