@@ -84,4 +84,29 @@
   * Added favorites</comment>
     <requestid>1334378</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3fc3850ae3e65162f4e1564e04ec4ccb</srcmd5>
+    <version>1.15.3</version>
+    <time>1772050021</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.15.3
+- Upstream changes for 1.15.3:
+  * Fixed Steam icons not being properly detected
+  * Reworked Steam detection
+  * Fixed global envars not being overwritten
+  * Update the persian translation
+  * updated italian translation
+- For version 1.15.2:
+  * Removed python-filelock
+  * Fixed running Steam Flatpak games
+  * Fixed games being duplicated and added Steam Flatpak location
+  * Updated Portuguese translation
+  * Fixed alt+enter not working on an empty library
+  * Reworked settings buttons funcionality
+  * Reworked systray icon
+  * Updated Portuguese translation
+  * Added support for Steam games
+- Removed python-filelock dependency in .spec file for newer versions as well</comment>
+    <requestid>1334834</requestid>
+  </revision>
 </revisionlist>

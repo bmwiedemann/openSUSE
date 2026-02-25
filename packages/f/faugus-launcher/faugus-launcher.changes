@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Feb 24 17:47:01 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.15.3
+- Upstream changes for 1.15.3:
+  * Fixed Steam icons not being properly detected
+  * Reworked Steam detection
+  * Fixed global envars not being overwritten
+  * Update the persian translation
+  * updated italian translation
+- For version 1.15.2:
+  * Removed python-filelock
+  * Fixed running Steam Flatpak games
+  * Fixed games being duplicated and added Steam Flatpak location
+  * Updated Portuguese translation
+  * Fixed alt+enter not working on an empty library
+  * Reworked settings buttons funcionality
+  * Reworked systray icon
+  * Updated Portuguese translation
+  * Added support for Steam games
+- Removed python-filelock dependency in .spec file for newer versions as well
+
+-------------------------------------------------------------------
 Sat Feb 21 04:20:06 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.15.1
