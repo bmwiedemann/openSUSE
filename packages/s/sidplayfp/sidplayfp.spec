@@ -18,7 +18,7 @@
 
 
 Name:           sidplayfp
-Version:        2.16.1
+Version:        2.16.2
 Release:        0
 Summary:        SID chip music module player
 License:        GPL-2.0-or-later
