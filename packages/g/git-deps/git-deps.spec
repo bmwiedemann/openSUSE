@@ -75,7 +75,6 @@ Documentation for git-deps.
 
 %install
 %python3_pyproject_install
-install -D -m 755 git_deps/handler.py %{buildroot}%{_bindir}/gitfile-handler
 %python3_fix_shebang
 %fdupes %{buildroot}%{python3_sitelib}
 
@@ -92,6 +91,7 @@ install -D -m 755 git_deps/handler.py %{buildroot}%{_bindir}/gitfile-handler
 %{_bindir}/git-deps
 # %%{_bindir}/git-fixup
 %{_bindir}/gitfile-handler
+%{_datadir}/git_deps
 %{python3_sitelib}/git_deps
 %{python3_sitelib}/git_deps-1.1.0*-info
 

@@ -121,4 +121,13 @@ generate the list)
   pygit2 to 1.16 and fix bugs.</comment>
     <requestid>1316991</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>8daeee34b18b71381c5d9674884714f1</srcmd5>
+    <version>1.1.0+git.1696898573.89d51e8</version>
+    <time>1772050010</time>
+    <user>anag_factory</user>
+    <comment>- Add pygit2-1.16.0.patch upgrading pygit2 to 1.16 and fixing
+  bugs (bsc#1257738).</comment>
+    <requestid>1334815</requestid>
+  </revision>
 </revisionlist>
