@@ -23,4 +23,14 @@
     <comment>- Remove obscpio file, not needed</comment>
     <requestid>1327196</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ea6db8fc4ee20a4cebd561bab5e81c6f</srcmd5>
+    <version>0.3.0</version>
+    <time>1772050044</time>
+    <user>anag_factory</user>
+    <comment>- Release 0.3.0:
+  * major speedup using parallelism, contributed by Ladislav Slezak
+  * add benchmark to measure speed gain</comment>
+    <requestid>1334860</requestid>
+  </revision>
 </revisionlist>

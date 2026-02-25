@@ -17,7 +17,7 @@
 
 
 Name:           image-janitor
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        Cleans up unused kernel drivers and firmware
 License:        GPL-2.0-or-later

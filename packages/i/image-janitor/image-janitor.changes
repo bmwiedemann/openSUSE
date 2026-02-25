@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 24 21:04:33 UTC 2026 - Frederic Crozat <fcrozat@suse.com>
+
+- Release 0.3.0:
+  * major speedup using parallelism, contributed by Ladislav Slezak
+  * add benchmark to measure speed gain
+
+-------------------------------------------------------------------
 Wed Jan 14 10:51:50 UTC 2026 - Frederic Crozat <fcrozat@suse.com>
 
 - Remove obscpio file, not needed
