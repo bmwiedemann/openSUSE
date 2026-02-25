@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Feb 24 13:52:34 UTC 2026 - Paulo Gomes <pjbgf@linux.com>
+
+- Update to version 0.0.18:
+  * chore(deps): update dependency golangci/golangci-lint to v2.9.0
+  * fix(deps): update golang
+  * chore(deps): update dependency protocolbuffers/protobuf to v33.5
+  * Add openSSF best practices badge
+  * fix(deps): update module github.com/urfave/cli/v3 to v3.6.2
+  * Fix linter issues
+  * chore(deps): update dependency golangci/golangci-lint to v2.8.0
+  * fix(deps): update module github.com/go-git/go-git/v6 to v6.0.0-20260114124804-a8db3a6585a6
+  * chore(deps): update dependency protocolbuffers/protobuf to v33.4
+  * fix(deps): update golang
+  * fix(deps): update module google.golang.org/grpc to v1.78.0
+  * fix(deps): update module google.golang.org/protobuf to v1.36.11
+  * chore(deps): update dependency golangci/golangci-lint to v2.7.2
+  * chore(deps): update dependency golangci/golangci-lint to v2.7.1
+  * chore(deps): update dependency golangci/golangci-lint to v2.7.0
+  * fix(deps): update golang
+  * Add support for disabling network on workload Previously a workload could only have its network disabled when that was aligned with the Profile. This change enables the workload to be more restrictive than the Profile.
+  * chore(deps): update dependency protocolbuffers/protobuf to v33.2
+  * fix(deps): update module github.com/cyphar/filepath-securejoin to v0.6.1
+  * fix(deps): update module github.com/urfave/cli/v3 to v3.6.1
+  * chore(deps): update dependency golangci/golangci-lint to v2.6.2
+
+-------------------------------------------------------------------
 Thu Nov 20 10:08:29 UTC 2025 - Paulo Gomes <pjbgf@linux.com>
 
 - Update to version 0.0.17:
