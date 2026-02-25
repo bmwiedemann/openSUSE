@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 25 07:17:39 UTC 2026 - Avindra Goolcharan <aavindraa@gmail.com>
+
+- update to 0.27.3:
+  * Preserve URL fragments in data URLs (#4370)
+  * Parse and print CSS @scope rules (#4322)
+  * Fix a minification bug with lowering of for await (#4378, #4385)
+  * Update the Go compiler from v1.25.5 to v1.25.7 (#4383, #4388)
+
+-------------------------------------------------------------------
 Sun Jan 18 23:22:40 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 0.27.2:

@@ -437,4 +437,16 @@ Binary file esbuild-0.25.3.tar.gz (revision 17) deleted</comment>
   * Fix bundler bug with var nested inside if (#4348)</comment>
     <requestid>1327966</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>702231993d655b6b19c06202dc352571</srcmd5>
+    <version>0.27.3</version>
+    <time>1772050252</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.27.3:
+  * Preserve URL fragments in data URLs (#4370)
+  * Parse and print CSS @scope rules (#4322)
+  * Fix a minification bug with lowering of for await (#4378, #4385)
+  * Update the Go compiler from v1.25.5 to v1.25.7 (#4383, #4388)</comment>
+    <requestid>1334917</requestid>
+  </revision>
 </revisionlist>
