@@ -1,0 +1,41 @@
+From 446bfce439f9df2bd068c37bf6203a8fd3c9e2fa Mon Sep 17 00:00:00 2001
+From: Jaroslav Jindrak <dzejrou@gmail.com>
+Date: Tue, 5 Mar 2024 14:25:50 +0100
+Subject: [PATCH 16/18] bsc1254206: daemon: overlay2: remove world writable
+ permission from the lower file
+
+In de2447c, the creation of the 'lower' file was changed from using
+os.Create to using ioutils.AtomicWriteFile, which ignores the system's
+umask. This means that even though the requested permission in the
+source code was always 0666, it was 0644 on systems with default
+umask of 0022 prior to de2447c, so the move to AtomicFile potentially
+increased the file's permissions.
+
+This is not a security issue because the parent directory does not
+allow writes into the file, but it can confuse security scanners on
+Linux-based systems into giving false positives.
+
+Signed-off-by: Jaroslav Jindrak <dzejrou@gmail.com>
+(cherry picked from commit cadb124ab679f7e48c917473e28ff7f270d27dd9)
+SUSE-Bugs: bsc#1220339 bsc#1254206
+Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
+---
+ daemon/graphdriver/overlay2/overlay.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/daemon/graphdriver/overlay2/overlay.go b/daemon/graphdriver/overlay2/overlay.go
+index 3f06a837c8..e29417c479 100644
+--- a/daemon/graphdriver/overlay2/overlay.go
++++ b/daemon/graphdriver/overlay2/overlay.go
+@@ -409,7 +409,7 @@ func (d *Driver) create(id, parent string, opts *graphdriver.CreateOpts) (retErr
+ 		return err
+ 	}
+ 	if lower != "" {
+-		if err := ioutils.AtomicWriteFile(path.Join(dir, lowerFile), []byte(lower), 0o666); err != nil {
++		if err := ioutils.AtomicWriteFile(path.Join(dir, lowerFile), []byte(lower), 0o644); err != nil {
+ 			return err
+ 		}
+ 	}
+-- 
+2.52.0
+

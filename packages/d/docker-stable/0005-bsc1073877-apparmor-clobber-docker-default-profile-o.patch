@@ -1,7 +1,7 @@
 From d89fec1bef20bcc76c07ef886e033bb69fdd6f32 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Fri, 29 Jun 2018 17:59:30 +1000
-Subject: [PATCH 05/14] bsc1073877: apparmor: clobber docker-default profile on
+Subject: [PATCH 05/18] bsc1073877: apparmor: clobber docker-default profile on
  start
 
 In the process of making docker-default reloading far less expensive,
@@ -22,7 +22,7 @@ Signed-off-by: Aleksa Sarai <asarai@suse.de>
  3 files changed, 17 insertions(+), 6 deletions(-)
 
 diff --git a/daemon/apparmor_default.go b/daemon/apparmor_default.go
-index 6376001613f7..5fde21a4af8a 100644
+index 6376001613..5fde21a4af 100644
 --- a/daemon/apparmor_default.go
 +++ b/daemon/apparmor_default.go
 @@ -24,6 +24,15 @@ func DefaultApparmorProfile() string {
@@ -54,7 +54,7 @@ index 6376001613f7..5fde21a4af8a 100644
  	return nil
  }
 diff --git a/daemon/apparmor_default_unsupported.go b/daemon/apparmor_default_unsupported.go
-index e3dc18b32b5e..9c7723056268 100644
+index e3dc18b32b..9c77230562 100644
 --- a/daemon/apparmor_default_unsupported.go
 +++ b/daemon/apparmor_default_unsupported.go
 @@ -3,6 +3,10 @@
@@ -69,7 +69,7 @@ index e3dc18b32b5e..9c7723056268 100644
  	return nil
  }
 diff --git a/daemon/daemon.go b/daemon/daemon.go
-index 585d85086f8d..6e4c6ad1ac01 100644
+index 585d85086f..6e4c6ad1ac 100644
 --- a/daemon/daemon.go
 +++ b/daemon/daemon.go
 @@ -845,8 +845,9 @@ func NewDaemon(ctx context.Context, config *config.Config, pluginStore *plugin.S
@@ -85,5 +85,5 @@ index 585d85086f8d..6e4c6ad1ac01 100644
  	}
  
 -- 
-2.49.0
+2.52.0
 

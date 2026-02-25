@@ -1,7 +1,7 @@
 From 5ada2078fb4c4a0433578fdff1ccff028293117a Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <cyphar@cyphar.com>
 Date: Wed, 19 Jun 2024 16:30:49 +1000
-Subject: [PATCH 09/14] bsc1214855: volume: use AtomicWriteFile to save volume
+Subject: [PATCH 09/18] bsc1214855: volume: use AtomicWriteFile to save volume
  options
 
 If the system (or Docker) crashes while saivng the volume options, on
@@ -29,7 +29,7 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/volume/local/local.go b/volume/local/local.go
-index b4f3a3669a84..077b26f1b813 100644
+index b4f3a3669a..077b26f1b8 100644
 --- a/volume/local/local.go
 +++ b/volume/local/local.go
 @@ -16,6 +16,7 @@ import (
@@ -50,5 +50,5 @@ index b4f3a3669a84..077b26f1b813 100644
  		return errdefs.System(errors.Wrap(err, "error while persisting volume options"))
  	}
 -- 
-2.49.0
+2.52.0
 

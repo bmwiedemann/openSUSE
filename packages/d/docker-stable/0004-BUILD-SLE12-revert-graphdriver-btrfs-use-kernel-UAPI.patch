@@ -1,7 +1,7 @@
 From ba2fbfac1b3001d2e4e874b30456546f07039f2b Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Mon, 22 May 2023 15:44:54 +1000
-Subject: [PATCH 04/14] BUILD: SLE12: revert "graphdriver/btrfs: use kernel
+Subject: [PATCH 04/18] BUILD: SLE12: revert "graphdriver/btrfs: use kernel
  UAPI headers"
 
 This reverts commit 3208dcabdc8997340b255f5b880fef4e3f54580d.
@@ -16,7 +16,7 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  1 file changed, 4 insertions(+), 9 deletions(-)
 
 diff --git a/daemon/graphdriver/btrfs/btrfs.go b/daemon/graphdriver/btrfs/btrfs.go
-index d88efc4be2bb..4e976aa689cd 100644
+index d88efc4be2..4e976aa689 100644
 --- a/daemon/graphdriver/btrfs/btrfs.go
 +++ b/daemon/graphdriver/btrfs/btrfs.go
 @@ -5,17 +5,12 @@ package btrfs // import "github.com/docker/docker/daemon/graphdriver/btrfs"
@@ -42,5 +42,5 @@ index d88efc4be2bb..4e976aa689cd 100644
  static void set_name_btrfs_ioctl_vol_args_v2(struct btrfs_ioctl_vol_args_v2* btrfs_struct, const char* value) {
      snprintf(btrfs_struct->name, BTRFS_SUBVOL_NAME_MAX, "%s", value);
 -- 
-2.49.0
+2.52.0
 

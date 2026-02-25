@@ -1,7 +1,7 @@
-From 7ba7a35a844985c3599e18bfc4e2ede8f1087bc2 Mon Sep 17 00:00:00 2001
+From a60d1a4c8e27baabba8da82cf8a9045242e3930f Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <cyphar@cyphar.com>
 Date: Thu, 21 Nov 2024 20:00:07 +1100
-Subject: [PATCH 14/14] TESTS: backport fixes for integration tests
+Subject: [PATCH 14/18] TESTS: backport fixes for integration tests
 
 We need a couple of patches to make the tests work on SLES:
 
@@ -16,7 +16,7 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  3 files changed, 4 insertions(+), 5 deletions(-)
 
 diff --git a/Dockerfile b/Dockerfile
-index 463d5cfc1a86..7a23962af09b 100644
+index 463d5cfc1a..7a23962af0 100644
 --- a/Dockerfile
 +++ b/Dockerfile
 @@ -59,7 +59,7 @@ WORKDIR /go/src/github.com/docker/distribution
@@ -29,7 +29,7 @@ index 463d5cfc1a86..7a23962af09b 100644
  # install from the https://github.com/docker/distribution repository. This is
  # an older (pre v2.3.0) version of the registry that only supports schema1
 diff --git a/integration-cli/requirements_test.go b/integration-cli/requirements_test.go
-index 2313272d7704..e5f72397e1bc 100644
+index 2313272d77..e5f72397e1 100644
 --- a/integration-cli/requirements_test.go
 +++ b/integration-cli/requirements_test.go
 @@ -85,9 +85,6 @@ func Network() bool {
@@ -43,7 +43,7 @@ index 2313272d7704..e5f72397e1bc 100644
  	return err == nil && len(buf) > 1 && buf[0] == 'Y'
  }
 diff --git a/testutil/registry/registry.go b/testutil/registry/registry.go
-index 9213db2ba21a..d8bfe17678a4 100644
+index 9213db2ba2..d8bfe17678 100644
 --- a/testutil/registry/registry.go
 +++ b/testutil/registry/registry.go
 @@ -107,10 +107,12 @@ http:
@@ -61,5 +61,5 @@ index 9213db2ba21a..d8bfe17678a4 100644
  	cmd.Stderr = c.stderr
  	if err := cmd.Start(); err != nil {
 -- 
-2.49.0
+2.52.0
 

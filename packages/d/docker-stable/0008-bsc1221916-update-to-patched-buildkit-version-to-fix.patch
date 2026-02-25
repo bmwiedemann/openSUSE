@@ -1,7 +1,7 @@
 From d5e7d0a4de49083955ecfcb26ddc62e2ba15abb8 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <cyphar@cyphar.com>
 Date: Thu, 2 May 2024 22:50:23 +1000
-Subject: [PATCH 08/14] bsc1221916: update to patched buildkit version to fix
+Subject: [PATCH 08/18] bsc1221916: update to patched buildkit version to fix
  symlink resolution
 
 SUSE-Bugs: https://bugzilla.suse.com/show_bug.cgi?id=1221916
@@ -16,7 +16,7 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  6 files changed, 314 insertions(+), 252 deletions(-)
 
 diff --git a/builder/builder-next/worker/worker.go b/builder/builder-next/worker/worker.go
-index 64d7b9131b16..7b40ac63ce7f 100644
+index 64d7b9131b..7b40ac63ce 100644
 --- a/builder/builder-next/worker/worker.go
 +++ b/builder/builder-next/worker/worker.go
 @@ -50,7 +50,7 @@ import (
@@ -29,7 +29,7 @@ index 64d7b9131b16..7b40ac63ce7f 100644
  
  const labelCreatedAt = "buildkit/createdat"
 diff --git a/vendor.mod b/vendor.mod
-index 2eb13746cacd..021d62b21d19 100644
+index 2eb13746ca..021d62b21d 100644
 --- a/vendor.mod
 +++ b/vendor.mod
 @@ -99,7 +99,7 @@ require (
@@ -42,7 +42,7 @@ index 2eb13746cacd..021d62b21d19 100644
  require (
  	cloud.google.com/go v0.102.1 // indirect
 diff --git a/vendor.sum b/vendor.sum
-index 716245c80413..4bdbbeb3f073 100644
+index 716245c804..4bdbbeb3f0 100644
 --- a/vendor.sum
 +++ b/vendor.sum
 @@ -141,8 +141,8 @@ github.com/PuerkitoBio/urlesc v0.0.0-20160726150825-5bd2802263f2/go.mod h1:uGdko
@@ -57,7 +57,7 @@ index 716245c80413..4bdbbeb3f073 100644
  github.com/agext/levenshtein v1.2.3 h1:YB2fHEn0UJagG8T1rrWknE3ZQzWM06O8AMAatNn7lmo=
  github.com/agext/levenshtein v1.2.3/go.mod h1:JEDfjyjHDjOF/1e4FlBE/PkbqA9OfWu2ki2W0IB5558=
 diff --git a/vendor/github.com/moby/buildkit/cache/contenthash/checksum.go b/vendor/github.com/moby/buildkit/cache/contenthash/checksum.go
-index dcf424a6b4fc..13a74be24c4e 100644
+index dcf424a6b4..13a74be24c 100644
 --- a/vendor/github.com/moby/buildkit/cache/contenthash/checksum.go
 +++ b/vendor/github.com/moby/buildkit/cache/contenthash/checksum.go
 @@ -10,6 +10,7 @@ import (
@@ -680,7 +680,7 @@ index dcf424a6b4fc..13a74be24c4e 100644
 +	return string(bytes.Replace(p, []byte{0}, []byte("/"), -1))
  }
 diff --git a/vendor/github.com/moby/buildkit/cache/contenthash/path.go b/vendor/github.com/moby/buildkit/cache/contenthash/path.go
-index 42b7fd8349c7..ae950f713241 100644
+index 42b7fd8349..ae950f7132 100644
 --- a/vendor/github.com/moby/buildkit/cache/contenthash/path.go
 +++ b/vendor/github.com/moby/buildkit/cache/contenthash/path.go
 @@ -1,108 +1,111 @@
@@ -875,7 +875,7 @@ index 42b7fd8349c7..ae950f713241 100644
 +	return filepath.Join(root, finalPath), nil
  }
 diff --git a/vendor/modules.txt b/vendor/modules.txt
-index 9adbc22b99fc..27bc31dfd397 100644
+index 9adbc22b99..27bc31dfd3 100644
 --- a/vendor/modules.txt
 +++ b/vendor/modules.txt
 @@ -577,7 +577,7 @@ github.com/mistifyio/go-zfs/v3
@@ -894,5 +894,5 @@ index 9adbc22b99fc..27bc31dfd397 100644
 -# github.com/moby/buildkit => github.com/SUSE/buildkit v0.0.0-20241218053907-cd804dd86389
 +# github.com/moby/buildkit => github.com/SUSE/buildkit v0.0.0-20241218053911-6b814972ef19
 -- 
-2.49.0
+2.52.0
 

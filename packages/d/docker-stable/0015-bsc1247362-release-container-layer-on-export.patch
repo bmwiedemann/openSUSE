@@ -1,7 +1,7 @@
 From 8e736eda0c047c572564e95d97da19fd372f4d33 Mon Sep 17 00:00:00 2001
 From: Joan Grau <grautxo.dev@proton.me>
 Date: Tue, 17 Sep 2024 12:49:02 +0200
-Subject: [PATCH 15/15] bsc1247362: release container layer on export
+Subject: [PATCH 15/18] bsc1247362: release container layer on export
 
 When running docker export command the container layer is only released
 in case there is an error.
@@ -22,7 +22,7 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  1 file changed, 5 insertions(+), 4 deletions(-)
 
 diff --git a/daemon/images/image_exporter.go b/daemon/images/image_exporter.go
-index 88877b01c6b2..ac93b00174c5 100644
+index 88877b01c6..ac93b00174 100644
 --- a/daemon/images/image_exporter.go
 +++ b/daemon/images/image_exporter.go
 @@ -24,12 +24,11 @@ func (i *ImageService) PerformWithBaseFS(ctx context.Context, c *container.Conta
@@ -51,5 +51,5 @@ index 88877b01c6b2..ac93b00174c5 100644
  }
  
 -- 
-2.50.1
+2.52.0
 

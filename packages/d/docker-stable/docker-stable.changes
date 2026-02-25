@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Feb 19 14:16:13 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Places a hard cap on the amount of mechanisms that can be specified and
+  encoded in the payload. (bsc#1253904, CVE-2025-58181)
+  * 0018-CVE-2025-58181-fix-vendor-crypto-ssh-3.patch
+- Rebase patches:
+  * 0001-SECRETS-SUSE-always-clear-our-internal-secrets.patch
+  * 0002-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0003-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0004-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  * 0005-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * 0006-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+  * 0007-CVE-2024-2365x-update-buildkit-to-include-CVE-patche.patch
+  * 0008-bsc1221916-update-to-patched-buildkit-version-to-fix.patch
+  * 0009-bsc1214855-volume-use-AtomicWriteFile-to-save-volume.patch
+  * 0010-CVE-2024-41110-AuthZ-plugin-securty-fixes.patch
+  * 0011-CVE-2024-29018-libnet-Don-t-forward-to-upstream-reso.patch
+  * 0012-CVE-2025-22868-vendor-jws-split-token-into-fixed-num.patch
+  * 0013-CVE-2025-22869-vendor-ssh-limit-the-size-of-the-inte.patch
+  * 0014-TESTS-backport-fixes-for-integration-tests.patch
+  * 0015-bsc1247362-release-container-layer-on-export.patch
+  * 0016-bsc1254206-daemon-overlay2-remove-world-writable-per.patch
+  * 0017-CVE-2025-30204-fix-Remove-strings.Split-and-add-pars.patch
+
+-------------------------------------------------------------------
+Wed Feb 11 08:04:37 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Backport <https://github.com/golang-jwt/jwt/commit/0951d184286dece21f73c85673fd308786ffe9c3>
+  to remove strings.Split and add parseToken function, bsc#1240513
+  fixes CVE-2025-30204
+  + 0017-CVE-2025-30204-fix-Remove-strings.Split-and-add-pars.patch
+
+-------------------------------------------------------------------
+Mon Feb  2 10:44:22 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
+
+- Fix package from immutable mode (jsc#PED-14749)
+  * Migrate /var/lib/docker creation to docker.tmpfiles
+- Replace obsolete packageand syntax with newer syntax
+
+-------------------------------------------------------------------
+Fri Nov 28 08:17:00 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Add Requires containers-selinux on systems with selinux-policy installed.
+  bsc#1252672
+
+-------------------------------------------------------------------
+Wed Nov 26 13:25:34 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Backport <https://github.com/moby/moby/pull/47498> to fix incorrect
+  permissions for overlayfs lowerdir. In practice the permissions of this
+  directory are immaterial but some security scanners falsely flag this as an
+  issue. bsc#1254206
+  + 0016-bsc1254206-daemon-overlay2-remove-world-writable-per.patch
+
+-------------------------------------------------------------------
 Mon Oct 27 23:55:45 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Enable SELinux in default daemon.json config (--selinux-enabled). This has no

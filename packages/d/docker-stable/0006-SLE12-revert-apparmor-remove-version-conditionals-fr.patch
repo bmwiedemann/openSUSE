@@ -1,7 +1,7 @@
 From 35f1693d5585b742a6749964c9bd05859c33f64b Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Wed, 11 Oct 2023 21:19:12 +1100
-Subject: [PATCH 06/14] SLE12: revert "apparmor: remove version-conditionals
+Subject: [PATCH 06/18] SLE12: revert "apparmor: remove version-conditionals
  from template"
 
 This reverts the following commits:
@@ -25,7 +25,7 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  5 files changed, 46 insertions(+), 6 deletions(-)
 
 diff --git a/contrib/apparmor/main.go b/contrib/apparmor/main.go
-index d67890d265de..f4a2978b86cb 100644
+index d67890d265..f4a2978b86 100644
 --- a/contrib/apparmor/main.go
 +++ b/contrib/apparmor/main.go
 @@ -6,9 +6,13 @@ import (
@@ -68,7 +68,7 @@ index d67890d265de..f4a2978b86cb 100644
  		log.Fatalf("executing template failed: %v", err)
  	}
 diff --git a/contrib/apparmor/template.go b/contrib/apparmor/template.go
-index 58afcbe845ee..e6d0b6d37c58 100644
+index 58afcbe845..e6d0b6d37c 100644
 --- a/contrib/apparmor/template.go
 +++ b/contrib/apparmor/template.go
 @@ -20,9 +20,11 @@ profile /usr/bin/docker (attach_disconnected, complain) {
@@ -156,7 +156,7 @@ index 58afcbe845ee..e6d0b6d37c58 100644
      /lib/** rm,
      /usr/bin/xz rm,
 diff --git a/pkg/aaparser/aaparser.go b/pkg/aaparser/aaparser.go
-index 3d7c2c5a97b3..2b5a2605f9c1 100644
+index 3d7c2c5a97..2b5a2605f9 100644
 --- a/pkg/aaparser/aaparser.go
 +++ b/pkg/aaparser/aaparser.go
 @@ -13,8 +13,6 @@ const (
@@ -169,7 +169,7 @@ index 3d7c2c5a97b3..2b5a2605f9c1 100644
  	output, err := cmd("", "--version")
  	if err != nil {
 diff --git a/profiles/apparmor/apparmor.go b/profiles/apparmor/apparmor.go
-index d0f236160506..b3566b2f7354 100644
+index d0f2361605..b3566b2f73 100644
 --- a/profiles/apparmor/apparmor.go
 +++ b/profiles/apparmor/apparmor.go
 @@ -14,8 +14,10 @@ import (
@@ -208,7 +208,7 @@ index d0f236160506..b3566b2f7354 100644
  }
  
 diff --git a/profiles/apparmor/template.go b/profiles/apparmor/template.go
-index 9f207e2014a8..626e5f6789a3 100644
+index 9f207e2014..626e5f6789 100644
 --- a/profiles/apparmor/template.go
 +++ b/profiles/apparmor/template.go
 @@ -24,12 +24,14 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
@@ -237,5 +237,5 @@ index 9f207e2014a8..626e5f6789a3 100644
  }
  `
 -- 
-2.49.0
+2.52.0
 

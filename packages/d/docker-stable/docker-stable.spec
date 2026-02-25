@@ -1,7 +1,7 @@
 #
 # spec file for package docker-stable
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -97,6 +97,9 @@ Source130:      README_SUSE.md
 Source140:      docker-audit.rules
 Source150:      docker-daemon.json
 Source160:      docker.sysusers
+%if 0%{?suse_version} >= 1500
+Source170:      docker.tmpfiles
+%endif
 # docker-integration-tests-devel
 Source900:      docker-integration.sh
 # NOTE: All of these patches are maintained in <https://github.com/suse/docker>
@@ -135,6 +138,12 @@ Patch208:       0012-CVE-2025-22868-vendor-jws-split-token-into-fixed-num.patch
 Patch209:       0013-CVE-2025-22869-vendor-ssh-limit-the-size-of-the-inte.patch
 # UPSTREAM: Backport of <https://github.com/moby/moby/pull/48517>. bsc#1247362
 Patch210:       0015-bsc1247362-release-container-layer-on-export.patch
+# UPSTREAM: Backport of <https://github.com/moby/moby/pull/47498>. bsc#1254206
+Patch211:       0016-bsc1254206-daemon-overlay2-remove-world-writable-per.patch
+# UPSTREAM: Backport of <https://github.com/golang-jwt/jwt/commit/0951d184286dece21f73c85673fd308786ffe9c3>. bsc#1240513
+Patch212:       0017-CVE-2025-30204-fix-Remove-strings.Split-and-add-pars.patch
+# UPSTREAM: Backport of <https://go-review.googlesource.com/c/crypto/+/721961> bsc#1253904
+Patch213:       0018-CVE-2025-58181-fix-vendor-crypto-ssh-3.patch
 # UPSTREAM: Backport of <https://github.com/moby/moby/pull/46307> and
 #                       <https://github.com/moby/moby/pull/49061>.
 Patch299:       0014-TESTS-backport-fixes-for-integration-tests.patch
@@ -164,6 +173,7 @@ BuildRequires:  pkgconfig(libsystemd)
 %if 0%{?suse_version} >= 1500
 # This conditional only works on rpm>=4.13, which SLE 12 doesn't have. But we
 # don't need to support Docker+selinux for SLE 12 anyway.
+Requires:       (container-selinux if selinux-policy)
 Requires:       (apparmor-parser or container-selinux)
 # This recommends is added to make sure that even if you have container-selinux
 # installed you will still be prompted to install apparmor-parser which Docker
@@ -317,7 +327,12 @@ Summary:        Bash Completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{docker_version}
 Requires:       bash-completion
+#obsolete packageand (see https://en.opensuse.org/RPM_Boolean_Dependencies)
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
 Supplements:    packageand(%{name}:bash-completion)
+%else
+Supplements:    (%{name} and bash-completion)
+%endif
 BuildArch:      noarch
 # docker-stable cannot be used alongside docker.
 %if "%{name}" == "docker-stable"
@@ -336,7 +351,12 @@ Summary:        Zsh Completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{docker_version}
 Requires:       zsh
+#obsolete packageand (see https://en.opensuse.org/RPM_Boolean_Dependencies)
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
 Supplements:    packageand(%{name}:zsh)
+%else
+Supplements:    (%{name} and zsh)
+%endif
 BuildArch:      noarch
 # docker-stable cannot be used alongside docker.
 %if "%{name}" == "docker-stable"
@@ -355,7 +375,12 @@ Summary:        Fish completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{docker_version}
 Requires:       fish
+#obsolete packageand (see https://en.opensuse.org/RPM_Boolean_Dependencies)
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
 Supplements:    packageand(%{name}:fish)
+%else
+Supplements:    (%{name} and fish)
+%endif
 BuildArch:      noarch
 # docker-stable cannot be used alongside docker.
 %if "%{name}" == "docker-stable"
@@ -422,6 +447,12 @@ cp %{SOURCE130} .
 %patch -P209 -p1
 # bsc#1247362
 %patch -P210 -p1
+# bsc#1254206
+%patch -P211 -p1
+# bsc#1240513
+%patch -P212 -p1
+# bsc#1253904
+%patch -P213 -p1
 %if %{with integration_tests}
 # integration-tests patches
 %patch -P299 -p1
@@ -521,8 +552,14 @@ install -d %{buildroot}/usr/lib/docker/cli-plugins
 install -D -m0755 %{buildx_builddir}/bin/build/docker-buildx %{buildroot}/usr/lib/docker/cli-plugins/docker-buildx
 %endif
 
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
 # /var/lib/docker
 install -d %{buildroot}/%{_localstatedir}/lib/docker
+%else
+mkdir -p %{buildroot}%{_tmpfilesdir}
+install -m 0644 %{SOURCE170} %{buildroot}%{_tmpfilesdir}/docker.conf
+%endif
+
 # daemon.json config file
 install -D -m0644 %{SOURCE150} %{buildroot}%{_sysconfdir}/docker/daemon.json
 %if %{with suseconnect}
@@ -614,7 +651,12 @@ grep -q '^dockremap:' /etc/subgid || \
 %{_bindir}/dockerd
 %{_bindir}/docker-proxy
 %{_sbindir}/rcdocker
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
 %dir %{_localstatedir}/lib/docker/
+%else
+%ghost %attr(0750,root,root) %{_localstatedir}/lib/docker
+%{_tmpfilesdir}/docker.conf
+%endif
 
 %dir /usr/lib/docker
 %dir /usr/lib/docker/cli-plugins
