@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyproj
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        SUSE-Public-Domain AND X11
 Group:          Development/Languages/Python
 URL:            https://github.com/pyproj4/pyproj
 Source:         https://files.pythonhosted.org/packages/source/p/pyproj/pyproj-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM v3.7.2-Fix-tests-for-PROJ-9.7.0-and-newer-1557.patch -- based on commit 055cab9
+Patch0:         https://github.com/pyproj4/pyproj/commit/055cab9.patch#/v3.7.2-Fix-tests-for-PROJ-9.7.0-and-newer-1557.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}

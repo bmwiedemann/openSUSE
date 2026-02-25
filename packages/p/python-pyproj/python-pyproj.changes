@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 16 19:21:15 UTC 2026 - Libor Pechacek <lpechacek@gmx.com>
+
+- Fix test/crs/test_crs.py::test_datum_horizontal failure
+  (upstream #1557)
+- Add upstream patch:
+  * v3.7.2-Fix-tests-for-PROJ-9.7.0-and-newer-1557.patch
+
+-------------------------------------------------------------------
 Fri Aug 15 17:06:58 UTC 2025 - Libor Pechacek <lpechacek@gmx.com>
 
 - Update to 3.7.2
