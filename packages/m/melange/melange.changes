@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Feb 25 09:19:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.43.3:
+  * build(deps): bump chainguard.dev/apko in the gomod group
+    (#2371)
+  * build(deps): bump github.com/google/go-containerregistry
+    (#2363)
+  * build(deps): bump goreleaser/goreleaser-action from 6.4.0 to
+    7.0.0 (#2367)
+  * build(deps): bump github.com/github/go-spdx/v2 from 2.3.6 to
+    2.4.0 (#2364)
+  * build(deps): bump the gomod group across 1 directory with 3
+    updates (#2366)
+  * Fix typo in LINTER.md from 'disable' to 'disabled' (#2348)
+
+-------------------------------------------------------------------
+Wed Feb 25 09:17:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.43.2:
+  * Use namespace instead of ReleaseData for SBOM generation.
+    (#2365)
+  * fix(maven): use symlink instead of settings.xml for cache
+    localRepository (#2361)
+  * license-check: also consider license-paths from the config
+    (#2351)
+
+-------------------------------------------------------------------
 Thu Feb 19 09:24:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.43.1:
