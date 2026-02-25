@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Feb 25 07:02:41 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.3.2:
+  * fix: helmDefaults.skipRefresh ignored in runHelmDepBuilds by
+    @aditmeno in #2415
+  * build(deps): bump goreleaser/goreleaser-action from 6 to 7 by
+    @dependabot[bot] in #2416
+  * feat: allow for HCL values override by @gxben in #2402
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.96.0 to 1.96.1 by @dependabot[bot] in #2421
+  * build(deps): bump github.com/zclconf/go-cty from 1.17.0 to
+    1.18.0 by @dependabot[bot] in #2423
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.9 to 1.32.10 by @dependabot[bot] in #2422
+  * fix: skip helm repo update when only OCI repos are configured
+    by @yxxhero in #2420
+  * fix: only pass --skip-refresh to helm dep build when helm repo
+    update was run by @yxxhero in #2419
+
+-------------------------------------------------------------------
 Sun Feb 22 09:00:26 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.3.1:
