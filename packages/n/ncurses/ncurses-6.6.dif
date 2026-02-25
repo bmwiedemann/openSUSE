@@ -143,7 +143,7 @@
  esac
  done
 --- configure
-+++ configure	2026-01-07 12:00:47.832917358 +0000
++++ configure	2026-02-23 12:37:09.299232138 +0000
 @@ -6765,7 +6765,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
@@ -164,16 +164,16 @@
  		;;
  	(mingw*msvc*)
  		cf_cv_shlib_version=msvcdll
-@@ -8388,7 +8388,7 @@ echo "${ECHO_T}$with_pcre2" >&6
+@@ -8387,7 +8387,7 @@ echo "$as_me:8386: result: $with_pcre2"
+ echo "${ECHO_T}$with_pcre2" >&6
  
  if test "x$with_pcre2" != xno ; then
+-	cf_list_pcre2="libpcre2 libpcre2-posix libpcre"
++	cf_list_pcre2="libpcre2 libpcre2-8 libpcre2-posix libpcre"
+ 	test "x$with_pcre2" != xyes && cf_list_pcre2="$with_pcre2 $cf_lib_pcre2"
  	cf_with_pcre2_ok=no
--	for cf_with_pcre2 in libpcre2 libpcre2-posix libpcre
-+	for cf_with_pcre2 in libpcre2 libpcre2-8 libpcre2-posix libpcre
- 	do
- 
- if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists "$cf_with_pcre2"; then
-@@ -29603,12 +29603,12 @@ cat >>$cf_edit_man <<CF_EOF
+ 	for cf_with_pcre2 in $cf_list_pcre2
+@@ -29608,12 +29608,12 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -188,7 +188,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -29618,7 +29618,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -29623,7 +29623,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -197,7 +197,7 @@
  CF_EOF
  fi
  
-@@ -29674,7 +29674,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -29679,7 +29679,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_manpage_so_strip \$TMP
  	fi
  	fi
@@ -206,7 +206,7 @@
  CF_EOF
  fi
  
-@@ -29683,31 +29683,31 @@ case "$MANPAGE_FORMAT" in
+@@ -29688,31 +29688,31 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -245,7 +245,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -29717,7 +29717,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -29722,7 +29722,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -254,7 +254,7 @@
  							then
  								continue
  							fi
-@@ -29727,18 +29727,18 @@ CF_EOF
+@@ -29732,18 +29732,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -276,7 +276,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_manpage_compress" ; then
-@@ -29758,9 +29758,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -29763,9 +29763,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -289,7 +289,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -29781,6 +29781,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -29786,6 +29786,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -416,7 +416,7 @@
  
  	if [ $name = $MAIN_LIBRARY ]
 --- misc/terminfo.src
-+++ misc/terminfo.src	2026-02-02 08:18:38.871552899 +0000
++++ misc/terminfo.src	2026-02-23 12:55:43.714884498 +0000
 @@ -305,7 +305,9 @@ dumb|80-column dumb tty,
  	am,
  	cols#80,
@@ -453,7 +453,7 @@
  	sgr=\E[0;10%?%p1%t;7%;%?%p2%t;4%;%?%p3%t;7%;%?%p4%t;5%;%?%p5
  	    %t;2%;%?%p6%t;1%;m%?%p9%t\016%e\017%;,
  	sgr0=\E[m\017, smacs=^N, use=linux2.2,
-@@ -5533,7 +5542,7 @@ xterm+88color2|xterm 88-color feature,
+@@ -5531,7 +5540,7 @@ xterm+88color2|xterm 88-color feature,
  
  # These variants of XFree86 3.9.16 xterm are built as a configure option.
  xterm-256color|xterm with 256 colors,
@@ -462,7 +462,7 @@
  xterm-88color|xterm with 88 colors,
  	use=xterm+osc104, use=xterm+88color,
  	use=xterm-256color,
-@@ -5809,9 +5818,25 @@ xterm-noapp|xterm with cursor keys in no
+@@ -5807,9 +5816,25 @@ xterm-noapp|xterm with cursor keys in no
  xterm-24|vs100|xterms|xterm terminal emulator 24-line (X Window System),
  	lines#24, use=xterm-old,
  
@@ -489,7 +489,7 @@
  
  # This entry assumes that xterm's handling of VT100 SI/SO is disabled by
  # setting the vt100Graphics resource to false.
-@@ -6265,7 +6290,7 @@ xterms-sun|small (80x24) xterm with sunF
+@@ -6263,7 +6288,7 @@ xterms-sun|small (80x24) xterm with sunF
  
  #### GNOME (VTE)
  # this describes the alpha-version of GNOME terminal shipped with Redhat 6.0
@@ -498,7 +498,7 @@
  	bce,
  	kdch1=^?, use=linux+kbs, use=vt100+pf1-pf4,
  	use=xterm-color,
-@@ -6554,11 +6579,15 @@ mgt|Multi GNOME Terminal,
+@@ -6552,11 +6577,15 @@ mgt|Multi GNOME Terminal,
  #### KDE
  # This is kvt 0-18.7, shipped with Redhat 6.0 (though whether it supports bce
  # or not is debatable).
@@ -515,7 +515,7 @@
  # Konsole 1.0.1 (2001/11/25)
  # (formerly known as kvt)
  #
-@@ -6814,7 +6843,7 @@ mlterm3|multi lingual terminal emulator
+@@ -6833,7 +6862,7 @@ mlterm3|multi lingual terminal emulator
  mlterm2|multi lingual terminal emulator 2.x,
  	am, eslok, km, mc5i, mir, msgr, npc, xenl, XT,
  	colors#8, cols#80, lines#24, pairs#64,
@@ -524,7 +524,7 @@
  	bel=^G, bold=\E[1m, clear=\E[H\E[2J, cr=\r, cub1=^H, cud1=\n,
  	dch=\E[%p1%dP, dch1=\E[P, ech=\E[%p1%dX, ed=\E[J, el=\E[K,
  	el1=\E[1K, enacs=, ich=\E[%p1%d@, ind=\n,
-@@ -6892,7 +6921,7 @@ rxvt-basic|rxvt terminal base (X Window
+@@ -6911,7 +6940,7 @@ rxvt-basic|rxvt terminal base (X Window
  	sgr0=\E[0m\017, smir=\E[4h, smkx=\E=, smul=\E[4m,
  	use=ecma+underline, use=ecma+standout, use=ansi+csr,
  	use=ansi+idl, use=ansi+local, use=xterm+alt47,
@@ -533,7 +533,7 @@
  	use=vt220+cvis, use=vt100+keypad,
  
  # Key Codes from rxvt reference:
-@@ -6978,6 +7007,7 @@ rxvt-basic|rxvt terminal base (X Window
+@@ -6997,6 +7026,7 @@ rxvt-basic|rxvt terminal base (X Window
  rxvt+pcfkeys|rxvt fragment for PC-style fkeys,
  	kDC=\E[3$, kEND=\E[8$, kHOM=\E[7$, kIC=\E[2$, kLFT=\E[d,
  	kNXT=\E[6$, kPRV=\E[5$, kRIT=\E[c, kel=\E[8\^, kend=\E[8~,
@@ -541,7 +541,7 @@
  	kf21=\E[23$, kf22=\E[24$, kf23=\E[11\^, kf24=\E[12\^,
  	kf25=\E[13\^, kf26=\E[14\^, kf27=\E[15\^, kf28=\E[17\^,
  	kf29=\E[18\^, kf30=\E[19\^, kf31=\E[20\^, kf32=\E[21\^,
-@@ -7060,6 +7090,38 @@ rxvt-cygwin-native|rxvt terminal emulato
+@@ -7079,6 +7109,38 @@ rxvt-cygwin-native|rxvt terminal emulato
  	     \302x\263y\363z\362{\343|\330~\376,
  	use=rxvt-cygwin,
  
@@ -580,7 +580,7 @@
  # This variant is supposed to work with rxvt 2.7.7 when compiled with
  # NO_BRIGHTCOLOR defined.  rxvt needs more work...
  rxvt-16color|rxvt with 16 colors like aixterm,
-@@ -8658,7 +8720,7 @@ pty|4bsd pseudo teletype,
+@@ -8677,7 +8739,7 @@ pty|4bsd pseudo teletype,
  # https://github.com/emacs-mirror/emacs/blob/master/lisp/term.el
  #
  # The codes supported by the term.el terminal emulation in GNU Emacs 19.30
@@ -589,7 +589,7 @@
  	am, mir, xenl,
  	cols#80, lines#24,
  	bel=^G, bold=\E[1m, cr=\r, csr=\E[%i%p1%d;%p2%dr, cub1=^H,
-@@ -8667,6 +8729,13 @@ eterm|GNU Emacs term.el terminal emulati
+@@ -8686,6 +8748,13 @@ eterm|GNU Emacs term.el terminal emulati
  	smir=\E[4h, use=ansi+cpr, use=ansi+cup, use=ansi+erase,
  	use=ansi+idl, use=ansi+local, use=ansi+sgrso,
  	use=ansi+sgrul, use=xterm+alt47,
@@ -603,27 +603,16 @@
  
  # The codes supported by the term.el terminal emulation in GNU Emacs 22.2
  eterm-color|Emacs term.el terminal emulator term-protocol-version 0.96,
-@@ -8906,11 +8975,18 @@ screen.xterm-xfree86|screen.xterm-new|sc
- 	E3@, use=screen+italics, use=screen+fkeys,
- 	use=xterm+x11mouse, use=ecma+index, use=ansi+rep,
- 	use=ecma+strikeout, use=xterm+pcfkeys,
--	use=xterm+nofkeys,
-+	use=xterm+nofkeys, use=xterm-suse,
- 
+@@ -8943,6 +9012,8 @@ screen.xterm-new|screen customized for m
  # Don't use this, because not everyone has "screen.xterm-new":
  #:screen.xterm|screen for modern xterm,
  #:	use=screen.xterm-new,
 +screen.xterm|screen customized for modern xterm,
-+	bce@, bw,
-+	invis@, kIC@, kNXT@, kPRV@, meml@, memu@, rep@,
-+	sgr=%?%p9%t\E(0%e\E(B%;\E[0%?%p6%t;1%;%?%p2%t;4%;%?%p1%p3%|
-+	    %t;7%;%?%p4%t;5%;%?%p5%t;2%;m,
-+	E3@, use=screen+italics, use=screen+fkeys,
-+	use=xterm+x11mouse, use=xterm-suse,
++	use=screen4.xterm-new, use=xterm-suse,
  
  # xterm-r6 does not really support khome/kend unless it is propped up by
  # the translations resource.
-@@ -8995,7 +9071,7 @@ screen-w|VT 100/ANSI X3.64 virtual termi
+@@ -9027,7 +9098,7 @@ screen-w|VT 100/ANSI X3.64 virtual termi
  screen2|VT 100/ANSI X3.64 virtual terminal (old 2.x),
  	cols#80, lines#24,
  	clear=\E[2J\E[H, cr=\r, cub1=^H, cup=\E[%i%p1%d;%p2%dH,
@@ -632,7 +621,7 @@
  	kf2=\ET, kf3=\EU, kf4=\EV, kf5=\EW, kf6=\EP, kf7=\EQ, kf8=\ER,
  	kf9=\E0I, khome=\EH, nel=\r\n, rc=\E8, ri=\EM, rmso=\E[23m,
  	rs1=\Ec, sc=\E7, sgr0=\E[m, smso=\E[3m, use=ecma+underline,
-@@ -10929,7 +11005,7 @@ hp700-wy|HP 700/41 emulating Wyse30,
+@@ -10971,7 +11042,7 @@ hp700-wy|HP 700/41 emulating Wyse30,
  	ri=\Ej, rmir=\Er, rmso=\EG0$<10/>, rmul=\EG0$<10/>,
  	sgr0=\EG0$<10/>, smir=\Eq, smso=\EG4$<10/>,
  	smul=\EG8$<10/>, tbc=\E0, vpa=\E[%p1%{32}%+%c,
@@ -641,7 +630,7 @@
  	am, da, db, xhp,
  	cols#80, lh#2, lines#24, lm#0, lw#8, nlab#8,
  	acsc=0cjgktlrmfn/q\,t5u6v8w7x., bel=^G, blink=\E&dA,
-@@ -18391,7 +18467,7 @@ ibm3101|i3101|IBM 3101-10,
+@@ -18432,7 +18503,7 @@ ibm3101|i3101|IBM 3101-10,
  	cup=\EY%p1%{32}%+%c%p2%{32}%+%c, cuu1=\EA, ed=\EJ,
  	el=\EI, home=\EH, hts=\E0, ind=\n, nel=\r\n, tbc=\EH,
  	use=vt52+arrows,
@@ -650,7 +639,7 @@
  	is2=\E S, rmacs=\E>B, rs2=\E S,
  	sgr=\E4%{64}%?%p1%t%{65}%|%;%?%p2%t%{66}%|%;%?%p3%t%{65}%|%;
  	    %?%p4%t%{68}%|%;%?%p5%t%{64}%|%;%?%p6%t%{72}%|%;%?%p7%t
-@@ -18626,7 +18702,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
+@@ -18667,7 +18738,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
  
  # "Megapel" refers to the display adapter, which was used with the IBM RT
  # aka IBM 6150.

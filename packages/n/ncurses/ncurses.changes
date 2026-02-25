@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 23 12:33:01 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260214
+  + add ech to screen terminfo (Debian #707308).
+  + review/update screen5, adding screen5.xterm-new and
+    screen4.xterm-new -TD
+- Add ncurses patch 20260221
+  + correct strikeout for iterm2 -TD
+  + add some xterm-style modified special-keys to iterm2 -TD
+  + modify configure script regex check to provide for Windows libraries
+    having regcomp (report by Juergen Pfeifer).
+  + modify configure script --with-pcre2 option to allow specifying the
+    pkgconfig name for pcre2 (prompted by discussion with George Goffe).
+
+-------------------------------------------------------------------
 Mon Feb  9 07:59:15 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20260207

@@ -5570,4 +5570,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1333274</requestid>
   </revision>
+  <revision rev="323" vrev="96">
+    <srcmd5>52be0680f227844fd1a9bd60063754c6</srcmd5>
+    <version>unknown</version>
+    <time>1772049997</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20260214
+  + add ech to screen terminfo (Debian #707308).
+  + review/update screen5, adding screen5.xterm-new and
+    screen4.xterm-new -TD
+- Add ncurses patch 20260221
+  + correct strikeout for iterm2 -TD
+  + add some xterm-style modified special-keys to iterm2 -TD
+  + modify configure script regex check to provide for Windows libraries
+    having regcomp (report by Juergen Pfeifer).
+  + modify configure script --with-pcre2 option to allow specifying the
+    pkgconfig name for pcre2 (prompted by discussion with George Goffe).</comment>
+    <requestid>1334519</requestid>
+  </revision>
 </revisionlist>
