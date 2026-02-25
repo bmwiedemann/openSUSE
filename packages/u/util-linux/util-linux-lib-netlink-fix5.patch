@@ -1,0 +1,36 @@
+From 889d454aaa10b70e6cdbca3183414ead52f0e379 Mon Sep 17 00:00:00 2001
+From: Karel Zak <kzak@redhat.com>
+Date: Tue, 17 Feb 2026 11:35:17 +0100
+Subject: [PATCH 7/7] lib/netlink: set SOCK_CLOEXEC on netlink socket
+
+Set SOCK_CLOEXEC when creating the NETLINK_ROUTE socket in
+ul_nl_open() to prevent the file descriptor from leaking to
+child processes across execv().
+
+In agetty, the netlink socket used to monitor IP address changes
+for \4/\6 issue escapes was inherited by the login program, causing
+SELinux AVC denials (local_login_t denied read/write on getty_t's
+netlink_route_socket).
+
+Fixes: https://github.com/util-linux/util-linux/issues/4032
+Signed-off-by: Karel Zak <kzak@redhat.com>
+---
+ lib/netlink.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/netlink.c b/lib/netlink.c
+index a6c7f25f2..28eb185d5 100644
+--- a/lib/netlink.c
++++ b/lib/netlink.c
+@@ -310,7 +310,7 @@ int ul_nl_open(struct ul_nl_data *nl, uint32_t nl_groups)
+ 	int rc;
+ 
+ 	DBG(NLMSG, ul_debugobj(nl, "opening socket"));
+-	sock = socket(AF_NETLINK, SOCK_RAW, NETLINK_ROUTE);
++	sock = socket(AF_NETLINK, SOCK_RAW | SOCK_CLOEXEC, NETLINK_ROUTE);
+ 	if (sock < 0)
+ 		return sock;
+ 	addr.nl_family = AF_NETLINK;
+-- 
+2.51.0
+

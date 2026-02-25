@@ -1,7 +1,7 @@
 From 60c5c0516e6ce52863b12343a1cd276423ab3bae Mon Sep 17 00:00:00 2001
 From: Stanislav Brabec <sbrabec@suse.cz>
 Date: Wed, 8 Oct 2025 01:14:32 +0200
-Subject: [PATCH 5/6] netaddrq: Fix crash if there are no IP addresses
+Subject: [PATCH 5/7] netaddrq: Fix crash if there are no IP addresses
 
 If there are no IP addresses, ul_netaddrq_bestaddr() returns threshold
 ULNETLINK_RATING_BAD, but there were no addresses in the best array, and

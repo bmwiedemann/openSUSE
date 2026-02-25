@@ -1,7 +1,7 @@
 From a5db8d0a9ed63969381feeee1eb0c3b39d32876b Mon Sep 17 00:00:00 2001
 From: Stanislav Brabec <sbrabec@suse.cz>
 Date: Sun, 5 Oct 2025 02:29:00 +0200
-Subject: [PATCH 3/6] ul_nl_addr_dup(): Fix address comparison
+Subject: [PATCH 3/7] ul_nl_addr_dup(): Fix address comparison
 
 When duplicating struct ul_nl_addr, set address to ifa_local, if it is set
 to ifa_local in the source. This fixes the address for PtP IPv4 network

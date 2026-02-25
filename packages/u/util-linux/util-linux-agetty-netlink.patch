@@ -1,7 +1,7 @@
 From b8b5030d792c0ffe51ee4a5925d43735b5d782d8 Mon Sep 17 00:00:00 2001
 From: Stanislav Brabec <sbrabec@suse.cz>
 Date: Wed, 9 Jul 2025 14:35:28 +0200
-Subject: [PATCH 2/6] agetty: Implement netlink based IP processing
+Subject: [PATCH 2/7] agetty: Implement netlink based IP processing
 
 The current \4 and \6 issue file escapes implementation is inferior. It
 uses get getifaddrs() to get a list of IP addresses. This function does not

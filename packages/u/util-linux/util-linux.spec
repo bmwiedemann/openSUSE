@@ -123,28 +123,30 @@ Patch9:         util-linux-lib-netlink-fix2.patch
 Patch10:        util-linux-lib-netlink-fix3.patch
 # PATCH-FIX-UPSTREAM util-linux-agetty-netlink-fix4.patch jsc#PED-8734 sbrabec@suse.com -- Implement netlink based IP address detection and issue reload.
 Patch11:        util-linux-agetty-netlink-fix4.patch
+# PATCH-FIX-UPSTREAM util-linux-lib-netlink-fix5.patch gh#util-linux/util-linux#4032 sbrabec@suse.com -- Fix NETLINK_ROUTE socket leak.
+Patch12:        util-linux-lib-netlink-fix5.patch
 # PATCH-FEATURE-UPSTREAM util-linux-lib-configs.patch gh#util-linux/util-linux#3752 schubi@suse.com -- Added lib "configs" for parsing configuration.
-Patch12:        util-linux-lib-configs.patch
+Patch13:        util-linux-lib-configs.patch
 # PATCH-FEATURE-UPSTREAM util-linux-agetty-configs.patch gh#util-linux/util-linux#3752 schubi@suse.com -- agetty: using configs lib for parsing issue files.
-Patch13:        util-linux-agetty-configs.patch
+Patch14:        util-linux-agetty-configs.patch
 # PATCH-FIX-UPSTREAM util-linux-lib-configs-fix1.patch schubi@suse.com -- Fix agetty: using configs lib.
-Patch14:        util-linux-lib-configs-fix1.patch
+Patch15:        util-linux-lib-configs-fix1.patch
 # PATCH-FIX-UPSTREAM util-linux-lib-configs-fix2.patch sbrabec@suse.com -- Fix agetty: using configs lib.
-Patch15:        util-linux-lib-configs-fix2.patch
+Patch16:        util-linux-lib-configs-fix2.patch
 # PATCH-FIX-UPSTREAM util-linux-lib-configs-fix3.patch sbrabec@suse.com -- Fix agetty: using configs lib.
-Patch16:        util-linux-lib-configs-fix3.patch
+Patch17:        util-linux-lib-configs-fix3.patch
 # PATCH-FIX-UPSTREAM util-linux-lib-configs-fix4.patch sbrabec@suse.com -- Fix agetty: using configs lib.
-Patch17:        util-linux-lib-configs-fix4.patch
+Patch18:        util-linux-lib-configs-fix4.patch
 # PATCH-FIX-UPSTREAM util-linux-lib-configs-fix5.patch sbrabec@suse.com -- Fix agetty: using configs lib.
-Patch18:        util-linux-lib-configs-fix5.patch
+Patch19:        util-linux-lib-configs-fix5.patch
 # PATCH-FIX-UPSTREAM util-linux-lib-configs-fix6.patch schubi@suse.com -- Fix agetty: using configs lib.
-Patch19:        util-linux-lib-configs-fix6.patch
+Patch20:        util-linux-lib-configs-fix6.patch
 # PATCH-FIX-UPSTREAM util-linux-agetty-escape-erase.patch bsc#1194818 sbrabec@suse.com -- Fix agetty erase of escape characters.
-Patch20:        util-linux-agetty-escape-erase.patch
+Patch21:        util-linux-agetty-escape-erase.patch
 # PATCH-FIX-BUILD util-linux-man-generated.patch sbrabec@suse.com -- Update generated man pages modified by patches.
-Patch21:        util-linux-man-generated.patch
+Patch22:        util-linux-man-generated.patch
 # PATCH-FIX-OPENSUSE bsc#1222465: fdisk creates broken partition table
-Patch22:        util-linux-bsc-1222465.patch
+Patch23:        util-linux-bsc-1222465.patch
 BuildRequires:  audit-devel
 BuildRequires:  bc
 BuildRequires:  binutils-devel

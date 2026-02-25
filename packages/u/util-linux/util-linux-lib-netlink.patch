@@ -1,7 +1,7 @@
 From ee8586cbdfb20bea6b1a7e3f10f136b6c8554f02 Mon Sep 17 00:00:00 2001
 From: Stanislav Brabec <sbrabec@suse.cz>
 Date: Wed, 9 Jul 2025 14:29:10 +0200
-Subject: [PATCH 1/6] New netlink library
+Subject: [PATCH 1/7] New netlink library
 
 To support netlink and IP address processing, two new library files were
 added:

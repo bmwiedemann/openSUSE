@@ -1,7 +1,7 @@
 From fa9b5740f67bc64d7b58f9b2fcc4f2883d7dcc91 Mon Sep 17 00:00:00 2001
 From: Stanislav Brabec <sbrabec@suse.cz>
 Date: Fri, 10 Oct 2025 13:17:26 +0200
-Subject: [PATCH 6/6] agetty: Process all data from ul_nl_process()
+Subject: [PATCH 6/7] agetty: Process all data from ul_nl_process()
 
 However select() normally triggers immediately after a partial read, it does not
 happen for netlink socket. It keeps unprocessed data until the next netlink

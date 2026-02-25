@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 23 00:37:02 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Prevent leaking of NETLINK_ROUTE socket to login, which causes
+  SELinux AVC denial (gh#util-linux/util-linux#4032,
+  util-linux-lib-netlink-fix5.patch).
+
+-------------------------------------------------------------------
 Tue Feb 10 20:43:03 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Fix bsc#1222465.
