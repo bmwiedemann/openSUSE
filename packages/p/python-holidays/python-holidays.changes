@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 24 14:39:50 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.91
+  * Refactor United Kingdom holidays
+  * Update Australia holidays: add extra ANZAC Day holiday in NSW
+  * Update Ireland holidays: add OPTIONAL category
+  * Update README: fix Snyk badge
+  * Update United Kingdom holidays: add Jun 15, 2026 holiday in Scotland
+  * Update dependencies: pre-commit + make update
+  * Add "Report-Msgid-Bugs-To" entry to .po files header
+
+-------------------------------------------------------------------
 Tue Feb 10 12:13:51 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.90

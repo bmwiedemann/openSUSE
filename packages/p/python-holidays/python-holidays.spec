@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-holidays
-Version:        0.90
+Version:        0.91
 Release:        0
 Summary:        Python library for generating holidays on the fly
 License:        MIT
