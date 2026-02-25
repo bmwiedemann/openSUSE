@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Feb 25 09:18:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.11:
+  * build(deps): bump github.com/package-url/packageurl-go from
+    0.1.3 to 0.1.4 (#2082)
+  * build(deps): bump chainguard-dev/actions from 1.6.3 to 1.6.4
+    (#2090)
+  * build(deps): bump github.com/google/go-containerregistry from
+    0.20.7 to 0.21.0 (#2081)
+  * build(deps): bump google.golang.org/api from 0.267.0 to 0.268.0
+    (#2091)
+  * build(deps): bump goreleaser/goreleaser-action from 6.4.0 to
+    7.0.0 (#2088)
+  * build(deps): bump github/codeql-action from 4.32.3 to 4.32.4
+    (#2086)
+  * build(deps): bump chainguard-dev/actions from 1.6.2 to 1.6.3
+    (#2087)
+
+-------------------------------------------------------------------
+Wed Feb 25 09:16:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.10:
+  * chore: Increase max HTTP response size (#2083)
+  * build(deps): bump filippo.io/edwards25519 from 1.1.0 to 1.1.1
+    in the go_modules group across 1 directory (#2080)
+  * build(deps): bump go.step.sm/crypto from 0.76.0 to 0.76.2
+    (#2079)
+
+-------------------------------------------------------------------
 Thu Feb 19 07:35:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.9:
