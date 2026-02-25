@@ -325,4 +325,12 @@
     <comment></comment>
     <requestid>1317338</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>93d435c279e69f97095d43bb803a0708</srcmd5>
+    <version>4.2.0</version>
+    <time>1772050241</time>
+    <user>anag_factory</user>
+    <comment>- Build doc just for Tumbleweed</comment>
+    <requestid>1334912</requestid>
+  </revision>
 </revisionlist>
