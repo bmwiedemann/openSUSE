@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 24 19:12:16 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.05
+  * "All files" checkbox added to Disk Op. screen (replaces "Show
+    all" button).
+  * Fixed a bug with fine pitch slides when importing S3M modules.
+  * The FT2 logo in the about screen is now static instead of
+    waving (was ugly).
+  * Code cleanup.
+
+-------------------------------------------------------------------
 Wed Feb 11 19:31:55 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.04
