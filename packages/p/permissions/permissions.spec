@@ -17,7 +17,8 @@
 
 
 Name:           permissions
-Version:        1699_20260109
+# NOTE: the version prefix is synced with %%suse_version currently
+Version:        1699_20260217
 Release:        0
 Summary:        SUSE Linux Default Permissions
 # Maintained in github by the security team.
@@ -32,6 +33,9 @@ BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
 BuildRequires:  meson
 BuildRequires:  python-rpm-macros
+# we require an rpmlint which supports the :package: coupling syntax,
+# otherwise the rpmlint run will fail.
+#!BuildConflicts:  rpmlint-mini < 2.9.0+git20260211.72e34881
 BuildRequires:  tclap
 # test suite
 BuildRequires:  python3-base
@@ -62,7 +66,7 @@ done
 %check
 # will fail on qemu with  unshare: unshare failed: Invalid argument
 #%%if !0%{?qemu_user_space_build}
-#%tests/regtest.py --skip-build %_vpath_builddir >/dev/null
+#tests/regtest.py --skip-build %%_vpath_builddir >/dev/null
 #%%endif
 
 %description
@@ -81,7 +85,8 @@ Requires(post): %fillup_prereq
 Requires(post): permctl
 #!BuildIgnore:  group(trusted)
 Requires(pre):  group(trusted)
-Obsoletes:      permissions-doc <= %{version}
+Obsoletes:      permissions-doc < %{version}
+Provides:       permissions-doc = %{version}
 BuildArch:      noarch
 
 %description config

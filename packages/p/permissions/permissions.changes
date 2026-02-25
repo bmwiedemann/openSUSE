@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Feb 24 07:23:01 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Declare a BuildConflict instead of a build-dependency.
+
+-------------------------------------------------------------------
+Mon Feb 23 09:49:17 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Don't BuildRequire rpmlint, but rpmlint-mini, otherwise we re-introduce
+  the build cycles that rpmlint-mini is supposed to break.
+
+-------------------------------------------------------------------
+Wed Feb 18 11:36:30 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- BuildRequire a recent enough rpmlint to avoid rpmlint choking on the new
+  :package: coupling syntax.
+
+-------------------------------------------------------------------
+Tue Feb 17 14:59:15 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to version 1699_20260217:
+  * tests: catch errors in parsing package lines with space after comma
+  * ProfileParser: increase robustness in package line parsing
+  * TestBase: _checkForASANErrors: drop extra errors increment
+  * profiles: introduce package coupling for existing entries
+  * profiles: drop "disable set*id bits" entries
+  * profiles: remove useless /etc/crontab entry
+  * etc/permissions: add :package: coupling
+  * tests: add coverage for package coupling syntax
+  * TestBase: fix some typos
+  * EntryProcessor::matchingPkg(): catch "not owned by any package" case
+  * EntryProcessor::matchingPkg(): take multi-ownership into account
+  * tests: drop m_ prefix on member variables
+  * tests: fix flake8 findings
+  * man pages: document new :package: syntax; general improvements
+  * meson: switch to `install_emptydir()` for permissions.d directory
+  * EntryProcessor: enforce package ownership limitation
+  * ProfileParser: support parsing of :package: list specifications
+  * profiles: remove extensive documentation from files in favor of man page
+  * profiles: harmonize, simplify and update copyright statement
+
+-------------------------------------------------------------------
+Tue Feb 17 14:58:23 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Add Provides permissions-doc to config sub-package as is suggested by
+  rpmlint.
+
+-------------------------------------------------------------------
+Tue Feb 17 14:57:34 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- properly escape % in comments in %check section
+
+-------------------------------------------------------------------
 Fri Jan 09 17:23:34 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 1699_20260109:
