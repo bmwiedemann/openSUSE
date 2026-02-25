@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 25 09:52:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 10.1.5:
+  * INS-1950: Go 1.26 and bump libs for polaris (#1172)
+  * Revert "Go 1.26"
+  * Go 1.26
+
+-------------------------------------------------------------------
 Sun Feb 01 19:32:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 10.1.4:
