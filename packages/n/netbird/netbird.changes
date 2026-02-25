@@ -1,4 +1,142 @@
 -------------------------------------------------------------------
+Tue Feb 24 18:48:57 UTC 2026 - Holden Fried <holden@opensuse.org>
+
+- Explicitly set golang(API) = 1.25 until building with 1.26 is
+  fixed (see https://github.com/netbirdio/netbird/issues/5290)
+
+-------------------------------------------------------------------
+Tue Feb 24 16:43:33 UTC 2026 - Holden Fried <holden@opensuse.org>
+
+- Update to 0.66.0:
+  
+  New Feature: netbird expose
+  * We're excited to introduce netbird expose --- a simple and
+  secure way to expose your local services through the NetBird
+  reverse proxy.
+
+  Expose a local HTTP server:
+  - `netbird expose 8080`
+  - This instantly publishes your local service via NetBird's
+    reverse proxy.
+  
+  You can enhance the exposure with built-in protection and
+  customization:
+  With PIN protection (6 digits)
+  - `netbird expose 3000 --with-pin 123456`
+  
+  With password protection and name prefix:
+  - `netbird expose 8080 --with-password my-secret
+    --with-name-prefix my-app`
+  
+  Restrict by SSO user groups:
+  - `netbird expose 8080 --with-user-groups engineering,devops`
+  
+  Use a custom domain (pre-configured in your account):
+  - `netbird expose 8080 --with-custom-domain app.example.com`
+  
+  Supported Flags:
+  - `--with-pin <string>` --- Protect the exposed service with a
+    6-digit PIN
+  - `--with-password <string>` --- Add password protection
+  - `--with-user-groups <strings>` --- Restrict access to specific
+    user groups
+  - `--with-custom-domain <string>` --- Specify a custom domain
+  - `--with-name-prefix <string>`--- Prefix the generated service
+    name
+  - `--protocol <string>` --- Protocol to use (http or https,
+    default http)
+  
+  Client Improvements:
+  - Stopped upstream retry loop immediately on context
+    cancellation.
+  - Fixed busy-loop in network monitor routing socket on macOS/BSD.
+  - Fixed missed sleep/wakeup events on macOS.
+  - Removed connection semaphore to simplify connection handling.
+  - Skipped UAPI listener in netstack mode.
+  - Simplified DNS logging by removing domain list from log output.
+  - Excluded Flow domain from caching to prevent TLS failures.
+  - Added non-default socket file discovery support.
+
+  Client Service Expose:
+  - Introduced client service expose feature across client and
+    management.
+  - Refactored expose feature by moving business logic from gRPC
+    to manager layer.
+
+  Proxy Improvements:
+  - Added access log cleanup.
+  - Implemented access log sorting.
+  - Sent proxy updates on account deletion.
+  - Added pre-shared key (PSK) support to proxy.
+
+  Management Improvements:
+  - Refactored network map component assembly.
+  - Added custom domain counts and service metrics to self-hosted
+    metrics.
+
+  Self-Hosted Enhancements:
+  - Added support for activity store engine in the combined server.
+  - Added Embedded IdP metrics for improved observability.
+
+-------------------------------------------------------------------
+Thu Feb 19 21:56:07 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.65.3:
+  🛡️ Security Fix: Race Condition in Role Update Validation
+
+  What was affected
+
+  A race condition in the user role validation logic could allow
+  permission checks to succeed based on stale role data. Under very
+  specific timing conditions, concurrent requests during a role
+  change (e.g., while an admin was being demoted to user) could
+  bypass role validation when changing another users role.
+
+  Exploit Potential
+
+  If an administrator account was being demoted while
+  simultaneously performing acocunt ownership transfer actions, a
+  race window existed where the system could treat the user as
+  having elevated permissions to change owners.
+
+  In a coordinated scenario involving two administrator accounts,
+  this could potentially allow privilege escalation — for example,
+  promoting a user to Owner during the demotion window.
+
+  Conditions Required
+
+  Exploitation required:
+
+  - Two administrator accounts.
+  - One administrator being actively demoted.
+  - Concurrent ownership transfer requests executed precisely
+    during the demotion process.
+  - Precise timing to trigger the race condition.
+  - This issue required intentional coordination and timing, making
+    it unlikely to occur accidentally and will require access to
+    two admin accounts.
+
+  - Client & Mobile Improvements
+    - Batched macOS DNS domains to avoid truncation issues. #5368
+    - Ensured route settlement on iOS before handling DNS
+      responses. #5360
+    - Added logging of lock acquisition time in message handling
+      for improved observability. #5393
+  - Relay Improvements
+    - Reduced QUIC initial packet size to 1280 bytes (IPv6 minimum
+      MTU) for better compatibility. #5374
+  - Management Improvements
+    - Fixed possible race condition on user role change. #5395
+    - Added docker login step in management tests. #5323
+  - Self-Hosted Updates
+    - Added a migration script for upgrading from pre-v0.65.0 to
+      post-v0.65.0 combined setup. #5350
+    - Removed unused configuration example from self-hosted setup.
+      #5383
+  - Miscellaneous
+    - Updated timestamp format to include milliseconds. #5387
+
+-------------------------------------------------------------------
 Tue Feb 17 22:27:47 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.65.2:
