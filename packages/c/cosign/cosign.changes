@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Sun Feb 22 12:25:59 UTC 2026 - meissner@suse.com
 
-- Update to version 3.0.5:
+- Update to version 3.0.5: (jsc#SLE-23879)
   * CVE-2026-24122: Fixed improper validation of certificates that
     outlive expired CA certificates (bsc#1258542)
   * CVE-2026-26958: Fixed filippo.io/edwards25519: failure to initialize

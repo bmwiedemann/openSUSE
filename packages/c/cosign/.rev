@@ -821,4 +821,12 @@
   * Deprecate rekor-entry-type flag (#4691) (forwarded request 1334417 from msmeissn)</comment>
     <requestid>1334418</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>a2479b4475becfeeb88ae175f0ea1515</srcmd5>
+    <version>3.0.5</version>
+    <time>1772050052</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.0.5: (jsc#SLE-23879)</comment>
+    <requestid>1334883</requestid>
+  </revision>
 </revisionlist>
