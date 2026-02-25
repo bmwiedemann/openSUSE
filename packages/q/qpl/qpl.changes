@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Wed Feb 25 12:45:28 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Move Intel IAA config files and accel-conf scripts to a separate
+  data subpackage
+- Use %ldconfig_scriptlets macro
+
+-------------------------------------------------------------------
+Thu Jan 29 21:08:54 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Initial packaging of version 1.9.0 (jsc#PED-15543)
