@@ -1,4 +1,131 @@
 -------------------------------------------------------------------
+Mon Feb 23 08:25:43 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.14.0:
+  * chore: update schema-pro
+  * docs: preparing for v2.14
+  * docs: gemfury link
+  * fix: git-lfs on Dockerfile
+  * chore(deps): bump squidfunk/mkdocs-material
+  * docs(deps): bump mkdocs-material in /www in the docs group
+  * ci(deps): bump the actions group with 4 updates
+  * chore(deps): bump the gomod group with 2 updates
+  * chore: auto-update generated files
+  * test: improve ./internal/client tests
+  * fix(dockers/v2): improve log output, do not complain on driver=docker
+  * fix(sbom): improve log output
+  * fix(docker): regression with new buildx versions
+  * fix(cask): handle WrappedIn
+  * fixup! fix: better debug output
+  * chore(deps): bump the gomod group across 1 directory with 7 updates
+  * feat: improve gerrors
+  * ci(deps): bump astral-sh/setup-uv in the actions group
+  * fix: better debug output
+  * fix: github enteprise upload URLs
+  * fixup! sec: redact secrets from command outputs and logs
+  * fix: lint
+  * sec: redact secrets from command outputs and logs
+  * docs: image
+  * fix: some rewording
+  * chore: fix date
+  * docs: secure fund
+  * chore: schema update
+  * chore: auto-update generated files
+  * fix(deps): fix github enterprise urls
+  * chore: auto-update generated files
+  * Apply suggestion from @caarlos0
+  * docs(nfpm): document deb compression
+  * docs(schema): add missing zstd deb compression enum value
+  * chore: dockerfile
+  * feat: use go1.26
+  * chore: auto-update generated files
+  * docs: update
+  * chore: auto-update generated files
+  * feat(nfpm): allow to filter by goamd64
+  * docs: document how to disable manifests in dockers_v2
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.16.4 to 5.16.5
+  * feat(nfpm): set archvariant in deb for goamd64
+  * docs: udpate
+  * fix(docker): bump Go to 1.25.7 to match go.mod
+  * docs: update
+  * fix(nfpm): properly handle meta packages
+  * docs: update
+  * docs: update
+  * docs: update
+  * docs: update
+  * feat: go1.25.7
+  * docs: update
+  * ci(deps): bump the actions group with 4 updates
+  * chore(deps): bump the gomod group with 3 updates
+  * chore: auto-update generated files
+  * docs: update
+  * fix(nix): autoPatchelfHook on Linux only
+  * chore: auto-update generated files
+  * fix(aur): src info should replace version with pkgver
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * fix(brews): brew style sorbet error (#6373)
+  * ci: npm login
+  * chore: move go-shellwords fork to goreleaser (#6372)
+  * feat: go 1.25.6
+  * chore: schema update
+  * chore: auto-update generated files
+  * feat(winget): allow to set package name (#6371)
+  * chore: auto-update generated files
+  * feat(winget): update manifest schema to latest (1.12.0) (#6370)
+  * chore(deps): bump the gomod group with 3 updates (#6365)
+  * ci(deps): bump the actions group with 8 updates (#6366)
+  * docs(deps): bump mkdocs-include-markdown-plugin from 7.2.0 to 7.2.1 in /www in the docs group (#6367)
+  * chore(deps): bump golang from 1.25.5-alpine to 1.25.6-alpine in the docker group across 1 directory (#6368)
+  * chore: auto-update generated files
+  * fix(nix): auPatchelHook should be a dependency (#6364)
+  * chore: fmt
+  * chore: auto-update generated files
+  * ci: correct nix build warnings (#6360)
+  * chore(deps): bump github.com/theupdateframework/go-tuf/v2 from 2.3.1 to 2.4.1 (#6361)
+  * test: speed up ko & client tests (#6358)
+  * docs: update sponsors
+  * docs: update
+  * chore(deps): update go-github
+  * docs: update
+  * docs: update
+  * feat(nix): add formatter support (#6357)
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * docs: update
+  * feat: detect if binary is dynamically linked, proper nix configuration (#6346)
+  * fix(dockers/v2): improve logs
+  * fix(dockers/v2): simplify code a bit
+  * chore(deps): bump github.com/sigstore/sigstore from 1.10.3 to 1.10.4 (#6352)
+  * feat(dockers/v2): allow to skip load image in snapshot for daemonless clients (#6348)
+  * chore(deps): bump the gomod group with 2 updates (#6354)
+  * ci(deps): bump the actions group with 7 updates (#6355)
+  * chore: auto-update generated files
+  * chore: fmt
+  * chore(deps): bump github.com/sigstore/rekor from 1.4.3 to 1.5.0 (#6351)
+  * fix(changelog): de-duplicate authors
+  * chore(deps): bump github.com/theupdateframework/go-tuf/v2 from 2.3.0 to 2.3.1 (#6349)
+  * fix: update sha3 and minor code style update (#6350)
+  * feat(homebrew_cask): allow globs in manpages  (#6324)
+  * feat: extract co-authors (#6322)
+  * feat(dockers/v2): template platforms (#6347)
+  * chore: auto-update generated files
+  * fix(tmpl): better englishJoin, added slice
+  * feat(tmpl): englishJoin
+  * docs: update
+  * feat(dockers_v2): warn user if it seems like they're rebuilding binaries (#6342)
+  * docs: document artifacts.json structure (#6341)
+  * ci: allow golang.org/x/* license
+  * chore(deps): bump the gomod group with 5 updates (#6343)
+  * ci(deps): bump the actions group with 4 updates (#6344)
+  * chore(deps): bump github.com/sigstore/cosign/v2 from 2.6.1 to 2.6.2 (#6339)
+  * docs: Fix typo In Deprecation Docs on Homebrew Formulas (#6340)
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+
+-------------------------------------------------------------------
 Mon Jan 12 10:24:25 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.13.3:
