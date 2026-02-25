@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 25 09:51:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.22.8:
+  * INS-1951: Go 1.26 and libs bump for pluto (#588)
+  * INS-1832: Bump libs and fix vulnerabilities (#587)
+
+-------------------------------------------------------------------
 Tue Dec 09 06:34:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.22.7:
