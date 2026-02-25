@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Feb 23 11:34:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.6.7:
+  * fix(alloc): set a limit on preallocations (backport release-3.6.x) (#20920)
+  * chore(deps): update module filippo.io/edwards25519 to v1.1.1 [security] (release-3.6.x) (#20873)
+  * docs: update deployment-modes.md for ssd deprecation (backport release-3.6.x) (#20871)
+  * docs: Update name to learning path (backport release-3.6.x) (#20868)
+  * docs: backport URL fix (#20866)
+  * docs: Update version number (backport release-3.6.x) (#20859)
+  * docs: 3.6.6 Release Notes (backport release-3.6.x) (#20857)
+  * chore(release-3.6.x): release 3.6.6 (#20848)
+
+-------------------------------------------------------------------
+Fri Feb 20 13:20:35 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.6.6:
+  * fix(deps): update alpine docker tag to v3.23.3 (main) (#20630) (#20832)
+  * docs: Update helm charts note with date (backport release-3.6.x) (#20783)
+  * docs: Add SSD Deprecation notices (backport release-3.6.x) (#20780)
+  * docs: Release Notes 3.5.10 (backport release-3.6.x) (#20776)
+  * docs: manual backport to 3.6 (#20732)
+  * docs: backport RN to 3.6 (#20726)
+  * chore(release-3.6.x): release 3.6.5 (#20592)
+
+-------------------------------------------------------------------
+Fri Feb 20 13:18:21 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix the version output for the binaries. the golang file path had
+  changed and use %check to verify that they do not get lost again.
+- Also ship logql-analyzer loki-canary in the loki package
+- Fix missing license files in the subpackages
+
+-------------------------------------------------------------------
 Mon Feb 09 06:19:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.6.5:

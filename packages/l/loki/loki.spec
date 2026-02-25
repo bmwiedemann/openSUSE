@@ -23,8 +23,11 @@
 %global loki_services     loki.target     loki.service     loki@.service
 %global promtail_services promtail.target promtail.service promtail@.service
 
+%global loki_public_binaries   logcli logql-analyzer loki loki-canary lokitool
+%global promtail_binaries promtail
+
 Name:           loki
-Version:        3.6.5
+Version:        3.6.7
 Release:        0
 Summary:        Loki: like Prometheus, but for logs
 License:        Apache-2.0
@@ -93,11 +96,11 @@ This package contains the lokitool command-line tool.
 %autosetup -p1 %{name}-%{version}
 
 %build
-%define buildpkg github.com/grafana/loki/pkg/build
+%define buildpkg github.com/grafana/loki/v3/pkg/util/build
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
 
-%ifarch %{ix86} s390 s390x armv7l armv7hl armv7l:armv6l:armv5tel riscv64
+%ifarch %{ix86} s390 s390x %{arm} riscv64
     export CGO_ENABLED=1
 %else
     export CGO_ENABLED=0
@@ -110,10 +113,18 @@ export GOLDFLAGS="-X %{buildpkg}.Version=%{version} \
                   -X %{buildpkg}.BuildUser=openSUSE \
                   -X %{buildpkg}.BuildDate=${BUILD_DATE}"
 
-go build -ldflags="$GOLDFLAGS" ./cmd/loki
-go build -ldflags="$GOLDFLAGS" ./cmd/logcli
-go build -ldflags="$GOLDFLAGS" ./cmd/lokitool
-CGO_ENABLED=1 go build -ldflags="$GOLDFLAGS" --tags=promtail_journal_enabled ./clients/cmd/promtail
+for i in %{loki_public_binaries} %{?loki_internal_binaries}  ; do
+  go build -ldflags="$GOLDFLAGS" ./cmd/${i}
+done
+CGO_ENABLED=1 go build -ldflags="$GOLDFLAGS" --tags=promtail_journal_enabled,netgo ./clients/cmd/promtail
+
+#check
+./lokitool version
+for i in %{loki_public_binaries} %{?loki_internal_binaries} %{promtail_binaries} ; do
+  if [ "x${i}" != "xlokitool" -a "x${i}" != "xlogql-analyzer" ] ; then
+./${i} --version
+  fi
+done
 
 %install
 
@@ -139,13 +150,9 @@ install -Dm640 clients/cmd/promtail/promtail-local-config.yaml \
     %{buildroot}%{_sysconfdir}/loki/promtail.yaml
 
 # Binaries
-install -dm755 %{buildroot}%{_bindir}
-install -Dm755 loki %{buildroot}%{_bindir}
-install -Dm755 lokitool %{buildroot}%{_bindir}
-install -Dm755 promtail %{buildroot}%{_bindir}
-install -Dm755 logcli %{buildroot}%{_bindir}
+install -D -m 0755 -t %{buildroot}%{_bindir} %{loki_public_binaries} %{?loki_internal_binaries} %{promtail_binaries}
 
-install -D -d -m 0750 %{buildroot}%{promtail_datadir} %{buildroot}%{loki_datadir} %{buildroot}%{loki_logdir}
+install -D -m 0750 -d %{buildroot}%{promtail_datadir} %{buildroot}%{loki_datadir} %{buildroot}%{loki_logdir}
 
 %pre
 %service_add_pre %{loki_services}
@@ -181,6 +188,8 @@ install -D -d -m 0750 %{buildroot}%{promtail_datadir} %{buildroot}%{loki_datadir
 %{_unitdir}/loki@.service
 %{_fillupdir}/sysconfig.loki
 %{_bindir}/loki
+%{_bindir}/loki-canary
+%{_bindir}/logql-analyzer
 %dir %{_sysconfdir}/loki
 %config(noreplace) %attr(-,root,loki) %{_sysconfdir}/loki/loki.yaml
 %{_sbindir}/rcloki
@@ -199,9 +208,11 @@ install -D -d -m 0750 %{buildroot}%{promtail_datadir} %{buildroot}%{loki_datadir
 %dir %{promtail_datadir}/
 
 %files -n logcli
+%license LICENSE
 %{_bindir}/logcli
 
 %files -n lokitool
+%license LICENSE
 %{_bindir}/lokitool
 
 %changelog
