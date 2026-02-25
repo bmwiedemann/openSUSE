@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 25 00:22:47 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1771958644.63a1790:
+  * build(Makefile): add top-level help target
+  * test: implement conventional commits check with gitlint
+  * fix: Fix wrong uses of "checkout" that should be "check out"
+  * git subrepo pull (merge) --force external/os-autoinst-common
+  * style: Fix crop.py style issues
+  * parse_extra_log: Allow passing additional args to upload_logs
+
+-------------------------------------------------------------------
 Mon Feb 23 16:33:17 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1771858186.01b8328:
