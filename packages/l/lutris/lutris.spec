@@ -21,7 +21,7 @@
 %define         appid net.lutris.Lutris
 %{?sle15_python_module_pythons}
 Name:           lutris
-Version:        0.5.20
+Version:        0.5.22
 Release:        0
 Summary:        Manager for game installation and execution
 License:        GPL-3.0-or-later

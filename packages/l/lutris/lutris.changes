@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 25 08:00:31 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.22:
+  * Fix type annotations requiring quoting for Python < 3.14 compatibility
+  * Add mypy typing annotations on util/strings.py
+  * Update release targets in PPA CI
+
+-------------------------------------------------------------------
 Mon Feb 16 20:23:37 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.20:

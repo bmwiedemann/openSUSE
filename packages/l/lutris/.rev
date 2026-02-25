@@ -611,4 +611,15 @@
   * Fix compatibility with Python 3.14</comment>
     <requestid>1333444</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>fea53a5a3ceecb3211ae1f3d955ca8d5</srcmd5>
+    <version>0.5.22</version>
+    <time>1772050256</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.5.22:
+  * Fix type annotations requiring quoting for Python &lt; 3.14 compatibility
+  * Add mypy typing annotations on util/strings.py
+  * Update release targets in PPA CI</comment>
+    <requestid>1334925</requestid>
+  </revision>
 </revisionlist>
