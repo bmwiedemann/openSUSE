@@ -22,13 +22,13 @@ Summary:        Unofficial Amazon Games client
 License:        GPL-3.0-only
 URL:            https://github.com/imLinguin/nile.git
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  python313-PyInstaller
-BuildRequires:  %{python_module json5 >= 0.9}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module protobuf >= 4.0}
-BuildRequires:  %{python_module pycryptodome >= 3.0}
-BuildRequires:  %{python_module requests < 3.0}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  python3-PyInstaller
+BuildRequires:  python3-json5 >= 0.9
+BuildRequires:  python3-pip
+BuildRequires:  python3-protobuf >= 4.0
+BuildRequires:  python3-pycryptodome >= 3.0
+BuildRequires:  python3-requests < 3.0}
+BuildRequires:  python3-setuptools
 %ifarch aarch64
 ExclusiveArch: aarch64
 %endif

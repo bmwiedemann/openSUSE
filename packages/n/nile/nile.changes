@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 25 01:51:43 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fix incorrect python dependency macros usage
+  * Replace %{python_module} with python3-* BuildRequires
+  * Remove unnecessary runtime Requires pulled by macro expansion 
+
+-------------------------------------------------------------------
 Sun Nov 23 00:08:32 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Add architecture-specific ExclusiveArch for x86_64 and aarch64 (PyInstaller requires ELF loader)
