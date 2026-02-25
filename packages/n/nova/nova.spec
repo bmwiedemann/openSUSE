@@ -1,7 +1,7 @@
 #
 # spec file for package nova
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           nova
-Version:        3.11.10
+Version:        3.11.11
 Release:        0
 Summary:        Find outdated or deprecated Helm charts running in your cluster
 License:        Apache-2.0
 URL:            https://github.com/FairwindsOps/nova
 Source:         nova-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.25 >= 1.25.5
+BuildRequires:  go1.26 >= 1.26.0
 
 # found conflict of nova-3.4.0-1.1.x86_64 with python3-novaclient-17.6.0-1.2.noarch
 #   /usr/bin/nova

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 25 09:52:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.11:
+  * Bump libs for nova (#429)
+  * INS-1952: Go 1.26 and libs bump for nova (#423)
+  * INS-1830: Bump libs and fix vulnerabilities (#422)
+
+-------------------------------------------------------------------
 Tue Dec 09 06:34:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.11.10:
