@@ -1,0 +1,42 @@
+Index: Pweave-0.30.3/pweave/processors/jupyter.py
+===================================================================
+--- Pweave-0.30.3.orig/pweave/processors/jupyter.py
++++ Pweave-0.30.3/pweave/processors/jupyter.py
+@@ -8,7 +8,7 @@ import os
+ from .. import config
+ from .base import PwebProcessorBase
+ from . import subsnippets
+-from IPython.core import inputsplitter
++from IPython.core import inputtransformer2
+ from ipykernel.inprocess import InProcessKernelManager
+ 
+ from queue import Empty
+@@ -179,26 +179,13 @@ class IPythonProcessor(JupyterProcessor)
+         self.loadstring("\n".join([f_size, f_dpi]))
+ 
+     def loadterm(self, code_str, **kwargs):
+-        splitter = inputsplitter.IPythonInputSplitter()
++        transformer = inputtransformer2.TransformerManager()
+         code_lines = code_str.lstrip().splitlines()
+         sources = []
+         outputs = []
+ 
+         for line in code_lines:
+-            if splitter.push_accepts_more():
+-                splitter.push(line)
+-            else:
+-                code_str = splitter.source
+-                sources.append(code_str)
+-                out = self.loadstring(code_str)
+-                #print(out)
+-                outputs.append(out)
+-                splitter.reset()
+-                splitter.push(line)
+-
+-
+-        if splitter.source != "":
+-            code_str = splitter.source
++            code_str = transformer.transform_cell(line)
+             sources.append(code_str)
+             out = self.loadstring(code_str)
+             outputs.append(out)

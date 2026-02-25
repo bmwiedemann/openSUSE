@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 25 00:33:06 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup macro.
+- Replace jupyter {Build,}Requires with their "new" names.
+- Add patch support-ipython-9.patch:
+  * Replace use of IPythonInputSplitter with TransformerManager
+
+-------------------------------------------------------------------
 Tue May  6 09:45:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

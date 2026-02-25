@@ -92,4 +92,15 @@
     <comment></comment>
     <requestid>1274882</requestid>
   </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>dfa836b8f0ee4b20a78fa07b52135101</srcmd5>
+    <version>0.30.3</version>
+    <time>1772050056</time>
+    <user>anag_factory</user>
+    <comment>- Switch to autosetup macro.
+- Replace jupyter {Build,}Requires with their &quot;new&quot; names.
+- Add patch support-ipython-9.patch:
+  * Replace use of IPythonInputSplitter with TransformerManager</comment>
+    <requestid>1334887</requestid>
+  </revision>
 </revisionlist>

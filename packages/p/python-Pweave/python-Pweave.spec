@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pweave
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://github.com/mpastell/Pweave
 Source:         https://files.pythonhosted.org/packages/source/P/Pweave/Pweave-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/mpastell/Pweave/pull/167 Adjust for API changes in Python-Markdown 3.0
 Patch0:         markdown.patch
+# PATCH-FIX-OPENSUSE Replace use of IPythonInputSplitter with TransformerManager
+Patch1:         support-ipython-9.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -33,12 +35,11 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Markdown
 Requires:       python-Pygments
-Requires:       python-certifi
+Requires:       python-ipykernel
+Requires:       python-ipython
 Requires:       python-jupyter_client
-Requires:       python-jupyter_ipykernel
-Requires:       python-jupyter_ipython
-Requires:       python-jupyter_nbconvert
-Requires:       python-jupyter_nbformat
+Requires:       python-nbconvert
+Requires:       python-nbformat
 Recommends:     python-Sphinx
 Recommends:     python-matplotlib
 Recommends:     python-scipy
@@ -47,16 +48,17 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Markdown}
 BuildRequires:  %{python_module Pygments}
-BuildRequires:  %{python_module certifi}
+BuildRequires:  %{python_module ipykernel}
+BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module jupyter_client}
-BuildRequires:  %{python_module jupyter_ipykernel}
-BuildRequires:  %{python_module jupyter_ipython}
-BuildRequires:  %{python_module jupyter_nbconvert}
-BuildRequires:  %{python_module jupyter_nbformat}
 BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module nbconvert}
+BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 # /SECTION
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -71,8 +73,7 @@ with embedded python code It can also be used to make websites together
 with e.g. Sphinx or rest2web.
 
 %prep
-%setup -q -n Pweave-%{version}
-%autopatch -p1
+%autosetup -p1 -n Pweave-%{version}
 
 %build
 %pyproject_wheel
@@ -111,6 +112,6 @@ with e.g. Sphinx or rest2web.
 %python_alternative %{_bindir}/pypublish
 %python_alternative %{_bindir}/pweave-convert
 %{python_sitelib}/pweave
-%{python_sitelib}/[Pp]weave-%{version}*info
+%{python_sitelib}/[Pp]weave-%{version}.dist-info
 
 %changelog
