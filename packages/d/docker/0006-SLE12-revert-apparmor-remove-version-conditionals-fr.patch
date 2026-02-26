@@ -1,4 +1,4 @@
-From d4db647a40c0c8992dc2eeb862e8bafaff58cca3 Mon Sep 17 00:00:00 2001
+From 87e85bb7f050dd02d95100347a040dce7c52be3a Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Wed, 11 Oct 2023 21:19:12 +1100
 Subject: [PATCH 6/6] SLE12: revert "apparmor: remove version-conditionals from
@@ -26,7 +26,7 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  create mode 100644 pkg/aaparser/aaparser.go
 
 diff --git a/contrib/apparmor/main.go b/contrib/apparmor/main.go
-index 899d8378edae..93f98cbd20e5 100644
+index 899d8378ed..13caa8245e 100644
 --- a/contrib/apparmor/main.go
 +++ b/contrib/apparmor/main.go
 @@ -6,9 +6,13 @@ import (
@@ -34,7 +34,7 @@ index 899d8378edae..93f98cbd20e5 100644
  	"path"
  	"text/template"
 +
-+	"github.com/docker/docker/pkg/aaparser"
++	"github.com/moby/moby/v2/pkg/aaparser"
  )
  
 -type profileData struct{}
@@ -69,7 +69,7 @@ index 899d8378edae..93f98cbd20e5 100644
  		log.Fatalf("executing template failed: %v", err)
  	}
 diff --git a/contrib/apparmor/template.go b/contrib/apparmor/template.go
-index 58afcbe845ee..e6d0b6d37c58 100644
+index 58afcbe845..e6d0b6d37c 100644
 --- a/contrib/apparmor/template.go
 +++ b/contrib/apparmor/template.go
 @@ -20,9 +20,11 @@ profile /usr/bin/docker (attach_disconnected, complain) {
@@ -158,7 +158,7 @@ index 58afcbe845ee..e6d0b6d37c58 100644
      /usr/bin/xz rm,
 diff --git a/pkg/aaparser/aaparser.go b/pkg/aaparser/aaparser.go
 new file mode 100644
-index 000000000000..89b48b2dba58
+index 0000000000..89b48b2dba
 --- /dev/null
 +++ b/pkg/aaparser/aaparser.go
 @@ -0,0 +1,86 @@
@@ -249,7 +249,7 @@ index 000000000000..89b48b2dba58
 +	return numericVersion, nil
 +}
 diff --git a/vendor/github.com/moby/profiles/apparmor/apparmor.go b/vendor/github.com/moby/profiles/apparmor/apparmor.go
-index 445eed64e979..871b1f7d63c2 100644
+index 445eed64e9..060a482289 100644
 --- a/vendor/github.com/moby/profiles/apparmor/apparmor.go
 +++ b/vendor/github.com/moby/profiles/apparmor/apparmor.go
 @@ -11,10 +11,14 @@ import (
@@ -257,7 +257,7 @@ index 445eed64e979..871b1f7d63c2 100644
  	"strings"
  	"text/template"
 +
-+	"github.com/docker/docker/pkg/aaparser"
++	"github.com/moby/moby/v2/pkg/aaparser"
  )
  
 -// profileDirectory is the file store for apparmor profiles and macros.
@@ -292,7 +292,7 @@ index 445eed64e979..871b1f7d63c2 100644
  }
  
 diff --git a/vendor/github.com/moby/profiles/apparmor/template.go b/vendor/github.com/moby/profiles/apparmor/template.go
-index 2ebcc218a702..682425f71e64 100644
+index 2ebcc218a7..682425f71e 100644
 --- a/vendor/github.com/moby/profiles/apparmor/template.go
 +++ b/vendor/github.com/moby/profiles/apparmor/template.go
 @@ -22,6 +22,7 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
@@ -322,5 +322,5 @@ index 2ebcc218a702..682425f71e64 100644
  }
  `
 -- 
-2.51.0
+2.52.0
 

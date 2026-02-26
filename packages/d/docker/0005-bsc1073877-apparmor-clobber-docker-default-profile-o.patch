@@ -1,4 +1,4 @@
-From e9aff2856f7b827ebb6964b5fd33fc51e2b6f0ec Mon Sep 17 00:00:00 2001
+From 67bda5dd1f491f42fc72bb834b213643474c3425 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Fri, 29 Jun 2018 17:59:30 +1000
 Subject: [PATCH 5/6] bsc1073877: apparmor: clobber docker-default profile on
@@ -22,7 +22,7 @@ Signed-off-by: Aleksa Sarai <asarai@suse.de>
  3 files changed, 17 insertions(+), 6 deletions(-)
 
 diff --git a/daemon/apparmor_default.go b/daemon/apparmor_default.go
-index a1048e303c1e..e087f6b9265f 100644
+index a1048e303c..e087f6b926 100644
 --- a/daemon/apparmor_default.go
 +++ b/daemon/apparmor_default.go
 @@ -23,6 +23,15 @@ func DefaultApparmorProfile() string {
@@ -54,7 +54,7 @@ index a1048e303c1e..e087f6b9265f 100644
  	return nil
  }
 diff --git a/daemon/apparmor_default_unsupported.go b/daemon/apparmor_default_unsupported.go
-index 37974bbb9778..095aa728a7a8 100644
+index 37974bbb97..095aa728a7 100644
 --- a/daemon/apparmor_default_unsupported.go
 +++ b/daemon/apparmor_default_unsupported.go
 @@ -2,6 +2,10 @@
@@ -69,10 +69,10 @@ index 37974bbb9778..095aa728a7a8 100644
  	return nil
  }
 diff --git a/daemon/daemon.go b/daemon/daemon.go
-index 2e0a36eb102b..f28c6e061fa9 100644
+index a5bd3c9f78..f621a1529a 100644
 --- a/daemon/daemon.go
 +++ b/daemon/daemon.go
-@@ -878,8 +878,9 @@ func NewDaemon(ctx context.Context, config *config.Config, pluginStore *plugin.S
+@@ -940,8 +940,9 @@ func NewDaemon(ctx context.Context, config *config.Config, pluginStore *plugin.S
  		log.G(ctx).Warnf("Failed to configure golang's threads limit: %v", err)
  	}
  
@@ -85,5 +85,5 @@ index 2e0a36eb102b..f28c6e061fa9 100644
  	}
  
 -- 
-2.51.0
+2.52.0
 

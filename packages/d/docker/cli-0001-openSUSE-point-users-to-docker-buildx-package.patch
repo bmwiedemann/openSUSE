@@ -1,4 +1,4 @@
-From d5cf64f9cb8b5382a4f87700a80a0bc2c8d3185e Mon Sep 17 00:00:00 2001
+From 2afac7bccbc69a5e8f5f45734bde0b3999727799 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <cyphar@cyphar.com>
 Date: Mon, 1 Sep 2025 16:05:24 +1000
 Subject: [PATCH 1/2] openSUSE: point users to docker-buildx package
@@ -13,7 +13,7 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/cmd/docker/builder.go b/cmd/docker/builder.go
-index 00fc1b40f1ab..ff3becd1c9e7 100644
+index d6d74919b..3fc465f86 100644
 --- a/cmd/docker/builder.go
 +++ b/cmd/docker/builder.go
 @@ -20,7 +20,7 @@
@@ -40,5 +40,5 @@ index 00fc1b40f1ab..ff3becd1c9e7 100644
  )
  
 -- 
-2.51.0
+2.52.0
 

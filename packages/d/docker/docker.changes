@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Feb 17 07:22:29 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
+
+- Fix package from immutable mode (jsc#PED-14748)
+  * Migrate /var/lib/docker creation to docker.tmpfiles
+- Replace obsolete packageand syntax with newer syntax
+
+-------------------------------------------------------------------
+Thu Feb  5 09:47:18 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to Docker 29.2.1. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/29/#2921>
+- Rebased patches:
+  * 0001-SECRETS-SUSE-always-clear-our-internal-secrets.patch
+  * 0002-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0003-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0004-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  * 0005-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * 0006-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+  * cli-0001-openSUSE-point-users-to-docker-buildx-package.patch
+  * cli-0002-SECRETS-SUSE-default-to-DOCKER_BUILDKIT-0-for-docker.patch
+
+-------------------------------------------------------------------
+Fri Jan 30 09:44:27 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to docker-buildx v0.31.1. Upstream changelog:
+  <https://github.com/docker/buildx/releases/tag/v0.31.1>
+
+-------------------------------------------------------------------
+Wed Jan 28 08:42:34 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to Docker 29.2.0. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/29/#2920>
+  Fix CVE-2025-67499 (bsc#255500)
+- Update to buildx 0.31.0. See upstream changelog online at
+  <https://github.com/docker/buildx/releases/tag/v0.31.0>
+- Rebased patches:
+  * 0001-SECRETS-SUSE-always-clear-our-internal-secrets.patch
+  * 0002-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0003-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0004-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  * 0005-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * 0006-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+  * cli-0001-openSUSE-point-users-to-docker-buildx-package.patch
+  * cli-0002-SECRETS-SUSE-default-to-DOCKER_BUILDKIT-0-for-docker.patch
+- Build of buildx moved from Makefile to go build to not use
+  Dockerfile.
+
+-------------------------------------------------------------------
 Fri Nov 28 08:17:00 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Add Requires containers-selinux on systems with selinux-policy installed.

@@ -53,8 +53,8 @@
 %endif
 
 # MANUAL: This needs to be updated with every docker update.
-%define docker_real_version 28.5.1
-%define docker_git_version f8215cc26
+%define docker_real_version 29.2.1
+%define docker_git_version 6bc6209b88
 %define docker_version %{docker_real_version}_ce
 # This "nice version" is so that docker --version gives a result that can be
 # parsed by other people. boo#1182476
@@ -62,7 +62,7 @@
 
 %if %{with buildx}
 # MANUAL: This needs to be updated with every docker-buildx update.
-%define buildx_version 0.29.0
+%define buildx_version 0.31.1
 %endif
 
 # Used when generating the "build" information for Docker version. The value of
@@ -70,7 +70,7 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define git_commit_epoch 1759890872
+%define git_commit_epoch 1770050380
 
 Name:           docker%{flavour}
 Version:        %{docker_version}
@@ -91,6 +91,9 @@ Source130:      README_SUSE.md
 Source140:      docker-audit.rules
 Source150:      docker-daemon.json
 Source160:      docker.sysusers
+%if 0%{?suse_version} >= 1500
+Source170:      docker.tmpfiles
+%endif
 # docker-integration-tests-devel
 Source900:      docker-integration.sh
 # NOTE: All of these patches are maintained in <https://github.com/suse/docker>
@@ -126,8 +129,9 @@ BuildRequires:  procps
 BuildRequires:  sqlite3-devel
 BuildRequires:  sysuser-tools
 BuildRequires:  zsh
-BuildRequires:  golang(API) = 1.24
+BuildRequires:  golang(API) >= 1.25
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(libnftables)
 %if %{with apparmor}
 %if 0%{?suse_version} >= 1500
 # This conditional only works on rpm>=4.13, which SLE 12 doesn't have. But we
@@ -277,7 +281,12 @@ Summary:        Bash Completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{docker_version}
 Requires:       bash-completion
+#obsolete packageand (see https://en.opensuse.org/RPM_Boolean_Dependencies)
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
 Supplements:    packageand(%{name}:bash-completion)
+%else
+Supplements:    (%{name} and bash-completion)
+%endif
 BuildArch:      noarch
 # docker-stable cannot be used alongside docker.
 %if "%{name}" == "docker-stable"
@@ -296,7 +305,12 @@ Summary:        Zsh Completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{docker_version}
 Requires:       zsh
+#obsolete packageand (see https://en.opensuse.org/RPM_Boolean_Dependencies)
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
 Supplements:    packageand(%{name}:zsh)
+%else
+Supplements:    (%{name} and zsh)
+%endif
 BuildArch:      noarch
 # docker-stable cannot be used alongside docker.
 %if "%{name}" == "docker-stable"
@@ -315,7 +329,12 @@ Summary:        Fish completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{docker_version}
 Requires:       fish
+#obsolete packageand (see https://en.opensuse.org/RPM_Boolean_Dependencies)
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
 Supplements:    packageand(%{name}:fish)
+%else
+Supplements:    (%{name} and fish)
+%endif
 BuildArch:      noarch
 # docker-stable cannot be used alongside docker.
 %if "%{name}" == "docker-stable"
@@ -394,9 +413,6 @@ export BUILDTIME="$(date -u -d "@$SOURCE_DATE_EPOCH" --rfc-3339 ns 2>/dev/null |
 ###################
 
 pushd "%{docker_builddir}"
-# use go module for build
-cp {vendor,go}.mod
-cp {vendor,go}.sum
 ./hack/make.sh dynbinary
 # dockerd man page
 GO_MD2MAN=go-md2man make -C ./man/
@@ -434,12 +450,19 @@ popd
 ###################
 
 pushd "%{buildx_builddir}"
-make \
-	CGO_ENABLED=1 \
-	VERSION="%{buildx_version}" \
-	REVISION="v%{buildx_version}" \
-	GO_EXTRA_FLAGS="-buildmode=pie" \
-	build
+# From https://github.com/docker/buildx/commit/2012e4de355304c3fb590157722e6b5b3f266876
+# Build options has been moved to Dockerfile. Replicate only the build part:
+export GO_EXTRA_FLAGS="-buildmode=pie"
+export PKG="github.com/docker/buildx"
+export LD_FLAGS="-s -w -X ${PKG}/version.Version=%{buildx_version}"
+export LD_FLAGS="${LD_FLAGS} -X ${PKG}/version.Revision=v%{buildx_version}"
+export LD_FLAGS="${LD_FLAGS} -X ${PKG}/version.Package=${PKG}"
+go build \
+    -mod vendor \
+    -trimpath \
+    ${GO_EXTRA_FLAGS} \
+    -ldflags "${LD_FLAGS}" \
+    -o ./bin/build/docker-buildx ./cmd/buildx
 popd
 %endif
 
@@ -461,8 +484,14 @@ install -d %{buildroot}/usr/lib/docker/cli-plugins
 install -D -m0755 %{buildx_builddir}/bin/build/docker-buildx %{buildroot}/usr/lib/docker/cli-plugins/docker-buildx
 %endif
 
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
 # /var/lib/docker
 install -d %{buildroot}/%{_localstatedir}/lib/docker
+%else
+mkdir -p %{buildroot}%{_tmpfilesdir}
+install -m 0644 %{SOURCE170} %{buildroot}%{_tmpfilesdir}/docker.conf
+%endif
+
 # daemon.json config file
 install -D -m0644 %{SOURCE150} %{buildroot}%{_sysconfdir}/docker/daemon.json
 %if %{with suseconnect}
@@ -554,7 +583,13 @@ grep -q '^dockremap:' /etc/subgid || \
 %{_bindir}/dockerd
 %{_bindir}/docker-proxy
 %{_sbindir}/rcdocker
+
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
 %dir %{_localstatedir}/lib/docker/
+%else
+%ghost %attr(0750,root,root) %{_localstatedir}/lib/docker
+%{_tmpfilesdir}/docker.conf
+%endif
 
 %dir /usr/lib/docker
 %dir /usr/lib/docker/cli-plugins
