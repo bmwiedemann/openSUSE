@@ -44,7 +44,7 @@
 %endif
 
 Name:           python-pytest-ansible
-Version:        26.1.0
+Version:        26.2.0
 Release:        0
 Summary:        Plugin for pytest to simplify calling ansible modules from tests or fixtures
 License:        MIT
@@ -62,7 +62,6 @@ BuildRequires:  %{python_for_dependencies}-cffi >= 1.15.1
 BuildRequires:  %{python_for_dependencies}-ansible-compat >= 25.8.2
 BuildRequires:  %{python_for_dependencies}-packaging >= 23.2
 BuildRequires:  %{python_for_dependencies}-pytest >= 6
-BuildRequires:  %{python_for_dependencies}-pytest-plus >= 0.8.1
 BuildRequires:  %{python_for_dependencies}-pytest-xdist >= 3.8.0
 BuildRequires:  %{python_for_dependencies}-typing_extensions >= 4.15.0
 BuildRequires:  ansible-core > 2.16.14
@@ -79,14 +78,9 @@ Requires:       %{python_for_dependencies}-ansible-compat >= 25.8.2
 Requires:       %{python_for_dependencies}-cffi >= 1.15.1
 Requires:       %{python_for_dependencies}-packaging >= 23.2
 Requires:       %{python_for_dependencies}-pytest >= 6
-Requires:       %{python_for_dependencies}-pytest-plus >= 0.8.1
 Requires:       %{python_for_dependencies}-pytest-xdist >= 3.8.0
 Requires:       %{python_for_dependencies}-typing_extensions >= 4.15.0
 Requires:       ansible-core > 2.16.16
-Suggests:       %{python_for_dependencies}-attrs == 22.2.0
-Suggests:       %{python_for_dependencies}-iniconfig == 2.0.0
-Suggests:       %{python_for_dependencies}-pluggy == 1.0.0
-Suggests:       %{python_for_dependencies}-pytest == 7.2.2
 BuildArch:      noarch
 %python_subpackages
 
