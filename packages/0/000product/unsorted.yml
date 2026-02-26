@@ -3972,6 +3972,8 @@ unsorted:
   - falkon-lang 
   - fann-devel 
   - fapg 
+  - fapolicyd 
+  - fapolicyd-selinux 
   - farbfeld 
   - farsi-fonts 
   - farstream-data 
@@ -15611,6 +15613,7 @@ unsorted:
   - libqpid-proton-cpp12 
   - libqpid-proton-proactor1 
   - libqpid-proton11 
+  - libqpl1 
   - libqrcodegen1 
   - libqrcodegencpp1 
   - libqrencode4-32bit 
@@ -16026,6 +16029,7 @@ unsorted:
   - libressl-devel 
   - libressl-devel-doc 
   - librest-devel 
+  - libresvg0 
   - libretls-devel 
   - libretls-libtls28 
   - librevenge-devel 
@@ -17743,6 +17747,11 @@ unsorted:
   - longhornctl-zsh-completion 
   - lookbook 
   - lookbook-lang 
+  - looking-glass-client 
+  - looking-glass-host 
+  - looking-glass-kvmfr-kmp-default 
+  - looking-glass-obs-plugin 
+  - looking-glass-windows-host 
   - loook 
   - loudmouth-devel 
   - lout 
@@ -35939,6 +35948,8 @@ unsorted:
   - qpid-proton-devel 
   - qpid-proton-devel-doc 
   - qpid-proton-test 
+  - qpl-data 
+  - qpl-devel 
   - qpress 
   - qprint 
   - qps 
@@ -36679,6 +36690,9 @@ unsorted:
   - restic-bash-completion 
   - restic-zsh-completion 
   - restorecond 
+  - resvg 
+  - resvg-devel 
+  - resvg-devel-static 
   - retext 
   - retroarch 
   - retry 
@@ -37656,6 +37670,7 @@ unsorted:
   - sheldon 
   - sheldon-bash-completion 
   - sheldon-zsh-completion 
+  - shellbeats 
   - shells-cli 
   - shepherd 
   - shepherd-bash-completion 
@@ -49223,6 +49238,7 @@ unsorted:
   - usrp-firmware 
   - usrp-tools 
   - usrsctp-devel 
+  - usvg 
   - usx2yloader 
   - utf8proc-devel 
   - utfcpp-devel 
