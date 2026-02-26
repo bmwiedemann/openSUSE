@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Feb 26 01:31:56 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.5
+  * Finer-grained control over listening socket creation
+  * importer: make -B option usable with public stores
+  * emsmdb: async notification connections were not marked active
+    and would not deliver a signal of new pending events
+  * emsmdb: repair EcDoAsyncWaitEx to immediately return when
+    notifications are already pending in the session queue
+  * emsmdb: fix UAF/crash when notifications are sent over RPCH
+  * oxcical: upon reception of non-recurring appointments, the
+    PidLidRecurring=0 property will be set now, as some Outlook
+    versions fail to show appointments in the
+    daily/weekly/monthly view if the property is absent
+  * oxcmail: messages with timezones ±08xx/09xx were mistreated
+    as UTC
+  * oxvcard: fixed a field shift in the ADR line's parsing and
+    emission
+  * ews: trim all C0 control codes from XML response
+  * exmdb: limit production of PR_RTF_COMPRESSED variants of
+    PR_BODY/PR_HTML when saving messages to IPM.Task objects
+  * Plugged a memory leak that occurred when a multi-HTML
+    Internet Mail is converted to MAPI
+  * Plugged a memleak that occurred when HTML is converted to RTF
+  * Plugged a logical memleak stemming from never shrinking the
+    buffer of `FETCH RFC822` and related commands
+
+-------------------------------------------------------------------
 Sun Feb 22 08:53:51 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Add gcc16.patch [boo#1258491]

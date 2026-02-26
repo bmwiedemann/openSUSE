@@ -448,4 +448,12 @@
     <comment>- Add gcc16.patch [boo#1258491]</comment>
     <requestid>1334380</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>5e076cc006c78dc5370ce9bf49f59bdb</srcmd5>
+    <version>3.5</version>
+    <time>1772128322</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.5</comment>
+    <requestid>1335180</requestid>
+  </revision>
 </revisionlist>
