@@ -1,7 +1,7 @@
 #
 # spec file for package sile
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,8 @@ Source2:        sile-rpmlintrc
 Patch0:         no-gentium-plus.patch
 
 # Lua modules
+# Required while lua51 is fully removed from Tumbleweed
+#!BuildIgnore: lua51
 BuildRequires:  luajit
 BuildRequires:  %{flavor}-bit32
 BuildRequires:  %{flavor}-devel

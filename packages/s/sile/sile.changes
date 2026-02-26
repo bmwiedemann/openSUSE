@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 25 12:25:14 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add BuildIgnore on lua51 while is fully removed from Tumbleweed.
+
+-------------------------------------------------------------------
 Sun Nov  9 00:56:33 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Make the package building with LuaJIT (bsc#1252922).
