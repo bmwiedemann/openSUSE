@@ -57,6 +57,8 @@ BuildRequires:  zstd
 BuildRequires:  gcc, make
 %if %{with selinux}
 Requires:       (%{name}-selinux = %{version}-%{release} if selinux-policy-targeted)
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  selinux-policy-devel
 %endif
 %if %{with apparmor}
 BuildRequires:  apparmor-abstractions, apparmor-rpm-macros, libapparmor-devel
@@ -91,14 +93,11 @@ This package contains Apparmor profiles for passt and pasta.
 BuildArch:          noarch
 Summary:            SELinux support for passt and pasta
 Requires:           %{name} = %{version}-%{release}
-Requires:           selinux-policy
 Requires:           container-selinux
-Requires(post):     policycoreutils
 Requires(post):     container-selinux
-Requires(preun):    policycoreutils
 BuildRequires:      checkpolicy
-BuildRequires:      selinux-policy-devel
 Recommends:         selinux-policy-%{selinuxtype}
+%{selinux_requires_min}
 
 %description selinux
 This package adds SELinux enforcement to passt(1) and pasta(1).

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 18 11:51:40 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
+
+- selinux: Use `selinux_requires_min` macro for dependencies
+
+-------------------------------------------------------------------
 Tue Dec 16 07:01:12 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
 
 - spec: drop restorecon trigger now that file context rules use regex (bsc#1246291)
