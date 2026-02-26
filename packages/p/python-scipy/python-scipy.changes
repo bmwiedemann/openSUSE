@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Feb 25 07:58:28 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.17.1
+  * SciPy 1.17.1 is a bug-fix release with no new features compared to
+    1.17.0.
+- 1.17.0:
+  SciPy 1.17.0 is the culmination of 6 months of hard work. It contains
+  many new features, numerous bug-fixes, improved test coverage and better
+  documentation. There have been a number of deprecations and API changes
+  in this release, which are documented below. All users are encouraged to
+  upgrade to this release, as there are a large number of bug-fixes and
+  optimizations. Before upgrading, we recommend that users check that
+  their own code does not use deprecated SciPy functionality (to do so,
+  run your code with python -Wd and check for DeprecationWarning s).
+  Our development attention will now shift to bug-fix releases on the
+  1.17.x branch, and on adding new features on the main branch.
+
+  This release requires Python 3.11-3.14 and NumPy 1.26.4 or greater.
+
+  ## Highlights of this release
+
+  * Many SciPy functions have gained native support for batching of N-dimensional
+    array input and additional support for the array API standard. An overall
+    summary of the latter is now available in a set of tables.
+  * In scipy.sparse, coo_array now supports indexing. This includes integers,
+    slices, arrays, np.newaxis, Ellipsis, in 1D, 2D and the relatively
+    new nD. In scipy.sparse.linalg, ARPACK and PROPACK rewrites from Fortran77
+    to C now empower the use of external pseudorandom number generators, e.g.
+    from numpy.
+  * In scipy.spatial, transform.Rotation and transform.RigidTransform
+    have been extended to support N-D arrays. geometric_slerp now has support
+    for extrapolation.
+    scipy.stats has gained the matrix t and logistic distributions and many
+    performance and accuracy improvements.
+  * Initial support for 64-bit integer (ILP64) BLAS and LAPACK libraries has
+    been added, including for MKL and Apple Accelerate. Please report any issues with
+    ILP64 you encounter.
+
+  * Full changelog can be found here:
+    https://docs.scipy.org/doc/scipy/release/1.17.0-notes.html
+
+- Drop upstream patches:
+  * pytest-run-parallel-compat.patch
+  * cython32.patch
+
+-------------------------------------------------------------------
 Tue Dec 16 15:17:11 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.16.3

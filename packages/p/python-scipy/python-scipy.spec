@@ -1,7 +1,7 @@
 #
 # spec file for package python-scipy
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@
 # TODO explore debundling Boost for standard
 
 Name:           python-scipy%{?psuffix}
-Version:        1.16.3
+Version:        1.17.1
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later AND BSL-1.0
@@ -54,10 +54,6 @@ URL:            https://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{version}.tar.gz
 # Create with pooch: `python3 scipy-%%{version}/scipy/datasets/_download_all.py scipy-datasets/scipy-data; tar czf scipy-datasets.tar.gz scipy-datasets`
 Source1:        scipy-datasets.tar.gz
-# PATCH-FIX-UPSTREAM pytest-run-parallel-compat.patch https://github.com/scipy/scipy/pull/23305
-Patch0:         pytest-run-parallel-compat.patch
-# PATCH-FIX-UPSTREAM https://github.com/scipy/scipy/pull/23940 BUG: sparse.csgraph: remove rel import to fix Cython 3.2
-Patch1:         cython32.patch
 BuildRequires:  %{python_module Cython >= 3.0.8}
 BuildRequires:  %{python_module devel >= 3.11}
 BuildRequires:  %{python_module meson-python >= 0.15.0 with %python-meson-python < 0.21}
