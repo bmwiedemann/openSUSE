@@ -238,4 +238,12 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1273892</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>516a212120528464a7fee4e108e4d9ad</srcmd5>
+    <version>3.3.3</version>
+    <time>1772128726</time>
+    <user>anag_factory</user>
+    <comment>- Fix the condition with suse_version macro on SLFO (jsc#PED-15838)</comment>
+    <requestid>1335235</requestid>
+  </revision>
 </revisionlist>
