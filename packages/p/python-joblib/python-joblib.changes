@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb 24 09:57:31 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.5.3
+  * The ``Memory`` object won't overwrite an already existing
+    ``.gitignore`` file in its cache directory anymore.
+  * Harden the safety checks in ``eval_expr(pre_dispatch)`` to prevent
+    excessive memory allocation and potential crashes by limiting the
+    allowed length of the expression and the maximum numeric value of
+    sub-expressions and not evaluating expressions with non-numeric
+    literals.
+  * Vendor cloudpickle 3.1.2 to fix a pickling problem with
+    interactively defined abstract base classes and type annotations
+    in Python 3.14+.
+- Add fix-tests-numpy-2.4.patch upstream patch gh#joblib/joblib#1770
+
+-------------------------------------------------------------------
 Wed Sep 10 08:42:39 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.5.2

@@ -1,7 +1,7 @@
 #
 # spec file for package python-joblib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-joblib
-Version:        1.5.2
+Version:        1.5.3
 Release:        0
 Summary:        Module for using Python functions as pipeline jobs
 License:        BSD-3-Clause
@@ -27,6 +27,8 @@ Source:         https://files.pythonhosted.org/packages/source/j/joblib/joblib-%
 # PATCH-FIX-OPENSUSE Also avoid a DeprecationWarning when using fork() under
 # multiprocessing
 Patch1:         also-filter-new-fork-warning.patch
+# PATCH-FIX-UPSTREAM fix-tests-numpy-2.4.patch gh#joblib/joblib#1770
+Patch2:         fix-tests-numpy-2.4.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module numpy}
