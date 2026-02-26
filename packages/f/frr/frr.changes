@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Feb 14 18:35:06 UTC 2026 - Erico Mendonca <erico.mendonca@suse.com>
+
+- Bumping version to 10.5.1.
+- new module: PIM MLAG Active-Active support (mlab_pb0)
+- removed module: zebra_irdp (replaced by dpdk)
+- bgpd
+ - Allow proper shutdown of bgp dynamic peers in rare case
+ - Check length for dynamic capability (software version new encoding)
+ - Correction in json output structure for no data case
+ - Fix labeled unicast inbound policy lookup
+ - Fix labeled-unicast output
+ - Fix maximum-prefix session recovery for peers and peer-groups
+ - Fix memory leak in bgp nhc tlv processing
+ - Fix route node lock leak in nht resolved prefix marking
+ - Fix srv6-only command defaulted when 'no segment-routing ipv6'
+ - Send route-refresh and/or trigger soft reconfig on enforce-first-as
+ - Try to handle software version capability with the new encoding format
+- isisd
+ - Use ipv6 mtid for srv6 locator tlvs when ipv6 mt is enabled
+
+- pimd
+ - Add pim_debug_pim_reg protection for pim register stop debug message
+ - Crash while trying mroute_read when fd=-1
+ - Df election on zebra peer down synced to the mlag peer
+ - Fix for mc frame loss in a sequential traffic test
+ - Fix pim mlag update peer zebra status upon local mlag connection restoration
+ - Fix warnings for pimd
+ - Crash when pimreg interface not present
+ - Crashed because of indexing invalid index in an array
+ - Prevent crash on interface removal
+
+- vrrpd
+ - vrrp interface delete fails to free connected route
+
+- zebrad
+ - Fix crash due to lack of control of received number of srv6 sid from netlink
+
+-------------------------------------------------------------------
 Fri Feb 13 14:34:24 UTC 2026 - Marius Tomaschewski <mt@suse.com>
 
 - Switch to logrotate config correcting log file empty issue

@@ -1,7 +1,7 @@
 #
 # spec file for package frr
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,7 +33,7 @@
 %define frr_daemondir %{_prefix}/lib/frr
 
 Name:           frr
-Version:        10.2.1
+Version:        10.5.1
 Release:        0
 Summary:        The FRRouting Protocol Suite
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -89,10 +89,11 @@ Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
 # /usr/lib/frr/*.sh aka service macros need:
 %{?systemd_ordering}
-Requires:         grep util-linux
-Requires(pre):    grep util-linux
-Requires(post):   grep util-linux
-Requires(preun):  grep util-linux
+Requires:       grep
+Requires:       util-linux
+Requires(pre):  grep util-linux
+Requires(post): grep util-linux
+Requires(preun): grep util-linux
 Requires(postun): grep util-linux
 # logrotation needs:
 Requires:       lsof
@@ -189,8 +190,15 @@ data types, buffers and socket handling.
 Summary:        FRRouting utility library
 Group:          System/Libraries
 
+%package -n libmlag_pb0
+Summary:        FRRouting utility library
+Group:          System/Libraries
+
 %description -n libmgmt_be_nb0
 This library contains part of the mgmt_be implementation of FRRouting.
+
+%description -n libmlag_pb0
+This library contains part of the mlag_pb implementation of FRRouting.
 
 %package devel
 Summary:        Header and object files for frr development
@@ -417,6 +425,9 @@ done
 %post   -n libmgmt_be_nb0 -p /sbin/ldconfig
 %postun -n libmgmt_be_nb0 -p /sbin/ldconfig
 
+%post   -n libmlag_pb0 -p /sbin/ldconfig
+%postun -n libmlag_pb0 -p /sbin/ldconfig
+
 %files
 %license COPYING
 %doc README.md
@@ -484,7 +495,6 @@ done
 %dir %{_libdir}/frr/modules
 %{_libdir}/frr/modules/zebra_cumulus_mlag.so
 %{_libdir}/frr/modules/zebra_fpm.so
-%{_libdir}/frr/modules/zebra_irdp.so
 %{_libdir}/frr/modules/pathd_pcep.so
 %{_libdir}/frr/modules/bgpd_rpki.so
 %if %{with grpc}
@@ -524,9 +534,12 @@ done
 %files -n libmgmt_be_nb0
 %{_libdir}/libmgmt_be_nb.so.0*
 
+%files -n libmlag_pb0
+%{_libdir}/libmlag_pb.so.0*
+
 %files devel
 %dir %{_includedir}/%{name}
-%{_includedir}/%{name}/*.h
+%{_includedir}/%{name}/
 %dir %{_includedir}/%{name}/ospfd
 %{_includedir}/%{name}/ospfd/*.h
 %dir %{_includedir}/%{name}/ospfapi
@@ -536,5 +549,6 @@ done
 %dir %{_includedir}/%{name}/bfdd
 %{_includedir}/%{name}/bfdd/*.h
 %{_libdir}/lib*.so
+%{_libdir}/pkgconfig/*pc
 
 %changelog

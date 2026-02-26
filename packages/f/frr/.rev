@@ -384,4 +384,12 @@
   frr requires C11 compiler with atomic support and sets -std=gnu11</comment>
     <requestid>1333301</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>0d065cd7e93f3faa2ce183679d0a67ac</srcmd5>
+    <version>10.5.1</version>
+    <time>1772128785</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1335260</requestid>
+  </revision>
 </revisionlist>
