@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 26 06:20:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.36.0:
+  * Release Notes 0.36.0 (#1887)
+  * [Security] Preserve scope during Sealed Secret rotation (#1886)
+  * [Security] Throw an error in case of inconsistencies in the
+    Sealed Secrets (#1885)
+
+-------------------------------------------------------------------
 Thu Feb 12 12:50:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.35.0:
