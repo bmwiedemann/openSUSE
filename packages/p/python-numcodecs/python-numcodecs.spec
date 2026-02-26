@@ -1,7 +1,7 @@
 #
 # spec file for package python-numcodecs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,16 @@
 
 
 %{?sle15_python_module_pythons}
-Name:           python-numcodecs
-Version:        0.15.1
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-numcodecs%{psuffix}
+Version:        0.16.5
 Release:        0
 Summary:        Buffer compression and transformation codecs
 License:        MIT
@@ -28,8 +36,10 @@ Source:         https://files.pythonhosted.org/packages/source/n/numcodecs/numco
 Patch0:         numcodecs-pr569-systemlibs.patch
 # PATCH-FIX-OPENSUSE numcodecs-blosc-snappy-test.patch code@bnavigator.de -- allow testing snappy from the systemlib c-blosc compressors
 Patch1:         numcodecs-blosc-snappy-test.patch
+# PATCH-FIX-OPENSUSE Ignore VisibleDeprecationWarning gh#zarr-developers/numcodecs#820
+Patch2:         support-numpy-2.4.patch
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module numpy-devel >= 1.24}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pkgconfig}
@@ -46,16 +56,19 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(liblz4) >= 1.9.3
 BuildRequires:  pkgconfig(libzstd) >= 1.5.5
 BuildRequires:  pkgconfig(zlib) >= 1.2.13
-Requires:       python-deprecated
 Requires:       python-numpy >= 1.24
+Requires:       python-typing_extensions
 Suggests:       python-msgpack
 Suggests:       python-pcodec
 Suggests:       (python-zfpy >= 1 with python-numpy < 2)
-# SECTION test requirements
-BuildRequires:  %{python_module numpy >= 1.24}
-BuildRequires:  %{python_module deprecated}
+%if %{with test}
 BuildRequires:  %{python_module msgpack}
+BuildRequires:  %{python_module numcodecs = %{version}}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pyzstd}
+BuildRequires:  %{python_module zarr >= 3}
+BuildRequires:  zstd
+%endif
 # /SECTION
 %python_subpackages
 
@@ -68,28 +81,33 @@ in data storage and communication applications.
 # use system libraries instead of bundled ones
 rm -r c-blosc
 sed -i 's/--cov=numcodecs --cov-report xml//' pyproject.toml
-# keep python310 for now. This will fail with the enablement of zarr3 tests
-sed -i '/requires-python/ s/3.11/3.10/' pyproject.toml
 
 %build
+%if !%{with test}
 export CFLAGS="%{optflags}"
 export NUMCODECS_USE_SYSTEM_LIBS=1
 export DISABLE_NUMCODECS_AVX2=1
 %pyproject_wheel
+%endif
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%endif
 
+%if %{with test}
 %check
-# zarr 3 is not released yet, no crc32c in the distribution yet
 # pcodec not in the distribution
-%pytest_arch --pyargs numcodecs -rsfE --ignore=%{buildroot}%{$python_sitearch}/numcodecs/{zarr3.py,tests/test_zarr3_import.py,tests/test_checksum32.py,pcodec.py}
+%pytest_arch --pyargs numcodecs -rsfE --ignore=%{$python_sitearch}/numcodecs/pcodec.py
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
 %{python_sitearch}/numcodecs
 %{python_sitearch}/numcodecs-%{version}.dist-info
+%endif
 
 %changelog

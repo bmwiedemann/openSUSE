@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Feb 26 04:44:38 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.16.5:
+  ## Enhancements
+  * The Zstandard codec can now decode bytes containing multiple frames.
+  * Add streaming decompression for ZSTD_CONTENTSIZE_UNKNOWN case.
+  * In vlen, define and use const HEADER_LENGTH.
+  * All codecs are now pickleable.
+  * Add typesize argument to Blosc to allow for buffers that are passed to
+    encode use that information. zarr v3 currently has its Blosc codec as
+    bytes-to-bytes but does retain the size information so using it here
+    allows for massive compression ratio gains.
+  * Add support for the Linux aarch64 architecture.
+  * Preallocate output buffers and resize directly as needed.
+  * Checksum32 is now an abstract base clase, with checksum() as an abstract
+    method. This helps ensure that any subclasses implement the checksum()
+    method.
+  ## Fixes
+  * Fix Zstd decompression negative size issue on 32-bit platforms.
+  * Fix const discard warnings in fletcher32.
+  * Update license* metadata and include third-party licenses.
+  * Add #ifndef guard around PyBytes_RESIZE.
+  * Remove typesize from Blosc.get_config output.
+  ## Maintenance
+  * Improve CRC32C codec test skipping to properly report skipped tests using
+    pytest.skipif.
+- Refreshed patches:
+  * numcodecs-pr569-systemlibs.patch
+  * numcodecs-blosc-snappy-test.patch
+- Add patch support-numpy-2.4.patch:
+  * Ignore a VisibleDeprecationWarning raised with numpy 2.4.
+- No longer ignore zarr 3 tests, rely on upstream for CRC32C.
+- Inject multibuild due to requiring zarr 3 for the testsuite again.
+
+-------------------------------------------------------------------
 Mon Mar  3 12:31:40 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.15.1

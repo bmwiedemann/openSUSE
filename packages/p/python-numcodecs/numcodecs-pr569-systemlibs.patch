@@ -1,7 +1,7 @@
-Index: numcodecs-0.15.1/README.rst
+Index: numcodecs-0.16.5/README.rst
 ===================================================================
---- numcodecs-0.15.1.orig/README.rst
-+++ numcodecs-0.15.1/README.rst
+--- numcodecs-0.16.5.orig/README.rst
++++ numcodecs-0.16.5/README.rst
 @@ -18,3 +18,12 @@ codecs for use in data storage and commu
  
  .. image:: https://codecov.io/gh/zarr-developers/numcodecs/branch/main/graph/badge.svg
@@ -16,10 +16,10 @@ Index: numcodecs-0.15.1/README.rst
 +Blosc, Zstd, and LZ4 are found via the `pkg-config` utility. Moreover, you must build all 3 `blosc`, `libzstd`, and `liblz4`
 +components. C-Blosc comes with full sources for LZ4, LZ4HC, Snappy, Zlib and Zstd and in general, you should not worry about not having (or CMake not finding) the libraries in your system because by default the included sources will be automatically compiled and included in the C-Blosc library. This effectively means that you can be confident in having a complete support for all the codecs in all the Blosc deployments (unless you are explicitly excluding support for some of them). To compile blosc, see these [instructions](https://github.com/Blosc/c-blosc?tab=readme-ov-file#compiling-the-blosc-library).
 \ No newline at end of file
-Index: numcodecs-0.15.1/pyproject.toml
+Index: numcodecs-0.16.5/pyproject.toml
 ===================================================================
---- numcodecs-0.15.1.orig/pyproject.toml
-+++ numcodecs-0.15.1/pyproject.toml
+--- numcodecs-0.16.5.orig/pyproject.toml
++++ numcodecs-0.16.5/pyproject.toml
 @@ -5,6 +5,7 @@ requires = [
      "Cython",
      "py-cpuinfo",
@@ -28,10 +28,10 @@ Index: numcodecs-0.15.1/pyproject.toml
  ]
  build-backend = "setuptools.build_meta"
  
-Index: numcodecs-0.15.1/setup.py
+Index: numcodecs-0.16.5/setup.py
 ===================================================================
---- numcodecs-0.15.1.orig/setup.py
-+++ numcodecs-0.15.1/setup.py
+--- numcodecs-0.16.5.orig/setup.py
++++ numcodecs-0.16.5/setup.py
 @@ -1,14 +1,15 @@
  import os
  import sys
@@ -51,15 +51,15 @@ Index: numcodecs-0.15.1/setup.py
  
  # determine CPU support for SSE2 and AVX2
  cpu_info = cpuinfo.get_cpu_info()
-@@ -17,6 +18,7 @@ have_sse2 = 'sse2' in flags
- have_avx2 = 'avx2' in flags
+@@ -24,6 +25,7 @@ if machine == 'x86_64':
+ 
  disable_sse2 = 'DISABLE_NUMCODECS_SSE2' in os.environ
  disable_avx2 = 'DISABLE_NUMCODECS_AVX2' in os.environ
 +use_system_libraries = 'NUMCODECS_USE_SYSTEM_LIBS' in os.environ
  
  # setup common compile arguments
  have_cflags = 'CFLAGS' in os.environ
-@@ -49,8 +51,8 @@ def error(*msg):
+@@ -56,8 +58,8 @@ def error(*msg):
      print('[numcodecs]', *msg, **kwargs)
  
  
@@ -69,8 +69,8 @@ Index: numcodecs-0.15.1/setup.py
 +    info('setting up Blosc extension from vendored sources')
  
      extra_compile_args = base_compile_args.copy()
-     define_macros = []
-@@ -123,8 +125,68 @@ def blosc_extension():
+     extra_link_args = []
+@@ -137,8 +139,68 @@ def blosc_extension():
      ]
  
  
@@ -141,7 +141,7 @@ Index: numcodecs-0.15.1/setup.py
  
      zstd_sources = []
      extra_compile_args = base_compile_args.copy()
-@@ -163,8 +225,46 @@ def zstd_extension():
+@@ -177,8 +239,46 @@ def zstd_extension():
      ]
  
  
@@ -190,7 +190,7 @@ Index: numcodecs-0.15.1/setup.py
  
      extra_compile_args = base_compile_args.copy()
      define_macros = []
-@@ -189,6 +289,45 @@ def lz4_extension():
+@@ -203,6 +303,45 @@ def lz4_extension():
      ]
  
  
@@ -236,7 +236,7 @@ Index: numcodecs-0.15.1/setup.py
  def vlen_extension():
      info('setting up vlen extension')
      import numpy
-@@ -317,14 +456,14 @@ class ve_build_ext(build_ext):
+@@ -333,14 +472,14 @@ class ve_build_ext(build_ext):
              build_ext.run(self)
          except PlatformError as e:
              error(e)
@@ -253,7 +253,7 @@ Index: numcodecs-0.15.1/setup.py
  
  
  class Sclean(clean):
-@@ -352,7 +491,10 @@ def run_setup(with_extensions):
+@@ -368,7 +507,10 @@ def run_setup(with_extensions):
              + jenkins_extension()
          )
  
