@@ -816,4 +816,12 @@ update to 9.6.20</comment>
     <comment></comment>
     <requestid>1333966</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>1ff5804ceeda2e1a5a3142f00e380cf0</srcmd5>
+    <version>9.7.3</version>
+    <time>1772128805</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1335288</requestid>
+  </revision>
 </revisionlist>

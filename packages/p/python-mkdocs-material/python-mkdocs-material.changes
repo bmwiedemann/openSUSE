@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 26 06:42:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.7.3:
+  * Fixed #8567: Print MkDocs 2.0 incompatibility warning to stderr
+
+-------------------------------------------------------------------
 Thu Feb 19 07:04:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.7.2:
