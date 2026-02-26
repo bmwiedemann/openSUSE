@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 24 10:28:13 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 3.1.3 (CVE-2026-27205, bsc#1258700)
+  * The session is marked as accessed for operations that only
+    access the keys but not the values, such as in and len.
+    GHSA-68rp-wp8r-4726
+- Update to 3.1.2
+  * stream_with_context does not fail inside async views. #5774
+  * When using follow_redirects in the test client, the final state
+    of session is correct. #5786
+  * Relax type hint for passing bytes IO to send_file. #5776
+
+-------------------------------------------------------------------
 Thu May 15 06:16:18 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 3.1.1 (CVE-2025-47278, bsc#1243163):

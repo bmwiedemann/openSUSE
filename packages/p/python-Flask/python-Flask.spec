@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask
-Version:        3.1.1
+Version:        3.1.3
 Release:        0
 Summary:        A microframework based on Werkzeug, Jinja2 and good intentions
 License:        BSD-3-Clause
@@ -34,6 +34,7 @@ Source1:        python-Flask-rpmlintrc
 BuildRequires:  %{python_module Jinja2 >= 3.1.2}
 BuildRequires:  %{python_module MarkupSafe}
 BuildRequires:  %{python_module Werkzeug >= 3.1.0}
+BuildRequires:  %{python_module asgiref}
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module blinker >= 1.9}
 BuildRequires:  %{python_module click >= 8.1.3}
@@ -51,6 +52,7 @@ Requires:       python-Werkzeug >= 3.1.0
 Requires:       python-blinker >= 1.9
 Requires:       python-click >= 8.1.3
 Requires:       python-itsdangerous >= 2.2
+Recommends:     python-asgiref
 %if 0%{?python_version_nodots} < 310
 Requires:       python-importlib-metadata >= 3.6.0
 %endif
@@ -63,9 +65,6 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
 BuildArch:      noarch
-%if %{?suse_version} < 1500
-BuildRequires:  python
-%endif
 %python_subpackages
 
 %description
