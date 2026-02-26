@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 25 01:40:45 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add pesign-bsc1258751-constify-return-of-strrchr.patch to
+  constify the return pointer of strrchr() (bsc#1258751)
+
+-------------------------------------------------------------------
 Tue Jan 13 08:13:01 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Use /var/lib/empty as the the home directory of the pesign system

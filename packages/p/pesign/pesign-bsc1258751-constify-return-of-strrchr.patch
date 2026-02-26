@@ -1,0 +1,30 @@
+From b18e40d16e91f122df2c54e5ee06cc5bc259e34e Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 25 Feb 2026 09:32:45 +0800
+Subject: [PATCH] pesum: Constify the return pointer of strrchr()
+
+Since glibc 2.23, strrchr() returns a const pointer when given a const
+pointer as input. Declare 'ext' as 'const char *' to avoid the potential
+compilation error.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ src/pesum.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/pesum.c b/src/pesum.c
+index e4ddaf8..5d7dcb9 100644
+--- a/src/pesum.c
++++ b/src/pesum.c
+@@ -141,7 +141,7 @@ main(int argc, char *argv[])
+ 	while ((infile = poptGetArg(optCon)) != NULL) {
+ 		pesign_context *ctxp = NULL;
+ 
+-		char *ext = strrchr(infile, '.');
++		const char *ext = strrchr(infile, '.');
+ 		if (ext && strcmp(ext, ".ko") == 0)
+ 			fmt = FORMAT_KERNEL_MODULE;
+ 
+-- 
+2.51.0
+

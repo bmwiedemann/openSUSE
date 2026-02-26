@@ -42,6 +42,7 @@ Patch10:        pesign-fix-efikeygen-segfault.patch
 Patch11:        pesign-bsc1221694-fix-reversed-calloc-arguments.patch
 # PATCH-FIX-UPSTREAM pesign-bsc1238023-initialize-pwdata.patch bsc#1238023 glin@suse.com -- Fall back to password prompt correctly
 Patch12:        pesign-bsc1238023-initialize-pwdata.patch
+Patch13:        pesign-bsc1258751-constify-return-of-strrchr.patch
 BuildRequires:  efivar-devel >= 38
 BuildRequires:  libuuid-devel
 BuildRequires:  mandoc
