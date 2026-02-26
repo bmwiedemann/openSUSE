@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 20 11:35:25 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 2.2.1:
+  * Release v2.2.1
+  * Fix EAGAIN busy-loop in drain_stdio()
+  * Add CRI-O critest
+  * Fix test for reverted F-sequence behavior
+  * Revert PR #592
+  * Revert PR #629
+  * Skip test if RUNTIME_BINARY is not runc
+  * Fix k8s-file log format for terminating F-sequence
+  * tests: Ensure necessary dependencies are available
+  * Release v2.2.0
+
+-------------------------------------------------------------------
 Thu Jan 29 05:47:24 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
 
 - Update to version 2.2.0:
