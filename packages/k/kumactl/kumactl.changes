@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 26 08:44:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.13.2:
+  * chore(deps): security update (#15657)
+  * chore(release): disable Docker 29 provenance to fix manifest
+    creation (backport of #15627) (#15652)
+  * chore(deps): security update (#15641)
+  * chore(deps): security update (#15577)
+  * chore(deps/dev): bump go from 1.25.6 to 1.25.7 (#15549)
+
+-------------------------------------------------------------------
 Tue Feb 10 07:05:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.13.1:
