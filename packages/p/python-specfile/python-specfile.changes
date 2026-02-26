@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 25 11:16:06 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.39.1
+  * Fixed whitespace padding of day of month in changelog entries. (#511)
+- from version 0.39.0
+  * Changelog entries that have incorrect padding set for a day of
+    a month are now fixed if possible or ignored. (#508)
+
+-------------------------------------------------------------------
 Tue Jan 13 11:08:56 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.38.0
