@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 26 08:29:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.7.0:
+  * Add typing classifier
+  * Enable logging related ruff checks
+  * Run mypy from tox
+  * Delay string interpolations at logging calls
+  * Remove reference to tag framework
+
+-------------------------------------------------------------------
 Fri Nov 28 11:39:44 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 5.6.0

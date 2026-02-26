@@ -580,4 +580,17 @@
 - Remove empty file stevedore/tests/extension_unimportable.py</comment>
     <requestid>1321563</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>b4f3fa3664f5b6b074936a5c0a53ee27</srcmd5>
+    <version>5.7.0</version>
+    <time>1772128691</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.7.0:
+  * Add typing classifier
+  * Enable logging related ruff checks
+  * Run mypy from tox
+  * Delay string interpolations at logging calls
+  * Remove reference to tag framework</comment>
+    <requestid>1335224</requestid>
+  </revision>
 </revisionlist>

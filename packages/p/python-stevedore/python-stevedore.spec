@@ -1,7 +1,7 @@
 #
 # spec file for package python-stevedore
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-stevedore
-Version:        5.6.0
+Version:        5.7.0
 Release:        0
 Summary:        Manage dynamic plugins for Python applications
 License:        Apache-2.0
