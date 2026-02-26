@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 25 20:08:14 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1772031289.93bc2a13:
+  * docs(image): describe the TW image with openQA available in o3
+  * fix(t/03-auth): avoid 'Too many open files' with mocks
+  * fix: avoid constant redefinition warnings in ScheduledProducts
+  * feat: add aggregate favicons for test overview
+  * build: improve cleanup of generated favicon assets
+  * feat: add Makefile targets to run services with temporary test database
+  * ci(helm): increase timeout on ct install
+  * feat: add gitlint for conventional commit checks
+
+-------------------------------------------------------------------
 Tue Feb 24 21:52:18 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1771942065.808b073f:
