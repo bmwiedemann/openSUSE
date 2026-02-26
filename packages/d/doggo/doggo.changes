@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 25 09:26:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.5:
+  * Bug fixes
+    - 68018a9: fix(resolvers): stop search-list iteration on NODATA
+      responses (@mr-karan)
+  * Others
+    - c1e6f89: Merge pull request #235 from
+      mr-karan/fix/search-list-nodata (@mr-karan)
+    - f74ecf2: chore(deps): upgrade go dependencies (@mr-karan)
+
+-------------------------------------------------------------------
 Mon Jan 12 06:40:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.4:
