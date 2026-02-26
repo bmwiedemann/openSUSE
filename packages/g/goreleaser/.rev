@@ -755,4 +755,41 @@
   * chore: auto-update generated files (forwarded request 1334848 from ph03nix)</comment>
     <requestid>1334857</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6965bb354714a4235ebb72129a2b8154</srcmd5>
+    <version>2.14.1</version>
+    <time>1772133025</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.14.1:
+  * sec(deps): update filippo.io/edwards25519
+  * fix
+  * fix(docker/v2): output in error
+  * test(docker/v2): fix issues
+  * fix(tmpl): rename toSlice to list
+  * fix(tmpl): slice -&gt; toSlice
+  * test(docker/v2): avoid setting up multiple times
+  * test(mcp): use httptest
+  * chore: remove unused file
+  * test(exec): simpler, faster, tests
+  * test(opencollective): avoid doing real calls on tests
+  * test(upx): do not build actual binaries
+  * test(universalbinary): faster go build for tests
+  * test(slack): use httptest
+  * test(sbom): faster tests
+  * test(client): faster tests
+  * test(rust): opt-leval=0 is faster
+  * test(zig): Debug is faster
+  * test: improve artifactory/upload tests
+  * docs: update github action
+  * ci: cleanup
+  * docs: typo
+  * docs: fmt
+  * docs: fix syntax
+  * docs: fix more divider
+  * docs: announce v2.14
+  * chore: auto-update generated files
+  * ci: fix deprecated options
+  * docs: fix gemfury links (forwarded request 1335220 from ph03nix)</comment>
+    <requestid>1335311</requestid>
+  </revision>
 </revisionlist>
