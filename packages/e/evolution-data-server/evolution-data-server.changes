@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 23 20:10:38 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add eds-CVE-2026-2604.patch: canonicalize path before local
+  cache file removal (bsc#1258307 CVE-2026-2604
+  glgo#GNOME/evolution-data-server#627).
+
+-------------------------------------------------------------------
 Fri Jan 30 15:09:26 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.58.3:
@@ -6559,12 +6566,12 @@ Fri Oct 31 19:48:06 IST 2008 - msuman@suse.de
   for picking the LDAP libraries.
 
 -------------------------------------------------------------------
-Wed Oct 29 08:28:41 CST 2008 - maw@suse.de
+Wed Oct 29 08:28:41 UTC 2008 - maw@suse.de
 
 - Make the -devel subpackage require nss-shared-helper-devel.
 
 -------------------------------------------------------------------
-Tue Oct 28 17:44:26 CST 2008 - maw@suse.de
+Tue Oct 28 17:44:26 UTC 2008 - maw@suse.de
 
 - Reorder the list of build requirements
 - Tag eds-core-mapi-changes.diff
@@ -6582,7 +6589,7 @@ Mon Oct 27 12:14:48 CET 2008 - kukuk@suse.de
   [bnc#439152].
 
 -------------------------------------------------------------------
-Sun Oct 26 23:53:18 CST 2008 - hpj@novell.com
+Sun Oct 26 23:53:18 UTC 2008 - hpj@novell.com
 
 - Add evolution-data-server-shared-nss-db.patch, which lets us
   migrate to new, shared NSS database and location.
@@ -7092,7 +7099,7 @@ Fri Mar 30 08:10:13 CEST 2007 - aj@suse.de
 - Add bison to BuildRequires.
 
 -------------------------------------------------------------------
-Thu Mar 22 11:21:56 CST 2007 - maw@suse.de
+Thu Mar 22 11:21:56 UTC 2007 - maw@suse.de
 
 - Update to version 1.10.0
 - Bug fixes, including bugzilla.gnome.org 413173, 400169,
@@ -7102,7 +7109,7 @@ Thu Mar 22 11:21:56 CST 2007 - maw@suse.de
 - Fix bnc-183819-evo-crashed-closing-offline.patch.
 
 -------------------------------------------------------------------
-Mon Mar 12 14:53:49 CST 2007 - maw@suse.de
+Mon Mar 12 14:53:49 UTC 2007 - maw@suse.de
 
 - Update to version 1.9.91
 - Refresh serveral patches

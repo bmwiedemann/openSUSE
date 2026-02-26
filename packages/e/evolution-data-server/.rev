@@ -2514,4 +2514,12 @@ New stable rel</comment>
     - EBookSqlite: Correct mutex unlock in e_book_sqlite_lock() (forwarded request 1330993 from iznogood)</comment>
     <requestid>1331121</requestid>
   </revision>
+  <revision rev="271" vrev="2">
+    <srcmd5>55cfa2c9568991b4d029679962b71699</srcmd5>
+    <version>3.58.3</version>
+    <time>1772128165</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1334913</requestid>
+  </revision>
 </revisionlist>

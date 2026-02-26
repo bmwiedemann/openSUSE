@@ -39,6 +39,8 @@ License:        LGPL-2.0-only
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Apps/Evolution
 Source0:        %{name}-%{version}.tar.zst
+# PATCH-FIX-UPSTREAM eds-CVE-2026-2604.patch bsc#1258307 mgorse@suse.com -- canonicalize path before local cache file removal.
+Patch0:         eds-CVE-2026-2604.patch
 
 BuildRequires:  cmake >= 3.15
 BuildRequires:  db-devel
