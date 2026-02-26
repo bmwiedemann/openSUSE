@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 26 07:05:00 UTC 2026 - heming zhao <heming.zhao@suse.com>
+
+- drbd: fix build error against kernel v6.19.3 (boo#1258918)
+  * add upstream patch
+    + drbd-convert-bind-and-connect-callbacks-to-use-socka.patch
+
+-------------------------------------------------------------------
 Fri Oct 10 06:23:00 UTC 2025 - heming zhao <heming.zhao@suse.com>
 
 - drbd: fix build error against kernel v6.17.0 (boo#1251834)

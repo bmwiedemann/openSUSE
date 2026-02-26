@@ -39,6 +39,7 @@ Source3:        drbd_git_revision
 Patch0001:  0001-drbd-Fix-memory-leak.patch
 Patch0002:  0001-drbd-build-deal-with-potentially-relative-paths-in-p.patch
 Patch0003:  0001-compat-follow-Linux-6.14-debugfs_change_name.patch
+Patch0004:  drbd-convert-bind-and-connect-callbacks-to-use-socka.patch
 
 # suse special patch
 Patch1001:  bsc-1025089_fix-resync-finished-with-syncs-have-bits-set.patch

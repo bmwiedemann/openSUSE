@@ -1,0 +1,91 @@
+From dea3733b172aae3de3826147b6d72c35f1222f42 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Christoph=20B=C3=B6hmwalder?=
+ <christoph.boehmwalder@linbit.com>
+Date: Mon, 15 Dec 2025 18:43:53 +0100
+Subject: [PATCH] drbd: convert bind and connect callbacks to use
+ sockaddr_unsized
+
+Same idea as upstream commits:
+
+0e50474f net: Convert proto_ops bind() callbacks to use sockaddr_unsized
+85cb0757 net: Convert proto_ops connect() callbacks to use sockaddr_unsized
+
+Also include a compat patch for older kernels.
+---
+ .../cocci/struct_sockaddr_unsized__no_present.cocci        | 4 ++++
+ drbd/drbd-kernel-compat/gen_patch_names.c                  | 3 +++
+ .../tests/have_struct_sockaddr_unsized.c                   | 5 +++++
+ drbd/drbd_transport_tcp.c                                  | 7 ++++---
+ 4 files changed, 16 insertions(+), 3 deletions(-)
+ create mode 100644 drbd/drbd-kernel-compat/cocci/struct_sockaddr_unsized__no_present.cocci
+ create mode 100644 drbd/drbd-kernel-compat/tests/have_struct_sockaddr_unsized.c
+
+diff --git a/drbd/drbd-kernel-compat/cocci/struct_sockaddr_unsized__no_present.cocci b/drbd/drbd-kernel-compat/cocci/struct_sockaddr_unsized__no_present.cocci
+new file mode 100644
+index 000000000000..6d6259bcf546
+--- /dev/null
++++ b/drbd/drbd-kernel-compat/cocci/struct_sockaddr_unsized__no_present.cocci
+@@ -0,0 +1,4 @@
++@@
++@@
++- struct sockaddr_unsized
+++ struct sockaddr
+diff --git a/drbd/drbd-kernel-compat/gen_patch_names.c b/drbd/drbd-kernel-compat/gen_patch_names.c
+index a1835b3545a8..8371f117f3b0 100644
+--- a/drbd/drbd-kernel-compat/gen_patch_names.c
++++ b/drbd/drbd-kernel-compat/gen_patch_names.c
+@@ -497,6 +497,9 @@ int main(int argc, char **argv)
+ 	patch(1, "debugfs_change_name", true, false,
+ 	      COMPAT_HAVE_DEBUGFS_CHANGE_NAME, "present");
+ 
++	patch(1, "struct_sockaddr_unsized", true, false,
++	      COMPAT_HAVE_STRUCT_SOCKADDR_UNSIZED, "present");
++
+ /* #define BLKDEV_ISSUE_ZEROOUT_EXPORTED */
+ /* #define BLKDEV_ZERO_NOUNMAP */
+ 
+diff --git a/drbd/drbd-kernel-compat/tests/have_struct_sockaddr_unsized.c b/drbd/drbd-kernel-compat/tests/have_struct_sockaddr_unsized.c
+new file mode 100644
+index 000000000000..2957ef006330
+--- /dev/null
++++ b/drbd/drbd-kernel-compat/tests/have_struct_sockaddr_unsized.c
+@@ -0,0 +1,5 @@
++/* { "version": "v6.18-rc4", "commit": "bf33247a90d3e85d53a9b55bb276b725456ff0bf", "comment": "struct sockaddr_unsized was introduced", "author": "Kees Cook <kees@kernel.org>", "date": "Mon Nov 3 16:26:09 2025 -0800" } */
++
++#include <linux/socket.h>
++
++struct sockaddr_unsized x;
+diff --git a/drbd/drbd_transport_tcp.c b/drbd/drbd_transport_tcp.c
+index 7ffc20997cc4..9dfcaf9a2230 100644
+--- a/drbd/drbd_transport_tcp.c
++++ b/drbd/drbd_transport_tcp.c
+@@ -495,14 +495,15 @@ static int dtt_try_connect(struct dtt_path *path, struct socket **ret_socket)
+ 	*  a free one dynamically.
+ 	*/
+ 	what = "bind before connect";
+-	err = socket->ops->bind(socket, (struct sockaddr *) &my_addr, path->path.my_addr_len);
++	err = socket->ops->bind(socket, (struct sockaddr_unsized *) &my_addr,
++			path->path.my_addr_len);
+ 	if (err < 0)
+ 		goto out;
+ 
+ 	/* connect may fail, peer not yet available.
+ 	 * stay C_CONNECTING, don't go Disconnecting! */
+ 	what = "connect";
+-	err = socket->ops->connect(socket, (struct sockaddr *) &peer_addr,
++	err = socket->ops->connect(socket, (struct sockaddr_unsized *) &peer_addr,
+ 				   path->path.peer_addr_len, 0);
+ 	if (err < 0) {
+ 		switch (err) {
+@@ -1030,7 +1031,7 @@ static int dtt_init_listener(struct drbd_transport *transport,
+ 	addr_len = addr->sa_family == AF_INET6 ? sizeof(struct sockaddr_in6)
+ 		: sizeof(struct sockaddr_in);
+ 
+-	err = s_listen->ops->bind(s_listen, (struct sockaddr *)&my_addr, addr_len);
++	err = s_listen->ops->bind(s_listen, (struct sockaddr_unsized *)&my_addr, addr_len);
+ 	if (err < 0) {
+ 		what = "bind before listen";
+ 		goto out;
+-- 
+2.43.0
+
