@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Feb 17 00:50:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.400
+  * This release enables use of the multi-threaded FUSE loop.
+    Previously hfsfuse was limited to single-threaded mode.
+  * Fixes a potential memory leak on directory open failure.
+  * Other minor improvements.
+- from version 0.392
+  * Fixes an issue building hfsdump in a release configuration.
+  * The system's uthash headers can now be used instead of the
+    bundled version by building with WITH_UTHASH=system
+  * Other minor improvements.
+- from version 0.385
+  * Fixes handling of file timestamps earlier than 1970.
+    Previously these were clamped to the Unix epoch.
+  * Fixes an issue with the LZVN install target that caused make
+    install-lib to fail. LZVN has also been updated with an uninstall
+    target for use with make uninstall-lib.
+  * A pkg-config file has been added for libhfsuser and can be
+    installed with the make install-lib target. This can be used
+    to get the appropriate linker flags including the supporting
+    libraries libhfsuser was built with.
+  * hfsdump now prints version/build info alongside usage if invoked
+    with no arguments.
+  * Other minor bugfixes and improvements.
+- from version 0.358
+  * Fixes a bug in the previous release that caused hfsfuse
+    not to compile on systems with statx support.
+  * Minor improvements to error handling in hfsfuse and hfsdump.
+  * Adds hfs_open_volume and hfs_file_read to libhfsuser's API
+    to read files without keeping track of offsets and to open
+    volumes without explicitly initializing libhfs respectively.
+- from version 0.345
+  * Embeds the LZVN library as a local dependency, first supported
+    for decoding certain HFS+ compressed files in v0.318.
+  * LZVN is small and not widely distributed, so was a good candidate
+    for embedding locally. This uses a portability-focused fork of the
+    LZVN library from 0x09/LZVN.
+  * This is built by default and may be configued using
+    WITH_LZVN=local/system/none simiar to the existing
+    ublio and utf8proc dependencies.
+  * The build system no longer overrides the C standard version set by
+    embedded libraries to gnu11 and now builds these with the version
+    specified by the library. The former was not known to cause any issues.
+  * Adds a new high level API for file reading to libhfsuser which offers
+    a unified interface for reading HFS+ compressed files and regular files.
+    Clients using this no longer need to interface with the hfs_decmpfs_* API
+    directly, and this new interface has been adopted in all hfsfuse tools.
+  * Various minor Makefile improvements
+- from version 0.318
+  * Adds support for LZVN HFS+ compression using libFastCompression
+    from https://github.com/xerub/LZVN.
+  * If this library is not available, the tools will now log a more
+    appropriate error when attempting to read these types of files.
+    Edit: this library is now embedded since release v0.327
+  * hfstar: fixes a double-free of the decmpfs context in case of error.
+  * Updates the utf8proc subtree to v0.32.0
+- Add no-incompatible-pointer-types.patch to treat compiler
+  error for "-Wincompatible-pointer-types" as warning only
+
+-------------------------------------------------------------------
 Wed Dec 24 11:16:06 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 0.310:

@@ -1,0 +1,12 @@
+diff -Nru hfsfuse-0.400.orig/Makefile hfsfuse-0.400/Makefile
+--- hfsfuse-0.400.orig/Makefile	2026-02-16 21:32:16.000000000 +0100
++++ hfsfuse-0.400/Makefile	2026-02-17 01:41:10.746493080 +0100
+@@ -12,7 +12,7 @@
+ CFLAGS := $(CONFIG_CFLAGS)
+ 
+ # extra flags we don't want to forward to external libs like libhfs/ublio/utf8proc/lzvn
+-LOCAL_CFLAGS+=-std=gnu11 -D_FILE_OFFSET_BITS=64 -Wall -Wextra -pedantic -Wno-gnu-zero-variadic-macro-arguments -Wno-unused-parameter -Wno-error=type-limits -Wno-tautological-constant-out-of-range-compare
++LOCAL_CFLAGS+=-std=gnu11 -D_FILE_OFFSET_BITS=64 -Wall -Wextra -pedantic -Wno-gnu-zero-variadic-macro-arguments -Wno-unused-parameter -Wno-error=type-limits -Wno-tautological-constant-out-of-range-compare -Wno-incompatible-pointer-types
+ # older versions of gcc/clang need these as well
+ LOCAL_CFLAGS+=-Wno-missing-field-initializers -Wno-missing-braces
+ 

@@ -1,7 +1,7 @@
 #
 # spec file for package hfsfuse
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           hfsfuse
-Version:        0.310
+Version:        0.400
 Release:        0
 Summary:        FUSE driver for HFS+ filesystems
 License:        BSD-1-Clause AND BSD-2-Clause AND BSD-3-Clause AND MIT
 Group:          System/Filesystems
 URL:            https://github.com/0x09/hfsfuse
 Source:         https://github.com/0x09/hfsfuse/releases/download/%{version}/%{name}-%{version}.tar.gz
+Patch:          no-incompatible-pointer-types.patch
 BuildRequires:  fuse3-devel
 BuildRequires:  libarchive-devel
 BuildRequires:  lzfse-devel
