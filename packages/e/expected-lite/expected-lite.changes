@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Feb 11 07:34:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.0:
+  * This release of _expected-lite_ adds `[[nodiscard]]` also to
+    `expected`.
+- update to 0.9.0:
+  * Release 0.9.0 of _expected lite_ introduces marking
+    `expected` and `bad_expected_access` as `[[nodiscard]]` at
+    default. This behaviour can be controlled via
+    `nsel_CONFIG_NO_NODISCARD`, see section Configuration.
+  * Remove unsupported C++98, C++03 from compilation script.
+  * Introduce `std11::addressof` (#70, thanks @DNKpp).
+  * In Readme, update sections 'Algorithms for `unexpected_type`'
+    and A.2 'Expected lite test specification' (#67).
+  * Update in-place version of `make_unexpected`, add it for use
+    with `std::expected`, add test (#67).
+  * Add inplace version of `make_unexpected` (#68, thanks
+    @Leonezz).
+
+-------------------------------------------------------------------
 Wed Jun 26 00:13:30 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Initial package of expected-lite for openSUSE

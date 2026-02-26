@@ -1,7 +1,7 @@
 #
 # spec file for package expected-lite
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           expected-lite
-Version:        0.8.0
+Version:        0.10.0
 Release:        0
 Summary:        Expected objects in C++11 and later in a single-file header-only library
 License:        BSL-1.0
@@ -30,7 +30,7 @@ BuildRequires:  gcc-c++
 expected lite: Expected objects in C++11 and later in a single-file header-only library
 
 %package devel
-Summary:        Expected objects in C++11 
+Summary:        Expected objects in C++11
 Group:          Development/Libraries/C and C++
 Requires:       libstdc++-devel
 
