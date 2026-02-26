@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 21 13:23:22 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 4.3.1
+  * Change upstream source
+  * Remove cli4 command and manpages
+  * Update APIs
+
+-------------------------------------------------------------------
 Mon Jun 17 05:56:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.20.0:
