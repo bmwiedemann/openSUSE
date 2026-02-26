@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Feb 26 10:07:15 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260226.8b99a4c5:
+  * Chore: codecov: update expected report count
+  * Fix: behave: Remove redundant dos2unix in run-functional-tests (#2034)
+  * Dev: behave: Adjust functional test for previous commit
+  * Dev: bootstrap: Disable sbd.service when the process is in 'cluster' stage
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: sbd: Move diskless SBD warning to adjust_properties
+  * Dev: sbd: record ERROR when prerequisite checks fail
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: sbd: rename SBDTimeoutChecker to SBDConfigChecker
+  * Dev: sbd: Replace magic numbers with IntEnum for check prerequisites
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: sbd: Add self._log_when_not_quiet() method to avoid checking self.quiet everywhere
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: bootstrap: The sbd stage now requires a running cluster
+  * Dev: sbd: Adjust related properties after cluster started on init process
+  * Dev: sbd: Add quiet attribute to class SBDTimeout
+
+-------------------------------------------------------------------
+Tue Feb 10 04:53:16 UTC 2026 - nicholas.yang@suse.com
+
+- Update to version 5.0.0+20260210.baf54ddb:
+  * Dev: workflows: Enable Python 3.14 for unit test
+
+-------------------------------------------------------------------
+Tue Feb 10 03:12:21 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260210.24e46036:
+  * minieval.py : remove ast.Num and ast.Str no longer available in Python 3.14
+
+-------------------------------------------------------------------
 Mon Feb 09 08:41:11 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.0.0+20260209.ed56b53c:
