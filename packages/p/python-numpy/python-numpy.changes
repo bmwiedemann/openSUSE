@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Feb 20 14:22:34 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.4.2
+  * Many annotation improvements.
+  * New casting kwarg 'same_value' for casting by value.
+  * New PyUFunc_AddLoopsFromSpec function that can be used to add
+    user sort loops using the ArrayMethod API.
+  * New __numpy_dtype__ protocol.
+  * Setting the strides attribute is deprecated.
+  * Positional out argument to np.maximum, np.minimum is deprecated.
+  * align= must be passed as boolean to np.dtype().
+  * Assertion and warning control utilities are deprecated.
+  * np.fix is pending deprecation.
+  * in-place modification of ndarray.shape is pending deprecation.
+  * Deprecation of numpy.lib.user_array.container.
+  * Removed deprecated MachAr runtime discovery mechanism.
+  * Raise TypeError on attempt to convert array with ndim > 0 to
+    scalar.
+  * Removed numpy.linalg.linalg and numpy.fft.helper.
+  * Removed interpolation parameter from quantile and percentile
+    functions.
+  * Removed numpy.in1d and numpy.ndindex.ndincr().
+  * Removed fix_imports parameter from numpy.save.
+  * Removal of four undocumented ndarray.ctypes methods.
+  * Removed newshape parameter from numpy.reshape.
+  * numpy.array2string and numpy.sum deprecations finalized.
+  * Removed some other deprecated functions and arguments.
+  * NumPy's C extension modules have begun to use multi-phase
+    initialisation, as defined by PEP 489.
+  * numpy.round now always returns a copy.
+  * Type-checkers will no longer accept calls to numpy.arange with
+    start as a keyword argument.
+  * The Macro NPY_ALIGNMENT_REQUIRED has been removed.
+  * Many more changes and fixes, see upstream changelog.
+- Drop update-meson-1_5_2.patch, no longer needed
+
+-------------------------------------------------------------------
 Thu Sep 25 12:58:04 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.3.3

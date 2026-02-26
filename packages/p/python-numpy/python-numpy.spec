@@ -1,7 +1,7 @@
 #
 # spec file for package python-numpy
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %{?sle15_python_module_pythons}
 
 Name:           python-numpy
-Version:        2.3.3
+Version:        2.4.2
 Release:        0
 Summary:        NumPy array processing for numbers, strings, records and objects
 License:        BSD-3-Clause
@@ -39,13 +39,10 @@ Source:         https://files.pythonhosted.org/packages/source/n/numpy/numpy-%{v
 Source99:       python-numpy-rpmlintrc
 # PATCH-FIX-OPENSUSE numpy-buildfix.patch -- openSUSE-specific build fixes
 Patch0:         numpy-buildfix.patch
-# PATCH-FIX-UPSTREAM update-meson-1_5_2.patch gh#numpy/numpy#27531 mcepl@suse.com
-# update vendored meson
-Patch1:         update-meson-1_5_2.patch
-BuildRequires:  %{python_module Cython >= 3.0}
+BuildRequires:  %{python_module Cython >= 3.0.6}
 BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module meson-python >= 0.15}
+BuildRequires:  %{python_module meson-python >= 0.18.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyproject-metadata >= 0.7.1}
 BuildRequires:  cmake
