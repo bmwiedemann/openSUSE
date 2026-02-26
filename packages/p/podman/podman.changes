@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Thu Feb 19 14:37:33 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
+
+- Update to version 5.8.0:
+  * Bump to v5.8.0
+  * Final release notes for v5.8.0
+  * update github.com/containers/gvisor-tap-vsock to v0.8.8
+  * Bump Podman to v5.8.0-dev
+  * Bump to v5.8.0-RC1
+  * Extent timeout on Build Each Commit
+  * Update release notes for v5.8.0-RC1
+  * fix: remove unnecessary -t flag from podman run commands in documentation
+  * Add /usr/libexec/podman/qemu-system-arch
+  * test/system: skip podman volumes with XFS quotas on fedora
+  * cirrus: ensure NOTIFY_SOCKET is properly unset for all tests
+  * docs: Update filter options and add podman ps documentation
+  * docs: Deduplicate --filter descriptions
+  * Deterministically order pod inspect fields
+  * bindings: fix handling of env secrets in remote builds
+  * Add perl to make validatepr
+  * Fix `unless-stopped` restart policy to match Docker behavior
+  * docs/podman.1: Fix leftover rootless mention
+  * fix: improve userns validation when joining pods
+  * docs: further tweaks
+  * docs: improve note about Quadlet TimeoutStartSec
+  * [Fixes: #27571] Fix 'shouldResolveWinPaths' returning 'false' on Windows
+  * fix(api/compat): typo in the remove secret handle
+  * Clamp rootless rlimits to host on format
+  * Add ulimits to `podman update` API
+  * podman-systemd.unit.5: document /sbin/nologin accounts
+  * feat(exec): Add --no-session flag for improved performance
+  * quadlet install: multiple quadlets from single file should share app
+  * quadlet: add support for multiple quadlets in a single file
+  * chore: fix the inconsistent method names in the comments
+  * docs: Add references to quadlet
+  * test/system: Update test to handle new error message from runc 1.3.3
+  * Ignore auth header with empty JSON object
+  * Fixes: #27444, Fix tiny typos in some artifact docs
+  * Fixes #27421 aritfact push and pull with authfile
+  * Bumping timeout for aarch64 machine
+  * Fix remote client rejecting empty --detach-keys string
+  * Makefile: Drop dead CONTAINER_RUNTIME
+  * Fixes #27378 Missing network type in events document
+  * Update docs/source/markdown/podman-run.1.md.in
+  * Escape periods in path
+  * Escape RequiresMountsFor value
+  * Introduce assert-has-key assertion
+  * Rename misleading assertion name
+  * docs: expand --mount section with detailed type descriptions (#25888)
+  * Fix tmpfs U/chown documentation
+  * [CI:DOCS]Fix minor typo in buildah test
+  * Add system test
+  * Fix podman build "newer" pull policy
+  * test/e2e: fix 'block all syscalls' seccomp for runc
+  * [play_kube] Add validation to container image field
+  * test: Fix PODMAN_BATS_LEAK_CHECK
+  * Fix docs for Volume User= and Group= options
+  * test/system: fix log timestamp work around
+  * extract shared TTY handling code into helper function
+  * test: Fix --hostuser octal UID test flakiness
+  * Fixes #27651 - Fix health inspect/ps for rootfs containers with empty healthcheck
+  * test/e2e: Skip privileged container test if NoNewPrivs is set
+  * Don't assume v1.41 is the default docker
+  * Bump Compat API version to supported v1.44
+  * libpod: fix Volume.Mount() returning empty path for plugin volumes
+  * fix: correct env/envFrom precedence in kube play
+  * Fix PowerShell `Write-Error` multi-line argument
+  * fix: generate correct error message if Wix is not installed
+  * Fix interfering escaping of commas and spaces in no_proxy variable
+  * Write DefaultEnvironment proxy values to /etc/systemd/user.conf.d/default-env.conf
+  * Fix test proxyenv/env_test.go for systems that use proxy variables
+  * Fix healthcheck argument with spaces split in Docker API (#27818)
+  * fix: prevent race condition during database initialization by using INSERT OR IGNORE.
+  * Release notes for v5.8.0-RC1 (initial)
+  * Fix podman run equivalent for HealthStartPeriod
+  * libpod: simplify unnecessary loops
+  * secrets/create: remove pipe check and allow interactive stdin
+  * Fix container export emitting incorrect event type.
+  * Add AppArmor key to quadlet .container files
+  * fix(logs): enhance timestamp format to include timezone in logs
+  * fix(logs): add tests for nanosecond precision in log timestamps
+  * fix(logs): improve timestamp precision in container logs
+  * Fix missing newlines in stderr error messages
+  * test/system: remove apk from build
+  * libpod: fix healthchecks not executing every interval on linux
+  * fix: skip execution of probes when initialDelaySeconds is not elapsed
+  * test/buildah-bud: skip failed remote test
+  * [v5.8] Bump Buildah to v1.43.0
+  * Add migration code for BoltDB to SQLite
+  * Deterministically order pod inspect fields
+  * [v5.8] artifact: Skip AddLocal optimization on WSL
+  * [v5.8] Require absolute path for local API
+  * [v5.8] Add local artifact add API endpoint
+  * Add GET /quadlets/{name}/exists
+  * Add DELETE /libpod/quadlets
+  * Add POST /libpod/quadlets
+  * Add GET /quadlets/{name}/file
+  * Use explicit download-artifact name and path for win-installer release
+  * Bump Podman to v5.7.2-dev
+
+-------------------------------------------------------------------
 Mon Dec 22 07:41:09 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 5.7.1:
