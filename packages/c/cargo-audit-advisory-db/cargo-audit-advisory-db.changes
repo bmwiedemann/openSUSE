@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 26 03:49:21 UTC 2026 - william.brown@suse.com
+
+- Update to version 20260226:
+  * Assigned RUSTSEC-2026-0023 to libcrux-ecdh, RUSTSEC-2026-0024 to libcrux-psq, RUSTSEC-2026-0025 to libcrux-psq, RUSTSEC-2026-0026 to libcrux-ed25519
+  * Add advisory for `libcrux-ecdh`
+  * Add advisory for `libcrux-ed25519`
+  * Add advisory for `libcrux-psq`
+  * Add advisory for `libcrux-psq`
+  * Assigned RUSTSEC-2026-0020 to wasmtime, RUSTSEC-2026-0021 to wasmtime, RUSTSEC-2026-0022 to wasmtime (#2676)
+  * Add advisories just published for Wasmtime
+  * Assigned RUSTSEC-2026-0019 to tracing-check (#2674)
+  * Add tracing-check advisory. (#2673)
+  * Assigned RUSTSEC-2026-0018 to rpc-check
+
+-------------------------------------------------------------------
 Fri Feb 13 02:02:55 UTC 2026 - william.brown@suse.com
 
 - Update to version 20260213:
