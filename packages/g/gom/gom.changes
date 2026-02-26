@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 24 10:47:45 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.5.6:
+  + Build: Use python install_sources (adds support for options
+    such as python.bytecompile)
+
+-------------------------------------------------------------------
 Wed Oct 29 06:38:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.5.5:

@@ -1,7 +1,7 @@
 #
 # spec file for package gom
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gom
-Version:        0.5.5
+Version:        0.5.6
 Release:        0
 Summary:        GObject Data Mapper
 License:        LGPL-2.1-or-later
@@ -99,7 +99,10 @@ Development files for the GObject Data Mapper.
 %{_libdir}/girepository-1.0/Gom-1.0.typelib
 
 %files -n python3-gom
-%{python3_sitearch}/gi/overrides/Gom.py
+%dir %{python3_sitelib}/gi
+%dir %{python3_sitelib}/gi/overrides
+%{python3_sitelib}/gi/overrides/Gom.py
+%pycache_only %{python3_sitelib}/gi/overrides/__pycache__/
 
 %files devel
 %{_libdir}/*.so
