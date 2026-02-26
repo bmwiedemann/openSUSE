@@ -1,7 +1,7 @@
 #
 # spec file for package valijson
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           valijson
-Version:        1.0.6
+Version:        1.1.0
 Release:        0
 Summary:        Header-only C++ library for JSON Schema validation
 License:        BSD-2-Clause
@@ -55,8 +55,6 @@ validation library for C++11.
 %files devel
 %dir %{_includedir}/valijson/
 %{_includedir}/valijson/*
-%dir %{_includedir}/compat/
-%{_includedir}/compat/optional.hpp
 %dir %{_libdir}/cmake/valijson/
 %{_libdir}/cmake/valijson/valijsonConfig.cmake
 %license LICENSE

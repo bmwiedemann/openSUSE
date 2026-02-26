@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb 26 07:30:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.0:
+  This is the first release of Valijson in which C++17 is
+  mandatory.
+  * Issues fixed in this release:
+    - Update bundle.sh to include regex.hpp (@pri-patel)
+    - Fix copy-paste error message (@MindaugasPaznekas)
+    - Ensure nlohmann/json non-finite floats are interpreted as
+      null when validating (@carlsmedstad)
+    - Ensure tests are built in oss-fuzz build (@AdamKorcz)
+  * Other changes include:
+    - Added support for JSON pointer paths in validation errors
+    - Added a validation benchmark example
+    - Added design and architecture docs
+    - Removed compatibility shim for std::optional
+
+-------------------------------------------------------------------
 Sat Jun 07 05:07:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.0.6:
