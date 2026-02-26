@@ -111,6 +111,14 @@ jq --indent 2 \
           "fast-xml-parser": "5.3.6"
         }
     )
+
+  # === CVE-2026-27606: rollup fix ===
+  | .pnpm.overrides = (
+      (.pnpm.overrides // {})
+      + {
+          "rollup": "4.59.0"
+        }
+    )
 ' package.json > temp.json && mv temp.json package.json
 
 echo "++++++++++++++++++++++++++++++++++++++++++++++"

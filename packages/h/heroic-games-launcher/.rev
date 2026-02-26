@@ -75,4 +75,14 @@ https://bugzilla.suse.com/show_bug.cgi?id=1256845</comment>
   * Otimize get-sources.sh file</comment>
     <requestid>1334332</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5713fea5fed9aceb7d554d5d4699a200</srcmd5>
+    <version>2.20.0</version>
+    <time>1772128796</time>
+    <user>anag_factory</user>
+    <comment>- Security: Fix CVE-2026-27606
+rollup was reported vulnerable. Enforce patched version
+via pnpm overrides to fix embedded dependency.</comment>
+    <requestid>1335286</requestid>
+  </revision>
 </revisionlist>

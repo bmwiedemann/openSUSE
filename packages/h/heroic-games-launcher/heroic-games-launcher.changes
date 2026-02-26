@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 26 01:45:14 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Security: Fix CVE-2026-27606
+  rollup was reported vulnerable. Enforce patched version
+  via pnpm overrides to fix embedded dependency. 
+
+-------------------------------------------------------------------
 Sun Feb 22 01:25:38 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Update to 2.20.0
