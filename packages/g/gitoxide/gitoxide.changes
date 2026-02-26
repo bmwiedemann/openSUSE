@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  8 14:56:21 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 0.50.0:
+  see https://github.com/GitoxideLabs/gitoxide/compare/v0.42.0...v0.50.0
+- drop workaround-cargo-bug.patch
+
+-------------------------------------------------------------------
 Tue Apr  8 06:53:21 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.42.0:
