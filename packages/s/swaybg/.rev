@@ -60,4 +60,27 @@
   * build: drop intermediate protocols library</comment>
     <requestid>1170661</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6c50104266e11eaae61ceb87724f33c1</srcmd5>
+    <version>1.2.2</version>
+    <time>1772128477</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.2.2:
+  * build: include swaybg version in version string when using git
+  * build: avoid git repository discovery when determining version
+  * Decouple wl_buffer creation and wl_surface config
+  * Estimate output size with wp-fractional-scale-v1
+  * Fix fractional scale detection
+  * Fix crash when new output added
+  * Set default background color to black
+  * Only submit opaque (XRGB8888) buffers
+  * Use bright black rather than black for LOG_DEBUG
+  * build: use cc.get_supported_arguments() for warning options
+  * build: define _POSIX_C_SOURCE globally
+  * readme: drop note about packaging
+  * Update maintainer in man page
+  * build: bump version to 1.2.2
+  * man: -m default to stretch</comment>
+    <requestid>1335210</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Feb 26 07:21:19 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.2:
+  * build: include swaybg version in version string when using git
+  * build: avoid git repository discovery when determining version
+  * Decouple wl_buffer creation and wl_surface config
+  * Estimate output size with wp-fractional-scale-v1
+  * Fix fractional scale detection
+  * Fix crash when new output added
+  * Set default background color to black
+  * Only submit opaque (XRGB8888) buffers
+  * Use bright black rather than black for LOG_DEBUG
+  * build: use cc.get_supported_arguments() for warning options
+  * build: define _POSIX_C_SOURCE globally
+  * readme: drop note about packaging
+  * Update maintainer in man page
+  * build: bump version to 1.2.2
+  * man: -m default to stretch
+
+-------------------------------------------------------------------
 Mon Apr 29 06:24:33 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.2.1:
