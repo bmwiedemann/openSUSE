@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-jose
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,7 @@ BuildArch:      noarch
 %if %{with test}
 # pycryptodome is needed just for one test added in CVE-2024-33663.
 # This package is not in Leap, so do not require for other versions.
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 BuildRequires:  %{python_module pycryptodome}
 %endif
 BuildRequires:  %{python_module pytest}
@@ -106,7 +106,8 @@ This package provides the python-jose[cryptography] extra.
 
 %if %{with test}
 %check
-%pytest -rsEf
+# https://github.com/mpdavis/python-jose/pull/396 test_incorrect_public_key_hmac_signing fails with cryptography 46
+%pytest -rsEf -k "not test_incorrect_public_key_hmac_signing"
 %endif
 
 %if ! %{with test}

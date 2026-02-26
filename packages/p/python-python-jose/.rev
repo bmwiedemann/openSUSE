@@ -122,4 +122,14 @@
   * Added possibility to call jwk.construct() with a private RSA key</comment>
     <requestid>1303653</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>a1dd56816933cc88b0a8a4e6c06cdd15</srcmd5>
+    <version>3.5.0</version>
+    <time>1772128795</time>
+    <user>anag_factory</user>
+    <comment>- Fix the condition with suse_version macro on SLFO (jsc#PED-15844)
+- Skip test failing with recent cryptography
+</comment>
+    <requestid>1335277</requestid>
+  </revision>
 </revisionlist>
