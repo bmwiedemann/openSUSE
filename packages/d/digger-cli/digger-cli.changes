@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Feb 26 06:21:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.143:
+  * feat: enable orchestrator gha setup via UI, feat: full docker
+    compose, fix: handle drift job status processing in
+    orchestrator (#2569)
+  * fix: handle falsy env flags for backend auth mode (#2567)
+  * Docs: Schema generation (#2547)
+  * security:  resolve CVE-2025-61729 & CVE-2025-47913 via package
+    upgrade (#2560)
+  * fix: retry session refresh when organizationId is missing
+    (#2564)
+  * additional validation in the statesman service (#2563)
+  * additional verification of org_id and user_id in token service
+    (#2562)
+  * always infer orgID and userID from session (#2561)
+  * Add llms.txt for documentation discovery (#2559)
+  * Allow trusted bot comments via trusted_appIDs (#2554)
+  * fix: validate and truncate characters exceeding limit (#2550)
+  * Add digger:force label to bypass impacted projects limit
+    (#2549)
+
+-------------------------------------------------------------------
 Fri Jan 23 06:15:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.142:

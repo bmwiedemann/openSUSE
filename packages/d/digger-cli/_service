@@ -6,8 +6,8 @@
     <param name="exclude">go.mod</param>
     <param name="exclude">go.work</param>
     <param name="exclude">go.work.sum</param>
-    <param name="revision">v0.6.142</param>
-    <param name="match-tag">v*</param>
+    <param name="revision">v0.6.143</param>
+    <param name="match-tag">v0.6.143</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
