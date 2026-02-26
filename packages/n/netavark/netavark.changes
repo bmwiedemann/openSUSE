@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 20 09:51:40 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 1.17.2:
+  * release v1.17.2
+  * release notes for v1.17.2
+  * netlink_route: remove NLM_F_ACK from dump requests
+  * netlink: validate buffer length
+  * netlink: zero out buffer before sending
+  * netlink: socket read logic
+  * bridge: read mtu from vrf table if set
+  * only consult main routing table for default interface
+
+-------------------------------------------------------------------
 Mon Dec 22 09:48:09 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 1.17.1:
