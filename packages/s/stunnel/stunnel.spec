@@ -22,7 +22,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           stunnel
-Version:        5.76
+Version:        5.77
 Release:        0
 Summary:        Universal TLS Tunnel
 License:        GPL-2.0-or-later

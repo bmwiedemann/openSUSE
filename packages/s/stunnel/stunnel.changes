@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 26 12:44:31 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 5.77:
+  * Bugfixes
+    - Avoid attempting to fetch OCSP stapling for PSK-only
+      configuration sections.
+  * Features
+    - Merged applicable patches from Fedora and Debian:
+      - Use SOURCE_DATE_EPOCH for reproducible builds.
+      - Skip the OpenSSL version check when AUTOPKGTEST_TMP is set.
+      - Enable PrivateTmp in the stunnel.service template.
+      - Clarify the manual page for the "curves" option.
+    - Log client IP addresses on TLS errors.
+
+-------------------------------------------------------------------
 Fri Jan 23 13:34:31 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Adapt the .spec file for Immutable Mode [jsc#PED-14814]
