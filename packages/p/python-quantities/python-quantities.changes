@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Feb 26 01:52:20 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.16.4:
+  * deepcopy was not copying all necessary attributes of UnitQuantity;
+    in-place arithmetic didn't handle multiplying by scalars
+  * Fix broken `deepcopy` behaviour when using quantities with NumPy 2.x
+  * Fixes for assorted breakages that appear with recent NumPy versions
+  * Revert to previous behaviour where spaces around units were allowed
+  * Fix broken in-place arithmetic when using quantities with NumPy 2.x
+  * Add CI testing for Python 3.13 and 3.14, drop support for Python 3.9
+  * Add CI testing for NumPy versions 2.1 to 2.4, drop support for NumPy 1.22
+    and 1.23.
+  * Added a property `dimensionless_magnitude` to the Quantity class
+  * Implemented an alternative approach to avoiding arbitrary evaluation of
+    code when parsing strings as units, which fixes some bugs introduced in
+    v0.16.1
+  * Added the kilonewton
+
+-------------------------------------------------------------------
 Wed Nov 27 00:11:34 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.16.1:
