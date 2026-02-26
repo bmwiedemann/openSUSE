@@ -19,7 +19,7 @@
 %define         namelc openboard
 %define         fqname ch.%{namelc}.%{name}
 Name:           OpenBoard
-Version:        1.7.5
+Version:        1.7.6
 Release:        0
 Summary:        Interactive whiteboard for schools and universities
 License:        GPL-3.0-or-later
@@ -30,6 +30,8 @@ Source0:        https://github.com/OpenBoard-org/OpenBoard/archive/refs/tags/v%{
 Patch955:       0955-shortcut-configuration.patch
 # https://github.com/OpenBoard-org/OpenBoard/pull/1347
 Patch1347:      1347-chore-appdata.patch
+# https://github.com/OpenBoard-org/OpenBoard/pull/1434
+Patch1434:      1434-build-poppler-26-02.patch
 # https://github.com/letsfindaway/OpenBoard/pull/117
 Patch9117:      9117-disable-software-update.patch
 BuildRequires:  desktop-file-utils

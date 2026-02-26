@@ -166,4 +166,18 @@ I want to make OpenBoard available again in TW (and later also Leap) and therefo
 </comment>
     <requestid>1330771</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>df9d7d975b75d2f9d470d05ce7288596</srcmd5>
+    <version>1.7.6</version>
+    <time>1772128815</time>
+    <user>anag_factory</user>
+    <comment>- update to release version 1.7.6
+  * fix: crash when using the &quot;add to document&quot; button in Documents Mode
+  * fix: standard PDF export method would constantly fail
+  * fix: rearrange board thumbnails after duplicating scene
+- add patch 1434-build-poppler-26-02.patch
+  * compatibility with poppler 26.02
+</comment>
+    <requestid>1335305</requestid>
+  </revision>
 </revisionlist>

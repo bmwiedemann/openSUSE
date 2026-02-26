@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb 25 14:13:18 UTC 2026 - Martin Winter <me@letsfindaway.de>
+
+- update to release version 1.7.6
+  * fix: crash when using the "add to document" button in Documents Mode
+  * fix: standard PDF export method would constantly fail
+  * fix: rearrange board thumbnails after duplicating scene
+
+-------------------------------------------------------------------
+Wed Feb 25 14:00:10 UTC 2026 - Martin Winter <me@letsfindaway.de>
+
+- add patch 1434-build-poppler-26-02.patch
+  * compatibility with poppler 26.02
+
+-------------------------------------------------------------------
 Tue Feb  3 11:11:42 UTC 2026 - Martin Winter <me@letsfindaway.de>
 
 - add AppData in metainfo.xml

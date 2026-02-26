@@ -1,0 +1,55 @@
+From 80f5cd0bdc4cbae8f864b730ade4f9bf19baba2a Mon Sep 17 00:00:00 2001
+From: letsfindaway <me@letsfindaway.de>
+Date: Wed, 25 Feb 2026 08:18:11 +0100
+Subject: [PATCH] build: adapt to poppler 26.02
+
+- poppler 26.02 removes an obsolete parameter from the constructor
+  of SplashOutputDev
+- conditionally remove this parameter depending on poppler version
+
+Signed-off-by: letsfindaway <me@letsfindaway.de>
+---
+ src/pdf/XPDFRenderer.cpp | 4 ++++
+ src/pdf/XPDFRenderer.h   | 5 +++++
+ 2 files changed, 9 insertions(+)
+
+diff --git a/src/pdf/XPDFRenderer.cpp b/src/pdf/XPDFRenderer.cpp
+index 4d6c98f8f..8e361430c 100644
+--- a/src/pdf/XPDFRenderer.cpp
++++ b/src/pdf/XPDFRenderer.cpp
+@@ -235,7 +235,11 @@ QImage* XPDFRenderer::createPDFImageUncached(int pageNumber, qreal xscale, qreal
+         if(mSplashUncached)
+             delete mSplashUncached;
+ 
++#if POPPLER_VERSION_MAJOR > 26 || (POPPLER_VERSION_MAJOR == 26 && POPPLER_VERSION_MINOR >= 2)
++        mSplashUncached = new SplashOutputDev(splashModeRGB8, 1, constants::paperColor);
++#else
+         mSplashUncached = new SplashOutputDev(splashModeRGB8, 1, false, constants::paperColor);
++#endif
+         mSplashUncached->startDoc(mDocument);
+ 
+         int rotation = 0; // in degrees (get it from the worldTransform if we want to support rotation)
+diff --git a/src/pdf/XPDFRenderer.h b/src/pdf/XPDFRenderer.h
+index 0e8de81a2..6264ae1b0 100644
+--- a/src/pdf/XPDFRenderer.h
++++ b/src/pdf/XPDFRenderer.h
+@@ -42,6 +42,7 @@
+ #include <poppler/GlobalParams.h>
+ #include <poppler/SplashOutputDev.h>
+ #include <poppler/PDFDoc.h>
++#include <poppler/cpp/poppler-version.h>
+ 
+ class PDFDoc;
+ 
+@@ -105,7 +106,11 @@ class XPDFRenderer : public PDFRenderer
+                     cachedImage = QImage();
+                     delete splash;
+                 }
++#if POPPLER_VERSION_MAJOR > 26 || (POPPLER_VERSION_MAJOR == 26 && POPPLER_VERSION_MINOR >= 2)
++                splash = new SplashOutputDev(splashModeRGB8, 1, paperColor);
++#else
+                 splash = new SplashOutputDev(splashModeRGB8, 1, false, paperColor);
++#endif
+                 cachedPageNumber = pageNumber;
+             }
+ 
