@@ -35,6 +35,8 @@ Source:         https://github.com/kivy/kivy/archive/%{version}.tar.gz#/kivy-%{v
 Source99:       python-Kivy.rpmlintrc
 # PATCH-FIX-UPSTREAM pytest_compatibility.patch based on PR 9245
 Patch0:         pytest_compatibility.patch
+# PATCH-FIX-UPSTREAM https://github.com/kivy/kivy/pull/9157 lang/parser.py: Remove Python 3.6 abstract syntax tree workaround
+Patch1:         py314.patch
 BuildRequires:  %{mypython}-Sphinx
 BuildRequires:  %{python_module Cython with %python-Cython < 3}
 BuildRequires:  %{python_module Pillow}

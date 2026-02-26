@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 23 15:05:05 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add py314.patch to fix compatibility with Python 3.14
+
+-------------------------------------------------------------------
 Wed Jan 21 15:27:48 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Add pytest_compatibility.patch: Fix pytest9 compatibility

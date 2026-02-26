@@ -1,0 +1,26 @@
+From 4b20740cb63b03fdfb65b782f1ce3de42bd6e7b3 Mon Sep 17 00:00:00 2001
+From: Christian Clauss <cclauss@me.com>
+Date: Mon, 22 Sep 2025 21:07:10 +0200
+Subject: [PATCH] lang/parser.py: Remove Python 3.6 workaround (#9157)
+
+---
+ kivy/lang/parser.py | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/kivy/lang/parser.py b/kivy/lang/parser.py
+index 036ee9308d..7a21611418 100644
+--- a/kivy/lang/parser.py
++++ b/kivy/lang/parser.py
+@@ -230,11 +230,7 @@ def get_names_from_expression(cls, node):
+ 
+         if isinstance(node, (ast.JoinedStr, ast.BoolOp)):
+             for n in node.values:
+-                if isinstance(n, ast.Str):
+-                    # NOTE: required for python3.6
+-                    yield from cls.get_names_from_expression(n.s)
+-                else:
+-                    yield from cls.get_names_from_expression(n.value)
++                yield from cls.get_names_from_expression(n.value)
+ 
+         if isinstance(node, ast.BinOp):
+             yield from cls.get_names_from_expression(node.right)
