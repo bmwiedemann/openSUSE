@@ -1,7 +1,7 @@
 #
 # spec file for package python-calmjs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,7 +73,8 @@ export LANG=en_US.UTF-8
 %check
 export LANG=en_US.UTF-8
 # DistLoggerTestCase is not working correctly in obs build environment
-%pytest -v --pyargs calmjs.tests -k 'not DistLoggerTestCase'
+# test_root_runtime_bootstrap_logging fails on Python 3.14 https://github.com/calmjs/calmjs/issues/71
+%pytest -v --pyargs calmjs.tests -k 'not (DistLoggerTestCase or test_root_runtime_bootstrap_logging)'
 
 %pre
 %python_libalternatives_reset_alternative calmjs
