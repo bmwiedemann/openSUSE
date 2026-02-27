@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb 24 16:19:00 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update VideoLAN signing keys
+- Update to 7.0.0:
+  * add dvdnav_get_volid_string to obtain the volume id of the disc
+  * add dvdnav_get_number_of_streams API to list tracks
+  * add dvdnav_set_active_stream API to activate a stream
+  * add dvdnav_toggle_spu_stream API to enable/disable the current
+    SPU stream
+  * add dvdnav_get_disk_region_mask API to get the reported version
+    from the disk
+  * expose dvdnav_jump_to_sector_by_time to the API
+  * switch build system to Meson (and remove autotools)
+  * fix crashes and avoid asserts
+
+-------------------------------------------------------------------
 Sun May  9 14:36:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.1:

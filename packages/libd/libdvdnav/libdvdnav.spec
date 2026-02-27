@@ -1,7 +1,7 @@
 #
 # spec file for package libdvdnav
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,17 @@
 
 %define sover   4
 Name:           libdvdnav
-Version:        6.1.1
+Version:        7.0.0
 Release:        0
 Summary:        DVD Navigation Library
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://www.videolan.org/developers/libdvdnav.html
-Source0:        https://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2
-Source1:        https://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2.asc
+Source0:        https://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.xz
+Source1:        https://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source1000:     baselibs.conf
-BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dvdread) >= 6.0.0
 
@@ -56,16 +56,11 @@ This library contains functions to display DVD video menus.
 %autosetup
 
 %build
-autoreconf -fvi
-%configure \
-  --disable-silent-rules \
-  --disable-static
-%make_build
+%meson -Ddefault_library=shared
+%meson_build
 
 %install
-%make_install
-rm -r %{buildroot}%{_datadir}/doc/libdvdnav/
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install --tags runtime,devel
 
 %post   -n libdvdnav%{sover} -p /sbin/ldconfig
 %postun -n libdvdnav%{sover} -p /sbin/ldconfig
@@ -74,7 +69,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libdvdnav.so.%{sover}
 %{_libdir}/libdvdnav.so.%{sover}.*
 %license COPYING
-%doc AUTHORS ChangeLog README TODO
+%doc AUTHORS ChangeLog README.md TODO
 
 %files devel
 %{_includedir}/dvdnav
