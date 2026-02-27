@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 24 19:14:21 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.3
+  * Several minor fixes for the CMake buildsystem (#1742).
+  * Several documentation updates (#1745, #1736).
+  * Fix a build issue when fluidsynth is consumed as part of a
+    bigger CMake project (#1752).
+
+-------------------------------------------------------------------
 Fri Feb  6 16:07:13 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Disable the build check on s390x, as it's broken for now
