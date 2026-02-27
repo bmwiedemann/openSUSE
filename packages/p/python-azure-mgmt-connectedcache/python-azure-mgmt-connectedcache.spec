@@ -15,11 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define realversion 1.0.0b1
+%define realversion 1.0.0b2
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-connectedcache
-Version:        1.0.0~b1
+Version:        1.0.0~b2
 Release:        0
 Summary:        Microsoft Azure Connectedcache Management Client Library for Python
 License:        MIT
@@ -36,7 +36,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
-Requires:       (python-azure-mgmt-core >= 1.3.2 with python-azure-mgmt-core < 2.0.0)
+Requires:       (python-azure-mgmt-core >= 1.6.0 with python-azure-mgmt-core < 2.0.0)
 Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
 Requires:       python-typing_extensions >= 4.6.0
 Conflicts:      python-azure-sdk <= 2.0.0

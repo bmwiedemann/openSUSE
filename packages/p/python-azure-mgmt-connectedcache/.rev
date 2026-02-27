@@ -7,4 +7,12 @@
     <comment>- New component package of the Python Azure SDK</comment>
     <requestid>1267500</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b57388eab031d20aa0f2988faa39ba80</srcmd5>
+    <version>1.0.0~b2</version>
+    <time>1772208789</time>
+    <user>anag_factory</user>
+    <comment>yet another Azure SDK package</comment>
+    <requestid>1335446</requestid>
+  </revision>
 </revisionlist>
