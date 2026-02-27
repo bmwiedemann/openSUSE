@@ -308,4 +308,12 @@ Without this, the theme can't be selected:
     <comment>Plasma 6.6.0 maybe final tars. K:F already publish disabled (forwarded request 1333048 from Vogtinator)</comment>
     <requestid>1333113</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>2eb4b6cae7b851cde8f7bfd0013bf2d1</srcmd5>
+    <version>6.6.1</version>
+    <time>1772208279</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.6.1, not fully built yet. Biggest change is sover bump in libplasma6. (forwarded request 1334876 from Vogtinator)</comment>
+    <requestid>1334987</requestid>
+  </revision>
 </revisionlist>
