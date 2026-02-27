@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 26 07:02:49 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 3.4.5
+  * fixes an incorrect size check in `istream_nonparallel_read`
+- fixes CVE-2026-26981 [bsc#1258773]
+
+-------------------------------------------------------------------
 Mon Dec 22 13:10:29 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 3.4.4

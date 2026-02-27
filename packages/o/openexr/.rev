@@ -997,4 +997,12 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
     <comment>version update to 3.4.4</comment>
     <requestid>1324196</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>b17a94880c6aa28207779f01a3ed7bd9</srcmd5>
+    <version>3.4.5</version>
+    <time>1772208075</time>
+    <user>anag_factory</user>
+    <comment>CVE-2026-26981, [bsc#1258773]</comment>
+    <requestid>1335209</requestid>
+  </revision>
 </revisionlist>
