@@ -1,6 +1,6 @@
-diff -ur ImageMagick-7.1.2-8/config/policy-limited.xml ImageMagick-7.1.2-8_fix/config/policy-limited.xml
---- ImageMagick-7.1.2-8/config/policy-limited.xml	2025-10-26 12:54:38.000000000 +0100
-+++ ImageMagick-7.1.2-8_fix/config/policy-limited.xml	2025-11-06 15:30:05.385948863 +0100
+diff -ur ImageMagick-7.1.2-15.orig/config/policy-limited.xml ImageMagick-7.1.2-15/config/policy-limited.xml
+--- ImageMagick-7.1.2-15.orig/config/policy-limited.xml	2026-02-22 22:26:44.000000000 +0100
++++ ImageMagick-7.1.2-15/config/policy-limited.xml	2026-02-23 22:27:10.002838088 +0100
 @@ -82,6 +82,8 @@
    <!-- <policy domain="path" rights="none" pattern="-"/> -->
    <!-- don't read sensitive paths. -->
@@ -10,9 +10,9 @@ diff -ur ImageMagick-7.1.2-8/config/policy-limited.xml ImageMagick-7.1.2-8_fix/c
    <!-- Indirect reads are not permitted. -->
    <policy domain="path" rights="none" pattern="@*"/>
    <!-- These image types are security risks on read, but write is fine -->
-diff -ur ImageMagick-7.1.2-8/config/policy-open.xml ImageMagick-7.1.2-8_fix/config/policy-open.xml
---- ImageMagick-7.1.2-8/config/policy-open.xml	2025-10-26 12:54:38.000000000 +0100
-+++ ImageMagick-7.1.2-8_fix/config/policy-open.xml	2025-11-06 15:30:28.217319267 +0100
+diff -ur ImageMagick-7.1.2-15.orig/config/policy-open.xml ImageMagick-7.1.2-15/config/policy-open.xml
+--- ImageMagick-7.1.2-15.orig/config/policy-open.xml	2026-02-22 22:26:44.000000000 +0100
++++ ImageMagick-7.1.2-15/config/policy-open.xml	2026-02-23 22:28:58.555653280 +0100
 @@ -137,6 +137,8 @@
    <!-- <policy domain="path" rights="none" pattern="-"/> -->
    <!-- don't read sensitive paths. -->
@@ -22,27 +22,27 @@ diff -ur ImageMagick-7.1.2-8/config/policy-open.xml ImageMagick-7.1.2-8_fix/conf
    <!-- Indirect reads are not permitted. -->
    <!-- <policy domain="path" rights="none" pattern="@*"/> -->
    <!-- These image types are security risks on read, but write is fine -->
-diff -ur ImageMagick-7.1.2-8/config/policy-secure.xml ImageMagick-7.1.2-8_fix/config/policy-secure.xml
---- ImageMagick-7.1.2-8/config/policy-secure.xml	2025-10-26 12:54:38.000000000 +0100
-+++ ImageMagick-7.1.2-8_fix/config/policy-secure.xml	2025-11-06 15:30:11.995056081 +0100
-@@ -92,6 +92,8 @@
-   <policy domain="path" rights="none" pattern="-"/>
-   <!-- don't read sensitive paths. -->
+diff -ur ImageMagick-7.1.2-15.orig/config/policy-secure.xml ImageMagick-7.1.2-15/config/policy-secure.xml
+--- ImageMagick-7.1.2-15.orig/config/policy-secure.xml	2026-02-22 22:26:44.000000000 +0100
++++ ImageMagick-7.1.2-15/config/policy-secure.xml	2026-02-23 22:24:51.662615465 +0100
+@@ -93,6 +93,8 @@
+   <policy domain="path" rights="none" pattern="fd:*"/>
+   <!-- Sensitive paths are not permitted. -->
    <policy domain="path" rights="none" pattern="/etc/*"/>
 +  <!-- but allow to read own data. -->
 +  <policy domain="path" rights="read" pattern="/etc/IM*"/>
-   <!-- Indirect reads are not permitted. -->
-   <policy domain="path" rights="none" pattern="@*"/>
-   <!-- These image types are security risks on read, but write is fine -->
-diff -ur ImageMagick-7.1.2-8/config/policy-websafe.xml ImageMagick-7.1.2-8_fix/config/policy-websafe.xml
---- ImageMagick-7.1.2-8/config/policy-websafe.xml	2025-10-26 12:54:38.000000000 +0100
-+++ ImageMagick-7.1.2-8_fix/config/policy-websafe.xml	2025-11-06 15:29:57.094814346 +0100
-@@ -88,6 +88,8 @@
-   <policy domain="path" rights="none" pattern="-"/>
-   <!-- don't read sensitive paths. -->
+   <!-- Relative paths are not permitted. -->
+   <policy domain="path" rights="none" pattern="*../*"/>
+   <!-- Indirect reading is not permitted. -->
+diff -ur ImageMagick-7.1.2-15.orig/config/policy-websafe.xml ImageMagick-7.1.2-15/config/policy-websafe.xml
+--- ImageMagick-7.1.2-15.orig/config/policy-websafe.xml	2026-02-22 22:26:44.000000000 +0100
++++ ImageMagick-7.1.2-15/config/policy-websafe.xml	2026-02-23 22:25:26.342788070 +0100
+@@ -89,6 +89,8 @@
+   <policy domain="path" rights="none" pattern="fd:*"/>
+   <!-- Sensitive paths are not permitted. -->
    <policy domain="path" rights="none" pattern="/etc/*"/>
 +  <!-- but allow to read own data. -->
 +  <policy domain="path" rights="read" pattern="/etc/IM*"/>
-   <!-- Indirect reads are not permitted. -->
-   <policy domain="path" rights="none" pattern="@*"/>
-   <!-- Deny all image modules and specifically exempt reading or writing
+   <!-- Relative paths are not permitted. -->
+   <policy domain="path" rights="none" pattern="*../*"/>
+   <!-- Indirect reading is not permitted. -->

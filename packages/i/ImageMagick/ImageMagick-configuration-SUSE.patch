@@ -1,6 +1,6 @@
-diff -ur ImageMagick-7.1.2-8_fix/config/policy-secure.xml ImageMagick-7.1.2-8_fix2/config/policy-secure.xml
---- ImageMagick-7.1.2-8/config/policy-secure.xml	2025-11-06 15:30:11.995056081 +0100
-+++ ImageMagick-7.1.2-8_fix/config/policy-secure.xml	2025-11-06 15:46:05.605527563 +0100
+diff -ur ImageMagick-7.1.2-15.orig/config/policy-secure.xml ImageMagick-7.1.2-15/config/policy-secure.xml
+--- ImageMagick-7.1.2-15.orig/config/policy-secure.xml	2026-02-23 22:24:51.662615465 +0100
++++ ImageMagick-7.1.2-15/config/policy-secure.xml	2026-02-23 22:39:43.613341024 +0100
 @@ -62,7 +62,7 @@
    <policy domain="resource" name="disk" value="2GiB"/>
    <!-- Set the maximum length of an image sequence.  When this limit is
@@ -15,16 +15,16 @@ diff -ur ImageMagick-7.1.2-8_fix/config/policy-secure.xml ImageMagick-7.1.2-8_fi
    <!-- <policy domain="cache" name="shared-secret" value="secret-passphrase" stealth="true"/> -->
    <!-- Do not permit any delegates to execute. -->
 -  <policy domain="delegate" rights="none" pattern="*"/>
-+  <!--policy domain="delegate" rights="none" pattern="*"/ -->
++  <!-- <policy domain="delegate" rights="none" pattern="*"/> -->
    <!-- Do not permit any image filters to load. -->
    <policy domain="filter" rights="none" pattern="*"/>
    <!-- Don't read/write from/to stdin/stdout. -->
 -  <policy domain="path" rights="none" pattern="-"/>
-+  <!--policy domain="path" rights="none" pattern="-"/ -->
-   <!-- don't read sensitive paths. -->
++  <!-- <policy domain="path" rights="none" pattern="-"/> -->
+   <policy domain="path" rights="none" pattern="fd:*"/>
+   <!-- Sensitive paths are not permitted. -->
    <policy domain="path" rights="none" pattern="/etc/*"/>
-   <!-- but allow to read own data. -->
-@@ -107,4 +107,20 @@
+@@ -110,4 +110,20 @@
    <!-- Set the maximum amount of memory in bytes that are permitted for
         allocation requests. -->
    <policy domain="system" name="max-memory-request" value="256MiB"/>

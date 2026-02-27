@@ -4244,4 +4244,41 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
         CVE-2026-23874 [bsc#1256976]</comment>
     <requestid>1329810</requestid>
   </revision>
+  <revision rev="325" vrev="1">
+    <srcmd5>5674fd34a1841c1480f428e9cf6baaf0</srcmd5>
+    <version>7.1.2.15</version>
+    <time>1772208145</time>
+    <user>anag_factory</user>
+    <comment>- version update to 7.1.2.15
+  * no upstream changelog, see
+    https://github.com/ImageMagick/ImageMagick/compare/7.1.2-13..7.1.2-15
+- modified patches
+  * ImageMagick-configuration-SUSE.patch (refreshed)
+  * ImageMagick_policy_etc.patch (refreshed)
+- fixes CVE-2026-24481 [bsc#1258743]
+        CVE-2026-25794 [bsc#1258749]
+        CVE-2026-25796 [bsc#1258757]
+        CVE-2026-25637 [bsc#1258761]
+        CVE-2026-25576 [bsc#1258748]
+        CVE-2026-26983 [bsc#1258763]
+        CVE-2026-26284 [bsc#1258765]
+        CVE-2026-26283 [bsc#1258767]
+        CVE-2026-25965 [bsc#1258785]
+        CVE-2026-25967 [bsc#1258779]
+        CVE-2026-25989 [bsc#1258771]
+        CVE-2026-25968 [bsc#1258776]
+        CVE-2026-24485 [bsc#1258791]
+        CVE-2026-25985 [bsc#1258813]
+        CVE-2026-25987 [bsc#1258822]
+        CVE-2026-25966 [bsc#1258780]
+        CVE-2026-25799 [bsc#1258786]
+        CVE-2026-25798 [bsc#1258787]
+        CVE-2026-25798 [bsc#1258787]
+        CVE-2026-25795 [bsc#1258792]
+        CVE-2026-26066 [bsc#1258769]
+        CVE-2026-25638 [bsc#1258793]
+        CVE-2026-25797 [bsc#1258770]
+        CVE-2026-25897 [bsc#1258800]</comment>
+    <requestid>1335001</requestid>
+  </revision>
 </revisionlist>
