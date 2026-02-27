@@ -3,7 +3,7 @@
     <param name="url">https://github.com/rvben/rumdl.git</param>
     <param name="scm">git</param>
     <param name="submodules">enable</param>
-    <param name="revision">v0.1.23</param>
+    <param name="revision">v0.1.30</param>
     <param name="match-tag">v*.*.*</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>

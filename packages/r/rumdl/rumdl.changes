@@ -1,4 +1,277 @@
 -------------------------------------------------------------------
+Fri Feb 27 06:15:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.30:
+  * Added
+    - CLI: rumdl init now supports --preset flag with default,
+      google, and
+    - relaxed variants, and --output flag for custom file paths.
+      The Google preset
+    - follows Google's developer documentation style guide; the
+      relaxed preset disables
+    - noisy rules and uses consistent style detection
+    - (#468)
+  * Fixed
+    - MD076: Blank lines required by MD031 (blanks-around-fences)
+      or MD058
+    - (blanks-around-tables) inside list items are now classified
+      as structural and
+    - excluded from the loose/tight consistency calculation.
+      Previously, indented code
+    - blocks inside loose lists triggered false "Missing blank line
+      between list items"
+    - warnings (#461)
+    - MD020: Fix byte-offset vs character-position handling for
+      column reporting
+    - with Unicode content
+    - MD038: Fix panic on CJK text by converting character
+      positions to byte offsets
+    - before slicing
+    - MD054: Correct column indexing for code span detection and
+      match range
+    - calculation
+    - MD057: Fix image URL byte offset calculation that used
+      character-based offset
+    - as byte offset
+    - MD060: Use Unicode width for table alignment detection so
+      CJK-heavy tables
+    - are recognized correctly
+    - MD063: Use sentinel value for unfound word positions to
+      prevent false canonical
+    - form matches at byte offset 0
+    - MD010: Restore distinction between fenced code blocks (skip)
+      and indented code
+    - blocks (flag tabs) that was lost when switching to
+      LintContext
+    - MD035: Skip HR-style checking inside MkDocs HTML markdown
+      blocks where ---
+    - separators are used for grid cards
+    - MD052: Replace manual fenced-code-block tracking with
+      LintContext's pre-computed
+    - in_code_block field
+    - MD009: Remove dead branch in fix replacement that could never
+      execute
+    - MD011: Rewrite fix mode to reuse check results instead of
+      maintaining a parallel
+    - implementation
+    - MD025: Use whole-word matching for section indicators to
+      prevent false positives
+    - (e.g., "Indexing" matching the "index" indicator)
+    - MD029: Include ) in quick-check early return so
+      parenthesis-style ordered lists
+    - are not silently skipped
+    - MD040: Use 1-indexed line/column for config error warnings
+      instead of invalid
+    - (0,0)
+    - MD041: Compute actual fix replacements in check mode instead
+      of emitting
+    - empty-string placeholders that would delete content if
+      applied
+    - MD050: Delegate HTML tag boundary check to shared method so
+      check and fix use
+    - identical logic
+    - MD064: Fix leading_spaces calculation in reference link
+      detection to use
+    - original line, not already-trimmed string
+    - MD072: Track in_string state when counting JSON
+      braces/brackets so braces
+    - inside string values don't break nesting depth calculation
+    - MD073: Replace regex-based code span stripping with correct
+      parser handling
+    - multi-backtick spans and CommonMark space-stripping rules;
+      rewrite TOC validation
+    - to use count-based duplicate anchor comparison
+    - MD074: Add content-hash cache invalidation so changed
+      mkdocs.yml files are
+    - re-validated
+    - Config: Preserve Option fields in schema so nullable keys are
+      not flagged as
+    - unknown (#467)
+- Update to version 0.1.29:
+  * Added
+    - MD077: New list-continuation-indent rule that checks list
+      item continuation
+    - lines use the correct indentation (content-aligned rather
+      than tab-stop-aligned)
+    - LSP: Go-to-definition and find-references for markdown links,
+      enabling
+    - navigation between link references and their definitions
+    - LSP: Surface code-block-tools diagnostics in server mode so
+      language-specific
+    - linting errors appear in the editor
+    - MD044: Honor backtick-delimited code in HTML comments when
+      checking proper names
+  * Fixed
+    - MD013: Exempt link reference definitions and standalone
+      link/image lines from
+    - reflow line-length checks inside list items. Previously,
+      these exempt lines were
+    - joined with other content, producing incorrect combined
+      lengths (e.g., 160 instead
+    - of the actual line length) (#466)
+    - MD013: Normalize reflow mode now checks each paragraph
+      independently instead of
+    - joining all content across paragraph boundaries. Exempt
+      paragraphs (link ref defs,
+    - standalone links) are preserved verbatim during reflow output
+    - LSP: Close 4 navigation gaps in go-to-definition and
+      find-references
+    - LSP: Count fixable warnings document-wide for source.fixAll
+      and clear config
+    - cache on change
+    - LSP: Create source.fixAll action for single-issue files
+    - LSP: Skip external code-block-tools on keystroke events to
+      reduce latency
+    - LSP: Detect stale global-fallback entries in config cache so
+      newly created
+    - .rumdl.toml files are picked up without restarting the
+      language server
+    - Docs: Fix multi-paragraph list item indentation (thanks @sisp
+      in #465)
+  * Changed
+    - LSP: source.fixAll code action now respects MD007 indent
+      configuration
+
+-------------------------------------------------------------------
+Wed Feb 25 12:15:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.28:
+  * Added
+    - Import: rumdl import now preserves original rule aliases
+      (e.g., no-hard-tabs instead of MD010) in the generated config
+      file (#460)
+    - Code Block Tools: Per-language configs now support an enabled
+      field to disable linting/formatting for specific languages
+      while keeping the configuration (#458)
+  * Fixed
+    - MD044: Vale (<!-- vale ... -->) and remark-lint (<!-- lint
+      ... -->) inline configuration directives are now skipped when
+      checking proper names (#456)
+- Update to version 0.1.27:
+  * Fixed
+    - MD013: CRLF line endings are now preserved during
+      semantic-line-breaks reflow, fixing false positive warnings
+      in the LSP when editors send Windows-style line endings
+      (#459)
+    - MD041: Fix mode now correctly passes the file path to
+      LintContext, enabling filename-derived title insertion
+      (InsertDerived). Index and README files now derive their
+      title from the parent directory name instead of "Index" or
+      "README"
+    - MD044: YAML frontmatter values are now checked as prose while
+      keys, delimiters, comments, and flow constructs are skipped.
+      TOML frontmatter keys are also correctly skipped (#448)
+    - MD044: Angle-bracket autolinks (<https://...>) inside HTML
+      comments are no longer flagged for proper name violations.
+      Uses CommonMark autolink pattern matching for all valid URI
+      schemes (#457)
+    - MD076: Blank lines required by MD031 (blanks-around-fences)
+      and MD058 (blanks-around-tables) inside list items are now
+      recognized as structural rather than inter-item separators,
+      preventing false positives in tight lists with code blocks,
+      tables, or HTML blocks (#455)
+  * Changed Removed unused itertools dependency
+- Update to version 0.1.26:
+  * Added
+    - MD076: New rule for list item spacing — enforces consistent
+      use of blank lines between list items
+    - LSP: Markdown link target completion — autocomplete file
+      paths and headings when typing link destinations (#434)
+    - MD041: Extended fix support for HTML block preamble, plain
+      text titles, and directive-only documents (#398)
+  * Fixed
+    - MD001: Empty ATX headings (e.g., # with no text) are now
+      preserved during heading level conversion instead of being
+      deleted, fixing non-idempotent fix behavior
+    - MD012: Excess blank lines around headings are now flagged
+      using MD022's configured limits, preventing conflicts between
+      the two rules (#429, #449)
+    - MD013: Lines whose only content is a link or image (including
+      in list items, blockquotes, and with emphasis wrappers) are
+      now exempt from line length checks in non-strict mode, since
+      they cannot be shortened (#452)
+    - MD013: URLs with balanced parentheses (e.g., Wikipedia links
+      like Rust_(programming_language)) are now correctly
+      recognized as standalone links
+    - MD013: Ordered list task checkboxes (1. [x] [link](url)) are
+      now correctly detected in standalone link exemption and text
+      reflow
+    - MD025: Frontmatter title field is now counted as the first H1
+      when checking for single title (#450)
+    - MD044: HTML comments are now checked for proper names by
+      default (previously skipped due to config default mismatch)
+      (#446)
+    - MD044: Inline config directives (<!-- rumdl-disable -->, <!--
+      markdownlint-enable -->) are no longer flagged when the
+      directive keyword matches a configured proper name
+    - MD044: YAML frontmatter keys are no longer flagged as
+      improperly capitalized proper names (#448)
+    - MD052: Added missing default_config_section for config
+      validation (#451)
+    - MD063: Precomposed Unicode characters (e.g., Greek ῷ) are no
+      longer decomposed during case conversion, fixing
+      non-idempotent fix behavior
+  * Changed
+    - MD063: Removed dependency on external titlecase crate; title
+      case logic is now fully handled by the built-in
+      implementation
+    - MD013: Refactored standalone link detection to reuse shared
+      extract_list_marker_and_content utility, also fixing ordered
+      list task checkbox handling in text reflow
+- Update to version 0.1.25:
+  * Fixed
+    - MD044: proper names inside HTML tag attribute values (e.g.
+      src="...", href="...", title="...") are no longer flagged as
+      incorrectly capitalized. Text content between tags continues
+      to be checked as usual (#443)
+- Update to version 0.1.24:
+  * Fixed
+    - MD013: GitHub Flavored Markdown alert markers (> [!NOTE], >
+      [!WARNING], etc.) are now preserved as non-wrappable
+      boundaries during blockquote reflow — previously the alert
+      type was merged with the following content line, corrupting
+      the alert block
+    - MD013: Reflow now wraps blockquote paragraphs (including lazy
+      continuation lines) in fmt/check --fix, with deterministic
+      style preservation and LSP manual reflow parity (#437)
+    - MD013: Italic and bold paragraphs that exceed the configured
+      line length are now reflowed correctly; previously only plain
+      text paragraphs were wrapped (#441)
+    - MD013: GFM task list checkboxes ([ ], [x], [X]) are now
+      preserved as non-wrappable marker prefix during reflow,
+      preventing - [ ] [long url](...) from being corrupted to -
+      []\n  [long url](...) (#436)
+    - MD013: List continuation lines are now normalized to the
+      canonical marker-length indent during reflow instead of
+      inheriting any over-indentation from the source (#439)
+    - MD013: Reflow no longer introduces double blank lines when an
+      HTML block (e.g. <details>) captures a trailing blank line —
+      previously this caused MD012 violations in large
+      documentation repos
+    - MD030: Byte offset computation for ordered list markers
+      inside blockquotes was incorrect, causing fixes to insert
+      spaces at the wrong position and be non-idempotent
+    - MD044: Names configured in names are no longer falsely
+      flagged inside HTML attribute values when the name appears
+      adjacent to underscores (e.g. test_image) (#443)
+    - MD048: Fence-length disambiguation when converting between
+      backtick and tilde styles now correctly handles blocks where
+      an interior same-style sequence would otherwise close the
+      outer block early under CommonMark rules; the 0–3 space
+      indent limit is enforced for fence markers per CommonMark
+      §4.5 CLI: --flavor gfm, --flavor github, --flavor commonmark,
+      --flavor qmd, --flavor rmd, and --flavor rmarkdown are now
+      accepted (previously rejected by the argument parser despite
+      being valid in config files) (#440)
+    - stdin: Inline config directives (<!-- rumdl-disable-next-line
+      -->, <!-- rumdl-disable --> / <!-- rumdl-enable -->, <!--
+      markdownlint-disable -->, etc.) are now respected when
+      reading from stdin (rumdl check -); previously all such
+      directives were silently ignored, causing false positives in
+      editor integrations such as nvim-lint that pipe content via
+      stdin (#445)
+
+-------------------------------------------------------------------
 Thu Feb 19 06:18:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.23:
