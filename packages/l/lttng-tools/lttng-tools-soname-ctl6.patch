@@ -1,0 +1,13 @@
+diff -ur lttng-tools-2.14.0.orig/src/lib/lttng-ctl/Makefile.am lttng-tools-2.14.0/src/lib/lttng-ctl/Makefile.am
+--- lttng-tools-2.14.0.orig/src/lib/lttng-ctl/Makefile.am	2025-06-27 16:36:48.712136148 +0200
++++ lttng-tools-2.14.0/src/lib/lttng-ctl/Makefile.am	2025-11-21 11:43:32.041414723 +0100
+@@ -22,7 +22,8 @@
+ liblttng_ctl_la_LDFLAGS = \
+ 		$(LT_NO_UNDEFINED) \
+ 		-export-symbols $(srcdir)/liblttng-ctl.sym \
+-		-Wl,--version-script=$(srcdir)/liblttng-ctl.map
++		-Wl,--version-script=$(srcdir)/liblttng-ctl.map \
++		-version-info 6:0:0
+ 
+ EXTRA_liblttng_ctl_la_DEPENDENCIES = liblttng-ctl.sym
+ 

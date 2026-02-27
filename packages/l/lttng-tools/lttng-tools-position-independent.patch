@@ -1,0 +1,66 @@
+Nur in lttng-tools-2.14.0: lttng-tools-position-independent.patch.
+diff -ur lttng-tools-2.14.0.orig/src/bin/lttng/Makefile.am lttng-tools-2.14.0/src/bin/lttng/Makefile.am
+--- lttng-tools-2.14.0.orig/src/bin/lttng/Makefile.am	2025-06-27 16:36:48.644135721 +0200
++++ lttng-tools-2.14.0/src/bin/lttng/Makefile.am	2025-11-21 12:07:17.604216361 +0100
+@@ -49,3 +49,6 @@
+ 			$(top_builddir)/src/vendor/argpar/libargpar.la \
+ 			$(top_builddir)/src/vendor/fmt/libfmt.la \
+ 			$(POPT_LIBS)
++
++lttng_LDFLAGS = -pie
++
+diff -ur lttng-tools-2.14.0.orig/src/bin/lttng-consumerd/Makefile.am lttng-tools-2.14.0/src/bin/lttng-consumerd/Makefile.am
+--- lttng-tools-2.14.0.orig/src/bin/lttng-consumerd/Makefile.am	2025-06-27 16:36:48.584135345 +0200
++++ lttng-tools-2.14.0/src/bin/lttng-consumerd/Makefile.am	2025-11-21 12:05:53.580441815 +0100
+@@ -16,7 +16,7 @@
+ 	   $(top_builddir)/src/common/libtestpoint.la \
+ 	   $(top_builddir)/src/vendor/fmt/libfmt.la
+ 
+-lttng_consumerd_LDFLAGS = -rdynamic
++lttng_consumerd_LDFLAGS = -rdynamic -pie
+ 
+ if HAVE_LIBLTTNG_UST_CTL
+ lttng_consumerd_LDADD += $(UST_CTL_LIBS)
+diff -ur lttng-tools-2.14.0.orig/src/bin/lttng-crash/Makefile.am lttng-tools-2.14.0/src/bin/lttng-crash/Makefile.am
+--- lttng-tools-2.14.0.orig/src/bin/lttng-crash/Makefile.am	2025-06-27 16:36:48.588135370 +0200
++++ lttng-tools-2.14.0/src/bin/lttng-crash/Makefile.am	2025-11-21 12:08:42.611988272 +0100
+@@ -13,3 +13,5 @@
+ lttng_crash_LDADD = $(top_builddir)/src/common/libcommon-gpl.la \
+ 			$(top_builddir)/src/common/libconfig.la \
+ 			$(top_builddir)/src/vendor/fmt/libfmt.la
++
++lttng_crash_LDFLAGS = -pie
+diff -ur lttng-tools-2.14.0.orig/src/bin/lttng-relayd/Makefile.am lttng-tools-2.14.0/src/bin/lttng-relayd/Makefile.am
+--- lttng-tools-2.14.0.orig/src/bin/lttng-relayd/Makefile.am	2025-06-27 16:36:48.588135370 +0200
++++ lttng-tools-2.14.0/src/bin/lttng-relayd/Makefile.am	2025-11-21 12:08:49.915968674 +0100
+@@ -37,3 +37,5 @@
+ 		$(top_builddir)/src/common/libhealth.la \
+ 		$(top_builddir)/src/common/libtestpoint.la \
+ 		$(top_builddir)/src/vendor/fmt/libfmt.la
++
++lttng_relayd_LDFLAGS = -pie
+diff -ur lttng-tools-2.14.0.orig/src/bin/lttng-sessiond/Makefile.am lttng-tools-2.14.0/src/bin/lttng-sessiond/Makefile.am
+--- lttng-tools-2.14.0.orig/src/bin/lttng-sessiond/Makefile.am	2025-06-27 16:36:48.600135445 +0200
++++ lttng-tools-2.14.0/src/bin/lttng-sessiond/Makefile.am	2025-11-21 12:09:02.883933878 +0100
+@@ -108,6 +108,6 @@
+ 
+ lttng_sessiond_SOURCES = lttng-sessiond.hpp main.cpp
+ 
+-lttng_sessiond_LDFLAGS = -rdynamic
+-
+ lttng_sessiond_LDADD = liblttng-sessiond-common.la
++
++lttng_sessiond_LDFLAGS = -rdynamic -pie
+diff -ur lttng-tools-2.14.0.orig/src/bin/Makefile.am lttng-tools-2.14.0/src/bin/Makefile.am
+--- lttng-tools-2.14.0.orig/src/bin/Makefile.am	2025-06-27 16:36:48.584135345 +0200
++++ lttng-tools-2.14.0/src/bin/Makefile.am	2025-11-21 12:07:26.484192533 +0100
+@@ -1,5 +1,9 @@
+ # SPDX-License-Identifier: GPL-2.0-only
+ 
++# Add -fPIE for compiling all executables
++AM_CFLAGS += -fPIE
++AM_CXXFLAGS += -fPIE
++
+ SUBDIRS =
+ 
+ if BUILD_BIN_LTTNG

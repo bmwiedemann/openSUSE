@@ -63,4 +63,41 @@
     <comment></comment>
     <requestid>1295194</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>da97c10e6a6b4884c6459eac6de88dfc</srcmd5>
+    <version>2.14.0</version>
+    <time>1772208757</time>
+    <user>anag_factory</user>
+    <comment>- Disable LTO build to avoid object compatibility conflict between g++-15 and
+  g++-13.
+
+- Restore setup for 32-bit consumers from the build
+  system, which was broken by a commit mentioned at
+  https://bugs.lttng.org/issues/1318
+- Add patch:
+  * 0001-Restore-setup-of-consumer-related-setup-by-build-sys.patch
+
+- update to 2.14.0:
+  * tests: Fix string formatting for Python 3.4+
+  * liblttng-ctl: Put `enum communication_state` in anonymous namespaces
+  * tests: Add test_high_throughput for kernel regression
+  * tests: Move getconf/kernel_module to lttngtest
+  * common: Provide `--disable-tests` configuration option
+  * docs: Add pkg-config to requirements in README
+  * tests: Add `test_high_throughput_snapshot`
+  * tests: Fix: online_cpus() fails with disjoint sets
+  * tests: Support `text-size` and `fill-text` options for WaitTraceTestApps
+  * tests: Add option to generate larger tp:tptest events
+  * Fix: consumerd: inaccurate math in discarded events aggregation
+  * groups.dox: warn that the RS save/load API doc isn't done
+  * liblttng-ctl API doc: use the &quot;process filter&quot; term
+  * groups.dox: document the usage of the recording session snapshot API
+  * groups.dox: document the usage of the recording session rotation API
+  * groups.dox: document the usage of the error query API
+  * include/lttng/destruction-handle.h: doc: update internal reference
+  * doc/api/liblttng-ctl: add missing image files
+  * liblttng-ctl API doc: add missing trigger API documentation
+  * groups.dox: adjust style (minor)</comment>
+    <requestid>1335432</requestid>
+  </revision>
 </revisionlist>

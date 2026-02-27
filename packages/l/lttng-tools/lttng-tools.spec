@@ -1,7 +1,7 @@
 #
 # spec file for package lttng-tools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define _version 2.13.0
+%define _version 2.14.0
 %define soname_ctl liblttng-ctl
-%define sover_ctl 0
+%define sover_ctl 6
 Name:           lttng-tools
-Version:        2.13.11
+Version:        2.14.0
 Release:        0
 Summary:        Linux Trace Toolkit Next Generation userspace tools
 License:        GPL-2.0-only AND LGPL-2.1-only
@@ -29,17 +29,23 @@ URL:            https://lttng.org/
 Source:         https://lttng.org/files/lttng-tools/%{name}-%{version}.tar.bz2
 Source1:        https://lttng.org/files/lttng-tools/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
+Source3:        baselibs.conf
 # PATCH-FIX-OPENSUSE lttng-tools-fix-pkgconfig.patch sor.alexei@meowr.ru -- Add missing dependencies to lttng-ctl.pc.
 Patch0:         lttng-tools-fix-pkgconfig.patch
+Patch1:         lttng-tools-soname-ctl6.patch
+Patch2:         lttng-tools-position-independent.patch
+Patch3:         0001-Restore-setup-of-consumer-related-setup-by-build-sys.patch
+BuildRequires:  automake
+BuildRequires:  babeltrace2-devel
 BuildRequires:  bison
 BuildRequires:  flex
+BuildRequires:  gcc13-c++
 BuildRequires:  pkgconfig
 BuildRequires:  popt-devel
 BuildRequires:  pkgconfig(liburcu)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(lttng-ust) >= %{_version}
 BuildRequires:  pkgconfig(uuid)
-Requires:       babeltrace
 Recommends:     lttng-modules-kmp
 ExclusiveArch:  %ix86 x86_64 armv7l aarch64 loongarch64 riscv64 ppc64 ppc64le
 
@@ -67,11 +73,22 @@ subsystem from userspace.
 
 %prep
 %autosetup -p1
+autoreconf
+
+# lttng-tools 2.14 fails due to LTO mismatch with g++-15 and g++-13 objects, either set g++-15 as compiler or disable LTO. Let's do the latter here.
+%define _lto_cflags %{nil}
 
 %build
+export CXX=g++-13
+export CXXFLAGS="-fPIE ${CXXFLAGS}"
+export LDFLAGS="-fPIE ${LDFLAGS}"
+
+# for 32bit support, see https://lttng.org/docs/v2.13/#doc-instrumenting-32-bit-app-on-64-bit-system
 %configure \
   --docdir=%{_docdir}/%{name} \
-  --disable-static
+  --disable-static \
+  --with-consumerd32-libdir=/usr/lib \
+  --with-consumerd32-bin=/usr/lib/lttng/libexec/lttng-consumerd
 %make_build
 
 %install

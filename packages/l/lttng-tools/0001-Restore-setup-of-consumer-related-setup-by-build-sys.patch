@@ -1,0 +1,39 @@
+From 9a07c369370794912d4a61e2d15d2e838666fd8f Mon Sep 17 00:00:00 2001
+From: Ralf Habacker <ralf.habacker@freenet.de>
+Date: Tue, 25 Nov 2025 14:58:23 +0100
+Subject: [PATCH] Restore setup of consumer related setup by build system
+
+---
+ src/bin/lttng-sessiond/main.cpp | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/src/bin/lttng-sessiond/main.cpp b/src/bin/lttng-sessiond/main.cpp
+index 485fb19d6..e6bb1a129 100644
+--- a/src/bin/lttng-sessiond/main.cpp
++++ b/src/bin/lttng-sessiond/main.cpp
+@@ -1567,6 +1567,22 @@ static int _main(int argc, char **argv)
+ 	 */
+ 	sessiond_config_apply_env_config(&the_config);
+ 
++#ifdef CONFIG_CONSUMERD32_LIBDIR
++	config_string_set(&the_config.consumerd32_lib_dir, strdup(CONFIG_CONSUMERD32_LIBDIR));
++#endif
++
++#ifdef CONFIG_CONSUMERD32_BIN
++	config_string_set(&the_config.consumerd32_bin_path, strdup(CONFIG_CONSUMERD32_BIN));
++#endif
++
++#ifdef CONFIG_CONSUMERD64_LIBDIR
++	config_string_set(&the_config.consumerd64_lib_dir, strdup(CONFIG_CONSUMERD64_LIBDIR));
++#endif
++
++#ifdef CONFIG_CONSUMERD64_BIN
++	config_string_set(&the_config.consumerd64_bin_path, strdup(CONFIG_CONSUMERD64_BIN));
++#endif
++
+ 	/*
+ 	 * Parse arguments and load the daemon configuration file.
+ 	 *
+-- 
+2.51.1
+
