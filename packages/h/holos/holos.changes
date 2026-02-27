@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Mon Feb 16 07:23:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.106.0:
+  * docs: bump minor version to 0.105.0 with cue 0.15.1
+  * cue: update to 0.15.1 from 0.14.1 for allowEmptyGlob
+  * version 0.105.1 fixes oci chart auth (#447)
+  * allows authentication of OCI charts
+  * version 0.105.0 with kubectl-slice
+  * add kubectl-slice subcommand
+  * add ca-certificates to container image for git
+
+-------------------------------------------------------------------
+Mon Feb 16 07:21:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package holos: configuration management tool for Kubernetes
+  implementing the rendered manifests pattern
