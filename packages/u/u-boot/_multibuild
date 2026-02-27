@@ -35,7 +35,7 @@
   <flavor>libretech-cc</flavor>
   <flavor>melea1000</flavor>
   <flavor>merriia80optimus</flavor>
-  <flavor>microchipmpfsicicle</flavor>
+  <flavor>microchipmpfsgeneric</flavor>
   <flavor>milkvduo</flavor>
   <flavor>mt7623nbpir2</flavor>
   <flavor>mvebudb-88f3720</flavor>
@@ -64,7 +64,6 @@
   <flavor>orangepizero2w</flavor>
   <flavor>p2371-2180</flavor>
   <flavor>p2771-0000-500</flavor>
-  <flavor>p3450-0000</flavor>
   <flavor>paz00</flavor>
   <flavor>pcm051rev3</flavor>
   <flavor>pine64plus</flavor>
@@ -76,6 +75,7 @@
   <flavor>qemu-ppce500</flavor>
   <flavor>qemu-riscv64</flavor>
   <flavor>qemu-riscv64smode</flavor>
+  <flavor>qemu-riscv64smodeacpi</flavor>
   <flavor>quartz64-a-rk3566</flavor>
   <flavor>quartz64-b-rk3566</flavor>
   <flavor>rock-pi-4-rk3399</flavor>

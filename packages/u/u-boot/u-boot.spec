@@ -1,7 +1,7 @@
 #
 # spec file for package u-boot
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2010 Texas Instruments Inc by Nishanth Menon
 # Copyright (c) 2007-2010 by Silvan Calarco <silvan.calarco@mambasoft.it>
 #
@@ -187,7 +187,7 @@
 %define is_armv7 1
 %define binext .img
 %endif
-%if "%target" == "qemu-riscv64" || "%target" == "qemu-riscv64smode" || "%target" == "sifiveunleashed" || "%target" == "sifiveunmatched" || "%target" == "starfivevisionfive2" || "%target" == "microchipmpfsicicle" || "%target" == "milkvduo"
+%if "%target" == "qemu-riscv64" || "%target" == "qemu-riscv64smode" || "%target" == "qemu-riscv64smodeacpi" || "%target" == "sifiveunleashed" || "%target" == "sifiveunmatched" || "%target" == "starfivevisionfive2" || "%target" == "microchipmpfsgeneric" || "%target" == "milkvduo"
 %define is_riscv64 1
 %if "%target" == "sifiveunleashed" || "%target" == "sifiveunmatched" || "%target" == "starfivevisionfive2"
 %define binext .itb
@@ -197,7 +197,7 @@
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2025.10
+%define archive_version 2026.01
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -227,7 +227,7 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 %endif
-Version:        2025.10
+Version:        2026.01
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only

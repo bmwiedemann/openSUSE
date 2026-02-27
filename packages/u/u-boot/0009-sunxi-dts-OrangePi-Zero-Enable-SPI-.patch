@@ -1,4 +1,4 @@
-From 13981f90ceb8a0e06a6a5ab93828a007a585373e Mon Sep 17 00:00:00 2001
+From d461b75e75ca52af0487e5ed27ae381e05256ebf Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Mon, 28 Sep 2020 23:02:01 +0200
 Subject: [PATCH] sunxi: dts: OrangePi Zero: Enable SPI flash.
@@ -13,10 +13,10 @@ Signed-off-by: Matthias Brugger <mbrugger@suse.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/dts/sun8i-h2-plus-orangepi-zero.dts
-index c2a4f169613..347af7baa26 100644
+index 76a8f578165..7ef24ace767 100644
 --- a/arch/arm/dts/sun8i-h2-plus-orangepi-zero.dts
 +++ b/arch/arm/dts/sun8i-h2-plus-orangepi-zero.dts
-@@ -164,8 +164,8 @@
+@@ -178,8 +178,8 @@
  };
  
  &spi0 {

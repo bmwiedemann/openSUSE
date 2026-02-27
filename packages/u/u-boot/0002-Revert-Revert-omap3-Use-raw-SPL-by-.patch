@@ -1,4 +1,4 @@
-From 6fba27f731664eeea3a1719f828b734d2a9bbf4f Mon Sep 17 00:00:00 2001
+From ddffc8d420e431a71f6d0cdf2dcbf550996420be Mon Sep 17 00:00:00 2001
 From: Alexander Graf <agraf@suse.de>
 Date: Mon, 2 May 2016 23:25:07 +0200
 Subject: [PATCH] Revert "Revert "omap3: Use raw SPL by default for mmc1""

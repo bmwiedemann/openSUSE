@@ -1,4 +1,4 @@
-From 3d818ef213a15f7845f6c11664b85d85e424a1ba Mon Sep 17 00:00:00 2001
+From 67317a8a9dee793276be5e0add325102caeb998c Mon Sep 17 00:00:00 2001
 From: Matthias Brugger <mbrugger@suse.com>
 Date: Wed, 17 Mar 2021 12:20:32 +0100
 Subject: [PATCH] smbios: Fix table when no string is present

@@ -1,4 +1,4 @@
-From ff065375653606ac41a9596ea731461ec1849785 Mon Sep 17 00:00:00 2001
+From 1cad8871f99fc458c58c4c2b7cdcbe10a1e25396 Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Tue, 29 Sep 2020 10:13:33 +0200
 Subject: [PATCH] sunxi: dts: OrangePi Zero: Add SPI aliases to make bus usable
@@ -15,7 +15,7 @@ Signed-off-by: Matthias Brugger <mbrugger@suse.com>
  create mode 100644 arch/arm/dts/sunxi-spi-u-boot.dtsi
 
 diff --git a/arch/arm/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/dts/sun8i-h2-plus-orangepi-zero.dts
-index 1b001f2ad0e..c2a4f169613 100644
+index b23cec5b89e..76a8f578165 100644
 --- a/arch/arm/dts/sun8i-h2-plus-orangepi-zero.dts
 +++ b/arch/arm/dts/sun8i-h2-plus-orangepi-zero.dts
 @@ -46,6 +46,7 @@

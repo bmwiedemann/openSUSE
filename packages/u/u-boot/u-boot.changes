@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Feb 25 13:23:44 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2026.01:
+ * Full changelog available at:
+    https://source.denx.de/u-boot/u-boot/-/compare/v2025.10...v2026.01
+
+-------------------------------------------------------------------
+Wed Feb 25 13:19:51 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable build of 'p3450-0000' as it fails to build for a while now
+
+-------------------------------------------------------------------
+Tue Dec  9 14:42:55 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Flavor microchipmpfsicicle renamed to microchipmpfsgeneric
+- Add qemu-riscv64smodeacpi flavor
+
+-------------------------------------------------------------------
+Tue Dec  9 11:03:45 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+-  Update to 2026.01-rc4:
+  * Full changelog available at:
+    https://source.denx.de/u-boot/u-boot/-/compare/v2025.10...v2026.01
+
+-------------------------------------------------------------------
 Tue Dec  9 08:57:25 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 2025.10:
