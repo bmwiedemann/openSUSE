@@ -687,4 +687,41 @@
     <comment>- Prevent set config and install actions to run at the same time (bsc#1257935).</comment>
     <requestid>1332403</requestid>
   </revision>
+  <revision rev="38" vrev="38">
+    <srcmd5>e36a5c555cc159be0528854b0b834581</srcmd5>
+    <version>0</version>
+    <time>1772208139</time>
+    <user>anag_factory</user>
+    <comment>- Report properly if rpm installation skipped some packages due to
+  unavailability as installation failure (bsc#1258359)
+
+- Fix firewall-offline-cmd invocation (bsc#1258416).
+
+- Add the URL to the transfer errors (related to bsc#1258194).
+
+- Properly mark fips pattern for installation when fips kernel
+  parameter is used (bsc#1258306)
+
+- Add logging about questions to make debugging easier
+  (gh#agama-project/agama#3190).
+
+- Properly import the security settings (bsc#1258450).
+
+- Add support for bootloader config updateNvram (jsc#PED-14224) 
+
+- Add /var/log/zypp/history to agama-logs tarball
+  (gh#agama-project/agama#3187)
+
+- Do not leak the registration codes (bsc#1258221).
+
+- Update storage user config with config from the storage model
+  (bsc#1257798).
+
+- Resolve the relative URLs (bsc#1258118).
+- Do not finish the installation as &quot;failed&quot; if it was not possible
+  to fetch the user files (bsc#1258118).
+
+- Recalulate bootloader proposal after applying a storage config</comment>
+    <requestid>1334921</requestid>
+  </revision>
 </revisionlist>
