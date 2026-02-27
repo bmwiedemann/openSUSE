@@ -385,4 +385,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * ASoC: tas2783: Add Firmware files for tas2783A</comment>
     <requestid>1333340</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>caa8c276dd3b1f6d5e615280c8265d10</srcmd5>
+    <version>20260225</version>
+    <time>1772208221</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260225 (git commit fb7d64e497d1):
+  * cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Dell laptops</comment>
+    <requestid>1335284</requestid>
+  </revision>
 </revisionlist>

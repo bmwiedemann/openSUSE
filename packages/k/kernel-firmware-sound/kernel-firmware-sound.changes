@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 26 12:36:48 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260225 (git commit fb7d64e497d1):
+  * cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Dell laptops
+
+-------------------------------------------------------------------
 Mon Feb 16 08:29:56 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260214 (git commit 3a0e2a540dca):
