@@ -75,7 +75,7 @@ ExclusiveArch:  do_not_build
 #############################################################################
 
 Name:           openmpi5%{?testsuite:-testsuite}
-Version:        5.0.9
+Version:        5.0.10
 Release:        0
 Summary:        An implementation of MPI/SHMEM (Version 5)
 License:        BSD-3-Clause
