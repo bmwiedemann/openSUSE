@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 25 13:55:01 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Fix the condition with suse_version macro on SLFO (jsc#PED-15842)
+
+-------------------------------------------------------------------
 Thu Nov 20 12:32:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.3.0

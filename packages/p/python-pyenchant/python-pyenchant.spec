@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyenchant
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,7 +67,7 @@ rm -rf website .github archive tools
 export LANG=en_US.UTF-8
 %python_exec -c 'import enchant; print(vars(enchant.Dict()))'
 ignore=""
-%if 0%{suse_version} == 1600
+%if 0%{suse_version} >= 1600 && 0%{suse_version} < 1699
 # test_can_use_multiprocessing fails to build in OBS for ALP,
 # bsc#1221034
 ignore="--ignore tests/test_multiprocessing.py"
