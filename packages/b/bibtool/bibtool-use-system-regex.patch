@@ -36,8 +36,7 @@ diff -auNr BibTool/AutoConf/makefile.in BibTool-new/AutoConf/makefile.in
 diff -auNr BibTool/rewrite.c BibTool-new/rewrite.c
 --- BibTool/rewrite.c	2020-04-13 22:31:54.000000000 +0800
 +++ BibTool-new/rewrite.c	2024-01-29 18:10:26.031482831 +0800
-@@ -37,7 +37,8 @@
- #include <bibtool/symbols.h>
+@@ -38,6 +38,7 @@
  
  #ifdef REGEX
  #include <bibtool/regex.h>

@@ -1,7 +1,7 @@
 #
 # spec file for package bibtool
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,7 @@ URL:            http://www.gerd-neugebauer.de/software/TeX/BibTool/index.en.html
 Source0:        http://www.gerd-neugebauer.de/software/TeX/BibTool/BibTool-%{version}.tar.gz
 Source1:        http://www.gerd-neugebauer.de/software/TeX/BibTool/BibTool-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
+# do not use BibTools own regex
 Patch1:         bibtool-use-system-regex.patch
 Provides:       %{name}-doc = %{version}
 Obsoletes:      %{name}-doc < %{version}
@@ -37,10 +38,10 @@ integrate citations into LaTeX documents. BibTool allows the manipulation of
 BibTeX files which goes beyond the possibilities - and intentions - of BibTeX.
 
 %prep
-%setup -q -n BibTool
-# %%patch -P 1 -p1
+%autosetup -p 1 -n BibTool
 
 %build
+export CFLAGS="%{optflags} -std=gnu11"
 %configure
 make %{?_smp_mflags} all
 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 22 08:41:47 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- Add -std=gnu11 to avoid incompatibilities with C23 mode.
+- Reenable patch bibtool-use-system-regex.patch to not use BibTool's
+  own copy of regex library.
+
+-------------------------------------------------------------------
 Tue Jan 14 13:35:58 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix escaping of commented out patch: with RPM 4.20, %patch

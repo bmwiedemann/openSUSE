@@ -66,4 +66,14 @@
     <comment></comment>
     <requestid>1238263</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>3dbb9ca36e564c2b941a5efb2623d294</srcmd5>
+    <version>2.68</version>
+    <time>1772208745</time>
+    <user>anag_factory</user>
+    <comment>- Add -std=gnu11 to avoid incompatibilities with C23 mode.
+- Reenable patch bibtool-use-system-regex.patch to not use BibTool's
+  own copy of regex library. (forwarded request 1334363 from mathletic)</comment>
+    <requestid>1335416</requestid>
+  </revision>
 </revisionlist>
