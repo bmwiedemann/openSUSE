@@ -7,4 +7,12 @@
     <comment>New plasma package</comment>
     <requestid>1333459</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cb5b0cf5828769c224c36d84dfb9e94d</srcmd5>
+    <version>6.6.1</version>
+    <time>1772208246</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.6.1, not fully built yet. Biggest change is sover bump in libplasma6. (forwarded request 1334876 from Vogtinator)</comment>
+    <requestid>1334973</requestid>
+  </revision>
 </revisionlist>

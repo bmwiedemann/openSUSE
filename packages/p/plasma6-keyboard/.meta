@@ -1,5 +1,6 @@
 <package name="plasma6-keyboard" project="openSUSE:Factory">
   <title>plasma6-keyboard</title>
   <description>Virtual Keyboard for Qt based desktop</description>
+  <devel project="KDE:Frameworks" package="plasma6-keyboard"/>
   <url>https://invent.kde.org/plasma/plasma-keyboard</url>
 </package>
