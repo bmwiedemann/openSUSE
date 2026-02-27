@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 27 09:43:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.93.0:
+  * Other Changes
+    - Bump go version where needed by @BlasttS in #3363
+    - Test TestArtifactoryClientCert sometimes fails on Windows...
+      by @BlasttS in #3366
+
+-------------------------------------------------------------------
 Thu Feb 19 06:32:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.92.0:
