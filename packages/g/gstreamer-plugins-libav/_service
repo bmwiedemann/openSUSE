@@ -5,7 +5,7 @@
     <param name="url">https://gitlab.freedesktop.org/gstreamer/gstreamer.git</param>
     <param name="subdir">subprojects/gst-libav</param>
     <param name="filename">gst-libav</param>
-    <param name="revision">1.26.10</param>
+    <param name="revision">1.28.0</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v?(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
