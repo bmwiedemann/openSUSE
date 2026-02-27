@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Feb 27 10:20:23 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.4.0
+  This is a major release with many bug fixes, performance
+  improvements, updates to the TypeScript API, and ManifoldCAD.
+  Notable changes:
+
+  - Added MinkowskiSum and MinkowskiDifference, but note that the
+    current implementation performs many union operations. It may
+    be slow and memory-intensive for complex meshes.
+  - MeshIO is removed from our public API. Users should use
+    libraries such as Trimesh for Python and assimp for C++. The
+    MeshIO code is still available as an example for interfacing
+    with assimp.
+  - ManifoldCAD can now import and operate on glTF models! It can
+    also display 2D CrossSections and non-manifold imports. The
+    documentation is also vastly improved, for both ManifoldCAD
+    scripts, and the underlying TS API for those wanting to build
+    their own tool.
+
+  For all the details see:
+  https://github.com/elalish/manifold/releases/tag/v3.4.0
+
+-------------------------------------------------------------------
 Sat Nov 15 16:19:27 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.3.2

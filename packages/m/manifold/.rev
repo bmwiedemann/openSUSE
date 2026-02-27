@@ -45,4 +45,29 @@ if blender 4.5.1 is still in staging. this can be merged into the same staging.<
     <comment></comment>
     <requestid>1318216</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a377f28013804d9c5b878d37e13cb7f8</srcmd5>
+    <version>3.4.0</version>
+    <time>1772208780</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.4.0
+  This is a major release with many bug fixes, performance
+  improvements, updates to the TypeScript API, and ManifoldCAD.
+  Notable changes:
+  - Added MinkowskiSum and MinkowskiDifference, but note that the
+    current implementation performs many union operations. It may
+    be slow and memory-intensive for complex meshes.
+  - MeshIO is removed from our public API. Users should use
+    libraries such as Trimesh for Python and assimp for C++. The
+    MeshIO code is still available as an example for interfacing
+    with assimp.
+  - ManifoldCAD can now import and operate on glTF models! It can
+    also display 2D CrossSections and non-manifold imports. The
+    documentation is also vastly improved, for both ManifoldCAD
+    scripts, and the underlying TS API for those wanting to build
+    their own tool.
+  For all the details see:
+  https://github.com/elalish/manifold/releases/tag/v3.4.0</comment>
+    <requestid>1335438</requestid>
+  </revision>
 </revisionlist>
