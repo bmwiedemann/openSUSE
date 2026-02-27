@@ -109,4 +109,35 @@
 - Removed python-filelock dependency in .spec file for newer versions as well</comment>
     <requestid>1334834</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f74cc6699443f256a7b9a93089f67316</srcmd5>
+    <version>1.15.8</version>
+    <time>1772208287</time>
+    <user>anag_factory</user>
+    <comment>Lots of upstream fixes since last point release:
+
+- Bump to version 1.15.8
+- Upstream changes for 1.15.8:
+  * Updated Chinese (Traditional) translation
+  * Return None for unknown steam_version
+- Version 1.15.7:
+  * Fixed Steam Flatpak not launching Faugus games
+- Version 1.15.6:
+  * Read playtime before updating it
+  * Show donate message after 30 minutes
+  * Fixed segmentation fault
+  * Fixed default proton
+  * Updated Portuguese translation
+  * Added donate dialog
+  * Fixed game not running from file manager
+  * List Steam games even with update pending
+  * Support for LSFG-VK 2.0 Added support for future version of LSFG-VK, keeping current version 1.x working until it is deprecated in the future.
+  * Updated Dutch translation
+- Version 1.15.5:
+  * Fixed Steam games not running when having gamemode enabled in settings
+- Version 1.15.4:
+  * Fixed steam shortcuts.vdf detection
+  * Added Chinese (Traditional) translation</comment>
+    <requestid>1335321</requestid>
+  </revision>
 </revisionlist>
