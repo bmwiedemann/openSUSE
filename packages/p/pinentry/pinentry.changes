@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Sat Nov 22 21:22:53 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
-- Remove unused BuildRequires: update-desktop-files.
+- Remove unused BuildRequires: update-desktop-files. [jsc#PED-15233]
 
 -------------------------------------------------------------------
 Sun Aug  3 19:04:03 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
