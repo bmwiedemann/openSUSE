@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Feb 24 17:21:45 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.1
+- Changes since 6.6.0:
+  * Update version for new release 6.6.1
+  * 🍒 kcms/tablet: Stop showing non existent buttons
+  * kcms/keys: Fix premature reset of editing flag in Add/Edit Command dialog
+  * applets/kicker: hardcode black background color in dashboard (kde#516266)
+  * applets/pager: handle switching activities better in desktop widget
+  * applets/kicker: handle Return from kickerdash search field
+  * applets/kicker: show custom icon loaded by name (kde#516019)
+  * applets/kicker: only set anchor margin if there is a sidebar (kde#516196)
+  * applets/taskmanager: adjust size for thumbnail-less tooltips (kde#516018)
+  * Add missing const and replace begin() with cbegin()
+  * GlobalAccelModel: emit dataChanged after shortcut edit
+  * applets/kicker: don't reset currentItem on context menu open
+  * applets/taskmanager: Fix check for application on drop (kde#516242)
+  * applets/TaskManager: Fix RTL in TaskProgressOverlay (kde#516053)
+  * desktoppackage: Always show the "Focus shortcut:" label in panel configuration window (kde#515987)
+  * applets/kicker: use Image for non-square compactRepresentation icon
+  * applets/kickoff: handle accepted instead of iconNameChanged
+
+-------------------------------------------------------------------
 Thu Feb 12 19:43:36 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.0:
