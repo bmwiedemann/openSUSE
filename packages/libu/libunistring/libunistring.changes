@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 24 16:24:02 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.2:
+  * Fix a build failure on systems with glibc 2.43 (boo#1258742)
+
+-------------------------------------------------------------------
 Fri Oct 10 19:27:06 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4.1:
