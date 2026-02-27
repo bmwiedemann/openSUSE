@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Feb 27 07:03:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 26.2.0:
+  * Features
+    - feat: complexity[tasks] for task and handler files (#4799)
+      @ARYPROGRAMMER
+    - feat: adding new argument_spec rule and tests (#4968)
+      @djdanielsson
+    - feat: allow users to opt into rules while still using
+      profiles (#4974) @djdanielsson
+    - feat: use uv for installation and add override_version input
+      (#4703) (#4933) @Jkhall81
+  * Fixes
+    - fix: no-free-form transform parsing (#4942) @Edition-X
+    - fix: make ansible-lint work with AWS CodeBuild Lambda (#4972)
+      @GElkayam
+    - fix: skip_list with sub-rules no longer skips entire rule
+      (#4955) @emmanuel-ferdman
+    - fix: update pre-commit hook to support Python 3.14 (#4959)
+      @dmzoneill
+    - fix: respect custom yamllint config (#4758) @dbrennand
+    - fix: use pip instead of uv when setup_python is false (#4941)
+      @Jkhall81
+    - fix: resolved issue with uv installing python (#4940)
+      @Jkhall81
+    - fix: restore correct mapping indentation after anchors
+      (#4935) (#4936) @Jkhall81
+    - fix: schema/meta support SLES 15SP7 and 16 (#4938) @Klaas-
+    - Bump actions/checkout in README (#4934) @jaap3
+    - fix: resolve path resolution for imported tasks in global
+      tasks direc… (#4926) @Jkhall81
+  * Maintenance
+    - chore: remove use of pytest-sugar (#4977) @ssbarnea
+    - chore: update test deps (#4976) @ssbarnea
+    - chore: remove use of pytest-plus (#4975) @ssbarnea
+    - chore: pre-commit autoupdate (#4948) @pre-commit-ci[bot]
+    - chore(deps): bump ajv from 8.10.0 to 8.18.0 in /test/schemas
+      (#4970) @dependabot[bot]
+    - chore(deps): bump cryptography from 46.0.4 to 46.0.5 in
+      /.config (#4962) @dependabot[bot]
+    - chore(deps): bump pillow from 12.1.0 to 12.1.1 (#4964)
+      @dependabot[bot]
+    - chore(deps): bump cryptography from 46.0.4 to 46.0.5 (#4963)
+      @dependabot[bot]
+    - chore: fix mypy failures plus extra (#4954) @ssbarnea
+    - chore(deps): update all dependencies (#4937) @renovate[bot]
+    - chore(deps): update all dependencies (#4932) @renovate[bot]
+    - chore(deps): update all dependencies (#4931) @renovate[bot]
+    - chore(deps): update all dependencies (#4930) @renovate[bot]
+    - chore(deps): update all dependencies (#4929) @renovate[bot]
+    - chore(deps): update all dependencies (#4928) @renovate[bot]
+
+-------------------------------------------------------------------
 Fri Jan 16 06:19:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 26.1.1:

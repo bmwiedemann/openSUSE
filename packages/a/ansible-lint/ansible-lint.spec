@@ -39,7 +39,7 @@
 
 %global lib_name ansiblelint
 Name:           ansible-lint
-Version:        26.1.1
+Version:        26.2.0
 Release:        0%{?dist}
 Summary:        Best practices checker for Ansible
 License:        MIT
@@ -61,7 +61,6 @@ BuildRequires:  %{ansible_python}-pytest-xdist >= 2.1.0
 BuildRequires:  %{ansible_python}-psutil
 BuildRequires:  %{ansible_python}-black >= 23.10.1
 BuildRequires:  %{ansible_python}-mypy
-BuildRequires:  %{ansible_python}-pylint
 BuildRequires:  %{ansible_python}-flake8
 # /SECTION
 
