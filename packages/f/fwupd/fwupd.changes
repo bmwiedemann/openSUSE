@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Feb 26 13:35:37 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.0.20:
+  + This release adds the following features:
+    - Add support for changing AMD UMA carveout size
+    - Warn the user if they are using the blocked-firmware
+      functionality
+  + This release fixes the following bugs:
+    - Disable the UEFI plugins on 32bit x86
+    - Do not hang when parsing an invalid USB descriptor
+    - Do not return an error if the fastboot property is not
+      provided
+    - Fix a CCGX DMC regression when installing on the HP G5 dock
+    - Fix a harmless heap OOB read in AMD kria SOM EEPROM parser
+    - Fix a potential fastboot string over-read
+    - Fix a regression causing MBIM QDU updates to fail
+    - Honor polkit auth for emulation tag modify device
+    - Speed up calculating the cab checksum by ~21%
+    - Verify the uncompressed size when decompressing CAB files
+  + This release adds support for the following hardware:
+    - HP Engage One G2 Advanced Hub
+    - PixArt PJP274 (Framework Laptop)
+    - Several new Jabra GNP devices
+
+-------------------------------------------------------------------
 Tue Jan 13 15:16:45 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 0001-Allow-systemd-service-to-access-block-sr-cdrom-devic.patch:

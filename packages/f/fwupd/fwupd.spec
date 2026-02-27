@@ -16,7 +16,7 @@
 #
 
 
-%ifarch %{ix86} x86_64 aarch64 riscv64
+%ifarch x86_64 aarch64 riscv64
 %bcond_without efi_fw_update
 %else
 %bcond_with efi_fw_update
@@ -30,7 +30,7 @@
 %bcond_with dell_support
 %endif
 
-%ifarch %{ix86} x86_64 aarch64 riscv64
+%ifarch x86_64 aarch64 riscv64
 %bcond uefi_dbx 1
 %endif
 
@@ -43,7 +43,7 @@
 %define shlib_sover  3
 
 Name:           fwupd
-Version:        2.0.19
+Version:        2.0.20
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
