@@ -520,4 +520,12 @@ Security fix: Bug 865854, CVE-2014-0004. (forwarded request 225422 from pwieczor
     <comment></comment>
     <requestid>1332807</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>7f267db00305f0d2e679cd210e1cca19</srcmd5>
+    <version>2.11.0</version>
+    <time>1772208095</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1335266</requestid>
+  </revision>
 </revisionlist>

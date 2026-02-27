@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 26 09:31:26 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
+
+- (CVE-2026-26104) VUL-0: missing authorization check in `handle_header_backup`
+  (bsc#1258867)
+  + add 0001-udiskslinuxencrypted-Add-missing-polkit-check-for-He.patch
+- (CVE-2026-26103) VUL-0: missing authorization check in `handle_restore_encrypted_header`
+  (bsc#1258868)
+  + add 0001-udiskslinuxblock-Add-missing-polkit-check-for-Restor.patch
+
+-------------------------------------------------------------------
 Tue Feb 10 07:55:53 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.11.0:
