@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 19 19:38:33 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
+
+- Workaround circular dependency between Emacs and Tree-sitter
+  by defining these macros ourselves here.
+
+-------------------------------------------------------------------
+Sun Feb  8 18:50:23 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
+
+- Install grammars into treesitter_grammardir with subdirectory
+  removing the need for the NeoVIM workaround.
+- Add site-start script to point to Emacs to grammars installed in
+  treesitter_grammardir
+
+-------------------------------------------------------------------
 Sat Dec 27 19:22:41 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Modify tree-sitter-target.py to include not only parser.c, but

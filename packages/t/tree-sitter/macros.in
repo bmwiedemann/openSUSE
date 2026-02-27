@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-2.0
 # SPDX-FileCopyrightText: 2024 Björn Bidar
 %_treesitter_base_name tree-sitter
-%_treesitter_grammardir %{_libdir}
+%_treesitter_grammardir %{_libdir}/tree-sitter
 %_treesitter_grammar_develdir %{_includedir}/%{_treesitter_base_name}/grammars
 %_treesitter_grammar_base_libname lib%{_treesitter_base_name}
 %treesitter_target() %{_rpmconfigdir}/tree-sitter-target.py

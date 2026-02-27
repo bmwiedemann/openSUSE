@@ -14,6 +14,9 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+# Sync with macros.emacs from the emacs package
+%global _emacs_sitelispdir %{_datadir}/emacs/site-lisp
+%global _emacs_sitestartdir %{_emacs_sitelispdir}/site-start.d
 
 
 %define         somajor 0_25
@@ -28,6 +31,7 @@ Source1:        vendor.tar.zst
 Source11:       baselibs.conf
 Source20:       tree-sitter-target.py
 Source21:       macros.in
+%{load:%{SOURCE21}}
 Source22:       macros.lua
 Source23:       functions.lua
 Source24:       compile-macros.sh
@@ -35,6 +39,9 @@ Source25:       treesitter_grammar.attr
 Source26:       treesitter_grammar.req
 BuildRequires:  cargo-packaging
 BuildRequires:  rust > 1.82.0
+# for macros.emacs
+# BuildRequires:  emacs-nox
+# Commented out since we don't want circular dependencies
 Requires:       lib%{name}%{somajor} = %{version}
 Requires:       nodejs
 %{?suse_build_hwcaps_libs}
@@ -104,12 +111,20 @@ install -Dm755 %{SOURCE26} %{buildroot}%{_rpmconfigdir}/$(basename %{SOURCE26})
 find %{buildroot} -type f \( -name "*.la" -o -name "*.a" \) -delete -print
 
 # stupid workaround for "integrating" the grammars into neovim
-install -d %{buildroot}%{_libdir}/tree_sitter
+install -d %{buildroot}%{_treesitter_grammardir}
+install -d %{buildroot}%{_treesitter_grammar_develdir}
 
 #fix pkgconfig file
 for i in lib include; do
 sed -i 's|'$i'dir=${prefix}//usr/|'$i'dir=${prefix}/usr/|g' %{buildroot}%{_libdir}/pkgconfig/%{name}.pc
 done
+
+install -d %{buildroot}/%{_emacs_sitestartdir}
+cat <<EOF > %{buildroot}/%{_emacs_sitestartdir}/tree-sitter-load-path.el
+;;  -*- lexical-binding: t -*-
+;; Add tree-sitter grammars packaged by openSUSE
+(add-to-list 'treesit-extra-load-path %{_treesitter_grammardir})
+EOF
 
 %ldconfig_scriptlets -n lib%{name}%{somajor}
 
@@ -121,11 +136,17 @@ done
 %{_rpmmacrodir}/macros.treesitter
 %{_rpmconfigdir}/treesitter_grammar.req
 %{_fileattrsdir}/treesitter_grammar.attr
+%dir %{_emacs_sitelispdir}
+%dir %{_emacs_sitestartdir}
+%{_emacs_sitestartdir}/tree-sitter-load-path.el
+%dir %{_includedir}/%{_treesitter_base_name}
+%dir %{_treesitter_grammar_develdir}
+
 
 %files -n lib%{name}%{somajor}
 %license LICENSE
 %{_libdir}/lib%{name}.so.*
-%dir %{_libdir}/tree_sitter
+%dir %{_treesitter_grammardir}
 
 %files devel
 %doc docs/
