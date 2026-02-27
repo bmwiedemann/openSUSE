@@ -355,4 +355,12 @@
   SUSE:SLFO:Main, bsc#1231124</comment>
     <requestid>1204915</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>300077f27b667bcaca0f1be982de061c</srcmd5>
+    <version>8.3.0</version>
+    <time>1772208157</time>
+    <user>anag_factory</user>
+    <comment>- Fix the condition with suse_version macro on SLFO (jsc#PED-15848)</comment>
+    <requestid>1335026</requestid>
+  </revision>
 </revisionlist>

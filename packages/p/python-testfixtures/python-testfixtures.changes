@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 25 09:39:04 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Fix the condition with suse_version macro on SLFO (jsc#PED-15848)
+
+-------------------------------------------------------------------
 Tue Oct  1 11:13:06 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Make Django build-requirement conditional and disable by default for
