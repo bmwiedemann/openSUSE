@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-extra
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %define module_name click-extra
+%define executable_name click-extra-demo
 
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
@@ -26,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click-extra
-Version:        7.1.0
+Version:        7.6.0
 Release:        0
 Summary:        Drop-in replacement for Click to make user-friendly and colorful CLI
 License:        GPL-2.0-or-later
@@ -35,20 +36,26 @@ Source:         https://github.com/kdeldycke/click-extra/archive/v%{version}.tar
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.0.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module uv-build}
 BuildRequires:  %{python_module wheel}
 # SECTION Build dependencies
 # https://github.com/kdeldycke/click-extra/blob/v6.0.3/pyproject.toml#L73
-BuildRequires:  %{python_module PyYAML >= 6.0.3}
 BuildRequires:  %{python_module boltons >= 25.0.0}
 BuildRequires:  %{python_module click >= 8.3.1}
 BuildRequires:  %{python_module cloup >= 3.0.7}
 BuildRequires:  %{python_module deepmerge >= 2.0}
-BuildRequires:  %{python_module extra-platforms >= 5.0.0}
+BuildRequires:  %{python_module extra-platforms >= 8.0.0}
 BuildRequires:  %{python_module requests >= 2.32.5}
 BuildRequires:  %{python_module tabulate >= 0.9}
 BuildRequires:  %{python_module tomli >= 2.3.0 if %python-base < 3.11}
 BuildRequires:  %{python_module wcmatch >= 10.0}
-BuildRequires:  %{python_module xmltodict >= 0.15.1}
+# optional dependencies
+BuildRequires:  %{python_module PyYAML >= 6.0.3}
+BuildRequires:  %{python_module hjson >= 3.1}
+BuildRequires:  %{python_module json5 >= 0.12.1}
+BuildRequires:  %{python_module pygments >= 2.14}
+BuildRequires:  %{python_module pygments-ansi-color >= 0.3}
+BuildRequires:  %{python_module xmltodict >= 1.0.0}
 BuildRequires:  git-core
 # /SECTION
 # SECTION test requirements
@@ -56,9 +63,10 @@ BuildRequires:  %{python_module pygments >= 2.14}
 BuildRequires:  %{python_module Sphinx >= 8.0}
 BuildRequires:  %{python_module myst-parser >= 4.0.0}
 BuildRequires:  %{python_module pygments-ansi-color >= 0.3.0}
-BuildRequires:  %{python_module pytest >= 8.2.1}
+BuildRequires:  %{python_module pytest >= 9.0.0}
 BuildRequires:  %{python_module pytest-httpserver >= 1.1.0}
 BuildRequires:  %{python_module pytest-randomly >= 4.0.0}
+BuildRequires:  %{python_module wcwidth}
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -67,11 +75,11 @@ Requires:       python-boltons >= 25.0.0
 Requires:       python-click >= 8.3.1
 Requires:       python-cloup >= 3.0.7
 Requires:       python-deepmerge >= 2.0
-Requires:       python-extra-platforms >= 5.0.0
+Requires:       python-extra-platforms >= 8.0.0
 Requires:       python-requests >= 2.32.5
 Requires:       python-tabulate >= 0.9
 Requires:       python-wcmatch >= 10.0
-Requires:       python-xmltodict >= 0.15.1
+Requires:       python-xmltodict >= 1.0.0
 Requires:       (python-tomli >= 2.3.0 if python-base < 3.11)
 Suggests:       python-pygments >= 2.14
 Suggests:       python-pygments-ansi-color >= 0.3.0
@@ -97,7 +105,7 @@ Requires(postun): update-alternatives
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_clone -a %{buildroot}%{_bindir}/click-extra
+%python_clone -a %{buildroot}%{_bindir}/%{executable_name}
 
 %check
 # remove coverage configuration
@@ -118,25 +126,28 @@ IGNORED_CHECKS+=" or test_enum_choice_show_aliases[Status-ChoiceSource.STR-False
 IGNORED_CHECKS+=" or test_enum_choice_show_aliases[Status-ChoiceSource.NAME-True-result2]"
 IGNORED_CHECKS+=" or test_enum_choice_show_aliases[Status-ChoiceSource.VALUE-True-result3]"
 IGNORED_CHECKS+=" or test_enum_choice_show_aliases[Color-ChoiceSource.NAME-True-result4]"
+#
+# https://github.com/kdeldycke/click-extra/issues/1538
+IGNORED_CHECKS+=" or test_file_pattern"
 
 %pytest -k "not (${IGNORED_CHECKS})"
 
 %if %{with libalternatives}
 %pre
-%python_libalternatives_reset_alternative click-extra
+%python_libalternatives_reset_alternative %{executable_name}
 %else
 
 %post
-%python_install_alternative click-extra
+%python_install_alternative %{executable_name}
 
 %postun
-%python_uninstall_alternative click-extra
+%python_uninstall_alternative %{executable_name}
 %endif
 
 %files %{python_files}
 %license license
 %doc readme.md
-%python_alternative %{_bindir}/click-extra
+%python_alternative %{_bindir}/%{executable_name}
 %{python_sitelib}/click_extra
 %{python_sitelib}/click_extra-%{version}.dist-info
 

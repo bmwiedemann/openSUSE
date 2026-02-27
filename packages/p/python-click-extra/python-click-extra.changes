@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Fri Feb 27 06:27:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.6.0:
+  * Add '_default_subcommands' reserved configuration key to
+    auto-invoke subcommands when none are provided on the CLI.
+    Closes {issue}1405.
+  * Add '_prepend_subcommands' reserved configuration key to always
+    prepend subcommands to every invocation (requires chain=True).
+    Closes {issue}1405.
+  * Add --validate-config option to validate configuration files.
+  * Add ConfigFormat.PYPROJECT_TOML format for [tool.*] section
+    support in pyproject.toml. Closes {issue}1524.
+  * Stop parent directory walk on inaccessible directories.
+  * Add stop_at parameter to @config_option to limit parent
+    directory walking. Defaults to VCS. Closes {issue}651.
+  * Add VCS sentinel and VCS_DIRS constant for VCS root detection.
+  * Resolve relative paths to absolute in parent_patterns before
+    yielding.
+  * Add included_params allowlist to ConfigOption and
+    @config_option, the inverse of excluded_params. Closes
+    {issue}1362.
+  * Add human-friendly display labels to ConfigFormat.
+  * Switch back from SPLIT to BRACE flag for multi-format config
+    file patterns. Fixes a bug where only the first format received
+    the directory prefix with SPLIT.
+  * Hard code icon workaround for Sphinx index entries.
+  * Automatically append Git short hash as a PEP 440 local version
+    identifier to .dev versions (e.g., 1.2.3.dev0+abc1234).
+  * Skip Git hash suffix for versions that already contain +
+    (pre-baked local identifiers) to avoid invalid double-suffixed
+    versions.
+  * Recognize LLM environment variable to strip ANSI codes when
+    running under an AI agent.
+
+-------------------------------------------------------------------
+Thu Feb 26 06:56:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.5.3:
+  * Allow disabling of autodiscovery of configuration files by
+    setting default=NO_CONFIG on @config_option. Closes
+    {issue}1495.
+  * Implement resolve_any_xref in ClickDomain to prevent
+    MyST-Parser warning. Closes {issue}1502.
+  * Fix subcommand conflict detection checking against root-level
+    params instead of parent params. Closes {pr}1286.
+- update to 7.5.2:
+  * Fix GitHub alerts converter mangling list-table directive
+    content. Closes {issue}1490.
+  * Replace Dependabot by Renovate.
+  * Move click_extra/docs_update.py to docs/docs_update.py.
+  * Add pygments-ansi-color to docs dependency group for lexer
+    table generation.
+
+-------------------------------------------------------------------
+Fri Feb  6 06:12:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.5.1:
+  * Add new aligned table format with single-space column separators
+    and no borders.
+  * Fix parallel mode support in Sphinx extension. Closes {issue}1482.
+
+-------------------------------------------------------------------
+Tue Feb  3 11:57:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.5.0:
+  * Fix TableFormat.GITHUB to render proper alignment hints in the
+    separator row (:---, :---:, ---:).
+  * Move auto-lock time from 8:43 to 4:43.
+  * Set cooldown period via the pyproject.toml.
+  * Add Download link to project metadata.
+  * Include license file in package.
+  * Replace deprecated codecov/test-results-action by
+    codecov/codecov-action.
+  * Remove utilization workaround for macos-15-intel.
+  * Bump requirement of extra-platforms to 8.0.0.
+
+-------------------------------------------------------------------
+Fri Dec 12 08:18:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.4.0:
+    - Add cooldown period for dependabot and uv.lock updates.
+    - Uncap all dependencies.
+    - Replace tool.uv section by build-system.
+    - Merge all label jobs into a single one.
+    - Unlock a CPU core stuck at 100% utilization on
+      macos-15-intel.
+- update to 7.3.0:
+    - Add click:source directive as an alias to click:example
+      directive in Sphinx extension.
+    - Flag click:example directive as deprecated in favor of
+      click:source.
+    - Add support for nested GitHub alerts.
+    - Fix fetching version when the CLI is implemented as a
+      standalone script and not as a package module.
+- update to 7.2.0:
+    - Add support for auto-conversion of GitHub alerts into MyST
+      admonitions in Sphinx extension.
+    - Rename click-extra demo CLI to click-extra-demo to avoid
+      confusion with the package name.
+    - Run tests on ubuntu-slim GitHub Actions runner.
+    - Run docs update job on ubuntu-slim runner.
+
+-------------------------------------------------------------------
 Sat Nov 22 14:06:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 7.1.0:
