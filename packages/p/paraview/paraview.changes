@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 24 00:01:00 UTC 2026 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com>
+
+- Added simple python import test to check correct deployment.
+- Correct Python ParaView installation path, it was wrongly being
+  installed in a nested directory of its correct path.
+- Disabled PythonAdaptors and AdaptorsCamPython ParaView module
+  since it is a very accessory feature that it gets installed in
+  the wrong path.
+
+-------------------------------------------------------------------
 Tue Feb  3 07:18:29 UTC 2026 - Justin Hales <justindhales@gmail.com>
 
 - Update to version 6.0.1:

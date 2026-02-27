@@ -1,6 +1,7 @@
 #
 # spec file for package paraview
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -177,16 +178,18 @@ sed -Ei "1{s|#!%{_bindir}/env python3|#!%{_bindir}/python3|}" Clients/CommandLin
        -DBUILD_TESTING:BOOL=OFF \
        -DCMAKE_CXX_EXTENSIONS:BOOL=OFF \
        -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
+       -DOpenGL_GL_PREFERENCE:STRING='GLVND' \
        -DPARAVIEW_BUILD_WITH_EXTERNAL:BOOL=ON \
        -DPARAVIEW_ENABLE_WEB:BOOL=ON \
        -DPARAVIEW_INSTALL_DEVELOPMENT_FILES:BOOL=ON \
-       -DPARAVIEW_PYTHON_SITE_PACKAGES_SUFFIX=%{_lib}/python%{py3_ver}/site-packages/paraview \
+       -DPARAVIEW_PYTHON_SITE_PACKAGES_SUFFIX=%{_lib}/python%{py3_ver}/site-packages \
+       -DPARAVIEW_USE_EXTERNAL_VTK:BOOL=ON \
        -DPARAVIEW_USE_PYTHON:BOOL=ON \
        -DPARAVIEW_USE_QT:BOOL=ON \
        -DPARAVIEW_USE_VTKM:BOOL=OFF \
        -DQtTesting_INSTALL_NO_DEVELOPMENT:BOOL=ON \
-       -DOpenGL_GL_PREFERENCE:STRING='GLVND' \
-       -DPARAVIEW_USE_EXTERNAL_VTK:BOOL=ON \
+       -DVTK_MODULE_ENABLE_ParaView_AdaptorsPython:STRING=NO \
+       -DVTK_MODULE_ENABLE_ParaView_AdaptorsCamPython:STRING=NO \
        -Wno-dev \
        %{nil}
 
@@ -206,6 +209,13 @@ find . \( -name \*.txt -o -name \*.xml -o -name '*.[ch]' -o -name '*.[ch][px][px
 install -Dm0644 %{SOURCE2} %{buildroot}%{_datadir}/%{name}-%{short_ver}/doc/GettingStarted.pdf
 
 %fdupes %{buildroot}/
+
+%check
+
+# Make sure the python library is at least importable
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
+export PYTHONPATH=$PYTHONPATH:%{buildroot}%{python3_sitearch}
+PYTHONDONTWRITEBYTECODE=1 python3 -c "from paraview.simple import *"
 
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
