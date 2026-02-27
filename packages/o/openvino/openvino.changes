@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Wed Feb 25 02:46:52 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to 2026.0.0
+- More GenAI coverage and framework integrations to minimize code
+  changes
+  * New models supported on CPUs & GPUs: GPT-OSS-20B, 
+    MiniCPM-V-4_5-8B, and MiniCPM-o-2.6.
+  * New models supported on NPUs: MiniCPM-o-2.6. In addition, NPU
+    support is now available on Qwen2.5-1.5B-Instruct, 
+    Qwen3-Embedding-0.6B, Qwen-2.5-coder-0.5B.
+  * OpenVINO? GenAI now adds word-level timestamp functionality to
+    the Whisper Pipeline on CPUs, GPUs, and NPUs, enabling more 
+    accurate transcriptions and subtitling in line with OpenAI and
+    FasterWhisper implementations.
+  * Phi-3-mini FastDraft model is now available on Hugging Face to
+    accelerate LLM inference on NPUs. FastDraft optimizes
+    speculative decoding for LLMs.
+- Broader LLM model support and more model compression techniques
+  * With the new int4 data-aware weight compression for 3D 
+    MatMuls, the Neural Network Compression Framework enables MoE
+    LLMs to run with reduced memory, bandwidth, and improved
+    accuracy compared to data-free schemes-delivering faster,
+    more efficient deployment on resource-constrained devices.
+  * Preview: the Neural Network Compression Framework now
+    supports per-layer and per-group Look-Up Tables (LUT) for
+    FP8-4BLUT quantization. This enables fine-grained,
+    codebook-based compression that reduces model size and
+    bandwidth while improving inference speed and accuracy for
+    LLMs and transformer workloads.
+- More portability and performance to run AI at the edge, in the
+  cloud, or locally.
+  * Preview: OpenVINO? GenAI adds VLM pipeline support to enhance
+    Agentic AI framework integration.
+  * OpenVINO GenAI now supports speculative decoding for NPUs,
+    delivering improved performance and efficient text generation
+    through a small draft model that is periodically validated by
+    the full-size model.
+  * Preview: NPU compiler integration with the NPU plugin enables
+    ahead-of-time and on-device compilation without relying on
+    OEM driver updates. Developers can enable this feature for a
+    single, ready-to-ship package that reduces integration
+    friction and accelerates time-to-value.
+  * OpenVINO? Model Server adds enhanced support for audio
+    endpoint plus agentic continuous batching and concurrent runs
+    for improved LLM performance in agentic workflows on Intel
+    CPUs and GPUs.
+- Support Change and Deprecation Notices
+  * Discontinued in 2026.0:
+    + The deprecated openvino.runtime namespace has been removed.
+      Please use the openvino namespace directly.
+    + The deprecated openvino.Type.undefined has been removed.
+      Please use openvino.Type.dynamic instead.
+    + The PostponedConstant constructor signature has been
+       updated for improved usability:
+      - Old (removed): Callable[[Tensor], None]
+      - New: Callable[[], Tensor]
+    + The deprecated OpenVINO GenAI predefined generation
+      configs were removed.
+    + The deprecated OpenVINO GenAI support for whisper
+      stateless decoder model has been removed. Please use a
+      stateful model.
+    + The deprecated OpenVINO GenAI StreamerBase put method, bool
+      return type for callbacks, and ChunkStreamer class has been
+      removed.
+    + NNCF create_compressed_model() method is now deprecated and
+      removed in 2026. Please use nncf.prune() method for
+      unstructured pruning and nncf.quantize() for INT8
+      quantization.
+    + NNCF optimization methods for TensorFlow models and
+      TensorFlow backend in NNCF are deprecated and removed in
+      2026. It is recommended to use PyTorch analogous models for
+      training-aware optimization methods and OpenVINO? IR,
+      PyTorch, and ONNX models for post-training optimization
+      methods from NNCF.
+    + The following experimental NNCF methods are deprecated and
+      removed: NAS, Structural Pruning, AutoML, Knowledge
+      Distillation, Mixed-Precision Quantization, Movement
+      Sparsity.
+    + CPU plugin now requires support for the AVX2 instruction
+      set as a minimum system requirement. The SSE instruction
+      set will no longer be supported.
+    + OpenVINO migrated builds based on RHEL 8 to RHEL 9.
+    + manylinux2014 upgraded to manylinux_2_28. This aligns with
+      modern toolchain requirements but also means that CentOS 7
+      will no longer be supported due to glibc incompatibility.
+    + MacOS x86 is no longer supported.
+    + APT & YUM Repositories Restructure: Starting with release
+      2025.1, users can switch to the new repository structure for
+      APT and YUM, which no longer uses year-based subdirectories
+      (like 2025). The old (legacy) structure is unavailable
+      starting 2026.0. Detailed instructions are available on the
+      relevant documentation pages:
+      - Installation guide - yum
+      - Installation guide - apt
+    + OpenCV binaries removed from Docker images.
+  * Deprecated and to be removed in the future:
+    + Support for Ubuntu 20.04 has been discontinued due to the
+      end of its standard support.
+    + auto shape and auto batch size (reshaping a model in
+      runtime) will be removed in the future. OpenVINO?s dynamic
+      shape models are recommended instead.
+    + With the release of Node.js v22, updated Node.js bindings
+      are now available and compatible with the latest LTS
+      version. These bindings do not support CentOS 7, as they
+      rely on newer system libraries unavailable on legacy 
+      systems.
+    + Starting with 2026.0 release major internal refactoring of
+      the graph iteration mechanism has been implemented for
+      improved performance and maintainability. The legacy path
+      can be enabled by setting the ONNX_ITERATOR=0 environment
+      variable. This legacy path is deprecated and will be
+      removed in future releases.
+    + OpenVINO Model Server:
+      - The dedicated OpenVINO operator for Kubernetes and
+        OpenShift is now deprecated in favor of the recommended
+        KServe operator. The OpenVINO operator will remain
+        functional in upcoming OpenVINO Model Server releases
+        but will no longer be actively developed. Since KServe
+        provides broader capabilities, no loss of functionality is
+        expected. On the contrary, more functionalities will be
+        accessible and migration between other serving solutions
+        and OpenVINO Model Server will be much easier.
+      - TensorFlow Serving (TFS) API support is planned for
+        deprecation. With increasing adoption of the KServe API
+        for classic models and the OpenAI API for generative
+        workloads, usage of the TFS API has significantly
+        declined. Dropping date is to be determined based on the
+        feedback, with a tentative target of mid-2026.
+      - Support for Stateful models will be deprecated. These
+        capabilities were originally introduced for Kaldi audio
+        models which is no longer relevant. Current audio models
+        support relies on the OpenAI API, and pipelines
+        implemented via OpenVINO GenAI library.
+      - Directed Acyclic Graph Scheduler will be deprecated in
+        favor of pipelines managed by MediaPipe scheduler and
+        will be removed in 2026.3. That approach gives more
+        flexibility, includes wider range of calculators and has
+        support for using processing accelerators.
+
+-------------------------------------------------------------------
 Tue Feb 17 21:41:04 UTC 2026 - malcolmlewis@opensuse.org
 
 - Enable intel gpu option and add associated package.

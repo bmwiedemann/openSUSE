@@ -1,6 +1,7 @@
 #
 # spec file for package openvino
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Alessandro de Oliveira Faria (A.K.A. CABELO) <cabelo@opensuse.org> or <alessandro.faria@owasp.org>
 #
@@ -31,13 +32,13 @@
 %define pythons python3
 %endif
 %define __builder ninja
-%define so_ver 2541
+%define so_ver 2600
 %define shlib lib%{name}%{so_ver}
 %define shlib_c lib%{name}_c%{so_ver}
 %define prj_name OpenVINO
 
 Name:           openvino
-Version:        2025.4.1
+Version:        2026.0.0
 Release:        0
 Summary:        A toolkit for optimizing and deploying AI inference
 # Let's be safe and put all third party licenses here, no matter that we use specific thirdparty libs or not
@@ -284,6 +285,9 @@ This package provides some samples for use with openVINO.
 %autosetup -p1
 
 %build
+%set_build_flags
+export CFLAGS="$CFLAGS -Wno-error=free-nonheap-object"
+export CXXFLAGS="$CXXFLAGS -Wno-error=free-nonheap-object"
 %if %{defined isLeap}
 export CC=gcc-12 CXX=g++-12
 %endif
