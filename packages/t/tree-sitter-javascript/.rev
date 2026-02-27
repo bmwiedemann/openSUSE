@@ -66,4 +66,12 @@
 - Build and package Python bindings</comment>
     <requestid>1327969</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>def31c7eb3c8c3819e7aa7fd310debb0</srcmd5>
+    <version>0.23.1</version>
+    <time>1772208294</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1335332</requestid>
+  </revision>
 </revisionlist>

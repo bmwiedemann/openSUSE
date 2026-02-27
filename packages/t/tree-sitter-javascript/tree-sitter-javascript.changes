@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  9 14:04:26 UTC 2026 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Remove redundant Neovim workaround
+
+-------------------------------------------------------------------
 Fri Jan 16 21:54:49 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Deduplicate files in python_sitearch.
