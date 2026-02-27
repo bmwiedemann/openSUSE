@@ -20,20 +20,21 @@
 %define qt6_version 6.9.0
 
 %define rname libplasma
+%define sover 7
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libplasma6
-Version:        6.6.0
+Version:        6.6.1
 Release:        0
 Summary:        Plasma library and runtime components based upon KF6 and Qt6
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         %{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  doxygen
@@ -86,7 +87,7 @@ BuildRequires:  pkgconfig(xcb-xfixes)
 %description
 Plasma library and runtime components based upon KF6 and Qt6
 
-%package -n libPlasma6
+%package -n libPlasma%{sover}
 Summary:        Plasma 6 core libraries
 Requires:       %{name}-components >= %{version}
 Provides:       qt6qmlimport(org.kde.plasma.configuration)
@@ -94,7 +95,7 @@ Provides:       qt6qmlimport(org.kde.plasma.configuration.2) = 0
 Provides:       qt6qmlimport(org.kde.plasma.plasmoid)
 Provides:       qt6qmlimport(org.kde.plasma.plasmoid.2) = 0
 
-%description -n libPlasma6
+%description -n libPlasma%{sover}
 This package contains the core libraries needed by the Plasma framework.
 
 %package components
@@ -128,7 +129,7 @@ Desktop themes usable by both plasma 5 and plasma 6.
 
 %package devel
 Summary:        Plasma library and runtime components
-Requires:       libPlasma6 = %{version}
+Requires:       libPlasma%{sover} = %{version}
 Requires:       plasma6-framework >= %{version}
 Requires:       plasma6-framework-components = %{version}
 Requires:       cmake(KF6Kirigami) >= %{kf6_version}
@@ -144,17 +145,19 @@ Obsoletes:      plasma6-framework-devel < %{version}
 %description devel
 Plasma library and runtime components based upon KF6 and Qt6
 
+# Should be just %{name}-lang actually
+
 %package -n libPlasma6-lang
 Summary:        Translations for package libPlasma6
-Requires:       libPlasma6 = %{version}
-Provides:       libPlasma6-lang-all = %{version}
+Requires:       libPlasma%{sover} = %{version}
+Provides:       libPlasma%{sover}-lang-all = %{version}
 BuildArch:      noarch
 # Only in KUF before 6.0
 Provides:       plasma6-framework-lang = %{version}
 Obsoletes:      plasma6-framework-lang < %{version}
 
 %description -n libPlasma6-lang
-Provides translations for the "libPlasma6" package.
+Provides translations for the "libPlasma%{sover}" package.
 
 %prep
 %autosetup -p1 -n %{rname}-%{version}
@@ -173,7 +176,7 @@ Provides translations for the "libPlasma6" package.
 
 %find_lang libplasma6
 
-%pre -n libPlasma6
+%pre -n libPlasma%{sover}
 # boo#1221405: When upgrading from plasma5-workspace to plasma6-workspace,
 # preun of the previous package does not know it's actually an upgrade
 # (because the package name differs) and it does systemctl --disable --now
@@ -193,9 +196,9 @@ if [ -x /usr/lib/systemd/systemd-update-helper ] && [ -d /run/systemd/system ] \
   /usr/lib/systemd/systemd-update-helper user-reload || :
 fi
 
-%ldconfig_scriptlets -n libPlasma6
+%ldconfig_scriptlets -n libPlasma%{sover}
 
-%posttrans -n libPlasma6
+%posttrans -n libPlasma%{sover}
 # Remove the temporary dropin files from pre again.
 if [ -e /run/plasma-boo1221405-workaround ]; then
   rm /run/systemd/user/plasma-*.service.d/boo1221405.conf
@@ -211,10 +214,12 @@ fi
 %{_kf6_qmldir}/org/kde/kirigami/
 %{_kf6_qmldir}/org/kde/plasma/
 
-%files -n libPlasma6
+%files -n libPlasma%{sover}
 %license LICENSES/*
 %doc README.md
+%{_kf6_libdir}/libPlasma.so.%{sover}
 %{_kf6_libdir}/libPlasma.so.*
+%{_kf6_libdir}/libPlasmaQuick.so.%{sover}
 %{_kf6_libdir}/libPlasmaQuick.so.*
 
 %files desktoptheme
