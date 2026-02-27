@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Fri Feb 27 06:16:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.0:
+  We're happy to announce Regal v0.39.0, featuring 3 new linter
+  rules, many language server improvements, and much faster
+  linting!
+  * New Rule: use-array-flatten
+    Category: idiomatic
+    The use-array-flatten rule recommends using array.flatten
+    instead of nested array.concatenation (#1873).
+
+    Avoid
+
+      package policy
+      flat1 := array.concat(arr1, array.concat(arr2, arr3))
+      flat2 := array.concat(arr1, array.concat(arr2, array.concat(arr3, arr4)))
+
+    Prefer
+
+      package policy
+      flat1 := array.flatten([arr1, arr2, arr3])
+      flat2 := array.flatten([arr1, arr2, arr3, arr4])
+
+  * New Rule: use-object-union-n
+    Category: idiomatic
+    The use-object-union-n rule recommends using object.union_n
+    over nested calls to object.union (#1873).
+
+    Avoid
+
+      package policy
+      obj := object.union(obj1, object.union(obj2, obj3))
+
+    Prefer
+
+      package policy
+    obj := object.union_n([obj1, obj2, obj3])
+
+  * New Rule: equals-over-count
+    Category: performance
+    The new optional equals-over-count rule suggests using direct
+    equality comparisons rather than count when checking collection
+    membership or emptiness (#1878). This is a micro-optimization
+    and not a general recommendation. Must be manually enabled.
+  * Performance
+    This release brings an approximate 25% reduction in linting
+    time through aggregate remodeling and Rego prepare stage
+    optimizations (#1838). Additional performance work includes
+    Rego refactoring (#1857, #1884), AST transform improvements
+    (#1892), and various micro-optimizations (#1866, #1879).
+  * Language Server Improvements
+    The language server now includes a semantic token framework for
+    improved syntax highlighting (#1845, #1865, #1870), code
+    actions for the constant-condition and
+    redundant-existence-check fixers (#1830).  and an
+    opaTestProvider feature for test discovery (#1888, #1889,
+    #1898),
+    Completion performance is improved with a
+    completionItem/resolve handler (#1831), and server capabilities
+    are now properly exposed and consistent with the clients
+    (#1867, #1880).
+    Note: Semantic token support is feature flagged and will be
+    available in the next release.
+  * Compiler Explorer
+    Regal now supports the VSCode-based OPA Explorer extension,
+    providing a rich GUI to compare compiler stages directly in VS
+    Code (#1862) - thanks @srenatus! A new "Format stages" option
+    has also been added to the compiler explorer (#1854) - thanks
+    @johanfylling!
+  * Experimental: rq Engine Support
+    Initial support for the rq engine has been added (#1872)
+  * Various Improvements
+    - Improved redundant-existence-check rule (#1897, fixes #1805)
+    - Disabled zero-arity-function rule as opa-fmt now covers that
+      (#1885)
+  * Bug Fixes
+    - Fix nil dereference on compiler errors in explorer (#1837)
+    - Fix broken links to fixer page (#1852)
+    - Fix false positive in use-some-for-output-vars (#1886)
+    - Fix broken input.json completion provider (#1891)
+  * Dependency Updates
+    - Regal has been upgraded to use OPA v1.14.0 and Go 1.26.
+  * Documentation
+    - Added mise as an alternative installation method (#1849)
+    - Updated installation documentation (#1861)
+    - Updated note about eval and debug roots (#1894)
+    - Show release badge when using pre-release versions (#1899)
+
+-------------------------------------------------------------------
 Wed Jan 14 07:28:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.38.1:

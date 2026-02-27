@@ -1,7 +1,7 @@
 #
 # spec file for package regal
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           regal
-Version:        0.38.1
+Version:        0.39.0
 Release:        0
 Summary:        Linter and language server for Rego
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  golang(API) >= 1.25
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.26
 
 %description
 Regal is a linter and language server for Rego, making your Rego magnificent,
@@ -51,8 +51,8 @@ Bash command line completion support for %{name}.
 %package -n %{name}-fish-completion
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
-Requires:       fish
 Requires:       %{name} = %{version}
+Requires:       fish
 Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
@@ -62,8 +62,8 @@ Fish command line completion support for %{name}.
 %package -n %{name}-zsh-completion
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
-Requires:       zsh
 Requires:       %{name} = %{version}
+Requires:       zsh
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
