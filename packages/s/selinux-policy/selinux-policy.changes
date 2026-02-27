@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 24 08:52:40 UTC 2026 - Johannes Segitz <jsegitz@suse.com>
+
+- Split out post install relabel logic into postInstallRelabel marco
+  to be reused for the minimum policy (bsc#1258722)
+
+-------------------------------------------------------------------
 Thu Feb 19 12:50:52 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20260219:

@@ -220,12 +220,7 @@ if [ "$1" -ne 1 ] && [ -s %{_sysconfdir}/selinux/config ]; then \
   fi; \
 fi;
 
-%define postInstall() \
-. %{_sysconfdir}/selinux/config; \
-if [ -e %{_sysconfdir}/selinux/%2/.rebuild ]; then \
-  rm %{_sysconfdir}/selinux/%2/.rebuild; \
-  /usr/sbin/semodule -B -n -s %2 2> /dev/null; \
-fi; \
+%define postInstallRelabel() \
 if [ -n "${TRANSACTIONAL_UPDATE}" ]; then \
   touch /etc/selinux/.autorelabel ; \
 else \
@@ -245,9 +240,17 @@ else \
     fi; \
   else \
     # run fixfiles on next boot \
-    touch /.autorelabel ; \
+    touch /etc/selinux/.autorelabel ; \
   fi; \
 fi;
+
+%define postInstall() \
+. %{_sysconfdir}/selinux/config; \
+if [ -e %{_sysconfdir}/selinux/%2/.rebuild ]; then \
+  rm %{_sysconfdir}/selinux/%2/.rebuild; \
+  /usr/sbin/semodule -B -n -s %2 2> /dev/null; \
+fi; \
+%postInstallRelabel %1 %2
 
 %define modulesList() \
 awk '$1 !~ "/^#/" && $2 == "=" && $3 == "module" { printf "%%s ", $1 }' ./policy/modules.conf > %{buildroot}%{_datadir}/selinux/%1/modules.lst \
@@ -594,8 +597,8 @@ else
     rm -f %{_sharedstatedir}/selinux/minimum/active/modules/disabled/"$p"
   done
   %{_sbindir}/semodule -B -s minimum 2> /dev/null
-  %relabel minimum
 fi
+%postInstallRelabel $1 minimum
 exit 0
 
 %postun minimum
