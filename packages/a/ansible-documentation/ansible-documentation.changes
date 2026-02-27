@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 27 07:29:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.20.3:
+  * Add note about get_cache_key in the inventory plugin dev guide
+    (#3468) (#3486)
+  * Bump wntrblm/nox from 2025.11.12 to 2026.02.09 (#3481)
+  * ci: refresh dev dependencies (#3475)
+  * ci: refresh dev dependencies (#3463)
+  * ci: refresh dev dependencies (#3456)
+  * Add the Ansible community 13.3.0 porting guide (#3453) (#3454)
+
+-------------------------------------------------------------------
 Fri Jan 30 08:27:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.20.2:
