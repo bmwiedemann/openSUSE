@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Feb 27 13:44:59 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update to version 2.24.0:
+  * fix: G704 false positive on const URL (#1551)
+  * fix(G705): eliminate false positive for non-HTTP io.Writer (#1550)
+  * G120: avoid false positive when MaxBytesReader is applied in middleware (#1547)
+  * Fix G602 regression coverage for issue #1545 and stabilize G117 TOML test dependency (#1546)
+  * taint: skip `context.Context` arguments during taint propagation to fix false positives (#1543)
+  * test: add missing rules to formatter report tests (#1540)
+  * chore(deps): update all dependencies (#1541)
+  * Regenrate the TLS config rule (#1539)
+  * Improve documentation (#1538)
+  * Expand analyzer-core test coverage for orchestration, go/analysis adapter logic, and taint integration (#1537)
+  * Add unit tests for CLI orchestration, TLS config generation, and SSA cache behavior (#1536)
+  * Add G707 taint analyzer for SMTP command/header injection (#1535)
+  * Add G123 analyzer for tls.VerifyPeerCertificate resumption bypass risk (#1534)
+  * Add G122 SSA analyzer for filepath.Walk/WalkDir symlink TOCTOU race risks (#1532)
+  * fix(G602): avoid false positives for range-over-array indexing (#1531)
+  * Improve taint analyzer performance with shared SSA cache, parallel analyzer execution, and CI regression guard (#1530)
+  * fix: taint analysis false positives with G703,G705 (#1522)
+  * Extend the G117 rule to cover other types of serialization such as yaml/xml/toml (#1529)
+  * Fix the G117 rule to take the JSON serialization into account (#1528)
+  * (docs) fix justification format (#1524)
+  * Add G121 analyzer for unsafe CORS bypass patterns in CrossOriginProtection (#1521)
+  * Add G120 SSA analyzer for unbounded form parsing in HTTP handlers (#1520)
+  * Add G119 analyzer for unsafe redirect header propagation in CheckRedirect callbacks (#1519)
+  * Fix G115 false positives and negatives (Issue #1501) (#1518)
+  * chore(deps): update all dependencies (#1517)
+  * Add G118 SSA analyzer for context propagation failures that can cause goroutine/resource leaks (#1516)
+  * Add G113: Detect HTTP Request Smuggling via conflicting headers (CVE-2025-22891, CWE-444) (#1515)
+  * Add G408: SSH PublicKeyCallback Authentication Bypass Analyzer (#1513)
+  * Add more unit tests to improve coverage (#1512)
+  * Improve test coverage in various areas (#1511)
+  * Imprve the test coverage (#1510)
+  * Fix incorrect detection of fixed iv in G407 (#1509)
+  * Add support for go 1.26.x and removed support for go 1.24.x (#1508)
+  * Fix the sonar report to follow the latest schema (#1507)
+  * fix: broken taint analysis causing false positives (#1506)
+  * fix: panic on float constants in overflow analyzer (#1505)
+  * fix: panic when scanning multi-module repos from root (#1504)
+  * fix: G602 false positive for array element access (#1499)
+  * Update gosec to version v2.23.0 in the Github action (#1496)
+
+-------------------------------------------------------------------
 Mon Feb 23 08:19:44 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.23.0:

@@ -4,7 +4,7 @@
     <param name="filename">gosec</param>
     <param name="url">https://github.com/securego/gosec.git</param>
     <param name="scm">git</param>
-	<param name="revision">v2.23.0</param>
+	<param name="revision">v2.24.0</param>
 	<param name="match-tag">v*</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
