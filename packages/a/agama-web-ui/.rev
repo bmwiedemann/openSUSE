@@ -630,4 +630,33 @@
   templates (related to jsc#PED-14307).</comment>
     <requestid>1330410</requestid>
   </revision>
+  <revision rev="36" vrev="36">
+    <srcmd5>127e784758c9b435bea3f8d3a682cb3b</srcmd5>
+    <version>0</version>
+    <time>1772208130</time>
+    <user>anag_factory</user>
+    <comment>- Fix the language change (gh#agama-project/agama#3197).
+
+- Do not crash when a system was registered without a code (bsc#1258450).
+
+- Log the data sent to the backend when the request fails
+  (related to bsc#1256069)
+
+- Change the label of the button for extra storage options (related
+  to gh#agama-project/agama#3092 and bsc#1258089).
+
+- Use the new URL of the password strenght check (gh#agama-project/agama#3159).
+
+- Notify users when installation fails (bsc#1257753).
+
+- Restore the interface for managing iSCSI in the web client
+  (gh#agama-project/agama#3092).
+- Restore the &quot;Rescan devices&quot; storage option (bsc#1258089).
+
+- Honor the language from the backend (gh#agama-project/agama#3142).
+
+- Show translated product mode name and description
+  (gh#agama-project/agama#3144)</comment>
+    <requestid>1334916</requestid>
+  </revision>
 </revisionlist>
