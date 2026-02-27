@@ -203,4 +203,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * Update firmware for NPU PHX, STX and STX HALO</comment>
     <requestid>1330134</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>de5c415ec0ac4d3314170cb82309bb28</srcmd5>
+    <version>20260225</version>
+    <time>1772208219</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260225 (git commit fb7d64e497d1):
+  * amdnpu: Restore old NPU firmware for compatibility</comment>
+    <requestid>1335283</requestid>
+  </revision>
 </revisionlist>

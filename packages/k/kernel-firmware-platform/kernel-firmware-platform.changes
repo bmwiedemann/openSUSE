@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 26 12:36:37 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260225 (git commit fb7d64e497d1):
+  * amdnpu: Restore old NPU firmware for compatibility
+
+-------------------------------------------------------------------
 Wed Jan 28 08:25:47 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260128 (git commit 2e5a8b0550ba):
