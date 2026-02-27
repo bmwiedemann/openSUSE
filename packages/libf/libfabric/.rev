@@ -807,4 +807,13 @@ Binary file libfabric-1.6.0.0.0e74cba7ad59.tar.bz2 (revision 11) deleted</commen
     - Update rocr test fine grained flags</comment>
     <requestid>1325460</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>554703ffea1649afea9590271a7cfd9f</srcmd5>
+    <version>2.4.0</version>
+    <time>1772208234</time>
+    <user>anag_factory</user>
+    <comment>- Add Revert-prov-verbs-Add-peer-mem-support-for-Broadcom-Devices.patch to
+  fix kernel oops when running on Broadcom NIC (bsc#1258723)</comment>
+    <requestid>1335364</requestid>
+  </revision>
 </revisionlist>

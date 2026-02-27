@@ -1,0 +1,27 @@
+commit 53b2ee136f2903c49ec09e914abc586689f3d45a
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Thu Feb 26 22:40:00 2026 +0100
+
+    Revert "prov/verbs: Add peer mem support for Broadcom Devices"
+    
+    This reverts commit d0f4f2defbd19e4ac42fc60bae6bc14f13e4612a.
+
+diff --git prov/verbs/src/verbs_info.c prov/verbs/src/verbs_info.c
+index dacfe591bd71..e4a115862ee2 100644
+--- prov/verbs/src/verbs_info.c
++++ prov/verbs/src/verbs_info.c
+@@ -780,12 +780,10 @@ static bool vrb_hmem_supported(const char *dev_name)
+ 	if (ofi_hmem_p2p_disabled())
+ 		return false;
+ 
+-	if (vrb_gl_data.peer_mem_support && (strstr(dev_name, "mlx") ||
+-					     strstr(dev_name, "bnxt_re")))
++	if (vrb_gl_data.peer_mem_support && strstr(dev_name, "mlx"))
+ 		return true;
+ 
+-	if (vrb_gl_data.dmabuf_support && (strstr(dev_name, "mlx") ||
+-					   strstr(dev_name, "bnxt_re")))
++	if (vrb_gl_data.dmabuf_support && strstr(dev_name, "mlx5"))
+ 		return true;
+ 
+ 	return false;

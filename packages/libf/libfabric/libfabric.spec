@@ -39,6 +39,7 @@ Source:         %{name}-%{version}%{git_ver}.tar.bz2
 Source1:        baselibs.conf
 Source100:      README.md
 Patch0:         libfabric-libtool.patch
+Patch1:         Revert-prov-verbs-Add-peer-mem-support-for-Broadcom-Devices.patch
 URL:            http://www.github.com/ofiwg/libfabric
 BuildRequires:  autoconf
 BuildRequires:  automake

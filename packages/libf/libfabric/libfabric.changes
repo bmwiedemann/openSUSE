@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 26 21:40:54 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add Revert-prov-verbs-Add-peer-mem-support-for-Broadcom-Devices.patch to
+  fix kernel oops when running on Broadcom NIC (bsc#1258723)
+
+-------------------------------------------------------------------
 Fri Jan 02 13:41:31 UTC 2026 - Nicolas Morey <nmorey@suse.com>
 
 - Update to v2.4.0
