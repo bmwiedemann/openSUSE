@@ -1,0 +1,172 @@
+From 22ab1ff2e66657a3e447e773651f59a99247be38 Mon Sep 17 00:00:00 2001
+From: nathanneike <nathanneike@outlook.de>
+Date: Tue, 20 Jan 2026 10:24:03 +0100
+Subject: [PATCH 2/8] Add emd2_lazy function and fix SciPy sparse matrix
+ compatibility
+
+---
+ ot/__init__.py            |   2 +
+ ot/gromov/_estimators.py  |  25 ++--
+ ot/lp/__init__.py         |   3 +-
+ ot/lp/_network_simplex.py | 255 +++++++++++++++++++++++++++++---------
+ ot/solvers.py             |  10 +-
+ test/test_solvers.py      |  54 ++++----
+ 6 files changed, 246 insertions(+), 103 deletions(-)
+
+diff --git a/ot/gromov/_estimators.py b/ot/gromov/_estimators.py
+index 14871bfe3..18359afe5 100644
+--- a/ot/gromov/_estimators.py
++++ b/ot/gromov/_estimators.py
+@@ -122,8 +122,8 @@ def GW_distance_estimation(
+ 
+     for i in range(nb_samples_p):
+         if nx.issparse(T):
+-            T_indexi = nx.reshape(nx.todense(T[index_i[i], :]), (-1,))
+-            T_indexj = nx.reshape(nx.todense(T[index_j[i], :]), (-1,))
++            T_indexi = nx.reshape(nx.todense(T[[index_i[i]], :]), (-1,))
++            T_indexj = nx.reshape(nx.todense(T[[index_j[i]], :]), (-1,))
+         else:
+             T_indexi = T[index_i[i], :]
+             T_indexj = T[index_j[i], :]
+@@ -243,16 +243,18 @@ def pointwise_gromov_wasserstein(
+     index = np.zeros(2, dtype=int)
+ 
+     # Initialize with default marginal
+-    index[0] = generator.choice(len_p, size=1, p=nx.to_numpy(p))
+-    index[1] = generator.choice(len_q, size=1, p=nx.to_numpy(q))
++    index[0] = int(generator.choice(len_p, size=1, p=nx.to_numpy(p)).item())
++    index[1] = int(generator.choice(len_q, size=1, p=nx.to_numpy(q)).item())
+     T = nx.tocsr(emd_1d(C1[index[0]], C2[index[1]], a=p, b=q, dense=False))
+ 
+     best_gw_dist_estimated = np.inf
+     for cpt in range(max_iter):
+-        index[0] = generator.choice(len_p, size=1, p=nx.to_numpy(p))
+-        T_index0 = nx.reshape(nx.todense(T[index[0], :]), (-1,))
+-        index[1] = generator.choice(
+-            len_q, size=1, p=nx.to_numpy(T_index0 / nx.sum(T_index0))
++        index[0] = int(generator.choice(len_p, size=1, p=nx.to_numpy(p)).item())
++        T_index0 = nx.reshape(nx.todense(T[[index[0]], :]), (-1,))
++        index[1] = int(
++            generator.choice(
++                len_q, size=1, p=nx.to_numpy(T_index0 / nx.sum(T_index0))
++            ).item()
+         )
+ 
+         if alpha == 1:
+@@ -404,10 +406,15 @@ def sampled_gromov_wasserstein(
+         )
+         Lik = 0
+         for i, index0_i in enumerate(index0):
++            T_row = (
++                nx.reshape(nx.todense(T[[index0_i], :]), (-1,))
++                if nx.issparse(T)
++                else T[index0_i, :]
++            )
+             index1 = generator.choice(
+                 len_q,
+                 size=nb_samples_grad_q,
+-                p=nx.to_numpy(T[index0_i, :] / nx.sum(T[index0_i, :])),
++                p=nx.to_numpy(T_row / nx.sum(T_row)),
+                 replace=False,
+             )
+             # If the matrices C are not symmetric, the gradient has 2 terms, thus the term is chosen randomly.
+From 3a67a4f08ecc62cedae1be37da1ca6c0c135c5d5 Mon Sep 17 00:00:00 2001
+From: nathanneike <nathanneike@outlook.de>
+Date: Tue, 20 Jan 2026 10:47:42 +0100
+Subject: [PATCH 3/8] small fix errors not appearing locally
+
+---
+ ot/regpath.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/ot/regpath.py b/ot/regpath.py
+index e64ca7c77..aedc35b88 100644
+--- a/ot/regpath.py
++++ b/ot/regpath.py
+@@ -486,6 +486,9 @@ def complement_schur(M_current, b, d, id_pop):
+         else:
+             X = M_current.dot(b)
+             s = d - b.T.dot(X)
++            # Ensure s is a scalar (extract from array if needed)
++            if np.ndim(s) > 0:
++                s = s.item()
+             M = np.zeros((n, n))
+             M[:-1, :-1] = M_current + X.dot(X.T) / s
+             X_ravel = X.ravel()
+
+From cd610707dda74be3e0d8be883bac19cdfef84435 Mon Sep 17 00:00:00 2001
+From: nathanneike <nathanneike@outlook.de>
+Date: Tue, 20 Jan 2026 10:58:50 +0100
+Subject: [PATCH 4/8] Fix SciPy version compatibility for distance metrics
+
+---
+ ot/utils.py        |  4 +++-
+ test/test_utils.py | 25 ++++++++++++++++++++++++-
+ 2 files changed, 27 insertions(+), 2 deletions(-)
+
+diff --git a/ot/utils.py b/ot/utils.py
+index cc9de4f02..64bf1ace9 100644
+--- a/ot/utils.py
++++ b/ot/utils.py
+@@ -429,7 +429,9 @@ def dist(
+         else:
+             if isinstance(metric, str) and metric.endswith("minkowski"):
+                 return cdist(x1, x2, metric=metric, p=p, w=w)
+-            if w is not None:
++            # Only pass w parameter for metrics that support it
++            # According to SciPy docs, only 'minkowski' and 'wminkowski' support w
++            if w is not None and metric in ["minkowski", "wminkowski"]:
+                 return cdist(x1, x2, metric=metric, w=w)
+             return cdist(x1, x2, metric=metric)
+ 
+diff --git a/test/test_utils.py b/test/test_utils.py
+index 0b2769109..8c5e65b93 100644
+--- a/test/test_utils.py
++++ b/test/test_utils.py
+@@ -19,7 +19,7 @@
+     "correlation",
+ ]
+ 
+-lst_all_metrics = lst_metrics + [
++lst_all_metrics_candidates = lst_metrics + [
+     "braycurtis",
+     "canberra",
+     "chebyshev",
+@@ -34,6 +34,18 @@
+     "yule",
+ ]
+ 
++# Filter to only include metrics available in current SciPy version
++# (some metrics like sokalmichener were removed in newer SciPy versions)
++lst_all_metrics = []
++for metric in lst_all_metrics_candidates:
++    try:
++        scipy.spatial.distance.cdist(
++            np.array([[0, 0]]), np.array([[1, 1]]), metric=metric
++        )
++        lst_all_metrics.append(metric)
++    except ValueError:
++        pass
++
+ 
+ def get_LazyTensor(nx):
+     n1 = 100
+@@ -240,7 +252,18 @@ def test_dist():
+         "seuclidean",
+     ]  # do not support weights depending on scipy's version
+ 
++    # Filter out metrics not available in current scipy version
++    from scipy.spatial.distance import cdist
++
++    available_metrics_w = []
+     for metric in metrics_w:
++        try:
++            cdist(x[:2], x[:2], metric=metric)
++            available_metrics_w.append(metric)
++        except ValueError:
++            pass
++
++    for metric in available_metrics_w:
+         print(metric)
+         ot.dist(x, x, metric=metric, p=3, w=rng.random((2,)))
+         ot.dist(

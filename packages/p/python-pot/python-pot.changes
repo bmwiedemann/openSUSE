@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Fri Feb 27 04:05:23 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Initial release of  0.9.6.post1.
+- Add patch fix-scipy-version-compatibility.patch:
+  * Fix compatibility issues with the new version of scipy.

@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7fffa854cf4e1b2b67b2b1331b225279</srcmd5>
+    <version>0.9.6.post1</version>
+    <time>1772208633</time>
+    <user>anag_factory</user>
+    <comment>- Initial release of  0.9.6.post1.
+- Add patch fix-scipy-version-compatibility.patch:
+  * Fix compatibility issues with the new version of scipy.</comment>
+    <requestid>1335360</requestid>
+  </revision>
+</revisionlist>
