@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Feb 27 07:33:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.19.7:
+  https://github.com/ansible/ansible/blob/v2.19.7/changelogs/CHANGELOG-v2.19.rst
+  * Minor Changes
+    - ansible-test - Update URL used to download FreeBSD wheels for
+      managed remotes.
+    - ansible-test - Use the new API endpoint for the Ansible Core
+      CI service.
+  * Bugfixes
+    - Fix up the Action plugin '_make_tmp_path' error to only
+      include the command run rather than the shell's dataclass
+      repr from mkdtemp.
+    - local connection - Pass correct type to become plugins when
+      checking password (#86458)
+
+-------------------------------------------------------------------
 Fri Jan 30 08:22:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.19.6:

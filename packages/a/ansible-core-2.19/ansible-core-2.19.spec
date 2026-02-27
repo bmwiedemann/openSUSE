@@ -43,7 +43,7 @@
 %endif
 
 Name:           ansible-core-2.19
-Version:        2.19.6
+Version:        2.19.7
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
