@@ -1,2 +1,4 @@
 addFilter("W: no-%check-section")
 addFilter(".*[WE]:.*filelist-forbidden-fhs23.*/var/mail.*")
+addFilter("W: zero-perms-ghost")
+addFilter("W: binary-or-shlib-calls-gethostbyname")

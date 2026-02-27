@@ -54,14 +54,14 @@
 %endif
 %bcond_without ldap
 Name:           postfix-bdb
-Version:        3.10.7
+Version:        3.10.8
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        EPL-2.0 OR IPL-1.0
 Group:          Productivity/Networking/Email/Servers
-URL:            http://www.postfix.org
-Source0:        https://de.postfix.org/ftpmirror/official/postfix-%{version}.tar.gz
-Source1:        https://de.postfix.org/ftpmirror/official/postfix-%{version}.tar.gz.gpg2#/postfix-%{version}.tar.gz.asc
+URL:            https://www.postfix.org/
+Source0:        http://ftp.porcupine.org/mirrors/postfix-release/official/postfix-%{version}.tar.gz
+Source1:        http://ftp.porcupine.org/mirrors/postfix-release/official/postfix-%{version}.tar.gz.gpg2#/postfix-%{version}.tar.gz.asc
 Source2:        postfix-SUSE.tar.gz
 Source3:        postfix-mysql.tar.bz2
 #Source4:        http://cdn.postfix.johnriley.me/mirrors/postfix-release/wietse.pgp#/postfix.keyring
@@ -70,6 +70,7 @@ Source10:       postfix-rpmlintrc
 Source11:       check_mail_queue
 Source12:       postfix-user.conf
 Source13:       postfix-vmail-user.conf
+Source14:       tmpfiles.conf
 Patch1:         postfix-no-md5.patch
 Patch2:         pointer_to_literals.patch
 Patch3:         ipv6_disabled.patch
@@ -335,11 +336,11 @@ do
 done
 # ---------------------------------------------------------------------------
 install -m 755 %{SOURCE11} %{buildroot}%{_sbindir}/
-%if 0%{?suse_version} >= 1330
 mkdir -p %{buildroot}%{_sysusersdir}
+mkdir -p %{buildroot}%{_tmpfilesdir}/
 install -m 644 %{SOURCE12} %{buildroot}%{_sysusersdir}/
 install -m 644 %{SOURCE13} %{buildroot}%{_sysusersdir}/
-%endif
+install -m 644 %{SOURCE14} %{buildroot}%{_tmpfilesdir}/postfix.conf
 
 #Clean up for postfix-bdb
 rm -rf %{buildroot}/usr/lib/debug/usr/lib/postfix/postfix-ldap.so-3.5.8-2.11.1.x86_64.debug
@@ -385,18 +386,17 @@ fi
 # ---------------------------------------------------------------------------
 
 %post
+%tmpfiles_create %{_tmpfilesdir}/postfix.conf
 %service_add_post postfix.service
 /sbin/ldconfig
 %set_permissions %{_sbindir}/postdrop
 %set_permissions %{_sbindir}/postlog
 %set_permissions %{_sbindir}/postqueue
-%set_permissions /var/spool/mail/
 
 %verifyscript
-%verify_permissions %{_sbindir}/postdrop
-%verify_permissions %{_sbindir}/postlog
-%verify_permissions %{_sbindir}/postqueue
-%verify_permissions -e /var/spool/mail/
+%verify_permissions -e %{_sbindir}/postdrop
+%verify_permissions -e %{_sbindir}/postlog
+%verify_permissions -e %{_sbindir}/postqueue
 
 %postun
 %service_del_postun postfix.service
@@ -435,6 +435,8 @@ fi
 %dir %{pf_shlib_directory}/systemd
 %attr(0755,root,root) %{pf_shlib_directory}/systemd/*
 %{_unitdir}/postfix.service
+%{_tmpfilesdir}/postfix.conf
+%{_sysusersdir}/postfix-user.conf
 %{_bindir}/mailq
 %{_bindir}/newaliases
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postdrop
@@ -478,24 +480,10 @@ fi
 %exclude %{_mandir}/man5/mysql_table.5*
 %exclude %{_mandir}/man5/pgsql_table.5*
 %{_mandir}/man?/*%{?ext_man}
-%dir %attr(0755,root,root) /%{pf_queue_directory}
-%dir %attr(0755,root,root) /%{pf_queue_directory}/pid
-%dir %attr(0700,postfix,root) /%{pf_queue_directory}/active
-%dir %attr(0700,postfix,root) /%{pf_queue_directory}/bounce
-%dir %attr(0700,postfix,root) /%{pf_queue_directory}/corrupt
-%dir %attr(0700,postfix,root) /%{pf_queue_directory}/defer
-%dir %attr(0700,postfix,root) /%{pf_queue_directory}/deferred
-%dir %attr(0700,postfix,root) /%{pf_queue_directory}/flush
-%dir %attr(0700,postfix,root) /%{pf_queue_directory}/hold
-%dir %attr(0700,postfix,root) /%{pf_queue_directory}/incoming
-%dir %attr(0700,postfix,root) /%{pf_queue_directory}/private
-%dir %attr(0700,postfix,root) /%{pf_queue_directory}/saved
-%dir %attr(0700,postfix,root) /%{pf_queue_directory}/trace
-%dir %attr(0730,postfix,maildrop) /%{pf_queue_directory}/maildrop
-%dir %attr(0710,postfix,maildrop) /%{pf_queue_directory}/public
-%if 0%{?suse_version} >= 1330
-%{_sysusersdir}/postfix-user.conf
-%endif
+%ghost /var/lib/postfix
+%ghost /var/spool/postfix
+%ghost /var/mail
+%ghost %dir /var/spool/mail
 
 %if %{with lmdb}
 %files lmdb

@@ -2639,4 +2639,41 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment>Still not usable - now https://bugzilla.opensuse.org/show_bug.cgi?id=1258160; back to a working state</comment>
     <requestid>1332823</requestid>
   </revision>
+  <revision rev="267" vrev="1">
+    <srcmd5>4dd69f80fb30313abf73e2e2c4e3c538</srcmd5>
+    <version>3.10.8</version>
+    <time>1772208204</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.10.8
+  * Improved Milter error handling for messages that arrive over a
+    long-lived SMTP connection, by changing the default
+    milter_default_action from &quot;tempfail&quot; to the new &quot;shutdown&quot;
+    action (i.e. disconnect the remote SMTP client).
+  * Bugfix (defect introduced: Postfix 2.11): &quot;posttls-finger -v
+    -v -v&quot; terminated with a panic, caused by recursive logging.
+
+- (bsc#1258068) postfix main.cf.rpmnew now contains hash instead of lmdb
+  Adapt main.cf in %install
+- (bsc#1258264) /var/spool/mail no longer 1777
+- (bsc#1258160) [QE][Build 20260212] postfix fails to deliver email
+   Provide missed directory and symlink as tmpfile
+- (bsc#1257523) [QE][Build 20260129] postfix: missing tmpfiles
+   configuration for /var/spool/postfix/trace
+
+- (bsc#1257199) [SELinux] postalias denied - fatal: open database /etc/aliases.lmdb: Permission denied
+  Add proposed ExecStartPre.
+- (jsc#PED-14859) Fix packages for Immutable Mode - postfix
+  Pack /var/spool/postfix/* /var/lib/postfix using tmpfiles.d
+
+- update to 3.10.8
+  * Improved Milter error handling for messages that arrive over a
+    long-lived SMTP connection, by changing the default
+    milter_default_action from &quot;tempfail&quot; to the new &quot;shutdown&quot;
+    action (i.e. disconnect the remote SMTP client).
+  * Bugfix (defect introduced: Postfix 2.11): &quot;posttls-finger -v
+    -v -v&quot; terminated with a panic, caused by recursive logging.
+
+- (bsc#1258068) postfix main.cf.rpmnew now contains hash instead of lmdb</comment>
+    <requestid>1335249</requestid>
+  </revision>
 </revisionlist>

@@ -33,7 +33,6 @@
 %define pf_html_directory    %{_docdir}/%{name}-doc/html
 %define pf_sample_directory  %{_docdir}/%{name}-doc/samples
 %define pf_data_directory    %{_localstatedir}/lib/%{name}
-%define pf_database_convert  %{_rundir}/%{name}-needs-convert
 %define mail_group           mail
 %define unitdir %{_prefix}/lib/systemd
 %if 0%{?suse_version} < 1599
@@ -43,14 +42,14 @@
 %endif
 %bcond_without ldap
 Name:           postfix
-Version:        3.10.7
+Version:        3.10.8
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        EPL-2.0 OR IPL-1.0
 Group:          Productivity/Networking/Email/Servers
-URL:            http://www.postfix.org
-Source0:        https://de.postfix.org/ftpmirror/official/postfix-%{version}.tar.gz
-Source1:        https://de.postfix.org/ftpmirror/official/postfix-%{version}.tar.gz.gpg2#/postfix-%{version}.tar.gz.asc
+URL:            https://www.postfix.org/
+Source0:        http://ftp.porcupine.org/mirrors/postfix-release/official/postfix-%{version}.tar.gz
+Source1:        http://ftp.porcupine.org/mirrors/postfix-release/official/postfix-%{version}.tar.gz.gpg2#/postfix-%{version}.tar.gz.asc
 Source2:        %{name}-SUSE.tar.gz
 Source3:        %{name}-mysql.tar.bz2
 Source4:        postfix.keyring
@@ -58,6 +57,7 @@ Source10:       postfix-rpmlintrc
 Source11:       check_mail_queue
 Source12:       postfix-user.conf
 Source13:       postfix-vmail-user.conf
+Source14:       tmpfiles.conf
 Patch1:         %{name}-no-md5.patch
 Patch2:         pointer_to_literals.patch
 Patch3:         ipv6_disabled.patch
@@ -293,8 +293,6 @@ mkdir -p %{buildroot}%{_includedir}/%{name}
     install -pm 0644 %{name}-SUSE/smtp %{buildroot}%{_sysconfdir}/pam.d/smtp
 %endif
 mkdir -p %{buildroot}/%{pf_queue_directory}
-mkdir -p %{buildroot}/var/spool/mail
-ln -s spool/mail %{buildroot}/var/mail
 mkdir -p %{buildroot}%{_sysconfdir}/sasl2
 install -pm 0600 %{name}-SUSE/smtpd.conf %{buildroot}%{_sysconfdir}/sasl2/smtpd.conf
 %{buildroot}%{_sbindir}/postconf -c %{buildroot}%{_sysconfdir}/%{name} \
@@ -372,11 +370,14 @@ sed -i -e '/ldap/d' %{buildroot}%{pf_meta_directory}/dynamicmaps.cf
 
 install -m 755 %{SOURCE11} %{buildroot}%{_sbindir}/
 mkdir -p %{buildroot}%{_sysusersdir}
+mkdir -p %{buildroot}%{_tmpfilesdir}/
 install -m 644 %{SOURCE12} %{buildroot}%{_sysusersdir}/
 install -m 644 %{SOURCE13} %{buildroot}%{_sysusersdir}/
-
+install -m 644 %{SOURCE14} %{buildroot}%{_tmpfilesdir}/postfix.conf
 # posttls-finger is built but not installed
 install -m 755 bin/posttls-finger %{buildroot}%{_sbindir}/
+
+sed -i 's/hash:/lmdb:/g' %{buildroot}%{_sysconfdir}/%{name}/main.cf
 # ---------------------------------------------------------------------------
 
 %pre -f postfix.pre
@@ -386,15 +387,16 @@ install -m 755 bin/posttls-finger %{buildroot}%{_sbindir}/
 %service_del_preun %{name}.service
 
 %post
+%tmpfiles_create %{_tmpfilesdir}/postfix.conf
 %service_add_post %{name}.service
 %set_permissions %{_sbindir}/postdrop
 %set_permissions %{_sbindir}/postlog
 %set_permissions %{_sbindir}/postqueue
 
 %verifyscript
-%verify_permissions %{_sbindir}/postdrop
-%verify_permissions %{_sbindir}/postlog
-%verify_permissions %{_sbindir}/postqueue
+%verify_permissions -e %{_sbindir}/postdrop
+%verify_permissions -e %{_sbindir}/postlog
+%verify_permissions -e %{_sbindir}/postqueue
 
 %postun
 %service_del_postun %{name}.service
@@ -439,6 +441,8 @@ install -m 755 bin/posttls-finger %{buildroot}%{_sbindir}/
 %attr(0755,root,root) %{pf_systemd_directory}/*
 %{_unitdir}/%{name}.service
 %{_unitdir}/mail-transfer-agent.target.wants
+%{_tmpfilesdir}/postfix.conf
+%{_sysusersdir}/postfix-user.conf
 %{_bindir}/mailq
 %{_bindir}/newaliases
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postdrop
@@ -481,27 +485,12 @@ install -m 755 bin/posttls-finger %{buildroot}%{_sbindir}/
 %{pf_daemon_directory}/*
 %dir %{pf_meta_directory}/dynamicmaps.cf.d
 %dir %{pf_meta_directory}/postfix-files.d
+%ghost /var/lib/postfix
+%ghost /var/spool/postfix
+%ghost /var/mail
+%ghost %dir /var/spool/mail
 
-%dir %attr(0700,%{name},root) %{pf_data_directory}
 %{_mandir}/man?/*%{?ext_man}
-%dir %attr(0755,root,root) /%{pf_queue_directory}
-%dir %attr(0755,root,root) /%{pf_queue_directory}/pid
-%dir %attr(0700,%{name},root) /%{pf_queue_directory}/active
-%dir %attr(0700,%{name},root) /%{pf_queue_directory}/bounce
-%dir %attr(0700,%{name},root) /%{pf_queue_directory}/corrupt
-%dir %attr(0700,%{name},root) /%{pf_queue_directory}/defer
-%dir %attr(0700,%{name},root) /%{pf_queue_directory}/deferred
-%dir %attr(0700,%{name},root) /%{pf_queue_directory}/flush
-%dir %attr(0700,%{name},root) /%{pf_queue_directory}/hold
-%dir %attr(0700,%{name},root) /%{pf_queue_directory}/incoming
-%dir %attr(0700,%{name},root) /%{pf_queue_directory}/private
-%dir %attr(0700,%{name},root) /%{pf_queue_directory}/saved
-%dir %attr(0700,%{name},root) /%{pf_queue_directory}/trace
-%dir %attr(0730,%{name},maildrop) /%{pf_queue_directory}/maildrop
-%dir %attr(0710,%{name},maildrop) /%{pf_queue_directory}/public
-%{_sysusersdir}/postfix-user.conf
-/var/mail
-/var/spool/mail
 
 %files devel
 %{_includedir}/%{name}/

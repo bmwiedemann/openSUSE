@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Feb 24 20:29:28 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 3.10.8
+  * Improved Milter error handling for messages that arrive over a
+    long-lived SMTP connection, by changing the default
+    milter_default_action from "tempfail" to the new "shutdown"
+    action (i.e. disconnect the remote SMTP client).
+  * Bugfix (defect introduced: Postfix 2.11): "posttls-finger -v
+    -v -v" terminated with a panic, caused by recursive logging.
+
+-------------------------------------------------------------------
+Mon Feb 16 20:38:07 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- (bsc#1258068) postfix main.cf.rpmnew now contains hash instead of lmdb
+  Adapt main.cf in %install
+- (bsc#1258264) /var/spool/mail no longer 1777
+- (bsc#1258160) [QE][Build 20260212] postfix fails to deliver email
+   Provide missed directory and symlink as tmpfile
+- (bsc#1257523) [QE][Build 20260129] postfix: missing tmpfiles
+   configuration for /var/spool/postfix/trace
+
+-------------------------------------------------------------------
+Wed Jan 28 02:01:50 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- (bsc#1257199) [SELinux] postalias denied - fatal: open database /etc/aliases.lmdb: Permission denied
+  Add proposed ExecStartPre.
+- (jsc#PED-14859) Fix packages for Immutable Mode - postfix
+  Pack /var/spool/postfix/* /var/lib/postfix using tmpfiles.d
+
+-------------------------------------------------------------------
 Thu Jan 22 10:59:46 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Do not strip binaries at all
