@@ -238,4 +238,17 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: Add Dell ISH firmware for Intel panther lake systems</comment>
     <requestid>1330132</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>933515f22183f1ae78ca05bd513f559f</srcmd5>
+    <version>20260225</version>
+    <time>1772208213</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260225 (git commit fb7d64e497d1):
+  * linux-firmware:Renaming the file back for HP EliteBook X Flip G1i
+  * linux-firmware:Renaming the file back for HP EliteBook X Flip G1i
+
+- Update to version 20260221 (git commit 1db833e68de8):
+  * lenovo: remove obsolete ish_lnlm_53c4ffad_2a17559f.bin firmware</comment>
+    <requestid>1335280</requestid>
+  </revision>
 </revisionlist>
