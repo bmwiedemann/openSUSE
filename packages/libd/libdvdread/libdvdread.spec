@@ -1,7 +1,7 @@
 #
 # spec file for package libdvdread
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,16 @@
 
 %define sover   8
 Name:           libdvdread
-Version:        6.1.3
+Version:        7.0.1
 Release:        0
 Summary:        Library for Reading DVD Video Images
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Other
 URL:            https://www.videolan.org/developers/libdvdnav.html
-Source0:        https://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2
-Source1:        https://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2.asc
+Source0:        https://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.xz
+Source1:        https://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openssl)
 
@@ -40,7 +37,6 @@ package does not contain DeCSS algorithms).
 
 %package -n libdvdread%{sover}
 Summary:        Library for Reading DVD Video Images
-Group:          Productivity/Multimedia/Other
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} <= 0.9.7
 
@@ -50,7 +46,6 @@ package does not contain DeCSS algorithms).
 
 %package devel
 Summary:        Development Environment for libdvdread
-Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libdvdread%{sover} = %{version}
 
@@ -62,17 +57,11 @@ libdvdread.
 %autosetup
 
 %build
-autoreconf -fiv
-%configure \
-  --disable-silent-rules \
-  --disable-static
-%make_build
+%meson -Dlibdvdcss=disabled -Ddefault_library=shared
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
-# We install the files on our own, using %%doc
-rm -rf %{buildroot}%{_datadir}/doc/libdvdread/
+%meson_install --tags runtime,devel
 
 %post   -n libdvdread%{sover} -p /sbin/ldconfig
 %postun -n libdvdread%{sover} -p /sbin/ldconfig

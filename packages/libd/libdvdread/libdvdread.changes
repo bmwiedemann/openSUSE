@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Feb 24 16:02:33 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update VideoLAN signing keys
+- Update to 7.0.1:
+  * Fix crashes when dvdcss library is not present
+- Update to 7.0.0:
+  * DVD-Audio support:
+    + Introduced DVDOpenStreamAudio, DVDOpenAudio for opening
+      DVD-Audio discs
+    + Added DVD-Audio IFO structs for AMGI, SAMG and ATS
+    + Added IFO read, print functions for AMGI, SAMG and ATS
+    + Added dvdcpxm integration from libdvdcss 1.5.0 for encrypted
+      DVD-A Discs
+  * Switch build system to Meson
+    (and remove autotools build system)
+  * Use visibility attributes for exported symbols
+  * Docs and Readme updates
+  * Add missing stream callback functionality
+  * Misc improvements and solidification for the port on various
+    platforms
+
+-------------------------------------------------------------------
 Sun May 29 19:08:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.3:
