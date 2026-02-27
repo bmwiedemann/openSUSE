@@ -287,4 +287,12 @@
     <comment>Plasma 6.6.0 maybe final tars. K:F already publish disabled (forwarded request 1333048 from Vogtinator)</comment>
     <requestid>1333060</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>292a72164bb1672be535264944f235dc</srcmd5>
+    <version>6.6.1</version>
+    <time>1772207943</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.6.1, not fully built yet. Biggest change is sover bump in libplasma6. (forwarded request 1334876 from Vogtinator)</comment>
+    <requestid>1334933</requestid>
+  </revision>
 </revisionlist>
