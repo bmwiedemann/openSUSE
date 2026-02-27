@@ -1322,4 +1322,12 @@
     <comment>Support Immutable Mode (jsc#PED-14907 and jsc#PED-14906)</comment>
     <requestid>1327567</requestid>
   </revision>
+  <revision rev="111" vrev="114">
+    <srcmd5>a1b03f8d9668cfd7dd92abcb027af4c2</srcmd5>
+    <version>unknown</version>
+    <time>1772208097</time>
+    <user>anag_factory</user>
+    <comment>- Make texlive build even if on SLFO:Main with older %suse_version</comment>
+    <requestid>1335293</requestid>
+  </revision>
 </revisionlist>

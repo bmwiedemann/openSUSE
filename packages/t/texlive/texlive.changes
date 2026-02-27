@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 26 13:53:00 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Make texlive build even if on SLFO:Main with older %suse_version
+
+-------------------------------------------------------------------
 Fri Jan 16 08:08:15 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Support Immutable Mode (jsc#PED-14907 and jsc#PED-14906) 

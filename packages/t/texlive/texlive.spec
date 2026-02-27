@@ -19,7 +19,7 @@
 %define texlive_version  2025
 %define texlive_previous 2022
 %define texlive_release  20250308
-%define texlive_noarch   221
+%define texlive_noarch   222
 %define texlive_source   texlive-20250308-source
 %define biber_version    2.20
 
@@ -126,7 +126,6 @@ BuildRequires:  freetype2-devel
 BuildRequires:  gc-devel
 BuildRequires:  gcc-c++
 %if 0%{?suse_version} <= 1500
-BuildRequires:  Mesa-libglapi-devel
 BuildRequires:  gcc13-c++
 BuildRequires:  python311
 BuildRequires:  python311-base
@@ -178,7 +177,8 @@ BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(libcurl)
-%if 0%{?suse_version} < 1699
+%if 0%{?suse_version} < 1699 && 0%{?is_opensuse}
+BuildRequires:  Mesa-libglapi-devel
 BuildRequires:  pkgconfig(osmesa)
 %endif
 #BuildRequires:  pkgconfig(glm)
@@ -4694,6 +4694,8 @@ popd
 		INPUT(%{_libdir}/libOSMesa.so AS_NEEDED(-lglapi))
 		EOF
 	fi
+	OLDLDLIBPATH=${LD_LIBRARY_PATH}
+	LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${PWD}
 	PATH=$prefix/bin:$PATH			\
 	TEXMFLOCAL=%{_texmfmaindir}		\
 	TEXMFCNF=$texmfcnf			\
@@ -4727,6 +4729,8 @@ popd
 	install -m 0755 asy		${prefix}/bin/
 	install -m 0755 GUI/xasy.py	${prefix}/texmf/asymptote/GUI
 	ln -sf ../texmf/asymptote/GUI/xasy.py ${prefix}/bin/xasy
+	LD_LIBRARY_PATH=${OLDLDLIBPATH}
+	unset OLDLDLIBPATH
     popd
 
     # compile public
