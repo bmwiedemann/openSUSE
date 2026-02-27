@@ -584,4 +584,30 @@
   (related to jsc#PED-14307).</comment>
     <requestid>1331729</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>b7c1ad7065ea9eb04c431b6e143d41ff</srcmd5>
+    <version>19.pre.devel1670.99418d6d9</version>
+    <time>1772208132</time>
+    <user>anag_factory</user>
+    <comment>- Add support for updateNvram bootloader key (jsc#PED-14224)
+- Add support for AutoYaST key bootloader-&gt;update_nvram conversion
+
+- Avoid automatic deactivation of unlisted DASD devices
+  (gh#agama-project/agama#3181).
+
+- Calculate bootloader after calling to probe or activate storage
+  (related to bsc#1258134).
+
+- Fix clearing bootloader cache to ensure that proper storage
+  configuration is used (bsc#1258134)
+
+- Fix reading the startup mode in iSCSI
+  (gh#agama-project/agama#3161).
+
+- Split storage writting config and final unmount action
+  (bsc#1257791)
+
+- Fix JSON of DASD format summary (gh#agama-project/agama#3128).</comment>
+    <requestid>1334918</requestid>
+  </revision>
 </revisionlist>
