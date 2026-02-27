@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 24 13:51:11 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update man-db-2.7.1-zio.dif
+  * Use fdzopen as well to make libzio used overall 
+
+-------------------------------------------------------------------
 Fri Jan  9 10:55:38 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Do not masked out the already existing %ghost file entry

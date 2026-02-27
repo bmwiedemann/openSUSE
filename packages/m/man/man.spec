@@ -68,7 +68,7 @@ BuildRequires:  groff
 BuildRequires:  less
 BuildRequires:  libalternatives-devel
 BuildRequires:  libpipeline-devel >= 1.5.0
-BuildRequires:  libzio-devel
+BuildRequires:  libzio-devel >= 1.12
 BuildRequires:  lzip
 BuildRequires:  man-pages
 BuildRequires:  pkgconfig

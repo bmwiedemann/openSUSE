@@ -1157,4 +1157,13 @@
   (Accordingly to Packaging for Immutable Mode - Best Practices)</comment>
     <requestid>1326322</requestid>
   </revision>
+  <revision rev="109" vrev="4">
+    <srcmd5>9d91dc79346b0ece1ac983d4e5c65f34</srcmd5>
+    <version>2.13.1</version>
+    <time>1772208139</time>
+    <user>anag_factory</user>
+    <comment>- Update man-db-2.7.1-zio.dif
+  * Use fdzopen as well to make libzio used overall</comment>
+    <requestid>1334927</requestid>
+  </revision>
 </revisionlist>
