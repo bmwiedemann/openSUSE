@@ -3645,8 +3645,6 @@ unsorted:
   - eksctl-bash-completion 
   - eksctl-fish-completion 
   - eksctl-zsh-completion 
-  - element-desktop 
-  - element-web 
   - elementary-xfce-icon-theme 
   - elftoaout 
   - elfutils-debuginfod 
@@ -14057,6 +14055,8 @@ unsorted:
   - libigdgmm12 
   - libigfxcmrt-devel 
   - libigfxcmrt7 
+  - libigloo-devel 
+  - libigloo0 
   - libiio 
   - libiio-daemon 
   - libiio-devel 
@@ -14714,6 +14714,7 @@ unsorted:
   - libmission-control-plugins0 
   - libmjpegutils-2_2-0-32bit 
   - libmjpegutils-devel 
+  - libmlag_pb0 
   - libmlt++-7-7 
   - libmlt-7-7 
   - libmlt-devel 
@@ -26738,6 +26739,7 @@ unsorted:
   - python311-pyarrow-devel 
   - python311-pyasynchat 
   - python311-pyasyncore 
+  - python311-pyavm 
   - python311-pybars3 
   - python311-pybcj 
   - python311-pybeam 
@@ -27440,6 +27442,7 @@ unsorted:
   - python311-sklearn-pandas 
   - python311-skyfield 
   - python311-slack-sdk 
+  - python311-slicerator 
   - python311-slimit 
   - python311-slixmpp 
   - python311-sly 
@@ -30629,6 +30632,7 @@ unsorted:
   - python312-pyasn1-modules 
   - python312-pyasynchat 
   - python312-pyasyncore 
+  - python312-pyavm 
   - python312-pybars3 
   - python312-pybcj 
   - python312-pybeam 
@@ -31346,6 +31350,7 @@ unsorted:
   - python312-sklearn-pandas 
   - python312-skyfield 
   - python312-slack-sdk 
+  - python312-slicerator 
   - python312-slimit 
   - python312-slixmpp 
   - python312-sly 
@@ -34508,6 +34513,7 @@ unsorted:
   - python313-pyarrow-devel 
   - python313-pyasynchat 
   - python313-pyasyncore 
+  - python313-pyavm 
   - python313-pybars3 
   - python313-pybcj 
   - python313-pybeam 
@@ -35206,6 +35212,7 @@ unsorted:
   - python313-sklearn-pandas 
   - python313-skyfield 
   - python313-slack-sdk 
+  - python313-slicerator 
   - python313-slimit 
   - python313-slixmpp 
   - python313-sly 
