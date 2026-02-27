@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 11 12:04:04 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.11.2
+  * Fix tile dimension in low memory rendering pipeline
+  * Fix number of channels for gray-to-gray color transform
+    [CVE-2026-1837]
+  * djxl: reject decoding JXL files if "packed" representation size
+    overflows size_t
+
+-------------------------------------------------------------------
 Wed Jan 22 17:29:34 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Remove the gimp plugin. It is for 2.10, and factory now has gimp

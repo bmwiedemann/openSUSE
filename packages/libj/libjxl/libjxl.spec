@@ -1,7 +1,7 @@
 #
-# spec file for package libjxl-gtk
+# spec file for package libjxl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Name:           libjxl-gtk
 Name:           libjxl
 %bcond_with gtk
 %endif
-Version:        0.11.1
+Version:        0.11.2
 Release:        0
 Summary:        JPEG XL reference implementation
 License:        BSD-3-Clause
@@ -32,7 +32,10 @@ URL:            https://jpegxl.info/
 #Git-Clone:     https://github.com/libjxl/libjxl
 Source:         https://github.com/libjxl/libjxl/archive/refs/tags/v%version.tar.gz
 Source1:        baselibs.conf
-Source2:        skcms.tar
+# `git ls-tree <jxl_tag> third_party/skcms` gives the SKCMS revision needed for a particular libjxl release
+%define skcms_commit b2e692629c1fb19342517d7fb61f1cf83d075492
+#changes-too-damn-often: https://skia.googlesource.com/skcms/+archive/%skcms_commit.tar.gz
+Source2:        %skcms_commit.tar.gz
 Patch1:         system-jpeg.diff
 BuildRequires:  asciidoc
 BuildRequires:  c++_compiler
@@ -111,8 +114,10 @@ This package provides a thumbnailer to render for JPEG XL file thumbnails,
 for example, on file-browsers.
 
 %prep
-%autosetup -n libjxl-%version -a2 -p1
-mv skcms third_party/
+%autosetup -n libjxl-%version -p1
+# can't use %%autosetup -a2 because archive has no leading path
+mkdir -p third_party/skcms/
+tar -xf %{SOURCE2} -C third_party/skcms/
 
 %build
 %if 0%{?sle_version} == 150700
