@@ -563,4 +563,41 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: DMCUB updates for various ASICs</comment>
     <requestid>1333329</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>07e4ddb10a31c8fe3270654910ceeded</srcmd5>
+    <version>20260225</version>
+    <time>1772208211</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260225 (git commit fb7d64e497d1):
+  * amdgpu: update PSP 13.0.14 firmware
+  * amdgpu: update GC 9.4.4 firmware
+  * amdgpu: update PSP 13.0.5 firmware
+  * amdgpu: update GC 10.3.6 firmware
+  * amdgpu: update PSP 13.0.0 kicker firmware
+  * amdgpu: update VCN 4.0.0 firmware
+  * amdgpu: update PSP 13.0.0 firmware
+  * amdgpu: update GC 11.0.0 firmware
+  * amdgpu: update SDMA 6.1.3 firmware
+  * amdgpu: update PSP 14.0.5 firmware
+  * amdgpu: update GC 11.5.3 firmware
+  * amdgpu: update beige goby firmware
+  * amdgpu: update SDMA 6.1.2 firmware
+  * amdgpu: update PSP 14.0.4 firmware
+  * amdgpu: update GC 11.5.2 firmware
+  * amdgpu: update dimgrey cavefish firmware
+  * amdgpu: update vangogh firmware
+  * amdgpu: update navy flounder firmware
+  * amdgpu: update PSP 13.0.11 firmware
+  * amdgpu: update GC 11.0.4 firmware
+  * amdgpu: update VCN 4.0.2 firmware
+  * amdgpu: update SDMA 6.0.1 firmware
+  * amdgpu: update PSP 13.0.4 firmware
+  * amdgpu: update GC 11.0.1 firmware
+  * amdgpu: update sienna cichlid firmware
+  * amdgpu: update navi14 firmware
+  * amdgpu: update green sardine firmware
+  * amdgpu: update VCN 4.0.6 firmware
+  * amdgpu: update SDMA 6.1.1 firmware</comment>
+    <requestid>1335279</requestid>
+  </revision>
 </revisionlist>
