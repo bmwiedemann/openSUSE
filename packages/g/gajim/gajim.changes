@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Feb 26 17:51:38 UTC 2026 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.4.4:
+  * Display images in link previews.
+  * Generate Open Graph link previews.
+  * Main: Remove Gajim icon.
+  * Reduce usage of small font size.
+  * Client: Better determine if remote host is reachable.
+  * Preferences: Improve performance for users with many accounts.
+  * ChangePassword: Use Gtk.PasswordEntry.
+  * Preferences: Remove password entry.
+  * Raise nbxmpp to 7.1.0.
+  * Settings: Use correct fractional digits for spin settings.
+  * Main: Bring window to front when application is triggered via
+    link.
+  * SecurityLabels: Hide dropdown correctly if not supported.
+  * ConversationView: Degrade gracefully on unexpected state when
+    retrieving avatar.
+  * Preferences: Disable password change row when account is
+    disconnected.
+  * Groupchat: Show correct nickname in private messages.
+  * Workspace sidebar: Fix drag highlight styling.
+  * Preview: Set drag hotspot to upper left corner for better UX.
+  * OpenGraphPreview: Fix memory leak.
+  * CreateGroupchatWindow: Fix Gtk.Entry leak.
+  * WorkspaceDialog: Fix a memory leak.
+  * Shortcuts: Always accept window shortcuts.
+  * Settings: Allow to scale font correctly.
+
+-------------------------------------------------------------------
 Mon Feb 16 19:34:40 UTC 2026 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.4.2:
