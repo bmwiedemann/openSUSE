@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Feb 23 17:36:22 UTC 2026 - trenn@suse.com
+
+- Remove mainlined patch:
+D swig-4.3.patch
+- Update to version 1.6rc1.2+git.92d657b:
+  * ChangeLog: Add license clarifications
+  * ftdipp: Add wrapper for ftdi_set_module_detach_mode()
+  * Set version number to 1.6rc1
+  * Prepare changelog for 1.6rc1
+  * Increase copyright year to 2026
+  * Update AUTHORS with contributors since v1.5
+  * COPYING.LIB: Update to LGPL v2.1
+  * LICENSE: Clarify the main ftdi lib is LGPL v2.1 only
+  * LICENSE: Clarify ftdi_eeprom is GPL v2 only
+  * Replace tabs in fall-through comments
+  * Modernize Boost detection for CMake 3.30+
+  * python/CMakeLists.txt: rework Python development files detection
+  * ftdi_eeprom: fix static build
+  * Ignore JetBrains IDE files
+  * CMake: auto-format all CMake files
+  * cmake: fix building static lib on windows/msvc
+  * msvc: quiet uninteresting warnings
+  * fix unit var warning if ftdi_read_eeprom_location returned error, data would not be initialized
+  * cmake: fix elseif statement
+  * msvc: fix shadowed variable warning
+  * msvc: fix warnings by using all enum values in case statements
+  * Add SHAREDLIBS option
+  * Ignore VSCode temp folder
+  * python/CMakeLists.txt: rework policy CMP0078
+  * C++ wrapper: get rid of the Boost dependency
+  * .editorconfig: fix insert_final_newline option
+  * Ignore clangd specific files
+  * examples/async.c: remove unused includes
+  * examples/async.c: fix sometimes-uninitialized warning
+  * CMakeLists.txt: remove CMAKE_COLOR_MAKEFILE assignment
+  * CMakeLists.txt: ignore out-of-source build folder
+  * CMakeLists.txt: enable CMAKE_EXPORT_COMPILE_COMMANDS by default
+  * CMakeLists.txt: bump CMake version to 3.15
+  * python: update for SWIG 4.3
+  * CMakeLists.txt: remove obsolete policies
+
+-------------------------------------------------------------------
 Wed Nov  6 09:58:53 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Fix for SWIG 4.3.0, add patch swig-4.3.patch
