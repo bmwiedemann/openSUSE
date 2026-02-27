@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Feb 24 17:22:34 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.1
+- Changes since 6.6.0:
+  * Update version for new release 6.6.1
+  * applets/systemtray: reset currentIndex when searching (kde#515863)
+  * applets/digital-clock: localize clock digits (kde#485915)
+  * Logout: hardcode black background color (kde#516266)
+  * runners/baloo: Construct KRunner::Action correctly
+  * wallpapers/image: Fix "open containing folder" in slideshow (kde#515551)
+  * applets/kicker: Guard against bad downcasts of AbstractEntry to AppEntry
+  * components/Clock: use Curve Rendering for labels to preserve quality (kde#516314)
+  * kcms/nighttime: Increase spacing between path chart and mode combobox
+  * applets/notifications: Handle that default action in history is added by view
+  * applets/notifications: Explicitly set implicitHeight on FooterLoader
+  * kcms/users: Re-enable add user button after creation (kde#516070)
+  * applets/mediacontroller: Fix labels getting elided too early when between spacers (kde#501166)
+  * ksplash: Set explicit layer surface screen
+  * logout-greeter: Set explicit layer surface screen
+  * plasma-windowed: Set desktop file name
+  * shell: Set explicit layer shell screen
+  * shell: Restore setPosition() in PanelView (kde#516185)
+  * klipper/updateclipboardjob: Avoid needless encoding if possible
+  * Actually translate "Configure..." button
+  * applets/systemtray: Fix menu button always showing after opening volume control (kde#516135)
+  * krunner: Guard for empty activity string which implies a loading state
+  * systemtraytest: reduce flakiness by waiting for a result
+  * JobIconItem: Trigger openAction, if available, instead of openUrl
+  * BasicAppletContainer: fix blur borders (kde#516086)
+  * Suppress QML property shadow warnings in tests
+
+-------------------------------------------------------------------
 Thu Feb 12 19:43:51 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.0:
