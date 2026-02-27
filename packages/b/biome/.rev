@@ -201,4 +201,14 @@
   * feat(lint): add nursery rule noUselessReturn</comment>
     <requestid>1333145</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c758c811c8bb7aae941d739643d73645</srcmd5>
+    <version>2.4.4</version>
+    <time>1772208624</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.4:
+  * see CHANGELOG.md for changes across 159 commits and 5k+ files
+- add CHANGELOG.md to rpm</comment>
+    <requestid>1335348</requestid>
+  </revision>
 </revisionlist>
