@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 24 17:19:58 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.1
+- Changes since 6.6.0:
+  * Update version for new release 6.6.1
+  * Fix SQL syntax error: Replace .tables with valid SQL query (kde#513761)
+
+-------------------------------------------------------------------
 Thu Feb 12 19:42:43 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.0:
