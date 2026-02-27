@@ -899,4 +899,12 @@ outside of Factory
       * shell: add StartTransientUnit as a sudo alternative</comment>
     <requestid>1333523</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>ed5a42227d64dac2fc4e0bbc28d26291</srcmd5>
+    <version>356</version>
+    <time>1772208162</time>
+    <user>anag_factory</user>
+    <comment>- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996</comment>
+    <requestid>1335033</requestid>
+  </revision>
 </revisionlist>

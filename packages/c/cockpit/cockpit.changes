@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 23 13:16:16 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996
+
+-------------------------------------------------------------------
 Wed Feb 11 16:52:06 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>
 
 - Fix esbuild for ppc64le bsc#1257698
