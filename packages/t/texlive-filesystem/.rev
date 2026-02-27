@@ -628,4 +628,13 @@
     <comment>Support Immutable Mode (jsc#PED-14907 and jsc#PED-14906)</comment>
     <requestid>1327569</requestid>
   </revision>
+  <revision rev="63" vrev="66">
+    <srcmd5>c79263f9ec000478d975e4938fdd37f7</srcmd5>
+    <version>unknown</version>
+    <time>1772208082</time>
+    <user>anag_factory</user>
+    <comment>- Avoid permission files and check in case of Immutable Mode
+  (boo#1256841, jsc#PED-14907, and jsc#PED-14906)</comment>
+    <requestid>1335236</requestid>
+  </revision>
 </revisionlist>

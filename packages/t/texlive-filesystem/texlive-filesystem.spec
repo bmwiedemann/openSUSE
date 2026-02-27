@@ -24,7 +24,7 @@
 %define texlive_version  2025
 %define texlive_previous 2022
 %define texlive_release  20250308
-%define texlive_noarch   221
+%define texlive_noarch   222
 %define texlive_source   texlive-20250308-source
 %define biber_version    2.20
 
@@ -99,7 +99,9 @@ Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
+%if ! %{with immutable}
 Requires(verify): permissions
+%endif
 Obsoletes:      tetex <= %{texlive_previous}
 BuildRequires:  cron
 BuildRequires:  ed
@@ -10920,7 +10922,9 @@ EOF
     mkdir -p %{buildroot}%{_fontcache}/source
     mkdir -p %{buildroot}%{_fontcache}/tfm
     mkdir -p %{buildroot}%{_appdefdir}
+%if ! %{with immutable}
     mkdir -p %{buildroot}%{_sysconfdir}/permissions.d
+%endif
     mkdir -p %{buildroot}%{_texmfdistdir}/asymptote
     mkdir -p %{buildroot}%{_texmfdistdir}/asymptote/GUI/configs
     mkdir -p %{buildroot}%{_texmfdistdir}/asymptote/GUI/res/icons
@@ -24480,7 +24484,7 @@ EOF
 	% /tmp/umap-var/web2c/updmap.log
 	EOF
     done
-
+%if ! %{with immutable}
     # the permission files, any change is also required within do.mklists
     # Note: the entry for the public program is set to
     #   %{_libexecdir}/mktex/publici    root:%{texgrp}  2755
@@ -24524,6 +24528,7 @@ EOF
 	%{_fontcache}/source/	   %{texusr}:%{texgrp}	3775
 	%{_fontcache}/tfm/	   %{texusr}:%{texgrp}	3775
 	EOF
+%endif
 
 %if %{with zypper_posttrans}
     sed -r 's@%%\{_texmfdistdir\}@%{_texmfdistdir}@' < %{S:42} > %{buildroot}%{_texmfdistdir}/texconfig/zypper.py
@@ -24568,6 +24573,7 @@ EOF
     rm -vrf %{buildroot}%{_texmfcache}
 %endif
 
+%if ! %{with immutable}
 %if %{defined verify_permissions}
 %verifyscript
 %verify_permissions -e %{_texmfconfdir}/ls-R
@@ -24587,6 +24593,7 @@ EOF
 %verify_permissions -e %{_fontcache}/pk/
 %verify_permissions -e %{_fontcache}/source/
 %verify_permissions -e %{_fontcache}/tfm/
+%endif
 %endif
 
 %pre
@@ -24626,6 +24633,7 @@ do
 	echo '%% ls-R -- filename database for kpathsea; do not change this line.' > \${tmp}
 	mv \${tmp} ${dir}/ls-R" || error=1
 done
+%if ! %{with immutable}
 %if %{defined set_permissions}
 %set_permissions %{_texmfconfdir}/ls-R
 %set_permissions %{_texmfvardir}/
@@ -24644,6 +24652,7 @@ done
 %set_permissions %{_fontcache}/pk/
 %set_permissions %{_fontcache}/source/
 %set_permissions %{_fontcache}/tfm/
+%endif
 %endif
 %if 0%{?suse_version} > 1550
 %service_add_post texlive.timer texlive.service texlive-initial.service
@@ -24679,7 +24688,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %if 0%{?suse_version} <= 1550
 %config %{_sysconfdir}/cron.daily/suse-texlive
 %endif
+%if ! %{with immutable}
 %config %{_sysconfdir}/permissions.d/texlive*
+%endif
 %config %{_sysconfdir}/profile.d/texlive*
 %config %{_sysconfdir}/skel/.dvipsrc
 %{_datadir}/fontconfig/conf.avail/09-texlive*.conf

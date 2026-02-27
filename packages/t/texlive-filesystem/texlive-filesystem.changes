@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 26 09:35:45 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Avoid permission files and check in case of Immutable Mode
+  (boo#1256841, jsc#PED-14907, and jsc#PED-14906)
+
+-------------------------------------------------------------------
 Thu Jan 15 11:39:25 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Support Immutable Mode (jsc#PED-14906)
