@@ -5565,4 +5565,12 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1334526</requestid>
   </revision>
+  <revision rev="530" vrev="1">
+    <srcmd5>2a544a549c6a0efdda6dacdef76431eb</srcmd5>
+    <version>2.9.0+git20260225.5047f88a</version>
+    <time>1772208192</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1335031</requestid>
+  </revision>
 </revisionlist>

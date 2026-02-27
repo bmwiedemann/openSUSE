@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 25 09:52:40 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 2.9.0+git20260225.5047f88a:
+  * dbus-services: update rtkit D-Bus whitelisting (bsc#1258681)
+
+-------------------------------------------------------------------
 Mon Feb 23 14:27:25 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.9.0+git20260223.9c46177b:
