@@ -1,7 +1,7 @@
 #
 # spec file for package ax25-apps
 #
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,12 @@ URL:            https://linux-ax25.in-berlin.de/
 Source:         https://linux-ax25.in-berlin.de/pub/ax25-apps/%{name}-%{src_ver}.tar.xz
 Patch0:         call.c.diff
 Patch1:         add-missing-includes.patch
+# taken from Debian
+Patch2:         termio.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  libax25-devel
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ncursesw)
 
@@ -45,6 +50,8 @@ Net/ROM or ROSE network protocols:
 %autosetup -p1 -n %{name}-%{src_ver}
 
 %build
+# for termio.patch
+autoreconf -fiv
 %configure \
 	--program-transform-name='s@^call$@ax&@;s@^listen$@ax&@' \
 	--docdir=%{_docdir}/%{name} \

@@ -1,0 +1,65 @@
+From: Dave Hibberd <hibby@debian.org>
+Date: Tue, 16 Sep 2025 22:35:26 +0100
+Subject: Migrate ax25ipd to termios from termio
+
+Last-Update: 2025-09-16
+
+Last-Update: 2025-09-16
+---
+ ax25ipd/io.c | 8 ++++----
+ configure.ac | 2 +-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/ax25ipd/io.c b/ax25ipd/io.c
+index c0db51d..96bc9ca 100644
+--- a/ax25ipd/io.c
++++ b/ax25ipd/io.c
+@@ -19,7 +19,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <syslog.h>
+-#include <termio.h>
++#include <termios.h>
+ #include <time.h>
+ #include <unistd.h>
+ #include <arpa/inet.h>
+@@ -32,7 +32,7 @@
+ 
+ #include "ax25ipd.h"
+ 
+-static struct termio nterm;
++static struct termios nterm;
+ 
+ int ttyfd = -1;
+ static int udpsock = -1;
+@@ -339,7 +339,7 @@ void io_open(void)
+ 		set_bpq_dev_call_and_up(ttydevice);
+ 		goto behind_normal_tty;
+ 	}
+-	if (ioctl(ttyfd, TCGETA, &nterm) < 0) {
++	if (tcgetattr(ttyfd, &nterm) < 0) {
+ 		perror("fetching tty device parameters");
+ 		exit(1);
+ 	}
+@@ -476,7 +476,7 @@ void io_open(void)
+ 	nterm.c_cc[VMIN] = 0;
+ 	nterm.c_cc[VTIME] = 0;
+ 
+-	if (ioctl(ttyfd, TCSETA, &nterm) < 0) {
++	if (tcsetattr(ttyfd, TCSADRAIN, &nterm) < 0) {
+ 		perror("setting tty device parameters");
+ 		exit(1);
+ 	}
+diff --git a/configure.ac b/configure.ac
+index 623a8ed..c22f151 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -35,7 +35,7 @@ dnl Checks for header files.
+ AC_HEADER_DIRENT
+ AC_HEADER_STDC
+ AC_HEADER_SYS_WAIT
+-AC_CHECK_HEADERS(fcntl.h sys/file.h sys/ioctl.h sys/time.h syslog.h termio.h unistd.h)
++AC_CHECK_HEADERS(fcntl.h sys/file.h sys/ioctl.h sys/time.h syslog.h termios.h unistd.h)
+ 
+ dnl Checks for typedefs, structures, and compiler characteristics.
+ AC_C_CONST

@@ -7,4 +7,13 @@
     <comment>AX.25 ham radio applications </comment>
     <requestid>1246264</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>63dff447e5a9978f66ad5bdbe9fbf76e</srcmd5>
+    <version>0.0.8~rc5</version>
+    <time>1772208289</time>
+    <user>anag_factory</user>
+    <comment>fix build with glibc 2.42
+</comment>
+    <requestid>1335325</requestid>
+  </revision>
 </revisionlist>
