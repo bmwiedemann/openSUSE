@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Feb 26 18:26:44 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.0.20260226T182644 2026-02-26T18:26:44Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-4259 CVE-2025-13767 GHSA-fmqf-pmcm-8cx9
+  * GO-2025-4260 CVE-2025-64641 GHSA-vww6-79rv-3j4x
+  * GO-2026-4282 CVE-2017-18873 GHSA-x6mw-hf2j-vqpc
+  * GO-2026-4305 CVE-2017-18903 GHSA-fcwg-45jh-5qhf
+  * GO-2026-4325 CVE-2025-14822 GHSA-9r42-rhw3-2222
+  * GO-2026-4326 CVE-2025-14435 GHSA-mx8m-v8qm-xwr8
+  * GO-2026-4332 CVE-2026-23644 GHSA-2657-3c98-63jq
+  * GO-2026-4348 CVE-2026-23991 GHSA-846p-jg2w-w324
+  * GO-2026-4349 CVE-2026-23992 GHSA-fphv-w9fq-2525
+  * GO-2026-4377 CVE-2026-24686 GHSA-jqc5-w2xx-5vq4
+  * GO-2026-4410 CVE-2026-25140 GHSA-f4w5-5xv9-85f6
+  * GO-2026-4502 CVE-2026-25766 GHSA-pgvm-wxw2-hrv9
+  * GO-2026-4534 CVE-2026-25899 GHSA-2mr3-m5q5-wgp6
+  * GO-2026-4535 CVE-2026-27585 GHSA-4xrr-hq4w-6vf4
+  * GO-2026-4536 CVE-2026-27590 GHSA-5r3v-vc8m-m96g
+  * GO-2026-4537 CVE-2026-27589 GHSA-879p-475x-rqh2
+  * GO-2026-4538 CVE-2026-27587 GHSA-g7pc-pc7g-h8jh
+  * GO-2026-4539 CVE-2026-27586 GHSA-hffm-g8v7-wrv7
+  * GO-2026-4540 CVE-2026-25891 GHSA-m3c2-496v-cw3v
+  * GO-2026-4541 CVE-2026-27588 GHSA-x76f-jf84-rqj8
+  * GO-2026-4543 CVE-2026-25882 GHSA-mrq8-rjmw-wpq3
+  * GO-2026-4559 CVE-2026-27141
+
+-------------------------------------------------------------------
 Wed Feb 25 23:07:04 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.0.20260225T230704 2026-02-25T23:07:04Z.
