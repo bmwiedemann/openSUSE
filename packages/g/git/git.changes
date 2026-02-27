@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  9 13:41:24 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- git-daemon: Create /srv/git using systemd-tmpfiles (jsc#PED-14738)
+
+-------------------------------------------------------------------
 Mon Feb  2 19:34:46 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.53.0:

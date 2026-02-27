@@ -61,6 +61,7 @@ Source9:        %{name}-gui.desktop
 Source10:       %{name}-gui.png
 Source11:       git-daemon.conf
 Source12:       git-prompt
+Source13:       tmpfiles-daemon.conf
 Patch3:         completion-wordbreaks.diff
 # CVE-2011-2186, bnc#698456
 Patch4:         git-prevent_xss-default.diff
@@ -386,7 +387,7 @@ install -d -m 755 %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcgit-daemon
 install -d -m 755 %{buildroot}%{_fillupdir}
 install -m 644 %{SOURCE2} %{buildroot}%{_fillupdir}/sysconfig.git-daemon
-install -d -m 755 %{buildroot}/srv/git
+install -D -m 644 %{SOURCE13} %{buildroot}%{_tmpfilesdir}/git-daemon.conf
 %if 0%{?SuSEfirewall2}
 mkdir -p %{buildroot}/%{_fwdefdir}
 install -m 644 %{SOURCE6} %{buildroot}/%{_fwdefdir}/git-daemon
@@ -531,8 +532,9 @@ fi
 %{gitexecdir}/git-daemon
 %{_unitdir}/git-daemon.service
 %{_sbindir}/rcgit-daemon
-%dir /srv/git
+%ghost %dir %attr(0755, git-daemon, git-daemon) /srv/git
 %{_fillupdir}/sysconfig.git-daemon
+%{_tmpfilesdir}/git-daemon.conf
 %{!?_without_docs: %{_mandir}/man1/git-daemon.1*}
 %if 0%{?SuSEfirewall2}
 %config %{_fwdefdir}/*
