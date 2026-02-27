@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-xmltodict
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        Module to make XML working resemble JSON
 License:        MIT

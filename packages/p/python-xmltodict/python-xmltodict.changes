@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 24 19:25:56 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.4
+  Bug Fixes
+  * unparse: add bytes_errors policy and handle bytes scalars
+    consistently (ed70434).
+
+-------------------------------------------------------------------
 Sun Feb 15 09:18:35 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.3
