@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Feb 27 07:16:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.53.0:
+  Large update, please see the full changelog here:
+  https://github.com/perses/perses/releases/tag/v0.53.0
+  * [ENHANCEMENT] Adds --enable-pkce to percli (#3841)
+  * [ENHANCEMENT] add PERSES_CLI env var for plugin dev server
+    (#3435)
+  * [ENHANCEMENT] CLI/LINT: extract plugin archive when provided
+    (#3424)
+  * [ENHANCEMENT] Improve percli migrate command to support default
+    datasource (#3358)
+  * [BUGFIX] percli dac build: fix issue with extra args wrongly
+    processed (#3909)
+  * [BUGFIX] percli respects api_prefix in base URL (#3837)
+  * [BUGFIX] CLI/PLUGIN: Avoid re-building dev server tasks to shut
+    down correctly the start plugin command (#3579)
+  * [BUGFIX] CLI/Migrate: put back flag --input that has been
+    removed (#3471)
+
+-------------------------------------------------------------------
 Thu Sep 18 07:50:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.52.0:
