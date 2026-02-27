@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Tue Feb 17 19:17:58 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 4.5.0
+  * ctrl-l no longer cancels history search (#12436)
+  * History search cursor positioning now works correctly with
+    characters of arbitrary width.
+  * fish no longer reads the terminfo database to alter behaviour
+    based on the TERM environment variable, and does not depend
+    on ncurses or terminfo. The ignore-terminfo feature flag,
+    introduced and enabled by default in fish 4.1, is now
+    permanently enabled. fish may no longer work correctly on
+    Data General Dasher D220 and Wyse WY-350 terminals, but
+    should continue to work on all known terminal emulators
+    released in the 21st century.
+  * fix: Vi mode d,f key binding did not work (#12417)
+  * fix: Vi mode c,w key binding wrongly deleted trailing spaces (#12443)
+  * fix: Vi mode crash on c,i,w after accepting autosuggestion (#12430)
+  * fix: fish_vi_key_bindings called with a mode argument produced an error (#12413)
+  * fix: Build on Illumos (#12410)
+
+-------------------------------------------------------------------
+Fri Feb  6 01:35:25 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 4.4.0
+  * The default fossil prompt has been disabled (#12342)
+  * The bind builtin lists mappings from all modes if --mode is
+    not provided (#12214)
+  * Line-wise autosuggestions that don’t start a command are no
+    longer shown (739b82c, 58e7a50).
+  * Builtin history now assumes that PAGER supports ANSI color sequences.
+  * Vi mode word movements (w, W, e, and E) are now largely in
+    line with Vim. The only exception is that underscores are
+    treated as word separators (#12269)
+  * New special input functions to support these movements:
+    forward-word-vi, kill-word-vi, forward-bigword-vi, kill-
+    bigword-vi, forward-word-end, backward-word-end, forward-
+    bigword-end, backward-bigword-end, kill-a-word, kill-inner-
+    word, kill-a-bigword, and kill-inner-bigword.
+  * Vi mode key bindings now support counts for movement and
+    deletion commands (e.g. d3w or 3l), via a new operator mode (#2192)
+  * New catpuccin-* color themes.
+  * set_color learned the strikethrough (--strikethrough or -s)
+    modifier.
+  * The CMake option WITH_GETTEXT has been renamed to
+    WITH_MESSAGE_LOCALIZATION, to reflect that it toggles
+    localization independently of the backend used in the
+    implementation.
+  * New cargo xtask commands can replace some CMake workflows.
+  * fish now clears the terminal’s FLUSHO flag when acquiring
+    control of the terminal, to fix an issue caused by pressing
+    ctrl-o on macOS (#12304)
+
+-------------------------------------------------------------------
 Mon Feb  2 19:40:45 UTC 2026 - Andreas Prittwitz <m4ng4n@gmx.de>
 
 - Update to version 4.3.3

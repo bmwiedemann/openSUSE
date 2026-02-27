@@ -17,7 +17,7 @@
 
 
 Name:           fish
-Version:        4.3.3
+Version:        4.5.0
 Release:        0
 Summary:        The "friendly interactive shell"
 # see bundled doc_src/license.rst
@@ -25,7 +25,7 @@ License:        BSD-3-Clause AND GPL-2.0-only AND ISC AND LGPL-2.0-or-later AND 
 Group:          System/Shells
 URL:            https://fishshell.com/
 Source:         https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.xz
-Source2:        vendor.tar.zst
+Source2:        vendor.tar.xz
 Source100:      fish.keyring
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  cargo
@@ -34,17 +34,14 @@ BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
 BuildRequires:  groff
-BuildRequires:  ncurses-devel
 BuildRequires:  pcre2-devel >= 10.21
 BuildRequires:  pkgconfig
-BuildRequires:  zstd
 # for tests
 BuildRequires:  procps
 Requires:       awk
 Requires:       bc
 Requires:       gzip
 Requires:       man
-Recommends:     terminfo
 
 %description
 fish is a command line shell.
@@ -78,9 +75,6 @@ find share/tools -type f -name *.py -exec \
 %install
 %cmake_install
 
-# Location varies between TW and SLE/Leap, try both
-rm %{buildroot}%{_datadir}/doc/packages/fish/.buildinfo
-
 %if %{suse_version} >= 1600
 %python3_fix_shebang_path %{buildroot}%{_datadir}/%{name}/tools/*.py
 %endif
@@ -108,7 +102,7 @@ fi
 %{_bindir}/fish
 %{_bindir}/fish_indent
 %{_bindir}/fish_key_reader
-%doc %{_datadir}/doc/packages/%{name}
+%doc %{_docdir}/%{name}
 %{_datadir}/%{name}
 %{_mandir}/man1/*.1%{?ext_man}
 
