@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Feb 26 18:08:33 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1772092969.74a39650:
+  * test: Consider all of `lib/OpenQA/Task/` covered
+  * test: Cover handling developer session when saving needles
+  * test: Cover further error cases when saving needles
+  * fix: Fix error handling when saving needle JSON
+  * test: Workaround limitation of coverage tracking
+  * feat: Improve needle JSON validation
+  * test: Cover all cases of needle JSON validation
+  * fix: Avoid Perl warning when validating needle JSON
+  * refactor: Simplify code in `_delete_needles`
+  * test: Cover handling error when asset directory is not writable
+  * test: Cover skipping screenshot cleanup if still enqueued
+  * feat(openqa-upstreams.inc): set `max_conns` to max connection handled
+  * refactor: optimize and harden aggregate overview badges implementation
+  * refactor: improve aggregate overview badges implementation
+  * test: consolidate SVG badge unit tests
+  * feat: implement test result badges for aggregate overview queries
+
+-------------------------------------------------------------------
 Wed Feb 25 20:08:14 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1772031289.93bc2a13:
