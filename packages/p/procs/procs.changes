@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 27 05:13:13 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.14.11:
+  * [Changed] use actual macos memory usage from libproc pid_rusage.
+  * [Added] Add nvcsw and nivcsw.
+  * [Fixed] Fix double-spaced TTY output caused 
+    by ANSI-unaware trim_end.
+  * [Fixed] Fix panic caused by --only and --tree.
+  * [Fixed] Do not print separators in JSON output. 
+
+-------------------------------------------------------------------
 Fri Mar 28 08:01:40 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.14.10:
