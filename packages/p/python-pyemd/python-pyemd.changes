@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 27 04:20:05 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.0:
+  ## Features
+  * Added POT (Python Optimal Transport) as the default backend.
+  ## Bug Fixes
+  * Fixed emd_samples returning incorrect results with bins='auto' on
+    NumPy 2.1+ when using integer input arrays.
+  ## Deprecations and Removals
+  * Dropped support for Python 3.9-3.11.
+  ## Miscellaneous
+  * Bumped minimum NumPy version from 1.9.0 to 1.15.0.
+- Convert package to noarch, due to POT doing all of the heavy lifting.
+
+-------------------------------------------------------------------
 Fri Nov 15 18:52:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Pin numpy < 2.1: Produces wrong results -- gh#wmayner/pyemd#68
