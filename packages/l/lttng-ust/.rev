@@ -141,4 +141,41 @@
     <comment></comment>
     <requestid>1295193</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7c9dc3cd8bb4e0c43bb1ef0ae05ae480</srcmd5>
+    <version>2.14.0</version>
+    <time>1772208755</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.14.0:
+  * Fix: Sample current `events_discarded` for populating packet
+  * Add `current_events_discarded` callback
+  * Fix: Set events_discarded on terminal packets
+  * Fix: Sample discarded packet counters per sub-buffer
+  * lttng-ust(3): `cpu_id` is now addable with a per-channel policy
+- update to 2.14.0-rc2:
+  * Only compile trace hit counter code with experimental define
+  * Hide experimental counter symbols
+- update to 2.14.0-rc1:
+  * Fix release description
+  * Set the 2.14 release codename and description
+  * doc/man/Makefile.am: make tool output verbose only with `V=1`
+  * lttng-ust(3): remove possessive markers for inanimate objects
+  * lttng-ust(3): &quot;unix&quot; -&gt; &quot;Unix&quot;
+  * lttng-ust(3): sort environment variables by name
+  * lttng-ust(3): `LTTNG_UST_MAP_POPULATE_POLICY`: fix style
+  * lttng-ust(3): simplify &quot;Tracing C/C++ constructors and destructors&quot;
+  * lttng-ust(3): `LTTNG_UST_APP_PATH`: fix style and add more details
+  * Fix: Use UATOMIC_HAS_ATOMIC_{BYTE,SHORT} for counter atomics
+  * Fix: lttng-ust-tp regex warnings
+  * lttng-ust-java: Load lttng-ust-context-jni before other JNI libraries
+  * docs: Update links in CodingStyle
+  * Add .editorconfig
+  * docs: Replace git:// with https://
+  * doc/examples: set minimal CMake version to 3.5.0
+  * Fix: Use size_t type for lttng_ust_ring_buffer_ctx_init largest_align argument
+  * Introduce CONFIG_LTTNG_UST_EXPERIMENTAL_COUNTER
+  * Rename global buffers/counters to per channel
+  * Validate page size negative value</comment>
+    <requestid>1335427</requestid>
+  </revision>
 </revisionlist>

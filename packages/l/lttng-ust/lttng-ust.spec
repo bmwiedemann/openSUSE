@@ -1,7 +1,7 @@
 #
 # spec file for package lttng-ust
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %define sover   1
-%define sover_ctl 5
+%define sover_ctl 6
 Name:           lttng-ust
-Version:        2.13.6
+Version:        2.14.0
 Release:        0
 Summary:        Linux Trace Toolkit Userspace Tracer library
 License:        GPL-2.0-only
@@ -28,6 +28,7 @@ URL:            https://lttng.org/
 Source:         https://lttng.org/files/lttng-ust/lttng-ust-%{version}.tar.bz2
 Source1:        https://lttng.org/files/lttng-ust/lttng-ust-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
+Source3:        baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  libnuma-devel
 BuildRequires:  pkgconfig
