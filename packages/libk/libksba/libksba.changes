@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 24 11:56:51 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.6.8:
+  * Fix double increment in DN parser while counting hexdigits. [T8104]
+  * Fix a memory leak in the BER decoder's error handling. [T8105]
+  * Fix an assertion failure in the OCSP code. [T8111]
+  * Support SHA256 based CertIDs in OCSP. [rK2dd35bef66]
+  * Use nonstring attribute for gcc-15. [T7624]
+  * Update libksba.keyring with upstream signing key.
+
+-------------------------------------------------------------------
 Fri Jul  5 09:14:56 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
 
 - Update to 1.6.7:
