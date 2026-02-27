@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Feb 18 13:54:32 UTC 2026 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.14:
+  * Fix a bug that caused all RT privileges to sometimes be dropped
+    on resume from suspend.
+  * Drop the autotools build system.
+  * Add rtkit_make_realtime_simple() with no arguments.
+  * Drop default log level to reduce log flood.
+  * Rename priority parameter of MakeThreadHighPriority to
+    nice_level (does not change API).
+  * Implement org.freedesktop.DBus.Properties.GetAll.
+  * Add a sysusers config.
+  * Correctly specify the client licence as MIT.
+  * A number of documentation and build cleanups.
+- Add test checks.
+- Drop rtkit-silent-debug-messages-by-default.patch: merged
+  upstream.
+
+-------------------------------------------------------------------
 Wed Jan 22 15:31:12 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks for CODE16 (jsc#PED-266).

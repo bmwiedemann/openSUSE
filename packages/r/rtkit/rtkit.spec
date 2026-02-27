@@ -1,7 +1,7 @@
 #
 # spec file for package rtkit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,19 @@
 
 
 Name:           rtkit
-Version:        0.13
+Version:        0.14
 Release:        0
 Summary:        Realtime Policy and Watchdog Daemon
 # The daemon itself is GPL v3 or later, the reference implementation for
-# the client BSD-3-Clause
-License:        BSD-3-Clause AND GPL-3.0-or-later
+# the client is MIT.
+License:        GPL-3.0-or-later AND MIT
 Group:          System/Base
-URL:            https://github.com/heftig/rtkit
-Source:         https://github.com/heftig/rtkit/releases/download/v%{version}/rtkit-%{version}.tar.xz
+URL:            https://gitlab.freedesktop.org/pipewire/rtkit
+Source:         https://gitlab.freedesktop.org/pipewire/rtkit/-/archive/v%{version}/rtkit-v%{version}.tar.bz2
 Source1:        rtkit.sysusers
 Patch0:         harden_rtkit-daemon.service.patch
-Patch1:         rtkit-silent-debug-messages-by-default.patch
-BuildRequires:  automake
 BuildRequires:  libcap-devel
-BuildRequires:  pkg-config
+BuildRequires:  meson
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  vim
@@ -51,28 +49,28 @@ request. It is intended to be used as a secure mechanism to allow real-time
 scheduling to be used by normal user processes.
 
 %prep
-%autosetup -p1
+%autosetup -n %{name}-v%{version} -p1
 
 %build
 %sysusers_generate_pre %{SOURCE1} rtkit rtkit.conf
-autoreconf -fiv
 export CFLAGS="%{optflags} -fPIE -Wno-format-nonliteral -Wno-format-security"
 export LDFLAGS="-Wl,-z,relro,-z,now -pie"
-%configure \
-  --disable-silent-rules \
-  --with-systemdsystemunitdir=%{_unitdir} \
-  --libexecdir=%{_libexecdir}/rtkit
+%meson \
+  --libexecdir=%{_libexecdir}/rtkit   \
+  -Dsystemd_systemunitdir=%{_unitdir}
 
-make %{?_smp_mflags}
-./rtkit-daemon --introspect > org.freedesktop.RealtimeKit1.xml
+%meson_build
+%{_host}/rtkit-daemon --introspect >org.freedesktop.RealtimeKit1.xml
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%meson_install
 %if 0%{?suse_version} < 1600
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rcrtkit-daemon
 %endif
-install -D -m 0644 org.freedesktop.RealtimeKit1.xml %{buildroot}/%{_datadir}/dbus-1/interfaces/org.freedesktop.RealtimeKit1.xml
-install -Dm0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/rtkit.conf
+install -Dm 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/rtkit.conf
+
+%check
+%meson_test
 
 %preun
 %service_del_preun rtkit-daemon.service
@@ -88,20 +86,15 @@ dbus-send --system --type=method_call --dest=org.freedesktop.DBus / org.freedesk
 %service_del_postun rtkit-daemon.service
 
 %files
-%defattr(0644,root,root,0755)
 %license GPL LICENSE
 %doc README rtkit.c rtkit.h
-%attr(0755,root,root) %{_sbindir}/rtkitctl
-%dir %{_libexecdir}/rtkit
-%dir %{_libexecdir}/rtkit/installed-tests
-%dir %{_libexecdir}/rtkit/installed-tests/rtkit
-%attr(0755,root,root) %{_libexecdir}/rtkit/rtkit-daemon
-%{_libexecdir}/rtkit/installed-tests/rtkit/rtkit-test
+%{_sbindir}/rtkitctl
+%{_libexecdir}/rtkit/
 %{_datadir}/dbus-1/system-services/org.freedesktop.RealtimeKit1.service
 %{_datadir}/dbus-1/interfaces/org.freedesktop.RealtimeKit1.xml
 %{_datadir}/polkit-1/actions/org.freedesktop.RealtimeKit1.policy
 %{_datadir}/dbus-1/system.d/org.freedesktop.RealtimeKit1.conf
-%{_mandir}/man8/rtkitctl.8%{ext_man}
+%{_mandir}/man8/rtkitctl.8%{?ext_man}
 %if 0%{?suse_version} < 1600
 %{_sbindir}/rcrtkit-daemon
 %endif

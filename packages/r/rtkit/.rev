@@ -304,4 +304,12 @@
     <comment>- Drop rcFOO symlinks for CODE16 (jsc#PED-266). (forwarded request 1239782 from dimstar)</comment>
     <requestid>1239798</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>14ae48ee5e09ae4e296e153695839c4e</srcmd5>
+    <version>0.14</version>
+    <time>1772208190</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.14. (forwarded request 1334204 from XRevan86)</comment>
+    <requestid>1334256</requestid>
+  </revision>
 </revisionlist>
