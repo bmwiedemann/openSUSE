@@ -332,4 +332,12 @@ outside of Factory
    * Update update_version.sh</comment>
     <requestid>1333289</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>75d0d8a0bf56d98a3f69dcfdbff960c1</srcmd5>
+    <version>120</version>
+    <time>1772208167</time>
+    <user>anag_factory</user>
+    <comment>- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996</comment>
+    <requestid>1335034</requestid>
+  </revision>
 </revisionlist>
