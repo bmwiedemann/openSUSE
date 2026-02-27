@@ -318,4 +318,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * mediatek MT7921: update bluetooth firmware to 20251223091725</comment>
     <requestid>1333337</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>667a98b811e674c702ea69c96e106981</srcmd5>
+    <version>20260221</version>
+    <time>1772208215</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260221 (git commit 1db833e68de8):
+  * linux-firmware: update firmware for MT7902 BT device
+  * linux-firmware: update firmware for MT7902 WiFi device</comment>
+    <requestid>1335282</requestid>
+  </revision>
 </revisionlist>

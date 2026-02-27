@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 23 12:02:07 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260221 (git commit 1db833e68de8):
+  * linux-firmware: update firmware for MT7902 BT device
+  * linux-firmware: update firmware for MT7902 WiFi device
+
+-------------------------------------------------------------------
 Tue Feb  3 06:32:50 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260203 (git commit ce97e4b1cb87):

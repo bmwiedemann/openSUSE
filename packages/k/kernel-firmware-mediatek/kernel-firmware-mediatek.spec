@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version ce97e4b1cb874c67a132441f9d69a55511a1ded5
+%define git_version 1db833e68de88cd3f7f6612a5552b3e671e36ef0
 
 Name:           kernel-firmware-mediatek
-Version:        20260203
+Version:        20260221
 Release:        0
 Summary:        Kernel firmware files for Mediatek network drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260203.tar.gz#/kernel-firmware-tools-20260203.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260223.tar.gz#/kernel-firmware-tools-20260223.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
