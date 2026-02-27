@@ -1,7 +1,7 @@
 #
 # spec file for package mate-applet-dock
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%global __requires_exclude ^typelib\\(Wnck\\) = 1.0|typelib\\(Gtk\\) = 2.0
 %define _name   mate-dock-applet
 Name:           mate-applet-dock
 Version:        21.10.0

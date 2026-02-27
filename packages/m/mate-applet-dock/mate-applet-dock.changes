@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 25 08:51:52 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Explicitly exclude the auto-detected Wnck=1.0 / Gtk=2.0 typelib
+  dependencies: they are wrapped in the code for when building
+  against gtk2.
+
+-------------------------------------------------------------------
 Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 21.10.0:
