@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 25 10:46:27 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- Update to version 4.17.0+git42.a607c299:
+  * IPaddr2: fix find_interface output
+  * IPsrcaddr: fix grep expression, so it doesnt log "stray \ before white space" with newer versions of grep
+  * podman-etcd: fix learner node attribute not set after etcdctl failure
+  * docker: improve image existence check (#2121)
+  * portblock: check correct binary during validate-all
+  * send_arp.linux/tickle_tcp: better alpine compatibility (#2119)
+  * podman-etcd: enhance etcd data backup with snapshots and retention
+
+-------------------------------------------------------------------
 Mon Jan 26 14:30:47 UTC 2026 - Peter Varkoly <varkoly@suse.com>
 
 - Update to version 4.17.0+git30.b33c378d: (jsc#PED-15014)

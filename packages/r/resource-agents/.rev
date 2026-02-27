@@ -2048,4 +2048,19 @@
   * OCPBUGS-64765: podman-etcd: add -a option to crictl ps (#2112)</comment>
     <requestid>1329342</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>7e3ff09711177d2f37f367390142f47c</srcmd5>
+    <version>4.17.0+git42.a607c299</version>
+    <time>1772208201</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.17.0+git42.a607c299:
+  * IPaddr2: fix find_interface output
+  * IPsrcaddr: fix grep expression, so it doesnt log &quot;stray \ before white space&quot; with newer versions of grep
+  * podman-etcd: fix learner node attribute not set after etcdctl failure
+  * docker: improve image existence check (#2121)
+  * portblock: check correct binary during validate-all
+  * send_arp.linux/tickle_tcp: better alpine compatibility (#2119)
+  * podman-etcd: enhance etcd data backup with snapshots and retention</comment>
+    <requestid>1335169</requestid>
+  </revision>
 </revisionlist>
