@@ -291,4 +291,40 @@
   * fix(core): expand excludeTools with legacy aliases for</comment>
     <requestid>1334352</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>62d1848e3906aab50d57ccaa6ad6680c</srcmd5>
+    <version>0.30.0</version>
+    <time>1772208797</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.30.0:
+  * feat(ux): added text wrapping capabilities to markdown tables
+  * Add autoconfigure memory usage setting to the dialog
+  * fix(core): prevent race condition in policy persistence
+  * fix(evals): prevent false positive in hierarchical memory
+    test
+  * test(evals): mark all `save_memory` evals as `USUALLY_PASSES`
+    due to unreliability
+  * feat(cli): add setting to hide shortcuts hint UI
+  * feat(core): formalize 5-phase sequential planning workflow
+  * Introduce limits for search results.
+  * fix(cli): allow closing debug console after auto-open via
+    flicker
+  * feat(masking): enable tool output masking by default
+  * perf(ui): optimize table rendering by memoizing styled
+    characters
+  * feat: multi-line text answers in ask-user tool
+  * perf(cli): truncate large debug logs and limit message
+    history
+  * fix(core): complete MCP discovery when configured servers are
+    skipped
+  * fix(core): cache CLI version to ensure consistency during
+    sessions
+  * fix(cli): resolve double rendering in shpool and address
+    vscode lint warnings
+  * feat(plan): document and validate Plan Mode policy overrides
+  * Fix pressing any key to exit select mode.
+  * fix(cli): update F12 behavior to only open drawer if browser
+    fails</comment>
+    <requestid>1335451</requestid>
+  </revision>
 </revisionlist>
