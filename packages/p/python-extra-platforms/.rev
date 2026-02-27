@@ -114,4 +114,163 @@ update to 4.1.1</comment>
     <comment></comment>
     <requestid>1327700</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7b371554241b54d7a1082efafc95b81e</srcmd5>
+    <version>9.2.0</version>
+    <time>1772208775</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.2.0:
+  * Add new Terminal trait type for detecting terminal emulators.
+    Closes #459.
+  * Add 20 terminal definitions: ALACRITTY, APPLE_TERMINAL,
+    CONTOUR, FOOT, GHOSTTY, GNOME_TERMINAL, GNU_SCREEN, HYPER,
+    ITERM2, KITTY, KONSOLE, RIO, TABBY, TILIX, TMUX,
+    VSCODE_TERMINAL, WEZTERM, WINDOWS_TERMINAL, XTERM, ZELLIJ.
+  * Add current_terminal() detection function.
+  * Add terminal groups: ALL_TERMINALS, GPU_TERMINALS,
+    MULTIPLEXERS, NATIVE_TERMINALS, WEB_TERMINALS.
+  * Add @skip_&lt;terminal&gt; and @unless_&lt;terminal&gt; pytest decorators
+    for all terminals and terminal groups.
+  * Display all detected traits and groups in extra-platforms CLI.
+  * Fix emoji column alignment in CLI.
+- update to 9.1.0:
+  * Add extra-platforms CLI command.
+  * Skip Nuitka binary builds.
+  * Add new ALPINE, KALI, MANJARO, OPENWRT platform definitions.
+  * Replace filesystem-based shell detection with parent process
+    tree walking via /proc on Linux.
+  * Make is_powershell() detection cross-platform (Linux, macOS,
+    Windows) via PSModulePath environment variable and process tree
+    inspection.
+  * Fix CLI crash on Windows due to cp1252 encoding not supporting
+    Unicode output.
+  * Tweak some icons.
+  * Add issue template with detection results reporting.
+- update to 9.0.0:
+  * Add new Shell trait type for detecting command-line
+    interpreters.
+  * Add 12 shell definitions: ASH, BASH, CMD, CSH, DASH, FISH, KSH,
+    NUSHELL, POWERSHELL, TCSH, XONSH, ZSH.
+  * Add current_shell() detection function.
+  * Add shell groups: ALL_SHELLS, BOURNE_SHELLS, C_SHELLS,
+    OTHER_SHELLS, WINDOWS_SHELLS.
+  * Add @skip_&lt;shell&gt; and @unless_&lt;shell&gt; pytest decorators for all
+    shells and shell groups.
+  * Fix icons conflicts.
+  * Fix crash in compiled binaries (Nuitka, PyInstaller, cx_Freeze)
+    caused by missing source files for docstring extraction.
+  * Force Sphinx documentation builds to use Python &gt;= 3.12 via
+    [tool.uv.dependency-groups].
+  * Remove all deprecated backward-compatibility aliases:
+    - Remove ALL_PLATFORM_IDS (use ALL_TRAIT_IDS).
+    - Remove ALL_PLATFORMS_WITHOUT_CI (use ALL_PLATFORMS).
+    - Remove UNKNOWN_LINUX (use UNKNOWN_PLATFORM).
+    - Remove ANY_ARM, ANY_MIPS, ANY_SPARC, ANY_WINDOWS (use
+      ALL_ARM, ALL_MIPS, ALL_SPARC, ALL_WINDOWS).
+    - Remove OTHER_UNIX (use OTHER_POSIX).
+    - Remove current_os() (use current_platform()).
+    - Remove current_platforms() (use current_traits()).
+    - Remove platforms_from_ids() (use traits_from_ids()).
+    - Remove is_unknown_linux() (use is_unknown_platform()).
+    - Remove is_all_architectures(), is_all_platforms(),
+      is_all_ci(), is_all_traits() (use is_any_architecture(),
+      is_any_platform(), is_any_ci(), is_any_trait()).
+    - Remove is_all_platforms_without_ci() (use is_any_platform()).
+    - Remove is_ci() (use is_any_ci()).
+    - Remove is_other_unix() (use is_other_posix()).
+    - Remove is_bsd_without_macos() (use is_bsd_not_macos()).
+    - Remove is_unix_without_macos() (use is_unix_not_macos()).
+    - Remove Group._extract_members() and
+      Group._extract_platforms() (use extract_members()).
+    - Remove deprecated module shims for extra_platforms.platform
+      and extra_platforms.operations.
+  * Remove '_deprecated.py' module.
+- update to 8.0.0:
+  * Add aliases field to Trait class, allowing alternative IDs that
+    resolve to the canonical ID.
+  * Add aliases for common architecture names:
+    - arm64 → aarch64
+    - amd64 → x86_64
+    - armhf, armv7 → armv7l
+    - i486 → i386
+    - powerpc64le, ppc64el → ppc64le
+  * Emit a UserWarning when an alias is used, encouraging use of
+    the canonical ID.
+  * Change Trait.aliases type from tuple to frozenset for better
+    semantics.
+  * Add new BIG_ENDIAN and LITTLE_ENDIAN groups to classify
+    architectures by endianness, with is_big_endian() and
+    is_little_endian() detection functions.
+  * Remove operations.py and move content to group and group_data
+    modules.
+  * Rename Group._extract_members() to extract_members() and make
+    it public.
+  * Simplify reduce() algorithm from brute-force enumeration to a
+    greedy approximation for better performance.
+  * Move current_*() and is_unknown_*() functions to detection.py
+    module.
+  * Create new platform_info.py module for platform-specific info
+    gathering.
+  * Add claude.md documentation file.
+- update to 7.0.0:
+    - Add new ARMV5TEL architecture.
+    - Add new DRAGONFLY_BSD, HAIKU and ILLUMOS platforms.
+    - Add new ARCH_32_BIT, ARCH_64_BIT and UNKNOWN groups.
+    - Add new detection functions:
+      - is_armv5tel()
+      - is_dragonfly_bsd()
+      - is_haiku()
+      - is_illumos()
+      - is_arch_32_bit()
+      - is_arch_64_bit()
+      - is_unknown()
+    - Fix detection of AARCH64 on Windows ARM runners.
+    - Rename UNKNOWN_LINUX trait to UNKNOWN_PLATFORM.
+    - Remove UNKNOWN_ARCHITECTURE trait from ALL_ARCHITECTURES
+      group.
+    - Remove UNKNOWN_LINUX trait from ALL_PLATFORMS group.
+    - Remove UNKNOWN_CI trait from ALL_CI group.
+    - current_architecture(), current_platform() and current_ci()
+      functions now returns UNKNOWN_ARCHITECTURE, UNKNOWN_PLATFORM
+      and UNKNOWN_CI if detection fails. Add strict mode to raise
+      an exception instead.
+    - Rename groups:
+      - OTHER_UNIX → OTHER_POSIX
+      - ANY_ARM → ALL_ARM
+      - ANY_MIPS → ALL_MIPS
+      - ANY_SPARC → ALL_SPARC
+      - ANY_WINDOWS → ALL_WINDOWS
+    - Rename detection functions:
+      - is_other_unix() → is_other_posix()
+      - is_all_architectures() → is_any_architecture()
+      - is_all_platforms() → is_any_platform()
+      - is_all_ci() → is_any_ci()
+      - is_all_traits() → is_any_trait()
+      - is_unknown_linux() → is_unknown_platform()
+      - is_bsd_without_macos() → is_bsd_not_macos()
+      - is_unix_without_macos() → is_unix_not_macos()
+    - Re-introduce aliases removed in v6.0.0 for backward
+      compatibility:
+      - Group._extract_platforms() → Group._extract_members()
+      - is_all_platforms_without_ci() → is_any_platform()
+      - is_ci() → is_any_ci()
+    - Rename Pytest decorators:
+      - @skip/@unless_unknown_linux →
+        @skip/@unless_unknown_platform
+      - @skip/@unless_bsd_without_macos →
+        @skip/@unless_bsd_not_macos
+      - @skip/@unless_unix_without_macos →
+        @skip/@unless_unix_not_macos
+    - Deprecate renamed symbols and detection functions with
+      aliases.
+    - Pre-compute traits and groups metadata to enforce conventions
+      for data definitions, detection functions, Pytest decorators
+      and document generation.
+    - Mark all canonical groups with the ⬥ symbol everywhere in the
+      documentation.
+    - Cross-link all traits, groups and detection functions in the
+      documentation.
+</comment>
+    <requestid>1335428</requestid>
+  </revision>
 </revisionlist>
