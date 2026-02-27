@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 26 17:45:58 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1772097392.f4e2912:
+  * fix: Update gre_tunnel_preup script to support NetworkManager
+  * build(Makefile): add top-level help target
+  * test: implement conventional commits check with gitlint
+  * fix: Fix wrong uses of "checkout" that should be "check out"
+  * git subrepo pull (merge) --force external/os-autoinst-common
+
+-------------------------------------------------------------------
 Wed Feb 25 00:22:47 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1771958644.63a1790:
