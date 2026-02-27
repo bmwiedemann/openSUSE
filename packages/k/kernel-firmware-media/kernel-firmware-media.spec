@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 9ccffb6087334549bdb115e4b605f7bf8a0dbae4
+%define git_version 599764611a8ac213c6aa6dad17c941c2f46b53cb
 
 Name:           kernel-firmware-media
-Version:        20260207
+Version:        20260221
 Release:        0
 Summary:        Kernel firmware files for various Video4Linux drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware

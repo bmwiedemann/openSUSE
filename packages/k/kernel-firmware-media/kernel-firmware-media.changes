@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 21 08:02:42 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260221 (git commit 599764611a8a):
+  * qcom: vpu: fix SC7280 VPU Gen2 firmware and add compatibility symlink
+
+-------------------------------------------------------------------
 Sat Feb  7 09:39:27 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260207 (git commit 9ccffb608733):

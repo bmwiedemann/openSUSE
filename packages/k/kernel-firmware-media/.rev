@@ -179,4 +179,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: vpu: add video firmware for Glymur</comment>
     <requestid>1333335</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d45956c9b155d41016295e18d773c849</srcmd5>
+    <version>20260221</version>
+    <time>1772208214</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260221 (git commit 599764611a8a):
+  * qcom: vpu: fix SC7280 VPU Gen2 firmware and add compatibility symlink</comment>
+    <requestid>1335281</requestid>
+  </revision>
 </revisionlist>
