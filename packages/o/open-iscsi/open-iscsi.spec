@@ -47,7 +47,7 @@
 %define iscsi_minor_release 1
 %define iscsi_patch_release 11
 %define iscsi_patch_release_suse %{iscsi_patch_release}.suse
-%define iscsi_service_tag 73.1723affc61eb
+%define iscsi_service_tag 85.4ef97a15
 %define libname libopeniscsiusr0
 %define libversion 0.2.0
 Name:           open-iscsi

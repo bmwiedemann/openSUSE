@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 26 18:33:55 UTC 2026 - Lee Duncan <lduncan@suse.com>
+
+- Update to version 2.1.11.suse+85.4ef97a15:
+  * Fix unused variable warning in usr/io.c (#524)
+  * Remove old rpm subdirectory, no longer needed.
+  * Remove old rpm subdirectory, no longer needed.
+  * Add tcp.congestion_control configuration option (#520)
+  * Small cleanups for firmware discovery. (#522)
+  * Fix incorrect parsing of node.discovery_type "static" and "fw" (#518)
+  * iscsi_net_util: avoid copying NULL pointers with strlcpy() (#515)
+  * iscsi: delay reconnect until interface has valid IP. (#511)
+
+-------------------------------------------------------------------
 Sun Jul 13 19:38:41 UTC 2025 - lduncan@suse.com
 
 - Update to version 2.1.11.suse+73.1723affc61eb:
