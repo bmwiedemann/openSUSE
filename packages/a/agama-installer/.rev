@@ -449,4 +449,37 @@
   given through the kernel cmdline (gh#agama-project/agama#3069).</comment>
     <requestid>1332499</requestid>
   </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>846ac1bb907ea0a2e815fb7e7a2f23a2</srcmd5>
+    <version>19.pre.0.0</version>
+    <time>1772208198</time>
+    <user>anag_factory</user>
+    <comment>- Do not use verbose mode in the &quot;image-janitor&quot; calls, logging
+  so many details significantly increases the ISO build time
+  (roughly two times) (gh#agama-project/agama#3206)
+
+- Fixes and improvements in the boot menu for x86_64 and aarch64:
+  - Fixed boot from hard disk in the legacy BIOS mode (x86_64 only)
+  - Added &quot;p&quot; keyboard shortcut to interactively configure the root
+    password for the installer live system
+  - Added support for serial console
+  - Disable plymouth graphical boot when the grub boot menu is
+    switched to text mode with the &quot;t&quot; keyboard shortcut
+- Fixed failed image build because of missing configuration options
+  for the &quot;image-janitor&quot; tool
+  (gh#agama-project/agama#3192)
+
+- Increase medium timeout to 60 seconds (jsc#PED-14986)
+- Unify kernel and initramfs location (jsc#PED-14303)
+- Drop “Boot from Disk” on all archs except legacy x86_64
+  (jsc#PED-13766)
+
+- Fixed failing self-update, the self-update repository is not
+  ready yet. If SCC returns empty response then do not try using
+  the fallback URL and skip the self-update process. (bsc#1258142)
+
+- live: update license.final content with the January 2026 EULA delivery
+  (gh#agama-project/agama#3150)</comment>
+    <requestid>1334915</requestid>
+  </revision>
 </revisionlist>
