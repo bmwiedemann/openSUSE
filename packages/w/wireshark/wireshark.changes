@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 26 08:38:19 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.6.4
+  * CVE-2026-3201: USB HID dissector memory exhaustion (bsc#1258907).
+  * CVE-2026-3202: NTS-KE dissector crash (bsc#1258908).
+  * CVE-2026-3203: RF4CE Profile dissector crash (bsc#1258909).
+- Many more features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.6.4.html
+
+-------------------------------------------------------------------
 Thu Jan 15 08:51:27 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.6.3
@@ -30,7 +40,7 @@ Mon Nov 24 09:39:09 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 -------------------------------------------------------------------
 Wed Oct 15 13:12:46 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
-- Wireshark 4.6.0
+- Wireshark 4.6.0 (jsc#PED-15400)
   * There are new features, bug fixes and updated protocol
     support. For an exhaustive list please refer to:
     https://www.wireshark.org/docs/relnotes/wireshark-4.6.0.html

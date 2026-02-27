@@ -1,0 +1,49 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+wireshark-4.6.4.tar.xz: 50566640 bytes
+SHA256(wireshark-4.6.4.tar.xz)=fbeab3d85c6c8a5763c8d9b7fe20b5c69ca9f9e7f2b824bedc73135bdca332e2
+SHA1(wireshark-4.6.4.tar.xz)=694a28aedceef0061736d13c7fdff0ebddc46e77
+
+Wireshark-4.6.4-arm64.exe: 75661432 bytes
+SHA256(Wireshark-4.6.4-arm64.exe)=62a0d34efb4418fe373b8f56a13457ff488c827d8c7d7f48e3037e52752bee6f
+SHA1(Wireshark-4.6.4-arm64.exe)=ebf0381942f21c816f0098351eed8147236a106d
+
+Wireshark-4.6.4-x64.exe: 96981632 bytes
+SHA256(Wireshark-4.6.4-x64.exe)=102017d8e99a75b57895cd2144e6a61dc335a8ff14c7a25bd83a55f8ea9ad77b
+SHA1(Wireshark-4.6.4-x64.exe)=d759080d59d100e40db2b40a4279b465d13ba1f6
+
+Wireshark-4.6.4-x64.msi: 73871360 bytes
+SHA256(Wireshark-4.6.4-x64.msi)=e233387deeac2693cd9edc73a9a1578338ae211669f01f5dfb99a119a4f5ff9a
+SHA1(Wireshark-4.6.4-x64.msi)=398e3edca8e56a1d03560a6dca418f0ac9d0eddd
+
+WiresharkPortable64_4.6.4.paf.exe: 95895416 bytes
+SHA256(WiresharkPortable64_4.6.4.paf.exe)=2f144183e24d14c3573053b85e304819a5409399383a3f3f6b2feac5e36d1dbb
+SHA1(WiresharkPortable64_4.6.4.paf.exe)=a53bc99a82d0e2518480ff46d5159651178ba562
+
+Wireshark 4.6.4.dmg: 141797826 bytes
+SHA256(Wireshark 4.6.4.dmg)=08150f79cfc5828820f991b6d944c68536db9595b1c3052982bbde79fb2053df
+SHA1(Wireshark 4.6.4.dmg)=ce758a8ff597e3d4340a06bfe286cecea465bc7e
+
+You can validate these hashes using the following commands (among others):
+
+    Windows: powershell Get-FileHash Wireshark-x.y.z-x64.exe -Algorithm SHA256
+    Linux (GNU Coreutils): sha256sum wireshark-x.y.z.tar.xz
+    macOS: shasum -a 256 "Wireshark x.y.z.dmg"
+    Other: openssl sha256 wireshark-x.y.z.tar.xz
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEEWlrbp9vqbD+HIk8ZgiRKeOb+ruoFAmmfXmsACgkQgiRKeOb+
+ruq+JBAA2qBy0xs3H2o59HXCOuncE153TvBVsRVet8F6FBo0LRSADfoJRKFsItmJ
+jQjEukygi8EtmFmKrK4vQ4mT6gtQc8+d0qpJYSf9sFSH1iUrFgAEfoJhdM5bb6Kz
+bdM2NmHRsPVbgYgxbVI+XqclwhxQ0+3MRbsIIr6VImKfoz7LFySig8IpK8jOz1b0
+32/CPkUyfJvXM8SgTbXItLELcUDUqpe1CnAPdmUp1LR7+fGzfPrGlZPiyWQKNEOG
+mzTOrbnuqvNx+VgKSrWZXX00F3S6yOcUTLoX77x+2fAqXItdrgrqiLmBO9i1DiwF
+G2ahiSSjTf2NZunzaBqfEOxKngWSLlv3H+XMP70crwJkebfDKsufExvObCJ6oTkm
+loOIkhpZIeIukK1ativAnNDTL5QcEcVlC09LojKQDcv2ppd7r7ogi31mXA18CMIN
+UQsvZRDFa0gVj3OVKWv1xKNN3HGy/EtfaDCCnqsCWaNSL0QYJ7ugpPV7TV/yFQTv
+NQW75pPqyJGcjOUMWjCGaai3O6YOy0iz4jpgTf8nkTaxqESggWjUCcmhrs9Vcmra
+5pCo88YsAnijmfFEbSz19YAwidQ+aant531WNui4VFqdzZR4fS62Pi7Hq2eBUGoK
+ujLiC/+vbXxVhb+mYrdiIHMyAZbr2GntuJ4++P0uRFkv0QkejCk=
+=jIku
+-----END PGP SIGNATURE-----
