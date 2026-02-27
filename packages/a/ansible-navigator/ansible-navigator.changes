@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 27 07:26:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.1.3:
+  * Fixes
+    - fix: handle missing tag key in images subcommand (#2096)
+      @dmzoneill
+  * Maintenance
+    - chore(deps): update all dependencies (#2097) @renovate[bot]
+    - chore(deps): update all dependencies (#2094) @renovate[bot]
+    - chore(deps): update all dependencies (#2093) @renovate[bot]
+    - chore(deps): update all dependencies (#2091) @renovate[bot]
+
+-------------------------------------------------------------------
 Fri Jan 30 07:29:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.1.2:
