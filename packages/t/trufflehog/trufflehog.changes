@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Feb 27 06:15:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.93.5:
+  * Fix race condition in release process (#4766)
+  * Fix typos in comments in json-enumerator source (#4764)
+  * [INS-283] Support following symlinks in filesystem source
+    (#4742)
+  * added rotation on 403s access_refused, this detector considered
+    them indeterminate failures (#4740)
+  * fix(ftp): set read deadline on connection to prevent indefinite
+    hang (#4759)
+  * [INS-309]updated google api version to v0.259.0 (#4736)
+  * Refactor log package (#4734)
+  * [INS-246] Add Google Gemini API key detector (#4649)
+  * Base64 decoding depth assessment (#4744)
+  * fix(release): Disable docker provenance feature (#4752)
+  * Add workspace_id to Slack Continuous metadata (#4749)
+
+-------------------------------------------------------------------
+Wed Feb 25 15:16:29 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.24 matching go.mod
+
+-------------------------------------------------------------------
 Fri Feb 20 05:57:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.93.4:

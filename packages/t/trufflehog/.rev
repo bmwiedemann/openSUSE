@@ -2634,4 +2634,21 @@ Note: The previously pushed version 3.89.0 never existed. This was a typo, which
     <comment>update to 3.93.4 (forwarded request 1334106 from ojkastl_buildservice)</comment>
     <requestid>1334234</requestid>
   </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>6d1a13fd97e6a11951e7cc7ac1e2adcc</srcmd5>
+    <version>3.93.4</version>
+    <time>1772050420</time>
+    <user>anag_factory</user>
+    <comment>- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.24 matching go.mod (forwarded request 1335148 from jfkw)</comment>
+    <requestid>1335149</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>42a7bafa9c5c5571426e797719c94752</srcmd5>
+    <version>3.93.5</version>
+    <time>1772208792</time>
+    <user>anag_factory</user>
+    <comment>update to 3.93.5 (forwarded request 1335365 from ojkastl_buildservice)</comment>
+    <requestid>1335449</requestid>
+  </revision>
 </revisionlist>
