@@ -93,10 +93,9 @@ BuildRequires:  protobuf-devel
 %else
 %bcond_without	pythondeps
 %endif
-# turning it off for now, check again once syslog-ng 4.11 is available
-%bcond_with	snmp
+%bcond_without	snmp
 Name:           syslog-ng
-Version:        4.9.0
+Version:        4.11.0
 Release:        0
 Summary:        Enhanced system logging daemon
 License:        GPL-2.0-only
@@ -108,10 +107,6 @@ Source2:        syslog-ng.conf.default
 Source3:        syslog-ng.service
 Source4:        syslog-ng-service-prepare
 Patch0:         syslog-ng-reproducible-jar-mtime.patch
-Patch1:         0001-Merge-pull-request-5437-from-HofiOne-fix-ack-tracker.patch
-Patch2:         0002-Merge-pull-request-5441-from-HofiOne-fix-mem-leaks.patch
-Patch3:         0003-Merge-pull-request-5445-from-beni-atlnz-log-writer-c.patch
-Patch4:         0004-Merge-pull-request-5447-from-therandomstring-s3-fix-.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -204,11 +199,11 @@ Key features:
  * hand on messages for further processing using message queues (like
    AMQP), files or databases (like PostgreSQL or MongoDB).
 
-%package -n libevtlog-4_9-0
+%package -n libevtlog-4_11-0
 Summary:        Syslog-ng event logger library runtime
 Group:          System/Libraries
 
-%description -n libevtlog-4_9-0
+%description -n libevtlog-4_11-0
 The EventLog library provides an alternative to the simple syslog()
 API provided on UNIX systems. Compared to syslog, EventLog adds
 structured messages.
@@ -413,10 +408,6 @@ This package provides MQTT support for syslog-ng
 %patch -P 0 -p1
 %endif
 %endif
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
-%patch -P 4 -p1
 # fill out placeholders in the config,
 # systemd service and prepare script.
 for file in \
@@ -655,8 +646,8 @@ chmod 640 "${additional_sockets#/}"
 #
 %{service_del_postun syslog-ng.service}
 
-%post -n libevtlog-4_9-0 -p /sbin/ldconfig
-%postun -n libevtlog-4_9-0 -p /sbin/ldconfig
+%post -n libevtlog-4_11-0 -p /sbin/ldconfig
+%postun -n libevtlog-4_11-0 -p /sbin/ldconfig
 
 %post -n syslog-ng-grpc -p /sbin/ldconfig
 %postun -n syslog-ng-grpc -p /sbin/ldconfig
@@ -869,7 +860,7 @@ chmod 640 "${additional_sockets#/}"
 %attr(644,root,root) %{_datadir}/syslog-ng/xsd/*
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl.conf
 
-%files -n libevtlog-4_9-0
+%files -n libevtlog-4_11-0
 %{_libdir}/libevtlog-*.so.*
 
 %if %{with snmp}

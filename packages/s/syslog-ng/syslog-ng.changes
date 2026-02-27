@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 27 07:59:18 UTC 2026 - peter czanik <peter@czanik.hu>
+
+- update to 4.11.0
+- re-enable snmp support
+- remove patches made redundant by the update 
+  * 0001-Merge-pull-request-5437-from-HofiOne-fix-ack-tracker.patch
+  * 0002-Merge-pull-request-5441-from-HofiOne-fix-mem-leaks.patch
+  * 0003-Merge-pull-request-5445-from-beni-atlnz-log-writer-c.patch
+  * 0004-Merge-pull-request-5447-from-therandomstring-s3-fix-.patch
+
+-------------------------------------------------------------------
 Mon Feb 16 09:09:05 UTC 2026 - peter czanik <peter@czanik.hu>
 
 - fix build problems by temporarily disabling snmp support
