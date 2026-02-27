@@ -32,7 +32,9 @@
 %bcond_with systemd
 %endif
 Name:           cacti
-Version:        1.2.30+git231.bca15e70c
+Version:        1.2.30+git233.9b67d5e98
+%global base_version %(echo %{version} | sed 's/+[^+]*//')
+%global next_base_version %(echo %{base_version} | awk -F. -v OFS=. '{$NF++; print}')
 Release:        0
 Summary:        Web Front-End to Monitor System Data via RRDtool
 License:        GPL-2.0-or-later
@@ -68,11 +70,11 @@ Requires:       rrdtool
 Recommends:     php-gettext
 Recommends:     php-pcntl
 Recommends:     mysql-tools
-Conflicts:      cacti-spine < %{version}
-Conflicts:      cacti-spine > %{version}
-Provides:       cacti-system = %{version}-%{release}
-Obsoletes:      cacti-PA < %{version}-%{release}
-Provides:       cacti-PA = %{version}-%{release}
+Conflicts:      cacti-spine < %{base_version}
+Conflicts:      cacti-spine >= %{next_base_version}
+Provides:       cacti-system = %{base_version}-%{release}
+Obsoletes:      cacti-PA < %{base_version}-%{release}
+Provides:       cacti-PA = %{base_version}-%{release}
 BuildArch:      noarch
 %if 0%{?suse_version}
 BuildRequires:  apache2-devel
@@ -109,7 +111,7 @@ well.
 %package doc
 Summary:        Documentation for Cacti
 Group:          System/Monitoring
-Requires:       %{name} = %{version}
+Requires:       %{name} = %{base_version}
 
 %description doc
 Cacti is a complete front-end to RRDtool: it stores all necessary
