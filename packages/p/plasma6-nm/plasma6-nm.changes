@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 24 17:22:06 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.1
+- Changes since 6.6.0:
+  * Update version for new release 6.6.1
+  * libs/models: Respond to changes to the "show virtual connections" setting (kde#516091)
+  * libs/editor: Respond to external configuration changes in Configuration
+  * libs/editor: Write all configuration changes with the Notify flag set
+  * Use more appropriate wired and wireless disconnection icons
+  * Correctly detect "Wi-Fi disabled" state in connection icon
+  * applet: Remove all QML import versions
+
+-------------------------------------------------------------------
 Thu Feb 12 19:43:43 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.0:
