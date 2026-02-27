@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Feb 27 11:56:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.8:
+  * Bug Fixes
+    - 478012a: fix(go): update kubernetes packages ( v0.35.1 →
+      v0.35.2 ) (@mr-borboto[bot])
+  * Chores
+    - 22503d6: chore(mise): update aqua:golangci/golangci-lint (
+      2.8.0 → 2.9.0 ) (#226) (@mr-borboto[bot])
+    - b9f68b0: chore(mise): update aqua:golangci/golangci-lint (
+      2.9.0 → 2.10.1 ) (#227) (@mr-borboto[bot])
+    - ff1607a: chore(mise): update aqua:goreleaser/goreleaser (
+      2.13.3 → 2.14.0 ) (#228) (@mr-borboto[bot])
+    - 796fb0c: chore(mise): update aqua:goreleaser/goreleaser (
+      2.14.0 → 2.14.1 ) (@mr-borboto[bot])
+    - 7d27600: chore(mise): update go ( 1.25.7 → 1.26.0 ) (#225)
+      (@mr-borboto[bot])
+
+-------------------------------------------------------------------
 Wed Feb 11 05:58:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.7:
