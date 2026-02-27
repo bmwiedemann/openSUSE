@@ -267,4 +267,41 @@
   * Refs boo#1248678 (forwarded request 1301277 from jfkw)</comment>
     <requestid>1301282</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2b1ae6ad9609bee63505b6793a807fd7</srcmd5>
+    <version>1.1.4+git23.a9cf566</version>
+    <time>1772208804</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.4+git23.a9cf566:
+  * all: upgrade go directive to at least 1.25.0 [generated]
+  * go.mod: update golang.org/x dependencies
+  * vuln: add codereview.cfg
+  * cmd/govulncheck: remove gotypesalias.go (not needed anymore)
+  * internal/scan: improve error message for govulncheck
+  * go.mod: update golang.org/x dependencies
+  * go.mod: update golang.org/x dependencies
+  * go.mod: update golang.org/x dependencies
+  * go.mod: update golang.org/x dependencies
+  * go.mod: update golang.org/x dependencies
+  * cmd/govulncheck: use docker image with go 1.25
+  * all: upgrade go directive to at least 1.24.0 [generated]
+  * go.mod: update golang.org/x dependencies
+  * internal/buildinfo: stop testing the windows/arm port
+  * go.mod: update golang.org/x dependencies
+  * go.mod: update golang.org/x dependencies
+  * go.mod: update golang.org/x dependencies
+  * go.mod: update golang.org/x dependencies
+  * go.mod: update golang.org/x dependencies
+  * cmd/govulncheck/integration: update go version in Dockerfile
+  * all: upgrade go directive to at least 1.23.0 [generated]
+  * go.mod: update golang.org/x dependencies
+  * internal/vulncheck: add Unalias call
+
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.26 latest stable.
+    This tool requires the latest stable Go toolchain to check
+    other Go applications using that latest stable version of Go.
+  * Refs boo#1248678 (forwarded request 1335459 from jfkw)</comment>
+    <requestid>1335460</requestid>
+  </revision>
 </revisionlist>

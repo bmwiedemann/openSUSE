@@ -1,8 +1,53 @@
 -------------------------------------------------------------------
+Fri Feb 27 03:56:24 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.1.4+git23.a9cf566:
+  * all: upgrade go directive to at least 1.25.0 [generated]
+  * go.mod: update golang.org/x dependencies
+  * vuln: add codereview.cfg
+  * cmd/govulncheck: remove gotypesalias.go (not needed anymore)
+  * internal/scan: improve error message for govulncheck
+  * go.mod: update golang.org/x dependencies
+  * go.mod: update golang.org/x dependencies
+  * go.mod: update golang.org/x dependencies
+  * go.mod: update golang.org/x dependencies
+  * go.mod: update golang.org/x dependencies
+  * cmd/govulncheck: use docker image with go 1.25
+  * all: upgrade go directive to at least 1.24.0 [generated]
+  * go.mod: update golang.org/x dependencies
+  * internal/buildinfo: stop testing the windows/arm port
+  * go.mod: update golang.org/x dependencies
+  * go.mod: update golang.org/x dependencies
+  * go.mod: update golang.org/x dependencies
+  * go.mod: update golang.org/x dependencies
+  * go.mod: update golang.org/x dependencies
+  * cmd/govulncheck/integration: update go version in Dockerfile
+  * all: upgrade go directive to at least 1.23.0 [generated]
+  * go.mod: update golang.org/x dependencies
+  * internal/vulncheck: add Unalias call
+
+-------------------------------------------------------------------
+Thu Feb 26 21:38:41 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.26 latest stable.
+    This tool requires the latest stable Go toolchain to check
+    other Go applications using that latest stable version of Go.
+  * Refs boo#1248678
+  * _service tar_scm set revision to branch main until upstream
+    next has a tagged release
+  * _service tar_scm when revision is a branch name e.g. master
+    use versionformat @PARENT_TAG@+git@TAG_OFFSET@.%h to represent
+    git commit history included beyond last tagged release. Archive
+    name will be: name-X.Y.Z+gitN.shortsha.tar.gz. When upstream
+    project resumes tagged releases drop the param versionformat
+    and restore revision to tag name e.g. vX.Y.Z.
+
+-------------------------------------------------------------------
 Mon Aug 25 13:07:21 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:
-  * Update to BuildRequires: golang(API) >= 1.25 latest table.
+  * Update to BuildRequires: golang(API) >= 1.25 latest stable.
     This tool requires the latest stable Go toolchain to check
     other Go applications using that latest stable version of Go.
   * Refs boo#1248678

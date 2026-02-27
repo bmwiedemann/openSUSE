@@ -1,7 +1,7 @@
 #
 # spec file for package govulncheck
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           govulncheck
-Version:        1.1.4
+Version:        1.1.4+git23.a9cf566
 Release:        0
 Summary:        CLI tool to report known CVE vulnerabilities in Go source code and binaries
 License:        BSD-3-Clause
@@ -25,7 +25,7 @@ Group:          Development/Languages/Go
 URL:            https://github.com/golang/vuln
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.26
 # Required to build on SLE-12
 ExcludeArch:    s390
 
