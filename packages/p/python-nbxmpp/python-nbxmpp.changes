@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 26 17:51:38 UTC 2026 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 7.1.0:
+  * SASL: Improve logging for GSSAPI errors.
+  * Fallback: Be more strict in accepting ranges.
+  * Add Node.topretty().
+  * OGP: Accept only data uris as image.
+
+-------------------------------------------------------------------
 Tue Dec 17 10:00:08 UTC 2025 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 6.3.1:

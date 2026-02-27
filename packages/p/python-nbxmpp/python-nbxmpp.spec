@@ -19,7 +19,7 @@
 %define _name   nbxmpp
 %{?sle15_python_module_pythons}
 Name:           python-nbxmpp
-Version:        7.0.0
+Version:        7.1.0
 Release:        0
 Summary:        XMPP library by Gajim team
 License:        GPL-3.0-or-later
