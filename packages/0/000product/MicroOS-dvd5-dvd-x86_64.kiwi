@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20260226" schemaversion="4.1">
+<image name="OBS__MicroOS___20260227" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20260226</productvar>
+      <productvar name="VERSION">20260227</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260226,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260227,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260226/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260227/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -266,7 +266,6 @@
       <repopackage name="hwinfo"/>
       <repopackage name="hyper-v"/>
       <repopackage name="ibm-plex-mono-fonts"/>
-      <repopackage name="iio-sensor-proxy"/>
       <repopackage name="iproute2"/>
       <repopackage name="iptables"/>
       <repopackage name="iputils"/>
@@ -1012,9 +1011,9 @@
       <repopackage name="libplacebo264"/>
       <repopackage name="libplacebo360"/>
       <repopackage name="libPlasma5Support6"/>
-      <repopackage name="libPlasma6"/>
       <repopackage name="libplasma6-components"/>
       <repopackage name="libplasma6-desktoptheme"/>
+      <repopackage name="libPlasma7"/>
       <repopackage name="libPlasmaActivities7"/>
       <repopackage name="libPlasmaActivitiesStats1"/>
       <repopackage name="libplist-2_0-4"/>
@@ -1131,7 +1130,6 @@
       <repopackage name="libQt6QuickTimeline6"/>
       <repopackage name="libQt6QuickVectorImage6"/>
       <repopackage name="libQt6QuickWidgets6"/>
-      <repopackage name="libQt6Sensors6"/>
       <repopackage name="libQt6ShaderTools6"/>
       <repopackage name="libQt6SpatialAudio6"/>
       <repopackage name="libQt6Sql6"/>
@@ -1611,7 +1609,6 @@
       <repopackage name="qt6-printsupport-cups"/>
       <repopackage name="qt6-qt5compat-imports"/>
       <repopackage name="qt6-quick3d-imports"/>
-      <repopackage name="qt6-sensors"/>
       <repopackage name="qt6-sql-sqlite"/>
       <repopackage name="qt6-texttospeech"/>
       <repopackage name="qt6-tools-qdbus"/>
@@ -1693,7 +1690,6 @@
       <repopackage name="system-user-lp"/>
       <repopackage name="system-user-nobody"/>
       <repopackage name="system-user-root"/>
-      <repopackage name="system-user-srvGeoClue"/>
       <repopackage name="system-user-tss"/>
       <repopackage name="systemd"/>
       <repopackage name="systemd-boot"/>

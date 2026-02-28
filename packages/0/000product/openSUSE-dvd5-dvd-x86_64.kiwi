@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20260226" schemaversion="4.1">
+<image name="OBS__openSUSE___20260227" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20260226</productvar>
+      <productvar name="VERSION">20260227</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20260226,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20260227,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20260226/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20260227/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -2344,10 +2344,9 @@
       <repopackage name="libplacebo360"/>
       <repopackage name="libPlasma5Support6"/>
       <repopackage name="libPlasma5Support6-lang"/>
-      <repopackage name="libPlasma6"/>
       <repopackage name="libplasma6-components"/>
       <repopackage name="libplasma6-desktoptheme"/>
-      <repopackage name="libPlasma6-lang"/>
+      <repopackage name="libPlasma7"/>
       <repopackage name="libPlasmaActivities7"/>
       <repopackage name="libPlasmaActivitiesStats1"/>
       <repopackage name="libplist-2_0-4"/>
