@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 25 10:29:07 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Fix the condition with suse_version macro on SLFO (jsc#PED-15844)
+  * there is Django in Leap 16, so enable the condition there
+
+-------------------------------------------------------------------
 Mon Jun 16 06:12:21 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyroject macros.

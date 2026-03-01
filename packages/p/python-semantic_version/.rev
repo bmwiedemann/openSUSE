@@ -133,4 +133,13 @@
     <comment>- Switch to pyroject macros.</comment>
     <requestid>1285965</requestid>
   </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>57158b260f280e0d0b0f963fb1caf296</srcmd5>
+    <version>2.10.0</version>
+    <time>1772399618</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the condition with suse_version macro on SLFO (jsc#PED-15844)
+  * there is Django in Leap 16, so enable the condition there</comment>
+    <requestid>1335233</requestid>
+  </revision>
 </revisionlist>
