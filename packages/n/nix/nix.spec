@@ -1,7 +1,7 @@
 #
 # spec file for package nix
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2026 Eyad Issa
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +26,7 @@
 %endif
 
 Name:           nix
-Version:        2.33.1
+Version:        2.33.3
 Release:        0
 Summary:        The purely functional package manager
 License:        LGPL-2.1-only
@@ -223,6 +223,8 @@ echo "%{_libdir}/nix/" > %{buildroot}/%{_sysconfdir}/ld.so.conf.d/nix.conf
 
 %files
 %license COPYING
+%doc doc/manual/source/release-notes/rl-2.33.md
+%doc CONTRIBUTING.md README.md
 # config files
 %config(noreplace) %{_sysconfdir}/nix/
 %config %{_sysconfdir}/profile.d/nix-daemon.fish

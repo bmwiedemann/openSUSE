@@ -177,4 +177,13 @@ support for software auditability among other things</comment>
     directories</comment>
     <requestid>1328148</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>62b511243d19844532450ad117bf2ae7</srcmd5>
+    <version>2.33.3</version>
+    <time>1772399671</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.33.3:
+  see /usr/share/doc/packages/rl-2.33.md</comment>
+    <requestid>1335502</requestid>
+  </revision>
 </revisionlist>
