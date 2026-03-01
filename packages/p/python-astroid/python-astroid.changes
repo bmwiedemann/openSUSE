@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Feb 25 10:14:26 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.1.1
+  * Let `UnboundMethodModel` inherit from `FunctionModel` to improve
+    inference of dunder methods for unbound methods.
+  * Filter ``Unknown`` from ``UnboundMethod`` and ``Super`` special attribute
+    lookup to prevent placeholder nodes from leaking during inference.
+- from version 4.1.0
+  * Add support for equality constraints (``==``, ``!=``) in inference.
+  * Ensure ``ast.JoinedStr`` nodes are ``Uninferable`` when the ``ast.FormattedValue``
+    is ``Uninferable``. This prevents ``unexpected-keyword-arg`` messages in Pylint
+    where the ``Uninferable`` string appeared in function arguments that were
+    constructed dynamically.
+  * Add support for type constraints (`isinstance(x, y)`) in inference.
+  * Make `type.__new__()` raise clear errors instead of returning `None`
+  * Move object dunder methods from ``FunctionModel`` to ``ObjectModel`` to
+    make them available on all object types, not just functions.
+  * ``lineno`` and ``end_lineno`` are now available on ``Arguments``.
+  * Add helper to iterate over all annotations nodes of function arguments,
+    ``Arguments.get_annotations()``.
+  * Skip direct parent when determining the ``Decorator`` frame.
+  * Add simple command line interface for astroid to output generated AST.
+    Use with ``python -m astroid``.
+  * Fix incorrect type inference for ``super().method()`` calls that return ``Self``.
+    Previously, astroid would infer the parent class type instead of the child class
+    type, causing pylint E1101 false positives in method chaining scenarios.
+  * Add missing ``dtype`` and ``casting`` parameters to ``numpy.concatenate`` brain.
+  * Fix ability to detect .py modules inside PATH directories on Windows
+    described by a UNC path with a trailing backslash (`\`)
+    - Example: modutils.modpath_from_file(filename=r"\\Mac\Code\tests\test_resources.py",
+      path=["\\mac\code\"]) == ['tests', 'test_resources']
+  * Fix ``random.sample`` inference crash when sequence contains uninferable elements.
+  * Fix ``random.sample`` crash when cloning ``ClassDef`` or ``FunctionDef`` nodes.
+- from version 4.0.4
+  * Fix ``is_namespace()`` crash when search locations contain ``pathlib.Path`` objects.
+
+-------------------------------------------------------------------
 Sun Jan  4 08:45:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.3:
