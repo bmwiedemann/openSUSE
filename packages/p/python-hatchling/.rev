@@ -317,4 +317,12 @@
   minimal stack for different python versions.</comment>
     <requestid>1330911</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>254043350fa1eb2c89e8f07482c66e35</srcmd5>
+    <version>1.29.0</version>
+    <time>1772399624</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1335263</requestid>
+  </revision>
 </revisionlist>

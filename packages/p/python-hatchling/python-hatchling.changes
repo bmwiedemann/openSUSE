@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 24 19:50:58 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.29.0:
+  * Fixed: Source Date Epoch no longer fails when set to date
+    before 1980.
+
+-------------------------------------------------------------------
 Wed Feb  4 10:48:13 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add pythons_for_pypi macro. This macro will help to build the python
