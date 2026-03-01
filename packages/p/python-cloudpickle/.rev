@@ -326,4 +326,12 @@
 - Remove upstreamed patch support-python-314.patch</comment>
     <requestid>1322605</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>99aa9df56b07fb7d9926c57aa0a8b294</srcmd5>
+    <version>3.1.2</version>
+    <time>1772399621</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1335248</requestid>
+  </revision>
 </revisionlist>
