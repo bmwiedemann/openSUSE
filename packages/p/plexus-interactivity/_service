@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/codehaus-plexus/plexus-interactivity.git</param>
-		<param name="revision">plexus-interactivity-1.4</param>
+		<param name="revision">plexus-interactivity-1.5.1</param>
 		<param name="match-tag">plexus-interactivity-*</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 		<param name="versionrewrite-pattern">plexus-interactivity-(.*)</param>

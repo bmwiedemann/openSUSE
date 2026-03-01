@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 27 16:26:31 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.5.1
+  * Dependency updates
+    + Downgrade to Guice 5.1.0
+    + Bump org.codehaus.plexus:plexus to 24
+    + Bump org.jline:jline-reader to 3.30.6
+    + Bump org.eclipse.sisu:org.eclipse.sisu.inject to 0.9.0.M4
+  * Maintenance
+    + JUnit Jupiter best practices
+
+-------------------------------------------------------------------
 Fri Jun  6 15:04:00 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 1.4
