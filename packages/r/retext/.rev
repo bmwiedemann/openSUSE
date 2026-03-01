@@ -183,4 +183,14 @@
     <comment></comment>
     <requestid>1161707</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3e072abf698e7e206145b2ec098776b0</srcmd5>
+    <version>8.1.0</version>
+    <time>1772399679</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1334369 from AndreasStieger
+
+retext 8.1.0</comment>
+    <requestid>1335517</requestid>
+  </revision>
 </revisionlist>

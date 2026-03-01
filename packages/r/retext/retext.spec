@@ -1,7 +1,7 @@
 #
 # spec file for package retext
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           retext
-Version:        8.0.2
+Version:        8.1.0
 Release:        0
 Summary:        Simple editor for Markdown and reStructuredText
 License:        GPL-2.0-or-later
@@ -30,7 +30,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3
 BuildRequires:  python3-Markdown
-BuildRequires:  python3-Markups >= 2.0
+BuildRequires:  python3-Markups >= 4.0
 BuildRequires:  python3-PyQt6
 BuildRequires:  python3-devel
 BuildRequires:  python3-docutils
@@ -96,6 +96,6 @@ popd
 %{_datadir}/%{name}/
 %{_datadir}/applications/*.desktop
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/*appdata.xml
+%{_datadir}/metainfo/me.mitya57.ReText.metainfo.xml
 
 %changelog

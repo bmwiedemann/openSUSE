@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Feb 22 18:51:45 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 8.1.0:
+  * Add support for Ctrl+Tab and Ctrl+Shift+Tab for switching tabs
+  * WebEngine previewer now shows link on hover
+  * Add F9 shortcut for showing/hiding directory tree dynamically
+  * In the directory tree, for files with long names the full name
+    is shown in a tooltip
+  * It is now possible to pass a directory on the command line,
+    it will be shown in the tree
+  * pasted image URLs are now converted to image markup.
+  * When the system theme is dark, Qt WebEngine now uses dark mode
+    too
+  * UI tweaks, translation updates
+
+-------------------------------------------------------------------
 Tue Mar 26 08:27:24 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to version 8.0.2:
