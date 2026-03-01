@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Feb 27 23:38:39 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 2.20.1 "Pythagoras Hotfix #1"
+  * [UI] Show update badge on gamecard only if controller is connected by @flavioislima 
+    in #5361
+  * [FIX] Change DXVK macos fix from previous release by @arielj in #5359
+  * [FIX] False positive "an error has occurred" messages on bleeding-edge Linux distros by 
+    @CommandMC in #5365
+  * [Feat] Automatically pause and resume downloads based connectivity status by @flavioislima
+    in #5364
+  * [FIX] Use correct partition and clear data on epic logout by @arielj in #5354
+  * [FIX] Add a launch default option when none is available besides DLCs by @flavioislima 
+    in #5366
+  * [UX] Fix PATH on mac for intel homebrew and macports when checking winetricks deps by 
+    @arielj in #5353
+  * [UX] Show link to instructions to install winetricks deps on macos by @arielj in #5352
+  * [i18n] Updated Translations by @weblate in #5346
+  * [UX] Hide main window when quitting by @CommandMC in #5262
+  * [TECH] Updated legendary to latest version 0.20.42 
+
+-------------------------------------------------------------------
 Thu Feb 26 01:45:14 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Security: Fix CVE-2026-27606

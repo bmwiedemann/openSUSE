@@ -27,7 +27,7 @@
 %endif
 
 Name:           heroic-games-launcher
-Version:        2.20.0
+Version:        2.20.1
 Release:        0
 Summary:        Native Games launcher for GOG, Epic and Amazon
 License:        GPL-3.0-only
