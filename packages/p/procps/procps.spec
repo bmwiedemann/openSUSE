@@ -1,7 +1,7 @@
 #
 # spec file for package procps
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,22 +25,26 @@
 %endif
 %bcond_without  pidof
 %bcond_without  nls
+%bcond_with     kill
 Name:           procps
-Version:        4.0.5
+Version:        4.0.6
 Release:        0
 Summary:        The ps utilities for /proc
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Monitoring
 URL:            https://sf.net/projects/procps-ng/
-Source:         https://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-%{version}.tar.xz
+Source0:        https://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-%{version}.tar.xz
 Source1:        https://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-%{version}.tar.xz.asc
-#Alternate:     https://gitlab.com/procps-ng/procps/-/archive/v%{version}/procps-v%{version}.tar.gz
+#Alternate:     https://gitlab.com/procps-ng/procps/-/archive/v%%{version}/procps-v%%{version}.tar.gz
 Source2:        procps-rpmlintrc
 Source3:        procps.keyring
 # PATCH-FIX-USTREAM -- w: Don't crash when using short option
 Patch1:         procps-v3.3.3-ia64.diff
-Patch2:         procps-ng-4.0.5-bsc1246330.patch
+# PATCH-FIX-COMMUNITY
+Patch2:         glibc-2.43.patch
 Patch3:         procps-ng-3.3.9-w-notruncate.diff
+# PATCH-FIX-UPSTREAM
+Patch4:         d9c96ec0.patch
 Patch7:         procps-ng-3.3.8-readeof.patch
 Patch8:         procps-ng-3.3.10-slab.patch
 Patch11:        procps-ng-3.3.10-xen.dif
@@ -65,6 +69,7 @@ Patch38:        procps-ng-4.0.4-pmapX-not-twice-anymore.patch
 # PATCH-FIX-SUSE -- ignore dangling symlink to missing /etc/sysctl.conf file
 Patch39:        procps-ng-4.0.4-ignore-sysctl_conf.patch
 BuildRequires:  automake
+BuildRequires:  coreutils-systemd
 BuildRequires:  dejagnu
 BuildRequires:  diffutils
 BuildRequires:  libnuma-devel
@@ -79,6 +84,9 @@ Provides:       procps4 = %{version}
 Obsoletes:      procps4 <= 4.0.4
 Provides:       ps = %{version}-%{release}
 Obsoletes:      ps < %{version}-%{release}
+# Currently filelist-coreutils.txt includes uptime as well
+# but also much more
+%define uptimepkg coreutils-systemd coreutils-systemd-doc
 
 %description
 The procps package contains a set of system utilities that provide
@@ -122,6 +130,29 @@ the process information pseudo-file system.
 
 This subpackage contains the header files for libprocps.
 
+%package uptime
+Summary:        Provide the /proc based uptime
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+Group:          System/Monitoring
+Conflicts:      %uptimepkg
+Conflicts:      busybox-coreutils
+Provides:       %{name}:%{_bindir}/uptime
+
+%description uptime
+Simply provide the /proc based uptime command.
+
+%if %{with kill}
+%package kill
+Summary:        Provide the /proc based kill
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+Group:          System/Monitoring
+Conflicts:      util-linux
+Provides:       %{name}:%{_bindir}/kill
+
+%description kill
+Simply provide the /proc based kill command.
+%endif
+
 %package -n %{libname}
 Summary:        The procps library
 License:        LGPL-2.1-or-later
@@ -134,8 +165,9 @@ the process information pseudo-file system.
 %prep
 %setup -q -n procps-ng-%{version}
 %patch -P1
-%patch -P2
+%patch -P2 -p1
 %patch -P3 -p1 -b .trcate
+%patch -P4 -p1 -b .413
 %patch -P7 -b .rof
 %patch -P8 -b .cache
 %patch -P11
@@ -206,21 +238,14 @@ LD_LIBRARY_PATH=$PWD/proc/.libs \
 install -d %{buildroot}/bin
 install -d %{buildroot}/sbin
 
-# clean unwanted files (e.g. coreutils)
-rm -f %{buildroot}%{_bindir}/kill
-rm -f %{buildroot}%{_bindir}/uptime
-rm -f %{buildroot}%{_mandir}/man1/kill.1
-rm -f %{buildroot}%{_mandir}/*/man1/kill.1
-rm -f %{buildroot}%{_mandir}/man1/uptime.1
-rm -f %{buildroot}%{_mandir}/*/man1/uptime.1
 find %{buildroot} -type f -name "*.la" -delete -print
 rm -rf %{buildroot}%{_datadir}/doc/procps-ng
 
-if cmp -s %{buildroot}%{_mandir}/man1/pidwait.1 %{buildroot}%{_mandir}/man1/pkill.1
+if ! test -e %{buildroot}%{_mandir}/man1/pkill.1
 then
-    rm -vf %{buildroot}%{_mandir}/man1/pidwait.1
-    (cat > %{buildroot}%{_mandir}/man1/pidwait.1)<<-'EOF'
-	.so man1/pkill.1
+    rm -vf %{buildroot}%{_mandir}/man1/pkill.1
+    (cat > %{buildroot}%{_mandir}/man1/pkill.1)<<-'EOF'
+	.so man1/pgrep.1
 	EOF
 fi
 
@@ -277,6 +302,10 @@ ln -s /sbin/sysctl %{buildroot}%{_sbindir}/sysctl
 %endif
 
 %find_lang procps-ng --with-man --all-name
+(cat >> procps-ng.lang)<<-EOF
+%%exclude %%{_mandir}/*/man1/uptime.1%%{?ext_man}
+%%exclude %%{_mandir}/man1/uptime.1%%{?ext_man}
+EOF
 
 %post   -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -399,6 +428,18 @@ test $error = no || exit 1
 %{_mandir}/man5/sysctl.conf.5%{?ext_man}
 %{_mandir}/man8/vmstat.8%{?ext_man}
 %{_mandir}/man8/sysctl.8%{?ext_man}
+
+%files uptime
+%{_bindir}/uptime
+%{_mandir}/man1/uptime.1%{?ext_man}
+%{_mandir}/*/man1/uptime.1%{?ext_man}
+
+%if %{with kill}
+%files kill
+%{_bindir}/kill
+%{_mandir}/man1/kill.1%{?ext_man}
+%{_mandir}/*/man1/kill.1%{?ext_man}
+%endif
 
 %files devel
 %defattr (-,root,root,755)

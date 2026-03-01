@@ -1,20 +1,29 @@
 ---
- library/readproc.c |   20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ library/readproc.c |   34 +++++++++++++++++-----------------
+ 1 file changed, 17 insertions(+), 17 deletions(-)
 
 --- library/readproc.c
-+++ library/readproc.c	2022-03-28 11:51:04.751862744 +0000
-@@ -738,7 +738,7 @@ static int file2str(const char *director
++++ library/readproc.c	2026-01-30 13:13:59.666169366 +0000
+@@ -135,7 +135,7 @@ static DIR* opendirat(
+     DIR *dirp;
+ 
+    if ((dirfd < 0)
+-   || ((fd = openat(dirfd, pathname, O_DIRECTORY | O_RDONLY)) < 0))
++   || ((fd = openat(dirfd, pathname, O_DIRECTORY | O_RDONLY, O_NOATIME)) < 0))
+        return NULL;
+    if ((dirp = fdopendir(fd)) == NULL) {
+        int tmperrno = errno;
+@@ -760,7 +760,7 @@ static int file2str(int dirfd, const cha
+         ub->buf = calloc(1, (ub->siz = buffGRW));
+         if (!ub->buf) return -1;
      }
-     len = snprintf(path, sizeof path, "%s/%s", directory, what);
-     if (len <= 0 || (size_t)len >= sizeof path) return -1;
--    if (-1 == (fd = open(path, O_RDONLY, 0))) return -1;
-+    if (-1 == (fd = open(path, O_RDONLY, O_NOATIME))) return -1;
+-    if (-1 == (fd = openat(dirfd, what, O_RDONLY, 0))) return -1;
++    if (-1 == (fd = openat(dirfd, what, O_RDONLY, O_NOATIME))) return -1;
      while (0 < (num = read(fd, ub->buf + tot_read, ub->siz - tot_read))) {
          tot_read += num;
          if (tot_read < ub->siz) break;
-@@ -762,25 +762,25 @@ static int file2str(const char *director
- static char **file2strvec(const char *directory, const char *what) {
+@@ -784,23 +784,23 @@ static int file2str(int dirfd, const cha
+ static char **file2strvec(int dirfd, const char *what) {
      char buf[2048];     /* read buf bytes at a time */
      char *p, *rbuf = 0, *endbuf, **q, **ret, *strp;
 -    int fd, tot = 0, n, c, end_of_file = 0;
@@ -22,16 +31,14 @@
 +    int fd, c, end_of_file = 0;
 +    ssize_t n, align, tot = 0;
  
-     const int len = snprintf(buf, sizeof buf, "%s/%s", directory, what);
-     if(len <= 0 || (size_t)len >= sizeof buf) return NULL;
--    fd = open(buf, O_RDONLY, 0);
-+    fd = open(buf, O_RDONLY, O_NOATIME);
+-    fd = openat(dirfd, what, O_RDONLY, 0);
++    fd = openat(dirfd, what, O_RDONLY, O_NOATIME);
      if(fd==-1) return NULL;
  
      /* read whole file into a memory buffer, allocating as we go */
      while ((n = read(fd, buf, sizeof buf - 1)) >= 0) {
 -        if (n < (int)(sizeof buf - 1))
-+        if (n < (sizeof(buf) - 1))
++        if (n < (sizeof buf - 1))
              end_of_file = 1;
 -        if (n <= 0 && tot <= 0) {  /* nothing read now, nothing read before */
 +        if (n <= 0 && tot <= 0)    /* nothing read now, nothing read before */
@@ -46,7 +53,7 @@
              end_of_file = 1;       /* integer overflow: null-terminate and break */
              n = 0;                 /* but tot > 0 */
          }
-@@ -814,7 +814,7 @@ static char **file2strvec(const char *di
+@@ -834,7 +834,7 @@ static char **file2strvec(int dirfd, con
      c = sizeof(char*);             /* one extra for NULL term */
      for (p = rbuf; p < endbuf; p++) {
          if (!*p || *p == '\n') {
@@ -55,7 +62,7 @@
              c += sizeof(char*);
          }
          if (*p == '\n')
-@@ -827,7 +827,7 @@ static char **file2strvec(const char *di
+@@ -847,7 +847,7 @@ static char **file2strvec(int dirfd, con
      q = ret = (char**) (endbuf+align);          /* ==> free(*ret) to dealloc */
      for (strp = p = rbuf; p < endbuf; p++) {
          if (!*p) {                              /* NUL char implies that */
@@ -64,3 +71,57 @@
              c -= sizeof(char*);
              *q++ = strp;                        /* point ptrs to the strings */
              strp = p+1;                         /* next string -> next char */
+@@ -869,7 +869,7 @@ static int read_unvectored(char *restric
+     if(sz >= INT_MAX) sz = INT_MAX-1;
+     dst[0] = '\0';
+ 
+-    if ((fd = openat(dirfd, what, O_RDONLY)) == -1)
++    if ((fd = openat(dirfd, what, O_RDONLY, O_NOATIME)) == -1)
+         return 0;
+ 
+     for(;;){
+@@ -1153,7 +1153,7 @@ static int login_uid (const int dirfd) {
+     int fd, id, in;
+ 
+     id = -1;
+-    if ((fd = openat(dirfd,"loginuid", O_RDONLY)) != -1) {
++    if ((fd = openat(dirfd,"loginuid", O_RDONLY, O_NOATIME)) != -1) {
+         in = read(fd, buf, sizeof(buf) - 1);
+         close(fd);
+         if (in > 0) {
+@@ -1184,7 +1184,7 @@ static void autogroup_fill (int dirfd, p
+     int fd, in;
+ 
+     p->autogrp_id = -1;
+-    if ((fd = openat(dirfd, "autogroup", O_RDONLY, 0)) != -1) {
++    if ((fd = openat(dirfd, "autogroup", O_RDONLY, O_NOATIME)) != -1) {
+         in = read(fd, buf, sizeof(buf) - 1);
+         close(fd);
+         if (in > 0) {
+@@ -1522,7 +1522,7 @@ static int simple_nextpid(PROCTAB *restr
+             if (errno == 0) {
+                 p->tid = p->tgid;
+                 snprintf(path, PROCPATHLEN, "/proc/%d", p->tgid);
+-                PT->pidfd = open(path, O_RDONLY | O_DIRECTORY);
++                PT->pidfd = open(path, O_RDONLY | O_DIRECTORY, O_NOATIME);
+                 return 1;
+             }
+         }
+@@ -1556,7 +1556,7 @@ static int simple_nexttid(PROCTAB *restr
+ //t->ppid = p->ppid;  // cover for kernel behavior? we want both actually...?
+   close_dirfd(&(PT->taskfd));
+   snprintf(taskpath, PROCPATHLEN, "task/%.10s", ent->d_name);
+-  PT->taskfd = openat(PT->pidfd, taskpath, O_RDONLY | O_DIRECTORY);
++  PT->taskfd = openat(PT->pidfd, taskpath, O_RDONLY | O_DIRECTORY, O_NOATIME);
+   return 1;
+ }
+ 
+@@ -1571,7 +1571,7 @@ static int listed_nextpid (PROCTAB *PT,
+ 
+   if (pid > 0) {
+     snprintf(path, PROCPATHLEN, "/proc/%d", pid);
+-    PT->pidfd = open(path, O_RDONLY | O_DIRECTORY);
++    PT->pidfd = open(path, O_RDONLY | O_DIRECTORY, O_NOATIME);
+     p->tid = p->tgid = pid;        // this tgid may be a huge fib |
+ 
+     /* the 'status' directory is the only place where we find the |

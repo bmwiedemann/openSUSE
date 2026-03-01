@@ -10,6 +10,6 @@
  		if (!fp) {
 +			if (strcmp ("/usr/lib/sysctl.d/99-sysctl.conf", globbuf.gl_pathv[j]) == 0)
 +				continue;
- 			xwarn(_("cannot open \"%s\""), globbuf.gl_pathv[j]);
+ 			warn(_("cannot open \"%s\""), globbuf.gl_pathv[j]);
              return EXIT_FAILURE;
  		}

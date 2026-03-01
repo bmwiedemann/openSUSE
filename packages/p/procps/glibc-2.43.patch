@@ -1,0 +1,66 @@
+From 8fb131707cee9aea228c0b14bf6e2ad934a3af64 Mon Sep 17 00:00:00 2001
+From: Rudi Heitbaum <rudi@heitbaum.com>
+Date: Thu, 29 Jan 2026 12:21:30 +0000
+Subject: [PATCH] use const qualifier from pointer target type
+
+warning since glibc-2.43
+
+For ISO C23, the functions bsearch, memchr, strchr, strpbrk, strrchr,
+strstr, wcschr, wcspbrk, wcsrchr, wcsstr and wmemchr that return
+pointers into their input arrays now have definitions as macros
+that return a pointer to a const-qualified type when the input
+argument is a pointer to a const-qualified type.
+---
+ library/readproc.c | 5 +++--
+ src/top/top.c      | 5 +++--
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/library/readproc.c b/library/readproc.c
+index a7f79051..aafaab3d 100644
+--- a/library/readproc.c
++++ b/library/readproc.c
+@@ -598,7 +598,7 @@ static int sd2proc (proc_t *restrict p) {
+ static int stat2proc (const char *S, proc_t *restrict P) {
+     char buf[64], raw[64];
+     size_t num;
+-    char *tmp;
++    const char *tmp;
+ 
+ ENTER(0x160);
+ 
+@@ -725,7 +725,8 @@ static void smaps2proc (const char *s, proc_t *restrict P) {
+         /*    ProtectionKey                  "            */
+         /*    VmFlags                        "            */
+     };
+-    char *head, *tail;
++    const char *head;
++    char *tail;
+     int i;
+ 
+     if (smaptab[0].slen < 0) {
+diff --git a/src/top/top.c b/src/top/top.c
+index b29f7c89..af921b12 100644
+--- a/src/top/top.c
++++ b/src/top/top.c
+@@ -1026,7 +1026,8 @@ static void show_special (int interact, const char *glob) {
+      ( this function is called only with a glob under top's )
+      ( control and never containing any 'raw/binary' chars! ) */
+    char tmp[LRGBUFSIZ], lin[LRGBUFSIZ], row[ROWMINSIZ];
+-   char *rp, *lin_end, *sub_beg, *sub_end;
++   char *rp, *sub_beg, *sub_end;
++   const char *lin_end;
+    int room;
+ 
+    // handle multiple lines passed in a bunch
+@@ -5485,7 +5486,7 @@ static void bot_item_toggle (int what, const char *head, char sep) {
+          * If q->findstr is found in the designated buffer, he returns the
+          * offset from the start of the buffer, otherwise he returns -1. */
+ static inline int find_ofs (const WIN_t *q, const char *buf) {
+-   char *fnd;
++   const char *fnd;
+ 
+    if (q->findstr[0] && (fnd = STRSTR(buf, q->findstr)))
+       return (int)(fnd - buf);
+-- 
+GitLab
+

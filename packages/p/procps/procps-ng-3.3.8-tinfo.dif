@@ -5,7 +5,7 @@
 
 --- Makefile.am
 +++ Makefile.am	2022-10-20 13:21:37.505517043 +0000
-@@ -204,7 +204,7 @@ src_top_top_SOURCES += local/strverscmp.
+@@ -234,7 +234,7 @@ src_top_top_SOURCES += local/strverscmp.
  endif
  
  src_top_top_CFLAGS = @NCURSES_CFLAGS@

@@ -1459,4 +1459,41 @@ There are also man pages translations but they doesn't get installed automatical
   * Do not Fail in year 2038 (bsc#1246330)</comment>
     <requestid>1292057</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>7401162aa0264640a9e8fd19d919d1f0</srcmd5>
+    <version>4.0.6</version>
+    <time>1772399634</time>
+    <user>dimstar_suse</user>
+    <comment>- OK ... switch to coreutils-systemd and coreutils-systemd-doc 
+
+- Conflict not only with systemd-coreutils but also with systemd-coreutils-doc
+
+- Conflict procps-uptime also with busybox-coreutils
+
+- Add upstream commit as d9c96ec0.patch
+  * Fix Issues#413: watch in procps-ng 4.0.6 no longer uses full
+    pane height in tmux
+
+- Now we have a .asc file for procps-ng-4.0.6 as well 
+
+- Update to procps-ng-4.0.6
+  * library
+    version: inc revision to 1 now 1:1:0
+    internal: Use openat for files under /proc/&lt;PID&gt;
+    internal: Don't check for sd_booted                    Debian #1108549
+    internal: Address potential race leading to segfault   issues #380, #390
+  * local: guard SIGPOLL for MacOS                         merge !246
+  * pgrep: Fix unhex breakage for signal numbers           issue #369
+  * pgrep: Match on process ID                             Debian #612146
+  * pgrep: Add process_mrelease                            merge !250
+  * pgrep: Add shell quoting                               merge !248
+  * pgrep: Use pidfd_send_signal()                         issue #207
+  * pgrep.1: Note that we can only go to 100th of second   issue #376
+  * pgrep: Add --quiet option                              issue #404
+  * pmap: add -k option to print raw names from kernel     merge !251
+  * ps: parse --help correctly                             issue #381
+  * ps: Add --delimiter option                             issue #118
+  * ps: ps f forest works under pid 1                      issue #102</comment>
+    <requestid>1335457</requestid>
+  </revision>
 </revisionlist>

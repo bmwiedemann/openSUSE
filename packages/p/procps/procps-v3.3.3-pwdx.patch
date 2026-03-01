@@ -10,5 +10,5 @@
  
 +		errno = 0;
  		if (check_pid_argument(argv[i]))
- 			xerrx(EXIT_FAILURE, _("invalid process id: %s"),
+ 			errx(EXIT_FAILURE, _("invalid process id: %s"),
  			     argv[i]);

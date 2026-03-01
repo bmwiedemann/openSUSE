@@ -1,0 +1,46 @@
+From d089943ab4e1ce1f5e3d44847416a89ceab75147 Mon Sep 17 00:00:00 2001
+From: Craig Small <csmall@dropbear.xyz>
+Date: Mon, 2 Feb 2026 20:36:50 +1100
+Subject: [PATCH] watch: Don't remove 2 lines with -t option
+
+When we use the -t option the height of the screen doesn't
+decrease by 2.
+
+References:
+ #413
+ commit d9c96ec0454206ebaf892184516b08de4004844c
+
+Signed-off-by: Craig Small <csmall@dropbear.xyz>
+---
+ NEWS        | 3 +++
+ src/watch.c | 3 ++-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/NEWS b/NEWS
+index 53f0d58b..f687f274 100644
+--- a/NEWS
++++ b/NEWS
+@@ -1,3 +1,6 @@
++procps-ng-NEXT
++---------------
++  * watch: Dont remove 2 lines when using -t option        issue #413
+ procps-ng-4.0.6
+ ---------------
+   * library
+diff --git a/src/watch.c b/src/watch.c
+index f33c1785..012d95b1 100644
+--- a/src/watch.c
++++ b/src/watch.c
+@@ -1150,7 +1150,8 @@ static void get_terminal_size(void)
+ 			putenv(env_col_buf);
+ 		}
+ 	}
+-        height -= 2;
++        if (!(flags & WATCH_NOTITLE))
++            height -= 2;
+ 
+ 	assert(width > 0 && height > 0);
+ }
+-- 
+GitLab
+

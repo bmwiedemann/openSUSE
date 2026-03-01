@@ -10,7 +10,7 @@ and this causes a problem later on (bsc#908516)
  1 file changed, 5 insertions(+)
 
 --- src/free.c
-+++ src/free.c	2022-10-20 13:33:28.880818112 +0000
++++ src/free.c	2026-01-30 12:02:37.084656375 +0000
 @@ -143,6 +143,7 @@ int main(int argc, char **argv)
  	int c, flags = 0, unit_set = 0, rc = 0;
  	struct commandline_arguments args;
@@ -40,7 +40,7 @@ and this causes a problem later on (bsc#908516)
  			errno = 0;
              args.repeat_interval = (1000000 * strtod_nol_or_err(optarg, "seconds argument failed"));
  			if (args.repeat_interval < 1)
- 				xerrx(EXIT_FAILURE,
+ 				errx(EXIT_FAILURE,
  				     _("seconds argument `%s' is not positive number"), optarg);
 +			errno = errsv;
  			break;

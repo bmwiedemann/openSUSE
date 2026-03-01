@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Fri Feb 27 14:24:27 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- OK ... switch to coreutils-systemd and coreutils-systemd-doc 
+
+-------------------------------------------------------------------
+Fri Feb 27 08:39:35 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Conflict not only with systemd-coreutils but also with systemd-coreutils-doc
+
+-------------------------------------------------------------------
+Wed Feb  4 07:29:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Conflict procps-uptime also with busybox-coreutils
+
+-------------------------------------------------------------------
+Tue Feb  3 10:20:04 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream commit as d9c96ec0.patch
+  * Fix Issues#413: watch in procps-ng 4.0.6 no longer uses full
+    pane height in tmux
+
+-------------------------------------------------------------------
+Mon Feb  2 10:26:18 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Now we have a .asc file for procps-ng-4.0.6 as well 
+
+-------------------------------------------------------------------
+Fri Jan 30 13:47:46 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to procps-ng-4.0.6
+  * library
+    version: inc revision to 1 now 1:1:0
+    internal: Use openat for files under /proc/<PID>
+    internal: Don't check for sd_booted                    Debian #1108549
+    internal: Address potential race leading to segfault   issues #380, #390
+  * local: guard SIGPOLL for MacOS                         merge !246
+  * pgrep: Fix unhex breakage for signal numbers           issue #369
+  * pgrep: Match on process ID                             Debian #612146
+  * pgrep: Add process_mrelease                            merge !250
+  * pgrep: Add shell quoting                               merge !248
+  * pgrep: Use pidfd_send_signal()                         issue #207
+  * pgrep.1: Note that we can only go to 100th of second   issue #376
+  * pgrep: Add --quiet option                              issue #404
+  * pmap: add -k option to print raw names from kernel     merge !251
+  * ps: parse --help correctly                             issue #381
+  * ps: Add --delimiter option                             issue #118
+  * ps: ps f forest works under pid 1                      issue #102
+  * ps: no longer fails with many pids & the 'p' option    issue #387
+  * ps.1: cols and collums alias width option              Debian #926361
+  * ps.1: Add format equivalents                           Debian #925437
+  * ps: avoid potential segfault due to library race       issue #380
+  * ps: Fix -ad option conflict                            issue #395
+  * ps: ppid of 0 is ok, fix parser                        issue #405
+  * slabtop: Increase column width                         Debian #959375
+  * sysctl: Return error if EPERM or EISDIR                merge !228
+  * sysctl: Use options after --system                     Debian #978989
+  * top: provides for ignoring configuration file(s)       issue #365
+  * top: fix legacy configuration file vulnerability       issue #384
+  * top: added a new help screen for specialized keys
+  * top: avoid potential segfault due to library race      issue #390
+  * top: new feature to show physical core percentages
+  * w: Add terminal mode to show all terminal sessions     issue #375
+  * w: Use process TTY as backup for user TTY              Debian #1080335
+  * w: Use correct return value for sd_get_sessions        Debian #1068904
+  * w: Don't check for sd_booted                           Debian #1108549
+  * w: Don't crash with pids in terminal mode              issue #407
+  * watch: Add --follow option                             Debian #469156
+  * watch: 256 color support                               issue #44
+  * watch.1: Warn about -d permanent option                Debian #883
+- No asc file of the source tar ball
+- Remove patch procps-ng-4.0.5-bsc1246330.patch no upstream
+- Add patch glibc-2.43.patch to support glibc 2.43
+- Port patches
+  * procps-ng-3.3.10-errno.patch
+  * procps-ng-3.3.11-pmap4suse.patch
+  * procps-ng-3.3.8-petabytes.patch
+  * procps-ng-3.3.8-readeof.patch
+  * procps-ng-3.3.8-tinfo.dif
+  * procps-ng-3.3.9-w-notruncate.diff
+  * procps-ng-4.0.4-ignore-sysctl_conf.patch
+  * procps-ng-4.0.4-pmapX-not-twice-anymore.patch
+    Now extended as we face EOF errors for pmap -k <pid>
+  * procps-v3.3.3-columns.dif
+  * procps-v3.3.3-pwdx.patch
+
+-------------------------------------------------------------------
+Thu Jul 31 11:21:01 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Split off uptime in a separate package 
+
+-------------------------------------------------------------------
 Fri Jul 11 12:30:21 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch procps-ng-4.0.5-bsc1246330.patch
