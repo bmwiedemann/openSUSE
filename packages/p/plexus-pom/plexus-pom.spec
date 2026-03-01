@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-pom
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           plexus-pom
-Version:        14
+Version:        25
 Release:        0
 Summary:        Root Plexus Projects POM
 License:        Apache-2.0
@@ -41,6 +41,7 @@ Plexus packages.
 %pom_remove_plugin :maven-enforcer-plugin
 %pom_remove_plugin :taglist-maven-plugin
 %pom_remove_plugin :spotless-maven-plugin
+%pom_xpath_remove pom:project/pom:build/pom:extensions
 
 cp -p %{SOURCE1} LICENSE
 
@@ -48,7 +49,7 @@ cp -p %{SOURCE1} LICENSE
 
 %install
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-%mvn_install_pom pom.xml %{buildroot}%{_mavenpomdir}/%{name}/plexus.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/plexus.pom
 %add_maven_depmap %{name}/plexus.pom
 
 %files -f .mfiles

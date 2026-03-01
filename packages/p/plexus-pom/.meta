@@ -5,6 +5,5 @@ executing software projects.  This package provides parent POM for
 Plexus packages.
 
 </description>
-  <devel project="Java:packages" package="plexus-pom"/>
   <url>https://github.com/codehaus-plexus/plexus-pom</url>
 </package>
