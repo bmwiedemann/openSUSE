@@ -2,6 +2,7 @@
 # spec file for package xcoral
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +18,17 @@
 
 
 Name:           xcoral
-Version:        3.50.2
+Version:        4.03.1
 Release:        0
 Summary:        X11 Editor with C/C++/Java Browser
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            http://xcoral.free.fr/
 Source:         http://xcoral.free.fr/xcoral-%{version}.tar.gz
-Patch0:         xcoral-compile.patch
-Patch1:         0001-Fix-to-compile-with-latest-gcc-14.2.1.patch
-BuildRequires:  libXft-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xt)
-Provides:       xcoral21
 
 %description
 Xcoral provides support for working with C, C++, Java, Perl, Ada, and
@@ -44,7 +42,7 @@ Further information about Xcoral and SMAC is available in the detailed
 online help system (also available Postscript format).
 
 %prep
-%autosetup -p1 -n %{name}-%{version}
+%autosetup -p1
 
 %build
 %if %{pkg_vcmp gcc >= 15}

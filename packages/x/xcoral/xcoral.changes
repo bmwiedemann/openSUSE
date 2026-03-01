@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb 14 16:06:11 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 4.03.1:
+  * Edir mode and RCS command updated
+  * bug fixes and cosmetic updates
+- drop xcoral-compile.patch
+- drop 0001-Fix-to-compile-with-latest-gcc-14.2.1.patch
+
+-------------------------------------------------------------------
 Fri Nov  7 18:48:14 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Fix build with GCC 15

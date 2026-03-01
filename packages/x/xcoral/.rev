@@ -177,4 +177,14 @@
     <comment>- Fix build with GCC 15 (forwarded request 1316483 from adkorte)</comment>
     <requestid>1317340</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>19eb60375d085a90b473a3c7bcc9eb0c</srcmd5>
+    <version>4.03.1</version>
+    <time>1772399678</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1333044 from AndreasStieger
+
+xcoral 4.03.1</comment>
+    <requestid>1335514</requestid>
+  </revision>
 </revisionlist>
