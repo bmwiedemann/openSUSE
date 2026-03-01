@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Feb 28 09:41:46 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.58.2:
+  + client: Fix use-after-free when creating async proxy failed
+  + daemon: Fix race on subscribers list when on thread
+  + ftp: Validate fe_size when parsing symlink target
+  + ftp: Check localtime() return value before use
+  + CVE-2026-28295: ftp: Use control connection address for PASV
+    data
+  + CVE-2026-28296: ftp: Reject paths containing CR/LF characters
+  + gphoto2: Use g_try_realloc() instead of g_realloc()
+  + cdda: Reject path traversal in mount URI host
+  + client: Fail when URI has invalid UTF-8 chars
+  + Some other fixes
+
+-------------------------------------------------------------------
 Sat Jan 31 20:29:48 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.58.1:
