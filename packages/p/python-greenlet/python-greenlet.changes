@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 25 09:53:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.3.2
+  * Fix a crash on Python 3.10 if there are active greenlets during
+    interpreter shutdown. See PR 495 by Nicolas Bouvrette.
+
+-------------------------------------------------------------------
 Thu Jan 29 08:40:10 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.3.1
