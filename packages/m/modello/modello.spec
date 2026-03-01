@@ -1,7 +1,7 @@
 #
 # spec file for package modello
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           modello
-Version:        2.5.1
+Version:        2.6.0
 Release:        0
 Summary:        Modello Data Model toolkit
 License:        Apache-2.0 AND MIT
@@ -37,10 +37,11 @@ BuildRequires:  jakarta-inject
 BuildRequires:  javadoc-parser
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsoup
-BuildRequires:  junit
+BuildRequires:  junit5-minimal
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-build-api >= 1.0
 BuildRequires:  plexus-compiler
+BuildRequires:  plexus-testing
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
 BuildRequires:  sisu-inject
@@ -122,7 +123,7 @@ build-jar-repository -s lib \
     jakarta-inject \
     javadoc-parser \
     jsoup \
-    junit \
+    junit5/junit-jupiter-api \
     objectweb-asm/asm \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \

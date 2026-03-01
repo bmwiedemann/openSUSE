@@ -201,4 +201,12 @@
     <comment>Fix warning polution with Java 25</comment>
     <requestid>1315608</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>4586eff08b8471eac72e13aad72cfbe3</srcmd5>
+    <version>2.6.0</version>
+    <time>1772399661</time>
+    <user>dimstar_suse</user>
+    <comment>2.6.0</comment>
+    <requestid>1335481</requestid>
+  </revision>
 </revisionlist>
