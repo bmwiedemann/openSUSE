@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Feb 28 01:36:22 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Don't double escape, just once is enough.
+
+-------------------------------------------------------------------
+Fri Feb 27 07:46:29 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Define %alternatives_requires_exclude macro.
+
+-------------------------------------------------------------------
+Thu Feb 26 01:34:55 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Macro lua_exec for testing
+
+-------------------------------------------------------------------
+Wed Feb 25 22:27:05 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- %lua_value should return just a replaced string, not a tuple
+  like :gsub() method does.
+
+-------------------------------------------------------------------
+Thu Jan 29 20:20:41 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add %lua_value macro, useful for alternatives.
+
+-------------------------------------------------------------------
+Thu Nov  6 19:08:52 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- macros.lua: Fix parsing on older SLE releases. Older RPM
+  versions don't like blank lines in lua macros.
+
+-------------------------------------------------------------------
 Mon Nov  3 00:20:49 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Finally broke %lua_provides to be working. I got stumped by the

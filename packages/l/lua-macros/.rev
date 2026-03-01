@@ -136,4 +136,22 @@
   crazy reformatting of integers.</comment>
     <requestid>1315205</requestid>
   </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>c81d98848cd4eb9c63b95679e98bbdcb</srcmd5>
+    <version>20210827</version>
+    <time>1772399646</time>
+    <user>dimstar_suse</user>
+    <comment>- Define %alternatives_requires_exclude macro.
+
+- Macro lua_exec for testing
+
+- %lua_value should return just a replaced string, not a tuple
+  like :gsub() method does.
+
+- Add %lua_value macro, useful for alternatives.
+
+- macros.lua: Fix parsing on older SLE releases. Older RPM
+  versions don't like blank lines in lua macros.</comment>
+    <requestid>1335528</requestid>
+  </revision>
 </revisionlist>
