@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 23 19:04:52 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.2.1:
+  + Fix grammar in error message (unknown).
+  + Improve engine documentation.
+  + Bump GLib requirement.
+  + Test suite fix (file name).
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jan 23 11:27:36 UTC 2026 - Callum Farmer <gmbr3@opensuse.org>
 
 - Enable vapi support by default needed by Budgie Desktop

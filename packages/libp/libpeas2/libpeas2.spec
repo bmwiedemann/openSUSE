@@ -1,7 +1,7 @@
 #
 # spec file for package libpeas2
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         prj_version 2
 %define         so_version 0
-%define         glib_version 2.74
+%define         glib_version 2.86
 %bcond_without  gtkdoc
 %bcond_without  gibind
 %bcond_without  gjs
@@ -27,7 +27,7 @@
 %bcond_without  vapi
 
 Name:           libpeas2
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        GObject-based Plugin Engine version 2
 License:        LGPL-2.1-or-later
