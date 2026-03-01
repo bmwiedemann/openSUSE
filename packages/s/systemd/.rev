@@ -7912,4 +7912,18 @@ handle manual pages that consist only of a .so directive such as
     b27f791691 terminal-util: stop doing 0/upper bound check in tty_is_vc() (bsc#1255326)</comment>
     <requestid>1332808</requestid>
   </revision>
+  <revision rev="464" vrev="1">
+    <srcmd5>46c7fdee7338962196dcae8148f36572</srcmd5>
+    <version>258.5</version>
+    <time>1772399630</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit 3f0b141e0c35f8f7805a28e8bfb083df9b7ed96b (merge of v258.5)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/8838beb6f391a98ba74c4b4ab2880271af443c54...3f0b141e0c35f8f7805a28e8bfb083df9b7ed96b
+
+- Rename mkosi.local.conf source file to testsuite-mkosi.local.conf:
+  OBS triggers on mkosi.*conf and tries to build this package as an
+  mkosi image.</comment>
+    <requestid>1335466</requestid>
+  </revision>
 </revisionlist>

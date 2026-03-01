@@ -32,9 +32,9 @@
 %bcond_with obs_service_set_version
 
 %if %{without obs_service_set_version}
-%define systemd_version    258.4
+%define systemd_version    258.5
 %define systemd_release    0
-%define archive_version    +suse.18.g8838beb6f3
+%define archive_version    +suse.19.g3f0b141e0c
 %endif
 
 %define _testsuitedir %{_systemd_util_dir}/tests
@@ -196,7 +196,7 @@ Source7:        triggers.systemd
 Source8:        pam.systemd-user
 Source9:        pam.systemd-run0
 Source14:       kbd-model-map.legacy
-Source15:       mkosi.local.conf
+Source15:       testsuite-mkosi.local.conf
 
 Source100:      fixlet-systemd-post.sh
 
