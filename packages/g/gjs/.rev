@@ -1846,4 +1846,12 @@ New stable rel</comment>
     <comment>Stable rel; test suite could be re-enabled (forwarded request 1305297 from dimstar)</comment>
     <requestid>1305519</requestid>
   </revision>
+  <revision rev="122" vrev="2">
+    <srcmd5>3ebd5eb0f06870e3efaf8df2c29388e0</srcmd5>
+    <version>1.86.0</version>
+    <time>1772399652</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1335554</requestid>
+  </revision>
 </revisionlist>

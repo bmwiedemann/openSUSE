@@ -1,7 +1,7 @@
 #
 # spec file for package gjs
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,9 @@ License:        LGPL-2.0-or-later AND MIT
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Gjs
 Source0:        %{name}-%{version}.tar.zst
+
+# PATCH-FIX-UPSTREAM gjs-gi-Allow-optional-inout-arguments-to-be-null.patch glgo#GNOME/gjs!1047 bsc#1258964 xwang@suse.com -- Allow optional inout arguments to be null
+Patch1:         gjs-gi-Allow-optional-inout-arguments-to-be-null.patch
 
 BuildRequires:  /usr/bin/dbus-run-session
 BuildRequires:  c++_compiler

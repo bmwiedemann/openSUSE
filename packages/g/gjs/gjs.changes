@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 28 01:39:59 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gjs-gi-Allow-optional-inout-arguments-to-be-null.patch:
+  Allow optional inout arguments to be null
+  (glgo#GNOME/gjs!1047 bsc#1258964).
+
+-------------------------------------------------------------------
 Wed Sep 17 05:40:06 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.86.0:
