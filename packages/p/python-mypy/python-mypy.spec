@@ -137,7 +137,7 @@ rm docs/make.bat
 
 %if %{with test}
 %check
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %{python_expand # self-check with manually provided stubs for typed_ast
 export PYTHONPATH=%{buildroot}%{$python_sitelib}:./mystubs
 # hardcode minimum 3.10 here because pytest 9 dropped 3.9 support and mypy itself has some compatibility code for <3.11

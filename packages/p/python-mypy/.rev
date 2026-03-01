@@ -664,4 +664,12 @@ reveal_type(Context[MyBot]().bot)
   * Do not sort unused error codes in unused error codes warning</comment>
     <requestid>1330659</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>65794b08b5bbe7f4cd50269790a58393</srcmd5>
+    <version>1.19.1</version>
+    <time>1772399619</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1335238</requestid>
+  </revision>
 </revisionlist>
