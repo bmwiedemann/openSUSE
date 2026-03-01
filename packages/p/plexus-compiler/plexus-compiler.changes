@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Feb 27 15:10:24 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream release 2.16.2
+  * Bug Fixes
+    + Fixed ConcurrentModificationException on compilerArguments
+  * Dependency updates
+    + Bump org.codehaus.plexus:plexus from 24 to 25
+    + Bump org.codehaus.plexus:plexus-testing from 2.0.1 to 2.1.0
+    + Bump actions/checkout from 4 to 6
+    + Bump org.eclipse.jdt:ecj from 3.43.0 to 3.44.0
+
+-------------------------------------------------------------------
+Fri Feb 27 15:06:41 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream release 2.16.1
+  * Bug Fixes
+    + Fix detecting java version for JDK 1.8
+    + #420: fix detection of java version when JAVA_TOOL_OPTIONS
+      is set
+  * Dependency updates
+    + Bump actions/checkout from 5 to 6
+
+-------------------------------------------------------------------
+Fri Feb 27 15:01:46 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream release 2.16.0
+  * New features and improvements
+    + Added 3 MSVC csharp compiler options
+    + Bump ErrorProne to 2.37.0 - requires Java 17
+  * Bug Fixes
+    + Fix Zip Slip vulnerability in JAR extraction
+    + Fixed wrong excludes management
+  * Maintenance
+    + Replace FileUtils.deleteDirectory(File) with JDK provided API
+    + chore: remove junit3 references
+    + Update Java version checks to include JDK 25
+    + Include JDK 24 in CI
+    + Apply spotless re-formatting
+    + Create codeql.yml
+    + Pass tests with Java 22 and 23
+  * Dependency updates
+    + Bump com.google.guava:guava to 33.5.0-jre
+    + Bump eclipse.sisu.version from 0.9.0.M3 to 0.9.0.M4
+    + Bump org.codehaus.plexus:plexus to 24
+    + Bump org.codehaus.plexus:plexus-testing to 2.0.1
+    + Bump org.codehaus.plexus:plexus-utils to 4.0.2
+    + Bump org.codehaus.plexus:plexus-xml from 3.0.0 to 3.0.1
+    + Bump org.eclipse.jdt:ecj to 3.43.0
+    + Bump org.hamcrest:hamcrest from 2.2 to 3.0
+
+-------------------------------------------------------------------
 Tue Jul 22 07:27:28 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream release 2.15.0

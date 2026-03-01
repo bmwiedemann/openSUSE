@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-compiler
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           plexus-compiler
-Version:        2.15.0
+Version:        2.16.2
 Release:        0
 Summary:        Compiler call initiators for Plexus
 License:        Apache-2.0 AND MIT
