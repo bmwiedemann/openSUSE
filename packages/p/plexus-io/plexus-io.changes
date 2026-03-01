@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Feb 27 14:49:11 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.6.0
+  * Maintenance
+    + JUnit Jupiter best practices
+    + Replace FileUtils.deleteDirectory(File) with JDK provided API
+    + Close DeferredFileOutputStream to prevent
+      FileNotFoundException on temp files
+    + Handle IOException when retrieving file ownership on WSL2
+      network drives
+  * Dependency updates
+    + Bump org.codehaus.plexus:plexus-testing to 2.0.1
+    + Bump org.codehaus.plexus:plexus from 23 to 24
+
+-------------------------------------------------------------------
+Fri Feb 27 14:47:04 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.5.2
+  * Dependency updates
+    + Bump org.codehaus.plexus:plexus from 18 to 23
+    + Bump eclipseSisuVersion from 0.9.0.M3 to 0.9.0.M4
+    + Bump commons-io:commons-io from 2.16.1 to 2.20.0
+    + Bump org.codehaus.plexus:plexus-testing from 1.4.0 to 1.6.0
+    + Cleanup dependencies
+
+-------------------------------------------------------------------
 Tue Oct  7 12:40:10 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 3.5.1
