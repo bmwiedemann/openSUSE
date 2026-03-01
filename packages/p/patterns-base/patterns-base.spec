@@ -78,7 +78,7 @@ Requires:       apparmor-profiles
 Requires:       pattern() = minimal_base
 Recommends:     apparmor-docs
 Recommends:     apparmor-utils
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 Recommends:     yast2-apparmor
 %endif
 Suggests:       pam_apparmor
@@ -386,7 +386,7 @@ Requires:       pattern() = base
 %if 0%{?is_opensuse}
 Recommends:     pattern() = documentation
 Recommends:     pattern() = sw_management
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 Recommends:     pattern() = yast2_basis
 %endif
 %else
@@ -798,7 +798,7 @@ This pattern provides a graphical application and a command line tool for keepin
 ################################################################################
 
 # Do not build it on Leap 16
-%if !(0%{?is_opensuse} && 0%{?suse_version} == 1600) || 0%{?is_leapmicro}
+%if !(0%{?is_opensuse} && 0%{suse_version} >= 1600 && 0%{suse_version} < 1699) || 0%{?is_leapmicro}
 %package immutable_base
 %pattern_basetechnologies
 Summary:        Immutable Base System
@@ -986,7 +986,7 @@ Recommends:     myrlyn
 Requires:       pattern() = enhanced_base
 Requires:       pattern() = fonts
 Requires:       pattern() = x11
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 Recommends:     pattern() = x11_yast
 Recommends:     pattern() = yast2_desktop
 %endif
@@ -1014,7 +1014,7 @@ Recommends:     xdmbgrd
 Recommends:     xkeyboard-config
 Recommends:     xorg-x11-fonts
 Recommends:     xorg-x11-fonts-core
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 Recommends:     yast2-control-center-gnome
 # Recommend yast2-network until the Generic Desktop Role defaults to NetworkManager
 # At worst people need a way to switch from Wicked to NetworkManager.
@@ -1150,7 +1150,7 @@ Requires:       xtermset
 Requires:       xvinfo
 Requires:       xwd
 Requires:       xwininfo
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 Requires:       yast2-control-center-qt
 Requires:       yast2-packager
 Requires:       yast2-snapper
@@ -1193,7 +1193,7 @@ done
 
 # These packages don't generate a 32bit pattern
 for i in basesystem bootloader documentation fips selinux kdump \
-%if !(0%{?is_opensuse} && 0%{?suse_version} == 1600) || 0%{?is_leapmicro}
+%if !(0%{?is_opensuse} && 0%{suse_version} >= 1600 && 0%{suse_version} < 1699) || 0%{?is_leapmicro}
 immutable_base \
 %endif
 %if !0%{?is_opensuse} && 0%{?suse_version} >= 1600
