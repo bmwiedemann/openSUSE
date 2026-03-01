@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 11 15:51:02 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.0:
+  New Features:
+  * Added keyboard shortcuts for headings
+  * Clears headings when pressing enter
+  General:
+  * Replaced shadowed variable names
+  * Switched to KDSingleApplication
+  * Updated link to translations
+  Bug Fixes:
+  * FIXED: Did not play sound effects for smart quotes
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue Aug 19 06:15:57 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.13:

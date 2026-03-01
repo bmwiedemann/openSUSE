@@ -298,4 +298,24 @@
     <comment></comment>
     <requestid>1300407</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>2e931399417edfbbcee1898231208d13</srcmd5>
+    <version>1.9.0</version>
+    <time>1772399677</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1332514 from jubalh
+
+- Update to 1.9.0:
+  New Features:
+  * Added keyboard shortcuts for headings
+  * Clears headings when pressing enter
+  General:
+  * Replaced shadowed variable names
+  * Switched to KDSingleApplication
+  * Updated link to translations
+  Bug Fixes:
+  * FIXED: Did not play sound effects for smart quotes
+  * Translation Updates</comment>
+    <requestid>1335513</requestid>
+  </revision>
 </revisionlist>
