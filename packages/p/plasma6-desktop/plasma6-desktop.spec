@@ -166,6 +166,8 @@ Requires:       kde-gtk-config6
 Requires:       kf6-knewstuff-imports >= %{kf6_version}
 # needed for the ActivityManager
 Requires:       plasma6-activities-imports >= %{_plasma6_bugfix}
+# Needed by Kickoff
+Requires:       qt6qmlimport(org.kde.plasma.plasma5support)
 # Only when WebEngine is available
 %ifarch aarch64 x86_64 riscv64
 # Needed for the OpenDesktop integration

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 27 14:27:54 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add explicit dependency on qt6qmlimport(org.kde.plasma.plasma5support)
+  (boo#1258948)
+
+-------------------------------------------------------------------
 Tue Feb 24 17:21:45 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.1:
