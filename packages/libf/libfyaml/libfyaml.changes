@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Feb 28 07:31:09 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.9.5. Check https://github.com/pantoniou/libfyaml/releases/tag/v0.9.5
+  for the complete changelog
+  API Additions:
+  * fy_node_mapping_sort(): Sort a single mapping's keys without
+    recursing into child nodes (was previously internal-only)
+  * enum fy_collection_style / fy_token_collection_style(): Query
+    the style (block or flow) of a collection token
+  * fy_token_style_start_mark() / fy_token_style_end_mark(): Get
+    token start/end source positions including style indicators
+  * fy_event_style_start_mark() / fy_event_style_end_mark(): Get
+    event start/end source positions including style indicators
+  * fy_document_state_shorten_tag(): Shorten a tag using the
+    document state's tag directives
+  New Emitter Options:
+  * FYEXCF_INDENTED_SEQ_IN_MAP: Indent block sequences that are
+    values of a mapping key (fy-tool: --indented-seq-in-map)
+  * FYEXCF_PRESERVE_FLOW_LAYOUT: Preserve oneline flow collections
+    when re-emitting in streaming mode (fy-tool: --preserve-flow-layout)
+
+-------------------------------------------------------------------
 Wed Feb 11 08:47:21 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.9.4

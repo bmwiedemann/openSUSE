@@ -19,7 +19,7 @@
 %define lib_name libfyaml0
 
 Name:           libfyaml
-Version:        0.9.4
+Version:        0.9.5
 Release:        0
 Summary:        YAML 1.2 parser and emitter
 License:        MIT
