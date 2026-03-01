@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb 22 17:43:19 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.12.10:
+  * Make path splitting algorithm UNC-aware
+  * Update utarray.h to 2.3.0
+  * Miscellaneous fixes
+- drop 0001-Generate-output-directories-before-building-manpages.patch
+
+-------------------------------------------------------------------
 Fri May 23 16:28:56 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Fix intermittent build failure (bsc#1243568): Add

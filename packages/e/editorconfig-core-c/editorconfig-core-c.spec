@@ -2,7 +2,7 @@
 # spec file for package editorconfig-core-c
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           editorconfig-core-c
-Version:        0.12.9
+Version:        0.12.10
 Release:        0
 Summary:        EditorConfig core library written in C
 License:        BSD-2-Clause AND BSD-3-Clause
@@ -26,8 +26,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://editorconfig.org/
 Source:         https://github.com/editorconfig/editorconfig-core-c/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM 0001-Generate-output-directories-before-building-manpages.patch bsc#1243568 mgorse@suse.com -- fix intermittent build failure when generating man pages.
-Patch0:         0001-Generate-output-directories-before-building-manpages.patch
 BuildRequires:  cmake >= 3.16.3
 BuildRequires:  doxygen
 BuildRequires:  pkgconfig
@@ -86,9 +84,7 @@ This package contains files for developing and building with %{name}
 %autosetup -p1
 
 %build
-%cmake \
-	-DLIB_SUFFIX=%{_lib} \
-	%{nil}
+%cmake
 %make_build
 
 %install
@@ -102,20 +98,21 @@ find %{buildroot}/%{_libdir} -type f -name "*.a" -print -delete
 
 %files -n editorconfig
 %license LICENSE
-%{_bindir}/editorconfig*
-%{_mandir}/man1/editorconfig*
-%{_mandir}/man5/editorconfig*
+%{_bindir}/editorconfig
+%{_bindir}/editorconfig-%{version}
+%{_mandir}/man1/*.1%{?ext_man}
+%{_mandir}/man5/*.5%{?ext_man}
 
 %files -n libeditorconfig0
 %license LICENSE
-%{_libdir}/libeditorconfig.so.0*
+%{_libdir}/libeditorconfig.so.0{,.*}
 
 %files -n libeditorconfig-devel
 %license LICENSE
 %doc CONTRIBUTORS README.md
 %{_includedir}/editorconfig
 %{_libdir}/libeditorconfig.so
-%{_mandir}/man3/editorconfig*
+%{_mandir}/man3/*.3%{?ext_man}
 %{_libdir}/pkgconfig/editorconfig.pc
 %{_libdir}/cmake/EditorConfig
 

@@ -112,4 +112,14 @@
     <comment></comment>
     <requestid>1283567</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4f0155ab369fa643d278febd0a9c3f46</srcmd5>
+    <version>0.12.10</version>
+    <time>1772399641</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1334365 from AndreasStieger
+
+editorconfig-core-c 0.12.10</comment>
+    <requestid>1335516</requestid>
+  </revision>
 </revisionlist>
