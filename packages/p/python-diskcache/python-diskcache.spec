@@ -1,7 +1,7 @@
 #
 # spec file for package python-diskcache
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%if 0%{?suse_version} == 1600 || 0%{?suse_version} == 1500
-# No django in SLFO:Main or SLE15
+%if 0%{?suse_version} >= 1600 && 0%{?is_opensuse} == 0
+# No django in SLFO:Main
 %bcond_with django
 %else
 %bcond_without django

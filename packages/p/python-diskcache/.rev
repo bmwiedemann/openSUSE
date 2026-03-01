@@ -143,4 +143,12 @@
   * Support pathlib.Path as directory argument</comment>
     <requestid>1290787</requestid>
   </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>129eba22d2ce8eb910244a4fcdd7fe30</srcmd5>
+    <version>5.6.3</version>
+    <time>1772399627</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1335272</requestid>
+  </revision>
 </revisionlist>

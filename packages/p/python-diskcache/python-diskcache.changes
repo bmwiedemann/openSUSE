@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 26 10:19:10 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Fix the condition with suse_version macro on SLFO (jsc#PED-15836)
+  * enable django build on SLE 15
+
+-------------------------------------------------------------------
 Sat Jul  5 14:53:34 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - disable django support on SLE15 also
