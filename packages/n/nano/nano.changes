@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  4 18:33:51 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU nano 8.7.1:
+  * fix build against glibc-2.43 (boo#1258260)
+
+-------------------------------------------------------------------
 Sat Nov 15 09:19:41 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU nano 8.7:
