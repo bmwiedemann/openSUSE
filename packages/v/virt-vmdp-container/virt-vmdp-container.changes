@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Feb 27 21:29:46 UTC 2026 - Kirk Allan <kallan@suse.com>
+
+- Updates in VMDP-WIN-2.5.5.1:
+  https://github.com/SUSE/vmdp/releases/tag/v2.5.5.1
+
+- Added WHQL signed drivers for the RTL_QUERY_REGISTRY_TYPECHECK fix.
+- Added RTL_QUERY_REGISTRY_TYPECHECK to calls to RtlQueryRegistryValues.
+- Cleanedup deprecated ExAlloc calls by using the workaround macros and
+  defining POOL_ZERO_DOWN_LEVEL_SUPPORT for pvvxbn, fwcfg, virtio_fs,
+  virtio_rng, and virtio_serial for w2k12 through w2k19.  Newer versions
+  of Windows use the new ExAlloc calls.
+- Cleaned up compiler warnings that were manifested with compiler updates.
+- Fixed setup from copying drivers to \windows\system32\drivers for w2k22
+  and w2k25.
+- Removed the utilities\x86ex directory and files from the media layout.
+  There is no x86 OS that use the functionality contained in those files.
+- Fixed a Driver Verifier crash in pvvxnet on Xen when shutting down or
+  restarting the driver after a save/restore of the vm.  Memory wasn't
+  being freed on the restore.
+
+Known issues:
+- Drivers are not removed from \windows\system32\drivers directory during
+  uninstall for w2k16 and w2k19.  This is due to the PnpLockdown=1 in the
+  driver inf files which was required for attestation signed drivers.
+
+-------------------------------------------------------------------
 Mon Jul 14 14:24:27 UTC 2025 - Kirk Allan <kallan@suse.com>
 
 - Updates in VMDP-WIN-2.5.5: https://github.com/SUSE/vmdp/releases/tag/v2.5.5
