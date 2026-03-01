@@ -1,7 +1,6 @@
 #
 # spec file for package ignition
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +17,7 @@
 
 
 Name:           ignition
-Version:        2.25.1
+Version:        2.26.0
 Release:        0
 Summary:        First boot installer and configuration tool
 License:        Apache-2.0

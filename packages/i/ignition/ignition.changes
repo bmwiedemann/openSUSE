@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 27 14:44:20 UTC 2026 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.26.0:
+  * Mark the 3.6.0 config spec as stable
+  * No longer accept configs with version 3.6.0-experimental
+  * Create new 3.7.0-experimental config spec from 3.6.0
+  * Include groupmod binary in initramfs
+- Update 0002-allow-multiple-mounts-of-same-device.patch to match
+  new spec version
+
+-------------------------------------------------------------------
 Fri Jan 16 14:12:31 UTC 2026 - Antonio Feijoo <antonio.feijoo@suse.com>
 
 - Adapt code to the new initrd services provided by NetworkManager

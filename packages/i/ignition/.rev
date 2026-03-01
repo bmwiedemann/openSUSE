@@ -913,4 +913,19 @@ This makes it possible to use Ignition also on bare metal (e.g. when dumping ima
     <comment></comment>
     <requestid>1328545</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>fe3a22d84d8f1a223f548873a46048ac</srcmd5>
+    <version>2.26.0</version>
+    <time>1772399629</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.26.0:
+  * Mark the 3.6.0 config spec as stable
+  * No longer accept configs with version 3.6.0-experimental
+  * Create new 3.7.0-experimental config spec from 3.6.0
+  * Include groupmod binary in initramfs
+- Update 0002-allow-multiple-mounts-of-same-device.patch to match
+  new spec version
+</comment>
+    <requestid>1335462</requestid>
+  </revision>
 </revisionlist>
