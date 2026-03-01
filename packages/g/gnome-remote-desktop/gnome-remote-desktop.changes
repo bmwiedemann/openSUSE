@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 25 08:16:34 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.3:
+  + Fix crashes
+  + Updated translations.
+- Refresh patch with quilt:
+  + 0009-rdp-server-Throttle-connections-using-GrdThrottler.patch
+
+-------------------------------------------------------------------
 Tue Feb 10 23:09:37 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Backport connection throttling (bsc#1244053 CVE-2025-5024
