@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 25 02:47:08 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add libsoup-CVE-2026-1539.patch: Also remove Proxy-Authorization
+  header on cross origin redirect
+  (bsc#1257441, CVE-2026-1539, glgo#GNOME/libsoup#489).
+
+-------------------------------------------------------------------
 Fri Feb 20 16:21:32 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Rebase and re-enable libsoup-CVE-2026-2708.patch.
@@ -57,8 +64,20 @@ Fri Feb 20 15:30:11 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
   + libsoup-CVE-2026-1761.patch
   + libsoup-CVE-2026-2369.patch
   + libsoup-CVE-2026-2443.patch
+  + libsoup-CVE-2026-1467.patch
+  + libsoup-CVE-2026-1760.patch
 - libsoup-CVE-2026-2708.patch temporarily disabled while we need to
   rebase it.  
+
+-------------------------------------------------------------------
+Thu Feb 20 14:51:21 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add libsoup-CVE-2026-1467.patch: uri-utils: do host validation
+  when checking if a GUri is valid 
+  (bsc#1257398, CVE-2026-1467, glgo#GNOME/libsoup#488).
+- Add libsoup-CVE-2026-1760.patch: server: close the connection
+  after responsing a request containing...
+  (bsc#1257597, CVE-2026-1760, glgo#GNOME/libsoup#475).
 
 -------------------------------------------------------------------
 Thu Feb 19 20:50:20 UTC 2026 - Michael Gorse <mgorse@suse.com>
