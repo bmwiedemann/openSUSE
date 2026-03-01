@@ -7360,4 +7360,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.19.3 &amp; other fixes; bugs: bsc#1012628 bsc#1257601</comment>
     <requestid>1334107</requestid>
   </revision>
+  <revision rev="826" vrev="1">
+    <srcmd5>b1c39fb785131ded0dd56e193d53c292</srcmd5>
+    <version>6.19.5</version>
+    <time>1772399636</time>
+    <user>dimstar_suse</user>
+    <comment>fixed KMPs &amp; 6.19.5 &amp; 6.19.4 &amp; other fixes &amp; drop virtualbox workaround; bugs: bsc#1012628 bsc#1258262 bsc#1258455 bsc#1259020</comment>
+    <requestid>1335569</requestid>
+  </revision>
 </revisionlist>
