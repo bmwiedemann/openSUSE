@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 24 23:00:24 UTC 2026 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- Factor out man pages of sub-package coreutils-systemd into
+  sub-package coreutils-systemd-doc to avoid conflicts with
+  newer procps.
+- Add patch coreutils-sclp-terminfo-coloring.patch
+  * Support sclp terminfo entries on s390/x
+
+-------------------------------------------------------------------
 Mon Feb  9 13:44:35 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Skip env-signal-handler test in qemu emulation

@@ -1,0 +1,20 @@
+The new sclp terminfo entry support ANSI colors (s390/x).
+
+Contributed by: Dr. Werner Fink <werner@suse.de>
+
+---
+ src/dircolors.hin |    1 +
+ 1 file changed, 1 insertion(+)
+
+Index: src/dircolors.hin
+===================================================================
+--- src/dircolors.hin.orig
++++ src/dircolors.hin
+@@ -43,6 +43,7 @@ TERM tmux*
+ TERM vt100
+ TERM vt220
+ TERM xterm*
++TERM sclp*
+ 
+ # ===================================================================
+ # Basic file attributes

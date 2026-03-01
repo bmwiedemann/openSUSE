@@ -48,6 +48,7 @@ Patch8:         coreutils-sysinfo.patch
 Patch100:       coreutils-build-timeout-as-pie.patch
 # Assorted fixes
 Patch113:       coreutils-misc.patch
+Patch114:       coreutils-sclp-terminfo-coloring.patch
 # Skip 2 valgrind'ed sort tests on ppc/ppc64 which would fail due to
 # a glibc issue in mkstemp.
 Patch300:       coreutils-skip-some-sort-tests-on-ppc.patch
@@ -136,6 +137,19 @@ BuildArch:      noarch
 This package contains the documentation for the GNU Core Utilities.
 
 # ================================================
+
+%package systemd-doc
+Summary:        Documentation for the package coreutils-systemd
+Group:          Documentation/Man
+Supplements:    (coreutils-systemd and patterns-base-documentation)
+BuildArch:      noarch
+
+%description systemd-doc
+This package contains the man pages for the GNU Core Utilities,
+package coreutils-systemd:
+  pinky uptime users who
+
+# ================================================
 %lang_package
 
 %prep
@@ -149,6 +163,7 @@ This package contains the documentation for the GNU Core Utilities.
 %patch -P 100
 %endif
 %patch -P 113
+%patch -P 114
 
 %patch -P 300
 
@@ -218,6 +233,8 @@ echo 'exit 77' > tests/env/env-signal-handler.sh
 %install
 %if "%{name}" == "coreutils" || "%{name}" == "coreutils-single"
 make install DESTDIR=%{buildroot} pkglibexecdir=%{_libdir}/%{name}
+# Remove coreutils-systemd utilities.
+rm -fv %{buildroot}%{_bindir}/{pinky,uptime,users,who}
 
 echo '.so man1/test.1' > %{buildroot}/%{_mandir}/man1/\[.1
 %if "%{name}" == "coreutils"
@@ -225,7 +242,10 @@ echo '.so man1/test.1' > %{buildroot}/%{_mandir}/man1/\[.1
 # add LC_TIME directories to lang package
 awk '/LC_TIME/ {a=$2; gsub(/\/[^\/]+\.mo/,"", a); print "%%dir", a} {print}' < coreutils.lang > tmp
 mv tmp coreutils.lang
+# Remove coreutils-systemd documentation.
+rm -fv %{buildroot}%{_mandir}/man1/{pinky,uptime,users,who}*
 %else
+# single
 rm -rf %{buildroot}%{_mandir}
 rm -rf %{buildroot}%{_infodir}
 rm -rf %{buildroot}%{_datadir}/locale
@@ -234,7 +254,9 @@ rm -rf %{buildroot}%{_datadir}/locale
 %endif
 %if "%{name}" == "coreutils-systemd"
 mkdir -p %{buildroot}%{_bindir}
-install src/{pinky,uptime,users,who} %{buildroot}%{_bindir}/
+install -v src/{pinky,uptime,users,who} %{buildroot}%{_bindir}/
+mkdir -p %{buildroot}%{_mandir}/man1
+install -vm 644 man/{pinky,uptime,users,who}.1 %{buildroot}%{_mandir}/man1
 %endif
 
 # ================================================
@@ -256,10 +278,6 @@ install src/{pinky,uptime,users,who} %{buildroot}%{_bindir}/
 
 %license COPYING
 %doc NEWS README THANKS
-%exclude %{_bindir}/pinky
-%exclude %{_bindir}/uptime
-%exclude %{_bindir}/users
-%exclude %{_bindir}/who
 %{_bindir}/*
 %{_libdir}/%{name}
 
@@ -278,6 +296,17 @@ install src/{pinky,uptime,users,who} %{buildroot}%{_bindir}/
 %{_bindir}/uptime
 %{_bindir}/users
 %{_bindir}/who
+%exclude %{_mandir}/man1/pinky.1%{?ext_man}
+%exclude %{_mandir}/man1/uptime.1%{?ext_man}
+%exclude %{_mandir}/man1/users.1%{?ext_man}
+%exclude %{_mandir}/man1/who.1%{?ext_man}
+
+# systemd-doc
+%files doc
+%{_mandir}/man1/pinky.1%{?ext_man}
+%{_mandir}/man1/uptime.1%{?ext_man}
+%{_mandir}/man1/users.1%{?ext_man}
+%{_mandir}/man1/who.1%{?ext_man}
 
 %else
 
