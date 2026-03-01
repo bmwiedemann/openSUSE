@@ -16,8 +16,6 @@
 #
 
 
-%define SLE_VERSION 1600
-
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -38,7 +36,7 @@ ExclusiveArch:  x86_64 aarch64
 %endif
 
 # Disable wxWidgets backend in Factory Ring 1 (Minimal-X) and SLE <= 16
-%if %{with ringdisabled} || 0%{?suse_version} <= %SLE_VERSION
+%if %{with ringdisabled} || 0%{?suse_version} < 1699
 %bcond_with wx
 %else
 %bcond_without wx
@@ -127,7 +125,7 @@ BuildRequires:  %{python_module cairo >= 1.14.0}
 BuildRequires:  %{python_module cairocffi >= 0.8}
 # /SECTION cairo
 # SECTION nbagg backend tests: not in Minimal-X or SLE <= 16
-%if %{without ringdisabled} && 0%{?suse_version} > %SLE_VERSION
+%if %{without ringdisabled} && 0%{?suse_version} >= 1699
 BuildRequires:  %{python_module matplotlib-nbagg = %{version}}
 BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module nbformat}
@@ -137,7 +135,7 @@ BuildRequires:  %{python_module nbformat}
 %if %{with qt}
 BuildRequires:  %{python_module PyQt6}
 BuildRequires:  %{python_module matplotlib-qt = %{version}}
-%if %{without ringdisabled} && 0%{?suse_version} > %SLE_VERSION
+%if %{without ringdisabled} && 0%{?suse_version} >= 1699
 # Don'test Pyside6 in Minimal-X or Leap <=16
 BuildRequires:  python3-pyside6
 %endif
@@ -368,7 +366,7 @@ skip_tests+=" or (test_getattr and gtk3)"
 skip_tests+=" or test_determinism_check or test_determinism_source_date_epoch"
 
 # Fails in SLFO:Main
-%if 0%{?suse_version} <= %SLE_VERSION
+%if 0%{?suse_version} < 1699
 # Timeout, this test freeze forever
 skip_tests+=" or test_determinism"
 skip_tests+=" or test_pcolormesh[png] or test_pcolormesh_alpha[png]"
@@ -503,7 +501,7 @@ $python -m pytest --pyargs matplotlib.tests \
 %{python_sitearch}/matplotlib/backends/_backend_gtk.py
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/_backend_gtk.*.py*
 
-%if 0%{?suse_version} > %SLE_VERSION
+%if 0%{?suse_version} >= 1699
 %files %{python_files nbagg}
 %license LICENSE/
 %{python_sitearch}/matplotlib/backends/backend_nbagg.py*

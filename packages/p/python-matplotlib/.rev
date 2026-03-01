@@ -1117,4 +1117,13 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
 - Upstream patch correct-reset-mock.patch, gh#matplotlib/matplotlib#31153</comment>
     <requestid>1333726</requestid>
   </revision>
+  <revision rev="127" vrev="3">
+    <srcmd5>6f8fca18c7f170163dba1dadab7aa025</srcmd5>
+    <version>3.10.8</version>
+    <time>1772399625</time>
+    <user>dimstar_suse</user>
+    <comment>- Adapt %suse_version checks to support new %suse_version design for
+  16.1 and following (1610, 1620, 1630...)</comment>
+    <requestid>1335268</requestid>
+  </revision>
 </revisionlist>

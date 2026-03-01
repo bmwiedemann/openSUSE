@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 26 11:39:37 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Adapt %suse_version checks to support new %suse_version design for
+  16.1 and following (1610, 1620, 1630...)
+
+-------------------------------------------------------------------
 Wed Feb 18 10:11:22 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - TST: Use correct method of clearing mock objects
