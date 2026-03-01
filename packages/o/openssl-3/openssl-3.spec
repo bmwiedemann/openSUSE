@@ -261,6 +261,7 @@ export MACHINE=armv6l
 %ifarch x86_64 aarch64 ppc64le
     enable-ec_nistp_64_gcc_128 \
 %endif
+    enable-md2 \
     enable-fips \
     enable-fips-jitter \
     enable-jitter \

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 27 10:09:35 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
+
+- Enable MD2 in legacy provider ( jsc#PED-15724 )  
+
+-------------------------------------------------------------------
 Fri Jan 30 19:14:25 UTC 2026 - Giuliano Belinassi <giuliano.belinassi@suse.com>
 
 - Do not guard ulp-macros with arch x86-64.
