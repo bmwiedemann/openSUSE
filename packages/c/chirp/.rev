@@ -464,4 +464,12 @@
     <comment></comment>
     <requestid>1334259</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>ee4fc35398a0ba08809e6089f43ea18c</srcmd5>
+    <version>20260227</version>
+    <time>1772399702</time>
+    <user>dimstar_suse</user>
+    <comment>chirp 20260227 (forwarded request 1335603 from AndreasStieger)</comment>
+    <requestid>1335604</requestid>
+  </revision>
 </revisionlist>

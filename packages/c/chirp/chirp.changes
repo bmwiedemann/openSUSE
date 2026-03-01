@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar  1 07:55:06 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260227:
+  * add Retevis RT21H
+  * d7: Avoid breaking settings load for individual failures
+
+-------------------------------------------------------------------
 Sat Feb 21 10:11:23 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260220:
