@@ -119,4 +119,12 @@
   + Fix several crashes and rendering issues. (forwarded request 1323986 from iznogood)</comment>
     <requestid>1324253</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6758f3434396b62c8c0e4fa358ea9b79</srcmd5>
+    <version>2.50.5</version>
+    <time>1772399690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1335557</requestid>
+  </revision>
 </revisionlist>

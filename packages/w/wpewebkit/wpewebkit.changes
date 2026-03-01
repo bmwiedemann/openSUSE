@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 24 13:57:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.50.5:
+  + Fix checking whether a view is active on gamepad input when
+    using WPEPlatform.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
 Sun Dec 21 15:22:50 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Update to version 2.50.2:
+- Update to version 2.50.4:
   + Correctly handle the program name passed to the sleep disabler.
   + Ensure GStreamer is initialized before applying quirks.
   + Fix usage of the cache API in nested workers.

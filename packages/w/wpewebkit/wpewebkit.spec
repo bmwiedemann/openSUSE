@@ -1,7 +1,7 @@
 #
 # spec file for package wpewebkit
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Name:           wpewebkit
 %ifarch %{ix86} %{arm}
 %define _lto_cflags %{nil}
 %endif
-Version:        2.50.4
+Version:        2.50.5
 Release:        0
 Summary:        Library for rendering web content, WPE Port
 License:        BSD-3-Clause AND LGPL-2.1-only
