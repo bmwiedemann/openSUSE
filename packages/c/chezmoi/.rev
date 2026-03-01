@@ -1107,4 +1107,26 @@
 </comment>
     <requestid>1327270</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>3b5114720015cf7b3cd88267999d839b</srcmd5>
+    <version>2.69.4</version>
+    <time>1772399668</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.69.4:
+  - Features
+    * feat: Prefer PowerShell Core (pwsh) for .ps1 scripts
+  - Documentation
+    * docs: Link chattr reference with attributes
+    * docs: Make no-LLM contribution policy clearer
+- Update to version 2.69.3:
+  - Fixes
+    * fix: Empty commit to re-trigger release process
+- Update to version 2.69.2:
+  - Features
+    * feat: Add --include and --exclude flags to unmanaged command
+  - Fixes
+    * fix: Make joinPath template func accept string-like values
+</comment>
+    <requestid>1335493</requestid>
+  </revision>
 </revisionlist>

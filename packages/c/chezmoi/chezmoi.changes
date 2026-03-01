@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb 13 17:37:06 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.69.4:
+  - Features
+    * feat: Prefer PowerShell Core (pwsh) for .ps1 scripts
+  - Documentation
+    * docs: Link chattr reference with attributes
+    * docs: Make no-LLM contribution policy clearer
+- Update to version 2.69.3:
+  - Fixes
+    * fix: Empty commit to re-trigger release process
+- Update to version 2.69.2:
+  - Features
+    * feat: Add --include and --exclude flags to unmanaged command
+  - Fixes
+    * fix: Make joinPath template func accept string-like values
+
+-------------------------------------------------------------------
 Wed Jan 14 17:21:35 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.69.1:
