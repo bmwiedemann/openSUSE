@@ -2123,4 +2123,41 @@
   * Reject u64::MAX in version segments to prevent overflow</comment>
     <requestid>1333442</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>2964af0184f8446299a4a7066c81a4a0</srcmd5>
+    <version>0.10.7</version>
+    <time>1772399699</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.7
+ * Bug fixes
+  * Fix handling of junctions in Windows Containers on Windows 
+  * Apply lockfile marker normalization for fork markers V
+  * Fix Python version selection for scripts with a requires-python conflicting with .python-version 
+  * Preserve file permissions when using reflinks on Linux 
+ * Enhancements
+  * Activate logging for middleware retries 
+  * Upload uv releases to a mirror 
+ * Documentation
+  * Remove verbose documentation from optional dependencies help text 
+
+- update to 0.10.5
+ * Enhancements
+  * Remove duplicate references to the affected paths when showing uv python errors 
+  * Skip discovery of workspace members that contain only git-ignored files, including in sub-directories 
+  * Add hint when named index is found in a parent config file 
+  * Add warning for uv lock --frozen 
+  * Attempt to use reflinks by default on Linux 
+  * Fallback to hardlinks after reflink failure before copying 
+  * Filter pylock.toml wheels by tags and requires-python 
+  * Validate wheel filenames are normalized during uv publish 
+  * Fix message when exclude-newer invalidates the lock file 
+  * Change the missing files log level to debug 
+ * Performance
+  * Improve performance of repeated conflicts with an extra 
+ * Bug fixes
+  * Fix --no-emit-workspace with --all-packages on single-member workspaces 
+  * Fix UV_NO_DEFAULT_GROUPS rejecting truthy values like 1 
+  * Propagate project-level conflicts to package extras</comment>
+    <requestid>1335568</requestid>
+  </revision>
 </revisionlist>
