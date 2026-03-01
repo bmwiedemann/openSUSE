@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyPika
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-PyPika
-Version:        0.48.9
+Version:        0.51.1
 Release:        0
 Summary:        A SQL query builder API for Python
 License:        Apache-2.0
 Group:          Development/Libraries/Python
 URL:            https://github.com/kayak/pypika
-Source0:        https://files.pythonhosted.org/packages/source/P/PyPika/PyPika-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pypika/pypika-%{version}.tar.gz
 Source1:        https://github.com/kayak/pypika/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pip}
@@ -40,11 +40,9 @@ BuildArch:      noarch
 A SQL query builder API for Python. The motivation behind PyPika is to provide a simple interface for building SQL queries without limiting the flexibility of handwritten SQL. Designed with data analysis in mind, PyPika leverages the builder design pattern to construct queries to avoid messy string formatting and concatenation. It is also easily extended to take full advantage of specific features of SQL database vendors.
 
 %prep
-%autosetup -p1 -n PyPika-%{version}
+%autosetup -p1 -n pypika-%{version}
 # tests are not included in the tarball from pypi
 (cd ..; tar xf %{SOURCE1} pypika-%{version}/pypika/tests)
-
-cp -r ../pypika-%{version}/pypika/tests ./pypika
 
 %build
 %pyproject_wheel
