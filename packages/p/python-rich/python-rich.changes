@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 28 08:59:11 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 14.3.3:
+  - Fixed a infinite loop in split_graphemes
+- Update to 14.3.2:
+  -A fix for cell_len edge cases
+
+-------------------------------------------------------------------
 Tue Jan 27 16:20:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 14.3.1:

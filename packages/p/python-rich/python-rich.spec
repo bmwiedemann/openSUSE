@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-rich
-Version:        14.3.1
+Version:        14.3.3
 Release:        0
 Summary:        A Python library for rich text and beautiful formatting in the terminal
 License:        MIT

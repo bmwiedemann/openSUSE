@@ -456,4 +456,16 @@
   * Changed style of Markdown rules</comment>
     <requestid>1333718</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>520debfd730a05b2ce0827a894e7f8a2</srcmd5>
+    <version>14.3.3</version>
+    <time>1772399657</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 14.3.3:
+  - Fixed a infinite loop in split_graphemes
+- Update to 14.3.2:
+  -A fix for cell_len edge cases
+</comment>
+    <requestid>1335564</requestid>
+  </revision>
 </revisionlist>
