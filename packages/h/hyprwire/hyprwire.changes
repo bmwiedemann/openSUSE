@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Feb 27 21:25:53 UTC 2026 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.3.0:
+  + This is a big update with a lot of fixes and improvements for the
+    upcoming tavern and beyond.
+  + Changes:
+    - core: enforce data types on the wire
+    - core: allow creating sockets from fds
+    - core: add a fd type
+    - generator: fix arr in s2c
+    - scanner: use const & for vecs to avoid copies
+    - scanner: avoid auto id
+    - protocol: add roundtrips
+    - core: fix empty arrays and wire arrays
+    - core: minor fixes
+    - parser: don't catch errors
+    - messages/generic: add fd error
+    - core: improve roundtrip
+    - server: fix sending fds
+    - core: fix creating sockets from fds
+    - server: fix crash on exit
+    - server: improve fd api
+    - server: return client on addClient
+    - server/client: add pid
+    - client: add isHandshakeDone()
+    - server: allow recursive mutex locks for pollmtx
+    - core/socket: fix parseFromFd having a potential data race
+    - core/client: fix version in bind protocol
+    - scanner: add name() to server object handlers
+    - message: avoid crash on fd array parsing for debug
+    - core: minor fixes
+    - docs: add wire docs
+    - core/client: buffer pending data on waiting for object
+    - core/message: copy id instead of duplicating seq in m_data
+  + Additions:
+    - core: Add support for fd arrays
+  + Fixes:
+    - Include string_view header
+    - server/socket: fix server socket destruction with attemptEmpty
+    - core: Fix serialization bug with unaligned pointer reads
+    - core/message: Fix uninitialized global pointer
+    - core: integration fixes
+
+-------------------------------------------------------------------
 Mon Dec 29 21:55:00 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Initial packaging of hyprwire 0.2.1 

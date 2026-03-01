@@ -2,7 +2,7 @@
 # spec file for package hyprwire
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 Florian "sp1rit" <sp1rit@disroot.org>
+# Copyright (c) 2025/26 Florian "sp1rit" <sp1rit@disroot.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define sover 2
+%define sover 3
 
 Name:           hyprwire
-Version:        0.2.1
+Version:        0.3.0
 Release:        0
 Summary:        A wire protocol for IPC
 License:        BSD-3-Clause
