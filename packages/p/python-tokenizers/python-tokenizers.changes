@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Feb 15 12:56:42 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.22.0:
+  * Bump on-headers and compression in /tokenizers/examples/unstable_wasm/www
+  * Implement from
+  * fix: use AHashMap to fix compile error
+  * New stream
+  * [docs] Add more decoders
+  * Fix missing parenthesis in EncodingVisualizer.calculate_label_colors
+  * Update quicktour.mdx re: Issue #1625
+  * remove stray comment
+  * Fix typo in README
+  * RUSTSEC-2024-0436 - replace paste with pastey
+  * Tokenizer: Add native async bindings, via py03-async-runtimes.
+
+-------------------------------------------------------------------
 Tue Jul 29 15:12:29 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.21.4
