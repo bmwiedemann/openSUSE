@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  2 07:09:10 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.34.5:
+  * Bump images and versions to go 1.24.13 and distroless iptables
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.24.13`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.34.5/build/dependencies.yaml#L113-L116
+
+-------------------------------------------------------------------
 Thu Feb 12 06:57:32 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.34.4:
