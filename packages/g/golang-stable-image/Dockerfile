@@ -15,17 +15,16 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/bci/golang:stable-1.%RELEASE%
-#!BuildTag: opensuse/bci/golang:stable
 #!BuildTag: opensuse/bci/golang:%%golang_version%%-1.%RELEASE%
 #!BuildTag: opensuse/bci/golang:%%golang_version%%
-#!BuildTag: opensuse/bci/golang:1.25
+#!BuildTag: opensuse/bci/golang:stable
+#!BuildTag: opensuse/bci/golang:1.26
 #!BuildTag: opensuse/bci/golang:latest
 
 FROM opensuse/tumbleweed:latest
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends go1.25 go1.25-doc make curl findutils gawk git-core procps util-linux
+    zypper -n install --no-recommends go1.26 go1.26-doc make curl findutils gawk git-core procps util-linux
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n clean -a; \
@@ -41,8 +40,8 @@ RUN set -euo pipefail; sed -i 's/^\([^:]*:[^:]*:\)[^:]*\(:.*\)$/\1\2/' /etc/shad
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.golang
-LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Go 1.25 development"
-LABEL org.opencontainers.image.description="Go 1.25 development container based on the openSUSE Tumbleweed Base Container Image."
+LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Go 1.26 development"
+LABEL org.opencontainers.image.description="Go 1.26 development container based on the openSUSE Tumbleweed Base Container Image."
 LABEL org.opencontainers.image.version="%%golang_version%%"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
@@ -62,7 +61,7 @@ ENV PATH="/go/bin:/usr/local/go/bin:/root/go/bin/:/usr/local/sbin:/usr/local/bin
 
 # only available on go's tsan_arch architectures
 #!ArchExclusiveLine: x86_64 aarch64 s390x ppc64le
-RUN set -euo pipefail; if zypper -n install go1.25-race; then zypper -n clean -a; fi
+RUN set -euo pipefail; if zypper -n install go1.26-race; then zypper -n clean -a; fi
 WORKDIR /go
 RUN set -euo pipefail; install -m 755 -d /go/bin /go/src
 RUN set -euo pipefail; rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; \
