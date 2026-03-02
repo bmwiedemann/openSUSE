@@ -875,4 +875,27 @@
   * Closes #10745</comment>
     <requestid>1329152</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>6e05fe1f3361d44ee6726b252f1cc72e</srcmd5>
+    <version>4.0.5</version>
+    <time>1772469657</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0.5:
+  * Fix possibly-used-before-assignment false positive when using
+    self.fail() in tests.
+  * Fixed false positive for ``logging-unsupported-format`` when
+    no arguments are provided to logging functions.
+  * According to Python's logging documentation, no formatting is
+    performed when no arguments are supplied, so strings like
+    ``logging.error(&quot;%test&quot;)`` are valid.
+  * Fix a false positive for ``invalid-name`` where a dataclass
+    field typed with ``Final`` was evaluated against the
+    ``class_const`` regex instead of the ``class_attribute`` regex.
+  * Avoid emitting `unspecified-encoding` (W1514) when `py-
+    version` is 3.15+.
+  * Fix `--known_third_party` config being ignored.
+  * Fixed dynamic color mapping for &quot;fail-on&quot; messages when using
+    multiple reporter/output formats.</comment>
+    <requestid>1335775</requestid>
+  </revision>
 </revisionlist>

@@ -24,7 +24,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pylint
-Version:        4.0.4
+Version:        4.0.5
 Release:        0
 Summary:        Syntax and style checker for Python code
 License:        GPL-2.0-or-later
@@ -40,7 +40,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-dill >= 0.3.7
 Requires:       python-platformdirs >= 2.2
 Requires:       python-tomlkit >= 0.10.1
-Requires:       (python-astroid >= 4.0.2 with python-astroid < 4.1.0~dev0)
+Requires:       (python-astroid >= 4.0.2 with python-astroid < 4.2.0)
 Requires:       (python-isort >= 5 with python-isort < 8)
 Requires:       (python-mccabe >= 0.6 with python-mccabe < 0.8)
 BuildArch:      noarch
@@ -52,7 +52,7 @@ Requires:       python-typing-extensions >= 3.10
 %endif
 %if %{with tests}
 # SECTION pylint deps
-BuildRequires:  %{python_module astroid >= 4.0.2 with %python-astroid < 4.1.0~dev0}
+BuildRequires:  %{python_module astroid >= 4.0.2 with %python-astroid < 4.2.0}
 BuildRequires:  %{python_module dill >= 0.3.7}
 BuildRequires:  %{python_module enchant}
 BuildRequires:  %{python_module isort >= 5 with %python-isort < 8}
