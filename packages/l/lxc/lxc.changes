@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Fri Feb 27 06:52:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.0.6:
+  https://discuss.linuxcontainers.org/t/lxc-6-0-6-lts-has-been-released/26294
+  As usual this bugfix releases focus on stability and hardening.
+  Some of the highlights for this release are:
+  * Support for alternative compression formats in lxc-local
+  * Updated AppArmor profile generation (allows running newer runc)
+  * Support for --rbduser with the ceph backend
+  * Improved systemd scope handling for unprivileged containers
+  * Added support for OpenRC as an init system
+  * Fixed a data transfer race in the attach logic when using io_uring
+  * Fixed handling of lxc.cap.keep and lxc.cap.drop in configuration
+  Detailed changelog
+  * README: Fix CI links
+  * Rename CONTRIBUTING to CONTRIBUTING.md
+  * README: update links
+  * commands: Fix indent
+  * Enable systemd to create /var/lib/lxc at runtime with
+    StateDirectory
+  * Standardize log file create mode to 0640
+  * lxccontainer: check if target exists before remove in
+    create_mount_target()
+  * Automatically detect compression format in the lxc-local
+    template
+  * add MFD_EXEC and MFD_NOEXEC_SEAL flag to memfd_create
+  * github: Drop focal source packages
+  * builds workflow: make .orig.tar.gz unique per build
+  * build(deps): bump actions/upload-artifact from 4 to 5
+  * config/apparmor/abstractions: Fix meson build generation of
+    container-base
+  * config/apparmor/abstractions: Drop manually generated
+    container-base file
+  * Update lxc.spec.in to use meson
+  * apparmor: skip /proc and /sys restrictions if nesting is
+    enabled
+  * build(deps): bump actions/checkout from 5 to 6
+  * Ensure do_lxcapi_unfreeze returns false when getstate errors
+  * build: Check if P_PIDFD is defined
+  * meson: add meson option for running doxygen in build
+  * Enumerated all values in array
+  * Initial changes without testing
+  * checkonfig: Fixed compatible with toybox/gunzip
+  * Fallback to XDG_RUNTIME_DIR when /run not found
+  * added “–rbduser” option in “lxc-create -B rbd”
+  * added doc for --rbduser
+  * Added documentation on unprivileged LXC containers
+  * build(deps): bump actions/upload-artifact from 5 to 6
+  * start: Remove outdated comment about group dropping
+  * start: Respect lxc.init.groups also in new user namespace
+  * copy_rdepends: Don’t fail on missing source file
+  * cgfsng: fix reboots when using dbus
+  * Improve the dbus scope creation error handling
+  * build: update Makefile and meson.build
+  * github: test io_uring-based event loop
+  * lxc/{terminal, file_utils}: ensure complete data writes in
+    ptx/peer io handlers
+  * tests/lxc-attach: ensure no data corruption happens during
+    heavy IO on pts
+  * src/confile: fix values of lxc.cap.keep and lxc.cap.drop
+  * lxc: added support OpenRC init system
+  * meson.build: fix openat2 include typo, fix with glibc-2.43
+    +FORTIFY
+  * meson.build: fix open_how include with glibc-2.43+
+  * lxc/network: optimize netdev_get_mtu
+  * lxc/network: save/restore physical network interfaces altnames
+  * lxc/network: define netlink uAPI constants for link properties
+  * cmd/lxc-user-nic: prevent OOB read in name_is_in_groupnames
+
+-------------------------------------------------------------------
 Sat Aug 16 17:20:56 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXC 6.0.5. The upstream changelog can be found at
