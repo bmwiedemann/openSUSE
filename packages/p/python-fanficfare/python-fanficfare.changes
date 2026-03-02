@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar  2 07:35:06 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to the version 4.55.0:
+  - Epub Update: Skip missing chapter, image and css files
+    instead of failing.
+  - Plugin only: In Skip mode, don't do initial metadata fetch if
+    already matched in library. #1309
+  - Ignore CSS url() when ttf/otf/woff/woff2 font files
+  - Additional checks for svg images to reject--Calibre only.
+    Related to #1298
+  - Refactor metadata entry and settings name code a bit
+  - Remove Site: swi.org.ru No DNS for site.
+  - Make some metadata entries immutable
+  - adapter_adultfanfictionorg: Fixes for site changes #1305
+  - adapter_fimfictionnet/adapter_royalroadcom: Better handling
+    of cover image size fall back #1306
+
+-------------------------------------------------------------------
 Tue Feb 10 23:10:37 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to the version 4.54.0:

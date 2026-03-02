@@ -1764,4 +1764,25 @@ Update to 4.43.0:
     left testing conditional</comment>
     <requestid>1332338</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>8ab1509a9e46e0b2c6919d841fd63aa9</srcmd5>
+    <version>4.55.0</version>
+    <time>1772469622</time>
+    <user>anag_factory</user>
+    <comment>- Update to the version 4.55.0:
+  - Epub Update: Skip missing chapter, image and css files
+    instead of failing.
+  - Plugin only: In Skip mode, don't do initial metadata fetch if
+    already matched in library. #1309
+  - Ignore CSS url() when ttf/otf/woff/woff2 font files
+  - Additional checks for svg images to reject--Calibre only.
+    Related to #1298
+  - Refactor metadata entry and settings name code a bit
+  - Remove Site: swi.org.ru No DNS for site.
+  - Make some metadata entries immutable
+  - adapter_adultfanfictionorg: Fixes for site changes #1305
+  - adapter_fimfictionnet/adapter_royalroadcom: Better handling
+    of cover image size fall back #1306</comment>
+    <requestid>1335720</requestid>
+  </revision>
 </revisionlist>
