@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Mar  1 13:34:14 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Refactored .spec file to fully support transactional and immutable operating systems 
+  (jsc#PED-14609):
+  * Migrated user and group creation (pkcs11, pkcsslotd) from imperative %pre shell commands to 
+    declarative systemd-sysusers configuration.
+  * Replaced manual /var directory tracking and %ghost directives with 
+    comprehensive systemd-tmpfiles configurations.
+  * Implemented dynamic, architecture-specific tmpfiles.d generation to properly provision 
+    hardware-specific token directories (e.g., ccatok, ep11tok, lite, and HSM_MK_CHANGE).
+- Fixed permissions for /run/opencryptoki within tmpfiles.d to ensure the 
+  daemon can successfully drop privileges and bind its communication socket.
+  * Moved 32-bit and 64-bit shared library symlink creation (such as PKCS11_API.so, stdll, and methods) 
+    from %post scriptlets into the %install phase, 
+    ensuring they are correctly packaged and tracked on the read-only /usr partition.
+  * Removed legacy /etc/pkcs11 bash migration logic from %post, 
+    replacing it with a declarative tmpfiles.d symlink rule.
+- Cleaned up scriptlets to only execute transaction-safe macros 
+  (such as ldconfig and systemd service handlers).
+
+-------------------------------------------------------------------
 Thu Jan 22 16:34:43 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied a patch (bsc#1257116,  CVE-2026-23893) 

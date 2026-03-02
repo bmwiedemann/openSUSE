@@ -65,12 +65,11 @@ BuildRequires:  libudev-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  openssl-devel >= 1.1.1
 BuildRequires:  pkgconfig
+BuildRequires:  sysuser-tools
 BuildRequires:  trousers-devel
 BuildRequires:  pkgconfig(systemd)
 ###
-Requires(pre):  %{_sbindir}/groupadd
-Requires(pre):  %{_sbindir}/useradd
-Requires(pre):  %{_sbindir}/usermod
+%{?sysusers_requires}
 ###
 Provides:       user(pkcs11)
 Provides:       group(pkcs11)
@@ -171,25 +170,73 @@ cp %{SOURCE2} .
 make %{?_smp_mflags}
 dos2unix doc/README.ep11_stdll
 
+# Generate sysusers configuration and pre-install scriptlet
+cat > opencryptoki-sysusers.conf <<EOF
+# Type Name ID GID Home Shell
+g %{pkcs_group} %{pkcs11_group_id} - -
+u pkcsslotd - "openCryptoki slot daemon" /run/opencryptoki /sbin/nologin
+m pkcsslotd %{pkcs_group}
+m root %{pkcs_group}
+EOF
+%sysusers_generate_pre opencryptoki-sysusers.conf opencryptoki opencryptoki.conf
+
 %install
 %make_install
 install -d %{buildroot}%{_includedir}
+
+# Define the sysusers.d configuration
+install -d %{buildroot}%{_sysusersdir}
+
+# Install the sysusers configuration
+install -D -m 0644 opencryptoki-sysusers.conf %{buildroot}%{_sysusersdir}/opencryptoki.conf
+
 # Move data templates from /var to /usr/share/opencryptoki for tmpfiles to use
 install -d %{buildroot}%{_datadir}/opencryptoki/templates
 install -d %{buildroot}%{_initddir}
 install -d %{buildroot}%{_sbindir}
 install -d %{buildroot}%{_prefix}/lib/tmpfiles.d
+#
 # Define the tmpfiles.d configuration
+#
 cat > %{buildroot}%{_prefix}/lib/tmpfiles.d/opencryptoki.conf <<EOF
 # Type Path        Mode UID  GID  Age Argument
+d /run/opencryptoki 0710 pkcsslotd pkcs11 - -
 d /var/lib/opencryptoki 0755 root pkcs11 - -
 d /var/lib/opencryptoki/swtok 0770 root pkcs11 - -
 d /var/lib/opencryptoki/swtok/TOK_OBJ 0770 root pkcs11 - -
 d /var/lib/opencryptoki/tpm 0770 root pkcs11 - -
 d /var/lib/opencryptoki/icsf 0770 root pkcs11 - -
+d /var/lib/opencryptoki/HSM_MK_CHANGE 0770 root pkcs11 - -
+d /var/lock/opencryptoki 0770 root pkcs11 - -
+d /var/lock/opencryptoki/swtok 0770 root pkcs11 - -
+d /var/lock/opencryptoki/tpm 0770 root pkcs11 - -
+d /var/lock/opencryptoki/icsf 0770 root pkcs11 - -
+EOF
+#
+%ifnarch i586
+cat >> %{buildroot}%{_prefix}/lib/tmpfiles.d/opencryptoki.conf <<EOF
+d /var/lib/opencryptoki/ccatok 0770 root pkcs11 - -
+d /var/lib/opencryptoki/ccatok/TOK_OBJ 0770 root pkcs11 - -
+d /var/lock/opencryptoki/ccatok 0770 root pkcs11 - -
+EOF
+%endif
+#
+%ifarch s390 s390x
+cat >> %{buildroot}%{_prefix}/lib/tmpfiles.d/opencryptoki.conf <<EOF
+d /var/lib/opencryptoki/ep11tok 0770 root pkcs11 - -
+d /var/lib/opencryptoki/ep11tok/TOK_OBJ 0770 root pkcs11 - -
+d /var/lib/opencryptoki/lite 0770 root pkcs11 - -
+d /var/lib/opencryptoki/lite/TOK_OBJ 0770 root pkcs11 - -
+d /var/lock/opencryptoki/ep11tok 0770 root pkcs11 - -
+d /var/lock/opencryptoki/lite 0770 root pkcs11 - -
+EOF
+%endif
+#
+cat >> %{buildroot}%{_prefix}/lib/tmpfiles.d/opencryptoki.conf <<EOF
 d /var/log/opencryptoki 0770 root pkcs11 - -
 L+ /etc/pkcs11 - - - - /var/lib/opencryptoki
 EOF
+
 # Remove manual directory creation in %install that belongs in /var
 rm -rf %{buildroot}%{_localstatedir}/lib/opencryptoki
 rm -rf %{buildroot}%{_localstatedir}/log/opencryptoki
@@ -199,19 +246,40 @@ cp %{buildroot}%{_datadir}/doc/opencryptoki/*.conf %{buildroot}%{_datadir}/openc
 #
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcpkcsslotd
 rm -rf %{buildroot}/tmp
-
+#
 # Remove all development files
 find %{buildroot} -type f -name "*.la" -delete -print
 rm -f %{buildroot}%{_libdir}/opencryptoki/methods
 
-%pre
+# Setup 64-bit symlinks (if applicable for the arch)
+%ifarch %{openCryptoki_64bit_arch}
+mkdir -p %{buildroot}%{_prefix}/lib/pkcs11
+ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{buildroot}%{_prefix}/lib/pkcs11/PKCS11_API.so64
+%endif
+
+# Setup 32-bit symlinks (if applicable for the arch)
+%ifarch %{openCryptoki_32bit_arch}
+# PKCS11_API and methods
+ln -snf libopencryptoki.so %{buildroot}%{_libdir}/opencryptoki/PKCS11_API.so
+ln -snf %{_sbindir} %{buildroot}%{_libdir}/opencryptoki/methods
+
+# The stdll symlink directory
+mkdir -p %{buildroot}%{_prefix}/lib/pkcs11
+ln -snf ../../%{_lib}/opencryptoki/stdll %{buildroot}%{_prefix}/lib/pkcs11/stdll
+
+# The token symlinks (created within the stdll directory)
+cd %{buildroot}%{_libdir}/opencryptoki/stdll
+[ -f libpkcs11_cca.so ] && ln -snf libpkcs11_cca.so PKCS11_CCA.so || true
+[ -f libpkcs11_tpm.so ] && ln -snf libpkcs11_tpm.so PKCS11_TPM.so || true
+[ -f libpkcs11_ica.so ] && ln -snf libpkcs11_ica.so PKCS11_ICA.so || true
+[ -f libpkcs11_sw.so ]  && ln -snf libpkcs11_sw.so PKCS11_SW.so || true
+[ -f libpkcs11_icsf.so ] && ln -snf libpkcs11_icsf.so PKCS11_ICSF.so || true
+[ -f libpkcs11_ep11.so ] && ln -snf libpkcs11_ep11.so PKCS11_EP11.so || true
+cd -
+%endif
+
+%pre -f opencryptoki.pre
 %{service_add_pre pkcsslotd.service}
-# autobuild:/work/cd/lib/misc/group
-# openCryptoki    pkcs11:x:64:
-# openCryptoki    pkcsslotd:x:64:
-getent group %{pkcs_group} 2>/dev/null || %{_sbindir}/groupadd -g %{pkcs11_group_id} -r %{pkcs_group} 2>/dev/null || true
-getent passwd pkcsslotd 2>/dev/null || %{_sbindir}/useradd -g %{pkcs_group} -r pkcsslotd -s /sbin/nologin -d /run/opencryptoki 2>/dev/null || true
-%{_sbindir}/usermod -a -G %{pkcs_group} root
 
 %preun
 %{service_del_preun pkcsslotd.service}
@@ -227,34 +295,15 @@ getent passwd pkcsslotd 2>/dev/null || %{_sbindir}/useradd -g %{pkcs_group} -r p
 %{service_del_postun pkcsslotd.service}
 
 %ifarch %{openCryptoki_32bit_arch}
-%postun 32bit
-if [ -L %{_sysconfdir}/pkcs11 ] ; then
-	rm %{_sysconfdir}/pkcs11
-fi
-%{service_del_postun pkcsslotd.service}
+%post 32bit
 /sbin/ldconfig
 
-%post 32bit
-# Old library name links
-cd %{_libdir}/opencryptoki && ln -sf ./libopencryptoki.so PKCS11_API.so
-ln -sf %{_sbindir} %{_libdir}/opencryptoki/methods
-rm -rf %{_libdir}/pkcs11/stdll
-test -d %{_prefix}/lib/pkcs11 || mkdir -p %{_prefix}/lib/pkcs11
-cd %{_prefix}/lib/pkcs11
-ln -sf ../opencryptoki/stdll stdll
-cd stdll
-[ -f libpkcs11_cca.so ] && ln -sf ./libpkcs11_cca.so PKCS11_CCA.so || true
-[ -f libpkcs11_tpm.so ] && ln -sf ./libpkcs11_tpm.so PKCS11_TPM.so || true
-[ -f libpkcs11_ica.so ] && ln -sf ./libpkcs11_ica.so PKCS11_ICA.so || true
-[ -f libpkcs11_sw.so ] && ln -sf ./libpkcs11_sw.so PKCS11_SW.so || true
+%postun 32bit
 /sbin/ldconfig
 %endif
 
 %ifarch %{openCryptoki_64bit_arch}
 %post 64bit
-# Old library name for 64bit libs were under /usr/lib/pkcs11. For migration purposes only.
-test -d %{_prefix}/lib/pkcs11 || mkdir -p %{_prefix}/lib/pkcs11
-ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_API.so64
 /sbin/ldconfig
 %endif
 
@@ -305,9 +354,7 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %{_mandir}/man*/*
 %{_sbindir}/pkcshsm_mk_change
 #
-%{_prefix}/lib/tmpfiles.d/opencryptoki.conf
-# Ensure we don't package files in /var directly
-%ghost %dir %attr(755,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki
+%{_sysusersdir}/opencryptoki.conf
 
 %files devel
 %dir %{_libdir}/opencryptoki
@@ -320,32 +367,33 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
   # these don't conflict because they only exist as 64bit binaries if
   # there is no 32bit version of them usable
 %{_libdir}/opencryptoki/libopencryptoki.so
-%ghost %{_libdir}/opencryptoki/PKCS11_API.so
+%{_libdir}/opencryptoki/PKCS11_API.so
+%{_libdir}/opencryptoki/methods
 %{_libdir}/opencryptoki/*.0
-%ifarch s390
-%{_libdir}/opencryptoki/stdll/libpkcs11_cca.so
-%ghost %{_libdir}/opencryptoki/stdll/PKCS11_CCA.so
-%endif
+
 %ifnarch i586
 %{_libdir}/opencryptoki/stdll/libpkcs11_cca.so
+%{_libdir}/opencryptoki/stdll/PKCS11_CCA.so
 %endif
-%ghost %{_libdir}/opencryptoki/stdll/PKCS11_CCA.so
+
 %{_libdir}/opencryptoki/stdll/libpkcs11_tpm.so
-%ghost %{_libdir}/opencryptoki/stdll/PKCS11_TPM.so
+%{_libdir}/opencryptoki/stdll/PKCS11_TPM.so
 %{_libdir}/opencryptoki/stdll/libpkcs11_sw.so
-%ghost %{_libdir}/opencryptoki/stdll/PKCS11_SW.so
+%{_libdir}/opencryptoki/stdll/PKCS11_SW.so
 %{_libdir}/opencryptoki/stdll/libpkcs11_icsf.so
-%ghost %{_libdir}/opencryptoki/stdll/PKCS11_ICSF.so
+%{_libdir}/opencryptoki/stdll/PKCS11_ICSF.so
+
 %ifarch s390 s390x
 %{_libdir}/opencryptoki/stdll/libpkcs11_ica.so
-%ghost %{_libdir}/opencryptoki/stdll/PKCS11_ICA.so
+%{_libdir}/opencryptoki/stdll/PKCS11_ICA.so
 %{_libdir}/opencryptoki/stdll/libpkcs11_ep11.so
-%ghost %{_libdir}/opencryptoki/stdll/PKCS11_EP11.so
+%{_libdir}/opencryptoki/stdll/PKCS11_EP11.so
 %endif
+
 %{_libdir}/opencryptoki/stdll/*.0
-%dir %{_libdir}/pkcs11
-%ghost %{_libdir}/pkcs11/stdll
-%ghost %{_libdir}/pkcs11/methods
+%dir %{_prefix}/lib/pkcs11
+%{_prefix}/lib/pkcs11/stdll
+%{_prefix}/lib/pkcs11/methods
 %{_libdir}/pkcs11/*.so
 %{_sysconfdir}/ld.so.conf.d/*
 %endif
@@ -358,6 +406,10 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %dir %{_libdir}/opencryptoki/stdll
 %{_libdir}/opencryptoki/stdll/*.so
 %{_libdir}/opencryptoki/stdll/*.0
+
+%dir %{_prefix}/lib/pkcs11
+%{_prefix}/lib/pkcs11/PKCS11_API.so64
+
 %{_libdir}/pkcs11
 %{_sysconfdir}/ld.so.conf.d/*
 %endif
