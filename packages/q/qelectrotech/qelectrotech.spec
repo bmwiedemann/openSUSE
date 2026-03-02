@@ -1,7 +1,7 @@
 #
 # spec file for package qelectrotech
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2021 Asterios Dramis <asterios.dramis@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,23 +17,20 @@
 #
 
 
-%define src 0.9
 Name:           qelectrotech
-Version:        0.90
+Version:        0.100
 Release:        0
 Summary:        Application to Design Electric Diagrams
 License:        CC-BY-3.0 AND GPL-2.0-or-later
 Group:          Productivity/Scientific/Electronics
 URL:            https://qelectrotech.org/
-Source0:        https://github.com/qelectrotech/qelectrotech-source-mirror/archive/refs/tags/%{src}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/qelectrotech/qelectrotech-source-mirror/releases/download/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  kcoreaddons-devel
 BuildRequires:  kwidgetsaddons-devel
 BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
-BuildRequires:  sqlite-devel >= 3.0
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
@@ -41,51 +38,94 @@ BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(sqlite3)
+Requires:       %{name}-symbols = %{version}-%{release}
+Requires(post): desktop-file-utils
+Requires(post): shared-mime-info
+Requires(postun): desktop-file-utils
+Requires(postun): shared-mime-info
+Recommends:     %{name}-examples = %{version}-%{release}
+Recommends:     %{name}-lang = %{version}-%{release}
 
 %description
 QElectroTech is a Qt5 application to design electric diagrams. It uses XML
 files for elements and diagrams, and includes both a diagram editor and an
 element editor.
 
+%package examples
+Summary:        Examples for QElectroTech
+Requires:       %{name} = %{version}-%{release}
+BuildArch:      noarch
+
+%description examples
+This packages contains examples for the QElectroTech application.
+
+%package symbols
+Summary:        Elements collection for QElectroTech
+Requires:       %{name} = %{version}-%{release}
+BuildArch:      noarch
+
+%description symbols
+This packages contains the elements collection for the electronic
+components used in the QElectroTech application.
+
+%lang_package
+
 %prep
-%setup -q -n qelectrotech-source-mirror-%{src}
+%autosetup
 
 # Fix compilation and installation paths
 sed -e s,%{_prefix}/local/,%{_prefix}/, \
     -e /QET_LICENSE_PATH/s,'doc/,'share/doc/packages/, \
     -e /QET_MIME/s,../,, \
     -e /QET_MAN_PATH/s,'man/','share/man/', \
-    -e /DEFINES/s,GIT_COMMIT_SHA.*,GIT_COMMIT_SHA="", \
-    -i qelectrotech.pro
+    -e /DEFINES/s,GIT_COMMIT_SHA.*,GIT_COMMIT_SHA='\\\\\\"\\\\\\"', \
+    -i %{name}.pro
+
+rm -rf .github
 
 %build
-%global optflags ${optflags} -Wno-error=return-type
+# Not needed for version 0.100
+#%#global optflags ${optflags} -Wno-error=return-type
 %qmake5
 %make_build
 
 %install
 %qmake5_install
-
-# Fix desktop file
-%suse_update_desktop_file -r qelectrotech "Education;Engineering"
+# Only install UTF-8 files
+rm -rf %{buildroot}%{_defaultdocdir}/%{name} \
+       %{buildroot}%{_mandir}/fr.ISO8859-1 \
+       %{buildroot}%{_mandir}/fr
+mv %{buildroot}%{_mandir}/fr.UTF-8 %{buildroot}%{_mandir}/fr
+# It's not Belarusian
+mv %{buildroot}%{_mandir}/be %{buildroot}%{_mandir}/nl_BE
 
 %fdupes %{buildroot}/%{_prefix}
-
 %find_lang %{name} --with-qt --with-man --all-name
 
-%files -f %{name}.lang
+%files
 %doc CREDIT ChangeLog README README.md
-%license %{_defaultdocdir}/%{name}/ELEMENTS.LICENSE
-%license %{_defaultdocdir}/%{name}/LICENSE
-%{_bindir}/qelectrotech
-%{_datadir}/appdata/qelectrotech.appdata.xml
-%{_datadir}/applications/qelectrotech.desktop
+%license LICENSE
+%{_bindir}/%{name}
+%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/applications/org.%{name}.%{name}.desktop
 %{_datadir}/icons/hicolor/*/*/*.png
-%dir %{_mandir}/be
-%dir %{_mandir}/fr.ISO8859-1
-%dir %{_mandir}/fr.UTF-8
-%{_mandir}/man1/qelectrotech.1%{?ext_man}
-%{_datadir}/mime/packages/qelectrotech.xml
-%{_datadir}/qelectrotech/
+%{_mandir}/man1/%{name}*.1%{?ext_man}
+%{_datadir}/mime/packages/%{name}.xml
+
+%files lang -f %{name}.lang
+%dir %{_datadir}/%{name}/lang
+%dir %{_mandir}/nl_BE
+
+%files examples
+%defattr(0644,root,root)
+%{_datadir}/%{name}/examples
+
+%files symbols
+%defattr(0644,root,root)
+%license ELEMENTS.LICENSE
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/elements
+%{_datadir}/%{name}/titleblocks
 
 %changelog
