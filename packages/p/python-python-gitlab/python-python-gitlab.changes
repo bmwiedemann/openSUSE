@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar  2 06:20:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 8.1.0:
+  * Bug Fixes
+    - types: Add explicit submodule import for pyright
+      compatibility (84ad3fd)
+  * Features
+    - api: Add support for order_by filter in runner jobs (d5dc73d)
+    - api: Add support for sort filter in runner jobs (b117ee3)
+
+-------------------------------------------------------------------
 Wed Jan 28 06:36:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 8.0.0:
