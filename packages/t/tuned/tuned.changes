@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 23 06:13:02 UTC 2026 - trenn@suse.com
+
+- Update to version 2.27.0.0+git.38d4414:
+  * new release (2.27.0)
+
+-------------------------------------------------------------------
 Fri Feb 13 13:20:32 UTC 2026 - Thomas Renninger <trenn@suse.de>
 
 - Fix version by reverting "v" prefix which unintentionally slipped
