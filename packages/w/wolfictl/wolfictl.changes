@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Mar 02 06:16:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.3:
+  * build(deps): bump github.com/cloudflare/circl from 1.6.1 to
+    1.6.3 (#1887)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.16.5 to
+    5.17.0 (#1885)
+  * build(deps): bump step-security/harden-runner from 2.14.2 to
+    2.15.0 (#1886)
+  * feat(lint): add rule to check for sccache/enable users
+
+-------------------------------------------------------------------
+Wed Feb 25 09:59:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.2:
+  * build(deps): bump chainguard.dev/apko in the chainguard group
+    (#1880)
+  * build(deps): bump cloud.google.com/go/storage from 1.59.1 to
+    1.60.0 (#1876)
+  * build(deps): bump chainguard-dev/actions from 1.6.2 to 1.6.4
+    (#1878)
+  * build(deps): bump github.com/package-url/packageurl-go (#1877)
+  * build(deps): bump the chainguard group with 3 updates (#1875)
+  * build(deps): bump goreleaser/goreleaser-action from 6.4.0 to
+    7.0.0 (#1879)
+  * build(deps): bump github.com/charmbracelet/bubbles from 0.21.0
+    to 1.0.0 (#1873)
+  * build(deps): bump github.com/github/go-spdx/v2 from 2.3.6 to
+    2.4.0 (#1874)
+  * build(deps): bump the chainguard group with 3 updates (#1871)
+  * build(deps): bump github.com/anchore/stereoscope from 0.1.18 to
+    0.1.19 (#1847)
+  * build(deps): bump the chainguard group across 1 directory with
+    4 updates (#1861)
+  * build(deps): bump filippo.io/edwards25519 from 1.1.0 to 1.1.1
+    (#1870)
+  * build(deps): bump chainguard-dev/actions from 1.6.0 to 1.6.2
+    (#1869)
+
+-------------------------------------------------------------------
 Mon Feb 16 05:51:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.1:
