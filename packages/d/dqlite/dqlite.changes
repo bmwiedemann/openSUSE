@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar  1 16:23:06 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.18.5:
+  * fix: allow reading v1.16 snapshots 
+
+- update to 1.18.4:
+  * feat: improve assert diagnositcs
+  * fix: properly clear state on electionStart fail
+  * feat: zero barrier payload memory
+  * feat: post-mortem event trace
+  * fix: use __sync_synchronize instead of C11 fences
+  * refactor: export data format behaviour in static libraries
+  * fix: remove UB when changing state
+  * fix: allow compression of big buffers
+
+-------------------------------------------------------------------
 Tue Oct 28 18:09:10 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - update to 1.18.3
