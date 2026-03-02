@@ -300,4 +300,17 @@
 </comment>
     <requestid>1331540</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c7d1fd952f2307bdc2406b8ddcb9b0e1</srcmd5>
+    <version>1.4.2</version>
+    <time>1772469337</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.4.2:
+  * Fixed crash in RGB composition
+  * Fixed data entry typos in Messier.csv
+  * Fixed crash from GTK code in command functions
+  * Substantial improvements to the way Siril handles GPU libraries required by Python scripts
+</comment>
+    <requestid>1335623</requestid>
+  </revision>
 </revisionlist>

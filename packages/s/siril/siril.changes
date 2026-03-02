@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar  1 15:08:38 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.4.2:
+  * Fixed crash in RGB composition
+  * Fixed data entry typos in Messier.csv
+  * Fixed crash from GTK code in command functions
+  * Substantial improvements to the way Siril handles GPU libraries required by Python scripts
+
+-------------------------------------------------------------------
 Fri Feb  6 08:37:55 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.4.1:
