@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  2 03:29:51 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.7.6:
+  * Changed screenshot URLs in metadata to static.gnome.org.
+  * Remove pika-backup-function-depends-on-never-type-fallback-being.patch
+    Fixed appstream. 
+
+-------------------------------------------------------------------
 Mon Jan 12 04:06:57 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Add pika-backup-function-depends-on-never-type-fallback-being.patch

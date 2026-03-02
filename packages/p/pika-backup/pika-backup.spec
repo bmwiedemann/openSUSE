@@ -18,7 +18,7 @@
 
 %define         appname org.gnome.World.PikaBackup
 Name:           pika-backup
-Version:        0.7.5
+Version:        0.7.6
 Release:        0
 Summary:        Simple backups based on borg
 License:        GPL-3.0-or-later
@@ -26,7 +26,6 @@ URL:            https://gitlab.gnome.org/World/pika-backup
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Patch0:         disable-gtk-test.patch
-Patch1:         pika-backup-function-depends-on-never-type-fallback-being.patch
 BuildRequires:  borgbackup
 BuildRequires:  cargo-packaging
 BuildRequires:  git-core
