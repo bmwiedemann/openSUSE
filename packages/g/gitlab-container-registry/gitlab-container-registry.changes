@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Mar 02 06:34:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.37.0:
+  * Features
+    - add /v1/gitlab api endpoint for asynchronous restarting of
+      BBMs (1dfd1f2)
+    - Add support for Notation signature media type (1bc93ea)
+    - gcs: add support for configuring Google universe domain
+      (de8cbc6)
+    - gcs: automatically derive universe domain from credentials
+      (3153db5)
+    - implement rudimentary /v1/gitlab/bbm api for BBM controll
+      (9baad80)
+    - registry: add gc-stats command to show online gc statistics
+      (8f28e31)
+  * Bug Fixes
+    - make GCS integration tests work with universe domains
+      (2dc4599)
+    - makefile: replace egrep with grep -E (4e153d5)
+    - release: use inline presetConfig for release-notes-generator
+      (adfd63c)
+  * Reverts
+    - gcs version upgrade due to deprecation issue (ca9add9)
+  * Build
+    - deps: update module cloud.google.com/go/storage to v1.60.0
+      (d4ce471)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.96.0 (4964620)
+    - deps: update module
+      github.com/azure/azure-sdk-for-go/sdk/azcore to v1.21.0
+      (480e76f)
+    - deps: update module github.com/getsentry/sentry-go to v0.42.0
+      (10f8b8e)
+    - deps: update module github.com/lib/pq to v1.11.1 (731091f)
+    - deps: update module github.com/lib/pq to v1.11.2 (a09aaa7)
+    - deps: update module github.com/samber/slog-logrus/v2 to
+      v2.5.3 (fc1d482)
+    - deps: update module google.golang.org/api to v0.265.0
+      (750b2d3)
+  * Refactors
+    - filter transient errors from Sentry (bf9e1fa)
+
+-------------------------------------------------------------------
 Tue Feb 03 11:54:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.36.0:
