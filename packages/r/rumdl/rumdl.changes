@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Mar 02 06:51:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.34:
+  * Added
+    - Config: Support top-level global keys in rumdl.toml without
+      requiring a [global] section header, matching ruff.toml
+      conventions. Keys like line-length, disable, exclude, and
+      respect-gitignore now work at the top level. If both
+      top-level and [global] keys exist, [global] takes precedence
+  * Fixed
+    - Config: Resolve rule name aliases in fixable config lists
+      (was only resolving aliases for unfixable). Users can now
+      write fixable = ["trailing-spaces"] instead of needing
+      fixable = ["MD009"]
+    - CLI: Correct include/exclude precedence to match industry
+      standard — exclude always wins over include in discovery
+      mode, consistent with ruff, eslint, and markdownlint-cli
+- Update to version 0.1.33:
+  * Added
+    - CLI: Add --fixable and --unfixable flags to control which
+      rules are allowed to auto-fix. --fixable acts as an allowlist
+      (only listed rules can fix), --unfixable acts as a blocklist
+      (takes precedence). Both accept comma-separated rule names or
+      aliases (#472)
+  * Fixed
+    - CLI: Resolve rule name aliases in fixable/unfixable config
+      lists so that aliases like commands-show-output correctly
+      match canonical names like MD014
+    - Rules: Detect links and images inside MkDocs admonitions,
+      content tabs, and markdown HTML blocks
+    - Docs: Fix incorrect MD014 documentation that claimed the rule
+      cannot be auto-fixed — it removes $ prompts from commands
+      without output, matching markdownlint-cli behavior (#473)
+  * Changed
+    - Docs: Add feature comparison matrix and cold start benchmarks
+      for all 8 comparison tools
+- Update to version 0.1.32:
+  * Fixed
+    - MD013: Respect MkDocs 4-space list continuation indent during
+      reflow. For markers shorter than 4 characters (e.g., 1., -),
+      continuation lines are now indented to 4 spaces in MkDocs
+      flavor, matching Python-Markdown requirements. This fixes an
+      MD077/MD013 conflict loop where reflow produced invalid
+      MkDocs markdown (#471)
+    - LSP: Apply per-file-ignores configuration during LSP linting
+    - CI: Move mise tool install into retry loops for reliability
+  * Changed
+    - MD046: Expanded documentation with examples and details for
+      unclosed code block detection (thanks @eread in #470)
+- Update to version 0.1.31:
+  * Fixed
+    - MD013: Handle MkDocs admonitions inside list items during
+      reflow. Admonition headers and body content are now preserved
+      and reflowed correctly instead of being treated as plain
+      paragraph text. Body indent is derived from actual content
+      lines rather than hardcoded, supporting nested admonitions
+      (#469)
+
+-------------------------------------------------------------------
 Fri Feb 27 06:15:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.30:

@@ -17,7 +17,7 @@
 
 
 Name:           rumdl
-Version:        0.1.30
+Version:        0.1.34
 Release:        0
 Summary:        Markdown Linter written in Rust
 License:        MIT
