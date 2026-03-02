@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1246874</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6929a865bb0968d4415e769bf53895d7</srcmd5>
+    <version>2.7.0</version>
+    <time>1772469339</time>
+    <user>anag_factory</user>
+    <comment>- fix build with hamlib 4.7.0 (forwarded request 1335366 from AndreasStieger)</comment>
+    <requestid>1335633</requestid>
+  </revision>
 </revisionlist>

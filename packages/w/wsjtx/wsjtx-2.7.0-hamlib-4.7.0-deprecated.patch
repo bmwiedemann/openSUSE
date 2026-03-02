@@ -1,0 +1,32 @@
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Thu, 26 Feb 2026 22:24:08 +0100
+Subject: Fix build with hamlib 4.7.0
+
+rig_get_conf is deprecated in favor of rig_get_conf2
+with an additional size parameter. Removed in hamlib 5.
+
+[  104s] /home/abuild/rpmbuild/BUILD/wsjtx-2.7.0-build/wsjtx-2.7.0/Transceiver/HamlibTransceiver.cpp: In member function ‘QByteArray HamlibTransceiver::impl::get_conf(const char*)’:
+[  104s] /home/abuild/rpmbuild/BUILD/wsjtx-2.7.0-build/wsjtx-2.7.0/Transceiver/HamlibTransceiver.cpp:323:33: error: ‘int rig_get_conf(RIG*, hamlib_token_t, char*)’ is deprecated [-Werror=deprecated-declarations]
+[  104s]   323 |       error_check (rig_get_conf (rig_.data (), token, value.data ()), tr ("getting a configuration item"));
+[  104s]       |                    ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[  104s] In file included from /home/abuild/rpmbuild/BUILD/wsjtx-2.7.0-build/wsjtx-2.7.0/Transceiver/HamlibTransceiver.cpp:14:
+[  104s] /usr/include/hamlib/rig.h:2951:1: note: declared here
+[  104s]  2951 | rig_get_conf HAMLIB_PARAMS((RIG *rig,
+[  104s]       | ^~~~~~~~~~~~
+[  104s] cc1plus: all warnings being treated as errors
+
+Passes size of the QByteArray
+
+Index: wsjtx-2.7.0/Transceiver/HamlibTransceiver.cpp
+===================================================================
+--- wsjtx-2.7.0.orig/Transceiver/HamlibTransceiver.cpp
++++ wsjtx-2.7.0/Transceiver/HamlibTransceiver.cpp
+@@ -320,7 +320,7 @@ QByteArray HamlibTransceiver::impl::get_
+   QByteArray value {128, '\0'};
+   if (RIG_CONF_END != token)	// only get if valid for rig model
+     {
+-      error_check (rig_get_conf (rig_.data (), token, value.data ()), tr ("getting a configuration item"));
++      error_check (rig_get_conf2 (rig_.data (), token, value.data (), value.size()), tr ("getting a configuration item"));
+     }
+   return value;
+ }

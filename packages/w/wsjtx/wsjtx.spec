@@ -22,6 +22,7 @@ URL:            https://wsjt.sourceforge.io/wsjtx.html
 Source:         %{name}-%{version}.tar.xz
 Source2:        wsjtx.rpmlintrc
 Patch0:         reproducible.patch
+Patch1:         wsjtx-2.7.0-hamlib-4.7.0-deprecated.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake >= 3.7.2
 BuildRequires:  dos2unix
@@ -68,7 +69,8 @@ dos2unix example_log_configurations/*
 %build
 export PKG_CONFIG_ALLOW_SYSTEM_LIBS=1
 %cmake \
-    -DWSJT_GENERATE_DOCS=OFF
+    -DWSJT_GENERATE_DOCS=OFF \
+    %{nil}
 %cmake_build
 
 %install
@@ -81,7 +83,29 @@ rm %{buildroot}/%{_docdir}/%{name}/COPYING
 %files
 %license COPYING
 %doc AUTHORS BUGS NEWS README THANKS
-%{_bindir}/*
+%{_bindir}/cablog
+%{_bindir}/echosim
+%{_bindir}/fcal
+%{_bindir}/fmeasure
+%{_bindir}/fmtave
+%{_bindir}/fst4sim
+%{_bindir}/ft8code
+%{_bindir}/hash22calc
+%{_bindir}/jt4code
+%{_bindir}/jt65code
+%{_bindir}/jt9
+%{_bindir}/jt9code
+%{_bindir}/message_aggregator
+%{_bindir}/msk144code
+%{_bindir}/q65code
+%{_bindir}/q65sim
+%{_bindir}/rigctl-wsjtx
+%{_bindir}/rigctlcom-wsjtx
+%{_bindir}/rigctld-wsjtx
+%{_bindir}/udp_daemon
+%{_bindir}/wsjtx
+%{_bindir}/wsjtx_app_version
+%{_bindir}/wsprd
 %{_datadir}/applications/*.desktop
 %{_datadir}/pixmaps/%{name}_icon.png
 %{_datadir}/%{name}
