@@ -1,7 +1,7 @@
 #
 # spec file for package miller
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           miller
-Version:        6.14.0+git20250704.313731386
+Version:        6.17.0+git20260221.4535922db
 Release:        0
 Summary:        Name-indexed data processing tool
 # c/lib/netbsd_strptime.c is BSD-4-Clause
@@ -26,6 +26,7 @@ Group:          Productivity/Text/Utilities
 URL:            http://johnkerl.org/miller/doc
 Source0:        https://github.com/johnkerl/miller/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Source100:      README.md
 Patch0:         update-VERSION.diff
 Patch1:         buildmode-pie.diff
 ### Can be swapped to a specific go version what what's required isn't default

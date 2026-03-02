@@ -346,4 +346,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1292268</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>d356f1f0edac4e7f39a13f64caf665b7</srcmd5>
+    <version>6.17.0+git20260221.4535922db</version>
+    <time>1772469373</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit
+- Adding 'Source100: README.md' as the README is suggested at src.opensuse.org
+  setup, otherwise get the following message:
+  * &quot;Attention, &quot;README.md&quot; is not mentioned in spec files as source or patch.&quot;
+- Update to version 6.17.0+git20260221.4535922db:
+  * Update release docs
+  * Post-6.17.0
+  * Miller 6.17.0
+  * Follow-up for #1981 (#1982)
+  * Performance and style fixes (#1981)
+  * Fix: `mlr -i nonesuch cat` says `mlr: empty IRS` (#1980)
+  * Handle control-C in `mlr repl` (#1979)
+  * Handle control-C in `mlr repl` (#1977)
+  * No exit from `mlr repl` when function is not found (#1976)
+  * Improve error propagation (#1975)
+  * test/README.md (#1972)
+  * Multiple style updates (#1974)
+  * Neaten some comments (#1973)
+  * Bump golang.org/x/crypto from 0.40.0 to 0.45.0 (#1971)
+  * Add DCF (Debian Control Format) as supported file type (#1970)
+  * Bump github/codeql-action from 4.32.2 to 4.32.3 (#1969)
+  * Improve parsing of variable-length fractional seconds using `strptime` (#1968)
+  * Fix `strptime` with zero-padded and non-zero-padded months/days (#1967)
+  * Fix bug with both `%f` and `%z` in `strptime` (#1966)
+  * Support YAML I/O (#1963)
+  * `mlr split` with `--folder` (#1962)
+  * Add `-r` (for regex field-name matching) to `mlr nest` (#1961)
+  * `mlr reorder -r` (#1960)
+  * Bump golang.org/x/term from 0.39.0 to 0.40.0 (#1958)
+  * Bump golang.org/x/text from 0.33.0 to 0.34.0 (#1959)</comment>
+    <requestid>1335637</requestid>
+  </revision>
 </revisionlist>
