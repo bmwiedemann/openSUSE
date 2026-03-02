@@ -1,7 +1,7 @@
 #
 # spec file for package python-reproject
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-reproject%{psuffix}
-Version:        0.14.1
+Version:        0.19.0
 Release:        0
 Summary:        Reproject astronomical images
 License:        BSD-3-Clause
@@ -33,21 +33,23 @@ URL:            https://reproject.readthedocs.io
 # Repo-URL:     https://github.com/astropy/reproject
 Source:         https://github.com/astropy/reproject/archive/refs/tags/v%{version}.tar.gz#/reproject-%{version}-gh.tar.gz
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.11}
 BuildRequires:  %{python_module extension-helpers}
-BuildRequires:  %{python_module numpy-devel >= 1.17}
+BuildRequires:  %{python_module numpy-devel >= 1.23}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Pillow >= 10
 Requires:       python-astropy >= 5
 Requires:       python-astropy-healpix >= 1
-Requires:       python-cloudpickle
-Requires:       python-dask-array >= 2021.8
-Requires:       python-fsspec
+Requires:       python-dask-array >= 2024.4.1
+Requires:       python-dask-image >= 2025.11
+Requires:       python-fsspec >= 2021.9
 Requires:       python-numpy >= 1.23
+Requires:       python-pyavm >= 0.9.6
 Requires:       python-scipy >= 1.9
 Requires:       python-zarr
 %if %{with test}

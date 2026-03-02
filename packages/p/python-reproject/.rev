@@ -67,4 +67,40 @@
 - Required by sunpy testing (optional runtime requirement)</comment>
     <requestid>1225368</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>da6762a53eed66e306c59d7ecbb6b6a8</srcmd5>
+    <version>0.19.0</version>
+    <time>1772469517</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.0:
+  ### New Features
+  * Add support for generating HiPS3D data
+  * Added ability to load HiPS3D with dask
+  * Flag out NaN weights in coadd &amp; allow for weights to have different WCS
+    than data
+  * Add support for generating HiPS and reprojecting RGB images with AVM
+    metadata
+  * Implement parallelization across broadcasted dimensions
+  * Allow dask arrays to not be written to memmap
+  ### Bug Fixes
+  * Added 2-d HiPS dask array class and fix a number of bugs with HiPS
+    generation
+  * Fix a bug that caused big-endian dask arrays to not be reprojected
+    correctly
+  * Force little endian input for zarr
+  * Support FITS files with distortion maps when given as file name
+  * Don't mosaic empty empty slices
+  * Fix issue with co-adding with broadcasting with images that have
+    inhomogeneous footprints
+  * Fix reprojection of compressed FITS files
+  * Fix threads=True option in reproject.hips
+  * Add a new keyword argument negative_lon_cdelt to
+    find_optimal_celestial_wcs
+  ### Other Changes
+  * Avoid using astropy.utils.isiterable()
+  * Bump minimum version of Python to 3.11
+  * Clean up RGB code and API
+  * Use APE-14 compliant pixel scale calculation in reproject.hips</comment>
+    <requestid>1335668</requestid>
+  </revision>
 </revisionlist>
