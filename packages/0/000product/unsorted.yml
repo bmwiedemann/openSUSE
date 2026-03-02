@@ -396,7 +396,6 @@ unsorted:
   - accerciser-plugin-IPython 
   - accessibility-inspector 
   - accessibility-inspector-lang 
-  - account-utils 
   - account-utils-devel 
   - accounts-qml-module-doc 
   - accountsservice-devel 
@@ -577,6 +576,7 @@ unsorted:
   - amanda 
   - amarok-doc 
   - amarok-lang 
+  - amazon-cloudwatch-agent 
   - amazon-ecs-init 
   - amazon-ssm-agent 
   - amber-cli 
@@ -15559,7 +15559,6 @@ unsorted:
   - libpurple-plugin-xmpp-http-upload 
   - libpurple-tcl 
   - libpurple0 
-  - libpwaccess0 
   - libpwquality-devel 
   - libpxbackend-1_0-32bit 
   - libpxbackend-1_0-mini 
@@ -15569,14 +15568,13 @@ unsorted:
   - libpythia8lhapdf6 
   - libpythia8rivet 
   - libpython3_10-1_0 
-  - libpython3_10-1_0-32bit 
   - libpython3_11-1_0-32bit 
   - libpython3_12-1_0 
-  - libpython3_12-1_0-32bit 
   - libpython3_12-1_0-x86-64-v3 
   - libpython3_13-1_0-32bit 
   - libpython3_13t1_0 
   - libpython3_14-1_0 
+  - libpython3_14-1_0-32bit 
   - libpython3_14-1_0-x86-64-v3 
   - libpython3_14t-1_0 
   - libpython3_15-1_0 
@@ -19724,6 +19722,7 @@ unsorted:
   - neko-mysql 
   - nekobox 
   - nekobox-core 
+  - nekobox-lang 
   - nekohtml 
   - nekohtml-demo 
   - nekohtml-javadoc 
@@ -24144,9 +24143,7 @@ unsorted:
   - python3-z3 
   - python3-zbar 
   - python310 
-  - python310-32bit 
   - python310-base 
-  - python310-base-32bit 
   - python310-curses 
   - python310-dbm 
   - python310-devel 
@@ -25266,6 +25263,7 @@ unsorted:
   - python311-dask-dataframe 
   - python311-dask-diagnostics 
   - python311-dask-distributed 
+  - python311-dask-image 
   - python311-dask-test 
   - python311-dataclasses-json 
   - python311-datadiff 
@@ -26612,6 +26610,7 @@ unsorted:
   - python311-pikepdf 
   - python311-pilkit 
   - python311-pillow-heif 
+  - python311-pims 
   - python311-pingparsing 
   - python311-pip-api 
   - python311-pip-licenses 
@@ -27982,12 +27981,10 @@ unsorted:
   - python311-zxcvbn 
   - python311-zxcvbn-rs-py 
   - python312 
-  - python312-32bit 
   - python312-Flask-SocketIO 
   - python312-Pint 
   - python312-arviz 
   - python312-base 
-  - python312-base-32bit 
   - python312-base-x86-64-v3 
   - python312-bpython 
   - python312-certbot-dns-cloudflare 
@@ -27997,7 +27994,6 @@ unsorted:
   - python312-desktop-entry-lib 
   - python312-devel 
   - python312-django-haystack 
-  - python312-django-request 
   - python312-doc 
   - python312-doc-devhelp 
   - python312-gpt4all 
@@ -28009,19 +28005,14 @@ unsorted:
   - python312-lalinspiral 
   - python312-lalpulsar 
   - python312-mapserver 
-  - python312-mrcfile 
   - python312-nilearn 
   - python312-nvim-remote 
   - python312-onnx 
   - python312-pegasus-wms.api 
-  - python312-pendulum 
   - python312-plotly 
   - python312-pyHanko 
   - python312-pyroomacoustics 
   - python312-python-datamatrix 
-  - python312-python-louvain 
-  - python312-qtconsole 
-  - python312-stripe 
   - python312-tensorpac 
   - python312-testsuite 
   - python312-tk 
@@ -29143,6 +29134,7 @@ unsorted:
   - python313-dask-dataframe 
   - python313-dask-diagnostics 
   - python313-dask-distributed 
+  - python313-dask-image 
   - python313-dask-test 
   - python313-dataclasses-json 
   - python313-datadiff 
@@ -30515,6 +30507,7 @@ unsorted:
   - python313-pikepdf 
   - python313-pilkit 
   - python313-pillow-heif 
+  - python313-pims 
   - python313-pingparsing 
   - python313-pip-api 
   - python313-pip-licenses 
@@ -31891,7 +31884,9 @@ unsorted:
   - python313-zxcvbn-rs-py 
   - python313-zypp-plugin 
   - python314 
+  - python314-32bit 
   - python314-base 
+  - python314-base-32bit 
   - python314-base-x86-64-v3 
   - python314-curses 
   - python314-dbm 
@@ -31977,6 +31972,9 @@ unsorted:
   - qdox 
   - qdox-javadoc 
   - qelectrotech 
+  - qelectrotech-examples 
+  - qelectrotech-lang 
+  - qelectrotech-symbols 
   - qemacs 
   - qemu-SLOF 
   - qemu-accel-qtest 
@@ -33801,6 +33799,7 @@ unsorted:
   - sha3sum 
   - shaderc 
   - shaderc-devel 
+  - shadow-pw-mgmt 
   - shadowsocks-libev 
   - shadowsocks-libev-devel 
   - shadowsocks-libev-doc 
@@ -45744,6 +45743,7 @@ unsorted:
   - waf 
   - waffle 
   - waffle-devel 
+  - wait4x 
   - wallpapers-openSUSE-extra 
   - wallpapers-openSUSE-extra-leap15 
   - wallstreet 
@@ -46401,6 +46401,10 @@ unsorted:
   - xournalpp 
   - xournalpp-lang 
   - xpad-noone-kmp-default 
+  - xpadneo 
+  - xpadneo-kmp-default 
+  - xpadneo-kmp-longterm 
+  - xpadneo-ueficert 
   - xpenguins 
   - xpinguin 
   - xplanet 

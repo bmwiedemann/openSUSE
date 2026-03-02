@@ -59,6 +59,7 @@
     <package name="WindowMaker" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-x11 -->
     <package name="aaa_base" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="aaa_base-extras" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="account-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="accounts-qml-module" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="accountsservice" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="accountsservice-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2527,6 +2528,7 @@
     <package name="libpsl5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpulse-mainloop-glib0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpulse0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libpwaccess0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpwquality-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpwquality1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpwquality1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -3844,7 +3846,6 @@
     <package name="sg3_utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="sgml-skel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="shadow" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="shadow-pw-mgmt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="shared-mime-info" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="shared-mime-info-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="shared-python-startup" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
