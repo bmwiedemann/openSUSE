@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 02 06:28:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.10:
+  * Bug Fixes
+    - b7d9e05: fix: update go to 1.26.0 and set renovate rule to
+      keep mise config in sync (#233) (@mircea-pavel-anton)
+  * Chores
+    - 340c409: chore(mise): update go ( 1.25.5 → 1.26.0 )
+      (@mr-borboto[bot])
+- Update to version 2.4.9:
+  * Bug Fixes
+    - 9fd17fa: fix: update imports and code to use charmbracelet v2
+      packages (#232)
+
+-------------------------------------------------------------------
 Fri Feb 27 11:56:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.8:
