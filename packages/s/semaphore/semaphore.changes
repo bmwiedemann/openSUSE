@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Mar 02 06:28:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.17.15:
+  This release improves secret management flexibility and includes
+  minor internal cleanup and dependency updates.
+  * Read Secrets from Raw Files
+    - You can now load secrets directly from a raw file. This makes
+      it easier to integrate with:
+      - Docker/Kubernetes secret mounts
+      - Vault Agent file sinks
+      - External secret management systems
+    This enhancement simplifies secure automation workflows and
+    improves compatibility with production setups.
+  * What's Changed
+    - feat(secrets): allow read secret from raw file by @fiftin in
+      #3654
+    - chore(deps): update dependency openai to v6.25.0 by
+      @renovate[bot] in #3533
+
+-------------------------------------------------------------------
+Wed Feb 25 10:06:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.17.14:
+  * Fixed null pointer in Backups
+
+-------------------------------------------------------------------
 Fri Feb 20 10:02:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.17.12 (no releases between .8 and this one):
