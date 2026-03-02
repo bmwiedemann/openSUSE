@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 02 06:16:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.12:
+  * build(deps): bump actions/setup-go from 6.2.0 to 6.3.0 (#2100)
+  * build(deps): bump k8s.io/apimachinery from 0.35.1 to 0.35.2
+    (#2099)
+  * build(deps): bump github.com/cloudflare/circl from 1.6.1 to
+    1.6.3 in the go_modules group across 1 directory (#2097)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.16.5 to
+    5.17.0 (#2096)
+  * build(deps): bump google.golang.org/api from 0.268.0 to 0.269.0
+    (#2095)
+  * build(deps): bump step-security/harden-runner from 2.14.2 to
+    2.15.0 (#2094)
+  * build(deps): bump github.com/google/go-containerregistry from
+    0.21.0 to 0.21.1 (#2092)
+
+-------------------------------------------------------------------
 Wed Feb 25 09:18:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.11:
