@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0b215550700b327ebade115531a334fa</srcmd5>
+    <version>2025.11.0</version>
+    <time>1772469516</time>
+    <user>anag_factory</user>
+    <comment>- Initial release of 2025.11.0.
+- Add patch support-numpy-2.4.patch:
+  * Use non-deprecated method in the testsuite.</comment>
+    <requestid>1335667</requestid>
+  </revision>
+</revisionlist>

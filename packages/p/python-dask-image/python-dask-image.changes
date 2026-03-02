@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Sun Mar  1 23:23:51 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Initial release of 2025.11.0.
+- Add patch support-numpy-2.4.patch:
+  * Use non-deprecated method in the testsuite.
