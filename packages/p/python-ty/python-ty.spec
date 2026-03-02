@@ -1,7 +1,6 @@
 #
 # spec file for package python-ty
 #
-# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,6 +29,10 @@ Source1:        vendor.tar.zst
 BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}
 BuildRequires:  cargo-packaging
+%if 0%{?suse_version} < 1699
+BuildRequires:  cargo1.90
+BuildRequires:  rust1.90
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       ty = %{version}-%{release}

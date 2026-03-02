@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 26 14:21:46 UTC 2026 - Oliver Kurz <okurz@suse.com>
+
+- Add support to build for Leap 16.0 with rust1.90
+
+-------------------------------------------------------------------
 Sat Feb 21 07:44:00 UTC 2026 - Oliver Kurz <okurz@suse.de>
 
 - Initial package for python-ty version 0.0.4

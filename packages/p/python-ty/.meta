@@ -1,4 +1,5 @@
 <package name="python-ty" project="openSUSE:Factory">
   <title>ty - An extremely fast Python type checker and language server, written in Rust.</title>
   <description>https://github.com/astral-sh/ty</description>
+  <devel project="devel:languages:python" package="python-ty"/>
 </package>
