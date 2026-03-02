@@ -17,14 +17,14 @@
 
 
 Name:           dyff
-Version:        1.10.5
+Version:        1.11.2
 Release:        0
 Summary:        Diff tool for YAML files, and sometimes JSON
 License:        MIT
 URL:            https://github.com/homeport/dyff
 Source:         dyff-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.23
+BuildRequires:  golang(API) >= 1.25
 
 %description
 A diff tool for YAML files, and sometimes JSON.

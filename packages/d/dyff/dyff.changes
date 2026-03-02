@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 02 06:43:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.11.2:
+  * Fix incorrect diff for mixing types in a list by @HeavyWombat
+    in #613
+- Update to version 1.11.1:
+  * Fix grab issue with non-standard identifier by @HeavyWombat in
+    #612
+- Update to version 1.11.0:
+  * Tidy up go.mod by @HeavyWombat in #608
+  * build(deps): bump goreleaser/goreleaser-action from 6 to 7 by
+    @dependabot[bot] in #609
+  * build(deps): bump golang.org/x/net from 0.50.0 to 0.51.0 by
+    @dependabot[bot] in #610
+  * Introduce format strings feature by @HeavyWombat in #611
+
+-------------------------------------------------------------------
 Wed Feb 25 09:24:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.5:
