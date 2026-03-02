@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 26 12:46:20 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.406
+  * Fixes mounting with -o allow_other, which was broken in the previous
+    release (thanks to li20034 for finding this and the quick patch.)
+
+-------------------------------------------------------------------
 Tue Feb 17 00:50:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.400
