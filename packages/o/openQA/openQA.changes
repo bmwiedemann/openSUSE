@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar 02 14:07:44 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1772460208.7a4e1e06:
+  * docs: Document array-like job settings and `job_setting` parameter
+  * test: Ensure test of filter params of jobs API fails if code breaks
+  * feat: Support searching by job settings in API to list jobs
+  * refactor: Improve `cancel_by_settings`
+  * fix: Allow filtering by more than one job setting in various routes
+  * test: Improve checks in `t/api/02-iso.t`
+  * feat: Allow searching by job settings via overview routes
+  * style: use consistent q{} syntax for SQL strings in Cache Model
+  * refactor: streamline IPC::Run usage and signal handling
+  * test: remove t/25-cache-service.t from unstable_tests.txt
+  * test: improve robustness of t/25-cache-service.t
+  * test: refactor InfluxDB subtest to reduce duplication
+  * test: improve infrastructure for t/25-cache-service.t
+  * fix: improve database robustness in Cache model
+  * fix: log rsync stderr in CacheService::Task::Sync
+  * test: support OPENQA_TEST_WAIT_INTERVAL in wait_for
+  * fix(cache): capture stderr and handle exit status robustly in Sync task
+  * test: make SIGCHLD handler selective in OpenQA::Test::Utils
+  * docs: document aggregate result badges for overview queries
+
+-------------------------------------------------------------------
 Thu Feb 26 18:08:33 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1772092969.74a39650:
