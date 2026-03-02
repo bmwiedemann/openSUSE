@@ -42,4 +42,14 @@
     <comment></comment>
     <requestid>1251792</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>67a6ba4f9150d18645a7cf5ff552c011</srcmd5>
+    <version>1.5.4</version>
+    <time>1772469535</time>
+    <user>anag_factory</user>
+    <comment>- Stop skipping tests that have been fixed upstream, and skip a different
+  one due to NumPy 2.4.
+- List directories in python_sitelib explicitly.</comment>
+    <requestid>1335674</requestid>
+  </revision>
 </revisionlist>

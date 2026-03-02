@@ -1,7 +1,7 @@
 #
 # spec file for package python-mrcfile
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,10 +56,8 @@ is used in structural biology to store image and volume data.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_data_is_not_copied_unnecessarily: https://github.com/ccpem/mrcfile/issues/49
-skip='test_data_is_not_copied_unnecessarily'
-# test_data_is_not_read_if_dimensions_are_too_huge": https://github.com/ccpem/mrcfile/issues/53
-skip="$skip or test_data_is_not_read_if_dimensions_are_too_huge"
+# https://github.com/ccpem/mrcfile/issues/73
+skip="test_data_transposed_in_place_is_written_without_errors"
 %pytest -v -k "not ($skip)"
 
 %post
@@ -73,6 +71,7 @@ skip="$skip or test_data_is_not_read_if_dimensions_are_too_huge"
 %license LICENSE.txt
 %python_alternative %{_bindir}/mrcfile-header
 %python_alternative %{_bindir}/mrcfile-validate
-%{python_sitelib}/mrcfile*
+%{python_sitelib}/mrcfile
+%{python_sitelib}/mrcfile-%{version}.dist-info
 
 %changelog
