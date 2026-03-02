@@ -264,4 +264,12 @@
     <comment>KDE release gear 25.12.2 (forwarded request 1330785 from krop)</comment>
     <requestid>1331373</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>8b6a000d074b4f03282a4b4db892cc54</srcmd5>
+    <version>25.12.2</version>
+    <time>1772469703</time>
+    <user>anag_factory</user>
+    <comment>- Update runtime requirements</comment>
+    <requestid>1335814</requestid>
+  </revision>
 </revisionlist>

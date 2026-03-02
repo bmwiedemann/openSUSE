@@ -84,8 +84,9 @@ Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kf6-kitemmodels-imports >= %{kf6_version}
 Requires:       kf6-ksvg-imports >= %{kf6_version}
 Requires:       kidentitymanagement-imports
-Requires:       libPlasma6 >= %{plasma6_version}
-Requires:       libplasma6-components >= %{plasma6_version}
+Requires:       qt6qmlimport(org.kde.plasma.components) >= %{plasma6_version}
+Requires:       qt6qmlimport(org.kde.plasma.core) >= %{plasma6_version}
+Requires:       qt6qmlimport(org.kde.plasma.plasmoid) >= %{plasma6_version}
 Requires:       mimetreeparser-imports
 Requires:       qt6-declarative-imports >= %{qt6_version}
 Requires:       qt6-location >= %{qt6_version}
