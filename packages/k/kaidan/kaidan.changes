@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 25 10:07:41 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- kaidan needs gstreamer-plugins-good-qtqml6 for it's new feature
+  (Audio/Video Call)
+
+-------------------------------------------------------------------
 Thu Feb 12 14:14:01 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.15.0

@@ -63,6 +63,7 @@ BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 BuildRequires:  cmake(ZXing) >= 1.0.8
 BuildRequires:  pkgconfig(icu-uc) >= 61.0
+Requires:       gstreamer-plugins-good-qtqml6
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kf6-prison-imports >= %{kf6_version}
 Requires:       kirigami-addons6 >= 1.8.0

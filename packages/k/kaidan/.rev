@@ -133,4 +133,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1333989</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>05c64449b64d771477a6f0fec062a7f8</srcmd5>
+    <version>0.15.0</version>
+    <time>1772469707</time>
+    <user>anag_factory</user>
+    <comment>- kaidan needs gstreamer-plugins-good-qtqml6 for it's new feature
+  (Audio/Video Call)</comment>
+    <requestid>1335819</requestid>
+  </revision>
 </revisionlist>
