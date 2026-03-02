@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 24 12:21:09 UTC 2026 - Reinhard Max <max@suse.com>
+
+- bsc#1258754: Update to 14.22 to fix two regressions in 14.21:
+  * https://www.postgresql.org/docs/release/14.22/
+  * The substring() function raises an error "invalid byte sequence
+    for encoding" on non-ASCII text values if the source of
+    that value is a database column.
+  * A standby may halt and return an error "could not access status
+    of transaction".
+
+-------------------------------------------------------------------
 Wed Feb 11 19:27:43 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Update to 14.21:
