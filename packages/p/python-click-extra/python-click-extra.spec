@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click-extra
-Version:        7.6.0
+Version:        7.6.3
 Release:        0
 Summary:        Drop-in replacement for Click to make user-friendly and colorful CLI
 License:        GPL-2.0-or-later
@@ -126,9 +126,6 @@ IGNORED_CHECKS+=" or test_enum_choice_show_aliases[Status-ChoiceSource.STR-False
 IGNORED_CHECKS+=" or test_enum_choice_show_aliases[Status-ChoiceSource.NAME-True-result2]"
 IGNORED_CHECKS+=" or test_enum_choice_show_aliases[Status-ChoiceSource.VALUE-True-result3]"
 IGNORED_CHECKS+=" or test_enum_choice_show_aliases[Color-ChoiceSource.NAME-True-result4]"
-#
-# https://github.com/kdeldycke/click-extra/issues/1538
-IGNORED_CHECKS+=" or test_file_pattern"
 
 %pytest -k "not (${IGNORED_CHECKS})"
 

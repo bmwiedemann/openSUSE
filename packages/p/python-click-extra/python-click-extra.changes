@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Mar  2 12:10:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.6.3:
+  * Fix test_default_pattern_roaming_force_posix test failures when
+    XDG_CONFIG_HOME is set. Closes {issue}1541.
+
+-------------------------------------------------------------------
+Mon Mar  2 06:40:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.6.2:
+  * Add ExtraVersionOption.prebake_version() static method to pre-bake
+    __version__ strings with Git hashes at compile time, complementing
+    the runtime version property for Nuitka/PyInstaller binaries.
+
+-------------------------------------------------------------------
+Fri Feb 27 12:34:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.6.1:
+  * Fix test failures when optional config format dependencies are not
+    installed. Closes {issue}1538.
+
+-------------------------------------------------------------------
 Fri Feb 27 06:27:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 7.6.0:
