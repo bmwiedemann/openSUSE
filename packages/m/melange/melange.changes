@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Mar 02 06:17:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.43.4:
+  * build(deps): bump actions/download-artifact from 7.0.0 to 8.0.0
+    (#2380)
+  * build(deps): bump actions/upload-artifact from 6.0.0 to 7.0.0
+    (#2381)
+  * fix(qemu): respect memory limits in pods (#2382)
+  * Fix melange parsing error line numbers (#2379)
+  * Add `shallow-submodules` and `submodule-jobs` options for
+    `git-checkout` (#2368)
+  * build(deps): bump actions/setup-go in the actions group (#2378)
+  * build(deps): bump github.com/cloudflare/circl from 1.6.1 to
+    1.6.3 (#2377)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.16.5 to
+    5.17.0 (#2375)
+  * build(deps): bump step-security/harden-runner in the actions
+    group (#2376)
+  * build(deps): bump github.com/google/go-containerregistry
+    (#2372)
+
+-------------------------------------------------------------------
 Wed Feb 25 09:19:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.43.3:
