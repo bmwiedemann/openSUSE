@@ -21,7 +21,7 @@
 
 Name:           sbcl
 #!BuildIgnore:  gcc-PIE
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 Summary:        Steel Bank Common Lisp
 License:        BSD-3-Clause AND SUSE-Public-Domain
@@ -102,8 +102,6 @@ BuildRequires:  texlive-ec
 Patch0:         sbcl-1.1.2-install.patch
 # PATCH-FIX-UPSTREAM Remove obsolete qemu workarounds
 Patch1:         remove-qemu-workarounds.patch
-# PATCH-FIX-UPSTREAM Properly model the non-existing floating point traps on RISC-V
-Patch2:         riscv-float-traps.patch
 ExcludeArch:    s390x
 Requires:       sbcl-bin
 
