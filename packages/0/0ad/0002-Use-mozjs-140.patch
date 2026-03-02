@@ -1,0 +1,35 @@
+diff --git a/build/premake/extern_libs5.lua b/build/premake/extern_libs5.lua
+index b9fdd70..d732f15 100644
+--- a/build/premake/extern_libs5.lua
++++ b/build/premake/extern_libs5.lua
+@@ -641,7 +641,7 @@ extern_lib_defs = {
+ 
+ 			if _OPTIONS["with-system-mozjs"] then
+ 				if not _OPTIONS["android"] then
+-					pkgconfig.add_includes_after("mozjs-128")
++					pkgconfig.add_includes_after("mozjs-140")
+ 				end
+ 			else
+ 				filter "Debug"
+@@ -657,7 +657,7 @@ extern_lib_defs = {
+ 				if _OPTIONS["android"] then
+ 					links { "mozjs-128" }
+ 				else
+-					pkgconfig.add_links("mozjs-128")
++					pkgconfig.add_links("mozjs-140")
+ 				end
+ 			else
+ 				filter { "Debug" }
+diff --git a/build/premake/premake5.lua b/build/premake/premake5.lua
+index 357b08f..8b1630a 100644
+--- a/build/premake/premake5.lua
++++ b/build/premake/premake5.lua
+@@ -165,7 +165,7 @@ end
+ -- The pc file doesn't specify the required -DDEBUG needed in that case
+ local mozjs_is_debug_build = false
+ if _OPTIONS["with-system-mozjs"] then
+-	local _, errorCode = os.outputof(cc .. " $(pkg-config mozjs-128 --cflags) ./tests/mozdebug.c -o /dev/null")
++	local _, errorCode = os.outputof(cc .. " $(pkg-config mozjs-140 --cflags) ./tests/mozdebug.c -o /dev/null")
+ 	if errorCode ~= 0 then
+ 		mozjs_is_debug_build = true
+ 	end

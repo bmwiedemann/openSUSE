@@ -1,7 +1,7 @@
 #
 # spec file for package 0ad
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@
 %endif
 
 Name:           0ad
-Version:        0.27.1
+Version:        0.28.0
 Release:        0
 Summary:        A real-time strategy game of ancient warfare
 License:        BSD-3-Clause AND CC-BY-SA-3.0 AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT AND ISC AND MPL-2.0
@@ -44,8 +44,15 @@ Source:         https://releases.wildfiregames.com/%{name}-%{version}-unix-build
 Source1:        premake-disable-rpath.patch
 Source100:      0ad-rpmlintrc
 Patch1:         0001-Enable-building-on-arbitrary-architectures.patch
+%if 0%{?suse_version} > 1600
+# Some of the following patches are from in-progress work to port to mozjs140:
+# https://gitea.wildfiregames.com/Itms/0ad/commits/branch/spidermonkey-esr140.
+# Pared down version of https://gitea.wildfiregames.com/Itms/0ad/commit/b9fa6bb71792969b2baa26959b130ce0b957578a
+Patch2:         0002-Use-mozjs-140.patch
+# From https://gitea.wildfiregames.com/Itms/0ad/commit/2635c9064f5127b52147a302fad0946be5ff9ec1.patch
+Patch3:         0003-Adapt-JS-API-to-ESR-140.patch
+%endif
 %if 0%{?suse_version} >= 1600
-Patch2:         0002-remove-boost-system-library.patch
 BuildRequires:  boost-devel >= 1.69.0
 %endif
 BuildRequires:  cmake
@@ -78,13 +85,16 @@ Requires:       0ad-data = %{version}
 BuildRequires:  nvidia-texture-tools >= 2.1
 %endif
 %if %{with system_mozjs}
-#FIXME: Depends on source/scriptinterface/ScriptTypes.h
-BuildRequires:  pkgconfig(mozjs-115)
+%if 0%{?suse_version} > 1600
+BuildRequires:  pkgconfig(mozjs-140)
+%else
+BuildRequires:  pkgconfig(mozjs-128)
+%endif
 %else
 BuildRequires:  cargo
 BuildRequires:  rust
 %endif
-ExclusiveArch:  aarch64 %{arm} %{ix86} loongarch64 riscv64 x86_64
+ExclusiveArch:  aarch64 %{arm} %{ix86} loongarch64 riscv64 x86_64 ppc ppc64
 
 %description
 0 A.D. (pronounced "zero ey-dee") is a real-time strategy (RTS) game
@@ -124,6 +134,8 @@ diff arch.list - <<END
 #define PLATFORM_ARCHITECTURE "RISCV64"
 #define PLATFORM_ARCHITECTURE "loongarch64"
 #define PLATFORM_ARCHITECTURE "e2k"
+#define PLATFORM_ARCHITECTURE "ppc64"
+#define PLATFORM_ARCHITECTURE "ppc"
 END
 
 build/workspaces/update-workspaces.sh \

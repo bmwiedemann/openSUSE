@@ -222,4 +222,29 @@
 </comment>
     <requestid>1306072</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c3e46a4468893b23a8a2b40e15ebd7f6</srcmd5>
+    <version>0.28.0</version>
+    <time>1772469421</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.28.0:
+  * Gendered Civilians
+  * Direct Font Rendering
+  * Support for JavaScript Modules
+  * New Game-Setup Options
+  * Lobby improvements
+  * Engine upgrades and updated platform support
+  * New quotes and tips
+  * Various balancing improvements
+- See https://play0ad.com/new-release-0-a-d-release-28-boiorix/ for
+  more details.
+- This updates SpiderMonkey to version 128 (from 115), but mozjs128
+  has already been dropped from Factory. Since upstream intends to
+  switch to version 140 anyway, we add 0002-Use-mozjs-140.patch
+  and 0003-Adapt-JS-API-to-ESR-140.patch so that we can already
+  build this version with mozjs140.
+- Drop obsolete 0002-remove-boost-system-library.patch.
+</comment>
+    <requestid>1335657</requestid>
+  </revision>
 </revisionlist>
