@@ -2637,6 +2637,7 @@ unsorted:
   - corepack24 
   - coreutils-doc 
   - coreutils-single 
+  - coreutils-systemd-doc 
   - coreutils-testsuite 
   - corosync 
   - corosync-devel 
@@ -14010,7 +14011,7 @@ unsorted:
   - libhyprlang2 
   - libhyprtoolkit5 
   - libhyprutils10 
-  - libhyprwire2 
+  - libhyprwire3 
   - libi2c0 
   - libi2c0-devel 
   - libibdm1 
@@ -17092,11 +17093,8 @@ unsorted:
   - libwmf-gnome-32bit 
   - libwmf-tools 
   - libwmime2 
-  - libwnck-1-22 
   - libwnck-devel 
   - libwnck-tools 
-  - libwnck2-devel 
-  - libwnck2-lang 
   - libwoff2common1_0_2-32bit 
   - libwoff2dec1_0_2-32bit 
   - libwoff2enc1_0_2 
@@ -23519,6 +23517,7 @@ unsorted:
   - procmeter-devel 
   - procmon 
   - procps-devel 
+  - procps-uptime 
   - procs 
   - product-builder 
   - product-builder-plugin-Tumbleweed 
@@ -45154,7 +45153,6 @@ unsorted:
   - typelib-1_0-WebKit2WebExtension-4_0 
   - typelib-1_0-WebKit2WebExtension-4_1 
   - typelib-1_0-WebKitWebProcessExtension-6_0 
-  - typelib-1_0-Wnck-1_0 
   - typelib-1_0-Wp-0_5 
   - typelib-1_0-XApp-1_0 
   - typelib-1_0-XdpGtk3-1_0 
