@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar  1 08:42:28 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.25.1:
+  backhand
+  * v3: Add kinds: BE_V3_1_LZMA_SWAP and LE_V3_1_LZMA_SWAP
+    + Big and little endian, with special magic.
+    + General support for v3.1, no on-disk changes.
+  * v3: Fall back to standard LZMA even if adaptive is picked.
+  backhand-cli
+  * Add --kinds: le_v3_1_lzma_swap and be_v3_1_lzma_swap
+
+-------------------------------------------------------------------
 Sun Feb 15 09:01:45 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.25.0:
