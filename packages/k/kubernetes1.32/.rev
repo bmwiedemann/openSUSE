@@ -120,4 +120,12 @@ CVE-2025-1767: GitRepo Volume Inadvertent Local Repository Access, bsc#1239643
     <comment>Monthly Patch Release – Feb, 2026: Update to version 1.32.12</comment>
     <requestid>1332633</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3967365d63d4ac55f0014535ad453424</srcmd5>
+    <version>1.32.13</version>
+    <time>1772469631</time>
+    <user>anag_factory</user>
+    <comment>Kubernetes 1.32.13 - out-of-band patch release built with Go 1.24.13</comment>
+    <requestid>1335749</requestid>
+  </revision>
 </revisionlist>
