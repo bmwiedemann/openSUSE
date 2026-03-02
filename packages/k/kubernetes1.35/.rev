@@ -16,4 +16,12 @@
     <comment>Monthly Patch Release – Feb, 2026: Update to version 1.35.1</comment>
     <requestid>1332630</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5a353e051d8e49e93da7a3509142a231</srcmd5>
+    <version>1.35.2</version>
+    <time>1772469639</time>
+    <user>anag_factory</user>
+    <comment>Kubernetes 1.35.2 - out-of-band patch release built with Go 1.25.7</comment>
+    <requestid>1335753</requestid>
+  </revision>
 </revisionlist>
