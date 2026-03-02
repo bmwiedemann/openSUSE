@@ -29,4 +29,20 @@ Add conflicts to busybox-adduser</comment>
   * drop_privs: don't run the check as root</comment>
     <requestid>1328440</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3ddde09660a74cc7c5b73166483adeff</srcmd5>
+    <version>1.0.1+git20260128.6a6d00f</version>
+    <time>1772469710</time>
+    <user>anag_factory</user>
+    <comment>- Remove permissions file as entries got removed from permissions
+
+- Update to version 1.0.1+git20260128.6a6d00f:
+  * mkdir_p: return correct error code
+  * dump-privs: add stdint.h for intmax_t
+  * Only use getcon if SELinux is available
+  * pwupdd: remove socket option leftovers
+
+- Obsolete shadow-pw-mgmt for easier migration</comment>
+    <requestid>1335831</requestid>
+  </revision>
 </revisionlist>

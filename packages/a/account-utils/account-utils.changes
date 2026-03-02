@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar  2 13:58:28 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove permissions file as entries got removed from permissions
+
+-------------------------------------------------------------------
+Mon Mar 02 11:04:37 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.0.1+git20260128.6a6d00f:
+  * mkdir_p: return correct error code
+  * dump-privs: add stdint.h for intmax_t
+  * Only use getcon if SELinux is available
+  * pwupdd: remove socket option leftovers
+
+-------------------------------------------------------------------
+Mon Mar  2 11:04:16 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Obsolete shadow-pw-mgmt for easier migration
+
+-------------------------------------------------------------------
 Wed Jan 21 08:36:15 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.0.1+git20260121.39eee92:
