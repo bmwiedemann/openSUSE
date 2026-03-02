@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  2 10:29:06 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- switch to systemd-tmpfiles for directory creation
+
+-------------------------------------------------------------------
 Wed Jan 21 21:40:01 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - set permissions on volume mount directory

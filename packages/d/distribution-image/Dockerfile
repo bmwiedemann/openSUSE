@@ -31,6 +31,9 @@ RUN set -euo pipefail; \
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' distribution-registry | \
     cut -d '.' -f -2)" = "3.0" ]
+RUN set -euo pipefail; zypper -n install --no-recommends systemd && \
+    systemd-tmpfiles --create --root /target distribution-registry.conf
+
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
@@ -64,6 +67,5 @@ LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.md)%"
 ENTRYPOINT ["/usr/bin/registry"]
 CMD ["serve", "/etc/registry/config.yml"]
 EXPOSE 5000/tcp
-RUN set -euo pipefail; install -d -m 0755 -o registry -g registry /var/lib/docker-registry
 USER registry
 VOLUME /var/lib/docker-registry
