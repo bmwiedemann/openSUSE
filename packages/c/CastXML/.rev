@@ -199,4 +199,12 @@ test: Fix expected cc-gnu predefined macro ordering
     <comment>Update to version 0.6.13</comment>
     <requestid>1307170</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6d325a1f9fb9d2756c33ae14fda9bc60</srcmd5>
+    <version>0.7.0</version>
+    <time>1772469691</time>
+    <user>anag_factory</user>
+    <comment>Unresolvable (in devel project) until cmake is rebuilt against libuv</comment>
+    <requestid>1335791</requestid>
+  </revision>
 </revisionlist>
