@@ -1,0 +1,13 @@
+Index: pims-0.7/pims/tiff_stack.py
+===================================================================
+--- pims-0.7.orig/pims/tiff_stack.py
++++ pims-0.7/pims/tiff_stack.py
+@@ -278,7 +278,7 @@ class TiffStack_pil(FramesSequence):
+             raise IndexError("out of bounds; length is {0}".format(len(self)))
+         # If j == self.cur, do nothing.
+         self.cur = self.im.tell()
+-        res = np.reshape(self.im.getdata(), self._im_sz)
++        res = np.reshape(self.im.get_flattened_data(), self._im_sz)
+         return Frame(res, frame_no=j, metadata=self._read_metadata())
+ 
+     def _read_metadata(self):

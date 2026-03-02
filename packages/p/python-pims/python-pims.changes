@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Sun Mar  1 23:05:22 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Initial release of 0.7.
+- Add patch support-pillow-12.patch:
+  * Use new get_flattened_data method.
