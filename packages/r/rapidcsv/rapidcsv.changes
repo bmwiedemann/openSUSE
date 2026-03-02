@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 21 09:58:54 UTC 2026 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Update to version 8.92:
+  * add support for more integer types
+  * add cmake find_package support
+
+-------------------------------------------------------------------
 Sat Sep 20 11:05:22 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Update to version 8.89:

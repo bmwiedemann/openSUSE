@@ -1,6 +1,7 @@
 #
 # spec file for package rapidcsv
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           rapidcsv
-Version:        8.89
+Version:        8.92
 Release:        0
 Summary:        C++ header-only library for CSV parsing
 License:        BSD-3-Clause
@@ -57,6 +58,9 @@ find examples -perm 0755 -and -type f -exec chmod 0644 {} +
 mkdir -p %{buildroot}/%{_docdir}/%{name}-devel
 cp -rp examples %{buildroot}/%{_docdir}/%{name}-devel/examples
 
+mkdir -p %{buildroot}/%{_datadir}/cmake/rapidcsv
+mv %{buildroot}/%{_prefix}/cmake/*.cmake %{buildroot}/%{_datadir}/cmake/rapidcsv
+
 %fdupes %{buildroot}/%{_prefix}
 
 %check
@@ -67,5 +71,8 @@ cp -rp examples %{buildroot}/%{_docdir}/%{name}-devel/examples
 %doc README.md doc
 %{_includedir}/rapidcsv.h
 %{_docdir}/%{name}-devel/examples
+%dir %{_datadir}/cmake/rapidcsv
+%{_datadir}/cmake/rapidcsv/rapidcsvConfig.cmake
+%{_datadir}/cmake/rapidcsv/rapidcsvTargets.cmake
 
 %changelog
