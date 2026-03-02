@@ -17,7 +17,7 @@
 
 
 Name:           nekobox
-Version: 5.10.19
+Version: 5.10.20
 Release:        0%{?autorelease}
 Summary:        Qt based cross-platform GUI proxy configuration manager (backend: sing-box)
 License:        GPL-3.0-only
@@ -44,24 +44,29 @@ BuildRequires:  gcc-c++
 Provides:       nekoray
 Conflicts:      nekoray
 
-Requires:       nekobox-core
+Requires:       %{name}-core
 %if 0%{?suse_version}
 Requires:       google-noto-coloremoji-fonts
 Requires:       google-noto-sans-fonts
 %endif
 
-
 %define core nekobox_core
 
-%package -n nekobox-core
+%package core
 Summary:        %{summary}
 Provides:  sing-box
 Conflicts: sing-box
 
+%package lang
+Summary:        %{summary}
+
 %description
 %{summary}.
 
-%description -n nekobox-core
+%description core
+%{summary}.
+
+%description lang
 %{summary}.
 
 %prep
@@ -100,6 +105,7 @@ chrpath -d                  %{buildroot}%{_libexecdir}/%{name}/%{name}
 %attr(0755, -, -) %{_libexecdir}/%{name}/%{name}
 %dir %{_libexecdir}/%{name}/public
 %attr(0644, -, -) %{_libexecdir}/%{name}/public/*.*
+%exclude %{_libexecdir}/%{name}/public/*.qm
 %attr(0644, -, -) %{_datadir}/icons/hicolor/256x256/apps/nekobox.png
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/256x256
@@ -107,7 +113,10 @@ chrpath -d                  %{buildroot}%{_libexecdir}/%{name}/%{name}
 %attr(0644, -, -) %{_datadir}/applications/%{name}.desktop
 %license LICENSE
 
-%files -n nekobox-core
+%files lang
+%attr(0644, -, -) %{_libexecdir}/%{name}/public/*.qm
+
+%files core
 %attr(0755, -, -) %{_bindir}/sing-box
 %dir %{_libexecdir}/%{name}
 %attr(0755, -, -) %{_libexecdir}/%{name}/%{core}
