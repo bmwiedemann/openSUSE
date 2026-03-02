@@ -7,4 +7,5 @@
     optimization problems. It is a mature, feature rich, and performant
     library that has been used in production at Google since 2010.
   </description>
+  <devel project="science" package="ceres-solver"/>
 </package>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  4 17:38:31 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Raise-minimum-required-Eigen-version-to-3.3.4.patch,
+  0001-Support-Eigen3-5.0.0.patch
+
+-------------------------------------------------------------------
 Wed Nov 20 17:11:00 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add missing suitesparse-devel dependency in devel subpackage.

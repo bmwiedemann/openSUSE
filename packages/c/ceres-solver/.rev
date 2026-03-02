@@ -7,4 +7,13 @@
     <comment>Required e.g. by openMVS/openMVG in graphics.</comment>
     <requestid>1301966</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8488e74a5b6d64fed545ae1a567fd28e</srcmd5>
+    <version>2.2.0</version>
+    <time>1772469700</time>
+    <user>anag_factory</user>
+    <comment>- Add 0001-Raise-minimum-required-Eigen-version-to-3.3.4.patch,
+  0001-Support-Eigen3-5.0.0.patch</comment>
+    <requestid>1335799</requestid>
+  </revision>
 </revisionlist>

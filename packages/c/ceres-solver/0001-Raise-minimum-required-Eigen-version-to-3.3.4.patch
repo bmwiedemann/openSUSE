@@ -1,0 +1,60 @@
+From f0720aeb84ec7bb479fe3618b30fa54981baf8fd Mon Sep 17 00:00:00 2001
+From: Sergiu Deitsch <sergiu.deitsch@gmail.com>
+Date: Mon, 17 Feb 2025 22:07:39 +0100
+Subject: [PATCH] Raise minimum required Eigen version to 3.3.4
+
+Ubuntu 22.04 ships with Eigen 3.4.0. The MinGW workaround for -O3
+related crashes has been available in Eigen since at least version
+3.2.0, see https://gitlab.com/libeigen/eigen/-/commit/cc03c9d68354ea3fed03481de045c185ddc1fc49.
+
+Change-Id: Iebfd6ed1fa55a6b0f5bd57bd920188e7b486d8cb
+---
+ CMakeLists.txt               | 22 +---------------------
+ docs/source/installation.rst |  4 ++--
+ 2 files changed, 3 insertions(+), 23 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f53e9981..af932c6a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -234,17 +234,9 @@ unset(CERES_COMPILE_OPTIONS)
+ 
+ # Eigen.
+ # Eigen delivers Eigen3Config.cmake since v3.3.3
+-find_package(Eigen3 3.3 REQUIRED)
++find_package(Eigen3 3.3.4 REQUIRED NO_MODULE)
+ if (Eigen3_FOUND)
+   message("-- Found Eigen version ${Eigen3_VERSION}: ${Eigen3_DIR}")
+-  if (CMAKE_SYSTEM_PROCESSOR MATCHES "^(aarch64.*|AARCH64.*)" AND
+-      Eigen3_VERSION VERSION_LESS 3.3.4)
+-    # As per issue #289: https://github.com/ceres-solver/ceres-solver/issues/289
+-    # the bundle_adjustment_test will fail for Eigen < 3.3.4 on aarch64.
+-    message(FATAL_ERROR "-- Ceres requires Eigen version >= 3.3.4 on aarch64. "
+-      "Detected version of Eigen is: ${Eigen3_VERSION}.")
+-  endif()
+-
+   if (EIGENSPARSE)
+     message("-- Enabling use of Eigen as a sparse linear algebra library.")
+     list(APPEND CERES_COMPILE_OPTIONS CERES_USE_EIGEN_SPARSE)
+@@ -545,18 +537,6 @@ else (NOT CMAKE_BUILD_TYPE)
+   endif (CMAKE_BUILD_TYPE STREQUAL "Debug")
+ endif (NOT CMAKE_BUILD_TYPE)
+ 
+-if (MINGW)
+-  # MinGW produces code that segfaults when performing matrix multiplications
+-  # in Eigen when compiled with -O3 (see [1]), as such force the use of -O2
+-  # which works.
+-  #
+-  # [1] http://eigen.tuxfamily.org/bz/show_bug.cgi?id=556
+-  message("-- MinGW detected, forcing -O2 instead of -O3 in Release for Eigen due "
+-          "to a MinGW bug: http://eigen.tuxfamily.org/bz/show_bug.cgi?id=556")
+-  string(REPLACE "-O3" "-O2" CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
+-  update_cache_variable(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
+-endif (MINGW)
+-
+ # After the tweaks for the compile settings, disable some warnings on MSVC.
+ if (MSVC)
+   # Insecure standard library functions
+-- 
+2.52.0
+

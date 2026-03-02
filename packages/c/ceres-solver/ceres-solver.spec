@@ -1,7 +1,7 @@
 #
 # spec file for package ceres-solver
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,14 @@ Group:          Development/Libraries/C and C++
 URL:            http://ceres-solver.org/
 Source:         http://ceres-solver.org/%{name}-%{version}.tar.gz
 Patch0:         0001-Fix-CMAKE_MODULE_PATH-breakage-due-to-find_dependenc.patch
+Patch1:         0001-Raise-minimum-required-Eigen-version-to-3.3.4.patch
+Patch2:         0001-Support-Eigen3-5.0.0.patch
 BuildRequires:  cmake >= 3.16.0
 BuildRequires:  gcc-c++
 BuildRequires:  glog-devel >= 0.3.1
 BuildRequires:  memory-constraints
 BuildRequires:  suitesparse-devel >= 4.5.6
-BuildRequires:  pkgconfig(eigen3) >= 3.3.0
+BuildRequires:  pkgconfig(eigen3) >= 3.3.4
 
 %description
 Ceres Solver is a C++ library for modeling and solving large,
