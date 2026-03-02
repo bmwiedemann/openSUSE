@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Mar  2 07:05:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 11.0.0:
+  * Switch license from GPL-2.0+ to Apache-2.0
+
+-------------------------------------------------------------------
+Mon Mar  2 06:41:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.0.0:
+  * Replace distro dependency with built-in /etc/os-release parser,
+    making the package dependency-free. macOS Platform.info() now
+    returns distro_id: None instead of distro_id: "darwin".
+  * Add new Agent trait type for detecting AI coding agents.
+  * Add 3 agent definitions: CLAUDE_CODE, CLINE, CURSOR.
+  * Add current_agent() detection function.
+  * Add agent group: ALL_AGENTS.
+  * Add @skip_<agent> and @unless_<agent> pytest decorators for all
+    agents and agent groups.
+  * Add GENERIC_LINUX platform for Linux environments where distro
+    cannot identify the specific distribution (e.g., minimal
+    containers or build chroots without /etc/os-release). Closes
+    #479.
+  * Show detected agent in extra-platforms CLI output.
+  * Use TERM, CI, and LLM environment variables to distinguish
+    unrecognized terminals, CI systems, and agents from absent
+    ones.
+
+-------------------------------------------------------------------
 Tue Feb 17 05:59:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.2.0:

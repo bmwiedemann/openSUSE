@@ -23,10 +23,10 @@
 %bcond_with libalternatives
 %endif
 Name:           python-extra-platforms
-Version:        9.2.0
+Version:        11.0.0
 Release:        0
 Summary:        Detect platforms and group them by family
-License:        GPL-2.0-or-later
+License:        Apache-2.0
 URL:            https://github.com/kdeldycke/extra-platforms
 Source:         https://github.com/kdeldycke/extra-platforms/archive/refs/tags/v%{version}.tar.gz#/extra_platforms-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.10}
@@ -35,9 +35,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module uv-build}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
-# SECTION runtime requirements
-BuildRequires:  %{python_module distro >= 1.9.0}
-# /SECTION
 # SECTION test requirements
 BuildRequires:  openSUSE-release
 BuildRequires:  %{python_module Sphinx}
@@ -51,7 +48,6 @@ BuildRequires:  %{python_module tomli >= 2.3.0 if %python-base < 3.11}
 BuildRequires:  %{python_module wcmatch >= 10.0}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-distro >= 1.9.0
 BuildArch:      noarch
 %if %{with libalternatives}
 Requires:       alts
