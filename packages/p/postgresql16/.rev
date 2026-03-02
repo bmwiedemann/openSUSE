@@ -290,4 +290,18 @@ https://www.postgresql.org/about/news/postgresql-176-1610-1514-1419-1322-and-18-
 - Disown /var/lib/pgsql to support transactional updates.</comment>
     <requestid>1332746</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>75e8a6702b15d3619ab957d141950980</srcmd5>
+    <version>16.13</version>
+    <time>1772473615</time>
+    <user>anag_factory</user>
+    <comment>- bsc#1258754: Update to 16.13 to fix two regressions in 16.12:
+  * https://www.postgresql.org/docs/release/16.13/
+  * The substring() function raises an error &quot;invalid byte sequence
+    for encoding&quot; on non-ASCII text values if the source of
+    that value is a database column.
+  * A standby may halt and return an error &quot;could not access status
+    of transaction&quot;.</comment>
+    <requestid>1335838</requestid>
+  </revision>
 </revisionlist>
