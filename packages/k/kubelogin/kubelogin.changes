@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 25 09:19:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.15:
+  * Bug Fixes
+    - PoP token flow crash with nil pointer in cache.Replace when
+      running non-root by @vineeth-thumma in #736
+  * Enhancements
+    - feat: automate CHANGELOG.md generation for releases by
+      @Copilot in #737
+
+-------------------------------------------------------------------
 Sun Jan 11 13:24:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.14:
