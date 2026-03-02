@@ -351,4 +351,13 @@
     <comment></comment>
     <requestid>1284515</requestid>
   </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>6bc74c4783bddd6b2a08366836096904</srcmd5>
+    <version>1.2.30</version>
+    <time>1772469320</time>
+    <user>anag_factory</user>
+    <comment>- spec file calculates version number for Cacti to handle +git in version
+Should be clean now that https://build.opensuse.org/requests/1335341 has been accepted. </comment>
+    <requestid>1335483</requestid>
+  </revision>
 </revisionlist>

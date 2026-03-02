@@ -20,10 +20,13 @@
 %{!?make_build: %define make_build make %{?_smp_mflags}}
 Name:           cacti-spine
 Version:        1.2.30
+%global base_version %(echo %{version} | sed 's/+[^+]*//')
+%global next_base_version %(echo %{base_version} | awk -F. -v OFS=. '{$NF++; print}')
 Release:        0
 Summary:        Threaded poller for Cacti written in C
 License:        LGPL-2.1-or-later
 URL:            https://www.cacti.net/spine_info.php
+Group:          System/Monitoring
 Source:         https://www.cacti.net/downloads/spine/%{name}-%{version}.tar.gz
 # https://github.com/Cacti/spine/issues/368
 Patch0:          cacti-spine-gcc15.patch
@@ -32,7 +35,8 @@ BuildRequires:  libtool
 BuildRequires:  mysql-devel
 BuildRequires:  net-snmp-devel
 BuildRequires:  openssl-devel
-Requires:       cacti = %{version}
+Requires:       cacti >= %{base_version}
+Requires:       cacti < %{next_base_version}
 Requires:       rrdtool
 
 %description
