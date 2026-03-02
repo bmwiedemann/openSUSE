@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  2 07:09:11 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to 3.2.0
+  * Added support for Python 3.14
+  * Added upper limit to time-machine dependency
+  * Dropped support for PyPy below PyPy3.11
+
+-------------------------------------------------------------------
 Tue Mar 18 18:24:31 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Move stray reference for gh#python-pendulum/pendulum#844
