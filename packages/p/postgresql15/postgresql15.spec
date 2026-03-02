@@ -17,7 +17,7 @@
 
 
 %define pgmajor 15
-%define pgminor 16
+%define pgminor 17
 
 ### CUT HERE ###
 %define pgname postgresql%pgmajor
