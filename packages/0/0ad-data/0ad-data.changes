@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb 26 22:08:37 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to 0.28.0:
+  * Gendered Civilians
+  * Direct Font Rendering
+  * Support for JavaScript Modules
+  * New Game-Setup Options
+  * Lobby improvements
+  * Engine upgrades and updated platform support
+  * New quotes and tips
+  * Various balancing improvements
+- See https://play0ad.com/new-release-0-a-d-release-28-boiorix/ for
+  more details.
+- We can no longer replace fonts by symbolic links because they are
+  now inside of a zip archive.
+
+-------------------------------------------------------------------
 Fri Jul 18 21:22:00 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to 0.27.1:
