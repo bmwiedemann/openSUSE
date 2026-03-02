@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 02 06:18:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.26.0:
+  * Run end-to-end tests for Kubernetes v1.35
+  * build(deps): bump the ci group across 1 directory with 8
+    updates
+  * Set cue version in blueprints to v0.15
+  * Update `cuelang.org/go` to v0.15.4
+
+-------------------------------------------------------------------
 Thu Aug 07 05:02:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.25.2:

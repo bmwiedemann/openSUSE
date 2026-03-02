@@ -1,7 +1,7 @@
 #
 # spec file for package timoni
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           timoni
-Version:        0.25.2
+Version:        0.26.0
 Release:        0
 Summary:        Package manager for Kubernetes, powered by CUE and inspired by Helm
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         timoni-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23
+BuildRequires:  go1.25 >= 1.25.6
 BuildRequires:  zsh
 
 %description
