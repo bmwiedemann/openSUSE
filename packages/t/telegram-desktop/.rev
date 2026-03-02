@@ -1544,4 +1544,15 @@
 - Added tg_owt-cstring.patch to fix build on Tumbleweed.</comment>
     <requestid>1328925</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>2c0d583892c536dcf6f169eabe8282ac</srcmd5>
+    <version>6.6.1</version>
+    <time>1772469519</time>
+    <user>anag_factory</user>
+    <comment>- Updated ada to 3.4.3.
+- Updated td to git20260228.
+- Updated telegram-desktop to 6.6.1
+  * https://github.com/telegramdesktop/tdesktop/releases/tag/v6.6.1</comment>
+    <requestid>1335807</requestid>
+  </revision>
 </revisionlist>
