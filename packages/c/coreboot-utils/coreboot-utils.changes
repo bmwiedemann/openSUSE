@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb 24 09:10:10 UTC 2026 - trenn@suse.com
+
+- Update to version 25.12+git562.f89ac4e6ce:
+  * soc/mediatek/common: Adjust splash logo bottom margin
+  * vc/intel/fsp/fsp2_0/wildcatlake: Update WCL FSP headers to version WCL.3515.03
+  * soc/intel/pantherlake: Use common UART device list driver
+  * soc/intel/alderlake: Use common UART device list driver
+  * soc/intel/common/feature/uart: Add common UART device list driver
+  * soc/intel/common: Add feature directory for SoC-specific common code
+  * soc/intel/common: Replace CFR enums with booleans
+  * soc/intel/skylake: Replace CFR enums with booleans
+  * soc/intel/tigerlake: Replace CFR enums with booleans
+  * soc/intel/alderlake: Replace CFR enums with booleans
+- Drop again:
+D lz4_CVE-2025-62813_null_pointer_check.patch
+- Introduce _service to easily build on latest sources
+
+-------------------------------------------------------------------
 Wed Oct 29 09:47:38 UTC 2025 - Thomas Renninger <trenn@suse.de>
 
 - Fix bsc#1252626, CVE-2025-62813

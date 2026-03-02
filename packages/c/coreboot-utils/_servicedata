@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://review.coreboot.org/coreboot.git</param>
+              <param name="changesrevision">f89ac4e6ce267ce875f6ea40f4e907e47e24ee1e</param></service></servicedata>
