@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 24 11:39:57 UTC 2026 - Reinhard Max <max@suse.com>
+
+- bsc#1258754: Update to 17.9 to fix two regressions in 17.8:
+  * https://www.postgresql.org/docs/release/17.9/
+  * The substring() function raises an error "invalid byte sequence
+    for encoding" on non-ASCII text values if the source of
+    that value is a database column.
+  * A standby may halt and return an error "could not access status
+    of transaction".
+
+-------------------------------------------------------------------
 Wed Feb 11 18:46:17 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Update to 17.8:
