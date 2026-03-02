@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Mar  2 11:04:07 UTC 2026 - Marc-Elias Travitzky <marcelias.travitzky@suse.com>
+
+- Update to 4.4.2:
+  * Fix partition_index_2d
+  * Cross compile macos x86_64 wheels
+  * Fix image tests reporting-on-error and update failing tests
+  * Convert field_info into a property so it can be created on
+    first access.
+  * Fix/update tfh tutorial
+  * Minor fix dataset hashing for non-ascii paths by encoding
+    parameter_filename as utf-8
+  * Fix formatting of contributing.rst
+  * Baroclinic vorticity typo fix in yt/fields/fluid_vector_fields.py
+  * Fix an incoming deprecation warning from numpy 2.4 (np.minimum
+    and np.maximum's out argument must be passed as keyword)
+  * Allow data to have units when creating unstructured datasets
+  * Manual backport of pr #5250 on yt 4.4.x
+  * Ipython.core.display.display has been removed
+  * Allow non-cosmological halo catalogs
+  * Raise exception when index does not have print_stats method
+  * Exclude h5py 3.15 on macos
+  * Backport pr #5276: fix small bugs/edge cases in the parthenon
+    frontend
+  * Avoid soon-to-be-deprecated direct mutations of ndarray.shape
+    attributes (1/2)
+  * Fix erroneous results with offaxisprojections & octree datasets
+    & multiple plotted fields
+  * Fix forward compatibility with pytest 10 (dev)
+  * Fix small bugs/edge cases in the parthenon frontend 
+  * Fix missing refine_by attribute in swiftdataset
+  * add missing noexcept qualifiers to Cython functions already
+    declared as nogil
+
+-------------------------------------------------------------------
 Thu Aug 28 05:38:50 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.4.1:

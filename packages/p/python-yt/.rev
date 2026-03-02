@@ -294,4 +294,12 @@ https://github.com/yt-project/yt/releases.
   * Filter out an indirect deprecation warning from pillow via matplotlib</comment>
     <requestid>1301682</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e9f37747aa81ad922e629daf3ca825c4</srcmd5>
+    <version>4.4.2</version>
+    <time>1772469705</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1335813</requestid>
+  </revision>
 </revisionlist>
