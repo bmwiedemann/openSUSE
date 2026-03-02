@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 25 14:31:35 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
+
+- Fix package for %suse_version bump (jsc#PED-15783)
+
+-------------------------------------------------------------------
 Mon Feb  9 08:41:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - switch to go 1.25

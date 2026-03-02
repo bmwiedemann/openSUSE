@@ -21,7 +21,7 @@
 %global zypp_path   %{_prefix}/lib/zypp/plugins
 %global zypp_services %{zypp_path}/services
 %global zypp_urlresolver %{zypp_path}/urlresolver
-%global use_fips_mode 0%{?suse_version} == 1500 || 0%{?suse_version} == 1600
+%global use_fips_mode 0%{?suse_version} == 1500 || ( %{?suse_version} >= 1600 && %{?suse_version} < 1699 )
 
 Name:           %{project}
 Version:        2.5.6
