@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb 26 17:51:38 UTC 2026 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.7.5:
+  * New features
+    - Added support for memento player.
+    - Add manual reconnect button to File menu.
+    - Add support for TLS certificates without common name.
+    - mpv chat: Add support for Ukrainian characters.
+    - Support for ASCII Art in MOTD messages.
+  * Changes
+    - Move persistent rooms notice above MOTD.
+    - Use username with fewest trailing _'s when reconnecting.
+  * Bug fixes and maintenance
+    - Lossless image compression to reduce file sizes.
+    - Instead of localhost, use 127.0.0.1.
+    - Fix inconsistent usage of tabs and spaces.
+
+-------------------------------------------------------------------
 Sat Apr 26 09:27:20 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.7.4:
