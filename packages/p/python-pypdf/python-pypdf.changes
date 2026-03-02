@@ -1,7 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar  2 11:22:59 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 6.7.5 (bsc#1259061, CVE-2026-28351, bsc#1258934, CVE-2026-27888, bsc#1258940, CVE-2026-27628)
+  * prevent infinite loop from circular xref /Prev references
+  * Fix wrong LUT size error
+  * Fix handling of page boxes defined on /Pages
+  * Use zlib decompression limit when retrieving XFA data
+  * Allow limiting output length for RunLengthDecode filter
+  * Deal with invalid annotations in extract_links
+  * Improve the performance of the ASCIIHexDecode filter
+
+-------------------------------------------------------------------
 Thu Feb 19 12:39:32 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
-- update to 6.7.1
+- update to 6.7.1 (bsc#1258691, bsc#1258692, bsc#1258693, CVE-2026-27024, CVE-2026-27025, CVE-2026-27026)
   * Deprecate support for abbreviations in decode_stream_data
   * Add ability to add font resources for 14 Adobe Core fonts in text
     widget annotations
