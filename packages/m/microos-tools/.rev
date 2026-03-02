@@ -484,4 +484,13 @@
   * test: Work around missing 9pnet_virtio in the initrd (boo#1258314)</comment>
     <requestid>1333556</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>4db12e3555dbeb52a94028306e75f1df</srcmd5>
+    <version>4.0+git24</version>
+    <time>1772469374</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.0+git24:
+  * selinux-autorelabel-generator: Ensure /etc is writable</comment>
+    <requestid>1335861</requestid>
+  </revision>
 </revisionlist>
