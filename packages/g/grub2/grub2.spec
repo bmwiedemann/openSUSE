@@ -397,6 +397,7 @@ Patch407:       0002-Revert-configure-Check-linker-for-image-base-support.patch
 Patch408:       0001-blsuki-Fix-linux_cmd-size-calcution-in-bls_get_linux.patch
 Patch409:       0001-bls-Allow-configuration-of-active-console-type.patch
 Patch410:       0002-grubbls-Add-automatic-fwsetup-menu-entry.patch
+Patch411:       0001-ieee1275-support-dm-multipath-bootlist.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime

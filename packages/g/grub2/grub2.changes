@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 24 06:02:38 UTC 2026 - Michael Chang <mchang@suse.com>
+
+- Support dm multipath bootlist on PowerPC (bsc#1254415)
+  * 0001-ieee1275-support-dm-multipath-bootlist.patch
+
+-------------------------------------------------------------------
 Mon Feb  9 10:18:38 UTC 2026 - Michael Chang <mchang@suse.com>
 
 - Fix error "grub-core/script/lexer.c:352:out of memory" after PowerPC CAS

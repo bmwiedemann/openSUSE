@@ -1,0 +1,159 @@
+From 951a2d79d3685e85df8f45f6f60002ab35c8d944 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Tue, 16 Dec 2025 20:17:35 +0800
+Subject: [PATCH] ieee1275: support dm multipath bootlist
+
+Currently, when grub2-install is invoked on PowerPC (unless --no-nvram
+is used), it updates Open Firmware NVRAM boot-device with the Open
+Firmware path of the selected boot device.
+
+When the install device is a device-mapper multipath device, the system
+may boot through more than one underlying physical path. However, GRUB
+currently records only a single Open Firmware path in boot-device, so
+firmware does not have alternative paths available for failover.
+
+This patch fixes the issue by detecting dm-multipath devices and
+updating boot-device with the Open Firmware paths for all underlying
+physical paths.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/osdep/unix/platform.c | 115 ++++++++++++++++++++++++++++++++
+ 1 file changed, 115 insertions(+)
+
+diff --git a/grub-core/osdep/unix/platform.c b/grub-core/osdep/unix/platform.c
+index e8e28f3d4..733a8ec55 100644
+--- a/grub-core/osdep/unix/platform.c
++++ b/grub-core/osdep/unix/platform.c
+@@ -304,6 +304,112 @@ add_multiple_nvme_bootdevices (const char *install_device)
+   return multipath_boot;
+ }
+ 
++static char *
++add_multiple_dm_multipath_bootdevices (const char *devname)
++{
++  char *devdir, *device, *tmp;
++  char *ret = NULL;
++  char *sysfs_path = NULL, *sysfs_uuid = NULL, *sysfs_slaves = NULL;
++  FILE *fp = NULL;
++  char dm_uuid[sizeof ("mpath-")];
++  DIR *dp = NULL;
++  struct dirent *de;
++  char *physical_paths[8];
++  const int max_physical_path = sizeof (physical_paths) / sizeof (physical_paths[0]);
++  int num_path = 0;
++  int i;
++
++  devdir = xrealpath (devname);
++  tmp = strrchr (devdir, '/');
++  if (tmp != NULL)
++    tmp++;
++  else
++    tmp = devdir;
++  device = xstrdup (tmp);
++  *tmp = '\0';
++
++  if (device[0] != 'd' || device[1] != 'm' || device[2] != '-')
++    goto out;
++
++  sysfs_path = xasprintf ("%s%s", "/sys/block/", device);
++  sysfs_uuid = xasprintf ("%s/dm/uuid", sysfs_path);
++
++  fp = fopen(sysfs_uuid, "r");
++  if (fp == NULL)
++    goto out;
++
++  if (fread (dm_uuid, 1, sizeof (dm_uuid) - 1, fp) != sizeof (dm_uuid) - 1)
++    goto out;
++
++  dm_uuid[sizeof (dm_uuid) - 1] = '\0';
++
++  if (strcmp (dm_uuid, "mpath-") != 0)
++    goto out;
++
++  sysfs_slaves = xasprintf ("%s/slaves", sysfs_path);
++
++  dp = opendir (sysfs_slaves);
++
++  if (dp == NULL)
++    goto out;
++
++  while ((de = readdir (dp)) != NULL)
++    {
++      char *p = NULL;
++      struct stat st;
++
++      if (strcmp (de->d_name, ".") == 0 || strcmp (de->d_name, "..") == 0)
++	continue;
++
++      p = xasprintf ("%s%s", devdir, de->d_name);
++
++      if (lstat (p, &st) < 0 || ! S_ISBLK (st.st_mode))
++	{
++	  free (p);
++	  continue;
++	}
++
++      physical_paths[num_path++] = p;
++      if (num_path > max_physical_path)
++	break;
++    }
++
++  if (num_path > 1)
++    qsort (physical_paths, num_path, sizeof (physical_paths[0]), grub_qsort_strcmp);
++
++  for (ret = NULL, i = 0; i < num_path; i++)
++    {
++      char *p = get_ofpathname (physical_paths[i]);
++
++      if (p == NULL || *p == '\0')
++	continue;
++
++      if (ret != NULL)
++	{
++	  char *t = ret;
++	  ret = xasprintf ("%s %s", ret, p);
++	  free (t);
++	  free (p);
++	}
++      else
++	ret = p;
++    }
++
++ out:
++  for (i = 0; i < num_path; i++)
++    free (physical_paths[i]);
++  if (dp != NULL)
++    closedir (dp);
++  free (sysfs_slaves);
++  if (fp != NULL)
++    fclose (fp);
++  free (sysfs_uuid);
++  free (sysfs_path);
++  free (device);
++  free (devdir);
++  return ret;
++}
++
+ void
+ grub_install_register_ieee1275 (int is_prep, const char *install_device,
+ 				int partno, const char *relpath)
+@@ -355,6 +461,15 @@ grub_install_register_ieee1275 (int is_prep, const char *install_device,
+           free (boot_device);
+           boot_device = add_multiple_nvme_bootdevices (install_device);
+         }
++      else
++	{
++	  char *mpath_devices = add_multiple_dm_multipath_bootdevices (install_device);
++	  if (mpath_devices != NULL)
++	    {
++	      free (boot_device);
++	      boot_device = mpath_devices;
++	    }
++	}
+     }
+ 
+   if (grub_util_exec ((const char * []){ "nvsetenv", "boot-device",
+-- 
+2.53.0
+
