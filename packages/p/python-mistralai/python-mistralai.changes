@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Mon Mar  2 21:49:54 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.12.4:
+  - Python SDK Changes:
+    mistral.beta.conversations.start():
+        request.inputs.[array].[] Changed Breaking
+        response Changed Breaking
+    mistral.beta.conversations.list(): response.[] Changed Breaking
+    mistral.beta.conversations.get(): response Changed Breaking
+    mistral.beta.conversations.append():
+        request.inputs.[array].[] Changed Breaking
+        response Changed Breaking
+    mistral.beta.conversations.get_history(): response Changed Breaking
+    mistral.beta.conversations.get_messages(): response Changed Breaking
+    mistral.beta.conversations.restart():
+        request.inputs.[array].[] Changed Breaking
+        response Changed Breaking
+    mistral.beta.conversations.start_stream():
+        request.inputs.[array].[] Changed Breaking
+        response.[].data Changed Breaking
+    mistral.beta.conversations.append_stream():
+        request.inputs.[array].[] Changed Breaking
+        response.[].data Changed Breaking
+    mistral.beta.conversations.restart_stream():
+        request.inputs.[array].[] Changed Breaking
+        response.[].data Changed Breaking
+    mistral.beta.agents.create(): response.object Changed Breaking
+    mistral.beta.agents.list(): response.[].object Changed Breaking
+    mistral.beta.agents.get(): response.object Changed Breaking
+    mistral.beta.agents.update(): response.object Changed Breaking
+    mistral.beta.agents.update_version(): response.object Changed Breaking
+    mistral.beta.agents.list_versions(): response.[].object Changed Breaking
+    mistral.beta.agents.get_version(): response.object Changed Breaking
+    mistral.chat.complete():
+        request.messages.[] Changed Breaking
+        response.choices.[].message Changed Breaking
+    mistral.chat.stream():
+        request.messages.[] Changed Breaking
+        response.[].data.choices.[].delta.content.[array].[] Changed Breaking
+    mistral.fim.complete(): response.choices.[].message Changed Breaking
+    mistral.fim.stream(): response.[].data.choices.[].delta.content.[array].[] Changed Breaking
+    mistral.agents.complete():
+        request.messages.[] Changed Breaking
+        response.choices.[].message Changed Breaking
+    mistral.agents.stream():
+        request.messages.[] Changed Breaking
+        response.[].data.choices.[].delta.content.[array].[] Changed Breaking
+    mistral.classifiers.moderate_chat():
+        request.inputs.[array].[] Changed Breaking
+    mistral.classifiers.classify_chat():
+        request.inputs.[inputs].messages.[] Changed Breaking
+    mistral.ocr.process(): request.document Changed Breaking
+    mistral.audio.transcriptions.complete(): response.segments.[].type Changed Breaking
+    mistral.audio.transcriptions.stream(): response.[].data Changed Breaking
+- Update to 1.12.3:
+  - Python SDK Changes:
+    mistral.fine-tuning.jobs.create():
+        request Changed Breaking
+        response Changed Breaking
+    mistral.models.update(): response Changed Breaking
+    mistral.models.archive(): response.object Changed Breaking
+    mistral.models.unarchive(): response.object Changed Breaking
+    mistral.batch.jobs.cancel(): response.object Changed Breaking
+    mistral.batch.jobs.get(): response.object Changed Breaking
+    mistral.batch.jobs.create(): response.object Changed Breaking
+    mistral.batch.jobs.list():
+        request.order_by Added
+        response Changed Breaking
+    mistral.fine-tuning.jobs.start(): response Changed Breaking
+    mistral.fine-tuning.jobs.cancel(): response Changed Breaking
+    mistral.fine-tuning.jobs.get(): response Changed Breaking
+    mistral.fine-tuning.jobs.list(): response Changed Breaking
+    mistral.beta.agents.list():
+        request.search Added
+        response.[].version_message Added
+    mistral.beta.agents.get_version(): response.version_message Added
+    mistral.beta.agents.list_versions(): response.[].version_message Added
+    mistral.beta.agents.update_version(): response.version_message Added
+    mistral.beta.agents.update():
+        request.version_message Added
+        response.version_message Added
+    mistral.beta.agents.get(): response.version_message Added
+    mistral.beta.agents.delete_version_alias(): Added
+    mistral.beta.agents.create():
+        request.version_message Added
+        response.version_message Added
+- Update to 1.11.1:
+  - Python SDK Changes:
+    mistral.beta.agents.list_versions(): Added
+    mistral.beta.agents.get_version(): Added
+    mistral.ocr.process(): request.document_annotation_prompt Added
+
+-------------------------------------------------------------------
 Tue Jan 27 22:50:22 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 1.10.1:

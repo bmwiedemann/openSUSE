@@ -1,7 +1,7 @@
 #
 # spec file for package python-mistralai
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,25 @@
 
 
 Name:           python-mistralai
-Version:        1.10.1
+Version:        1.12.4
 Release:        0
 Summary:        Python Client SDK for the Mistral AI API
 License:        Apache-2.0
 URL:            https://github.com/mistralai/client-python
 Source0:        https://files.pythonhosted.org/packages/source/m/mistralai/mistralai-%{version}.tar.gz
 Source99:       python-mistralai.rpmlintrc
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-opentelemetry-api
-Requires:       python-opentelemetry-exporter-otlp-proto-http
-Requires:       python-opentelemetry-sdk
-Requires:       python-opentelemetry-semantic-conventions
 Requires:       python-PyYAML >= 6.0.2
 Requires:       python-eval-type-backport >= 0.2.0
 Requires:       python-httpx >= 0.28.1
 Requires:       python-invoke >= 2.2.0
+Requires:       python-opentelemetry-api
+Requires:       python-opentelemetry-exporter-otlp-proto-http
+Requires:       python-opentelemetry-sdk
+Requires:       python-opentelemetry-semantic-conventions
 Requires:       python-pydantic >= 2.10.3
 Requires:       python-python-dateutil >= 2.8.2
 Requires:       python-typing-inspection >= 0.4.0

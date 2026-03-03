@@ -15,4 +15,12 @@
     <comment>Update required for python-mistral-vibe 2.0.0.</comment>
     <requestid>1329581</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>17f1183dcf35c5aebbbe6820f2f1d5da</srcmd5>
+    <version>1.12.4</version>
+    <time>1772548315</time>
+    <user>anag_factory</user>
+    <comment>Required for upgrade of python-mistral-vibe (supersedes 1335936).</comment>
+    <requestid>1336000</requestid>
+  </revision>
 </revisionlist>
