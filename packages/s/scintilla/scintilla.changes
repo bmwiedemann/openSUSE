@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar  2 10:35:24 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.6.0:
+  * Fix crash when window is too narrow to show any text.
+- Update to version 5.5.9:
+  * Add option to disable drag/drop editing. Feature #184.
+  * Allow Euro '€' in code page 936 for 0x80. Feature #1575.
+  * Fix SCI_SETSELECTIONNSTART and SCI_SETSELECTIONNEND to behave
+    more sensibly. Bug #2488.
+  * Fix lexing after undo at end of document. Bug #2491.
+  * When a line end is not selected, change the colour of the
+    rectangle that indicates the line end is selected to white
+    space background instead of previous character's background
+    except for EOL filled style.
+  * On Qt, add const to ScintillaDocument and ScintillaEdit
+    methods. Bug #2494.
+  * On Qt, prevent crash when using ScintillaDocument object. Bug
+    #2495.
+
+-------------------------------------------------------------------
 Fri Jan 23 18:11:07 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.5.8:
