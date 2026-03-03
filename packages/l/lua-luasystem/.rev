@@ -78,4 +78,12 @@
     those streams and stdin.</comment>
     <requestid>1315343</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>38cba7089bb4ac6c9e278c75f89b9d13</srcmd5>
+    <version>0.6.3</version>
+    <time>1772548235</time>
+    <user>anag_factory</user>
+    <comment>Enable lua55 build</comment>
+    <requestid>1335788</requestid>
+  </revision>
 </revisionlist>
