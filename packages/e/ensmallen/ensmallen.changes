@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 27 20:30:17 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- update to 3.11.0
+  * Refactor GradientDescent into GradientDescentType
+- update to 3.10.0
+  * SGD-like optimizers now all divide the step size by the batch
+    size so that step sizes don't need to be tuned in addition to
+    batch sizes.
+  * Add proximal gradient optimizers for L1-constrained and other
+    related problems: FBS, FISTA, and FASTA
+
+-------------------------------------------------------------------
 Sun Mar 17 17:32:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.21.1:
