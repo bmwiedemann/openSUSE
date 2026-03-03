@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jan 28 01:01:14 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add bump_max_rss.patch to allow more memory while building later
+  stages
+
+-------------------------------------------------------------------
+Tue Jan 27 21:54:14 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- bump memory constraints to hopefully fix the 15.6 builds
+
+-------------------------------------------------------------------
+Tue Jan 27 21:35:58 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- cleanup macro usage
+
+-------------------------------------------------------------------
+Tue Jan 27 21:03:17 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- only use mold on platforms where we have mold
+
+-------------------------------------------------------------------
 Mon Jan 19 08:04:55 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - drop vendor tarball

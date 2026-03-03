@@ -19,27 +19,29 @@
 %global version_current 0.14.1
 %global version_previous 0.13.0
 
-%define obsolete_zig_versioned() \
-Obsoletes:      %{1}0.13%{?2:-%{2}} \
-Obsoletes:      %{1}0.12%{?2:-%{2}}
-
 %global _lto_cflags %{nil}
 %global __builder   ninja
 %bcond_without  macro
 %bcond_without  test
 
+# LLVM 19 is a hard requirement
 %define clang_ver 19
+
+%define force_gcc_version 15
+
 %bcond_without clang
+%if 0%{?suse_version} >= 1600
 %ifnarch aarch64
 %bcond_without mold
 %else
 %bcond_with    mold
 %endif
+%endif
 
-%if 0%{?suse_version} > 1600
-%define force_gcc_version 15
+%if 0%{?suse_version} >= 1699
+%bcond_without has_linker_type
 %else
-%define force_gcc_version 15
+%bcond_with    has_linker_type
 %endif
 
 Name:           zig%{version_suffix}
@@ -61,6 +63,8 @@ Patch2:         0002-no-lld-libs-and-includes.patch
 Patch3:         https://gitlab.archlinux.org/archlinux/packaging/packages/zig/-/raw/main/skip-localhost-test.patch
 # to improve reproducible-builds -- https://github.com/ziglang/zig/pull/22673
 Patch4:         reproducible.patch
+# https://github.com/ziglang/zig/issues/23347 https://github.com/ziglang/zig/pull/23254
+Patch5:         bump_max_rss.patch
 BuildRequires:  clang%{?clang_ver}
 BuildRequires:  clang%{?clang_ver}-devel
 BuildRequires:  cmake
@@ -74,7 +78,9 @@ BuildRequires:  libelf-devel
 BuildRequires:  liburing-devel
 BuildRequires:  lld%{?clang_ver}
 BuildRequires:  llvm%{?clang_ver}-devel
+%if %{with mold}
 BuildRequires:  mold
+%endif
 BuildRequires:  ninja
 BuildRequires:  zlib-devel
 BuildRequires:  zstd
@@ -131,18 +137,10 @@ This package contains common RPM macros for zig in version %{version_current}.
 
 %build
 %if %{without clang}
-%if 0%{?force_gcc_version}
-export CC="gcc-%{?force_gcc_version}"
-export CXX="g++-%{?force_gcc_version}"
-%endif
 export CFLAGS="%{optflags} -Wno-error=return-type"
 export CXXFLAGS="${CFLAGS}"
 %endif
 %cmake \
-%ifarch aarch64 s390x
-  -DCMAKE_BUILD_TYPE=Release \
-%endif
-  -DCMAKE_BUILD_TYPE=Release \
 %if %{with clang}
   -DCMAKE_C_COMPILER="clang-%{?clang_ver}" \
   -DCMAKE_CXX_COMPILER="clang++-%{?clang_ver}" \
@@ -152,24 +150,26 @@ export CXXFLAGS="${CFLAGS}"
   -DCMAKE_CXX_COMPILER="g++-%{?force_gcc_version}" \
 %endif
 %endif
+%if %{with has_linker_type}
 %if %{with mold}
   -DCMAKE_LINKER_TYPE=MOLD \
 %else
   -DCMAKE_LINKER_TYPE=LLD \
 %endif
+%endif
   -DZIG_SHARED_LLVM=On \
-  -DZIG_PIE:BOOL=true \
   -DZIG_USE_LLVM_CONFIG=ON \
+  -DZIG_PIE:BOOL=true \
   -DZIG_TARGET_MCPU="baseline" \
   -DZIG_TARGET_TRIPLE:STRING=native \
   -DZIG_VERSION:STRING="%{version}"
 
 # Workaround since CMAKE on Leap does not have
 # the CMAKE_LINKER_TYPE option
-%if 0%{?suse_version} > 1600
-%cmake_build
-%else
+%if %{without has_linker_type} && %{with mold}
 mold -run %cmake_build
+%else
+%cmake_build
 %endif
 
 %install
@@ -191,7 +191,7 @@ mv -v doc/langref.html.in doc/langref.html
 	-Dskip-debug \
 	-Dskip-release-safe \
 	-Dskip-release-small \
-        -Dstatic-llvm=false \
+	-Dstatic-llvm=false \
 	-Denable-llvm=true \
 	-Dskip-non-native=true
 %endif
@@ -208,7 +208,7 @@ mv -v doc/langref.html.in doc/langref.html
 %dir %{_prefix}/lib/zig
 %{_prefix}/lib/zig/*
 
-%if %{with macro} 
+%if %{with macro}
 %files -n zig-rpm-macros%{version_suffix}
 %{_rpmmacrodir}/macros.zig
 %endif
