@@ -3061,4 +3061,41 @@
     * super-call-with-parameters (UP008) now has a safe fix when it will not delete comments.</comment>
     <requestid>1330930</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>07ed0ab6f5a33560dfa3b4aaead0e0a5</srcmd5>
+    <version>0.15.4</version>
+    <time>1772548174</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.15.4 
+ * Bug fixes
+  * Fix panic on access to definitions after analyzing definitions 
+  * [pyflakes] Suppress false positive in F821 for names used before del in stub files 
+  * Avoid infinite loop between I002 and PYI025 
+  * [pyflakes] Fix false positive for @overload from lint.typing-modules (F811) 
+  * [pyupgrade] Fix false positive for TypeVar default before Python 3.12 (UP046) 
+  * [pyupgrade] Fix handling of \N in raw strings (UP032) 
+  * [flake8-async] Fix in_async_context logic 
+  * [ruff] Fix for RUF102 should delete entire comment 
+  * [ruff] Suppress diagnostic for strings with backslashes in interpolations before Python 3.12 (RUF027) 
+  * [flake8-bugbear] Fix B023 false positive for immediately-invoked lambdas 
+  * [parser] Fix false syntax error for match-like annotated assignments 
+  * [parser] Fix indentation tracking after line continuations 
+ * Documentation
+  * Add Q004 to the list of conflicting rules 
+  * [ruff] Expand lint.external docs and add sub-diagnostic (RUF100, RUF102) 
+  * Fix missing settings links for several linters 
+  * Update isort action comments heading 
+  * [pydocstyle] Fix double comma in description of D404 
+  * Clarify first-party import detection in Ruff 
+  * Fix incorrect import-heading example 
+ * Preview features
+  * Expand the default rule set 
+    + multiple-imports-on-one-line (E401)
+    + module-import-not-at-top-of-file (E402)
+    + module-import-not-at-top-of-file (E701)
+    + multiple-statements-on-one-line-semicolon (E702)
+    + useless-semicolon (E703)
+    + none-comparison (E711)</comment>
+    <requestid>1335588</requestid>
+  </revision>
 </revisionlist>

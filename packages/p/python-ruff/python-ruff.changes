@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Sat Feb 28 19:49:57 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.15.4 
+ * Bug fixes
+  * Fix panic on access to definitions after analyzing definitions 
+  * [pyflakes] Suppress false positive in F821 for names used before del in stub files 
+  * Avoid infinite loop between I002 and PYI025 
+  * [pyflakes] Fix false positive for @overload from lint.typing-modules (F811) 
+  * [pyupgrade] Fix false positive for TypeVar default before Python 3.12 (UP046) 
+  * [pyupgrade] Fix handling of \N in raw strings (UP032) 
+  * [flake8-async] Fix in_async_context logic 
+  * [ruff] Fix for RUF102 should delete entire comment 
+  * [ruff] Suppress diagnostic for strings with backslashes in interpolations before Python 3.12 (RUF027) 
+  * [flake8-bugbear] Fix B023 false positive for immediately-invoked lambdas 
+  * [parser] Fix false syntax error for match-like annotated assignments 
+  * [parser] Fix indentation tracking after line continuations 
+ * Documentation
+  * Add Q004 to the list of conflicting rules 
+  * [ruff] Expand lint.external docs and add sub-diagnostic (RUF100, RUF102) 
+  * Fix missing settings links for several linters 
+  * Update isort action comments heading 
+  * [pydocstyle] Fix double comma in description of D404 
+  * Clarify first-party import detection in Ruff 
+  * Fix incorrect import-heading example 
+ * Preview features
+  * Expand the default rule set 
+    + multiple-imports-on-one-line (E401)
+    + module-import-not-at-top-of-file (E402)
+    + module-import-not-at-top-of-file (E701)
+    + multiple-statements-on-one-line-semicolon (E702)
+    + useless-semicolon (E703)
+    + none-comparison (E711)
+    + true-false-comparison (E712)
+    + not-in-test (E713)
+    + not-is-test (E714)
+    + type-comparison (E721)
+    + lambda-assignment (E731)
+    + ambiguous-variable-name (E741)
+    + ambiguous-class-name (E742)
+    + ambiguous-function-name (E743)
+    + undefined-local-with-import-star (F403)
+    + undefined-local-with-import-star-usage (F405)
+    + undefined-local-with-nested-import-star-usage (F406)
+    + forward-annotation-syntax-error (F722)
+  * [flake8-pyi] Also check string annotations (PYI041) 
+  * Drop explicit support for .qmd file extension 
+  * Include configured extensions in file discovery 
+  * [flake8-bandit] Allow suspicious imports in TYPE_CHECKING blocks (S401-S415) 
+  * [flake8-bugbear] Allow B901 in pytest hook wrappers 
+  * [flake8-import-conventions] Add missing conventions from upstream (ICN001, ICN002) 
+  * [pydocstyle] Add rule to enforce docstring section ordering (D420) 
+  * [pylint] Implement swap-with-temporary-variable (PLR1712) 
+  * [ruff] Add unnecessary-assign-before-yield (RUF070) 
+  * [ruff] Support file-level noqa in RUF102 
+  * [ruff] Suppress diagnostic for invalid f-strings before Python 3.12 (RUF027) 
+  * [flake8-bandit] Don't flag BaseLoader/CBaseLoader as unsafe (S506) 
+ * Rule changes
+  * Render sub-diagnostics in the GitHub output format 
+  * [flake8-bugbear] Tag certain B007 diagnostics as unnecessary 
+  * [ruff] Ignore unknown rule codes in RUF100 
+  * These are now flagged by RUF102 instead.
+  * [flake8-executable] Allow global flags in uv shebangs (EXE003) 
+  * [pyupgrade] Fix handling of typing.{io,re} (UP035) 
+  * [ruff] Detect PLC0207 on chained str.split() calls 
+ * Other changes
+  * Update the Python module (notably find_ruff_bin) for parity with uv 
+ * CLI
+  * Remove invalid inline noqa warning 
+ * Configuration
+  * Add extension mapping to configuration file options 
+
+-------------------------------------------------------------------
+Fri Feb 13 10:38:35 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.15.1
+ * Preview features
+  * [airflow] Add ruff rules to catch deprecated Airflow imports for Airflow 3.1 (AIR321) 
+  * [airflow] Third positional parameter not named ti_key should be flagged for BaseOperatorLink.get_link (AIR303) 
+  * [flake8-gettext] Fix false negatives for plural argument of ngettext (INT001, INT002, INT003) 
+  * [pyflakes] Fix infinite loop in preview fix for unused-import (F401) 
+  * [pygrep-hooks] Detect non-existent mock methods in standalone expressions (PGH005) 
+  * [pylint] Allow dunder submodules and improve diagnostic range (PLC2701) 
+  * [pyupgrade] Improve diagnostic range for tuples (UP024) 
+  * [refurb] Check subscripts in tuple do not use lambda parameters in reimplemented-operator (FURB118) 
+  * [ruff] Detect mutable defaults in field calls (RUF008) 
+  * [ruff] Ignore std cmath.inf (RUF069) 
+  * [ruff] New rule float-equality-comparison (RUF069) 
+  * Don't format unlabeled Markdown code blocks 
+  * Markdown formatting support in LSP 
+  * Support Quarto Markdown language markers 
+  * Support formatting pycon Markdown code blocks 
+  * Use extension mapping to select Markdown code block language 
+ * Bug fixes
+  * Avoid false positive for undefined variables in FAST001 
+  * Avoid introducing syntax errors for FAST003 autofix 
+  * Avoid suggesting InitVar for __post_init__ that references PEP 695 type parameters 
+  * Deduplicate type variables in generic functions 
+  * Fix exception handler parenthesis removal for Python 3.14+ 
+  * Fix f-string middle panic when parsing t-strings 
+  * Wrap RUF020 target for multiline fixes 
+  * Wrap UP007 target for multiline fixes 
+  * Fix missing diagnostics for last range suppression in file 
+  * [pyupgrade] Fix syntax error on string with newline escape and comment (UP037) 
+ * Rule changes
+  * Use ruff instead of Ruff as the program name in GitHub output format 
+  * [PT006] Fix syntax error when unpacking nested tuples in parametrize fixes
+  * [airflow] Catch deprecated attribute access from context key for Airflow 3.0 (AIR301) 
+  * [airflow] Capture deprecated arguments and a decorator (AIR301) 
+  * [flake8-boolean-trap] Add multiprocessing.Value to excluded functions for FBT003 
+  * [flake8-bugbear] Add a secondary annotation showing the previous occurrence (B033) 
+  * [flake8-type-checking] Add sub-diagnostic showing the runtime use of an annotation (TC004) 
+  * [isort] Support configurable import section heading comments 
+  * [ruff] Improve the diagnostic for RUF012 
+ * Formatter
+  * Suppress diagnostic output for format --check --silent 
+ * Documentation
+  * Add tabbed shell completion documentation 
+  * Explain how to enable Markdown formatting for pre-commit hook 
+  * Fixed import in runtime-evaluated-decorators example 
+  * Update ruff server contributing guide 
+
+-------------------------------------------------------------------
 Wed Feb  4 09:53:17 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.15.0
