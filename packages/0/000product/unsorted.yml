@@ -396,6 +396,7 @@ unsorted:
   - accerciser-plugin-IPython 
   - accessibility-inspector 
   - accessibility-inspector-lang 
+  - account-utils 
   - account-utils-devel 
   - accounts-qml-module-doc 
   - accountsservice-devel 
@@ -15559,6 +15560,7 @@ unsorted:
   - libpurple-plugin-xmpp-http-upload 
   - libpurple-tcl 
   - libpurple0 
+  - libpwaccess0 
   - libpwquality-devel 
   - libpxbackend-1_0-32bit 
   - libpxbackend-1_0-mini 
@@ -33799,7 +33801,6 @@ unsorted:
   - sha3sum 
   - shaderc 
   - shaderc-devel 
-  - shadow-pw-mgmt 
   - shadowsocks-libev 
   - shadowsocks-libev-devel 
   - shadowsocks-libev-doc 

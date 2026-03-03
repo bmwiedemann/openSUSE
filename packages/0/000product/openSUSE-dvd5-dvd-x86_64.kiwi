@@ -58,7 +58,6 @@
       <repopackage name="7zip"/>
       <repopackage name="aaa_base"/>
       <repopackage name="aaa_base-extras"/>
-      <repopackage name="account-utils"/>
       <repopackage name="accounts-qml-module"/>
       <repopackage name="accountsservice"/>
       <repopackage name="accountsservice-lang"/>
@@ -2386,7 +2385,6 @@
       <repopackage name="libpsl5"/>
       <repopackage name="libpulse-mainloop-glib0"/>
       <repopackage name="libpulse0"/>
-      <repopackage name="libpwaccess0"/>
       <repopackage name="libpwquality-lang"/>
       <repopackage name="libpwquality1"/>
       <repopackage name="libpwquality1-32bit"/>
@@ -3893,6 +3891,7 @@
       <repopackage name="sg3_utils"/>
       <repopackage name="sgml-skel"/>
       <repopackage name="shadow"/>
+      <repopackage name="shadow-pw-mgmt"/>
       <repopackage name="shared-mime-info"/>
       <repopackage name="shared-mime-info-lang"/>
       <repopackage name="shared-python-startup"/>

@@ -56,7 +56,6 @@
     <repopackages>
       <repopackage name="aaa_base"/>
       <repopackage name="aardvark-dns"/>
-      <repopackage name="account-utils"/>
       <repopackage name="accounts-qml-module"/>
       <repopackage name="accountsservice"/>
       <repopackage name="adobe-sourcecodepro-fonts"/>
@@ -1037,7 +1036,6 @@
       <repopackage name="libpsl5"/>
       <repopackage name="libpulse-mainloop-glib0"/>
       <repopackage name="libpulse0"/>
-      <repopackage name="libpwaccess0"/>
       <repopackage name="libpwquality-tools"/>
       <repopackage name="libpwquality1"/>
       <repopackage name="libpxbackend-1_0"/>
@@ -1654,6 +1652,7 @@
       <repopackage name="sg3_utils"/>
       <repopackage name="sgml-skel"/>
       <repopackage name="shadow"/>
+      <repopackage name="shadow-pw-mgmt"/>
       <repopackage name="shared-mime-info"/>
       <repopackage name="shim"/>
       <repopackage name="signon-kwallet-extension"/>
