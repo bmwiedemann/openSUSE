@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 02 15:38:34 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Update to version 2.7.0+git.1772201206.4725acc7:
+  * bump rubygem rack to 3.2.5 (bsc#1258453,bsc#125854,bsc#125857,bsc#125858)
+  * Test: add leap16.0 hawk-node
+  * Fix: nodes `Clear state` doesn't depend on Fencing
+  * Test: build the hypervisor `hawk-examiner` runtime
+  * Test: make e2e selenium-v4 compatible
+  * Test: build `hawk-node` run-time
+  * Fix: don't inflect/capitalize FENCING
+
+-------------------------------------------------------------------
 Tue Feb 17 12:57:55 UTC 2026 - aburlakov@suse.com
 
 - Update to version 2.7.0+git.1771332649.1644092c (ped#14519):
