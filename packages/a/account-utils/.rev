@@ -45,4 +45,11 @@ Add conflicts to busybox-adduser</comment>
 - Obsolete shadow-pw-mgmt for easier migration</comment>
     <requestid>1335831</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>701bca6ded420489de85f2e4d076ba65</srcmd5>
+    <version>1.0.1+git20260121.39eee92</version>
+    <time>1772531342</time>
+    <user>dimstar_suse</user>
+    <comment>Revert, the obsolete of shadow-pw-mgmt was premature</comment>
+  </revision>
 </revisionlist>
