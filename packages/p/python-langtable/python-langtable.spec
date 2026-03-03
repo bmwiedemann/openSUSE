@@ -2,6 +2,7 @@
 # spec file for package python-langtable
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +28,7 @@
 %define skip_python2 1
 %global literalpython python
 Name:           python-langtable%{psuffix}
-Version:        0.0.68
+Version:        0.0.70
 Release:        0
 Summary:        Database to guess defaults for locale settings
 # the translations in languages.xml and territories.xml are (mostly)
@@ -89,9 +90,10 @@ by more python target versions and also it can be used indenpendently.
 (cd langtable; python3 langtable.py)
 python3 test_cases.py
 for i in keyboards languages territories timezoneidparts timezones; do
+    gzip -dc langtable/data/$i.xml.gz | \
     xmllint --noout --relaxng \
 	langtable/schemas/$i.rng \
-	langtable/data/$i.xml.gz
+	-
 done
 
 %files %{python_files}

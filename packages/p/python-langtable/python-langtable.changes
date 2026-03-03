@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Feb 28 17:08:23 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.0.70:
+  * Add a few dz keyboards
+  * Add more translations from CLDR
+  * Get translation changes from CLDR
+  * Add GS, ady, bqi, isv, kbd, kek, lzz, mww, oka, pi, pms, suz,
+    Suni, si_ID.UTF-8 zgh_MA.UTF-8
+  * Add mdf_RU.UTF-8 to RU
+- includes changes from 0.0.69:
+  * Add Georgian console fonts
+  * Add Adlm script to SN
+  * Add dra, Tutg, ath, cmc, Cham, tai
+- adjust spec for xmllint (libxml2) dropping support for reading
+  from compressed data
+
+-------------------------------------------------------------------
 Sun Sep 29 20:00:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.0.68:
