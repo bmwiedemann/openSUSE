@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sun Mar  1 16:41:28 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.19.1:
+  * compilation fixes for Ruby scripting
+  * bookmarks xbel did not restore positions
+  * use after free in forms code
+  * NULL dereference in iframes code (crash at github)
+  * Add action move-cursor-line-end
+  * bool option document.browse.wrap
+  * bool options ui.clipboard.remove_leading_spaces and 
+    ui.clipboard.remove_trailing_spaces
+  * Serbian translation update
+  * fix in gopher
+
+- dropped patch move_ruby_headers.patch as no more needed
+
+- Update to version 0.19.0:
+  * print progress of curl http uploads
+  * do not load js scripts if ecmascript is disabled by disallow.txt or 
+    allow.txt
+  * option document.browse.margin_auto (hard margins)
+  * TERM=dumb for js tests
+  * option document.html.compress_empty_lines
+  * css visiblity: hidden support
+  * experimental iframe support
+  * spartan protocol
+  * window.scroll in js
+  * inline images support in html documents (meson option kitty)
+  * and options document.html.kitty and document.html.sixel. Note that need
+  * also enable kitty or sixel in terminal options
+  * include-fragment support (now is easier to download something from github)
+  * experimental libuv support
+  * allow to set color0 to color255 as color
+  * toggle-ecmascript-keys action to toggle between Application or Browser mode
+  * requestAnimationFrame in js
+  * option ui.sessions.auto_save_position
+  * option document.html.display_unfinished
+  * meson options avif and webp
+  * option protocol.mailcap.allow_empty_referrer
+  * option ui.leds.redraw_interval
+  * length can be bigger than int in http protocol
+  * ignore result of verification for gemini protocol
+  * support for chawan's extensions for mailcap (x-ansioutput and x-htmloutput)
+  * Polish translation update
+  * Serbian translation update
+  * elinks.get_option(name) and elinks.set_option(name, value) in Python scripting
+  * other small fixes
+
+-------------------------------------------------------------------
 Sun Apr 13 07:42:52 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to
