@@ -17,4 +17,14 @@
 - Add luajit version to _multibuild</comment>
     <requestid>1315182</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4fe3da8982b8b6daa39a75154d282f56</srcmd5>
+    <version>6.2.8</version>
+    <time>1772548229</time>
+    <user>anag_factory</user>
+    <comment>- Add v6.2.8...master.patch for the Lua 5.5 compatibility.
+
+- Enable lua55 build.</comment>
+    <requestid>1335538</requestid>
+  </revision>
 </revisionlist>

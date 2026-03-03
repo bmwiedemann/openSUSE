@@ -24,6 +24,10 @@ Summary:        LibYAML binding for Lua
 License:        MIT
 URL:            https://github.com/gvvaughan/lyaml
 Source0:        https://github.com/gvvaughan/lyaml/archive/v%{version}.tar.gz#$/%{mod_name}-%{version}.tar.gz
+# https://github.com/gvvaughan/lyaml/compare/v6.2.8...master.patch
+# PATCH-FIX-UPSTREAM v6.2.8...master.patch mcepl@suse.com
+# Update to the current master, making it compatible with Lua 5.5
+Patch0:         v6.2.8...master.patch
 BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
@@ -45,7 +49,7 @@ LibYAML binding for Lua, with a fast C implementation for converting between YAM
 and a low-level YAML event parser for implementing more intricate YAML document loading.
 
 %prep
-%autosetup -n %{mod_name}-%{version}
+%autosetup -p1 -n %{mod_name}-%{version}
 
 %build
                                         
