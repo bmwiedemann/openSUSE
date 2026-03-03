@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  3 04:46:54 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.0:
+  * Refactored for extra flexibility and modularity as well as reducing the
+    cost of maintaining and adding new features to the library.
+    + Now {Build,}Requires arviz-{base,plots,stats}.
+
+-------------------------------------------------------------------
 Thu Jan 22 08:56:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.23.1:

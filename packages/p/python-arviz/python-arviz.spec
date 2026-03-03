@@ -17,59 +17,29 @@
 
 
 %{?sle15_python_module_pythons}
+# Upstream supports Python 3.12+
+%define skip_python311 1
 Name:           python-arviz
-Version:        0.23.1
+Version:        1.0.0
 Release:        0
 Summary:        Exploratory analysis of Bayesian models
 License:        Apache-2.0
 URL:            http://github.com/arviz-devs/arviz
 Source:         https://github.com/arviz-devs/arviz/archive/v%{version}.tar.gz#/arviz-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.12}
+BuildRequires:  %{python_module flit-core >= 3.4}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 60.0.0}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module cloudpickle}
-BuildRequires:  %{python_module bokeh >= 3}
-BuildRequires:  %{python_module dash}
-BuildRequires:  %{python_module dask-distributed}
-BuildRequires:  %{python_module dask}
-BuildRequires:  %{python_module dm-tree >= 0.1.8}
-BuildRequires:  %{python_module h5netcdf >= 1.0.2}
-BuildRequires:  %{python_module matplotlib >= 3.5}
-BuildRequires:  %{python_module netCDF4}
-BuildRequires:  %{python_module numba}
-BuildRequires:  %{python_module numpy >= 1.26.0}
-BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module pandas >= 2.1.0}
-BuildRequires:  %{python_module pytest >= 0.23}
-BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module scipy >= 1.11.0}
-BuildRequires:  %{python_module typing_extensions >= 4.1.0}
-BuildRequires:  %{python_module ujson}
-BuildRequires:  %{python_module xarray >= 2023.7}
-BuildRequires:  %{python_module xarray-einstats >= 0.3}
-# Zarr is being updated to v3, arviz v1 will be compatible
-## BuildRequires:  %%{python_module zarr >= 2.5 with %%python-zarr < 3}
+BuildRequires:  %{python_module arviz-base >= 1.0.0}
+BuildRequires:  %{python_module arviz-plots >= 1.0.0}
+BuildRequires:  %{python_module arviz-stats >= 1.0.0}
+BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-h5netcdf >= 1.0.2
-Requires:       python-matplotlib >= 3.8
-Requires:       python-numpy >= 1.26.0
-Requires:       python-packaging
-Requires:       python-pandas >= 2.1.0
-Requires:       python-scipy >= 1.11.0
-Requires:       python-setuptools >= 60.0.0
-Requires:       python-typing_extensions >= 4.1.0
-Requires:       python-xarray >= 2023.7
-Requires:       python-xarray-einstats >= 0.3
-Recommends:     python-bokeh >= 3
-Recommends:     python-dask-distributed
-Recommends:     python-dm-tree >= 0.1.8
-Recommends:     python-netCDF4
-Recommends:     python-numba
-Recommends:     python-ujson
-Recommends:     (python-zarr >= 2.5.0 with python-zarr < 3)
+Requires:       python-arviz-base >= 1.0.0
+Requires:       python-arviz-plots >= 1.0.0
+Requires:       python-arviz-stats >= 1.0.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -89,11 +59,7 @@ diagnostics.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Matplotlib tests try to save results to non-writeable dir
-donttest="test_plots_matplotlib"
-# Tries to connect to external server for arviz data
-donttest="$donttest or test_plot_separation"
-%pytest -n auto -k "not ($donttest)"
+%pytest
 
 %files %{python_files}
 %doc CHANGELOG.md README.md

@@ -183,4 +183,15 @@
     reading/writing netcdf files.</comment>
     <requestid>1328635</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>81e3ce47be31aea44b63a984b1aa5721</srcmd5>
+    <version>1.0.0</version>
+    <time>1772548323</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.0:
+  * Refactored for extra flexibility and modularity as well as reducing the
+    cost of maintaining and adding new features to the library.
+    + Now {Build,}Requires arviz-{base,plots,stats}.</comment>
+    <requestid>1335953</requestid>
+  </revision>
 </revisionlist>
