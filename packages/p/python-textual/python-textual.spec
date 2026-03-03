@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-textual%{psuffix}
-Version:        7.2.0
+Version:        8.0.1
 Release:        0
 Summary:        TUI framework for Python
 License:        MIT
@@ -118,6 +118,8 @@ IGNORED_CHECKS="${IGNORED_CHECKS} or test_default_theme"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_setting_builtin_themes"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_setting_unknown_theme_raises_exception"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_registering_and_setting_theme"
+# gh#Textualize/textual#6404
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_compute_wrap_offsets"
 %pytest -k "not (${IGNORED_CHECKS})"
 %endif
 

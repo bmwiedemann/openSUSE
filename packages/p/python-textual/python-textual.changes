@@ -1,7 +1,58 @@
 -------------------------------------------------------------------
+Mon Mar  2 22:03:18 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 8.0.1:
+  - Fixed
+    - DirectoryTree runs more operations in a thread to avoid
+      micro-freezes
+  - Changes
+    - Some tweaks to garbage collection to reduce gc time #6402
+- Update to 8.0.0: The major version change is due to changing
+  Select.BLANK to Select.NULL, to avoid an unfortunate name
+  clash.
+  - Added
+    - Added mode argument to push_screen and push_screen_wait to
+      enable pushing a screen to a non-active mode #6362
+    - Added App.mode_change_signal and App.screen_change_signal
+      #6362
+    - Added Tabs.get_tab #6362
+    - Added Catppuccin Frappe and Macchiato themes #6335
+  - Changed
+    - It is no longer a NOOP and warning to dismiss a non-active
+      screen. The dismiss will still work, but the screen may not
+      update if the current mode is not active. #6362
+    - Added 50ms delay when switching screens to allow state to
+      udpate and prevent janky flash of old content #6362
+    - Breaking change: Changed Select.BLANK to Select.NULL to
+      avoid clash with newer Widget.BLANK Classvar #6374
+- Update to 7.5.0:
+    - The DataTable row cursor will extend to the full width if
+      there is excess space #6345
+    - The DataTable will send a selected event on click, only if
+      the cell / row / column is currently highlighted #6345
+- Update to 7.4.0:
+    - Adds a pointer rule to TCSS, so you can change how the
+      mouse pointer looks over a given widget.
+- Update to 7.3.0:
+  - Fixed
+    - Fixed triple click on command palette raising an exception
+      #6329
+  - Added
+    - Added DOM.query_one_optional
+    - Added default parameter to get_component_rich_style
+      get_component_rich_style
+  - Changed
+    - Added super+c (command on mac) alternative bindings for
+      copy, for terminals that support it (Ghostty does)
+    - Allow Sparkline to be of any height, not just 1 #6171
+- Skip test_compute_wrap_offsets tests
+  (gh#Textualize/textual#6404).
+
+-------------------------------------------------------------------
 Thu Jan 15 09:18:37 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
-- Convert to multibuild to break a build cycle with python-pytest-textual-snapshot
+- Convert to multibuild to break a build cycle with
+  python-pytest-textual-snapshot
 
 -------------------------------------------------------------------
 Wed Jan 14 15:28:37 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
