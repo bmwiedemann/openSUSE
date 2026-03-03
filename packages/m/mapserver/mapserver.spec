@@ -1,7 +1,7 @@
 #
 # spec file for package mapserver
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014 Ioda-Net Sàrl, Charmoille, Switzerland. Bruno Friedmann (tigerfoot)
 # Copyright (c) 2015 Angelos Tzotsos (kalxas)
 #
@@ -33,7 +33,7 @@
 %{?sle15_python_module_pythons}
 
 Name:           mapserver
-Version:        8.2.2
+Version:        8.6.0
 Release:        0
 Summary:        Environment for building spatially-enabled internet applications
 License:        MIT
@@ -91,9 +91,9 @@ BuildRequires:  zlib-devel
 BuildRequires:  perl(ExtUtils::MakeMaker)
 %if %{with python}
 BuildRequires:  %python_module devel
-BuildRequires:  %python_module wheel
 BuildRequires:  %python_module pip
 BuildRequires:  %python_module setuptools >= 40.8.0
+BuildRequires:  %python_module wheel
 %endif
 Requires:       %{libname} = %{version}-%{release}
 Requires:       proj

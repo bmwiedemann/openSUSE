@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar  2 16:20:26 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.6.0
+  * Add `CONNECTIONTYPE RASTERLABEL`
+  * Set `MS_LEGEND_KEYSIZE_MAX` to 1000
+  * Add 4 new `COMPOSITE.COMPOP` blending operations
+  * Allow encryption key files to use paths relative to a mapfile
+  * Allow `use_default_extent_for_getfeature` to be used for OGC
+    Features API and PostGIS
+  * Allow append of additional query parameters for OGCAPI
+  * New MapServer index page
+  * WMS `GetFeatureInfo`: add options to precisely identify points
+    through their symbols
+  * Add `FALLBACK` parameter for the `CLASS` object, to be applied
+    if none of the previously defined classes has been applied
+
+-------------------------------------------------------------------
 Sun Oct 13 20:43:59 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.2.2
@@ -441,70 +458,70 @@ Wed Nov 23 15:09:01 UTC 2011 - opensuse@dstoecker.de
 
 - fix build
 
-Fri Sep 30 00:00:00 UTC 2011 - stephan.holl@intevation.de
 -------------------------------------------------------------------
+Fri Sep 30 00:00:00 UTC 2011 - stephan.holl@intevation.de
 
 - updated to new upstream version of mapserver 6.0.1 (see
   http://trac.osgeo.org/mapserver/browser/tags/rel-6-0-1/mapserver/HISTORY.TXT
   for a detailed description of the changes.
 
-Fri May 27 00:00:00 UTC 2011 - stephan.holl@intevation.de
 -------------------------------------------------------------------
+Fri May 27 00:00:00 UTC 2011 - stephan.holl@intevation.de
 
 - included the patch from #3877 to make it build
 
-Mon May 16 00:00:00 UTC 2011 - stephan.holl@intevation.de
 -------------------------------------------------------------------
+Mon May 16 00:00:00 UTC 2011 - stephan.holl@intevation.de
 
 - updated to new upstream version of mapserver 6.0.0 (see
   http://trac.osgeo.org/mapserver/browser/tags/rel-6-0-0/mapserver/HISTORY.TXT
   for a detailed description of the changes.
 
-Fri May 06 00:00:00 UTC 2011 - stephan.holl@intevation.de
 -------------------------------------------------------------------
+Fri May 06 00:00:00 UTC 2011 - stephan.holl@intevation.de
 
 - updated with new upstream release 6.0.0-rc2
 
-Sat Apr 30 00:00:00 UTC 2011 - tzotsos@opensuse.org
 -------------------------------------------------------------------
+Sat Apr 30 00:00:00 UTC 2011 - tzotsos@opensuse.org
 
 - updated with new upstream release 6.0.0-rc1.
 
-Sun Apr 24 00:00:00 UTC 2011 - tzotsos@opensuse.org
 -------------------------------------------------------------------
+Sun Apr 24 00:00:00 UTC 2011 - tzotsos@opensuse.org
 
 - updated with new upstream release 6.0.0-beta7.
 
-Thu Apr 14 00:00:00 UTC 2011 - stephan.holl@intevation.de
 -------------------------------------------------------------------
+Thu Apr 14 00:00:00 UTC 2011 - stephan.holl@intevation.de
 
 - updated with new upstream release 6.0.0-beta6.
 
-Thu Apr 07 00:00:00 UTC 2011 - stephan.holl@intevation.de
 -------------------------------------------------------------------
+Thu Apr 07 00:00:00 UTC 2011 - stephan.holl@intevation.de
 
 - updated with new upstream release 6.0.0-beta5; in the meanwhile
   python-support was repaired by someone else (dstoecker, adrianSuSE).
   Kudos to them.
 
-Fri Mar 11 00:00:00 UTC 2011 - stephan.holl@intevation.de
 -------------------------------------------------------------------
+Fri Mar 11 00:00:00 UTC 2011 - stephan.holl@intevation.de
 
 - updated with new upstream release 6.0.0-beta1
 
-Sun Feb 27 00:00:00 UTC 2011 - tzotsos@opensuse.org
 -------------------------------------------------------------------
+Sun Feb 27 00:00:00 UTC 2011 - tzotsos@opensuse.org
 
 - fixed python package
 
-Mon Jan 24 00:00:00 UTC 2011 - stephan.holl@intevation.de
 -------------------------------------------------------------------
+Mon Jan 24 00:00:00 UTC 2011 - stephan.holl@intevation.de
 
 - added bug3525_verbose_output.patch to make EXCEPTIONS-output more
   verbose
 
-Tue Jan 18 00:00:00 UTC 2011 - stephan.holl@intevation.de
 -------------------------------------------------------------------
+Tue Jan 18 00:00:00 UTC 2011 - stephan.holl@intevation.de
 
 - udated to new upstream version of mapserver 5.6.6(see
   http://trac.osgeo.org/mapserver/browser/tags/rel-5-6-6/mapserver/HISTORY.TXT
@@ -512,54 +529,54 @@ Tue Jan 18 00:00:00 UTC 2011 - stephan.holl@intevation.de
 - removed patch for bug #3525 since this is already included in upstreams
   version 5.6.5
 
-Tue Jan 11 00:00:00 UTC 2011 - stephan.holl@intevation.de
 -------------------------------------------------------------------
+Tue Jan 11 00:00:00 UTC 2011 - stephan.holl@intevation.de
 
 - added upstream-patch for mapserver bug #3525 to work reliably with WMS
   1.3.0 and FCGI-mode
 
-Mon Dec 06 00:00:00 UTC 2010 - stephan.holl@intevation.de
 -------------------------------------------------------------------
+Mon Dec 06 00:00:00 UTC 2010 - stephan.holl@intevation.de
 
 - added --with-experimental-png-compile-flag
 
-Wed Oct 13 00:00:00 UTC 2010 - stephan.holl@intevation.de
 -------------------------------------------------------------------
+Wed Oct 13 00:00:00 UTC 2010 - stephan.holl@intevation.de
 
 - added a patch to hide layers from GetCapabilitites-Output. Use
   Metadataentry 'OWS_HIDDEN_LAYER' 'true' inside your layer
 - added Fastcgi-Support
 
-Tue Aug 10 00:00:00 UTC 2010 - stephan.holl@intevation.de
 -------------------------------------------------------------------
+Tue Aug 10 00:00:00 UTC 2010 - stephan.holl@intevation.de
 
 - updated to new upstream version of mapserver 5.6.5(see
   http://trac.osgeo.org/mapserver/browser/tags/rel-5-6-5/mapserver/HISTORY.TXT
   for a detailed description of the changes.
 
-Fri Mar 08 00:00:00 UTC 2010 - stephan.holl@intevation.de
 -------------------------------------------------------------------
+Fri Mar 08 00:00:00 UTC 2010 - stephan.holl@intevation.de
 
 - updated to new upstream version of mapserver 5.6.3(see
   http://trac.osgeo.org/mapserver/browser/tags/rel-5-6-3/mapserver/HISTORY.TXT
   for a detailed description of the changes.
 
-Mon Jan 11 00:00:00 UTC 2010 - stephan.holl@intevation.de
 -------------------------------------------------------------------
+Mon Jan 11 00:00:00 UTC 2010 - stephan.holl@intevation.de
 
 - updated to new upstream version of mapserver 5.6.1(see
   http://trac.osgeo.org/mapserver/browser/tags/rel-5-6-1/mapserver/HISTORY.TXT
   for a detailed description of the changes.
 
-Wed Dec 16 00:00:00 UTC 2009 - stephan.holl@intevation.de
 -------------------------------------------------------------------
+Wed Dec 16 00:00:00 UTC 2009 - stephan.holl@intevation.de
 
 - updated to new upstream version of mapserver 5.6.0
  (see http://trac.osgeo.org/mapserver/browser/tags/rel-5-6-0/mapserver/HISTORY.TXT
  for a detailed description of the changes.
 
-Wed May 06 00:00:00 UTC 2009 - stephan.holl@intevation.de
 -------------------------------------------------------------------
+Wed May 06 00:00:00 UTC 2009 - stephan.holl@intevation.de
 
 - updated to new upstream version of mapserver 5.4.0
   (see http://trac.osgeo.org/mapserver/browser/tags/rel-5-4-0/mapserver/HISTORY.TXT
@@ -573,28 +590,28 @@ Wed May 06 00:00:00 UTC 2009 - stephan.holl@intevation.de
 - tweaked the specfile for the new relase a little
 - make java using version 1.5 also for OpenSuSE 11.0
 
-Wed Dec 04 00:00:00 UTC 2008 - stephan.holl@intevation.de
 -------------------------------------------------------------------
+Wed Dec 04 00:00:00 UTC 2008 - stephan.holl@intevation.de
 
 - updated to new upstream release of mapserver 5.2.1
   (see http://trac.osgeo.org/mapserver/browser/tags/rel-5-2-1/mapserver/HISTORY.TXT
   for a detailed description of the changes
 
-Wed Oct 22 00:00:00 UTC 2008 - stephan.holl@intevation.de
 -------------------------------------------------------------------
+Wed Oct 22 00:00:00 UTC 2008 - stephan.holl@intevation.de
 
 - removed --with-tiff-option based on a hint from Andreas Hirner.
   See http://n2.nabble.com/Re:-unable-to-read-TIF-with-mapserver-5.3dev-td738238.html
   for more information
 
-Tue Aug 28 00:00:00 UTC 2008 - stephan.holl@intevation.de
 -------------------------------------------------------------------
+Tue Aug 28 00:00:00 UTC 2008 - stephan.holl@intevation.de
 
 - changed path of mapscript-module
 - added dependency of apache2_mod-php5 to php-mapserver
 
-Tue Aug 26 00:00:00 UTC 2008 - stephan.holl@intevation.de
 -------------------------------------------------------------------
+Tue Aug 26 00:00:00 UTC 2008 - stephan.holl@intevation.de
 
 - updated to build on SLE_10 x32-plattforms
 - updated path to php_mapscript.so
@@ -604,77 +621,77 @@ Tue Aug 26 00:00:00 UTC 2008 - stephan.holl@intevation.de
 - adapted to compile on openSUSE build service
 - java and python is not build included
 
-Tue Feb 19 00:00:00 UTC 2008 - rel-eng@fedoraproject.org
 -------------------------------------------------------------------
+Tue Feb 19 00:00:00 UTC 2008 - rel-eng@fedoraproject.org
 
 - Autorebuild for GCC 4.3
 
-Sat Feb 9 00:00:00 UTC 2008 - devrim@commandprompt.com
 -------------------------------------------------------------------
+Sat Feb 9 00:00:00 UTC 2008 - devrim@commandprompt.com
 
 - Update to 5.0.2
 
-Sat Jan 5 00:00:00 UTC 2008 - devrim@commandprompt.com
 -------------------------------------------------------------------
+Sat Jan 5 00:00:00 UTC 2008 - devrim@commandprompt.com
 
 - Update BR for java-devel, per Patrice Dumas
 
-Fri Jan 4 00:00:00 UTC 2008 - devrim@commandprompt.com
 -------------------------------------------------------------------
+Fri Jan 4 00:00:00 UTC 2008 - devrim@commandprompt.com
 
 - Update to 5.0.0
 - Removed patch0, since it is already in upstream.
 - Updated BRs
 
-Thu Dec 06 00:00:00 UTC 2007 - rel-eng@fedoraproject.org
 -------------------------------------------------------------------
+Thu Dec 06 00:00:00 UTC 2007 - rel-eng@fedoraproject.org
 
 - Rebuild for deps
 
-Thu Aug 30 00:00:00 UTC 2007 - oliver@linux-kernel.at
 -------------------------------------------------------------------
+Thu Aug 30 00:00:00 UTC 2007 - oliver@linux-kernel.at
 
 - Add fix to include libmapserver (in some places), instead of
   libmap, that doesn't exist (anymore)
 
-Thu Aug 30 00:00:00 UTC 2007 - oliver@linux-kernel.at
 -------------------------------------------------------------------
+Thu Aug 30 00:00:00 UTC 2007 - oliver@linux-kernel.at
 
 - Update to fix bz#256561, CVE-2007-4542
 
-Fri May 11 00:00:00 UTC 2007 - cbalint@redhat.com
 -------------------------------------------------------------------
+Fri May 11 00:00:00 UTC 2007 - cbalint@redhat.com
 
 - update require list properly.
 
-Thu May 10 00:00:00 UTC 2007 - cbalint@redhat.com
 -------------------------------------------------------------------
+Thu May 10 00:00:00 UTC 2007 - cbalint@redhat.com
 
 - use macros if possible in spec
 
-Thu May 10 00:00:00 UTC 2007 - cbalint@redhat.com
 -------------------------------------------------------------------
+Thu May 10 00:00:00 UTC 2007 - cbalint@redhat.com
 
 - further fixups for inclusion
 
-Thu May 10 00:00:00 UTC 2007 - cbalint@redhat.com
 -------------------------------------------------------------------
+Thu May 10 00:00:00 UTC 2007 - cbalint@redhat.com
 
 - new upsream tarball (bugfix)
 - further fixups for inclusion
 
-Tue Apr 24 00:00:00 UTC 2007 - cbalint@redhat.com
 -------------------------------------------------------------------
+Tue Apr 24 00:00:00 UTC 2007 - cbalint@redhat.com
 
 - further fixups for inclusion
 - enable java
 
-Fri Mar 16 00:00:00 UTC 2007 - cbalint@redhat.com
 -------------------------------------------------------------------
+Fri Mar 16 00:00:00 UTC 2007 - cbalint@redhat.com
 
 - add docs
 
-Fri Mar 16 00:00:00 UTC 2007 - cbalint@redhat.com
 -------------------------------------------------------------------
+Fri Mar 16 00:00:00 UTC 2007 - cbalint@redhat.com
 
 - first package
