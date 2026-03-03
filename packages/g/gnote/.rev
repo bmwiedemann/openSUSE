@@ -900,4 +900,12 @@ Search-provider is now it's own subpackage (forwarded request 180587 from dimsta
   + Updated translations. (forwarded request 1324728 from iznogood)</comment>
     <requestid>1324759</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>eda26fd9bb4e071362a548a45dd342eb</srcmd5>
+    <version>49.3</version>
+    <time>1772552341</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1336042</requestid>
+  </revision>
 </revisionlist>
