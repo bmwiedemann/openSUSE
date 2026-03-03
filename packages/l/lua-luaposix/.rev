@@ -137,4 +137,12 @@
   setgroups() before setuid() (gh#luaposix/luaposix!388).</comment>
     <requestid>1315171</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>f7c871c34c1b9365fb502a67ae9983b9</srcmd5>
+    <version>35.1</version>
+    <time>1772548238</time>
+    <user>anag_factory</user>
+    <comment>- Enable lua55 build.</comment>
+    <requestid>1335892</requestid>
+  </revision>
 </revisionlist>
