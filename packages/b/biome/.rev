@@ -211,4 +211,15 @@
 - add CHANGELOG.md to rpm</comment>
     <requestid>1335348</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>23c0b67fdeb8c1bfce07fc839356c984</srcmd5>
+    <version>2.4.5</version>
+    <time>1772548265</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.5
+  * 1,146 files changed across 62 commits
+  * see https://github.com/biomejs/biome/releases/tag/@biomejs/biome@2.4.5
+  * or see CHANGELOG.md</comment>
+    <requestid>1335900</requestid>
+  </revision>
 </revisionlist>
