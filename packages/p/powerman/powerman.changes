@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 19 18:55:33 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Add correct permissions for /run/powerman (jsc#PED-14740)
+
+-------------------------------------------------------------------
 Wed Jul  2 07:06:54 UTC 2025 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
 
 - Add patch httppower-redfishpower-Curl_easy_setopt-Expects-long-int.patch

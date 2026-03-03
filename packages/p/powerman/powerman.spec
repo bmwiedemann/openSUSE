@@ -1,7 +1,7 @@
 #
 # spec file for package powerman
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -150,7 +150,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/powerman.conf
 %config %{_sysconfdir}/powerman/
 %attr(0644,root,root) %{_unitdir}/%{name}.service
 %attr(0644,root,root) %{_tmpfilesdir}/powerman.conf
-%ghost %{_rundir}/powerman
+%ghost %attr(0755,%{powerman_u},%{powerman_g}) %{_rundir}/powerman
 %{?have_sysuser:%{_sysusersdir}/system-user-%{name}.conf}
 
 %files devel
