@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Feb  3 01:37:49 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Upgrade to 0.2.0, Modernized API & New Truncation Features:
+  - BREAKING: utf8.width() and utf8.widthindex() parameter order
+    changed
+  - BREAKING: ambi_is_double (boolean) replaced with ambiwidth
+    (integer)
+  - NEW: utf8.widthlimit() for intelligent width-based truncation
+  - NEW: Byte range parameters i, j for width functions
+  - NEW: utf8.version constant
+  - IMPROVED: Complete documentation rewrite with examples
+  - IMPROVED: Comprehensive test coverage for all new features
+  - FIXED: Various grammar and formatting issues in documentation
+- Remove upstreamed patch:
+  - warnings-away.patch
+
+-------------------------------------------------------------------
+Fri Jan 23 21:39:41 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Enable lua55 build.
+
+-------------------------------------------------------------------
 Fri Oct 24 14:50:10 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch off building lua51 build of the package.

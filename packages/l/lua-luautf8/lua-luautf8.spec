@@ -28,7 +28,7 @@
   %define luarock_arch %{_arch}
  %endif
 %endif
-Version:        0.1.6
+Version:        0.2.0
 Release:        0
 Summary:        A utf-8 support module for Lua and LuaJIT
 License:        MIT
@@ -36,9 +36,6 @@ Group:          Development/Languages/Other
 URL:            https://github.com/starwing/luautf8
 # Source:         %%{mod_name}-%%{version}.tar.zst
 Source:         https://github.com/starwing/luautf8/archive/refs/tags/%{version}.tar.gz
-# PATCH-{FIX|FEATURE}-{OPENSUSE|SLE|UPSTREAM} name-of-file.patch bsc#[0-9]+ mcepl@suse.com
-# this patch makes things totally awesome
-Patch0:         warnings-away.patch
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-luarocks
 BuildRequires:  lua-macros

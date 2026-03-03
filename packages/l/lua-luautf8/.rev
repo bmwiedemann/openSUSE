@@ -83,4 +83,26 @@
 - Add warnings-away.patch to remove compilation warnings.</comment>
     <requestid>1315180</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8e28a0588887410270b573e2a9b5f662</srcmd5>
+    <version>0.2.0</version>
+    <time>1772548230</time>
+    <user>anag_factory</user>
+    <comment>- Upgrade to 0.2.0, Modernized API &amp; New Truncation Features:
+  - BREAKING: utf8.width() and utf8.widthindex() parameter order
+    changed
+  - BREAKING: ambi_is_double (boolean) replaced with ambiwidth
+    (integer)
+  - NEW: utf8.widthlimit() for intelligent width-based truncation
+  - NEW: Byte range parameters i, j for width functions
+  - NEW: utf8.version constant
+  - IMPROVED: Complete documentation rewrite with examples
+  - IMPROVED: Comprehensive test coverage for all new features
+  - FIXED: Various grammar and formatting issues in documentation
+- Remove upstreamed patch:
+  - warnings-away.patch
+
+- Enable lua55 build.</comment>
+    <requestid>1335548</requestid>
+  </revision>
 </revisionlist>
