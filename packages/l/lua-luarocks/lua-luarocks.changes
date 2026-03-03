@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 27 09:15:57 CET 2026 - Matej Cepl <mcepl@suse.com>
+
+- Don't fiddle with regexps, but use a macro
+  alternatives_requires_exclude.
+
+-------------------------------------------------------------------
+Fri Jan 23 21:39:08 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Enable lua55 build.
+
+-------------------------------------------------------------------
 Tue Jan  6 06:55:21 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.13.0:

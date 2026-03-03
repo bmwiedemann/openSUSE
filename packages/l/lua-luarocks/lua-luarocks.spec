@@ -20,7 +20,7 @@
 %define flavor @BUILD_FLAVOR@
 %define mod_name luarocks
 # Remove file dependency on the interpreter
-%global __requires_exclude ^/usr/bin/lua(5\\.[1-9]|jit)?$
+%alternatives_requires_exclude
 %if "%{flavor}" == "luajit"
 %define lua_value  52
 %else

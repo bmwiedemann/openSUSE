@@ -180,4 +180,15 @@
   - fix: check_lua_libdir reads liblua in binary mode</comment>
     <requestid>1325524</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>c7be4ed7dc55c1162cc9a70b6f5a5ba5</srcmd5>
+    <version>3.13.0</version>
+    <time>1772548214</time>
+    <user>anag_factory</user>
+    <comment>- Don't fiddle with regexps, but use a macro
+  alternatives_requires_exclude.
+
+- Enable lua55 build.</comment>
+    <requestid>1335777</requestid>
+  </revision>
 </revisionlist>
