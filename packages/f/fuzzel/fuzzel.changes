@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Feb 13 14:12:24 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Disable cairo and use resvg
+
+-------------------------------------------------------------------
+Fri Feb 13 14:06:34 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 1.14.0:
+  * Faster, more accurate SVG rendering with `resvg` backend. It does
+    not require cairo and supports gamma correction. Packagers are
+    advised to prefer this backend. The librsvg and nanosvg backends may
+    be removed in a future release.
+  * `--match-nth=N` command line option, allowing dmenu entries to be
+    matched against text other than what is being displayed.
+  * `--only-match` command line option, preventing the user from
+    executing "custom" input in dmenu mode.
+  * `--nth-delimiter=CHR` option added support for custom delimiter in 1.13
+    but is just now documented in the changelog.
+  * The ability to set a custom "message" above the prompt, controlled
+    with the new command line options `--mesg`, `--mesg-mode` and
+    `--message-color` (and the corresponding config options `mesg`,
+    `mesg-mode` and `colors.message`).
+  * When typing, the selected entry now always reverts to the first
+    match (if you had selected an entry further down the list, with
+    either the mouse or the arrow keys). Previously, the same _index_
+    would stay selected (meaning the actually selected entry may have
+    changed).
+  * More environment variables are now passed to `--launch-prefix`. This
+    saves launcher that need more details from reparsing the desktop
+    file, spending up launching.
+  * `FUZZEL_DESKTOP_FILE_ID` has been deprecated and will be removed in
+    a future release. The replacement is `DESKTOP_ENTRY_ID` which is
+    consistent with other `DESKTOP_ENTRY_*` variables we now export.
+  * `--with-nth` and `--accept-nth` crashing if a column is empty
+    (e.g. `\tsecond column`, or `first\t\tthird`)
+  * Regression: `--accept-nth=0` and `--with-nth=0` not being treated as
+    if not specified at all.
+  * Improved scrolling with mouse wheel and touchpad.
+  * Incorrect touch coordinates with desktop scaling enabled.
+  * --match-mode=fzf now prioritizes matching at word boundaries,
+    matching fzf's behavior.
+
+
+-------------------------------------------------------------------
 Wed Aug 27 15:33:09 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to 1.13.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package fuzzel
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fuzzel
-Version:        1.13.1
+Version:        1.14.0
 Release:        0
 Summary:        A Wayland-native application launcher, similar to rofi's drun mode
 License:        MIT
@@ -30,8 +30,8 @@ Source2:        %{name}.keyring
 BuildRequires:  meson >= 0.58
 BuildRequires:  pkgconfig
 BuildRequires:  python3
+BuildRequires:  resvg-devel
 BuildRequires:  scdoc
-BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(fcft) <  4.0.0
 BuildRequires:  pkgconfig(fcft) >= 3.0.0
 BuildRequires:  pkgconfig(pixman-1)
@@ -76,7 +76,7 @@ Fish command-line completion support for %{name}.
 %build
 export CFLAGS="%{optflags}"
 %meson \
--Denable-cairo=enabled -Dpng-backend=libpng -Dsvg-backend=nanosvg \
+-Denable-cairo=disabled -Dpng-backend=libpng -Dsvg-backend=resvg \
 %if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
 # For whatever reason, meson >= 0.58 should already support the c18 standard.
 	-Dc_std=c11 \
