@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  2 12:41:43 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- also add the remaining /usr/etc/security (boo#1253493)
+
+-------------------------------------------------------------------
 Mon Jan 19 10:26:11 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Own /usr/etc/security/pam_env.conf.d as aaa_base installs a base

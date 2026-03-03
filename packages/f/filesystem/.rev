@@ -1439,4 +1439,12 @@
     <comment></comment>
     <requestid>1328074</requestid>
   </revision>
+  <revision rev="178" vrev="21">
+    <srcmd5>a506a9224078636d0a5d6f06ebf7168c</srcmd5>
+    <version>84.87</version>
+    <time>1772548217</time>
+    <user>anag_factory</user>
+    <comment>- also add the remaining /usr/etc/security (boo#1253493)</comment>
+    <requestid>1335821</requestid>
+  </revision>
 </revisionlist>
