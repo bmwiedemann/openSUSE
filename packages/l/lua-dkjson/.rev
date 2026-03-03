@@ -82,4 +82,12 @@
 - Don't depend on lua5.1</comment>
     <requestid>1315150</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>e4148cbe79bd21bff6588a041ffbc954</srcmd5>
+    <version>2.8.0</version>
+    <time>1772548237</time>
+    <user>anag_factory</user>
+    <comment>- Enable lua55 build.</comment>
+    <requestid>1335854</requestid>
+  </revision>
 </revisionlist>
