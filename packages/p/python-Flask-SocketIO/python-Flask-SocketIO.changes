@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  3 00:04:45 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.6.1:
+  * Session fixes for Flask >= 3.1.3
+  * Use Flask test client's own `environ` dict if it is available
+- Update Requires to reflect reality.
+
+-------------------------------------------------------------------
 Tue Apr 22 02:19:36 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support both lowercased and unnormalized metadata directory names.
