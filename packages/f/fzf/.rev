@@ -1180,4 +1180,24 @@ varienvironment able.
 </comment>
     <requestid>1334583</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>3015ddc12361cfa7110fdbd0ad5654bb</srcmd5>
+    <version>0.70.0</version>
+    <time>1772548310</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.70.0:
+  * Added change-with-nth action for dynamically changing the --
+    with-nth option.
+  * Added change-header-lines action for dynamically changing the
+    --header-lines option
+  * Performance improvements (1.3x to 1.9x faster filtering
+    depending on query) Fixed nth attribute merge order to
+    respect precedence hierarchy (#4697)
+  * Fixed nth attribute merge order to respect precedence
+    hierarchy (#4697)
+  * bash: Replaced printf with builtin printf to bypass local
+    indirections (#4684)
+</comment>
+    <requestid>1335923</requestid>
+  </revision>
 </revisionlist>
