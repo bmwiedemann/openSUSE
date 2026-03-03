@@ -161,4 +161,31 @@
   * seatd: Add strict message size comparison</comment>
     <requestid>1328188</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d6e334df9b8d124321a6f23950263f8f</srcmd5>
+    <version>0.9.3</version>
+    <time>1772548263</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.9.3:
+  * Bump version to 0.9.3
+  * seatd: Fix some typos
+  * seatd: Improve error handling for failed seat open
+  * seatd: Reuse session numbers for non-VT-bound
+  * seatd: Return the correct device on duplicate open
+  * libseat: Remove bogus NULL check
+  * libseat/logind: Handle strdup allocation errors
+  * libseat/logind: Avoid shadowing ret
+  * libseat/logind: Do not record PauseDeviceComplete reply
+  * seatd: Check the right variable for accept failure
+  * libseat/seatd: Retain errno in set_error for convenience
+  * libseat/seatd: Ensure errno is not clobbered
+  * libseat/seatd: Do not attempt destroy on alloc error
+  * logind: Minor error simplification
+  * logind: Ensure errno is set from sd_bus error
+  * seatd: Explicitly set ENOMEM in seat_open_device
+  * seatd: Remove silly goto error handling
+  * seatd: Ensure seat_close_device cannot clobber errno
+  * seatd: Clarify that seat_close_device cannot fail</comment>
+    <requestid>1335908</requestid>
+  </revision>
 </revisionlist>
