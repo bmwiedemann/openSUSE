@@ -3,8 +3,10 @@
     <param name="url">https://github.com/prometheus/prometheus.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
+    <param name="exclude">go.work</param>
+    <param name="exclude">go.work.sum</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v3.9.1</param>
+    <param name="revision">v3.10.0</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="match-tag">v3*</param>
   </service>
