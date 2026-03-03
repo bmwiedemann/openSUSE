@@ -59,4 +59,12 @@
   (gh#brimworks/lua-ev#24).</comment>
     <requestid>1315162</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>98ea3f195060e8a1855670932df4b35a</srcmd5>
+    <version>1.5</version>
+    <time>1772548234</time>
+    <user>anag_factory</user>
+    <comment>Enable lua55 build</comment>
+    <requestid>1335787</requestid>
+  </revision>
 </revisionlist>
