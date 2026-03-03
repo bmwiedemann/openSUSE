@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  2 02:19:55 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.2.0:
+  * Require pytest >= 8
+  * Remove support for Python 3.7, 3.8 and 3.9. Require at least Python 3.10
+  * Add support for Python 3.13 and Python 3.14
+  * Switch to original flit build backend
+- Drop patch support-new-mypy.patch, no longer required.
+
+-------------------------------------------------------------------
 Wed Jan 21 09:28:56 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update support-new-mypy.patch to support modern mypy

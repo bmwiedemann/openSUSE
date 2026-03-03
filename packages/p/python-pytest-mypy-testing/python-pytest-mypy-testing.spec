@@ -19,24 +19,23 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-mypy-testing
-Version:        0.1.3
+Version:        0.2.0
 Release:        0
 Summary:        Pytest plugin to check mypy output
 License:        Apache-2.0 OR MIT
 URL:            https://github.com/davidfritzsche/pytest-mypy-testing
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-mypy-testing/pytest-mypy-testing-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Support newer mypy
-Patch0:         support-new-mypy.patch
-BuildRequires:  %{python_module flit-core >= 2}
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-mypy-testing/pytest_mypy_testing-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module flit-core >= 3.12}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module mypy >= 1.0}
-BuildRequires:  %{python_module pytest >= 7}
+BuildRequires:  %{python_module pytest >= 8}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-mypy >= 1.0
-Requires:       python-pytest >= 7
+Requires:       python-pytest >= 8
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,7 +47,7 @@ mypy produces a given output. As mypy can be told to display the
 type of an expression this allows us to check mypys type interference.
 
 %prep
-%autosetup -p1 -n pytest-mypy-testing-%{version}
+%autosetup -p1 -n pytest_mypy_testing-%{version}
 
 %build
 %pyproject_wheel

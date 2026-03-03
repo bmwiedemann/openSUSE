@@ -32,4 +32,17 @@
     <comment>- Update support-new-mypy.patch to support modern mypy</comment>
     <requestid>1328448</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5110a18ab175f468aa327759bba1eb21</srcmd5>
+    <version>0.2.0</version>
+    <time>1772548318</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.2.0:
+  * Require pytest &gt;= 8
+  * Remove support for Python 3.7, 3.8 and 3.9. Require at least Python 3.10
+  * Add support for Python 3.13 and Python 3.14
+  * Switch to original flit build backend
+- Drop patch support-new-mypy.patch, no longer required.</comment>
+    <requestid>1335931</requestid>
+  </revision>
 </revisionlist>
