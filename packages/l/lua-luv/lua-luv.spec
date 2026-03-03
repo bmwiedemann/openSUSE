@@ -38,13 +38,22 @@ License:        Apache-2.0
 Group:          Development/Languages/Other
 URL:            https://github.com/luvit/luv
 Source0:        https://github.com/luvit/luv/releases/download/%{upver}/luv-%{upver}.tar.gz
+# PATCH-FIX-UPSTREAM lua-link.patch gh#luvit/luv!803 mcepl@suse.com
+# change Linux linking to add an explicit lua dependency
 Patch0:         lua-link.patch
+# PATCH-FIX-UPSTREAM luv-module-install.patch gh#luvit/luv!804 mcepl@suse.com
+# turn MODULE_INSTALL_LIB_DIR into a CMake cache entry
 Patch1:         luv-module-install.patch
+# PATCH-FIX-OPENSUSE findlua55.patch mcepl@suse.com
+# Makes the local FindLua.cmake aware of Lua 5.5
+# Using FindLua.cmake from gh#Kitware/CMake@261b7b933c66
+Patch2:         findlua55.patch
 BuildRequires:  %{flavor}-compat-5.3
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-luafilesystem
 BuildRequires:  cmake
-BuildRequires:  libuv-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libuv)
 BuildRequires:  lua-macros
 Requires:       %{flavor}
 %lua_provides

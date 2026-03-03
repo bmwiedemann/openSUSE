@@ -203,4 +203,14 @@
 - Make the package buildable with LuaJIT.</comment>
     <requestid>1315181</requestid>
   </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>3155d7000df90d79e65b1244b23ff1fa</srcmd5>
+    <version>MACRO</version>
+    <time>1772548229</time>
+    <user>anag_factory</user>
+    <comment>- Enable lua55 build.
+- Add findlua55.patch, which makes the local FindLua.cmake aware
+  of Lua 5.5, using FindLua.cmake from gh#Kitware/CMake@261b7b933c66</comment>
+    <requestid>1335537</requestid>
+  </revision>
 </revisionlist>
