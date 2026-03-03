@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 02 19:07:33 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1772475695.6c6c7eda:
+  * build(Makefile): add make target help text
+  * fix(npm): bump to non-vulerable versions (boo#1259005, boo#1258632)
+
+-------------------------------------------------------------------
 Mon Mar 02 14:07:44 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1772460208.7a4e1e06:
