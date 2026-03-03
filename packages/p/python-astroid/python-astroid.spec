@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-astroid
-Version:        4.1.0
+Version:        4.1.1
 Release:        0
 Summary:        Representation of Python source as an AST for pylint
 License:        LGPL-2.1-or-later
@@ -29,8 +29,6 @@ BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-# typing-extensions for python310 required for tests only: gh#PyCQA/astroid#1585
-BuildRequires:  %{python_module typing-extensions >= 3.10}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

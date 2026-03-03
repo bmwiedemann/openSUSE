@@ -730,4 +730,16 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
     <comment></comment>
     <requestid>1335262</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>9444149ee0f4a7964079ccc9ef157278</srcmd5>
+    <version>4.1.1</version>
+    <time>1772548178</time>
+    <user>anag_factory</user>
+    <comment>- Actually update to 4.1.1:
+  * Let `UnboundMethodModel` inherit from `FunctionModel` to improve
+    inference of dunder methods for unbound methods.
+  * Filter ``Unknown`` from ``UnboundMethod`` and ``Super`` special attribute
+    lookup to prevent placeholder nodes from leaking during inference.</comment>
+    <requestid>1335676</requestid>
+  </revision>
 </revisionlist>

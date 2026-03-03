@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  2 01:36:06 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Actually update to 4.1.1:
+  * Let `UnboundMethodModel` inherit from `FunctionModel` to improve
+    inference of dunder methods for unbound methods.
+  * Filter ``Unknown`` from ``UnboundMethod`` and ``Super`` special attribute
+    lookup to prevent placeholder nodes from leaking during inference.
+
+-------------------------------------------------------------------
 Wed Feb 25 10:14:26 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.1.1
