@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb 28 18:47:38 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
+
+- Update to version 715.a01a289:
+  * Fix return type of `string_bytes`
+  * Improve Markdown and fix typos in README
+  * Fix typo in `vterm-set-bold-highbright` variable name
+  * Fix typos and grammar in comments
+  * Fixes segfault when clicking error in compilation-shell-minor-mode
+  * Fix spelling
+  * README: link the issue of running on Windows
+
+-------------------------------------------------------------------
 Tue Dec 24 00:11:13 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Update to version 708.99c1f5e:

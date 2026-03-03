@@ -1,8 +1,8 @@
 #
 # spec file for package emacs-vterm
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2023 Björn Bidar
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2026 Björn Kettunen
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %global _upstream_name emacs-libvterm
 
 Name:           emacs-%{_name}
-Version:        708.99c1f5e
+Version:        715.a01a289
 Release:        0
 Summary:        An experimental module for libvterm bindings to Emacs
 License:        GPL-3.0-or-later
