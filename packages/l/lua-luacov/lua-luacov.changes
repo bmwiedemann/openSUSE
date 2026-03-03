@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Fri Feb 27 09:15:57 CET 2026 - Matej Cepl <mcepl@suse.com>
+
+- Don't fiddle with regexps, but use a macro
+  alternatives_requires_exclude.
+
+-------------------------------------------------------------------
+Thu Feb 26 00:15:58 CET 2026 - Matej Cepl <mcepl@suse.com>
+
+- Initial import of lua rock luacov version 0.17.0
