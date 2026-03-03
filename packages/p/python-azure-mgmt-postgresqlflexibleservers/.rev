@@ -63,4 +63,17 @@
 - Update Requires from pyproject.toml (forwarded request 1327030 from glaubitz)</comment>
     <requestid>1327051</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4a69052db9fe0184877fe2b38dbfff02</srcmd5>
+    <version>3.0.0~b1</version>
+    <time>1772548347</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 3.0.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 3.0.0~b1
+- Update Requires from pyproject.toml (forwarded request 1335974 from glaubitz)</comment>
+    <requestid>1336033</requestid>
+  </revision>
 </revisionlist>
