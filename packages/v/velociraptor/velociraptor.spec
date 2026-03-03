@@ -1,7 +1,7 @@
 #
 # spec file for package velociraptor
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,16 @@
 %define name_suffix -client
 %define make_target linux_bare
 %define config_perms 0600, root, root
-%define state_dir_perms 0700, root, root
+%define state_dir_perms 0700
+%define state_dir_owner root
 %else
 %define build_server 1
 %define build_client 0
 %define name_suffix %{nil}
 %define make_target linux
 %define config_perms 0640, root, velociraptor
-%define state_dir_perms 0700, velociraptor, velociraptor
+%define state_dir_perms 0700
+%define state_dir_owner velociraptor
 %endif
 
 %define projname velociraptor
@@ -65,6 +67,7 @@
 
 %if "%{_vendor}" == "debbuild"
 %define _unitdir /usr/lib/systemd/system
+%define _tmpfilesdir /usr/lib/tmpfiles.d
 %endif
 
 # Older SLE releases and debbuild don't support uppercase VERSION macro
@@ -104,8 +107,9 @@ Source7:        sysconfig.velociraptor
 Source8:        sysconfig.velociraptor-client
 Source9:        %{projname}.obsinfo
 Source10:       system-user-velociraptor.sysusers
-Source11:       velociraptor-nodejs.spec.inc
-Source12:       package-lock.json
+Source11:       tmpfiles.conf
+Source12:       velociraptor-nodejs.spec.inc
+Source13:       package-lock.json
 
 %include %{_sourcedir}/velociraptor-nodejs.spec.inc
 
@@ -315,9 +319,10 @@ PATH=$PATH:/usr/sbin make %{make_target} BUILD_BPF_PLUGINS=%{with bpf} CLANG=$CL
 
 %install
 install -D -d -m 0750 %buildroot/%{_sysconfdir}/velociraptor
-install -D -d -m 0700 %buildroot/%{_sharedstatedir}/%{name}/data
-install -D -d -m 0700 %buildroot/%{_sharedstatedir}/%{name}/logs
-install -D -d -m 0700 %buildroot/%{_sharedstatedir}/%{name}/tmp
+install -D -m 0644 %{SOURCE11} %{buildroot}%{_tmpfilesdir}/%{name}.conf
+sed -i "s/@STATE_DIR_OWNER@/%{state_dir_owner}/g" %{buildroot}%{_tmpfilesdir}/%{name}.conf
+sed -i "s/@STATE_DIR_PERMS@/%{state_dir_perms}/g" %{buildroot}%{_tmpfilesdir}/%{name}.conf
+sed -i "s/@PKG_NAME@/%{name}/g" %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 %if %{build_server}
 service_file_source=%{SOURCE3}
@@ -362,10 +367,11 @@ install -D -m 0755 output/velociraptor-v%{VERSION}-linux-* %buildroot/%{_bindir}
 %dir %attr(-, root, velociraptor) %{_sysconfdir}/velociraptor
 
 %config(noreplace) %attr(%{config_perms}) %{_sysconfdir}/velociraptor/*.config
-%dir %attr(%{state_dir_perms}) %{_sharedstatedir}/%{name}
-%dir %attr(%{state_dir_perms}) %{_sharedstatedir}/%{name}/data
-%dir %attr(%{state_dir_perms}) %{_sharedstatedir}/%{name}/logs
-%dir %attr(%{state_dir_perms}) %{_sharedstatedir}/%{name}/tmp
+%{_tmpfilesdir}/%{name}.conf
+%ghost %dir %attr(%{state_dir_perms}, %{state_dir_owner}, %{state_dir_owner}) %{_sharedstatedir}/%{name}
+%ghost %dir %attr(%{state_dir_perms}, %{state_dir_owner}, %{state_dir_owner}) %{_sharedstatedir}/%{name}/data
+%ghost %dir %attr(%{state_dir_perms}, %{state_dir_owner}, %{state_dir_owner}) %{_sharedstatedir}/%{name}/logs
+%ghost %dir %attr(%{state_dir_perms}, %{state_dir_owner}, %{state_dir_owner}) %{_sharedstatedir}/%{name}/tmp
 
 %if %{build_client}
 %if 0%{?suse_version} && !0%{?pre_create_group}
@@ -388,6 +394,7 @@ groupadd -f -r velociraptor  2>/dev/null || :
 %post
 %{fillup_only}
 %service_add_post %{name}.service
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 
 %preun
 %service_del_preun %{name}.service
