@@ -15,4 +15,12 @@
     <comment>Fix build with up-coming maven 4</comment>
     <requestid>1287974</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9cd118d05871bd9bd0836ac82df5d1c1</srcmd5>
+    <version>1.8</version>
+    <time>1772548262</time>
+    <user>anag_factory</user>
+    <comment>1.8 and change in packaging</comment>
+    <requestid>1335913</requestid>
+  </revision>
 </revisionlist>

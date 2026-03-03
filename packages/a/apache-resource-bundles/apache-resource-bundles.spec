@@ -1,7 +1,7 @@
 #
 # spec file for package apache-resource-bundles
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,14 @@
 #
 
 
-%global jar_version 1.4
-%global lh_version 1.1
-%global id_version 1.1
 Name:           apache-resource-bundles
-Version:        2
+Version:        1.8
 Release:        0
 Summary:        Apache Resource Bundles
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            https://repo1.maven.org/maven2/org/apache/apache-resource-bundles/
-Source0:        https://repo1.maven.org/maven2/org/apache/%{name}/%{version}/%{name}-%{version}.pom
-Source1:        https://repo1.maven.org/maven2/org/apache/apache-jar-resource-bundle/%{jar_version}/apache-jar-resource-bundle-%{jar_version}-sources.jar
-Source2:        https://repo1.maven.org/maven2/org/apache/apache-jar-resource-bundle/%{jar_version}/apache-jar-resource-bundle-%{jar_version}.pom
-Source3:        https://repo1.maven.org/maven2/org/apache/apache-license-header-resource-bundle/%{lh_version}/apache-license-header-resource-bundle-%{lh_version}-sources.jar
-Source4:        https://repo1.maven.org/maven2/org/apache/apache-license-header-resource-bundle/%{lh_version}/apache-license-header-resource-bundle-%{lh_version}.pom
-Source5:        https://repo1.maven.org/maven2/org/apache/apache-incubator-disclaimer-resource-bundle/%{id_version}/apache-incubator-disclaimer-resource-bundle-%{id_version}-sources.jar
-Source6:        https://repo1.maven.org/maven2/org/apache/apache-incubator-disclaimer-resource-bundle/%{id_version}/apache-incubator-disclaimer-resource-bundle-%{id_version}.pom
+URL:            https://maven.apache.org/apache-resource-bundles/
+Source0:        https://repo1.maven.org/maven2/org/apache/apache/resources/%{name}/%{version}/%{name}-%{version}-source-release.zip
 BuildRequires:  maven-local
 BuildRequires:  unzip
 BuildRequires:  mvn(org.apache.maven.plugins:maven-remote-resources-plugin)
@@ -44,44 +35,20 @@ An archive which contains templates for generating the necessary license files
 and notices for all Apache releases.
 
 %prep
-%setup -q -cT
-cp -p %{SOURCE0} ./pom.xml
+%setup -q
 
-# jar
-mkdir -p apache-jar-resource-bundle
-pushd apache-jar-resource-bundle
-jar xvf %{SOURCE1}
-cp -p %{SOURCE2} ./pom.xml
-mkdir -p src/main/resources
-mv META-INF src/main/resources
-popd
+%pom_disable_module resources-bundles-sample
 
-# license-header
-mkdir -p apache-license-header-resource-bundle
-pushd apache-license-header-resource-bundle
-jar xvf %{SOURCE3}
-cp -p %{SOURCE4} ./pom.xml
-mkdir -p src/main/resources
-mv META-INF src/main/resources
-popd
-
-# incubator-disclaimer
-mkdir -p apache-incubator-disclaimer-resource-bundle
-pushd apache-incubator-disclaimer-resource-bundle
-jar xvf %{SOURCE5}
-cp -p %{SOURCE6} ./pom.xml
-mkdir -p src/main/resources
-mv META-INF src/main/resources
-popd
-
-%pom_xpath_remove pom:project/pom:parent/pom:relativePath
+%mvn_alias : org.apache:
 
 %{mvn_file} :apache-jar-resource-bundle apache-resource-bundles/jar
+%{mvn_file} :apache-jar-txt-resource-bundle apache-resource-bundles/jar-txt
 %{mvn_file} :apache-license-header-resource-bundle apache-resource-bundles/license-header
 %{mvn_file} :apache-incubator-disclaimer-resource-bundle apache-resource-bundles/incubator-disclaimer
+%{mvn_file} :apache-source-release-assembly-descriptor apache-resource-bundles/source-release
 
 %build
-%{mvn_build}
+%{mvn_build} -f
 
 %install
 %mvn_install
