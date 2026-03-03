@@ -378,16 +378,16 @@ GENERIC_CHANGES=false
 TRANSLATION_CHANGES=false
 DEADPACKAGE_SUCCESS=false
 shopt -s nullglob
-cp -v "$FILE" $SUDF_DIR/suse_update_desktop_file/update-desktop-files/$DESKTOP_NAME/$DESKTOP_NAME-downstream-no-translation.desktop
+sed '/^\(Name\|GenericName\|Comment\|Keywords\)\[/d' "$FILE" >$SUDF_DIR/suse_update_desktop_file/update-desktop-files/$DESKTOP_NAME/$DESKTOP_NAME-downstream-no-translation.desktop
 # Insert translations from the downstream
 ORIG_DIR=$PWD
 cd $SUDF_DIR/suse_update_desktop_file/update-desktop-files/$DESKTOP_NAME
+sed '/^\(Name\|GenericName\|Comment\|Keywords\)\[/d' $DESKTOP_NAME-upstream.desktop >$DESKTOP_NAME-upstream-no-translation.desktop
 if [ "$I18N" != "no" ]; then
     sed "s@^Name=@_&Name($DESKTOP_NAME.desktop): @;s@^GenericName=@_&GenericName($DESKTOP_NAME.desktop): @;s@^Comment=@_&Comment($DESKTOP_NAME.desktop): @;s@^Keywords=@_&Keywords($DESKTOP_NAME.desktop): @" $FILE >$DESKTOP_NAME-downstream-no-translation-desktop_translations.desktop
     intltool-merge /usr/share/desktop-translations/desktop_translations $DESKTOP_NAME-downstream-no-translation-desktop_translations.desktop $DESKTOP_NAME-downstream-translated-raw.desktop -d -u
     sed -i "s@^Name=Name($DESKTOP_NAME.desktop): @Name=@;s@^GenericName=GenericName($DESKTOP_NAME.desktop): @GenericName=@;s@^Comment=Comment($DESKTOP_NAME.desktop): @Comment=@;s@^Keywords=Keywords($DESKTOP_NAME.desktop): @Keywords=@" $DESKTOP_NAME-downstream-translated-raw.desktop
     ${0%.sh}_process_translations.py $DESKTOP_NAME
-    cp -a -v $DESKTOP_NAME-downstream-translated.desktop $FILE
     if ! diff -u $DESKTOP_NAME-upstream.desktop $DESKTOP_NAME-downstream-translated.desktop >$DESKTOP_NAME-downstream-directly-translated.diff ; then
         TRANSLATION_CHANGES=true
     fi
@@ -398,7 +398,11 @@ if [ "$I18N" != "no" ]; then
     if ! diff -u $DESKTOP_NAME-upstream.desktop.in $DESKTOP_NAME-downstream-no-translation.desktop.in >$DESKTOP_NAME-downstream-in-translated.diff ; then
         GENERIC_CHANGES=true
     fi
+    if ! diff -u $DESKTOP_NAME-upstream-no-translation.desktop $DESKTOP_NAME-downstream-no-translation.desktop >$DESKTOP_NAME-downstream-msgfmt-translated.diff ; then
+        GENERIC_CHANGES=true
+    fi
     sed -i "1,2s/$DESKTOP_NAME-\(upstream\|downstream-no-translation\).desktop.in/$DESKTOP_NAME.desktop.in/" $DESKTOP_NAME-downstream-in-translated.diff
+    sed -i "1,2s/$DESKTOP_NAME-\(upstream\|downstream\)-no-translation.desktop/$DESKTOP_NAME.desktop/" $DESKTOP_NAME-downstream-msgfmt-translated.diff
     mkdir po
     intltool-extract --type=gettext/ini $DESKTOP_NAME-downstream-no-translation-desktop_translations.desktop
     xgettext --default-domain=$DESKTOP_NAME --add-comments --keyword=_ --keyword=N_ --keyword=U_ $DESKTOP_NAME-downstream-no-translation-desktop_translations.desktop.h -o po/$DESKTOP_NAME.pot

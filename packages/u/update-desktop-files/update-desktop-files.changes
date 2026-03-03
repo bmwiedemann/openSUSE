@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  2 09:15:56 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Add support for upstreaming of desktop files translated by
+  msgfmt.
+- Do not update the installed desktop file by the upstreaming code.
+
+-------------------------------------------------------------------
 Sat Jan 17 18:11:23 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
 
 - Generate diff file for easier applying of patch for dead
