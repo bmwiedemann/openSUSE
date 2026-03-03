@@ -667,4 +667,12 @@
   pkgconfig(libpeas-2), pkgconfig(gck-2) and pkgconfig(gcr-4). (forwarded request 1333026 from iznogood)</comment>
     <requestid>1333273</requestid>
   </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>3af41c993b49e7de9b0d202337bf9c4f</srcmd5>
+    <version>46.0+109</version>
+    <time>1772552344</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1336043</requestid>
+  </revision>
 </revisionlist>

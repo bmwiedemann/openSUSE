@@ -30,10 +30,9 @@ Patch1:         Support-dark-theme-webview.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  itstool
-BuildRequires:  meson
+BuildRequires:  meson >= 1.7
 BuildRequires:  pkgconfig
 BuildRequires:  snowball-devel
-BuildRequires:  xml2po
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(enchant-2) >= 2.1
 BuildRequires:  pkgconfig(folks)
