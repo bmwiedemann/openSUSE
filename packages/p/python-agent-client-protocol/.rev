@@ -7,4 +7,26 @@
     <comment>New package: python-agent-client-protocol</comment>
     <requestid>1328841</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>114cc69778a6fba99082a44b1e80f616</srcmd5>
+    <version>0.8.1</version>
+    <time>1772548315</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.8.1:
+  - chore(deps): bump the uv group across 1 directory with
+    4 updates
+  - feat: add protocol method for session/set_config_option
+- Update to 0.8.0:
+  - feat: bump acp schema version to 0.10.5
+  - fix: remove TerminalHandle
+  - docs: Add missing prop to settings.json in ACP quickstart,
+    add uv example
+  - feat: Increase default stdio buffer limit and allow
+    configuration
+  - fix: Add SessionInfoUpdate to SessionUpdate type in helpers
+  - feat: bump agentclientprotocol to 0.10.8
+  - fix: allow omitting mcpServers in session requests
+  - chore: prepare 0.8.0 release</comment>
+    <requestid>1335944</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-agent-client-protocol
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,26 @@
 
 
 Name:           python-agent-client-protocol
-Version:        0.7.0
+Version:        0.8.1
 Release:        0
 Summary:        A Python implement of Agent Client Protocol (ACP, by Zed Industries)
 License:        Apache-2.0
 URL:            https://agentclientprotocol.github.io/python-sdk/
 Source:         https://files.pythonhosted.org/packages/source/a/agent-client-protocol/agent_client_protocol-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module datamodel-code-generator}
+BuildRequires:  %{python_module mkdocs-material}
+BuildRequires:  %{python_module mkdocs}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module datamodel-code-generator}
-BuildRequires:  %{python_module mkdocs}
-BuildRequires:  %{python_module mkdocs-material}
+BuildRequires:  python-rpm-macros
 #    deptry>=0.23.0
 #    ty>=0.0.1a16
 #    mkdocstrings
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pydantic >= 2.7}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module python-dotenv}
-BuildRequires:  %{python_module pydantic >= 2.7}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-pydantic >= 2.7
