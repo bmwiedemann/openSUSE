@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 23 21:40:08 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Enable lua55 build.
+
+-------------------------------------------------------------------
 Mon Oct 27 23:20:04 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Split the building to separate `test` phase to avoid cycle with

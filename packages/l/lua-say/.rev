@@ -67,4 +67,12 @@
 - Rewrite to use %luarocks_{build,install}</comment>
     <requestid>1315191</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>df4eeb4ec9df25c9198574d8776854d0</srcmd5>
+    <version>1.4.1</version>
+    <time>1772548231</time>
+    <user>anag_factory</user>
+    <comment>- Enable lua55 build.</comment>
+    <requestid>1335781</requestid>
+  </revision>
 </revisionlist>
