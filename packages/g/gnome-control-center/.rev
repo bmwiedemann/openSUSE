@@ -2497,4 +2497,12 @@ New stable rel</comment>
 - Drop gnome-control-center-gvc-31.patch: fixed upstream. (forwarded request 1330736 from dimstar)</comment>
     <requestid>1331117</requestid>
   </revision>
+  <revision rev="281" vrev="1">
+    <srcmd5>8f33d13ab61e05d852633782f974b79f</srcmd5>
+    <version>49.5</version>
+    <time>1772548170</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1335577</requestid>
+  </revision>
 </revisionlist>
