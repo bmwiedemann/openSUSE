@@ -1,0 +1,40 @@
+From 11af177902550c24497cf120a5481b0ab5ccc981 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Barnab=C3=A1s=20P=C5=91cze?= <pobrn@protonmail.com>
+Date: Fri, 23 Jan 2026 19:44:34 +0100
+Subject: [PATCH] event-hook: fix interest hook event type memory leak
+
+In `wp_interest_event_hook_get_matching_event_types()`, the variable
+`res` owns the allocated `GPtrArray`, but there is an early return
+in the function. Hitting that will leak the allocation, so use
+`g_autoptr` to avoid that.
+
+Fixes: b80a0975c747 ("event-dispatcher: Register hooks for defined events in a hash table")
+---
+ lib/wp/event-hook.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/wp/event-hook.c b/lib/wp/event-hook.c
+index 921bb934..49db4dcd 100644
+--- a/lib/wp/event-hook.c
++++ b/lib/wp/event-hook.c
+@@ -367,7 +367,7 @@ wp_interest_event_hook_get_matching_event_types (WpEventHook * hook)
+   WpInterestEventHook *self = WP_INTEREST_EVENT_HOOK (hook);
+   WpInterestEventHookPrivate *priv =
+       wp_interest_event_hook_get_instance_private (self);
+-  GPtrArray *res = g_ptr_array_new_with_free_func (g_free);
++  g_autoptr (GPtrArray) res = g_ptr_array_new_with_free_func (g_free);
+   guint i;
+ 
+   for (i = 0; i < priv->interests->len; i++) {
+@@ -393,7 +393,7 @@ wp_interest_event_hook_get_matching_event_types (WpEventHook * hook)
+     }
+   }
+ 
+-  return res;
++  return g_steal_pointer (&res);
+ }
+ 
+ static void
+-- 
+GitLab
+

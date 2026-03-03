@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  2 11:58:30 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Backport more upstream fixes:
+  * 0003-default-nodes-Never-consider-Audio_Sink-nodes-as-best-for.patch
+  * 0004-event-hook-fix-interest-hook-event-type-memory-leak.patch
+  * 0005-state-stream-fix-crash-in-case-the-Format-has-a-Choice-for.patch
+  * 0006-state-stream-fix-Lua-5.4-compatibility.patch
+
+-------------------------------------------------------------------
 Sun Jan 18 11:16:36 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Backport upstream fixes:

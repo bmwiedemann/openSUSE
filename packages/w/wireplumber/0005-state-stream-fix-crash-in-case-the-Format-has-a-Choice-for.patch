@@ -1,0 +1,39 @@
+From de0bca59023ef1cd655ebf5f944f8fd5952df10e Mon Sep 17 00:00:00 2001
+From: George Kiagiadakis <george.kiagiadakis@collabora.com>
+Date: Fri, 6 Feb 2026 11:28:34 +0200
+Subject: [PATCH] state-stream: fix crash in case the Format has a Choice for
+ the number of channels
+
+Fixes: #903
+---
+ src/scripts/node/state-stream.lua | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/src/scripts/node/state-stream.lua b/src/scripts/node/state-stream.lua
+index e2fc7efe..b4537644 100644
+--- a/src/scripts/node/state-stream.lua
++++ b/src/scripts/node/state-stream.lua
+@@ -348,8 +348,18 @@ function buildDefaultChannelVolumes (node)
+   for pod in node:iterate_params("Format") do
+     local pod_parsed = pod:parse()
+     if pod_parsed ~= nil then
+-      channels = pod_parsed.properties.channels
+-      break
++      local t = type(pod_parsed.properties.channels)
++      if t == "number" then
++        channels = pod_parsed.properties.channels
++        break
++      else if t == "table" and #pod_parsed.properties.channels > 0 then
++        -- in some misbehaving clients a non-fixed Format may appear here, which means the number of
++        -- channels will be some kind of choice. If this is the case, pick the first number in the
++        -- choice (which is either the default in an enum or range, or may just happen to be the
++        -- right number in other cases)
++        channels = pod_parsed.properties.channels[1]
++        break
++      end
+     end
+   end
+ 
+-- 
+GitLab
+

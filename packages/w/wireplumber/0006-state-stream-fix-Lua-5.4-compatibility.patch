@@ -1,0 +1,26 @@
+From 48ed27d11bfd2c952bc9a3138a4df6f81aa01038 Mon Sep 17 00:00:00 2001
+From: Julian Bouzas <julian.bouzas@collabora.com>
+Date: Fri, 13 Feb 2026 10:17:02 -0500
+Subject: [PATCH] state-stream: fix Lua 5.4 compatibility
+
+The 'elseif' and 'else if' keywords are treated differently in Lua 5.4
+---
+ src/scripts/node/state-stream.lua | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/scripts/node/state-stream.lua b/src/scripts/node/state-stream.lua
+index b4537644..6587f26b 100644
+--- a/src/scripts/node/state-stream.lua
++++ b/src/scripts/node/state-stream.lua
+@@ -352,7 +352,7 @@ function buildDefaultChannelVolumes (node)
+       if t == "number" then
+         channels = pod_parsed.properties.channels
+         break
+-      else if t == "table" and #pod_parsed.properties.channels > 0 then
++      elseif t == "table" and #pod_parsed.properties.channels > 0 then
+         -- in some misbehaving clients a non-fixed Format may appear here, which means the number of
+         -- channels will be some kind of choice. If this is the case, pick the first number in the
+         -- choice (which is either the default in an enum or range, or may just happen to be the
+-- 
+GitLab
+
