@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 29 19:18:41 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Enable building with Lua 5.5.
+- Remove fix_test.patch, which incorrectly workaround unset
+  LUA_PATH variable.
+- Add lua55-build.patch to fix compatibility problems with Lua
+  5.5.
+
+-------------------------------------------------------------------
 Fri Oct 24 14:47:39 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch off building lua51 build of the package.

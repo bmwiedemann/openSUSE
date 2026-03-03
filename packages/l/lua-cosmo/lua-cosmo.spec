@@ -22,10 +22,9 @@ Version:        16.06.04
 Release:        0
 Summary:        A “safe templates” engine for Lua
 License:        MIT
-Group:          Development/Languages/Other
 URL:            https://github.com/mascarenhas/cosmo
 Source:         cosmo-%{version}.tar.zst
-Patch0:         fix_test.patch
+Patch0:         lua55-build.patch
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-lpeg
 BuildRequires:  %{flavor}-luarocks
@@ -59,6 +58,7 @@ sed -i -e '/lpeg >=/d' "rockspec/%{mod_name}-%{rock_version}.rockspec"
 %{luarocks_install} %{mod_name}-%{rock_version}.*.rock
 
 %check
+export LUA_PATH="%{buildroot}%{lua_noarchdir}/?.lua;%{buildroot}%{lua_noarchdir}/?/init.lua;;"
 cd tests
 lua test_cosmo.lua
 

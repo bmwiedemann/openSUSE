@@ -1,0 +1,106 @@
+---
+ src/cosmo.lua      |   13 ++++++++-----
+ src/cosmo/fill.lua |   22 +++++++++++++---------
+ 2 files changed, 21 insertions(+), 14 deletions(-)
+
+Index: cosmo-16.06.04/src/cosmo.lua
+===================================================================
+--- cosmo-16.06.04.orig/src/cosmo.lua	2016-06-04 20:59:21.000000000 +0200
++++ cosmo-16.06.04/src/cosmo.lua	2026-01-29 20:34:37.397380423 +0100
+@@ -63,10 +63,11 @@
+               end
+               $if_args[===[
+                   check_selector(selector_name, selector)
+-                  for e, literal in wrap(selector), $args, true do
++                  for e_val, literal in wrap(selector), $args, true do
+                     if literal then
+-                      insert(out, tostring(e))
++                      insert(out, tostring(e_val))
+                     else
++                      local e = e_val
+                       if type(e) ~= "table" then
+                         e = prepare_env({ it = tostring(e) }, env)
+                       else
+@@ -78,7 +79,8 @@
+               ]===],
+               [===[
+                   if type(selector) == 'table' then
+-                    for _, e in ipairs(selector) do
++                    for _, e_val in ipairs(selector) do
++                      local e = e_val
+                       if type(e) ~= "table" then
+                         e = prepare_env({ it = tostring(e) }, env)
+                       else
+@@ -88,10 +90,11 @@
+                     end
+                   else
+                     check_selector(selector_name, selector)
+-                    for e, literal in wrap(selector), nil, true do
++                    for e_val, literal in wrap(selector), nil, true do
+                       if literal then
+-                        insert(out, tostring(e))
++                        insert(out, tostring(e_val))
+                       else
++                        local e = e_val
+                         if type(e) ~= "table" then
+                           e = prepare_env({ it = tostring(e) }, env)
+                         else
+Index: cosmo-16.06.04/src/cosmo/fill.lua
+===================================================================
+--- cosmo-16.06.04.orig/src/cosmo/fill.lua	2016-06-04 20:59:21.000000000 +0200
++++ cosmo-16.06.04/src/cosmo/fill.lua	2026-01-29 20:19:31.069205449 +0100
+@@ -79,6 +79,7 @@
+     end
+   else
+     if args and args ~= "" and args ~= "{}" then
++      local proc_e
+       check_selector(selector_name, selector)
+       args = loadstring("local env = (...); return " .. args)(env)
+       for e, literal in coroutine.wrap(selector), args, true do
+@@ -86,22 +87,24 @@
+           insert(out, tostring(e))
+         else
+           if type(e) ~= "table" then
+-            e = prepare_env({ it = tostring(e) }, env)
++            proc_e = prepare_env({ it = tostring(e) }, env)
+           else
+-            e = prepare_env(e, env)
++            proc_e = prepare_env(e, env)
+           end
+-          interpreter.template({ env = e, out = out, opts = opts }, subtemplates[e.self._template or 1] or default)
++          interpreter.template({ env = proc_e, out = out, opts = opts },
++                               subtemplates[proc_e.self._template or 1] or default)
+         end
+       end
+     else
+       if type(selector) == 'table' then
+         for _, e in ipairs(selector) do
+           if type(e) ~= "table" then
+-            e = prepare_env({ it = tostring(e) }, env)
++            proc_e = prepare_env({ it = tostring(e) }, env)
+           else
+-            e = prepare_env(e, env)
++            proc_e = prepare_env(e, env)
+           end
+-          interpreter.template({ env = e, out = out, opts = opts }, subtemplates[e.self._template or 1] or default)
++          interpreter.template({ env = proc_e, out = out, opts = opts },
++                               subtemplates[proc_e.self._template or 1] or default)
+         end
+       else
+         check_selector(selector_name, selector)
+@@ -110,11 +113,12 @@
+             insert(out, tostring(e))
+           else
+             if type(e) ~= "table" then
+-              e = prepare_env({ it = tostring(e) }, env)
++              proc_e = prepare_env({ it = tostring(e) }, env)
+             else
+-              e = prepare_env(e, env)
++              proc_e = prepare_env(e, env)
+             end
+-            interpreter.template({ env = e, out = out, opts = opts }, subtemplates[e.self._template or 1] or default)
++            interpreter.template({ env = proc_e, out = out, opts = opts },
++                                 subtemplates[proc_e.self._template or 1] or default)
+           end
+         end
+       end
