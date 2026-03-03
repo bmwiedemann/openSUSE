@@ -52,4 +52,14 @@
 - Fix file persmissions on alternate files.</comment>
     <requestid>1328966</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>077474e43ae8113a1a572c692fdba2e8</srcmd5>
+    <version>0.5.0</version>
+    <time>1772548228</time>
+    <user>anag_factory</user>
+    <comment>- Add update-alternatives/alts support.
+
+- Enable lua55 build.</comment>
+    <requestid>1335535</requestid>
+  </revision>
 </revisionlist>

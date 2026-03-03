@@ -23,6 +23,11 @@
 %else
 %bcond_with test
 %endif
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %define mod_name moonscript
 %define upversion 0.5.0
 Version:        0.5.0
@@ -45,8 +50,13 @@ Requires:       %{flavor}-argparse
 Requires:       %{flavor}-loadkit
 Requires:       %{flavor}-lpeg
 Requires:       %{flavor}-luafilesystem
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 # optionally BuildRequires:  %%{flavor}-lnotify
 BuildArch:      noarch
 %lua_provides
@@ -70,7 +80,7 @@ A programmer friendly language that compiles to Lua.
 sed -i 's|^#!%{_bindir}/env lua|#!%{_bindir}/lua%{lua_version}|' bin/moon{,c}
 
 %build
-/bin/true
+:
 
 %install
 %if ! %{with test}
@@ -79,16 +89,41 @@ cp -r -p moonscript %{buildroot}%{lua_noarchdir}
 cp -r -p moon %{buildroot}%{lua_noarchdir}
 install -D -m 0755 -p -t %{buildroot}%{_bindir} bin/moon{,c}
 
-# Alternatives
-# create a dummy target for /etc/alternatives/vim
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-mv %{buildroot}%{_bindir}/moon{,-%{lua_version}}
-mv %{buildroot}%{_bindir}/moonc{,-%{lua_version}}
-ln -s -f %{_sysconfdir}/alternatives/moonc %{buildroot}%{_bindir}/moonc
-ln -s -f %{_sysconfdir}/alternatives/moon %{buildroot}%{_bindir}/moon
+# Prepare alternatives handling
+mv -v %{buildroot}%{_bindir}/moon{,-%{lua_version}}
+mv -v %{buildroot}%{_bindir}/moonc{,-%{lua_version}}
+chmod +x %{buildroot}%{_bindir}/moon-%{lua_version}
+chmod +x %{buildroot}%{_bindir}/moonc-%{lua_version}
+sed -i -e 's,# *\!%{_bindir}/.*lua.*$,#!%{_bindir}/%{lua_version},' \
+    %{buildroot}%{_bindir}/moon-%{lua_version} \
+    %{buildroot}%{_bindir}/moonc-%{lua_version}
+
+%if %{with libalternatives}
+# alternatives - create configuration file
+echo "### lua_value = %{lua_value}"
+ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/moon
+mkdir -p %{buildroot}%{_datadir}/libalternatives/moon
+cat > %{buildroot}%{_datadir}/libalternatives/moon/%{lua_value}.conf <<EOF
+binary=%{_bindir}/moon-%{lua_version}
+EOF
+ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/moonc
+mkdir -p %{buildroot}%{_datadir}/libalternatives/moonc
+cat > %{buildroot}%{_datadir}/libalternatives/moonc/%{lua_value}.conf <<EOF
+binary=%{_bindir}/moonc-%{lua_version}
+EOF
+%else
+# update-alternatives
+mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
+touch %{buildroot}%{_sysconfdir}/alternatives/moon
+ln -sf %{_sysconfdir}/alternatives/moon %{buildroot}%{_bindir}/moon
+touch %{buildroot}%{_sysconfdir}/alternatives/moonc
+ln -sf %{_sysconfdir}/alternatives/moonc %{buildroot}%{_bindir}/moonc
+%endif
 %endif
 
+
 %if ! %{with test}
+%if %{without libalternatives}
 %post
 update-alternatives --force \
     --install %{_bindir}/moon moon %{_bindir}/moon-%{lua_version} 15 \
@@ -98,6 +133,7 @@ update-alternatives --force \
 if [ ! -f %{_bindir}/moon-%{lua_version} ] ; then
    update-alternatives --remove moon %{_bindir}/moon-%{lua_version}
 fi
+%endif
 %endif
 
 %check
@@ -113,8 +149,14 @@ busted
 %{_bindir}/moonc
 %{_bindir}/moonc-%{lua_version}
 %{lua_noarchdir}/moon*
-%ghost %attr(0644,root,root) /etc/alternatives/moon
-%ghost %attr(0644,root,root) /etc/alternatives/moonc
+%if %{with libalternatives}
+%dir %{_datadir}/libalternatives
+%{_datadir}/libalternatives/moon
+%{_datadir}/libalternatives/moonc
+%else
+%ghost %attr(0644,root,root) %{_sysconfdir}/alternatives/moon
+%ghost %attr(0644,root,root) %{_sysconfdir}/alternatives/moonc
+%endif
 %endif
 
 %changelog

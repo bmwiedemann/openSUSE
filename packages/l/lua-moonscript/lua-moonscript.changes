@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 25 22:35:03 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add update-alternatives/alts support.
+
+-------------------------------------------------------------------
+Fri Jan 23 22:10:27 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Enable lua55 build.
+
+-------------------------------------------------------------------
 Fri Jan 23 08:41:38 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Fix file persmissions on alternate files.
