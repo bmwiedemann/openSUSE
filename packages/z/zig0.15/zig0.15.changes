@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Jan 28 03:29:54 UTC 2026 - Mihai Petracovici <petracvv@opensuse.org>
+
+- Remove reproducible.patch as it breaks system library lookups 
+
+-------------------------------------------------------------------
+Wed Jan 28 01:03:06 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add bump_max_rss.patch to allow more memory while building later
+  stages
+
+-------------------------------------------------------------------
+Tue Jan 27 21:42:46 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- unify spec files more among branches
+
+-------------------------------------------------------------------
+Tue Jan 27 21:15:59 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- only use mold on platforms where we have mold
+- stream line clang version handling
+- only %if the parts of the %cmake call that actually differ
+
+-------------------------------------------------------------------
+Tue Jan 27 04:50:01 UTC 2026 - Mihai Petracovici <petracvv@opensuse.org>
+
+- Update reproducible.patch to not break system library lookup
+
+-------------------------------------------------------------------
 Mon Jan 19 08:05:33 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Drop vendor tarball
