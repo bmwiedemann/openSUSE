@@ -32,7 +32,7 @@
 %define objects_version 1.7.6
 %define openmusic_version 1.6.1
 %define opensound_version 1.0.6
-%define openrct2_version 0.4.31
+%define openrct2_version 0.4.32
 
 Name:           openrct2
 Version:        %{openrct2_version}
