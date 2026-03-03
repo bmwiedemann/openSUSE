@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  3 10:58:59 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build on Tumbleweed gcc , add ibp-0.21-compiler.patch
+
+-------------------------------------------------------------------
 Mon Feb 17 21:14:37 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Fix build (patch directive)

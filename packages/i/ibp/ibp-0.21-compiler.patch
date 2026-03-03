@@ -1,0 +1,215 @@
+Index: ibp-0.21/xdisp.c
+===================================================================
+--- ibp-0.21.orig/xdisp.c
++++ ibp-0.21/xdisp.c
+@@ -65,8 +65,7 @@ const char large_map_bits[]
+ 	       and fraction.  */
+ 
+ long
+-jdate(t)
+-struct tm *t;
++jdate(struct tm *t)
+ {
+ 	long c, m, y;
+ 
+@@ -89,8 +88,7 @@ struct tm *t;
+ 	       expressed as a double).	*/
+ 
+ double
+-jtime(t)
+-struct tm *t;
++jtime(struct tm *t)
+ {
+ 	return (jdate(t) - 0.5) + 
+ 	   (((long) t->tm_sec) +
+@@ -100,8 +98,7 @@ struct tm *t;
+ /*  KEPLER  --	Solve the equation of Kepler.  */
+ 
+ double
+-kepler(m, ecc)
+-double m, ecc;
++kepler(double m, double ecc)
+ {
+ 	double e, delta;
+ #define EPSILON 1E-6
+@@ -126,10 +123,7 @@ double m, ecc;
+ 		SLONG.	*/
+ 
+ void
+-sunpos(jd, apparent, ra, dec, rv, slong)
+-double jd;
+-int apparent;
+-double *ra, *dec, *rv, *slong;
++sunpos(double jd, int apparent, double *ra, double *dec, double *rv, double *slong)
+ {
+ 	double t, t2, t3, l, m, e, ea, v, theta, omega,
+ 	       eps;
+@@ -194,8 +188,7 @@ double *ra, *dec, *rv, *slong;
+ 	      instant expressed as a Julian date and fraction.	*/
+ 
+ double
+-gmst(jd)
+-double jd;
++gmst(double jd)
+ {
+ 	double t, theta0;
+ 
+@@ -351,23 +344,29 @@ char *				timezone();
+  * External Functions
+  */
+ 
+-double				jtime();
+-double				gmst();
+-char *				salloc();
+-struct sunclock *		makeClockContext();
++struct geom {
++	int			mask;
++	int			x;
++	int			y;
++};
++
++double				jtime(struct tm*);
++double				gmst(double);
++char *				salloc(register int);
++struct sunclock *		makeClockContext(int wid, int ht, Window win, Pixmap pix);
+ void				getColors();
+-void				fixGeometry();
++void				fixGeometry(struct geom *g, register int w, register int h);
+ void				makePixmaps();
+ void				makeWindows();
+-void				makeGCs();
++void				makeGCs(Window, Pixmap);
+ void				setAllHints();
+ void				makeClockContexts();
+ void				shutDown();
+-void				updimage();
+-void				showImage();
+-void				sunpos();
+-void				moveterm();
+-void				projillum();
++void				updimage(register struct sunclock *);
++void				showImage(register struct sunclock *);
++void				sunpos(double, int, double *, double *, double *, double *);
++void				moveterm(short *wtab, int noon, short *otab, int onoon, int xdots, int ydots, Pixmap pixmap);
++void				projillum(short *wtab, int xdots, int ydots, double dec);
+ 
+ CONST char * CONST		Wdayname[] = {
+ 	"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
+@@ -377,12 +376,6 @@ CONST char * CONST		Monname[] = {
+ 	"Aug", "Sep", "Oct", "Nov", "Dec"
+ };
+ 
+-struct geom {
+-	int			mask;
+-	int			x;
+-	int			y;
+-};
+-
+ CONST char *			Display_name = "";
+ Display *			dpy;
+ int				scr;
+@@ -466,10 +459,7 @@ makeWindows()
+ }
+ 
+ void
+-fixGeometry(g, w, h)
+-register struct geom *		g;
+-register int			w;
+-register int			h;
++fixGeometry(struct geom *g, register int w, register int h)
+ {
+ 	if (g->mask & XNegative)
+ 		g->x = DisplayWidth(dpy, scr) - w + g->x;
+@@ -478,9 +468,7 @@ register int			h;
+ }
+ 
+ void
+-makeGCs(w, p)
+-register Window			w;
+-register Pixmap			p;
++makeGCs(register Window	w, register Pixmap p)
+ {
+ 	XGCValues		gcv;
+ 	int i;
+@@ -549,12 +537,7 @@ makeClockContexts()
+ 
+ 
+ struct sunclock *
+-makeClockContext(wid, ht, win, pix, gc)
+-int				wid;
+-int				ht;
+-Window				win;
+-Pixmap				pix;
+-int				gc;
++makeClockContext(int wid, int ht, Window win, Pixmap pix)
+ {
+ 	register struct sunclock * s;
+ 
+@@ -580,8 +563,7 @@ int				gc;
+ 
+ 
+ void
+-showImage(s)
+-register struct sunclock *	s;
++showImage(register struct sunclock *s)
+ {
+ 	XCopyPlane(dpy, s->s_pixmap, s->s_backg, GC_store,
+ 		   0, 0, s->s_width, s->s_height, 0, 0, 1);
+@@ -593,8 +575,7 @@ register struct sunclock *	s;
+ /*  UPDIMAGE  --  Update current displayed image.  */
+ 
+ void
+-updimage(s)
+-register struct sunclock *	s;
++updimage(register struct sunclock *s)
+ {
+ 	register int		i;
+ 	int			xl;
+@@ -652,10 +633,7 @@ register struct sunclock *	s;
+ /*  PROJILLUM  --  Project illuminated area on the map.  */
+ 
+ void
+-projillum(wtab, xdots, ydots, dec)
+-short *wtab;
+-int xdots, ydots;
+-double dec;
++projillum(short *wtab, int xdots, int ydots, double dec)
+ {
+ 	int i, ftf = True, ilon, ilat, lilon, lilat, xt;
+ 	double m, x, y, z, th, lon, lat, s, c, s_th;
+@@ -746,12 +724,7 @@ double dec;
+ 	       wrap-around at the right edge of the screen.  */
+ 
+ void
+-xspan(pline, leftp, npix, xdots, p)
+-register int			pline;
+-register int			leftp;
+-register int			npix;
+-register int			xdots;
+-register Pixmap			p;
++xspan(register int pline, register int leftp, register int npix, register int xdots, register Pixmap p)
+ {
+ 	leftp = leftp % xdots;
+ 
+@@ -768,10 +741,7 @@ register Pixmap			p;
+ /*  MOVETERM  --  Update illuminated portion of the globe.  */
+ 
+ void
+-moveterm(wtab, noon, otab, onoon, xdots, ydots, pixmap)
+-short *wtab, *otab;
+-int noon, onoon, xdots, ydots;
+-Pixmap pixmap;
++moveterm(short *wtab, int noon, short *otab, int onoon, int xdots, int ydots, Pixmap pixmap)
+ {
+ 	int i, ol, oh, nl, nh;
+ 
+@@ -843,8 +813,7 @@ Pixmap pixmap;
+ }
+ 
+ char *
+-salloc(nbytes)
+-register int			nbytes;
++salloc(register int nbytes)
+ {
+ 	register char *		p;
+ 

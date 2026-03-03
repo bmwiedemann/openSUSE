@@ -2,7 +2,7 @@
 # spec file for package ibp
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,11 @@ URL:            https://www.pa3fwm.nl/software/ibp/
 Source:         https://www.pa3fwm.nl/software/ibp/%{name}-%{version}.tgz
 Patch0:         ibp-0.21-ncurses.patch
 Patch1:         ibp-0.21-xdisp-makeClockContext-gc.patch
+Patch2:         ibp-0.21-compiler.patch
+BuildRequires:  imake
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  imake
 
 %description
 This program continuously shows which beacon of the International Beacon

@@ -7,4 +7,12 @@
     <comment>a terminal/X11 program showing data from the International Beacon Project, for ham radio HF usage</comment>
     <requestid>1246515</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ebe9d9c8f51b344ffdb8c161cb15b4e8</srcmd5>
+    <version>0.21</version>
+    <time>1772548345</time>
+    <user>anag_factory</user>
+    <comment>fix build on Tumbleweed gcc (forwarded request 1336019 from AndreasStieger)</comment>
+    <requestid>1336020</requestid>
+  </revision>
 </revisionlist>
