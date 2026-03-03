@@ -1,7 +1,7 @@
 #
 # spec file for package linode-cli
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,37 +17,40 @@
 
 
 %define cli_name    linode-cli
-%bcond_without python2
 
 Name:           linode-cli
-Version:        5.25.0
+Version:        5.65.0
 Release:        0
 Summary:        The Linode command-line interface
 License:        BSD-3-Clause
 URL:            https://github.com/linode/linode-cli
-Source:         https://github.com/linode/linode-cli/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        openapi.yaml
+Source:         https://github.com/linode/linode-cli/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        openapi.json
 # PATCH-FIX-OPENSUSE 0001-Remove-shebang-from-non-executable-files.patch
 Patch0:         0001-Remove-shebang-from-non-executable-files.patch
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module boto3}
+BuildRequires:  %{python_module linode-metadata >= 0.3}
+BuildRequires:  %{python_module openapi3}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytimeparse}
+BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module rich}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module terminaltables}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with python2}
-BuildRequires:  python-enum34
-BuildRequires:  python2-future
-%endif
 Requires:       python-PyYAML
+Requires:       python-linode-metadata >= 0.3
+Requires:       python-openapi3
+Requires:       python-packaging
+Requires:       python-pytimeparse
 Requires:       python-requests
-Requires:       python-terminaltables
-%ifpython2
-Requires:       python-enum34
-Requires:       python2-future
-%endif
+Requires:       python-rich
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -70,13 +73,13 @@ Bash completion files for %{name}
 %autosetup -p1
 
 %build
-# harcode version to prevent calling out to git during build
-echo "#!/bin/sh
-echo %version" > version
+LINODE_CLI_VERSION="%{version}" make create-version
 
-# bake data files, output with different name based on the python version
-%python_exec -m linodecli bake "%{SOURCE1}" --skip-config
-cp data-* linodecli/
+# bake data file
+python3 -m linodecli bake "%{SOURCE1}" --skip-config
+cp data-3 linodecli/
+# generate bash completion
+python3 -m linodecli completion bash > completion.bash
 
 # run the actual build
 %pyproject_wheel
@@ -84,26 +87,39 @@ cp data-* linodecli/
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/%{cli_name}
+%python_clone -a %{buildroot}%{_bindir}/lin
+%python_clone -a %{buildroot}%{_bindir}/linode
 
-# move installed bash completions to proper location
+# install generated bash completion to proper location
 install -d %{buildroot}%{_datarootdir}/bash-completion/completions
-mv %{buildroot}%{python_sitelib}%{_sysconfdir}/bash_completion.d/%{cli_name}.sh  %{buildroot}%{_datarootdir}/bash-completion/completions/%{cli_name}
-%python_expand rm -r %{buildroot}%{$python_sitelib}%{_sysconfdir}
+mv completion.bash %{buildroot}%{_datarootdir}/bash-completion/completions/%{cli_name}
+
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %post
 %python_install_alternative %{cli_name}
+%python_install_alternative lin
+%python_install_alternative linode
 
 %postun
 %python_uninstall_alternative %{cli_name}
+%python_uninstall_alternative lin
+%python_uninstall_alternative linode
+
+%check
+export LINODE_CLI_TEST_MODE=1
+# requires network
+%pytest tests/unit -k 'not test_nonexisting_id'
 
 %files %{python_files}
 %python_alternative %{_bindir}/%{cli_name}
+%python_alternative %{_bindir}/lin
+%python_alternative %{_bindir}/linode
 %{python_sitelib}/linodecli
 %{python_sitelib}/linode_cli-%{version}.dist-info
 
 %files -n %{name}-bash-completion
 %dir %{_datarootdir}/bash-completion/completions/
-%{_datarootdir}/bash-completion/completions/%{cli_name}
+%{_datarootdir}/bash-completion/completions/%{name}
 
 %changelog

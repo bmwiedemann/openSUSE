@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Feb 18 03:37:38 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.65.0:
+  * Built from Linode API spec 4.215.0-patch.1
+  ## New Features
+  * Use generic cli args for get-kubeconfig plugin
+  * Add --raw-body argument for POST and PUT requests
+  * Configure Python `logging` level when debug flag is specified; add debug
+    logs to bake command
+  * Consume linode-api-docs/openapi.json rather than openapi.yaml
+  * Sort options in configuration prompts
+  * Override placement group view to display members
+  * Add support for loading JSON OpenAPI spec files
+  * Improve the readability of CLI help page and table outputs
+  * Move build configuration from setup.py to pyproject.toml
+  * Add support for user-defined prefixes in file uploads, enabling obj
+    subdirectory uploads through command: linode obj put
+  * new: Display full path in the header for nested columns
+  * ref: Remove logic for resolving version from tag; failover to v0.0.0
+  * Replace terminaltables with rich
+  * migrate unittest to pytest
+  * Migrate the obj plugin to boto3
+  * Added linode and lin aliases
+  * Add completion support for the FISH shel
+  * Add interactive firewall rule editor plugin
+  * Add `--page-size` argument for list modules
+  ## Bug Fixes
+  * Don't show custom_aliases as a user
+  * Fix support for deeply nested oneOfs; group nested oneOf options on help
+    pages
+  * Allow specifying explicitly empty dicts and lists for object arguments
+  * Fix failure on OBJ plugin when CLI is not configured
+  * Address incompatibility between boto3 >= 1.36.x and third-party
+    S3-compatible storage providers
+  * Add Paginator to Recursively Delete All Objects Before Delete Bucket
+  * new: Address breaking change in MDS plugin sshkeys command
+  * Resolve issues with nested explicit list and null value serialization
+  * Resolve issue when not specifying all keys for object list entries
+  * Disable attribute depth limit for JSON outputs
+  * Resolve issue with formatting on nested fields in JSON mode
+  * Add default values for database engines
+  * Add packaging to install_requires and drop version specifier
+  * Remove usage of deprecated distutils version system
+  * Support inheriting shared arguments in plugins
+  * Move consistent fixtures to conftest.py
+  * fix: Add support for --help pages on aliased commands
+  * Check for unrestricted account access during configuration step
+  * Resolve issue that caused CLI to be built with an outdated OpenAPI spec
+    version
+- Use the shiny new create-version Makefile rule.
+- We only need to bake once.
+- Run the testsuite.
+- Switch to the JSON openapi specification.
+- Refreshed patch 0001-Remove-shebang-from-non-executable-files.patch
+- Remove Python 2 leftovers.
+
+-------------------------------------------------------------------
 Wed Nov  5 04:53:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install.
