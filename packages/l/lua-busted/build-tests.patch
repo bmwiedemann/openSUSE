@@ -1,0 +1,28 @@
+---
+ spec/fixtures_spec.lua |    5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+Index: busted-2.3.0/spec/fixtures_spec.lua
+===================================================================
+--- busted-2.3.0.orig/spec/fixtures_spec.lua	2026-01-07 21:08:33.000000000 +0100
++++ busted-2.3.0/spec/fixtures_spec.lua	2026-02-26 00:07:47.177036533 +0100
+@@ -6,12 +6,12 @@
+
+     it("returns the absolute fixture path", function()
+       local path = fixtures.path("fixtures/myfile.txt")
+-      assert.match("^.-busted[/\\]spec[/\\]fixtures[/\\]myfile.txt$", path)
++      assert.match("^.-busted[^/\\]*[/\\]spec[/\\]fixtures[/\\]myfile.txt$", path)
+     end)
+
+     it("returns the absolute fixture path normalized", function()
+       local path = fixtures.path("../fixtures/myfile.txt")
+-      assert.match("^.-busted[/\\]fixtures[/\\]myfile.txt$", path)
++      assert.match("^.-busted[^/\\]*[/\\]fixtures[/\\]myfile.txt$", path)
+     end)
+
+     it("errors on bad input", function()
+@@ -83,4 +83,3 @@
+
+
+ end)
+-

@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Fri Feb 27 07:54:12 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Don't fiddle with regexps, but use a macro
+  %alternatives_requires_exclude.
+
+-------------------------------------------------------------------
+Wed Feb 25 22:41:16 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.3.0:
+  - Features
+    - Add support for Lua 5.5
+    - Implement loader for Fennel
+    - Add split output support; optimize display format to junit
+    - Improve junit report formatting to avoid truncation
+  - Bug Fixes
+    - Restore context state on its own terms, not the terms of
+      the current env
+    - Hack around cliargs quirk to handle "help" flag correctly
+    - Unpin cliargs dependency
+- Update to 2.2.0:
+  - Features
+    - Add Korean localization
+    - Add --exclude-name-file and --log-success options
+    - (When combined can automate re-running only failed tests)
+    - Add --name option to easily run single tests
+  - Bug Fixes
+    - Remove unused luafilesystem dependency
+    - Correct installation and example documentation
+    - Use escape sequences to output UTF-8 characters in more
+      environments
+    - Output more standard tracing notation in gtest handler
+    - Fix casting to string before encoding errors in JSON
+    - Correct TAP handler to not error on no test files
+- Update to 2.1.2:
+  - Bug Fixes
+    - fix(luajit): ensure that ffi loaded libs will not get GC'ed
+      #711
+  - Features
+    - Add Indonesian language support #705
+    - Allow helpers to extend busted #658
+- Update to 2.1.1:
+  - Bug Fixes
+    - Avoid GitHub marketplace namespace conflict
+- Update to 2.1.0:
+  - Bug Fixes
+    - Refactor rockspec to dodge luarocks 3.1.3 bug
+    - Fix caching the ffi.typeof function on luajit
+    - Fix 'metatype' as a patched method on luajit
+    - Report pending without function argument
+    - Cache all outputter functions, use io.write not print
+    - Exit when CLI specified helper fails
+    - Restore globals set to nil in insulate block
+    - Change rockspec URL to git+https
+    - Fix error in gtest and utfhandlers if color was set
+  - Features
+    - Add tooling so repository can be used as a GitHub action
+    - Add Dockefile and publish to GHCR
+    - Add function to locate relative fixtures
+    - Add CLI support for setting luacov config path
+    - Add helpers to read/load fixtures
+    - Add Romanian translation
+    - Enable color overrides for utf+gtest handlers
+  - Miscellaneous Tasks
+    - Overhaul CI & add automatic publishing from rockspecs
+    - Bump luassert/say deps
+    - Update terra loader to use the global-injection of current
+      Terra
+- Enable lua55 build.
+- Add build-tests.patch relaxing too strict assertion on tests in
+  spec/fixtures_spec.lua (gh#lunarmodules/busted#768).
+
+-------------------------------------------------------------------
+Wed Feb 25 12:38:02 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add BuildIgnore on lua51 while is fully removed from Tumbleweed.
+
+-------------------------------------------------------------------
 Fri Oct 24 14:47:05 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch off building lua51 build of the package.

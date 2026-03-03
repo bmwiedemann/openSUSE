@@ -78,4 +78,41 @@
 - Don’t depend on /usr/bin/lua%{lua_version}, it breaks LuaJIT.</comment>
     <requestid>1315140</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a9cf7b807e79a9185ec9d8feb9d87724</srcmd5>
+    <version>2.3.0</version>
+    <time>1772548231</time>
+    <user>anag_factory</user>
+    <comment>- Don't fiddle with regexps, but use a macro
+  %alternatives_requires_exclude.
+
+- Update to 2.3.0:
+  - Features
+    - Add support for Lua 5.5
+    - Implement loader for Fennel
+    - Add split output support; optimize display format to junit
+    - Improve junit report formatting to avoid truncation
+  - Bug Fixes
+    - Restore context state on its own terms, not the terms of
+      the current env
+    - Hack around cliargs quirk to handle &quot;help&quot; flag correctly
+    - Unpin cliargs dependency
+- Update to 2.2.0:
+  - Features
+    - Add Korean localization
+    - Add --exclude-name-file and --log-success options
+    - (When combined can automate re-running only failed tests)
+    - Add --name option to easily run single tests
+  - Bug Fixes
+    - Remove unused luafilesystem dependency
+    - Correct installation and example documentation
+    - Use escape sequences to output UTF-8 characters in more
+      environments
+    - Output more standard tracing notation in gtest handler
+    - Fix casting to string before encoding errors in JSON
+    - Correct TAP handler to not error on no test files
+- Update to 2.1.2:
+  - Bug Fixes</comment>
+    <requestid>1335566</requestid>
+  </revision>
 </revisionlist>

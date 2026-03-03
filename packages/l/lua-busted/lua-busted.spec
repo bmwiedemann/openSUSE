@@ -1,7 +1,7 @@
 #
 # spec file for package lua-busted
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,25 +19,24 @@
 
 %define flavor @BUILD_FLAVOR@
 # Remove file dependency on the interpreter
-%global __requires_exclude ^/usr/bin/lua(5\\.[1-9]|jit)?$
+%alternatives_requires_exclude
 %define mod_name busted
-%if "%{flavor}" == "luajit"
-%define lua_value  52
-%else
-%define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
-%endif
-%define upversion 2.0.0
-Version:        2.0.0
+Version:        2.3.0
 Release:        0
 Summary:        Unit testing framework with a focus on being easy to use
 License:        MIT
 Group:          Development/Languages/Other
 URL:            https://lunarmodules.github.io/busted/
-Source:         https://github.com/lunarmodules/%{mod_name}/archive/v%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
+Source:         https://github.com/lunarmodules/%{mod_name}/archive/v%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM build-tests.patch gh#lunarmodules/busted#768 mcepl@suse.com
+# be more relaxed about the testing the pathnames of the location of fixtures
+Patch0:         build-tests.patch
 BuildRequires:  %{flavor}-cliargs >= 3.0-1
 BuildRequires:  %{flavor}-devel
 # For testing
 # BuildRequires:  %%{flavor}-copas
+# Required while lua51 is fully removed from Tumbleweed
+#!BuildIgnore: lua51
 BuildRequires:  %{flavor}-lua-ev
 BuildRequires:  %{flavor}-luafilesystem
 BuildRequires:  %{flavor}-luassert >= 1.7.8-0
@@ -47,6 +46,7 @@ BuildRequires:  %{flavor}-mediator_lua >= 1.1-0
 BuildRequires:  %{flavor}-moonscript
 BuildRequires:  %{flavor}-penlight >= 1.3.2-2
 BuildRequires:  %{flavor}-say >= 1.3-0
+BuildRequires:  %{flavor}-luacov
 BuildRequires:  curl
 BuildRequires:  lua-macros
 BuildRequires:  openssl
@@ -96,11 +96,11 @@ register phrases for internationaliation with custom or built-in
 language packs.
 
 %prep
-%setup -q -n %{mod_name}-%{version}
+%autosetup -p1 -n %{mod_name}-%{version}
 sed -i 's|^#!%{_bindir}/env lua|#!%{_bindir}/lua|' bin/busted
 
 %build
-/bin/true
+:
 
 %install
 install -v -m 0755 -p -d %{buildroot}%{lua_noarchdir}
@@ -120,6 +120,7 @@ install -v -D -m 0644 -p completions/zsh/_busted \
     %{buildroot}%{_datadir}/zsh/vendor-completions/_busted-%{lua_version}
 touch %{buildroot}%{_sysconfdir}/alternatives/busted.bash
 touch %{buildroot}%{_sysconfdir}/alternatives/busted.zsh
+touch %{buildroot}%{_sysconfdir}/alternatives/_busted
 ln -sf %{_sysconfdir}/alternatives/busted.bash \
     %{buildroot}%{_datadir}/bash-completion/completions/busted
 ln -sf %{_sysconfdir}/alternatives/busted.zsh \
@@ -147,6 +148,7 @@ bin/busted -v spec
 %ghost %{_sysconfdir}/alternatives/busted
 %ghost %{_sysconfdir}/alternatives/busted.bash
 %ghost %{_sysconfdir}/alternatives/busted.zsh
+%ghost %{_sysconfdir}/alternatives/_busted
 %{_bindir}/busted
 %{_bindir}/busted-%{lua_version}
 %{lua_noarchdir}/busted
