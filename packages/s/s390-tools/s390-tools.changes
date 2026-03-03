@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Mar  2 11:48:50 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Refactored the spec file for transactional and immutable OS
+  * Modernized the .spec file for transactional and immutable OS environments.
+  * Removed legacy suse_version and sle_version conditionals, standardizing on UsrMerge paths.
+  * Replaced manual %pre group creations with systemd-sysusers configuration for ts-shell, zkeyadm, and cpacfstats.
+  * Replaced hardcoded /var/log directory management with systemd-tmpfiles configuration.
+  * Removed obsolete systemctl daemon-reload calls and consolidate standard %service_* systemd macros.
+  * Dropped brittle dynamic file list generation (find/grep) in favor of explicit and deterministic %files declarations.
+  * Resolved "File listed twice" conflicts between the main package and chreipl-fcp-mpath subpackage.
+  * Added missing BuildRequires for systemd-rpm-macros and sysuser-tools.
+  * Fixed unpackaged files errors for mdevctl callouts, shell completions, and root /lib helpers.
+  * Changed BuildArch to noarch for the chreipl-fcp-mpath subpackage.
+- Updated the pkey.conf file (bsc#1258866, jsc#PED-15538), it contain the following drivers:
+  * uvdevice
+  * pkey
+  * pkey_cca
+  * pkey_ep11
+  * pkey_pckmo
+  * pkey_uv
+  * paes_s390
+  * phmac_s390
+  * zcrypt
+  * zcrypt_cex4 
+- Added files (renamed from *.opensuse)
+  * 59-graf.rules
+  * dasd_configure
+  * dasd_reload
+  * detach_disks.sh
+  * iucv_configure
+  * killcdl
+  * mkdump.pl
+  * README.SUSE
+  * virtsetup.sh
+  * vmlogrdr.service
+- Removed obolete files
+  * 59-graf.rules.opensuse
+  * 59-graf.rules.suse
+  * dasd_configure.opensuse
+  * dasd_configure.suse
+  * dasd_reload.opensuse
+  * dasd_reload.suse
+  * detach_disks.sh.opensuse
+  * detach_disks.sh.suse
+  * iucv_configure.opensuse
+  * iucv_configure.suse
+  * killcdl.opensuse
+  * killcdl.suse
+  * mkdump.pl.opensuse
+  * mkdump.pl.suse
+  * README.SUSE.opensuse
+  * README.SUSE.suse
+  * virtsetup.sh.opensuse
+  * virtsetup.sh.suse
+  * vmlogrdr.service.opensuse
+  * vmlogrdr.service.suse
+- Re-vendor-ed vendor.tar.zst
+
+-------------------------------------------------------------------
 Sat Feb 21 09:21:31 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file, added:

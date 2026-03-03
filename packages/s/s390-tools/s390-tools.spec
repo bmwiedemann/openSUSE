@@ -22,16 +22,6 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150300
-# systemd-rpm-macros is wrong in 15.3 and below
-%define _modprobedir /lib/modprobe.d
-%endif
-%global modprobe_d_files 90-s390-tools.conf
-%if 0%{?suse_version} >= 1550
-%define _mysbindir %{_sbindir}
-%else
-%define _mysbindir /sbin
-%endif
 
 Name:           s390-tools
 Version:        2.41.0
@@ -49,31 +39,19 @@ Source5:        xpram
 Source6:        sysconfig.xpram
 Source7:        appldata
 Source8:        sysconfig.appldata
+#
 Source10:       dasdro
-%if 0%{?suse_version} >= 1550
-Source11:       dasd_reload.opensuse
-Source12:       mkdump.pl.opensuse
-%else
-Source11:       dasd_reload.suse
-Source12:       mkdump.pl.suse
-%endif
+Source11:       dasd_reload
+Source12:       mkdump.pl
 Source13:       sysconfig.osasnmpd
 Source14:       zfcp_san_disc
 Source15:       mkdump.8
 Source18:       zpxe.rexx
 Source19:       rules.xpram
 Source20:       rules.hw_random
-%if 0%{?suse_version} >= 1550
-Source21:       59-graf.rules.opensuse
-%else
-Source21:       59-graf.rules.suse
-%endif
+Source21:       59-graf.rules
 Source22:       s390-tools-zdsfs.caution.txt
-%if 0%{?suse_version} >= 1550
-Source23:       README.SUSE.opensuse
-%else
-Source23:       README.SUSE.suse
-%endif
+Source23:       README.SUSE
 Source24:       cputype
 Source25:       cputype.8
 Source26:       cio_ignore.service
@@ -81,43 +59,24 @@ Source27:       setup_cio_ignore.sh
 Source28:       59-prng.rules
 Source29:       59-zfcp-compat.rules
 Source30:       90-s390-tools.conf
-%if 0%{?suse_version} >= 1550
-Source31:       detach_disks.sh.opensuse
-Source32:       killcdl.opensuse
-%else
-Source31:       detach_disks.sh.suse
-Source32:       killcdl.suse
-%endif
+Source31:       detach_disks.sh
+Source32:       killcdl
 Source33:       lgr_check
 Source34:       sysconfig.virtsetup
 Source35:       virtsetup.service
-%if 0%{?suse_version} >= 1550
-Source36:       virtsetup.sh.opensuse
-%else
-Source36:       virtsetup.sh.suse
-%endif
+Source36:       virtsetup.sh
 Source37:       appldata.service
 Source38:       hsnc.service
-%if 0%{?suse_version} >= 1550
-Source39:       vmlogrdr.service.opensuse
-%else
-Source39:       vmlogrdr.service.suse
-%endif
+Source39:       vmlogrdr.service
 Source40:       xpram.service
 Source41:       pkey.conf
 
-### Obsolete scripts and man pages to be removed once changes in other tools are made
-### That's been delayed to at least SLES12 SP1, but I'm leaving the comments here.
+### SUSE programs, scripts and man pages to be removed once changes in other tools are made
 Source86:       read_values.c
 Source87:       read_values.8
 Source88:       ctc_configure
-%if 0%{?suse_version} >= 1550
-Source89:       dasd_configure.opensuse
-Source90:       iucv_configure.opensuse
-%else
-Source89:       dasd_configure.suse
-Source90:       iucv_configure.suse
-%endif
+Source89:       dasd_configure
+Source90:       iucv_configure
 Source91:       qeth_configure
 Source92:       zfcp_disk_configure
 Source93:       zfcp_host_configure
@@ -150,7 +109,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gettext-tools
 BuildRequires:  glib2-devel
 BuildRequires:  glibc-devel-static
-BuildRequires:  libcryptsetup-devel > 2.0.3
+BuildRequires:  libcryptsetup-devel >= 2.8.2
 BuildRequires:  libjson-c-devel
 BuildRequires:  libnl3-devel
 BuildRequires:  libxml2-devel
@@ -160,8 +119,11 @@ BuildRequires:  net-snmp-devel
 BuildRequires:  openssl-devel >= 1.1.1l
 BuildRequires:  pesign-obs-integration
 BuildRequires:  systemd-devel
+BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  tcpd-devel
 BuildRequires:  zlib-devel-static
+%{?sysusers_requires}
 ### s390x
 %ifarch s390x
 BuildRequires:  kernel-zfcpdump
@@ -182,21 +144,21 @@ Requires:       coreutils
 Requires:       procps
 Requires:       util-linux
 %ifarch s390x
-Requires:       gawk
 BuildRequires:  libica-devel-static
+Requires:       gawk
 Requires:       perl-base
 Requires:       rsync
 Requires:       s390-tools-genprotimg-data
 Requires:       tar
+Provides:       group(cpacfstats)
+Provides:       group(ts-shell)
+Provides:       group(zkeyadm)
 %endif
 Requires(post): %fillup_prereq
 Requires(post): permissions
 Requires(pre):  shadow
 Recommends:     blktrace
 Provides:       s390utils:/sbin/dasdfmt
-Provides:       group(cpacfstats)
-Provides:       group(ts-shell)
-Provides:       group(zkeyadm)
 %ifarch x86_64
 Recommends:     s390-tools-genprotimg-data
 %endif
@@ -209,7 +171,7 @@ and exploit many of the various capabilities of the hardware or z/VM. For exampl
 
  - s390x
 dasdfmt  - low-level format tool for ECKD DASD
-fdasd	 - partitions ECKD DASDs with z/OS compatible disk layout
+fdasd    - partitions ECKD DASDs with z/OS compatible disk layout
 zipl     - boot loader and dump DASD initializer
 zgetdump - tool to get linux system dumps from DASD
 
@@ -218,9 +180,7 @@ pvimg      - create a protected virtualization image (genprotimg)
 pvattest   - create, perform, and verify protected virtualization attestation measurements
 pvsecret   - manage secrets for IBM Secure Execution guests.
 
-Warning: There is an auxiliary data package - s390-tools-genprotimg-data.
-         To install s390-tools properly, please use:
-         'sudo zypper install s390-tools s390-tools-genprotimg-data'
+Note: There is an auxiliary data package - s390-tools-genprotimg-data.
 
 %package -n osasnmpd
 Summary:        OSA-Express SNMP subagent
@@ -310,6 +270,7 @@ shared library for the IBM Z KMIP client library.
 Summary:        Use multipath information for re-IPL path failover
 License:        MIT
 Group:          System/Boot
+BuildArch:      noarch
 BuildRequires:  bash
 BuildRequires:  coreutils
 ## Required for build+install with ENABLE_DOC=1
@@ -373,9 +334,21 @@ export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
 ###     all
 gcc -static -o read_values ${OPT_FLAGS} %{SOURCE86} -lqc
 
+# Generate sysusers configuration and pre-install scriptlet
+cat > s390-tools-sysusers.conf <<EOF
+# Type Name ID GID Home Shell
+g ts-shell - - -
+g zkeyadm - - -
+g cpacfstats - - -
+EOF
+
+# This macro generates the %%pre scriptlet automatically
+%sysusers_generate_pre s390-tools-sysusers.conf s390-tools s390-tools.conf
+
 %install
 mkdir -p %{buildroot}/boot/zipl
 mkdir -p %{buildroot}%{_sysconfdir}/zkey/repository
+
 %make_install \
      ARCH=s390x \
      ZFCPDUMP_DIR=%{_prefix}/lib/s390-tools/zfcpdump \
@@ -385,130 +358,99 @@ mkdir -p %{buildroot}%{_sysconfdir}/zkey/repository
      HAVE_CARGO=1 \
      HAVE_DRACUT=1 \
      HAVE_LIBNL3=1
-###     all
 
-# The make install command puts things in /etc/sysconfig and not the
-# fillup-templates directory. Let's try moving them where they belong
+# Move sysconfig files to the fillup-templates directory
 mkdir -p %{buildroot}%{_fillupdir}
 pushd %{buildroot}%{_sysconfdir}/sysconfig/
-for sysconffile in *
-  do mv -vi $sysconffile %{buildroot}%{_fillupdir}/sysconfig.$sysconffile
-  done
+for sysconffile in *; do
+    mv -vi $sysconffile %{buildroot}%{_fillupdir}/sysconfig.$sysconffile
+done
 popd
 
+install -D -m 0644 s390-tools-sysusers.conf %{buildroot}%{_sysusersdir}/s390-tools.conf
+
+# Install utilities and man pages
 install -m 755 read_values %{buildroot}/%{_bindir}/
-install -m644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE87}
+install -m 644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE87}
 
-# The "usrmerge" has happened in openSUSE:Factory, but not yet in SLES.
-# Make sure we look for the zfcpdump kernel image in the right place.
-%if 0%{?suse_version} >= 1550
+# Standardized zfcpdump kernel image path (UsrMerge baseline)
 install -D -m600 %{_prefix}/lib/modules/*-zfcpdump/image %{buildroot}%{_prefix}/lib/s390-tools/zfcpdump/zfcpdump-image
-%else
-install -D -m600 /boot/image-*-zfcpdump %{buildroot}%{_prefix}/lib/s390-tools/zfcpdump/zfcpdump-image
-%endif
 
-install -D -m644 etc/cpuplugd.conf %{buildroot}%{_sysconfdir}/cpuplugd.conf
-install -d -m755 %{buildroot}/usr/lib/udev/rules.d
-install -m644 etc/udev/rules.d/*.rules %{buildroot}/usr/lib/udev/rules.d/
+# System configs and udev rules
+install -D -m 644 etc/cpuplugd.conf %{buildroot}%{_sysconfdir}/cpuplugd.conf
+install -d -m 755 %{buildroot}%{_prefix}/lib/udev/rules.d
+install -m 644 etc/udev/rules.d/*.rules %{buildroot}%{_prefix}/lib/udev/rules.d/
 mv iucvterm/doc/ts-shell/iucvconn_on_login %{buildroot}%{_bindir}/iucvconn_on_login
-install -D -m644 %{SOURCE26} %{buildroot}/%{_unitdir}/cio_ignore.service
-install -D -m755 %{SOURCE27} %{buildroot}%{_prefix}/lib/systemd/scripts/setup_cio_ignore.sh
-install -D -m755 %{SOURCE31} %{buildroot}%{_prefix}/lib/systemd/scripts/detach_disks.sh
-install -D -m644 %{SOURCE35} %{buildroot}/%{_unitdir}/virtsetup.service
-install -D -m755 %{SOURCE36} %{buildroot}%{_prefix}/lib/systemd/scripts/virtsetup.sh
-install -D -m644 %{SOURCE37} %{buildroot}/%{_unitdir}/appldata.service
-install -D -m644 %{SOURCE38} %{buildroot}/%{_unitdir}/hsnc.service
-install -D -m644 %{SOURCE39} %{buildroot}/%{_unitdir}/vmlogrdr.service
-install -D -m644 %{SOURCE40} %{buildroot}/%{_unitdir}/xpram.service
-install -D -m644 %{SOURCE41} %{buildroot}%{_prefix}/lib/modules-load.d/pkey.conf
 
+# Install systemd services and scripts
+install -D -m 644 %{SOURCE26} %{buildroot}/%{_unitdir}/cio_ignore.service
+install -D -m 755 %{SOURCE27} %{buildroot}%{_prefix}/lib/systemd/scripts/setup_cio_ignore.sh
+install -D -m 755 %{SOURCE31} %{buildroot}%{_prefix}/lib/systemd/scripts/detach_disks.sh
+install -D -m 644 %{SOURCE35} %{buildroot}/%{_unitdir}/virtsetup.service
+install -D -m 755 %{SOURCE36} %{buildroot}%{_prefix}/lib/systemd/scripts/virtsetup.sh
+install -D -m 644 %{SOURCE37} %{buildroot}/%{_unitdir}/appldata.service
+install -D -m 644 %{SOURCE38} %{buildroot}/%{_unitdir}/hsnc.service
+install -D -m 644 %{SOURCE39} %{buildroot}/%{_unitdir}/vmlogrdr.service
+install -D -m 644 %{SOURCE40} %{buildroot}/%{_unitdir}/xpram.service
+install -D -m 644 %{SOURCE41} %{buildroot}%{_prefix}/lib/modules-load.d/pkey.conf
+
+# Legacy source definitions mapped to modern unified files
 cp %{SOURCE18} zpxe.rexx
 cp %{SOURCE2} zipl.conf.sample
-cp  %{SOURCE23} README.SUSE
+cp %{SOURCE23} README.SUSE
 
 cd %{buildroot}
-install -D -m755 %{SOURCE3} %{buildroot}%{_prefix}/lib/systemd/scripts/hsnc
-install -D -m644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.hsnc
-install -D -m755 %{SOURCE5} %{buildroot}%{_prefix}/lib/systemd/scripts/xpram
-install -D -m644 %{SOURCE6} %{buildroot}%{_fillupdir}/sysconfig.xpram
-install -D -m755 %{SOURCE7} %{buildroot}%{_prefix}/lib/systemd/scripts/appldata
-install -D -m644 %{SOURCE8} %{buildroot}%{_fillupdir}/sysconfig.appldata
-install -D -m755 %{SOURCE10} %{buildroot}%{_mysbindir}/dasdro
-install -D -m755 %{SOURCE11} %{buildroot}%{_mysbindir}/dasd_reload
-install -D -m755 %{SOURCE12} %{buildroot}%{_mysbindir}/mkdump
-install -D -m644 %{SOURCE13} %{buildroot}%{_fillupdir}/sysconfig.osasnmpd
-install -D -m755 %{SOURCE14} %{buildroot}%{_mysbindir}/zfcp_san_disc
-install -D -m644 %{SOURCE15} %{buildroot}/%{_mandir}/man8
-install -D -m644 %{SOURCE19} %{buildroot}%{_prefix}/lib/udev/rules.d/52-xpram.rules
-install -D -m644 %{SOURCE20} %{buildroot}%{_prefix}/lib/udev/rules.d/52-hw_random.rules
-install -D -m644 %{SOURCE21} %{buildroot}%{_prefix}/lib/udev/rules.d/59-graf.rules
-install -D -m644 %{SOURCE28} %{buildroot}%{_prefix}/lib/udev/rules.d/59-prng.rules
-install -D -m644 %{SOURCE29} %{buildroot}%{_prefix}/lib/udev/rules.d/59-zfcp-compat.rules
-install -D -m644 %{SOURCE30} %{buildroot}%{_modprobedir}/90-s390-tools.conf
-install -D -m755 %{SOURCE32} %{buildroot}%{_mysbindir}/killcdl
-install -D -m755 %{SOURCE33} %{buildroot}%{_mysbindir}/lgr_check
-install -D -m644 %{SOURCE34} %{buildroot}%{_fillupdir}/sysconfig.virtsetup
+install -D -m 755 %{SOURCE3} %{buildroot}%{_prefix}/lib/systemd/scripts/hsnc
+install -D -m 644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.hsnc
+install -D -m 755 %{SOURCE5} %{buildroot}%{_prefix}/lib/systemd/scripts/xpram
+install -D -m 644 %{SOURCE6} %{buildroot}%{_fillupdir}/sysconfig.xpram
+install -D -m 755 %{SOURCE7} %{buildroot}%{_prefix}/lib/systemd/scripts/appldata
+install -D -m 644 %{SOURCE8} %{buildroot}%{_fillupdir}/sysconfig.appldata
+install -D -m 755 %{SOURCE10} %{buildroot}%{_sbindir}/dasdro
+install -D -m 755 %{SOURCE11} %{buildroot}%{_sbindir}/dasd_reload
+install -D -m 755 %{SOURCE12} %{buildroot}%{_sbindir}/mkdump
+install -D -m 644 %{SOURCE13} %{buildroot}%{_fillupdir}/sysconfig.osasnmpd
+install -D -m 755 %{SOURCE14} %{buildroot}%{_sbindir}/zfcp_san_disc
+install -D -m 644 %{SOURCE15} %{buildroot}/%{_mandir}/man8
+install -D -m 644 %{SOURCE19} %{buildroot}%{_prefix}/lib/udev/rules.d/52-xpram.rules
+install -D -m 644 %{SOURCE20} %{buildroot}%{_prefix}/lib/udev/rules.d/52-hw_random.rules
+install -D -m 644 %{SOURCE21} %{buildroot}%{_prefix}/lib/udev/rules.d/59-graf.rules
+install -D -m 644 %{SOURCE28} %{buildroot}%{_prefix}/lib/udev/rules.d/59-prng.rules
+install -D -m 644 %{SOURCE29} %{buildroot}%{_prefix}/lib/udev/rules.d/59-zfcp-compat.rules
+install -D -m 644 %{SOURCE30} %{buildroot}%{_modprobedir}/90-s390-tools.conf
+install -D -m 755 %{SOURCE32} %{buildroot}%{_sbindir}/killcdl
+install -D -m 755 %{SOURCE33} %{buildroot}%{_sbindir}/lgr_check
+install -D -m 644 %{SOURCE34} %{buildroot}%{_fillupdir}/sysconfig.virtsetup
 
-if [ ! -d %{_mysbindir} ]; then
-    rm -f %{_mysbindir}
-    mkdir -p %{_mysbindir}
-fi
-(cd %{buildroot}%{_sbindir}; ln -s service rcappldata)
-(cd %{buildroot}%{_sbindir}; ln -s service rchsnc)
-(cd %{buildroot}%{_sbindir}; ln -s service rcvmlogrdr)
-(cd %{buildroot}%{_sbindir}; ln -s service rcxpram)
-(cd %{buildroot}%{_sbindir}; ln -s service rccio_ignore)
-(cd %{buildroot}%{_sbindir}; ln -s service rccpacfstatsd)
-(cd %{buildroot}%{_sbindir}; ln -s service rccpi)
-(cd %{buildroot}%{_sbindir}; ln -s service rccpuplugd)
-(cd %{buildroot}%{_sbindir}; ln -s service rcdumpconf)
-(cd %{buildroot}%{_sbindir}; ln -s service rcmon_fsstatd)
-(cd %{buildroot}%{_sbindir}; ln -s service rcmon_procd)
-(cd %{buildroot}%{_sbindir}; ln -s service rcvirtsetup)
-(cd %{buildroot}%{_sbindir}; ln -s service rcopticsmon)
+# Create rc symlinks in _sbindir
+for svc in appldata hsnc vmlogrdr xpram cio_ignore cpacfstatsd cpi cpuplugd dumpconf mon_fsstatd mon_procd virtsetup opticsmon; do
+    ln -s service %{buildroot}%{_sbindir}/rc${svc}
+done
 
-if [ ! -d %{_bindir} ]; then
-    rm -f %{_bindir}
-    mkdir -p %{_bindir}
-fi
-install -D -m755 %{SOURCE24} %{buildroot}%{_bindir}/cputype
+install -D -m 755 %{SOURCE24} %{buildroot}%{_bindir}/cputype
+install -m 644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE25}
 
-install -m644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE25}
-
-# If building for openSUSE, move all the binaries installed via
-# the IBM-provided Makefile from /sbin to /usr/sbin/ to
-# align with the openSUSE "usrmerge" project
-%if 0%{?suse_version} >= 1550
-mv -vi %{buildroot}/sbin/* %{buildroot}%{_mysbindir}/
-%else
-cp -r %{buildroot}/sbin/opticsmon %{buildroot}/usr/sbin/
-%endif
+mkdir -p %{buildroot}%{_tmpfilesdir}
+cat > %{buildroot}%{_tmpfilesdir}/%{name}.conf <<EOF
+d /var/log/ts-shell 2770 root ts-shell - -
+EOF
 
 ### Obsolete scripts and man pages to be removed once changes in other tools are made
-install -m755 -t %{buildroot}%{_mysbindir}/ %{SOURCE88} %{SOURCE91} %{SOURCE92} %{SOURCE93}
-install %{SOURCE89} %{buildroot}%{_mysbindir}/dasd_configure
-install %{SOURCE90} %{buildroot}%{_mysbindir}/iucv_configure
-install -m644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE94} %{SOURCE95} %{SOURCE96} %{SOURCE97} %{SOURCE98} %{SOURCE99}
-###
+install -m 755 -t %{buildroot}%{_sbindir}/ %{SOURCE88} %{SOURCE91} %{SOURCE92} %{SOURCE93}
+install %{SOURCE89} %{buildroot}%{_sbindir}/dasd_configure
+install %{SOURCE90} %{buildroot}%{_sbindir}/iucv_configure
+install -m 644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE94} %{SOURCE95} %{SOURCE96} %{SOURCE97} %{SOURCE98} %{SOURCE99}
 
 ### lsmem/chmem have been added to util-linux
-rm -fv %{buildroot}%{_mandir}/man8/lsmem.8*
-rm -fv %{buildroot}%{_mandir}/man8/chmem.8*
-rm -fv %{buildroot}%{_mysbindir}/lsmem
-rm -fv %{buildroot}%{_mysbindir}/chmem
-
-###
-find . ! -type d |
-    sed 's/^.//;\-/man/-s/^.*$/%doc &.gz/' > %{_builddir}/%{name}-filelist
-grep -v -E 'osasnmp|etc/ziplenv|\.conf$|ekmfweb.so|ekmfweb.h|kmipclient|kmip/profiles/.*profile$|chreipl-fcp-mpath' %{_builddir}/%{name}-filelist >%{_builddir}/%{name}.list
-grep    osasnmp[^-] %{_builddir}/%{name}-filelist >%{_builddir}/%{name}.osasnmp
+rm -fv %{buildroot}%{_mandir}/man8/lsmem.8* %{buildroot}%{_mandir}/man8/chmem.8*
+rm -fv %{buildroot}%{_sbindir}/lsmem %{buildroot}%{_sbindir}/chmem
 
 touch boot/zipl/active_devices.txt
-mkdir -p ./%{_libexecdir}/net-snmp/agents
-cd	 ./%{_libexecdir}/net-snmp/agents
-cat <<EOT >osasnmpd
+
+mkdir -p %{buildroot}%{_libexecdir}/net-snmp/agents
+cat <<EOT > %{buildroot}%{_libexecdir}/net-snmp/agents/osasnmpd
 #!/bin/sh
-PIDFILE=%{_localstatedir}/run/osasnmpd.pid
+PIDFILE=/run/osasnmpd.pid
 function cleanup
 {
         rm -f \$PIDFILE
@@ -517,66 +459,23 @@ function cleanup
 . %{_sysconfdir}/sysconfig/osasnmpd
 trap cleanup 0
 echo \$\$ >\$PIDFILE
-%{_mysbindir}/osasnmpd -f -P %{_localstatedir}/run/osasnmpd.real.pid \$OSASNMPD_PARAMETERS "\$@"
+%{_sbindir}/osasnmpd -f -P %{_localstatedir}/run/osasnmpd.real.pid \$OSASNMPD_PARAMETERS "\$@"
 EOT
-chmod 755 osasnmpd
+chmod 755 %{buildroot}%{_libexecdir}/net-snmp/agents/osasnmpd
 
 export BRP_PESIGN_FILES='/lib/s390-tools/stage3.bin'
 
-%verifyscript
-%verify_permissions -e %{_localstatedir}/log/ts-shell/
-
-%pre
-# check for ts-shell group or create it
-getent group ts-shell >/dev/null 2>&1 || groupadd -r ts-shell
-# check for zkeyadm group or create it
-getent group zkeyadm >/dev/null 2>&1 || groupadd -r zkeyadm
-# check for cpacfstats group or create it
-getent group cpacfstats >/dev/null 2>&1 || groupadd -r cpacfstats
-%service_add_pre appldata.service
-%service_add_pre cio_ignore.service
-%service_add_pre cpacfstatsd.service
-%service_add_pre cpi.service
-%service_add_pre cpuplugd.service
-%service_add_pre dumpconf.service
-%service_add_pre hsnc.service
-%service_add_pre mon_fsstatd.service
-%service_add_pre mon_procd.service
-%service_add_pre opticsmon.service
-%service_add_pre virtsetup.service
-%service_add_pre vmlogrdr.service
-%service_add_pre xpram.service
-# Avoid restoring outdated stuff in posttrans
-for _f in %{?modprobe_d_files}; do
-    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
-        mv -f "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}.rpmsave.old" || :
-done
+%pre -f s390-tools.pre
+# Consolidated service addition
+%service_add_pre appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service virtsetup.service vmlogrdr.service xpram.service
 
 %post
-read INITPGM < /proc/1/comm
-if [ "${INITPGM}" = "systemd" ]; then
-  echo "Running systemctl daemon-reload."
-  systemctl daemon-reload
-fi
+# Consolidated service addition
+%service_add_post appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service virtsetup.service vmlogrdr.service xpram.service
 
-%set_permissions %{_localstatedir}/log/ts-shell/
+# Apply tmpfiles setup for /var/log permissions
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 
-# Create symbolic links to the scripts from setup and boot directories
-%service_add_post appldata.service
-%service_add_post cio_ignore.service
-%service_add_post cpacfstatsd.service
-%service_add_post cpi.service
-%service_add_post cpuplugd.service
-%service_add_post dumpconf.service
-%service_add_post hsnc.service
-%service_add_post mon_fsstatd.service
-%service_add_post mon_procd.service
-%service_add_post opticsmon.service
-%service_add_post virtsetup.service
-%service_add_post vmlogrdr.service
-%service_add_post xpram.service
-
-# Create the initial versions of the sysconfig files:
 %{fillup_only -n appldata}
 %{fillup_only -n cpi}
 %{fillup_only -n dumpconf}
@@ -588,159 +487,143 @@ fi
 %{fillup_only -n virtsetup}
 %{fillup_only -n xpram}
 
-%triggerin -- kernel-default
-grep -q '^%{_bindir}/ts-shell$' %{_sysconfdir}/shells \
-	|| echo "%{_bindir}/ts-shell" >> %{_sysconfdir}/shells
-
 %{?regenerate_initrd_post}
 
 %post -n osasnmpd
 %{fillup_only -n osasnmpd}
 
-%post -n libekmfweb1
-ldconfig
-
-%post -n libkmipclient1
-ldconfig
+%post -n libekmfweb1 -p /sbin/ldconfig
+%post -n libkmipclient1 -p /sbin/ldconfig
 
 %post chreipl-fcp-mpath
 %udev_rules_update
 
 %preun
-%service_del_preun appldata.service
-%service_del_preun cio_ignore.service
-%service_del_preun cpacfstatsd.service
-%service_del_preun cpi.service
-%service_del_preun cpuplugd.service
-%service_del_preun dumpconf.service
-%service_del_preun hsnc.service
-%service_del_preun mon_fsstatd.service
-%service_del_preun mon_procd.service
-%service_del_preun opticsmon.service
-%service_del_preun virtsetup.service
-%service_del_preun vmlogrdr.service
-%service_del_preun xpram.service
-
-%postun
-%service_del_postun appldata.service
-%service_del_postun cio_ignore.service
-%service_del_postun cpacfstatsd.service
-%service_del_postun cpi.service
-%service_del_postun cpuplugd.service
-%service_del_postun dumpconf.service
-%service_del_postun hsnc.service
-%service_del_postun mon_fsstatd.service
-%service_del_postun mon_procd.service
-%service_del_postun opticsmon.service
-%service_del_postun virtsetup.service
-%service_del_postun vmlogrdr.service
-%service_del_postun xpram.service
-
-%postun -n libekmfweb1
-ldconfig
-
-%postun -n libkmipclient1
-ldconfig
-
-# Even though SLES15+ is systemd based, the build service doesn't
-# run it, so we have to make sure we can safely issue the
-# systemctl command.
-read INITPGM < /proc/1/comm
-if [ "${INITPGM}" = "systemd" ]; then
-  echo "Running systemctl daemon-reload."
-  systemctl daemon-reload
-fi
-
-if [ ! -x /boot/zipl ]; then
-	echo "Attention, after uninstalling this package,"
-	echo "you will NOT be able to IPL from DASD anymore!!!"
-fi
-
-if test x$1 = x0; then
-	# remove ts-shell from /etc/shells
-	grep -v '^%{_bindir}/ts-shell$' %{_sysconfdir}/shells > %{_sysconfdir}/shells.ts-new
-	mv %{_sysconfdir}/shells.ts-new %{_sysconfdir}/shells
-	chmod 0644 %{_sysconfdir}/shells
-fi
-
-%{?regenerate_initrd_post}
-
-%posttrans
-# Migration of modprobe.conf files to _modprobedir
-for _f in %{?modprobe_d_files}; do
-    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
-        mv -fv "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}" || :
-done
-%{?regenerate_initrd_posttrans}
+%service_del_preun appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service virtsetup.service vmlogrdr.service xpram.service
 
 %preun -n osasnmpd
 %{stop_on_removal osasnmpd}
 
-%files -f %{_builddir}/%{name}.list
+%postun
+%service_del_postun appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service virtsetup.service vmlogrdr.service xpram.service
 
-%doc README.md
-%doc README.SUSE
+if [ ! -x /boot/zipl ]; then
+	echo "Attention: After uninstalling this package, you will NOT be able to IPL from DASD anymore!"
+fi
 
-%doc iucvterm/doc/ts-shell
-%doc zpxe.rexx
-%doc zipl.conf.sample
+%{?regenerate_initrd_post}
+
+%postun -n libekmfweb1 -p /sbin/ldconfig
+%postun -n libkmipclient1 -p /sbin/ldconfig
+
+%posttrans
+%{?regenerate_initrd_posttrans}
+
+%files
+# --- Documentation & Licenses ---
+%doc README.md README.SUSE iucvterm/doc/ts-shell zpxe.rexx zipl.conf.sample
+
+# --- System Configuration (/etc) ---
+%{_sysusersdir}/%{name}.conf
+%{_tmpfilesdir}/%{name}.conf
+%config(noreplace) %{_sysconfdir}/cpuplugd.conf
+%config(noreplace) %{_sysconfdir}/ziplenv
+%config(noreplace) /boot/zipl/active_devices.txt
+%dir %{_sysconfdir}/cmsfs-fuse
+%config(noreplace) %attr(0640,root,root) %{_sysconfdir}/cmsfs-fuse/filetypes.conf
 %dir %{_sysconfdir}/iucvterm
-%config %attr(0640,root,ts-shell) %{_sysconfdir}/iucvterm/ts-audit-systems.conf
-%config %attr(0640,root,ts-shell) %{_sysconfdir}/iucvterm/ts-authorization.conf
-%config %attr(0640,root,ts-shell) %{_sysconfdir}/iucvterm/ts-shell.conf
-%config %attr(0640,root,ts-shell) %{_sysconfdir}/iucvterm/unrestricted.conf
+%config(noreplace) %attr(0640,root,ts-shell) %{_sysconfdir}/iucvterm/*.conf
 %dir %attr(0770,root,zkeyadm) %{_sysconfdir}/zkey
 %dir %attr(0770,root,zkeyadm) %{_sysconfdir}/zkey/kmip
 %dir %attr(0770,root,zkeyadm) %{_sysconfdir}/zkey/kmip/profiles
 %dir %attr(0770,root,zkeyadm) %{_sysconfdir}/zkey/repository
-%config %{_sysconfdir}/zkey/kmip/profiles/*
-%config(noreplace) %{_sysconfdir}/ziplenv
-%dir %{_modprobedir}
-%{_modprobedir}/90-s390-tools.conf
-%config %{_sysconfdir}/cpuplugd.conf
-%config %{_sysconfdir}/zkey/kms-plugins.conf
-%config(noreplace) /boot/zipl/active_devices.txt
-%dir %attr(2770,root,ts-shell) %{_localstatedir}/log/ts-shell
-%dir %{_sysconfdir}/cmsfs-fuse
-%config %attr(0640,root,root) %{_sysconfdir}/cmsfs-fuse/filetypes.conf
+%config(noreplace) %{_sysconfdir}/zkey/kmip/profiles/*
+%config(noreplace) %{_sysconfdir}/zkey/kms-plugins.conf
+%dir %{_sysconfdir}/mdevctl.d
+%dir %{_sysconfdir}/mdevctl.d/scripts.d
+%dir %{_sysconfdir}/mdevctl.d/scripts.d/callouts
+%{_sysconfdir}/mdevctl.d/scripts.d/callouts/*
+%config(noreplace) %attr(0755,root,root) %{_sysconfdir}/mdevctl.d/scripts.d/callouts/ap-check.sh
+
+# --- Sysconfig / Fillup Templates ---
+%{_fillupdir}/sysconfig.*
+%exclude %{_fillupdir}/sysconfig.osasnmpd
+
+# --- Binaries & Scripts ---
+%{_bindir}/*
+%{_sbindir}/*
+/sbin/*
+
+# --- System Libraries, Units, & Shared Data ---
+%{_unitdir}/*
 %dir %{_prefix}/lib/mdevctl
 %dir %{_prefix}/lib/mdevctl/scripts.d
 %dir %{_prefix}/lib/mdevctl/scripts.d/callouts
+%{_prefix}/lib/mdevctl/scripts.d/callouts/*
 %dir %{_prefix}/lib/s390-tools
-%dir %{_prefix}/lib/s390-tools/zfcpdump
-%dir %{_prefix}/lib/udev/rules.d
+%{_prefix}/lib/s390-tools/*
 %dir %{_prefix}/lib/systemd/scripts
+%{_prefix}/lib/systemd/scripts/*
 %dir %{_datadir}/s390-tools
-%dir %{_datadir}/s390-tools/netboot
-%dir %{_prefix}/lib/dracut/modules.d/95zdev
-%dir %{_prefix}/lib/dracut/modules.d/95zdev-kdump
-%dir %{_prefix}/lib/dracut/modules.d/96zdev-live
-%dir %{_prefix}/lib/dracut/modules.d/99ngdump
-%{_prefix}/lib/dracut/dracut.conf.d/99-pkey.conf
-%dir /boot/zipl
+%{_datadir}/s390-tools/*
 %dir %{_libdir}/zkey
-%{_libdir}/zkey/zkey-ekmfweb.so
-%dir /lib/s390-tools/
-/lib/s390-tools/zipl.conf
+%{_libdir}/zkey/*.so
+/lib/s390-tools/*
+
+# --- Boot & Dracut ---
+%dir /boot/zipl
+%dir %{_prefix}/lib/dracut/modules.d/95zdev
+%{_prefix}/lib/dracut/modules.d/95zdev/*
+%dir %{_prefix}/lib/dracut/modules.d/95zdev-kdump
+%{_prefix}/lib/dracut/modules.d/95zdev-kdump/*
+%dir %{_prefix}/lib/dracut/modules.d/96zdev-live
+%{_prefix}/lib/dracut/modules.d/96zdev-live/*
+%dir %{_prefix}/lib/dracut/modules.d/99ngdump
+%{_prefix}/lib/dracut/modules.d/99ngdump/*
+%{_prefix}/lib/dracut/dracut.conf.d/99-pkey.conf
+
+# --- Kernel Modules & Udev ---
+%dir %{_modprobedir}
+%{_modprobedir}/90-s390-tools.conf
 %{_prefix}/lib/modules-load.d/pkey.conf
-%exclude %{_prefix}/lib/udev/rules.d/57-osasnmpd.rules
+%dir %{_prefix}/lib/udev/rules.d
+%{_prefix}/lib/udev/rules.d/*
+
+# --- Shell Completions ---
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/*
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/*
+
+# --- Man Pages ---
+%{_mandir}/man*/*
+
+# --- Exclusions (Files packaged in subpackages) ---
 %exclude %{_bindir}/zdsfs
 %exclude %{_bindir}/hmcdrvfs
 %exclude %{_sbindir}/lshmc
-%exclude %{_mandir}/man1/zdsfs.1.gz
-%exclude %{_mandir}/man1/hmcdrvfs.1.gz
-%exclude %{_mandir}/man8/lshmc.8.gz
-###
-%dir /etc/mdevctl.d/scripts.d/
-%dir /etc/mdevctl.d/scripts.d/callouts/
-###
+%exclude %{_sbindir}/osasnmpd
+%exclude %{_mandir}/man1/zdsfs.1*
+%exclude %{_mandir}/man1/hmcdrvfs.1*
+%exclude %{_mandir}/man7/chreipl-fcp-mpath.7*
+%exclude %{_mandir}/man8/lshmc.8*
+%exclude %{_mandir}/man8/osasnmpd.8*
+%exclude %{_prefix}/lib/udev/rules.d/57-osasnmpd.rules
 %exclude /lib/s390-tools/stage3.bin
 %exclude %{_datadir}/s390-tools/pvimg/stage3a.bin
 %exclude %{_datadir}/s390-tools/pvimg/stage3b_reloc.bin
-###
+%exclude %{_prefix}/lib/udev/rules.d/70-chreipl-fcp-mpath.rules
+%exclude /lib/s390-tools/chreipl_helper.device-mapper
+%exclude /lib/s390-tools/chreipl_helper.md
 
-%files -n osasnmpd -f %{_builddir}/%{name}.osasnmp
+%files -n osasnmpd
+%{_sbindir}/osasnmpd
 %{_libexecdir}/net-snmp/agents/osasnmpd
+%{_mandir}/man8/osasnmpd.8%{?ext_man}
+%{_prefix}/lib/udev/rules.d/57-osasnmpd.rules
+%{_fillupdir}/sysconfig.osasnmpd
 
 %files zdsfs
 %doc CAUTION
@@ -776,6 +659,8 @@ done
 %dir %{_prefix}/lib/chreipl-fcp-mpath/
 %{_prefix}/lib/chreipl-fcp-mpath/*
 %{_prefix}/lib/dracut/dracut.conf.d/70-chreipl-fcp-mpath.conf
+/lib/s390-tools/chreipl_helper.device-mapper
+/lib/s390-tools/chreipl_helper.md
 %{_prefix}/lib/udev/chreipl-fcp-mpath-is-ipl-tgt
 %{_prefix}/lib/udev/chreipl-fcp-mpath-is-ipl-vol
 %{_prefix}/lib/udev/chreipl-fcp-mpath-is-reipl-zfcp
@@ -793,8 +678,8 @@ done
 %{_datadir}/s390-tools/pvimg/stage3b_reloc.bin
 
 ### _endif
-### *** !s390x ************************************************************************* ###
-### _ifarch x86_64
+
+### *** !s390x (x86_64) *************************************************************** ###
 %else
 
 %prep
@@ -802,7 +687,7 @@ done
 
 %build
 export OPT_FLAGS="%{optflags}"
-export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
+export KERNELIMAGE_MAKEFLAGS="%{?_smp_mflags}"
 
 %make_build \
      DISTRELEASE=%{rbrelease} \
@@ -811,7 +696,6 @@ export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
      HAVE_DRACUT=1
 
 %install
-
 %make_install \
      DISTRELEASE=%{rbrelease} \
      SYSTEMDSYSTEMUNITDIR=%{_unitdir} \
@@ -820,20 +704,20 @@ export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
      HAVE_DRACUT=1
 
 %files
-%{_prefix}/bin/*
+# --- Binaries ---
+%{_bindir}/*
+
+# --- Shared Data ---
 %dir %{_datadir}/s390-tools
 %{_datadir}/s390-tools/pvimg/
 %{_datadir}/s390-tools/netboot/
-%{_datadir}/bash-completion/completions/genprotimg.bash
-%{_datadir}/bash-completion/completions/pvattest.bash
-%{_datadir}/bash-completion/completions/pvimg.bash
-%{_datadir}/bash-completion/completions/pvsecret.bash
-%{_datadir}/bash-completion/completions/pvverify.bash
-%{_datadir}/zsh/site-functions/_genprotimg
-%{_datadir}/zsh/site-functions/_pvattest
-%{_datadir}/zsh/site-functions/_pvimg
-%{_datadir}/zsh/site-functions/_pvsecret
-%{_datadir}/zsh/site-functions/_pvverify
+
+# --- Shell Completions ---
+# Using wildcards prevents the need to manually list every new completion file
+%{_datadir}/bash-completion/completions/*
+%{_datadir}/zsh/site-functions/*
+
+# --- Man Pages ---
 %{_mandir}/man1/*
 
 %endif
