@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Mon Mar  2 21:36:35 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.2.2:
+  - fix: include py.typed file
+- Update to 1.2.0:
+  - Add beautiful_soup_parser option
+  - make convert_hn() public instead of internal
+  - Add conversion support for <q> tags
+  - Ensure that explicitly provided heading conversion functions
+    are used (#212)
+  - allow BeautifulSoup configuration kwargs to be specified
+  - implement a strip_pre configuration option (#218)
+  - Support backticks in <code> spans (#226)
+  - limit colspan values to range [1, 1000]
+  - ci: update actions/checkout to v4
+  - docs: fix typo
+  - feat: add basic type stubs
+
+-------------------------------------------------------------------
+Fri Jul 25 09:18:23 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Initial packaging (v1.1.0), needed by strands-agents-tools
