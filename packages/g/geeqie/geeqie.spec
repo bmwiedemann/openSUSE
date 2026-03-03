@@ -1,7 +1,7 @@
 #
 # spec file for package geeqie
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           geeqie
-Version:        2.6.1
+Version:        2.7
 Release:        0
 Summary:        Lightweight Gtk+ based image viewer
 License:        GPL-2.0-or-later
@@ -83,14 +83,13 @@ rm %{buildroot}%{_docdir}/%{name}/COPYING
 %files
 %license COPYING
 %doc NEWS README.md
-%doc %{_docdir}/%{name}/html
 %{_bindir}/geeqie
 %{_datadir}/applications/org.geeqie.{Geeqie,cache-maintenance}.desktop
 %{_datadir}/bash-completion/completions/geeqie
 %{_datadir}/icons/hicolor/scalable/apps/geeqie.svg
 %{_datadir}/geeqie/
-%{_datadir}/pixmaps/geeqie.png
-%{_datadir}/metainfo/org.geeqie.Geeqie.appdata.xml
+%{_datadir}/icons/hicolor/scalable/apps/org.geeqie.Geeqie.svg
+%{_datadir}/metainfo/org.geeqie.Geeqie.metainfo.xml
 %{_prefix}/lib/geeqie/
 %{_mandir}/man1/geeqie.1%{?ext_man}
 
