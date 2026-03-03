@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 28 14:03:05 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Upgrade to 2.1.0.16:
+  - bugfix: fix truncation of decoded numbers outside lua_Integer's range (#116)
+- Upgrade to 2.1.0.15:
+  - gugfix: fixed Makefile.
+- Rewritten %check section
+
+-------------------------------------------------------------------
+Fri Jan 23 21:40:36 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Enable lua55 build.
+
+-------------------------------------------------------------------
 Fri Oct 24 14:47:18 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch off building lua51 build of the package.

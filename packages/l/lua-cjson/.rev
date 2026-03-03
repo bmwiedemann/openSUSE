@@ -62,4 +62,18 @@
 - Add luajit version to _multibuild</comment>
     <requestid>1315143</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>18353b6b74e1d5d6aae43700ae190bad</srcmd5>
+    <version>2.1.0.16</version>
+    <time>1772548227</time>
+    <user>anag_factory</user>
+    <comment>- Upgrade to 2.1.0.16:
+  - bugfix: fix truncation of decoded numbers outside lua_Integer's range (#116)
+- Upgrade to 2.1.0.15:
+  - gugfix: fixed Makefile.
+- Rewritten %check section
+
+- Enable lua55 build.</comment>
+    <requestid>1335532</requestid>
+  </revision>
 </revisionlist>

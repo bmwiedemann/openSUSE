@@ -18,12 +18,12 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name cjson
-Version:        2.1.0.14
+Version:        2.1.0.16
 Release:        0
 Summary:        Lua JSON Encoding/Decoding
 License:        MIT
 URL:            https://github.com/openresty/lua-cjson
-Source:         https://github.com/openresty/lua-cjson/archive/refs/tags/%{version}.tar.gz
+Source:         https://github.com/openresty/lua-%{mod_name}/archive/refs/tags/%{version}.tar.gz#/lua-%{mod_name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM test_environment.patch gh#mpx/lua-cjson#75 mcepl@suse.com
 # Make it possible for tests to be influenced by the variables
 Patch0:         test_environment.patch
@@ -34,6 +34,7 @@ BuildRequires:  %{flavor}-luarocks
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  perl
 %lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
@@ -59,10 +60,7 @@ export CFLAGS="%{optflags}"
     -DLUA_INCLUDE_DIR:PATH="%{lua_incdir}"
 find ..
 
-make %{?_make_output_sync} %{?_smp_mflags} \
-    CC="gcc" \
-    PREFIX="%{_prefix}" \
-    LUA_INCLUDE_DIR=%{lua_incdir}
+%cmake_build
 
 %install
 mkdir -p -m 755 \
@@ -73,9 +71,17 @@ install -m644 lua/cjson/util.lua %{buildroot}%{lua_noarchdir}/cjson/
 
 %check
 rm -rf build
-export CFLAGS="%{optflags}" PREFIX="%{_prefix}" SKIP_CMAKE=1 \
-    LUA_INCLUDE_DIR="%{lua_incdir}" LUA_CMODULE_DIR="%{lua_archdir}" LUA_MODULE_DIR="%{lua_noarchdir}"
-./runtests.sh
+export LUA_CPATH="%{buildroot}%{lua_archdir}/?.so;;"
+export LUA_PATH="%{buildroot}%{lua_noarchdir}/?.lua;%{buildroot}%{lua_noarchdir}/?/init.lua;;"
+# gh#openresty/lua-cjson#120
+export SKIP_TESTS="encode_keep_buffer"
+( cd tests
+perl ./genutf8.pl
+lua -e 'print("Testing Lua CJSON version " .. require("cjson")._VERSION)'
+# We have GNU/grep, so we don’t have to work around Solaris/grep limitations
+./test.lua 2>/dev/null | grep -Ev "$SKIP_TESTS" \
+    | grep -E -A 3 'FAIL|Summary' | grep -v 'PASS' | cut -c -150
+)
 
 %files
 %{lua_archdir}/cjson.so
