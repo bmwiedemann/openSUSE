@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-shell-extension-customize-ibus
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2022 Hollow Man
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %global uuid customize-ibus@hollowman.ml
 %global forgeurl https://github.com/openSUSE/Customize-IBus
 Name:           gnome-shell-extension-customize-ibus
-Version:        91
+Version:        93
 Release:        0
 Summary:        IBus customization extension for GNOME Shell
 License:        GPL-3.0-or-later
