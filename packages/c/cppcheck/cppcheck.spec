@@ -31,7 +31,7 @@
 %define pyexecutable python3
 %endif
 Name:           cppcheck
-Version:        2.19.0
+Version:        2.20.0
 Release:        0
 Summary:        A tool for static C/C++ code analysis
 License:        GPL-3.0-or-later
