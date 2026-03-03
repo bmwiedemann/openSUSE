@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 27 09:15:57 CET 2026 - Matej Cepl <mcepl@suse.com>
+
+- Don't fiddle with regexps, but use a macro
+  alternatives_requires_exclude.
+
+-------------------------------------------------------------------
 Thu Jan 22 15:20:04 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add luacheck-lua55.patch to make package buildable with Lua

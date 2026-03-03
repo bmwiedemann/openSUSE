@@ -37,4 +37,13 @@
   (gh#mpeterv/luacheck!238)</comment>
     <requestid>1328836</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>7716c4b71d05ca1980bc06cc16a4c268</srcmd5>
+    <version>1.1.0</version>
+    <time>1772548228</time>
+    <user>anag_factory</user>
+    <comment>- Don't fiddle with regexps, but use a macro
+  alternatives_requires_exclude.</comment>
+    <requestid>1335534</requestid>
+  </revision>
 </revisionlist>
