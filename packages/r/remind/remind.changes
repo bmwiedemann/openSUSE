@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar  3 08:12:37 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 06.02.05 - 2026-03-02
+
+- NEW FEATURE: rem2pdf: Add --avoid-overfull option.  This makes the
+  font size in a calendar box with many reminders smaller in an effort
+  to fit everything neatly into the box.
+
+- NEW FEATURE: rem2pdf: Add --entry-spacing option.  This lets you
+  adjust the spacing between entries in a calendar box.  It defaults
+  to one-half of the --border-size option.  NOTE: In previous
+  releases, --entry-spacing defaulted to the SAME size as
+  --border-size, so unless you supply an --entry-spacing value to set
+  it back, the PDF calendars produced by this version of rem2pdf will
+  be slightly more compact than previous versions.
+
+- DOCUMENTATION UPDATE: Clarify rules around use of Remind source code
+  for training AI models.
+
+- FIX: include/holidays/nz.rem: Fix spelling of "Auckland" and add
+  Matariki.  Fixes courtesy of Bart Joy.
+
+-------------------------------------------------------------------
 Mon Feb 16 09:23:07 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 06.02.04 - 2026-02-15
