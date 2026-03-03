@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar  3 09:24:07 UTC 2026 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 2.0.15
+  * Fixes
+    fix(gui): show restarting modal during upgrade restart (fixes #1248) by @steadytao in #10566
+    fix(gui): remove width limit for language select items by @EastSun5566 in #10531
+  * Other
+    chore(gui): add id and name to Stay logged in checkbox for password managers by @epifeny in #10558
+    chore(db): add ability to wait for programmatically started database maintenance, query last maintenance time by @pixelspark in #10565
+    chore(etc): add comprehensive sandboxing by @Valloric in #10421
+    chore: build with Go 1.26; use Go 1.25 features by @calmh in #10570
+  * Remove downstream patch "harden_syncthing@.service.patch" for hardening
+    because the upstream change "chore(etc): add comprehensive sandboxing" added
+    all options contained by that patch
+
+-------------------------------------------------------------------
 Tue Feb  3 09:44:17 UTC 2026 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 2.0.14

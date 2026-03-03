@@ -17,7 +17,7 @@
 
 
 Name:           syncthing
-Version:        2.0.14
+Version:        2.0.15
 Release:        0
 Summary:        Continuous File Synchronisation
 License:        MPL-2.0
@@ -29,7 +29,6 @@ Source:         https://github.com/%{name}/%{name}/releases/download/v%{version}
 Source2:        %{name}.keyring
 Source3:        %{name}-relaysrv-user.conf
 Patch0:         harden_strelaysrv.service.patch
-Patch1:         harden_syncthing@.service.patch
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  update-desktop-files
