@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Tue Mar  3 08:11:10 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 0.17.5:
+  New models
+   - Qwen3.5: the small Qwen 3.5 model series is now available in
+              0.8B, 2B, 4B and 9B parameter sizes.
+  What's Changed
+   - Fixed crash in Qwen 3.5 models when split over GPU & CPU
+   - Fixed issue where Qwen 3.5 models would repeat themselves due
+     to no presence penalty (note: you may have to redownload the
+     qwen3.5 models: ollama pull qwen3.5:35b for example)
+   - ollama run --verbose will now show peak memory usage when using
+     Ollama's MLX engine
+   - Fixed memory issues and crashes in MLX runner
+   - Fixed issue where Ollama would not be able to run models
+     imported from Qwen3.5 GGUF files
+
+-------------------------------------------------------------------
+Sat Feb 28 15:54:51 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Add fix-mlxrunner-tests.diff: disable compiling MLX tests
+- Update to version 0.17.4:
+  * New Models: Qwen 3.5, LFM 2
+  * Tool call indices will now be included in parallel tool calls
+- Update to version 0.17.3:
+  * Fixed issue where tool calls in the Qwen 3 and Qwen 3.5 model
+    families would not be parsed correctly if emitted during
+    thinking
+- Update to version 0.17.2:
+  * No notable changes
+- Update to version 0.17.1:
+  * Nemotron architecture support in Ollama's engine
+  * Improved LFM2 and LFM2.5 models in Ollama's engine
+- Update to version 0.17.0:
+  * OpenClaw can now be installed and configured automatically via
+    Ollama: ollama launch openclaw
+  * Improved tokenizer performance
+- Update to version 0.16.3:
+  * New ollama launch cline added for the Cline CLI
+  * ollama launch <integration> will now always show the model
+    picker
+- Update to version 0.16.2:
+  * ollama launch claude now supports searching the web when using
+    :cloud models
+  * New setting in Ollama's app makes it easier to disable cloud
+    models for sensitive and private tasks where data cannot leave
+    your computer. For Linux or when running ollama serve manually,
+    set OLLAMA_NO_CLOUD=1.
+  * Fixed issue where experimental image generation models would
+    not run in 0.16.0 and 0.16.1
+- Update to version 0.16.1:
+  * Image generation models will now respect the
+    OLLAMA_LOAD_TIMEOUT variable
+- Update to version 0.16.0:
+  * New Models: GLM-5; MiniMax-M2.5
+  * New `ollama` command
+  * Launch Pi with ollama launch pi
+  * Ctrl+G will now allow for editing text prompts in a text
+    editor when running a model
+- Update to version 0.15.6:
+  * Fixed context limits when running ollama launch droid
+  * ollama launch will now download missing models instead of
+    erroring
+  * Fixed bug where ollama launch claude would cause context
+    compaction when providing images
+- Update to version 0.15.5:
+  * New models: Qwen3-Coder-Next, GLM-OCR
+  * ollama launch can now be provided arguments, for example
+    ollama launch claude -- --resume
+  * ollama launch will now work run subagents when using ollama
+    launch claude
+  * Ollama will now set context limits for a set of models when
+    using ollama launch opencode
+  * Sub-agent support for ollama launch for planning, deep
+    research, and similar tasks
+  * ollama signin will now open a browser window to make signing
+    in easier
+  * Ollama will now default to the following context lengths based
+    on VRAM: < 24 GiB VRAM: 4,096 context; 24-48 GiB VRAM: 32,768
+    context; >= 48 GiB VRAM: 262,144 context
+  * Fixed off by one error when using num_predict in the API
+  * Fixed issue where tokens from a previous sequence would be
+    returned when hitting num_predict
+- Update to version 0.15.4:
+  * ollama launch openclaw will now enter the standard OpenClaw
+    onboarding flow if this has not yet been completed.
+- Update to version 0.15.3:
+  * Renamed ollama launch clawdbot to ollama launch openclaw to
+    reflect the project's new name
+  * Improved tool calling for Ministral models
+  * ollama launch will now use the value of OLLAMA_HOST when
+    running it
+
+-------------------------------------------------------------------
 Wed Jan 28 10:35:02 UTC 2026 - Christian Goll <cgoll@suse.com>
 
 - Updated to version 0.15.2:

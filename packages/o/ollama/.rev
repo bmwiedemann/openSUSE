@@ -691,4 +691,25 @@ because we don't need git-web and the other stuff here (forwarded request 125417
 - Updated to version 0.14.3:</comment>
     <requestid>1329736</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>1340692a4d3e231a7410caed7ead3b2b</srcmd5>
+    <version>0.17.5</version>
+    <time>1772548340</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.17.5:
+  New models
+   - Qwen3.5: the small Qwen 3.5 model series is now available in
+              0.8B, 2B, 4B and 9B parameter sizes.
+  What's Changed
+   - Fixed crash in Qwen 3.5 models when split over GPU &amp; CPU
+   - Fixed issue where Qwen 3.5 models would repeat themselves due
+     to no presence penalty (note: you may have to redownload the
+     qwen3.5 models: ollama pull qwen3.5:35b for example)
+   - ollama run --verbose will now show peak memory usage when using
+     Ollama's MLX engine
+   - Fixed memory issues and crashes in MLX runner
+   - Fixed issue where Ollama would not be able to run models
+     imported from Qwen3.5 GGUF files (forwarded request 1336013 from adrianSuSE)</comment>
+    <requestid>1336014</requestid>
+  </revision>
 </revisionlist>

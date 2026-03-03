@@ -35,7 +35,7 @@
 %define cuda_version %{cuda_version_major}-%{cuda_version_minor}
 
 Name:           ollama
-Version:        0.15.2
+Version:        0.17.5
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
@@ -45,6 +45,7 @@ Source1:        vendor.tar.zstd
 Source2:        %{name}.service
 Source3:        %{name}-user.conf
 Source4:        sysconfig.%{name}
+Patch0:         fix-mlxrunner-tests.diff
 BuildRequires:  cmake >= 3.24
 BuildRequires:  git-core
 BuildRequires:  ninja
