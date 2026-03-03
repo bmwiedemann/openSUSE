@@ -524,4 +524,12 @@
   * separate wheel versions in an effort to avoid timeouts</comment>
     <requestid>1227983</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>1b53d5931d2e827a14eaa354d04128fc</srcmd5>
+    <version>1.9.5</version>
+    <time>1772548179</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1335724</requestid>
+  </revision>
 </revisionlist>

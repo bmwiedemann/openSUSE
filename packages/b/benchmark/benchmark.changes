@@ -1,4 +1,200 @@
 -------------------------------------------------------------------
+Thu Feb 26 14:23:56 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 1.9.5:
+  * version bump to 1.9.5
+  * Silence -Wc2y-extensions warning around __COUNTER__ (#2108)
+  * pin bazelversion to pre-9
+  * rename to avoid gtest warnings
+  * clang tidy warnings
+  * Bump actions/cache from 5.0.1 to 5.0.2 (#2104)
+  * Make the Benchmark class public (#2101)
+  * Bump scipy from 1.16.3 to 1.17.0 in /tools (#2103)
+  * Bump numpy from 2.4.0 to 2.4.1 in /tools (#2102)
+  * Bump pypa/cibuildwheel from 3.3.0 to 3.3.1 (#2100)
+  * Bump astral-sh/setup-uv from 7.1.6 to 7.2.0 (#2099)
+  * Bump numpy from 2.3.5 to 2.4.0 in /tools (#2097)
+  * Bump egor-tensin/setup-clang from 1.4 to 2.1 (#2098)
+  * Bump astral-sh/setup-uv from 7.1.5 to 7.1.6 (#2095)
+  * Bump msys2/setup-msys2 from 2.29.0 to 2.30.0 (#2096)
+  * Bump actions/cache from 4.3.0 to 5.0.1 (#2092)
+  * Bump actions/upload-artifact from 5.0.0 to 6.0.0 (#2093)
+  * Bump actions/download-artifact from 6.0.0 to 7.0.0 (#2094)
+  * #2080: Fix rate and thread rate counter aggregates (#2081)
+  * Bump astral-sh/setup-uv from 7.1.4 to 7.1.5 (#2090)
+  * Bump actions/checkout from 6.0.0 to 6.0.1 (#2086)
+  * Bump lukka/get-cmake from 4.2.0 to 4.2.1 (#2091)
+  * Add tests for user counters w/ threads (#2089)
+  * Make the build work with -Wformat=2 (#2088)
+  * Remove redundant feature checks on re-run of CMake config step (#2084)
+  * Bump astral-sh/setup-uv from 7.1.3 to 7.1.4 (#2077)
+  * Bump actions/setup-python from 6.0.0 to 6.1.0 (#2079)
+  * Bump actions/checkout from 5.0.1 to 6.0.0 (#2074)
+  * Bump lukka/get-cmake from 4.1.2 to 4.2.0 (#2075)
+  * Add missing type_traits include to benchmark_register.h (#2076)
+  * Take a closure for benchmark configuration (#2073)
+  * Bump numpy from 2.3.4 to 2.3.5 in /tools (#2071)
+  * Bump pypa/cibuildwheel from 3.2.1 to 3.3.0 (#2069)
+  * Bump actions/checkout from 5.0.0 to 5.0.1 (#2072)
+  * Fix typos in some files (#2070)
+  * Bump astral-sh/setup-uv from 7.1.2 to 7.1.3 (#2068)
+  * Bump scipy from 1.16.2 to 1.16.3 in /tools (#2066)
+  * Bump astral-sh/setup-uv from 7.1.1 to 7.1.2 (#2065)
+  * Bump actions/download-artifact from 5.0.0 to 6.0.0 (#2064)
+  * Bump actions/upload-artifact from 4.6.2 to 5.0.0 (#2063)
+  * Fix warnings from Clang (#2062)
+  * Bump astral-sh/setup-uv from 7.1.0 to 7.1.1 (#2061)
+  * fix: add missing override key word to ThreadRunnerDefault::RunThreads in benchmark_runner.cc (#2060)
+  * Bump numpy from 2.3.3 to 2.3.4 in /tools (#2058)
+  * Bump astral-sh/setup-uv from 7.0.0 to 7.1.0 (#2055)
+  * bindings(python): Remove hard `absl-py` dependency (#2052)
+  * Bump pypa/cibuildwheel from 3.2.0 to 3.2.1 (#2056)
+  * wheels: Update GitHub Actions runner to avoid errors due to macOS x86_64 deprecation (#2054)
+  * dev: Update pre-commit hooks and `nanobind_bazel` version (#2053)
+  * Bump astral-sh/setup-uv from 6.8.0 to 7.0.0 (#2051)
+  * Bump scipy from 1.13.1 to 1.16.2 in /tools (#2050)
+  * Bump numpy from 2.0.2 to 2.3.3 in /tools (#2049)
+  * Bump lukka/get-cmake from 4.1.1 to 4.1.2 (#2048)
+  * Guard feature checks against failed compilation (#2046)
+  * Bump ossf/scorecard-action from 2.4.2 to 2.4.3 (#2047)
+  * Bump astral-sh/setup-uv from 6.7.0 to 6.8.0 (#2045)
+  * remove done todo
+  * Bump actions/cache from 4.2.4 to 4.3.0 (#2044)
+  * Bump pypa/cibuildwheel from 3.1.4 to 3.2.0 (#2043)
+  * Adding explicit cast to aid in template argument deduction. (#2042)
+  * Bump astral-sh/setup-uv from 6.6.1 to 6.7.0 (#2041)
+  * JSON reporter: make int dumping always happen in C locale (#2040)
+  * Add initializer for statistics field (#2038)
+  * Bump pypa/gh-action-pypi-publish from 1.12.4 to 1.13.0 (#2034)
+  * Bump actions/setup-python from 5.6.0 to 6.0.0 (#2035)
+  * Bump lukka/get-cmake from 4.1.0 to 4.1.1 (#2033)
+  * Bump astral-sh/setup-uv from 6.6.0 to 6.6.1 (#2032)
+  * Bump msys2/setup-msys2 from 2.28.0 to 2.29.0 (#2031)
+  * Bump astral-sh/setup-uv from 6.5.0 to 6.6.0 (#2030)
+  * Bump pypa/cibuildwheel from 3.1.3 to 3.1.4 (#2029)
+  * 2011: Installing contents from benchmark's tools/ subdirectory. (#2016)
+  * python: fix segfault on empty `argv` in `main()` (#2003)
+  * Bump scipy from 1.10.0 to 1.13.1 in /tools (#2022)
+  * Bump numpy from 1.25 to 2.0.2 in /tools (#2021)
+  * Bump pypa/cibuildwheel from 3.0.0 to 3.1.3 (#2023)
+  * Bump astral-sh/setup-uv from 6.4.3 to 6.5.0 (#2026)
+  * Bump DoozyX/clang-format-lint-action from 0.18.2 to 0.20 (#2025)
+  * Bump actions/download-artifact from 4.3.0 to 5.0.0 (#2024)
+  * Bump actions/checkout from 4.3.0 to 5.0.0 (#2019)
+  * clang-format python bindings (benchmark.cc) (#2020)
+  * copied the latest example
+  * trying to get this thing to actually work
+  * Update ossf.yml to use full commit hash
+  * [StepSecurity] Apply security best practices (#2018)
+  * Python: add bindings for `AddCustomContext` (#1988)
+  * ci: Update pre-commit hooks and GitHub Action (#2000)
+  * python: Assert that libdir is a Path in all branches (#1992)
+  * Update README.md removing pylint badge
+  * Fix build when targetting Arm64EC using Clang (#2012)
+  * Added OpenSSF Scorecard Badge for Security Insights (#2014)
+  * Update lib  pre-commit for ruff (#2010)
+  * CI: update available containers (#2009)
+  * Update sysinfo.cc to fix compilation on windows (#2008)
+  * Guard adding intel compiler flag behind check for intel compiler. (#2004)
+  * core(perf): use string move constructor for AddCustomContext (#2005)
+  * python: Update to cibuildwheel 3.0 (#1999)
+  * Refactor: derive pkg-config info to link static libraries (#1998)
+  * Fix bug: link Shlwapi in Libs.private for Windows (#1996)
+  * [doc] Added nice to reducing_variance (#1994)
+  * Add deprecation warnings for MSVC (#1993)
+  * fix: resolve editable installation issue for python package (#1989)
+  * python binding: add range check (#1990)
+
+-------------------------------------------------------------------
+Thu Feb 26 14:23:39 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 1.9.4:
+  * bump to v1.9.4
+  * wheels: Build Linux ARM wheels natively on ARM runners (#1969)
+  * fix: enable running in WebAssembly without filesystem (#1956)
+  * Fix `MaybeReenterWithoutASLR()` in docker (#1985)
+  * `MaybeReenterWithoutASLR()`: be more cautious about argument types (#1983)
+  * Update build instructions for Visual Studio (#1980)
+
+-------------------------------------------------------------------
+Thu Feb 26 14:23:26 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 1.9.3:
+  * bump to v1.9.3 to prepare a release
+  * dev: Update pre-commit hooks (#1979)
+  * Automatic ASLR disablement (#1978)
+  * Detect and report ASLR status (#1977)
+  * Improve user UX on empty benchmarks (#1976)
+  * Fix error handling of getloadavg (#1974)
+  * deps: Update nanobind_bazel to v2.7.0 (#1970)
+  * Deprecate ubuntu-20.04 images in actions (#1971)
+  * Fixed private macro name issue (#1968)
+  * Method templates for Fixtures introduced (#1967)
+  * Threading api refactor (#1955)
+  * Refactor threading run (#1961)
+  * Use the top-level ::benchmark namespace to resolve `make_unique` (#1960)
+
+-------------------------------------------------------------------
+Thu Feb 26 14:22:51 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 1.9.2:
+  * bump version to 1.9.2 in readiness for release. #1957
+  * Finish cxx version bump (#1948)
+  * update version of gtest to v1.15.2 (latest) and also the cmake config (#1864)
+  * CI: switch to ninja on all jobs
+  * CI: use Ninja in sanitizer jobs
+  * CI: only clone/fetch the parts of LLVM monorepo that we need
+  * CI: build libcxxabi against system unwind library
+  * Compilation example was wrong. Fixed standard (#1945)
+  * fix memory manager result bug (#1941)
+  * Install FindPFM.cmake for bencmarkConfig.cmake (#1942)
+  * change setup and teardown callback type (#1934)
+  * Fix build errors on QuRT (Hexagon) (#1938)
+  * [clang-tidy] resolve some global clang-tidy issues (#1933)
+  * use smart pointers (#1935)
+  * deps: Update nanobind_bazel to v2.5.0 (#1936)
+  * dx: Update pre-commit repos, change imports of Python / CC rules (#1937)
+  * [clang-tidy] autofix readability issues (#1931)
+  * [clang-tidy] autofix cppcoreguidelines (#1932)
+  * [clang-tidy] fix missing braces (#1928)
+  * [clang-tidy] fix warning about decaying array to pointer (#1926)
+  * [clang-tidy] use unique_ptr for benchmark registration (#1927)
+  * benchmark declarations can and should be const (clang-tidy) (#1924)
+  * run clang-tidy using a common config and reduced set of tests (#1923)
+  * remove cxx03 test, fully unblocking c++1X development (#1903)
+  * Build `libpfm` with `rules_cc` (#1922)
+  * Remove /proc/cpuinfo fallback path (#1921)
+  * fix sanitizer cmake builds (#1906)
+  * Try to use the _SC_NPROCESSORS_ONLN sysconf elsewhere (#1920)
+  * Replace usage of deprecated sysctl on macOS (#1919)
+  * Retrieve the number of online CPUs on OpenBSD and NetBSD (#1916)
+  * change pacboy compiler target for windows builds (#1915)
+  * add back /proc/cpuinfo as a fallback for some platforms (#1918)
+  * Update error message now that /proc/cpuinfo is no longer in use (#1917)
+  * clang-tidy warning
+  * fix some clang-tidy issues
+  * [BUG] Run external profiler (ProfilerManager) same number of iterations #1913 (#1914)
+  * ruff rule E501: Fix long lines in Python code (#1910)
+  * GitHub Actions: build-and-test on an ARM processor (#1911)
+  * Lint Python: Add more ruff rules (#1909)
+  * ci: Update pre-commit hooks (#1905)
+  * Update nanobind-bazel to v2.4.0 (#1904)
+  * Get number of CPUs with sysconf() on Linux (#1901)
+  * Fix runtime crash when parsing /proc/cpuinfo fails (#1900)
+  * cycleclock: Use cock_gettime() as fallback for any Linux architecture (#1899)
+  * README.md: fix build instructions (#1880)
+  * fix: remove clang-cl compilation warning (#1895)
+  * cycleclock: Support for PA-RISC (hppa) architecture (#1894)
+  * [bazel] Remove selects on CPU (#1892)
+  * Change SDK version check (#1887)
+  * Remove wheel merge job, merge artifacts on download (#1886)
+  * remove unnecessary bazel action parameter
+  * remove noenable_bzlmod as workspace support is going away
+  * Fix malformed clang invocation in build_ext.run (#1884)
+  * Remove if statement from wheel upload job (#1883)
+  * Add artifact name to download before wheel PyPI upload (#1882)
+
+-------------------------------------------------------------------
 Tue Dec  3 12:30:33 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.9.1:

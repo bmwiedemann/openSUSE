@@ -1,7 +1,7 @@
 #
 # spec file for package benchmark
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname  lib%{name}
 %define sover   1
 Name:           benchmark
-Version:        1.9.1
+Version:        1.9.5
 Release:        0
 Summary:        A microbenchmark support library
 License:        Apache-2.0
@@ -86,6 +86,11 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{_builddir}/%{name}-%{version}/build/sr
 %doc README.md AUTHORS
 %{_libdir}/%{soname}.so.%{sover}*
 %{_libdir}/%{soname}_main.so.%{sover}*
+%dir %{_datadir}/googlebenchmark
+%dir %{_datadir}/googlebenchmark/tools
+%{_datadir}/googlebenchmark/tools/*
+%{_datadir}/googlebenchmark/tools/gbench/*
+%{_datadir}/googlebenchmark/tools/gbench/Inputs/*.json
 
 %files devel
 %license LICENSE
