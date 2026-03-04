@@ -5573,4 +5573,14 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
     <comment></comment>
     <requestid>1335031</requestid>
   </revision>
+  <revision rev="531" vrev="1">
+    <srcmd5>50b9fc9ee3b2f1c76614f37b817a52c8</srcmd5>
+    <version>2.9.0+git20260302.b6220eb8</version>
+    <time>1772654539</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.9.0+git20260302.b6220eb8:
+  * permissions-whitelist: adjust sendmail to systemd-tmpfiles (bsc#1256160)
+  * world-writable-whitelist: drop sendmail /var/spool/mail (bsc#1256160) (forwarded request 1335829 from mgerstner)</comment>
+    <requestid>1335830</requestid>
+  </revision>
 </revisionlist>

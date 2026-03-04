@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 02 13:33:14 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to version 2.9.0+git20260302.b6220eb8:
+  * permissions-whitelist: adjust sendmail to systemd-tmpfiles (bsc#1256160)
+  * world-writable-whitelist: drop sendmail /var/spool/mail (bsc#1256160)
+
+-------------------------------------------------------------------
 Wed Feb 25 09:52:40 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update to version 2.9.0+git20260225.5047f88a:
