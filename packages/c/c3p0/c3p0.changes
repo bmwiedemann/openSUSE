@@ -1,4 +1,223 @@
 -------------------------------------------------------------------
+Wed Mar  4 04:24:41 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 0.12.0
+  * Changes of version 0.12.0
+    + Replace com.mchange.v2.naming.permitNonlocalJndiNames with
+      more configurable com.mchange.v2.naming.nameGuardClassName.
+      By default, it is null, and the same "apparently local"
+      restriction previously enforced by
+      com.mchange.v2.naming.permitNonlocalJndiNames is enforced. But
+      users can supply custom com.mchange.v2.naming.NameGuard
+      instances to control what names are permissible, and four
+      implementations of NameGuard are provided.
+    + Documentation updates.
+    + Disable by default reflective instantiation of
+      javax.naming.spi.ObjectFactory instances unless their
+      classname is included on a whitelist. Define properties-style
+      config parameter com.mchange.v2.naming.objectFactoryWhitelist
+      where the comma-separated whitelist can be provided. By
+      default this parameter contains the two ObjectFactory classes
+      c3p0 includes in references it creates.
+    + Change the format of userOverridesAsString, which is just a
+      String representation of Map<String,Map<String,String>>. Use a
+      CSV-inspired format, and the mchange-commons-java fastcsv
+      utility, rather than dangerous Java Object serialization of
+      the Map of Maps.
+    + Disable by default support for resolving references serialized
+      with their own InitialContext custom environment. Define
+      properties-style config parametercom.mchange.v2.naming
+      .acceptDeserializedInitialContextEnvironment, defaulting to
+      false, to manage this dangerous functionality.
+    + Disable by default JNDI lookups of nonlocal names
+      (conservatively, names that do not seem to be local). For now
+      only String names beginning with "java:" or Name objects whose
+      first component starts with "java:" are considered to be local.
+	  Define properties-style config parameter com.mchange.v2.naming
+      .permitNonlocalJndiNames, defaulting to false, to manage this
+      dangerous functionality.
+    + Disable by default support for loading of
+      javax.naming.spi.ObjectFactory from remote locations via
+      Reference.factoryClassLocation. Define properties-style config
+      parameter com.mchange.v2.naming
+      .supportReferenceRemoteFactoryClassLocation, defaulting to
+      false, to manage this dangerous functionality.
+    * Fix rare issue in Statement caching (GooGooStatementCache),
+      make sure any Statement we remove is checked into the cache in
+      order to ensure we don't see internal inconsistencies when
+      Statements we mean to cull fail to be removed by
+      removeStatement(...) because they are checked out.
+  * Changes of version 0.11.2
+    * Expose utilities `overwriteJavaBeanProperties` and
+      `overwriteC3P0PrefixedProperties` in the `DataSources` class,
+      and refactor existing functions to use those.
+  * Changes of version 0.11.1
+    + in BasicResourcePool, forceKillAcquires() accidentally failed
+      to surrender its lock, leading to deadlocks following a full
+      round of acquisition failures.
+  * Changes of version 0.11.0
+    + Additional testing.
+  * Changes of version 0.11.0-pre2
+    + Define new property cancelAutomaticallyClosedStatements,
+      which, if true, ensures that Statement.cancel() will be called
+      prior to Statement.close() when c3p0 automatically close()es
+      statements because a client has neglected to, a Connection
+      with open Statements has exceeded its
+      unreturnedConnectionTimeout, or the Statement cache is
+      expiring a PreparedStatement.
+  * Changes of version 0.11.0-pre1
+    + Rewrite BasicResourcePool and GooGooStatementCache in terms of
+      ReentrantLock and Condition.{await/signalAll} rather than
+      native monitors and wait()/notifyAll(), because wait() pins
+      loom virtual threads.
+    + Double check after termination of BasicResourcePool
+      .awaitAvailable(...) that following notification/termination a
+      resource (Connection) remains available.
+    + Prevent fragility under non-bootstrap/non-system CLASSLOADERs
+      under Java 8, where references to java.sql.ShardingKey not
+      available under Java 8 provoke NoClassDefFoundError. Bifurcate
+      Connection proxies, generate version without sharding key
+      methods under JVMs where ShardingKey is unavailable, full JDBC
+      4.3 Connection API proxies where ShardingKey is present.
+  * Changes of version 0.10.2
+    + Prevent freeze due to re-waiting if a non-Exception Throwable
+      occurs while acquiring a PreparedStatement to cache.
+  * Changes of version 0.10.1
+    + Implement more and "louder" (log ugly stack traces) validation
+      of config properties.
+    + Modify former InUseLock (now InternalUseLock) and
+      NewProxyConnection to use ReentrantLock rather than native
+      monitors, to prevent pinning when clients run on loom virtual
+      threads.
+    + Implement config parameter markSessionBoundaries, so that
+      users can disable JDBC 4.3 beginRequest / endRequest session
+      boundary marking when JDBC drivers so undesirable things with
+      those hints.
+    + Implement more careful examination of begin/endRequest
+      methods, to take into account the case where those methods
+      exist on the JDBC driver Connection implementation, but not in
+      the Connection interface of a pre-Java-9 JVM. We still support
+      begin/endRequest in this case, but reflectively.
+  * Changes of version 0.10.0
+    + A bit more testing
+  * Changes of version 0.10.0-pre7
+    + Improve performance of begin/endRequest support
+    + Implement c3p0-loom
+      UninstrumentedVirtualThreadPerTaskTaskRunnerFactory
+    + Change mind. Eliminate naggingly prescriptive equals/hashCode
+      pseudorequirements from plugin interfaces, because our
+      canonicalization strategy is by key, doesn't actually rely
+      upon those implementations.
+    + Guard collection of MBeanAttributeInfo against items that
+      would have no getter or setter to prevent ugly
+      IntrospectionExceptions.
+    + Let C3P0PooledConnectionPool manager test introspected
+      authentication that appears perhaps incomplete, and revert to
+      NULL_AUTH (no-arg DataSource.getConnection()) if the test
+      fails.
+  * Changes of version 0.10.0-pre6
+    + Lots of documentation work.
+    + Implement attemptResurrectOnCheckin config parameter.
+    + Add guard to automaticTestTable preventing use of weird or
+      potentially malicious table names.
+    * Pick up com.mchange.v2.c3p0.impl.DefaultConnectionTester
+      .isValidTimeout as default value of new
+      connectionIsValidTimeout property, so that users upgrading
+      from previous version still capture the setting from the old
+      config, even as their ConnectionTester now falls back to null.
+  * Changes of version 0.10.0-pre5
+    + Lots of documenting, condensing, clean-up, etc.
+    + Define connectionIsValidTimeout as an ordinary bean-style
+      config parameter. Previously users had to set a universal
+      property (in c3p0.properties or System properties) to set this
+      timeout.
+    + Use simplified isValid(...) based timeout by default, use
+      traditional ConnectionTester logic only when users specify or
+      force a ConnectionTester
+  * Changes of version 0.10.0-pre4
+    + Define (in a separate, Java 21, project) a loom
+      virtual-threads based TaskRunnerFactory,
+      VirtualThreadPerTaskExecutorTaskRunnerFactory.
+    + DefineFixedThreadPoolExecutorTaskRunnerFactory, a simple
+      example that replaces c3p0's traditional Thread pool with an
+      unshared ThreadPoolExecutor of size numHelperThreads.
+    + Define AbstractExecutorTaskRunnerFactory, which users can
+      extend to use or share java.util.concurrent.Executor instances
+      rather than c3p0's traditional hand-rolled Thread pool.
+    + Define TaskRunnerFactory, and config param
+      TaskRunnerFactoryClassName. Users can provide implementations
+      of TaskRunnerFactory with a public no-arg constructor to take
+      full control of threading, thread-pooling, etc.
+    + Support SOURCE_DATE_EPOCH for deterministic builds. (Here and
+      in mchange-commons-java.)
+    + Eliminate support for traditional reflective proxies.
+    + Fix bad anchor in docs.
+    + Relicense to allow users to opt for LGPL-2.1 or later, rather
+      than LGPL-2.1-only. (Here and in mchange-commons-java.)
+    + Update to mchange-commons-java 0.3.0
+  * Changes of version 0.10.0-pre3
+    + Have build fail if we try to build with an unexpected JVM
+      version. We want to use a consistent JVM version (currently
+      11) and target version (currently 7) when we build c3p0.
+    + Remove vestiges of unsupported BasicResourcePool.AcquireTask
+    + Disable very slow handholding function intended to help with
+      misspellings / misspecifications of resource
+      "/c3p0-config.xml"
+    + Let PooledDataSource implement AutoCloseable. This
+      necessitates targeting Java 7, rather than Java 6, classfiles.
+    + Bring documentation of acquireRetryAttempts into sync with
+      c3p0's actual behavior.
+    + Include license files in published source jar. (Here and in
+      mchange-commons-java.)
+  * Changes of version 0.10.0-pre2
+    + Add "Automatic-Module-Name" entry to jar manifest for
+      interoperability with Project Jigsaw / Java 9 modules
+    + Try context ClassLoader if library ClassLoader fails to load a
+      named, necessary driver class.
+    + Let statement cache fail not-quietly if drivers provide
+      PreparedStatements without a proper equals implementation.
+    + Be slightly less negative in the docs about
+      unreturnedConnectionTimeout.
+    + Implement more robustly accurate checkoutTimeout.
+    + Add support for JDBC 4.3 beginRequest and endRequest methods.
+    + Consider ourselves to be a wrapper for a thing if the thing we
+      wrap itself declares itself as the wrapper of that thing.
+    + Fix rare ConcurrentModificationException in
+      GooGooStatementCache when Connections are closed.
+  * Changes of version 0.10.0-pre1
+    + Fix doc comments no longer acceptable under persnicketty JDK
+      11
+    + Build with JDK 11 JVM (still emitting JDK 1.6 compatible
+      sources)
+    + Get tests working under new mill build
+    + Reorganize to switch build from ant to mill
+    + Update to mchange-commons-java 0.2.20
+- Build it from the *-sources.jar distributed to maven central,
+  since the project changed to mill tool for build
+- Removed patches:
+  * c3p0-javadoc.patch
+  * c3p0-mchange-commons-0.4.0.patch
+    + not needed with this version
+- Build using Java >= 11 (since the APIs of this version are needed
+  in some files), but still produce Java 1.8 bytecode, to make it
+  usable for older versions that don't need the files using these
+  APIs.
+- Remove RHEL conditions, since the build.xml file we created is
+  simple and does not need ant features from contrib.
+
+-------------------------------------------------------------------
+Tue Mar  3 14:40:24 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Bumped the minimal mchange-commons requirement to 0.4.0 because
+  of bsc#1258913, CVE-2026-27727
+- Added patch:
+  * c3p0-mchange-commons-0.4.0.patch
+    + Supply config to IndirectingSerializableExtension subclass in
+      order to support 'com.mchange.v2.naming
+      .supportReferenceRemoteFactoryClassLocation'
+    + Track mchange-commons-java change in package of IndentedWriter
+
+-------------------------------------------------------------------
 Fri Sep  5 07:37:14 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Do not provide the hibernate_jdbc_cache alternative
@@ -103,7 +322,7 @@ Fri Jun 27 17:56:06 UTC 2014 - smoioli@suse.com
 -------------------------------------------------------------------
 Fri Jun 27 16:14:57 UTC 2014 - smoioli@suse.com
 
-- updated to upstream 0.9.5, that is compatible with Java 7 / JDBC 4 
+- updated to upstream 0.9.5, that is compatible with Java 7 / JDBC 4
 
 -------------------------------------------------------------------
 Tue Sep 24 09:51:34 UTC 2013 - dmacvicar@suse.de

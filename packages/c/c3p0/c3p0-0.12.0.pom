@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <name>c3p0</name>
+    <groupId>com.mchange</groupId>
+    <artifactId>c3p0</artifactId>
+    <packaging>jar</packaging>
+    <description>A mature JDBC3+ Connection pooling library</description>
+    <version>0.12.0</version>
+    <url>https://www.mchange.com/projects/c3p0</url>
+    <licenses>
+        <license>
+            <name>LGPL-2.1-or-later</name>
+            <url>https://spdx.org/licenses/LGPL-2.1-or-later.html</url>
+            <distribution>repo</distribution>
+        </license>
+        <license>
+            <name>EPL-1.0</name>
+            <url>https://spdx.org/licenses/EPL-1.0.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git:git://github.com/swaldman/c3p0.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:swaldman/c3p0.git</developerConnection>
+        <url>https://github.com/swaldman/c3p0</url>
+    </scm>
+    <developers>
+        <developer>
+            <id>swaldman</id>
+            <name>Steve Waldman</name>
+            <url>https://github.com/swaldman</url>
+        </developer>
+    </developers>
+    <dependencies>
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>mchange-commons-java</artifactId>
+            <version>0.4.0</version>
+        </dependency>
+    </dependencies>
+</project>

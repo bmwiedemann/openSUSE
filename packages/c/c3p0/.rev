@@ -63,4 +63,12 @@
     <comment>Do not provide the hibernate_jdbc_cache alternative</comment>
     <requestid>1307489</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>33598fbf55d2bccac5e3e849ee79e9d1</srcmd5>
+    <version>0.12.0</version>
+    <time>1772654656</time>
+    <user>anag_factory</user>
+    <comment>Upgrade to 0.12.0 to be sure that the fix for bsc#1258913, CVE-2026-27727 is included</comment>
+    <requestid>1336263</requestid>
+  </revision>
 </revisionlist>

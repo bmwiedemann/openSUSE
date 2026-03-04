@@ -1,7 +1,7 @@
 #
 # spec file for package c3p0
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,33 +17,23 @@
 #
 
 
-%define mchange_commons_min_version 0.2.15
 Name:           c3p0
-Version:        0.9.5.5
+Version:        0.12.0
 Release:        0
 Summary:        JDBC DataSources/Resource Pools
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/Java
 URL:            https://www.mchange.com/projects/c3p0/
-Source0:        http://downloads.sourceforge.net/sourceforge/c3p0/c3p0-%{version}.src.tgz
-Patch1:         %{name}-javadoc.patch
+Source0:        https://repo1.maven.org/maven2/com/mchange/%{name}/%{version}/%{name}-%{version}-sources.jar
+Source1:        https://repo1.maven.org/maven2/com/mchange/%{name}/%{version}/%{name}-%{version}.pom
+Source100:      %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8
+BuildRequires:  java-devel >= 11
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  junit
-BuildRequires:  mchange-commons >= %{mchange_commons_min_version}
+BuildRequires:  mchange-commons >= 0.4.0
+BuildRequires:  unzip
 BuildArch:      noarch
-%if !0%{?rhel}
-BuildRequires:  ant-nodeps
-%endif
-%if 0%{?rhel} >= 9
-BuildRequires:  xmvn-tools
-%endif
-%if 0%{?rhel}
-Requires(post): chkconfig
-Requires(postun): chkconfig
-%endif
 
 %description
 c3p0 is a library for augmenting traditional (DriverManager-based)
@@ -59,46 +49,34 @@ Group:          Documentation/HTML
 Javadoc documentation for c3p0.
 
 %prep
-%setup -q -n %{name}-%{version}.src
-%patch -P 1 -p1
-%{mvn_file} :c3p0 %{name}/%{name} %{name}
+%setup -q -T -c
+mkdir -p src/main/java
+unzip %{SOURCE0} -d src/main/java
+cp %{SOURCE100} build.xml
 
 %build
-export CLASSPATH=
-export OPT_JAR_LIST="ant/ant-nodeps"
-ant \
-    -Dmchange-commons-java.jar.file=%{_javadir}/mchange-commons/mchange-commons-java.jar \
-    -Djunit.jar.file=$(build-classpath junit) -Djvm.target.version=8 \
-    jar javadoc
-
-sed -i "s/@c3p0.version.maven@/%{version}/g" src/maven/pom.xml
-sed -i "s/@mchange-commons-java.version.maven@/%{mchange_commons_min_version}/g" \
-  src/maven/pom.xml
-%{mvn_artifact} src/maven/pom.xml build/%{name}-%{version}.jar
+mkdir -p lib
+build-jar-repository -s lib mchange-commons
+ant jar javadoc
 
 %install
-%if 0%{?rhel}
-%mvn_install
-%else
 # jars
 install -d -m 0755 %{buildroot}%{_javadir}
-install -p -m 0644 build/%{name}-%{version}.jar \
+install -p -m 0644 target/%{name}-%{version}.jar \
   %{buildroot}%{_javadir}/%{name}.jar
 
 # poms
 install -d -m 0755 %{buildroot}%{_mavenpomdir}
-%{mvn_install_pom} src/maven/pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar -a c3p0:c3p0
-%endif
 
 # javadoc
 mkdir -p %{buildroot}%{_javadocdir}/%{name}
-cp -pr build/apidocs/* %{buildroot}%{_javadocdir}/%{name}
+cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 %files -f .mfiles
-%license src/dist-static/LICENSE
-%doc src/doc/index.html
+%license src/main/java/LICENSE*
 
 %files javadoc
 %{_javadocdir}/%{name}
