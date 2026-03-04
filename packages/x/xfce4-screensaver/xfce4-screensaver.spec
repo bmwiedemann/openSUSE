@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-screensaver
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without wayland
 
 Name:           xfce4-screensaver
-Version:        4.20.1
+Version:        4.20.2
 Release:        0
 Summary:        Screensaver and locker for Xfce
 License:        GPL-2.0-only
