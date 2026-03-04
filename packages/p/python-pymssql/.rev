@@ -119,4 +119,14 @@
     <comment></comment>
     <requestid>1332858</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>874a21c98511c8fbf89ec91b1fe0b7dc</srcmd5>
+    <version>2.3.13</version>
+    <time>1772654896</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.3.13:
+  * Fix type stubs with generics, overloads, and corrected types,
+    thanks to jacks0n.</comment>
+    <requestid>1336210</requestid>
+  </revision>
 </revisionlist>
