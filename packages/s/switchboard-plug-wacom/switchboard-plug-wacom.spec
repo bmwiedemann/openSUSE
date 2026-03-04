@@ -1,7 +1,7 @@
 #
 # spec file for package switchboard-plug-wacom
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
+%define         _name settings-wacom
 %define         appid io.elementary.settings.wacom
 Name:           switchboard-plug-wacom
-Version:        8.0.1
+Version:        8.0.2
 Release:        0
 Summary:        Manage drawing tablets and Wacom devices
 License:        GPL-3.0-or-later
@@ -42,7 +43,7 @@ Requires:       switchboard
 %lang_package
 
 %prep
-%autosetup
+%autosetup -n %{_name}-%{version}
 
 %build
 %meson
