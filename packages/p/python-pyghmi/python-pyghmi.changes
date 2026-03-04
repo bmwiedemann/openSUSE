@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  3 18:54:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.13:
+  * Provide a specific override for XCC3 generic error
+  * Correct early fetch of sysurl
+  * Remove stale setting of health attribute
+  * Fix missing parameter in function signature
+  * Stub out cpu/mem/adp/disk inventory for SMMv3
+  * Add SMM3 cap setting
+  * Adapt for alternate type presented in devicedescription
+
+-------------------------------------------------------------------
 Sun Dec 28 19:43:20 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.11:

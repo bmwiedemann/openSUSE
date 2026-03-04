@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyghmi
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-pyghmi
-Version:        1.6.11
+Version:        1.6.13
 Release:        0
 Summary:        General Hardware Management Initiative (IPMI and others)
 License:        Apache-2.0

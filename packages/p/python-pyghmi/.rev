@@ -521,4 +521,19 @@
   * Handle missing dependencies in a redfish dependency map</comment>
     <requestid>1324589</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>490d380b95a594921682f5c72f8b2673</srcmd5>
+    <version>1.6.13</version>
+    <time>1772654726</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.6.13:
+  * Provide a specific override for XCC3 generic error
+  * Correct early fetch of sysurl
+  * Remove stale setting of health attribute
+  * Fix missing parameter in function signature
+  * Stub out cpu/mem/adp/disk inventory for SMMv3
+  * Add SMM3 cap setting
+  * Adapt for alternate type presented in devicedescription</comment>
+    <requestid>1336185</requestid>
+  </revision>
 </revisionlist>
