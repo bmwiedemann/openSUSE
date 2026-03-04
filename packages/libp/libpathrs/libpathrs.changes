@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar  3 13:55:52 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>
+
+- Update to libpathrs v0.2.4. Upstream release notes:
+  <https://github.com/cyphar/libpathrs/releases/tag/v0.2.4>
+
+-------------------------------------------------------------------
+Thu Jan 29 18:07:42 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>
+
+- Update to libpathrs v0.2.3. Upstream release notes:
+  <https://github.com/cyphar/libpathrs/releases/tag/v0.2.3>
+- Remove upstreamed patches:
+  - 0001-fd-fix-f_flags-fdinfo-test-on-other-architectures.patch
+
+-------------------------------------------------------------------
 Fri Nov 28 02:51:46 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Switch to lld as linker in order to build properly on all architectures.

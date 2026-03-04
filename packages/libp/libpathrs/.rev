@@ -8,4 +8,13 @@
 dependency of container tools like runc, podman, buildah, etc in the future.</comment>
     <requestid>1320405</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>193fa1a2a54ad8ec0ca39962b98a718a</srcmd5>
+    <version>0.2.4</version>
+    <time>1772654659</time>
+    <user>anag_factory</user>
+    <comment>- Update to libpathrs v0.2.4. Upstream release notes:
+  &lt;https://github.com/cyphar/libpathrs/releases/tag/v0.2.4&gt;</comment>
+    <requestid>1336068</requestid>
+  </revision>
 </revisionlist>

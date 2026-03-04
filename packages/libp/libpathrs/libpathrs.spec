@@ -2,6 +2,7 @@
 # spec file for package libpathrs
 #
 # Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 Aleksa Sarai <cyphar@cyphar.com>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,15 +23,16 @@
 %define pyname  pathrs
 
 Name:           libpathrs
-Version:        0.2.2
+Version:        0.2.4
 Release:        0
 Summary:        Safe path resolution library for Linux
 Group:          Productivity/Security
 License:        MPL-2.0 OR LGPL-3.0-or-later
 URL:            https://github.com/cyphar/%{name}
-Source0:        https://github.com/cyphar/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.zst
-Patch1:         https://github.com/cyphar/libpathrs/commit/3b5c7817bdc54adb47fb9e10e0e02176c7fa41b8.patch#/0001-fd-fix-f_flags-fdinfo-test-on-other-architectures.patch
+Source0:        https://github.com/cyphar/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Source1:        https://github.com/cyphar/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
+Source2:        %{name}.keyring
+Source3:        vendor.tar.zst
 BuildRequires:  rust >= 1.63
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
@@ -112,14 +114,26 @@ paths (symlinks make the issue significantly worse).
 This subpackage provides the Python bindings for %{name}.
 
 %prep
-%autosetup -a1 -p1
+%autosetup -a3 -p1
 
 %build
-# We need to use lld.
-%define __rustflags -C linker=clang -C link-arg=-fuse-ld=lld
+export CC=clang
 
-# Build libpathrs.so.
-make CARGO='%{__cargo}' release
+# libpathrs needs to control several bits of RUSTFLAGS and environment
+# variables when doing the build, so we have to extract the environment
+# variables from __cargo and then pass them another way.
+vars="$(grep -oP '([^\s"\x27]+|"([^"\\]|\\.)*"|\x27[^\x27]*\x27)+' <<<'%{__cargo}' | grep '=' | tr '\n' ' ')"
+eval "export -- $vars"
+# We need to have special handling for RUSTFLAGS.
+EXTRA_RUSTC_FLAGS="$RUSTFLAGS"
+unset RUSTFLAGS
+
+# Build libpathrs.
+make \
+	CARGO="cargo auditable" \
+	EXTRA_CARGO_FLAGS="--offline --locked" \
+	EXTRA_RUSTC_FLAGS="$EXTRA_RUSTC_FLAGS -C linker=clang" \
+	release
 
 # Used for building bindings against our not-yet-installed libs.
 export PATHRS_SRC_ROOT="$PWD"
