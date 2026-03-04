@@ -1,7 +1,7 @@
 #
 # spec file for package python-standardwebhooks
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,27 @@
 
 
 Name:           python-standardwebhooks
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Standard Webhooks
 License:        MIT
 URL:            https://github.com/standard-webhooks/standard-webhooks/tree/main/libraries/python
 Source:         https://files.pythonhosted.org/packages/source/s/standardwebhooks/standardwebhooks-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/standard-webhooks/standard-webhooks/refs/heads/main/libraries/LICENSE
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.8.0}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module attrs >= 21.3.0}
 BuildRequires:  %{python_module Deprecated}
 BuildRequires:  %{python_module httpx >= 0.23.0}
-BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-dateutil}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-attrs >= 21.3.0
 Requires:       python-Deprecated
+Requires:       python-attrs >= 21.3.0
 Requires:       python-httpx >= 0.23.0
 Requires:       python-python-dateutil
 BuildArch:      noarch

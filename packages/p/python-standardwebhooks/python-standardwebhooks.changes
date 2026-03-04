@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  4 08:36:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.1:
+  * Add support for jdk 8
+  * fix(js): handle empty payloads in verify()
+  * feat(libraries/python): Support unpadded secrets
+
+-------------------------------------------------------------------
 Wed Jun 18 12:03:48 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Initial packaging (v1.0.0), needed by weblate

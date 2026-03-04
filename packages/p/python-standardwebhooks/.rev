@@ -7,4 +7,15 @@
     <comment>needed by Weblate</comment>
     <requestid>1286935</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1a914932b7222e2f6549132779dee8bb</srcmd5>
+    <version>1.0.1</version>
+    <time>1772654973</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.1:
+  * Add support for jdk 8
+  * fix(js): handle empty payloads in verify()
+  * feat(libraries/python): Support unpadded secrets</comment>
+    <requestid>1336288</requestid>
+  </revision>
 </revisionlist>
