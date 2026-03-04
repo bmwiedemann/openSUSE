@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar  3 08:30:38 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.3:
+  + Bugs fixed:
+    - Disable "Run in background" for when running unsandboxed
+    - Crash loading invalid URL using "Open Link in New Tab"
+    - New tags created in bookmark edit mode are not sorted
+    - Manual bookmark sorting fails
+    - Crash when downloading a file in an extra window and closing
+      that window before the confirmation in-app notification
+      overlay is dismissed
+    - bookmarks-dialog: Save index in tags order
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Nov 21 06:43:36 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.2:
