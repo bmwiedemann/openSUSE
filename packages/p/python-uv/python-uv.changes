@@ -1,47 +1,80 @@
 -------------------------------------------------------------------
+Wed Mar  4 17:40:36 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.10.8 
+ * Enhancements
+  * Add Docker images based on Docker Hardened Images 
+  * Add resolver hint when --exclude-newer filters out all versions of a package 
+  * Configure a real retry minimum delay of 1s 
+  * Expand uv_build direct build compatibility 
+  * Fetch CPython from an Astral mirror by default 
+  * Download uv releases from an Astral mirror in installers by default 
+  * Add SBOM attestations to Docker images 
+  * Improve hint for installing meson-python when missing as build backend 
+ * Configuration
+  * Add UV_INIT_BARE environment variable for uv init 
+ * Bug fixes
+  * Prevent uv tool upgrade from installing excluded dependencies 
+  * Promote authentication policy when saving tool receipts 
+  * Respect exclusions in scripts 
+  * Retain default-branch Git SHAs in pylock.toml files 
+  * Skip installed Python check for URL dependencies 
+  * Respect constraints during --upgrade 
+  * Fix uv tree orphaned roots and premature deduplication 
+ * Documentation
+  * Mention cooldown and tweak inline script metadata in dependency bots documentation 
+  * Move cache prune in GitLab to after_script 
+
+-------------------------------------------------------------------
+Wed Mar  4 12:45:01 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Adapt %suse_version checks to support new %suse_version design for
+  16.1 and following (1610, 1620, 1630...)
+
+-------------------------------------------------------------------
 Sat Feb 28 12:13:36 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.10.7
  * Bug fixes
-  * Fix handling of junctions in Windows Containers on Windows 
+  * Fix handling of junctions in Windows Containers on Windows
   * Apply lockfile marker normalization for fork markers V
-  * Fix Python version selection for scripts with a requires-python conflicting with .python-version 
-  * Preserve file permissions when using reflinks on Linux 
+  * Fix Python version selection for scripts with a requires-python conflicting with .python-version
+  * Preserve file permissions when using reflinks on Linux
  * Enhancements
-  * Activate logging for middleware retries 
-  * Upload uv releases to a mirror 
+  * Activate logging for middleware retries
+  * Upload uv releases to a mirror
  * Documentation
-  * Remove verbose documentation from optional dependencies help text 
+  * Remove verbose documentation from optional dependencies help text
 
 -------------------------------------------------------------------
 Tue Feb 24 18:03:52 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.10.5
  * Enhancements
-  * Remove duplicate references to the affected paths when showing uv python errors 
-  * Skip discovery of workspace members that contain only git-ignored files, including in sub-directories 
-  * Add hint when named index is found in a parent config file 
-  * Add warning for uv lock --frozen 
-  * Attempt to use reflinks by default on Linux 
-  * Fallback to hardlinks after reflink failure before copying 
-  * Filter pylock.toml wheels by tags and requires-python 
-  * Validate wheel filenames are normalized during uv publish 
-  * Fix message when exclude-newer invalidates the lock file 
-  * Change the missing files log level to debug 
+  * Remove duplicate references to the affected paths when showing uv python errors
+  * Skip discovery of workspace members that contain only git-ignored files, including in sub-directories
+  * Add hint when named index is found in a parent config file
+  * Add warning for uv lock --frozen
+  * Attempt to use reflinks by default on Linux
+  * Fallback to hardlinks after reflink failure before copying
+  * Filter pylock.toml wheels by tags and requires-python
+  * Validate wheel filenames are normalized during uv publish
+  * Fix message when exclude-newer invalidates the lock file
+  * Change the missing files log level to debug
  * Performance
-  * Improve performance of repeated conflicts with an extra 
+  * Improve performance of repeated conflicts with an extra
  * Bug fixes
-  * Fix --no-emit-workspace with --all-packages on single-member workspaces 
-  * Fix UV_NO_DEFAULT_GROUPS rejecting truthy values like 1 
-  * Propagate project-level conflicts to package extras 
-  * Use a global build concurrency semaphore 
-  * Don't panic when initialising a package at the filesystem root (e.g. uv init / --name foo) 
-  * Fix permissions on wheel and sdist files produced by the uv_build build backend 
-  * Revert locked file change to fix locked files on NFS mounts 
+  * Fix --no-emit-workspace with --all-packages on single-member workspaces
+  * Fix UV_NO_DEFAULT_GROUPS rejecting truthy values like 1
+  * Propagate project-level conflicts to package extras
+  * Use a global build concurrency semaphore
+  * Don't panic when initialising a package at the filesystem root (e.g. uv init / --name foo)
+  * Fix permissions on wheel and sdist files produced by the uv_build build backend
+  * Revert locked file change to fix locked files on NFS mounts
  * Documentation
-  * Update documentation heading for environment variable files 
-  * Fix comment about uv export formats 
-  * Make it clear that Windows is supported in user- and system- level configuration docs 
+  * Update documentation heading for environment variable files
+  * Fix comment about uv export formats
+  * Make it clear that Windows is supported in user- and system- level configuration docs
 
 -------------------------------------------------------------------
 Mon Feb 16 20:07:52 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>

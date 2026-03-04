@@ -2160,4 +2160,41 @@
   * Propagate project-level conflicts to package extras</comment>
     <requestid>1335568</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>4aa826c40f83a39f7401f0e36d417ed6</srcmd5>
+    <version>0.10.8</version>
+    <time>1772655088</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.10.8 
+ * Enhancements
+  * Add Docker images based on Docker Hardened Images 
+  * Add resolver hint when --exclude-newer filters out all versions of a package 
+  * Configure a real retry minimum delay of 1s 
+  * Expand uv_build direct build compatibility 
+  * Fetch CPython from an Astral mirror by default 
+  * Download uv releases from an Astral mirror in installers by default 
+  * Add SBOM attestations to Docker images 
+  * Improve hint for installing meson-python when missing as build backend 
+ * Configuration
+  * Add UV_INIT_BARE environment variable for uv init 
+ * Bug fixes
+  * Prevent uv tool upgrade from installing excluded dependencies 
+  * Promote authentication policy when saving tool receipts 
+  * Respect exclusions in scripts 
+  * Retain default-branch Git SHAs in pylock.toml files 
+  * Skip installed Python check for URL dependencies 
+  * Respect constraints during --upgrade 
+  * Fix uv tree orphaned roots and premature deduplication 
+ * Documentation
+  * Mention cooldown and tweak inline script metadata in dependency bots documentation 
+  * Move cache prune in GitLab to after_script 
+
+- Adapt %suse_version checks to support new %suse_version design for
+  16.1 and following (1610, 1620, 1630...)
+
+  * Fix handling of junctions in Windows Containers on Windows
+  * Fix Python version selection for scripts with a requires-python conflicting with .python-version
+  * Preserve file permissions when using reflinks on Linux</comment>
+    <requestid>1336574</requestid>
+  </revision>
 </revisionlist>

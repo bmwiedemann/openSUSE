@@ -2,7 +2,7 @@
 # spec file for package python-uv
 #
 # Copyright (c) 2026 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %global force_gcc_version 13
 %endif
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %bcond_without mold
 %else
 %bcond_with    mold
@@ -34,7 +34,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-uv
-Version:        0.10.7
+Version:        0.10.8
 Release:        0
 Summary:        A Python package installer and resolver, written in Rust
 License:        Apache-2.0 OR MIT
@@ -49,7 +49,7 @@ BuildRequires:  cargo >= 1.91
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  fdupes
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  clang
