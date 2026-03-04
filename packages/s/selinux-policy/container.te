@@ -1,4 +1,4 @@
-policy_module(container, 2.245.0)
+policy_module(container, 2.246.0)
 
 gen_require(`
 	class passwd rootok;
@@ -337,7 +337,7 @@ manage_fifo_files_pattern(container_runtime_domain, container_var_run_t, contain
 manage_sock_files_pattern(container_runtime_domain, container_var_run_t, container_var_run_t)
 manage_lnk_files_pattern(container_runtime_domain, container_var_run_t, container_var_run_t)
 files_pid_filetrans(container_runtime_domain, container_var_run_t, { dir file lnk_file sock_file })
-files_tmp_filetrans(container_runtime_domain, container_var_run_t, { dir file lnk_file sock_file })
+files_tmp_filetrans(container_runtime_domain, container_var_run_t, { dir fifo_file file lnk_file sock_file })
 allow container_runtime_domain container_var_run_t:dir_file_class_set relabelfrom;
 
 allow container_runtime_domain container_devpts_t:chr_file { relabelfrom rw_chr_file_perms setattr_chr_file_perms };
@@ -1365,8 +1365,8 @@ allow container_domain init_t:unix_stream_socket { accept ioctl read getattr loc
 
 allow container_t proc_t:filesystem remount;
 
-# Allow containers to access shared runtime directories for OCI runtime optimizations
-allow container_t container_var_run_t:dir list_dir_perms;
+# Allow containers to access and mount on shared runtime directories for OCI runtime optimizations
+allow container_t container_var_run_t:dir { list_dir_perms mounton };
 
 # Container kvm - Policy for running kata containers
 container_domain_template(container_kvm, container)
@@ -1499,6 +1499,8 @@ kernel_mounton_core_if(container_engine_t)
 kernel_mounton_systemd_ProtectKernelTunables(container_engine_t)
 term_mount_pty_fs(container_engine_t)
 term_use_generic_ptys(container_engine_t)
+
+corenet_rw_tun_tap_dev(container_engine_t)
 
 allow container_engine_t container_file_t:chr_file mounton;
 allow container_engine_t filesystem_type:{dir file} mounton;

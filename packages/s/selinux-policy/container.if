@@ -418,6 +418,25 @@ interface(`container_read_pid_files',`
 
 ########################################
 ## <summary>
+##	Write container PID fifo files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`container_write_pid_fifo_files',`
+	gen_require(`
+		type container_var_run_t;
+	')
+
+	files_search_pids($1)
+	write_fifo_files_pattern($1, container_var_run_t, container_var_run_t)
+')
+
+########################################
+## <summary>
 ##	Execute container server in the container domain.
 ## </summary>
 ## <param name="domain">
@@ -1065,4 +1084,22 @@ interface(`container_file',`
         typeattribute $1 container_file_type;
 	files_type($1)
 	files_mountpoint($1)
+')
+
+#######################################
+## <summary>
+##      Send null signals to container.
+## </summary>
+## <param name="domain">
+##      <summary>
+##      Domain allowed access
+##      </summary>
+## </param>
+#
+interface(`container_signull',`
+        gen_require(`
+                type container_t;
+        ')
+
+        allow $1 container_t:process signull;
 ')

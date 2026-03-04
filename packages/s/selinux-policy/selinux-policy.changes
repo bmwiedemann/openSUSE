@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Mar  3 07:05:55 UTC 2026 - Johannes Segitz <jsegitz@suse.com>
+
+- Have the selinux-policy package own %{_sharedstatedir}/selinux
+  until the move to /etc
+
+-------------------------------------------------------------------
+Mon Mar 02 10:32:54 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 20260302:
+  * Allow systemd-coredump the kill capability in the user namespace
+  * Allow NetworkManager list bpf directories
+  * Allow virtnodedevd the dac_read_search capability
+  * Allow pkcsslotd read files in /proc and /sys
+  * Allow pkcsslotd map its private tmpfs files
+  * Allow dovecoth-auth to connect to systemd-logind over a unix socket
+  * Allow tlshd write generic certificate dirs
+  * Allow mdadm to use CAP_BPF during RAID monitoring
+  * Allow rhsmcertd read anaconda run files
+  * Allow rpc.mountd setuid and setgid capabilities
+  * Use kernel_dgram_send() for systemd_notify_t
+  * Allow lttng-sessiond to use sd_notify
+  * Label /etc/aliases.cdb with etc_aliases_t
+  * Add aliases.lmdb to mta_filetrans_named_content()
+  * Update gpg_role() interface with unix_stream_socket permissions
+  * Allow systemd-hostnamed to create its Varlink socket
+  * Allow thumbnailer mount on fonts cache directories
+  * Support confined users usage of bubblewrap
+  * Allow vdagent get attributes of the pidfs filesystem
+  * Allow sshd-session inherit limits from its parent sshd process
+  * Revert "Allow sshd-session inherit limits from its parent process"
+  * Allow sshd-session read network sysctls
+  * Add the fs_write_tmpfs_files() interface
+  * Update gpg policy for interactions with rhc-playbook-verifier
+  * Allow rhc_playbook_verifier_t stream connect to itself
+  * Update policy for rhc-worker-playbook
+  * Allow sudodomain connect to gkeyringd over a unix stream socket
+  * Allow tlshd communication to unconfined_t over a tcp socket
+  * Allow tlshd write generic certificates
+  * Allow thumbnailer connect to abrt over a unix stream socket
+- Syncing with upstream rawhide selinux-policy up to:
+  * 1f374c68142f647ade9fd043592ce4766803ce46
+- Update embedded container-selinux version to commit:
+  * 521cf8c56e8df7cd6809571ed9e796b495ceaa71 (v2.246.0)
+
+-------------------------------------------------------------------
 Tue Feb 24 08:52:40 UTC 2026 - Johannes Segitz <jsegitz@suse.com>
 
 - Split out post install relabel logic into postInstallRelabel marco

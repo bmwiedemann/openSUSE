@@ -36,7 +36,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20260219
+Version:        20260302
 Release:        0
 Source0:        %{name}-%{version}.tar.xz
 Source1:        container.fc
@@ -274,6 +274,7 @@ of systems and used as the basis for creating other policies.
 %dir %{_datadir}/selinux
 %dir %{_datadir}/selinux/packages
 %dir %{_sysconfdir}/selinux
+%dir %{_sharedstatedir}/selinux
 %ghost %config(noreplace) %{_sysconfdir}/selinux/config
 %{_tmpfilesdir}/selinux-policy.conf
 %{_rpmconfigdir}/macros.d/macros.selinux-policy
