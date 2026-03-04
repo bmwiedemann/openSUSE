@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  3 20:41:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10.0:
+  * Feature: JIT builds of CPython are now recognized as a JIT
+    implementation by :func:`perf.python_has_jit`. Patch by Ken
+    Jin.
+  * Feature: Memory tracker now supports BSD. Patch by Laurent
+    Cheylus and Victor Stinner.
+  * Maintenance: pyperf now requires Python 3.9 or higher. Patch
+    by Alex Willmer.
+
+-------------------------------------------------------------------
 Mon Apr 28 16:37:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.0:

@@ -136,4 +136,19 @@
     Droettboom</comment>
     <requestid>1273206</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>72071ca8a3ef0f2db107f100f8aecfc6</srcmd5>
+    <version>2.10.0</version>
+    <time>1772654898</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.10.0:
+  * Feature: JIT builds of CPython are now recognized as a JIT
+    implementation by :func:`perf.python_has_jit`. Patch by Ken
+    Jin.
+  * Feature: Memory tracker now supports BSD. Patch by Laurent
+    Cheylus and Victor Stinner.
+  * Maintenance: pyperf now requires Python 3.9 or higher. Patch
+    by Alex Willmer.</comment>
+    <requestid>1336211</requestid>
+  </revision>
 </revisionlist>
