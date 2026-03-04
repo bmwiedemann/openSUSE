@@ -1,7 +1,7 @@
 #
 # spec file for package libtorrent
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define lname	libtorrent36
+%define lname	libtorrent37
 Name:           libtorrent
-Version:        0.16.6
+Version:        0.16.7
 Release:        0
 Summary:        A BitTorrent library written in C++
 License:        SUSE-GPL-2.0+-with-openssl-exception

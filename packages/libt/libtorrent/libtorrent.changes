@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar  4 12:57:04 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.7
+  * Properly handle libcurl reuse of sockets.
+  * Allow disabling of stream buffering for plaintext logs.
+  * Added SocketManager to handle reuse of uninterested fd's by the
+    kernel.
+  * Allow DHT bootstrap nodes to be added when DHT is off.
+  * Fix use after free in `UdnsResolver::try_resolve_numeric`.
+  * Fix crash in `DhtRouter::bootstrap`.
+  * Fixed various DNS issues and added a buffer that
+    limits/deduplicates active DNS requests.
+
+-------------------------------------------------------------------
 Sat Jan  3 18:10:37 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.6
