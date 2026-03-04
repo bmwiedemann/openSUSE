@@ -1,0 +1,173 @@
+From 076ec9f77439ace72024e55e61e20884758f4296 Mon Sep 17 00:00:00 2001
+From: Luiz Angelo Daros de Luca <luizluca@gmail.com>
+Date: Sun, 3 Aug 2025 02:22:19 -0300
+Subject: [PATCH] Answer NXDOMAIN for _.xxx.yyy.top.domain
+
+When a DNS query name is too long, it is split into multiple domain
+components. However, recursive DNS servers that implement QNAME
+minimization may query each subdomain individually without revealing the
+full name.  As part of this behavior, they often send a preliminary
+query for a hostname like "_" before attempting to resolve the full
+name.  If this query is not handled correctly, it can lead to timeouts
+and failed connections.  The most effective way to avoid this is to
+respond with an NXDOMAIN for such queries.
+
+Signed-off-by: Luiz Angelo Daros de Luca <luizluca@gmail.com>
+---
+ src/dns.c     | 65 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ src/dns.h     |  1 +
+ src/iodined.c | 33 ++++++++++++++++++++++++++
+ src/windows.h |  1 +
+ 4 files changed, 100 insertions(+)
+
+diff --git a/src/dns.c b/src/dns.c
+index 22d9ef42..9721f3e2 100644
+--- a/src/dns.c
++++ b/src/dns.c
+@@ -390,6 +390,71 @@ int dns_encode_a_response(char *buf, size_t buflen, struct query *q)
+ 	return len;
+ }
+ 
++int dns_encode_nxdomain(char *buf, size_t buflen, struct query *q, const char *zone)
++{
++	char rnamebuf[256];
++	char nsbuf[256];
++	HEADER *header;
++	char *soa_start;
++	char *p;
++
++	if (buflen < sizeof(HEADER))
++		return 0;
++
++	memset(buf, 0, buflen);
++	header = (HEADER*)buf;
++
++	header->id = htons(q->id);
++	header->qr = 1;		// response
++	header->opcode = 0;
++	header->aa = 1;		// authoritative
++	header->tc = 0;
++	header->rd = 0;
++	header->ra = 0;
++	header->rcode = 3;	// NXDOMAIN
++
++	header->qdcount = htons(1);
++	header->ancount = htons(0);
++	header->nscount = htons(1); // We'll include SOA
++	header->arcount = htons(0);
++
++	p = buf + sizeof(HEADER);
++
++	// Question section
++	putname(&p, buflen - (p - buf), q->name);
++	CHECKLEN(4);
++	putshort(&p, q->type);
++	putshort(&p, C_IN);
++
++	// Authority section (SOA)
++	CHECKLEN(10);
++	putname(&p, buflen - (p - buf), zone); // zone name (owner of SOA)
++	putshort(&p, T_SOA);
++	putshort(&p, C_IN);
++	putlong(&p, 60); // TTL
++
++	soa_start = p;
++	p += 2; // skip rdlength (to be filled later)
++
++	// Primary NS and responsible mailbox
++	snprintf(nsbuf, sizeof(nsbuf), "ns.%s", zone);
++	putname(&p, buflen - (p - buf), nsbuf);
++	snprintf(rnamebuf, sizeof(rnamebuf), "hostmaster.%s", zone);
++	putname(&p, buflen - (p - buf), rnamebuf);
++
++	// SOA fields: serial, refresh, retry, expire, minimum
++	putlong(&p, 1);		// serial
++	putlong(&p, 3600);	// refresh
++	putlong(&p, 1800);	// retry
++	putlong(&p, 604800);	// expire
++	putlong(&p, 60);	// minimum
++
++	int soalen = p - soa_start - 2;
++	putshort(&soa_start, soalen); // fill in rdlength
++
++	return p - buf;
++}
++
+ #undef CHECKLEN
+ 
+ unsigned short dns_get_id(char *packet, size_t packetlen)
+diff --git a/src/dns.h b/src/dns.h
+index 660f6105..aa179ab5 100644
+--- a/src/dns.h
++++ b/src/dns.h
+@@ -31,6 +31,7 @@ int dns_encode(char *, size_t, struct query *, qr_t, const char *, size_t);
+ int dns_encode_ns_response(char *buf, size_t buflen, struct query *q,
+ 			   char *topdomain);
+ int dns_encode_a_response(char *buf, size_t buflen, struct query *q);
++int dns_encode_nxdomain(char *buf, size_t buflen, struct query *q, const char *zone);
+ unsigned short dns_get_id(char *packet, size_t packetlen);
+ int dns_decode(char *, size_t, struct query *, qr_t, char *, size_t);
+ 
+diff --git a/src/iodined.c b/src/iodined.c
+index f2d1dc56..6b6d1a48 100644
+--- a/src/iodined.c
++++ b/src/iodined.c
+@@ -1597,6 +1597,27 @@ handle_a_request(int dns_fd, struct query *q, int fakeip)
+ 	}
+ }
+ 
++static void
++handle_underscore_request(int dns_fd, struct query *q, const char *topdomain)
++{
++	char buf[64*1024];
++	int len;
++
++	len = dns_encode_nxdomain(buf, sizeof(buf), q, topdomain);
++	if (len < 1) {
++		warnx("dns_encode_nxdomain doesn't fit");
++		return;
++	}
++
++	if (debug >= 2) {
++		fprintf(stderr, "TX: client %s, type %d, name %s, %d bytes NXDOMAIN reply\n",
++			format_addr(&q->from, q->fromlen), q->type, q->name, len);
++	}
++	if (sendto(dns_fd, buf, len, 0, (struct sockaddr*)&q->from, q->fromlen) <= 0) {
++		warn("nxdomain reply send error");
++	}
++}
++
+ static void
+ forward_query(int bind_fd, struct query *q)
+ {
+@@ -1719,6 +1740,18 @@ tunnel_dns(int tun_fd, int dns_fd, struct dnsfd *dns_fds, int bind_fd)
+ 			return 0;
+ 		}
+ 
++		/* Handle A-type query for _.***.topdomain. It happens when
++		 *
++		 * https://datatracker.ietf.org/doc/html/rfc7816 (qname minimisation)
++		 * https://github.com/isc-projects/bind9/commit/ae52c2117eba9fa0778125f4e10834d673ab811b
++		 * */
++		if (q.type == T_A &&
++		    (q.name[0] == '_') &&
++		     q.name[1] == '.') {
++			handle_underscore_request(dns_fd, &q, topdomain);
++			return 0;
++		}
++
+ 		switch (q.type) {
+ 		case T_NULL:
+ 		case T_PRIVATE:
+diff --git a/src/windows.h b/src/windows.h
+index 065c243f..d91126a3 100644
+--- a/src/windows.h
++++ b/src/windows.h
+@@ -40,6 +40,7 @@ typedef unsigned int in_addr_t;
+ #define T_CNAME DNS_TYPE_CNAME
+ #define T_MX DNS_TYPE_MX
+ #define T_TXT DNS_TYPE_TXT
++#define T_SOA DNS_TYPE_SOA
+ #define T_SRV DNS_TYPE_SRV
+ 
+ #define C_IN 1

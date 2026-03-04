@@ -1,8 +1,8 @@
 #
 # spec file for package iodine
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2012 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2026 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,10 @@
 %endif
 
 Name:           iodine
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        IPv4-through-DNS tunnel server and client
 License:        ISC
-Group:          Productivity/Networking/System
 URL:            http://code.kryo.se/iodine/
 Source0:        http://code.kryo.se/iodine/iodine-%{version}.tar.gz
 Source1:        iodine.service
@@ -35,10 +34,13 @@ Source2:        sysconfig.iodine
 Source3:        iodined.service
 Source4:        sysconfig.iodined
 Source5:        system-user-iodined.conf
-#PATCH-FIX-OPENSUSE iodine-fix-makefile-prefix.patch malcolmlewis@opensuse.org -- Modify default install prefix.
+##PATCH-FIX-OPENSUSE iodine-fix-makefile-prefix.patch malcolmlewis@opensuse.org -- Modify default install prefix.
 Patch0:         iodine-fix-makefile-prefix.patch
+##PATCH-FIX-UPSTREAM 120.patch -- based on PR 120
+Patch1:         https://github.com/yarrick/iodine/pull/120.patch
 BuildRequires:  fdupes
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(systemd)
 # iodine still uses ifconfig
 Requires:       net-tools-deprecated
@@ -63,9 +65,7 @@ firewalled, but DNS queries are allowed.
 
 %build
 make PREFIX="%{_prefix}"
-%if 0%{?suse_version} >= 1550
 %sysusers_generate_pre %{SOURCE5} iodine system-user-iodined.conf
-%endif
 
 %install
 make install PREFIX="%{buildroot}/%{_prefix}"
@@ -79,25 +79,20 @@ install -m 0644 %{S:3} %{buildroot}%{_unitdir}/
 install -m 0644 %{S:4} %{buildroot}%{_fillupdir}/
 # Copy common man page to avoid warning
 pushd %{buildroot}%{_mandir}/man8/
-cp %{name}.8 %{name}d.8
+ln -s %{name}.8 %{name}d.8
 popd
+## Remove as we install as %%doc
+rm -rf %{buildroot}%{_datadir}/doc/iodine
 # make chroot dir
 mkdir -p %{buildroot}/var/lib/iodined
 # make rc-link
 ln -sf /usr/sbin/service %{buildroot}%{_sbindir}/rciodine
 ln -sf /usr/sbin/service %{buildroot}%{_sbindir}/rciodined
-%if 0%{?suse_version} >= 1550
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 0644 %{SOURCE5} %{buildroot}%{_sysusersdir}/
-%endif
 
-%if 0%{?suse_version} >= 1550
 %pre -f iodine.pre
-%else
 
-%pre
-/usr/sbin/useradd -r -d /var/lib/iodined -s /bin/false -c "user for iodine dns tunnel" -g nobody iodined 2> /dev/null || :
-%endif
 %service_add_pre iodine.service iodined.service
 
 %post
@@ -112,7 +107,8 @@ install -m 0644 %{SOURCE5} %{buildroot}%{_sysusersdir}/
 %service_del_postun iodine.service iodined.service
 
 %files
-%doc CHANGELOG README TODO
+%license LICENSE
+%doc CHANGELOG README.md
 %{_sbindir}/%{name}
 %{_sbindir}/%{name}d
 %{_fillupdir}/sysconfig.iodine
@@ -121,9 +117,7 @@ install -m 0644 %{SOURCE5} %{buildroot}%{_sysusersdir}/
 %{_sbindir}/rciodined
 %{_unitdir}/iodine.service
 %{_unitdir}/iodined.service
-%if 0%{?suse_version} >= 1550
 %{_sysusersdir}/system-user-iodined.conf
-%endif
 %{_mandir}/man8/%{name}.8%{?ext_man}
 %{_mandir}/man8/%{name}d.8%{?ext_man}
 %attr(0700,iodined,nobody)/var/lib/iodined
