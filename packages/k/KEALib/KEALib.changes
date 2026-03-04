@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Feb 19 10:43:43 UTC 2026 - Libor Pechacek <lpechacek@gmx.com>
+
+- Update to version 1.6.2:
+  * prepare for v1.6.2 (#77)
+  * Fixes for recent cmake (#76)
+  * flush on each RAT operation (#75)
+  * add __version__ to Python bindings, get ready for 1.6.1
+    (#74)
+  * fix memory leaks, close dataset for neighbours (#73)
+  * prepare for 1.6.0 (#69)
+  * use default native chunksize to copy RAT (#68)
+  * remove ArcGIS and ERDAS Imagine driver sources (#67)
+  * Fix overview writing and reduce warnings from released GDAL
+    (#66)
+  * Don't derive from PAM classes for GDAL driver (#64)
+  * up chunk sizes (#62)
+  * try setting baseurl (#61)
+  * Fix Python link. add Gemfile and try and fix title (#60)
+  * copy into new dir (#59)
+  * run jekyll as part of the actions (#58)
+  * change main to master in deplit if statement (#57)
+  * just upload docs folder (#56)
+  * update from github template (#55)
+  * add missing file (#54)
+  * dumps docs for C++ and Python and make a start on github
+    page for kealib (#52)
+  * Add thread safety and quieten hdf5 stack trace (#51)
+  * Update to show 1.6.0 (#50)
+  * get ready for version 1.5.3 (#49)
+  * Add C++11 as build requirement in CMake (#48)
+  * Export `Kealib` CMake package with `Kealib::Kealib` (#47)
+  * Fix Kealib interface target (#45)
+  * #include <H5Cpp.h> (#46)
+  * add support for /vsi datasets in GDAL plugin (#44)
+  * backport GDAL #8788 (#43)
+  * get ready for version 1.5.2 (#41)
+  * fix parallel build and don't depend on HL (#40)
+  * Jammy build scripts (#35)
+  * load libgdal on demand (#34)
+  * change way awkward version detection works (#33)
+  * update distro instructions
+  * update .iss files and Changes.txt (#32)
+  * Create a cmake export target (#31)
+  * Update Python bindings to build with recent awkward-array
+    and improve testing (#30)
+
+-------------------------------------------------------------------
 Fri Mar 17 10:12:44 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file

@@ -1,7 +1,7 @@
 #
 # spec file for package KEALib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define soversion 1_5
+%define soversion 1_6
 %define sourcename kealib
 %bcond_with gdal_plugin
 Name:           KEALib
-Version:        1.5.0
+Version:        1.6.2
 Release:        0
 Summary:        An implementation of the GDAL data model
 License:        MIT
@@ -29,6 +29,7 @@ URL:            http://www.KEALib.org/
 Source0:        https://github.com/ubarsc/kealib/releases/download/%{sourcename}-%{version}/%{sourcename}-%{version}.tar.gz
 Patch0:         0001-fix-shebang-interpreter.patch
 BuildRequires:  cmake >= 2.8.10
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
 BuildRequires:  zlib-devel
@@ -94,6 +95,7 @@ cp ../build/include/libkea/kea-config.h ../include/libkea/kea-config.h
 
 %install
 %cmake_install
+%fdupes %{buildroot}%{_prefix}/lib/cmake
 
 %if %{__isa_bits} == 64
 mv %{buildroot}%{_prefix}/lib %{buildroot}/%{_libdir}
@@ -119,6 +121,10 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 %{_includedir}/libkea/KEAImageIO.h
 %{_includedir}/libkea/kea-config.h
 %{_includedir}/libkea/kea_export.h
+%dir %{_libdir}/cmake/Kealib/
+%{_libdir}/cmake/Kealib/*.cmake
+%dir %{_libdir}/cmake/libkea/
+%{_libdir}/cmake/libkea/*.cmake
 
 %{_libdir}/libkea.so
 
