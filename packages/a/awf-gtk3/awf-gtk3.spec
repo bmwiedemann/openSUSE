@@ -1,7 +1,7 @@
 #
 # spec file for package awf-gtk3
 #
-# Copyright (c) 2021-2025 SUSE LLC
+# Copyright (c) 2021-2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           awf-gtk3
-Version:        3.2.0
+Version:        4.0.0
 Release:        0
 Summary:        Theme preview application for GTK 3
 Summary(fr):    Application d'aperçu de thème pour GTK 3
@@ -33,22 +33,22 @@ BuildRequires:  gcc
 BuildRequires:  gettext
 BuildRequires:  gtk3-devel
 Requires:       gtk3
-Requires:       libnotify >= 0.7.0
 Requires:       hicolor-icon-theme
+Requires:       libnotify >= 0.7.0
 
 %description %{expand:
-A widget factory is a theme preview application for GTK. It displays the
-various widget types provided by GTK in a single window allowing to see
+A widget factory is a theme preview application for GTK and Qt. It
+displays the various widget types in a single window allowing to see
 the visual effect of the applied theme.
 
-This package provides the GTK 3 version.}
+This package provides the program for GTK 3.}
 
 %description -l fr %{expand:
-La fabrique à widgets est une application d'aperçu de thème pour GTK. Elle
-affiche les différents types de widgets fournis par GTK dans une seule
+La fabrique à widgets est une application d'aperçu de thème pour GTK
+et Qt. Elle affiche les différents types de widgets dans une seule
 fenêtre permettant de voir l'effet visuel du thème appliqué.
 
-Ce paquet fournit la version GTK 3.}
+Ce paquet fournit le programme pour GTK 3.}
 
 %prep
 %setup -q -n awf-extended-%{version}
