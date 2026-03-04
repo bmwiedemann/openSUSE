@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  4 09:18:08 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.2.29
+  * CVE-2026-25674: Potential incorrect permissions on newly created
+    file system objects (bsc#1259142)
+
+-------------------------------------------------------------------
 Mon Feb 23 15:35:15 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Add skip-flaky-tests.patch to skip tests which randomly fail

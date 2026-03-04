@@ -7,4 +7,14 @@
     <comment>I have second thoughts, let's keep Django 4.2 until its EOL (April 2026) for user convenience</comment>
     <requestid>1334546</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0c6e0de0ef3178b3913a71d297fd8162</srcmd5>
+    <version>4.2.29</version>
+    <time>1772654992</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.2.29
+  * CVE-2026-25674: Potential incorrect permissions on newly created
+    file system objects (bsc#1259142)</comment>
+    <requestid>1336304</requestid>
+  </revision>
 </revisionlist>
