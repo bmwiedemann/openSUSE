@@ -46,4 +46,12 @@
 - Brutal simplification, don’t use luarocks, but just Unix tools.</comment>
     <requestid>1315141</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>05619d4f2b04f31d03ee9995d3323c93</srcmd5>
+    <version>2.3.2</version>
+    <time>1772654774</time>
+    <user>anag_factory</user>
+    <comment>Enable lua55 build.</comment>
+    <requestid>1336339</requestid>
+  </revision>
 </revisionlist>
