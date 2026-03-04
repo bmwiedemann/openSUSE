@@ -1,7 +1,7 @@
 #
 # spec file for package perf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -139,7 +139,9 @@ the Python programming language to manipulate perf events.
 %prep
 # copy necessary files from kernel-source since we need to modify them
 (cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,tools,Makefile} lib kernel/bpf/disasm.[ch]) | tar -xf -
-chmod +x tools/perf/util/generate-cmdlist.sh
+# removed by 47d3545faeeb in 7.0
+cmdlist=tools/perf/util/generate-cmdlist.sh
+test -f "$cmdlist" && chmod +x "$cmdlist"
 %autopatch -p1 -m%{version_pure}0
 
 # don't error out on deprecated definitions in gtk2.h
