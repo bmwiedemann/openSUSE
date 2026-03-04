@@ -429,7 +429,6 @@ done
 %{_mandir}/man8/chcat.8%{?ext_man}
 %{_mandir}/man8/semanage*.8%{?ext_man}
 %{_datadir}/bash-completion/completions/semanage
-%dir %{_localstatedir}/lib/selinux
 
 %files devel
 %{_bindir}/sepolgen
@@ -446,7 +445,7 @@ done
 %{_mandir}/man8/sepolicy-transition.8%{?ext_man}
 %{_mandir}/man8/sepolicy.8%{?ext_man}
 %{_mandir}/man8/sepolgen.8%{?ext_man}
-%dir %{_localstatedir}/lib/sepolgen
+%ghost %dir %{_localstatedir}/lib/sepolgen
 %ghost %{_localstatedir}/lib/sepolgen/perm_map
 %dir %{_datadir}/sepolgen
 %{_datadir}/sepolgen/perm_map
