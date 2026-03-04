@@ -7,4 +7,15 @@
     <comment>JavaScript regular expressions for Lua (new package for Factory)</comment>
     <requestid>1313534</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4944c58593b83e1667eaf249b510bf1d</srcmd5>
+    <version>0.2.0</version>
+    <time>1772654791</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.2.0:
+  - Update libregexp to 2025-09-13
+
+- Enable lua55 build.</comment>
+    <requestid>1336364</requestid>
+  </revision>
 </revisionlist>

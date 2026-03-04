@@ -18,12 +18,12 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name jsregexp
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
 Summary:        JavaScript regular expressions for Lua
 License:        MIT
 URL:            https://github.com/kmarius/jsregexp
-Source:         https://github.com/kmarius/jsregexp/archive/refs/tags/v%{version}.tar.gz
+Source:         https://github.com/kmarius/%{mod_name}/archive/refs/tags/v%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 BuildRequires:  lua-macros
 Requires:       %{flavor}

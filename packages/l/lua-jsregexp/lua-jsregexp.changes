@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar  4 12:41:02 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.2.0:
+  - Update libregexp to 2025-09-13
+
+-------------------------------------------------------------------
+Fri Jan 23 21:40:32 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Enable lua55 build.
+
+-------------------------------------------------------------------
 Fri Oct 24 14:48:10 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch off building lua51 build of the package.
