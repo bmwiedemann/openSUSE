@@ -12726,7 +12726,7 @@ unsorted:
   - libcosmos-4 
   - libcosmos-devel 
   - libcotp-devel 
-  - libcotp3 
+  - libcotp4 
   - libcowsql0 
   - libcpath-devel 
   - libcpath1 
@@ -14270,7 +14270,7 @@ unsorted:
   - libkea-tcp33 
   - libkea-util-io12 
   - libkea-util101 
-  - libkea1_5 
+  - libkea1_6 
   - libkeccak-devel 
   - libkeccak1 
   - libkeduvocdocument-devel 
@@ -16655,7 +16655,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent36 
+  - libtorrent37 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm2-totp0 
@@ -17966,45 +17966,75 @@ unsorted:
   - lua55-alt-getopt 
   - lua55-argparse 
   - lua55-busted 
+  - lua55-cassowary 
   - lua55-cffi-lua 
   - lua55-cffi-lua-doc 
   - lua55-cjson 
+  - lua55-cldr 
   - lua55-cliargs 
   - lua55-compat-5.3 
   - lua55-compat-5.3-bit32 
+  - lua55-copas 
   - lua55-cosmo 
+  - lua55-coxpcall 
+  - lua55-cyrussasl 
   - lua55-datafile 
   - lua55-devel 
   - lua55-dkjson 
   - lua55-doc 
+  - lua55-editorconfig-core-lua 
+  - lua55-fluent 
+  - lua55-inspect 
+  - lua55-jsregexp 
   - lua55-ldbus 
   - lua55-ldoc 
+  - lua55-lgi 
+  - lua55-lgi-doc 
+  - lua55-linenoise 
   - lua55-loadkit 
   - lua55-lpeg 
   - lua55-lpeg-doc 
   - lua55-lpeg_patterns 
+  - lua55-lua-dbus 
   - lua55-lua-ev 
   - lua55-lua-ev-devel 
+  - lua55-lua-mpris 
   - lua55-luacheck 
   - lua55-luacov 
+  - lua55-luadbi 
+  - lua55-luaepnf 
+  - lua55-luaevent 
+  - lua55-luaexpat 
   - lua55-luafilesystem 
+  - lua55-lualdap 
   - lua55-luaposix 
+  - lua55-luarepl 
   - lua55-luarocks 
   - lua55-luasec 
   - lua55-luasocket 
   - lua55-luasocket-devel 
   - lua55-luasocket-doc 
+  - lua55-luasql 
   - lua55-luassert 
   - lua55-luasystem 
   - lua55-luaterm 
+  - lua55-luaunbound 
   - lua55-luautf8 
   - lua55-luv 
   - lua55-lyaml 
   - lua55-markdown 
   - lua55-mediator_lua 
+  - lua55-messagepack 
   - lua55-moonscript 
+  - lua55-mpack 
   - lua55-penlight 
+  - lua55-readline 
   - lua55-say 
+  - lua55-shell-games 
+  - lua55-slaxml 
+  - lua55-testmore 
+  - lua55-vstruct 
+  - lua55-zlib 
   - luabind-devel 
   - luajit 
   - luajit-alt-getopt 
@@ -21243,6 +21273,7 @@ unsorted:
   - patterns-lxde-lxde_laptop 
   - patterns-lxde-lxde_office 
   - patterns-lxqt-lxqt 
+  - patterns-lxqt-lxqt_wayland 
   - patterns-mate-mate 
   - patterns-mate-mate_admin 
   - patterns-mate-mate_basis 
@@ -25403,6 +25434,7 @@ unsorted:
   - python311-django-money 
   - python311-django-mptt 
   - python311-django-nine 
+  - python311-django-ninja 
   - python311-django-oauth-toolkit 
   - python311-django-oidc-provider 
   - python311-django-otp 
@@ -28005,7 +28037,6 @@ unsorted:
   - python311-zxcvbn 
   - python311-zxcvbn-rs-py 
   - python312 
-  - python312-Pint 
   - python312-base 
   - python312-base-x86-64-v3 
   - python312-bpython 
@@ -28038,7 +28069,6 @@ unsorted:
   - python312-testsuite 
   - python312-tk 
   - python312-tools 
-  - python312-unyt 
   - python312-x86-64-v3 
   - python313-32bit 
   - python313-APScheduler 
@@ -29274,6 +29304,7 @@ unsorted:
   - python313-django-money 
   - python313-django-mptt 
   - python313-django-nine 
+  - python313-django-ninja 
   - python313-django-oauth-toolkit 
   - python313-django-oidc-provider 
   - python313-django-otp 
