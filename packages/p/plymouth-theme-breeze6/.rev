@@ -316,4 +316,12 @@ Without this, the theme can't be selected:
     <comment>Plasma 6.6.1, not fully built yet. Biggest change is sover bump in libplasma6. (forwarded request 1334876 from Vogtinator)</comment>
     <requestid>1334987</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>f8b992c0f5121dbf3556eb9ebe1ff349</srcmd5>
+    <version>6.6.2</version>
+    <time>1772654715</time>
+    <user>anag_factory</user>
+    <comment> (forwarded request 1336072 from Vogtinator)</comment>
+    <requestid>1336138</requestid>
+  </revision>
 </revisionlist>
