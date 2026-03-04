@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 28 02:14:35 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Enable build for Lua 5.5.
+
+-------------------------------------------------------------------
 Fri Oct 24 14:47:57 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch off building lua51 build of the package.
