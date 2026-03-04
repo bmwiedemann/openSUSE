@@ -73,4 +73,12 @@
   API &lt; 5.2 (gh#libmpack/libmpack-lua!34).</comment>
     <requestid>1315188</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>43a03552d810b435d8a81dfd7c7940ed</srcmd5>
+    <version>1.0.13</version>
+    <time>1772654784</time>
+    <user>anag_factory</user>
+    <comment>- Enable lua55 build.</comment>
+    <requestid>1336344</requestid>
+  </revision>
 </revisionlist>
