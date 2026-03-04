@@ -44,7 +44,7 @@ BuildRequires:  %{python_module testfixtures}
 %if 0%{?sle_version} && 0%{?sle_version} <= 150400
 BuildRequires:  %{python_module dataclasses}
 %endif
-%if 0%{suse_version} > 1600
+%if 0%{suse_version} >= 1699
 BuildRequires:  %{python_module seedir}
 %endif
 %endif
@@ -63,7 +63,7 @@ of the normal test run. Integration is provided for the main Python test runners
 %autosetup -p1 -n sybil-%{version}
 sed -i '/pytest-cov/ d'  setup.py
 
-%if 0%{suse_version} <= 1600
+%if 0%{suse_version} < 1699
 # Remove seedir dependency for SLFO
 sed -i '/import seedir/d' tests/helpers.py
 %endif
@@ -80,7 +80,7 @@ sed -i '/import seedir/d' tests/helpers.py
 %check
 %if %{with test}
 
-%if 0%{suse_version} <= 1600
+%if 0%{suse_version} < 1699
 # Remove seedir build dependency
 test_flags="--ignore docs/patterns.rst"
 %endif

@@ -226,4 +226,13 @@
   * Add documentation around testing custom lexers and parsers.</comment>
     <requestid>1329543</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>0e4518a08a4440ed0705a266d8139a0e</srcmd5>
+    <version>9.3.0</version>
+    <time>1772654569</time>
+    <user>anag_factory</user>
+    <comment>- Fix the condition with suse_version macro on SLFO (jsc#PED-15847)
+</comment>
+    <requestid>1335845</requestid>
+  </revision>
 </revisionlist>
