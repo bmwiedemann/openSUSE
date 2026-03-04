@@ -518,4 +518,24 @@ Update to pygit2 1.17.0 and make sure it builds with libgit2 1.9.
     <comment></comment>
     <requestid>1302433</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>60b2217db7ca521ade4fe46a8c0b29fc</srcmd5>
+    <version>1.19.1</version>
+    <time>1772654899</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.19.1:
+  * Fix: now diff's getitem/iter returns `None` for unchanged or
+    binary files
+  * Add support for Python 3.14 and drop 3.10
+  * Support threaded builds (experimental)
+  * New `Repository.transaction()` context manager, returns new
+    `ReferenceTransaction`
+  * Remove deprecated `IndexEntry.hex`, use `str(entry.id)`
+    instead of `entry.hex`
+  * Deprecate `IndexEntry.oid`, use `entry.id` instead of
+    `entry.oid`
+
+    `Blob.diff_to_buffer(...)`</comment>
+    <requestid>1336212</requestid>
+  </revision>
 </revisionlist>
