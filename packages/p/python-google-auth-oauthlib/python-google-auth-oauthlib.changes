@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  4 10:00:47 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.3.0
+  * Log the flow.run_local_server redirect URL (#362)
+  * Raise meaningful exception when oauth callback times out (#363)
+
+-------------------------------------------------------------------
 Mon Jan 19 10:33:39 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.2.4

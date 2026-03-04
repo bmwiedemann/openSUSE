@@ -192,4 +192,14 @@
     <comment></comment>
     <requestid>1328068</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f24c4b0a3dcc9d9116a3a66f7bf4ac27</srcmd5>
+    <version>1.3.0</version>
+    <time>1772655030</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.3.0
+  * Log the flow.run_local_server redirect URL (#362)
+  * Raise meaningful exception when oauth callback times out (#363) (forwarded request 1336316 from glaubitz)</comment>
+    <requestid>1336386</requestid>
+  </revision>
 </revisionlist>
