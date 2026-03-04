@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 24 19:28:09 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 7.8.0:
+  * HeaderLabel now has ellipsize property
+  * ListItem now has a menu_model property
+  * Updated translations
+
+-------------------------------------------------------------------
 Sun Dec 21 00:53:47 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 7.7.0:

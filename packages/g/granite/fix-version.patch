@@ -1,6 +1,6 @@
-diff -rubN granite-7.7.0/lib/meson.build granite-7.7.0-patched/lib/meson.build
---- granite-7.7.0/lib/meson.build	2025-09-30 23:20:30.000000000 +0200
-+++ granite-7.7.0-patched/lib/meson.build	2025-12-21 01:49:36.144957533 +0100
+diff -rubN granite-7.8.0/lib/meson.build granite-7.8.0-patched/lib/meson.build
+--- granite-7.8.0/lib/meson.build	2026-02-09 23:22:26.000000000 +0100
++++ granite-7.8.0-patched/lib/meson.build	2026-02-24 20:31:07.313272014 +0100
 @@ -82,7 +82,7 @@
      vala_vapi: 'granite-7.vapi',
      vala_gir: granite_gir,
@@ -10,14 +10,15 @@ diff -rubN granite-7.7.0/lib/meson.build granite-7.7.0-patched/lib/meson.build
      install: true,
      install_dir: [true, include_dir, true, true],
  )
-diff -rubN granite-7.7.0/meson.build granite-7.7.0-patched/meson.build
---- granite-7.7.0/meson.build	2025-09-30 23:20:30.000000000 +0200
-+++ granite-7.7.0-patched/meson.build	2025-12-21 01:49:58.839752380 +0100
-@@ -4,6 +4,7 @@
-     meson_version: '>= 0.57.0',
-     version: '7.7.0'
+diff -rubN granite-7.8.0/meson.build granite-7.8.0-patched/meson.build
+--- granite-7.8.0/meson.build	2026-02-09 23:22:26.000000000 +0100
++++ granite-7.8.0-patched/meson.build	2026-02-24 20:31:31.441025336 +0100
+@@ -5,6 +5,8 @@
+     version: '7.8.0'
  )
-+granite_major = '7'
  
++granite_major = '7'
++
  if meson.get_compiler('vala').version().version_compare('<0.48.0')
      error('vala compiler version 0.48.0 or newer is required.')
+ endif

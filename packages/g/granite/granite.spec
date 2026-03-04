@@ -1,7 +1,7 @@
 #
 # spec file for package granite
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,9 @@
 
 
 %define         sover 7
-%define         soname 7_6_0
 %define         appid io.elementary.granite-%{sover}
 Name:           granite
-Version:        7.7.0
+Version:        7.8.0
 Release:        0
 Summary:        An extension of GTK+ libraries
 License:        LGPL-3.0-or-later
