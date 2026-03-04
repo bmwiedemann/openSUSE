@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  4 08:34:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * switch to tomllib for python >= 3.11
+  * pylint 4 fixes
+
+-------------------------------------------------------------------
 Tue Jan 20 04:06:55 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.3.2:

@@ -121,4 +121,14 @@
 - Drop patch fix-astroid-import.patch, merged upstream.</comment>
     <requestid>1328166</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1839006fa5737debb8be6f6ed895f8fa</srcmd5>
+    <version>1.5.0</version>
+    <time>1772654975</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.5.0:
+  * switch to tomllib for python &gt;= 3.11
+  * pylint 4 fixes</comment>
+    <requestid>1336289</requestid>
+  </revision>
 </revisionlist>
