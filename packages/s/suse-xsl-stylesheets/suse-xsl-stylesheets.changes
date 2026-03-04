@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  2 10:44:22 UTC 2026 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.30
+
+- Update 2.95.30
+  * Update Qualtics JS (#783)
+  * Changes for sticky sidenav & breadcrumb-bar (#787)
+  * Fix #784: Improve nested numbered list (#786)
+  * Raise SUSE header version 1.9 -> 1.10 (#782)
+
+-------------------------------------------------------------------
 Tue Feb  3 15:18:26 UTC 2026 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.29
 
 - Update 2.95.29
