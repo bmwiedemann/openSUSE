@@ -887,4 +887,12 @@
     <comment>- Add mic-mute and Windows-key handling for Wayland labwc (bsc#1248802) (forwarded request 1308399 from tiwai)</comment>
     <requestid>1308423</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>7c320fdb8e8a0bdf2cddfc4ffc619478</srcmd5>
+    <version>4.20.4</version>
+    <time>1772655120</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1336556</requestid>
+  </revision>
 </revisionlist>
