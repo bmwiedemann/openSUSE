@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  2 21:21:54 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.23.1:
+  * ksycocafactory: guard against integer underflow
+  * ksycocafactory: do not crash when failing to find a factory stream
+  * ksycoca: do not allow for recursive repairs (kde#516426)
+
+-------------------------------------------------------------------
 Fri Feb  6 14:25:58 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.23.0
