@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Mar  4 07:38:33 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.0.0:
+  Breaking Changes
+    + SHA1, SHA256, SHA512 renamed to COTP_SHA1, COTP_SHA256, COTP_SHA512 (thanks to @CppPhil)
+    + MIN_DIGTS typo fixed to MIN_DIGITS
+    + typedef unsigned char uchar removed; base32_encode now takes const uint8_t *, base32_decode returns uint8_t *
+    + b32_alphabet is no longer exported (now static)
+    + MSVC support dropped
+    + get_hotp / get_totp / get_totp_at return NULL on all error paths; callers must check the return value and the cotp_error_t output parameter
+    + The library no longer prints to stderr on errors; all diagnostics are reported via cotp_error_t
+  New Features
+    + Context API (cotp_ctx): ergonomic wrapper for repeated TOTP calls with the same configuration (cotp_ctx_create, cotp_ctx_totp, cotp_ctx_totp_at, cotp_ctx_free)
+    + Optional validation helper (-DCOTP_ENABLE_VALIDATION=ON): validate_totp_in_window() for window-based TOTP verification with timing-safe comparison
+    + CMake package config: consumers can now use find_package(COTP CONFIG) and link via COTP::cotp
+  Improvements
+    + otp_to_int() now validates input for NULL and non-digit characters before conversion
+    + Base32 get_char_index and valid_b32_str use O(1) lookup tables instead of O(n) loops
+    + Base32 decode buffer calculation uses exact integer arithmetic instead of floating-point approximation
+    + islower()/toupper() calls cast to unsigned char to avoid undefined behaviour on signed char
+  Security Fixes
+    + Added runtime bounds checks in RFC 4226 truncation and Steam code paths (offset and length validated before array access)
+    + Fixed potential NULL dereference in OpenSSL backend (whmac_setkey error path now frees context and sets ctx = NULL)
+    + Fixed OOB read in strip_char (Base32): lookup table was 128 bytes but indexed with full uint8_t range (0–255)
+    + Fixed undefined behaviour in base32_encode: strlen() on potentially non-NUL-terminated binary input replaced with bounds-safe check
+    + Added NULL guards to whmac_freehandle() across all three backends
+    + Fixed MbedTLS whmac_finalize returning buflen instead of actual digest length
+    + mbedtls_md_hmac_starts() return value is now checked
+    + Timing-safe comparison (cotp_timing_safe_memcmp) used in TOTP window validation
+    + cotp_secure_memzero() applied to decoded secrets and HMAC digests immediately after use
+
+-------------------------------------------------------------------
 Mon Dec 22 16:42:11 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.1.1:

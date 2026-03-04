@@ -1,7 +1,7 @@
 #
 # spec file for package libcotp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,9 @@
 %endif
 %endif
 
-%define libsoname %{name}3
+%define libsoname %{name}4
 Name:           libcotp
-Version:        3.1.1
+Version:        4.0.0
 Release:        0
 Summary:        C library for generating TOTP and HOTP
 License:        Apache-2.0
@@ -97,5 +97,10 @@ cd build
 %{_libdir}/*.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/cotp.pc
+%dir %{_libdir}/cmake/COTP
+%{_libdir}/cmake/COTP/COTPConfig.cmake
+%{_libdir}/cmake/COTP/COTPConfigVersion.cmake
+%{_libdir}/cmake/COTP/cotpTargets-relwithdebinfo.cmake
+%{_libdir}/cmake/COTP/cotpTargets.cmake
 
 %changelog
