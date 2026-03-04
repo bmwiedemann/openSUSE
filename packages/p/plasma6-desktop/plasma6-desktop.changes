@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar  3 12:27:52 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.2
+- Changes since 6.6.1:
+  * Update version for new release 6.6.2
+  * applets/kicker: disable hover blocking on press
+  * applets/kicker: set scrollbar width delayed (kde#516462)
+  * Close Widget resize handles when exiting edit mode
+  * keys/FilteredModel: Remove deprecated invalidation, check if currentItem exists (kde#516488,kde#516607)
+  * keys/ui: Fix undefined warnings
+  * applets/kicker,kickoff: use mipmap for fallback image
+  * Positioner: don't restore changed positions when there are no positions
+  * Positioner: Check if we need to defer applying positions during model conversion (kde#516559)
+  * appiumtests/desktop: run folderviewtest on Wayland
+  * applets/kicker: fix visual searching glitches
+  * FolderView: Use system accent color for selection rectangle instead of Plasma theme's (kde#516498)
+
+-------------------------------------------------------------------
 Fri Feb 27 14:27:54 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add explicit dependency on qt6qmlimport(org.kde.plasma.plasma5support)
