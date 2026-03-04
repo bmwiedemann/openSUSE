@@ -1,7 +1,7 @@
 #
 # spec file for package pulseaudio-qt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,16 +21,16 @@
 %define pkg_suffix 6
 %define qt6 1
 %define kf6_version 6.0.0
-%define qt6_version 6.6.0
+%define qt6_version 6.7.0
 %define library_name libKF6PulseAudioQt5
 %else
-ExclusiveArch: do_not_build
+ExclusiveArch:  do_not_build
 %endif
 
 %define rname pulseaudio-qt
 %bcond_without released
 Name:           pulseaudio-qt%{?pkg_suffix}
-Version:        1.7.0
+Version:        1.8.1
 Release:        0
 Summary:        Qt bindings for PulseAudio
 License:        LGPL-2.1-or-later

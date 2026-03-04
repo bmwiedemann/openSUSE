@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  2 21:08:58 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.8.1
+  * Guard against active_port or active_profile2 being null
+  * card,device: make sure to always have a "valid" index on port
+    and profile
+  * server: Expose the audio server and wireplumber versions
+  *  Remove all qml import version numbers
+
+-------------------------------------------------------------------
 Mon Feb 24 10:44:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.7.0
