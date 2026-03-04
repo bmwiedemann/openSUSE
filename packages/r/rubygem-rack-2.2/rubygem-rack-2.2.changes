@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  4 12:30:29 UTC 2026 - Jay Michalska <jacob.michalskie@suse.com>
+
+- Update to version 2.2.22
+
+   * [CVE-2026-25500] XSS injection via malicious filename in Rack::Directory.
+   * [CVE-2026-22860] Directory traversal via root prefix bypass in Rack::Directory.
+
+-------------------------------------------------------------------
 Tue Nov 25 10:37:00 UTC 2025 - Eduardo Navarro <enavarro@suse.com>
 
 - update to version 2.2.21
