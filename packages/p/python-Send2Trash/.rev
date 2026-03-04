@@ -84,4 +84,19 @@ Requires python-setuptools 78 to build successfully.
 </comment>
     <requestid>1264849</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b880561db3a472421443fddc8a53a31d</srcmd5>
+    <version>2.1.0</version>
+    <time>1772654977</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.1.0:
+  * Add conftest.py to source distribution
+  * Replacing elif, which is always True, with else by
+  * Migrate to pyproject.toml from setup.cfg
+  * Drop suport for Python 2
+  * Update source installation instructions
+  * Update gio implemenation, should fix #5 by no longer using
+    deprecated GObject.GError</comment>
+    <requestid>1336291</requestid>
+  </revision>
 </revisionlist>

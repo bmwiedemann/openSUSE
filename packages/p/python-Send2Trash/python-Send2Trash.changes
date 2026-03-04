@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar  4 08:38:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Add conftest.py to source distribution
+  * Replacing elif, which is always True, with else by
+  * Migrate to pyproject.toml from setup.cfg
+  * Drop suport for Python 2
+  * Update source installation instructions
+  * Update gio implemenation, should fix #5 by no longer using
+    deprecated GObject.GError
+
+-------------------------------------------------------------------
 Tue Mar 25 08:41:02 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Lowercase metadata directory name.
