@@ -31,4 +31,12 @@
 - Make the package buildable with LuaJIT.</comment>
     <requestid>1315179</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>67939e2b2d2012ab72e8f7fc81d080a3</srcmd5>
+    <version>1.0.0</version>
+    <time>1772654812</time>
+    <user>anag_factory</user>
+    <comment>- Enable lua55 build.</comment>
+    <requestid>1336378</requestid>
+  </revision>
 </revisionlist>
