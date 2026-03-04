@@ -1,7 +1,7 @@
 #
 # spec file for package criu
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
     %define prefer_nftables 0
 %endif
 Name:           criu
-Version:        4.1.1
+Version:        4.2
 Release:        0
 Summary:        Checkpoint/Restore In Userspace Tools
 License:        GPL-2.0-only
@@ -44,7 +44,6 @@ URL:            https://criu.org/
 Source0:        http://github.com/checkpoint-restore/criu/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # To be generated; we keep a static one for building without pip
 Source1:        crit.py
-Patch1:         0001-net-nftables-avoid-restore-failure-if-the-CRIU-nft-t.patch
 Patch101:       criu-py-install-fix.diff
 Patch102:       0002-Fix-build-with-nftables-installed-in-different-direc.patch
 Patch104:       plugin-dir-path.patch

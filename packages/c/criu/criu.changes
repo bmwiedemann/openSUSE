@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Mar  4 15:25:13 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 4.2:
+  New features:
+  * plugins/amdgpu: Implement parallel restore
+  * Handle processes with uprobes vma
+  * libcriu: Enable setting of RPC config file
+  Bugfixes:
+  * criu/compel: fix compilation on musl/arm64
+  * pagemap: change PagemapEntry.nr_pages to uint64 to support huge mappings
+  * pagemap: prevent integer overflow in pagemap_len
+  * Relax ELF magic check to support MIPS libraries
+  * Fix: getsockopt usage for SO_PASSCRED/SO_PASSSEC on Linux 6.16
+  Improvements:
+  * ci: consolidate aarch64 tests on GitHub runners
+  * cr-service: Refactor RPC config parsing
+  * Many improvements in pycriu
+- Drop obsoleted patch:
+  0001-net-nftables-avoid-restore-failure-if-the-CRIU-nft-t.patch
+
+-------------------------------------------------------------------
 Thu Aug 28 08:49:19 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Actually enable builds for riscv64

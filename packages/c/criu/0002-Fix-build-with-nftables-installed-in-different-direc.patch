@@ -31,12 +31,12 @@ Signed-off-by: Takashi Iwai <tiwai@suse.de>
          else
                  $(info Warn: Building without nftables support (incompatible API version).)
          endif
-@@ -78,7 +81,7 @@ endif
+@@ -82,7 +85,7 @@ endif
  endif
  
  export DEFINES += $(FEATURE_DEFINES)
 -export CFLAGS += $(FEATURE_DEFINES)
 +export CFLAGS += $(FEATURE_DEFINES) $(FEATURE_CFLAGS)
  
- FEATURES_LIST	:= TCP_REPAIR STRLCPY STRLCAT PTRACE_PEEKSIGINFO \
+ FEATURES_LIST	:= TCP_REPAIR PTRACE_PEEKSIGINFO \
  	SETPROCTITLE_INIT TCP_REPAIR_WINDOW MEMFD_CREATE \
