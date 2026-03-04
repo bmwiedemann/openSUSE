@@ -1,7 +1,7 @@
 #
 # spec file for package python-unyt
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,29 +18,28 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-unyt
-Version:        3.0.4
+Version:        3.1.0
 Release:        0
 Summary:        A package for handling numpy arrays with units
 License:        BSD-3-Clause
 URL:            https://github.com/yt-project/unyt
 Source:         https://files.pythonhosted.org/packages/source/u/unyt/unyt-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module flit-core >= 3.11}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test
 BuildRequires:  %{python_module dask-array}
 BuildRequires:  %{python_module dask-diagnostics}
-BuildRequires:  %{python_module numpy >= 1.19.3 with %python-numpy < 3}
+BuildRequires:  %{python_module numpy >= 1.21.3 with %python-numpy < 3}
 BuildRequires:  %{python_module packaging >= 20.9}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module sympy >= 1.7}
+BuildRequires:  %{python_module sympy >= 1.9}
 # /SECTION
-Requires:       (python-numpy >= 1.19.3 with python-numpy < 3)
+Requires:       (python-numpy >= 1.21.3 with python-numpy < 3)
 Requires:       python-packaging > 20.9
-Requires:       python-sympy >= 1.7
+Requires:       python-sympy >= 1.9
 BuildArch:      noarch
 %python_subpackages
 
@@ -61,6 +60,7 @@ sed -i 's/--color=yes//' pyproject.toml
 
 %install
 %pyproject_install
+%python_expand rm %{buildroot}%{$python_sitelib}/unyt/.DS_Store
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

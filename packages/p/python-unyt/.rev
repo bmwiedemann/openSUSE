@@ -207,4 +207,23 @@
 - Drop patch unyt-pr512-np2.1.patch, included upstream.</comment>
     <requestid>1301655</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fe4d58895bb4fe8c1d650652a580ace5</srcmd5>
+    <version>3.1.0</version>
+    <time>1772654924</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.1.0:
+  * Fix the implementation of np.block so that multiplication is not used to
+    attach units to the result
+  * Increase the ability for subclasses of unyt_array to manipulate function
+    calls, in particular so that the result of a binary operation of an
+    unyt_array with a subclass will return the subclass.
+  * Add the angular units &quot;spat&quot;, &quot;turn&quot;, &quot;pla&quot;, &quot;gradian&quot;, and &quot;gon&quot;
+  * Fix incompatibilities and deprecations with NumPy 2.4
+  * Switch build-backend from setuptools to flit-core
+  * Fix histograms with mismatched units of input and bins
+  * Fix a bug where np.average would strip units on sum of weights when input
+    and weights shapes differ</comment>
+    <requestid>1336255</requestid>
+  </revision>
 </revisionlist>

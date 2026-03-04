@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar  4 04:08:38 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.1.0:
+  * Fix the implementation of np.block so that multiplication is not used to
+    attach units to the result
+  * Increase the ability for subclasses of unyt_array to manipulate function
+    calls, in particular so that the result of a binary operation of an
+    unyt_array with a subclass will return the subclass.
+  * Add the angular units "spat", "turn", "pla", "gradian", and "gon"
+  * Fix incompatibilities and deprecations with NumPy 2.4
+  * Switch build-backend from setuptools to flit-core
+  * Fix histograms with mismatched units of input and bins
+  * Fix a bug where np.average would strip units on sum of weights when input
+    and weights shapes differ
+
+-------------------------------------------------------------------
 Thu Aug 28 05:24:05 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.0.4:
