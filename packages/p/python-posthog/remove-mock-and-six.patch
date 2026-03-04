@@ -1,0 +1,215 @@
+From a41965e2be0f6187c98b3725c45d3acae94f506f Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Thu, 19 Feb 2026 16:39:03 +1100
+Subject: [PATCH] chore: remove use of six and mock
+
+mock has been in the standard library since Python 3.3, and six stopped
+being required when Python 2 support was dropped, so remove both of
+them.
+---
+ integration_tests/django5/uv.lock        | 21 ++++++--------
+ posthog/client.py                        |  3 +-
+ posthog/test/test_before_send.py         |  3 +-
+ posthog/test/test_client.py              |  5 ++--
+ posthog/test/test_consumer.py            |  2 +-
+ posthog/test/test_feature_flag_result.py |  3 +-
+ posthog/test/test_feature_flags.py       |  2 +-
+ posthog/test/test_request.py             |  2 +-
+ posthog/test/test_utils.py               |  3 +-
+ posthog/utils.py                         |  7 ++---
+ pyproject.toml                           |  4 ---
+ uv.lock                                  | 35 ------------------------
+ 12 files changed, 19 insertions(+), 71 deletions(-)
+
+Index: posthog-7.9.3/posthog/client.py
+===================================================================
+--- posthog-7.9.3.orig/posthog/client.py
++++ posthog-7.9.3/posthog/client.py
+@@ -8,7 +8,6 @@ from typing import Any, Dict, Optional,
+ from uuid import uuid4
+ 
+ from dateutil.tz import tzutc
+-from six import string_types
+ from typing_extensions import Unpack
+ 
+ from posthog.args import ID_TYPES, ExceptionArg, OptionalCaptureArgs, OptionalSetArgs
+@@ -2339,6 +2338,6 @@ class Client(object):
+ def stringify_id(val):
+     if val is None:
+         return None
+-    if isinstance(val, string_types):
++    if isinstance(val, str):
+         return val
+     return str(val)
+Index: posthog-7.9.3/posthog/test/test_before_send.py
+===================================================================
+--- posthog-7.9.3.orig/posthog/test/test_before_send.py
++++ posthog-7.9.3/posthog/test/test_before_send.py
+@@ -1,6 +1,5 @@
+ import unittest
+-
+-import mock
++from unittest import mock
+ 
+ from posthog.client import Client
+ from posthog.test.test_utils import FAKE_TEST_API_KEY
+Index: posthog-7.9.3/posthog/test/test_client.py
+===================================================================
+--- posthog-7.9.3.orig/posthog/test/test_client.py
++++ posthog-7.9.3/posthog/test/test_client.py
+@@ -3,8 +3,7 @@ import unittest
+ from datetime import datetime
+ from uuid import uuid4
+ 
+-import mock
+-import six
++from unittest import mock
+ from parameterized import parameterized
+ 
+ from posthog.client import Client
+@@ -1728,7 +1727,7 @@ class TestClient(unittest.TestCase):
+         self.assertIsNone(msg_uuid)
+ 
+     def test_unicode(self):
+-        Client(six.u("unicode_key"))
++        Client("unicode_key")
+ 
+     def test_numeric_distinct_id(self):
+         self.client.capture("python event", distinct_id=1234)
+Index: posthog-7.9.3/posthog/test/test_consumer.py
+===================================================================
+--- posthog-7.9.3.orig/posthog/test/test_consumer.py
++++ posthog-7.9.3/posthog/test/test_consumer.py
+@@ -3,7 +3,7 @@ import time
+ import unittest
+ from typing import Any
+ 
+-import mock
++from unittest import mock
+ from parameterized import parameterized
+ 
+ try:
+Index: posthog-7.9.3/posthog/test/test_feature_flag_result.py
+===================================================================
+--- posthog-7.9.3.orig/posthog/test/test_feature_flag_result.py
++++ posthog-7.9.3/posthog/test/test_feature_flag_result.py
+@@ -1,6 +1,5 @@
+ import unittest
+-
+-import mock
++from unittest import mock
+ 
+ from posthog.client import Client
+ from posthog.test.test_utils import FAKE_TEST_API_KEY
+Index: posthog-7.9.3/posthog/test/test_feature_flags.py
+===================================================================
+--- posthog-7.9.3.orig/posthog/test/test_feature_flags.py
++++ posthog-7.9.3/posthog/test/test_feature_flags.py
+@@ -1,7 +1,7 @@
+ import datetime
+ import unittest
+ 
+-import mock
++from unittest import mock
+ from dateutil import parser, tz
+ from freezegun import freeze_time
+ 
+Index: posthog-7.9.3/posthog/test/test_request.py
+===================================================================
+--- posthog-7.9.3.orig/posthog/test/test_request.py
++++ posthog-7.9.3/posthog/test/test_request.py
+@@ -1,8 +1,8 @@
+ import json
+ import unittest
+ from datetime import date, datetime
++from unittest import mock
+ 
+-import mock
+ import pytest
+ import requests
+ 
+Index: posthog-7.9.3/posthog/test/test_utils.py
+===================================================================
+--- posthog-7.9.3.orig/posthog/test/test_utils.py
++++ posthog-7.9.3/posthog/test/test_utils.py
+@@ -7,7 +7,6 @@ from decimal import Decimal
+ from typing import Optional
+ from uuid import UUID
+ 
+-import six
+ from dateutil.tz import tzutc
+ from parameterized import parameterized
+ from pydantic import BaseModel
+@@ -48,7 +47,7 @@ class TestUtils(unittest.TestCase):
+     def test_clean(self):
+         simple = {
+             "decimal": Decimal("0.142857"),
+-            "unicode": six.u("woo"),
++            "unicode": "woo",
+             "date": datetime.now(),
+             "long": 200000000,
+             "integer": 1,
+Index: posthog-7.9.3/posthog/utils.py
+===================================================================
+--- posthog-7.9.3.orig/posthog/utils.py
++++ posthog-7.9.3/posthog/utils.py
+@@ -13,7 +13,6 @@ import sys
+ import platform
+ import distro  # For Linux OS detection
+ 
+-import six
+ from dateutil.tz import tzlocal, tzutc
+ 
+ log = logging.getLogger("posthog")
+@@ -58,9 +57,7 @@ def clean(item):
+         return float(item)
+     if isinstance(item, UUID):
+         return str(item)
+-    if isinstance(
+-        item, (six.string_types, bool, numbers.Number, datetime, date, type(None))
+-    ):
++    if isinstance(item, (str, bool, numbers.Number, datetime, date, type(None))):
+         return item
+     if isinstance(item, (set, list, tuple)):
+         return _clean_list(item)
+@@ -88,7 +85,7 @@ def _clean_list(list_):
+ 
+ def _clean_dict(dict_):
+     data = {}
+-    for k, v in six.iteritems(dict_):
++    for k, v in dict_.items():
+         try:
+             data[k] = clean(v)
+         except TypeError:
+Index: posthog-7.9.3/pyproject.toml
+===================================================================
+--- posthog-7.9.3.orig/pyproject.toml
++++ posthog-7.9.3/pyproject.toml
+@@ -25,7 +25,6 @@ classifiers = [
+ ]
+ dependencies = [
+     "requests>=2.7,<3.0",
+-    "six>=1.5",
+     "python-dateutil>=2.2",
+     "backoff>=1.10.0",
+     "distro>=1.5.0",
+@@ -43,11 +42,9 @@ dev = [
+     "lxml",
+     "mypy",
+     "mypy-baseline",
+-    "types-mock",
+     "types-python-dateutil",
+     "types-requests",
+     "types-setuptools",
+-    "types-six",
+     "pre-commit",
+     "pydantic",
+     "ruff",
+@@ -59,7 +56,6 @@ dev = [
+     "tomli_w",
+ ]
+ test = [
+-    "mock>=2.0.0",
+     "freezegun==1.5.1",
+     "coverage",
+     "pytest",

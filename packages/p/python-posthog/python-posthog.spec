@@ -1,7 +1,7 @@
 #
 # spec file for package python-posthog
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-posthog
-Version:        3.6.0
+Version:        7.9.6
 Release:        0
 Summary:        PostHog is developer-friendly, self-hosted product analytics
 License:        MIT
 URL:            https://github.com/posthog/posthog-python
 Source:         https://files.pythonhosted.org/packages/source/p/posthog/posthog-%{version}.tar.gz
-Patch1:         python-posthog-no-mock.patch
-Patch2:         python-posthog-no-six.patch
-Patch3:         no-more-monotonic.patch
+# PATCH-FIX-UPSTREAM Based on gh#PostHog/posthog-python#442
+Patch0:         remove-mock-and-six.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -34,15 +33,22 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module backoff >= 1.10.0}
+BuildRequires:  %{python_module distro >= 1.5}
 BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module parameterized >= 0.8.1}
+BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module pytest-timeout}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil > 2.1}
 BuildRequires:  %{python_module requests >= 2.7}
+BuildRequires:  %{python_module typing_extensions >= 4.2}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-backoff >= 1.10.0
-Requires:       python-python-dateutil > 2.1
+Requires:       python-distro >= 1.5
+Requires:       python-python-dateutil > 2.2
 Requires:       python-requests >= 2.7
+Requires:       python-typing_extensions >= 4.2
 Suggests:       python-black
 Suggests:       python-isort
 Suggests:       python-flake8

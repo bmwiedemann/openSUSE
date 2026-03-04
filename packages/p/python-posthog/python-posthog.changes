@@ -1,7 +1,86 @@
 -------------------------------------------------------------------
+Tue Mar  3 19:08:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.9.6:
+  * refactor: add PROPERTY_OPERATORS constant for match_property
+  * feat: add semver targeting support to local flag evaluation
+  * fix: use $ip not $ip_addess
+  * feat(llma): add $ai_tokens_source property to detect token
+    value overrides
+  * fix: revert manual release and add sampo changeset for
+    ai_tokens_source
+
+-------------------------------------------------------------------
+Fri Feb 20 01:13:24 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.9.3:
+  * fix(llma): make prompt fetches deterministic by requiring project_api_key
+    and sending it as token query param
+  * feat: Support device_id as bucketing identifier for local evaluation
+  * fix: limit collections scanning in code variables
+  * fix: openAI input image sanitization
+  * fix: avoid return from finally block to fix Python 3.14 SyntaxWarning
+  * feat: Add automatic retries for feature flag requests
+  * Add support for the async version of Gemini.
+  * Add support for Python 3.14. Python 3.9 is no longer supported.
+  * feat(llma): send web search calls to be used for LLM cost calculations
+  * fix(django): Handle request.user access in async middleware context to
+    prevent SynchronousOnlyOperation errors in Django 5+
+  * fix(django): Restore process_exception method to capture view and
+    downstream middleware exceptions
+  * feat: Django middleware now supports async request handling.
+  * feat: Add support for feature flag dependencies
+  * fix: correctly capture exceptions processed by Django from views or
+    middleware
+  * feat: add a feature flag evaluation cache (local storage or redis)
+  * feat: Add `setup()` function to initialise default client
+  * Add context management.
+  * Add support for google gemini
+  * Moved ai openai package to a composition approach over inheritance.
+  * Remove deprecated monotonic library.
+  * Added new method get_feature_flag_result.
+  * Roll out new `/flags` endpoint to 100% of `/decide` traffic.
+  * Fix hash inclusion/exclusion for flag rollout
+  * Roll out new /flags endpoint to 10% of /decide traffic
+  * Add `log_captured_exceptions` option to proxy setup
+  * Add config option to `log_captured_exceptions`
+  * Add more information to `$feature_flag_called` events.
+  * Support serializing dataclasses.
+  * Add support for tool calls in OpenAI and Anthropic.
+  * Improve quota-limited feature flag logs
+  * Add support for Azure OpenAI.
+  * The LangChain handler now captures tools in `$ai_generation` events, in
+    property `$ai_tools`.
+  * Fix async client support for OpenAI.
+  * Support quota-limited feature flags
+  * Evaluate feature flag payloads with case sensitivity correctly.
+  * Add support for Bedrock Anthropic Usage
+  * Automatically retry connection errors
+  * Add support for OpenAI beta parse API.
+  * Fix LangChain callback handler to capture parent run ID.
+  * Add the `$ai_span` event to the LangChain callback handler to capture the
+    input and output of intermediary chains.
+  * Fix serialiazation of Pydantic models in methods.
+  * Add `$ai_error` and `$ai_is_error` properties to LangChain callback
+    handler, OpenAI, and Anthropic.
+  * Fix capturing of multiple traces in the LangChain callback handler.
+  * Fix importing of LangChain callback handler under certain circumstances.
+  * Add `$ai_trace` event emission to LangChain callback handler.
+  * Add LLM Observability with support for OpenAI and Langchain callbacks.
+  * Adds a new `super_properties` parameter on the client that are appended
+    to every /capture call.
+  * Fix manual capture support for in app frames
+  * Fix django integration support for manual exception capture.
+- Drop patches:
+  * python-posthog-no-mock.patch
+  * python-posthog-no-six.patch
+  * no-more-monotonic.patch
+- Add patch remove-mock-and-six.patch, which is the first two dropped patches.
+
+-------------------------------------------------------------------
 Wed Oct  9 00:31:28 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Actually remove requirement on monotonic. 
+- Actually remove requirement on monotonic.
 
 -------------------------------------------------------------------
 Fri Sep 27 07:03:56 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
@@ -12,9 +91,9 @@ Fri Sep 27 07:03:56 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Thu Sep  5 17:07:16 UTC 2024 - Meera Belur <mbelur@suse.com>
 
-- Remove dependency on python-six 
+- Remove dependency on python-six
 
 -------------------------------------------------------------------
 Wed Sep  4 20:34:17 UTC 2024 - Meera Belur <mbelur@suse.com>
 
-- Initial Package 
+- Initial Package

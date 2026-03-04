@@ -24,4 +24,60 @@
     <comment>- Actually remove requirement on monotonic.</comment>
     <requestid>1206408</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>80e9121a6c7a6125267def51d3ce6b48</srcmd5>
+    <version>7.9.3</version>
+    <time>1771605851</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.9.3:
+  * fix(llma): make prompt fetches deterministic by requiring project_api_key
+    and sending it as token query param
+  * feat: Support device_id as bucketing identifier for local evaluation
+  * fix: limit collections scanning in code variables
+  * fix: openAI input image sanitization
+  * fix: avoid return from finally block to fix Python 3.14 SyntaxWarning
+  * feat: Add automatic retries for feature flag requests
+  * Add support for the async version of Gemini.
+  * Add support for Python 3.14. Python 3.9 is no longer supported.
+  * feat(llma): send web search calls to be used for LLM cost calculations
+  * fix(django): Handle request.user access in async middleware context to
+    prevent SynchronousOnlyOperation errors in Django 5+
+  * fix(django): Restore process_exception method to capture view and
+    downstream middleware exceptions
+  * feat: Django middleware now supports async request handling.
+  * feat: Add support for feature flag dependencies
+  * fix: correctly capture exceptions processed by Django from views or
+    middleware
+  * feat: add a feature flag evaluation cache (local storage or redis)
+  * feat: Add `setup()` function to initialise default client
+  * Add context management.
+  * Add support for google gemini
+  * Moved ai openai package to a composition approach over inheritance.
+  * Remove deprecated monotonic library.
+  * Added new method get_feature_flag_result.
+  * Roll out new `/flags` endpoint to 100% of `/decide` traffic.
+  * Fix hash inclusion/exclusion for flag rollout
+  * Roll out new /flags endpoint to 10% of /decide traffic
+  * Add `log_captured_exceptions` option to proxy setup</comment>
+    <requestid>1334091</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2e7c62d6395884d3bbaa22941b4c9a49</srcmd5>
+    <version>7.9.6</version>
+    <time>1772654732</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.9.6:
+  * refactor: add PROPERTY_OPERATORS constant for match_property
+  * feat: add semver targeting support to local flag evaluation
+  * fix: use $ip not $ip_addess
+  * feat(llma): add $ai_tokens_source property to detect token
+    value overrides
+  * fix: revert manual release and add sampo changeset for
+    ai_tokens_source
+
+- Actually remove requirement on monotonic.
+- Remove dependency on python-six
+- Initial Package</comment>
+    <requestid>1336189</requestid>
+  </revision>
 </revisionlist>
