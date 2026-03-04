@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  4 13:06:05 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.7
+  * Expand '~/' to $HOME in session path.
+  * Add separate commands for unbuffered logs.
+  * Allow DHT bootstrap nodes to be added when DHT is off.
+
+-------------------------------------------------------------------
 Sat Jan  3 18:10:37 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.6
