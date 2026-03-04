@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  3 13:42:59 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 1.81
+  * When clicking on the program while it was not in focus, let the
+    mouse click be handled if an ask box dialog is shown. Fixes
+    having to click twice on an ask dialog button after dropping a
+    file onto the program.
+
+-------------------------------------------------------------------
 Fri Jan  2 14:26:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.80.1:
