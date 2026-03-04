@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  3 20:50:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.0:
+  * Forbid DTD declarations in XML input
+  * Avoid deprecated method importlib.resources.open_text
+  * Fix comparison logic for ECDSA public keys
+
+-------------------------------------------------------------------
 Mon Feb 16 15:06:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.0:

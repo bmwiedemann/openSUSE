@@ -17,4 +17,15 @@
   * Fix key info matching behavior</comment>
     <requestid>1333380</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d991030777a75c54935207a55d1a8c9e</srcmd5>
+    <version>4.4.0</version>
+    <time>1772654905</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.4.0:
+  * Forbid DTD declarations in XML input
+  * Avoid deprecated method importlib.resources.open_text
+  * Fix comparison logic for ECDSA public keys</comment>
+    <requestid>1336215</requestid>
+  </revision>
 </revisionlist>
