@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Mar  1 20:58:24 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- Update to 7.12.2
+  * GraphBLAS 10.3.1: bug and documentation fixes, performance improvements,
+    and printing of user-defined types using get/set with
+    GxB_PRINT_FUNCTION.
+  * SuiteSparse_config 7.12.2: checking for BLAS libraries; better handling
+    of BLA_VENDOR input parameter to cmake
+- Update to 7.12.1
+  * SuiteSparse_config 7.12.1: fix for ninja; checking BLAS
+    properties
+- Update to 7.12.0
+  * UMFPACK 6.3.7: workaround for an Intel icx 2025.2 compiler bug
+  * LAGraph 1.2.1: bug fix for experimental maxflow method
+  * ParU 1.1.0: performance improvements, minor revisions for benchmarking
+  * GraphBLAS 10.2.0: printing user-defined types, GrB_assign performance
+  * SPQR 4.3.6: better handling of complex types for BLAS/LAPACK
+  * SuiteSparse_config 7.12.0: better handling of complex types for
+    BLAS/LAPACK
+  * Mongoose 3.3.6: minor change to build system
+
+-------------------------------------------------------------------
 Tue Nov 11 15:43:43 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Replace ungrammatical command with lua script to generate commands for
