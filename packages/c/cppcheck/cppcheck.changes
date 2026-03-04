@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  3 19:38:13 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- Drop use of chrpath to fix rpath use in binaries, no longer
+  necessary.
+
+-------------------------------------------------------------------
 Mon Mar  2 21:11:39 UTC 2026 - Christoph G <foss@grueninger.de>
 
-- update to version 2.22.0
+- update to version 2.20.0
   * GUI:
     Fix: The Misra C checkbox in "Edit Project" dialog is unchecked
       after reloading project.

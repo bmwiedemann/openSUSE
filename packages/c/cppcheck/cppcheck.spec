@@ -37,7 +37,6 @@ Summary:        A tool for static C/C++ code analysis
 License:        GPL-3.0-or-later
 URL:            https://github.com/danmar/cppcheck
 Source:         https://github.com/danmar/cppcheck/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
@@ -140,9 +139,6 @@ install -pm 0644 addons/*.py %{buildroot}%{_datadir}/%{name}/addons
 find %{buildroot}%{_datadir}/%{name}/addons -type f -size +0 -exec awk 'NR == 1 && /^#!.*python/ { exit } { exit 1 }' {} \; -print0 | xargs -0 chmod +x
 # Correct shebang to fix env-script-interpreter
 find %{buildroot}%{_datadir}/%{name}/addons -type f -size +0 -exec awk 'NR == 1 && /^#!.*python/ { exit } { exit 1 }' {} \; -print0 | xargs -0 sed -i "s|env python3|%{pyexecutable}|g"
-#Cleanup rpath references
-chrpath --delete %{buildroot}%{_bindir}/cppcheck
-chrpath --delete %{buildroot}%{_bindir}/cppcheck-gui
 # Remove duplicate files
 %fdupes %{buildroot}%{_datadir}/%{name}/platforms
 
