@@ -321,4 +321,12 @@
     <comment>Plasma 6.6.1, not fully built yet. Biggest change is sover bump in libplasma6. (forwarded request 1334876 from Vogtinator)</comment>
     <requestid>1334934</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>1276d9a87338e4e6bbe32134cecb3671</srcmd5>
+    <version>6.6.2</version>
+    <time>1772654409</time>
+    <user>anag_factory</user>
+    <comment> (forwarded request 1336072 from Vogtinator)</comment>
+    <requestid>1336085</requestid>
+  </revision>
 </revisionlist>
