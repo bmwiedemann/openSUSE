@@ -114,4 +114,20 @@
 - Ship LICENSE and README in binary packages.</comment>
     <requestid>1322098</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>648042c63aba51420578b053c311d878</srcmd5>
+    <version>2.40</version>
+    <time>1772654921</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.40:
+  * Fix corner case of is_optional
+  * Drop LGPL3 license exception for Appgate Cybersecurity, Inc.
+  * The changes in this version do not carry the exception, so as a
+    result the entire project is GPL3 licensed.
+    LGPL3 allows relicensing under GPL3, but not viceversa.
+  * Improve documentation and examples
+  * Added moretypes module for types I might find convenient to
+    have Added HexRGB to the moretypes module</comment>
+    <requestid>1336246</requestid>
+  </revision>
 </revisionlist>
