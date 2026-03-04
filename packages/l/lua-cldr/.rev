@@ -45,4 +45,12 @@
 - Radical simplification, to make build with LuaJIT.</comment>
     <requestid>1315144</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>f31da46f0890c53af59c9c4726c40698</srcmd5>
+    <version>0.3.0</version>
+    <time>1772654771</time>
+    <user>anag_factory</user>
+    <comment>Enable lua55 build.</comment>
+    <requestid>1336338</requestid>
+  </revision>
 </revisionlist>
