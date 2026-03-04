@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Mar  4 08:39:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.1.0:
+  * Deprecate Consul driver
+  * Deprecate etcd driver
+  * Detect redis ports from env
+  * Remove zake driver
+  * Add ruff
+  * Pin tooz-tox-py313-mysql to Ubuntu Noble
+  * Move upper functional job from 3.12 to 3.13
+  * Delay string interpolations at logging calls
+  * Bump pyupgrade target to 3.10+
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Allow pssing ETCD\_VERSION environment to tox
+  * Bump etcd to 3.5.x
+  * Skip installation to speed up pep8 check
+  * Use upper-constraints
+  * Allow overriding etcd version in tests
+
+-------------------------------------------------------------------
 Sun Nov  9 18:26:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-tooz
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-tooz
-Version:        7.0.0
+Version:        8.1.0
 Release:        0
 Summary:        Coordination library for distributed systems
 License:        Apache-2.0

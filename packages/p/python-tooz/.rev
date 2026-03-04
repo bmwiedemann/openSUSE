@@ -309,4 +309,29 @@
     <comment>switch to singlespec</comment>
     <requestid>1316800</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>acb6847074e1600a9a2cec32d895b827</srcmd5>
+    <version>8.1.0</version>
+    <time>1772654969</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.1.0:
+  * Deprecate Consul driver
+  * Deprecate etcd driver
+  * Detect redis ports from env
+  * Remove zake driver
+  * Add ruff
+  * Pin tooz-tox-py313-mysql to Ubuntu Noble
+  * Move upper functional job from 3.12 to 3.13
+  * Delay string interpolations at logging calls
+  * Bump pyupgrade target to 3.10+
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Allow pssing ETCD\_VERSION environment to tox
+  * Bump etcd to 3.5.x
+  * Skip installation to speed up pep8 check
+  * Use upper-constraints
+  * Allow overriding etcd version in tests</comment>
+    <requestid>1336292</requestid>
+  </revision>
 </revisionlist>
