@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  2 21:24:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.23.1:
+  * clipboard: Hold mutex before dispatching any wayland events
+
+-------------------------------------------------------------------
 Fri Feb  6 14:25:51 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.23.0
