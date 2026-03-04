@@ -38,6 +38,8 @@
 %define with_webrtc_audio_processing 0
 %endif
 
+%bcond_with roc
+
 %if 0%{?suse_version} > 1500
 %bcond_without libcamera
 %else
@@ -79,6 +81,9 @@ Source0:        %{name}-%{version}.tar.zst
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
+Patch1:         0001-pulse-server-add-client-props-to-sink_input_source_output.patch
+Patch2:         0002-module-protocol-native-Fix-socket-activation.patch
+Patch3:         0003-modules-improve-error-reporting.patch
 
 BuildRequires:  docutils
 %if 0%{suse_version} > 1500
@@ -206,8 +211,6 @@ This package provides the PipeWire shared library.
 %package libjack-%{apiver_str}
 Summary:        PipeWire libjack replacement libraries
 Group:          Development/Libraries/C and C++
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 # Since the pipewire-libjack package is sometimes completely replacing the
 # original jack libraries for some users we better make sure either they
 # are also installed or we completely replace them with the pipewire
@@ -309,6 +312,24 @@ The framework is used to build a modular daemon that can be configured to:
    such as the gnome-shell screencast API.
 
 This package contains X11 bell support for PipeWire.
+
+%if %{with roc}
+%package module-roc
+Summary:        PipeWire media server ROC module
+License:        CECILL-C AND LGPL-2.1-or-later AND MIT AND MPL-2.0
+
+BuildRequires:  pkgconfig(libunwind)
+BuildRequires:  pkgconfig(libuv)
+BuildRequires:  pkgconfig(roc)
+BuildRequires:  pkgconfig(sox)
+BuildRequires:  pkgconfig(speexdsp)
+
+Requires:       %{libpipewire} >= %{version}-%{release}
+Requires:       %{name} >= %{version}-%{release}
+
+%description module-roc
+This package contains the ROC module for PipeWire.
+%endif
 
 %package spa-plugins-%{spa_ver_str}
 Summary:        Plugins For PipeWire SPA
@@ -484,7 +505,11 @@ export CXX=g++-11
 %endif
     -Dlibsystemd=enabled \
     -Dsystemd-user-unit-dir=%{_userunitdir} \
+%if %{with roc}
+    -Droc=enabled \
+%else
     -Droc=disabled \
+%endif
 %if %{with_vulkan}
     -Dvulkan=enabled \
 %else
@@ -555,10 +580,6 @@ mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d/
 echo %{_libdir}/pipewire-%{apiver}/jack/ > %{buildroot}%{_sysconfdir}/ld.so.conf.d/pipewire-jack-%{_arch}.conf
 
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-for wrapper in pw-jack ; do
-    mv  %{buildroot}%{_bindir}/$wrapper   %{buildroot}%{_bindir}/$wrapper-%{apiver}
-    ln -s -f %{_sysconfdir}/alternatives/$wrapper %{buildroot}%{_bindir}/$wrapper
-done
 
 # rates config
 mkdir -p %{buildroot}%{_datadir}/pipewire/pipewire.conf.d
@@ -578,11 +599,6 @@ ln -s ../pipewire-pulse.conf.avail/20-upmix.conf \
 # raop config
 ln -s ../pipewire.conf.avail/50-raop.conf \
 		%{buildroot}%{_datadir}/pipewire/pipewire.conf.d/50-raop.conf
-
-for manpage in pw-jack ; do
-    mv  %{buildroot}%{_mandir}/man1/$manpage.1 %{buildroot}%{_mandir}/man1/$manpage-%{apiver}.1
-    ln -s -f %{_sysconfdir}/alternatives/$manpage.1%{ext_man} %{buildroot}%{_mandir}/man1/$manpage.1%{ext_man}
-done
 
 %fdupes -s %{buildroot}/%{_datadir}/doc/pipewire/html
 
@@ -674,14 +690,9 @@ setup-pulseaudio --auto > /dev/null
 %postun -n %{libpipewire} -p /sbin/ldconfig
 
 %post libjack-%{apiver_str}
-%{_sbindir}/update-alternatives --install %{_bindir}/pw-jack pw-jack %{_bindir}/pw-jack-%{apiver} 20 \
-    --slave %{_mandir}/man1/pw-jack.1%{ext_man} pw-jack.1%{ext_man} %{_mandir}/man1/pw-jack-%{apiver}.1%{ext_man}
 /sbin/ldconfig
 
 %postun libjack-%{apiver_str}
-if [ ! -e %{_bindir}/pw-jack-%{apiver} ] ; then
-  %{_sbindir}/update-alternatives --remove pw-jack %{_bindir}/pw-jack-%{apiver}
-fi
 /sbin/ldconfig
 
 %files
@@ -743,6 +754,9 @@ fi
 %exclude %{_libdir}/pipewire-%{apiver}/libpipewire-module-jackdbus-detect.so
 %exclude %{_libdir}/pipewire-%{apiver}/libpipewire-module-x11-bell.so
 %exclude %{_libdir}/pipewire-%{apiver}/libpipewire-module-protocol-pulse.so
+%if %{with roc}
+%exclude %{_libdir}/pipewire-%{apiver}/libpipewire-module-roc-*.so
+%endif
 %dir %{_libdir}/pipewire-%{apiver}/v4l2/
 %{_libdir}/pipewire-%{apiver}/v4l2/libpw-v4l2.so
 %dir %{_datadir}/alsa-card-profile/
@@ -756,10 +770,20 @@ fi
 %{_mandir}/man7/libpipewire-modules.7%{?ext_man}
 %{_mandir}/man7/libpipewire-module-*.7%{?ext_man}
 %exclude %{_mandir}/man7/libpipewire-module-x11-bell.7%{?ext_man}
+%if %{with roc}
+%exclude %{_mandir}/man7/libpipewire-module-roc-*.7%{?ext_man}
+%endif
 
 %files module-x11-%{apiver_str}
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-x11-bell.so
 %{_mandir}/man7/libpipewire-module-x11-bell.7%{?ext_man}
+
+%if %{with roc}
+%files module-roc
+%{_libdir}/pipewire-%{apiver}/libpipewire-module-roc-sink.so
+%{_libdir}/pipewire-%{apiver}/libpipewire-module-roc-source.so
+%{_mandir}/man7/libpipewire-module-roc-*.7%{?ext_man}
+%endif
 
 %files spa-plugins-%{spa_ver_str}
 %dir %{_libdir}/spa-%{spa_ver}/
@@ -806,11 +830,7 @@ fi
 %{_libdir}/pipewire-%{apiver}/jack/libjack.so.*
 %{_libdir}/pipewire-%{apiver}/jack/libjacknet.so.*
 %{_libdir}/pipewire-%{apiver}/jack/libjackserver.so.*
-%ghost %{_sysconfdir}/alternatives/pw-jack
-%ghost %{_sysconfdir}/alternatives/pw-jack.1%{ext_man}
-%{_bindir}/pw-jack-%{apiver}
 %{_bindir}/pw-jack
-%{_mandir}/man1/pw-jack-%{apiver}.1%{?ext_man}
 %{_mandir}/man1/pw-jack.1%{?ext_man}
 %{_datadir}/pipewire/jack.conf
 

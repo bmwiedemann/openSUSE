@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Mar  3 10:33:43 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove dependency on update-alternatives which is not really
+  used. This fixes pipewire for immutable systems (jsc#PED-15662).
+
+-------------------------------------------------------------------
+Tue Mar  3 09:35:48 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Disable the ROC module for now since there's no ROC in
+  Tumbleweed.
+
+-------------------------------------------------------------------
+Mon Mar  2 15:06:45 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patches from upstream:
+  * 0001-pulse-server-add-client-props-to-sink_input_source_output.patch
+  * 0002-module-protocol-native-Fix-socket-activation.patch
+  * 0003-modules-improve-error-reporting.patch
+
+-------------------------------------------------------------------
+Wed Feb 25 11:24:00 UTC 2026 - Mx <Mohamed.15072001@proton.me>
+
+- Build ROC module and add a module-roc subpackage.
+
+-------------------------------------------------------------------
 Fri Feb 20 11:43:49 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add subpackages config-rates, config-upmix and config-raop to
