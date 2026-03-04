@@ -26,4 +26,12 @@
 - Add luajit-w-capture_combined_spec-with-new-shell.patch</comment>
     <requestid>1315192</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1ea67c2928c5436ab0d4c4fd27a30230</srcmd5>
+    <version>1.1.0</version>
+    <time>1772654761</time>
+    <user>anag_factory</user>
+    <comment>Enable lua55 build</comment>
+    <requestid>1336169</requestid>
+  </revision>
 </revisionlist>
