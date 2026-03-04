@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Mar  4 10:17:25 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.9.0
+  * add get_object method for async grpc client (#1735)
+  * expose `DELETE_OBJECT`   in `AsyncGrpcClient` (#1718)
+  * update generation for MRD (#1730)
+  * Move Zonal Buckets features of `_experimental` (#1728)
+  * add default user agent for grpc (#1726)
+  * expose finalized_time in blob.py applicable for GET_OBJECT in ZB (#1719)
+  * add context manager to mrd (#1724)
+  * integrate writes strategy and appendable object writer (#1695)
+  * Add support for opening via `write_handle` and fix `write_handle` type (#1715)
+  * Add micro-benchmarks for writes comparing standard (regional) vs rapid (zonal) buckets. (#1707)
+  * Add micro-benchmarks for reads comparing standard (regional) vs rapid (zonal) buckets. (#1697)
+  * send `user_agent` to grpc channel (#1712)
+  * add samples for appendable objects writes and reads (#1705)
+  * add samples for appendable objects writes and reads
+  * add support for `generation=0` to avoid overwriting existing
+    objects and add `is_stream_open` support  (#1709)
+  * add support for `generation=0` to prevent overwriting existing objects
+  * add `is_stream_open` property to AsyncAppendableObjectWriter for stream status check
+  * receive eof while closing reads stream (#1733)
+  * Change contructors of MRD and AAOW AsyncGrpcClient.grpc_client to AsyncGrpcClient (#1727)
+  * instance grpc client once per process in benchmarks (#1725)
+  * update write handle on every recv() (#1716)
+  * Fix formatting in setup.py dependencies list (#1713)
+  * implement requests_done method to signal end of requests in async streams.
+    Gracefully close streams. (#1700)
+  * implement requests_done method to signal end of requests in async streams.
+    Gracefully close streams.
+
+-------------------------------------------------------------------
 Fri Jan 16 13:44:36 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Fix incorrect Python package names in Requires

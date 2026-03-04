@@ -376,4 +376,39 @@
     <comment>- Fix incorrect Python package names in Requires (forwarded request 1327682 from glaubitz)</comment>
     <requestid>1327705</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>9d832822a5c0b9b48c5c01cb2d4bc98f</srcmd5>
+    <version>3.9.0</version>
+    <time>1772655025</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.9.0
+  * add get_object method for async grpc client (#1735)
+  * expose `DELETE_OBJECT`   in `AsyncGrpcClient` (#1718)
+  * update generation for MRD (#1730)
+  * Move Zonal Buckets features of `_experimental` (#1728)
+  * add default user agent for grpc (#1726)
+  * expose finalized_time in blob.py applicable for GET_OBJECT in ZB (#1719)
+  * add context manager to mrd (#1724)
+  * integrate writes strategy and appendable object writer (#1695)
+  * Add support for opening via `write_handle` and fix `write_handle` type (#1715)
+  * Add micro-benchmarks for writes comparing standard (regional) vs rapid (zonal) buckets. (#1707)
+  * Add micro-benchmarks for reads comparing standard (regional) vs rapid (zonal) buckets. (#1697)
+  * send `user_agent` to grpc channel (#1712)
+  * add samples for appendable objects writes and reads (#1705)
+  * add samples for appendable objects writes and reads
+  * add support for `generation=0` to avoid overwriting existing
+    objects and add `is_stream_open` support  (#1709)
+  * add support for `generation=0` to prevent overwriting existing objects
+  * add `is_stream_open` property to AsyncAppendableObjectWriter for stream status check
+  * receive eof while closing reads stream (#1733)
+  * Change contructors of MRD and AAOW AsyncGrpcClient.grpc_client to AsyncGrpcClient (#1727)
+  * instance grpc client once per process in benchmarks (#1725)
+  * update write handle on every recv() (#1716)
+  * Fix formatting in setup.py dependencies list (#1713)
+  * implement requests_done method to signal end of requests in async streams.
+    Gracefully close streams. (#1700)
+  * implement requests_done method to signal end of requests in async streams.
+    Gracefully close streams. (forwarded request 1336319 from glaubitz)</comment>
+    <requestid>1336390</requestid>
+  </revision>
 </revisionlist>

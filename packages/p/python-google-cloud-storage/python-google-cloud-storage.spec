@@ -28,7 +28,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-storage%{pkg_suffix}
-Version:        3.8.0
+Version:        3.9.0
 Release:        0
 Summary:        Google Cloud Storage API python client library
 License:        Apache-2.0
