@@ -41,4 +41,12 @@
   * Update rockspec for v0.8.1</comment>
     <requestid>1315193</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1411a508f3980697ea04391fbdbcb694</srcmd5>
+    <version>0.7+git20230101.756ffad</version>
+    <time>1772654782</time>
+    <user>anag_factory</user>
+    <comment>- Enable lua55 build.</comment>
+    <requestid>1336343</requestid>
+  </revision>
 </revisionlist>
