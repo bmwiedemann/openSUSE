@@ -1,0 +1,38 @@
+From 21afad192b71dc84b3305403dee4bcc76bb8a64e Mon Sep 17 00:00:00 2001
+From: dannyhpy <20782483+dannyhpy@users.noreply.github.com>
+Date: Tue, 24 Feb 2026 08:49:48 +0100
+Subject: [PATCH] init: zypper: use drop-in config file if possible (#2007)
+
+In openSUSE Tumbleweed, the /etc/zypp/zypp.conf is not present by
+default anymore. The documentation[1] now suggests to maintain the
+configuration using drop-in files in /etc/zypp/zypp.conf.d/
+
+[1] https://manpages.opensuse.org/Tumbleweed/libzypp/zypp.conf.5.en.html
+---
+ distrobox-init | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/distrobox-init b/distrobox-init
+index 2bd2a3c66a..fc42970cd1 100755
+--- a/distrobox-init
++++ b/distrobox-init
+@@ -1624,8 +1624,17 @@ setup_zypper()
+ 	# poor out-of-the-box experience (e.g., when trying to run GUI apps).
+ 	# So, let's enable them. For the same reason, we make sure we install
+ 	# docs.
+-	sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = false/g' /etc/zypp/zypp.conf
+-	sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = no/g' /etc/zypp/zypp.conf
++	if [ -d /etc/zypp/zypp.conf.d ]; then
++		cat << EOF > /etc/zypp/zypp.conf.d/99-distrobox.conf
++[main]
++solver.onlyRequires = false
++rpm.install.excludedocs = no
++EOF
++	else
++		sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = false/g' /etc/zypp/zypp.conf
++		sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = no/g' /etc/zypp/zypp.conf
++	fi
++
+ 	# With recommended packages, something might try to pull in
+ 	# parallel-printer-support which can't be installed in rootless containers.
+ 	# Since we very much likely never need it, just lock it

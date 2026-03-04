@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 28 21:29:03 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Add fix-distrobox-to-newer-zypper.patch, fixing bsc#1259032
+
+-------------------------------------------------------------------
 Wed Feb  4 17:06:15 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Drop 0001-fix-add-newline-when-manually-adding-user.patch since it was merged upstream

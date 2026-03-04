@@ -24,6 +24,8 @@ License:        GPL-3.0-only
 URL:            https://github.com/89luca89/distrobox
 Source:         https://github.com/89luca89/distrobox/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        distrobox.conf
+# https://github.com/89luca89/distrobox/pull/2007
+Patch0:         fix-distrobox-to-newer-zypper.patch
 Requires:       %{_bindir}/basename
 Requires:       %{_bindir}/find
 Requires:       %{_bindir}/grep
