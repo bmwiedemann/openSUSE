@@ -114,4 +114,14 @@
     <comment></comment>
     <requestid>1201277</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1c58e3d9630146edc729b554a8f7e5a2</srcmd5>
+    <version>2.6.0</version>
+    <time>1772654904</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.6.0:
+  * Don't use textwrap if title is multiline
+  * Migrate to PEP 621 standard and remove tea.yaml</comment>
+    <requestid>1336214</requestid>
+  </revision>
 </revisionlist>

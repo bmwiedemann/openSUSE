@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  3 20:44:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.0:
+  * Don't use textwrap if title is multiline
+  * Migrate to PEP 621 standard and remove tea.yaml
+
+-------------------------------------------------------------------
 Sun Sep 15 16:52:14 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.4.0
