@@ -62,4 +62,18 @@
 - Disown /var/lib/pgsql to support transactional updates.</comment>
     <requestid>1332744</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>de42dbf7c8fe2fba8b19a62036bb079d</srcmd5>
+    <version>18.3</version>
+    <time>1772654568</time>
+    <user>anag_factory</user>
+    <comment>- bsc#1258754: Update to 18.3 to fix two regressions in 18.2:
+  * https://www.postgresql.org/docs/release/18.3/
+  * The substring() function raises an error &quot;invalid byte sequence
+    for encoding&quot; on non-ASCII text values if the source of
+    that value is a database column.
+  * A standby may halt and return an error &quot;could not access status
+    of transaction&quot;.</comment>
+    <requestid>1335841</requestid>
+  </revision>
 </revisionlist>
