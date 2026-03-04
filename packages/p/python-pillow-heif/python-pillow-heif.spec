@@ -18,7 +18,7 @@
 
 %define         _name pillow_heif
 Name:           python-pillow-heif
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Python interface for libheif library
 License:        BSD-3-Clause
