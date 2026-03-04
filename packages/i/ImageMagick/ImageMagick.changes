@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  2 10:56:53 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- apply ImageMagick_policy_etc.patch in all flavors, as intended
+- don't patch upstream security policy, but SUSE default policy
+  instead, as intended
+
+-------------------------------------------------------------------
 Mon Feb 23 21:16:44 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - version update to 7.1.2.15
@@ -39,6 +46,11 @@ Mon Feb 23 21:16:44 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
         CVE-2026-25988 [bsc#1258810]
         CVE-2026-25969 [bsc#1258775]
         CVE-2026-25986 [bsc#1258819]
+        CVE-2026-24484 [bsc#1258790]
+        CVE-2026-27798 [bsc#1259018]
+        CVE-2026-25966 [bsc#1258780]
+- actually patch SUSE default security policy 
+  * modified ImageMagick-configuration-SUSE.patch
 
 -------------------------------------------------------------------
 Mon Jan 19 18:33:04 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>

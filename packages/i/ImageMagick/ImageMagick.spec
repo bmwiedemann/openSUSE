@@ -1,6 +1,7 @@
 #
 # spec file for package ImageMagick
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -264,7 +265,7 @@ policy plus disable few other coders for reading and/or writing.
 %setup -q -n ImageMagick-%{source_version}
 %patch -P 0 -p1
 # default policy (SUSE)
-cp config/policy-secure.xml config/policy.xml
+cp config/policy-secure.xml config/policy-SUSE.xml
 %patch -P 1 -p1
 %patch -P 2 -p1
 %ifarch s390x
@@ -367,7 +368,7 @@ cd ..
 
 %install
 %make_install pkgdocdir=%{_defaultdocdir}/ImageMagick-7/
-cp config/policy.xml %{buildroot}%{_sysconfdir}/%{config_dir}
+cp config/policy-SUSE.xml %{buildroot}%{_sysconfdir}/%{config_dir}/policy.xml
 # symlink header file relative to /usr/include/ImageMagick-7/
 # so that inclusions like wand/*.h and magick/*.h work
 ln -s ./MagickCore %{buildroot}%{_includedir}/ImageMagick-7/magick
@@ -504,6 +505,7 @@ case and security prerequisites.
 
 %prep
 %setup -q -n ImageMagick-%{source_version}
+%patch -P 0 -p1
 
 %build
 
@@ -537,6 +539,7 @@ for prevalent image formats.
 
 %prep
 %setup -q -n ImageMagick-%{source_version}
+%patch -P 0 -p1
 
 %build
 
@@ -574,6 +577,7 @@ potential vulnerabilities.
 
 %prep
 %setup -q -n ImageMagick-%{source_version}
+%patch -P 0 -p1
 
 %build
 
@@ -607,6 +611,7 @@ for potential attacks.
 
 %prep
 %setup -q -n ImageMagick-%{source_version}
+%patch -P 0 -p1
 
 %build
 

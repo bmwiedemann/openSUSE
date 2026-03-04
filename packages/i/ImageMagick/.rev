@@ -4281,4 +4281,20 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
         CVE-2026-25897 [bsc#1258800]</comment>
     <requestid>1335001</requestid>
   </revision>
+  <revision rev="326" vrev="2">
+    <srcmd5>a5801493e48686e7fc11f25d37d32e23</srcmd5>
+    <version>7.1.2.15</version>
+    <time>1772654557</time>
+    <user>anag_factory</user>
+    <comment>- apply ImageMagick_policy_etc.patch in all flavors, as intended
+- don't patch upstream security policy, but SUSE default policy
+  instead, as intended
+
+        CVE-2026-24484 [bsc#1258790]
+        CVE-2026-27798 [bsc#1259018]
+        CVE-2026-25966 [bsc#1258780]
+- actually patch SUSE default security policy 
+  * modified ImageMagick-configuration-SUSE.patch</comment>
+    <requestid>1335800</requestid>
+  </revision>
 </revisionlist>

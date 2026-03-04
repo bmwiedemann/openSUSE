@@ -1,6 +1,6 @@
-diff -ur ImageMagick-7.1.2-15.orig/config/policy-secure.xml ImageMagick-7.1.2-15/config/policy-secure.xml
---- ImageMagick-7.1.2-15.orig/config/policy-secure.xml	2026-02-23 22:24:51.662615465 +0100
-+++ ImageMagick-7.1.2-15/config/policy-secure.xml	2026-02-23 22:39:43.613341024 +0100
+diff -ur ImageMagick-7.1.2-15.orig/config/policy-SUSE.xml ImageMagick-7.1.2-15/config/policy-SUSE
+--- ImageMagick-7.1.2-15.orig/config/policy-SUSE.xml	2026-02-23 22:24:51.662615465 +0100
++++ ImageMagick-7.1.2-15/config/policy-SUSE.xml	2026-02-23 22:39:43.613341024 +0100
 @@ -62,7 +62,7 @@
    <policy domain="resource" name="disk" value="2GiB"/>
    <!-- Set the maximum length of an image sequence.  When this limit is
