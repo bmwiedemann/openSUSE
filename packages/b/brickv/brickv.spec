@@ -1,7 +1,7 @@
 #
 # spec file for package brickv
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019 Frank Kunz
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           brickv
-Version:        2.4.26
+Version:        2.4.27
 Release:        0
 Summary:        Tinkerforge Brick Viewer
 License:        GPL-2.0-only
@@ -71,6 +71,8 @@ install -m 644 -D -t %{buildroot}/usr/share/applications build_data/linux/%{name
 popd
 %fdupes -s %{buildroot}%{python3_sitelib}/brickv/
 %suse_update_desktop_file -r %{name} Development Debugger
+
+%check
 
 %files -n %{name}
 %doc src/changelog README.rst

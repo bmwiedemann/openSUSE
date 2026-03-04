@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  2 18:34:14 UTC 2026 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Update to new upstream version 2.4.27
+  - Add support for NFC Forum Type 5 to NFC Bricklet plugin
+  - Make flashing of Co-MCU Bricklets more robust
+  - Fix firmware download on macOS
+
+-------------------------------------------------------------------
 Thu Oct 23 04:19:52 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject_wheel and pyproject_install macros to build and install. 
