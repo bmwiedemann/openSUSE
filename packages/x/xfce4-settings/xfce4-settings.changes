@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  3 15:09:45 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.4:
+  * x11: displays: Check by EDID that output list has not changed
+  * wayland: displays: Add missing condition to act on new output
+  * x11: displays: Fix memory leak
+  * x11: display-settings: Fall back to output name when EDID is 
+    duplicated
+  * Translation Updates
+- Remove bcond_with git stuff which is no longer used here
+
+-------------------------------------------------------------------
 Mon Dec 29 18:37:35 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.20.3:

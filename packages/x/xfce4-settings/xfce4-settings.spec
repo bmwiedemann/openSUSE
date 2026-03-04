@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-settings
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%bcond_with git
-
 Name:           xfce4-settings
-Version:        4.20.3
+Version:        4.20.4
 Release:        0
 Summary:        Tools for Managing Xfce Settings
 License:        GPL-2.0-only AND GPL-2.0-or-later
@@ -56,9 +54,6 @@ BuildRequires:  pkgconfig(xorg-libinput) >= 0.6.0
 BuildRequires:  pkgconfig(xrandr) >= 1.5.0
 %if 0%{?suse_version} > 1500
 BuildRequires:  xorgproto-devel
-%endif
-%if %{with git}
-BuildRequires:  xfce4-dev-tools
 %endif
 Requires:       %{name}-branding = %{version}
 Recommends:     %{name}-color
@@ -109,22 +104,11 @@ for printers, scanners, and displays.
 %autosetup -p1
 
 %build
-%if %{with git}
-NOCONFIGURE=1 ./autogen.sh
-export CFLAGS="%{optflags} -D_FORTIFY_SOURCE=1"
-%configure \
-    --enable-maintainer-mode \
-    --with-helper-path-prefix=%{_libexecdir} \
-    --enable-sound-settings \
-    --enable-colord \
-    --enable-pluggable-dialogs
-%else
 %configure \
     --with-helper-path-prefix=%{_libexecdir} \
     --enable-sound-settings \
     --enable-colord \
     --enable-pluggable-dialogs
-%endif
 %make_build
 
 %install
