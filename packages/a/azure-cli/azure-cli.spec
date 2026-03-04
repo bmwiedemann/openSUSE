@@ -33,7 +33,7 @@
 %endif
 
 Name:           azure-cli%{?psuffix}
-Version:        2.83.0
+Version:        2.84.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -104,18 +104,18 @@ Requires:       %{pythons}-azure-mgmt-msi >= 7.1.0
 Requires:       %{pythons}-azure-mgmt-mysqlflexibleservers >= 1.1.0~b2
 Requires:       %{pythons}-azure-mgmt-netapp >= 10.1.0
 Requires:       %{pythons}-azure-mgmt-policyinsights >= 1.1.0b4
-Requires:       %{pythons}-azure-mgmt-postgresqlflexibleservers >= 2.0.0
+Requires:       %{pythons}-azure-mgmt-postgresqlflexibleservers >= 3.0.0~b1
 Requires:       %{pythons}-azure-mgmt-privatedns >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-rdbms >= 10.2.0b17
 Requires:       %{pythons}-azure-mgmt-recoveryservices >= 4.0.0
 Requires:       %{pythons}-azure-mgmt-recoveryservicesbackup >= 9.2.0
-Requires:       %{pythons}-azure-mgmt-redhatopenshift >= 1.5.0
+Requires:       %{pythons}-azure-mgmt-redhatopenshift >= 3.0.0
 Requires:       %{pythons}-azure-mgmt-redis >= 14.5.0
 Requires:       %{pythons}-azure-mgmt-reservations >= 2.0.0
-Requires:       %{pythons}-azure-mgmt-resource >= 23.3.0
+Requires:       %{pythons}-azure-mgmt-resource >= 24.0.0
 Requires:       %{pythons}-azure-mgmt-resource-deployments >= 1.0.0~b1
 Requires:       %{pythons}-azure-mgmt-resource-deploymentscripts >= 1.0.0~b1
-Requires:       %{pythons}-azure-mgmt-resource-deploymentstacks >= 1.0.0~b1
+Requires:       %{pythons}-azure-mgmt-resource-deploymentstacks >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-resource-templatespecs >= 1.0.0~b1
 Requires:       %{pythons}-azure-mgmt-search >= 9.0
 Requires:       %{pythons}-azure-mgmt-security >= 6.0.0
@@ -155,7 +155,7 @@ Requires:       %{pythons}-six >= 1.10.0
 Requires:       %{pythons}-sshtunnel >= 0.1.4
 Requires:       %{pythons}-tabulate
 Requires:       %{pythons}-urllib3
-Requires:       %{pythons}-websocket-client >= 1.3.1
+Requires:       %{pythons}-websocket-client >= 1.8.0
 Requires:       %{pythons}-xmltodict >= 0.12
 Requires:       azure-cli-core = %{version}
 Provides:       azure-cli-acr = 2.2.9
