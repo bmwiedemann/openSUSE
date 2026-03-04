@@ -44,4 +44,12 @@
 - Make the package build with updated %%luarocks_* macros.</comment>
     <requestid>1315195</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>72a8c13ecf23e665c4a884adb1ce418f</srcmd5>
+    <version>2.2.0</version>
+    <time>1772654813</time>
+    <user>anag_factory</user>
+    <comment>- Enable lua55 build.</comment>
+    <requestid>1336379</requestid>
+  </revision>
 </revisionlist>
