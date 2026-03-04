@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-run
-Version:        0.14.0
+Version:        0.15.0
 Release:        0
 Summary:        Google Cloud Run API client library
 License:        Apache-2.0

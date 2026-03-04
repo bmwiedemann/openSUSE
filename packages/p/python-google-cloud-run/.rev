@@ -58,4 +58,14 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1327425 from glaubitz)</comment>
     <requestid>1327432</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2223661747f8c60e22c674f8d80b41e1</srcmd5>
+    <version>0.15.0</version>
+    <time>1772655023</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.15.0
+  * add instances description
+  * add instances client library (forwarded request 1336350 from glaubitz)</comment>
+    <requestid>1336383</requestid>
+  </revision>
 </revisionlist>
