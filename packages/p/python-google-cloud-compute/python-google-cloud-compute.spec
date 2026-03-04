@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-compute
-Version:        1.42.0
+Version:        1.44.0
 Release:        0
 Summary:        Google Cloud Compute API client library
 License:        Apache-2.0

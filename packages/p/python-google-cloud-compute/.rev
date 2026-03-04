@@ -86,4 +86,15 @@
   * check Python and dependency versions in generated GAPICs (forwarded request 1327679 from glaubitz)</comment>
     <requestid>1327702</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8bcf2ff6fbb7a7f9a20cacb88e67b225</srcmd5>
+    <version>1.44.0</version>
+    <time>1772655044</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.44.0
+  * Update Compute Engine v1 API to revision 20260106 (#1148)
+- from version 1.43.0
+  * Update Compute Engine v1 API to revision 20251230 (#1144) (forwarded request 1336324 from glaubitz)</comment>
+    <requestid>1336407</requestid>
+  </revision>
 </revisionlist>
