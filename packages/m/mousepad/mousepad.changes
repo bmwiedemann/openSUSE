@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar  3 14:44:44 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.7.0
+  * build: Rename POTFILES.in to POTFILES
+  * metadata: Add vcs-browser URL
+  * Adding 'app-name-in-title' setting
+  * I18n: Update po/LINGUAS list
+  * build: Fix typo in optimization level
+  * Set prgname to application ID
+  * search: Use a reserved name for the fake back reference
+  * README.md: Add uninstall info
+  * Consider temporary location as valid when saving
+  * Remove also m4 folder
+  * Remove autotools build
+  * history: Extend recent history to autosaved notes
+  * window: Do not detach/re-attach tab when dnding it in the same window
+  * file: Avoid unnecessary file browsing during loading for UNIX EOL
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue Apr  1 12:56:17 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.6.5

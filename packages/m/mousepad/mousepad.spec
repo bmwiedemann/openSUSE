@@ -1,7 +1,7 @@
 #
 # spec file for package mousepad
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define libname libmousepad0
 Name:           mousepad
-Version:        0.6.5
+Version:        0.7.0
 Release:        0
 Summary:        Simple Text Editor for Xfce
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://docs.xfce.org/apps/mousepad/start
-Source:         https://archive.xfce.org/src/apps/mousepad/0.6/mousepad-%{version}.tar.xz
+Source:         https://archive.xfce.org/src/apps/mousepad/0.7/mousepad-%{version}.tar.xz
 BuildRequires:  appstream-glib
 BuildRequires:  gettext >= 0.19.8
 BuildRequires:  meson >= 0.57.0
