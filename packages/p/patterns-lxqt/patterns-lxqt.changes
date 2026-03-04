@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Feb 19 20:06:54 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add initial version of lxqt_wayland
+  * let's offer it as an alternative at least in the beginning 
+  * add opensuse-welcome-launcher and myrlyn to it
+  * Dropped X11-specific dependencies compared to the X11 lxqt pattern:
+    - pattern() = x11
+    - obconf-qt
+    - openbox
+    - xscreensaver
+    - xorg-x11-essentials
+    - pulseaudio-module-x11
+
+-------------------------------------------------------------------
+Thu Dec 19 17:07:41 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Bump version to 20241219:
+  * add Wayland session
+  * move all dependencies to Qt6
+
+-------------------------------------------------------------------
 Tue Jun 11 14:08:04 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Bumped version to 20240611
