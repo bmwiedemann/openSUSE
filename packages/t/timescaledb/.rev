@@ -546,4 +546,41 @@ Stop storing build machine kernel version (boo#1101107)</comment>
     members</comment>
     <requestid>1333606</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>7d8fd8d10afc89dde6d420768709b861</srcmd5>
+    <version>2.25.2</version>
+    <time>1772654647</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.25.2 (boo#1259128)
+  This release contains performance improvements and bug fixes
+  since the 2.25.1 release and a fix for a security vulnerability
+  (#9331). You can check the security advisory for more information
+  on the vulnerability and the platforms that are affected. We
+  recommend that you upgrade as soon as possible.
+  - Bugfixes
+    - #9276 Fix NULL and DEFAULT handling in uniqueness check on
+      compressed chunks
+    - #9277 Fix SSL-related build errors
+    - #9279 Fix EXPLAIN VERBOSE corrupting targetlist of cached
+      ModifyHypertable plans
+    - #9281 Fix real-time continuous aggregates on UUID hypertables
+    - #9283 Fix plan-time error when using enum in orderby
+      compression setting
+    - #9290 Propagate ALTER OWNER TO to policy jobs
+    - #9292 Fix continuous aggregate column rename
+    - #9293 Fix time_bucket_gapfill inside LATERAL subqueries
+    - #9294 Fix DELETEand UPDATE with WHERE EXISTS on hypertables
+    - #9303 Fix segfault in continuous aggregate creation on
+      Postgres 18
+    - #9308 Fix continuous aggregate offset/origin not applied in
+      watermark and refresh window calculations
+    - #9314 Fix generated columns always NULL in compressed chunks
+    - #9321 Fix segfault when using OLD/NEW refs in RETURNING
+      clause on Postgres 18
+    - #9324 Potential violation of a foreign key constraint
+      referencing a hypertable caused by concurrent DELETE of the
+      key record
+    - #9327 Fix handling of generated columns with NOT NULL domain</comment>
+    <requestid>1336056</requestid>
+  </revision>
 </revisionlist>
