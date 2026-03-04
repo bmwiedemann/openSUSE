@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  4 00:12:32 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 10.8.2:
+  * Fix VT-d disable order to TE, IRE, QIE.
+  * Fix VT-d polling loop read order and remove polling timeout.
+  * SMP: Add xAPIC ICR delivery status checks to INIT-SIPI-SIPI sequence.
+  * Amend certain APIC-related issues of Limine boot protocol and
+    implement the corrected behaviour. 
+
+-------------------------------------------------------------------
 Mon Feb 23 14:21:35 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 10.8.0:
