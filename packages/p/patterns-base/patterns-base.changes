@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  3 09:39:11 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- add fwupd to enhanced base pattern (jsc#PED-15697)
+
+-------------------------------------------------------------------
 Fri Feb 27 10:31:49 UTC 2026 - Jiri Srain <jsrain@suse.com>
 
 - adjust suse_version handling (jsc#PED-15791)

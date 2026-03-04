@@ -587,6 +587,7 @@ Recommends:     numactl
 %ifarch %{ix86} x86_64
 Suggests:       hyper-v
 %endif
+Recommends:     fwupd
 %endif
 
 %description enhanced_base
