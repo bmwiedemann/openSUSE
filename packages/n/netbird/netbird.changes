@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Mar  3 14:01:17 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.66.1:
+  - Client Improvements
+    - Fixed server mutex being held across waitForUp in Up(),
+      preventing potential blocking behavior. 5460
+    - Fixed close-of-closed-channel panic in ConnectClient retry
+      loop. 5470
+    - Fixed deadlock in route peer status watcher. 5489
+    - Fixed profile config directory permissions. 5457
+    - Lowered socket auto-discovery log level from Info to Debug.
+      5463
+  - Management Improvements
+    - Prevented deletion of groups linked to flow groups. 5439
+    - Fixed user update permission validation. 5441
+    - Added reverse proxy services REST client. 5454
+    - Added explicit target deletion on service removal. 5420
+  - Proxy Improvements
+    - Flushed buffer immediately to improve gRPC support. 5469
+  - Self-Hosted Enhancements
+    - Added support for Embedded IdP PostgreSQL database. 5443
+    - Allowed specifying SQL file locations for auth, activity, and
+      main stores. 5487
+
+-------------------------------------------------------------------
 Tue Feb 24 18:48:57 UTC 2026 - Holden Fried <holden@opensuse.org>
 
 - Explicitly set golang(API) = 1.25 until building with 1.26 is
