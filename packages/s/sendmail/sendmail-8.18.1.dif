@@ -128,7 +128,7 @@
  divert(0)dnl
 --- cf/m4/proto.m4
 +++ cf/m4/proto.m4	2024-02-05 08:37:43.828410442 +0000
-@@ -1304,6 +1304,12 @@ ifdef(`_PRESERVE_LUSER_HOST_', `dnl
+@@ -1306,6 +1306,12 @@ ifdef(`_PRESERVE_LUSER_HOST_', `dnl
  R< $+ > $+		$: < $1 > $2 $&{Host}')
  dnl')
  
@@ -580,8 +580,8 @@
  	chgrp $group $dst
  	if [ $? != 0 ]
 --- doc/op/op.me
-+++ doc/op/op.me	2024-02-05 08:37:43.836410293 +0000
-@@ -589,7 +589,7 @@ The binary for
++++ doc/op/op.me	2026-03-03 13:28:16.659884023 +0000
+@@ -590,7 +590,7 @@ The binary for
  .i sendmail
  is located in /usr/\*(SD\**.
  .(f
@@ -590,7 +590,7 @@
  /usr/sbin
  on 4.4BSD and newer systems;
  many systems install it in
-@@ -603,7 +603,7 @@ For security reasons,
+@@ -604,7 +604,7 @@ For security reasons,
  /, /usr, and /usr/\*(SD
  should be owned by root, mode 0755\**.
  .(f
@@ -599,7 +599,7 @@
  this creates a security hole that is not actually related to
  .i sendmail .
  Other important directories that should have restrictive ownerships
-@@ -615,7 +615,7 @@ and permissions are
+@@ -616,7 +616,7 @@ and permissions are
  This is the main configuration file for
  .i sendmail \**.
  .(f
@@ -608,7 +608,7 @@
  /etc/mail is the preferred directory.
  Some older systems install it in
  .b /usr/lib/sendmail.cf ,
-@@ -631,7 +631,7 @@ This is one of the two non-library file
+@@ -632,7 +632,7 @@ This is one of the two non-library file
  .i sendmail \**,
  the other is /etc/mail/submit.cf.
  .(f
@@ -617,7 +617,7 @@
  in particular, system library subroutines that
  .i sendmail
  calls probably reference
-@@ -1055,7 +1055,7 @@ are logged under the
+@@ -1056,7 +1056,7 @@ are logged under the
  .sm LOG_MAIL
  facility\**.
  .(f
@@ -626,7 +626,7 @@
  which does not support facilities in the syslog.
  .)f
  .sh 3 "Format"
-@@ -1069,7 +1069,7 @@ the word
+@@ -1070,7 +1070,7 @@ the word
  .q sendmail: ,
  and a message\**.
  .(f
@@ -635,7 +635,7 @@
  the syntax.
  .)f
  Most messages are a sequence of
-@@ -1520,7 +1520,7 @@ The disk based host information is store
+@@ -1521,7 +1521,7 @@ The disk based host information is store
  directory called
  .b \&.hoststat \**.
  .(f
@@ -644,7 +644,7 @@
  .b HostStatusDirectory
  option;
  it can, of course, go anywhere you like in your filesystem.
-@@ -1571,7 +1571,7 @@ and sendmail knows about it,
+@@ -1572,7 +1572,7 @@ and sendmail knows about it,
  will use the native version.
  Ultrix, Solaris, and DEC OSF/1 are examples of such systems\**.
  .(f
@@ -653,7 +653,7 @@
  but since the APIs are apparently not available in the libraries
  .i sendmail
  does not use the native service switch in this release.
-@@ -1678,7 +1678,7 @@ will not have the desired effect
+@@ -1679,7 +1679,7 @@ will not have the desired effect
  (except on prep.ai.MIT.EDU,
  and they probably don't want me)\**.
  .(f
@@ -662,7 +662,7 @@
  will permit aliasing;
  this is normally limited to the local mailer.
  .)f
-@@ -1694,7 +1694,7 @@ The second form is processed by one of t
+@@ -1695,7 +1695,7 @@ The second form is processed by one of t
  e.g.,
  .i ndbm \|(3)\**
  .(f
@@ -671,7 +671,7 @@
  .i gdbm
  package does not work.
  .)f
-@@ -1826,7 +1826,7 @@ Before
+@@ -1827,7 +1827,7 @@ Before
  will access the database,
  it checks to insure that this entry exists\**.
  .(f
@@ -680,7 +680,7 @@
  .b AliasWait
  option is required in the configuration
  for this action to occur.
-@@ -2249,7 +2249,7 @@ Some options have security implications.
+@@ -2250,7 +2250,7 @@ Some options have security implications.
  Sendmail allows you to set these,
  but relinquishes its set-user-ID or set-group-ID permissions thereafter\**.
  .(f
@@ -689,7 +689,7 @@
  thus, if you are executing as root,
  as from root's crontab file or during system startup
  the root permissions will still be honored.
-@@ -2617,7 +2617,7 @@ the time to wait for another command.
+@@ -2618,7 +2618,7 @@ the time to wait for another command.
  The timeout waiting for a reply to an IDENT query
  [5s\**, unspecified].
  .(f
@@ -698,7 +698,7 @@
  .)f
  .ip lhlo
  The wait for a reply to an LMTP LHLO command
-@@ -3872,7 +3872,7 @@ and
+@@ -3873,7 +3873,7 @@ and
  is looked up in the host database(s)
  and replaced by the canonical name\**.
  .(f
@@ -707,7 +707,7 @@
  completely equivalent
  to $(host \fIhostname\fP$).
  In particular, a
-@@ -3957,7 +3957,7 @@ part.
+@@ -3958,7 +3958,7 @@ part.
  If the mailer is local
  the host part may be omitted\**.
  .(f
@@ -716,7 +716,7 @@
  .q "per user"
  extensions.
  For example, in the address
-@@ -4917,7 +4917,7 @@ for interpolation into argv's for mailer
+@@ -4939,7 +4939,7 @@ for interpolation into argv's for mailer
  or for other contexts.
  The ones marked \(dg are information passed into sendmail\**,
  .(f
@@ -725,7 +725,7 @@
  all of these macros have reasonable defaults.
  Previous versions required that they be defined.
  .)f
-@@ -5456,7 +5456,7 @@ and then passing that to
+@@ -5476,7 +5476,7 @@ and then passing that to
  .i gethostbyname (3)
  which is supposed to return the canonical version of that host name.\**
  .(f
@@ -734,7 +734,7 @@
  .i gethostname
  might return
  .q foo
-@@ -5484,7 +5484,7 @@ it is imperative that the config file se
+@@ -5504,7 +5504,7 @@ it is imperative that the config file se
  .b $j
  to the fully qualified domain name\**.
  .(f
@@ -743,7 +743,7 @@
  .b $j
  at all, so up until 8.6,
  config files
-@@ -7254,7 +7254,7 @@ will run as this user.
+@@ -7286,7 +7286,7 @@ will run as this user.
  Defaults to 1:1.
  The value can also be given as a symbolic user name.\**
  .(f
@@ -752,7 +752,7 @@
  .b g
  option has been combined into the
  .b DefaultUser
-@@ -7993,7 +7993,7 @@ noactualrecipient	Don't put X-Actual-Rec
+@@ -8026,7 +8026,7 @@ noactualrecipient	Don't put X-Actual-Rec
  		which reveal the actual account that addresses map to.
  .)b
  .(f
@@ -761,7 +761,7 @@
  the
  .b noreceipts
  flag turns off support for RFC 1891
-@@ -8226,7 +8226,7 @@ If set to a non-zero (non-root) value,
+@@ -8259,7 +8259,7 @@ If set to a non-zero (non-root) value,
  .i sendmail
  will change to this user id shortly after startup\**.
  .(f
@@ -770,7 +770,7 @@
  it changes to this user after accepting a connection
  but before reading any
  .sm SMTP
-@@ -8911,7 +8911,7 @@ line may have an optional
+@@ -8944,7 +8944,7 @@ line may have an optional
  to indicate that this configuration file uses modifications
  specific to a particular vendor\**.
  .(f
@@ -779,7 +779,7 @@
  to the list of recognized vendors by editing the routine
  .i setvendor
  in
-@@ -10155,7 +10155,7 @@ gets their outgoing mail stamped as
+@@ -10190,7 +10190,7 @@ gets their outgoing mail stamped as
  but people not listed in the database use the local hostname.
  .sh 3 "Creating the database\**"
  .(f
@@ -788,7 +788,7 @@
  Other features are available which provide similar functionality,
  e.g., virtual hosting and mapping local addresses into a
  generic form as explained in cf/README.
-@@ -10734,7 +10734,7 @@ and
+@@ -10769,7 +10769,7 @@ and
  fields are always scanned on ARPANET mail
  to determine the sender\**;
  .(f
@@ -797,7 +797,7 @@
  this information is contained in the envelope.
  The older ARPANET protocols did not completely distinguish
  envelope from header.
-@@ -10962,7 +10962,7 @@ The distribution includes several possib
+@@ -10997,7 +10997,7 @@ The distribution includes several possib
  If you are porting to a new environment
  you may need to add some new tweaks.\**
  .(f
@@ -806,7 +806,7 @@
  sendmail@Sendmail.ORG.
  .)f
  .sh 2 "Configuration in sendmail/daemon.c"
-@@ -11955,7 +11955,7 @@ the following is a queue file sent to
+@@ -11989,7 +11989,7 @@ the following is a queue file sent to
  and
  .q bostic@okeeffe.CS.Berkeley.EDU \**:
  .(f
@@ -1091,7 +1091,7 @@
  	/* set from system and protocol used */
 --- sendmail/Makefile.m4
 +++ sendmail/Makefile.m4	2024-02-05 08:37:43.840410218 +0000
-@@ -49,13 +49,16 @@ ${DESTDIR}/etc/mail/submit.cf:
+@@ -54,13 +54,16 @@ ${DESTDIR}/etc/mail/submit.cf:
  	cd ${SRCDIR}/cf/cf && make install-submit-cf
  
  MSPQ=ifdef(`confMSP_QUEUE_DIR', `confMSP_QUEUE_DIR', `/var/spool/clientmqueue')
@@ -1217,7 +1217,7 @@
  		closecontrolsocket(true);
 --- sendmail/domain.c
 +++ sendmail/domain.c	2024-02-05 08:37:43.840410218 +0000
-@@ -1750,14 +1750,20 @@ cnameloop:
+@@ -1727,14 +1727,20 @@ cnameloop:
  		if (qtype == initial)
  			gotmx = false;
  		if (tTd(8, 5))
@@ -1242,7 +1242,7 @@
  		ret = (*resqdomain)(host, dp, C_IN, qtype,
 --- sendmail/readcf.c
 +++ sendmail/readcf.c	2024-02-05 08:37:43.844410144 +0000
-@@ -1906,15 +1906,19 @@ makemailer(line)
+@@ -1908,15 +1908,19 @@ makemailer(line)
  #endif
  		    )
  		{

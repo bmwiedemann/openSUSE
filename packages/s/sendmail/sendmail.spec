@@ -485,7 +485,9 @@ processed mail on to the MTA (e.g. sendmail).
     test -d /var/spool/mail/ || exit 1
     test 1777 = "$(stat --printf='%a' /var/spool/mail/)" || exit 1
 %endif
+%if %{defined tmpfiles_create}
     mkdir -p %{buildroot}%{_tmpfilesdir}
+%endif
 %if 0%{?suse_version} >= 1600
     sed -ri '\@/etc/init.d/sendmail@d' %{buildroot}%{_datadir}/permissions/permissions.d/sendmail
     sed -ri '\@/etc/init.d/sendmail@d' %{buildroot}%{_datadir}/permissions/permissions.d/sendmail.paranoid
@@ -493,6 +495,10 @@ processed mail on to the MTA (e.g. sendmail).
     sed -ri 's|@@EXECPREFIX@@|%{_libexecdir}|' %{buildroot}%{_datadir}/permissions/permissions.d/sendmail.paranoid
     sed -ri '\|@@VARRUN@@|d' %{buildroot}%{_datadir}/permissions/permissions.d/sendmail
     sed -ri '\|@@VARRUN@@|d' %{buildroot}%{_datadir}/permissions/permissions.d/sendmail.paranoid
+%if %{defined tmpfiles_create}
+     sed -ri '\|^/var|d'     %{buildroot}%{_datadir}/permissions/permissions.d/sendmail
+     sed -ri '\|^/var|d'     %{buildroot}%{_datadir}/permissions/permissions.d/sendmail.paranoid
+%endif
 %else
     sed -ri '\@/etc/init.d/sendmail@d' %{buildroot}%{_sysconfdir}/permissions.d/sendmail
     sed -ri '\@/etc/init.d/sendmail@d' %{buildroot}%{_sysconfdir}/permissions.d/sendmail.paranoid
@@ -582,11 +588,13 @@ processed mail on to the MTA (e.g. sendmail).
 
 %if %{defined verify_permissions}
 %verifyscript
+%if ! %{defined tmpfiles_create}
 %verify_permissions -e %{_localstatedir}/spool/clientmqueue/
 %if 0%{?suse_version} < 1600
 %verify_permissions -e %{_localstatedir}/spool/mail/
 %endif
 %verify_permissions -e %{_localstatedir}/spool/mqueue/
+%endif
 %verify_permissions -e %{_sysconfdir}/sendmail.cf
 %verify_permissions -e %{_mailcnfdir}/system/
 %verify_permissions -e %{_mailcnfdir}/auth/
@@ -637,11 +645,13 @@ if type -p systemctl > /dev/null 2>&1 ; then
   systemctl enable sendmail-client.path >/dev/null 2>&1 || :
 fi
 %if %{defined set_permissions}
+%if ! %{defined tmpfiles_create}
 %set_permissions %{_localstatedir}/spool/clientmqueue/
 %if 0%{?suse_version} < 1600
 %set_permissions %{_localstatedir}/spool/mail/
 %endif
 %set_permissions %{_localstatedir}/spool/mqueue/
+%endif
 %set_permissions %{_sysconfdir}/sendmail.cf
 %set_permissions %{_mailcnfdir}/system/
 %set_permissions %{_mailcnfdir}/auth/

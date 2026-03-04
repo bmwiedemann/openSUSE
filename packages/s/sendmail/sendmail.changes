@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  3 13:52:03 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Avoid permission checks below /var
+
+-------------------------------------------------------------------
 Wed Feb 11 09:31:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.12.2:
