@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-docklike-plugin
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define xfce_version 4.16.0
 %define plugin docklike
 Name:           xfce4-%{plugin}-plugin
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        Docklike Taskbar
 License:        GPL-3.0-or-later

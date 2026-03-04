@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Mar  3 14:38:27 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.5.1
+  * build: Rename POTFILES.in to POTFILES
+  * AppInfos: Remove GIO search
+  * Update debug instructions
+  * x11: Add exceptions where instance-id should be preferred to class-id
+  * I18n: Update po/LINGUAS list
+  * wayland: Handle null workspace group list when a group is destroyed
+  * fix docklike menus disappear even if the mouse is on them
+  * Improve GroupMenu CSS
+  * build: Fix typo in optimization level
+  * I18n: Update po/LINGUAS list
+  * GroupWindow: Add missing sanity check
+  * Xfw: Do not rely on window list order to determine last active window
+  * Hide workspace-related visibility option on wayland
+  * GroupWindow: Don't unactivate group when a window is closed
+  * I18n: Update po/LINGUAS list
+  * README.md: Add uninstall info
+  * I18n: Update po/LINGUAS list
+  * SettingsDialog: Fix leak when closing via close button
+  * Stop using xfce_panel_plugin_(block|unblock)_menu
+  * Remove autotools build
+  * I18n: Update po/LINGUAS list
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat Nov 22 21:26:56 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.
