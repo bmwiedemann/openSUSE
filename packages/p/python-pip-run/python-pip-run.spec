@@ -27,7 +27,7 @@
 # Disables installing nbformat for tests in Ring1 (see also Patch1)
 %bcond_with ringdisabled
 # Do not depend on nbformat for SLES or SLFO:Main
-%if ( 0%{?suse_version} == 1500 && 0%{?sle_version} >= 150400 ) || 0%{?suse_version} == 1600
+%if 0%{?suse_version} < 1699
 %bcond_without ringdisabled
 %endif
 %if 0%{?suse_version} > 1500

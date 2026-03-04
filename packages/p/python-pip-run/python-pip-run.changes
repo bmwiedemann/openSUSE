@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  3 15:22:47 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Fix suse_version constraint for SLFO (jsc#PED-15841)
+  * simplify the expression by excluding unsupported distributions
+
+-------------------------------------------------------------------
 Tue Feb 10 04:55:55 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 16.1.0:

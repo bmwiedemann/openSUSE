@@ -102,4 +102,13 @@
   * Now if ipython is included in the dependencies, it will be used as the</comment>
     <requestid>1332136</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>996e94d876f5bf3d52413d4b5a9b2945</srcmd5>
+    <version>16.1.0</version>
+    <time>1772654720</time>
+    <user>anag_factory</user>
+    <comment>- Fix suse_version constraint for SLFO (jsc#PED-15841)
+  * simplify the expression by excluding unsupported distributions</comment>
+    <requestid>1336148</requestid>
+  </revision>
 </revisionlist>
