@@ -71,4 +71,12 @@
     <comment>Use SOURCE_DATE_EPOCH for reproducible jar mtime</comment>
     <requestid>1203396</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>15f081a5e3945a22b2813eb0325efd1c</srcmd5>
+    <version>0.4.0</version>
+    <time>1772654654</time>
+    <user>anag_factory</user>
+    <comment>0.4.0 fixing bsc#1258913, CVE-2026-27727</comment>
+    <requestid>1336070</requestid>
+  </revision>
 </revisionlist>

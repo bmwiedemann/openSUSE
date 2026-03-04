@@ -1,7 +1,7 @@
 #
 # spec file for package mchange-commons
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global git_tag mchange-commons-java-%{version}
 Name:           mchange-commons
-Version:        0.2.20
+Version:        0.4.0
 Release:        0
 Summary:        A collection of general purpose utilities for c3p0
 License:        EPL-1.0 OR LGPL-2.0-only

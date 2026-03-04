@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  3 14:05:25 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 0.4.0
+  * No structured changelog provided by upstream
+  * Disable remote ClassLoading when dereferencing
+    javax.naming.Reference instances, unless explicitly
+    configuration requests supporting it. Fixes bsc#1258913,
+    CVE-2026-27727)
+
+-------------------------------------------------------------------
 Wed Sep 25 07:06:57 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use SOURCE_DATE_EPOCH for reproducible jar mtime
@@ -35,7 +45,7 @@ Tue Jul 27 15:53:36 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 -------------------------------------------------------------------
 Fri Apr 16 20:28:29 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
-- Update to 2.20
+- Update to 0.2.20
   * Add method to force use of FallbackMLog
   * Update VersionUtils to correctly parse versions from newer JVMs
   * Enhancements to FallbackMLog
