@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  4 10:50:11 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.63.0
+  * snippet for setting read lock mode (#1473)
+  * add requestID info in error exceptions (#1415)
+  * prevent thread leak by ensuring singleton initialization (#1492)
+
+-------------------------------------------------------------------
 Fri Jan 16 09:21:00 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.62.0

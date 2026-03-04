@@ -57,4 +57,15 @@
     <comment></comment>
     <requestid>1327656</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>67136ab97e6bed45bf43ef078054e0e6</srcmd5>
+    <version>3.63.0</version>
+    <time>1772655047</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.63.0
+  * snippet for setting read lock mode (#1473)
+  * add requestID info in error exceptions (#1415)
+  * prevent thread leak by ensuring singleton initialization (#1492) (forwarded request 1336330 from glaubitz)</comment>
+    <requestid>1336408</requestid>
+  </revision>
 </revisionlist>
