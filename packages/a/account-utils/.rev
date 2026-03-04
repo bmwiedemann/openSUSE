@@ -52,4 +52,26 @@ Add conflicts to busybox-adduser</comment>
     <user>dimstar_suse</user>
     <comment>Revert, the obsolete of shadow-pw-mgmt was premature</comment>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3f97de136def4a6f535fddf0d768d4bb</srcmd5>
+    <version>1.0.1+git20260128.6a6d00f</version>
+    <time>1772654758</time>
+    <user>anag_factory</user>
+    <comment>- Add #!BuildConflicts: shadow-pw-mgmt
+  shadow-pw-mgmt permission file is in conflict
+
+- Disable obsoletes shadow-pw-mgmt for now again, would always
+  pull in this package
+
+- Remove permissions file as entries got removed from permissions
+
+- Update to version 1.0.1+git20260128.6a6d00f:
+  * mkdir_p: return correct error code
+  * dump-privs: add stdint.h for intmax_t
+  * Only use getcon if SELinux is available
+  * pwupdd: remove socket option leftovers
+
+- Obsolete shadow-pw-mgmt for easier migration</comment>
+    <requestid>1336326</requestid>
+  </revision>
 </revisionlist>

@@ -15,15 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# Avoid build cycle
+#!BuildIgnore: account-utils
+# Breaks post-build-checks due to conflicting permissions
+#!BuildConflicts: shadow-pw-mgmt
+
 %define lname   libpwaccess0
 Name:           account-utils
-Version:        1.0.1+git20260121.39eee92
+Version:        1.0.1+git20260128.6a6d00f
 Release:        0
 Summary:        Service for authentication and account management
 License:        GPL-2.0-or-later AND BSD-2-Clause AND LGPL-2.1-or-later
 URL:            https://github.com/thkukuk/account-utils
 Source:         %{name}-%{version}.tar.xz
-Source1:        account-utils.permissions
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -35,9 +39,9 @@ BuildRequires:  pkgconfig(libxcrypt)
 BuildRequires:  pkgconfig(pam) >= 1.6.0
 # For test suite
 BuildRequires:  user(nobody)
-Requires(post): permissions
 Conflicts:      shadow-pw-mgmt
 Conflicts:      busybox-adduser
+#Obsoletes:      shadow-pw-mgmt
 Requires(pre):  pam-config
 Requires(posttrans): pam-config
 
@@ -70,8 +74,6 @@ pwaccess and pwupd services.
 
 %install
 %meson_install
-mkdir -p %{buildroot}%{_datadir}/permissions/permissions.d/
-cp %{SOURCE1} %{buildroot}%{_datadir}/permissions/permissions.d/account-utils
 
 %check
 %meson_test
@@ -84,13 +86,6 @@ cp %{SOURCE1} %{buildroot}%{_datadir}/permissions/permissions.d/account-utils
 
 %post
 %service_add_post pwaccessd.socket pwupdd.socket newidmapd.socket
-%set_permissions %{_bindir}/chage
-%set_permissions %{_bindir}/chfn
-%set_permissions %{_bindir}/chsh
-%set_permissions %{_bindir}/expiry
-%set_permissions %{_bindir}/newgidmap
-%set_permissions %{_bindir}/newuidmap
-%set_permissions %{_bindir}/passwd
 if [ "$1" -eq 1 ]; then
     pam-config -a --unix_ng || :
 fi
@@ -103,14 +98,6 @@ fi
 
 %post   -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
-%verifyscript
-%verify_permissions %{_bindir}/chage
-%verify_permissions %{_bindir}/chfn
-%verify_permissions %{_bindir}/chsh
-%verify_permissions %{_bindir}/expiry
-%verify_permissions %{_bindir}/newgidmap
-%verify_permissions %{_bindir}/newuidmap
-%verify_permissions %{_bindir}/passwd
 
 %files
 %license LICENSE.BSD-2-Clause
@@ -149,7 +136,6 @@ fi
 %{_mandir}/man8/pam_unix_ng.8%{?ext_man}
 %{_mandir}/man8/pwaccessd.8%{?ext_man}
 %{_mandir}/man8/pwupdd.8%{?ext_man}
-%{_datadir}/permissions/permissions.d/account-utils
 
 %files -n %{lname}
 %license LICENSE.LGPL2.1
