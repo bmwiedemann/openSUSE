@@ -2423,6 +2423,7 @@ unsorted:
   - cockpit-packages 
   - cockpit-repos 
   - cockpit-selinux 
+  - cockpit-snapshots 
   - cockpit-storaged 
   - cockpit-subscriptions 
   - code-minimap 
@@ -2768,9 +2769,6 @@ unsorted:
   - crash-gcore 
   - crash-kmp-default 
   - crash-trace 
-  - crawl 
-  - crawl-data 
-  - crawl-sdl 
   - crazydiskinfo 
   - crc32csum 
   - cri-o 
@@ -8435,8 +8433,6 @@ unsorted:
   - heaptrack-lang 
   - heatshrink 
   - heatshrink-devel 
-  - hedgewars 
-  - hedgewars-data 
   - heimdall 
   - heimdall-frontend 
   - heimer 
@@ -14501,7 +14497,6 @@ unsorted:
   - liblttng-ust-python-agent1-32bit 
   - liblttng-ust1-32bit 
   - liblttoolbox3 
-  - liblua5_1-5 
   - liblua5_4-5-32bit 
   - liblua5_5-5 
   - libluabind0_9_1 
@@ -17819,9 +17814,6 @@ unsorted:
   - lua-resty-redis 
   - lua-resty-websocket 
   - lua-rrdtool 
-  - lua51 
-  - lua51-devel 
-  - lua51-doc 
   - lua53 
   - lua53-alt-getopt 
   - lua53-apk 
@@ -17838,6 +17830,7 @@ unsorted:
   - lua53-cosmo 
   - lua53-coxpcall 
   - lua53-cyrussasl 
+  - lua53-datafile 
   - lua53-devel 
   - lua53-digestif 
   - lua53-dkjson 
@@ -17860,6 +17853,7 @@ unsorted:
   - lua53-lua-ev-devel 
   - lua53-lua-mpris 
   - lua53-luacheck 
+  - lua53-luacov 
   - lua53-luadbi 
   - lua53-luaepnf 
   - lua53-luaevent 
@@ -17910,6 +17904,7 @@ unsorted:
   - lua54-cosmo 
   - lua54-coxpcall 
   - lua54-cyrussasl 
+  - lua54-datafile 
   - lua54-devel 
   - lua54-digestif 
   - lua54-dkjson 
@@ -17932,6 +17927,7 @@ unsorted:
   - lua54-lua-ev-devel 
   - lua54-lua-mpris 
   - lua54-luacheck 
+  - lua54-luacov 
   - lua54-luadbi 
   - lua54-luaepnf 
   - lua54-luaevent 
@@ -17969,22 +17965,46 @@ unsorted:
   - lua55 
   - lua55-alt-getopt 
   - lua55-argparse 
+  - lua55-busted 
   - lua55-cffi-lua 
   - lua55-cffi-lua-doc 
+  - lua55-cjson 
+  - lua55-cliargs 
   - lua55-compat-5.3 
   - lua55-compat-5.3-bit32 
+  - lua55-cosmo 
+  - lua55-datafile 
   - lua55-devel 
+  - lua55-dkjson 
   - lua55-doc 
   - lua55-ldbus 
   - lua55-ldoc 
   - lua55-loadkit 
   - lua55-lpeg 
   - lua55-lpeg-doc 
+  - lua55-lpeg_patterns 
+  - lua55-lua-ev 
+  - lua55-lua-ev-devel 
   - lua55-luacheck 
+  - lua55-luacov 
   - lua55-luafilesystem 
+  - lua55-luaposix 
+  - lua55-luarocks 
+  - lua55-luasec 
+  - lua55-luasocket 
+  - lua55-luasocket-devel 
+  - lua55-luasocket-doc 
+  - lua55-luassert 
+  - lua55-luasystem 
+  - lua55-luaterm 
+  - lua55-luautf8 
+  - lua55-luv 
+  - lua55-lyaml 
   - lua55-markdown 
+  - lua55-mediator_lua 
   - lua55-moonscript 
   - lua55-penlight 
+  - lua55-say 
   - luabind-devel 
   - luajit 
   - luajit-alt-getopt 
@@ -18000,6 +18020,7 @@ unsorted:
   - luajit-cosmo 
   - luajit-coxpcall 
   - luajit-cyrussasl 
+  - luajit-datafile 
   - luajit-devel 
   - luajit-dkjson 
   - luajit-editorconfig-core-lua 
@@ -18020,6 +18041,7 @@ unsorted:
   - luajit-lua-ev-devel 
   - luajit-lua-mpris 
   - luajit-luacheck 
+  - luajit-luacov 
   - luajit-luadbi 
   - luajit-luaepnf 
   - luajit-luaevent 
@@ -24498,7 +24520,6 @@ unsorted:
   - python311-argparse-manpage 
   - python311-argparse_addons 
   - python311-arrow 
-  - python311-arviz 
   - python311-asciimatics 
   - python311-asciitree 
   - python311-asdf 
@@ -26212,6 +26233,7 @@ unsorted:
   - python311-marathon 
   - python311-marisa 
   - python311-markdown2 
+  - python311-markdownify 
   - python311-marshmallow 
   - python311-mashumaro 
   - python311-mathgl 
@@ -27983,9 +28005,7 @@ unsorted:
   - python311-zxcvbn 
   - python311-zxcvbn-rs-py 
   - python312 
-  - python312-Flask-SocketIO 
   - python312-Pint 
-  - python312-arviz 
   - python312-base 
   - python312-base-x86-64-v3 
   - python312-bpython 
@@ -28006,7 +28026,6 @@ unsorted:
   - python312-lalinference 
   - python312-lalinspiral 
   - python312-lalpulsar 
-  - python312-mapserver 
   - python312-nilearn 
   - python312-nvim-remote 
   - python312-onnx 
@@ -28370,6 +28389,9 @@ unsorted:
   - python313-argparse_addons 
   - python313-arrow 
   - python313-arviz 
+  - python313-arviz-base 
+  - python313-arviz-plots 
+  - python313-arviz-stats 
   - python313-asciimatics 
   - python313-asciitree 
   - python313-asdf 
@@ -30092,6 +30114,7 @@ unsorted:
   - python313-marisa 
   - python313-markdown-it-py 
   - python313-markdown2 
+  - python313-markdownify 
   - python313-marshmallow 
   - python313-masakariclient 
   - python313-mashumaro 
