@@ -1,7 +1,8 @@
 #
 # spec file for package incus
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2026 Aleksa Sarai <cyphar@cyphar.com>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +31,8 @@
 %endif
 
 Name:           incus
-Version:        6.19.1
-%define tag_version 6.19.1
+Version:        6.22
+%define tag_version 6.22.0
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0

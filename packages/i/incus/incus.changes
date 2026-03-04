@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Mar  3 16:00:11 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>
+
+- Update to Incus 6.22. See upstream changelog online at
+  <https://discuss.linuxcontainers.org/t/incus-6-22-has-been-released/26300>
+
+  + vsock support for the WIndows agent
+  + Direct backup retrieval
+  + Disk-only snapshot restoration
+  + Dedicated storage volume for server logs
+  * QCOW2 storage improvements
+  * lvmcluster storage pool resizing
+  * Automatic snapshot removal on restore with lvmcluster
+  * Full USB controller passthrough in unix-hotplug
+  * Certificate information in the authorization scriptlet
+  * VM fast reboot
+  * Image server URL restrictions in projects
+  * URL based imports in incus-migrate
+  * Multi-domain certificates with ACME
+  * Control of trusted property on SR-IOV NICs
+  * Additional cluster member states to track evacuation
+  * Cluster restore without instance migration
+  * Instance boot time metrics
+
+-------------------------------------------------------------------
+Mon Jan 26 20:45:16 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>
+
+- Update to Incus 6.21. See upstream changelog online at
+  <https://discuss.linuxcontainers.org/t/incus-6-21-has-been-released/26005>
+
+  * CVE-2026-23953 boo#1257141 (Newline injection in environment variable)
+  * CVE-2026-23954 boo#1257146 (Arbitrary file read/write through templates)
+
+  + incus wait command
+  + Automatic SR-IOV selection for network interfaces
+  + attached and connected properties on network interfaces
+  + Parallel instance startup
+  + Network restrictions through OIDC claims
+  + Better support for the SOA in network zones
+  + Support for forceful (recursive) file deletion in API
+
+  <https://discuss.linuxcontainers.org/t/incus-6-20-has-been-released/25635>
+
+  + QCOW2 formatted volumes on clustered LVM
+  + Standalone incus cluster join command
+  + Configuration file for the VM agent
+  + Reverse DNS records in OVN
+
+-------------------------------------------------------------------
 Sun Nov 30 01:15:24 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Incus 6.19.1. See upstream changelog online at
