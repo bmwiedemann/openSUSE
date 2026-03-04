@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar  3 12:28:49 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.2
+- Changes since 6.6.1:
+  * Update version for new release 6.6.2
+  * applets/appmenu: handle apps lying about having a menu
+  * oom-notifier: Properly un-escape unit names
+  * Also remove secrets from clipboard when clearing it (kde#516403)
+  * shell: Port OSD away from PlasmaCore.Dialog
+  * applets/appmenu: set sourceMenu in Compact mode (kde#516207)
+
+-------------------------------------------------------------------
 Tue Feb 24 17:22:34 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.1:
