@@ -1,4 +1,182 @@
 -------------------------------------------------------------------
+Tue Mar  3 15:20:07 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.31.0:
+  * Use ranged reads and limited searches and fuzzy editing improvements #19240
+  * Fix bottom border color #19266
+  * Release note generator fix #19363
+  * test(evals): add behavioral tests for tool output masking #19172
+  * docs: clarify preflight instructions in GEMINI.md #19377
+  * feat(cli): add gemini --resume hint on exit #16285
+  * fix: optimize height calculations for ask_user dialog #19017
+  * feat(cli): add Alt+D for forward word deletion #19300
+  * Disable failing eval test #19455
+  * fix(cli): support legacy onConfirm callback in ToolActionsContext #19369
+  * chore(deps): bump tar from 7.5.7 to 7.5.8 #19367
+  * fix(plan): allow safe fallback when experiment setting for plan is not enabled but approval mode at startup is plan #19439
+  * Add explicit color-convert dependency #19460
+  * feat(devtools): migrate devtools package into monorepo #18936
+  * fix(core): clarify plan mode constraints and exit mechanism #19438
+  * feat(cli): add macOS run-event notifications (interactive only) #19056
+  * Changelog for v0.29.0 #19361
+  * fix(ui): preventing empty history items from being added #19014
+  * Changelog for v0.30.0-preview.0 #19364
+  * feat(core): add support for MCP progress updates #19046
+  * fix(core): ensure directory exists before writing conversation file #18429
+  * fix(ui): move margin from top to bottom in ToolGroupMessage #17198
+  * fix(cli): treat unknown slash commands as regular input instead of showing error #17393
+  * feat(core): experimental in-progress steering hints (2 of 2) #19307
+  * docs(plan): add documentation for plan mode command #19467
+  * fix(core): ripgrep fails when pattern looks like ripgrep flag #18858
+  * fix(cli): disable auto-completion on Shift+Tab to preserve mode cycling #19451
+  * use issuer instead of authorization_endpoint for oauth discovery #17332
+  * feat(cli): include /dir add directories in @ autocomplete suggestions #19246
+  * feat(admin): Admin settings should only apply if adminControlsApplicable = true and fetch errors should be fatal #19453
+  * Format strict-development-rules command #19484
+  * feat(core): centralize compatibility checks and add TrueColor detection #19478
+  * Remove unused files and update index and sidebar. #19479
+  * Migrate core render util to use xterm.js as part of the rendering loop. #19044
+  * Changelog for v0.30.0-preview.1 #19496
+  * build: replace deprecated built-in punycode with userland package #19502
+  * Speculative fixes to try to fix react error. #19508
+  * fix spacing #19494
+  * fix(core): ensure user rejections update tool outcome for telemetry #18982
+  * fix(acp): Initialize config (#18897) #18898
+  * fix(core): add error logging for IDE fetch failures #17981
+  * feat(acp): support set_mode interface (#18890) #18891
+  * fix(core): robust workspace-based IDE connection discovery #18443
+  * Deflake windows tests. #19511
+  * Fix: Avoid tool confirmation timeout when no UI listeners are present #17955
+  * format md file #19474
+  * feat(cli): add experimental.useOSC52Copy setting #19488
+  * feat(cli): replace loading phrases boolean with enum setting #19347
+  * Update skill to adjust for generated results. #19500
+  * Fix message too large issue. #19499
+  * fix(core): prevent duplicate tool approval entries in auto-saved.toml #19487
+  * fix(core): resolve crash in ClearcutLogger when os.cpus() is empty #19555
+  * chore(core): improve encapsulation and remove unused exports #19556
+  * Revert "Add generic searchable list to back settings and extensions (… #19434
+  * fix(core): improve error type extraction for telemetry #19565
+  * fix: remove extra padding in Composer #19529
+  * feat(plan): support configuring custom plans storage directory #19577
+  * Migrate files to resource or references folder. #19503
+  * feat(policy): implement project-level policy support #18682
+  * feat(core): Implement parallel FC for read only tools. #18791
+  * chore(skills): adds pr-address-comments skill to work on PR feedback #19576
+  * refactor(sdk): introduce session-based architecture #19180
+  * fix(ci): add fallback JSON extraction to issue triage workflow #19593
+  * feat(core): refine Edit and WriteFile tool schemas for Gemini 3 #19476
+  * Changelog for v0.30.0-preview.3 #19585
+  * fix(plan): exclude EnterPlanMode tool from YOLO mode #19570
+  * chore: resolve build warnings and update dependencies #18880
+  * feat(ui): add source indicators to slash commands #18839
+  * docs: refine Plan Mode documentation structure and workflow #19644
+  * Docs: Update release information regarding Gemini 3.1 #19568
+  * fix(security): rate limit web_fetch tool to mitigate DDoS via prompt injection #19567
+  * Add initial implementation of /extensions explore command #19029
+  * fix: use discoverOAuthFromWWWAuthenticate for reactive OAuth flow (#18760) #19038
+  * Search updates #19482
+  * feat(cli): add support for numpad SS3 sequences #19659
+  * feat(cli): enhance folder trust with configuration discovery and security warnings #19492
+  * feat(ui): improve startup warnings UX with dismissal and show-count limits #19584
+  * feat(a2a): Add API key authentication provider #19548
+  * Send accepted/removed lines with ACCEPT_FILE telemetry. #19670
+  * feat(models): support Gemini 3.1 Pro Preview and fixes #19676
+  * feat(plan): enforce read-only constraints in Plan Mode #19433
+  * fix(cli): allow perfect match @-path completions to submit on Enter #19562
+  * fix(core): treat 503 Service Unavailable as retryable quota error #19642
+  * Update sidebar.json for to allow top nav tabs. #19595
+  * security: strip deceptive Unicode characters from terminal output #19026
+  * Fixes 'input.on' is not a function error in Gemini CLI #19691
+  * Revert "feat(ui): add source indicators to slash commands" #19695
+  * security: implement deceptive URL detection and disclosure in tool confirmations #19288
+  * fix(core): restore auth consent in headless mode and add unit tests #19689
+  * Fix unsafe assertions in code_assist folder. #19706
+  * feat(cli): make JetBrains warning more specific #19687
+  * fix(cli): extensions dialog UX polish #19685
+  * fix(cli): use getDisplayString for manual model selection in dialog #19726
+  * feat(policy): repurpose "Always Allow" persistence to workspace level #19707
+  * fix(cli): re-enable CLI banner #19741
+  * Disallow and suppress unsafe assignment #19736
+  * feat(core): migrate read_file to 1-based start_line/end_line parameters #19526
+  * feat(cli): improve CTRL+O experience for both standard and alternate screen buffer (ASB) modes #19010
+  * Utilize pipelining of grep_search -> read_file to eliminate turns #19574
+  * refactor(core): remove unsafe type assertions in error utils (Phase 1.1) #19750
+  * Disallow unsafe returns. #19767
+  * fix(cli): filter subagent sessions from resume history #19698
+  * chore(lint): fix lint errors seen when running npm run lint #19844
+  * feat(core): remove unnecessary login verbiage from Code Assist auth #19861
+  * fix(plan): time share #19847
+  * fix(core): allow any preview model in quota access check #19867
+  * fix(core): prevent omission placeholder deletions in replace/write_file #19870
+  * fix(core): add uniqueness guard to edit tool #19890
+  * refactor(config): remove enablePromptCompletion from settings #19974
+  * refactor(core): move session conversion logic to core #19972
+  * Fix: Persist manual model selection on restart #19864 #19891
+  * fix(core): increase default retry attempts and add quota error backoff #19949
+  * feat(core): add policy chain support for Gemini 3.1 #19991
+  * Updates command reference and /stats command. #19794
+  * Fix for silent failures in non-interactive mode #19905
+  * fix(plan): allow plan mode writes on Windows and fix prompt paths #19658
+  * fix(core): prevent OAuth server crash on unexpected requests #19668
+  * feat: Map tool kinds to explicit ACP.ToolKind values and update test … #19547
+  * chore: restrict gemini-automted-issue-triage to only allow echo #20047
+  * Allow ask headers longer than 16 chars #20041
+  * fix(core): prevent state corruption in McpClientManager during collis #19782
+  * fix(bundling): copy devtools package to bundle for runtime resolution #19766
+  * feat(policy): Support MCP Server Wildcards in Policy Engine #20024
+  * docs(CONTRIBUTING): update React DevTools version to 6 #20014
+  * feat(core): optimize tool descriptions and schemas for Gemini 3 #19643
+  * feat(core): implement experimental direct web fetch #19557
+  * feat(core): replace expected_replacements with allow_multiple in replace tool #20033
+  * fix(sandbox): harden image packaging integrity checks #19552
+  * fix(core): allow environment variable expansion and explicit overrides for MCP servers #18837
+  * feat(policy): Implement Tool Annotation Matching in Policy Engine #20029
+  * fix(core): prevent utility calls from changing session active model #20035
+  * fix(cli): skip workspace policy loading when in home directory #20054
+  * fix(scripts): Add Windows (win32/x64) support to lint.js #16193
+  * fix(a2a-server): Remove unsafe type assertions in agent #19723
+  * Fix: Handle corrupted token file gracefully when switching auth types (#19845) #19850
+  * fix critical dep vulnerability #20087
+  * Add new setting to configure maxRetries #20064
+  * Stabilize tests. #20095
+  * make windows tests mandatory #20096
+  * Add 3.1 pro preview to behavioral evals. #20088
+  * feat:PR-rate-limit #19804
+  * feat(cli): allow expanding full details of MCP tool on approval #19916
+  * feat(security): Introduce Conseca framework #13193
+  * fix(cli): Remove unsafe type assertions in activityLogger #19713 #19745
+  * feat: implement AfterTool tail tool calls #18486
+  * ci(actions): fix PR rate limiter excluding maintainers #20117
+  * Shortcuts: Move SectionHeader title below top line and refine styling #18721
+  * refactor(ui): Update and simplify use of gray colors in themes #20141
+  * fix punycode2 #20154
+  * feat(ide): add GEMINI_CLI_IDE_PID env var to override IDE process detection #15842
+  * feat(policy): Propagate Tool Annotations for MCP Servers #20083
+  * fix(a2a-server): pass allowedTools settings to core Config #19680
+  * feat(mcp): add progress bar, throttling, and input validation for MCP tool progress #19772
+  * feat(policy): centralize plan mode tool visibility in policy engine #20178
+  * feat(browser): implement experimental browser agent #19284
+  * feat(plan): summarize work after executing a plan #19432
+  * fix(core): create new McpClient on restart to apply updated config #20126
+  * Changelog for v0.30.0-preview.5 #20107
+  * Update packages. #20152
+  * Fix extension env dir loading issue #20198
+  * restrict /assign to help-wanted issues #20207
+  * feat(plan): inject message when user manually exits Plan mode #20203
+  * feat(extensions): enforce folder trust for local extension install #19703
+  * feat(hooks): adds support for RuntimeHook functions. #19598
+  * Docs: Update UI links. #20224
+  * feat: prompt users to run /terminal-setup with yes/no #16235
+  * fix: additional high vulnerabilities (minimatch, cross-spawn) #20221
+  * feat(telemetry): Add context breakdown to API response event #19699
+  * Docs: Add nested sub-folders for related topics #20235
+  * feat(plan): support automatic model switching for Plan Mode #20240
+  * fix(patch): cherry-pick 58df1c6 to release/v0.31.0-preview.0-pr-20374 to patch version v0.31.0-preview.0 and create version 0.31.0-preview.1 #20568
+  * fix(patch): cherry-pick ea48bd9 to release/v0.31.0-preview.1-pr-20577 [CONFLICTS] #20592
+  * fix(patch): cherry-pick 32e777f to release/v0.31.0-preview.2-pr-20531 to patch version v0.31.0-preview.2 and create version 0.31.0-preview.3 #20607
+
+-------------------------------------------------------------------
 Fri Feb 27 13:10:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.30.0:
