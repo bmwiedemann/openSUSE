@@ -1,7 +1,7 @@
 #
 # spec file for package python-drf-spectacular-sidecar
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-drf-spectacular-sidecar
-Version:        2025.3.1
+Version:        2026.3.1
 Release:        0
 Summary:        Serve self-contained distribution builds of Swagger UI and Redoc with Django
 License:        BSD-3-Clause
@@ -27,8 +27,11 @@ Source:         https://files.pythonhosted.org/packages/source/d/drf-spectacular
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# SECTION test requirements
+BuildRequires:  %{python_module Django >= 2.2}
+# /SECTION
+BuildRequires:  fdupes
 Requires:       python-Django >= 2.2
 BuildArch:      noarch
 %python_subpackages
@@ -50,6 +53,7 @@ Serve self-contained distribution builds of Swagger UI and Redoc with Django
 # no tests
 
 %files %{python_files}
+%license LICENSE
 %{python_sitelib}/drf_spectacular_sidecar
 %{python_sitelib}/drf_spectacular_sidecar-%{version}.dist-info
 
