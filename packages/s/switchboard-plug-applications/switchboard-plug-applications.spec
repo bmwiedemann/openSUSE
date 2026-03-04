@@ -1,7 +1,7 @@
 #
 # spec file for package switchboard-plug-applications
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.settings.applications
 Name:           switchboard-plug-applications
-Version:        8.2.0
+Version:        8.3.0
 Release:        0
 Summary:        Application configuration management
 License:        GPL-3.0-or-later

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 24 19:24:24 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.3.0:
+  * Startup: Remove unused get_path_from_uri
+  * DefaultPlug: add settings for pdf viewer
+  * meson: Fix warnings
+  * Refresh background icon
+  * Updated translations
+
+-------------------------------------------------------------------
 Sun Dec 21 05:01:35 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 8.2.0:
