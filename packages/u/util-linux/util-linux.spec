@@ -147,6 +147,8 @@ Patch21:        util-linux-agetty-escape-erase.patch
 Patch22:        util-linux-man-generated.patch
 # PATCH-FIX-OPENSUSE bsc#1222465: fdisk creates broken partition table
 Patch23:        util-linux-bsc-1222465.patch
+# PATCH-FIX-SECURITY util-linux-CVE-2026-3184.patch bsc1258859 CVE-2026-3184 -- Use full hostname for PAM to ensure correct access control for "login -h".
+Patch24:        util-linux-CVE-2026-3184.patch
 BuildRequires:  audit-devel
 BuildRequires:  bc
 BuildRequires:  binutils-devel

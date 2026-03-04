@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar  1 20:00:51 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Use full hostname for PAM to ensure correct access control for
+  "login -h" (bsc#1258859, CVE-2026-3184,
+  util-linux-CVE-2026-3184.patch).
+
+-------------------------------------------------------------------
 Mon Feb 23 00:37:02 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
 
 - Prevent leaking of NETLINK_ROUTE socket to login, which causes
