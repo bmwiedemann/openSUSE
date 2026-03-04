@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Mar 03 10:21:30 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260303.90d816d:
+  * Allow predicted PCRs to be empty
+  * Use grubenv for set-timeout (bsc#1258944)
+
+-------------------------------------------------------------------
+Wed Feb 25 13:00:27 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260225.fe2f59b (bsc#1258241):
+  * Use pcrlock predict to filter policy PCRs
+  * Drop hack to drop PCR9 using shift component
+  * Add sdbootutil config file
+  * Force back device for encypted rootfs
+  * Store backup under service ID (CVE-2026-25701)
+
+-------------------------------------------------------------------
+Thu Feb 19 13:23:48 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260219.db678d7:
+  * Use boot loader's config file only when required
+  * Do not generate predictions if no boot entries
+  * Warn when no default entry is found
+  * Add rootfs and rootfs-data parameters
+  * Redirect stderr for findmnt
+  * sdbootutil.spec: Drop obsolete dependency on dialog
+
+-------------------------------------------------------------------
 Tue Feb 10 12:49:11 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20260210.81c4815:
