@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Mar  4 01:53:00 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.25.2:
+  * Fix raising exception in `Quantity.from_tuple` with invalid units (#2199)
+  * Several unit definition fixes.
+  * Add support for `numpy.geomspace` (#2206)
+  * Add support for `linalg.diagonal`, `linalg.matrix_transpose`, `diag`,
+    `tril`, `triu`, `linalg.eigvals`, `linalg.eigvalsh`, `linalg.matrix_norm`
+    and `linalg.vector_norm` (#2210)
+  * Add support for `pint.Quantity` being used as Generic. (#2231)
+  * Fixed `nan`/`nan` to return `nan` rather than 1 in unit conversion.
+  * Bump minimum Python version to 3.11.
+  * Refactor compat to make it easier to test.
+  * Implemented several pixi environment and tasks to simplify development.
+  * Fix round function returning float instead of int (#2081)
+  * Fix return type of `PlainQuantity.to` (#2088)
+  * Update constants to CODATA 2022 recommended values. (#2049)
+  * Fixed issue with `.to_compact` and Magnitudes with uncertainties /
+    Quantities with units
+  * Fixed issue in unit conversion which led to loss of precision when using
+    `decimal`. (#2107)
+  * Add conductivity dimension. (#2112)
+  * Add absorbance unit and dimension. (#2114)
+  * Add membrane filtration flux and permeability dimensionality, and
+    shorthand "LMH". (#2116)
+  * Fix find_shortest_path to use breadth first search (#2146)
+  * Fix handling of extra arguments in conversion with enabled contexts
+  * Fix swapped left and right arguments in interp (#2187)
+  * Fix formatted scientific notation bug in Python 3.13 (#2168)
+  * Fix ability to add dB units, and to add dB (dimensionless) to referenced
+    dB units, such as dBm or dBW (#1160)
+  * Improve pressure unit definitions in default definition file (#2186)
+  * Avoid and document known issues with MIP during install, testing and
+    runtime (#2188 and #2121)
+  * Skip false xfail tests linked to a known numpy issue (#2188 and #1776)
+  * Add `Quantity.to_unprefixed` and `ito_unprefixed` methods that remove SI
+    prefixes without converting to base units. (#2201)
+- Do not ship testsuite.
+
+-------------------------------------------------------------------
 Thu Nov 27 06:05:19 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Only require pytest-subtests with pytest < 9. 
