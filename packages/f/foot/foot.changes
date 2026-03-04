@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Mar  3 17:05:46 UTC 2026 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.26.0:
+  * foot.ini options:
+    * Added main.toplevel-tag option and --toplevel-tag command line option
+      to set a custom toplevel tag on the window if the compositor supports
+      the xdg-toplevel-tag-v1 Wayland protocol.
+    * Added colors-*.blur option to enable background blur if the compositor
+      supports the ext-background-effect-v1 Wayland protocol and
+      the blur effect. This option is experimental.
+    * Renamed colors and colors2 sections to colors.dark and colors.light.
+      The old names are deprecated and will be removed in a future release.
+      The builtin themes have already been updated to use the new sections.
+      Custom configs using the old names will print a warning at startup.
+    * Changed main.initial-color-theme to take string values "dark" and "light"
+      instead of numbers 1 and 2. The use of numbers is deprecated and will be
+      removed in a future release.
+    * Changed main.pad option to support different padding values for each side
+      as LEFTxTOPxRIGHTxBOTTOM in addition to the original XxY format.
+    * Removed cursor.color option that was deprecated in v1.23.0.
+  * Scrollback search is now case-sensitive if the search string contains
+    an uppercase character.
+  * Spawning new terminals with the spawn-terminal action from a terminal
+    that was started with the --config option now automatically propagates
+    that --config option to the spawned terminal.
+  * Fixed various crashes and other issues.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.26.0 for more details.
+
+-------------------------------------------------------------------
 Thu Oct 16 14:35:32 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v1.25.0:

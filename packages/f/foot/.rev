@@ -912,4 +912,36 @@
   * See https://codeberg.org/dnkl/foot/releases/tag/1.25.0 for more details.</comment>
     <requestid>1311742</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>b5206a57211dc7abf4b433f131c4ecf2</srcmd5>
+    <version>1.26.0</version>
+    <time>1772654822</time>
+    <user>anag_factory</user>
+    <comment>- Update to v1.26.0:
+  * foot.ini options:
+    * Added main.toplevel-tag option and --toplevel-tag command line option
+      to set a custom toplevel tag on the window if the compositor supports
+      the xdg-toplevel-tag-v1 Wayland protocol.
+    * Added colors-*.blur option to enable background blur if the compositor
+      supports the ext-background-effect-v1 Wayland protocol and
+      the blur effect. This option is experimental.
+    * Renamed colors and colors2 sections to colors.dark and colors.light.
+      The old names are deprecated and will be removed in a future release.
+      The builtin themes have already been updated to use the new sections.
+      Custom configs using the old names will print a warning at startup.
+    * Changed main.initial-color-theme to take string values &quot;dark&quot; and &quot;light&quot;
+      instead of numbers 1 and 2. The use of numbers is deprecated and will be
+      removed in a future release.
+    * Changed main.pad option to support different padding values for each side
+      as LEFTxTOPxRIGHTxBOTTOM in addition to the original XxY format.
+    * Removed cursor.color option that was deprecated in v1.23.0.
+  * Scrollback search is now case-sensitive if the search string contains
+    an uppercase character.
+  * Spawning new terminals with the spawn-terminal action from a terminal
+    that was started with the --config option now automatically propagates
+    that --config option to the spawned terminal.
+  * Fixed various crashes and other issues.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.26.0 for more details.</comment>
+    <requestid>1336181</requestid>
+  </revision>
 </revisionlist>
