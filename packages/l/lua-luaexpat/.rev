@@ -111,4 +111,12 @@ those CVEs anyway.</comment>
 - Add luajit version to _multibuild</comment>
     <requestid>1315168</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>f1c089c917124edb0d74198843538040</srcmd5>
+    <version>1.5.1</version>
+    <time>1772654780</time>
+    <user>anag_factory</user>
+    <comment>- Enable lua55 build.</comment>
+    <requestid>1336342</requestid>
+  </revision>
 </revisionlist>
