@@ -18,13 +18,13 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name zlib
-Version:        1.2+git29
+Version:        1.4
 Release:        0
 Summary:        Simple streaming interface to zlib for Lua
 License:        MIT OR X11
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/brimworks/lua-zlib
-Source:         lua-%{mod_name}-%{version}.tar.xz
+Source0:        https://github.com/brimworks/lua-%{mod_name}/archive/refs/tags/v%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
 BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildRequires:  zlib-devel
@@ -58,7 +58,8 @@ mkdir -p %{buildroot}/%{lua_archdir}
 %postun -p /sbin/ldconfig
 
 %files
-%doc README
+%license LICENCE
+%doc README.md
 %{lua_archdir}/zlib.so
 
 %changelog
