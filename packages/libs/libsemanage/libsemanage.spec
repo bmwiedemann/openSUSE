@@ -138,7 +138,6 @@ done
 
 %files -n %{libname}
 %{_libdir}/libsemanage.so.*
-%dir %{_localstatedir}/lib/selinux
 
 %files conf
 %dir %{_sysconfdir}/selinux
