@@ -35,4 +35,12 @@
 - Add luajit version to _multibuild</comment>
     <requestid>1315149</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>5102fdd307c551035db3b7dcd8bb48d0</srcmd5>
+    <version>1.1.0</version>
+    <time>1772654794</time>
+    <user>anag_factory</user>
+    <comment>- Enable lua55 build.</comment>
+    <requestid>1336367</requestid>
+  </revision>
 </revisionlist>
