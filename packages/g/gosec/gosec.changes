@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar 02 07:33:42 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.24.7:
+  * Ignore nosec comments in action integration workflow to generate some warnings (#1573)
+  * Add a workflow for action integration test (#1571)
+  * fix(sarif): avoid invalid null relationships in SARIF output (#1569)
+  * chore: migrate gosec container image references to GHCR (#1567)
+  * Update gorelease to use the latest cosign bundle argument (#1565)
+  * Migrate goreleaser to use the proper cosign arguments (#1564)
+  * Update the cosing to version v3.0.5 (#1563)
+  * fix(release): use existing cosign-installer action version (#1562)
+  * chore(prompts): add skill and prompt to update supported Go versions (#1561)
+  * chore(prompts): add action version update skill and prompt (#1560)
+  * fix(analyzers): avoid SSA dependency cycle blowups in issue #1555 paths (#1559)
+  * Add a SKILL and PROMPT for fixing a GitHub issue (#1558)
+  * Add a SKILL and PROMPT for generating rules with AI (#1557)
+  * fix(G120): prevent hang-like analysis blowup in wrapper protection checks (#1556)
+  * fix(G705): eliminate false positive when guard type cannot be resolved (#1554)
+  * Remove gcmurphy from funding list
+  * Extend the release workflow to push the container images also to GHCR
+  * Update to gosec to v2.24.0 in the action and fix the docker image signing (#1552)
+
+-------------------------------------------------------------------
 Fri Feb 27 13:44:59 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.com>
 
 - Update to version 2.24.0:
