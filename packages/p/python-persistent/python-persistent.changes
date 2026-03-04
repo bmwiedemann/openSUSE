@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  3 18:55:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.5:
+  * Fix setuptools configuration yet again to build missing cffi
+    extension module. The released wheels for version 6.4 will
+    not work, they are missing a compiled extension module.
+  * Move all supported package metadata into pyproject.toml.
+  * Add support for Python 3.14.
+  * Drop support for Python 3.9.
+
+-------------------------------------------------------------------
 Tue Oct 28 05:48:23 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 6.3:

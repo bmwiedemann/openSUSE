@@ -235,4 +235,18 @@
   * Drop support for Python 3.7.</comment>
     <requestid>1313972</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>da74c12be1dd7164d66c9b6e2ecf72f6</srcmd5>
+    <version>6.5</version>
+    <time>1772654729</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.5:
+  * Fix setuptools configuration yet again to build missing cffi
+    extension module. The released wheels for version 6.4 will
+    not work, they are missing a compiled extension module.
+  * Move all supported package metadata into pyproject.toml.
+  * Add support for Python 3.14.
+  * Drop support for Python 3.9.</comment>
+    <requestid>1336186</requestid>
+  </revision>
 </revisionlist>

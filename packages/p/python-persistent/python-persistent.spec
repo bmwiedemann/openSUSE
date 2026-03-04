@@ -1,7 +1,7 @@
 #
 # spec file for package python-persistent
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013-2023 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-persistent
-Version:        6.3
+Version:        6.5
 Release:        0
 Summary:        Translucent persistent objects
 License:        ZPL-2.1
