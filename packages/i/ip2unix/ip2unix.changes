@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  3 07:46:57 UTC 2026 - munix9@googlemail.com
+
+- Fix build on Factory/TW: add python3-pytest-timeout
+- Fix build on Leap < 16: add BuildRequires: gcc13
+- Fix tests: exclude 'ip2unix:integration' (gh#nixcloud/ip2unix#37)
+
+-------------------------------------------------------------------
 Sun Apr 14 20:37:31 UTC 2024 - Adam Mizerski <adam@mizerski.pl>
 
 - added patch ip2unix-2.2.1-fix_out_of_range_string_view_access.patch
