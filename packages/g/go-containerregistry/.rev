@@ -176,4 +176,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1320580</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>418f6a848a3ab1bfa711d564e101a22c</srcmd5>
+    <version>0.21.1</version>
+    <time>1772654870</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.21.1:
+  * Add WithFileBufferedOpener for file-backed daemon image
+    buffering
+  * crane: fix case in auth response json
+- update to 0.21.0:
+  * fix(mutate): don't skip dir replacements via whiteout in
+    export
+  * Improve performance of v1.NewHash
+  * Bump the actions group across 1 directory with 4 updates
+  * Bump the root-deps group across 1 directory with 7 updates
+  * Fix error messages in crane_test.go
+  * Bump go version across packages to 1.25.6
+  * Join go.mod dependency updates
+  * Bump the go-deps group across 3 directories with 3 updates
+  * Disable taint gosec lints
+  * Update go version used in goreleaser
+- update to 0.20.7:
+  * Fix ArgsEscaped lint directive
+  * transport: Fix broken links to distribution docs
+  * fix(remote): using customized retry predicate func if
+    provided
+  * Adding docker file
+  * crane: Add timestamp to flatten layer
+  * feat(remote): pass retryBackoff option to transport
+  * Expose clobber refusal error
+  * Build artifacts for riscv64
+  * Update dependencies and deprecate DockerVersion field
+
+- update to 0.20.7:
+  * Fix ArgsEscaped lint directive</comment>
+    <requestid>1336208</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Mar  3 20:26:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.21.1:
+  * Add WithFileBufferedOpener for file-backed daemon image
+    buffering
+  * crane: fix case in auth response json
+- update to 0.21.0:
+  * fix(mutate): don't skip dir replacements via whiteout in
+    export
+  * Improve performance of v1.NewHash
+  * Bump the actions group across 1 directory with 4 updates
+  * Bump the root-deps group across 1 directory with 7 updates
+  * Fix error messages in crane_test.go
+  * Bump go version across packages to 1.25.6
+  * Join go.mod dependency updates
+  * Bump the go-deps group across 3 directories with 3 updates
+  * Disable taint gosec lints
+  * Update go version used in goreleaser
+- update to 0.20.7:
+  * Fix ArgsEscaped lint directive
+  * transport: Fix broken links to distribution docs
+  * fix(remote): using customized retry predicate func if
+    provided
+  * Adding docker file
+  * crane: Add timestamp to flatten layer
+  * feat(remote): pass retryBackoff option to transport
+  * Expose clobber refusal error
+  * Build artifacts for riscv64
+  * Update dependencies and deprecate DockerVersion field
+
+-------------------------------------------------------------------
+Mon Dec  8 20:29:35 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.7:
+  * Fix ArgsEscaped lint directive
+  * transport: Fix broken links to distribution docs
+  * fix(remote): using customized retry predicate func if
+    provided
+  * Adding docker file
+  * crane: Add timestamp to flatten layer
+  * feat(remote): pass retryBackoff option to transport
+  * Expose clobber refusal error
+  * Build artifacts for riscv64
+  * Update dependencies and deprecate DockerVersion field
+
+-------------------------------------------------------------------
 Sat Nov 22 14:18:36 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - set version
