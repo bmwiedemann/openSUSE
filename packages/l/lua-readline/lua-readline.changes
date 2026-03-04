@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  2 20:01:57 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Reformat %description.
+
+-------------------------------------------------------------------
+Fri Jan 23 21:40:04 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Enable lua55 build.
+
+-------------------------------------------------------------------
 Fri Oct 24 14:50:51 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch off building lua51 build of the package.
