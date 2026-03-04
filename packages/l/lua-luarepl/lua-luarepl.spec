@@ -18,12 +18,8 @@
 %bcond_without test
 %define flavor @BUILD_FLAVOR@
 %define mod_name luarepl
-%if "%{flavor}" == "luajit"
-%define lua_value  52
-%else
-%define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
-%endif
 %define rock_version 0.10-1
+%alternatives_requires_exclude
 Version:        0.10
 Release:        0
 Summary:        A Lua REPL implemented in Lua for embedding in other programs

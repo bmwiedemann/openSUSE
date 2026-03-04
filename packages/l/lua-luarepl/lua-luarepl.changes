@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar  4 09:47:07 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Use %alternatives_requires_exclude macro to exclude
+  /usr/bin/lua* dependency.
+
+-------------------------------------------------------------------
+Mon Mar  2 18:42:32 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Use the centralised version of `%lua_value` macro, not our own.
+
+-------------------------------------------------------------------
+Fri Jan 23 21:39:04 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Enable lua55 build.
+
+-------------------------------------------------------------------
 Fri Oct 24 14:49:32 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch off building lua51 build of the package.

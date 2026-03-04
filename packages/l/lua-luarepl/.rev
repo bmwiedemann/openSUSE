@@ -35,4 +35,17 @@
 - Make the package buildable with LuaJIT.</comment>
     <requestid>1315172</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>d6dac2d6610927848adece90bbbe7118</srcmd5>
+    <version>0.10</version>
+    <time>1772654769</time>
+    <user>anag_factory</user>
+    <comment>- Use %alternatives_requires_exclude macro to exclude
+  /usr/bin/lua* dependency.
+
+- Use the centralised version of `%lua_value` macro, not our own.
+
+- Enable lua55 build.</comment>
+    <requestid>1336311</requestid>
+  </revision>
 </revisionlist>
