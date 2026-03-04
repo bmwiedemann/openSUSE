@@ -112,4 +112,12 @@ mpv which can be used to control the media player using dbus</comment>
 - Add luajit version to _multibuild</comment>
     <requestid>1315163</requestid>
   </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>925a50928db7533be78816b431a47dc4</srcmd5>
+    <version>0.0+git20191025.2b12542</version>
+    <time>1772654801</time>
+    <user>anag_factory</user>
+    <comment>- Enable lua55 build.</comment>
+    <requestid>1336372</requestid>
+  </revision>
 </revisionlist>
