@@ -45,6 +45,7 @@ Patch8:         %{name}-%{version}-compile.patch
 Patch9:         %{name}-%{version}-gcc4.3.diff
 # PATCH-FIX-UPSTREAM fix building with gcc 14
 Patch10:        bsd-games-gcc14.diff
+Patch11:        time_t.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -72,6 +73,7 @@ teachgammon, trek, wargames, worm, worms, and wump.
 %patch -P 8
 %patch -P 9
 %patch -P 10 -p1
+%patch -P11 -p1
 
 %build
 # easier than patching :-)

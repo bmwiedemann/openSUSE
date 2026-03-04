@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 26 09:28:13 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add time_t.patch to fix a year-2038 problem (boo#1258930)
+
+-------------------------------------------------------------------
 Sat Nov  2 11:17:53 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Add bsd-games-gcc14.diff to resolve FTBFS

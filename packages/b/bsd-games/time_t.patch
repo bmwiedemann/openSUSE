@@ -1,0 +1,57 @@
+commit 2f1ae8ec9989d9f7250d03841de66ca9ba4c11f6
+Author: Bernhard M. Wiedemann <bwiedemann+git@suse.de>
+Date:   Thu Feb 26 09:02:28 2026 +0000
+
+    Fix handling of time after year 2038
+
+diff --git a/atc/extern.c b/atc/extern.c
+index a96fdd4..6921b7a 100644
+--- a/atc/extern.c
++++ b/atc/extern.c
+@@ -51,10 +51,13 @@ __RCSID("$NetBSD: extern.c,v 1.7 2003/08/07 09:36:53 agc Exp $");
+ #endif /* not lint */
+ 
+ #include "include.h"
++#include <time.h>
+ 
+ char		GAMES[] =	"Game_List";
+ 
+-int		clck, safe_planes, start_time, test_mode;
++int		clck, safe_planes, test_mode;
++
++time_t		start_time;
+ 
+ const char	*file;
+ 
+diff --git a/atc/extern.h b/atc/extern.h
+index c2706d2..739b1f0 100644
+--- a/atc/extern.h
++++ b/atc/extern.h
+@@ -43,10 +43,13 @@
+  * For more info on this and all of my stuff, mail edjames@berkeley.edu.
+  */
+ 
++#include <time.h>
++
+ extern char		GAMES[];
+ extern const char	*file;
+ 
+-extern int		clck, safe_planes, start_time, test_mode;
++extern int		clck, safe_planes, test_mode;
++extern time_t start_time;
+ 
+ extern FILE		*filein, *fileout;
+ 
+diff --git a/atc/main.c b/atc/main.c
+index fe2482c..aac85f4 100644
+--- a/atc/main.c
++++ b/atc/main.c
+@@ -79,7 +79,7 @@ main(ac, av)
+ 	open_score_file();
+ 	setregid(getgid(), getgid());
+ 
+-	start_time = seed = time(NULL);
++	seed = start_time = time(NULL);
+ 
+ 	while ((ch = getopt(ac, av, "ulstpg:f:r:")) != -1) {
+ 		switch (ch) {
