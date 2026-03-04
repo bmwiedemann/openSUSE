@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  3 20:40:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.13.1:
+  * Document that a process can have only one custom JSON module
+    (commit)
+  * Switch to Furo documentation template (commit)
+
+-------------------------------------------------------------------
 Sun Dec 28 20:25:12 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.13.0:

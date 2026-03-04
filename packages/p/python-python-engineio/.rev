@@ -140,4 +140,15 @@
   * Drop Python 3.8 and 3.9 from CI builds (commit)</comment>
     <requestid>1324594</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7295e3e0f7c49d871b7075b5b5d5f541</srcmd5>
+    <version>4.13.1</version>
+    <time>1772654894</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.13.1:
+  * Document that a process can have only one custom JSON module
+    (commit)
+  * Switch to Furo documentation template (commit)</comment>
+    <requestid>1336209</requestid>
+  </revision>
 </revisionlist>
