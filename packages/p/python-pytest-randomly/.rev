@@ -189,4 +189,13 @@
     faster and we don’t need cryptographic security. Issue #686.</comment>
     <requestid>1308063</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>689688a5c67c63572e3608c9aee3b3d5</srcmd5>
+    <version>4.0.1</version>
+    <time>1772654940</time>
+    <user>anag_factory</user>
+    <comment>- Adapt %suse_version checks to support new %suse_version design for
+  16.1 and following (1610, 1620, 1630...)</comment>
+    <requestid>1336276</requestid>
+  </revision>
 </revisionlist>

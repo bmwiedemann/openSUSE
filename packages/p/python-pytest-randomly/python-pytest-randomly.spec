@@ -39,7 +39,7 @@ BuildRequires:  %{python_module Faker >= 13.11.0}
 BuildRequires:  %{python_module factory_boy}
 BuildRequires:  %{python_module importlib-metadata >= 3.6.0}
 # Django package not available on SLFO:Main
-%if 0%{suse_version} > 1600
+%if 0%{suse_version} >= 1699
 BuildRequires:  %{python_module model-bakery >= 1.13.0}
 %endif
 BuildRequires:  %{python_module numpy}
@@ -83,7 +83,7 @@ Features:
 skiptest="test_entrypoint_injection or test_it_runs_before_stepwise"
 
 # Django package not available on SLFO:Main
-%if 0%{suse_version} <= 1600
+%if 0%{suse_version} < 1699
 skiptest+=" or test_model_bakery"
 %endif
 

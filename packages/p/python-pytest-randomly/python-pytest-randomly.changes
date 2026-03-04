@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  3 12:37:43 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Adapt %suse_version checks to support new %suse_version design for
+  16.1 and following (1610, 1620, 1630...)
+
+-------------------------------------------------------------------
 Mon Sep 29 20:52:21 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.1:
