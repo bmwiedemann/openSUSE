@@ -1,0 +1,67 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+This file contains MD5, SHA1, and SHA256 checksums for the
+source-code tarball and wheel files of Django 6.0.3, released March 3, 2026.
+
+To use this file, you will need a working install of PGP or other
+compatible public-key encryption software. You will also need to have
+the Django release manager's public key in your keyring. This key has
+the ID ``2EE82A8D9470983E`` and can be imported from the MIT
+keyserver, for example, if using the open-source GNU Privacy Guard
+implementation of PGP:
+
+    gpg --keyserver pgp.mit.edu --recv-key 2EE82A8D9470983E
+
+or via the GitHub API:
+
+    curl https://github.com/nessita.gpg | gpg --import -
+
+Once the key is imported, verify this file:
+
+    gpg --verify Django-6.0.3.checksum.txt
+
+Once you have verified this file, you can use normal MD5, SHA1, or SHA256
+checksumming applications to generate the checksums of the Django
+package and compare them to the checksums listed below.
+
+Release packages
+================
+
+https://www.djangoproject.com/download/6.0.3/tarball/
+https://www.djangoproject.com/download/6.0.3/wheel/
+
+MD5 checksums
+=============
+
+0bb395b518e2f2f17e1a936deb7ba74c  django-6.0.3.tar.gz
+2c2f28f5318c7351f7d9d2c33837d6d4  django-6.0.3-py3-none-any.whl
+
+SHA1 checksums
+==============
+
+d8d4b3495ec33a794c7723819c2a40dbf58dcc84  django-6.0.3.tar.gz
+6d8377bdabf9d7a433fbab63a31e086759dc1ee5  django-6.0.3-py3-none-any.whl
+
+SHA256 checksums
+================
+
+90be765ee756af8a6cbd6693e56452404b5ad15294f4d5e40c0a55a0f4870fe1  django-6.0.3.tar.gz
+2e5974441491ddb34c3f13d5e7a9f97b07ba03bf70234c0a9c68b79bbb235bc3  django-6.0.3-py3-none-any.whl
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEW1sboQ2FrHxcduOPLugqjZRwmD4FAmmm0KEACgkQLugqjZRw
+mD7m3g//Szi3XWosbzJnf0nVlq+lpL9Z7Zn96jJjkIgwxap4z3b0Wly/41Bwkqdr
+L7CTxsNjUki3X9JfklqQd30oprmgWpl/1uGejOMPmu8aSOypGT/MTQJF08Cwi7XJ
+daAOVDDmPMlwTLEIl9PLV99Da477O4HaNSi8w6wW1QUGJ9JfUdkTXTsQUTG3RSbf
+Xc7vu/4cyUFp4gSifFUIRKqUBiwhI9jDBmOEtrEO+d/nrfc4pLJFVg28r+T6gQY1
+G0EpBuLRrkhyusr0cqhYUAJB7t5eKjEFcTb5r2ugNV7+UDWcesnlyCFoT8Ot90CR
+nxTm3XN2aiWFJzve+AVuNRUvA6O4Z2p7Zqy3BMmF6/RFVVtlVQVpV3eH9UpV2i6v
+xJQ0FW9qYeY9c6GxCnTOVHpzgHoNcrP60qSzkZ2OCjixz+PkbWH/NJ7w5zDHYb6m
+IqD49jYUn18lYAXi/q60NpyxIAe+6z9g0C6kyzeknAOKqo6ntx6s1iYiKNxUbkhL
+jtrlJxuoI7cO7QtOCDFOut8r+F98IaDACIx+gF8aJUhoeI9H561UZt1gvoYQfS+T
+jlV1MVd8ttlAKNYfTrtB4cJGeUSFSrCfL0MAA1i+hzxQZ93SEmfE2HS5ffhtFFYz
+2pSQOE/o2U4RD3TJWN0BiwVjMRlacu7aBjXk4rLc/LBikXHX0vw=
+=VG3Q
+-----END PGP SIGNATURE-----

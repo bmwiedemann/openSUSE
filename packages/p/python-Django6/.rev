@@ -25,4 +25,24 @@ python312+, keeping primary Django on 5.2</comment>
     <comment></comment>
     <requestid>1330889</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cf604a712a2983de65adf33e8b985a14</srcmd5>
+    <version>6.0.3</version>
+    <time>1772654996</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.0.3
+  * CVE-2026-25674: Potential incorrect permissions on newly created
+    file system objects (bsc#1259142)
+  * Fixed NameError when inspecting functions making use of deferred
+    annotations in Python 3.14
+  * Fixed AttributeError when subclassing builtin lookups and neglecting
+    to override as_sql() to accept any sequence
+  * Fixed TypeError when deprecation warnings are emitted in environments
+    importing Django by namespace
+  * Fixed a visual regression where fieldset legends were misaligned
+    in the admin
+  * Prevented the django.tasks.signals.task_finished signal from writing
+    extraneous log messages when no exceptions are encountered</comment>
+    <requestid>1336307</requestid>
+  </revision>
 </revisionlist>
