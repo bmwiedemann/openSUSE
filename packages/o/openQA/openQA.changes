@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Mar 03 15:10:02 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1772550094.48b5cce5:
+  * refactor: Improve code for testing OpenID auth
+  * test: Consider everything under `lib/OpenQA/WebAPI/` covered
+  * test: Cover all code for OpenID auth
+  * test: Cover retrying of OBS rsync tasks
+  * fix: Return correctly when OBS dirty status cannot be determined
+  * refactor: Remove unused local variable in OBS rsync code
+  * test: Cover parameter validation warnings code for API descriptions
+  * fix(config): Drop max_conns to allow proper queueing
+  * refactor: Improve code in `renderTestLists()`
+  * feat: Pass all parameters when making AJAX requests on "All tests" page
+  * feat: Allow use of `job_setting` parameter also on "All tests" page
+  * refactor: Simplify code for passing query parameters on "All tests"
+  * fix(dependencies): add missing "make" to devel sub-package
+  * test: remove stabilized tests from tools/unstable_tests.txt
+  * test(lib): remove unused "disconnect" function
+  * test(lib): mark uncovered line
+
+-------------------------------------------------------------------
 Mon Mar 02 19:07:33 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1772475695.6c6c7eda:
