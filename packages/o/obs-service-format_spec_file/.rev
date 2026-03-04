@@ -854,4 +854,13 @@
     <comment></comment>
     <requestid>1321560</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>ad0d53af0ecdc5dd2c627110ee90946f</srcmd5>
+    <version>20260304</version>
+    <time>1772655012</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260304:
+  * License updates from SPDX org (March 2026)</comment>
+    <requestid>1336336</requestid>
+  </revision>
 </revisionlist>
