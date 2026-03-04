@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  2 08:00:12 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260301
+  + modify mouse parsing to handle events with no delay between button
+    press and release (report by Vincent Lefevre).
+
+-------------------------------------------------------------------
 Mon Feb 23 12:33:01 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20260214

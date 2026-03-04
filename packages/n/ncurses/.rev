@@ -5588,4 +5588,14 @@
     pkgconfig name for pcre2 (prompted by discussion with George Goffe).</comment>
     <requestid>1334519</requestid>
   </revision>
+  <revision rev="324" vrev="97">
+    <srcmd5>ae9d632bf8142b4604f87c823113f361</srcmd5>
+    <version>unknown</version>
+    <time>1772654372</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20260301
+  + modify mouse parsing to handle events with no delay between button
+    press and release (report by Vincent Lefevre).</comment>
+    <requestid>1335756</requestid>
+  </revision>
 </revisionlist>
