@@ -20,10 +20,11 @@
 
 %define rname kirigami
 # Full KF6 version (e.g. 6.23.0)
-%{!?_kf6_version: %global _kf6_version %{version}}
+# %%{!?_kf6_version: %%global _kf6_version %%{version}}
+%global _kf6_version 6.23.0
 %bcond_without released
 Name:           kf6-kirigami
-Version:        6.23.0
+Version:        6.23.1
 Release:        0
 Summary:        Set of QtQuick components
 License:        LGPL-2.1-or-later

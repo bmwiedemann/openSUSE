@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  2 21:25:18 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.23.1:
+  * Workaround crash due to QTBUG-144544 (kde#514098)
+
+-------------------------------------------------------------------
 Fri Feb  6 14:25:54 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.23.0
