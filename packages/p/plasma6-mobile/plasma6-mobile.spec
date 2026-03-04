@@ -30,7 +30,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-mobile
-Version:        6.6.1
+Version:        6.6.2
 Release:        0
 # Full Plasma 6 version (e.g. 5.9.3)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -220,9 +220,7 @@ echo > quicksettings/flashlight/kauth/CMakeLists.txt
 %dir %{_kf6_sharedir}/plasma-mobile-apn-info
 %{_kf6_sharedir}/plasma-mobile-apn-info/apns-full-conf.xml
 %dir %{_kf6_sharedir}/plasma-mobile-device-presets
-%{_kf6_sharedir}/plasma-mobile-device-presets/default.conf
-%{_kf6_sharedir}/plasma-mobile-device-presets/google,sargo.conf
-%{_kf6_sharedir}/plasma-mobile-device-presets/oneplus,enchilada.conf
+%{_kf6_sharedir}/plasma-mobile-device-presets/*.conf
 %dir %{_kf6_sharedir}/wayland-sessions
 %{_kf6_sharedir}/wayland-sessions/plasma-mobile.desktop
 
