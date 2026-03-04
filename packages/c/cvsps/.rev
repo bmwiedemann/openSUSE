@@ -216,4 +216,12 @@
   CMake 3.5 was released in 2016. (forwarded request 1293807 from dimstar)</comment>
     <requestid>1294097</requestid>
   </revision>
+  <revision rev="27" vrev="187">
+    <srcmd5>476a3e7a7cf8dfd60ab2f1aadc2384ce</srcmd5>
+    <version>2.1</version>
+    <time>1772654565</time>
+    <user>anag_factory</user>
+    <comment>Add time_t.patch to fix year-2038-problem (boo#1258930) (forwarded request 1335833 from bmwiedemann)</comment>
+    <requestid>1335834</requestid>
+  </revision>
 </revisionlist>

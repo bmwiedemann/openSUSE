@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  2 14:07:46 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add time_t.patch to fix year-2038-problem (boo#1258930)
+
+-------------------------------------------------------------------
 Wed Jul 16 12:39:34 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add cvsps-min-cmake-3.5.patch: Allow building with cmake 4.5. The

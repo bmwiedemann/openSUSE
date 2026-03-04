@@ -1,0 +1,78 @@
+From 6b9f4e76b639b2ba831574633606b69155c3fa56 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Mon, 2 Mar 2026 14:52:40 +0100
+Subject: [PATCH] Fix several year-2038-problems
+
+See https://en.wikipedia.org/wiki/Year_2038_problem
+
+This patch was done while reviewing potential year-2038 issues in openSUSE.
+---
+ cache.c | 8 ++++----
+ cvsps.c | 4 ++--
+ util.c  | 2 +-
+ 3 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/cache.c b/cache.c
+index 5f67a7c..61976ec 100644
+--- a/cache.c
++++ b/cache.c
+@@ -145,8 +145,8 @@ time_t read_cache()
+ 	goto out_close;
+     }
+ 
+-    cache_date = atoi(buff + 12);
+-    debug(DEBUG_STATUS, "read cache_date %d", (int)cache_date);
++    cache_date = atoll(buff + 12);
++    debug(DEBUG_STATUS, "read cache_date %lld", (long long int)cache_date);
+ 
+     while (fgets(buff, BUFSIZ, fp))
+     {
+@@ -456,7 +456,7 @@ void write_cache(time_t cache_date)
+     }
+ 
+     fprintf(cache_fp, "cache version: %d\n", cache_version);
+-    fprintf(cache_fp, "cache date: %d\n", (int)cache_date);
++    fprintf(cache_fp, "cache date: %lld\n", (long long int)cache_date);
+ 
+     reset_hash_iterator(file_hash);
+ 
+@@ -517,7 +517,7 @@ static void dump_patch_set(FILE * fp, PatchSet * ps)
+ 
+     ps_counter++;
+     fprintf(fp, "patchset: %d\n", ps_counter);
+-    fprintf(fp, "date: %d\n", (int)ps->date);
++    fprintf(fp, "date: %lld\n", (long long int)ps->date);
+     fprintf(fp, "author: %s\n", ps->author);
+     fprintf(fp, "tag: %s\n", ps->tag ? ps->tag : "");
+     fprintf(fp, "tag_flags: %d\n", ps->tag_flags);
+diff --git a/cvsps.c b/cvsps.c
+index 981cd78..8a2290f 100644
+--- a/cvsps.c
++++ b/cvsps.c
+@@ -2496,8 +2496,8 @@ static int check_rev_funk(PatchSet * ps, CvsFileRevision * rev)
+ 	if (next_ps->date > ps->date)
+ 	    break;
+ 
+-	debug(DEBUG_STATUS, "ps->date %d next_ps->date %d rev->rev %s rev->branch %s", 
+-	      ps->date, next_ps->date, rev->rev, rev->branch);
++	debug(DEBUG_STATUS, "ps->date %lld next_ps->date %d rev->rev %s rev->branch %s",
++	      (long long)ps->date, next_ps->date, rev->rev, rev->branch);
+ 
+ 	/*
+ 	 * If the ps->tag is one of the two possible '-r' tags
+diff --git a/util.c b/util.c
+index e4b9d14..dfaf53e 100644
+--- a/util.c
++++ b/util.c
+@@ -211,7 +211,7 @@ void convert_date(time_t * t, const char * dte)
+     }
+     else
+     {
+-	*t = atoi(dte);
++	*t = atoll(dte);
+     }
+ }
+ 
+-- 
+2.52.0
+
