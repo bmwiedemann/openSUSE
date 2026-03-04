@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 26 14:31:51 UTC 2026 - Joachim Gleissner <jgleissner@suse.com>
+
+- Update to version 1.18
+  +  Fix issue with link-local address routing (bsc#1258730)
+
+-------------------------------------------------------------------
 Thu Feb 19 11:34:19 UTC 2026 - Joachim Gleissner <jgleissner@suse.com>
 
 - Update to version 1.17
