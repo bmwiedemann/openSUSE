@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb 22 04:24:04 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Update to version 1.7.4
+  * OptiPatcher support!
+  * RADV_DEBUG=nofastclears option for AMD GPU debugging
+  * Force Zink checkbox with smart GPU detection
+  * Fixed: vkBasalt flatpak shader path configuration
+  * GameMode warning dialog for Flatpak users
+- Update to version 1.7.3
+  * Implemented "Save as" funcionality for MangoHud and vkBasalt
+  * Fixed games that keep running on steam after quiting
+  * All the files are now XDG compliant
+  * Global enable is back as a context menu option for mangohud
+
+-------------------------------------------------------------------
 Mon Jan 26 04:24:04 UTC 2026 - pallas wept <pallaswept@proton.me>
 
 - Update to version 1.6.9
