@@ -1,10 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar  3 20:00:00 UTC 2026 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (4.0.0)
+  * fix some memory leaks
+  * fix themes sort order (case insensitive)
+  * move Sucharu themes in submenu
+  * add Screenshot toolbar icon
+  * add AWF_TEAROFF=1 to display Options menu tearoff
+  * remove Default & Emacs theme in system themes
+  * rename .awf-gtk-accels to .awf-accels
+  * update texts and translations
+
+-------------------------------------------------------------------
 Fri Oct 10 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (3.2.0)
   * move Yaru themes in submenu
   * hide/show CSD window icon on layout update
-  * add menu popover
+  * add popover menu button
 
 -------------------------------------------------------------------
 Fri Aug  8 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
@@ -70,7 +83,7 @@ Thu Sep  9 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
   * puts the Options menu first
   * allow to run multiple independent instances
   * add 0 and 100 marks for all scales
-  
+
 -------------------------------------------------------------------
 Wed Jul  7 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
 
@@ -92,9 +105,9 @@ Wed May  5 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
 -------------------------------------------------------------------
 Thu Apr  8 20:24:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- spec cleaning 
+- spec cleaning
 
 -------------------------------------------------------------------
 Tue Apr  6 13:56:04 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
 
-- Initial openSUSE package release 
+- Initial openSUSE package release
