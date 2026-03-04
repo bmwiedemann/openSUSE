@@ -239,4 +239,29 @@
     <comment></comment>
     <requestid>1327650</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>214f946f47c7c8bd08bc7d3e0f01996d</srcmd5>
+    <version>3.11.0</version>
+    <time>1772655019</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.11.0
+  * Update documentation for AutokeyAdmin service and messages to
+    support folder and project-level configurations
+  * Clarify supported resources for the crypto_key_backend field in ImportJob
+  * Add KeyProjectResolutionMode to AutokeyConfig to support project-level configurations
+  * Add more post-quantum (PQ) signature algorithms to CryptoKeyVersion
+  * Added DeleteCryptoKey and DeleteCryptoKeyVersion RPCs to permanently remove resources
+  * Added ListRetiredResources and GetRetiredResource RPCs to manage and view these records
+  * Introduced the RetiredResource resource to track records of deleted
+    keys and prevent the reuse of their resource names
+- from version 3.10.0
+  * A comment for field `crypto_key_backend` in message
+    `.google.cloud.kms.v1.CryptoKey` is expanded to include SingleTenantHsmInstances
+  * A comment for enum value `MODIFIED_GOOGLE_INITIATED_SYSTEM_OPERATION` in enum
+    `AccessReason` is changed
+  * A comment for enum value `MODIFIED_CUSTOMER_INITIATED_ACCESS` in enum
+    `AccessReason` is changed
+  * add the SingleTenantHsm functionality including the management API and resource types (forwarded request 1336345 from glaubitz)</comment>
+    <requestid>1336380</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Mar  4 11:22:22 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.11.0
+  * Update documentation for AutokeyAdmin service and messages to
+    support folder and project-level configurations
+  * Clarify supported resources for the crypto_key_backend field in ImportJob
+  * Add KeyProjectResolutionMode to AutokeyConfig to support project-level configurations
+  * Add more post-quantum (PQ) signature algorithms to CryptoKeyVersion
+  * Added DeleteCryptoKey and DeleteCryptoKeyVersion RPCs to permanently remove resources
+  * Added ListRetiredResources and GetRetiredResource RPCs to manage and view these records
+  * Introduced the RetiredResource resource to track records of deleted
+    keys and prevent the reuse of their resource names
+- from version 3.10.0
+  * A comment for field `crypto_key_backend` in message
+    `.google.cloud.kms.v1.CryptoKey` is expanded to include SingleTenantHsmInstances
+  * A comment for enum value `MODIFIED_GOOGLE_INITIATED_SYSTEM_OPERATION` in enum
+    `AccessReason` is changed
+  * A comment for enum value `MODIFIED_CUSTOMER_INITIATED_ACCESS` in enum
+    `AccessReason` is changed
+  * add the SingleTenantHsm functionality including the management API and resource types
+
+-------------------------------------------------------------------
 Fri Jan 16 08:24:55 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.9.0
