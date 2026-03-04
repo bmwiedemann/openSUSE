@@ -1,10 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar  3 20:00:00 UTC 2026 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (3.0.0)
+   * rename directories (human → Human)
+   * (qt5 & 6) add Qt themes
+   * (gtk3 & 4) split base.css into several gtk-*.css files
+   * (gtk3 & 4) many small changes to reduce differences
+   * (gtk3 & 4) change checkbox and radio in treeview when selected
+   * (gtk3) update design of MATE Brisk Menu, MATE Menu, Mint Menu
+   * (gtk4) fix design of context menu of notebook tabs
+   * (gtk4) fix minimum height of menus from menubar
+   * (gtk4) add some missing icons
+
+-------------------------------------------------------------------
 Fri Aug  8 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (2.6.0)
-   * (gtk3) fix geany statusbar (regression)
+   * (gtk3) fix Geany statusbar (regression)
    * (gtk3) fix separator for menu in toolbar
-   * (gtk3) fix background color for popover menu
+   * (gtk3) fix background color for popover menus
    * (gtk3) fix design of GNOME terminal
    * (gtk3) fix design of Pluma statusbar
    * (gtk4) fix menuitem height
@@ -12,14 +26,14 @@ Fri Aug  8 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
    * (gtk3 & 4) fix dialog layout and buttons position/margin,
      with our without CSD dialogs,
      so same layout between gtk3 & gtk4
-     => same as mate-appearance-properties
-     => some PR for MATE on github.com/mate-desktop
+     → same as mate-appearance-properties
+     → some PR for MATE on github.com/mate-desktop
    * add default colors for terminal (white on black)
    * MATE users will enjoy fixed design for transparent panels
-   * MATE+Mint users will enjoy new design for mint menu applet
+   * MATE+Mint users will enjoy new design for Mint Menu applet
      PR => github.com/linuxmint/mintmenu/pull/285
      PR => github.com/ubuntu-mate/mate-menu/pull/89
-   * Xfce users will enjoy new design for whisker menu
+   * Xfce users will enjoy new design for Whisker Menu
 
 -------------------------------------------------------------------
 Fri Jun  6 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
@@ -28,8 +42,8 @@ Fri Jun  6 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
    * (gtk3 & 4) fix statusbar and progressbar-in-statusbar
      when window is fullscreen
    * (gtk3) update design for MATE panel buttons
-     PR => github.com/mate-desktop/mate-panel/pull/1474
-     PR => github.com/mate-desktop/mate-applets/pull/678
+     PR → github.com/mate-desktop/mate-panel/pull/1474
+     PR → github.com/mate-desktop/mate-applets/pull/678
    * (gtk3) fix Xfce desktop icons
    * (gtk3) update design of Caja/Thunar/Nemo tabs
    * (gtk3) add experimental support for Cinnamon desktop
@@ -37,9 +51,9 @@ Fri Jun  6 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
    * (gtk3) ready for the future scrollbar__extra_zone.patch
      for gtk3-classic
    * (gtk4) fix design of print dialog
-   * MATE users will enjoy new common design for compact menu
+   * MATE users will enjoy new common design for Compact Menu
      button applet, clock applet, window selector button applet
-     => same as main menu bar applet
+     → same as main menu bar applet
 
 -------------------------------------------------------------------
 Mon May  5 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
@@ -50,9 +64,9 @@ Mon May  5 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
   * (gtk3 & 4) fix/update position of check/radio in menuitem
   * (gtk3 & 4) fix/update RTL menu with only check/radio
   * (gtk3) fix/update design for MATE notifications
-    PR => github.com/mate-desktop/mate-notification-daemon/pull/232
-    PR => github.com/mate-desktop/mate-notification-daemon/pull/233
-    PR => github.com/mate-desktop/mate-notification-daemon/pull/234
+    PR → github.com/mate-desktop/mate-notification-daemon/pull/232
+    PR → github.com/mate-desktop/mate-notification-daemon/pull/233
+    PR → github.com/mate-desktop/mate-notification-daemon/pull/234
 - It works: with or without compositor, with or without CSD windows
    and with or without gtk3-classic/gtk4-classic
 - The best with gtk3-classic and gtk4-classic
@@ -65,18 +79,17 @@ Fri Apr  4 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (2.3.0)
   * (gtk3) new design for MATE notifications
-    PR => github.com/mate-desktop/mate-notification-daemon/pull/232
-    PR => github.com/mate-desktop/mate-notification-daemon/pull/233
+    PR → github.com/mate-desktop/mate-notification-daemon/pull/232
+    PR → github.com/mate-desktop/mate-notification-daemon/pull/233
     mate-notification-daemon v1.28.4+
   * (gtk3) fix design for Bleachbit
-    PR => github.com/bleachbit/bleachbit/pull/1195
+    PR → github.com/bleachbit/bleachbit/pull/1195
     bleachbit v?
   * (gtk3) update design for mate-control-center & ccsm
   * (gtk3) fix icon size in titlebar for xfwm4
   * (gtk3) fix padding in titlebar when maximized for xfwm4
   * (gtk3) same design between MATE and Xfce for terminal & alttab
-    PR => github.com/mate-desktop/marco/pull/796
-    marco v1.28.2+
+    PR → github.com/mate-desktop/marco/pull/796
   * (gtk3) update font color for mate-panel
   * (gtk3) fix font color for MATE keyboard indicator
   * (gtk3) fix background for disabled view for Caja (F3)
@@ -123,7 +136,7 @@ Tue Oct 10 20:00:00 UTC 2023 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (2.1.0)
   * (gtk3 & 4) small fix for geany messages window
-  * (gtk3 & 4) almost same rendering between pango 1.42 and 1.51
+  * (gtk3 & 4) almost same rendering between Pango 1.42 and 1.51
   * (gtk4) compatibility with 4.12
 
 -------------------------------------------------------------------
@@ -173,7 +186,7 @@ Wed May  5 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
   * (gtk3 & 4) new style for switch buttons
   * (gtk3 & 4) new style for scales (for 0% and 100%)
   * (gtk3 & 4) set style for selection box (rubberband)
-  * (gtk3 & 4) set style for check, radio, progress and icon
+  * (gtk3 & 4) set style for check/radio/progress/icon
     widgets in treeviews
   * (gtk3) fix menuitems style for mate-calc
   * (gtk3) fix selected days style in calendars
