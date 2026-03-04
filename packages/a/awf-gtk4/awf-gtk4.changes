@@ -1,11 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar  3 20:00:00 UTC 2026 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (4.0.0)
+  * fix some memory leaks
+  * fix themes sort order (case insensitive)
+  * hide some deprecated warnings
+  * move Sucharu themes in submenu
+  * add Screenshot toolbar icon
+  * remove hack to display menu icons
+  * add support for screenshots (without window borders)
+  * load custom keyboard accels (even if there are not displayed)
+  * add Adwaita and remove Default & Emacs theme in system themes
+  * rename .awf-gtk-accels to .awf-accels
+  * update texts and translations
+
+-------------------------------------------------------------------
 Fri Oct 10 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (3.2.0)
   * move Yaru themes in submenu
   * load themes from all themes directories
   * hide/show CSD window icon on layout update
-  * add menu popover
+  * add popover menu button
 
 -------------------------------------------------------------------
 Fri Aug  8 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
