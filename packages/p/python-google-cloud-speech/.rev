@@ -277,4 +277,15 @@
     <comment></comment>
     <requestid>1327655</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3b0a634f09156b658a03c201a5dfbcae</srcmd5>
+    <version>2.37.0</version>
+    <time>1772655051</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.37.0
+  * adds endpointing sensitivity to streaming recognition features
+- from version 2.36.1
+  * fix mypy errors (#15494) (forwarded request 1336333 from glaubitz)</comment>
+    <requestid>1336409</requestid>
+  </revision>
 </revisionlist>

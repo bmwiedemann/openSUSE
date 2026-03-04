@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  4 11:07:42 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.37.0
+  * adds endpointing sensitivity to streaming recognition features
+- from version 2.36.1
+  * fix mypy errors (#15494)
+
+-------------------------------------------------------------------
 Fri Jan 16 08:46:08 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.36.0
