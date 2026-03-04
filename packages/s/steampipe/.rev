@@ -273,4 +273,15 @@
   * Add release process documentation to CLAUDE.md (forwarded request 1334399 from ph03nix)</comment>
     <requestid>1334605</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d733370b2728976debf04c92d966dae9</srcmd5>
+    <version>2.4.0</version>
+    <time>1772654874</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.0:
+  * v2.4.0
+  * Upgrade Go to 1.26, FDW to 2.2.0, SDK to v5.14.0, and golangci-lint to v2
+  * Add Claude Code command for fixing Dependabot vulnerabilities (#4927) (forwarded request 1335723 from ph03nix)</comment>
+    <requestid>1336206</requestid>
+  </revision>
 </revisionlist>

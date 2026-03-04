@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 02 07:15:59 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.4.0:
+  * v2.4.0
+  * Upgrade Go to 1.26, FDW to 2.2.0, SDK to v5.14.0, and golangci-lint to v2
+  * Add Claude Code command for fixing Dependabot vulnerabilities (#4927)
+
+-------------------------------------------------------------------
 Mon Feb 23 08:15:40 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.3.6:
