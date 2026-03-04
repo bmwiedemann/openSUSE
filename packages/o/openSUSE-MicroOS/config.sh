@@ -105,7 +105,7 @@ fi
 # so use the kiwi custom hack
 cat >/etc/fstab.script <<"EOF"
 #!/bin/sh
-set -eux
+set -euxo pipefail
 # Convert ro to ro=vfs (boo#1202000)
 gawk -i inplace '$2 == "/" { sub(/ro/, "ro=vfs", $4); } { print $0 }' /etc/fstab
 
@@ -119,6 +119,8 @@ EOF
 cat >>/etc/fstab.script <<"EOF"
 # Add umask=0077 to the ESP (boo#1250510)
 gawk -i inplace '$2 == "/boot/efi" && $4 == "defaults" { $4 = $4",umask=0077" } { print $0 }' /etc/fstab
+# Ensure it's present
+gawk '$2 == "/boot/efi"' /etc/fstab | grep -qw umask=0077
 EOF
 
 cat >>/etc/fstab.script <<"EOF"

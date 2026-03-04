@@ -31,7 +31,7 @@ if [ -x /usr/bin/sdbootutil ]; then
 
 	echo "add kernels"
 	export hostonly_l=no # for dracut
-	sdbootutil -v --arch "$arch" --esp-path /boot/efi --entry-token=auto add-all-kernels
+	sdbootutil -v --arch "$arch" --esp-path /boot/efi --entry-token=auto --rootfs=uuid add-all-kernels
 	# Set a 5s timeout, the "hold a key down" method doesn't work effectively.
 	sdbootutil -v --arch "$arch" --esp-path /boot/efi set-timeout 5
 

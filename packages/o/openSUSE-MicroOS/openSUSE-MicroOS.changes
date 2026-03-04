@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 24 13:02:02 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Use set -euxo pipefail for generated script
+
+-------------------------------------------------------------------
+Thu Feb 19 20:19:52 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Assert that /boot/efi has the correct umask
+
+-------------------------------------------------------------------
+Thu Feb 19 13:25:11 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Use root=UUID for the first boot entry
+
+-------------------------------------------------------------------
 Mon Feb  9 16:26:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use zypp-* configuration packages and patch zypp.conf only when
