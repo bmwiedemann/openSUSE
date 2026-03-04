@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar  4 08:40:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.3:
+  * PR 576 - PR: Skip `test_get_interactive_backend` in Python
+    3.9 and Linux, by @ccordoba12
+  * PR 575 - PR: Fix debugger stop in breakpoints set on modules
+    if stop on first line option is disabled, by @rear1019
+
+-------------------------------------------------------------------
 Fri Nov 21 15:25:20 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.1.2
@@ -6,7 +15,7 @@ Fri Nov 21 15:25:20 UTC 2025 - Ben Greiner <code@bnavigator.de>
     it's not needed, by @ccordoba12
 - Release 3.1.1
   * PR 566 - PR: Fix getting Pixi environment info on Posix
-    systems, by @ccordoba12  
+    systems, by @ccordoba12
 - Release 3.1.0
   * Disable magics and commands to call Python package managers
     (e.g. !pip or %conda).
