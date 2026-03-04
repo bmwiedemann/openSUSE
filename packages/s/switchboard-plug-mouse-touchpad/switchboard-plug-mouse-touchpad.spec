@@ -1,7 +1,7 @@
 #
 # spec file for package switchboard-plug-mouse-touchpad
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.settings.mouse-touchpad
 Name:           switchboard-plug-mouse-touchpad
-Version:        8.0.3
+Version:        8.1.0
 Release:        0
 Summary:        Switchboard Mouse and Touchpad Plug
 License:        GPL-3.0-or-later
