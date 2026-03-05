@@ -38,4 +38,13 @@
     <comment>- kernel-6.19.patch: fixes build against kernel 6.19</comment>
     <requestid>1332242</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7491a2e6c10041afc17072e7dbe9e88f</srcmd5>
+    <version>595.45.04</version>
+    <time>1772739020</time>
+    <user>anag_factory</user>
+    <comment>- update non-CUDA version to 595.45.04 (boo#1258797)
+- adjusted logic for %suse_version bump with SLE16.1 Beta2 (jsc#PED-15826)</comment>
+    <requestid>1336777</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 24 11:56:53 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update non-CUDA version to 595.45.04 (boo#1258797)
+- adjusted logic for %suse_version bump with SLE16.1 Beta2 (jsc#PED-15826)
+
+-------------------------------------------------------------------
 Tue Feb 10 11:46:22 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - kernel-6.19.patch: fixes build against kernel 6.19

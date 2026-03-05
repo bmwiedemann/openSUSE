@@ -16,12 +16,12 @@
 #
 
 
-%define gfx_aarch64_version 590.48.01
+%define gfx_aarch64_version 595.45.04
 
 %ifarch aarch64
 %define gfx_version %gfx_aarch64_version
 %else
-%define gfx_version 590.48.01
+%define gfx_version 595.45.04
 %endif
 %define cuda_version 590.48.01
 
@@ -34,7 +34,7 @@
 %endif
 
 %if "%{flavor}" == "cuda"
- %if 0%{?suse_version} > 1600
+ %if 0%{?suse_version} >= 1699
 ExclusiveArch:  do_not_build
  %endif
 %{bcond_without cuda}
@@ -101,7 +101,9 @@ Source14:       group-source-files.pl
 Source15:       kmp-trigger.sh
 Source17:       kmp-post.sh
 Source18:       Check4WrongSupplements.sh
+%if %{with cuda}
 Patch0:         kernel-6.19.patch
+%endif
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
