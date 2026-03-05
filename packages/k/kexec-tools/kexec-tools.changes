@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  3 14:49:48 UTC 2026 - Petr Tesařík <ptesarik@suse.com>
+
+- Fix package for %suse_version bump (jsc#PED-15811).
+
+-------------------------------------------------------------------
 Wed Jan 22 16:24:47 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks for CODE16 (PED-266).

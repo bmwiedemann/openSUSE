@@ -1167,4 +1167,12 @@ installer uses kexec to boot into second stage..
     <comment>- Drop rcFOO symlinks for CODE16 (PED-266). (forwarded request 1239610 from dimstar)</comment>
     <requestid>1239755</requestid>
   </revision>
+  <revision rev="159" vrev="4">
+    <srcmd5>3436b1d2445286eba7acf1befe456161</srcmd5>
+    <version>2.0.30</version>
+    <time>1772727233</time>
+    <user>anag_factory</user>
+    <comment>- Fix package for %suse_version bump (jsc#PED-15811).</comment>
+    <requestid>1336076</requestid>
+  </revision>
 </revisionlist>

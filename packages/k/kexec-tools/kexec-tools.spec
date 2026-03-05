@@ -46,7 +46,7 @@ Requires:       perl-Bootloader >= 1.6
 Requires(post): suse-module-tools
 Requires(postun): suse-module-tools
 %{?systemd_requires}
-%if 0%{?suse_version} == 1600
+%if 0%{?suse_version} >= 1600 && 0%{?suse_version} < 1699
 # No Xen
 %else
 %ifarch         x86_64
