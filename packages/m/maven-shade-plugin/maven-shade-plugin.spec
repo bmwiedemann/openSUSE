@@ -1,7 +1,7 @@
 #
 # spec file for package maven-shade-plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maven-shade-plugin
-Version:        3.6.1
+Version:        3.6.2
 Release:        0
 Summary:        Capability to package the artifact in an uber-jar
 License:        Apache-2.0
@@ -27,19 +27,17 @@ Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{name}/
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
-BuildRequires:  mvn(commons-io:commons-io)
 BuildRequires:  mvn(javax.inject:javax.inject)
-BuildRequires:  mvn(org.apache.commons:commons-collections4)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugins:pom:)
-BuildRequires:  mvn(org.apache.maven.shared:maven-artifact-transfer)
-BuildRequires:  mvn(org.apache.maven.shared:maven-dependency-tree)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
+BuildRequires:  mvn(org.apache.maven:maven-resolver-provider)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
 BuildRequires:  mvn(org.eclipse.sisu:sisu-maven-plugin)
 BuildRequires:  mvn(org.jdom:jdom2)
 BuildRequires:  mvn(org.ow2.asm:asm)
