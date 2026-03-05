@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Mar 03 06:05:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.147.0:
+  No telemetrygen-related changes, only dependency changes:
+  * Bump go.opentelemetry.io/otel/sdk from 1.37.0 to 1.40.0 in
+    /internal/docker (#46516)
+  * Bump go.opentelemetry.io/otel/sdk from 1.37.0 to 1.40.0 in
+    /pkg/xk8stest (#46502)
+  * [chore] Update core dependencies (#46478)
+  * Update module golang.org/x/net to v0.51.0 to fix CVE-2026-27141
+    (GO-2026-4559) (#46475)
+  * Bump github.com/cloudflare/circl from 1.6.1 to 1.6.3 in
+    /internal/tools (#46440)
+  * Update module gitlab.com/gitlab-org/api/client-go to v1.42.0
+    (#46335)
+  * Update module github.com/getsentry/sentry-go to v0.43.0
+    (#46330)
+  * Update module github.com/Azure/azure-kusto-go/azkustodata to
+    v1.2.1 (#46326)
+  * Update module github.com/open-telemetry/opamp-go to v0.23.0
+    (#46308)
+  * Update module github.com/vmware/govmomi to v0.53.0 (#46316)
+  * Update module gitlab.com/gitlab-org/api/client-go to v1.41.0
+    (#46317)
+  * Update dependency simple-git to v3.32.2 (#46301)
+  * Update module github.com/antchfx/xpath to v1.3.6 (#46295)
+  * Update redis Docker tag to v8.6.1 (#46300)
+  * Update docker-compose deps to v0.146.1 (#46307)
+  * Update module modernc.org/sqlite to v1.46.1 (#46299)
+  * Update module github.com/valyala/fastjson to v1.6.10 (#46298)
+  * Update All github.com/datadog packages (#46293)
+  * Update All github.com/aws packages (#46292)
+  * Update github-actions deps (#46294)
+  * Bump golang.org/x/crypto from 0.11.0 to 0.45.0 in
+    /receiver/tlscheckreceiver (#46258)
+  * Bump filippo.io/edwards25519 from 1.1.0 to 1.1.1 in
+    /exporter/dorisexporter (#46257)
+  * [chore] Update core dependencies (#46231)
+  * Bump filippo.io/edwards25519 from 1.1.0 to 1.1.1 in
+    /receiver/sqlqueryreceiver (#46233)
+  * [chore] Update receiver/bigip deprecation changelog entry
+    (#46222)
+  * [exporter/stefexporter] Update README.md charts (#46197)
+  * [chore][processor/resourcedetection] Update semconv to v1.39.0
+    in Alibaba Cloud ECS (#46194)
+  * docs: Update kubeletstats receiver documentation to use more
+    fine-grained permissions (#46187)
+  * Bump filippo.io/edwards25519 from 1.1.0 to 1.1.1 in
+    /receiver/mysqlreceiver (#46196)
+  * Update module github.com/puzpuzpuz/xsync/v3 to v4 - abandoned
+    (#44689)
+  * Update module github.com/google/go-github/v81 to v83 (#46143)
+
+-------------------------------------------------------------------
 Thu Feb 19 07:26:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.146.0:
