@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  4 09:41:11 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.6.1
+  * Fix compiler errors on PowerPC.
+
+-------------------------------------------------------------------
 Mon Jan 12 21:49:41 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.6.0

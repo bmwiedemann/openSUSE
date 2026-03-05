@@ -18,7 +18,7 @@
 
 %define oname   pylzma
 Name:           python-pylzma
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Python bindings for the LZMA compression library
 License:        LGPL-2.1-only
