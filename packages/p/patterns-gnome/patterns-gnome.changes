@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  2 08:25:52 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
+
+- SUSE now has SUSE Mono font and SLES 16.1 will use it
+  (jsc#PED-13370) for GNOME Console. Explicitly recommend suse-fonts
+  in GNOME so that it can be installed by default (jsc#PED-13370).
+
+-------------------------------------------------------------------
 Fri Sep 19 08:25:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Move pattern() = x11_yast Recommends to gnome_yast metapackage,

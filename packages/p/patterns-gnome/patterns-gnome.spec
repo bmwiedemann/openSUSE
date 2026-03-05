@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-gnome
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -232,6 +232,7 @@ Requires:       gnome-session
 # ensure we have default fonts always installed
 Requires:       adobe-sourcecodepro-fonts
 Requires:       adwaita-fonts
+Recommends:     suse-fonts
 # from data/COMMON-DESKTOP
 Recommends:     desktop-data
 Recommends:     desktop-file-utils
