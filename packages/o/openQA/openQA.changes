@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 05 10:10:51 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1772705410.5c7fe0aa:
+  * style(t): fix formatting of long line in t/37-limit_assets.t
+  * test(Makefile): treat t/01-style consistently with tidy+compile tests
+  * ci: cover sporadic download errors with retries
+  * feat: support show_build=1 for overview badges
+
+-------------------------------------------------------------------
 Tue Mar 03 15:10:02 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1772550094.48b5cce5:
