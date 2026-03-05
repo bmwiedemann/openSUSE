@@ -81,42 +81,25 @@ jq --indent 2 \
   | .dependencies["@rollup/rollup-linux-arm64-gnu"] = $rollup_ver
   | .dependencies["@swc/core-linux-arm64-gnu"] = $swc_ver
 
-  # === CVE-2026-22036: undici fix (runtime enforced) ===
-  | .dependencies = (.dependencies // {})
-  | .dependencies.undici = $undici_v7
-  | .devDependencies |= del(.undici)
+  # === Previous CVE fixes ===
+  | .pnpm.overrides = (
+    (.pnpm.overrides // {})
+    + {
+        "undici": $undici_v7,
+        "undici-types": "6.21.0",
+        "@remix-run/router": "^1.23.2",
+        "react-router": "^7.12.0",
+        "react-router-dom": "^7.12.0",
+        "fast-xml-parser": "5.3.6",
+        "rollup": "4.59.0"
+      }
+  )
 
+  # === CVE-2026-3449: @tootallnate/once fix ===
   | .pnpm.overrides = (
       (.pnpm.overrides // {})
       + {
-          "undici": $undici_v7,
-          "undici-types": "6.21.0"
-        }
-    )
-
-  # === CVE-2026-22029: react-router / remix-run/router fix ===
-  | .pnpm.overrides = (
-      (.pnpm.overrides // {})
-      + {
-          "@remix-run/router": "^1.23.2",
-          "react-router": "^7.12.0",
-          "react-router-dom": "^7.12.0"
-        }
-    )
-
-  # === CVE-2026-26278: fast-xml-parser DoS fix ===
-  | .pnpm.overrides = (
-      (.pnpm.overrides // {})
-      + {
-          "fast-xml-parser": "5.3.6"
-        }
-    )
-
-  # === CVE-2026-27606: rollup fix ===
-  | .pnpm.overrides = (
-      (.pnpm.overrides // {})
-      + {
-          "rollup": "4.59.0"
+          "@tootallnate/once": "3.0.1"
         }
     )
 ' package.json > temp.json && mv temp.json package.json

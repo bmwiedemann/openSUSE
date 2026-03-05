@@ -109,4 +109,17 @@ via pnpm overrides to fix embedded dependency.</comment>
   * [TECH] Updated legendary to latest version 0.20.42 </comment>
     <requestid>1335524</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>efdcdd499b829a856314677f5c826230</srcmd5>
+    <version>2.20.1</version>
+    <time>1772727321</time>
+    <user>anag_factory</user>
+    <comment>- Security: Fix CVE-2026-3449 in @tootallnate/once
+  * Ensure version 3.0.1 is used to prevent promise hang
+    when AbortSignal aborts.
+  * Refactor: Consolidate previous CVE-related pnpm overrides
+    into a single block to simplify maintenance and reduce
+    get-source.sh file complexity.  </comment>
+    <requestid>1336617</requestid>
+  </revision>
 </revisionlist>

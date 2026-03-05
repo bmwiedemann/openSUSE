@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  4 22:40:58 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Security: Fix CVE-2026-3449 in @tootallnate/once
+  * Ensure version 3.0.1 is used to prevent promise hang
+    when AbortSignal aborts.
+  * Refactor: Consolidate previous CVE-related pnpm overrides
+    into a single block to simplify maintenance and reduce
+    get-source.sh file complexity.  
+
+-------------------------------------------------------------------
 Fri Feb 27 23:38:39 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Update to 2.20.1 "Pythagoras Hotfix #1"
