@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  4 06:33:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.7.4:
+  * Hardened social cards plugin by switching to sandboxed environment
+    (recommended by @caveeroo)
+  * Updated MkDocs 2.0 incompatibility warning
+
+-------------------------------------------------------------------
 Thu Feb 26 06:42:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.7.3:
