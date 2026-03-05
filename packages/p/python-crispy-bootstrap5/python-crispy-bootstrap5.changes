@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar  4 22:24:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.3:
+  * Confirmed support for Django 6.0.
+  * Dropped support for Django 4.2, 5.0 and 5.1.
+  * Added support for Python 3.14.
+  * Dropped support for Python 3.8 and 3.9.
+
+-------------------------------------------------------------------
 Wed Oct  1 08:10:03 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 2025.6

@@ -58,4 +58,16 @@
       size as &lt;labels&gt;.</comment>
     <requestid>1308663</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>65aaea9d8b15819fd280f8f39f2a8916</srcmd5>
+    <version>2026.3</version>
+    <time>1772727319</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.3:
+  * Confirmed support for Django 6.0.
+  * Dropped support for Django 4.2, 5.0 and 5.1.
+  * Added support for Python 3.14.
+  * Dropped support for Python 3.8 and 3.9.</comment>
+    <requestid>1336606</requestid>
+  </revision>
 </revisionlist>
