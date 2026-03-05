@@ -541,4 +541,38 @@
 </comment>
     <requestid>1333720</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>823f73f7f62b83314f9dc950f2d65636</srcmd5>
+    <version>4.4.1</version>
+    <time>1772728184</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.4.1:
+  New Features
+    * Add cross-desktop search provider for GNOME Shell and KDE Plasma 6 (KRunner). OTP codes are displayed directly in search results and copied via system notification on activation. Can be toggled in settings.
+    * Add --password-file CLI option to read the password from an external file instead of stdin (thanks @kouta-kun)
+  Security
+    * Harden CLI password input: use read() with gcry_calloc_secure instead of fgets() to prevent password remnants in libc internal buffers. Disable all terminal echo modes and restore state via TCSAFLUSH.
+    * Fix under-allocation of secure password buffer for multibyte UTF-8 passwords (g_utf8_strlen returns character count, not byte count)
+  Bug Fixes
+    * Fix copy-paste bug in Authenticator Pro export: &quot;issuer&quot; key was read instead of &quot;label&quot; when building the Username field
+    * Fix secure-memory leak in get_otpauth_data: g_file_get_contents overwrote a gcrypt secure-buffer pointer with non-secure memory
+    * Fix g_utf8_strdown() memory leak in URI parsing
+    * Fix silent guint8 truncation of period/digits values; now validated with range checks
+    * Add missing g_set_error() on five error paths in Aegis encrypted backup import
+    * Fix salt and key_nonce leak on kdf_derive failure in Aegis export
+    * NULL-guard json_string_value() results across URI parsing, Authenticator Pro, and Aegis modules
+    * Unify hash type to guint32 in database layer (was mixing guint/guint32, potential issue on ILP64 platforms)
+    * Remove duplicate json_object_set() for &quot;secret&quot; key in build_json_obj
+    * Replace VLA stack buffers (salt, iv, tag) with heap allocations in get_data_from_encrypted_backup
+    * Fix search provider: add missing gcrypt initialization, fix memory leaks, eliminate redundant Argon2id+AES256-GCM cycle in result activation
+    * Improve --password-file error handling and terminal detection
+    * Fixed Ctrl+F search not working due to premature key controller destruction.
+    * Fixed GTK-CRITICAL assertions on close caused by accessing the tree view after widget destruction.
+  Refactoring
+    * Modernise application and window layer to GTK idioms: G_DECLARE_FINAL_TYPE, GtkEventControllerKey, configure-event for window-size tracking, proper dispose() for builder ownership
+    * Split monolithic activate() into resolve_db_path(), load_db_with_password(), setup_ui_and_timers()
+    * Extract config-misc.c/h utility module from window code
+</comment>
+    <requestid>1336659</requestid>
+  </revision>
 </revisionlist>

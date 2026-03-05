@@ -18,7 +18,7 @@
 
 %define uclname OTPClient
 Name:           otpclient
-Version:        4.3.1
+Version:        4.4.1
 Release:        0
 Summary:        Simple GTK+ client for managing TOTP and HOTP
 License:        GPL-3.0-or-later
@@ -31,7 +31,7 @@ BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  libayatana-appindicator3-devel
-BuildRequires:  libcotp-devel >= 3.0.0
+BuildRequires:  libcotp-devel >= 4.0.0
 BuildRequires:  libgcrypt-devel >= 1.10.1
 BuildRequires:  libjansson-devel >= 2.12.0
 BuildRequires:  libpng16-devel >= 1.6.30
@@ -42,7 +42,6 @@ BuildRequires:  libzbar-devel >= 0.20.0
 BuildRequires:  pkgconfig
 BuildRequires:  protobuf-devel >= 3.6.0
 BuildRequires:  qrencode-devel >= 4.0.2
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0) >= 2.68
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
 
@@ -57,20 +56,18 @@ HMAC-Based One-Time Passwords (HOTP).
 %build
 %cmake \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-    -DBUILD_GUI=ON \
-    -DBUILD_CLI=ON \
     -DENABLE_MINIMIZE_TO_TRAY=ON
 %cmake_build
 
 %install
 %cmake_install
-%suse_update_desktop_file -r com.github.paolostivanin.%{uclname} System Security GTK GNOME
 
 %files
 %dir %{_datadir}/%{name}
 
 %{_bindir}/%{name}
 %{_bindir}/%{name}-cli
+%{_bindir}/otpclient-search-provider
 
 %{_datadir}/%{name}/otpclient.ui
 %{_datadir}/%{name}/add_popover.ui
@@ -85,5 +82,14 @@ HMAC-Based One-Time Passwords (HOTP).
 
 %{_datadir}/icons/hicolor/scalable/apps/com.github.paolostivanin.OTPClient-symbolic.svg
 %{_datadir}/icons/hicolor/scalable/apps/com.github.paolostivanin.OTPClient.svg
+
+%dir %{_datadir}/gnome-shell
+%dir %{_datadir}/gnome-shell/search-providers
+%dir %{_datadir}/krunner
+%dir %{_datadir}/krunner/dbusplugins
+%{_datadir}/dbus-1/services/com.github.paolostivanin.OTPClient.KRunner.service
+%{_datadir}/dbus-1/services/com.github.paolostivanin.OTPClient.SearchProvider.service
+%{_datadir}/gnome-shell/search-providers/com.github.paolostivanin.OTPClient.SearchProvider.ini
+%{_datadir}/krunner/dbusplugins/com.github.paolostivanin.OTPClient.KRunner.desktop
 
 %changelog
