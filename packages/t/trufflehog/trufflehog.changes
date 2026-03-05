@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 05 07:38:04 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 3.93.7:
+  * fix JDBC detector regex truncating trailing non-alphanumeric password characters (#4755)
+  * Added detector for JFrog Artifactory Reference Tokens (#4684)
+  * Thread original chunk data through engine pipeline (#4780)
+  * [INS-331] Fix the issue causing the tests file system soruce tests to fail on windows (#4743)
+
+-------------------------------------------------------------------
 Mon Mar 02 06:17:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.93.6:
