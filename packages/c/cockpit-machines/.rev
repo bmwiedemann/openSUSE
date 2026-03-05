@@ -392,4 +392,25 @@ outside of Factory
   * Update update_version.sh</comment>
     <requestid>1333288</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>bf7fcc8004d33529be36347c10041b76</srcmd5>
+    <version>348</version>
+    <time>1772050327</time>
+    <user>anag_factory</user>
+    <comment>- Drop explict dependency on libvirt, this was added so libvirtd.socket was on the system
+  this is now provided by the dependency on libvirt-daemon-qemu bsc#1258040, bsc#1236149
+- Update to 348 (fixes bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996)
+  * Translation updates
+  * Convert license headers to SPDX format
+  * Now requires cockpit-devel &gt;= 356 due to the replacement of xterm/addon-canvas with xterm/addon-webgl</comment>
+    <requestid>1335116</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>8ae199a54a392dbf0c7056ffd9e3f011</srcmd5>
+    <version>348</version>
+    <time>1772728261</time>
+    <user>anag_factory</user>
+    <comment>- Update suse_version requirement to function with the planned bump jsc#PED-15820</comment>
+    <requestid>1336737</requestid>
+  </revision>
 </revisionlist>

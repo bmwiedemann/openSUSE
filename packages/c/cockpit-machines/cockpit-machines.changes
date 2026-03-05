@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar  4 09:44:23 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update suse_version requirement to function with the planned bump jsc#PED-15820
+
+-------------------------------------------------------------------
+Tue Feb 24 09:04:26 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Drop explict dependency on libvirt, this was added so libvirtd.socket was on the system
+  this is now provided by the dependency on libvirt-daemon-qemu bsc#1258040, bsc#1236149
+- Update to 348 (fixes bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996)
+  * Translation updates
+  * Convert license headers to SPDX format
+  * Now requires cockpit-devel >= 356 due to the replacement of xterm/addon-canvas with xterm/addon-webgl
+
+-------------------------------------------------------------------
 Wed Feb 11 11:28:53 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>
 
 - Update to 347

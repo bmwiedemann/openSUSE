@@ -17,7 +17,7 @@
 
 
 Name:           cockpit-machines
-Version:        347
+Version:        348
 Release:        0
 Summary:        Cockpit user interface for virtual machines
 License:        LGPL-2.1-or-later AND MIT
@@ -42,16 +42,15 @@ Requires:       libvirt-daemon-kvm
 %endif
 Requires:       libvirt-client
 Requires:       libvirt-dbus >= 1.2.0
-%if 0%{?suse_version} != 1600
+%if 0%{?suse_version} < 1600 || %{suse_version} >= 1699
 Requires:       qemu-spice
 %endif
 Requires:       virt-install
-Requires:       libvirt
 # Optional components
 Recommends:     libosinfo
 Recommends:     python3-gobject-base
 #
-BuildRequires:  cockpit-devel >= 346
+BuildRequires:  cockpit-devel >= 356
 BuildRequires:  local-npm-registry
 BuildRequires:  sassc
 
