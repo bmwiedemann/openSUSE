@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Thu Mar 05 06:46:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.40:
+  * Fixed
+    - MkDocs: Support multi-line code spans inside MkDocs
+      containers (admonitions, content tabs, markdown HTML) —
+      pulldown-cmark missed these because it treats
+      4-space-indented container content as indented code blocks.
+      Replaced the per-line backtick scanner with a
+      dedent-and-reparse approach that handles all CommonMark edge
+      cases including nested containers (#487, reported by
+      @stefanvanburen)
+    - MD034: Fix code span filter to use byte offsets instead of
+      single-line column checks, preventing false positives for
+      URLs and emails inside multi-line code spans
+    - MD052: Fix code span filter to use byte offsets, preventing
+      false positives for reference links inside multi-line code
+      spans
+- Update to version 0.1.39:
+  * Fixed
+    - Rustdoc: Skip MD033, MD040, MD051, and MD054 for doc comment
+      blocks to eliminate false positives — HTML warning blocks
+      (<div class="warning">), unlabeled code blocks (default to
+      Rust), rustdoc anchors (#method.bar), and shortcut intra-doc
+      links ([crate::module]) are all valid rustdoc syntax (#438,
+      reported by @sorairolake)
+    - Config: Fix include patterns in .rumdl.toml not discovering
+      .rs files — config-based include now correctly expands the
+      file type filter to include Rust files alongside markdown
+      (#438, reported by @sorairolake)
+
+-------------------------------------------------------------------
+Wed Mar 04 12:51:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.38:
+  * Fixed
+    - MD013: Fixed reflow corrupting code blocks inside MkDocs
+      admonitions within list items — closing fences were merged
+      with subsequent paragraph text (#485, reported by @sisp)
+- Update to version 0.1.37:
+  * Fixed
+    - MD013: Resolve false positive for MkDocs 2-space list
+      continuation indents when using semantic-line-breaks reflow
+      mode. Continuation lines at the minimum indent were
+      incorrectly flagged as needing reflow (#484)
+    - MD013: Detect actual indent of text content for reflow output
+      instead of trimming and re-indenting, which produced
+      incorrect indentation for code blocks and nested structures
+    - MD013: Use correct indent threshold for code block detection,
+      fixing cases where indented code blocks inside list items
+      were incorrectly treated as text for reflow
+    - MD028: Make blank-line scanning functions skip-context-aware
+      (HTML comments, frontmatter, code blocks) to prevent false
+      positives on blockquote separators
+    - MD050: Resolve check/fix divergence for strong emphasis
+      markers inside inline code in table cells
+    - MD050: Add line-level code span detection fallback for inline
+      code markers in tables
+    - MD051: Handle escaped backticks correctly in
+      mask_pipes_in_inline_code for table cell parsing
+    - MD051: Preserve underscores in code spans during GitHub
+      anchor generation
+    - MD054: Skip alert/callout syntax (e.g., [!NOTE]) in shortcut
+      link detection to avoid false positives
+    - MD056: Remove duplicate split_row_into_cells function,
+      consolidate table cell parsing
+    - Rules: Correct CommonMark compliance and close audit gaps
+      across multiple rules
+  * Changed
+    - Dependencies: Update all dependencies including major bumps:
+      - toml 0.9 → 1.0,
+      - toml_edit 0.24 → 0.25,
+      - jsonschema 0.37 → 0.44.
+      Remove unused rand dev-dependency. ~80 crates updated
+      to latest compatible versions
+    - CI: Update ryl-pre-commit to v0.4.0
+
+-------------------------------------------------------------------
+Tue Mar 03 05:56:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.36:
+  * Added
+    - Lint: Rust doc comment linting — rumdl check and rumdl check
+      --fix now lint markdown inside /// and //! doc comments in
+      .rs files.  Rules that don't apply to doc comments (MD041,
+      MD047) are automatically skipped. Column numbers are remapped
+      to the original source positions (#438)
+  * Fixed
+    - WASM: Enable opt-in rules (like MD060) via per-rule enabled =
+      true and extend-enable in WASM/Obsidian plugin configuration
+      (obsidian-rumdl#15)
+    - WASM: Add fixable/unfixable config fields so fix scope
+      restrictions work in WASM builds
+    - WASM: Set enable_is_explicit when enable is present, matching
+      CLI behavior where enable = [] means "no rules"
+    - WASM: Use canonical MarkdownFlavor::from_str() for flavor
+      parsing so all aliases (qmd, rmd, gfm, commonmark, etc.) work
+      in WASM
+- Update to version 0.1.35:
+  * Added
+    - LSP: Hover preview for markdown links — hovering over a link
+      shows a preview of the destination file or heading section
+      with up to 15 lines of content (#477)
+  * Fixed
+    - MD077: Flag and fix all continuation lines in multiline loose
+      list paragraphs, not just the first line after the blank
+      (#474)
+    - LSP: Return incoming cross-file references when
+      find-references is invoked from a target file with cursor not
+      on a heading or link (#476)
+    - CI: Only dispatch downstream notifications when publish steps
+      succeed
+
+-------------------------------------------------------------------
 Mon Mar 02 06:51:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.34:
