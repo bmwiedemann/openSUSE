@@ -1,4 +1,161 @@
 -------------------------------------------------------------------
+Mon Mar 02 21:04:22 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 3.1.46:
+  * Prepare next release
+  * Update test/test_tree.py
+  * Allow joining path to tree
+  * Add failing tests for joining paths
+  * Bump git/ext/gitdb from `65321a2` to `4c63ee6`
+  * Revert "Add tests with non-ascii characters"
+  * Add tests with non-ascii characters
+  * Fix type hints
+  * Validate every fspath with tests
+  * Limit mypy version due to Cygwin errors
+  * Remove redundant str call
+  * Remove a large number of redundant fspaths
+  * Remove redundant `fspath`
+  * Remove redundant `fspath`
+  * Use converted file path
+  * Use cast to allow silent getattrs
+  * Remve comment about skipping mypy
+  * Fix union type conversion to path
+  * Convert paths in constructors and large function calls
+  * Replace extra occurrences of str with fspath
+  * Use git.types.Literal instead of typing.Literal
+  * Skip mypy when Python < 3.9
+  * Install mypy for Python >= 3.9
+  * Add missing parentheses around tuple constructor
+  * Set __test__ = False in not tested classes
+  * Stop Lit_commit_ish being imported
+  * Fix typing so that code can run
+  * Fix or ignore all mypy errors
+  * Fail remote pipeline when mypy fails
+  * Pin mypy==1.18.2
+  * Use os.fspath instead of __fspath__ for reading paths
+  * Fix missing path conversion
+  * Allow Pathlike paths when creating a git repo
+  * Simplify logic with direct path conversion
+  * Allow Pathlike urls and destinations when cloning
+  * Move clone tests into dedicated file
+  * Bump actions/checkout from 5 to 6
+  * make linter happy
+  * improve unit test
+  * Bump git/ext/gitdb from `f8fdfec` to `65321a2`
+  * Support index format v3
+  * Use actual return type in annotation for method submodule_update
+  * Bump github/codeql-action from 3 to 4
+  * fix: Use fnmatch instead.
+  * feat: Add support for hasconfig git rule.
+  * Fix type hint for `SymbolicReference.reference` property
+  * Bump git/ext/gitdb from `39d7dbf` to `f8fdfec`
+  * Bump actions/setup-python from 5 to 6
+  * Bump git/ext/gitdb from `335c0f6` to `39d7dbf`
+  * Bump actions/checkout from 4 to 5
+  * Prepare a new release
+  * Add test case for cloning submodules with relative path
+  * Allow relative path url in submodules for submodule_update
+  * Don't treat sphinx warnings as errors
+  * Fix name collision
+  * Bump cygwin/cygwin-install-action from 5 to 6
+  * Bump Vampire/setup-wsl from 5.0.1 to 6.0.0
+  * Add clearer error version for unsupported index error
+  * Pass assertion `msg` as a keyword argument in `test_installation`
+  * Remove deprecated license classifier
+  * Improve failure message whitespace clarity
+  * Show more information when `test_installation` fails
+  * Have `test_installation` test that operations produce no warnings
+  * Extract `subprocess.run` logic repeated in `test_installation`
+  * Comment what `TestInstallation._set_up_venv` does
+  * Use *-wheel packages as a better fix for #2004
+  * Minor CI clarifications
+  * Run `cat_file.py` fixture without site customizations
+  * fix updating submodules with relative urls
+  * Always use a `def` instead of assigning a `lambda`
+  * Update Ruff configuration
+  * Improve line-ending consistency in requirements files
+  * Don't remove quotes if `\` or `"` are present inside
+  * Add tests of ConfigParser with `"..."` with `"` or `\` inside
+  * Refactor quote parsing, to prepare for more checks
+  * Remove explicit empty `""` handling in ConfigParser
+  * Test that ConfigParser treats empty quotes as an empty value
+  * Test `ConfigParser` with whitespace outside the value
+  * Clarify `USE_SHELL` warning helper signature
+  * Fix ambiguous `_safer_popen_windows` comment
+  * Use static notation for `setuptools` in CI `pip` commands
+  * Use static notation for `setuptools` in installation test
+  * Small stylistic consistency tweak
+  * Show differing `pytest` arguments in step name
+  * Split Cygwin CI into two test jobs
+  * Add an explanatory comment for omitting "t"
+  * Fix CI `mypy` command on free-threaded Python
+  * Import `TypeAlias` from `typing_extensions` where needed
+  * Start on fixing AutoInterrupt/CatFileContentStream aliases
+  * Refactor Git.{AutoInterrupt,CatFileContentStream} nesting
+  * Preserve quoted leading and trailing single-line whitespace
+  * Test a quoted config var with meaningful edge whitespace
+  * Fix GitConfigParser not removing quotes from values
+  * Bump git/ext/gitdb from `f36c0cc` to `7e02fbd`
+  * Specify explicit `contents: read` workflow permissions
+  * Remove unnecessary permissions from `codeql.yml`
+  * Keep running CodeQL on all branches, etc.
+  * Recreate `codeq.yml` with current defaults
+  * Temporarily remove CodeQL workflow file
+  * Use newer ruff style
+  * incorporate review feedback from @EliahKagan
+  * Revert "use `strings` instead of `uname` to detect cygwin"
+  * Revert "debug printing"
+  * debug printing
+  * use `strings` instead of `uname` to detect cygwin
+  * add self to AUTHORS, add Emacs tempfiles to .gitignore
+  * remove type assertions from util.py
+  * turns out f-strings before 3.8 don't support {variable=} notation, take that out
+  * it's is_file(), not isfile()
+  * don't use match-case, since it's a 3.10 feature
+  * check that uname_cmd points to a file; if uname_cmd were a directory, it could both exist and have os.X_OK but not work
+  * don't keep checking if sys.platform isn't 'cygwin'
+  * use pathlib.Path instead of os.path.isfile
+  * Revert "check for the existence/execute bit on the uname command before trying to run it"
+  * adding self to authors
+  * check for the existence/execute bit on the uname command before trying to run it
+  * add tests for is_cygwin_git
+  * Bump Vampire/setup-wsl from 5.0.0 to 5.0.1
+  * replace quansight-labs/setup-python with actions/setup-python
+  * Fix some incorrect sphinx markups in the docstrings
+  * Use property decorator to support typing
+  * `IndexFile._to_relative_path` - fix case where absolute path gets stripped of trailing slash
+  * Only test free-threaded Python on Linux
+  * Test on free-threaded Python
+  * Use WSL1 on CI
+  * Bump Vampire/setup-wsl from 4.1.1 to 5.0.0
+  * Mark `test_installation` xfail on Cygwin CI
+  * Bump Vampire/setup-wsl from 4.1.0 to 4.1.1
+  * Install wget for Cygwin job to use to get pip bootstrap script
+  * Use the pip bootstrap script instead
+  * Install Cygwin package for wheel
+  * Install pip in venv in separate step
+  * Switch back to cygwin/cygwin-install-action
+  * Run `python3.9` explicitly on Cygwin CI
+  * Bump git/ext/gitdb from `9e68ea1` to `f36c0cc`
+  * Fuzzing: Fix broken test for Git submodule handling
+  * Repo.rev_parse: Handle <tag>^{commit} correctly
+  * Bump git/ext/gitdb from `775cfe8` to `9e68ea1`
+  * Bump Vampire/setup-wsl from 4.0.0 to 4.1.0
+  * Fix links to gitdb and smmap `SECURITY.md` files
+  * Affirm that gitdb and smmap advisories can also be created
+  * Test Python 3.13 on Ubuntu and macOS on CI
+  * Continue testing Python 3.9 on CI but unpin 3.9.16-1
+  * Change test job keys from `build` to `test`
+  * Tune CI matrix adjustments so reports are clearer
+  * Put back explicit venv activation in Alpine Linux
+  * Improve environment isolation in Cygwin and Alpine Linux on CI
+  * Slightly simplify and clarify instrumented code
+  * Instrument `handle_process_output` test
+  * Do everything in the venv in the Alpine test
+  * Bump Vampire/setup-wsl from 3.1.1 to 4.0.0
+  * Special-case Python 3.7 for OSes we can install it on
+
+-------------------------------------------------------------------
 Tue Apr  1 11:59:07 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make the dist-info name case-insensitive
