@@ -34,7 +34,7 @@
 %bcond_without  builddocs
 %{?sle15_python_module_pythons}
 Name:           python-bandit
-Version:        1.9.3
+Version:        1.9.4
 Release:        0
 Summary:        Security oriented static analyser for Python code
 License:        Apache-2.0

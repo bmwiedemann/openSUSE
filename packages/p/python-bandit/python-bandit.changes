@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar  4 21:40:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.4:
+  * Fix B106 reporting wrong line number on multiline function
+    calls (#1360)
+  * Lower version guard in check\_ast\_node to Python 3.12
+    (#1355)
+  * Fix B615 false positive when revision is set via variable
+    (#1358)
+  * Include filename in nosec 'no failed test' warning (#1363)
+  * Fix B613 crash when reading from stdin (#1361)
+  * Bump docker/build-push-action from 6.18.0 to 6.19.2 (#1357)
+  * Bump docker/login-action from 3.6.0 to 3.7.0 (#1353)
+  * chore: fixed some typos in comments (#1351)
+
+-------------------------------------------------------------------
 Tue Feb 10 11:18:37 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.9.3

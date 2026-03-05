@@ -396,4 +396,23 @@
   * Limit B614 to torch.load deserializers by @dibussoc in (#1348) (forwarded request 1332214 from glaubitz)</comment>
     <requestid>1332240</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>61134b512b6b60ce3b9696c784002896</srcmd5>
+    <version>1.9.4</version>
+    <time>1772727299</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.9.4:
+  * Fix B106 reporting wrong line number on multiline function
+    calls (#1360)
+  * Lower version guard in check\_ast\_node to Python 3.12
+    (#1355)
+  * Fix B615 false positive when revision is set via variable
+    (#1358)
+  * Include filename in nosec 'no failed test' warning (#1363)
+  * Fix B613 crash when reading from stdin (#1361)
+  * Bump docker/build-push-action from 6.18.0 to 6.19.2 (#1357)
+  * Bump docker/login-action from 3.6.0 to 3.7.0 (#1353)
+  * chore: fixed some typos in comments (#1351)</comment>
+    <requestid>1336596</requestid>
+  </revision>
 </revisionlist>
