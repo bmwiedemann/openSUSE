@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  3 15:44:57 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.10.11
+  * Fail http proxy configuration when using SecItem by @xiazhvera in (#551)
+
+-------------------------------------------------------------------
 Fri Feb  6 11:34:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.10.10
