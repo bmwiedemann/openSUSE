@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Mar  5 11:16:51 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.8.0
+
+- Update to 5.8.0
+  * AI Bot tracking
+    - #23973 BotTracking NoData page
+  * Reporting and UI improvements
+    - #19218, #24113 Display tooltip on the gear green icon at the bottom of reports
+    - #21996, #24050 Improve format of time-based metrics for scheduled reports.
+    - #24049, #22067 Export | Enhanced visibility of TSV format option for Excel.
+    - #24045 Enhance options when exporting in CSV and TSV.
+    - #24054 Hide segmented visits log for empty page action values.
+  * Core improvements
+    - #24056 Update DDEV config to support v1.25.0 (Debian Trixie).
+    - #24069 Phase out legacy DataTable deserialization.
+    - #24073 Add centralised conflict validation in AuthenticationToken.
+    - #24082 Use request arrays instead of query strings for Request class.
+    - #24083 Remove invalid throws notations.
+    - #24087 Add is_temporary flag to archiving metrics.
+    - #24090 Improve unserialization array traversal.
+    - #24095 Apply upsteam fixes to Authenticator.
+    - #24103 Support token_auth with higher access for configurable Module.Action endpoints.
+    - #20652, #24117 Fixed handling of missing action types in VisitorDetails classes.
+    - #21185, #24117 Fixed warnings in visits log: Trying to access array offset on value of type null.
+    - #24109, #24117 Fixed warning: Trying to access array offset on null.
+    - #24063 Fixed BarGraph tooltip.
+    - #24104 Fixed missing SimpleTable processed report metadata.
+    - #21733, #23942, #236, #89, #37, #20 Fixed inconsistent terminology in automated and main reports.
+    - #24105 Fixed handling idsite=all in API.getSuggestedValuesForSegment.
+    - #24115, #24116 Fixed error for undefined array key “currencies” – CurrencyDataProvider.php.
+
+-------------------------------------------------------------------
 Wed Feb  4 11:01:47 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.7.1
 
 - Update to 5.7.1
