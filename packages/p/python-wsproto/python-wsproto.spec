@@ -1,7 +1,7 @@
 #
 # spec file for package python-wsproto
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-wsproto
-Version:        1.2.0
+Version:        1.3.2
 Release:        0
 Summary:        WebSockets state-machine based protocol implementation
 License:        MIT
@@ -31,10 +31,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-h11 >= 0.9.0
+Requires:       python-h11 >= 0.16
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module h11 >= 0.9.0}
+BuildRequires:  %{python_module h11 >= 0.16}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
