@@ -181,4 +181,39 @@
     <comment></comment>
     <requestid>1307324</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2c002472d2c8ee35305f16857c84570f</srcmd5>
+    <version>1.2.2</version>
+    <time>1772727245</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.2.2:
+  ## Added
+  * Support for Python 3.14, including the free-threaded (3.14t) build.
+  ## Changed
+  * The dotenv run command now forwards flags directly to the specified
+    command
+  * Dropped Support for Python 3.9.
+  ## Fixed
+  * Improved set_key and unset_key behavior when interacting with symlinks
+  * Corrected the license specifier and added missing Python 3.14 classifiers
+    in package metadata
+  * Move more config to pyproject.toml, removed setup.cfg
+  * Add support for reading .env from FIFOs (Unix)
+  * Upgrade build system to use PEP 517 &amp; PEP 518 to use build and
+    pyproject.toml
+  * Add support for disabling of load_dotenv() using PYTHON_DOTENV_DISABLED
+    env var
+  ## Breaking Changes
+  * dotenv.set_key and dotenv.unset_key used to follow symlinks in some
+    situations. This is no longer the case.
+  * In the CLI, set and unset used to follow symlinks in some situations.
+    This is no longer the case.
+  * dotenv.set_key, dotenv.unset_key and the CLI commands set and unset used
+    to reset the file mode of the modified .env file to 0o600 in some
+    situations. This is no longer the case: The original mode of the file is
+    now preserved. Is the file needed to be created or wasn't a regular file,
+    mode 0o600 is used.
+- Drop patch avoid-click-8.2-bug.patch, no longer needed.</comment>
+    <requestid>1336261</requestid>
+  </revision>
 </revisionlist>
