@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Mar 05 06:53:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.26.0:
+  * Major changes:
+    - Add Fedora 45 signing key; drop Fedora 42 signing key
+  * Minor changes:
+    - install: Don't require the network by default
+  * Internal changes:
+    - install: Simplify firstboot-args handling in config file
+      expansion
+  * Packaging changes:
+    - Bump minimum supported Rust version (MSRV) to 1.85.0
+  * What's changed
+    - cargo: coreos-installer release 0.26.0
+    - docs/release-notes: update for release 0.26.0
+    - cargo: update dependencies
+    - cargo: bump MSRV to 1.85.0
+    - build(deps): bump the actions group with 2 updates
+    - Sync repo templates ⚙
+    - signing-keys: drop Fedora 42 key
+    - signing-keys: add Fedora 45 key
+    - ci: adjust copy for coreos-installer
+    - ci: stop denylisted ext.config.kdump.crash test
+    - ci: drop running COSA as UID 0
+    - ci: drop buildroot param to cosaPod
+    - Sync repo templates ⚙
+    - Sync repo templates ⚙
+    - build(deps): bump actions/upload-artifact from 4 to 5
+    - dockerfile: update to fedora 43
+    - install: Drop reference to `systemd-resolved.service`
+    - install: Don't require the network by default
+    - build(deps): bump actions/checkout from 4 to 5
+    - install: add unit tests
+    - install: check if firstboot args are defined and add them
+      manually if necessary
+    - release-notes: add release notes for the bug fix
+    - cargo: coreos-installer release 0.25.0
+
+-------------------------------------------------------------------
 Thu Oct 02 07:22:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.25.0:
