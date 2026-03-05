@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Mon Mar 02 11:55:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.0:
+  * Welcome to the v0.50.0 of Inspektor Gadget. These are the most
+    important changes:
+    - gadgets: Add trace_init_module gadget by @claudiamarcubina in
+      #5228
+    - container-collection: support filtering by image digests by
+      @dorser in #5166
+    - pkg: optimize socket cleanup by discarding iterator output by
+      @matthyx in #5256
+  * General Improvements
+    - Artifact Hub: Update gadgets version to v0.49.0 by
+      @github-actions[bot] in #5255
+    - treewide: Bump to golang 1.25.7. by @eiffel-fl in #5268
+    - Artifact Hub: Update gadgets version to v0.49.1 by
+      @github-actions[bot] in #5276
+  * Bug Fixes
+    - Fix OCI 1.1 using referrers API and notation COSE support by
+      @eiffel-fl in #5204
+    - Fix(oci): Harmless "ErrNotFound" Error During ig Gadget Image
+      Removal by @alronova in #5282
+    - fix(kubectl-gadget): Show Correct Output for
+      runtime.containerName on Docker Runtime by @alronova in #5274
+  * Documentation Improvements
+    - docs: add instructions for publishing gadgets to Artifact Hub
+      by @Emidowojo in #5184
+    - docs: Extend instructions to create AKS in GitHub CI. by
+      @eiffel-fl in #5263
+    - docs: Specify tag when creating Inspektor Gadget resource
+      group for A… by @eiffel-fl in #5294
+    - docs: update bpfstats documentation by @alronova in #5301
+  * Testing and Continue Integration
+    - Force building layer upgrading package in gadget-builder in
+      CI by @eiffel-fl in #5271
+    - tools/eks-cleanup: migrate from aws-sdk-go to aws-sdk-go-v2
+      by @mugiwaraluffy56 in #5246
+    - vimto: Uncomment the vimto command by @burak-ok in #5290
+    - tools/eks-cleanup: fix early return skipping remaining
+      internet gateways by @mugiwaraluffy56 in #5303
+    - dependabot: Weekly scanning for /tools/eks-cleanup by
+      @burak-ok in #5313
+    - dependabot: Revert weekly scanning, but add grouping by
+      @burak-ok in #5314
+  * Dependencies updates
+    - ci: bump docker/login-action from 3.6.0 to 3.7.0 by
+      @dependabot[bot] in #5250
+    - ci: bump actions/cache from 5.0.2 to 5.0.3 by
+      @dependabot[bot] in #5252
+    - Dockerfiles: Bump debian from 56ff6d3 to 98f4b71 in
+      /Dockerfiles by @dependabot[bot] in #5257
+    - go: bump github.com/docker/cli from 29.2.0+incompatible to
+      29.2.1+incompatible in the docker group across 1 directory by
+      @dependabot[bot] in #5258
+    - go: bump the otel group across 1 directory with 11 updates by
+      @dependabot[bot] in #5259
+    - ci: bump github/codeql-action from 4.32.0 to 4.32.2 by
+      @dependabot[bot] in #5264
+    - go: bump golang.org/x/sys from 0.40.0 to 0.41.0 in the
+      golang-x group across 1 directory by @dependabot[bot] in
+      #5267
+    - ci: bump aws-actions/configure-aws-credentials from 5.1.1 to
+      6.0.0 by @dependabot[bot] in #5266
+    - ci: bump imjasonh/setup-crane from 0.4 to 0.5 by
+      @dependabot[bot] in #5265
+    - go: bump the golang-x group across 2 directories with 3
+      updates by @dependabot[bot] in #5269
+    - go: bump the k8s group across 2 directories with 7 updates by
+      @dependabot[bot] in #5270
+    - go: bump google.golang.org/grpc from 1.78.0 to 1.79.0 by
+      @dependabot[bot] in #5279
+    - ci: bump aquasecurity/trivy-action from 0.33.1 to 0.34.0 by
+      @dependabot[bot] in #5285
+    - ci: bump docker/build-push-action from 6.18.0 to 6.19.2 by
+      @dependabot[bot] in #5284
+    - ci: bump github/codeql-action from 4.32.2 to 4.32.3 by
+      @dependabot[bot] in #5286
+    - go: bump github.com/expr-lang/expr from 1.17.7 to 1.17.8 by
+      @dependabot[bot] in #5288
+    - go: bump google.golang.org/grpc from 1.79.0 to 1.79.1 by
+      @dependabot[bot] in #5287
+    - go: bump github.com/aws/aws-sdk-go-v2/config from 1.29.1 to
+      1.32.8 in /tools/eks-cleanup by @dependabot[bot] in #5292
+    - go: bump github.com/aws/aws-sdk-go-v2/service/ec2 from
+      1.203.0 to 1.290.0 in /tools/eks-cleanup by @dependabot[bot]
+      in #5293
+    - go: bump go.opentelemetry.io/collector/pdata/pprofile from
+      0.145.0 to 0.146.0 in the otel group across 1 directory by
+      @dependabot[bot] in #5291
+    - go: bump github.com/aws/aws-sdk-go-v2/service/cloudformation
+      from 1.58.0 to 1.71.5 in /tools/eks-cleanup by
+      @dependabot[bot] in #5299
+    - go: bump github.com/aws/aws-sdk-go-v2/config from 1.32.8 to
+      1.32.9 in /tools/eks-cleanup by @dependabot[bot] in #5298
+    - go: bump go.opentelemetry.io/collector/pdata/pprofile from
+      0.146.0 to 0.146.1 in the otel group across 1 directory by
+      @dependabot[bot] in #5297
+    - ci: bump github/codeql-action from 4.32.3 to 4.32.4 by
+      @dependabot[bot] in #5305
+    - ci: bump aquasecurity/trivy-action from 0.34.0 to 0.34.1 by
+      @dependabot[bot] in #5304
+    - ci: bump actions/dependency-review-action from 4.8.2 to 4.8.3
+      by @dependabot[bot] in #5307
+    - ci: bump rajatjindal/krew-release-bot from 0.0.47 to 0.0.50
+      by @dependabot[bot] in #5306
+    - go: bump github.com/aws/aws-sdk-go-v2/service/cloudformation
+      from 1.71.5 to 1.71.6 in /tools/eks-cleanup by
+      @dependabot[bot] in #5310
+    - go: bump github.com/aws/aws-sdk-go-v2/config from 1.32.9 to
+      1.32.10 in /tools/eks-cleanup by @dependabot[bot] in #5309
+    - go: bump github.com/aws/aws-sdk-go-v2/service/ec2 from
+      1.290.0 to 1.290.1 in /tools/eks-cleanup by @dependabot[bot]
+      in #5311
+    - go: bump github.com/aws/aws-sdk-go-v2/service/ec2 from
+      1.290.1 to 1.291.0 in /tools/eks-cleanup in the aws-sdk group
+      across 1 directory by @dependabot[bot] in #5316
+    - Dockerfiles: Bump debian from 98f4b71 to 74d56e3 in
+      /Dockerfiles by @dependabot[bot] in #5315
+    - go: bump github.com/aws/aws-sdk-go-v2/service/ec2 from
+      1.291.0 to 1.292.0 in /tools/eks-cleanup in the aws-sdk group
+      across 1 directory by @dependabot[bot] in #5319
+    - go: bump the golang-x group across 2 directories with 1
+      update by @dependabot[bot] in #5318
+    - go: bump github.com/aws/aws-sdk-go-v2/service/ec2 from
+      1.292.0 to 1.293.0 in /tools/eks-cleanup in the aws-sdk group
+      across 1 directory by @dependabot[bot] in #5321
+
+-------------------------------------------------------------------
 Thu Feb 12 12:50:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.49.1:
