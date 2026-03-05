@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Thu Mar 05 06:45:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.88.0:
+  * Features
+    - 6fcf0f0f: feat(duo cli): add support for help command (Kai
+      Armstrong karmstrong@gitlab.com)
+    - 608d331a: feat(mr note): add --resolve and --unresolve flags
+      (Kai Armstrong karmstrong@gitlab.com)
+    - 8409c32c: feat(mr view): add --resolved and --unresolved
+      filtering flags (Kai Armstrong karmstrong@gitlab.com)
+    - f1b8d6be: feat: add a new command for the unassigning the
+      runner from the project (Aayush kumaraayush9810@gmail.com)
+    - 184e47a5: feat: add new command for assigning the project to
+      a runner (Aayush kumaraayush9810@gmail.com)
+  * Bug Fixes
+    - 7347ebe2: fix(create): show template selection before editor
+      for -d- flag (Kai Armstrong karmstrong@gitlab.com)
+    - 87064fda: fix(duo): force update check when --update flag is
+      used (Kai Armstrong karmstrong@gitlab.com)
+    - e333c538: fix: parse editor command arguments for huh
+      external editor (Kai Armstrong karmstrong@gitlab.com)
+  * Documentation
+    - 7537c2f7: docs: Update and clarify glab auth login command
+      (Brendan Lynch blynch@gitlab.com)
+  * Dependencies
+    - 7cf3cd3d: chore(deps): update dependency @commitlint/format
+      to ^20.4.3 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+
+-------------------------------------------------------------------
+Tue Mar 03 05:42:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.87.0:
+  * Features
+    - c56196f1: feat(duo): add cli command with binary download
+      management (Kai Armstrong karmstrong@gitlab.com)
+    - e3ba483a: feat(mr-list): add more flags (Filip Aleksic
+      faleksic@gitlab.com)
+    - 29e4b5a3: feat(runner-controller): add runner controller
+      runner scope create support (Timo Furrer tfurrer@gitlab.com)
+    - c15d2a2f: feat(runner-controller): add runner controller
+      runner scope delete support (Timo Furrer tfurrer@gitlab.com)
+    - cb1b9639: feat(runner-controller): add runner controller
+      runner scope list support (Timo Furrer tfurrer@gitlab.com)
+    - 02052a33: feat(workitems): add list command (Carlos Corona
+      ccorona@gitlab.com)
+    - dcec8338: feat: add subfolder and ssh_host support for GitLab
+      instances (Kai Armstrong karmstrong@gitlab.com)
+    - 8db560e5: feat: create a new command for getting list of
+      runners info (Aayush kumaraayush9810@gmail.com)
+    - 7f6bcddf: feat: new command for the pausing the runner
+      (Aayush kumaraayush9810@gmail.com)
+    - fcd88b76: feat: new delete command for the runner
+      (kumaraayush9810 kumaraayush9810@gmail.com)
+  * Bug Fixes
+    - 0c9c0326: fix(ci view): prevent crash when viewing unrun
+      downstream pipeline triggers (Kai Armstrong
+      karmstrong@gitlab.com)
+    - 6f89aa11: fix(ci): trigger/retry when branch is not specified
+      and not on default branch (Jay McCure jmccure@gitlab.com)
+    - 317d1453: fix(mr-view): usernames have at prefix (Filip
+      Aleksic faleksic@gitlab.com)
+    - 608c001a: fix: URL encode state name in OpenTofu URLs (Timo
+      Furrer tfurrer@gitlab.com)
+    - 1fb2815a: fix: detect piped stdin properly in snippet create
+      (Kai Armstrong karmstrong@gitlab.com)
+    - 9a51b51b: fix: enable filtering and fetch all members in user
+      selection prompts (Kai Armstrong karmstrong@gitlab.com)
+    - a3934515: fix: use separate config keys for base and head
+      repository resolutions (Kai Armstrong karmstrong@gitlab.com)
+  * Documentation
+    - 4816190b: docs: Update glab job artifact docs (Brendan
+      blynch@gitlab.com)
+    - c5f2fe5f: docs: fix instance of double space in docs (Evan
+      Read eread@gitlab.com)
+    - a724a137: docs: improve error message and examples for
+      --variables-from flag (Kai Armstrong karmstrong@gitlab.com)
+    - 1dbaffe1: docs: remove now unused image from project (Evan
+      Read eread@gitlab.com)
+  * Dependencies
+    - f8fdd33b: chore(deps): update dependency @commitlint/cli to
+      ^20.4.2 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - ffaaedff: chore(deps): update dependency
+      @commitlint/config-conventional to ^20.4.2 (GitLab Renovate
+      Bot gitlab-bot@gitlab.com)
+    - 8a2125e2: chore(deps): update module
+      github.com/mattn/go-runewidth to v0.0.20 (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - b7606ac0: chore(deps): update module
+      github.com/modelcontextprotocol/go-sdk to v1.4.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 5d897b63: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go to v1.44.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 91ab5aa6: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go to v1.46.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - cb75cad0: chore(deps): update module k8s.io/client-go to
+      v0.35.2 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+  * Maintenance
+    - e3d3de69: chore(ci): golangci-lint update, dont print empty
+      tests (Filip Aleksic faleksic@gitlab.com)
+    - d92a64f9: refactor(cmdutils): improve bool flag pair type
+      (Timo Furrer tfurrer@gitlab.com)
+    - 24800c62: refactor(mr view): switch from Notes API to
+      Discussions API (Kai Armstrong karmstrong@gitlab.com)
+    - 189ed700: refactor: improve TTY checks for non-interactive
+      environments (Kai Armstrong karmstrong@gitlab.com)
+
+-------------------------------------------------------------------
 Thu Feb 19 06:13:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.86.0:
