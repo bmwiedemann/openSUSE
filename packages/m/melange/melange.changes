@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 04 12:15:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.43.6:
+  * chore(dependabot): allow for minor gomod updates (#2386)
+
+-------------------------------------------------------------------
+Wed Mar 04 06:13:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.43.5:
+  * melange: remove the -u check (#2388)
+  * build(deps): bump the gomod group with 2 updates (#2384)
+  * build(deps): bump github.com/u-root/u-root from 0.15.0 to
+    0.16.0 (#2385)
+
+-------------------------------------------------------------------
 Mon Mar 02 06:17:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.43.4:
