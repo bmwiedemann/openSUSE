@@ -1,7 +1,7 @@
 #
 # spec file for package tar
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,8 @@
 
 # For correct subpackages docs installation into tar doc directory
 %global _docdir_fmt %{name}
+# tar-tests directory
+%define testsdir %{_libdir}/%{name}
 Name:           tar
 Version:        1.35
 Release:        0
@@ -50,9 +52,11 @@ Patch13:        bsc1202436.patch
 # uninitialized memory for a conditional jump
 Patch16:        fix-CVE-2022-48303.patch
 Patch17:        add_forgotten-tests.patch
+Patch18:        tar-fix-deletion-from-archive.patch
 BuildRequires:  automake >= 1.15
 BuildRequires:  libacl-devel
 BuildRequires:  libselinux-devel
+BuildRequires:  makeinfo
 Recommends:     %{name}-rmt = %{version}
 Recommends:     mt
 Recommends:     xz
@@ -87,7 +91,9 @@ Upstream testsuite for the package
 %package rmt
 Summary:        Remote tape drive control server by GNU
 Group:          Productivity/Archiving/Backup
+%if %{suse_version} <= 1600 || %{suse_version} >= 1699
 Requires(post): update-alternatives
+%endif
 Provides:       rmt
 Conflicts:      rmt
 
@@ -125,8 +131,7 @@ autoreconf -fi
 %configure \
 	gl_cv_func_linkat_follow="yes" \
 	--enable-backup-scripts \
-	--disable-silent-rules \
-	--program-transform-name='s/^rmt$/gnurmt/'
+	--disable-silent-rules
 %make_build LDFLAGS="-pie"
 cd tests
 %make_build genfile
@@ -140,28 +145,30 @@ cd -
 %install
 %make_install DESTDIR=%{buildroot}
 mkdir %{buildroot}/bin
-mv %{buildroot}%{_mandir}/man8/gnurmt.8 %{buildroot}%{_mandir}/man1/gnurmt.1
+mv %{buildroot}%{_mandir}/man8/rmt.8 %{buildroot}%{_mandir}/man1/rmt.1
 install -D -m 644 scripts/backup-specs %{buildroot}%{_sysconfdir}/backup/backup-specs
 # For avoiding file conflicts with dump/restore
 mv %{buildroot}%{_sbindir}/restore %{buildroot}%{_sbindir}/restore.sh
 rm -f %{buildroot}%{_infodir}/dir
 install -D -m 644 -t %{buildroot}%{_docdir}/%{name} README* ABOUT-NLS AUTHORS NEWS THANKS \
 							ChangeLog TODO
-install -d -m 755 %{buildroot}%{_localstatedir}/lib/tests
-cp -r tests %{buildroot}%{_localstatedir}/lib/tests/tar
-rm %{buildroot}%{_localstatedir}/lib/tests/tar/*.{c,h,o}
-rm %{buildroot}%{_localstatedir}/lib/tests/tar/package.m4
-rm %{buildroot}%{_localstatedir}/lib/tests/tar/{atconfig,atlocal,Makefile}*
+install -d -m 755 %{buildroot}%{testsdir}
+cp -r tests %{buildroot}%{testsdir}
+rm %{buildroot}%{testsdir}/tests/*.{c,h,o}
+rm %{buildroot}%{testsdir}/tests/package.m4
+rm %{buildroot}%{testsdir}/tests/{atconfig,atlocal,Makefile}*
 %if 0%{?suse_version} < 1550
 mkdir -p %{buildroot}/bin
 ln -s %{_bindir}/%{name} %{buildroot}/bin
 %endif
 %find_lang %{name}
 
+%if %{suse_version} <= 1600 || %{suse_version} >= 1699
 %post rmt
 if [ ! -f %{_bindir}/gnurmt ] ; then
    "%{_sbindir}/update-alternatives" --remove rmt %{_bindir}/gnurmt
 fi
+%endif
 
 %files backup-scripts
 %{_sbindir}/backup
@@ -174,14 +181,12 @@ fi
 %files lang -f %{name}.lang
 
 %files tests
-%{_localstatedir}/lib/tests
+%{testsdir}
 %{_docdir}/%{name}/README-tests
 
 %files rmt
-%ghost %{_bindir}/rmt
-%{_bindir}/gnurmt
-%ghost %{_mandir}/man1/rmt.1%{ext_man}
-%{_mandir}/man1/gnurmt.1%{?ext_man}
+%{_bindir}/rmt
+%{_mandir}/man1/rmt.1%{?ext_man}
 
 %files doc
 %dir %{_docdir}/%{name}

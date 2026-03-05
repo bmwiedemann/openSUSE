@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar  4 18:26:48 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Add tar-fix-deletion-from-archive.patch
+  * Fixes tar creating invalid tarballs when used with --delete (bsc#1246607)
+  * Add makeinfo build requirement, needed after the addition of the patch
+
+-------------------------------------------------------------------
+Tue Feb 10 23:12:22 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Rename gnurmt to rmt, since we now conflict with other rmt providers
+  (complementary change for bsc#1240101)
+- Move tar-tests files to %_libdir/tar to avoid files outside snapshot
+  (jsc#PED-14742)
+- Remove update-alternatives %post scripts for SLES 16.x future releases
+  (jsc#PED-15657, bsc#1245919)
+
+-------------------------------------------------------------------
 Thu May 29 19:52:40 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Migrate away from update-alternatives (bsc#1240101).
