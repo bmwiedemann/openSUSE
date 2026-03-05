@@ -1,7 +1,7 @@
 #
 # spec file for package liburing
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -100,8 +100,11 @@ TEST_EXCLUDE+=( fallocate.t register-restrictions.t timeout.t )
 %if 0%{?sle_version} == 150700
 TEST_EXCLUDE+=( accept-non-empty.t bind-listen.t fallocate.t fifo-futex-poll.t min-timeout.t min-timeout-wait.t )
 %endif
-%if 0%{?suse_version} == 1600
-TEST_EXCLUDE+=( io-wq-exit.t min-timeout.t min-timeout-wait.t )
+%if 0%{?suse_version} >= 1600 && %{suse_version} < 1699
+TEST_EXCLUDE+=( min-timeout.t min-timeout-wait.t )
+%endif
+%if 0%{?suse_version} >= 1600
+TEST_EXCLUDE+=( io-wq-exit.t )
 %endif
 
 echo "TEST_EXCLUDE=\"${TEST_EXCLUDE[@]}\"" > test/config.local

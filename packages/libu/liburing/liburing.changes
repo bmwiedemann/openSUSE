@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  3 11:46:48 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- consider that %{suse_version} will be different across SLE 16
+  service packs [jsc#PED-15812]
+
+-------------------------------------------------------------------
 Sun Feb  8 11:05:55 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.14:
