@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 04 12:51:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.94.0:
+  * Improvements
+    - Support for docker containerd-snapshotter storage by
+      @fluxxBot in #3374
+  * Bug Fixes
+    - fix/conan-project-key-build-dir-issue by @reshmifrog in #3370
+  * Other Changes
+    - Updated e2e test cases for hugging-face by @naveenku-jfrog in
+      #3372
+
+-------------------------------------------------------------------
 Fri Feb 27 09:43:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.93.0:
