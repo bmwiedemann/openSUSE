@@ -2197,4 +2197,12 @@
   * Preserve file permissions when using reflinks on Linux</comment>
     <requestid>1336574</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>eff1221bf14b995f767c6e8c1806668b</srcmd5>
+    <version>0.10.8</version>
+    <time>1772702444</time>
+    <user>adrianSuSE</user>
+    <comment>update</comment>
+    <requestid>1336696</requestid>
+  </revision>
 </revisionlist>
