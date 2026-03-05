@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar 04 06:14:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.224.0:
+  * Features
+    - Add Gateway API ELB cleanup support for eksctl cluster
+      deletion (#8664)
+    - Update go mod and go sum to use the latest nodeAdm api
+      (#8677)
+  * Improvements
+    - Add Gateway API ELB cleanup support for eksctl cluster
+      deletion (#8664)
+  * Bug Fixes
+    - add missing iam permission for enabling karpenter | fix
+      karpenter discovery tags in subnets and security groups
+      (#8684)
+  * Maintenance
+    - Update coredns (#8651)
+
+-------------------------------------------------------------------
 Sat Feb 14 08:26:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.223.0:
