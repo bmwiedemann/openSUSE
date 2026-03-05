@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar  1 09:43:33 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 26.00:
+  * improved code for ZIP, CPIO, RAR, UFD, QCOW, Compound.
+  * 7-Zip File Manager: improved sorting order of the file list. 
+    It uses file name as secondary sorting key.:
+  * 7-Zip File Manager: improved Benchmark to support systems with more than
+    64 CPU threads.
+  * bug fixed: 7-Zip could not correctly extract TAR archives containing sparse
+    files
+  * some bugs were fixed.
+
+-------------------------------------------------------------------
 Thu Dec  4 14:31:25 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Do not use asm code on aarch64 until PAC/BTI/GCS fixed upstream
