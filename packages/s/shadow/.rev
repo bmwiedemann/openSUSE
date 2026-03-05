@@ -1377,4 +1377,13 @@
 - Update shadow.keyring according to AUTHORS.md and shadow/keys</comment>
     <requestid>1330357</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>7809dfe5568d54e79ab7213fb5af539f</srcmd5>
+    <version>4.19.4</version>
+    <time>1772727148</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.19.4:
+  * Regression fix: build with GCC 10 and older</comment>
+    <requestid>1335904</requestid>
+  </revision>
 </revisionlist>

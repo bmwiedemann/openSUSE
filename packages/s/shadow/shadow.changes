@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  2 19:50:46 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.19.4:
+  * Regression fix: build with GCC 10 and older
+
+-------------------------------------------------------------------
 Sun Feb  1 21:56:26 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.19.3:
