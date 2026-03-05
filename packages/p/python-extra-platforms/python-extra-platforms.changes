@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar  5 07:24:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 11.0.2:
+  * Raise import time test threshold from 200 ms to 500 ms to
+    accommodate slower architectures like i586. Closes #494
+
+-------------------------------------------------------------------
+Wed Mar  4 12:13:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 11.0.1:
+  * Cache AST parse results per module in docstring generation,
+    reducing import extra_platforms from ~120 ms to ~34 ms.
+
+-------------------------------------------------------------------
 Mon Mar  2 07:05:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 11.0.0:
