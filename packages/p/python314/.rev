@@ -2781,4 +2781,15 @@
       specified value of tkinter.wantobjects, for example -u</comment>
     <requestid>1332989</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>998dff50ba8015dcaaa7031ea18a7a18</srcmd5>
+    <version>3.14.3</version>
+    <time>1772728148</time>
+    <user>anag_factory</user>
+    <comment>- Adapt %suse_version checks to support new %suse_version design for
+  16.1 and following (1610, 1620, 1630...)
+
+jsc#PED-15851</comment>
+    <requestid>1336639</requestid>
+  </revision>
 </revisionlist>

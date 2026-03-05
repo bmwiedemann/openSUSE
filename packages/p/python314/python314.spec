@@ -61,7 +61,7 @@
 %endif
 
 # No experimental_jit in SLES, there's no clang >=19
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1699
 %bcond_with experimental_jit
 %else
 # Doesn’t work with GIL support disabled
@@ -80,7 +80,7 @@
 
 # Only for Tumbleweed
 # https://en.opensuse.org/openSUSE:Python:Externally_managed
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %bcond_without externally_managed
 %else
 %bcond_with externally_managed

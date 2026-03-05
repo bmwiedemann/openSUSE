@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  4 13:02:48 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Adapt %suse_version checks to support new %suse_version design for
+  16.1 and following (1610, 1620, 1630...)
+
+-------------------------------------------------------------------
 Thu Feb  5 17:26:23 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - CVE-2025-12781: All `*b64decode` functions should not accept
