@@ -1793,4 +1793,14 @@
   * releaser: Prepare repository for 0.153.0-DEV (forwarded request 1313089 from jfkw)</comment>
     <requestid>1313090</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>839787d558d66f4cb2b7352e6292a16e</srcmd5>
+    <version>0.157.0</version>
+    <time>1772727311</time>
+    <user>anag_factory</user>
+    <comment>- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.25 matching go.mod
+  * Recreate per-version changelog entries v0.152.1 - v0.157.0 (forwarded request 1336608 from jfkw)</comment>
+    <requestid>1336609</requestid>
+  </revision>
 </revisionlist>

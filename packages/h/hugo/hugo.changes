@@ -1,4 +1,415 @@
 -------------------------------------------------------------------
+Wed Mar  4 21:24:21 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.25 matching go.mod
+
+-------------------------------------------------------------------
+Tue Mar  3 21:55:39 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.157.0:
+  * releaser: Bump versions for release of 0.157.0
+  * Fix menu pageRef resolution in multidimensional setups
+  * Handle GitInfo for modules where Origin is not set when running go list
+  * commands: Update link to highlighting style examples
+  * docs: Regen and fix the imaging docshelper output
+  * Squashed 'docs/' changes from 42914c50e..80dd7b067
+  * Add AVIF, HEIF and HEIC partial support (only metadata for now)
+  * resources/images: Adjust WebP processing defaults
+  * Add Page.GitInfo support for content from Git modules
+  * Add per-request timeout option to `resources.GetRemote`
+  * Update AI Watchdog action version in workflow
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.24.8 to 2.24.9
+  * build(deps): bump github.com/bep/imagemeta from 0.14.0 to 0.15.0
+  * config: Skip taxonomy entries with empty keys or values
+  * Add guideline for brevity in code and comments
+  * modules: Include JSON error info from go mod download in error messages
+  * hugolib: Fix automatic section pages not replaced by sites.complements
+  * releaser: Prepare repository for 0.157.0-DEV
+
+-------------------------------------------------------------------
+Wed Feb 18 16:39:55 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.156.0:
+  * releaser: Bump versions for release of 0.156.0
+  * hugolib: Move site.Data to hugo.Data, deprecate Site.AllPages/BuildDrafts/Languages
+  * build(deps): bump google.golang.org/api from 0.255.0 to 0.267.0
+  * hugolib: Add Page.Sites to Site.Sites deprecation notice
+  * hugolib: Simplify sites collection
+  * hugolib: Adjust hugo.Sites.Default
+  * Move common/hugo/HugoInfo to resources/page
+  * commands: Fix --panicOnWarning flag having no effect with module version warnings
+  * hugolib: Add hugo.Sites and .Site.IsDefault(), modify .Site.Sites
+  * build(deps): bump github.com/bep/textandbinarywriter
+  * paths: Fix handling of _ as a path name
+  * output: Remove unused method
+  * build(deps): bump github.com/bep/simplecobra from 0.6.1 to 0.7.0
+  * build(deps): bump github.com/bep/tmc from 0.5.1 to 0.6.0
+  * snap: Stop building for ppc64el and s390x
+  * docs: Fix lineNos default value in docs.yaml
+  * hugolib: Fix term title when taxonomy name contains spaces
+  * Update AI assistance guidelines in CONTRIBUTING.md
+  * tpl/collections: Speed up where and sort performance
+  * tpl/internal: Replace deprecated parser.ParseDir and doc.New
+  * docs: Regenerate docs.yaml
+  * Squashed 'docs/' changes from 1ad3c75ad..42914c50e
+  * commands: Skip chmod for files without owner-write permission
+  * build(deps): bump github.com/gohugoio/hugo-goldmark-extensions/extras
+  * build(deps): bump github.com/gohugoio/hugo-goldmark-extensions/passthrough
+  * tpl/collections: Add some more benchmarks for where and sort
+  * all: Change site to project where appropriate
+  * docker: Add full tar and openssh-client to support GitHub Actions
+  * markup/highlight: Allow lineNos to be true, false, "inline", or "table"
+  * Remove items deprecated <= v0.136.0 (note)
+  * Upgrade to Go 1.26
+  * tpl: Move from md5 to xxhash for some in memory keys
+  * build(deps): bump golang.org/x/tools from 0.41.0 to 0.42.0
+  * build(deps): bump github.com/bep/helpers from 0.6.0 to 0.7.0
+  * resources/page: Deprecate cascade._target in favor of cascade.target
+  * tpl/tplimpl: Throw error when calling gist shortcode
+  * tpl/tplimpl: Throw error when calling twitter/twitter_simple shortcodes
+  * testscripts/commands: Update 'future' date to far future
+  * Reapply "release: Support alpha, beta, and RC releases"
+  * build(deps): bump golang.org/x/image from 0.35.0 to 0.36.0
+  * releaser: Prepare repository for 0.156.0-DEV
+
+-------------------------------------------------------------------
+Sun Feb  8 16:40:42 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.155.3:
+  * releaser: Bump versions for release of 0.155.3
+  * hugolib: Don't render default site redirect for non-primary isHTML output formats
+  * server: Fix stuck server global error logging
+  * build(deps): bump github.com/evanw/esbuild from 0.27.2 to 0.27.3
+  * server: Fix panic when the server browser error handler tried to use a config in a state of flux
+  * releaser: Prepare repository for 0.156.0-DEV
+
+-------------------------------------------------------------------
+Mon Feb  2 10:04:51 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.155.2:
+  * releaser: Bump versions for release of 0.155.2
+  * resources/image: Add some image decode/encode debug logging
+  * Fix template change detection for multi-version sites
+  * releaser: Prepare repository for 0.156.0-DEV
+
+-------------------------------------------------------------------
+Fri Jan 30 10:10:48 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.155.1:
+  * releaser: Bump versions for release of 0.155.1
+  * Fix image DecodeConfig regression of WebP images from file cache
+  * Remove go vet from check.sh
+  * Add ./check.sh script
+  * Update AGENTS.md with debug printing note
+  * resources/images: Fix WebP useSharpYuv being ignored
+  * tpl/tplimpl: Remove failing Twitter tests
+  * releaser: Prepare repository for 0.156.0-DEV
+
+-------------------------------------------------------------------
+Wed Jan 28 16:28:23 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.155.0:
+  * releaser: Bump versions for release of 0.155.0
+  * Revert "release: Support alpha, beta, and RC releases"
+  * Fix data race when clearing cache in cachebusters
+  * resources/images: Fix comment for Quality field in ImageConfig
+  * Fix panic reported in discourse
+  * Remove disableDate and disableLatLong from MetaConfig
+  * internal/warpc: Make webp C defaults match the Go defaults
+  * testscripts: Move server tests to own folder
+  * testing: Skip some slow tests when not running in CI
+  * misc: Update image processing description in README.md
+  * docs: Update docs.yaml
+  * magefile: Skip commands test when running mage check locally
+  * Fix recently introduced partial rendering bug
+  * Remove -p 2 parallelism limit for local test runs
+  * build(deps): bump golang.org/x/tools from 0.40.0 to 0.41.0
+  * build(deps): bump github.com/olekukonko/tablewriter from 1.1.2 to 1.1.3
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.23.0 to 2.23.1
+  * Make docs helper maxAge JSON output user friendly
+  * Add AGENTS.md and CLAUDE.md
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/cloudfront
+  * build(deps): bump golang.org/x/image from 0.34.0 to 0.35.0
+  * build(deps): bump golang.org/x/mod from 0.31.0 to 0.32.0
+  * tpl: Fix partial decorator panic when partial returns falsy
+  * Add == and != operators to range predicates
+  * resources: Fix race condition in test helper
+  * Add modulequeries file cache for module version queries
+  * Allow v1,v2 etc. style version names while still supporting full semver in queries
+  * Make Page.Aliases more useful in multidimensional setups (note)
+  * Fix cascade draft panic
+  * Add range matchers for site matrix vector store filtering
+  * Misc webp performance work
+  * hugolib: Fix multilingual alias generation
+  * Fix file mount specifity issue within the same module
+  * deps: Upgrade github.com/gohugoio/gift v0.1.0 => v0.2.0
+  * Move from github.com/disintegration/gift to github.com/gohugoio/gift
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.22.0 to 2.23.0
+  * warpc: Fix typed nil return in Start
+  * resources/images: Stabilize order of valid sources in error message
+  * hugolib: Fix relative alias generation
+  * Add XMP and IPTC image metadata support
+  * output: Add TestCanonical integration test
+  * Rename common/maps to common/hmaps (#14384)
+  * build(deps): bump golang.org/x/net from 0.48.0 to 0.49.0
+  * build(deps): bump github.com/bep/lazycache from 0.8.0 to 0.8.1
+  * deps: Upgrade github.com/alecthomas/chroma v2.21.1 => v2.22.0
+  * Decode webp.ImageConfig natively
+  * releaser: Prepare repository for 0.155.0-DEV
+
+-------------------------------------------------------------------
+Sun Jan 11 20:53:23 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.154.5:
+  * releaser: Bump versions for release of 0.154.5
+  * Fix some default site redirect woes
+  * hugolib: Fix newly created shortcodes not found during server rebuild
+  * tpl/tplimpl: Remove trailing slash from void elements
+  * releaser: Prepare repository for 0.155.0-DEV
+
+-------------------------------------------------------------------
+Sat Jan 10 15:24:22 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.154.4:
+  * releaser: Bump versions for release of 0.154.4
+  * build(deps): bump github.com/goccy/go-yaml from 1.19.1 to 1.19.2
+  * tpl: Fix language resolution for markdown shortcodes
+  * For multiple dimensions setups, fix alias handling and multihost publish path
+  * releaser: Prepare repository for 0.155.0-DEV
+
+-------------------------------------------------------------------
+Tue Jan  6 16:30:17 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.154.3:
+  * releaser: Bump versions for release of 0.154.3
+  * build(deps): bump github.com/yuin/goldmark from 1.7.13 to 1.7.16
+  * releaser: Prepare repository for 0.155.0-DEV
+
+-------------------------------------------------------------------
+Fri Jan  2 16:08:44 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.154.2:
+  * releaser: Bump versions for release of 0.154.2
+  * Fix alpha/fuzzy border issue with new webp decoder for images with with transparent background
+  * snap: Limit build platforms to amd64, arm64, ppc64el, and s390x
+  * snap: Update to core 24
+  * releaser: Prepare repository for 0.155.0-DEV
+
+-------------------------------------------------------------------
+Thu Jan  1 17:32:20 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.154.1:
+  * releaser: Bump versions for release of 0.154.1
+  * Add WASM licensing information to README
+  * Fix partial decorator detection in partial with blocks with outer range break or continue
+  * releaser: Prepare repository for 0.155.0-DEV
+
+-------------------------------------------------------------------
+Wed Dec 31 12:45:55 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.154.0:
+  * releaser: Bump versions for release of 0.154.0
+  * tpl/collections: Fix apply to work with built-in funcs like len
+  * Remove Linode sponsor from README
+  * helpers: Limit verbose watch output for better readability
+  * tpl/reflect: Make the IsImageResource implementation less technical
+  * internal/warpc: Increase WebP memory limit to 384 MiB
+  * build(deps): bump github.com/tetratelabs/wazero from 1.10.1 to 1.11.0
+  * Revert "resources/page: Fix slugorcontentbasename for section pages"
+  * Update tpl/reflect/reflect.go
+  * Add reflect.Is{Page,Site,Resource,ImageResource}
+  * Allow partials to work as decorators
+  * releaser: Prepare repository for 0.154.0-DEV
+
+-------------------------------------------------------------------
+Tue Dec 30 10:27:17 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.153.5:
+  * releaser: Bump versions for release of 0.153.5
+  * images: Add compression option to image config and clean up some of the options handling
+  * config: Fix cascade per language in hugo.toml regression
+  * images: Fix WebP quality and hint parameters being ignored
+  * releaser: Prepare repository for 0.154.0-DEV
+
+-------------------------------------------------------------------
+Sun Dec 28 21:34:16 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.153.4:
+  * releaser: Bump versions for release of 0.153.4
+  * Set cascade target to the content matrix if not set in the cascade itself
+  * releaser: Prepare repository for 0.154.0-DEV
+
+-------------------------------------------------------------------
+Fri Dec 26 15:33:04 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.153.3:
+  * releaser: Bump versions for release of 0.153.3
+  * build(deps): bump github.com/bep/imagemeta from 0.12.0 to 0.12.1
+  * Fix error with _content.gotmpl file with index.md siblings
+  * releaser: Prepare repository for 0.154.0-DEV
+
+-------------------------------------------------------------------
+Mon Dec 22 16:53:01 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.153.2:
+  * releaser: Bump versions for release of 0.153.2
+  * Fix "image: unknown format" error
+  * modules: Remove extended edition check
+  * misc: Update edition comparison and guidance in README.md
+  * releaser: Prepare repository for 0.154.0-DEV
+
+-------------------------------------------------------------------
+Sat Dec 20 15:15:53 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.153.1:
+  * releaser: Bump versions for release of 0.153.1
+  * Handle PNG named *.webp
+  * Revert deprecation logging for contentDir per language
+  * images: Add some more PNG tests
+  * Fix panic when 404 is backed by a content file
+  * internal/warpc: Increase WebP memory limit to 256 MiB
+  * releaser: Prepare repository for 0.154.0-DEV
+
+-------------------------------------------------------------------
+Fri Dec 19 10:14:01 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.153.0:
+  * releaser: Bump versions for release of 0.153.0
+  * hugoreleaser: Updage macospkgremote to increase notarization timeout
+  * Squashed 'docs/' changes from 71f739460..1ad3c75ad
+  * resources/images: Don't trust the file extension when decoding JPEG and PNG images
+  * Add full filename to image processing error messages if possible
+  * tailwindcss: Add referece to skipInlineImportsNotFound when import not found in assets
+  * build(deps): bump github.com/goccy/go-yaml from 1.19.0 to 1.19.1
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.21.0 to 2.21.1
+  * Improve error messages for template failures
+  * Improve error handling/messages in Hugo Pipes
+  * Fix some outdated front matter
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/cloudfront
+  * deps: Upgrade github.com/alecthomas/chroma/v2 v2.20.0 => v2.21.0
+  * build(deps): bump github.com/aws/aws-sdk-go-v2 from 1.40.1 to 1.41.0
+  * build(deps): bump github.com/evanw/esbuild from 0.27.1 to 0.27.2
+  * images: Add a webp test with bg color
+  * tpl/css: Deprecate libsass in favor of dartsass (note)
+  * Encode and Decode using the libwebp library via WASM with animation support
+  * config/allconfig: Correct error message
+  * tpl: Add missing functions to init files
+  * github: Add some known humans to the AI whitelist
+  * build(deps): bump golang.org/x/image from 0.33.0 to 0.34.0
+  * build(deps): bump golang.org/x/tools from 0.39.0 to 0.40.0
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.24.7 to 2.24.8
+  * build(deps): bump gocloud.dev from 0.43.0 to 0.44.0
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/cloudfront
+  * build(deps): bump github.com/evanw/esbuild from 0.27.0 to 0.27.1
+  * Fix server rebuilds on editing content with Chinese terms
+  * build(deps): bump github.com/aws/aws-sdk-go-v2 from 1.40.0 to 1.40.1
+  * build(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.2
+  * release: Skip pushing stable and docs update for pre-releases
+  * release: Support alpha, beta, and RC releases
+  * snap: Address snapcraft deprecations
+  * build(deps): bump github.com/goccy/go-yaml from 1.18.0 to 1.19.0
+  * build(deps): bump github.com/olekukonko/tablewriter from 1.1.1 to 1.1.2
+  * build(deps): bump github.com/JohannesKaufmann/html-to-markdown/v2
+  * langs/i18n: Prefer languageCode when picking translation file
+  * Add entitlements for WebAssembly for macOS Tahoe
+  * testscripts: Move layouts file to new structure
+  * resources: Skip integration test if Dart Sass is not installed
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/cloudfront
+  * testing: Replace legacy config.toml with hugo.toml in most tests
+  * testing: Port integration tests to new templates structure
+  * github: Correct dependabot => dependabot[bot]
+  * config/privacy: Change GoogleAnalytics.RespectDoNotTrack default to true
+  * Add signed and notarized MacOS pkg builds
+  * Upgrade to Go 1.25.4
+  * tpl/urls: Add PathEscape and PathUnescape functions
+  * Fix slow server startup of very big content trees
+  * Speedup and simplify page assembly for deeper content trees
+  * markup/asciidocext: Improve Asciidoctor integration
+  * gemini: Remove styleguide.md (for now)
+  * github: Reenable Gemini, but no auto code review
+  * github: Partition tests by their root
+  * github: Make the clean commands work
+  * github: Also test the root package (left out in previous commit)
+  * github: More disk space saving optimizations
+  * github: Add PR Template
+  * Adjust benchmark
+  * tpl/openapi: Add support for OpenAPI external file references
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/cloudfront
+  * build(deps): bump golang.org/x/image from 0.32.0 to 0.33.0
+  * build(deps): bump golang.org/x/crypto from 0.43.0 to 0.45.0
+  * github: Skip dependabot for AI Watchdog workflow
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.24.5 to 2.24.7
+  * github: Remove the 386 test step in GitHub test workflow
+  * github: Remove test binaries after CI test runs
+  * github: Fix "no space left on device" issue in CI
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/cloudfront
+  * build(deps): bump golang.org/x/tools from 0.38.0 to 0.39.0
+  * build(deps): bump github.com/tetratelabs/wazero from 1.10.0 to 1.10.1
+  * github: Adjust watchdog run logic (now with correct spelling)
+  * github: Adjust watchdog run logic (again)
+  * github: Adjust watchdog run logic
+  * github: Only run AI Watchdog when the PR is ready for review
+  * build(deps): bump github.com/bits-and-blooms/bitset
+  * build(deps): bump github.com/olekukonko/tablewriter from 1.1.0 to 1.1.1
+  * build(deps): bump golang.org/x/text from 0.30.0 to 0.31.0
+  * build(deps): bump github.com/evanw/esbuild from 0.25.12 to 0.27.0
+  * Update aiwatchdog.yml
+  * Update aiwatchdog.yml
+  * Update aiwatchdog.yml
+  * github: Add label to AI suspects and do not fail when confident
+  * github: Adjust AI Watchdog workflow to make it run PRs from forks
+  * github: Adjust workflow permissions
+  * performance: Misc allocation improvements
+  * hugolib/doctree: Simplify lock setup in SimpleThreadSafeTree to reduce read allocation
+  * github: Add ai-watchdog workflow and update other workflows' versions
+  * build(deps): bump google.golang.org/api from 0.251.0 to 0.255.0
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/cloudfront
+  * build(deps): bump github.com/tetratelabs/wazero from 1.9.0 to 1.10.0
+  * tpl/collections: Improve collections.D
+  * Optimize memory allocations for sites matrix vector stores
+  * gemini: Disable auto PR codereviews for now
+  * docs: Fix link to CGO wiki page
+  * github: Update asciidoctor-diagrams extension and add GoAT
+  * Fix grammatical error in styleguide.md
+  * Update styleguide.md
+  * Add gemini setup files
+  * static: Preserve .gitignore and .gitattributes in --cleanDestinationDir
+  * hugolib: Fix recently introduced data race
+  * hugolib: Improve performance of content trees with many sections
+  * markup/asciidocext: Support boolean document attributes
+  * github: Allow AsciiDoc content in tests to render Ditaa diagrams
+  * Add a site assembly benchmark test for a deeper site structure with more sections and pages
+  * sitesmatrix: Clary default dimension values
+  * Run go mod tidy to clean up go.mod and go.sum
+  * docshelper: Fix some YAML serialization issues with sites matrix configuration
+  * resources/page: Fix slugorcontentbasename for section pages
+  * build(deps): bump github.com/evanw/esbuild from 0.25.11 to 0.25.12
+  * testing: Rewrite all the old style integration tests to txtar style tests
+  * commands: newDocsHelper encode integers as ints in generated YAML
+  * config: Add struct tags to deprecated and unused fields
+  * hugolib: Delete some old integration tests
+  * testing: Revise usage of b.N and b.Loop() in benchmarks
+  * all: Fix some benchmarks broken by modernize
+  * all: Run modernize -fix ./...
+  * Add roles and versions as new dimensions (in addition to language)
+  * Update CONTRIBUTING.md
+  * github: Allow AsciiDoc content in tests to render diagrams
+  * hreflect: Cache reflect method lookups used in collections.Where and others
+  * all: Simplify the reflect usage
+  * releaser: Prepare repository for 0.153.0-DEV
+
+-------------------------------------------------------------------
+Fri Oct 24 15:31:49 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.152.2:
+  * releaser: Bump versions for release of 0.152.2
+  * deps: Update github.com/tdewolff/minify v2.24.4 => v2.24.5
+  * hugofs: Make node_modules a "special case" mount
+  * github: Fix typo in stale PR message
+  * releaser: Prepare repository for 0.153.0-DEV
+
+-------------------------------------------------------------------
 Wed Oct 22 19:33:25 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.152.1:
