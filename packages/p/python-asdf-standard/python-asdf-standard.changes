@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar  4 21:46:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * Add missing transform-1.0.0 and domain-1.0.0 schemas. These
+    are only used by legacy schemas and are not to be used for
+    new schemas. See asdf-transform-schemas for newer versions of
+    these schemas
+  * Support setting ASDF_UNSTABLE_CORE_SCHEMAS environment
+    variable to enable support for upcoming (currently unstable)
+    versions of core schemas. Be warned that writing files with
+    unstable/development versions of core schemas is not
+    recommended as these schemas may change during development
+  * Drop support for Python 3.9
+
+-------------------------------------------------------------------
 Sun Sep 14 21:20:25 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.0:

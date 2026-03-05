@@ -98,4 +98,22 @@
   * Clarify post-tree pre-block padding allowed bytes</comment>
     <requestid>1304692</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f8af53a89050ab13bb82be829985f900</srcmd5>
+    <version>1.5.0</version>
+    <time>1772727305</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.5.0:
+  * Add missing transform-1.0.0 and domain-1.0.0 schemas. These
+    are only used by legacy schemas and are not to be used for
+    new schemas. See asdf-transform-schemas for newer versions of
+    these schemas
+  * Support setting ASDF_UNSTABLE_CORE_SCHEMAS environment
+    variable to enable support for upcoming (currently unstable)
+    versions of core schemas. Be warned that writing files with
+    unstable/development versions of core schemas is not
+    recommended as these schemas may change during development
+  * Drop support for Python 3.9</comment>
+    <requestid>1336599</requestid>
+  </revision>
 </revisionlist>
