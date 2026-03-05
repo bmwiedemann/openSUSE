@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  3 18:50:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.2:
+  * Style codeblock `:caption:`
+  * Enable copy button for shell sessions and consoles
+  * Add colors for thread safety annotations
+  * Replace pre-commit with prek in CI
+
+-------------------------------------------------------------------
 Mon Jan 26 08:05:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2025.12:

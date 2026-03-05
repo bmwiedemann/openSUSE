@@ -178,4 +178,16 @@
   * Add link to devguide in README</comment>
     <requestid>1329147</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cd6f70eaab6b9ceb4cce4d1abff3e798</srcmd5>
+    <version>2026.2</version>
+    <time>1772727239</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.2:
+  * Style codeblock `:caption:`
+  * Enable copy button for shell sessions and consoles
+  * Add colors for thread safety annotations
+  * Replace pre-commit with prek in CI</comment>
+    <requestid>1336182</requestid>
+  </revision>
 </revisionlist>
