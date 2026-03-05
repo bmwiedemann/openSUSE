@@ -20,13 +20,13 @@
 %define _name gst-editing-services
 
 Name:           gstreamer-editing-services
-Version:        1.28.0
+Version:        1.28.1
 Release:        0
 Summary:        GStreamer Editing Services
 License:        LGPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-editing-services/html/ges-architecture.html
-Source0:        https://gstreamer.freedesktop.org/src/gstreamer-editing-services/%{_name}-%{version}.tar.xz
+Source0:        %{_name}-%{version}.tar.zst
 
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
@@ -43,7 +43,7 @@ BuildRequires:  pkgconfig(gstreamer-controller-1.0)
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{version}
-BuildRequires:  pkgconfig(gstreamer-validate-1.0)
+BuildRequires:  pkgconfig(gstreamer-validate-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 2.91.3
 BuildRequires:  pkgconfig(gtk+-x11-3.0) >= 2.91.3
@@ -149,7 +149,7 @@ a series of classes to simplify the creation of many kind of
 editing-related applications.
 
 %prep
-%autosetup -p3 -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 %meson \
@@ -184,7 +184,7 @@ editing-related applications.
 %{_libdir}/girepository-1.0/GES-1.0.typelib
 
 %files devel
-%doc ChangeLog README
+%doc README
 %{_datadir}/gir-1.0/GES-1.0.gir
 %{_includedir}/gstreamer-1.0/ges/
 %{_libdir}/libges-1.0.so
