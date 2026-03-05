@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  3 14:31:15 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.19.2
+  * Improvements in the HTML format.
+  * Added Apple variant of XLIFF format.
+  * Added WXL format.
+
+-------------------------------------------------------------------
 Tue Feb 24 11:00:44 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Don't build test flavor on %ix86: it runs constantly for > 2

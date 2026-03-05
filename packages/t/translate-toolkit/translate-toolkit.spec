@@ -43,15 +43,15 @@ ExcludeArch: %ix86
     moz2po mozfunny2prop mozlang2po odf2xliff oo2po oo2xliff php2po phppo2pypo \
     po2asciidoc po2csv po2dtd po2flatxml po2html po2ical po2idml po2ini po2json po2moz po2mozlang po2odf po2oo \
     po2php po2prop po2rc po2resx po2symb po2tiki po2tmx po2toml po2ts po2txt po2web2py \
-    po2wordfast po2xliff po2yaml pot2po prop2po pypo2phppo rc2po resx2po symb2po \
-    tbx2po tiki2po toml2po ts2po txt2po web2py2po xliff2odf xliff2oo xliff2po yaml2po}
+    po2wordfast po2wxl po2xliff po2yaml pot2po prop2po pypo2phppo rc2po resx2po symb2po \
+    tbx2po tiki2po toml2po ts2po txt2po web2py2po wxl2po xliff2odf xliff2oo xliff2po yaml2po}
 %define binaries %{shrink: %binaries_and_manpages\
     pocommentclean pocompendium pocount pomigrate2 popuretext poreencode posplit prop2mozfunny \
     pydiff junitmsgfmt md2po po2md po2sub sub2po}
 %define manpages translatetoolkit %binaries_and_manpages
 
 Name:           translate-toolkit%{psuffix}
-Version:        3.19.1
+Version:        3.19.2
 Release:        0
 Summary:        Tools and API to assist with translation and software localization
 License:        GPL-2.0-or-later
