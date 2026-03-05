@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-monitoring
-Version:        2.29.0
+Version:        2.29.1
 Release:        0
 Summary:        Google Cloud Monitoring API client library
 License:        Apache-2.0

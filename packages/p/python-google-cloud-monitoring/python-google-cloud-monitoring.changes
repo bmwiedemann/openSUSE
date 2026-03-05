@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  4 13:29:05 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.29.1
+  * fix mypy errors (#15494)
+
+-------------------------------------------------------------------
 Thu Jan 15 14:27:33 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.29.0
