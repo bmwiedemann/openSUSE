@@ -20,7 +20,7 @@
 %define gst_branch 1.0
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 Name:           gstreamer-plugins-base
-Version:        1.28.0
+Version:        1.28.1
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -659,7 +659,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/girepository-1.0/GstVideo-*.typelib
 
 %files devel
-%doc README.md RELEASE
 %{_includedir}/gstreamer-%{gst_branch}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
