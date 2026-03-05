@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  4 06:44:16 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update the bcond_with qt %suse_version check for future Leap 16
+  releases.
+
+-------------------------------------------------------------------
 Thu Feb 26 11:39:37 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Adapt %suse_version checks to support new %suse_version design for

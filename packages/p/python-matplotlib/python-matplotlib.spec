@@ -29,7 +29,7 @@ ExclusiveArch:  x86_64 aarch64
 %bcond_with ringdisabled
 
 # Qt support through PyQt6 is in Leap16 but not SLFO
-%if 0%{?suse_version} == 1600 && !0%{?is_opensuse}
+%if 0%{?suse_version} >= 1600 && 0%{?suse_version} < 1699 && !0%{?is_opensuse}
 %bcond_with qt
 %else
 %bcond_without qt

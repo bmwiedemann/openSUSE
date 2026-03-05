@@ -1126,4 +1126,13 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
   16.1 and following (1610, 1620, 1630...)</comment>
     <requestid>1335268</requestid>
   </revision>
+  <revision rev="128" vrev="4">
+    <srcmd5>c3d1756fe167d6491e3c58bf60b77162</srcmd5>
+    <version>3.10.8</version>
+    <time>1772727247</time>
+    <user>anag_factory</user>
+    <comment>- Update the bcond_with qt %suse_version check for future Leap 16
+  releases.</comment>
+    <requestid>1336268</requestid>
+  </revision>
 </revisionlist>
