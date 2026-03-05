@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Mar  4 14:44:25 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 1.6.3 (fixes CVE-2026-27932, bsc#1259154)
+  * jwe: Set max value for p2c
+- Update to 1.6.2
+  * Class does not need to inherit object
+  * jwe: Move size limit to DeflateZipModel
+  * jwe: Auto add kid when add_recipient
+  * jwe: Auto add kid to recipient when kid exists
+- Update to 1.6.1
+  * Remove duplicate code
+  * Improve base key method definition
+  * Update for type hints
+  * jwt: Remove InvalidTokenError, ExpiredTokenError based on ClaimError
+- Update to 1.6.0
+  * Filter_algorithms names parameter default to all algs
+  * Pick_random_key algorithm parameter is optional
+  * Filter_algorithms supports KeySet objects
+  * jwk: Add a derive_key method for OKPKey
+  * jwk: Add derive_key method for ECKey
+  * Remove backend parameter, it is deprecated
+  * jwa: Improve RFC9864 check key logic
+  * jwk: Improve OKPKey implementation
+  * jwk: Allow import key from cryptography native key types
+  * jwk: Raise InvalidKeyCurveError when generate ECKey with invalid crv
+  * jwk: Improve generate_private_key on binding class
+  * jwk: Remove useless properties on OKPKey
+  * jws: Use JWSRegistry.guess_algorithm to replace JWSRegistry.guess_alg
+  * jwt: Make BaseClaimsRegistry.essential_keys a property.
+
+-------------------------------------------------------------------
 Wed Jun 11 11:13:43 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.1.0
