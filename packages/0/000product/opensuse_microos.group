@@ -197,7 +197,7 @@
     <package name="google-noto-sans-tc-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="google-opensans-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="google-roboto-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="gpg2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-packagekit -->
+    <package name="gpg2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="gptfdisk" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="grep" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="growpart" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
@@ -751,7 +751,7 @@
     <package name="libasm1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libasound2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="libass9" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="libassuan9" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-packagekit -->
+    <package name="libassuan9" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libatasmart-utils" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libatasmart4" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libatk-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
@@ -1006,7 +1006,7 @@
     <package name="libkioarchive6-6" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libkmod2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libkpmcore13" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="libksba8" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-packagekit -->
+    <package name="libksba8" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libkscreen6-plugin" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libksysguard6" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libksysguard6-imports" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -1071,7 +1071,7 @@
     <package name="libnl3-200" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libnm0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libnotify4" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="libnpth0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-packagekit -->
+    <package name="libnpth0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libnss_usrfiles2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libntfs-3g89" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libnuma1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
@@ -1251,7 +1251,7 @@
     <package name="libupower-glib3" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="liburcu8" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="liburing2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
-    <package name="libusb-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-packagekit -->
+    <package name="libusb-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libusbmuxd-2_0-7" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libutf8_range-33_3_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libuuid1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -1433,7 +1433,7 @@
     <package name="permissions-config" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="phonon-vlc-qt6" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="pigz" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
-    <package name="pinentry" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-packagekit -->
+    <package name="pinentry" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="pinentry-qt6" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="pipewire" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="pipewire-alsa" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -1627,7 +1627,7 @@
     <package name="suse-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="suse-module-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="suse-module-tools-scriptlets" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
-    <package name="sysextmgrcli" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="sysextmgr" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="system-config-printer-common" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="system-config-printer-dbus-service" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="system-group-audit" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-defaults -->
@@ -1640,6 +1640,7 @@
     <package name="system-user-tss" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="systemd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="systemd-boot" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
+    <package name="systemd-container" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="systemd-default-settings" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="systemd-default-settings-branding-SLE" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
     <package name="systemd-default-settings-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->

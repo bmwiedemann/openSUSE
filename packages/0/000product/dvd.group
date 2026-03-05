@@ -3907,6 +3907,7 @@
     <package name="strace" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="sudo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="sudo-plugin-python" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="suse-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="suse-module-tools" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="suse-module-tools-scriptlets" supportstatus="unsupported"/> <!-- reason: dvd:suse-module-tools-scriptlets -->
     <package name="susepaste" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->

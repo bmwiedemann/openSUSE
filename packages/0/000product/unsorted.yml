@@ -616,6 +616,7 @@ unsorted:
   - ansible-core 
   - ansible-core-2.18 
   - ansible-core-2.19 
+  - ansible-creator 
   - ansible-documentation 
   - ansible-lint 
   - ansible-linux-system-roles 
@@ -12982,9 +12983,7 @@ unsorted:
   - libdv-devel 
   - libdv-playdv 
   - libdv4-32bit 
-  - libdvbpsi-0-devel 
   - libdvbpsi-devel 
-  - libdvbpsi7 
   - libdvbv5-0 
   - libdvbv5-0-32bit 
   - libdvbv5-devel 
@@ -18749,7 +18748,6 @@ unsorted:
   - mdbook-linkcheck 
   - mdbtools 
   - mdbtools-devel 
-  - mdds-2_1-devel 
   - mdds-devel 
   - meabo 
   - meanwhile-devel 
@@ -25737,7 +25735,6 @@ unsorted:
   - python311-ghp-import 
   - python311-girder-client 
   - python311-git-pw 
-  - python311-git-url-parse 
   - python311-gitdb 
   - python311-github3.py 
   - python311-gitlabcis 
@@ -28046,7 +28043,6 @@ unsorted:
   - python312-dbm 
   - python312-desktop-entry-lib 
   - python312-devel 
-  - python312-django-haystack 
   - python312-doc 
   - python312-doc-devhelp 
   - python312-gpt4all 
@@ -28065,7 +28061,6 @@ unsorted:
   - python312-pyHanko 
   - python312-pyroomacoustics 
   - python312-python-datamatrix 
-  - python312-tensorpac 
   - python312-testsuite 
   - python312-tk 
   - python312-tools 
@@ -29610,7 +29605,6 @@ unsorted:
   - python313-ghp-import 
   - python313-girder-client 
   - python313-git-pw 
-  - python313-git-url-parse 
   - python313-gitdb 
   - python313-github3.py 
   - python313-gitlabcis 
@@ -34592,7 +34586,6 @@ unsorted:
   - sypper 
   - sysbench 
   - sysctl-logger 
-  - sysextmgr 
   - sysextmgr-tukit-plugin 
   - sysfsutils 
   - sysfsutils-devel 
@@ -45089,6 +45082,7 @@ unsorted:
   - typelib-1_0-GstAnalytics-1_0 
   - typelib-1_0-GstApp-1_0 
   - typelib-1_0-GstBadAudio-1_0 
+  - typelib-1_0-GstCodecParsers-1_0 
   - typelib-1_0-GstCodecs-1_0 
   - typelib-1_0-GstCuda-1_0 
   - typelib-1_0-GstDxva-1_0 
