@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Mar 03 05:59:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.55.0:
+  * chore: enable snapcraft release (#1320)
+  * feat(ske): split options to own subcommands (#1313)
+  * chore(deps): bump github.com/stackitcloud/stackit-sdk-go/core
+    (#1318)
+  * chore(deps): bump k8s.io/apimachinery from 0.35.1 to 0.35.2
+    (#1319)
+  * feat(iaas): show image status on image describe (#1317)
+  * fix(config) export profile: write default cfg to exportPath
+    when cfg does not exist (#1316)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/observability
+    from 0.16.3 to 0.17.0 (#1305)
+  * fix(run-command): prevent nil pointer dereference on missing
+    params flag (#1306)
+  * feat(resourcemanager): List and describe organizations (#1312)
+  * feat: Document scoop as installation option for Windows (#1311)
+  * chore(deps): bump goreleaser/goreleaser-action from 6 to 7
+    (#1310)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/sfs (#1309)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/loadbalancer
+    (#1308)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/alb (#1307)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serviceaccount
+    (#1304)
+  * chore(deps): bump k8s.io/client-go from 0.34.2 to 0.35.1
+    (#1303)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/cdn (#1301)
+  * chore(deps): bump golang.org/x/term from 0.39.0 to 0.40.0
+    (#1300)
+  * chore(deps): bump golang.org/x/text from 0.33.0 to 0.34.0
+    (#1299)
+  * chore(deps): bump golang.org/x/mod from 0.32.0 to 0.33.0
+    (#1298)
+  * chore: disable temporary snapcraft release (#1302)
+  * chore(deps): bump k8s.io/apimachinery from 0.34.2 to 0.35.1
+    (#1281)
+
+-------------------------------------------------------------------
 Wed Feb 18 08:05:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.54.1:

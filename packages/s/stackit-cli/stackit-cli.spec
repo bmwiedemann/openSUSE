@@ -19,7 +19,7 @@
 %define executable_name stackit
 
 Name:           stackit-cli
-Version:        0.54.1
+Version:        0.55.0
 Release:        0
 Summary:        A command-line interface to manage STACKIT resources
 License:        Apache-2.0
@@ -29,8 +29,8 @@ Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  dos2unix
 BuildRequires:  fish
-BuildRequires:  go >= 1.24
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.25
 Provides:       stackit = %{version}
 
 %description
