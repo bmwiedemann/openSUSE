@@ -27,6 +27,7 @@ Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
 Source0:        gstreamer-vaapi-%{version}.tar.zst
 Patch0:         gstreamer-vaapi-1.28-build-fix.patch
+Patch1:         gstreamer-vaapi-1.28.1.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  Mesa-libGLESv3-devel
@@ -70,7 +71,10 @@ VA-API.
 %if %{?pkg_vcmp:%{pkg_vcmp gstreamer >= 1.28.0}}
 %patch -P 0 -p1
 %endif
-%autopatch -m 1 -p1
+%if %{?pkg_vcmp:%{pkg_vcmp gstreamer-plugins-bad >= 1.28.1}}
+%patch -P 1 -p1
+%endif
+%autopatch -m 2 -p1
 
 %build
 %meson \

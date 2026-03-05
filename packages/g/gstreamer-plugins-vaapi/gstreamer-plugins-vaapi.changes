@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  4 11:42:26 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with gstreamer-plugins-bad 1.28.1:
+  + Add conditional gstreamer-vaapi-1.28.1.patch
+
+-------------------------------------------------------------------
 Wed Feb 11 11:27:11 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Fix build with gstreamer 1.28:
