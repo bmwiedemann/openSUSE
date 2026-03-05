@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Thu Feb 26 08:56:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.1:
+  + Fix scaling and resizing with UIView on EAGL and Vulkan
+  + GstPlay: fix segmentation fault due to use after free
+  + ajasink: Only allow 6 / 8 / 16 audio channels
+  + ajasinkcombiner: Only forward the segment events from the video
+    sinkpad
+  + analytics: Fix dims_order handling
+  + asiosink: Fill silence when paused
+  + asio: asiosink can not handle pause event properly and
+    generates noise when paused
+  + audiobuffersplit: Various smaller fixes and implement handling
+    of negative rates correctly
+  + audiobuffersplit: fix reverse playback
+  + ccconverter: Reset counters on flush-stop
+  + cea608mux: fix overflow when calculating output PTS
+  + codecs: v4l2: Add short and long term ref sets support in v4l2
+    codecs
+  + codectimestamper: Fix latency query handling
+  + cudaupload, cudadownload: Fix CUDA/GL interop copy path
+  + decklink: Explicitly use cpp_std=c++11 for decklink
+  + dvbsuboverlay: Add missing bounds checks to the parser
+    everywhere
+  + h264,h265ccextractor: Fix framerate in initial caps
+  + h265parser: Validate num_decoding_units_minus1 in pic_timing
+    SEI
+  + h266parser: Fix APS ID bounds check in APS parsing
+  + h266parser: Fix out of bounds write when parsing pic_timing SEI
+  + h266parser: Validate tile index bounds in picture partition
+    parsing
+  + jpegparser: boundary checks before copying it
+  + mpeghdec: memory leak fix in MPEG-H Audio decoder plugin
+  + mpegtspacketizer: Handle clock change/resets without skew
+    correction
+  + mxfdemux: always send a segment before sending eos or
+    segment-done
+  + mxfdemux: fix gst_mxf_demux_pad_get_stream_time ()
+  + objectdetectionoverlay: add support for rotated bounding boxes
+  + openh264enc: remove broken drain and simplify handle_frame
+  + tsdemux: Fix Continuity Counter handling
+  + tsmux: reduce noise for DEBUG log level
+  + v4l2: Add support for AV1 stateful V4l2 decoder
+  + vabasetransform: copy buffer's metadata at copy when import
+    buffer
+  + vavp8enc: set color format chroma
+  + vkav1dec: fix to set SavedOrderHints properly
+  + vtdec: Avoid busy looping when queue length is smaller than DPB
+    size
+  + vtdec: Don't re-create session if only the framerate changed
+  + vtdec: Fix CM memory leak due to incorrect unref
+  + vtdec: Fix race condition when negotiating during playback
+  + vtdec: Reverse playback fixes
+  + vtdec: Seeking to a frame with a simple pipeline causes a hang
+    for some (ProRes only?, MOV-only?) videos in macOS (arm64,
+    x86_64)
+  + vtdec: Fix wrong DPB size check in the output loop
+  + vtenc: Fix DTS offset calculation
+  + vulkan: load video function pointers conditionally based on
+    codec operation
+  + wayland: Fix CLAMP operation of maxFALL and maxCLL
+  + waylandsink: make gst_wl_window_commit_buffer handle NULL
+    buffers
+  + webrtc: sink floating refs of ICE transports
+  + webrtcbin: Check the presence of encoding-name fields in answer
+    caps
+  + zxing: Fix version check for zxing-cpp 3.0.1
+  + Fix a couple of new const-ness warnings around strstr() usage,
+    out-of-bounds read in PTP clock and uninitialized variable
+    compiler warning
+  + meson: Add a subproject for providing the LunarG MoltenVK SDK
+  + meson: Fix libxml2 not building due to wrong option type
+  + Minimal support for compiling with zxing-cpp 3.x
+  + Various element factory metadata fixes
+  + gst-plugins-bad is incompatible with zxing-cpp 3.0.0+
+- Add new typelib-1_0-GstCodecParsers-1_0 sub-package.
+
+-------------------------------------------------------------------
 Thu Feb 12 07:26:10 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Also build libgsthip-1_0-0 as biarch -32bit library.

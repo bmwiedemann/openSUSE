@@ -81,7 +81,7 @@
 %endif
 
 Name:           gstreamer-plugins-bad
-Version:        1.28.0
+Version:        1.28.1
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -565,6 +565,7 @@ Requires:       libgstwebrtcnice-1_0-0 = %{version}
 Requires:       typelib-1_0-CudaGst-1_0 = %{version}
 Requires:       typelib-1_0-GstAnalytics-1_0 = %{version}
 Requires:       typelib-1_0-GstBadAudio-1_0 = %{version}
+Requires:       typelib-1_0-GstCodecParsers-1_0 = %{version}
 Requires:       typelib-1_0-GstCodecs-1_0 = %{version}
 Requires:       typelib-1_0-GstCuda-1_0 = %{version}
 Requires:       typelib-1_0-GstDxva-1_0 = %{version}
@@ -819,6 +820,17 @@ Group:          System/Libraries
 
 %description -n typelib-1_0-GstTranscoder-1_0
 This subpackage contains the introspection bindings for the GStreamer Transcoding API.
+
+%package -n typelib-1_0-GstCodecParsers-1_0
+Summary:        Introspection bindings for GStreamer Streaming-Media Framework Plug-Ins
+Group:          System/Libraries
+
+%description -n typelib-1_0-GstCodecParsers-1_0
+GStreamer is a streaming media framework based on graphs of filters
+that operate on media data. Applications using this library can do
+anything media-related, from real-time sound processing to playing
+videos. Its plug-in-based architecture means that new data types or
+processing capabilities can be added simply by installing new plug-ins.
 
 %package -n gstreamer-transcoder-devel
 Summary:        Development files for the GStreamer Transcoding API
@@ -1304,8 +1316,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n typelib-1_0-GstHipGL-1_0
 %{_libdir}/girepository-1.0/GstHipGL-1.0.typelib
 
+%files -n typelib-1_0-GstCodecParsers-1_0
+%{_libdir}/girepository-1.0/GstCodecParsers-1.0.typelib
+
 %files devel
-%doc NEWS README.md RELEASE
 %{_includedir}/gstreamer-%{gst_branch}
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/gstreamer-analytics-%{gst_branch}.pc
