@@ -22,7 +22,7 @@
 %endif
 
 Name:           mdadm
-Version:        4.5+43.gdc69a22f
+Version:        4.5+44.gf732de3f
 Release:        0
 BuildRequires:  binutils-devel
 BuildRequires:  groff
@@ -72,7 +72,6 @@ sgml2txt Software-RAID.HOWTO.sgml
 rm -rf %{buildroot}/lib/udev
 install -d %{buildroot}%{_fillupdir}
 install -d %{buildroot}/usr/share/mdadm
-install -m 755 misc/mdcheck %{buildroot}/usr/share/mdadm/mdcheck
 install -m 644 %{S:2} %{buildroot}%{_fillupdir}/
 install -d %{buildroot}%{_systemdshutdowndir}
 install -d %{buildroot}%{_sbindir}

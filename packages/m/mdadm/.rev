@@ -1716,4 +1716,16 @@ which haven't landed upstream yet
   * imsm: Fix UEFI backward compatibility for RAID10D4 (bsc#1257009)</comment>
     <requestid>1334563</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>c8da1fa1a40984a3a767de791872a79b</srcmd5>
+    <version>4.5+44.gf732de3f</version>
+    <time>1772727231</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.5+44.gf732de3f:
+  * avoid mdcheck_continue.timer and mdcheck_start.timer
+    firing simultaneously (bsc#1243443, bsc#1259090)
+
+- Fix path of mdadm executable in mdcheck (bsc#1259088)</comment>
+    <requestid>1336546</requestid>
+  </revision>
 </revisionlist>

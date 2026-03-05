@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 04 15:39:38 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 4.5+44.gf732de3f:
+  * avoid mdcheck_continue.timer and mdcheck_start.timer
+    firing simultaneously (bsc#1243443, bsc#1259090)
+
+-------------------------------------------------------------------
+Mon Mar  2 22:19:20 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Fix path of mdadm executable in mdcheck (bsc#1259088)
+
+-------------------------------------------------------------------
 Mon Feb 23 16:49:21 UTC 2026 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 4.5+43.gdc69a22f:
