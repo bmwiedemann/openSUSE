@@ -1,7 +1,7 @@
 #
 # spec file for package python-pathvalidate
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pathvalidate
-Version:        3.2.3
+Version:        3.3.1
 Release:        0
 Summary:        Python library to sanitize/validate a string such as filenames
 License:        MIT
 URL:            https://github.com/thombashi/pathvalidate
 Source:         https://files.pythonhosted.org/packages/source/p/pathvalidate/pathvalidate-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 38.3.0}
+BuildRequires:  %{python_module setuptools >= 64}
 BuildRequires:  %{python_module setuptools_scm >= 8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -45,7 +45,7 @@ pathvalidate is a Python library to sanitize/validate a string such as
 filenames/file-paths/etc.
 
 %prep
-%setup -q -n pathvalidate-%{version}
+%autosetup -p1 -n pathvalidate-%{version}
 
 %build
 %pyproject_wheel

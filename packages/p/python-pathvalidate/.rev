@@ -125,4 +125,14 @@
 - Specify files and directories explicitly in %files.</comment>
     <requestid>1284621</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>65885c092af89a75dce2cff6a5a49291</srcmd5>
+    <version>3.3.1</version>
+    <time>1772728186</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.1
+  * Add value to the INVALID_LENGTH validation error
+  * Ensure that the invalids value of INVALID_CHARACTER is unique</comment>
+    <requestid>1336663</requestid>
+  </revision>
 </revisionlist>

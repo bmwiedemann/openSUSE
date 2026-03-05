@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  3 17:02:59 UTC 2026 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 3.3.1
+  * Add value to the INVALID_LENGTH validation error
+  * Ensure that the invalids value of INVALID_CHARACTER is unique
+
+-------------------------------------------------------------------
 Wed Jun 11 05:50:32 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
