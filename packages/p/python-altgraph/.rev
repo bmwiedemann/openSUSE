@@ -90,4 +90,14 @@
     <comment></comment>
     <requestid>1277184</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9b3c45b02a10226860da464b7c8e4468</srcmd5>
+    <version>0.17.5</version>
+    <time>1772727317</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.17.5:
+  * Update classifiers for Python 3.13 and 3.14
+  * Drop dependency on &quot;pkg_resources&quot;</comment>
+    <requestid>1336603</requestid>
+  </revision>
 </revisionlist>
