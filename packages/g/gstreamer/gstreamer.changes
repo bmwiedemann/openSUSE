@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Thu Feb 26 08:48:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.1:
+  + Highlighted bugfixes in 1.28.1:
+    - Various security fixes and playback fixes
+    - Add new whisper-based speech-to-text transcription element
+    - Add new debugseimetainserter plugin for testing SEI meta
+      insertion
+    - Fix scaling and resizing with UIView on EAGL and Vulkan
+    - Reverse playback and gap handling fixes in various components
+    - avviddec: Handle field/order changes in mixed interlace mode
+    - awstranscriber2: workaround for suspected Rust SDK regression
+    - cudaupload, cudadownload: Fix CUDA/GL interop copy path
+    - decodebin3: Fix switch to smaller collections and improve
+      collection change on existing pad
+    - devenv: Add a subproject for providing the LunarG MoltenVK
+      SDK
+    - livesync: fixes and reverse playback handling; ignore
+      upstream latency when upstream is not live
+    - objectdetectionoverlay: add support for rotated bounding
+      boxes
+    - qml6glsrc: Fix rendering of scene with clipped items
+    - speechmatics: allow configuring audio events such as
+      detecting applause, laughter and music
+    - livekit webrtc: emit session-requested only for Producer role
+    - tsdemux: Fix Continuity Counter handling and handle clock
+      change/resets without skew correction
+    - v4l2: Add support for AV1 stateful V4l2 decoder
+    - vpxdec: Support downstream pools with alignment requirements
+    - vtdec, vtenc: Lots of Apple VideoToolbox decoder and encoder
+      fixes
+    - applemedia build improvements, patches for tvOS support, tvos
+      cross file
+    - wavpack: Fix handling of format changes, extend parser with
+      new features, handle non-S32 samples
+    - webrtcsink: allow specifying custom headers to signalling
+      server
+    - webrtcsink: negotiate profile and level for input encoded in
+      H.264
+    - webrtcsrc: add request type pads and allow sending encoded
+      data downstream
+    - cerbero: wheel: Add a new gstreamer_meta package with fewer
+      deps
+    - Various bug fixes, build fixes, memory leak fixes, and other
+      stability and reliability improvements
+  + gstreamer:
+    - aggregator: Handle gap event before segment
+    - aggregator: Various introspection annotations / docs fixes
+      for vfuncs
+    - basesink: Race condition when pausing can cause render() to
+      not block on prerolling but process buffers like in PLAYING
+      state
+    - bitwriter: Steal owned data in reset_and_get_data()
+    - caps: Fix the features leak in gst_caps_append_structure_full
+    - filesink: Report write error correctly on Windows
+    - gst: Add explanatory comment to call_async implementation
+    - input-selector: fix several shortcomings
+    - multiqueue: reverse playback: use segment stop position as
+      start time
+    - registry: Skip .dSYM bundles when loading plugins, try 2
+    - typefindfunctions: Promote y4m_typefind
+    - gst-stats: Also allow ANSI colored logs without 0x in front
+      of the thread id
+    - Fix a couple of new const-ness warnings around strstr()
+      usage, out-of-bounds read in PTP clock and uninitialized
+      variable compiler warning
+
+-------------------------------------------------------------------
 Fri Jan 30 08:02:50 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.0:

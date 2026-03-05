@@ -19,7 +19,7 @@
 %define gst_branch 1.0
 
 Name:           gstreamer
-Version:        1.28.0
+Version:        1.28.1
 Release:        0
 Summary:        Streaming-Media Framework Runtime
 License:        LGPL-2.1-or-later
@@ -220,7 +220,6 @@ install -m755 -D %{SOURCE2} %{buildroot}%{_rpmconfigdir}/gstreamer-provides
 %{_mandir}/man?/*-%{gst_branch}*%{ext_man}
 
 %files devel
-%doc README.md
 %{_datadir}/aclocal/*.m4
 # Own these directories to avoid build requirement on gdb
 # only for directories ownership
