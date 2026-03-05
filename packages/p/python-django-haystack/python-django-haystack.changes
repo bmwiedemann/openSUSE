@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  5 03:41:14 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pytest macro.
+- List directories explicitly under %files.
+- Skip a broken test.
+
+-------------------------------------------------------------------
 Fri Jul 19 13:00:55 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.3.0

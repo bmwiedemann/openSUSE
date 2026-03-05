@@ -104,4 +104,14 @@
     <comment></comment>
     <requestid>1188824</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>2b5873277bfd2f67084f81bc68d8a486</srcmd5>
+    <version>3.3.0</version>
+    <time>1772727326</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pytest macro.
+- List directories explicitly under %files.
+- Skip a broken test.</comment>
+    <requestid>1336629</requestid>
+  </revision>
 </revisionlist>

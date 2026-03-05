@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-haystack
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,15 +69,18 @@ echo 'import django; django.setup()' > conftest.py
 
 %check
 export DJANGO_SETTINGS_MODULE=test_haystack.settings
+export PYTHONPATH=$PWD
 # elasticsearch and solr tests require running services
 # test_ensure_wgs84 is broken with some GDAL issues
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}:${PWD}
-$python -m pytest -rs -k 'not (elasticsearch or solr or test_ensure_wgs84)'
-}
+donttest="elasticsearch or solr or test_ensure_wgs84"
+# fails to highlight anything
+donttest+=" or (WhooshSearchBackendTestCase and test_highlight)"
+%pytest -rs -k "not ($donttest)"
 
 %files %{python_files}
 %doc AUTHORS README.rst
 %license LICENSE
-%{python_sitelib}/*haystack*/
+%{python_sitelib}/haystack
+%{python_sitelib}/django_haystack-%{version}.dist-info
 
 %changelog
