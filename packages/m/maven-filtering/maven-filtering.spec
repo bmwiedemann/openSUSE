@@ -1,7 +1,7 @@
 #
 # spec file for package maven-filtering
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maven-filtering
-Version:        3.4.0
+Version:        3.5.0
 Release:        0
 Summary:        Shared component providing resource filtering
 License:        Apache-2.0
@@ -58,8 +58,6 @@ This package contains the API documentation for %{name}.
 cp %{SOURCE1} build.xml
 
 %pom_xpath_remove pom:project/pom:parent/pom:relativePath
-
-%pom_remove_dep :plexus-xml
 
 %build
 mkdir -p lib

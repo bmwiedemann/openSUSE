@@ -88,4 +88,12 @@
     <comment>https://github.com/apache/maven-filtering/issues/286</comment>
     <requestid>1310516</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d22ccb07909d179f6783042bae0899de</srcmd5>
+    <version>3.5.0</version>
+    <time>1772728248</time>
+    <user>anag_factory</user>
+    <comment>3.5.0</comment>
+    <requestid>1336714</requestid>
+  </revision>
 </revisionlist>
