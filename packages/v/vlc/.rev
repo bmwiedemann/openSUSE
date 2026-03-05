@@ -1725,4 +1725,13 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     <comment></comment>
     <requestid>1333889</requestid>
   </revision>
+  <revision rev="165" vrev="6">
+    <srcmd5>daaf28b40681814167b496ed3f6a6569</srcmd5>
+    <version>3.0.23</version>
+    <time>1772727251</time>
+    <user>anag_factory</user>
+    <comment>- Obsolete vlc-vdpau by the -noX package when building without vlc
+  support.</comment>
+    <requestid>1336300</requestid>
+  </revision>
 </revisionlist>

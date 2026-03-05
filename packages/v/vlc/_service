@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://code.videolan.org/videolan/vlc.git</param>
-    <param name="revision">3.0.x</param>
+    <param name="revision">3.0.23-2</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v?([^+-]*)(-rc\d+)?(-[12])?(\+0)?(\+\d+)?</param>
     <param name="versionrewrite-replacement">\1\5</param>

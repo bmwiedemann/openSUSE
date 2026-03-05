@@ -281,6 +281,9 @@ Requires:       libvlccore%{libvlccore} = %{version}-%{release}
 Recommends:     %{name}-codecs
 Recommends:     libdvdcss
 Conflicts:      %{conflicts}-noX
+%if %{without vdpau}
+Obsoletes:      %{name}-vdpau < %{version}-%{release}
+%endif
 # The lang-package was renamed to vlc-lang to assist AppStream building
 Obsoletes:      %{name}-noX-lang
 

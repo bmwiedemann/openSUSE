@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  4 09:09:48 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Obsolete vlc-vdpau by the -noX package when building without vlc
+  support.
+
+-------------------------------------------------------------------
 Wed Feb 18 18:57:02 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Add libupnp-1.18.patch
