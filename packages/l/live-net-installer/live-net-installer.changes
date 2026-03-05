@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  5 01:34:58 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Make possible to translate installation and upgrade desktop files
+  using translate-suse-desktop (boo#1118859).
+
+-------------------------------------------------------------------
 Fri Jan 16 19:38:00 UTC 2026 - Martin Wilck <mwilck@suse.com>
 
 - Remove dependency on dmraid.

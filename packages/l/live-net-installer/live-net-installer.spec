@@ -1,7 +1,7 @@
 #
 # spec file for package live-net-installer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,11 +33,12 @@ License:        BSD-3-Clause
 Group:          System/YaST
 URL:            https://build.opensuse.org/package/show/openSUSE:Factory:Live/live-net-installer
 Source1:        start-install.sh
-Source2:        installation.desktop
+Source2:        installation.desktop.in
 Source3:        COPYING
 Source4:        extend
-Source5:        upgrade.desktop
+Source5:        upgrade.desktop.in
 BuildRequires:  coreutils
+BuildRequires:  translate-suse-desktop
 BuildRequires:  yast2-installation
 Requires:       util-linux
 Requires:       xdg-utils
@@ -66,7 +67,7 @@ running (live) system.
 
 %prep
 %setup -q -T -c
-cp %{SOURCE3} .
+cp %{SOURCE2} %{SOURCE3} %{SOURCE5} .
 
 URL=
 %if 0%{?is_opensuse}
@@ -91,11 +92,13 @@ fi
 sed -i"" "s=@URL@=${URL}=" %{SOURCE1}
 
 %build
+%translate_suse_desktop installation.desktop
+%translate_suse_desktop upgrade.desktop
 
 %install
 install -Dm 755 %{SOURCE1} %{buildroot}%{_sbindir}/start-install.sh
-install -Dm 644 %{SOURCE2} %{buildroot}%{_datadir}/applications/installation.desktop
-install -Dm 644 %{SOURCE5} %{buildroot}%{_datadir}/applications/upgrade.desktop
+install -Dm 644 installation.desktop %{buildroot}%{_datadir}/applications/installation.desktop
+install -Dm 644 upgrade.desktop %{buildroot}%{_datadir}/applications/upgrade.desktop
 # YaST hardcodes "/bin/extend". On usrmerged systems, we can install to /usr/bin/ anyway.
 %if 0%{?suse_version} > 1500
 install -Dm 755 %{SOURCE4} %{buildroot}%{_bindir}/extend
