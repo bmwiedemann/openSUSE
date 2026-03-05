@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar  5 10:24:21 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- fix the filelist
+
+-------------------------------------------------------------------
+Mon Mar  2 19:50:02 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- units 2.26:
+  * The currency update script units_cur now generates four
+    separate files so that failures to reach a server can be
+    independent.
+  * Crypto pricing is now fetched from coingecko by default, but
+    Packetizer is available as an alternative using the new -c
+    option. This change fixes problems connecting to Packetizer.
+  * Suppress repeated unit values in display of unit definitions
+    when the duplicate values have different white space.
+    (e.g., "10 m/s^2 = 10 m / s^2"
+
+-------------------------------------------------------------------
 Sun Jan 18 08:14:30 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - units 2.25:

@@ -353,4 +353,23 @@
     <comment>units 2.25 (forwarded request 1327909 from AndreasStieger)</comment>
     <requestid>1327997</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>cf2f19a442a9a824330f60335151de57</srcmd5>
+    <version>2.26</version>
+    <time>1772728252</time>
+    <user>anag_factory</user>
+    <comment>- fix the filelist
+
+- units 2.26:
+  * The currency update script units_cur now generates four
+    separate files so that failures to reach a server can be
+    independent.
+  * Crypto pricing is now fetched from coingecko by default, but
+    Packetizer is available as an alternative using the new -c
+    option. This change fixes problems connecting to Packetizer.
+  * Suppress repeated unit values in display of unit definitions
+    when the duplicate values have different white space.
+    (e.g., &quot;10 m/s^2 = 10 m / s^2&quot;</comment>
+    <requestid>1336726</requestid>
+  </revision>
 </revisionlist>

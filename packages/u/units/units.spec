@@ -19,7 +19,7 @@
 
 %bcond_without	units_cur
 Name:           units
-Version:        2.25
+Version:        2.26
 Release:        0
 Summary:        Conversion Utility
 License:        GPL-3.0-or-later
@@ -65,8 +65,7 @@ ln -fsv ../../..%{_sharedstatedir}/units/currency.units %{buildroot}%{_datadir}/
 %{_bindir}/units
 %{_datadir}/units
 %dir %{_localstatedir}/lib/units
-%{_localstatedir}/lib/units/currency.units
-%{_localstatedir}/lib/units/cpi.units
+%{_localstatedir}/lib/units/*.units
 %doc NEWS README
 %{_infodir}/units.info%{?ext_info}
 %{_mandir}/man1/units.1%{?ext_man}
