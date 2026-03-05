@@ -7,4 +7,15 @@
     <comment>Necessary for the Python packages attestation. Requires python-sigstore*.</comment>
     <requestid>1316574</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>427ccc54e706ae1af6f4baeee41ed351</srcmd5>
+    <version>0.0.29</version>
+    <time>1772728196</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.0.29:
+  * Support for verifying Google Cloud attestations has been
+    added to the CLI.
+  * The minimum Python version required is now `3.10`</comment>
+    <requestid>1336681</requestid>
+  </revision>
 </revisionlist>
