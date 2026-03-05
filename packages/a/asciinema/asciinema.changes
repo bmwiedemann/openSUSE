@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Mar  5 14:44:38 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 3.2.0:
+  * Improve querying for terminal theme and version
+  * Add support for playback from stdin
+  * Improve implementation of ALiS protocol
+  * Switch from full jitter to equal jitter when timing stream
+    reconnection attempts
+  * Add --description, --visibility, --audio-url options for the
+    stream and session commands
+  * Add --title, --description, --visibility, --audio-url options
+    for the upload command
+  * Fix key bindings parsing (regression from 2.x)
+  * Upgrade the embedded player to the latest version
+- includes changes from 3.1.0:
+  * fix reading of asciicasts v1 and v2 having null env values in
+    header
+  * enabled Link-Time Optimization (LTO) and codegen-units=1
+
+-------------------------------------------------------------------
 Sat Nov  1 14:08:15 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 3.0.1:
