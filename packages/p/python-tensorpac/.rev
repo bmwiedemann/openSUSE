@@ -60,4 +60,13 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1276027</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>1801b75055a9ee6a2c923607ac87a30b</srcmd5>
+    <version>1.1</version>
+    <time>1772727328</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-numpy-2.4.patch:
+  * Support numpy 2.4 changes.</comment>
+    <requestid>1336630</requestid>
+  </revision>
 </revisionlist>
