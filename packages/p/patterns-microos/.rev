@@ -1010,4 +1010,12 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <comment></comment>
     <requestid>1334538</requestid>
   </revision>
+  <revision rev="109" vrev="109">
+    <srcmd5>70c6f86672b5f832f0bb80798f6884ac</srcmd5>
+    <version>5.0</version>
+    <time>1772727156</time>
+    <user>anag_factory</user>
+    <comment>- Require sysextmgr instead of only the cli</comment>
+    <requestid>1336328</requestid>
+  </revision>
 </revisionlist>

@@ -127,7 +127,7 @@ Requires:       tpm2-0-tss
 Requires:       libtss2-tcti-device0
 Requires:       tpm2.0-tools
 # sysext image support
-Requires:       sysextmgrcli
+Requires:       sysextmgr
 #Requires:      sysextmgr-tukit-plugin
 Conflicts:      gettext-runtime-mini
 Conflicts:      krb5-mini
