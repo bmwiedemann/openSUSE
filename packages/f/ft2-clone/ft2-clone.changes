@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar  4 19:58:06 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.08
+  * Visuals->audio sync was partially broken since v1.52
+    (27.02.2022)! This was a minor issue anyway, as it wasn't that
+    easy to notice it.
+- Update to version 2.07
+  * When loading stereo MP3 samples, immediately ask which channel
+    to read instead of loading it first, then ask.
+  * Bug fix: Mouse cursor would accidentally be set from busy to
+    normal after deciding what to do when loading a stereo sample
+    (system request). This was wrong, it should be set to normal
+    after sample loading is done.
+  * When clicking on the program while it was not in focus, let
+    the mouse click be handled. Fixes having to click twice on a
+    system request dialog button when dropping a file onto the
+    program.
+
+-------------------------------------------------------------------
 Mon Mar  2 15:42:42 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.06
