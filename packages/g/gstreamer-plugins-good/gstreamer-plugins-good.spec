@@ -33,7 +33,7 @@
 %endif
 
 Name:           gstreamer-plugins-good
-Version:        1.28.0
+Version:        1.28.1
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -215,7 +215,6 @@ fi
 
 %files
 %license COPYING
-%doc README.md RELEASE NEWS
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/gstreamer-plugins-good.appdata.xml
 %{_datadir}/gstreamer-%{gst_branch}/presets/GstAmrnbEnc.prs
