@@ -457,4 +457,41 @@
   * replay subcommand must keep trace directory. (#4184) (forwarded request 1323714 from jfkw)</comment>
     <requestid>1323715</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>fac5524fcc2109e2d12a7a05b9cd2e49</srcmd5>
+    <version>1.26.1</version>
+    <time>1772727331</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.26.1:
+  * *: v1.26.1 (#4272)
+  * proc: Remove special-casing for 1.23 in tests (#4271)
+  * pkg/proc/debuginfod: fix debuginfod download progress (#4270)
+  * pkg/terminal/starbind: remove some duplicate code (#4262)
+  * service/dap: better error messages when we can't launch the debugger (#4264)
+  * proc: support debugging stripped non-Go binaries (#4263)
+  * Update README.md (#4265)
+  * service/api: remove variable formatting helper methods (#4259)
+  * deps: migrate from gopkg.in/yaml.v3 to go.yaml.in/yaml/v3 (#4257)
+  * pkg/debugdetect: add package for detecting debugger attachment (#4258)
+  * proc: fix sigpanics in swiss map iterator (#4261)
+  * terminal/starbind: add 'append_file&quot; built-in func (#4252)
+  * goversion: parse rc version with trailing suffix (e.g. go1.26rc1-X:nodwarf5) (#4255)
+  * proc: fix TestRangeOverFuncNext for go1.26 on arm64 (#4254)
+  * proc,service: detect and warn about trimpath (#4241)
+  * Documentation: document AI policy / add agent files (#4248)
+  * cmd/dlv: Add trace backend parity test and fix eBPF formatting (#4250)
+  * pkg/proc: fix ebpf uprobe placement to skip function prologue (#4249)
+  * service/debugger: better error if process is already being debugged (#4242)
+  * service/api: update waitReason switch for Go 1.27 (#4244)
+  * service/rpccommon: print error when we can't decode request body (#4247)
+  * service/dap: reject most requests before launch/attach (#4240)
+  * Propagate short type option when printing structs. (#4235)
+  * goversion: Fix ProducerAfterOrEqual comparison for devel builds (#4234)
+  * proc/internal/ebpf: fix goroutine leak and shutdown sequence for ebpf (#4231)
+  * *: downgrade riscv64 (#4232)
+  * service/dap: Add hit conditional breakpoint capability (#4230)
+  * lru: remove mutex from lru cache (#4226)
+  * proc: fix finding moduledata in 1.26+ (#4228) (forwarded request 1336631 from jfkw)</comment>
+    <requestid>1336632</requestid>
+  </revision>
 </revisionlist>
