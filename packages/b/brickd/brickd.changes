@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar  4 18:02:01 UTC 2026 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Fix source link
+
+-------------------------------------------------------------------
+Mon Mar  2 18:23:42 UTC 2026 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- New Version 2.4.9
+  - Fix crash on Raspberry Pi Compute Module 5
+  - Adapt to changed packaging for hwclock in Debian Trixie
+  New Version 2.4.8
+  - Add support for libgpiod3 package in Debian Trixie
+
+-------------------------------------------------------------------
 Tue Jul 30 19:07:27 UTC 2024 - Frank Kunz <mailinglists@kunz-im-inter.net>
 
 - New Version 2.4.7

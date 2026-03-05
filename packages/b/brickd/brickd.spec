@@ -1,7 +1,7 @@
 #
 # spec file for package brickd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019 Frank Kunz
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,15 +17,17 @@
 #
 
 
+%define daemonlib_version 2.4.7
+
 Name:           brickd
-Version:        2.4.7
+Version:        2.4.9
 Release:        0
 Summary:        Tinkerforce Brick Daemon
 License:        GPL-2.0-only
 Group:          System/Daemons
 URL:            https://www.tinkerforge.com
 Source0:        https://github.com/Tinkerforge/brickd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://github.com/Tinkerforge/daemonlib/archive/brickd-%{version}.tar.gz#/daemonlib-%{name}-%{version}.tar.gz
+Source1:        https://github.com/Tinkerforge/daemonlib/archive/brickd-%{daemonlib_version}.tar.gz#/daemonlib-%{name}-%{daemonlib_version}.tar.gz
 Source2:        brickd-rpmlintrc
 Patch0:         harden_brickd-resume.service.patch
 Patch1:         harden_brickd.service.patch
@@ -41,7 +43,7 @@ the TCP/IP socket connection to the language binding APIs.
 
 %prep
 %setup -q -a 1
-mv daemonlib-%{name}-%{version} src/daemonlib
+mv daemonlib-%{name}-%{daemonlib_version} src/daemonlib
 %autopatch -p1
 
 %build
@@ -73,7 +75,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-resume
 
 %files -n %{name}
 %doc src/changelog README.rst
-%{_bindir}/*
+%{_bindir}/%{name}
 %{_mandir}/man*/%{name}.*
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %config %{_sysconfdir}/logrotate.d/%{name}
