@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 03 05:42:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.11:
+  * Bug Fixes
+    - 1022e70: fix(go): update charm.land/bubbletea/v2 ( v2.0.0 →
+      v2.0.1 ) (@mr-borboto[bot])
+
+-------------------------------------------------------------------
 Mon Mar 02 06:28:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.10:
