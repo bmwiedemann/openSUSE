@@ -21,7 +21,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-gst
-Version:        1.28.0
+Version:        1.28.1
 Release:        0
 Summary:        Python Bindings for GStreamer
 License:        LGPL-2.1-or-later
@@ -79,7 +79,6 @@ written in Python.
 
 %files %{python_files}
 %license COPYING
-%doc NEWS README.md
 %dir %{python_sitearch}/gi
 %{python_sitearch}/gi/overrides/
 
