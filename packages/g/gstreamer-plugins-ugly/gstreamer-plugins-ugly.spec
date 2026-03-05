@@ -25,7 +25,7 @@
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 
 Name:           gstreamer-plugins-ugly
-Version:        1.28.0
+Version:        1.28.1
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -120,7 +120,6 @@ export PYTHON=%{_bindir}/python3
 
 %files
 %license COPYING
-%doc NEWS README.md RELEASE
 %{_libdir}/gstreamer-%{gst_branch}/libgsta52dec.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstasf.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstcdio.so

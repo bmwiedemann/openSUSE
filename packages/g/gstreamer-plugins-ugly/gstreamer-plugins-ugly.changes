@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 26 09:04:49 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.1:
+  + asfdemux: Error out on files with more than 32 streams
+  + rmdemux: Check if new video fragment overflows the fragment
+    storage before storing it
+
+-------------------------------------------------------------------
 Fri Jan 30 13:49:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.0:
