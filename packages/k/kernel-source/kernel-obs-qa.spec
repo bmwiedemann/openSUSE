@@ -25,7 +25,7 @@
 Name:           kernel-obs-qa
 Version:        6.19.5
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gababe9c
+Release:        <RELEASE>.g9c15967
 %else
 Release:        0
 %endif
@@ -36,7 +36,7 @@ BuildRequires:  kernel-default
 # kernel-obs-build must be also configured as VMinstall, but is required
 # here as well to avoid that qa and build package build parallel
 %if ! 0%{?qemu_user_space_build}
-BuildRequires:  kernel-obs-build-srchash-ababe9cc3addbb44aad4e84a72c9d3ac850aaa9e
+BuildRequires:  kernel-obs-build-srchash-9c1596772e0cd49f33c4372f03cbe6d96e5692e1
 %endif
 BuildRequires:  modutils
 ExclusiveArch:  aarch64 armv6hl armv7hl ppc64le riscv64 s390x x86_64

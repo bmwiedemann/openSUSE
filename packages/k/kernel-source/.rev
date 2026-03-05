@@ -7368,4 +7368,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>fixed KMPs &amp; 6.19.5 &amp; 6.19.4 &amp; other fixes &amp; drop virtualbox workaround; bugs: bsc#1012628 bsc#1258262 bsc#1258455 bsc#1259020</comment>
     <requestid>1335569</requestid>
   </revision>
+  <revision rev="827" vrev="2">
+    <srcmd5>579e9e43bc9a79b8ecf160286bb434a1</srcmd5>
+    <version>6.19.5</version>
+    <time>1772727194</time>
+    <user>anag_factory</user>
+    <comment>debugging patch for softlockups; bugs: bsc#1258936</comment>
+    <requestid>1335893</requestid>
+  </revision>
 </revisionlist>
