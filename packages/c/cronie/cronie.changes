@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 19 19:55:29 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Use systemd-tmpfiles to create files under /var. Set appropriate
+  permissions in %files list (jsc#PED-14737)
+
+-------------------------------------------------------------------
 Mon Mar 31 15:47:13 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add cronie-gcc15.patch to fix gcc15 compile time error

@@ -1,7 +1,7 @@
 #
 # spec file for package cronie
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,8 @@ Source4:        deny.sample
 Source7:        cron_to_cronie.README
 Source8:        cron.service
 Source9:        sysconfig.cron
+Source10:       tmpfiles.conf
+Source11:       tmpfiles-anacron.conf
 # PATCH-FIX-UPSTREAM
 Patch1:         cronie-gcc15.patch
 # PATCH-FEATURE-OPENSUSE cronie-pam_config.diff added pam config file from old cron
@@ -145,16 +147,14 @@ mkdir -p %{buildroot}%{_localstatedir}/spool/anacron
 mv %{buildroot}%{_sbindir}/crond %{buildroot}%{_sbindir}/cron
 mkdir -p %{buildroot}%{_fillupdir}
 cp %{SOURCE9} %{buildroot}%{_fillupdir}/
+install -D -m 644 %{SOURCE10} %{buildroot}%{_tmpfilesdir}/%{name}.conf
+install -D -m 644 %{SOURCE11} %{buildroot}%{_tmpfilesdir}/%{name}-anacron.conf
 
 mkdir -p %{buildroot}%{_sysconfdir}/cron.d
 mkdir -p %{buildroot}%{_sysconfdir}/cron.hourly
 mkdir -p %{buildroot}%{_sysconfdir}/cron.daily
 mkdir -p %{buildroot}%{_sysconfdir}/cron.weekly
 mkdir -p %{buildroot}%{_sysconfdir}/cron.monthly
-
-touch %{buildroot}%{_localstatedir}/spool/anacron/cron.daily
-touch %{buildroot}%{_localstatedir}/spool/anacron/cron.weekly
-touch %{buildroot}%{_localstatedir}/spool/anacron/cron.monthly
 
 %if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}%{_pam_vendordir}
@@ -194,9 +194,7 @@ done
 %service_del_postun cron.service
 
 %post anacron
-[ -e %{_localstatedir}/spool/anacron/cron.daily ] || touch %{_localstatedir}/spool/anacron/cron.daily
-[ -e %{_localstatedir}/spool/anacron/cron.weekly ] || touch %{_localstatedir}/spool/anacron/cron.weekly
-[ -e %{_localstatedir}/spool/anacron/cron.monthly ] || touch %{_localstatedir}/spool/anacron/cron.monthly
+%tmpfiles_create %{_tmpfilesdir}/%{name}-anacron.conf
 
 %verifyscript -n cron
 %verify_permissions -e %{_sysconfdir}/cron.d/
@@ -215,9 +213,9 @@ done
 %files
 %license COPYING
 %doc AUTHORS README ChangeLog
-%dir %attr(700,root,root) %{_localstatedir}/spool/cron
-%dir %attr(700,root,root) %{_localstatedir}/spool/cron/tabs
-%dir %{_localstatedir}/spool/cron/lastrun
+%ghost %dir %attr(700,root,root) %{_localstatedir}/spool/cron
+%ghost %dir %attr(700,root,root) %{_localstatedir}/spool/cron/tabs
+%ghost %dir %attr(755,root,root) %{_localstatedir}/spool/cron/lastrun
 %if 0%{?suse_version} > 1500
 %{_pam_vendordir}/crond
 %else
@@ -237,17 +235,19 @@ done
 %{_libexecdir}/cron
 %{_unitdir}/cron.service
 %{_fillupdir}/sysconfig.cron
+%{_tmpfilesdir}/%{name}.conf
 
 %files anacron
 %{_sbindir}/anacron
 %attr(0755,root,root) %{_sysconfdir}/cron.hourly/0anacron
 %config(noreplace) %{_sysconfdir}/anacrontab
-%dir %{_localstatedir}/spool/anacron
-%ghost %verify(not md5 size mtime) %{_localstatedir}/spool/anacron/cron.daily
-%ghost %verify(not md5 size mtime) %{_localstatedir}/spool/anacron/cron.weekly
-%ghost %verify(not md5 size mtime) %{_localstatedir}/spool/anacron/cron.monthly
+%ghost %dir %attr(0755,root,root) %{_localstatedir}/spool/anacron
+%ghost %attr(0644,root,root) %verify(not md5 size mtime) %{_localstatedir}/spool/anacron/cron.daily
+%ghost %attr(0644,root,root) %verify(not md5 size mtime) %{_localstatedir}/spool/anacron/cron.weekly
+%ghost %attr(0644,root,root) %verify(not md5 size mtime) %{_localstatedir}/spool/anacron/cron.monthly
 %{_mandir}/man5/anacrontab.5%{?ext_man}
 %{_mandir}/man8/anacron.8%{?ext_man}
+%{_tmpfilesdir}/%{name}-anacron.conf
 
 %files -n cron
 %doc cron_to_cronie.README
