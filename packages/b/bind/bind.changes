@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Mar  4 12:09:56 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.20.20
+  Security Fixes:
+  * Fix a use-after-free error in dns_client_resolve() triggered by
+    a DNAME response. This issue only affected the delv tool and it
+    has now been fixed.
+
+  Feature Changes:
+  * Record query time for all dnstap responses.
+  * Optimize TCP source port selection on Linux.
+
+  Bug Fixes:
+  * Fix an assertion failure triggered by non-minimal IXFRs.
+  * Fix a crash when retrying a NOTIFY over TCP.
+  * Fetch loop detection improvements.
+  * Randomize nameserver selection.
+  * Fix dnstap logging of forwarded queries.
+  * A stale answer could have been served in case of multiple
+    upstream failures when following CNAME chains. This has been
+    fixed.
+  * Fail DNSKEY validation when supported but invalid DS is found.
+  * Importing an invalid SKR file might corrupt stack memory.
+  * Return FORMERR for queries with the EDNS Client Subnet FAMILY
+    field set to 0.
+  * Fix inbound IXFR performance regression.
+  * Make catalog zone names and member zones' entry names
+    case-insensitive.
+  * Fix implementation of BRID and HHIT record types.
+  * Fix implementation of DSYNC record type.
+  * Fix response policy and catalog zones to work with $INCLUDE
+    directive.
+
+-------------------------------------------------------------------
 Wed Jan 28 13:10:09 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Move default config files 127.0.0.zone, localhost.zone and
