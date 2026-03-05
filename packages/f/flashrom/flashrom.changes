@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 03 09:03:56 UTC 2026 - trenn@suse.com
+
+- Introduce _service file for easy version updates via:
+  osc service manualrun
+- Update to version v1.7.0+git0.26b070db:
+  * VERSION: Update version to v1.7.0
+  * doc: Release notes for v1.7.0
+  * flashchips: Fix typo in W77T128NW chip name
+  * VERSION: Update version to v1.7.0-rc2
+  * fmap: Fix progress bar to work together with --fmap* options
+  * VERSION: Update version to v1.7.0-rc1
+  * tests/probe_spi: Add test for probe_spi_res1 function
+  * tests/probe_spi: Add more detailed tests for probing operation
+  * platform/endian: Rename memaccess file to be more consistent
+  * dmi.h: Extract DMI declarations to a separate header
+  * meson: Add a static versioning option
+  * include/platform.h: Add documentation
+
+-------------------------------------------------------------------
 Wed Jun  4 13:59:53 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Fix build error for Leap 16.0

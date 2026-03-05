@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://review.coreboot.org/flashrom.git</param>
+              <param name="changesrevision">26b070db4bf7915ef2c28ca753bbdd4a3b595c89</param></service></servicedata>

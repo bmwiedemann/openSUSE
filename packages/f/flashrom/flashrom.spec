@@ -1,7 +1,7 @@
 #
 # spec file for package flashrom
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           flashrom
-Version:        1.5.1
+Version:        v1.7.0+git0.26b070db
 Release:        0
 Summary:        A universal flash programming utility
 License:        GPL-2.0-only
 Group:          Development/Tools/Other
 URL:            https://www.flashrom.org/
-Source0:        https://download.flashrom.org/releases/%{name}-v%{version}.tar.xz
-Source1:        https://download.flashrom.org/releases/%{name}-v%{version}.tar.xz.asc
-Source2:        %{name}.keyring
+Source0:        %{name}-%{version}.tar.xz
+BuildRequires:  git
 BuildRequires:  meson >= 0.56.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cmocka)
@@ -84,7 +83,7 @@ cards (NICs), SATA controller cards, and other external devices which can
 program flash chips.
 
 %prep
-%autosetup -p1 -n %{name}-v%{version}
+%autosetup -p1
 
 %package devel
 Summary:        A universal flash programming utility
@@ -102,7 +101,7 @@ This package contains the headers needed to compile against libflashrom.
 
 %build
 %meson \
-    -Dtests=disabled
+    -Dtests=disabled -Dgenerate_authors_list=disabled
 %meson_build
 
 %install
@@ -114,7 +113,7 @@ rm %{buildroot}%{_datadir}/doc/%{name}/html/.buildinfo
 %postun -n libflashrom1 -p /sbin/ldconfig
 
 %files
-%license COPYING
+%license COPYING.rst
 %doc README.rst
 %{_sbindir}/flashrom
 %{_mandir}/man8/flashrom.8%{ext_man}
