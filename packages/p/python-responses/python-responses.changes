@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  3 23:26:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.26.0:
+  * When using `assert_all_requests_are_fired=True`, assertions
+    about unfired requests are now raised even when an exception
+    occurs in the context manager or decorated function.
+    Previously, these assertions were suppressed when exceptions
+    occurred.
+  * Consider the `Retry-After` header when handling retries
+
+-------------------------------------------------------------------
 Tue Sep 23 10:15:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.25.8

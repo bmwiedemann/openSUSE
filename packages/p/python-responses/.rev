@@ -454,4 +454,18 @@
     <comment></comment>
     <requestid>1306749</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>553037bb6cbc0cda19a9f18ee2feff14</srcmd5>
+    <version>0.26.0</version>
+    <time>1772727243</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.26.0:
+  * When using `assert_all_requests_are_fired=True`, assertions
+    about unfired requests are now raised even when an exception
+    occurs in the context manager or decorated function.
+    Previously, these assertions were suppressed when exceptions
+    occurred.
+  * Consider the `Retry-After` header when handling retries</comment>
+    <requestid>1336245</requestid>
+  </revision>
 </revisionlist>
