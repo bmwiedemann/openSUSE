@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Mar  5 08:24:13 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.4.1:
+
+  * fix: configure kubedog rate limiter to prevent context
+    cancellation by @yxxhero in #2446
+  * fix: pass --kubeconfig to chartify's helm template call by
+    @yxxhero in #2449
+
+- Update to version 1.4.0:
+  * feat: kubedog integration with unified resource handling by
+    @yxxhero in #2383
+  * feat: add helmfile agent skill for skills.sh by @yxxhero
+    in #2441
+  * feat: Add IP Network to supported HCL Functions by
+    @oleh-neichev in #2426
+  * fix: use absolute baseDir in sequential helmfiles for correct
+    values path resolution by @aditmeno in #2425
+  * fix: local chart with external dependencies error when repos
+    configured by @yxxhero in #2433
+  * build: update helm-diff to v3.15.1 by @yxxhero in #2442
+  * build(deps): bump github.com/cloudflare/circl from 1.6.1 to
+    1.6.3 by @dependabotbot in #2427
+  * build(deps): bump github.com/helmfile/vals from 0.43.5 to
+    0.43.6 by @dependabotbot in #2432
+  * build(deps): bump k8s.io/apimachinery from 0.35.1 to 0.35.2
+    by @dependabotbot in #2438
+  * build(deps): bump k8s.io/client-go from 0.35.1 to 0.35.2 by
+    @dependabotbot in #2437
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.96.1 to 1.96.2 by @dependabotbot in #2436
+  * build(deps): bump go.opentelemetry.io/otel/sdk from 1.39.0 to
+    1.40.0 by @dependabotbot in #2440
+  * build(deps): bump actions/download-artifact from 7 to 8 by
+    @dependabotbot in #2435
+  * build(deps): bump actions/upload-artifact from 6 to 7 by
+    @dependabotbot in #2434
+
+-------------------------------------------------------------------
 Wed Feb 25 07:02:41 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.3.2:
