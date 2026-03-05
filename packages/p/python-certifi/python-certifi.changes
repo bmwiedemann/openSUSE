@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  3 14:12:07 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2026.2.25
+  * Bump actions/setup-python from 6.1.0 to 6.2.0
+  * Bump actions/checkout from 6.0.1 to 6.0.2
+  * Bump peter-evans/create-pull-request from 8.0.0 to 8.1.0
+
+-------------------------------------------------------------------
 Thu Feb 19 09:16:51 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2026.1.4
