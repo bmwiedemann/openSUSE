@@ -98,6 +98,12 @@ Patch34:        libsoup2-CVE-2026-2443.patch
 Patch35:        libsoup2-CVE-2026-2369.patch
 # PATCH-FIX-UPSTREAM libsoup2-CVE-2026-2708.patch bsc#1258508 mgorse@suse.com -- do not allow adding multiple content length values to headers.
 Patch36:        libsoup2-CVE-2026-2708.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2026-1760.patch bsc#1257597, CVE-2026-1760, glgo#GNOME/libsoup!475 sckang@suse.com -- server: close the connection after responsing a request containing...
+Patch37:        libsoup-CVE-2026-1760.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2026-1467.patch bsc#1257398, CVE-2026-1467, glgo#GNOME/libsoup!498 sckang@suse.com -- uri-utils: do host validation when checking if a GUri is valid
+Patch38:        libsoup-CVE-2026-1467.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2026-1539.patch bsc#1257441, CVE-2026-1539, glgo#GNOME/libsoup#489 sckang@suse.com -- Also remove Proxy-Authorization header on cross origin redirect
+Patch39:        libsoup-CVE-2026-1539.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.50

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 25 02:47:08 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add libsoup-CVE-2026-1760.patch: server: close the connection
+  after responsing a request containing...
+  (bsc#1257597, CVE-2026-1760, glgo#GNOME/libsoup#475).
+- Add libsoup-CVE-2026-1467.patch: uri-utils: do host validation
+  when checking if a GUri is valid 
+  (bsc#1257398, CVE-2026-1467, glgo#GNOME/libsoup#488).
+- Add libsoup-CVE-2026-1539.patch: Also remove Proxy-Authorization
+  header on cross origin redirect
+  (bsc#1257441, CVE-2026-1539, glgo#GNOME/libsoup#489).
+
+-------------------------------------------------------------------
 Thu Feb 19 23:08:22 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Add libsoup2-CVE-2026-2708.patch: do not allow adding multiple
