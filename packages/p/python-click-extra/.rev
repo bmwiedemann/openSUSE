@@ -150,4 +150,22 @@ update to 6.1.0</comment>
     <comment></comment>
     <requestid>1335820</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fbc305d706d552ac575735ec07aa27b9</srcmd5>
+    <version>7.6.4</version>
+    <time>1772727301</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.6.4:
+  * Fix `ExtraVersionOption.cli_frame()` crashing in Nuitka-
+    compiled binaries where all stack frames belong to the Click
+    ecosystem.
+  * Fix `ExtraVersionOption.module_version` returning `None` in
+    `__main__` entry points by checking the parent package's
+    `__version__`.
+  * Fix test plan for Nuitka-compiled binary.
+  * Add `@pytest.mark.once` marker for platform-independent
+    structural tests. Run them in a single CI job instead of
+    across the full matrix.</comment>
+    <requestid>1336598</requestid>
+  </revision>
 </revisionlist>
