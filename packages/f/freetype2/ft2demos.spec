@@ -1,7 +1,7 @@
 #
 # spec file for package ft2demos
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%global freetype_version 2.14.1
+%global freetype_version 2.14.2
 Name:           ft2demos
-Version:        2.14.1
+Version:        2.14.2
 Release:        0
 Summary:        Freetype2 Utilities and Demo Programs
 License:        GPL-2.0-or-later
@@ -36,16 +36,12 @@ Source1015:     bug-641580_CVE-2010-3311.cff
 Source1016:     bug-647375_tt2.ttf
 # silence our clamav check
 NoSource:       1000
-# PATCH-FIX-UPSTREAM overflow.patch -- I: Statement is overflowing a buffer
-Patch201:       overflow.patch
 # PATCH-FIX-OPENSUSE don-t-mark-libpng-as-required-library.patch -- it is private in .pc
 Patch202:       don-t-mark-libpng-as-required-library.patch
 Patch308961:    bugzilla-308961-cmex-workaround.patch
 BuildRequires:  cmake
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libbrotlidec)
@@ -64,8 +60,12 @@ Requires:       ftstring = %{version}-%{release}
 Requires:       ftvalid = %{version}-%{release}
 Requires:       ftview = %{version}-%{release}
 Conflicts:      dtc < 1.4.0
-%if 0%{?suse_version} == 1600 && ! 0%{?is_opensuse}
-ExclusiveArch:  donotbuild
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Widgets)
+%else
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Widgets)
 %endif
 
 %description
@@ -175,9 +175,6 @@ This tool is part of the FreeType project
 
 %setup -q -n freetype-%{freetype_version} -b 1
 %patch -P 308961 -p 1
-pushd ../ft2demos-%{version}
-%patch -P 201 -p1
-popd
 %patch -P 202 -p1
 
 %build
@@ -193,7 +190,12 @@ pushd ..
     %make_build
 
     cd src/ftinspect
-    %cmake
+    %cmake \
+%if 0%{?suse_version} >= 1600
+    -DUSE_QT_VERSION=6
+%else
+    -DUSE_QT_VERSION=5
+%endif
     %cmake_build
 popd
 

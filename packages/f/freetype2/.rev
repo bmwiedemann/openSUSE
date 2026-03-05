@@ -1137,4 +1137,12 @@
   * The BDF driver now loads fonts 75% faster.</comment>
     <requestid>1318307</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>4ea05ea051856856581e4a4b6bd9bf6e</srcmd5>
+    <version>2.14.2</version>
+    <time>1772727235</time>
+    <user>anag_factory</user>
+    <comment>bsc#1259118, CVE-2026-23865</comment>
+    <requestid>1336079</requestid>
+  </revision>
 </revisionlist>
