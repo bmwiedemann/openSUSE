@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Mar  4 21:58:12 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.9.5:
+  * Added support for XWayland client requests for always-on-top
+    and close
+  * Allow layer-shell surfaces on disabled outputs to fix a memory
+    leak in some clients (e.g. mako) when using wlopm --off
+- Version 0.9.4:
+  * Requires wayland >= 1.22.90
+  * Added theme option window.button.hover.bg.color
+  * Implement scrollable window-switcher OSD
+  * Support new NextWindow action options:
+    - workspace="current|all"
+    - output="all|focused|cursor"
+    - identifier="all|current"
+  * Add config option <desktops><initial> to set active workspace
+    on startup
+  * Increase max client buffer size to 1 MiB to better handle
+    high event rates
+  * Fix minor cursor position issues during interactive move/resize
+  * Flush X11 connection after focus/activate to mitigate XWayland
+    FocusOut race affecting some fullscreen apps
+  * Cancel interactive move/resize when window is minimized/unmapped
+  * Fix spurious focus change when window-switcher finishes
+  * Improve restoring view positions after output
+    disconnect/reconnect
+  * Avoid unnecessary restacking and repeated focus changes when
+    unminimizing windows
+  * Do not try to focus an already focused XWayland window
+    (fixes old Minecraft <=1.5.2)
+  * Halt window-switcher on reconfigure to avoid invalid
+    memory access
+  * Decouple always-on-top/bottom from omnipresent state
+  * Adjust layer-shell focus semantics to prevent unwanted focus
+    stealing and improve popup focus handling
+  * Unshade window if selected from client-list-combined-menu
+  * Show non-dialog child windows in window-switcher
+  * Deprecate <windowSwitcher allWorkspaces="yes|no"> in favor of
+    NextWindow workspace option
+
+-------------------------------------------------------------------
 Fri Dec 19 22:40:00 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.9.3:

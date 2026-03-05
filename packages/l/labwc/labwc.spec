@@ -1,7 +1,7 @@
 #
 # spec file for package labwc
 #
-# Copyright (c) 2025 mantarimay
+# Copyright (c) 2026 mantarimay
 # Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@
 %define slname  libsfdo
 %define slver   0.1.4
 Name:           labwc
-Version:        0.9.3
+Version:        0.9.5
 Release:        0
 Summary:        A Wayland window-stacking compositor
 License:        GPL-2.0-only
