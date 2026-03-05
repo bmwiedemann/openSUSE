@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 05 00:12:06 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1772663930.9a9bd7d:
+  * feat: add EXIT_AFTER_MODULE to stop after a specified module
+  * fix: Update gre_tunnel_preup script to support NetworkManager
+  * feat: Handle timeout when typing command in `background_script_run`
+  * feat: Allow opting-out of check when typing command in `script_run`
+  * feat: Handle timeout when typing command in `script_run`
+  * test: implement conventional commits check with gitlint
+
+-------------------------------------------------------------------
 Thu Feb 26 17:45:58 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1772097392.f4e2912:
