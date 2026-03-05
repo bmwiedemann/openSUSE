@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Mar  4 09:29:46 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.6.17
+  * Add support for 'pyw' file extension
+  * Add support for xcodebuild file formats
+  * Add support for Brewfile
+  * Add support for Fastfile
+  * Add support for uv.lock
+  * Add support for *.xaml
+  * Add support for *.entitlements
+  * Add support for *.cmd
+  * Add support for *.diff
+  * Add jbuilder extension as ruby text files
+  * Add support for HLSL
+  * Add 'escript' file type for Erlang
+  * Add support for 'slnx' file extension
+  * Add support for sconstruct and sconscript extensions
+- from version 2.6.16
+  * py310+
+  * [pre-commit.ci] pre-commit autoupdate
+  * [pre-commit.ci] pre-commit autoupdate
+  * [pre-commit.ci] pre-commit autoupdate
+  * [pre-commit.ci] pre-commit autoupdate
+  * [pre-commit.ci] pre-commit autoupdate
+  * [pre-commit.ci] pre-commit autoupdate
+  * Add .ipxe extension
+  * Add support for '.xliff' file extension
+
+-------------------------------------------------------------------
 Wed Dec  3 10:05:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.6.15
