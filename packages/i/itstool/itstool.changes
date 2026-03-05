@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar  1 18:58:59 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Port from libxml2 python binding to lxml - boo#1259023
+  add itstool-2.0.7-lxml.patch based on upstream PR#57
+
+-------------------------------------------------------------------
 Sun Jun  1 06:20:28 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 32c7d07664dc37765100285d1202d488cd6a27e8.patch: Fix

@@ -1,7 +1,7 @@
 #
 # spec file for package itstool
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,15 +26,16 @@ URL:            http://itstool.org
 Source:         http://files.itstool.org/itstool/%{name}-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM 32c7d07664dc37765100285d1202d488cd6a27e8.patch -- Fix insufficiently quoted regular expressions
 Patch:          https://github.com/itstool/itstool/commit/32c7d07664dc37765100285d1202d488cd6a27e8.patch
+# PATCH-FIX-UPSTREAM itstool-2.0.7-lxml.patch -- port to lxml boo#1259023
+Patch2:         itstool-2.0.7-lxml.patch
+# for itstool-2.0.7-lxml.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
+#
 BuildRequires:  python3-base
+BuildRequires:  python3-lxml
+Requires:       python3-lxml
 BuildArch:      noarch
-%if 0%{?sle_version}
-BuildRequires:  python3-libxml2-python
-Requires:       python3-libxml2-python
-%else
-BuildRequires:  python3-libxml2
-Requires:       python3-libxml2
-%endif
 
 %description
 ITS Tool extracts messages from XML files and outputs PO template files, then
@@ -46,6 +47,8 @@ Internationalization Tag Set (ITS).
 %autosetup -p1
 
 %build
+# for itstool-2.0.7-lxml.patch
+autoreconf -fiv
 export PYTHON=$(realpath %{_bindir}/python3)
 %configure
 %make_build
