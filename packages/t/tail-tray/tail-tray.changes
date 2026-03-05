@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 03 05:57:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.30:
+  * Bump version to 0.2.30
+  * [CI] - Update actions/upload-artifact to v7 and disable archive
+    so we finally can avoid having double zip zip files
+  * Icon fix for light mode from @david-bartlett
+
+-------------------------------------------------------------------
 Tue Feb 10 07:12:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.29:
