@@ -1,0 +1,42 @@
+From b753d7c22fff9e4fb17b1a3fd89d221cd1818150 Mon Sep 17 00:00:00 2001
+From: Richard Lyu <richard.lyu@suse.com>
+Date: Wed, 25 Feb 2026 21:44:52 +0800
+Subject: [PATCH] Revert "ArmPkg, UefiCpuPkg: Fix boot failure on FEAT_LPA-only
+ systems without LPA2"
+
+This reverts commit 1a4c4fb5a76fb15a5a50706685dc4ba36f1c2260.
+---
+ UefiCpuPkg/Library/ArmMmuLib/AArch64/ArmMmuLibCore.c | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
+
+diff --git a/UefiCpuPkg/Library/ArmMmuLib/AArch64/ArmMmuLibCore.c b/UefiCpuPkg/Library/ArmMmuLib/AArch64/ArmMmuLibCore.c
+index 2353adf50736..d111e8c7cd37 100644
+--- a/UefiCpuPkg/Library/ArmMmuLib/AArch64/ArmMmuLibCore.c
++++ b/UefiCpuPkg/Library/ArmMmuLib/AArch64/ArmMmuLibCore.c
+@@ -94,7 +94,6 @@ ArmMemoryAttributeToPageAttribute (
+ // T0SZ can be below MIN_T0SZ when LPA2 is in use, meaning the page table starts at level -1
+ #define MIN_T0SZ        16
+ #define BITS_PER_LEVEL  9
+-#define MAX_VA_BITS_48  48
+ #define MAX_VA_BITS     52
+ 
+ STATIC
+@@ -659,13 +658,8 @@ ArmConfigureMmu (
+   // into account the architectural limitations that result from UEFI's
+   // use of 4 KB pages.
+   //
+-  if (ArmHas52BitTgran4 ()) {
+-    MaxAddressBits = MIN (ArmGetPhysicalAddressBits (), MAX_VA_BITS);
+-  } else {
+-    MaxAddressBits = MIN (ArmGetPhysicalAddressBits (), MAX_VA_BITS_48);
+-  }
+-
+-  MaxAddress = LShiftU64 (1ULL, MaxAddressBits) - 1;
++  MaxAddressBits = MIN (ArmGetPhysicalAddressBits (), MAX_VA_BITS);
++  MaxAddress     = LShiftU64 (1ULL, MaxAddressBits) - 1;
+ 
+   T0SZ                = 64 - MaxAddressBits;
+   RootTableEntryCount = GetRootTableEntryCount (T0SZ);
+-- 
+2.51.0
+

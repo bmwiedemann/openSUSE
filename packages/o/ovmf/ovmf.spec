@@ -27,7 +27,7 @@
 %endif
 
 Name:           ovmf
-Version:        202511
+Version:        202602
 Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
@@ -63,7 +63,7 @@ Patch3:         %{name}-disable-ia32-firmware-piepic.patch
 Patch4:         %{name}-OvmfPkg-Adjust-Memory-Layout-for-2MB-OVMF.patch
 Patch6:         %{name}-ignore-spurious-GCC-12-warning.patch
 # Bug 1255113 - Build Failure for RISC-V 64 When Secure Boot is Enabled Due to SecureBootDefaultKeysInit module
-Patch7:         %{name}-Revert-OvmfPkg-RiscVVirt-Add-SecureBootDefaultKeysIn.patch
+Patch7:         %{name}-OvmfPkg-RiscVVirt-Make-SecureBootDefaultKeysInit-dri.patch
 # Bug 1207095 - ASSERT [ArmCpuDxe] /home/abuild/rpmbuild/BUILD/edk2-edk2-stable202211/ArmPkg/Library/DefaultExceptionHandlerLib/AArch64/DefaultExceptionHandler.c(333): ((BOOLEAN)(0==1))
 Patch8:         %{name}-Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.patch
 # Bug 1205613 - L3: win 2k22 UEFI xen VMs cannot boot in xen after upgrade
@@ -79,8 +79,12 @@ Patch11:        %{name}-BaseTools-Using-gcc12-for-building-image.patch
 Patch13:        %{name}-UefiCpuPkg-Disable-EFI-memory-attributes-protocol.patch
 # Bug 1244218 - ovmf: non-deterministic .bin files (about unreproducible)
 Patch14:        %{name}-OvmfPkg-ArmVirtPkg-Keep-JSON-stack-cookie-files.patch
-# Bug 1257495 - nasm > 3 is stricter
-Patch15:        %{name}-nasm3.patch
+# Bug 1258870 - ovmf: LPA2 support causing boot failure on AArch64
+Patch15:        %{name}-Revert-ArmPkg-UefiCpuPkg-Fix-boot-failure-on-FEAT_LP.patch
+Patch16:        %{name}-Revert-ArmPkg-UefiCpuPkg-fix-boot-failure-with-LPA2.patch
+Patch17:        %{name}-Revert-UefiCpuPkg-ArmMmuLib-Add-support-for-LPA2.patch
+# Workaround for failing PEI boot on RISCV64 (https://github.com/tianocore/edk2/issues/12206)
+Patch18:        ovmf-Revert-UefiCpuPkg-BaseRiscV64CpuTimerLib-Add-constru.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -288,8 +292,10 @@ BUILD_OPTIONS_AA64=" \
 %if %{with build_riscv64}
 # Flavors for riscv
 FLAVORS_RV64=("riscv")
+# RISCVVIRT_PEI_BOOTING is needed for TPM initialization
 BUILD_OPTIONS_RV64=" \
 	$OVMF_FLAGS \
+	-D RISCVVIRT_PEI_BOOTING \
 	-D SECURE_BOOT_ENABLE \
 	-a RISCV64 \
 	-p OvmfPkg/RiscVVirt/RiscVVirtQemu.dsc \

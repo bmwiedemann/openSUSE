@@ -1,0 +1,109 @@
+From b02d80e292838f9f4814e9f6968189560aaf20c2 Mon Sep 17 00:00:00 2001
+From: Richard Lyu <richard.lyu@suse.com>
+Date: Wed, 25 Feb 2026 21:33:12 +0800
+Subject: [PATCH] Revert "ArmPkg/UefiCpuPkg: fix boot failure with LPA2"
+
+This reverts commit c624a06aa3a9931e7d1ce1a8f51646438b74e4d2.
+---
+ ArmPkg/Drivers/CpuDxe/AArch64/Mmu.c               |  9 ++++-----
+ .../Library/ArmMmuLib/AArch64/ArmMmuLibCore.c     | 15 +++++----------
+ 2 files changed, 9 insertions(+), 15 deletions(-)
+
+diff --git a/ArmPkg/Drivers/CpuDxe/AArch64/Mmu.c b/ArmPkg/Drivers/CpuDxe/AArch64/Mmu.c
+index 057278fde46f..e2a48cccaae2 100644
+--- a/ArmPkg/Drivers/CpuDxe/AArch64/Mmu.c
++++ b/ArmPkg/Drivers/CpuDxe/AArch64/Mmu.c
+@@ -48,8 +48,7 @@ GetRootTranslationTableInfo (
+   OUT UINTN  *RootTableEntryCount
+   )
+ {
+-  *RootTableLevel = (T0SZ < MIN_T0SZ) ? -1 : (INTN)(T0SZ - MIN_T0SZ) / BITS_PER_LEVEL;
+-  ASSERT (*RootTableLevel >= 0 || ArmLpa2Enabled ());
++  *RootTableLevel      = (INTN)(T0SZ - MIN_T0SZ) / BITS_PER_LEVEL;
+   *RootTableEntryCount = TT_ENTRY_COUNT >> (INTN)(T0SZ - MIN_T0SZ) % BITS_PER_LEVEL;
+ }
+ 
+@@ -242,7 +241,7 @@ GetNextEntryAttribute (
+ 
+       // Increase the level number and scan the sub-level table
+       GetNextEntryAttribute (
+-        (UINT64 *)GetOutputAddress (Entry, ArmLpa2Enabled ()),
++        (UINT64 *)GetOutputAddress (Entry, ArmGetTCR () & TCR_DS),
+         TT_ENTRY_COUNT,
+         TableLevel + 1,
+         (BaseAddress + (Index * TT_ADDRESS_AT_LEVEL (TableLevel))),
+@@ -330,7 +329,7 @@ SyncCacheConfig (
+   GetRootTranslationTableInfo (T0SZ, &TableLevel, &TableCount);
+ 
+   // First Attribute of the Page Tables
+-  PageAttribute = GetFirstPageAttribute (FirstLevelTableAddress, TableLevel, ArmLpa2Enabled ());
++  PageAttribute = GetFirstPageAttribute (FirstLevelTableAddress, TableLevel, ArmGetTCR () & TCR_DS);
+ 
+   // We scan from the start of the memory map (ie: at the address 0x0)
+   BaseAddressGcdRegion = 0x0;
+@@ -459,7 +458,7 @@ GetMemoryRegionRec (
+   EntryType  = *BlockEntry & TT_TYPE_MASK;
+ 
+   if ((TableLevel < 3) && (EntryType == TT_TYPE_TABLE_ENTRY)) {
+-    NextTranslationTable = (UINT64 *)GetOutputAddress (*BlockEntry, ArmLpa2Enabled ());
++    NextTranslationTable = (UINT64 *)GetOutputAddress (*BlockEntry, ArmGetTCR () & TCR_DS);
+ 
+     // The entry is a page table, so we go to the next level
+     Status = GetMemoryRegionRec (
+diff --git a/UefiCpuPkg/Library/ArmMmuLib/AArch64/ArmMmuLibCore.c b/UefiCpuPkg/Library/ArmMmuLib/AArch64/ArmMmuLibCore.c
+index 2353adf50736..4c83cd264462 100644
+--- a/UefiCpuPkg/Library/ArmMmuLib/AArch64/ArmMmuLibCore.c
++++ b/UefiCpuPkg/Library/ArmMmuLib/AArch64/ArmMmuLibCore.c
+@@ -143,12 +143,7 @@ GetRootTableLevel (
+   IN  UINTN  T0SZ
+   )
+ {
+-  INTN  RootTableLevel;
+-
+-  RootTableLevel =  (T0SZ < MIN_T0SZ) ? -1 : (INTN)(T0SZ - MIN_T0SZ) / BITS_PER_LEVEL;
+-  ASSERT (RootTableLevel >= 0 || ArmLpa2Enabled ());
+-
+-  return RootTableLevel;
++  return (INTN)(T0SZ - MIN_T0SZ) / BITS_PER_LEVEL;
+ }
+ 
+ STATIC
+@@ -312,7 +307,7 @@ UpdateRegionMappingRecursive (
+     // the MMU in order to update page table entries safely, so prefer page
+     // mappings in that particular case.
+     //
+-    if ((Level <= 0) || (((RegionStart | BlockEnd) & BlockMask) != 0) ||
++    if ((Level == 0) || (((RegionStart | BlockEnd) & BlockMask) != 0) ||
+         ((Level < 3) && (((UINT64)PageTable & ~BlockMask) == RegionStart)) ||
+         IsTableEntry (*Entry, Level))
+     {
+@@ -622,7 +617,7 @@ ArmSetMemoryAttributes (
+            PageAttributeMask,
+            ArmGetTTBR0BaseAddress (),
+            TRUE,
+-           ArmLpa2Enabled ()
++           ArmGetTCR () & TCR_DS
+            );
+ }
+ 
+@@ -691,7 +686,7 @@ ArmConfigureMmu (
+     } else if (MaxAddress < SIZE_256TB) {
+       TCR |= TCR_PS_256TB;
+     } else if ((MaxAddress < SIZE_4PB) && ArmHas52BitTgran4 ()) {
+-      TCR |= TCR_PS_4PB | TCR_DS_NVHE;
++      TCR |= TCR_PS_4PB | TCR_DS;
+     } else {
+       DEBUG ((
+         DEBUG_ERROR,
+@@ -775,7 +770,7 @@ ArmConfigureMmu (
+   ZeroMem (TranslationTable, RootTableEntryCount * sizeof (UINT64));
+ 
+   while (MemoryTable->Length != 0) {
+-    Status = FillTranslationTable (TranslationTable, MemoryTable, ArmLpa2Enabled ());
++    Status = FillTranslationTable (TranslationTable, MemoryTable, TCR & TCR_DS);
+     if (EFI_ERROR (Status)) {
+       goto FreeTranslationTable;
+     }
+-- 
+2.51.0
+
