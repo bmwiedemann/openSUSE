@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Mar 05 06:47:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.17.0:
+  * chore: enable buildkit queue by default (#4927) (#4931)
+  * fix: update vulnerable dependencies (#4920) (#4924)
+  * Allow specific analytics events during deploy operations
+    (#4906) (#4921)
+  * test: add integration tests for gateway and ingress endpoints
+    (#4904)
+  * build(deps): bump github.com/cloudflare/circl from 1.6.1 to
+    1.6.3 (#4911)
+  * Add compose endpoints httproute (#4898)
+  * build(deps): bump werkzeug from 3.1.5 to 3.1.6 in
+    /samples/python (#4910)
+  * build(deps): bump minimatch from 3.1.2 to 3.1.3 in
+    /samples/node.js (#4909)
+  * build(deps): bump flask from 2.3.2 to 3.1.3 in /samples/python
+    (#4907)
+  * fix: update vulnerable dependencies to fix CVEs (#4908)
+  * build(deps): bump rack from 3.2.3 to 3.2.5 in /samples/ruby
+    (#4903)
+  * build(deps): bump qs from 6.14.1 to 6.14.2 in /samples/node.js
+    (#4901)
+  * feat: add persistent column to namespace and preview list
+    commands (#4900)
+  * chore: upgrade Go to 1.25.7 (#4899)
+  * docs: add cross-references between Claude context files and
+    new-feature skill (#4896)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.13.0 to
+    5.16.5 (#4897)
+  * feat: unify okteto internal tools in monorepo (#4895)
+  * chore: update syncthing version to 2.0.14 in Dockerfile and
+    install.go (#4893)
+  * chore: update Okteto component versions in Dockerfile (#4891)
+  * feat: enhance transient error handling in IsRetryable function
+    (#4889)
+  * fix: update Go to 1.24.12 to resolve UNKNOWN CVEs in okteto
+    binary (#4888)
+
+-------------------------------------------------------------------
 Thu Feb 05 05:47:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.16.0:
