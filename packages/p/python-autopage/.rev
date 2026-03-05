@@ -99,4 +99,20 @@
     <comment></comment>
     <requestid>1206251</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1b6276fc9439d9cdd87cbe473bd2b7f0</srcmd5>
+    <version>0.6.0</version>
+    <time>1772727303</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.6.0:
+  * Compatibility with Python 3.15.0a5
+  * Testing on Python 3.13, 3.14, and 3.15
+  * Compliance with PEP540 (UTF-8 Mode)
+  * Deference to the standard library colorization of argparse output
+    where available (in Python 3.14+)
+  * The ability to specify a different default error code
+
+- Drop patch support-python-311.patch, no longer required.</comment>
+    <requestid>1336602</requestid>
+  </revision>
 </revisionlist>
