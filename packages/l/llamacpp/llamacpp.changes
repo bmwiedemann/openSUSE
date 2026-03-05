@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Mar  2 22:29:33 UTC 2026 - Robert Munteanu <rombert@apache.org>
+
+- Update to version 8189:
+  * CUDA: CDNA3 MFMA support for FA MMA kernel, improved CUDA graph
+    capture, dequantization optimizations, and grid.y cap fix in
+    non-contiguous kernels.
+  * Vulkan: Intel/AMD tuning, FA scalar and coopmat1 refactors,
+    new ops (L2_NORM, GGML_OP_SET), overlap check before fusion,
+    and correctness fixes for rope, fp16 FA, and mul_mat_id.
+  * CPU and GGML: mxfp4 repack, SVE/RVV kernel additions, q5_K and
+    q6_K repack with dotprod and i8mm, tiled FA for prompt
+    processing, s390x optimizations, and extended bin bcast.
+  * Accelerator backends: new ops and optimizations across OpenCL,
+    Metal, WebGPU, SYCL, CANN, HIP/ROCm, Hexagon, ZenDNN, and a
+    new VirtGPU backend for Virglrenderer API remoting.
+  * Models and conversion: added Kimi-K2.5, Kimi Linear (MLA KV
+    cache), Jina Embeddings v5 Nano, Kanana-2, JAIS-2, PaddleOCR-VL,
+    GLM-OCR, GLM MoE DSA, Tiny Aya, full modern BERT, Step3.5-Flash,
+    Qwen3.5 series, and Devstral-2; graph deduplication and
+    conversion fixes across multiple architectures.
+  * Server: /v1/responses mirroring, multi-model alias support,
+    multi-modal prompt caching and context checkpoints,
+    max_completion_tokens property, and various stability fixes.
+  * KV cache, MTMD, and Jinja: M-RoPE shift fix, V-less cache
+    support, hybrid model size fix, multimodal tiling and padding
+    fixes, and multiple Jinja correctness and feature additions.
+  * WebUI: full-height code blocks, raw LLM output switcher, system
+    message injection, router mode fixes, and Svelte update.
+  * Misc: self-speculative decoding without a draft model, NetBSD
+    support, ggml bumped to 0.9.7, gguf-py to 0.18.0, updated
+    miniaudio, cpp-httplib, and BoringSSL.
+  * Full commit log:
+    https://github.com/ggml-org/llama.cpp/compare/b7789...b8189
+
+-------------------------------------------------------------------
 Wed Jan 21 18:51:02 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 7789:
