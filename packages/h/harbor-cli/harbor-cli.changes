@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar 04 06:14:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.18:
+  * fix: project view --id flag not working (#639)
+  * ci(lint): Add gosec lint exclusion rules (#715)
+  * build(deps): bump golang.org/x/term from 0.39.0 to 0.40.0
+    (#705)
+  * build(deps): bump github.com/charmbracelet/bubbles from 0.21.1
+    to 1.0.0 (#704)
+  * build(deps): bump golang.org/x/text from 0.33.0 to 0.34.0
+    (#706)
+  * fix : add url validation to all commands (#607)
+  * fix: reject negative page-size values in list commands (#631)
+  * fix: make comment field optional in user create command (#629)
+
+-------------------------------------------------------------------
 Wed Feb 11 05:58:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.17:
