@@ -23,7 +23,7 @@
 %bcond_with bootstrap
 %endif
 %global base_name maven-resources-plugin
-Version:        3.4.0
+Version:        3.5.0
 Release:        0
 Summary:        Maven Resources Plugin
 License:        Apache-2.0
@@ -37,7 +37,7 @@ BuildRequires:  apache-commons-lang3
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  maven-filtering >= 1.3
+BuildRequires:  maven-filtering >= 3.5.0
 BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
 BuildRequires:  plexus-interpolation

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  2 13:02:01 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.5.0
+  * New features and improvements
+    + Bug: use change detecton strategies
+  * Maintenance
+    + Add IT for #444 issue
+    + Migration to JUnit 5 - avoid using AbstractMojoTestCase
+    + Cleanup deps
+  * Dependency updates
+    + Bump org.apache.maven.plugin-testing
+      :maven-plugin-testing-harness from 3.4.0 to 3.5.1
+    + Bump org.apache.maven.plugins:maven-plugins from 45 to 47
+    + Bump mavenVersion from 3.9.11 to 3.9.12
+
+-------------------------------------------------------------------
 Sat Nov 29 05:06:50 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 3.4.0
