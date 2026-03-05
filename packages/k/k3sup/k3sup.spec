@@ -1,7 +1,7 @@
 #
 # spec file for package k3sup
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           k3sup
-Version:        0.13.11
+Version:        0.13.12
 Release:        0
 Summary:        Bootstrap Kubernetes with k3s over SSH < 1 min
 License:        MIT
 URL:            https://github.com/alexellis/k3sup
 Source:         k3sup-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.23
+BuildRequires:  go1.25 >= 1.25.6
 
 %description
 k3sup is a light-weight utility to get from zero to KUBECONFIG with k3s on any

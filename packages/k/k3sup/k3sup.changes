@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 05 06:54:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.13.12:
+  * Bump go.mod
+  * Bump to Go 1.26
+  * Updates on asking for sponsors
+  * Add ascii diagram
+  * Make intro a link
+  * Note on CE EULA
+  * Add EULA for K3sup Pro (ONLY)
+  * Update LICENSE
+  * Update README.md
+  * Show alternative installation approach
+  * Add PRO flag/switch to k3sup installer
+
+-------------------------------------------------------------------
 Wed Aug 20 11:10:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.13.11:
