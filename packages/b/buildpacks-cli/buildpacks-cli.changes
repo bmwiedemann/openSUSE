@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 03 06:16:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.1:
+  * chore: fix security vulnerabilities in dependencies (#2539)
+  * build(deps): bump github.com/chainguard-dev/kaniko (#2538)
+  * build(deps): bump github.com/cloudflare/circl from 1.6.1 to
+    1.6.3 (#2533)
+  * build(deps): bump github.com/google/go-containerregistry
+    (#2532)
+  * build(deps): bump the go-dependencies group across 1 directory
+    with 7 updates (#2524)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.16.4 to
+    5.16.5 (#2522)
+  * build(deps): bump the go-dependencies group across 1 directory
+    with 14 updates (#2517)
+
+-------------------------------------------------------------------
 Wed Feb 04 07:56:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.40.0:
