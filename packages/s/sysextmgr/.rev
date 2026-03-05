@@ -58,4 +58,26 @@
     <comment>Update</comment>
     <requestid>1330350</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8c03eb8d493f21d1a926bddf7860b718</srcmd5>
+    <version>0.1.0+git20260304.fc915b3</version>
+    <time>1772727192</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.1.0+git20260304.fc915b3:
+  * Release version 0.1.0
+  * Prefer .manifest over .json
+
+- Update to version 0.0+git20260304.ffa65d6:
+  * sysextmgr.service: namespaces cannot be restricted (mounting images)
+
+- Add config file with default download URL
+- Merge sysextmgrcli back into sysextmgr, it doesn't work standalone
+
+- Update to version 0.0+git20260304.5c7528e:
+  * Make sure storage directories exist and adjust sysextmgr.service
+  * sysextmgrcli: fix &quot;no images found&quot; check
+  * mkdir_p: fix error code for last directory
+  * Add stroom() function</comment>
+    <requestid>1336563</requestid>
+  </revision>
 </revisionlist>

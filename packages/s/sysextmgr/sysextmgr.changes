@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Mar 04 16:31:50 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.1.0+git20260304.fc915b3:
+  * Release version 0.1.0
+  * Prefer .manifest over .json
+
+-------------------------------------------------------------------
+Wed Mar 04 10:43:37 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260304.ffa65d6:
+  * sysextmgr.service: namespaces cannot be restricted (mounting images)
+
+-------------------------------------------------------------------
+Wed Mar  4 10:01:00 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add config file with default download URL
+- Merge sysextmgrcli back into sysextmgr, it doesn't work standalone
+
+-------------------------------------------------------------------
+Wed Mar 04 09:38:45 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260304.5c7528e:
+  * Make sure storage directories exist and adjust sysextmgr.service
+  * sysextmgrcli: fix "no images found" check
+  * mkdir_p: fix error code for last directory
+  * Add stroom() function
+
+-------------------------------------------------------------------
 Wed Sep 24 13:41:25 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.0+git20250924.8eb417e:
