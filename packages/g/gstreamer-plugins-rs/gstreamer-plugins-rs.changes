@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Feb 26 09:18:59 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.1:
+  + audio: add new whisper-based transcription element
+  + aws: Don't run whole GStreamer tests in a tokio runtime
+  + awstranscriber2: workaround suspected rust SDK regression
+  + Block on a tokio runtime if available instead of going via
+    futures::executor()
+  + debugseimetainserter: add new plugin for testing SEI meta
+    insertion
+  + demucs: document how to build with a specific python version
+  + demucs: Don't fail if std deviation of the input is too close
+    to zero
+  + demucs: improve url doc
+  + demucs: pin python 3.13 in uv setup
+  + demucs, speechmatics: don't take stream lock on FlushStart
+  + elevenlabs,speechmatics: fix license
+  + isobmff: add support for bayer video formats
+  + isomp4mux: Improving level indicator in vpcC for vp8/vp9 with
+    helpers in pbutils
+  + livesync: fixes & reverse playback handling
+  + livesync: ignore upstream latency when upstream is not live
+  + polly: don't panic when no caps were received before first
+    buffer
+  + polly: fix panic in async send()
+  + rtpav1pay: insert sequence header if a keyframe is missing it
+  + rtprecv: Don't panic if no buffers of a bufferlist can be
+    directly forwarded
+  + rtprecv: Various improvements and bugfixes
+  + rtpsend: send mandatory events on the rtcp srcpad before
+    sending the first buffer
+  + rtpsmpte291depay: Drop the current packet after processing if
+    it was empty
+  + rtp: smpte291: Use upper-case encoding-name
+  + rtp: smpte291: Use video as media type instead of application
+  + speechmatics: allow configuring audio events
+  + st2038combiner: Sort by line and then horizontal offset
+  + st2038combiner: Various minor fixes
+  + transcriberbin: forward handled error messages as warning
+    messages
+  + transcriberbin: fix latency reported when
+    transcriber=translationbin
+  + transcribers: Ignore return value when pushing gap events
+  + webrtc-api: Report pressed mouse buttons as modifiers
+  + webrtc/livekit: emit session-requested only for Producer role
+  + webrtcsink: allow specifying custom headers to signalling
+    server
+  + webrtcsink: multiple improvements
+  + webrtcsink: negotiate profile and level for input encoded in
+    H.264
+  + webrtcsrc: add request type pads
+  + webrtcsrc: allow sending encoded data downstream
+  + cargo_wrapper: Add nasm dir to path only if needed
+  + Update dependencies
+- Drop clang and llvm BuildRequires.
+- Add c++_compiler and cmake BuildRequires, following upstream
+  changes.
+
+-------------------------------------------------------------------
 Fri Jan 30 14:32:38 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.0:
