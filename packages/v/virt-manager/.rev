@@ -2270,4 +2270,12 @@
     <comment>Upstream features and bug fixes (bsc#1027942, jsc#PED-14625) and add support for UEFI as default for new SLES 16 VMs (jsc#PED-14636)</comment>
     <requestid>1333633</requestid>
   </revision>
+  <revision rev="287" vrev="9">
+    <srcmd5>cc7eab03ad565700a1f0bb27b29deed9</srcmd5>
+    <version>5.1.0</version>
+    <time>1772727200</time>
+    <user>anag_factory</user>
+    <comment>Upstream patches to fix bsc#1259049 - virt-manager: virt-install deprecate libxml2 python bindings</comment>
+    <requestid>1335915</requestid>
+  </revision>
 </revisionlist>

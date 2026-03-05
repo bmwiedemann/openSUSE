@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  2 11:11:53 MST 2026 - carnold@suse.com
+
+- bsc#1259049 - virt-manager: virt-install deprecate libxml2 python
+  bindings
+  004-xmlapi-split-out-xmlbase.py-and-xmllibxml2.py.patch
+  005-xmlbase-fix-parentnode-None-check.patch
+  006-xmllibxml2-lazily-import-libxml2.patch
+  007-xmlapi-add-xmletree.py-backend.patch
+
+-------------------------------------------------------------------
 Tue Feb 17 11:37:25 MST 2026 - carnold@suse.com
 
 - jsc#PED-14636 - UEFI as default for new SLES 16 VMs

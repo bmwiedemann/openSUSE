@@ -49,26 +49,30 @@ Source1:        virt-install.rb
 Source2:        virt-install.desktop
 Source3:        virt-manager-supportconfig
 # Upstream Patches
-Patch1:         003-virtinst-cloudinit-include-empty-meta-data-file.patch
-Patch2:         009-avoid-NoneType-pixbuf.patch
-Patch3:         012-virtManager-wrapped-details-hw-panel-with-GtkScrolledWindow.patch
-Patch4:         013-virtinst-interface-add-support-for-backend.hostname-and-backend.fqdn.patch
-Patch5:         014-virtinst-add-support-for-acpi-generic-initiator.patch
-Patch6:         015-virtinst-add-support-for-pcihole64.patch
-Patch7:         017-maint-use-constants-instead-of-strings-for-boot-devices.patch
-Patch8:         018-virtinst-rework-get_boot_order.patch
-Patch9:         019-virtinst-guest-introduce-can_use_device_boot_order.patch
-Patch10:        020-virtinst-remove-legacy-attribute-from-set_boot_order-get_boot_order.patch
-Patch11:        021-installer-add-support-to-use-device-boot-order.patch
-Patch12:        024-virtinst-Fix-XDG_DATA_HOME-handling.patch
-Patch13:        051-addhardware-Add-usb-as-a-recommended-sound-device.patch
-Patch14:        055-virtinst-Add-serial-controller-option-to-cli.patch
-Patch15:        056-virtinst-Add-NVMe-Controller.patch
-Patch16:        057-virtinst-implement-NVMe-disk-target-generation.patch
-Patch17:        058-virtManager-Add-NVMe-disk-type.patch
-Patch18:        059-ui-Show-NVMe-Controller-details.patch
-Patch19:        060-virtinst-fix-locale-when-running-in-flatpak.patch
-Patch20:        061-virtinst-add-support-for-iommufd.patch
+Patch3:         003-virtinst-cloudinit-include-empty-meta-data-file.patch
+Patch4:         004-xmlapi-split-out-xmlbase.py-and-xmllibxml2.py.patch
+Patch5:         005-xmlbase-fix-parentnode-None-check.patch
+Patch6:         006-xmllibxml2-lazily-import-libxml2.patch
+Patch7:         007-xmlapi-add-xmletree.py-backend.patch
+Patch9:         009-avoid-NoneType-pixbuf.patch
+Patch12:        012-virtManager-wrapped-details-hw-panel-with-GtkScrolledWindow.patch
+Patch13:        013-virtinst-interface-add-support-for-backend.hostname-and-backend.fqdn.patch
+Patch14:        014-virtinst-add-support-for-acpi-generic-initiator.patch
+Patch15:        015-virtinst-add-support-for-pcihole64.patch
+Patch17:        017-maint-use-constants-instead-of-strings-for-boot-devices.patch
+Patch18:        018-virtinst-rework-get_boot_order.patch
+Patch19:        019-virtinst-guest-introduce-can_use_device_boot_order.patch
+Patch20:        020-virtinst-remove-legacy-attribute-from-set_boot_order-get_boot_order.patch
+Patch21:        021-installer-add-support-to-use-device-boot-order.patch
+Patch24:        024-virtinst-Fix-XDG_DATA_HOME-handling.patch
+Patch51:        051-addhardware-Add-usb-as-a-recommended-sound-device.patch
+Patch55:        055-virtinst-Add-serial-controller-option-to-cli.patch
+Patch56:        056-virtinst-Add-NVMe-Controller.patch
+Patch57:        057-virtinst-implement-NVMe-disk-target-generation.patch
+Patch58:        058-virtManager-Add-NVMe-disk-type.patch
+Patch59:        059-ui-Show-NVMe-Controller-details.patch
+Patch60:        060-virtinst-fix-locale-when-running-in-flatpak.patch
+Patch61:        061-virtinst-add-support-for-iommufd.patch
 # SUSE Only
 Patch150:       virtman-desktop.patch
 Patch151:       virtman-kvm.patch
@@ -172,7 +176,6 @@ Requires:       libosinfo >= 0.2.10
 Requires:       python3-argcomplete
 Requires:       python3-gobject
 Requires:       python3-libvirt-python >= 0.7.0
-Requires:       python3-libxml2-python
 Requires:       python3-requests
 Requires:       xorriso
 
