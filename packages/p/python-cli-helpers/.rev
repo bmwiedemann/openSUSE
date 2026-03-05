@@ -141,4 +141,14 @@
   * Pass `colalign` argument through to `tabulate`.</comment>
     <requestid>1333407</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c7b7de34497addf7c1e10dd1d89c5d8e</srcmd5>
+    <version>2.10.1</version>
+    <time>1772727299</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.10.1:
+  * Update license dates.
+  * Provisional Python 3.6 compatibility (Union syntax).</comment>
+    <requestid>1336592</requestid>
+  </revision>
 </revisionlist>

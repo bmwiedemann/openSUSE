@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  4 21:30:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10.1:
+  * Update license dates.
+  * Provisional Python 3.6 compatibility (Union syntax).
+
+-------------------------------------------------------------------
 Mon Feb 16 17:07:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.10.0:
