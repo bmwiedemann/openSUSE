@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Mar  3 15:18:50 UTC 2026 - Anthony Iliopoulos <ailiop@suse.com>
+
+- Fix nfs-utils package for immutable mode (jsc#PED-14731)
+
+  Prepare package so that it can be installable in transactional mode,
+  by moving creation of all state-related paths and files to systemd
+  tmpfiles mechanism.
+
+  - Drop nfs-kernel-server.tmpfiles.conf
+  - Add nfs-utils.tmpfiles.conf
+
+-------------------------------------------------------------------
+Mon Mar  2 15:49:18 UTC 2026 - Anthony Iliopoulos <ailiop@suse.com>
+
+- Update to 2.8.5:
+  https://mirrors.edge.kernel.org/pub/linux/utils/nfs-utils/2.8.5/2.8.5-Changelog
+  * statd: fix a typo in a debug message
+  * nfsd: fix a typo in man page
+  * mountd: fix a typo in man page
+  * nfs.man: fix a typo in man page
+  * gssd: fix typos in man page
+  * exports: fix a typo in man page
+  * rpcctl: fix a typo in man page
+  * nfsiostat: fix typos in man page
+  * mountstats: fix a typo in man page
+  * nfs.conf: fix a typo in man page
+  * nfsdctl: add support for min-threads parameter
+  * systemd: drop Wants=network-online.target for rpc-statd-notify
+  * nfsiostat: normalize the mountpoints passed in from the command line
+  * Rename CONFIG_NFSV41 to CONFIG_BLKMAPD and disable by default
+  * nfsdctl: ignore ipv6 listener creation error
+  * locktest: use correct build flags
+  * sm-notify: Do not drop privileges if running as non-root user
+  * gssd: protect kerberos ticket cache access
+
+-------------------------------------------------------------------
 Wed Sep 24 09:52:29 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Drop rcnfs-client/rcnfs-server symlinks [jsc#PED-266]

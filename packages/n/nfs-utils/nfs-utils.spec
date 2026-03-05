@@ -1,7 +1,7 @@
 #
 # spec file for package nfs-utils
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           nfs-utils
-Version:        2.8.4
+Version:        2.8.5
 Release:        0
 Summary:        Support Utilities for Kernel nfsd
 License:        GPL-2.0-or-later
@@ -42,7 +42,7 @@ Source23:       rpc-statd.options.conf
 Source24:       rpc-statd-notify.options.conf
 Source25:       rpc-svcgssd.options.conf
 Source26:       nfs.conf
-Source27:       nfs-kernel-server.tmpfiles.conf
+Source27:       nfs-utils.tmpfiles.conf
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -140,6 +140,7 @@ export LDFLAGS="-pie"
 %configure \
 	--with-systemd \
 	--enable-nfsv4 \
+	--enable-blkmapd \
 	--enable-gss \
 	--enable-svcgss \
 	--enable-ipv6 \
@@ -166,7 +167,7 @@ install -D -m 644 %{SOURCE25} %{buildroot}%{_unitdir}/rpc-svcgssd.service.d/10-o
 install -D -m 644 %{SOURCE26} %{buildroot}%{_prefix}%{_sysconfdir}/nfs.conf
 mkdir -p -m 755 %{buildroot}%{_prefix}%{_sysconfdir}/nfs.conf.d
 mkdir -p -m 755 %{buildroot}%{_sysconfdir}/nfs.conf.d
-install -D -m 644 %{SOURCE27} %{buildroot}%{_prefix}/lib/tmpfiles.d/nfs-kernel-server.conf
+install -D -m 644 %{SOURCE27} %{buildroot}%{_prefix}/lib/tmpfiles.d/nfs-utils.conf
 # sysconfig-data
 mkdir -p %{buildroot}%{_fillupdir}
 install -m 644 %{SOURCE4} %{buildroot}%{_fillupdir}
@@ -174,13 +175,6 @@ install -m 644 %{SOURCE4} %{buildroot}%{_fillupdir}
 install -D -m 644 %{SOURCE11} %{buildroot}%{_prefix}%{_sysconfdir}/idmapd.conf
 mkdir -p -m 755 %{buildroot}%{_prefix}%{_sysconfdir}/idmapd.conf.d
 mkdir -p -m 755 %{buildroot}%{_sysconfdir}/idmapd.conf.d
-mkdir -p -m 755 %{buildroot}%{_localstatedir}/lib/nfs/rpc_pipefs
-mkdir -p -m 755 %{buildroot}%{_localstatedir}/lib/nfs/v4recovery
-# sm-notify state
-mkdir -p -m 755 %{buildroot}%{_localstatedir}/lib/nfs/sm
-mkdir -p -m 755 %{buildroot}%{_localstatedir}/lib/nfs/sm.bak
-touch %{buildroot}%{_localstatedir}/lib/nfs/state
-mkdir -p %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services
 mkdir -p -m 755 %{buildroot}%{_prefix}%{_sysconfdir}/nfsmount.conf.d
 mkdir -p -m 755 %{buildroot}%{_sysconfdir}/nfsmount.conf.d
 #
@@ -194,18 +188,7 @@ install -m 644 %{SOURCE12} %{buildroot}%{_sysusersdir}/
 %service_add_pre auth-rpcgss-module.service nfs-idmapd.service nfs-blkmap.service rpc-statd-notify.service rpc-gssd.service rpc-statd.service rpc-svcgssd.service
 
 %post -n nfs-client
-# lib/nfs must be root-owned.
-# sm and sm.back and contents should be statd:statd,
-# but only chown if the dirs are currently root-owned.
-# This is needed for some upgraded, but chown is best avoided
-# when not necessary
-chown root:root %{_localstatedir}/lib/nfs > /dev/null 2>&1 || :
-for i in sm sm.bak; do
-    p=%{_localstatedir}/lib/nfs/$i
-    if [ -d "$b" -a -n "`chown 2> /dev/null -c --from root statd:statd $p`" ]; then
-	chown -R statd:statd $p > /dev/null 2>&1 || :
-    fi
-done
+
 ### migrate from /var/lock/subsys
 [ -d /run/nfs ] || mkdir /run/nfs
 if [ -f %{_localstatedir}/lock/subsys/nfs-rpc.idmapd ]; then
@@ -214,6 +197,9 @@ fi
 if [ -f %{_localstatedir}/lock/subsys/nfsserver-rpc.idmapd ]; then
 	mv %{_localstatedir}/lock/subsys/nfsserver-rpc.idmapd /run/nfs
 fi
+
+%tmpfiles_create nfs-utils.conf
+
 ###
 %{fillup_only -n nfs nfs}
 #
@@ -248,8 +234,6 @@ if [ -f %{_localstatedir}/lock/subsys/nfsserver-rpc.idmapd ]; then
 fi
 ###
 %service_add_post nfs-mountd.service nfs-server.service nfsdcld.service
-%tmpfiles_create nfs-kernel-server.conf
-%set_permissions /var/lib/nfs/rmtab
 
 %postun -n nfs-kernel-server
 %service_del_postun nfs-mountd.service nfs-server.service nfsdcld.service
@@ -258,7 +242,6 @@ fi
 %postun -n libnfsidmap1 -p /sbin/ldconfig
 
 %verifyscript -n nfs-kernel-server
-%verify_permissions -e /var/lib/nfs/rmtab
 
 %files -n nfs-client
 %license COPYING
@@ -346,11 +329,14 @@ fi
 %{_mandir}/man8/umount.nfs.8%{ext_man}
 %{_fillupdir}/sysconfig.nfs
 %{_sysusersdir}/statd-user.conf
-%dir %{_localstatedir}/lib/nfs
-%dir %{_localstatedir}/lib/nfs/rpc_pipefs
-%dir %{_localstatedir}/lib/nfs/v4recovery
-%attr(0700,statd,statd) %dir %{_localstatedir}/lib/nfs/sm
-%attr(0700,statd,statd) %dir %{_localstatedir}/lib/nfs/sm.bak
+%{_prefix}/lib/tmpfiles.d/nfs-utils.conf
+%ghost %dir %{_localstatedir}/lib/nfs
+%ghost %dir %{_localstatedir}/lib/nfs/sm
+%ghost %dir %{_localstatedir}/lib/nfs/sm.bak
+%ghost %dir %{_localstatedir}/lib/nfs/rpc_pipefs
+%ghost %dir %{_localstatedir}/lib/nfs/v4recovery
+%ghost %{_localstatedir}/lib/nfs/etab
+%ghost %{_localstatedir}/lib/nfs/rmtab
 %ghost %{_localstatedir}/lib/nfs/state
 %{_libexecdir}/nfsrahead
 
@@ -360,7 +346,6 @@ fi
 %{_unitdir}/nfs-server.service
 %{_unitdir}/nfs-server.service.d
 %{_unitdir}/proc-fs-nfsd.mount
-%{_prefix}/lib/tmpfiles.d/nfs-kernel-server.conf
 %{_sbindir}/exportfs
 %{_sbindir}/fsidd
 %{_sbindir}/rpc.mountd
@@ -380,8 +365,6 @@ fi
 %{_mandir}/man8/rpc.nfsd.8%{ext_man}
 %{_mandir}/man8/nfsdctl.8%{ext_man}
 %{_mandir}/man8/nfsdcltrack.8%{ext_man}
-%config(noreplace) %{_localstatedir}/lib/nfs/etab
-%config(noreplace) %{_localstatedir}/lib/nfs/rmtab
 
 %files -n libnfsidmap1
 %{_libdir}/libnfsidmap-1.0.0/
