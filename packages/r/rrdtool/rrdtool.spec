@@ -1,7 +1,7 @@
 #
 # spec file for package rrdtool
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -205,6 +205,8 @@ Group:          Productivity/Scientific/Math
 Requires:       %{name} = %{version}-%{release}
 Requires(post): %fillup_prereq
 Requires(pre):  shadow
+Provides:       group(%rrdcached_group)
+Provides:       user(%rrdcached_user)
 
 %description cached
 rrdcached is a daemon that receives updates to existing RRD files,
@@ -413,6 +415,6 @@ getent passwd %{rrdcached_user} >/dev/null || useradd -s /sbin/nologin -g %{rrdc
 %dir %{_libexecdir}/tmpfiles.d
 %endif
 %{_tmpfilesdir}/rrdcached.conf
-%ghost /run/rrdcached
+%ghost %attr(0755,%{rrdcached_user},%{rrdcached_group}) %{_rundir}/rrdcached
 
 %changelog
