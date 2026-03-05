@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar  4 09:35:47 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.2.12
+  * CVE-2026-25674: Potential incorrect permissions on newly created
+    file system objects (bsc#1259142)
+  * Fixed NameError when inspecting functions making use of deferred
+    annotations in Python 3.14
+
+-------------------------------------------------------------------
 Fri Feb 20 11:45:55 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Add skip-flaky-tests.patch to skip tests which randomly fail

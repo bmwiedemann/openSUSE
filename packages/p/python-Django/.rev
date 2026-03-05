@@ -1494,4 +1494,16 @@
     <comment>- Add skip-flaky-tests.patch to skip tests which randomly fail</comment>
     <requestid>1334170</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>4c5bcba6f3ffea521bb4be4f18020b05</srcmd5>
+    <version>5.2.12</version>
+    <time>1772727254</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.2.12
+  * CVE-2026-25674: Potential incorrect permissions on newly created
+    file system objects (bsc#1259142)
+  * Fixed NameError when inspecting functions making use of deferred
+    annotations in Python 3.14</comment>
+    <requestid>1336308</requestid>
+  </revision>
 </revisionlist>
