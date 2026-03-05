@@ -738,4 +738,12 @@ GPL version does not have ^or later^ due to inclusion of numerous GPL 2 ^only^ f
     <user>dimstar_suse</user>
     <comment>https://bugzilla.suse.com/show_bug.cgi?id=1215008</comment>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>f4e5242afef66afeaf87cc3cb2641dc1</srcmd5>
+    <version>1.8.13</version>
+    <time>1772727160</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.8.13</comment>
+    <requestid>1336355</requestid>
+  </revision>
 </revisionlist>
