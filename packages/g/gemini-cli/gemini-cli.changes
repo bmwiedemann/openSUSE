@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Wed Mar  4 06:42:12 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.32.1:
+  * fix(patch): cherry-pick 0659ad1 to release/v0.32.0-pr-21042 to patch version v0.32.0 and create version 0.32.1 #21048
+
+-------------------------------------------------------------------
+Wed Mar  4 06:40:10 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.32.0:
+  * feat(plan): add integration tests for plan mode #20214
+  * fix(acp): update auth handshake to spec #19725
+  * feat(core): implement robust A2A streaming reassembly and fix task continuity #20091
+  * feat(cli): load extensions in parallel #20229
+  * Plumb the maxAttempts setting through Config args #20239
+  * fix(cli): skip 404 errors in setup-github file downloads #20287
+  * fix(cli): expose model.name setting in settings dialog for persistence #19605
+  * docs: remove legacy cmd examples in favor of powershell #20323
+  * feat(core): Enable model steering in workspace. #20343
+  * fix: remove trailing comma in issue triage workflow settings json #20265
+  * feat(core): implement task tracker foundation and service #19464
+  * test: support tests that include color information #20220
+  * feat(core): introduce Kind.Agent for sub-agent classification #20369
+  * Changelog for v0.30.0 #20252
+  * Update changelog workflow to reject nightly builds #20248
+  * Changelog for v0.31.0-preview.0 #20249
+  * feat(cli): hide workspace policy update dialog and auto-accept by default #20351
+  * feat(core): rename grep_search include parameter to include_pattern #20328
+  * feat(plan): support opening and modifying plan in external editor #20348
+  * feat(cli): implement interactive shell autocompletion #20082
+  * fix(core): allow /memory add to work in plan mode #20353
+  * feat(core): add HTTP 499 to retryable errors and map to RetryableQuotaError #20432
+  * feat(core): Enable generalist agent #19665
+  * Updated tests in TableRenderer.test.tsx to use SVG snapshots #20450
+  * Refactor Github Action per b/485167538 #19443
+  * fix(github): resolve actionlint and yamllint regressions from #19443 #20467
+  * fix: action var usage #20492
+  * feat(core): improve A2A content extraction #20487
+  * fix(cli): support quota error fallbacks for all authentication types #20475
+  * fix(core): flush transcript for pure tool-call responses to ensure BeforeTool hooks see complete state #20419
+  * feat(plan): adapt planning workflow based on complexity of task #20465
+  * fix: prevent orphaned processes from consuming 100% CPU when terminal closes #16965
+  * feat(core): increase fetch timeout and fix [object Object] error stringification #20441
+  * [Gemma x Gemini CLI] Add an Experimental Gemma Router that uses a LiteRT-LM shim into the Composite Model Classifier Strategy #17231
+  * docs(plan): update documentation regarding supporting editing of plan files during plan approval #20452
+  * test(cli): fix flaky ToolResultDisplay overflow test #20518
+  * ui(cli): reduce length of Ctrl+O hint #20490
+  * fix(ui): correct styled table width calculations #20042
+  * Avoid overaggressive unescaping #20520
+  * feat(telemetry) Instrument traces with more attributes and make them available to OTEL users #20237
+  * Add support for policy engine in extensions #20049
+  * Docs: Update to Terms of Service & FAQ #20488
+  * Fix bottom border rendering for search and add a regression test. #20517
+  * fix(core): apply retry logic to CodeAssistServer for all users #20507
+  * Fix extension MCP server env var loading #20374
+  * feat(ui): add 'ctrl+o' hint to truncated content message #20529
+  * Fix flicker showing message to press ctrl-O again to collapse. #20414
+  * fix(cli): hide shortcuts hint while model is thinking or the user has typed a prompt + add debounce to avoid flicker #19389
+  * feat(plan): update planning workflow to encourage multi-select with descriptions of options #20491
+  * refactor(core,cli): useAlternateBuffer read from config #20346
+  * fix(cli): ensure dialogs stay scrolled to bottom in alternate buffer mode #20527
+  * fix(core): revert auto-save of policies to user space #20531
+  * Demote unreliable test. #20571
+  * fix(core): handle optional response fields from code assist API #20345
+  * fix(cli): keep thought summary when loading phrases are off #20497
+  * feat(cli): add temporary flag to disable workspace policies #20523
+  * Disable expensive and scheduled workflows on personal forks #20449
+  * Moved markdown parsing logic to a separate util file #20526
+  * fix(plan): prevent agent from using ask_user for shell command confirmation #20504
+  * fix(core): disable retries for code assist streaming requests #20561
+  * feat(billing): implement G1 AI credits overage flow with billing telemetry #18590
+  * feat: better error messages #20577
+  * fix(ui): persist expansion in AskUser dialog when navigating options #20559
+  * fix(cli): prevent sub-agent tool calls from leaking into UI #20580
+  * fix(cli): Shell autocomplete polish #20411
+  * Changelog for v0.31.0-preview.1 #20590
+  * Add slash command for promoting behavioral evals to CI blocking #20575
+  * Changelog for v0.30.1 #20589
+  * Add low/full CLI error verbosity mode for cleaner UI #20399
+  * Disable Gemini PR reviews on draft PRs. #20362
+  * Docs: FAQ update #20585
+  * fix(core): reduce intrusive MCP errors and deduplicate diagnostics #20232
+  * docs: fix spelling typos in installation guide #20579
+  * Promote stable tests to CI blocking. #20581
+  * feat(core): enable contiguous parallel admission for Kind.Agent tools #20583
+  * Enforce import/no-duplicates as error #19797
+  * fix: merge duplicate imports in sdk and test-utils packages (1/4) #19777
+  * fix: merge duplicate imports in a2a-server package (2/4) #19781
+
+-------------------------------------------------------------------
 Tue Mar  3 15:20:07 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.31.0:
