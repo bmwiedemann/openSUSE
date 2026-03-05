@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Wed Mar 4 07:08:59 UTC 2026 - bittin@opensuse.org
+
+- Translated using Weblate (Swedish) (bsc#1149754)
+- 4.5.305
+
+--------------------------------------------------------------------
+Mon Mar 2 15:43:17 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1061
+- prefer vector over list
+- avoid shadowing local variables
+- 4.5.304
+
+--------------------------------------------------------------------
 Wed Feb 25 02:19:49 UTC 2026 - aschnell@suse.com
 
 - Translated using Weblate (German) (bsc#1149754)
