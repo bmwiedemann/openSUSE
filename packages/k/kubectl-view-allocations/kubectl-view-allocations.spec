@@ -1,7 +1,7 @@
 #
 # spec file for package kubectl-view-allocations
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           kubectl-view-allocations
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        kubectl plugin to list allocations
 License:        CC0-1.0

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Mar 03 05:43:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.0:
+  * (cargo-release) version 1.1.0
+  * chore(deps): update rust & dependencies (#323)
+  * Bump rajatjindal/krew-release-bot from 0.0.47 to 0.0.50 (#318)
+  * Bump futures from 0.3.31 to 0.3.32 (#319)
+  * Bump anyhow from 1.0.100 to 1.0.102 (#320)
+  * Bump clap from 4.5.56 to 4.5.60 (#321)
+  * Bump serde_json from 1.0.148 to 1.0.149 (#322)
+  * Bump chrono from 0.4.42 to 0.4.43 (#313)
+  * Bump clap from 4.5.53 to 4.5.56 (#315)
+  * Bump tokio from 1.48.0 to 1.49.0 (#316)
+  * Bump thiserror from 2.0.17 to 2.0.18 (#317)
+  * feat!: adds a new --ignore-taints parameter, and filter out
+    tainted node by default (#309)
+  * Bump k8s-openapi from 0.26.0 to 0.26.1 (#311)
+  * Bump tracing from 0.1.43 to 0.1.44 (#310)
+  * Bump serde_json from 1.0.145 to 1.0.148 (#312)
+  * Bump tracing-subscriber from 0.3.20 to 0.3.22 (#305)
+  * Bump clap from 4.5.51 to 4.5.53 (#306)
+  * Bump tracing from 0.1.41 to 0.1.43 (#307)
+  * Bump actions/checkout from 5 to 6 (#308)
+  * Bump clap from 4.5.48 to 4.5.51
+  * Bump tokio from 1.47.1 to 1.48.0
+  * Bump serde from 1.0.226 to 1.0.228
+  * Bump thiserror from 2.0.16 to 2.0.17
+  * Bump anyhow from 1.0.99 to 1.0.100
+  * run dependabot monthly (previously weekly)
+  * Bump serde from 1.0.225 to 1.0.226
+  * Bump clap from 4.5.47 to 4.5.48
+
+-------------------------------------------------------------------
 Thu Sep 18 08:56:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.0.0:
