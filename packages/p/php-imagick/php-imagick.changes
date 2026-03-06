@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  6 14:49:44 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- Skip test that is failing for Imagick >= 7.1.2.15
+  + imagick-skip-test243.patch
+
+-------------------------------------------------------------------
 Fri Nov 28 07:40:29 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Upgrade to 3.8.1

@@ -1,0 +1,22 @@
+diff -purN a/tests/243_Tutorial_svgExample_basic.phpt b/tests/243_Tutorial_svgExample_basic.phpt
+--- a/tests/243_Tutorial_svgExample_basic.phpt	2025-11-26 22:38:21.000000000 +0100
++++ b/tests/243_Tutorial_svgExample_basic.phpt	2026-03-06 15:25:49.223734981 +0100
+@@ -1,7 +1,10 @@
+ --TEST--
+ Test Tutorial, svgExample
+ --SKIPIF--
+-<?php require_once(dirname(__FILE__) . '/skipif.inc'); ?>
++<?php
++$imageMagickBelowVersion = 0x712;
++require_once(dirname(__FILE__) . '/skipif.inc');
++?>
+ --FILE--
+ <?php
+ 
+@@ -55,4 +58,4 @@ svgExample() ;
+ echo "Ok";
+ ?>
+ --EXPECTF--
+-Ok
+\ No newline at end of file
++Ok

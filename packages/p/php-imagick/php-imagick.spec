@@ -1,7 +1,7 @@
 #
 # spec file for package php-imagick
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,8 @@ Patch0:         imagick-reproducible.patch
 Patch10:        imagick-xfail-test014.patch
 # PATCH-FIX-OPENSUSE - skip test for Imagick >= 7.1.2 due to changes in similarity
 Patch11:        imagick-skip-test024.patch
+# PATCH-FIX-OPENSUSE - skip test for ImageMagick >= 7.1.2 due to changes in security policy `SVG'
+Patch12:        imagick-skip-test243.patch
 BuildRequires:  %{php_name}-devel >= 7.0.1
 BuildRequires:  ImageMagick-devel >= 6.5.3.10
 BuildRequires:  ghostscript-fonts-std
@@ -60,7 +62,13 @@ PHP extension to create, modify and obtain meta information of images using
 the ImageMagick API.
 
 %prep
-%autosetup -n %{pkg_name}-%{version} -p1
+%autosetup -n %{pkg_name}-%{version} -N
+# Patch 12 is only needed for ImageMagick >= 7.1.2.15
+%if %{pkg_vcmp ImageMagick < 7.1.2.15}
+%autopatch -p1 -M 11
+%else
+%autopatch -p1
+%endif
 
 # fix script-without-shebang/spurious-executable-perm
 chmod 0644 ChangeLog LICENSE
