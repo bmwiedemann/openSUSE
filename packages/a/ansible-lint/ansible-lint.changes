@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Mar  6 06:10:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 26.3.0:
+  * Features
+    - feat: add jinja2-template-extension opt-in rule (#4979)
+      @djdanielsson
+  * Fixes
+    - fix: Add missing version_changed var to ComplexityRule class
+      (#4987) @thrashwerk
+  * Maintenance
+    - chore: pre-commit autoupdate (#4986) @pre-commit-ci[bot]
+    - chore(deps): update all dependencies pep621 (#4984)
+      @renovate[bot]
+    - chore(deps): update all dependencies (#4983) @renovate[bot]
+    - chore(deps-dev): bump minimatch from 9.0.5 to 10.2.4 in
+      /test/schemas (#4982) @dependabot[bot]
+
+-------------------------------------------------------------------
 Fri Feb 27 07:03:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 26.2.0:

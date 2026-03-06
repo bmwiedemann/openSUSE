@@ -39,7 +39,7 @@
 
 %global lib_name ansiblelint
 Name:           ansible-lint
-Version:        26.2.0
+Version:        26.3.0
 Release:        0%{?dist}
 Summary:        Best practices checker for Ansible
 License:        MIT
