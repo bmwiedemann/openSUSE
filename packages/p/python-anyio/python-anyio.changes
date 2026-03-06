@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  4 21:31:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.12.1:
+  * Changed all functions currently raising the private
+    NoCurrentAsyncBackend exception (since v4.12.0) to instead
+    raise the public NoEventLoopError exception
+  * Fixed anyio.functools.lru_cache not working with instance
+    methods
+
+-------------------------------------------------------------------
 Mon Dec  8 07:58:08 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.12.0:

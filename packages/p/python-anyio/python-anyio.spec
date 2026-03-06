@@ -1,7 +1,7 @@
 #
 # spec file for package python-anyio
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-anyio%{psuffix}
-Version:        4.12.0
+Version:        4.12.1
 Release:        0
 Summary:        High level compatibility layer for asynchronous event loop implementations
 License:        MIT

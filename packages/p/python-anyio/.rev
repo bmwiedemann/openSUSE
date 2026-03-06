@@ -516,4 +516,17 @@ SR for python stack proposal</comment>
     while shutting down the process pool when using the asyncio backend</comment>
     <requestid>1321496</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>17df7fc99d3c4a7b3459b2b98b7276ee</srcmd5>
+    <version>4.12.1</version>
+    <time>1772817412</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.12.1:
+  * Changed all functions currently raising the private
+    NoCurrentAsyncBackend exception (since v4.12.0) to instead
+    raise the public NoEventLoopError exception
+  * Fixed anyio.functools.lru_cache not working with instance
+    methods</comment>
+    <requestid>1336595</requestid>
+  </revision>
 </revisionlist>
