@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Cockpit Client Launcher
+Comment=Connect via ssh to servers running Cockpit
+Icon=cockpit-client-launcher
+Exec=cockpit-client-launcher
+Categories=Network;RemoteAccess

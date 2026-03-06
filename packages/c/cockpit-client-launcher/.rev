@@ -1,0 +1,15 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1b35ea7b818b912b4c9b76bf32af8927</srcmd5>
+    <version>356</version>
+    <time>1772817510</time>
+    <user>anag_factory</user>
+    <comment>Add cockpit-client-launcher
+
+* A new flatpak less version of cockpit client
+so far the only drawback is that user has to login compared from flatpak
+* zenity based dialog for cockpit enablement and firewall config
+secaudit requested in boo#1259068</comment>
+    <requestid>1337287</requestid>
+  </revision>
+</revisionlist>

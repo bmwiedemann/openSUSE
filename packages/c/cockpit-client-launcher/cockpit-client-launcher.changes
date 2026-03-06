@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Thu Mar  5 23:32:13 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add dependency on a cockpit-system
+  Required in case that patterns-cockpit is not installed
+
+-------------------------------------------------------------------
+Thu Mar  5 12:41:06 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Rename cockpit-client.changes to cockpit-client-launcher.changes 
+  Found by factory-auto
+
+-------------------------------------------------------------------
+Mon Mar  2 14:44:24 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Mention multiple password prompts in the zenity dialog.
+  Once for cockpit.socket enablement and once for firewall config
+
+-------------------------------------------------------------------
+Mon Mar  2 13:16:37 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add zenity dialog for starting cockpit if it's not running
+  friendly ask user for the firwall configuration.
+  Related to jsc#CPT-148
+
+-------------------------------------------------------------------
+Thu Feb 26 22:58:42 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- A true YaST_logo.svg inspired logo to differentiate icon from
+  flatpak launcher 
+
+-------------------------------------------------------------------
+Thu Feb 26 21:17:41 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Initial packaging of cockpit-client-launcher for Cockpit 356
+- Add org.cockpit_project.CockpitClient.desktop based
+  desktop file which uses cockpit-client-launcher
+- Add launcher that connects to locally installed cockpit-ws and
+  auto-detects the listening port from cockpit.socket
