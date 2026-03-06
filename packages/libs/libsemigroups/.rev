@@ -307,4 +307,20 @@
     <comment>- Update to release 3.5.0</comment>
     <requestid>1334536</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>a7475d62e32269a0bd0c4e24cff24006</srcmd5>
+    <version>3.5.1</version>
+    <time>1772050424</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.5.1</comment>
+    <requestid>1335153</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>9b7d4b8d96319574b2070111e60a0686</srcmd5>
+    <version>3.5.1</version>
+    <time>1772817608</time>
+    <user>anag_factory</user>
+    <comment>- Rectify version field in pkgconfig file</comment>
+    <requestid>1337135</requestid>
+  </revision>
 </revisionlist>

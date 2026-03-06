@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar  5 15:48:47 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Rectify version field in pkgconfig file
+
+-------------------------------------------------------------------
+Wed Feb 25 14:46:29 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.5.1
+  * `increase_degree_by` errneously threw if the resultant degree
+    would exceed the dot
+  * bmat8: throw from one if dim too high + correct docs for random
+
+-------------------------------------------------------------------
 Mon Feb 23 13:27:14 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.5.0
