@@ -10,7 +10,7 @@ Index: b/rmt/Makefile.am
 --- a/rmt/Makefile.am
 +++ b/rmt/Makefile.am
 @@ -1,17 +1,23 @@
- AM_CPPFLAGS = -I$(top_srcdir)/compat/include
+ AM_CPPFLAGS = -I$(top_srcdir)/common
  DISTCLEANFILES =
  EXTRA_DIST =
 +bin_PROGRAMS =
@@ -37,22 +37,25 @@ Index: b/rmt/Makefile.am
 -EXTRA_DIST += rmt.8.in
 -
  rmt_SOURCES = rmt.c rmt.h
- rmt_LDADD = ../compat/lib/libcompat.la $(EXT2FS_LIBS)
+ rmt_LDADD = ../common/libcommon.la $(EXT2FS_LIBS)
  
-@@ -22,3 +28,8 @@ rmt.8: rmt.8.in
+@@ -22,6 +28,11 @@ rmt.8: rmt.8.in
  	$(AM_V_GEN)\
  	sed -e "s|__DATE__|$(DATE)|g" \
  	    -e "s|__VERSION__|$(VERSION)|g" $< > $@
++
 +ermt.1: ermt.1.in
 +	$(AM_V_GEN)\
 +	sed -e "s|__DATE__|$(DATE)|g" \
 +	    -e "s|__VERSION__|$(VERSION)|g" $< > $@
-+
+ 
+ MAINTAINERCLEANFILES = \
+ 	Makefile.in
 Index: b/configure.ac
 ===================================================================
 --- a/configure.ac
 +++ b/configure.ac
-@@ -87,9 +87,6 @@ AC_MSG_CHECKING([whether to build ermt])
+@@ -112,9 +112,6 @@ AC_MSG_CHECKING([whether to build ermt])
  BUILD_ERMT=no
  AC_ARG_ENABLE([ermt], [AS_HELP_STRING([--enable-ermt],[compile ermt, an encrypting version of rmt @<:@default=no@:>@])])
  if test "$enable_ermt" = "yes"; then
@@ -66,8 +69,9 @@ Index: b/Makefile.am
 ===================================================================
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -1,9 +1,6 @@
- ACLOCAL_AMFLAGS = -I m4
+@@ -2,10 +2,7 @@ ACLOCAL_AMFLAGS = -I m4
+ AM_CFLAGS = $(WERROR_FLAGS)
+ export AM_CFLAGS
  
 -SUBDIRS = compat/lib common dump restore faketape
 -if BUILD_RMT

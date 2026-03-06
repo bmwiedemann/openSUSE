@@ -1,7 +1,7 @@
 #
 # spec file for package dump
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dump
-Version:        0.4b49
+Version:        0.4b53
 Release:        0
 Summary:        Programs for backing up and restoring ext2/3/4 filesystems
 License:        BSD-3-Clause
@@ -31,7 +31,6 @@ Patch0:         %{name}-0.4b46-pathnames.patch
 # PATCH-FIX-UPSTREAM dump-0.4b46-rmt-ermt.patch svalx@svalx.net -- Independent rmt and
 # ermt build, change its locations to _bindir
 Patch1:         %{name}-0.4b46-rmt-ermt.patch
-Patch3:         %{name}-0.4b43-include.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  e2fsprogs-devel
@@ -43,8 +42,8 @@ BuildRequires:  openssl-devel
 BuildRequires:  readline-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  zlib-devel
-Recommends:     %{name}-rmt = %{version}
-Recommends:     mt
+Suggests:       %{name}-rmt = %{version}
+Suggests:       mt
 
 %description
 The dump package contains both dump and restore.  Dump examines files
@@ -56,9 +55,11 @@ restore a full backup of a file system.
 %package	rmt
 Summary:        Provides certain programs with access to remote tape devices
 Group:          Productivity/Archiving/Backup
+%if %{suse_version} <= 1600 || %{suse_version} >= 1699
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+%endif
 Provides:       rmt
+Conflicts:      rmt
 
 %description	rmt
 The rmt utility provides remote access to tape devices for programs
@@ -78,26 +79,23 @@ export CFLAGS="%{optflags} -fcommon"
   --enable-sqlite \
   --enable-ermt \
   --enable-rmt=no \
-  --with-rmtpath=%{_bindir}
+  --with-rmtpath=%{_bindir} \
+  --enable-werror=no
 %make_build
 
 %install
 %make_install
 mv examples/encrypted_rmt .
-# Alternatives system
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-ln -sf %{_sysconfdir}/alternatives/rmt %{buildroot}%{_bindir}/rmt
-ln -sf %{_sysconfdir}/alternatives/rmt.1%{ext_man} %{buildroot}%{_mandir}/man1/rmt.1%{ext_man}
+# Also provide ermt as an rmt implementation
+ln -s %{_bindir}/ermt %{buildroot}%{_bindir}/rmt
+ln -s %{_mandir}/man1/ermt.1 %{buildroot}%{_mandir}/man1/rmt.1
 
+%if %{suse_version} <= 1600 || %{suse_version} >= 1699
 %post rmt
-%{_sbindir}/update-alternatives --force \
-    --install %{_bindir}/rmt rmt %{_bindir}/ermt 20 \
-    --slave %{_mandir}/man1/rmt.1%{ext_man} rmt.1%{ext_man} %{_mandir}/man1/ermt.1%{ext_man}
-
-%postun rmt
 if [ ! -f %{_bindir}/ermt ] ; then
    "%{_sbindir}/update-alternatives" --remove rmt %{_bindir}/ermt
 fi
+%endif
 
 %files
 %{_sbindir}/dump
@@ -109,12 +107,10 @@ fi
 %doc AUTHORS TODO dump.lsm examples
 
 %files rmt
-%ghost %{_bindir}/rmt
+%{_bindir}/rmt
 %{_bindir}/ermt
-%ghost %{_mandir}/man1/rmt.1%{ext_man}
+%{_mandir}/man1/rmt.1%{?ext_man}
 %{_mandir}/man1/ermt.1%{?ext_man}
-%ghost %{_sysconfdir}/alternatives/rmt
-%ghost %{_sysconfdir}/alternatives/rmt.1%{ext_man}
 %doc encrypted_rmt/README
 
 %changelog

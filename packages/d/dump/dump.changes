@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Mar  2 18:34:30 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Remove update-alternatives %post scripts for SLES 16.x future releases
+  (jsc#PED-15644, bsc#1245893)
+
+-------------------------------------------------------------------
+Mon Feb  9 19:53:36 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 0.4b53
+  * Do not dump the quota and orphan hidden inodes.
+  * When a dump has more than 31 volumes, report all the volumes read
+    rather than stopping at 31.
+  * add --use-blockdev-for-dumpdates to revert to old behaviour where
+    blockdev is always written to dumpdates. Improve fstab filtering so
+    that bind mounts can be dumped.
+  * Relax the restriction of incremental dumping of subdirectories and
+    updating of the dumpdates file where --use-blockdev-for-dumpdates is
+    not being used.
+  * Add --no-set-curr-dir-perms which bypasses the question about setting
+    permissions on . when restoring.
+  * For full changelog see NEWS file
+- Disable werror which was enabled by default but causes build errors
+- Remove update-alternatives, conflict with rmt instead and symlink ermt
+  to rmt (bsc#1245893)
+- Refresh dump-0.4b46-rmt-ermt.patch
+- Drop dump-0.4b43-include.patch, no longer needed
+- Downgrade rmt and mt Recommends to Suggests. It's better to not install
+  these by default in order to avoid user confusion with conflicts with
+  other packages providing rmt such as tar-rmt (bsc#1244396)
+
+-------------------------------------------------------------------
 Tue Dec 17 20:03:34 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 0.4b49:
