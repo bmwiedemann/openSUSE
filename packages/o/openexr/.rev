@@ -1005,4 +1005,12 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
     <comment>CVE-2026-26981, [bsc#1258773]</comment>
     <requestid>1335209</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>d1d78b4d53219ad285cb01443de08324</srcmd5>
+    <version>3.4.6</version>
+    <time>1772817435</time>
+    <user>anag_factory</user>
+    <comment>CVE-2026-27622, (bsc#1259177)</comment>
+    <requestid>1336704</requestid>
+  </revision>
 </revisionlist>
