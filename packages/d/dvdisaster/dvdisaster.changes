@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  6 13:39:54 UTC 2026 - Marc-Elias Travitzky <marcelias.travitzky@suse.com>
+
+- Fix build by adding glycin-loaders as build dependency 
+
+-------------------------------------------------------------------
 Mon Nov 11 08:44:51 UTC 2024 - Dave Plater <davejplater@gmail.com>
 
 - Fix build with patch: dvdisaster-addstdio.patch
