@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar  4 15:29:26 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- Update to 7.4
+  - Do not create world-readable directories
+  - digest_edirectory_auth: Fix LDAPS memory leaks
+  - snmplib: Improve handling of zero-length ASN OCTET STRINGs
+  - Debug tls_read_method()/tls_write_method() errors
+  - ICMP: Harden echo paths, fix overflows, UB, and leaks
+  - Set SSL_OP_LEGACY_SERVER_CONNECT when peeking at servers
+  - security_file_certgen: Fix OPENSSL_malloc()/free(3) mismatch
+  - Detect FreeBSD ports Heimdal package
+  - Remove SQUID_CHECK_KRB5_HEIMDAL_BROKEN_KRB5_H macro
+  - Remove SQUID_CHECK_KRB5_SOLARIS_BROKEN_KRB5_H macro
+  - ext_kerberos_ldap_group_acl: Do not prohibit all LDFLAGS
+  - negotiate_sspi_auth: Respond with ERR when FormatMessage() fails
+  - ... and some code cleanups
+  - ... and some CI improvements
+
+-------------------------------------------------------------------
 Thu Nov  6 18:56:27 UTC 2025 - Adam Majer <adam.majer@suse.de>
 
 Since version 6, some previously deprecated features have been removed:
