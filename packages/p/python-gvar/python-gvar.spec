@@ -17,7 +17,7 @@
 
 
 Name:           python-gvar
-Version:        13.1.7
+Version:        13.1.9
 Release:        0
 Summary:        Utilities for manipulating correlated Gaussian random variables
 License:        GPL-3.0-only
