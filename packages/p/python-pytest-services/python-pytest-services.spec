@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-services
-Version:        2.2.1
+Version:        2.2.2
 Release:        0
 Summary:        Services plugin for pytest testing framework
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-services
-Source:         https://github.com/pytest-dev/pytest-services/archive/%{version}.tar.gz
+Source:         https://github.com/pytest-dev/pytest-services/releases/download/v%{version}/pytest_services-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pylibmc}
@@ -55,7 +55,7 @@ The plugin provides a set of fixtures and utility functions to start service
 processes for your tests with pytest.
 
 %prep
-%setup -q -n pytest-services-%{version}
+%setup -q -n pytest_services-%{version}
 # we don't test mysql anway
 sed -i -e '/import MySQLdb/d' tests/test_plugin.py
 

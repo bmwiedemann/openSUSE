@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  5 08:32:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.2:
+  * #47: Replace distutils.spawn.find_executable with
+    shutil.which. The package distutils is deprecated.
+
+-------------------------------------------------------------------
 Thu May  1 07:02:59 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
@@ -12,15 +19,15 @@ Sat Jun 10 09:24:57 UTC 2023 - ecsos <ecsos@opensuse.org>
 -------------------------------------------------------------------
 Wed Mar 23 06:23:05 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Remove mock BuildRequires, not needed. 
+- Remove mock BuildRequires, not needed.
 
 -------------------------------------------------------------------
 Thu Nov  5 15:53:37 UTC 2020 - Marketa Machova <mmachova@suse.com>
 
 - Update to 2.2.1
-  * #38: Retry to lock resource if zc.lockfile.LockError is raised. 
+  * #38: Retry to lock resource if zc.lockfile.LockError is raised.
     Fix needed for pytest-xdist. (StabbarN)
-  * #42: Retry on zc.lockfile.LockError in file_lock, use existing 
+  * #42: Retry on zc.lockfile.LockError in file_lock, use existing
     timeout kwarg (mshriver)
 
 -------------------------------------------------------------------
@@ -29,7 +36,7 @@ Mon Jun 29 12:05:26 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 - Update to version 2.1.0
   * #34: Deprecated slave_id fixture in favor of worker_id,
     for compatibility with pytest-xdist 2.
- 
+
 -------------------------------------------------------------------
 Fri Mar 13 12:39:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 

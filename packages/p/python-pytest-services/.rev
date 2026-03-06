@@ -78,4 +78,18 @@
 - No more greedy globs in %files.</comment>
     <requestid>1273808</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3a4bbe549e65647f65bb6065b2560a83</srcmd5>
+    <version>2.2.2</version>
+    <time>1772817424</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.2.2:
+  * #47: Replace distutils.spawn.find_executable with
+    shutil.which. The package distutils is deprecated.
+
+- Remove mock BuildRequires, not needed.
+  * #38: Retry to lock resource if zc.lockfile.LockError is raised.
+  * #42: Retry on zc.lockfile.LockError in file_lock, use existing</comment>
+    <requestid>1336687</requestid>
+  </revision>
 </revisionlist>
