@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Mar  5 19:43:05 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 7.6.0:
+  * new options --max-size and min-size to search files whose
+    physical size is in the specified MIN and/or MAX range
+  * fix zsh completion syntax error
+  * update option --ignore-file to ignore files and directories
+    specified in an .gitignore file as an absolute /glob to ignore
+    those matching the glob under its sub-directories
+  * fix emulation of GNU grep option -z (--null-data) to match
+    newlines (zero bytes internally) with pattern \s (space), which
+    requires non-standard regex behavior internally to include
+    matching zero bytes with pattern \s
+  * update --ignore-file=FILE to accept a FILE pathname to a non-
+    local gitignore FILE that applies globally to ignore files and
+    directories, similar to --exclude-from=FILE, but with the minor
+    difference that gitignore rules match both files and
+    directories with a single glob
+  * fix third-party sourced zopen.c library (BSD open source) one-
+    byte read beyond its allocated struct s_zstate state variable
+    in getcode()
+  * fix -m (--max-count) with context options -A or -C sometimes
+    producing garbled after-context output that may cause a crash
+    in the worst case
+  * fix reverse sort by date --sort=rchanged and --sort=rcreated
+    not recognized by the TUI at startup
+  * update ugrep to search named pipe files specified as arguments
+    on the command line instead of skipping them by default, such
+    as process substitutions; also improve Linux special system
+    files /proc and /sys skipping and/or reading and option -z
+    file read error handling to avoid possible pipe fd leaks when
+    thousands of /proc files are searched that produce (expected)
+    read errors
+  * support option --no-empty while using full grep-emulation mode,
+    i.e. when ugrep is renamed to grep
+
+-------------------------------------------------------------------
 Mon Jun 30 10:06:08 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 7.5.0:
