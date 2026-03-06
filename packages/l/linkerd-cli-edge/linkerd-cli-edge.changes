@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Mar 06 06:15:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.3.1:
+  * build(deps): bump linkerd-validator from 0.1.6 to 0.1.7
+    (#15000)
+  * build(deps): bump quote from 1.0.42 to 1.0.45 (#14993)
+  * build(deps): bump syn from 2.0.114 to 2.0.117 (#14994)
+  * build(deps): bump ipnet from 2.11.0 to 2.12.0 (#14995)
+  * build(deps): bump tokio-macros from 2.6.0 to 2.6.1 (#14996)
+  * build(deps): bump docker/login-action from 3.7.0 to 4.0.0
+    (#14997)
+  * build(deps): bump docker/setup-qemu-action (#14998)
+  * build(deps): bump tokio from 1.49.0 to 1.50.0 (#14987)
+  * build(deps): bump itoa from 1.0.15 to 1.0.17 (#14988)
+  * build(deps): bump zmij from 1.0.17 to 1.0.21 (#14989)
+  * build(deps): bump iana-time-zone from 0.1.64 to 0.1.65 (#14990)
+  * build(deps): bump github.com/go-openapi/spec from 0.22.3 to
+    0.22.4 (#14979)
+  * build(deps): bump axum-core from 0.5.5 to 0.5.6 (#14980)
+  * build(deps): bump tonic-prost from 0.14.2 to 0.14.5 (#14982)
+  * build(deps): bump security-framework-sys from 2.15.0 to 2.17.0
+    (#14983)
+  * build(deps): bump tj-actions/changed-files from 47.0.4 to
+    47.0.5 (#14984)
+  * build(deps): bump crazy-max/ghaction-github-runtime (#14985)
+  * build(deps): bump github.com/mattn/go-runewidth from 0.0.19 to
+    0.0.20 (#14942)
+  * build(deps): bump actions/setup-go from 6.2.0 to 6.3.0 (#14963)
+  * build(deps-dev): bump css-loader from 7.1.3 to 7.1.4 in
+    /web/app (#14951)
+  * build(deps): bump extractions/setup-just from 3.0.0 to 3.1.0
+    (#14952)
+  * build(deps): bump the kube group with 7 updates (#14978)
+  * build(deps-dev): bump webpack from 5.105.2 to 5.105.3 in
+    /web/app (#14976)
+  * build(deps): bump actions/download-artifact (#14972)
+  * build(deps): bump actions/download-artifact from 7.0.0 to 8.0.0
+    (#14971)
+  * build(deps): bump actions/upload-artifact from 6.0.0 to 7.0.0
+    (#14970)
+  * build(deps): bump axum from 0.8.7 to 0.8.8 (#14969)
+  * build(deps): bump bumpalo from 3.19.0 to 3.20.2 (#14968)
+  * build(deps): bump tower from 0.5.2 to 0.5.3 (#14967)
+  * build(deps): bump regex-automata from 0.4.13 to 0.4.14 (#14966)
+  * chore(deps): upgrade linkerd-await (#14950)
+  * chore(deps): bump rand from 0.9.2 to 0.10.0 (#14965)
+  * build(deps): bump log from 0.4.28 to 0.4.29 (#14962)
+  * build(deps): bump regex-syntax from 0.8.8 to 0.8.10 (#14961)
+  * build(deps): bump aws-lc-rs from 1.15.0 to 1.16.0 (#14960)
+  * build(deps): bump tower-http from 0.6.6 to 0.6.8 (#14958)
+  * build(deps): bump tonic from 0.14.4 to 0.14.5 in the grpc group
+    (#14956)
+  * build(deps): bump the clap group with 2 updates (#14955)
+  * build(deps): bump the clap group with 2 updates (#14943)
+  * build(deps): bump tokio from 1.48.0 to 1.49.0 (#14946)
+  * build(deps): bump rustls-pki-types from 1.13.1 to 1.14.0
+    (#14945)
+  * build(deps): bump hyper-util from 0.1.17 to 0.1.20 (#14944)
+
+-------------------------------------------------------------------
 Wed Feb 18 08:07:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.2.1:
