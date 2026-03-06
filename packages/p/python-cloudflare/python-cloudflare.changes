@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  6 09:21:36 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Refresh runtime dependencies
+- Verify tests still cannot be run in OBS
+- Add pydantic3.patch to (hopefully) support python314
+  * pydantic.v1 is incompatible with python314 and this patch stops
+    using this submodule
+
+-------------------------------------------------------------------
 Sat Feb 21 13:23:22 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 4.3.1

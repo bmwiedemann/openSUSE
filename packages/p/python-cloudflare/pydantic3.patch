@@ -1,0 +1,1204 @@
+From 813dd685ebe2158929bd275c58ad2979ef89b879 Mon Sep 17 00:00:00 2001
+From: "stainless-app[bot]"
+ <142633134+stainless-app[bot]@users.noreply.github.com>
+Date: Wed, 3 Sep 2025 21:54:37 +0000
+Subject: [PATCH] feat: improve future compat with pydantic v3
+
+---
+ src/cloudflare/_base_client.py                |   6 +-
+ src/cloudflare/_compat.py                     |  96 ++++++-------
+ src/cloudflare/_models.py                     |  80 +++++------
+ src/cloudflare/_utils/__init__.py             |  10 +-
+ src/cloudflare/_utils/_compat.py              |  45 ++++++
+ src/cloudflare/_utils/_datetime_parse.py      | 136 ++++++++++++++++++
+ src/cloudflare/_utils/_transform.py           |   6 +-
+ src/cloudflare/_utils/_typing.py              |   2 +-
+ src/cloudflare/_utils/_utils.py               |   1 -
+ src/cloudflare/types/request_tracers/trace.py |   4 +-
+ tests/test_models.py                          |  48 +++----
+ tests/test_transform.py                       |  16 +--
+ tests/test_utils/test_datetime_parse.py       | 110 ++++++++++++++
+ tests/utils.py                                |   8 +-
+ 14 files changed, 434 insertions(+), 134 deletions(-)
+ create mode 100644 src/cloudflare/_utils/_compat.py
+ create mode 100644 src/cloudflare/_utils/_datetime_parse.py
+ create mode 100644 tests/test_utils/test_datetime_parse.py
+
+Index: cloudflare-python-4.3.1/src/cloudflare/_base_client.py
+===================================================================
+--- cloudflare-python-4.3.1.orig/src/cloudflare/_base_client.py
++++ cloudflare-python-4.3.1/src/cloudflare/_base_client.py
+@@ -61,7 +61,7 @@ from ._types import (
+     ModelBuilderProtocol,
+ )
+ from ._utils import is_dict, is_list, asyncify, is_given, is_tuple, lru_cache, is_mapping, is_mapping_t, is_sequence_t
+-from ._compat import PYDANTIC_V2, model_copy, model_dump
++from ._compat import PYDANTIC_V1, model_copy, model_dump
+ from ._models import GenericModel, FinalRequestOptions, validate_type, construct_type
+ from ._response import (
+     APIResponse,
+@@ -234,7 +234,7 @@ class BaseSyncPage(BasePage[_T], Generic
+         model: Type[_T],
+         options: FinalRequestOptions,
+     ) -> None:
+-        if PYDANTIC_V2 and getattr(self, "__pydantic_private__", None) is None:
++        if (not PYDANTIC_V1) and getattr(self, "__pydantic_private__", None) is None:
+             self.__pydantic_private__ = {}
+ 
+         self._model = model
+@@ -322,7 +322,7 @@ class BaseAsyncPage(BasePage[_T], Generi
+         client: AsyncAPIClient,
+         options: FinalRequestOptions,
+     ) -> None:
+-        if PYDANTIC_V2 and getattr(self, "__pydantic_private__", None) is None:
++        if (not PYDANTIC_V1) and getattr(self, "__pydantic_private__", None) is None:
+             self.__pydantic_private__ = {}
+ 
+         self._model = model
+Index: cloudflare-python-4.3.1/src/cloudflare/_compat.py
+===================================================================
+--- cloudflare-python-4.3.1.orig/src/cloudflare/_compat.py
++++ cloudflare-python-4.3.1/src/cloudflare/_compat.py
+@@ -12,14 +12,13 @@ from ._types import IncEx, StrBytesIntFl
+ _T = TypeVar("_T")
+ _ModelT = TypeVar("_ModelT", bound=pydantic.BaseModel)
+ 
+-# --------------- Pydantic v2 compatibility ---------------
++# --------------- Pydantic v2, v3 compatibility ---------------
+ 
+ # Pyright incorrectly reports some of our functions as overriding a method when they don't
+ # pyright: reportIncompatibleMethodOverride=false
+ 
+-PYDANTIC_V2 = pydantic.VERSION.startswith("2.")
++PYDANTIC_V1 = pydantic.VERSION.startswith("1.")
+ 
+-# v1 re-exports
+ if TYPE_CHECKING:
+ 
+     def parse_date(value: date | StrBytesIntFloat) -> date:  # noqa: ARG001
+@@ -44,90 +43,92 @@ if TYPE_CHECKING:
+         ...
+ 
+ else:
+-    if PYDANTIC_V2:
+-        from pydantic.v1.typing import (
++    # v1 re-exports
++    if PYDANTIC_V1:
++        from pydantic.typing import (
+             get_args as get_args,
+             is_union as is_union,
+             get_origin as get_origin,
+             is_typeddict as is_typeddict,
+             is_literal_type as is_literal_type,
+         )
+-        from pydantic.v1.datetime_parse import parse_date as parse_date, parse_datetime as parse_datetime
++        from pydantic.datetime_parse import parse_date as parse_date, parse_datetime as parse_datetime
+     else:
+-        from pydantic.typing import (
++        from ._utils import (
+             get_args as get_args,
+             is_union as is_union,
+             get_origin as get_origin,
++            parse_date as parse_date,
+             is_typeddict as is_typeddict,
++            parse_datetime as parse_datetime,
+             is_literal_type as is_literal_type,
+         )
+-        from pydantic.datetime_parse import parse_date as parse_date, parse_datetime as parse_datetime
+ 
+ 
+ # refactored config
+ if TYPE_CHECKING:
+     from pydantic import ConfigDict as ConfigDict
+ else:
+-    if PYDANTIC_V2:
+-        from pydantic import ConfigDict
+-    else:
++    if PYDANTIC_V1:
+         # TODO: provide an error message here?
+         ConfigDict = None
++    else:
++        from pydantic import ConfigDict as ConfigDict
+ 
+ 
+ # renamed methods / properties
+ def parse_obj(model: type[_ModelT], value: object) -> _ModelT:
+-    if PYDANTIC_V2:
+-        return model.model_validate(value)
+-    else:
++    if PYDANTIC_V1:
+         return cast(_ModelT, model.parse_obj(value))  # pyright: ignore[reportDeprecated, reportUnnecessaryCast]
++    else:
++        return model.model_validate(value)
+ 
+ 
+ def field_is_required(field: FieldInfo) -> bool:
+-    if PYDANTIC_V2:
+-        return field.is_required()
+-    return field.required  # type: ignore
++    if PYDANTIC_V1:
++        return field.required  # type: ignore
++    return field.is_required()
+ 
+ 
+ def field_get_default(field: FieldInfo) -> Any:
+     value = field.get_default()
+-    if PYDANTIC_V2:
+-        from pydantic_core import PydanticUndefined
+-
+-        if value == PydanticUndefined:
+-            return None
++    if PYDANTIC_V1:
+         return value
++    from pydantic_core import PydanticUndefined
++
++    if value == PydanticUndefined:
++        return None
+     return value
+ 
+ 
+ def field_outer_type(field: FieldInfo) -> Any:
+-    if PYDANTIC_V2:
+-        return field.annotation
+-    return field.outer_type_  # type: ignore
++    if PYDANTIC_V1:
++        return field.outer_type_  # type: ignore
++    return field.annotation
+ 
+ 
+ def get_model_config(model: type[pydantic.BaseModel]) -> Any:
+-    if PYDANTIC_V2:
+-        return model.model_config
+-    return model.__config__  # type: ignore
++    if PYDANTIC_V1:
++        return model.__config__  # type: ignore
++    return model.model_config
+ 
+ 
+ def get_model_fields(model: type[pydantic.BaseModel]) -> dict[str, FieldInfo]:
+-    if PYDANTIC_V2:
+-        return model.model_fields
+-    return model.__fields__  # type: ignore
++    if PYDANTIC_V1:
++        return model.__fields__  # type: ignore
++    return model.model_fields
+ 
+ 
+ def model_copy(model: _ModelT, *, deep: bool = False) -> _ModelT:
+-    if PYDANTIC_V2:
+-        return model.model_copy(deep=deep)
+-    return model.copy(deep=deep)  # type: ignore
++    if PYDANTIC_V1:
++        return model.copy(deep=deep)  # type: ignore
++    return model.model_copy(deep=deep)
+ 
+ 
+ def model_json(model: pydantic.BaseModel, *, indent: int | None = None) -> str:
+-    if PYDANTIC_V2:
+-        return model.model_dump_json(indent=indent)
+-    return model.json(indent=indent)  # type: ignore
++    if PYDANTIC_V1:
++        return model.json(indent=indent)  # type: ignore
++    return model.model_dump_json(indent=indent)
+ 
+ 
+ def model_dump(
+@@ -139,14 +140,14 @@ def model_dump(
+     warnings: bool = True,
+     mode: Literal["json", "python"] = "python",
+ ) -> dict[str, Any]:
+-    if PYDANTIC_V2 or hasattr(model, "model_dump"):
++    if (not PYDANTIC_V1) or hasattr(model, "model_dump"):
+         return model.model_dump(
+             mode=mode,
+             exclude=exclude,
+             exclude_unset=exclude_unset,
+             exclude_defaults=exclude_defaults,
+             # warnings are not supported in Pydantic v1
+-            warnings=warnings if PYDANTIC_V2 else True,
++            warnings=True if PYDANTIC_V1 else warnings,
+         )
+     return cast(
+         "dict[str, Any]",
+@@ -159,9 +160,9 @@ def model_dump(
+ 
+ 
+ def model_parse(model: type[_ModelT], data: Any) -> _ModelT:
+-    if PYDANTIC_V2:
+-        return model.model_validate(data)
+-    return model.parse_obj(data)  # pyright: ignore[reportDeprecated]
++    if PYDANTIC_V1:
++        return model.parse_obj(data)  # pyright: ignore[reportDeprecated]
++    return model.model_validate(data)
+ 
+ 
+ # generic models
+@@ -170,17 +171,16 @@ if TYPE_CHECKING:
+     class GenericModel(pydantic.BaseModel): ...
+ 
+ else:
+-    if PYDANTIC_V2:
++    if PYDANTIC_V1:
++        import pydantic.generics
++
++        class GenericModel(pydantic.generics.GenericModel, pydantic.BaseModel): ...
++    else:
+         # there no longer needs to be a distinction in v2 but
+         # we still have to create our own subclass to avoid
+         # inconsistent MRO ordering errors
+         class GenericModel(pydantic.BaseModel): ...
+ 
+-    else:
+-        import pydantic.generics
+-
+-        class GenericModel(pydantic.generics.GenericModel, pydantic.BaseModel): ...
+-
+ 
+ # cached properties
+ if TYPE_CHECKING:
+Index: cloudflare-python-4.3.1/src/cloudflare/_models.py
+===================================================================
+--- cloudflare-python-4.3.1.orig/src/cloudflare/_models.py
++++ cloudflare-python-4.3.1/src/cloudflare/_models.py
+@@ -50,7 +50,7 @@ from ._utils import (
+     strip_annotated_type,
+ )
+ from ._compat import (
+-    PYDANTIC_V2,
++    PYDANTIC_V1,
+     ConfigDict,
+     GenericModel as BaseGenericModel,
+     get_args,
+@@ -81,11 +81,7 @@ class _ConfigProtocol(Protocol):
+ 
+ 
+ class BaseModel(pydantic.BaseModel):
+-    if PYDANTIC_V2:
+-        model_config: ClassVar[ConfigDict] = ConfigDict(
+-            extra="allow", defer_build=coerce_boolean(os.environ.get("DEFER_PYDANTIC_BUILD", "true"))
+-        )
+-    else:
++    if PYDANTIC_V1:
+ 
+         @property
+         @override
+@@ -95,6 +91,10 @@ class BaseModel(pydantic.BaseModel):
+ 
+         class Config(pydantic.BaseConfig):  # pyright: ignore[reportDeprecated]
+             extra: Any = pydantic.Extra.allow  # type: ignore
++    else:
++        model_config: ClassVar[ConfigDict] = ConfigDict(
++            extra="allow", defer_build=coerce_boolean(os.environ.get("DEFER_PYDANTIC_BUILD", "true"))
++        )
+ 
+     def to_dict(
+         self,
+@@ -211,25 +211,25 @@ class BaseModel(pydantic.BaseModel):
+         _extra = {}
+         for key, value in values.items():
+             if key not in model_fields:
+-                if PYDANTIC_V2:
+-                    _extra[key] = value
+-                else:
++                if PYDANTIC_V1:
+                     _fields_set.add(key)
+                     fields_values[key] = value
++                else:
++                    _extra[key] = value
+ 
+         object.__setattr__(m, "__dict__", fields_values)
+ 
+-        if PYDANTIC_V2:
+-            # these properties are copied from Pydantic's `model_construct()` method
+-            object.__setattr__(m, "__pydantic_private__", None)
+-            object.__setattr__(m, "__pydantic_extra__", _extra)
+-            object.__setattr__(m, "__pydantic_fields_set__", _fields_set)
+-        else:
++        if PYDANTIC_V1:
+             # init_private_attributes() does not exist in v2
+             m._init_private_attributes()  # type: ignore
+ 
+             # copied from Pydantic v1's `construct()` method
+             object.__setattr__(m, "__fields_set__", _fields_set)
++        else:
++            # these properties are copied from Pydantic's `model_construct()` method
++            object.__setattr__(m, "__pydantic_private__", None)
++            object.__setattr__(m, "__pydantic_extra__", _extra)
++            object.__setattr__(m, "__pydantic_fields_set__", _fields_set)
+ 
+         return m
+ 
+@@ -239,7 +239,7 @@ class BaseModel(pydantic.BaseModel):
+         # although not in practice
+         model_construct = construct
+ 
+-    if not PYDANTIC_V2:
++    if PYDANTIC_V1:
+         # we define aliases for some of the new pydantic v2 methods so
+         # that we can just document these methods without having to specify
+         # a specific pydantic version as some users may not know which
+@@ -359,10 +359,10 @@ def _construct_field(value: object, fiel
+     if value is None:
+         return field_get_default(field)
+ 
+-    if PYDANTIC_V2:
+-        type_ = field.annotation
+-    else:
++    if PYDANTIC_V1:
+         type_ = cast(type, field.outer_type_)  # type: ignore
++    else:
++        type_ = field.annotation  # type: ignore
+ 
+     if type_ is None:
+         raise RuntimeError(f"Unexpected field type is None for {key}")
+@@ -605,30 +605,30 @@ def _build_discriminated_union_meta(*, u
+     for variant in get_args(union):
+         variant = strip_annotated_type(variant)
+         if is_basemodel_type(variant):
+-            if PYDANTIC_V2:
+-                field = _extract_field_schema_pv2(variant, discriminator_field_name)
+-                if not field:
++            if PYDANTIC_V1:
++                field_info = cast("dict[str, FieldInfo]", variant.__fields__).get(discriminator_field_name)  # pyright: ignore[reportDeprecated, reportUnnecessaryCast]
++                if not field_info:
+                     continue
+ 
+                 # Note: if one variant defines an alias then they all should
+-                discriminator_alias = field.get("serialization_alias")
+-
+-                field_schema = field["schema"]
++                discriminator_alias = field_info.alias
+ 
+-                if field_schema["type"] == "literal":
+-                    for entry in cast("LiteralSchema", field_schema)["expected"]:
++                if (annotation := getattr(field_info, "annotation", None)) and is_literal_type(annotation):
++                    for entry in get_args(annotation):
+                         if isinstance(entry, str):
+                             mapping[entry] = variant
+             else:
+-                field_info = cast("dict[str, FieldInfo]", variant.__fields__).get(discriminator_field_name)  # pyright: ignore[reportDeprecated, reportUnnecessaryCast]
+-                if not field_info:
++                field = _extract_field_schema_pv2(variant, discriminator_field_name)
++                if not field:
+                     continue
+ 
+                 # Note: if one variant defines an alias then they all should
+-                discriminator_alias = field_info.alias
++                discriminator_alias = field.get("serialization_alias")
+ 
+-                if (annotation := getattr(field_info, "annotation", None)) and is_literal_type(annotation):
+-                    for entry in get_args(annotation):
++                field_schema = field["schema"]
++
++                if field_schema["type"] == "literal":
++                    for entry in cast("LiteralSchema", field_schema)["expected"]:
+                         if isinstance(entry, str):
+                             mapping[entry] = variant
+ 
+@@ -691,7 +691,7 @@ else:
+         pass
+ 
+ 
+-if PYDANTIC_V2:
++if not PYDANTIC_V1:
+     from pydantic import TypeAdapter as _TypeAdapter
+ 
+     _CachedTypeAdapter = cast("TypeAdapter[object]", lru_cache(maxsize=None)(_TypeAdapter))
+@@ -761,12 +761,12 @@ class FinalRequestOptions(pydantic.BaseM
+     json_data: Union[Body, None] = None
+     extra_json: Union[AnyMapping, None] = None
+ 
+-    if PYDANTIC_V2:
+-        model_config: ClassVar[ConfigDict] = ConfigDict(arbitrary_types_allowed=True)
+-    else:
++    if PYDANTIC_V1:
+ 
+         class Config(pydantic.BaseConfig):  # pyright: ignore[reportDeprecated]
+             arbitrary_types_allowed: bool = True
++    else:
++        model_config: ClassVar[ConfigDict] = ConfigDict(arbitrary_types_allowed=True)
+ 
+     def get_max_retries(self, max_retries: int) -> int:
+         if isinstance(self.max_retries, NotGiven):
+@@ -799,9 +799,9 @@ class FinalRequestOptions(pydantic.BaseM
+             key: strip_not_given(value)
+             for key, value in values.items()
+         }
+-        if PYDANTIC_V2:
+-            return super().model_construct(_fields_set, **kwargs)
+-        return cast(FinalRequestOptions, super().construct(_fields_set, **kwargs))  # pyright: ignore[reportDeprecated]
++        if PYDANTIC_V1:
++            return cast(FinalRequestOptions, super().construct(_fields_set, **kwargs))  # pyright: ignore[reportDeprecated]
++        return super().model_construct(_fields_set, **kwargs)
+ 
+     if not TYPE_CHECKING:
+         # type checkers incorrectly complain about this assignment
+Index: cloudflare-python-4.3.1/src/cloudflare/_utils/__init__.py
+===================================================================
+--- cloudflare-python-4.3.1.orig/src/cloudflare/_utils/__init__.py
++++ cloudflare-python-4.3.1/src/cloudflare/_utils/__init__.py
+@@ -10,7 +10,6 @@ from ._utils import (
+     lru_cache as lru_cache,
+     is_mapping as is_mapping,
+     is_tuple_t as is_tuple_t,
+-    parse_date as parse_date,
+     is_iterable as is_iterable,
+     is_sequence as is_sequence,
+     coerce_float as coerce_float,
+@@ -23,7 +22,6 @@ from ._utils import (
+     coerce_boolean as coerce_boolean,
+     coerce_integer as coerce_integer,
+     file_from_path as file_from_path,
+-    parse_datetime as parse_datetime,
+     strip_not_given as strip_not_given,
+     deepcopy_minimal as deepcopy_minimal,
+     get_async_library as get_async_library,
+@@ -32,6 +30,13 @@ from ._utils import (
+     maybe_coerce_boolean as maybe_coerce_boolean,
+     maybe_coerce_integer as maybe_coerce_integer,
+ )
++from ._compat import (
++    get_args as get_args,
++    is_union as is_union,
++    get_origin as get_origin,
++    is_typeddict as is_typeddict,
++    is_literal_type as is_literal_type,
++)
+ from ._typing import (
+     is_list_type as is_list_type,
+     is_union_type as is_union_type,
+@@ -55,3 +60,4 @@ from ._reflection import (
+     function_has_argument as function_has_argument,
+     assert_signatures_in_sync as assert_signatures_in_sync,
+ )
++from ._datetime_parse import parse_date as parse_date, parse_datetime as parse_datetime
+Index: cloudflare-python-4.3.1/src/cloudflare/_utils/_compat.py
+===================================================================
+--- /dev/null
++++ cloudflare-python-4.3.1/src/cloudflare/_utils/_compat.py
+@@ -0,0 +1,45 @@
++from __future__ import annotations
++
++import sys
++import typing_extensions
++from typing import Any, Type, Union, Literal, Optional
++from datetime import date, datetime
++from typing_extensions import get_args as _get_args, get_origin as _get_origin
++
++from .._types import StrBytesIntFloat
++from ._datetime_parse import parse_date as _parse_date, parse_datetime as _parse_datetime
++
++_LITERAL_TYPES = {Literal, typing_extensions.Literal}
++
++
++def get_args(tp: type[Any]) -> tuple[Any, ...]:
++    return _get_args(tp)
++
++
++def get_origin(tp: type[Any]) -> type[Any] | None:
++    return _get_origin(tp)
++
++
++def is_union(tp: Optional[Type[Any]]) -> bool:
++    if sys.version_info < (3, 10):
++        return tp is Union  # type: ignore[comparison-overlap]
++    else:
++        import types
++
++        return tp is Union or tp is types.UnionType
++
++
++def is_typeddict(tp: Type[Any]) -> bool:
++    return typing_extensions.is_typeddict(tp)
++
++
++def is_literal_type(tp: Type[Any]) -> bool:
++    return get_origin(tp) in _LITERAL_TYPES
++
++
++def parse_date(value: Union[date, StrBytesIntFloat]) -> date:
++    return _parse_date(value)
++
++
++def parse_datetime(value: Union[datetime, StrBytesIntFloat]) -> datetime:
++    return _parse_datetime(value)
+Index: cloudflare-python-4.3.1/src/cloudflare/_utils/_datetime_parse.py
+===================================================================
+--- /dev/null
++++ cloudflare-python-4.3.1/src/cloudflare/_utils/_datetime_parse.py
+@@ -0,0 +1,136 @@
++"""
++This file contains code from https://github.com/pydantic/pydantic/blob/main/pydantic/v1/datetime_parse.py
++without the Pydantic v1 specific errors.
++"""
++
++from __future__ import annotations
++
++import re
++from typing import Dict, Union, Optional
++from datetime import date, datetime, timezone, timedelta
++
++from .._types import StrBytesIntFloat
++
++date_expr = r"(?P<year>\d{4})-(?P<month>\d{1,2})-(?P<day>\d{1,2})"
++time_expr = (
++    r"(?P<hour>\d{1,2}):(?P<minute>\d{1,2})"
++    r"(?::(?P<second>\d{1,2})(?:\.(?P<microsecond>\d{1,6})\d{0,6})?)?"
++    r"(?P<tzinfo>Z|[+-]\d{2}(?::?\d{2})?)?$"
++)
++
++date_re = re.compile(f"{date_expr}$")
++datetime_re = re.compile(f"{date_expr}[T ]{time_expr}")
++
++
++EPOCH = datetime(1970, 1, 1)
++# if greater than this, the number is in ms, if less than or equal it's in seconds
++# (in seconds this is 11th October 2603, in ms it's 20th August 1970)
++MS_WATERSHED = int(2e10)
++# slightly more than datetime.max in ns - (datetime.max - EPOCH).total_seconds() * 1e9
++MAX_NUMBER = int(3e20)
++
++
++def _get_numeric(value: StrBytesIntFloat, native_expected_type: str) -> Union[None, int, float]:
++    if isinstance(value, (int, float)):
++        return value
++    try:
++        return float(value)
++    except ValueError:
++        return None
++    except TypeError:
++        raise TypeError(f"invalid type; expected {native_expected_type}, string, bytes, int or float") from None
++
++
++def _from_unix_seconds(seconds: Union[int, float]) -> datetime:
++    if seconds > MAX_NUMBER:
++        return datetime.max
++    elif seconds < -MAX_NUMBER:
++        return datetime.min
++
++    while abs(seconds) > MS_WATERSHED:
++        seconds /= 1000
++    dt = EPOCH + timedelta(seconds=seconds)
++    return dt.replace(tzinfo=timezone.utc)
++
++
++def _parse_timezone(value: Optional[str]) -> Union[None, int, timezone]:
++    if value == "Z":
++        return timezone.utc
++    elif value is not None:
++        offset_mins = int(value[-2:]) if len(value) > 3 else 0
++        offset = 60 * int(value[1:3]) + offset_mins
++        if value[0] == "-":
++            offset = -offset
++        return timezone(timedelta(minutes=offset))
++    else:
++        return None
++
++
++def parse_datetime(value: Union[datetime, StrBytesIntFloat]) -> datetime:
++    """
++    Parse a datetime/int/float/string and return a datetime.datetime.
++
++    This function supports time zone offsets. When the input contains one,
++    the output uses a timezone with a fixed offset from UTC.
++
++    Raise ValueError if the input is well formatted but not a valid datetime.
++    Raise ValueError if the input isn't well formatted.
++    """
++    if isinstance(value, datetime):
++        return value
++
++    number = _get_numeric(value, "datetime")
++    if number is not None:
++        return _from_unix_seconds(number)
++
++    if isinstance(value, bytes):
++        value = value.decode()
++
++    assert not isinstance(value, (float, int))
++
++    match = datetime_re.match(value)
++    if match is None:
++        raise ValueError("invalid datetime format")
++
++    kw = match.groupdict()
++    if kw["microsecond"]:
++        kw["microsecond"] = kw["microsecond"].ljust(6, "0")
++
++    tzinfo = _parse_timezone(kw.pop("tzinfo"))
++    kw_: Dict[str, Union[None, int, timezone]] = {k: int(v) for k, v in kw.items() if v is not None}
++    kw_["tzinfo"] = tzinfo
++
++    return datetime(**kw_)  # type: ignore
++
++
++def parse_date(value: Union[date, StrBytesIntFloat]) -> date:
++    """
++    Parse a date/int/float/string and return a datetime.date.
++
++    Raise ValueError if the input is well formatted but not a valid date.
++    Raise ValueError if the input isn't well formatted.
++    """
++    if isinstance(value, date):
++        if isinstance(value, datetime):
++            return value.date()
++        else:
++            return value
++
++    number = _get_numeric(value, "date")
++    if number is not None:
++        return _from_unix_seconds(number).date()
++
++    if isinstance(value, bytes):
++        value = value.decode()
++
++    assert not isinstance(value, (float, int))
++    match = date_re.match(value)
++    if match is None:
++        raise ValueError("invalid date format")
++
++    kw = {k: int(v) for k, v in match.groupdict().items()}
++
++    try:
++        return date(**kw)
++    except ValueError:
++        raise ValueError("invalid date format") from None
+Index: cloudflare-python-4.3.1/src/cloudflare/_utils/_transform.py
+===================================================================
+--- cloudflare-python-4.3.1.orig/src/cloudflare/_utils/_transform.py
++++ cloudflare-python-4.3.1/src/cloudflare/_utils/_transform.py
+@@ -18,6 +18,7 @@ from ._utils import (
+     is_iterable,
+ )
+ from .._files import is_base64_file_input
++from ._compat import get_origin, is_typeddict
+ from ._typing import (
+     is_list_type,
+     is_union_type,
+@@ -27,7 +28,6 @@ from ._typing import (
+     is_annotated_type,
+     strip_annotated_type,
+ )
+-from .._compat import get_origin, model_dump, is_typeddict
+ 
+ _T = TypeVar("_T")
+ 
+@@ -167,6 +167,8 @@ def _transform_recursive(
+ 
+             Defaults to the same value as the `annotation` argument.
+     """
++    from .._compat import model_dump
++
+     if inner_type is None:
+         inner_type = annotation
+ 
+@@ -329,6 +331,8 @@ async def _async_transform_recursive(
+ 
+             Defaults to the same value as the `annotation` argument.
+     """
++    from .._compat import model_dump
++
+     if inner_type is None:
+         inner_type = annotation
+ 
+Index: cloudflare-python-4.3.1/src/cloudflare/_utils/_typing.py
+===================================================================
+--- cloudflare-python-4.3.1.orig/src/cloudflare/_utils/_typing.py
++++ cloudflare-python-4.3.1/src/cloudflare/_utils/_typing.py
+@@ -15,7 +15,7 @@ from typing_extensions import (
+ 
+ from ._utils import lru_cache
+ from .._types import InheritsGeneric
+-from .._compat import is_union as _is_union
++from ._compat import is_union as _is_union
+ 
+ 
+ def is_annotated_type(typ: type) -> bool:
+Index: cloudflare-python-4.3.1/src/cloudflare/_utils/_utils.py
+===================================================================
+--- cloudflare-python-4.3.1.orig/src/cloudflare/_utils/_utils.py
++++ cloudflare-python-4.3.1/src/cloudflare/_utils/_utils.py
+@@ -22,7 +22,6 @@ from typing_extensions import TypeGuard
+ import sniffio
+ 
+ from .._types import NotGiven, FileTypes, NotGivenOr, HeadersLike
+-from .._compat import parse_date as parse_date, parse_datetime as parse_datetime
+ 
+ _T = TypeVar("_T")
+ _TupleT = TypeVar("_TupleT", bound=Tuple[object, ...])
+Index: cloudflare-python-4.3.1/src/cloudflare/types/request_tracers/trace.py
+===================================================================
+--- cloudflare-python-4.3.1.orig/src/cloudflare/types/request_tracers/trace.py
++++ cloudflare-python-4.3.1/src/cloudflare/types/request_tracers/trace.py
+@@ -5,11 +5,11 @@ from __future__ import annotations
+ from typing import TYPE_CHECKING, List
+ from typing_extensions import TypeAlias, TypeAliasType
+ 
+-from ..._compat import PYDANTIC_V2
++from ..._compat import PYDANTIC_V1
+ 
+ __all__ = ["Trace"]
+ 
+-if TYPE_CHECKING or PYDANTIC_V2:
++if TYPE_CHECKING or not PYDANTIC_V1:
+     Trace = TypeAliasType("Trace", List["TraceItem"])
+ else:
+     Trace: TypeAlias = List["TraceItem"]
+Index: cloudflare-python-4.3.1/tests/test_models.py
+===================================================================
+--- cloudflare-python-4.3.1.orig/tests/test_models.py
++++ cloudflare-python-4.3.1/tests/test_models.py
+@@ -8,7 +8,7 @@ import pydantic
+ from pydantic import Field
+ 
+ from cloudflare._utils import PropertyInfo
+-from cloudflare._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
++from cloudflare._compat import PYDANTIC_V1, parse_obj, model_dump, model_json
+ from cloudflare._models import BaseModel, construct_type
+ 
+ 
+@@ -294,12 +294,12 @@ def test_nested_union_invalid_data() ->
+     assert cast(bool, m.foo) is True
+ 
+     m = Model.construct(foo={"name": 3})
+-    if PYDANTIC_V2:
+-        assert isinstance(m.foo, Submodel1)
+-        assert m.foo.name == 3  # type: ignore
+-    else:
++    if PYDANTIC_V1:
+         assert isinstance(m.foo, Submodel2)
+         assert m.foo.name == "3"
++    else:
++        assert isinstance(m.foo, Submodel1)
++        assert m.foo.name == 3  # type: ignore
+ 
+ 
+ def test_list_of_unions() -> None:
+@@ -426,10 +426,10 @@ def test_iso8601_datetime() -> None:
+ 
+     expected = datetime(2019, 12, 27, 18, 11, 19, 117000, tzinfo=timezone.utc)
+ 
+-    if PYDANTIC_V2:
+-        expected_json = '{"created_at":"2019-12-27T18:11:19.117000Z"}'
+-    else:
++    if PYDANTIC_V1:
+         expected_json = '{"created_at": "2019-12-27T18:11:19.117000+00:00"}'
++    else:
++        expected_json = '{"created_at":"2019-12-27T18:11:19.117000Z"}'
+ 
+     model = Model.construct(created_at="2019-12-27T18:11:19.117Z")
+     assert model.created_at == expected
+@@ -531,7 +531,7 @@ def test_to_dict() -> None:
+     assert m4.to_dict(mode="python") == {"created_at": datetime.fromisoformat(time_str)}
+     assert m4.to_dict(mode="json") == {"created_at": time_str}
+ 
+-    if not PYDANTIC_V2:
++    if PYDANTIC_V1:
+         with pytest.raises(ValueError, match="warnings is only supported in Pydantic v2"):
+             m.to_dict(warnings=False)
+ 
+@@ -556,7 +556,7 @@ def test_forwards_compat_model_dump_meth
+     assert m3.model_dump() == {"foo": None}
+     assert m3.model_dump(exclude_none=True) == {}
+ 
+-    if not PYDANTIC_V2:
++    if PYDANTIC_V1:
+         with pytest.raises(ValueError, match="round_trip is only supported in Pydantic v2"):
+             m.model_dump(round_trip=True)
+ 
+@@ -580,10 +580,10 @@ def test_to_json() -> None:
+     assert json.loads(m.to_json()) == {"FOO": "hello"}
+     assert json.loads(m.to_json(use_api_names=False)) == {"foo": "hello"}
+ 
+-    if PYDANTIC_V2:
+-        assert m.to_json(indent=None) == '{"FOO":"hello"}'
+-    else:
++    if PYDANTIC_V1:
+         assert m.to_json(indent=None) == '{"FOO": "hello"}'
++    else:
++        assert m.to_json(indent=None) == '{"FOO":"hello"}'
+ 
+     m2 = Model()
+     assert json.loads(m2.to_json()) == {}
+@@ -595,7 +595,7 @@ def test_to_json() -> None:
+     assert json.loads(m3.to_json()) == {"FOO": None}
+     assert json.loads(m3.to_json(exclude_none=True)) == {}
+ 
+-    if not PYDANTIC_V2:
++    if PYDANTIC_V1:
+         with pytest.raises(ValueError, match="warnings is only supported in Pydantic v2"):
+             m.to_json(warnings=False)
+ 
+@@ -622,7 +622,7 @@ def test_forwards_compat_model_dump_json
+     assert json.loads(m3.model_dump_json()) == {"foo": None}
+     assert json.loads(m3.model_dump_json(exclude_none=True)) == {}
+ 
+-    if not PYDANTIC_V2:
++    if PYDANTIC_V1:
+         with pytest.raises(ValueError, match="round_trip is only supported in Pydantic v2"):
+             m.model_dump_json(round_trip=True)
+ 
+@@ -679,12 +679,12 @@ def test_discriminated_unions_invalid_da
+     )
+     assert isinstance(m, A)
+     assert m.type == "a"
+-    if PYDANTIC_V2:
+-        assert m.data == 100  # type: ignore[comparison-overlap]
+-    else:
++    if PYDANTIC_V1:
+         # pydantic v1 automatically converts inputs to strings
+         # if the expected type is a str
+         assert m.data == "100"
++    else:
++        assert m.data == 100  # type: ignore[comparison-overlap]
+ 
+ 
+ def test_discriminated_unions_unknown_variant() -> None:
+@@ -768,12 +768,12 @@ def test_discriminated_unions_with_alias
+     )
+     assert isinstance(m, A)
+     assert m.foo_type == "a"
+-    if PYDANTIC_V2:
+-        assert m.data == 100  # type: ignore[comparison-overlap]
+-    else:
++    if PYDANTIC_V1:
+         # pydantic v1 automatically converts inputs to strings
+         # if the expected type is a str
+         assert m.data == "100"
++    else:
++        assert m.data == 100  # type: ignore[comparison-overlap]
+ 
+ 
+ def test_discriminated_unions_overlapping_discriminators_invalid_data() -> None:
+@@ -833,7 +833,7 @@ def test_discriminated_unions_invalid_da
+     assert UnionType.__discriminator__ is discriminator
+ 
+ 
+-@pytest.mark.skipif(not PYDANTIC_V2, reason="TypeAliasType is not supported in Pydantic v1")
++@pytest.mark.skipif(PYDANTIC_V1, reason="TypeAliasType is not supported in Pydantic v1")
+ def test_type_alias_type() -> None:
+     Alias = TypeAliasType("Alias", str)  # pyright: ignore
+ 
+@@ -849,7 +849,7 @@ def test_type_alias_type() -> None:
+     assert m.union == "bar"
+ 
+ 
+-@pytest.mark.skipif(not PYDANTIC_V2, reason="TypeAliasType is not supported in Pydantic v1")
++@pytest.mark.skipif(PYDANTIC_V1, reason="TypeAliasType is not supported in Pydantic v1")
+ def test_field_named_cls() -> None:
+     class Model(BaseModel):
+         cls: str
+Index: cloudflare-python-4.3.1/tests/test_transform.py
+===================================================================
+--- cloudflare-python-4.3.1.orig/tests/test_transform.py
++++ cloudflare-python-4.3.1/tests/test_transform.py
+@@ -15,7 +15,7 @@ from cloudflare._utils import (
+     parse_datetime,
+     async_transform as _async_transform,
+ )
+-from cloudflare._compat import PYDANTIC_V2
++from cloudflare._compat import PYDANTIC_V1
+ from cloudflare._models import BaseModel
+ 
+ _T = TypeVar("_T")
+@@ -189,7 +189,7 @@ class DateModel(BaseModel):
+ @pytest.mark.asyncio
+ async def test_iso8601_format(use_async: bool) -> None:
+     dt = datetime.fromisoformat("2023-02-23T14:16:36.337692+00:00")
+-    tz = "Z" if PYDANTIC_V2 else "+00:00"
++    tz = "+00:00" if PYDANTIC_V1 else "Z"
+     assert await transform({"foo": dt}, DatetimeDict, use_async) == {"foo": "2023-02-23T14:16:36.337692+00:00"}  # type: ignore[comparison-overlap]
+     assert await transform(DatetimeModel(foo=dt), Any, use_async) == {"foo": "2023-02-23T14:16:36.337692" + tz}  # type: ignore[comparison-overlap]
+ 
+@@ -297,11 +297,11 @@ async def test_pydantic_unknown_field(us
+ @pytest.mark.asyncio
+ async def test_pydantic_mismatched_types(use_async: bool) -> None:
+     model = MyModel.construct(foo=True)
+-    if PYDANTIC_V2:
++    if PYDANTIC_V1:
++        params = await transform(model, Any, use_async)
++    else:
+         with pytest.warns(UserWarning):
+             params = await transform(model, Any, use_async)
+-    else:
+-        params = await transform(model, Any, use_async)
+     assert cast(Any, params) == {"foo": True}
+ 
+ 
+@@ -309,11 +309,11 @@ async def test_pydantic_mismatched_types
+ @pytest.mark.asyncio
+ async def test_pydantic_mismatched_object_type(use_async: bool) -> None:
+     model = MyModel.construct(foo=MyModel.construct(hello="world"))
+-    if PYDANTIC_V2:
++    if PYDANTIC_V1:
++        params = await transform(model, Any, use_async)
++    else:
+         with pytest.warns(UserWarning):
+             params = await transform(model, Any, use_async)
+-    else:
+-        params = await transform(model, Any, use_async)
+     assert cast(Any, params) == {"foo": {"hello": "world"}}
+ 
+ 
+Index: cloudflare-python-4.3.1/tests/test_utils/test_datetime_parse.py
+===================================================================
+--- /dev/null
++++ cloudflare-python-4.3.1/tests/test_utils/test_datetime_parse.py
+@@ -0,0 +1,110 @@
++"""
++Copied from https://github.com/pydantic/pydantic/blob/v1.10.22/tests/test_datetime_parse.py
++with modifications so it works without pydantic v1 imports.
++"""
++
++from typing import Type, Union
++from datetime import date, datetime, timezone, timedelta
++
++import pytest
++
++from cloudflare._utils import parse_date, parse_datetime
++
++
++def create_tz(minutes: int) -> timezone:
++    return timezone(timedelta(minutes=minutes))
++
++
++@pytest.mark.parametrize(
++    "value,result",
++    [
++        # Valid inputs
++        ("1494012444.883309", date(2017, 5, 5)),
++        (b"1494012444.883309", date(2017, 5, 5)),
++        (1_494_012_444.883_309, date(2017, 5, 5)),
++        ("1494012444", date(2017, 5, 5)),
++        (1_494_012_444, date(2017, 5, 5)),
++        (0, date(1970, 1, 1)),
++        ("2012-04-23", date(2012, 4, 23)),
++        (b"2012-04-23", date(2012, 4, 23)),
++        ("2012-4-9", date(2012, 4, 9)),
++        (date(2012, 4, 9), date(2012, 4, 9)),
++        (datetime(2012, 4, 9, 12, 15), date(2012, 4, 9)),
++        # Invalid inputs
++        ("x20120423", ValueError),
++        ("2012-04-56", ValueError),
++        (19_999_999_999, date(2603, 10, 11)),  # just before watershed
++        (20_000_000_001, date(1970, 8, 20)),  # just after watershed
++        (1_549_316_052, date(2019, 2, 4)),  # nowish in s
++        (1_549_316_052_104, date(2019, 2, 4)),  # nowish in ms
++        (1_549_316_052_104_324, date(2019, 2, 4)),  # nowish in μs
++        (1_549_316_052_104_324_096, date(2019, 2, 4)),  # nowish in ns
++        ("infinity", date(9999, 12, 31)),
++        ("inf", date(9999, 12, 31)),
++        (float("inf"), date(9999, 12, 31)),
++        ("infinity ", date(9999, 12, 31)),
++        (int("1" + "0" * 100), date(9999, 12, 31)),
++        (1e1000, date(9999, 12, 31)),
++        ("-infinity", date(1, 1, 1)),
++        ("-inf", date(1, 1, 1)),
++        ("nan", ValueError),
++    ],
++)
++def test_date_parsing(value: Union[str, bytes, int, float], result: Union[date, Type[Exception]]) -> None:
++    if type(result) == type and issubclass(result, Exception):  # pyright: ignore[reportUnnecessaryIsInstance]
++        with pytest.raises(result):
++            parse_date(value)
++    else:
++        assert parse_date(value) == result
++
++
++@pytest.mark.parametrize(
++    "value,result",
++    [
++        # Valid inputs
++        # values in seconds
++        ("1494012444.883309", datetime(2017, 5, 5, 19, 27, 24, 883_309, tzinfo=timezone.utc)),
++        (1_494_012_444.883_309, datetime(2017, 5, 5, 19, 27, 24, 883_309, tzinfo=timezone.utc)),
++        ("1494012444", datetime(2017, 5, 5, 19, 27, 24, tzinfo=timezone.utc)),
++        (b"1494012444", datetime(2017, 5, 5, 19, 27, 24, tzinfo=timezone.utc)),
++        (1_494_012_444, datetime(2017, 5, 5, 19, 27, 24, tzinfo=timezone.utc)),
++        # values in ms
++        ("1494012444000.883309", datetime(2017, 5, 5, 19, 27, 24, 883, tzinfo=timezone.utc)),
++        ("-1494012444000.883309", datetime(1922, 8, 29, 4, 32, 35, 999117, tzinfo=timezone.utc)),
++        (1_494_012_444_000, datetime(2017, 5, 5, 19, 27, 24, tzinfo=timezone.utc)),
++        ("2012-04-23T09:15:00", datetime(2012, 4, 23, 9, 15)),
++        ("2012-4-9 4:8:16", datetime(2012, 4, 9, 4, 8, 16)),
++        ("2012-04-23T09:15:00Z", datetime(2012, 4, 23, 9, 15, 0, 0, timezone.utc)),
++        ("2012-4-9 4:8:16-0320", datetime(2012, 4, 9, 4, 8, 16, 0, create_tz(-200))),
++        ("2012-04-23T10:20:30.400+02:30", datetime(2012, 4, 23, 10, 20, 30, 400_000, create_tz(150))),
++        ("2012-04-23T10:20:30.400+02", datetime(2012, 4, 23, 10, 20, 30, 400_000, create_tz(120))),
++        ("2012-04-23T10:20:30.400-02", datetime(2012, 4, 23, 10, 20, 30, 400_000, create_tz(-120))),
++        (b"2012-04-23T10:20:30.400-02", datetime(2012, 4, 23, 10, 20, 30, 400_000, create_tz(-120))),
++        (datetime(2017, 5, 5), datetime(2017, 5, 5)),
++        (0, datetime(1970, 1, 1, 0, 0, 0, tzinfo=timezone.utc)),
++        # Invalid inputs
++        ("x20120423091500", ValueError),
++        ("2012-04-56T09:15:90", ValueError),
++        ("2012-04-23T11:05:00-25:00", ValueError),
++        (19_999_999_999, datetime(2603, 10, 11, 11, 33, 19, tzinfo=timezone.utc)),  # just before watershed
++        (20_000_000_001, datetime(1970, 8, 20, 11, 33, 20, 1000, tzinfo=timezone.utc)),  # just after watershed
++        (1_549_316_052, datetime(2019, 2, 4, 21, 34, 12, 0, tzinfo=timezone.utc)),  # nowish in s
++        (1_549_316_052_104, datetime(2019, 2, 4, 21, 34, 12, 104_000, tzinfo=timezone.utc)),  # nowish in ms
++        (1_549_316_052_104_324, datetime(2019, 2, 4, 21, 34, 12, 104_324, tzinfo=timezone.utc)),  # nowish in μs
++        (1_549_316_052_104_324_096, datetime(2019, 2, 4, 21, 34, 12, 104_324, tzinfo=timezone.utc)),  # nowish in ns
++        ("infinity", datetime(9999, 12, 31, 23, 59, 59, 999999)),
++        ("inf", datetime(9999, 12, 31, 23, 59, 59, 999999)),
++        ("inf ", datetime(9999, 12, 31, 23, 59, 59, 999999)),
++        (1e50, datetime(9999, 12, 31, 23, 59, 59, 999999)),
++        (float("inf"), datetime(9999, 12, 31, 23, 59, 59, 999999)),
++        ("-infinity", datetime(1, 1, 1, 0, 0)),
++        ("-inf", datetime(1, 1, 1, 0, 0)),
++        ("nan", ValueError),
++    ],
++)
++def test_datetime_parsing(value: Union[str, bytes, int, float], result: Union[datetime, Type[Exception]]) -> None:
++    if type(result) == type and issubclass(result, Exception):  # pyright: ignore[reportUnnecessaryIsInstance]
++        with pytest.raises(result):
++            parse_datetime(value)
++    else:
++        assert parse_datetime(value) == result
+Index: cloudflare-python-4.3.1/tests/utils.py
+===================================================================
+--- cloudflare-python-4.3.1.orig/tests/utils.py
++++ cloudflare-python-4.3.1/tests/utils.py
+@@ -18,7 +18,7 @@ from cloudflare._utils import (
+     is_annotated_type,
+     is_type_alias_type,
+ )
+-from cloudflare._compat import PYDANTIC_V2, field_outer_type, get_model_fields
++from cloudflare._compat import PYDANTIC_V1, field_outer_type, get_model_fields
+ from cloudflare._models import BaseModel
+ 
+ BaseModelT = TypeVar("BaseModelT", bound=BaseModel)
+@@ -27,12 +27,12 @@ BaseModelT = TypeVar("BaseModelT", bound
+ def assert_matches_model(model: type[BaseModelT], value: BaseModelT, *, path: list[str]) -> bool:
+     for name, field in get_model_fields(model).items():
+         field_value = getattr(value, name)
+-        if PYDANTIC_V2:
+-            allow_none = False
+-        else:
++        if PYDANTIC_V1:
+             # in v1 nullability was structured differently
+             # https://docs.pydantic.dev/2.0/migration/#required-optional-and-nullable-fields
+             allow_none = getattr(field, "allow_none", False)
++        else:
++            allow_none = False
+ 
+         assert_matches_type(
+             field_outer_type(field),
+Index: cloudflare-python-4.3.1/src/cloudflare/types/zero_trust/dlp/profile.py
+===================================================================
+--- cloudflare-python-4.3.1.orig/src/cloudflare/types/zero_trust/dlp/profile.py
++++ cloudflare-python-4.3.1/src/cloudflare/types/zero_trust/dlp/profile.py
+@@ -6,7 +6,7 @@ from typing import List, Union, Optional
+ from datetime import datetime
+ from typing_extensions import Literal, TypeAlias
+ 
+-from ...._compat import PYDANTIC_V2
++from ...._compat import PYDANTIC_V1
+ from ...._models import BaseModel
+ 
+ __all__ = [
+@@ -497,29 +497,7 @@ Profile: TypeAlias = Union[CustomProfile
+ from .profiles.pattern import Pattern
+ from .context_awareness import ContextAwareness
+ 
+-if PYDANTIC_V2:
+-    CustomProfile.model_rebuild()
+-    CustomProfileEntryCustomEntry.model_rebuild()
+-    CustomProfileEntryPredefinedEntry.model_rebuild()
+-    CustomProfileEntryPredefinedEntryConfidence.model_rebuild()
+-    CustomProfileEntryIntegrationEntry.model_rebuild()
+-    CustomProfileEntryExactDataEntry.model_rebuild()
+-    CustomProfileEntryWordListEntry.model_rebuild()
+-    PredefinedProfile.model_rebuild()
+-    PredefinedProfileEntryCustomEntry.model_rebuild()
+-    PredefinedProfileEntryPredefinedEntry.model_rebuild()
+-    PredefinedProfileEntryPredefinedEntryConfidence.model_rebuild()
+-    PredefinedProfileEntryIntegrationEntry.model_rebuild()
+-    PredefinedProfileEntryExactDataEntry.model_rebuild()
+-    PredefinedProfileEntryWordListEntry.model_rebuild()
+-    IntegrationProfile.model_rebuild()
+-    IntegrationProfileEntryCustomEntry.model_rebuild()
+-    IntegrationProfileEntryPredefinedEntry.model_rebuild()
+-    IntegrationProfileEntryPredefinedEntryConfidence.model_rebuild()
+-    IntegrationProfileEntryIntegrationEntry.model_rebuild()
+-    IntegrationProfileEntryExactDataEntry.model_rebuild()
+-    IntegrationProfileEntryWordListEntry.model_rebuild()
+-else:
++if PYDANTIC_V1:
+     CustomProfile.update_forward_refs()  # type: ignore
+     CustomProfileEntryCustomEntry.update_forward_refs()  # type: ignore
+     CustomProfileEntryPredefinedEntry.update_forward_refs()  # type: ignore
+@@ -541,3 +519,25 @@ else:
+     IntegrationProfileEntryIntegrationEntry.update_forward_refs()  # type: ignore
+     IntegrationProfileEntryExactDataEntry.update_forward_refs()  # type: ignore
+     IntegrationProfileEntryWordListEntry.update_forward_refs()  # type: ignore
++else:
++    CustomProfile.model_rebuild()
++    CustomProfileEntryCustomEntry.model_rebuild()
++    CustomProfileEntryPredefinedEntry.model_rebuild()
++    CustomProfileEntryPredefinedEntryConfidence.model_rebuild()
++    CustomProfileEntryIntegrationEntry.model_rebuild()
++    CustomProfileEntryExactDataEntry.model_rebuild()
++    CustomProfileEntryWordListEntry.model_rebuild()
++    PredefinedProfile.model_rebuild()
++    PredefinedProfileEntryCustomEntry.model_rebuild()
++    PredefinedProfileEntryPredefinedEntry.model_rebuild()
++    PredefinedProfileEntryPredefinedEntryConfidence.model_rebuild()
++    PredefinedProfileEntryIntegrationEntry.model_rebuild()
++    PredefinedProfileEntryExactDataEntry.model_rebuild()
++    PredefinedProfileEntryWordListEntry.model_rebuild()
++    IntegrationProfile.model_rebuild()
++    IntegrationProfileEntryCustomEntry.model_rebuild()
++    IntegrationProfileEntryPredefinedEntry.model_rebuild()
++    IntegrationProfileEntryPredefinedEntryConfidence.model_rebuild()
++    IntegrationProfileEntryIntegrationEntry.model_rebuild()
++    IntegrationProfileEntryExactDataEntry.model_rebuild()
++    IntegrationProfileEntryWordListEntry.model_rebuild()
+Index: cloudflare-python-4.3.1/src/cloudflare/types/request_tracers/trace_item.py
+===================================================================
+--- cloudflare-python-4.3.1.orig/src/cloudflare/types/request_tracers/trace_item.py
++++ cloudflare-python-4.3.1/src/cloudflare/types/request_tracers/trace_item.py
+@@ -4,7 +4,7 @@ from __future__ import annotations
+ 
+ from typing import Optional
+ 
+-from ..._compat import PYDANTIC_V2
++from ..._compat import PYDANTIC_V1
+ from ..._models import BaseModel
+ 
+ __all__ = ["TraceItem"]
+@@ -43,7 +43,7 @@ class TraceItem(BaseModel):
+ 
+ from .trace import Trace
+ 
+-if PYDANTIC_V2:
+-    TraceItem.model_rebuild()
+-else:
++if PYDANTIC_V1:
+     TraceItem.update_forward_refs()  # type: ignore
++else:
++    TraceItem.model_rebuild()
+Index: cloudflare-python-4.3.1/src/cloudflare/types/request_tracers/trace_create_response.py
+===================================================================
+--- cloudflare-python-4.3.1.orig/src/cloudflare/types/request_tracers/trace_create_response.py
++++ cloudflare-python-4.3.1/src/cloudflare/types/request_tracers/trace_create_response.py
+@@ -4,7 +4,7 @@ from __future__ import annotations
+ 
+ from typing import Optional
+ 
+-from ..._compat import PYDANTIC_V2
++from ..._compat import PYDANTIC_V1
+ from ..._models import BaseModel
+ 
+ __all__ = ["TraceCreateResponse"]
+@@ -19,7 +19,7 @@ class TraceCreateResponse(BaseModel):
+ 
+ from .trace import Trace
+ 
+-if PYDANTIC_V2:
+-    TraceCreateResponse.model_rebuild()
+-else:
++if PYDANTIC_V1:
+     TraceCreateResponse.update_forward_refs()  # type: ignore
++else:
++    TraceCreateResponse.model_rebuild()

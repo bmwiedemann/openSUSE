@@ -16,6 +16,8 @@
 #
 
 
+# tests take forever and most of them (apparently) need internet access
+%bcond_with test
 %define  repo  cloudflare-python
 %{?sle15_python_module_pythons}
 Name:           python-cloudflare
@@ -25,19 +27,32 @@ Summary:        Python wrapper for the Cloudflare v4 API
 License:        MIT
 URL:            https://github.com/cloudflare/cloudflare-python
 Source:         https://github.com/cloudflare/cloudflare-python/archive/v%{version}/%{repo}-%{version}.tar.gz
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module beautifulsoup4}
+# PATCH-FIX-UPSTREAM https://github.com/cloudflare/cloudflare-python/commit/813dd685ebe2158929bd275c58ad2979ef89b879 feat: improve future compat with pydantic v3
+Patch0:         pydantic3.patch
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module jsonlines}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module requests >= 2.4.2}
+%if %{with test}
+BuildRequires:  %{python_module anyio >= 3.5.0}
+BuildRequires:  %{python_module dirty-equals}
+BuildRequires:  %{python_module distro >= 1.7.0}
+BuildRequires:  %{python_module httpx >= 0.23}
+BuildRequires:  %{python_module pydantic >= 1.0.0}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module respx}
+BuildRequires:  %{python_module sniffio}
+BuildRequires:  %{python_module typing-extensions >= 4.10}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyYAML
-Requires:       python-beautifulsoup4
-Requires:       python-jsonlines
-Requires:       python-requests >= 2.4.2
+Requires:       python-anyio >= 3.5.0
+Requires:       python-distro >= 1.7.0
+Requires:       python-httpx >= 0.23
+Requires:       python-pydantic >= 1.0.0
+Requires:       python-sniffio
+Requires:       python-typing-extensions >= 4.10
 BuildArch:      noarch
 %python_subpackages
 
@@ -50,7 +65,7 @@ all request params and response fields, and offers both synchronous and
 asynchronous clients powered by httpx.
 
 %prep
-%setup -q -n %{repo}-%{version}
+%autosetup -p1 -n %{repo}-%{version}
 
 %build
 %pyproject_wheel
@@ -64,8 +79,12 @@ asynchronous clients powered by httpx.
 # Those warnings are false positives and can be safely ignored.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-#%%check
-# there is one test, but even upstream does not launch it
+%check
+%if %{with test}
+# radar tests are improperly configured
+rm -r tests/api_resources/radar
+%pytest
+%endif
 
 %files %{python_files}
 %doc README.md
