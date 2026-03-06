@@ -25,19 +25,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# We currently have SELinux only on Tumbleweed and in ALP
-# but there's no apparmor in ALP
-%if 0%{?suse_version} > 1600
+# We currently have SELinux only on Tumbleweed and in SLES16.X
+# but there's no apparmor in SLES16.X
+%if 0%{?suse_version} >= 1699
 # TW
 %bcond_without selinux
 %bcond_without apparmor
 %else
-%if 0%{?suse_version} == 1600
-# ALP
+%if 0%{?suse_version} >= 1600 && %{suse_version} < 1699
+# SLES16.X
 %bcond_without selinux
 %bcond_with apparmor
 %else
-# Leap & SLE
+# Leap & SLE15.X
 %bcond_with selinux
 %bcond_without apparmor
 %endif

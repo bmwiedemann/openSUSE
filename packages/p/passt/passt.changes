@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  2 08:48:40 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
+
+- spec: Adhere to new `suse_version` convention for SLES16.X (jsc#PED-15779)
+
+-------------------------------------------------------------------
 Wed Feb 18 11:51:40 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
 
 - selinux: Use `selinux_requires_min` macro for dependencies
