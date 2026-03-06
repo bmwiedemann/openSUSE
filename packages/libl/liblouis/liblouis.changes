@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar  4 04:43:12 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.37.0:
+  + The nice thing about creating a release is that you get to
+    bring in all these wonderful contributions that people have
+    provided. This time we have new and improved braille tables for
+    Danish, Devanagari, English grade 3, Estonian 6-dot, Hungarian,
+    Italian 6-dot, Norwegian and UK 8-dot computer. Anthony has
+    done incredible work to fix obscure opcode bugs. XANOY and
+    PGZXB have patched many security problems and finally
+    Benedict Carling has improved typeform handling for
+    back-translation so that it is finally usable.
+
+-------------------------------------------------------------------
 Tue Dec 16 20:14:56 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 3.36.0:

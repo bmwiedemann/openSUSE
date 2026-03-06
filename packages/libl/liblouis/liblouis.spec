@@ -1,7 +1,7 @@
 #
 # spec file for package liblouis
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define pythons python3
 %define sover 20
 Name:           liblouis
-Version:        3.36.0
+Version:        3.37.0
 Release:        0
 Summary:        Two-way braille translator
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
