@@ -8341,4 +8341,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>1334604</requestid>
   </revision>
+  <revision rev="397" vrev="1">
+    <srcmd5>b558ff8509253a15140337e8a35e6b35</srcmd5>
+    <version>9.2.0110</version>
+    <time>1772817430</time>
+    <user>anag_factory</user>
+    <comment>- update to version 9.2.0110:
+ * patch 9.2.0110: No support for terminal synchronization mode
+ * patch 9.2.0109: VIM_BACKTICK is always defined except for tiny builds
+ * patch 9.2.0108: byteidx_common() and f_utf16idx() call ptr2len() twice
+ * patch 9.2.0107: tests: Test_statuslineopt() is flaky
+ * patch 9.2.0106: memory leak in expand_findfunc()
+ * patch 9.2.0105: memory leak in heredoc_get() in src/evalvars.c
+ * patch 9.2.0104: popup: flickering on opaque popups with overlapping text
+ * patch 9.2.0103: missing FEAT_MENU guard for w_winbar_height in window.c
+ * patch 9.2.0102: 'listchars' &quot;leadtab&quot; not used in :list
+ * patch 9.2.0101: statusline drawing issue for multi-lines
+ * patch 9.2.0100: Using reserved keyword new as function argument
+ * patch 9.2.0099: compiler warning about unused variable
+ * patch 9.2.0098: Coverity: Error handling issue in win_init()
+ * runtime(syntax-tests): regenerate dump files (after v9.2.0093)
+ * patch 9.2.0097: Memory leak in qf_push_dir()
+ * patch 9.2.0096: has() function is slow due to linear feature scan
+ * patch 9.2.0095: keypad keys may shadow normal keys
+ * translation: regenerate po/vim.pot after v9.2.0093
+ * patch 9.2.0094: popup: concealed text causes incorrect truncation
+ * patch 9.2.0093: Not possible to have window-local highlighting groups
+ * patch 9.2.0092: control flow commands using '|' fail inside a {} block
+ * runtime(nickel): Add filetype plugin with com, cms settings
+ * patch 9.2.0091: missing out-of-memory checks in quickfix.c
+ * runtime(po): Update syntax script
+ * runtime(doc): Tweak doc style in options.txt
+ * patch 9.2.0090: &quot;leadtab&quot; behavior inconsistent on line with only TABs
+ * patch 9.2.0089: netrw: does not take port into account in hostname validation
+ * translation: regenerate po/vim.pot after v9.2.0088
+ * runtime(osc52): Omit paste from the osc52 provider when g:osc52_disable_paste is enabled</comment>
+    <requestid>1336702</requestid>
+  </revision>
 </revisionlist>

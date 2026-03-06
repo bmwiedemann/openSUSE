@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Thu Mar  5 09:28:12 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to version 9.2.0110:
+ * patch 9.2.0110: No support for terminal synchronization mode
+ * patch 9.2.0109: VIM_BACKTICK is always defined except for tiny builds
+ * patch 9.2.0108: byteidx_common() and f_utf16idx() call ptr2len() twice
+ * patch 9.2.0107: tests: Test_statuslineopt() is flaky
+ * patch 9.2.0106: memory leak in expand_findfunc()
+ * patch 9.2.0105: memory leak in heredoc_get() in src/evalvars.c
+ * patch 9.2.0104: popup: flickering on opaque popups with overlapping text
+ * patch 9.2.0103: missing FEAT_MENU guard for w_winbar_height in window.c
+ * patch 9.2.0102: 'listchars' "leadtab" not used in :list
+ * patch 9.2.0101: statusline drawing issue for multi-lines
+ * patch 9.2.0100: Using reserved keyword new as function argument
+ * patch 9.2.0099: compiler warning about unused variable
+ * patch 9.2.0098: Coverity: Error handling issue in win_init()
+ * runtime(syntax-tests): regenerate dump files (after v9.2.0093)
+ * patch 9.2.0097: Memory leak in qf_push_dir()
+ * patch 9.2.0096: has() function is slow due to linear feature scan
+ * patch 9.2.0095: keypad keys may shadow normal keys
+ * translation: regenerate po/vim.pot after v9.2.0093
+ * patch 9.2.0094: popup: concealed text causes incorrect truncation
+ * patch 9.2.0093: Not possible to have window-local highlighting groups
+ * patch 9.2.0092: control flow commands using '|' fail inside a {} block
+ * runtime(nickel): Add filetype plugin with com, cms settings
+ * patch 9.2.0091: missing out-of-memory checks in quickfix.c
+ * runtime(po): Update syntax script
+ * runtime(doc): Tweak doc style in options.txt
+ * patch 9.2.0090: "leadtab" behavior inconsistent on line with only TABs
+ * patch 9.2.0089: netrw: does not take port into account in hostname validation
+ * translation: regenerate po/vim.pot after v9.2.0088
+ * runtime(osc52): Omit paste from the osc52 provider when g:osc52_disable_paste is enabled
+ * patch 9.2.0088: cannot display tabs for indentation
+ * patch 9.2.0087: popup: redrawing can be improved when moving popups
+ * patch 9.2.0086: Coverity complains that ScreenLines can be NULL
+ * patch 9.2.0085: tests: test_clientserver.vim is flaky
+ * runtime(xkb): Include a simple xkb ftplugin
+ * translation: regenerate po/vim.pot after v9.2.0083
+ * patch 9.2.0084: Vim9: isn_get_calltype() can be improved
+ * patch 9.2.0083: Cannot have a mutli-line statusline
+ * patch 9.2.0082: Patch v9.2.0052 was wrong
+ * patch 9.2.0081: Failed "z=" does not reset 'nospell' setting
+ * runtime(julia): Update julia ftplugin
+ * patch 9.2.0080: popup: a few redrawing problems
+ * runtime(vim): Update base syntax, improve :syntax group list arg matching
+ * patch 9.2.0079: memory leak in eval_dict()
+ * patch 9.2.0078: [security]: stack-buffer-overflow in build_stl_str_hl()
+ * patch 9.2.0077: [security]: Crash when recovering a corrupted swap file
+ * patch 9.2.0076: [security]: buffer-overflow in terminal handling
+ * patch 9.2.0075: [security]: Buffer underflow with emacs tag file
+ * patch 9.2.0074: [security]: Crash with overlong emacs tag file
+ * patch 9.2.0073: [security]: possible command injection using netrw
+ * patch 9.2.0072: inside_block() uses wrong index in loop
+ * patch 9.2.0071: Vim9: lambda function deleted on re-sourcing
+ * patch 9.2.0070: tests: various tests leave swapfiles around
+ * runtime(env): add ftplugin for env filetype
+ * patch 9.2.0069: highlight: incorrect string length and redundant code
+ * patch 9.2.0068: Inefficient use of list_append_string()
+ * patch 9.2.0067: memory leak in dict_extend_func()
+ * patch 9.2.0066: memory leak in build_drop_cmd()
+ * patch 9.2.0065: memory leak in invoke_sync_listeners()
+ * patch 9.2.0064: popup: opacity feature causes flickering
+ * patch 9.2.0063: memory leak in type_name_list_or_dict()
+ * patch 9.2.0062: Using the wrong field with DAP channel mode
+ * patch 9.2.0061: Not possible to know when a session will be loaded
+ * patch 9.2.0060: No support for the DAP channel mode
+ * patch 9.2.0059: memory leak in fill_assert_error
+ * patch 9.2.0058: Compile error in did_set_previewpopup()
+ * patch 9.2.0057: memory leak in exe_newdict()
+ * patch 9.2.0056: memory leak in ex_substitute
+ * patch 9.2.0055: memory leak in ExpandFromContext()
+ * patch 9.2.0054: eval_addblob() is inefficient
+ * patch 9.2.0053: Vims list concatenation is inefficient
+ * patch 9.2.0052: Wayland: hiding lower half of command line in tiny vim
+ * patch 9.2.0051: 'previewpopup' is missing features available in 'completepopup'
+ * patch 9.2.0050: WM_SETFOCUS not handled immediately
+ * patch 9.2.0049: Vim9: typename() wrong for lists/dicts/tuples with shared references
+ * patch 9.2.0048: MS-Windows: ConPTY not yet preferred
+ * patch 9.2.0047: Vim9: Comment parsing error with lambda
+ * runtime(sshconfig): Add 3 additional keywords to syntax script
+ * patch 9.2.0046: filetype: neon files are not recoginzed
+
+-------------------------------------------------------------------
 Mon Feb 23 19:01:28 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 9.2.0045:
