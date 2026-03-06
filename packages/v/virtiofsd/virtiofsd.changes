@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  2 07:27:58 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update vendor.tar.xz: Fix CVE-2026-25727 (bsc#1257912).
+
+-------------------------------------------------------------------
 Mon Aug 25 03:45:02 UTC 2025 - Caleb Crane <caleb.crane@suse.com>
 
 - Update to version 1.13.2:
