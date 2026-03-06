@@ -1,7 +1,7 @@
 #
 # spec file for package glfw
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-# html docs need doxygen >= 1.9.8 which isn't available on Leap
+# html docs need doxygen >= 1.9.8 which isn't available on Leap 15.x
 %if 0%{?suse_version} >= 1600
 %bcond_without html_docs
 %else
 %bcond_with html_docs
 %endif
 # On TW, build with geany by default
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %bcond_without geany
 %else
 %bcond_with geany

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 26 19:14:29 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Don't build with geany for SLES 16.x future releases. Keep it for TW.
+  (jsc#PED-15798)
+
+-------------------------------------------------------------------
 Thu Oct 24 15:30:16 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Only use geany on TW. That way we reduce the dependencies in
