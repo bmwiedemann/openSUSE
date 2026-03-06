@@ -1,7 +1,7 @@
 #
 # spec file for package cpio
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,7 +60,9 @@ the disk, a magnetic tape, or a pipe.
 Summary:        Tape drive control utility
 Group:          Productivity/Archiving/Backup
 Requires:       %{name} = %{version}
+%if %{suse_version} <= 1600 || %{suse_version} >= 1699
 Requires(post): update-alternatives
+%endif
 Provides:       mt
 Conflicts:      mt
 
@@ -97,10 +99,12 @@ ln -sf %{_bindir}/cpio %{buildroot}/bin
 %check
 make %{?_smp_mflags} check
 
+%if %{suse_version} <= 1600 || %{suse_version} >= 1699
 %post mt
 if [ ! -f %{_bindir}/gnumt ] ; then
    "%{_sbindir}/update-alternatives" --remove mt %{_bindir}/gnumt
 fi
+%endif
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}

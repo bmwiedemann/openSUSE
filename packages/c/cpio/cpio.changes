@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  2 16:41:55 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Remove update-alternatives %post scripts for SLES 16.x future releases
+  (jsc#PED-15643, bsc#1245890)
+
+-------------------------------------------------------------------
 Wed Jun 11 07:36:29 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Downgrade cpio-mt and rmt recommends to suggests (boo#1244434)
