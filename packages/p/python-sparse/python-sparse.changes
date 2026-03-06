@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Mar  6 01:10:20 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.18.0:
+  * Update sparse_finch notebook and upgrade finch-tensor
+  * Allow no-copy construction from SciPy COO arrays.
+  * MAINT: Re-enable COO tests after fix
+  * Implementing repeat function
+  * Adding tile function
+  * Setting boolean indexing flag to False
+  * Adding unstack function
+  * Fixing check_zero_fill_value
+  * Adding diff function
+  * fix: Fix conversions from non-canonical scipy.sparse arrays
+  * fix: Fix for check_zero_fill_value and equivalent
+  * MAINT: Upgrade MLIR version
+  * ENH: Implement reshape function
+  * ENH: CSC and CSF formats for MLIR backend
+  * MNT: Move constructors to a direct style
+  * MNT: Refactor MLIR constructors
+  * ENH: Simple COO format
+  * MNT: Add CI mode to examples
+  * BUG: Skip test_where test
+  * Fix 1D return dtype in argmax/argmin
+  * scipy.sparse fill-value fix.
+  * Add support for NumPy 2.0.
+  * API: Rename PyData backend to Numba
+  * API: Enable finch backend for scipy.sparse
+  * BUG: Fix CSR/CSC matmul
+  * API: Update asarray function
+  * Support Python 3.12 and drop 3.9.
+  * Remove backend kwarg from asarray.
+  * API: Initial finch_backend
+  * API: Establish pydata_backend
+  * Improve performance of GCXS dot ndarray
+  * Always use np.intp for indices.
+  * Add missing linear algebra functions from array API
+  * Make SciPy a soft dependency
+  * NumPy 2.0 support
+  * Add direct imports from NumPy for Array API support
+
+-------------------------------------------------------------------
 Tue Feb 25 20:18:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.15.5:

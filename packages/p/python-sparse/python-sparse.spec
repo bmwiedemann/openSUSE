@@ -1,7 +1,7 @@
 #
 # spec file for package python-sparse
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,13 +30,13 @@ ExcludeArch:    %{ix86} %{arm} ppc
 
 %{?sle15_python_module_pythons}
 Name:           python-sparse%{psuffix}
-Version:        0.15.5
+Version:        0.18.0
 Release:        0
 Summary:        Sparse n-dimensional arrays for Python
 License:        BSD-3-Clause
 URL:            https://github.com/pydata/sparse
 Source:         https://files.pythonhosted.org/packages/source/s/sparse/sparse-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 64}
 BuildRequires:  %{python_module setuptools_scm >= 8}
@@ -66,6 +66,8 @@ intended for somewhat general use.
 %prep
 %autosetup -p1 -n sparse-%{version}
 sed -i /addopts/d pytest.ini
+# Some documents are empty
+find . -name '*.md' -size 0 -delete
 
 %build
 %if !%{with test}
@@ -85,7 +87,7 @@ sed -i /addopts/d pytest.ini
 
 %if !%{with test}
 %files %{python_files}
-%doc README.rst docs/*.rst
+%doc README.md docs/*.md
 %license LICENSE
 %{python_sitelib}/sparse
 %{python_sitelib}/sparse-%{version}.dist-info

@@ -191,4 +191,41 @@
   * Add partial support for constructing and mirroring COO objects</comment>
     <requestid>1248473</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ef1d9339362d9aea9bec8c9a452d7ac4</srcmd5>
+    <version>0.18.0</version>
+    <time>1772817693</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.18.0:
+  * Update sparse_finch notebook and upgrade finch-tensor
+  * Allow no-copy construction from SciPy COO arrays.
+  * MAINT: Re-enable COO tests after fix
+  * Implementing repeat function
+  * Adding tile function
+  * Setting boolean indexing flag to False
+  * Adding unstack function
+  * Fixing check_zero_fill_value
+  * Adding diff function
+  * fix: Fix conversions from non-canonical scipy.sparse arrays
+  * fix: Fix for check_zero_fill_value and equivalent
+  * MAINT: Upgrade MLIR version
+  * ENH: Implement reshape function
+  * ENH: CSC and CSF formats for MLIR backend
+  * MNT: Move constructors to a direct style
+  * MNT: Refactor MLIR constructors
+  * ENH: Simple COO format
+  * MNT: Add CI mode to examples
+  * BUG: Skip test_where test
+  * Fix 1D return dtype in argmax/argmin
+  * scipy.sparse fill-value fix.
+  * Add support for NumPy 2.0.
+  * API: Rename PyData backend to Numba
+  * API: Enable finch backend for scipy.sparse
+  * BUG: Fix CSR/CSC matmul
+  * API: Update asarray function
+  * Support Python 3.12 and drop 3.9.
+  * Remove backend kwarg from asarray.
+  * API: Initial finch_backend</comment>
+    <requestid>1337149</requestid>
+  </revision>
 </revisionlist>
