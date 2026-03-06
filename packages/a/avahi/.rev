@@ -1374,4 +1374,12 @@ Pushing GNOME 45.rc packages</comment>
     <comment>Add avahi-CVE-2025-68276.patch, avahi-CVE-2025-68468.patch, avahi-CVE-2025-68471.patch, to fix security bugs (CVE-2025-68468, bsc#1256499, CVE-2025-68471, bsc#1256500, CVE-2025-68276, bsc#1256498) (forwarded request 1327114 from qzhao)</comment>
     <requestid>1327172</requestid>
   </revision>
+  <revision rev="176" vrev="42">
+    <srcmd5>801029b49b092ba0b0f3a8979efa9cb6</srcmd5>
+    <version>0.8</version>
+    <time>1772817445</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1336735</requestid>
+  </revision>
 </revisionlist>

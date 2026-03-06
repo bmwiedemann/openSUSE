@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  3 22:38:46 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use libalternative instead of update-alternatives in TW and SLFO
+  (jsc#PED-14835). 
+
+-------------------------------------------------------------------
 Tue Jan 13 04:23:18 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
 - Add avahi-CVE-2025-68276.patch:

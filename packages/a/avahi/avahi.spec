@@ -66,6 +66,11 @@ ExclusiveArch:  donotbuild
 %if %{build_glib2}
 %define debug_package_requires libavahi-ui%{avahi_ui_sover} = %{version}-%{release}
 %endif
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %define oldpython python
@@ -301,6 +306,13 @@ Requires:       %{name} = %{version}
 Requires:       python-Twisted
 Requires:       python-dbm
 Requires:       python-dbus-python
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 # Old name used for <= 10.3:
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 Provides:       avahi-python = %{version}
@@ -321,6 +333,13 @@ Requires:       %{name} = %{version}
 Requires:       python3-Twisted
 Requires:       python3-dbm
 Requires:       python3-dbus-python
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 # Old name used for <= 10.3:
 Provides:       avahi-python = %{version}
 Obsoletes:      avahi-python < %{version}
@@ -796,12 +815,18 @@ fi
 %if %{build_core}
 %if 0%{?python_subpackage_only}
 # this is rewritten by python_subpackages into the appropriate flavor
+%pre -n python-avahi
+%python_libalternatives_reset_alternative avahi-bookmarks
+
 %post -n python-avahi
 %python_install_alternative avahi-bookmarks avahi-bookmarks.1
 
 %postun -n python-avahi
 %python_uninstall_alternative avahi-bookmarks
 %else
+
+%pre -n python3-avahi
+%python_libalternatives_reset_alternative avahi-bookmarks
 
 %post -n python3-avahi
 %python_install_alternative avahi-bookmarks avahi-bookmarks.1
