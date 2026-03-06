@@ -27,4 +27,12 @@
   * feat: add ALT_L mod (forwarded request 1276624 from rrahl0)</comment>
     <requestid>1276625</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9eda1a798c8ff20411a7211bd5e98221</srcmd5>
+    <version>3.1.0</version>
+    <time>1772817549</time>
+    <user>anag_factory</user>
+    <comment>- Remove redundant Neovim workaround</comment>
+    <requestid>1336835</requestid>
+  </revision>
 </revisionlist>
