@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Feb 27 00:59:08 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.4.4:
+  * Increase the step-size damping of CSA and TPA.
+  * Provide option 'TPA_dampfac' analogous to 'CSA_dampfac'.
+  * Plots now show the current best solution and the distribution mean in two
+    subplots.
+  * Provide a more_algorithms sub-package containing purecma and CompactGA.
+  * Provide a provisional experimentation module (requires import
+    cma.experimentation).
+  * Fix compatibility issues (with comocma):
+    + add back the (deprecated) cma.constraints_handling.BoundTransform class
+      which was missing since 4.1.0. Note that cma.BoundTransform is the
+      recommended way to access this class
+    + remove dependency of OOOptimizer.optimize on self.result
+  * fix where plotting bails with some recent version of matplotlib>3.8.0.
+  * Various improvements of the logger and plotting.
+  * fmin2 accepts a constraints function as constraints keyword argument
+  * an improved CMAEvolutionStrategyResult2 class which also contains the
+    best feasible solution
+  * a reset_options method which also clears the current termination status
+  * polish the output of .optimize() and of .result_pretty()
+  * catch final .stop() value displayed with cma.plot
+  * constraints handling is available also in the ask-and-tell interface
+  * ask has an ignore_integer_variables argument to not mutate integer
+    variables
+  * an on/off switch for integer centering,
+    cma.integer_centering.centering_on (by default True)
+  * integer variables of candidate solutions are rounded
+  * moved main docstring from fmin to fmin2
+  * experimental plots for error estimates and sensitivities
+  * fix numpy scalar type representations at various places
+  * replace ineffective use_archives flag with archive_sent_solutions and
+    archive_after_sent
+  * a stand-alone boundary handling function wrapper BoundDomainTransform
+  * streamline plot docs, fix symlog plot with newest matplotlib, plots
+    display the value of .stop() and the version number
+  * a few more minor fixes and improvements
+  * replace setup.py with pyproject.toml
+  * move boundary handling into a separate module
+
+-------------------------------------------------------------------
 Tue Nov 26 04:31:35 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.0.0:

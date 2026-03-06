@@ -1,7 +1,7 @@
 #
 # spec file for package python-cma
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           python-cma
-Version:        4.0.0
+Version:        4.4.4
 Release:        0
 Summary:        Covariance Matrix Adaptation Evolution Strategy numerical optimizer
 License:        BSD-3-Clause
@@ -44,7 +44,12 @@ problems in continuous search spaces, implemented in Python.
 %prep
 %autosetup -n pycma-r%{version}
 #Remove unneeded shebang
-sed -i '1d' cma/{bbobbenchmarks.py,purecma.py,test.py}
+sed -i '1d' cma/{bbobbenchmarks.py,test.py,more_algorithms/purecma.py}
+# flat setup only works when we exclude notebooks* in pyproject.toml
+# which then fails to locally discover the src-layout correctly
+# ... from upstreams GitHub Actions
+mkdir src
+ln -s ../cma src/cma
 
 %build
 %pyproject_wheel
