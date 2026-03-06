@@ -1,8 +1,8 @@
-diff --git a/gvdb/gvdb-builder.c b/gvdb/gvdb-builder.c
-index 90ea50b..cf5f1f4 100644
---- a/gvdb/gvdb-builder.c
-+++ b/gvdb/gvdb-builder.c
-@@ -21,6 +21,7 @@
+Index: dconf-0.49.0/subprojects/gvdb/gvdb/gvdb-builder.c
+===================================================================
+--- dconf-0.49.0.orig/subprojects/gvdb/gvdb/gvdb-builder.c
++++ dconf-0.49.0/subprojects/gvdb/gvdb/gvdb-builder.c
+@@ -23,6 +23,7 @@
  #include "gvdb-format.h"
  
  #include <glib.h>
@@ -10,21 +10,24 @@ index 90ea50b..cf5f1f4 100644
  #include <fcntl.h>
  #if !defined(G_OS_WIN32) || !defined(_MSC_VER)
  #include <unistd.h>
-@@ -509,13 +510,22 @@ gvdb_table_write_contents (GHashTable   *table,
+@@ -541,17 +542,26 @@ gvdb_table_write_contents (GHashTable
+ {
+   GBytes *content;
    gboolean status;
-   FileBuilder *fb;
-   GString *str;
 +  GStatBuf buf;
 +  gint stat_ret;
  
-   fb = file_builder_new (byteswap);
-   file_builder_add_hash (fb, table, &root);
-   str = file_builder_serialise (fb, root);
+   g_return_val_if_fail (table != NULL, FALSE);
+   g_return_val_if_fail (filename != NULL, FALSE);
+   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
  
 +  stat_ret = g_stat (filename, &buf);
 +
-   status = g_file_set_contents (filename, str->str, str->len, error);
-   g_string_free (str, TRUE);
+   content = gvdb_table_get_contents (table, byteswap);
+ 
+   status = g_file_set_contents (filename, g_bytes_get_data (content, NULL), g_bytes_get_size (content), error);
+ 
+   g_bytes_unref (content);
  
 +  if (stat_ret == 0)
 +    g_chmod (filename, buf.st_mode);
@@ -33,3 +36,4 @@ index 90ea50b..cf5f1f4 100644
 +
    return status;
  }
+ 

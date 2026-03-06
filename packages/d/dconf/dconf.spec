@@ -17,13 +17,13 @@
 
 
 Name:           dconf
-Version:        0.40.0
+Version:        0.49.0
 Release:        0
 Summary:        Key-based configuration system
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://live.gnome.org/dconf
-Source0:        https://download.gnome.org/sources/dconf/0.40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/dconf/0.49/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM 0001-gvdb-Restore-permissions-on-changed-files.patch bsc#971074 bgo#758066 bsc#1203344 fezhang@suse.com -- Restore permissions on files changed by dconf update.
 Patch0:         0001-gvdb-Restore-permissions-on-changed-files.patch
 BuildRequires:  docbook-xsl-stylesheets
@@ -102,6 +102,9 @@ have configuration storage systems.
 %install
 %meson_install
 mkdir -p %{buildroot}%{_sysconfdir}/dconf/{profile,db}
+
+%check
+%meson_test
 
 %post -n libdconf1 -p /sbin/ldconfig
 %postun -n libdconf1 -p /sbin/ldconfig

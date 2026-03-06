@@ -4,6 +4,36 @@ Thu Nov 13 09:00:58 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 - Fix requires for dbus daemon, it's dbus-service, not dbus-1
 
 -------------------------------------------------------------------
+Tue Sep 16 12:07:23 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.49.0:
+  + tests:
+    - Use g_memdup2
+    - tests: Do not link libdconf_engine_test with libdconf
+    - tests: Do not use system profile
+    - tests: Use specific g_assert_ functions
+    - tests: Add a shellcheck test to validate SH files
+  + docs:
+    - Enable gtk-doc check
+    - Document dconf read -d option in dconf-tool.xml
+  + Spelling fixes (Ville Skyttä, !79)
+  + completion:
+    - Fix error on unknown command in nounset mode
+    - completion: Remove redundant case match
+    - completion: Annotate file with shell for shellcheck to use
+    - completion: Ignore shellcheck error about COMPREPLY
+    - completion: invoke the dconf command being completed
+    - completion: avoid errors from words starting with a dash
+  + build:
+    - Use GNOME module post_install()
+    - build: Use install prefix in systemd files paths
+    - build: Fix use of deprecated dependency.get_pkgconfig_variable()
+    - build: Move gvdb to a subproject and update
+  + Remove invalid maintainer entry from doap file
+- Rebase 0001-gvdb-Restore-permissions-on-changed-files.patch
+- Add %check section and run test suite
+
+-------------------------------------------------------------------
 Wed Dec 21 13:09:12 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: there is no known consumer of the -32bit
