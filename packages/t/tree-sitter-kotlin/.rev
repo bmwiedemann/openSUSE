@@ -20,4 +20,12 @@
   * chore: regenerate (forwarded request 1236955 from rrahl0)</comment>
     <requestid>1236956</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1fad8d3f293c78ac17eeb64d82443a1a</srcmd5>
+    <version>1.1.0</version>
+    <time>1772817555</time>
+    <user>anag_factory</user>
+    <comment>- Remove redundant Neovim workaround</comment>
+    <requestid>1336839</requestid>
+  </revision>
 </revisionlist>
