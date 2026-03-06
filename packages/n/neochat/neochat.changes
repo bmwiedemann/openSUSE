@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Mar  6 07:47:17 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.3/
+- Changes since 25.12.2:
+  * Use released libquotient in release branch
+  * Allow focusing and navigating the space drawer with a keyboard
+  * When favoriting/reprioritizng a room, make sure to re-sort the list
+  * Stop tree view from attempting to expand sections too early
+  * Fix the emoticon editor page
+  * Fix weird scrolling behavior in room list
+  * Re-settle the timeline view when replying to messages
+  * Fix undefined reference in Bubble
+  * Hide rooms with custom defined types in quick switcher
+  * Reduce the tap target of RoomTreeSection
+  * Fix the emoticon editor looking visually broken
+  * Focus code and location chooser maximize components too (kde#515462)
+  * Fix use after free in message delegate.
+  * Don't scroll the timeline when reacting to messages (kde#515306)
+  * Fix closeToYEnd check
+
+-------------------------------------------------------------------
 Tue Feb  3 10:06:17 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.2
