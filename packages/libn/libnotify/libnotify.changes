@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Jan  9 13:29:41 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.8.8:
+  + This release contains various fixes to have better handing for
+    icons, addressing issues due to recent changes, as well with
+    improvements and new features for notify-send.
+  + Added a fully-functional notify-send test suite, thus we
+    encourage distributors to run the tests through meson.
+  + notification-hints: Define notification hints with constant
+    values
+  + notification:
+    - Use better URI parsing for icons
+    - Improve property changes notifications
+    - Replace actions added with an existing name
+    - Fail on invalid action invocation
+    - Simplify the logic to support the legacy hints names
+    - Use the icon as icon-name, not as app-icon
+    - Improve reading images when inside a portal
+  + notify-send:
+    - Support parsing hex byte hints
+    - Set both the image path and the app-icon
+    - Add an option to override the app-icon on notification
+    - Add support to write the notification ID to a FD
+    - Add support to write the activated action to a FD
+    - Add support to write the activation token to a FD
+  + tests: Add exensive notify-send test suite and coverage check
+  + Bugs fixed:
+    - The closed signal only fires once
+    - Icon handling requires call to notify_get_server_info
+- Drop pkgconfig(gtk+-3.0) BuildRequires: No longer needed.
+
+-------------------------------------------------------------------
 Fri Sep 26 06:41:17 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.8.7:

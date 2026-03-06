@@ -1,7 +1,7 @@
 #
 # spec file for package libnotify
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libnotify
-Version:        0.8.7
+Version:        0.8.8
 Release:        0
 Summary:        Notifications Library
 License:        LGPL-2.1-or-later
@@ -35,7 +35,6 @@ BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.62.0
-BuildRequires:  pkgconfig(gtk+-3.0)
 
 %description
 D-BUS notifications library.
