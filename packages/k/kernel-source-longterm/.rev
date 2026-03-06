@@ -905,4 +905,12 @@ known issue: KMPs not yet propetly supported</comment>
     <comment>update longterm</comment>
     <requestid>1334134</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>4388be4ba2bf51c23990d221f9e36408</srcmd5>
+    <version>6.18.16</version>
+    <time>1772817421</time>
+    <user>anag_factory</user>
+    <comment>switch longterm to 6.18: with fixed kmp builds</comment>
+    <requestid>1336685</requestid>
+  </revision>
 </revisionlist>

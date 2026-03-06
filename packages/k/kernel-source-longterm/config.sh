@@ -1,5 +1,5 @@
 # The version of the main tarball to use
-SRCVERSION=6.12
+SRCVERSION=6.18
 # variant of the kernel-source package, either empty or "-rt"
 VARIANT=-longterm
 # enable kernel module compression
@@ -23,3 +23,5 @@ BUILD_HTML=Yes
 BUILD_PDF=No
 # Generate compile_commands.json
 GENERATE_COMPILE_COMMANDS=Yes
+# Use the new kABI tool
+USE_SUSE_KABI_TOOLS=Yes

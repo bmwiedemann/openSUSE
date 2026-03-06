@@ -17,9 +17,9 @@
 # needssslcertforbuild
 
 
-%define srcversion 6.12
-%define patchversion 6.12.74
-%define git_commit bd5d4c2ccc3fe8659f3ec78f6f1d1c20f15753ce
+%define srcversion 6.18
+%define patchversion 6.18.16
+%define git_commit 4228ab3ccf87b1711f5e9d746f538fdfb6c94dac
 %define variant -longterm%{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -31,7 +31,7 @@
 %define supported_modules_check 0
 %define build_flavor longterm
 %define generate_compile_commands 1
-%define use_suse_kabi_tools 0
+%define use_suse_kabi_tools 1
 %define gcc_package gcc
 %define gcc_compiler gcc
 
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-longterm
-Version:        6.12.74
+Version:        6.18.16
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gbd5d4c2
+Release:        <RELEASE>.g4228ab3
 %else
 Release:        0
 %endif
@@ -79,6 +79,11 @@ BuildRequires:  dwarves >= 1.22
 BuildRequires:  %gcc_package
 # for objtool
 BuildRequires:  libelf-devel
+# part of elfutils not shipped on SLE 12
+%if 0%{?suse_version} >= 1500
+# for gendwarfksyms
+BuildRequires:  libdw-devel
+%endif
 # required for 50-check-kernel-build-id rpm check
 BuildRequires:  elfutils
 %ifarch %arm
@@ -1118,59 +1123,6 @@ accessible simultaneously from multiple nodes of a cluster.
 
 %files -n ocfs2-kmp-%build_flavor -f ocfs2-kmp.files
 
-%package -n reiserfs-kmp-%build_flavor
-Summary:        Reiserfs kernel module
-Group:          System/Kernel
-Requires:       %name = %version-%source_rel
-Provides:       reiserfs-kmp = %version-%source_rel
-Provides:       multiversion(kernel)
-# tell weak-modules2 to ignore this package
-Provides:       kmp_in_kernel
-Requires(post): suse-module-tools >= 12.4
-%if %build_default
-%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
-Provides:       reiserfs-kmp-preempt = %version-%release
-%endif
-%endif
-Enhances:	%name
-Supplements:	packageand(%name:reiserfs-kmp-%build_flavor)
-
-%description -n reiserfs-kmp-%build_flavor
-The reiserfs file system is no longer supported in SLE15.  This package
-provides the reiserfs module for the installation system.
-
-%pre -n reiserfs-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "reiserfs-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
-
-%post -n reiserfs-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "reiserfs-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
-
-%preun -n reiserfs-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "reiserfs-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
-
-%postun -n reiserfs-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "reiserfs-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
-
-%posttrans -n reiserfs-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "reiserfs-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
-
-%files -n reiserfs-kmp-%build_flavor -f reiserfs-kmp.files
-
 %endif # %CONFIG_SUSE_KERNEL_SUPPORTED
 %endif # %CONFIG_MODULES
 
@@ -1215,7 +1167,7 @@ awk '{
 subpackages=(
 	base
 %if "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y"
-	cluster-md-kmp dlm-kmp gfs2-kmp kselftests-kmp ocfs2-kmp reiserfs-kmp
+	cluster-md-kmp dlm-kmp gfs2-kmp kselftests-kmp ocfs2-kmp
 %endif
 )
 for package in "${subpackages[@]}"; do
@@ -1323,14 +1275,7 @@ echo "Kernel debuginfo type: ${DEBUG_INFO_TYPE}"
 	--set-str CONFIG_LOCALVERSION -%source_rel-%build_flavor \
 	--enable  CONFIG_SUSE_KERNEL \
 	$CONFIG_SUSE_KERNEL_RELEASED \
-	$CONFIG_SUSE_HAVE_STABLE_KABI \
-%if 0%{?__debug_package:1}
-	--enable  CONFIG_DEBUG_INFO
-%else
-	--disable CONFIG_DEBUG_INFO \
-	--disable CONFIG_DEBUG_INFO_"${DEBUG_INFO_TYPE}" \
-	--enable  CONFIG_DEBUG_INFO_NONE
-%endif
+	$CONFIG_SUSE_HAVE_STABLE_KABI
 
 if [ %CONFIG_MODULE_SIG = "y" ]; then
 	if [ -n "%certs" ] ; then
@@ -1459,9 +1404,11 @@ fi
 
 %install
 
+%if 0%{?__debug_package:1}
 # get rid of /usr/lib/rpm/brp-strip-debug
-# strip removes too much from the vmlinux ELF binary
 export NO_BRP_STRIP_DEBUG=true
+%endif
+# strip removes too much from the vmlinux ELF binary
 export STRIP_KEEP_SYMTAB='*/vmlinux*'
 
 # %kernel_module_directory/%kernelrelease-%build_flavor/source points to the source
