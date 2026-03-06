@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Sat Feb 28 09:11:08 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.56.0:
+  + Handle caller-allocated fixed-size C-Arrays
+  + Fix reading array length on big-endian
+  + Invoke `do_constructed` for object constructed by GObject
+    directly
+  + events: fix main context iteration without thread default
+
+-------------------------------------------------------------------
+Mon Feb 16 15:28:22 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.55.3:
+  + Add typing annotations to `GLib` and `GObject` overrides
+  + Do not allow `__slots__` in GObject subclasses
+  + Documentation updates
+  + overrides/GLib: Add wrappers for `GLibUnix` split
+  + Fix leak in object initialization
+  + asyncio support without EventLoopPolicy
+  + Fix crash in string/array marshalling
+  + Update class type on wrapper destruction
+- Changes from version 3.55.2:
+  + Use cache logic for field/property/constant/signal closure
+    marshalling
+  + Refactor struct and object marshaller code
+  + Remove wrappers for `GLib.OptionContext` and `GLib.OptionGroup`
+  + Fix issue when Python objects are garbage collected
+  + Windows build failure with Python 3.13
+  + Refactoring
+- Changes from version 3.55.1:
+  + Enable `-Wswitch-enum` compiler option
+  + Pass `GIArgument` as value argument
+  + Support unichar properties
+  + Minimum supported Python version is 3.10
+  + docs: Add conda and pixi to getting started
+  + Fix a few memory leaks, refactorings and cleanup
+  + docs: Website updates
+  + Add backwards compatibility for
+    `Gdk.PaintableFlags.SIZE`/`CONTENTS`
+  + Fix missing instance variables when objects are garbage
+    collected
+  + Use a (temporary) object to make sure `do_dispose()` is called
+  + Call `do_constructed()` at the end of object initialization
+- Changes from version 3.55.0:
+  + Most notable changes are the removal of toggle references.
+    If you use python weakrefs to track PyGObjects, you should
+    change that to `GObject.Object.weak_ref()`.
+  + An environment variable `PYGI_OVERRIDES_PATH` can be set to add
+    additional override paths (especially for testing).
+  + Remove `GLib.options` module
+  + Support generic parameters for `Gio.ListStore`
+  + Cleanup: replace arguments in cache objects by functions
+  + Always sink floating objects
+  + Excempt GioPlatform namespaces from require_version check
+  + (backwards compat) Expose platform symbols through Gio module
+  + Update pythoncapi-compat
+  + Add PYGI_OVERRIDES_PATH environment variable
+  + Provide the intended GioUnix API, even on older GLib
+  + Code refactorings
+  + Remove `pygtkcompat` completely
+  + Array improvements
+  + Fix memory leak when array construction fails
+  + Unify properties handling
+  + Replace toggle references
+
+-------------------------------------------------------------------
 Sat Oct 18 16:33:19 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.54.5:

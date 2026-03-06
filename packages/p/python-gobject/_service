@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/pygobject.git</param>
-    <param name="revision">3.54.5</param>
+    <param name="revision">3.56.0</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v?(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
@@ -12,7 +12,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/python/pythoncapi-compat.git</param>
-    <param name="revision">2d18aecd7b2f549d38a13e27b682ea4966f37bd8</param>
+    <param name="revision">22811c3f0e69908894d2bd724f572b32667f2141</param>
     <param name="versionformat">vendored</param>
   </service>
   <service name="tar" mode="buildtime"/>

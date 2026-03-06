@@ -1,7 +1,7 @@
 #
 # spec file for package python-gobject
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@
 %define libffi_version 3.0
 %{?sle15_python_module_pythons}
 Name:           python-gobject
-Version:        3.54.5
+Version:        3.56.0
 Release:        0
 Summary:        Python bindings for GObject
 License:        LGPL-2.1-or-later
@@ -129,9 +129,6 @@ addon libraries such as pygtk in both Python2 and Python3.
 %autopatch -p1
 pushd subprojects
 tar xf %{SOURCE1} --xform=s/pythoncapi-compat-vendored/pythoncapi-compat/
-pushd pythoncapi-compat
-patch -p1 < ../packagefiles/pythoncapi-compat-meson.diff
-popd
 popd
 
 %build
@@ -154,11 +151,6 @@ else
 fi
 
 %{python_expand # delete unwanted python scripts and their compiled cache files
-# Drop pygtkcompat layer - It's useless and we lack other stuff for it to work
-rm -v %{buildroot}%{$python_sitearch}/gi/pygtkcompat.py*
-rm -vf %{buildroot}%{$python_sitearch}/gi/__pycache__/pygtkcompat*
-rm -vr %{buildroot}%{$python_sitearch}/pygtkcompat/
-
 # Drop GIMarshallingTests - It's test suite remainders that should not be installed
 find %{buildroot}%{$python_sitearch} -name GIMarshallingTests* -delete -print
 }
