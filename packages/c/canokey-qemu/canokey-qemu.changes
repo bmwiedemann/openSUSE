@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  5 11:59:26 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix more GCC 16 failures (still in bsc#1256957)
+  * Modifies patch: mbedtls-fix-building-with-GCC-16.patch
+
+-------------------------------------------------------------------
 Fri Jan 23 11:02:32 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
 
 - Fix building with GCC 16 (bsc#1256957)

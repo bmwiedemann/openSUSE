@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>1328878</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>3e0b3a0c12743271ec62af8cc5a67fc9</srcmd5>
+    <version>0.0+git20230606.151568c</version>
+    <time>1772817464</time>
+    <user>anag_factory</user>
+    <comment>- Fix more GCC 16 failures (still in bsc#1256957)
+  * Modifies patch: mbedtls-fix-building-with-GCC-16.patch
+</comment>
+    <requestid>1336747</requestid>
+  </revision>
 </revisionlist>
