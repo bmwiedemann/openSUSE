@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar  3 14:32:38 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.16.1 (CVE-2026-27457, bsc#1258989)
+  * AsciiDoc files, XLIFF 1.1 and 1.2 with Apple extensions, and WixLocalization file
+    are now supported file formats.
+  * Added REGISTRATION_ALLOW_DISPOSABLE_EMAILS to optionally allow disposable e-mail
+    domains during registration.
+  * Improved documentation for translation states to clarify the difference between
+    Needs editing, Needs rewriting, and Needs checking states.
+  * Improved initial import of translations for Markdown files and HTML files.
+  * Improved plurals handling for language variants.
+  * The add-ons listing in the API now correctly honors user permissions
+
+-------------------------------------------------------------------
 Thu Feb 19 12:23:52 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.16 (CVE-2026-21889, bsc#1256765, CVE 2026-24126, bsc#1258479)

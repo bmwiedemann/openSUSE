@@ -23,7 +23,7 @@
 %define skip_python11 1
 Name:           weblate
 # version 5.14.3 was the last to support Python 3.11
-Version:        5.16
+Version:        5.16.1
 Release:        0
 Summary:        Web-based translation tool
 License:        GPL-3.0-or-later
@@ -65,7 +65,7 @@ BuildRequires:  python3-aliyun-python-sdk-alimt >= 3.2.0
 BuildRequires:  python3-altcha >= 0.2.0
 BuildRequires:  python3-boto3 >= 1.28.62
 BuildRequires:  python3-celery >= 5.5.3
-BuildRequires:  python3-certifi >= 2026.1.4
+BuildRequires:  python3-certifi >= 2026.2.25
 BuildRequires:  python3-charset-normalizer >= 2.0.12
 BuildRequires:  python3-confusable-homoglyphs >= 3.3.1
 BuildRequires:  python3-crispy-bootstrap3 >= 2024.1
@@ -146,7 +146,7 @@ BuildRequires:  python3-weblate-language-data >= 2026.3
 BuildRequires:  python3-weblate-schemas = 2025.6
 BuildRequires:  tesseract-ocr-traineddata-english
 BuildRequires:  tesseract-ocr-traineddata-orientation_and_script_detection
-BuildRequires:  translate-toolkit >= 3.19.0
+BuildRequires:  translate-toolkit >= 3.19.2
 BuildRequires:  typelib(Pango) >= 1.0
 BuildRequires:  typelib(PangoCairo) >= 1.0
 BuildRequires:  typelib(Rsvg)
@@ -167,7 +167,7 @@ Requires:       python3-aeidon >= 1.15
 Requires:       python3-ahocorasick-rs >= 0.22.0
 Requires:       python3-altcha >= 0.2.0
 Requires:       python3-celery >= 5.5.3
-Requires:       python3-certifi >= 2026.1.4
+Requires:       python3-certifi >= 2026.2.25
 Requires:       python3-charset-normalizer >= 2.0.12
 Requires:       python3-confusable-homoglyphs >= 3.3.1
 Requires:       python3-crispy-bootstrap3 >= 2024.1
@@ -230,7 +230,7 @@ Requires:       python3-user-agents >= 2.2.0
 Requires:       python3-weblate-fonts = 2026.1
 Requires:       python3-weblate-language-data >= 2026.3
 Requires:       python3-weblate-schemas = 2025.6
-Requires:       translate-toolkit >= 3.19.0
+Requires:       translate-toolkit >= 3.19.2
 Requires:       ((apache2 and apache2-mod_wsgi) or (nginx and uwsgi))
 Requires:       typelib(Pango) >= 1.0
 Requires:       typelib(PangoCairo) >= 1.0
