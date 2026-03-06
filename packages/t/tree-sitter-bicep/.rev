@@ -32,4 +32,12 @@
 - remove fix-regex.patch, as upstream included the fix (forwarded request 1234123 from rrahl0)</comment>
     <requestid>1234124</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c0d3db2c18b30a5d30fb529c57ba074d</srcmd5>
+    <version>1.1.0</version>
+    <time>1772817522</time>
+    <user>anag_factory</user>
+    <comment>- Remove redundant Neovim workaround</comment>
+    <requestid>1336815</requestid>
+  </revision>
 </revisionlist>
