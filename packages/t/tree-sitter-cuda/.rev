@@ -27,4 +27,12 @@
   * update test action to follow tree-sitter-cpp (forwarded request 1265942 from rrahl0)</comment>
     <requestid>1265949</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8c4856462fd99a0b005a7faeca36115a</srcmd5>
+    <version>0.21.0</version>
+    <time>1772817529</time>
+    <user>anag_factory</user>
+    <comment>- Remove redundant Neovim workaround</comment>
+    <requestid>1336821</requestid>
+  </revision>
 </revisionlist>
