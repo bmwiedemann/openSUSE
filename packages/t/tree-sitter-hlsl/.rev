@@ -17,4 +17,12 @@
   * Test and modernize bindings (forwarded request 1265944 from rrahl0)</comment>
     <requestid>1265951</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>62d6588cc4d903637e1e6a89557d1bc9</srcmd5>
+    <version>0.2.0</version>
+    <time>1772817548</time>
+    <user>anag_factory</user>
+    <comment>- Remove redundant Neovim workaround</comment>
+    <requestid>1336834</requestid>
+  </revision>
 </revisionlist>
