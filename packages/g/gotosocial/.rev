@@ -97,4 +97,20 @@
     <comment>- Update to version 0.20.3 (forwarded request 1328870 from fl4nn)</comment>
     <requestid>1328923</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>30d661301ef10d6bdde28f0193a58101</srcmd5>
+    <version>0.21.0</version>
+    <time>1772050517</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.21.0: (forwarded request 1335090 from fl4nn)</comment>
+    <requestid>1335156</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b2bdcb73f67eb3901336a5b3f608e7ca</srcmd5>
+    <version>0.21.1</version>
+    <time>1772817569</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.21.1 (forwarded request 1336756 from fl4nn)</comment>
+    <requestid>1336851</requestid>
+  </revision>
 </revisionlist>

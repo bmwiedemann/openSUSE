@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Mar  5 13:00:19 UTC 2026 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to version 0.21.1:
+  * [bugfix] Check replyAuthorization prop on statuses, fall back to
+    deprecated approvedBy
+  * [bugfix] catch empty media attachment URLs and set appropriate
+    error text so they get replaced with placeholder text
+  * [bugfix] ensure domain limit status filters get serialized the
+    same as regular status filters
+  * [bugfix] do not crash on null media.meta on reports page
+  * [bugfix] Fix missing prometheus go runtime metrics
+
+-------------------------------------------------------------------
+Wed Feb 25 12:21:02 UTC 2026 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to version 0.21.0:
+  * Domain Limits: You can now create domain limits in the admin
+    section of the settings panel, in order to do things like limit
+    + mute all accounts on a domain (except ones you follow), add
+    content warnings to posts from limited domains, mark media as
+    sensitive (or don't download it at all).
+  * Indexable support: You can now mark your account as "indexable"
+    by full-text search, in the settings panel. This will federate
+    your preference to other servers, so that servers with full-text
+    search functionality can include your posts in search results.
+  * Show reblogs on the web view of your profile (opt-in): A new
+    setting in the settings panel allows you to opt-in to showing
+    posts that you've boosted/reblogged on the web view of your
+    profile. The default setting retains existing behavior
+    (don't show boosts on the web view).
+  * Better caching behavior for timelines. The number of database
+    calls when browsing local + public timelines and lists should
+    be significantly reduced.
+  * Store + show reason for undownloaded media: When media fails to
+    be downloaded from a remote instance, the reason why will be
+    shown next to the post.
+  * Include canQuote property on outgoing posts: Currently, this is
+    always set to author-only, but it paves the way (and signals intent)
+    for GtS to implement quote toots at some point.
+  * Much improved OpenGraph previews: Whitespace is now preserved in
+    OpenGraph previews, and media + formatting was rejigged, so linking
+    to GoToSocial posts should result in much better
+    OpenGraph-generated preview cards.
+  * Expand/collapse all spoilers button on web view of threads: when
+    viewing threads in the web view, you can now expand/collapse all
+    spoilers at the click of a button.
+  * S3 Object Info Caching: you can now configure cache.s3-object-info
+    in order to mitigate expensive S3 info calls when doing nightly
+    media cleanup.
+  * Preserve significant whitespaces in incoming + outgoing posts:
+    previously we were squashing a lot of whitespace together, which
+    meant that, for example, indentation could get lost on posts
+    federated into a GoToSocial instance. This is now fixed, so you
+    can post poetry and whatnot without worrying about it looking
+    like hot crap.
+  * Full changelog:
+    https://codeberg.org/superseriousbusiness/gotosocial/releases/tag/v0.21.0#user-content-changelog
+
+-------------------------------------------------------------------
 Fri Jan 23 11:05:24 UTC 2026 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Update to version 0.20.3:
