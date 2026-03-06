@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar  5 18:49:07 UTC 2026 - Lorenz Holzbauer <lorenzholzbauer@ikmail.com>
+
+- Update to version 0.18.5
+  * Fixed wl-mirror exiting with an error when the initial surface
+    configure takes too long (affecting some river setups)
+  * Fixed wl-mirror exiting with an error when no libdecor
+    decoration plugins are installed- 
+
+-------------------------------------------------------------------
 Wed Aug 13 09:59:33 UTC 2025 - Lorenz Holzbauer <lorenzholzbauer@ikmail.com>
 
 - Update to 0.18.3:

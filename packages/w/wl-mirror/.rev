@@ -67,4 +67,17 @@ Therefore it would be important to have the package available in the main repos.
 </comment>
     <requestid>1299214</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4c39fb50608ccc3d3fe3c70a3b826835</srcmd5>
+    <version>0.18.5</version>
+    <time>1772817501</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.18.5
+  * Fixed wl-mirror exiting with an error when the initial surface
+    configure takes too long (affecting some river setups)
+  * Fixed wl-mirror exiting with an error when no libdecor
+    decoration plugins are installed- 
+</comment>
+    <requestid>1336805</requestid>
+  </revision>
 </revisionlist>
