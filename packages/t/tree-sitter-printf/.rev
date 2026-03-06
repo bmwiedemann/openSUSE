@@ -16,4 +16,12 @@
   * fix(grammar): allow asterisk in precision (forwarded request 1245705 from rrahl0)</comment>
     <requestid>1245707</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5b5d0fbee8ad0e14765175e5aad627a8</srcmd5>
+    <version>0.5.0</version>
+    <time>1772817562</time>
+    <user>anag_factory</user>
+    <comment>- Remove redundant Neovim workaround</comment>
+    <requestid>1336848</requestid>
+  </revision>
 </revisionlist>
