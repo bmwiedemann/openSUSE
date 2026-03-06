@@ -55,15 +55,25 @@ event-sounds = true
 ## http://lists.opensuse.org/opensuse-factory/2012-06/msg01087.html
 tap-to-click = true
 
+@@IF_SLE@@[org.gnome.desktop.interface]
+@@IF_LEAP@@[org.gnome.desktop.interface]
+@@IF_SLE@@## Make SUSE Mono fonts default in SLE and Leap
+@@IF_LEAP@@## Make SUSE Mono fonts default in SLE and Leap
+@@IF_SLE@@monospace-font-family = "SUSE Mono 11"
+@@IF_LEAP@@monospace-font-family = "SUSE Mono 11"
+
 [org.gnome.settings-daemon.plugins.housekeeping]
 ## To avoid popup warnings on default UEFI installation (bsc#919217)
 ignore-paths = ['/boot/efi']
 
-[org.gnome.settings-daemon.plugins.power]
-## Energy Star compliant configuration is disabled for SLE and Leap from vendor level
-## The recommended way to enable this is via GNOME Control Center, dconf-editor or gsettings
+@@IF_SLE@@[org.gnome.settings-daemon.plugins.power]
+@@IF_SLE@@## Energy Star compliant configuration is disabled for SLE and Leap from vendor level
+@@IF_SLE@@## The recommended way to enable this is via GNOME Control Center, dconf-editor or gsettings
 @@IF_SLE@@sleep-inactive-ac-timeout = 0
 @@IF_SLE@@sleep-inactive-battery-timeout = 0
+@@IF_LEAP@@[org.gnome.settings-daemon.plugins.power]
+@@IF_LEAP@@## Energy Star compliant configuration is disabled for SLE and Leap from vendor level
+@@IF_LEAP@@## The recommended way to enable this is via GNOME Control Center, dconf-editor or gsettings
 @@IF_LEAP@@sleep-inactive-ac-timeout = 0
 @@IF_LEAP@@sleep-inactive-battery-timeout = 0
 

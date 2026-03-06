@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar  5 07:33:44 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
+
+- Make the key name and comments for
+  org.gnome.settings-daemon.plugins.power Leap and SLE specific.
+
+-------------------------------------------------------------------
+Mon Mar  2 09:03:15 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
+
+- Make SUSE Mono font default for GNOME in SLE and Leap from 16.1
+  (jsc#PED-13370).
+
+-------------------------------------------------------------------
 Sat Aug 30 10:28:36 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update default applications in dash: gnome-music.desktop was
