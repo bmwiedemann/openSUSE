@@ -1,7 +1,7 @@
 #
 # spec file for package python-oauthlib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,23 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-oauthlib
-Version:        3.2.2
+Version:        3.3.1
 Release:        0
 Summary:        A Generic Implementation of the OAuth Request-Signing Logic
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/oauthlib/oauthlib
 Source:         https://files.pythonhosted.org/packages/source/o/oauthlib/oauthlib-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh/oauthlib/oauthlib#866 - Make UtilsTests.test_filter_params Python 3.13+ compatible
-Patch1:         https://github.com/oauthlib/oauthlib/pull/866.patch#/Make-UtilsTests.test_filter_params-Python-3.13-compatible.patch
 BuildRequires:  %{python_module PyJWT >= 2.0.0}
 BuildRequires:  %{python_module blinker >= 1.4}
 BuildRequires:  %{python_module cryptography >= 3.0.0 }
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyasn1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyJWT >= 2.0.0
@@ -61,18 +60,12 @@ veneer on top of OAuthLib and get OAuth support for very little effort.
 
 %prep
 %setup -q -n oauthlib-%{version}
-%patch -P 1 -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-# Fix python-bytecode-inconsistent-mtime
-pushd %{buildroot}%{python_sitelib}
-find . -name '*.pyc' -exec rm -f '{}' ';'
-python%python_bin_suffix -m compileall *.py ';'
-popd
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -83,9 +76,7 @@ donttest="test_rsa_bad_keys"
 %files %{python_files}
 %license LICENSE
 %doc README.rst CHANGELOG.rst
-%dir %{python_sitelib}/oauthlib
-%{python_sitelib}/oauthlib/*
-%dir %{python_sitelib}/oauthlib-%{version}-py*.egg-info
-%{python_sitelib}/oauthlib-%{version}-py*.egg-info/*
+%{python_sitelib}/oauthlib
+%{python_sitelib}/oauthlib-%{version}.dist-info
 
 %changelog
