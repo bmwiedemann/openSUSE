@@ -1,7 +1,7 @@
 #
 # spec file for package iio-sensor-proxy
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           iio-sensor-proxy
-Version:        3.8
+Version:        3.9
 Release:        0
 Summary:        Proxy for IIO and input subsystems
 License:        GPL-3.0-only
@@ -54,7 +54,9 @@ This package contains the documentation for %{name}.
 %build
 %meson -Dtests=false \
        -Dgtk_doc=true \
-       -Dgeoclue-user=srvGeoClue
+       -Dgeoclue-user=srvGeoClue \
+       -Dssc-support=disabled \
+       %{nil}
 %meson_build
 
 %install

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar  4 09:05:50 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.9:
+  + SSC sensors are now supported through libssc. Light and compass
+    sensor are enabled by default. Accelerometer and proximity
+    remain experimental, but can be enabled through udev rules.
+  + SSC sensor support.
+  + Logging improvements for sensor discovery.
+  + Fix race condition during startup.
+- Pass ssc-support=disabled to meson setup, libssc is not available in
+  any current versions of openSUSE.
+
+-------------------------------------------------------------------
 Sun Aug 10 07:05:55 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.8:
