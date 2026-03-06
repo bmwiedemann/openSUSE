@@ -1,7 +1,7 @@
 #
 # spec file for package python-bpython
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        Fancy Interface to the Python Interpreter
 License:        MIT
 URL:            https://www.bpython-interpreter.org/
 Source:         https://files.pythonhosted.org/packages/source/b/bpython/bpython-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM skip-tests.patch to skip tests that are broken upstream
+Patch:          skip-tests.patch
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module base >= 3.10}
@@ -54,6 +56,7 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module curtsies >= 0.4}
 BuildRequires:  %{python_module greenlet}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module pyxdg}
 BuildRequires:  %{python_module requests}

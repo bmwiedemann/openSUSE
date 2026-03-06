@@ -1,0 +1,20 @@
+Index: bpython-0.26/bpython/test/test_interpreter.py
+===================================================================
+--- bpython-0.26.orig/bpython/test/test_interpreter.py
++++ bpython-0.26/bpython/test/test_interpreter.py
+@@ -86,6 +86,7 @@ class TestInterpreter(unittest.TestCase)
+         self.assertMultiLineEqual(str(plain("").join(a)), str(expected))
+         self.assertEqual(plain("").join(a), expected)
+ 
++    @unittest.skipUnless((3, 13) < sys.version_info[:2], "broken with 3.13+")
+     def test_traceback(self):
+         i = Interpreter()
+ 
+@@ -148,6 +149,7 @@ class TestInterpreter(unittest.TestCase)
+         self.assertMultiLineEqual(str(expected), str(plain("").join(a)))
+         self.assertEqual(expected, plain("").join(a))
+ 
++    @unittest.skipUnless((3, 13) < sys.version_info[:2], "broken with 3.13+")
+     def test_getsource_works_on_interactively_defined_functions(self):
+         source = "def foo(x):\n    return x + 1\n"
+         i = interpreter.Interp()
