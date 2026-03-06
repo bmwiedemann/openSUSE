@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  5 20:53:54 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
+
+- Remove redundant Neovim workaround
+
+-------------------------------------------------------------------
 Wed Dec 11 23:20:14 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - disable devel package (for now)
