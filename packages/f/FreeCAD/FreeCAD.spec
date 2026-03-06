@@ -1,7 +1,7 @@
 #
 # spec file for package FreeCAD
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,6 +69,8 @@ Patch14:        freecad-opengl.patch
 Patch16:        https://github.com/FreeCAD/FreeCAD/commit/6f23f01e509348a6755ad3c465a3d7ffd758ee03.patch#/Add-property-read-write-test.patch
 # PATCH-FIX-UPSTREAM
 Patch17:        https://github.com/FreeCAD/FreeCAD/commit/a0e1a31623e334d7186e687c33fad3887e91ee2e.patch#/Fix-test-failure-temporary-file-race.patch
+# PATCH-FIX-UPSTREAM
+Patch18:        https://github.com/FreeCAD/FreeCAD/commit/8547e798fb3b0f51953b18a2cb98f60aec0a7e33.patch#/Fix-Eigen3-version-search.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       disable-test46-test47.patch
 

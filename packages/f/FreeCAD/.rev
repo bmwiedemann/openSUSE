@@ -543,4 +543,13 @@ Build in science fails due to incompatible VTK 9.0, which is not yet in Tumblewe
     <comment>Fix build with boost 1.89.0 and thus in Factory. The test problem https://github.com/FreeCAD/FreeCAD/issues/23498 still there though. (forwarded request 1308835 from fstrba)</comment>
     <requestid>1308840</requestid>
   </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>ff903aae81577d24222a25564a2b2408</srcmd5>
+    <version>1.0.2</version>
+    <time>1772817676</time>
+    <user>anag_factory</user>
+    <comment>- Add Fix-Eigen3-version-search.patch
+  * fix build with eigen3 5.0.0</comment>
+    <requestid>1337311</requestid>
+  </revision>
 </revisionlist>
