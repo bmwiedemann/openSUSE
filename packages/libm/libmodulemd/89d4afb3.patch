@@ -1,0 +1,2101 @@
+From 89d4afb3d018250427d4d87840ae57aab3903361 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Mon, 8 Dec 2025 13:39:29 +0100
+Subject: [PATCH] tests: Adapt to glib 2.87.0
+
+After upgrading glib from 2.86.1 to 2.87.0, tests which expect catching
+SIGTRAP started to fail like this:
+
+    [...]/redhat-linux-build/modulemd/component_module
+    TAP version 14
+    # random seed: R02S501b6bd02413a2980133f197dab99416
+    1..6
+    # Start of modulemd tests
+    # Start of v2 tests
+    # Start of component tests
+    # Start of module tests
+    not ok /modulemd/v2/component/module/construct - libmodulemd-FATAL-CRITICAL: modulemd_component_set_key: assertion 'name' failed
+    Bail out!
+    Aborted                    (core dumped) LD_LIBRARY_PATH=/home/test/libmodulemd-devel/redhat-linux-build/modulemd MESON_BUILD_ROOT=/home/test/libmodulemd-devel/redhat-linux-build TEST_DATA_PATH=/home/test/libmodulemd-devel/modulemd/tests/test_data UBSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 MSAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1 LC_ALL=C MESON_TEST_ITERATION=1 MESON_SOURCE_ROOT=/home/test/libmodulemd-devel MALLOC_PERTURB_=115 ASAN_OPTIONS=halt_on_error=1:abort_on_error=1:print_summary=1 /home/test/libmodulemd-devel/redhat-linux-build/modulemd/component_module
+
+The tests passed a NULL pointer to libmodulemd object constructors and
+checked that glib raised a SIGTRAP signal. The new glib fixed
+<https://gitlab.gnome.org/GNOME/glib/-/issues/3790> and as a side
+effect changed how the process is terminated: If the process runs
+under a debugger, a breakpoint trap is invoked or SIGTRAP raised,
+depending on the architecture. If the process does not run under
+a debugger, abort() is called, which raises SIGABRT and then after
+returning to glib SIGABRT disposition is reset and SIGABRT raised
+again to finally terminate the process. That means that catching
+signals is pointless because the process will be terminated
+nevertheless.
+
+This patch adapts the tests by using a glib-sanctioned way of checking
+whether a process terminated abnormally instead of depending on
+a way a particular glib version implements.
+
+This patch moves the trapping subtests into standalone tests because
+g_test_trap_subprocess() cannot handle multiple subtests in a single
+test function. It also removes pointless checks for a return value of
+a function which has just exited the process.
+
+The same goes for Python tests (with
+G_DEBUG=fatal-warnings,fatal-criticals) which originally went as far
+as checking whether and which signal was raised. This patch makes the
+Python tests passing regardless of G_DEBUG setting.
+
+Implementation note: Python does not support annoymous block and
+context managers are not compatible with fork, hence this patch moves
+the blocks into named callables to be exectuted in a subprocess.
+
+Implementation note: Glib provides G_TEST_SUBPROCESS_DEFAULT constant
+since 2.74. This patch adds a fallback definition instead of
+hard-coding 0 literal.
+
+Resolves: https://bugzilla.redhat.com/show_bug.cgi?id=2423153
+---
+ meson.build                                   |   8 +
+ modulemd/include/private/glib-extensions.h    |   4 +
+ modulemd/include/private/test-utils.h         |   1 +
+ modulemd/meson.build                          |   1 +
+ modulemd/tests/ModulemdTests/base.py          |  25 +++
+ modulemd/tests/ModulemdTests/defaults.py      |  31 ++-
+ modulemd/tests/ModulemdTests/dependencies.py  |  26 ++-
+ modulemd/tests/ModulemdTests/profile.py       |  21 +-
+ modulemd/tests/ModulemdTests/servicelevel.py  |  21 +-
+ .../tests/ModulemdTests/translationentry.py   |  21 +-
+ modulemd/tests/test-modulemd-common.c         |  68 +++---
+ .../tests/test-modulemd-component-module.c    |  82 ++++---
+ modulemd/tests/test-modulemd-defaults-v1.c    |  87 ++++---
+ modulemd/tests/test-modulemd-defaults.c       |  79 ++++---
+ modulemd/tests/test-modulemd-dependencies.c   | 212 ++++++++++++++----
+ modulemd/tests/test-modulemd-module.c         |  72 ++++--
+ modulemd/tests/test-modulemd-obsoletes.c      |  79 ++++---
+ modulemd/tests/test-modulemd-profile.c        | 105 ++++++---
+ modulemd/tests/test-modulemd-service-level.c  | 117 ++++++----
+ .../tests/test-modulemd-translation-entry.c   | 113 ++++++----
+ modulemd/tests/test-modulemd-translation.c    | 108 +++++----
+ 21 files changed, 873 insertions(+), 408 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index f28e410ea..df6e5ae1c 100644
+--- a/meson.build
++++ b/meson.build
+@@ -128,6 +128,14 @@ has_g_spawn_check_wait_status = cc.has_function(
+     'g_spawn_check_wait_status',
+     dependencies : [ glib ])
+ 
++# Check whether glib2 has G_TEST_SUBPROCESS_DEFAULT enum member.
++has_g_test_subprocess_default = cc.compiles(
++    '''#include <glib.h>
++    int foo = G_TEST_SUBPROCESS_DEFAULT;
++    ''',
++    dependencies : [ glib ],
++    name : 'G_TEST_SUBPROCESS_DEFAULT')
++
+ with_py3 = get_option('with_py3')
+ if with_py3
+     if get_option('skip_introspection')
+diff --git a/modulemd/include/private/glib-extensions.h b/modulemd/include/private/glib-extensions.h
+index 29e9c846f..00081be30 100644
+--- a/modulemd/include/private/glib-extensions.h
++++ b/modulemd/include/private/glib-extensions.h
+@@ -23,6 +23,10 @@
+ G_DEFINE_AUTOPTR_CLEANUP_FUNC (GDate, g_date_free)
+ #endif
+ 
++/* G_TEST_SUBPROCESS_DEFAULT was added in Glib 2.74. */
++#ifndef HAVE_G_TEST_SUBPROCESS_DEFAULT
++#define G_TEST_SUBPROCESS_DEFAULT 0
++#endif
+ 
+ #ifndef HAVE_EXTEND_AND_STEAL
+ 
+diff --git a/modulemd/include/private/test-utils.h b/modulemd/include/private/test-utils.h
+index 2643ca124..320cf994e 100644
+--- a/modulemd/include/private/test-utils.h
++++ b/modulemd/include/private/test-utils.h
+@@ -16,6 +16,7 @@
+ #include <glib.h>
+ #include <locale.h>
+ #include <yaml.h>
++#include "glib-extensions.h"
+ 
+ G_BEGIN_DECLS
+ 
+diff --git a/modulemd/meson.build b/modulemd/meson.build
+index 1c75002ea..e41bcc52a 100644
+--- a/modulemd/meson.build
++++ b/modulemd/meson.build
+@@ -145,6 +145,7 @@ cdata.set('HAVE_RPMIO', rpm.found())
+ cdata.set('HAVE_GDATE_AUTOPTR', has_gdate_autoptr)
+ cdata.set('HAVE_EXTEND_AND_STEAL', has_extend_and_steal)
+ cdata.set('HAVE_G_SPAWN_CHECK_WAIT_STATUS', has_g_spawn_check_wait_status)
++cdata.set('HAVE_G_TEST_SUBPROCESS_DEFAULT', has_g_test_subprocess_default)
+ cdata.set('HAVE_OVERFLOWED_BUILDORDER', accept_overflowed_buildorder)
+ configure_file(
+   output : 'config.h',
+diff --git a/modulemd/tests/ModulemdTests/base.py b/modulemd/tests/ModulemdTests/base.py
+index 1b46470c8..55ac742ba 100644
+--- a/modulemd/tests/ModulemdTests/base.py
++++ b/modulemd/tests/ModulemdTests/base.py
+@@ -52,6 +52,21 @@ def expect_signal(
+         elif self._caught_signal and not expect_signal:
+             raise AssertionError("Signal caught in non-warning state")
+ 
++    def assertProcessFailure(self, callable, *args):
++        """Calls the callable in a subprocess and checks whether the process was
++        killed with a signal depending on Glib warning fatality."""
++        pid = os.fork()
++        if pid == 0:
++            callable(*args)
++            os._exit(0)
++        _, status = os.waitpid(pid, 0)
++        if self.warnings_fatal:
++            if not os.WIFSIGNALED(status):
++                raise AssertionError("Child process was not aborted")
++        else:
++            if os.WIFSIGNALED(status):
++                raise AssertionError("Child process was unexpectedly aborted")
++
+     @property
+     def warnings_fatal(self):
+         gdebug = os.getenv("G_DEBUG", "").split(",")
+@@ -67,3 +82,13 @@ def assertRaisesRegex(self, *args, **kwargs):
+             return super(TestBase, self).assertRaisesRegex(*args, **kwargs)
+         except AttributeError:
+             return self.assertRaisesRegexp(*args, **kwargs)
++
++    def assertRaisesRegexOrDies(self, callable, *args, **kwargs):
++        """Checks that the callable terminates a process if Glib warnings are
++        fatal. Otherwise, that the callable raised a given exception type with
++        the given value matching a regular expression."""
++        if self.warnings_fatal:
++            self.assertProcessFailure(callable)
++        else:
++            with self.assertRaisesRegex(*args, **kwargs):
++                callable()
+diff --git a/modulemd/tests/ModulemdTests/defaults.py b/modulemd/tests/ModulemdTests/defaults.py
+index c162bf331..3a1b9fe50 100644
+--- a/modulemd/tests/ModulemdTests/defaults.py
++++ b/modulemd/tests/ModulemdTests/defaults.py
+@@ -29,6 +29,20 @@
+ from base import TestBase
+ 
+ 
++def _zero_mdversion():
++    defs = Modulemd.Defaults.new(0, "foo")
++
++
++def _unknown_mdversion():
++    defs = Modulemd.Defaults.new(
++        Modulemd.DefaultsVersionEnum.LATEST + 1, "foo"
++    )
++
++
++def _set_module_name_to_none(defs):
++    defs.props.module_name = None
++
++
+ class TestDefaults(TestBase):
+     def test_constructors(self):
+         # Test that the new() function works
+@@ -48,16 +62,14 @@ def test_constructors(self):
+             Modulemd.Defaults()
+ 
+         # Test with a zero mdversion
+-        with self.assertRaisesRegex(TypeError, "constructor returned NULL"):
+-            with self.expect_signal():
+-                defs = Modulemd.Defaults.new(0, "foo")
++        self.assertRaisesRegexOrDies(
++            _zero_mdversion, TypeError, "constructor returned NULL"
++        )
+ 
+         # Test with an unknown mdversion
+-        with self.assertRaisesRegex(TypeError, "constructor returned NULL"):
+-            with self.expect_signal():
+-                defs = Modulemd.Defaults.new(
+-                    Modulemd.DefaultsVersionEnum.LATEST + 1, "foo"
+-                )
++        self.assertRaisesRegexOrDies(
++            _unknown_mdversion, TypeError, "constructor returned NULL"
++        )
+ 
+         # Test with no name
+         with self.assertRaisesRegex(
+@@ -99,8 +111,7 @@ def test_module_name(self):
+         assert defs.get_module_name() == "foo"
+ 
+         # Ensure we cannot set the module_name
+-        with self.expect_signal():
+-            defs.props.module_name = None
++        self.assertProcessFailure(_set_module_name_to_none, defs)
+ 
+     def test_modified(self):
+         defs = Modulemd.Defaults.new(
+diff --git a/modulemd/tests/ModulemdTests/dependencies.py b/modulemd/tests/ModulemdTests/dependencies.py
+index a1901346f..c776e23c4 100644
+--- a/modulemd/tests/ModulemdTests/dependencies.py
++++ b/modulemd/tests/ModulemdTests/dependencies.py
+@@ -28,38 +28,40 @@
+ from base import TestBase
+ 
+ 
++def _get_buildtime_streams(modulemd_dependecies, stream_name):
++    modulemd_dependecies.get_buildtime_streams(stream_name)
++
++
++def _get_runtime_streams(modulemd_dependecies, stream_name):
++    modulemd_dependecies.get_runtime_streams(stream_name)
++
++
+ class TestDependencies(TestBase):
+     def test_constructor(self):
+         # Test that the new() function works
+         d = Modulemd.Dependencies.new()
+         assert d
+         assert d.get_buildtime_modules() == []
+-        with self.expect_signal(only_on_fatal_warnings=True):
+-            d.get_buildtime_streams("foobar123")
++        self.assertProcessFailure(_get_buildtime_streams, d, "foobar123")
+         assert d.get_runtime_modules() == []
+-        with self.expect_signal(only_on_fatal_warnings=True):
+-            d.get_runtime_streams("foobar123")
++        self.assertProcessFailure(_get_runtime_streams, d, "foobar123")
+ 
+         # Test that keyword name is accepted
+         d = Modulemd.Dependencies()
+         assert d
+         assert d.get_buildtime_modules() == []
+-        with self.expect_signal(only_on_fatal_warnings=True):
+-            d.get_buildtime_streams("foobar123")
++        self.assertProcessFailure(_get_buildtime_streams, d, "foobar123")
+         assert d.get_runtime_modules() == []
+-        with self.expect_signal(only_on_fatal_warnings=True):
+-            d.get_runtime_streams("foobar123")
++        self.assertProcessFailure(_get_runtime_streams, d, "foobar123")
+ 
+     def test_copy(self):
+         d_orig = Modulemd.Dependencies()
+         d = d_orig.copy()
+         assert d
+         assert d.get_buildtime_modules() == []
+-        with self.expect_signal(only_on_fatal_warnings=True):
+-            d.get_buildtime_streams("foobar123")
++        self.assertProcessFailure(_get_buildtime_streams, d, "foobar123")
+         assert d.get_runtime_modules() == []
+-        with self.expect_signal(only_on_fatal_warnings=True):
+-            d.get_runtime_streams("foobar123")
++        self.assertProcessFailure(_get_runtime_streams, d, "foobar123")
+ 
+         d_orig.add_buildtime_stream("buildmod1", "stream2")
+         d_orig.add_buildtime_stream("buildmod1", "stream1")
+diff --git a/modulemd/tests/ModulemdTests/profile.py b/modulemd/tests/ModulemdTests/profile.py
+index 1de57c65c..765c57d48 100644
+--- a/modulemd/tests/ModulemdTests/profile.py
++++ b/modulemd/tests/ModulemdTests/profile.py
+@@ -28,6 +28,18 @@
+ from base import TestBase
+ 
+ 
++def construct_without_arguments():
++    Modulemd.Profile()
++
++
++def construct_with_none_name():
++    Modulemd.Profile(name=None)
++
++
++def _set_props_name(modulemd_profile, value):
++    modulemd_profile.props.name = value
++
++
+ class TestProfile(TestBase):
+     def test_constructor(self):
+         # Test that the new() function works
+@@ -51,11 +63,9 @@ def test_constructor(self):
+             Modulemd.Profile.new(None)
+         assert "does not allow None as a value" in cm.exception.__str__()
+ 
+-        with self.expect_signal():
+-            Modulemd.Profile()
++        self.assertProcessFailure(construct_without_arguments)
+ 
+-        with self.expect_signal():
+-            Modulemd.Profile(name=None)
++        self.assertProcessFailure(construct_with_none_name)
+ 
+     def test_copy(self):
+         p_orig = Modulemd.Profile(name="testprofile")
+@@ -84,8 +94,7 @@ def test_get_name(self):
+         assert p.get_name() == "testprofile"
+         assert p.props.name == "testprofile"
+ 
+-        with self.expect_signal():
+-            p.props.name = "notadrill"
++        self.assertProcessFailure(_set_props_name, p, "notadrill")
+ 
+     def test_get_set_description(self):
+         p = Modulemd.Profile(name="testprofile")
+diff --git a/modulemd/tests/ModulemdTests/servicelevel.py b/modulemd/tests/ModulemdTests/servicelevel.py
+index f244b0160..fc9c648bf 100644
+--- a/modulemd/tests/ModulemdTests/servicelevel.py
++++ b/modulemd/tests/ModulemdTests/servicelevel.py
+@@ -30,6 +30,18 @@
+ import datetime
+ 
+ 
++def _construct_without_arguments():
++    Modulemd.ServiceLevel()
++
++
++def _construct_with_none_name():
++    Modulemd.ServiceLevel(name=None)
++
++
++def _set_props_name(modulemd_servicelevel, value):
++    modulemd_servicelevel.props.name = value
++
++
+ class TestServiceLevel(TestBase):
+     def test_constructors(self):
+         # Test that the new() function works
+@@ -56,12 +68,10 @@ def test_constructors(self):
+             assert "does not allow None as a value" in e.__str__()
+ 
+         # Test that we fail if object is instantiated without a name
+-        with self.expect_signal():
+-            sl = Modulemd.ServiceLevel()
++        self.assertProcessFailure(_construct_without_arguments)
+ 
+         # Test that we fail if object is instantiated with a None name
+-        with self.expect_signal():
+-            sl = Modulemd.ServiceLevel(name=None)
++        self.assertProcessFailure(_construct_with_none_name)
+ 
+     def test_copy(self):
+         sl = Modulemd.ServiceLevel.new("foo")
+@@ -93,8 +103,7 @@ def test_get_name(self):
+         assert sl.props.name == "foo"
+ 
+         # This property is not writable, make sure it fails to attempt it
+-        with self.expect_signal():
+-            sl.props.name = "bar"
++        self.assertProcessFailure(_set_props_name, sl, "bar")
+ 
+     def test_get_set_eol(self):
+         sl = Modulemd.ServiceLevel.new("foo")
+diff --git a/modulemd/tests/ModulemdTests/translationentry.py b/modulemd/tests/ModulemdTests/translationentry.py
+index c53e64bc5..9fce4435d 100644
+--- a/modulemd/tests/ModulemdTests/translationentry.py
++++ b/modulemd/tests/ModulemdTests/translationentry.py
+@@ -29,6 +29,18 @@
+ from base import TestBase
+ 
+ 
++def _instantiate_without_locale():
++    Modulemd.TranslationEntry()
++
++
++def _instantiate_with_none_local():
++    Modulemd.TranslationEntry(locale=None)
++
++
++def _set_locale(te):
++    te.props.locale = "en_GB"
++
++
+ class TestTranslationEntry(TestBase):
+     def test_constructors(self):
+         # Test that the new() function works
+@@ -118,12 +130,10 @@ def test_constructors(self):
+             assert "does not allow None as a value" in e.__str__()
+ 
+         # Test that we fail if object is instantiated without a locale
+-        with self.expect_signal():
+-            Modulemd.TranslationEntry()
++        self.assertProcessFailure(_instantiate_without_locale)
+ 
+         # Test that we fail if object is instantiated with a None locale
+-        with self.expect_signal():
+-            Modulemd.TranslationEntry(locale=None)
++        self.assertProcessFailure(_instantiate_with_none_local)
+ 
+     def test_copy(self):
+         te_orig = Modulemd.TranslationEntry(locale="en_US")
+@@ -162,8 +172,7 @@ def test_get_locale(self):
+         assert te.get_locale() == "en_US"
+         assert te.props.locale == "en_US"
+ 
+-        with self.expect_signal():
+-            te.props.locale = "en_GB"
++        self.assertProcessFailure(_set_locale, te)
+ 
+     def test_get_set_summary(self):
+         te = Modulemd.TranslationEntry(locale="en_US")
+diff --git a/modulemd/tests/test-modulemd-common.c b/modulemd/tests/test-modulemd-common.c
+index 97e477fa7..6895e34a1 100644
+--- a/modulemd/tests/test-modulemd-common.c
++++ b/modulemd/tests/test-modulemd-common.c
+@@ -14,7 +14,6 @@
+ #include <glib.h>
+ #include <glib/gstdio.h>
+ #include <locale.h>
+-#include <signal.h>
+ 
+ #include "modulemd.h"
+ 
+@@ -83,7 +82,7 @@ test_modulemd_load_file (void)
+ 
+ 
+ static void
+-test_modulemd_load_string (void)
++test_modulemd_load_string_regular (void)
+ {
+   const gchar *yaml_string = NULL;
+   g_autoptr (GError) error = NULL;
+@@ -122,16 +121,6 @@ test_modulemd_load_string (void)
+   g_assert_nonnull (output);
+ 
+ 
+-  /* NULL string should raise an exception */
+-  g_clear_error (&error);
+-  g_clear_object (&idx);
+-  modulemd_test_signal = 0;
+-  signal (SIGTRAP, modulemd_test_signal_handler);
+-  idx = modulemd_load_string (NULL, &error);
+-  g_assert_cmpint (modulemd_test_signal, ==, SIGTRAP);
+-  g_assert_null (idx);
+-
+-
+   /* An empty string is valid YAML, so it returns a non-NULL but empty index. */
+   g_clear_error (&error);
+   g_clear_object (&idx);
+@@ -151,6 +140,22 @@ test_modulemd_load_string (void)
+ }
+ 
+ 
++/* NULL string should raise an exception */
++static void
++test_modulemd_load_string_null (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (GError) error = NULL;
++      g_autoptr (ModulemdModuleIndex) idx = NULL;
++      idx = modulemd_load_string (NULL, &error);
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
++
++
+ static void
+ test_packager_read_file (void)
+ {
+@@ -353,7 +358,7 @@ test_packager_read_file (void)
+ 
+ 
+ static void
+-test_packager_read_string (void)
++test_packager_read_string_regular (void)
+ {
+   const gchar *yaml_string = NULL;
+   g_autoptr (GError) error = NULL;
+@@ -531,16 +536,6 @@ test_packager_read_string (void)
+     ==,
+     "streamname-override");
+ 
+-  /* NULL string should raise an exception */
+-  g_clear_error (&error);
+-  g_clear_object (&object);
+-  modulemd_test_signal = 0;
+-  signal (SIGTRAP, modulemd_test_signal_handler);
+-  otype = modulemd_read_packager_string (NULL, &object, &error);
+-  g_assert_cmpint (modulemd_test_signal, ==, SIGTRAP);
+-  g_assert_cmpint (otype, ==, G_TYPE_INVALID);
+-  g_assert_null (object);
+-
+   /* An empty string is not a valid packager format */
+   g_clear_error (&error);
+   g_clear_object (&object);
+@@ -559,6 +554,21 @@ test_packager_read_string (void)
+ }
+ 
+ 
++/* NULL string should raise an exception */
++static void
++test_packager_read_string_null (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (GError) error = NULL;
++      g_autoptr (GObject) object = NULL;
++      (void)modulemd_read_packager_string (NULL, &object, &error);
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
++
+ /*
+  * Empty profiles are legal. Parser misinterpreted them as a list of one
+  * package with an empty package name.
+@@ -617,13 +627,17 @@ main (int argc, char *argv[])
+                    test_modulemd_get_version);
+ 
+   g_test_add_func ("/modulemd/v2/common/load_file", test_modulemd_load_file);
+-  g_test_add_func ("/modulemd/v2/common/load_string",
+-                   test_modulemd_load_string);
++  g_test_add_func ("/modulemd/v2/common/load_string/regular",
++                   test_modulemd_load_string_regular);
++  g_test_add_func ("/modulemd/v2/common/load_string/null",
++                   test_modulemd_load_string_null);
+ 
+   g_test_add_func ("/modulemd/v2/common/packager/read_file",
+                    test_packager_read_file);
+-  g_test_add_func ("/modulemd/v2/common/packager/read_string",
+-                   test_packager_read_string);
++  g_test_add_func ("/modulemd/v2/common/packager/read_string/regular",
++                   test_packager_read_string_regular);
++  g_test_add_func ("/modulemd/v2/common/packager/read_string/null",
++                   test_packager_read_string_null);
+ 
+   g_test_add_func ("/modulemd/v2/common/empty_profile", test_empty_profile);
+ 
+diff --git a/modulemd/tests/test-modulemd-component-module.c b/modulemd/tests/test-modulemd-component-module.c
+index 20e7881e7..683c77449 100644
+--- a/modulemd/tests/test-modulemd-component-module.c
++++ b/modulemd/tests/test-modulemd-component-module.c
+@@ -14,7 +14,6 @@
+ #include <glib.h>
+ #include <glib/gstdio.h>
+ #include <locale.h>
+-#include <signal.h>
+ 
+ #include "modulemd-component-module.h"
+ #include "modulemd-component.h"
+@@ -28,16 +27,8 @@ typedef struct _ComponentModuleFixture
+ {
+ } ComponentModuleFixture;
+ 
+-gboolean signaled = FALSE;
+-
+-static void
+-sigtrap_handler (int UNUSED (sig_num))
+-{
+-  signaled = TRUE;
+-}
+-
+ static void
+-component_module_test_construct (void)
++component_module_test_construct_regular (void)
+ {
+   g_autoptr (ModulemdComponentModule) m = NULL;
+   ModulemdComponent *mc = NULL;
+@@ -84,29 +75,49 @@ component_module_test_construct (void)
+     modulemd_component_module_get_repository (m), ==, "somerepo");
+   mc = NULL;
+   g_clear_object (&m);
++}
+ 
+-  /* Test that we abort with a NULL name to new() */
+-  signaled = FALSE;
+-  signal (SIGTRAP, sigtrap_handler);
+-  m = modulemd_component_module_new (NULL);
+-  g_assert_true (signaled);
+-  g_clear_object (&m);
+-
+-  /* Test that init fails without name */
+-  signaled = FALSE;
+-  signal (SIGTRAP, sigtrap_handler);
+-  m = g_object_new (MODULEMD_TYPE_COMPONENT_MODULE, NULL);
+-  g_assert_true (signaled);
+-  g_clear_object (&m);
++/* Test that we abort with a NULL name to new() */
++static void
++component_module_test_construct_new_null_name (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdComponentModule) m = NULL;
++      m = modulemd_component_module_new (NULL);
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
+ 
+-  /* Test that init fails with a NULL name */
+-  signaled = FALSE;
+-  signal (SIGTRAP, sigtrap_handler);
+-  m = g_object_new (MODULEMD_TYPE_COMPONENT_MODULE, "name", NULL, NULL);
+-  g_assert_true (signaled);
+-  g_clear_object (&m);
++/* Test that init fails without name */
++static void
++component_module_test_construct_init_without_name (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdComponentModule) m = NULL;
++      m = g_object_new (MODULEMD_TYPE_COMPONENT_MODULE, NULL);
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
+ }
+ 
++/* Test that init fails with a NULL name */
++static void
++component_module_test_construct_init_null_name (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdComponentModule) m = NULL;
++      m = g_object_new (MODULEMD_TYPE_COMPONENT_MODULE, "name", NULL, NULL);
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
+ 
+ static void
+ component_module_test_equals (void)
+@@ -421,8 +432,17 @@ main (int argc, char *argv[])
+   g_test_bug_base ("https://bugzilla.redhat.com/show_bug.cgi?id=");
+ 
+   // Define the tests.
+-  g_test_add_func ("/modulemd/v2/component/module/construct",
+-                   component_module_test_construct);
++  g_test_add_func ("/modulemd/v2/component/module/construct/regular",
++                   component_module_test_construct_regular);
++
++  g_test_add_func ("/modulemd/v2/component/module/construct/new_null_name",
++                   component_module_test_construct_new_null_name);
++
++  g_test_add_func ("/modulemd/v2/component/module/construct/init_without_name",
++                   component_module_test_construct_init_without_name);
++
++  g_test_add_func ("/modulemd/v2/component/module/construct/init_null_name",
++                   component_module_test_construct_init_null_name);
+ 
+   g_test_add_func ("/modulemd/v2/component/module/equals",
+                    component_module_test_equals);
+diff --git a/modulemd/tests/test-modulemd-defaults-v1.c b/modulemd/tests/test-modulemd-defaults-v1.c
+index c4fe23558..2daa29525 100644
+--- a/modulemd/tests/test-modulemd-defaults-v1.c
++++ b/modulemd/tests/test-modulemd-defaults-v1.c
+@@ -14,7 +14,6 @@
+ #include <glib.h>
+ #include <glib/gstdio.h>
+ #include <locale.h>
+-#include <signal.h>
+ 
+ #include "modulemd-defaults-v1.h"
+ #include "private/glib-extensions.h"
+@@ -26,7 +25,7 @@
+ 
+ 
+ static void
+-defaults_test_construct (void)
++defaults_test_construct_regular (void)
+ {
+   g_autoptr (ModulemdDefaultsV1) defaults = NULL;
+ 
+@@ -37,13 +36,6 @@ defaults_test_construct (void)
+   g_assert_true (MODULEMD_IS_DEFAULTS_V1 (defaults));
+   g_clear_object (&defaults);
+ 
+-  /* Test new() with a NULL module_name */
+-  modulemd_test_signal = 0;
+-  signal (SIGTRAP, modulemd_test_signal_handler);
+-  defaults = modulemd_defaults_v1_new (NULL);
+-  g_assert_cmpint (modulemd_test_signal, ==, SIGTRAP);
+-  g_clear_object (&defaults);
+-
+ 
+   /* Test object instantiation with a valid module name */
+   // clang-format off
+@@ -55,26 +47,57 @@ defaults_test_construct (void)
+   g_assert_true (MODULEMD_IS_DEFAULTS (defaults));
+   g_assert_true (MODULEMD_IS_DEFAULTS_V1 (defaults));
+   g_clear_object (&defaults);
++}
+ 
+-  /* Test object instantiation with a NULL module name */
+-  modulemd_test_signal = 0;
+-  signal (SIGTRAP, modulemd_test_signal_handler);
+-  // clang-format off
+-  defaults = g_object_new (MODULEMD_TYPE_DEFAULTS_V1,
+-                           "module-name", NULL,
+-                           NULL);
+-  // clang-format on
+-  g_assert_cmpint (modulemd_test_signal, ==, SIGTRAP);
+-  g_clear_object (&defaults);
+ 
+-  /* Test object instantiation without specifying the module name */
+-  modulemd_test_signal = 0;
+-  signal (SIGTRAP, modulemd_test_signal_handler);
+-  // clang-format off
+-  defaults = g_object_new (MODULEMD_TYPE_DEFAULTS_V1, NULL);
+-  // clang-format on
+-  g_assert_cmpint (modulemd_test_signal, ==, SIGTRAP);
+-  g_clear_object (&defaults);
++/* Test new() with a NULL module_name */
++static void
++defaults_test_construct_new_null_module_name (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdDefaultsV1) defaults = NULL;
++      defaults = modulemd_defaults_v1_new (NULL);
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
++
++
++/* Test object instantiation without specifying the module name */
++static void
++defaults_test_construct_init_no_module_name (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdDefaultsV1) defaults = NULL;
++      // clang-format off
++      defaults = g_object_new (MODULEMD_TYPE_DEFAULTS_V1, NULL);
++      // clang-format on
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
++
++
++/* Test object instantiation with a NULL module name */
++static void
++defaults_test_construct_init_null_module_name (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdDefaultsV1) defaults = NULL;
++      // clang-format off
++      defaults = g_object_new (MODULEMD_TYPE_DEFAULTS_V1,
++                               "module-name", NULL,
++                               NULL);
++      // clang-format on
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
+ }
+ 
+ 
+@@ -820,8 +843,14 @@ main (int argc, char *argv[])
+   // Define the tests.
+   g_test_add_func ("/modulemd/v2/defaults/v1/equals", defaults_test_equals);
+ 
+-  g_test_add_func ("/modulemd/v2/defaults/v1/construct",
+-                   defaults_test_construct);
++  g_test_add_func ("/modulemd/v2/defaults/v1/construct/regular",
++                   defaults_test_construct_regular);
++  g_test_add_func ("/modulemd/v2/defaults/v1/construct/new_null_module_name",
++                   defaults_test_construct_new_null_module_name);
++  g_test_add_func ("/modulemd/v2/defaults/v1/construct/init_no_module_name",
++                   defaults_test_construct_init_no_module_name);
++  g_test_add_func ("/modulemd/v2/defaults/v1/construct/init_null_module_name",
++                   defaults_test_construct_init_null_module_name);
+ 
+   g_test_add_func ("/modulemd/v2/defaults/v1/copy", defaults_test_copy);
+ 
+diff --git a/modulemd/tests/test-modulemd-defaults.c b/modulemd/tests/test-modulemd-defaults.c
+index 2a4677406..562e4fe6b 100644
+--- a/modulemd/tests/test-modulemd-defaults.c
++++ b/modulemd/tests/test-modulemd-defaults.c
+@@ -14,7 +14,6 @@
+ #include <glib.h>
+ #include <glib/gstdio.h>
+ #include <locale.h>
+-#include <signal.h>
+ 
+ #include "modulemd-defaults-v1.h"
+ #include "modulemd-defaults.h"
+@@ -24,7 +23,7 @@
+ #include "private/test-utils.h"
+ 
+ static void
+-defaults_test_construct (void)
++defaults_test_construct_regular (void)
+ {
+   g_autoptr (ModulemdDefaults) defaults = NULL;
+ 
+@@ -34,30 +33,51 @@ defaults_test_construct (void)
+   g_assert_true (MODULEMD_IS_DEFAULTS (defaults));
+   g_assert_true (MODULEMD_IS_DEFAULTS_V1 (defaults));
+   g_clear_object (&defaults);
++}
+ 
+-  /* Test new() with a zero mdversion */
+-  modulemd_test_signal = 0;
+-  signal (SIGTRAP, modulemd_test_signal_handler);
+-  defaults = modulemd_defaults_new (0, "foo");
+-  g_assert_cmpint (modulemd_test_signal, ==, SIGTRAP);
+-  g_assert_null (defaults);
+-
+-  /* Test new() with a too-high mdversion */
+-  modulemd_test_signal = 0;
+-  signal (SIGTRAP, modulemd_test_signal_handler);
+-  defaults = modulemd_defaults_new (MD_DEFAULTS_VERSION_LATEST + 1, "foo");
+-  g_assert_cmpint (modulemd_test_signal, ==, SIGTRAP);
+-  g_assert_null (defaults);
+-
+-  /* Test new() with a NULL module_name */
+-  modulemd_test_signal = 0;
+-  signal (SIGTRAP, modulemd_test_signal_handler);
+-  defaults = modulemd_defaults_new (MD_DEFAULTS_VERSION_ONE, NULL);
+-  g_assert_cmpint (modulemd_test_signal, ==, SIGTRAP);
+-  /* If we trap the error, defaults actually returns a value here, so free
+-   * it
+-   */
+-  g_clear_object (&defaults);
++
++/* Test new() with a zero mdversion */
++static void
++defaults_test_construct_zero_mdversion (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdDefaults) defaults = NULL;
++      defaults = modulemd_defaults_new (0, "foo");
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
++
++
++/* Test new() with a too-high mdversion */
++static void
++defaults_test_construct_too_high_mdversion (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdDefaults) defaults = NULL;
++      defaults = modulemd_defaults_new (MD_DEFAULTS_VERSION_LATEST + 1, "foo");
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
++
++
++/* Test new() with a NULL module_name */
++static void
++defaults_test_new_with_null_module_name (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdDefaults) defaults = NULL;
++      defaults = modulemd_defaults_new (MD_DEFAULTS_VERSION_ONE, NULL);
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
+ }
+ 
+ 
+@@ -203,7 +223,14 @@ main (int argc, char *argv[])
+   g_test_bug_base ("https://bugzilla.redhat.com/show_bug.cgi?id=");
+ 
+   // Define the tests.
+-  g_test_add_func ("/modulemd/v2/defaults/construct", defaults_test_construct);
++  g_test_add_func ("/modulemd/v2/defaults/construct/regular",
++                   defaults_test_construct_regular);
++  g_test_add_func ("/modulemd/v2/defaults/construct/zero_mdversion",
++                   defaults_test_construct_zero_mdversion);
++  g_test_add_func ("/modulemd/v2/defaults/construct/too_high_mdversion",
++                   defaults_test_construct_too_high_mdversion);
++  g_test_add_func ("/modulemd/v2/defaults/new/with_null_module_name",
++                   defaults_test_new_with_null_module_name);
+ 
+   g_test_add_func ("/modulemd/v2/defaults/copy", defaults_test_copy);
+ 
+diff --git a/modulemd/tests/test-modulemd-dependencies.c b/modulemd/tests/test-modulemd-dependencies.c
+index bae0f4678..d126dba7e 100644
+--- a/modulemd/tests/test-modulemd-dependencies.c
++++ b/modulemd/tests/test-modulemd-dependencies.c
+@@ -14,7 +14,6 @@
+ #include <glib.h>
+ #include <glib/gstdio.h>
+ #include <locale.h>
+-#include <signal.h>
+ 
+ #include "modulemd-dependencies.h"
+ #include "private/glib-extensions.h"
+@@ -27,14 +26,6 @@ typedef struct _DependenciesFixture
+ {
+ } DependenciesFixture;
+ 
+-gboolean signaled = FALSE;
+-
+-static void
+-sigtrap_handler (int UNUSED (sig_num))
+-{
+-  signaled = TRUE;
+-}
+-
+ static void
+ dependencies_test_construct (void)
+ {
+@@ -60,7 +51,7 @@ dependencies_test_construct (void)
+ 
+ 
+ static void
+-dependencies_test_dependencies (void)
++dependencies_test_dependencies_regular (void)
+ {
+   g_autoptr (ModulemdDependencies) d = NULL;
+   g_auto (GStrv) list = NULL;
+@@ -73,10 +64,6 @@ dependencies_test_dependencies (void)
+   g_assert_nonnull (list);
+   g_assert_cmpint (g_strv_length (list), ==, 0);
+   g_clear_pointer (&list, g_strfreev);
+-  signal (SIGTRAP, sigtrap_handler);
+-  list = modulemd_dependencies_get_buildtime_streams_as_strv (d, "buildmod1");
+-  g_assert_null (list);
+-  g_clear_pointer (&list, g_strfreev);
+ 
+   /* Add some deps */
+   modulemd_dependencies_add_buildtime_stream (d, "buildmod1", "stream1");
+@@ -102,10 +89,6 @@ dependencies_test_dependencies (void)
+   g_assert_nonnull (list);
+   g_assert_cmpint (g_strv_length (list), ==, 0);
+   g_clear_pointer (&list, g_strfreev);
+-  signal (SIGTRAP, sigtrap_handler);
+-  list = modulemd_dependencies_get_runtime_streams_as_strv (d, "buildmod1");
+-  g_assert_null (list);
+-  g_clear_pointer (&list, g_strfreev);
+ 
+   list = modulemd_dependencies_get_runtime_modules_as_strv (d);
+   g_assert_nonnull (list);
+@@ -117,10 +100,6 @@ dependencies_test_dependencies (void)
+   g_assert_nonnull (list);
+   g_assert_cmpint (g_strv_length (list), ==, 0);
+   g_clear_pointer (&list, g_strfreev);
+-  signal (SIGTRAP, sigtrap_handler);
+-  list = modulemd_dependencies_get_runtime_streams_as_strv (d, "buildmod1");
+-  g_assert_null (list);
+-  g_clear_pointer (&list, g_strfreev);
+   list = modulemd_dependencies_get_runtime_streams_as_strv (d, "runmod1");
+   g_assert_nonnull (list);
+   g_assert_cmpint (g_strv_length (list), ==, 2);
+@@ -130,6 +109,57 @@ dependencies_test_dependencies (void)
+ }
+ 
+ 
++static void
++dependencies_test_dependencies_nonexistent_buildtime_stream (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdDependencies) d = NULL;
++      g_auto (GStrv) list = NULL;
++
++      d = modulemd_dependencies_new ();
++      g_assert_nonnull (d);
++      g_assert_true (MODULEMD_IS_DEPENDENCIES (d));
++
++      list =
++        modulemd_dependencies_get_buildtime_streams_as_strv (d, "buildmod1");
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
++
++
++static void
++dependencies_test_dependencies_nonexistent_runtime_stream (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdDependencies) d = NULL;
++      g_auto (GStrv) list = NULL;
++
++      d = modulemd_dependencies_new ();
++      g_assert_nonnull (d);
++      g_assert_true (MODULEMD_IS_DEPENDENCIES (d));
++
++      /* Add some deps */
++      modulemd_dependencies_add_buildtime_stream (d, "buildmod1", "stream1");
++      modulemd_dependencies_add_runtime_stream (d, "runmod1", "stream2");
++      modulemd_dependencies_add_runtime_stream (d, "runmod1", "stream1");
++      modulemd_dependencies_set_empty_buildtime_dependencies_for_module (
++        d, "defbuild");
++      modulemd_dependencies_set_empty_runtime_dependencies_for_module (
++        d, "defrun");
++
++      list =
++        modulemd_dependencies_get_runtime_streams_as_strv (d, "buildmod1");
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
++
++
+ static void
+ dependencies_test_equals (void)
+ {
+@@ -298,7 +328,7 @@ dependencies_test_equals (void)
+ 
+ 
+ static void
+-dependencies_test_copy (void)
++dependencies_test_copy_regular (void)
+ {
+   g_autoptr (ModulemdDependencies) d = NULL;
+   g_autoptr (ModulemdDependencies) d_copy = NULL;
+@@ -311,10 +341,6 @@ dependencies_test_copy (void)
+   g_assert_nonnull (list);
+   g_assert_cmpint (g_strv_length (list), ==, 0);
+   g_clear_pointer (&list, g_strfreev);
+-  signal (SIGTRAP, sigtrap_handler);
+-  list = modulemd_dependencies_get_buildtime_streams_as_strv (d, "module1");
+-  g_assert_null (list);
+-  g_clear_pointer (&list, g_strfreev);
+ 
+   d_copy = modulemd_dependencies_copy (d);
+   g_assert_nonnull (d_copy);
+@@ -323,10 +349,6 @@ dependencies_test_copy (void)
+   g_assert_nonnull (list);
+   g_assert_cmpint (g_strv_length (list), ==, 0);
+   g_clear_pointer (&list, g_strfreev);
+-  signal (SIGTRAP, sigtrap_handler);
+-  list = modulemd_dependencies_get_buildtime_streams_as_strv (d, "module1");
+-  g_assert_null (list);
+-  g_clear_pointer (&list, g_strfreev);
+   g_clear_object (&d_copy);
+ 
+   modulemd_dependencies_add_buildtime_stream (d, "buildmod1", "stream2");
+@@ -347,11 +369,7 @@ dependencies_test_copy (void)
+   g_assert_cmpstr (list[0], ==, "builddef");
+   g_assert_cmpstr (list[1], ==, "buildmod1");
+   g_clear_pointer (&list, g_strfreev);
+-  signal (SIGTRAP, sigtrap_handler);
+-  list = modulemd_dependencies_get_buildtime_streams_as_strv (d_copy,
+-                                                              "nosuchmodule");
+-  g_assert_null (list);
+-  g_clear_pointer (&list, g_strfreev);
++
+   list =
+     modulemd_dependencies_get_buildtime_streams_as_strv (d_copy, "buildmod1");
+   g_assert_nonnull (list);
+@@ -371,11 +389,6 @@ dependencies_test_copy (void)
+   g_assert_cmpstr (list[0], ==, "rundef");
+   g_assert_cmpstr (list[1], ==, "runmod1");
+   g_clear_pointer (&list, g_strfreev);
+-  signal (SIGTRAP, sigtrap_handler);
+-  list =
+-    modulemd_dependencies_get_runtime_streams_as_strv (d_copy, "nosuchmodule");
+-  g_assert_null (list);
+-  g_clear_pointer (&list, g_strfreev);
+   list = modulemd_dependencies_get_runtime_streams_as_strv (d_copy, "runmod1");
+   g_assert_nonnull (list);
+   g_assert_cmpint (g_strv_length (list), ==, 2);
+@@ -388,6 +401,101 @@ dependencies_test_copy (void)
+   g_clear_pointer (&list, g_strfreev);
+ }
+ 
++
++static void
++dependencies_test_copy_empty_nonexsitent_buildtime_stream (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdDependencies) d = NULL;
++      g_autoptr (ModulemdDependencies) d_copy = NULL;
++      g_auto (GStrv) list = NULL;
++
++      d = modulemd_dependencies_new ();
++      g_assert_nonnull (d);
++      g_assert_true (MODULEMD_IS_DEPENDENCIES (d));
++
++      d_copy = modulemd_dependencies_copy (d);
++      g_assert_nonnull (d_copy);
++      g_assert_true (MODULEMD_IS_DEPENDENCIES (d_copy));
++
++      list =
++        modulemd_dependencies_get_buildtime_streams_as_strv (d, "module1");
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
++
++
++static void
++dependencies_test_copy_full_nonexsitent_buildtime_stream (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdDependencies) d = NULL;
++      g_autoptr (ModulemdDependencies) d_copy = NULL;
++      g_auto (GStrv) list = NULL;
++
++      d = modulemd_dependencies_new ();
++      g_assert_nonnull (d);
++      g_assert_true (MODULEMD_IS_DEPENDENCIES (d));
++
++      modulemd_dependencies_add_buildtime_stream (d, "buildmod1", "stream2");
++      modulemd_dependencies_add_buildtime_stream (d, "buildmod1", "stream1");
++      modulemd_dependencies_set_empty_buildtime_dependencies_for_module (
++        d, "builddef");
++      modulemd_dependencies_add_runtime_stream (d, "runmod1", "stream3");
++      modulemd_dependencies_add_runtime_stream (d, "runmod1", "stream4");
++      modulemd_dependencies_set_empty_runtime_dependencies_for_module (
++        d, "rundef");
++
++      d_copy = modulemd_dependencies_copy (d);
++      g_assert_nonnull (d_copy);
++      g_assert_true (MODULEMD_IS_DEPENDENCIES (d_copy));
++      list = modulemd_dependencies_get_buildtime_streams_as_strv (
++        d_copy, "nosuchmodule");
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
++
++
++static void
++dependencies_test_copy_full_nonexsitent_runtime_stream (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdDependencies) d = NULL;
++      g_autoptr (ModulemdDependencies) d_copy = NULL;
++      g_auto (GStrv) list = NULL;
++
++      d = modulemd_dependencies_new ();
++      g_assert_nonnull (d);
++      g_assert_true (MODULEMD_IS_DEPENDENCIES (d));
++
++      modulemd_dependencies_add_buildtime_stream (d, "buildmod1", "stream2");
++      modulemd_dependencies_add_buildtime_stream (d, "buildmod1", "stream1");
++      modulemd_dependencies_set_empty_buildtime_dependencies_for_module (
++        d, "builddef");
++      modulemd_dependencies_add_runtime_stream (d, "runmod1", "stream3");
++      modulemd_dependencies_add_runtime_stream (d, "runmod1", "stream4");
++      modulemd_dependencies_set_empty_runtime_dependencies_for_module (
++        d, "rundef");
++
++      d_copy = modulemd_dependencies_copy (d);
++      g_assert_nonnull (d_copy);
++      g_assert_true (MODULEMD_IS_DEPENDENCIES (d_copy));
++      list = modulemd_dependencies_get_runtime_streams_as_strv (
++        d_copy, "nosuchmodule");
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
++
++
+ static void
+ dependencies_test_parse_yaml (void)
+ {
+@@ -631,13 +739,29 @@ main (int argc, char *argv[])
+   g_test_add_func ("/modulemd/v2/dependencies/construct",
+                    dependencies_test_construct);
+ 
+-  g_test_add_func ("/modulemd/v2/dependencies/dependencies",
+-                   dependencies_test_dependencies);
++  g_test_add_func ("/modulemd/v2/dependencies/dependencies/regular",
++                   dependencies_test_dependencies_regular);
++  g_test_add_func (
++    "/modulemd/v2/dependencies/dependencies/nonexistent_buildtime_stream",
++    dependencies_test_dependencies_nonexistent_buildtime_stream);
++  g_test_add_func (
++    "/modulemd/v2/dependencies/dependencies/nonexistent_runtime_stream",
++    dependencies_test_dependencies_nonexistent_runtime_stream);
+ 
+   g_test_add_func ("/modulemd/v2/dependencies/equals",
+                    dependencies_test_equals);
+ 
+-  g_test_add_func ("/modulemd/v2/dependencies/copy", dependencies_test_copy);
++  g_test_add_func ("/modulemd/v2/dependencies/copy/regular",
++                   dependencies_test_copy_regular);
++  g_test_add_func (
++    "/modulemd/v2/dependencies/copy/empty_nonexsitent_buildtime_stream",
++    dependencies_test_copy_empty_nonexsitent_buildtime_stream);
++  g_test_add_func (
++    "/modulemd/v2/dependencies/copy/full_nonexsitent_buildtime_stream",
++    dependencies_test_copy_full_nonexsitent_buildtime_stream);
++  g_test_add_func (
++    "/modulemd/v2/dependencies/copy/full_nonexsitent_rundtime_stream",
++    dependencies_test_copy_full_nonexsitent_runtime_stream);
+ 
+   g_test_add_func ("/modulemd/v2/dependencies/yaml/parse",
+                    dependencies_test_parse_yaml);
+diff --git a/modulemd/tests/test-modulemd-module.c b/modulemd/tests/test-modulemd-module.c
+index c083c963b..7759b37ab 100644
+--- a/modulemd/tests/test-modulemd-module.c
++++ b/modulemd/tests/test-modulemd-module.c
+@@ -14,7 +14,6 @@
+ #include <glib.h>
+ #include <glib/gstdio.h>
+ #include <locale.h>
+-#include <signal.h>
+ 
+ #include "modulemd-defaults.h"
+ #include "modulemd-module-index-merger.h"
+@@ -38,7 +37,7 @@ typedef struct _ModuleFixture
+ 
+ 
+ static void
+-module_test_construct (void)
++module_test_construct_regular (void)
+ {
+   g_autoptr (ModulemdModule) m = NULL;
+   g_autoptr (GPtrArray) list = NULL;
+@@ -66,27 +65,51 @@ module_test_construct (void)
+   g_assert_true (MODULEMD_IS_MODULE (m));
+   g_assert_cmpstr (modulemd_module_get_module_name (m), ==, "testmodule");
+   g_clear_object (&m);
++}
+ 
+-  /* Test that we abort with a NULL name to new() */
+-  modulemd_test_signal = 0;
+-  signal (SIGTRAP, modulemd_test_signal_handler);
+-  m = modulemd_module_new (NULL);
+-  g_assert_cmpint (modulemd_test_signal, ==, SIGTRAP);
+-  g_clear_object (&m);
+ 
+-  /* Test that we abort if we instantiate without a name */
+-  modulemd_test_signal = 0;
+-  signal (SIGTRAP, modulemd_test_signal_handler);
+-  m = g_object_new (MODULEMD_TYPE_MODULE, NULL);
+-  g_assert_cmpint (modulemd_test_signal, ==, SIGTRAP);
+-  g_clear_object (&m);
++/* Test that we abort with a NULL name to new() */
++static void
++module_test_construct_new_null_name (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdModule) m = NULL;
++      m = modulemd_module_new (NULL);
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
+ 
+-  /* test that we abort if we instantiate with a NULL name */
+-  modulemd_test_signal = 0;
+-  signal (SIGTRAP, modulemd_test_signal_handler);
+-  m = g_object_new (MODULEMD_TYPE_MODULE, "module-name", NULL, NULL);
+-  g_assert_cmpint (modulemd_test_signal, ==, SIGTRAP);
+-  g_clear_object (&m);
++
++/* Test that we abort if we instantiate without a name */
++static void
++module_test_construct_init_no_name (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdModule) m = NULL;
++      m = g_object_new (MODULEMD_TYPE_MODULE, NULL);
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
++
++
++/* test that we abort if we instantiate with a NULL name */
++static void
++module_test_construct_init_null_name (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdModule) m = NULL;
++      m = g_object_new (MODULEMD_TYPE_MODULE, "module-name", NULL, NULL);
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
+ }
+ 
+ 
+@@ -801,7 +824,14 @@ main (int argc, char *argv[])
+ 
+   // Define the tests.
+ 
+-  g_test_add_func ("/modulemd/v2/module/construct", module_test_construct);
++  g_test_add_func ("/modulemd/v2/module/construct/regular",
++                   module_test_construct_regular);
++  g_test_add_func ("/modulemd/v2/module/construct/new_null_name",
++                   module_test_construct_new_null_name);
++  g_test_add_func ("/modulemd/v2/module/construct/init_no_name",
++                   module_test_construct_init_no_name);
++  g_test_add_func ("/modulemd/v2/module/construct/init_null_name",
++                   module_test_construct_init_null_name);
+ 
+   g_test_add_func ("/modulemd/v2/module/defaults", module_test_defaults);
+ 
+diff --git a/modulemd/tests/test-modulemd-obsoletes.c b/modulemd/tests/test-modulemd-obsoletes.c
+index f3e90d331..d4ced3c8a 100644
+--- a/modulemd/tests/test-modulemd-obsoletes.c
++++ b/modulemd/tests/test-modulemd-obsoletes.c
+@@ -14,7 +14,6 @@
+ #include <glib.h>
+ #include <glib/gstdio.h>
+ #include <locale.h>
+-#include <signal.h>
+ 
+ #include "modulemd-subdocument-info.h"
+ #include "modulemd-obsoletes.h"
+@@ -26,7 +25,7 @@
+ #include "private/test-utils.h"
+ 
+ static void
+-obsoletes_test_construct (void)
++obsoletes_test_construct_regular (void)
+ {
+   g_autoptr (ModulemdObsoletes) e = NULL;
+ 
+@@ -39,33 +38,51 @@ obsoletes_test_construct (void)
+   g_assert_cmpstr (modulemd_obsoletes_get_module_stream (e), ==, "teststream");
+   g_assert_cmpstr (modulemd_obsoletes_get_message (e), ==, "testmessage");
+   g_clear_object (&e);
++}
+ 
+-  /* Test new() with a NULL module_name */
+-  modulemd_test_signal = 0;
+-  signal (SIGTRAP, modulemd_test_signal_handler);
+-  e = modulemd_obsoletes_new (
+-    MD_OBSOLETES_VERSION_ONE, 2, NULL, "teststream", "testmessage");
+-  g_assert_cmpint (modulemd_test_signal, ==, SIGTRAP);
+-  /* If we trap the error, obsoletes actually returns a value here, so free it */
+-  g_clear_object (&e);
++/* Test new() with a NULL module_name */
++static void
++obsoletes_test_construct_null_module_name (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdObsoletes) e = NULL;
++      e = modulemd_obsoletes_new (
++        MD_OBSOLETES_VERSION_ONE, 2, NULL, "teststream", "testmessage");
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
+ 
+-  /* Test new() with a NULL module_context */
+-  modulemd_test_signal = 0;
+-  signal (SIGTRAP, modulemd_test_signal_handler);
+-  e = modulemd_obsoletes_new (
+-    MD_OBSOLETES_VERSION_ONE, 2, "testmodule", NULL, "testmessage");
+-  g_assert_cmpint (modulemd_test_signal, ==, SIGTRAP);
+-  /* If we trap the error, obsoletes actually returns a value here, so free it */
+-  g_clear_object (&e);
++/* Test new() with a NULL module_context */
++static void
++obsoletes_test_construct_null_module_context (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdObsoletes) e = NULL;
++      e = modulemd_obsoletes_new (
++        MD_OBSOLETES_VERSION_ONE, 2, "testmodule", NULL, "testmessage");
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
+ 
+-  /* Test new() with a NULL message */
+-  modulemd_test_signal = 0;
+-  signal (SIGTRAP, modulemd_test_signal_handler);
+-  e = modulemd_obsoletes_new (
+-    MD_OBSOLETES_VERSION_ONE, 2, "testmodule", "teststream", NULL);
+-  g_assert_cmpint (modulemd_test_signal, ==, SIGTRAP);
+-  /* If we trap the error, obsoletes actually returns a value here, so free it */
+-  g_clear_object (&e);
++/* Test new() with a NULL message */
++static void
++obsoletes_test_construct_null_message (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdObsoletes) e = NULL;
++      e = modulemd_obsoletes_new (
++        MD_OBSOLETES_VERSION_ONE, 2, "testmodule", "teststream", NULL);
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
+ }
+ 
+ static void
+@@ -496,8 +513,14 @@ main (int argc, char *argv[])
+ 
+   // Define the tests.
+ 
+-  g_test_add_func ("/modulemd/v2/obsoletes/construct",
+-                   obsoletes_test_construct);
++  g_test_add_func ("/modulemd/v2/obsoletes/construct/regular",
++                   obsoletes_test_construct_regular);
++  g_test_add_func ("/modulemd/v2/obsoletes/construct/null_module_name",
++                   obsoletes_test_construct_null_module_name);
++  g_test_add_func ("/modulemd/v2/obsoletes/construct/null_module_context",
++                   obsoletes_test_construct_null_module_context);
++  g_test_add_func ("/modulemd/v2/obsoletes/construct/null_message",
++                   obsoletes_test_construct_null_message);
+ 
+   g_test_add_func ("/modulemd/v2/obsoletes/copy", obsoletes_test_copy);
+ 
+diff --git a/modulemd/tests/test-modulemd-profile.c b/modulemd/tests/test-modulemd-profile.c
+index 3a730c16d..b4bd88fbc 100644
+--- a/modulemd/tests/test-modulemd-profile.c
++++ b/modulemd/tests/test-modulemd-profile.c
+@@ -14,7 +14,6 @@
+ #include <glib.h>
+ #include <glib/gstdio.h>
+ #include <locale.h>
+-#include <signal.h>
+ 
+ #include "modulemd-profile.h"
+ #include "private/glib-extensions.h"
+@@ -26,16 +25,8 @@ typedef struct _ProfileFixture
+ {
+ } ProfileFixture;
+ 
+-gboolean signaled = FALSE;
+-
+ static void
+-sigtrap_handler (int UNUSED (sig_num))
+-{
+-  signaled = TRUE;
+-}
+-
+-static void
+-profile_test_construct (void)
++profile_test_construct_regular (void)
+ {
+   g_autoptr (ModulemdProfile) p = NULL;
+   g_auto (GStrv) rpms = NULL;
+@@ -56,27 +47,52 @@ profile_test_construct (void)
+   g_assert_true (MODULEMD_IS_PROFILE (p));
+   g_assert_cmpstr (modulemd_profile_get_name (p), ==, "testprofile");
+   g_clear_object (&p);
++}
+ 
+-  /* Test that we abort with a NULL name to new() */
+-  signaled = FALSE;
+-  signal (SIGTRAP, sigtrap_handler);
+-  p = modulemd_profile_new (NULL);
+-  g_assert_true (signaled);
+-  g_clear_object (&p);
+ 
+-  /* Test that we abort if we instantiate without a name */
+-  signaled = FALSE;
+-  signal (SIGTRAP, sigtrap_handler);
+-  p = g_object_new (MODULEMD_TYPE_PROFILE, NULL);
+-  g_assert_true (signaled);
+-  g_clear_object (&p);
++/* Test that we abort with a NULL name to new() */
++static void
++profile_test_construct_new_null (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdProfile) p = NULL;
++      p = modulemd_profile_new (NULL);
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
+ 
+-  /* test that we abort if we instantiate with a NULL name */
+-  signaled = FALSE;
+-  signal (SIGTRAP, sigtrap_handler);
+-  p = g_object_new (MODULEMD_TYPE_PROFILE, "name", NULL, NULL);
+-  g_assert_true (signaled);
+-  g_clear_object (&p);
++
++/* Test that we abort if we instantiate without a name */
++static void
++profile_test_construct_init_no_name (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdProfile) p = NULL;
++      p = g_object_new (MODULEMD_TYPE_PROFILE, NULL);
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
++
++
++/* Test that we abort if we instantiate with a NULL name */
++static void
++profile_test_construct_init_null_name (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdProfile) p = NULL;
++
++      p = g_object_new (MODULEMD_TYPE_PROFILE, "name", NULL, NULL);
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
+ }
+ 
+ 
+@@ -353,12 +369,23 @@ profile_test_get_name (void)
+ 
+   g_object_get (p, "name", &name, NULL);
+   g_assert_cmpstr (name, ==, "testprofile");
++}
++
+ 
+-  /* Test that name is immutable */
+-  signaled = FALSE;
+-  signal (SIGTRAP, sigtrap_handler);
+-  g_object_set (p, "name", "notatest", NULL);
+-  g_assert_true (signaled);
++/* Test that name is immutable */
++static void
++profile_test_name_is_immutable (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdProfile) p = NULL;
++      p = modulemd_profile_new ("testprofile");
++
++      g_object_set (p, "name", "notatest", NULL);
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
+ }
+ 
+ 
+@@ -576,7 +603,14 @@ main (int argc, char *argv[])
+ 
+   // Define the tests.
+ 
+-  g_test_add_func ("/modulemd/v2/profile/construct", profile_test_construct);
++  g_test_add_func ("/modulemd/v2/profile/construct/regular",
++                   profile_test_construct_regular);
++  g_test_add_func ("/modulemd/v2/profile/construct/new_null",
++                   profile_test_construct_new_null);
++  g_test_add_func ("/modulemd/v2/profile/construct/init_no_name",
++                   profile_test_construct_init_no_name);
++  g_test_add_func ("/modulemd/v2/profile/construct/init_null_name",
++                   profile_test_construct_init_null_name);
+ 
+   g_test_add_func ("/modulemd/v2/profile/equals", profile_test_equals);
+ 
+@@ -584,6 +618,9 @@ main (int argc, char *argv[])
+ 
+   g_test_add_func ("/modulemd/v2/profile/get_name", profile_test_get_name);
+ 
++  g_test_add_func ("/modulemd/v2/profile/name_is_immutable",
++                   profile_test_name_is_immutable);
++
+   g_test_add_func ("/modulemd/v2/profile/get_set_description",
+                    profile_test_get_set_description);
+ 
+diff --git a/modulemd/tests/test-modulemd-service-level.c b/modulemd/tests/test-modulemd-service-level.c
+index d8ee981e9..961956dc8 100644
+--- a/modulemd/tests/test-modulemd-service-level.c
++++ b/modulemd/tests/test-modulemd-service-level.c
+@@ -14,7 +14,6 @@
+ #include <glib.h>
+ #include <glib/gstdio.h>
+ #include <locale.h>
+-#include <signal.h>
+ 
+ #include "modulemd-service-level.h"
+ #include "private/glib-extensions.h"
+@@ -26,16 +25,8 @@ typedef struct _ServiceLevelFixture
+ {
+ } ServiceLevelFixture;
+ 
+-gboolean signaled = FALSE;
+-
+-static void
+-sigtrap_handler (int UNUSED (sig_num))
+-{
+-  signaled = TRUE;
+-}
+-
+ static void
+-service_level_test_construct (void)
++service_level_test_construct_regular (void)
+ {
+   g_autoptr (ModulemdServiceLevel) sl = NULL;
+ 
+@@ -59,34 +50,55 @@ service_level_test_construct (void)
+   g_assert_cmpstr (modulemd_service_level_get_name (sl), ==, "bar");
+   g_assert_null (modulemd_service_level_get_eol (sl));
+   g_clear_object (&sl);
++}
+ 
+ 
+-  /* Test that we abort if we call new() with a NULL name */
+-  signaled = FALSE;
+-  signal (SIGTRAP, sigtrap_handler);
+-  sl = modulemd_service_level_new (NULL);
+-  g_assert_true (signaled);
+-  g_clear_object (&sl);
++/* Test that we abort if we call new() with a NULL name */
++static void
++service_level_test_construct_new_null (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdServiceLevel) sl = NULL;
++      sl = modulemd_service_level_new (NULL);
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
+ 
+ 
+-  /* Test that we abort if we instatiate without a name */
+-  signaled = FALSE;
+-  signal (SIGTRAP, sigtrap_handler);
+-  sl = g_object_new (MODULEMD_TYPE_SERVICE_LEVEL, NULL);
+-  g_assert_true (signaled);
+-  g_clear_object (&sl);
++/* Test that we abort if we instatiate without a name */
++static void
++service_level_test_construct_init_no_name (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdServiceLevel) sl = NULL;
++      sl = g_object_new (MODULEMD_TYPE_SERVICE_LEVEL, NULL);
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
+ 
+ 
+-  /* Test that we abort if we instatiate with a NULL name */
+-  signaled = FALSE;
+-  signal (SIGTRAP, sigtrap_handler);
+-  // clang-format off
+-  sl = g_object_new (MODULEMD_TYPE_SERVICE_LEVEL,
+-                     "name", NULL,
+-                     NULL);
+-  // clang-format on
+-  g_assert_true (signaled);
+-  g_clear_object (&sl);
++/* Test that we abort if we instatiate with a NULL name */
++static void
++service_level_test_construct_init_null_name (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdServiceLevel) sl = NULL;
++      // clang-format off
++      sl = g_object_new (MODULEMD_TYPE_SERVICE_LEVEL,
++                         "name", NULL,
++                         NULL);
++      // clang-format on
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
+ }
+ 
+ 
+@@ -249,19 +261,25 @@ service_level_test_get_name (void)
+                 NULL);
+   // clang-format on
+   g_assert_cmpstr (name, ==, "foo");
++}
+ 
+ 
+-  /* Test that trying to set the name by object properties fails.
+-   * The name must be immutable for the life of the object.
+-   */
+-  signaled = FALSE;
+-  signal (SIGTRAP, sigtrap_handler);
+-  // clang-format off
+-  g_object_set (sl,
+-                "name", "bar",
+-                NULL);
+-  // clang-format on
+-  g_assert_true (signaled);
++/*
++ * Test that trying to set the name by object properties fails.
++ * The name must be immutable for the life of the object.
++ */
++static void
++service_level_test_name_is_immutable (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdServiceLevel) sl = NULL;
++      sl = modulemd_service_level_new ("foo");
++      g_object_set (sl, "name", "bar", NULL);
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
+ }
+ 
+ 
+@@ -476,12 +494,21 @@ main (int argc, char *argv[])
+ 
+   // Define the tests.
+ 
+-  g_test_add_func ("/modulemd/v2/servicelevel/construct",
+-                   service_level_test_construct);
++  g_test_add_func ("/modulemd/v2/servicelevel/construct/regular",
++                   service_level_test_construct_regular);
++  g_test_add_func ("/modulemd/v2/servicelevel/construct/new_null",
++                   service_level_test_construct_new_null);
++  g_test_add_func ("/modulemd/v2/servicelevel/construct/init_no_name",
++                   service_level_test_construct_init_no_name);
++  g_test_add_func ("/modulemd/v2/servicelevel/construct/init_null_name",
++                   service_level_test_construct_init_null_name);
+ 
+   g_test_add_func ("/modulemd/v2/servicelevel/get_set_name",
+                    service_level_test_get_name);
+ 
++  g_test_add_func ("/modulemd/v2/servicelevel/name_is_immutable",
++                   service_level_test_name_is_immutable);
++
+   g_test_add_func ("/modulemd/v2/servicelevel/equals",
+                    service_level_test_equals);
+ 
+diff --git a/modulemd/tests/test-modulemd-translation-entry.c b/modulemd/tests/test-modulemd-translation-entry.c
+index 858bdfa8e..ee1794069 100644
+--- a/modulemd/tests/test-modulemd-translation-entry.c
++++ b/modulemd/tests/test-modulemd-translation-entry.c
+@@ -14,7 +14,6 @@
+ #include <glib.h>
+ #include <glib/gstdio.h>
+ #include <locale.h>
+-#include <signal.h>
+ 
+ #include "modulemd-translation-entry.h"
+ #include "private/glib-extensions.h"
+@@ -26,16 +25,8 @@ typedef struct _TranslationEntryFixture
+ {
+ } TranslationEntryFixture;
+ 
+-gboolean signaled = FALSE;
+-
+ static void
+-sigtrap_handler (int UNUSED (sig_num))
+-{
+-  signaled = TRUE;
+-}
+-
+-static void
+-translation_entry_test_construct (void)
++translation_entry_test_construct_regular (void)
+ {
+   g_autoptr (ModulemdTranslationEntry) te = NULL;
+   g_auto (GStrv) profile_names = NULL;
+@@ -110,34 +101,55 @@ translation_entry_test_construct (void)
+   g_assert_cmpstr (
+     modulemd_translation_entry_get_description (te), ==, "jumped");
+   g_clear_object (&te);
++}
+ 
+ 
+-  /* Test that we abort if we call new() with a NULL locale */
+-  signaled = FALSE;
+-  signal (SIGTRAP, sigtrap_handler);
+-  te = modulemd_translation_entry_new (NULL);
+-  g_assert_true (signaled);
+-  g_clear_object (&te);
++/* Test that we abort if we call new() with a NULL locale */
++static void
++translation_entry_test_construct_new_null (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdTranslationEntry) te = NULL;
++      te = modulemd_translation_entry_new (NULL);
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
+ 
+ 
+-  /* Test that we abort if we instatiate without a locale */
+-  signaled = FALSE;
+-  signal (SIGTRAP, sigtrap_handler);
+-  te = g_object_new (MODULEMD_TYPE_TRANSLATION_ENTRY, NULL);
+-  g_assert_true (signaled);
+-  g_clear_object (&te);
++/* Test that we abort if we instatiate without a locale */
++static void
++translation_entry_test_construct_init_no_locale (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdTranslationEntry) te = NULL;
++      te = g_object_new (MODULEMD_TYPE_TRANSLATION_ENTRY, NULL);
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
+ 
+ 
+-  /* Test that we abort if we instatiate with a NULL locale */
+-  signaled = FALSE;
+-  signal (SIGTRAP, sigtrap_handler);
+-  // clang-format off
+-  te = g_object_new (MODULEMD_TYPE_TRANSLATION_ENTRY,
+-                     "locale", NULL,
+-                     NULL);
+-  // clang-format on
+-  g_assert_true (signaled);
+-  g_clear_object (&te);
++/* Test that we abort if we instatiate with a NULL locale */
++static void
++translation_entry_test_construct_init_null_locale (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdTranslationEntry) te = NULL;
++      // clang-format off
++      te = g_object_new (MODULEMD_TYPE_TRANSLATION_ENTRY,
++                         "locale", NULL,
++                         NULL);
++      // clang-format on
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
+ }
+ 
+ 
+@@ -334,12 +346,26 @@ translation_entry_test_get_locale (void)
+ 
+   g_object_get (te, "locale", &locale, NULL);
+   g_assert_cmpstr (locale, ==, "en_US");
++}
++
+ 
+-  /* Test that locale is immutable */
+-  signaled = FALSE;
+-  signal (SIGTRAP, sigtrap_handler);
+-  g_object_set (te, "locale", "en_GB", NULL);
+-  g_assert_true (signaled);
++/* Test that locale is immutable */
++static void
++translation_entry_test_locale_is_immutable (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdTranslationEntry) te = NULL;
++
++      te = modulemd_translation_entry_new ("en_US");
++      g_assert_nonnull (te);
++      g_assert_true (MODULEMD_IS_TRANSLATION_ENTRY (te));
++
++      g_object_set (te, "locale", "en_GB", NULL);
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
+ }
+ 
+ 
+@@ -609,8 +635,14 @@ main (int argc, char *argv[])
+ 
+   // Define the tests.
+ 
+-  g_test_add_func ("/modulemd/v2/translationentry/construct",
+-                   translation_entry_test_construct);
++  g_test_add_func ("/modulemd/v2/translationentry/construct/regular",
++                   translation_entry_test_construct_regular);
++  g_test_add_func ("/modulemd/v2/translationentry/construct/new_null",
++                   translation_entry_test_construct_new_null);
++  g_test_add_func ("/modulemd/v2/translationentry/construct/init_no_locale",
++                   translation_entry_test_construct_init_no_locale);
++  g_test_add_func ("/modulemd/v2/translationentry/construct/init_null_locale",
++                   translation_entry_test_construct_init_null_locale);
+ 
+   g_test_add_func ("/modulemd/v2/translationentry/copy",
+                    translation_entry_test_copy);
+@@ -618,6 +650,9 @@ main (int argc, char *argv[])
+   g_test_add_func ("/modulemd/v2/translationentry/get_locale",
+                    translation_entry_test_get_locale);
+ 
++  g_test_add_func ("/modulemd/v2/translationentry/locale_is_immutable",
++                   translation_entry_test_locale_is_immutable);
++
+   g_test_add_func ("/modulemd/v2/translationentry/get_set_summary",
+                    translation_entry_test_get_set_summary);
+ 
+diff --git a/modulemd/tests/test-modulemd-translation.c b/modulemd/tests/test-modulemd-translation.c
+index 655200f95..a67b7873f 100644
+--- a/modulemd/tests/test-modulemd-translation.c
++++ b/modulemd/tests/test-modulemd-translation.c
+@@ -14,7 +14,6 @@
+ #include <glib.h>
+ #include <glib/gstdio.h>
+ #include <locale.h>
+-#include <signal.h>
+ 
+ #include "modulemd-subdocument-info.h"
+ #include "modulemd-translation-entry.h"
+@@ -30,17 +29,9 @@ typedef struct _TranslationFixture
+ {
+ } TranslationFixture;
+ 
+-gboolean signaled = FALSE;
+ 
+ static void
+-sigtrap_handler (int UNUSED (sig_num))
+-{
+-  signaled = TRUE;
+-}
+-
+-
+-static void
+-translation_test_construct (void)
++translation_test_construct_regular (void)
+ {
+   g_autoptr (ModulemdTranslation) t = NULL;
+   g_auto (GStrv) locales = NULL;
+@@ -94,41 +85,64 @@ translation_test_construct (void)
+   g_assert_cmpstr (modulemd_translation_get_module_stream (t), ==, "teststr");
+   g_assert_cmpint (modulemd_translation_get_modified (t), ==, modified);
+   g_clear_object (&t);
++}
+ 
+-  /* Test that object_new does not work without a version */
+-  signaled = FALSE;
+-  signal (SIGTRAP, sigtrap_handler);
+-  // clang-format off
+-  t = g_object_new (MODULEMD_TYPE_TRANSLATION,
+-                    "module_name", "testmod",
+-                    "module_stream", "teststr",
+-                    NULL);
+-  // clang-format on
+-  g_assert_true (signaled);
+-  g_clear_object (&t);
++/* Test that object_new does not work without a version */
++static void
++translation_test_construct_no_version (void)
++{
++  if (g_test_subprocess ())
++    {
++      g_autoptr (ModulemdTranslation) t = NULL;
++      // clang-format off
++      t = g_object_new (MODULEMD_TYPE_TRANSLATION,
++                        "module_name", "testmod",
++                        "module_stream", "teststr",
++                        NULL);
++      // clang-format on
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
+ 
+-  /* Test that object_new does not work without a name */
+-  signaled = FALSE;
+-  signal (SIGTRAP, sigtrap_handler);
+-  // clang-format off
+-  t = g_object_new (MODULEMD_TYPE_TRANSLATION,
+-                    "version", translation_version,
+-                    "module_stream", "teststr", NULL);
+-  // clang-format on
+-  g_assert_true (signaled);
+-  g_clear_object (&t);
++/* Test that object_new does not work without a name */
++static void
++translation_test_construct_no_name (void)
++{
++  if (g_test_subprocess ())
++    {
++      guint64 translation_version = 1;
++      g_autoptr (ModulemdTranslation) t = NULL;
++      // clang-format off
++      t = g_object_new (MODULEMD_TYPE_TRANSLATION,
++                        "version", translation_version,
++                        "module_stream", "teststr", NULL);
++      // clang-format on
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
++}
+ 
+-  /* Test that object_new does not work without a stream */
+-  signaled = FALSE;
+-  signal (SIGTRAP, sigtrap_handler);
+-  // clang-format off
+-  t = g_object_new (MODULEMD_TYPE_TRANSLATION,
+-                    "version", translation_version,
+-                    "module_name", "testmod",
+-                    NULL);
+-  // clang-format on
+-  g_assert_true (signaled);
+-  g_clear_object (&t);
++/* Test that object_new does not work without a stream */
++static void
++translation_test_construct_no_stream (void)
++{
++  if (g_test_subprocess ())
++    {
++      guint64 translation_version = 1;
++      g_autoptr (ModulemdTranslation) t = NULL;
++      // clang-format off
++      t = g_object_new (MODULEMD_TYPE_TRANSLATION,
++                        "version", translation_version,
++                        "module_name", "testmod",
++                        NULL);
++      // clang-format on
++      return;
++    }
++  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
++  g_test_trap_assert_failed ();
+ }
+ 
+ static void
+@@ -416,8 +430,14 @@ main (int argc, char *argv[])
+ 
+   // Define the tests.
+ 
+-  g_test_add_func ("/modulemd/v2/translation/construct",
+-                   translation_test_construct);
++  g_test_add_func ("/modulemd/v2/translation/construct/regular",
++                   translation_test_construct_regular);
++  g_test_add_func ("/modulemd/v2/translation/construct/no_version",
++                   translation_test_construct_no_version);
++  g_test_add_func ("/modulemd/v2/translation/construct/no_name",
++                   translation_test_construct_no_name);
++  g_test_add_func ("/modulemd/v2/translation/construct/no_stream",
++                   translation_test_construct_no_stream);
+ 
+   g_test_add_func ("/modulemd/v2/translation/copy", translation_test_copy);
+ 

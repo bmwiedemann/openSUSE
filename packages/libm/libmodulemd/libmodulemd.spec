@@ -1,7 +1,7 @@
 #
 # spec file for package libmodulemd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020-2023 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %global majorversion 2
 %global minorversion 15
-%global patchversion 0
+%global patchversion 2
 %global majorminorversion %{majorversion}.%{minorversion}
 %global nsversion %{majorversion}.0
 
@@ -37,9 +37,8 @@ License:        MIT
 Group:          System/Packages
 URL:            https://github.com/fedora-modularity/libmodulemd
 Source0:        %{url}/releases/download/%{libmodulemd_version}/modulemd-%{libmodulemd_version}.tar.xz
-Patch0:         https://github.com/fedora-modularity/libmodulemd/commit/9d280909.patch
-Patch1:         https://github.com/fedora-modularity/libmodulemd/commit/29c339a3.patch
-Patch2:         glib-2.80.2-glibdoc-path.patch
+Patch0:         https://github.com/fedora-modularity/libmodulemd/commit/89d4afb3.patch
+Patch1:         https://github.com/fedora-modularity/libmodulemd/commit/e33ecf1c.patch
 
 BuildRequires:  gcc
 BuildRequires:  glib2-doc

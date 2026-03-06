@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Mar  5 11:12:52 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.15.2:
+  + module_index test now passes if RPM library is built without
+    bzip2 or xx compression support and libmodulemd is configured
+    to support decompression using the RPM library.
+- Changes from version 2.15.1:
+  + A new g_variant_store: assertion 'data != NULL' failed warning
+    added to GLib 2.84.1 when processing modulemd YAML documents
+    with /data/xmd field with an empty flow map ({}) value was
+    fixed.
+  + Building documentation now works with GLib 2.80.1 at the
+    expense of missing cross links from libmodulemd to GLib. If it
+    still fails you, you can disable building the documentation
+    with -Dwith_docs=false meson option.
+  + A number of warnings printed by recent Meson was reduced.
+- Add 89d4afb3.patch: tests: Adapt to glib 2.87.0
+- Add e33ecf1c.patch: tests: Adapt to pygobject 3.55.0
+- Drop upstream merged patches:
+  + 29c339a3.patch
+  + 9d280909.patch
+  + glib-2.80.2-glibdoc-path.patch
+
+-------------------------------------------------------------------
 Wed May 15 06:27:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add glib-2.80.2-glibdoc-path.patch: Fix GLib documentation path
