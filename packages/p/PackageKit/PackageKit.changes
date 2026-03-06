@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jan 29 08:05:27 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.3.4:
+  + This version introduces the new DNF5 backend for distributions
+    that use DNF.
+  + The "pkgctl" utility has been renamed to "pkgcli" to avoid a
+    name clash with an Arch Linux-specific developer tool that has
+    the same binary name. It is also now built by default.
+  + Features:
+    - Build pkgctl by default
+    - pkgctl: Add manual page
+    - pkgctl: Add basic bash-completion support
+    - Rename the pkgctl utility to pkgcli
+    - pkgcli: Autoremove unused dependencies by default
+  - Changes to various backends: alpm, apt, dnf, dnf5, freebsd
+- Drop PackageKit-1.3.3-Initial-DNF5-Backend.patch: fixed upstream
+- BuildRequire pkgconfig(jansson): dependency needed for pkgcli.
+- Add docbook5-xsl-stylesheets BuildRequires: new dependency
+- Backport upstream patch to fix build:
+  + 11c5f1f34f48b58ee10acec839dd01a31728704b.patch
+- Pass -dlegacy_tools=true to meson: build the legacy tools
+  (pkcon/pkmon) for the time being.
+
+-------------------------------------------------------------------
 Tue Jan 20 16:23:50 UTC 2026 - Neal Gompa <ngompa@opensuse.org>
 
 - Rebase to version 1.3.3

@@ -1,7 +1,7 @@
 #
 # spec file for package PackageKit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2026 Neal Gompa
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@
 %endif
 
 Name:           PackageKit
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 Summary:        Simple software installation management software
 License:        GPL-2.0-or-later
@@ -38,8 +38,8 @@ Source1:        %{url}/releases/%{name}-%{version}.tar.xz.asc
 Source3:        PackageKit.tmpfiles
 Source99:       PackageKit.keyring
 
-# PATCH-FEATURE-UPSTREAM PackageKit-1.3.3-Initial-DNF5-Backend.patch neal@gompa.dev -- Add DNF5 backend
-Patch0:         PackageKit-1.3.3-Initial-DNF5-Backend.patch
+# PATCH-FIX-UPSTREAM
+Patch0:         https://github.com/PackageKit/PackageKit/commit/11c5f1f34f48b58ee10acec839dd01a31728704b.patch
 # PATCH-FEATURE-OPENSUSE PackageKit-systemd-timers.patch bsc#1115410 sckang@suse.com -- Migrate from cron to systemd timers
 Patch1:         PackageKit-systemd-timers.patch
 # PATCH-FIX-OPENSUSE PackageKit-remove-polkit-rules.patch bsc#1125434 sckang@suse.com -- Remove polkit rules file
@@ -47,6 +47,7 @@ Patch2:         PackageKit-remove-polkit-rules.patch
 # PATCH-FIX-OPENSUSE PackageKit-alias-dnf-to-dnf5.patch ngompa@opensuse.org -- Handle replacing dnf with dnf5
 Patch3:         PackageKit-alias-dnf-to-dnf5.patch
 
+BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection-devel
@@ -74,6 +75,7 @@ BuildRequires:  shared-mime-info
 BuildRequires:  sqlite-devel
 BuildRequires:  vala
 BuildRequires:  pkgconfig(bash-completion) >= 2.0
+BuildRequires:  pkgconfig(jansson) >= 2.8
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
 # We really want a working backend (likely zypp)
@@ -276,7 +278,8 @@ sed -e "s/5.2.17.0/5.2.14.0/g" -i backends/dnf5/meson.build
         %{!?with_cnf:-Dbash_command_not_found=false} \
         -Dcron=false \
         -Dlocal_checkout=false \
-        -Ddbus_sys=%{_datadir}/dbus-1/system.d
+        -Ddbus_sys=%{_datadir}/dbus-1/system.d \
+        -Dlegacy_tools=true
 %meson_build
 
 %install
@@ -342,8 +345,10 @@ install -m 0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/tmpfiles.d/%{name}.conf
 %dir %{_libdir}/packagekit-backend
 %dir %{_usr}/lib/tmpfiles.d
 %{_datadir}/bash-completion/completions/pkcon
+%{_datadir}/bash-completion/completions/pkgcli
 %{_datadir}/dbus-1/system.d/org.freedesktop.PackageKit.conf
 %{_bindir}/pkcon
+%{_bindir}/pkgcli
 %{_bindir}/pkmon
 %{_libdir}/packagekit-backend/libpk_backend_dummy.so
 %{_libexecdir}/packagekitd
