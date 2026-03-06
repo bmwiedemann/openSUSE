@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  6 08:27:06 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.7.5
+  * Fixes an issue with database migrations
+  * Modernize Python installation
+  * Include native support for Ansible deprecations, warnings and
+    exceptions.
+
+-------------------------------------------------------------------
 Fri Jan  9 22:02:27 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Update to 1.7.4:

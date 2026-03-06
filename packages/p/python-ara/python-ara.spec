@@ -29,7 +29,7 @@
 %define pythons python3
 %bcond_without libalternatives
 Name:           python-ara
-Version:        1.7.4
+Version:        1.7.5
 Release:        0
 Summary:        ARA Records Ansible
 License:        GPL-3.0-or-later

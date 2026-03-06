@@ -409,4 +409,16 @@
     <comment></comment>
     <requestid>1326748</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2abc1fcbaf81b82732b0e887b6edce91</srcmd5>
+    <version>1.7.5</version>
+    <time>1772817695</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.7.5
+  * Fixes an issue with database migrations
+  * Modernize Python installation
+  * Include native support for Ansible deprecations, warnings and
+    exceptions. (forwarded request 1337279 from glaubitz)</comment>
+    <requestid>1337320</requestid>
+  </revision>
 </revisionlist>
