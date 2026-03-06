@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-oauthlib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        OAuthlib authentication support for Requests
 License:        ISC
 URL:            https://github.com/requests/requests-oauthlib
 Source:         https://files.pythonhosted.org/packages/source/r/requests-oauthlib/requests-oauthlib-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#requests/requests-oauthlib#559
+Patch0:         support-oauthlib-3.3.0.patch
 BuildRequires:  %{python_module oauthlib >= 3.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -43,16 +45,14 @@ BuildArch:      noarch
 This project provides first-class OAuth library support for Requests.
 
 %prep
-%setup -q -n requests-oauthlib-%{version}
+%autosetup -p1 -n requests-oauthlib-%{version}
 
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
-
-#hardlink duplicated files
-%fdupes %{buildroot}
+%python_expand %fdupes %{buildroot}/%{$python_sitelib}
 
 %check
 # Three tests initiate network traffic to httpbin.org

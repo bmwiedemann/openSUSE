@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  5 00:52:12 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-oauthlib-3.3.0.patch:
+  * Support oauthlib 3.3.0 changes.
+- Switch to autosetup macro.
+- Run fdupes for python_sitelib.
+
+-------------------------------------------------------------------
 Sun Nov 10 22:28:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.0:

@@ -118,4 +118,15 @@
     not support versions of OAuthlib before 3.0.0.</comment>
     <requestid>1223212</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>07c974c787ec9941a5ee27777b67c956</srcmd5>
+    <version>2.0.0</version>
+    <time>1772817415</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-oauthlib-3.3.0.patch:
+  * Support oauthlib 3.3.0 changes.
+- Switch to autosetup macro.
+- Run fdupes for python_sitelib.</comment>
+    <requestid>1336625</requestid>
+  </revision>
 </revisionlist>

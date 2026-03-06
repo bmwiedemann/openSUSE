@@ -1,0 +1,243 @@
+From 8cd1503783a72b596ea932c017375399c82ac5cc Mon Sep 17 00:00:00 2001
+From: Jonathan Huot <jonathan.huot@gmail.com>
+Date: Tue, 9 Apr 2024 22:21:08 +0200
+Subject: [PATCH 1/3] Initial doc for writing samples
+
+---
+ docs/contributing_examples.rst               | 89 ++++++++++++++++++++
+ docs/index.rst                               |  1 +
+ tests/examples/__init__.py                   |  2 +
+ tests/examples/base.py                       | 32 +++++++
+ tests/examples/test_native_spa_pkce_auth0.py |  5 +-
+ tox.ini                                      |  1 +
+ 6 files changed, 128 insertions(+), 2 deletions(-)
+ create mode 100644 docs/contributing_examples.rst
+
+Index: requests-oauthlib-2.0.0/docs/contributing_examples.rst
+===================================================================
+--- /dev/null
++++ requests-oauthlib-2.0.0/docs/contributing_examples.rst
+@@ -0,0 +1,89 @@
++======================
++Documentation examples
++======================
++
++Examples found in documentation must be tested to be sure we have the appropriate
++coverage and be sure new releases are tested against regressions.
++
++Also, it helps testing any changes in public Identity Providers.
++
++Currently few tests are covered, and ``selenium`` package is used to interact with browser. Feel free to have a look at the base class in ``tests/examples/base.py`` to reuse utility specially crafted for testing samples in documentation.
++
++Identity Providers available for tests
++======================================
++
++Currently only an Auth0 test provider is available but new can be created on request. Following are the environment variables :
++
++- Auth0 https://auth0.com/ :
++
++  - ``AUTH0_USERNAME``
++  - ``AUTH0_PASSWORD``
++  - ``AUTH0_DOMAIN``
++  - ``AUTH0_PKCE_CLIENT_ID``
++
++Guidelines to write samples
++===========================
++
++Documentation
++^^^^^^^^^^^^^
++
++In order to write a testable sample, like an easy copy/paste, it is recommended to separate the python code from the documentation as below :
++
++.. code-block::
++
++   .. literalinclude:: xyz_foobar.py
++     :language: python
++
++Verify if formatting is correct by checking :
++
++.. code-block:: bash
++
++  tox -e docs
++  # output located in docs/_build/html/index.html
++                
++                
++Python example
++^^^^^^^^^^^^^^
++
++It's recommended to write a python example with either predefined placeholder variables for environment setup properties (like identity provider tenants identifiers/secrets), and use ``input()`` when user interaction is required. Feel free to reuse an existing example like ``docs/examples/native_spa_pkce_auth0.py`` and its associated test.
++
++Python tests
++^^^^^^^^^^^^
++
++You can write new tests in ``tests/examples/test_*py`` and inherit of base classes found in ``tests/examples/base.py`` based on your needs.
++
++Don't forget to skip python tests if you require an environment variables, also don't store any secrets or leak tenant informations in git.
++
++Skip tests example as below:
++
++.. code-block:: python
++
++        self.client_id = os.environ.get("AUTH0_PKCE_CLIENT_ID")
++        self.idp_domain = os.environ.get("AUTH0_DOMAIN")
++
++        if not self.client_id or not self.idp_domain:
++            self.skipTest("native auth0 is not configured properly")
++
++
++Then the sample can be copy paste into a python console 
++
++Environment variables
++^^^^^^^^^^^^^^^^^^^^^
++
++Once referencing environment variables, you have to set them in the Github Actions. Any maintainers can do it, and it's the role of the maintainer to create a test tenant with test clients.
++
++Example on how to set new env secrets with `GitHub CLI <https://cli.github.com/>`_:
++
++.. code-block:: bash
++
++    gh secret set AUTH0_PASSWORD --body "secret"
++
++
++Helper Interfaces
++=================
++
++.. autoclass:: tests.examples.Sample
++    :members:
++
++.. autoclass:: tests.examples.Browser
++    :members:
+Index: requests-oauthlib-2.0.0/docs/index.rst
+===================================================================
+--- requests-oauthlib-2.0.0.orig/docs/index.rst
++++ requests-oauthlib-2.0.0/docs/index.rst
+@@ -77,6 +77,7 @@ Getting Started:
+ 
+    api
+    contributing
++   contributing_examples
+ 
+ 
+ 
+Index: requests-oauthlib-2.0.0/tests/examples/__init__.py
+===================================================================
+--- /dev/null
++++ requests-oauthlib-2.0.0/tests/examples/__init__.py
+@@ -0,0 +1,2 @@
++from .base import Sample
++from .base import Browser
+Index: requests-oauthlib-2.0.0/tests/examples/base.py
+===================================================================
+--- requests-oauthlib-2.0.0.orig/tests/examples/base.py
++++ requests-oauthlib-2.0.0/tests/examples/base.py
+@@ -35,6 +35,14 @@ class Sample():
+                     fout.write(line)
+ 
+     def run_sample(self, filepath, variables):
++        """
++        Execute python sample as a background process.
++
++        :param filepath: Name of the python sample present in docs examples folder.
++        :type filepath: string
++        :param variables: Key Names/Values to replace in the python script before being run
++        :type variables: dict
++        """
+         inpath = os.path.join(cwd, "..", "..", "docs", "examples", filepath)
+         outpath = os.path.join(cwd, "tmp_{}".format(filepath))
+         self.replaceVariables(inpath, outpath, variables)
+@@ -48,10 +56,21 @@ class Sample():
+         )
+ 
+     def write(self, string):
++        """
++        Write string into standard input. Useful to fill an answer to ``input()``
++
++        :param string: string to write
++        """
+         self.proc.stdin.write(string)
+         self.proc.stdin.flush()
+ 
+     def wait_for_pattern(self, pattern):
++        """
++        Wait until the background process is writing ``pattern`` in standard output.
++
++        :param pattern: search for this string before returning.
++        :type pattern: string
++        """
+         try:
+             while True:
+                 line = self.proc.stdout.readline()
+@@ -62,6 +81,9 @@ class Sample():
+             self.assertTrue(False, "timeout when looking for output")
+ 
+     def wait_for_end(self):
++        """
++        Wait until the background process ends. Timeout after 10sec.
++        """
+         try:
+             outs, err = self.proc.communicate(timeout=10)
+             self.outputs += filter(lambda x: x != '', outs.split('\n'))
+@@ -88,6 +110,16 @@ class Browser():
+         self.driver.quit()
+ 
+     def authorize_auth0(self, authorize_url, expected_redirect_uri):
++        """
++        Start browser based on an Auth0 authorize url, and log user with user and password.
++        Returns once login journey ends with a redirection to ``expected_redirect_uri``.
++        Note this is for Auth0 login dialog specifically.
++
++        :param authorize_url: Full Authorize URL of Identity Provider
++        :type authorize_url: string
++        :param expected_redirect_uri: Expected ``redirect_uri``. Used only to check end of the authorize journey.
++        :type expected_redirect_uri: string
++        """
+         self.driver.get(authorize_url)
+         username = self.driver.find_element(By.ID, "username")
+         password = self.driver.find_element(By.ID, "password")
+Index: requests-oauthlib-2.0.0/tests/examples/test_native_spa_pkce_auth0.py
+===================================================================
+--- requests-oauthlib-2.0.0.orig/tests/examples/test_native_spa_pkce_auth0.py
++++ requests-oauthlib-2.0.0/tests/examples/test_native_spa_pkce_auth0.py
+@@ -1,9 +1,10 @@
+ import os
+ import unittest
+ 
+-from . import base
++from . import Sample
++from . import Browser
+ 
+-class TestNativeAuth0Test(base.Sample, base.Browser, unittest.TestCase):
++class TestNativeAuth0Test(Sample, Browser, unittest.TestCase):
+     def setUp(self):
+         super().setUp()
+         self.client_id = os.environ.get("AUTH0_PKCE_CLIENT_ID")
+Index: requests-oauthlib-2.0.0/tests/test_compliance_fixes.py
+===================================================================
+--- requests-oauthlib-2.0.0.orig/tests/test_compliance_fixes.py
++++ requests-oauthlib-2.0.0/tests/test_compliance_fixes.py
+@@ -115,7 +115,7 @@ class MailChimpComplianceFixTest(TestCas
+             authorization_response="https://i.b/?code=hello",
+         )
+         # Times should be close
+-        approx_expires_at = time.time() + 3600
++        approx_expires_at = round(time.time()) + 3600
+         actual_expires_at = token.pop("expires_at")
+         self.assertAlmostEqual(actual_expires_at, approx_expires_at, places=2)
+ 
+@@ -289,7 +289,7 @@ class PlentymarketsComplianceFixTest(Tes
+             authorization_response="https://i.b/?code=hello",
+         )
+ 
+-        approx_expires_at = time.time() + 86400
++        approx_expires_at = round(time.time()) + 86400
+         actual_expires_at = token.pop("expires_at")
+         self.assertAlmostEqual(actual_expires_at, approx_expires_at, places=2)
+ 
+Index: requests-oauthlib-2.0.0/requirements.txt
+===================================================================
+--- requests-oauthlib-2.0.0.orig/requirements.txt
++++ requests-oauthlib-2.0.0/requirements.txt
+@@ -1,2 +1,2 @@
+ requests==2.31.0
+-oauthlib[signedtoken]==3.2.2
++oauthlib[signedtoken]==3.3.0
