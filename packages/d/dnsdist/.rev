@@ -207,4 +207,14 @@
   https://www.dnsdist.org/changelog.html#change-2.0.1</comment>
     <requestid>1333620</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>3d2336fdd2c03d26f053a097a349459e</srcmd5>
+    <version>2.0.2</version>
+    <time>1772817507</time>
+    <user>anag_factory</user>
+    <comment>bugzilla only fix
+
+- update to 2.0.1 (bsc#1253852, CVE-2025-8671, bsc#1250054, CVE-2025-30187)</comment>
+    <requestid>1336801</requestid>
+  </revision>
 </revisionlist>
