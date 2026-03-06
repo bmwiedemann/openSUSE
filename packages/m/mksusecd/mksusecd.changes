@@ -1,4 +1,17 @@
 --------------------------------------------------------------------
+Thu Mar 5 18:58:20 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#97
+- boot loader config moved to boot/ARCH/loader directory for
+  Agama-based media (bsc#1245295, jsc#PED-13688)
+- major rewrite to better support different architectures and
+  products
+- support riscv64, loongarch64
+- added sample layout data for testing
+- update documentation
+- 5.0
+
+--------------------------------------------------------------------
 Tue Sep 16 15:29:51 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#96
