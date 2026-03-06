@@ -1,0 +1,34 @@
+From c12cf4f5855ef2a33f4b9e932a1cbb4ebdfcdfbd Mon Sep 17 00:00:00 2001
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Date: Tue, 6 Jan 2026 17:56:09 +0100
+Subject: [PATCH] xf86: Accept devices with the kernel's corebootdrm driver
+
+Add a workaround to accept devices of the kernel's corebootdrm
+driver. Makes Xorg work on pre-configured displays with coreboot
+and the DRM graphics stack. Review of the corebootdrm driver
+happens at [1].
+
+Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+Link: https://patchwork.freedesktop.org/series/159820/ # [1]
+Part-of: <https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/2132>
+---
+ hw/xfree86/common/xf86platformBus.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/hw/xfree86/common/xf86platformBus.c b/hw/xfree86/common/xf86platformBus.c
+index c4657589e..51e56270e 100644
+--- a/hw/xfree86/common/xf86platformBus.c
++++ b/hw/xfree86/common/xf86platformBus.c
+@@ -577,6 +577,9 @@ xf86platformProbeDev(DriverPtr drvp)
+                 if (ServerIsNotSeat0()) {
+                     break;
+                 } else {
++                    /* Accept the device if the driver is corebootdrm */
++                    if (strcmp(xf86_platform_devices[j].attribs->driver, "corebootdrm") == 0)
++                        break;
+                     /* Accept the device if the driver is efidrm */
+                     if (strcmp(xf86_platform_devices[j].attribs->driver, "efidrm") == 0)
+                         break;
+-- 
+2.53.0
+

@@ -4387,4 +4387,12 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   Immutable mode (jsc#PED-14914)</comment>
     <requestid>1327677</requestid>
   </revision>
+  <revision rev="447" vrev="3">
+    <srcmd5>6336393112aa9289436dda637cd00c4d</srcmd5>
+    <version>21.1.21</version>
+    <time>1772817365</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1336778</requestid>
+  </revision>
 </revisionlist>

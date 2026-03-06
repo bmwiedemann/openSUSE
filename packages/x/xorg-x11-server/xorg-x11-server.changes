@@ -5,6 +5,14 @@ Fri Jan 16 13:26:56 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
   Immutable mode (jsc#PED-14914)
 
 -------------------------------------------------------------------
+Tue Jan  6 17:01:35 UTC 2026 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Add u_xf86-Accept-devices-with-the-kernel-s-corebootdrm-dr.patch: Enables
+  Xorg to make use of the kernel's corebootdrm driver. Taken from upstream. See
+  the MR at https://.
+  (bsc#)
+
+-------------------------------------------------------------------
 Tue Nov 25 12:36:00 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 21.1.21

@@ -234,6 +234,7 @@ Patch1920:      u_xf86-Accept-devices-with-the-hyperv_drm-driver.patch
 Patch1921:      u_xf86-Accept-devices-with-the-kernels-ofdrm-driver.patch
 Patch1922:      u_xf86-Accept-devices-with-the-kernel-s-efidrm-driver.patch
 Patch1923:      u_xf86-Accept-devices-with-the-kernel-s-vesadrm-driver.patch
+Patch1924:      u_xf86-Accept-devices-with-the-kernel-s-corebootdrm-dr.patch
 
 Patch1930:      u_xfree86-activate-GPU-screens-on-autobind.patch
 
@@ -388,6 +389,7 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch -P 1921 -p1
 %patch -P 1922 -p1
 %patch -P 1923 -p1
+%patch -P 1924 -p1
 %patch -P 1930 -p1
 %patch -P 1960 -p1
 
