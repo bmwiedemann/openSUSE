@@ -17,7 +17,7 @@
 
 
 Name:           NetworkManager-strongswan
-Version:        1.6.3
+Version:        1.6.4
 Release:        0
 Summary:        NetworkManager VPN support for strongSwan
 License:        GPL-2.0-or-later
