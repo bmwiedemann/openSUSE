@@ -1,12 +1,12 @@
-Index: django_allauth-0.63.3/allauth/account/tests/test_ratelimit.py
+Index: django_allauth-65.14.3/tests/apps/account/test_ratelimit.py
 ===================================================================
---- django_allauth-0.63.3.orig/allauth/account/tests/test_ratelimit.py	2024-05-08 20:24:34.000000000 +0200
-+++ django_allauth-0.63.3/allauth/account/tests/test_ratelimit.py	2024-06-23 10:32:14.682834782 +0200
-@@ -6,5 +6,5 @@ def test_case_insensitive_password_reset
+--- django_allauth-65.14.3.orig/tests/apps/account/test_ratelimit.py	2026-01-17 13:07:19.000000000 +0100
++++ django_allauth-65.14.3/tests/apps/account/test_ratelimit.py	2026-03-03 12:29:39.635505574 +0100
+@@ -8,5 +8,5 @@ def test_case_insensitive_password_reset
      user_factory(email="a@b.com")
      resp = client.post(reverse("account_reset_password"), data={"email": "a@b.com"})
-     assert resp.status_code == 302
+     assert resp.status_code == HTTPStatus.FOUND
 -    resp = client.post(reverse("account_reset_password"), data={"email": "A@B.COM"})
--    assert resp.status_code == 429
-+    # resp = client.post(reverse("account_reset_password"), data={"email": "A@B.COM"})
-+    # assert resp.status_code == 429
+-    assert resp.status_code == HTTPStatus.TOO_MANY_REQUESTS
++    #resp = client.post(reverse("account_reset_password"), data={"email": "A@B.COM"})
++    #assert resp.status_code == HTTPStatus.TOO_MANY_REQUESTS
