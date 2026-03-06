@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  4 21:05:42 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Implement setfont --quiet to suppress warning from
+  systemd-vconsole-setup (boo#1212970, kbd-setfont-quiet.patch).
+
+-------------------------------------------------------------------
 Sat Mar 29 07:20:48 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add kbd-2.7.1-reproducible-gzip.patch (bsc#1240348)

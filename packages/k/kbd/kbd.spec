@@ -1,7 +1,7 @@
 #
 # spec file for package kbd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,6 +63,8 @@ Patch14:        kbdsettings-nox86.patch
 Patch15:        kbd-unicode-fxxx.patch
 # PATCH-FIX-UPSTREAM bsc#1240348 -- for reproducible builds
 Patch16:        https://github.com/legionus/kbd/commit/eebaa3b69efd9e3d218f3436dc43ff3340020ef5.patch#/kbd-2.7.1-reproducible-gzip.patch
+# PATCH-FIX-OPENSUSE kbd-setfont-quiet.patch boo1212970 sbrabec@suse.com -- Implement setfont --quiet to suppress warning from systemd-vconsole-setup.
+Patch17:        kbd-setfont-quiet.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison

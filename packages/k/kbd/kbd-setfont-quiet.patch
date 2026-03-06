@@ -1,0 +1,167 @@
+From 802686c2662b348e08a73283c06b1aac40a03f7a Mon Sep 17 00:00:00 2001
+From: Stanislav Brabec <sbrabec@suse.com>
+Date: Wed, 4 Mar 2026 18:24:59 +0100
+Subject: [PATCH] Implement setfont --quiet
+
+Current systemd-vconsole-setup implementation uses try and fail approach
+while calling setfont. Starting with 1e15af4, it sometimes causes ugly
+syslog messages:
+
+/usr/bin/setfont failed with exit status 71.
+setfont: ERROR kdfontop.c:183 put_font_kdfontop: Unable to load such font with such kernel version
+Setting fonts failed with a "system error", ignoring.
+
+It seems that systemd upstream already tried to address this problem, but
+at that time they haven't found a good way.
+
+The setfont --quiet is specifically intended for systemd-vconsole-setup,
+and it will allow to suppress the error in systemd, but keep it in other
+cases.
+
+Reference: https://bugzilla.opensuse.org/show_bug.cgi?id=1212970
+Signed-off-by: Stanislav Brabec <sbrabec@suse.com>
+---
+ docs/man/man8/setfont.8.gen |  4 ++++
+ src/include/kbd/kfont.h     |  6 ++++++
+ src/libkfont/context.c      | 13 +++++++++++++
+ src/libkfont/kdfontop.c     |  3 ++-
+ src/libkfont/kfontP.h       |  1 +
+ src/libkfont/libkfont.map   |  2 ++
+ src/setfont.c               |  5 +++++
+ 7 files changed, 33 insertions(+), 1 deletion(-)
+
+diff --git a/docs/man/man8/setfont.8.gen b/docs/man/man8/setfont.8.gen
+index 57aa347..30767b2 100644
+--- a/docs/man/man8/setfont.8.gen
++++ b/docs/man/man8/setfont.8.gen
+@@ -242,6 +242,10 @@ map even if the specified map is empty.  This may be useful in unusual cases.
+ \fB\-R\fR, \fB\-\-reset\fR
+ Reset the screen font, size, and Unicode mapping to the bootup defaults.
+ .TP
++\fB\-v\fR, \fB\-\-quiet\fR
++If kernel cannot load font, do not log error. This prevents ugly errors
++with systemd try-and-fail detection of a fully initialized console.
++.TP
+ \fB\-v\fR, \fB\-\-verbose\fR
+ Be verbose.
+ .TP
+diff --git a/src/include/kbd/kfont.h b/src/include/kbd/kfont.h
+index 67ad917..b90e7fc 100644
+--- a/src/include/kbd/kfont.h
++++ b/src/include/kbd/kfont.h
+@@ -124,6 +124,12 @@ enum kfont_option {
+ 	kfont_double_size,
+ };
+ 
++int kfont_get_quietness(struct kfont_context *ctx)
++	KBD_ATTR_NONNULL(1);
++
++void kfont_set_quietness(struct kfont_context *ctx)
++	KBD_ATTR_NONNULL(1);
++
+ int kfont_get_verbosity(struct kfont_context *ctx)
+ 	KBD_ATTR_NONNULL(1);
+ 
+diff --git a/src/libkfont/context.c b/src/libkfont/context.c
+index 2cd0c35..7d8f656 100644
+--- a/src/libkfont/context.c
++++ b/src/libkfont/context.c
+@@ -84,6 +84,18 @@ kfont_inc_verbosity(struct kfont_context *ctx)
+ 	ctx->verbose++;
+ }
+ 
++int
++kfont_get_quietness(struct kfont_context *ctx)
++{
++	return ctx->quiet;
++}
++
++void
++kfont_set_quietness(struct kfont_context *ctx)
++{
++	ctx->quiet = 1;
++}
++
+ void
+ kfont_set_logger(struct kfont_context *ctx, kfont_logger_t fn)
+ {
+@@ -155,6 +167,7 @@ kfont_init(const char *prefix, struct kfont_context **ctx)
+ 
+ 	p->progname = prefix;
+ 	p->verbose = 0;
++	p->quiet = 0;
+ 	p->options = 0;
+ 	p->log_fn = log_stderr;
+ 	p->mapdirpath = mapdirpath;
+diff --git a/src/libkfont/kdfontop.c b/src/libkfont/kdfontop.c
+index 4f1f0d2..7082906 100644
+--- a/src/libkfont/kdfontop.c
++++ b/src/libkfont/kdfontop.c
+@@ -210,7 +210,8 @@ put_font_kdfontop(struct kfont_context *ctx, int consolefd, unsigned char *buf,
+ 		return 0;
+ 
+ 	if (errno == ENOSYS) {
+-		KFONT_ERR(ctx, _("Unable to load such font with such kernel version"));
++		if (!kfont_get_quietness(ctx))
++			KFONT_ERR(ctx, _("Unable to load such font with such kernel version"));
+ 		return -1;
+ 	}
+ 
+diff --git a/src/libkfont/kfontP.h b/src/libkfont/kfontP.h
+index 032d9c2..17cbdea 100644
+--- a/src/libkfont/kfontP.h
++++ b/src/libkfont/kfontP.h
+@@ -20,6 +20,7 @@
+ 
+ struct kfont_context {
+ 	const char *progname;
++	int quiet;
+ 	int verbose;
+ 	kfont_logger_t log_fn;
+ 
+diff --git a/src/libkfont/libkfont.map b/src/libkfont/libkfont.map
+index 0ea76d2..c603851 100644
+--- a/src/libkfont/libkfont.map
++++ b/src/libkfont/libkfont.map
+@@ -29,6 +29,8 @@ KFONT_1.0 {
+     kfont_write_psffont;
+     kfont_read_unicodetable;
+     kfont_write_unicodetable;
++    kfont_get_quietness;
++    kfont_set_quietness;
+     kfont_get_verbosity;
+     kfont_inc_verbosity;
+     kfont_set_logger;
+diff --git a/src/setfont.c b/src/setfont.c
+index dc336c1..16a654f 100644
+--- a/src/setfont.c
++++ b/src/setfont.c
+@@ -186,6 +186,7 @@ int main(int argc, char *argv[])
+ 		{ "-d, --double",                    _("double size of font horizontally and vertically.") },
+ 		{ "-f, --force",                     _("force load unicode map.") },
+ 		{ "-R, --reset",                     _("reset the screen font, size, and unicode map to the bootup defaults.") },
++		{ "-q, --quiet",                     _("if kernel cannot load font, do not log error.") },
+ 		{ "-v, --verbose",                   _("be more verbose.") },
+ 		{ "-V, --version",                   _("print version number.") },
+ 		{ "-h, --help",                      _("print this usage message.") },
+@@ -199,6 +200,7 @@ int main(int argc, char *argv[])
+ 		{ "=v",  "verbose",           kbd_no_argument,       'v' },
+ 		{ "=V",  "version",           kbd_no_argument,       'V' },
+ 		{ "=h",  "help",              kbd_no_argument,       'H' },
++		{ "=q",  "quiet",             kbd_no_argument,       'q' },
+ 		{ "+h",  "font-height",       kbd_required_argument, 'h' },
+ 		{ "=om", "output-consolemap", kbd_required_argument, 'M' },
+ 		{ "=ou", "output-unicodemap", kbd_required_argument, 'U' },
+@@ -283,6 +285,9 @@ int main(int argc, char *argv[])
+ 			case 'V':
+ 				print_version_and_exit();
+ 				break;
++			case 'q':
++				kfont_set_quietness(kfont);
++				break;
+ 			case 'H':
+ 				usage(EXIT_SUCCESS, opthelp);
+ 				break;
+-- 
+2.51.0
+
