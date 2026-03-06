@@ -1,7 +1,7 @@
 #
 # spec file for package reimage
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,16 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           reimage
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        Tool for mass update of images for kubernetes manifests
 License:        Apache-2.0
 URL:            https://github.com/cerbos/reimage
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.22.5
+# 16.0 fails with go.mod requires go >= 1.26.0 (running go 1.26rc3; GOTOOLCHAIN=local)
+BuildRequires:  go1.26 >= 1.26.0
 
 %description
 A tool for mass update of images for kubernetes manifests.

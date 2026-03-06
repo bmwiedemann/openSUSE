@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Mar 06 06:09:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.0:
+  * Chores
+    - 3a01f9f chore(deps): bump github.com/cloudflare/circl from
+      1.6.1 to 1.6.3
+    - 0488553 chore(deps): bump github.com/go-git/go-git/v5 from
+      5.14.0 to 5.16.5
+    - 75a4671 chore(deps): bump
+      github.com/theupdateframework/go-tuf/v2
+  * Others
+    - d725558 Merge pull request #45 from cerbos/modupdate
+    - 40c7c24 Merge pull request #46 from cerbos/modupdate2
+    - 01939ef Merge pull request #47 from
+      cerbos/dependabot/go_modules/github.com/theupdateframework/go-tuf/v2-2.4.1
+    - c460d8b Merge pull request #48 from
+      cerbos/dependabot/go_modules/github.com/go-git/go-git/v5-5.16.5
+    - c750b42 Merge pull request #49 from
+      cerbos/dependabot/go_modules/github.com/cloudflare/circl-1.6.3
+    - 04a7317 Update deps and run go fix
+    - e95df7e disable prealloc linter
+    - 8e931fb fix copyright headers
+    - 234010e more dep updates
+    - fb454c6 update and pin GH actions
+    - edc5d02 update deps
+    - c734a80 update go deps
+    - c47845c update xz for dependabot
+
+-------------------------------------------------------------------
 Sun Aug 03 12:11:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.10.0:
