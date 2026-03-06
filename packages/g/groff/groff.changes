@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  2 16:08:35 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Remove update-alternatives %post scripts for SLES 16.x future releases 
+  (jsc#PED-15656, bsc#1245900)
+
+-------------------------------------------------------------------
 Wed Jan 28 19:00:46 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Remove update-alternatives usage for roff manpage, mandoc no longer

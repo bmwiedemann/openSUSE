@@ -629,4 +629,12 @@
   * Add new soelim-common package which provides soelim symlink to alts</comment>
     <requestid>1329728</requestid>
   </revision>
+  <revision rev="72" vrev="6">
+    <srcmd5>ddf577b4680d12f79ab9bbc7ee10a443</srcmd5>
+    <version>1.23.0</version>
+    <time>1772817394</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1336549</requestid>
+  </revision>
 </revisionlist>

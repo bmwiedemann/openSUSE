@@ -91,8 +91,10 @@ Obsoletes:      jgroff < %{version}
 # X fonts were moved back
 Provides:       groff-devx = %{version}-%{release}
 Obsoletes:      groff-devx <= 1.21
+%if %{suse_version} <= 1600 || %{suse_version} >= 1699
 # alternatives
 Requires(post): update-alternatives
+%endif
 %else
 Provides:       soelim
 BuildRequires:  alts
@@ -272,9 +274,11 @@ EOF
 %if %{with full_build}
 %post -n groff-full
 %install_info --info-dir=%{_infodir} %{_infodir}/groff.info.gz
+%if %{suse_version} <= 1600 || %{suse_version} >= 1699
 if [ ! -f %{_mandir}/man7/roff-gf.7%{?ext_man} ]; then
    %{_sbindir}/update-alternatives --remove roff.7%{?ext_man} %{_mandir}/man7/roff-gf.7%{?ext_man}
 fi
+%endif
 
 %preun -n groff-full
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/groff.info.gz
