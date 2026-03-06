@@ -468,4 +468,12 @@
   * fixes mergetool hang (kde#507065)</comment>
     <requestid>1294194</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>3f12a84dc41bc998d470dc92c12c594b</srcmd5>
+    <version>1.12.4</version>
+    <time>1772817640</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.12.4</comment>
+    <requestid>1337295</requestid>
+  </revision>
 </revisionlist>

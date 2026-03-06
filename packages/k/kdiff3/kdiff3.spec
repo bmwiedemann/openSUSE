@@ -1,7 +1,7 @@
 #
 # spec file for package kdiff3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kdiff3
-Version:        1.12.3
+Version:        1.12.4
 Release:        0
 Summary:        Code Comparison Utility
 License:        GPL-2.0-or-later
@@ -31,8 +31,6 @@ Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.x
 Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        kdiff3.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         m_bWordWrap-wrong-condition-hang.patch
 BuildRequires:  boost-devel >= 1.82
 BuildRequires:  cmake >= 3.22
 BuildRequires:  fdupes

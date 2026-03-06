@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  6 10:06:43 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.12.4
+  * Fix handling of non-BMP UTF-16 characters
+  * Revert unintended condition change (regression fix)
+- Drop patch:
+  * m_bWordWrap-wrong-condition-hang.patch
+
+-------------------------------------------------------------------
 Thu Jul 17 11:54:05 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Add backported m_bWordWrap-wrong-condition-hang.patch
