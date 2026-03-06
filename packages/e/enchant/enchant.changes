@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 16 10:52:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.5.15:
+  + This release fixes two bugs related to personal word lists.
+    - First, removing a word that happens to be at the end of a
+      personal word list file has not worked since 2.7.0.
+    - Secondly, the way that personal word lists are merged with
+      the current session has been changed so that personal word
+      list words now appear in suggestions with providers that
+      support adding words to the current session (Aspell and
+      Hunspell). This previously worked, but hadn’t since at least
+      2.8.2. Thanks to the users and maintainers of jinx (spelling
+      package for Emacs that uses Enchant) for reporting and
+      helping reproduce this bug.
+    - A little code clean-up was also done.
+
+-------------------------------------------------------------------
 Mon Dec 29 10:50:38 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.8.14:

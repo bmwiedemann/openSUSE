@@ -1,7 +1,7 @@
 #
 # spec file for package enchant
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %bcond_without aspell
 
 Name:           enchant
-Version:        2.8.14
+Version:        2.8.15
 Release:        0
 Summary:        Generic Spell Checking Library
 License:        LGPL-2.1-or-later
