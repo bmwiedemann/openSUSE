@@ -1,0 +1,58 @@
+From: Espen Hustad <espen@ehustad.com>
+Date: Sun, 28 Sep 2025 15:07:09 +0200
+Subject: Ensure parent is alive when removing eventfilters
+References: kde#492444 boo#1256892
+
+diff -Pdpru sonnet-5.116.0.orig/src/ui/spellcheckdecorator.cpp sonnet-5.116.0/src/ui/spellcheckdecorator.cpp
+--- sonnet-5.116.0.orig/src/ui/spellcheckdecorator.cpp	2024-05-04 14:43:54.000000000 +0300
++++ sonnet-5.116.0/src/ui/spellcheckdecorator.cpp	2026-01-17 18:16:59.552411132 +0300
+@@ -43,7 +43,9 @@ public:
+         m_textEdit->viewport()->installEventFilter(q);
+     }
+ 
+-    ~SpellCheckDecoratorPrivate()
++    ~SpellCheckDecoratorPrivate() = default;
++
++    void removeEventFilters()
+     {
+         if (m_plainTextEdit) {
+             m_plainTextEdit->removeEventFilter(q);
+@@ -55,6 +57,12 @@ public:
+         }
+     }
+ 
++    void onParentDestroyed()
++    {
++        m_plainTextEdit = nullptr;
++        m_textEdit = nullptr;
++    }
++
+     bool onContextMenuEvent(QContextMenuEvent *event);
+     void execSuggestionMenu(const QPoint &pos, const QString &word, const QTextCursor &cursor);
+     void createDefaultHighlighter();
+@@ -223,15 +231,24 @@ SpellCheckDecorator::SpellCheckDecorator
+     : QObject(textEdit)
+     , d(std::make_unique<SpellCheckDecoratorPrivate>(this, textEdit))
+ {
++    connect(textEdit, &QObject::destroyed, this, [this] {
++        d->onParentDestroyed();
++    });
+ }
+ 
+ SpellCheckDecorator::SpellCheckDecorator(QPlainTextEdit *textEdit)
+     : QObject(textEdit)
+     , d(std::make_unique<SpellCheckDecoratorPrivate>(this, textEdit))
+ {
++    connect(textEdit, &QObject::destroyed, this, [this] {
++        d->onParentDestroyed();
++    });
+ }
+ 
+-SpellCheckDecorator::~SpellCheckDecorator() = default;
++SpellCheckDecorator::~SpellCheckDecorator()
++{
++    d->removeEventFilters();
++}
+ 
+ void SpellCheckDecorator::setHighlighter(Highlighter *highlighter)
+ {

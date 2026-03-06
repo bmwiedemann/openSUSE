@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan 18 04:42:37 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Added sonnet-spellcheckdecorator.patch (kde#492444 boo#1256892).
+
+-------------------------------------------------------------------
 Mon Nov  4 11:18:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Fix package dependencies
@@ -1394,4 +1399,3 @@ Tue Mar  4 16:39:34 UTC 2014 - hrvoje.senjan@gmail.com
 Sat Feb  8 02:20:16 UTC 2014 - hrvoje.senjan@gmail.com
 
 - Init sonnet package
-

@@ -1,7 +1,7 @@
 #
 # spec file for package sonnet
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,9 +34,8 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-#BuildRequires:  aspell-devel
-# Enchant plugin is currently disabled upstream
-#BuildRequires:  enchant-devel
+# PATCH-FIX-UPSTREAM
+Patch0:         %{name}-spellcheckdecorator.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  myspell-dictionaries
