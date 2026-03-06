@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Mar 06 06:10:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.89.0:
+  * Features
+    - 039a3495: feat(auth): add SSH hostname prompting for
+      self-hosted instances (Kai Armstrong karmstrong@gitlab.com)
+    - 05fe9806: feat(stack): Add update-base flag to sync command
+      to rebase onto updated base branch (Casey Morris
+      casey@philo.com)
+    - 1c42d1e8: feat: add JSON output support to 18 commands for
+      agent automation (Kai Armstrong karmstrong@gitlab.com)
+  * Bug Fixes
+    - 5650beec: fix(release): make notes optional for create/update
+      operations (Kai Armstrong karmstrong@gitlab.com)
+    - ad5731ae: fix(runner): remove redundant EnableRepoOverride
+      from parent runner command (Ashutosh Kumar Singh
+      ashutoshkumarsingh0x@gmail.com)
+  * Documentation
+    - 9b5c3efc: docs: Review and update glab runner docs (Brendan
+      Lynch blynch@gitlab.com)
+    - f3de08bb: docs: Review and update new glab duo cli docs
+      (Brendan Lynch blynch@gitlab.com)
+  * Dependencies
+    - 14c4a74b: chore(deps): adjust to client-go v2 breaking
+      changes (Timo Furrer tfurrer@gitlab.com)
+    - 65c93b4e: chore(deps): change client-go import paths to v2
+      (Timo Furrer tfurrer@gitlab.com)
+    - 72007fcc: chore(deps): update dependency @commitlint/cli to
+      ^20.4.3 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 0deaee8b: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go to v2 (GitLab Renovate
+      Bot gitlab-bot@gitlab.com)
+
+-------------------------------------------------------------------
 Thu Mar 05 06:45:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.88.0:
