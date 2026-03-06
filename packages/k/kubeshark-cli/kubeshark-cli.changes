@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 06 06:15:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 53.1.0 (no version 53.0.0):
+  * CLI-related changes:
+    - Add --release-helmChartPath CLI flag for deploying with a
+      local Helm chart
+  * Security
+    - Fix CVE-2025-30204 by updating golang-jwt to patched versions
+    - Fix CVE-2025-47914 and CVE-2025-58181 by updating
+      golang.org/x/crypto to 0.45.0
+
+-------------------------------------------------------------------
 Mon Jan 26 06:30:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 52.12.0:
