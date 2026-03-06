@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1324030</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a8af1ce7076dff36a04d70dafd03b3e3</srcmd5>
+    <version>0.5.0</version>
+    <time>1772817532</time>
+    <user>anag_factory</user>
+    <comment>- Remove redundant Neovim workaround</comment>
+    <requestid>1336883</requestid>
+  </revision>
 </revisionlist>
