@@ -79,4 +79,41 @@
     <comment>- Enable go-race on riscv64</comment>
     <requestid>1332785</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f8610367d35cb2add2aad7bd21d35e7c</srcmd5>
+    <version>1.26.1</version>
+    <time>1772817627</time>
+    <user>anag_factory</user>
+    <comment>- go1.26.1 (released 2026-03-05) includes security fixes to the
+  crypto/x509, html/template, net/url, and os packages, as well as
+  bug fixes to the go command, the go fix command, the compiler,
+  and the os and reflect packages.
+  Refs boo#1255111 go1.26 release tracking
+  CVE-2026-25679 CVE-2026-27142 CVE-2026-27137 CVE-2026-27138 CVE-2026-27139
+  * go#77970 go#77578 boo#1259264 security: fix CVE-2026-25679 net/url: reject IPv6 literal not at start of host
+  * go#77972 go#77954 boo#1259265 security: fix CVE-2026-27142 html/template: URLs in meta content attribute actions are not escaped
+  * go#77973 go#77952 boo#1259266 security: fix CVE-2026-27137 crypto/x509: incorrect enforcement of email constraints
+  * go#77974 go#77953 boo#1259267 security: fix CVE-2026-27138 crypto/x509: panic in name constraint checking for malformed certificates
+  * go#77834 go#77827 boo#1259268 security: fix CVE-2026-27139 os: FileInfo can escape from a Root
+  * go#77252 cmd/compile: miscompile of global array initialization
+  * go#77407 os: Go 1.25.x regression on RemoveAll for windows
+  * go#77474 cmd/go: CGO compilation fails after upgrading from Go 1.25.5 to 1.25.6 due to --define-variable flag in pkg-config
+  * go#77529 cmd/fix, x/tools/go/analysis/passes/modernize: stringscut: OOB panic in indexArgValid analyzing &quot;buf.Bytes()&quot; call
+  * go#77532 net/smtp: expiry date of localhostCert for testing is too short
+  * go#77536 cmd/compile: internal compiler error: 'main.func1': not lowered: v15, Load STRUCT PTR SSA
+  * go#77618 strings: HasSuffix doesn't work correctly for multibyte runes in go 1.26
+  * go#77623 cmd/compile: internal compiler error on : &quot;tried to free an already free register&quot; with generic function and type &gt;= 192 bytes
+  * go#77624 cmd/fix, x/tools/go/analysis/passes/modernize: stringsbuilder breaks code when combining two strings.Builders
+  * go#77680 cmd/link: TestFlagW/-w_-linkmode=external fails on illumos
+  * go#77766 cmd/fix,x/tools/go/analysis/passes/modernize: rangeint uses target platform's type in the range expression, breaking other platforms
+  * go#77780 reflect: breaking change for reflect.Value.Interface behaviour
+  * go#77786 cmd/compile: rewriteFixedLoad does not properly sign extend AuxInt
+  * go#77803 cmd/fix,x/tools/go/analysis/passes/modernize: reflect.TypeOf(nil) transformed into reflect.TypeFor[untyped nil]()
+  * go#77804 cmd/fix,x/tools/go/analysis/passes/modernize: minmax breaks select statements
+  * go#77805 cmd/fix, x/tools/go/analysis/passes/modernize: waitgroup leads to a compilation error
+  * go#77807 cmd/fix,x/tools/go/analysis/passes/modernize: stringsbuilder ignores variables if they are used multiple times
+  * go#77849 cmd/fix,x/tools/go/analysis/passes/modernize: stringscut rewrite changes behavior
+  * go#77860 cmd/go: change go mod init default go directive back to 1.N</comment>
+    <requestid>1337167</requestid>
+  </revision>
 </revisionlist>
