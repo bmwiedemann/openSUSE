@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar  5 17:36:15 UTC 2026 - Enno Tensing <tenno+suse@suij.in>
+
+- Update to PDAL 2.10.0
+  * readers.tindex and readers.stac now use the same reader_args (PR #4743)
+  * pdal tindex create can now read its input from a file (PR #4919)
+  * libE57Format is now version 3.3.0 (PR #4884)
+  * filter.georeference will now output ECEF EPSG:4978 (PR #4902)
+  * Documentation updates
+  * Other fixes and enhancements
+
+-------------------------------------------------------------------
 Thu Dec 18 07:16:54 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
 
 - Fix URL entry in PDAL.spec

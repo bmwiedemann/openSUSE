@@ -17,12 +17,12 @@
 #
 
 
-%define soname 19
-%define sovers 19.3.0
+%define soname 20
+%define sovers 20.0.0
 %define lname   pdal
 Name:           PDAL
-Version:        2.9.3
-Release:        1
+Version:        2.10.0
+Release:        0
 Summary:        Point Data Abstraction Library (GDAL for point cloud data)
 # The code is licensed BSD except for:
 # - filters/private/csf/* and plugins/i3s/lepcc/* are Apache-2.0
