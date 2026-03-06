@@ -431,4 +431,14 @@
     function (#400) bsc#1247904 (CVE-2025-8835).</comment>
     <requestid>1299312</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>873ffe70300f34a681d6764be1c6ac06</srcmd5>
+    <version>4.2.9</version>
+    <time>1772817371</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.2.9:
+  * Fix a bug in the JP2 encoder that caused incorrect handling of
+    opacity components in some cases. (#392)</comment>
+    <requestid>1336791</requestid>
+  </revision>
 </revisionlist>
