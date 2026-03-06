@@ -1,7 +1,7 @@
 #
 # spec file for package unzip
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,7 +66,9 @@ Patch24:        CVE-2022-0530.patch
 # PATCH-FIX-UPSTREAM danilo.spinella@suse.com CVE-2022-0529 bsc#1196180
 Patch25:        CVE-2022-0529.patch
 Patch26:        unzip-time-decl.patch
+%if %{suse_version} <= 1600 || %{suse_version} >= 1699
 Requires(post): update-alternatives
+%endif
 Recommends:     %{_name}-doc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -154,6 +156,7 @@ for i in man/*.1; do
  install -m 644 $i %{buildroot}%{_mandir}/man1/
 done
 
+%if %{suse_version} <= 1600 || %{suse_version} >= 1699
 %post
 # remove old alternatives from when we were using update-alternatives
 # zipinfo was never provided as an alternative
@@ -161,6 +164,7 @@ for bin in unzip funzip unzipsfx zipgrep; do
   %{_sbindir}/update-alternatives --remove $bin "%{_bindir}/$bin"-plain
   %{_sbindir}/update-alternatives --remove $bin "%{_bindir}/$bin"-rcc
 done
+%endif
 
 %files
 %defattr(-,root,root)
