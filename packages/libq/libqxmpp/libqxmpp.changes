@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  6 08:37:57 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.14.3
+  * JMI: Fix JMI objects not being removed
+  * OmemoManager: Abort building session without public pre keys
+  * OutgoingIqManager: Fix potential double-finish of IQ promises
+  * JMI: Fix regressions introduced by auto-removal of closed JMIs
+
+-------------------------------------------------------------------
 Thu Feb 12 09:56:53 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.14.1
