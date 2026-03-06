@@ -1,7 +1,7 @@
 #
 # spec file for package iso-codes
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           iso-codes
-Version:        4.18.0
+Version:        4.20.1
 Release:        0
 Summary:        ISO Code Lists and Translations
 License:        LGPL-2.1-or-later
 URL:            https://salsa.debian.org/iso-codes-team/iso-codes
-Source0:        https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/v%{version}/iso-codes-v%{version}.tar.gz
-BuildRequires:  pkgconfig
+Source0:        %{name}-%{version}.tar.zst
+BuildRequires:  meson
 BuildRequires:  python3-devel
 BuildRequires:  python3-lxml
 BuildArch:      noarch
@@ -48,14 +48,14 @@ translations in gettext .po form.
 %lang_package
 
 %prep
-%setup -q -n %{name}-v%{version}
+%autosetup -p1
 
 %build
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 %find_lang iso_639 %{name}.lang
 %find_lang iso_639-2 %{name}.lang
 %find_lang iso_639-3 %{name}.lang
@@ -71,13 +71,13 @@ translations in gettext .po form.
 %find_lang iso_15924 %{name}.lang
 
 %files -f %{name}.lang
-%license COPYING
-%doc CHANGELOG.md README.md TODO
+%license LICENSES/*
+%doc CHANGELOG.md README.md
 %{_datadir}/xml/iso-codes/
 %{_datadir}/iso-codes/
 
 %files devel
-%license COPYING
+%license LICENSES/*
 %{_datadir}/pkgconfig/iso-codes.pc
 
 %changelog

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar  3 15:36:46 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.20.1:
+  + Install symlinks for obsolete .po filenames
+- Changes from version 4.20.0:
+  + Switch from autotools to meson build system
+  + The project is now fully compliant with version 3.3 of the
+    REUSE specification
+  + Updated translations.
+- Follow upstream, switch to meson build system:
+  + Add meson remove pkgconfig BuildRequires
+  + use meson/meson_build/meson_install macros instead of
+    configure/make_build/make_install.
+
+-------------------------------------------------------------------
 Mon Sep  1 17:38:41 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.18.0:
