@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 05 17:55:20 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1772729929.93a4b15:
+  * feat: normalize gre tunnel script for NetworkManager and wicked
+  * refactor: use more Mojo::File operations in commands.pm
+  * refactor: use more Mojo::File operations in bmwqemu.pm
+  * refactor: use more Mojo::File operations in t/
+  * refactor: move scheduling rules out of basetest::is_applicable
+  * feat: add EXIT_AFTER_MODULE to stop after a specified module
+
+-------------------------------------------------------------------
 Thu Mar 05 00:12:06 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1772663930.9a9bd7d:
