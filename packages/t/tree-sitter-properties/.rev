@@ -19,4 +19,12 @@
   * fix(grammar): make default substitutions optional (forwarded request 1234811 from rrahl0)</comment>
     <requestid>1234812</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c0f36fe0573b100806e5015a4330135f</srcmd5>
+    <version>0.3.0</version>
+    <time>1772817563</time>
+    <user>anag_factory</user>
+    <comment>- Remove redundant Neovim workaround</comment>
+    <requestid>1336849</requestid>
+  </revision>
 </revisionlist>
