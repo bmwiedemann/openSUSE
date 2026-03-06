@@ -1,4 +1,212 @@
 -------------------------------------------------------------------
+Tue Mar  3 11:23:53 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Fix the condition with suse_version macro on SLFO (jsc#PED-15839) 
+
+-------------------------------------------------------------------
+Fri Feb 27 09:23:26 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 6.151.9 (cumulative all changes from the previous
+  package):
+  - Remove some old unused code.
+  - This patch fixes a crash when sys.modules contains unhashable
+    values, such as SimpleNamespace objects (issue #4660).
+  - This patch updates our vendored list of top-level domains,
+    which is used by the provisional domains() strategy.
+  - This patch fixes several duplicate word typos in comments and
+    documentation.
+  - This patch teaches our pytest plugin to :ref:` find
+    interesting constants <v6.131.1>` when pytest is collecting
+    tests, to avoid arbitrarily attributing the latency to
+    whichever test function happened to be executed first (issue
+    #4627).
+  - This patch adjusts how we compute the stopping threshold
+    introduced in version 6.151.3, while still maintaining 99%
+    confidence that <1% of test cases pass.
+  - This patch makes Hypothesis more tolerant of slow-to-satisfy
+    assume() calls. Previously, Hypothesis would give up after
+    max_examples * 10 attempts; now it uses a statistical test to
+    stop only when 99% confident that <1% of examples would pass
+    (issue #4623).
+  - Thanks to @ajdavis for this improvement!
+  - Format our code with the latest version of black.
+  - Improve internal categorization of test cases when an
+    alternative backend raises BackendCannotProceed.
+  - Add 2025.12 to the list of recognized Array API versions in
+    hypothesis.extra.array_api.
+  - Hypothesis now generates powers of 2 more often when using
+    integers().
+  - Update some internal type hints.
+  - This patch fixes a bug where recursive() would fail in cases
+    where the extend= function does not reference it’s argument
+    - which was assumed by the recent min_leaves= feature,
+    because the strategy can’t actually recurse otherwise. (issue
+    #4638)
+  - Now, the historical behavior is working-but-deprecated, or an
+    error if you explicitly pass min_leaves=.
+  - This release adds a min_leaves argument to recursive(), which
+    ensures that generated recursive structures have at least the
+    specified number of leaf nodes (issue #4205).
+  - Add type hints to an internal class.
+  - This release extends the explain-phase # or any other
+    generated value comments to sub-arguments within builds(),
+    tuples(), and fixed_dictionaries().
+  - Previously, these comments only appeared on top-level test
+    arguments. Now, when the explain phase determines that
+    a sub-argument can vary freely without affecting the test
+    failure, you’ll see comments like:
+    Falsifying example: test_foo(
+      obj=MyClass(
+          x=0,  # or any other generated value
+          y=True,
+      ),
+      data=(
+          '',  # or any other generated value
+          42,
+      ),
+    )
+    This makes it easier to understand which parts of complex
+    inputs actually matter for reproducing a failure.
+  - Clean up an internal helper.
+  - This patch fixes from_type() to properly handle parameterized
+    type aliases created with Python 3.12+’s PEP 695 type
+    statement. For example, st.from_type(A[int]) where type A[T]
+    = list[T] now correctly resolves to lists(integers()) instead
+    of raising a TypeError (issue #4628).
+  - Hypothesis now prints a Verbosity.verbose log when we switch
+    away from an alternative backend.
+  - Fixes Ghostwriter output for numpy >= 2.4.0. Also adds
+    support from_type() for numpy 2.5.0 nightly (which has not
+    yet been released).
+  - .example() no longer emits NonInteractiveExampleWarning when
+    running a python file directly. This means that e.g. python
+    my_sandbox.py during exploratory work with .example() will no
+    longer raise warnings.
+  - Add __dict__ and __proto__ to the list of constant strings
+    Hypothesis sometimes generates.
+  - When multiple explicit @example decorators fail with the same
+    error, Hypothesis now shows only the simplest failing example
+    (by shortlex order) with a note about how many other examples
+    also failed (issue #4520).
+  - To see all failing examples, use Verbosity.verbose or higher.
+  - Fix a bug where we persisted symbolics from solver-based
+    alternative backends in event().
+  - This patch improves the error message for
+    FlakyStrategyDefinition when the precondition for a rule is
+    flaky (issue #4206).
+  - This patch improves the type annotations for basic_indices().
+    The return type now accurately reflects the allow_ellipsis
+    and allow_newaxis parameters, excluding EllipsisType or None
+    from the union when those index types are disabled (issue
+    #4607).
+  - Additionally, assume() now has overloaded type annotations:
+    assume(True) returns Literal[True], while assume(False) and
+    assume(None) return NoReturn.
+  - Clean up some internal code.
+  - Document fuzz_one_input().
+  - This patch updates our vendored list of top-level domains,
+    which is used by the provisional domains() strategy.
+  - Calling register_profile() from within a test decorated with
+    @settings is now deprecated, to avoid confusion about which
+    settings are used as the baseline for the new profile.
+  - This release drops support for nose, which ceased development
+    9 years ago and does not support Python 3.10 or newer.
+  - Hypothesis still supports nose2. While we do not test nose2
+    in our CI, we will fix any bugs that get reported.
+  - @settings now accepts equivalent string representations for
+    settings.verbosity, settings.phases, and
+    settings.suppress_health_check. For example:
+    # these two are now equivalent...
+    settings(verbosity=Verbosity.verbose)
+    settings(verbosity="verbose")
+    # ...as are these two...
+    settings(phases=[Phase.explicit])
+    settings(phases=["explicit"])
+    # ...and these two.
+    settings(suppress_health_check=[HealthCheck.filter_too_much])
+    settings(suppress_health_check=["filter_too_much"])
+  - This release also changes the canonical value of Verbosity,
+    Phase, and HealthCheck members to a string instead of an
+    integer. For example, Phase.reuse.value == "explicit" as of
+    this release, where previously Phase.reuse.value == 1.
+  - Instantiating Verbosity, Phase, or HealthCheck with an
+    integer, such as Verbosity(0), is now deprecated.
+  - Refactor some internal logic around strategy definitions.
+  - Hypothesis previously required attrs as a dependency. This
+    release removes that dependency, so that the only required
+    dependency of Hypothesis is sortedcontainers.
+  - All attrs-specific features of Hypothesis, such as using
+    from_type() with attrs classes, will continue to behave as
+    before.
+  - Tweak how Hypothesis hides internal tracebacks to fix an
+    error under rare conditions (issue #3822).
+  - This release adds support for Fraction objects as min_value
+    and max_value bounds in decimals(), if they can be exactly
+    represented as decimals in the target precision (issue
+    #4466).
+  - Bounding decimals() with other values that cannot be exactly
+    represented is now deprecated; previously the bounds could be
+    off by one.
+  - from_type() now correctly handles annotated-types annotations
+    on typing.TypedDict fields which are also marked as being
+    ReadOnly, Required, or NotRequired (issue #4474).
+  - The extras for NumPy and pandas now support automatically
+    inferring a strategy for dtype="O". Previously, Hypothesis
+    required an explicit elements strategy to be passed, for
+    example nps.arrays("O", shape=(1,),
+    elements=st.just(object())). Now, Hypothesis automatically
+    infers elements=st.from_type(object).
+  - Thanks to Shaun Read for identifying and fixing this!
+  - This patch fixes binary_operation() to include imports for
+    hypothesis.extra.numpy strategies such as arrays(),
+    scalar_dtypes(), and array_shapes() when ghostwriting tests
+    for functions with numpy array parameters (issue #4576).
+  - Improve the accuracy of test timing reports, by tracking the
+    start time of each test case closer to when the test is
+    executed.
+  - Fix a recursion error when observability is enabled and
+    a test generates an object with a recursive reference, like
+    a = []; a.append(a).
+  - Remove a case where Hypothesis would interact with the global
+    random.Random instance if Hypothesis internals were used
+    directly.
+  - Simplify some internal typing logic after dropping Python
+    3.9.
+  - This release drops support for Python 3.9, which reached end
+    of life in October 2025.
+  - Fixes an error when using the Ghostwriter with annotations
+    that include typing.ForwardRef on Python 3.14 (issue #4565).
+  - The from_field() and from_form() strategies from our Django
+    extra now support FileField.
+  - Thanks to Arjoonn Sharma for this fix!
+  - Clean up internal @overload type annotations.
+  - Fixes our bundled run_conformance_test() not respecting
+    avoid_realization.
+  - The automatic switch to the CI settings profile now works
+    under tox (for tox >= 4.30.0).
+  - This patch re-enables the warning for incompatible shared()
+    strategies that was first enabled in v6.133.0 but disabled in
+    v6.135.15.
+  - characters() now validates that the elements of the
+    exclude_characters and include_characters arguments are
+    single characters, which was always assumed internally. For
+    example, exclude_characters=["a", "b"] is valid while
+    exclude_characters=["ab"] will now raise an error up-front.
+  - Add phase to the hypothesis-specific metadata in
+    observability.
+  - Internal refactoring for new lint rules.
+  - Fixed another typo in error message around function-scoped
+    fixtures.
+  - Add get_current_profile_name(), which returns the name of the
+    current settings profile.
+  - Fixed typo in error message around function-scoped fixtures.
+  - Improved error message for DeadlineExceeded.
+  - Refactor some stateful testing internals for easier use by
+    third-party libraries.
+  - Patch files written by hypothesis now use a deterministic
+    ordering when multiple @example decorators are present.
+
+-------------------------------------------------------------------
 Tue Sep  2 08:34:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.138.13

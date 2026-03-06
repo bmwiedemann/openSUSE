@@ -1,7 +1,7 @@
 #
 # spec file for package python-hypothesis
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 # Without complete tests for SLES to avoid python-pandas requirement
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1699
 %bcond_with complete_tests
 %else
 %bcond_without complete_tests
@@ -43,7 +43,7 @@ ExclusiveArch:  do_not_build
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hypothesis%{psuffix}
-Version:        6.138.13
+Version:        6.151.9
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
