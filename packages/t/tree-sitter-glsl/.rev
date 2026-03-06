@@ -17,4 +17,12 @@
   * publish: fix project website in pyproject.toml (forwarded request 1265943 from rrahl0)</comment>
     <requestid>1265950</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5ea21ff22a23b3bd3fef074d8fa5f904</srcmd5>
+    <version>0.2.0</version>
+    <time>1772817540</time>
+    <user>anag_factory</user>
+    <comment>- Remove redundant Neovim workaround</comment>
+    <requestid>1336828</requestid>
+  </revision>
 </revisionlist>
