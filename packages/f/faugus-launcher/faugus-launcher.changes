@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Mar 05 17:17:38 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.15.11
+- Upstream changes for 1.15.11:
+  * Updated Portuguese translation again
+  * Updated Portuguese translation
+  * Added Wargaming Game Center
+  * Enabled logs for launchers installation
+  * Fixed system tray icon being duplicated
+  * Cleaning up
+  * Less resources when running a game from file manager
+- Version 1.15.10
+  * Show Steam games on systray menu
+  * Added a frame to donation message
+  * Fixed autostart
+  * Added libcanberra as dependency
+  * Updated Steam Flatpak instructions
+- Version 1.15.9
+  * Donate message after 1 hour
+  * Updated Flatpak instructions
+  * updated italian translation to 1.15.8
+  * Fixed Steam detection native-flatpak
+
+-------------------------------------------------------------------
 Thu Feb 26 19:21:27 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.15.8

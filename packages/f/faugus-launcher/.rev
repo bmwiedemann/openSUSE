@@ -140,4 +140,33 @@
   * Added Chinese (Traditional) translation</comment>
     <requestid>1335321</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fa81f762053e9cc0fb0a36e15ea8477b</srcmd5>
+    <version>1.15.11</version>
+    <time>1772817497</time>
+    <user>anag_factory</user>
+    <comment>Bugs fixed and features added since last point release.
+
+- Bump to version 1.15.11
+- Upstream changes for 1.15.11:
+  * Updated Portuguese translation again
+  * Updated Portuguese translation
+  * Added Wargaming Game Center
+  * Enabled logs for launchers installation
+  * Fixed system tray icon being duplicated
+  * Cleaning up
+  * Less resources when running a game from file manager
+- Version 1.15.10
+  * Show Steam games on systray menu
+  * Added a frame to donation message
+  * Fixed autostart
+  * Added libcanberra as dependency
+  * Updated Steam Flatpak instructions
+- Version 1.15.9
+  * Donate message after 1 hour
+  * Updated Flatpak instructions
+  * updated italian translation to 1.15.8
+  * Fixed Steam detection native-flatpak</comment>
+    <requestid>1336793</requestid>
+  </revision>
 </revisionlist>
