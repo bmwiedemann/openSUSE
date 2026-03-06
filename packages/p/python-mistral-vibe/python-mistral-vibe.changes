@@ -1,4 +1,137 @@
 -------------------------------------------------------------------
+Mon Mar  2 20:22:11 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.3.0:
+  - Added
+    - /resume command to choose which session to resume
+    - Web search and web fetch tools for retrieving and searching
+      web content
+    - MCP sampling support: MCP servers can request LLM
+      completions via the sampling protocol
+    - MCP server discovery cache (MCPRegistry): survives agent
+      switches without re-discovering unchanged servers
+    - Chat mode for ACP (session/set_config_options with
+      mode=chat)
+    - ACP session/set_config_options support for switching mode
+      and model
+    - Tool call streaming: tool call arguments are now streamed
+      incrementally in the UI
+    - Notification indicator in CLI: terminal bell and window
+      title change on action required or completion
+    - Subagent traces saved in agents/ subfolder of parent
+      session directory
+    - IDE detection in new_session telemetry
+    - Discover agents, tools, and skills in subfolders of trusted
+      directories (monorepo support)
+    - E2E test infrastructure for CLI TUI
+  - Changed
+    - System prompts rewritten for improved model behavior
+      (3-phase Orient/Plan/Execute workflow, brevity rules)
+    - Tool call display refactored with
+      ToolCallDisplay/ToolResultDisplay models and per-tool UI
+      customization
+    - Middleware pipeline replaces observer pattern for system
+      message injections
+    - Improved permission handling for write_file, read_file,
+      search_replace (allowlist/denylist globs, out-of-cwd
+      detection)
+    - Proxy setup UI updated with guided bottom-panel wizard
+    - Smoother color transitions in CLI loader animation
+    - Dead tool state classes removed (Grep, ReadFile, WriteFile
+      state)
+  - Fixed
+    - Agent switch (Shift+Tab) no longer freezes the UI (moved to
+      thread worker)
+    - Empty assistant messages are no longer displayed
+    - Tool results returned to LLM in correct order matching tool
+      calls
+    - Auto-scroll suspended when user has scrolled up; resumes at
+      bottom
+    - Retry and timeout handling in Mistral backend (backoff
+      strategy, configurable timeout)
+- Update to 2.3.0:
+  - Added
+    - Multiple clipboard copy strategies: OSC52 first, then
+      pyperclip fallback when system clipboard is available (e.g.
+      local GUI, SSH without OSC52)
+    - Ctrl+Z to put Vibe in background
+  - Changed
+    - Improve performance around streaming and scrolling
+    - File watcher is now opt-out by default; opt-in via config
+    - Bump Textual version in dependencies
+    - Inline code styling: yellow bold with transparent
+      background for better readability
+  - Fixed
+    - Banner: sync skills count after initial app mount (fixes
+      wrong count in some cases)
+    - Collapsed tool results: strip newlines in truncation to
+      remove extra blank line
+    - Context token widget: preserve stats listeners across
+      /clear so token percentage updates correctly
+    - Vertex AI: cache credentials to avoid blocking the event
+      loop on every LLM request
+    - Bash tool: remove NO_COLOR from subprocess env to fix
+      snapshot tests and colored output
+- Update to 2.3.0:
+  - Added
+    - Google Vertex AI support
+    - Telemetry: user interaction and tool usage events sent to
+      datalake (configurable via enable_telemetry)
+    - Skill discovery from .agents/skills/ (Agent Skills
+      standard) in addition to .vibe/skills/
+    - ACP: session/load and session/list for loading and listing
+      sessions
+    - New model behavior prompts (CLI and explore)
+    - Proxy Wizard (PoC) for CLI and for ACP
+    - Proxy setup documentation
+    - Documentation for JetBrains ACP registry
+  - Changed
+    - Trusted folders: presence of .agents is now considered
+      trustable content
+    - Logging handling updated
+    - Pin cryptography to >=44.0.0,<=46.0.3; uv sync for
+      cryptography
+  - Fixed
+    - Auto scroll when switching to input
+    - MCP stdio: redirect stderr to logger to avoid unwanted
+      console output
+    - Align pyproject.toml minimum versions with uv.lock for pip
+      installs
+    - Middleware injection: use standalone user messages instead
+      of mutating flushed messages
+    - Revert cryptography 46.0.5 bump for compatibility
+    - Pin banner version in UI snapshot tests for stability
+
+-------------------------------------------------------------------
+Wed Feb 11 17:39:57 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.1.0:
+  - Added
+    - Incremental load of long sessions: windowing (20 messages),
+      "Load more" to fetch older messages, scroll to bottom when
+      resuming
+    - ACP support for thinking (agent-client-protocol 0.8.0)
+    - Support for FIFO path for env file
+  - Changed
+    - UI redesign: new look and layout for the CLI
+    - Textual UI optimizations: ChatScroll to reduce style
+      recalculations, VerticalGroup for messages, stream layout
+      for streaming blocks, cached DOM queries
+    - Bumped agent-client-protocol to 0.8.0
+    - Use UTC date for timestamps
+    - Clipboard behavior improvements
+    - Docs updated for GitHub discussions
+    - Made the Upgrade to Pro banner less prominent
+  - Fixed
+    - Fixed inaccurate token count in UI in some cases
+    - Fixed agent prompt overrides being ignored
+    - Terminal setup: avoid overwriting Wezterm config
+  - Removed
+    - Legacy terminal theme module and agent indicator widget
+    - Standalone onboarding theme selection screen (replaced by
+      redesign)
+
+-------------------------------------------------------------------
 Sat Jan 31 17:11:40 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 2.0.2:
