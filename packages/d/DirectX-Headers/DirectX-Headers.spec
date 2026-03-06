@@ -1,7 +1,7 @@
 #
 # spec file for package DirectX-Headers
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           DirectX-Headers
-Version:        1.618.2
+Version:        1.619.0
 Release:        0
 Summary:        DirectX Headers for Mesa
 License:        MIT
