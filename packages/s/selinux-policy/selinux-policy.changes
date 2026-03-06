@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 03 15:50:01 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20260303:
+  * Enable init_server_no_new_privs during build (bsc#1253047)
+  * Add init_server_no_new_privs where no domtrans pattern was used (bsc#1253047)
+  * Allow nnp_transition in domtrans pattern (bsc#1253047)
+
+-------------------------------------------------------------------
 Tue Mar  3 07:05:55 UTC 2026 - Johannes Segitz <jsegitz@suse.com>
 
 - Have the selinux-policy package own %{_sharedstatedir}/selinux
