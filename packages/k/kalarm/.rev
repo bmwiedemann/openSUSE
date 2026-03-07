@@ -921,4 +921,12 @@ Needs KF 5.59 and SR 710707</comment>
     <comment>KDE release gear 25.12.2 (forwarded request 1330785 from krop)</comment>
     <requestid>1331203</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>500f1c035569f9948d9cc6bc4bb0c169</srcmd5>
+    <version>25.12.3</version>
+    <time>1772910274</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 25.12.3</comment>
+    <requestid>1336934</requestid>
+  </revision>
 </revisionlist>

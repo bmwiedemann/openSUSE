@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  3 09:56:30 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.3/
+- Changes since 25.12.2:
+  * Remove duplicate release
+  * Fix sound files being played at the wrong volume when using VLC
+
+-------------------------------------------------------------------
 Tue Feb  3 10:05:23 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.2
