@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar  3 09:57:29 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.3/
+- Changes since 25.12.2:
+  * Make showing debug window states persistent
+  * Introduce widget item type in Tracer class to make handling more robust
+  * In debug window add top level item for selecting/unselecting all items
+  * Fix crash when deleting a complete scene (kde#516457)
+
+-------------------------------------------------------------------
 Tue Feb  3 10:06:25 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.2
