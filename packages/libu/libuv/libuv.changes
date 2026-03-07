@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar  5 20:18:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add fix-crash-if-poll-callback-closes.patch
+
+-------------------------------------------------------------------
+Wed Feb 18 12:20:08 UTC 2026 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- libuv.keyring: added keyid 5804F9998A922AFB
+    Colin Ihrig <cjihrig@gmail.com>
+
+- Update to 1.52.0:
+  * Bugfix release
+  * tcp: support customizing TCP_KEEPINTVL and TCP_KEEPCNT
+
+-------------------------------------------------------------------
 Thu Jul 31 15:12:44 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - Update to 1.51.0
@@ -23,7 +38,7 @@ Wed Mar 26 20:49:01 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 -------------------------------------------------------------------
 Thu Mar 14 02:46:20 UTC 2024 - jun wang <jgwang@suse.com>
 
-- Update to version 1.48.0 
+- Update to version 1.48.0
   * CVE-2024-24806: Improper Domain Lookup that potentially leads
     to SSRF attacks (bsc#1219724)
   * misc: remove deprecated stalebot file

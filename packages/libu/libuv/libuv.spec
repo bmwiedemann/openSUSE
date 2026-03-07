@@ -1,7 +1,7 @@
 #
 # spec file for package libuv
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define somajor 1
 Name:           libuv
-Version:        1.51.0
+Version:        1.52.0
 Release:        0
 Summary:        Asychronous I/O support library
 License:        MIT
@@ -29,6 +29,8 @@ Source1:        https://dist.libuv.org/dist/v%{version}/libuv-v%{version}.tar.gz
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Patch1:         fix_tests.patch
+# PATCH-FIX-UPSTREAM: https://github.com/libuv/libuv/pull/5039
+Patch2:         fix-crash-if-poll-callback-closes.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool

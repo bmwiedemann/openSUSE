@@ -428,4 +428,20 @@
     <comment></comment>
     <requestid>1297036</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>6857be65fc7b4008203cd4b5764f47e9</srcmd5>
+    <version>1.52.0</version>
+    <time>1772910051</time>
+    <user>dimstar_suse</user>
+    <comment>- add fix-crash-if-poll-callback-closes.patch
+
+- libuv.keyring: added keyid 5804F9998A922AFB
+    Colin Ihrig &lt;cjihrig@gmail.com&gt;
+- Update to 1.52.0:
+  * Bugfix release
+  * tcp: support customizing TCP_KEEPINTVL and TCP_KEEPCNT
+
+- Update to version 1.48.0</comment>
+    <requestid>1336813</requestid>
+  </revision>
 </revisionlist>
