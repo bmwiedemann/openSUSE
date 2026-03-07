@@ -1155,4 +1155,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment>make catalina.sh %config(noreplace) (bsc#1253460)</comment>
     <requestid>1318491</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>784cc10617aa46d2dd7462e173569694</srcmd5>
+    <version>9.0.115</version>
+    <time>1772910575</time>
+    <user>dimstar_suse</user>
+    <comment>9.0.115</comment>
+    <requestid>1337371</requestid>
+  </revision>
 </revisionlist>
