@@ -847,6 +847,7 @@ done
 %post
 %set_permissions %{_bindir}/mount %{_bindir}/umount
 %set_permissions %{_bindir}/su
+mkdir -p %{_sysconfdir}/blkid.conf.d %{_sysconfdir}/issue.d
 
 %if ! %{defined no_config}
 # If outdated PAM file is detected, issue a warning.
@@ -1024,7 +1025,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %endif
 # defined no_config
 
-%config %dir %{_sysconfdir}/issue.d
+%ghost %dir %{_sysconfdir}/issue.d
 %dir /usr/lib/issue.d
 %if %{ul_extra_bin_sbin}
 %core /bin/kill
@@ -1419,9 +1420,8 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %license COPYING
 %license Documentation/licenses/*
 %ghost %config(missingok) %{_sysconfdir}/blkid.conf
-%config %dir %{_sysconfdir}/blkid.conf.d
+%ghost %dir %{_sysconfdir}/blkid.conf.d
 %{_distconfdir}/blkid.conf
-%dir %{_distconfdir}/blkid.conf.d
 %{_datadir}/bash-completion/completions/*
 %exclude %{_datadir}/bash-completion/completions/findmnt
 %exclude %{_datadir}/bash-completion/completions/logger
@@ -1449,8 +1449,8 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_distconfdir}/blkid.conf
 %exclude %dir %{_distconfdir}/blkid.conf.d
 %exclude %config(missingok) %{_sysconfdir}/blkid.conf
-%exclude %config %{_sysconfdir}/blkid.conf.d
-%exclude %config %dir %{_sysconfdir}/issue.d
+%exclude %ghost %dir %{_sysconfdir}/blkid.conf.d
+%exclude %ghost %dir %{_sysconfdir}/issue.d
 %if %{ul_extra_bin_sbin}
 /bin/findmnt
 /bin/logger

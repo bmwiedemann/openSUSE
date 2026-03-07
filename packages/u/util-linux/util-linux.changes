@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  4 22:28:26 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Do not create empty directories in /etc directly, but use
+  mkdir -p in %post to keep mtime.
+
+-------------------------------------------------------------------
 Sun Mar  1 20:00:51 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
 
 - Use full hostname for PAM to ensure correct access control for
