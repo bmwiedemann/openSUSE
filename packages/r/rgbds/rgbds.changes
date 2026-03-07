@@ -1,0 +1,988 @@
+-------------------------------------------------------------------
+Tue Feb 24 09:28:07 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 1.0.1:
+  * Release v1.0.1
+  * Correct error message for unconstrained sections with overlay (#1879)
+  * Specify `-std=c++20` not `c++2a` (#1877)
+  * Improve some RGBGFX error messages (#1876)
+  * Fix link in man page
+  * Fix two "Using a macro as first argument cancels effect of .Li" man page warnings
+  * Clarify usage versus encoding of `jr` and `ldh` (#1875)
+  * Update libpng to 1.6.53
+  * Remove exclamation marks and periods from error messages (#1874)
+  * Fix formatting typo in man/rgbasm-old.5
+  * Handle a missing `-P/--preinclude` file the same as an `INCLUDE` (#1873)
+  * Factor out version-printing to usage.cpp (#1870)
+  * Add missing `SPDX-License-Identifier: MIT` comments
+  * Refactor `FileStackNode::printBacktrace` from recursive to iterative
+  * Correct typo in rgbds(5)
+  * Fix bug where an object's invalid ROMX bank of 0 could break rgblink (#1868)
+  * Add missing `return 0;` to rgblink `main()`
+  * Fix some rgblink object file input bugs found via fuzzing with AFL++ (#1867)
+  * Use 4 spaces per tab in LCOV coverage report
+  * Symbol names with more than two `'.'`s could be defined as constants
+  * Fix garbage characters at EOF causing an infinite loop
+  * Clarify documentation of `rgbgfx -C/--color-curve` (#1864)
+  * Update test dependencies (#1865)
+  * Update libpng to 1.6.51 (#1862)
+  * Reuse the `usage.name` for printing version info
+  * Fix RGBLINK object type detection
+  * Fix RGBLINK evaluation of undefined RPN symbols
+  * Refactor `getSectionDescription` in src/link/assign.cpp
+  * Specify more ASan options (#1860)
+  * Add `-D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_DEBUG` to `develop` builds (#1859)
+  * Avoid calling `style_Set/Reset` before `strerror(errno)`, since they may call `isatty` which can change `errno`
+  * Disallow `SECTION UNION` for ROM sections
+  * Release version 1.0.0
+  * Update rgbasm(5) docs based on @nummacway's feedback (#1852)
+  * Disallow labels before `ENDC`
+  * Use loops instead of tail calls and `musttail`
+  * Mention `REDEF` and `FOR` regarding `EQUS` expansion
+  * Revert "More accurate 8-bit <=> 5-bit RGB color conversion (#1827)"
+  * Simplify musl's getopt, including removing optind, optopt, opterr, idx, and longonly
+  * Show conventional colored "error:"/"FATAL:" for CLI option errors
+  * Enable RGBGFX's CLI "at-files" for all programs (#1848)
+  * More consistent man page descriptions for CLI options
+  * More consistent man page descriptions for warning diagnostics
+  * Share some handling between two tests of `rgbasm -M -`
+  * Move `struct Palette` into its own file (#1850)
+  * Use `musttail` attribute to guarantee tail recursion (#1849)
+  * Clean up some `#define` callables
+  * Lower default `-Wtrunction=` level to 1
+  * Rephrase `PURGE` documentation and raise the default level to 2
+  * Avoid reusing a `static` local variable (too fragile)
+  * Add RGBGFX test for libpng warning with invalid bKGD chunk
+  * Give clearer names to `template` parameters
+  * Add more tests for things that only the external tests had covered
+  * A local label starting with a keyword (e.g. `jr.local`) is an error
+  * Fix bank increment never happening due to unsigned overflow
+  * Add test for undefined `__SCOPE__`
+  * Mention libpng in its internal warning and error messages
+  * Implement `reversed` template for reversing `for`-each loops
+  * Fix repeated `REPT` nodes in backtraces
+  * Use C++ iterator for fragment/union "pieces" of RGBLINK sections
+  * Implement `__SCOPE__` (#1845)
+  * Replace all ctype.h functions with locale-independent ones
+  * Release v1.0.0-rc2
+  * Add more RGBFIX tests
+  * Add more tests for RGBFIX
+  * Prevent simple syntax highlighters from breaking on `/*` in a string
+  * Rename gbz80.7 "CPU opcode reference" to "Game Boy CPU instruction reference"
+  * Link `FORCE_COLOR` and `NO_COLOR`
+  * Add more tests for RGBASM coverage
+  * Add a test case for overlapping `IF/ENDC` and `REPT/ENDR`
+  * Add CLI tests for RGBASM
+  * Refactor error fix suggestions in `fstk_RunMacro`
+  * Separate `isLetter` into `isUpper` and `isLower`
+  * Suggest removing space before colon to define a label instead of invoking a macro
+  * Consistently do `& alignMask`, not `% alignSize`
+  * Test gb-starter-kit from codeberg.org, not github.com
+  * Factor out a single `parseNumber` utility function (#1839)
+  * Refactor some iterator template code in RGBGFX pal_packing.cpp
+  * Use fewer templates in RGBGFX pal_packing.cpp
+  * Simplify RGBGFX code by using fewer templates
+  * Warn about `rgbgfx -O` without `-o` or any of `-A -T -P -Q`
+  * Update test dependencies
+  * Make CLI and `OPT` options `-p` and `-Q` more consistent (#1834)
+  * Factor out `RRANGE` macro like `RANGE`
+  * Implement `===` and `!==` string comparison operators (#1832)
+  * Trim left space from macro args, even past block comments (#1831)
+  * Allow `charmap` to map `'characters'` as well as `"strings"` (#1830)
+  * Document `rgbasm -Wempty-data-directive`
+  * Fix too-short .out.bin expected test results
+  * Use for-each loop
+  * More accurate 8-bit <=> 5-bit RGB color conversion (#1827)
+  * Document more about the RGBDS architecture (#1809)
+  * Correct `-q`'s arg name in rgbgfx(1) (#1826)
+  * Don't silence strings-as-numbers with `OPT Wno-obsolete` in tests
+  * Avoid nonessential `EQUS` expansion in tests
+  * Avoid nonessential strings-as-numbers in tests
+  * Make usage info output responsive to the terminal width
+  * `make format` should apply to all .cpp and .hpp files
+  * Add test for duplicate section after use of fragment literal
+  * Some RGBLINK refactoring
+  * Don't comment "; Next fragment/union" in .map files for empty section pieces
+  * Run `make tidy` with `Checks: '-*,misc-include-cleaner'` in .clang-tidy (IWYU)
+  * Factor out `isBinDigit` and `parseHexDigit` utility functions
+  * Fix formatting of very long fixed-point numbers
+  * Avoid UB when checking truncation range
+  * Add more test coverage
+  * Try to optimize RPN expressions with `.emplace_back` instead of `.push_back`
+  * Tell people to use character literals or `CHARVAL` instead of strings as numbers
+  * Move RPN buffer encoding logic into rpn.cpp
+  * Don't call `rpn.clear()` when we can safely `assume` it's already `empty()`
+  * Use a vector of RPN values (#1820)
+  * Fix RPN patches for all commands (#1819)
+  * Document the stricter rules for lexing underscores in integer constants
+  * Fix RGBLINK and RGBGFX warning/error message colors
+  * Release v1.0.0-rc1
+  * Add 0/1/2 warning levels to `rgblink -Wtruncation` (#1816)
+  * Two small improvements
+  * Simplify format specs to not use a per-character state machine
+  * Require underscores to actually be digit separators (#1812)
+  * Fix `q` format spec (#1811)
+  * Separate RGBFIX header fixing from CLI option parsing (#1808)
+  * Factor out `InsertionOrderedMap` to group an indexed list with a string-keyed map
+  * More specific error message when an expression is not constant because a symbol is undefined
+  * `-Wexport-undefined` warning for exporting undefined symbols
+  * Add test for `UNION` without `NEXTU`
+  * Use scoped blocks for `case`-specific variables
+  * Suggest `DEF` when undefined macros look like definitions
+  * Shorten lexing of simple tokens
+  * Some refactoring and cleanup (#1806)
+  * Support 32-bit addresses ("XL4") as of SDCC 4.4.0
+  * Clarify `DAA` documentation
+  * Add more character utility functions
+  * Factor shared code out of `lexer_CaptureRept` and `lexer_CaptureMacro`
+  * Add a little more test coverage (#1805)
+  * More consistent documentation for NP-complete heuristics
+  * Implement `?` suffix to "quiet" a context and exclude it from backtraces (#1800)
+  * Mention the "first-fit bin packing" algorithm of RGBLINK
+  * Downgrade FreeBSD release used for testing from 15 to 14.3
+  * Add more tests for edge-case macro and interpolation expansion behavior
+  * Fix line numbers from nested expansions (#1802)
+  * Don't count single quote `'` as garbage (#1801)
+  * Predef `std::pair` to two-element `std::tuple`
+  * Increase RGBASM test coverage
+  * Move some static variables into the only functions that use them
+  * Factor out shared backtrace code (#1793)
+  * Format linker script error backtraces the same way as others (#1792)
+  * Factor out shared `--color`-parsing code
+  * Make quote marks consistent in error/warning messages (#1791)
+  * Fix division and modulo for very large negative numbers (#1790)
+  * Format RGBFIX and RGBGFX warnings/errors the same way as RGBASM and RGBLINK
+  * Suggest `ld` and `call` when failing to link `ldh` and `rst`
+  * Add `-B/--backtrace` option to RGBASM and RGBLINK (#1787)
+  * Deprecate `__DATE__` and `__TIME__` (#1786)
+  * Avoid the need to repeat `-Weverything` in test .flags
+  * Allow `::` to join instructions *and* data declarations (#1785)
+  * Error messages refer to "undefined" symbols and sections
+  * Make `rgbasm -Wlarge-constant` enabled by default
+  * Only print one warning for too-large integer constants, not one per digit (#1781)
+  * Test the behavior of `ds N, @`
+  * Ensure that alignment is at most 16 and we do not cause UB
+  * Allow `OPT` to accept optional dashes before flags
+  * Deprecate treating strings as numbers (#1780)
+  * Add zsh completions for `--color` flag
+  * Document the deprecated `rgbfix -O` and string functions
+  * Add `-Wobsolete` to RGBFIX and RGBGFX, and deprecate `rgbfix -O`
+  * Deprecate 1-indexed string functions
+  * Remove previously deprecated features (#1777)
+  * Support `rgbgfx -c dmg` to imply `-c dmg=e4`
+  * Reuse `isWhitespace` and `isNewline`, also refactoring `readAtFile`
+  * Support `rgbgfx -c auto` for automatic palette generation
+  * Make `struct Uppercase` have `constexpr` methods
+  * Color "warning:" yellow in `warnx`
+  * More consistent missing-input error messages
+  * More consistent man pages
+  * Don't bother searching the `keywordDict` for local labels
+  * Color verbose output as magenta
+  * Refactor `lexer_CaptureRept` and `lexer_CaptureMacro`
+  * Refactor some redundant lexer code
+  * Use colored/styled text output for diagnostics and usage info (#1775)
+  * Fix man page syntax for `Fl`ags
+  * Fully support `rgbasm -MC` in Bash completion script
+  * Allow the index of `CHARVAL` to be optional
+  * Use `std::nothrow` for the only `new` expression
+  * Move or remove some redundant information from the README
+  * Move more RGBASM parser action code out of the Bison file
+  * Factor out more shared math operations between RGBASM and RGBLINK
+  * Show contributors' avatars with contrib.rocks
+  * Extend RGBASM and RGBLINK verbosity flags to have multiple levels like RGBGFX (#1772)
+  * Fix "while expanding symbol" error message
+  * Use `std::numbers::pi` instead of nonstandard `M_PI`
+  * Factor out a single `consumeChar` function
+  * Fix interpolation after empty string literal
+  * Release v0.9.4
+  * Simplify toggling of enabling/disabling expansions
+  * Expand the test for `{interpolation}` after two double quotes
+  * Add test for `{interpolation}` after two double quotes
+  * Update test dependencies
+  * Exclude `verboseOutputAssignments` from LCOV coverage testing
+  * Fix RGBGFX "decanting" on "components" (color sets sharing colors) (#1768)
+  * Reduce deep nesting in gfx/pal_packing.cpp
+  * Remove a little no-longer-necessary header boilerplate
+  * Mention palette filenames in `rgbgfx -c` error messages
+  * Use `UpperMap` for `rgblink -S` scramble spec matching
+  * Add test case for some macro+interpolation behavior
+  * Unrefactor `peek()` to use tail recursion instead of a loop
+  * Replace platform-specific `mmap` with reading the entire .asm file
+  * Factor out our manual `std::filesystem::path.replace_extension` replacement into its own function
+  * Encapsulate access to `sectionList` and `currentSection`
+  * Factor out an `UpperMap` for case-insensitive matching
+  * Avoid hard-coding a redundant "FATAL:" in RGBLINK
+  * Avoid hard-coding a redundant "FATAL:" in RGBFIX
+  * Factor out common usage-help code
+  * Split up the linkerscript lexer and layout actions
+  * Split RGBLINK linkerscript parser functions into their own file
+  * Split RGBASM parser action functions into their own file
+  * Handle unknown MBCs, since raw numeric values are accepted
+  * Use `unordered_map` lookups instead of manual `switch`es for `MbcType` data
+  * Implement a single `nbErrors` counter inside generic diagnostic code
+  * RGBFIX returns 1 if there was a `-Werror` before processing any files
+  * Implement warning diagnostic flags for RGBFIX (#1766)
+  * Add test case for block comments after line continuations
+  * Prefer pre-increment/decrement operators in `for` loops
+  * Improve some error messages
+  * Avoid non-ASCII characters when not necessary
+  * Rename proto-palettes to color sets (copied from rsgbds)
+  * Replace `vector`s with `unordered_set`s
+  * Factor out a single PNG-reading function to encapsulate the libpng API (#1765)
+  * Reduce deep nesting some more, including larger refactors to assign.cpp
+  * Make `sectionMap` not `extern`
+  * Make all non-`extern` globals `static`
+  * Initialize `maxRecursionDepth` with other options
+  * Make `nbErrors` not `extern`
+  * Make `failedOnMissingInclude` not `extern`
+  * More refactoring around `extern` variables
+  * Group `extern` RGBASM variables in an `Options` struct
+  * Group `extern` RGBLINK variables in an `Options` struct, like RGBGFX
+  * Use a `patch_AddAssertion` function instead of `extern assertions`
+  * Remove unnecessary `extern` from `nbSectionsToAssign`
+  * Support PNG-format palette spec files (#1764)
+  * Combine two places that did `REPT` chain printing
+  * Increase parser test coverage
+  * Improve RGBASM test coverage
+  * Miscellaneous refactoring
+  * Restore blue-painting of macro arg expansions to prevent recursion
+  * Refactor `peek()` to use a loop instead of tail recursion
+  * Refactor peeking at macro args to be like peeking at interpolations
+  * Use `nextChar()` for `shiftChar()` and then `peek()`
+  * Rename `nextChar` to `bumpChar` in the RGBASM lexer for symmetry with `std::filebuf` in the RGBLINK lexer
+  * Refactor `peek()` some more
+  * Small lexer refactors, commenting when tail recursion occurs
+  * Allow multiple preinclude files (#1763)
+  * Reduce nesting depth some more
+  * Fix `-W` parameter parsing
+  * Prefer pre-inc/dec unless post-inc/dec are necessary
+  * Reduce deep nesting some more
+  * Document that `-MG` and `-MC` count `READFILE`
+  * Implement `READFILE` function (#1759)
+  * A little refactoring
+  * Refactor code that handles when included files are missing
+  * Ensure that `INCBIN` parameters are non-negative
+  * Run `clang-tidy` with `make tidy`
+  * Remove rgbasm-only `-lm` from Makefile
+  * Replace test comments with assertions
+  * Use more concrete types instead of `auto`
+  * Use separate caches for zlib and libpng on Windows 2022 vs 2025
+  * Fix order of sentences
+  * Support `SIZEOF(reg)` to distinguish 8- and 16-bit registers (#1758)
+  * Use concrete types instead of `auto` when convenient and not redundant (#1757)
+  * Run all CMake commands in bash (#1755)
+  * Implement warning diagnostic flags for RGBLINK (#1754)
+  * Update libpng to 1.6.50 (#1750)
+  * Add gb-starter-kit to test suite, excluding it on Windows, macOS, and BSD (#1753)
+  * Support more syntax in linkerscripts (#1752)
+  * Fix unterminated strings in linkerscripts consuming their newline
+  * Add `TODO` comment for SDAS XL4 support
+  * Remove unplanned `TODO` comments
+  * Refactor parsing of `ld hl, sp + e8`
+  * Abbreviate RGBLINK errput that includes a src+lineNo
+  * Reduce some more deep nesting
+  * Document more deprecated/removed features
+  * Implement 'character' literals (#1747)
+  * Implement `BYTELEN` and `STRBYTE` (#1744)
+  * Fix string function behavior with NUL characters (#1746)
+  * Note how to print lexed token names for future reference
+  * Add test for labels when expecting symbols
+  * Clarify comment
+  * Simplify `switch` with one `case` to `if`
+  * Use `std::tie` for sort comparator functions
+  * Simplify `readString`
+  * Simplify `appendCharInLiteral`
+  * Use `Defer` instead of relying on a "Don't return before this" comment
+  * Exclude Bison-generated files from coverage report, and use dark theme (#1742)
+  * Reduce more nesting depth, and fix an error message
+  * Reduce nesting depth in lexer.cpp
+  * Use `verbosePrint` in rgbasm as well as rgblink
+  * Simplify `appendCharInLiteral`
+  * Consolidate `readString` and `appendStringLiteral`
+  * Factor out common code from `readString` and `appendStringLiteral`
+  * Refactor for better formatting
+  * Add RGBASM `-MC` flag to continue `-MG` after missing dependency files (#1687)
+  * Implement warning diagnostic flags for RGBGFX (#1738)
+  * A few miscellaneous edits
+  * Update the UTF-8 decoder (#1741)
+  * Refactor to reduce nesting depth some more (#1740)
+  * Reduce nesting depth in diagnostics.cpp
+  * Reduce nesting depth in some functions (#1739)
+  * Implement `[[ fragment literals ]]` (#1614)
+  * Remove `errx` and errors.hpp (#1737)
+  * Generate a coverage report in CI (#1736)
+  * Miscellaneous updates
+  * Ignore errors to allow lcov 2.3 to work
+  * Make file.hpp independent of gfx (#1733)
+  * Replace `DefaultInitVec` with `std::vector` (#1732)
+  * Replace `Either` with `std::variant` (#1731)
+  * Refactor warnings and errors (#1728)
+  * Fix segfault with invalid RGBLINK scramble spec (#1730)
+  * Fix UBSan error with overflowing exponent operator (#1727)
+  * Factor out program-independent warning diagnostic code (#1725)
+  * Fix alignment compatibility with current lower alignment
+  * Improve error message for `align` failure (#1721)
+  * Implement base palette ID
+  * Document `%` changing from remainder to modulo in 0.5.0
+  * "The windows-2019 runner image is being deprecated"
+  * Fix out-of-bounds image slices
+  * ci: tag rgbds:latest before pushing it
+  * Clarify release procedure checklist
+  * Release v0.9.3
+  * Implement grayscale DMG palette specs (#1709)
+  * Avoid generating phony dependencies for files that don't exist (#1708)
+  * Format `rgbgfx -vvvvvv` string visually
+  * Encode reversed PNG images as grayscale or indexed when possible (#1703)
+  * Only define `parse.lac` for Bison 3.5 or greater (#1702)
+  * Fix some formatting
+  * Implement `CHARVAL` function (#1701)
+  * Implement `++` operator for string concatenation (#1698)
+  * ci container build: when pushing a version-tagged build, overwrite 'latest' as well
+  * Handle missing newline at EOF for linkerscript `INCLUDE`d files (#1691)
+  * Restrict custom binary and graphics digits (#1693)
+  * Reuse `startsIdentifier` and `continuesIdentifier` functions (#1695)
+  * Hint to {interpolate} names when EQUS expanding does not occur (#1692)
+  * Dockerfile: explain commands
+  * Dockerfile: install the compiled tools after the compilation (#1690)
+  * Omit the version number from distrbuted release archive filenames (#1685)
+  * .sym file sorting accounts for local labels' parents' addresses and names (#1684)
+  * Recover from errors even inside `REPT`/`FOR` loops (#1683)
+  * Fix `STRSLICE` with no stop index argument (#1682)
+  * Release v0.9.2
+  * Update test dependency
+  * Show specific messages for some more invalid instructions, not just "syntax error" (#1679)
+  * Remove a TODO comment about overlapping proto-palettes
+  * Remove unplanned TODO comments in src/gfx/pal_spec.cpp
+  * Clear some more TODO comments (#1677)
+  * Take care of miscellaneous commented TODOs (#1676)
+  * Implement `--background-color` (#1508)
+  * Don't output anonymous labels in map files (#1674)
+  * Group sequences of garbage characters (#1672)
+  * Update test dependencies
+  * Fix two RGBGFX bugs (#1671)
+  * Avoid using indirect C++ types
+  * Add test case for `FOR` loop variable reusing an existing one
+  * Allow negative values to count macro arguments from the end (#1670)
+  * Consistently use `PRId*` not `PRIi*`
+  * Add `-o` / `--output` option to `rgbfix` to write separate output files (#1666)
+  * Don't use tabs for alignment
+  * Fix rgblink(5) man page syntax error
+  * Avoid use of `goto` in `nextLine`
+  * Avoid use of `goto` in `shiftChar`
+  * Avoid use of `goto` in `FormatSpec::useCharacter`
+  * Fix double negative
+  * Exclude more lines from test coverage (#1663)
+  * Use `LCOV_EXCL` comments to exclude some lines from test coverage (#1662)
+  * Increase test coverage (#1661)
+  * Derive `operator!=` from `operator==` (#1660)
+  * Define `operator!=` in terms of `operator==` (#1659)
+  * Disable `EQUS` expansion for raw symbols (by parsing them as strings) (#1648)
+  * Implement new string functions (#1655)
+  * Remove unnecessary default constructor definitions
+  * Use more const references when possible
+  * Allow the `bit`/`res`/`set` bit index to be determined at link time (#1654)
+  * Some miscellaneous refactoring and copy-editing
+  * Fix bug where macro names can be treated as numeric symbols (#1653)
+  * Parser refers to "symbol"s, "label"s, and "local label"s, not "identifier"s (#1652)
+  * Refactor the parser to have fewer `*_no_str` intermediate rules
+  * Add contrib/checkformat.bash to check for clang-formatting (#1646)
+  * Update the post-release checklist to mention rgbds-live (#1647)
+  * Release 0.9.1
+  * Mention ASMotor's continued development (#1643)
+  * Allow `git describe` to get the version for FreeBSD and Cygwin in CI (#1640)
+  * Remove redundant `@`-style doc comment tags (#1641)
+  * Add more RGBLINK tests (#1639)
+  * Add more RGBLINK test coverage (#1637)
+  * Fix failing assertion with backslash at EOF in macro arguments (#1634)
+  * Consistently use LF line endings in expected .out and .err output (#1635)
+  * Fix `STRLEN` and `STRSUB` on incomplete UTF-8 (#1633)
+  * Fix `CHARLEN` and `CHARSUB` on invalid UTF-8 (#1630)
+  * Remove `colNo` column tracking from lexer
+  * Refactor `readUTF8Char` into `charmap_ConvertNext`
+  * Add some more string test cases
+  * Remove unused `fix_PrecisionFactor` function
+  * Add braces inside `#define` macro bodies
+  * Add braces to Bison .y files
+  * Always use braces with `InsertBraces: true` in .clang-format
+  * Add more rules to .clang-format
+  * Include `windows.h` before other Win32 header files
+  * Run clang-format on some Bison .y file contents
+  * Zero-initialize `trimmedTile` array
+  * Fix clang-format of `sectionTypeInfo` array
+  * Use `//` line comments not `/*` block comments
+  * Get rid of unnecessary `extern "C"` blocks
+  * Reformat source files with clang-format 19.1.7
+  * Avoid errors after missing `INCLUDE` with `-MG` (#1627)
+  * Prefer C++ constructs to C-style `sizeof`-based macros
+  * Rename `Z80` prefix to `SM83`
+  * Add test case for expansions changing context
+  * Support `-h/--help` for all programs (#1620)
+  * Support `fetch-test-deps.sh --get-deps debian`
+  * Update help and error messages in run-tests.sh
+  * Allow running external tests against installed rgbds (#1621)
+  * Add test to cover RGBLINK behavior for patch overflow
+  * Run internal tests in FreeBSD (#1616)
+  * Undeprecate `ld [$ff00+c]` (#1619)
+  * Document more obsolete syntax (#1618)
+  * Correct the `DAA` documentation (#1617)
+  * Run internal tests in Cygwin (#1592)
+  * Update libpng to 1.6.45 (#1615)
+  * Move all common error checks together inside `mergeSections`
+  * Don't output sections in reverse order (#1613)
+  * Prefer empty braces to semicolons for empty loop bodies
+  * Remove unused `readMagic` function
+  * Remove unnecessary semicolons after closing braces
+  * Use `const` reference
+  * Replace old-style cast in Windows-only code with `static_cast`
+  * Update Dockerfile to use Debian 12 slim (#1599)
+  * Remove the 99999 macro arg limit (#1597)
+  * Use a constant for 0x8001 (#1596)
+  * `RGBDS_OBJECT_VERSION_STRING` is a literal
+  * Replace some `#define` with `constexpr`
+  * Define the default `-r`ecursion depth in main.cpp with other default values
+  * Fix the node type for "file" nodes in object files (#1593)
+  * Update test dependencies
+  * Only define `__asan_default_options` in `make develop` builds
+  * Enable more sanitizers in `make develop` (#1588)
+  * Use `if constexpr` to guarantee compile-time simplification (#1590)
+  * Include <signal.h> in rgbgfx_test.cpp (#1589)
+  * Allow deduplicating tiles with neither an input nor output tileset (#1585)
+  * Run gcc static analysis in CI (#1587)
+  * Fix RGBFIX writing bytes when one syscall is not sufficient
+
+-------------------------------------------------------------------
+Wed Jan 01 10:04:43 UTC 2025 - stigpro@outlook.fr
+
+- Update to version 0.9.0:
+  * Release 0.9.0
+  * Update man page dates
+  * Update CI test project commits
+  * Using C++20 `[[unlikely]]` here would be excessive micro-optimization
+  * Remove redundant 0xC7 masking for RST values (the parser handles it)
+  * Sorting RGB palettes by luminance is not a "legacy" feature
+  * Rename parser value `const` to `iconst` to distinguish it from C++ keyword
+  * Fix man page formatting
+  * List LDHL as an unsupported instruction alias
+  * Deprecate `LDH` with $00-$FF (#1575)
+  * Deprecate `LD` with `[C]` (#1574)
+  * Consistently use UINT32_MAX, not -1, for uint32_t values
+  * List post-release steps to take for other gbdev projects
+  * Document obsolete syntax in rgbasm-old(5) (#1571)
+  * Use C++-style casts (#1576)
+  * Consistently capitalize C
+  * Deprecate `LDIO` (#1567)
+  * Remove sample comments in workflow
+  * ci: re-trigger build-container.yml with fine-grained PAT
+  * ci: clean up untagged artifacts
+  * Fix `**` right-associativity, and clarify docs (#1566)
+  * Improve the instruction documentation (#1561)
+  * Remove the use of floating-point for palette packing (#1565)
+  * Explain the DAA instruction algorithm (#1564)
+  * Implement `-Wunmatched-directive`
+  * Add TRACE-level verbose logging for efficiency calculations
+  * Avoid precision loss from floating-point division in calculating efficiency
+  * Add `color_curve` RGBGFX test
+  * Add `reverse_1bit` RGBGFX test (#1555)
+  * Fix rgbasm(1) formatting
+  * Document the RGBGFX `-X` and `-Y` options
+  * contributing: add paragraph regarding the container image
+  * Add more RGBGFX test coverage (#1553)
+  * Allow `LOAD FRAGMENT` (#1552)
+  * Refactor how map file sections are printed
+  * Escape characters in section names in map files
+  * Correctly recover from syntax errors at the first token of a line (#1549)
+  * Clean up some man pages (#1547)
+  * Release 0.9.0-rc2
+  * Fix detection of tiles with too many colors (#1546)
+  * `LOAD FRAGMENT` is not allowed (#1536)
+  * Swap manpage descriptions of HIGH(n) and LOW(n) (#1545)
+  * Make `ENDL` optional like `ENDSECTION` (#1538)
+  * Update some RGBLINK error messages (#1544)
+  * Make tests work with CTest (#1539)
+  * Fix nested undefined interpolation segfault (#1542)
+  * Implement `0x/0o/0b` number prefixes (#1533)
+  * Refactoring and enhancements to RGBASM warnings (#1526)
+  * Allow tab character after backslash line continuation
+  * ci: run only the "build tagged container image" step on tag pushes
+  * ci: add descriptions to built container images
+  * Process the last line of textual palette specs even without a trailing newline
+  * Correct some documentation of RGBASM warnings
+  * `-Wall` enables `-Wcharmap-redef`, and document `-Wnested-comment` (#1528)
+  * Remove duplicated condition check
+  * Move definition of `_POSIX_C_SOURCE` to `include/platform.hpp` (#1524)
+  * Use `setmode` instead of `fdopen` (#1520)
+  * Simplify some C++ abstractions (#1518)
+  * Run clang-format
+  * Fix swapped warning comments
+  * Refer to "end of line", not "newline" (#1517)
+  * Avoid treating labels and macros differently in column 1 (#1515)
+  * Add test to demonstrate lack of expansions in `skipIfBlock` (#1516)
+  * ci: give packages/write permission to build container image action
+  * ci: tag release container images
+  * ci: add explicit write permission to the build container image job
+  * Refactor some workflows for consistency (#1510)
+  * Only publish container for gbdev
+  * Use latest docker/login-action
+  * ci: build "master" container image and publish it to ghcr on every push
+  * Document extra pre-release updates
+  * Clarify when to manually publish prerelease docs
+  * Give release workflow permission to create a release
+  * Update release instructions
+  * Release 0.9.0-rc1
+  * Update man page and license copyright dates
+  * Update test dependencies
+  * Track local label scope, string equated as `..` (#1504)
+  * No need for `.c_str()` with `keywordDict` lookups (#1505)
+  * Prefer `snprintf` to `sprintf`
+  * `\#` will always be defined inside macros
+  * Implement `.` string constant for the current label scope (#1499)
+  * Make error messages for "undefined" built-ins more accurate (#1501)
+  * Refer to "label scope", not "symbol scope"
+  * More asserts like the one in `addLabel`
+  * Consistently handle auto-scoping of local symbols
+  * Remove redundant and sometimes inaccurate comments
+  * Rename variables to avoid C++ reserved "_[A-Z]" prefix
+  * Refactor symbol value getters for less redundancy
+  * Rephrase error messages for consistency
+  * Store a pointer to the scoped label, not just its name
+  * Report locations for RGBLINK errors with conflicting objects (#1494)
+  * Revert "Implement `INCLUDE_ONCE` directive (#1481)"
+  * Implement `INCLUDE_ONCE` directive (#1481)
+  * Factor out common sanity checks for section union and fragment
+  * Use `camelCase` instead of `lowercase` for static functions
+  * RGBLINK lists local symbols when encountering an unknown symbol reference (#1496)
+  * These extensions should be binary
+  * Allow syntax `cpl a`
+  * Fix condition for assuming at EOF
+  * Avoid attempting to link if assembling fails
+  * Implement `--input-tileset` (#1464)
+  * Allow dollar signs in identifiers (#1493)
+  * Rearrange switches so default cases are last
+  * Improve string/interpolation formatting (#1491)
+  * Traverse the charmap trie to reconstruct mappings instead of saving them (#1487)
+  * Replace `unmangle` with `cygpath` (#1490)
+  * Revert "Show test issues as annotations in the GitHub Actions job summary"
+  * Update some names and comments
+  * Run clang-format
+  * Show test issues as annotations in the GitHub Actions job summary
+  * A few more rgbasm documentation tweaks
+  * Rewrite and rearrange some rgbasm docs
+  * Forward declare `struct Section` to avoid a nested header `include`
+  * Avoid bogus comparisons when linking fails
+  * Check that there is enough room to write a patch when linking
+  * Remove outdated "absolute data" terminology in function names
+  * Update the best proto-pal relative size when a new best is found
+  * Fix a false positive reported by `scan-build`
+  * Charmaps cannot map an empty string (#1486)
+  * Enable more testing of RGBGFX output (#1473)
+  * Report any section overflows at the end of assembly (#1482)
+  * Edit some documentation of unions and macros
+  * Implement a '#' prefix for raw identifiers that may alias keywords (#1480)
+  * Test RGBLINK on SDCC object files (#1479)
+  * Use a custom generic tagged union `Either` instead of `std::variant` for efficiency (#1476)
+  * Add RGBFIX tests for MBC names (#1477)
+  * Improve some documentation (#1474)
+  * Test the RGBASM state file output (#1472)
+  * Document `!cc` support alongside `HIGH(r16)` and `LOW(r16)` support (#1475)
+  * Allow mirroring only the X or Y axes (#1468)
+  * Reword some RGBASM docs
+  * Refactor test.sh scripts for consistency
+  * Add some more tests, and fix some existing ones
+  * Test macro args `\0` and `\<0>`
+  * Pass `RGBDS=` to `make clean` as well in downstream tests
+  * Correctly apply section fragment offsets to contained symbols
+  * Avoid softlock if linker script contains a comment but no newline
+  * Trap bad `__at()` values too
+  * Implement floating bank in linker script
+  * Clarify error message when a section lacks a type
+  * Trap invalid section types in RGBDS objs
+  * Report attempts to assign a SDCC area in a way inconsistent with its data
+  * Reserve space to avoid file sym array realloc
+  * Clear the old line buffer when filling the next one in nextLine
+  * Use line.reserve in sdobj_ReadFile instead of constructor
+  * Add a contrib script for visualising the generated palettes as a PNG
+  * Fix `ProtoPalette::compare`
+  * Fix charmap state output for inherited characters
+  * Comment the parsers better (#1463)
+  * Build “fat binaries” for macOS (#1461)
+  * Fix constant expression detection functions (#1462)
+  * Fix incorrect name of `macos-static` artifact
+  * Use macOS 14 in CI (#1335)
+  * Sync warning flags between Makefile and CMakeLists.txt
+  * Enforce C++ compiler when building test binaries in CI too
+  * Pass CXX env var through when compiling RGBGFX test binaries
+  * Be verbose about building the RGBGFX test binaries
+  * Be stricter in test scripts
+  * Pass libpng CFLAGS when building `rgbgfx_test.cpp` too
+  * Improve fixed-point documentation (#1455)
+  * Advise on how to use `-x` to make `-r` work (#1459)
+  * Fix RGBGFX reversal (#1425)
+  * Make `test/gfx/at-file-ref` consistent
+  * Sort proto-palettes by decreasing size when refitting overloaded palettes
+  * Fix ineffective sorting of palettes pre-packing
+  * Disable optimisations in `make debug`
+  * Document the behavior of `FMOD`, and other man page cleanup (#1458)
+  * Implement `BITWIDTH` and `TZCOUNT` functions (#1450)
+  * Error messages note when a symbol has been purged (#1453)
+  * Output exported numeric constants to sym file (#1439)
+  * Rephrase `numeric-string` warning to not be identical to another one (#1449)
+  * Multiple fixes and enhancements to RPN behavior: (#1448)
+  * Implement `-Wpurge=` (#1443)
+  * Implement state file output for RGBASM (#1435)
+  * Deprecate treating multi-unit strings as numbers (#1438)
+  * Remove redundant "unknown option" error messages (#1441)
+  * Update the 'ucity' commit used for testing
+  * Update test deps (#1440)
+  * Implement multi-value charmaps (#1429)
+  * Consistently use "palette spec" not "color spec"
+  * Add `rgbgfx -r 0` to infer a width (#1437)
+  * Run clang-format
+  * With `-r`, print both palettes if `-c` and `-p` mismatch
+  * Fix parsing of GPL files
+  * Fix parsing of textual colours
+  * Fix textual palettes not accepting to be filled
+  * Ignore empty lines in HEX files
+  * Distinguish EOF and empty lines when parsing text pal files
+  * "Write" to files, "print" to console
+  * Use appropriate format specifier for number of palettes
+  * Fix max number of palettes wrapping around after 255
+  * Remove outdated RGBASM options from man page
+  * More refactoring and renaming
+  * Some refactoring and reformatting (#1431)
+  * Implement `EXPORT DEF` to define and export symbols (#1422)
+  * Improve the error messages for interpolating undefined or invalid symbols (#1423)
+  * Add syntax to push and modify stacks in one line (#1421)
+  * Fix use-after-free when keeping pointers to args from at-files (#1426)
+  * Fix bison.sh for patch-less bison versions (#1416)
+  * Release 0.8.0
+  * Fix generating a palette overriding a previous pal spec (#1415)
+  * Keep the object version as RGB9; only increment the revision to 10 (#1413)
+  * Allow a suffix (e.g. the version) to be added when installing (#1406)
+  * Miscellaneous refactoring of code and docs (#1411)
+  * Allow NUL characters in strings (#1405)
+  * Specify a custom logo file to use instead of the Nintendo logo (#1400)
+  * Add more test cases (#1409)
+  * Remove unsupported macOS 11 from CI (#1410)
+  * Give names to links in man pages (#1407)
+  * Fix reading ACO palette files (#1404)
+  * `X && 0` and `X & 0` are constant 0; `X || 1` is constant 1 (#1399)
+  * Refactor macros for fixing/trashing header values (#1401)
+  * Use a smaller size for the lexer buffer
+  * Allow padding to coexist with overlay file (#1395)
+  * Use the standard stream buffer size for the lexer buffer (#1396)
+  * Make some error messages more consistent (#1393)
+  * Fix rectangular rgbgfx --reverse --columns (#1392)
+  * Use consistent `RGBDS_<PROG>_<NAME>_HPP` header guard convention
+  * Replace `assert` with `assume` for release build optimization (#1390)
+  * Use `std::variant` for RPN expression value (#1389)
+  * Fix two bugs with RGBASM fixed-point math (#1388)
+  * Add a build target for `include-what-you-use`
+  * Rename some variables left from the C parser (e.g. `yylval`)
+  * Update the 'ucity' commit used for testing
+  * Add more RGBLINK tests (#1386)
+  * Update the 'libbet' commit used for testing
+  * Make test built of 'libbet' reproducible with old Pillow versions (#1385)
+  * Verify ROM hashes for all CI test projects (#1384)
+  * Patch test projects so they build without deprecated features
+  * Remove documentation of already-removed RGBGFX options
+  * Remove the deprecated RGBGFX `--output-*` options (use `--auto-*`)
+  * Remove deprecated `-i` for `--include` (use `-I`)
+  * Remove deprecated `DEF`-less definitions
+  * Remove the deprecated `-H/-h/-L/-l` options
+  * Split the `.peek()` method into its next-char and lookahead cases
+  * Remove the suboptimal `.canPeek()` and `.peek()` methods
+  * Refactor `peekInternal` to be a `LexerState` method
+  * Refactor `BufferedContent` and `Expansion` to have methods
+  * Run clang-format 14 on everything
+  * Run clang-format
+  * Report as many build errors as possible in CI
+  * Disable some spurious MSVC warnings
+  * Clean up `#include`s
+  * Use standard attribute syntax instead of IBM `__attribute__`
+  * Refactor to avoid redundant `obj_CheckAssertions` function
+  * Use `QUOTEDSTRLEN` macro instead of `sizeof` or `strlen`
+  * Defer closing of depend file
+  * No more memory leaks!
+  * Remove now-redundant `MmappedContent` struct
+  * Group pointer and size as a `ContentSpan` struct
+  * Use `std::shared_ptr` for lexer capture buffers
+  * Use a `Defer` struct to close files and restore lexer state with RAII (#1379)
+  * Rename `CaptureBody` to `Capture`, and refactor its methods
+  * Use content-specific destructors for lexer state
+  * Use `STR` and `CAT` macros for `#` and `##`
+  * Rename a few variables
+  * Remove RGBLINK's unimplemented '-s' "smart linking" placeholder flag
+  * Use automatically-allocated `std::string_view` for macros
+  * Make `CaptureBuf`s be parser values instead of a single `static` global
+  * Refactor to keep `lexerState` and `lexerStateEOL` static
+  * Update test project commits (#1377)
+  * Remove .simple.err files, since we require Bison 3.0 (#1373)
+  * Use RAII to unmap or close the lexer states' files automatically
+  * Refactor macro args to be owned collectively by their fstack contexts
+  * Use `std::shared_ptr` for `MacroArgs`
+  * Do not limit strings to 255 characters
+  * Use `std::shared_ptr<std::string>` for lexed/parsed strings
+  * Refactor string-formatting routines to append to an existing string
+  * Simplify `\@` handling by using `std::shared_ptr<std::string>`
+  * Use `std::shared_ptr` for fstack nodes (#1371)
+  * Use methods for RPN `Expression` (#1372)
+  * Remove unused `Visitor` template
+  * Only restore parent context's `\@` value if it had one defined (#1366)
+  * Convert bison.sh to posix shell (#1369)
+  * Fix some header `#include`s with `clangd` LSP (#1370)
+  * Use "snake_case" consistently in parsers
+  * Add `make profile`, optimized for callgrind
+  * Use `std::get_if` instead of `std::visit` (#1367)
+  * Remove workaround for GitHub Actions issue (#1368)
+  * Built-in symbols are "<builtin>", not "<command-line>" (#1362)
+  * Use `std::string` for string-formatted values (#1360)
+  * Fix CI builds for Ubuntu 22.04 (#1361)
+  * Use `sed` instead of `awk` to extract Bison version
+  * Use `std::string` for lexer state paths
+  * Pass `std::string` references to RPN functions
+  * Pass `std::string` references to fstack functions
+  * Pass `std::string` references to symbol functions
+  * Pass `std::string` references to output functions
+  * Pass `std::string` references to section functions
+  * Pass `std::string` references to charmap functions
+  * Pass `std::string` references to parser semantic functions instead of `.c_str()` pointers
+  * Use `std::string` for most intermediate parsed strings
+  * Run `clang-format` on everything
+  * Use `std::unordered_map` and `std::vector` for sections
+  * Use `std::unordered_map` for symbols
+  * Use `std::unordered_map` for charmaps
+  * Fix build failure with GCC 13
+  * Use a `std::unordered_map` for looking up sections by name (#1357)
+  * Sort .sym files in ascending order, and test for it (#1355)
+  * Move a SECTION FRAGMENT test to the test/link/section-fragment folder (#1354)
+  * Strip CI binaries built with `make` (#1345)
+  * Allow multiple identical exported numeric constants (#1341)
+  * Add test cases for SECTION UNION defining multiple identical labels (#1349)
+  * Add license header to test/CMakeLists.tst like the rest
+  * Refactor link/test.sh to avoid repeating test names (#1353)
+  * Fix a reference being used after being invalidated (#1352)
+  * Use a unique name to upload W32/W64 binaries in CI
+  * Update Actions to Node 20
+  * Disable a Clang warning
+  * Refactor `FileStackNode::dump` to not need a helper function
+  * Avoid a couple of clang-format quirks
+  * Consistently format type qualifiers like `const` on the right (#1347)
+  * Use move semantics for more parsed values
+  * No need to manually do the `Expression` destructor's job
+  * Refactor `mapFile` for Windows
+  * Remove RPN symbol name length limit
+  * Reduce the header declarations (#1342)
+  * Make enum patterns more explicit (#1343)
+  * Use automatic allocation and `std::move` for RPN bytes (#1336)
+  * Use `std::unique_ptr` for rgblink sections (#1337)
+  * Fix `-O` being always ignored (#1339)
+  * Remove an unnecessary `.close()` call that the destructor handles
+  * Fix enum: REG_SP == REG_AF == 3
+  * Remove unused `yyerror` declaration
+  * Remove now-unnecessary `enum` keyword (#1338)
+  * Fix a typo bug in sdas_obj.cpp
+  * Use `std::optional` for fstack paths
+  * Avoid an extra operation if `!labelScope` (thanks, ISSOtm)
+  * Print summaries at the end of test.sh scripts
+  * Replace some macros with static functions or constants
+  * Remove unused `#define`
+  * Ignore `callgrind` output files
+  * Use `std::reverse` for binary digits
+  * Get rid of some fixed-size char buffers
+  * Use `fwrite` and `fputs` instead of multiple `putc`
+  * Remove 255-character limit on symbol names
+  * Use `std::string` for symbol names
+  * Run clang-format to fix some inconsistent style
+  * Use automatic allocation for RPN reasons
+  * Use `std::nothrow` from `<new>` with every `new` allocation
+  * Use automatic allocation for some parser values
+  * Stop explicitly passing zlib/libpng path to CMake in Windows CI
+  * Update Windows libpng to 1.6.43
+  * Adapt the RGBASM parser to C++ (#1333)
+  * Remove declaration for compatibility with macOS bison 2.3
+  * Update to use winflexbison 2.5.25 (bison 3.8.2)
+  * Fix some numeric bases in RGBLINK output
+  * Make sure that parsed subexpressions are fully defined
+  * Fix a latent bug with parsing macro args
+  * Avoid using Bison's typed mid-rule actions
+  * Refactor `case`s for simplicity, and remove redundant comments
+  * Improve some const correctness in RGBASM
+  * Rename `fail` to `sectError`, since it increments `nbSectErrors`
+  * Use `FileStackNode` constructor to avoid `std::monostate` possibility
+  * Add some more trailing commas
+  * Run `clang-format` on everything (#1332)
+  * Use `std::variant` for symbol values (#1331)
+  * Avoid using `std::get` except in `holds_alternative`-`assert`ing accessors
+  * Remove EQUS callbacks for symbols
+  * Update contributors
+  * Use `std::variant` for symbol values (#1330)
+  * Use uncommented sizes for pointer-to-array arguments (#1329)
+  * Improve tests a little (#1324)
+  * Use `std::variant` for lexer mmap/buffer state (#1328)
+  * Implement `-c #none` (#1301)
+  * Replace RGBLINK non-null pointers with references
+  * Replace RGBFIX non-null pointers with references
+  * Replace RGBASM non-null pointers with references
+  * Check RGBGFX warning/error format strings with `format_` macro
+  * Remove commented-out C-only macro features
+  * We do not call `malloc/free` any more
+  * Use `new` allocation for expanding `\#`
+  * Use `std::vector` for capture buffer
+  * Use `std::string_view` for macro bodies (#1326)
+  * Use `std::string` for macro args
+  * Use `std::string` for STRFMT spec and args
+  * Use `std::string` for section names
+  * Use `std::optional<std::string>` for lexer expansion names
+  * Use RAII `std::string` and `std::vector` in randtilegen (#1325)
+  * Use `std::deque<std::vector>` for free space (#1323)
+  * Refactor structs to use methods instead of functions (#1322)
+  * Remove redundant `(void)` parameter declarations
+  * Reorganize the asm parser to be more like the linker script parser
+  * Replace `NULL` with `nullptr` (#1321)
+  * Remove now-unnecessary `struct` keyword (#1320)
+  * Use `std::visit` with `Visitor` helper instead of `std::holds_alternatve`
+  * Use `std::vector` for SDCC object section data
+  * Use `std::vector` for SDCC object line buffer
+  * Rename `isWRA0Mode` to `isWRAM0Mode`
+  * Use `std::vector` for rgbfix ROMX data
+  * Use `vec.data()` instead of `&vec[0]`
+  * Rename `lexer_DeleteState` to `lexer_CleanupState`
+  * Remove now-unnecessary cleanup functions
+  * Use automatic allocation for section data
+  * Use automatic allocation for `tryReadstring`
+  * Use automatic allocation for assertion error messages
+  * Use automatic allocation for symbol names
+  * Use automatic allocation for section symbols
+  * Use automatic allocation for section names
+  * Use automatic allocation for patches
+  * Clarify comment explaining how `referenced` works
+  * Refactor to avoid repeating `rpn_isKnown(expr)`
+  * `struct Section`'s `src` can be `const`
+  * Use `std::variant` and automatic allocation for file stack node data
+  * Use `std::vector`'s `.size()` for SDCC sections and symbols
+  * Use copy constructor for file stack node
+  * Use move semantics for the union stacks
+  * Use `std::variant` for `STRFMT` arguments
+  * Use `std::unordered_map` for the keyword dict
+  * Use `std::string` for `PURGE` args
+  * Use `std::string` for `FOR` loop variables
+  * Use `std::string` for symbol/section/node names and assertion messages
+  * Use `std::vector` for charmap output
+  * Use `std::vector` for section data
+  * Use automatic allocation for object file symbols
+  * Use `std::vector` for section symbols
+  * Use `std::vector` for reading object file symbols
+  * Use `std::vector` for file stack nodes
+  * Use `std::vector` for reading object file sections
+  * Use automatic allocation for IF stacks and expansions
+  * Use automatic allocation for lexer states
+  * Use `std::string` for RPN error reasons
+  * Use `std::variant` for file stack nodes
+  * Use `std::string` for target file name
+  * Use automatic allocation for fstack nodes' iters/names
+  * Use `std::vector` for RPN expressions
+  * Use `std::vector` for section patches
+  * Use `std::vector` for fstack REPT nodes
+  * Use automatic allocation for symbols
+  * Use `std::vector` for include paths
+  * Use `std::stack` for fstack contexts
+  * Use `std::vector` for SDAS file sections
+  * Use `std::vector` for RPN data
+  * Use automatic allocation for RPN stack
+  * Use automatic allocation for `DS` args
+  * Use automatic allocation for `PURGE` args
+  * Use automatic allocation for `STRFMT` args
+  * Use automatic allocation for macro args
+  * Use automatic allocation for charmaps
+  * Use automatic allocation for patch RPN
+  * Use automatic allocation for section data
+  * Use automatic allocation for patches
+  * Use automatic allocation for sections
+  * Use automatic allocation for assertions
+  * Use `std::deque` for expansions
+  * Use `std::deque` for unassigned sections
+  * Use `std::deque` for file stack nodes
+  * Use `std::deque` for assertions
+  * Use `std::vector` for sorted symbols
+  * Use `std::deque` for sorted sections
+  * Remove our custom hashmap
+  * Use `std::map` for rgbasm charmaps
+  * Use `std::map` for rgbasm symbols
+  * Use `std::map` for rgblink symbols and sections
+  * Use `std::deque` for symbol lists
+  * Use `std::deque` for sections
+  * Use `std::stack` for unions
+  * Use `std::deque` for section patches
+  * Use `std::deque` for assertions
+  * Use `std::vector` for symbols
+  * Use `std::deque` (iterable) for section stack
+  * Use `std::stack` for `IF` stack
+  * Use `std::stack` for options
+  * Use `std::stack` for charmaps
+  * Document how to run the test suite
+  * Give explicit test output if the scramble-romx size is wrong
+  * Fix fstack traces for macro nodes (#1318)
+  * Refactor some redundant error/warning-printing code
+  * Remove `#include <stdbool.h>` (#1317)
+  * Build with pedantically standard C++ (#1309)
+  * No more flexible array members (not standard C++) (#1307)
+  * Simplify `fstk_FindFile` usage (#1310)
+  * Add missing license header
+  * Remove unused struct definition
+  * Remove obsolete `#undef fail`
+  * Free all the charmaps after parsing
+  * Clarify TODO comment
+  * Separate union members for EQUS and MACROs
+  * No more anonymous structs (not standard C++) (#1305)
+  * Fix behavior of non-ASCII bytes with `INCHARMAP` (#1308)
+  * Log indiviual rgblink test variants
+  * Remove unused rgblink function `sym_ForEach`
+  * .dockerignore is too trivial to license :P
+  * Fix coverage script checking for `.c` files
+  * Add a few more linker script tests
+  * Reformat some deeply-indented lines
+  * Ensure that mid-section `align 16` makes PC constant
+  * Honor alignment offset for `ALIGN[16, N]`
+  * Add several tests for linker script syntax
+  * Report mismatched file better when diff fails
+  * Only look for linkerscripts in the same dir as the asm file
+  * Make sure to detect Git info from *our* Git repo (#1303)
+  * Avoid links that just say "here"
+  * Remove now-unnecessary indentation of code blocks
+  * Refer to https URLs when applicable
+  * Update some contributors
+  * Convert reStructuredText to Markdown
+  * Fix some reStructuredText
+  * Report "<stdin>" or "<stdout>" when using "-" as a filename placeholder (#1297)
+  * Provide guidance to remove the deprecated rgbasm flags (#1296)
+  * Phrase error messages as "Failed to", not "Could not" or "Couldn't" (#1298)
+  * Truncate long format spec strings before using them (#1299)
+  * Use semicolons, not comma splices
+  * Fix two instances of possible infinite loops in the linker (#1292)
+  * Update to Zlib 1.3.1
+  * Use `rgbasm -I`, not `-i`
+  * Fix some usually disabled compiler warnings (#1286)
+  * Increment object file revision number to 10 (#1287)
+  * Gameboy -> Game Boy
+
+-------------------------------------------------------------------
+Wed May 22 05:51:39 UTC 2024 - stigpro@outlook.fr
+
+- Update to version 0.7.0:
+  * Move to cmake usage
+  * Move to _service-based revision management
+  * Release v0.7.0
+  * Remove `.Tg` macro
+  * Allow fewer tRNS entries than PLTE colors (#1284)
+  * Get rid of macOS hack to try having the filesystem cake and eat it too
+  * Revert "Switch to using `std::filesystem` (#1235)"
+  * Generate macOS static bins under correct name
+  * Fix build compatibility for macOS 10.14 and below (#1280)
+  * Fix "build from source" link in README (#1281)
+  * Improve linker scripts a little (#1275)
+  * Fix documentation for ATAN2's (y, x) argument order
+
+-------------------------------------------------------------------
+Fri Apr 23 17:43:32 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- initial packaging of version 0.5.0
