@@ -1,7 +1,7 @@
 #
 # spec file for package python-podman-compose
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %{?sle15_python_module_pythons}
 %global src_name podman-compose
+
 Name:           python-%{src_name}
-Version:        1.2.0
+Version:        1.5.0
 Release:        0
 Summary:        A script to run docker-compose using podman
 License:        GPL-2.0-only
@@ -70,9 +71,8 @@ cp %{SOURCE1} .
 %python_expand sed -i '1d' %{buildroot}%{$python_sitelib}/podman_compose.py
 
 # %%check
-# FIXME: we don't run upstream's tests, because those are currently only
-# docker-compose files that are run via podman-compose to check the
-# compatibility in a non-automated fashion.
+# We don't run upstream's unit tests, because they require podman to pull
+# containers and rootless podman to run in a build environment.
 
 %post
 %python_install_alternative podman-compose

@@ -1,4 +1,131 @@
 -------------------------------------------------------------------
+Wed Feb 11 15:53:28 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Updated to v1.5.0
+  * Bug fixes
+    - Fixed path to a local SSH key to be relative to the directory
+      of compose file during build.
+    - Fixed CMD healthchecks to run the given command directly
+      and not use /bin/sh -c.
+    - Fixed regression of dockerfile definition if current directory
+      name ends with ".git".
+    - Fixed exit code from push command.
+      Implemented short syntax for environment variables set in .env
+      for compose.yml environment: section.
+    - Fixed regression of log output including "text" in detached
+      mode.
+    - Implemented up --no-recreate to work as advertised.
+    - Stack traces emitted due to YAML parse errors are now hidden.
+  * Features
+    - Added unregister command to remove systemd service registration
+      (podman-compose systemd -a unregister).
+    - Added new docker_compose_compat x-podman meta setting to enable
+      all Docker Compose compatibility settings
+    - Added new name_separator_compat x-podman setting to change name
+      separator to hyphen, same as Docker Compose.
+    - Added support for environment variable interpolation for YAML
+      keys.
+    - Added io.podman.compose.service label to created containers.
+      It contains the same value as com.docker.compose.service.
+    - Added relabel option to secret to make possible to read the
+      secret file by the contained process.
+    - Added support for setting x-podman values using PODMAN_COMPOSE_*
+      environment variables.
+    - Added support to set --route option to podman network create
+      via x-podman.routes key on network configuration.
+    - Implemented support for custom pod names in --in-pod.
+- From version v1.4.1:
+  * Bug fixes
+    - Fixed relative host path resolution for volume bind mount source
+      (regression since v1.4.0).
+- From version v1.4.0:
+  * Bug fixes
+    - Fixed handling of relative includes and extends in compose
+      files.
+    - Fixed error when merging arguments in list and dictionary
+      syntax.
+    - Fixed issue where short-lived containers could execute twice
+      when using up in detached mode.
+    - Fixed up command hanging on Podman versions earlier than 4.6.0.
+    - Fixed issue where service_healthy conditions weren't enforced
+      during up command.
+    - Fixed support for the --scale flag.
+    - Fixed bug causing dependent containers to start despite
+      --no-deps flag.
+    - Fixed port command behavior for dynamic host ports.
+    - Fixed interpolation of COMPOSE_PROJECT_NAME when set from
+      top-level name in compose file.
+    - Fixed project name evaluation order to match compose spec.
+    - Fixed build context when using git URLs.
+    - Fixed KeyError when down is called with non-existent service.
+    - Skip down during up when no active containers exist.
+    - Fixed non-zero exit code on failure when using up -d.
+    - Fixed SIGINT handling during up command for graceful shutdown.
+    - Fixed NotImplementedError when interrupted on Windows.
+  * Features
+    - Added --quiet flag to config command to suppress output.
+    - Added support for pids_limit and deploy.resources.limits.pids.
+    - Added --abort-on-container-failure option.
+    - Added --rmi argument to down command for image removal.
+    - Added support for x-podman.disable-dns to disable DNS plugin
+      on defined networks.
+    - Added support for x-podman.dns to set DNS nameservers for
+      defined networks.
+    - Improved file descriptor handling - no longer closes
+      externally created descriptors.
+    - This allows descriptors created e.g. via systemd socket
+      activation to be passed to containers.
+    - Added support for cpuset configuration.
+    - Added support for reset and override tags when merging
+      compose files.
+    - Added support for x-podman.interface_name to set network
+      interface names.
+    - Added support for x-podman.pod_args to override default
+      --pod-args.
+- From version v1.3.0:
+  * Bug fixes
+    - Fixed support for de-facto alternative Dockerfile names
+      (e.g. Containerfile).
+    - Fixed a bug that caused attempts to create already
+      existing pods multiple times.
+    - Fixed compatibility with docker-compose in how symlinks
+      to docker-compose.yml are handled.
+    - Fixed freeze caused by too long log lines without a
+      newline.
+    - Fixed support for network_mode: none.
+    - Improved error detection by rejecting service definitions
+      that contain both network_mode and networks keys, which
+      is not allowed.
+  * Features
+    - Added support for build labels.
+    - Added support for "platform" property in the build command.
+    - Added support for "ssh" property in the build command.
+    - Added support for cache_from and cache_to fields in build
+      section.
+    - Added support for honoring the condition in the depends_on
+      section of the service, if stated.
+    - Added x-podman.no_hosts setting to pass --no-hosts to
+      podman run.
+    - Added support for compatibility with docker compose for
+      default network behavior when no network defined in
+      service. This is controlled via default_net_behavior_compat
+      feature flag.
+    - Added a way to get compatibility of default network names
+      with docker compose.
+    - This is selected by setting default_net_name_compat: true
+      on x-podman global dictionary.
+    - Added support for the device_cgroup_rules property in
+      services.
+    - Added support for removing networks in podman-compose down.
+    - Added support for network scoped service aliases.
+    - Added support for network level mac_address attribute.
+    - Added ability to substitute variables with the environment
+      of the service.
+  * Misc
+    - Declared compatibility with Python 3.13.
+- Update note on why we are unable to run unit tests in OBS.
+
+-------------------------------------------------------------------
 Wed Jun 11 05:50:52 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
