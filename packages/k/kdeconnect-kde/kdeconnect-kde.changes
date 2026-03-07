@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar  3 09:56:38 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.3/
+- Changes since 25.12.2:
+  * Fix clicking on plugin's row doesn't change plugin's status (kde#514923)
+  * shareplugin: Fix setting file modified date
+  * plasmoid: make Share dialog non-modal (kde#515659)
+  * lanlinkprovider: don't go through instance to call a static (kde#515483)
+
+-------------------------------------------------------------------
 Tue Feb  3 10:05:31 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.2
