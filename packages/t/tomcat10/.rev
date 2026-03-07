@@ -245,4 +245,12 @@
     <comment>make catalina.sh %config(noreplace) (bsc#1253460)</comment>
     <requestid>1318492</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>316b9496519127a73a336bcb3c1a7740</srcmd5>
+    <version>10.1.52</version>
+    <time>1772910572</time>
+    <user>dimstar_suse</user>
+    <comment>10.1.52</comment>
+    <requestid>1337368</requestid>
+  </revision>
 </revisionlist>
