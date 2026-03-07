@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar  3 09:56:27 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.3/
+- Changes since 25.12.2:
+  * Add 25.12.3 release notes
+  * BusPage: Fix arrival delegate
+  * Default to creating a new trip group when importing a named trip group
+  * Set a better default for event entrance times without a start time yet
+  * Also detect osm.org short URLs for importing OSM elements
+  * Fix build without Matrix support
+  * Retain attached documents from event templates
+  * Add 25.12.2 release notes
+  * Handle nested events when computing trip group end times
+
+-------------------------------------------------------------------
 Sat Feb 21 09:44:28 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Add missing runtime dependencies (boo#1258674)

@@ -536,4 +536,12 @@
     <comment>- Add missing runtime dependencies (boo#1258674)</comment>
     <requestid>1334255</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>657057b69df94e7154bbe8112ea82e88</srcmd5>
+    <version>25.12.3</version>
+    <time>1772910267</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 25.12.3</comment>
+    <requestid>1336927</requestid>
+  </revision>
 </revisionlist>
