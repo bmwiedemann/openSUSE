@@ -1332,4 +1332,12 @@
     <comment>KDE release gear 25.12.2 (forwarded request 1330785 from krop)</comment>
     <requestid>1331354</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>146ce110e60770c9e3ec1e3fed833f47</srcmd5>
+    <version>25.12.3</version>
+    <time>1772910478</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 25.12.3</comment>
+    <requestid>1337084</requestid>
+  </revision>
 </revisionlist>
