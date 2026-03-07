@@ -26272,6 +26272,7 @@ unsorted:
   - python311-mapserver 
   - python311-marathon 
   - python311-marisa 
+  - python311-markdown-word-count 
   - python311-markdown2 
   - python311-markdownify 
   - python311-marshmallow 
@@ -30155,6 +30156,7 @@ unsorted:
   - python313-marathon 
   - python313-marisa 
   - python313-markdown-it-py 
+  - python313-markdown-word-count 
   - python313-markdown2 
   - python313-markdownify 
   - python313-marshmallow 
@@ -32916,6 +32918,7 @@ unsorted:
   - rfbproxy 
   - rfc-read 
   - rfcdiff 
+  - rgbds 
   - rhash 
   - rhash-devel 
   - rhash-lang 
