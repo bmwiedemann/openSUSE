@@ -1437,39 +1437,39 @@ AT.06.620	Politischer Bezirk Murtal	Politischer Bezirk Murtal	8604685
 AT.06.621	Politischer Bezirk Bruck-Mürzzuschlag	Politischer Bezirk Bruck-Muerzzuschlag	8604686
 AT.06.622	Politischer Bezirk Hartberg-Fürstenfeld	Politischer Bezirk Hartberg-Fuerstenfeld	8604687
 AT.06.623	Politischer Bezirk Südoststeiermark	Politischer Bezirk Suedoststeiermark	8604689
-AU.05.48410	City of West Torrens	City of West Torrens	2058592
-AU.08.57210	Plantagenet Shire	Plantagenet Shire	2063213
-AU.08.57080	City of Perth	City of Perth	2063522
-AU.08.54480	Kent Shire	Kent Shire	2068570
-AU.08.53290	Esperance Shire	Esperance Shire	2071858
-AU.08.53010	Dumbleyung Shire	Dumbleyung Shire	2072463
+AU.05.48410	West Torrens	West Torrens	2058592
+AU.08.57210	Plantagenet	Plantagenet	2063213
+AU.08.57080	Perth	Perth	2063522
+AU.08.54480	Kent	Kent	2068570
+AU.08.53290	Esperance	Esperance	2071858
+AU.08.53010	Dumbleyung	Dumbleyung	2072463
 AU.05.40700	Burnside	Burnside	2075316
-AU.08.50280	Augusta-Margaret River Shire	Augusta-Margaret River Shire	2077473
+AU.08.50280	Augusta Margaret River	Augusta Margaret River	2077473
 AU.07.27350	Yarra	Yarra	2142478
-AU.02.17950	Warren Shire	Warren Shire	2144547
-AU.02.17400	Tenterfield Municipality	Tenterfield Municipality	2147083
-AU.02.17350	Temora Municipality	Temora Municipality	2147149
-AU.02.17310	Tamworth Municipality	Tamworth Municipality	2147495
-AU.02.16950	Shoalhaven Shire	Shoalhaven Shire	2149594
+AU.02.17950	Warren	Warren	2144547
+AU.02.17400	Tenterfield	Tenterfield	2147083
+AU.02.17350	Temora	Temora	2147149
+AU.02.17310	Tamworth	Tamworth	2147495
+AU.02.16950	Shoalhaven	Shoalhaven	2149594
 AU.02.16550	Randwick	Randwick	2152124
-AU.02.16400	Port Stephens Shire	Port Stephens Shire	2152652
-AU.02.16350	Penrith Municipality	Penrith Municipality	2153469
-AU.02.16150	Orange Municipality	Orange Municipality	2154212
-AU.02.15700	Nambucca Shire	Nambucca Shire	2155855
+AU.02.16400	Port Stephens	Port Stephens	2152652
+AU.02.16350	Penrith	Penrith	2153469
+AU.02.16150	Orange	Orange	2154212
+AU.02.15700	Nambucca Valley	Nambucca Valley	2155855
 AU.07.24780	Mildura	Mildura	2157697
-AU.02.15050	Maitland Municipality	Maitland Municipality	2159040
-AU.02.14850	Lismore Municipality	Lismore Municipality	2160061
-AU.02.14650	Lake Macquarie Shire	Lake Macquarie Shire	2160746
-AU.02.14000	Hornsby Shire	Hornsby Shire	2163136
+AU.02.15050	Maitland	Maitland	2159040
+AU.02.14850	Lismore	Lismore	2160061
+AU.02.14650	Lake Macquarie	Lake Macquarie	2160746
+AU.02.14000	Hornsby	Hornsby	2163136
 AU.07.21890	Darebin	Darebin	2169409
-AU.02.11500	Campbelltown Municipality	Campbelltown Municipality	2172583
-AU.02.11350	Byron Shire	Byron Shire	2172879
-AU.02.11250	Broken Hill Municipality	Broken Hill Municipality	2173910
-AU.02.10900	Blue Mountains Municipality	Blue Mountains Municipality	2175228
-AU.04.30300	Balonne Shire	Balonne Shire	2177036
+AU.02.11500	Campbelltown (NSW)	Campbelltown (NSW)	2172583
+AU.02.11350	Byron	Byron	2172879
+AU.02.11250	Broken Hill	Broken Hill	2173910
+AU.02.10900	Blue Mountains	Blue Mountains	2175228
+AU.04.30300	Balonne	Balonne	2177036
 AU.07.20570	Ballarat	Ballarat	2177089
-AU.02.10050	Albury Municipality	Albury Municipality	2178173
-AU.02.17200	City of Sydney	City of Sydney	6619279
+AU.02.10050	Albury	Albury	2178173
+AU.02.17200	Sydney	Sydney	6619279
 AU.04.34860	Maranoa	Maranoa	7839346
 AU.08.50980	Broome	Broome	7839347
 AU.08.51080	Broomehill-Tambellup	Broomehill-Tambellup	7839348
@@ -1477,8 +1477,8 @@ AU.08.51120	Bruce Rock	Bruce Rock	7839349
 AU.04.32260	Cassowary Coast	Cassowary Coast	7839350
 AU.06.60410	Brighton	Brighton	7839351
 AU.06.60610	Burnie	Burnie	7839352
-AU.06.60810	Central Coast	Central Coast	7839353
-AU.06.61010	Central Highlands	Central Highlands	7839354
+AU.06.60810	Central Coast (Tas.)	Central Coast (Tas.)	7839353
+AU.06.61010	Central Highlands (Tas.)	Central Highlands (Tas.)	7839354
 AU.06.61210	Circular Head	Circular Head	7839355
 AU.06.61410	Clarence	Clarence	7839356
 AU.06.61510	Derwent Valley	Derwent Valley	7839357
@@ -1489,10 +1489,10 @@ AU.02.12900	Forbes	Forbes	7839361
 AU.02.12950	Gilgandra	Gilgandra	7839362
 AU.02.13010	Glen Innes Severn	Glen Innes Severn	7839363
 AU.02.13310	Goulburn Mulwaree	Goulburn Mulwaree	7839364
-AU.02.13340	Greater Hume Shire	Greater Hume Shire	7839366
+AU.02.13340	Greater Hume	Greater Hume	7839366
 AU.02.17550	Tweed	Tweed	7839369
-AU.02.17620	Upper Hunter Shire	Upper Hunter Shire	7839370
-AU.06.65410	Waratah/Wynyard	Waratah/Wynyard	7839371
+AU.02.17620	Upper Hunter	Upper Hunter	7839370
+AU.06.65410	Waratah-Wynyard	Waratah-Wynyard	7839371
 AU.06.65610	West Coast	West Coast	7839372
 AU.06.65810	West Tamar	West Tamar	7839373
 AU.03.70540	Belyuen	Belyuen	7839374
@@ -1517,7 +1517,7 @@ AU.04.36660	Southern Downs	Southern Downs	7839393
 AU.04.36720	Sunshine Coast	Sunshine Coast	7839394
 AU.04.36910	Toowoomba	Toowoomba	7839396
 AU.04.36950	Torres	Torres	7839397
-AU.04.36960	Torres Strait Island Region	Torres Strait Island Region	7839398
+AU.04.36960	Torres Strait Island	Torres Strait Island	7839398
 AU.04.37010	Townsville	Townsville	7839399
 AU.04.37300	Weipa	Weipa	7839400
 AU.04.37310	Western Downs	Western Downs	7839401
@@ -1548,12 +1548,12 @@ AU.05.42600	Holdfast Bay	Holdfast Bay	7839425
 AU.05.42750	Kangaroo Island	Kangaroo Island	7839426
 AU.05.43080	Karoonda East Murray	Karoonda East Murray	7839427
 AU.05.43220	Kimba	Kimba	7839428
-AU.05.43360	Kingston	Kingston	7839429
+AU.05.43360	Kingston (SA)	Kingston (SA)	7839429
 AU.05.48640	Wudinna	Wudinna	7839430
 AU.05.43650	Light	Light	7839431
-AU.05.43710	Lower Eyre Peninsula	Lower Eyre Peninsula	7839432
+AU.05.43710	Lower Eyre	Lower Eyre	7839432
 AU.05.43790	Loxton Waikerie	Loxton Waikerie	7839433
-AU.05.43920	Mallala	Mallala	7839434
+AU.05.43920	Adelaide Plains	Adelaide Plains	7839434
 AU.05.44000	Maralinga Tjarutja	Maralinga Tjarutja	7839435
 AU.05.44060	Marion	Marion	7839436
 AU.05.44210	Mid Murray	Mid Murray	7839437
@@ -1562,17 +1562,17 @@ AU.05.44550	Mount Barker	Mount Barker	7839439
 AU.05.44620	Mount Gambier	Mount Gambier	7839440
 AU.05.44830	Mount Remarkable	Mount Remarkable	7839441
 AU.05.45040	Murray Bridge	Murray Bridge	7839442
-AU.05.45090	Naracoorte and Lucindale	Naracoorte and Lucindale	7839443
+AU.05.45090	Naracoorte Lucindale	Naracoorte Lucindale	7839443
 AU.05.45120	Northern Areas	Northern Areas	7839444
-AU.05.45290	Norwood Payneham St Peters	Norwood Payneham St Peters	7839445
+AU.05.45290	Norwood Payneham and St Peters	Norwood Payneham and St Peters	7839445
 AU.05.45340	Onkaparinga	Onkaparinga	7839446
-AU.05.45400	Orroroo/Carrieton	Orroroo/Carrieton	7839447
+AU.05.45400	Orroroo Carrieton	Orroroo Carrieton	7839447
 AU.05.45540	Peterborough	Peterborough	7839448
 AU.05.45680	Playford	Playford	7839449
 AU.05.45890	Port Adelaide Enfield	Port Adelaide Enfield	7839450
 AU.05.46090	Port Augusta	Port Augusta	7839451
 AU.05.46300	Port Lincoln	Port Lincoln	7839452
-AU.05.46450	Port Pirie City and Dists	Port Pirie City and Dists	7839453
+AU.05.46450	Port Pirie	Port Pirie	7839453
 AU.05.46510	Prospect	Prospect	7839454
 AU.05.46670	Renmark Paringa	Renmark Paringa	7839455
 AU.05.46860	Robe	Robe	7839456
@@ -1582,7 +1582,7 @@ AU.05.47290	Southern Mallee	Southern Mallee	7839459
 AU.05.47490	Streaky Bay	Streaky Bay	7839460
 AU.05.47630	Tatiara	Tatiara	7839461
 AU.05.47700	Tea Tree Gully	Tea Tree Gully	7839462
-AU.05.47800	The Coorong	The Coorong	7839463
+AU.05.47800	Coorong	Coorong	7839463
 AU.05.47910	Tumby Bay	Tumby Bay	7839464
 AU.05.47980	Unley	Unley	7839465
 AU.05.48050	Victor Harbor	Victor Harbor	7839466
@@ -1605,7 +1605,7 @@ AU.08.51540	Carnarvon	Carnarvon	7839482
 AU.08.51610	Chapman Valley	Chapman Valley	7839483
 AU.08.51680	Chittering	Chittering	7839484
 AU.08.51750	Claremont	Claremont	7839485
-AU.08.51820	City of Cockburn	City of Cockburn	7839486
+AU.08.51820	Cockburn	Cockburn	7839486
 AU.08.51890	Collie	Collie	7839487
 AU.08.51960	Coolgardie	Coolgardie	7839488
 AU.08.52030	Coorow	Coorow	7839489
@@ -1637,7 +1637,7 @@ AU.08.54060	Irwin	Irwin	7839515
 AU.08.54130	Jerramungup	Jerramungup	7839516
 AU.08.54170	Joondalup	Joondalup	7839517
 AU.08.54200	Kalamunda	Kalamunda	7839518
-AU.08.54280	Kalgoorlie/Boulder	Kalgoorlie/Boulder	7839519
+AU.08.54280	Kalgoorlie-Boulder	Kalgoorlie-Boulder	7839519
 AU.08.54340	Katanning	Katanning	7839520
 AU.08.54410	Kellerberrin	Kellerberrin	7839521
 AU.08.54550	Kojonup	Kojonup	7839522
@@ -1648,7 +1648,7 @@ AU.07.20260	Ararat	Ararat	7839526
 AU.07.20660	Banyule	Banyule	7839527
 AU.07.20740	Bass Coast	Bass Coast	7839528
 AU.07.20830	Baw Baw	Baw Baw	7839529
-AU.07.20910	Bayside	Bayside	7839530
+AU.07.20910	Bayside (Vic.)	Bayside (Vic.)	7839530
 AU.07.21010	Benalla	Benalla	7839531
 AU.07.21110	Boroondara	Boroondara	7839532
 AU.07.21180	Brimbank	Brimbank	7839533
@@ -1687,21 +1687,21 @@ AU.04.31900	Burdekin	Burdekin	7839565
 AU.04.31950	Burke	Burke	7839566
 AU.04.32080	Cairns	Cairns	7839567
 AU.04.32250	Carpentaria	Carpentaria	7839568
-AU.04.32270	Central Highlands	Central Highlands	7839569
+AU.04.32270	Central Highlands (Qld)	Central Highlands (Qld)	7839569
 AU.04.32310	Charters Towers	Charters Towers	7839570
 AU.04.32330	Cherbourg	Cherbourg	7839571
 AU.04.32450	Cloncurry	Cloncurry	7839572
-AU.04.32500	Cook Shire	Cook Shire	7839573
+AU.04.32500	Cook	Cook	7839573
 AU.04.32600	Croydon	Croydon	7839574
 AU.04.32750	Diamantina	Diamantina	7839575
 AU.04.32770	Doomadgee	Doomadgee	7839576
 AU.04.33100	Etheridge	Etheridge	7839577
-AU.04.33200	Flinders	Flinders	7839578
+AU.04.33200	Flinders (Qld)	Flinders (Qld)	7839578
 AU.04.33220	Fraser Coast	Fraser Coast	7839579
 AU.04.33360	Gladstone	Gladstone	7839580
 AU.04.33430	Gold Coast	Gold Coast	7839581
 AU.04.33610	Goondiwindi	Goondiwindi	7839582
-AU.04.33620	Gympie Regional Council	Gympie Regional Council	7839583
+AU.04.33620	Gympie	Gympie	7839583
 AU.04.33800	Hinchinbrook	Hinchinbrook	7839584
 AU.04.33830	Hope Vale	Hope Vale	7839585
 AU.04.33960	Ipswich	Ipswich	7839586
@@ -1741,7 +1741,7 @@ AU.08.56460	Narrogin	Narrogin	7839621
 AU.08.56580	Nedlands	Nedlands	7839622
 AU.08.56620	Ngaanyatjarraku	Ngaanyatjarraku	7839623
 AU.08.56730	Northam	Northam	7839624
-AU.08.56790	Northampton Shire	Northampton Shire	7839625
+AU.08.56790	Northampton	Northampton	7839625
 AU.08.56860	Nungarin	Nungarin	7839626
 AU.08.56930	Peppermint Grove	Peppermint Grove	7839627
 AU.08.57000	Perenjori	Perenjori	7839628
@@ -1762,11 +1762,11 @@ AU.08.58260	Three Springs	Three Springs	7839643
 AU.05.40070	Adelaide	Adelaide	7839644
 AU.05.40120	Adelaide Hills	Adelaide Hills	7839645
 AU.05.40220	Alexandrina	Alexandrina	7839646
-AU.05.40250	Anangu Pitjantjatjara	Anangu Pitjantjatjara	7839647
+AU.05.40250	Anangu Pitjantjatjara Yankunytjatjara	Anangu Pitjantjatjara Yankunytjatjara	7839647
 AU.05.40310	Barossa	Barossa	7839648
 AU.05.40430	Barunga West	Barunga West	7839649
-AU.05.40520	Berri and Barmera	Berri and Barmera	7839650
-AU.05.40910	Campbelltown	Campbelltown	7839651
+AU.05.40520	Berri Barmera	Berri Barmera	7839650
+AU.05.40910	Campbelltown (SA)	Campbelltown (SA)	7839651
 AU.05.41010	Ceduna	Ceduna	7839652
 AU.05.41060	Charles Sturt	Charles Sturt	7839653
 AU.05.41140	Clare and Gilbert Valleys	Clare and Gilbert Valleys	7839654
@@ -1783,16 +1783,16 @@ AU.08.50630	Boddington	Boddington	7839664
 AU.06.60210	Break O'Day	Break O'Day	7839665
 AU.06.61610	Devonport	Devonport	7839666
 AU.06.61810	Dorset	Dorset	7839667
-AU.06.62010	Flinders	Flinders	7839668
+AU.06.62010	Flinders (Tas.)	Flinders (Tas.)	7839668
 AU.06.62210	George Town	George Town	7839669
-AU.06.62410	Glamorgan/Spring Bay	Glamorgan/Spring Bay	7839670
+AU.06.62410	Glamorgan-Spring Bay	Glamorgan-Spring Bay	7839670
 AU.06.62610	Glenorchy	Glenorchy	7839671
 AU.06.62810	Hobart	Hobart	7839672
 AU.06.63010	Huon Valley	Huon Valley	7839673
 AU.06.63210	Kentish	Kentish	7839674
 AU.06.63410	King Island	King Island	7839675
 AU.06.63610	Kingborough	Kingborough	7839676
-AU.06.63810	Latrobe	Latrobe	7839677
+AU.06.63810	Latrobe (Tas.)	Latrobe (Tas.)	7839677
 AU.06.64010	Launceston	Launceston	7839678
 AU.06.64210	Meander Valley	Meander Valley	7839679
 AU.06.64610	Northern Midlands	Northern Midlands	7839680
@@ -1801,8 +1801,8 @@ AU.03.70420	Barkly	Barkly	7839682
 AU.03.70620	Central Desert	Central Desert	7839685
 AU.02.10250	Ballina	Ballina	7839686
 AU.02.10300	Balranald	Balranald	7839687
-AU.02.10470	Bathurst Regional	Bathurst Regional	7839689
-AU.02.17420	The Hills Shire	The Hills Shire	7839690
+AU.02.10470	Bathurst	Bathurst	7839689
+AU.02.17420	The Hills	The Hills	7839690
 AU.02.10550	Bega Valley	Bega Valley	7839691
 AU.02.10600	Bellingen	Bellingen	7839692
 AU.02.10650	Berrigan	Berrigan	7839693
@@ -1810,7 +1810,6 @@ AU.02.10750	Blacktown	Blacktown	7839694
 AU.02.10800	Bland	Bland	7839695
 AU.02.10850	Blayney	Blayney	7839696
 AU.02.10950	Bogan	Bogan	7839697
-AU.02.11100	Botany Bay	Botany Bay	7839700
 AU.02.11150	Bourke	Bourke	7839701
 AU.02.11200	Brewarrina	Brewarrina	7839702
 AU.02.11300	Burwood	Burwood	7839703
@@ -1827,7 +1826,7 @@ AU.02.12000	Coolamon	Coolamon	7839715
 AU.02.12150	Coonamble	Coonamble	7839717
 AU.02.12350	Cowra	Cowra	7839720
 AU.02.13450	Griffith	Griffith	7839723
-AU.02.13510	Gundagai	Gundagai	7839724
+AU.02.13510	Cootamundra-Gundagai	Cootamundra-Gundagai	7839724
 AU.02.13550	Gunnedah	Gunnedah	7839725
 AU.02.13660	Gwydir	Gwydir	7839727
 AU.02.13800	Hawkesbury	Hawkesbury	7839729
@@ -1846,7 +1845,7 @@ AU.02.14870	Lithgow	Lithgow	7839746
 AU.02.14900	Liverpool	Liverpool	7839747
 AU.02.14920	Liverpool Plains	Liverpool Plains	7839748
 AU.02.14950	Lockhart	Lockhart	7839749
-AU.02.15270	Mid-Western Regional	Mid-Western Regional	7839751
+AU.02.15270	Mid-Western	Mid-Western	7839751
 AU.02.15300	Moree Plains	Moree Plains	7839752
 AU.02.15350	Mosman	Mosman	7839753
 AU.02.15650	Muswellbrook	Muswellbrook	7839754
@@ -1860,18 +1859,17 @@ AU.02.16200	Parkes	Parkes	7839762
 AU.02.16260	Parramatta	Parramatta	7839763
 AU.02.16380	Port Macquarie-Hastings	Port Macquarie-Hastings	7839765
 AU.02.16610	Richmond Valley	Richmond Valley	7839767
-AU.02.16650	City of Rockdale	City of Rockdale	7839768
 AU.02.16700	Ryde	Ryde	7839769
 AU.02.16900	Shellharbour	Shellharbour	7839770
 AU.02.17000	Singleton	Singleton	7839771
 AU.02.17100	Strathfield	Strathfield	7839773
-AU.02.17150	Sutherland Shire	Sutherland Shire	7839774
-AU.02.17640	Upper Lachlan Shire	Upper Lachlan Shire	7839775
+AU.02.17150	Sutherland	Sutherland	7839774
+AU.02.17640	Upper Lachlan	Upper Lachlan	7839775
 AU.02.17650	Uralla	Uralla	7839776
 AU.02.17750	Wagga Wagga	Wagga Wagga	7839778
 AU.02.17850	Walcha	Walcha	7839780
 AU.02.17900	Walgett	Walgett	7839781
-AU.02.18020	Warrumbungle Shire	Warrumbungle Shire	7839783
+AU.02.18020	Warrumbungle	Warrumbungle	7839783
 AU.02.18050	Waverley	Waverley	7839784
 AU.02.18100	Weddin	Weddin	7839785
 AU.02.18200	Wentworth	Wentworth	7839787
@@ -1882,9 +1880,9 @@ AU.02.18450	Wollongong	Wollongong	7839791
 AU.02.18500	Woollahra	Woollahra	7839792
 AU.02.18710	Yass Valley	Yass Valley	7839793
 AU.07.23350	Indigo	Indigo	7839795
-AU.07.23430	Kingston	Kingston	7839796
+AU.07.23430	Kingston (Vic.)	Kingston (Vic.)	7839796
 AU.07.23670	Knox	Knox	7839797
-AU.07.23810	Latrobe	Latrobe	7839798
+AU.07.23810	Latrobe (Vic.)	Latrobe (Vic.)	7839798
 AU.07.23940	Loddon	Loddon	7839799
 AU.07.24130	Macedon Ranges	Macedon Ranges	7839800
 AU.07.24210	Manningham	Manningham	7839801
@@ -1898,7 +1896,7 @@ AU.07.24900	Moira	Moira	7839808
 AU.07.24970	Monash	Monash	7839809
 AU.07.25060	Moonee Valley	Moonee Valley	7839810
 AU.07.25150	Moorabool	Moorabool	7839811
-AU.07.25250	Moreland	Moreland	7839812
+AU.07.25250	Merri-bek	Merri-bek	7839812
 AU.07.25340	Mornington Peninsula	Mornington Peninsula	7839813
 AU.07.25430	Mount Alexander	Mount Alexander	7839814
 AU.07.25490	Moyne	Moyne	7839815
@@ -1949,18 +1947,18 @@ AU.08.59360	Yilgarn	Yilgarn	7839859
 AU.08.59370	York	York	7839860
 AU.06.64810	Sorell	Sorell	7839861
 AU.06.65010	Southern Midlands	Southern Midlands	7839862
-AU.06.65210	Tasman Peninsula	Tasman Peninsula	7839863
-AU.02.17040	Snowy Monaro Regional	Snowy Monaro Regional	12047262
+AU.06.65210	Tasman	Tasman	7839863
+AU.02.17040	Snowy Monaro	Snowy Monaro	12047262
 AU.04.32810	Douglas	Douglas	12047263
 AU.08.54310	Karratha	Karratha	12047264
-AU.02.16490	Queanbeyan-Palerang Regional	Queanbeyan-Palerang Regional	12047265
+AU.02.16490	Queanbeyan-Palerang	Queanbeyan-Palerang	12047265
 AU.04.34880	Mareeba	Mareeba	12047266
 AU.04.35740	Noosa	Noosa	12047267
 AU.04.36370	Rockhampton	Rockhampton	12047268
 AU.04.36820	Tablelands	Tablelands	12047269
-AU.02.10130	Armidale Regional	Armidale Regional	12047270
+AU.02.10130	Armidale	Armidale	12047270
 AU.02.17080	Snowy Valleys	Snowy Valleys	12047271
-AU.02.18230	Western Plains Regional	Western Plains Regional	12047272
+AU.02.18230	Dubbo	Dubbo	12047272
 AU.08.53800	Greater Geraldton	Greater Geraldton	12047273
 AU.02.13910	Hilltops	Hilltops	12047274
 AU.02.14170	Inner West	Inner West	12047275
@@ -1969,13 +1967,16 @@ AU.02.15520	Murray River	Murray River	12047277
 AU.02.15560	Murrumbidgee	Murrumbidgee	12047278
 AU.02.15990	Northern Beaches	Northern Beaches	12047279
 AU.02.11570	Canterbury-Bankstown	Canterbury-Bankstown	12047280
-AU.02.11650	Central Coast	Central Coast	12047281
+AU.02.11650	Central Coast (NSW)	Central Coast (NSW)	12047281
 AU.02.12380	Cumberland	Cumberland	12047282
 AU.02.12730	Edward River	Edward River	12047283
 AU.02.12870	Federation	Federation	12047284
 AU.02.12930	Georges River	Georges River	12047285
 AU.04.34530	Livingstone	Livingstone	12047286
 AU.03.74680	West Daly	West Daly	12047287
+AU.02.10500	Bayside (NSW)	Bayside (NSW)	13589357
+AU.03.71150	Darwin Waterfront Precinct	Darwin Waterfront Precinct	13589358
+AU.03.71700	Groote Archipelago	Groote Archipelago	13589359
 AX.213.941	Vårdö	Vardoe	632425
 AX.212.771	Sund	Sund	635817
 AX.213.766	Sottunga	Sottunga	636159
@@ -14769,13 +14770,13 @@ ET.52.11750833	Nogob	Nogob	11750833
 ET.52.11750835	Korahe	Korahe	11750835
 ET.52.11750836	Shabelle	Shabelle	11750836
 ET.50.11750838	Harari	Harari	11750838
-ET.44.11750840	Kolfe Keranyo	Kolfe Keranyo	11750840
+ET.44.11750840	Kolife Keraniyo	Kolife Keraniyo	11750840
 ET.44.11750841	Akaki Kaliti	Akaki Kaliti	11750841
-ET.44.11750842	Nefas Silk Lafto	Nefas Silk Lafto	11750842
+ET.44.11750842	Nifas Silk Lafto	Nifas Silk Lafto	11750842
 ET.44.11750843	Bole	Bole	11750843
 ET.44.11750844	Yeka	Yeka	11750844
 ET.44.11750845	Kirkos	Kirkos	11750845
-ET.44.11750846	Gulele	Gulele	11750846
+ET.44.11750846	Gullele	Gullele	11750846
 ET.44.11750847	Arada	Arada	11750847
 ET.44.11750848	Addis Ketema	Addis Ketema	11750848
 ET.44.11750849	Lideta	Lideta	11750849
@@ -14793,6 +14794,7 @@ ET.51.13439552	Borena	Borena	13439552
 ET.52.13439553	Jarar	Jarar	13439553
 ET.52.13439554	Afder	Afder	13439554
 ET.52.13439555	Liben	Liben	13439555
+ET.44.13587203	Lemi Kura Sub-City	Lemi Kura Sub-City	13587203
 FI.15.153	Sydösterbotten	Sydosterbotten	9610576
 FI.02.021	Åboland-Turunmaa	Aboland-Turunmaa	9610642
 FI.02.022	Salo	Salo	9610643
@@ -21753,7 +21755,7 @@ KP.12.1872260	Pot’onggang-guyŏk	Pot'onggang-guyok	1872260
 KP.09.1872294	Pŏptong-gun	Poptong-gun	1872294
 KP.07.1872337	Pongsan-gun	Pongsan-gun	1872337
 KP.11.1872626	P’ihyŏn-gun	P'ihyon-gun	1872626
-KP.07.1872688	P’anmun-gun	P'anmun-gun	1872688
+KP.19.1872688	P’anmun	P'anmun	1872688
 KP.09.1872704	P’an’gyo-gun	P'an'gyo-gun	1872704
 KP.11.1872819	Pakch’ŏn	Pakch'on	1872819
 KP.06.1873016	Paech’ŏn-gun	Paech'on-gun	1873016
@@ -38867,7 +38869,6 @@ SH.02.12746833	Sandy Bay	Sandy Bay	12746833
 SH.02.12746834	Saint Paul's	Saint Paul's	12746834
 SI.09.3196350	Rudnik District	Rudnik District	3196350
 SI.71.3196352	Šiška District	Siska District	3196352
-SI.61.3196355	Opština Ljubljana-Moste-Polje	Opstina Ljubljana-Moste-Polje	3196355
 SI.61.3196356	Opština Ljubljana-Center	Opstina Ljubljana-Center	3196356
 SI.61.3196357	Bežigrad District	Bezigrad District	3196357
 SI.M8.9794374	Črnuče District	Crnuce District	9794374
@@ -38881,6 +38882,8 @@ SI.61.9794381	Šentvid District	Sentvid District	9794381
 SI.61.9794382	Šmarna Gora District	Smarna Gora District	9794382
 SI.61.9794384	Trnovo District	Trnovo District	9794384
 SI.61.9794386	Vič District	Vic District	9794386
+SI.61.13589581	Moste District	Moste District	13589581
+SI.61.13589613	Polje District	Polje District	13589613
 SJ.22.2211	Jan Mayen	Jan Mayen	7535695
 SJ.21.2111	Spitsbergen	Spitsbergen	7535696
 SJ.21.2131	Hopen	Hopen	7535697
@@ -46882,7 +46885,10 @@ VN.82.817	Thị xã Cai Lậy	Thi xa Cai Lay	9113513
 VN.82.825	Huyện Tân Phú Đông	Huyen Tan Phu GJong	9113514
 VN.91.913	Huyện U Minh Thượng	Huyen U Minh Thuong	9280591
 VN.82.868	Thị Xã Hồng Ngự	Thi Xa Hong Ngu	9289553
+VN.82.9289604	Xã Mỹ Thọ	Xa My Tho	9289604
+VN.82.9289614	Xã Tân Khánh Trung	Xa Tan Khanh Trung	9289614
 VN.82.8714525	Xã Lấp Vò	Xa Lap Vo	9289615
+VN.82.9289619	Xã Phong Hòa	Xa Phong Hoa	9289619
 VN.82.9289623	Xã Tân Nhuận Đông	Xa Tan Nhuan GJong	9289623
 VN.82.9289624	Xã Phú Hựu	Xa Phu Huu	9289624
 VN.86.863	Huyện Bình Tân	Huyen Binh Tan	9290449
@@ -46925,6 +46931,7 @@ VN.01.021	Quảng trường Ba Đình	Quang truong Ba GJinh	11497491
 VN.92.942	Huyện Châu Thành	Huyen Chau Thanh	11497492
 VN.51.618	Huyện Ia H'Drai	Huyen Ia H'Drai	11497493
 VN.11.103	Huyện Nậm Pồ	Huyen Nam Po	11497494
+VN.82.12166264	Xã Hòa Long	Xa Hoa Long	12166264
 WF.98613.5	Hahake	Hahake	12041969
 WF.98613.6	Hihifo	Hihifo	12041970
 WF.98613.7	Mua	Mua	12041971
