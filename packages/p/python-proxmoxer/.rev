@@ -45,4 +45,14 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1284624</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>680a03dfb0a0d29ba6d5d83c5ce1ca5a</srcmd5>
+    <version>2.3.0</version>
+    <time>1772910591</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1336677 from ojkastl_buildservice
+
+update to 2.3.0</comment>
+    <requestid>1337381</requestid>
+  </revision>
 </revisionlist>

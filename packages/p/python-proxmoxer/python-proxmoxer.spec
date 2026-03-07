@@ -1,7 +1,7 @@
 #
 # spec file for package python-proxmoxer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-proxmoxer
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Python Wrapper for the Proxmox 2x API (HTTP and SSH)
 License:        MIT
 URL:            https://github.com/proxmoxer/proxmoxer/
 # the Pypi tarball does not contain the tests directory
 Source:         proxmoxer-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 05 07:56:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.3.0:
+  * Mark supported Python as 3.10-3.14
+  * Only decode response as JSON if call was successful (#204)
+  * Add ability to pass proxy configuration to https backend (#206)
+  * Update 2FA Mechanism (#158)
+  * Update testing to python 3.10 - 3.13 (#214)
+  * Add test for `pvesh` JSON preceded by non-JSON.
+  * Add workaround for broken `pvesh` output.
+  * Adjust tests for responses==0.25.5 changes
+  * Add exit_code to Response from command_base and ResourceException
+
+-------------------------------------------------------------------
 Wed Jun 11 05:49:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
