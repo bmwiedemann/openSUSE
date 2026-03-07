@@ -27,7 +27,7 @@
 %endif
 
 Name:           yt-dlp
-Version:        2026.02.21
+Version:        2026.03.03
 %define ejsver  0.5.0
 Release:        0
 Summary:        Enhanced fork of youtube-dl, a video site downloader for offline watching
