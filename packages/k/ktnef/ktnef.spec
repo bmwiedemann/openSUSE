@@ -18,11 +18,11 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.2
+%define kpim6_version 6.6.3
 
 %bcond_without released
 Name:           ktnef
-Version:        25.12.2
+Version:        25.12.3
 Release:        0
 Summary:        TNEF support
 License:        LGPL-2.1-or-later
