@@ -196,4 +196,13 @@
   * Clarified documentation when importing with import_id_fields</comment>
     <requestid>1322773</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9eb08f815a2589ebb4f14be0e2132259</srcmd5>
+    <version>4.4.0</version>
+    <time>1772910557</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.4.0:
+  * Added CachedForeignKeyWidget (2142)</comment>
+    <requestid>1337351</requestid>
+  </revision>
 </revisionlist>
