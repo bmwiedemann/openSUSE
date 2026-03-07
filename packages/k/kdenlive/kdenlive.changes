@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Mar  3 09:56:41 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.3/
+- Changes since 25.12.2:
+  * Fix dragging audio clips from clip monitor button
+  * Fix Whisper plugin install on Python 3.14
+  * When hiding a dockwidget with hidden title bar, ensure freed space is reused
+  * Correctly handle shortcuts with Shift modifier when in fullscreen mode (kde#516326)
+  * Fix possible crash un curve editor
+  * Fix mix not invalidating preview on change
+  * Shutdown after rendering: don't shutdown after abort, show prompt before shutting down on KDE (kde#513510)
+  * Kdenlive Settings: fix apply button disabled after changing audio rec device
+  * Fix import of clips with multiple video streams
+  * Fix small mem leak in Render Widget
+  * Fix insertion of multistream clips
+  * Fix timeline preview invalidates full track when adding clip BUG: 514541 (kde#514541)
+  * Never raise the effect stack on item selection if Effect Stack is docked with Timeline (kde#514547)
+  * Fix resize Item start in ripple mode kde#516099)
+  * Fix ripple moving playhead (kde#516098)
+  * Moved avfilter.gradfun to Image Adjustment category
+  * backport avfilter_gradfun fix
+  * Fix shortcut conflict with extract action (kde#516750)
+  * Make cppcheck happy
+  * Ensure the track audio levels are always checked after the other track effects (kde#441452)
+  * Fix audio scrubbing when Pause on Seek is disabled (kde#509667)
+  * Refactor disabling clip, fixes audio stream lost on disable/enable (kde#474139)
+  * Ensure no audio frame stays in the queue when switching clip in Clip Monitor
+  * Don't scroll up on bin drag when entering timeline (kde#439323)
+  * Fix incorrect audio tracks count when timeline preview is enabled, breaking copy-paste (kde#515124)
+  * Fix missing variable in split screen overlay
+  * Grouping menu items logically
+  * Add Disable Timeline Effects function to timeline hamburger menu
+  * Fix rotoscoping right click to close shape
+  * Try to fix image position on MacOS in fixed size mode
+
+-------------------------------------------------------------------
 Tue Feb  3 10:05:34 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.2
