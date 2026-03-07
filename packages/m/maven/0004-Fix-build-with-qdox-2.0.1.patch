@@ -1,4 +1,4 @@
-From ecf07ac5b51f753fec95f2102ce8ea53d39846a8 Mon Sep 17 00:00:00 2001
+From 60726a6deacf106ebce36de5a19ec19c68739501 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
 Date: Tue, 2 May 2023 18:12:26 +0200
 Subject: [PATCH 4/5] Fix build with qdox-2.0.1
@@ -152,5 +152,5 @@ index 025800698c..e3d1156bd5 100644
 +    void register(MavenProject project, Key cacheKey, CacheRecord rcrd);
  }
 -- 
-2.52.0
+2.53.0
 

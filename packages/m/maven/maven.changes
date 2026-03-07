@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Mar  6 19:16:43 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.9.13
+  * Bug Fixes
+    + Bug: SecDispatcher is managed by legacy Plexus DI
+    + [3.9.x] MavenPluginJavaPrerequisiteChecker: Handle 8/1.8
+      Java version in ranges as well
+  * Maintenance
+    + Update Maven plugin versions in default-bindings.xml
+    + Migrate to JUnit 5 - avoid using TestCase
+  * Dependency updates
+    + Maven Resolver 1.9.27
+    + Bump resolverVersion from 1.9.25 to 1.9.26
+    + Bump version.sisu-maven-plugin from 0.9.0.M4 to 1.0.0
+    + Bump actions/cache from 5.0.0 to 5.0.3
+    + Bump org.apache.maven:maven-parent from 45 to 47
+    + Bump actions/checkout from 6.0.1 to 6.0.2
+    + Bump actions/setup-java from 5.1.0 to 5.2.0
+    + Bump org.codehaus.mojo:animal-sniffer-maven-plugin from 1.26
+      to 1.27
+    + Bump org.codehaus.mojo:buildnumber-maven-plugin from 3.2.1
+      to 3.3.0
+    + Bump org.codehaus.plexus:plexus-testing from 2.0.2 to 2.1.0
+    + Bump org.ow2.asm:asm from 9.9 to 9.9.1
+    + Bump actions/upload-artifact from 5.0.0 to 6.0.0
+    + Bump actions/download-artifact from 6.0.0 to 7.0.0
+- Modified patches:
+  * 0001-Adapt-mvn-script.patch
+  * 0002-Invoke-logback-via-reflection.patch
+  * 0003-Remove-dependency-on-powermock.patch
+  * 0004-Fix-build-with-qdox-2.0.1.patch
+  * 0005-Reproducible-maven.build.timestamp.patch
+    + rediff
+
+-------------------------------------------------------------------
 Thu Dec 18 05:38:34 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Specify required maven-resolver version since the

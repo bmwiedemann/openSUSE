@@ -1,4 +1,4 @@
-From 2b3b2007375d73aec09cc0687392cdeaac938a21 Mon Sep 17 00:00:00 2001
+From e9df9156e0953b04e00c191eb7faaa9333a8f71d Mon Sep 17 00:00:00 2001
 From: Michael Simacek <msimacek@redhat.com>
 Date: Wed, 1 Feb 2017 14:54:26 +0100
 Subject: [PATCH 1/5] Adapt mvn script
@@ -65,5 +65,5 @@ index 47dc7d7f4e..01632abd29 100755
  
  # For Cygwin, switch paths to Windows format before running java
 -- 
-2.52.0
+2.53.0
 

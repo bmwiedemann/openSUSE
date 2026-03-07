@@ -1,29 +1,30 @@
-From c8e2ec01fd4080225ef54cc394b15d14a4d54ff4 Mon Sep 17 00:00:00 2001
+From 8ea520fbd09c890a75e82b3d614e21c4fbbecbe6 Mon Sep 17 00:00:00 2001
 From: Marian Koncek <mkoncek@redhat.com>
 Date: Thu, 5 Sep 2019 15:21:04 +0200
 Subject: [PATCH 3/5] Remove dependency on powermock
 
 ---
- .../StringSearchModelInterpolatorTest.java    | 59 -------------------
- 1 file changed, 59 deletions(-)
+ .../StringSearchModelInterpolatorTest.java    | 62 -------------------
+ 1 file changed, 62 deletions(-)
 
 diff --git a/maven-model-builder/src/test/java/org/apache/maven/model/interpolation/StringSearchModelInterpolatorTest.java b/maven-model-builder/src/test/java/org/apache/maven/model/interpolation/StringSearchModelInterpolatorTest.java
-index 9bfd685101..d8c51e2fdd 100644
+index 039c0ee2a9..f15cb2b537 100644
 --- a/maven-model-builder/src/test/java/org/apache/maven/model/interpolation/StringSearchModelInterpolatorTest.java
 +++ b/maven-model-builder/src/test/java/org/apache/maven/model/interpolation/StringSearchModelInterpolatorTest.java
-@@ -40,8 +40,6 @@
- import static org.hamcrest.CoreMatchers.anyOf;
- import static org.hamcrest.CoreMatchers.is;
- import static org.junit.Assert.assertThat;
+@@ -44,8 +44,6 @@
+ import static org.hamcrest.MatcherAssert.assertThat;
+ import static org.junit.jupiter.api.Assertions.assertEquals;
+ import static org.junit.jupiter.api.Assertions.assertNotNull;
 -import static org.powermock.reflect.Whitebox.getField;
 -import static org.powermock.reflect.Whitebox.getInternalState;
  
  /**
   * @author jdcasey
-@@ -349,63 +347,6 @@ public void testInterpolateObjectWithPomFile() throws Exception {
+@@ -364,66 +362,6 @@ public void testInterpolateObjectWithPomFile() throws Exception {
                          is(System.getProperty("user.dir") + File.separator + '.' + File.separator + "target"))));
      }
  
+-    @Test
 -    public void testNotInterpolateObjectWithFile() throws Exception {
 -        Model model = new Model();
 -
@@ -51,10 +52,11 @@ index 9bfd685101..d8c51e2fdd 100644
 -        assertNotNull(objCacheItem);
 -        assertNotNull(fileCacheItem);
 -
--        assertThat(((Object[]) getInternalState(objCacheItem, "fields")).length, is(0));
--        assertThat(((Object[]) getInternalState(fileCacheItem, "fields")).length, is(0));
+-        assertEquals(0, ((Object[]) getInternalState(objCacheItem, "fields")).length);
+-        assertEquals(0, ((Object[]) getInternalState(fileCacheItem, "fields")).length);
 -    }
 -
+-    @Test
 -    public void testNotInterpolateFile() throws Exception {
 -        Model model = new Model();
 -
@@ -78,12 +80,13 @@ index 9bfd685101..d8c51e2fdd 100644
 -
 -        assertNotNull(fileCacheItem);
 -
--        assertThat(((Object[]) getInternalState(fileCacheItem, "fields")).length, is(0));
+-        assertEquals(0, ((Object[]) getInternalState(fileCacheItem, "fields")).length);
 -    }
 -
+-    @Test
      public void testConcurrentInterpolation() throws Exception {
          final Model model = new Model();
  
 -- 
-2.52.0
+2.53.0
 

@@ -1,4 +1,4 @@
-From 0d5ede756650a0e4f01183723a9185b711ee4ecf Mon Sep 17 00:00:00 2001
+From 8ca6cbaaac390e033b9269ac081bc48ce23c99c0 Mon Sep 17 00:00:00 2001
 From: Emmanuel Bourg <ebourg@apache.org>
 Date: Mon, 4 Sep 2023 17:10:19 +0200
 Subject: [PATCH 5/5] Reproducible maven.build.timestamp
@@ -61,5 +61,5 @@ index e1721334f4..2ea2ce3815 100644
          dateFormat.setTimeZone(DEFAULT_BUILD_TIME_ZONE);
          formattedTimestamp = dateFormat.format(time);
 -- 
-2.52.0
+2.53.0
 

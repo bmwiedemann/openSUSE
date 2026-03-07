@@ -264,4 +264,12 @@ put into adi:2</comment>
     <comment>Specify required resolver version</comment>
     <requestid>1323432</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c419bc0da52864c468ac017b97460599</srcmd5>
+    <version>3.9.13</version>
+    <time>1772910583</time>
+    <user>dimstar_suse</user>
+    <comment>3.9.13</comment>
+    <requestid>1337374</requestid>
+  </revision>
 </revisionlist>
