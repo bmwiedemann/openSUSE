@@ -312,4 +312,26 @@
   + Support protobuf 6+ and Click 8.2+ (forwarded request 1309581 from iznogood)</comment>
     <requestid>1309938</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>31263e8e8e6c71b7fd0ea259f0c36866</srcmd5>
+    <version>2.7.0</version>
+    <time>1772910619</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7.0:
+  + Support defining source provenance attributes in project.conf
+  + Allow multi-source plugins to provide source provenance info
+    per source
+  + Don't require runtime deps when building projects with `--deps
+    none`
+  + Add `--artifact-remote` and `--ignore-project-artifact-remotes`
+    options to `bst artifact show`
+  + Fix build of projects with multiple link elements with the same
+    target
+  + Fix filesystem write access in `bst shell` with a cached build
+    tree
+  + Artifact cache fixes to support buildgrid-asset as cache server
+  + Fix pip plugins installed in editable mode
+  + Drop support for Python 3.9 (forwarded request 1337344 from iznogood)</comment>
+    <requestid>1337431</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar  6 14:56:18 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.7.0:
+  + Support defining source provenance attributes in project.conf
+  + Allow multi-source plugins to provide source provenance info
+    per source
+  + Don't require runtime deps when building projects with `--deps
+    none`
+  + Add `--artifact-remote` and `--ignore-project-artifact-remotes`
+    options to `bst artifact show`
+  + Fix build of projects with multiple link elements with the same
+    target
+  + Fix filesystem write access in `bst shell` with a cached build
+    tree
+  + Artifact cache fixes to support buildgrid-asset as cache server
+  + Fix pip plugins installed in editable mode
+  + Drop support for Python 3.9
+
+-------------------------------------------------------------------
 Tue Oct  7 11:15:34 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.6.0:
