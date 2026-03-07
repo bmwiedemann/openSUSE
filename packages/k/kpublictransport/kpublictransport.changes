@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar  3 09:57:05 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.3/
+- Changes since 25.12.2:
+  * Update Transitous coverage data
+  * Make spike filtering less aggressive on low-resolution paths
+  * Fix elevators being shown on null island on the map
+  * Add support for the MOTIS v2.8 on-demand mode type
+  * Don't build OSM PBF reader on Android
+  * Update Transitous coverage data and BVG endpoint
+  * Propagate missing coordinates from adjacent journey sections
+  * Parse coordinate-named departure/arrival locations
+  * Silence unknown mode warnings on non-transit sections
+  * Support coordinate-based journey queries on the DB backend
+  * Refactor Hafas coordinate conversion
+
+-------------------------------------------------------------------
 Tue Feb  3 10:05:59 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.2
