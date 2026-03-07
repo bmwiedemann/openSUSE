@@ -87,4 +87,41 @@
     <comment></comment>
     <requestid>1310014</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a91541a915043408a1d6141b4155ffff</srcmd5>
+    <version>1.9.7</version>
+    <time>1772910553</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.7:
+  * discord:// improvements to ping= handling
+  * Bugzilla 2424601 resolved - no NotifyType enum leaking
+  * resolves reoccurring warning for GdkPixbuf
+  * Improved Matrix room handling
+  * Config YAML support for 'tags' (in addition to 'tag') in
+  * Improved response handling in
+  * Signal API support for &quot;text_mode=styled&quot; in
+  * :fire: Adapt appriseit.com as new documentation source in
+  * Improved documentation surrounding tagging in
+  * improved on notification manger customization in
+  * :rocket: 100% test coverage in
+- update to 1.9.6:
+  * NotificationAPI Support
+  * Brevo Support
+  * Updated RPM Spec file to fix rpmbuild errors on koji
+  * Added py.typed back into repository and Manifest
+  * fix(telegram): support `` blocks wrapped in `` for syntax
+    highlighting
+  * Apprise API payload bugfix
+  * Matrix room/alias accepted characters re-aligned - bugfix in
+  * fix parsing of USA callsigns--specifically different
+    prefix/suffix counts like 1x2 and 1x3 calls
+  * dot:// setup_url to align with other apprise ones in
+  * fixed handling of non-standard matrix:// ports
+  * Fix Reply-To header variable consistency
+  * increase of Pushover attachment size to 5MB in
+    https://github.com/caronc/apprise/pull/1427
+  * Added basic support for ntfy Actions
+  * feat(bark): Add 'call' parameter support to NotifyBark for</comment>
+    <requestid>1337352</requestid>
+  </revision>
 </revisionlist>
