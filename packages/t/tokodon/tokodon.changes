@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  3 09:57:29 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.3/
+- Changes since 25.12.2:
+  * Fix switching from a account that failed to login
+  * Fix for Editing AltText of media attachments during post edit. (kde#514304)
+
+-------------------------------------------------------------------
 Tue Feb  3 10:06:24 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.2
