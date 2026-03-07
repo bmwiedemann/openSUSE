@@ -279,4 +279,12 @@
     <comment>- Fix runtime dependency</comment>
     <requestid>1334257</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>153a4625dcbaa4b40fe238c1473f3802</srcmd5>
+    <version>25.12.3</version>
+    <time>1772910458</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 25.12.3</comment>
+    <requestid>1337070</requestid>
+  </revision>
 </revisionlist>
