@@ -7,6 +7,14 @@ log() {
 
 log "Starting X11 entrypoint script"
 
+# Start udevd for input device hotplug support
+log "Starting udevd for input device hotplug support"
+/usr/lib/systemd/systemd-udevd --daemon 2>/dev/null || udevd --daemon 2>/dev/null || log "Warning: Could not start udevd"
+
+# Trigger udev to populate /dev/input devices
+udevadm trigger --subsystem-match=input 2>/dev/null || true
+udevadm settle 2>/dev/null || true
+
 # Trap signals for graceful shutdown
 trap 'log "Received SIGTERM, initiating shutdown"; cleanup' SIGTERM
 trap 'log "Received SIGINT, initiating shutdown"; cleanup' SIGINT
@@ -15,6 +23,7 @@ trap 'log "Received SIGINT, initiating shutdown"; cleanup' SIGINT
 cleanup() {
     log "Cleaning up and stopping processes"
 
+    pkill -TERM -f "udevd" || true
     pkill -TERM -f "/usr/bin/Xorg" || true
     pkill -TERM -f icewm-session-lite || true
     pkill -TERM -f icewmbg || true
