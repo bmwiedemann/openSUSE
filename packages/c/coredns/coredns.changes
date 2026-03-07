@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Mar 07 15:16:57 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.14.2:
+  * plugin/reload: Allow disabling jitter with 0s
+  * bump deps
+  * plugin/forward: fix parsing error when handling TLS+IPv6 address
+  * plugin/loop: use crypto/rand for query name generation
+  * plugin: reorder rewrite before acl to prevent bypass
+  * fix(rewrite): fix cname target rewrite for CNAME chains
+  * fix(kubernetes): panic on empty ListenHosts
+  * chore: bump minimum Go version to 1.25
+  * feat(proxyproto): add proxy protocol support
+  * refactor(cache): modernize with generics
+  * Add metadata for response Type and Class to Log
+  * docs: clarify kubernetes auth docs
+  * fix: return SOA and NS records when queried for a record CNAMEd to origin
+
+- fixes bsc#1259320 CVE-2026-26017
+- fixes bsc#1259319 CVE-2026-26018
+
+-------------------------------------------------------------------
+Tue Jan 27 11:08:45 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- address more unstable unstable tests under aarch64 and s390x
+
+-------------------------------------------------------------------
 Tue Jan 27 08:35:27 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.14.1:

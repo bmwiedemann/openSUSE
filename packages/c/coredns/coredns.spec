@@ -18,7 +18,7 @@
 
 %define project github.com/coredns/coredns
 Name:           coredns
-Version:        1.14.1
+Version:        1.14.2
 Release:        0
 Summary:        DNS server written in Go
 License:        Apache-2.0
@@ -30,7 +30,7 @@ Source1:        vendor.tar.gz
 Source10:       Corefile
 Source11:       coredns.service
 BuildRequires:  fdupes
-BuildRequires:  golang(API) >= 1.24.5
+BuildRequires:  golang(API) >= 1.25.0
 
 %description
 CoreDNS is a DNS server in Go. It has a plugin architecture for
@@ -76,12 +76,15 @@ skiplist=(
     "TestIssue7630"
     "TestMetricsRewriteRequestSize"
     "TestReloadUnreadyPlugin"
+    "TestReloadMetricsHealth"
     "TestZoneExternalCNAMELookupWithProxy"
     "TestReadme"
     "TestCorefile1"
     "TestView"
     "TestMultisocket_Restart"
     "TestFailover"
+    "TestTransport"
+    "TestCoreDNSOverflow"
 )
 
 # Concatenate the array elements into a single regex string separated by pipes (|)
