@@ -71,4 +71,12 @@
     <comment>make catalina.sh %config(noreplace) (bsc#1253460)</comment>
     <requestid>1318493</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>84a4a19a0977da8342ca8a95fca0bdc2</srcmd5>
+    <version>11.0.18</version>
+    <time>1772910577</time>
+    <user>dimstar_suse</user>
+    <comment>11.0.18</comment>
+    <requestid>1337373</requestid>
+  </revision>
 </revisionlist>

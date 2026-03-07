@@ -1,4 +1,188 @@
 -------------------------------------------------------------------
+Fri Mar  6 13:31:28 UTC 2026 - Ricardo Mestre <ricardo.mestre@suse.com>
+
+- Update to Tomcat 11.0.18
+  - adapt tomcat-jdt.patch
+  * Fixed CVEs:
+    + CVE-2025-66614: client certificate verification bypass due to virtual
+      host mapping (bsc#1258371)
+    + CVE-2026-24733: improper input validation on HTTP/0.9 requests
+      (bsc#1258385)
+    + CVE-2026-24734: certificate revocation bypass due to incomplete OCSP
+      verification checks (bsc#1258387)
+  * Catalina
+    + Fix: 69932: Fix request end access log pattern regression, which would log
+      the start time of the request instead. (remm)
+    + Fix: 69623: Additional fix for the long standing regression that meant
+      that calls to ClassLoader.getResource().getContent() failed when made from
+      within a web application with resource caching enabled if the target
+      resource was packaged in a JAR file. (markt)
+    + Fix: Pull request #923: Avoid adding multiple CSRF tokens to a URL in the
+      CsrfPreventionFilter. (schultz)
+    + Fix: 69918: Ensure request parameters are correctly parsed for HTTP/2
+      requests when the content-length header is not set. (dsoumis)
+    + Update: Enable minimum and recommended Tomcat Native versions to be set
+      separately for Tomcat Native 1.x and 2.x. Update the minimum and
+      recommended versions for Tomcat Native 1.x to 1.3.4. Update the minimum
+      and recommended versions for Tomcat Native 2.x to 2.0.12. (markt)
+    + Add: Add a new ssoReauthenticationMode to the Tomcat provided
+      Authenticators that provides a per Authenticator override of the SSO Valve
+      requireReauthentication attribute. (markt)
+    + Fix: Ensure URL encoding errors in the Rewrite Valve trigger an exception
+      rather than silently using a replacement character. (markt)
+    + Fix: 69871: Increase log level to INFO for missing configuration for the
+      rewrite valve. (remm)
+    + Fix: Add log warnings for additional Host appBase suspicious values.
+      (remm)
+    + Fix: Remove hard dependency on tomcat-jni.jar for catalina.jar.
+      org.apache.catalina.Connector no longer requires
+      org.apache.tomcat.jni.AprStatus to be present. (markt)
+    + Add: Add the ability to use a custom function to generate the client
+      identifier in the CrawlerSessionManagerValve. This is only available
+      programmatically. Pull request #902 by Brian Matzon. (markt)
+    + Fix: Change the SSO reauthentication behaviour for SPNEGO authentication
+      so that a normal SPNEGO authentication is performed if the SSL Valve is
+      configured with reauthentication enabled. This is so that the delegated
+      credentials will be available to the web application. (markt)
+    + Fix: When generating the class path in the Loader, re-order the check on
+      individual class path components to avoid a potential
+      NullPointerException. Identified by Coverity Scan. (markt)
+    + Fix: Fix SSL socket factory configuration in the JNDI realm. Based on pull
+      request #915 by Joshua Rogers. (remm)
+    + Update: Add an attribute, digestInRfc3112Order, to
+      MessageDigestCredentialHandler to control the order in which the
+      credential and salt are digested. By default, the current, non-RFC 3112
+      compliant, order of salt then credential will be used. This default will
+      change in Tomcat 12 to the RFC 3112 compliant order of credential then
+      salt. (markt)
+  * Cluster
+    + Add: 62814: Document that human-readable names may be used for
+      mapSendOptions and align documentation with channelSendOptions. Based on
+      pull request #929 by archan0621. (markt)
+  * Clustering
+    + Fix: Correct a regression introduced in 11.0.11 that broke some clustering
+      configurations. (markt)
+  * Coyote
+    + Fix: 69936: Fix bug in previous fix for Tomcat Native crashes on shutdown
+      that triggered a significant memory leak. Patch provided by Wes. (markt)
+    + Fix: Prevent concurrent release of OpenSSLEngine resources and the
+      termination of the Tomcat Native library as it can cause crashes during
+      Tomcat shutdown. (markt)
+    + Fix: Improve warnings when setting ciphers lists in the FFM code,
+      mirroring the tomcat-native changes. (remm)
+    + Fix: 69910: Dereference TLS objects right after closing a socket to
+      improve memory efficiency. (remm)
+    + Fix: Relax the JSSE vs OpenSSL configuration style checks on SSLHostConfig
+      to reflect the existing implementation that allows one configuration style
+      to be used for the trust attributes and a different style for all the
+      other attributes. (markt)
+    + Fix: Better warning message when OpenSSLConf configuration elements are
+      used with a JSSE TLS implementation. (markt)
+    + Fix: When using OpenSSL via FFM, don't log a warning about missing CA
+      certificates unless CA certificates were configured and the configuration
+      failed. (markt)
+    + Add: For configuration consistency between OpenSSL and JSSE TLS
+      implementations, TLSv1.3 cipher suites included in the ciphers attribute
+      of an SSLHostConfig are now always ignored (previously they would be
+      ignored with OpenSSL implementations and used with JSSE implementations)
+      and a warning is logged that the cipher suite has been ignored. (markt)
+    + Add: Add the ciphersuite attribute to SSLHostConfig to configure the
+      TLSv1.3 cipher suites. (markt)
+    + Add: Add OCSP support to JSSE based TLS connectors and make the use of
+      OCSP configurable per connector for both JSSE and OpenSSL based TLS
+      implementations. Align the checks performed by OpenSSL with those
+      performed by JSSE. (markt)
+    + Add: Add support for soft failure of OCSP checks with soft failure support
+      disabled by default. (markt)
+    + Add: Add support for configuring the verification flags passed to
+      OCSP_basic_verify when using an OpenSSL based TLS implementation. (markt)
+    + Fix: Fix OpenSSL FFM code compatibility with LibreSSL versions below 3.5.
+      (remm)
+    + Fix: Don't log an incorrect certificate KeyStore location when creating a
+      TLS connector if the KeyStore instance has been set directly on the
+      connector. (markt)
+    + Fix: HTTP/0.9 only allows GET as the HTTP method. (remm)
+    + Add: Add strictSni attribute on the Connector to allow matching the
+      SSLHostConfig configuration associated with the SNI host name to the
+      SSLHostConfig configuration matched from the HTTP protocol host name. Non
+      matching configurations will cause the request to be rejected. The
+      attribute default value is true, enabling the matching. (remm)
+    + Fix: Graceful failure for OCSP on BoringSSL in the FFM code. (remm)
+    + Fix: 69866: Fix a memory leak when using a trust store with the OpenSSL
+      provider. Pull request #912 by aogburn. (markt)
+    + Fix: Fix potential crash on shutdown when a Connector depends on the
+      Tomcat Native library. (markt)
+    + Fix: Fix AJP message length check. Pull request #916 by Joshua Rogers.
+      (remm)
+  * Jasper
+    + Fix: 69333: Correct a regression in the previous fix for 69333 and ensure
+      that reuse() or release() is always called for a tag. (markt)
+    + Fix: 69877: Catch IllegalArgumentException when processing URIs when
+      creating the classpath to handle invalid URIs. (remm)
+    + Fix: Fix populating the classpath with the webapp classloader
+      repositories. (remm)
+    + Fix: 69862: Avoid NPE unwrapping Servlet exception which would hide some
+      exception details. Patch submitted by Eric Blanquer. (remm)
+  * Jdbc-pool
+    + Fix: 64083: If the underlying connection has been closed, don't add it to
+      the pool when it is returned. Pull request #235 by Alex Panchenko. (markt)
+  * Web applications
+    + Fix: Manager: Fix abrupt truncation of the HTML and JSON complete server
+      status output if one or more of the web applications failed to start.
+      (schultz)
+    + Add: Manager: Include web application state in the HTML and JSON complete
+      server status output. (markt)
+    + Add: Documentation: Expand the documentation to better explain when OCSP
+      is supported and when it is not. (markt)
+  * Websocket
+    + Fix: 69920: When attempting to write to a closed Writer or OutputStream
+      obtained from a WebSocket session, throw an IOException rather than an
+      IllegalStateExcpetion as required by Writer and strongly suggested by
+      OutputStream. (markt)
+  * Other
+    + Add: Add property "gpg.sign.files" to optionally disable release artefact
+      signing with GPG. (rjung)
+    + Add: Add test.silent property to suppress JUnit console output during test
+      execution. Useful for cleaner console output when running tests with
+      multiple threads. (csutherl)
+    + Update: Update the internal fork of Commons Pool to 2.13.1. (markt)
+    + Update: Update the internal fork of Commons DBCP to 2.14.0. (markt)
+    + Update: Update Commons Daemon to 1.5.1. (markt)
+    + Update: Update to the Eclipse JDT compiler 4.37. (markt)
+    + Update: Update ByteBuddy to 1.18.3. (markt)
+    + Update: Update UnboundID to 7.0.4. (markt)
+    + Update: Update Checkstyle to 12.3.1. (markt)
+    + Add: Improvements to French translations. (markt)
+    + Add: Improvements to Japanese translations provided by tak7iji. (markt)
+    + Add: Improvements to Chinese translations provided by Yang. vincent.h and
+      yong hu. (markt)
+    + Update: Update Tomcat Native to 2.0.12. (markt)
+    + Add: Add test profile system for selective test execution. Profiles can be
+      specified via -Dtest.profile=<name> to run specific test subsets without
+      using patterns directly. Profile patterns are defined in
+      test-profiles.properties. (csutherl)
+    + Update: Update file extension to media type mappings to align with the
+      current list used by the Apache Web Server (httpd). (markt)
+    + Update: Update the packaged version of the Tomcat Migration Tool for
+      Jakarta EE to 1.0.10. (markt)
+    + Update: Update Commons Daemon to 1.5.0. (markt)
+    + Update: Update Byte Buddy to 1.18.2. (markt)
+    + Update: Update Checkstyle to 12.2.0. (markt)
+    + Add: Improvements to Spanish translations provided by White Vogel. (markt)
+    + Add: Improvements to French translations. (remm)
+    + Add: Improvements to Japanese translations provided by tak7iji. (markt)
+    + Update: Update the internal fork of Apache Commons BCEL to 6.11.0. (markt)
+    + Update: Update to the Eclipse JDT compiler 4.37. (markt)
+    + Update: Update to Byte Buddy 1.17.8. (markt)
+    + Update: Update to Checkstyle 12.1.1. (markt)
+    + Update: Update to Jacoco 0.8.14. (markt)
+    + Update: Update to SpotBugs 4.9.8. (markt)
+    + Update: Update to JSign 7.4. (markt)
+    + Update: Update Maven Resolver Ant Tasks to 1.6.0. (rjung)
+    + Add: Improvements to French translations. (remm)
+    + Add: Improvements to Japanese translations provided by tak7iji. (markt)
+
+-------------------------------------------------------------------
 Tue Nov 18 18:41:24 UTC 2025 - Michele Bussolotto <michele.bussolotto@suse.com>
 
 - make catalina.sh %config(noreplace) (bsc#1253460) 
