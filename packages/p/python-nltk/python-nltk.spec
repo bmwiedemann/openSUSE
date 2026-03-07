@@ -19,7 +19,7 @@
 %define modname nltk
 %{?sle15_python_module_pythons}
 Name:           python-nltk
-Version:        3.9.1
+Version:        3.9.3
 Release:        0
 Summary:        Natural Language Toolkit
 License:        Apache-2.0
@@ -65,8 +65,6 @@ Source0:        nltk-%{version}.tar.xz
 ############################
 # Source1:        nltk_data.tar.xz
 Source99:       python-nltk.rpmlintrc
-# PATCH-FIX-UPSTREAM CVE-2025-14009.patch gh#nltk/nltk#3468
-Patch0:         CVE-2025-14009.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

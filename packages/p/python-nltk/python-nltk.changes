@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Mar  5 10:59:50 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.9.3 (CVE-2026-0847, bsc#1259232)
+  * Update download checksums to use SHA256 in built index
+  * Fix percentage escape in new-style string formatting
+  * replace shortened URLs using goo.gl
+  * Make Wordnet interoperable with various taggers and tagged corpora
+  * Fix saving PerceptronTagger
+  * Document how to reproduce old Wordnet studies
+  * properly initialize Portuguese corpus reader
+  * support for mixed rules conversion into Chomsky Normal Form
+  * only import tkinter if a GUI is needed
+  * issue #2112 with Corenlp
+  * new environment variable NLTK_DOWNLOADER_FORCE_INTERACTIVE_SHELL
+  * Lesk defaults to most frequent sense in case of ties
+  * Fix CVE-2025-14009: secure ZIP extraction in nltk.downloader
+  * Block path traversal/arbitrary reads in nltk.data for protocol-less refs
+  * Block path traversal/abs paths in corpus readers and FS pointers
+  * Validate external StanfordSegmenter JARs using SHA256
+  * Add optional sandbox enforcement for filestring()
+  * Maintenance: downloader/zipped models, CI/tooling updates
+- Drop merged CVE-2025-14009.patch
+
+-------------------------------------------------------------------
 Thu Feb 19 10:18:32 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - bsc#1258436, Fix: Secure ZIP extraction, CVE-2025-14009
