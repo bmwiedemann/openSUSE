@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  3 09:57:21 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.3/
+- Changes since 25.12.2:
+  * Fix bug 515470:  Kontact/Kmail doesn't render some plain text e-mails (kde#515470)
+- Add upstream fix (kde#516583, boo#1258719)
+  * 0001-Don-t-create-folders-in-tmp.patch
+
+-------------------------------------------------------------------
 Tue Feb  3 10:06:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.2
