@@ -1,0 +1,30 @@
+From 2658f070ae4ce26e9316510e57591a219e698ee1 Mon Sep 17 00:00:00 2001
+From: Vishnudatha Kanjur <kanjur@ibm.com>
+Date: Fri, 13 Feb 2026 14:01:24 +0100
+Subject: [PATCH] Fix mutex thread lock in drbg_uninstantiate function.
+
+This commit is to unlock the thread mutex in the drbg_uninstantiate function after the mechanism specific uninstantiate call.
+
+Signed-off-by: Vishnudatha Kanjur <kanjur@ibm.com>
+---
+ src/s390_drbg.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/s390_drbg.c b/src/s390_drbg.c
+index 798b59c7..7e75fa1f 100644
+--- a/src/s390_drbg.c
++++ b/src/s390_drbg.c
+@@ -364,12 +364,12 @@ int drbg_uninstantiate(ica_drbg_t **sh,
+ 	/* step 2 */
+ 	pthread_mutex_lock(&(*sh)->lock);
+ 	status = (*sh)->mech->uninstantiate(&(*sh)->ws, test_mode);
++	pthread_mutex_unlock(&(*sh)->lock);
+ 	if(status){
+ 		if(0 > status)
+ 			set_error_state((*sh)->mech, status);
+ 		return status;	/* return uninstantiate status */
+ 	}
+-	pthread_mutex_unlock(&(*sh)->lock);
+ 	pthread_mutex_destroy(&(*sh)->lock);
+ 	drbg_zmem(*sh, sizeof(ica_drbg_t));
+ 	if(test_mode)

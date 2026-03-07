@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar  6 10:04:14 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch for FIPS 140-3 project for SLES16.0 and SL Micro 6.2
+  * libica-Fix-mutex-thread-lock-in-drbg_uninstantiate-function.patch
+- Fix rpmlint buildroot error by moving __os_install_post override to the spec preamble.
+- Fix rpmlint macro-in-comment warnings by properly escaping commented macros.
+- Move unversioned libica.so from tools to libica4 subpackage to ensure openssl-ibmca 
+  can reliably load it via DSO_load() in minimal environments (bsc#952871).
+- Move legacy Obsoletes/Provides for older libica versions from tools to libica4.
+- Scope sysconfig fillup_prereq dependency explicitly to the tools subpackage.
+- Enforce strict %{version}-%{release} requirements for devel and devel-static subpackages.
+
+-------------------------------------------------------------------
 Wed Aug 20 09:30:10 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file(bsc#1246541)

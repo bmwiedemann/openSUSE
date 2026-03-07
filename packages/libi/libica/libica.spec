@@ -1,7 +1,7 @@
 #
 # spec file for package libica
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ Patch01:        libica-FIPS-make-it-possible-to-specify-fipshmac-binary.patch
 Patch02:        libica-sles15sp5-FIPS-hmac-key.patch
 ###
 Patch10:        libica-CONFIGURE-Make-the-OpenSSL-FIPS-config-file-name-configurable.patch
+Patch11:        libica-Fix-mutex-thread-lock-in-drbg_uninstantiate-function.patch
 ###
 
 BuildRequires:  autoconf
@@ -48,8 +49,9 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  openssl
 BuildRequires:  openssl-devel
-Requires(post): %fillup_prereq
 ExclusiveArch:  s390 s390x
+
+%global __os_install_post %{__os_install_post} fipshmac %{buildroot}%{_libdir}/*.so.%{version}
 
 %description
 This package contains the interface library routines used by IBM
@@ -60,15 +62,6 @@ modules to interface with the IBM eServer Cryptographic Accelerator
 Summary:        Library interface for the IBM Cryptographic Accelerator
 Group:          System/Libraries
 Recommends:     libica-tools
-
-%description -n libica4
-This package contains the interface library routines used by IBM
-modules to interface with the IBM eServer Cryptographic Accelerator
-(ICA).
-
-%package tools
-Summary:        Utilities for the IBM Cryptographic Accelerator
-Group:          Hardware/Other
 Obsoletes:      libica < %{version}-%{release}
 Obsoletes:      libica-2_3_0 < %{version}-%{release}
 Obsoletes:      libica2 < %{version}-%{release}
@@ -79,6 +72,16 @@ Provides:       libica-plugin = %{version}-%{release}
 Provides:       libica2 = %{version}-%{release}
 Provides:       libica3 = %{version}-%{release}
 
+%description -n libica4
+This package contains the interface library routines used by IBM
+modules to interface with the IBM eServer Cryptographic Accelerator
+(ICA).
+
+%package tools
+Summary:        Utilities for the IBM Cryptographic Accelerator
+Group:          Hardware/Other
+Requires(post): %fillup_prereq
+
 %description tools
 This package contains command-line utilities to inspect the IBM
 eServer Cryptographic Accelerator (ICA).
@@ -86,7 +89,7 @@ eServer Cryptographic Accelerator (ICA).
 %package        devel
 Summary:        Development files for the ICA device driver interface library
 Group:          Development/Libraries/C and C++
-Requires:       libica4 = %{version}
+Requires:       libica4 = %{version}-%{release}
 Requires:       libopenssl-devel
 Obsoletes:      libica-2_1_0-devel < %{version}-%{release}
 Provides:       libica-2_1_0-devel = %{version}-%{release}
@@ -104,7 +107,7 @@ using the libica library.
 %package        devel-static
 Summary:        Static Development files for the ICA device driver interface library
 Group:          Development/Libraries/C and C++
-Requires:       libica-devel
+Requires:       %{name}-devel = %{version}-%{release}
 
 %description devel-static
 This package contains the interface library routines used by IBM
@@ -127,8 +130,6 @@ autoreconf --force --install
 
 %define major %(echo %{version} | sed -e 's/[.].*//')
 
-%{expand:%%global __os_install_post {%__os_install_post fipshmac %{buildroot}/%{_libdir}/*.so.%{version} }}
-
 %install
 %make_install FIPSHMAC=fipshmac
 make fipsinstall FIPSHMAC=fipshmac DESTDIR=%{buildroot}
@@ -140,7 +141,7 @@ install -D %{SOURCE2} %{buildroot}%{_fillupdir}/sysconfig.z90crypt
 install -D %{SOURCE3} %{buildroot}%{_prefix}/lib/systemd/scripts/z90crypt
 install -D -m 644 %{SOURCE4} %{buildroot}%{_prefix}/lib/systemd/system/z90crypt.service
 # It is installed 444 and then the __os_install_post cannot update it once the debuginfo is stripped
-# We need it early because there is %{buildroot}/%{_libdir}/.*.so.%{major}.hmac symlink pointing at it
+# We need it early because there is %%{buildroot}/%%{_libdir}/.*.so.%%{major}.hmac symlink pointing at it
 # and the dangling symlink test would fail
 chmod 644 %{buildroot}/%{_libdir}/.*.so.%{version}.hmac
 
@@ -180,9 +181,11 @@ rmdir %{buildroot}/%{_sysconfdir}/libica
 %{_libdir}/libica-cex.so.%{major}
 %{_libdir}/.libica-cex.so.%{version}.hmac
 %{_libdir}/.libica-cex.so.%{major}.hmac
+# Moved to here, otherwise openssl-ibmca does not find it via DSO_load() bsc#952871
+%{_libdir}/libica.so
 ### Enable FIPS
-### %dir %{_sysconfdir}/libica
-### %{_sysconfdir}/libica/openssl3-fips.cnf
+### %%dir %%{_sysconfdir}/libica
+### %%{_sysconfdir}/libica/openssl3-fips.cnf
 ###
 
 %files tools
@@ -199,8 +202,6 @@ rmdir %{buildroot}/%{_sysconfdir}/libica
 %dir %{_prefix}/lib/systemd/scripts
 %{_prefix}/lib/systemd/scripts/z90crypt
 %{_prefix}/lib/systemd/system/z90crypt.service
-# Must be in here, otherwise openssl-ibmca does not find it via DSO_load() bsc#952871
-%{_libdir}/libica.so
 
 %files devel
 %{_includedir}/ica_api.h
