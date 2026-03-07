@@ -75,6 +75,10 @@ Source26:       http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.5.8-ppc
 %define sbcl_arch riscv64
 %define with_clisp 1
 %endif
+%ifarch loongarch64
+%define sbcl_arch loongarch64
+%define with_clisp 1
+%endif
 %if 0%{?with_clisp}
 BuildRequires:  clisp
 %endif
