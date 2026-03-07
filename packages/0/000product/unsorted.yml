@@ -2416,6 +2416,7 @@ unsorted:
   - coccigrep-vim-plugin 
   - coccinelle 
   - cockpit 
+  - cockpit-client-launcher 
   - cockpit-devel 
   - cockpit-doc 
   - cockpit-firewalld 
@@ -11317,7 +11318,7 @@ unsorted:
   - libOsi1 
   - libOsiCbc3 
   - libOsiClp1 
-  - libPDAL19 
+  - libPDAL20 
   - libPlasma6-lang 
   - libPocoActiveRecord112 
   - libPocoCppParser112 
@@ -21216,6 +21217,8 @@ unsorted:
   - patool 
   - patool-bash-completion 
   - patterns-aeon-base 
+  - patterns-ansible-automation 
+  - patterns-ansible-devtools 
   - patterns-base-32bit 
   - patterns-base-apparmor-32bit 
   - patterns-base-base-32bit 
@@ -25383,6 +25386,13 @@ unsorted:
   - python311-distutils-extra 
   - python311-dj-database-url 
   - python311-django-allauth 
+  - python311-django-allauth-headless 
+  - python311-django-allauth-idp-oidc 
+  - python311-django-allauth-mfa 
+  - python311-django-allauth-openid 
+  - python311-django-allauth-saml 
+  - python311-django-allauth-socialaccount 
+  - python311-django-allauth-steam 
   - python311-django-appconf 
   - python311-django-attachments 
   - python311-django-auth-ldap 
@@ -25738,6 +25748,7 @@ unsorted:
   - python311-gitdb 
   - python311-github3.py 
   - python311-gitlabcis 
+  - python311-giturlparse 
   - python311-glean 
   - python311-glean-parser 
   - python311-glfw 
@@ -28036,7 +28047,6 @@ unsorted:
   - python312 
   - python312-base 
   - python312-base-x86-64-v3 
-  - python312-bpython 
   - python312-certbot-dns-cloudflare 
   - python312-cliff 
   - python312-curses 
@@ -28058,7 +28068,6 @@ unsorted:
   - python312-onnx 
   - python312-pegasus-wms.api 
   - python312-plotly 
-  - python312-pyHanko 
   - python312-pyroomacoustics 
   - python312-python-datamatrix 
   - python312-testsuite 
@@ -29249,6 +29258,13 @@ unsorted:
   - python313-distutils-extra 
   - python313-dj-database-url 
   - python313-django-allauth 
+  - python313-django-allauth-headless 
+  - python313-django-allauth-idp-oidc 
+  - python313-django-allauth-mfa 
+  - python313-django-allauth-openid 
+  - python313-django-allauth-saml 
+  - python313-django-allauth-socialaccount 
+  - python313-django-allauth-steam 
   - python313-django-appconf 
   - python313-django-attachments 
   - python313-django-auth-ldap 
@@ -29609,6 +29625,7 @@ unsorted:
   - python313-github3.py 
   - python313-gitlabcis 
   - python313-gitlint 
+  - python313-giturlparse 
   - python313-glanceclient 
   - python313-glean 
   - python313-glean-parser 
@@ -33238,7 +33255,6 @@ unsorted:
   - ruby4.0-rubygem-dry-equalizer 
   - ruby4.0-rubygem-dry-inflector 
   - ruby4.0-rubygem-dry-logic 
-  - ruby4.0-rubygem-dry-types 
   - ruby4.0-rubygem-ed25519 
   - ruby4.0-rubygem-em-websocket 
   - ruby4.0-rubygem-equalizer 
@@ -33254,7 +33270,6 @@ unsorted:
   - ruby4.0-rubygem-fast_gettext-1.1 
   - ruby4.0-rubygem-ffi 
   - ruby4.0-rubygem-ffi-compiler 
-  - ruby4.0-rubygem-flog 
   - ruby4.0-rubygem-fluentd 
   - ruby4.0-rubygem-fog-core 
   - ruby4.0-rubygem-fog-json 
@@ -33298,7 +33313,6 @@ unsorted:
   - ruby4.0-rubygem-js-routes 
   - ruby4.0-rubygem-jsbundling-rails 
   - ruby4.0-rubygem-json 
-  - ruby4.0-rubygem-json-jwt 
   - ruby4.0-rubygem-json-schema 
   - ruby4.0-rubygem-json_pure 
   - ruby4.0-rubygem-jwt 
@@ -33383,7 +33397,6 @@ unsorted:
   - ruby4.0-rubygem-rack 
   - ruby4.0-rubygem-rack-2.2 
   - ruby4.0-rubygem-rack-accept 
-  - ruby4.0-rubygem-rack-oauth2 
   - ruby4.0-rubygem-rack-protection 
   - ruby4.0-rubygem-rack-proxy 
   - ruby4.0-rubygem-rack-session 
@@ -45021,7 +45034,6 @@ unsorted:
   - typelib-1_0-GCab-1_0 
   - typelib-1_0-GData-0_0 
   - typelib-1_0-GES-1_0 
-  - typelib-1_0-GLibUnix-2_0 
   - typelib-1_0-GMime-3_0 
   - typelib-1_0-GOffice-0_10 
   - typelib-1_0-GPaste-2 
