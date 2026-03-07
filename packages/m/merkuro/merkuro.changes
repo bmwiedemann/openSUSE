@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar  3 09:57:21 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.3/
+- Changes since 25.12.2:
+  * calendar: Fix "Show all"/"Hide all" button not behaving on expected collections
+  * calendar: Always allow TODOs to have both a start and end date
+  * Fix crash when creating or editing incidence
+  * calendar: DateUtils: Fix regex check for date
+  * calendar: BasicInternalHourlyView: Add extra null check
+
+-------------------------------------------------------------------
 Mon Mar  2 12:14:56 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update runtime requirements

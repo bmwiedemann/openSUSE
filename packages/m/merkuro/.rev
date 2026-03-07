@@ -272,4 +272,12 @@
     <comment>- Update runtime requirements</comment>
     <requestid>1335814</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>05d28f0036ef9fedfec19c6b55df64a9</srcmd5>
+    <version>25.12.3</version>
+    <time>1772910497</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 25.12.3</comment>
+    <requestid>1337103</requestid>
+  </revision>
 </revisionlist>
