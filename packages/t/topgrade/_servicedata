@@ -1,6 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/topgrade-rs/topgrade.git</param>
-              <param name="changesrevision">dce9b6bf8933ba2b3da186bc19ab3462b65f2395</param></service><service name="tar_scm">
+              <param name="changesrevision">c1a9a368726bb4264fa40359ae8558addcc6a143</param></service><service name="tar_scm">
                 <param name="url">https://ghproxy.net/https://github.com/topgrade-rs/topgrade.git</param>
               <param name="changesrevision">ef0a0d69bbe0cb08d6c4930ee18b734e03c215fb</param></service></servicedata>

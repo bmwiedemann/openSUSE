@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Sat Mar 07 10:14:45 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 17.0.0:
+  * chore: release v17.0.0 (#1808)
+  * feat: improve breaking changes notifications (#1827)
+  * chore(deps): update github/codeql-action action to v4.32.6 (#1825)
+  * chore(deps): update dependency rust to v1.94.0 (#1826)
+  * fix(protonplus): correct protonplus version in error message (#1823)
+  * feat(step): add antigravity (#1822)
+  * chore(release-plz): add missing conventional commit types to config (#1821)
+  * chore(release-plz): add config separating breaking changes (#1820)
+  * chore(deps): lock file maintenance (#1679)
+  * chore(deps): update rust crate nix to 0.31.0
+  * chore(deps): update rust crate etcetera to 0.11.0
+  * chore(deps): update rust crate clap-cargo to 0.18.0
+  * style: apply edition 2024 clippy fixes
+  * chore: upgrade to edition 2024
+  * chore(deps): remove temporary transitive dependency pins
+  * refactor: replace `home` dependency with `std::env::home_dir`
+  * chore!: bump MSRV to 1.88.0
+  * chore(renovate): disable singular dependency updates that only affect the lockfile (#1819)
+  * chore(deps): use caret (default) versioning for dependencies (#1816)
+  * feat(step): add `protonplus` (#1799)
+  * chore(deps): update actions/dependency-review-action action to v4.9.0 (#1815)
+  * feat(os): add KDE Linux support (#1814)
+  * chore(pre-commit): autoupdate (#1812)
+  * feat(step): add claude code (#1792)
+  * feat(step): add Gear Lever
+  * feat(utils): add require_flatpak function
+  * chore(deps): update github/codeql-action action to v4.32.5 (#1811)
+  * fix(juliaup): don't crash when failing to canonicalize juliaup path (#1809)
+  * chore(workflow): gate release-plz only to upstream (#1801)
+  * chore(deps): update rust crate toml to v1.0.3 (#1772)
+  * chore(deps): update actions/dependency-review-action action to v4.8.3 (#1787)
+  * chore(deps): update github/codeql-action action to v4.32.4 (#1788)
+  * chore(deps): update actions/attest-build-provenance action to v4 (#1796)
+  * chore(deps): update github artifact actions (major) (#1800)
+  * chore(deps): update pyo3/maturin-action action to v1.50.1 (#1807)
+  * chore(pre-commit): autoupdate (#1794)
+  * chore(deps): update rust crate strum to ~0.28.0 (#1791)
+  * feat: add Helix DB step (#1790)
+  * chore(deps): pin GitHub actions better (#1786)
+  * chore(deps): update github/codeql-action action to v4.32.3 (#1776)
+  * chore(deps): update dtolnay/rust-toolchain digest to efa25f7 (#1773)
+  * chore(deps): update vmactions/openbsd-vm digest to 9a8e435 (#1777)
+  * chore(pre-commit): autoupdate (#1785)
+  * chore(pre-commit): move typos configuration into .pre-commit-config.yaml (#1784)
+  * chore(pre-commit): add --external-sources to shellcheck (#1782)
+  * chore(deps): update release-plz/action digest to f708778 (#1783)
+  * fix(helix): disambiguate between Helix Editor and HelixDB (#1781)
+  * chore(pre-commit): autoupdate (#1753)
+  * chore(deps): update dependency rust to v1.93.1 (#1771)
+  * fix: correct typos and enhance clarity (#1778)
+  * feat: add notify_end tristate option (#1760)
+  * chore(renovate): remove unnecessary maintainLockFilesWeekly preset (#1770)
+  * chore(deps): update rust crate toml to v1 (#1768)
+  * fix: use `edit` crate for --edit-config editor resolution (#1759)
+  * chore(deps): update michidk/winget-updater action to v1.1.7 (#1757)
+  * refactor: split non-step code from steps/tmux.rs to tmux.rs (#1756)
+  * chore(clippy): ban Command::new via clippy disallowed-methods rule
+  * refactor(steps): use ctx.execute().always() for read-only commands
+  * feat(executor): add Executor::always() for commands that must run in dry-run mode
+  * ci: harden workflow by SHA-pinning rust-toolchain action (#1731)
+  * feat: show version range in self-update message (#1752)
+  * chore(deps): update vmactions/openbsd-vm digest to d6c29ce (#1751)
+  * chore(deps): update pyo3/maturin-action action to v1.50.0 (#1743)
+  * ci(msrv): run msrv check on multiple platforms (#1749)
+  * ci: format release_to_homebrew.yml workflow (#1748)
+  * refactor: remove hard to read condition in retry logic (#1745)
+  * feat(uv): run uv python upgrade (#1747)
+  * feat: `--auto-retry [<COUNT>]` flag and `--no-retry` deprecation (#1603)
+  * fix(vim): AstroNvim - wait for AstroUpdateCompleted and finish. (#1744)
+  * chore(typos): ignore CHANGELOG.md (#1742)
+  * chore(deps): update release-plz/action digest to 52440b5 (#1740)
+  * chore(deps): update actions/checkout digest to de0fac2 (#1726)
+  * chore(deps): update release-plz/action digest to 20b2393 (#1733)
+  * chore(deps): update vmactions/openbsd-vm digest to 271a1ba (#1736)
+  * chore(deps): update github/codeql-action action to v4.32.2 (#1737)
+  * docs(readme): add Discord badge (#1728)
+  * chore(pre-commit): switch to typos mirror to fix autoupdates (#1734)
+  * ci: fix CodeQL missing permissions in winget workflow (#1732)
+  * chore(deb): simplify config and remove revision (#1724)
+
+-------------------------------------------------------------------
 Tue Feb 03 11:11:40 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 16.9.0:
