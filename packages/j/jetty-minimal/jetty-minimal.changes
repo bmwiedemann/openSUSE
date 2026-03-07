@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar  6 19:51:04 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jetty-CVE-2025-11143.patch
+    + upstream patch fixing bsc#1259242 (CVE-2025-11143):
+      Different parsing of invalid URIs
+
+-------------------------------------------------------------------
 Fri Aug 22 05:02:35 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 9.4.58.v20250814

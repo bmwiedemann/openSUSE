@@ -239,4 +239,12 @@
     <comment>Build also on SLE15-SP2, since we have the required compiler now</comment>
     <requestid>1303620</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>278337f44f25b9fc195b0eb42ccb96e8</srcmd5>
+    <version>9.4.58</version>
+    <time>1772910586</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1259242, CVE-2025-11143</comment>
+    <requestid>1337383</requestid>
+  </revision>
 </revisionlist>
