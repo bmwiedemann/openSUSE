@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar 04 23:27:23 UTC 2026 - David Mulder <david.mulder@suse.com>
+
+- Update to version 2.3.7+git0.81088cd:
+  * Version 2.3.7
+  * cargo vet
+  * Fix AWS-LC has PKCS7_verify Certificate Chain Validation Bypass
+  * Revert dependency change which broke the nightly build
+  * gen_dockerfiles: only himmelblaud has tpm feature, fix all others
+  * fix(build): gen_dockerfiles.py mutates shared features list mid-loop
+  * Update to libhimmelblau
+
+-------------------------------------------------------------------
+Wed Mar 04 19:43:49 UTC 2026 - itteam itteam <itteam@smartodds.co.uk>
+
+on leap 15.6, selinux-policy-devel doesn't exist
+
+-------------------------------------------------------------------
 Fri Feb 13 15:30:47 UTC 2026 - David Mulder <david.mulder@suse.com>
 
 - Update to version 2.3.5+git0.9dd526c:

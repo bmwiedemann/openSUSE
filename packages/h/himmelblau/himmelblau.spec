@@ -23,14 +23,14 @@
 %define chrome_ext_dir      /usr/share/google-chrome/extensions
 
 # SELinux macros
-%if 0%{?suse_version} > 1600 || 0%{?sle_version} >= 160000
+%if 0%{?suse_version} >= 1600
 %define _selinux_sharedir   /usr/share/selinux
 %define _selinux_pkgdir     %{_selinux_sharedir}/packages
 %define _selinux_docdir     %{_docdir}/himmelblau-selinux/selinux
 %endif
 
 Name:           himmelblau
-Version:        2.3.5+git0.9dd526c
+Version:        2.3.7+git0.81088cd
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure Entra Id
 License:        GPL-3.0-or-later
@@ -77,14 +77,16 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  systemd-mini
 BuildRequires:  tpm2-0-tss-devel
 BuildRequires:  wget
-%if 0%{?suse_version} > 1600 || 0%{?sle_version} >= 160000
+%if 0%{?suse_version} >= 1600
 BuildRequires:  selinux-policy-devel
 BuildRequires:  selinux-tools
 %endif
 ExclusiveArch:  %{rust_tier1_arches}
+%if 0%{?suse_version} >= 1600
 Requires:       make
 Requires:       policycoreutils
 Requires:       selinux-policy-devel
+%endif
 Recommends:     cron
 Recommends:     krb5
 Recommends:     libnss_himmelblau2
@@ -160,7 +162,7 @@ when a MS DAG URL is detected.
 
 %build
 make rpm-servicefiles
-%if !(0%{?suse_version} > 1600 || 0%{?sle_version} >= 160000)
+%if !(0%{?suse_version} >= 1600)
 export HIMMELBLAU_ALLOW_MISSING_SELINUX=1
 %endif
 %{cargo_build} --workspace --exclude himmelblau-fuzz
@@ -169,7 +171,7 @@ make authselect
 %endif
 
 %check
-%if !(0%{?suse_version} > 1600 || 0%{?sle_version} >= 160000)
+%if !(0%{?suse_version} >= 1600)
 export HIMMELBLAU_ALLOW_MISSING_SELINUX=1
 %endif
 %{cargo_test} --workspace --exclude himmelblau-fuzz
@@ -232,7 +234,7 @@ install -m 0644 man/man8/himmelblaud.8 %{buildroot}/%{_mandir}/man8/
 install -m 0644 man/man8/himmelblaud_tasks.8 %{buildroot}/%{_mandir}/man8/
 install -m 0644 src/daemon/src/himmelblau-policies.tmpfiles.conf %{buildroot}/%{_tmpfilesdir}/himmelblau-policies.conf
 install -m 0644 src/daemon/src/himmelblaud.tmpfiles.conf %{buildroot}/%{_tmpfilesdir}/himmelblaud.conf
-%if 0%{?suse_version} > 1600 || 0%{?sle_version} >= 160000
+%if 0%{?suse_version} >= 1600
 install -D -d -m 0755 %{buildroot}/%{_selinux_pkgdir}/himmelblaud
 install -D -d -m 0755 %{buildroot}/%{_selinux_docdir}
 install -m 0644 src/selinux/src/himmelblaud.te %{buildroot}/%{_selinux_pkgdir}/himmelblaud/himmelblaud.te
@@ -593,7 +595,7 @@ fi
 %{_mandir}/man8/himmelblaud_tasks.8*
 %{_tmpfilesdir}/himmelblau-policies.conf
 %{_tmpfilesdir}/himmelblaud.conf
-%if 0%{?suse_version} > 1600 || 0%{?sle_version} >= 160000
+%if 0%{?suse_version} >= 1600
 %dir %{_docdir}/himmelblau-selinux
 %dir %{_selinux_docdir}
 %dir %{_selinux_pkgdir}
