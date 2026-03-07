@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  6 16:47:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2019.7.2.3:
+  * Replace deprecated imagecodecs.jxr codec.
+  * Replace deprecated tifffile.stripnull function.
+
+-------------------------------------------------------------------
 Mon Apr 28 13:43:14 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2019.7.2.1:
