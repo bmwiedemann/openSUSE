@@ -310,4 +310,16 @@
     <comment></comment>
     <requestid>1333702</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ff3c4275ea41d23a8a5a575dfc5b89bc</srcmd5>
+    <version>1.6.9</version>
+    <time>1772910562</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.9:
+  * Not using header's `jwk` automatically
+  * Add `ES256K` into default jwt algorithms
+  * Remove deprecated algorithm from default registry
+  * Generate random `cek` when `cek` length doesn't match</comment>
+    <requestid>1337357</requestid>
+  </revision>
 </revisionlist>

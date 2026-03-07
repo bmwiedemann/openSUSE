@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  6 16:50:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.9:
+  * Not using header's `jwk` automatically
+  * Add `ES256K` into default jwt algorithms
+  * Remove deprecated algorithm from default registry
+  * Generate random `cek` when `cek` length doesn't match
+
+-------------------------------------------------------------------
 Tue Feb 17 08:38:21 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Update to 1.6.8:
