@@ -165,4 +165,13 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1288872</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>967c15bb83092ee4679cbcb8957b34f8</srcmd5>
+    <version>3.4.0.post5</version>
+    <time>1772910560</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.4.0.post5:
+  * Tested with Python 3.14.</comment>
+    <requestid>1337356</requestid>
+  </revision>
 </revisionlist>

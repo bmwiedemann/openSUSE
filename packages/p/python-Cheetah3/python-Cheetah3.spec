@@ -1,7 +1,7 @@
 #
 # spec file for package python-Cheetah3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define modname cheetah3
 %bcond_without libalternatives
 Name:           python-Cheetah3
-Version:        3.4.0
+Version:        3.4.0.post5
 Release:        0
 Summary:        Template engine and code generation tool
 License:        MIT
