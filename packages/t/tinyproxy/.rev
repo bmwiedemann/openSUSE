@@ -167,4 +167,12 @@
 - Replace sysvinit call in logrotate snippet by systemctl (try-restart)</comment>
     <requestid>1291405</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b934a36e756d2164cb01db2be528a638</srcmd5>
+    <version>1.11.3</version>
+    <time>1772987201</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.11.3</comment>
+    <requestid>1337455</requestid>
+  </revision>
 </revisionlist>

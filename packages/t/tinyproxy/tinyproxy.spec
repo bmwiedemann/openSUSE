@@ -17,7 +17,7 @@
 
 
 Name:           tinyproxy
-Version:        1.11.2
+Version:        1.11.3
 Release:        0
 Summary:        Minimalist WWW proxy
 License:        GPL-2.0-or-later
