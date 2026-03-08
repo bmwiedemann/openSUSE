@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Mon Mar  2 08:59:43 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.7.2:
+  * Add some more model aliases (gh#dnglab/dnglab#617).
+  * Support for Samsung NX5 (gh#dnglab/dnglab#623).
+  * Support for Samsung NX10 (gh#dnglab/dnglab#624).
+  * Support for Samsung NX11 (gh#dnglab/dnglab#625).
+  * Add more Sony lenses to lens database (gh#dnglab/dnglab#622).
+  * Support for Canon RF 70-200 F2.8 L IS USM Z
+    (gh#dnglab/dnglab#626).
+  * Add more Viltrox E-Mount lenses (gh#dnglab/dnglab#627).
+  * Add keyname attribute for Canon EF 70-200mm f/2.8L IS III USM
+    + 2x (gh#dnglab/dnglab#628).
+  * Add keyname for Tamron 100-400mm f/4.5-6.3 Di VC USD (A035)
+    (gh#dnglab/dnglab#629).
+  * Support for Olympus SP550UZ (gh#dnglab/dnglab#630).
+  * Support for Panasonic DC-S1M2ES (gh#dnglab/dnglab#631).
+  * Allow 10 bit precision for LJPEG compression
+    (gh#dnglab/dnglab#632).
+  * Add some more model aliases (gh#dnglab/dnglab#635).
+  * Improve DNG parsing robustness for corrupt or incomplete files
+    (gh#dnglab/dnglab#640).
+  * Testcase for Silverfast DNG files (gh#dnglab/dnglab#645).
+  * Use AsShotAsWhiteXY DNG tag in rawler (gh#dnglab/dnglab#648).
+  * Support for Nikon Super Coolscan 5000 ED
+    (gh#dnglab/dnglab#654).
+  * Support for Sony ZV1-M2 (gh#dnglab/dnglab#655).
+  * Add Panasonic DC-S5D alias (gh#dnglab/dnglab#656).
+  * nef: Relax errors when lens data is not available
+    (gh#dnglab/dnglab#657).
+  * Fix: Extract previews from NEF files (gh#dnglab/dnglab#658).
+  * Add some more Canon aliases (gh#dnglab/dnglab#662).
+  * Improve Bitpumps and unpack_generic_msb()
+    (gh#dnglab/dnglab#666).
+  * Add support for Tamron 18-300mm F/3.5-6.3 Di III-A VC VXD RF
+    (gh#dnglab/dnglab#668).
+  * Add support for Tamron 35-150mm F/2-2.8 Di III VXD Z-Mount
+    (gh#dnglab/dnglab#669).
+  * Added 250D alias for Asia region (EOS 200D II)
+    (gh#dnglab/dnglab#660).
+  * Add EOS to all Canon model names (gh#dnglab/dnglab#664).
+  * Bump bytes from 1.10.1 to 1.11.1 (gh#dnglab/dnglab#665).
+  * Add support for Viltrox AF 35/1.7 Z (gh#dnglab/dnglab#671).
+  * Add key to for Sigma 20mm F1.4 DG HSM | Art 015
+    (gh#dnglab/dnglab#672).
+  * Report errors from convert-subcommand as exit codes
+    (gh#dnglab/dnglab#673).
+  * Report errors from extract-subcommand as exit codes
+    (gh#dnglab/dnglab#674).
+  * Add RAWLER_DNG_ROWS_PER_STRIP and
+    RAWLER_DNG_MULTISTRIP_THRESHOLD env variables
+    (gh#dnglab/dnglab#675).
+  * Add explicit Leica DNG camera support (gh#dnglab/dnglab#667).
+  * Sanitize clean_make and clean_model attributes
+    (gh#dnglab/dnglab#676).
+  * Fix testdata for Leica M8 data (gh#dnglab/dnglab#677).
+  * fix(demosaic): Fix panic when processing images with odd
+    widths (gh#dnglab/dnglab#659).
+  * Add big-endian data for build_empty_dng test
+    (gh#dnglab/dnglab#687).
+  * Add support for Canon EOS R6 Mark III (gh#dnglab/dnglab#688).
+  * Add some Panasonic aliases (gh#dnglab/dnglab#678).
+  * Support for Sony ILCE-1M2 (gh#dnglab/dnglab#689).
+- Changes from verson 0.7.1:
+  * Panasonic DC-GH7 support (gh#dnglab/dnglab#540).
+  * Support for Nikon Z 6 3 (gh#dnglab/dnglab#546).
+  * Support for Phase One iXU-R1000 NIR (gh#dnglab/dnglab#547).
+  * Fujifilm GFX 100RF support (gh#dnglab/dnglab#548).
+  * Fujifilm GFX 100S II support (gh#dnglab/dnglab#549).
+  * Support for Canon 1D X Mark III CRM Movie files
+    (gh#dnglab/dnglab#552).
+  * Refactoring DNG/TIFF decompression code
+    (gh#dnglab/dnglab#560).
+  * Add support for decoding JPEG-XL compressed DNGs
+    (gh#dnglab/dnglab#562).
+  * Add support for DNG deflate decompression
+    (gh#dnglab/dnglab#563).
+  * Use dynamic_image_from_ifd() for DNG thumbnails and full
+    images (gh#dnglab/dnglab#564).
+  * Add new tests for non-camera samples in rawdb
+    (gh#dnglab/dnglab#566).
+  * Remove unwrap() in ArwDecoder::raw_image()
+    (gh#dnglab/dnglab#580).
+  * Add support for Canon RF28mm F2.8 STM (gh#dnglab/dnglab#579).
+  * Reduce usage of unwrap() (gh#dnglab/dnglab#581).
+  * Update deps and decrease its number (gh#dnglab/dnglab#568).
+  * Fix: Testdata for R5MK2 CRM files (gh#dnglab/dnglab#597).
+  * Support for Panasonic DC-S1RM2 (gh#dnglab/dnglab#596).
+  * Bump slab from 0.4.10 to 0.4.11 (gh#dnglab/dnglab#592).
+  * Add model alias for Panasonic DMC-ZS50 (gh#dnglab/dnglab#588).
+  * Remove Warnings About Elided Lifetime (gh#dnglab/dnglab#594).
+  * Support for chromatic adaption (gh#dnglab/dnglab#584).
+  * Add DSC-RX100M7A alias (gh#dnglab/dnglab#602).
+  * Add lens Canon RF28-70mm F2.8 IS STM (gh#dnglab/dnglab#603).
+  * Fix: Canon R5C applies WB for Standard-Raw CRM files
+    (gh#dnglab/dnglab#606).
+  * OM-3 camera support (gh#dnglab/dnglab#607).
+  * Support for Fujifilm X-E5 (gh#dnglab/dnglab#608).
+  * Support for Nikon Z 5 II (gh#dnglab/dnglab#609).
+
+-------------------------------------------------------------------
 Sun Jun  8 18:05:16 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.7.0:

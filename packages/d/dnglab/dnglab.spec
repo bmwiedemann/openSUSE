@@ -1,7 +1,7 @@
 #
 # spec file for package dnglab
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Atri Bhattacharya <badshah400@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           dnglab
-Version:        0.7.0
+Version:        0.7.2
 Release:        0
 Summary:        Camera RAW to DNG file format converter
 License:        LGPL-2.1-only
