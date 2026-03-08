@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  6 15:51:36 UTC 2026 - Michael Calmer <mc@suse.com>
+
+- Fix license tag in spec file
+
+-------------------------------------------------------------------
 Fri May  9 05:46:25 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Rewrite the build for ant so that we can use it early

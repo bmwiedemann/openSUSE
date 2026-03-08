@@ -1,7 +1,7 @@
 #
 # spec file for package jakarta-pages
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Name:           jakarta-%{short_name}
 Version:        4.0.0
 Release:        0
 Summary:        Jakarta Server Pages
-License:        BSD-3-Clause OR EPL-2.0
+License:        Apache-2.0 AND (EPL-2.0 OR GPL-2.0-only WITH Classpath-exception-2.0)
 Group:          Development/Libraries/Java
 URL:            http://eclipse.org/ee4j/jsp
 Source0:        https://github.com/jakartaee/%{short_name}/archive/refs/tags/%{version}-RELEASE.tar.gz
