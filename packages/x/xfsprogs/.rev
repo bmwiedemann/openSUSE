@@ -894,4 +894,41 @@ Signed-off-by: Anthony Iliopoulos &lt;ailiop@suse.com&gt;
 (🤖: Submission of xfsprogs via https://src.opensuse.org/pool/xfsprogs/pulls/19 by ailiopoulos)</comment>
     <requestid>1288488</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>0d030bd0e795ba21cdc01f95794e6026</srcmd5>
+    <version>6.18.0</version>
+    <time>1772987168</time>
+    <user>dimstar_suse</user>
+    <comment>- remove python dependency from main xfsprogs package (bsc#1259270)
+  Since v6.13.0 xfsprogs ships with the xfs_protofile python script
+  which causes the main xfsprogs package to strictly require python
+  as a dependency. This can be dropped as the script is not really
+  needed for anything.
+
+- update to 6.18.0
+  - mkfs: adjust_nr_zones for zoned file system on conventional devices
+  - xfs_logprint: fix pointer bug
+  - mdrestore: fix restore_v2() superblock length check
+  - mkfs: add 2025 LTS config file
+  - mkfs: enable new features by default
+  - libfrog: fix incorrect FS_IOC_FSSETXATTR argument to ioctl()
+  - xfs: prevent gc from picking the same zone twice
+  - xfs: improve default maximum number of open zones
+  - xfs: fix log CRC mismatches between i386 and other architectures
+  - xfs: remove deprecated sysctl knobs
+  - xfs: remove deprecated mount options
+  - man2: fix getparents ioctl manpage
+  - xfs_db: document the rtsb command
+  - libxfs: fix build warnings
+  - xfs_scrub: fix null pointer crash in scrub_render_ino_descr
+  - metadump: catch used extent array overflow
+  - mkfs: fix zone capacity check for sequential zones
+  - libxfs: support reproducible filesystems using deterministic time/seed
+  - Fix alloc/free of cache item
+  - xfs_io: use the XFS_ERRTAG macro to generate injection targets
+  - repair/prefetch.c: Create one workqueue with multiple workers
+  - libfrog: Prevent unnecessary waking of worker thread when using bounded workqueues
+  - proto: fix file descriptor leak</comment>
+    <requestid>1337310</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Fri Mar  6 09:56:21 UTC 2026 - Anthony Iliopoulos <ailiop@suse.com>
+
+- remove python dependency from main xfsprogs package (bsc#1259270)
+
+  Since v6.13.0 xfsprogs ships with the xfs_protofile python script
+  which causes the main xfsprogs package to strictly require python
+  as a dependency. This can be dropped as the script is not really
+  needed for anything.
+
+-------------------------------------------------------------------
+Wed Dec 31 11:19:48 UTC 2025 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 6.18.0
+  - mkfs: adjust_nr_zones for zoned file system on conventional devices
+  - xfs_logprint: fix pointer bug
+  - mdrestore: fix restore_v2() superblock length check
+  - mkfs: add 2025 LTS config file
+  - mkfs: enable new features by default
+  - libfrog: fix incorrect FS_IOC_FSSETXATTR argument to ioctl()
+  - xfs: prevent gc from picking the same zone twice
+  - xfs: improve default maximum number of open zones
+  - xfs: fix log CRC mismatches between i386 and other architectures
+  - xfs: remove deprecated sysctl knobs
+  - xfs: remove deprecated mount options
+  - man2: fix getparents ioctl manpage
+  - xfs_db: document the rtsb command
+  - libxfs: fix build warnings
+  - xfs_scrub: fix null pointer crash in scrub_render_ino_descr
+  - metadump: catch used extent array overflow
+  - mkfs: fix zone capacity check for sequential zones
+  - libxfs: support reproducible filesystems using deterministic time/seed
+  - Fix alloc/free of cache item
+  - xfs_io: use the XFS_ERRTAG macro to generate injection targets
+  - repair/prefetch.c: Create one workqueue with multiple workers
+  - libfrog: Prevent unnecessary waking of worker thread when using bounded workqueues
+  - proto: fix file descriptor leak
+  - mkfs: split zone reset from discard
+  - mkfs: move clearing LIBXFS_DIRECT into check_device_type
+  - mkfs: improve the error message in adjust_nr_zones
+  - mkfs: improve the error message from check_device_type
+  - xfs_copy: improve the error message when mkfs is in progress
+
+ -------------------------------------------------------------------
+Tue Oct 21 13:51:21 UTC 2025 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 6.17.0
+  - xfs_scrub_fail: reduce security lockdowns to avoid postfix problems
+  - mkfs: fix copy-paste error in calculate_rtgroup_geometry
+  - xfs_scrub: fix strerror_r usage yet again
+  - mkfs: fix libxfs_iget return value sign inversion
+  - xfs_scrub: Use POSIX-conformant strerror_r
+  - xfs_db: use file_setattr to copy attributes on special files with rdump
+  - xfs_io: make ls/chattr work with special files
+  - xfs_quota: utilize file_setattr to set prjid on special files
+  - configure: Base NEED_INTERNAL_STATX on libc headers first
+  - xfs_io: add FALLOC_FL_WRITE_ZEROES support
+  - xfsprogs: fix utcnow deprecation warning in xfs_scrub_all.py
+  - Improve information about logbsize valid values
+  - proto: add ability to populate a filesystem from a directory
+
+ -------------------------------------------------------------------
+Wed Aug 27 01:34:52 UTC 2025 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 6.16.0
+  - Document current limitation of shrinking fs
+  - mkfs: require reflink for max_atomic_write option
+  - xfs_scrub: remove EXPERIMENTAL warnings
+  - mkfs: allow users to configure the desired maximum atomic write size
+  - mkfs: try to align AG size based on atomic write capabilities
+  - mkfs: autodetect log stripe unit for external log devices
+  - mkfs: don't complain about overly large auto-detected log stripe units
+  - xfs_io: dump new atomic_write_unit_max_opt statx field
+  - xfs_db: create an untorn_max subcommand
+
+ -------------------------------------------------------------------
 Wed Jun 25 09:37:08 UTC 2025 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to 6.15.0

@@ -25,7 +25,7 @@
 %endif
 %define libname libhandle1
 Name:           xfsprogs
-Version:        6.15.0
+Version:        6.18.0
 Release:        0
 Summary:        Utilities for managing the XFS file system
 License:        GPL-2.0-or-later
@@ -174,6 +174,8 @@ install -m 0644 %{SOURCE4} %{buildroot}/%{_dracutmodulesdir}/95suse-xfs/
 %{_sbindir}/*
 %exclude %{_sbindir}/xfs_scrub_all
 %{_mandir}/man[258]/*
+%exclude /usr/sbin/xfs_protofile
+%exclude /usr/share/man/man8/xfs_protofile.8.gz
 %doc %{_defaultdocdir}/%{name}
 %if 0%{?suse_version} >= 1315
 # SLE12 doesn't do %license
