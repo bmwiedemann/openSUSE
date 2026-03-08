@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  5 22:36:53 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Update libsoup2-CVE-2026-0716.patch to incorporate
+  glgo#GNOME/libsoup!518. The original fix was incomplete
+  (bsc#1256418 CVE-2026-0716 glgo#GNOME/libsoup#476).
+
+-------------------------------------------------------------------
 Wed Feb 25 02:47:08 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add libsoup-CVE-2026-1760.patch: server: close the connection
