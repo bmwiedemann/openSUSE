@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar  6 00:26:43 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.25.8 (released 2026-03-05) includes security fixes to the
+  html/template, net/url, and os packages, as well as bug fixes to
+  the go command, the compiler, and the os package.
+  Refs boo#1244485 go1.25 release tracking
+  CVE-2026-25679 CVE-2026-27142 CVE-2026-27139
+  * go#77969 go#77578 security: fix CVE-2026-25679 net/url: reject IPv6 literal not at start of host
+  * go#77971 go#77954 security: fix CVE-2026-27142 html/template: URLs in meta content attribute actions are not escaped
+  * go#77833 go#77827 security: fix CVE-2026-27139 os: FileInfo can escape from a Root
+  * go#77253 cmd/compile: miscompile of global array initialization
+  * go#77406 os: Go 1.25.x regression on RemoveAll for windows
+  * go#77413 runtime: netpollinit() incorrectly prints the error from linux.Eventfd
+  * go#77438 cmd/go: CGO compilation fails after upgrading from Go 1.25.5 to 1.25.6 due to --define-variable flag in pkg-config
+  * go#77531 net/smtp: expiry date of localhostCert for testing is too short
+
+-------------------------------------------------------------------
 Wed Feb  4 15:46:51 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.25.7 (released 2026-02-04) includes security fixes to the go

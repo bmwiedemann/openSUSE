@@ -263,4 +263,24 @@
   * go#77425 crypto/tls: CL 737700 broke session resumption on macOS (forwarded request 1332053 from jfkw)</comment>
     <requestid>1332056</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>38733064e0c23872290a3a762484b755</srcmd5>
+    <version>1.25.8</version>
+    <time>1772987159</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.25.8 (released 2026-03-05) includes security fixes to the
+  html/template, net/url, and os packages, as well as bug fixes to
+  the go command, the compiler, and the os package.
+  Refs boo#1244485 go1.25 release tracking
+  CVE-2026-25679 CVE-2026-27142 CVE-2026-27139
+  * go#77969 go#77578 security: fix CVE-2026-25679 net/url: reject IPv6 literal not at start of host
+  * go#77971 go#77954 security: fix CVE-2026-27142 html/template: URLs in meta content attribute actions are not escaped
+  * go#77833 go#77827 security: fix CVE-2026-27139 os: FileInfo can escape from a Root
+  * go#77253 cmd/compile: miscompile of global array initialization
+  * go#77406 os: Go 1.25.x regression on RemoveAll for windows
+  * go#77413 runtime: netpollinit() incorrectly prints the error from linux.Eventfd
+  * go#77438 cmd/go: CGO compilation fails after upgrading from Go 1.25.5 to 1.25.6 due to --define-variable flag in pkg-config
+  * go#77531 net/smtp: expiry date of localhostCert for testing is too short (forwarded request 1337164 from jfkw)</comment>
+    <requestid>1337166</requestid>
+  </revision>
 </revisionlist>
