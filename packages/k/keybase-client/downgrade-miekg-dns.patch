@@ -1,0 +1,54 @@
+From c3eeb06595120c96226de1f023d2dbb10e47e556 Mon Sep 17 00:00:00 2001
+From: Matthias Bach <marix@marix.org>
+Date: Sat, 7 Mar 2026 18:22:29 +0100
+Subject: [PATCH] Downgrade miekg/dns to resolve compilation error
+
+Old version errors out because:
+ vendor/github.com/miekg/dns/listen_socket_options.go:14:7: supportsReusePort redeclared in this block
+        vendor/github.com/miekg/dns/listen_reuseport.go:14:7: other declaration of supportsReusePort
+ vendor/github.com/miekg/dns/listen_socket_options.go:16:6: reuseportControl redeclared in this block
+        vendor/github.com/miekg/dns/listen_reuseport.go:16:6: other declaration of reuseportControl
+ vendor/github.com/miekg/dns/listen_socket_options.go:28:7: supportsReuseAddr redeclared in this block
+        vendor/github.com/miekg/dns/listen_reuseport.go:28:7: other declaration of supportsReuseAddr
+ vendor/github.com/miekg/dns/listen_socket_options.go:30:6: reuseaddrControl redeclared in this block
+        vendor/github.com/miekg/dns/listen_reuseport.go:30:6: other declaration of reuseaddrControl
+ vendor/github.com/miekg/dns/listen_socket_options.go:71:6: listenTCP redeclared in this block
+        vendor/github.com/miekg/dns/listen_reuseport.go:42:6: other declaration of listenTCP
+ vendor/github.com/miekg/dns/listen_socket_options.go:85:6: listenUDP redeclared in this block
+        vendor/github.com/miekg/dns/listen_reuseport.go:55:6: other declaration of listenUDP
+---
+ go/go.mod | 2 +-
+ go/go.sum | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/go/go.mod b/go/go.mod
+index a2ee1a85e3..291b5b3022 100644
+--- a/go/go.mod
++++ b/go/go.mod
+@@ -54,7 +54,7 @@ require (
+ 	github.com/kr/text v0.2.0
+ 	github.com/kyokomi/emoji v2.2.2+incompatible
+ 	github.com/mattn/go-isatty v0.0.20
+-	github.com/miekg/dns v1.1.69
++	github.com/miekg/dns v1.1.57
+ 	github.com/nfnt/resize v0.0.0-20160724205520-891127d8d1b5
+ 	github.com/pkg/errors v0.9.1
+ 	github.com/pkg/xattr v0.2.2
+diff --git a/go/go.sum b/go/go.sum
+index a29892304c..f6bb2306d3 100644
+--- a/go/go.sum
++++ b/go/go.sum
+@@ -350,8 +350,8 @@ github.com/mattn/go-isatty v0.0.8/go.mod h1:Iq45c/XA43vh69/j3iqttzPXn0bhXyGjM0Hd
+ github.com/mattn/go-isatty v0.0.20 h1:xfD0iDuEKnDkl03q4limB+vH+GxLEtL/jb4xVJSWWEY=
+ github.com/mattn/go-isatty v0.0.20/go.mod h1:W+V8PltTTMOvKvAeJH7IuucS94S2C6jfK/D7dTCTo3Y=
+ github.com/mattn/go-sqlite3 v1.9.0/go.mod h1:FPy6KqzDD04eiIsT53CuJW3U88zkxoIYsOqkbpncsNc=
+-github.com/miekg/dns v1.1.69 h1:Kb7Y/1Jo+SG+a2GtfoFUfDkG//csdRPwRLkCsxDG9Sc=
+-github.com/miekg/dns v1.1.69/go.mod h1:7OyjD9nEba5OkqQ/hB4fy3PIoxafSZJtducccIelz3g=
++github.com/miekg/dns v1.1.57 h1:Jzi7ApEIzwEPLHWRcafCN9LZSBbqQpxjt/wpgvg7wcM=
++github.com/miekg/dns v1.1.57/go.mod h1:uqRjCRUuEAA6qsOiJvDd+CFo/vW+y5WR6SNmHE55hZk=
+ github.com/mitchellh/go-homedir v1.1.0 h1:lukF9ziXFxDFPkA1vsr5zpc1XuPDn/wFntq5mG+4E0Y=
+ github.com/mitchellh/go-homedir v1.1.0/go.mod h1:SfyaCUpYCn1Vlf4IUYiD9fPX4A5wJrkLzIz1N1q0pr0=
+ github.com/mitchellh/mapstructure v0.0.0-20150613213606-2caf8efc9366/go.mod h1:FVVH3fgwuzCH5S8UJGiWEs2h04kUh9fWfEaFds41c1Y=
+-- 
+2.51.0
+

@@ -334,4 +334,17 @@
     <comment>- Add update-filippo.io-edwards25519.patch to address bsc#1258591.</comment>
     <requestid>1334244</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0b9961be54a5a41df2224476c3a4ed15</srcmd5>
+    <version>6.6.0</version>
+    <time>1772987189</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.6.0
+  * Various bug fixes and performance improvements
+- Add downgrade-miekg-dns.patch keeping that dependency on the same
+  version as previously.
+- Remove update-go-crypto.patch as the dependency was updated
+  upstream.</comment>
+    <requestid>1337446</requestid>
+  </revision>
 </revisionlist>
