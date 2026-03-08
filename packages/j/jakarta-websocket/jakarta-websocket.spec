@@ -1,7 +1,7 @@
 #
 # spec file for package jakarta-websocket
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           jakarta-%{short_name}
 Version:        2.2.0
 Release:        0
 Summary:        Jakarta WebSocket
-License:        Apache-2.0
+License:        EPL-2.0 OR GPL-2.0 WITH Classpath-Exception
 Group:          Development/Libraries/Java
 URL:            https://projects.eclipse.org/projects/ee4j.%{short_name}
 Source0:        https://github.com/jakartaee/%{short_name}/archive/refs/tags/%{version}-RELEASE.tar.gz

@@ -15,4 +15,12 @@
     <comment>Rewrite for ant</comment>
     <requestid>1276070</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3cb131274c4ffa6f08f2933cd522d64f</srcmd5>
+    <version>2.2.0</version>
+    <time>1772987199</time>
+    <user>dimstar_suse</user>
+    <comment>Fix license tag</comment>
+    <requestid>1337458</requestid>
+  </revision>
 </revisionlist>

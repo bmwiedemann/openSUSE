@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  6 15:45:00 UTC 2026 - Michael Calmer <mc@suse.com>
+
+- Fix License tag in spec file and set it to
+  EPL-2.0 OR GPL-2.0 WITH Classpath-Exception
+
+-------------------------------------------------------------------
 Fri May  9 06:38:42 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Rewrite the build system for ant so that we can use this package
