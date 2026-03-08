@@ -26,7 +26,7 @@ Mon Dec 15 14:24:24 UTC 2025 - Adam Majer <adam.majer@suse.de>
 -------------------------------------------------------------------
 Thu Dec 11 11:43:06 UTC 2025 - Adam Majer <adam.majer@suse.de>
 
-- Update to 24.12.0:
+- Update to 24.12.0 (bsc#1256572, CVE-2025-59464):
   * http: add optimizeEmptyRequests server option
   * lib: add options to util.deprecate
   * module: mark type stripping as stable
