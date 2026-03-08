@@ -571,65 +571,60 @@ export CC CFLAGS LDFLAGS
 	 --libdir=%{_libdir} \
 	 --enable-locallisppath=%{_datadir}/emacs/%{version}/site-lisp:%{_datadir}/emacs/site-lisp
 "
-DESKTOP="--with-x \
-	 --with-xim \
+
+DESKTOP_SHARED="
 	 --with-sound \
+	 --with-xpm=ifavailable \
 	 --with-jpeg \
 	 --with-tiff \
 	 --with-gif \
 	 --with-png \
 	 --with-rsvg \
 	 --with-dbus \
-	 --with-webp \
-	 --with-xft \
-	 --with-imagemagick \
-	 --without-gpm \
-"
-    GTK="${DESKTOP} \
-	 --with-xpm=ifavailable \
-	 --with-x-toolkit=gtk3 \
-	 --without-pgtk \
-	 --with-toolkit-scroll-bars \
-	 --x-includes=%{_x11inc} \
-	 --x-libraries=%{_x11lib} \
-	 --with-libotf \
-	 --with-m17n-flt \
 %if %{with cairo}
 	 --with-cairo \
 %endif
+     --with-tree-sitter \
+	 --with-libotf \
+	 --with-m17n-flt \
+	 --with-imagemagick \
+"
+
+DESKTOP_X11="${DESKTOP_SHARED}
+      --with-x \
+	  --with-xim \
+	  --with-xft \
+	  --without-gpm \
+"
+
+GTK_X11="${DESKTOP_X11} \
+     --with-x-toolkit=gtk \
+     --without-pgtk \
+	 --with-toolkit-scroll-bars \
+	 --x-includes=%{_x11inc} \
+	 --x-libraries=%{_x11lib} \
 %if %{with webkit}
-	 --with-xwidgets \
+     --with-xwidgets \
 %endif
 "
+
 #
 # Avoid libraries which uses direct X11 ...
 # GTK3 and GDK3 can switch between wayland or X11
 # maybe the libs of imagemagick can not????
 #
-WAYLAND="--without-x \
-	 --without-xim \
-	 --with-sound \
-	 --with-jpeg \
-	 --with-tiff \
-	 --with-gif \
-	 --with-png \
-	 --with-rsvg \
-	 --with-dbus \
-	 --with-webp \
-	 --without-xft \
-	 --with-imagemagick \
-	 --without-gpm \
-	 --with-x-toolkit=gtk3 \
-	 --with-pgtk \
-	 --with-toolkit-scroll-bars \
-	 --with-libotf \
-	 --with-m17n-flt \
-%if %{with cairo}
-	 --with-cairo \
-%endif
+DESKTOP_WAYLAND="${DESKTOP_SHARED}
+    --without-x \
+    --without-xim \
+	--without-xft \
 "
-    X11="${DESKTOP} \
-	 --with-xpm=ifavailable \
+
+GTK_PURE="${DESKTOP_WAYLAND}
+      --with-pgtk \
+      --with-toolkit-scroll-bars \
+"
+
+LUCID_X11="${DESKTOP_SHARED} \
 	 --with-x-toolkit=lucid \
 	 --with-toolkit-scroll-bars \
 	 --x-includes=%{_x11inc} \
@@ -653,6 +648,7 @@ WAYLAND="--without-x \
 	 --without-m17n-flt \
 	 --without-harfbuzz \
 "
+
    COMP="--disable-build-details \
 %if %{with mailutils}
 	 --without-pop
@@ -725,7 +721,7 @@ find native-lisp -type f -exec install -m 0644 "{}" "${parking}%{_libdir}/emacs/
 make distclean
 rm -vf src/emacs-%{version}*
 #
-CFLAGS="$CFLAGS -DPDMP_BASE='\"emacs-x11\"'" ./configure ${COMP} ${PREFIX} ${X11} ${SYS} --with-dumping=pdumper
+CFLAGS="$CFLAGS -DPDMP_BASE='\"emacs-x11\"'" ./configure ${COMP} ${PREFIX} ${LUCID_X11} ${SYS} --with-dumping=pdumper
 %make_build V=1
 cp -p src/emacs src/emacs-x11
 cp -p src/emacs.pdmp src/emacs-x11.pdmp
@@ -782,7 +778,7 @@ find native-lisp -type f -exec install -m 0644 "{}" "${parking}%{_libdir}/emacs/
 make distclean
 rm -vf src/emacs-%{version}*
 #
-CFLAGS="$CFLAGS -DPDMP_BASE='\"emacs-wayland\"'" ./configure ${COMP} ${PREFIX} ${WAYLAND} ${SYS} --with-dumping=pdumper
+CFLAGS="$CFLAGS -DPDMP_BASE='\"emacs-wayland\"'" ./configure ${COMP} ${PREFIX} ${GTK_PURE} ${SYS} --with-dumping=pdumper
 %make_build V=1
 cp -p src/emacs src/emacs-wayland
 cp -p src/emacs.pdmp src/emacs-wayland.pdmp
@@ -891,11 +887,13 @@ chmod -R a+r %{buildroot}%{_datadir}/emacs/site-lisp/
 
 install -dm755 %{buildroot}/%{_emacs_sitestartdir}/
 cat << EOF > %{buildroot}/%{_emacs_sitestartdir}/archsitedir.el
+;;  -*- lexical-binding: t -*-
 ;; Add load-path for dynamic modules
 (add-to-list 'load-path "%{_emacs_archsitelispdir}")
 EOF
 
 cat <<EOF > %{buildroot}/%{_emacs_sitestartdir}/function-c-source-directory.el
+;;  -*- lexical-binding: t -*-
 ;; Set function c source directory to the path of debugsource
 ;; so it can be found without user invention
 (setq find-function-C-source-directory "%{_usrsrc}/debug/%{name}-%{version}/src")

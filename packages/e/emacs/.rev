@@ -2306,4 +2306,12 @@ Now one could consider building emacs with gsettings support (both debian and fe
 - Enable %check again</comment>
     <requestid>1332476</requestid>
   </revision>
+  <revision rev="216" vrev="6">
+    <srcmd5>d30dc4b0a47f02eb5d8019164411826d</srcmd5>
+    <version>30.2</version>
+    <time>1772987185</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1337340</requestid>
+  </revision>
 </revisionlist>

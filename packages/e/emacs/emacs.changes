@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 28 18:48:54 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
+
+- Add macro to add Emacs packages to load-path
+- Enable lexical bindings in startup-macros
+
+-------------------------------------------------------------------
 Wed Feb 11 09:26:04 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch emacs-30.2-fix-zoom.patch
