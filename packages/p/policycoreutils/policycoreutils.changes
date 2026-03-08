@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  3 07:55:28 UTC 2026 - Johannes Segitz <jsegitz@suse.com>
+
+- Drop use of update-desktop-files (jsc#PED-15235). We will not
+  upstream the translations, they seem to be very low quality
+
+-------------------------------------------------------------------
 Mon Mar  2 15:15:57 UTC 2026 - Johannes Segitz <jsegitz@suse.com>
 
 - python-utils package: Don't own /var/lib/selinux (PED-14773)

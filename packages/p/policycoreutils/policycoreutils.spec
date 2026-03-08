@@ -83,7 +83,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  python-rpm-macros
-BuildRequires:  update-desktop-files
 BuildRequires:  xmlto
 Recommends:     setools-console
 Requires:       gawk
@@ -269,9 +268,6 @@ install -m 644 %{SOURCE13} %{buildroot}%{_pam_vendordir}/system-config-selinux
 install -m 644 %{SOURCE13} %{buildroot}%{_sysconfdir}/pam.d/selinux-polgengui
 install -m 644 %{SOURCE13} %{buildroot}%{_sysconfdir}/pam.d/system-config-selinux
 %endif
-%suse_update_desktop_file -i system-config-selinux System Security Settings
-%suse_update_desktop_file -i selinux-polgengui System Security Settings
-%suse_update_desktop_file -i sepolicy System Security Settings
 
 # Add compatibility symlinks from /usr/sbin to /sbin on Leap
 %if 0%{?suse_version} <= 1500
