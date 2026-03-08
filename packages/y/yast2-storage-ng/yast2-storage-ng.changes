@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  6 10:50:26 UTC 2026 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Added the needed infrastructure to specify what to do with the
+  existing volumes in a reused LVM volume group (related to
+  jsc#PED-15104, bsc#1254718 and gh#agama-project/agama#3171).
+- Fixed creation of thin pools within pre-existing thin pools.
+- 5.0.41
+
+-------------------------------------------------------------------
 Thu Jan 29 09:00:40 UTC 2026 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Adjusted the criteria to check whether TPM-based full-disk
