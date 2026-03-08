@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.19
-%define patchversion 6.19.5
-%define git_commit 9c1596772e0cd49f33c4372f03cbe6d96e5692e1
+%define patchversion 6.19.6
+%define git_commit 9abab2a0c3faf8ccbae08f23732acaa4d67c941d
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-lpae
-Version:        6.19.5
+Version:        6.19.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g9c15967
+Release:        <RELEASE>.g9abab2a
 %else
 Release:        0
 %endif
