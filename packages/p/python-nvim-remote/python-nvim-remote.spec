@@ -1,7 +1,7 @@
 #
 # spec file for package python-nvim-remote
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define         modname nvim_remote
-%define         pythons python312 python313
+%define         skip_python311 1
 Name:           python-nvim-remote
 Version:        5.0.0
 Release:        0

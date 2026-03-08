@@ -33,4 +33,15 @@
   * update tests (forwarded request 1309600 from rrahl0)</comment>
     <requestid>1309601</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>bcaed6bb6b6c489dda81f99fb616d41b</srcmd5>
+    <version>5.0.0</version>
+    <time>1772987224</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't redefine pythons, as this means we need to keep up with the
+  versions packaged. Instead, define skip_python311, as support for
+  these versions was dropped with version 4.2.0.
+Mostly needed as python312 is no longer a thing in Factory (forwarded request 1336284 from dimstar)</comment>
+    <requestid>1337484</requestid>
+  </revision>
 </revisionlist>

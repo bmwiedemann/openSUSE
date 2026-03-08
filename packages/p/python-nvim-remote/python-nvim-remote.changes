@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  4 07:55:09 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Don't redefine pythons, as this means we need to keep up with the
+  versions packaged. Instead, define skip_python311, as support for
+  these versions was dropped with version 4.2.0.
+
+-------------------------------------------------------------------
 Tue Oct  7 11:36:29 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 5.0.0:
