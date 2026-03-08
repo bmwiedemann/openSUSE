@@ -1,7 +1,7 @@
 #
 # spec file for package supercollider-sc3-plugins
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,8 @@ Source0:        https://github.com/supercollider/sc3-plugins/releases/download/V
 Source1:        https://github.com/supercollider/sc3-plugins/releases/download/Version-%{version}/sc3-plugins-%{version}-Source.tar.bz2.asc
 Source9:        supercollider-sc3-plugins.keyring
 Source99:       supercollider-sc3-plugins-rpmlintrc
+Patch0:         000-supercollider-sc3-plugins-cmake-force-c++-17.patch
+Patch1:         001-supercollider-sc3-plugins-add-include-cstdint-in-nh_hall-hpp.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  fftw-devel
@@ -53,7 +55,7 @@ Requires:       supercollider >= 3.5
 Collection of free and usefull SuperCollider plugins
 
 %prep
-%setup -q -n sc3-plugins-%{version}-Source
+%autosetup -p1 -n sc3-plugins-%{version}-Source
 
 %build
 %ifarch ppc ppc64 ppc64le

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar  8 03:18:41 UTC 2026 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Fix build with gcc-15, add patches:
+  * 000-supercollider-sc3-plugins-cmake-force-c++-17.patch
+  * 001-supercollider-sc3-plugins-add-include-cstdint-in-nh_hall-hpp.patch
+
+-------------------------------------------------------------------
 Tue Aug  1 07:02:13 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Disable QUARKS=ON as it gives no effect and installs plugins in 
