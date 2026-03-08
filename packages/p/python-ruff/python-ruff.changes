@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar  6 12:06:00 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.15.5 
+ * Preview features
+  * Discover Markdown files by default in preview mode 
+  * [perflint] Extend PERF102 to comprehensions and generators 
+  * [refurb] Fix FURB101 and FURB103 false positives when I/O variable is used later 
+  * [ruff] Add fix for none-not-at-end-of-union (RUF036) 
+  * [ruff] Fix false positive for re.split with empty string pattern (RUF055) 
+ * Bug fixes
+  * [fastapi] Handle callable class dependencies with __call__ method (FAST003) 
+  * [pydocstyle] Fix numpy section ordering (D420) 
+  * [pyflakes] Fix false positive for names shadowing re-exports (F811) 
+  * [pyupgrade] Avoid inserting redundant None elements in UP045 
+ * Documentation
+  * Document extension mapping for Markdown code formatting 
+  * Update default Python version examples 
+
+-------------------------------------------------------------------
 Sat Feb 28 19:49:57 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.15.4 

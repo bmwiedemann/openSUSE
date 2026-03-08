@@ -3098,4 +3098,26 @@
     + none-comparison (E711)</comment>
     <requestid>1335588</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>eb8fb5ecaebb8af0cc1f87f75c66e830</srcmd5>
+    <version>0.15.5</version>
+    <time>1772987172</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15.5 
+ * Preview features
+  * Discover Markdown files by default in preview mode 
+  * [perflint] Extend PERF102 to comprehensions and generators 
+  * [refurb] Fix FURB101 and FURB103 false positives when I/O variable is used later 
+  * [ruff] Add fix for none-not-at-end-of-union (RUF036) 
+  * [ruff] Fix false positive for re.split with empty string pattern (RUF055) 
+ * Bug fixes
+  * [fastapi] Handle callable class dependencies with __call__ method (FAST003) 
+  * [pydocstyle] Fix numpy section ordering (D420) 
+  * [pyflakes] Fix false positive for names shadowing re-exports (F811) 
+  * [pyupgrade] Avoid inserting redundant None elements in UP045 
+ * Documentation
+  * Document extension mapping for Markdown code formatting 
+  * Update default Python version examples</comment>
+    <requestid>1337318</requestid>
+  </revision>
 </revisionlist>
