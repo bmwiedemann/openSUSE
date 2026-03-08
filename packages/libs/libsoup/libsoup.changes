@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  5 19:58:46 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add libsoup-CVE-2026-0716.patch:  Fix out-of-bounds read when
+  reading unmasked frame (bsc#1256418 CVE-2026-0716
+  glgo#GNOME/libsoup!518).
+
+-------------------------------------------------------------------
 Wed Feb 25 02:47:08 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add libsoup-CVE-2026-1539.patch: Also remove Proxy-Authorization
@@ -67,7 +74,7 @@ Fri Feb 20 15:30:11 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
   + libsoup-CVE-2026-1467.patch
   + libsoup-CVE-2026-1760.patch
 - libsoup-CVE-2026-2708.patch temporarily disabled while we need to
-  rebase it.  
+  rebase it.
 
 -------------------------------------------------------------------
 Thu Feb 20 14:51:21 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>

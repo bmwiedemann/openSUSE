@@ -37,6 +37,8 @@ Patch14:        libsoup-CVE-2025-32049.patch
 Patch17:        libsoup-CVE-2026-2708.patch
 # PATCH-FIX-UPSTREAM libsoup-CVE-2026-1539.patch bsc#1257441, CVE-2026-1539, glgo#GNOME/libsoup#489 -- Also remove Proxy-Authorization header on cross origin redirect
 Patch18:        libsoup-CVE-2026-1539.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2026-0716.patch bsc#1256418 mgorse@suse.com -- websocket: Fix out-of-bounds read when reading unmasked frame
+Patch19:        libsoup-CVE-2026-0716.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.53
