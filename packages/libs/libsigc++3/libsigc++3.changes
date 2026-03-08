@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar  6 08:13:17 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.8.0:
+  + slot, signal: static_assert not using R,T... syntax
+  + scoped_connection: Remove [[nodiscard]]
+  + Add signal_connect(): Helper functions to ease connecting
+    functions or methods to signals
+  + Simplify ambiguity removal when compiling with MSVC
+  + Documentation:
+    - README.md: Add info about building the documentation
+    - Don't link to removed parts of gnome.org
+    - Remove obsolete FSF (Free Software Foundation) address
+    - Clarify download locations.
+    - Releases will not be stored at download.gnome.org/sources/.
+- Convert to obs_scm service.
+
+-------------------------------------------------------------------
 Tue Mar  5 14:07:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: the -32bit packages are no longer needed and

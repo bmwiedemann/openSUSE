@@ -1,7 +1,7 @@
 #
 # spec file for package libsigc++3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-%define _name libsigc++
+%define _name libsigcplusplus
 Name:           libsigc++3
-Version:        3.6.0
+Version:        3.8.0
 Release:        0
 Summary:        Typesafe Signal Framework for C++
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://libsigcplusplus.github.io/libsigcplusplus/
-Source0:        https://download.gnome.org/sources/libsigc++/3.6/%{_name}-%{version}.tar.xz
+Source0:        %{_name}-%{version}.tar.zst
 
 BuildRequires:  gcc-c++
 BuildRequires:  meson
