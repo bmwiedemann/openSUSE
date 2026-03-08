@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar  6 20:10:25 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.09
+  * Changed the default pattern editor layout to have less visual
+    noise, similar to that of MilkyTracker. This makes it, in my
+    opinion, easier on the eyes. Naturally, this is going to be
+    somewhat of a controversial change, so it can be turned off by
+    going to Config -> Miscellaneous, then enabling "Original FT2
+    pattern layout".
+
+-------------------------------------------------------------------
 Wed Mar  4 19:58:06 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.08
