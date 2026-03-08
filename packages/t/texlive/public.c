@@ -28,6 +28,10 @@
 #include <limits.h>
 #include <grp.h>
 #include <pwd.h>
+#ifdef HAVE_SELINUX
+#include <selinux/selinux.h>
+#include <selinux/context.h>
+#endif
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -125,6 +129,25 @@ int main(int argc, char *argv[])
     if ((grp = getgrnam(TEXGRP)) == (struct group*)0)
 	goto err;
 
+#ifdef HAVE_SELINUX
+    if (is_selinux_enabled() > 0) {
+	    char *cur_con = NULL;
+
+	if (getcon(&cur_con) == 0) {
+	    context_t ctx = context_new(cur_con);
+	    if (ctx) {
+		if (context_type_set(ctx, "texlive_target_t") == 0) {
+		    if (setexeccon(context_str(ctx)) < 0) {
+			perror("FATAL: SELinux setexeccon failed");
+			goto err;
+		    }
+		}
+		context_free(ctx);
+	    }
+	    freecon(cur_con);
+	}
+    }
+#endif
     if (ruid == 0 || euid == 0) {   /* If user is root switch over to mktex:mktex */
 	int initgrp = 0;
 	char *cwd;
@@ -182,11 +205,46 @@ int main(int argc, char *argv[])
 	}
 
     } else if (rgid != grp->gr_gid && egid == grp->gr_gid) {
-	rgid = grp->gr_gid;
+	const int ngroups = getgroups(0, NULL);
+	int in_group = 0;
+	if (ngroups > 0) {
+	    int i;
+	    gid_t *groups = malloc(ngroups * sizeof(gid_t));
+	    if (!groups)
+		goto err;
+	    if (getgroups(ngroups, groups) >= 0) {
+		for (i = 0; i < ngroups; i++) {
+		    if (groups[i] != grp->gr_gid)
+			continue;
+		    in_group++;
+		    break;
+		}
+	    }
+	    free(groups);
+	}
 
-	if (setregid(rgid, grp->gr_gid))
-	    goto err;
-
+	if (in_group) {
+	    if (setregid(grp->gr_gid, grp->gr_gid))
+		goto err;
+	} else {
+	    if (strcmp(lp->prog, "mktexlsr") == 0 || strcmp(lp->prog, "texhash") == 0) {
+		egid = grp->gr_gid;
+		rgid = grp->gr_gid;
+		for (ep = envp; ep->name; ep++) {
+		    if (!ep->value)
+			continue;
+		    setenv(ep->name, ep->value, 1);
+		}
+	    } else
+		egid = rgid;
+#ifdef _GNU_SOURCE
+	    if (setresgid(rgid, egid, rgid))
+		goto err;
+#else
+	    if (setregid(rgid, egid))
+		goto err;
+#endif
+	}
     }
 
     umask(0002);

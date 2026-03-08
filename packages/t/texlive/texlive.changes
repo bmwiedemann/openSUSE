@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar  6 09:30:43 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Reenable setgid usage for mktexls and texhash commands
+
+-------------------------------------------------------------------
+Thu Mar  5 14:03:22 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Fix bug boo#1258938
+  * Implement selinux support for the setgid mktex Kpathsea tools
+    wrapper public(8) which is used for executing e.g. mktexlsr
+  * Develop a Policy Package module to be able to use this wrapper 
+- New package texlive-selinux for the Policy Package module
+  and its %pre, %post, %postun, and %posttrans scriplets
+
+-------------------------------------------------------------------
 Thu Feb 26 13:53:00 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Make texlive build even if on SLFO:Main with older %suse_version

@@ -1,0 +1,137 @@
+policy_module(texlive_wrapper, 1.0)
+
+gen_require(`
+    type bin_t;
+    type etc_t;
+    type tmp_t;
+    type usr_t;
+    type home_bin_t;
+    type gconf_home_t;
+    type cache_home_t;
+    type data_home_t;
+    type tmpfs_t;
+    type cgroup_t;
+    type tetex_data_t;
+    type unconfined_t;
+    type user_devpts_t;
+    role unconfined_r;
+    role system_r;
+    class file { execute execute_no_trans getattr map read open write create rename setattr unlink lock };
+    class dir { getattr search read open write add_name remove_name create rmdir };
+    class lnk_file { read getattr };
+    class chr_file { read write getattr ioctl };
+    class filesystem getattr;
+    class process { setfscreate };
+')
+
+# ==========================================================
+# 1. Type declaration
+# ==========================================================
+
+# A) Wrapper public
+type texlive_wrapper_t;
+type texlive_wrapper_exec_t;
+application_domain(texlive_wrapper_t, texlive_wrapper_exec_t)
+
+# B) The called program from public.c
+type texlive_target_t;
+type texlive_target_exec_t;
+application_domain(texlive_target_t, texlive_target_exec_t)
+
+#
+# Roles
+#
+role unconfined_r types { texlive_wrapper_t texlive_target_t };
+role system_r types { texlive_wrapper_t texlive_target_t };
+
+# ==========================================================
+# 2. Rules for public.c
+# ==========================================================
+
+# Allow system admin (unconfined_t), to start the Wrapper and
+# switch over to the Domain texlive_wrapper_t
+domain_auto_trans(unconfined_t, texlive_wrapper_exec_t, texlive_wrapper_t)
+
+# Allow stdio in/out to tty
+userdom_use_user_terminals(texlive_wrapper_t)
+userdom_use_user_terminals(texlive_target_t)
+
+# The ~/.cache/texmf and ~/.local/texmf of normal users
+userdom_search_user_home_dirs(texlive_wrapper_t)
+userdom_search_user_home_dirs(texlive_target_t)
+allow texlive_target_t home_bin_t:dir { search };
+allow texlive_target_t data_home_t:dir { search getattr };
+allow texlive_target_t gconf_home_t:dir { search getattr };
+allow texlive_target_t cache_home_t:dir { getattr search read open write add_name remove_name create rmdir };
+allow texlive_target_t cache_home_t:file { getattr read write create append open lock unlink rename setattr ioctl };
+allow texlive_target_t cache_home_t:lnk_file { read getattr };
+
+# Allow the Wrapper to change UID and GID (setuid / setgid)
+allow texlive_wrapper_t self:capability { setuid setgid };
+
+# We use initgroups(), getgrnam(), and getpwnam() which will
+# access /etc/passwd and /etc/groups, make sure that nis/ssd/ldap
+# will not stop the Wrapper
+auth_use_nsswitch(texlive_wrapper_t)
+
+# Allow the Wrapper, to search through directories and and read files
+allow texlive_wrapper_t texlive_target_exec_t:dir { search getattr };
+allow texlive_wrapper_t texlive_target_exec_t:file { read open getattr execute };
+allow texlive_wrapper_t tetex_data_t:dir { search getattr };
+
+# Allow perl or shell to search, open, and read the final scripts
+allow texlive_target_t texlive_target_exec_t:dir { search getattr read open };
+allow texlive_target_t texlive_target_exec_t:file { read open getattr };
+
+# Allow the Wrapper, to call setexeccon() for context switch
+allow texlive_wrapper_t self:process setexec;
+
+# Allow to resolve symbolic links
+allow texlive_wrapper_t texlive_target_exec_t:lnk_file { read getattr };
+allow texlive_target_t texlive_target_exec_t:lnk_file { read getattr };
+
+# Allow execution of standard binaries like /bin/sh and /usr/bin/perl
+corecmd_exec_bin(texlive_wrapper_t)
+corecmd_exec_bin(texlive_target_t)
+
+# Allow reading files below /usr
+files_read_usr_files(texlive_target_t)
+files_manage_generic_tmp_dirs(texlive_target_t)
+
+# Allow to manage TeX data files and directories (read, create, remove)
+# as well as symbolic links
+allow texlive_target_t tetex_data_t:dir { getattr search read open write add_name remove_name create rmdir };
+allow texlive_target_t tetex_data_t:file { getattr read write create open lock unlink };
+allow texlive_target_t tetex_data_t:lnk_file { read getattr };
+
+# Allow to write ls-R files in /etc/
+allow texlive_target_t etc_t:file { getattr read write open };
+
+# Make mktemp work in /tmp
+allow texlive_target_t tmp_t:dir { getattr search read write add_name remove_name create rmdir };
+allow texlive_target_t tmp_t:file { getattr read write create open lock unlink rename setattr };
+allow texlive_target_t tmpfs_t:filesystem getattr;
+
+# Make the bunch of scripts work below /usr/libexec/mktex/
+allow texlive_target_t texlive_target_exec_t:file { getattr read open execute execute_no_trans };
+allow texlive_target_t texlive_wrapper_exec_t:file { getattr read open execute execute_no_trans };
+allow texlive_target_t tetex_data_t:file { getattr read write create open lock unlink rename setattr };
+allow texlive_target_t self:process setfscreate;
+allow texlive_target_t cgroup_t:dir { search getattr };
+
+# ==========================================================
+# 3. The switch over (TRANSITION) and environment variables
+# ==========================================================
+
+# Allow the real switch (execv) into the final Domain
+allow texlive_wrapper_t texlive_target_t:process transition;
+
+# Declare the final files als valid entrypoints
+allow texlive_target_t texlive_target_exec_t:file entrypoint;
+
+# Do not remove the environment variables
+allow texlive_wrapper_t texlive_target_t:process { noatsecure siginh rlimitinh };
+
+# Allow the final program to use stdio (stdout/stderr) of the Wrapper
+allow texlive_target_t texlive_wrapper_t:fd use;
+allow texlive_target_t texlive_wrapper_t:fifo_file rw_file_perms;

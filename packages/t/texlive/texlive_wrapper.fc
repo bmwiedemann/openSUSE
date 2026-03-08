@@ -1,0 +1,21 @@
+# 1. The location of our Wrapper, the compiled public.c
+/usr/libexec/mktex/public                    -- gen_context(system_u:object_r:texlive_wrapper_exec_t,s0)
+
+# 2. The path to our possible target programs which are
+# symbolic links (hence the "-l")
+/usr/libexec/mktex/mktexlsr                  -l gen_context(system_u:object_r:texlive_target_exec_t,s0)
+/usr/libexec/mktex/mktexmf                   -l gen_context(system_u:object_r:texlive_target_exec_t,s0)
+/usr/libexec/mktex/mktexpk                   -l gen_context(system_u:object_r:texlive_target_exec_t,s0)
+/usr/libexec/mktex/mktextfm                  -l gen_context(system_u:object_r:texlive_target_exec_t,s0)
+/usr/libexec/mktex/texhash                   -l gen_context(system_u:object_r:texlive_target_exec_t,s0)
+
+# 3. The real location of the target programs
+# The regular expression will set labels for the
+# directory as well as on the file therein.
+/usr/share/texmf/scripts/texlive(/.*)?          gen_context(system_u:object_r:texlive_target_exec_t,s0)
+
+# 4. Correct labels
+/var/cache/texmf(/.*)?                          gen_context(system_u:object_r:tetex_data_t,s0)
+/var/lib/texmf(/.*)?                            gen_context(system_u:object_r:tetex_data_t,s0)
+/usr/local/share/texmf(/.*)?                    gen_context(system_u:object_r:tetex_data_t,s0)
+/usr/share/texmf(/.*)?                          gen_context(system_u:object_r:tetex_data_t,s0)

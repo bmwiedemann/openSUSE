@@ -70,6 +70,10 @@
 #
 #
 %bcond_without	luametatex
+%bcond_without	selinux
+
+%global         modulename texlive_wrapper
+%global         selinuxtype targeted
 
 Name:           texlive
 Version:        %{texlive_version}.%{texlive_release}
@@ -270,6 +274,15 @@ BuildRequires:  perl(XML::LibXML::Simple)
 BuildRequires:  perl(XML::LibXSLT)
 BuildRequires:  perl(XML::Writer::String)
 %endif
+# SELinux
+%if %{with selinux}
+# Required for the Policy Package module
+BuildRequires:  selinux-policy-devel
+BuildRequires:  rpm_macro(selinux_requires_min)
+%{?selinux_requires_min}
+%endif
+# Build public always with libselinux
+BuildRequires:  pkgconfig(libselinux)
 # Download at ftp://tug.org/texlive/historic/%{texlive_version}/
 Source0:        %{texlive_source}.tar.xz
 Source1:        https://github.com/plk/biber/archive/refs/tags/v%{biber_version}.tar.gz#/biber-%{biber_version}.tar.gz
@@ -281,6 +294,9 @@ Source4:        cnf-to-paths.awk
 Source30:       texlive-rpmlintrc
 Source50:       public.c
 Source51:       public.8
+Source52:       %{modulename}.te
+Source53:       %{modulename}.fc
+Source55:       SELinux
 Patch0:         source.dif
 Patch1:         source-configure.dif
 Patch2:         source-xdvizilla.dif
@@ -1754,6 +1770,9 @@ Requires(pre):  %{name}-filesystem >= %{texlive_version}
 Requires(pre):  user(mktex)
 Requires(pre):  group(mktex)
 Requires(post): %{name}-filesystem
+%if %{with selinux}
+Requires:       (texlive-selinux = 6.4.1 if selinux-policy-%{selinuxtype})
+%endif
 Requires(post): permissions
 Requires:       %{name}-gsftopk-bin
 Requires(pre):  %{name}-scripts-bin
@@ -4024,6 +4043,22 @@ Prefix:         %{_bindir}
 %description yplan-bin
 Binary files of yplan
 
+%if %{with selinux}
+%package selinux
+Version:        6.4.1
+Release:        0
+Summary:        SELinux policy module for texlive-kpathsea
+License:        LGPL-2.1-or-later
+Group:          System/Libraries
+Requires(pre):  policycoreutils
+Requires(pre):  %{name}-scripts
+Requires(post): policycoreutils
+Requires(post): %{name}-scripts
+
+%description selinux
+This package provides the SELinux policy module for texlive-kpathsea.
+%endif
+
 %package -n libkpathsea6
 Version:        6.4.1
 Release:        0
@@ -4735,7 +4770,14 @@ popd
 
     # compile public
     mkdir -p %{libexecdir}/mktex
-    $CC ${RPM_OPT_FLAGS} -D_GNU_SOURCE -DTEXGRP='"%{texgrp}"' -DTEXUSR='"%{texusr}"' -DMKTEX='"%{_libexecdir}/mktex"' -fPIE -pie -o %{libexecdir}/mktex/public %{S:50}
+%if %{with selinux}
+    cp -p %{S:52} %{S:53} .
+    make -f %{_datadir}/selinux/devel/Makefile %{modulename}.pp
+%endif
+    FLAGS_SELINUX=-DHAVE_SELINUX
+    LIBS_SELINUX=-lselinux
+    $CC ${RPM_OPT_FLAGS} -D_GNU_SOURCE -DTEXGRP='"%{texgrp}"' -DTEXUSR='"%{texusr}"' ${FLAGS_SELINUX} \
+	-DMKTEX='"%{_libexecdir}/mktex"' -fPIE -pie -o %{libexecdir}/mktex/public %{S:50} ${LIBS_SELINUX}
 
     # install our own scripts
     mkdir -p ${prefix}/bin
@@ -5139,6 +5181,14 @@ popd
 	esac
 	ln -sf %{_libexecdir}/mktex/public %{buildroot}%{_bindir}/$mktex
     done
+%if %{with selinux}
+    mkdir -p %{buildroot}%{_datadir}/selinux/packages/%{selinuxtype}
+    mkdir -p %{buildroot}%{_datadir}/selinux/devel/include/distributed
+    install -m 0644 %{modulename}.pp %{buildroot}%{_datadir}/selinux/packages/%{selinuxtype}/
+    install -m 0644 %{modulename}.if %{buildroot}%{_datadir}/selinux/devel/include/distributed/
+    bzip2 -9 %{buildroot}%{_datadir}/selinux/packages/%{selinuxtype}/%{modulename}.pp
+%endif
+
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
 	%{buildroot}/var/adm/update-scripts/%{name}-%{version}-%{release}-zypper
@@ -5197,6 +5247,24 @@ popd
 %if %{defined verify_permissions}
 %verifyscript kpathsea-bin
 %verify_permissions -e %{_libexecdir}/mktex/public
+%endif
+
+%if %{with selinux}
+%post selinux
+%selinux_modules_install -s %{selinuxtype} %{_datadir}/selinux/packages/%{selinuxtype}/%{modulename}.pp.bz2
+%selinux_relabel_post -s %{selinuxtype}
+
+%pre selinux
+%selinux_relabel_pre -s %{selinuxtype}
+
+%postun selinux
+if test $1 = 0; then
+    %selinux_modules_uninstall -s %{selinuxtype} %{modulename}
+    %selinux_relabel_post -s %{selinuxtype}
+fi
+
+%posttrans selinux
+%selinux_relabel_post -s %{selinuxtype}
 %endif
 
 %post kpathsea-bin
@@ -6235,6 +6303,14 @@ fi
 
 %files yplan-bin
 %{_bindir}/yplan
+
+%if %{with selinux}
+%files selinux
+%dir %{_datadir}/selinux/packages/%{selinuxtype}/
+%dir %{_datadir}/selinux/devel/include/distributed/
+%{_datadir}/selinux/packages/%{selinuxtype}/%{modulename}.pp.*
+%{_datadir}/selinux/devel/include/distributed/%{modulename}.if
+%endif
 
 %files -n libkpathsea6
 %{_libdir}/libkpathsea*.so.*

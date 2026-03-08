@@ -1,0 +1,16 @@
+Path				Label			Roll
+/usr/libexec/mktex/public	texlive_wrapper_exec_t	Gatekeeper
+/usr/libexec/mktex/mktexlsr	texlive_target_exec_t	Script
+/usr/libexec/mktex/mktexmf	texlive_target_exec_t	Script
+/usr/libexec/mktex/mktexpk	texlive_target_exec_t	Script
+/usr/libexec/mktex/mktextfm	texlive_target_exec_t	Script
+/usr/libexec/mktex/texhash	texlive_target_exec_t	Script
+/usr/share/texmf/scripts/...	texlive_target_exec_t	Entrypoint
+/var/cache/texmf/		tetex_data_t		Data
+/var/lib/texmf/			tetex_data_t		Data
+/etc/texmf/ls-R			etc_t
+${HOME}/bin			home_bin_t
+${HOME}/.local			gconf_home_t
+${HOME}/.local/bin		home_bin_t
+${HOME}/.local/share		data_home_t
+${HOME}/.cache			cache_home_t

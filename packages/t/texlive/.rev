@@ -1330,4 +1330,19 @@
     <comment>- Make texlive build even if on SLFO:Main with older %suse_version</comment>
     <requestid>1335293</requestid>
   </revision>
+  <revision rev="112" vrev="115">
+    <srcmd5>6d5cd8757380ff21dfe518f049dc6d6d</srcmd5>
+    <version>unknown</version>
+    <time>1772987164</time>
+    <user>dimstar_suse</user>
+    <comment>- Reenable setgid usage for mktexls and texhash commands
+
+- Fix bug boo#1258938
+  * Implement selinux support for the setgid mktex Kpathsea tools
+    wrapper public(8) which is used for executing e.g. mktexlsr
+  * Develop a Policy Package module to be able to use this wrapper 
+- New package texlive-selinux for the Policy Package module
+  and its %pre, %post, %postun, and %posttrans scriplets</comment>
+    <requestid>1337291</requestid>
+  </revision>
 </revisionlist>
