@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  6 10:01:08 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
+
+- Fix quoting of Emacs tree-sitter-extra-load-path. Fixes boo#1259205
+- Install Emacs trees-sitter site-start script to libtree-sitter.
+  Grammars should be found without installing the main package.
+
+-------------------------------------------------------------------
 Thu Feb 19 19:38:33 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
 
 - Workaround circular dependency between Emacs and Tree-sitter

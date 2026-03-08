@@ -123,7 +123,7 @@ install -d %{buildroot}/%{_emacs_sitestartdir}
 cat <<EOF > %{buildroot}/%{_emacs_sitestartdir}/tree-sitter-load-path.el
 ;;  -*- lexical-binding: t -*-
 ;; Add tree-sitter grammars packaged by openSUSE
-(add-to-list 'treesit-extra-load-path %{_treesitter_grammardir})
+(add-to-list 'treesit-extra-load-path "%{_treesitter_grammardir}")
 EOF
 
 %ldconfig_scriptlets -n lib%{name}%{somajor}
@@ -138,7 +138,6 @@ EOF
 %{_fileattrsdir}/treesitter_grammar.attr
 %dir %{_emacs_sitelispdir}
 %dir %{_emacs_sitestartdir}
-%{_emacs_sitestartdir}/tree-sitter-load-path.el
 %dir %{_includedir}/%{_treesitter_base_name}
 %dir %{_treesitter_grammar_develdir}
 
@@ -147,6 +146,7 @@ EOF
 %license LICENSE
 %{_libdir}/lib%{name}.so.*
 %dir %{_treesitter_grammardir}
+%{_emacs_sitestartdir}/tree-sitter-load-path.el
 
 %files devel
 %doc docs/

@@ -232,4 +232,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1335327</requestid>
   </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>5e7f75fb8e70a46c5c230395d271d962</srcmd5>
+    <version>0.25.3</version>
+    <time>1772987170</time>
+    <user>dimstar_suse</user>
+    <comment>Not sure why the link was gone or off.
+Superceed previous request.</comment>
+    <requestid>1337314</requestid>
+  </revision>
 </revisionlist>
