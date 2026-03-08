@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar  8 13:17:42 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 4.0.0:
+  * Annotated types for D-Bus signatures
+  * full changelog at https://github.com/Bluetooth-Devices/dbus-fast/compare/v3.1.2...v4.0.0
+
+-------------------------------------------------------------------
 Wed Jan 28 18:28:44 UTC 2026 - Andreas Prittwitz <m4ng4n@gmx.de>
 
 - Update to version 3.1.2:

@@ -17,10 +17,8 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-
 %define mname dbus_fast
 %define pname python-%{mname}
-
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
@@ -28,11 +26,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 %{?sle15_python_module_pythons}
-
 Name:           %{pname}%{?psuffix}
-Version:        3.1.2
+Version:        4.0.0
 Release:        0
 Summary:        Python library for DBus
 License:        MIT
@@ -40,9 +36,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/bluetooth-devices/dbus-fast
 Source0:        %{pname}-%{version}.tar.xz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
-BuildRequires:  %{python_module setuptools}
-
+BuildRequires:  %{python_module poetry-core >= 1.0.0}
+BuildRequires:  %{python_module setuptools >= 65.4.1}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 %if %{with test}
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module covdefaults}
@@ -60,9 +57,6 @@ BuildRequires:  dbus-1
 BuildRequires:  dbus-1-daemon
 %endif
 %endif
-
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
 %python_subpackages
 
 %description
