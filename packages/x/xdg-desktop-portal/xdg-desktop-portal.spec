@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal
 #
-# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,7 +28,7 @@
 %define oname xdg-desktop-portal
 
 Name:           %{oname}%{?psuffix}
-Version:        1.21.0
+Version:        1.20.3
 Release:        0
 %if "%{flavor}" == ""
 Summary:        A portal frontend service for Flatpak
