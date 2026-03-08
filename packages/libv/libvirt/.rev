@@ -5016,4 +5016,20 @@ a previous changelog entry.
     https://libvirt.org/news.html#v12-0-0-2026-01-15</comment>
     <requestid>1327477</requestid>
   </revision>
+  <revision rev="437" vrev="1">
+    <srcmd5>f2596384bf4a9ddc18a85a04a4688f44</srcmd5>
+    <version>12.1.0</version>
+    <time>1772987154</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix test driver regression causing virt-manager test suite failures
+
+- spec: Cleanup of Summary and Description in preparation for jsc#PED-14588
+- spec: Fix conditional used to control build configuration for SLES 16.x
+
+- Update to libvirt 12.1.0
+  - bsc#1257283
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v12-1-0-2026-03-02</comment>
+    <requestid>1337396</requestid>
+  </revision>
 </revisionlist>

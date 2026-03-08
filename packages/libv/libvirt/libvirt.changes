@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar  6 21:48:34 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- Fix test driver regression causing virt-manager test suite failures
+
+-------------------------------------------------------------------
+Wed Mar  4 02:20:53 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- spec: Cleanup of Summary and Description in preparation for jsc#PED-14588
+- spec: Fix conditional used to control build configuration for SLES 16.x
+
+-------------------------------------------------------------------
+Mon Mar  2 21:54:33 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 12.1.0
+  - bsc#1257283
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v12-1-0-2026-03-02
+
+-------------------------------------------------------------------
 Thu Jan 15 18:32:20 UTC 2026 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 12.0.0
