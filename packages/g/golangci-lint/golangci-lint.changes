@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 08 12:57:34 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.11.2:
+  * chore: prepare release
+  * fix: fmt with path (#6418)
+  * docs: update GitHub Action assets (#6415)
+
+-------------------------------------------------------------------
 Fri Mar  6 13:59:43 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 2.11.1:
