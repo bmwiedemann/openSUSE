@@ -2,7 +2,7 @@
 # spec file for package scons
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,13 @@
 %define pythons python3
 %{?sle15_python_module_pythons}
 Name:           scons
-Version:        4.9.1
+Version:        4.10.1
 Release:        0
 Summary:        Replacement for Make
 License:        MIT
 Group:          Development/Tools/Building
 URL:            https://www.scons.org/
 Source:         http://prdownloads.sourceforge.net/scons/SCons-%{version}.tar.gz
-# site_init based on https://github.com/SCons/scons/pull/4261 for reproducible builds
-Source2:        site_init.py
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,14 +51,11 @@ sed -i -e '/QT3_LIBPATH = os.path.join.*QT3DIR/s/lib/%{_lib}/' \
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-mkdir -p %{buildroot}%{_datadir}/scons/site_scons
-install -p -m 644 %{SOURCE2} %{buildroot}%{_datadir}/scons/site_scons/site_init.py
 
 %files
 %license LICENSE
 %{_bindir}/*
 %{python_sitelib}/SCons
 %{python_sitelib}/SCons-%{version}-py*.egg-info
-%{_datadir}/scons
 
 %changelog

@@ -417,4 +417,14 @@ SCons 4.7.0</comment>
     <comment></comment>
     <requestid>1265575</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>0e86829a2fee290a79c6dd343a13d587</srcmd5>
+    <version>4.10.1</version>
+    <time>1772987149</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1333187 from AndreasStieger
+
+SCons 4.10.1</comment>
+    <requestid>1337378</requestid>
+  </revision>
 </revisionlist>

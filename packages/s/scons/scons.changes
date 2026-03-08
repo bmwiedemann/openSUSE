@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb 15 11:34:47 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- SCons 4.10.1:
+  * Improve Ninja support
+  * Improve handling of TEMPFILE
+  * Fix LaTeX SCanner to mimic LaTeX's search behavior for included
+    files
+  * developer visible improvements and fixes to SCons tests
+  * Documentation updates and clarification of messages
+
+-------------------------------------------------------------------
 Sat Mar 29 22:51:55 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - SCons 4.9.1:
