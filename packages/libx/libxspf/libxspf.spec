@@ -1,7 +1,7 @@
 #
 # spec file for package libxspf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ BuildRequires:  libexpat-devel
 BuildRequires:  libtool
 BuildRequires:  liburiparser-devel >= 0.7.5
 BuildRequires:  pkgconfig
+Patch0:         libxspf-1.2.1-wrongvercheck.patch
 
 %description
 libxspf the replacement for libSpiff brings XSPF playlist reading and
@@ -104,6 +105,7 @@ reference implementation for XSPF of the Xiph.Org Foundation. Features
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 autoreconf -fiv

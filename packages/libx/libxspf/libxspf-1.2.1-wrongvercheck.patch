@@ -1,0 +1,15 @@
+Index: libxspf-1.2.1/src/XspfReader.cpp
+===================================================================
+--- libxspf-1.2.1.orig/src/XspfReader.cpp
++++ libxspf-1.2.1/src/XspfReader.cpp
+@@ -61,10 +61,6 @@
+ #include <cstring> // size_t
+ #include <cstddef> // int
+ 
+-#if (URI_VER_MINOR < 7) || ((URI_VER_MINOR == 7) && (URI_VER_RELEASE < 2))
+-# error uriparser 0.7.2 or later is required
+-#endif
+-
+ 
+ namespace {
+ 

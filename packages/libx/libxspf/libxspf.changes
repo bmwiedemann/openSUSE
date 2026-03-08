@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar  7 23:34:08 UTC 2026 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- libxspf-1.2.1-wrongvercheck.patch: Fix FTBS due to no longer 
+  valid version check.
+
+-------------------------------------------------------------------
 Sun Apr 10 14:57:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.1:
