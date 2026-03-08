@@ -1,0 +1,18 @@
+Description: terminal.h: include headers for termios
+Author: أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@users.sourceforge.net>
+Bug-Debian: https://bugs.debian.org/1121414
+Forwarded: https://github.com/swesterfeld/gst123/pull/35
+
+diff --git a/src/terminal.h b/src/terminal.h
+index 81898e2..ff45e3f 100644
+--- a/src/terminal.h
++++ b/src/terminal.h
+@@ -24,6 +24,8 @@
+ #include <vector>
+ #include <string>
+ #include <map>
++#include <unistd.h>
++#include <termios.h>
+ #include "keyhandler.h"
+ 
+ class Terminal

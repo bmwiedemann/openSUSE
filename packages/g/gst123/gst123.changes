@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar  8 08:32:11 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add gst123-termios_fix.patch to fix gcc15 build
+
+-------------------------------------------------------------------
 Wed Aug 30 14:29:13 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.4.1

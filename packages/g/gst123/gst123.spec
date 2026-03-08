@@ -1,7 +1,7 @@
 #
 # spec file for package gst123
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,8 @@ Group:          Productivity/Multimedia/Sound/Players
 URL:            https://space.twc.de/~stefan/gst123.php
 Source:         https://github.com/swesterfeld/gst123/releases/download/%{version}/%{name}-%{version}.tar.bz2
 Source1:        gst123.desktop
+# PATCH-FIX-UPSTREAM gst123-termios_fix.patch
+Patch0:         gst123-termios_fix.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
