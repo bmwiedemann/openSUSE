@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  2 09:40:42 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 26.3.0:
+  * Long list of changes, see
+    <https://github.com/xiaoyifang/goldendict-ng/releases/tag/v26.3.0-Release.fce2b872>
+- Changes from version 26.1.0:
+  * No changelog provided.
+- New BuildRequires: pkgconfig(fmt).
+
+-------------------------------------------------------------------
 Mon Oct 20 16:35:42 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 25.10.2 (boo#1252019):

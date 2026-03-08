@@ -56,4 +56,12 @@ related deletion requestion https://build.opensuse.org/request/show/1087963
     <comment>Update to version 25.10.2 (boo#1252019)</comment>
     <requestid>1312733</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>785103892ba6d9942142f40e830c96fc</srcmd5>
+    <version>26.3.0</version>
+    <time>1772987208</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1337477</requestid>
+  </revision>
 </revisionlist>

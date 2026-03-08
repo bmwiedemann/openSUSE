@@ -1,7 +1,7 @@
 #
 # spec file for package goldendict-ng
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define gcc_ver 11
 %endif
 Name:           goldendict-ng
-Version:        25.10.2
+Version:        26.3.0
 Release:        0
 Summary:        Dictionary Lookup Program
 License:        GPL-3.0-or-later
@@ -38,6 +38,7 @@ BuildRequires:  unzip
 # /Section dependencies
 BuildRequires:  eb-devel
 BuildRequires:  hunspell-devel >= 1.2.4
+BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(libzim)
 BuildRequires:  pkgconfig(opencc)
 BuildRequires:  pkgconfig(vorbis)
