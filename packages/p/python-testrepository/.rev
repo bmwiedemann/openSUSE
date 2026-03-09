@@ -245,4 +245,19 @@
     <comment>- Add missing Requires on dbm.</comment>
     <requestid>1318949</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7c1e5e34fb34ce41e85d500f1d2f0038</srcmd5>
+    <version>0.0.22</version>
+    <time>1773069179</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.0.22:
+  * Fix compatibility with testtools.
+  * Fix warnings on newer python versions.
+  * Add Python 3.13 and 3.14 support, drop Python 3.8.
+  * Drop Python 2 support.
+  * Remove use of pytz in favour of datetime.timezone.utc.
+- Clean up how we run the testsuite, we no longer need to sed .testr.conf.
+- Change {Build,}Requires to reflect reality.</comment>
+    <requestid>1337547</requestid>
+  </revision>
 </revisionlist>
