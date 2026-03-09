@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 09 07:39:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.21.3:
+  * chore: version++
+  * fix: Add missing required in root schema
+  * docs: Add comment about tpl mapping
+  * chore(deps): update github artifact actions
+  * chore(deps): update actions/setup-go digest to 4b73464
+  * feat: support Helm's import-values directive
+  * refactor(tests): move test chart files into charts/
+    subdirectory
+  * feat: support patternProperties, definitions, and composition
+    keywords in @schema.root
+  * fix: respect @schema.root when separated from first key by
+    blank lines
+  * chore(deps): update goreleaser/goreleaser-action action to v7
+  * feat: add system pre-commit hook
+  * map helm-docs `tpl` type to `string`
+
+-------------------------------------------------------------------
 Fri Feb 13 06:16:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.21.2:
