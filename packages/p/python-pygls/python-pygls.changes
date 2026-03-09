@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar  8 21:06:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.1:
+  * docs: drop pre-release banner
+  * docs: use correct lsprotocol version
+  * docs: fix broken link for pygls playground
+  * docs: describe arguments unpacking for server commands in v2
+  * Add Aeon Programming Language to implementations list
+  * Fix spelling mistakes in v2 migration documentation
+  * fix: prevent exception handling for cancelled futures in
+    JsonRPCProtocol
+
+-------------------------------------------------------------------
 Wed Oct 22 09:52:12 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to 2.0.0:

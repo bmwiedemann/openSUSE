@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygls
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pygls
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        A pythonic generic language server
 License:        Apache-2.0

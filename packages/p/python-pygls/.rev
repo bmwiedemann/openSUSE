@@ -52,4 +52,20 @@
     <comment></comment>
     <requestid>1313194</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>31f574c7f976093b03edce182d325467</srcmd5>
+    <version>2.0.1</version>
+    <time>1773069094</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.0.1:
+  * docs: drop pre-release banner
+  * docs: use correct lsprotocol version
+  * docs: fix broken link for pygls playground
+  * docs: describe arguments unpacking for server commands in v2
+  * Add Aeon Programming Language to implementations list
+  * Fix spelling mistakes in v2 migration documentation
+  * fix: prevent exception handling for cancelled futures in
+    JsonRPCProtocol</comment>
+    <requestid>1337528</requestid>
+  </revision>
 </revisionlist>
