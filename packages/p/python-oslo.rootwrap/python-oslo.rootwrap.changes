@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Mar  8 21:02:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.9.0:
+  * Find cat command externally
+  * Refactor test\_KillFilter
+  * trivial: Rework build\_filter function
+  * Add typing
+  * Remove Python 2 code
+  * Add ruff
+  * Delay string interpolations at logging calls
+  * Remove reference to tag framework
+
+-------------------------------------------------------------------
+Mon Nov 17 22:06:31 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.8.0:
+  * reno: Update master for unmaintained/2024.1
+  * Bump pyupgrade target to 3.10+
+  * pre-commit: Bump versions
+  * Simplify package loading
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2
+
+-------------------------------------------------------------------
 Sun Nov  9 09:40:25 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.7.0:

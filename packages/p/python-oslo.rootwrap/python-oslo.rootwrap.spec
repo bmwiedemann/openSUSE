@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.rootwrap
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.rootwrap
-Version:        7.7.0
+Version:        7.9.0
 Release:        0
 Summary:        Filtering shell commands to run as root from OpenStack services
 License:        Apache-2.0
