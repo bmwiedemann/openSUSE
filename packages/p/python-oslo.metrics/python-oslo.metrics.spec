@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.metrics
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.metrics
-Version:        0.13.0
+Version:        0.15.1
 Release:        0
 Summary:        Collect metrics data from other Oslo libraries
 License:        Apache-2.0

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Mar  8 21:09:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.1:
+  * Fix broken log format
+  * mypy: Disabling warnings for untyped imports
+  * Fix mypy errors
+  * Add typing classifier
+  * feat: add option to configure metrics serving address
+  * Add typing
+  * Add ruff
+  * Delay string interpolations at logging calls
+  * Migrate setup configuration to pyproject.toml
+  * reno: Update master for unmaintained/2024.1
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2
+  * Silent WSGI server like a prometheus server
+  * Exclude test code from coverage report
+
+-------------------------------------------------------------------
 Sun Nov  9 18:17:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.13.0:

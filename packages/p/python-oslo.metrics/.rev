@@ -116,4 +116,26 @@
 - Initial packaging (0.3.0)</comment>
     <requestid>1316889</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>327e92ebe2ba0853b87e4d5aa3ecc9ba</srcmd5>
+    <version>0.15.1</version>
+    <time>1773069078</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.15.1:
+  * Fix broken log format
+  * mypy: Disabling warnings for untyped imports
+  * Fix mypy errors
+  * Add typing classifier
+  * feat: add option to configure metrics serving address
+  * Add typing
+  * Add ruff
+  * Delay string interpolations at logging calls
+  * Migrate setup configuration to pyproject.toml
+  * reno: Update master for unmaintained/2024.1
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2
+  * Silent WSGI server like a prometheus server
+  * Exclude test code from coverage report</comment>
+    <requestid>1337531</requestid>
+  </revision>
 </revisionlist>
