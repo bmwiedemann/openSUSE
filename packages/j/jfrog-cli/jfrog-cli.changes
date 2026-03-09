@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 09 07:39:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.95.0:
+  * Other Changes
+    - Added logic for updating HF_ENDPOINT and HF_TOKEN from
+      default or spe… by @naveenku-jfrog in #3379
+    - Added the huggingface command name by @naveenku-jfrog in
+      #3383
+
+-------------------------------------------------------------------
 Wed Mar 04 12:51:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.94.0:
