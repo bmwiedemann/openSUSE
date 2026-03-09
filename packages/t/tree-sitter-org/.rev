@@ -7,4 +7,12 @@
     <comment>Useful for Neovim and org-mode documents (I wonder whether Emacs can use it as well)</comment>
     <requestid>1328679</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d1cbb41cf16dc5d41aee60de69a89d5f</srcmd5>
+    <version>2.0.2</version>
+    <time>1773070377</time>
+    <user>anag_factory</user>
+    <comment>- Remove redundant Neovim workaround</comment>
+    <requestid>1337744</requestid>
+  </revision>
 </revisionlist>
