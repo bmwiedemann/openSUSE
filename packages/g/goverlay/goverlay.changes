@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Mar  5 15:30:10 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.7.5:
+  + Protontricks Windows Version Manager: Easily manage your Wine
+    prefix Windows versions with a freshly designed UI. Usefull to
+    enable FSR4 FG, easily changing game prefix to "win11".
+  + Flatpak friendly: Automatically detects native protontricks on
+    the host, falling back to the Flatpak version
+    (com.github.Matoking.protontricks) if not found.
+  + NVIDIA DLSS Downloader: Support for downloading standard NVIDIA
+    DLSS DLLs directly.
+  + OptiScaler FSR4 Upgrade: Seamlessly implement FSR4
+    configuration updates based on your selected version.
+  + Precision Positioning: Added custom X and Y offset
+    configurations for improved, pixel-perfect overlay placement.
+  + Search field: Added new search field for easy feature
+    localization
+  + Optipatcher: Now optipatcher is official part of optiscaler
+    builds
+
+-------------------------------------------------------------------
 Sun Feb 22 04:24:04 UTC 2026 - pallas wept <pallaswept@proton.me>
 
 - Update to version 1.7.4
