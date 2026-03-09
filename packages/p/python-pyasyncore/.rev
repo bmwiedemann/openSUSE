@@ -35,4 +35,15 @@
     <comment></comment>
     <requestid>1305404</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b81efbf3330ef104c48c2bb34fb33a9b</srcmd5>
+    <version>1.0.5</version>
+    <time>1773069081</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.5:
+  * Make sure `tests/__init__.py` is included in sdist
+  * Fix compatibility with pytest
+  * Explicitly tag Python 3.14 compatibility</comment>
+    <requestid>1337514</requestid>
+  </revision>
 </revisionlist>
