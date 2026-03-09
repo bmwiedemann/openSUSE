@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar  9 11:46:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.1.0:
+  * versionutils: Add support for post-Z releases
+  * Fix mypy error
+  * Add typing classifier
+  * Enable logging related ruff checks
+  * Run mypy from tox
+  * Add typing
+  * Add ruff
+  * Remove reference to tag framework
+  * reno: Update master for unmaintained/2024.1
+  * Bump pyupgrade target to 3.10+
+  * Migrate bandit options to pyproject.toml
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2
+
+-------------------------------------------------------------------
 Sun Nov  9 13:26:05 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.2.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.log
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.log
-Version:        7.2.1
+Version:        8.1.0
 Release:        0
 Summary:        OpenStack log library
 License:        Apache-2.0
@@ -79,7 +79,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
 %pyproject_install
-%fdupes %{buildroot}%{python3_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/convert-json
 

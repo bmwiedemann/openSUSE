@@ -536,4 +536,27 @@
   * Update master for stable/2024.2</comment>
     <requestid>1316857</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9356a3dd2dc9af86ecac3fad93caf4c4</srcmd5>
+    <version>8.1.0</version>
+    <time>1773069079</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.1.0:
+  * versionutils: Add support for post-Z releases
+  * Fix mypy error
+  * Add typing classifier
+  * Enable logging related ruff checks
+  * Run mypy from tox
+  * Add typing
+  * Add ruff
+  * Remove reference to tag framework
+  * reno: Update master for unmaintained/2024.1
+  * Bump pyupgrade target to 3.10+
+  * Migrate bandit options to pyproject.toml
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2</comment>
+    <requestid>1337644</requestid>
+  </revision>
 </revisionlist>
