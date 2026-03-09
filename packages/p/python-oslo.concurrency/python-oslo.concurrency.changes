@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Mar  8 20:45:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.4.0:
+  * typing: Improve annotation for processutils.execute
+  * Add typing classifier
+  * Enable logging related ruff checks
+  * Run mypy from tox
+  * Delay string interpolations at logging calls
+  * Remove reference to tag framework
+  * Add typing
+  * trivial: Remove use of kwargs
+  * Apply ruff
+  * Add missing raise
+  * reno: Update master for unmaintained/2024.1
+  * Bump pyupgrade target to 3.10+
+  * Migrate bandit options to pyproject.toml
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2
+
+-------------------------------------------------------------------
 Sun Nov  9 13:30:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.2.0:
