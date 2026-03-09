@@ -1,0 +1,7 @@
+addFilter("library-without-ldconfig-postin")
+addFilter("library-without-ldconfig-postun")
+addFilter("no-%check-section")
+addFilter("no-binary")
+addFilter("shared-library-not-executable")
+addFilter("shlib-policy-name-error")
+addFilter("statically-linked-binary")
