@@ -7,4 +7,12 @@
     <comment>Useful for reStructuredText</comment>
     <requestid>1328680</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2a2cbf16cd211576a35e1ebdbdb9bfe4</srcmd5>
+    <version>0.2.0</version>
+    <time>1773070379</time>
+    <user>anag_factory</user>
+    <comment>- Remove redundant Neovim workaround</comment>
+    <requestid>1337747</requestid>
+  </revision>
 </revisionlist>
