@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Mar 06 20:53:11 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.73.2:
+  * Version v1.73.2
+  * Update to go 1.25.8 to fix multiple CVEs
+  * build: update to golang.org/x/net v0.51.0 to fix CVE-2026-27141 #9220
+  * docs: fix new drive flag typo in changelog
+  * webdav: add missing headers for CORS
+  * docs: Document unsupported S3 object keys with double slashes
+  * docs: note that --use-server-modtime only works on some backends
+  * internxt: fix Entry doesn't belong in directory errors on windows
+  * drime: fix chunk-uploaded files ignoring workspace ID
+  * docs: Fix headers hierarchy for mount.md
+  * webdav: escape reserved characters in URL path segments
+  * bisync: add group Sync to the bisync command
+  * archive: extract: strip "./" prefix from tar entry paths
+  * docs: add instructions on how to update Go version
+  * buid: update github.com/cloudflare/circl to v1.6.3 to fix CVE-2026-1229
+  * Start v1.73.2-DEV development
+
+-------------------------------------------------------------------
 Tue Feb 17 18:57:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 1.73.1:
