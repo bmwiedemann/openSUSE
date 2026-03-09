@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Mar 05 13:54:41 UTC 2026 - malcolmlewis@opensuse.org
+
+- Update to version 0.8.4+git33.4f1f08a:
+  * rasdaemon: Add NVIDIA non-standard event decoder.
+  * rasdaemon: Fix uuid_le() buffer size calculation.
+  * rasdaemon: Fix SQLite API return code checks.
+  * rasdaemon: Add support for graniterapids, sierraforest,
+    clearwaterforest.
+  * rasdaemon: Add Zhaoxin CPUs support for the mce_record event.
+  * rasdaemon: Allow for built-in EDAC modules in status check.
+  * ras-mc-ctl: Fix column alignment in --error-count output.
+  * ras-mc-ctl: Consolidate error counts by DIMM label.
+  * labels: Add ASRockRack ROMED8-2T memory topology.
+  * /sys/kernel/debug/tracing is deeply deprecated.
+  * rasdaemon: Add RERI handler implementation.
+  * rasdaemon: fix extra newline in JaguarMicro vendor no standard
+    log.
+  * rasdaemon: fix build when sqlite isn't enabled.
+
+-------------------------------------------------------------------
 Thu Jan  8 23:53:40 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - do not use enable-all. it enables signal mode which causes errors
