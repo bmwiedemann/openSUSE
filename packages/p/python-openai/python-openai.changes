@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Mar  8 20:34:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.26.0:
+  * **api:** The GA ComputerTool now uses the CompuerTool class.
+    The 'computer_use_preview' tool is moved to
+    ComputerUsePreview
+  * **api:** gpt-5.4, tool search tool, and new computer tool
+  * **api:** remove prompt_cache_key param from responses, phase
+    field from message types
+  * **api:** add phase
+  * **api:** add gpt-realtime-1.5 and gpt-audio-1.5 model options
+    to realtime calls
+  * **api:** websockets for responses api
+  * **internal:** add request options to SSE classes
+  * update mock server docs
+  * **api:** add batch size limit to file_batches parameter
+    descriptions
+  * **api:** enhance method descriptions across audio, chat,
+    realtime, skills, uploads, videos
+  * **api:** update safety_identifier documentation in chat
+    completions and responses
+  * **structured outputs:** resolve memory leak in parse methods
+  * **webhooks:** preserve method visibility for compatibility
+    checks
+  * **internal:** fix lint error on Python 3.14
+  * **api:** support for images in batch api
+  * **api:** skills and hosted shell
+  * **internal:** bump dependencies
+  * **api:** add context_management to responses
+  * **api:** responses context_management
+  * **api:** add shell_call_output status field
+  * **api:** image generation actions for responses;
+    ResponseFunctionCallArgumentsDoneEvent.name
+  * **client:** add custom JSON encoder for extended type support
+  * **client:** undo change to web search Find action
+  * **client:** update type for `find_in_page` action
+  * **api:** api update
+  * **api:** api updates
+  * **client:** add support for binary request streaming
+  * **api:** mark assistants as deprecated
+  * **ci:** upgrade `actions/github-script`
+  * **internal:** update `actions/checkout` version
+
+-------------------------------------------------------------------
 Fri Jan  9 21:52:32 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Update to version 2.14.0:
@@ -11,17 +55,17 @@ Fri Jan  9 21:52:32 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 Tue Nov 25 12:54:53 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 
 - Update to version 2.8.1:
-  * api: align types of input items / output items for typescript 
+  * api: align types of input items / output items for typescript
 - Update to version 2.8.0:
   * api: gpt 5.1
   * compat: update signatures of model_dump and model_dump_json for Pydantic v1
 - Update to version 2.7.2:
   * compat with Python 3.14
 - Update to version to 2.7.0:
-  * client: close streams without requiring full consumption 
+  * client: close streams without requiring full consumption
   * readme: update realtime examples
   * uploads: avoid file handle leak
-  * api: Realtime API token_limits, Hybrid searching ranking options 
+  * api: Realtime API token_limits, Hybrid searching ranking options
   * api: remove InputAudio from ResponseInputContent
 - complete changelog here:
   * https://github.com/openai/openai-python/compare/v1.91.0...v2.8.1
@@ -136,7 +180,7 @@ Thu Sep 19 07:33:34 UTC 2024 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Thu Sep  5 15:50:04 UTC 2024 - Guang Yee <gyee@suse.com>
 
-- Enable sle15_python_module_pythons. 
+- Enable sle15_python_module_pythons.
 
 -------------------------------------------------------------------
 Wed Aug 21 04:07:02 UTC 2024 - Guang Yee <gyee@suse.com>

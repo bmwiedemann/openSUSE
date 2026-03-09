@@ -130,4 +130,41 @@
     <comment></comment>
     <requestid>1326743</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c4dc0f669d5c1d1e0c55ace7ede00264</srcmd5>
+    <version>2.26.0</version>
+    <time>1773069087</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.26.0:
+  * **api:** The GA ComputerTool now uses the CompuerTool class.
+    The 'computer_use_preview' tool is moved to
+    ComputerUsePreview
+  * **api:** gpt-5.4, tool search tool, and new computer tool
+  * **api:** remove prompt_cache_key param from responses, phase
+    field from message types
+  * **api:** add phase
+  * **api:** add gpt-realtime-1.5 and gpt-audio-1.5 model options
+    to realtime calls
+  * **api:** websockets for responses api
+  * **internal:** add request options to SSE classes
+  * update mock server docs
+  * **api:** add batch size limit to file_batches parameter
+    descriptions
+  * **api:** enhance method descriptions across audio, chat,
+    realtime, skills, uploads, videos
+  * **api:** update safety_identifier documentation in chat
+    completions and responses
+  * **structured outputs:** resolve memory leak in parse methods
+  * **webhooks:** preserve method visibility for compatibility
+    checks
+  * **internal:** fix lint error on Python 3.14
+  * **api:** support for images in batch api
+  * **api:** skills and hosted shell
+  * **internal:** bump dependencies
+  * **api:** add context_management to responses
+  * **api:** responses context_management
+  * **api:** add shell_call_output status field
+  * **api:** image generation actions for responses;</comment>
+    <requestid>1337517</requestid>
+  </revision>
 </revisionlist>
