@@ -22,7 +22,7 @@ Mon Sep  1 12:11:33 UTC 2025 - Cliff Zhao <qzhao@suse.com>
     [CVE-2025-54080](https://github.com/Exiv2/exiv2/security/advisories/GHSA-496f-x7cq-cq39)
     [CVE-2025-55304](https://github.com/Exiv2/exiv2/security/advisories/GHSA-m54q-mm9w-fp6g)
   * Fixes a use-after-free vulnerability in `tiffcomposite_int.cpp`:
-    [CVE-2025-26623](https://github.com/Exiv2/exiv2/security/advisories/GHSA-38h4-fx85-qcx7)
+    [CVE-2025-26623, bsc#1237347](https://github.com/Exiv2/exiv2/security/advisories/GHSA-38h4-fx85-qcx7)
     (CVE-2025-55304, bsc#1248963, CVE-2025-54080, bsc#1248962)
 
 -------------------------------------------------------------------
