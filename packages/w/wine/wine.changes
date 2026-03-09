@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:29:26 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 11.4 release
+  - SAX reader reimplemented in MSXML.
+  - Resampling optimizations in DirectSound.
+  - Beginnings of a proper CFGMGR32 implementation.
+  - Better Unix timezone matching.
+  - Various bug fixes.
+- update staging to 11.4 release
+
+-------------------------------------------------------------------
 Sat Feb 21 10:11:03 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - updated to 11.3 release
