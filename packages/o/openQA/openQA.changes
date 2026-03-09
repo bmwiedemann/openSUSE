@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 09 13:08:18 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1773056733.e071deaf:
+  * feat: allow filtering by job result and state in /tests/latest
+  * style(gitlint): allow unwrappable longer URLs in git commit message body
+  * feat: unify priority management of max_job_time and throttling
+  * ci(helm): pull container images in advance
+  * ci(helm): make sure that install-chart runs after lint-chart
+  * feat: optimize size of devel:openQA:ci/base container
+  * feat: allow users to delete/anonymize their own account
+
+-------------------------------------------------------------------
 Thu Mar 05 16:46:27 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1772722702.3877b2ca:
