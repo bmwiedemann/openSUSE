@@ -80,4 +80,14 @@
 - Initial Package</comment>
     <requestid>1336189</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ef7cb41af3dd0ccbe9559d913a27cda3</srcmd5>
+    <version>7.9.7</version>
+    <time>1773069090</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.9.7:
+  * fix(llma): use distinct_id from outer context if not provided
+  * Add warning log for local flag evaluation cold start</comment>
+    <requestid>1337522</requestid>
+  </revision>
 </revisionlist>

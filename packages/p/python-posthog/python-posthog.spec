@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-posthog
-Version:        7.9.6
+Version:        7.9.7
 Release:        0
 Summary:        PostHog is developer-friendly, self-hosted product analytics
 License:        MIT

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar  8 20:50:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.9.7:
+  * fix(llma): use distinct_id from outer context if not provided
+  * Add warning log for local flag evaluation cold start
+
+-------------------------------------------------------------------
 Tue Mar  3 19:08:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.9.6:
