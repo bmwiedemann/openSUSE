@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 04 09:28:42 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 2.9.0+git20260304.c77499bc:
+  * dbus-services: systemd v259 (bsc#1255368)
+
+-------------------------------------------------------------------
 Mon Mar 02 13:33:14 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - Update to version 2.9.0+git20260302.b6220eb8:

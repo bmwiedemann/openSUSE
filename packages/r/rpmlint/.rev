@@ -5583,4 +5583,14 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
   * world-writable-whitelist: drop sendmail /var/spool/mail (bsc#1256160) (forwarded request 1335829 from mgerstner)</comment>
     <requestid>1335830</requestid>
   </revision>
+  <revision rev="532" vrev="1">
+    <srcmd5>0e7825472951bd1807538ee22d9214a1</srcmd5>
+    <version>2.9.0+git20260304.c77499bc</version>
+    <time>1773069052</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.9.0+git20260304.c77499bc:
+  * dbus-services: systemd v259 (bsc#1255368)
+</comment>
+    <requestid>1336684</requestid>
+  </revision>
 </revisionlist>
