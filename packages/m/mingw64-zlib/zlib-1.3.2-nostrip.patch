@@ -1,0 +1,26 @@
+--- zlib-1.3.2/win32/Makefile.gcc	2026-03-09 07:10:20.989358937 +0100
++++ zlib-1.3.2/win32/Makefile.gcc	2026-03-09 07:11:44.655412861 +0100
+@@ -90,23 +90,18 @@
+ $(SHAREDLIB): win32/zlib.def $(OBJS) $(OBJA) zlibrc.o
+ 	$(CC) -shared -static-libgcc -Wl,--out-implib,$(IMPLIB) $(LDFLAGS) \
+ 	-o $@ win32/zlib.def $(OBJS) $(OBJA) zlibrc.o
+-	$(STRIP) $@
+ 
+ example.exe: example.o $(STATICLIB)
+ 	$(LD) $(LDFLAGS) -o $@ example.o $(STATICLIB)
+-	$(STRIP) $@
+ 
+ minigzip.exe: minigzip.o $(STATICLIB)
+ 	$(LD) $(LDFLAGS) -o $@ minigzip.o $(STATICLIB)
+-	$(STRIP) $@
+ 
+ example_d.exe: example.o $(IMPLIB)
+ 	$(LD) $(LDFLAGS) -o $@ example.o $(IMPLIB)
+-	$(STRIP) $@
+ 
+ minigzip_d.exe: minigzip.o $(IMPLIB)
+ 	$(LD) $(LDFLAGS) -o $@ minigzip.o $(IMPLIB)
+-	$(STRIP) $@
+ 
+ example.o: test/example.c zlib.h zconf.h
+ 	$(CC) $(CFLAGS) -I. -c -o $@ test/example.c
