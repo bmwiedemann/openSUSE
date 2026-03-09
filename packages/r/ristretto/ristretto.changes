@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Mar  8 11:32:29 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.14.0
+  * build: Rename POTFILES.in to POTFILES
+  * Autoscale image when printing only when bigger than page size
+  * Improve printing management
+  * image-list: Avoid undefined behavior with zero-length vla
+  * metadata: Add vcs-browser URL
+  * Use CAIRO_FILTER_GOOD instead of BILINEAR when smoothing is enabled
+  * build: Fix typo in optimization level
+  * Set prgname to application ID
+  * ephemeral-file: Don't show directory loading error for non-native 
+    filesystems
+  * ephemeral-file: Treating files received via http, https as ephemeral
+  * ephemeral-file: Treating /dev/stdin as an ephemeral file
+  * ephemeral-file: Handling ephemeral files in the interface
+  * ephemeral-file: Added ephemeral flag to RsttoFile
+  * sort-sync: Fix a RsttoFileManagerIntegration leak
+  * preferences: Fix string leak in cb_update_file_manager_buttons
+  * sort-sync: Implementation of integration with Thunar
+  * sort-sync: Infrastructure for integration with a file manager
+  * sort-sync: Sorting by type has a fallback path if the type is the
+    same
+  * sort-sync: Added sorting direction
+  * sort-sync: Added sorting by file size
+  * Fix leaks with GtkRecentFilter objects
+  * README.md: Add uninstall info
+  * Remove autotools build
+  * Fix scan-build job
+  * Add option to shuffle images
+  * Fix a -Wunreachable-code-break warning reported by clang
+  * Fix a -Wduplicated-branches warning with GCC
+  * main_window: Fix -Wcomma warnings
+  * Update README after switchover to meson
+  * flatpak: Drop unused patch
+  * Translation Updates
+- Remove bcond_with git elements
+
+-------------------------------------------------------------------
 Mon Mar 31 10:03:05 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
 
 - Recommend webp-pixbuf-loader for WebP support

@@ -1,7 +1,7 @@
 #
 # spec file for package ristretto
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,14 @@
 #
 
 
-%bcond_with git
 Name:           ristretto
-Version:        0.13.4
+Version:        0.14.0
 Release:        0
 Summary:        Image viewer for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://docs.xfce.org/apps/ristretto/start
-Source0:        https://archive.xfce.org/src/apps/ristretto/0.13/%{name}-%{version}.tar.xz
+Source0:        https://archive.xfce.org/src/apps/ristretto/0.14/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE ristretto-add-mime-types.patch gber@opensuse.org -- Adds support for additional image MIME types supported by openSUSE
 Patch0:         ristretto-add-mime-types.patch
 BuildRequires:  appstream-glib
@@ -45,9 +44,6 @@ BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.16.0
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.16.0
 BuildRequires:  pkgconfig(x11) >= 1.6.7
-%if %{with git}
-BuildRequires:  xfce4-dev-tools
-%endif
 Recommends:     %{name}-lang = %{version}
 Recommends:     webp-pixbuf-loader
 
@@ -65,11 +61,6 @@ desktop wallpaper.
 %autosetup -p1
 
 %build
-%if %{with git}
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-    --enable-maintainer-mode
-%endif
 %meson
 %meson_build
 
