@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar  9 10:44:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.17.0:
+  * feat: Add support for indices and values `Series` in
+    `Series.scatter`
+  * fix: Allow `Decimal` dtypes in `{Series, Expr}.is_close`
+  * fix: `offset_by` was raising unnecessarily for sql-like
+  * fix: add test for PySpark min supported version in CI and fix
+    broken methods
+  * fix: Address DuckDB 1.5 `fetch_arrow_table` deprecation
+- update to 2.16.0:
+  * feat: add `separator` argument in `read_csv`/`scan_csv`
+  * feat: Allow nested structures in `lit`
+  * enh: Introduce `narwhals.sql`
+  * enh: Introduce (optional) `order_by` in `first` / `last`
+  * feat: support window functions in filter
+  * feat: Improve support for `Decimal` DType
+  * feat: Support `concat(..., how="diagonal")` for `ibis`
+  * feat: Enable`list.{sort, sum}` for sqlframe
+  * feat: Add `str.pad_{start,end}`
+  * feat: Add `{Expr,Series}.cos`
+  * feat: Add `testing.assert_frame_equal`
+
+-------------------------------------------------------------------
 Mon Jan 26 20:24:35 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - update to 2.15.0

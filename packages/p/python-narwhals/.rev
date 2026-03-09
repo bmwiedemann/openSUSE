@@ -98,4 +98,31 @@
     <comment></comment>
     <requestid>1329470</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4cbe0f15a8d88162d56f85f56e29f2c7</srcmd5>
+    <version>2.17.0</version>
+    <time>1773070308</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.17.0:
+  * feat: Add support for indices and values `Series` in
+    `Series.scatter`
+  * fix: Allow `Decimal` dtypes in `{Series, Expr}.is_close`
+  * fix: `offset_by` was raising unnecessarily for sql-like
+  * fix: add test for PySpark min supported version in CI and fix
+    broken methods
+  * fix: Address DuckDB 1.5 `fetch_arrow_table` deprecation
+- update to 2.16.0:
+  * feat: add `separator` argument in `read_csv`/`scan_csv`
+  * feat: Allow nested structures in `lit`
+  * enh: Introduce `narwhals.sql`
+  * enh: Introduce (optional) `order_by` in `first` / `last`
+  * feat: support window functions in filter
+  * feat: Improve support for `Decimal` DType
+  * feat: Support `concat(..., how=&quot;diagonal&quot;)` for `ibis`
+  * feat: Enable`list.{sort, sum}` for sqlframe
+  * feat: Add `str.pad_{start,end}`
+  * feat: Add `{Expr,Series}.cos`
+  * feat: Add `testing.assert_frame_equal`</comment>
+    <requestid>1337635</requestid>
+  </revision>
 </revisionlist>
