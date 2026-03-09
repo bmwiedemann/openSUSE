@@ -1,0 +1,7 @@
+addFilter("arch-dependent-file-in-usr-share")
+addFilter("devel-file-in-non-devel-package")
+addFilter("no-%check-section")
+addFilter("shlib-fixed-dependency")
+addFilter("shlib-policy-name-error")
+addFilter("source-not-compressed")
+addFilter("tmpfile-not-in-filelist")

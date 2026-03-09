@@ -1,0 +1,25 @@
+---
+ Linux/sgx/libsgx_usgxssl/ucommon.h           |    1 -
+ Linux/sgx/libsgx_usgxssl/usgxssl_version.cpp |    1 -
+ 2 files changed, 2 deletions(-)
+
+--- a/Linux/sgx/libsgx_usgxssl/ucommon.h
++++ b/Linux/sgx/libsgx_usgxssl/ucommon.h
+@@ -37,7 +37,6 @@
+ #include <stdlib.h>
+ #include <stdint.h>
+ 
+-#pragma warning( disable: 4100 )
+ 
+ #define SGX_BUFSIZ 512
+ 
+--- a/Linux/sgx/libsgx_usgxssl/usgxssl_version.cpp
++++ b/Linux/sgx/libsgx_usgxssl/usgxssl_version.cpp
+@@ -28,7 +28,6 @@
+  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  *
+  */
+-#include "../osslverstr.h"
+ #define STRFILEVER OPENSSL_VERSION_STR
+ 
+ #define __CONCAT(x, y) x/**/y

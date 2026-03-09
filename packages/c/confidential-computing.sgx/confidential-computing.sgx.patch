@@ -1,0 +1,2463 @@
+---
+ CMakeLists.txt                                                                                        |  982 ++++++++++
+ SampleCode/SampleEnclave/App/CMakeLists.txt                                                           |   26 
+ common/inc/tlibc/sys/cdefs.h                                                                          |    2 
+ common/src/se_event.c                                                                                 |    2 
+ external/CppMicroServices/CMakeLists.txt                                                              |    5 
+ external/CppMicroServices/framework/include/cppmicroservices/AnyMap.h                                 |    1 
+ external/CppMicroServices/framework/include/cppmicroservices/BundleEvent.h                            |    1 
+ external/CppMicroServices/framework/include/cppmicroservices/FrameworkEvent.h                         |    1 
+ external/CppMicroServices/framework/src/service/ServiceListeners.cpp                                  |    4 
+ external/CppMicroServices/third_party/miniz.c                                                         |    5 
+ external/dcap_source/QuoteGeneration/pce_wrapper/pce_wrapper.cpp                                      |   29 
+ external/dcap_source/QuoteGeneration/qcnl/certification_provider.cpp                                  |    2 
+ external/dcap_source/QuoteGeneration/qcnl/inc/pccs_response_object.h                                  |    2 
+ external/dcap_source/QuoteGeneration/qcnl/inc/qcnl_config.h                                           |    2 
+ external/dcap_source/QuoteGeneration/qcnl/linux/network_wrapper.cpp                                   |    4 
+ external/dcap_source/QuoteGeneration/qcnl/linux/qcnl_config_impl.cpp                                  |    2 
+ external/dcap_source/QuoteGeneration/qcnl/qcnl_config.cpp                                             |    6 
+ external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgs_server.cpp                                 |   30 
+ external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgs_server.h                                   |    2 
+ external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgsd.service                                   |   15 
+ external/dcap_source/QuoteGeneration/quote_wrapper/qgs/server_main.cpp                                |   12 
+ external/dcap_source/QuoteGeneration/quote_wrapper/tdx_attest/tdx_attest.c                            |    6 
+ external/dcap_source/QuoteVerification/appraisal/qae/qae.edl                                          |    3 
+ external/dcap_source/QuoteVerification/appraisal/qal/opa_builtins.cpp                                 |    5 
+ external/dcap_source/QuoteVerification/appraisal/qal/qae_wrapper.cpp                                  |   37 
+ external/dcap_source/QuoteVerification/appraisal/tee_appraisal_tool/gen_payload.cpp                   |    1 
+ external/dcap_source/QuoteVerification/appraisal/tee_appraisal_tool/tee_appraisal_tool.cpp            |    5 
+ external/dcap_source/QuoteVerification/dcap_quoteverify/linux/qve_parser.cpp                          |   30 
+ external/dcap_source/QuoteVerification/dcap_quoteverify/tee_qv_class.cpp                              |    2 
+ external/dcap_source/tools/PCKRetrievalTool/App/linux/network_wrapper.cpp                             |    6 
+ external/dcap_source/tools/PCKRetrievalTool/App/utility.cpp                                           |    7 
+ external/dcap_source/tools/SGXPlatformRegistration/src/agent/src/AgentConfiguration.cpp               |    4 
+ external/dcap_source/tools/SGXPlatformRegistration/src/mpa_registration/mpa_registration_tool.service |    1 
+ external/vtune/linux/sdk/src/ittnotify/ittnotify_config.h                                             |    2 
+ psw/ae/aesm_service/config/aesmd_service/aesmd.service                                                |   20 
+ psw/ae/aesm_service/source/bundles/linux_network_service_bundle/aesm_http_msg.cpp                     |    6 
+ psw/ae/aesm_service/source/bundles/quote_ex_service_bundle/quote_ex_service_bundle.cpp                |    6 
+ psw/ae/aesm_service/source/core/AESMLogicWrapper.cpp                                                  |    5 
+ psw/ae/aesm_service/source/core/ipc/CMakeLists.txt                                                    |   32 
+ psw/ae/aesm_service/source/oal/linux/aesm_util.cpp                                                    |    3 
+ psw/ae/aesm_service/source/utils/crypto_ecc.cpp                                                       |    1 
+ psw/enclave_common/sgx_enclave_common.cpp                                                             |    5 
+ psw/urts/linux/edmm_utility.cpp                                                                       |    8 
+ psw/urts/urts_com.h                                                                                   |    2 
+ sdk/CMakeLists.txt                                                                                    |  357 +++
+ sdk/tsetjmp/_setjmp.S                                                                                 |    2 
+ 46 files changed, 1502 insertions(+), 189 deletions(-)
+
+--- /dev/null
++++ b/CMakeLists.txt
+@@ -0,0 +1,982 @@
++unset(CMAKE_SHARED_LINKER_FLAGS CACHE)
++cmake_minimum_required(VERSION 3.20)
++project(linux-sgx LANGUAGES ASM C CXX)
++
++if(NOT DEFINED USi_cmake)
++	message(FATAL_ERROR "cmake argument -DUSi:PATH= is required")
++endif()
++
++if(NOT DEFINED VERSION_LINUX_SGX)
++	set(VERSION_LINUX_SGX "1.2.3")
++endif()
++if(NOT DEFINED VERSION_SGX_DCAP)
++	set(VERSION_SGX_DCAP "3.2.1")
++endif()
++
++set(CMAKE_C_EXTENSIONS ON)
++set(CMAKE_C_STANDARD_REQUIRED 1)
++set(CMAKE_C_STANDARD 11)
++set(CMAKE_CXX_EXTENSIONS ON)
++set(CMAKE_CXX_STANDARD_REQUIRED 1)
++set(CMAKE_CXX_STANDARD 17)
++
++set(CMAKE_POSITION_INDEPENDENT_CODE ON)
++
++add_link_options(LINKER:-z,relro)
++add_link_options(LINKER:-z,now)
++add_link_options(LINKER:-z,noexecstack)
++add_link_options(LINKER:--as-needed)
++add_link_options(LINKER:--gc-sections)
++add_link_options(LINKER:--no-undefined)
++
++# QuoteGeneration/quote_wrapper/common/inc/user_types.h
++add_compile_definitions(DISABLE_TRACE)
++
++add_compile_options(-Wmissing-include-dirs)
++add_compile_options(-Wno-deprecated-declarations)
++add_compile_options(-fdata-sections)
++add_compile_options(-ffunction-sections)
++
++if (POLICY CMP0167)
++	cmake_policy(SET CMP0167 NEW)
++endif()
++include(FindPkgConfig)
++include(ProcessorCount)
++ProcessorCount(_smp_build_ncpus)
++pkg_check_modules(RapidJSON REQUIRED RapidJSON)
++find_package(Boost REQUIRED)
++find_package(CURL REQUIRED)
++find_package(OpenSSL REQUIRED)
++find_package(Protobuf REQUIRED)
++find_package(tinyxml2 REQUIRED)
++
++set(CppMicroServices_DIR ${USi_cmake})
++find_package(CppMicroServices NO_MODULE REQUIRED)
++
++function(CreateBundle _name)
++	set(options X)
++	set(oneValueArgs DIR)
++	set(multiValueArgs FILES SRC)
++	cmake_parse_arguments(PARSE_ARGV 0 arg "${options}" "${oneValueArgs}" "${multiValueArgs}")
++	foreach(src_file ${arg_SRC})
++		list(APPEND _srcs ${CMAKE_CURRENT_SOURCE_DIR}/${src_file})
++	endforeach()
++	foreach(src_file ${arg_FILES})
++		list(APPEND _srcs ${CMAKE_CURRENT_SOURCE_DIR}/${arg_DIR}/${src_file})
++	endforeach()
++	usFunctionGetResourceSource(TARGET ${_name} OUT _srcs)
++	usFunctionGenerateBundleInit(TARGET ${_name} OUT _srcs)
++	add_library(${_name} ${_srcs})
++	target_include_directories(${_name} PRIVATE psw/ae/aesm_service/source/interfaces)
++	target_include_directories(${_name} PRIVATE psw/ae/inc/internal)
++	set(_bundle_name ${_name}_name)
++	target_compile_definitions(${_name} PRIVATE US_BUNDLE_NAME=${_bundle_name})
++	target_link_libraries(${_name} ${CppMicroServices_LIBRARIES})
++	set_target_properties(${_name} PROPERTIES US_BUNDLE_NAME ${_bundle_name})
++	if (BUILD_SHARED_LIBS)
++		set_target_properties(${_name} PROPERTIES CXX_VISIBILITY_PRESET hidden VISIBILITY_INLINES_HIDDEN 1)
++		set_target_properties(${_name} PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/aesm/bundles")
++		set_target_properties(${_name} PROPERTIES CMAKE_SKIP_RPATH TRUE)
++		set_target_properties(${_name} PROPERTIES SKIP_BUILD_RPATH TRUE)
++	endif()
++	file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/${_name})
++	file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/${arg_DIR}/manifest.json DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/${_name})
++	usFunctionEmbedResources(TARGET ${_name}
++		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/${_name}
++		FILES manifest.json
++		)
++	install(DIRECTORY "${PROJECT_BINARY_DIR}/aesm" DESTINATION ${CMAKE_INSTALL_LIBEXECDIR} USE_SOURCE_PERMISSIONS FILES_MATCHING PATTERN "*.so")
++endfunction(CreateBundle _name)
++
++function(service_libexec _exe_path _service_path)
++	get_filename_component(_exe ${_exe_path} NAME)
++	get_filename_component(_service ${_service_path} NAME)
++	set(prepare ${CMAKE_CURRENT_BINARY_DIR}/prepare_${_service}.sh)
++	file(WRITE ${prepare} "set -e\n")
++	file(APPEND ${prepare} "cp ${CMAKE_CURRENT_SOURCE_DIR}/${_service_path} ${_service}\n")
++	file(APPEND ${prepare} "sed -i~ -E 's@(^ExecStart=)([^[:blank:]]+)($|[[:blank:]]+)@\\1${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBEXECDIR}/${_exe_path}\\3@' ${_service}\n")
++	file(APPEND ${prepare} "diff -u ${_service}~ ${_service} && false\n")
++	file(APPEND ${prepare} "exit 0\n")
++	add_custom_target(service_libexec_${_service}
++		DEPENDS ${_service_path}
++		COMMAND sh ${prepare}
++		VERBATIM
++		)
++	add_dependencies(${_exe} service_libexec_${_service})
++	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${_service} DESTINATION ${INSTALL_UNITDIR})
++endfunction(service_libexec _exe_path _service_path)
++
++add_subdirectory(psw/ae/aesm_service/source/core/ipc)
++
++install(FILES external/dcap_source/QuoteGeneration/pce_wrapper/inc/sgx_pce.h TYPE INCLUDE)
++install(FILES external/dcap_source/QuoteGeneration/quote_wrapper/common/inc/sgx_ql_lib_common.h TYPE INCLUDE)
++install(FILES external/dcap_source/QuoteGeneration/quote_wrapper/common/inc/sgx_ql_quote.h TYPE INCLUDE)
++install(FILES external/dcap_source/QuoteGeneration/quote_wrapper/common/inc/sgx_quote_3.h TYPE INCLUDE)
++install(FILES external/dcap_source/QuoteGeneration/quote_wrapper/common/inc/sgx_quote_4.h TYPE INCLUDE)
++install(FILES external/dcap_source/QuoteGeneration/quote_wrapper/common/inc/sgx_quote_5.h TYPE INCLUDE)
++install(FILES common/inc/sgx_edger8r.h TYPE INCLUDE)
++install(FILES common/inc/sgx_attributes.h TYPE INCLUDE)
++install(FILES common/inc/sgx_defs.h TYPE INCLUDE)
++install(FILES common/inc/sgx_eid.h TYPE INCLUDE)
++install(FILES common/inc/sgx_error.h TYPE INCLUDE)
++install(FILES common/inc/sgx_key.h TYPE INCLUDE)
++install(FILES common/inc/sgx_quote.h TYPE INCLUDE)
++install(FILES common/inc/sgx_report.h TYPE INCLUDE)
++install(FILES common/inc/sgx_report2.h TYPE INCLUDE)
++install(FILES common/inc/sgx_urts.h TYPE INCLUDE)
++
++add_custom_target(
++	sgx_edger8r_exe
++	COMMAND mkdir -p ${CMAKE_CURRENT_BINARY_DIR}/sdk/edger8r/linux
++	COMMAND ocamlbuild -quiet -build-dir ${CMAKE_CURRENT_BINARY_DIR}/sdk/edger8r/linux -j ${_smp_build_ncpus} -cflags -ccopt,-fpie -lflags -runtime-variant,_pic,-ccopt,-pie,-ccopt -lflag "-Wl,-z,now" -no-log -libs str,unix Edger8r.native
++	DEPENDS sdk/edger8r/linux/Edger8r.ml sdk/edger8r/linux/Ast.ml sdk/edger8r/linux/CodeGen.ml sdk/edger8r/linux/Lexer.mll sdk/edger8r/linux/Parser.mly sdk/edger8r/linux/Plugin.ml sdk/edger8r/linux/Preprocessor.ml sdk/edger8r/linux/SimpleStack.ml sdk/edger8r/linux/Util.ml
++	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/sdk/edger8r/linux
++	VERBATIM)
++set(sgx_edger8r ${CMAKE_CURRENT_BINARY_DIR}/sdk/edger8r/linux/Edger8r.native)
++install(FILES common/inc/sgx_edger8r.h TYPE INCLUDE)
++install(PROGRAMS ${sgx_edger8r} TYPE BIN RENAME sgx_edger8r)
++
++function(build_edl_u)
++	set(options COMMON SELF)
++	set(oneValueArgs EDL DIR)
++	set(multiValueArgs INC SEARCH)
++	cmake_parse_arguments(PARSE_ARGV 0 arg "${options}" "${oneValueArgs}" "${multiValueArgs}")
++	set(edl "${arg_EDL}.edl")
++	set(dir_s ${CMAKE_CURRENT_SOURCE_DIR}/${arg_DIR})
++	set(dir_b ${CMAKE_CURRENT_BINARY_DIR}/${arg_DIR})
++	set(edl_c ${dir_b}/${arg_EDL}_u.c)
++	set(edl_h ${dir_b}/${arg_EDL}_u.h)
++	set(edl_lib edl_u_${arg_EDL})
++	set(prepare ${dir_b}/prepare_${arg_EDL}.sh)
++	if (arg_SELF)
++		list(APPEND arg_SEARCH ${arg_DIR})
++	endif()
++	if (arg_COMMON)
++		list(APPEND arg_SEARCH common/inc)
++	endif()
++	list(APPEND sgx_edger8r_args "--untrusted")
++	file(WRITE ${prepare} "set -e\n")
++	file(APPEND ${prepare} "mkdir --parents ${dir_b}\n")
++	file(APPEND ${prepare} "ln --force  --symbolic --relative ${dir_s}/${edl} ${dir_b}/${edl}\n")
++	foreach(dir ${arg_SEARCH})
++		string(REPLACE "/" "_" link ${dir})
++		file(APPEND ${prepare} "ln --force  --symbolic --relative ${CMAKE_CURRENT_SOURCE_DIR}/${dir} ${dir_b}/${link}\n")
++		list(APPEND sgx_edger8r_args "--search-path" ${link})
++	endforeach()
++	list(APPEND sgx_edger8r_args ${edl})
++	add_custom_command(
++		OUTPUT ${edl_c} ${edl_h}
++		DEPENDS sgx_edger8r_exe
++		COMMAND sh ${prepare}
++		COMMAND cd ${dir_b} && ${sgx_edger8r} ${sgx_edger8r_args}
++		VERBATIM
++	)
++	add_library(${edl_lib} OBJECT)
++	target_sources(${edl_lib} PRIVATE ${edl_c})
++	target_include_directories(${edl_lib} PUBLIC ${arg_DIR})
++	target_include_directories(${edl_lib} PUBLIC ${dir_b})
++	target_include_directories(${edl_lib} PRIVATE common/inc)
++	if (arg_INC)
++		target_include_directories(${edl_lib} PRIVATE ${arg_INC})
++	endif()
++endfunction(build_edl_u)
++# edl_u_id_enclave
++build_edl_u(EDL id_enclave DIR external/dcap_source/ae/id_enclave)
++# edl_u_qe3
++build_edl_u(EDL qe3 DIR external/dcap_source/ae/qe3 INC external/dcap_source/QuoteGeneration/quote_wrapper/common/inc external/dcap_source/QuoteGeneration/pce_wrapper/inc common/inc/internal)
++# edl_u_pce
++build_edl_u(EDL pce DIR external/dcap_source/ae/dep/pce INC psw/ae/inc/internal common/inc/internal)
++# edl_u_qae
++build_edl_u(EDL qae COMMON DIR external/dcap_source/QuoteVerification/appraisal/qae INC external/dcap_source/QuoteGeneration/quote_wrapper/common/inc external/dcap_source/QuoteGeneration/pce_wrapper/inc external/dcap_source/QuoteVerification/appraisal/qal)
++# edl_u_qve
++build_edl_u(EDL qve COMMON DIR external/dcap_source/ae/QvE/qve SEARCH sgx-ssl/Linux/package/include/nofilefunc sgx-ssl/Linux/package/include INC external/dcap_source/QuoteGeneration/quote_wrapper/common/inc external/dcap_source/QuoteGeneration/pce_wrapper/inc external/dcap_source/QuoteVerification/appraisal/qal external/dcap_source/ae/QvE/Include)
++# edl_u_tdqe
++build_edl_u(EDL tdqe SELF DIR external/dcap_source/ae/tdqe INC external/dcap_source/QuoteGeneration/quote_wrapper/common/inc external/dcap_source/QuoteGeneration/pce_wrapper/inc common/inc/internal)
++
++add_library(sgx_usgxssl OBJECT)
++target_sources(sgx_usgxssl PRIVATE sgx-ssl/Linux/sgx/libsgx_usgxssl/usgxssl_version.cpp)
++target_sources(sgx_usgxssl PRIVATE sgx-ssl/Linux/sgx/libsgx_usgxssl/utime.cpp)
++target_compile_definitions(sgx_usgxssl PRIVATE OPENSSL_VERSION_STR="3.2.1")
++
++add_library(core_ipc OBJECT)
++set_target_properties(core_ipc PROPERTIES CXX_VISIBILITY_PRESET hidden VISIBILITY_INLINES_HIDDEN 1)
++target_link_libraries(core_ipc PUBLIC messages)
++target_include_directories(core_ipc PRIVATE common/inc)
++target_include_directories(core_ipc PRIVATE common/inc/internal)
++target_include_directories(core_ipc PRIVATE psw/ae/inc)
++target_include_directories(core_ipc PUBLIC psw/ae/aesm_service/source/core/ipc)
++target_include_directories(core_ipc PUBLIC psw/ae/inc/internal)
++target_sources(core_ipc PRIVATE psw/ae/aesm_service/source/core/ipc/AEGetQuoteExRequest.cpp)
++target_sources(core_ipc PRIVATE psw/ae/aesm_service/source/core/ipc/AEGetQuoteExResponse.cpp)
++target_sources(core_ipc PRIVATE psw/ae/aesm_service/source/core/ipc/AEGetQuoteSizeExRequest.cpp)
++target_sources(core_ipc PRIVATE psw/ae/aesm_service/source/core/ipc/AEGetQuoteSizeExResponse.cpp)
++target_sources(core_ipc PRIVATE psw/ae/aesm_service/source/core/ipc/AEGetSupportedAttKeyIDNumRequest.cpp)
++target_sources(core_ipc PRIVATE psw/ae/aesm_service/source/core/ipc/AEGetSupportedAttKeyIDNumResponse.cpp)
++target_sources(core_ipc PRIVATE psw/ae/aesm_service/source/core/ipc/AEGetSupportedAttKeyIDsRequest.cpp)
++target_sources(core_ipc PRIVATE psw/ae/aesm_service/source/core/ipc/AEGetSupportedAttKeyIDsResponse.cpp)
++target_sources(core_ipc PRIVATE psw/ae/aesm_service/source/core/ipc/AEInitQuoteExRequest.cpp)
++target_sources(core_ipc PRIVATE psw/ae/aesm_service/source/core/ipc/AEInitQuoteExResponse.cpp)
++target_sources(core_ipc PRIVATE psw/ae/aesm_service/source/core/ipc/AESelectAttKeyIDRequest.cpp)
++target_sources(core_ipc PRIVATE psw/ae/aesm_service/source/core/ipc/AESelectAttKeyIDResponse.cpp)
++target_sources(core_ipc PRIVATE psw/ae/aesm_service/source/core/ipc/NonBlockingUnixCommunicationSocket.cpp)
++target_sources(core_ipc PRIVATE psw/ae/aesm_service/source/core/ipc/NonBlockingUnixSocketFactory.cpp)
++target_sources(core_ipc PRIVATE psw/ae/aesm_service/source/core/ipc/ProtobufSerializer.cpp)
++target_sources(core_ipc PRIVATE psw/ae/aesm_service/source/core/ipc/SocketTransporter.cpp)
++target_sources(core_ipc PRIVATE psw/ae/aesm_service/source/core/ipc/UnixCommunicationSocket.cpp)
++target_sources(core_ipc PRIVATE psw/ae/aesm_service/source/core/ipc/UnixSocketFactory.cpp)
++
++add_library(sgx_capable OBJECT)
++target_include_directories(sgx_capable PRIVATE common/inc)
++target_include_directories(sgx_capable PRIVATE common/inc/internal)
++target_sources(sgx_capable PRIVATE sdk/libcapable/linux/sgx_capable.cpp)
++target_sources(sgx_capable PRIVATE sdk/libcapable/linux/sgx_capable_version.cpp)
++
++add_library(wrapper OBJECT)
++target_include_directories(wrapper PUBLIC common/inc)
++target_include_directories(wrapper PUBLIC common/inc/internal)
++target_sources(wrapper PRIVATE common/src/se_event.c)
++target_sources(wrapper PRIVATE common/src/se_map.c)
++target_sources(wrapper PRIVATE common/src/se_memory.c)
++target_sources(wrapper PRIVATE common/src/se_rwlock.c)
++target_sources(wrapper PRIVATE common/src/se_thread.c)
++target_sources(wrapper PRIVATE common/src/se_time.c)
++target_sources(wrapper PRIVATE common/src/se_trace.c)
++
++add_library(rdrand STATIC)
++target_include_directories(rdrand PUBLIC external/rdrand)
++target_sources(rdrand PRIVATE external/rdrand/src/rdrand.c)
++
++add_library(oal OBJECT)
++set_target_properties(oal PROPERTIES CXX_VISIBILITY_PRESET hidden VISIBILITY_INLINES_HIDDEN 1)
++target_include_directories(oal PRIVATE common/inc)
++target_include_directories(oal PRIVATE common/inc/internal)
++target_include_directories(oal PRIVATE psw/ae/aesm_service/source/common)
++target_include_directories(oal PUBLIC psw/ae/inc)
++target_sources(oal PRIVATE psw/ae/aesm_service/source/oal/linux/aesm_thread.cpp)
++target_sources(oal PRIVATE psw/ae/aesm_service/source/oal/linux/aesm_util.cpp)
++target_sources(oal PRIVATE psw/ae/aesm_service/source/oal/linux/error_report.cpp)
++target_sources(oal PRIVATE psw/ae/aesm_service/source/oal/linux/event_strings.cpp)
++target_sources(oal PRIVATE psw/ae/aesm_service/source/oal/linux/internal_log.cpp)
++target_sources(oal PRIVATE psw/ae/aesm_service/source/oal/linux/oal_power.cpp)
++target_sources(oal PRIVATE psw/ae/aesm_service/source/oal/linux/persistent_storage_table.cpp)
++set_source_files_properties(psw/ae/aesm_service/source/linux/aesm_util.cpp PROPERTIES COMPILE_FLAGS "-fno-optimize-sibling-calls")
++
++add_library(utils OBJECT)
++set_target_properties(utils PROPERTIES CXX_VISIBILITY_PRESET hidden VISIBILITY_INLINES_HIDDEN 1)
++target_include_directories(utils PRIVATE psw/ae/aesm_service/source/common)
++target_include_directories(utils PRIVATE psw/ae/data/constants/linux)
++target_include_directories(utils PRIVATE psw/ae/inc)
++target_include_directories(utils PRIVATE psw/ae/inc/internal)
++target_include_directories(utils PUBLIC common/inc)
++target_include_directories(utils PUBLIC common/inc/internal)
++target_link_libraries(utils rdrand)
++target_sources(utils PRIVATE common/src/crypto_cmac_128.cpp)
++target_sources(utils PRIVATE common/src/sgx_memset_s.cpp)
++target_sources(utils PRIVATE common/src/sgx_read_rand.cpp)
++target_sources(utils PRIVATE psw/ae/aesm_service/source/utils/aesm_config.cpp)
++target_sources(utils PRIVATE psw/ae/aesm_service/source/utils/aesm_long_lived_thread.cpp)
++target_sources(utils PRIVATE psw/ae/aesm_service/source/utils/aesm_rand.cpp)
++target_sources(utils PRIVATE psw/ae/aesm_service/source/utils/crypto_aes_gcm.cpp)
++target_sources(utils PRIVATE psw/ae/aesm_service/source/utils/crypto_cmac128.cpp)
++target_sources(utils PRIVATE psw/ae/aesm_service/source/utils/crypto_ecc.cpp)
++target_sources(utils PRIVATE psw/ae/aesm_service/source/utils/crypto_rsa.cpp)
++target_sources(utils PRIVATE psw/ae/aesm_service/source/utils/crypto_sha256_msg.cpp)
++target_sources(utils PRIVATE psw/ae/aesm_service/source/utils/ssl_compat_wrapper.cpp)
++
++add_executable(aesm_service)
++set_target_properties(aesm_service PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/aesm")
++set_target_properties(aesm_service PROPERTIES SKIP_BUILD_RPATH TRUE)
++target_include_directories(aesm_service PRIVATE psw/ae/aesm_service/source/common)
++target_include_directories(aesm_service PRIVATE psw/ae/aesm_service/source/interfaces)
++target_link_libraries(aesm_service CppMicroServices wrapper oal utils rdrand messages core_ipc ${Protobuf_LIBRARIES} -ldl)
++target_sources(aesm_service PRIVATE psw/ae/aesm_service/source/core/AESMLogicWrapper.cpp)
++target_sources(aesm_service PRIVATE psw/ae/aesm_service/source/core/AESMQueueManager.cpp)
++target_sources(aesm_service PRIVATE psw/ae/aesm_service/source/core/AESMWorkerThread.cpp)
++target_sources(aesm_service PRIVATE psw/ae/aesm_service/source/core/CAESMServer.cpp)
++target_sources(aesm_service PRIVATE psw/ae/aesm_service/source/core/CSelector.cpp)
++target_sources(aesm_service PRIVATE psw/ae/aesm_service/source/core/Thread.cpp)
++target_sources(aesm_service PRIVATE psw/ae/aesm_service/source/core/UnixServerSocket.cpp)
++target_sources(aesm_service PRIVATE psw/ae/aesm_service/source/core/main.cpp)
++install(DIRECTORY "${PROJECT_BINARY_DIR}/aesm" DESTINATION ${CMAKE_INSTALL_LIBEXECDIR} USE_SOURCE_PERMISSIONS FILES_MATCHING PATTERN "aesm_service")
++service_libexec(aesm/aesm_service psw/ae/aesm_service/config/aesmd_service/aesmd.service)
++
++set(sgx_enclave_common_map ${CMAKE_CURRENT_SOURCE_DIR}/psw/enclave_common/sgx_enclave_common.lds)
++list(APPEND sgx_enclave_common_hdr psw/enclave_common/sgx_enclave_common.h)
++add_library(sgx_enclave_common SHARED)
++set_target_properties(sgx_enclave_common PROPERTIES LINK_DEPENDS ${sgx_enclave_common_map})
++set_target_properties(sgx_enclave_common PROPERTIES PUBLIC_HEADER "${sgx_enclave_common_hdr}")
++set_target_properties(sgx_enclave_common PROPERTIES SOVERSION 1 VERSION 1.${VERSION_LINUX_SGX})
++target_include_directories(sgx_enclave_common PRIVATE external/sgx-emm/emm_src/include)
++target_include_directories(sgx_enclave_common PUBLIC psw/enclave_common)
++target_include_directories(sgx_enclave_common PUBLIC psw/urts/linux)
++target_link_libraries(sgx_enclave_common wrapper -ldl -lpthread)
++target_link_options(sgx_enclave_common PRIVATE -Wl,--version-script,${sgx_enclave_common_map})
++target_sources(sgx_enclave_common PRIVATE psw/enclave_common/sgx_enclave_common.cpp)
++target_sources(sgx_enclave_common PRIVATE psw/urts/linux/edmm_utility.cpp)
++install(TARGETS sgx_enclave_common)
++
++set(sgx_quote_ex_map ${CMAKE_CURRENT_SOURCE_DIR}/psw/uae_service/linux/libsgx_quote_ex.lds)
++list(APPEND sgx_quote_ex_hdr common/inc/sgx_uae_quote_ex.h)
++add_library(sgx_quote_ex SHARED)
++set_target_properties(sgx_quote_ex PROPERTIES LINK_DEPENDS ${sgx_quote_ex_map})
++set_target_properties(sgx_quote_ex PROPERTIES PUBLIC_HEADER "${sgx_quote_ex_hdr}")
++set_target_properties(sgx_quote_ex PROPERTIES SOVERSION 1 VERSION 1.${VERSION_LINUX_SGX})
++target_include_directories(sgx_quote_ex PRIVATE psw/ae/inc)
++target_include_directories(sgx_quote_ex PRIVATE psw/ae/inc/internal)
++target_include_directories(sgx_quote_ex PRIVATE psw/uae_service/uae_wrapper/inc)
++target_link_libraries(sgx_quote_ex wrapper messages core_ipc ${Protobuf_LIBRARIES})
++target_link_options(sgx_quote_ex PRIVATE -Wl,--version-script,${sgx_quote_ex_map})
++target_sources(sgx_quote_ex PRIVATE psw/uae_service/linux/quote_ex_version.cpp)
++target_sources(sgx_quote_ex PRIVATE psw/uae_service/sgx_uae_service.cpp)
++target_sources(sgx_quote_ex PRIVATE psw/uae_service/uae_wrapper/src/AEServicesImpl.cpp)
++target_sources(sgx_quote_ex PRIVATE psw/uae_service/uae_wrapper/src/AEServicesProvider.cpp)
++target_sources(sgx_quote_ex PRIVATE psw/uae_service/uae_wrapper/src/uae_api.cpp)
++install(TARGETS sgx_quote_ex)
++
++set(sgx_uae_service_map ${CMAKE_CURRENT_SOURCE_DIR}/psw/uae_service/linux/uae_service.lds)
++add_library(sgx_uae_service SHARED)
++set_target_properties(sgx_uae_service PROPERTIES LINK_DEPENDS ${sgx_uae_service_map})
++set_target_properties(sgx_uae_service PROPERTIES SOVERSION 2 VERSION 2.${VERSION_LINUX_SGX})
++target_include_directories(sgx_uae_service PRIVATE common/inc)
++target_include_directories(sgx_uae_service PRIVATE common/inc/internal)
++target_link_libraries(sgx_uae_service -ldl)
++target_link_options(sgx_uae_service PRIVATE -Wl,--version-script,${sgx_uae_service_map})
++target_sources(sgx_uae_service PRIVATE psw/uae_service/legacy_uae_service.cpp)
++target_sources(sgx_uae_service PRIVATE psw/uae_service/uae_service_version.cpp)
++install(TARGETS sgx_uae_service)
++
++add_library(ittnotify OBJECT)
++target_compile_definitions(ittnotify PUBLIC ITT_ARCH_IA64)
++target_include_directories(ittnotify PUBLIC external/vtune/linux/include)
++target_include_directories(ittnotify PUBLIC external/vtune/linux/sdk/src/ittnotify)
++target_sources(ittnotify PRIVATE external/vtune/linux/sdk/src/ittnotify/ittnotify_static.c)
++
++set(sgx_urts_map ${CMAKE_CURRENT_SOURCE_DIR}/psw/urts/linux/urts.lds)
++add_library(sgx_urts SHARED)
++set_source_files_properties(psw/urts/linux/enclave_creator_hw.cpp PROPERTIES INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/external/sgx-emm/emm_src/include)
++set_source_files_properties(psw/urts/linux/enter_enclave.S PROPERTIES INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/common/inc/internal/linux)
++set_target_properties(sgx_urts PROPERTIES LINK_DEPENDS ${sgx_urts_map})
++set_target_properties(sgx_urts PROPERTIES SOVERSION 2 VERSION 2.${VERSION_LINUX_SGX})
++target_include_directories(sgx_urts PRIVATE common/inc)
++target_include_directories(sgx_urts PRIVATE common/inc/internal)
++target_include_directories(sgx_urts PRIVATE psw/urts)
++target_include_directories(sgx_urts PRIVATE psw/urts/linux)
++target_include_directories(sgx_urts PRIVATE psw/urts/parser)
++target_link_libraries(sgx_urts wrapper sgx_enclave_common ittnotify -ldl -lpthread OpenSSL::Crypto)
++target_link_options(sgx_urts PRIVATE LINKER:--version-script,${sgx_urts_map})
++target_link_options(sgx_urts PRIVATE LINKER:-z,undefs)
++target_sources(sgx_urts PRIVATE common/src/crypto_evp_digest.cpp)
++target_sources(sgx_urts PRIVATE common/src/crypto_rsa3072.cpp)
++target_sources(sgx_urts PRIVATE common/src/crypto_rsa_key.cpp)
++target_sources(sgx_urts PRIVATE common/src/linux/xsave_gnu.S)
++target_sources(sgx_urts PRIVATE psw/urts/cpu_features.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/cpu_features_ext.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/enclave.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/enclave_creator_hw_com.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/enclave_mutex.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/enclave_thread.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/linux/debugger_support.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/linux/edmm_utility.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/linux/enclave_creator_hw.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/linux/enter_enclave.S)
++target_sources(sgx_urts PRIVATE psw/urts/linux/get_thread_id.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/linux/misc.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/linux/sig_handler.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/linux/urts.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/linux/urts_emm.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/loader.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/node.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/parser/elfparser.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/parser/section.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/parser/shared_object_parser.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/prd_css_util.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/routine.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/se_detect.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/se_ocalls.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/tcs.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/urts_version.cpp)
++target_sources(sgx_urts PRIVATE psw/urts/urts_xsave.cpp)
++install(TARGETS sgx_urts)
++
++set(sgx_urts_internal_map ${CMAKE_CURRENT_SOURCE_DIR}/psw/urts/linux/urts_internal.lds)
++add_library(sgx_urts_internal OBJECT)
++set_source_files_properties(psw/urts/linux/enclave_creator_hw.cpp PROPERTIES INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/external/sgx-emm/emm_src/include)
++set_source_files_properties(psw/urts/linux/enter_enclave.S PROPERTIES INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/common/inc/internal/linux)
++set_target_properties(sgx_urts PROPERTIES LINK_DEPENDS ${sgx_urts_internal_map})
++set_target_properties(sgx_urts_internal PROPERTIES CXX_VISIBILITY_PRESET hidden VISIBILITY_INLINES_HIDDEN 1)
++target_include_directories(sgx_urts_internal PRIVATE common/inc)
++target_include_directories(sgx_urts_internal PRIVATE common/inc/internal)
++target_include_directories(sgx_urts_internal PRIVATE external/sgx-emm/emm_src/include)
++target_include_directories(sgx_urts_internal PRIVATE psw/enclave_common)
++target_include_directories(sgx_urts_internal PRIVATE psw/urts)
++target_include_directories(sgx_urts_internal PRIVATE psw/urts/linux)
++target_include_directories(sgx_urts_internal PRIVATE psw/urts/parser)
++target_link_libraries(sgx_urts_internal ittnotify OpenSSL::Crypto)
++target_link_options(sgx_urts_internal PRIVATE LINKER:--version-script,${sgx_urts_internal_map})
++target_sources(sgx_urts_internal PRIVATE common/src/crypto_evp_digest.cpp)
++target_sources(sgx_urts_internal PRIVATE common/src/crypto_rsa3072.cpp)
++target_sources(sgx_urts_internal PRIVATE common/src/crypto_rsa_key.cpp)
++target_sources(sgx_urts_internal PRIVATE common/src/linux/xsave_gnu.S)
++target_sources(sgx_urts_internal PRIVATE psw/enclave_common/sgx_enclave_common.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/cpu_features.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/cpu_features_ext.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/enclave.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/enclave_creator_hw_com.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/enclave_mutex.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/enclave_thread.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/linux/debugger_support.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/linux/edmm_utility.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/linux/enclave_creator_hw.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/linux/enter_enclave.S)
++target_sources(sgx_urts_internal PRIVATE psw/urts/linux/get_thread_id.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/linux/misc.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/linux/sig_handler.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/linux/urts.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/linux/urts_emm.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/linux/urts_internal.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/loader.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/node.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/parser/elfparser.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/parser/section.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/parser/shared_object_parser.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/prd_css_util.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/routine.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/se_detect.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/se_ocalls.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/tcs.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/urts_version.cpp)
++target_sources(sgx_urts_internal PRIVATE psw/urts/urts_xsave.cpp)
++
++set(sgx_qe3_logic_map ${CMAKE_CURRENT_SOURCE_DIR}/external/dcap_source/QuoteGeneration/quote_wrapper/quote/linux/qe3_logic.lds)
++add_library(sgx_qe3_logic SHARED)
++set_target_properties(sgx_qe3_logic PROPERTIES LINK_DEPENDS ${sgx_qe3_logic_map})
++#set_target_properties(sgx_qe3_logic PROPERTIES SOVERSION 2 VERSION 2.${VERSION_LINUX_SGX})
++target_include_directories(sgx_qe3_logic PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
++target_include_directories(sgx_qe3_logic PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
++target_include_directories(sgx_qe3_logic PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/quote/inc)
++target_link_libraries(sgx_qe3_logic sgx_urts wrapper edl_u_qe3 edl_u_id_enclave -lpthread)
++target_link_options(sgx_qe3_logic PRIVATE LINKER:--version-script,${sgx_qe3_logic_map})
++target_link_options(sgx_qe3_logic PRIVATE LINKER:-z,undefs)
++target_sources(sgx_qe3_logic PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/quote/qe_logic.cpp)
++target_sources(sgx_qe3_logic PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/quote/sgx_ql_core_wrapper.cpp)
++install(TARGETS sgx_qe3_logic)
++
++
++set(sgx_pce_logic_map ${CMAKE_CURRENT_SOURCE_DIR}/external/dcap_source/QuoteGeneration/pce_wrapper/linux/pce_wrapper.lds)
++add_library(sgx_pce_logic SHARED)
++set_target_properties(sgx_pce_logic PROPERTIES LINK_DEPENDS ${sgx_pce_logic_map})
++set_target_properties(sgx_pce_logic PROPERTIES SOVERSION 1 VERSION 1.${VERSION_LINUX_SGX})
++target_include_directories(sgx_pce_logic PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
++target_include_directories(sgx_pce_logic PRIVATE psw/ae/inc)
++target_include_directories(sgx_pce_logic PRIVATE psw/ae/inc/internal)
++target_link_libraries(sgx_pce_logic sgx_urts wrapper edl_u_pce -ldl -lpthread)
++target_link_options(sgx_pce_logic PRIVATE LINKER:--version-script,${sgx_pce_logic_map})
++target_link_options(sgx_pce_logic PRIVATE LINKER:-z,undefs)
++target_sources(sgx_pce_logic PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/pce_wrapper.cpp)
++install(TARGETS sgx_pce_logic)
++
++set(sgx_dcap_gl_map ${CMAKE_CURRENT_SOURCE_DIR}/external/dcap_source/QuoteGeneration/quote_wrapper/ql/linux/dcap_ql_wrapper.lds)
++list(APPEND sgx_dcap_gl_hdr external/dcap_source/QuoteGeneration/quote_wrapper/ql/inc/sgx_dcap_ql_wrapper.h)
++add_library(sgx_dcap_gl SHARED)
++set_target_properties(sgx_dcap_gl PROPERTIES LINK_DEPENDS ${sgx_dcap_gl_map})
++set_target_properties(sgx_dcap_gl PROPERTIES PUBLIC_HEADER "${sgx_dcap_gl_hdr}")
++set_target_properties(sgx_dcap_gl PROPERTIES SOVERSION 1 VERSION 1.${VERSION_LINUX_SGX})
++target_include_directories(sgx_dcap_gl PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
++target_include_directories(sgx_dcap_gl PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
++target_include_directories(sgx_dcap_gl PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/ql/inc)
++target_include_directories(sgx_dcap_gl PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/quote/inc)
++target_link_libraries(sgx_dcap_gl wrapper sgx_qe3_logic sgx_pce_logic -ldl -lpthread)
++target_link_options(sgx_dcap_gl PRIVATE LINKER:--version-script,${sgx_dcap_gl_map})
++target_link_options(sgx_dcap_gl PRIVATE LINKER:-z,undefs)
++target_sources(sgx_dcap_gl PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/ql/sgx_dcap_ql_wrapper.cpp)
++install(TARGETS sgx_dcap_gl)
++
++add_library(sgx_dcap_qvl_attestation OBJECT)
++target_include_directories(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationCommons/include)
++target_include_directories(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/include)
++target_include_directories(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src)
++target_sources(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/Json/EnclaveIdentity.cpp)
++target_sources(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/Json/IdentityTcbLevel.cpp)
++target_sources(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/Json/JsonParser.cpp)
++target_sources(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/Json/TcbComponent.cpp)
++target_sources(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/Json/TcbInfo.cpp)
++target_sources(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/Json/TcbLevel.cpp)
++target_sources(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/Json/TdxModule.cpp)
++target_sources(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/Json/TdxModuleIdentity.cpp)
++target_sources(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/Json/TdxModuleTcb.cpp)
++target_sources(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/Json/TdxModuleTcbLevel.cpp)
++target_sources(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/OpensslHelpers/OidUtils.cpp)
++target_sources(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/ParserUtils.cpp)
++target_sources(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/X509/Certificate.cpp)
++target_sources(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/X509/Configuration.cpp)
++target_sources(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/X509/DistinguishedName.cpp)
++target_sources(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/X509/Extension.cpp)
++target_sources(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/X509/PckCertificate.cpp)
++target_sources(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/X509/PlatformPckCertificate.cpp)
++target_sources(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/X509/ProcessorPckCertificate.cpp)
++target_sources(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/X509/Signature.cpp)
++target_sources(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/X509/Tcb.cpp)
++target_sources(sgx_dcap_qvl_attestation PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/X509/Validity.cpp)
++
++add_library(sgx_dcap_qvl_parser OBJECT)
++target_include_directories(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationCommons/include)
++target_include_directories(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationCommons/include/Utils)
++target_include_directories(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/include)
++target_include_directories(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src)
++target_include_directories(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/include)
++target_include_directories(sgx_dcap_qvl_parser PRIVATE external/dcap_source/ae/QvE/Include)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationCommons/src/Utils/ByteOperands.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationCommons/src/Utils/GMTime.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationCommons/src/Utils/Logger.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationCommons/src/Utils/TimeUtils.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/CertVerification/CertificateChain.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/CertVerification/X509Constants.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/OpensslHelpers/DigestUtils.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/OpensslHelpers/KeyUtils.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/OpensslHelpers/SignatureVerification.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/PckParser/CrlStore.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/PckParser/PckParser.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/PckParser/PckParserUtils.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/QuoteVerification.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/QuoteVerification/Quote.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/QuoteVerification/QuoteStructures.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/QuoteVerification/VerificationCollateralInfo.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/Utils/JsonParser.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/Utils/StatusPrinter.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/Verifiers/BaseVerifier.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/Verifiers/Checks/TDRelaunchCheck.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/Verifiers/Checks/TcbLevelCheck.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/Verifiers/Checks/TdxModuleCheck.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/Verifiers/CommonVerifier.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/Verifiers/EnclaveIdentityVerifier.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/Verifiers/EnclaveReportVerifier.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/Verifiers/PckCertVerifier.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/Verifiers/PckCrlVerifier.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/Verifiers/QuoteVerifier.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/Verifiers/TCBInfoVerifier.cpp)
++target_sources(sgx_dcap_qvl_parser PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src/Verifiers/TCBSigningChain.cpp)
++
++add_library(wasm_vmlib OBJECT)
++target_compile_definitions(wasm_vmlib PRIVATE BH_FREE=wasm_runtime_free)
++target_compile_definitions(wasm_vmlib PRIVATE BH_MALLOC=wasm_runtime_malloc)
++target_compile_definitions(wasm_vmlib PRIVATE BH_PLATFORM_LINUX)
++target_compile_definitions(wasm_vmlib PRIVATE BUILD_TARGET_X86_64)
++target_compile_definitions(wasm_vmlib PRIVATE NDEBUG)
++target_compile_definitions(wasm_vmlib PRIVATE WAMR_BUILD_LIB_WASI_THREADS=0)
++target_compile_definitions(wasm_vmlib PRIVATE WASM_DISABLE_HW_BOUND_CHECK=1)
++target_compile_definitions(wasm_vmlib PRIVATE WASM_ENABLE_AOT=1)
++target_compile_definitions(wasm_vmlib PRIVATE WASM_ENABLE_BULK_MEMORY=0)
++target_compile_definitions(wasm_vmlib PRIVATE WASM_ENABLE_EXTENDED_CONST_EXPR=1)
++target_compile_definitions(wasm_vmlib PRIVATE WASM_ENABLE_FAST_INTERP=1)
++target_compile_definitions(wasm_vmlib PRIVATE WASM_ENABLE_INTERP=1)
++target_compile_definitions(wasm_vmlib PRIVATE WASM_ENABLE_LIBC_BUILTIN=1)
++target_compile_definitions(wasm_vmlib PRIVATE WASM_ENABLE_LIBC_WASI=1)
++target_compile_definitions(wasm_vmlib PRIVATE WASM_ENABLE_MEMORY64=1)
++target_compile_definitions(wasm_vmlib PRIVATE WASM_ENABLE_MINI_LOADER=0)
++target_compile_definitions(wasm_vmlib PRIVATE WASM_ENABLE_MODULE_INST_CONTEXT=1)
++target_compile_definitions(wasm_vmlib PRIVATE WASM_ENABLE_MULTI_MODULE=0)
++target_compile_definitions(wasm_vmlib PRIVATE WASM_ENABLE_SHARED_MEMORY=0)
++target_compile_definitions(wasm_vmlib PRIVATE WASM_ENABLE_SIMD=1)
++target_include_directories(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/aot)
++target_include_directories(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/common)
++target_include_directories(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/include)
++target_include_directories(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/interpreter)
++target_include_directories(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/libraries/libc-wasi/sandboxed-system-primitives/include)
++target_include_directories(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/libraries/libc-wasi/sandboxed-system-primitives/src)
++target_include_directories(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/shared/mem-alloc)
++target_include_directories(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/shared/platform/include)
++target_include_directories(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/shared/platform/linux)
++target_include_directories(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/shared/utils)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/aot/aot_intrinsic.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/aot/aot_loader.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/aot/aot_runtime.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/aot/arch/aot_reloc_x86_64.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/common/arch/invokeNative_em64_simd.s)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/common/wasm_application.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/common/wasm_c_api.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/common/wasm_exec_env.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/common/wasm_memory.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/common/wasm_native.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/common/wasm_runtime_common.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/common/wasm_shared_memory.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/interpreter/wasm_interp_fast.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/interpreter/wasm_loader.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/interpreter/wasm_runtime.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/libraries/libc-builtin/libc_builtin_wrapper.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/libraries/libc-wasi/libc_wasi_wrapper.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/libraries/libc-wasi/sandboxed-system-primitives/src/posix.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/libraries/libc-wasi/sandboxed-system-primitives/src/random.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/libraries/libc-wasi/sandboxed-system-primitives/src/str.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/shared/mem-alloc/ems/ems_alloc.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/shared/mem-alloc/ems/ems_hmu.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/shared/mem-alloc/ems/ems_kfc.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/shared/mem-alloc/mem_alloc.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/shared/platform/common/posix/posix_malloc.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/shared/platform/common/posix/posix_memmap.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/shared/platform/common/posix/posix_socket.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/shared/platform/common/posix/posix_thread.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/shared/platform/common/posix/posix_time.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/shared/platform/linux/platform_init.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/shared/utils/bh_assert.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/shared/utils/bh_common.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/shared/utils/bh_hashmap.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/shared/utils/bh_list.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/shared/utils/bh_log.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/shared/utils/bh_queue.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/shared/utils/bh_vector.c)
++target_sources(wasm_vmlib PRIVATE external/dcap_source/external/wasm-micro-runtime/core/shared/utils/runtime_timer.c)
++
++add_library(PCKCertSelection OBJECT)
++
++target_compile_definitions(PCKCertSelection PRIVATE PCK_CERT_SELECTION_WITH_COMPONENT)
++target_include_directories(PCKCertSelection PRIVATE common/inc/internal)
++target_include_directories(PCKCertSelection PUBLIC external/dcap_source/QuoteVerification/QVL/Src/AttestationCommons/include)
++target_include_directories(PCKCertSelection PUBLIC external/dcap_source/QuoteVerification/QVL/Src/AttestationCommons/include/OpensslHelpers)
++target_include_directories(PCKCertSelection PUBLIC external/dcap_source/QuoteVerification/QVL/Src/AttestationCommons/include/Utils)
++target_include_directories(PCKCertSelection PUBLIC external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/include)
++target_include_directories(PCKCertSelection PUBLIC external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src)
++target_include_directories(PCKCertSelection PUBLIC external/dcap_source/tools/PCKCertSelection/include)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationCommons/src/Utils/GMTime.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationCommons/src/Utils/TimeUtils.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/Json/EnclaveIdentity.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/Json/IdentityTcbLevel.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/Json/JsonParser.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/Json/TcbComponent.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/Json/TcbInfo.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/Json/TcbLevel.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/Json/TdxModule.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/Json/TdxModuleIdentity.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/Json/TdxModuleTcb.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/Json/TdxModuleTcbLevel.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/OpensslHelpers/OidUtils.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/ParserUtils.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/X509/Certificate.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/X509/DistinguishedName.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/X509/Extension.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/X509/PckCertificate.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/X509/Signature.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/X509/Tcb.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/src/X509/Validity.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/tools/PCKCertSelection/PCKCertSelectionLib/config_selector.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/tools/PCKCertSelection/PCKCertSelectionLib/pck_cert_selection.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/tools/PCKCertSelection/PCKCertSelectionLib/pck_sorter.cpp)
++target_sources(PCKCertSelection PRIVATE external/dcap_source/tools/PCKCertSelection/PCKCertSelectionLib/tcb_manager.cpp)
++
++set(sgx_default_qcnl_wrapper_map ${CMAKE_CURRENT_SOURCE_DIR}/external/dcap_source/QuoteGeneration/qcnl/linux/sgx_default_qcnl.lds)
++list(APPEND sgx_default_qcnl_wrapper_hdr external/dcap_source/QuoteGeneration/qpl/inc/sgx_default_quote_provider.h)
++add_library(sgx_default_qcnl_wrapper SHARED)
++set_target_properties(sgx_default_qcnl_wrapper PROPERTIES LINK_DEPENDS ${sgx_default_qcnl_wrapper_map})
++set_target_properties(sgx_default_qcnl_wrapper PROPERTIES PUBLIC_HEADER "${sgx_default_qcnl_wrapper_hdr}")
++set_target_properties(sgx_default_qcnl_wrapper PROPERTIES SOVERSION 1 VERSION 1.${VERSION_LINUX_SGX})
++target_include_directories(sgx_default_qcnl_wrapper PRIVATE ${RapidJSON_INCLUDE_DIRS})
++target_include_directories(sgx_default_qcnl_wrapper PRIVATE common/inc/internal)
++target_include_directories(sgx_default_qcnl_wrapper PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
++target_include_directories(sgx_default_qcnl_wrapper PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
++target_include_directories(sgx_default_qcnl_wrapper PUBLIC external/dcap_source/QuoteGeneration/qcnl/inc)
++target_link_libraries(sgx_default_qcnl_wrapper PCKCertSelection wrapper OpenSSL::Crypto ${RapidJSON_LIBRARIES} -ldl -lpthread)
++target_link_options(sgx_default_qcnl_wrapper PRIVATE LINKER:--version-script,${sgx_default_qcnl_wrapper_map})
++target_sources(sgx_default_qcnl_wrapper PRIVATE external/dcap_source/QuoteGeneration/qcnl/certification_provider.cpp)
++target_sources(sgx_default_qcnl_wrapper PRIVATE external/dcap_source/QuoteGeneration/qcnl/certification_service.cpp)
++target_sources(sgx_default_qcnl_wrapper PRIVATE external/dcap_source/QuoteGeneration/qcnl/linux/network_wrapper.cpp)
++target_sources(sgx_default_qcnl_wrapper PRIVATE external/dcap_source/QuoteGeneration/qcnl/linux/qcnl_config_impl.cpp)
++target_sources(sgx_default_qcnl_wrapper PRIVATE external/dcap_source/QuoteGeneration/qcnl/pccs_response_object.cpp)
++target_sources(sgx_default_qcnl_wrapper PRIVATE external/dcap_source/QuoteGeneration/qcnl/qcnl_config.cpp)
++target_sources(sgx_default_qcnl_wrapper PRIVATE external/dcap_source/QuoteGeneration/qcnl/qcnl_util.cpp)
++target_sources(sgx_default_qcnl_wrapper PRIVATE external/dcap_source/QuoteGeneration/qcnl/sgx_default_qcnl_wrapper.cpp)
++install(TARGETS sgx_default_qcnl_wrapper)
++
++set(dcap_quoteprov_map ${CMAKE_CURRENT_SOURCE_DIR}/external/dcap_source/QuoteGeneration/qpl/linux/sgx_default_quote_provider.lds)
++add_library(dcap_quoteprov SHARED)
++set_target_properties(dcap_quoteprov PROPERTIES LINK_DEPENDS ${dcap_quoteprov_map})
++set_target_properties(dcap_quoteprov PROPERTIES SOVERSION 1 VERSION 1.${VERSION_LINUX_SGX})
++target_include_directories(dcap_quoteprov PRIVATE external/dcap_source/QuoteGeneration/qpl/inc)
++target_include_directories(dcap_quoteprov PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
++target_link_libraries(dcap_quoteprov sgx_default_qcnl_wrapper OpenSSL::Crypto -ldl -lpthread)
++target_link_options(dcap_quoteprov PRIVATE LINKER:--version-script,${dcap_quoteprov_map})
++target_sources(dcap_quoteprov PRIVATE external/dcap_source/QuoteGeneration/qpl/linux/x509.cpp)
++target_sources(dcap_quoteprov PRIVATE external/dcap_source/QuoteGeneration/qpl/sgx_base64.cpp)
++target_sources(dcap_quoteprov PRIVATE external/dcap_source/QuoteGeneration/qpl/sgx_default_quote_provider.cpp)
++install(TARGETS dcap_quoteprov)
++
++add_library(sgx_qal STATIC)
++target_include_directories(sgx_qal PRIVATE common/inc)
++target_include_directories(sgx_qal PRIVATE common/inc/internal)
++target_include_directories(sgx_qal PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
++target_include_directories(sgx_qal PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
++target_include_directories(sgx_qal PRIVATE external/dcap_source/QuoteVerification/appraisal/common)
++target_include_directories(sgx_qal PRIVATE external/dcap_source/QuoteVerification/appraisal/qal)
++target_include_directories(sgx_qal PRIVATE external/dcap_source/QuoteVerification/dcap_quoteverify/inc)
++target_include_directories(sgx_qal PRIVATE external/dcap_source/external/jwt-cpp/include)
++target_include_directories(sgx_qal PRIVATE external/dcap_source/external/wasm-micro-runtime/core/iwasm/include)
++target_link_libraries(sgx_qal edl_u_qae)
++target_sources(sgx_qal PRIVATE external/dcap_source/QuoteVerification/appraisal/qal/appraisal.cpp)
++target_sources(sgx_qal PRIVATE external/dcap_source/QuoteVerification/appraisal/qal/opa_builtins.cpp)
++target_sources(sgx_qal PRIVATE external/dcap_source/QuoteVerification/appraisal/qal/opa_helper.cpp)
++target_sources(sgx_qal PRIVATE external/dcap_source/QuoteVerification/appraisal/qal/opa_wasm.cpp)
++target_sources(sgx_qal PRIVATE external/dcap_source/QuoteVerification/appraisal/qal/qae_ocalls.cpp)
++target_sources(sgx_qal PRIVATE external/dcap_source/QuoteVerification/appraisal/qal/qae_wrapper.cpp)
++target_sources(sgx_qal PRIVATE external/dcap_source/QuoteVerification/appraisal/qal/qal_auth.cpp)
++target_sources(sgx_qal PRIVATE external/dcap_source/QuoteVerification/appraisal/qal/qal_json.cpp)
++
++set(sgx_dcap_quoteverify_map ${CMAKE_CURRENT_SOURCE_DIR}/external/dcap_source/QuoteVerification/dcap_quoteverify/linux/sgx_dcap_quoteverify.lds)
++list(APPEND sgx_dcap_quoteverify_hdr external/dcap_source/QuoteVerification/appraisal/qal/sgx_dcap_qal.h)
++list(APPEND sgx_dcap_quoteverify_hdr external/dcap_source/QuoteVerification/dcap_quoteverify/inc/sgx_dcap_quoteverify.h)
++list(APPEND sgx_dcap_quoteverify_hdr external/dcap_source/ae/QvE/Include/sgx_qve_header.h)
++add_library(sgx_dcap_quoteverify SHARED)
++set_target_properties(sgx_dcap_quoteverify PROPERTIES LINK_DEPENDS ${sgx_dcap_quoteverify_map})
++set_target_properties(sgx_dcap_quoteverify PROPERTIES PUBLIC_HEADER "${sgx_dcap_quoteverify_hdr}")
++set_target_properties(sgx_dcap_quoteverify PROPERTIES SOVERSION 1 VERSION 1.${VERSION_SGX_DCAP})
++target_include_directories(sgx_dcap_quoteverify PRIVATE common/inc)
++target_include_directories(sgx_dcap_quoteverify PRIVATE common/inc/internal)
++target_include_directories(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
++target_include_directories(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteGeneration/qpl/inc)
++target_include_directories(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
++target_include_directories(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationCommons/include)
++target_include_directories(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/include)
++target_include_directories(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationLibrary/src)
++target_include_directories(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationParsers/include)
++target_include_directories(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteVerification/appraisal/common)
++target_include_directories(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteVerification/appraisal/qal)
++target_include_directories(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteVerification/dcap_quoteverify/inc)
++target_include_directories(sgx_dcap_quoteverify PRIVATE external/dcap_source/ae/QvE/Include)
++target_include_directories(sgx_dcap_quoteverify PRIVATE external/dcap_source/external/jwt-cpp/include)
++target_link_libraries(sgx_dcap_quoteverify sgx_qal sgx_dcap_qvl_parser sgx_dcap_qvl_attestation wasm_vmlib wrapper sgx_usgxssl edl_u_qve OpenSSL::Crypto -ldl -lpthread)
++target_link_options(sgx_dcap_quoteverify PRIVATE LINKER:--version-script,${sgx_dcap_quoteverify_map})
++target_sources(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteGeneration/qpl/sgx_base64.cpp)
++target_sources(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteVerification/appraisal/common/ec_key.cpp)
++target_sources(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteVerification/appraisal/common/file_util.cpp)
++target_sources(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteVerification/appraisal/common/format_util.cpp)
++target_sources(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteVerification/dcap_quoteverify/linux/config.cpp)
++target_sources(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteVerification/dcap_quoteverify/linux/qve_parser.cpp)
++target_sources(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteVerification/dcap_quoteverify/sgx_dcap_pcs_com.cpp)
++target_sources(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteVerification/dcap_quoteverify/sgx_dcap_quoteverify.cpp)
++target_sources(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteVerification/dcap_quoteverify/sgx_urts_wrapper.cpp)
++target_sources(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteVerification/dcap_quoteverify/tee_qv_class.cpp)
++target_sources(sgx_dcap_quoteverify PRIVATE external/dcap_source/ae/QvE/qve/qve.cpp)
++target_sources(sgx_dcap_quoteverify PRIVATE external/dcap_source/ae/QvE/qve/qve_logic.cpp)
++install(TARGETS sgx_dcap_quoteverify)
++
++set(sgx_tdx_logic_map ${CMAKE_CURRENT_SOURCE_DIR}/external/dcap_source/QuoteGeneration/quote_wrapper/tdx_quote/linux/td_ql_logic.lds)
++list(APPEND sgx_tdx_logic_hdr external/dcap_source/QuoteGeneration/quote_wrapper/tdx_quote/inc/td_ql_wrapper.h)
++add_library(sgx_tdx_logic SHARED)
++set_target_properties(sgx_tdx_logic PROPERTIES LINK_DEPENDS ${sgx_tdx_logic_map})
++set_target_properties(sgx_tdx_logic PROPERTIES PUBLIC_HEADER "${sgx_tdx_logic_hdr}")
++set_target_properties(sgx_tdx_logic PROPERTIES SOVERSION 1 VERSION 1.${VERSION_SGX_DCAP})
++target_include_directories(sgx_tdx_logic PRIVATE common/inc)
++target_include_directories(sgx_tdx_logic PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
++target_include_directories(sgx_tdx_logic PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
++target_include_directories(sgx_tdx_logic PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/tdx_quote/inc)
++target_link_libraries(sgx_tdx_logic sgx_pce_logic sgx_urts wrapper edl_u_id_enclave edl_u_tdqe -ldl -lpthread)
++target_link_options(sgx_tdx_logic PRIVATE LINKER:--version-script,${sgx_tdx_logic_map})
++target_sources(sgx_tdx_logic PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/tdx_quote/td_ql_logic.cpp)
++target_sources(sgx_tdx_logic PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/tdx_quote/td_ql_wrapper.cpp)
++install(TARGETS sgx_tdx_logic)
++
++add_library(qgs_msg OBJECT)
++target_include_directories(qgs_msg PUBLIC external/dcap_source/QuoteGeneration/quote_wrapper/qgs_msg_lib/inc)
++target_sources(qgs_msg PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/qgs_msg_lib/qgs_msg_lib.cpp)
++
++add_executable(qgs)
++target_include_directories(qgs PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
++target_include_directories(qgs PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
++target_include_directories(qgs PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/tdx_quote/inc)
++if(${Boost_VERSION_MINOR} GREATER_EQUAL 69)
++target_link_libraries(qgs qgs_msg sgx_pce_logic sgx_tdx_logic sgx_urts wrapper -lboost_thread -ldl -lpthread)
++else()
++target_link_libraries(qgs qgs_msg sgx_pce_logic sgx_tdx_logic sgx_urts wrapper -lboost_system -lboost_thread -ldl -lpthread)
++endif()
++target_sources(qgs PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgs_log.cpp)
++target_sources(qgs PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgs_ql_logic.cpp)
++target_sources(qgs PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgs_server.cpp)
++target_sources(qgs PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/qgs/server_main.cpp)
++install(TARGETS qgs DESTINATION ${CMAKE_INSTALL_LIBEXECDIR})
++install(FILES linux/installer/common/libsgx-enclave-common/remount-dev-exec.service DESTINATION ${INSTALL_UNITDIR})
++service_libexec(qgs external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgsd.service)
++
++set(tdx_attest_map ${CMAKE_CURRENT_SOURCE_DIR}/external/dcap_source/QuoteGeneration/quote_wrapper/tdx_attest/linux/tdx_attest.lds)
++list(APPEND tdx_attest_hdr external/dcap_source/QuoteGeneration/quote_wrapper/tdx_attest/tdx_attest.h)
++add_library(tdx_attest SHARED)
++set_target_properties(tdx_attest PROPERTIES LINK_DEPENDS ${tdx_attest_map})
++set_target_properties(tdx_attest PROPERTIES PUBLIC_HEADER "${tdx_attest_hdr}")
++set_target_properties(tdx_attest PROPERTIES SOVERSION 1 VERSION 1.${VERSION_SGX_DCAP})
++target_link_libraries(tdx_attest qgs_msg)
++target_link_options(tdx_attest PRIVATE LINKER:--version-script,${tdx_attest_map})
++target_sources(tdx_attest PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/tdx_attest/tdx_attest.c)
++install(TARGETS tdx_attest)
++
++add_executable(test_tdx_attest)
++target_link_libraries(test_tdx_attest tdx_attest)
++target_sources(test_tdx_attest PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/tdx_attest/test_tdx_attest.c)
++install(TARGETS test_tdx_attest DESTINATION ${CMAKE_INSTALL_SBINDIR})
++
++list(APPEND mpa_network_hdr external/dcap_source/tools/SGXPlatformRegistration/include/MPNetwork.h)
++list(APPEND mpa_network_hdr external/dcap_source/tools/SGXPlatformRegistration/include/MPNetworkDefs.h)
++list(APPEND mpa_network_hdr external/dcap_source/tools/SGXPlatformRegistration/include/c_wrapper/mp_network.h)
++add_library(mpa_network SHARED)
++set_target_properties(mpa_network PROPERTIES PUBLIC_HEADER "${mpa_network_hdr}")
++set_target_properties(mpa_network PROPERTIES SOVERSION 1 VERSION 1.${VERSION_SGX_DCAP})
++target_include_directories(mpa_network PUBLIC external/dcap_source/tools/SGXPlatformRegistration/src/common/inc)
++target_include_directories(mpa_network PUBLIC external/dcap_source/tools/SGXPlatformRegistration/include)
++target_include_directories(mpa_network PUBLIC external/dcap_source/tools/SGXPlatformRegistration/src/network/inc)
++target_link_libraries(mpa_network CURL::libcurl)
++target_sources(mpa_network PRIVATE external/dcap_source/tools/SGXPlatformRegistration/src/network/src/MPNetwork.cpp)
++target_sources(mpa_network PRIVATE external/dcap_source/tools/SGXPlatformRegistration/src/network/src/MPSynchronicSender.cpp)
++target_sources(mpa_network PRIVATE external/dcap_source/tools/SGXPlatformRegistration/src/network/src/network_logger.cpp)
++install(TARGETS mpa_network)
++
++list(APPEND mpa_uefi_hdr external/dcap_source/tools/SGXPlatformRegistration/include/MPUefi.h)
++list(APPEND mpa_uefi_hdr external/dcap_source/tools/SGXPlatformRegistration/include/MultiPackageDefs.h)
++list(APPEND mpa_uefi_hdr external/dcap_source/tools/SGXPlatformRegistration/include/c_wrapper/mp_uefi.h)
++add_library(mpa_uefi SHARED)
++set_target_properties(mpa_uefi PROPERTIES PUBLIC_HEADER "${mpa_uefi_hdr}")
++set_target_properties(mpa_uefi PROPERTIES SOVERSION 1 VERSION 1.${VERSION_SGX_DCAP})
++target_include_directories(mpa_uefi PRIVATE external/dcap_source/tools/SGXPlatformRegistration/include/c_wrapper)
++target_include_directories(mpa_uefi PUBLIC external/dcap_source/tools/SGXPlatformRegistration/src/common/inc)
++target_include_directories(mpa_uefi PUBLIC external/dcap_source/tools/SGXPlatformRegistration/include)
++target_include_directories(mpa_uefi PUBLIC external/dcap_source/tools/SGXPlatformRegistration/src/uefi/inc)
++target_sources(mpa_uefi PRIVATE external/dcap_source/tools/SGXPlatformRegistration/src/uefi/src/FSUefi.cpp)
++target_sources(mpa_uefi PRIVATE external/dcap_source/tools/SGXPlatformRegistration/src/uefi/src/MPUefi.cpp)
++target_sources(mpa_uefi PRIVATE external/dcap_source/tools/SGXPlatformRegistration/src/uefi/src/c_wrapper/mp_uefi.cpp)
++target_sources(mpa_uefi PRIVATE external/dcap_source/tools/SGXPlatformRegistration/src/uefi/src/uefi_logger.cpp)
++install(TARGETS mpa_uefi)
++
++add_library(mpa_agent STATIC)
++target_compile_definitions(mpa_agent PRIVATE STRPRODUCTVER="${VERSION_SGX_DCAP}")
++target_include_directories(mpa_agent PRIVATE common/inc/internal)
++target_include_directories(mpa_agent PUBLIC external/dcap_source/tools/SGXPlatformRegistration/src/agent/inc)
++target_include_directories(mpa_agent PUBLIC external/dcap_source/tools/SGXPlatformRegistration/src/common/inc)
++target_include_directories(mpa_agent PUBLIC external/dcap_source/tools/SGXPlatformRegistration/include)
++target_sources(mpa_agent PRIVATE external/dcap_source/tools/SGXPlatformRegistration/src/agent/src/AgentConfiguration.cpp)
++target_sources(mpa_agent PRIVATE external/dcap_source/tools/SGXPlatformRegistration/src/agent/src/PerformBase.cpp)
++target_sources(mpa_agent PRIVATE external/dcap_source/tools/SGXPlatformRegistration/src/agent/src/PerformPackageAdd.cpp)
++target_sources(mpa_agent PRIVATE external/dcap_source/tools/SGXPlatformRegistration/src/agent/src/PerformPlatformRegistration.cpp)
++target_sources(mpa_agent PRIVATE external/dcap_source/tools/SGXPlatformRegistration/src/agent/src/RegistrationLogic.cpp)
++target_sources(mpa_agent PRIVATE external/dcap_source/tools/SGXPlatformRegistration/src/agent/src/RegistrationService.cpp)
++target_sources(mpa_agent PRIVATE external/dcap_source/tools/SGXPlatformRegistration/src/agent/src/agent_logger.cpp)
++
++add_library(mpa_common STATIC)
++target_include_directories(mpa_common PUBLIC external/dcap_source/tools/SGXPlatformRegistration/src/common/inc)
++target_include_directories(mpa_common PUBLIC external/dcap_source/tools/SGXPlatformRegistration/include)
++target_sources(mpa_common PRIVATE external/dcap_source/tools/SGXPlatformRegistration/src/common/src/common.cpp)
++target_sources(mpa_common PRIVATE external/dcap_source/tools/SGXPlatformRegistration/src/common/src/logger.cpp)
++
++add_library(mpa_management STATIC)
++target_include_directories(mpa_management PRIVATE common/inc)
++target_include_directories(mpa_management PUBLIC external/dcap_source/tools/SGXPlatformRegistration/src/common/inc)
++target_include_directories(mpa_management PUBLIC external/dcap_source/tools/SGXPlatformRegistration/include)
++target_include_directories(mpa_management PUBLIC external/dcap_source/tools/SGXPlatformRegistration/src/management/inc)
++target_sources(mpa_management PRIVATE external/dcap_source/tools/SGXPlatformRegistration/src/management/src/MPManagement.cpp)
++target_sources(mpa_management PRIVATE external/dcap_source/tools/SGXPlatformRegistration/src/management/src/management_logger.cpp)
++
++add_executable(mpa_registration)
++target_link_libraries(mpa_registration mpa_management mpa_agent mpa_common sgx_capable mpa_uefi mpa_network CURL::libcurl)
++target_sources(mpa_registration PRIVATE external/dcap_source/tools/SGXPlatformRegistration/src/mpa_registration/src/mpa_registration_service.cpp)
++install(TARGETS mpa_registration DESTINATION ${CMAKE_INSTALL_LIBEXECDIR})
++service_libexec(mpa_registration external/dcap_source/tools/SGXPlatformRegistration/src/mpa_registration/mpa_registration_tool.service)
++
++add_executable(mpa_manage)
++target_link_libraries(mpa_manage mpa_management mpa_agent mpa_common sgx_capable mpa_uefi mpa_network)
++target_sources(mpa_manage PRIVATE external/dcap_source/tools/SGXPlatformRegistration/src/mpa_manage_tool/src/main.cpp)
++install(TARGETS mpa_manage DESTINATION ${CMAKE_INSTALL_SBINDIR})
++
++add_executable(tee_appraisal_tool)
++target_include_directories(tee_appraisal_tool PRIVATE ${RapidJSON_INCLUDE_DIRS})
++target_include_directories(tee_appraisal_tool PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
++target_include_directories(tee_appraisal_tool PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
++target_include_directories(tee_appraisal_tool PRIVATE external/dcap_source/QuoteVerification/appraisal/common)
++target_include_directories(tee_appraisal_tool PRIVATE external/dcap_source/external/jwt-cpp/include)
++target_link_libraries(tee_appraisal_tool wrapper OpenSSL::Crypto ${RapidJSON_LIBRARIES} -ldl -lpthread)
++target_sources(tee_appraisal_tool PRIVATE external/dcap_source/QuoteVerification/appraisal/common/file_util.cpp)
++target_sources(tee_appraisal_tool PRIVATE external/dcap_source/QuoteVerification/appraisal/common/format_util.cpp)
++target_sources(tee_appraisal_tool PRIVATE external/dcap_source/QuoteVerification/appraisal/tee_appraisal_tool/gen_payload.cpp)
++target_sources(tee_appraisal_tool PRIVATE external/dcap_source/QuoteVerification/appraisal/tee_appraisal_tool/main.cpp)
++target_sources(tee_appraisal_tool PRIVATE external/dcap_source/QuoteVerification/appraisal/tee_appraisal_tool/tee_appraisal_tool.cpp)
++install(TARGETS tee_appraisal_tool DESTINATION ${CMAKE_INSTALL_SBINDIR})
++
++add_executable(PCKIDRetrievalTool)
++target_compile_definitions(PCKIDRetrievalTool PRIVATE STRPRODUCTVER="${VERSION_SGX_DCAP}")
++target_include_directories(PCKIDRetrievalTool PRIVATE common/inc)
++target_include_directories(PCKIDRetrievalTool PRIVATE common/inc/internal)
++target_include_directories(PCKIDRetrievalTool PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
++target_include_directories(PCKIDRetrievalTool PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
++target_include_directories(PCKIDRetrievalTool PRIVATE external/dcap_source/tools/PCKRetrievalTool/App/inc)
++target_include_directories(PCKIDRetrievalTool PRIVATE external/dcap_source/tools/SGXPlatformRegistration/include)
++target_include_directories(PCKIDRetrievalTool PRIVATE psw/ae/inc/internal)
++target_link_libraries(PCKIDRetrievalTool CURL::libcurl edl_u_id_enclave edl_u_pce -ldl)
++target_sources(PCKIDRetrievalTool PRIVATE external/dcap_source/tools/PCKRetrievalTool/App/App.cpp)
++target_sources(PCKIDRetrievalTool PRIVATE external/dcap_source/tools/PCKRetrievalTool/App/linux/network_wrapper.cpp)
++target_sources(PCKIDRetrievalTool PRIVATE external/dcap_source/tools/PCKRetrievalTool/App/utility.cpp)
++install(TARGETS PCKIDRetrievalTool DESTINATION ${CMAKE_INSTALL_SBINDIR})
++
++add_library(enclaveparser OBJECT)
++target_include_directories(enclaveparser PRIVATE common/inc)
++target_include_directories(enclaveparser PRIVATE common/inc/internal)
++target_include_directories(enclaveparser PRIVATE psw/urts)
++target_sources(enclaveparser PRIVATE psw/urts/parser/elf32parser.cpp)
++target_sources(enclaveparser PRIVATE psw/urts/parser/elf64parser.cpp)
++target_sources(enclaveparser PRIVATE psw/urts/parser/parserfactory.cpp)
++target_sources(enclaveparser PRIVATE psw/urts/parser/section.cpp)
++
++add_executable(sgx_sign)
++target_include_directories(sgx_sign PRIVATE common/inc)
++target_include_directories(sgx_sign PRIVATE common/inc/internal)
++target_include_directories(sgx_sign PRIVATE external/sgx-emm/emm_src/include)
++target_include_directories(sgx_sign PRIVATE psw/enclave_common)
++target_include_directories(sgx_sign PRIVATE psw/urts)
++target_include_directories(sgx_sign PRIVATE psw/urts/linux)
++target_include_directories(sgx_sign PRIVATE psw/urts/parser)
++target_link_libraries(sgx_sign enclaveparser tinyxml2::tinyxml2 OpenSSL::Crypto)
++target_sources(sgx_sign PRIVATE common/src/crypto_evp_digest.cpp)
++target_sources(sgx_sign PRIVATE common/src/crypto_rsa3072.cpp)
++target_sources(sgx_sign PRIVATE common/src/crypto_rsa_key.cpp)
++target_sources(sgx_sign PRIVATE common/src/se_map.c)
++target_sources(sgx_sign PRIVATE common/src/se_trace.c)
++target_sources(sgx_sign PRIVATE common/src/sgx_memset_s.cpp)
++target_sources(sgx_sign PRIVATE sdk/sign_tool/SignTool/enclave_creator_sign.cpp)
++target_sources(sgx_sign PRIVATE sdk/sign_tool/SignTool/manage_metadata.cpp)
++target_sources(sgx_sign PRIVATE sdk/sign_tool/SignTool/parse_key_file.cpp)
++target_sources(sgx_sign PRIVATE sdk/sign_tool/SignTool/sign_tool.cpp)
++target_sources(sgx_sign PRIVATE sdk/sign_tool/SignTool/util_st.cpp)
++target_sources(sgx_sign PRIVATE psw/urts/loader.cpp)
++target_sources(sgx_sign PRIVATE psw/urts/parser/shared_object_parser.cpp)
++target_sources(sgx_sign PRIVATE psw/urts/se_detect.cpp)
++install(TARGETS sgx_sign)
++
++CreateBundle(ecdsa_quote_service_bundle DIR psw/ae/aesm_service/source/bundles/ecdsa_quote_service_bundle FILES ecdsa_quote_service_bundle.cpp)
++target_include_directories(ecdsa_quote_service_bundle PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
++target_include_directories(ecdsa_quote_service_bundle PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
++target_include_directories(ecdsa_quote_service_bundle PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/quote/inc)
++target_include_directories(ecdsa_quote_service_bundle PRIVATE psw/ae/aesm_service/source/common)
++target_include_directories(ecdsa_quote_service_bundle PRIVATE psw/ae/data/constants/linux)
++target_link_libraries(ecdsa_quote_service_bundle wrapper oal utils sgx_qe3_logic)
++
++CreateBundle(linux_network_service_bundle DIR psw/ae/aesm_service/source/bundles/linux_network_service_bundle FILES aesm_http_msg.cpp linux_network_service_bundle.cpp)
++target_include_directories(linux_network_service_bundle PRIVATE psw/ae/aesm_service/source/common)
++target_include_directories(linux_network_service_bundle PRIVATE psw/ae/data/constants/linux)
++target_include_directories(linux_network_service_bundle PRIVATE psw/ae/inc)
++target_link_libraries(linux_network_service_bundle wrapper oal utils OpenSSL::Crypto)
++
++CreateBundle(pce_service_bundle DIR psw/ae/aesm_service/source/bundles/pce_service_bundle FILES pce_service_bundle.cpp)
++target_include_directories(pce_service_bundle PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
++target_include_directories(pce_service_bundle PRIVATE psw/ae/aesm_service/source/common)
++target_include_directories(pce_service_bundle PRIVATE psw/ae/data/constants/linux)
++target_include_directories(pce_service_bundle PRIVATE psw/ae/inc)
++target_link_libraries(pce_service_bundle wrapper oal sgx_pce_logic)
++
++CreateBundle(quote_ex_service_bundle DIR psw/ae/aesm_service/source/bundles/quote_ex_service_bundle FILES quote_ex_service_bundle.cpp)
++target_include_directories(quote_ex_service_bundle PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
++target_include_directories(quote_ex_service_bundle PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
++target_include_directories(quote_ex_service_bundle PRIVATE psw/ae/aesm_service/source/common)
++target_include_directories(quote_ex_service_bundle PRIVATE psw/ae/data/constants/linux)
++target_include_directories(quote_ex_service_bundle PRIVATE psw/ae/inc)
++target_link_libraries(quote_ex_service_bundle wrapper oal utils OpenSSL::Crypto)
++
++if (FALSE)
++	get_cmake_property(_variableNames VARIABLES)
++	list (SORT _variableNames)
++	list (REMOVE_DUPLICATES _variableNames)
++	foreach (_variableName ${_variableNames})
++		message(STATUS "XXX ${_variableName}=${${_variableName}}")
++	endforeach()
++endif()
++# vim: nowrap
+--- /dev/null
++++ b/SampleCode/SampleEnclave/App/CMakeLists.txt
+@@ -0,0 +1,26 @@
++cmake_minimum_required(VERSION 3.20)
++project(sgx-enclave LANGUAGES ASM C CXX)
++
++set(CMAKE_C_EXTENSIONS ON)
++set(CMAKE_C_STANDARD_REQUIRED 1)
++set(CMAKE_C_STANDARD 11)
++set(CMAKE_CXX_EXTENSIONS ON)
++set(CMAKE_CXX_STANDARD_REQUIRED 1)
++set(CMAKE_CXX_STANDARD 17)
++
++set(CMAKE_POSITION_INDEPENDENT_CODE ON)
++
++# edl_u_Enclave
++build_edl_u(EDL Enclave DIR ../Enclave INC Include SEARCH ../Enclave common/inc)
++add_executable(SampleEnclave)
++target_include_directories(SampleEnclave PRIVATE ../Include)
++target_link_libraries(SampleEnclave sgx_urts edl_u_Enclave)
++target_sources(SampleEnclave PRIVATE App.cpp)
++target_sources(SampleEnclave PRIVATE Edger8rSyntax/Arrays.cpp)
++target_sources(SampleEnclave PRIVATE Edger8rSyntax/Functions.cpp)
++target_sources(SampleEnclave PRIVATE Edger8rSyntax/Pointers.cpp)
++target_sources(SampleEnclave PRIVATE Edger8rSyntax/Types.cpp)
++target_sources(SampleEnclave PRIVATE TrustedLibrary/Libc.cpp)
++target_sources(SampleEnclave PRIVATE TrustedLibrary/Libcxx.cpp)
++target_sources(SampleEnclave PRIVATE TrustedLibrary/Thread.cpp)
++install(TARGETS SampleEnclave)
+--- a/common/inc/tlibc/sys/cdefs.h
++++ b/common/inc/tlibc/sys/cdefs.h
+@@ -57,7 +57,7 @@
+ /*
+  * Macro to test if we're using a specific version of gcc or later.
+  */
+-#if defined __GNUC__ && defined __GNUC_MINOR_
++#if defined __GNUC__ && defined __GNUC_MINOR__
+ # define __GNUC_PREREQ__(ma, mi) \
+     ((__GNUC__ > (ma)) || (__GNUC__ == (ma) && __GNUC_MINOR__ >= (mi)))
+ #else
+--- a/common/src/se_event.c
++++ b/common/src/se_event.c
+@@ -34,6 +34,8 @@
+ 
+ #include <linux/futex.h>
+ #include <sys/time.h>
++#include <sys/syscall.h>
++#include <unistd.h>
+ 
+ se_handle_t se_event_init(void)
+ {
+--- a/external/CppMicroServices/CMakeLists.txt
++++ b/external/CppMicroServices/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ # Extract the current version from the VERSION file
+ file(STRINGS VERSION _version LIMIT_COUNT 1)
+ 
+-set(US_CMAKE_MINIMUM_REQUIRED_VERSION 3.2)
++set(US_CMAKE_MINIMUM_REQUIRED_VERSION 3.20)
+ 
+ cmake_minimum_required(VERSION ${US_CMAKE_MINIMUM_REQUIRED_VERSION})
+ 
+@@ -32,7 +32,7 @@ endforeach()
+ 
+ set(CMAKE_CXX_EXTENSIONS OFF)
+ set(CMAKE_CXX_STANDARD_REQUIRED 1)
+-set(CMAKE_CXX_STANDARD 11)
++set(CMAKE_CXX_STANDARD 17)
+ 
+ # Since version 3.1, CMake pulls in implicit link libraries when compiling
+ # source files in C mode. Because we mix C and C++ code in the test driver
+@@ -604,7 +604,6 @@ add_subdirectory(framework)
+ # Documentation
+ #-----------------------------------------------------------------------------
+ 
+-add_subdirectory(doc)
+ 
+ #-----------------------------------------------------------------------------
+ # Installation
+--- a/external/CppMicroServices/framework/include/cppmicroservices/AnyMap.h
++++ b/external/CppMicroServices/framework/include/cppmicroservices/AnyMap.h
+@@ -25,6 +25,7 @@
+ 
+ #include "cppmicroservices/Any.h"
+ 
++#include <cstdint>
+ #include <string>
+ #include <unordered_map>
+ 
+--- a/external/CppMicroServices/framework/include/cppmicroservices/BundleEvent.h
++++ b/external/CppMicroServices/framework/include/cppmicroservices/BundleEvent.h
+@@ -25,6 +25,7 @@
+ 
+ #include "cppmicroservices/FrameworkExport.h"
+ 
++#include <cstdint>
+ #include <iostream>
+ #include <memory>
+ 
+--- a/external/CppMicroServices/framework/include/cppmicroservices/FrameworkEvent.h
++++ b/external/CppMicroServices/framework/include/cppmicroservices/FrameworkEvent.h
+@@ -25,6 +25,7 @@
+ 
+ #include "cppmicroservices/FrameworkExport.h"
+ 
++#include <cstdint>
+ #include <iostream>
+ #include <memory>
+ 
+--- a/external/CppMicroServices/framework/src/service/ServiceListeners.cpp
++++ b/external/CppMicroServices/framework/src/service/ServiceListeners.cpp
+@@ -362,8 +362,6 @@ void ServiceListeners::ServiceChanged(Se
+                                       const ServiceEvent& evt,
+                                       ServiceListenerEntries& matchBefore)
+ {
+-  int n = 0;
+-
+   if (!matchBefore.empty()) {
+     for (auto& l : receivers) {
+       matchBefore.erase(l);
+@@ -372,8 +370,8 @@ void ServiceListeners::ServiceChanged(Se
+ 
+   for (auto& l : receivers) {
+     if (!l.IsRemoved()) {
++
+       try {
+-        ++n;
+         l.CallDelegate(evt);
+       } catch (...) {
+         std::string message("Service listener in " +
+--- a/external/CppMicroServices/third_party/miniz.c
++++ b/external/CppMicroServices/third_party/miniz.c
+@@ -190,6 +190,7 @@
+ // functions (such as tdefl_compress_mem_to_heap() and tinfl_decompress_mem_to_heap()) won't work.
+ //#define MINIZ_NO_MALLOC
+ 
++#define MINIZ_NO_TIME
+ #if defined(__TINYC__) && (defined(__linux) || defined(__linux__))
+   // TODO: Work around "error: include file 'sys\utime.h' when compiling with tcc on Linux
+   #define MINIZ_NO_TIME
+@@ -504,9 +505,7 @@ typedef struct
+   mz_uint16 m_version_needed;
+   mz_uint16 m_bit_flag;
+   mz_uint16 m_method;
+-#ifndef MINIZ_NO_TIME
+   time_t m_time;
+-#endif
+   mz_uint32 m_crc32;
+   mz_uint64 m_comp_size;
+   mz_uint64 m_uncomp_size;
+@@ -3461,6 +3460,8 @@ mz_bool mz_zip_reader_file_stat(mz_zip_a
+   pStat->m_method = MZ_READ_LE16(p + MZ_ZIP_CDH_METHOD_OFS);
+ #ifndef MINIZ_NO_TIME
+   pStat->m_time = mz_zip_dos_to_time_t(MZ_READ_LE16(p + MZ_ZIP_CDH_FILE_TIME_OFS), MZ_READ_LE16(p + MZ_ZIP_CDH_FILE_DATE_OFS));
++#else
++  pStat->m_time = 0;
+ #endif
+   pStat->m_crc32 = MZ_READ_LE32(p + MZ_ZIP_CDH_CRC32_OFS);
+   pStat->m_comp_size = MZ_READ_LE32(p + MZ_ZIP_CDH_COMPRESSED_SIZE_OFS);
+--- a/external/dcap_source/QuoteGeneration/pce_wrapper/pce_wrapper.cpp
++++ b/external/dcap_source/QuoteGeneration/pce_wrapper/pce_wrapper.cpp
+@@ -84,16 +84,16 @@ bool get_pce_path(
+     Dl_info dl_info;
+     if(g_pce_status.pce_path[0])
+     {
+-        strncpy(p_file_path, g_pce_status.pce_path, buf_size -1);
+-        p_file_path[buf_size - 1] = '\0';  //null terminate the string
+-        return true;
++        int r = ::snprintf(p_file_path, buf_size, "%s", g_pce_status.pce_path);
++        size_t out = r;
++        return r > 0 && out < buf_size;
+     }
+     else if(0 != dladdr(__builtin_return_address(0), &dl_info) &&
+         NULL != dl_info.dli_fname)
+     {
+-        if(strnlen(dl_info.dli_fname,buf_size)>=buf_size)
+-            return false;
+-        (void)strncpy(p_file_path,dl_info.dli_fname,buf_size);
++        int r = ::snprintf(p_file_path, buf_size, "%s", dl_info.dli_fname);
++        size_t out = r;
++        return r > 0 && out < buf_size;
+     }
+     else //not a dynamic executable
+     {
+@@ -109,21 +109,18 @@ bool get_pce_path(
+     if ( p_last_slash != NULL )
+     {
+         p_last_slash++;   //increment beyond the last slash
+-        *p_last_slash = '\0';  //null terminate the string
+     }
+-    else p_file_path[0] = '\0';
+-    if(strnlen(p_file_path,buf_size)+strnlen(PCE_ENCLAVE_NAME,buf_size)+sizeof(char)>buf_size)
++    else p_last_slash = p_file_path;
++    *p_last_slash = '\0';  //null terminate the string
++    if (p_last_slash > p_file_path + (buf_size - 1) - sizeof(PCE_ENCLAVE_NAME))
++    {
+         return false;
+-    (void)strncat(p_file_path,PCE_ENCLAVE_NAME, strnlen(PCE_ENCLAVE_NAME,buf_size));
++    }
++    memcpy(p_last_slash, PCE_ENCLAVE_NAME, sizeof(PCE_ENCLAVE_NAME));
+     struct stat info;
+     if(stat(p_file_path, &info) != 0 ||
+         ((info.st_mode & S_IFREG) == 0 && (info.st_mode & S_IFLNK) == 0)) {
+-        if ( p_last_slash != NULL )
+-        {
+-            *p_last_slash = '\0';  //null terminate the string
+-        }
+-        else p_file_path[0] = '\0';
+-        (void)strncat(p_file_path,PCE_ENCLAVE_NAME_LEGACY, strnlen(PCE_ENCLAVE_NAME_LEGACY,buf_size));
++        memcpy(p_file_path, PCE_ENCLAVE_NAME_LEGACY, sizeof(PCE_ENCLAVE_NAME_LEGACY));
+     }
+     return true;
+ }
+--- a/external/dcap_source/QuoteGeneration/qcnl/certification_provider.cpp
++++ b/external/dcap_source/QuoteGeneration/qcnl/certification_provider.cpp
+@@ -36,7 +36,7 @@
+  */
+ #include "certification_provider.h"
+ #include "certification_service.h"
+-#include "document.h"
++#include <rapidjson/document.h>
+ #include "local_cache.h"
+ #include "pck_cert_selection.h"
+ #include "qcnl_util.h"
+--- a/external/dcap_source/QuoteGeneration/qcnl/inc/pccs_response_object.h
++++ b/external/dcap_source/QuoteGeneration/qcnl/inc/pccs_response_object.h
+@@ -7,7 +7,7 @@
+ #define PCCSRESPONSEOBJECT_H_
+ #pragma once
+ 
+-#include "document.h"
++#include <rapidjson/document.h>
+ #include "qcnl_def.h"
+ #include <sstream>
+ #include <string>
+--- a/external/dcap_source/QuoteGeneration/qcnl/inc/qcnl_config.h
++++ b/external/dcap_source/QuoteGeneration/qcnl/inc/qcnl_config.h
+@@ -38,7 +38,7 @@
+ #pragma once
+ 
+ #include "sgx_default_qcnl_wrapper.h"
+-#include "document.h"
++#include <rapidjson/document.h>
+ #include <memory>
+ #include <string>
+ 
+--- a/external/dcap_source/QuoteGeneration/qcnl/linux/network_wrapper.cpp
++++ b/external/dcap_source/QuoteGeneration/qcnl/linux/network_wrapper.cpp
+@@ -68,10 +68,10 @@ sgx_qcnl_error_t prepare_curl() {
+ 
+         const char *libcurl_name = LIBCURL_NAME;
+         // With the dlopen (RTLD_DEEPBIND) for libcurl, it forces the libcurl to look up symbols in its dependencies.
+-        g_dlopen_handle = dlopen(LIBCURL_NAME, RTLD_LAZY | RTLD_DEEPBIND);
++        g_dlopen_handle = dlopen(libcurl_name, RTLD_LAZY | RTLD_DEEPBIND);
+         if (NULL == g_dlopen_handle) {
+             libcurl_name = LIBCURL4_NAME;
+-            g_dlopen_handle = dlopen(LIBCURL4_NAME, RTLD_LAZY | RTLD_DEEPBIND);
++            g_dlopen_handle = dlopen(libcurl_name, RTLD_LAZY | RTLD_DEEPBIND);
+             if (NULL == g_dlopen_handle) {
+                 qcnl_log(SGX_QL_LOG_ERROR, "Cannot open shared library %s or %s.", LIBCURL_NAME, LIBCURL4_NAME);
+                 break;
+--- a/external/dcap_source/QuoteGeneration/qcnl/linux/qcnl_config_impl.cpp
++++ b/external/dcap_source/QuoteGeneration/qcnl/linux/qcnl_config_impl.cpp
+@@ -35,7 +35,7 @@
+  *
+  */
+ 
+-#include "istreamwrapper.h"
++#include <rapidjson/istreamwrapper.h>
+ #include "qcnl_config.h"
+ #include <algorithm>
+ #include <curl/curl.h>
+--- a/external/dcap_source/QuoteGeneration/qcnl/qcnl_config.cpp
++++ b/external/dcap_source/QuoteGeneration/qcnl/qcnl_config.cpp
+@@ -36,10 +36,10 @@
+  */
+ 
+ #include "qcnl_config.h"
+-#include "error/en.h"
+-#include "error/error.h"
++#include <rapidjson/error/en.h>
++#include <rapidjson/error/error.h>
++#include <rapidjson/istreamwrapper.h>
+ #include <fstream>
+-#include <istreamwrapper.h>
+ #include <mutex>
+ #include <algorithm>
+ 
+--- a/external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgs_server.cpp
++++ b/external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgs_server.cpp
+@@ -34,8 +34,8 @@
+ #include "qgs_ql_logic.h"
+ #include "qgs_msg_lib.h"
+ #include "se_trace.h"
+-#include <boost/asio.hpp>
+-#include <boost/bind.hpp>
++#include <boost/asio/deadline_timer.hpp>
++#include <boost/bind/bind.hpp>
+ #include <boost/cstdint.hpp>
+ #include <boost/enable_shared_from_this.hpp>
+ #include <boost/shared_ptr.hpp>
+@@ -86,9 +86,9 @@ class QgsConnection : public boost::enab
+     static Pointer create(boost::mutex &connection_mtx,
+                           ConnectionSet &connections,
+                           asio::thread_pool &pool,
+-                          asio::io_service &io_service) {
++                          asio::io_context &io_context) {
+         return Pointer(new QgsConnection(connection_mtx, connections, pool,
+-                                         io_service));
++                                         io_context));
+     }
+ 
+     gs::socket &get_socket() {
+@@ -132,12 +132,12 @@ class QgsConnection : public boost::enab
+     QgsConnection(boost::mutex &connection_mtx,
+                   ConnectionSet &connections,
+                   asio::thread_pool &pool,
+-                  asio::io_service &io_service)
++                  asio::io_context &io_context)
+         : m_connection_mtx(connection_mtx),
+           m_connections(connections),
+           m_pool(pool),
+-          m_socket(io_service),
+-          m_timer(io_service) {
++          m_socket(io_context),
++          m_timer(io_context) {
+     }
+ 
+     void handle_read(const boost::system::error_code &ec, std::size_t bytes_transferred) {
+@@ -294,8 +294,8 @@ class QgsConnection : public boost::enab
+         boost::mutex connection_mtx;
+         boost::unordered_set<boost::shared_ptr<QgsConnection>> connections;
+         boost::asio::thread_pool pool;
+-        QgsServerImpl(asio::io_service &in_io_service, gs::endpoint &ep, uint8_t num_threads)
+-            : pool(num_threads), acceptor(in_io_service, ep), io_service(in_io_service) {
++        QgsServerImpl(asio::io_context &in_io_context, gs::endpoint &ep, uint8_t num_threads)
++            : pool(num_threads), acceptor(in_io_context, ep), io_context(in_io_context) {
+             start_accept();
+         }
+ 
+@@ -303,7 +303,7 @@ class QgsConnection : public boost::enab
+         {
+             QgsConnection::Pointer new_connection =
+                 QgsConnection::create(connection_mtx, connections, pool,
+-                                      io_service);
++                                      io_context);
+ 
+             acceptor.async_accept(new_connection->get_socket(),
+                                   boost::bind(&QgsServerImpl::handle_accept,
+@@ -337,18 +337,18 @@ class QgsConnection : public boost::enab
+             QGS_LOG_INFO("Stopped [%d] connections, about to clear connection list\n", i);
+             pool.join();
+             QGS_LOG_INFO("Joined thread pool\n");
+-            io_service.stop();
+-            QGS_LOG_INFO("Stopped io_service\n");
++            io_context.stop();
++            QGS_LOG_INFO("Stopped io_context\n");
+             connections.clear();
+         }
+ 
+     private:
+         vsock_acceptor acceptor;
+-        asio::io_service& io_service;
++        asio::io_context& io_context;
+     };
+ 
+-    QgsServer::QgsServer(asio::io_service &io_service, gs::endpoint &ep, uint8_t num_threads)
+-        : d(new QgsServerImpl(io_service, ep, num_threads)) {
++    QgsServer::QgsServer(asio::io_context &io_context, gs::endpoint &ep, uint8_t num_threads)
++        : d(new QgsServerImpl(io_context, ep, num_threads)) {
+     }
+ 
+     void QgsServer::shutdown() {
+--- a/external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgs_server.h
++++ b/external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgs_server.h
+@@ -43,7 +43,7 @@ namespace intel { namespace sgx { namesp
+ 
+     class QgsServer {
+     public:
+-      QgsServer(asio::io_service &io_service, gs::endpoint &ep, uint8_t num_threads);
++      QgsServer(asio::io_context &io_context, gs::endpoint &ep, uint8_t num_threads);
+       ~QgsServer();
+       void shutdown();
+ 
+--- a/external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgsd.service
++++ b/external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgsd.service
+@@ -6,23 +6,14 @@ Wants=remount-dev-exec.service
+ 
+ [Service]
+ User=qgsd
+-Type=forking
+-Environment=NAME=qgsd
+-Environment=LD_LIBRARY_PATH=@qgs_folder@
+-WorkingDirectory=@qgs_folder@
+-PermissionsStartOnly=true
+-ExecStartPre=/bin/chown -R qgsd:qgsd /var/opt/qgsd/
+-ExecStartPre=/bin/chmod 0750 /var/opt/qgsd/
+-ExecStart=@qgs_folder@/qgs
+-ExecStartPre=@qgs_folder@/linksgx.sh
++WorkingDirectory=~
++Environment=QGSD_ARGS="--no-daemon -p=4050 -n=4"
++ExecStart=@qgs_folder@/qgs $QGSD_ARGS
+ InaccessibleDirectories=/home
+ ExecReload=/bin/kill -SIGHUP $MAINPID
+ Restart=on-failure
+ RestartSec=15s
+ DevicePolicy=closed
+-DeviceAllow=/dev/sgx rw
+-DeviceAllow=/dev/sgx/enclave rw
+-DeviceAllow=/dev/sgx/provision rw
+ DeviceAllow=/dev/sgx_enclave rw
+ DeviceAllow=/dev/sgx_provision rw
+ [Install]
+--- a/external/dcap_source/QuoteGeneration/quote_wrapper/qgs/server_main.cpp
++++ b/external/dcap_source/QuoteGeneration/quote_wrapper/qgs/server_main.cpp
+@@ -10,7 +10,7 @@
+ #include <linux/vm_sockets.h>
+ 
+ #define QGS_CONFIG_FILE "/etc/qgs.conf"
+-#define QGS_UNIX_SOCKET_FILE "/var/run/tdx-qgs/qgs.socket"
++#define QGS_UNIX_SOCKET_FILE "/run/tdx-qgs/qgs.socket"
+ #define MAX_PORT_NUMBER 0xFFFF // accepted port range 0..65535 (0xFFFF)
+ 
+ using namespace std;
+@@ -143,14 +143,12 @@ int main(int argc, const char* argv[])
+         else
+             QGS_LOG_INFO("Parameters from configuration file: num_thread = %d, port = %d (%04xh)\n", (uint8_t)num_threads, port, port);
+     } else {
+-        cout << "Failed to open config file " << QGS_CONFIG_FILE << endl;
++        cout << "Using built-in defaults (they can be adjusted with config file " << QGS_CONFIG_FILE << ")." << endl;
+     }
+ 
+     for (int i = 1; i < argc; i++)
+     {
+         if (strcmp(argv[i], "--no-daemon") == 0) {
+-            cout << "--no-daemon option found, will not run as a daemon"
+-                 << endl;
+             no_daemon = true;
+             continue;
+         } else if (strncmp(argv[i], "-p=", 3 ) == 0) {
+@@ -209,7 +207,7 @@ int main(int argc, const char* argv[])
+     try {
+         do {
+             reload = false;
+-            asio::io_service io_service;
++            asio::io_context io_context;
+             gs::endpoint ep;
+             if (!socket_based_communication) {
+                 struct sockaddr_vm vm_addr = {};
+@@ -229,9 +227,9 @@ int main(int argc, const char* argv[])
+                 }
+             }
+             QGS_LOG_INFO("About to create QgsServer\n");
+-            server = new QgsServer(io_service, ep, (uint8_t)num_threads);
++            server = new QgsServer(io_context, ep, (uint8_t)num_threads);
+             QGS_LOG_INFO("About to start main loop\n");
+-            io_service.run();
++            io_context.run();
+             QGS_LOG_INFO("Quit main loop\n");
+             QgsServer *temp_server = server;
+             server = NULL;
+--- a/external/dcap_source/QuoteGeneration/quote_wrapper/tdx_attest/tdx_attest.c
++++ b/external/dcap_source/QuoteGeneration/quote_wrapper/tdx_attest/tdx_attest.c
+@@ -106,7 +106,7 @@ static const size_t REQ_BUF_SIZE = 4 * 4
+ static const size_t QUOTE_BUF_SIZE = 8 * 1024; //8K
+ static const size_t QUOTE_MIN_SIZE = 1020;
+ static const unsigned MAX_PORT_NUMBER = 0xFFFF; // accepted port range 0..65535 (0xFFFF)
+-static const unsigned WRONG_PORT_NUMBER = MAX_PORT_NUMBER + 1;
++static const unsigned WRONG_PORT_NUMBER = ~0;
+ 
+ static const tdx_uuid_t g_intel_tdqe_uuid = {TDX_SGX_ECDSA_ATTESTATION_ID};
+ 
+@@ -847,7 +847,7 @@ tdx_attest_error_t tdx_att_get_quote(
+     if (TDX_ATTEST_SUCCESS == ret) {
+         ret = extract_quote_from_blob_payload((uint8_t*)p_get_quote_blob->data, payload_body_size, pp_quote, p_quote_size);
+     }
+-    if (TDX_ATTEST_SUCCESS == ret || TDX_ATTEST_ERROR_NOT_SUPPORTED != ret) {
++    if (TDX_ATTEST_ERROR_NOT_SUPPORTED != ret) {
+         goto ret_point;
+     }
+ 
+@@ -856,7 +856,7 @@ tdx_attest_error_t tdx_att_get_quote(
+ #endif
+ 
+     ret = configfs_get_quote(p_tdx_report_data, pp_quote, p_quote_size);
+-    if (TDX_ATTEST_SUCCESS == ret || TDX_ATTEST_ERROR_NOT_SUPPORTED != ret) {
++    if (TDX_ATTEST_ERROR_NOT_SUPPORTED != ret) {
+         goto ret_point;
+     }
+ 
+--- a/external/dcap_source/QuoteVerification/appraisal/qae/qae.edl
++++ b/external/dcap_source/QuoteVerification/appraisal/qae/qae.edl
+@@ -15,8 +15,7 @@ enclave {
+ 
+     trusted {
+         /* define ECALLs here. */
+-        public quote3_error_t qae_appraise_quote_result([in, size=wasm_size]uint8_t *wasm_buf, size_t wasm_size,
+-                                                    [in, string]const char *p_verification_result_token,
++        public quote3_error_t qae_appraise_quote_result([in]const uint8_t *p_verification_result_token,
+                                                     [in, count=qaps_count]uint8_t **p_qaps, uint8_t qaps_count,
+                                                     time_t appraisal_check_date,
+                                                     [in, out] sgx_ql_qe_report_info_t *p_qae_report_info,
+--- a/external/dcap_source/QuoteVerification/appraisal/qal/opa_builtins.cpp
++++ b/external/dcap_source/QuoteVerification/appraisal/qal/opa_builtins.cpp
+@@ -31,7 +31,6 @@
+ #include <iostream>
+ #include "qal_common.h"
+ #ifndef BUILD_QAE
+-#include <cpuid.h>
+ #include "se_trace.h"
+ #else
+ #include "sgx_error.h"
+@@ -73,7 +72,10 @@ uint64_t get_ns_since_epoch(std::string
+ #define RDRAND_MASK 0x40000000
+ static int rdrand_cpuid()
+ {
++#if 1
+     /* Are we on an Intel processor? */
++    return 1;
++#else
+     unsigned int eax, ebx, ecx, edx;
+     __get_cpuid(0, &eax, &ebx, &ecx, &edx);
+ 
+@@ -90,6 +92,7 @@ static int rdrand_cpuid()
+         return 1;
+     else
+         return 0;
++#endif
+ }
+ 
+ static int g_rdrand_supported = -1;
+--- a/external/dcap_source/QuoteVerification/appraisal/qal/qae_wrapper.cpp
++++ b/external/dcap_source/QuoteVerification/appraisal/qal/qae_wrapper.cpp
+@@ -5,6 +5,7 @@
+  */
+ 
+ #include <mutex>
++#include <cstdio>
+ #include "sgx_urts.h"
+ #include "qae_u.h"
+ #include "sgx_error.h"
+@@ -78,21 +79,21 @@ static bool get_qae_path(
+     Dl_info dl_info;
+     if (s_qae_info.m_qae_path[0])
+     {
+-        strncpy(p_file_path, s_qae_info.m_qae_path, buf_size - 1);
+-        p_file_path[buf_size - 1] = '\0'; // null terminate the string
+-        return true;
++        int r = ::snprintf(p_file_path, buf_size, "%s", s_qae_info.m_qae_path);
++        size_t out = r;
++        return r > 0 && out < buf_size;
+     }
+     else if (0 != dladdr(__builtin_return_address(0), &dl_info) &&
+              NULL != dl_info.dli_fname)
+     {
+-        if (strnlen(dl_info.dli_fname, buf_size) >= buf_size)
+-            return false;
+-        (void)strncpy(p_file_path, dl_info.dli_fname, buf_size);
++        int r = ::snprintf(p_file_path, buf_size, "%s", dl_info.dli_fname);
++        size_t out = r;
++        return r > 0 && out < buf_size;
+     }
+     else // not a dynamic executable
+     {
+         ssize_t i = readlink("/proc/self/exe", p_file_path, buf_size - 1);
+-        if (i == -1)
++        if (i < 0 || i >= (ssize_t)buf_size)
+             return false;
+         p_file_path[i] = '\0';
+     }
+@@ -101,30 +102,22 @@ static bool get_qae_path(
+     if (p_last_slash != NULL)
+     {
+         p_last_slash++;       // increment beyond the last slash
+-        *p_last_slash = '\0'; // null terminate the string
+     }
+     else
+     {
+-        p_file_path[0] = '\0';
++        p_last_slash = p_file_path;
+     }
+-    if (strnlen(p_file_path, buf_size) + strnlen(QAE_NAME, buf_size) + sizeof(char) > buf_size)
++    *p_last_slash = '\0'; // null terminate the string
++    if (p_last_slash > p_file_path + (buf_size - 1) - sizeof(QAE_NAME))
+     {
+         return false;
+     }
+-    (void)strncat(p_file_path, QAE_NAME, strnlen(QAE_NAME, buf_size));
++    memcpy(p_last_slash, QAE_NAME, sizeof(QAE_NAME));
+     struct stat info;
+     if (stat(p_file_path, &info) != 0 ||
+         ((info.st_mode & S_IFREG) == 0 && (info.st_mode & S_IFLNK) == 0))
+     {
+-        if (p_last_slash != NULL)
+-        {
+-            *p_last_slash = '\0'; // null terminate the string
+-        }
+-        else
+-        {
+-            p_file_path[0] = '\0';
+-        }
+-        (void)strncat(p_file_path, QAE_NAME, strnlen(QAE_NAME, buf_size));
++        memcpy(p_file_path, QAE_NAME, sizeof(QAE_NAME));
+     }
+     return true;
+ }
+@@ -246,7 +239,7 @@ quote3_error_t ecall_appraise_quote_resu
+     std::lock_guard<std::mutex> lock(s_qae_info.m_qae_mutex);
+     sgx_status_t ret = qae_appraise_quote_result(s_qae_info.m_qae_eid,
+                                                  &retval,
+-                                                 reinterpret_cast<const char *>(p_verification_result_token),
++                                                 reinterpret_cast<const uint8_t *>(p_verification_result_token),
+                                                  p_qaps,
+                                                  qaps_count,
+                                                  appraisal_check_date,
+@@ -337,4 +330,4 @@ quote3_error_t ecall_authenticate_policy
+             retval = SGX_QL_ERROR_UNEXPECTED;
+     }
+     return retval;
+-}
+\ No newline at end of file
++}
+--- a/external/dcap_source/QuoteVerification/appraisal/tee_appraisal_tool/gen_payload.cpp
++++ b/external/dcap_source/QuoteVerification/appraisal/tee_appraisal_tool/gen_payload.cpp
+@@ -40,6 +40,7 @@
+ 
+ #include <string.h>
+ #include <algorithm>
++#include <memory>
+ #include <fstream>
+ #include <iostream>
+ #include <array>
+--- a/external/dcap_source/QuoteVerification/appraisal/tee_appraisal_tool/tee_appraisal_tool.cpp
++++ b/external/dcap_source/QuoteVerification/appraisal/tee_appraisal_tool/tee_appraisal_tool.cpp
+@@ -267,11 +267,11 @@ cmd_t CAppraisalUtil::parse_cmd(int argc
+     {
+         cmd = VERIFY_POLICY;
+     }
+-    else if (argc == 1 && (strcmp(*argv, "-help") == 0 || strcmp(*argv, "-h") == 0))
++    else if (argc == 1 && (strcmp(*argv, "--help") == 0 || strcmp(*argv, "-help") == 0 || strcmp(*argv, "-h") == 0))
+     {
+         cmd = PRINT_USAGE;
+     }
+-    else if (argc == 1 && strcmp(*argv, "-version") == 0)
++    else if (argc == 1 && (strcmp(*argv, "--version") == 0 || strcmp(*argv, "-version") == 0))
+     {
+         cmd = PRINT_VERSION;
+     }
+@@ -480,7 +480,6 @@ std::tuple<std::string, std::string> CAp
+     bool flag = false;
+     BIO *bio = NULL;
+     EVP_PKEY *pkey = NULL;
+-    EC_KEY *ec_key = NULL;
+     BIGNUM *bn_x = NULL, *bn_y = NULL;
+     BIGNUM *bn_r = NULL;
+     EC_GROUP *ec_group = NULL;
+--- a/external/dcap_source/QuoteVerification/dcap_quoteverify/linux/qve_parser.cpp
++++ b/external/dcap_source/QuoteVerification/dcap_quoteverify/linux/qve_parser.cpp
+@@ -61,21 +61,21 @@ bool get_qve_path(
+     Dl_info dl_info;
+     if(g_qve_path[0])
+     {
+-        strncpy(p_file_path, g_qve_path, buf_size -1);
+-        p_file_path[buf_size - 1] = '\0';  //null terminate the string
+-        return true;
++        int r = ::snprintf(p_file_path, buf_size, "%s", g_qve_path);
++        size_t out = r;
++        return r > 0 && out < buf_size;
+     }
+     else if(0 != dladdr(__builtin_return_address(0), &dl_info) &&
+         NULL != dl_info.dli_fname)
+     {
+-        if(strnlen(dl_info.dli_fname,buf_size)>=buf_size)
+-            return false;
+-        (void)strncpy(p_file_path,dl_info.dli_fname,buf_size);
++        int r = ::snprintf(p_file_path, buf_size, "%s", dl_info.dli_fname);
++        size_t out = r;
++        return r > 0 && out < buf_size;
+     }
+     else //not a dynamic executable
+     {
+         ssize_t i = readlink( "/proc/self/exe", p_file_path, buf_size - 1);
+-        if (i == -1)
++        if (i < 0 || i >= (ssize_t)buf_size)
+             return false;
+         p_file_path[i] = '\0';
+     }
+@@ -84,21 +84,17 @@ bool get_qve_path(
+     if ( p_last_slash != NULL )
+     {
+         p_last_slash++;   //increment beyond the last slash
+-        *p_last_slash = '\0';  //null terminate the string
+     }
+-    else p_file_path[0] = '\0';
+-    if(strnlen(p_file_path,buf_size)+strnlen(QvE_ENCLAVE_NAME,buf_size)+sizeof(char)>buf_size)
++    *p_last_slash = '\0'; // null terminate the string
++    if (p_last_slash > p_file_path + (buf_size - 1) - sizeof(QvE_ENCLAVE_NAME))
++    {
+         return false;
+-    (void)strncat(p_file_path,QvE_ENCLAVE_NAME, strnlen(QvE_ENCLAVE_NAME,buf_size));
++    }
++    memcpy(p_last_slash, QvE_ENCLAVE_NAME, sizeof(QvE_ENCLAVE_NAME));
+     struct stat info;
+     if(stat(p_file_path, &info) != 0 ||
+         ((info.st_mode & S_IFREG) == 0 && (info.st_mode & S_IFLNK) == 0)) {
+-        if ( p_last_slash != NULL )
+-        {
+-            *p_last_slash = '\0';  //null terminate the string
+-        }
+-        else p_file_path[0] = '\0';
+-        (void)strncat(p_file_path, QvE_ENCLAVE_NAME_LEGACY, strnlen(QvE_ENCLAVE_NAME_LEGACY, buf_size));
++        memcpy(p_file_path, QvE_ENCLAVE_NAME_LEGACY, sizeof(QvE_ENCLAVE_NAME_LEGACY));
+     }
+     return true;
+ }
+--- a/external/dcap_source/QuoteVerification/dcap_quoteverify/tee_qv_class.cpp
++++ b/external/dcap_source/QuoteVerification/dcap_quoteverify/tee_qv_class.cpp
+@@ -20,7 +20,7 @@
+ bool get_qve_path(TCHAR *p_file_path, size_t buf_size);
+ #else
+ #include <limits.h>
+-#include "linux/qve_u.h"
++#include <qve_u.h>
+ #define MAX_PATH PATH_MAX
+ bool get_qve_path(char *p_file_path, size_t buf_size);
+ 
+--- a/external/dcap_source/tools/PCKRetrievalTool/App/linux/network_wrapper.cpp
++++ b/external/dcap_source/tools/PCKRetrievalTool/App/linux/network_wrapper.cpp
+@@ -27,7 +27,7 @@ typedef struct _network_malloc_info_t{
+ }network_malloc_info_t;
+ 
+ #define MAX_URL_LENGTH  2083
+-#define LOCAL_NETWORK_SETTING "network_setting.conf"
++#define LOCAL_NETWORK_SETTING "/etc/network_setting.conf"
+ 
+ #ifndef MAX_PATH
+ #define MAX_PATH 260
+@@ -193,6 +193,8 @@ static void network_configuration(string
+     //firstly read local configuration File
+     char local_configuration_file_path[MAX_PATH] = "";
+     bool ret = get_program_path(local_configuration_file_path, MAX_PATH -1);
++    memcpy(local_configuration_file_path, LOCAL_NETWORK_SETTING, sizeof(LOCAL_NETWORK_SETTING));
++    if (0)
+     if (ret) {
+         if(strnlen(local_configuration_file_path ,MAX_PATH)+strnlen(LOCAL_NETWORK_SETTING,MAX_PATH)+sizeof(char) > MAX_PATH) {
+             ret = false;
+@@ -352,6 +354,8 @@ network_post_error_t network_https_post(
+ bool is_server_url_available() {
+     char local_configuration_file_path[MAX_PATH] = "";
+     bool ret = get_program_path(local_configuration_file_path, MAX_PATH -1);
++    memcpy(local_configuration_file_path, LOCAL_NETWORK_SETTING, sizeof(LOCAL_NETWORK_SETTING));
++    if (0)
+     if (ret) {
+         if(strnlen(local_configuration_file_path ,MAX_PATH)+strnlen(LOCAL_NETWORK_SETTING,MAX_PATH)+sizeof(char) > MAX_PATH) {
+             return false;
+--- a/external/dcap_source/tools/PCKRetrievalTool/App/utility.cpp
++++ b/external/dcap_source/tools/PCKRetrievalTool/App/utility.cpp
+@@ -147,12 +147,13 @@ bool get_program_path(TCHAR *p_file_path
+ #else
+ bool get_program_path(char *p_file_path, size_t buf_size)
+ {
++    return true;
+     if(NULL == p_file_path || 0 == buf_size){
+         return false;
+     }
+ 
+     ssize_t i = readlink( "/proc/self/exe", p_file_path, buf_size - 1);
+-    if (i == -1)
++    if (i < 0 || i >= (ssize_t)buf_size)
+         return false;
+     p_file_path[i] = '\0';
+ 
+@@ -211,7 +212,11 @@ bool load_enclave(const char* enclave_na
+ #if defined(_MSC_VER)
+     TCHAR enclave_path[ProgPathBufferSize] = _T("");
+ #else
++#ifndef LIBDIR
++#define LIBDIR "/usr/lib64"
++#endif
+     char enclave_path[ProgPathBufferSize] = "";
++    memcpy(enclave_path, LIBDIR "/", sizeof(LIBDIR "/"));
+ #endif
+ 
+     if (!get_program_path(enclave_path, ProgPathBufferSize))
+--- a/external/dcap_source/tools/SGXPlatformRegistration/src/agent/src/AgentConfiguration.cpp
++++ b/external/dcap_source/tools/SGXPlatformRegistration/src/agent/src/AgentConfiguration.cpp
+@@ -243,8 +243,8 @@ bool AgentConfiguration::read(MPConfigur
+ 
+ 	FILE *f = NULL;
+ 	if (fopen_s(&f, conf_file_path.c_str(), "r") != 0 || f == NULL) {
+-         agent_log_message(MP_REG_LOG_LEVEL_ERROR, "Cannot read configuration file %s\n", conf_file_path.c_str());
+-         return false;
++         agent_log_message(MP_REG_LOG_LEVEL_INFO, "Cannot read configuration file %s\n", conf_file_path.c_str());
++         return true;
+     }
+ 
+     init_config_patterns(entries);
+--- a/external/dcap_source/tools/SGXPlatformRegistration/src/mpa_registration/mpa_registration_tool.service
++++ b/external/dcap_source/tools/SGXPlatformRegistration/src/mpa_registration/mpa_registration_tool.service
+@@ -4,7 +4,6 @@ Wants=network-online.target
+ After=network.target auditd.service network-online.target
+ 
+ [Service]
+-EnvironmentFile=/etc/environment
+ ExecStart=@mpa_folder@mpa_registration
+ [Install]
+ WantedBy=multi-user.target
+--- a/external/vtune/linux/sdk/src/ittnotify/ittnotify_config.h
++++ b/external/vtune/linux/sdk/src/ittnotify/ittnotify_config.h
+@@ -331,7 +331,7 @@ ITT_INLINE long __itt_interlocked_increm
+ #ifdef SDL_STRNCPY_S
+ #define __itt_fstrcpyn(s1, b, s2, l) SDL_STRNCPY_S(s1, b, s2, l)
+ #else
+-#define __itt_fstrcpyn(s1, b, s2, l) strncpy(s1, s2, l)
++#define __itt_fstrcpyn(s1, b, s2, l) strncpy(s1, s2, b)
+ #endif /* SDL_STRNCPY_S */
+ 
+ #define __itt_fstrdup(s)          strdup(s)
+--- a/psw/ae/aesm_service/config/aesmd_service/aesmd.service
++++ b/psw/ae/aesm_service/config/aesmd_service/aesmd.service
+@@ -6,28 +6,12 @@ Wants=remount-dev-exec.service
+ 
+ [Service]
+ User=aesmd
+-Type=forking
+-Environment=NAME=aesm_service
+-Environment=AESM_PATH=@aesm_folder@
+-Environment=LD_LIBRARY_PATH=@aesm_folder@
+-WorkingDirectory=@aesm_folder@
+-PermissionsStartOnly=true
+-ExecStartPre=@aesm_folder@/linksgx.sh
+-ExecStartPre=/bin/mkdir -p /var/run/aesmd/
+-ExecStartPre=/bin/chown -R aesmd:aesmd /var/run/aesmd/
+-ExecStartPre=/bin/chmod 0755 /var/run/aesmd/
+-ExecStartPre=/bin/chown -R aesmd:aesmd /var/opt/aesmd/
+-ExecStartPre=/bin/chmod 0750 /var/opt/aesmd/
+-ExecStart=@aesm_folder@/aesm_service
+-InaccessibleDirectories=/home
++WorkingDirectory=/run/aesmd
++ExecStart=@aesm_folder@/aesm_service --no-daemon
+ ExecReload=/bin/kill -SIGHUP $MAINPID
+ Restart=on-failure
+ RestartSec=15s
+ DevicePolicy=closed
+-DeviceAllow=/dev/isgx rw
+-DeviceAllow=/dev/sgx rw
+-DeviceAllow=/dev/sgx/enclave rw
+-DeviceAllow=/dev/sgx/provision rw
+ DeviceAllow=/dev/sgx_enclave rw
+ DeviceAllow=/dev/sgx_provision rw
+ [Install]
+--- a/psw/ae/aesm_service/source/bundles/linux_network_service_bundle/aesm_http_msg.cpp
++++ b/psw/ae/aesm_service/source/bundles/linux_network_service_bundle/aesm_http_msg.cpp
+@@ -32,7 +32,7 @@
+ 
+ #include <string>
+ #include "aesm_encode.h"
+-#include "oal.h"
++#include "oal/oal.h"
+ #include "se_wrapper.h"
+ #include "se_thread.h"
+ #include "prof_fun.h"
+@@ -103,10 +103,10 @@ ae_error_t prepare_curl() {
+ 
+         const char* libcurl_name = LIBCURL_NAME;
+         // With the dlopen (RTLD_DEEPBIND) for libcurl, it forces the libcurl to look up symbols in its dependencies.
+-        g_dlopen_handle = dlopen(LIBCURL_NAME, RTLD_LAZY | RTLD_DEEPBIND);
++        g_dlopen_handle = dlopen(libcurl_name, RTLD_LAZY | RTLD_DEEPBIND);
+         if (NULL == g_dlopen_handle) {
+             libcurl_name = LIBCURL4_NAME;
+-            g_dlopen_handle = dlopen(LIBCURL4_NAME, RTLD_LAZY | RTLD_DEEPBIND);
++            g_dlopen_handle = dlopen(libcurl_name, RTLD_LAZY | RTLD_DEEPBIND);
+             if (NULL == g_dlopen_handle) {
+                 AESM_DBG_ERROR("Cannot open shared library %s or %s.", LIBCURL_NAME, LIBCURL4_NAME);
+                 break;
+--- a/psw/ae/aesm_service/source/bundles/quote_ex_service_bundle/quote_ex_service_bundle.cpp
++++ b/psw/ae/aesm_service/source/bundles/quote_ex_service_bundle/quote_ex_service_bundle.cpp
+@@ -117,7 +117,7 @@ public:
+                         continue;
+                     if (AESM_SUCCESS != service->get_att_key_id((uint8_t *)att_key_id_ext_list, sizeof(att_key_id_ext_list)))
+                         continue;
+-                    for (int i = 0; i <num; i++)
++                    for (uint32_t i = 0; i <num; i++)
+                     {
+                         available_key_id_t temp = {0};
+                         memcpy_s(&temp.key_id, sizeof(temp.key_id), &att_key_id_ext_list[i], sizeof(att_key_id_ext_list[i]));
+@@ -188,7 +188,7 @@ public:
+                     return;
+                 if (AESM_SUCCESS != service->get_att_key_id((uint8_t *)att_key_id_ext_list, sizeof(att_key_id_ext_list)))
+                     return;
+-                for (int i = 0; i < num; i++)
++                for (uint32_t i = 0; i < num; i++)
+                 {
+                     available_key_id_t temp = { 0 };
+                     memcpy_s(&temp.key_id, sizeof(temp.key_id), &att_key_id_ext_list[i], sizeof(att_key_id_ext_list[i]));
+@@ -259,7 +259,7 @@ public:
+                 return AESM_PARAMETER_ERROR;
+             }
+ 
+-            for (int i = 0; i < p_list->header.num_att_ids; i++)
++            for (uint32_t i = 0; i < p_list->header.num_att_ids; i++)
+             {
+                 AESM_DBG_INFO("trying to find quote type %d", (p_list->ext_id_list + i)->base.algorithm_id);
+                 for (auto it : available_key_ids)
+--- a/psw/ae/aesm_service/source/core/AESMLogicWrapper.cpp
++++ b/psw/ae/aesm_service/source/core/AESMLogicWrapper.cpp
+@@ -30,6 +30,7 @@
+  */
+ #include "AESMLogicWrapper.h"
+ #include <iostream>
++#include <cstring>
+ #include <unistd.h>
+ 
+ #include <cppmicroservices/Bundle.h>
+@@ -80,9 +81,9 @@ static std::vector<std::string> get_bund
+         if (0 == dladdr(__builtin_return_address(0), &dl_info) ||
+             NULL == dl_info.dli_fname)
+         return files;
+-        if (strnlen(dl_info.dli_fname, sizeof(buf)) >= sizeof(buf))
++        if (strnlen(dl_info.dli_fname, sizeof(buf)) > sizeof(buf) - 1)
+         return files;
+-        (void)strncpy(buf, dl_info.dli_fname, sizeof(buf));
++        strncpy(buf, dl_info.dli_fname, sizeof(buf) - 1);
+         std::string aesm_path(buf);
+ 
+         size_t i = aesm_path.rfind(PATH_SEPARATOR, aesm_path.length());
+--- a/psw/ae/aesm_service/source/core/ipc/CMakeLists.txt
++++ b/psw/ae/aesm_service/source/core/ipc/CMakeLists.txt
+@@ -29,31 +29,7 @@
+ #
+ #
+ 
+-aux_source_directory(. IPC_LIB_SRCS)
+-PROTOBUF_GENERATE_CPP(PROTO_SRCS PROTO_HDRS messages.proto)
+-# Print path to generated files
+-message ("PROTO_SRCS = ${PROTO_SRCS}")
+-message ("PROTO_HDRS = ${PROTO_HDRS}")
+-list(APPEND IPC_LIB_SRCS ${PROTO_SRCS})
+-add_library (ipc ${IPC_LIB_SRCS})
+-target_include_directories(ipc
+-    PUBLIC
+-    ${PROTOBUF_INCLUDE_DIRS}
+-    ${CMAKE_CURRENT_BINARY_DIR}
+-    ${PROJECT_SOURCE_DIR}/common
+-    ${PROJECT_SOURCE_DIR}/core/ipc
+-    ${PROJECT_SOURCE_DIR}/../../inc
+-    ${PROJECT_SOURCE_DIR}/../../inc/internal
+-    ${SGX_HEADER_DIR}
+-    ${PROJECT_SOURCE_DIR}/../../../../common/inc/internal
+-    ${PROJECT_SOURCE_DIR}/../../../../external/dcap_source/QuoteGeneration/quote_wrapper/common/inc
+-    ${PROJECT_SOURCE_DIR}/../../../../external/dcap_source/QuoteGeneration/quote_wrapper/quote/inc
+-    ${PROJECT_SOURCE_DIR}/../../../../external/dcap_source/QuoteGeneration/pce_wrapper/inc
+-)
+-
+-# link the exe against the libraries
+-target_link_libraries(ipc
+-    PUBLIC
+-    ${PROTOBUF_LIBRARIES}
+-)
+-
++PROTOBUF_GENERATE_CPP(srcs hdrs messages.proto)
++add_library(messages OBJECT)
++target_sources(messages PRIVATE ${srcs})
++target_include_directories(messages PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
+--- a/psw/ae/aesm_service/source/oal/linux/aesm_util.cpp
++++ b/psw/ae/aesm_service/source/oal/linux/aesm_util.cpp
+@@ -188,7 +188,6 @@ CLEANUP:
+ ae_error_t aesm_get_pathname(aesm_data_type_t type, aesm_data_id_t id, char *buf, uint32_t buf_size, uint32_t xgid)
+ {
+     const persistent_storage_info_t *info = get_persistent_storage_info(id);
+-    int num_bytes = 0;
+     if(info == NULL)
+         return OAL_PARAMETER_ERROR;
+     if(info->type != type)
+@@ -208,7 +207,7 @@ ae_error_t aesm_get_pathname(aesm_data_t
+             return AE_FAILURE;
+         }
+         size_t signed_so_length = strlen("signed.so");
+-        if (p_match -local_info_name == length - signed_so_length) {
++        if (size_t(p_match - local_info_name) == length - signed_so_length) {
+             //info->name ends with "signed.so". Use whole name.
+             return aesm_get_path(local_info_name, buf, buf_size);
+         }
+--- a/psw/ae/aesm_service/source/utils/crypto_ecc.cpp
++++ b/psw/ae/aesm_service/source/utils/crypto_ecc.cpp
+@@ -209,7 +209,6 @@ sgx_status_t sgx_ecdsa_verify(const uint
+     EVP_MD_CTX *evp_md_ctx = NULL;
+     unsigned char *sig = NULL;
+     int siglen = 0;
+-    unsigned char digest[SGX_SHA256_HASH_SIZE] = { 0 };
+     sgx_status_t retval = SGX_ERROR_UNEXPECTED;
+     int valid = 0;
+ 
+--- a/psw/enclave_common/sgx_enclave_common.cpp
++++ b/psw/enclave_common/sgx_enclave_common.cpp
+@@ -34,6 +34,7 @@
+ #include <sys/types.h>
+ #include <dlfcn.h>
+ #include <map>
++#include <vector>
+ #include <functional>
+ #include <algorithm>
+ #include "sgx_enclave_common.h"
+@@ -409,11 +410,11 @@ static void enclave_set_provision_access
+     
+     if (s_driver_type == SGX_DRIVER_IN_KERNEL)
+     {
+-        hdev_prov = open("/dev/sgx/provision", O_RDWR);
++        hdev_prov = open("/dev/sgx_provision", O_RDWR);
+         if (-1 == hdev_prov)
+         {
+             //if /dev/sgx/provision is not present, try to open /dev/sgx_provision
+-            hdev_prov = open("/dev/sgx_provision", O_RDWR);
++            hdev_prov = open("/dev/sgx/provision", O_RDWR);
+         }
+         if (-1 == hdev_prov)
+         {
+--- a/psw/urts/linux/edmm_utility.cpp
++++ b/psw/urts/linux/edmm_utility.cpp
+@@ -99,11 +99,11 @@ bool get_driver_type(int *driver_type)
+         *driver_type = sgx_driver_type;
+     }
+     
+-    int hdev = open("/dev/sgx/enclave", O_RDWR);    //attempt to open the in-kernel driver
++    int hdev = open("/dev/sgx_enclave", O_RDWR);    //attempt to open the in-kernel driver
+     if (-1 == hdev)
+     {
+         //if /dev/sgx/enclave is not present, try to open /dev/sgx_enclave
+-        hdev = open("/dev/sgx_enclave", O_RDWR);
++        hdev = open("/dev/sgx/enclave", O_RDWR);
+     }
+     if (-1 == hdev)
+     {
+@@ -155,11 +155,11 @@ extern "C" bool open_se_device(int drive
+     *hdevice = -1;
+     if (driver_type == SGX_DRIVER_IN_KERNEL)
+     {
+-        *hdevice = open("/dev/sgx/enclave", O_RDWR);    //attempt to open the in-kernel driver
++        *hdevice = open("/dev/sgx_enclave", O_RDWR);    //attempt to open the in-kernel driver
+         //if /dev/sgx/enclave is not present, try to open /dev/sgx_enclave
+         if(-1 == *hdevice)
+         {
+-            *hdevice = open("/dev/sgx_enclave", O_RDWR);
++            *hdevice = open("/dev/sgx/enclave", O_RDWR);
+         }
+     }
+     else if (driver_type == SGX_DRIVER_DCAP)
+--- a/psw/urts/urts_com.h
++++ b/psw/urts/urts_com.h
+@@ -276,7 +276,7 @@ static bool is_SGX_DBG_OPTIN_variable_se
+     {
+         return false;
+     }
+-    size_t expect_len = strnlen_s(sgx_dbg_optin_expect_val, MAX_LEN);
++    size_t expect_len = strlen(sgx_dbg_optin_expect_val);
+     size_t len = strnlen_s(sgx_dbg_optin_val, MAX_LEN);
+     if(len != expect_len || strncmp(sgx_dbg_optin_expect_val, sgx_dbg_optin_val, expect_len) != 0)
+     {
+--- /dev/null
++++ b/sdk/CMakeLists.txt
+@@ -0,0 +1,357 @@
++# SGX Enclave, freestanding, isolated environment
++cmake_minimum_required(VERSION 3.20)
++project(sgx-enclave LANGUAGES ASM C CXX)
++
++set(CMAKE_C_EXTENSIONS ON)
++set(CMAKE_C_STANDARD_REQUIRED 1)
++set(CMAKE_C_STANDARD 11)
++set(CMAKE_CXX_EXTENSIONS ON)
++set(CMAKE_CXX_STANDARD_REQUIRED 1)
++set(CMAKE_CXX_STANDARD 17)
++
++set(CMAKE_POSITION_INDEPENDENT_CODE ON)
++
++function(build_edl_t)
++	set(options COMMON SELF)
++	set(oneValueArgs EDL DIR)
++	set(multiValueArgs INC SEARCH)
++	cmake_parse_arguments(PARSE_ARGV 0 arg "${options}" "${oneValueArgs}" "${multiValueArgs}")
++	set(edl "${arg_EDL}.edl")
++	set(dir_s ${CMAKE_CURRENT_SOURCE_DIR}/${arg_DIR})
++	set(dir_b ${CMAKE_CURRENT_BINARY_DIR}/${arg_DIR})
++	set(edl_c ${dir_b}/${arg_EDL}_t.c)
++	set(edl_h ${dir_b}/${arg_EDL}_t.h)
++	set(edl_lib edl_t_${arg_EDL})
++	set(prepare ${dir_b}/prepare_${arg_EDL}.sh)
++	if (arg_SELF)
++		list(APPEND arg_SEARCH ${arg_DIR})
++	endif()
++	if (arg_COMMON)
++		list(APPEND arg_SEARCH ${LINUX_SGX_SRC_DIR}/common/inc)
++	endif()
++	list(APPEND sgx_edger8r_args "--trusted")
++	file(WRITE ${prepare} "set -e\n")
++	file(APPEND ${prepare} "mkdir --parents ${dir_b}\n")
++	file(APPEND ${prepare} "ln --force  --symbolic --relative ${dir_s}/${edl} ${dir_b}/${edl}\n")
++	foreach(dir ${arg_SEARCH})
++		string(REPLACE "/" "_" link ${dir})
++		file(APPEND ${prepare} "ln --force  --symbolic --relative ${CMAKE_CURRENT_SOURCE_DIR}/${dir} ${dir_b}/${link}\n")
++		list(APPEND sgx_edger8r_args "--search-path" ${link})
++	endforeach()
++	list(APPEND sgx_edger8r_args ${edl})
++	add_custom_command(
++		OUTPUT ${edl_c} ${edl_h}
++		DEPENDS sgx_edger8r_exe
++		COMMAND sh ${prepare}
++		COMMAND cd ${dir_b} && ${sgx_edger8r} ${sgx_edger8r_args}
++		VERBATIM
++	)
++	add_library(${edl_lib} OBJECT)
++	set_target_properties(${edl_lib} PROPERTIES COMPILE_OPTIONS "$<$<COMPILE_LANGUAGE:C>:${ENCLAVE_C_FLAGS}>$<$<COMPILE_LANGUAGE:CXX>:${ENCLAVE_CXX_FLAGS_W_EXCEPTIONS}>")
++	target_sources(${edl_lib} PRIVATE ${edl_c})
++	target_include_directories(${edl_lib} PUBLIC ${arg_DIR})
++	target_include_directories(${edl_lib} PUBLIC ${dir_b})
++	target_include_directories(${edl_lib} PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc)
++	if (arg_INC)
++		target_include_directories(${edl_lib} PRIVATE ${arg_INC})
++	endif()
++endfunction(build_edl_t)
++
++list(APPEND ENCLAVE_FLAGS -O2)
++list(APPEND ENCLAVE_FLAGS -Wall)
++list(APPEND ENCLAVE_FLAGS -Wmissing-include-dirs)
++list(APPEND ENCLAVE_FLAGS -Wno-deprecated-declarations)
++list(APPEND ENCLAVE_FLAGS -fdata-sections)
++list(APPEND ENCLAVE_FLAGS -ffreestanding)
++list(APPEND ENCLAVE_FLAGS -ffunction-sections)
++list(APPEND ENCLAVE_FLAGS -fno-delete-null-pointer-checks)
++list(APPEND ENCLAVE_FLAGS -fno-strict-overflow)
++list(APPEND ENCLAVE_FLAGS -fpie)
++list(APPEND ENCLAVE_FLAGS -fvisibility=hidden)
++list(APPEND ENCLAVE_FLAGS -nostdinc)
++
++list(APPEND ENCLAVE_C_FLAGS "${ENCLAVE_FLAGS}")
++list(APPEND ENCLAVE_CXX_FLAGS_W_EXCEPTIONS "${ENCLAVE_FLAGS}")
++list(APPEND ENCLAVE_CXX_FLAGS_W_EXCEPTIONS -nostdinc++)
++list(APPEND ENCLAVE_CXX_FLAGS_WO_EXCEPTIONS "${ENCLAVE_CXX_FLAGS_W_EXCEPTIONS}")
++list(APPEND ENCLAVE_CXX_FLAGS_WO_EXCEPTIONS -fno-rtti)
++list(APPEND ENCLAVE_CXX_FLAGS_WO_EXCEPTIONS -fno-exceptions)
++
++set(sgx_enclave_sysroot "${SHARE_INSTALL_PREFIX}/sgx_enclave")
++
++add_library(sgx_tservice STATIC)
++target_include_directories(sgx_tservice PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc)
++target_include_directories(sgx_tservice PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc/internal)
++target_include_directories(sgx_tservice PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc/tlibc)
++target_include_directories(sgx_tservice PRIVATE tlibcxx/include)
++target_include_directories(sgx_tservice PRIVATE tseal)
++target_sources(sgx_tservice PRIVATE ${LINUX_SGX_SRC_DIR}/common/src/ecp.cpp)
++target_sources(sgx_tservice PRIVATE ec_dh_lib/ec_dh.cpp)
++target_sources(sgx_tservice PRIVATE selib/sgx_create_report.cpp)
++target_sources(sgx_tservice PRIVATE selib/sgx_get_key.cpp)
++target_sources(sgx_tservice PRIVATE selib/sgx_secure_align.cpp)
++target_sources(sgx_tservice PRIVATE selib/sgx_verify_report.cpp)
++target_sources(sgx_tservice PRIVATE selib/sgx_verify_report2.cpp)
++target_sources(sgx_tservice PRIVATE selib/tservice_version.cpp)
++target_sources(sgx_tservice PRIVATE tseal/tSeal.cpp)
++target_sources(sgx_tservice PRIVATE tseal/tSeal_aad.cpp)
++target_sources(sgx_tservice PRIVATE tseal/tSeal_internal.cpp)
++target_sources(sgx_tservice PRIVATE tseal/tSeal_util.cpp)
++install(TARGETS sgx_tservice)
++
++add_library(sgx_mm OBJECT)
++set_target_properties(sgx_mm PROPERTIES CMAKE_C_FLAGS "${ENCLAVE_C_FLAGS}")
++target_include_directories(sgx_mm PUBLIC ${LINUX_SGX_SRC_DIR}/external/sgx-emm/emm_src/include)
++target_include_directories(sgx_mm PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc/tlibc)
++target_sources(sgx_mm PRIVATE ${LINUX_SGX_SRC_DIR}/external/sgx-emm/emm_src/bit_array.c)
++target_sources(sgx_mm PRIVATE ${LINUX_SGX_SRC_DIR}/external/sgx-emm/emm_src/ema.c)
++target_sources(sgx_mm PRIVATE ${LINUX_SGX_SRC_DIR}/external/sgx-emm/emm_src/emalloc.c)
++target_sources(sgx_mm PRIVATE ${LINUX_SGX_SRC_DIR}/external/sgx-emm/emm_src/emm_private.c)
++target_sources(sgx_mm PRIVATE ${LINUX_SGX_SRC_DIR}/external/sgx-emm/emm_src/sgx_mm.c)
++
++add_library(sgx_trts STATIC)
++set_target_properties(sgx_trts PROPERTIES COMPILE_OPTIONS "$<$<COMPILE_LANGUAGE:C>:${ENCLAVE_C_FLAGS}>$<$<COMPILE_LANGUAGE:CXX>:${ENCLAVE_CXX_FLAGS_WO_EXCEPTIONS}>")
++target_include_directories(sgx_trts PRIVATE tlibcxx/include)
++target_include_directories(sgx_trts PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc)
++target_include_directories(sgx_trts PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc/internal)
++target_include_directories(sgx_trts PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc/tlibc)
++target_include_directories(sgx_trts PRIVATE pthread)
++target_include_directories(sgx_trts PRIVATE trts)
++target_link_libraries(sgx_trts sgx_mm)
++set_source_files_properties(trts/ctd.c PROPERTIES COMPILE_FLAGS "-mavx2 -O3 -masm=intel")
++target_sources(sgx_trts PRIVATE trts/ctd.c)
++target_sources(sgx_trts PRIVATE trts/ema_init.cpp)
++target_sources(sgx_trts PRIVATE trts/ema_rt.c)
++target_sources(sgx_trts PRIVATE trts/init_enclave.cpp)
++target_sources(sgx_trts PRIVATE trts/init_optimized_lib.cpp)
++target_sources(sgx_trts PRIVATE trts/trts.cpp)
++target_sources(sgx_trts PRIVATE trts/trts_add_trim.cpp)
++target_sources(sgx_trts PRIVATE trts/trts_ecall.cpp)
++target_sources(sgx_trts PRIVATE trts/trts_nsp.cpp)
++target_sources(sgx_trts PRIVATE trts/trts_ocall.cpp)
++target_sources(sgx_trts PRIVATE trts/trts_util.cpp)
++target_sources(sgx_trts PRIVATE trts/trts_veh.cpp)
++target_sources(sgx_trts PRIVATE trts/trts_version.cpp)
++target_sources(sgx_trts PRIVATE trts/trts_xsave.cpp)
++install(TARGETS sgx_trts)
++
++add_library(tlibthread OBJECT)
++set_target_properties(tlibthread PROPERTIES COMPILE_OPTIONS "$<$<COMPILE_LANGUAGE:C>:${ENCLAVE_C_FLAGS}>$<$<COMPILE_LANGUAGE:CXX>:${ENCLAVE_CXX_FLAGS_WO_EXCEPTIONS}>")
++target_include_directories(tlibthread PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc)
++target_include_directories(tlibthread PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc/internal)
++target_include_directories(tlibthread PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc/tlibc)
++target_include_directories(tlibthread PRIVATE trts)
++target_sources(tlibthread PRIVATE tlibthread/sethread_cond.cpp)
++target_sources(tlibthread PRIVATE tlibthread/sethread_mutex.cpp)
++target_sources(tlibthread PRIVATE tlibthread/sethread_rwlock.cpp)
++target_sources(tlibthread PRIVATE tlibthread/sethread_spinlock.cpp)
++target_sources(tlibthread PRIVATE tlibthread/sethread_utils.cpp)
++
++add_library(compiler-rt OBJECT)
++set_target_properties(compiler-rt PROPERTIES COMPILE_OPTIONS "$<$<COMPILE_LANGUAGE:C>:${ENCLAVE_C_FLAGS}>$<$<COMPILE_LANGUAGE:CXX>:${ENCLAVE_CXX_FLAGS_WO_EXCEPTIONS}>")
++target_include_directories(compiler-rt PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc)
++target_include_directories(compiler-rt PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc/internal)
++target_include_directories(compiler-rt PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc/tlibc)
++target_sources(compiler-rt PRIVATE compiler-rt/addtf3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/ashldi3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/ashlti3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/ashrdi3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/ashrti3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/clear_cache.c)
++target_sources(compiler-rt PRIVATE compiler-rt/clzdi2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/clzsi2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/clzti2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/cmpdi2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/cmpti2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/comparetf2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/ctzdi2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/ctzsi2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/ctzti2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/divdi3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/divsi3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/divtf3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/divti3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/extenddftf2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/extendsftf2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/ffsdi2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/ffsti2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/fixtfsi.c)
++target_sources(compiler-rt PRIVATE compiler-rt/floatsitf.c)
++target_sources(compiler-rt PRIVATE compiler-rt/floatunsitf.c)
++target_sources(compiler-rt PRIVATE compiler-rt/lshrdi3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/lshrti3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/moddi3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/modsi3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/modti3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/muldi3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/multf3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/multi3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/negdi2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/negti2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/paritydi2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/paritysi2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/parityti2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/popcountdi2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/popcountsi2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/popcountti2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/stack_chk.c)
++target_sources(compiler-rt PRIVATE compiler-rt/subtf3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/trunctfdf2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/trunctfsf2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/ucmpdi2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/ucmpti2.c)
++target_sources(compiler-rt PRIVATE compiler-rt/udivdi3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/udivmoddi4.c)
++target_sources(compiler-rt PRIVATE compiler-rt/udivmodti4.c)
++target_sources(compiler-rt PRIVATE compiler-rt/udivsi3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/udivti3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/umoddi3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/umodsi3.c)
++target_sources(compiler-rt PRIVATE compiler-rt/umodti3.c)
++
++add_library(tsafecrt OBJECT)
++set_target_properties(tsafecrt PROPERTIES COMPILE_OPTIONS "$<$<COMPILE_LANGUAGE:C>:${ENCLAVE_C_FLAGS}>$<$<COMPILE_LANGUAGE:CXX>:${ENCLAVE_CXX_FLAGS_WO_EXCEPTIONS}>")
++target_compile_definitions(tsafecrt PRIVATE _LIBSAFECRT_SGX_CONFIG)
++target_compile_definitions(tsafecrt PRIVATE _WIN64)
++target_include_directories(tsafecrt PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc/tlibc)
++target_include_directories(tsafecrt PRIVATE tsafecrt/pal/inc)
++target_sources(tsafecrt PRIVATE tsafecrt/pal/src/safecrt/mbusafecrt.c)
++target_sources(tsafecrt PRIVATE tsafecrt/pal/src/safecrt/memcpy_s.c)
++target_sources(tsafecrt PRIVATE tsafecrt/pal/src/safecrt/memmove_s.c)
++target_sources(tsafecrt PRIVATE tsafecrt/pal/src/safecrt/safecrt_output_s.c)
++target_sources(tsafecrt PRIVATE tsafecrt/pal/src/safecrt/safecrt_woutput_s.c)
++target_sources(tsafecrt PRIVATE tsafecrt/pal/src/safecrt/sprintf.c)
++target_sources(tsafecrt PRIVATE tsafecrt/pal/src/safecrt/strcat_s.c)
++target_sources(tsafecrt PRIVATE tsafecrt/pal/src/safecrt/strcpy_s.c)
++target_sources(tsafecrt PRIVATE tsafecrt/pal/src/safecrt/strncat_s.c)
++target_sources(tsafecrt PRIVATE tsafecrt/pal/src/safecrt/strncpy_s.c)
++target_sources(tsafecrt PRIVATE tsafecrt/pal/src/safecrt/strtok_s.c)
++target_sources(tsafecrt PRIVATE tsafecrt/pal/src/safecrt/swprintf_s.c)
++target_sources(tsafecrt PRIVATE tsafecrt/pal/src/safecrt/vsprintf.c)
++target_sources(tsafecrt PRIVATE tsafecrt/pal/src/safecrt/vswprint.c)
++target_sources(tsafecrt PRIVATE tsafecrt/pal/src/safecrt/wcscat_s.c)
++target_sources(tsafecrt PRIVATE tsafecrt/pal/src/safecrt/wcscpy_s.c)
++target_sources(tsafecrt PRIVATE tsafecrt/pal/src/safecrt/wcslen_s.c)
++target_sources(tsafecrt PRIVATE tsafecrt/pal/src/safecrt/wcsncat_s.c)
++target_sources(tsafecrt PRIVATE tsafecrt/pal/src/safecrt/wcsncpy_s.c)
++target_sources(tsafecrt PRIVATE tsafecrt/pal/src/safecrt/wcstok_s.c)
++target_sources(tsafecrt PRIVATE tsafecrt/pal/src/safecrt/xtoa_s.c)
++target_sources(tsafecrt PRIVATE tsafecrt/pal/src/safecrt/xtow_s.c)
++
++add_library(tsetjmp OBJECT)
++set_target_properties(tsetjmp PROPERTIES COMPILE_OPTIONS "$<$<COMPILE_LANGUAGE:C>:${ENCLAVE_C_FLAGS}>$<$<COMPILE_LANGUAGE:CXX>:${ENCLAVE_CXX_FLAGS_WO_EXCEPTIONS}>")
++target_include_directories(tsetjmp PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc/internal)
++target_include_directories(tsetjmp PRIVATE trts)
++target_sources(tsetjmp PRIVATE tsetjmp/_setjmp.S)
++
++add_library(tmm_rsrv OBJECT)
++set_target_properties(tmm_rsrv PROPERTIES COMPILE_OPTIONS "$<$<COMPILE_LANGUAGE:C>:${ENCLAVE_C_FLAGS}>$<$<COMPILE_LANGUAGE:CXX>:${ENCLAVE_CXX_FLAGS_WO_EXCEPTIONS}>")
++target_include_directories(tmm_rsrv PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc)
++target_include_directories(tmm_rsrv PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc/internal)
++target_include_directories(tmm_rsrv PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc/tlibc)
++target_include_directories(tmm_rsrv PRIVATE ${LINUX_SGX_SRC_DIR}/external/sgx-emm/emm_src/include)
++target_include_directories(tmm_rsrv PRIVATE trts)
++target_sources(tmm_rsrv PRIVATE tmm_rsrv/mm_vrd.cpp)
++target_sources(tmm_rsrv PRIVATE tmm_rsrv/mm_vrd_util.cpp)
++target_sources(tmm_rsrv PRIVATE tmm_rsrv/sgx_rsrv_mem.cpp)
++target_sources(tmm_rsrv PRIVATE tmm_rsrv/sgx_rsrv_mem_init.cpp)
++
++file(GLOB sgx_tstdc_inc ${LINUX_SGX_SRC_DIR}/common/inc/tlibc/*.h ${LINUX_SGX_SRC_DIR}/common/inc/tlibc/*/*.h)
++add_library(sgx_tstdc STATIC)
++set_target_properties(sgx_tstdc PROPERTIES PUBLIC_HEADER "${sgx_tstdc_inc}")
++target_link_libraries(sgx_tstdc tlibthread tsafecrt tsetjmp tmm_rsrv)
++install(TARGETS sgx_tstdc)
++
++add_library(cpprt OBJECT)
++set_target_properties(cpprt PROPERTIES COMPILE_OPTIONS "$<$<COMPILE_LANGUAGE:C>:${ENCLAVE_C_FLAGS}>$<$<COMPILE_LANGUAGE:CXX>:${ENCLAVE_CXX_FLAGS_W_EXCEPTIONS}>")
++target_include_directories(cpprt PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc)
++target_include_directories(cpprt PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc/tlibc)
++target_include_directories(cpprt PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc/stdc++)
++target_include_directories(cpprt PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc/internal)
++target_include_directories(cpprt PRIVATE trts)
++target_sources(cpprt PRIVATE cpprt/linux/auxhelper.cc)
++target_sources(cpprt PRIVATE cpprt/linux/dynamic_cast.cc)
++target_sources(cpprt PRIVATE cpprt/linux/exception.cc)
++target_sources(cpprt PRIVATE cpprt/linux/gcc_personality_v0.c)
++target_sources(cpprt PRIVATE cpprt/linux/guard.cc)
++target_sources(cpprt PRIVATE cpprt/linux/stdexcept.cc)
++target_sources(cpprt PRIVATE cpprt/linux/terminate.cc)
++target_sources(cpprt PRIVATE cpprt/linux/typeinfo.cc)
++target_sources(cpprt PRIVATE cpprt/memory_manage/delete1.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/delete10.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/delete11.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/delete12.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/delete13.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/delete14.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/delete2.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/delete3.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/delete4.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/delete5.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/delete6.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/delete7.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/delete8.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/delete9.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/new1.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/new10.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/new2.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/new3.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/new4.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/new5.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/new6.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/new7.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/new8.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/new9.cpp)
++target_sources(cpprt PRIVATE cpprt/memory_manage/new_handler.cpp)
++target_sources(cpprt PRIVATE cpprt/tcxx_version.cpp)
++
++add_library(tlibcxx OBJECT)
++set_target_properties(tlibcxx PROPERTIES COMPILE_OPTIONS "$<$<COMPILE_LANGUAGE:C>:${ENCLAVE_C_FLAGS}>$<$<COMPILE_LANGUAGE:CXX>:${ENCLAVE_CXX_FLAGS_W_EXCEPTIONS}>")
++target_include_directories(tlibcxx PRIVATE tlibcxx/include)
++target_include_directories(tlibcxx PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc)
++target_include_directories(tlibcxx PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc/internal)
++target_include_directories(tlibcxx PRIVATE ${LINUX_SGX_SRC_DIR}/common/inc/tlibc)
++target_include_directories(tlibcxx PRIVATE trts)
++target_sources(tlibcxx PRIVATE tlibcxx/src/algorithm.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/any.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/atomic.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/barrier.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/bind.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/charconv.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/chrono.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/condition_variable.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/condition_variable_destructor.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/debug.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/exception.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/functional.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/future.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/hash.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/ios.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/ios.instantiations.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/iostream.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/locale.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/memory.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/mutex.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/mutex_destructor.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/new.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/optional.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/random.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/random_shuffle.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/regex.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/sgx_condition_variable.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/sgx_mutex.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/shared_mutex.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/stdexcept.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/string.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/strstream.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/system_error.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/thread.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/typeinfo.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/utility.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/valarray.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/variant.cpp)
++target_sources(tlibcxx PRIVATE tlibcxx/src/vector.cpp)
++
++add_library(sgx_tcxx STATIC)
++target_link_libraries(sgx_tcxx tlibcxx cpprt)
++install(TARGETS sgx_tcxx)
++install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/tlibcxx/include" DESTINATION . USE_SOURCE_PERMISSIONS)
+--- a/sdk/tsetjmp/_setjmp.S
++++ b/sdk/tsetjmp/_setjmp.S
+@@ -34,7 +34,7 @@
+  *	from: @(#)_setjmp.s	5.1 (Berkeley) 4/23/90
+  */
+ .file "_setjmp.S"
+-#include "linux-regs.h"
++#include <linux/linux-regs.h>
+ #if defined(LIBC_SCCS)
+ 	RCSID("$NetBSD: _setjmp.S,v 1.9 2014/05/23 02:34:19 uebayasi Exp $")
+ #endif
