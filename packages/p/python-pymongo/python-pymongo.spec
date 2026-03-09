@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymongo
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pymongo
-Version:        4.15.5
+Version:        4.16.0
 Release:        0
 Summary:        Python driver for MongoDB
 License:        Apache-2.0
@@ -38,6 +38,7 @@ BuildRequires:  python-rpm-macros
 %if 0%{?suse_version} || 0%{?fedora_version} >= 24
 Suggests:       mongodb
 %endif
+Requires:       python-backports.zstd
 Requires:       python-dnspython >= 2.6.1
 # Same namespace, different implementation (https://github.com/py-bson/bson)
 Conflicts:      python-bson

@@ -597,4 +597,34 @@
     metadata.</comment>
     <requestid>1324601</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>95361f56209d3d1b1e4f7224f97970cb</srcmd5>
+    <version>4.16.0</version>
+    <time>1773069084</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.16.0:
+  * Removed invalid documents from
+    :class:`bson.errors.InvalidDocument` error messages as doing
+    so may leak sensitive user data. Instead, invalid documents
+    are stored in :attr:`bson.errors.InvalidDocument.document`.
+  * PyMongo now requires dnspython&gt;=2.6.1, since dnspython 1.0 is
+    no longer maintained. The minimum version is 2.6.1 to account
+    for CVE-2023-29483.
+  * Removed support for Eventlet. Eventlet is actively being
+    sunset by its maintainers and has compatibility issues with
+    PyMongo's dnspython dependency.
+  * Use Zstandard support from the standard library for Python
+    3.14+, and use backports.zstd for older versions.
+  * Fixed return type annotation for find_one_and_* methods on
+    :class:`~pymongo.asynchronous.collection.AsyncCollection` and
+    :class:`~pymongo.synchronous.collection.Collection` to
+    include None.
+  * Added support for NumPy 1D-arrays in
+    :class:`bson.binary.BinaryVector`.
+  * Prevented :class:`~pymongo.encryption.ClientEncryption` from
+    loading the crypt shared library to fix &quot;MongoCryptError: An
+    existing crypt_shared library is loaded by the application&quot;
+    unless the linked library search path is set.</comment>
+    <requestid>1337516</requestid>
+  </revision>
 </revisionlist>
