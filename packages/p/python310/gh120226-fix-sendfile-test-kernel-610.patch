@@ -13,9 +13,11 @@ Co-authored-by: Xi Ruoyao <xry111@xry111.site>
  Lib/test/test_asyncio/test_sendfile.py |   11 ++++-------
  1 file changed, 4 insertions(+), 7 deletions(-)
 
---- a/Lib/test/test_asyncio/test_sendfile.py
-+++ b/Lib/test/test_asyncio/test_sendfile.py
-@@ -93,13 +93,10 @@ class MyProto(asyncio.Protocol):
+Index: Python-3.10.20/Lib/test/test_asyncio/test_sendfile.py
+===================================================================
+--- Python-3.10.20.orig/Lib/test/test_asyncio/test_sendfile.py	2026-03-05 19:39:00.579333997 +0100
++++ Python-3.10.20/Lib/test/test_asyncio/test_sendfile.py	2026-03-05 19:42:33.925609321 +0100
+@@ -93,13 +93,10 @@
  
  class SendfileBase:
  

@@ -108,7 +108,7 @@ Obsoletes:      python39%{?1:-%{1}}
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.10.19
+Version:        3.10.20
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -203,27 +203,6 @@ Patch27:        gh120226-fix-sendfile-test-kernel-610.patch
 Patch28:        sphinx-802.patch
 # PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
 Patch29:        gh139257-Support-docutils-0.22.patch
-# PATCH-FIX-UPSTREAM CVE-2025-6075-expandvars-perf-degrad.patch bsc#1252974 mcepl@suse.com
-# Avoid potential quadratic complexity vulnerabilities in path modules
-Patch30:        CVE-2025-6075-expandvars-perf-degrad.patch
-# PATCH-FIX-UPSTREAM CVE-2025-13836-http-resp-cont-len.patch bsc#1254400 mcepl@suse.com
-# Avoid loading possibly compromised length of HTTP response
-Patch31:         CVE-2025-13836-http-resp-cont-len.patch
-# PATCH-FIX-UPSTREAM CVE-2025-12084-minidom-quad-search.patch bsc#1254997 mcepl@suse.com
-# prevent quadratic behavior in node ID cache clearing 
-Patch32:        CVE-2025-12084-minidom-quad-search.patch
-# PATCH-FIX-UPSTREAM CVE-2025-13837-plistlib-mailicious-length.patch bsc#1254401 mcepl@suse.com
-# protect against OOM when loading malicious content
-Patch33:        CVE-2025-13837-plistlib-mailicious-length.patch 
-# PATCH-FIX-UPSTREAM CVE-2025-11468-email-hdr-fold-comment.patch bsc#1257029 mcepl@suse.com
-# this patch makes things totally awesome
-Patch34:        CVE-2025-11468-email-hdr-fold-comment.patch
-# PATCH-FIX-UPSTREAM CVE-2026-0672-http-hdr-inject-cookie-Morsel.patch bsc#1257031 mcepl@suse.com
-# rejects control characters in http cookies.
-Patch35:        CVE-2026-0672-http-hdr-inject-cookie-Morsel.patch
-# PATCH-FIX-UPSTREAM CVE-2026-0865-wsgiref-ctrl-chars.patch bsc#1257042 mcepl@suse.com
-# Reject control characters in wsgiref.headers.Headers
-Patch37:        CVE-2026-0865-wsgiref-ctrl-chars.patch
 # PATCH-FIX-UPSTREAM CVE-2025-15366-imap-ctrl-chars.patch bsc#1257044 mcepl@suse.com
 # Reject control characters in wsgiref.headers.Headers
 Patch38:        CVE-2025-15366-imap-ctrl-chars.patch

@@ -73,10 +73,10 @@
  Doc/tutorial/stdlib.rst                |    2 
  72 files changed, 458 insertions(+), 427 deletions(-)
 
-Index: Python-3.10.19/Doc/c-api/bytearray.rst
+Index: Python-3.10.20/Doc/c-api/bytearray.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/bytearray.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/bytearray.rst	2025-12-19 23:10:15.391446431 +0100
+--- Python-3.10.20.orig/Doc/c-api/bytearray.rst	2026-03-05 19:42:16.336584040 +0100
++++ Python-3.10.20/Doc/c-api/bytearray.rst	2026-03-05 19:42:18.969673759 +0100
 @@ -5,7 +5,7 @@
  Byte Array Objects
  ------------------
@@ -86,10 +86,10 @@ Index: Python-3.10.19/Doc/c-api/bytearray.rst
  
  
  .. c:type:: PyByteArrayObject
-Index: Python-3.10.19/Doc/c-api/bytes.rst
+Index: Python-3.10.20/Doc/c-api/bytes.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/bytes.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/bytes.rst	2025-12-19 23:10:15.391922542 +0100
+--- Python-3.10.20.orig/Doc/c-api/bytes.rst	2026-03-05 19:42:16.336584040 +0100
++++ Python-3.10.20/Doc/c-api/bytes.rst	2026-03-05 19:42:18.970100765 +0100
 @@ -8,7 +8,7 @@
  These functions raise :exc:`TypeError` when expecting a bytes parameter and
  called with a non-bytes parameter.
@@ -99,10 +99,10 @@ Index: Python-3.10.19/Doc/c-api/bytes.rst
  
  
  .. c:type:: PyBytesObject
-Index: Python-3.10.19/Doc/c-api/capsule.rst
+Index: Python-3.10.20/Doc/c-api/capsule.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/capsule.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/capsule.rst	2025-12-19 23:10:15.392109858 +0100
+--- Python-3.10.20.orig/Doc/c-api/capsule.rst	2026-03-05 19:42:16.336584040 +0100
++++ Python-3.10.20/Doc/c-api/capsule.rst	2026-03-05 19:42:18.970312835 +0100
 @@ -5,7 +5,7 @@
  Capsules
  --------
@@ -112,10 +112,10 @@ Index: Python-3.10.19/Doc/c-api/capsule.rst
  
  Refer to :ref:`using-capsules` for more information on using these objects.
  
-Index: Python-3.10.19/Doc/c-api/complex.rst
+Index: Python-3.10.20/Doc/c-api/complex.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/complex.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/complex.rst	2025-12-19 23:10:15.392289421 +0100
+--- Python-3.10.20.orig/Doc/c-api/complex.rst	2026-03-05 19:42:16.336584040 +0100
++++ Python-3.10.20/Doc/c-api/complex.rst	2026-03-05 19:42:18.970503093 +0100
 @@ -5,7 +5,7 @@
  Complex Number Objects
  ----------------------
@@ -125,10 +125,10 @@ Index: Python-3.10.19/Doc/c-api/complex.rst
  
  Python's complex number objects are implemented as two distinct types when
  viewed from the C API:  one is the Python object exposed to Python programs, and
-Index: Python-3.10.19/Doc/c-api/concrete.rst
+Index: Python-3.10.20/Doc/c-api/concrete.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/concrete.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/concrete.rst	2025-12-19 23:10:15.392466051 +0100
+--- Python-3.10.20.orig/Doc/c-api/concrete.rst	2026-03-05 19:42:16.336584040 +0100
++++ Python-3.10.20/Doc/c-api/concrete.rst	2026-03-05 19:42:18.970750049 +0100
 @@ -40,7 +40,7 @@
  Numeric Objects
  ===============
@@ -156,10 +156,10 @@ Index: Python-3.10.19/Doc/c-api/concrete.rst
  
  .. toctree::
  
-Index: Python-3.10.19/Doc/c-api/dict.rst
+Index: Python-3.10.20/Doc/c-api/dict.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/dict.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/dict.rst	2025-12-19 23:10:15.392652110 +0100
+--- Python-3.10.20.orig/Doc/c-api/dict.rst	2026-03-05 19:42:16.336584040 +0100
++++ Python-3.10.20/Doc/c-api/dict.rst	2026-03-05 19:42:18.970944416 +0100
 @@ -5,7 +5,7 @@
  Dictionary Objects
  ------------------
@@ -178,10 +178,10 @@ Index: Python-3.10.19/Doc/c-api/dict.rst
  
     Return the number of items in the dictionary.  This is equivalent to
     ``len(p)`` on a dictionary.
-Index: Python-3.10.19/Doc/c-api/exceptions.rst
+Index: Python-3.10.20/Doc/c-api/exceptions.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/exceptions.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/exceptions.rst	2025-12-19 23:10:15.392896207 +0100
+--- Python-3.10.20.orig/Doc/c-api/exceptions.rst	2026-03-05 19:42:16.336584040 +0100
++++ Python-3.10.20/Doc/c-api/exceptions.rst	2026-03-05 19:42:18.971230595 +0100
 @@ -503,7 +503,7 @@
  .. c:function:: int PyErr_CheckSignals()
  
@@ -209,10 +209,10 @@ Index: Python-3.10.19/Doc/c-api/exceptions.rst
        single: KeyboardInterrupt (built-in exception)
  
     Simulate the effect of a signal arriving. The next time
-Index: Python-3.10.19/Doc/c-api/file.rst
+Index: Python-3.10.20/Doc/c-api/file.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/file.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/file.rst	2025-12-19 23:10:15.393159161 +0100
+--- Python-3.10.20.orig/Doc/c-api/file.rst	2026-03-05 19:42:16.336584040 +0100
++++ Python-3.10.20/Doc/c-api/file.rst	2026-03-05 19:42:18.971537043 +0100
 @@ -5,7 +5,7 @@
  File Objects
  ------------
@@ -222,10 +222,10 @@ Index: Python-3.10.19/Doc/c-api/file.rst
  
  These APIs are a minimal emulation of the Python 2 C API for built-in file
  objects, which used to rely on the buffered I/O (:c:expr:`FILE*`) support
-Index: Python-3.10.19/Doc/c-api/float.rst
+Index: Python-3.10.20/Doc/c-api/float.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/float.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/float.rst	2025-12-19 23:10:15.393330204 +0100
+--- Python-3.10.20.orig/Doc/c-api/float.rst	2026-03-05 19:42:16.336584040 +0100
++++ Python-3.10.20/Doc/c-api/float.rst	2026-03-05 19:42:18.971720008 +0100
 @@ -5,7 +5,7 @@
  Floating Point Objects
  ----------------------
@@ -235,10 +235,10 @@ Index: Python-3.10.19/Doc/c-api/float.rst
  
  
  .. c:type:: PyFloatObject
-Index: Python-3.10.19/Doc/c-api/function.rst
+Index: Python-3.10.20/Doc/c-api/function.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/function.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/function.rst	2025-12-19 23:10:15.393493494 +0100
+--- Python-3.10.20.orig/Doc/c-api/function.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/c-api/function.rst	2026-03-05 19:42:18.971899246 +0100
 @@ -5,7 +5,7 @@
  Function Objects
  ----------------
@@ -248,10 +248,10 @@ Index: Python-3.10.19/Doc/c-api/function.rst
  
  There are a few functions specific to Python functions.
  
-Index: Python-3.10.19/Doc/c-api/import.rst
+Index: Python-3.10.20/Doc/c-api/import.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/import.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/import.rst	2025-12-19 23:10:15.393679483 +0100
+--- Python-3.10.20.orig/Doc/c-api/import.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/c-api/import.rst	2026-03-05 19:42:18.972099725 +0100
 @@ -41,7 +41,7 @@
  
  .. c:function:: PyObject* PyImport_ImportModuleEx(const char *name, PyObject *globals, PyObject *locals, PyObject *fromlist)
@@ -270,10 +270,10 @@ Index: Python-3.10.19/Doc/c-api/import.rst
  
     Given a module name (possibly of the form ``package.module``) and a code object
     read from a Python bytecode file or obtained from the built-in function
-Index: Python-3.10.19/Doc/c-api/init.rst
+Index: Python-3.10.20/Doc/c-api/init.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/init.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/init.rst	2025-12-19 23:10:15.393955078 +0100
+--- Python-3.10.20.orig/Doc/c-api/init.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/c-api/init.rst	2026-03-05 19:42:18.972397676 +0100
 @@ -233,9 +233,9 @@
        single: PyEval_InitThreads()
        single: modules (in module sys)
@@ -309,10 +309,10 @@ Index: Python-3.10.19/Doc/c-api/init.rst
        single: stdout (in module sys)
        single: stderr (in module sys)
        single: stdin (in module sys)
-Index: Python-3.10.19/Doc/c-api/intro.rst
+Index: Python-3.10.20/Doc/c-api/intro.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/intro.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/intro.rst	2025-12-19 23:10:15.394470650 +0100
+--- Python-3.10.20.orig/Doc/c-api/intro.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/c-api/intro.rst	2026-03-05 19:42:18.972771231 +0100
 @@ -226,7 +226,7 @@
  Objects, Types and Reference Counts
  ===================================
@@ -335,10 +335,10 @@ Index: Python-3.10.19/Doc/c-api/intro.rst
     triple: module; search; path
     single: path (in module sys)
  
-Index: Python-3.10.19/Doc/c-api/list.rst
+Index: Python-3.10.20/Doc/c-api/list.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/list.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/list.rst	2025-12-19 23:10:15.394763148 +0100
+--- Python-3.10.20.orig/Doc/c-api/list.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/c-api/list.rst	2026-03-05 19:42:18.973088189 +0100
 @@ -5,7 +5,7 @@
  List Objects
  ------------
@@ -366,10 +366,10 @@ Index: Python-3.10.19/Doc/c-api/list.rst
  
     Return a new tuple object containing the contents of *list*; equivalent to
     ``tuple(list)``.
-Index: Python-3.10.19/Doc/c-api/long.rst
+Index: Python-3.10.20/Doc/c-api/long.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/long.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/long.rst	2025-12-19 23:10:15.394948159 +0100
+--- Python-3.10.20.orig/Doc/c-api/long.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/c-api/long.rst	2026-03-05 19:42:18.973340364 +0100
 @@ -5,8 +5,8 @@
  Integer Objects
  ---------------
@@ -381,10 +381,10 @@ Index: Python-3.10.19/Doc/c-api/long.rst
  
  All integers are implemented as "long" integer objects of arbitrary size.
  
-Index: Python-3.10.19/Doc/c-api/mapping.rst
+Index: Python-3.10.20/Doc/c-api/mapping.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/mapping.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/mapping.rst	2025-12-19 23:10:15.395138967 +0100
+--- Python-3.10.20.orig/Doc/c-api/mapping.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/c-api/mapping.rst	2026-03-05 19:42:18.973549118 +0100
 @@ -20,7 +20,7 @@
  .. c:function:: Py_ssize_t PyMapping_Size(PyObject *o)
                 Py_ssize_t PyMapping_Length(PyObject *o)
@@ -394,10 +394,10 @@ Index: Python-3.10.19/Doc/c-api/mapping.rst
  
     Returns the number of keys in object *o* on success, and ``-1`` on failure.
     This is equivalent to the Python expression ``len(o)``.
-Index: Python-3.10.19/Doc/c-api/memoryview.rst
+Index: Python-3.10.20/Doc/c-api/memoryview.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/memoryview.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/memoryview.rst	2025-12-19 23:10:15.395300231 +0100
+--- Python-3.10.20.orig/Doc/c-api/memoryview.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/c-api/memoryview.rst	2026-03-05 19:42:18.973728286 +0100
 @@ -3,7 +3,7 @@
  .. _memoryview-objects:
  
@@ -407,10 +407,10 @@ Index: Python-3.10.19/Doc/c-api/memoryview.rst
  
  MemoryView objects
  ------------------
-Index: Python-3.10.19/Doc/c-api/method.rst
+Index: Python-3.10.20/Doc/c-api/method.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/method.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/method.rst	2025-12-19 23:10:15.395505706 +0100
+--- Python-3.10.20.orig/Doc/c-api/method.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/c-api/method.rst	2026-03-05 19:42:18.973936919 +0100
 @@ -5,7 +5,7 @@
  Instance Method Objects
  -----------------------
@@ -429,10 +429,10 @@ Index: Python-3.10.19/Doc/c-api/method.rst
  
  Methods are bound function objects. Methods are always bound to an instance of
  a user-defined class. Unbound methods (methods bound to a class object) are
-Index: Python-3.10.19/Doc/c-api/module.rst
+Index: Python-3.10.20/Doc/c-api/module.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/module.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/module.rst	2025-12-19 23:10:15.395739397 +0100
+--- Python-3.10.20.orig/Doc/c-api/module.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/c-api/module.rst	2026-03-05 19:42:18.974150622 +0100
 @@ -5,7 +5,7 @@
  Module Objects
  --------------
@@ -442,10 +442,10 @@ Index: Python-3.10.19/Doc/c-api/module.rst
  
  
  .. c:var:: PyTypeObject PyModule_Type
-Index: Python-3.10.19/Doc/c-api/none.rst
+Index: Python-3.10.20/Doc/c-api/none.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/none.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/none.rst	2025-12-19 23:10:15.395955557 +0100
+--- Python-3.10.20.orig/Doc/c-api/none.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/c-api/none.rst	2026-03-05 19:42:18.974386076 +0100
 @@ -5,7 +5,7 @@
  The ``None`` Object
  -------------------
@@ -455,10 +455,10 @@ Index: Python-3.10.19/Doc/c-api/none.rst
  
  Note that the :c:type:`PyTypeObject` for ``None`` is not directly exposed in the
  Python/C API.  Since ``None`` is a singleton, testing for object identity (using
-Index: Python-3.10.19/Doc/c-api/number.rst
+Index: Python-3.10.20/Doc/c-api/number.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/number.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/number.rst	2025-12-19 23:10:15.396155514 +0100
+--- Python-3.10.20.orig/Doc/c-api/number.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/c-api/number.rst	2026-03-05 19:42:18.974581886 +0100
 @@ -64,7 +64,7 @@
  
  .. c:function:: PyObject* PyNumber_Divmod(PyObject *o1, PyObject *o2)
@@ -513,10 +513,10 @@ Index: Python-3.10.19/Doc/c-api/number.rst
  
     Returns the *o* converted to a float object on success, or ``NULL`` on failure.
     This is the equivalent of the Python expression ``float(o)``.
-Index: Python-3.10.19/Doc/c-api/object.rst
+Index: Python-3.10.20/Doc/c-api/object.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/object.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/object.rst	2025-12-19 23:10:15.396357217 +0100
+--- Python-3.10.20.orig/Doc/c-api/object.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/c-api/object.rst	2026-03-05 19:42:18.974799656 +0100
 @@ -172,7 +172,7 @@
  
  .. c:function:: PyObject* PyObject_Repr(PyObject *o)
@@ -571,10 +571,10 @@ Index: Python-3.10.19/Doc/c-api/object.rst
  
     Return the length of object *o*.  If the object *o* provides either the sequence
     and mapping protocols, the sequence length is returned.  On error, ``-1`` is
-Index: Python-3.10.19/Doc/c-api/sequence.rst
+Index: Python-3.10.20/Doc/c-api/sequence.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/sequence.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/sequence.rst	2025-12-19 23:10:15.396594610 +0100
+--- Python-3.10.20.orig/Doc/c-api/sequence.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/c-api/sequence.rst	2026-03-05 19:42:18.975049317 +0100
 @@ -18,7 +18,7 @@
  .. c:function:: Py_ssize_t PySequence_Size(PyObject *o)
                 Py_ssize_t PySequence_Length(PyObject *o)
@@ -593,10 +593,10 @@ Index: Python-3.10.19/Doc/c-api/sequence.rst
  
     Return a tuple object with the same contents as the sequence or iterable *o*,
     or ``NULL`` on failure.  If *o* is a tuple, a new reference will be returned,
-Index: Python-3.10.19/Doc/c-api/set.rst
+Index: Python-3.10.20/Doc/c-api/set.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/set.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/set.rst	2025-12-19 23:10:15.396771519 +0100
+--- Python-3.10.20.orig/Doc/c-api/set.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/c-api/set.rst	2026-03-05 19:42:18.975306692 +0100
 @@ -9,8 +9,8 @@
  
  
@@ -617,10 +617,10 @@ Index: Python-3.10.19/Doc/c-api/set.rst
  
     Return the length of a :class:`set` or :class:`frozenset` object. Equivalent to
     ``len(anyset)``.  Raises a :exc:`PyExc_SystemError` if *anyset* is not a
-Index: Python-3.10.19/Doc/c-api/structures.rst
+Index: Python-3.10.20/Doc/c-api/structures.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/structures.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/structures.rst	2025-12-19 23:10:15.396945495 +0100
+--- Python-3.10.20.orig/Doc/c-api/structures.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/c-api/structures.rst	2026-03-05 19:42:18.975635963 +0100
 @@ -351,7 +351,7 @@
  
  .. data:: METH_CLASS
@@ -639,10 +639,10 @@ Index: Python-3.10.19/Doc/c-api/structures.rst
  
     The method will be passed ``NULL`` as the first parameter rather than an
     instance of the type.  This is used to create *static methods*, similar to
-Index: Python-3.10.19/Doc/c-api/tuple.rst
+Index: Python-3.10.20/Doc/c-api/tuple.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/tuple.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/tuple.rst	2025-12-19 23:10:15.397144544 +0100
+--- Python-3.10.20.orig/Doc/c-api/tuple.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/c-api/tuple.rst	2026-03-05 19:42:18.975888880 +0100
 @@ -5,7 +5,7 @@
  Tuple Objects
  -------------
@@ -652,10 +652,10 @@ Index: Python-3.10.19/Doc/c-api/tuple.rst
  
  
  .. c:type:: PyTupleObject
-Index: Python-3.10.19/Doc/c-api/type.rst
+Index: Python-3.10.20/Doc/c-api/type.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/type.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/type.rst	2025-12-19 23:10:15.397329764 +0100
+--- Python-3.10.20.orig/Doc/c-api/type.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/c-api/type.rst	2026-03-05 19:42:18.976188766 +0100
 @@ -5,7 +5,7 @@
  Type Objects
  ------------
@@ -665,10 +665,10 @@ Index: Python-3.10.19/Doc/c-api/type.rst
  
  
  .. c:type:: PyTypeObject
-Index: Python-3.10.19/Doc/c-api/typeobj.rst
+Index: Python-3.10.20/Doc/c-api/typeobj.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/c-api/typeobj.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/c-api/typeobj.rst	2025-12-19 23:10:15.397446400 +0100
+--- Python-3.10.20.orig/Doc/c-api/typeobj.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/c-api/typeobj.rst	2026-03-05 19:42:18.976565316 +0100
 @@ -803,7 +803,7 @@
  
  .. c:member:: reprfunc PyTypeObject.tp_repr
@@ -687,10 +687,10 @@ Index: Python-3.10.19/Doc/c-api/typeobj.rst
  
     An optional pointer to a function that implements the built-in function
     :func:`hash`.
-Index: Python-3.10.19/Doc/conf.py
+Index: Python-3.10.20/Doc/conf.py
 ===================================================================
---- Python-3.10.19.orig/Doc/conf.py	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/conf.py	2025-12-19 23:10:15.398083707 +0100
+--- Python-3.10.20.orig/Doc/conf.py	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/conf.py	2026-03-05 19:42:18.977099103 +0100
 @@ -61,6 +61,11 @@
  # Avoid a warning with Sphinx >= 2.0
  master_doc = 'contents'
@@ -703,10 +703,10 @@ Index: Python-3.10.19/Doc/conf.py
  # Options for HTML output
  # -----------------------
  
-Index: Python-3.10.19/Doc/extending/newtypes.rst
+Index: Python-3.10.20/Doc/extending/newtypes.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/extending/newtypes.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/extending/newtypes.rst	2025-12-19 23:10:15.398298470 +0100
+--- Python-3.10.20.orig/Doc/extending/newtypes.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/extending/newtypes.rst	2026-03-05 19:42:18.977417513 +0100
 @@ -149,7 +149,7 @@
  
  .. index::
@@ -716,10 +716,10 @@ Index: Python-3.10.19/Doc/extending/newtypes.rst
  
  Object Presentation
  -------------------
-Index: Python-3.10.19/Doc/library/_thread.rst
+Index: Python-3.10.20/Doc/library/_thread.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/_thread.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/_thread.rst	2025-12-19 23:10:15.398608428 +0100
+--- Python-3.10.20.orig/Doc/library/_thread.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/_thread.rst	2026-03-05 19:42:18.977812839 +0100
 @@ -204,7 +204,7 @@
  
  **Caveats:**
@@ -729,10 +729,10 @@ Index: Python-3.10.19/Doc/library/_thread.rst
  
  * Threads interact strangely with interrupts: the :exc:`KeyboardInterrupt`
    exception will be received by an arbitrary thread.  (When the :mod:`signal`
-Index: Python-3.10.19/Doc/library/binascii.rst
+Index: Python-3.10.20/Doc/library/binascii.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/binascii.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/binascii.rst	2025-12-19 23:10:15.398847287 +0100
+--- Python-3.10.20.orig/Doc/library/binascii.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/binascii.rst	2026-03-05 19:42:18.978168049 +0100
 @@ -6,9 +6,9 @@
                representations.
  
@@ -746,10 +746,10 @@ Index: Python-3.10.19/Doc/library/binascii.rst
  
  --------------
  
-Index: Python-3.10.19/Doc/library/cmath.rst
+Index: Python-3.10.20/Doc/library/cmath.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/cmath.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/cmath.rst	2025-12-19 23:10:15.399084959 +0100
+--- Python-3.10.20.orig/Doc/library/cmath.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/cmath.rst	2026-03-05 19:42:18.978445211 +0100
 @@ -301,7 +301,7 @@
     .. versionadded:: 3.6
  
@@ -759,10 +759,10 @@ Index: Python-3.10.19/Doc/library/cmath.rst
  
  Note that the selection of functions is similar, but not identical, to that in
  module :mod:`math`.  The reason for having two modules is that some users aren't
-Index: Python-3.10.19/Doc/library/copy.rst
+Index: Python-3.10.20/Doc/library/copy.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/copy.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/copy.rst	2025-12-19 23:10:15.399270528 +0100
+--- Python-3.10.20.orig/Doc/library/copy.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/copy.rst	2026-03-05 19:42:18.978728956 +0100
 @@ -68,7 +68,7 @@
  of lists by assigning a slice of the entire list, for example,
  ``copied_list = original_list[:]``.
@@ -772,10 +772,10 @@ Index: Python-3.10.19/Doc/library/copy.rst
  
  Classes can use the same interfaces to control copying that they use to control
  pickling.  See the description of module :mod:`pickle` for information on these
-Index: Python-3.10.19/Doc/library/copyreg.rst
+Index: Python-3.10.20/Doc/library/copyreg.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/copyreg.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/copyreg.rst	2025-12-19 23:10:15.399461755 +0100
+--- Python-3.10.20.orig/Doc/library/copyreg.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/copyreg.rst	2026-03-05 19:42:18.978924325 +0100
 @@ -7,8 +7,8 @@
  **Source code:** :source:`Lib/copyreg.py`
  
@@ -787,10 +787,10 @@ Index: Python-3.10.19/Doc/library/copyreg.rst
  
  --------------
  
-Index: Python-3.10.19/Doc/library/dis.rst
+Index: Python-3.10.20/Doc/library/dis.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/dis.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/dis.rst	2025-12-19 23:10:15.399767732 +0100
+--- Python-3.10.20.orig/Doc/library/dis.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/dis.rst	2026-03-05 19:42:18.979174547 +0100
 @@ -1207,7 +1207,7 @@
  
  .. opcode:: BUILD_SLICE (argc)
@@ -800,10 +800,10 @@ Index: Python-3.10.19/Doc/library/dis.rst
  
     Pushes a slice object on the stack.  *argc* must be 2 or 3.  If it is 2,
     ``slice(TOS1, TOS)`` is pushed; if it is 3, ``slice(TOS2, TOS1, TOS)`` is
-Index: Python-3.10.19/Doc/library/email.compat32-message.rst
+Index: Python-3.10.20/Doc/library/email.compat32-message.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/email.compat32-message.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/email.compat32-message.rst	2025-12-19 23:10:15.400042699 +0100
+--- Python-3.10.20.orig/Doc/library/email.compat32-message.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/email.compat32-message.rst	2026-03-05 19:42:18.979546769 +0100
 @@ -7,6 +7,7 @@
     :synopsis: The base class representing email messages in a fashion
                backward compatible with Python 3.2
@@ -812,10 +812,10 @@ Index: Python-3.10.19/Doc/library/email.compat32-message.rst
  
  
  The :class:`Message` class is very similar to the
-Index: Python-3.10.19/Doc/library/exceptions.rst
+Index: Python-3.10.20/Doc/library/exceptions.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/exceptions.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/exceptions.rst	2025-12-19 23:10:15.400305095 +0100
+--- Python-3.10.20.orig/Doc/library/exceptions.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/exceptions.rst	2026-03-05 19:42:18.979875649 +0100
 @@ -4,8 +4,8 @@
  ===================
  
@@ -854,10 +854,10 @@ Index: Python-3.10.19/Doc/library/exceptions.rst
  
     This exception is raised when a system function returns a system-related
     error, including I/O failures such as "file not found" or "disk full"
-Index: Python-3.10.19/Doc/library/fnmatch.rst
+Index: Python-3.10.20/Doc/library/fnmatch.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/fnmatch.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/fnmatch.rst	2025-12-19 23:10:15.400595567 +0100
+--- Python-3.10.20.orig/Doc/library/fnmatch.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/fnmatch.rst	2026-03-05 19:42:18.980208527 +0100
 @@ -8,7 +8,7 @@
  
  .. index:: single: filenames; wildcard expansion
@@ -876,10 +876,10 @@ Index: Python-3.10.19/Doc/library/fnmatch.rst
  
  Note that the filename separator (``'/'`` on Unix) is *not* special to this
  module.  See module :mod:`glob` for pathname expansion (:mod:`glob` uses
-Index: Python-3.10.19/Doc/library/functions.rst
+Index: Python-3.10.20/Doc/library/functions.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/functions.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/functions.rst	2025-12-19 23:10:15.400828071 +0100
+--- Python-3.10.20.orig/Doc/library/functions.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/functions.rst	2026-03-05 19:42:18.980496911 +0100
 @@ -548,7 +548,7 @@
        Raises an :ref:`auditing event <auditing>` ``exec`` with the code object
        as the argument. Code compilation events may also be raised.
@@ -918,10 +918,10 @@ Index: Python-3.10.19/Doc/library/functions.rst
  
     .. note::
  
-Index: Python-3.10.19/Doc/library/http.client.rst
+Index: Python-3.10.20/Doc/library/http.client.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/http.client.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/http.client.rst	2025-12-19 23:10:15.401177908 +0100
+--- Python-3.10.20.orig/Doc/library/http.client.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/http.client.rst	2026-03-05 19:42:18.980925559 +0100
 @@ -10,7 +10,7 @@
     pair: HTTP; protocol
     single: HTTP; http.client (standard module)
@@ -931,10 +931,10 @@ Index: Python-3.10.19/Doc/library/http.client.rst
  
  --------------
  
-Index: Python-3.10.19/Doc/library/imp.rst
+Index: Python-3.10.20/Doc/library/imp.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/imp.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/imp.rst	2025-12-19 23:10:15.401419561 +0100
+--- Python-3.10.20.orig/Doc/library/imp.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/imp.rst	2026-03-05 19:42:18.981246615 +0100
 @@ -10,7 +10,7 @@
  .. deprecated:: 3.4
     The :mod:`imp` module is deprecated in favor of :mod:`importlib`.
@@ -944,10 +944,10 @@ Index: Python-3.10.19/Doc/library/imp.rst
  
  --------------
  
-Index: Python-3.10.19/Doc/library/internet.rst
+Index: Python-3.10.20/Doc/library/internet.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/internet.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/internet.rst	2025-12-19 23:10:15.401643543 +0100
+--- Python-3.10.20.orig/Doc/library/internet.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/internet.rst	2026-03-05 19:42:18.981489052 +0100
 @@ -9,7 +9,7 @@
     single: Internet
     single: World Wide Web
@@ -957,10 +957,10 @@ Index: Python-3.10.19/Doc/library/internet.rst
  
  The modules described in this chapter implement internet protocols and  support
  for related technology.  They are all implemented in Python. Most of these
-Index: Python-3.10.19/Doc/library/locale.rst
+Index: Python-3.10.20/Doc/library/locale.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/locale.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/locale.rst	2025-12-19 23:10:15.401831697 +0100
+--- Python-3.10.20.orig/Doc/library/locale.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/locale.rst	2026-03-05 19:42:18.981763630 +0100
 @@ -16,7 +16,7 @@
  certain cultural issues in an application, without requiring the programmer to
  know all the specifics of each country where the software is executed.
@@ -979,10 +979,10 @@ Index: Python-3.10.19/Doc/library/locale.rst
  
     Locale category for the character type functions.  Depending on the settings of
     this category, the functions of module :mod:`string` dealing with case change
-Index: Python-3.10.19/Doc/library/marshal.rst
+Index: Python-3.10.20/Doc/library/marshal.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/marshal.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/marshal.rst	2025-12-19 23:10:15.402080194 +0100
+--- Python-3.10.20.orig/Doc/library/marshal.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/marshal.rst	2026-03-05 19:42:18.982052574 +0100
 @@ -15,8 +15,8 @@
  rarely does). [#]_
  
@@ -994,11 +994,11 @@ Index: Python-3.10.19/Doc/library/marshal.rst
  
  This is not a general "persistence" module.  For general persistence and
  transfer of Python objects through RPC calls, see the modules :mod:`pickle` and
-Index: Python-3.10.19/Doc/library/os.path.rst
+Index: Python-3.10.20/Doc/library/os.path.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/os.path.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/os.path.rst	2025-12-19 23:10:15.402271561 +0100
-@@ -159,7 +159,7 @@
+--- Python-3.10.20.orig/Doc/library/os.path.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/os.path.rst	2026-03-05 19:42:18.982385091 +0100
+@@ -161,7 +161,7 @@
     On Unix and Windows, return the argument with an initial component of ``~`` or
     ``~user`` replaced by that *user*'s home directory.
  
@@ -1007,10 +1007,10 @@ Index: Python-3.10.19/Doc/library/os.path.rst
  
     On Unix, an initial ``~`` is replaced by the environment variable :envvar:`HOME`
     if it is set; otherwise the current user's home directory is looked up in the
-Index: Python-3.10.19/Doc/library/os.rst
+Index: Python-3.10.20/Doc/library/os.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/os.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/os.rst	2025-12-19 23:10:15.402446375 +0100
+--- Python-3.10.20.orig/Doc/library/os.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/os.rst	2026-03-05 19:42:18.982587843 +0100
 @@ -1136,7 +1136,7 @@
  
  .. function:: openpty()
@@ -1029,10 +1029,10 @@ Index: Python-3.10.19/Doc/library/os.rst
  
     Example::
  
-Index: Python-3.10.19/Doc/library/pdb.rst
+Index: Python-3.10.20/Doc/library/pdb.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/pdb.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/pdb.rst	2025-12-19 23:10:15.403432541 +0100
+--- Python-3.10.20.orig/Doc/library/pdb.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/pdb.rst	2026-03-05 19:42:18.983778239 +0100
 @@ -20,8 +20,8 @@
  
  .. index::
@@ -1044,10 +1044,10 @@ Index: Python-3.10.19/Doc/library/pdb.rst
  
  The debugger is extensible -- it is actually defined as the class :class:`Pdb`.
  This is currently undocumented but easily understood by reading the source.  The
-Index: Python-3.10.19/Doc/library/posix.rst
+Index: Python-3.10.20/Doc/library/posix.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/posix.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/posix.rst	2025-12-19 23:10:15.403681946 +0100
+--- Python-3.10.20.orig/Doc/library/posix.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/posix.rst	2026-03-05 19:42:18.984101268 +0100
 @@ -11,7 +11,7 @@
  standardized by the C Standard and the POSIX standard (a thinly disguised Unix
  interface).
@@ -1057,10 +1057,10 @@ Index: Python-3.10.19/Doc/library/posix.rst
  
  **Do not import this module directly.**  Instead, import the module :mod:`os`,
  which provides a *portable* version of this interface.  On Unix, the :mod:`os`
-Index: Python-3.10.19/Doc/library/pprint.rst
+Index: Python-3.10.20/Doc/library/pprint.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/pprint.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/pprint.rst	2025-12-19 23:10:15.403862208 +0100
+--- Python-3.10.20.orig/Doc/library/pprint.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/pprint.rst	2026-03-05 19:42:18.984325922 +0100
 @@ -171,7 +171,7 @@
  
  .. function:: isreadable(object)
@@ -1079,10 +1079,10 @@ Index: Python-3.10.19/Doc/library/pprint.rst
  
     Determine if the formatted representation of the object is "readable," or can be
     used to reconstruct the value using :func:`eval`.  Note that this returns
-Index: Python-3.10.19/Doc/library/pwd.rst
+Index: Python-3.10.20/Doc/library/pwd.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/pwd.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/pwd.rst	2025-12-19 23:10:15.404074457 +0100
+--- Python-3.10.20.orig/Doc/library/pwd.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/pwd.rst	2026-03-05 19:42:18.984577957 +0100
 @@ -37,7 +37,7 @@
  
  .. note::
@@ -1092,10 +1092,10 @@ Index: Python-3.10.19/Doc/library/pwd.rst
  
     In traditional Unix the field ``pw_passwd`` usually contains a password
     encrypted with a DES derived algorithm (see module :mod:`crypt`).  However most
-Index: Python-3.10.19/Doc/library/pyexpat.rst
+Index: Python-3.10.20/Doc/library/pyexpat.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/pyexpat.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/pyexpat.rst	2025-12-19 23:10:15.404269595 +0100
+--- Python-3.10.20.orig/Doc/library/pyexpat.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/pyexpat.rst	2026-03-05 19:42:18.984818931 +0100
 @@ -33,7 +33,7 @@
  parser, the handler functions are called for the character data and markup in
  the XML document.
@@ -1105,10 +1105,10 @@ Index: Python-3.10.19/Doc/library/pyexpat.rst
  
  This module uses the :mod:`pyexpat` module to provide access to the Expat
  parser.  Direct use of the :mod:`pyexpat` module is deprecated.
-Index: Python-3.10.19/Doc/library/runpy.rst
+Index: Python-3.10.20/Doc/library/runpy.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/runpy.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/runpy.rst	2025-12-19 23:10:15.404446365 +0100
+--- Python-3.10.20.orig/Doc/library/runpy.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/runpy.rst	2026-03-05 19:42:18.985177187 +0100
 @@ -30,7 +30,7 @@
  .. function:: run_module(mod_name, init_globals=None, run_name=None, alter_sys=False)
  
@@ -1127,10 +1127,10 @@ Index: Python-3.10.19/Doc/library/runpy.rst
  
     Execute the code at the named filesystem location and return the resulting
     module globals dictionary. As with a script name supplied to the CPython
-Index: Python-3.10.19/Doc/library/shelve.rst
+Index: Python-3.10.20/Doc/library/shelve.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/shelve.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/shelve.rst	2025-12-19 23:10:15.404878127 +0100
+--- Python-3.10.20.orig/Doc/library/shelve.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/shelve.rst	2026-03-05 19:42:18.985415677 +0100
 @@ -6,7 +6,7 @@
  
  **Source code:** :source:`Lib/shelve.py`
@@ -1151,10 +1151,10 @@ Index: Python-3.10.19/Doc/library/shelve.rst
  
  * The choice of which database package will be used (such as :mod:`dbm.ndbm` or
    :mod:`dbm.gnu`) depends on which interface is available.  Therefore it is not
-Index: Python-3.10.19/Doc/library/site.rst
+Index: Python-3.10.20/Doc/library/site.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/site.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/site.rst	2025-12-19 23:10:15.405113354 +0100
+--- Python-3.10.20.orig/Doc/library/site.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/site.rst	2026-03-05 19:42:18.985669245 +0100
 @@ -51,7 +51,7 @@
  
  .. index::
@@ -1182,10 +1182,10 @@ Index: Python-3.10.19/Doc/library/site.rst
  
  After this, an attempt is made to import a module named :mod:`usercustomize`,
  which can perform arbitrary user-specific customizations, if
-Index: Python-3.10.19/Doc/library/socket.rst
+Index: Python-3.10.20/Doc/library/socket.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/socket.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/socket.rst	2025-12-19 23:10:15.405446360 +0100
+--- Python-3.10.20.orig/Doc/library/socket.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/socket.rst	2026-03-05 19:42:18.986046306 +0100
 @@ -16,7 +16,7 @@
     Some behavior may be platform dependent, since calls are made to the operating
     system socket APIs.
@@ -1204,10 +1204,10 @@ Index: Python-3.10.19/Doc/library/socket.rst
  
     Set the value of the given socket option (see the Unix manual page
     :manpage:`setsockopt(2)`).  The needed symbolic constants are defined in the
-Index: Python-3.10.19/Doc/library/stdtypes.rst
+Index: Python-3.10.20/Doc/library/stdtypes.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/stdtypes.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/stdtypes.rst	2025-12-19 23:10:15.406446355 +0100
+--- Python-3.10.20.orig/Doc/library/stdtypes.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/stdtypes.rst	2026-03-05 19:42:18.986972964 +0100
 @@ -32,8 +32,8 @@
  ===================
  
@@ -1583,10 +1583,10 @@ Index: Python-3.10.19/Doc/library/stdtypes.rst
  
  Type objects represent the various object types.  An object's type is accessed
  by the built-in function :func:`type`.  There are no special operations on
-Index: Python-3.10.19/Doc/library/sys.rst
+Index: Python-3.10.20/Doc/library/sys.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/sys.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/sys.rst	2025-12-19 23:10:15.406880072 +0100
+--- Python-3.10.20.orig/Doc/library/sys.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/sys.rst	2026-03-05 19:42:18.987990342 +0100
 @@ -398,7 +398,7 @@
     an except clause."  For any stack frame, only information about the exception
     being currently handled is accessible.
@@ -1596,10 +1596,10 @@ Index: Python-3.10.19/Doc/library/sys.rst
  
     If no exception is being handled anywhere on the stack, a tuple containing
     three ``None`` values is returned.  Otherwise, the values returned are
-Index: Python-3.10.19/Doc/library/traceback.rst
+Index: Python-3.10.20/Doc/library/traceback.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/traceback.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/traceback.rst	2025-12-19 23:10:15.407220202 +0100
+--- Python-3.10.20.orig/Doc/library/traceback.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/traceback.rst	2026-03-05 19:42:18.988443998 +0100
 @@ -14,7 +14,7 @@
  stack traces under program control, such as in a "wrapper" around the
  interpreter.
@@ -1609,10 +1609,10 @@ Index: Python-3.10.19/Doc/library/traceback.rst
  
  The module uses traceback objects --- this is the object type that is stored in
  the :data:`sys.last_traceback` variable and returned as the third item from
-Index: Python-3.10.19/Doc/library/types.rst
+Index: Python-3.10.20/Doc/library/types.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/library/types.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/library/types.rst	2025-12-19 23:10:15.407463391 +0100
+--- Python-3.10.20.orig/Doc/library/types.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/library/types.rst	2026-03-05 19:42:18.988791784 +0100
 @@ -146,7 +146,7 @@
  
  .. class:: CodeType(**kwargs)
@@ -1622,10 +1622,10 @@ Index: Python-3.10.19/Doc/library/types.rst
  
     The type for code objects such as returned by :func:`compile`.
  
-Index: Python-3.10.19/Doc/reference/compound_stmts.rst
+Index: Python-3.10.20/Doc/reference/compound_stmts.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/reference/compound_stmts.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/reference/compound_stmts.rst	2025-12-19 23:10:15.407774397 +0100
+--- Python-3.10.20.orig/Doc/reference/compound_stmts.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/reference/compound_stmts.rst	2026-03-05 19:42:18.989240841 +0100
 @@ -84,9 +84,9 @@
  ============================
  
@@ -1855,10 +1855,10 @@ Index: Python-3.10.19/Doc/reference/compound_stmts.rst
  .. _`async with`:
  
  The :keyword:`!async with` statement
-Index: Python-3.10.19/Doc/reference/datamodel.rst
+Index: Python-3.10.20/Doc/reference/datamodel.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/reference/datamodel.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/reference/datamodel.rst	2025-12-19 23:10:15.408446345 +0100
+--- Python-3.10.20.orig/Doc/reference/datamodel.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/reference/datamodel.rst	2026-03-05 19:42:18.989869737 +0100
 @@ -21,8 +21,8 @@
  represented by objects.)
  
@@ -2371,10 +2371,10 @@ Index: Python-3.10.19/Doc/reference/datamodel.rst
     single: context manager
  
  Typical uses of context managers include saving and restoring various kinds of
-Index: Python-3.10.19/Doc/reference/executionmodel.rst
+Index: Python-3.10.20/Doc/reference/executionmodel.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/reference/executionmodel.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/reference/executionmodel.rst	2025-12-19 23:10:15.408910164 +0100
+--- Python-3.10.20.orig/Doc/reference/executionmodel.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/reference/executionmodel.rst	2026-03-05 19:42:18.990617928 +0100
 @@ -151,7 +151,7 @@
  :exc:`SyntaxError` is raised at compile time if the given name does not
  exist in any enclosing function scope.
@@ -2384,10 +2384,10 @@ Index: Python-3.10.19/Doc/reference/executionmodel.rst
  
  The namespace for a module is automatically created the first time a module is
  imported.  The main module for a script is always called :mod:`__main__`.
-Index: Python-3.10.19/Doc/reference/expressions.rst
+Index: Python-3.10.20/Doc/reference/expressions.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/reference/expressions.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/reference/expressions.rst	2025-12-19 23:10:15.409155938 +0100
+--- Python-3.10.20.orig/Doc/reference/expressions.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/reference/expressions.rst	2026-03-05 19:42:18.990933533 +0100
 @@ -71,7 +71,7 @@
  for lexical definition and section :ref:`naming` for documentation of naming and
  binding.
@@ -2794,10 +2794,10 @@ Index: Python-3.10.19/Doc/reference/expressions.rst
  
  Except when part of a list or set display, an expression list
  containing at least one comma yields a tuple.  The length of
-Index: Python-3.10.19/Doc/reference/simple_stmts.rst
+Index: Python-3.10.20/Doc/reference/simple_stmts.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/reference/simple_stmts.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/reference/simple_stmts.rst	2025-12-19 23:10:15.409656983 +0100
+--- Python-3.10.20.orig/Doc/reference/simple_stmts.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/reference/simple_stmts.rst	2026-03-05 19:42:18.991596393 +0100
 @@ -53,8 +53,8 @@
  expression).
  
@@ -3039,10 +3039,10 @@ Index: Python-3.10.19/Doc/reference/simple_stmts.rst
     single: , (comma); identifier list
  
  .. productionlist:: python-grammar
-Index: Python-3.10.19/Doc/reference/toplevel_components.rst
+Index: Python-3.10.20/Doc/reference/toplevel_components.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/reference/toplevel_components.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/reference/toplevel_components.rst	2025-12-19 23:10:15.409991385 +0100
+--- Python-3.10.20.orig/Doc/reference/toplevel_components.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/reference/toplevel_components.rst	2026-03-05 19:42:18.991994343 +0100
 @@ -21,9 +21,9 @@
  .. index:: single: program
  
@@ -3074,10 +3074,10 @@ Index: Python-3.10.19/Doc/reference/toplevel_components.rst
  
  :func:`eval` is used for expression input.  It ignores leading whitespace. The
  string argument to :func:`eval` must have the following form:
-Index: Python-3.10.19/Doc/tools/extensions/pyspecific.py
+Index: Python-3.10.20/Doc/tools/extensions/pyspecific.py
 ===================================================================
---- Python-3.10.19.orig/Doc/tools/extensions/pyspecific.py	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/tools/extensions/pyspecific.py	2025-12-19 23:10:15.410328302 +0100
+--- Python-3.10.20.orig/Doc/tools/extensions/pyspecific.py	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/tools/extensions/pyspecific.py	2026-03-05 19:42:18.992268971 +0100
 @@ -644,6 +644,30 @@
          node.replace_self(table)
  
@@ -3117,10 +3117,10 @@ Index: Python-3.10.19/Doc/tools/extensions/pyspecific.py
      app.connect('doctree-resolved', process_audit_events)
      app.connect('env-merge-info', audit_events_merge)
      app.connect('env-purge-doc', audit_events_purge)
-Index: Python-3.10.19/Doc/tutorial/classes.rst
+Index: Python-3.10.20/Doc/tutorial/classes.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/tutorial/classes.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/tutorial/classes.rst	2025-12-19 23:10:15.410720534 +0100
+--- Python-3.10.20.orig/Doc/tutorial/classes.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/tutorial/classes.rst	2026-03-05 19:42:18.992758014 +0100
 @@ -344,7 +344,7 @@
  However, in the following discussion, we'll use the term method exclusively to
  mean methods of class instance objects, unless explicitly stated otherwise.)
@@ -3130,10 +3130,10 @@ Index: Python-3.10.19/Doc/tutorial/classes.rst
  
  Valid method names of an instance object depend on its class.  By definition,
  all attributes of a class that are function  objects define corresponding
-Index: Python-3.10.19/Doc/tutorial/controlflow.rst
+Index: Python-3.10.20/Doc/tutorial/controlflow.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/tutorial/controlflow.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/tutorial/controlflow.rst	2025-12-19 23:10:15.411043971 +0100
+--- Python-3.10.20.orig/Doc/tutorial/controlflow.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/tutorial/controlflow.rst	2026-03-05 19:42:18.993212891 +0100
 @@ -46,7 +46,7 @@
  ==========================
  
@@ -3143,10 +3143,10 @@ Index: Python-3.10.19/Doc/tutorial/controlflow.rst
  
  The :keyword:`for` statement in Python differs a bit from what you may be used
  to in C or Pascal.  Rather than always iterating over an arithmetic progression
-Index: Python-3.10.19/Doc/tutorial/inputoutput.rst
+Index: Python-3.10.20/Doc/tutorial/inputoutput.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/tutorial/inputoutput.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/tutorial/inputoutput.rst	2025-12-19 23:10:15.411308183 +0100
+--- Python-3.10.20.orig/Doc/tutorial/inputoutput.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/tutorial/inputoutput.rst	2026-03-05 19:42:18.993527254 +0100
 @@ -285,8 +285,8 @@
  =========================
  
@@ -3167,10 +3167,10 @@ Index: Python-3.10.19/Doc/tutorial/inputoutput.rst
  
  Strings can easily be written to and read from a file.  Numbers take a bit more
  effort, since the :meth:`read` method only returns strings, which will have to
-Index: Python-3.10.19/Doc/tutorial/modules.rst
+Index: Python-3.10.20/Doc/tutorial/modules.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/tutorial/modules.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/tutorial/modules.rst	2025-12-19 23:10:15.411539499 +0100
+--- Python-3.10.20.orig/Doc/tutorial/modules.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/tutorial/modules.rst	2026-03-05 19:42:18.993796923 +0100
 @@ -260,7 +260,7 @@
  Standard Modules
  ================
@@ -3189,10 +3189,10 @@ Index: Python-3.10.19/Doc/tutorial/modules.rst
  
  :func:`dir` does not list the names of built-in functions and variables.  If you
  want a list of those, they are defined in the standard module
-Index: Python-3.10.19/Doc/tutorial/stdlib.rst
+Index: Python-3.10.20/Doc/tutorial/stdlib.rst
 ===================================================================
---- Python-3.10.19.orig/Doc/tutorial/stdlib.rst	2025-10-09 17:25:03.000000000 +0200
-+++ Python-3.10.19/Doc/tutorial/stdlib.rst	2025-12-19 23:10:15.411769907 +0100
+--- Python-3.10.20.orig/Doc/tutorial/stdlib.rst	2026-03-05 19:42:16.337584041 +0100
++++ Python-3.10.20/Doc/tutorial/stdlib.rst	2026-03-05 19:42:18.994160168 +0100
 @@ -24,7 +24,7 @@
  will keep :func:`os.open` from shadowing the built-in :func:`open` function which
  operates much differently.

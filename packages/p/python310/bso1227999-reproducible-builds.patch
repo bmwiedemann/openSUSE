@@ -12,9 +12,11 @@ for the definition of this variable.
  Doc/library/functions.rst |    2 +-
  2 files changed, 3 insertions(+), 2 deletions(-)
 
---- a/Doc/conf.py
-+++ b/Doc/conf.py
-@@ -89,7 +89,8 @@ html_short_title = '%s Documentation' %
+Index: Python-3.10.20/Doc/conf.py
+===================================================================
+--- Python-3.10.20.orig/Doc/conf.py	2026-03-05 19:42:18.977099103 +0100
++++ Python-3.10.20/Doc/conf.py	2026-03-05 19:42:32.395647783 +0100
+@@ -89,7 +89,8 @@
  
  # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
  # using the given strftime format.
@@ -24,9 +26,11 @@ for the definition of this variable.
  
  # Path to find HTML templates.
  templates_path = ['tools/templates']
---- a/Doc/library/functions.rst
-+++ b/Doc/library/functions.rst
-@@ -1320,7 +1320,7 @@ are always available.  They are listed h
+Index: Python-3.10.20/Doc/library/functions.rst
+===================================================================
+--- Python-3.10.20.orig/Doc/library/functions.rst	2026-03-05 19:42:18.980496911 +0100
++++ Python-3.10.20/Doc/library/functions.rst	2026-03-05 19:42:32.397607125 +0100
+@@ -1320,7 +1320,7 @@
     (where :func:`open` is declared), :mod:`os`, :mod:`os.path`, :mod:`tempfile`,
     and :mod:`shutil`.
  

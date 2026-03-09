@@ -2,9 +2,11 @@
  Doc/tools/extensions/pyspecific.py |    8 +++++++-
  1 file changed, 7 insertions(+), 1 deletion(-)
 
---- a/Doc/tools/extensions/pyspecific.py
-+++ b/Doc/tools/extensions/pyspecific.py
-@@ -28,7 +28,13 @@ try:
+Index: Python-3.10.20/Doc/tools/extensions/pyspecific.py
+===================================================================
+--- Python-3.10.20.orig/Doc/tools/extensions/pyspecific.py	2026-03-05 19:42:18.992268971 +0100
++++ Python-3.10.20/Doc/tools/extensions/pyspecific.py	2026-03-08 23:16:00.413991280 +0100
+@@ -28,7 +28,13 @@
  except ImportError:
      from sphinx.environment import NoUri
  from sphinx.locale import _ as sphinx_gettext
