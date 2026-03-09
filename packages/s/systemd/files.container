@@ -53,10 +53,8 @@
 %{_datadir}/dbus-1/interfaces/org.freedesktop.machine1.Image.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.machine1.Machine.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.machine1.Manager.xml
-%if %{with upstream}
 %{_datadir}/dbus-1/services/org.freedesktop.import1.service
 %{_datadir}/dbus-1/services/org.freedesktop.machine1.service
-%endif
 %{_datadir}/dbus-1/system-services/org.freedesktop.machine1.service
 %{_datadir}/dbus-1/system.d/org.freedesktop.machine1.conf
 %{_datadir}/polkit-1/actions/org.freedesktop.machine1.policy
@@ -67,21 +65,17 @@
 %{_mandir}/man5/org.freedesktop.machine1.5.gz
 %{_mandir}/man8/systemd-machined.8.gz
 %{_mandir}/man8/systemd-machined.service.8.gz
-%if %{with upstream}
+%{_systemd_util_dir}/systemd-machined
 %{_systemd_util_dir}/user/dbus-org.freedesktop.import1.service
 %{_systemd_util_dir}/user/dbus-org.freedesktop.machine1.service
-%endif
-%{_systemd_util_dir}/systemd-machined
 %{_systemd_util_dir}/user/machine.slice
 %{_systemd_util_dir}/user/machines.target
-%if %{with upstream}
 %{_systemd_util_dir}/user/sockets.target.wants/systemd-importd.socket
 %{_systemd_util_dir}/user/sockets.target.wants/systemd-machined.socket
 %{_systemd_util_dir}/user/systemd-importd.service
 %{_systemd_util_dir}/user/systemd-importd.socket
 %{_systemd_util_dir}/user/systemd-machined.service
 %{_systemd_util_dir}/user/systemd-machined.socket
-%endif
 %{_tmpfilesdir}/systemd-nspawn.conf
 %{_unitdir}/dbus-org.freedesktop.machine1.service
 %{_unitdir}/machine.slice

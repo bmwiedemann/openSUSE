@@ -1,8 +1,14 @@
 #
 # Please keep the list sorted (with `LC_ALL=C sort`).
 #
+%if %{with upstream}
+%dir %{_systemd_util_dir}/boot/hwids/
+%endif
 %{_bindir}/ukify
 %{_mandir}/man1/ukify.1.gz
 %{_prefix}/lib/kernel/install.d/60-ukify.install
 %{_prefix}/lib/kernel/uki.conf
+%if %{with upstream}
+%{_systemd_util_dir}/boot/hwids/
+%endif
 %{_systemd_util_dir}/ukify

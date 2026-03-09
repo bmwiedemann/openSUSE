@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Mar  4 13:34:23 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Import commit 1e9dbf558f2578c5f0a38a20cd93950de5d7b648 (merge of v259.3)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/5f4e99cfd5cc08a0e4daa83e570a9a1bcb28a940...1e9dbf558f2578c5f0a38a20cd93950de5d7b648
+
+-------------------------------------------------------------------
+Tue Mar  3 10:26:47 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Upgrade to v259.2 (commit 5f4e99cfd5cc08a0e4daa83e570a9a1bcb28a940)
+
+  See https://github.com/openSUSE/systemd/blob/SUSE/v259/NEWS for details.
+
+  - Rebase 5001-Revert-udev-update-devlink-with-the-newer-device-nod.patch
+
+  - libacl, libblkid, libseccomp, libselinux and libmount support are
+    implemented via dlopen(). Although these are technically optional, we still
+    require them to avoid loosing important features.
+
+  - systemd no longer links against libcap at all. The simple system call
+    wrappers and other APIs it provides have been reimplemented directly in
+    systemd.
+
+-------------------------------------------------------------------
+Mon Mar  2 13:06:09 UTC 2026 - JS <obs.coke518@passinbox.com>
+
+- Add unpackaged udev files for loongarch64.
+
+-------------------------------------------------------------------
 Fri Feb 27 15:14:18 UTC 2026 - Franck Bui <fbui@suse.com>
 
 - Import commit 3f0b141e0c35f8f7805a28e8bfb083df9b7ed96b (merge of v258.5)

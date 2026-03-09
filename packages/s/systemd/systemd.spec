@@ -32,9 +32,9 @@
 %bcond_with obs_service_set_version
 
 %if %{without obs_service_set_version}
-%define systemd_version    258.5
+%define systemd_version    259.3
 %define systemd_release    0
-%define archive_version    +suse.19.g3f0b141e0c
+%define archive_version    +suse.4.g1e9dbf558f
 %endif
 
 %define _testsuitedir %{_systemd_util_dir}/tests
@@ -115,7 +115,6 @@ BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  fdupes
 BuildRequires:  gperf
 BuildRequires:  libacl-devel
-BuildRequires:  libcap-devel
 BuildRequires:  libmount-devel >= 2.27.1
 BuildRequires:  meson >= 0.53.2
 BuildRequires:  pam-devel
@@ -147,6 +146,15 @@ Requires:       this-is-only-for-build-envs
 Requires:       aaa_base >= 13.2
 Requires:       dbus-service
 Requires:       kbd
+# These libs are dlopen()ed and therefore optional but we would loose too many
+# important features if they were missing.
+Requires:       libacl1
+Requires:       libaudit1
+Requires:       libmount1
+Requires:       libseccomp2
+%if %{with selinux}
+Requires:       libselinux1
+%endif
 Requires:       netcfg >= 11.5
 Requires:       systemd-default-settings-branding
 Requires:       systemd-presets-branding
@@ -334,7 +342,8 @@ Requires:       filesystem
 %if %{without bootstrap}
 # kmod executable is needed by kmod-static-nodes.service
 Requires:       kmod
-# From v256 libkmod is dlopen()ed.
+# These libs are dlopen()ed.
+Requires:       libblkid1
 Requires:       libkmod2
 %endif
 Requires:       system-group-hardware
@@ -638,7 +647,7 @@ $ mkosi -f box -- meson test -C build --setup=integration --suite=integration-te
 Note that you need root privileges to run the extended testsuite.
 
 For more details on the available options to run the extended testsuite, please
-refer to %{_testsuitedir}/integration-tests/README.testsuite.
+refer to %{_testsuitedir}/integration-tests/README.md.
 %endif
 
 %package experimental

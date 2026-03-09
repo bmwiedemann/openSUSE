@@ -1,4 +1,4 @@
-From 6b03bc81cccec72f6e6ee31e8b08816713c42dac Mon Sep 17 00:00:00 2001
+From 82c036effa3eef3bea5832ab1a5d7ed32c1cc58e Mon Sep 17 00:00:00 2001
 From: Franck Bui <fbui@suse.com>
 Date: Fri, 12 Jan 2024 10:54:57 +0100
 Subject: [PATCH] Revert "udev: update devlink with the newer device node
@@ -6,14 +6,14 @@ Subject: [PATCH] Revert "udev: update devlink with the newer device node
 
 This reverts commit 277cb24ffb7a520f640eb36d11340f11bf0c7c4f.
 ---
- src/udev/udev-node.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ src/udev/udev-node.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/src/udev/udev-node.c b/src/udev/udev-node.c
-index 412775b38b..94149d7115 100644
+index d30ffd9a56..d1bf12cea8 100644
 --- a/src/udev/udev-node.c
 +++ b/src/udev/udev-node.c
-@@ -538,13 +538,13 @@ static int link_update(sd_device *dev, const char *slink, bool add) {
+@@ -538,9 +538,9 @@ static int link_update(sd_device *dev, const char *slink, bool add) {
                  return link_search_and_update(dev, slink, dirfd, add);
          }
  
@@ -25,13 +25,7 @@ index 412775b38b..94149d7115 100644
 +                 * device. Hence, it is not necessary to recreate it. */
                  return 0;
  
--        /* This device has the equal or a higher priority than the current. Let's create the devlink to our
--         * device node. */
-+        /* This device has a higher priority than the current. Let's create the devlink to our device
-+         * node. */
-         return node_create_symlink(dev, /* devnode = */ NULL, slink);
- }
- 
+         /* This device has the equal or a higher priority than the current. Let's create the devlink to our
 -- 
-2.43.0
+2.51.0
 
