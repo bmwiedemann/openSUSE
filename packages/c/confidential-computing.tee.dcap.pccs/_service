@@ -1,0 +1,42 @@
+<services>
+	<service mode="manual" name="tar_scm">
+		<param name="exclude">.git*</param>
+		<param name="exclude">.mocharc.json</param>
+		<param name="exclude">CODE_OF_CONDUCT.md</param>
+		<param name="exclude">CONTRIBUTING.md</param>
+		<param name="exclude">Makefile</param>
+		<param name="exclude">PccsAdminTool/README.txt</param>
+		<param name="exclude">PccsAdminTool/requirements.txt</param>
+		<param name="exclude">README.md</param>
+		<param name="exclude">SECURITY.md</param>
+		<param name="exclude">build_infrastructure</param>
+		<param name="exclude">service/README.md</param>
+		<param name="exclude">service/cleanup.sh</param>
+		<param name="exclude">service/container</param>
+		<param name="exclude">service/install.bat</param>
+		<param name="exclude">service/install.sh</param>
+		<param name="exclude">service/nodejs.cnf</param>
+		<param name="exclude">service/package-lock.json</param>
+		<param name="exclude">service/pccs.winsvc.inst.cjs</param>
+		<param name="exclude">service/pccs.winsvc.uninst.cjs</param>
+		<param name="exclude">service/pckCertSelection/Tcb.test.js</param>
+		<param name="exclude">service/pckCertSelection/pckCertSelection.test.js</param>
+		<param name="exclude">service/startup.sh</param>
+		<param name="exclude">service/uninstall.bat</param>
+		<param name="exclude">service/uninstall.sh</param>
+		<param name="extract">service/package-lock.json</param>
+		<param name="filename">confidential-computing.tee.dcap.pccs</param>
+		<param name="revision">9c4fe2d21a32c39777925ec0045620788bbdf542</param>
+		<param name="scm">git</param>
+		<param name="submodules">enable</param>
+		<param name="url">https://github.com/intel/confidential-computing.tee.dcap.pccs.git</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">[^_]+_([^\+]+)(.*)</param>
+		<param name="versionrewrite-replacement">\1</param>
+	</service>
+	<service mode="manual" name="set_version"/>
+	<service mode="manual" name="node_modules">
+		<param name="cpio">confidential-computing.tee.dcap.pccs.node_modules.cpio</param>
+		<param name="output">confidential-computing.tee.dcap.pccs.node_modules.txt</param>
+	</service>
+</services>
