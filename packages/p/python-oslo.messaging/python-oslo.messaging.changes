@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Mar  8 20:36:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 17.3.0:
+  * Do not delete queues on error
+  * Deprecate enforce\_fips\_mode
+  * Remove old hacking check for oslo namespace package
+  * Delay string interpolations at logging calls
+  * rabbit: Fix ignored PreconditionFailed error
+  * Simplify process group fallback expression
+  * reno: Update master for unmaintained/2024.1
+  * Bump kombu to 4.6.8
+  * Bump pyupgrade target to 3.10+
+  * Fix broken fallback causing type inconsistency
+  * Restore license note about optional deps
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2
+
+-------------------------------------------------------------------
 Sun Nov  9 18:22:12 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 17.1.0:

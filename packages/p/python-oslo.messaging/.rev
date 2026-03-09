@@ -712,4 +712,27 @@
   * Remove deprecated AMQP1 driver</comment>
     <requestid>1316859</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>94b3684bbc070dde8f127caf9ffe6aea</srcmd5>
+    <version>17.3.0</version>
+    <time>1773069070</time>
+    <user>anag_factory</user>
+    <comment>- update to 17.3.0:
+  * Do not delete queues on error
+  * Deprecate enforce\_fips\_mode
+  * Remove old hacking check for oslo namespace package
+  * Delay string interpolations at logging calls
+  * rabbit: Fix ignored PreconditionFailed error
+  * Simplify process group fallback expression
+  * reno: Update master for unmaintained/2024.1
+  * Bump kombu to 4.6.8
+  * Bump pyupgrade target to 3.10+
+  * Fix broken fallback causing type inconsistency
+  * Restore license note about optional deps
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2</comment>
+    <requestid>1337518</requestid>
+  </revision>
 </revisionlist>
