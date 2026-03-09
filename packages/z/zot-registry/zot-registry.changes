@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Mar 09 07:04:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.15:
+  * fix: don't skip "latest" tag authz check for update (#3847)
+  * fix(auth): prevent open redirect via callback_ui (#3844)
+  * feat(sync): add SyncLegacyCosignTags config to skip syncing
+    legacy cosign/SBOM tags when disabled (#3842)
+  * chore: fix dependabot alerts (#3841)
+  * fix: skip OCI conversion when image is already synced #3823
+  * chore: fix dependabot alerts (#3820)
+  * chore: bump zui version (#3809)
+  * GCS storage support (#3798)
+  * chore: update zui version (#3803)
+  * chore: fix dependabot alerts (#3802)
+  * feat(tls): implement dynamic TLS certificate reloading with
+    file watching (#3792)
+  * chore: fix dependabot alerts (#3794)
+  * chore: update golang version to 1.25.7 (#3790)
+  * fix(build): upgrade zot runtime base image to distroless
+    debian13 (#3791)
+  * chore: update github.com/sigstore/cosign/v3 from 3.0.2 to 3.0.4
+    (#3789)
+  * chore: fix dependabot alerts (#3788)
+  * fix: correct typo var name mirroHostConfig (#3777)
+  * fix(imagestore): normalize paths to prevent panic on Windows
+    (#3775)
+  * fix(meta): fixes for LastUpdated and TaggedTimestamp (#3754)
+  * chore: fix dependabot alerts (#3774)
+  * feat(jwt-asm): support AWS Secrets Manager for JWT verification
+    (#3763)
+  * feat(zui): add Last Tagged timestamp to tag details view
+    (#3772)
+  * feat(jwt-exp): exp claim at the access entry level (#3761)
+  * ci: improvements for the Ecosystem tools job (#3762)
+  * feat(oidc): support per-issuer CA (#3760)
+  * chore: fix dependabot alerts (#3751)
+  * feat: add TaggedTimestamp to ImageSummary returned by graphql
+    API (#3731)
+  * fix(fips): flaky fips blackbox test and add missing curves
+    (#3732)
+
+-------------------------------------------------------------------
 Mon Jan 26 06:43:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.14:
