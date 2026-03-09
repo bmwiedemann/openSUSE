@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Mon Nov  6 07:57:06 UTC 2023 - Ákos Szőts <szotsaki@gmail.com>
+
+- 1.7.1
+  * Add --files-from and --files-stdin options
+  * Fix -j option
+  * Lot of code cleanup by Kurt Schwehr
+  * Other minor fixes.
+
+-------------------------------------------------------------------
+Mon Jan 16 19:24:41 UTC 2023 - Ákos Szőts <szotsaki@gmail.com>
+
+- 1.7.0
+  * Update report formats new "markers" column that lists known APP markers (tags), and separate additional information
+  * column that lists additional information like coding used in the image.
+  * Support for CSV output (--csv)
+  * Support for JSON output (--json)
+  * Add support for reading input file from stdin (--stdin)
+  * Add support for displaying column names (--header)
+  * Add SHA-512 digest support (--sha512),
+  * Other minor fixes
+
+-------------------------------------------------------------------
+Sun Jan 15 09:47:47 UTC 2023 - Ákos Szőts <szotsaki@gmail.com>
+
+- 1.6.2
+  * Add SHA256 digest support (--sha256 or -2)
+  * Improved Win32 support thanks to tumagonx
+  * Other minor fixes
+
+-------------------------------------------------------------------
+Tue Sep 15 15:52:31 UTC 2020 - Ákos Szőts <szotsaki@gmail.com>
+
+- jpeginfo 1.6.2~beta1
