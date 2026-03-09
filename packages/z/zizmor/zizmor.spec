@@ -17,7 +17,7 @@
 
 
 Name:           zizmor
-Version:        1.22.0
+Version:        1.23.1
 Release:        0
 Summary:        A static analysis tool for GitHub Actions
 License:        MIT
@@ -25,6 +25,7 @@ URL:            https://github.com/zizmorcore/zizmor
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  bash-completion
+BuildRequires:  ca-certificates-mozilla
 BuildRequires:  cargo >= 1.80
 BuildRequires:  cargo-packaging
 BuildRequires:  fish
