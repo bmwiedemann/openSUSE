@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 09 07:04:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.15:
+  No CLI-related changes
+  * chore: update golang version to 1.25.7 (#3790)
+  * chore: update github.com/sigstore/cosign/v3 from 3.0.2 to 3.0.4
+    (#3789)
+
+-------------------------------------------------------------------
 Mon Jan 26 06:43:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.14:

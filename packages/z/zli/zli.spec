@@ -1,7 +1,7 @@
 #
 # spec file for package zli
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zli
-Version:        2.1.14
+Version:        2.1.15
 Release:        0
 Summary:        CLI for the Zot container registry
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  go1.25 >= 1.25.7
 BuildRequires:  zsh
 BuildRequires:  make
 
