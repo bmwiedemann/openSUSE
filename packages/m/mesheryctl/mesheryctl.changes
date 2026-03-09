@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Mon Mar  9 09:17:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.213:
+  * Meshery CLI
+    - [mesheryctl] fixed silent errors @DharunMR (#17559)
+- update to 0.8.212:
+  * no CLI-related changes or dependency updates
+- update to 0.8.211:
+  * no CLI-related changes or dependency updates
+- update to 0.8.210:
+  * no CLI-related changes or dependency updates
+- update to 0.8.209:
+  * no CLI-related changes or dependency updates
+- update to 0.8.208:
+  * no CLI-related changes or dependency updates
+- update to 0.8.207:
+  * General
+    - chore(meshery-operator): update kubebuilder/kube-rbac-proxy
+      to use k8s sig registry @lekaf974 (#17827)
+    - Sync docs content @CodexRaunak (#17824)
+    - docs: implement custom offline search page for Hugo migration
+      @sm-28601 (#17630)
+    - [Server] Fix nil pointer dereference in
+      parseRelationshipToAlias @Ironankit525 (#17724)
+    - Sync content and update config @CodexRaunak (#17786)
+    - Add previous versions v0.4, v0.5, v0.6 @CodexRaunak (#17785)
+    - [Docs] Fix tutorials listing in Designs documentation page
+      @jothikaaravindhan (#17776)
+    - [Migration] Add pagination for new docs @Bhumikagarggg
+      (#17483)
+    - Add attendance instructions to meeting notes @YASHMAHAKAL
+      (#17779)
+    - bump meshkit @aabidsofi19 (#17777)
+    - docs: fix broken url in pattern-management to mesheryctl
+      design @JeevaRamanathan (#17764)
+    - Fix broken Previous versions and add latest snapshot v0.8
+      @CodexRaunak (#17762)
+    - [Docs - New] Fix and enhance lightbox image viewer
+      functionality @harshitt13 (#17759)
+    - [Docs - New] Remove duplicate shortcodes and partials @AwsAqh
+      (#17734)
+  * Meshery CLI
+    - fix: update design onboard error not formatting placeholder
+      properly on server. @lekaf974 (#17814)
+    - [mesheryctl] Update component command to use centralized flag
+      validation @shri771 (#17758)
+    - replace logrus - Part 5 - internal/cli/root/registry
+      @Yorisoft (#17771)
+    - [mesheryctl] Added a page flag in relationship search
+      @DharunMR (#17285)
+    - [mesheryctl] Added view by ID in model @DharunMR (#17608)
+    - [mesheryctl]: Added E2E tests for system context @DharunMR
+      (#17205)
+    - [mesheryctl]: Added unit tests for connection command
+      @DharunMR (#17254)
+    - [mesheryctl] added page flag and id title @DharunMR (#17585)
+    - [mesheryctl] add UUID support and refactor to use shared
+      selection prompt in component view @shri771 (#17748)
+  * Maintenance
+    - [UI] chore: update to Next 15 and react 18
+      @saurabhraghuvanshii (#17429)
+    - fix(server): update kubebuilder image registry for
+      kube-rbac-proxy image in values.yaml @lekaf974 (#17826)
+    - Bump github.com/cloudflare/circl from 1.6.1 to 1.6.3
+      @dependabot[bot] (#17645)
+    - Bump minimatch from 3.1.2 to 3.1.5 in /ui @dependabot[bot]
+      (#17692)
+    - [mesheryctl] Added a page flag in relationship search
+      @DharunMR (#17285)
+    - [mesheryctl]: Added E2E tests for system context @DharunMR
+      (#17205)
+    - Bump go.opentelemetry.io/otel/sdk from 1.39.0 to 1.40.0
+      @dependabot[bot] (#17707)
+  * Documentation
+    - docs: fix redundant links and standardize liquid logic in
+      index.md @Mustansir-06 (#17694)
+    - [Docs] fix: constrain TOC sidebar height for independent
+      scrolling @YASHMAHAKAL (#17756)
+  * Security
+    - Add SECURITY.md and update security-insights.yaml for part 2
+      of SecuritySlam26 @sangramrath (#17815)
+
+-------------------------------------------------------------------
 Wed Mar  4 06:59:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.206:
