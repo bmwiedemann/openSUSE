@@ -437,4 +437,32 @@
   * Remove fallback to DEFAULT section</comment>
     <requestid>1316852</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c6a1097b2f04ca22aeca25407e815582</srcmd5>
+    <version>5.0.0</version>
+    <time>1773069075</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.0.0:
+  * Skip functional tests for .gitignore update
+  * Remove support for JSON format policy file
+  * Add typing
+  * parser: Introduce Token class
+  * parser: Inline methods
+  * parser: Remove use of metaclass
+  * checks: Use consistent creds argument
+  * trivial: Rename arguments
+  * tests: Correct types used in tests
+  * Add ruff
+  * Move cross-job from 3.12 to 3.13
+  * Delay string interpolations at logging calls
+  * Remove reference to tag framework
+  * reno: Update master for unmaintained/2024.1
+  * Bump pyupgrade target to 3.10+
+  * Migrate bandit options to pyproject.toml
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2</comment>
+    <requestid>1337525</requestid>
+  </revision>
 </revisionlist>

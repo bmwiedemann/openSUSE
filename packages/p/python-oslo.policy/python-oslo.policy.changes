@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Mar  8 21:02:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.0:
+  * Skip functional tests for .gitignore update
+  * Remove support for JSON format policy file
+  * Add typing
+  * parser: Introduce Token class
+  * parser: Inline methods
+  * parser: Remove use of metaclass
+  * checks: Use consistent creds argument
+  * trivial: Rename arguments
+  * tests: Correct types used in tests
+  * Add ruff
+  * Move cross-job from 3.12 to 3.13
+  * Delay string interpolations at logging calls
+  * Remove reference to tag framework
+  * reno: Update master for unmaintained/2024.1
+  * Bump pyupgrade target to 3.10+
+  * Migrate bandit options to pyproject.toml
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2
+
+-------------------------------------------------------------------
 Sun Nov  9 17:49:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.6.0:
