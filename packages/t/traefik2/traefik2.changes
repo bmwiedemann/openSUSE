@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Mar  6 16:33:32 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 1.11.40
+  * docker 
+    - Bump Docker and OpenTelemetry dependencies
+  * server
+    - Bump golang.org/x/net to v0.51.0
+
+- Version 1.11.38
+- CVEs fixed:
+  * CVE-2026-26998 (Advisory GHSA-fw45-f5q2-2p4x) boo#1259276
+  * CVE-2026-26999 (Advisory GHSA-xw98-5q62-jx94) boo#1259275
+  * CVE-2026-29054 (Advisory GHSA-92mv-8f8w-wq52) boo#1259273
+
+- Bugs fixes:
+  * middleware, authentication
+    - Add maxResponseBodySize configuration to forwardAuth middleware, boo#1259276
+  * middleware
+    - Fix case sensitivity on x-forwarded headers for Connection boo#1259273
+  * server
+    - Fix TLS handshake error handling, boo#1259275
+
+-------------------------------------------------------------------
 Mon Feb 16 10:39:04 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 1.11.37
