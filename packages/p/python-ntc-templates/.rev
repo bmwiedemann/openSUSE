@@ -201,4 +201,41 @@
     <comment></comment>
     <requestid>1306748</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>53e4a0faa4b1e7feb9c8ac10ed49ad76</srcmd5>
+    <version>9.0.0</version>
+    <time>1773069102</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.0.0:
+  * Add aruba_os show inventory
+  * Modify 'display device manuinfo' for Comware5/7
+  * Fix cisco_ios_show_redundancy
+  * Modify disp interface for Comware5/7 variations
+  * Modify Comware disp ip int for DHCP assigned IP
+  * Add paloalto_panos_show_routing_route
+  * Added paloalto_panos_show_routing_resource
+  * Added cisco_viptela_show_control_connections
+  * Added cisco_viptela_show_omp_peers
+  * Add paloalto_panos_show_routing_protocol_bgp_summary
+  * Fix cisco_ios_traceroute for no VRF info
+  * Add panos_show_high-availability_path-monitoring
+  * Add Linux bluetoothctl show
+  * Add cisco_ios_show_sdwan_omp_peers
+  * Fix for FPR running ASA to cover admin down
+  * Add cisco_ios_show_sdwan_bfd_sessions_table
+  * Update display_vlan_all for Comware5 variations
+  * Fix BGP multipath in cisco_asa_show_bgp_summary
+  * Fix interface output nuances for FPR ASA
+  * Fix older FC nxos interface statistics
+  * Fix (and support) nxos VXLAN nve interfaces
+  * Add cisco_ios_show_endpoint-tracker_tracker-group
+  * Add cisco_ios_show_endpoint-tracker
+  * Add cisco_ios_show_sdwan_bfd_summary
+  * Add Mikrotik ip dns cache print terse without-paging
+  * Fix nxos sh int uni/mcast pkts without whitespace
+  * Fix arista sh int - VXLAN and no IP addr
+  * Improve Mikrotik ip dhcp-server lease print terse without-
+    paging</comment>
+    <requestid>1337532</requestid>
+  </revision>
 </revisionlist>

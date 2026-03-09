@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Sun Mar  8 21:10:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.0.0:
+  * Add aruba_os show inventory
+  * Modify 'display device manuinfo' for Comware5/7
+  * Fix cisco_ios_show_redundancy
+  * Modify disp interface for Comware5/7 variations
+  * Modify Comware disp ip int for DHCP assigned IP
+  * Add paloalto_panos_show_routing_route
+  * Added paloalto_panos_show_routing_resource
+  * Added cisco_viptela_show_control_connections
+  * Added cisco_viptela_show_omp_peers
+  * Add paloalto_panos_show_routing_protocol_bgp_summary
+  * Fix cisco_ios_traceroute for no VRF info
+  * Add panos_show_high-availability_path-monitoring
+  * Add Linux bluetoothctl show
+  * Add cisco_ios_show_sdwan_omp_peers
+  * Fix for FPR running ASA to cover admin down
+  * Add cisco_ios_show_sdwan_bfd_sessions_table
+  * Update display_vlan_all for Comware5 variations
+  * Fix BGP multipath in cisco_asa_show_bgp_summary
+  * Fix interface output nuances for FPR ASA
+  * Fix older FC nxos interface statistics
+  * Fix (and support) nxos VXLAN nve interfaces
+  * Add cisco_ios_show_endpoint-tracker_tracker-group
+  * Add cisco_ios_show_endpoint-tracker
+  * Add cisco_ios_show_sdwan_bfd_summary
+  * Add Mikrotik ip dns cache print terse without-paging
+  * Fix nxos sh int uni/mcast pkts without whitespace
+  * Fix arista sh int - VXLAN and no IP addr
+  * Improve Mikrotik ip dhcp-server lease print terse without-
+    paging
+  * Add cisco_ios_show_sdwan_control_connection
+  * Add cisco_ios_show_sdwan_tunnel_statistics_table
+  * Fix for different active/standby location name
+  * Add cisco_nxos_show_interface_capabilities
+  * Add Arista EOS show int transceiver hardware
+  * Fix for Device lines in huawei_vrp lldp neighbors
+  * Fix Aruba AOS-CX sh sys vendor line
+  * Capture multi-word vendor names in aoscx sh sys
+  * Add new contributors to lib_overview.md
+  * index: cisco_xr show ip(v4) int brief
+  * Fix to also add support for dotted-decimal area ID
+  * Add Mikrotik RouterOS interface wireguard print terse
+    without-paging
+  * Add Mikrotik RouterOS interface wireguard peers print terse
+    without-paging
+  * Add cisco_ios_show_running-config_interface
+  * Add Mikrotik ip firewall connection print terse without-
+    paging
+  * Update fortinet get system status for v7.4.8
+  * Add cisco_xr_show_eigrp_neighbors.textfsm
+  * Add addr6 support to fortinet fnsysctl ifconfig
+  * Add cisco ios show interface status err-disabled
+  * Add cisco nxos show interface status err-disabled
+  * Add juniper junos show ethernet-switching interfaces
+  * Update cisco_nxos_show_module for N9K linecard statuses
+  * Fix AOSCX sh int Sync devices from network
+  * Support secondary IP addresses on AOSCX sh int
+  * Fix tunnel support in nxos show interface
+  * Fix IOS show env power parser
+  * Add cisco_nxos show interface breakout
+  * Fix cisco_ios_show_sdwan_bfd_sessions_table due to header
+  * Capture cisco_ios sh int switchport trunking VLANs in list
+  * Updates dependencies and docs.
+  * Release notes and docs.
+
+-------------------------------------------------------------------
 Tue Sep 23 09:45:46 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 8.1.0
@@ -411,7 +479,7 @@ Sat Oct  1 17:48:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Bug fix: IOS show mac address Type3 and Type4. Additional test files
   * New template: cisco_asa_show_cpu_usage_detailed.textfsm
   * Bug fix: cisco_ios_show_ip_eigrp_topology not parsing correctly
-  
+
 -------------------------------------------------------------------
 Wed Nov  3 19:58:51 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
