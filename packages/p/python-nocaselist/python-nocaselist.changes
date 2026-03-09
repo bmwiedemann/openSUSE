@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon Mar  9 11:43:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0:
+  * Removed support for Python 3.8, because (1) Python 3.8 is out
+    of service since 2024-10-07, and (2) the license definition
+    according to PEP 639 requires setuptools >= 77.0.3 which
+    requires Python >= 3.9, and pyproject.toml does not support
+    environment markers.
+  * Addressed safety issues up to 2026-01-04.
+  * Dev: Fixed issue where the package version used for
+    distribution archive file names were generated inconsistently
+    between setuptools_scm (used in Makefile) and the 'build'
+    module, by using no build isolation ('--no-isolation' option
+    of the 'build' module) and increasing the minimum version of
+    'setuptools-scm' to 9.2.0, which fixes a number of version
+    related issues.
+  * Dev: Circumvented safety issue with import of typer module by
+    pinning typer to <0.17.0.
+  * Dev: Made order of names in AUTHORS.md reliable.
+  * Test: Fixed new issues raised by pylint 4.0.0.
+  * Dev: Added dependencies for Sphinx.
+  * Dev: Fixed error with running the safety tool by increasing
+    minimum version of nltk to 3.9.2.
+  * Added support for Python 3.14.
+  * Test: Added retries for sending coverage data to the
+    coveralls.io site to address issues with the site.
+  * Used new license format defined in PEP 639 to accommodate
+    upcoming removal of support for old format.
+  * Verified that between Python 3.9 and 3.14, the built-in
+    'list' class did not get new functionality. Updated the
+    documentation accordingly.
+  * Dropped support for Python 3.6 and 3.7 because they are out
+    of service and to simplify development dependencies. (issue
+    #178)
+  * Dev: Changed 'make install' to no longer perform an editable
+    install, but a standalone install, since pip will remove
+    support for editable installs. (related to issue #152)
+  * Dev: Removed support for the env.var TEST_INSTALLED that used
+    the installed package for testing, for simplicity. Now, the
+    local package in the repository main directory is always used
+    for testing.
+  * Addressed safety issues up to 2025-04-27.
+  * Dev: Added missing dependencies for development.
+  * Test: Fixed the issue that coveralls was not found in the
+    test workflow on MacOS with Python 3.9-3.11, by running it
+    without login shell. Added Python 3.11 on MacOS to the normal
+    tests.
+  * Fixed new issues of Pylint 3.3.
+  * Added support for Python 3.13. This required increasing the
+    minimum version of several packages needed for development.
+    (issue #203)
+  * Added '__version_tuple__' with the integer versions. (related
+    to issue #152)
+  * Dev: Changed from setup.py to using pyproject.toml. (issue
+    #152)
+  * Dev: Split safety policy files into one for installation
+    dependencies and one for development dependencies. (issue
+    #170, related to issue #152)
+  * Dev: Split minimum-constraints.txt file into one for
+    installation dependencies and one for development
+    dependencies. (related to issue #152)
+  * Dev: Cleanup in the Makefile. (related to issue #152)
+  * Docs: Changed versions shown for the documentation to be
+    master and the latest fix version of each minor version.
+    Changed documentation links in README file to reference the
+    master version.
+
+-------------------------------------------------------------------
 Thu Nov  7 08:07:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.3:
