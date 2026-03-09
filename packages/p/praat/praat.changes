@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  2 10:49:04 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.61:
+  * Transcribe interval (via automatic speech recognition): better
+    word alignment via Whisper’s built-in DTW.
+  * Transcribe interval (via automatic speech recognition): option
+    for silence removal (via an additionally installed AI model).
+  * Manual: menu shortcuts for Previous page and Next page.
+
+-------------------------------------------------------------------
 Wed Feb 18 17:11:11 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.60:
