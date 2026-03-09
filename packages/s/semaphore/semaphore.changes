@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 09 07:00:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.17.17:
+  * chore(deps-dev): bump svgo from 2.8.0 to 2.8.2 in /web by
+    @dependabot[bot] in #3682
+  * Load secrets by @fiftin in #3689
+- Update to version 2.17.16:
+  * feat(migrator): respect flag --merge-existing-users which
+    allows use exiting users by @fiftin in #3673
+
+-------------------------------------------------------------------
 Mon Mar 02 06:28:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.17.15:
