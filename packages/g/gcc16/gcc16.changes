@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Fri Mar  6 07:09:46 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to 16.0.1+git7922
+- Disable rust build for Factory by default again as it still
+  requires cargo for building.  Add %bcond_with gcc_rust to allow
+  override.
+- Add gcc15-Wtime_t-conversion.patch, filter out -Wtime_t conversion
+  from D build flags.
+
+-------------------------------------------------------------------
+Wed Mar  4 09:00:07 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Bump disk requirement to 32gb to cater for armv7l.
+
+-------------------------------------------------------------------
+Fri Feb 27 06:37:57 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to 16.0.1+git7751
+- Package libcaf_shmem.a
+
+-------------------------------------------------------------------
+Wed Feb 11 08:22:07 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to 16.0.1+git7445
+- Update libgphobos and libgdruntime for SONAME bump
+
+-------------------------------------------------------------------
+Mon Feb  9 12:03:44 UTC 2026 - JS <obs.coke518@passinbox.com>
+
+- Remove loongarch64 from quadmath_arch. On LoongArch long double
+  is IEEE quad, so libquadmath is not needed and no longer built.
+
+-------------------------------------------------------------------
+Mon Jan 26 13:33:46 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to 16.0.1+git7040
+- Update embedded newlib to 4.6.0.20260123
+- Drop merged newlib-gcn-libm-fix.patch
+
+-------------------------------------------------------------------
+Tue Jan 13 08:09:40 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc16-git6733.
+
+-------------------------------------------------------------------
+Tue Dec 16 07:34:48 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc16-git6154.
+- Add Algol68 packages.
+
+-------------------------------------------------------------------
+Sat Nov 29 11:40:59 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc16-git5724, adjust libgo and libgcobol versions for
+  SONAME bump.
+
+-------------------------------------------------------------------
+Fri Nov 28 06:58:12 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Add gfx9-4-generic multilib for amdgcn, link llvm-objdump to local
+  tools
+
+-------------------------------------------------------------------
+Fri Nov 26 07:52:00 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- New package, inherits from gcc15
+- Take patches inherited from GCC 15.
+  * gcc-add-defaultsspec.diff, add the ability to provide a specs
+    file that is read by default
+  * tls-no-direct.diff, avoid direct %fs references on x86 to not
+    slow down Xen
+  * gcc43-no-unwind-tables.diff, do not produce unwind tables for
+    CRT files
+  * gcc41-ppc32-retaddr.patch, fix expansion of __builtin_return_addr
+    for ppc, just a testcase
+  * gcc44-textdomain.patch, make translation files version specific
+    and adjust textdomain to find them
+  * gcc44-rename-info-files.patch, fix cross-references in info files
+    when renaming them to be version specific
+  * gcc48-libstdc++-api-reference.patch, fix link in the installed
+    libstdc++ html documentation
+  * gcc7-remove-Wexpansion-to-defined-from-Wextra.patch, removes
+    new warning from -Wextra
+  * gcc7-avoid-fixinc-error.diff
+  * gcc9-reproducible-builds-buildid-for-checksum.patch
+  * gcc9-reproducible-builds.patch
+  * gcc11-gdwarf-4-default.patch, default to -gdwarf-4 on old products
+  * newlib-gcn-libm-fix.patch
+  * gcc15-bsc1253043.patch, enable the use of _dl_find_object
+    even when not available at build time

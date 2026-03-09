@@ -1,0 +1,14 @@
+Index: libstdc++-v3/doc/html/index.html
+===================================================================
+--- libstdc++-v3/doc/html/index.html	(revision 210144)
++++ libstdc++-v3/doc/html/index.html	(working copy)
+@@ -18,7 +18,7 @@
+ 	  </p></li><li class="listitem"><p>
+ 	    <a class="link" href="faq.html" title="Frequently Asked Questions">Frequently Asked Questions</a>
+ 	  </p></li><li class="listitem"><p>
+-	    <a class="link" href="api.html" title="The GNU C++ Library API Reference">API and Source Documentation</a>
++	    <a class="link" href="api/index.html" title="The GNU C++ Library API Reference">API and Source Documentation</a>
+ 	  </p></li></ul></div><p>
+     </p></div></div></div><hr /></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="book"><a href="manual/index.html">The GNU C++ Library Manual</a></span></dt><dd><dl><dt><span class="part"><a href="manual/intro.html">I. 
+   Introduction
+
