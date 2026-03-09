@@ -1,7 +1,7 @@
 #
 # spec file for package ginac
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@
 
 %define library_version 13
 Name:           %{srcname}%{?pkg_suffix}
-Version:        1.8.9
+Version:        1.8.10
 Release:        0
 Summary:        C++ library for symbolic calculations
 License:        GPL-2.0-only
@@ -94,9 +94,11 @@ BuildRequires:  tex(natbib.sty)
 BuildRequires:  tex(sectsty.sty)
 BuildRequires:  tex(stackengine.sty)
 BuildRequires:  tex(tabu.sty)
+BuildRequires:  tex(tabularray.sty)
 BuildRequires:  tex(tocloft.sty)
 BuildRequires:  tex(ulem.sty)
 BuildRequires:  tex(wasysym.sty)
+BuildRequires:  tex(xltabular.sty)
 %endif
 %endif
 # /SECTION

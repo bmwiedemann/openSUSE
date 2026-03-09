@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar  8 09:43:38 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.8.10:
+  * Add class Gt for evaluating elliptic multiple polylogarithms
+    with arbitrary arguments.
+  * Minimum standard level is now C++14. 
+- Add BuildRequires: tex(tabularray.sty), tex(xltabular.sty) to
+  fix building :doc flavour.
+
+-------------------------------------------------------------------
 Fri May 16 06:24:40 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.8.9:
