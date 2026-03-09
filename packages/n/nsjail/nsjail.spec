@@ -1,7 +1,7 @@
 #
 # spec file for package nsjail
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           nsjail
-Version:        3.4+git14.b740dcf
+Version:        3.5
 Release:        0
 Summary:        A light-weight process isolation tool
 License:        Apache-2.0
 Group:          System/GUI/Other
 URL:            https://nsjail.com
-Source0:        nsjail-%{version}.tar.xz
+Source0:        nsjail-%{version}.tar.gz
+Source1:        kafel.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  flex
@@ -33,26 +34,29 @@ BuildRequires:  glibc-devel
 BuildRequires:  libnl3-devel
 BuildRequires:  make
 BuildRequires:  pkgconfig
+ExclusiveArch:  x86_64
 # Protobuf 25 has added to SLE15 in SP4 Update
 %if 0%{?suse_version} > 1500 || (0%{?suse_version} == 1500 && 0%{?sle_version} > 150300)
 BuildRequires:  protobuf21-devel
 %else
 BuildRequires:  protobuf-devel
 %endif
-ExclusiveArch:  x86_64
 
 %description
 A light-weight process isolation tool, making use of Linux namespaces and
 seccomp-bpf syscall filters (with help of the kafel bpf language)
 
 %prep
-%setup -qa0
+%setup -qb0
+pwd
+%setup -qa1
+pwd
 
 %build
 %define _lto_cflags %{nil}
 export CFLAGS="%{optflags}"
 export CXXFLAGS="$CFLAGS"
-make %{?_smp_mflags}
+%make_build
 
 %install
 mkdir -p %{buildroot}/%{_bindir}/
@@ -63,20 +67,7 @@ install -m 644 configs/*.cfg %{buildroot}/%{_sysconfdir}/%{name}
 %files
 %license LICENSE
 %{_bindir}/nsjail
-%{_sysconfdir}/%{name}
-%config %{_sysconfdir}/%{name}/xchat-with-net.cfg
-%config %{_sysconfdir}/%{name}/znc-with-net.cfg
-%config %{_sysconfdir}/%{name}/apache.cfg
-%config %{_sysconfdir}/%{name}/bash-with-fake-geteuid.cfg
-%config %{_sysconfdir}/%{name}/demo-dont-use-chrome-with-net.cfg
-%config %{_sysconfdir}/%{name}/firefox-with-cloned-net.cfg
-%config %{_sysconfdir}/%{name}/firefox-with-net.cfg
-%config %{_sysconfdir}/%{name}/firefox-with-net-wayland.cfg
-%config %{_sysconfdir}/%{name}/home-documents-with-xorg-no-net.cfg
-%config %{_sysconfdir}/%{name}/imagemagick-convert.cfg
-%config %{_sysconfdir}/%{name}/static-busybox-with-execveat.cfg
-%config %{_sysconfdir}/%{name}/tomcat8.cfg
-%config %{_sysconfdir}/%{name}/telegram.cfg
-%config %{_sysconfdir}/%{name}/hexchat-with-net.cfg
+%dir %{_sysconfdir}/%{name}
+%config %{_sysconfdir}/%{name}/*
 
 %changelog

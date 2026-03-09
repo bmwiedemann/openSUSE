@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  9 06:31:14 UTC 2026 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.5
+  * Kafel version (support for conditional system calls, updated system call
+    arguments, and m68k support)
+  * Support for userland networking via pasta/passt
+  * Experimental support for the new Linux mount API (fsopen/fspick/fsmount)
+  * More examples configurations
+  * Support for configurations in JSON format
+- Bundle current Kafel (1a360e001d55568b99efd95ffbcd140af41959bf)
+
+-------------------------------------------------------------------
 Mon May  6 10:05:10 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Build with protobuf21 on Leap 15 if the version is greater than
