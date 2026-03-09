@@ -151,4 +151,14 @@
   * tests: still match module in addition to class name</comment>
     <requestid>1292522</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7f55dfc7a145ef44052387dc41fa4ed2</srcmd5>
+    <version>26.2.1</version>
+    <time>1773069100</time>
+    <user>anag_factory</user>
+    <comment>- update to 26.2.1:
+  * cli: add -o/--out-file option
+  * cli: allow reading/replacing multiple input files</comment>
+    <requestid>1337530</requestid>
+  </revision>
 </revisionlist>

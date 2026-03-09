@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar  8 21:08:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.2.1:
+  * cli: add -o/--out-file option
+  * cli: allow reading/replacing multiple input files
+
+-------------------------------------------------------------------
 Sun Jul 13 14:39:52 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 25.7.0:
