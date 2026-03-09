@@ -1,7 +1,7 @@
 #
 # spec file for package scsires
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,6 +25,7 @@ Group:          Productivity/Clustering/HA
 Source:         scsires.tgz
 Patch0:         scsi_resevers_text.diff
 Patch1:         scsires_remove_unused_vars.diff
+Patch2:         scsires_rename_bool.diff
 BuildRequires:  popt-devel
 
 %description

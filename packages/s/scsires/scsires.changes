@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  9 11:23:50 CET 2026 - ro@suse.de
+
+- add scsires_rename_bool.diff
+  rename bool type to avoid clash with gcc15 
+
+-------------------------------------------------------------------
 Mon Feb 26 13:15:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -1,0 +1,160 @@
+--- scsires-0.7/scsi_reserve.c	2026/03/09 10:20:29	1.1
++++ scsires-0.7/scsi_reserve.c	2026/03/09 10:20:44
+@@ -163,7 +163,7 @@
+ static void print_operation(const char *name);
+ static void show_drive(scsires_sg_dev_t *);
+ static void release_drive(scsires_sg_dev_t *);
+-static int reserve_drive(scsires_sg_dev_t *, bool);
++static int reserve_drive(scsires_sg_dev_t *, sr_bool);
+ void sig_term_handler(int);
+ 
+ 
+@@ -499,7 +499,7 @@
+ }
+ 
+ static int
+-reserve_drive(scsires_sg_dev_t * sg_ptr, bool reset)
++reserve_drive(scsires_sg_dev_t * sg_ptr, sr_bool reset)
+ {
+     scsires_extent_t *extent;
+ 
+--- scsires-0.7/scsires.h	2026/03/09 10:22:24	1.1
++++ scsires-0.7/scsires.h	2026/03/09 10:22:38
+@@ -63,11 +63,11 @@
+ typedef enum {
+     FALSE = 0,
+     TRUE = 1
+-} bool;
++} sr_bool;
+ 
+ struct scsires_extent_elem {
+     scsires_access_mode mode;
+-    bool relative_address;
++    sr_bool relative_address;
+     u_int32_t first_block;
+     u_int32_t length;
+ };
+@@ -78,7 +78,7 @@
+     u_int8_t key;
+     u_int8_t extent_id;
+     u_int8_t num_elements;
+-    bool third_party;
++    sr_bool third_party;
+     u_int8_t third_party_id;
+     scsires_extent_elem_t *elements;
+     struct scsires_extent *next;
+@@ -97,9 +97,9 @@
+     int fd;
+     int disk_fd;
+     int scsi_rev;
+-    bool extents;
+-    bool persistent_reservations;
+-    bool initialized;
++    sr_bool extents;
++    sr_bool persistent_reservations;
++    sr_bool initialized;
+     scsires_reservation_type reservation_type;
+     unsigned int block_size;
+     unsigned int num_blocks;
+@@ -162,12 +162,12 @@
+  * Now the function declarations
+  */
+ 
+-extern scsires_sg_dev_t *scsires_init_sg_device(int, const char *, bool);
++extern scsires_sg_dev_t *scsires_init_sg_device(int, const char *, sr_bool);
+ extern int scsires_init_device_size(scsires_sg_dev_t *);
+ extern int scsires_init_persistent_reservations(scsires_sg_dev_t *, char *);
+ extern int scsires_issue_reservation(scsires_sg_dev_t *, scsires_extent_t *,
+ 
+-				     bool);
++				     sr_bool);
+ extern int scsires_release_reservation(scsires_sg_dev_t *,
+ 
+ 				       scsires_extent_t *);
+@@ -219,7 +219,7 @@
+  * Inputs:
+  *      scsires_sg_dev_t * - The device which we sent the command to
+  *      scsires_send_command_t - The command we sent
+- *      bool - if there is a reservation conflict, should we force a reset
++ *      sr_bool - if there is a reservation conflict, should we force a reset
+  *      	and then retry?
+  *      int - the timeout to use for waiting on a drive to become ready
+  *
+@@ -236,7 +236,7 @@
+ 
+ static inline int
+ scsires_retryable_error(scsires_sg_dev_t * sg_dev, scsires_send_command_t cmd,
+-			bool force, int timeout)
++			sr_bool force, int timeout)
+ {
+     int result;
+ 
+--- scsires-0.7/scsires.c	2026/03/09 10:20:49	1.1
++++ scsires-0.7/scsires.c	2026/03/09 10:21:21
+@@ -43,7 +43,7 @@
+  * included in the scsires.h header file.
+  */
+ 
+-static int scsires_test_scsi_reservations(scsires_sg_dev_t *, bool);
++static int scsires_test_scsi_reservations(scsires_sg_dev_t *, sr_bool);
+ static int scsires_get_device_id_page(scsires_sg_dev_t *);
+ static int scsires_get_serial_number_page(scsires_sg_dev_t *);
+ 
+@@ -143,7 +143,7 @@
+  *	const char * - This is a pointer to a string that should be
+  *		the printable name of the device (possibly as passed in
+  *		on the command line)
+- *	bool - Force the init?  If the device is currently held under a
++ *	sr_bool - Force the init?  If the device is currently held under a
+  *		SCSI reservation, should we reset the device and then
+  *		proceed with the init instead of failing?  This should
+  *		typically be FALSE, but when we want to init a device for
+@@ -201,7 +201,7 @@
+  */
+ 
+ extern scsires_sg_dev_t *
+-scsires_init_sg_device(int disk_fd, const char *argv, bool force)
++scsires_init_sg_device(int disk_fd, const char *argv, sr_bool force)
+ {
+     scsires_sg_dev_t *sg_dev;
+     unsigned int int_array[3], i, fd;
+@@ -790,7 +790,7 @@
+  *
+  * Inputs:
+  * 	scsires_sg_dev_t * - The device to have SCSI reservations tested on
+- * 	bool - should we force the command if there is a reservation conflict
++ * 	sr_bool - should we force the command if there is a reservation conflict
+  *
+  * Outputs:
+  * 	int - 0 if the drive supports the option extent based
+@@ -803,7 +803,7 @@
+  */
+ 
+ static int
+-scsires_test_scsi_reservations(scsires_sg_dev_t * sg_dev, bool force)
++scsires_test_scsi_reservations(scsires_sg_dev_t * sg_dev, sr_bool force)
+ {
+     scsires_send_command_t cmd;
+ 
+@@ -891,7 +891,7 @@
+  * Inputs:
+  * 	scsires_sg_dev_t * - The device which we are to reserve.
+  *	scsires_extent_t * - The extent information for the reservation.
+- *	bool - Should we issue a bus reset immediately prior to the
++ *	sr_bool - Should we issue a bus reset immediately prior to the
+  *		attempted command?  This is usually done when trying
+  *		to forcefully preempt another controller's reservation
+  *
+@@ -909,10 +909,10 @@
+ 
+ int
+ scsires_issue_reservation(scsires_sg_dev_t * sg_dev,
+-			  scsires_extent_t * new_extent, bool reset)
++			  scsires_extent_t * new_extent, sr_bool reset)
+ {
+     scsires_send_command_t cmd;
+-    bool added = FALSE;
++    sr_bool added = FALSE;
+     scsires_extent_t *prev, *current;
+     int i, offset;
+ 

@@ -103,4 +103,13 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1151514 from dimstar)</comment>
     <requestid>1151703</requestid>
   </revision>
+  <revision rev="16" vrev="26">
+    <srcmd5>d2f70684f0900477218131be09fc2ae1</srcmd5>
+    <version>0.7</version>
+    <time>1773070304</time>
+    <user>anag_factory</user>
+    <comment>- add scsires_rename_bool.diff
+  rename bool type to avoid clash with gcc15</comment>
+    <requestid>1337632</requestid>
+  </revision>
 </revisionlist>
