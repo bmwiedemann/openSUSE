@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Mar  9 07:30:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.7.20:
+  * Fix a bug where audit events could be created forever for an
+    expired access request. #64355
+  * Fixed an issue where the UI would display a white screen and no
+    error when an error occurred. #64245
+  * Fixed a bug that could cause desktop connection errors during
+    proxy upgrades for some cluster configurations. #64224
+  * Improve the layout of the web UI's message of the day. #64212
+  * Fixed an issue where VNet on Windows could fail to start after
+    an update with the error: The specified service does not exist
+    as an installed service.. #64207
+  * Fixed db session page refresh redirecting to empty page. #63988
+  * Fixed out of sequent audit logs rendering in ui for same
+    timestamp logs. #63819
+  * Fixed tsh kubectl failing when kubectl flags appear before
+    positional arguments (e.g., tsh kubectl -n default get pod).
+    #63808
+  * Added tctl recordings download command to download session
+    recordings to local files without requiring direct access to
+    the storage backend. #63727
+  * Fixed a bug that could cause Windows desktops discovered via
+    LDAP to be removed in error. #62472
+
+-------------------------------------------------------------------
+Tue Feb 17 09:12:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.7.19:
+  only enterprise-relevant changes
+
+-------------------------------------------------------------------
 Mon Feb 16 12:09:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 17.7.18:
