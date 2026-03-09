@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Mar 09 12:21:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.1:
+  * add test case
+  * fix panic when building taints and tolerations for a volume
+    that is not bound to a node
+
+-------------------------------------------------------------------
+Wed Feb 25 09:21:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.0:
+  * Testing no taints on a node
+  * Update pr-check.yaml for more updated trigger syntax and name
+  * Update Dev portion of README for all tests and build commands
+  * Update workflows
+  * Dynamically add tolerations to pod based on node pvc is
+    attached to
+  * Update go version and dependencies
+  * Basic hardcoded tain for control-plane
+  * feat: Additional capabilities when running as root
+  * Bump golang.org/x/oauth2 from 0.10.0 to 0.27.0
+  * fix x86 darwin
+  * fix ci, disable cgo
+  * Reorganize files to be inline with "best practices"
+
+-------------------------------------------------------------------
 Sat Mar 29 07:51:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.3.0:

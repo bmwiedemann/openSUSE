@@ -1,7 +1,7 @@
 #
 # spec file for package kubectl-browse-pvc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 %define executable_name kubectl-browse_pvc
 
 Name:           kubectl-browse-pvc
-Version:        1.3.0
+Version:        1.4.1
 Release:        0
 Summary:        Kubectl plugin for browsing PVCs on the command line
 License:        MIT
 URL:            https://github.com/clbx/kubectl-browse-pvc
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.23
+BuildRequires:  go1.25 >= 1.25.5
 
 %description
 I constantly found myself spinning up dummy pods to exec into them so I could
@@ -43,7 +43,6 @@ cleans up the pod when you disconnect.
 
 %prep
 %autosetup -a 1 -p 1
-mv vendor ./src/
 
 %build
 %ifarch s390x i586 riscv64
@@ -51,12 +50,11 @@ CGO_ENABLED=1 \
 %else
 CGO_ENABLED=0 \
 %endif
-cd src/
 go build \
    -mod=vendor \
    -buildmode=pie \
    -ldflags="-X main.Version=v%{version}" \
-   -o ../bin/%{executable_name} .
+   -o bin/%{executable_name} cmd/browse-pvc/main.go
 
 %install
 # Install the binary.
