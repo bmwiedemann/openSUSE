@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 09 07:02:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.43.7:
+  * build(deps): bump step-security/harden-runner from 2.15.0 to
+    2.15.1 in the actions group (#2402)
+  * build(deps): bump github.com/docker/cli from
+    29.2.1+incompatible to 29.3.0+incompatible in the gomod group
+    (#2401)
+  * Replace goparsify with recursive descent parser (#2399)
+  * Re-enable "set -u" in git-checkout, AFTER adding a test for it
+    (#2398)
+  * Remove erroneous variable quoting (#2397)
+  * build(deps): bump docker/setup-docker-action from 4.7.0 to
+    5.0.0 (#2393)
+  * build(deps): bump the gomod group across 1 directory with 4
+    updates (#2396)
+
+-------------------------------------------------------------------
 Wed Mar 04 12:15:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.43.6:
