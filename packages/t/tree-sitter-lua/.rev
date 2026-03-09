@@ -58,4 +58,12 @@
   * feat(grammar): add field name for operators in expressions (forwarded request 1324913 from rrahl0)</comment>
     <requestid>1324914</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f4028ef5d0539e1eb579df21f822d9fe</srcmd5>
+    <version>0.4.1</version>
+    <time>1773070375</time>
+    <user>anag_factory</user>
+    <comment>- Remove redundant Neovim workaround</comment>
+    <requestid>1337741</requestid>
+  </revision>
 </revisionlist>
