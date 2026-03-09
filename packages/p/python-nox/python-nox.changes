@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar  8 21:07:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.02.09:
+  * Support uv 0.10.0
+  * Show tags
+  * Better support for multiple session decorators
+  * Normalize extra `tox-to-nox`
+  * Better typing for `.run`
+
+-------------------------------------------------------------------
 Mon Nov 17 21:20:40 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2025.11.12:

@@ -173,4 +173,17 @@
   * Correct minimum versions and test</comment>
     <requestid>1318332</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>dfcfbd59394edb73059fd064be6717c5</srcmd5>
+    <version>2026.2.9</version>
+    <time>1773069095</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.02.09:
+  * Support uv 0.10.0
+  * Show tags
+  * Better support for multiple session decorators
+  * Normalize extra `tox-to-nox`
+  * Better typing for `.run`</comment>
+    <requestid>1337529</requestid>
+  </revision>
 </revisionlist>
