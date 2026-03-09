@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 05 11:58:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.17.1:
+  * fix: handle missing Gateway API CRDs gracefully in compose
+    endpoints (#4934) (#4935)
+
+-------------------------------------------------------------------
 Thu Mar 05 06:47:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.17.0:
