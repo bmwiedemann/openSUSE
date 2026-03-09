@@ -1,7 +1,11 @@
-Index: Python-3.12.12/Modules/readline.c
+---
+ Modules/readline.c |   23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+Index: Python-3.12.13/Modules/readline.c
 ===================================================================
---- Python-3.12.12.orig/Modules/readline.c	2025-11-19 20:17:29.982940492 +0100
-+++ Python-3.12.12/Modules/readline.c	2025-11-19 20:36:46.627307300 +0100
+--- Python-3.12.13.orig/Modules/readline.c	2026-03-03 13:39:30.000000000 +0100
++++ Python-3.12.13/Modules/readline.c	2026-03-06 20:22:54.135627806 +0100
 @@ -145,6 +145,8 @@
  
  #define readlinestate_global ((readlinestate *)PyModule_GetState(PyState_FindModule(&readlinemodule)))

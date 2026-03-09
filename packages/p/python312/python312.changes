@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Fri Mar  6 19:20:34 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.12.13:
+  - Python 3.12.13 final
+  - Release date: 2026-03-03
+  - Security
+    - gh-144125: BytesGenerator will now refuse to serialize
+      (write) headers that are unsafely folded or delimited; see
+      verify_generated_headers. (Contributed by Bas Bloemsaat and
+      Petr Viktorin in gh-121650).
+    - gh-143935: Fixed a bug in the folding of comments when
+      flattening an email message using a modern email policy.
+      Comments consisting of a very long sequence of non-foldable
+      characters could trigger a forced line wrap that omitted
+      the required leading space on the continuation line,
+      causing the remainder of the comment to be interpreted as
+      a new header field. This enabled header injection with
+      carefully crafted inputs (bsc#1257029 CVE-2025-11468).
+    - gh-143925: Reject control characters in data: URL media
+      types (bsc#1257046, CVE-2025-15282).
+    - gh-143919: Reject control characters in http.cookies.Morsel
+      fields and values (bsc#1257031, CVE-2026-0672).
+    - gh-143916: Reject C0 control characters within
+      wsgiref.headers.Headers fields, values, and parameters
+      (bsc#1257042, CVE-2026-0865).
+    - gh-142145: Remove quadratic behavior in xml.minidom node ID
+      cache clearing. In order to do this without breaking
+      existing users, we also add the ownerDocument attribute to
+      xml.dom.minidom elements and attributes created by directly
+      instantiating the Element or Attr class. Note that this way
+      of creating nodes is not supported; creator functions like
+      xml.dom.Document.documentElement() should be used instead
+      (bsc#1254997, CVE-2025-12084).
+    - gh-137836: Add support of the “plaintext” element, RAWTEXT
+      elements “xmp”, “iframe”, “noembed” and “noframes”, and
+      optionally RAWTEXT element “noscript” in
+      html.parser.HTMLParser.
+    - gh-136063: email.message: ensure linear complexity for
+      legacy HTTP parameters parsing. Patch by Bénédikt Tran.
+    - gh-136065: Fix quadratic complexity in
+      os.path.expandvars() (bsc#1252974, CVE-2025-6075).
+    - gh-119451: Fix a potential memory denial of service in the
+      http.client module. When connecting to a malicious server,
+      it could cause an arbitrary amount of memory to be
+      allocated. This could have led to symptoms including
+      a MemoryError, swapping, out of memory (OOM) killed
+      processes or containers, or even system crashes
+      (CVE-2025-13836, bsc#1254400).
+    - gh-119452: Fix a potential memory denial of service in the
+      http.server module. When a malicious user is connected to
+      the CGI server on Windows, it could cause an arbitrary
+      amount of memory to be allocated. This could have led to
+      symptoms including a MemoryError, swapping, out of memory
+      (OOM) killed processes or containers, or even system
+      crashes.
+    - gh-119342: Fix a potential memory denial of service in the
+      plistlib module. When reading a Plist file received from
+      untrusted source, it could cause an arbitrary amount of
+      memory to be allocated. This could have led to symptoms
+      including a MemoryError, swapping, out of memory (OOM)
+      killed processes or containers, or even system crashes
+      (bsc#1254401, CVE-2025-13837).
+  - Library
+    - gh-144833: Fixed a use-after-free in ssl when SSL_new()
+      returns NULL in newPySSLSocket(). The error was reported
+      via a dangling pointer after the object had already been
+      freed.
+    - gh-144363: Update bundled libexpat to 2.7.4
+    - gh-90949: Add SetAllocTrackerActivationThreshold() and
+      SetAllocTrackerMaximumAmplification() to xmlparser objects
+      to prevent use of disproportional amounts of dynamic memory
+      from within an Expat parser. Patch by Bénédikt Tran.
+- Remove upstreamed patches:
+  - CVE-2025-11468-email-hdr-fold-comment.patch
+  - CVE-2025-12084-minidom-quad-search.patch
+  - CVE-2025-13836-http-resp-cont-len.patch
+  - CVE-2025-13837-plistlib-mailicious-length.patch
+  - CVE-2025-6075-expandvars-perf-degrad.patch
+  - CVE-2026-0672-http-hdr-inject-cookie-Morsel.patch
+  - CVE-2026-0865-wsgiref-ctrl-chars.patch
+  - CVE-2025-15282-urllib-ctrl-chars.patch
+
+-------------------------------------------------------------------
 Fri Feb  6 00:07:20 CET 2026 - Matej Cepl <mcepl@suse.com>
   
 - CVE-2025-11468: to preserve parens when folding comments.
