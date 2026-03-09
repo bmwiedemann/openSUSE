@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar 09 12:03:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.3.5:
+  * Enhancements
+    - Add automatic Ruby download support using rv binaries (#1668)
+    - Adjust open file limit on process startup (#1705)
+    - Allow parallel gem retry (#1732)
+    - Enable system-proxy feature on reqwest (#1738)
+    - Expose --git-dir to force hook installation target (#1723)
+    - Pass --quiet, --verbose, and --no-progress through prek
+      install into generated hook scripts (#1753)
+    - Respect core.sharedRepository for hook permissions (#1755)
+    - Support legacy mode hook script (#1706)
+    - rust: support cli: git dependency 4th segment package
+      disambiguation (#1747)
+  * Bug fixes
+    - Fix Python __main__.py entry (#1741)
+    - python: strip UV_SYSTEM_PYTHON from uv venv and pip install
+      commands (#1756)
+  * Other changes
+    - Sync latest identify tags (#1733)
+
+-------------------------------------------------------------------
 Mon Mar 02 06:23:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.3.4:
