@@ -1,0 +1,17 @@
+Description: fixes a typo in uniname.1
+Author: "A. Costa" <agcosta@gis.net>
+Origin: other, http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=683121
+Last-Update: 2012-08-06
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/uniname.1
++++ b/uniname.1
+@@ -72,7 +72,7 @@ Skip to specified byte offset. Note that
+ there is no guarantee that the byte sequence beginning at an arbitrary byte will be
+ valid Unicode. This option is provided for use where other programs generate only
+ byte offsets or where it is necessary to skip over damaged Unicode. In most circumstances
+-use of a character offset will be more apprpriate. If a byte offset is used, the character
++use of a character offset will be more appropriate. If a byte offset is used, the character
+ offsets shown are with respect to the beginning of the section of the file
+ examined rather than the beginning of the file.
+ .IP "-u"

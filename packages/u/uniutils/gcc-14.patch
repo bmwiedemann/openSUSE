@@ -1,0 +1,98 @@
+Description: Fix Build with gcc-14
+Bug-Debian: https://bugs.debian.org/1066323
+Author: Andreas Tille <tille@debian.org>
+Last-Update: Fri, 11 Oct 2024 10:24:28 +0200
+
+--- a/uniname.c
++++ b/uniname.c
+@@ -21,6 +21,7 @@
+  */
+ 
+ #include "config.h"
++#include <ctype.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #ifdef HAVE_LOCALE_H
+--- a/putu8.c
++++ b/putu8.c
+@@ -2,6 +2,7 @@
+  * Takes a UTF-32 code as input and outputs UTF-8.
+  * Based on  Roman Czyborra:  http://czyborra.com/utf/
+  */
++#include <stdio.h>
+ 
+ void
+ putu8(unsigned long c)
+--- a/unifuzz.c
++++ b/unifuzz.c
+@@ -21,6 +21,7 @@
+ #include "config.h"
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <time.h>
+ #ifdef HAVE_LOCALE_H
+ #include <locale.h>
+ #endif
+@@ -68,13 +69,13 @@ ShowUsage(void){
+   putc('\n',stderr);
+ }
+ 
+-EmitLineOfX (unsigned long len, int c) {
++void EmitLineOfX (unsigned long len, int c) {
+   unsigned long i;
+   for (i = 0; i < len; i++) putchar(c);
+   putchar('\n');
+ }
+ 
+-EmitEmbeddedNull() {
++void EmitEmbeddedNull() {
+   putchar('a');
+   putchar('b');
+   putchar(0x00);
+@@ -83,7 +84,7 @@ EmitEmbeddedNull() {
+   putchar('\n');
+ }
+ 
+-EmitBadUTF8 () {
++void EmitBadUTF8 () {
+   /* invalid first byte */
+   putchar(0x80);
+   putchar(0x80);
+@@ -97,7 +98,7 @@ EmitBadUTF8 () {
+ }
+ 
+ /* Emit the middle character from each range */
+-EmitAllRanges(short AboveBMPP) {
++void EmitAllRanges(short AboveBMPP) {
+   int i;
+   UTF32 scp;
+   extern int Ranges_Defined;
+@@ -112,7 +113,7 @@ EmitAllRanges(short AboveBMPP) {
+   }
+ }
+ 
+-EmitRandomCharacters(unsigned long n,short AboveBMPP) {
++void EmitRandomCharacters(unsigned long n,short AboveBMPP) {
+   UTF32 c;
+   unsigned long k = 0;
+   extern void putu8(UTF32);
+@@ -131,7 +132,7 @@ EmitRandomCharacters(unsigned long n,sho
+ }
+ 
+ 
+-EmitSpecificStrings(short AboveBMPP) {
++void EmitSpecificStrings(short AboveBMPP) {
+   extern void putu8(UTF32);
+ 
+   putu8(0x0041);		/* A with acute accent */
+--- a/unisurrogate.c
++++ b/unisurrogate.c
+@@ -26,7 +26,7 @@ ShowUsage(void){
+   putc('\n',stderr);
+ }
+ 
+-main(int ac, char **av) {
++int main(int ac, char **av) {
+   u_int32_t cp, cpi, high, low;
+   char *istr;
+   char *endptr;

@@ -1,0 +1,22 @@
+diff -u -uNrpw old/uniname.c now/uniname.c
+--- a/uniname.c	2020-11-20 09:28:53.000000000 +0100
++++ b/uniname.c	2025-06-30 00:06:06.806626861 +0200
+@@ -121,6 +121,7 @@ long GetOffset(UTF32 ch)
+     else return(Offset_Table[m].offset);
+     /* NOTREACHED */
+   }
++  return 0;
+ }
+ 
+ 
+diff -u -uNrpw old/unirange.c now/unirange.c
+--- a/unirange.c	2020-11-20 09:28:53.000000000 +0100
++++ b/unirange.c	2025-06-30 00:05:28.226432892 +0200
+@@ -252,6 +252,7 @@ int GetRange(UTF32 ch)
+     else return(m);
+   }
+   /* NOT REACHED */
++  return 0;
+ }
+ 
+ void ListSelectedRanges(FILE *fp, int *Flags) {

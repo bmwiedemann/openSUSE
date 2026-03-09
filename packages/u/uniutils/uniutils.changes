@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Mon Jun 30 08:16:35 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
+
+- Rebuilt the .spec file
+- Added Debian patches to handle GCC errors and newer Unicode versions
+- Update to 2.28
+  * This release adds Unisurrogate, a utility that computes the UTF-16 surrogate decomposition of characters outside the BMP.
+
+-------------------------------------------------------------------
+Wed Sep 25 00:00:00 UTC 2013 - Huaren Zhong <huaren.zhong@gmail.com>
+
+- 2.27
+- Rebuild for Fedora
