@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Mar  8 20:48:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.1:
+  * Use default type if known type is not supported
+  * Add self hosted runner management to Organization
+  * Add support to generate release notes
+  * Fix connection pooling to improve connection performance
+  * Add Repository.get_automated_security_fixes method
+  * Sync Issue class with API spec
+  * Return more union classes like NamedUser | Organization |
+    Enterprise
+  * Sync Enterprise class with API spec
+  * Sync GitReleaseAsset class with API spec
+  * Sync many class with OpenAPI spec
+  * Point deprecation warnings to the caller code rather than
+    inner class
+  * Allow for repo strings in all Team repo methods
+  * Fix  API path of Repository.get_git_ref
+  * Rework redirection URL allowance check
+  * Fix GitRelease.name, deprecate GitRelease.title
+  * Remove "COMMENT" as the default event for create_review
+  * Add support for public release assets
+  * Fix GitHub breaking API change of maintainers in
+    Organization.create_team
+  * Minor fix to release.yml
+  * Reduce test replay data
+  * Add check to OpenAPI script to check doc-string verbs
+  * Improve apply OpenAPI schemas
+  * Add config to OpenAPI script to ignore schemas
+  * Add suggest and create method feature to OpenAPI script
+  * Fix CI OpenApi apply command
+  * Improve OpenAPI scripts
+  * Improve OpenAPI CI
+
+-------------------------------------------------------------------
 Tue Sep 30 07:28:07 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Drop no-longer-needed dependency on httpretty, dropped in 2.6.0
@@ -14,17 +49,17 @@ Wed Apr  9 14:07:52 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 2.6.1
   ## Bug Fixes
-  * Fix broken pickle support for Auth classes by @EnricoMi 
+  * Fix broken pickle support for Auth classes by @EnricoMi
     in #3211
-  * Remove schema from Deployment, remove message attribute by 
+  * Remove schema from Deployment, remove message attribute by
     @EnricoMi in #3223
   * Fix incorrect deprecated import by @EnricoMi in #3225
-  * Add CodeSecurityConfigRepository returned by 
+  * Add CodeSecurityConfigRepository returned by
     get_repos_for_code_security_config by @EnricoMi in #3219
-  * Make GitTag.verification return GitCommitVerification by 
+  * Make GitTag.verification return GitCommitVerification by
     @EnricoMi in #3226
   ## Maintenance
-  * Mention removal of AppAuth.private_key in changelog by 
+  * Mention removal of AppAuth.private_key in changelog by
     @EnricoMi in #3212
 - Update to 2.6.0
   ## Breaking Changes
@@ -32,18 +67,18 @@ Wed Apr  9 14:07:52 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
   * Fix typos by @kianmeng in #3086
   ## New Features
   * Add capability for global laziness by @EnricoMi in #2746
-  * Add Support for GitHub Copilot Seat Management in 
+  * Add Support for GitHub Copilot Seat Management in
     Organizations by @pashafateev in #3082
   * Get branches where commit is head by @EnricoMi in #3083
   * Support downloading a Release Asset by @neel-m in #3060
   * Add Repository.merge_upstream method by @Felixoid in #3175
   * Support updating pull request draft status by @didot in #3104
-  * Add transfer ownership method to Repository by 
+  * Add transfer ownership method to Repository by
     @tanannie22 in #3091
   * Add enable and disable a Workflow by @nickrmcclorey in #3088
-  * Add support for managing Code Security Configrations 
+  * Add support for managing Code Security Configrations
     by @billnapier in #3095
-  * Allow for private_key / sign function in AppAuth by 
+  * Allow for private_key / sign function in AppAuth by
     @EnricoMi in #3065
   ## full changelog: https://github.com/PyGithub/PyGithub/releases/tag/v2.6.0
 - Add missing test requirement
@@ -106,7 +141,7 @@ Wed Mar  6 15:01:45 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 -------------------------------------------------------------------
 Mon Nov  7 20:16:09 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 1.57 
+- Update to 1.57
   Breaking Changes
   * Add support for Python 3.11, drop support for Python 3.6 (#2332) (1e2f10d)
   Bug Fixes & Improvements
@@ -120,7 +155,7 @@ Mon Nov  7 20:16:09 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Thu Oct 27 19:48:01 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 1.56 
+- Update to 1.56
    This is the last release that will support Python 3.6.
   *Bug Fixes & Improvements
    Create repo from template (#2090) (b50283a)

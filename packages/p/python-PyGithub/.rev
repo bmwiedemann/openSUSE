@@ -429,4 +429,41 @@
   * https://github.com/PyGithub/PyGithub/pull/3087</comment>
     <requestid>1308111</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>6d6b563da966c40e278c81ecef0d19bf</srcmd5>
+    <version>2.8.1</version>
+    <time>1773069088</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.8.1:
+  * Use default type if known type is not supported
+  * Add self hosted runner management to Organization
+  * Add support to generate release notes
+  * Fix connection pooling to improve connection performance
+  * Add Repository.get_automated_security_fixes method
+  * Sync Issue class with API spec
+  * Return more union classes like NamedUser | Organization |
+    Enterprise
+  * Sync Enterprise class with API spec
+  * Sync GitReleaseAsset class with API spec
+  * Sync many class with OpenAPI spec
+  * Point deprecation warnings to the caller code rather than
+    inner class
+  * Allow for repo strings in all Team repo methods
+  * Fix  API path of Repository.get_git_ref
+  * Rework redirection URL allowance check
+  * Fix GitRelease.name, deprecate GitRelease.title
+  * Remove &quot;COMMENT&quot; as the default event for create_review
+  * Add support for public release assets
+  * Fix GitHub breaking API change of maintainers in
+    Organization.create_team
+  * Minor fix to release.yml
+  * Reduce test replay data
+  * Add check to OpenAPI script to check doc-string verbs
+  * Improve apply OpenAPI schemas
+  * Add config to OpenAPI script to ignore schemas
+  * Add suggest and create method feature to OpenAPI script
+  * Fix CI OpenApi apply command
+  * Improve OpenAPI scripts</comment>
+    <requestid>1337521</requestid>
+  </revision>
 </revisionlist>

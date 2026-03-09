@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyGithub
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-PyGithub
-Version:        2.6.1
+Version:        2.8.1
 Release:        0
 Summary:        Python library to use the GitHub API v3
 License:        LGPL-3.0-or-later
