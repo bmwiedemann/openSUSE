@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Mar  8 20:51:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0:
+  * Removed support for Python 3.8, because (1) Python 3.8 is out
+    of service since 2024-10-07, and (2) the license definition
+    according to PEP 639 requires setuptools >= 77.0.3 which
+    requires Python >= 3.9, and pyproject.toml does not support
+    environment markers.
+  * Addressed safety issues up to 2026-01-04.
+  * Dev: Fixed issue where the package version used for
+    distribution archive file names were generated inconsistently
+    between setuptools_scm (used in Makefile) and the 'build'
+    module, by using no build isolation ('--no-isolation' option
+    of the 'build' module) and increasing the minimum version of
+    'setuptools-scm' to 9.2.0, which fixes a number of version
+    related issues.
+  * Dev: Circumvented safety issue with import of typer module by
+    pinning typer to <0.17.0.
+  * Dev: Made order of names in AUTHORS.md reliable.
+  * Test: Fixed new issues raised by pylint 4.0.0.
+  * Dev: Added dependencies for Sphinx.
+  * Dev: Fixed error with running the safety tool by increasing
+    minimum version of nltk to 3.9.2.
+  * License: Increased the license from LGPL 2 or later to LGPL
+    2.1 or later for consistency with pywbem project, because the
+    license was incorrectly copied when nocasedict was separated
+    out from pywbem.
+  * Added support for Python 3.14.
+  * Added support for union operators d1 | d2 and d1 |= d2.
+  * Test: Added retries for sending coverage data to the
+    coveralls.io site to address issues with the site.
+  * Used new license format defined in PEP 639 to accommodate
+    upcoming removal of support for old format.
+
+-------------------------------------------------------------------
 Sun Jul 13 14:15:36 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.0:
