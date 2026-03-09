@@ -1,7 +1,7 @@
 #
 # spec file for package kubectl-klock
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kubectl-klock
-Version:        0.8.2
+Version:        0.8.4
 Release:        0
 Summary:        Kubectl plugin to render watch output in a more readable fashion
 License:        Apache-2.0 AND GPL-3.0-or-later AND CC-BY-4.0 AND CC0-1.0
@@ -27,8 +27,8 @@ Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  fish
+BuildRequires:  go1.25 >= 1.25.3
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.24
 
 %description
 A kubectl plugin to render the kubectl get pods --watch output in a much more
