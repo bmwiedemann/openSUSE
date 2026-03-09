@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 09 06:52:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.4:
+  * build(deps): bump chainguard-dev/actions from 1.6.4 to 1.6.5
+    (#1893)
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group (#1883)
+  * build(deps): bump actions/setup-go from 6.2.0 to 6.3.0 (#1888)
+  * build(deps): bump actions/setup-go in /.github/actions (#1889)
+  * build(deps): bump actions/upload-artifact from 6.0.0 to 7.0.0
+    (#1890)
+
+-------------------------------------------------------------------
 Mon Mar 02 06:16:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.3:
