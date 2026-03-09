@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar  8 21:05:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.0:
+  * Add ruff
+  * Remove cross-testing functionality
+  * Bump pyupgrade target to 3.10+
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.8, 3.9 support
+  * add pyproject.toml to support pip 23.1
+
+-------------------------------------------------------------------
 Wed Nov  5 13:52:36 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.1:

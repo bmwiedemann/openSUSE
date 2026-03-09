@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslotest
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-oslotest
-Version:        5.0.1
+Version:        6.0.0
 Release:        0
 Summary:        OpenStack test framework
 License:        Apache-2.0
@@ -62,24 +62,16 @@ better support for mocking results.
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/oslo_debug_helper
-%python_clone -a %{buildroot}%{_bindir}/oslo_run_cross_tests
-%python_clone -a %{buildroot}%{_bindir}/oslo_run_pre_release_tests
 
 %pre
 # If libalternatives is used: Removing old update-alternatives entries.
 %python_libalternatives_reset_alternative oslo_debug_helper
-%python_libalternatives_reset_alternative oslo_run_cross_tests
-%python_libalternatives_reset_alternative oslo_run_pre_release_tests
 
 %post
 %python_install_alternative oslo_debug_helper
-%python_install_alternative oslo_run_cross_tests
-%python_install_alternative oslo_run_pre_release_tests
 
 %postun
 %python_uninstall_alternative oslo_debug_helper
-%python_uninstall_alternative oslo_run_cross_tests
-%python_uninstall_alternative oslo_run_pre_release_tests
 
 %check
 %{openstack_stestr_run}
@@ -88,8 +80,6 @@ better support for mocking results.
 %license LICENSE
 %doc ChangeLog README.rst
 %python_alternative %{_bindir}/oslo_debug_helper
-%python_alternative %{_bindir}/oslo_run_cross_tests
-%python_alternative %{_bindir}/oslo_run_pre_release_tests
 %{python_sitelib}/oslotest
 %{python_sitelib}/oslotest-%{version}.dist-info
 

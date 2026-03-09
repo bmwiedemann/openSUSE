@@ -398,4 +398,19 @@
 - add drop-mox-dependency.diff</comment>
     <requestid>1316853</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a07cc17a956be0497e8eeedf7a16e664</srcmd5>
+    <version>6.0.0</version>
+    <time>1773069077</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.0.0:
+  * Add ruff
+  * Remove cross-testing functionality
+  * Bump pyupgrade target to 3.10+
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.8, 3.9 support
+  * add pyproject.toml to support pip 23.1</comment>
+    <requestid>1337527</requestid>
+  </revision>
 </revisionlist>
