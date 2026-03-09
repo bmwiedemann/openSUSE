@@ -1,0 +1,11 @@
+--- zlib-1.3.2/CMakeLists.txt	2026-03-09 07:10:20.977690381 +0100
++++ zlib-1.3.2/CMakeLists.txt	2026-03-09 07:32:10.392133092 +0100
+@@ -150,7 +150,7 @@
+     zutil.c)
+ 
+ if(WIN32)
+-    set(zlib_static_suffix "s")
++    set(zlib_static_suffix "")
+     set(CMAKE_DEBUG_POSTFIX "d")
+ endif(WIN32)
+ 

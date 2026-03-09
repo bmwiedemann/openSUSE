@@ -1,7 +1,7 @@
 #
 # spec file for package mingw32-zlib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,27 @@
 #
 
 
+%{_mingw32_package_header_debug}
 Name:           mingw32-zlib
-Version:        1.2.13
+Version:        1.3.2
 Release:        0
 Summary:        Zlib compression library
 License:        Zlib
 Group:          Productivity/Archiving/Compression
 URL:            https://www.zlib.net/
-Source:         http://www.zlib.net/zlib-%{version}.tar.gz
+Source:         https://zlib.net/zlib-%{version}.tar.xz
 Source1000:     %{name}-rpmlintrc
-Patch0:         zlib-1.2.5-nostrip.patch
+Patch0:         zlib-1.3.2-nostrip.patch
 Patch1:         zlib-1.2.5-tml.patch
-Patch2:         0001-cmake-Fix-pkgconfig-support-on-Windows.patch
+Patch2:         zlib-1.3.2-no-static-suffix.patch
+Patch3:         cmake-Fix-pkgconfig-support-on-Windows.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  mingw32-cross-cmake
 BuildRequires:  libtool
 BuildRequires:  mingw32-cross-binutils
 BuildRequires:  mingw32-cross-cmake
 BuildRequires:  mingw32-cross-gcc
 BuildRequires:  xz
-%_mingw32_package_header_debug
 BuildArch:      noarch
 
 %description
@@ -102,28 +102,28 @@ Requires:       mingw32-libminizip1 = %{version}
 This package contains the libraries and header files needed for
 developing applications which use minizip.
 
-%_mingw32_debug_package
+%{_mingw32_debug_package}
 
 %prep
 %autosetup -p1 -n zlib-%{version}
 
 %build
 P=$(pwd)
-%_mingw32_cmake . -DINSTALL_PKGCONFIG_DIR=%{_mingw32_libdir}/pkgconfig
-%_mingw32_cmake_build CFLAGS=-shared LDFLAGS=-no-undefined
+%{_mingw32_cmake} \
+    -DINSTALL_PKGCONFIG_DIR=%{_mingw32_libdir}/pkgconfig
+%{_mingw32_cmake_build} CFLAGS=-shared LDFLAGS=-no-undefined
 
 cd $P/contrib/minizip
 autoreconf -fi
 echo "lt_cv_deplibs_check_method='pass_all'" >>%{_mingw32_cache}
-%{_mingw32_configure}
+%_mingw32_configure
 
-cp ../../zconf.h.included zconf.h
 ln -s build/libz.dll.a ../..
-%{_mingw32_make} CFLAGS=-shared LDFLAGS=-no-undefined
+%{_mingw32_cmake_build} CFLAGS=-shared LDFLAGS=-no-undefined
 
 %install
-%_mingw32_cmake_install
-%make_install -C contrib/minizip
+%{_mingw32_cmake_install}
+%{_mingw32_make_install} -C contrib/minizip
 # for compatibility with older packages
 ln -sf libz.dll %{buildroot}/%{_mingw32_bindir}/zlib1.dll
 
@@ -141,6 +141,8 @@ ln -sf libz.dll %{buildroot}/%{_mingw32_bindir}/zlib1.dll
 %{_mingw32_libdir}/pkgconfig/zlib.pc
 %{_mingw32_libdir}/pkgconfig/zlib-static.pc
 %{_mingw32_datadir}/man
+%{_mingw32_libdir}/cmake
+%{_mingw32_docdir}
 
 %files -n mingw32-libminizip1
 %{_mingw32_bindir}/libminizip-1.dll
