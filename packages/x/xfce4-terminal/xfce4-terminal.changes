@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Mar  8 11:42:16 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.2.0
+  * build: Rename POTFILES.in to POTFILES
+  * build: Make xsltproc dependency optional
+  * Fix previous commit
+  * Delay tab title update on contents changed to avoid high cpu usage
+  * cleanup: Move function and set static qualifier
+  * Do not escape non-ASCII characters in dnded uris
+  * build: Add 'doc' configure option
+  * Escape special characters in dnded uris
+  * build: Fix typo in optimization level
+  * doc: Add "bugs" section to man page
+  * search: Shift+Enter for Next; remove throttling
+  * wayland: dropdown: Handle output disconnection
+  * I18n: Update po/LINGUAS list
+  * Allow handling middle click event by terminal applications
+  * Fix shift + right click propagation to terminal apps
+  * README.md: Add uninstall info
+  * Fix hyperlink-related leaks in terminal_widget_get_link
+  * Remove autotools build
+  * Use XfceNotebook from libxfce4ui
+  * Fix "Copy link address" on kwin_wayland
+  * prefs-dialog: Expose hidden setting 'misc-highlight-urls'
+  * cleanup: Remove '== (TRUE|FALSE)'
+  * Update README after switchover to meson
+  * Adjust include order for FreeBSD
+  * meson-build: Fix manpage install dir
+  * Translation Updates
+- Remove bcond_with git elements
+
+-------------------------------------------------------------------
 Mon Nov 24 14:07:27 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.

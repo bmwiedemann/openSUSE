@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-terminal
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,15 +17,14 @@
 #
 
 
-%bcond_with git
 Name:           xfce4-terminal
-Version:        1.1.5
+Version:        1.2.0
 Release:        0
 Summary:        Terminal Emulator for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          System/X11/Terminals
 URL:            https://docs.xfce.org/apps/terminal/start
-Source0:        https://archive.xfce.org/src/apps/xfce4-terminal/1.1/%{name}-%{version}.tar.xz
+Source0:        https://archive.xfce.org/src/apps/xfce4-terminal/1.2/%{name}-%{version}.tar.xz
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gettext >= 0.19.8
