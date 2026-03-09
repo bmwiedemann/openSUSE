@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar 09 06:52:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.13:
+  * build(deps): bump go.opentelemetry.io/otel from 1.40.0 to
+    1.41.0 (#2106)
+  * build(deps): bump go.opentelemetry.io/otel/trace from 1.40.0 to
+    1.41.0 (#2107)
+  * build(deps): bump github.com/google/go-containerregistry from
+    0.21.1 to 0.21.2 (#2108)
+  * build(deps): bump step-security/harden-runner from 2.15.0 to
+    2.15.1 (#2110)
+  * build(deps): bump chainguard-dev/actions from 1.6.5 to 1.6.6
+    (#2111)
+  * build(deps): bump github/codeql-action from 4.32.5 to 4.32.6
+    (#2112)
+  * build(deps): bump docker/setup-qemu-action from 3.7.0 to 4.0.0
+    (#2109)
+  * build(deps): bump github.com/u-root/u-root from 0.15.0 to
+    0.16.0 (#2102)
+  * build(deps): bump github/codeql-action from 4.32.4 to 4.32.5
+    (#2103)
+  * build(deps): bump chainguard-dev/actions from 1.6.4 to 1.6.5
+    (#2104)
+
+-------------------------------------------------------------------
 Mon Mar 02 06:16:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.12:
