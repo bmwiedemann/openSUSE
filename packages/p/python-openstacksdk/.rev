@@ -673,4 +673,41 @@
   * Bump python version from 3.9 to 3.13 in testing docs</comment>
     <requestid>1316890</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a27b9e23d7b3c22d49d6c789bc4d1de7</srcmd5>
+    <version>4.10.0</version>
+    <time>1773069079</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.10.0:
+  * Identity: Deprecate find\_identity\_provider
+  * pre-commit: Bump versions
+  * Identity: Deprecate find\_mapping()
+  * Use project\_id key in neutron API calls
+  * Postpone annotation evaluation for Python 3.14
+  * upload\_image: improve testing
+  * Add \_query\_mapping to Share resource for query parameter
+    support
+  * Add support for filtering by \`conductor\_groups\`
+  * Add node health field for Redfish health monitoring
+  * Add microversion to tag operation API request
+  * feat: add missing baremetal port fields
+  * Do not use the global Prometheus collector registry
+  * Add Node.instance\_name support
+  * Define tenant\_id as a server-side filter for Port resource
+  * Fix Python 3.14 annotation
+  * Update name of bifrost CI job
+  * Add secure hash validation for image downloads
+  * Identity: Deprecate find\_region()
+  * Fix mypy type check errors
+  * Add SDK support for adding/removing metadef tags
+  * ruff: Enable W rules
+  * ruff: Enable RUF rules
+  * ruff: Enable E5 errors
+  * trivial: Replace smart quotes, NBSP
+  * ci: ironic: don't use tinyipa
+  * ruff: Use more specific name to enable pyupgrade rule
+  * Add \_max\_microversion to ShareGroup
+  * update requirements for os-service-types to new release 1.8.1</comment>
+    <requestid>1337646</requestid>
+  </revision>
 </revisionlist>

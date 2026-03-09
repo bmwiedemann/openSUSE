@@ -1,7 +1,7 @@
 #
 # spec file for package python-openstacksdk
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-openstacksdk
-Version:        4.7.1
+Version:        4.10.0
 Release:        0
 Summary:        An SDK for building applications to work with OpenStack
 License:        Apache-2.0
@@ -39,7 +39,7 @@ BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module keystoneauth1 >= 5.12.0}
 BuildRequires:  %{python_module munch}
 BuildRequires:  %{python_module netifaces >= 0.10.4}
-BuildRequires:  %{python_module os-service-types >= 1.8.0}
+BuildRequires:  %{python_module os-service-types >= 1.8.1}
 BuildRequires:  %{python_module oslo.config}
 BuildRequires:  %{python_module oslotest}
 BuildRequires:  %{python_module pbr >= 2.0.0}
@@ -68,7 +68,7 @@ Requires:       python-jsonpatch >= 1.16
 Requires:       python-keystoneauth1 >= 5.12.0
 Requires:       python-munch
 Requires:       python-netifaces >= 0.10.4
-Requires:       python-os-service-types >= 1.8.0
+Requires:       python-os-service-types >= 1.8.1
 Requires:       python-platformdirs >= 3
 Requires:       python-psutil
 Requires:       python-requestsexceptions >= 1.2.0
