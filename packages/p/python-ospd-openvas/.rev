@@ -49,4 +49,15 @@
 - List directories under sitelib explicitly.</comment>
     <requestid>1325517</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f8c4fb09438fa1a42cbd1f413ca20f73</srcmd5>
+    <version>22.10.1</version>
+    <time>1773069083</time>
+    <user>anag_factory</user>
+    <comment>- update to 22.10.1:
+  * warnings from docker file (#1080) 91f89b91
+
+  * Fix get_status (#471) 866ea24</comment>
+    <requestid>1337515</requestid>
+  </revision>
 </revisionlist>

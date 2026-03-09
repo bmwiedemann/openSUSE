@@ -17,7 +17,7 @@
 
 
 Name:           python-ospd-openvas
-Version:        22.10.0
+Version:        22.10.1
 Release:        0
 Summary:        An OSP server implementation
 License:        AGPL-3.0-or-later

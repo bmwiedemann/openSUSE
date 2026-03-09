@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar  8 20:29:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.10.1:
+  * warnings from docker file (#1080) 91f89b91
+
+-------------------------------------------------------------------
 Tue Jan  6 04:23:26 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 22.10.0:
@@ -76,7 +82,7 @@ Tue Jan 31 23:12:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * missing category of notus advisories (#569) 02cfd3b
   * mqtt on_disconnect method (#538) 915f02e
   * fix dead host count (#511) (#516) 2a17e18
-  * Fix get_status (#471) 866ea24 
+  * Fix get_status (#471) 866ea24
 
 -------------------------------------------------------------------
 Mon Aug 17 07:54:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
