@@ -17,7 +17,7 @@
 
 
 Name:           velero
-Version:        1.17.2
+Version:        1.18.0
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        Apache-2.0
@@ -27,7 +27,7 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.22
+BuildRequires:  go1.25 >= 1.25.7
 BuildRequires:  zsh
 
 %description

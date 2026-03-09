@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 06 07:01:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.18.0:
+  Large update for velero in general (not CLI-specific), see
+  https://github.com/vmware-tanzu/velero/releases/tag/v1.18.0
+  No CLI-related changes in the changelog
+
+-------------------------------------------------------------------
 Fri Jan 16 06:19:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.17.2:
