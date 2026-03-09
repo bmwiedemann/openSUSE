@@ -374,4 +374,15 @@
   * typing: Misc fixes</comment>
     <requestid>1324575</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>dc0d4d23b2b6321521dffaca8df1042f</srcmd5>
+    <version>4.4.0</version>
+    <time>1773070312</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.4.0:
+  * Fix shell's \_\_init\_\_
+  * Make tag help tests robust by setting prog name
+  * Add typing classifier</comment>
+    <requestid>1337636</requestid>
+  </revision>
 </revisionlist>

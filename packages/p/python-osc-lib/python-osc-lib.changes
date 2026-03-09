@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  9 10:50:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.0:
+  * Fix shell's \_\_init\_\_
+  * Make tag help tests robust by setting prog name
+  * Add typing classifier
+
+-------------------------------------------------------------------
 Sun Dec 28 15:10:25 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.0:

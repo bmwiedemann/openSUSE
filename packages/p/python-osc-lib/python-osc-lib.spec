@@ -1,7 +1,7 @@
 #
 # spec file for package python-osc-lib
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-osc-lib
-Version:        4.3.0
+Version:        4.4.0
 Release:        0
 Summary:        OpenStackClient Library
 License:        Apache-2.0
