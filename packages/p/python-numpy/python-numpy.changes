@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar  9 11:44:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.3:
+  * Prepare 2.4.x for further development
+  * Fix some leaks found via LeakSanitizer (#30756)
+  * Synchronize 2.4.x submodules with main
+  * missing extended precision imports
+  * Fix weak hash function in np.isin(). (#30840)
+  * fix infinite recursion in np.ma.flatten_structured_array...
+  * Fix buffer overrun in CPU baseline validation (#30877)
+  * Fix busdaycalendar's handling of a bool array weekmask....
+  * Fix reference leaks and NULL pointer dereferences (#30908)
+  * fix two minor issues noticed when touching the C API setup
+  * Test .kind not .char in np.testing.assert_equal (#30879)
+  * fix type issues in uses if PyDataType macros
+  * Don't use vulture 2.15, it has false positives
+  * update openblas (#30961)
+
+-------------------------------------------------------------------
 Fri Feb 20 14:22:34 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.4.2
@@ -79,7 +98,7 @@ Wed Aug 13 08:24:49 UTC 2025 - Markéta Machová <mmachova@suse.com>
   * Setting __array_finalize__ = None errors
   * np.fromfile and np.fromstring error on bad data, previously they would guess
   * datetime64 and timedelta64 construction with a tuple no longer accepts an
-    event value, either use a two-tuple of (unit, num) or a 4-tuple of (unit, num, den, 1) 
+    event value, either use a two-tuple of (unit, num) or a 4-tuple of (unit, num, den, 1)
   * Parsing an integer via a float string is no longer supported. To avoid this
     error you can make sure the original data is stored as integers, use the
     converters=float keyword argument or use np.loadtxt(...).astype(np.int64)
@@ -117,26 +136,26 @@ Mon Feb 24 16:32:10 UTC 2025 - Markéta Machová <mmachova@suse.com>
   * Improved support for free threaded Python
   * Fixes for f2py
   ## Deprecations
-  * _add_newdoc_ufunc is now deprecated. ufunc.__doc__ = newdoc should 
+  * _add_newdoc_ufunc is now deprecated. ufunc.__doc__ = newdoc should
     be used instead.
   ## Expired deprecations
-  * bool(np.array([])) and other empty arrays will now raise an error. 
+  * bool(np.array([])) and other empty arrays will now raise an error.
     Use arr.size > 0 instead to check whether an array has no elements.
   ## Compatibility notes
-  * numpy.cov now properly transposes single-row (2d array) design 
-    matrices when rowvar=False. Previously, single-row design matrices 
-    would return a scalar in this scenario, which is not correct, so 
-    this is a behavior change and an array of the appropriate shape 
+  * numpy.cov now properly transposes single-row (2d array) design
+    matrices when rowvar=False. Previously, single-row design matrices
+    would return a scalar in this scenario, which is not correct, so
+    this is a behavior change and an array of the appropriate shape
     will now be returned.
   ## New Features
   * New functions for matrix-vector and vector-matrix products
   * np.complexfloating[T, T] can now also be written as np.complexfloating[T]
-  * UFuncs now support __dict__ attribute and allow overriding __doc__ 
-    (either directly or via ufunc.__dict__["__doc__"]). __dict__ can be 
-    used to also override other properties, such as __module__ or 
+  * UFuncs now support __dict__ attribute and allow overriding __doc__
+    (either directly or via ufunc.__dict__["__doc__"]). __dict__ can be
+    used to also override other properties, such as __module__ or
     __qualname__.
-  * The “nbit” type parameter of np.number and its subtypes now defaults 
-    to typing.Any. This way, type-checkers will infer annotations such 
+  * The “nbit” type parameter of np.number and its subtypes now defaults
+    to typing.Any. This way, type-checkers will infer annotations such
     as x: np.floating as x: np.floating[Any], even in strict mode.
 
 -------------------------------------------------------------------

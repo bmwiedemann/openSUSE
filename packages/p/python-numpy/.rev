@@ -1417,4 +1417,39 @@ This was now merged upstream, so I added relevant metadata
     <comment></comment>
     <requestid>1334569</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>9a2153eb6e9a70f167fc6231ab63a59d</srcmd5>
+    <version>2.4.3</version>
+    <time>1773161232</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.4.3:
+  * Prepare 2.4.x for further development
+  * Fix some leaks found via LeakSanitizer (#30756)
+  * Synchronize 2.4.x submodules with main
+  * missing extended precision imports
+  * Fix weak hash function in np.isin(). (#30840)
+  * fix infinite recursion in np.ma.flatten_structured_array...
+  * Fix buffer overrun in CPU baseline validation (#30877)
+  * Fix busdaycalendar's handling of a bool array weekmask....
+  * Fix reference leaks and NULL pointer dereferences (#30908)
+  * fix two minor issues noticed when touching the C API setup
+  * Test .kind not .char in np.testing.assert_equal (#30879)
+  * fix type issues in uses if PyDataType macros
+  * Don't use vulture 2.15, it has false positives
+  * update openblas (#30961)
+
+    event value, either use a two-tuple of (unit, num) or a 4-tuple of (unit, num, den, 1)
+  * _add_newdoc_ufunc is now deprecated. ufunc.__doc__ = newdoc should
+  * bool(np.array([])) and other empty arrays will now raise an error.
+  * numpy.cov now properly transposes single-row (2d array) design
+    matrices when rowvar=False. Previously, single-row design matrices
+    would return a scalar in this scenario, which is not correct, so
+    this is a behavior change and an array of the appropriate shape
+  * UFuncs now support __dict__ attribute and allow overriding __doc__
+    (either directly or via ufunc.__dict__[&quot;__doc__&quot;]). __dict__ can be
+    used to also override other properties, such as __module__ or
+  * The “nbit” type parameter of np.number and its subtypes now defaults
+    to typing.Any. This way, type-checkers will infer annotations such</comment>
+    <requestid>1337642</requestid>
+  </revision>
 </revisionlist>
