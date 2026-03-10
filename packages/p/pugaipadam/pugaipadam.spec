@@ -1,7 +1,7 @@
 #
 # spec file for package pugaipadam
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,34 +16,39 @@
 #
 
 
+%define         appid com.github.MrKomodoDragon.pugaipadam
 Name:           pugaipadam
-Version:        0+20241129.9d7309e
+Version:        0+20250902.9645085
 Release:        0
 Summary:        An elegant image viewer for cosmic
 License:        GPL-3.0-only
 URL:            https://github.com/MrKomodoDragon/pugaipadam
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+Patch0:         fix-justfile.patch
 BuildRequires:  cargo-packaging
-BuildRequires:  pkgconfig
 BuildRequires:  just
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xkbcommon)
 
 %description
 %{summary}.
 
 %prep
-%autosetup -a1
+%autosetup -a1 -p1
+mv res/%{appid}.xml res/%{appid}.metainfo.xml
 
 %build
 just build-release
 
 %install
-install -Dm0755 target/release/%{name} %{buildroot}%{_bindir}/%{name}
+just rootdir=%{buildroot} prefix=%{_prefix} install
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/metainfo/%{appid}.metainfo.xml
 
 %changelog

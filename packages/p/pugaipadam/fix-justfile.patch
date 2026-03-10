@@ -1,0 +1,25 @@
+diff --git a/justfile b/justfile
+index 42b218e..1ec7c33 100644
+--- a/justfile
++++ b/justfile
+@@ -1,5 +1,5 @@
+-name := 'cosmic-app-template'
+-export APPID := 'com.example.CosmicAppTemplate'
++name := 'pugaipadam'
++export APPID := 'com.github.MrKomodoDragon.pugaipadam'
+ 
+ rootdir := ''
+ prefix := '/usr'
+@@ -69,9 +69,9 @@ install:
+     install -Dm0755 {{bin-src}} {{bin-dst}}
+     install -Dm0644 {{desktop-src}} {{desktop-dst}}
+     install -Dm0644 {{metainfo-src}} {{metainfo-dst}}
+-    for size in `ls {{icons-src}}`; do \
+-        install -Dm0644 "{{icons-src}}/$size/apps/{{APPID}}.svg" "{{icons-dst}}/$size/apps/{{APPID}}.svg"; \
+-    done
++#    for size in `ls {{icons-src}}`; do \
++#        install -Dm0644 "{{icons-src}}/$size/apps/{{APPID}}.svg" "{{icons-dst}}/$size/apps/{{APPID}}.svg"; \
++#    done
+ 
+ # Installs files
+ flatpak:

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Dec 22 02:41:56 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- switch over to obs_scm
+- add fix-justfile.patch, as otherwise installing files into buildroot fails
+
+-------------------------------------------------------------------
+Fri Oct 24 17:28:05 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0+20250902.9645085:
+  * feat: Svg display
+  * cargo fix
+  * feat: Add inner workings for Svg support (reading svgs must be added now)
+  * feat: Add error handling, and support for more images
+  * add arrows
+  * feat: Add fullscreen support
+  * feat: Add cycling through images, base code for fullscreen button, and a
+    progress thing (1/14)
+
+-------------------------------------------------------------------
 Fri Dec  6 21:31:19 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging
