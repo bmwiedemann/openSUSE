@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-launcher
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define         appname com.system76.CosmicLauncher
+%define         appid com.system76.CosmicLauncher
 Name:           cosmic-launcher
-Version:        1.0.0+1
+Version:        1.0.8
 Release:        0
 Summary:        Layer Shell frontend
 License:        GPL-3.0-only
@@ -58,8 +58,8 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %license LICENSE.md
 %doc README.md
 %{_bindir}/%{name}
-%{_datadir}/applications/%{appname}.desktop
-%{_datadir}/icons/hicolor/scalable/apps/%{appname}.svg
-%{_datadir}/metainfo/%{appname}.metainfo.xml
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/icons/hicolor/scalable/apps/%{appid}.svg
+%{_datadir}/metainfo/%{appid}.metainfo.xml
 
 %changelog
