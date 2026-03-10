@@ -1,7 +1,7 @@
 #
 # spec file for package GraphicsMagick
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ URL:            http://www.GraphicsMagick.org/
 Source:         https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick/%{version}/%{name}-%{version}.tar.xz
 Patch0:         GraphicsMagick-perl-linkage.patch
 Patch1:         GraphicsMagick-disable-insecure-coders.patch
+# CVE-2026-25799 [bsc#1258786], Division-by-Zero in YUV sampling factor validation leads to crash
+Patch2:         GraphicsMagick-CVE-2026-25799.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
 BuildRequires:  gcc-c++

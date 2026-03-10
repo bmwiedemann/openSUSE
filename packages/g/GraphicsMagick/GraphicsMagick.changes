@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  9 10:13:37 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- security update
+- added patches
+  CVE-2026-25799 [bsc#1258786], Division-by-Zero in YUV sampling factor validation leads to crash
+  * GraphicsMagick-CVE-2026-25799.patch
+
+-------------------------------------------------------------------
 Mon Dec 22 11:36:09 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
 
 - versino update to 1.3.46
