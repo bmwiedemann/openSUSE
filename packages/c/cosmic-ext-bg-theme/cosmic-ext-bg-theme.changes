@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb 25 20:27:11 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.1.0+git20260203.8856cab:
+  * chore: updates and error handling
+  * remove service file
+  * fix: typo
+  * feat: --no-daemon option
+  * chore: readme
+  * feat: add desktop file for auto start
+  * fix: avoid panic on edge cases
+  * chore: udpate deps
+  * chore: update
+  * fix: rename config
+- remove rename-binary-in-unit-file.patch, as upstream moved from 
+  a service file to a desktop file
+
+-------------------------------------------------------------------
 Thu Aug  8 00:59:21 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding

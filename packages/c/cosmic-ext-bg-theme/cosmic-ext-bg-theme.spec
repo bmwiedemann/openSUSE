@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-ext-bg-theme
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           cosmic-ext-bg-theme
-Version:        0.1.0+git20240603.9945b3d
+Version:        0.1.0+git20260203.8856cab
 Release:        0
 Summary:        COSMIC daemon for adapting theme to the wallpaper
 License:        GPL-3.0-only
 URL:            https://github.com/wash2/cosmic_ext_bg_theme
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Patch0:         rename-binary-in-unit-file.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  make
 
@@ -39,7 +38,10 @@ Unofficial service for syncing COSMIC theme with the active wallpaper.
 
 %install
 install -Dm0755 ./target/release/%{name} %{buildroot}%{_bindir}/%{name}
-install -Dm0644 %{name}.service %{buildroot}%{_userunitdir}/%{name}.service
+install -Dm0755 ./res/cosmic.ext.BgTheme.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
+
+#fix upstream
+chmod -x %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %check
 %{cargo_test}
@@ -48,6 +50,6 @@ install -Dm0644 %{name}.service %{buildroot}%{_userunitdir}/%{name}.service
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
-%{_userunitdir}/%{name}.service
+%{_datadir}/applications/%{name}.desktop
 
 %changelog

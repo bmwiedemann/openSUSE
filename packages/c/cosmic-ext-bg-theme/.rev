@@ -16,4 +16,13 @@
   file (forwarded request 1192482 from rrahl0)</comment>
     <requestid>1192483</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7cd2fecf56f906cde03992437960fcd7</srcmd5>
+    <version>0.1.0+git20260203.8856cab</version>
+    <time>1773161573</time>
+    <user>anag_factory</user>
+    <comment>- remove rename-binary-in-unit-file.patch, as upstream moved from 
+  a service file to a desktop file (forwarded request 1337805 from rrahl0)</comment>
+    <requestid>1337806</requestid>
+  </revision>
 </revisionlist>
