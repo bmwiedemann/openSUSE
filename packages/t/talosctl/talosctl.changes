@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Mar  9 12:09:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.12.5:
+  * e0c38e2ae fix: update path handling on talosctl cgroups
+  * 1f989dfb0 fix: read multi-doc machine config with newer
+    talosctl
+- update to 1.12.4:
+  * talosctl debug
+    Talos Linux now provides a way to run and attach to the
+    privileged debug container with a user-provided container
+    image.
+    The debug container might be used for troubleshooting and
+    debugging purposes.
+  * Image APIs Updated
+    Talos Linux provides new APIs to manage container images on the
+    node: listing, pulling, importing and removing images.
+    The new pull APIs provides pull progress notifications.
+    The CLI commands talosctl image pull, talosctl image list and
+    talosctl image remove have been updated to interact with the
+    new APIs.
+  * Talosctl images k8s-bundle subcommand accepts version parameter
+    The talosctl images k8s-bundle command now accepts an optional
+    version overrides arguments.
+  * talosctl images talos-bundle can ignore reaching to the
+    registry
+    The talosctl images talos-bundle command now accepts optional
+    --overlays and --extensions flags.  If those are set to false,
+    the command will not attempt to reach out to the container
+    registry to fetch the latest versions and digests of the
+    overlays and extensions.
+
+-------------------------------------------------------------------
 Mon Feb  9 06:39:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.12.3:
