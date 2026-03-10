@@ -1,7 +1,7 @@
 #
 # spec file for package python-trakit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-trakit
-Version:        0.2.2
+Version:        0.2.5
 Release:        0
 Summary:        Guess additional information from track titles
 License:        MIT

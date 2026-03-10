@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 10 08:24:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.5:
+  * Bring back support to python 3.9 and 3.10
+- update to 0.2.4:
+  * add support for filename type in addition to trackname
+- update to 0.2.3:
+  * Update configuration with latest country/language
+    information. fixes #127
+  * Include tests in sdist. #108
+
+-------------------------------------------------------------------
 Mon May 12 12:58:42 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Switch to github tarball to have test support
