@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 10 08:33:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.2:
+  * Consolidate examples into 7 self-contained scripts
+- update to 3.3.1:
+  * chore: modernize project infrastructure
+- update to 3.3.0:
+  * feat: expose shutdown event for cooperative generator
+    shutdown
+
+-------------------------------------------------------------------
 Tue Jan 27 16:14:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.0:

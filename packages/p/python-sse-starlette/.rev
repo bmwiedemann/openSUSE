@@ -44,4 +44,18 @@
   * **Automatic Test Isolation**: No more manual state resets</comment>
     <requestid>1329527</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ae81ae015cfdd323288100dc4e326616</srcmd5>
+    <version>3.3.2</version>
+    <time>1773161813</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.3.2:
+  * Consolidate examples into 7 self-contained scripts
+- update to 3.3.1:
+  * chore: modernize project infrastructure
+- update to 3.3.0:
+  * feat: expose shutdown event for cooperative generator
+    shutdown</comment>
+    <requestid>1337911</requestid>
+  </revision>
 </revisionlist>
