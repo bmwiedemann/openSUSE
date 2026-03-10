@@ -176,6 +176,7 @@ install -m 0644 %{SOURCE4} %{buildroot}/%{_dracutmodulesdir}/95suse-xfs/
 %{_mandir}/man[258]/*
 %exclude /usr/sbin/xfs_protofile
 %exclude /usr/share/man/man8/xfs_protofile.8.gz
+%exclude /usr/share/man/man8/xfs_scrub_all.8.gz
 %doc %{_defaultdocdir}/%{name}
 %if 0%{?suse_version} >= 1315
 # SLE12 doesn't do %license
@@ -214,6 +215,7 @@ install -m 0644 %{SOURCE4} %{buildroot}/%{_dracutmodulesdir}/95suse-xfs/
 %{_unitdir}/xfs_scrub_media@.service
 %{_unitdir}/xfs_scrub_media_fail@.service
 %{_unitdir}/system-xfs_scrub.slice
+%{_mandir}/man8/xfs_scrub_all.8.gz
 %endif
 
 %changelog

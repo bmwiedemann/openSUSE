@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  9 09:45:32 UTC 2026 - Anthony Iliopoulos <ailiop@suse.com>
+
+- xfsprogs: move the xfs_scrub_all manpage into the scrub pkg
+
+  The xfs_scrub_all command and service files are all part of the
+  xfsprogs-scrub package. Move the xfs_scrub_all manpage there to
+  match that.
+
+-------------------------------------------------------------------
 Fri Mar  6 09:56:21 UTC 2026 - Anthony Iliopoulos <ailiop@suse.com>
 
 - remove python dependency from main xfsprogs package (bsc#1259270)

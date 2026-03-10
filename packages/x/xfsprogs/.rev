@@ -931,4 +931,15 @@ Signed-off-by: Anthony Iliopoulos &lt;ailiop@suse.com&gt;
   - proto: fix file descriptor leak</comment>
     <requestid>1337310</requestid>
   </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>94ed95c352761baf4b98f13866696b24</srcmd5>
+    <version>6.18.0</version>
+    <time>1773161215</time>
+    <user>anag_factory</user>
+    <comment>- xfsprogs: move the xfs_scrub_all manpage into the scrub pkg
+  The xfs_scrub_all command and service files are all part of the
+  xfsprogs-scrub package. Move the xfs_scrub_all manpage there to
+  match that.</comment>
+    <requestid>1337627</requestid>
+  </revision>
 </revisionlist>
