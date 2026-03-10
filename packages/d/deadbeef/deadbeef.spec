@@ -1,7 +1,7 @@
 #
 # spec file for package deadbeef
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 %bcond_with restricted
 Name:           deadbeef
-Version:        1.10.0
+Version:        1.10.1
 Release:        0
 Summary:        GTK+ audio player
 License:        BSD-3-Clause AND GPL-2.0-or-later AND Zlib AND LGPL-2.1-or-later
@@ -146,7 +146,7 @@ export LDFLAGS="$LDFLAGS -pie"
         --disable-soundtouch \
 %endif
         --disable-psf \
-	--docdir=%{_docdir}/%{name}
+        --docdir=%{_docdir}/%{name}
 %make_build
 
 %install
@@ -157,6 +157,7 @@ install -Dpm 0644 %{name}.appdata.xml \
 %{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
 
 %suse_update_desktop_file %{name}
+%suse_update_desktop_file %{name}_enqueue
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}
 %fdupes -s %{buildroot}%{_libdir}/%{name}/data68/Replay
@@ -215,11 +216,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/%{name}/data68/
 %{_libdir}/%{name}/converter_gtk?.so*
 %{_libdir}/%{name}/ddb_gui_GTK?.so*
+%{_libdir}/%{name}/lyrics_gtk?.so*
 %{_libdir}/%{name}/pltbrowser_gtk?.so*
 %{_libdir}/%{name}/shellexecui_gtk?.so*
 %{_libdir}/%{name}/convpresets/
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/%{name}_enqueue.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/%{name}.appdata.xml
