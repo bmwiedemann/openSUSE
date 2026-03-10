@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar 10 06:38:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.3:
+  * chore(deps): update anchore dependencies (#424)
+  * chore(deps): update tools to latest versions (#423)
+  * chore(deps): bump actions/setup-go in
+    /.github/actions/bootstrap (#421)
+  * chore(deps): bump actions/setup-go from 6.2.0 to 6.3.0 (#422)
+  * chore(deps): update tools to latest versions (#415)
+  * chore(deps): bump github.com/cloudflare/circl from 1.6.1 to
+    1.6.3 (#417)
+  * chore(deps): bump modernc.org/sqlite from 1.45.0 to 1.46.1
+    (#418)
+  * chore(deps): bump github.com/github/go-spdx/v2 from 2.3.6 to
+    2.4.0 (#419)
+  * chore(deps): bump go.opentelemetry.io/otel/sdk from 1.39.0 to
+    1.40.0 (#420)
+  * chore(deps): update tools to latest versions (#414)
+  * chore(deps): update tools to latest versions (#407)
+  * chore(deps): bump github/codeql-action from 4.31.10 to 4.32.3
+    (#413)
+
+-------------------------------------------------------------------
 Thu Feb 19 06:33:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.2 (.1 was not released):
