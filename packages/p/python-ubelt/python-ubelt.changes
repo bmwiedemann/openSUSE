@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar 10 08:17:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.1:
+  * Cleanup in `util_import`
+  * Fixes and refactor in `util_stream`. Implemented
+    `CaptureStream`.
+  * Fixed busy loop in ub.cmd
+  * Fixed failure to return after timeout in ub.cmd
+  * Changed the default warning in `schedule_deprecation` from
+  * `DeprecationWarning` to `FutureWarning`, which makes
+    deprecations loud by default.
+  * All .pyi files have been removed. Type annotations are now
+    inline and validated with mypy and ty.
+  * if ub.cmd has detach=True, CompletedProcess will now raise a
+    RuntimeError for ret and return None for stdout and stderr.
+  * Swapped ub.Path.walk to use the 3.12 argument names and
+    support the old names as kwargs for backwards compatibility.
+  * Deprecated `DownloadManager`, due to being over scoped.
+
+-------------------------------------------------------------------
 Tue Nov  4 02:58:49 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.4.0:
