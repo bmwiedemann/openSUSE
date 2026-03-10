@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar  9 18:20:47 UTC 2026 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 8.6
+  * Fixed opening ePub books with an empty "title" field.
+  * Fixed and error with some CHM books with poorly formatted HHC files.
+  * Fixed handling CHM books containing index entries with multiple URLs.
+  * Fixed reading the cached search index, leading to the creation of a new search index when reopening books.
+  * Fixed opening ePub books that use relative URLs in some service fields.
+  * Navigating ePub books with the "next/previous" buttons now uses not only the TOC, but also the internal page list, if present.
+
+-------------------------------------------------------------------
 Sat Jan  3 20:53:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.5:
