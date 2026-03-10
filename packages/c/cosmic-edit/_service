@@ -3,9 +3,9 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/pop-os/cosmic-edit.git</param>
     <param name="scm">git</param>
-    <param name="revision">master</param>
-    <param name="versionrewrite-pattern">epoch-(.*)\+0</param>
-    <param name="versionformat">1.0.0+@TAG_OFFSET@</param>
+    <param name="revision">refs/tags/epoch-1.0.8</param>
+    <param name="versionrewrite-pattern">epoch-(.*)</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="package-meta">yes</param>
     <param name="filename">cosmic-edit</param>

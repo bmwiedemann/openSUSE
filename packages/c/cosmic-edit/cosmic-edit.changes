@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Feb 24 20:15:48 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.8:
+  * Epoch 1.0.8 version update
+  * Update cosmic-text
+
+-------------------------------------------------------------------
+Mon Feb 23 16:22:46 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.7:
+  * Epoch 1.0.7 version update
+  * i18n: translation updates from weblate
+  * Add pull request template
+  * Generate translated desktop and metainfo files with xdgen
+
+-------------------------------------------------------------------
+Thu Feb 12 09:33:25 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.6:
+  * Epoch 1.0.6 version update
+  * i18n: translation updates from weblate
+  * feat: tab dnd
+
+-------------------------------------------------------------------
+Thu Feb 05 01:43:26 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.5:
+  * Epoch 1.0.5 version update
+  * Update com.system76.CosmicEdit.desktop
+  * i18n: translation updates from weblate
+  * Fix ligatures with cosmic-text update
+  * i18n: translation updates from weblate
+  * Set buffer size to zero on creation to improve file load times and memory usage
+  * Update dependencies
+  * Fix compilation with new cosmic_text
+  * i18n: translation updates from weblate
+  * Epoch 1.0.4 version update
+  * Delete i18n/kk/cosmic_edit.ftl
+  * i18n: translation updates from weblate
+  * implement shift press plus mouse click text selection
+  * Update com.system76.CosmicEdit.metainfo.xml
+
+-------------------------------------------------------------------
+Wed Dec 31 00:47:01 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.1:
+  * Update translations
+
+-------------------------------------------------------------------
 Thu Dec 11 16:52:10 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0+0:
