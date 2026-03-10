@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar  9 10:03:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.10.0:
+  * Add support for Python 3.11, 3.12, 3.13, 3.14.
+  * Drop support for Python 3.7, 3.8, 3.9.
+  * PRESERVE_STERILITY global is replaced with preserve_sterility
+    function argument.
+  * New formatting options: headersglobalalign, headersalign,
+    colglobalalign.
+  * New output format: ``colon_grid`` (Pandoc grid_tables with
+    alignment)
+  * Various bug fixes.
+  * Improved error messages.
+
+-------------------------------------------------------------------
 Mon Dec 29 10:16:30 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Skip tests failing on recent python interpreters (bsc#1256318)
