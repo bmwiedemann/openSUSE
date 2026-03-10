@@ -18,7 +18,7 @@
 
 %define _config_dir %{_sysconfdir}/%{name}
 Name:           telegraf
-Version:        1.37.3
+Version:        1.38.0
 Release:        0
 Summary:        The plugin-driven server agent for collecting & reporting metrics
 License:        MIT
@@ -45,14 +45,18 @@ easily add support for collecting metrics from local or remote services.
 %patch -P 0 -p1
 
 %build
+export INTERNAL_PKG=github.com/influxdata/telegraf/internal
+export LDFLAGS="${LDFLAGS} -X ${INTERNAL_PKG}.Commit=v%{version} -X ${INTERNAL_PKG}.Branch=release-1.38 -X ${INTERNAL_PKG}.Version=%{version}"
 # Build the binary.
 go build \
    -mod=vendor \
+   -ldflags="${LDFLAGS}" \
 %ifnarch ppc64 ppc64le
    -buildmode=pie \
 %endif
    ./cmd/telegraf;
 ./telegraf config > etc/telegraf.conf
+./telegraf --version
 
 %install
 # Install the binary.
