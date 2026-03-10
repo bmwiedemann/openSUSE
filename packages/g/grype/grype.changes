@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Mar 10 06:16:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.109.1:
+  * Bug Fixes
+    - CVE-2025-12183 is not detected even if vulnerable jar is
+      present [#3205]
+  * Additional Changes
+    - migrate fixtures to testdata [#3263 @wagoodman]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#3247)
+    - chore(deps): update tools to latest versions (#3240)
+    - chore(deps): bump github.com/cloudflare/circl from 1.6.1 to
+      1.6.3 (#3251)
+    - chore(deps): bump github/codeql-action from 4.31.10 to 4.32.4
+      (#3254)
+    - chore(deps): bump go.opentelemetry.io/otel/sdk from 1.39.0 to
+      1.40.0 (#3258)
+    - chore(deps): bump anchore/sbom-action from 0.22.2 to 0.23.0
+      (#3260)
+    - chore(deps): bump actions/upload-artifact from 6.0.0 to 7.0.0
+      (#3265)
+    - chore(deps): bump actions/setup-go in
+      /.github/actions/bootstrap (#3266)
+    - chore(deps): bump golang.org/x/tools from 0.41.0 to 0.42.0
+      (#3246)
+
+-------------------------------------------------------------------
+Fri Feb 20 06:04:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.109.0:
+  * Added Features
+    - Strip v prefix from apk versions [#3239 @wagoodman]
+  * Bug Fixes
+    - missing EPSS/KEV should not be fatal error [#3224
+      @willmurphyscode]
+  * Additional Changes
+    - update build flag to use provenance=false [#3243 @spiffcs]
+    - update to check-latest golang for ci [#3238 @spiffcs]
+    - enable fedora OS transformer [#3232 @willmurphyscode]
+    - Port grype-db lib to grype [#3149 @wagoodman]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#3241)
+    - chore(deps): update tools to latest versions (#3226)
+    - chore(deps): bump github.com/gabriel-vasile/mimetype (#3234)
+    - chore(deps): bump github.com/klauspost/compress from 1.18.2
+      to 1.18.4 (#3235)
+    - chore(deps): bump anchore/sbom-action from 0.22.1 to 0.22.2
+      (#3228)
+    - chore(deps): bump golang.org/x/text from 0.33.0 to 0.34.0
+      (#3237)
+    - chore(deps): bump github.com/CycloneDX/cyclonedx-go from
+      0.9.3 to 0.10.0 (#3218)
+
+-------------------------------------------------------------------
 Wed Feb 11 05:56:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.108.0:

@@ -919,4 +919,20 @@
     <comment></comment>
     <requestid>1332380</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>d5e0ca0c94982ef1f16664239d6e3ec2</srcmd5>
+    <version>0.109.0</version>
+    <time>1771605888</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1334117</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>556b0a84962193a33662e1386d92122b</srcmd5>
+    <version>0.109.1</version>
+    <time>1773161683</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1337875</requestid>
+  </revision>
 </revisionlist>
