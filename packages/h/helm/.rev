@@ -1067,4 +1067,13 @@ See changelog in:
     <comment></comment>
     <requestid>1335237</requestid>
   </revision>
+  <revision rev="98" vrev="3">
+    <srcmd5>2d30a00565844b7208e3c1d4c8cadee6</srcmd5>
+    <version>4.1.1</version>
+    <time>1773161793</time>
+    <user>anag_factory</user>
+    <comment>- Fix packages for %suse_version bump (jsc#PED-15794)
+- Update to version 3.18.5 (bsc#1248093, CVE-2025-55199):</comment>
+    <requestid>1337917</requestid>
+  </revision>
 </revisionlist>
