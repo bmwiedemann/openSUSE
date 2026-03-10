@@ -157,4 +157,16 @@
   * 522 Fix regression with ALLOW_EXTRA and `Any` validator</comment>
     <requestid>1199497</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>728b1a96500f6120d36d086a20c548ac</srcmd5>
+    <version>0.16.0</version>
+    <time>1773161817</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.16.0:
+  * #534: Support requiring `anyOf` a list of keys
+  * #523: Allow Generators for `vol.In`
+  * #524: Fix bug with `Any` validator and `REMOVE_EXTRA`
+  * #530: Add comprehensive tests for `humanize.py` module</comment>
+    <requestid>1337915</requestid>
+  </revision>
 </revisionlist>
