@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Feb 24 20:11:51 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.8:
+  * chore: update dependencies
+  * perf(colored): parallelize gradient generation
+  * chore: clippy
+
+-------------------------------------------------------------------
+Mon Feb 23 16:11:18 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.7:
+  * i18n: translation updates from weblate
+  * Add pull request template
+
+-------------------------------------------------------------------
+Thu Feb 12 09:28:44 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.6:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Thu Feb 05 01:36:40 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.5:
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Wed Dec 31 00:41:59 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.1:
+  * i18n: removing translation for Frankish
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
 Thu Dec 11 16:47:35 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0+0:
