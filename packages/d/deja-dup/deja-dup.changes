@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Mar  7 21:41:39 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + If a network URL has an unrecognized scheme like nope://, give
+    a nicer error message
+  + Explain that rest:// URLs are not supported, if you try to use
+    one
+  + Duplicity: fix a race condition between reading messages and it
+    exiting
+  + Restic:
+    - Avoid backing up the restic repository, if local
+    - When restoring using the flatpak release on Ubuntu, fall back
+      to the old in-app browser if apparmor rejects our FUSE mount
+      attempt
+
+-------------------------------------------------------------------
 Tue Feb  3 11:05:38 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.3:

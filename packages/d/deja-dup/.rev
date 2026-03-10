@@ -798,4 +798,23 @@ So preferably for 13.1 as well.</comment>
     with SMB filesystems (forwarded request 1330732 from dimstar)</comment>
     <requestid>1331123</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>636a71c468a8b6498a5b558903e583cc</srcmd5>
+    <version>50.0</version>
+    <time>1773161266</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.0:
+  + If a network URL has an unrecognized scheme like nope://, give
+    a nicer error message
+  + Explain that rest:// URLs are not supported, if you try to use
+    one
+  + Duplicity: fix a race condition between reading messages and it
+    exiting
+  + Restic:
+    - Avoid backing up the restic repository, if local
+    - When restoring using the flatpak release on Ubuntu, fall back
+      to the old in-app browser if apparmor rejects our FUSE mount
+      attempt (forwarded request 1337461 from iznogood)</comment>
+    <requestid>1337593</requestid>
+  </revision>
 </revisionlist>
