@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar  9 15:26:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.9.0:
+  * Remove eventlet timeout from image\_transfer
+  * Remove unused PCRE packages
+  * Delay string interpolations at logging calls
+  * Remove reference to tag framework
+  * [test]Mock time.sleep instead of greenthread.sleep
+  * Use oslo.service loopingcall
+  * reno: Update master for unmaintained/2024.1
+  * Bump pyupgrade target to 3.10+
+  * Migrate bandit options to pyproject.toml
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2
+
+-------------------------------------------------------------------
 Sun Nov  9 19:24:24 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.7.0:

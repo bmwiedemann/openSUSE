@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.vmware
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.vmware
-Version:        4.7.0
+Version:        4.9.0
 Release:        0
 Summary:        Oslo VMware library for OpenStack projects
 License:        Apache-2.0
@@ -33,6 +33,7 @@ BuildRequires:  %{python_module lxml >= 4.5.0}
 BuildRequires:  %{python_module oslo.concurrency >= 3.26.0}
 BuildRequires:  %{python_module oslo.context >= 2.19.2}
 BuildRequires:  %{python_module oslo.i18n >= 3.15.3}
+BuildRequires:  %{python_module oslo.service >= 4.3.0}
 BuildRequires:  %{python_module oslo.utils >= 3.33.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-subunit}
@@ -50,6 +51,7 @@ Requires:       python-lxml >= 4.5.0
 Requires:       python-oslo.concurrency >= 3.26.0
 Requires:       python-oslo.context >= 2.19.2
 Requires:       python-oslo.i18n >= 3.15.3
+Requires:       python-oslo.service >= 4.3.0
 Requires:       python-oslo.utils >= 3.33.0
 Requires:       python-requests >= 2.14.2
 Requires:       python-suds-community >= 0.6
