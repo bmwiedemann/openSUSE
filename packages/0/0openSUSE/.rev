@@ -20,4 +20,11 @@
     <user>dimstar_suse</user>
     <comment>enable post quantum signatures</comment>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0315c17900c6c5fc2088481e02dcc673</srcmd5>
+    <version>unknown</version>
+    <time>1773133155</time>
+    <user>dimstar_suse</user>
+    <comment>No cmssign support in build yet - postponing</comment>
+  </revision>
 </revisionlist>
