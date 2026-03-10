@@ -40,4 +40,12 @@
     <comment></comment>
     <requestid>1329286</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>51378390bebc5f583e934ad645ce7ba2</srcmd5>
+    <version>3.20.0</version>
+    <time>1773161787</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.18.5 (bsc#1248093, CVE-2025-55199):</comment>
+    <requestid>1337916</requestid>
+  </revision>
 </revisionlist>

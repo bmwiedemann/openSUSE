@@ -208,7 +208,7 @@ Wed Aug 20 11:12:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 -------------------------------------------------------------------
 Tue Aug 19 05:19:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
-- Update to version 3.18.5:
+- Update to version 3.18.5 (bsc#1248093, CVE-2025-55199):
   * fix Chart.yaml handling 7799b48 (Matt Farina)
   * Handle messy index files dd8502f (Matt Farina)
   * json schema fix cb8595b (Robert Sirchia)
