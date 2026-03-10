@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Mar 10 06:44:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.42.1:
+  * Release v1.42.1 (#7066)
+  * Prefer strings.SplitSeq over strings.Split where possible
+    (#7051)
+  * Avoid grace period delay (#7033)
+  * Fix typos in documentation (#7034)
+  * updating go and dependencies to address cve's (#7064)
+  * Bump docker/build-push-action from 6 to 7 (#7062)
+  * Bump docker/setup-buildx-action from 3 to 4 (#7061)
+  * Bump docker/login-action from 3 to 4 (#7060)
+  * Bump docker/setup-qemu-action from 3 to 4 (#7059)
+  * Bump github.com/docker/cli (#7058)
+  * refactor: follow go fix advice about `any` (#7052)
+  * Bump go.opentelemetry.io/otel/sdk from 1.37.0 to 1.40.0 (#7054)
+  * ci: use golangci-lint v2 (#7029)
+  * test: update copyright to 2026 (#7053)
+  * point kuttl docs to github repo, instead of defunct kuttl
+    website (#7030)
+  * Bump actions/checkout from 5 to 6 (#7027)
+  * updating unit test make cmd to add -race flag (#7024)
+  * Bump ubi9/ubi-minimal from 9.6 to 9.7 in /images/helm-operator
+    (#7015)
+  * adding a readme for the gpg management process (#7019)
+  * Bump ubi9/ubi-minimal from 9.6 to 9.7 in
+    /images/custom-scorecard-tests (#7013)
+  * Bump ubi9/ubi-minimal from 9.6 to 9.7 in /images/scorecard-test
+    (#7014)
+  * Bump ubi9/ubi-minimal from 9.6 to 9.7 in /images/operator-sdk
+    (#7016)
+  * updating generated files post 1.42.0 release (#7018)
+  * update signing keys (#7017)
+
+-------------------------------------------------------------------
 Wed Nov 12 15:12:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.42.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package operator-sdk
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           operator-sdk
-Version:        1.42.0
+Version:        1.42.1
 Release:        0
 Summary:        CLI for installing the Operator Lifecycle Manager
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         operator-sdk-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.19
+BuildRequires:  go1.25 >= 1.25.7
 BuildRequires:  zsh
 BuildRequires:  pkgconfig(gpgme)
 
