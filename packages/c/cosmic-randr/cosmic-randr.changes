@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Mar  9 13:54:23 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.8:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Mon Feb 23 18:03:03 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.7:
+  * Add pull request template
+
+-------------------------------------------------------------------
+Thu Feb 12 10:13:32 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.6:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Thu Feb  5 02:22:02 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.5:
+  * no changes since last release
+- Update to version 1.0.4:
+  * no changes since last release
+- Update to version 1.0.3:
+  * no changes since last release
+- Update to version 1.0.2:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Wed Dec 31 01:17:01 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.1:
+  * Drop unnecessary async from send
+  * Use Mutex from std
+
+-------------------------------------------------------------------
 Thu Dec 11 17:57:29 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0+0:

@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-randr
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-randr
-Version:        1.0.0+0
+Version:        1.0.8
 Release:        0
 Summary:        Library and utility for displaying and configuring Wayland outputs
 License:        MPL-2.0
