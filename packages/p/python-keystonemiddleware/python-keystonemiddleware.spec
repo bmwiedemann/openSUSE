@@ -17,15 +17,13 @@
 
 
 Name:           python-keystonemiddleware
-Version:        10.12.0
+Version:        12.0.0
 Release:        0
 Summary:        Middleware for OpenStack Identity
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/keystonemiddleware
 Source0:        https://files.pythonhosted.org/packages/source/k/keystonemiddleware/keystonemiddleware-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-privilege-escalation-via-spoofed-identity-header.patch
 BuildRequires:  %{python_module WebOb >= 1.7.1}
 BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module cryptography}

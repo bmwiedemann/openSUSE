@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar 10 07:55:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 12.0.0:
+  * Remove ec2\_token and s3\_token middleware
+  * Ignore B105 error
+  * Fix privilege escalation via spoofed identity headers
+  * Drop workaround for Python < 2.7.4
+  * Add cryptography package as an optional dependency
+  * Revert "Wipe context before returning request response"
+  * s3token: Stop loading deprecated options
+  * reno: Update master for unmaintained/2024.1
+  * Wipe context before returning request response
+  * Drop flake8-docstrings
+  * Remove unused bandit target
+  * Update master for stable/2025.2
+- drop
+  0001-Fix-privilege-escalation-via-spoofed-identity-header.patch
+  (upstream)
+
+-------------------------------------------------------------------
 Mon Jan 19 09:21:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - add
