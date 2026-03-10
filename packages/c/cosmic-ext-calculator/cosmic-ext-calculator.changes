@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Nov 20 13:14:31 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.2.0+8:
+  * Update metainfo.xml PL translation
+  * Update app.desktop PL mime
+  * justfile: fix (un)install
+  * chore: update screenshots
+  * fix: use terse flag for qalc
+  * feat: add parentheses, sqrt and power operator
+  * Create cosmic_ext_calculator.ftl PL Initial Translation
+  * i18n(es): add translation
+  * fix(flatpak): add missing libraries
+  * fix(qalc): remove async code
+- add dependency qalculate
+
+-------------------------------------------------------------------
+Wed Nov 19 20:01:44 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- remove fix-justfile.patch
+
+-------------------------------------------------------------------
 Fri May 23 16:45:28 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.1.1+23:

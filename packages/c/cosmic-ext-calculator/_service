@@ -7,6 +7,7 @@
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="package-meta">yes</param>
     <param name="filename">cosmic-ext-calculator</param>
+    <param name="changesgenerate">enable</param>
   </service>
   <service name="tar" mode="buildtime" />
   <service name="recompress" mode="buildtime">
