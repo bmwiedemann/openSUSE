@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  9 00:42:16 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Fixed dependency resolution for python modules
+- Changed python macro to single_pythons_311plus for module dependencies
+
+-------------------------------------------------------------------
 Thu Mar 05 17:17:38 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.15.11

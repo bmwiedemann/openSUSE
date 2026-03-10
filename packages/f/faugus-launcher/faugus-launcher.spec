@@ -16,7 +16,7 @@
 #
 
 
-%{?sle15_python_module_pythons}
+%{?single_pythons_311plus}
 
 # Fixes for Leap 15.x
 %if 0%{?sle_version} == 150600
@@ -56,9 +56,7 @@ Requires:       ImageMagick
 Requires:       canberra-gtk-play
 Requires:       %{python_module base}
 Requires:       %{python_module Pillow}
-%if "%{version}" <= "1.15.2"
-Requires:       %{python_module filelock}
-%endif
+Requires:       (%{python_module filelock} if faugus-launcher <= 1.15.2)
 Requires:       %{python_module gobject}
 Requires:       %{python_module icoextract}
 Requires:       %{python_module psutil}

@@ -169,4 +169,13 @@
   * Fixed Steam detection native-flatpak</comment>
     <requestid>1336793</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>b6c35d836c647d3382e45fd3aef07e81</srcmd5>
+    <version>1.15.11</version>
+    <time>1773161260</time>
+    <user>anag_factory</user>
+    <comment>- Fixed dependency resolution for python modules
+- Changed python macro to single_pythons_311plus for module dependencies</comment>
+    <requestid>1337546</requestid>
+  </revision>
 </revisionlist>
