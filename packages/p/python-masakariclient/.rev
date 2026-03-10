@@ -179,4 +179,19 @@
 - switch to singlespec</comment>
     <requestid>1316840</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f0d41239ee215a6a57daf7dd78446a38</srcmd5>
+    <version>8.8.0</version>
+    <time>1773161281</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.8.0:
+  * Remove unnecessary executable bit
+  * Update master for stable/2023.2
+  * add pyproject.toml to support pip 23.1
+  * reno: Update master for unmaintained/2024.1
+  * Remove unnecessary hacking from test reqs
+  * Remove support for Python 3.8 and 3.9
+  * Update master for stable/2025.2</comment>
+    <requestid>1337888</requestid>
+  </revision>
 </revisionlist>

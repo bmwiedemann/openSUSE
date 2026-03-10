@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 10 07:52:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.8.0:
+  * Remove unnecessary executable bit
+  * Update master for stable/2023.2
+  * add pyproject.toml to support pip 23.1
+  * reno: Update master for unmaintained/2024.1
+  * Remove unnecessary hacking from test reqs
+  * Remove support for Python 3.8 and 3.9
+  * Update master for stable/2025.2
+
+-------------------------------------------------------------------
 Sun Nov  9 20:57:38 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.7.0:
