@@ -18,7 +18,7 @@
 
 %define cpan_name Compress-Raw-Zlib
 Name:           perl-Compress-Raw-Zlib
-Version:        2.218
+Version:        2.222
 Release:        0
 #Upstream: Artistic-1.0 or GPL-1.0-or-later
 License:        (Artistic-1.0 OR GPL-1.0-or-later) AND Zlib
@@ -57,6 +57,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes examples README
+%doc Changes examples README SECURITY.md
 
 %changelog
