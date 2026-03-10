@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar  9 18:01:24 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update CUDA variant to 595.45.04
+- supersedes kernel-6.19.patch
+
+-------------------------------------------------------------------
+Thu Mar  5 21:22:48 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- kernel-5.14.patch: fixed build of 595.45.04 driver on SP4
+
+-------------------------------------------------------------------
 Tue Feb 24 11:56:53 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - update non-CUDA version to 595.45.04 (boo#1258797)

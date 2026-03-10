@@ -47,4 +47,15 @@
 - adjusted logic for %suse_version bump with SLE16.1 Beta2 (jsc#PED-15826)</comment>
     <requestid>1336777</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>930dd4978b62830099d60b3b318e4897</srcmd5>
+    <version>595.45.04</version>
+    <time>1773161606</time>
+    <user>anag_factory</user>
+    <comment>- update CUDA variant to 595.45.04
+- supersedes kernel-6.19.patch
+
+- kernel-5.14.patch: fixed build of 595.45.04 driver on SP4</comment>
+    <requestid>1337819</requestid>
+  </revision>
 </revisionlist>
