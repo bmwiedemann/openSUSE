@@ -951,4 +951,12 @@ It does not make sense to double the whole HISTORY of upstream source in .change
     <comment>- Only require pytest-subtests with pytest &lt; 9.</comment>
     <requestid>1321490</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>6f9448ee7b2d52bd3f2ed8d5d19cbef3</srcmd5>
+    <version>7.2.2</version>
+    <time>1773161208</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1337553</requestid>
+  </revision>
 </revisionlist>

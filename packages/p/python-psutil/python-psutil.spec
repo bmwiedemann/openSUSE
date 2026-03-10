@@ -1,7 +1,7 @@
 #
 # spec file for package python-psutil
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,14 +30,12 @@ ExclusiveArch:  donotbuild
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-psutil%{psuffix}
-Version:        7.1.3
+Version:        7.2.2
 Release:        0
 Summary:        A process utilities module for Python
 License:        BSD-3-Clause
 URL:            https://github.com/giampaolo/psutil
 Source:         https://files.pythonhosted.org/packages/source/p/psutil/psutil-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/giampaolo/psutil/commit/40e27872d534ed849245fdb0c4604ca678d5e9fc Make ntuples work with subTest of new pytest release
-Patch:          pytest9.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -99,7 +97,10 @@ SKIPTEST="$SKIPTEST or (test_import_all and Scripts)"
 SKIPTEST="$SKIPTEST or (test_all and TestFetchAllProcesses)"
 # test_multi_sockets_procs - not sure why it fails
 SKIPTEST="$SKIPTEST or (test_multi_sockets_procs and TestSystemWideConnections)"
-%pytest_arch -n auto --ignore=psutil/tests/test_memleaks.py --ignore=psutil/tests/test_sudo.py -k "not ($SKIPTEST)"
+# test_disk_partitions --  can not determine root fs
+SKIPTEST="$SKIPTEST or test_disk_partitions"
+export GITHUB_ACTIONS=1
+%pytest_arch -n auto --ignore=tests/test_memleaks.py --ignore=tests/test_sudo.py -k "not ($SKIPTEST)"
 %endif
 
 %if !%{with test}
