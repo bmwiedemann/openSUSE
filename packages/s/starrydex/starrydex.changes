@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Mon Feb 23 12:06:15 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.3.4:
+  * fix: add pulseaudio permission to reproduce cries
+  * feat: add pokemon cries support
+  * chore: up cache version
+  * fix: add missing move learn method "egg"
+  * feat: basic move support
+  * wip: add moves
+- remove fix-location.patch, got upstreamed
+- increase rust version, as dependecies need at least 1.90
+
+-------------------------------------------------------------------
+Sun Dec 21 00:12:52 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.3.2+2:
+  * improv: handling of pokemon evolution row wrapping
+  * fix: app screenshots
+  * chore: fix typo
+  * chore: remove unused translations
+  * chore: update deps sources
+  * fix: app name and icon name
+  * chore: update app metainfo
+  * chore: increase cache version
+  * fix: evo data wrapping strat when there's less than 2 mons on evo line
+  * improv: evolution data wrapping strat
+  * feat: update app style & screenshots
+  * chore: update assets
+  * fix: don't allow switching page if search is active
+  * chore: 0.3.2 rewrite code dump
+  * chore: update cargo-sources
+  * chore: update deps, update assets, update app version
+  * chore: update deps
+  * chore: improve error logging on asset generation
+  * chore: update deps
+  * fix: images are now versioned too so when we update either the data or the sprites both can get updated without the user having to manually refresh the cache
+  * improv: remove models that we don't need for assetgen
+  * chore: add 0.3.0 changes
+  * improv: add cache versioning so we can retrigger cache loading from an app update
+  * revert: add renew cache button back (it's still usefull becasue even if the assets change the cache keeps working as if nothing has happened)
+  * chore: remove unused text
+  * chore: update version to 0.3.0
+  * chore: update missing sprites
+  * chore: remove first_run from config
+  * chore: remove delete cache option
+  * chore: remove network permission & update runtime version
+  * feat: basic asset gen working
+  * fix: images not showing up
+  * chore: restore usual debug impl
+  * wip: get bundled data if cache does not exist (Images do not appear for now even tho they are correctly extracted)
+  * feat: basic asset gen (still have duplicate code)
+  * chore: update to 0.2.8
+  * chore: update deps
+  * chore: update deps & up to 0.2.7
+  * feat: add keyboard navigation via arrow keys
+  * improv: disable pagination buttons when needed
+  * feat: generation filtering
+  * chore: remove unused translation text
+  * feat: allow us to switch pokemons by clicking on evolution info
+  * chore: reorganize code and add some comments
+  * chore: update branding
+  * improv: evolution data section translations
+  * feat: add pokemon evolution data
+  * feat: add pokemon generation
+  * fix: resolve merge issues
+  * improv: update config even if it fails to write to the config dir
+  * fix: change cosmic folder permissions to rw
+  * feat: add pokemon id to details page
+  * feat: allow for settings to be saved between runs
+
+-------------------------------------------------------------------
+Fri Jun 27 12:13:07 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.2.6+1:
+  * chore: clippy (rust 1.88)
+  * chore: update deps & up version
+  * improv: filters page design
+  * chore: update spanish translation
+  * feat: allow filtering by total pokemon stats
+  * fix: missing hp stat on total stat count
+  * improv: more info link
+  * chore: update single pokémon screenshot
+  * improv: add total of pokémon stats to corresponding section
+  * improv: pokémon details style
+  * chore: remove title from barchart
+  * improv: text positioning
+  * fix: value and label positioning
+  * wip: improve barcode design
+  * wip: barchart widget
+  * chore: update screenshots
+  * feat: add type icons & update design
+  * feat: add icons & buttons to shuffle between single pokémon
+
+-------------------------------------------------------------------
+Thu Jun 26 08:48:38 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.2.5+3:
+  * chore: simplify view code
+  * improv: pagination button resize behaviour
+  * improv: add page indicator text
+  * chore: update metainfo
+  * fix: clamping offset when requesting pokemon page
+  * chore: update deps
+  * improv: switch to manual implementation of debug to improve speed
+  * feat: implement missing actions
+  * feat: basic pagination
+
+-------------------------------------------------------------------
 Thu May 22 13:31:01 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.2.4+5:
