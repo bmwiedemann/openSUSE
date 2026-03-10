@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Feb 24 20:48:54 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.8:
+  * feat: enable cutecosmic or qt6ct with QT_QPA_PLATFORMTHEME
+
+-------------------------------------------------------------------
+Mon Feb 23 18:08:58 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.7:
+  * Add pull request template
+
+-------------------------------------------------------------------
+Thu Feb 12 10:19:25 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.6:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Thu Feb 05 03:25:35 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.5:
+  * fix: environment variables with spaces
+  * start-cosmic: set SSH_AUTH_SOCK only if the correct value can be determined
+  * start-cosmic: update values of existing env vars
+  * fix(debian): remove titlebar-font gsettings key
+  * fix: add SSH_AUTH_SOCK to systemd import-environment
+
+-------------------------------------------------------------------
+Wed Dec 31 01:19:23 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.1:
+  * build: improve justfile
+
+-------------------------------------------------------------------
 Thu Dec 11 18:16:40 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0+0:

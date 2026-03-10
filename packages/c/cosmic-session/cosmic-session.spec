@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-session
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-session
-Version:        1.0.0+0
+Version:        1.0.8
 Release:        0
 Summary:        Session manager for the COSMIC desktop environment
 License:        GPL-3.0-only
@@ -37,7 +37,7 @@ Requires:       switcheroo-control
 %autosetup -a1
 
 %build
-just build
+just build-release
 
 %install
 just rootdir=%{buildroot} prefix=%{_prefix} install
@@ -55,6 +55,6 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %{_datadir}/applications/cosmic-mimeapps.list
 %{_datadir}/dconf/profile/cosmic
 %{_datadir}/wayland-sessions/cosmic.desktop
-%{_prefix}/lib/systemd/user/cosmic-session.target
+%{_userunitdir}/%{name}.target
 
 %changelog
