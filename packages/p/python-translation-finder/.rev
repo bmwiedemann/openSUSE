@@ -169,4 +169,25 @@
     <comment></comment>
     <requestid>1308645</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a7fe49e893a03fc6684569459327d70c</srcmd5>
+    <version>2.24</version>
+    <time>1773161815</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.24:
+  * Added support for DTD format files.
+  * Added support for FlatXML format files.
+  * Added support for Haiku OS catkeys format files.
+  * Added support for Compose Multiplatform resource files.
+  * Added support for mi18n-lang format files.
+  * Enhanced JSON discovery to detect go-i18n-json-v2, nextcloud-
+    json, and resjson formats.
+  * Enhanced XLIFF discovery to detect XLIFF 2.0 and XLIFF 2.0
+    with placeables formats.
+  * Enhanced TOML discovery to detect go-i18n-toml format.
+  * Added tomli dependency for TOML parsing on Python &lt; 3.11.
+  * Fixed handling of Windows-style paths in Transifex
+    configuration files.</comment>
+    <requestid>1337913</requestid>
+  </revision>
 </revisionlist>
