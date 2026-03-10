@@ -1,4 +1,241 @@
 -------------------------------------------------------------------
+Tue Feb 24 20:56:13 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.8:
+  * Update Flathub stats to January 2026
+  * Epoch 1.0.8 version update
+  * Revert config version bump to 1
+  * perform background update fetching and category builing in a background task that does not block UI rendering and interactions
+  * Add configurable periodic background update check
+  * Refresh remotes on startup, reload local cache on nav to Updates
+  * perf: don't auto-refresh updates on nav
+
+-------------------------------------------------------------------
+Mon Feb 23 19:18:49 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.7:
+  * Epoch 1.0.7 version update
+  * i18n: translation updates from weblate
+  * Add pull request template
+  * Generate translated desktop and metainfo files with xdgen
+  * Refactor backend name from static string to enum
+  * refactor: extract icon application helper
+  * fix: preserve icons to avoid flicker
+  * perf: cache icon paths for instant display
+  * perf: cache explore results to disk with zstd
+  * chore: add performance logging for explore and category pages
+
+-------------------------------------------------------------------
+Thu Feb 12 10:29:40 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.6:
+  * i18n: translation updates from weblate
+  * Epoch 1.0.6 version update
+  * chore: add debug logging for XML processing time
+
+-------------------------------------------------------------------
+Thu Feb 05 02:37:27 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.5:
+  * Epoch 1.0.5 version update
+  * i18n: translation updates from weblate
+  * main: show version info in release notes
+  * backend: use i18n and track version info
+  * i18n: add system package localization strings
+  * perf: add category index for O(1) lookups
+  * perf: add logging for category search performance
+  * feat: add support for quitting program with hotkeys
+  * i18n: translation updates from weblate
+  * chore: add milliseconds to log timestamps
+  * fix: preserve search icons to avoid flicker
+  * perf: load icons in background
+  * perf: add logging for icon loading performance
+  * perf: parallelize updates loading
+  * perf: parallelize installed packages loading
+  * perf: parallelize app cache building and batch sorting
+  * chore: add debug logging for backend operations timing
+  * i18n: translation updates from weblate
+  * perf: parallelize YAML document processing
+  * chore: add debug logging for YAML processing time
+  * Epoch 1.0.4 version update
+  * Delete i18n/kk/cosmic_store.ftl
+  * i18n: translation updates from weblate
+  * Update appstream if more than one hour old
+
+-------------------------------------------------------------------
+Wed Dec 31 01:31:01 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.1:
+  * i18n: removing translation for Frankish
+  * i18n: translation updates from weblate
+  * Implement EOL rebase, fixes #209
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Thu Dec 11 19:34:24 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0+0:
+  * chore: update cosmic-text
+  * i18n: translation updates from weblate
+  * chore: update winit
+  * Russian translation for .desktop file
+  * Use preferred app info, even if others have higher weight
+  * Clean up text search
+  * Fix selection of lower priority sources with equal search weight
+  * Fix order of sources in apps array
+  * address feedback
+  * add option to purge app data for flatpaks during uninstall
+
+-------------------------------------------------------------------
+Sat Dec 06 23:23:07 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta9+2:
+  * chore: update dependencies
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Sat Nov 15 20:34:07 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta6+2:
+  * i18n: translation updates from weblate
+  * sentence case and dialog copy changes
+
+-------------------------------------------------------------------
+Mon Nov 10 16:16:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta5+0:
+  * Fix libcosmic/wayland not being controlled by wayland feature
+  * Update translations
+
+-------------------------------------------------------------------
+Thu Oct 23 18:17:34 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta3+2:
+  * i18n: translation updates from weblate
+  * Update dependencies
+
+-------------------------------------------------------------------
+Sun Oct 19 15:15:39 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta2+9:
+  * improv(details): translate version text
+  * improv: only show view more button for >4 addons
+  * Update com.system76.CosmicStore.metainfo.xml
+  * Update com.system76.CosmicStore.desktop
+  * Design updates for addons
+  * Update stats
+  * Make uninstall button a standard button
+  * Addon support
+  * Updated translations
+
+-------------------------------------------------------------------
+Mon Sep 29 19:52:29 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Update to version 1.0.0~beta1.1+27:
+  * Added translation using Weblate (Norwegian Bokmål)
+  * Translated using Weblate (Estonian)
+  * Translated using Weblate (Chinese (Traditional Han script))
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Spanish (Latin America))
+  * Added translation using Weblate (Estonian)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Ukrainian)
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Irish)
+  * Translated using Weblate (Spanish (Latin America))
+  * Translated using Weblate (Frisian)
+  * Translated using Weblate (Afrikaans)
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Spanish (Latin America))
+  * Translated using Weblate (Portuguese)
+  * Translated using Weblate (Afrikaans)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Portuguese)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Arabic)
+  * Added translation using Weblate (Limburgish)
+  * Added translation using Weblate (Frisian)
+  * Translated using Weblate (Afrikaans)
+  * Added translation using Weblate (Afrikaans)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Hindi)
+  * Added translation using Weblate (Czech)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Bulgarian)
+  * Translated using Weblate (Arabic)
+  * Update cosmic_store.ftl ITA
+  * Fix translation
+  * Fix translation
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Hungarian)
+  * Translated using Weblate (Bulgarian)
+  * i18n(bg): updated bulgarian translation
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Arabic)
+  * chore: update to icu 2.0
+  * Update Arabic translation
+  * i18n(ar): Add Arabic translation
+  * i18n(es): update desktop & metadata files
+  * i18n(es): proper translations file...
+  * i18n(es): update translations
+  * chore: add optional dbus-config
+  * Add Arabic .metainfo.xml
+  * Add Arabic keywords .desktop
+  * Add Arabic .desktop
+  * i18n(pt-BR): update translations
+  * i18n (ar): Updated Arabic translation
+  * i18n(sk): Update translations
+  * i18n(pl): add translations for flatpak management
+  * i18n(hu): update translation
+  * i18n: update zh-CN translations
+  * chore: update dependencies
+  * chore: migrate to Rust 2024
+  * improv: styling fixes
+  * Update cosmic_store.ftl PL Translation Codec Close (#313)
+  * Flatpak source management (#314)
+  * Fix name of debian prerm file
+  * feat: autoadd applet to panel / dock when selecting 'Place on desktop' (#315)
+  * Update stats
+  * Reduce time to show gstreamer dialog
+  * Update Hungarian translations (#312)
+  * gstreamer codec installation (#229)
+  * Update cosmic_store.ftl PL Tranaslate place on desktop (#311)
+  * Update dependencies
+  * feat: "place on desktop" functionality for installed applets (#310)
+  * chore: update libcosmic (#308)
+  * chore: update libcosmic
+  * Update cosmic_store.ftl PL Translation applets (#300)
+  * Update dependencies
+  * Update Hungarian translation (#297)
+  * Don't show monthly downloads if 0 (#296)
+  * i18n(bg): update bulgarian translation (#295)
+  * Update libcosmic
+  * Update Hungarian translations (#294)
+  * i18n(pt-BR): update translation (#292)
+  * Add applets page
+  * i18n(pt-BR): Update translations (#287)
+  * Update flathub stats
+  * Do not redo search after operation if application is selected, fixes #266
+  * Typing automatically opens search box, fixes #179
+  * i18n(pt-BR) - Update translations (#284)
+  * Update Hungarian translations (#271)
+  * i18n(bg): Add Bulgarian translation (#283)
+  * i18n(pl): Update name in metainfo (#280)
+  * i18n(es): Updated translation, fix words for coherence between components (#279)
+
+-------------------------------------------------------------------
 Tue May  6 15:45:38 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update vendor tarball, fixing bsc#1242678

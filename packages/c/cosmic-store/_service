@@ -3,9 +3,9 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/pop-os/cosmic-store.git</param>
     <param name="scm">git</param>
-    <param name="revision">master</param>
-    <param name="versionrewrite-pattern">epoch-(.*)\+0</param>
-    <param name="versionformat">1.0.0~alpha7+@TAG_OFFSET@</param>
+    <param name="revision">refs/tags/epoch-1.0.8</param>
+    <param name="versionrewrite-pattern">epoch-(.*)</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="package-meta">yes</param>
     <param name="filename">cosmic-store</param>
@@ -20,7 +20,7 @@
   </service>
   <service name="cargo_vendor" mode="manual">
     <param name="src">cosmic-store</param>
-    <param name="update">true</param>
+    <param name="update">false</param>
   </service>
   <service name="set_version" mode="manual" />
 </services>

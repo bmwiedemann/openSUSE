@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-store
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define         appname com.system76.CosmicStore
+%define         appid com.system76.CosmicStore
 Name:           cosmic-store
-Version:        1.0.0~alpha7+0
+Version:        1.0.8
 Release:        0
 Summary:        COSMIC app store
 License:        GPL-3.0-only
@@ -29,11 +29,12 @@ BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.80
+BuildRequires:  rust >= 1.90
 BuildRequires:  pkgconfig(flatpak)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(xkbcommon)
+Recommends:     flatpak-remote-flathub
 
 %description
 %{summary}.
@@ -54,8 +55,8 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
-%{_datadir}/applications/%{appname}.desktop
-%{_datadir}/icons/hicolor/*/apps/%{appname}.svg
-%{_datadir}/metainfo/%{appname}.metainfo.xml
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
+%{_datadir}/metainfo/%{appid}.metainfo.xml
 
 %changelog
