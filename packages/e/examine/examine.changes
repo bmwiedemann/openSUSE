@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 30 12:09:33 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 2.0.0+2:
+  * chore: update release date for 2.0.0 in metainfo
+  * fix: update version in cargo
+  * release: 2.0.0
+  * chore: adjust install instructions and wording in README.md
+  * Update translations
+
+-------------------------------------------------------------------
 Fri Dec 06 04:25:48 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 1.0.0+13:

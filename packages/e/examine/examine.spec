@@ -1,7 +1,7 @@
 #
 # spec file for package examine
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appname io.github.cosmic_utils.Examine
 Name:           examine
-Version:        1.0.0+13
+Version:        2.0.0+2
 Release:        0
 Summary:        System Information viewer
 License:        GPL-3.0-only
