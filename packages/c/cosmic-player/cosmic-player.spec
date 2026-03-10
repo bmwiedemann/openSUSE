@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-player
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define         appname com.system76.CosmicPlayer
+%define         appid com.system76.CosmicPlayer
 Name:           cosmic-player
-Version:        1.0.0+0
+Version:        1.0.8
 Release:        0
 Summary:        COSMIC media player
 License:        GPL-3.0-only
@@ -60,10 +60,10 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
-%{_datadir}/applications/%{appname}.desktop
-%{_datadir}/icons/hicolor/*/apps/%{appname}.svg
-%{_datadir}/metainfo/%{appname}.metainfo.xml
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
+%{_datadir}/metainfo/%{appid}.metainfo.xml
 %dir %{_datadir}/thumbnailers
-%{_datadir}/thumbnailers/%{appname}.thumbnailer
+%{_datadir}/thumbnailers/%{appid}.thumbnailer
 
 %changelog
