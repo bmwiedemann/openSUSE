@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 10 06:39:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.45.1:
+  * qemu: Also select on logCtx done channel (#2407)
+- Update to version 0.45.0:
+  * feat(config): add commit_source and use_release fields to
+    VersionDataSource (#2404)
+- Update to version 0.44.0:
+  * feat(config): add type for version data backend (#2403)
+
+-------------------------------------------------------------------
 Mon Mar 09 07:02:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.43.7:
