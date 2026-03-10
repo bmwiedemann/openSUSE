@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Mar  9 18:12:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.34.1:
+  * Address a packaging error with tests directory in sdists.
+  * Drop support for Python 3.9
+  * Relax upper bound on xsdata to <27.0.
+  * Include tests in sdists again, and graft common testing
+    tooling onto the sdists so they can be tested in a self-
+    contained way.
+  * Fix signed attribute enumeration in AdES report.
+  * FieldMDP INCLUDE/EXCLUDE incorrectly locking fields with
+    shared name prefix.
+  * Fix inconsistent aiohttp version bounds.
+  * Relax uharfbuzz upper bound to <0.54.0.
+  * Bump python-barcode to ==0.16.1.
+  * Explicitly define a no-op stamping style
+  * Integrate some actual signing hardware into CI processes.
+  * Use embedded intermediate certificates when validating
+    existing timestamps.
+  * Support Python 3.14
+  * Relax uharfbuzz upper bound to <0.51.0.
+  * Support reading PKCS#12 data from memory.
+  * Make PKCS#11 sign_kwargs easier to customise in subclasses.
+  * Support basic text field filling.
+  * Put in place scaffolding for content stream parsing.
+
+-------------------------------------------------------------------
 Mon Sep 29 20:22:03 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.31.0:

@@ -82,4 +82,34 @@ Requires python-setuptools 78 to build successfully.
     has now been deprecated and may be removed in a future release.</comment>
     <requestid>1308046</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>992c4919019a4e376cfd7665221be1a0</srcmd5>
+    <version>0.34.1</version>
+    <time>1773161600</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.34.1:
+  * Address a packaging error with tests directory in sdists.
+  * Drop support for Python 3.9
+  * Relax upper bound on xsdata to &lt;27.0.
+  * Include tests in sdists again, and graft common testing
+    tooling onto the sdists so they can be tested in a self-
+    contained way.
+  * Fix signed attribute enumeration in AdES report.
+  * FieldMDP INCLUDE/EXCLUDE incorrectly locking fields with
+    shared name prefix.
+  * Fix inconsistent aiohttp version bounds.
+  * Relax uharfbuzz upper bound to &lt;0.54.0.
+  * Bump python-barcode to ==0.16.1.
+  * Explicitly define a no-op stamping style
+  * Integrate some actual signing hardware into CI processes.
+  * Use embedded intermediate certificates when validating
+    existing timestamps.
+  * Support Python 3.14
+  * Relax uharfbuzz upper bound to &lt;0.51.0.
+  * Support reading PKCS#12 data from memory.
+  * Make PKCS#11 sign_kwargs easier to customise in subclasses.
+  * Support basic text field filling.
+  * Put in place scaffolding for content stream parsing.</comment>
+    <requestid>1337813</requestid>
+  </revision>
 </revisionlist>

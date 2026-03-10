@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyHanko
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyHanko
-Version:        0.31.0
+Version:        0.34.1
 Release:        0
 Summary:        Tools for stamping and signing PDF files
 License:        MIT
