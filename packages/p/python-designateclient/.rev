@@ -378,4 +378,18 @@
     <comment>switch to singlespec</comment>
     <requestid>1316755</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4bec8295bc7688256285e0ac9d45931d</srcmd5>
+    <version>6.4.0</version>
+    <time>1773161614</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.4.0:
+  * reno: Update master for unmaintained/2024.1
+  * Remove remaining Python 3.9 support
+  * Update master for stable/2025.2
+  * Drop explicit dependency on python-subunit
+
+- fix filelist</comment>
+    <requestid>1337830</requestid>
+  </revision>
 </revisionlist>

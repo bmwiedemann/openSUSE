@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar  9 21:35:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.4.0:
+  * reno: Update master for unmaintained/2024.1
+  * Remove remaining Python 3.9 support
+  * Update master for stable/2025.2
+  * Drop explicit dependency on python-subunit
+
+-------------------------------------------------------------------
+Mon Nov 10 13:03:58 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- fix filelist
+
+-------------------------------------------------------------------
 Sun Nov  9 19:58:19 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.3.0:

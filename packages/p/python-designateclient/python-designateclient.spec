@@ -1,7 +1,7 @@
 #
 # spec file for package python-designateclient
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-designateclient
-Version:        6.3.0
+Version:        6.4.0
 Release:        0
 Summary:        OpenStack DNS as a Service - Client
 License:        Apache-2.0
@@ -42,7 +42,6 @@ Requires:       python-osc-lib >= 1.8.0
 Requires:       python-oslo.serialization >= 2.18.0
 Requires:       python-oslo.utils >= 3.33.0
 Requires:       python-requests >= 2.14.2
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -79,8 +78,8 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python3_sitelib}/designateclient
-%{python3_sitelib}/python_designateclient-%{version}.dist-info
+%{python_sitelib}/designateclient
+%{python_sitelib}/python_designateclient-%{version}.dist-info
 
 %files -n python3-designateclient-doc
 %license LICENSE
