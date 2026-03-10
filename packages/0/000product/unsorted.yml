@@ -7012,10 +7012,12 @@ unsorted:
   - ghostscript-mini-devel 
   - ghostty 
   - ghostty-bash-completion 
+  - ghostty-devel 
   - ghostty-doc 
   - ghostty-fish-completion 
   - ghostty-lang 
   - ghostty-neovim 
+  - ghostty-nushell-completion 
   - ghostty-vim 
   - ghostty-zsh-completion 
   - ghostview 
@@ -13493,7 +13495,7 @@ unsorted:
   - libgaminggear0 
   - libgaminggearfx0 
   - libgaminggearwidget0 
-  - libgammaray-qt6-3_3_1 
+  - libgammaray-qt6-3_4_0 
   - libgap10 
   - libgarcon-branding-upstream 
   - libgarcon-devel 
@@ -13616,6 +13618,7 @@ unsorted:
   - libggml-opencl 
   - libggml-vulkan 
   - libggml0 
+  - libghostty-vt0 
   - libgiac0 
   - libgif7-32bit 
   - libgig-devel 
@@ -24254,6 +24257,7 @@ unsorted:
   - python3-openvino-telemetry 
   - python3-openvswitch 
   - python3-openwsman 
+  - python3-os-traits-doc 
   - python3-osdlyrics 
   - python3-oslo.messaging-doc 
   - python3-oslo.middleware-doc 
@@ -26656,6 +26660,7 @@ unsorted:
   - python311-orjson 
   - python311-os-client-config 
   - python311-os-service-types 
+  - python311-os-traits 
   - python311-osc-lib 
   - python311-osc-tiny 
   - python311-oscrypto 
@@ -26767,6 +26772,7 @@ unsorted:
   - python311-pegasus-wms.common 
   - python311-pegen 
   - python311-pelican 
+  - python311-pelican-myst-reader 
   - python311-pem 
   - python311-pendulum 
   - python311-pep440 
@@ -30555,6 +30561,7 @@ unsorted:
   - python313-orjson 
   - python313-os-client-config 
   - python313-os-service-types 
+  - python313-os-traits 
   - python313-osc-lib 
   - python313-osc-tiny 
   - python313-oscrypto 
@@ -30666,6 +30673,7 @@ unsorted:
   - python313-pegasus-wms.common 
   - python313-pegen 
   - python313-pelican 
+  - python313-pelican-myst-reader 
   - python313-pem 
   - python313-pendulum 
   - python313-pep440 
