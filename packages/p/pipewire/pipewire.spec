@@ -71,7 +71,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -82,7 +82,6 @@ Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
 Patch1:         0001-pulse-server-add-client-props-to-sink_input_source_output.patch
-Patch2:         0002-module-protocol-native-Fix-socket-activation.patch
 Patch3:         0003-modules-improve-error-reporting.patch
 
 BuildRequires:  docutils

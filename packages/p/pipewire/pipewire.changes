@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Mar  9 10:31:43 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.6.1:
+  * This is a bugfix release that is API and ABI compatible with
+    the previous 1.6.x releases.
+  * Highlights
+    - Fix socket activation, which could cause a failure to start
+      PipeWire in some setups.
+    - Fix crashes in many JACK apps when nodes/ports are quickly
+      added/removed such as when there are notifications (like
+      when changing the volume in KDE).
+    - Fix playback of encoded formats in pw-cat again.
+    - Some other smaller fixes and improvements.
+  * Modules
+    - Fix socket activation. (#5140 (closed))
+    - Remove node.link-group from driver nodes.
+  * SPA
+    - Fix the libcamera stop sequence.
+  * JACK
+    - Never return NULL from jack_port_by_id(). (#3512 (closed))
+  * GStreamer
+    - Improve the timestamps on buffers.
+  * Tools
+    - Fix playback of encoded formats. (#5155 (closed))
+- Remove patch which is already merged in 1.6.1:
+  * 0002-module-protocol-native-Fix-socket-activation.patch
+
+-------------------------------------------------------------------
 Tue Mar  3 10:33:43 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Remove dependency on update-alternatives which is not really
