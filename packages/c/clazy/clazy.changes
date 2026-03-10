@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 10 09:24:53 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change:
+  * 0001-Fix-FullyQualifiedMocTypes-giving-false-positives-fo.patch
+
+-------------------------------------------------------------------
 Thu Feb 19 10:34:57 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.17

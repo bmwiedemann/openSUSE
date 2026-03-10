@@ -341,4 +341,13 @@
     <comment>Update to 1.17</comment>
     <requestid>1333912</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>16462b122f0c8a9d4ed58cef5ad14e9c</srcmd5>
+    <version>1.17</version>
+    <time>1773161832</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream change:
+  * 0001-Fix-FullyQualifiedMocTypes-giving-false-positives-fo.patch</comment>
+    <requestid>1337923</requestid>
+  </revision>
 </revisionlist>

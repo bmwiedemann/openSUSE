@@ -27,6 +27,8 @@ Source0:        https://download.kde.org/stable/clazy/%{version}/src/%{name}-%{v
 Source1:        https://download.kde.org/stable/clazy/%{version}/src/%{name}-%{version}.tar.xz.sig
 # https://invent.kde.org/sysadmin/release-keyring/-/blob/master/keys/alex@key1.asc?ref_type=heads
 Source2:        clazy.keyring
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-FullyQualifiedMocTypes-giving-false-positives-fo.patch
 BuildRequires:  clang
 BuildRequires:  clang-devel >= 19.0
 BuildRequires:  cmake >= 3.13
