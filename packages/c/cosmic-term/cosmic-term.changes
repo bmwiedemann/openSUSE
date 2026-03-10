@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Tue Feb 24 20:59:43 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.8:
+  * Epoch 1.0.8 version update
+  * fix: increase menu width to prevent cutting off toggle maximized
+  * Activate nearest tab only if closing focused tab
+  * Update cosmic-text and remove palette dependency
+  * Update light theme normal white color
+  * COSMIC Light theme update and built-in theme cleanup
+  * tweak: make options and tab_title_override not mut
+  * fix: merge profile and startup options
+  * Add "Copy link" to context menu
+  * tweak: match format of gnome-terminal and konsole's help message
+  * ref: avoid unwrap by using an intermediate variable
+  * feat: add `--working-directory` arg
+
+-------------------------------------------------------------------
+Mon Feb 23 19:23:05 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.7:
+  * Epoch 1.0.7 version update
+  * i18n: translation updates from weblate
+  * Add pull request template
+  * Generate translated desktop and metainfo files with xdgen
+  * feat: tab dnd
+
+-------------------------------------------------------------------
+Thu Feb 12 10:33:59 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.6:
+  * Epoch 1.0.6 version update
+  * i18n: translation updates from weblate
+  * No longer WIP
+  * Change Unbind action to Disable to match cosmic-settings
+  * Fix improper handling of escape
+  * More design adjustments
+  * Adjust to design and hard-code Copy and Paste special keys
+  * Implement key bind reset
+  * Do not automatically show keyboard shortcuts
+  * Move keyboard shortcuts to menu item
+  * Implement shortcut search
+  * Shortcut design updates and fix escape behavior
+  * add dialog box when replacing existing keybind
+  * fix localization
+  * place shortcuts in existing config
+  * fix: hide cursor when scrolled in unfocused terminal
+  * use code fallbacks (now in shortcuts.rs), not `default` config file
+  * make hotkeys configurable
+
+-------------------------------------------------------------------
+Thu Feb 05 02:44:59 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.5:
+  * Epoch 1.0.5 version update
+  * i18n: translation updates from weblate
+  * Fix ligatures with cosmic-text update
+  * i18n: translation updates from weblate
+  * Update dependencies
+  * i18n: translation updates from weblate
+  * Epoch 1.0.4 version update
+  * i18n: translation updates from weblate
+  * Bump flake
+  * Fix nixpkgs duplication
+  * Fix running nix formatter
+  * Properly load/clear passwords on toggle
+  * Fix ctrl hyperlink highlighting when using splits, fixes #688
+  * Increase width of menu to match cosmic-edit
+  * handle osc 8 links
+  * hold shift and click to add to selection
+
+-------------------------------------------------------------------
+Wed Dec 31 01:35:21 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.1:
+  * i18n: removing translation for Frankish
+  * i18n: translation updates from weblate
+  * Add seal brown and amber terminal color scheme
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
 Thu Dec 11 19:40:27 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0+0:
