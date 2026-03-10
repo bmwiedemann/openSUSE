@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  9 14:55:24 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to 4.8.2:
+  * irc: ignore self join if the channel is already joined (#2291)
+  * relay/api: fix memory leaks in resources "ping" and "sync"
+  * relay/api: fix memory leak in receive of message from remote WeeChat
+
+-------------------------------------------------------------------
 Tue Dec  2 01:51:43 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to 4.8.1:
