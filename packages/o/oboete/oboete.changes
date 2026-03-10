@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Thu Feb 05 11:38:56 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 0.2.3+0:
+  * chore: up to 0.2.3
+  * chore: change helper button color
+  * fix: helper button opened create folder dialog instead of create study set dialog
+  * improv: add helper button to create a new set if no sets exist
+  * fix: add cosmic baseapp to flatpak manifest
+  * improv: responsive menu_bar implementation
+  * improv: flashcards page header on smaller widths
+  * improv: set app min-width to 360px
+  * chore: update deps
+
+-------------------------------------------------------------------
+Fri Jan 30 12:14:30 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 0.2.2+1:
+  * fix: remove org.freedesktop.portal.Desktop
+  * improv: drop ashpd dep in favor of cosmic re-export via xdg feature
+  * chore: update deps & up version & xdg-portal flag
+
+-------------------------------------------------------------------
+Sun Dec 21 13:53:17 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.2.1+4:
+  * fix: metainfo location
+  * improv: simplify handling of current_set_id and current_folder_id
+  * fix: justfile
+  * chore: prepare 0.2.1
+
+-------------------------------------------------------------------
+Sun Dec 07 23:46:30 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.2.0+9:
+  * chore: update app description to mention COSMIC
+  * improv: add min window size
+  * chore: change app description
+  * chore: update screenshots
+  * fix: properly update the upsert flashcard status on the contextpage after editing a flashcard
+  * feat: add pill status to add edit flashcard contextpage
+  * improv: add back button to study page
+  * chore: tweak dev and release profiles
+  * improv: show number of items in flashcards and folders views
+  * fix: typo
+  * chore: update deps & metainfo (prep for v0.2)
+  * feat: add migrate strategy for the 0.1 database
+  * improv: add shortcut to go back from study page
+  * chore: update metainfo
+  * feat: add keyboard shortcuts for studypage
+  * improv: study screen image handling
+  * feat: improve error management
+  * feat: translation cleanup
+  * feat: user configurable retention rate
+  * chore: improve code comments
+  * fix: metainfo and desktopfile names
+  * feat: implement backup and importing
+  * improv: tweak app spacing in some views
+  * chore: add missing spdx
+  * feat: add nice looking pill to show flashcard status
+  * fix: image importing does not work when url has whitespaces...
+  * chore: update deps
+  * chore: fix icon url
+  * chore: update readme
+  * feat: code dump of version 0.2 (addresses #11 and #7)
+
+-------------------------------------------------------------------
+Sat Dec 06 12:01:24 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.1.13+1:
+  * chore: delete templates
+  * chore: fix typo
+
+-------------------------------------------------------------------
+Fri Oct 24 17:11:22 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.1.12+2:
+  * chore: update readme links
+  * fix: application config gets saved on changes (persists between runs)
+  * fix: options row button padding
+
+-------------------------------------------------------------------
 Thu May 22 13:53:10 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 0.1.9+13:
