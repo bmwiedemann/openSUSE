@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 10 10:31:39 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Fix build, remove AM_ICONV macro
+  0001-Remove-gettext-requirement-as-it-was-only-needed-for.patch
+
+-------------------------------------------------------------------
 Sun Jan 26 09:49:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.1.9

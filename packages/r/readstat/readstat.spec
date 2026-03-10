@@ -1,7 +1,7 @@
 #
 # spec file for package readstat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %if 0%{?sle_version} == 150000 || 0%{?suse_version} >= 1550
 %bcond_without libcsv
@@ -33,6 +34,8 @@ URL:            https://github.com/WizardMac/ReadStat
 Source0:        https://github.com/WizardMac/ReadStat/archive/v%{version}.tar.gz#/ReadStat-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-use-after-free.patch
+# PATCH-FIX-UPSTREAM https://github.com/WizardMac/ReadStat/commit/495a46bb2cc66019c1a3122f318fe7dc810f0aa8
+Patch1:         0001-Remove-gettext-requirement-as-it-was-only-needed-for.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 %if %{with libcsv}
@@ -42,7 +45,7 @@ BuildRequires:  libtool
 BuildRequires:  zlib-devel
 
 %description
-ReadStat is a command-line tool and C library for reading 
+ReadStat is a command-line tool and C library for reading
 files from popular stats packages. Supported data formats include:
 
   - SAS: SAS7BDAT (binary file) and XPORT (transport file)
@@ -62,7 +65,7 @@ formats. The produced SAS7BDAT files still cannot be read by SAS.
 Summary:        Command-line tool (+ C library) for converting SAS, Stata, and SPSS files
 
 %description -n    %{libname_ver}
-ReadStat is a command-line tool and C library for reading 
+ReadStat is a command-line tool and C library for reading
 files from popular stats packages. Supported data formats include:
 
   - SAS: SAS7BDAT (binary file) and XPORT (transport file)
@@ -83,7 +86,7 @@ Summary:        Development files for %{name}
 Requires:       %{libname_ver} = %{version}
 
 %description devel
-ReadStat is a command-line tool and C library for reading 
+ReadStat is a command-line tool and C library for reading
 files from popular stats packages. Supported data formats include:
 
   - SAS: SAS7BDAT (binary file) and XPORT (transport file)
