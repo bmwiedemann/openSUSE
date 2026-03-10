@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  9 07:42:57 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260307
+  + add tic checks for pairs of user-caps strings which are listed in
+    Caps-ncurses.
+  + fix a few gcc warnings.
+  + fix inconsistent checks for expanding special characters with infocmp
+    -L option (report by Stephane Chazelas).
+
+-------------------------------------------------------------------
 Mon Mar  2 08:00:12 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20260301
@@ -3227,7 +3237,7 @@ Tue Jul  7 09:11:13 UTC 2020 - Dr. Werner Fink <werner@suse.de>
   > additional changes for building with Visual Studio C++ and msys2
     (patches by "Maarten Anonymous"):
   + adjust headers/declarations to provide for "dllimport" vs "dllexport"
-    declarations when constructing DLLs, to worko with Visual Studio C++.
+    declarations when constructing DLLs, to work with Visual Studio C++.
 
 -------------------------------------------------------------------
 Mon Jun 29 05:56:54 UTC 2020 - Dr. Werner Fink <werner@suse.de>

@@ -5598,4 +5598,19 @@
     press and release (report by Vincent Lefevre).</comment>
     <requestid>1335756</requestid>
   </revision>
+  <revision rev="325" vrev="98">
+    <srcmd5>e6fddaed769f66f8a22a347a7419f25c</srcmd5>
+    <version>unknown</version>
+    <time>1773161202</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20260307
+  + add tic checks for pairs of user-caps strings which are listed in
+    Caps-ncurses.
+  + fix a few gcc warnings.
+  + fix inconsistent checks for expanding special characters with infocmp
+    -L option (report by Stephane Chazelas).
+
+    declarations when constructing DLLs, to work with Visual Studio C++.</comment>
+    <requestid>1337604</requestid>
+  </revision>
 </revisionlist>
