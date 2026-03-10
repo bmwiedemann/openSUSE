@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Mon Mar  9 15:33:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.0.0:
+  * Add release notes for federation protocol commands
+  * trivial: Enable flake8-logging-format (G) rules
+  * Run mypy from tox
+  * trivial: Align tox indentation with other SDK projects
+  * Rename openstack volume delete --purge -> --cascade
+  * Make --all-stores behave the same as in glanceclient
+  * Identity: Migrate 'federation protocol' commands to SDK
+  * Identity: Add --project-domain option for limits
+  * Identity: Use project's domain for its parent
+  * Identity: Migrate 'project' commands to SDK
+  * Identity: Migrate 'limit' commands to SDK
+  * Fix: Make server resize options required
+  * Replace obsolete PCRE packages
+  * Fix quota usage and reservation display
+  * Fix image owner change when accepting membership with
+    --project
+  * fix(keystone): correct the args submitted on user creation
+  * typing: Fixups for typed osc-lib
+  * taas: Use custom command classes
+  * identity: Use plural dest for append opts
+  * Remove functional testenv for py38/py39
+  * zuul: Make openstackclient-check-plugins voting
+  * common: Remove references to pkg\_resources
+  * volume: Remove negotiation for v1 API
+  * typing: Add types to custom formatters
+  * Add custom command classes
+  * clientmanager: Remove legacy cruft
+  * Use openstacksdk test generate\_fake\_resources factory
+  * Implement conflict resolution
+  * ruff: Enable E5 check
+  * Improve help strings for tap services
+  * Moving tapas osc client code from neutronclient
+  * Identity: Migrate 'registered limit' commands to SDK
+  * Remove duplicate test utilities
+  * volume: Add missing backup\_id field in tests
+  * Add functional test for volume snapshot
+  * Change metavar name for \`registered limit delete\`
+  * Try to make help text of network code consistent
+  * tests: Update functional test for image metadef object
+  * hacking: Check for missing ignore\_missing calls
+  * trivial: Add missing ignore\_missing arguments
+  * identity: Remove duplicated \_find\_sdk\_id method
+  * identity: Fix filtering endpoints by project with domain
+  * trivial: Normalize some client usage
+  * ruff: Use more specific name to enable pyupgrade rule
+  * Add new hacking rules
+  * Remove tests for other osc-lib
+  * tests: Avoid more unnecessary mocks
+  * tests: Remove duplicated fake network client
+  * reno: Update master for unmaintained/2024.1
+  * Add option to filter for projects when listing volume backups
+  * pre-commit: Bump versions
+  * identity: Fix 'user list --project' option
+  * Ensure show on absent appcreds raises exception
+  * Fix openstack quota show without cinder
+  * Add functional test for cached image command
+  * Add functional tests for image metadef resource type list
+  * Extend project delete command description
+  * Update master for stable/2025.2
+  * Validation: Cannot create network with segmentation id alone
+  * Add functional tests for \`role assignment list\`
+  * Bug Fix: Skip invalid server ID during multi-server delete
+  * Fix microversion 2.100
+  * volume: Temporarily ignore Volume.backup\_id column
+  * tests: Simplify catalog functional tests
+  * tests: Remove use of namedtuple
+  * Fix microversion 2.96
+
+-------------------------------------------------------------------
 Sun Nov  9 19:19:49 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.2.0:

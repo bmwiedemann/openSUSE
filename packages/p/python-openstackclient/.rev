@@ -688,4 +688,41 @@ update to version 3.1.0
   * identity: Remove unnecessary helper</comment>
     <requestid>1316841</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>4ae1b22453bee5e5f489c59ab78ad44e</srcmd5>
+    <version>9.0.0</version>
+    <time>1773161278</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.0.0:
+  * Add release notes for federation protocol commands
+  * trivial: Enable flake8-logging-format (G) rules
+  * Run mypy from tox
+  * trivial: Align tox indentation with other SDK projects
+  * Rename openstack volume delete --purge -&gt; --cascade
+  * Make --all-stores behave the same as in glanceclient
+  * Identity: Migrate 'federation protocol' commands to SDK
+  * Identity: Add --project-domain option for limits
+  * Identity: Use project's domain for its parent
+  * Identity: Migrate 'project' commands to SDK
+  * Identity: Migrate 'limit' commands to SDK
+  * Fix: Make server resize options required
+  * Replace obsolete PCRE packages
+  * Fix quota usage and reservation display
+  * Fix image owner change when accepting membership with
+    --project
+  * fix(keystone): correct the args submitted on user creation
+  * typing: Fixups for typed osc-lib
+  * taas: Use custom command classes
+  * identity: Use plural dest for append opts
+  * Remove functional testenv for py38/py39
+  * zuul: Make openstackclient-check-plugins voting
+  * common: Remove references to pkg\_resources
+  * volume: Remove negotiation for v1 API
+  * typing: Add types to custom formatters
+  * Add custom command classes
+  * clientmanager: Remove legacy cruft
+  * Use openstacksdk test generate\_fake\_resources factory
+  * Implement conflict resolution</comment>
+    <requestid>1337759</requestid>
+  </revision>
 </revisionlist>
