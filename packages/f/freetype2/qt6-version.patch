@@ -1,0 +1,12 @@
+diff -urEbwB ft2demos-2.14.2.orig/src/ftinspect/CMakeLists.txt ft2demos-2.14.2/src/ftinspect/CMakeLists.txt
+--- ft2demos-2.14.2.orig/src/ftinspect/CMakeLists.txt	2026-03-09 12:04:16.048652826 +0100
++++ ft2demos-2.14.2/src/ftinspect/CMakeLists.txt	2026-03-09 12:04:40.637647968 +0100
+@@ -51,7 +51,7 @@
+     message(FATAL_ERROR "USE_QT_VERSION must be set to either 5 or 6. Found: '${USE_QT_VERSION}'")
+ endif()
+ if(USE_QT_VERSION EQUAL 6)
+-    set(QT_MIN_VERSION "6.8")
++    set(QT_MIN_VERSION "6.6")
+ elseif(USE_QT_VERSION EQUAL 5)
+     set(QT_MIN_VERSION "5.15")
+ endif()

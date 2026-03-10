@@ -17,6 +17,11 @@
 
 
 %global freetype_version 2.14.2
+%if 0%{?suse_version} < 1600
+%global qt_version 5
+%else
+%global qt_version 6
+%endif
 Name:           ft2demos
 Version:        2.14.2
 Release:        0
@@ -36,12 +41,15 @@ Source1015:     bug-641580_CVE-2010-3311.cff
 Source1016:     bug-647375_tt2.ttf
 # silence our clamav check
 NoSource:       1000
+Patch0:         bugzilla-308961-cmex-workaround.patch
 # PATCH-FIX-OPENSUSE don-t-mark-libpng-as-required-library.patch -- it is private in .pc
-Patch202:       don-t-mark-libpng-as-required-library.patch
-Patch308961:    bugzilla-308961-cmex-workaround.patch
+Patch1:         don-t-mark-libpng-as-required-library.patch
+Patch100:       qt6-version.patch
 BuildRequires:  cmake
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(Qt%{qt_version}Gui)
+BuildRequires:  pkgconfig(Qt%{qt_version}Widgets)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libbrotlidec)
@@ -60,13 +68,6 @@ Requires:       ftstring = %{version}-%{release}
 Requires:       ftvalid = %{version}-%{release}
 Requires:       ftview = %{version}-%{release}
 Conflicts:      dtc < 1.4.0
-%if 0%{?suse_version} >= 1600
-BuildRequires:  pkgconfig(Qt6Gui)
-BuildRequires:  pkgconfig(Qt6Widgets)
-%else
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Widgets)
-%endif
 
 %description
 Freetype2 utilities and demo programs.
@@ -174,8 +175,11 @@ This tool is part of the FreeType project
 %prep
 
 %setup -q -n freetype-%{freetype_version} -b 1
-%patch -P 308961 -p 1
-%patch -P 202 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+pushd ../ft2demos-%{version}
+%patch -P 100 -p1
+popd
 
 %build
 export CFLAGS="%{optflags} -std=gnu99 -D_GNU_SOURCE $(getconf LFS_CFLAGS)"
@@ -191,11 +195,7 @@ pushd ..
 
     cd src/ftinspect
     %cmake \
-%if 0%{?suse_version} >= 1600
-    -DUSE_QT_VERSION=6
-%else
-    -DUSE_QT_VERSION=5
-%endif
+    -DUSE_QT_VERSION=%{qt_version}
     %cmake_build
 popd
 

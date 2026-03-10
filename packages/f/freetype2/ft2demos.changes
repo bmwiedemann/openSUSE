@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  9 11:27:08 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * qt6-version.patch
+    + lower the QT6 requirement to 6.6, since it builds just fine
+      and allows to have the same spec file for all values of the
+      %%suse_version macro
+
+-------------------------------------------------------------------
 Tue Mar  3 12:29:02 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - update to 2.14.2

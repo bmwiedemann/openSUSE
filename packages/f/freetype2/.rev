@@ -1145,4 +1145,12 @@
     <comment>bsc#1259118, CVE-2026-23865</comment>
     <requestid>1336079</requestid>
   </revision>
+  <revision rev="113" vrev="2">
+    <srcmd5>9f5cfda6f2add305dcebea2755bbd5e6</srcmd5>
+    <version>2.14.2</version>
+    <time>1773161224</time>
+    <user>anag_factory</user>
+    <comment>Clean up the spec and lower QT6 version requirement</comment>
+    <requestid>1337639</requestid>
+  </revision>
 </revisionlist>
