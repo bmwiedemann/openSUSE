@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  9 15:33:37 UTC 2026 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Do not hardcode path to dracut hooks. Since dracut-102, hooks were
+  moved from /usr/lib to /var/lib, keeping a compat symlink. But,
+  since dracut-110, this compat symlink was removed.
+  * ignition-enable-network.sh: Use dracut $hookdir instead of
+    hardcoding, match combustion code added in
+    https://github.com/openSUSE/combustion/commit/e8a96893fc389123ecd85609499cf97e43de38ec
+
+-------------------------------------------------------------------
 Fri Feb 27 14:44:20 UTC 2026 - Ignaz Forster <iforster@suse.com>
 
 - Update to version 2.26.0:
