@@ -1,7 +1,7 @@
 #
 # spec file for package pop-icon-theme
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pop-icon-theme
-Version:        3.5.0
+Version:        3.5.1
 Release:        0
 Summary:        System76 Pop icon theme for Linux
 License:        CC-BY-SA-4.0
