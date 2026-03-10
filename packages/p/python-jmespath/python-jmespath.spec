@@ -1,7 +1,7 @@
 #
 # spec file for package python-jmespath
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jmespath
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        Python module for declarative JSON document element extraction
 License:        MIT
@@ -108,7 +108,7 @@ mv %{buildroot}%{_bindir}/jp.py %{buildroot}%{_bindir}/jp
 %python_uninstall_alternative jp
 
 %files %{python_files}
-%license LICENSE.txt
+%license LICENSE
 %doc README.rst
 %{python_sitelib}/jmespath
 %{python_sitelib}/jmespath-%{version}.dist-info

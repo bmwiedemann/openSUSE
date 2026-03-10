@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 24 14:47:05 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.1.0
+  * Fix concurrency issue with cache
+  * Added support for Python 3.12-3.14
+  * Removed support for Python 3.7-3.8
+- Rename LICENSE.txt to LICENSE in %license section
+
+-------------------------------------------------------------------
 Fri Jan 24 14:57:30 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Use libalternatives instead of update-alternatives, bsc#1235786
