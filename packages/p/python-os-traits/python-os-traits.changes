@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Mon Mar  9 15:31:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.0:
+  * CPU: add traits for new X86 feature "AMX"
+  * Drop basepython
+
+-------------------------------------------------------------------
+Sun Nov  9 20:24:39 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- Initial package (3.5.0)
