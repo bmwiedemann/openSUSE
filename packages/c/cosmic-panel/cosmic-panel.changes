@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Mar  9 13:55:23 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.8:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Mon Feb 23 17:57:16 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.7:
+  * Add pull request template
+
+-------------------------------------------------------------------
+Thu Feb 12 10:07:35 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.6:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Thu Feb  5 02:15:39 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.5:
+  * no changes since last release
+- Update to version 1.0.4:
+  * no changes since last release
+- Update to version 1.0.3:
+  * no changes since last release
+- remove the hardlock on the version again
+
+-------------------------------------------------------------------
+Sun Jan 25 18:17:09 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Override version in _service, as git repositories has wrongly
+  all tags applied to the latest commit
+- Update to version 1.0.3
+
+-------------------------------------------------------------------
+Wed Dec 31 01:13:48 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+ 
+- Update to version 1.0.1:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Mon Dec 29 11:39:41 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add as a workaround libwayland-server0 as a runtime dependency
+
+-------------------------------------------------------------------
 Thu Dec 11 17:53:06 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0+0:
