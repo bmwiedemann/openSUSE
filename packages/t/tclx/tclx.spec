@@ -1,7 +1,7 @@
 #
 # spec file for package tclx
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           tclx
-Version:        8.6.2
+Version:        8.6.3
 Release:        0
 Summary:        TclX - Extended Tcl
 License:        BSD-3-Clause AND SUSE-Permissive
-URL:            http://tclx.sourceforge.net/
 Group:          Development/Languages/Tcl
+URL:            https://tclx.sourceforge.net/
 Source0:        https://github.com/flightaware/tclx/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  tcl-devel
@@ -41,10 +41,10 @@ In addition, a detailed help system is available for Tcl/Tk: tclhelp.
 
 %build
 autoreconf -fi
-export CFLAGS="%optflags -fno-strict-aliasing"
+export CFLAGS="%{optflags} -fno-strict-aliasing"
 %configure \
-	--with-tcl=%_libdir \
-	--libdir=%tcl_archdir \
+	--with-tcl=%{_libdir} \
+	--libdir=%{tcl_archdir} \
 	--with-help \
 	--enable-threads
 %make_build
@@ -52,13 +52,10 @@ export CFLAGS="%optflags -fno-strict-aliasing"
 %install
 %make_install
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
 %files
 %doc README.md
-%tcl_archdir/%{name}8.6
-%_mandir/mann/*
-%_includedir/*
+%{tcl_archdir}/%{name}8.6
+%{_mandir}/mann/*
+%{_includedir}/*
 
 %changelog

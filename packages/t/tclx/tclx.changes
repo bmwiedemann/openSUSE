@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 10 09:34:31 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Sat Feb 24 04:45:00 UTC 2024 - Danilo Chang <ray2501@gmail.com>
+
+- Update to version 8.6.3
+  * configure: regenerate
+  * Migrate CONST usage to const
+  * Enable -Wsentinel warnings for TclX_AppendObjResult()
+  * Fix TclX_AppendObjResult() calls with missing or uncast NULL terminators
+  * tclXunixOS.c: remove floor()/ceil() declarations
+  * Remove TCL_VARARGS_DEF/TCL_VARARGS_START usage
+  * Use prototypes in function declarations/definitions
+  * Add const to match tclExtdInt.h TclXOSInetAtoN def
+
+-------------------------------------------------------------------
 Tue Jul  4 09:04:32 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 8.6.2
