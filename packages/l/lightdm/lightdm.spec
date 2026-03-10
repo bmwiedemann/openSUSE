@@ -1,7 +1,7 @@
 #
 # spec file for package lightdm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -57,8 +57,6 @@ Source12:       lightdm.tmpfiles
 Patch0:         lightdm-sysconfig-support.patch
 # PATCH-FEATURE-OPENSUSE lightdm-xauthlocalhostname-support.patch boo#796230 gber@opensuse.org -- Set XAUTHLOCALHOSTNAME to the hostname for local logins to avoid issues in the session in case the hostname changes
 Patch1:         lightdm-xauthlocalhostname-support.patch
-# PATCH-FEATURE-OPENSUSE lightdm-set-gdmflexiserver-envvar.patch gber@opensuse.org -- Sets the GDMFLEXISERVER environment variable for the gdmflexiserver wrapper
-Patch2:         lightdm-set-gdmflexiserver-envvar.patch
 # PATCH-FIX-OPENSUSE lightdm-disable-utmp-handling.patch gber@opensuse.org -- Disable utmp handling since this is handled in the Xstartup/Xreset scripts
 Patch3:         lightdm-disable-utmp-handling.patch
 # PATCH-FIX-OPENSUSE lightdm-use-run-dir.patch gber@opensuse.org -- Use /run instead of /var/run
@@ -103,7 +101,6 @@ BuildRequires:  pkgconfig(xdmcp)
 %if 0%{?suse_version} < 1600
 BuildRequires:  gcc13-c++
 %endif
-Requires:       gdmflexiserver
 # 3rd party greeters don't have to follow
 # the same versioning of lightdm.
 Requires:       lightdm-greeter

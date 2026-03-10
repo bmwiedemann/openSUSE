@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  9 07:44:28 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer rely on gdmflexiserver: this no longer exists with
+  GNOME 50. lightdm has its own implementation anyway.
+- Drop lightdm-set-gdmflexiserver-envvar.patch
+
+-------------------------------------------------------------------
 Sun Jan  4 11:47:56 UTC 2026 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move all created /run, /var/lib, /var/cache and /var/log
