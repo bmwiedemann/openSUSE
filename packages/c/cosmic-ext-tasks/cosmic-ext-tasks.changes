@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 25 19:38:35 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.2.0+15:
+  * i18n(cs): Update Czech translation
+  * chore: update libcosmic
+  * chore: update libcosmic
+  * i18n(cs): Update Czech translation
+  * chore: clippy and fmt
+  * add: zed debug file
+  * i18n(fr): update translations
+  * fix: padding in empty view
+
+-------------------------------------------------------------------
 Tue May 27 19:45:35 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.2.0+1:
