@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Mar 09 15:35:52 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.3.5+git0.f0a2d1bf5:
+  * [RELEASE] Released version 3.3.5
+  * SCRIPTS: git-show-backports: add a restart-from-last option
+  * SCRIPTS: git-show-backports: hide the common ancestor warning in quiet mode
+
+-------------------------------------------------------------------
+Mon Mar 09 14:13:21 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.3.4+git26.f6b8d4f18:
+  * BUG/MINOR: admin: haproxy-reload rename -vv long option
+  * BUG/MINOR: backend: Don't get proto to use for webscoket if there is no server
+  * BUG/MINOR: ssl-sample: Fix sample_conv_sha2() by checking EVP_Digest* failures
+
+-------------------------------------------------------------------
+Sat Mar 07 03:07:28 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.3.4+git23.55381fbd7:
+  * BUG/MINOR: stconn: Increase SC bytes_out value in se_done_ff()
+  * BUG/MEDIUM: hlua: Fix end of request detection when retrieving payload
+  * BUG/MINOR: hlua: Properly enable/disable line receives from HTTP applet
+  * BUG/MEDIUM: mux-fcgi: Use a safe loop to resume each stream eligible for sending
+  * BUG/MAJOR: resolvers: Properly lowered the names found in DNS response
+  * BUG/MAJOR: fcgi: Fix param decoding by properly checking its size
+  * BUG/MINOR: http-ana: Increment scf bytes_out value if an haproxy error is sent
+  * BUG/MINOR: sample: Fix sample to retrieve the number of bytes received and sent
+  * BUG/MINOR: channel: Increase the stconn bytes_in value in channel_add_input()
+  * DOC: config: Use the right alias for %B
+  * MINOR: filters: Set last_entity when a filter fails on stream_start callback
+  * DEBUG: stream: Display the currently running rule in stream dump
+  * BUG/MINOR: h1-htx: Be sure that H1 response version starts by "HTTP/"
+  * BUG/MEDIUM: qpack: correctly deal with too large decoded numbers
+  * BUG/MINOR: quic: fix OOB read in preferred_address transport parameter
+  * BUG/MINOR: qpack: fix 1-byte OOB read in qpack_decode_fs_pfx()
+  * BUG/MAJOR: qpack: unchecked length passed to huffman decoder
+  * BUG/MEDIUM: hpack: correctly deal with too large decoded numbers
+  * BUG/MEDIUM: stream: Handle TASK_WOKEN_RES as a stream event
+  * BUG/MINOR: promex: fix server iteration when last server is deleted
+
+-------------------------------------------------------------------
+Wed Feb 25 23:54:42 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.3.4+git3.a330a73f0:
+  * BUG/MEDIUM: mux-h2: make sure to always report pending errors to the stream
+  * MINOR: mux-h2: add a new setting, "tune.h2.log-errors" to tweak error logging
+  * MINOR: mux-h2: also count glitches on invalid trailers
+
+-------------------------------------------------------------------
 Thu Feb 19 13:52:23 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.3.4+git0.c2bffae0a:
