@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar  9 18:11:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.0:
+  * Run functional tests for test code update
+  * Remove unused Makefile for doc
+  * Remove unused sphinxcontrib-httpdomain
+  * pre-commit: Bump versions
+  * Add action field for snapshot
+  * Use more specific assertion methods
+  * Skip functional tests for .gitignore update
+  * pre-commit: Bump versions
+  * Declare Python 3.13 support
+  * Delay string interpolations at logging calls
+  * Remove reference to tag framework
+  * Validate --rollback option when parsing arguments
+  * reno: Update master for unmaintained/2024.1
+  * Fix outdated default envlist
+  * Skip functional tests for .pre-commit-config.yaml update
+  * Bump pyupgrade target to 3.10+
+  * pre-commit: Update versions
+  * Update master for stable/2025.2
+
+-------------------------------------------------------------------
 Sun Nov  9 20:41:51 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.0:

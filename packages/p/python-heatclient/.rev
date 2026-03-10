@@ -723,4 +723,30 @@
     <comment>switch to singlespec</comment>
     <requestid>1316758</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>7e3b07d9ce8c2e17814c2cebcea83e3f</srcmd5>
+    <version>5.1.0</version>
+    <time>1773161595</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.1.0:
+  * Run functional tests for test code update
+  * Remove unused Makefile for doc
+  * Remove unused sphinxcontrib-httpdomain
+  * pre-commit: Bump versions
+  * Add action field for snapshot
+  * Use more specific assertion methods
+  * Skip functional tests for .gitignore update
+  * pre-commit: Bump versions
+  * Declare Python 3.13 support
+  * Delay string interpolations at logging calls
+  * Remove reference to tag framework
+  * Validate --rollback option when parsing arguments
+  * reno: Update master for unmaintained/2024.1
+  * Fix outdated default envlist
+  * Skip functional tests for .pre-commit-config.yaml update
+  * Bump pyupgrade target to 3.10+
+  * pre-commit: Update versions
+  * Update master for stable/2025.2</comment>
+    <requestid>1337816</requestid>
+  </revision>
 </revisionlist>
