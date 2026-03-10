@@ -18,10 +18,10 @@
 
 %define cpan_name Compress-Raw-Lzma
 Name:           perl-Compress-Raw-Lzma
-Version:        2.217.0
+Version:        2.221.0
 Release:        0
-# 2.217 -> normalize -> 2.217.0
-%define cpan_version 2.217
+# 2.221 -> normalize -> 2.221.0
+%define cpan_version 2.221
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Low-Level Perl Interface to lzma compression library
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -30,7 +30,6 @@ Source1:        cpanspec.yml
 Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Pod::Markdown)
 Provides:       perl(Compress::Raw::Lzma) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
@@ -73,6 +72,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes README
+%doc Changes README SECURITY.md
 
 %changelog

@@ -240,4 +240,41 @@
           2980b3d6cd4b6e382a3955741fcfd39d89dcb22c</comment>
     <requestid>1332518</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>71fb7e41beeaa3b2501f2064512e46bc</srcmd5>
+    <version>2.221.0</version>
+    <time>1773161272</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.221.0 (2.221)
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+    2.221 8 March 2026
+        * version 2.221
+          Sun Mar 8 13:54:24 2026 +0000
+          5e439376a3fcc532b9725133f4323adff435ad22
+        * Add SECURITY.md
+          Sun Mar 8 12:20:30 2026 +0000
+          20f7128eab9b0361a188a4edb181064a7dd85b29
+    2.220 7 March 2026
+        * Update to version 2.220
+          Sat Mar 7 10:41:27 2026 +0000
+          2d40b01b1233a09db7ac7ae41aa587d2ed7cacd0
+        * Remove obsolete TODO
+          Sat Mar 7 10:31:35 2026 +0000
+          Change by @michal-josef-spacek via https://github.com/pmqs/Compress-Raw-Lzma/pull/19
+          879037f30e47231d69c98ca6a4ae1fe27078e8bb
+    2.219 24 February 2026
+        * Fix typo
+          Tue Feb 24 22:23:04 2026 +0000
+          78e419f830b8abecdf9d3124d88863dc9e68e95a
+        * Add PERL_UNUSED_DECL for trace to silence clang warning
+          Tue Feb 24 22:21:38 2026 +0000
+          a63dc8460bebd2ed8d14304639375594a465fed7
+        * Fix indentation in Lzma.xs that triggers a clang warning
+          Tue Feb 24 22:12:01 2026 +0000
+          761fbd10040f9047fa5653f482114da50b89c17b
+        * Remove  vestigial references to  Pod::Markdown. Fixes #14
+          Tue Feb 24 20:19:15 2026 +0000
+          74a04c4617f6e7ea87afe0831eecf078607bf40e</comment>
+    <requestid>1337662</requestid>
+  </revision>
 </revisionlist>
