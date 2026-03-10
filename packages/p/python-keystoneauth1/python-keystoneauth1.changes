@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar  9 15:25:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.13.1:
+  * Remove tags from README
+  * Enable logging related ruff checks
+  * Drop redundant target-version option
+  * typing: Simplify mypy configuration
+  * docs: Update note on v2 API
+  * ruff: Enable S checks
+  * Use consistent name for logger instance
+  * ruff: Enable E5 check
+  * reno: Update master for unmaintained/2024.1
+  * Update master for stable/2025.2
+
+-------------------------------------------------------------------
 Sun Nov  9 12:42:45 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.12.0:

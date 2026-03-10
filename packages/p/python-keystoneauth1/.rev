@@ -418,4 +418,22 @@ update to version 2.12.0
     <comment>switch to singlespec</comment>
     <requestid>1316761</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>11ae282a727266741ee1ba343df743eb</srcmd5>
+    <version>5.13.1</version>
+    <time>1773161275</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.13.1:
+  * Remove tags from README
+  * Enable logging related ruff checks
+  * Drop redundant target-version option
+  * typing: Simplify mypy configuration
+  * docs: Update note on v2 API
+  * ruff: Enable S checks
+  * Use consistent name for logger instance
+  * ruff: Enable E5 check
+  * reno: Update master for unmaintained/2024.1
+  * Update master for stable/2025.2</comment>
+    <requestid>1337756</requestid>
+  </revision>
 </revisionlist>
