@@ -2676,4 +2676,12 @@ successfully tested on Tumbleweed x86_64</comment>
 - (bsc#1258068) postfix main.cf.rpmnew now contains hash instead of lmdb</comment>
     <requestid>1335249</requestid>
   </revision>
+  <revision rev="268" vrev="1">
+    <srcmd5>884e4c75bba4e5f16b96d0f0e7049313</srcmd5>
+    <version>3.11.0</version>
+    <time>1773161211</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1337622</requestid>
+  </revision>
 </revisionlist>

@@ -42,7 +42,7 @@
 %endif
 %bcond_without ldap
 Name:           postfix
-Version:        3.10.8
+Version:        3.11.0
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        EPL-2.0 OR IPL-1.0
@@ -227,8 +227,8 @@ export AUXLIBS_LMDB="-llmdb"
 #export AUXLIBS_SQLITE
 #export AUXLIBS_CDB
 #export AUXLIBS_SDBM
-# Remove berkeley DB and set lmdb as default
-export CCARGS="${CCARGS} -DNO_DB -DDEF_DB_TYPE=\\\"lmdb\\\""
+# Remove berkeley DB
+export CCARGS="${CCARGS} -DNO_DB"
 
 export PIE=-pie
 # using SHLIB_RPATH to specify unrelated linker flags, because LDFLAGS is
@@ -247,6 +247,8 @@ export PIE=-pie
   setgid_group=%{pf_setgid_group} \
   readme_directory=%{pf_readme_directory} \
   data_directory=%{pf_data_directory} \
+  default_database_type=lmdb \
+  default_cache_db_type=lmdb \
   SHLIB_RPATH="-Wl,-rpath,%{pf_shlib_directory} -Wl,-z,relro,-z,now"
 %make_build
 # Create postfix user

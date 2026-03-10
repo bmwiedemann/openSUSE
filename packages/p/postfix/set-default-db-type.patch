@@ -9,7 +9,7 @@ Index: src/util/sys_defs.h
 -#define NATIVE_DB_TYPE	"hash"
 +#define NATIVE_DB_TYPE	"lmdb"
  #if (defined(__NetBSD_Version__) && __NetBSD_Version__ >= 104250000)
- #define ALIAS_DB_MAP   DEF_DB_TYPE ":/etc/mail/aliases"	/* sendmail 8.10 */
+ #define ALIAS_DB_MAP   "$default_database_type:/etc/mail/aliases"	/* sendmail 8.10 */
  #endif
 @@ -234,7 +234,7 @@
  #define HAS_FSYNC
@@ -17,7 +17,7 @@ Index: src/util/sys_defs.h
  #define HAS_SA_LEN
 -#define NATIVE_DB_TYPE	"hash"
 +#define NATIVE_DB_TYPE	"lmdb"
- #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
+ #define ALIAS_DB_MAP	"$default_database_type:/etc/aliases"
  #define GETTIMEOFDAY(t) gettimeofday(t,(struct timezone *) 0)
  #define ROOT_PATH	"/bin:/usr/bin:/sbin:/usr/sbin"
 @@ -291,7 +291,7 @@
@@ -26,7 +26,7 @@ Index: src/util/sys_defs.h
  #ifdef HAS_DB
 -#define NATIVE_DB_TYPE	"hash"
 +#define NATIVE_DB_TYPE	"lmdb"
- #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
+ #define ALIAS_DB_MAP	"$default_database_type:/etc/aliases"
  #else
  #define HAS_DBM
 @@ -775,7 +775,7 @@ extern int initgroups(const char *, int)
@@ -35,7 +35,7 @@ Index: src/util/sys_defs.h
  #define HAS_DB
 -#define NATIVE_DB_TYPE	"hash"
 +#define NATIVE_DB_TYPE	"lmdb"
- #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
+ #define ALIAS_DB_MAP	"$default_database_type:/etc/aliases"
  #ifndef NO_NIS
  #define HAS_NIS
 @@ -851,7 +851,7 @@ extern int initgroups(const char *, int)
@@ -44,7 +44,7 @@ Index: src/util/sys_defs.h
  #define HAS_DB
 -#define NATIVE_DB_TYPE	"hash"
 +#define NATIVE_DB_TYPE	"lmdb"
- #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
+ #define ALIAS_DB_MAP	"$default_database_type:/etc/aliases"
  #ifndef NO_NIS
  #define HAS_NIS
 @@ -884,7 +884,7 @@ extern int initgroups(const char *, int)
@@ -53,7 +53,7 @@ Index: src/util/sys_defs.h
  #define HAS_DB
 -#define NATIVE_DB_TYPE	"hash"
 +#define NATIVE_DB_TYPE	"lmdb"
- #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
+ #define ALIAS_DB_MAP	"$default_database_type:/etc/aliases"
  #ifndef NO_NIS
  #define HAS_NIS
 @@ -1209,7 +1209,7 @@ extern int opterr;			/* XXX use <getopt.
@@ -62,31 +62,9 @@ Index: src/util/sys_defs.h
  #define HAS_FSYNC
 -#define NATIVE_DB_TYPE	"hash"
 +#define NATIVE_DB_TYPE	"lmdb"
- #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
+ #define ALIAS_DB_MAP	"$default_database_type:/etc/aliases"
  /* Uncomment the following line if you have NIS package installed */
  /* #define HAS_NIS */
-Index: src/global/mail_params.h
-===================================================================
---- src/global/mail_params.h.orig
-+++ src/global/mail_params.h
-@@ -2980,7 +2980,7 @@ extern int var_vrfy_pend_limit;
- extern char *var_verify_service;
- 
- #define VAR_VERIFY_MAP			"address_verify_map"
--#define DEF_VERIFY_MAP			"btree:$data_directory/verify_cache"
-+#define DEF_VERIFY_MAP			"lmdb:$data_directory/verify_cache"
- extern char *var_verify_map;
- 
- #define VAR_VERIFY_POS_EXP		"address_verify_positive_expire_time"
-@@ -3800,7 +3800,7 @@ extern char *var_multi_cntrl_cmds;
-   * postscreen(8)
-   */
- #define VAR_PSC_CACHE_MAP	"postscreen_cache_map"
--#define DEF_PSC_CACHE_MAP	"btree:$data_directory/postscreen_cache"
-+#define DEF_PSC_CACHE_MAP	"lmdb:$data_directory/postscreen_cache"
- extern char *var_psc_cache_map;
- 
- #define VAR_SMTPD_SERVICE	"smtpd_service_name"
 Index: man/man1/postmap.1
 ===================================================================
 --- man/man1/postmap.1.orig

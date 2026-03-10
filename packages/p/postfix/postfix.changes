@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Mar  5 19:18:44 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 3.11.0
+  * Some (Linux) distributions are removing support for BerkeleyDB
+    databases (In Postfix, this means we lose support for the hash:
+    and btree: lookup tables). See NON_BERKELEYDB_README for manual and
+    partially automatic migration from btree: to lmdb:, and from hash:
+    to lmdb: or cdb:.
+  * The loss of BerkeleyDB affects Mailman versions that want to execute
+    commands like "postmap hash:/path/to/file" when a mailing list is
+    added or removed. Postfix provides a way to redirect such commands
+    to a supported database type.
+  * You don't have to wait until BerkeleyDB support is removed. It can
+    make sense to migrate while BerkeleyDB support is still available
+    (mainly, less downtime).
+  * Default TLS security. The Postfix SMTP client smtp_tls_security_level
+    default value is "may" if Postfix was built with TLS support, and
+    the compatibility_level is 3.11 or higher.
+  * Support for the RFC 8689 "REQUIRETLS" verb in ESMTP. This requires
+    that every SMTP (and LMTP) server in the forward path is strongly
+    authenticated with DANE, STS, or equivalent, and that every server
+    announces REQUIRETLS support.
+  * Logging the TLS security level. This shows the desired and actual
+    TLS security level enforcement status and, if a message requests
+    REQUIRETLS, the REQUIRETLS policy enforcement status. For a list of
+    examples see smtp_log_tls_feature_status
+  * Workaround for an interface mismatch between the Postfix SMTP
+    client and MTA-STS policy plugins. This introduces a new parameter
+    smtp_tls_enforce_sts_mx_patterns (default: "yes"). The MTA-STS
+    plugin configuration needs to enable TLSRPT support, so that it
+    forwards STS policy attributes to Postfix. Both postfix-tlspol and
+    postfix-mta-sts-resolver have been updated accordingly.
+  * Post-quantum cryptography support. With OpenSSL 3.5 and later, change
+    the tls_eecdh_auto_curves default value to avoid problems with network
+    infrastructure that mishandles TLS hello messages larger than one
+    (Ethernet) TCP segment. This problem is more generally known as
+    "protocol ossification".
+  * Deprecation of obsolete parameters. Postfix programs log a warning
+    that these parameters will be removed. See DEPRECATION_README for
+    a list of deprecated parameters.
+  * JSON output support with "postconf -j|-jM|-jF|-jP", "postalias
+    -jq|-js", "postmap -jq|-js", and "postmulti -jl". No support is
+    planned for JSON input support.
+  * Milter support: improved Milter error handling for messages that
+    arrive over a long-lived SMTP connection, by changing the default
+    milter_default_action from "tempfail" to the new "shutdown" action
+    (i.e. disconnect the remote SMTP client). This was already back-ported
+    to earlier stable releases.
+- refreshed patches
+  % postfix-linux45.patch
+  % set-default-db-type.patch
+
+-------------------------------------------------------------------
 Tue Feb 24 20:29:28 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 3.10.8
