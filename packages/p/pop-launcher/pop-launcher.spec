@@ -1,7 +1,7 @@
 #
 # spec file for package pop-launcher
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pop-launcher
-Version:        1.2.7
+Version:        1.0.8
 Release:        0
 Summary:        Modular IPC-based desktop launcher service
 License:        MPL-2.0
