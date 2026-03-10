@@ -61,4 +61,16 @@
     <comment></comment>
     <requestid>1329158</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b2bee5d506c37baa990bcab7d2dbcd35</srcmd5>
+    <version>2026.3.3</version>
+    <time>1773161602</time>
+    <user>anag_factory</user>
+    <comment>- update update 2026.3.3
+  * No upstream Changelog. Use git diff:
+    https://github.com/frostming/pbs-installer/compare/2026.01.14...2026.03.03
+
+- update to 2025.4.9:</comment>
+    <requestid>1337814</requestid>
+  </revision>
 </revisionlist>
