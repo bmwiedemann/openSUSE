@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 09 20:14:26 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 9.4.3:
+  * Remove mustTruncate as it can result in a deadlock
+  * Fix: INSERT/UPDATE with RETURNING clause will not abort
+    transaction on erro
+
+-------------------------------------------------------------------
 Fri Feb 13 19:23:23 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 9.4.1:
