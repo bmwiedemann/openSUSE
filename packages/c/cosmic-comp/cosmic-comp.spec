@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-comp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-comp
-Version:        1.0.0+1
+Version:        1.0.8
 Release:        0
 Summary:        Compositor for the COSMIC DE
 License:        GPL-3.0-only
@@ -27,7 +27,7 @@ Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  make
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.80
+BuildRequires:  rust >= 1.90
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gbm)

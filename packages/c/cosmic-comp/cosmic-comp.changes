@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Tue Feb 24 20:13:17 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.8:
+  * shell: Extract FloatingLayout::snap_to_corner to deduplicate snap restore logic
+  * shell: Add comments explaining pre-set fullscreen before unmap
+  * format: Fixed PR formatting
+  * shell: Preserve maximized/snapped state on move between workspaces
+  * shell: Preserve snapped state through fullscreen/minimize round-trips
+  * shell: Pre-set fullscreen state before unmapping maximized/snapped windows
+  * chore: update dependencies
+  * chore: Update smithay
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Mon Feb 23 16:15:05 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.7:
+  * i18n: translation updates from weblate
+  * fix(keyboard): Fix keyboard shortcuts for non-Latin layouts
+  * i18n: translation updates from weblate
+  * Add pull request template
+  * i18n: translation updates from weblate
+  * Moved default of WorkspaceMode from default implementation of
+  * WorkspacesConfig into WorkspaceMode declaration. WorkspaceConfig's default
+    can then be derived
+  * Added "action on typing" to workspaces configuration.
+  * Formatting
+  * Made it so changing focus to different monitor takes cursor_follows_focus
+    into consideration
+  * i18n: translation updates from weblate
+  * Update `smithay` with fix for image-copy leak
+  * grabs/moving: Call `cleanup_drag()` unconditionally
+  * layout/tiling: Make `cleanup_drag` push tree only if something changes
+  * fix: Remove redundant configure in popup reposition_request
+  * fix: Fullscreen request unreachable code crash   caused by a duplication in
+    pending_windows
+
+-------------------------------------------------------------------
+Thu Feb 12 09:29:32 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.6:
+  * kms: Import on device supporting format, if not advertised device
+  * i18n: translation updates from weblate
+  * wayland: Support `wl_fixes` protocol using new `smithay` support
+  * Add a `profile-with-tracy-gpu` feature
+  * image-copy: Use "buffer age" of 1 for capture
+  * image-copy: Use `damage_output()` for additional damage
+  * image-copy: Use abstraction that's now provided by Smithay
+  * Update `smithay` to latest commit
+
+-------------------------------------------------------------------
+Thu Feb 05 01:39:35 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.5:
+  * fix: only move the grabbed window if a new zone is chosen
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * fix: windows are clipped in overview mode causing visual artifact
+
+-------------------------------------------------------------------
+Sun Jan 25 17:57:20 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 1.0.3:
+  * Update translations
+  * Various fixes to tiling, shadow rendering and rendering
+  * Added animations for shadows position
+  * focus: Restore focus to swap group
+  * wayland/dmabuf: Send initial surface feedback
+  * Add screen reader toggle shortcut
+
+-------------------------------------------------------------------
+Wed Dec 31 00:44:07 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.1:
+  * fix(zoom-ui): Persist accessibility_zoom increment config value.
+  * fix(input): pointer clamping
+  * chore(deps): Update cosmic-settings-daemon
+  * Update translations
+
+-------------------------------------------------------------------
 Thu Dec 11 16:48:36 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0+1:
