@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Tue Feb 24 19:54:56 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.8:
+  * fix(status-area): lazy-load status notifier menu layouts to prevent DBus timeouts
+  * fix(network): focus password input in authentication dialog
+
+-------------------------------------------------------------------
+Mon Feb 23 15:54:17 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.7:
+  * i18n: translation updates from weblate
+  * Add pull request template
+  * fix: focus cosmic-settings when an applet requests it
+  * fix(audio): audio route changing when changing volume
+  * Update com.system76.CosmicPanelAppButton.desktop
+  * Update com.system76.CosmicPanelLauncherButton.desktop
+  * Update com.system76.CosmicPanelWorkspacesButton.desktop
+  * Update com.system76.CosmicPanelAppButton.desktop
+  * Update com.system76.CosmicAppletWorkspaces.desktop
+  * Update com.system76.CosmicAppletTime.desktop
+  * Update com.system76.CosmicAppletTiling.desktop
+  * Update com.system76.CosmicAppletStatusArea.desktop
+  * Update com.system76.CosmicAppletNotifications.desktop
+  * Update com.system76.CosmicAppletNetwork.desktop
+  * Update com.system76.CosmicAppletInputSources.desktop
+  * Update com.system76.CosmicAppletBattery.desktop
+  * Update com.system76.CosmicAppletMinimize.desktop
+  * Update com.system76.CosmicAppList.desktop
+  * Update com.system76.CosmicAppletA11y.desktop
+  * Update com.system76.CosmicAppletAudio.desktop
+
+-------------------------------------------------------------------
+Thu Feb 12 09:15:19 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.6:
+  * i18n(uk): translate power applet desktop entry
+  * i18n(it): translate battery applet desktop entry
+  * i18n: translation updates from weblate
+  * status-area: Seperate daemon for status notifier daemon
+  * status-area: Use `ItemIsMenu` correctly
+  * status-area: Move duplicated code to an `activate` function
+  * status-area: Don't try to call `activate()` in `status_menu`
+  * status-area: Don't add duplicate status item
+  * status-area: Disable buttons when not `enabled` in DBusMenu
+
+-------------------------------------------------------------------
+Thu Feb 05 01:22:24 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.5:
+  * i18n: translation updates from weblate
+  * chore: update cosmic-settigs subscriptions
+  * feat(battery): add option to show charge percentage next to the icon (#994)
+  * i18n: translation updates from weblate
+  * chore: update cosmic-settings
+  * i18n(cs): Update Czech translation
+  * Update com.system76.CosmicAppletBattery.desktop
+  * chore: update settings (#1276)
+  * i18n: translation updates from weblate
+  * feat(input-sources): Add variant data to applet (#1162)
+  * chore: update settings subscriptions
+  * Update com.system76.CosmicAppletTiling.desktop
+  * Update com.system76.CosmicAppletTime.desktop
+  * Update com.system76.CosmicAppList.desktop
+  * Update com.system76.CosmicAppletWorkspaces.desktop
+  * Update com.system76.CosmicAppletStatusArea.desktop
+  * Update com.system76.CosmicAppletMinimize.desktop
+  * Update com.system76.CosmicAppletAudio.desktop
+  * Update com.system76.CosmicPanelLauncherButton.desktop
+  * Update com.system76.CosmicPanelWorkspacesButton.desktop
+  * Update com.system76.CosmicAppletInputSources.desktop
+  * Update com.system76.CosmicAppletA11y.desktop
+  * Update com.system76.CosmicAppletPower.desktop
+  * Update com.system76.CosmicAppletNotifications.desktop
+  * Update com.system76.CosmicAppletNetwork.desktop
+  * i18n: translation updates from weblate
+  * fix(status-area): reducing padding to fix missing icon buttons
+  * fix(status-area): add fallback for icon lookup by name
+  * fix(status-area): use panel icon button logic for consistency
+  * chore: update dependencies and debian changelog
+  * fix(audio-applet): Replace hardcoded string with existing fluent key (#1256)
+  * fix(status-area): update menu on property update too
+  * improv(network): reduce CPU usage
+  * fix: reconnect to network manager if disconnected
+  * chore: update dependencies
+  * refactor: use settings subscriptions and nm secret agent
+  * i18n: translation updates from weblate
+  * fix: status area positioning
+  * i18n(bg): updated app tray translation
+  * i18n(bg): update desktop info
+
+-------------------------------------------------------------------
+Wed Dec 31 00:34:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.1:
+  * Update translations
+
+-------------------------------------------------------------------
 Thu Dec 11 16:17:54 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0+0:
