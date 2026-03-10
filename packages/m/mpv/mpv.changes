@@ -1,4 +1,295 @@
 -------------------------------------------------------------------
+Tue Mar 10 07:07:23 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Force non-mini FFmpeg to allow test suite to run
+- Update to version 0.41.0+git20260309.07c3ff3725:
+  * command: reject negative offset for overlay-add
+  * wayland_common: add scRGB support
+  * include/mpv/client: remove mpv_suspend() reference
+  * wayland_common: keep unaltered hint params for changed check
+  * wayland_common: warn on not supported color representation
+  * vo_dmabuf_wayland: add BT.2100 mapping
+  * vo_dmabuf_wayland: use color parameters prepared in reconfig
+  * video/out/opengl/context_wayland: export preferred colorspace
+  * vo_wlshm: use image params after conversion
+  * wayland_common: scale preferred luminances
+  * wayland_common: set luminances
+  * vo_gpu_next: set color directly using Wayland protocol
+  * wayland_common: only bind color surface when actually used
+  * player/playloop: clear demux packet pool on idle
+  * DOCS/man/input: add tablet-pos node map schema
+  * osc.lua: add audioonlyscreen script option
+  * DOCS/man/input: fix typo
+  * osc.lua: make logo centered
+  * osc.lua: render logo and osc on separate layers
+  * auto_profiles.lua: evaluate conditional profiles on on_loaded hook
+  * player/loadfile: add on_loaded hook
+  * select.lua: fix crash on user_profiles sort
+  * mp.input: allow clients to override console.lua script-opts
+  * ci/win32: change from choco to winget
+  * Revert "ci/win32: downgrade meson to 1.9.2"
+  * ci/win32: pre-generate SPIRV-Tools build-version.in
+  * osc.lua: avoid use of goto
+  * vo_gpu_next: add scRGB support
+  * vo_gpu_next: always clip hdr.prim to container primaries
+  * wayland: dispatch queue until image_description_pending flag is cleared
+  * etc/restore-old-bindings.conf: add changed bindings
+  * osc.lua: clean areas autohide
+  * osc.lua: make top/bottom bar show independently on mouse proximity
+  * DOCS/man/lua: remove REPL reference
+  * screenshot: use mp_strip_ext for %F
+  * misc/path_utils: new mp_strip_ext shorthand
+  * misc/path_utils: fix mp_splitext bugs
+  * screenshot: remove redundant mkdirp call
+  * screenshot: fix %f with trailing slashes
+  * vo,vo_dmabuf_wayland: remove vo_wait_on_vo
+  * wayland: do a roundtrip to wait for image description creation
+  * video/out/gpu: signal correctly if set_color is supported
+  * DOCS/man/options: don't recommend --sub-justify=left
+  * DOCS/man/lua: document remaining input.select() fields
+  * osc.lua: fix mouse position init
+  * vo_gpu_next: use typed variable for alpha
+  * vo_gpu_next: fix rgb range in Wayland hint
+  * wayland: invert image_description_processed boolean
+  * wayland: use set_color for vo_wayland_handle_color
+  * context_drm_egl: use set_color for handling colorspaces
+  * video/out/gpu: add set_color ra_swapchain_fns
+  * context_drm_egl: use target_csp to signal HDR
+  * video/out/gpu: remove pass_colorspace ra_ctx_fns
+  * ytdl_hook.lua: use the new request_size AVOption when needed
+  * player/command: apply `expand-properties` modifier also for string lists
+  * input.lua: don't shadow the global type() function
+  * mp.input: sanitise client inputs
+  * console.lua: guard against invalid arguments to script-messages
+  * menu.conf: add a Reload menu item
+  * input.conf: bind Ctrl+r to reload the current file
+  * command: let playlist-play-index current preserve file-local-options
+  * commands.lua: return empty completions on early returns
+  * screenshot: percent decode filename if it's a URI
+  * DOCS/man/mpv: document that URLs should be percent-encoded
+  * github/issue_template: clarify "latest mpv version"
+  * console.lua: prevent outdated completions from being selected
+  * DOCS/interface-changes: change how mp.input completions are returned
+  * mp.input: avoid displaying outdated completions from the same client
+  * commands.lua: use new mp.input complete method
+  * mp.input: allow async completions
+  * DOCS/man/lua: update recommended use of the mp.input `opened` event
+  * console.lua: remove undocumented `dont_bind_up_down` option
+  * stats.lua: correctly override mp.input keybinds
+  * console.lua: flush keybinds before sending mp.input `opened` events
+  * m_option: also clamp OPT_FLOAT values for float_set
+  * m_option: remove duplicated code for float/double range check
+  * demux_lavf: get codec info from AVCodecParameters
+  * command: add track-list/N/demux-duration property
+  * stats.lua: add track_info_selected_only script option
+  * demux_lavf: also make demux-bitrate available for video
+  * stats.lua: display file duration on page 5
+  * stats.lua: add format entry to page 5
+  * stats.lua: rename format to codec on page 5
+  * DOCS/man/input: add/update MPV_FORMAT_NODE map and array pseudo structs
+  * console.lua: deduplicate code between get-input and handle_cursor_move
+  * m_option: fix x:y mode format when printing geometry
+  * ci/win32: update runners to windows-2025-vs2026
+  * ci/win32: use vswhere to find Visual Studio
+  * {demux,player}: expose original and commentary track flags
+  * vf_d3d11vpp: set output format for NVIDIA RTX Video HDR
+  * vf_d3d11vpp: add dots to logs
+  * vf_d3d11vpp: use ID3D11VideoContext1 interface for setting color space
+  * hwdec_d3d11va: add support for RGB formats
+  * ra_d3d11: allow mapping rgba10_a2 format
+  * video/img_format: add repack test for new formats
+  * video/img_format: add IMGFMT definitions for x2bgr10 and rgba16f
+  * video/img_format: move IMGFMT_X2RGB10 from custom range
+  * video/img_format: remove custom rgb30 definition
+  * video/img_format: rename IMGFMT_RGB30 to IMGFMT_X2RGB10
+  * vo_drm: don't define custom IMGFMT values
+  * vo_drm: use always little endian formats
+  * vo_drm: fix xbgr2101010 format mapping
+  * vf_d3d11vpp: use half-rate for IVTC mode
+  * vf_d3d11vpp: print supported custom rates
+  * vf_d3d11vpp: fix deinterlacing
+  * video/filter/refqueue: add mp_refqueue_output_fields
+  * vf_d3d11vpp: update mode selection logging
+  * vf_d3d11vpp: rename `ivctc` to `ivtc`
+  * select.lua: don't set an empty prompt
+  * select.lua: sort the track submenu
+  * Revert "ci/tumbleweed: disable sanitizers for GCC build"
+  * demux_mf: satisfy gcc ubsan so it doesn't produce bogus warnings
+  * player: don't mangle current playlist entry before initialization
+  * wayland: handle all outputs disappearing without segfaulting
+  * vo_dmabuf_wayland: only wait for image description if we have a buffer
+  * vo: clear request_redraw in render_frame only if video is playing
+  * d3d11: support `--d3d11-output-format` fully for `gpu-next`
+  * d3d11: set pl_d3d11_swapchain_params.alpha_bits if alpha is needed
+  * vulkan: set pl_vulkan_swapchain_params.alpha_bits if alpha needed
+  * test/img_format: remove dead code
+  * test/repack: test draw_bmp at some uneven sizes
+  * test: add reference files for ffmpeg 8
+  * mp.input: deprecate log_error()
+  * wayland_common: improve probing behavior and logging
+  * sub/draw_bmp: limit memset to available width in last slice
+  * osdep/w32_register: fix EstimatedSize
+  * wayland: set image_description_processed when not using color mgmnt
+  * select.lua: quote and escape string arguments in menu item commands
+  * menu.conf: change duplicate hints
+  * vo: reset wait_on_vo if render_frame is called without current_frame
+  * DOCS/man/lua: fix the arg of callback function for "mp.register_event"
+  * select.lua: handle empty lines at the end of the file
+  * select.lua: handle carriage returns in menu.conf
+  * context_menu.lua: apply disabled_color to separators
+  * player/command: fix repeatable frame stepping with the seek argument
+  * select.lua: always observe --osd-playlist-entry
+  * console.lua: allow scrolling up the log until only one line remains
+  * demux/packet_pool: unref packet early if we can do it without penalty
+  * demux/packet_pool: always return default packet state from pop
+  * demux/packet: add demux_packet_unref helper
+  * select.lua: update the playlist submenu after playlist-move
+  * menu.conf: change duplicate hints
+  * menu.conf: add open-chat to the context menu
+  * context_menu.lua: make ESC close only submenus when they are open
+  * context_menu.lua: activate key hints with caps lock
+  * input.conf: add context menu bindings
+  * select.lua: populate the context menu
+  * select.lua: skip key bindings of forced input sections
+  * command: add the default-menu property
+  * menu.conf: add this file
+  * input.conf: format some commands more consistently
+  * win32/menu: add mnemonic `v` for mpv sub-menu
+  * context_menu.lua: implement key hints
+  * win32/menu: resolve system menu identity crisis
+  * Revert "ci/win32: manually install cmake to fix cpu detection issue"
+  * wayland_common: remove pl_color_space_infer
+  * mp_image: call pl_color_space_infer in guess_csp
+  * vo_dmabuf_wayland: ensure target params consistency
+  * select.lua: add dvb_subtitle to the list of image subtitle codecs
+  * vo_kitty: add missing sequence end on unint
+  * DOCS/man/options: fix typos and grammar errors
+  * wayland: add identity-rgb format mappings in color-representation
+  * test/samples: use mpeg2 codec for video samples
+  * player/loadfile: never autoselect tracks with wrong PID
+  * test/libmpv_test_track_selection: add a program ID matching test
+  * test/libmpv_test_track_selection: add a more complex locale test
+  * test/libmpv_test_track_selection: add a locale test with forced tracks
+  * test/libmpv_test_track_selection: add additional multilang test case
+  * player/loadfile: simplify how external tracks are excluded
+  * player/loadfile: simplify track selection logic
+  * player/loadfile: clean up track comparison logic
+  * player/loadfile: remove forced param from compare_track
+  * opengl/context: remove unneeded ra_swapchain_fns redirection
+  * opengl/context: require swap_buffers param for FenceSync
+  * DOCS/man/commands: update an example
+  * DOCS/man/lua: suggest keep_open for nested mp.input calls
+  * DOCS/man/mpv: reference `low-latency` profile in `network` example
+  * vo_gpu{,_next}: fix overriding scaling parameters for inherited kernels
+  * ci/mac: install ffmpeg-full with homebrew when available
+  * builtin.conf: enable antiringing in high quality profile
+  * command: remember the language when reloading tracks
+  * command: set the language of added tracks from the filename
+  * DOCS/man/options: document that --script is not limited to Lua
+  * mp.input: send buffer ids with logs to avoid race conditions
+  * mp.input: avoid rare race condition when supplying completions
+  * mp.input: remove race conditions when calling `input.terminate()`
+  * mp.input: use unique event handlers for input.get requests
+  * player/loadfile: possibly do a reset of sd_ass when turning on video
+  * sd_ass: clear num_packets_animated on every reset
+  * player: make effective image_display_duration playback_speed aware
+  * select.lua: link to mpv's IRC channel in the menu
+  * f_auto_filters: rework --deinterlace=auto option
+  * osdep/language-win: remove use of GetSystemPreferredUILanguages
+  * DOCS/man/libmpv: fix typo
+  * options/options: add several audio extentions
+  * vo: wake up core when VO requests redraw
+  * wayland: move info_done variable to vo_wayland
+  * ci/msys2: add build with -ftrivial-auto-var-init
+  * ci/msys2: build also clang64 without ASAN
+  * Revert "ci/build-msys2.sh: disable pdf-build for clangarm64"
+  * osdep/language-win: fix use of GetUserPreferredUILanguages()
+  * vo: allow VOs to request waiting before advancing frames
+  * ao_pipewire: remove the `node.always-process` attribute
+  * DOCS/man/options: fix typo (double "for")
+  * sub/sd_sbr: pass track language to `sbr_load_text`
+  * wayland: move image description info to separate queue
+  * sub/sd_sbr: use instanced rendering to avoid blending in software
+  * sub/ass_mp: split out packer into a separate file
+  * DOCS/contribute.md: address the AI menace
+  * demux_playlist: expand tilde placeholders in playlist files
+  * Revert "{osc,select}.lua: show playlist entries with trailing /"
+  * various: don't normalize playlist filenames again
+  * common/playlist: store normalized playlist filenames
+  * misc/path_utils: ensure mp_normalize_path never returns NULL
+  * demux_playlist: add base paths when adding playlist entries
+  * vo: don't set request_redraw on redraw path
+  * video/out/drm_common: fix uninitialized var
+  * mac/view: make our view aware of possible transparent rendering
+  * mac/common: add support for transparent rendering
+  * mac/vulkan: force proper opaque state on metal layer
+  * ci: cancel pr jobs after new push
+  * player/command: refactor loadfile and loadlist commands to use flags
+  * w32_common: release all input when entering context menu
+  * w32_common: defer context menu update to WM_INITMENU
+  * vo_gpu_next: undo dither-depth=auto meaning 8bpc for SDR when undetected
+  * video/out/vulkan/context_wayland: implement color_depth
+  * console.lua: only clip items between UTF-8 characters
+  * console.lua: implement horizontal scroll
+  * console.lua: bind Shift+UP and DOWN to scroll the log
+  * console.lua: avoid empty lines at the bottom after resizing window
+  * player/playloop: handle force window in playloop
+  * ci/win32: add subrandr
+  * player/loadfile: indent file metadata if it is multiline
+  * common/msg: allow only SGR sequence in terminal output
+  * ci/mac: remove unneeded FFMPEG_SYSROOT pkg-config path
+  * ci/mac: add homebrew libarchive pkg-config path to PKG_CONFIG_PATH
+  * ci/mac: add missing libraries for consistency with other platforms
+  * github/issue_template: add IDs to textarea fields for URL queries
+  * path-unix: check fopen value, and also call fclose
+  * command: add libplacebo-version property
+  * version.h.in: bump copyright year
+  * ci/win32: upload pdb separately
+  * ci: make artifact names more descriptive
+  * console.lua: remove selected_color and selected_back_color
+  * vulkan/context: add driver name to --vulkan-device=help
+  * playloop: unset last_chapter_flag when queueing non-chapter seeks
+  * sub/draw_bmp: fix rgba alpha blending
+  * video/out/opengl/context_wayland: cleanup vo when egl fails to init
+  * select.lua: preserve empty LRC lines
+  * console.lua: don't error if compute_bounds doesn't return dimensions
+  * screenshot: correctly detect hardware frame
+  * sub/sd_sbr: check runtime version
+  * ci/msys2: enable subrandr on clang64
+  * sub/sd_sbr: respect `sub-use-margins`
+  * ci/{win32,mingw64,msys2}: add amf-headers
+  * video/filter/vf_amf: add AMD Frame Rate Conversion filter
+  * mp_image_pool: set D3D11 BindFlags for all hw frame pools
+  * demux/demux_sbr: re-emit packet after seek
+  * sub/sd_sbr: mark subtitle packets as animated
+  * sub/sd_sbr: add logging callback
+  * ci: build with subrandr on Linux
+  * ci: build with subrandr on mingw64 and msys2
+  * sub/sd_sbr: log errors from subrandr functions
+  * demux/demux_sbr: allow configuring probe size
+  * ytdl_hook: recognize srv3 subtitle format if subrandr is present
+  * player/command: add subrandr-version property
+  * sub: add subrandr renderer support
+  * DOCS/man/options: update macOS requirements and remove unsupported
+  * wayland: accept version 7 of xdg-shell
+  * wayland: accept version 2 of wl_shm
+  * wayland: accept version 5 of linux-dmabuf
+  * wayland: bind to the linux-dmabuf in stable instead
+  * ci/build-linux-old: remove custom libplacebo build
+  * ci/linux-ffmpeg-6-1: add wayland-protocols
+  * meson: check wayland-scanner version
+  * wayland_common: suppress unused function warning on older protocols
+  * wayland: guard wp_color_manager_v1_get_version usage
+  * wayland: bump wayland-protocols minimum version to 1.38
+  * wayland: bump libwayland minimum version to 1.22
+  * vo: limit manual redraws to estimated display fps
+  * vf_format: deprecate `--vf=format=sig-peak`
+  * mac/touchbar: remove manual 1 second rate limit of position property
+  * mac/remote: remove manual 1 second rate limit of position property
+  * mac/event: add MPV_FORMAT_INT64 handler
+  * mac/type: add Int64 type conversion helper
+
+-------------------------------------------------------------------
 Sun Dec 21 19:40:41 UTC 2025 - llyyr <llyyr@yukari.in>
 
 - Update to version 0.41.0+git20251221.d0e24ab17a:

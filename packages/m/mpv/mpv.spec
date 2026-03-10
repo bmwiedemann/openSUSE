@@ -1,7 +1,7 @@
 #
 # spec file for package mpv
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2015 Packman Team <packman@links2linux.de>
 # Copyright (c) 2012 Jiri Slaby <jslaby@suse.de>
 # Copyright (c) 2011-2012 Pascal Bleser <pascal.bleser@opensuse.org>
@@ -21,7 +21,7 @@
 
 %define lname   libmpv2
 Name:           mpv
-Version:        0.41.0+git20251221.d0e24ab17a
+Version:        0.41.0+git20260309.07c3ff3725
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
@@ -88,6 +88,13 @@ BuildRequires:  pkgconfig(xscrnsaver) >= 1.0.0
 BuildRequires:  pkgconfig(xv)
 BuildRequires:  pkgconfig(zimg) >= 2.9
 BuildRequires:  pkgconfig(zlib)
+# Test suite is crippled without real FFmpeg
+BuildConflicts: ffmpeg-6-mini-devel
+BuildConflicts: ffmpeg-6-mini-libs
+BuildConflicts: ffmpeg-7-mini-devel
+BuildConflicts: ffmpeg-7-mini-libs
+BuildConflicts: ffmpeg-8-mini-devel
+BuildConflicts: ffmpeg-8-mini-libs
 # Used via Lua scripts
 Recommends:     yt-dlp
 Conflicts:      mpv-plugin-mpris < 0.4
@@ -101,8 +108,6 @@ BuildOption:    -Dopenal=enabled
 BuildOption:    -Dtests=true
 # We don't want to rebuild all the time.
 BuildOption:    -Dbuild-date=false
-# These tests need more FFmpeg than ffmpeg-mini provides
-BuildOption(check): --no-suite=libmpv
 # JIT for Lua.
 %ifarch aarch64 %{ix86} x86_64 riscv64
 BuildRequires:  pkgconfig(luajit)

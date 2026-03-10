@@ -3554,4 +3554,41 @@
     <comment></comment>
     <requestid>1324001</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>452d5ea74f439002a6317484a050fa51</srcmd5>
+    <version>0.41.0+git20260309.07c3ff3725</version>
+    <time>1773161819</time>
+    <user>anag_factory</user>
+    <comment>- Force non-mini FFmpeg to allow test suite to run
+- Update to version 0.41.0+git20260309.07c3ff3725:
+  * command: reject negative offset for overlay-add
+  * wayland_common: add scRGB support
+  * include/mpv/client: remove mpv_suspend() reference
+  * wayland_common: keep unaltered hint params for changed check
+  * wayland_common: warn on not supported color representation
+  * vo_dmabuf_wayland: add BT.2100 mapping
+  * vo_dmabuf_wayland: use color parameters prepared in reconfig
+  * video/out/opengl/context_wayland: export preferred colorspace
+  * vo_wlshm: use image params after conversion
+  * wayland_common: scale preferred luminances
+  * wayland_common: set luminances
+  * vo_gpu_next: set color directly using Wayland protocol
+  * wayland_common: only bind color surface when actually used
+  * player/playloop: clear demux packet pool on idle
+  * DOCS/man/input: add tablet-pos node map schema
+  * osc.lua: add audioonlyscreen script option
+  * DOCS/man/input: fix typo
+  * osc.lua: make logo centered
+  * osc.lua: render logo and osc on separate layers
+  * auto_profiles.lua: evaluate conditional profiles on on_loaded hook
+  * player/loadfile: add on_loaded hook
+  * select.lua: fix crash on user_profiles sort
+  * mp.input: allow clients to override console.lua script-opts
+  * ci/win32: change from choco to winget
+  * Revert &quot;ci/win32: downgrade meson to 1.9.2&quot;
+  * ci/win32: pre-generate SPIRV-Tools build-version.in
+  * osc.lua: avoid use of goto
+  * vo_gpu_next: add scRGB support</comment>
+    <requestid>1337892</requestid>
+  </revision>
 </revisionlist>
