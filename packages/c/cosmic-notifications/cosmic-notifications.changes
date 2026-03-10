@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Mar  9 13:58:45 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.8:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Mon Feb 23 17:51:47 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.7:
+  * i18n: translation updates from weblate
+  * Add pull request template
+
+-------------------------------------------------------------------
+Thu Feb 12 09:57:12 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.6:
+  * Support file:// URLs in app_icon field
+
+-------------------------------------------------------------------
+Thu Feb 05 02:05:55 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.5:
+  * i18n: translation updates from weblate
+  * Update com.system76.CosmicNotifications.metainfo.xml
+  * Update com.system76.CosmicNotifications.desktop
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * cleanup: logs
+  * fix: typo
+  * fix: group and sort after expiring a notification
+  * fix: cleanup layer surface
+  * fix: better handling of expired notifications
+
+-------------------------------------------------------------------
+Wed Dec 31 01:02:34 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.1:
+  * i18n: removing translation for Frankish
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
 Thu Dec 11 17:28:46 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0+0:
