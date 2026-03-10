@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 10 08:15:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.1:
+  * Remove use of removed testtools.compat helpers
+  * Enable Python 3.14 testing and indicate support in package
+    metadata
+
+-------------------------------------------------------------------
 Tue Aug  5 11:06:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.2.0

@@ -351,4 +351,15 @@
     <comment></comment>
     <requestid>1297989</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2fca0dcde5d1a718938847e5da3437b7</srcmd5>
+    <version>4.2.1</version>
+    <time>1773161805</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.2.1:
+  * Remove use of removed testtools.compat helpers
+  * Enable Python 3.14 testing and indicate support in package
+    metadata</comment>
+    <requestid>1337896</requestid>
+  </revision>
 </revisionlist>
