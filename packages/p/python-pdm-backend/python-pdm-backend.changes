@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  3 18:56:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.7:
+  * Allow user to override wheel with multiple plat tags
+  * Switch dev-dependencies to dependency-groups
+
+-------------------------------------------------------------------
 Sun Dec 28 19:28:44 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.6:

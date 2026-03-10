@@ -85,4 +85,14 @@
   * Add license file metadata  -</comment>
     <requestid>1324584</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dad3d449ec4c135cef3e5690a8751575</srcmd5>
+    <version>2.4.7</version>
+    <time>1773161205</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.4.7:
+  * Allow user to override wheel with multiple plat tags
+  * Switch dev-dependencies to dependency-groups</comment>
+    <requestid>1337523</requestid>
+  </revision>
 </revisionlist>
