@@ -2324,4 +2324,12 @@ there will be 4 permissive avcs left regarding pcrlock, but those will be fixed 
     <comment>nnp-transition</comment>
     <requestid>1336792</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>52d1e602eeb4f031c14733c88f530c71</srcmd5>
+    <version>20260310</version>
+    <time>1773171313</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1338077</requestid>
+  </revision>
 </revisionlist>

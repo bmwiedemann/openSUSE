@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar 10 17:22:53 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 20260310:
+  * Allow wtmpdbd to read pidfs (bsc#1259444)
+  * Allow systemd-mountfsd the perfmon capability
+  * Allow lttng tracing in default configuration
+  * Allow rtkit-daemon write systemd inhibit pipes
+  * Apply the systemd system generator template to the kdump-dep generator
+  * Apply the systemd system generator template to the anaconda generator
+  * Dontaudit ps permissions that tlp_t does not need (bsc#1257527)
+  * TLP uses ps aux to check for different services (bsc#1257527)
+  * Introduce separate types for generic systemd generators.
+  * Confine system generator nm-initrd-generator.sh (bsc#1257754)
+  * Allow rtkit-daemon dbus chat with systemd-logind
+  * ecryptfs uses /home/.ecryptfs for full homedir encryption (bsc#1258350)
+  * Dontaudit tlshd write generic certificate dirs
+- Syncing with upstream rawhide selinux-policy up to:
+  * 8507a66c816a382439d4933cfff14c8ee8a83d1e
+
+-------------------------------------------------------------------
 Tue Mar 03 15:50:01 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20260303:
