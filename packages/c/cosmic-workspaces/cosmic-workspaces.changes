@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Feb 24 21:03:27 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.8:
+  * improv(view): use ellipsis for labels
+  * chore: update dependencies
+  * cleanup
+  * chore: clippy
+
+-------------------------------------------------------------------
+Mon Feb 23 19:25:34 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.7:
+  * i18n: translation updates from weblate
+  * Add pull request template
+  * backend/wayland/vulkan: Enable `VK_EXT_physical_device_drm` extension
+  * Update com.system76.CosmicWorkspaces.desktop
+  * Added updated Cargo.lock
+  * Added branch action-on-typing to dependency cosmic-comp-config, which
+    (unless merged) contains necessary changes to build cosmic-workspaces
+  * Added feature "action on typing", i.e. cosmic-workspaces opens
+    cosmic-launcher or cosmic-app-library, if the setting is set. When opened
+    by typing, cosmic-launcher or cosmic-app-library are closed when existing
+    the workspaces overview. Changed exiting workspaces overview by pressing
+    Escape from KeyReleased to KeyPressed to improve interaction between
+    cosmic-workspaces and cosmic-launcher/cosmic-app-library
+
+-------------------------------------------------------------------
+Thu Feb 12 10:44:05 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.6:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Thu Feb 05 02:51:38 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.5:
+  * i18n: translation updates from weblate
+  * Update com.system76.CosmicWorkspaces.desktop
+  * i18n: translation updates from weblate
+  * i18n(bg): update desktop info
+
+-------------------------------------------------------------------
+Sun Jan 25 18:29:11 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Replace %define with %global in .spec 
+- Update to version 1.0.3:
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Wed Dec 31 01:39:31 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.1:
+  * i18n: removing translation for Frankish
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
 Thu Dec 11 19:45:21 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0+0:

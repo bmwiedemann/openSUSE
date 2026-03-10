@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-workspaces
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define         appname com.system76.CosmicWorkspaces
+%define         appid com.system76.CosmicWorkspaces
 Name:           cosmic-workspaces
-Version:        1.0.0+0
+Version:        1.0.8
 Release:        0
 Summary:        COSMIC workspaces
 License:        GPL-3.0-only
@@ -29,6 +29,7 @@ BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  make
 BuildRequires:  pkgconfig
+BuildRequires:  rust >= 1.90
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(libinput)
@@ -54,7 +55,7 @@ BuildRequires:  pkgconfig(xkbcommon)
 %files
 %license LICENSE
 %{_bindir}/%{name}
-%{_datadir}/applications/%{appname}.desktop
-%{_datadir}/icons/hicolor/scalable/apps/%{appname}.svg
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/icons/hicolor/scalable/apps/%{appid}.svg
 
 %changelog
