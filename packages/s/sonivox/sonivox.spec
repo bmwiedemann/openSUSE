@@ -18,7 +18,7 @@
 
 %define soversion 4
 Name:           sonivox
-Version:        4.0.0
+Version:        4.0.1
 Release:        0
 Summary:        Fork of the AOSP 'platform_external_sonivox' project
 License:        Apache-2.0

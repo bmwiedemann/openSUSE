@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 10 10:06:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 4.0.1
+  * add option to install dependencies
+  * fix EAS_SetSoundLibrary and EAS_LoadDLSCollection
+  * Enable FM Synth by default in CMake
+
+-------------------------------------------------------------------
 Sat Jan 17 12:08:50 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 4.0.0
