@@ -1,8 +1,12 @@
 -------------------------------------------------------------------
-Mon Mar 09 13:08:18 UTC 2026 - okurz@suse.com
+Mon Mar 09 15:07:31 UTC 2026 - okurz@suse.com
 
-- Update to version 5.1773056733.e071deaf:
+- Update to version 5.1773068319.a9347c1b:
+  * docs: Link to latest passed job to ensure the download tab exists
   * feat: allow filtering by job result and state in /tests/latest
+  * style: Always pass a regex match to split
+  * style: Use map only in block form
+  * style: Use grep only in block form
   * style(gitlint): allow unwrappable longer URLs in git commit message body
   * feat: unify priority management of max_job_time and throttling
   * ci(helm): pull container images in advance
