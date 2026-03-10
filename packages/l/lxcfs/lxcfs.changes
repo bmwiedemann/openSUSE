@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Feb 26 08:46:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.0.6:
+  https://discuss.linuxcontainers.org/t/lxcfs-6-0-6-lts-has-been-released/26263
+  The highlights for this release are:
+  * Fix issue with CPU count in /proc/stat
+  * Fix issue causing the cgroup2 mount flags to be changed on
+    startup
+  Detailed changelog
+  * proc_fuse: fix proc_stat_read reporting host cpu count under
+    cgroup v2
+  * cgroups: extract cgfsng_can_use_memory_feature() util function
+  * cgroups: replace dup() call with openat_safe()
+  * src/utils: fix in_same_namespace helper
+  * bindings: add private_data field to struct file_info
+  * meson: add “mocks” option for CI/testing purposes
+  * github: enable mocks for CI builds
+  * lxcfs: use macro to generate liblxcfs call helpers
+  * lxcfs: wire up ->write callback for /proc
+  * lxcfs: wire up ->poll callback for /proc
+  * proc_fuse: move release/releasedir at the end
+  * cgroups/cgfsng: fix whitespace errors in __cg_mount_direct
+  * cgroups/cgfsng: do not change host-wide cgroup2 superblock
+    options
+  * github: pass LIBFUSE env variable to upgrade tests
+  * github: enable mocks for CI upgrade tests
+  * meson: don’t forget to set PSI trigger mocks for liblxcfstest
+  * cgroups/cgfsng: check memory allocation in add_hierarchy
+
+-------------------------------------------------------------------
 Sat Aug 16 17:17:24 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to 6.0.5. The upstream changelog can be found at
