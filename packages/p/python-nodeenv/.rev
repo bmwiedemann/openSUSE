@@ -147,4 +147,19 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems only</comment>
     <requestid>1300759</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a7dae8c6dbe5b40c7a49744e13b6291b</srcmd5>
+    <version>1.10.0</version>
+    <time>1773161239</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.10.0:
+  * Use lowercase lookup for archmap
+  * Add support for Python 3.13
+  * Add UV Virtual Environment support
+  * Use sh instead of bash
+  * Replace additional use of `which(1)` with `shutil.which()`
+  * Support leading `v` in `.node-version`
+  * Check host platform when finding `node` version</comment>
+    <requestid>1337643</requestid>
+  </revision>
 </revisionlist>

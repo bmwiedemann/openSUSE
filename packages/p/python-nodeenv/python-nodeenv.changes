@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  9 11:46:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.0:
+  * Use lowercase lookup for archmap
+  * Add support for Python 3.13
+  * Add UV Virtual Environment support
+  * Use sh instead of bash
+  * Replace additional use of `which(1)` with `shutil.which()`
+  * Support leading `v` in `.node-version`
+  * Check host platform when finding `node` version
+
+-------------------------------------------------------------------
 Thu Aug 21 10:00:55 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only

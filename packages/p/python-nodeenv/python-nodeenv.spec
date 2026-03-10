@@ -1,7 +1,7 @@
 #
 # spec file for package python-nodeenv
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 %{?sle15allpythons}
 Name:           python-nodeenv
-Version:        1.9.1
+Version:        1.10.0
 Release:        0
 Summary:        Nodejs virtual environment builder
 License:        BSD-3-Clause
