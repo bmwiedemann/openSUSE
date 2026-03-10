@@ -21,4 +21,12 @@
 - [Skip submodule updates when building Rust from a source tarball.](https://github.com/rust-lang/rust/pull/137338/)</comment>
     <requestid>1255785</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>05f078fc08264b0836070fb30de43769</srcmd5>
+    <version>1.85.1</version>
+    <time>1773161625</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1337850</requestid>
+  </revision>
 </revisionlist>

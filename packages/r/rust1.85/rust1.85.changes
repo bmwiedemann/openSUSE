@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  4 20:21:37 UTC 2025 - Martin Jambor <mjambor@suse.com>
+
+- Add rust-build-onig_sys-as-C17.patch so that the package can be
+  built with GCC 15. [boo#1241943]
+
+-------------------------------------------------------------------
 Mon Mar 24 05:52:07 UTC 2025 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 Version 1.85.1 (2025-03-18)
@@ -31,7 +37,7 @@ Compiler
 - [The unstable flag `-Zpolymorphize` has been removed](https://github.com/rust-lang/rust/pull/133883), see https://github.com/rust-lang/compiler-team/issues/810 for some background.
 
 Platform Support
-----------------
+------
 - [Promote `powerpc64le-unknown-linux-musl` to tier 2 with host tools](https://github.com/rust-lang/rust/pull/133801)
 
 Refer to Rust's [platform support page][platform-support-doc]
@@ -46,7 +52,7 @@ Libraries
 - [Add `AsyncFn*` to the prelude in all editions.](https://github.com/rust-lang/rust/pull/132611)
 
 Stabilized APIs
----------------
+------
 
 - [`BuildHasherDefault::new`](https://doc.rust-lang.org/stable/std/hash/struct.BuildHasherDefault.html#method.new)
 - [`ptr::fn_addr_eq`](https://doc.rust-lang.org/std/ptr/fn.fn_addr_eq.html)
@@ -96,7 +102,7 @@ Rustdoc
 - [Doc comment on impl blocks shows the first line, even when the impl block is collapsed](https://github.com/rust-lang/rust/pull/132155)
 
 Compatibility Notes
--------------------
+-----
 - [`rustc` no longer treats the `test` cfg as a well known check-cfg](https://github.com/rust-lang/rust/pull/131729), instead it is up to the build systems and users of `--check-cfg`[^check-cfg] to set it as a well known cfg using `--check-cfg=cfg(test)`.
 
   This is done to enable build systems like Cargo to set it conditionally, as not all source files are suitable for unit tests.
@@ -118,7 +124,7 @@ Compatibility Notes
 - [Change `powerpc64-ibm-aix` default `codemodel` to large](https://github.com/rust-lang/rust/pull/133811)
 
 Internal Changes
-----------------
+------
 
 These changes do not affect any public interfaces of Rust, but they represent
 significant improvements to the performance or internals of rustc and related
