@@ -17,7 +17,7 @@
 
 
 Name:           skaffold
-Version:        2.17.2
+Version:        2.17.3
 Release:        0
 Summary:        Easy and Repeatable Kubernetes Development
 License:        Apache-2.0
@@ -102,6 +102,9 @@ mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
 # create the zsh completion file
 mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
 %{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
+
+%check
+%{buildroot}/%{_bindir}/%{name} version | grep %{version}
 
 %files
 %doc README.md
