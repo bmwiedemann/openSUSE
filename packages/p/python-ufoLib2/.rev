@@ -129,4 +129,19 @@ Requires python-setuptools 78 to build successfully.
 </comment>
     <requestid>1264895</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>29fca060865b47a7d9429149f5808d70</srcmd5>
+    <version>0.18.1</version>
+    <time>1773161811</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.18.1:
+  * Ignore temporary directory cleanup errors
+- update to 0.18.0:
+  * Housekeeping
+  * Fix typo in width class label
+  * Drop support for EOL Python 3.8, update requirements
+  * don't import fs module, replace tempfs with
+    tempfile.TemporaryDir</comment>
+    <requestid>1337909</requestid>
+  </revision>
 </revisionlist>

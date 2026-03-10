@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 10 08:25:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.18.1:
+  * Ignore temporary directory cleanup errors
+- update to 0.18.0:
+  * Housekeeping
+  * Fix typo in width class label
+  * Drop support for EOL Python 3.8, update requirements
+  * don't import fs module, replace tempfs with
+    tempfile.TemporaryDir
+
+-------------------------------------------------------------------
 Wed Mar 26 07:56:26 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Normalize metadata directory name.
