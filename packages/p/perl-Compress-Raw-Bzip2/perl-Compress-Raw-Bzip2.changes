@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar  9 06:14:33 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.218
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.218 8 March 2026
+        * Version 2.218
+          Sun Mar 8 13:47:17 2026 +0000
+          be6054d7ed1536eec4e5cf04117f251fb4389d59
+        * Add SECURITY.md Fixes #18
+          Sun Mar 8 12:14:23 2026 +0000
+          69f9bdebf9fd8b1c5d132e1a423fb7477aa4b347
+        * fix spelling typo
+          Tue Feb 24 19:49:03 2026 +0000
+          d8b7ef4eb1507575598430c5e23e2cba95ca410e
+
+-------------------------------------------------------------------
 Sun Feb  1 06:10:28 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.217

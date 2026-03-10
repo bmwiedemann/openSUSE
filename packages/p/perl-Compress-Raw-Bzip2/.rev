@@ -40,4 +40,23 @@
           773773f59082a73134212a2d63368683027122ed</comment>
     <requestid>1332517</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bf0e2ed2e70c19d5d51d3115cacc06bc</srcmd5>
+    <version>2.218</version>
+    <time>1773161273</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.218
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+    2.218 8 March 2026
+        * Version 2.218
+          Sun Mar 8 13:47:17 2026 +0000
+          be6054d7ed1536eec4e5cf04117f251fb4389d59
+        * Add SECURITY.md Fixes #18
+          Sun Mar 8 12:14:23 2026 +0000
+          69f9bdebf9fd8b1c5d132e1a423fb7477aa4b347
+        * fix spelling typo
+          Tue Feb 24 19:49:03 2026 +0000
+          d8b7ef4eb1507575598430c5e23e2cba95ca410e</comment>
+    <requestid>1337663</requestid>
+  </revision>
 </revisionlist>

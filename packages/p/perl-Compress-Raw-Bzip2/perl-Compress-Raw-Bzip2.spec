@@ -18,7 +18,7 @@
 
 %define cpan_name Compress-Raw-Bzip2
 Name:           perl-Compress-Raw-Bzip2
-Version:        2.217
+Version:        2.218
 Release:        0
 #Upstream: Artistic-1.0 or GPL-1.0-or-later
 License:        (Artistic-1.0 OR GPL-1.0-or-later) AND BSD-3-Clause
@@ -55,6 +55,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes README
+%doc Changes README SECURITY.md
 
 %changelog
