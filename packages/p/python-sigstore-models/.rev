@@ -7,4 +7,14 @@
     <comment>Required by python-sigstore.</comment>
     <requestid>1316572</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>666258b0ebd185be6d0f33ed22c58e0b</srcmd5>
+    <version>0.0.6</version>
+    <time>1773161815</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.0.6:
+  * ci: chores, remove Python 3.9 support
+  * ci: publish: enable attestations</comment>
+    <requestid>1337912</requestid>
+  </revision>
 </revisionlist>

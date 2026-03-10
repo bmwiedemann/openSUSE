@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 10 08:34:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.6:
+  * ci: chores, remove Python 3.9 support
+  * ci: publish: enable attestations
+
+-------------------------------------------------------------------
 Tue Nov  4 22:22:04 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Initial packaging effort for python-sigstore-models 0.0.5.
