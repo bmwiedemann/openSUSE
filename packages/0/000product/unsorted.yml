@@ -1469,7 +1469,6 @@ unsorted:
   - bitlbee-discord 
   - bitlbee-doc 
   - bitlbee-facebook 
-  - bitlbee-steam 
   - bitmap 
   - bitstream-vera-fonts 
   - bittwist 
@@ -2548,6 +2547,7 @@ unsorted:
   - compsize 
   - conan 
   - conauto 
+  - confidential-computing.sgx 
   - conflict 
   - conftest 
   - conftest-bash-completion 
@@ -2798,6 +2798,8 @@ unsorted:
   - cross-aarch64-gcc14-bootstrap 
   - cross-aarch64-gcc15 
   - cross-aarch64-gcc15-bootstrap 
+  - cross-aarch64-gcc16 
+  - cross-aarch64-gcc16-bootstrap 
   - cross-aarch64-gcc7 
   - cross-aarch64-gcc7-icecream-backend 
   - cross-aarch64-glibc-devel 
@@ -2805,13 +2807,16 @@ unsorted:
   - cross-amdgcn-gcc13 
   - cross-amdgcn-gcc14 
   - cross-amdgcn-gcc15 
+  - cross-amdgcn-gcc16 
   - cross-amdgcn-newlib13-devel 
   - cross-amdgcn-newlib14-devel 
   - cross-amdgcn-newlib15-devel 
+  - cross-amdgcn-newlib16-devel 
   - cross-arm-binutils 
   - cross-arm-gcc13 
   - cross-arm-gcc14 
   - cross-arm-gcc15 
+  - cross-arm-gcc16 
   - cross-arm-gcc7 
   - cross-arm-linux-glibc-devel 
   - cross-arm-none-gcc13 
@@ -2820,6 +2825,8 @@ unsorted:
   - cross-arm-none-gcc14-bootstrap 
   - cross-arm-none-gcc15 
   - cross-arm-none-gcc15-bootstrap 
+  - cross-arm-none-gcc16 
+  - cross-arm-none-gcc16-bootstrap 
   - cross-arm-none-gcc7 
   - cross-arm-none-gcc7-bootstrap 
   - cross-arm-none-newlib-devel 
@@ -2830,12 +2837,15 @@ unsorted:
   - cross-avr-gcc14-bootstrap 
   - cross-avr-gcc15 
   - cross-avr-gcc15-bootstrap 
+  - cross-avr-gcc16 
+  - cross-avr-gcc16-bootstrap 
   - cross-avr-gcc7 
   - cross-avr-gcc7-bootstrap 
   - cross-bpf-binutils 
   - cross-bpf-gcc13 
   - cross-bpf-gcc14 
   - cross-bpf-gcc15 
+  - cross-bpf-gcc16 
   - cross-epiphany-binutils 
   - cross-hppa-binutils 
   - cross-hppa-gcc13-bootstrap 
@@ -2843,6 +2853,8 @@ unsorted:
   - cross-hppa-gcc14-bootstrap 
   - cross-hppa-gcc15 
   - cross-hppa-gcc15-bootstrap 
+  - cross-hppa-gcc16 
+  - cross-hppa-gcc16-bootstrap 
   - cross-hppa-gcc7 
   - cross-hppa-gcc7-icecream-backend 
   - cross-hppa-glibc-devel 
@@ -2858,6 +2870,8 @@ unsorted:
   - cross-loongarch64-gcc14-bootstrap 
   - cross-loongarch64-gcc15 
   - cross-loongarch64-gcc15-bootstrap 
+  - cross-loongarch64-gcc16 
+  - cross-loongarch64-gcc16-bootstrap 
   - cross-loongarch64-glibc-devel 
   - cross-loongarch64-linux-glibc-devel 
   - cross-m68k-binutils 
@@ -2871,16 +2885,19 @@ unsorted:
   - cross-nvptx-gcc13 
   - cross-nvptx-gcc14 
   - cross-nvptx-gcc15 
+  - cross-nvptx-gcc16 
   - cross-nvptx-gcc7 
   - cross-nvptx-newlib13-devel 
   - cross-nvptx-newlib14-devel 
   - cross-nvptx-newlib15-devel 
+  - cross-nvptx-newlib16-devel 
   - cross-nvptx-newlib7-devel 
   - cross-ppc-binutils 
   - cross-ppc64-binutils 
   - cross-ppc64-gcc13 
   - cross-ppc64-gcc14 
   - cross-ppc64-gcc15 
+  - cross-ppc64-gcc16 
   - cross-ppc64-gcc7 
   - cross-ppc64-gcc7-icecream-backend 
   - cross-ppc64-linux-glibc-devel 
@@ -2891,6 +2908,8 @@ unsorted:
   - cross-ppc64le-gcc14-bootstrap 
   - cross-ppc64le-gcc15 
   - cross-ppc64le-gcc15-bootstrap 
+  - cross-ppc64le-gcc16 
+  - cross-ppc64le-gcc16-bootstrap 
   - cross-ppc64le-gcc7 
   - cross-ppc64le-gcc7-icecream-backend 
   - cross-ppc64le-glibc-devel 
@@ -2899,6 +2918,7 @@ unsorted:
   - cross-pru-gcc13-bootstrap 
   - cross-pru-gcc14-bootstrap 
   - cross-pru-gcc15-bootstrap 
+  - cross-pru-gcc16-bootstrap 
   - cross-pru-newlib-devel 
   - cross-riscv64-binutils 
   - cross-riscv64-elf-gcc13 
@@ -2907,12 +2927,16 @@ unsorted:
   - cross-riscv64-elf-gcc14-bootstrap 
   - cross-riscv64-elf-gcc15 
   - cross-riscv64-elf-gcc15-bootstrap 
+  - cross-riscv64-elf-gcc16 
+  - cross-riscv64-elf-gcc16-bootstrap 
   - cross-riscv64-gcc13 
   - cross-riscv64-gcc13-bootstrap 
   - cross-riscv64-gcc14 
   - cross-riscv64-gcc14-bootstrap 
   - cross-riscv64-gcc15 
   - cross-riscv64-gcc15-bootstrap 
+  - cross-riscv64-gcc16 
+  - cross-riscv64-gcc16-bootstrap 
   - cross-riscv64-glibc-devel 
   - cross-riscv64-linux-glibc-devel 
   - cross-riscv64-newlib-devel 
@@ -2923,6 +2947,8 @@ unsorted:
   - cross-rx-gcc14-bootstrap 
   - cross-rx-gcc15 
   - cross-rx-gcc15-bootstrap 
+  - cross-rx-gcc16 
+  - cross-rx-gcc16-bootstrap 
   - cross-rx-gcc7 
   - cross-rx-gcc7-bootstrap 
   - cross-rx-newlib-devel 
@@ -2934,6 +2960,8 @@ unsorted:
   - cross-s390x-gcc14-bootstrap 
   - cross-s390x-gcc15 
   - cross-s390x-gcc15-bootstrap 
+  - cross-s390x-gcc16 
+  - cross-s390x-gcc16-bootstrap 
   - cross-s390x-gcc7 
   - cross-s390x-gcc7-icecream-backend 
   - cross-s390x-glibc-devel 
@@ -4871,6 +4899,7 @@ unsorted:
   - gcc14-objc-32bit 
   - gcc14-rust 
   - gcc14-testresults 
+  - gcc15 
   - gcc15-32bit 
   - gcc15-PIE 
   - gcc15-ada 
@@ -4886,6 +4915,7 @@ unsorted:
   - gcc15-go 
   - gcc15-go-32bit 
   - gcc15-info 
+  - gcc15-locale 
   - gcc15-m2 
   - gcc15-m2-32bit 
   - gcc15-obj-c++ 
@@ -4893,6 +4923,30 @@ unsorted:
   - gcc15-objc 
   - gcc15-objc-32bit 
   - gcc15-testresults 
+  - gcc16-32bit 
+  - gcc16-PIE 
+  - gcc16-ada 
+  - gcc16-ada-32bit 
+  - gcc16-algol68 
+  - gcc16-algol68-32bit 
+  - gcc16-c++ 
+  - gcc16-c++-32bit 
+  - gcc16-cobol 
+  - gcc16-d 
+  - gcc16-d-32bit 
+  - gcc16-devel 
+  - gcc16-fortran 
+  - gcc16-fortran-32bit 
+  - gcc16-go 
+  - gcc16-go-32bit 
+  - gcc16-info 
+  - gcc16-m2 
+  - gcc16-m2-32bit 
+  - gcc16-obj-c++ 
+  - gcc16-obj-c++-32bit 
+  - gcc16-objc 
+  - gcc16-objc-32bit 
+  - gcc16-testresults 
   - gcc7 
   - gcc7-32bit 
   - gcc7-ada 
@@ -9620,6 +9674,7 @@ unsorted:
   - jp2a-bash-completion 
   - jp2a-zsh-completion 
   - jpcre2-devel 
+  - jpeginfo 
   - jpegoptim 
   - jpgpj 
   - jpgpj-javadoc 
@@ -10032,6 +10087,7 @@ unsorted:
   - keybinder-3.0-devel 
   - keychain 
   - keyd 
+  - keyfinder-cli 
   - keylightctl 
   - keylightd 
   - keylime-ima-policy 
@@ -11111,6 +11167,7 @@ unsorted:
   - libColPack0 
   - libColorFull0 
   - libConvexDecomposition3_17 
+  - libCppMicroServices4 
   - libDebugUtils1 
   - libDetour1 
   - libDetourCrowd1 
@@ -11921,6 +11978,8 @@ unsorted:
   - libada14-32bit 
   - libada15 
   - libada15-32bit 
+  - libada16 
+  - libada16-32bit 
   - libada7 
   - libada7-32bit 
   - libadapta-1-0 
@@ -12062,6 +12121,8 @@ unsorted:
   - libasan8-gcc13-32bit 
   - libasan8-gcc14 
   - libasan8-gcc14-32bit 
+  - libasan8-gcc15 
+  - libasan8-gcc15-32bit 
   - libasm-devel 
   - libasm1-32bit 
   - libasn1c-devel 
@@ -12089,6 +12150,8 @@ unsorted:
   - libatomic1-gcc13-32bit 
   - libatomic1-gcc14 
   - libatomic1-gcc14-32bit 
+  - libatomic1-gcc15 
+  - libatomic1-gcc15-32bit 
   - libatomic1-gcc7 
   - libatomic1-gcc7-32bit 
   - libatomic_ops-devel 
@@ -12878,6 +12941,7 @@ unsorted:
   - libdc1394-tools 
   - libdca-devel 
   - libdca0-32bit 
+  - libdcap_quoteprov1 
   - libdcmtk20 
   - libddcutil-devel 
   - libdeal_II9_7_1 
@@ -13414,6 +13478,8 @@ unsorted:
   - libfwsi1 
   - libfyaml-devel 
   - libfyaml-fy-tool 
+  - libga68-2 
+  - libga68-2-32bit 
   - libgadu-devel 
   - libgadu3 
   - libgamemode-devel 
@@ -13442,14 +13508,18 @@ unsorted:
   - libgcc_s1-gcc13-32bit 
   - libgcc_s1-gcc14 
   - libgcc_s1-gcc14-32bit 
+  - libgcc_s1-gcc15 
+  - libgcc_s1-gcc15-32bit 
   - libgcc_s1-gcc7 
   - libgcc_s1-gcc7-32bit 
   - libgccjit-devel 
   - libgccjit0-devel-gcc13 
   - libgccjit0-devel-gcc14 
   - libgccjit0-devel-gcc15 
+  - libgccjit0-devel-gcc16 
   - libgccjit0-gcc13 
   - libgccjit0-gcc14 
+  - libgccjit0-gcc15 
   - libgci-1-0_0_0 
   - libgck-1-0-32bit 
   - libgck-2-2-32bit 
@@ -13457,6 +13527,7 @@ unsorted:
   - libgck-devel-32bit 
   - libgck1-devel 
   - libgcobol1 
+  - libgcobol2 
   - libgcr-3-1-32bit 
   - libgcr-4-4-32bit 
   - libgcr-devel 
@@ -13498,6 +13569,8 @@ unsorted:
   - libgdruntime5-32bit 
   - libgdruntime6 
   - libgdruntime6-32bit 
+  - libgdruntime7 
+  - libgdruntime7-32bit 
   - libgeany0 
   - libgecode51 
   - libgedit-amtk-devel 
@@ -13534,6 +13607,8 @@ unsorted:
   - libgfortran5-gcc13-32bit 
   - libgfortran5-gcc14 
   - libgfortran5-gcc14-32bit 
+  - libgfortran5-gcc15 
+  - libgfortran5-gcc15-32bit 
   - libgfrpc0 
   - libgfxdr0 
   - libggml-base0 
@@ -13699,6 +13774,8 @@ unsorted:
   - libgo23-32bit 
   - libgo24 
   - libgo24-32bit 
+  - libgo25 
+  - libgo25-32bit 
   - libgobject-2_0-0-32bit 
   - libgoffice-0_10-10 
   - libgomp1-32bit 
@@ -13706,6 +13783,8 @@ unsorted:
   - libgomp1-gcc13-32bit 
   - libgomp1-gcc14 
   - libgomp1-gcc14-32bit 
+  - libgomp1-gcc15 
+  - libgomp1-gcc15-32bit 
   - libgomp1-gcc7 
   - libgomp1-gcc7-32bit 
   - libgoocanvas-2_0-9 
@@ -13728,6 +13807,8 @@ unsorted:
   - libgphobos5-32bit 
   - libgphobos6 
   - libgphobos6-32bit 
+  - libgphobos7 
+  - libgphobos7-32bit 
   - libgphoto2-6-32bit 
   - libgphoto2-devel 
   - libgphoto2-devel-32bit 
@@ -13997,6 +14078,7 @@ unsorted:
   - libhunspell-1_7-0-32bit 
   - libhwasan0-gcc13 
   - libhwasan0-gcc14 
+  - libhwasan0-gcc15 
   - libhwloc15 
   - libhwy1-32bit 
   - libhydrogen-core-1_2_6 
@@ -14155,6 +14237,8 @@ unsorted:
   - libitm1-gcc13-32bit 
   - libitm1-gcc14 
   - libitm1-gcc14-32bit 
+  - libitm1-gcc15 
+  - libitm1-gcc15-32bit 
   - libitm1-gcc7 
   - libitm1-gcc7-32bit 
   - libivykis0 
@@ -14482,6 +14566,7 @@ unsorted:
   - liblrs1 
   - liblsan0-gcc13 
   - liblsan0-gcc14 
+  - liblsan0-gcc15 
   - liblsan0-gcc7 
   - liblscp-devel 
   - liblscp6 
@@ -14531,30 +14616,40 @@ unsorted:
   - libm2cor19-32bit 
   - libm2cor20 
   - libm2cor20-32bit 
+  - libm2cor21 
+  - libm2cor21-32bit 
   - libm2iso18 
   - libm2iso18-32bit 
   - libm2iso19 
   - libm2iso19-32bit 
   - libm2iso20 
   - libm2iso20-32bit 
+  - libm2iso21 
+  - libm2iso21-32bit 
   - libm2log18 
   - libm2log18-32bit 
   - libm2log19 
   - libm2log19-32bit 
   - libm2log20 
   - libm2log20-32bit 
+  - libm2log21 
+  - libm2log21-32bit 
   - libm2min18 
   - libm2min18-32bit 
   - libm2min19 
   - libm2min19-32bit 
   - libm2min20 
   - libm2min20-32bit 
+  - libm2min21 
+  - libm2min21-32bit 
   - libm2pim18 
   - libm2pim18-32bit 
   - libm2pim19 
   - libm2pim19-32bit 
   - libm2pim20 
   - libm2pim20-32bit 
+  - libm2pim21 
+  - libm2pim21-32bit 
   - libm4ri-devel 
   - libm4ri2 
   - libm4rie-devel 
@@ -14767,6 +14862,8 @@ unsorted:
   - libmp4tag-devel 
   - libmp4tag-tools 
   - libmp4tag2 
+  - libmpa_network1 
+  - libmpa_uefi1 
   - libmpc3-32bit 
   - libmpcdec-devel 
   - libmpcdec5 
@@ -15022,6 +15119,8 @@ unsorted:
   - libobjc4-gcc13-32bit 
   - libobjc4-gcc14 
   - libobjc4-gcc14-32bit 
+  - libobjc4-gcc15 
+  - libobjc4-gcc15-32bit 
   - libobjc4-gcc7 
   - libobjc4-gcc7-32bit 
   - libobjc4_6 
@@ -15778,10 +15877,14 @@ unsorted:
   - libquadmath0-devel-gcc14-32bit 
   - libquadmath0-devel-gcc15 
   - libquadmath0-devel-gcc15-32bit 
+  - libquadmath0-devel-gcc16 
+  - libquadmath0-devel-gcc16-32bit 
   - libquadmath0-gcc13 
   - libquadmath0-gcc13-32bit 
   - libquadmath0-gcc14 
   - libquadmath0-gcc14-32bit 
+  - libquadmath0-gcc15 
+  - libquadmath0-gcc15-32bit 
   - libquadmath0-gcc7 
   - libquadmath0-gcc7-32bit 
   - libquazip1-qt5-1_5_0 
@@ -16182,6 +16285,14 @@ unsorted:
   - libsfml2-2_6 
   - libsfml3-3_0 
   - libsgutils-devel 
+  - libsgx_dcap_gl1 
+  - libsgx_dcap_quote_verify1 
+  - libsgx_default_qcnl_wrapper1 
+  - libsgx_enclave_common1 
+  - libsgx_quote_ex1 
+  - libsgx_tdx_logic1 
+  - libsgx_uae_service2 
+  - libsgx_urts1 
   - libsha1detectcoll-devel 
   - libshaderc_shared1-32bit 
   - libshadowsocks-libev2 
@@ -16381,6 +16492,8 @@ unsorted:
   - libstdc++6-devel-gcc14-32bit 
   - libstdc++6-devel-gcc15 
   - libstdc++6-devel-gcc15-32bit 
+  - libstdc++6-devel-gcc16 
+  - libstdc++6-devel-gcc16-32bit 
   - libstdc++6-devel-gcc7 
   - libstdc++6-devel-gcc7-32bit 
   - libstdc++6-gcc13 
@@ -16389,6 +16502,9 @@ unsorted:
   - libstdc++6-gcc14 
   - libstdc++6-gcc14-32bit 
   - libstdc++6-gcc14-locale 
+  - libstdc++6-gcc15 
+  - libstdc++6-gcc15-32bit 
+  - libstdc++6-gcc15-locale 
   - libstdc++6-gcc7 
   - libstdc++6-gcc7-32bit 
   - libstdc++6-gcc7-locale 
@@ -16396,6 +16512,8 @@ unsorted:
   - libstdc++6-pp-gcc13-32bit 
   - libstdc++6-pp-gcc14 
   - libstdc++6-pp-gcc14-32bit 
+  - libstdc++6-pp-gcc15 
+  - libstdc++6-pp-gcc15-32bit 
   - libstellarsolver6-2 
   - libstfl-devel 
   - libstfl0 
@@ -16563,6 +16681,7 @@ unsorted:
   - libtdb-devel 
   - libtdsodbc0 
   - libtdsodbc0-32bit 
+  - libtdx_attest1 
   - libteam-devel 
   - libteam-tools 
   - libteam5 
@@ -16681,6 +16800,7 @@ unsorted:
   - libtsan0 
   - libtsan2-gcc13 
   - libtsan2-gcc14 
+  - libtsan2-gcc15 
   - libtsk23 
   - libtsm-devel 
   - libtsm4 
@@ -16729,6 +16849,8 @@ unsorted:
   - libubsan1-gcc13-32bit 
   - libubsan1-gcc14 
   - libubsan1-gcc14-32bit 
+  - libubsan1-gcc15 
+  - libubsan1-gcc15-32bit 
   - libuchardet-devel 
   - libuchardet0-32bit 
   - libucl1 
@@ -18714,8 +18836,6 @@ unsorted:
   - maxima-exec-sbcl 
   - maxima-lang 
   - maxima-xmaxima 
-  - mayavi 
-  - mayavi-jupyter 
   - mbedtls-2-devel 
   - mbedtls-devel 
   - mboxgrep 
@@ -25495,7 +25615,6 @@ unsorted:
   - python311-dkimpy 
   - python311-dlib 
   - python311-dm-tree 
-  - python311-dmidecode 
   - python311-dns-lexicon 
   - python311-dnslib 
   - python311-doc 
@@ -29368,7 +29487,6 @@ unsorted:
   - python313-dkimpy 
   - python313-dlib 
   - python313-dm-tree 
-  - python313-dmidecode 
   - python313-dns-lexicon 
   - python313-dnslib 
   - python313-dnspython 
@@ -34482,7 +34600,40 @@ unsorted:
   - suru-plus-dark-icon-theme 
   - suse-build-key 
   - suse-kabi-tools 
+  - suse-libsgx-ae-epid 
+  - suse-libsgx-ae-id-enclave 
+  - suse-libsgx-ae-le 
+  - suse-libsgx-ae-pce 
+  - suse-libsgx-ae-qe3 
+  - suse-libsgx-ae-qve 
+  - suse-libsgx-ae-tdqe 
+  - suse-libsgx-aesm-ecdsa-plugin 
+  - suse-libsgx-aesm-pce-plugin 
+  - suse-libsgx-aesm-quote-ex-plugin 
+  - suse-libsgx-dcap-default-qpl 
+  - suse-libsgx-dcap-default-qpl-devel 
+  - suse-libsgx-dcap-ql-devel 
+  - suse-libsgx-dcap-quote-verify-devel 
+  - suse-libsgx-enclave-common-devel 
+  - suse-libsgx-headers 
+  - suse-libsgx-pce-logic 
+  - suse-libsgx-prebuilt-signed 
+  - suse-libsgx-qe3-logic 
+  - suse-libsgx-quote-ex-devel 
+  - suse-libsgx-ra-network-devel 
+  - suse-libsgx-ra-uefi-devel 
+  - suse-libsgx-tdx-logic-devel 
+  - suse-libtdx-attest-devel 
   - suse-prime 
+  - suse-sgx-aesm-service 
+  - suse-sgx-dcap-pccs 
+  - suse-sgx-pck-id-retrieval-tool 
+  - suse-sgx-ra-service 
+  - suse-sgx_edger8r 
+  - suse-sgx_sign 
+  - suse-tdx-qgs 
+  - suse-tee-appraisal-tool 
+  - suse-tee_appraisal_policy 
   - suse-xsl-stylesheets 
   - suseconnect-ng 
   - suseconnect-ruby-bindings 
@@ -34635,6 +34786,7 @@ unsorted:
   - system-group-obsolete 
   - system-group-sudo 
   - system-group-timekpr 
+  - system-user-aesmd 
   - system-user-alloy 
   - system-user-bitlbee 
   - system-user-cscreen 
@@ -34655,9 +34807,11 @@ unsorted:
   - system-user-openbao 
   - system-user-orthos 
   - system-user-osc-collab 
+  - system-user-pccs 
   - system-user-pgadmin 
   - system-user-postorius 
   - system-user-prometheus 
+  - system-user-qgsd 
   - system-user-rustdesk 
   - system-user-transmission 
   - system-user-uuidd 
@@ -45353,6 +45507,7 @@ unsorted:
   - unit-api-javadoc 
   - units 
   - unittest-cpp-devel 
+  - uniutils 
   - universal-ctags 
   - univocity-parsers 
   - univocity-parsers-javadoc 
