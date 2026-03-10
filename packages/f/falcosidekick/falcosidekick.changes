@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Tue Mar 10 06:38:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.33.0:
+  * build: migrate goreleaser signs config to cosign v3 bundle
+    format
+  * fix(release): add --bundle flag to cosign sign-blob for cosign
+    v3 compatibility
+  * fix: remove trailing comma from Dynatrace output type name
+  * fix: clear correct config field on DogStatsD init failure
+  * fix: clear correct config field on OTLP Metrics init failure
+  * fix: use correct MinimumPriority config for RabbitMQ
+  * build(deps): bump the gomod group across 1 directory with 4
+    updates
+  * build(deps): bump the gomod group across 1 directory with 2
+    updates
+  * chore: upgrade and adapt linter for go 1.26
+  * build: upgrade to go 1.26
+  * build(deps): bump go.opentelemetry.io/otel/sdk/log from 0.14.0
+    to 0.16.0
+  * build(deps): bump github.com/nats-io/nats.go from 1.48.0 to
+    1.49.0
+  * build(deps): bump the actions group with 2 updates
+  * build(deps): bump
+    github.com/Azure/azure-sdk-for-go/sdk/azidentity
+  * build(deps): bump goreleaser/goreleaser-action from 6.4.0 to
+    7.0.0
+  * build(deps): bump actions/checkout from 5.0.0 to 6.0.2
+  * build(deps): bump aws-actions/configure-aws-credentials
+  * build(deps): bump sigstore/cosign-installer from 3.10.0 to
+    4.0.0
+  * build(deps): bump go.opentelemetry.io/otel/sdk from 1.38.0 to
+    1.40.0
+  * fix(aws): update service/sqs to v1.42.22 to resolve
+    ResolveEndpointV2 error
+  * Update README.md
+  * build(deps): bump github.com/redis/go-redis/v9 from 9.8.0 to
+    9.17.3
+  * build(deps): bump k8s.io/client-go from 0.32.3 to 0.35.0
+  * build(deps): bump github.com/nats-io/nats-server/v2
+  * build(deps): bump the actions group across 1 directory with 5
+    updates
+  * build(deps): bump the gomod group with 6 updates
+  * build(deps): bump
+    github.com/Azure/azure-sdk-for-go/sdk/messaging/azeventhubs
+  * feat: Add Alertmanager label 'alertname'
+  * build(deps): bump golang.org/x/crypto from 0.42.0 to 0.45.0
+  * Clean up go sum
+  * Update aws-sdk-go-v2
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc
+  * fix: change default alertmanager endpoint /api/v2/alerts as
+    /api/v1/alerts deprecated and removed
+  * build(deps): bump
+    github.com/Azure/azure-sdk-for-go/sdk/azidentity
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/sns
+  * build(deps): bump
+    github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs
+  * build(deps): bump docker/login-action in the actions group
+  * build(deps): bump the gomod group with 3 updates
+  * build(deps): bump github.com/emersion/go-smtp from 0.22.0 to
+    0.24.0
+  * Modify AWS output to use recommended chain of configuration
+    providers
+  * build(deps): bump anchore/sbom-action in the actions group
+  * build(deps): bump the gomod group across 1 directory with 8
+    updates
+  * build(deps): bump github.com/cloudevents/sdk-go/v2 from 2.15.2
+    to 2.16.1
+  * build(deps): bump github.com/prometheus/client_golang
+  * build(deps): bump sigstore/cosign-installer in the actions
+    group
+  * update deprecated goreleaser docker build
+
+-------------------------------------------------------------------
 Thu Sep 18 06:33:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.32.0:
