@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-files
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define         appname com.system76.CosmicFiles
+%define         appid com.system76.CosmicFiles
 Name:           cosmic-files
-Version:        1.0.0+0
+Version:        1.0.8
 Release:        0
 Summary:        COSMIC file manager
 License:        GPL-3.0-only
@@ -30,7 +30,7 @@ BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.80
+BuildRequires:  rust >= 1.90
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(xkbcommon)
 
@@ -46,17 +46,16 @@ just build-release
 %install
 just rootdir=%{buildroot} prefix=%{_prefix} install
 
-%check
-# take too long on OBS, gets killed
-# %%{cargo_test}
+#%%check
+#%%{cargo_test}
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
 %{_bindir}/%{name}-applet
-%{_datadir}/applications/%{appname}.desktop
-%{_datadir}/icons/hicolor/*/apps/%{appname}.svg
-%{_datadir}/metainfo/%{appname}.metainfo.xml
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
+%{_datadir}/metainfo/%{appid}.metainfo.xml
 
 %changelog

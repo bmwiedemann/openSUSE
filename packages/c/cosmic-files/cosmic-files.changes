@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Tue Feb 24 20:19:33 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.8:
+  * Epoch 1.0.8 version update
+  * Disable wgpu feature in cosmic-files-applet
+  * chore: update libcosmic
+  * feat: use ellipsizing for item names
+  * feat: gray out paste menu when clipboard is empty or location unsupported
+  * add option to copy path when pressing down shift
+  * Add Clear Recents history to Recents nav bar context menu
+  * fix: Remove inappropriate context menu options while in Recents
+  * Close context menus on middle click to open in new tab
+  * fix: close context menus in various cases
+  * feat: Show count of files affected when 'Replace all' is selected in copy/move operations
+- disable check for 1.0.8
+
+-------------------------------------------------------------------
+Mon Feb 23 17:43:32 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.7:
+  * i18n: edit label for recents feature flag in settings
+  * feat: add setting to enable/disable the "recents" feature
+  * Epoch 1.0.7 version update
+  * i18n: translation updates from weblate
+  * chore: Update compio-driver to 0.11.2
+  * feat: add 'Move to' and 'Copy to' to Edit menu
+  * Clear the prefix selection buffer when changing location
+  * Add pull request template
+  * Generate translated desktop and metainfo files with xdgen
+  * Respect 'Path' desktop entry key
+
+-------------------------------------------------------------------
+Thu Feb 12 09:38:30 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.6:
+  * Epoch 1.0.6 version update
+  * Fix compilation when gvfs feature not enabled
+  * fix display_name_for_file() for gvfs
+  * i18n: translation updates from weblate
+  * fix: disable dialog save button when filename is empty
+  * fix: handle invalid UTF-8 in clipboard text paste
+  * Return None for unknown MIME types and ignore paste with warning
+  * feat: paste images, videos, and text from clipboard
+  * feat: move to and copy to
+  * Fix Enter key not extracting password-protected ZIPs
+
+-------------------------------------------------------------------
+Thu Feb 05 01:48:40 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.5:
+  * Epoch 1.0.5 version update
+  * chore: update dependencies
+  * i18n: translation updates from weblate
+  * chore: clippy
+  * Bump compio; remove unused dependency
+  * feat: tab dnd
+  * only show open button if something can be opened
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * improv(zip_extract): flush files to disk
+  * perf(copy): async batch file flushes
+  * Update dependencies
+  * i18n: translation updates from weblate
+  * Epoch 1.0.4 version update
+  * Stop immediately listing hidden files
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Sun Jan 25 18:17:58 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 1.0.3:
+  * i18n: translation updates from weblate
+  * Copy file times, fixes #1294
+  * Patch compio to fix missing statx data
+  * Remove WIP note from readme
+  * Only tab complete trailing slash if path is directory
+  * Automatically resolve if there is only one completion
+  * Format src/dialog.rs
+  * Select first completion if current location does not exist
+  * Auto complete slash at end of directories
+  * Canonicalize paths if possible when changing directory
+  * Allow nested path completion
+  * Allow tab and shift-tab completion in path editing
+  * Ignore TabView updates on Desktop mode
+  * fix: handle hidden items during shift-click
+  * feat: open multiple dirs in separate tabs
+  * feat: Add open button to multi preview
+  * fix: culled items not appearning after window resize
+  * fix: Update data on preview in desktop mode
+  * Update com.system76.CosmicFiles.desktop ITA
+  * Update com.system76.CosmicFiles.metainfo.xml ITA
+  * scroll to selected item when using type-to-select
+  * add type-to-select option for keyboard navigation
+
+-------------------------------------------------------------------
+Wed Dec 31 00:50:24 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.1:
+  * i18n: removing translation for Frankish
+  * i18n: translation updates from weblate
+  * Hide shadowed mounts, may fix #1245
+  * Scroll to focused item on tab rescan, fixes #1281
+  * Update dependencies
+  * Update cargo.toml and debian changelog versions to 1.0.0
+  * fix(mouse_area): update hover state on scroll events
+  * fix: require at least one running operation for progress title
+  * fix: support absolute paths in .desktop file Icon field
+  * refactor: file metadata
+  * refactor: children count
+  * refactor: simplify mime type limit logic
+  * feat: add multi-file preview
+  * Ask for confirmation when deleting from trash
+  * fix: update libcosmic
+  * docs (QA): Add file drag-and-drop to regression testing checklist
+  * Empty trash as much as possible
+  * fix: Expand tilde in location path
+  * i18n: translation updates from weblate
+  * Update progress title logic to match what the progress bar shows
+  * Replace freedesktop_entry_parser with cosmic-mime-apps
+
+-------------------------------------------------------------------
 Thu Dec 11 16:57:26 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0+0:
