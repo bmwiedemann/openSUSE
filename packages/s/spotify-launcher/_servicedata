@@ -1,4 +1,6 @@
 <servicedata>
-<service name="tar_scm">
-                <param name="url">https://github.com/kpcyrd/spotify-launcher.git</param>
-              <param name="changesrevision">fe0c57602a09503f3a51b724390c4ce91e099e78</param></service></servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/kpcyrd/spotify-launcher.git</param>
+    <param name="changesrevision">eb386bda5266f7f071fd6b99a46da03345a2189c</param>
+  </service>
+</servicedata>

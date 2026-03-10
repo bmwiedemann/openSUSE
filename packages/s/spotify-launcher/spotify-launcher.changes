@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar  7 19:16:51 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.6.5:
+  * Use new E1096BCBFF6D418796DE78515384CE82BA52C83A apt signing
+    key (boo#1259332)
+
+-------------------------------------------------------------------
 Sun Jan 11 16:58:22 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.6.4:
