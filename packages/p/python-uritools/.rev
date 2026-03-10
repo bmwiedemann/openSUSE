@@ -47,4 +47,19 @@
 - use PEP 517 build</comment>
     <requestid>1179633</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9e461f07f4150119d7b6fd115eeebec9</srcmd5>
+    <version>6.0.1</version>
+    <time>1773161807</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.0.1:
+  * Require Python &gt;= 3.10 (fixup).
+  * Drop Python 3.9 support (breaking change).
+  * Add support for Python 3.14.
+  * Minor improvements from GitHub Copilot code review.
+  * Modernize build environment.
+  * Update CI environment.
+  * Require Python 3.9 or later (breaking change).</comment>
+    <requestid>1337898</requestid>
+  </revision>
 </revisionlist>

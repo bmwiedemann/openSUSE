@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 10 08:16:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.1:
+  * Require Python >= 3.10 (fixup).
+  * Drop Python 3.9 support (breaking change).
+  * Add support for Python 3.14.
+  * Minor improvements from GitHub Copilot code review.
+  * Modernize build environment.
+  * Update CI environment.
+  * Require Python 3.9 or later (breaking change).
+
+-------------------------------------------------------------------
 Mon Jun 10 07:47:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.3:
