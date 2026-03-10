@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Mar  9 16:06:24 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.8:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Mon Feb 23 18:08:05 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.7:
+  * i18n: translation updates from weblate
+  * Add pull request template
+
+-------------------------------------------------------------------
+Thu Feb 12 10:14:47 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.6:
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Thu Feb 05 02:24:08 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.5:
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Wed Dec 31 01:18:00 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.1:
+  * fix: Check for cancellation and not panic and notify for the crash
+  * Update translations
+
+-------------------------------------------------------------------
 Thu Dec 11 17:59:10 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0+0:
