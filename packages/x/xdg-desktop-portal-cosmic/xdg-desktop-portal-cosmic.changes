@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Mon Mar  9 13:46:39 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.8:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Mon Feb 23 18:54:18 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.7:
+  * i18n: translation updates from weblate
+  * Add pull request template
+
+-------------------------------------------------------------------
+Thu Feb 12 10:45:25 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.6:
+  * i18n: translation updates from weblate
+  * fix: use fallback background from cosmic-wallpapers rather than pop-wallpapers (#267)
+
+-------------------------------------------------------------------
+Thu Feb 05 03:01:26 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.5:
+  * i18n: translation updates from weblate
+  * feat: add ctrl+c, ctrl+s functionality to cosmic-screenshot (#224)
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * Always copy screenshot to clipboard (#235)
+
+-------------------------------------------------------------------
+Sun Jan 25 17:52:34 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 1.0.3:
+  * fix: Only save config when rectangle drag ends (#253)
+  * i18n: translation updates from weblate
+  * screencast: Set pipewire data flags for memfd
+  * Don't abort if dma-buf support is missing
+  * screencast: Add `position` and `size` properties for stream
+  * screencast: Add `source_type` property to `Start` return value
+  * Exit with warning if name is lost of DBus bus
+  * i18n: translation updates from weblate
+  * feat(screenshot): remember last selected screenshot region
+
+-------------------------------------------------------------------
+Wed Dec 31 01:43:02 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.1:
+  * Update translations
+
+-------------------------------------------------------------------
+Mon Dec 29 12:36:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- use appid, easier to read
+- remove patch leap-fix-libexec.patch, by using the libexecdir
+  variable
+
+-------------------------------------------------------------------
 Thu Dec 11 19:50:28 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0+0:

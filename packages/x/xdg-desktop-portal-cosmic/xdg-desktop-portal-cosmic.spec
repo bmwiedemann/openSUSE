@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal-cosmic
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
+%define         appid org.freedesktop.impl.portal.desktop.cosmic
 Name:           xdg-desktop-portal-cosmic
-Version:        1.0.0+0
+Version:        1.0.8
 Release:        0
 Summary:        COSMIC xdg portal
 License:        GPL-3.0-only
 URL:            https://github.com/pop-os/xdg-desktop-portal-cosmic
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Patch0:         leap-fix-libexec.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  git-core
@@ -45,27 +45,24 @@ BuildRequires:  pkgconfig(xkbcommon)
 This package contains the xdg portal implementation for COSMIC DE.
 
 %prep
-%autosetup -N -a1
-%if 0%{?suse_version} < 1600
-%autopatch -p0
-%endif
+%autosetup -a1
 
 %build
 %make_build
 
 %install
-%make_install DESTDIR=%{buildroot} prefix=%{_prefix}
+%make_install DESTDIR=%{buildroot} prefix=%{_prefix} libexecdir=%{_libexecdir}
 
 %check
 %{cargo_test}
 
 %files
 %license LICENSE
-%{_datadir}/dbus-1/services/org.freedesktop.impl.portal.desktop.cosmic.service
+%{_datadir}/dbus-1/services/%{appid}.service
 %{_datadir}/icons/hicolor/scalable/actions/{screenshot-screen-symbolic,screenshot-selection-symbolic,screenshot-window-symbolic}.svg
 %{_datadir}/xdg-desktop-portal/cosmic-portals.conf
 %{_datadir}/xdg-desktop-portal/portals/cosmic.portal
 %{_libexecdir}/%{name}
-%{_prefix}/lib/systemd/user/org.freedesktop.impl.portal.desktop.cosmic.service
+%{_userunitdir}/%{appid}.service
 
 %changelog

@@ -112,4 +112,41 @@
     <comment></comment>
     <requestid>1324078</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>99299983adb42097279bb9672f4f1cfc</srcmd5>
+    <version>1.0.8</version>
+    <time>1773161353</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0.8:
+  * no changes since last release
+- Update to version 1.0.7:
+  * i18n: translation updates from weblate
+  * Add pull request template
+- Update to version 1.0.6:
+  * i18n: translation updates from weblate
+  * fix: use fallback background from cosmic-wallpapers rather than pop-wallpapers (#267)
+- Update to version 1.0.5:
+  * i18n: translation updates from weblate
+  * feat: add ctrl+c, ctrl+s functionality to cosmic-screenshot (#224)
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * Always copy screenshot to clipboard (#235)
+- Update to version 1.0.3:
+  * fix: Only save config when rectangle drag ends (#253)
+  * i18n: translation updates from weblate
+  * screencast: Set pipewire data flags for memfd
+  * Don't abort if dma-buf support is missing
+  * screencast: Add `position` and `size` properties for stream
+  * screencast: Add `source_type` property to `Start` return value
+  * Exit with warning if name is lost of DBus bus
+  * i18n: translation updates from weblate
+  * feat(screenshot): remember last selected screenshot region
+- Update to version 1.0.1:
+  * Update translations
+- use appid, easier to read
+- remove patch leap-fix-libexec.patch, by using the libexecdir
+  variable
+</comment>
+    <requestid>1337734</requestid>
+  </revision>
 </revisionlist>
