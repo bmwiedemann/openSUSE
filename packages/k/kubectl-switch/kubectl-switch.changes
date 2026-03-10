@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 10 06:38:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.12:
+  * Bug Fixes
+    - 7012943: fix(go): update charm.land/bubbletea/v2 ( v2.0.1 →
+      v2.0.2 ) (@mr-borboto[bot])
+    - 19b6cc7: fix(go): update charm.land/lipgloss/v2 ( v2.0.0 →
+      v2.0.1 ) (@mr-borboto[bot])
+  * Chores
+    - 9d06ce2: chore(mise): update aqua:golangci/golangci-lint (
+      2.10.1 → 2.11.1 ) (#236) (@mr-borboto[bot])
+    - 214d7c0: chore(mise): update aqua:golangci/golangci-lint (
+      2.11.1 → 2.11.2 ) (@mr-borboto[bot])
+    - b636e3f: chore(mise): update go ( 1.26.0 → 1.26.1 )
+      (@mr-borboto[bot])
+
+-------------------------------------------------------------------
 Tue Mar 03 05:42:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.11:
