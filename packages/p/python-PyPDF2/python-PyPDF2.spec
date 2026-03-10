@@ -37,6 +37,8 @@ Patch3:         CVE-2026-27026.patch
 Patch4:         CVE-2026-27628.patch
 # PATCH-FIX-UPSTREAM CVE-2026-27888.patch bsc#1258934
 Patch5:         CVE-2026-27888.patch
+# PATCH-FIX-UPSTREAM CVE-2026-28804.patch bsc#1259404
+Patch6:         CVE-2026-28804.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -61,7 +63,7 @@ objects rather than file streams, allowing for PDF manipulation in memory.
 It is therefore a useful tool for websites that manage or manipulate PDFs.
 
 %prep
-%autosetup -p1 -n PyPDF2-%{version}
+%autosetup -p1 -n pypdf-%{version}
 #remove unwanted shebang
 sed -i '/^#!/ d' PyPDF2/pagerange.py
 
