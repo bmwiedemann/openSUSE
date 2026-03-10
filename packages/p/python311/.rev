@@ -1796,4 +1796,41 @@ C API
   CVE-2025-12781-b64decode-alt-chars.patch</comment>
     <requestid>1332828</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>d75adfa385137aabf14fb99ccbb4a5d2</srcmd5>
+    <version>3.11.15</version>
+    <time>1773161207</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.11.15:
+  - Security
+    - gh-144125: BytesGenerator will now refuse to serialize
+      (write) headers that are unsafely folded or delimited; see
+      verify_generated_headers. (Contributed by Bas Bloemsaat and
+      Petr Viktorin in gh-121650).
+    - gh-143935: Fixed a bug in the folding of comments when
+      flattening an email message using a modern email policy.
+      Comments consisting of a very long sequence of non-foldable
+      characters could trigger a forced line wrap that omitted
+      the required leading space on the continuation line,
+      causing the remainder of the comment to be interpreted as
+      a new header field. This enabled header injection with
+      carefully crafted inputs (bsc#1257029 CVE-2025-11468).
+    - gh-143925: Reject control characters in data: URL media
+      types (bsc#1257046, CVE-2025-15282).
+    - gh-143919: Reject control characters in http.cookies.Morsel
+      fields and values (bsc#1257031, CVE-2026-0672).
+    - gh-143916: Reject C0 control characters within
+      wsgiref.headers.Headers fields, values, and parameters
+      (bsc#1257042, CVE-2026-0865).
+    - gh-142145: Remove quadratic behavior in xml.minidom node ID
+      cache clearing. In order to do this without breaking
+      existing users, we also add the ownerDocument attribute to
+      xml.dom.minidom elements and attributes created by directly
+      instantiating the Element or Attr class. Note that this way
+      of creating nodes is not supported; creator functions like
+      xml.dom.Document.documentElement() should be used instead
+      (bsc#1254997, CVE-2025-12084).
+    - gh-137836: Add support of the “plaintext” element, RAWTEXT</comment>
+    <requestid>1337543</requestid>
+  </revision>
 </revisionlist>
