@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybind11
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@
 %define plainpython python
 %{?sle15_python_module_pythons}
 Name:           python-pybind11%{psuffix}
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Module for operability between C++11 and Python
 License:        BSD-3-Clause
@@ -139,7 +139,7 @@ ln -s %{_datadir}/pkgconfig/pybind11.pc %{buildroot}%{$python_sitelib}/pybind11/
 %check
 export PYTHONPATH=${PWD}/build/tests/
 # tests fail as python3-widget is not in distribuion
-ignore_tests="--ignore tests/test_embed/test_interpreter.py --ignore tests/test_embed/test_trampoline.py"
+ignore_tests="--ignore tests/test_embed/test_interpreter.py --ignore tests/test_embed/test_trampoline.py --ignore tests/test_with_catch/test_interpreter.py --ignore tests/test_with_catch/test_trampoline.py"
 # no isolated build env with builddep wheels available
 ignore_tests="$ignore_tests --ignore tests/extra_python_package/test_files.py"
 %pytest $ignore_tests

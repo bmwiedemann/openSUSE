@@ -356,4 +356,41 @@
     <comment></comment>
     <requestid>1305793</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ae4f039d57b754aad2a637132cd76c1b</srcmd5>
+    <version>3.0.2</version>
+    <time>1773161256</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.0.2:
+  * Added helper functions to `py::array` that return shape and
+    strides as `std::span` when available.
+  * Added fallback locking for Python 3.13t where
+    `PyCriticalSection_BeginMutex` is unavailable.
+  * Fixed race condition in `py::make_key_iterator` with free-
+    threaded Python.
+  * Internals shutdown handling was refined in two iterations
+    before release: an initial finalization-time cleanup was
+    followed by a safety adjustment to avoid late-shutdown
+    `py::cast` segfaults.
+  * Fixed ambiguous `str(handle)` construction for
+    `object`-derived types like `kwargs` or `dict` by
+    templatizing the constructor with SFINAE.
+  * Fixed concurrency consistency for `internals_pp_manager`
+    under multiple-interpreters.
+  * Added per-interpreter storage for
+    `gil_safe_call_once_and_store` to make it safe under multi-
+    interpreters.
+  * A workaround for a GCC `-Warray-bounds` false positive in
+    `argument_vector` was added.
+  * Corrected a mistake where support for `__index__` was added,
+    but the type hints did not reflect acceptance of
+    `SupportsIndex` objects. Also fixed a long-standing bug: the
+    complex-caster did not accept `__index__` in `convert` mode.
+  * Fixed `*args/**kwargs` return types. Added type hinting to
+    `py::make_tuple`.
+  * Fixed compiler error in `type_caster_generic` when casting a
+    `T` implicitly convertible from `T*`.
+  * Updated `py::native_enum` bindings to unregister enum types</comment>
+    <requestid>1337815</requestid>
+  </revision>
 </revisionlist>
