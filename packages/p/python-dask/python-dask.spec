@@ -1,7 +1,7 @@
 #
 # spec file for package python-dask
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,7 +54,7 @@ ExclusiveArch:  donotbuild
 
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2025.9.1
+Version:        2026.1.2
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -64,8 +64,8 @@ Source0:        https://files.pythonhosted.org/packages/source/d/dask/dask-%{ver
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module packaging >= 20.0}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module versioneer-toml >= 0.29}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -279,6 +279,7 @@ Summary:        The test submodules of the python-dask package
 Requires:       %{name}-complete = %{version}
 Requires:       python-pandas-test
 Requires:       python-pytest
+Requires:       python-pytest-cov
 Requires:       python-pytest-mock
 Requires:       python-pytest-rerunfailures
 Requires:       python-pytest-timeout
@@ -291,7 +292,6 @@ unit testing dask.
 
 %prep
 %autosetup -p1 -n dask-%{version}
-sed -i  '/addopts/d' pyproject.toml
 
 %build
 %pyproject_wheel

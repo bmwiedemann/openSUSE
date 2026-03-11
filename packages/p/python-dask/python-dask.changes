@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 11 00:23:29 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2026.1.2:
+  * More improvements for pandas 3.x
+  * Support zarr sharding through create_array
+  * Use shard shape when available in to_zarr
+  * Several Dask Array bug fixes
+
+-------------------------------------------------------------------
 Wed Sep 17 10:42:04 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2025.9.1
