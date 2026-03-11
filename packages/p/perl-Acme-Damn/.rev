@@ -17,4 +17,15 @@
 </comment>
     <requestid>1244911</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ba19c83d6da1f6ae0764263e093eb740</srcmd5>
+    <version>0.90.0</version>
+    <time>1773258745</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.90.0 (0.09)
+   see /usr/share/doc/packages/perl-Acme-Damn/Changes
+  0.09  Tue Feb 10 21:37:20 2026
+    - fix bad DynaLoader import, which caused errors</comment>
+    <requestid>1338065</requestid>
+  </revision>
 </revisionlist>
