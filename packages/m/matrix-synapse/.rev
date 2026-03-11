@@ -1621,4 +1621,14 @@ mostly-working synapse than nothing at all) and the package has been update to
   https://github.com/element-hq/ess-helm/security/advisories/GHSA-qwcj-h6m8-vp6q</comment>
     <requestid>1332741</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>6b012e53b69a0b62836ec52d16b4b079</srcmd5>
+    <version>1.149.0</version>
+    <time>1773258766</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1338089 from darix
+
+- Update to 1.149.0</comment>
+    <requestid>1338090</requestid>
+  </revision>
 </revisionlist>
