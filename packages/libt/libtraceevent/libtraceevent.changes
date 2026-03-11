@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 10 12:59:02 UTC 2026 - Petr Pavlu <petr.pavlu@suse.com>
+
+- update to 1.9.0:
+  * Add API for loading the BTF file (/sys/kernel/btf/vmlinux) into
+    the tep handle to allow it to parse function parameters:
+    tep_load_btf(), tep_btf_print_args(), tep_btf_list_args()
+  * Add API for persistent ring buffer processing:
+    tep_parse_last_boot_info(), tep_load_modules()
+  * Handle __get_stacktrace() in the print-fmt field that synthetic
+    events can add when they have a stacktrace field
+
+-------------------------------------------------------------------
 Sun Dec 28 23:46:04 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.6:

@@ -136,4 +136,12 @@
   * libtraceevent: Add support for __print_dynamic_array() macro</comment>
     <requestid>1324620</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4b6c5022241d6cac3d66d864f6fe00da</srcmd5>
+    <version>1.9.0</version>
+    <time>1773258576</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1337883</requestid>
+  </revision>
 </revisionlist>
