@@ -161,4 +161,15 @@ Required by the latest version of jupyter-jupyterlab-server</comment>
     <comment></comment>
     <requestid>1307693</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6dee49b4da5c81674906c49f22d532ce</srcmd5>
+    <version>0.13.0</version>
+    <time>1773258783</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.13.0:
+  * No code changes.
+  * Add Python 3.14 to supported version, project config,
+    dependencies</comment>
+    <requestid>1338101</requestid>
+  </revision>
 </revisionlist>

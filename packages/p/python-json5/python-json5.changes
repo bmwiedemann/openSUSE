@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 10 21:47:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * No code changes.
+  * Add Python 3.14 to supported version, project config,
+    dependencies
+
+-------------------------------------------------------------------
 Mon Sep 29 07:13:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.12.1
