@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 11 08:20:07 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20260311:
+  * Allow redis_t to create netlink_rdma_socket
+  * Allow systemd create symlinks in /run/varlink/registry
+  * Support hooks in /run/systemd/resolve.hook
+  * Allow virtlogd_t dac_override for virtlock (bsc#1253389)
+  * Allow mdadm use modprobe (bsc#1257793)
+
+-------------------------------------------------------------------
 Tue Mar 10 17:22:53 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Update to version 20260310:
