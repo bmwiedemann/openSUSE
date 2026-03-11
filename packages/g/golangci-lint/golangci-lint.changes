@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 10 15:57:42 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.11.3:
+  * chore: prepare release
+  * build(deps): bump github.com/securego/gosec/v2 from v2.24.7 to 619ce2117e08 (#6424)
+  * build(deps): bump the github-actions group with 2 updates (#6426)
+  * build(deps): bump golang.org/x/oauth2 from 0.35.0 to 0.36.0 in /scripts/gen_github_action_config in the scripts group (#6425)
+  * docs: update GitHub Action assets (#6419)
+
+-------------------------------------------------------------------
 Sun Mar 08 12:57:34 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 2.11.2:

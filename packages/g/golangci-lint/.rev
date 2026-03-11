@@ -1181,4 +1181,17 @@
   * docs: update GitHub Action assets (#6415) (forwarded request 1337499 from jfkw)</comment>
     <requestid>1337500</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>0ec4207a9caad7574e8555a20d358189</srcmd5>
+    <version>2.11.3</version>
+    <time>1773258701</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.11.3:
+  * chore: prepare release
+  * build(deps): bump github.com/securego/gosec/v2 from v2.24.7 to 619ce2117e08 (#6424)
+  * build(deps): bump the github-actions group with 2 updates (#6426)
+  * build(deps): bump golang.org/x/oauth2 from 0.35.0 to 0.36.0 in /scripts/gen_github_action_config in the scripts group (#6425)
+  * docs: update GitHub Action assets (#6419) (forwarded request 1338028 from jfkw)</comment>
+    <requestid>1338033</requestid>
+  </revision>
 </revisionlist>
