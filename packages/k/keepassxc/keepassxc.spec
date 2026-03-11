@@ -31,7 +31,7 @@
 %endif
 
 Name:           keepassxc
-Version:        2.7.11
+Version:        2.7.12
 Release:        0
 Summary:        Qt5-based Password Manager
 License:        GPL-2.0-only OR GPL-3.0-only
