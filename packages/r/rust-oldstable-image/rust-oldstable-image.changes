@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 10 21:46:15 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- remove move files that make containers unreproducible
+
+-------------------------------------------------------------------
 Thu Feb 26 15:02:41 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - simplify stability tags setup
