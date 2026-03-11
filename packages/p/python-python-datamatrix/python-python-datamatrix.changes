@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 11 03:17:03 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.18:
+  * MultiDimensionalColumn: don't check memory when loaded
+- Add patch support-numpy-2.4.patch:
+  * Do not call now removed functions from NumPy 2.4.
+
+-------------------------------------------------------------------
 Tue Feb  3 13:05:29 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 1.0.16:

@@ -116,4 +116,15 @@
   * Update footer</comment>
     <requestid>1330770</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>52a1e976b5664884899ff27b46499b0d</srcmd5>
+    <version>1.0.18</version>
+    <time>1773258882</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.18:
+  * MultiDimensionalColumn: don't check memory when loaded
+- Add patch support-numpy-2.4.patch:
+  * Do not call now removed functions from NumPy 2.4.</comment>
+    <requestid>1338186</requestid>
+  </revision>
 </revisionlist>

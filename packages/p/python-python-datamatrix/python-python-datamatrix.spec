@@ -17,12 +17,14 @@
 
 
 Name:           python-python-datamatrix
-Version:        1.0.16
+Version:        1.0.18
 Release:        0
 Summary:        A python library to work with tabular data
 License:        GPL-3.0-or-later
 URL:            https://github.com/open-cogsci/python-datamatrix
 Source:         https://github.com/open-cogsci/python-datamatrix/archive/release/%{version}.tar.gz#/python-datamatrix-release-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#open-cogsci/datamatrix#21
+Patch0:         support-numpy-2.4.patch
 BuildRequires:  %{python_module PrettyTable}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module fastnumbers}
@@ -69,7 +71,7 @@ Provides:       %{python_module python-datamatrix-doc = %{version}}
 Documentation and examples for %{name}.
 
 %prep
-%setup -q -n datamatrix-release-%{version}
+%autosetup -p1 -n datamatrix-release-%{version}
 # wrong-file-end-of-line-encoding
 sed -i 's/\r$//' doc-pelican/data/fratescu-replication-data-exp1.csv
 
