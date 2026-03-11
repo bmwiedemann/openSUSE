@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 10 10:18:40 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 6.2:
+  + Add a checkbox to disable unavailable profiles.
+  + Avoid inhibiting monitor source suspend.
+  + Fix peak decay when monitor is suspended.
+  + Add a build option to disable audio feedback.
+  + Updated translations.
+- Update option passed to meson setup following upstream changes.
+- Add pkgconfig(libcanberra) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Tue Aug  6 17:16:00 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 6.1:

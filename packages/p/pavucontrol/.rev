@@ -273,4 +273,19 @@ and this package is rebuilt. (forwarded request 913021 from robert_munteanu)</co
     <comment></comment>
     <requestid>1192785</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>85e8d6c8ec0827c0cc22f367c02cd859</srcmd5>
+    <version>6.2</version>
+    <time>1773258669</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 6.2:
+  + Add a checkbox to disable unavailable profiles.
+  + Avoid inhibiting monitor source suspend.
+  + Fix peak decay when monitor is suspended.
+  + Add a build option to disable audio feedback.
+  + Updated translations.
+- Update option passed to meson setup following upstream changes.
+- Add pkgconfig(libcanberra) BuildRequires: New dependency. (forwarded request 1337958 from iznogood)</comment>
+    <requestid>1337989</requestid>
+  </revision>
 </revisionlist>

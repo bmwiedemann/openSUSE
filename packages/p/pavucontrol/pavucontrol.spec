@@ -1,7 +1,7 @@
 #
 # spec file for package pavucontrol
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pavucontrol
-Version:        6.1
+Version:        6.2
 Release:        0
 Summary:        PulseAudio Volume Control
 License:        GPL-2.0-or-later
@@ -30,6 +30,7 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtkmm-4.0) >= 4.0
 BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libpulse) >= 5.0
 BuildRequires:  pkgconfig(libpulse-mainloop-glib) >= 0.9.16
 BuildRequires:  pkgconfig(sigc++-3.0)
@@ -48,7 +49,7 @@ hardware devices and of each playback stream separately.
 
 %build
 %meson \
-    -Dlynx=false
+    -Dlynx=disabled
 %meson_build
 
 %install
@@ -67,6 +68,8 @@ rm -r %{buildroot}%{_datadir}/doc/%{name}
 %{_bindir}/pavucontrol
 %{_datadir}/applications/org.pulseaudio.pavucontrol.desktop
 %{_datadir}/metainfo/org.pulseaudio.pavucontrol.metainfo.xml
+%{_datadir}/icons/hicolor/scalable/apps/org.pulseaudio.pavucontrol.svg
+%{_datadir}/icons/hicolor/symbolic/apps/org.pulseaudio.pavucontrol-symbolic.svg
 
 %files lang -f %{name}.lang
 
