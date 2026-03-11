@@ -1064,4 +1064,29 @@
   * chore(deps): update dependency oxlint to v1.43.0 #2459</comment>
     <requestid>1334412</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>b3487d2e97b64e95191cc9e97864f233</srcmd5>
+    <version>0.41.1</version>
+    <time>1773258890</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.41.1:
+  * fix: lsp on change encounter deadlock #2511
+  * chore(deps): update dependency oxlint to v1.51.0 #2512
+  * chore(deps): update rust crate tempfile to v3.26.0 #2497
+  * chore(deps): update rust crate inquire to v0.9.4 #2498
+  * chore(deps): update dependency @types/node to v24.11.0 #2502
+  * chore(deps): update dependency dprint to v0.52.0 #2499
+  * fix: override severity on rule &amp; inline-rules flags #2505
+  * chore(deps): update github artifact actions #2507
+  * chore(deps): update rust crate tree-sitter to v0.26.6 #2501
+  * chore(deps): update dependency web-tree-sitter to v0.26.6 #2500
+  * chore(deps): update dependency ava to v7 #2508
+  * chore(deps): update dependency oxlint to v1.50.0 #2495
+  * chore(deps): update dependency @ast-grep/napi to v0.41.0 #2494
+  * fix: bump ls-types version #2525
+  * refactor: change versioned ast work a86b2ab
+  * fix: bump wasm-bindgen d23e334
+  * fix: fix wasm package 0b92e94</comment>
+    <requestid>1338194</requestid>
+  </revision>
 </revisionlist>

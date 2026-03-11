@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Mar 11 05:35:36 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.41.1:
+  * fix: lsp on change encounter deadlock #2511
+  * chore(deps): update dependency oxlint to v1.51.0 #2512
+  * chore(deps): update rust crate tempfile to v3.26.0 #2497
+  * chore(deps): update rust crate inquire to v0.9.4 #2498
+  * chore(deps): update dependency @types/node to v24.11.0 #2502
+  * chore(deps): update dependency dprint to v0.52.0 #2499
+  * fix: override severity on rule & inline-rules flags #2505
+  * chore(deps): update github artifact actions #2507
+  * chore(deps): update rust crate tree-sitter to v0.26.6 #2501
+  * chore(deps): update dependency web-tree-sitter to v0.26.6 #2500
+  * chore(deps): update dependency ava to v7 #2508
+  * chore(deps): update dependency oxlint to v1.50.0 #2495
+  * chore(deps): update dependency @ast-grep/napi to v0.41.0 #2494
+  * fix: bump ls-types version #2525
+  * refactor: change versioned ast work a86b2ab
+  * fix: bump wasm-bindgen d23e334
+  * fix: fix wasm package 0b92e94
+
+-------------------------------------------------------------------
 Mon Feb 23 08:50:55 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.41.0:
