@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  9 08:04:20 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.4:
+  * Fix a regression introduced in v0.19 where composed keys
+    (diacritics etc) no longer produced uppercase letters when
+    Shift was pressed (#115)
+
+-------------------------------------------------------------------
 Thu Jan 22 20:57:03 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.2:
