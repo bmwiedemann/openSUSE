@@ -1,7 +1,7 @@
 #
 # spec file for package arm-trusted-firmware
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,12 @@
 %global debug_build 0
 %else
 %global debug_build 1
+%endif
+
+%if "%{platform}" == "qemu"
+%define opteedir %{_prefix}/lib/optee/qemu-armv8a
+%else
+%define opteedir %{_prefix}/lib/optee/%{platform}
 %endif
 
 %bcond_without A3700_tools
@@ -100,7 +106,7 @@ BuildRequires:  libcryptopp-devel
 %endif
 BuildRequires:  libopenssl-devel
 %if %{use_optee}
-%if "%{platform}" == "qemu_sbsa"
+%if "%{platform}" == "qemu_sbsa" || "%{platform}" == "qemu"
 BuildRequires:  optee-qemu-armv8a
 %else
 %if "%{platform}" == "a3700"
@@ -317,9 +323,9 @@ make \
 %endif
 %if %{use_optee}
      SPD=opteed \
-     BL32=/boot/tee-header_v2.bin \
-     BL32_EXTRA1=/boot/tee-pager_v2.bin \
-     BL32_EXTRA2=/boot/tee-pageable_v2.bin \
+     BL32=%{opteedir}/tee-header_v2.bin \
+     BL32_EXTRA1=%{opteedir}/tee-pager_v2.bin \
+     BL32_EXTRA2=%{opteedir}/tee-pageable_v2.bin \
 %endif
 %if "%{platform}" == "a3700" || "%{platform}" == "a80x0_mcbin"
      LOG_LEVEL=30 \
@@ -455,8 +461,12 @@ install -D -m 0644 %{outdir}/bl31.bin %{buildroot}%{_datadir}/%{name}/bl31.bin
 %endif
 
 %if "%{platform}" == "a80x0_mcbin" || "%{platform}" == "fvp"  || "%{platform}" == "qemu" || "%{platform}" == "qemu_sbsa" || "%{platform}" == "rpi3"
-install -D -m 0644 %{outdir}/bl1.bin %{buildroot}%{_datadir}/%{name}/bl1.bin
-install -D -m 0644 %{outdir}/fip.bin %{buildroot}%{_datadir}/%{name}/fip.bin
+install -d -m 0755 %{buildroot}%{_datadir}/%{name}/
+install -m 0644 %{outdir}/bl*.bin %{buildroot}%{_datadir}/%{name}/
+install -m 0644 %{outdir}/fip.bin %{buildroot}%{_datadir}/%{name}/fip.bin
+%endif
+%if "%{platform}" == "qemu"
+install -D -m 0644 %{outdir}/qemu_fw.bios %{buildroot}%{_datadir}/%{name}/qemu_fw.bios
 %endif
 %if "%{platform}" == "a80x0_mcbin" || "%{platform}" == "rpi3"
 install -D -m 0644 %{outdir}/bl2.bin %{buildroot}%{_datadir}/%{name}/bl2.bin

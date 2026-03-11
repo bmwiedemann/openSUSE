@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 25 13:17:52 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable build of a3700 since it fails to build for a while now
+
+-------------------------------------------------------------------
+Sat Feb 21 15:26:57 UTC 2026 - Z. Wieback <zwieback66@yahoo.com>
+
+- Install all loader stages and qemu_fw.bios for use with qemu
+
+-------------------------------------------------------------------
 Wed Dec 10 15:57:07 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 2.12.8:
