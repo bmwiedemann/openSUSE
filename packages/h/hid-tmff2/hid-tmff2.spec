@@ -16,7 +16,7 @@
 
 
 Name:           hid-tmff2
-Version:        0.0.1+git0.a9312ea
+Version:        0.0.1+git0.d4c9e06
 Release:        0
 Summary:        Driver for Thrustmaster wheels
 License:        GPL-2.0-or-later
