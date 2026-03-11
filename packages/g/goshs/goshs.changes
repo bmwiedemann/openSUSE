@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 16 16:13:56 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.3
+  * New Feature: Invisible mode. Read more on that at
+    https://goshs.de/en/usage/restrictions/index.html#be-invisible-invisible-mode
+  * made mDNS opt-in instead of opt-out.
+
+-------------------------------------------------------------------
+Wed Nov 12 18:53:33 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.2
+  * Fix upload behaviour. Details see issue #128
+  * Remove Upload form from WebUI when read-only to address issue.
+
+-------------------------------------------------------------------
 Mon Sep 22 09:47:28 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.1

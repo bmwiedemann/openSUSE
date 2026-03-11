@@ -16,14 +16,14 @@
 #
 
 Name:           goshs
-Version:        1.1.1
+Version:        1.1.3
 Release:        0
 Summary:        A simple HTTP server
 License:        MIT
 Group:          Productivity/Networking/Web/Servers
 URL:            https://goshs.de/
 #Git-Clone:     https://github.com/patrickhener/goshs.git
-Source:         https://github.com/patrickhener/goshs/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/patrickhener/goshs/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  go >= 1.24.1
 BuildRequires:  golang-packaging

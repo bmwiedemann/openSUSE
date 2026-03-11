@@ -6,5 +6,6 @@ self-signed certificate or user provided certificate and
 you can use HTTP basic auth.
 
 </description>
+  <devel project="server:http" package="goshs"/>
   <url>https://hesec.de/tags/goshs/</url>
 </package>
