@@ -1,4 +1,220 @@
 -------------------------------------------------------------------
+Wed Mar 11 07:47:51 UTC 2026 - Pavel Dostál <pdostal@suse.com>
+
+- Lower the golang build dependency from >= 1.26.1 to >= 1.26
+  * lower-go-version.patch
+- Update to version 2.88.0:
+  * fix: add if guard to no-response job to prevent running on workflow_dispatch
+  * Add pitch surfacing workflow (monthly + manual dispatch)
+  * fix: address review feedback on squash merge commit message
+  * fix: gofmt alignment in test struct literals
+  * feat(repo): add --squash-merge-commit-message flag to gh repo edit
+  * chore(deps): bump golang.org/x/sync from 0.19.0 to 0.20.0
+  * refactor: change extractFileName param from []byte to string
+  * Update Go version requirement to 1.26+
+  * Bump golangci-lint from v2.6.0 to v2.11.0 for Go 1.26 support
+  * Bump Go from 1.25.7 to 1.26.1 to fix stdlib vulnerabilities
+  * Address review comments: use actorDisplayName for Copilot author display
+  * Show friendly display names in gh issue view
+  * Add generic actorDisplayName for all actor display names
+  * Show friendly Copilot (AI) name in gh pr view
+  * fix: align example indentation with codebase convention
+  * fix: address review feedback for --exclude flag
+  * fix: share diffHeaderRegexp between changedFilesNames and extractFileName, fix gofmt
+  * feat(pr diff): add --exclude flag to filter files from diff output
+  * Fetch org teams via repository.owner inline fragment
+  * chore(deps): bump google.golang.org/grpc from 1.79.1 to 1.79.2
+  * Exclude PR author from reviewer candidates in SuggestedReviewerActors
+  * Fix duplicate reviewers in gh pr edit by passing logins as defaults
+  * Exclude current user from suggested reviewers in gh pr create
+  * Replace @copilot with Copilot reviewer login in gh pr create
+  * Add TODO requestReviewsByLoginCleanup on GHES ID-based reviewer path
+  * Remove /slug team reviewer shorthand normalization
+  * Add TODO requestReviewsByLoginCleanup on static reviewer MultiSelect
+  * Check state.ActorReviewers in MetadataSurvey reviewer search gate
+  * Label Copilot detection in SuggestedReviewerActorsForRepo as a hack
+  * Add TODO requestReviewsByLoginCleanup in CreatePullRequest
+  * refactor: deduplicate scope error handling between api/client.go and project queries
+  * Fix extension install error message showing raw struct instead of owner/repo (#12836)
+  * chore(deps): bump github.com/docker/cli
+  * Remove StateReason feature detection for issue close
+  * Remove unnecessary StateReasonDuplicate feature detection
+  * docs: add examples to gh issue close help text (#12830)
+  * Fix incorrect integer conversion from int to uint16 in port forwarder (#12831)
+  * Combine issue feature detection into a single GraphQL query
+  * feat(browse): add blame flag
+  * Reword `--no-upstream` help doc
+  * test(issue list): cover additional PR search qualifier variants
+  * fix(issue list): reject pull request-only search qualifiers
+  * chore(deps): bump goreleaser/goreleaser-action from 6.4.0 to 7.0.0
+  * chore(deps): bump github.com/gabriel-vasile/mimetype
+  * chore(deps): bump google.golang.org/grpc from 1.78.0 to 1.79.1
+  * chore(deps): bump actions/attest-build-provenance from 3.2.0 to 4.1.0
+  * chore(deps): bump actions/download-artifact from 7 to 8
+  * chore(deps): bump actions/upload-artifact from 6 to 7
+  * Set COPILOT_GH env var when launching Copilot CLI
+  * Simplify progress indicators in issue develop
+  * Emit null for zero createdAt/updatedAt values
+  * Address Copilot review feedback
+  * Polish --json support for agent-task view
+  * Polish --json support for agent-task list
+  * Fix gofmt alignment in view_test.go
+  * feat(pr): add changeType field to files JSON output
+  * Add --duplicate-of flag and duplicate reason to gh issue close
+  * Add --json support to `gh agent-task view`
+  * Add --json support to `gh agent-task list`
+  * fix(project/item-edit): preserve title/body when editing draft issue with partial flags
+  * Add databaseId to assignees GraphQL fragment
+  * fix(licenses): implement VCS-friendly embedding
+  * chore(gitignore): ignore generated license files
+  * Use pre-compiled regexp for matching Content-Type
+  * chore(script/licenses): fix indentation
+  * fix(script/licenses): generate licenses in separate dirs
+  * Fix invalid ANSI SGR escape code in JSON and diff colorization
+  * Add --no-upstream flag to gh repo clone
+  * Clarify ReviewerCandidate relationship to AssignableActor
+  * Move PR review queries from queries_pr.go to queries_pr_review.go
+  * Use org/slug format in test fixtures and remove /slug normalization
+  * Normalize /slug team shorthand to org/slug and fix docs
+  * Include bot logins in login-based reviewer mutation guard
+  * Skip reviewer metadata fetch when using search-based selection
+  * Update test assertions to expect org/slug team format
+  * Wire bot reviewer logins through CreatePullRequest
+  * Partition bot reviewers separately for RequestReviewsByLogin
+  * Preserve org/slug format for team reviewer slugs
+  * Apply suggestion from @BagToad
+  * Remove redundant comment
+  * Don't swallow error from FD
+  * Remove redundant comments
+  * Fix issue develop repeated invocation with named branches
+  * Fix redundant API call in gh issue view --comments (#12606)
+  * Add toGitHubV4Strings helper to reduce code duplication
+  * Address PR review comments
+  * gh pr create: CCR and multiselectwithsearch
+  * trigger rerun
+  * test: TestGenerateScopeErrorForGQL and TestRequiredScopesFromServerMessage
+  * fix: clarify scope error while creating issues for projects
+  * fix: error when --remote flag used with repo argument
+  * build: customizable install `prefix`
+
+-------------------------------------------------------------------
+Wed Feb 25 09:52:34 UTC 2026 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.87.3:
+  * Fix project mutation query variable usage
+
+-------------------------------------------------------------------
+Sun Feb 22 17:59:17 UTC 2026 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.87.2:
+  * chore(deps): bump golang.org/x/crypto from 0.47.0 to 0.48.0
+  * fix(agent-task/capi): fix capi API version
+  * Remove debris licenses
+
+-------------------------------------------------------------------
+Fri Feb 20 10:00:27 UTC 2026 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.87.0:
+  * Bundle licenses at release time (#12625)
+  * Rename query for clarity
+  * Remove pointer comments
+  * Simplify error message
+  * Remove DTO concept
+  * Add `--query` flag to `project item-list` (#12696)
+  * Clarify --clobber flag deletes assets before re-uploading
+  * Add usage examples to gh gist edit command
+  * Remove feedback issue template
+  * Migrate PR triage workflows to shared workflows
+  * Rename triage workflow to triage-discussion-label
+  * Pass environment as input to shared triage workflow
+  * Add missing environment and label check to triage workflow
+  * Initial plan
+  * fix(workflow run): bail out on feature detection error
+  * refactor(featuredetection): remove temp in favour of early returns
+  * docs(workflow run): improve help docs
+  * docs(workflow run): add cleanup marker with explanation on future changes
+  * fix(workflow run): apply `url.PathEscape` when compiling URL
+  * refactor(workflow run): remove temp `out`
+  * Add missing TODO comments for featuredetection if-statements
+  * docs(featuredetection): fix typo in comment
+  * test(featuredetection): fix test case name
+  * test(workflow run): verify retrieval of workflow run details
+  * feat(workflow run): retrieve workflow run if supported by the API
+  * test(featuredetection): add tests for `ActionsFeatures`
+  * fix(featuredetection): add `ActionsFeatures` to detect workflow dispatch features
+  * pin REST API version to 2022-11-28
+  * Migrate stale workflow to shared workflow
+  * Respect --exit-status with --log and --log-failed
+  * document fork default branch behavior
+  * Migrate issue triage workflows to shared workflows
+  * fork default branch only in pr create
+  * update third party licenses
+  * chore(deps): bump golang.org/x/crypto from 0.46.0 to 0.47.0
+  * Add manual dispatch to bump-go workflow
+  * bump go to 1.25.7
+  * update third party licenses
+  * chore(deps): bump golang.org/x/term from 0.38.0 to 0.39.0
+  * update third party licenses
+  * chore(deps): bump golang.org/x/text from 0.32.0 to 0.33.0
+  * Add toGitHubV4Strings helper to reduce code duplication
+  * Address PR review comments
+  * update third party licenses
+  * chore(deps): bump github.com/gdamore/tcell/v2 from 2.13.4 to 2.13.7
+  * Update third party licenses
+  * chore(deps): bump github.com/theupdateframework/go-tuf/v2
+  * Update third-party licenses
+  * Clarify comment on reviewer API behavior
+  * Clarify assignee/reviewer fetching behavior
+  * Clarify EditableReviewers comment
+  * Clarify Copilot assignee comment
+  * Use unfiltered totalCount for reviewer 'more results' display
+  * Include name in reviewer display for existing review requests
+  * update Go 1.25.6
+  * Implement cascading quota for reviewer suggestions
+  * fix(pr edit): send empty slices to clear reviewers in replace mode
+  * Fix return proper slug only for ReviewerTeam
+  * Remove redundant comment
+  * chore: update licenses
+  * chore: bump `cli/oauth` to `v1.2.2`
+  * Add CCR and reviewer MultiSelectWithSearch
+  * chore(deps): bump actions/attest-build-provenance from 3.1.0 to 3.2.0
+  * Remove outdated comment in SuggestedAssignableActors
+  * Apply suggestions from code review
+  * Remove outdated TODO comments in survey.go
+  * Remove redundant comment in editRun test
+  * Return total assignee count in SuggestedAssignableActors
+  * Add test for MultiSelectWithSearch error propagation
+  * Add test for legacy assignee flow on GHES
+  * Remove unused Viewer struct from SuggestedAssignableActors
+  * Add comments to assigneeSearchFunc for clarity
+  * Simplify variables map in SuggestedAssignableActors
+  * Simplify suggested assignable actors
+  * Fix linter and mock prompter signature
+  * Apply suggestions from code review
+  * Apply suggestions from code review
+  * Clarify TODO comment for reviewer search function
+  * Only support assignee searchfunc on GitHub.com
+  * Update  edit tests
+  * Refactor MultiSelectWithSearch to use result struct
+  * Add comment describing logger
+  * Pass editable to assigneeSearchFunc and update metadata
+  * Add dynamic assignee search to PR edit flow
+  * MultiSelectWithSearch initial implementation
+  * prshared: named prompt interface parameters
+  * typo: dont to don't
+  * chore(deps): bump goreleaser/goreleaser-action from 6.0.0 to 6.4.0
+  * chore: update licenses
+  * chore(deps): bump github.com/sigstore/rekor from 1.4.3 to 1.5.0
+  * chore(deps): bump github.com/theupdateframework/go-tuf/v2
+  * chore: update licenses
+  * chore(deps): bump github.com/sigstore/sigstore from 1.10.0 to 1.10.4
+  * docs: lint source.md
+  * fix(pr/shared): improve `ParseFullReference` error message
+  * Fix fmt.Errorf format argument in ParseFullReference
+  * chore(deps): bump actions/upload-artifact from 5 to 6
+  * chore(deps): bump actions/download-artifact from 6 to 7
+
+-------------------------------------------------------------------
 Thu Jan 22 06:39:24 UTC 2026 - Pavel Dostál <pdostal@suse.com>
 
 - Update to version 2.86.0:
