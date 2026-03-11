@@ -1,7 +1,7 @@
 #
 # spec file for package mingw32-binutils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,26 @@
 #
 
 
+%{_mingw32_package_header_debug}
 Name:           mingw32-binutils
 Version:        2.45.1
 Release:        0
 Summary:        GNU Binutils
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later
-Group:          Development/Libraries
+Group:          Development/Libraries/Cross
 URL:            http://www.gnu.org/software/binutils/
 Source:         http://ftp.gnu.org/gnu/binutils/binutils-%{version}.tar.xz
 Source1:        http://ftp.gnu.org/gnu/binutils/binutils-%{version}.tar.xz.sig
 Source2:        mingw32-binutils.keyring
 Source99:       mingw32-binutils-rpmlintrc
-#!BuildIgnore: post-build-checks
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  makeinfo
 BuildRequires:  mingw32-cross-binutils
 BuildRequires:  mingw32-cross-gcc
 BuildRequires:  mingw32-filesystem
+#!BuildIgnore:  post-build-checks
 BuildArch:      noarch
-%_mingw32_package_header_debug
 
 %description
 The GNU Binutils are a collection of binary tools.
@@ -43,12 +43,12 @@ These utilities (like 'as', 'ld', 'strip') understand Windows executables and DL
 
 %package devel
 Summary:        %{summary}
-Group:          Development/Libraries
+Group:          Development/Libraries/Cross
 
 %description devel
 libbfd, libiberty and libopcodes.a
 
-%_mingw32_debug_package
+%{_mingw32_debug_package}
 
 %prep
 %autosetup -p1 -n binutils-%{version}
@@ -56,7 +56,7 @@ libbfd, libiberty and libopcodes.a
 %build
 mkdir -p build
 cd build
-%{_mingw32_configure} \
+%_mingw32_configure \
   --verbose --disable-nls \
   --without-included-gettext \
   --disable-win32-registry \
