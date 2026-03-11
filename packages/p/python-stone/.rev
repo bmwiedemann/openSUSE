@@ -16,4 +16,12 @@
     <comment>- Migrate to libalternatives</comment>
     <requestid>1282858</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>dc743fe7881fc5facf975f62e493b046</srcmd5>
+    <version>3.3.9</version>
+    <time>1773259069</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1338345</requestid>
+  </revision>
 </revisionlist>
