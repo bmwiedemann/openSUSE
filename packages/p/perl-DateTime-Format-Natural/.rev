@@ -172,4 +172,18 @@
      [github #26 - isla w]</comment>
     <requestid>1328819</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c4de9d6a2bebf1b9171a3316a67c0065</srcmd5>
+    <version>1.250.0</version>
+    <time>1773258731</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.250.0 (1.25)
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+  1.25  2026-02-13  &lt;schubiger@cpan.org&gt;
+   - Merged development version to stable.
+  1.24_01  2026-02-12  &lt;schubiger@cpan.org&gt;
+   - Add parsing for beginning and end of x months ago, this month,
+     and x months from now. [github #28 - gibus]</comment>
+    <requestid>1338044</requestid>
+  </revision>
 </revisionlist>

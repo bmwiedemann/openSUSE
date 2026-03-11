@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb 14 06:01:29 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.250.0 (1.25)
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.25  2026-02-13  <schubiger@cpan.org>
+   - Merged development version to stable.
+  1.24_01  2026-02-12  <schubiger@cpan.org>
+   - Add parsing for beginning and end of x months ago, this month,
+     and x months from now. [github #28 - gibus]
+
+-------------------------------------------------------------------
 Mon Jan 19 05:52:40 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.240.0 (1.24)
