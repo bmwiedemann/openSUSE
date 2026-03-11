@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 10 21:46:15 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- remove move files that make containers unreproducible
+
+-------------------------------------------------------------------
 Fri Jan 23 10:11:01 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - Add helm for kubectl kustomize --enable-helm
