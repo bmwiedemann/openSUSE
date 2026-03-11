@@ -78,4 +78,15 @@
 - Normalize metadata directory name.</comment>
     <requestid>1266234</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c001959eb4ab72237fdad1261c3b92b0</srcmd5>
+    <version>6.4.3</version>
+    <time>1773258625</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.4.3:
+  * No significant changes.
+
+- add six dependency for testsuite</comment>
+    <requestid>1338096</requestid>
+  </revision>
 </revisionlist>

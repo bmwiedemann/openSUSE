@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.itertools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.itertools
-Version:        6.4.1
+Version:        6.4.3
 Release:        0
 Summary:        Tools to work with iterables
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.itertools
-Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.itertools/jaraco.itertools-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.itertools/jaraco_itertools-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module inflect}
 BuildRequires:  %{python_module more-itertools >= 4.0.0}
@@ -44,7 +44,7 @@ jaraco.itertools Tools for working with iterables.
 Complements itertools and more_itertools.
 
 %prep
-%setup -q -n jaraco.itertools-%{version}
+%setup -q -n jaraco_itertools-%{version}
 rm -r jaraco.itertools.egg-info
 
 %build
