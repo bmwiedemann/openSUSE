@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Mar  6 06:03:00 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.890.0 (2.89)
+   see /usr/share/doc/packages/perl-SVG/Changes
+
+  2.89  2026-03-05 MANWAR
+        - Fix RT#136789: Corrected misleading documentation for comment() and
+          desc() methods.
+        - Fixed logic in SVG::Element::xmlify to ensure comment elements are
+          correctly rendered as XML comments rather than standard tags.
+        - Updated desc() documentation to use cdata() for content, preventing
+          hash assignment warnings.
+        - Improved get_path() documentation to clarify return attributes (d vs
+          points) based on element type.
+
+  2.88  2026.02.23 MANWAR
+        [Bug Fix]
+        - Fixed: element methods (circle, title, rect, path, etc.) were
+          unavailable when module was loaded with empty import list
+          'use SVG ()'.
+          Perl suppresses the call to import() with empty parens, so element
+          methods were never predeclared. Fixed by predeclaring all built-in
+          element methods in SVG::Element at load time, regardless of how
+          SVG.pm is imported. (RT issue: #132058)
+        [Test]
+        - Added t/33-use-empty-import.t to test element methods with 'use SVG ()'
+        [Fixes]
+        - Fixed xt/author/pod-coverage.t to include 'use lib lib' so module is
+          found correctly when running tests from the distribution root
+
+-------------------------------------------------------------------
 Fri May 20 03:09:01 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.87
