@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 19 15:22:14 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 2.2.1
+  Too many changes, see https://github.com/mongodb/mongo-c-driver/releases
+  for all changes since 1.30.2
+
+-------------------------------------------------------------------
 Sat Oct 18 08:50:24 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Package cleanup

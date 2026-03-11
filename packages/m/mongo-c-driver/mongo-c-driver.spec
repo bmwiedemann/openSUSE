@@ -1,7 +1,7 @@
 #
 # spec file for package mongo-c-driver
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%define soname 2
 Name:           mongo-c-driver
-Version:        1.30.2
+Version:        2.2.1
 Release:        0
 Summary:        Client library written in C for MongoDB
 # See THIRD_PARTY_NOTICES
@@ -44,11 +45,11 @@ database in the C language. It can also be used to write
 fast client implementations in languages such as Python,
 Ruby, or Perl.
 
-%package -n libmongoc-1_0-0
+%package -n libmongoc%{soname}
 Summary:        A client library written in C for MongoDB
 Group:          System/Libraries
 
-%description -n libmongoc-1_0-0
+%description -n libmongoc%{soname}
 mongo-c-driver is a library for building high-performance
 applications that communicate with the MongoDB NoSQL
 database in the C language.
@@ -56,17 +57,18 @@ database in the C language.
 %package devel
 Summary:        Development files for mongo-c-driver
 Group:          Development/Libraries/C and C++
-Requires:       libmongoc-1_0-0 = %{version}
+Requires:       libmongoc%{soname} = %{version}
 
 %description devel
 The mongo-c-driver-devel package contains libraries and header files for
 developing applications that use mongo-c-driver.
 
-%package -n libbson-1_0-0
+%package -n libbson%{soname}
 Summary:        A library for parsing and generating BSON documents
 Group:          System/Libraries
+Requires:       pkgconfig(libsasl2)
 
-%description -n libbson-1_0-0
+%description -n libbson%{soname}
 Libbson is a library providing useful routines related to
 building, parsing, and iterating BSON documents. It is a
 useful base for those wanting to write high-performance
@@ -76,7 +78,7 @@ Ruby, or Perl.
 %package -n bson-devel
 Summary:        Development files for libbson
 Group:          Development/Libraries/C and C++
-Requires:       libbson-1_0-0 = %{version}
+Requires:       libbson%{soname} = %{version}
 
 %description -n bson-devel
 The bson-devel package contains libraries and header files for
@@ -97,35 +99,34 @@ developing applications that use libbson.
 
 %install
 %cmake_install
-rm %{buildroot}/%{_datadir}/mongo-c-driver/{uninstall.sh,COPYING,NEWS,README.rst,THIRD_PARTY_NOTICES}
+rm %{buildroot}/%{_datadir}/mongo-c-driver/%{version}/{uninstall.sh,COPYING,NEWS,README.rst,THIRD_PARTY_NOTICES}
 %fdupes %{buildroot}/%{_libdir}/cmake
 
-%ldconfig_scriptlets -n libmongoc-1_0-0
-%ldconfig_scriptlets -n libbson-1_0-0
+%ldconfig_scriptlets -n libmongoc%{soname}
+%ldconfig_scriptlets -n libbson%{soname}
 
-%files -n libmongoc-1_0-0
+%check
+
+%files -n libmongoc%{soname}
 %license COPYING
 %license THIRD_PARTY_NOTICES
-%{_libdir}/libmongoc-1.0.so.*
+%{_libdir}/libmongoc%{soname}.so.*
 
-%files -n libbson-1_0-0
-%{_libdir}/libbson-1.0.so.*
+%files -n libbson%{soname}
+%{_libdir}/libbson%{soname}.so.*
 
 %files devel
 %doc NEWS README.rst
-%{_bindir}/mongoc-stat
-%{_includedir}/libmongoc-1.0
-%{_libdir}/libmongoc-1.0.so
-%{_libdir}/pkgconfig/libmongoc-1.0.pc
-%{_libdir}/pkgconfig/libmongoc-ssl-1.0.pc
-%{_libdir}/cmake/libmongoc-1.0
-%{_libdir}/cmake/mongoc-1.0
+%{_bindir}/mongoc%{soname}-stat
+%{_includedir}/mongoc-%{version}
+%{_libdir}/libmongoc%{soname}.so
+%{_libdir}/pkgconfig/mongoc%{soname}.pc
+%{_libdir}/cmake/mongoc-%{version}
 
 %files -n bson-devel
-%{_includedir}/libbson-1.0
-%{_libdir}/libbson-1.0.so
-%{_libdir}/pkgconfig/libbson-1.0.pc
-%{_libdir}/cmake/libbson-1.0
-%{_libdir}/cmake/bson-1.0
+%{_includedir}/bson-%{version}
+%{_libdir}/libbson%{soname}.so
+%{_libdir}/pkgconfig/bson%{soname}.pc
+%{_libdir}/cmake/bson-%{version}
 
 %changelog

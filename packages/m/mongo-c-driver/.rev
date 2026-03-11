@@ -7,4 +7,12 @@
     <comment>Forward the current version of mongo-c-driver to Factory</comment>
     <requestid>1312146</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e3dce7fda2ca3fda09a46aefde5aab2e</srcmd5>
+    <version>2.2.1</version>
+    <time>1773259037</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1338294</requestid>
+  </revision>
 </revisionlist>
