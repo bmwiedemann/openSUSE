@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 11 06:24:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.29.1:
+  https://istio.io/latest/news/releases/1.29.x/announcing-1.29.1/
+  https://istio.io/latest/news/security/istio-security-2026-001/
+  No istioctl-related changes in the changelog
+
+-------------------------------------------------------------------
 Thu Feb 19 08:16:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.29.0:
