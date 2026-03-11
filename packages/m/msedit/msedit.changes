@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  9 21:11:32 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 1.2.1:
+  * nominal change for linux
+- ran spec-cleaner
+- set filter on cargo_vendor
+
+-------------------------------------------------------------------
 Tue Jul 15 00:37:16 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Specfile cleanup and run %suse_update_desktop_file

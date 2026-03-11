@@ -1,7 +1,7 @@
 #
 # spec file for package msedit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           msedit
-Summary:        A simple editor for simple needs
-URL:            https://github.com/microsoft/edit
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
+Summary:        A simple editor for simple needs
+License:        MIT
+URL:            https://github.com/microsoft/edit
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-License:        MIT
 BuildRequires:  cargo >= 1.84
 BuildRequires:  cargo-packaging
 BuildRequires:  libicu-devel
@@ -62,7 +62,6 @@ install -Dm644 -T %{_builddir}/%{buildsubdir}/assets/edit.svg \
 	%{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
 %files
-%defattr(-,root,root,-)
 %{_bindir}/msedit
 %doc *.md
 %dir %{_datadir}/icons

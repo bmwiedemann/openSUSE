@@ -1,7 +1,12 @@
 <services>
 	<service name="cargo_vendor" mode="manual">
 		<param name="url">https://github.com/microsoft/edit</param>
-		<param name="revision">v1.2.0</param>
+		<param name="filter">true</param>
+		<param name="exclude">.github</param>
+		<param name="exclude">.pipelines</param>
+		<param name="exclude">.vscode</param>
+		<param name="exclude">.devcontainer</param>
+		<param name="revision">v1.2.1</param>
 		<param name="versionrewriteregex">^v?(.*)</param>
 		<param name="versionrewritepattern">$1</param>
 		<param name="set-name">msedit</param>
