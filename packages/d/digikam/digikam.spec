@@ -19,11 +19,11 @@
 %define kf6_version 6.0.0
 %define qt6_version 6.4.0
 
-%define soversion 8_8_0
+%define soversion 9_0_0
 %bcond_without released
 %bcond_with    apidocs
 Name:           digikam
-Version:        8.8.0
+Version:        9.0.0
 Release:        0
 Summary:        A KDE Photo Manager
 License:        GPL-2.0-or-later
@@ -176,7 +176,7 @@ The main digikam libraries that are being shared between showfoto and digikam
 %prep
 %setup -q -n digikam-%{version}
 %if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
-%patch -P 0 -p1 -R
+%patch -P 0 -p1
 %endif
 
 %build
