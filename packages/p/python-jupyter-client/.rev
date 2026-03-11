@@ -469,4 +469,24 @@ Update to 5.3.4</comment>
 </comment>
     <requestid>1323552</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>09dcf1a5d90215c8b243e119a263245e</srcmd5>
+    <version>8.8.0</version>
+    <time>1773258625</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.8.0:
+  * Added kernel_protocol_version to kernelspec #1097
+  * Faster message serialization
+  * Path resolution by kernel manager and providers #1005
+  * chore: update some parts of the pre-commit #1093 (@henryiii,
+  * Fix flaky client tests by waiting for first request's reply
+  * Re-enable qtconsole in downstream checks #1090 (@rgbkrk)
+  * Fix channel cleanup by closing streams before stopping ioloop
+    thread #1089 (@rgbkrk)
+  * Fix downstream workflow #1087 (@rgbkrk)
+  * Skip mypy on PyPy to avoid librt compilation issues #1086
+  * Upgrade to version 5.5 #1096
+  * Update messaging spec #1095</comment>
+    <requestid>1338104</requestid>
+  </revision>
 </revisionlist>

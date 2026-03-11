@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 10 21:59:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.8.0:
+  * Added kernel_protocol_version to kernelspec #1097
+  * Faster message serialization
+  * Path resolution by kernel manager and providers #1005
+  * chore: update some parts of the pre-commit #1093 (@henryiii,
+  * Fix flaky client tests by waiting for first request's reply
+  * Re-enable qtconsole in downstream checks #1090 (@rgbkrk)
+  * Fix channel cleanup by closing streams before stopping ioloop
+    thread #1089 (@rgbkrk)
+  * Fix downstream workflow #1087 (@rgbkrk)
+  * Skip mypy on PyPy to avoid librt compilation issues #1086
+  * Upgrade to version 5.5 #1096
+  * Update messaging spec #1095
+
+-------------------------------------------------------------------
 Thu Dec 18 16:39:20 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.7.0
