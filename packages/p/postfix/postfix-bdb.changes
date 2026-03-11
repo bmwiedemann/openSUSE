@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar 11 15:50:36 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 3.11.1
+  * Bugfix (defect introduced: 20260219): alias_maps errors when
+    default_database_type was not set in main.cf. 
+  * Bugfix (defect introduced: Postfix 3.0): buffer over-read when
+    Postfix is configured with an enhanced status code not followed
+    by other text. For example, "5.7.2" without text after the
+    three-number code, in an access(5) table, header or body checks,
+    or with "$rbl_code $rbl_text" in rbl_reply_maps or default_rbl_reply.
+    These are all uncommon configurations. 
+  * Bugfix (defect introduced: Postfix 3.3): null pointer in
+    nbdb_reindexd(8) because the "service_name" value was not
+    propagated. 
+  * During Postfix start-up, avoid a spurious error message from
+    nbdb_reindexd(8), when non_bdb_migration_level disables automatic
+    re-indexing.
+
+-------------------------------------------------------------------
 Thu Mar  5 19:18:44 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 3.11.0
