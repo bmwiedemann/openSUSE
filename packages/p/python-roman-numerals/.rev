@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>1269152</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7593cb93c806ab00ddea43f32cb1c628</srcmd5>
+    <version>4.1.0</version>
+    <time>1773258585</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.1.0:
+  * Rename Python package to roman-numerals on PyPI.
+  * Drop support for Python 3.9.
+  * Declare support for Python 3.15.
+  * Increase the minimum supported Rust version (MSRV) to 1.81.0.</comment>
+    <requestid>1337903</requestid>
+  </revision>
 </revisionlist>

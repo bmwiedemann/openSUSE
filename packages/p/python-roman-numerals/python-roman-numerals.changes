@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar  4 08:27:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.0:
+  * Rename Python package to roman-numerals on PyPI.
+  * Drop support for Python 3.9.
+  * Declare support for Python 3.15.
+  * Increase the minimum supported Rust version (MSRV) to 1.81.0.
+
+-------------------------------------------------------------------
 Thu Apr 10 14:15:00 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Enable sle15_python_module_pythons to only build for Python 3.11 on Leap
