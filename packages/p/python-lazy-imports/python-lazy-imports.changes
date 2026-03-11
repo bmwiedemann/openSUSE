@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 29 10:21:26 UTC 2025 - Elisei Roca <eroca@suse.com>
+
+- Update to version 1.2.0:
+  * Bump python to 3.10 and modernize
+  * Add support for Python 3.14
+
+-------------------------------------------------------------------
 Mon Sep  8 13:56:02 UTC 2025 - Elisei Roca <eroca@suse.com>
 
 - initial package of python-lazy-imports at version 1.0.1

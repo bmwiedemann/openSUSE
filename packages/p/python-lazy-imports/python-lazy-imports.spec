@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lazy-imports
-Version:        1.0.1
+Version:        1.2.0
 Release:        0
 Summary:        Tool to support lazy imports
 License:        Apache-2.0
