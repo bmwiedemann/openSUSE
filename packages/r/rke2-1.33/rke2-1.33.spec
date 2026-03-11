@@ -1,7 +1,7 @@
 #
 # spec file for package rke2-1.33
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define directory_name rke2
 %define binary_name rke2
-%define kubernetes_version v1.33.8
+%define kubernetes_version v1.33.9
 %define kubernetes_version_major_minor 1.33
 %define kubernetes_version_next 1.34
 # check the upstream dependency file and adapt according to the 'golang: upstream version'
@@ -28,13 +28,13 @@
 # result of the command 1.22.2 => golang_version go1.22 (including go prefix, without patch version)
 # result of the command 1.22.2 => min_required_golang_minor_version 1.22.2
 %define golang_version go1.24
-%define min_required_golang_minor_version 1.24.12
+%define min_required_golang_minor_version 1.24.13
 
 #
-%define hardened_etcd_version build20260126
+%define hardened_etcd_version build20260227
 
 Name:           rke2-1.33
-Version:        1.33.8+rke2r1
+Version:        1.33.9+rke2r1
 Release:        0
 Summary:        Rancher Kubernetes Engine
 License:        Apache-2.0
