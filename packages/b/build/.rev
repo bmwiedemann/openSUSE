@@ -2051,4 +2051,17 @@ Changes:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1332642</requestid>
   </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>14dcc3ad93ef63b42e888cbcd6c56030</srcmd5>
+    <version>20260219</version>
+    <time>1773258559</time>
+    <user>anag_factory</user>
+    <comment>- Implement cmssign support in signdummy
+- pbuild: mark git assets with a fixed commit as immutable
+- mkosi
+  * check if old parameters are supported before passing them
+  * support old bash version
+- Do not crash on small files that start with the PE magic</comment>
+    <requestid>1337927</requestid>
+  </revision>
 </revisionlist>
