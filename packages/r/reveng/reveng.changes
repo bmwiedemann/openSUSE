@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  4 08:47:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.6:
+  * Added algorithm CRC-64/NVME from the CRC Catalogue
+
+-------------------------------------------------------------------
 Fri Feb 23 11:44:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
