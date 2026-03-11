@@ -170,4 +170,16 @@
     <comment>- Switch to pyroject macros.</comment>
     <requestid>1285968</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>86bc4d8c2612879147d319538182e994</srcmd5>
+    <version>5.0.3</version>
+    <time>1773258589</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.0.3:
+  * Test Python 3.7 on Ubuntu 22.04, and add Ubuntu 3.13
+  * Add SECURITY.md, referencing the GitPython one
+  * Specify explicit `contents: read` workflow permissions
+  * Add CI test job for no-GIL (free-threaded) Python 3.13</comment>
+    <requestid>1337910</requestid>
+  </revision>
 </revisionlist>

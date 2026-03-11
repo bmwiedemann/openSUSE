@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 10 08:33:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.3:
+  * Test Python 3.7 on Ubuntu 22.04, and add Ubuntu 3.13
+  * Add SECURITY.md, referencing the GitPython one
+  * Specify explicit `contents: read` workflow permissions
+  * Add CI test job for no-GIL (free-threaded) Python 3.13
+
+-------------------------------------------------------------------
 Mon Jun 16 06:12:22 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyroject macros.
