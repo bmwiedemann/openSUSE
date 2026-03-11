@@ -7,5 +7,6 @@
  * networks are fetched from the server via bouncer-networks,
  * messages can be searched in logs via SEARCH,
  * files can be uploaded via FILEHOST (with drag &amp; drop!)</description>
+  <devel project="server:irc" package="senpai"/>
   <url>https://sr.ht/~delthas/senpai/</url>
 </package>

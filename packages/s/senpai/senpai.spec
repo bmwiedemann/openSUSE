@@ -17,7 +17,7 @@
 
 
 Name:           senpai
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Your everyday IRC student
 License:        ISC

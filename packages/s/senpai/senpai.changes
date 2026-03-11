@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 22 09:58:41 UTC 2025 - Alessio Biancalana <dottorblaster@popensuse.org>
+
+- Upgrade to v0.4.1:
+  * Defer unimportant caps until CAP LS response
+  * Fix incorrect cursor position when editing mutli-line text
+  * Fix theoretical crash on read event on overlay tab
+
+-------------------------------------------------------------------
 Sat Mar 29 09:45:07 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Initial packaging effort for senpai 0.4.0.
