@@ -19,5 +19,6 @@ This package contain the runtime engine binary onlym
 See the following links on how to install game assets:
 https://github.com/TheXTech/TheXTech/wiki/Game-assets-packages
 https://github.com/TheXTech/TheXTech/wiki/Running-game-assets-on-Linux-or-xBSD</description>
+  <devel project="games" package="thextech"/>
   <url>https://wohlsoft.ru/projects/TheXTech/</url>
 </package>
