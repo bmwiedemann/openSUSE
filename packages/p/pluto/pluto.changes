@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 11 06:00:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.23.5:
+  * Fix read only (#595)
+  * Fix docker login on release (#594)
+  * Fix vault config (#593)
+  * Fix pluto release (#592)
+  * INS-2025: Bump libs and fix vulnerabilities for pluto (#591)
+
+-------------------------------------------------------------------
 Tue Mar 03 05:56:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.23.0:
