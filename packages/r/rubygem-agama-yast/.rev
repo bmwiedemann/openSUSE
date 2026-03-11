@@ -610,4 +610,24 @@
 - Fix JSON of DASD format summary (gh#agama-project/agama#3128).</comment>
     <requestid>1334918</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>744c4052fef8945f0ae7bc3c52487d3f</srcmd5>
+    <version>19.pre.devel1979.15594b321</version>
+    <time>1773258611</time>
+    <user>anag_factory</user>
+    <comment>- Do not automatically update issues con language change. When to
+  update them is handled by agama-web-server (gh#agama-project/agama#3262).
+
+- Allow to reuse LVM volume groups, volumes and thin pools
+  (jsc#PED-15104, bsc#1254718 and gh#agama-project/agama#3171).
+
+- Provide new D-Bus API for zFCP (gh#agama-project/agama#3184).
+
+- Replace D-Bus methods by attributes in order to allow caching
+  data (related to bsc#1258466).
+
+- Allow reactivating a DASD if enabling DIAG failed
+  (gh#agama-project/agama#3143).</comment>
+    <requestid>1337998</requestid>
+  </revision>
 </revisionlist>
