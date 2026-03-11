@@ -166,4 +166,15 @@
     -  NEW CODE(s)</comment>
     <requestid>1323807</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a00ab5f36c38b150fd530c1ca82e4e0d</srcmd5>
+    <version>3.870.0</version>
+    <time>1773258748</time>
+    <user>anag_factory</user>
+    <comment>- updated to 3.870.0 (3.87)
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+  3.87  2026-03-02  sbeck
+    -  NEW CODE(s)</comment>
+    <requestid>1338070</requestid>
+  </revision>
 </revisionlist>

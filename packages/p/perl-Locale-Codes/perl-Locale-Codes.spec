@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Locale-Codes
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Locale-Codes
 Name:           perl-Locale-Codes
-Version:        3.860.0
+Version:        3.870.0
 Release:        0
-# 3.86 -> normalize -> 3.860.0
-%define cpan_version 3.86
+# 3.87 -> normalize -> 3.870.0
+%define cpan_version 3.87
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Distribution of modules to handle locale codes
 URL:            https://metacpan.org/release/%{cpan_name}
