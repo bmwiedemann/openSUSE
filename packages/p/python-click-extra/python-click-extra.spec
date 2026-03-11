@@ -17,7 +17,8 @@
 
 
 %define module_name click-extra
-%define executable_name click-extra-demo
+%define executable_name click-extra
+%define executable_name_demo click-extra-demo
 
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
@@ -27,7 +28,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click-extra
-Version:        7.6.4
+Version:        7.8.0
 Release:        0
 Summary:        Drop-in replacement for Click to make user-friendly and colorful CLI
 License:        GPL-2.0-or-later
@@ -46,8 +47,9 @@ BuildRequires:  %{python_module cloup >= 3.0.7}
 BuildRequires:  %{python_module deepmerge >= 2.0}
 BuildRequires:  %{python_module extra-platforms >= 8.0.0}
 BuildRequires:  %{python_module requests >= 2.32.5}
-BuildRequires:  %{python_module tabulate >= 0.9}
+BuildRequires:  %{python_module tabulate >= 0.10}
 BuildRequires:  %{python_module tomli >= 2.3.0 if %python-base < 3.11}
+BuildRequires:  %{python_module tomlkit >= 0.13}
 BuildRequires:  %{python_module wcmatch >= 10.0}
 # optional dependencies
 BuildRequires:  %{python_module PyYAML >= 6.0.3}
@@ -77,7 +79,8 @@ Requires:       python-cloup >= 3.0.7
 Requires:       python-deepmerge >= 2.0
 Requires:       python-extra-platforms >= 8.0.0
 Requires:       python-requests >= 2.32.5
-Requires:       python-tabulate >= 0.9
+Requires:       python-tabulate >= 0.10
+Requires:       python-tomlkit >= 0.13
 Requires:       python-wcmatch >= 10.0
 Requires:       python-xmltodict >= 1.0.0
 Requires:       (python-tomli >= 2.3.0 if python-base < 3.11)
@@ -106,6 +109,7 @@ Requires(postun): update-alternatives
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/%{executable_name}
+%python_clone -a %{buildroot}%{_bindir}/%{executable_name_demo}
 
 %check
 # remove coverage configuration
@@ -132,12 +136,15 @@ IGNORED_CHECKS+=" or test_enum_choice_show_aliases[Color-ChoiceSource.NAME-True-
 %if %{with libalternatives}
 %pre
 %python_libalternatives_reset_alternative %{executable_name}
+%python_libalternatives_reset_alternative %{executable_name_demo}
 %else
 
 %post
-%python_install_alternative %{executable_name}
+%{python_install_alternative %{executable_name} %{executable_name_demo}}
 
 %postun
+# only give the group name for uninstalling
+# https://en.opensuse.org/openSUSE:Packaging_Python#Grouped_alternatives
 %python_uninstall_alternative %{executable_name}
 %endif
 
@@ -145,6 +152,7 @@ IGNORED_CHECKS+=" or test_enum_choice_show_aliases[Color-ChoiceSource.NAME-True-
 %license license
 %doc readme.md
 %python_alternative %{_bindir}/%{executable_name}
+%python_alternative %{_bindir}/%{executable_name_demo}
 %{python_sitelib}/click_extra
 %{python_sitelib}/click_extra-%{version}.dist-info
 
