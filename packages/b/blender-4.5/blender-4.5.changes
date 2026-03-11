@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Feb 18 00:04:48 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.5.7
+  - Fix #152250: Bind Camera to Marker operator does not update all
+    windows
+  - Fix #148300: Cannot interact with viewport behind region
+    overlap
+  - Fix #144359: Scrolled down Asset Shelf prevents drag & drop in
+    viewport.
+  - Fix #151868: Missing object relations building from Collections
+    in some cases.
+  - Fix: UI: Instanced panels are drawn in incorrect tab
+  - Fix #114455: Python handler in render thread incorrectly
+    disallows writes
+  - Fix #141496: discard relative path prefix while writing to
+    properties
+  - Fix #151908: Crash when onion skin frame uses unavailable
+    material
+  - Fix #151351: Move animdata for single node group
+  - Fix #148270: Artifacts with subsurface scattering in EEVEE
+  - Fix #93814: Multiple popups spawned when running "Remap Users"
+  - Fix #152638: Packing API: do not repack when already packed and
+    unchanged.
+  - Fix #152005: Crash with material preview mesh when redoing
+    dyntopo
+  - Fix: restore accidentally changed default for 'Allow Negative
+    Frames' pref
+  - Fix #152619: Crash when loading corrupt exr file (backport)
+  - Fix #152087: Crash when undoing object.subdivision_set
+  - Fix #150166: Broken image when rendering image in VSE
+  - Fix #147374: Crash when adding freeze frame
+  - Fix #146493: Crash after starting playback
+  - Fix #153227: Separate By Selection issue when custom normals
+    are used
+
+-------------------------------------------------------------------
 Fri Feb  6 21:40:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Add assert.patch to fix build failures
