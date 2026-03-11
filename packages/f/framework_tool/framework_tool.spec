@@ -20,7 +20,7 @@
 %define completion_dir_bash %{_datadir}/bash-completion/completions
 %define completion_dir_zsh %{_datadir}/zsh/functions/Completion
 Name:           framework_tool
-Version:        0.5.0
+Version:        0.6.1
 Release:        0
 Summary:        Rust tools to interact with the Framework Computer systems
 License:        BSD-3-Clause

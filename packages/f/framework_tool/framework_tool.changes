@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Mar  9 13:18:46 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.6.1
+  * Fixes for publishing on crates.io by @JohnAZoidberg in #279
+  * Bump to 0.6.1 by @JohnAZoidberg in #280
+- Update to 0.6.0
+  * Use match and if let to avoid unwrapping by @JohnAZoidberg in #256
+  * update devenv by @JohnAZoidberg in #259
+  * Generate shell auto completions using clap_complete
+    by @JohnAZoidberg in #258
+  * --versions: Print version of potential retimers by @JohnAZoidberg in #260
+  * --meinfo: Add command to get CSME and BootGuard info
+    by @JohnAZoidberg in #263
+  * --versions: Better ignore systems without nvidia by @JohnAZoidberg in #262
+  * docs(README): Add build dependencies installation instructions for Ubuntu
+    by @brlin-tw in #254
+  * README: Use repology badges for version by @JohnAZoidberg in #264
+  * docs(readme): add UBlue's tap for homebrew by @rugk in #266
+  * Add --host-command to send raw EC host commands by @JohnAZoidberg in #268
+  * README: add Rhino Linux by @Elsie19 in #270
+  * Replace devenv with nix flake by @JohnAZoidberg in #271
+  * Add windows cross build from linux using flake.nix
+    by @JohnAZoidberg in #272
+  * Update uefi to 0.35+ by @JohnAZoidberg in #184
+  * Fix flash_version() leaving SPI mux unlocked, turning LED pink
+    by @JohnAZoidberg in #276
+  * Fix some ec binary parsing typos by @JohnAZoidberg in #277
+  * uefi: Handle break in --console recent by @JohnAZoidberg in #131
+  * Get rid of forked (git) dependencies by @JohnAZoidberg in #275
+  * bump version to 0.6.0 by @JohnAZoidberg in #278
+
+-------------------------------------------------------------------
 Mon Jan 19 10:01:20 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.5.0
