@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Mar 11 12:15:27 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.7
+  - RemoteBox now requires VirtualBox 7.2.x
+  - Fixed a bug where assigning Host Only network interfaces fails
+- Changes from 3.6
+  - Fixed regression which caused connection profiles to not be saved correctly
+  - Added RemoteBox preference to surpress missing VirtualBox Extensions dialog
+  - Added RemoteBox preference to surpress unsupported VirtualBox version dialog
+  - Added 10 second timeout for SOAP connections
+  - RemoteBox now indicates if the current VM state has changed from the last
+    snapshot
+  - RemoteBox now also sorts the guest groups alphabetically if the 'Sort guest
+    list alphabetically' preference is set.
+  - Some speed optimisations on the GUI code
+- Changes from 3.5
+  - Completely removed the use of GTKBuilder and Glade. The GUI code has now been
+    entirely re-written. While there may not be too many visible changes to GUI
+    there might be some regressions and other bugs due to the massive amount of
+    code-change. This needed to happen before any significant feature changes
+    could take place.
+  - The perl modules File::Which and Regexp::Common are now required. Packagers
+    should especially take note.
+  - Added support for running RemoteBox in a web browser by running the command
+    remotebox-web
+  - Added button to clear the message log
+  - Added ability to reset the secure boot keys to the defaults for a guest
+  - Added OS icon for Windows 2025
+  - Added an info button in the RemoteBox preferences to show detected RDP and
+    VNC clients located in your command path
+  - Various GUI tweaks
+  - Updated the default RDP preset for mstsc to look for mstsc.exe isntead. This
+    should allow installations in WSL to use the native Microsoft Windows RDP
+    client as an option
+  - Fixed coverting a virtual machine from BIOS to EFI firmware. NVRAM and
+    Platform keys are now created as needed
+  - Fixed a 'Settings' tab caching issue. The wrong tab would sometimes be cached
+    leading to stale contents in the widgets
+  - Fixed the initial GUI state for Disk Encryption in the Settings
+  - Fixed HostOnly and HostOnly Named options being swapped around when setting
+    guest network settings
+  - Fixed GTK3 initialisation happening too late in code execution
+  - Fixed many problems with the Host-Only network dialog. Several of these were
+    likely regressions
+  - Fixed the Reset menu item not working (regression)
+  - Fixed the GUI not starting with appropriate widgets ghosted etc (regression)
+  - Fixed handling of the internal network option in guest settings (regression)
+  - Fixed importing appliance images (regression)
+- Rebase fix-env-script-interpreter.patch
+
+-------------------------------------------------------------------
 Sun Feb  9 15:53:27 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 3.4

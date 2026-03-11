@@ -1,10 +1,18 @@
-Index: remotebox
-===================================================================
---- remotebox.orig
-+++ remotebox
+diff -Pdpru RemoteBox-3.7.orig/remotebox RemoteBox-3.7/remotebox
+--- RemoteBox-3.7.orig/remotebox	2025-08-24 07:09:05.000000000 +0200
++++ RemoteBox-3.7/remotebox	2026-03-11 13:21:33.010777622 +0100
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env perl
 +#!/usr/bin/perl
  # ^^^ You may need to change this to the location of your perl interpreter
- # RemoteBox v3.4 (c) 2010-2024 Ian Chapman. Licenced under the terms of the GPL
- use strict;
+ # RemoteBox v3.7 (c) 2010-2025 Ian Chapman. Licenced under the terms of the GPL
+ #
+diff -Pdpru RemoteBox-3.7.orig/remotebox-web RemoteBox-3.7/remotebox-web
+--- RemoteBox-3.7.orig/remotebox-web	2025-08-24 07:09:05.000000000 +0200
++++ RemoteBox-3.7/remotebox-web	2026-03-11 13:21:38.164649515 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ # ^^^ You may need to change this to the location of your perl interpreter
+ # (c) 2010-2025 Ian Chapman. Licenced under the terms of the GPL
+ #

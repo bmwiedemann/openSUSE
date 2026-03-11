@@ -1,7 +1,7 @@
 #
 # spec file for package RemoteBox
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 # to remotebox so filter it
 %global __provides_exclude ^perl\\(vboxService\\)
 Name:           RemoteBox
-Version:        3.4
+Version:        3.7
 Release:        0
 Summary:        A VirtualBox client with remote management
 License:        GPL-2.0-or-later
@@ -50,7 +50,7 @@ this gap by providing a graphical VirtualBox client which is able to
 communicate with and manage a VirtualBox server installation.
 
 %prep
-%autosetup -p0
+%autosetup -p1
 # Set the locations of Remotebox's files
 sed -i 's|\$Bin/share/remotebox|%{_datadir}/%{name}|g' remotebox
 sed -i 's|\$Bin/docs|%{_docdir}/%{name}|g' remotebox
