@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-cross-binutils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,17 +21,17 @@ Version:        2.45.1
 Release:        0
 Summary:        GNU Binutils
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later
-Group:          Development/Libraries
+Group:          Development/Tools/Building
 URL:            http://www.gnu.org/software/binutils/
 Source:         http://ftp.gnu.org/gnu/binutils/binutils-%{version}.tar.xz
 Source1:        http://ftp.gnu.org/gnu/binutils/binutils-%{version}.tar.xz.sig
-#!BuildIgnore:  post-build-checks
-#!BuildIgnore:  mingw64-cross-binutils-utils
-#!BuildIgnore:  mingw64-cross-pkgconf-utils
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  makeinfo
 BuildRequires:  mingw64-filesystem
+#!BuildIgnore:  mingw64-cross-binutils-utils
+#!BuildIgnore:  mingw64-cross-pkgconf-utils
+#!BuildIgnore:  post-build-checks
 Requires:       mingw64-cross-binutils-utils
 # NB: This must be left in.
 Requires:       mingw64-filesystem
@@ -62,7 +62,7 @@ CFLAGS="%{optflags}" \
   --disable-werror \
   --with-sysroot=%{_mingw64_sysroot} \
   --prefix=%{_prefix} --bindir=%{_bindir} \
-  --includedir=%{_includedir} --libdir=/usr/%{_mingw64_target}/lib \
+  --includedir=%{_includedir} --libdir=%{_prefix}/%{_mingw64_target}/lib \
   --mandir=%{_mandir} --infodir=%{_infodir}
 
 %make_build || make
@@ -88,10 +88,10 @@ done
 
 %files
 %{_mandir}/man1/*
-%exclude %{_mandir}/man1/%{_mingw64_target}-nm.1.gz
-%exclude %{_mandir}/man1/%{_mingw64_target}-objcopy.1.gz
-%exclude %{_mandir}/man1/%{_mingw64_target}-objdump.1.gz
-%exclude %{_mandir}/man1/%{_mingw64_target}-strip.1.gz
+%exclude %{_mandir}/man1/%{_mingw64_target}-nm.1%{?ext_man}
+%exclude %{_mandir}/man1/%{_mingw64_target}-objcopy.1%{?ext_man}
+%exclude %{_mandir}/man1/%{_mingw64_target}-objdump.1%{?ext_man}
+%exclude %{_mandir}/man1/%{_mingw64_target}-strip.1%{?ext_man}
 %{_bindir}/%{_mingw64_target}-*
 %exclude %{_bindir}/%{_mingw64_target}-nm
 %exclude %{_bindir}/%{_mingw64_target}-objcopy
@@ -105,10 +105,10 @@ done
 %{_prefix}/%{_mingw64_target}/lib
 
 %files utils
-%{_mandir}/man1/%{_mingw64_target}-nm.1.gz
-%{_mandir}/man1/%{_mingw64_target}-objcopy.1.gz
-%{_mandir}/man1/%{_mingw64_target}-objdump.1.gz
-%{_mandir}/man1/%{_mingw64_target}-strip.1.gz
+%{_mandir}/man1/%{_mingw64_target}-nm.1%{?ext_man}
+%{_mandir}/man1/%{_mingw64_target}-objcopy.1%{?ext_man}
+%{_mandir}/man1/%{_mingw64_target}-objdump.1%{?ext_man}
+%{_mandir}/man1/%{_mingw64_target}-strip.1%{?ext_man}
 %{_bindir}/%{_mingw64_target}-nm
 %{_bindir}/%{_mingw64_target}-objcopy
 %{_bindir}/%{_mingw64_target}-objdump

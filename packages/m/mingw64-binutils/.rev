@@ -129,4 +129,12 @@
     <comment></comment>
     <requestid>1324895</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>941157385c724000be075a780ed806ed</srcmd5>
+    <version>2.45.1</version>
+    <time>1773258755</time>
+    <user>anag_factory</user>
+    <comment>Cleanup + mention fixed security bugs</comment>
+    <requestid>1338081</requestid>
+  </revision>
 </revisionlist>
