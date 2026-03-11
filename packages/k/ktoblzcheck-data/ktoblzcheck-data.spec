@@ -47,10 +47,11 @@ of the bank.
 
 %prep
 %autosetup -p1 -n %{_name}-%{version}
-cp %{SOURCE1} data/blz_$(date '+%Y%m%d').txt
+date=$(date '+%Y%m%d')
+cp %{SOURCE1} data/blz_$date.txt
 cp %{SOURCE2} data/nl_data.xlsx
 cp %{SOURCE3} data/ch_data.txt
-cp %{SOURCE4} data/sepa_$(date '+%Y%m%d').txt
+cp %{SOURCE4} data/sepa_$date.txt
 
 %build
 %cmake \
@@ -60,6 +61,7 @@ cp %{SOURCE4} data/sepa_$(date '+%Y%m%d').txt
 
 %install
 %cmake_install DESTDIR=%{buildroot}
+mv %{buildroot}%{_datadir}/%{_kname}/blz_*.txt %{buildroot}%{_datadir}/%{_kname}/blz_$(date -r %{SOURCE1} '+%Y%m%d').txt
 
 %files
 %defattr(-,root,root)

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 21 11:09:32 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Store blz data under a more constant name
+  for reproducible build results
+
+-------------------------------------------------------------------
 Tue May 20 14:31:43 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Fixed incorrect source url

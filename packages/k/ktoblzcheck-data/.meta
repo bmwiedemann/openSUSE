@@ -1,4 +1,5 @@
 <package name="ktoblzcheck-data" project="openSUSE:Factory">
   <title></title>
   <description></description>
+  <devel project="windows:mingw" package="ktoblzcheck-data"/>
 </package>
