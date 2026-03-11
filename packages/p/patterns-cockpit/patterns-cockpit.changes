@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 11 08:48:13 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add cockpit-client pattern extending cockpit pattern 
+  with cockpit-client-launcher only for openSUSE
+  code-o-o#leap/features#279
+
+  Separate pattern to avoid pulling graphical stack and
+  list the option in Agama installer
+
+-------------------------------------------------------------------
 Thu Sep 18 05:15:01 UTC 2025 - Luna D Dragon <luna.dragon@suse.com>
 
 - add %pattern_advsysmgmt to provide a pattern-category bsc#1247960

@@ -57,6 +57,24 @@ BuildRequires:  patterns-rpm-macros
 %description
 Packages required to run the Cockpit system management service.
 
+%if 0%{?is_opensuse}
+%package client
+%pattern_advsysmgmt
+Summary:        Cockpit Client
+Group:          Metapackages
+Provides:       pattern() = cockpit_client
+Provides:       pattern-extends() = cockpit
+Provides:       pattern-icon() = pattern-generic
+Provides:       pattern-order() = 9061
+Provides:       pattern-visible()
+Requires:       pattern() = cockpit
+Requires:       cockpit-client-launcher
+
+%description client
+Packages for using the Cockpit client launcher together with the full Cockpit
+management stack.
+%endif
+
 %prep
 # empty on purpose
 
@@ -65,7 +83,11 @@ Packages required to run the Cockpit system management service.
 
 %install
 mkdir -p %{buildroot}%{_docdir}/patterns-cockpit/
+%if 0%{?is_opensuse}
+PATTERNS='cockpit cockpit_client'
+%else
 PATTERNS='cockpit'
+%endif
 for i in $PATTERNS; do
     echo "This file marks the pattern $i to be installed." \
         > %{buildroot}%{_docdir}/patterns-cockpit/${i}.txt
@@ -75,4 +97,9 @@ done
 %dir %{_docdir}/patterns-cockpit
 %{_docdir}/patterns-cockpit/cockpit.txt
 
+%if 0%{?is_opensuse}
+%files client
+%dir %{_docdir}/patterns-cockpit
+%{_docdir}/patterns-cockpit/cockpit_client.txt
+%endif
 %changelog

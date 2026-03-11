@@ -45,4 +45,12 @@
     <comment>- add %pattern_advsysmgmt to provide a pattern-category bsc#1247960</comment>
     <requestid>1305753</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>a1927123d0f78594747253ac6a59bb0b</srcmd5>
+    <version>16.0</version>
+    <time>1773259063</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1338337</requestid>
+  </revision>
 </revisionlist>
