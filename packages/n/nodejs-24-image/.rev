@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of nodejs-24-image</comment>
     <requestid>1333382</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>88b3d0fd46f0e5b9d8becf7b4b9170cd</srcmd5>
+    <version>unknown</version>
+    <time>1773258802</time>
+    <user>anag_factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1338120</requestid>
+  </revision>
 </revisionlist>

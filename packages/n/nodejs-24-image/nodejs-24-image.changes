@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 10 21:46:15 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- remove move files that make containers unreproducible
+
+-------------------------------------------------------------------
 Mon Feb 16 10:24:39 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - First version of the Node.js 24 development BCI
