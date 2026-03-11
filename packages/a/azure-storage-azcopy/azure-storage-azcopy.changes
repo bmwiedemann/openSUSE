@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Jan  9 12:36:40 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 10.31.1
+  * Golang 1.24.4 -> 1.24.11
+  * golang.org/x/crypto 0.40.0 -> 0.45.0
+- from version 10.31.0
+  * Azure Files NFS -> Azure Files SMB transfers.
+    - Transfer from Azure Files NFS to Azure Files SMB. (--from-to=FileNFSFileSMB)
+  * Azure Files SMB -> Azure Files NFS transfers.
+    - Transfer from Azure Files SMB to Azure Files NFS. (--from-to=FileSMBFileNFS)
+  * Symlink support for Azure Files NFS shares.
+  * Introduced support for symbolic links in Azure Files NFS shares.
+  * Symlinks can be preserved, skipped, or followed based on command-line flags.
+    - Preserve symlinks: --preserve-symlinks=true
+    - Skip symlinks: default behavior when flags are not provided
+    - Follow symlinks: --follow-symlinks=true
+  * Added a --check-version flag to make version checking an opt in feature. (#3173)
+  * --include-root flag now allows customers to preserve root properties
+    when used in conjunction with --preserve-XXXX flags. (#3163)
+  * Golang 1.24.4 -> 1.24.6 (#3154)
+  * Fixed a bug to retry on various network errors. (#3237) (#3252)
+  * Fixed a bug where remove would not work on paths with encoded characters. (#2977)
+  * Fixed a bug where jobs resume would not produce any output for
+    previously failed jobs. (#3103)
+  * Fixed a bug where FileBlob transfers with EntraID on the source
+    would pass the wrong service version. (#3242)
+  * Fixed a bug to retry on WSAETIMEDOUT on Windows. (#3195)
+  * Fixed a bug with the folder creation tracker which caused folder
+    creation calls to happen more often than necessary. (#3151)
+  * Fixed a bug to redact x-ams-credential from logs. (#3206)
+  * Fixed a bug where powershell login would fail with older versions
+    of Az.Accounts. (#3191)
+  * Fixed a bug where symlink direct targets would be handled as a file
+    instead of a symlink. (#3222)
+  * Refactored traverser related code into its own package. (#3251)
+  * Refactored OAuth token manager access to use a client-based pattern
+    instead of global singleton access. (#3260)
+  * Removed unused code related to credential management. (#3260)
+  * Refactored Lifecycle UI code into the cmd package (#3262).
+  * Error handling code is now injected into JobMgr, or appropriately
+    bubbled upwards instead of using global LCM error handling. (#3262)
+  * AzCopy no longer checks version by default. (#3173)
+
+-------------------------------------------------------------------
 Tue Sep 16 12:44:57 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 10.30.1

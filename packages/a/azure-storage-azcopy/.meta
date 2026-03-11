@@ -1,4 +1,5 @@
 <package name="azure-storage-azcopy" project="openSUSE:Factory">
   <title></title>
   <description></description>
+  <devel project="Cloud:Tools" package="azure-storage-azcopy"/>
 </package>

@@ -33,4 +33,12 @@
   * Golang 1.24.2 -&gt; 1.24.6 (CVE-2025-47907) (#3154)</comment>
     <requestid>1308523</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a47e88725cb4f0558be0b63c928ef3ff</srcmd5>
+    <version>10.31.1</version>
+    <time>1773259014</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1338270</requestid>
+  </revision>
 </revisionlist>
