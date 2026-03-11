@@ -14,5 +14,6 @@ It provides the following features such as:
 * Simple Configuration: Easy to set up and use, minimizing configuration time so you can focus on development.
 
 * CLI Integration: Not only an LSP, but also includes command-line tools for code formatting, making it convenient for different environments.</description>
+  <devel project="editors" package="neocmakelsp"/>
   <url>https://github.com/neocmakelsp/neocmakelsp</url>
 </package>

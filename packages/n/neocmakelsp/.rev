@@ -15,4 +15,12 @@
     <comment>Please add neocmakelsp to openSUSE:Factory</comment>
     <requestid>1286867</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e0efeaeb9a3a651f7ae7d561fbb6606a</srcmd5>
+    <version>0.9.0</version>
+    <time>1773259030</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1338288</requestid>
+  </revision>
 </revisionlist>

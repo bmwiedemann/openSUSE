@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Feb 15 12:14:42 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.9.0:
+  * fix: ci adjust
+  * chore: update CHANGELOG
+  * fix: stdio should use stdout not stder
+  * chore: bump version to 0.9.0
+  * chore(deps): bump crate-ci/typos from 1.39.0 to 1.39.2 (#208)
+  * fix: argument list cannot have completion
+  * refactor: merge find_package logic for macos and unix (#206)
+  * refactor: use str::trim_matches to remove quotation (#205)
+  * fix(lints): move some semicolons around (#207)
+  * ci: switch to rust specific release actions (#204)
+  * ci: run lints on each platform only once (#202)
+  * chore: pin and update deps (#201)
+  * feat!: make cli exculsivly subcommand based (#200)
+  * chore: bump MSRV to 1.89.0 (#199)
+  * chore: add toml formatting rules (#198)
+  * feat: trim completion documentation (#197)
+  * chore(deps): bump crate-ci/typos from 1.38.1 to 1.39.0 (#194)
+  * Rework config file format and resolution (#195)
+
+-------------------------------------------------------------------
+Fri Nov 21 17:08:03 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.8.26:
+  * chore: bump version
+  * feat: support custom external formatter (#176)
+  * chore(deps): bump actions/upload-artifact from 4 to 5 (#190)
+  * chore(deps): bump actions/download-artifact from 5 to 6 (#191)
+  * chore(deps): bump crate-ci/typos from 1.36.2 to 1.37.1 (#188)
+  * chore: typos fix
+  * fix: preformat will add tab if indent is tab
+  * chore: update deps
+  * chore(deps): bump crate-ci/typos from 1.36.0 to 1.36.2 (#185)
+  * chore(deps): bump actions/checkout from 4 to 5 (#180)
+  * chore(deps): bump crate-ci/typos from 1.35.1 to 1.36.0 (#184)
+
+-------------------------------------------------------------------
 Thu Jun 19 08:35:55 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 0.8.18:
@@ -50,4 +89,3 @@ Wed Dec 18 07:56:02 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 Tue Nov 19 06:53:20 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Initial spec for neocmakelsp
-
