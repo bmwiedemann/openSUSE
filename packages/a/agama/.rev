@@ -724,4 +724,40 @@
 - Recalulate bootloader proposal after applying a storage config</comment>
     <requestid>1334921</requestid>
   </revision>
+  <revision rev="39" vrev="39">
+    <srcmd5>e147eab937c758589a6a166add3598a3</srcmd5>
+    <version>0</version>
+    <time>1773258611</time>
+    <user>anag_factory</user>
+    <comment>- Recalculate the issues and actions on language change (gh#agama-project/agama#3262).
+
+- Always add hardware/filesystem/locale proposed packages when
+  running solver (bsc#1258193)
+
+- Move the location of the dumped solver testcase
+  to /run/agama/testcase, do not save solver testcase when
+  &quot;ZYPP_FULLLOG=1&quot; (in that case libzypp creates the solver
+  testcase automatically in the /var/log/YaST2/autoTestcase/
+  directory) (related to gh#agama-project/agama#3242)
+
+- Fix typo (bsc#1259357)
+
+- Honor inst.finish in interactive installation (jsc#PED-15031).
+
+- Improve registration and software issues reporting (related to bsc#1258034).
+
+- Automatically save the solver testcase to /var/log/zypp/testcase/
+  directory when the solver run fails or when requested with the
+  &quot;inst.solver_testcase=1&quot; boot option. The testcase is included
+  in the log created with the &quot;agama logs store&quot; command
+  (gh#agama-project/agama#3242)
+
+- Integrate zFCP in the new HTTP API (gh#agama-project/agama#3235).
+
+- Refresh and load the repositories after registration
+  (bsc#1259217)
+- Select addon product to install after registering an extension
+  (bsc#1258187)</comment>
+    <requestid>1338002</requestid>
+  </revision>
 </revisionlist>

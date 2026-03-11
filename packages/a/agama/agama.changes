@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Tue Mar 10 12:16:53 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Recalculate the issues and actions on language change (gh#agama-project/agama#3262).
+
+-------------------------------------------------------------------
+Tue Mar 10 09:59:45 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
+
+- Always add hardware/filesystem/locale proposed packages when
+  running solver (bsc#1258193)
+
+-------------------------------------------------------------------
+Mon Mar  9 11:37:06 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
+
+- Move the location of the dumped solver testcase
+  to /run/agama/testcase, do not save solver testcase when
+  "ZYPP_FULLLOG=1" (in that case libzypp creates the solver
+  testcase automatically in the /var/log/YaST2/autoTestcase/
+  directory) (related to gh#agama-project/agama#3242)
+
+-------------------------------------------------------------------
+Mon Mar  9 09:39:13 UTC 2026 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Fix typo (bsc#1259357)
+
+-------------------------------------------------------------------
+Fri Mar  6 10:28:09 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Honor inst.finish in interactive installation (jsc#PED-15031).
+
+-------------------------------------------------------------------
+Thu Mar  5 15:27:13 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Improve registration and software issues reporting (related to bsc#1258034).
+
+-------------------------------------------------------------------
+Thu Mar  5 13:44:46 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
+
+- Automatically save the solver testcase to /var/log/zypp/testcase/
+  directory when the solver run fails or when requested with the
+  "inst.solver_testcase=1" boot option. The testcase is included
+  in the log created with the "agama logs store" command
+  (gh#agama-project/agama#3242)
+
+-------------------------------------------------------------------
+Thu Mar  5 12:04:00 UTC 2026 - José Iván López González <jlopez@suse.com>
+
+- Integrate zFCP in the new HTTP API (gh#agama-project/agama#3235).
+
+-------------------------------------------------------------------
+Thu Mar  5 07:19:01 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
+
+- Refresh and load the repositories after registration
+  (bsc#1259217)
+- Select addon product to install after registering an extension
+  (bsc#1258187)
+
+-------------------------------------------------------------------
+Thu Mar  5 07:14:07 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix the generation of the OpenAPI specification
+  (gh#agama-project/agama#2864).
+
+-------------------------------------------------------------------
+Wed Mar  4 07:03:28 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update and clean-up dependencies (gh#agama-project/agama#3234).
+- Drop unused code from agama-lib (gh#agama-project/agama#3234).
+
+-------------------------------------------------------------------
+Wed Mar  4 06:55:12 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix packaging of dasd and zfcp schemas (gh#agama-project/agama#3236).
+
+-------------------------------------------------------------------
+Tue Mar  3 12:34:09 UTC 2026 - José Iván López González <jlopez@suse.com>
+
+- Extract schema for zFCP config and add schema for zFCP system
+  (gh#agama-project/agama#3184).
+
+-------------------------------------------------------------------
+Tue Mar  3 10:08:58 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Cache storage data using the new attributes-based API (bsc#1258466).
+
+-------------------------------------------------------------------
+Mon Mar  2 12:20:15 UTC 2026 - Michal Filka <mfilka@suse.com>
+
+- bsc#1258416
+  - when user cannot be added into wheel group after creation
+    just log the error so the rest of user configuration, e.g.
+    setting password is done.
+
+-------------------------------------------------------------------
+Fri Feb 27 11:39:31 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
+
+- Fixed using packages from the Full (offline) installation medium
+  when booted from harddisk or USB flash (bsc#1258828)
+
+-------------------------------------------------------------------
+Thu Feb 26 16:44:32 UTC 2026 - David Diaz <dgonzalez@suse.com>
+
+- Add schema for DASD config (gh#agama-project/agama#3143).
+
+-------------------------------------------------------------------
+Wed Feb 25 08:13:55 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
+
+- Optimize writing software state to reduce time spend when
+  selecting pattern (bsc#1257794)
+- report properly when software selection contain conflict
+
+-------------------------------------------------------------------
 Mon Feb 23 21:15:48 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
 
 - Report properly if rpm installation skipped some packages due to
@@ -34,7 +145,7 @@ Thu Feb 19 13:35:59 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 -------------------------------------------------------------------
 Wed Feb 18 20:32:00 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
 
-- Add support for bootloader config updateNvram (jsc#PED-14224) 
+- Add support for bootloader config updateNvram (jsc#PED-14224)
 
 -------------------------------------------------------------------
 Wed Feb 18 12:09:15 UTC 2026 - Stefan Hundhammer <shundhammer@suse.com>
