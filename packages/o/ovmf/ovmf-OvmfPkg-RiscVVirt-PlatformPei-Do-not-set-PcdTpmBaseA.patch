@@ -1,0 +1,45 @@
+From b804e02f3402791e7b0d201b090de685d17d4800 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.de>
+Date: Fri, 6 Mar 2026 14:19:59 +0100
+Subject: [PATCH] OvmfPkg/RiscVVirt/PlatformPei: Do not set PcdTpmBaseAddress
+ to garbage
+
+If there is no TPM device in the device tree, the TpmBase variable is not
+initialized and contains garbage.
+
+Instead of using 0 as sentinel (which may be a valid address), check the
+size instead, which cannot be 0 for a memory-mapped device.
+
+Signed-off-by: Fabian Vogt <fvogt@suse.de>
+---
+ OvmfPkg/RiscVVirt/PlatformPei/PlatformPeim.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/OvmfPkg/RiscVVirt/PlatformPei/PlatformPeim.c b/OvmfPkg/RiscVVirt/PlatformPei/PlatformPeim.c
+index 3da71aa51b..fa157b4169 100644
+--- a/OvmfPkg/RiscVVirt/PlatformPei/PlatformPeim.c
++++ b/OvmfPkg/RiscVVirt/PlatformPei/PlatformPeim.c
+@@ -119,6 +119,11 @@ SetupTPMResources (
+   UINT64        TpmBase;
+   UINT64        TpmBaseSize;
+ 
++  //
++  // Empty TpmBaseSize indicates no TPM found.
++  //
++  TpmBaseSize = 0;
++
+   //
+   // Set Parent to suppress incorrect compiler/analyzer warnings.
+   //
+@@ -200,7 +205,7 @@ SetupTPMResources (
+     }
+   }
+ 
+-  if (TpmBase) {
++  if (TpmBaseSize > 0) {
+     BuildResourceDescriptorHob (
+       EFI_RESOURCE_MEMORY_MAPPED_IO,
+       EFI_RESOURCE_ATTRIBUTE_PRESENT     |
+-- 
+2.52.0
+

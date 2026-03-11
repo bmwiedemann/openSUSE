@@ -1,0 +1,39 @@
+From cbb3afd30ac427bd0efb17222f6d9beb1d260156 Mon Sep 17 00:00:00 2001
+From: Richard Lyu <richard.lyu@suse.com>
+Date: Tue, 18 Nov 2025 17:29:13 +0800
+Subject: [PATCH] MdeModulePkg/ConSplitterDxe: Set default ConOut mode to 0
+
+REF: https://github.com/tianocore/edk2/issues/11765
+
+The ConSplitterDxe driver was defaulting to the Console Output
+(ConOut) MaxMode immediately after its virtual protocols were
+installed. This MaxMode often exceeded the actual resolution
+or capability of the physical console device, leading to severe
+display corruption and incorrect line wrapping/positioning. This
+commit changes the default mode to 0, guaranteeing stable display
+behavior upon system boot.
+
+Signed-off-by: Richard Lyu <richard.lyu@suse.com>
+---
+ MdeModulePkg/Universal/Console/ConSplitterDxe/ConSplitter.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/MdeModulePkg/Universal/Console/ConSplitterDxe/ConSplitter.c b/MdeModulePkg/Universal/Console/ConSplitterDxe/ConSplitter.c
+index a3fa8f8e5e36..a4f455e25959 100644
+--- a/MdeModulePkg/Universal/Console/ConSplitterDxe/ConSplitter.c
++++ b/MdeModulePkg/Universal/Console/ConSplitterDxe/ConSplitter.c
+@@ -1346,6 +1346,11 @@ ConSplitterConOutDriverBindingStart (
+     FreePool (Info);
+   }
+ 
++  Status = gST->ConOut->SetMode (gST->ConOut, 0);
++  if (EFI_ERROR (Status)) {
++    return Status;
++  }
++
+   return Status;
+ }
+ 
+-- 
+2.51.0
+

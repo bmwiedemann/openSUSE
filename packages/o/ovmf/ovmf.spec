@@ -61,6 +61,8 @@ Patch1:         %{name}-gdb-symbols.patch
 Patch2:         %{name}-pie.patch
 Patch3:         %{name}-disable-ia32-firmware-piepic.patch
 Patch4:         %{name}-OvmfPkg-Adjust-Memory-Layout-for-2MB-OVMF.patch
+# Bug 1259122 - [16.1][Build 5.19][aarch64] openQA test fails in qemu - truncation screen issue appears in qemu boot manager
+Patch5:         %{name}-MdeModulePkg-ConSplitterDxe-Set-default-ConOut-mode.patch
 Patch6:         %{name}-ignore-spurious-GCC-12-warning.patch
 # Bug 1255113 - Build Failure for RISC-V 64 When Secure Boot is Enabled Due to SecureBootDefaultKeysInit module
 Patch7:         %{name}-OvmfPkg-RiscVVirt-Make-SecureBootDefaultKeysInit-dri.patch
@@ -84,7 +86,9 @@ Patch15:        %{name}-Revert-ArmPkg-UefiCpuPkg-Fix-boot-failure-on-FEAT_LP.pat
 Patch16:        %{name}-Revert-ArmPkg-UefiCpuPkg-fix-boot-failure-with-LPA2.patch
 Patch17:        %{name}-Revert-UefiCpuPkg-ArmMmuLib-Add-support-for-LPA2.patch
 # Workaround for failing PEI boot on RISCV64 (https://github.com/tianocore/edk2/issues/12206)
-Patch18:        ovmf-Revert-UefiCpuPkg-BaseRiscV64CpuTimerLib-Add-constru.patch
+Patch18:        %{name}-Revert-UefiCpuPkg-BaseRiscV64CpuTimerLib-Add-constru.patch
+# https://github.com/tianocore/edk2/pull/12248
+Patch19:        %{name}-OvmfPkg-RiscVVirt-PlatformPei-Do-not-set-PcdTpmBaseA.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}

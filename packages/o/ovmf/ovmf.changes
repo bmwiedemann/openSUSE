@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 10 05:20:52 UTC 2026 - Richard Lyu <richard.lyu@suse.com>
+
+- Add patch to fix truncation screen issue (bsc#1259122)
+  - ovmf-MdeModulePkg-ConSplitterDxe-Set-default-ConOut-mode.patch
+
+-------------------------------------------------------------------
+Fri Mar  6 13:32:46 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix crash on RISC-V without a TPM device:
+  * ovmf-OvmfPkg-RiscVVirt-PlatformPei-Do-not-set-PcdTpmBaseA.patch
+
+-------------------------------------------------------------------
 Tue Mar  3 08:46:00 UTC 2026 - Richard Lyu <richard.lyu@suse.com>
 
 - Add backported patch to fix the build failure on RISC-V 64 (bsc#1255113)
