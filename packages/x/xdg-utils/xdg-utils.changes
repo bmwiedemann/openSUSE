@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 10 10:45:35 UTC 2026 - Martin Wilck <martin.wilck@suse.com>
+
+- Allow xdg-utils to be installed with busybox-which. This enables
+  its installation in distrobox containers.
+
+-------------------------------------------------------------------
 Sun Jul 21 08:08:07 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Separate xdg-screensaver into a subpackage to isolate Perl

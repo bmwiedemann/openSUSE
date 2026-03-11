@@ -565,4 +565,12 @@ https://build.opensuse.org/request/show/121743 (forwarded request 121894 from va
   dependency (bsc#1216537).</comment>
     <requestid>1189600</requestid>
   </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>e5e917abc7a6363a9efc89decbd03b4e</srcmd5>
+    <version>1.2.1</version>
+    <time>1773258593</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1337949</requestid>
+  </revision>
 </revisionlist>

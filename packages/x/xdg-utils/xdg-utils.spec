@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-utils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ BuildRequires:  make
 # for xmlto to be able to generate text from html
 BuildRequires:  w3m
 BuildRequires:  xmlto
-Requires:       which
+Requires:       (which or busybox-which)
 Recommends:     %{name}-screensaver
 BuildArch:      noarch
 
