@@ -4,7 +4,7 @@ Index: gitlabci_local-13.0.1/requirements/runtime.txt
 --- gitlabci_local-13.0.1.orig/requirements/runtime.txt
 +++ gitlabci_local-13.0.1/requirements/runtime.txt
 @@ -8,4 +8,3 @@ PyYAML>=6.0
- questionary>=2.0.1
+ questionary>=2.1.1
  requests>=2.26.0
  setuptools>=45.1.0
 -update_checker>=0.18.0

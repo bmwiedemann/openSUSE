@@ -1,4 +1,5 @@
 <package name="gcil" project="openSUSE:Factory">
   <title></title>
   <description></description>
+  <devel project="utilities" package="gcil"/>
 </package>

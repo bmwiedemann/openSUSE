@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Sep 22 06:26:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 13.0.2:
+  * Features
+    - yaml, menus: implement CI/CD input 'number' type support
+      (c7b46d6)
+  * Bug Fixes
+    - git: handle default 'main' branch if no branches available
+      (7f9254e)
+    - main, docker: improve '--rmi' with logs output and help hints
+      (8750d60)
+  * Cleanups
+    - pre-commit: migrate to 'pre-commit-crocodile' 8.0.0 (433db23)
+    - pre-commit: migrate to 'pre-commit-crocodile' 8.0.1 (83fc2c4)
+    - pre-commit: migrate to 'pre-commit-crocodile' 8.2.0 (cacdad8)
+  * CI
+    - gitlab-ci: resolve 'CI_COMMIT_REF_NAME' quoting syntax
+      (46e75e7)
+    - gitlab-ci: disable 'quality:sonarcloud' without
+      'SONAR_{HOST_URL,TOKEN}' (8f7e449)
+    - gitlab-ci: raise oldest Python test images from 3.8 to 3.9
+      (24d9d79)
+  * Build
+    - containers: migrate Docker installations to 'debian'
+      repositories (351d06a)
+    - containers/rehost: revert to Debian 12 'python:3.9-bookworm'
+      (e1fff3b)
+    - requirements: migrate to 'questionary' 2.1.1 (bb8634d)
+- rebased patch gcil-no-update.patch
+
+-------------------------------------------------------------------
 Tue Sep  2 11:42:55 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Initial package of gcil 13.0.1 for openSUSE
