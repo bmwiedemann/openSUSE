@@ -109,4 +109,27 @@ This version builds properly. Sorry for submitting one that did not (it was buil
 </comment>
     <requestid>1305835</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>78b8e3b0a0bdc54a0ca1f1e13ca57037</srcmd5>
+    <version>5.2.1</version>
+    <time>1773258710</time>
+    <user>anag_factory</user>
+    <comment>- Update to v5.2.1
+  * config-libkrunfw_x86_64: align partition features
+- Update to version v5.2.0
+  * Rebase on a 6.12.68 and backport FUSE fix
+- Update to v5.1.0
+  * config: enable CONFIG_EROFS_FS
+  * tsi: split AF_UNIX hijack
+  * Fix TSI datagram socket handling
+  * Rebase on a 6.12.62 kernel
+- Update to v5.0.0
+  * Add riscv64 support
+  * Update init binary and add TDX kernel build to CI
+  * Rebase on a v6.12.44 kernel
+  * Implement TSIv3
+  * config: consistently enable TUN and VETH across arches
+</comment>
+    <requestid>1338228</requestid>
+  </revision>
 </revisionlist>

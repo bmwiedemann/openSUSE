@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Mar 10 07:35:03 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to v5.2.1
+  * config-libkrunfw_x86_64: align partition features
+
+- Update to version v5.2.0
+  * Rebase on a 6.12.68 and backport FUSE fix
+
+- Update to v5.1.0
+  * config: enable CONFIG_EROFS_FS
+  * tsi: split AF_UNIX hijack
+  * Fix TSI datagram socket handling
+  * Rebase on a 6.12.62 kernel
+
+- Update to v5.0.0
+  * Add riscv64 support
+  * Update init binary and add TDX kernel build to CI
+  * Rebase on a v6.12.44 kernel
+  * Implement TSIv3
+  * config: consistently enable TUN and VETH across arches
+
+-------------------------------------------------------------------
 Tue Aug 19 22:47:32 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 -  Update to v4.10.0
