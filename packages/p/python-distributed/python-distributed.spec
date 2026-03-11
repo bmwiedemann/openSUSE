@@ -1,7 +1,7 @@
 #
 # spec file for package python-distributed
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,7 @@ ExclusiveArch:  donotbuild
 
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2025.9.1
+Version:        2026.1.2
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -69,12 +69,10 @@ Source99:       python-distributed-rpmlintrc
 Patch3:         distributed-ignore-offline.patch
 # PATCH-FIX-OPENSUSE distributed-ignore-thread-leaks.patch -- ignore leaking threads on obs, code@bnavigator.de
 Patch4:         distributed-ignore-thread-leaks.patch
-# PATCH-FIX-OPENSUSE distributed-ignore-rerun.patch -- extend ignore pytest array, mimi.vx@gmail.com
-Patch5:         distributed-ignore-rerun.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module versioneer-toml >= 0.29}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -131,6 +129,7 @@ sed -e '/--durations=20/d' \
 
 %build
 %if ! %{with test}
+export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
 %pyproject_wheel
 %endif
 
@@ -188,10 +187,10 @@ donttest+=" or test_computation_object_code_client_submit_dict_comp"
 donttest+=" or (test_client and test_quiet_close_process)"
 # should return > 3, returns 3 exactly
 donttest+=" or (test_statistical_profiling_cycle)"
-# pytest7 on py312: returns len==2 instead of 1
-donttest+=" or test_computation_object_code_dask_compute"
 # flaky on 3.10
 donttest+=" or (test_client_worker)"
+# switch to setuptools_scm means no version written out when not built
+donttest+=" or test_version"
 # flaky timeouts: https://github.com/dask/distributed/issues/9052
 donttest+=" or (test_tls_functional and (test_nanny or test_retire_workers))"
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then

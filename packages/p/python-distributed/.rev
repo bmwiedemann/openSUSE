@@ -1193,4 +1193,17 @@
 </comment>
     <requestid>1307086</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>3f690abdaeaad20c0a99d09566e9fce5</srcmd5>
+    <version>2026.1.2</version>
+    <time>1773258870</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2026.1.2:
+  * More improvements for pandas 3.x
+  * Support zarr sharding through create_array
+  * Use shard shape when available in to_zarr
+  * Several Dask Array bug fixes
+- Drop patch distributed-ignore-rerun.patch, no longer required.</comment>
+    <requestid>1338177</requestid>
+  </revision>
 </revisionlist>

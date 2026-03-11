@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 11 00:23:29 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2026.1.2:
+  * More improvements for pandas 3.x
+  * Support zarr sharding through create_array
+  * Use shard shape when available in to_zarr
+  * Several Dask Array bug fixes
+- Drop patch distributed-ignore-rerun.patch, no longer required.
+
+-------------------------------------------------------------------
 Thu Sep 25 09:53:38 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Skip two tests causing frequent timeouts
