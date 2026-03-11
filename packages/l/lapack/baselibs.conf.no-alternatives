@@ -1,0 +1,45 @@
+libblas3
+  conflicts "libopenblas_openmp0-<targettype>"
+  conflicts "libopenblas_pthreads0-<targettype>"
+  conflicts "libopenblas_serial0-<targettype>"
+  pre "[ $1 -eq 2 ] && [ -f %{_sysconfdir}/alternatives/libblas.so.3 ] && %{_sbindir}/update-alternatives --remove libblas.so.3 || true"
+
+libcblas3
+  conflicts "libopenblas_openmp0-<targettype>"
+  conflicts "libopenblas_pthreads0-<targettype>"
+  conflicts "libopenblas_serial0-<targettype>"
+  pre "[ $1 -eq 2 ] && [ -f %{_sysconfdir}/alternatives/libcblas.so.3 ] && %{_sbindir}/update-alternatives --remove libcblas.so.3 || true"
+
+liblapack3
+  conflicts "libopenblas_openmp0-<targettype>"
+  conflicts "libopenblas_pthreads0-<targettype>"
+  conflicts "libopenblas_serial0-<targettype>"
+  pre "[ $1 -eq 2 ] && [ -f %{_sysconfdir}/alternatives/liblapack.so.3 ] && %{_sbindir}/update-alternatives --remove liblapack.so.3 || true"
+
+liblapacke3
+  conflicts "libopenblas_openmp0-<targettype>"
+  conflicts "libopenblas_pthreads0-<targettype>"
+  conflicts "libopenblas_serial0-<targettype>"
+  pre "[ $1 -eq 2 ] && [ -f %{_sysconfdir}/alternatives/liblapacke.so.3 ] && %{_sbindir}/update-alternatives --remove liblapacke.so.3 || true"
+
+# Do not package pkgconfig files for devel packages as they lead to "choice"
+# issues between -devel and -32bit-devel when using pkgconfig(FOO) based deps
+blas-devel
+  -/usr/lib(64)?/pkgconfig/blas.pc
+  requires "blas-devel-<targettype> = <version>"
+  requires "libblas3-<targettype> = <version>"
+
+cblas-devel
+  -/usr/lib(64)?/pkgconfig/cblas.pc
+  requires "blas-devel-<targettype> = <version>"
+  requires "libcblas3-<targettype> = <version>"
+
+lapack-devel
+  -/usr/lib(64)?/pkgconfig/lapack.pc
+  requires "blas-devel-<targettype> = <version>"
+  requires "liblapack3-<targettype> = <version>"
+
+lapacke-devel
+  -/usr/lib(64)?/pkgconfig/lapacke.pc
+  requires "lapack-devel-<targettype> = <version>"
+  requires "liblapacke3-<targettype> = <version>"

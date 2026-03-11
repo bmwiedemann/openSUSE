@@ -1,6 +1,7 @@
 #
 # spec file for package lapack
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,6 +34,12 @@
 %define so_ver 3
 %bcond_without tmg
 
+%if %{suse_version} >= 1600 && !0%{?is_opensuse}
+%bcond_with alternatives
+%else
+%bcond_without alternatives
+%endif
+
 # For Leap 15.X, we do not need arch dependent symlink names because no baselibs are generated
 %if 0%{?suse_version} >= 1500
 %define a_x _%{_arch}
@@ -45,7 +52,8 @@ License:        BSD-3-Clause
 URL:            https://www.netlib.org/lapack/
 Source0:        https://github.com/Reference-LAPACK/lapack/archive/v%{version}.tar.gz#/%{pname}-%{version}.tar.gz
 Source98:       lapack.rpmlintrc
-Source99:       baselibs.conf
+Source99:       baselibs.conf.alternatives
+Source97:       baselibs.conf.no-alternatives
 # PATCH-FIX-UPSTREAM
 Patch0:         https://github.com/Reference-LAPACK/lapack/commit/b054023.patch#/lapack-deprecated-lwork-use.patch
 # PATCH-FIX-UPSTREAM
@@ -81,19 +89,20 @@ both single and double precision.
 
 
 
-
-
-
-
-
-
-
 # LAPACK
 
 %package     -n liblapack%{so_ver}
 Summary:        Linear Algebra PACKage: Shared Library
+%if %{with alternatives}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%else
+Conflicts:      libopenblas_openmp0
+Conflicts:      libopenblas_pthreads0
+Conflicts:      libopenblas_serial0
+OrderWithRequires(pre): update-alternatives
+Suggests:       update-alternatives
+%endif
 
 %description -n liblapack%{so_ver}
 LAPACK provides routines for solving systems of simultaneous linear
@@ -147,19 +156,20 @@ This package provides the static library for LAPACK.
 
 
 
-
-
-
-
-
-
-
 # BLAS
 
 %package     -n libblas%{so_ver}
 Summary:        Basic Linear Algebra Subprograms: Shared Library
+%if %{with alternatives}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%else
+Conflicts:      libopenblas_openmp0
+Conflicts:      libopenblas_pthreads0
+Conflicts:      libopenblas_serial0
+OrderWithRequires(pre): update-alternatives
+Suggests:       update-alternatives
+%endif
 
 %description -n libblas%{so_ver}
 BLAS (Basic Linear Algebra Subprograms) is a standard library for
@@ -196,20 +206,20 @@ blas-man package.
 This package provides the static library for BLAS.
 
 
-
-
-
-
-
-
-
-
 # LAPACKE
 
 %package     -n liblapacke%{so_ver}
 Summary:        Native C Interface to LAPACK: shared library
+%if %{with alternatives}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%else
+Conflicts:      libopenblas_openmp0
+Conflicts:      libopenblas_pthreads0
+Conflicts:      libopenblas_serial0
+OrderWithRequires(pre): update-alternatives
+Suggests:       update-alternatives
+%endif
 
 %description -n liblapacke%{so_ver}
 This library provides a native C interface to LAPACK routines available
@@ -242,19 +252,20 @@ This package provides the static library for LAPACKE.
 
 
 
-
-
-
-
-
-
-
 # CBLAS
 
 %package     -n libcblas%{so_ver}
 Summary:        Native C interface to BLAS: Shared Library
+%if %{with alternatives}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%else
+Conflicts:      libopenblas_openmp0
+Conflicts:      libopenblas_pthreads0
+Conflicts:      libopenblas_serial0
+OrderWithRequires(pre): update-alternatives
+Suggests:       update-alternatives
+%endif
 
 %description -n libcblas%{so_ver}
 This library provides a native C interface to BLAS routines available
@@ -286,14 +297,6 @@ for C programmers.
 This package contains the CBLAS static libraries.
 
 
-
-
-
-
-
-
-
-
 # TMGLIB
 
 %package -n libtmglib%{so_ver}
@@ -320,14 +323,6 @@ This package provides the headers and sources needed to develop against the
 tmglib as a static library.
 
 
-
-
-
-
-
-
-
-
 # MAN Pages
 
 %package -n lapack-man
@@ -339,6 +334,11 @@ This package provides the man pages for BLAS, CBLAS, and LAPACK.
 %prep
 %autosetup -p1 -n %{pname}-%{version}
 sed -i -E '1{s@#!/usr/bin/env python[0-9]*@#!%{_bindir}/python%{python3_version}@}' lapack_testing.py
+%if %{with alternatives}
+ln -s baselibs.conf.alternatives %{_sourcedir}/baselibs.conf
+%else
+ln -s baselibs.conf.no-alternatives %{_sourcedir}/baselibs.conf
+%endif
 
 %build
 %ifarch %{ix86}
@@ -380,6 +380,7 @@ doxygen Doxyfile.man
 %cmake_install
 
 %if %{with shared}
+%if %{with alternatives}
 # Prepare for update-alternatives
 install -d %{buildroot}%{_sysconfdir}/alternatives
 install -d %{buildroot}%{_libdir}/{lapack,blas}
@@ -395,6 +396,7 @@ for t in blas cblas lapack lapacke
 do
   ln -s %{_sysconfdir}/alternatives/lib${t}.so.%{so_ver}%{?a_x} %{buildroot}%{_libdir}/lib${t}.so.%{so_ver}
 done
+%endif
 
 %else
 # Remove headers and script files for static flavour to avoid file conflicts
@@ -420,6 +422,7 @@ cp -r %{__builddir}/DOCS/man/man3 %{buildroot}%{_mandir}/
 %ldconfig_scriptlets -n libtmglib%{so_ver}
 
 # BLAS
+%if %{with alternatives}
 %post -n libblas%{so_ver}
 %{_sbindir}/update-alternatives --install \
   %{_libdir}/libblas.so.%{so_ver} libblas.so.%{so_ver}%{?a_x} %{_libdir}/blas/libblas.so.%{so_ver}  50
@@ -430,9 +433,24 @@ cp -r %{__builddir}/DOCS/man/man3 %{buildroot}%{_mandir}/
 if [ ! %{_libdir}/blas/libblas.so.%{so_ver} ] ; then
   %{_sbindir}/update-alternatives --remove libblas.so.%{so_ver}%{?a_x}  %{_libdir}/blas/libblas.so.%{so_ver}
 fi
+%else
+
+%post -n libblas%{so_ver}
+/sbin/ldconfig
+
+%postun -n libblas%{so_ver}
+/sbin/ldconfig
+
+# Remove existing alternatives on upgrade, if it exists
+%pre -n libblas%{so_ver}
+if [ $1 -eq 2 ] && [ -f %{_sysconfdir}/alternatives/libblas.so.%{so_ver}%{?a_x} ] ; then
+  %{_sbindir}/update-alternatives --remove libblas.so.%{so_ver}%{?a_x}
+fi
+%endif
 # /BLAS
 
 # LAPACK
+%if %{with alternatives}
 %post -n liblapack%{so_ver}
 %{_sbindir}/update-alternatives --install \
   %{_libdir}/liblapack.so.%{so_ver} liblapack.so.%{so_ver}%{?a_x} %{_libdir}/lapack/liblapack.so.%{so_ver}  50
@@ -443,9 +461,24 @@ fi
 if [ ! -f  %{_libdir}/lapack/liblapack.so.%{so_ver} ] ; then
   %{_sbindir}/update-alternatives --remove liblapack.so.%{so_ver}%{?a_x} %{_libdir}/lapack/liblapack.so.%{so_ver}
 fi
+%else
+
+%post -n liblapack%{so_ver}
+/sbin/ldconfig
+
+%postun -n liblapack%{so_ver}
+/sbin/ldconfig
+
+# Remove existing alternatives on upgrade, if it exists
+%pre -n liblapack%{so_ver}
+if [ $1 -eq 2 ] && [ -f %{_sysconfdir}/alternatives/liblapack.so.%{so_ver}%{?a_x} ] ; then
+  %{_sbindir}/update-alternatives --remove liblapack.so.%{so_ver}%{?a_x}
+fi
+%endif
 # /LAPACK
 
 # CBLAS
+%if %{with alternatives}
 %post -n libcblas%{so_ver}
 %{_sbindir}/update-alternatives --install \
   %{_libdir}/libcblas.so.%{so_ver} libcblas.so.%{so_ver}%{?a_x} %{_libdir}/blas/libcblas.so.%{so_ver}  50
@@ -456,9 +489,24 @@ fi
 if [ ! -f %{_libdir}/blas/libcblas.so.%{so_ver} ] ; then
   %{_sbindir}/update-alternatives --remove libcblas.so.%{so_ver}%{?a_x}  %{_libdir}/blas/libcblas.so.%{so_ver}
 fi
+%else
+
+%post -n libcblas%{so_ver}
+/sbin/ldconfig
+
+%postun -n libcblas%{so_ver}
+/sbin/ldconfig
+
+# Remove existing alternatives on upgrade, if it exists
+%pre -n libcblas%{so_ver}
+if [ $1 -eq 2 ] && [ -f %{_sysconfdir}/alternatives/libcblas.so.%{so_ver}%{?a_x} ] ; then
+  %{_sbindir}/update-alternatives --remove libcblas.so.%{so_ver}%{?a_x}
+fi
+%endif
 # /CBLAS
 
 # LAPACKE
+%if %{with alternatives}
 %post -n liblapacke%{so_ver}
 %{_sbindir}/update-alternatives --install \
   %{_libdir}/liblapacke.so.%{so_ver} liblapacke.so.%{so_ver}%{?a_x} %{_libdir}/lapack/liblapacke.so.%{so_ver}  50
@@ -469,6 +517,20 @@ fi
 if [ ! -f %{_libdir}/lapack/liblapacke.so.%{so_ver} ] ; then
   %{_sbindir}/update-alternatives --remove liblapacke.so.%{so_ver}%{?a_x} %{_libdir}/lapack/liblapacke.so.%{so_ver}
 fi
+%else
+
+%post -n liblapacke%{so_ver}
+/sbin/ldconfig
+
+%postun -n liblapacke%{so_ver}
+/sbin/ldconfig
+
+# Remove existing alternatives on upgrade, if it exists
+%pre -n liblapacke%{so_ver}
+if [ $1 -eq 2 ] && [ -f %{_sysconfdir}/alternatives/liblapacke.so.%{so_ver}%{?a_x} ] ; then
+  %{_sbindir}/update-alternatives --remove liblapacke.so.%{so_ver}%{?a_x}
+fi
+%endif
 # /LAPACKE
 %endif
 
@@ -477,32 +539,48 @@ fi
 %files -n liblapack%{so_ver}
 %doc README.md
 %license LICENSE
+%if %{with alternatives}
 %dir %{_libdir}/lapack
 %{_libdir}/lapack/liblapack.so.*
 %ghost %{_libdir}/liblapack.so.%{so_ver}
 %ghost %{_sysconfdir}/alternatives/liblapack.so.%{so_ver}%{?a_x}
+%else
+%{_libdir}/liblapack.so.%{so_ver}*
+%endif
 
 %files -n libblas%{so_ver}
 %doc README.md
 %license LICENSE
+%if %{with alternatives}
 %dir %{_libdir}/blas
 %{_libdir}/blas/libblas.so.*
 %ghost %{_libdir}/libblas.so.%{so_ver}
 %ghost %{_sysconfdir}/alternatives/libblas.so.%{so_ver}%{?a_x}
+%else
+%{_libdir}/libblas.so.%{so_ver}*
+%endif
 
 %files -n liblapacke%{so_ver}
+%if %{with alternatives}
 %dir %{_libdir}/lapack
 %{_libdir}/lapack/liblapacke.so.*
 %ghost %{_libdir}/liblapacke.so.%{so_ver}
 %ghost %{_sysconfdir}/alternatives/liblapacke.so.%{so_ver}%{?a_x}
+%else
+%{_libdir}/liblapacke.so.%{so_ver}*
+%endif
 
 %files -n libcblas%{so_ver}
 %doc README.md
 %license LICENSE
+%if %{with alternatives}
 %dir %{_libdir}/blas
 %{_libdir}/blas/libcblas.so.*
 %ghost %{_libdir}/libcblas.so.%{so_ver}
 %ghost %{_sysconfdir}/alternatives/libcblas.so.%{so_ver}%{?a_x}
+%else
+%{_libdir}/libcblas.so.%{so_ver}*
+%endif
 
 %files -n libtmglib%{so_ver}
 %license LICENSE

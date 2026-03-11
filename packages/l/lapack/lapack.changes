@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  4 12:30:02 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Add %bcond_with{,out} alternatives and disable by default for SLFO.
+- Split baselibs.conf into two flavors, one for update-alternatives,
+  one for dropping them.  Decide in %prep which one to choose.
+
+-------------------------------------------------------------------
 Mon Oct 27 08:38:44 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Do not install spurious noname man page.
