@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-ObjectDriver
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Data-ObjectDriver
 Name:           perl-Data-ObjectDriver
-Version:        0.260.0
+Version:        0.270.0
 Release:        0
-# 0.26 -> normalize -> 0.260.0
-%define cpan_version 0.26
+# 0.27 -> normalize -> 0.270.0
+%define cpan_version 0.27
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple, transparent data interface, with caching
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -35,6 +35,7 @@ BuildRequires:  perl(Class::Accessor::Fast)
 BuildRequires:  perl(Class::Data::Inheritable)
 BuildRequires:  perl(Class::Trigger)
 BuildRequires:  perl(DBI)
+BuildRequires:  perl(Digest::SHA)
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.59
 BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(Module::Build::Tiny) >= 0.35

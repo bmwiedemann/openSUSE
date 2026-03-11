@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 13 06:15:46 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.270.0 (0.27)
+   see /usr/share/doc/packages/perl-Data-ObjectDriver/Changes
+
+  0.27 2026-02-13T04:51:15Z
+      - Fix bulk_insert for binary values #61
+
+-------------------------------------------------------------------
 Fri Oct 17 19:01:40 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.260.0 (0.26)

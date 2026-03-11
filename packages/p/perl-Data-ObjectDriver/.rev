@@ -85,4 +85,15 @@
       - Add an ability to accept subqueries with SQL objects #57 #59</comment>
     <requestid>1312576</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c635fa9917a917acce006c58e9911af0</srcmd5>
+    <version>0.270.0</version>
+    <time>1773258745</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.270.0 (0.27)
+   see /usr/share/doc/packages/perl-Data-ObjectDriver/Changes
+  0.27 2026-02-13T04:51:15Z
+      - Fix bulk_insert for binary values #61</comment>
+    <requestid>1338064</requestid>
+  </revision>
 </revisionlist>
