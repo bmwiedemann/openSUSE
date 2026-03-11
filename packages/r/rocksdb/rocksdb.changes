@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar  7 15:52:09 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 10.10.1:
+  * Fixed a bug in best-efforts recovery that causes use-after-free crashes 
+    when accessing SST files that were cached during the recovery
+  * Fix resumable compaction incorrectly allowing resumption from a truncated
+    range deletion that is not well handled currently
+  * Fixed a bug in PosixRandomFileAccess IO uring submission queue 
+    ownership & management. Fix eliminates the false positive 'Bad cqe data' 
+    IO errors in PosixRandomFileAccess::MultiRead when interleaved with 
+    PosixRandomFileAccess::ReadAsync on the same thread
+
+-------------------------------------------------------------------
 Sat Jan 10 16:03:39 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 10.9.1:
