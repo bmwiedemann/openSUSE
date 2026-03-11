@@ -7,11 +7,20 @@
     <image schemaversion="7.5" name="%OS_PRETTY_NAME_DASHED%-%OS_VERSION_ID%">
     <file name="%OS_PRETTY_NAME_DASHED%.ico" target="/usr/share/pixmaps/%OS_PRETTY_NAME_DASHED%.ico" owner="root:root" permissions="644"/>
   -->
+  <!--
+    Around 20251126, Leap-release is adding a "theme_ver" of "+leap" which upsets kiwi:
+      ERROR:RELAXNGV:RELAXNG_ERR_INTERSEQ: Invalid sequence in interleave
+      ERROR:RELAXNGV:RELAXNG_ERR_CONTENTVALID: Element image failed to validate content
+    The addition of OS_VERSION_ID here will remove that extra text and reinsert the 'original'
+      value for OS_VERSION_ID
+  -->
   <service mode="buildtime" name="replace_using_env">
     <param name="file">appliance.kiwi</param>
+    <param name="var">OS_VERSION_ID</param>
+    <param name="eval">OS_VERSION_ID=$( find ./repos -iname '*-release*.rpm' -exec rpm -q --queryformat "%{VERSION}" {} \; -quit | sed 's/+leap//g' )</param>
     <param name="var">OS_PRETTY_NAME_DASHED</param>
     <param name="eval">OS_PRETTY_NAME_DASHED=$( find ./repos -iname '*-release*.rpm' -exec rpm -q --queryformat "%{SUMMARY}" {} \; -quit | sed 's/\ /-/g' | sed 's/\(Server-\|-Alpha.*\|-Beta.*\|-GMC.*\|-PublicBeta.*\|-PublicRC.*\|-RC1.*\|-Snapshot.*\)//g' )</param>
-    <param name="eval">sed -i -e "s#\(.image schemaversion=\"[0-9].[0-9]\" name=\"\).*\(-.*\".\)#\1%%OS_PRETTY_NAME_DASHED%%\2#" appliance.kiwi</param>
+    <param name="eval">sed -i -e "s#\(.image schemaversion=\"[0-9].[0-9]\" name=\"\).*\(-\).*\(\".\)#\1%%OS_PRETTY_NAME_DASHED%%\2%%OS_VERSION_ID%%\3#" appliance.kiwi</param>
     <param name="eval">sed -i -e "s#\(.file name=\"\).*\(.ico\" target=\"/usr/share/pixmaps/\).*\(.ico\"\)#\1%%OS_PRETTY_NAME_DASHED%%\2%%OS_PRETTY_NAME_DASHED%%\3#" appliance.kiwi</param>
     <param name="verbose">1</param>
   </service>

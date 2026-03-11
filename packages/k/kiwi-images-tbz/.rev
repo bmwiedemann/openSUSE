@@ -7,4 +7,12 @@
     <comment>This is the kiwi image builder configuration which generates .tar.xz files for WSL, what Microsoft considers &quot;ModernDistributions&quot;; they are renamed to .wsl before inclusion in openSUSE/SUSE GitHub releases which are shared via Microsoft.</comment>
     <requestid>1304358</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0a3a8820d08af86f2ccf8a1dfd8dac15</srcmd5>
+    <version>%RELEASE%</version>
+    <time>1773259023</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1338283</requestid>
+  </revision>
 </revisionlist>
