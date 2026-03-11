@@ -389,6 +389,7 @@ fi
 %{hyperkitty_basedir}/wsgi.py
 
 %dir %{hyperkitty_basedir}/static
+%{hyperkitty_basedir}/static/account
 %{hyperkitty_basedir}/static/admin
 %{hyperkitty_basedir}/static/debug_toolbar
 %{hyperkitty_basedir}/static/django-mailman3

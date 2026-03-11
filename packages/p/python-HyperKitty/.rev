@@ -515,4 +515,14 @@
     <comment></comment>
     <requestid>1324685</requestid>
   </revision>
+  <revision rev="36" vrev="6">
+    <srcmd5>c2ae42ddb97abf450fae2b6d407f37cb</srcmd5>
+    <version>1.3.12</version>
+    <time>1773258673</time>
+    <user>anag_factory</user>
+    <comment>- Fix files with updated python-django-allauth
+
+needs https://build.opensuse.org/requests/1337984</comment>
+    <requestid>1337992</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 10 14:08:44 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Fix files with updated python-django-allauth
+
+-------------------------------------------------------------------
 Fri Dec 19 07:17:03 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
 
 - If possible build for primary_python (fixes Leap 16.0)
