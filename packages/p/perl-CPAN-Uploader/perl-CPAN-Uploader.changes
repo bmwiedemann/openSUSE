@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 24 06:15:41 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.103.19 (0.103019)
+   see /usr/share/doc/packages/perl-CPAN-Uploader/Changes
+
+  0.103019  2026-02-22 21:44:36-05:00 America/New_York
+          - tiny fix to some documentation formatting (thanks, Graham Knop)
+
+-------------------------------------------------------------------
 Mon Jun 23 21:30:32 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version

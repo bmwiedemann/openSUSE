@@ -235,4 +235,15 @@
 </comment>
     <requestid>1288076</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c995bc15f55817fdb547381806406b95</srcmd5>
+    <version>0.103.19</version>
+    <time>1773258733</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.103.19 (0.103019)
+   see /usr/share/doc/packages/perl-CPAN-Uploader/Changes
+  0.103019  2026-02-22 21:44:36-05:00 America/New_York
+          - tiny fix to some documentation formatting (thanks, Graham Knop)</comment>
+    <requestid>1338047</requestid>
+  </revision>
 </revisionlist>
