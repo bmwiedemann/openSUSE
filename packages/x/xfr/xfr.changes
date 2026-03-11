@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Wed Mar 11 10:40:53 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.3:
+  * Fix server random payload on single-port TCP reverse (#34).
+  * Fix QUIC dual-stack, add server --bind, server random payloads.
+
+-------------------------------------------------------------------
+Sat Mar  7 09:48:56 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.2:
+  Changed
+  * Random payloads by default (issue #34) — TCP/UDP client-sent
+    payloads now use random bytes by default to avoid silently
+    inflated results on WAN-optimized or compressing paths.
+    --random remains as an explicit no-op for clarity, and new
+    --zeros forces zero-filled payloads for compression/dedup
+    testing. Reverse mode sender remains server-side zeros until
+    protocol negotiation is added.
+  Fixed
+  * MPTCP namespace test realism (issue #32) — test-mptcp-ns.sh now
+    combines netem shaping with fq_codel on the shaped transit
+    links, matching common Linux defaults more closely and reducing
+    false-positive high-stream failures caused by shallow unfair
+    queues in the test harness.
+
+-------------------------------------------------------------------
+Fri Mar  6 20:12:50 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.1:
+  Added
+  * MPTCP support (--mptcp) — Multi-Path TCP on Linux 5.6+
+  * Kernel TCP pacing via SO_MAX_PACING_RATE
+  Changed
+  * Library API — create_tcp_listener(), connect_tcp(),
+    and connect_tcp_with_bind() now take a mptcp: bool parameter.
+    Pass false to preserve existing behavior.
+  Fixed
+  * High stream-count teardown hardening (issue #32) — client now
+    stops local data streams at local duration expiry instead of
+    waiting for server Result, scales stream join timeout with
+    stream count (max(2s, streams*50ms)), and TCP receivers drain
+    briefly after cancel to reduce reset-on-close bursts at
+    high -P.
+  * Best-effort send shutdown — send_data() shutdown no longer
+    propagates errors during normal teardown races.
+  * Kernel pacing rate width — SO_MAX_PACING_RATE now uses
+    native c_ulong instead of u32, removing an unintended ~34 Gbps
+    ceiling on 64-bit Linux.
+  * JoinHandle panic with many parallel streams (issue #24).
+  * Final summary showing 0 retransmits/RTT/cwnd (issue #26).
+  * Broken pipe / connection reset at teardown (issue #25).
+  * MPTCP label in server log — server displays "MPTCP" instead of
+    "TCP" when client uses --mptcp.
+
+-------------------------------------------------------------------
+Fri Feb 13 08:20:00 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.0:
+  * Add QUIC --cport dual-stack IPv6 integration test.
+  * Validate UDP data_ports length before spawning streams.
+  * Add --cport flag for client source port pinning (issue #16).
+
+-------------------------------------------------------------------
+Thu Feb 12 19:39:58 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.7.1
+  Fixed
+  * Server TUI '-0.0 Mbps' after test ends: (issue #20) - IEEE 754
+   negative zero now normalized via precision-aware
+   'normalize_for_display()' helper across all throughput display
+   paths.
+  * TCP RTT/retransmits not updating live (issue #13) -
+    per-interval retransmits now computed from TCP_INFO deltas
+    instead of a dead atomic counter; client stores socket fds for
+    local TCP_INFO polling so sender-side metrics (upload/bidir)
+    update live; download mode correctly uses server-reported
+    metrics
+  * Plain-text zero retransmits dropped - 'rtx: 0' was omitted in
+    plain/JSON/CSV interval output when all streams reported zero
+    retransmits; now preserved
+  * 'mbps_to_human()' unit-switch boundary - '999.95 Mbps'
+    displayed as '1000.0 Mbps' instead of '1.00 Gbps'; unit branch
+    now uses rounded value
+  Changed
+  * Consolidated throughput formatting - server TUI now uses shared
+    'mbps_to_human()' instead of inline formatting; Gbps display 
+    hanges from 1 to 2 decimal places for consistency.
+
+-------------------------------------------------------------------
+Thu Feb 12 14:40:48 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package for xfr, version 0.7.0

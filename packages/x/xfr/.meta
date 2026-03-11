@@ -1,0 +1,18 @@
+<package name="xfr" project="openSUSE:Factory">
+  <title>Network bandwidth testing tool with TUI</title>
+  <description>A fast, modern network bandwidth testing tool with TUI.
+
+Features:
+- Live TUI with real-time throughput graphs and per-stream stats
+- Server dashboard - xfr serve --tui for monitoring active tests
+- Multi-client server - handle multiple simultaneous tests
+- TCP and UDP with configurable bitrate and parallel streams
+- Bidirectional testing - measure upload and download simultaneously
+- Multiple output formats - plain text, JSON, JSON streaming, CSV
+- Result comparison - xfr diff to detect performance regressions
+- LAN discovery - find xfr servers with mDNS (xfr discover)
+- Prometheus metrics - export stats for monitoring dashboards
+- Config file - save defaults in ~/.config/xfr/config.toml
+- Environment variables - XFR_PORT, XFR_DURATION overrides</description>
+  <url>https://github.com/lance0/xfr</url>
+</package>
