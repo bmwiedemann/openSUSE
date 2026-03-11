@@ -1,7 +1,7 @@
 #
 # spec file for package krunvm
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           krunvm
-Version:        0.2.4+git3cdfe0f
+Version:        0.2.6+git59f3673
 Release:        0
 Summary:        Manage lightweight VMs created from OCI images
 License:        Apache-2.0
@@ -37,18 +37,24 @@ Conflicts:      libkrun0
 Manage lightweight VMs created from OCI images
 
 %files
+%license LICENSE
 %doc README.md
+%doc CODE-OF-CONDUCT.md
+%doc SECURITY.md
+%{_mandir}/man1/krunvm*.1*
 %{_bindir}/krunvm
 
 %prep
-%setup -qa1
+%autosetup -p1 -a 1
 
 %build
-export RUSTFLAGS="%{build_rustflags}"
-%make_build
+%{cargo_build}
 
 %install
-export RUSTFLAGS="%{build_rustflags}"
-%make_install PREFIX=%{_prefix}
+%{cargo_install}
+
+# We need to deal with the manpages manually
+install -d -m 0755 %{buildroot}%{_mandir}/man1
+find target/release/build/krunvm-*/out -name "*.1" -exec install -m 0644 {} %{buildroot}%{_mandir}/man1/ \;
 
 %changelog

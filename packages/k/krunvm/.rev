@@ -120,4 +120,27 @@
 </comment>
     <requestid>1305854</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>53b2e20c77c33eeed5cd54d3725f75ec</srcmd5>
+    <version>0.2.6+git59f3673</version>
+    <time>1773258728</time>
+    <user>anag_factory</user>
+    <comment>- Spec file cleanup (use cargo macros)
+- Install manpages and other doc files
+- Update to version v0.2.6
+  * start/macos: extend mount script to chdir workdir
+  * ci: check code quality on Linux too
+  * Use 'if let' to avoid unwrap
+  * Fix compile errors and warnings on Linux
+  * build: use Error::other to make clippy happy
+  * ci: update ci and focus on macOS
+- Update to version v0.2.5
+  * Fix re-exec of binary
+  * refactor: cargo fmt.
+  * refactor: removing the dead code krun_set_mapped_volumes
+  * feat: use krun_add_virtiofs to fix mapped volumes on macos.
+  * Re-execute itself with DYLD_LIBRARY_PATH
+</comment>
+    <requestid>1338246</requestid>
+  </revision>
 </revisionlist>
