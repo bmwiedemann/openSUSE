@@ -238,4 +238,30 @@
   * Fix memory leak in regex probe.</comment>
     <requestid>1304214</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8ecbd9173843b36c49df5727092db595</srcmd5>
+    <version>2.3.1</version>
+    <time>1773258888</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.1:
+  * Add file access when using Landlock and Libwrap together.
+  * Mixed IPv4/IPv6 proxyprotocol setups will move both addresses to IPv6
+    format on the server side.
+  * Add CAP_NET_RAW to systemd config so transparent
+	proxying can work. Removed sslh-select systemd file:
+	don't repeat the same configuration file!
+  * Changed SNI matching log messages from
+	`msg_probe_error` to `msg_probe_info`: beware if you
+	happen to use them...
+  * Close unused file descriptors upon forking a worker
+	for a connection (in sslh-ev and sslh-select). In
+	particular, this prevents forked processes to
+	inherit the listen sockets and block a new main
+	process from starting.
+  * More configuration sanity checks (e.g. using regex
+	or proxyprotocol options if libraries are not compiled in)
+  * -V now outputs compile-time options so it is
+	possible to know what is compiled in.</comment>
+    <requestid>1338189</requestid>
+  </revision>
 </revisionlist>
