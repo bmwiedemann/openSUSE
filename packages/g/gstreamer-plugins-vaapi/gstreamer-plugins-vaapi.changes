@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 11 08:56:47 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.11:
+  + This is the final relase of gstreamer-plugins-vaapi, deprecated
+    and removed upstream. Contains no changes, stable bump only.
+
+-------------------------------------------------------------------
 Wed Mar  4 11:42:26 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with gstreamer-plugins-bad 1.28.1:
