@@ -17,7 +17,7 @@
 
 
 Name:           nbping
-Version:        0.5.0
+Version:        0.6.1
 Release:        0
 Summary:        A ping tool with real-time data and visualizations
 License:        MIT
@@ -48,9 +48,6 @@ Features
 
 %install
 %{cargo_install}
-# next version will be named "nbping"
-#  https://github.com/hanshuaikang/Nping/issues/62#issuecomment-3483448009
-mv %{buildroot}%{_bindir}/nping %{buildroot}%{_bindir}/nbping
 
 %check
 #%%{cargo_test}

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 25 15:28:10 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.1:
+  * feat: update version to v0.6.1 and rename project to NBping.
+  * feat: nping rename to nbping (#105).
+
+-------------------------------------------------------------------
+Tue Jan  6 11:02:17 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.0:
+  * feat: add prometheus exporter mode (#103)
+
+-------------------------------------------------------------------
 Sun Nov  2 20:05:41 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package for nbping, version 0.5.0

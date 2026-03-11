@@ -10,5 +10,6 @@ Features
  * Support IPv4 and IPv6.
  * Supports concurrent pinging of n ip's under one address.
  * Support output results to files.</description>
+  <devel project="network:utilities" package="nbping"/>
   <url>https://github.com/hanshuaikang/Nping</url>
 </package>

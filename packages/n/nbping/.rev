@@ -7,4 +7,12 @@
     <comment>Forward the current version of nbping to Factory</comment>
     <requestid>1318309</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0c9920feac17aa3a1d79816905a00f3e</srcmd5>
+    <version>0.6.1</version>
+    <time>1773259036</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1338293</requestid>
+  </revision>
 </revisionlist>
