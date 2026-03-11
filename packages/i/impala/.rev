@@ -16,4 +16,12 @@
   * fix: use the correct fields names of PEAP network config</comment>
     <requestid>1330791</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fdbe660f2f84aef600420ee6a1922e46</srcmd5>
+    <version>0.7.4</version>
+    <time>1773259032</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1338290</requestid>
+  </revision>
 </revisionlist>
