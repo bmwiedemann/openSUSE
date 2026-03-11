@@ -1,7 +1,7 @@
 #
 # spec file for package python-typeguard
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-typeguard
-Version:        4.4.4
+Version:        4.5.1
 Release:        0
 Summary:        Library for runtime checking of Python types
 License:        MIT

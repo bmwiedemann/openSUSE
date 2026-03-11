@@ -191,4 +191,32 @@
     <comment></comment>
     <requestid>1288852</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>958f3029535f10997d4f316cbd41e2d7</srcmd5>
+    <version>4.5.1</version>
+    <time>1773258580</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.5.1:
+  * Fixed iterable unpacking incorrectly calculating the cut-off
+    offset of the item list when assigning remaining values to
+    the star variable
+  * Restored the check_argument_types() and check_return_type()
+    functions that were dropped in v3.0.0, for users who want
+    more fine-grained control over run-time type checking
+  * Added support for extra_items in TypedDict, allowing users to
+    specify the types for the values of &quot;leftover&quot; keys in a
+    typed dict (keys that weren't explicitly defined in the
+    TypedDict subclass)
+  * Fixed NameError when evaluating forward references on Python
+    3.14
+  * Fixed protocol check incorrectly rejecting inherited
+    classmethods and staticmethods
+  * Fixed missing TypeCheckError when checking TypedDict with
+    Required[...] annotations
+  * Fixed type aliases (e.g. type Foo = list[int]) not being
+    resolved during type checking
+  * Fixed type-checked assignments to a single tuple target (e.g.
+    x, = (&quot;foo&quot;,)) falsely raising TypeCheckedError</comment>
+    <requestid>1337897</requestid>
+  </revision>
 </revisionlist>
