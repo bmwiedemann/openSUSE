@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb 21 05:58:46 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.339.0 (0.339)
+   see /usr/share/doc/packages/perl-App-Cmd/Changes
+
+  0.339     2026-02-19 15:25:49-05:00 America/New_York
+          - add even-more-experimental --bash-completion and --zsh-completion
+            options to "commands"; THIS MAY CHANGE WEIRDLY OR GO AWAY
+          - …and that depends on having the right version of
+            Getopt::Long::Descriptive, too
+
+-------------------------------------------------------------------
 Thu Oct  9 19:47:57 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.338.0 (0.338)

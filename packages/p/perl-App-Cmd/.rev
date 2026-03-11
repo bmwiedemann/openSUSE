@@ -204,4 +204,18 @@
             shell completion; THIS MAY CHANGE WEIRDLY</comment>
     <requestid>1310545</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>710da54a228d51be453cc84a9be14fa0</srcmd5>
+    <version>0.339.0</version>
+    <time>1773258733</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.339.0 (0.339)
+   see /usr/share/doc/packages/perl-App-Cmd/Changes
+  0.339     2026-02-19 15:25:49-05:00 America/New_York
+          - add even-more-experimental --bash-completion and --zsh-completion
+            options to &quot;commands&quot;; THIS MAY CHANGE WEIRDLY OR GO AWAY
+          - …and that depends on having the right version of
+            Getopt::Long::Descriptive, too</comment>
+    <requestid>1338046</requestid>
+  </revision>
 </revisionlist>

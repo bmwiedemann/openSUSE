@@ -1,7 +1,7 @@
 #
 # spec file for package perl-App-Cmd
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name App-Cmd
 Name:           perl-App-Cmd
-Version:        0.338.0
+Version:        0.339.0
 Release:        0
-# 0.338 -> normalize -> 0.338.0
-%define cpan_version 0.338
+# 0.339 -> normalize -> 0.339.0
+%define cpan_version 0.339
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Write command line apps with less suffering
 URL:            https://metacpan.org/release/%{cpan_name}
