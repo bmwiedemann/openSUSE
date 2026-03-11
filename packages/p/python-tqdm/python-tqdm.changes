@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar 10 08:19:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.67.3:
+  * fix py3.7 dependencies
+
+- update to 4.67.2:
+  * support `pandas>=3`
+  * fix `format_interval` for negative numbers
+  * misc linting
+  * framework updates
+  * bump CI workflow & `pre-commit` dependencies
+  * add `pyupgrade`
+  * add py3.13 support
+  * fix py3.7 tests
+  * update `setuptools-scm` usage
+  * support auto-dedented docstrings when building docs in
+    py3.13
+  * tests: relax flaky benchmarks
+
+-------------------------------------------------------------------
 Mon Aug 25 14:23:42 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems
@@ -52,7 +72,7 @@ Fri Aug  2 09:05:03 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 -------------------------------------------------------------------
 Fri May 17 06:38:10 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Re-add conditionals to numpy/pandas, it is required. 
+- Re-add conditionals to numpy/pandas, it is required.
 
 -------------------------------------------------------------------
 Tue May  7 01:37:49 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
@@ -321,7 +341,7 @@ Sun Jan 10 20:21:47 UTC 2021 - andy great <andythe_great@pm.me>
   * update tests
     * make pre-commit pytest quicker
     * switch pre-commit from make to python
-  * update contributing guidelines 
+  * update contributing guidelines
     * fix formatting
     * test dependencies
   * update .gitignore
@@ -330,10 +350,10 @@ Sun Jan 10 20:21:47 UTC 2021 - andy great <andythe_great@pm.me>
 - Updates for 4.55.1.
   * fix (Rolling|Expanding).progress_apply() on pandas==1.2.0
   * minor documentation updates
-- Updates for 4.55.0.   
+- Updates for 4.55.0.
   * fix ASCII notebook export
-  * fix notebook gui-mode extra spaces 
-  * better ETA for early iterations 
+  * fix notebook gui-mode extra spaces
+  * better ETA for early iterations
   * better ETA for wildly varying iteration rates
   * update submodule inheritance
     * tqdm.gui
@@ -345,7 +365,7 @@ Sun Jan 10 20:21:47 UTC 2021 - andy great <andythe_great@pm.me>
   * add tests
   * misc code linting/formatting
 - Updates for 4.54.1.
-  * drop py3.4 (no longer tested) 
+  * drop py3.4 (no longer tested)
 - Updates for 4.54.0.
   * get rid of get_new
 - Updates for 4.53.0.
@@ -360,13 +380,13 @@ Sun Jan 10 20:21:47 UTC 2021 - andy great <andythe_great@pm.me>
     * fix & update tests
     * fix & upgrade snap build
     * update CONTRIBUTING docs
-- Remove python-tqdm-remove-nose.patch, fixed. 
+- Remove python-tqdm-remove-nose.patch, fixed.
 
 -------------------------------------------------------------------
 Tue Nov  3 14:06:32 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - move bash completion into separate package to avoid conflicts
-  with multiple python flavors gh#openSUSE/python-rpm-macros#66 
+  with multiple python flavors gh#openSUSE/python-rpm-macros#66
 
 -------------------------------------------------------------------
 Fri Oct 23 13:47:03 UTC 2020 - pgajdos@suse.com
@@ -1210,7 +1230,7 @@ Wed Mar  1 16:38:44 UTC 2017 - toddrme2178@gmail.com
   * cleaner tqdm_notebook exit when not run in a notebook (#267)
   * Disable coveralls because of duplicate comments on github (#263)
   * Migrate codecov config -> codecov.yml
-  
+
 -------------------------------------------------------------------
 Mon Sep 19 18:15:48 UTC 2016 - toddrme2178@gmail.com
 

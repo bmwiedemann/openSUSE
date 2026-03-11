@@ -551,4 +551,35 @@ update to latest version</comment>
     <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
     <requestid>1301301</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>3f0861e4717cd24b0e7d3faf3d10540d</srcmd5>
+    <version>4.67.3</version>
+    <time>1773258583</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.67.3:
+  * fix py3.7 dependencies
+- update to 4.67.2:
+  * support `pandas&gt;=3`
+  * fix `format_interval` for negative numbers
+  * misc linting
+  * framework updates
+  * bump CI workflow &amp; `pre-commit` dependencies
+  * add `pyupgrade`
+  * add py3.13 support
+  * fix py3.7 tests
+  * update `setuptools-scm` usage
+  * support auto-dedented docstrings when building docs in
+    py3.13
+  * tests: relax flaky benchmarks
+
+- Re-add conditionals to numpy/pandas, it is required.
+  * update contributing guidelines
+- Updates for 4.55.0.
+  * fix notebook gui-mode extra spaces
+  * better ETA for early iterations
+  * drop py3.4 (no longer tested)
+- Remove python-tqdm-remove-nose.patch, fixed.
+  with multiple python flavors gh#openSUSE/python-rpm-macros#66</comment>
+    <requestid>1337901</requestid>
+  </revision>
 </revisionlist>
