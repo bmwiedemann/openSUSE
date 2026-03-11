@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 11 06:03:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.16:
+  * Bump Go to 1.24.13 to address CVE-2025-68121, CVE-2025-61726,
+    CVE-2025-61728, CVE-2025-61730 (#741)
+
+-------------------------------------------------------------------
 Wed Feb 25 09:19:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.15:
