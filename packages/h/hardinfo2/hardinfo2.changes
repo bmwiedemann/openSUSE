@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar  2 16:07:49 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 2.2.16:
+  * Network info - fixes bugs, Support ss+ip as alternative for
+    netstat & route, added dns resolvectl support
+  * NVMe storage smart added.
+  * QT6 ready - please stay on QT5 as long as possible.
+  * New swedish+georgian translation (Russian+French+Danish
+    updated)
+  * Minor: Fixed Kernel Module icons
+  * Minor: PCLOS Deb+Cachyos support, DDR5 size Fix, View
+    checkbuttons checked on startup
+  * Minor: Fixed nvme disk size 0 bug in udisks2, Added current
+    link+width to NVMe storage.
+  * Minor: Fixed build warning in Alpine, redhat depends sysbench
+    fixed, added some arm cpus
+  * Minor: Fixed warnings in less common builds (S390+PPC),
+    sparkylinux+cachyos support
+  * Minor: note about logo reg. trademarks, udisk2 sensor update,
+    Fixed dark mode
+  * Minor: Vulkan hack for wayland poll, background3 updated,
+    pci+usb db updated
+
+-------------------------------------------------------------------
 Wed Jun 11 09:45:58 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 2.2.13:
