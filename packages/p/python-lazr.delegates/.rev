@@ -31,4 +31,14 @@
     <comment></comment>
     <requestid>1281374</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8dbca3233e8d487f9321e90501de6e9a</srcmd5>
+    <version>2.1.1</version>
+    <time>1773258780</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.1.1:
+  * Add support for Python 3.12 and 3.13.
+  * Drop support for Python 3.5, 3.6 and 3.7.</comment>
+    <requestid>1338099</requestid>
+  </revision>
 </revisionlist>

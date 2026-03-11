@@ -1,7 +1,7 @@
 #
 # spec file for package python-lazr.delegates
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lazr.delegates
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Easily write objects that delegate behavior
 License:        LGPL-3.0-only
 URL:            https://launchpad.net/lazr.delegates
-Source:         https://files.pythonhosted.org/packages/source/l/lazr.delegates/lazr.delegates-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/l/lazr.delegates/lazr_delegates-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -41,7 +41,7 @@ BuildRequires:  %{python_module zope.interface}
 Easily write objects that delegate behavior
 
 %prep
-%setup -q -n lazr.delegates-%{version}
+%setup -q -n lazr_delegates-%{version}
 
 %build
 sed -i "/'nose'/d" setup.py
