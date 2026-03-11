@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Feb 24 18:58:47 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.18.2:
+  * Add NetBSD platform support.
+
+-------------------------------------------------------------------
+Tue Feb 24 18:54:53 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.18.1:
+  * Update dependencies via cargo update
+  * roadmap: note ICMP checksum flow variation limited on switch
+    hardware.
+  * roadmap: add update checker improvements (non-blocking receive,
+    first-run check).
+
+-------------------------------------------------------------------
+Fri Feb 13 18:56:39 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.18.0:
+  Added
+  * ECMP classification — Detects per-flow vs per-packet ECMP
+    using primary concentration heuristics. Paths column now
+    accurately reflects observed responder count for per-packet
+    load balancing (#46)
+  * E indicator — New ECMP indicator in main table replaces
+    misleading ! (route flap) when ECMP is the actual cause
+  * Effective flow capability — Runtime detection of protocol
+    flow support. --flows > 1 with ICMP now warns and collapses
+    to single-flow instead of silently doing nothing
+  * Receiver flow attribution hardening — Out-of-range source
+    ports (NAT/CGNAT) no longer force-attributed to flow 0.
+    Unknown-flow responses only match pending probes when
+    unambiguous.
+  * Hop detail view — Per-packet ECMP section shows responder
+    count and path count; per-flow ECMP section unchanged
+  * Last RTT semantics documented — Last column tracks primary
+    responder's most recent RTT.
+  * Main table layout guard tests — Header/cell/width count
+    parity verified across display mode x flow mode matrix.
+  * IPv6 RAW payload fallback tests — Echo Reply and Time
+    Exceeded parsing tests for IPv6.
+  Changed
+  * Flap detection suppressed during ECMP — ! indicator no longer
+    fires when per-packet ECMP is detected at a hop
+  * Probe engines use per-session config — Each target's engine
+    sees the effective flow count, not the raw CLI value.
+
+-------------------------------------------------------------------
 Thu Feb 12 18:57:21 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.17.0

@@ -15,4 +15,12 @@
     <comment>Forward the current version of ttl to Factory</comment>
     <requestid>1332770</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a85550c518eafd65525ef616a2d49516</srcmd5>
+    <version>0.18.2</version>
+    <time>1773259072</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1338347</requestid>
+  </revision>
 </revisionlist>

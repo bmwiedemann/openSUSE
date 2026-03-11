@@ -3,5 +3,6 @@
   <description>ttl provides a live traceroute interface that can trace multiple targets,
 detect ECMP paths, run PMTUD, export JSON/CSV reports, and optionally
 enrich hop data with DNS, ASN, geolocation, and PeeringDB information.</description>
+  <devel project="network:utilities" package="ttl"/>
   <url>https://github.com/lance0/ttl</url>
 </package>
