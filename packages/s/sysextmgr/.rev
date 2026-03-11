@@ -80,4 +80,20 @@
   * Add stroom() function</comment>
     <requestid>1336563</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>556f5657aef9614b18a1eb474ce58fbc</srcmd5>
+    <version>0.2.1+git20260310.385db9a</version>
+    <time>1773258595</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.2.1+git20260310.385db9a:
+  * Release version 0.2.1
+  * sysextmgrcli cleanup: fix quiet and return code
+  * CI: add docbook5 required packages
+  * Release version 0.2.0
+  * Add sysextmgrcli and sysextmgrd manual pages
+  * sysextmgrcli: fix formating of help output
+  * Add sysextmgr.conf.5 manual page
+  * Update README about manifest and config files</comment>
+    <requestid>1337950</requestid>
+  </revision>
 </revisionlist>

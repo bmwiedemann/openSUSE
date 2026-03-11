@@ -16,18 +16,19 @@
 #
 
 Name:           sysextmgr
-Version:        0.1.0+git20260304.fc915b3
+Version:        0.2.1+git20260310.385db9a
 Release:        0
 Summary:        Tools to manage systemd-sysext images
 License:        GPL-2.0-or-later
 URL:            https://github.com/thkukuk/sysextmgr
 Source:         %{name}-%{version}.tar.xz
+BuildRequires:  docbook5-xsl-stylesheets
+BuildRequires:  libzio-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libeconf)
 BuildRequires:  pkgconfig(libsystemd) >= 257
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  libzio-devel
 Requires:       %{_bindir}/systemd-dissect
 #Requires:       /usr/lib/systemd/systemd-pull
 Requires:       systemd-container >= 257.6
@@ -43,6 +44,7 @@ daemon via varlink.
 %package -n sysextmgr-tukit-plugin
 Summary:        Plugin for tukit to update sysexe images
 Requires:       sysextmgr
+BuildArch:      noarch
 
 %description -n sysextmgr-tukit-plugin
 This package contains a plugin for tukit, so that transactional-update not only updates the packages of the host OS, but also the sysext images.
@@ -85,6 +87,9 @@ echo -e "[default]\nurl=https://download.opensuse.org/tumbleweed/appliances/" > 
 %{_tmpfilesdir}/sysextmgr.conf
 %dir %{_datadir}/sysextmgr
 %{_datadir}/sysextmgr/sysextmgr.conf
+%{_mandir}/man1/sysextmgrcli.1%{?ext_man}
+%{_mandir}/man5/sysextmgr.conf.5%{?ext_man}
+%{_mandir}/man8/sysextmgrd.8%{?ext_man}
 
 %files -n sysextmgr-tukit-plugin
 %dir %{_prefix}/lib/tukit

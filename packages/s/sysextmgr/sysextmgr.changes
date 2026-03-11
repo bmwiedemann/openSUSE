@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 10 09:54:19 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.2.1+git20260310.385db9a:
+  * Release version 0.2.1
+  * sysextmgrcli cleanup: fix quiet and return code
+  * CI: add docbook5 required packages
+  * Release version 0.2.0
+  * Add sysextmgrcli and sysextmgrd manual pages
+  * sysextmgrcli: fix formating of help output
+  * Add sysextmgr.conf.5 manual page
+  * Update README about manifest and config files
+
+-------------------------------------------------------------------
 Wed Mar 04 16:31:50 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.1.0+git20260304.fc915b3:
