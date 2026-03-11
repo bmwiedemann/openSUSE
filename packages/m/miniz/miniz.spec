@@ -19,7 +19,7 @@
 %define sover 3
 %define libpackage lib%{name}%{sover}
 Name:           miniz
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        Single C source file zlib-replacement library
 License:        MIT
