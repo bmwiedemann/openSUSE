@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 10 17:36:54 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.70.0:
+  - Features
+    * feat: Support multiple externals to same target in one .chezmoiexternal file
+    * feat: Add podman as an alias for docker command
+  - Fixes
+    * fix: Adding exact subdir won't add exact parent
+  - Documentation
+    * docs: Clarify that edit --apply command does not apply scripts
+    * docs: Add am package manager installation instructions
+
+-------------------------------------------------------------------
 Fri Feb 13 17:37:06 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.69.4:

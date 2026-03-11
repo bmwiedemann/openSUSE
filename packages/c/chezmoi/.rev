@@ -1129,4 +1129,21 @@
 </comment>
     <requestid>1335493</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>a2e548adcc56dfb0f9af2b4f835819e0</srcmd5>
+    <version>2.70.0</version>
+    <time>1773259081</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.70.0:
+  - Features
+    * feat: Support multiple externals to same target in one .chezmoiexternal file
+    * feat: Add podman as an alias for docker command
+  - Fixes
+    * fix: Adding exact subdir won't add exact parent
+  - Documentation
+    * docs: Clarify that edit --apply command does not apply scripts
+    * docs: Add am package manager installation instructions
+</comment>
+    <requestid>1338363</requestid>
+  </revision>
 </revisionlist>
