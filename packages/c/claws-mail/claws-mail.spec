@@ -1,7 +1,7 @@
 #
 # spec file for package claws-mail
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,24 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%if 0%{?suse_version} >= 1330
-%bcond_without vcalendar
-%else
-%bcond_with    vcalendar
-%endif
-
-%if 0%{?suse_version} >= 1550
-%bcond_with     claws_pilot_link
-%else
-%if 0%{?is_opensuse} && 0%{?sle_version} <= 150300 
-%bcond_without  claws_pilot_link
-%else
-%bcond_with     claws_pilot_link
-%endif
-%endif
 
 Name:           claws-mail
-Version:        4.3.1
+Version:        4.4.0
 Release:        0
 Summary:        A configurable email client
 License:        GPL-3.0-or-later
@@ -45,13 +30,13 @@ BuildRequires:  docbook-utils
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  gmp-devel
-BuildRequires:  pkgconfig(gpgme)
 BuildRequires:  libarchive-devel
 BuildRequires:  libcanberra-devel >= 0.6
 BuildRequires:  libcurl-devel
 BuildRequires:  libetpan-devel >= 1.9.4
 BuildRequires:  libexpat-devel
 BuildRequires:  libgcrypt-devel
+BuildRequires:  libical-devel >= 2.0.0
 BuildRequires:  libpoppler-glib-devel
 BuildRequires:  librsvg-devel >= 2.40.5
 BuildRequires:  openldap2-devel
@@ -63,12 +48,14 @@ BuildRequires:  texlive-latex
 BuildRequires:  texlive-metafont-bin
 BuildRequires:  texlive-wasy
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(ayatana-appindicator3-0.1)
 BuildRequires:  pkgconfig(cairo) >= 1.12
 BuildRequires:  pkgconfig(dbus-1) >= 0.60
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.60
 BuildRequires:  pkgconfig(enchant-2)
-BuildRequires:  pkgconfig(gnutls) >= 2.2
+BuildRequires:  pkgconfig(gnutls) >= 3.4.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gpgme)
 BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(pygobject-3.0)
@@ -91,16 +78,6 @@ Provides:       claws-mail-extra-plugins-lang = %{version}
 %{?libperl_requires}
 BuildRequires:  gtk3-devel
 BuildRequires:  libcanberra-gtk3-devel >= 0.6
-%if %{with vcalendar}
-BuildRequires:  libical-devel >= 2.0.0
-%endif
-%if %{with claws_pilot_link}
-BuildRequires:  pilot-link-devel
-%endif
-%if %{with tnef}
-BuildRequires:  libytnef-devel
-%endif
-# LiteHTML requires Gumbo which is currently shipped only with Tumbleweed
 # libetpan 1.9.2 introduced function mailstream_ssl_set_server_name, which
 # will be used by claws-mail if available
 %if %{pkg_vcmp libetpan-devel >= 1.9.2}
@@ -124,11 +101,11 @@ Requires:       claws-mail = %{version}
 Requires:       enchant-devel
 Requires:       glib2-devel >= 2.50
 Requires:       gnutls-devel
-Requires:       pkgconfig(gpgme)
 Requires:       gtk3-devel
 Requires:       libcanberra-gtk3-devel
 Requires:       libetpan-devel
 Requires:       openldap2-devel
+Requires:       pkgconfig(gpgme)
 Provides:       claws-mail:%{_includedir}/claws-mail/main.h
 # The extra-plugin package was merged with version 3.9.1; as such, also the -devel package merged
 Obsoletes:      claws-mail-extra-plugins-devel < %{version}
@@ -155,11 +132,7 @@ sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/kdeservicemenu/install.sh
         --disable-static \
         --enable-ldap \
         --enable-ipv6 \
-%if %{with claws_pilot_link}
-        --enable-jpilot \
-%else
         --disable-jpilot \
-%endif
         --enable-alternate-addressbook \
         --enable-acpi_notifier-plugin \
         --enable-address_keeper-plugin \
@@ -184,16 +157,8 @@ sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/kdeservicemenu/install.sh
         --enable-smime-plugin \
         --enable-spamassassin-plugin \
         --enable-spam_report-plugin \
-        %if %{with tnef}
-        --enable-tnef_parse-plugin \
-        %else
         --disable-tnef_parse-plugin \
-        %endif
-        %if %{with vcalendar}
         --enable-vcalendar-plugin \
-        %else
-        --disable-vcalendar-plugin \
-        %endif
         --disable-demo-plugin \
         --enable-crash-dialog \
         --enable-startup-notification \

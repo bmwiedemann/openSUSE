@@ -998,4 +998,139 @@ No changes entry, as it's just a correction of the last changes entry.</comment>
     <comment></comment>
     <requestid>1295817</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>0f2e21fe9fee5120385f70e826e2b011</srcmd5>
+    <version>4.4.0</version>
+    <time>1773259416</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.4.0:
+  * Several updates to strings and icons.
+  * The word 'Write' is now used in place of 'Compose'.
+    e.g. 'Write email'; 'Write' preferences page, etc. 
+  * Hide Message List's horizontal scrollbar by default if not
+    using GENERIC_UMPC.
+  * Added a new hidden preference, 'mainwin_toolbar_always_enable_actions',
+    (turned off by default). Activating this option means that toolbar
+    items bound to user Actions (in the main window) will be active even
+    when no messages are selected.
+  * Navigation using the numpad arrow keys is now possible.
+  * A new Colour preference has been added: 'Messages marked for moving
+    or deletion'. This is used when 'execute immediately' is switched off.
+  * Compose window: When re-editing a drafted message, the user will now
+    be prompted to save any changes made to the message headers.
+  * Compose window: when the contents of a header field are cleared, the
+    Clear button becomes a Delete button, enabling the now empty row to
+    be removed completely.
+  * Folder properties: two new options to handle HTML content have been
+    added to the General page:
+    'Render HTML messages as text' and 'Render HTML messages with plugin
+    if possible'.
+  * Folder properties: a new option, 'Show tags' has been added. This
+    controls whether any message tags are displayed at the top of the
+    Message View.
+  * SpamAssassin: updated third-party code to 4.0.1.
+  * Mail Archiver: added support for Zstandard compression (zstd)
+    (libarchive &gt;= 3.4.0 required).
+  * RSSyl: the default User-Agent string has been changed to 
+    ClawsMailRSSyl/$VERSION ($URL); this can be changed in the plugin's
+    preferences, and can be further set on a per-feed basis on the
+    'Feed properties' page.
+  * RSSyl: added a preference so that feeds configured for manual
+    updates only are not updated when refreshing all feeds (recursively
+    by the context menu, timer or at start-up, if enabled).
+  * RSSyl: store and send ETag and Last-Modified headers.
+  * RSSyl: postpone auto-updates if the server sends a Retry-After:
+    header. A successful manual update clears the Retry-After value.
+  * PGP: display a specific message, (&quot;This key is not in your
+    keyring&quot;) in the NoticeView area when a key is not in the keyring.
+  * PGP: added an option to automatically locate missing keys when
+    sending encrypted messages.
+  * PGP: a missing key can now optionally be retrieved by clicking the
+    NoticeView icon.
+  * PGP: added a 'Search for PGP key' context menu item to email
+    addresses in the Message View.
+  * Notification: Ayatana indicator can now be configured to limit
+    notifications to certain folders only.
+  * Notification: added 'Open address book' entry to Ayatana indicator's
+    tray menu.
+  * Configuration is now stored in a dedicated file: oauth2rc, located
+    in the configuration directory. This file allows a user to
+    accommodate an API change by a service provider, or to add a completely
+    new Oauth2-based email provider of their choice. Setting protected=1
+    within an edited or bespoke block protects it from being overwritten
+    by a new version of Claws Mail.
+  * GnuTLS &gt;= 3.4.0 is now the minimum requirement.
+  * libetpan &gt;= 1.9.4 is now the minimum requirement.
+  * dbus-glib support has been migrated to GDBus (GIO) &gt;= 2.26
+    and D-Bus (&gt;= 0.60).
+  * The summary of the configure output has been completed.
+  * A new hidden preference has been added: &quot;show_contact_pic&quot;.
+    When viewing a message, if the sender is in your address book and
+    you have saved a picture for the contact there, this option will
+    display that picture unless the Header Pane is displayed or you
+    have chosen not to display (X-)Face or &quot;enable_avatars&quot; is set to
+    '0'. 
+    If you have a large address book it is recommended that you leave
+    this option turned off to avoid delays in displaying messages.
+  * The wizard now uses secure defaults.
+  * Various code cleanups, fixes, and enhancements.
+  * The English, French and Spanish manuals have been updated.
+  * Updated translations: British English, Catalan, Czech, Dutch, French,
+    German, Romanian, Slovak, Spanish, Swedish, Turkish.
+  * bug fixes:
+    * bug 4498, 'About window resizing issues'
+    * bug 4586, 'PDF Viewer view breaks in Three Column layout'
+    * bug 4764, 'Wrapped UTF8 encoded subject line displayed with
+      nonexistent quotation marks'
+    * bug 4834, 'Long email addresses in vCalendar invites cause
+      the attachments bar on the right side to be hidden
+      until restart'
+    * bug 4841, 'qutoted-printable encoding breaks text/html file
+      with extraordinarily long lines, base64 does not'
+    * bug 4846, 'Preferences-&gt; Toolbars: always show icon preview
+      on button'
+    * bug 4848, 'The new ayatana tray icon displays no icon when
+      there are new messages'
+    * bug 4850, 'Show error dialog on receive error translation'
+    * bug 4852, 'Cancel messages contain Approved-header'
+    * bug 4854, 'auto-wrapping off not respected when using
+      external editor'
+    * bug 4856, 'Build fails with gettext 0.24'
+    * bug 4863, 'Account Preferences Minor UI inconsistency'
+    * bug 4882, 'IMAP can not use client certificate with
+      passphrase'
+    * bug 4887, 'Dillo processes are not killed when an HTML
+      message is no longer being viewed'
+    * bug 4893, 'Clamd plugin not checking any mail'
+    * bug 4897, ''small screen' view: crash when exiting view
+      message list after deleting all messages/mails
+      in folder.'
+    * bug 4898, 'When entering folder message list is not
+      scrolling to selected message'
+    * bug 4902, 'memory leak in the spam_report plug-in'
+    * bug 4930, 'remove duplicate signature flag from MimeView'
+    * bug 4931, 'avoid memory leak in summary_set_header'
+    * fix bug where viewing msgs in the separate msg view are not
+      marked as read when the msgview panel is hidden
+    * litehtml plugin build failure on Windows
+    * 'Save email as...' from the separate message view would save
+      whatever was selected in the summaryview rather than what was
+      open in the message view.
+    * when message view is closed
+      1. select a msg;
+      2. hit [v] (key),
+      3. open the mime structure list
+      4. select a part in the structure tree
+      5. hit [v] --[crash]--
+    * fix header pane bug whereby a very long header value would
+      push the mime icons panel out of the visible area.
+    * do not attempt to delete a tag from list when the edit tag
+      entry has focus.
+- Drop conditional build options for dropped libraries:
+  pilot_link and libytnef
+- Enable vcalendar plugin default
+- Update BuildRequires
+- Add BuildRequires pkgconfig(ayatana-appindicator3-0.1)</comment>
+    <requestid>1338381</requestid>
+  </revision>
 </revisionlist>
