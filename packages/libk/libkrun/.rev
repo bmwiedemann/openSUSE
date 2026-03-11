@@ -226,4 +226,287 @@
 </comment>
     <requestid>1305836</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>25859b707ca56f7057cb41c8e1ae2c24</srcmd5>
+    <version>1.17.4</version>
+    <time>1773258720</time>
+    <user>anag_factory</user>
+    <comment>- Jump from 1.15.1 to 1.17.4
+- Fix broken dependencies with libkrunfw (sub)packages
+- Update to version 1.17.4:
+  * libkrun, fs: Restrict the usage of REMOVE_ROOT_DIR_REQ ioctl
+  * virtio/fs/macos: fix buffer size on setxattr
+  * virtio/fs/macos: improve [set|get]_attr_stat
+  * virtio/fs/macos: optimize set_xattr_stat
+  * virtio/fs/macos: optimize lstat and fstat
+  * virtio/fs/macos: merge InodeHandle and StatFile
+  * virtio/fs: implement KILLPRIV_V2 support
+  * ci: install libcap-ng-dev on Linux runners
+  * virtio/fs: don't announce HANDLE_KILLPRIV
+  * ci: remove publish prebuilt job
+  * virtio/fs/macos: duplicate fd for fdopendir
+  * virtio/fs/macos: check error before unlinked_fd
+  * vsock/tsi: fix listen backlog &gt; SOMAXCONN fails with EINVAL
+  * libkrun: converts BSD sockaddr to Linux wire format
+  * vsock/tsi: lower EventSet::OUT error to debug
+  * vsock/tsi: use EDGE_TRIGGERED on EventSet::OUT
+- Update to version 1.17.3
+  * aws-nitro: Relax dependencies for packaging
+  * virtio/fs/macos: keep a fd to unlinked files
+  * lib: Introduce krun_has_feature() API
+  * test: fix macos::eventfd::tests
+  * libkrun: reject HIJACK_UNIX on macOS
+- Update to version 1.17.2:
+  * nitro: Forward return code from application
+  * awsnitro: Deny writing /krun-awsnitro directory
+  * init/nitro: Create system directories before mount
+  * nitro: Refactor rootfs archiving
+  * aws-nitro: Rename modules to aws-nitro
+  * nitro: Reformat comments
+  * virtio/console: cols/rows order match the specs
+  * nitro: Return 0 bytes written on signal proxy err
+  * nitro: Calculate vsock buffers on proxy basis
+  * nitro: Remove aliasing of error types
+  * nitro: Create constants for EIF path strings
+  * init/nitro: Reorganize and document module
+  * nitro: Write close signal to app return code vsock
+  * init/nitro: Close vsock device before error check
+  * nitro: Document code with comments
+  * nitro: Rename device, devices modules
+  * nitro: Rename device start method to run
+  * nitro: Rename enclave_arg method to arg
+  * nitro: Remove vsock port offset proxy method
+  * nitro: Extract shared behavior in device proxies
+  * nitro: Add error logging for proxy threads
+  * nitro: Block signals while creating enclave VM
+  * nitro: Overhaul error return implementation
+  * nitro: Allow u64 rootfs buffer sizes
+  * krun-sys: update bindgen dependency to v0.72.1
+  * init/nitro: Fix error from git rebase
+  * nitro: Add signal handler device
+  * init/nitro: Modularize device proxies
+  * nitro: Add shutdown return code reader
+  * init/nitro: Set default app output vsock to zero
+  * nitro: Return error if unable to read cached EIF
+  * nitro: Reorganize module
+  * nitro: Start all device proxy threads from list
+  * nitro: Add to enclave args from device list
+  * nitro: Collect device proxies in one list
+  * nitro: Move all enclave devices under one module
+  * nitro: Introduce CID-specific vsock ports
+  * init/nitro: Fetch enclave CID
+  * nitro: Add SPDX license header
+  * init/nitro: Change IP address of TAP device
+  * nitro/net: Continue proxy on failed write
+  * examples/nitro: Format
+  * examples/nitro: Forward all ports in passt
+  * ci: switch to krun homebrew tap
+- Update to version 1.17.0:
+  * devices/vsock: change log::warn! to info! for proxy removal msgs
+  * libkrun, vsock: Add explicit vsock configuration API
+  * Fix external kernel memory region calculation
+  * Fix fw write for ExternalKernel payload on aarch64
+  * nitro: Add metadata directory to rootfs denylist
+  * nitro: Modify default location for krun-nitro EIF
+  * init/nitro: Avoid rebooting on application exit
+  * init/nitro: Close app output vsock when exiting
+  * init/nitro: Don't redirect stdin to vsock
+  * examples/nitro: Add flag for debug output
+  * nitro: Add debug enclave argument
+  * examples/nitro: Set exec path based on argv
+  * examples/nitro: Remove start flags API
+  * nitro: Remove API to set EIF path
+  * nitro: Add proxy for enclave output
+  * nitro: Return error code on krun_start_enter
+  * nitro: Spawn thread for network proxy
+  * nitro/net: Signal passt free on guest shutdown
+  * init/nitro: Add shutdown FD for net proxy dealloc
+  * nitro/net: End vsock listener when socket closed
+  * nitro: Add network proxy as optional argument
+  * init/nitro: Add reader for parsing enclave args
+  * nitro: Add writer for enclave arguments
+  * nitro: Define separate module for network proxy
+  * init: fix syntax in switch/case statement
+  * README: Minor wording fix
+  * nitro: improve console support
+  * nitro: Remove fork crate in favor of libc::fork
+  * nitro: Remove cached EIF file within src directory
+  * init/nitro: Add enclave networking with TAP/passt
+  * nitro: Change heartbeat vsock CID, rename enclave vsock constants
+  * nitro: Copy network builder to enclave object
+  * examples/nitro: Add optional network enabling arg
+  * nitro: Apply clippy suggestion
+  * krun_display, krun_input: Use CargoCallbacks to emit rerun-if-changed
+  * krun-sys: Bump version to 1.11.1
+  * krun-sys: Use CargoCallbacks to emit rerun-if-changed
+  * libkrun_display.h: Fix incorect include guard
+  * ci: publish aarch64 package with prebuilt init
+  * ci/integration-tests: always use latest libkrunfw
+  * ci: run aarch64 integration tests on self-hosted
+  * ci: run aarch64 unit tests on self-hosted runner
+  * vmm|devices: clean up warnings on unit tests
+  * utils: gate rand behind x86_64 conditional
+  * arch/aarch64: cap dram size to DRAM_MEM_MAX_SIZE
+  * vmm: update aarch64 tests
+  * vmm: use KvmGicV3 on aarch64 tests
+  * arch/aarch64: fix tests using arch_memory_regions
+  * vmm/amdsnp: Import SEV-SNP launch module
+  * vmm/amdsnp: Move module to own directory
+  * include: add `krun_add_disk3` API
+  * devices/virtio_gpu: retry rutabaga initialization
+  * rutabaga: allow retrying virgl initialization
+  * devices/vcpu/hvf: deal with CNTHCTL_EL2 properly
+  * hvf: forward read/write ops on MDCCINT_EL1
+  * examples/boot_efi: use an explicit firmware
+  * devices/net/worker: drop unused read_count
+  * vmm/builder: replace is_some with if let Some
+  * rutabaga: drop unneeded import
+  * builder: set raw mode for ttys on serial devices
+  * device_manager/aarch64: register intc on serial
+  * fdt/aarch64: add an stdout-path entry
+  * fdt/aarch64: fix serial irq line on macOS
+  * Add support for readonly FLAT/ZERO VMDK format
+  * arch/aarch64: only write SMBIOS with a firmware
+  * arch/aarch64: use different RAM start addresses
+  * arch/aarch64: add fdt_addr to ArchMemoryInfo
+  * arch: remove deprectated methods
+  * builder: check that kernel fits in memory
+  * virtio/block: implement support for F_WRITE_ZEROES
+  * virtio/block: implement support for F_DISCARD
+  * virtio/block: wrap disk_image in a Mutex
+  * virtio/block: extend VirtioBlkConfig
+  * devices: bump imago crate to 0.1.6
+  * examples: Fix obsolete comment
+  * README.md: document build and installation steps of macOS generic variant
+  * Makefile: cross-compile init.c on macOS with clang, lld and an auto-generated sysroot
+  * .gitignore: add missing examples/rootfs_fedora directory
+  * README: add requiried optional features for chroot_vm
+  * README: fix the rootfs path in required `LD_LIBRARY_PATH` case
+  * vmm: linux: Do not use guest_memfd outside of TEE builds (fixes #478)
+  * tests: Run all test at TRACE log level
+  * CI: Generate test summary Markdown and upload test logs
+  * tests: Add --github-summary to generate formatted markdown file
+  * tests: Make runner output pretty, tabulated, visible when test hangs
+  * tests: Save the log of each test into a file instead of printing it
+  * tests: Crate all test dirs under a single temp dir
+  * `make test`: Add the ability to pick which test to ran via var
+  * examples: remove external_kernel
+  * init: set MS_SHARED for the root mount
+  * nitro: Return error message if no rootfs dirname
+  * init/nitro: Reflect archive error already &lt; 0
+  * init/nitro: Avoid measuring /etc/{hostname, hosts}
+  * init/nitro: Measure rootfs in archive extraction
+  * init/nitro: Document module with comments
+  * init/nitro: Read vsock data length as u32
+  * init/nitro: Don't restore timestamps from rootfs
+  * init/nitro: Improve error handling
+  * init/nitro: Move hypervisor vsock signal definition
+  * init/nitro: Free entire vsock string list on error
+  * init/nitro: Define const cgroup variables with macros
+  * init/nitro: Simplify file system init files
+  * Makefile: Add target for nitro init
+  * init/nitro: Fix typo
+  * init/nitro: clang-format
+  * init/nitro: Free vsock FD from main function
+  * init/nitro: Measure rootfs and exec with NSM PCRs
+  * nitro: Use cached EIF file if none configured
+  * nitro: Specify execution path and arguments
+  * init/nitro: Initialize enclave filesystem, cgroups
+  * nitro: Write rootfs tar archive to enclave
+  * nitro: Refactor, separate different functions
+  * nitro: Add configurable rootfs for enclaves
+  * examples/nitro: Specify vCPUs and RAM for enclave
+  * init: Define specific initramfs for nitro enclaves
+  * arch/x86_64: fix firmware region offset
+  * devices/x86_64: add cmos legacy device
+  * arch/x86_64: add ram info to ArchMemoryInfo
+  * examples: Add a multiport virtio console example
+  * tests: Add a simple test for custom multiport virtio console config
+  * Introduce explict APIs for adding custom multiport virtio consoles
+  * devices/console: Remove assert that first port is a console
+  * vmm: Refactor console port autoconfiguration into separate function
+  * vmm: Seperate config structs for virito and serial consoles
+  * virtio-console, builder: Attach terminal information to each port
+  * Fix behavior of krun_add_virtio_console_default
+  * console: Flatten PortDescription enum into struct
+  * gtk_display: Fix keyboard focus not being grabbed
+  * Port idmap mounts to virtiofs
+  * .gitignore: Add missing example binaries
+  * Creat DummyIrqChips GICDevice and AIADevice
+  * krun_input: Fix clippy warnings
+  * add nix crate feature fs
+  * replace hard coded dependency on gcc fix: #433 Signed-off-by: Pepper Gray &lt;hello@peppergray.xyz&gt;
+  * vmm/external_kernel: derive default
+  * doc: virtio-fs disk exhaustion risk in readme
+  * README: add a &quot;Security model&quot; section
+  * README: extend networking documentation
+  * libkrun: bump libkrunfw to 5.x.x
+  * devices/vsock/tsi: fix parse_address on macOS
+  * devices/vsock: remove log message duplicities
+  * devices/vsock: refactor UdpProxy as TsiDgramProxy
+  * devices/vsock: refactor TcpProxy as TsiStreamProxy
+  * devices/vsock: selectively enable AF_UNIX in TSI
+  * devices/vsock: always reply to TSI control messages
+  * devices/vsock: make TSI enablement explicit
+  * vsock/tsi: add support for AF_INET6 and AF_UNIX
+  * vsock/tsi: generalize socket addresses
+  * readme: add minimum supported macOS version
+  * ci: fix unix_tests.yml
+- Update to version 1.16.0
+  * virtio-block: enable relaxed sync by default on macOS
+  * cargo: bump imago to 0.1.5
+  * libkrun: only create shutdown_efd on macOS
+  * init: allow running the user-provided init as pid 1 (fix #223)
+  * CI: Enable `input` option when checking
+  * examples/gui_vm, gtk_display: Add support for input (keyboard+touch)
+  * utils/pollable_channel: Make receiver clonable
+  * utils/pollable_channel: Add send_many method
+  * devices, libkrun: Introduce krun_add_input_device_fd
+  * devices, lib: Introduce krun_add_input_device (virtio-input)
+  * utils/pollable_channel: Add the ability to obtain BorrowedFd to rx
+  * utils/pollable_channel: Fix incorrect order of msgs when recieved
+  * devices/rng: remove leftover file
+  * vmm: fall back to GICv2 if GICv3 is not supported
+  * devices/legacy: add support for KVM GICv2
+  * tests: Fix clippy warning
+  * tests: Fix formatting (cargo fmt)
+  * CI/integration-tests: Add clippy checks for integration tests
+  * Makefile: Split test target into test-prefix and test
+  * CI/code-quality: Check gui_vm/gtk_display example
+  * CI/formatting: Check tests and Rust examples
+  * CI/code-quality: Check if our Cargo.lock files are up-to-date
+  * CI: Refactor CI, drop `actions-rs/toolchain@v1`
+  * examples/gui_vm: Fix compilation (wrong variable name)
+  * examples: Fix clippy warnings
+  * examples: Commit missing updates to Cargo.lock
+  * x86_64: support booting from a firmware
+  * arch/x86_64: move layout consts to the right place
+  * libkrun: introduce krun_set_firmware
+  * arch64: unify generic and EFI behavior
+  * ci: create a fake init on darwin too
+  * vmm: implement a firmware configuration object
+  * vmm: rename boot_source to kernel_cmdline
+  * Bump kbs-types to 0.13.0
+  * clippy: use is_multiple_of()
+  * vmm: update resources and device_manager tests
+  * vmm: include: add new default console API
+  * vmm: include: add `krun_set_kernel_console` API
+  * vmm: include: add new `krun_disable_implicit_console` API
+  * rutabaga_gfx: do not try to RW map write-sealed memfds from host Wayland compositor
+  * rutabaga_gfx: match CROSS_DOMAIN_MAX_IDENTIFIERS with what clients use
+  * libkrun: inline format arguments
+  * rutabaga: switch to zerocopy 0.8.26
+  * devices: switch to zerocopy 0.8.26
+  * rutabaga: switch to nix 0.30.1
+  * devices: switch to thiserror 2.x
+  * nitro: switch to nix 0.30.1
+  * devices: switch to nix 0.30.1
+  * utils/eventfd/macos: use nix instead of libc
+  * vmm: switch to nix 0.30.1
+  * devices: switch to rand 0.9.2
+  * vmm: remove obsolete SEV deps
+  * krun_display: Fix clippy warning
+  * Implement krun_get_max_vcpus function for both macOS and Linux</comment>
+    <requestid>1338230</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libkrun
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ complexity that comes from Virtual Machine management, offering users a simple C
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           libkrun
-Version:        1.15.1
+Version:        1.17.4
 Release:        0
 Summary:        A dynamic library providing KVM-based process isolation capabilities
 License:        Apache-2.0
@@ -45,6 +45,7 @@ BuildRequires:  cargo >= 1.43.0
 BuildRequires:  clang-devel
 BuildRequires:  gcc
 BuildRequires:  glibc-static
+BuildRequires:  libcap-ng-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libdrm-devel
 BuildRequires:  libepoxy-devel
@@ -52,26 +53,24 @@ BuildRequires:  libopenssl-devel
 BuildRequires:  openssl-devel
 BuildRequires:  patchelf
 BuildRequires:  pipewire-devel
+BuildRequires:  pipewire-devel
 BuildRequires:  rust
 BuildRequires:  virglrenderer-devel
-#%if %{sev}
-#BuildRequires:  libkrunfw-sev-devel >= 4.0.0
-#%endif
 %ifarch aarch64
 BuildRequires:  libfdt-devel >= 1.6.0
 %endif
-# Starting 1.11.0, libkrunfw is no longer build-time linked.
-Requires:       libkrunfw-devel >= 4.0.0
-# For handling the transition from (very) old versions of the packages
-Conflicts:      libkrun-devel <= 0.1.7
-Conflicts:      libkrun0 <= 0.1.7
 
 %description
 %{summary}
 
 %package -n %{name}1
 Summary:        A dynamic library providing KVM-based process isolation capabilities
+# Starting 1.11.0, libkrunfw is no longer build-time linked.
+Requires:       libkrunfw5
 Obsoletes:      libkrun <= 1.4.1
+# For handling the transition from old versions of the packages (can probably be removed...)
+Conflicts:      libkrun-devel <= 0.1.7
+Conflicts:      libkrun0 <= 0.1.7
 
 %description -n %{name}1
 %{descr}
@@ -79,6 +78,7 @@ Obsoletes:      libkrun <= 1.4.1
 %package devel
 Summary:        Header files and libraries for libkrun development
 Requires:       %{name}1 = %{version}-%{release}
+Provides:       %{name}:%{_libdir}/libkrun.so
 
 %description devel
 %{descr}
@@ -89,7 +89,8 @@ that use libkrun Virtualization-based process isolation capabilities.
 %if %{sev}
 %package sev1
 Summary:        Dynamic library providing Virtualization-based process isolation capabilities (SEV variant)
-Obsoletes:      libkrun <= 1.4.1
+Requires:       libkrunfw-sev5
+Obsoletes:      libkrun-sev <= 1.4.1
 
 %description sev1
 %{descr}
@@ -102,7 +103,6 @@ Summary:        Header files and libraries for libkrun development
 Requires:       %{name}-devel = %{version}-%{release}
 Requires:       %{name}-sev1 = %{version}-%{release}
 Provides:       %{name}:%{_libdir}/libkrun-sev.so
-Obsoletes:      %{name} < %{version}
 
 %description sev-devel
 %{descr}
@@ -143,6 +143,7 @@ export RUSTFLAGS=%{rustflags}
 %{_libdir}/pkgconfig/libkrun.pc
 %{_includedir}/libkrun.h
 %{_includedir}/libkrun_display.h
+%{_includedir}/libkrun_input.h
 
 %post -n %{name}1 -p /sbin/ldconfig
 
