@@ -252,4 +252,19 @@
     <comment></comment>
     <requestid>1304343</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7f57a3b5d52f1978fd26fbcfa1ab4595</srcmd5>
+    <version>0.14.0</version>
+    <time>1773258590</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.14.0:
+  * Drop support for Python older than 3.9. Remove 3.8 from the
+    CI matrix.
+  * Custom encoders can now receive `_parent` and `_sort_keys`
+    parameters to enable proper encoding of nested structures.
+  * Add `String.type` property to get the string type.
+  * Fixed `tomlkit.boolean()` API to correctly handle boolean
+    inputs.</comment>
+    <requestid>1337914</requestid>
+  </revision>
 </revisionlist>
