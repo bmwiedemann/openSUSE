@@ -262,4 +262,17 @@
 </comment>
     <requestid>1244022</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>549401d09d4e4387b03657dddef7cf62</srcmd5>
+    <version>1.460.0</version>
+    <time>1773258747</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.460.0 (1.46)
+   see /usr/share/doc/packages/perl-Curses/ChangeLog
+  New in 1.46 (Released February 27, 2026)
+    Add BUTTON5 constants: BUTTON5_RELEASED, BUTTON5_PRESSED, BUTTON5_CLICKED,
+    BUTTON5_DOUBLE_CLICKED, and BUTTON5_TRIPLE_CLICKED.  Thanks
+    Peder Stray &lt;peder.stray@gmail.com&gt;</comment>
+    <requestid>1338068</requestid>
+  </revision>
 </revisionlist>

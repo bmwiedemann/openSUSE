@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Curses
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name Curses
 Name:           perl-Curses
-Version:        1.450.0
+Version:        1.460.0
 Release:        0
-# 1.45 -> normalize -> 1.450.0
-%define cpan_version 1.45
+# 1.46 -> normalize -> 1.460.0
+%define cpan_version 1.46
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Terminal screen handling and optimization
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/G/GI/GIRAFFED/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 Provides:       perl(Curses) = %{version}
@@ -52,7 +53,7 @@ document describes the interface itself, and assumes that you already know
 how your system's curses(3) library works.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb 28 05:52:41 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.460.0 (1.46)
+   see /usr/share/doc/packages/perl-Curses/ChangeLog
+
+  New in 1.46 (Released February 27, 2026)
+
+    Add BUTTON5 constants: BUTTON5_RELEASED, BUTTON5_PRESSED, BUTTON5_CLICKED,
+    BUTTON5_DOUBLE_CLICKED, and BUTTON5_TRIPLE_CLICKED.  Thanks
+    Peder Stray <peder.stray@gmail.com>
+
+-------------------------------------------------------------------
 Thu Feb  6 22:48:52 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Fix build by depending on ncurses-devel instead of ncurses5-devel
