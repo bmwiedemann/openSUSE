@@ -18,10 +18,10 @@
 
 %define cpan_name Test-Future-IO-Impl
 Name:           perl-Test-Future-IO-Impl
-Version:        0.170.0
+Version:        0.200.0
 Release:        0
-# 0.17 -> normalize -> 0.170.0
-%define cpan_version 0.17
+# 0.20 -> normalize -> 0.200.0
+%define cpan_version 0.20
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Acceptance tests for Future::IO implementations
 URL:            https://metacpan.org/release/%{cpan_name}

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Feb 28 05:55:13 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.200.0 (0.20)
+   see /usr/share/doc/packages/perl-Test-Future-IO-Impl/Changes
+
+  0.20    2026-02-27
+          [BUGFIXES]
+           * Improved testing around `POLLHUP`-related tests
+  0.19    2026-02-11
+          [BUGFIXES]
+           * Don't expect exactly `POLLERR` for the hangup-out test case, as
+             OSes differ in exact behaviour here
+  0.18    2026-02-09
+          [CHANGES]
+           * Additionally tests that `->poll(POLLIN)` doesn't accidentally fire
+             on POLLOUT-only handle
+          [BUGFIXES]
+           * Improvements to `connect` tests that might reduce false negatives
+             on Windows and other platforms
+
+-------------------------------------------------------------------
 Mon Jan 19 05:55:10 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.170.0 (0.17)

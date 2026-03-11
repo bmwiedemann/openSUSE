@@ -47,4 +47,27 @@
              to stop perl writing annoying warnings during test</comment>
     <requestid>1331903</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d1de03f5f9080babdaf48e626be61afa</srcmd5>
+    <version>0.200.0</version>
+    <time>1773258736</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.200.0 (0.20)
+   see /usr/share/doc/packages/perl-Test-Future-IO-Impl/Changes
+  0.20    2026-02-27
+          [BUGFIXES]
+           * Improved testing around `POLLHUP`-related tests
+  0.19    2026-02-11
+          [BUGFIXES]
+           * Don't expect exactly `POLLERR` for the hangup-out test case, as
+             OSes differ in exact behaviour here
+  0.18    2026-02-09
+          [CHANGES]
+           * Additionally tests that `-&gt;poll(POLLIN)` doesn't accidentally fire
+             on POLLOUT-only handle
+          [BUGFIXES]
+           * Improvements to `connect` tests that might reduce false negatives
+             on Windows and other platforms</comment>
+    <requestid>1338050</requestid>
+  </revision>
 </revisionlist>
