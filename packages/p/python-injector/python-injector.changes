@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 10 21:43:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.24.0:
+  * Fixed a regression with Python 3.13 where annotated types
+    might not have the `__metadata__` attribute. Thanks to Kamyar
+    Ghajar.
+  * More flexible covariant types for multibinds.
+  * Allow injecting Annotated types into classes, thanks to Filip
+    Nešťák.
+  * Fixed Annotated type support in `@provider` methods, thanks
+    to Satwik Agrawal.
+  * `multibind()` now accepts types and providers, not just
+    instances. Thanks to Eiríkur Torfason.
+
+-------------------------------------------------------------------
 Fri Feb  7 12:10:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Switch package to modern Python Stack on SLE-15

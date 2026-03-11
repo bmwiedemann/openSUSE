@@ -171,4 +171,22 @@
     <comment></comment>
     <requestid>1244148</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f17a75b557901a7c3159e2457c38761b</srcmd5>
+    <version>0.24.0</version>
+    <time>1773258778</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.24.0:
+  * Fixed a regression with Python 3.13 where annotated types
+    might not have the `__metadata__` attribute. Thanks to Kamyar
+    Ghajar.
+  * More flexible covariant types for multibinds.
+  * Allow injecting Annotated types into classes, thanks to Filip
+    Nešťák.
+  * Fixed Annotated type support in `@provider` methods, thanks
+    to Satwik Agrawal.
+  * `multibind()` now accepts types and providers, not just
+    instances. Thanks to Eiríkur Torfason.</comment>
+    <requestid>1338098</requestid>
+  </revision>
 </revisionlist>
