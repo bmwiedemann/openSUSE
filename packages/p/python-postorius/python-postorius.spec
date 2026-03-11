@@ -285,6 +285,7 @@ fi
 %attr(-,root,postorius) %{postorius_basedir}/wsgi.py
 
 %attr(-,root,postorius) %dir %{postorius_basedir}/static
+%attr(-,root,postorius) %{postorius_basedir}/static/account
 %attr(-,root,postorius) %{postorius_basedir}/static/admin
 %attr(-,root,postorius) %{postorius_basedir}/static/django-mailman3
 %attr(-,root,postorius) %{postorius_basedir}/static/postorius
