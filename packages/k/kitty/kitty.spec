@@ -1,7 +1,7 @@
 #
 # spec file for package kitty
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # sphinx_copybutton not in Factory
 %bcond_with docs
 Name:           kitty
-Version:        0.45.0
+Version:        0.46.0
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only
@@ -36,10 +36,10 @@ BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
 ### Avoiding any 'have choice for go' issues ...
-#BuildRequires:  go >= 1.24
+BuildRequires:  go >= 1.26
 #####
-### Temporarily disabled until go1.2# (1.24?) is default
-BuildRequires:  golang-packaging
+### Disabled until go1.2# (1.26) is default
+#BuildRequires:  golang-packaging
 #####
 BuildRequires:  harfbuzz-devel >= 1.5.0
 BuildRequires:  libXcursor-devel

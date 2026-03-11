@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Wed Mar 11 15:20:04 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.46.0:
+  * Pixel scrolling for the kitty scrollback buffer controlled via
+    pixel_scroll (#9330)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.pixel_scroll
+  * Linux: momentum scrolling in the kitty scrollback buffer for touchpads
+    and touchscreens, see momentum_scroll
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.momentum_scroll
+  * X11: support high resolution scroll events from touchpads, etc
+  * macOS: Implement support for Apple dictation to input text in kitty (#3732)
+  * Allow dragging tabs in the tab bar to re-order, move to another OS Window
+    or detach (#9296)
+  * Allow dragging window borders to resize kitty windows in all the different
+    layouts, controlled by window_drag_tolerance (#9447)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.window_drag_tolerance
+  * Allow showing configurable window titles for individual kitty windows via
+    a window title bar (#9450)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.window_title_bar
+  * A command palette to browse and trigger all mapped and unmapped
+    actions (#9545)
+  * choose-files kitten: Fix JXL image preview not working (#9323)
+  * Fix tab bar rendering glitches when using tab_bar_filter in some
+    circumstances (#9328)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.tab_bar_filter
+  * Add support for specifying colors in kitty.conf in OKLCH and LAB color
+    spaces (#9325)
+  * Fix a regression that broke using line numbers with the edit-in-kitty
+    command (#9346)
+  * Key maps: Allow specifying a timeout for multi key mappings and keyboard
+    modes (#9551)
+  * macOS: Fix changes to macos_titlebar_color while in full screen not being
+    applied after exiting fullscreen (#9350)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.macos_titlebar_color
+  * ncurses: Fix ncurses not using dim because it is missing from the sgr
+    property in terminfo even though it is present in the dim property.
+  * Fix a regression in the previous release that caused moving between
+    neighbors in the vertical and horizontal layouts to go in the opposite
+    direction (#9355)
+  * Fix goto_session not respecting the focus_tab session directive when
+    creating a session in an existing OS window (#9366)
+    - https://sw.kovidgoyal.net/kitty/actions/#action-goto_session
+  * Wayland: Fix a regression in the previous release that caused doubled key
+    repeats on compositors that implement compositor side key repeat
+    events (#9374)
+  * icat: Fix a regression in the previous release when rendering GIF
+    animations with frames that dispose onto background with non-zero delay
+    using the native engine (#9376)
+  * Wayland: Remove usage of the Wayland color management protocol to inform
+    compositors of the color space used by kitty (#9341)
+  * Linux: Fix a regression in 0.40 that caused horizontal alignment for emoji
+    to be incorrect in some cases (#9395)
+  * icat kitten: When catting multiple images display the images in input
+    order (#9413)
+  * kitten @: Fix relative paths for --password-file being resolved relative
+    to CWD instead of the kitty config directory
+  * kitten choose-files: Add a new binding of Alt+Enter to modify the name of
+    an existing file when choosing a save file name (#9387)
+  * kitten choose-files: Fix TAB completion in the choose save file name
+    prompt not working with respect to the current working directory (#9387)
+  * Fix line-at-once selection not extending wrapped lines into
+    scrollback (#9437)
+  * ssh kitten: Restore keyboard mode even if the ssh connection drops
+  * edit-in-kitty: Handle connection drop more gracefully (#9480)
+  * macOS: Fix changing window title with global menubar menu open causes
+    menu to get stuck (#9490)
+  * Fix focus_follows_mouse not working during a drag and drop (#9497)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.focus_follows_mouse
+  * goto_session: Add a --active-only option to select from only active
+    sessions (#9503)
+    - https://sw.kovidgoyal.net/kitty/actions/#action-goto_session
+  * Shell integration: Allow sending click events to shells using
+    y co-ordinates relative to prompts (#9500)
+  * A new action copy_selection_or_last_command_output (#9512)
+    - https://sw.kovidgoyal.net/kitty/actions/#action-copy_selection_or_last_command_output
+  * Wayland: Add support for the background blur extension (#9534)
+  * macOS: A new option macos_dock_badge_on_bell to show a badge on the kitty
+    dock icon when a bell occurs (#9529)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.macos_dock_badge_on_bell
+  * macOS: Workaround for yet another Tahoe bug causing rendering to
+    fail (#9520)
+  * URL detection: Allow trailing asterisks in URLs (#9543)
+  * Wayland: Add support for titlebar-only in hide_window_decorations to hide
+    the titlebar while keeping shadows for window resizing. (#9486)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.hide_window_decorations
+  * Text sizing protocol: Fix alignment/cropping issues when rendering text
+    with a fractional scale (#9471)
+  * macOS: Fix a crash when using macos_traditional_fullscreen with split
+    view (#9573)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.macos_traditional_fullscreen
+  * macOS: Fix flickering during OS Window resize (#9582)
+  * Cursor trail: Show a cursor trail when switching tabs (#9588)
+  * Make shift+left click extend the current selection instead of starting a
+    new selection when the mouse is not grabbed by the TUI application (#9608)
+  * Allow double clicking on a tab to rename it (#9609)
+  * remote_control_script resolve relative paths with respect to kitty
+    config directory (#9625)
+    - https://sw.kovidgoyal.net/kitty/actions/#action-remote_control_script
+  * Splits layout: Add new mappable actions to maximize a window in the
+    splits layout (#9629)
+
+-------------------------------------------------------------------
 Wed Dec 24 07:55:53 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.45.0:
