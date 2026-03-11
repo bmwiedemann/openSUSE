@@ -1373,4 +1373,27 @@
   * Changed the logging level of the &quot;ech_required&quot; SSL error has been lowered from &quot;crit&quot; to &quot;info&quot;.</comment>
     <requestid>1331530</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>0cb94b0c7ad396d612a7e0bab3d31ce3</srcmd5>
+    <version>1.29.6</version>
+    <time>1773258627</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 1.29.6
+  * https://nginx.org/en/CHANGES
+  * Added session affinity support; the &quot;sticky&quot; directive in the
+    &quot;upstream&quot; block of the &quot;http&quot; module; the &quot;server&quot; directive
+    supports the &quot;route&quot; and &quot;drain&quot; parameters.
+  * Changed now nginx limits the size and rate of QUIC stateless reset packets.
+  * Fixed receiving a QUIC packet by a wrong worker process could cause
+    the connection to terminate.
+  * Fixed &quot;[crit] cache file ... contains invalid header&quot; messages
+    might appear in logs when sending a cached HTTP/2 response.
+  * Fixed proxying to scgi backends might not work when using chunked
+    transfer encoding and the &quot;scgi_request_buffering&quot; directive.
+  * Fixed in the ngx_http_mp4_module.
+  * Fixed nginx treated a comma as separator in the &quot;Cookie&quot; request
+    header line when evaluating &quot;$cookie_...&quot; variables.
+  * Fixed in IMAP command literal argument parsing.</comment>
+    <requestid>1338107</requestid>
+  </revision>
 </revisionlist>

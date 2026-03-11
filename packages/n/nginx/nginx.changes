@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar 10 23:15:31 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 1.29.6
+  * https://nginx.org/en/CHANGES
+  * Added session affinity support; the "sticky" directive in the
+    "upstream" block of the "http" module; the "server" directive
+    supports the "route" and "drain" parameters.
+  * Changed now nginx limits the size and rate of QUIC stateless reset packets.
+  * Fixed receiving a QUIC packet by a wrong worker process could cause
+    the connection to terminate.
+  * Fixed "[crit] cache file ... contains invalid header" messages
+    might appear in logs when sending a cached HTTP/2 response.
+  * Fixed proxying to scgi backends might not work when using chunked
+    transfer encoding and the "scgi_request_buffering" directive.
+  * Fixed in the ngx_http_mp4_module.
+  * Fixed nginx treated a comma as separator in the "Cookie" request
+    header line when evaluating "$cookie_..." variables.
+  * Fixed in IMAP command literal argument parsing.
+
+-------------------------------------------------------------------
 Fri Feb  6 08:01:41 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 1.29.5
