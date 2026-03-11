@@ -1,7 +1,7 @@
 #
 # spec file for package python-tokenize-rt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-tokenize-rt
-Version:        6.1.0
+Version:        6.2.0
 Release:        0
 Summary:        A wrapper around the stdlib `tokenize` which roundtrips
 License:        MIT
