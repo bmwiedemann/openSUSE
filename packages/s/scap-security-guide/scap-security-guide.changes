@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Mar 11 09:33:49 UTC 2026 - Boychev <svetlin.boychev@suse.com>
+
+- Update the SSG package description 
+
+-------------------------------------------------------------------
+Wed Mar 11 09:09:21 UTC 2026 - Boychev <svetlin.boychev@suse.com>
+
+- Add SLE16 profiles to the build
+
+-------------------------------------------------------------------
+Wed Mar 11 08:57:21 UTC 2026 - Boychev <svetlin.boychev@suse.com>
+
+- updated to 0.1.79 (jsc#ECO-3319)
+    - Create SLE16 HIPAA profile
+    - Create SLE16 PCI DSS 4 profile
+    - Use Sequoia in RHEL 10 instead of GPG
+    - New Profile for RHEL10: BSI
+    - Move RHEL Control files to product files
+    - Update RHEL 9 CCN profile
+    - Various updates for SLE 12/15
+ 
+
+-------------------------------------------------------------------
 Tue Dec 16 11:25:18 UTC 2025 - Boychev <svetlin.boychev@suse.com>
 
 - updated to 0.1.79 (jsc#ECO-3319)

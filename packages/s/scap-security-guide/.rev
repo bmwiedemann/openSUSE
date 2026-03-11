@@ -576,4 +576,23 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
     - Various updates for SLE 12/15 (forwarded request 1323114 from boychev)</comment>
     <requestid>1323117</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>9840b7c76d6fc5e2393327a7cb8c261d</srcmd5>
+    <version>0.1.80</version>
+    <time>1773259011</time>
+    <user>anag_factory</user>
+    <comment>- Update the SSG package description 
+
+- Add SLE16 profiles to the build
+
+- Updated to 0.1.80 (jsc#ECO-3319)
+    - Create SLE16 HIPAA profile
+    - Create SLE16 PCI DSS 4 profile
+    - Use Sequoia in RHEL 10 instead of GPG
+    - New Profile for RHEL10: BSI
+    - Move RHEL Control files to product files
+    - Update RHEL 9 CCN profile
+    - Various updates for SLE 12/15 (forwarded request 1338252 from boychev)</comment>
+    <requestid>1338255</requestid>
+  </revision>
 </revisionlist>
