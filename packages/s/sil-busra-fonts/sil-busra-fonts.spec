@@ -17,7 +17,7 @@
 
 
 Name:           sil-busra-fonts
-Version:        9.000
+Version:        9.200
 Release:        0
 Summary:        A font family for the Khmer script
 License:        OFL-1.1

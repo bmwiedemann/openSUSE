@@ -5,5 +5,6 @@ Khmer Busra font first released as part of the Mondulkiri
 project. This Khmer font has been improved and updated for
 a wide range of uses, from print to web, and to support the
 latest Khmer text encoding best practices.</description>
+  <devel project="M17N:fonts" package="sil-busra-fonts"/>
   <url>https://software.sil.org/busra/</url>
 </package>

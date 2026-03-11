@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb 15 08:34:03 UTC 2026 - MihailJP <mihailjp@gmail.com>
+
+- Update to version 9.200
+  * OpenType fixes for particular character sequences
+
+-------------------------------------------------------------------
+Thu Nov  6 10:39:52 UTC 2025 - MihailJP <mihailjp@gmail.com>
+
+- Update to version 9.100
+  * OpenType fixes for particular character sequences
+  * Improved diacritic positioning
+  * Redesigned Coeng CHA
+  * New `ss05` feature for alternate form of ssa+aa ligature
+
+-------------------------------------------------------------------
 Sun Aug 31 09:43:19 UTC 2025 - MihailJP <mihailjp@gmail.com>
 
 - Do not obsolete sil-mondulkiri-fonts because of different font name
