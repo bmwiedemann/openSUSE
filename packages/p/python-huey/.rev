@@ -59,4 +59,14 @@
     <comment></comment>
     <requestid>1321791</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f6692acc2654618d657ba338879b459c</srcmd5>
+    <version>2.6.0</version>
+    <time>1773258777</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.6.0:
+  * &quot;Modernize&quot; build system to use pyproject.toml and github
+    actions.</comment>
+    <requestid>1338097</requestid>
+  </revision>
 </revisionlist>

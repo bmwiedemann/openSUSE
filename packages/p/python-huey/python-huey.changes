@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 10 21:39:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.0:
+  * "Modernize" build system to use pyproject.toml and github
+    actions.
+
+-------------------------------------------------------------------
 Tue Dec  9 11:37:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.5.5
