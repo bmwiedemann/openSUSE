@@ -1,6 +1,7 @@
 #
 # spec file for package nfs-utils
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +23,7 @@
 %endif
 
 Name:           nfs-utils
-Version:        2.8.5
+Version:        2.8.6
 Release:        0
 Summary:        Support Utilities for Kernel nfsd
 License:        GPL-2.0-or-later

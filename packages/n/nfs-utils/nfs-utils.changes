@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Mar 10 09:29:33 UTC 2026 - Petr Vorel <pvorel@suse.cz>
+
+- Update to 2.8.6:
+  https://mirrors.edge.kernel.org/pub/linux/utils/nfs-utils/2.8.6/2.8.6-Changelog
+  * Fix access checks when mounting subdirectories in NFSv3
+  * support: Add a mini-library to extract and apply RPC credentials
+  * mountd: Separate lookup of the exported directory and the mount path
+  * mountd: Minor refactor of get_rootfh()
+  * mountstats: Fix per-operation percentages with nconnect
+  * nfsdclnts: fix display of stateids where the kernel doesn't provide the superblock
+  * nfsrahead: enable event-driven mountinfo monitoring and skip non-NFS devices
+  * Revert "nfsrahead: enable event-driven mountinfo monitoring"
+  * gssd: add a helper to determine the set of encryption types to pass to limit_krb5_enctypes()
+  * gssd: get the permitted enctypes from the krb5 library on startup
+  * gssd: add enctypes_list_to_string()
+  * gssd: remove the limit-to-legacy-enctypes option
+  * conffile: fix discards const from pointer target
+  * mount.nfs: fix discards const from pointer target
+  * nfsrahead: enable event-driven mountinfo monitoring
+  * nfsdctl: load modules on nl family resolution error
+  * nfsdctl: remove unneeded newlines from xlog() format strings
+  * nfsdctl: query netlink policy before sending the minthreads attribute to kernel
+  * nfsdctl: only resolve netlink family names once
+  * nfsdctl: unconditionally enable support for min-threads
+
+-------------------------------------------------------------------
 Tue Mar  3 15:18:50 UTC 2026 - Anthony Iliopoulos <ailiop@suse.com>
 
 - Fix nfs-utils package for immutable mode (jsc#PED-14731)
