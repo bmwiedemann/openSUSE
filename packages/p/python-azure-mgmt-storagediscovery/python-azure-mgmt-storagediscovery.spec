@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-storagediscovery
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Microsoft Azure Storagediscovery Management Client Library for Python
 License:        MIT
@@ -50,8 +50,6 @@ This package has been tested with Python 3.9+
 
 %prep
 %setup -q -n azure_mgmt_storagediscovery-%{version}
-# see: https://github.com/Azure/azure-sdk-for-python/issues/43082
-rm -rf generated_samples generated_tests
 
 %build
 %pyproject_wheel
