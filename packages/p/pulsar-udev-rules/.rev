@@ -7,4 +7,12 @@
     <comment>Enable easier management for some Pulsar devices</comment>
     <requestid>1320782</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>412b7ffb118073a270e9e094e0b509a3</srcmd5>
+    <version>0.0.3+git0.416f082</version>
+    <time>1773259062</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1338320</requestid>
+  </revision>
 </revisionlist>

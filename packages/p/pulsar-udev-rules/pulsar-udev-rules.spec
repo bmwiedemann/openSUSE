@@ -15,7 +15,7 @@
 
 
 Name:           pulsar-udev-rules
-Version:        0.0.2+git0.c123022
+Version:        0.0.3+git0.416f082
 Release:        0
 Summary:        Udev rules to access Pulsar devices from normal user accounts
 License:        MIT
