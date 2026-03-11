@@ -1,7 +1,7 @@
 #
 # spec file for package guile1
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -170,14 +170,29 @@ sed -i s/-Werror// configure.in configure
 
 %build
 %define _lto_cflags %{nil}
-# NOTE: GCC 10 succeeds in rewriting a
-#particular tail call into jumps. This avoids stack frames from the
-#recursive call which the check relies on. Funnily enough, a comment
-#says: "If the code could be inlined, that might cause the test to give
-#an incorrect answer." - indeed.
-# As a result the guile executable causes a segfault when built with -02
-export CFLAGS="`echo %optflags|tr 02 00`"
+
+# NOTE Build Fixes for GCC 14/15+:
+# 1. Force gnu89 to allow () to mean "unspecified arguments" (fixes deprecated.c)
+# 2. Replace -O2 with -O1 to avoid tail-call bugs in Guile 1.8 stack checking
+# 3. Disable strict-aliasing as Guile's SCM type is an alias-heavy union
+# 4. Ensure CPPFLAGS also ignores errors during the 'snarfing' phase
+export CFLAGS="$(echo %{optflags} | sed 's/-O2/-O1/') \
+               -std=gnu89 \
+               -fpermissive \
+               -fno-strict-aliasing \
+               -fgnu89-inline \
+               -Wno-error=incompatible-pointer-types \
+               -Wno-error=implicit-function-declaration \
+               -Wno-error=return-type"
+export CXXFLAGS="$CFLAGS"
+export CPPFLAGS="-Wno-error"
+
 echo $CFLAGS
+
+# Stub out Gettext to avoid build-time translation toolchain mismatches
+echo "AC_DEFUN([AM_GNU_GETTEXT], [])" >> acinclude.m4
+echo "AC_DEFUN([AM_GNU_GETTEXT_VERSION], [])" >> acinclude.m4
+
 sed -i "s:GUILE_:GUILE1_:" guile-config/guile.m4
 sed -i "s:guile:guile1:" guile-config/guile.m4
 # automake 1.13: do not run test simultaneously
@@ -186,11 +201,14 @@ autoreconf -fi
 # FIXME: Following files are apparently compiled without RPM_OPT_FLAGS:
 # gen-scmconfig.c,c-tokenize.c
 %configure \
-	--disable-static \
-	--with-pic \
-	--with-threads \
-	--program-transform-name="s:guile:%{binpref}:"
-make --trace %{?_smp_mflags}
+        --disable-static \
+        --with-pic \
+        --with-threads \
+        --program-transform-name="s:guile:%{binpref}:" \
+    --disable-error-on-warning
+# Manual override for @LTLIBINTL@ which fails to substitute in some environments
+find . -name Makefile -exec sed -i 's/@LTLIBINTL@//g' {} +
+make --trace %{?_smp_mflags} LTLIBINTL=""
 
 %check
 # 47 of 11930 tests are failing now

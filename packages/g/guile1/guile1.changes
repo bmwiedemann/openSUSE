@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 11 03:10:03 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Build process fixed
+
+-------------------------------------------------------------------
 Tue Feb 27 11:09:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
