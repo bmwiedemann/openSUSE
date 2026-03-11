@@ -18,10 +18,10 @@
 
 %define cpan_name Protocol-Redis
 Name:           perl-Protocol-Redis
-Version:        2.0.100
+Version:        2.0.200
 Release:        0
-# 2.0001 -> normalize -> 2.0.100
-%define cpan_version 2.0001
+# 2.0002 -> normalize -> 2.0.200
+%define cpan_version 2.0002
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Redis protocol parser/encoder with asynchronous capabilities
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -58,7 +58,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes examples
+%doc Changes examples README
 %license LICENSE
 
 %changelog

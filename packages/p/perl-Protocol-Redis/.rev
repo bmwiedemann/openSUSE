@@ -44,4 +44,15 @@
            - Add support for RESP2 and RESP3 versions (Grinnz).</comment>
     <requestid>1332526</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7cb9907b980832af7354d9a59017fb31</srcmd5>
+    <version>2.0.200</version>
+    <time>1773258744</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.0.200 (2.0002)
+   see /usr/share/doc/packages/perl-Protocol-Redis/Changes
+  2.0002  11.02.2026 00:00:00
+           - Improve README, format code.</comment>
+    <requestid>1338063</requestid>
+  </revision>
 </revisionlist>
