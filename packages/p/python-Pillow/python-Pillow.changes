@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  9 21:01:58 UTC 2026 - munix9@googlemail.com
+
+- Reactivate tests 'test_stroke' and 'test_stroke_multiline'
+- Skip failed tests with libavif 1.4.0 in Factory/TW:
+  'TestFileAvif and (test_write_rgb or test_encoder_advanced_codec_options)'
+
+-------------------------------------------------------------------
 Thu Feb 12 10:22:27 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 12.1.1 (fixes CVE-2026-25990, bsc#1258125)

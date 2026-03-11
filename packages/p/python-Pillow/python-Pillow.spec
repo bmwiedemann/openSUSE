@@ -85,7 +85,13 @@ Python Imaging Library by Fredrik Lundh and Contributors.
 %check
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch} PYTHONDONTWRITEBYTECODE=1
 $python selftest.py --installed
-pytest-%{$python_bin_suffix} --ignore=_build.python2 --ignore=_build.python3 --ignore=_build.pypy3 -v -k 'not (test_stroke or test_stroke_multiline)'
+pytest-%{$python_bin_suffix} --ignore=_build.python2 --ignore=_build.python3 --ignore=_build.pypy3 -v \
+%if %{pkg_vcmp libavif-devel >= 1.4.0}
+%if 0%{?suse_version} > 1650
+	-k 'not (TestFileAvif and (test_write_rgb or test_encoder_advanced_codec_options))' \
+%endif
+%endif
+	%{nil}
 }
 
 %files %{python_files}

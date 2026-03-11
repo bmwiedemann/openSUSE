@@ -933,4 +933,12 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
     <comment></comment>
     <requestid>1332702</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>1584d2365a5638703ad70e775bc181a9</srcmd5>
+    <version>12.1.1</version>
+    <time>1773258615</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1338020</requestid>
+  </revision>
 </revisionlist>
