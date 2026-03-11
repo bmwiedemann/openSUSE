@@ -1,7 +1,7 @@
 #
 # spec file for package python-xarray
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-xarray%{psuffix}
-Version:        2025.12.0
+Version:        2026.02.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
@@ -171,6 +171,8 @@ fi
 donttest="$donttest or TestH5NetCDFDataRos3Driver"
 # NetCDF4 fails with these unsupported drivers
 donttest="$donttest or (TestNetCDF4 and test_compression_encoding and (szip or zstd or blosc_lz or blosc_zlib))"
+# numpy 2.4 fun and games
+donttest="$donttest or test_curvefit_helpers or test_concat_periods"
 
 %pytest -n auto -rsEf -k "not ($donttest)" xarray
 %endif

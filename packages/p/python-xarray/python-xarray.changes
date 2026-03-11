@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Mar 11 01:15:49 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2026.02.0:
+  * Add a suggestion for how to resolve chunk manager not available error
+  * Fix silent data corruption when writing dask arrays to sharded zarr
+    stores
+  * Fix .plot error when using positional args with col and row
+  * Add a fast path that doesn't include normalized chunks in tokenize
+  * Support negative step in normalize_indexer
+  * Allow 1D coords in NDPointIndex
+  * Replace DeprecationWarning with FutureWarning
+  * Fix sortby descending order placing NaNs at beginning instead of end
+  * Raise FileNotFoundError for missing local files in guess_engine
+  * Skip one more hypothesis test for dtype string
+  * temporarily silence shape assignment warnings raised in netCDF4
+  * raise error on slice-based selection of multi-index levels
+  * Address pandas-related upstream errors in #10973
+  * Change behavior of keep_attrs in xr.where when x is a scalar
+  * add drop_existing kwarg to set_xindex
+  * Automatically create xindex
+  * FIX: assert_identical now considers xindexes + improve RangeIndex equals
+  * fix: where for cupy.array
+  * Ensure SeasonResampler preserves datetime resolution
+  * Fix indexing bugs in CoordinateTransformIndex
+  * Remove special mapping of auto to {} in open_zarr
+  * fix group by > 1 group, then map
+  * Make parallel documentation builds threadsafe
+  * Bump the minimum version of h5netcdf to 1.4.0 in accordance with nep29
+  * Add an arithmetic_compat option to xr.set_options
+  * Dataset.eval works with >2 dims
+  * create a development environment
+  * Coerce pd.StringDtype to np.dtypes.StringDType
+  * Use StringDType when reading from zarr string variables
+  * Optimize CFMaskScale decoder
+  * Ensure netcdf4 is locked while closing
+  * Improve error message when scipy is missing for NDPointIndex
+
+-------------------------------------------------------------------
 Mon Dec 22 11:46:24 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2025.12.0
