@@ -683,4 +683,40 @@ Bugfixes
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1302469</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0a1f3ddfd755a95236456d536c6b6847</srcmd5>
+    <version>10.4.2</version>
+    <time>1773258874</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 10.4.2:
+  * perf: Avoid unnecessary syscall for ignore-contain
+  * fix(build): Fix attestation
+  * docs: update changelog to include static linking of CRT for MSVC builds
+  * docs: add shell completion generation instructions
+  * ignore_contain now has higher precedence than root check.
+  * build: Reduce debug info for dev builds
+  * `--ignore-contain`: ignore directories containing a named entry (e.g. [`CACHEDIR.TAG`](https://bford.info/cachedir/)).
+  * chore: fix typo in tests/tests.rs
+  * feat(build): Install cross directly
+  * docs(security): clarify where to send vulnerability reports (#1827)
+  * ci: resolve Zizmor-identified workflow issues
+  * docs(CHANGELOG): list bugs fixed by ignore upgrade
+  * chore(deps): Update etcetera package
+  * build(msrv): Update msrv to 1.90.0
+  * &quot;Add cargo-binstall support&quot;
+  * Remove the trailing white space in -C short option.
+  * feat[release]: Add attestation for release artifacts
+  * Add -C option to the manpage fd.1.
+  * Add base-directory entry along with short option -C in the README.md file.
+  * Add short option -C to the option base-directory.
+  * fix: --print0 now works with --exec
+  * fix: Clippy warning from anyhow update
+  * Update Tuple logo
+  * build: Remove `build.rs`
+  * Update README
+- remove now unneeded rust.patch
+- _service: set filter=true on cargo_vendor
+</comment>
+    <requestid>1338179</requestid>
+  </revision>
 </revisionlist>

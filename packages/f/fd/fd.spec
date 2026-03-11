@@ -1,7 +1,7 @@
 #
 # spec file for package fd
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,15 @@
 
 
 Name:           fd
-Version:        10.3.0
+Version:        10.4.2
 Release:        0
 Summary:        An alternative to the "find" utility
 License:        Apache-2.0 AND MIT
 Group:          Productivity/File utilities
 URL:            https://github.com/sharkdp/fd
 Source:         %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source1:        vendor.tar.zst
 Source2:        cargo_config
-# PATCH-FIX-OPENSUSE rust.patch -- decrease required rust version
-Patch0:         rust.patch
 BuildRequires:  cargo-packaging
 # package `clap_lex v0.6.0` requires rustc 1.70.0 or newer
 BuildRequires:  rust >= 1.77.0
