@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 24 12:25:23 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
+
+- Split selinux policy to its own package
+- Fix issues if default keytab is used, strip 'FILE:' prefix before
+  calling libselinux functions; Add patch
+  0001-enroll-fix-issues-if-default-keytab-is-used.patch
+- Fix build with glibc 2.43; (bsc#1258705); Add patch
+  0002-Fix-build-with-glibc-2.43.patch
+
+-------------------------------------------------------------------
 Mon Feb 23 13:18:40 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.9.3.1:

@@ -55,4 +55,17 @@
     <comment></comment>
     <requestid>1334580</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>1e496727a1b4be0edac47d2920e89af6</srcmd5>
+    <version>0.9.3.1</version>
+    <time>1773258577</time>
+    <user>anag_factory</user>
+    <comment>- Split selinux policy to its own package
+- Fix issues if default keytab is used, strip 'FILE:' prefix before
+  calling libselinux functions; Add patch
+  0001-enroll-fix-issues-if-default-keytab-is-used.patch
+- Fix build with glibc 2.43; (bsc#1258705); Add patch
+  0002-Fix-build-with-glibc-2.43.patch</comment>
+    <requestid>1337893</requestid>
+  </revision>
 </revisionlist>
