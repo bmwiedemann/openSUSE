@@ -16,16 +16,14 @@
 #
 
 
-%define realversion 1.0.0b1
-
 %{?sle15_python_module_pythons}
 Name:           python-azure-health-deidentification
-Version:        1.0.0~b1
+Version:        1.0.0
 Release:        0
 Summary:        Microsoft Azure Health Deidentification Client Library for Python
 License:        MIT
 URL:            https://github.com/Azure/azure-sdk-for-python/tree/main/sdk
-Source:         https://files.pythonhosted.org/packages/source/a/azure-health-deidentification/azure-health-deidentification-%{realversion}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_health_deidentification/azure_health_deidentification-%{version}.tar.gz
 BuildRequires:  %{python_module azure-core >= 1.24.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module isodate < 1.0.0}
@@ -49,7 +47,7 @@ Python Azure Health Deidentification is a managed service that enables users to 
 redact, or surrogate health data.
 
 %prep
-%setup -q -n azure-health-deidentification-%{realversion}
+%setup -q -n azure_health_deidentification-%{version}
 
 %build
 %pyproject_wheel
