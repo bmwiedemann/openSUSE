@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Tue Mar 10 10:31:04 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 0.28.0:
+  * dockerfile2llb: make proxyEnvFromBuildArgs deterministic
+  * testutil: avoid multi-platform mirrored images
+  * build(deps): bump docker/build-push-action from 6 to 7
+  * build(deps): bump docker/bake-action from 6 to 7
+  * build(deps): bump docker/setup-buildx-action from 3 to 4
+  * exporter: fix snapshot GC race during image unpack
+  * client: improve local cache import validation
+  * build(deps): bump docker/setup-qemu-action from 3 to 4
+  * build(deps): bump docker/login-action from 3 to 4
+  * vendor: update x/net to v0.51.0
+  * vendor: update cloudflare/circl v1.6.3
+  * build(deps): bump crazy-max/ghaction-github-runtime from 3 to 4
+  * build(deps): bump actions/download-artifact from 7 to 8
+  * build(deps): bump actions/upload-artifact from 6 to 7
+  * tests: use t.Context in unit tests
+  * chore: bump Go toolchain to 1.26
+  * gateway: add caps for source metadata extensions
+  * linter: do not attempt to check for copying ignored file when negated patterns exist
+  * client: update image blob tests after SLSA v1 default update
+  * hack: write cgroup namespace progress message to stderr
+  * chore: exclude in-toto/attestation SA1019 deprecations from staticcheck
+  * source: add support for oci-layout+blob schema
+  * source: update imageblob to new docker-image+blob and ref_type naming
+  * source: imageblob source implementation
+  * vendor: update github.com/in-toto/in-toto-golang v0.10.0
+  * vendor: update github.com/morikuni/aec v1.1.0
+  * Dockerfile: runtime dependencies update
+  * vendor: update dependencies behind moby/moby
+  * vendor: outdated dependencies patch update
+  * source/http: add PGP verification and shared pgpsign
+  * http: add support for checksum requests for http sources
+  * history: default to provenance slsa v1 and remove BUILDKIT_HISTORY_PROVENANCE_V1
+  * provenance: make slsa v1 native default path and keep v0.2 as explicit conversion
+  * default to provenance slsa v1
+  * worker: remove automatic migration of legacy v1 cache
+  * dockerfile: run buildkitd within a cgroup namespace for cgroup v2
+
+-------------------------------------------------------------------
+Fri Feb 20 10:22:18 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 0.27.1:
+  * client/llb: add support for riscv64 architecture
+  * update binfmt to v10.1.3
+  * docs: add "good" example for SecretsUsedInArgOrEnv check
+  * contentutil: fix referrer blob ingest cleanup
+  * gitsign: support combined public keys for verification
+  * policy: fix ResolveAttestations via policy callback
+  * containerimage: add resolve attestation support
+  * containerimage: fix possible race on parallel image create
+  * solver: run image and cache exports in parallel
+  * migrate to github.com/pelletier/go-toml/v2
+  * frontend: prevent SecretsUsedInArgOrEnv warning for file/version names
+  * ci: update docker/github-builder to v1
+  * vendor: github.com/klauspost/compress v1.18.3
+  * vendor: update moby/policy-helpers to eeebf1a
+  * forwarder: fix concurrent map write panic in the gateway forwarder
+  * dockerui: allow sharedkey sent for local named contexts
+  * vendor: update go-actions-cache to 54bc28c2
+  * buildctl: enabled bash completion
+  * source: avoid error when attestation asked from non-index
+  * vendor: align google.golang.org/genproto/xxx versions
+  * vendor: github.com/containerd/stargz-snapshotter v0.18.1
+  * vendor: github.com/sirupsen/logrus v1.9.4
+  * containerimage: fix missing lease on fetching attestationchain
+  * gateway: create interface for reading from container filesystem
+  * ci: fix target for rootless image
+  * Dockerfile: fix version inconsistencies
+  * hack: update gopls to v0.38.0
+  * ci: update golangci to v2.8.0
+  * vendor: update outdated patch versions of dependencies
+  * vendor: update shared dependencies that are behind moby/moby
+  * policy: propagate deny messages from policy error
+  * registry remotecache: push cache blobs in parallel
+  * build(deps): bump actions/download-artifact from 6 to 7
+  * Dockerfile: allow building from git worktree
+  * Dockerfile: add Docker deps to dev stage
+  * git: handle updated error message in git 2.52
+  * ci: update docker github builder to latest
+  * ci: use docker github builder to build frontend images
+  * ci: use docker github builder to build buildkit images
+  * ci: use docker github builder to build binaries
+  * chore: update yamllint config
+  * update alpine to 3.23
+  * docs: rewrite COPY --chown/--chmod, add non-octal --chmod
+  * vendor: github.com/docker/cli v29.1.4
+  * dockerfile: promote experimental linter rule
+  * Fix concurrency issues with source policy
+  * Update apt cache example (fix warning)
+  * docs: add signed gha cache docs
+  * lint: go1.25 gopls updates
+  * gha: add signed cache support
+  * contentutil: add pull through cache for attestations chain resolve
+  * policy: support convert decisions from sessionpolicy
+  * authprovider: make it possible to provide custom AuthConfig providers
+  * gateway: cache local mounts for forwarder as well
+  * gateway: cache local mounts from fs operations
+  * snapshot: prevent duplicate calls to mount returning different values
+
+-------------------------------------------------------------------
 Tue Dec 23 04:44:48 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 0.26.3:
