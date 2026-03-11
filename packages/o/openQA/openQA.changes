@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Mar 10 17:07:52 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1773151075.654d76ed:
+  * refactor: Write `renderComments()` in a more compact way
+  * fix: Restore spacing between bug and other icons after 9346b7165
+  * ci(helm): replace internal retry with okurz/retry/
+  * refactor: Use signature in callback to clarify input parameters
+  * style: Add three perlcritic rules
+  * style: Make .perlcriticrc a real file instead of a symlink
+  * chore(deps): Adjust bot commit message to conventional commits
+  * test: Add test for rendering `label:linked` with bug reference
+  * feat: Improve handling non-bugref URLs in `mark_job_linked` after 7f6790
+  * test: Verify that only one label is added via `mark_job_linked`
+  * feat: Render labels with bug references as clickable links
+  * refactor: Improve coding style in `renderComments()`
+  * feat: Use bugref within label when creating 'Job mentioned in …' comment
+  * docs: document the priority throttling for scheduled jobs
+  * Dependency cron 2026-03-09
+  * feat: Streamline "relates to default checkout" condition
+  * feat: Enable `git_auto_update` if `CASEDIR` and `NEEDLES_DIR` are set
+  * feat: Support `CASEDIR` lookup introduced in ef229dc also in Git tasks
+  * fix: Handle error when determining Git server host correctly
+  * feat: add privacy policy
+
+-------------------------------------------------------------------
 Mon Mar 09 15:07:31 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1773068319.a9347c1b:
