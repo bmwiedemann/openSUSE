@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Mon Mar  9 11:05:21 UTC 2026 - José Iván López González <jlopez@suse.com>
+
+- Remove code to deal with the old HTTP API
+  (gh#agama-project/agama#3258).
+
+-------------------------------------------------------------------
+Mon Mar  9 09:19:30 UTC 2026 - David Diaz <dgonzalez@suse.com>
+
+- Allow downloading the user config (jsc#PED-15453).
+
+-------------------------------------------------------------------
+Thu Mar  5 11:46:24 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Improve registration and software issues reporting (related to bsc#1258034).
+
+-------------------------------------------------------------------
+Wed Mar  4 09:12:14 UTC 2026 - David Diaz <dgonzalez@suse.com>
+
+- Drop vulnerable dev dependency no longer needed (bsc#1259117).
+
+-------------------------------------------------------------------
+Tue Mar  3 10:09:09 UTC 2026 - David Diaz <dgonzalez@suse.com>
+
+- Restores DASD format progress with API v2 event model
+  (gh#agama-project/agama#3143).
+- Improves progress backdrop layout and readbility
+  (gh#agama-project/agama#2947).
+
+-------------------------------------------------------------------
+Mon Mar  2 23:06:08 UTC 2026 - David Diaz <dgonzalez@suse.com>
+
+- Add visual feedback on table row hover and focus
+  (gh#agama-project/agama#3233).
+
+-------------------------------------------------------------------
+Mon Mar  2 18:01:05 UTC 2026 - David Diaz <dgonzalez@suse.com>
+
+- Update web dependencies to their latest available versions
+  as of 2026-03-02 (gh#agama-project/agama#3232).
+
+-------------------------------------------------------------------
+Fri Feb 27 23:00:35 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not reset the configuration on product selection (bsc#1258032).
+
+-------------------------------------------------------------------
+Fri Feb 27 14:39:08 UTC 2026 - David Diaz <dgonzalez@suse.com>
+
+- Do not show empty software page (related to bsc#1258922).
+
+-------------------------------------------------------------------
+Thu Feb 26 16:43:44 UTC 2026 - David Diaz <dgonzalez@suse.com>
+
+- Restore the interface for managing DASD in the web client
+  (gh#agama-project/agama#3143).
+
+-------------------------------------------------------------------
 Fri Feb 20 15:00:44 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Fix the language change (gh#agama-project/agama#3197).

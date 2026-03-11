@@ -659,4 +659,37 @@
   (gh#agama-project/agama#3144)</comment>
     <requestid>1334916</requestid>
   </revision>
+  <revision rev="37" vrev="37">
+    <srcmd5>9d0527db7d93625fb3c652794a7c0f1c</srcmd5>
+    <version>0</version>
+    <time>1773258614</time>
+    <user>anag_factory</user>
+    <comment>- Remove code to deal with the old HTTP API
+  (gh#agama-project/agama#3258).
+
+- Allow downloading the user config (jsc#PED-15453).
+
+- Improve registration and software issues reporting (related to bsc#1258034).
+
+- Drop vulnerable dev dependency no longer needed (bsc#1259117).
+
+- Restores DASD format progress with API v2 event model
+  (gh#agama-project/agama#3143).
+- Improves progress backdrop layout and readbility
+  (gh#agama-project/agama#2947).
+
+- Add visual feedback on table row hover and focus
+  (gh#agama-project/agama#3233).
+
+- Update web dependencies to their latest available versions
+  as of 2026-03-02 (gh#agama-project/agama#3232).
+
+- Do not reset the configuration on product selection (bsc#1258032).
+
+- Do not show empty software page (related to bsc#1258922).
+
+- Restore the interface for managing DASD in the web client
+  (gh#agama-project/agama#3143).</comment>
+    <requestid>1338003</requestid>
+  </revision>
 </revisionlist>
