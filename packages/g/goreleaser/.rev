@@ -792,4 +792,41 @@
   * docs: fix gemfury links (forwarded request 1335220 from ph03nix)</comment>
     <requestid>1335311</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>303c6299312d4fe6f54afb50fd3b9b2f</srcmd5>
+    <version>2.14.3</version>
+    <time>1773258691</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.14.3:
+  * chore: fix svu config
+  * ci: always try to attest
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * ci: add missing token
+  * docs: fix badges
+  * docs: update
+  * docs: telegram link
+  * ci: announce to telegram
+  * docs: improve telegram docs
+  * fix(telegram): chat_id should be allowed in the `@channelname` form
+  * fix(telegram): improve default message template
+  * chore: add .env to .gitignore
+  * chore: add comment
+  * fix(upload): prevent sendFile race condition on Windows
+  * docs: update
+  * chore(ci): switch artifact attestations gen to actions/attest
+  * fix(sbom): fix Windows CI test failure in catalog_source_archives
+  * fix: lint
+  * fix: go1.26.1
+  * ci: announce to opencollective
+  * chore(deps): bump the docker group across 2 directories with 2 updates
+  * docs(deps): bump mkdocs-material in /www in the docs group
+  * ci(deps): bump the actions group with 11 updates
+  * chore(deps): bump the gomod group with 7 updates
+  * chore: auto-update generated files
+  * fix: improve logs
+  * chore(deps): update go-github@v84 (forwarded request 1337925 from ph03nix)</comment>
+    <requestid>1338016</requestid>
+  </revision>
 </revisionlist>

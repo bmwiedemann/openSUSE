@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Mar 10 09:10:50 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.14.3:
+  * chore: fix svu config
+  * ci: always try to attest
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * ci: add missing token
+  * docs: fix badges
+  * docs: update
+  * docs: telegram link
+  * ci: announce to telegram
+  * docs: improve telegram docs
+  * fix(telegram): chat_id should be allowed in the `@channelname` form
+  * fix(telegram): improve default message template
+  * chore: add .env to .gitignore
+  * chore: add comment
+  * fix(upload): prevent sendFile race condition on Windows
+  * docs: update
+  * chore(ci): switch artifact attestations gen to actions/attest
+  * fix(sbom): fix Windows CI test failure in catalog_source_archives
+  * fix: lint
+  * fix: go1.26.1
+  * ci: announce to opencollective
+  * chore(deps): bump the docker group across 2 directories with 2 updates
+  * docs(deps): bump mkdocs-material in /www in the docs group
+  * ci(deps): bump the actions group with 11 updates
+  * chore(deps): bump the gomod group with 7 updates
+  * chore: auto-update generated files
+  * fix: improve logs
+  * chore(deps): update go-github@v84
+  * chore(deps): bump squidfunk/mkdocs-material
+  * ci(deps): bump the actions group with 7 updates
+  * docs(deps): bump mkdocs-material in /www in the docs group
+  * chore(deps): bump the gomod group with 6 updates
+  * docs: update install.md
+  * chore(deps): bump github.com/cloudflare/circl from 1.6.1 to 1.6.3
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+
+-------------------------------------------------------------------
 Thu Feb 26 07:38:26 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.14.1:
