@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Feb 15 10:40:02 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.31.2
+  * Flow Control for HTTP/1.1 and HTTP/2 by @azkrishpy in (#714)
+  * Update Skipped MQTT5 Tests by @sbSteveK in (#717)
+  * Update manifest for s2n feature probe by @xiazhvera in (#718)
+  * Add support for XXHash algos by @DmitriyMusatkin in (#719)
+- Add more tests to skip in skip-test-requiring-network.patch
+
+-------------------------------------------------------------------
+Tue Jan 20 13:46:30 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.31.1
+  * Support add library_dirs from environment variable by @TingDaoK in (#712)
+  * Canary refactor by @bretambrose in (#708)
+  * Update submodules by @sfod in (#716)
+- from version 0.31.0
+  * CRC combine by @TingDaoK in (#707)
+  * Update submodules by @azkrishpy in (#711)
+
+-------------------------------------------------------------------
+Mon Jan  5 10:02:12 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.30.0
+  * Update submodules by @sfod in (#705)
+  * Migrate to dispatch queue on macOS by @sfod in (#706)
+
+-------------------------------------------------------------------
+Tue Dec  9 11:59:44 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.29.2
+  * Pick up the fix by @TingDaoK in (#702)
+- from version 0.29.1
+  * Add helper to get padded ec signature by @DmitriyMusatkin in (#701)
+
+-------------------------------------------------------------------
+Tue Nov 25 07:59:57 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.29.0
+  * Fix Test Memleak by @sbSteveK in (#697)
+  * Expose max_active_connections_override for client and meta request
+    by @TingDaoK in (#696)
+
+-------------------------------------------------------------------
 Mon Oct 13 12:15:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.28.1

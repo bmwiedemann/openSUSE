@@ -1,7 +1,7 @@
-diff -Nru aws-crt-python-0.28.1.orig/test/test_aiohttp_client.py aws-crt-python-0.28.1/test/test_aiohttp_client.py
---- aws-crt-python-0.28.1.orig/test/test_aiohttp_client.py	2025-09-19 01:25:15.000000000 +0200
-+++ aws-crt-python-0.28.1/test/test_aiohttp_client.py	2025-10-13 12:23:37.316737927 +0200
-@@ -287,6 +287,7 @@
+diff -Nru aws-crt-python-0.31.2.orig/test/test_aiohttp_client.py aws-crt-python-0.31.2/test/test_aiohttp_client.py
+--- aws-crt-python-0.31.2.orig/test/test_aiohttp_client.py	2026-02-12 19:06:36.000000000 +0100
++++ aws-crt-python-0.31.2/test/test_aiohttp_client.py	2026-02-15 11:34:39.055485729 +0100
+@@ -290,6 +290,7 @@
  
          return connection
  
@@ -9,7 +9,7 @@ diff -Nru aws-crt-python-0.28.1.orig/test/test_aiohttp_client.py aws-crt-python-
      async def _test_h2_client(self):
          url = urlparse("https://d1cz66xoahf9cl.cloudfront.net/http_test_doc.txt")
          connection = await self._new_h2_client_connection(url)
-@@ -308,6 +309,7 @@
+@@ -311,6 +312,7 @@
  
          await connection.close()
  
@@ -17,7 +17,7 @@ diff -Nru aws-crt-python-0.28.1.orig/test/test_aiohttp_client.py aws-crt-python-
      async def _test_h2_manual_write_exception(self):
          url = urlparse("https://d1cz66xoahf9cl.cloudfront.net/http_test_doc.txt")
          connection = await self._new_h2_client_connection(url)
-@@ -427,6 +429,7 @@
+@@ -430,6 +432,7 @@
          finally:
              self._stop_server()
  
@@ -25,10 +25,42 @@ diff -Nru aws-crt-python-0.28.1.orig/test/test_aiohttp_client.py aws-crt-python-
      async def _test_cross_thread_http2_client(self):
          """Test using an HTTP/2 client from a different thread/event loop."""
          url = urlparse("https://d1cz66xoahf9cl.cloudfront.net/http_test_doc.txt")
-diff -Nru aws-crt-python-0.28.1.orig/test/test_http_client.py aws-crt-python-0.28.1/test/test_http_client.py
---- aws-crt-python-0.28.1.orig/test/test_http_client.py	2025-09-19 01:25:15.000000000 +0200
-+++ aws-crt-python-0.28.1/test/test_http_client.py	2025-10-13 12:24:44.520076579 +0200
-@@ -353,6 +353,7 @@
+@@ -691,6 +694,7 @@
+         self.assertEqual(10, len(response.body))
+         await connection.close()
+ 
++    @unittest.skip("Requires network")
+     def test_h1_manual_window_management_happy_path(self):
+         asyncio.run(self._test_h1_manual_window_management_happy_path())
+ 
+@@ -722,6 +726,7 @@
+         self.assertGreater(len(response.body), 0, "No data received")
+         await connection.close()
+ 
++    @unittest.skip("Requires network")
+     def test_h2_manual_window_management_happy_path(self):
+         asyncio.run(self._test_h2_manual_window_management_happy_path())
+ 
+@@ -762,6 +767,7 @@
+         self.assertEqual(len(chunks_received), 10, "Should receive exactly 10 chunks")
+         await connection.close()
+ 
++    @unittest.skip("Requires network")
+     def test_h2_stream_flow_control_blocks_and_resumes(self):
+         asyncio.run(self._test_h2_stream_flow_control_blocks_and_resumes())
+ 
+@@ -803,6 +809,7 @@
+         self.assertEqual(len(chunks_received), 100, "Should receive exactly 100 chunks")
+         await connection.close()
+ 
++    @unittest.skip("Requires network")
+     def test_h1_stream_flow_control_blocks_and_resumes(self):
+         asyncio.run(self._test_h1_stream_flow_control_blocks_and_resumes())
+ 
+diff -Nru aws-crt-python-0.31.2.orig/test/test_http_client.py aws-crt-python-0.31.2/test/test_http_client.py
+--- aws-crt-python-0.31.2.orig/test/test_http_client.py	2026-02-12 19:06:36.000000000 +0100
++++ aws-crt-python-0.31.2/test/test_http_client.py	2026-02-15 11:32:30.115453571 +0100
+@@ -354,6 +354,7 @@
                                                        tls_connection_options=tls_conn_opt)
          return connection_future.result(self.timeout)
  
@@ -36,7 +68,7 @@ diff -Nru aws-crt-python-0.28.1.orig/test/test_http_client.py aws-crt-python-0.2
      def test_h2_client(self):
          url = urlparse("https://d1cz66xoahf9cl.cloudfront.net/http_test_doc.txt")
          connection = self._new_h2_client_connection(url)
-@@ -375,6 +376,7 @@
+@@ -376,6 +377,7 @@
  
          self.assertEqual(None, connection.close().exception(self.timeout))
  
@@ -44,3 +76,14 @@ diff -Nru aws-crt-python-0.28.1.orig/test/test_http_client.py aws-crt-python-0.2
      def test_h2_manual_write_exception(self):
          url = urlparse("https://d1cz66xoahf9cl.cloudfront.net/http_test_doc.txt")
          connection = self._new_h2_client_connection(url)
+diff -Nru aws-crt-python-0.31.2.orig/test/test_io.py aws-crt-python-0.31.2/test/test_io.py
+--- aws-crt-python-0.31.2.orig/test/test_io.py	2026-02-12 19:06:36.000000000 +0100
++++ aws-crt-python-0.31.2/test/test_io.py	2026-02-15 11:36:23.312116529 +0100
+@@ -33,6 +33,7 @@
+         event_loop_group_two = EventLoopGroup.get_or_create_static_default()
+         self.assertTrue(event_loop_group_one == event_loop_group_two)
+ 
++    @unittest.skip("Requires network")
+     def test_shutdown_complete_singleton(self):
+         event_loop_group = EventLoopGroup.get_or_create_static_default()
+         shutdown_event = event_loop_group.shutdown_event
