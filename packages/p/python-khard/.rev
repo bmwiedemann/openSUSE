@@ -51,4 +51,13 @@
   - Use Python 3.11 on SLE-15 by default</comment>
     <requestid>1296838</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>675debd3affded832d50347e8893b5ea</srcmd5>
+    <version>0.20.1</version>
+    <time>1773258784</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.20.1:
+  * Fix reopening of stdin on Windows (#347)</comment>
+    <requestid>1338102</requestid>
+  </revision>
 </revisionlist>

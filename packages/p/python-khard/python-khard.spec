@@ -1,7 +1,7 @@
 #
 # spec file for package python-khard
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-khard
-Version:        0.20.0
+Version:        0.20.1
 Release:        0
 Summary:        Console carddav client
 License:        GPL-3.0-only
