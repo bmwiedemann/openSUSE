@@ -7384,4 +7384,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.19.6; bugs: bsc#1012628</comment>
     <requestid>1337152</requestid>
   </revision>
+  <revision rev="829" vrev="2">
+    <srcmd5>d47488dff37b0f4431b278a10566247b</srcmd5>
+    <version>6.19.6</version>
+    <time>1773258557</time>
+    <user>anag_factory</user>
+    <comment>fix perf v2; bugs: bsc#1258936 bsc#1259358</comment>
+    <requestid>1337952</requestid>
+  </revision>
 </revisionlist>

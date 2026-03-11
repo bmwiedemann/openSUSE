@@ -16,7 +16,7 @@
 #
 
 
-%define git_commit 9abab2a0c3faf8ccbae08f23732acaa4d67c941d
+%define git_commit da5960cb54313a4c33f88253b2bde8a49e6e5a61
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -24,7 +24,7 @@
 Name:           kernel-syms
 Version:        6.19.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g9abab2a
+Release:        <RELEASE>.gda5960c
 %else
 Release:        0
 %endif

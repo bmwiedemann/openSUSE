@@ -38,7 +38,7 @@
 %endif
 %endif
 %endif
-%global kernel_package kernel%kernel_flavor-srchash-9abab2a0c3faf8ccbae08f23732acaa4d67c941d
+%global kernel_package kernel%kernel_flavor-srchash-da5960cb54313a4c33f88253b2bde8a49e6e5a61
 %endif
 %if 0%{?rhel_version}
 %global kernel_package kernel
@@ -47,14 +47,14 @@
 Name:           kernel-obs-build
 Version:        6.19.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g9abab2a
+Release:        <RELEASE>.gda5960c
 %else
 Release:        0
 %endif
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0-only
 Group:          SLES
-Provides:       kernel-obs-build-srchash-9abab2a0c3faf8ccbae08f23732acaa4d67c941d
+Provides:       kernel-obs-build-srchash-da5960cb54313a4c33f88253b2bde8a49e6e5a61
 BuildRequires:  coreutils
 BuildRequires:  device-mapper
 BuildRequires:  dracut
