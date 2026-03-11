@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 11 06:04:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.22.0:
+  * chore: version++
+  * feat: Add const-from-value support
+  * feat: Merge found values file
+  * chore(deps): update docker/setup-qemu-action action to v4
+  * chore(deps): update docker/setup-buildx-action action to v4
+  * chore(deps): update docker/login-action action to v4
+  * chore(deps): update crazy-max/ghaction-import-gpg action to v7
+
+-------------------------------------------------------------------
 Mon Mar 09 07:39:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.21.3:
