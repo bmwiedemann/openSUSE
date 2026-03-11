@@ -193,4 +193,17 @@
   * Fix missing include for sigaction</comment>
     <requestid>1316539</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9a6442859cbe229f4fc54a452ee9abfd</srcmd5>
+    <version>1.8.5</version>
+    <time>1773258886</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.8.5:
+  * seat: don't abort on wl_keyboard.keymap_format.no_keymap
+  * Use bright black rather than black for LOG_DEBUG
+  * Add short example of config file to man page
+  * Always set wl_buffer scale
+  * pam: only send the password once per conversation</comment>
+    <requestid>1338188</requestid>
+  </revision>
 </revisionlist>

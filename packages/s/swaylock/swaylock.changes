@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 11 05:17:44 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.5:
+  * seat: don't abort on wl_keyboard.keymap_format.no_keymap
+  * Use bright black rather than black for LOG_DEBUG
+  * Add short example of config file to man page
+  * Always set wl_buffer scale
+  * pam: only send the password once per conversation
+
+-------------------------------------------------------------------
 Sat Nov  8 08:32:52 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.4:
