@@ -6200,4 +6200,23 @@ I cannot test locally unfortunately.
     <comment></comment>
     <requestid>1333637</requestid>
   </revision>
+  <revision rev="381" vrev="1">
+    <srcmd5>fde30c7883ef22cfeccb9f83cb7d89db</srcmd5>
+    <version>140.8.0</version>
+    <time>1772050425</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1335154</requestid>
+  </revision>
+  <revision rev="382" vrev="1">
+    <srcmd5>b7ce59a7478d449f45c920e753912a18</srcmd5>
+    <version>140.8.1</version>
+    <time>1773258974</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Thunderbird 140.8.1 ESR
+  * Add mail.openpgp.load_untested_gpgme_version to load untested
+    GPGME version
+- drop mozilla-bmo1967121.patch because of the upstream change</comment>
+    <requestid>1338240</requestid>
+  </revision>
 </revisionlist>

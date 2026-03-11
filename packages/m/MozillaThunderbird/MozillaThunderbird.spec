@@ -30,8 +30,8 @@
 # major 69
 # mainver %%major.99
 %define major          140
-%define mainver        %major.7.2
-%define orig_version   140.7.2
+%define mainver        %major.8.1
+%define orig_version   140.8.1
 %define orig_suffix    esr
 %define update_channel esr
 %define source_prefix  thunderbird-%{orig_version}
@@ -211,7 +211,7 @@ Patch18:        mozilla-silence-no-return-type.patch
 Patch20:        one_swizzle_to_rule_them_all.patch
 Patch21:        svg-rendering.patch
 Patch22:        thunderbird-silence-no-return.patch
-Patch23:        mozilla-bmo1967121.patch
+Patch24:        thunderbird-bmo2006630.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh
