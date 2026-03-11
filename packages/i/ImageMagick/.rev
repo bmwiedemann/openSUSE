@@ -4297,4 +4297,23 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * modified ImageMagick-configuration-SUSE.patch</comment>
     <requestid>1335800</requestid>
   </revision>
+  <revision rev="327" vrev="1">
+    <srcmd5>bd97ae867207d46e0758dc89c3d35622</srcmd5>
+    <version>7.1.2.16</version>
+    <time>1773258572</time>
+    <user>anag_factory</user>
+    <comment>- version update to 7.1.2.16
+  * Add overflow check to JXL write path #8591
+  * fix heap over-read in BilateralBlurImage with even-dimension kernels #8595
+  * Add overflow checks to PS3 write path #8590
+  * Add overflow check to sixel write path #8587
+  * Add overflow check to SGI write path #8588
+  * Add overflow checks to BMP/DIB write paths and DIB read path #8573
+  * fix NULL pointer dereference in HEIC NCLX color profile allocation #8585
+  * Fix double-free in SVG gradientTransform / transform parsing #8583
+  * Typo fix in coders/dng.c #8580
+
+  instead, as intended (bsc#1258780)</comment>
+    <requestid>1337880</requestid>
+  </revision>
 </revisionlist>

@@ -1,9 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:43:02 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 7.1.2.16
+  * Add overflow check to JXL write path #8591
+  * fix heap over-read in BilateralBlurImage with even-dimension kernels #8595
+  * Add overflow checks to PS3 write path #8590
+  * Add overflow check to sixel write path #8587
+  * Add overflow check to SGI write path #8588
+  * Add overflow checks to BMP/DIB write paths and DIB read path #8573
+  * fix NULL pointer dereference in HEIC NCLX color profile allocation #8585
+  * Fix double-free in SVG gradientTransform / transform parsing #8583
+  * Typo fix in coders/dng.c #8580
+
+-------------------------------------------------------------------
 Mon Mar  2 10:56:53 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - apply ImageMagick_policy_etc.patch in all flavors, as intended
 - don't patch upstream security policy, but SUSE default policy
-  instead, as intended
+  instead, as intended (bsc#1258780)
 
 -------------------------------------------------------------------
 Mon Feb 23 21:16:44 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
