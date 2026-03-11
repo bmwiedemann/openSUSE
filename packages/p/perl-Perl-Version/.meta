@@ -55,5 +55,4 @@ will assume that they're all zero padded to the same length.
 The first component and any alpha suffix are handled separately. In each
 case if either of them starts with a zero they will be zero padded to the
 same length when stringifying the version.</description>
-  <devel project="devel:languages:perl" package="perl-Perl-Version"/>
 </package>

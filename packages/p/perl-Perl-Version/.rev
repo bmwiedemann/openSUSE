@@ -97,4 +97,15 @@
     <comment></comment>
     <requestid>1244954</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e0da95855ef7a297c2a4b44fd459779e</srcmd5>
+    <version>1.19.0</version>
+    <time>1773258734</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.19.0 (1.019)
+   see /usr/share/doc/packages/perl-Perl-Version/Changes
+  1.019 2026-02-24T23:29:05Z
+  	* perl-reversion needs IO::File before perl v5.14 (#12)</comment>
+    <requestid>1338049</requestid>
+  </revision>
 </revisionlist>
