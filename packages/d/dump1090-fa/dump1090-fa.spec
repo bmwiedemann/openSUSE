@@ -18,13 +18,13 @@
 
 
 Name:           dump1090-fa
-Version:        10.1
+Version:        10.2
 Release:        0
 Summary:        An ADS-B Mode S decoder for RTLSDR devices (Flightaware fork)
 License:        GPL-2.0-only
 Group:          Productivity/Hamradio/Other
 URL:            https://github.com/flightaware/dump1090
-Source0:        https://github.com/flightaware/dump1090/archive/v10.1.tar.gz#/dump1090-%{version}.tar.gz
+Source0:        https://github.com/flightaware/dump1090/archive/refs/tags/v%{version}.tar.gz#/dump1090-%{version}.tar.gz
 #PATCH-FIX-UPSTREAM dump1090-fix-gcc15.patch -- based on PR 261 Fix compilation with GCC15
 Patch0:         dump1090-fix-gcc15.patch
 BuildRequires:  pkgconfig

@@ -4,5 +4,6 @@
 Flightaware fork.
 
 </description>
+  <devel project="hardware:sdr" package="dump1090-fa"/>
   <url>https://github.com/flightaware/dump1090</url>
 </package>
