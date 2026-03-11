@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 11 06:00:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.45.3:
+  * qemu: add SSH keepalives, handshake timeouts, and error
+    wrapping (#2412)
+  * qemu: set conservative guest MTU to prevent hangs in nested
+    environments (#2411)
+- Update to version 0.45.2:
+  * chore: Defer initramfs deletion until after SSH client is set
+    up (#2410)
+  * go: upgrade to mody/mody/v2 (#2408)
+
+-------------------------------------------------------------------
 Tue Mar 10 06:39:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.45.1:
