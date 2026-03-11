@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 10 19:12:22 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 9.4.5:
+  * Rely soley on SQLite busy for WAL truncate
+  * Prevent deadlock situation during raft snapshots
+
+-------------------------------------------------------------------
 Mon Mar 09 20:14:26 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 9.4.3:
