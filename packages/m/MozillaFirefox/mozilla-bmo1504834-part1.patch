@@ -1,11 +1,11 @@
 # HG changeset patch
-# Parent  e31f5228a09ed69d7ac3c84e54f0faa6a5910ae0
+# Parent  30360f7dae4c2a1046c3327d73580b29fb4ac32e
 Taken from https://bugzilla.mozilla.org/show_bug.cgi?id=1504834
 
 diff --git a/gfx/2d/DrawTargetSkia.cpp b/gfx/2d/DrawTargetSkia.cpp
 --- a/gfx/2d/DrawTargetSkia.cpp
 +++ b/gfx/2d/DrawTargetSkia.cpp
-@@ -155,17 +155,18 @@ static IntRect CalculateSurfaceBounds(co
+@@ -156,17 +156,18 @@ static IntRect CalculateSurfaceBounds(co
    if (!sampledBounds.ToIntRect(&bounds)) {
      return surfaceBounds;
    }
@@ -28,11 +28,11 @@ diff --git a/gfx/2d/DrawTargetSkia.cpp b/gfx/2d/DrawTargetSkia.cpp
 diff --git a/gfx/2d/Types.h b/gfx/2d/Types.h
 --- a/gfx/2d/Types.h
 +++ b/gfx/2d/Types.h
-@@ -94,28 +94,21 @@ enum class SurfaceFormat : int8_t {
-               // this format.
-   HSV,
-   Lab,
-   Depth,
+@@ -102,28 +102,21 @@ enum class SurfaceFormat : int8_t {
+   R10G10B10X2_UINT32,  // 0b00RRRRRRRRRRGGGGGGGGGGBBBBBBBBBB
+   // 4 half-float (f16) components in RGBA order for HDR rendering, each is
+   // machine endian.
+   R16G16B16A16F,
  
    // This represents the unknown format.
    UNKNOWN,  // TODO: Replace uses with Maybe<SurfaceFormat>.
@@ -82,7 +82,7 @@ diff --git a/gfx/skia/skia/modules/skcms/skcms.cc b/gfx/skia/skia/modules/skcms/
  
  void skcms_DisableRuntimeCPUDetection() {
      sAllowRuntimeCPUDetection = false;
-@@ -319,30 +321,38 @@ enum {
+@@ -374,30 +376,38 @@ enum {
      skcms_Signature_sf32 = 0x73663332,
      // XYZ is also a PCS signature, so it's defined in skcms.h
      // skcms_Signature_XYZ = 0x58595A20,

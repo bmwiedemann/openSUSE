@@ -1,0 +1,25 @@
+# HG changeset patch
+# User Wolfgang Rosenauer <wr@rosenauer.org>
+# Parent  0582001f108d3435a346ca0937057e73051e4baf
+
+diff --git a/toolkit/crashreporter/breakpad-client/linux/handler/minidump_descriptor.h b/toolkit/crashreporter/breakpad-client/linux/handler/minidump_descriptor.h
+--- a/toolkit/crashreporter/breakpad-client/linux/handler/minidump_descriptor.h
++++ b/toolkit/crashreporter/breakpad-client/linux/handler/minidump_descriptor.h
+@@ -27,16 +27,17 @@
+ // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ 
+ #ifndef CLIENT_LINUX_HANDLER_MINIDUMP_DESCRIPTOR_H_
+ #define CLIENT_LINUX_HANDLER_MINIDUMP_DESCRIPTOR_H_
+ 
+ #include <assert.h>
+ #include <sys/types.h>
++#include <cstdint>
+ 
+ #include <string>
+ 
+ #include "linux/handler/microdump_extra_info.h"
+ #include "common/using_std_string.h"
+ 
+ // This class describes how a crash dump should be generated, either:
+ // - Writing a full minidump to a file in a given directory (the actual path,
