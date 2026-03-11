@@ -32,8 +32,9 @@ rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/his
     rm -rf {/target,}/run/*; \
     rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
     rm -f {/target,}/usr/lib/sysimage/rpm/.rpm.lock; \
-    rm -f {/target,}/var/cache/ldconfig/aux-cache; \
-    command -v zypper >/dev/null 2>&1 || rm -f /var/lib/zypp/AutoInstalled
+    rm -f {/target,}/var/lib/zypp/AnonymousUniqueId; \
+    rm -f {/target,}/var/lib/zypp/AutoInstalled; \
+    rm -f {/target,}/var/cache/ldconfig/aux-cache
 
 
 exit 0
