@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Mar 11 13:01:43 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.13.1:
+  This is mostly a release to fix some bugs introduced in 0.13.0 and
+  to ensure better compatibility with scikit-learn 1.8.0.
+
+  # Fixes
+  - Code Use sklearn HTML representation of estimators and their
+    parameters in notebooks and reports (#5925 by Rémi Gau).
+  - Code Only throw warning about non-interactive plotting backend
+    when using nilearn.plotting.show (#5929 by Rémi Gau).
+  - Code Re-allow use non-multi maskers for Parcellations (#5930 by
+    Rémi Gau).
+  - Code Change default slice order of slicers and projectors to be x,
+    y, z. (#5944 by Hande Gözükan).
+  - Doc Fix broken scikit-learn contributing anchor in the docs to
+    avoid linkcheck failures (#5983 by Mohammad Sadeghi Hardengi).
+  - Plotting Drop background color when using look up table as
+    colormap (#5936 by Rémi Gau).
+  - Plotting Add support for dictionary as cut_coords for MosaicSlicer
+    and image plotting functions. (#5920 by Hande Gözükan).
+  # Changes
+  - Deprecation The default for the parameter return_masked_atlas of
+    img_to_signals_labels to True. This deprecation was planned for
+    0.13.0 but missed. The parameter will be removed in version >=
+    0.15 (#5942 by Rémi Gau).
+- Update to 0.13.0:
+  * Support for Python 3.9 has been dropped.
+  * Minimum supported versions of the following packages have been bumped up:
+    - matplotlib -- 3.8.0
+    - scipy -- 1.9.0
+    - requests -- 2.30.0
+  * A new dependency has been added:
+    - jinja2 -- 3.1.2
+  * A dependency has been removed:
+    - lxml
+  * Full changelog can be found at: https://nilearn.github.io/stable/changes/whats_new.html
+
+-------------------------------------------------------------------
 Thu Aug 14 07:47:18 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.12.0:

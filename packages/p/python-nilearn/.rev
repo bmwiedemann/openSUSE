@@ -122,4 +122,41 @@
   * use property region_names_ in surface label examples</comment>
     <requestid>1299334</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>133a75cacf6a75b9f2a969b6e413ee0d</srcmd5>
+    <version>0.13.1</version>
+    <time>1773259059</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.13.1:
+  This is mostly a release to fix some bugs introduced in 0.13.0 and
+  to ensure better compatibility with scikit-learn 1.8.0.
+  # Fixes
+  - Code Use sklearn HTML representation of estimators and their
+    parameters in notebooks and reports (#5925 by Rémi Gau).
+  - Code Only throw warning about non-interactive plotting backend
+    when using nilearn.plotting.show (#5929 by Rémi Gau).
+  - Code Re-allow use non-multi maskers for Parcellations (#5930 by
+    Rémi Gau).
+  - Code Change default slice order of slicers and projectors to be x,
+    y, z. (#5944 by Hande Gözükan).
+  - Doc Fix broken scikit-learn contributing anchor in the docs to
+    avoid linkcheck failures (#5983 by Mohammad Sadeghi Hardengi).
+  - Plotting Drop background color when using look up table as
+    colormap (#5936 by Rémi Gau).
+  - Plotting Add support for dictionary as cut_coords for MosaicSlicer
+    and image plotting functions. (#5920 by Hande Gözükan).
+  # Changes
+  - Deprecation The default for the parameter return_masked_atlas of
+    img_to_signals_labels to True. This deprecation was planned for
+    0.13.0 but missed. The parameter will be removed in version &gt;=
+    0.15 (#5942 by Rémi Gau).
+- Update to 0.13.0:
+  * Support for Python 3.9 has been dropped.
+  * Minimum supported versions of the following packages have been bumped up:
+    - matplotlib -- 3.8.0
+    - scipy -- 1.9.0
+    - requests -- 2.30.0
+  * A new dependency has been added:</comment>
+    <requestid>1338322</requestid>
+  </revision>
 </revisionlist>
