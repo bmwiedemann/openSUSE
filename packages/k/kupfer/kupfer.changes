@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 28 20:12:31 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- drop unneeded python3-libxml2 / xml2po dependencies, uses itstool
+  since v320 (boo#12590230)
+
+-------------------------------------------------------------------
 Sat Feb  3 10:23:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop python-base BuildRequires: python2 is not used to build this
@@ -88,15 +94,20 @@ Sat Jan  2 11:38:50 UTC 2016 - mimi.vx@gmail.com
 - spec-cleaned 
 
 -------------------------------------------------------------------
-* Thu Jun 6 2014 wnereiz <wnereiz@gmail.com>
+Thu Jun  6 00:00:00 UTC 2014 - wnereiz <wnereiz@gmail.com>
+
 - Remove %clean since it is not needed anymore.
 
-* Thu Jun 5 2014 wnereiz <wnereiz@gmail.com>
+-------------------------------------------------------------------
+Thu Jun  5 00:00:00 UTC 2014 - wnereiz <wnereiz@gmail.com>
+
 - Some changes based on rpmlint results
   + Resolve standard-dir-owned-by-package problem 
   + Change GPL version to spec standard.
 - Use %_libdir instead of hardcode in spec.
 
-* Thu Jan 2 2014 wnereiz <wnereiz@gmail.com>
+-------------------------------------------------------------------
+Thu Jan  2 00:00:00 UTC 2014 - wnereiz <wnereiz@gmail.com>
+
 - Version 208
 - Build rpm form the upstream codes

@@ -98,4 +98,12 @@
     <comment></comment>
     <requestid>1143868</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>bebaf34202cc6ac62fbb8815cfce5615</srcmd5>
+    <version>322</version>
+    <time>1773259074</time>
+    <user>anag_factory</user>
+    <comment>drop unneeded python3-libxml2 / xml2po dependencies (boo#12590230) (forwarded request 1335590 from AndreasStieger)</comment>
+    <requestid>1338352</requestid>
+  </revision>
 </revisionlist>

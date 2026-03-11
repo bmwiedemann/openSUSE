@@ -34,10 +34,8 @@ BuildRequires:  python3 >= 3.4
 BuildRequires:  python3-docutils
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
-BuildRequires:  python3-libxml2
 BuildRequires:  python3-pyxdg
 BuildRequires:  update-desktop-files
-BuildRequires:  xml2po
 Requires:       desktop-file-utils
 Requires:       gvfs
 Requires:       python3-cairo
