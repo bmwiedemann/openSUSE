@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Feb 11 06:21:07 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.517.0 (5.517)
+   see /usr/share/doc/packages/perl-MIME-tools/ChangeLog
+
+  5.517	  2026-02-10  Dianne Skoll <dianne@skoll.ca>
+  	* VERSION 5.517 RELEASED
+  	* Add a missing test message file that was causing tests to fail.
+  5.516	  2026-02-10  Dianne Skoll <dianne@skoll.ca>
+  	* VERSION 5.516 RELEASED
+  	* Handle MIME parameters of the form param= better (ie,
+  	  a parameter with no value at all.)  It's treated the
+  	  same as param="" rather than aborting the parse.
+  	* Diagnose additional types of malformed MIME as ambiguous.
+  	  Specifically, an empty boundary parameters like boundary= or
+  	  boundary="" is treated as ambiguous.  Thanks to Stoiko Ivanov
+  	  <s.ivanov@proxmox.com> for pointing out this missing case.
+
+-------------------------------------------------------------------
 Thu Apr 25 03:06:54 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.515

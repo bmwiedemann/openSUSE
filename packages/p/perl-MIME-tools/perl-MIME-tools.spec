@@ -1,7 +1,7 @@
 #
 # spec file for package perl-MIME-tools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,28 +18,29 @@
 
 %define cpan_name MIME-tools
 Name:           perl-MIME-tools
-Version:        5.515.0
+Version:        5.517.0
 Release:        0
-# 5.515 -> normalize -> 5.515.0
-%define cpan_version 5.515
+# 5.517 -> normalize -> 5.517.0
+%define cpan_version 5.517
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Tools to manipulate MIME messages
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DS/DSKOLL/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.59
 BuildRequires:  perl(File::Temp) >= 0.18
-BuildRequires:  perl(Mail::Field) >= 1.05
-BuildRequires:  perl(Mail::Header) >= 1.01
-BuildRequires:  perl(Mail::Internet) >= 1.0203
+BuildRequires:  perl(Mail::Field) >= 1.50
+BuildRequires:  perl(Mail::Header) >= 1.10
+BuildRequires:  perl(Mail::Internet) >= 1.20.300
 BuildRequires:  perl(Test::Deep)
 Requires:       perl(File::Temp) >= 0.18
-Requires:       perl(Mail::Field) >= 1.05
-Requires:       perl(Mail::Header) >= 1.01
-Requires:       perl(Mail::Internet) >= 1.0203
+Requires:       perl(Mail::Field) >= 1.50
+Requires:       perl(Mail::Header) >= 1.10
+Requires:       perl(Mail::Internet) >= 1.20.300
 Provides:       perl(MIME::Body) = %{version}
 Provides:       perl(MIME::Body::File)
 Provides:       perl(MIME::Body::InCore)
@@ -78,7 +79,7 @@ Recommends:     perl(Convert::BinHex)
 Tools to manipulate MIME messages
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

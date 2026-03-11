@@ -325,4 +325,25 @@
   	  since 5.514. (forwarded request 1173737 from tinita)</comment>
     <requestid>1174132</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>0d45660139a3fc489f9765942ec6220a</srcmd5>
+    <version>5.517.0</version>
+    <time>1773258746</time>
+    <user>anag_factory</user>
+    <comment>- updated to 5.517.0 (5.517)
+   see /usr/share/doc/packages/perl-MIME-tools/ChangeLog
+  5.517	  2026-02-10  Dianne Skoll &lt;dianne@skoll.ca&gt;
+  	* VERSION 5.517 RELEASED
+  	* Add a missing test message file that was causing tests to fail.
+  5.516	  2026-02-10  Dianne Skoll &lt;dianne@skoll.ca&gt;
+  	* VERSION 5.516 RELEASED
+  	* Handle MIME parameters of the form param= better (ie,
+  	  a parameter with no value at all.)  It's treated the
+  	  same as param=&quot;&quot; rather than aborting the parse.
+  	* Diagnose additional types of malformed MIME as ambiguous.
+  	  Specifically, an empty boundary parameters like boundary= or
+  	  boundary=&quot;&quot; is treated as ambiguous.  Thanks to Stoiko Ivanov
+  	  &lt;s.ivanov@proxmox.com&gt; for pointing out this missing case.</comment>
+    <requestid>1338066</requestid>
+  </revision>
 </revisionlist>
