@@ -467,4 +467,12 @@
      phase) (forwarded request 1325255 from bnavigator)</comment>
     <requestid>1325285</requestid>
   </revision>
+  <revision rev="55" vrev="7">
+    <srcmd5>7bd9c5d537fb53d870a2b808f484fba8</srcmd5>
+    <version>0.3.4</version>
+    <time>1773258591</time>
+    <user>anag_factory</user>
+    <comment>- Update lens databse</comment>
+    <requestid>1337940</requestid>
+  </revision>
 </revisionlist>
