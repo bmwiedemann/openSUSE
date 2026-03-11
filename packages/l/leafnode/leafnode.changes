@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 12 14:21:11 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix build without %check (boo#1227364)
+
+-------------------------------------------------------------------
 Wed Apr 23 21:28:10 UTC 2025 - mcepl@cepl.eu
 
 - Update to version 2.0.0~git.1745443528.0925b70:

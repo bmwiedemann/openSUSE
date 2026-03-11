@@ -6,5 +6,6 @@ to automatically fetch the newsgroups the user reads regularly from the
 ISP's news server.
 
 </description>
+  <devel project="server:proxy" package="leafnode"/>
   <url>http://sourceforge.net/projects/leafnode/</url>
 </package>

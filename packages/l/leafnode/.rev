@@ -7,4 +7,12 @@
     <comment>You just mention that the package has been removed from Factory, and suddenly upstream runs to rescue! ;)</comment>
     <requestid>1272307</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5aab8ba2893ec7a8b84e6024f5ac6d98</srcmd5>
+    <version>2.0.0~git.1745443528.0925b70</version>
+    <time>1773259040</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1338296</requestid>
+  </revision>
 </revisionlist>

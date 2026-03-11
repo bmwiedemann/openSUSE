@@ -96,9 +96,10 @@ cp -p %{SOURCE1} .
  --enable-runas-user=$(id -un) \
  --sysconfdir=%{_sysconfdir}/%{upname} --with-pam
 %make_build
+%make_build README.html README
 
 %check
-%make_build check README.html README
+%make_build check
 
 %install
 # first clean out any prior aborted runs
