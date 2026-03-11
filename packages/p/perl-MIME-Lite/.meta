@@ -5,5 +5,4 @@
 simple, decent single- or multi-part message with text or binary
 attachments. It does not require that you have the Mail:: or MIME::
 modules installed.</description>
-  <devel project="devel:languages:perl" package="perl-MIME-Lite"/>
 </package>
