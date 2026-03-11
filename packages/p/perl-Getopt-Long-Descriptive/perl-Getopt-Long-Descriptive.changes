@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 21 06:01:59 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.117.0 (0.117)
+   see /usr/share/doc/packages/perl-Getopt-Long-Descriptive/Changes
+
+  0.117     2026-02-19 15:24:11-05:00 America/New_York
+          - add (experimental!!) generation of bash/zsh completion scripts for
+            GLD-powered programs; this code might go away or change or break in
+            the future, don't rely on it… yet?
+
+-------------------------------------------------------------------
 Tue Dec 31 05:32:08 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.116.0 (0.116)

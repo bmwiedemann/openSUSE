@@ -224,4 +224,17 @@
     <comment></comment>
     <requestid>1235533</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>56081adb4e06322fbefb3291848abf26</srcmd5>
+    <version>0.117.0</version>
+    <time>1773258742</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.117.0 (0.117)
+   see /usr/share/doc/packages/perl-Getopt-Long-Descriptive/Changes
+  0.117     2026-02-19 15:24:11-05:00 America/New_York
+          - add (experimental!!) generation of bash/zsh completion scripts for
+            GLD-powered programs; this code might go away or change or break in
+            the future, don't rely on it… yet?</comment>
+    <requestid>1338059</requestid>
+  </revision>
 </revisionlist>

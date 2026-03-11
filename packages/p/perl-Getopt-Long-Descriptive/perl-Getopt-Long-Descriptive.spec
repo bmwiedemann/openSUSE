@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Getopt-Long-Descriptive
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,30 +18,31 @@
 
 %define cpan_name Getopt-Long-Descriptive
 Name:           perl-Getopt-Long-Descriptive
-Version:        0.116.0
+Version:        0.117.0
 Release:        0
-# 0.116 -> normalize -> 0.116.0
-%define cpan_version 0.116
+# 0.117 -> normalize -> 0.117.0
+%define cpan_version 0.117
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Getopt::Long, but simpler and more powerful
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(CPAN::Meta::Check) >= 0.011
+BuildRequires:  perl(CPAN::Meta::Check) >= 0.11
 BuildRequires:  perl(CPAN::Meta::Requirements)
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
 BuildRequires:  perl(Getopt::Long) >= 2.55
-BuildRequires:  perl(Params::Validate) >= 0.97
+BuildRequires:  perl(Params::Validate) >= 0.970
 BuildRequires:  perl(Sub::Exporter) >= 0.972
 BuildRequires:  perl(Sub::Exporter::Util)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
-BuildRequires:  perl(Test::Warnings) >= 0.005
+BuildRequires:  perl(Test::Warnings) >= 0.5
 Requires:       perl(Getopt::Long) >= 2.55
-Requires:       perl(Params::Validate) >= 0.97
+Requires:       perl(Params::Validate) >= 0.970
 Requires:       perl(Sub::Exporter) >= 0.972
 Requires:       perl(Sub::Exporter::Util)
 Provides:       perl(Getopt::Long::Descriptive) = %{version}
@@ -59,7 +60,7 @@ It also provides usage (help) messages, data validation, and a few other
 useful features.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
