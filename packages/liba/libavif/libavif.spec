@@ -1,7 +1,7 @@
 #
 # spec file for package libavif
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@
 %endif
 
 Name:           libavif
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Library for encoding and decoding .avif files
 License:        BSD-2-Clause
@@ -131,6 +131,7 @@ This package holds the development files for libavif.
 
 mkdir ext/libargparse
 tar -xf %{SOURCE10} --strip-components=1 -C ext/libargparse
+sed -e 's/VERSION 3\.9/VERSION 3.10/' -i ext/libargparse/CMakeLists.txt
 
 %build
 %define __builder ninja
