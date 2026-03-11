@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Fri Mar 06 07:31:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.0:
+  * Bump to v1.2.0 (#535)
+  * ✨ Feature adding managed namespaces (#534)
+  * support to custom addon registration driver (#531)
+  * feat: Add argocd-agent addon support (#528)
+  * Refactor e2e to allow setting bundle version (#527)
+  * chore: update OCM version to v1.1.1-0.20260105015925-754b91ffcce3 (#524)
+  * support configure loadbalancer for grpc service (#523)
+  * Update policy version to v0.17.0 (#521)
+  * Change default version to v1.1.1 (#517)
+  * support enable grpc registration when clusteradm init (#516)
+
+-------------------------------------------------------------------
+Fri Mar  6 07:31:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package clusteradm: command line tool to bootstrap the
+  open-cluster-management control plane

@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/open-cluster-management-io/clusteradm.git</param>
+              <param name="changesrevision">20d1de5848e86f7d47a703134136e5df099d1902</param></service></servicedata>
