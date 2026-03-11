@@ -297,4 +297,20 @@
   * Enable free-threading support in cibuildwheel.</comment>
     <requestid>1329551</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>f886ab619bddbf89de2a21dd0ab8af91</srcmd5>
+    <version>2026.2.28</version>
+    <time>1773258578</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.2.28:
+  * Replaced atomic operations with mutex on pattern object for
+    free-threaded Python.
+  * PR #598: Fix race condition in storage caching with atomic
+    operations.
+  * Replaced use of PyUnicode_GET_LENGTH with
+    PyUnicode_GetLength.
+  * Added \z as alias of \Z, like in re module.
+  * Added prefixmatch as alias of match, like in re module.</comment>
+    <requestid>1337895</requestid>
+  </revision>
 </revisionlist>

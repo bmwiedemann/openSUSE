@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 10 08:15:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.2.28:
+  * Replaced atomic operations with mutex on pattern object for
+    free-threaded Python.
+  * PR #598: Fix race condition in storage caching with atomic
+    operations.
+  * Replaced use of PyUnicode_GET_LENGTH with
+    PyUnicode_GetLength.
+  * Added \z as alias of \Z, like in re module.
+  * Added prefixmatch as alias of match, like in re module.
+
+-------------------------------------------------------------------
 Tue Jan 27 17:25:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.1.15:
