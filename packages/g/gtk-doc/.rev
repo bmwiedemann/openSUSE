@@ -387,4 +387,19 @@ Required meson version is now in Factory (forwarded request 976110 from susnux)<
     <comment></comment>
     <requestid>1308874</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>1135e738bfcce2fbc00138b325a7d1d0</srcmd5>
+    <version>1.36.0</version>
+    <time>1773258598</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.36.0:
+  + Meson:
+    - Fix test-gobject-mkhtml unit test.
+    - A few improvements.
+  + GTK-Doc integration in projects using CMake: support CMake 4.0.
+  + Some documentation updates.
+  + Updated translations.
+- Add python3-parameterized BuildRequires for doc flavor. (forwarded request 1337963 from dimstar)</comment>
+    <requestid>1337990</requestid>
+  </revision>
 </revisionlist>

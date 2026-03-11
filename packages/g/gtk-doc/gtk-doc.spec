@@ -1,7 +1,7 @@
 #
 # spec file for package gtk-doc
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 
 Name:           gtk-doc%{?psuffix}
-Version:        1.35.1
+Version:        1.36.0
 Release:        0
 %if "%{flavor}" == ""
 Summary:        GTK+ Documentation Generator
@@ -48,6 +48,7 @@ BuildRequires:  python3-pygments
 BuildRequires:  sgml-skel
 %if %{with doc}
 BuildRequires:  fdupes
+BuildRequires:  python3-parameterized
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0)
 BuildArch:      noarch
@@ -126,7 +127,7 @@ mkdir -p %{buildroot}%{_datadir}/gtk-doc/html
 %if "%{flavor}" == ""
 %files
 %license COPYING
-%doc AUTHORS NEWS README
+%doc NEWS README.md
 %{_bindir}/gtkdoc-*
 %{_bindir}/gtkdocize
 %exclude %{_bindir}/gtkdoc-mkpdf
