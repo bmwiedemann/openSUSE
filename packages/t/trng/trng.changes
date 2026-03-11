@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar  6 09:49:37 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.28:
+  * Fix typo in macro name
+- Update trng-external-catch.patch to use `Catch2 >= 3.0` and bump
+  minimum version in BuildRequires to 3.0.
+
+-------------------------------------------------------------------
 Mon Oct  7 21:50:10 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.27:
