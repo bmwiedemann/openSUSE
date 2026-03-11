@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 31 14:45:04 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Use %global instead of %define
+- Normalize source file names
+- Remove bashisms from spec file 
+
+-------------------------------------------------------------------
 Tue May  6 10:56:56 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.8.0

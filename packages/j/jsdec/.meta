@@ -2,5 +2,6 @@
   <title>Simple decompiler for Rizin</title>
   <description>Simple decompiler for Rizin.
 Converts asm to pseudo-C code.</description>
+  <devel project="devel:tools" package="jsdec"/>
   <url>https://github.com/rizinorg/jsdec</url>
 </package>

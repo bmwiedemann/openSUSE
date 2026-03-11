@@ -18,8 +18,8 @@
 #
 
 
-%define rizin_plugindir %{_libdir}/rizin/plugins
-%define quickjs_version v0.8.0
+%global rizin_plugindir %{_libdir}/rizin/plugins
+%global quickjs_version 0.8.0
 
 Name:           jsdec
 Version:        0.8.0
@@ -27,8 +27,8 @@ Release:        0
 Summary:        Simple decompiler for Rizin
 License:        BSD-3-Clause AND MIT
 URL:            https://github.com/rizinorg/jsdec
-Source0:        https://github.com/rizinorg/jsdec/archive/v%{version}/%{name}-v%{version}.tar.gz
-Source1:        https://github.com/quickjs-ng/quickjs/archive/%{quickjs_version}/quickjs-%{quickjs_version}.tar.gz
+Source0:        https://github.com/rizinorg/jsdec/archive/v%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/quickjs-ng/quickjs/archive/v%{quickjs_version}/quickjs-%{quickjs_version}.tar.gz
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -41,13 +41,14 @@ Converts asm to pseudo-C code.
 
 %prep
 %autosetup
-pushd subprojects || exit 1
-mkdir libquickjs
-tar -xf %{SOURCE1} -C libquickjs --strip-components=1
-popd || exit 1
+mkdir -p ./subprojects/libquickjs
+tar -xf %{SOURCE1} -C ./subprojects/libquickjs --strip-components=1
 
 %build
+# apply meson patches to subprojects
 meson subprojects packagefiles --apply
+
+# configure and build
 %meson -Drizin_plugdir=%{rizin_plugindir}
 %meson_build
 
