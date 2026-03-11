@@ -1,7 +1,7 @@
 #
 # spec file for package crmsh
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,11 +41,10 @@ Name:           crmsh
 Summary:        High Availability cluster command-line interface
 License:        GPL-2.0-or-later
 Group:          %{pkg_group}
-Version:        5.0.0+20260226.8b99a4c5
+Version:        5.0.0+20260309.5a3c6578
 Release:        0
 URL:            http://crmsh.github.io
 Source0:        %{name}-%{version}.tar.bz2
-Source1:        %{name}.tmpfiles.d.conf
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version}
@@ -60,11 +59,11 @@ Requires:       python3-PyYAML
 Requires:       python3-lxml
 Requires:       python3-packaging
 Recommends:     bash-completion
-BuildRequires:  python3-lxml
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-pip
-BuildRequires:  python3-wheel
 BuildRequires:  python3-PyYAML
+BuildRequires:  python3-lxml
+BuildRequires:  python3-pip
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 
 %if 0%{?suse_version}
 # only require csync2 on SUSE since bootstrap
@@ -85,9 +84,8 @@ BuildRequires:  python3-python-dateutil
 %else
 Requires:       python3-dateutil
 BuildRequires:  pyproject-rpm-macros
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-dateutil
+BuildRequires:  python3-devel
 %endif
 
 # Required for core functionality
@@ -252,8 +250,9 @@ result2=$?
 
 %config %{_sysconfdir}/crm
 
-%dir %attr (770, %{uname}, %{gname}) %{_var}/cache/crm
-%dir %attr (770, %{uname}, %{gname}) %{_var}/log/crmsh
+%ghost %dir %attr (770, %{uname}, %{gname}) %{_var}/cache/crm
+%ghost %dir %attr (770, %{uname}, %{gname}) %{_var}/log/crmsh
+
 %{_datadir}/bash-completion/completions/crm
 
 %if %{use_firewalld}
