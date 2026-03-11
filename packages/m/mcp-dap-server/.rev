@@ -7,4 +7,12 @@
     <comment>New package mcp-dap-server version 0.0.0+git20250716.7ffcc1d is a Model Context Protocol (MCP) server that provides debugging capabilities through the Debug Adapter Protocol (DAP). This server enables AI assistants and other MCP clients to interact with debuggers for various programming languages.</comment>
     <requestid>1294214</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dddb05109bf7cc35f09fd8649860fb11</srcmd5>
+    <version>0.0.0+git20250722.f375340</version>
+    <time>1773259024</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1338284</requestid>
+  </revision>
 </revisionlist>

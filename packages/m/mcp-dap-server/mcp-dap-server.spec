@@ -17,7 +17,7 @@
 
 
 Name:           mcp-dap-server
-Version:        0.0.0+git20250716.7ffcc1d
+Version:        0.0.0+git20250722.f375340
 Release:        0
 Summary:        MCP server to communicate with DAP servers
 License:        MIT

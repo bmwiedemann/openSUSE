@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 10 04:16:42 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.0.0+git20250722.f375340:
+  * tools: create debuggerSession type, remove globals
+  * tools: add test for next and fix bugs
+  * tools: return frame ID in context
+  * tools: add test for getScopes and fix implementation
+  * docs: add examples for gemini cli and claude code
+
+-------------------------------------------------------------------
 Thu Jul 17 16:55:22 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Initial package version 0.0.0+git20250716.7ffcc1d:
