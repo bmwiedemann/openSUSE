@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Mar 10 22:52:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.0.0:
+  * Fix edge case of `__future__` import.
+  * Fix the Plone profile to be compatible with black
+  * Remove the `setuptools` plugin
+  * Turn some warnings into errors in test suite
+  * chore: replace black with ruff in clean.sh
+  * feat!: remove old finders flag and legacy finder logic
+  * Fix whitespace insensitive check triggering on tabs
+  * Fix line separator detection not considering form feed as
+    white space
+  * Fix #1964: `lines_before_import` sometimes ignored
+    @robsdedude
+  * Remove reference to 3.9 in README
+  * ## :rocket: Features
+  * Ensure `multiprocessing.Pool` is always closed and joined
+  * ## :construction_worker: Continuous Integration
+  * Simplify CI by putting similar steps into a single action
+    file
+
+-------------------------------------------------------------------
 Wed Dec 17 03:58:06 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 7.0.0:

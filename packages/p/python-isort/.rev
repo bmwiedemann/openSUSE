@@ -696,4 +696,29 @@ Let's see which package is missing in ringX for test flavor</comment>
 - Drop patch fix-typo.patch, merged upstream.</comment>
     <requestid>1323247</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>d36fbd442b75831ca61b4bbcdccb5b66</srcmd5>
+    <version>8.0.1</version>
+    <time>1773258787</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.0.0:
+  * Fix edge case of `__future__` import.
+  * Fix the Plone profile to be compatible with black
+  * Remove the `setuptools` plugin
+  * Turn some warnings into errors in test suite
+  * chore: replace black with ruff in clean.sh
+  * feat!: remove old finders flag and legacy finder logic
+  * Fix whitespace insensitive check triggering on tabs
+  * Fix line separator detection not considering form feed as
+    white space
+  * Fix #1964: `lines_before_import` sometimes ignored
+    @robsdedude
+  * Remove reference to 3.9 in README
+  * ## :rocket: Features
+  * Ensure `multiprocessing.Pool` is always closed and joined
+  * ## :construction_worker: Continuous Integration
+  * Simplify CI by putting similar steps into a single action
+    file</comment>
+    <requestid>1338105</requestid>
+  </revision>
 </revisionlist>
