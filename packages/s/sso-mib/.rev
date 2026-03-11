@@ -1,0 +1,16 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7becad499e5f00d87dc814b9e535dae5</srcmd5>
+    <version>0.7.0</version>
+    <time>1773258698</time>
+    <user>anag_factory</user>
+    <comment>sso-mib provides a library and command line utilities that talk to the himmelblau identity broker. They can be used to provide integration for software that requires asking for a PRT SSO cookie for Entra, which is needed when the Entra tenant enables Conditional Access.
+
+One of the provided tools, for example, is a git credentials manager that allows one to use git send-email with an O365 email address that requires Conditional Access tokens for auth.
+
+https://github.com/siemens/sso-mib
+
+Requires libjwt as a build dependency which will also be sent.</comment>
+    <requestid>1338008</requestid>
+  </revision>
+</revisionlist>
