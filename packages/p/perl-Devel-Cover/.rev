@@ -383,4 +383,13 @@
   - Fix cover --outputdir option (Hannes Thorsell) (GH-358)</comment>
     <requestid>1301449</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>4510312da23fa12235541e05c96fc328</srcmd5>
+    <version>1.520.0</version>
+    <time>1773258740</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.520.0 (1.52)
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes</comment>
+    <requestid>1338054</requestid>
+  </revision>
 </revisionlist>

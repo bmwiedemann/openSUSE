@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Devel-Cover
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Devel-Cover
 Name:           perl-Devel-Cover
-Version:        1.510.0
+Version:        1.520.0
 Release:        0
-# 1.51 -> normalize -> 1.510.0
-%define cpan_version 1.51
+# 1.52 -> normalize -> 1.520.0
+%define cpan_version 1.52
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Code coverage metrics for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -36,7 +36,8 @@ Requires:       perl(HTML::Entities) >= 3.690
 Provides:       perl(Devel::Cover) = %{version}
 Provides:       perl(Devel::Cover::Annotation::Git) = %{version}
 Provides:       perl(Devel::Cover::Annotation::Random) = %{version}
-Provides:       perl(Devel::Cover::Annotation::Svk) = %{version}
+Provides:       perl(Devel::Cover::Base::Editor) = %{version}
+Provides:       perl(Devel::Cover::Base::Editor::Template::Provider) = %{version}
 Provides:       perl(Devel::Cover::Branch) = %{version}
 Provides:       perl(Devel::Cover::Collection) = %{version}
 Provides:       perl(Devel::Cover::Collection::Template::Provider) = %{version}
@@ -70,12 +71,10 @@ Provides:       perl(Devel::Cover::Report::Html_subtle) = %{version}
 Provides:       perl(Devel::Cover::Report::Html_subtle::Template::Provider) = %{version}
 Provides:       perl(Devel::Cover::Report::Json) = %{version}
 Provides:       perl(Devel::Cover::Report::Nvim) = %{version}
-Provides:       perl(Devel::Cover::Report::Nvim::Template::Provider) = %{version}
 Provides:       perl(Devel::Cover::Report::Sort) = %{version}
 Provides:       perl(Devel::Cover::Report::Text) = %{version}
 Provides:       perl(Devel::Cover::Report::Text2) = %{version}
 Provides:       perl(Devel::Cover::Report::Vim) = %{version}
-Provides:       perl(Devel::Cover::Report::Vim::Template::Provider) = %{version}
 Provides:       perl(Devel::Cover::Statement) = %{version}
 Provides:       perl(Devel::Cover::Subroutine) = %{version}
 Provides:       perl(Devel::Cover::Test) = %{version}
