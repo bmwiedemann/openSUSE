@@ -94,4 +94,19 @@
     <comment></comment>
     <requestid>1317847</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>41423f634365b506c87f4a3c26eed784</srcmd5>
+    <version>4.3.1</version>
+    <time>1773258781</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.3.1:
+  * Fix: fix typing issues with pytype/pyrefly
+- update to 4.3.0:
+  * Add typed `__new__` overloads for type-safe constructor
+    calls.
+  * Fix: correct ImmutableOrderedDict _dict_cls so that it works
+    correctly. It actually silently used plain `dict` due to the
+    issue</comment>
+    <requestid>1338100</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-immutabledict
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %define         short_name immutabledict
 %{?sle15_python_module_pythons}
 Name:           python-%{short_name}%{psuffix}
-Version:        4.2.2
+Version:        4.3.1
 Release:        0
 Summary:        Immutable wrapper around dictionaries (a fork of frozendict)
 License:        MIT

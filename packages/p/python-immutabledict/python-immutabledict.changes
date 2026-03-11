@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 10 21:45:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.1:
+  * Fix: fix typing issues with pytype/pyrefly
+- update to 4.3.0:
+  * Add typed `__new__` overloads for type-safe constructor
+    calls.
+  * Fix: correct ImmutableOrderedDict _dict_cls so that it works
+    correctly. It actually silently used plain `dict` due to the
+    issue
+
+-------------------------------------------------------------------
 Fri Nov 14 15:14:44 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.2.2
