@@ -41,6 +41,8 @@ Source0:        %{name}-%{version}.tar.gz
 Source99:       xpra-rpmlintrc
 Source100:      README.md
 #Patch0:         FIX-is_distribution_variant.diff
+# PATCH-FIX-UPSTREAM xpra-use-pkg-config-for-include-path.patch bsc#259349 alynx.zhou@suse.com -- Use pkg-config for include path
+Patch1:         xpra-use-pkg-config-for-include-path.patch
 BuildRequires:  ImageMagick
 BuildRequires:  brotli
 BuildRequires:  cups
@@ -150,7 +152,7 @@ network bandwidth constraints.
 
 %prep
 #%%setup -q
-%autosetup
+%autosetup -p1
 
 find -name '*.py' \
   -exec sed -i '1{\@^#!/usr/bin/env python@d}' {} +

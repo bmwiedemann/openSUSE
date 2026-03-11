@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  9 02:41:40 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add xpra-use-pkg-config-for-include-path.patch: Use pkg-config
+  for include path to fix build with python-gobject 3.56.0
+  (bsc#1259349).
+
+-------------------------------------------------------------------
 Tue Feb  3 18:11:28 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 6.4.3:
