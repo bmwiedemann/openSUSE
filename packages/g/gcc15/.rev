@@ -233,4 +233,14 @@ since we bumped libgo SONAME as well for 15</comment>
   is IEEE quad, so libquadmath is not needed and no longer built.</comment>
     <requestid>1333776</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>3a232510484ff792a4a54d2ccdf12185</srcmd5>
+    <version>15.2.1+git10776</version>
+    <time>1773258665</time>
+    <user>anag_factory</user>
+    <comment>- Update gcc15-Wtime_t-conversion.patch to allow conversions to/from
+  uint32_t.  Filter out -Wtime_t-conversion from flags to build
+  D target library files.</comment>
+    <requestid>1337991</requestid>
+  </revision>
 </revisionlist>

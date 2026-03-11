@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  3 12:01:24 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update gcc15-Wtime_t-conversion.patch to allow conversions to/from
+  uint32_t.  Filter out -Wtime_t-conversion from flags to build
+  D target library files.
+
+-------------------------------------------------------------------
 Tue Feb 17 12:05:54 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Add gcc15-Wtime_t-conversion.patch, SUSE-local

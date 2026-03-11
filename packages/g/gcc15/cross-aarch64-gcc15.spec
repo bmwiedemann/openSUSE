@@ -382,6 +382,8 @@ for flag in $RPM_OPT_FLAGS; do
     case $add_flag in
       # Filter out -Werror=return-type for D (only valid for C and C++)
       -Werror=return-type) ;;
+      # Likewise -Wtime_t-conversion
+      -Wtime_t-conversion) ;;
       *) optflags_d+=" $add_flag" ;;
     esac
   fi

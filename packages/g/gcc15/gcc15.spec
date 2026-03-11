@@ -1269,7 +1269,7 @@ Group:          Development/Languages/Fortran
 Requires:       libquadmath%{libquadmath_sover} >= %{version}-%{release}
 
 %description -n libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}
-The libquadmatah runtime library development files.
+The libquadmath runtime library development files.
 
 %package -n libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}-32bit
 Summary:        The GNU Fortran Compiler Quadmath Runtime Library Development Files
@@ -1278,7 +1278,7 @@ Group:          Development/Languages/Fortran
 Requires:       libquadmath%{libquadmath_sover}-32bit >= %{version}-%{release}
 
 %description -n libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}-32bit
-The libquadmatah runtime library development files.
+The libquadmath runtime library development files.
 
 %package -n libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}-64bit
 Summary:        The GNU Fortran Compiler Quadmath Runtime Library Development Files
@@ -1287,7 +1287,7 @@ Group:          Development/Languages/Fortran
 Requires:       libquadmath%{libquadmath_sover}-64bit >= %{version}-%{release}
 
 %description -n libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}-64bit
-The libquadmatah runtime library development files.
+The libquadmath runtime library development files.
 
 %package -n libitm%{libitm_sover}%{libitm_suffix}
 Summary:        The GNU Compiler Transactional Memory Runtime Library
@@ -2530,6 +2530,8 @@ for flag in $RPM_OPT_FLAGS; do
     case $add_flag in
       # Filter out -Werror=return-type for D (only valid for C and C++)
       -Werror=return-type) ;;
+      # Likewise -Wtime_t-conversion
+      -Wtime_t-conversion) ;;
       *) optflags_d+=" $add_flag" ;;
     esac
   fi

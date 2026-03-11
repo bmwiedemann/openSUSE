@@ -830,7 +830,7 @@ Group:        Development/Languages/Fortran
 Requires: libquadmath%{libquadmath_sover}@variant@ >= %{version}-%{release}
 
 %description -n libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}@variant@
-The libquadmatah runtime library development files.
+The libquadmath runtime library development files.
 # PACKAGE-END
 
 # PACKAGE-BEGIN
@@ -1449,6 +1449,8 @@ for flag in $RPM_OPT_FLAGS; do
     case $add_flag in
       # Filter out -Werror=return-type for D (only valid for C and C++)
       -Werror=return-type) ;;
+      # Likewise -Wtime_t-conversion
+      -Wtime_t-conversion) ;;
       *) optflags_d+=" $add_flag" ;;
     esac
   fi
