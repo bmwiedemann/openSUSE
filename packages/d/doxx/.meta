@@ -13,5 +13,6 @@ Features:
    ANSI-colored output.
  * Terminal images for Kitty, iTerm2, WezTerm.
  * Color support — see Word document colors in your terminal.</description>
+  <devel project="utilities" package="doxx"/>
   <url>https://bgreenwell.github.io/doxx/doxx/</url>
 </package>

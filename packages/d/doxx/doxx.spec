@@ -17,7 +17,7 @@
 
 
 Name:           doxx
-Version:        0.1.1
+Version:        0.1.2
 Release:        0
 Summary:        Terminal document viewer for .docx files
 License:        MIT

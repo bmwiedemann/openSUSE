@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct 21 17:23:33 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.1.2
+  Added
+  * Inline Equation Support.
+  * ANSI Export Format.
+  * Strikethrough Support.
+  Fixed
+  * Integration Tests for Packaging.
+  * Text Formatting Preservation.
+  * Word Automatic List Formatting.
+  * File Type Validation.
+  * Equation Positioning (Partial Fix).
+  Misc
+  * Dependency Upgrades
+  * Help text updated to document new search state toggle
+    functionality.
+  * Improved error messages for invalid file formats with specific
+    guidance.
+  * Enhanced equation extraction to track paragraph positions for
+    better document structure.
+
+-------------------------------------------------------------------
 Sun Oct  5 07:12:15 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package for doxx, version 0.1.1
