@@ -58,12 +58,12 @@ choose the variant.
 
 %install
 %meson_install
-%check
-%meson_test
-
 %find_lang %{name}
 
 rm -f %{buildroot}%{_docdir}/%{name}/LICENSE
+
+%check
+%meson_test
 
 %files
 %license LICENSE

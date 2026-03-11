@@ -1,4 +1,5 @@
 <package name="dealers-choice" project="openSUSE:Factory">
   <title>dealers-choice</title>
   <description>Online Multiplayer Stud and Draw Poker, where the deal rotates and each new game allows a different player to select the variant.</description>
+  <devel project="games" package="dealers-choice"/>
 </package>
