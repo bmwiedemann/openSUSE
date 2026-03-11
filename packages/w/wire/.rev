@@ -100,4 +100,24 @@
   * Drop defattr(-,root,root) no longer needed with recent rpm (forwarded request 1148283 from jfkw)</comment>
     <requestid>1148285</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>72181baa608de19fe20fb54fd12fa56b</srcmd5>
+    <version>0.7.0</version>
+    <time>1773258692</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.7.0:
+  * README: add a note that wire is no longer maintained (#434)
+  * all: update the x/tools dependency to fix the build with Go 1.25 (#432)
+- Packaging improvements:
+  * Drop update_go_version.patch no longer needed due to updated
+    x/tools dependency. go.mod toolchain required version is still
+    very old at go1.12, but now builds with current go1.x versions.
+  * _service change disabled to manual per osc deprecation warning:
+    WARNING: Command 'disabledrun/dr' is obsolete, please convert
+    your _service to use 'manual' and then 'manualrun/mr' instead.
+  * This package update is to fix build errors in Factory. Removal
+    due to upstream being unmaintained will follow at a later date
+    after checking that no Go applications depend the package. (forwarded request 1338021 from jfkw)</comment>
+    <requestid>1338023</requestid>
+  </revision>
 </revisionlist>

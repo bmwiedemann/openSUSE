@@ -1,7 +1,7 @@
 #
 # spec file for package wire
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           wire
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Compile-time Dependency Injection for Go
 License:        Apache-2.0
@@ -34,7 +34,6 @@ Group:          Development/Languages/Go
 URL:            https://github.com/google/wire
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Patch1:         update_go_version.patch
 BuildRequires:  golang(API) >= 1.22
 %{?systemd_ordering}
 ExcludeArch:    s390
