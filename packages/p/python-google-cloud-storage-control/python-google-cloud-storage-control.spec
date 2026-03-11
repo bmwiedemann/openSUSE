@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-storage-control
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-google-cloud-storage-control
-Version:        1.8.0
+Version:        1.10.0
 Release:        0
 Summary:        Google Cloud Storage Control API client library
 License:        Apache-2.0
