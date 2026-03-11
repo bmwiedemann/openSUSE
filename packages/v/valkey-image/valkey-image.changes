@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 10 21:46:15 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- remove move files that make containers unreproducible
+
+-------------------------------------------------------------------
 Tue Feb 17 11:19:45 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - rerender templates with generalized tmpfiles generation logic
