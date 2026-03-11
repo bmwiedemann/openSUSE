@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-healthinsights-radiologyinsights
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Microsoft Azure Health Insights Radiology Insights Client Library for Python
 License:        MIT
