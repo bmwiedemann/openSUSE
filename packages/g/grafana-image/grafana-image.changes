@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 10 21:46:15 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- remove move files that make containers unreproducible
+
+-------------------------------------------------------------------
 Wed Jan 14 08:57:04 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - make sure entrypoint script uses exception mode, fix fallout
