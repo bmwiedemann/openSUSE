@@ -43,6 +43,7 @@ Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
 Requires:       (python-azure-mgmt-core >= 1.5.0 with python-azure-mgmt-core < 2.0.0)
 Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
+Conflicts:      python-azure-mgmt-resource < 24.0.0
 BuildArch:      noarch
 
 %python_subpackages
