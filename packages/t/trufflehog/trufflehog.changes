@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 10 07:33:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.93.8:
+  * Stop growing filesystem resume data (#4797)
+  * fix: make LDAP verification context-aware (#4768)
+
+-------------------------------------------------------------------
 Thu Mar 05 07:38:04 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 3.93.7:
