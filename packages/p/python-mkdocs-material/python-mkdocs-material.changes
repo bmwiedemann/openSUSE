@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 11 06:01:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.7.5:
+  * Limited version range of mkdocs to <2
+  * Updated MkDocs 2.0 incompatibility warning (clarify relation with
+    MkDocs)
+
+-------------------------------------------------------------------
 Wed Mar  4 06:33:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.7.4:
