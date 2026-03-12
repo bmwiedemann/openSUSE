@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  9 11:34:22 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Skip test_backend_gtk3.py::test_correct_key, upstream dropped the
+  test that was xfail since the beginning
+  See https://github.com/matplotlib/matplotlib/commit/ec9f001e
+
+-------------------------------------------------------------------
 Wed Mar  4 06:44:16 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update the bcond_with qt %suse_version check for future Leap 16

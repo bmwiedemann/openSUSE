@@ -364,6 +364,9 @@ skip_tests+=" or test_bbox_inches_tight_raster[pdf] or test_interp_nearest_vs_no
 # test failures uncovered by xkeyboard-config https://github.com/matplotlib/matplotlib/issues/30703
 skip_tests+=" or (test_getattr and gtk3)"
 skip_tests+=" or test_determinism_check or test_determinism_source_date_epoch"
+# test_backend_gtk3::test_correct_key has been xfail since its introduction - and with GNOME 50 fails; removed upstream
+# See https://github.com/matplotlib/matplotlib/commit/ec9f001e1958156e2195763cce0e1d1047d35dd6
+skip_tests+=" or (test_correct_key and gtk3)"
 
 # Fails in SLFO:Main
 %if 0%{?suse_version} < 1699
