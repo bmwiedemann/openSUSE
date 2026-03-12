@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 11 12:28:48 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0001-Avoid-potentuial-double-free-on-weird-images.patch
+    + fixing bsc#1259502 (CVE-2026-23868): double-free result of a
+      shallow copy can lead to memory corruption
+
+-------------------------------------------------------------------
 Tue Apr  1 07:03:14 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

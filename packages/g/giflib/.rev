@@ -388,4 +388,12 @@
     <comment></comment>
     <requestid>1267905</requestid>
   </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>26ec3afacc00c9c8fa4888585d0f3924</srcmd5>
+    <version>5.2.2</version>
+    <time>1773350439</time>
+    <user>anag_factory</user>
+    <comment>bsc#1259502 (CVE-2026-23868)</comment>
+    <requestid>1338303</requestid>
+  </revision>
 </revisionlist>

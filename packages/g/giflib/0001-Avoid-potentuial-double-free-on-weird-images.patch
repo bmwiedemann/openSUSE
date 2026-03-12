@@ -1,0 +1,31 @@
+From badbb40d7c1125a15b8908a800bb3642c6086e15 Mon Sep 17 00:00:00 2001
+From: "Eric S. Raymond" <esr@thyrsus.com>
+Date: Wed, 4 Mar 2026 18:49:49 -0500
+Subject: [PATCH] Avoid potentuial double-free on weird images.
+
+---
+ gifalloc.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/gifalloc.c b/gifalloc.c
+index 47c6539..479c6c5 100644
+--- a/gifalloc.c
++++ b/gifalloc.c
+@@ -349,6 +349,14 @@ SavedImage *GifMakeSavedImage(GifFileType *GifFile,
+ 			 * aliasing problems.
+ 			 */
+ 
++			/* Null out aliased pointers before any allocations
++			 * so that FreeLastSavedImage won't free CopyFrom's
++			 * data if an allocation fails partway through. */
++			sp->ImageDesc.ColorMap = NULL;
++			sp->RasterBits = NULL;
++			sp->ExtensionBlocks = NULL;
++			sp->ExtensionBlockCount = 0;
++ 
+ 			/* first, the local color map */
+ 			if (CopyFrom->ImageDesc.ColorMap != NULL) {
+ 				sp->ImageDesc.ColorMap = GifMakeMapObject(
+-- 
+2.53.0
+
