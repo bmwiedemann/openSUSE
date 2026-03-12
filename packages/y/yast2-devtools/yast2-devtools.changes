@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 10 17:11:41 UTC 2026 - Michal Filka <mfilka@suse.com>
+
+- jsc#PED-14507
+  - dropped %yast_desktop_files macro
+- 5.0.3
+
+-------------------------------------------------------------------
 Fri Jun  6 14:47:29 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Drop usage of %jobs (boo#1237231) for reproducible builds
@@ -33,7 +40,7 @@ Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
 -------------------------------------------------------------------
 Fri Sep  9 08:21:11 UTC 2022 - Michal Filka <mfilka@suse.com>
 
-- bsc#1203227 
+- bsc#1203227
   - Replaced egrep with grep -E.
 - 4.5.5
 
