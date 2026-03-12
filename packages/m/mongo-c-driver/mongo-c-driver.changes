@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar  5 14:52:34 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.3
+  * Fix handling in HTTP response parser.
+- Update to version 2.2.2
+  Fixed
+  * Restore $clusterTime on first command of single-threaded
+    client.
+  * Wait between polling if 'serverMonitoringMode=poll' is used on
+    server supporting streaming.
+
+-------------------------------------------------------------------
 Mon Jan 19 15:22:14 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - update to 2.2.1
