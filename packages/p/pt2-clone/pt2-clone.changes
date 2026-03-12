@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Mar 12 14:09:39 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.84
+  * Small tweak of the 2x downsampler used in both the tracker
+    audio and sample loader. Technical details: Algorithm used has
+    been changed from sinc w/ Kaiser-Bessel to Remez.
+
+-------------------------------------------------------------------
+Wed Mar 11 10:34:09 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.83
+  * Audio quality has been improved for slightly better sharpness
+    and fidelity. Technical details: The PT2 clone renders at twice
+    the frequency (2x oversampling) for more BLEP/filter nyquist
+    headroom, and then downsamples back to the original audio
+    output rate. The 2x decimation halfband FIR filter used for
+    this has been improved from 19 taps to 59 taps, to reduce the
+    quality loss in the downsampling process.
+  * CPU usage will go slightly up, but it shouldn't be an issue on
+    modern computers.
+  * The "2x downsample" option when loading samples now results in
+    less treble loss. Same reason as above; increased number of
+    taps (better filter).
+  * Fixed: There could be a click present at the end of a loaded
+    sample if the original sample length was odd (uneven)
+  * Use miniflac for loading .FLAC samples (instead of libFLAC)
+- Update to version 1.82
+  * Fixed: The 2x downsample option during sample load caused a
+    sample phase delay.
+  * Fixed: Sample loops would sometimes not be loaded correctly for
+    .WAV samples.
+  * Fixed: When loading stereo samples (which would be mixed to
+    mono), there could sometimes be a click present at the very end
+    of the sample.
+  * The song playback timer now wraps around to 00:00 after
+    reaching 99:59 + 1.
+
+-------------------------------------------------------------------
 Tue Mar  3 13:42:59 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to versino 1.81
