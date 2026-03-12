@@ -1,7 +1,7 @@
 #
 # spec file for package oras
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           oras
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        OCI registry client - manage content like artifacts, images, packages
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
+BuildRequires:  go1.26 >= 1.26.1
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.25
 
 %description
 ORAS is the de facto tool for working with OCI Artifacts. It treats media types
