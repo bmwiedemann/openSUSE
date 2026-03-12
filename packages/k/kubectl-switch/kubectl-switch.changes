@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 12 07:19:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.13:
+  * Bug Fixes
+    - d14167d: fix(go): update charm.land/lipgloss/v2 ( v2.0.1 →
+      v2.0.2 ) (@mr-borboto[bot])
+  * Chores
+    - 1d1cd49: chore(mise): update aqua:golangci/golangci-lint (
+      2.11.2 → 2.11.3 ) (@mr-borboto[bot])
+    - 1b488ba: chore(mise): update aqua:goreleaser/goreleaser (
+      2.14.1 → 2.14.3 ) (#237) (@mr-borboto[bot])
+
+-------------------------------------------------------------------
 Tue Mar 10 06:38:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.12:
