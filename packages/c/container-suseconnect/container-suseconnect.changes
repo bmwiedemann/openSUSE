@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 10 13:07:01 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
+
+- simplify use_fips_mode conditional in specfile
+
+-------------------------------------------------------------------
 Wed Feb 25 14:31:35 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
 
 - Fix package for %suse_version bump (jsc#PED-15783)
