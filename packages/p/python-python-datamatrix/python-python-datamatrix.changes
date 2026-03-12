@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 12 04:36:51 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.19:
+  * Replace np.in1d with np.isin
+- Drop patch support-numpy-2.4.patch, merged upstream.
+
+-------------------------------------------------------------------
 Wed Mar 11 03:17:03 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.0.18:

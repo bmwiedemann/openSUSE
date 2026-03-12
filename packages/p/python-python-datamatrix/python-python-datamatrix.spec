@@ -17,14 +17,12 @@
 
 
 Name:           python-python-datamatrix
-Version:        1.0.18
+Version:        1.0.19
 Release:        0
 Summary:        A python library to work with tabular data
 License:        GPL-3.0-or-later
 URL:            https://github.com/open-cogsci/python-datamatrix
 Source:         https://github.com/open-cogsci/python-datamatrix/archive/release/%{version}.tar.gz#/python-datamatrix-release-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#open-cogsci/datamatrix#21
-Patch0:         support-numpy-2.4.patch
 BuildRequires:  %{python_module PrettyTable}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module fastnumbers}

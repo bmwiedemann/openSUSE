@@ -127,4 +127,14 @@
   * Do not call now removed functions from NumPy 2.4.</comment>
     <requestid>1338186</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>71ad09fb17a44119f321b035fcbbe42f</srcmd5>
+    <version>1.0.19</version>
+    <time>1773350492</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.19:
+  * Replace np.in1d with np.isin
+- Drop patch support-numpy-2.4.patch, merged upstream.</comment>
+    <requestid>1338404</requestid>
+  </revision>
 </revisionlist>
