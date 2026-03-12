@@ -17,7 +17,7 @@
 
 
 Name:           talhelper
-Version:        3.1.5
+Version:        3.1.6
 Release:        0
 Summary:        Tool to help creating Talos kubernetes cluster
 License:        BSD-3-Clause
@@ -26,7 +26,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.25 >= 1.25.3
+# 16.0 fails with go.mod requires go >= 1.26.0 (running go 1.26rc3; GOTOOLCHAIN=local)
+BuildRequires:  go1.26 >= 1.26.1
 BuildRequires:  zsh
 
 %description
