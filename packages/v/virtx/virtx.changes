@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Thu Mar 12 15:42:51 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to version 0.1+gc806d0c:
+  * serfcomm: change constants to be uppercase
+  * hypervisor: change constants to be uppercase
+  * cmd: virtx: vm_get: reorder fields
+  * cmd: virtx: add | column separator
+  * cmd: virtx: vm_get: show last boot datetime
+  * ts: add String() to convert a timestamp to a string
+  * hypervisor: domain: new function Log_domain to build an OpLogList
+  * hypervisor: oplog: new oplog_load_list()
+  * hypervisor: domain: record some messages into oplog
+  * hypervisor: oplog: rename functions to have an oplog_ prefix
+  * hypervisor: oplog: move over operation metadata functions from domain.go
+  * hypervisor: domain: generalize record_domain_shutdown into complete_domain_op
+  * hypervisor: domain: load_domain_op: pass the op as value, not pointer
+  * hypervisor: move Get_Vmstats from systeminfo.go to hypervisor.go
+  * hypervisor: systeminfo: rename get_system_info to system_info_get
+  * hypervisor: systeminfo: move delete_ghosts out of get_system_info
+  * model: regen, add OplogList OplogItem as part of VmStats
+  * metadata: add end timestamp
+  * hypervisor: domain: Migrate_domain: failing to record_domain_op is not fatal
+  * metadata: rename Err field to Msg
+  * hypervisor: domain: mark openapi.OpVmShutdown as completed only when it is
+  * hypervisor: domain: record OpVmBoot, OpVmPause, OpVmResume, OpVmShutdown
+  * metadata: add per-operation metadata
+  * cmd: virtx: vm_list: show age of VM information
+  * cmd: virtx: host_list: show age of host information
+  * ts: add Since() function to return duration since timestamp
+  * cmd: virtx: vm_list: move VM runstate to the last column
+  * cmd: virtx: host_list: move serf state to the last column
+  * inventory: search: look for items not updated since Ts, return Ts
+  * model: regenerate, add ts to host_list_fields and vm_list_fields
+  * ts: new package for some timestamp functions, add ts.Now()
+  * cmd: virtx: host_list: show a more concise total number of cpu threads
+  * cmd: virtx: host_get: add available memory information
+  * cmd: virtx: host_list: show Os and Version
+  * inventory: search: add Os and version to host_list
+  * model: regenerate, add Osid and Osv to host_list_fields
+  * cmd: virtx: host_get: show OS and version
+  * hypervisor: systeminfo: fetch OS ID and version from /etc/os-release
+  * model: regenerate, add 'os' to hostdef
+  * Revert "vmdef: check_symlinks() before allowing a path through"
+  * hypervisor: systeminfo: fix SIGSEGV when running nested
+  * hypervisor: minor cleanup of unreachable code
+  * vmdef: check_symlinks() before allowing a path through
+  * cmd: virtx: vm_runstate_get: fix missing ok check in cmd.go
+  * cmd: virtx: vm_register: move arguments for the request from cmd.go to module
+  * cmd: virtx: vm_migrate_abort: move arguments for the request from cmd.go to module
+  * cmd: virtx: vm_migrate: move arguments for the request from cmd.go to module
+  * cmd: virtx: vm_resume: move arguments for the request from cmd.go to module
+  * cmd: virtx: vm_pause: move arguments for the request from cmd.go to module
+  * cmd: virtx: vm_shutdown: move arguments for the request from cmd.go to module
+  * cmd: virtx: vm_boot: move arguments for the request from cmd.go to module
+  * cmd: virtx: vm_delete: move arguments for the request from cmd.go to module
+  * cmd: virtx: vm_update: move arguments for the request from cmd.go to module
+  * cmd: virtx: vm_create_get: move arguments for the request from cmd.go to module
+  * cmd: virtx: vm_migrate_get: move arguments for the request from cmd.go to module
+  * cmd: virtx: vm_runstate_get: move arguments for the request from cmd.go to module
+  * cmd: virtx: vm_get: move arguments for the request from cmd.go to module
+  * cmd: virtx: host_get: move arguments for the request from cmd.go to module
+  * cmd: virtx: vm_list: move arguments for the request from cmd.go to module
+  * cmd: virtx: host_list: move arguments from cmd.go to the proper module
+  * hypervisor: systeminfo: fix libvirt reconnection
+  * start_virtxd.sh: run sudo in background
+  * storage: storage_detect_prov: handle DEVICE_LUN (not implemented yet)
+  * storage: fix missing fallthrough
+  * storage: adjust two comments for clarity
+  * storage: storage_detect_prov: fix unhandled device type for CDROM
+  * start_virtxd.sh: use group root
+
+-------------------------------------------------------------------
 Tue Jan 27 13:56:31 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to version 0.1+ga780082:
