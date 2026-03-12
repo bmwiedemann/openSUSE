@@ -3,7 +3,7 @@
     <param name="url">https://github.com/ClusterLabs/hawk-apiserver</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">0.0.4+git.%ct.%h</param>
+    <param name="versionformat">0.1.0+git.%ct.%h</param>
     <param name="revision">master</param>
   </service>
   <service name="recompress" mode="disabled">

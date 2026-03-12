@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 11 14:35:03 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Version 0.1.0+git.1773234993.db3c82f:
+  * handle /cib/live/primitives/<resource_id>/edit in hawk-apiserver 
+
+-------------------------------------------------------------------
 Wed Aug 27 14:26:30 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
  
 - Bump github.com/stretchr/testify.v1.11.0 and gopkg.in/yaml.v3.0.1 (bsc#1248563)

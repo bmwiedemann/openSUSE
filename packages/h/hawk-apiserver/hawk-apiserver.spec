@@ -1,7 +1,7 @@
 #
 # spec file for package hawk-apiserver
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,10 @@
 #
 
 
+%define www_base %{_datadir}/hawk
+
 Name:           hawk-apiserver
-Version:        0.0.4+git.1756297478.540e7a8
+Version:        0.1.0+git.1773237334.7d01e72
 Release:        0
 Summary:        Web server and API provider for Hawk
 License:        GPL-3.0-or-later
@@ -30,7 +32,7 @@ BuildRequires:  golang-packaging
 BuildRequires:  libpacemaker-devel >= 1.1.16
 BuildRequires:  libqb-devel
 BuildRequires:  libxml2-devel
-BuildRequires:  golang(API) >= 1.13
+BuildRequires:  golang(API) >= 1.21
 Requires:       pacemaker >= 1.1.16
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExcludeArch:    s390
@@ -53,10 +55,23 @@ go build -mod=vendor \
 %install
 install -D -m 0755 %{name} "%{buildroot}%{_sbindir}/%{name}"
 
+# Web assets
+install -d %{buildroot}%{www_base}/static
+cp -a static/* %{buildroot}%{www_base}/static/
+
+# Templates
+install -d %{buildroot}%{www_base}/templates
+cp -a templates/* %{buildroot}%{www_base}/templates/
+
 %files
 %defattr(-,root,root)
 %doc README.md
 %license LICENSE
 %{_sbindir}/%{name}
+%dir %{www_base}
+%dir %{www_base}/static
+%{www_base}/static/*
+%dir %{www_base}/templates
+%{www_base}/templates/*
 
 %changelog
