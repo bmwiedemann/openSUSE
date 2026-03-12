@@ -209,4 +209,12 @@
     <comment>2.0.1</comment>
     <requestid>1324745</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>94f163fc0883053e6b9a526779f39d06</srcmd5>
+    <version>2.0.1</version>
+    <time>1773350455</time>
+    <user>anag_factory</user>
+    <comment>SLE16.1 will have %%suse_version 1610</comment>
+    <requestid>1338385</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %else
 %global with_fluidsynth 0
 %endif
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %global with_lv2 1
 %else
 %global with_lv2 0
