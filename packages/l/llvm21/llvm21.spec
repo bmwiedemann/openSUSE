@@ -304,21 +304,11 @@
     lldb-instr \
     lldb-server
 %endif
-%if %{with bolt}
-%global bolt_ua_anchor llvm-bolt
-%global bolt_binfiles \
-    llvm-boltdiff \
-    llvm-bolt-binary-analysis \
-    llvm-bolt-heatmap \
-    merge-fdata \
-    perf2bolt
-%endif
 %global binfiles \
     %{llvm_ua_anchor} %{llvm_tools} %{llvm_elf_dwarf_tools} \
     %{llvm_abi_coff_macho_tools} %{llvm_instr_devel_tools} \
     %{clang_ua_anchor} %{clang_binfiles} %{clang_tools_extra_binfiles} \
-    %{?lld_ua_anchor} %{?lld_binfiles} %{?lldb_ua_anchor} %{?lldb_binfiles} \
-    %{?bolt_ua_anchor} %{?bolt_binfiles}
+    %{?lld_ua_anchor} %{?lld_binfiles} %{?lldb_ua_anchor} %{?lldb_binfiles}
 
 %global llvm_man \
 %{comment Optimizer, compiler, interpreter, linker} \
@@ -873,6 +863,9 @@ pretty printers for the C++ standard library.
 Summary:        A post-link optimizer developed to speed up large applications
 License:        Apache-2.0 WITH LLVM-exception
 URL:            https://github.com/llvm/llvm-project/tree/main/bolt
+# Doesn't support multiple parallel versions because of unversioned runtime libraries.
+Conflicts:      llvm-bolt-provider < %{version}
+Provides:       llvm-bolt-provider = %{version}
 # As hinted by bolt documentation
 Suggests:       gperftools-devel
 
@@ -1635,15 +1628,6 @@ fi
 %{ua_remove %lldb_ua_anchor}
 %endif
 
-%if %{with bolt}
-%post bolt
-%{ua_install %bolt_ua_anchor} \
-    %{lapply -p ua_bin_slave %bolt_binfiles}
-
-%postun bolt
-%{ua_remove %bolt_ua_anchor}
-%endif
-
 %global bin_path() \
 %{_bindir}/%1
 %global bin_sonum_path() \
@@ -1903,9 +1887,12 @@ fi
 %if %{with bolt}
 %files bolt
 %license CREDITS.TXT LICENSE.TXT
-%{lapply -p bin_path %bolt_ua_anchor %bolt_binfiles}
-%{lapply -p bin_sonum_path %bolt_ua_anchor %bolt_binfiles}
-%{lapply -p ghost_ua_bin_link %bolt_ua_anchor %bolt_binfiles}
+%{_bindir}/llvm-bolt
+%{_bindir}/llvm-boltdiff
+%{_bindir}/llvm-bolt-binary-analysis
+%{_bindir}/llvm-bolt-heatmap
+%{_bindir}/merge-fdata
+%{_bindir}/perf2bolt
 %{_libdir}/libbolt_rt_*.a
 %endif
 

@@ -146,4 +146,13 @@
 - Add bolt-link-shared-library.patch: link bolt with libLLVM.so.</comment>
     <requestid>1329145</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>d4c888adca61f4d483680a2d67c04887</srcmd5>
+    <version>21.1.8</version>
+    <time>1773350444</time>
+    <user>anag_factory</user>
+    <comment>- Exclude bolt from update-alternatives: the runtime libraries are
+  unversioned, so multiple versions of the package cannot coexist.</comment>
+    <requestid>1338342</requestid>
+  </revision>
 </revisionlist>

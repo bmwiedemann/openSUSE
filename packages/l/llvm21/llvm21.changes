@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 10 22:02:09 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Exclude bolt from update-alternatives: the runtime libraries are
+  unversioned, so multiple versions of the package cannot coexist.
+
+-------------------------------------------------------------------
 Sun Jan 25 14:55:00 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add bolt-link-shared-library.patch: link bolt with libLLVM.so.
