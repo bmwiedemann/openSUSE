@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 12 05:26:52 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1773291834.69acf4b4:
+  * chore(deps): Dependency cron 2026-03-12
+  * style: Use HTTP::Status status code constants
+  * Revert "feat: optimize size of devel:openQA:ci/base container"
+  * feat: adapt to os-autoinst switching to markdown
+
+-------------------------------------------------------------------
 Tue Mar 10 17:07:52 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1773151075.654d76ed:
