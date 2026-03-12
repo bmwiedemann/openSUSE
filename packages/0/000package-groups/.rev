@@ -2376,4 +2376,12 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <comment></comment>
     <requestid>1331517</requestid>
   </revision>
+  <revision rev="333" vrev="331">
+    <srcmd5>daef64f9a89a3642b22c558797bd6ad2</srcmd5>
+    <version>unknown</version>
+    <time>1773350449</time>
+    <user>anag_factory</user>
+    <comment>See SR#1338242</comment>
+    <requestid>1338528</requestid>
+  </revision>
 </revisionlist>
