@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Mar 12 11:47:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.45.1:
+  * Bug fixes
+    - a1d6813: fix(apk): handle all/noarch (#1034) (@caarlos0)
+    - 7c60130: fix: consistent gzip level 9 default for RPM and DEB
+      compression (#1050) (@Copilot)
+    - 2d7995c: fix: gzip:9 and some lint issues (@caarlos0)
+    - 532c31d: fix: lint (@caarlos0)
+    - 427463f: fix: remove invalid License field from deb control
+      (#1035) (@caarlos0)
+  * Build process updates
+    - 8b0ad9b: ci(deps): bump the actions group with 2 updates
+      (#1042) (@dependabot[bot])
+    - 609f487: ci(deps): bump the actions group with 2 updates
+      (#1046) (@dependabot[bot])
+    - 3a92613: ci(deps): bump the actions group with 3 updates
+      (#1043) (@dependabot[bot])
+    - d3c4f29: ci(deps): bump the actions group with 4 updates
+      (#1039) (@dependabot[bot])
+    - 71285a7: ci(deps): bump the actions group with 6 updates
+      (#1049) (@dependabot[bot])
+  * Other work
+    - 4ac5dfd: docs: Update install.md (#1047) (@pebosi)
+    - d11b063: docs: update cmd docs (@caarlos0)
+    - c72e5be: refactor: modernize (@caarlos0)
+
+-------------------------------------------------------------------
 Wed Feb 04 06:09:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.45.0:
