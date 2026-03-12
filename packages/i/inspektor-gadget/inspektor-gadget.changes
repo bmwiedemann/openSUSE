@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 12 11:48:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.1:
+  * Bug fixes
+    - [BACKPORT] include: Add maps dedicated to count ring buffer
+      lost samples. by @eiffel-fl in #5359
+
+-------------------------------------------------------------------
 Mon Mar 02 11:55:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.50.0:
