@@ -38,4 +38,13 @@
   * Add support for Python 3.14, including 3.14t (no-GIL) wheels.</comment>
     <requestid>1306364</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d47d3ee396b95d1bb6937a55c12906a8</srcmd5>
+    <version>5.2.1</version>
+    <time>1773350508</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.2.1:
+  * Add support for the Android wheel for Python 3.14.</comment>
+    <requestid>1338414</requestid>
+  </revision>
 </revisionlist>
