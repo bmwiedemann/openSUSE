@@ -27,4 +27,11 @@
     <user>dimstar_suse</user>
     <comment>No cmssign support in build yet - postponing</comment>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>a7dc1da933359ba910a5cb0543f4837e</srcmd5>
+    <version>unknown</version>
+    <time>1773303951</time>
+    <user>dimstar_suse</user>
+    <comment>Enable cmssign again - build was updated</comment>
+  </revision>
 </revisionlist>
