@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 16 07:21:24 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
+
+- Rename container_runtime to container_runtime_podman for clarity and consistency
+- Add container_runtime_docker pattern for Docker support, from SLFO (bsc#1246859)
+- Add Obsoletes/Provides for old pattern names
+
+-------------------------------------------------------------------
 Fri Oct 25 07:56:50 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove containers-systemd, deprecated upstream technology, quadlets
