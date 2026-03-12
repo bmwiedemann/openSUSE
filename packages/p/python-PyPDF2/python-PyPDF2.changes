@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 12 11:56:22 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- CVE-2026-31826: denial of service due to excessive memory consumption via crafted PDF, bsc#1259508
+  Add security patch: CVE-2026-31826.patch
+
+-------------------------------------------------------------------
 Tue Mar 10 08:54:29 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - CVE-2026-28804: Denial of Service via crafted PDF with ASCIIHexDecode filter, bsc#1259404
