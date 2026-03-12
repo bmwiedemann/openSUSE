@@ -17,15 +17,15 @@
 
 
 Name:           nekobox
-Version: 5.10.22
+Version:        5.10.23
 Release:        0%{?autorelease}
 Summary:        Qt based cross-platform GUI proxy configuration manager (backend: sing-box)
 License:        GPL-3.0-only
 URL:            https://github.com/qr243vbi/nekobox
-Source0: https://github.com/qr243vbi/nekobox/releases/download/%{version}/nekobox-unified-source-%{version}.tar.xz
+Source0:        https://github.com/qr243vbi/nekobox/releases/download/%{version}/nekobox-unified-source-%{version}.tar.xz
 BuildRequires:  chrpath
 BuildRequires:  cmake
-BuildRequires:  golang >= 1.24
+BuildRequires:  golang >= 1.25
 BuildRequires:  pkgconfig
 BuildRequires:  sed
 BuildRequires:  thrift
