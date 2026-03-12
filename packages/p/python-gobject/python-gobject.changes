@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 11 10:00:07 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.56.1:
+  + Fix `do_dispose` for floating objects
+  + Updates and fixes for Windows documentation
+
+-------------------------------------------------------------------
 Sat Feb 28 09:11:08 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.56.0:

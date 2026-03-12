@@ -892,4 +892,14 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
     <comment></comment>
     <requestid>1336700</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>75da178963a58f5ac519d60e1e4817c5</srcmd5>
+    <version>3.56.1</version>
+    <time>1773350441</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.56.1:
+  + Fix `do_dispose` for floating objects
+  + Updates and fixes for Windows documentation (forwarded request 1338260 from iznogood)</comment>
+    <requestid>1338331</requestid>
+  </revision>
 </revisionlist>
