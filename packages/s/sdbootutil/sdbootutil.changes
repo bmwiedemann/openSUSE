@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 11 14:56:51 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260311.73a155b:
+  * Add ESP_FREE_SPACE config option
+  * Merge both 710 components for grub2-bls
+  * Allow partial unenrollment
+  * Drop pcr-oracle
+  * Edit crypttab options only for tracked devices
+  * Fix bootloader PCR measurements for portable installations
+  * Fix PCR predictions for grub2-bls without shim
+
+-------------------------------------------------------------------
 Tue Mar 03 10:21:30 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20260303.90d816d:
