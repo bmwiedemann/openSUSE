@@ -1,7 +1,7 @@
 #
-# spec file for package wlroots
+# spec file for package wlroots-0_17
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -100,7 +100,7 @@ Pluggable, composable modules for building a Wayland compositor.
 %autosetup -p1 -n wlroots-%{version}
 
 %build
-export CFLAGS="%{optflags} -I/usr/include/wayland -Wno-redundant-decls"
+export CFLAGS="%{optflags} -I/usr/include/wayland -Wno-redundant-decls -Wno-error=switch"
 %meson \
   "-Dbackends=[
     %{?with_drm_backend:'drm',}

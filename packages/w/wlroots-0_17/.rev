@@ -7,4 +7,13 @@
     <comment>Readd keyring file</comment>
     <requestid>1189622</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>69cab73ae86bf158ea01759e8176bad2</srcmd5>
+    <version>0.17.3</version>
+    <time>1773350488</time>
+    <user>anag_factory</user>
+    <comment>- Attempt to ignore error &quot;unhandled switch&quot;
+</comment>
+    <requestid>1338436</requestid>
+  </revision>
 </revisionlist>

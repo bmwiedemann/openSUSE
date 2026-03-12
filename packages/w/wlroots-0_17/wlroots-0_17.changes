@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 12 05:58:43 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Attempt to ignore error "unhandled switch"
+
+-------------------------------------------------------------------
 Sun Jul 21 16:19:16 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Move 0.17.x as new package to allow version 0.18.0 wlroots
