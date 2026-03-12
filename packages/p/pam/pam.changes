@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 10 11:03:35 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- pam_unix-selinux.patch: always call unix_update if SELinux is
+  enabled [bsc#1243242], [bsc#1259119]
+
+-------------------------------------------------------------------
 Thu Jan 22 13:09:25 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.7.2:

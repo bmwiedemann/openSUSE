@@ -1,0 +1,69 @@
+From 0183cf9eee82d11c312f02dfc862f607f3cdcf99 Mon Sep 17 00:00:00 2001
+From: Thorsten Kukuk <kukuk@suse.com>
+Date: Thu, 5 Mar 2026 17:15:08 +0100
+Subject: [PATCH] pam_unix: always call unix_update if SELinux is enabled
+
+unix_selinux_confined() checks if an application can read /etc/shadow
+and assumes, that in this case, it can also write to it and create all
+necessary (temporary) files. This might be the case with the SELinux
+policy 18 years ago, but today the policies are more fine graned and
+some applications might have read access to /etc/shadow, but are not
+allowed to create files.
+Thus we should always use unix_update if SELinux is enabled to be on
+the safe side.
+See https://bugzilla.suse.com/show_bug.cgi?id=1243242
+---
+ modules/pam_unix/passverify.c | 40 ++++-------------------------------
+ 1 file changed, 4 insertions(+), 36 deletions(-)
+
+diff --git a/modules/pam_unix/passverify.c b/modules/pam_unix/passverify.c
+index 8e0deb080..916cb9f53 100644
+--- a/modules/pam_unix/passverify.c
++++ b/modules/pam_unix/passverify.c
+@@ -540,42 +540,10 @@ PAMH_ARG_DECL(char * create_password_hash,
+ int
+ unix_selinux_confined(void)
+ {
+-    static int confined = -1;
+-    int fd;
+-    char tempfile[]="/etc/.pwdXXXXXX";
+-
+-    if (confined != -1)
+-	return confined;
+-
+-    /* cannot be confined without SELinux enabled */
+-    if (!SELINUX_ENABLED){
+-	confined = 0;
+-	return confined;
+-    }
+-
+-    /* let's try opening shadow read only */
+-    if ((fd=open("/etc/shadow", O_RDONLY | O_CLOEXEC)) != -1) {
+-        close(fd);
+-        confined = 0;
+-        return confined;
+-    }
+-
+-    if (errno == EACCES) {
+-	confined = 1;
+-	return confined;
+-    }
+-
+-    /* shadow opening failed because of other reasons let's try
+-       creating a file in /etc */
+-    if ((fd=mkstemp(tempfile)) != -1) {
+-        unlink(tempfile);
+-        close(fd);
+-        confined = 0;
+-        return confined;
+-    }
+-
+-    confined = 1;
+-    return confined;
++    if (is_selinux_enabled() > 0 &&
++	security_getenforce() > 0)
++        return 1;
++    return 0;
+ }
+ 
+ #else

@@ -92,6 +92,7 @@ Source22:       postlogin-account.pamd
 Source23:       postlogin-password.pamd
 Source24:       postlogin-session.pamd
 Patch1:         pam-limit-nproc.patch
+Patch2:         pam_unix-selinux.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  flex

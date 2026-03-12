@@ -1391,4 +1391,13 @@
     <comment>Update to 1.7.2</comment>
     <requestid>1328713</requestid>
   </revision>
+  <revision rev="152" vrev="2">
+    <srcmd5>7cd758fa04c737da1e3b1df56371ae3b</srcmd5>
+    <version>1.7.2</version>
+    <time>1773350420</time>
+    <user>anag_factory</user>
+    <comment>- pam_unix-selinux.patch: always call unix_update if SELinux is
+  enabled [bsc#1243242], [bsc#1259119]</comment>
+    <requestid>1337951</requestid>
+  </revision>
 </revisionlist>
