@@ -35,6 +35,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.openexr.com/
 Source0:        https://github.com/AcademySoftwareFoundation/openexr/archive/v%{version}.tar.gz
 Source2:        baselibs.conf
+# fix build with glibc 2.43 [bsc#1258747]
+Patch0:         openexr-glibc-2.43.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc%{?force_gcc_version}
