@@ -214,4 +214,17 @@
     <comment></comment>
     <requestid>1305979</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8ce412c9106067737880ab083130f758</srcmd5>
+    <version>1.0+git20260311.ea26e1b</version>
+    <time>1773350447</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0+git20260311.ea26e1b:
+  * Fix for multiple or missing ld.so.conf file globs
+
+- Update to version 1.0+git20260226.9c3e92f:
+  * Make sure /etc subvol creation works without ld cache
+    [bsc#1258242]</comment>
+    <requestid>1338367</requestid>
+  </revision>
 </revisionlist>
