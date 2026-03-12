@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 12 11:47:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.96.0:
+  * Improvements
+    - Fixed Critical Violations by UX writing Audit of Jfrog CLI by
+      @agrasth in #3388
+    - Fixed Minor Violations by UX writing Audit of Jfrog CLI by
+      @agrasth in #3385
+    - Fixed Major Violations by UX writing Audit of Jfrog CLI by
+      @agrasth in #3386
+
+-------------------------------------------------------------------
 Mon Mar 09 07:39:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.95.0:
