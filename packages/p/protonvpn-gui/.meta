@@ -1,5 +1,0 @@
-<package name="protonvpn-gui" project="openSUSE:Factory">
-  <title>protonvpn-gui</title>
-  <description>Official ProtonVPN GUI</description>
-  <devel project="network:vpn" package="protonvpn-gui"/>
-</package>
