@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sat Mar  7 13:50:43 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Update to version 1.1.0: upgrade all roles
+  to include Ansible 2.19 compatibility fixes and
+  ansible_facts migration.
+- Update role versions:
+  - firewall 1.8.2 -> 1.11.6:
+    - add backend abstraction layer and offline mode
+    - add IPv6 ipset support and ipset_options
+    - add service includes support
+    - fix python311-firewall install on SLES 15
+  - timesync 1.9.2 -> 1.11.4:
+    - add timesync_ntp_ip_family option (IPv4/IPv6 preference)
+  - journald 1.3.5 -> 1.5.2:
+    - add MaxRetention configuration option
+  - ssh 1.5.2 -> 1.7.1:
+    - add VersionAddendum configuration option
+  - crypto_policies 1.4.2 -> 1.5.2:
+    - container environment support
+  - systemd 1.3.1 -> 1.3.7:
+    - fix unmask ordering so the role can manage units correctly
+    - fix files/templates in nested directories
+  - ha_cluster 1.24.0 -> 1.29.1:
+    - new ha_cluster_info module for exporting cluster configuration
+    - fix /var/lib/pcsd creation for newer pcs versions
+  - mssql 2.5.2 -> 2.6.6:
+    - add mssql_ha_ag_is_contained and mssql_ha_ag_reuse_system_db
+    - fix SUSE mssql-tools18 support
+    - fix AD connection with krb5_canonicalize=false
+  - auto_maintenance 1.94.2 -> 1.120.5:
+    - CI/infra tooling updates (no role-facing changes)
+  - certificate 1.3.11 -> 1.4.4:
+    - container build support
+  - selinux 1.8.2 -> 1.11.1:
+    - fix kernel command line SELinux parameter when changing state
+    - container/bootc build support for fcontexts and modules
+  - podman 1.8.1 -> 1.9.2:
+    - container build support
+  - cockpit 1.7.0 -> 1.7.4:
+    - minor fixes and compatibility updates
+  - aide 1.2.0 -> 1.2.5:
+    - support new AIDE config file options
+    - expose aide_version variable
+  - postfix 1.6.1 -> 1.6.6:
+    - fix: configure postfix to listen only on IPv4 when IPv6 is disabled
+    - fix: accept empty relayhost as unset
+  - keylime_server 1.2.1 -> 1.2.4:
+    - minor compatibility updates 
+
+-------------------------------------------------------------------
 Thu Dec 18 16:12:20 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Enable postfix role on SLE 15 (bsc#1255313)
