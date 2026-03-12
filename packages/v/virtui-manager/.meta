@@ -1,4 +1,5 @@
 <package name="virtui-manager" project="openSUSE:Factory">
   <title>Terminal User Interface (TUI) for managing QEMU/KVM virtual machines </title>
   <description>A powerful, text-based Terminal User Interface (TUI) application for managing QEMU/KVM virtual machines using the libvirt Python API.</description>
+  <devel project="Virtualization" package="virtui-manager"/>
 </package>

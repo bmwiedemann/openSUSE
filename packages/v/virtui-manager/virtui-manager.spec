@@ -19,7 +19,7 @@
 %define pythons python3
 
 Name:           virtui-manager
-Version:        1.9.4
+Version:        2.3.1
 Release:        0
 Summary:        Terminal-based interface to manage virtual machines using libvirt
 License:        GPL-3.0-or-later
@@ -37,6 +37,8 @@ Requires:       python3-libvirt-python
 Requires:       python3-textual >= 0.40.0
 Requires:       python3-PyYAML
 Requires:       python3-markdown-it-py
+Requires: 	tmux
+Requires: 	7zip
 BuildArch:      noarch
 
 %description

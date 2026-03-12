@@ -195,4 +195,38 @@
 </comment>
     <requestid>1334528</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>70a75e2d4107b64e29914b42d2ad3e6f</srcmd5>
+    <version>2.3.1</version>
+    <time>1773350458</time>
+    <user>anag_factory</user>
+    <comment>- version 2.3.1:
+  * fix for user password in templates
+  * fix 7zip requirements
+  * fix nvram delete issue
+
+- version 2.3.0:
+  * add Fedora and Archlinux support (with Autoinstall)
+  * add graphics options in Expert mode (VNC or Spice)
+
+- version 2.2.0:
+  * add Debian and Ubuntu support (with Autoinstall)
+
+- version 2.1.0:
+  * fix vmcard workers
+  * cancel workers if we change to another page
+  * add network speed downloading ISO
+
+- version 2.0.0:
+  * add openSUSE/SLES Autoinstall support: autoyast, agama
+  * add auto installation template management
+  * update translation
+  * fix starting websockify
+  * default to spice not vnc
+  * fix issue finding free port
+  * UI freeze fixes
+  * some CSS fixes (dialog layout)
+</comment>
+    <requestid>1338383</requestid>
+  </revision>
 </revisionlist>
