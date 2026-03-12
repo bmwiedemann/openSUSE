@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Wed Mar 11 08:49:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.33.0:
+  * Docs: Update model docs to remove Preview Features.
+  * docs: fix typo in installation documentation
+  * docs: add Windows PowerShell equivalents for environments and
+    scripting
+  * fix(core): parse raw ASCII buffer strings in Gaxios errors
+  * fix(github): use robot PAT for automated PRs to pass CLA
+    check
+  * Changelog for v0.31.0
+  * fix: use full paths for ACP diff payloads
+  * fix: acp/zed race condition between MCP initialisation and
+    prompt
+  * fix(cli): reset themeManager between tests to ensure
+    isolation
+  * refactor(core): Extract tool parameter names as constants
+  * fix(cli): resolve autoThemeSwitching when background hasn't
+    changed but theme mismatches
+  * feat(skills): add github-issue-creator skill
+  * fix(cli): allow sub-agent confirmation requests in UI while
+    preventing background flicker
+  * Merge User and Agent Card Descriptions #20849
+  * fix(core): reduce LLM-based loop detection false positives
+  * fix(plan): deflake plan mode integration tests
+  * Add /unassign support
+  * feat(core): implement HTTP authentication support for A2A
+    remote agents
+  * feat(core): centralize read_file limits and update gemini-3
+    description
+  * Do not block CI on evals
+  * document node limitation for shift+tab
+  * Add install as an option when extension is selected.
+  * Update CODEOWNERS for README.md reviewers
+  * feat(core): truncate large MCP tool output
+  * Subagent activity UX.
+  * style(cli) : Dialog pattern for /hooks Command
+  * feat: redesign header to be compact with ASCII icon
+  * fix(core): ensure subagents use qualified MCP tool names
+  * feat(core): support authenticated A2A agent card discovery
+  * refactor(cli): fully remove React anti patterns, improve type
+    safety and fix UX oversights in SettingsDialog.tsx
+  * Adding MCPOAuthProvider implementing the MCPSDK
+    OAuthClientProvider
+  * feat(core): add tool name validation in TOML policy files
+  * docs: fix broken markdown links in main README.md
+  * refactor(core): replace manual syncPlanModeTools with
+    declarative policy rules
+  * fix(core): increase default headers timeout to 5 minutes
+  * feat(admin): enable 30 day default retention for chat history
+    & remove warning
+  * feat(plan): support annotating plans with feedback for
+    iteration
+  * Add some dos and don'ts to behavioral evals README.
+  * fix(core): skip telemetry logging for AbortError exceptions
+  * fix(core): restrict "System: Please continue" invalid stream
+    retry to Gemini 2 models
+  * ci(evals): only run evals in CI if prompts or tools changed
+  * Build binary
+  * Code review fixes as a pr
+  * fix(ci): handle empty APP_ID in stale PR closer
+  * feat(cli): invert context window display to show usage
+  * fix(plan): clean up session directories and plans on deletion
+  * fix(core): enforce optionality for API response fields in
+    code_assist
+  * feat(extensions): add support for plan directory in extension
+    manifest
+  * feat(plan): enable built-in research subagents in plan mode
+  * feat(agents): directly indicate auth required state
+  * fix(cli): wait for background auto-update before relaunching
+  * fix: pre-load @file references from external editor prompts
+  * feat(evals): add behavioral evals for ask_user tool
+  * refactor common settings logic for skills,agents
+  * Update docs-writer skill with new resource
+  * fix(cli): pin clipboardy to ~5.2.x
+  * feat: Implement slash command handling in ACP for
+    `/memory`,`/init`,`/extensions` and `/restore`
+  * Docs/add hooks reference
+  * feat(plan): add copy subcommand to plan
+  * fix(core): sanitize and length-check MCP tool qualified names
+  * Format the quota/limit style guide.
+  * fix(core): send shell output to model on cancel
+  * remove hardcoded tiername when missing tier
+  * feat(acp): add set models interface
+
+-------------------------------------------------------------------
 Wed Mar  4 06:42:12 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.32.1:

@@ -343,4 +343,41 @@
     <comment></comment>
     <requestid>1336597</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d2b3df74b6fd69b5c51f8d7de0ada53c</srcmd5>
+    <version>0.33.0</version>
+    <time>1773350475</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.33.0:
+  * Docs: Update model docs to remove Preview Features.
+  * docs: fix typo in installation documentation
+  * docs: add Windows PowerShell equivalents for environments and
+    scripting
+  * fix(core): parse raw ASCII buffer strings in Gaxios errors
+  * fix(github): use robot PAT for automated PRs to pass CLA
+    check
+  * Changelog for v0.31.0
+  * fix: use full paths for ACP diff payloads
+  * fix: acp/zed race condition between MCP initialisation and
+    prompt
+  * fix(cli): reset themeManager between tests to ensure
+    isolation
+  * refactor(core): Extract tool parameter names as constants
+  * fix(cli): resolve autoThemeSwitching when background hasn't
+    changed but theme mismatches
+  * feat(skills): add github-issue-creator skill
+  * fix(cli): allow sub-agent confirmation requests in UI while
+    preventing background flicker
+  * Merge User and Agent Card Descriptions #20849
+  * fix(core): reduce LLM-based loop detection false positives
+  * fix(plan): deflake plan mode integration tests
+  * Add /unassign support
+  * feat(core): implement HTTP authentication support for A2A
+    remote agents
+  * feat(core): centralize read_file limits and update gemini-3
+    description
+  * Do not block CI on evals
+  * document node limitation for shift+tab</comment>
+    <requestid>1338395</requestid>
+  </revision>
 </revisionlist>
