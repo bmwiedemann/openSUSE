@@ -415,6 +415,7 @@ unsorted:
   - adaptx-javadoc 
   - adcli 
   - adcli-doc 
+  - adcli-selinux 
   - add 
   - addrwatch 
   - ade-devel 
@@ -2354,6 +2355,10 @@ unsorted:
   - clpeak 
   - clthreads-devel 
   - clucene-core-devel 
+  - clusteradm 
+  - clusteradm-bash-completion 
+  - clusteradm-fish-completion 
+  - clusteradm-zsh-completion 
   - clusterctl 
   - clusterctl-bash-completion 
   - clusterctl-fish-completion 
@@ -12522,7 +12527,7 @@ unsorted:
   - libbs2b0-32bit 
   - libbsd-ctor-static 
   - libbsd-devel 
-  - libbson-1_0-0 
+  - libbson2 
   - libbtf2 
   - libbtrfs-devel 
   - libbtrfsutil-devel 
@@ -12971,7 +12976,7 @@ unsorted:
   - libdico2 
   - libdict-devel 
   - libdict1_0 
-  - libdigikamcore8_8_0 
+  - libdigikamcore9_0_0 
   - libdirac_decoder0 
   - libdirac_decoder0-32bit 
   - libdirac_encoder0 
@@ -14290,6 +14295,8 @@ unsorted:
   - libjsonrpc-glib-1_0-1 
   - libjte-devel 
   - libjthread1_3_3 
+  - libjwt-devel 
+  - libjwt2 
   - libjxl-devel 
   - libjxl-tools 
   - libjxl0_11-32bit 
@@ -14406,8 +14413,8 @@ unsorted:
   - libkrun1 
   - libkrunfw-devel 
   - libkrunfw-sev-devel 
-  - libkrunfw-sev4 
-  - libkrunfw4 
+  - libkrunfw-sev5 
+  - libkrunfw5 
   - libksane-devel 
   - libksba-devel 
   - libkscreen6-devel 
@@ -14842,7 +14849,7 @@ unsorted:
   - libmodplug1 
   - libmodsecurity3 
   - libmodulemd-devel 
-  - libmongoc-1_0-0 
+  - libmongoc2 
   - libmono-2_0-1 
   - libmono-2_0-devel 
   - libmonoboehm-2_0-1 
@@ -16477,6 +16484,8 @@ unsorted:
   - libssh2-devel 
   - libssh4-32bit 
   - libssl60 
+  - libsso-mib-devel 
+  - libsso-mib0 
   - libssr-glinject 
   - libsss_certmap-devel 
   - libsss_idmap-devel 
@@ -16798,7 +16807,7 @@ unsorted:
   - libtre5 
   - libtre5-lang 
   - libtree 
-  - libtrng4-27 
+  - libtrng4-28 
   - libts0-32bit 
   - libtsan0 
   - libtsan2-gcc13 
@@ -21360,6 +21369,7 @@ unsorted:
   - patterns-cinnamon-cinnamon 
   - patterns-cinnamon-cinnamon_basis 
   - patterns-cockpit 
+  - patterns-cockpit-client 
   - patterns-desktop-technical_writing 
   - patterns-devel-C-C++-devel_C_C++ 
   - patterns-devel-base-devel_basis 
@@ -28188,12 +28198,10 @@ unsorted:
   - python312-lalinference 
   - python312-lalinspiral 
   - python312-lalpulsar 
-  - python312-nilearn 
   - python312-onnx 
   - python312-pegasus-wms.api 
   - python312-plotly 
   - python312-pyroomacoustics 
-  - python312-python-datamatrix 
   - python312-testsuite 
   - python312-tk 
   - python312-tools 
@@ -34422,6 +34430,8 @@ unsorted:
   - ssldump 
   - sslh 
   - sslscan 
+  - sso-mib-gch-smtp-o365 
+  - sso-mib-tool 
   - sssd-ad 
   - sssd-cifs-idmap-plugin 
   - sssd-dbus 
@@ -46446,6 +46456,7 @@ unsorted:
   - xfmpc 
   - xfmpc-lang 
   - xfontsel 
+  - xfr 
   - xfs_undelete 
   - xfsprogs-devel 
   - xfsprogs-scrub 

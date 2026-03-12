@@ -210,7 +210,7 @@
     <package name="busybox-psmisc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="busybox-sed" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-static" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="busybox-which" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
+    <package name="busybox-which" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="busybox-xz" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="bzip2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ca-certificates" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3621,7 +3621,7 @@
     <package name="python313-cffi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python313-charset-normalizer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python313-cmdln" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="python313-configobj" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="python313-configobj" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_plasma -->
     <package name="python313-cryptography" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python313-cssselect" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="python313-curses" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3641,7 +3641,7 @@
     <package name="python313-hyperframe" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python313-idna" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python313-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python313-linux-procfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="python313-linux-procfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_plasma -->
     <package name="python313-lxml" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="python313-mysqlclient" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python313-nftables" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3662,11 +3662,11 @@
     <package name="python313-pycurl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python313-pygdbmi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python313-pygit2" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python313-pyinotify" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="python313-pyinotify" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_plasma -->
     <package name="python313-pysmbc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python313-python-dateutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python313-python-slugify" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python313-pyudev" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="python313-pyudev" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_plasma -->
     <package name="python313-requests" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python313-requests-gssapi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
     <package name="python313-rpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3675,7 +3675,7 @@
     <package name="python313-semanage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python313-setools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python313-setuptools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python313-six" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="python313-six" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_plasma -->
     <package name="python313-speechd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python313-text-unidecode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python313-tinycss2" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
@@ -4032,7 +4032,7 @@
     <package name="tumbler-folder-thumbnailer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="tumbler-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="tumbler-webp-thumbnailer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="tuned" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="tuned" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_plasma -->
     <package name="typelib-1_0-AccountsService-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Adw-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Amtk-5" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
@@ -4157,7 +4157,7 @@
     <package name="vim" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="vim-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="vim-data-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="virt-what" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="virt-what" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_plasma -->
     <package name="virtiofsd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="virtualbox-guest-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="virtualbox-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -4184,7 +4184,7 @@
     <package name="webkitgtk-6_0-injected-bundles" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="wget" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="wget-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="which" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="which" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_plasma -->
     <package name="wicked" supportstatus="unsupported"/> <!-- reason: dvd:wicked -->
     <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:wicked -->
     <package name="wireless-regdb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
