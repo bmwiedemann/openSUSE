@@ -20,7 +20,7 @@
 %global homedir %{_datadir}/%{name}%{?maven_version_suffix}
 %global confdir %{_sysconfdir}/%{name}%{?maven_version_suffix}
 Name:           maven
-Version:        3.9.13
+Version:        3.9.14
 Release:        0
 Summary:        Java project management and project comprehension tool
 # maven itself is ASL 2.0
@@ -215,8 +215,6 @@ sed -i "s/distributionName=.*/distributionName=Apache\ Maven/" `find -name build
 %{mvn_package} :apache-maven __noinstall
 
 %pom_remove_dep -r :logback-classic
-
-%pom_change_dep :plexus-testing :::test maven-core
 
 %pom_xpath_remove pom:parent/pom:relativePath
 

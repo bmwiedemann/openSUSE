@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 12 13:18:42 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.9.14
+  * Bug Fixes
+    + plexus-testing dependencies should be used in test scope
+  * Dependency updates
+    + Bump actions/upload-artifact from 6.0.0 to 7.0.0
+    + Bump actions/download-artifact from 7.0.0 to 8.0.0
+
+-------------------------------------------------------------------
 Fri Mar  6 19:16:43 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.9.13
