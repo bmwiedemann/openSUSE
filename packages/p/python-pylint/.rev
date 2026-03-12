@@ -898,4 +898,12 @@
     multiple reporter/output formats.</comment>
     <requestid>1335775</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>7e835180a32837315ca9768a75ebf272</srcmd5>
+    <version>4.0.5</version>
+    <time>1773350516</time>
+    <user>anag_factory</user>
+    <comment>- update upper bound for isort</comment>
+    <requestid>1338435</requestid>
+  </revision>
 </revisionlist>

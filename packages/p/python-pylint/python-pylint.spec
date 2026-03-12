@@ -41,7 +41,7 @@ Requires:       python-dill >= 0.3.7
 Requires:       python-platformdirs >= 2.2
 Requires:       python-tomlkit >= 0.10.1
 Requires:       (python-astroid >= 4.0.2 with python-astroid < 4.2.0)
-Requires:       (python-isort >= 5 with python-isort < 8)
+Requires:       (python-isort >= 5 with python-isort < 9)
 Requires:       (python-mccabe >= 0.6 with python-mccabe < 0.8)
 BuildArch:      noarch
 %if 0%{?python_version_nodots} < 311
@@ -55,7 +55,7 @@ Requires:       python-typing-extensions >= 3.10
 BuildRequires:  %{python_module astroid >= 4.0.2 with %python-astroid < 4.2.0}
 BuildRequires:  %{python_module dill >= 0.3.7}
 BuildRequires:  %{python_module enchant}
-BuildRequires:  %{python_module isort >= 5 with %python-isort < 8}
+BuildRequires:  %{python_module isort >= 5 with %python-isort < 9}
 BuildRequires:  %{python_module mccabe >= 0.6 with %python-mccabe < 0.8}
 BuildRequires:  %{python_module platformdirs >= 2.2}
 BuildRequires:  %{python_module tomli >= 1.1.0 if %python-base < 3.11}
