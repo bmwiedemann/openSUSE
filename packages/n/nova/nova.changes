@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 12 07:26:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.13 (.12 was not released):
+  * Fix nova release (#437)
+  * Managed by Terraform
+  * INS-2028: INS-2026: Bump libs and fix vulnerabilities for nova
+    (#436)
+
+-------------------------------------------------------------------
 Wed Feb 25 09:52:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.11.11:
