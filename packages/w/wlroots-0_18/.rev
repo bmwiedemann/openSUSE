@@ -7,4 +7,12 @@
     <comment>New package to accommodate 0.18.x version of wlroots. This allows other wlroots-based compositors to catch up such as river and sway.</comment>
     <requestid>1280237</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1a6aa2724d2970771ab6bb3ec2595ea7</srcmd5>
+    <version>0.18.2</version>
+    <time>1773350490</time>
+    <user>anag_factory</user>
+    <comment>Some packages might still be behind wlroots version. </comment>
+    <requestid>1338437</requestid>
+  </revision>
 </revisionlist>
