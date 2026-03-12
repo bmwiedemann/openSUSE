@@ -1,7 +1,7 @@
 #
 # spec file for package sigil
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 %define sigil_doc_version 20250912
-%if 0%{?suse_version} < 1600
-%define pythons python311
-%endif
+%define pythons python313
+
 Name:           sigil
-Version:        2.7.0
+Version:        2.7.5
 Release:        0
 Summary:        WYSIWYG Ebook Editor
 License:        GPL-3.0-only
@@ -50,45 +49,40 @@ BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  make
 BuildRequires:  pkgconfig
-# upstream use for qt6-base-devel 6.9.3
-BuildRequires:  qt6-base-devel >= 6.6.3
-BuildRequires:  %{python_module devel >= 3.9}
+# upstream use qt6-base-devel >= 6.10.2
+BuildRequires:  qt6-base-devel >= 6.9.1
+# upstream use %%{python_module devel >= 3.14}
+BuildRequires:  %{python_module devel >= 3.13}
 BuildRequires:  python-rpm-macros
 # not need for build, only check for exists
-# upstream use for python3-Pillow 10.3.0
-BuildRequires:  %{python_module Pillow >= 9.5.0}
-# upstream use python3-certifi 2024.6.2
-BuildRequires:  %{python_module certifi >= 2023.7.22}
+# upstream use for python3-Pillow 12.1.0
+BuildRequires:  %{python_module Pillow >= 12.1.0}
+# upstream use python3-certifi 2026.1.4
+BuildRequires:  %{python_module certifi >= 2026.1.4}
 # upstream use python3-chardet 5.2.0
 BuildRequires:  %{python_module chardet >= 5.2.0}
 # upstream use python3-css-parser 1.0.10
 BuildRequires:  %{python_module css-parser >= 1.0.10}
-# upstream use python3-cssselect 1.2.0
-BuildRequires:  %{python_module cssselect >= 1.2.0}
-# upstream use python3-cssutils ?
-BuildRequires:  %{python_module cssutils >= 2.10.2}
-# upstream use python3-dulwich 0.22.1
-BuildRequires:  %{python_module dulwich >= 0.21.7}
+# upstream use python3-cssselect 1.4.0
+BuildRequires:  %{python_module cssselect >= 1.3.0}
+# upstream use python3-dulwich 1.0.0
+BuildRequires:  %{python_module dulwich >= 1.0.0}
 # upstream use python3-html5lib >= 1.1
 BuildRequires:  %{python_module html5lib >= 1.1}
-# upstream use for python3-lxml 5.2.2
-BuildRequires:  %{python_module lxml >= 4.9.3}
-# upstream use for python3-regex 2024.5.15
-BuildRequires:  %{python_module regex >= 2023.5.5}
-# upstream use for python3-six 1.16.0
-BuildRequires:  %{python_module six >= 1.16.0}
-# upstream use for python3-urllib3 2.2.2
-BuildRequires:  %{python_module urllib3 >= 2.0.7}
-# upstream use python3-tk ?
-BuildRequires:  %{python_module tk >= 2.7.18}
-### Seems no more need? upstream use for python3-qt5 5.12.3
-##BuildRequires:  %%{python_module qt5}
+# upstream use for python3-lxml 6.0.2
+BuildRequires:  %{python_module lxml >= 6.0.2}
+# upstream use for python3-regex 2026.1.15
+BuildRequires:  %{python_module regex >= 2026.1.15}
+# upstream use for python3-six 1.17.0
+BuildRequires:  %{python_module six >= 1.17.0}
+# upstream use for python3-urllib3 2.6.3
+BuildRequires:  %{python_module urllib3 >= 2.6.3}
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
 BuildRequires:  cmake(Qt6Concurrent)
-# Upstream use BuildRequires:  cmake(Qt6Core5Compat) >= 6.8.2
-BuildRequires:  cmake(Qt6Core5Compat) >= 6.6.3
+# Upstream use BuildRequires:  cmake(Qt6Core5Compat) >= 6.10.2
+BuildRequires:  cmake(Qt6Core5Compat) >= 6.9.1
 BuildRequires:  cmake(Qt6Linguist)
 BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6PrintSupport)
@@ -108,13 +102,11 @@ Requires:       %{python_flavor}-certifi
 Requires:       %{python_flavor}-chardet
 Requires:       %{python_flavor}-css-parser
 Requires:       %{python_flavor}-cssselect
-Requires:       %{python_flavor}-cssutils
 Requires:       %{python_flavor}-dulwich
 Requires:       %{python_flavor}-html5lib
 Requires:       %{python_flavor}-lxml
 Requires:       %{python_flavor}-regex
 Requires:       %{python_flavor}-six
-Requires:       %{python_flavor}-tk
 Requires:       %{python_flavor}-urllib3
 
 %description
