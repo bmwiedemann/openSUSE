@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 12 00:24:42 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 10.8.5:
+  * Update the Flanterm library to 3.0.2 to fix a regression introduced
+    in Flanterm 3.0.1 that would also cause misrenderings of the boot
+    menu's text colour for selected entries.
+
+-------------------------------------------------------------------
+Wed Mar 11 19:35:02 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 10.8.4:
+  * Update the Flanterm library to 3.0.1 to fix a regression that would
+    cause misrenderings of the boot menu's text colour for selected
+    entries.
+
+-------------------------------------------------------------------
 Wed Mar  4 00:12:32 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 10.8.2:

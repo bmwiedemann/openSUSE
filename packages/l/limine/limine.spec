@@ -1,8 +1,8 @@
 #
 # spec file for package limine
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 Marvin Friedrich
+# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 Marvin Friedrich
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,7 +15,7 @@
 #
 
 Name:           limine
-Version:        10.8.2
+Version:        10.8.5
 Release:        0
 Summary:        Modern, advanced, portable, multiprotocol bootloader and boot manager
 License:        BSD-2-Clause
