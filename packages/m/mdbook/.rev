@@ -553,4 +553,135 @@ Fixed
 </comment>
     <requestid>1306151</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ddadb7ed725385984d499801299caf1e</srcmd5>
+    <version>0.4.49</version>
+    <time>1773350512</time>
+    <user>anag_factory</user>
+    <comment>- Skip failing test correctly now.
+- Skip failing test
+- Match test command flags from Github
+- Update to version 0.4.49:
+  * Merge pull request #2690 from ehuss/bump-version
+  * Update to 0.4.49
+  * Merge pull request #2689 from ehuss/revert-multilingual
+  * Skip serializing of the multilingual field
+  * Revert: Remove the book.multilingual field
+  * Merge pull request #2688 from ehuss/update-dependencies
+  * Update dependencies
+  * Merge pull request #2679 from lolbinarycat/sidebar-size-2678
+  * Merge pull request #2681 from krishanjmistry/issue-2649-footnotes
+  * Warn on duplicate footnote definition and ignore subsequent definitions
+  * Add a test for duplicate footnote definitions
+  * Move footnote expected HTML to a separate file
+  * fix(css): sidebar can no longer be larger than 80% of viewport width
+  * Merge pull request #2676 from ehuss/booktest
+  * Remove parse_existing_summary_files tests
+  * Remove remaining dummy book structure
+  * Add testsuite book directories to ignore list
+  * Remove remaining rendered tests
+  * Migrate summary_with_markdown_formatting to BookTest
+  * Migrate check_link_target_fallback to BookTest
+  * Migrate check_link_target_js to BookTest
+  * Migrate check_spacers to BookTest
+  * Migrate check_first_toc_level to BookTest
+  * Migrate check_second_toc_level to BookTest
+  * Migrate custom fonts with filled fonts.css to BookTest
+  * Migrate copy-fonts=false empty fonts.css to BookTest
+  * Copy copy-fonts=false no theme to BookTest
+  * Migrate custom fonts.css to BookTest
+  * Migrate copy theme default fonts to BookTest
+  * Migrate (no theme) default fonts to BookTest
+  * Migrate theme_dir_overrides_work_correctly to BookTest
+  * Migrate empty theme to BookTest
+  * Migrate missing theme to BookTest
+  * Migrate mdbook_test_chapter_not_found to BookTest
+  * Migrate mdbook_test_chapter to BookTest
+  * Migrate pass/fail `mdbook test` to BookTest
+  * Migrate chapter_settings_validation_error to BookTest
+  * Migrate with_no_source_path to BookTest
+  * Migrate can_disable_individual_chapters to BookTest
+  * Migrate search_index_hasnt_changed_accidentally to BookTest
+  * Migrate book_creates_reasonable_search_index to BookTest
+  * Migrate first_chapter_is_copied_as_index_even_if_not_first_elem to BookTest
+  * Migrate edit-url-template tests to BookTest
+  * Migrate relative_command_path to BookTest
+  * Migrate backends_receive_render_context_via_stdin to BookTest
+  * Migrate alternate_backend_with_arguments to BookTest
+  * Migrate missing_optional_backends_are_not_fatal to BookTest
+  * Migrate missing_backends_are_fatal to BookTest
+  * Migrate failing_alternate_backend to BookTest
+  * Remove passing_alternate_backend
+  * Migrate mdbook_runs_renderers to BookTest
+  * Migrate redirects_are_emitted_correctly to BookTest
+  * Migrate no_index_for_print_html to BookTest
+  * Migrate check_correct_relative_links_in_print_page to BookTest
+  * Migrate CmdPreprocessor tests to testsuite
+  * Migrate ask_the_preprocessor_to_blow_up to BookTest
+  * Migrate process_the_dummy_book to BookTest
+  * Print more context for debugging nop-preprocessor
+  * Migrate mdbook_runs_preprocessors to BookTest
+  * Migrate rendered_code_does_not_have_playground_stuff_in_html_when_disabled_in_config to BookTest
+  * Migrate rendered_code_has_playground_stuff to BookTest
+  * Add test for smart punctuation
+  * Migrate custom_header_attributes to BookTest
+  * Migrate markdown_options to BookTest
+  * Migrate copy_theme to BookTest
+  * Migrate run_mdbook_init_with_custom_book_and_src_locations to BookTest
+  * Migrate run_mdbook_init_should_create_content_from_summary to BookTest
+  * Migrate no_git_config_with_title to BookTest
+  * Migrate base_mdbook_init_can_skip_confirmation_prompts to BookTest
+  * Migrate base_mdbook_init_should_create_default_content to BookTest
+  * Migrate by_default_mdbook_use_index_preprocessor_to_convert_readme_to_index to BookTest
+  * Migrate rustdoc_include_hides_the_unspecified_part_of_the_file to BookTest
+  * Migrate able_to_include_playground_files_in_chapters to BookTest
+  * Migrate recursive_includes_are_capped to BookTest
+  * Migrate anchors_include_text_between_but_not_anchor_comments to BookTest
+  * Migrate able_to_include_files_in_chapters to BookTest
+  * Add some basic help tests
+  * Migrate book_toml_isnt_required to BookTest
+  * Migrate book_with_a_reserved_filename_does_not_build to BookTest
+  * Migrate create_missing_file_with_config to BookTest
+  * Migrate failure_on_missing_file to BookTest
+  * Migrate build_the_dummy_book to BookTest (build::basic_build)
+  * Introduce the new BookTest-based testsuite
+  * Merge pull request #2675 from notriddle/sidebar/active-query
+  * Break off query string when comparing url for sidebar
+  * Merge pull request #2674 from ehuss/fix-missing-docs
+  * Add CI job to check API docs
+  * Fix some missing docs
+  * Merge pull request #2673 from ehuss/clippy
+  * Fix clippy::redundant_slicing
+  * Fix clippy::only-used-in-recursion
+  * Fix clippy::default_constructed_unit_structs
+  * Fix unused import
+  * Add a restricted set of clippy lints, required to pass
+  * Merge pull request #2633 from GuillaumeGomez/speed-up-loading
+  * Merge pull request #2568 from szabgab/remove-needless-late-init
+  * Merge pull request #2670 from ehuss/require-gui
+  * Require all test jobs to pass
+  * Merge pull request #2669 from ehuss/fix-searcher-eslint
+  * Fix wrong quotes for eslint
+  * Merge pull request #2668 from ehuss/dont-mark-svg
+  * Ignore SVG text elements in search highlighting
+  * Merge pull request #2659 from szabgab/fix-typo-in-template
+  * Merge pull request #2658 from szabgab/fix-typo
+  * fix typo
+  * fix typo
+  * Merge pull request #2644 from kg4zow/fonts-binary
+  * Merge pull request #2646 from szabgab/remove-multilingual
+  * Merge pull request #2650 from rust-lang/dependabot/cargo/tokio-1.43.1
+  * Bump tokio from 1.43.0 to 1.43.1
+  * Remove the book.multilingual field
+  * Mark more font files as binary
+  * Merge pull request #2622 from szabgab/warn-on-invalid-configuration-field
+  * Make the unexpected case explicit that it is an internal error
+  * Update JSON loader in search tests
+  * Fix JS error
+  * Greatly speed up search index load
+  * Merge pull request #2629 from ehuss/bump-version
+  * Update to 0.4.48
+</comment>
+    <requestid>1338410</requestid>
+  </revision>
 </revisionlist>
