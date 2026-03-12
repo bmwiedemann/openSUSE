@@ -121,6 +121,9 @@ programs that use VTK-m to do 3D visualization.
 %setup -q -n vtk-m-v%{version}
 
 %build
+
+sed -i "s/#include <memory>/&\n#include <stdint.h>/g" vtkm/thirdparty/diy/vtkmdiy/include/vtkmdiy/thirdparty/itlib/small_vector.hpp
+
 # vtk-m requires massive amounts of memory to build:
 # - In SUSE we can directly set the min per thread
 # - In Fedora just have no choice but to hardcode the num of threads.

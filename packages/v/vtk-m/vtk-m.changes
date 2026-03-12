@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 10 00:00:00 UTC 2026  - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com>
+
+- Fixes error when building with newer compiler and the openmpi4 variant in Factory.
+
+-------------------------------------------------------------------
 Tue May 13 00:00:00 UTC 2025  - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.3.0-0
 
 - Updated spec to vtk-m 2.3.0.
