@@ -17,7 +17,7 @@
 
 
 Name:           python-pyOCD
-Version:        0.42.0
+Version:        0.43.1
 Release:        0
 Summary:        CMSIS-DAP debugger for python
 License:        Apache-2.0

@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu Mar 12 08:19:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.43.1:
+  * RTT: Fix control block detection via `_SEGGER_RTT` symbol on
+    single-core devices when the control block configuration is
+    not specified.
+- update to 0.43.0:
+  * `run` subcommand:
+  * Add support for SEGGER's RTT and SystemView (configured via
+    `*.cbuild-run.yml`)
+  * Support per-channel RTT configuration with the following
+    modes:
+  * Standard I/O: All data received from the target on this
+    channel will be printed to the `sdtout`, and all user input
+    from the `stdin` will be sent to the target
+  * Telnet: A Telnet server is started on the specified port,
+    creating a bridge between the TCP connection and the
+    corresponding RTT channel
+  * SystemView: Capture the trace data from the specified RTT
+    channel and save it to a user-defined file
+  * SystemView integration:
+  * Support for automatic start and stop command handling
+  * Captured trace data (`*.SVDat` file) can be directly opened
+    using SEGGER's SystemView analysis tool
+  * Re-enable double buffering mechanism for internal targets,
+    except STM32H7xx (known to have issues)
+  * Migrate all internal target support to use `page_buffers`
+    instead of `begin_data` in flash algorithms
+  * Remove `begin_data` from the algorithm template
+  * GDB Server:
+  * Improve log message when client gets disconnected from the
+    server
+  * Standard I/O:
+  * Enable non-blocking read of the STDIO console
+  * CMSIS-DAP v2:
+  * Send ZLP instead of a dummy byte to terminate OUT transfer
+  * CoreSight:
+  * Always unlock ITM (do not check SLI and SLK bits in LSR
+    register)
+  * >Cortex-M7 (AT610) and Cortex-M7 with FPU (AT611) Software
+    Developer Errata Notice
+  * 513195: Lock Status Indication incorrectly reads as one
+  * Flash programming:
+  * Fix LPC4088 flash algorithm `page_size`
+  * CMSIS-Packs:
+  * Fix raised exception on `filename` property access when using
+    extracted packs (@timll-mchp)
+  * RTT:
+  * Fix retrieval of available/free bytes for up/down channels
+  * Fix `control-block` not found when the first character of the
+    `control-block ID` was not present in the read memory
+  * ## Other
+  * CI: add nightly workflow that builds PyInstaller artifacts
+    from the `develop` branch
+
+-------------------------------------------------------------------
 Mon Jan 26 08:22:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.42.0:
