@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 11 18:30:15 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1773245056.43fc8f0:
+  * chore(deps): Update perltidy
+  * fix: Remove logger message from else condition
+  * style: Use single quotes for strings without interpolation
+  * fix: restore author tests in CI and optimize git message check
+  * docs: convert doc/backend_vars.asciidoc to Markdown
+
+-------------------------------------------------------------------
 Mon Mar 09 13:35:51 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1773054031.9ab699d:
