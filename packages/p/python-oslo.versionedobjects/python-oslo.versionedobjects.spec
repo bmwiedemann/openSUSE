@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.versionedobjects
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.versionedobjects
-Version:        3.8.0
+Version:        3.9.0
 Release:        0
 Summary:        Oslo Versioned Objects library
 License:        Apache-2.0

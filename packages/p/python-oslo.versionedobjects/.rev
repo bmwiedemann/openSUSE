@@ -280,4 +280,21 @@
     <comment>switch to singlespec</comment>
     <requestid>1316792</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>49e013c19bd6ea02dc61370d45d817c0</srcmd5>
+    <version>3.9.0</version>
+    <time>1773350500</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.9.0:
+  * Delay string interpolations at logging calls
+  * Remove reference to tag framework
+  * reno: Update master for unmaintained/2024.1
+  * Bump pyupgrade target to 3.10+
+  * Migrate bandit options to pyproject.toml
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2</comment>
+    <requestid>1338421</requestid>
+  </revision>
 </revisionlist>
