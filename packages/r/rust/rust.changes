@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 11 00:41:09 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update to version 1.94.0 - for details see the rust1.94 package
+
+-------------------------------------------------------------------
 Thu Feb  5 15:34:09 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Provide rust-src meta package, too; it may be useful for building
