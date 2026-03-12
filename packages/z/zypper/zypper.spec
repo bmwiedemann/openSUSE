@@ -17,7 +17,7 @@
 
 
 Name:           zypper
-Version:        1.14.94
+Version:        1.14.95
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
