@@ -13,7 +13,7 @@
     <param name="versionrewrite-pattern">release-([0-9].[0-9]+)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="revision">factory</param>
-    <param name="changesgenerate">disable</param>
+    <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual"/>
   <service name="tar" mode="buildtime"/>

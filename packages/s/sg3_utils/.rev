@@ -700,4 +700,12 @@ Show aggregation and make compatible with Fedora declaration (forwarded request 
     <comment>- sg_inq: re-add Unit serial number field (bsc#1219547)</comment>
     <requestid>1169280</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>64e8c675c5d6c65a2dcab57b22826aef</srcmd5>
+    <version>1.48+13.54da4276</version>
+    <time>1773350426</time>
+    <user>anag_factory</user>
+    <comment>merged SLFO:Main code into factory, no code changes</comment>
+    <requestid>1338079</requestid>
+  </revision>
 </revisionlist>
