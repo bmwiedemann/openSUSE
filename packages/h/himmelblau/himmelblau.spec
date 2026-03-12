@@ -30,7 +30,7 @@
 %endif
 
 Name:           himmelblau
-Version:        2.3.7+git0.81088cd
+Version:        2.3.8+git0.dec3693
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure Entra Id
 License:        GPL-3.0-or-later
@@ -166,6 +166,11 @@ make rpm-servicefiles
 export HIMMELBLAU_ALLOW_MISSING_SELINUX=1
 %endif
 %{cargo_build} --workspace --exclude himmelblau-fuzz
+%if 0%{?suse_version} >= 1600
+pushd src/selinux/src
+make -f %{_selinux_sharedir}/devel/Makefile NAME=himmelblaud
+popd
+%endif
 %if !0%{?suse_version}
 make authselect
 %endif
@@ -217,7 +222,6 @@ strip --strip-unneeded target/release/himmelblaud_tasks
 strip --strip-unneeded target/release/broker
 strip --strip-unneeded target/release/aad-tool
 install -m 0644 src/config/himmelblau.conf.example %{buildroot}/%{_sysconfdir}/himmelblau/himmelblau.conf
-install -m 0644 src/config/krb5_himmelblau.conf %{buildroot}/%{_sysconfdir}/krb5.conf.d/
 install -m 0644 src/config/gdm3_service_override.conf %{buildroot}/%{_unitdir}/display-manager.service.d/override.conf
 install -m 0755 target/release/aad-tool %{buildroot}/%{_bindir}/
 install -m 0644 platform/opensuse/himmelblaud-tasks.service %{buildroot}/%{_unitdir}/
@@ -237,6 +241,7 @@ install -m 0644 src/daemon/src/himmelblaud.tmpfiles.conf %{buildroot}/%{_tmpfile
 %if 0%{?suse_version} >= 1600
 install -D -d -m 0755 %{buildroot}/%{_selinux_pkgdir}/himmelblaud
 install -D -d -m 0755 %{buildroot}/%{_selinux_docdir}
+install -m 0644 src/selinux/src/himmelblaud.pp %{buildroot}/%{_selinux_pkgdir}/himmelblaud.pp
 install -m 0644 src/selinux/src/himmelblaud.te %{buildroot}/%{_selinux_pkgdir}/himmelblaud/himmelblaud.te
 install -m 0644 src/selinux/src/himmelblaud.fc %{buildroot}/%{_selinux_pkgdir}/himmelblaud/himmelblaud.fc
 %endif
@@ -478,11 +483,9 @@ fi
 %postun
 %service_del_postun himmelblaud.service himmelblaud-tasks.service
 
-if [ "$1" -eq 0 ]; then
-  if command -v selinuxenabled >/dev/null 2>&1 && selinuxenabled; then
-    semodule -r himmelblaud || :
-  fi
-fi
+%if 0%{?suse_version} >= 1600
+%selinux_modules_uninstall himmelblaud
+%endif
 
 %pre
 %service_add_pre himmelblaud.service himmelblaud-tasks.service
@@ -491,52 +494,22 @@ fi
 %service_del_preun himmelblaud.service himmelblaud-tasks.service
 
 %posttrans
-SELINUX_SRC_DIR="/usr/share/selinux/packages/himmelblaud"
-SELINUX_MAKEFILE="/usr/share/selinux/devel/Makefile"
+%if 0%{?suse_version} >= 1600
+%selinux_modules_install %{_selinux_pkgdir}/himmelblaud.pp
 
-if command -v selinuxenabled >/dev/null 2>&1 && selinuxenabled; then
-  # Check if SELinux development tools are available
-  if [ ! -f "$SELINUX_MAKEFILE" ]; then
-    echo "Warning: SELinux development Makefile not found at $SELINUX_MAKEFILE"
-    echo "Please install selinux-policy-devel and re-run this script"
-    exit 0
-  fi
+if command -v selinuxenabled >/dev/null 2>&1 && selinuxenabled && command -v restorecon >/dev/null 2>&1; then
+  restorecon -Fv /usr/sbin/himmelblaud /usr/sbin/himmelblaud_tasks 2>/dev/null || :
 
-  # Compile the policy module from source
-  if [ -d "$SELINUX_SRC_DIR" ]; then
-    echo "Compiling SELinux policy module..."
-    cd "$SELINUX_SRC_DIR"
-    if make -f "$SELINUX_MAKEFILE" himmelblaud.pp; then
-      echo "Installing SELinux policy module..."
-      if semodule -i himmelblaud.pp; then
-        # Clean up compiled files (keep source for potential recompilation)
-        rm -f himmelblaud.pp tmp/*.* 2>/dev/null || :
-        rmdir tmp 2>/dev/null || :
-
-        # Relabel installed binaries
-        restorecon -Fv /usr/sbin/himmelblaud /usr/sbin/himmelblaud_tasks 2>/dev/null || :
-
-        # Relabel existing dirs (may not exist on fresh install)
-        [ -d /etc/himmelblau ]                && restorecon -RFv /etc/himmelblau || :
-        [ -d /run/himmelblaud ]               && restorecon -RFv /run/himmelblaud || :
-        [ -d /var/run/himmelblaud ]           && restorecon -RFv /var/run/himmelblaud || :
-        [ -d /var/cache/private/himmelblaud ] && restorecon -RFv /var/cache/private/himmelblaud || :
-        [ -d /var/cache/himmelblaud ]         && restorecon -RFv /var/cache/himmelblaud || :
-        [ -d /var/cache/nss-himmelblau ]      && restorecon -RFv /var/cache/nss-himmelblau || :
-        [ -d /var/lib/private/himmelblaud ]   && restorecon -RFv /var/lib/private/himmelblaud || :
-        [ -d /var/lib/himmelblaud ]           && restorecon -RFv /var/lib/himmelblaud || :
-
-        echo "SELinux policy module installed successfully"
-      else
-        echo "Warning: Failed to install SELinux policy module"
-      fi
-    else
-      echo "Warning: Failed to compile SELinux policy module"
-    fi
-  else
-    echo "Warning: SELinux source directory not found at $SELINUX_SRC_DIR"
-  fi
+  [ -d /etc/himmelblau ]                && restorecon -RFv /etc/himmelblau || :
+  [ -d /run/himmelblaud ]               && restorecon -RFv /run/himmelblaud || :
+  [ -d /var/run/himmelblaud ]           && restorecon -RFv /var/run/himmelblaud || :
+  [ -d /var/cache/private/himmelblaud ] && restorecon -RFv /var/cache/private/himmelblaud || :
+  [ -d /var/cache/himmelblaud ]         && restorecon -RFv /var/cache/himmelblaud || :
+  [ -d /var/cache/nss-himmelblau ]      && restorecon -RFv /var/cache/nss-himmelblau || :
+  [ -d /var/lib/private/himmelblaud ]   && restorecon -RFv /var/lib/private/himmelblaud || :
+  [ -d /var/lib/himmelblaud ]           && restorecon -RFv /var/lib/himmelblaud || :
 fi
+%endif
 
 %post -n himmelblau-sshd-config
 # Comment out the `KbdInteractiveAuthentication no` line if present
@@ -578,7 +551,6 @@ fi
 %dir %{_unitdir}/display-manager.service.d
 %dir %{_datadir}/doc/himmelblau
 %config(noreplace) %{_sysconfdir}/himmelblau/himmelblau.conf
-%config %{_sysconfdir}/krb5.conf.d/krb5_himmelblau.conf
 %{_unitdir}/display-manager.service.d/override.conf
 %{_bindir}/aad-tool
 %{_unitdir}/himmelblaud-tasks.service
@@ -600,6 +572,7 @@ fi
 %dir %{_selinux_docdir}
 %dir %{_selinux_pkgdir}
 %dir %{_selinux_pkgdir}/himmelblaud
+%{_selinux_pkgdir}/himmelblaud.pp
 %{_selinux_pkgdir}/himmelblaud/himmelblaud.te
 %{_selinux_pkgdir}/himmelblaud/himmelblaud.fc
 %endif

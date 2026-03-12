@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Mar 11 16:20:00 UTC 2026 - David Mulder <david.mulder@suse.com>
+
+- Fix SELinux module packaging to use standard policy macros (bsc#1258236):
+  * Build and install precompiled himmelblaud.pp at package build time
+  * Replace custom semodule scriptlets with %selinux_modules_install/uninstall
+
+-------------------------------------------------------------------
+Wed Mar 11 15:31:54 UTC 2026 - David Mulder <david.mulder@suse.com>
+
+- Update to version 2.3.8+git0.dec3693 (CVE-2026-31979):
+  * Version 2.3.8
+  * Add PrivateTmp back to Tasks Daemon
+  * Drop dead code
+  * Drop krb5 ccache dir code
+  * Add a TODO comment
+  * Drop non working packaged krb5 snippet file
+  * Write kerberos config snippet
+  * Extend resolver interface to return kerberos config together with TGTs
+  * Backport SELinux fixes from main
+  * Use libkrimes to store TGTs
+
+-------------------------------------------------------------------
 Wed Mar 04 23:27:23 UTC 2026 - David Mulder <david.mulder@suse.com>
 
 - Update to version 2.3.7+git0.81088cd:
