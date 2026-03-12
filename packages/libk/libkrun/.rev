@@ -509,4 +509,12 @@
   * Implement krun_get_max_vcpus function for both macOS and Linux</comment>
     <requestid>1338230</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>0cc724281b1a77dd9e2611c147ce5216</srcmd5>
+    <version>1.17.4</version>
+    <time>1773350561</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1338505</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 11 11:22:20 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- spec file refactoring (use more/better some RPM macros)
+
+-------------------------------------------------------------------
 Tue Mar 10 10:01:15 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
 
 - Jump from 1.15.1 to 1.17.4

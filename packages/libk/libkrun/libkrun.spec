@@ -116,7 +116,6 @@ use libkrun-sev Virtualization-based process isolation capabilities.
 
 %build
 export RUSTFLAGS=%{rustflags}
-
 %make_build GPU=1 BLK=1 NET=1 SND=1
 
 %if %{sev}
@@ -125,12 +124,13 @@ export RUSTFLAGS=%{rustflags}
 
 %install
 export RUSTFLAGS=%{rustflags}
-
 %make_install PREFIX=%{_prefix}
 
 %if %{sev}
 %make_install SEV=1 PREFIX=%{_prefix}
 %endif
+
+%ldconfig_scriptlets -n %{name}1
 
 %files -n %{name}1
 %license LICENSE
@@ -145,11 +145,9 @@ export RUSTFLAGS=%{rustflags}
 %{_includedir}/libkrun_display.h
 %{_includedir}/libkrun_input.h
 
-%post -n %{name}1 -p /sbin/ldconfig
-
-%postun -n %{name}1 -p /sbin/ldconfig
-
 %if %{sev}
+%ldconfig_scriptlets sev1
+
 %files sev1
 %license LICENSE
 %doc README.md
@@ -158,10 +156,6 @@ export RUSTFLAGS=%{rustflags}
 
 %files sev-devel
 %{_libdir}/libkrun-sev.so
-
-%post sev1 -p /sbin/ldconfig
-
-%postun sev1 -p /sbin/ldconfig
 %endif
 
 %if %{with check}
