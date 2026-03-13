@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Mar 13 08:44:33 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.29:
+  + A bit of a brown-paper-bag release since the last one had a
+    crash on saving console output. Also fix several other much
+    less likely crashes.
+- Changes from version 1.0.28:
+  + Implement an adaptive Gauss-Kronrod integration and make it
+    default for NumericalIntegral. Adds functions
+    AdaptiveGaussKronrod, AdaptiveGaussKronrodWithTolerance,
+    GaussKronrodRule, and related parameters.
+  + SYNTAX: Don't special case parsing -<number>^n it will be
+    parsed now as -(<number>^n) as it should be. So -1^2 is now -1
+    as is only reasonable.
+  + Fix referencing of true local variables so that local variables
+    can be used as returns through the argument list.
+  + When first refering to a variable, only search the local
+    context, otherwise we might be by mistake referring to an
+    unrelated variable in the calling function or global.
+  + Add midpoint, trapezoid, and left-hand rule graphical examples
+    showing the rectangles.
+  + Improve the Euler method exponential example
+  + Fix drawing points in postscript/PDF
+  + Allow graphing of constants (functions with no arguments)
+  + Add CompositeSimpsonsRuleData, TrapezoidRule, LeftHandRule,
+    RightHandRule functions
+  + Argument now complains when given 0
+  + Fix Macaulay* functions when c=0
+  + Fix a few compile warnings
+  + Few minor bug fixes and fix some crashes
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Oct 28 08:48:30 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.0.27:
