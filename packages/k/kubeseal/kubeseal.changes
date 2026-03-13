@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 13 06:09:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.36.1:
+  * Release notes for 0.36.1 (#1916)
+  * Doc/issue 501 all namespaces (#1900)
+  * Bump go 1.26.1 (#1914)
+  * Update actions/setup-go to v6.2.0 (#1906)
+  * fix: explicitly specify TCP protocol for helm SSA compatibility
+    (#692) (#1901)
+  * docs: document GKE Warden and RBAC restrictions (#1892)
+  * Bump k8s.io/klog/v2 from 2.130.1 to 2.140.0 (#1913)
+  * chore: remove note about deprecation of helm chart. (#1902)
+  * Bump k8s.io/code-generator from 0.35.1 to 0.35.2 (#1909)
+  * Bump k8s.io/client-go from 0.35.1 to 0.35.2 (#1908)
+
+-------------------------------------------------------------------
 Thu Feb 26 06:20:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.36.0:
