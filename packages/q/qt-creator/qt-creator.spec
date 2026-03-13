@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 18.0.2
-%define short_version 18.0
+%define real_version 19.0.0
+%define short_version 19.0
 %define tar_name qt-creator-opensource-src
 %define tar_suffix %{nil}
 #
@@ -47,7 +47,7 @@ ExclusiveArch:  do_not_build
 %bcond_without docs
 
 Name:           %{pkgname_prefix}-creator
-Version:        18.0.2
+Version:        19.0.0
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -121,6 +121,7 @@ BuildRequires:  cmake(Qt6Test) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Tools) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt_min_version}
+BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libsecret-1)
 # Explicitly require qt6-sql-sqlite (needed by help system).
 Requires:       qt6-sql-sqlite
@@ -183,6 +184,7 @@ rm -r src/shared/qbs
   -DWITH_DOCS:BOOL=TRUE \
   -DBUILD_TESTING:BOOL=FALSE \
   -DQTC_SEPARATE_DEBUG_INFO:BOOL=FALSE \
+  -DQTC_USE_SYSTEM_LIBARCHIVE_DEFAULT:BOOL=TRUE \
   -DBUILD_LIBRARY_QLITEHTML:BOOL=TRUE \
   -DBUILD_HELPVIEWERBACKEND_QTWEBENGINE:BOOL=FALSE \
   -DBUILD_EXECUTABLE_CMDBRIDGE:BOOL=FALSE
@@ -232,15 +234,14 @@ rm -r %{buildroot}%{_datadir}/qtcreator/debugger-with-python2
 %files
 %license LICENSES/*
 %doc README.md HACKING
-%dir %{_datadir}/qtcreator
-%dir %{_libdir}/qtcreator
-%dir %{_libexecdir}/qtcreator
 %{_bindir}/qtcreator
 %{_datadir}/applications/org.qt-project.qtcreator.desktop
 %{_datadir}/icons/hicolor/*/apps/QtProject-qtcreator.png
 %{_datadir}/metainfo/org.qt-project.qtcreator.appdata.xml
+%dir %{_datadir}/qtcreator
 %{_datadir}/qtcreator/android/
 %{_datadir}/qtcreator/changelog/
+%{_datadir}/qtcreator/cmake-helper/
 %{_datadir}/qtcreator/cplusplus/
 %{_datadir}/qtcreator/debugger/
 %{_datadir}/qtcreator/externaltools/
@@ -252,7 +253,6 @@ rm -r %{buildroot}%{_datadir}/qtcreator/debugger-with-python2
 %{_datadir}/qtcreator/lua-lupdate/
 %{_datadir}/qtcreator/lua-plugins/
 %{_datadir}/qtcreator/modeleditor/
-%{_datadir}/qtcreator/package-manager/
 %{_datadir}/qtcreator/qml-type-descriptions/
 %{_datadir}/qtcreator/qmldesigner/
 %{_datadir}/qtcreator/qmlicons/
@@ -262,8 +262,10 @@ rm -r %{buildroot}%{_datadir}/qtcreator/debugger-with-python2
 %{_datadir}/qtcreator/templates/
 %{_datadir}/qtcreator/themes/
 %{_datadir}/qtcreator/translations/
+%dir %{_libdir}/qtcreator
 %{_libdir}/qtcreator/*.so.*
 %{_libdir}/qtcreator/plugins/
+%dir %{_libexecdir}/qtcreator
 %{_libexecdir}/qtcreator/buildoutputparser
 %{_libexecdir}/qtcreator/cpaster
 %{_libexecdir}/qtcreator/perf2text

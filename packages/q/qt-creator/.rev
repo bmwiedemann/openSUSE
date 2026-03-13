@@ -455,4 +455,12 @@ The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator
     <comment>Update to 18.0.2</comment>
     <requestid>1332713</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>cfe1908f1981f3cb103b1d1376bef129</srcmd5>
+    <version>19.0.0</version>
+    <time>1773433048</time>
+    <user>anag_factory</user>
+    <comment>Update to 19.0.0</comment>
+    <requestid>1338624</requestid>
+  </revision>
 </revisionlist>
