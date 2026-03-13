@@ -1439,4 +1439,37 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1320508</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>6e897e8edc74cb34cd229492a50ad3e0</srcmd5>
+    <version>1.5.2</version>
+    <time>1773432971</time>
+    <user>anag_factory</user>
+    <comment>- New version 1.5.2:
+  * bsc#1259207, CVE-2026-20031: Fixed an error handling bug in the
+    HTML file parser that may crash the program and cause a
+    denial-of-service (DoS) condition. This issue was introduced in
+    version 1.1.0.
+  * Fixed a possible infinite loop when scanning some JPEG files by
+    upgrading affected ClamAV dependency, a Rust image library.
+  * The CVD verification process will now ignore certificate files
+    in the CVD certs directory when the user lacks read permissions.
+  * Freshclam: Fix CLD verification bug with PrivateMirror option.
+  * Upgraded the Rust bytes dependency to a newer version to
+    resolve RUSTSEC-2026-0007 advisory.
+  * Fixed a possible crash caused by invalid pointer alignment on
+    some platforms.
+  * Minimal required Rust version is now 1.87.
+
+- bsc#1258072: Require main and library packages to be of the same
+  version and release. Given that all the core functionality is
+  in the libraries it makes little sense to update the main
+  package alone.
+
+- jsc-PED-14819: Support transactional updates.
+
+- Fix testsuite error on SLE-15-SP6 by falling back to rust1.86.
+
+    file when checking for false positives (bsc#1221954).</comment>
+    <requestid>1338542</requestid>
+  </revision>
 </revisionlist>

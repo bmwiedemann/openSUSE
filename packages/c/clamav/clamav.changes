@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Mar  5 16:46:47 UTC 2026 - Reinhard Max <max@suse.com>
+
+- New version 1.5.2:
+  * bsc#1259207, CVE-2026-20031: Fixed an error handling bug in the
+    HTML file parser that may crash the program and cause a
+    denial-of-service (DoS) condition. This issue was introduced in
+    version 1.1.0.
+  * Fixed a possible infinite loop when scanning some JPEG files by
+    upgrading affected ClamAV dependency, a Rust image library.
+  * The CVD verification process will now ignore certificate files
+    in the CVD certs directory when the user lacks read permissions.
+  * Freshclam: Fix CLD verification bug with PrivateMirror option.
+  * Upgraded the Rust bytes dependency to a newer version to
+    resolve RUSTSEC-2026-0007 advisory.
+  * Fixed a possible crash caused by invalid pointer alignment on
+    some platforms.
+  * Minimal required Rust version is now 1.87.
+
+-------------------------------------------------------------------
+Fri Feb 13 09:21:24 UTC 2026 - Reinhard Max <max@suse.com>
+
+- bsc#1258072: Require main and library packages to be of the same
+  version and release. Given that all the core functionality is
+  in the libraries it makes little sense to update the main
+  package alone.
+
+-------------------------------------------------------------------
+Tue Feb 10 16:23:21 UTC 2026 - Reinhard Max <max@suse.com>
+
+- jsc-PED-14819: Support transactional updates.
+
+-------------------------------------------------------------------
+Fri Nov 28 12:44:30 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Fix testsuite error on SLE-15-SP6 by falling back to rust1.86.
+
+-------------------------------------------------------------------
 Fri Nov 21 15:47:35 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Provide a better fix for boo#1249404 by disabling debug mode.
@@ -61,7 +98,7 @@ Wed Oct  8 08:56:26 UTC 2025 - Reinhard Max <max@suse.com>
   * Freshclam, ClamD, ClamScan, and Sigtool: Added an option to
     enable FIPS-like limits disabling MD5 and SHA1 from being used
     for verifying digital signatures or for being used to trust a
-    file when checking for false positives
+    file when checking for false positives (bsc#1221954).
   * ClamD: Added an option to disable select administrative
     commands including SHUTDOWN, RELOAD, STATS and VERSION.
   * libclamav: Added extended hashing functions with a "flags"

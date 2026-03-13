@@ -1,7 +1,7 @@
 #
 # spec file for package clamav
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,8 +25,8 @@
 %endif
 %if 0%{?suse_version} <= 1500
 %define vgcc 13
-%if 0%{?sle_version} < 150400
-%define vrust 1.86
+%if 0%{?sle_version} <= 150700
+%define vrust 1.87
 %endif
 %if 0%{?suse_version} < 1500
 %define vcmake 3
@@ -44,7 +44,7 @@
 %define jsonc json-c-json-c-%vjsonc-20240915
 
 Name:           clamav
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        Antivirus Toolkit
 License:        GPL-2.0-only
@@ -114,6 +114,9 @@ BuildRequires:  python3-pytest
 Obsoletes:      clamav-db < 0.88.3
 Provides:       clamav-nodb = %{version}
 Obsoletes:      clamav-nodb < %{version}
+Requires:       libclamav%v_libclamav = %{version}-%{release}
+Requires:       libclammspack%v_libclammspack = %{version}-%{release}
+Requires:       libfreshclam%v_libfreshclam = %{version}-%{release}
 %if %{without clammspack}
 BuildRequires:  pkgconfig(libmspack)
 %endif
@@ -151,7 +154,7 @@ Optional HTML documentation for ClamAV antivirus engine
 %package milter
 Summary:        ClamAV Milter compatible mail scanner
 Group:          Productivity/Security
-Requires:       %{name} = %{version}
+Requires:       %{name} = %{version}-%{release}
 Provides:       %{name}:/usr/sbin/clamav-milter
 
 %description milter
@@ -259,13 +262,16 @@ popd
 %install
 
 %cmake_install
+%if 0%suse_version <= 1500
 install -d -m755 %{buildroot}%{_localstatedir}/lib/clamav
+%endif
+sed -i 's|@rundir@|%_rundir|g;s|@localstatedir@|%_localstatedir|g' %SOURCE6
 install -d -m755 %{buildroot}%{_tmpfilesdir}
 install -m644 %SOURCE6 %{buildroot}%{_tmpfilesdir}/clamav.conf
 %if 0%{?suse_version} <= 1500
 mkdir -p %{buildroot}%{_localstatedir}/spool/amavis
 %endif
-mkdir -p -m 0755 %{buildroot}{%_sysconfdir,/run/clamav}
+mkdir -p -m 0755 %{buildroot}%_sysconfdir
 find %{buildroot} -type f -name "*.la" -delete -print
 
 for f in %{buildroot}%{_sysconfdir}/*.conf.sample;
@@ -304,10 +310,12 @@ install -m 0644 %SOURCE12 %{buildroot}%{_unitdir}/clamonacc.service
 %service_add_post clamd.service clamonacc.service
 
 %preun
+%if 0%suse_version <= 1500
 if [ $1 -eq 0 ]; then
 	# package will be uninstalled
 	rm -f %{_localstatedir}/lib/clamav/*
 fi
+%endif
 %service_del_preun clamd.service clamonacc.service
 
 %postun
@@ -375,12 +383,11 @@ fi
 %{_unitdir}/freshclam.service
 %{_unitdir}/freshclam.timer
 %{_unitdir}/clamonacc.service
+%if 0%{?suse_version} <= 1500
 %defattr(-,vscan,vscan)
 %dir %{_localstatedir}/lib/clamav
-%if 0%{?suse_version} <= 1500
 %dir %attr(750,vscan,vscan) %{_localstatedir}/spool/amavis
 %endif
-%ghost %attr(755,vscan,vscan) /run/clamav
 
 %files docs-html
 %doc %_docdir/%name
