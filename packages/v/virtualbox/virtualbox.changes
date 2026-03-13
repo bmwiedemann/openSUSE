@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 12 06:34:47 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- add 0001-Linux-host-support-kernel-7.0.patch (bsc#1259536)
+
+-------------------------------------------------------------------
 Mon Feb 23 10:46:41 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Set build parameter VBOX_WITHOUT_SPLIT_SOAPC=1

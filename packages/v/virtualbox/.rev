@@ -2836,4 +2836,12 @@ we must have vb7.1.10.</comment>
 - Set build parameter VBOX_WITHOUT_SPLIT_SOAPC=1</comment>
     <requestid>1334468</requestid>
   </revision>
+  <revision rev="303" vrev="5">
+    <srcmd5>c7f8c6609a5b6f270dcf0f1a2c13ffea</srcmd5>
+    <version>7.2.6</version>
+    <time>1773432953</time>
+    <user>anag_factory</user>
+    <comment>- add 0001-Linux-host-support-kernel-7.0.patch (bsc#1259536)</comment>
+    <requestid>1338441</requestid>
+  </revision>
 </revisionlist>

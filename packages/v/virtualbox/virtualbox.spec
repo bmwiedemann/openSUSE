@@ -134,6 +134,7 @@ Patch11:        cxx17.patch
 Patch12:        host-source.patch
 Patch20:        gentoo-C23.patch
 Patch21:        kernel-6.19.patch
+Patch22:        0001-Linux-host-support-kernel-7.0.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
