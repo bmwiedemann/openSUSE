@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Mar 12 22:11:16 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
+
+- dealers-choice 0.0.9:
+  + Implement California lowball
+  + Implement Six-card stud (partially complete)
+  + Automatically sort hands
+  + Remove cards of player when folded
+  + Add a "Dealing" message for dealer when waiting for server to start
+  + Disallow raise that is less than previous bet/raise
+  + Add server config option: wild_exchange_timeout_ms
+  + Add server config option: action_timeout_max (disconnect players
+    after n timeouts)
+  + Add feedback when some buttons are clicked
+  * Increase coin size
+  + Add card back patterns
+  + Add F11 key for full-screen toggling
+  * Bump game protocol to v6
+  * bugfix: Infinite checking when first person in a >=3 person game folds
+
+-------------------------------------------------------------------
 Wed Nov 12 13:15:18 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Make it build without %check (boo#1227364)

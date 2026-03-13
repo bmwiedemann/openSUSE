@@ -17,7 +17,7 @@
 
 
 Name:           dealers-choice
-Version:        0.0.8
+Version:        0.0.9
 Release:        0
 Summary:        Online Multiplayer Stud and Draw Poker
 License:        MIT
@@ -61,6 +61,7 @@ choose the variant.
 %find_lang %{name}
 
 rm -f %{buildroot}%{_docdir}/%{name}/LICENSE
+rm -f %{buildroot}/%{_libdir}/libminiaudio*.a
 
 %check
 %meson_test
