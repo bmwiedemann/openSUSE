@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 11 13:01:50 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 6.8.0 (CVE-2026-31826, bsc#1259508)
+  * Limit allowed /Length value of stream
+  * Add /IRT (in-reply-to) support for markup annotations
+  * Avoid using PageObject.replace_contents on PdfReader
+  * Document how to disable jbig2dec calls
+
+-------------------------------------------------------------------
 Mon Mar  2 11:22:59 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - update to 6.7.5 (bsc#1259061, CVE-2026-28351, bsc#1258934, CVE-2026-27888, bsc#1258940, CVE-2026-27628)
