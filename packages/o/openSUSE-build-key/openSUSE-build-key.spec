@@ -18,6 +18,7 @@
 
 
 %define keydir  %{_prefix}/lib/rpm/gnupg/keys/
+%define pqkeydir  %{_prefix}/lib/rpm/gnupg/pqkeys/
 %define containerkeydir  %{_datadir}/container-keys/
 %define pemcontainerkeydir  /%{_datadir}/pki/containers/
 
@@ -90,6 +91,9 @@ Source18:       gpg-pubkey-73f03759-626bd414.asc
 # 2024 SUSE Linux Enterprise 15 SP6 RSA 4096 bit reserve key
 Source19:       gpg-pubkey-d588dc46-63c939db.asc
 
+# ML-DSA PQC key for openSUSE
+Source30:       openSUSE-mldsa-key.pem
+
 Source98:       security_at_suse_de.asc
 
 # Auto Import handling via systemd timer + service.
@@ -97,6 +101,7 @@ Source98:       security_at_suse_de.asc
 Source101:      import-openSUSE-build-key
 Source102:      %name-import.service
 Source103:      %name-import.timer
+
 
 BuildRequires:  gpg
 Conflicts:      suse-build-key
@@ -168,6 +173,9 @@ if [ -e "%_sourcedir/_pubkey" ]; then
     fi
 fi
 
+mkdir -p %{buildroot}%{pqkeydir}/
+install -c -m 644 %{SOURCE30} %{buildroot}%{pqkeydir}/opensuse-mldsa-key.pem
+
 mkdir -p $RPM_BUILD_ROOT/usr/sbin/
 mkdir -p $RPM_BUILD_ROOT/var/lib/%name
 install -m 755 %{SOURCE101} $RPM_BUILD_ROOT/usr/sbin/import-%name
@@ -194,10 +202,12 @@ test -x /usr/bin/systemctl && systemctl enable openSUSE-build-key-import.timer &
 %doc security_at_suse_de.asc
 %attr(755,root,root) %dir %{_prefix}/lib/rpm/gnupg
 %attr(755,root,root) %dir %{keydir}
+%attr(755,root,root) %dir %{pqkeydir}
 %attr(755,root,root) %dir %{containerkeydir}
 %attr(755,root,root) %dir %{_datadir}/pki/
 %attr(755,root,root) %dir %{pemcontainerkeydir}
 %{keydir}/gpg-pubkey-*.asc
+%{pqkeydir}/*.pem
 %{containerkeydir}/opensuse-container-key.asc
 %{containerkeydir}/suse-container-key.asc
 %{containerkeydir}/suse-container-key-old.asc

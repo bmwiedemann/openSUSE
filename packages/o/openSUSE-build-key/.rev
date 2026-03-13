@@ -479,4 +479,12 @@ However, it would be good to have these out before we do switch. (forwarded requ
     <comment></comment>
     <requestid>1327788</requestid>
   </revision>
+  <revision rev="54" vrev="63">
+    <srcmd5>da56d7c4ea837b521a1faf881362db31</srcmd5>
+    <version>1.0</version>
+    <time>1773432957</time>
+    <user>anag_factory</user>
+    <comment>- add the openSUSE post quantum key in /usr/lib/rpm/pqkeys/ (forwarded request 1338515 from msmeissn)</comment>
+    <requestid>1338523</requestid>
+  </revision>
 </revisionlist>
