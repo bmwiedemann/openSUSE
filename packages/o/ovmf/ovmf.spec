@@ -60,7 +60,6 @@ Source101:      gdb_uefi.py.in
 Patch1:         %{name}-gdb-symbols.patch
 Patch2:         %{name}-pie.patch
 Patch3:         %{name}-disable-ia32-firmware-piepic.patch
-Patch4:         %{name}-OvmfPkg-Adjust-Memory-Layout-for-2MB-OVMF.patch
 # Bug 1259122 - [16.1][Build 5.19][aarch64] openQA test fails in qemu - truncation screen issue appears in qemu boot manager
 Patch5:         %{name}-MdeModulePkg-ConSplitterDxe-Set-default-ConOut-mode.patch
 Patch6:         %{name}-ignore-spurious-GCC-12-warning.patch
@@ -266,8 +265,8 @@ echo `gcc -dumpversion`
 TOOL_CHAIN=GCC$(gcc -dumpversion|sed 's/\([0-9]\)\.\([0-9]\).*/\1\2/')
 %endif
 
-# Flavors for x86_64: 2MB, 4MB, 4MB+SMM and AMD SEV
-FLAVORS_X64=("ovmf-x86_64" "ovmf-x86_64-4m" "ovmf-x86_64-smm" "ovmf-x86_64-sev" "ovmf-x86_64-tdx")
+# Flavors for x86_64: 4MB, 4MB+SMM and AMD SEV
+FLAVORS_X64=("ovmf-x86_64-4m" "ovmf-x86_64-smm" "ovmf-x86_64-sev" "ovmf-x86_64-tdx")
 # Flavors will NOT enroll default kek/db keys
 FLAVORS_X64_SKIP_SB_KEY=("ovmf-x86_64-sev" "ovmf-x86_64-tdx")
 # Flavors only support unified image (no separate *-code/-vars files)
@@ -353,7 +352,6 @@ collect_x86_64_debug_files()
 
 declare -A EXTRA_FLAGS_X64
 EXTRA_FLAGS_X64=(
-	[ovmf-x86_64]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_2MB -D SECURE_BOOT_ENABLE"
 	[ovmf-x86_64-4m]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE -D SECURE_BOOT_ENABLE"
 	[ovmf-x86_64-smm]="-a IA32 -p OvmfPkg/OvmfPkgIa32X64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE -D SMM_REQUIRE -D SECURE_BOOT_ENABLE"
 	[ovmf-x86_64-sev]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE"
@@ -361,7 +359,6 @@ EXTRA_FLAGS_X64=(
 )
 declare -A OUTDIR_X64
 OUTDIR_X64=(
-	[ovmf-x86_64]="OvmfX64"
 	[ovmf-x86_64-4m]="OvmfX64"
 	[ovmf-x86_64-smm]="Ovmf3264"
 	[ovmf-x86_64-sev]="OvmfX64"
@@ -405,9 +402,6 @@ BUILD_OPTION_X64_XEN=" \
 	-b DEBUG \
 	-t $TOOL_CHAIN \
 "
-#  Build the 2MB Xen flavor
-build $BUILD_OPTION_X64_XEN -D FD_SIZE_2MB
-cp Build/OvmfXen/DEBUG_*/FV/OVMF.fd ovmf-x86_64-xen.bin
 #  Build the 4MB Xen flavor
 build $BUILD_OPTION_X64_XEN -D FD_SIZE_4MB
 cp Build/OvmfXen/DEBUG_*/FV/OVMF.fd ovmf-x86_64-xen-4m.bin

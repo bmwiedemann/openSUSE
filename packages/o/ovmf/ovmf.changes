@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 12 06:31:49 UTC 2026 - YI HSIN Lyu <richard.lyu@suse.com>
+
+- Deprecate the 2MB OVMF image (jsc#PED-12652)
+  - Remove ovmf-x86_64 
+  - Remove ovmf-x86_64-xen
+  - Remove ovmf-OvmfPkg-Adjust-Memory-Layout-for-2MB-OVMF.patch 
+
+-------------------------------------------------------------------
 Tue Mar 10 05:20:52 UTC 2026 - Richard Lyu <richard.lyu@suse.com>
 
 - Add patch to fix truncation screen issue (bsc#1259122)
