@@ -8979,6 +8979,7 @@ unsorted:
   - info-std 
   - info2html 
   - infos-creator-rpm 
+  - ingress-nginx-migration 
   - ingress2gateway 
   - ingress2gateway-bash-completion 
   - ingress2gateway-fish-completion 
@@ -23816,7 +23817,6 @@ unsorted:
   - proton-vpn 
   - proton-vpn-local-agent 
   - protontricks 
-  - protonvpn-cli 
   - proxychains-ng 
   - prun-ohpc 
   - psgml 
@@ -26888,7 +26888,6 @@ unsorted:
   - python311-proton-vpn-api-core 
   - python311-proton-vpn-local-agent 
   - python311-proton-vpn-network-manager 
-  - python311-protonvpn-nm-lib 
   - python311-proxmoxer 
   - python311-pscript 
   - python311-psychtoolbox 
@@ -30786,7 +30785,6 @@ unsorted:
   - python313-proton-vpn-api-core 
   - python313-proton-vpn-local-agent 
   - python313-proton-vpn-network-manager 
-  - python313-protonvpn-nm-lib 
   - python313-proxmoxer 
   - python313-pscript 
   - python313-psychtoolbox 

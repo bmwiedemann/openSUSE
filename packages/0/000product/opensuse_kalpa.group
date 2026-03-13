@@ -65,7 +65,6 @@
     <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:suse-module-tools-scriptlets -->
     <package name="busybox-gzip" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:suse-module-tools-scriptlets -->
     <package name="busybox-sed" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:suse-module-tools-scriptlets -->
-    <package name="busybox-which" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="ca-certificates" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="ca-certificates-mozilla" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="cantarell-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
