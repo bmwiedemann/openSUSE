@@ -1,7 +1,7 @@
 #
 # spec file for package python-param
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-param
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        Declarative Python programming using Parameters
 License:        BSD-3-Clause

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  5 08:08:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.2:
+  * Remove Parameterized __init__ docstring as it shadows class
+    user docstrings
+  * Pandas 3 test suite compatibility
+
+-------------------------------------------------------------------
 Tue Dec  9 12:50:27 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.3.1
