@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 13 06:16:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.17.22 (no releases between .17 and this one):
+  * fix(integrations): permissions
+  * fix(ui): notice for empty list
+  * fix(docker): typo in bash script
+  * fix(auth): OIDC users are always created as Pro users
+    https://github.com/semaphoreui/semaphore/issues/3599
+  * fix(auth): password_login_disable doesn't work
+    https://github.com/semaphoreui/semaphore/issues/3613
+
+-------------------------------------------------------------------
 Mon Mar 09 07:00:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.17.17:
