@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 13 14:05:03 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260313.ff5ea17:
+  * Support cmdline.d directory
+  * Avoid update policy if no new hash
+  * Requires libtss2-tcti-device0
+  * More explicit bootloader detection, honour sysconfig if set
+
+-------------------------------------------------------------------
 Wed Mar 11 14:56:51 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20260311.73a155b:

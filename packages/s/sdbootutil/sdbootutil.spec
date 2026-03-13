@@ -18,7 +18,7 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           sdbootutil
-Version:        1+git20260311.73a155b
+Version:        1+git20260313.ff5ea17
 Release:        0
 Summary:        Bootctl wrapper for BLS boot loaders
 License:        MIT
@@ -41,6 +41,7 @@ Requires:       sed
 Requires:       (%{name}-snapper if (snapper and btrfsprogs))
 Requires:       (%{name}-tukit if read-only-root-fs)
 Requires:       tpm2.0-tools
+Requires:       libtss2-tcti-device0
 # For bootctl and systemd-pcrlock
 Requires:       (udev >= 257.9 or systemd-experimental < 257.9)
 Supplements:    (grub2-x86_64-efi-bls and shim)
