@@ -754,4 +754,16 @@
     historical changes.</comment>
     <requestid>1325869</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>b724c713b70ddc730e4b41a2ddb3e530</srcmd5>
+    <version>2.670.0</version>
+    <time>1773432934</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.670.0 (2.67)
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+  2.67    2026-03-05
+  - This release is based on version 206a of the Olson database. This release includes contemporary
+    changes for Moldova.</comment>
+    <requestid>1338051</requestid>
+  </revision>
 </revisionlist>

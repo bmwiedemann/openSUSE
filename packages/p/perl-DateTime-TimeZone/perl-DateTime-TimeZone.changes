@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar  6 06:02:02 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.670.0 (2.67)
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.67    2026-03-05
+
+  - This release is based on version 206a of the Olson database. This release includes contemporary
+    changes for Moldova.
+
+-------------------------------------------------------------------
 Fri Dec 12 05:36:44 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.660.0 (2.66)

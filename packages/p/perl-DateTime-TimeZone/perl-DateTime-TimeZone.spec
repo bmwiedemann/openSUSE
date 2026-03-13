@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime-TimeZone
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name DateTime-TimeZone
 Name:           perl-DateTime-TimeZone
-Version:        2.660.0
+Version:        2.670.0
 Release:        0
-# 2.66 -> normalize -> 2.660.0
-%define cpan_version 2.66
+# 2.67 -> normalize -> 2.670.0
+%define cpan_version 2.67
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Time zone object base class and factory
 URL:            https://metacpan.org/release/%{cpan_name}
