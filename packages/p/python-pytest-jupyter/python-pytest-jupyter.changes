@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec  1 21:20:45 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * Drop 3.8, Start testing on 3.13, 3.14 and 3.14t, update
+  * Improved doc string for jp_fetch to include how to provide
+    query parameters in GET and json data in POST #83
+  * Restore the ability to override a serverapp's HTTP port #82
+
+-------------------------------------------------------------------
 Mon May 19 16:55:51 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - Drop exclusion of client build for python 3.13

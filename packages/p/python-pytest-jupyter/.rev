@@ -84,4 +84,16 @@
     <comment></comment>
     <requestid>1278549</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cede2e326bb216c312e8aed2ca0ab17c</srcmd5>
+    <version>0.11.0</version>
+    <time>1773432946</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.11.0:
+  * Drop 3.8, Start testing on 3.13, 3.14 and 3.14t, update
+  * Improved doc string for jp_fetch to include how to provide
+    query parameters in GET and json data in POST #83
+  * Restore the ability to override a serverapp's HTTP port #82</comment>
+    <requestid>1338426</requestid>
+  </revision>
 </revisionlist>
