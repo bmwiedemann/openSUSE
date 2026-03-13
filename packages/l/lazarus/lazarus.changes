@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 11 17:40:08 UTC 2026 - PragmaticLinux <info@pragmaticlinux.com>
+
+- Update to 4.6
+  * This is a bugfix release for which no seperate release notes were
+    published. The previous release notes still apply:
+    https://wiki.freepascal.org/Lazarus_4.0_release_notes
+
+-------------------------------------------------------------------
 Sat Dec 20 12:15:03 UTC 2025 - PragmaticLinux <info@pragmaticlinux.com>
 
 - Added support for reproducible builds.
