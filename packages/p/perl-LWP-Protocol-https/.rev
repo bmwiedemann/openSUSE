@@ -200,4 +200,18 @@
     <comment></comment>
     <requestid>1163129</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e1a12dc808c94f4ca2583ccce5598d92</srcmd5>
+    <version>6.150.0</version>
+    <time>1773432939</time>
+    <user>anag_factory</user>
+    <comment>- updated to 6.150.0 (6.15)
+   see /usr/share/doc/packages/perl-LWP-Protocol-https/Changes
+  6.15      2026-02-23 20:36:42Z
+      - Make TLS enabled proxy work (proxy URL https:// not http://) (GH#89)
+        (Steffen Ullrich)
+      - switch from example.com to httpbin.org because of SSL certificate issues
+        (GH#91) (Slaven Rezić)</comment>
+    <requestid>1338067</requestid>
+  </revision>
 </revisionlist>

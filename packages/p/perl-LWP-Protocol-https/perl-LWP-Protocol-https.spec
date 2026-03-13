@@ -1,7 +1,7 @@
 #
 # spec file for package perl-LWP-Protocol-https
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name LWP-Protocol-https
 Name:           perl-LWP-Protocol-https
-Version:        6.140.0
+Version:        6.150.0
 Release:        0
-# 6.14 -> normalize -> 6.140.0
-%define cpan_version 6.14
+# 6.15 -> normalize -> 6.150.0
+%define cpan_version 6.15
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Provide https support for LWP::UserAgent
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 Patch0:         %{cpan_name}-6.09-systemca.diff
 BuildArch:      noarch
 BuildRequires:  perl
@@ -34,14 +35,14 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(IO::Socket::SSL) >= 1.970
 BuildRequires:  perl(IO::Socket::SSL::Utils)
 BuildRequires:  perl(LWP::Protocol::http)
-BuildRequires:  perl(LWP::UserAgent) >= 6.06
+BuildRequires:  perl(LWP::UserAgent) >= 6.60
 BuildRequires:  perl(Net::HTTPS) >= 6
 BuildRequires:  perl(Test::More) >= 0.96
-BuildRequires:  perl(Test::Needs) >= 0.002010
+BuildRequires:  perl(Test::Needs) >= 0.2.10
 BuildRequires:  perl(Test::RequiresInternet)
 Requires:       perl(IO::Socket::SSL) >= 1.970
 Requires:       perl(LWP::Protocol::http)
-Requires:       perl(LWP::UserAgent) >= 6.06
+Requires:       perl(LWP::UserAgent) >= 6.60
 Requires:       perl(Net::HTTPS) >= 6
 Provides:       perl(LWP::Protocol::https) = %{version}
 Provides:       perl(LWP::Protocol::https::Socket) = %{version}
@@ -67,7 +68,7 @@ their dependency on LWP::Protocol::https and will no longer need to know
 what underlying modules to install.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

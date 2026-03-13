@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 24 06:17:08 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.150.0 (6.15)
+   see /usr/share/doc/packages/perl-LWP-Protocol-https/Changes
+
+  6.15      2026-02-23 20:36:42Z
+      - Make TLS enabled proxy work (proxy URL https:// not http://) (GH#89)
+        (Steffen Ullrich)
+      - switch from example.com to httpbin.org because of SSL certificate issues
+        (GH#91) (Slaven Rezić)
+
+-------------------------------------------------------------------
 Fri Mar 22 16:13:25 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.14
