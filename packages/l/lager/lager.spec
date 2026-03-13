@@ -17,14 +17,14 @@
 
 
 Name:           lager
-Version:        0.1.2
+Version:        0.1.3
 Release:        0
 Summary:        C++ library to assist value-oriented design
 License:        MIT
 URL:            https://sinusoid.es/lager/
 Source0:        https://github.com/arximboldi/lager/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  boost-devel
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.21
 BuildRequires:  gcc-c++
 # For tests
 BuildRequires:  cmake(Catch2) < 3.0
