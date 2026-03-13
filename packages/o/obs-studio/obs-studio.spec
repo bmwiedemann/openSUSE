@@ -16,7 +16,7 @@
 #
 
 Name:           obs-studio
-Version:        32.0.4
+Version:        32.1.0
 Release:        0
 Summary:        Free and open source software for video recording and live streaming
 License:        GPL-2.0-or-later
@@ -132,6 +132,11 @@ find %{buildroot} \( -name '.keepme' -o -name '.gitkeep' \) -delete
 
 %fdupes %{buildroot}%{_datadir}/obs
 %fdupes %{buildroot}%{_libdir}/cmake
+
+find %{buildroot}%{_bindir} -type f -executable -exec %{__strip} --strip-unneeded {} \; || true
+find %{buildroot}%{_libdir} -type f -name "*.so*" -exec %{__strip} --strip-unneeded {} \; || true
+find %{buildroot}%{_libdir}/obs-plugins -type f -name "*.so" -exec %{__strip} --strip-unneeded {} \; || true
+find %{buildroot}%{_libdir}/obs-scripting -type f -name "*.so" -exec %{__strip} --strip-unneeded {} \; || true
 
 %check
 #nothing to do

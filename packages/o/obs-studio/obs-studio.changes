@@ -1,4 +1,173 @@
 -------------------------------------------------------------------
+Fri Mar 13 02:45:25 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 32.1.0:
+  * Add "%{__strip} --strip-unneeded" in some executable that cmake force unstrip
+  * Change disable-x264.patch to fit upstream
+  * linux-v4l2: Fix spurious fd closing
+  * libobs/util: Fix fd management in os_process_pipe_create
+  * CI: Add local exceptions to flatpak-builder-lint
+  * linux-pipewire: Fix uninitialized camera resolution access
+  * CI: Update Signing action commit
+  * CI: Update ECC cert with fixed one
+  * frontend: Only send event when scene list changed
+  * obs-websocket: Update version to 5.7.2
+  * CI: Update commit for windows signing workflow
+  * CI: Update code signing certificates
+  * obs-websocket: Update version to 5.7.1
+  * frontend: Improve plugin manager safe mode behavior
+  * Update Code of Conduct instructions (#13164)
+  * Update README.rst to include directly a link to the Code of Conduct
+  * frontend: Update parent logic for systray menu projector items
+  * frontend: Update parent logic, remove explicit delete calls
+  * frontend: Fix unclean shutdown on Windows
+  * frontend: Fix duplicated layout name
+  * frontend: Set mixer toolbar size policy
+  * cmake: Make release builds more reproducible
+  * updater: Update CMake to make builds more reproducible
+  * updater: Add log window and additional log messages
+  * updater: Check return values in ClearShaderCache
+  * docs: Fix typo in obs_enum_canvases description
+  * obs-browser: Update version to 2.26.8
+  * frontend: Ignore sources with disabled audio in mixer
+  * obs-filters: Remove unnecessary nvafx-load.h header
+  * frontend: Defer mixer rename dialog
+  * frontend: Skip background paint for invalid sizes
+  * libobs: Properly handle NULL data in json
+  * frontend: Fix VolumeControl rendering
+  * updater: Fix incorrect format specifier
+  * updater: Don't force file flushes when writing new files
+  * updater: Improve exception handling
+  * updater: Fix various race conditions and error handling
+  * rtmp-services: Remove defunct STAGE TEN
+  * frontend: Round all output theme values
+  * frontend: Update unassigned audio track warning text
+  * frontend: Adjust log upload text for current logs
+  * file-updater: Use exact types to avoid clang-19 errors
+  * plugins: Use exact types to avoid clang-19 errors
+  * frontend: Add needed FreeBSD sys/ headers for libprocstat.h to compile
+  * image-source: Fix interrupted transitions
+  * frontend: Clean up mixer hidden state
+  * obs-browser: Update version to 2.26.7
+  * frontend: Fix macOS crash in application shutdown
+  * frontend: Fix Youtube app dock destruction
+  * shared/media-playback: Fix corrupt MaxCLL when reading HDR metadata
+  * frontend: Add headphones icon in Light Theme
+  * frontend: Add horizontal and vertical icon in Light Theme
+  * frontend: Fix monitoring icon color in Acri theme
+  * frontend: Fix monitoring icon color in Rachni theme
+  * rtmp-services: Add Sportify
+  * frontend: Update previewed sources in mixer by visibility
+  * frontend: Close rename dialog if name unchanged
+  * frontend: Use disabled meter colors when output muted
+  * frontend: Revert Add Source dialog update
+  * obs-browser: Update version to 2.26.6
+  * frontend: Restrict audio meter update region
+  * frontend: Force update volume meter backgrounds
+  * linux-pipewire: Fix camera framerate listing
+  * frontend: Implement sizeHint for VolumeMeter
+  * rtmp-services: Remove legacy SharePlay.tv servers
+  * frontend: Properly update studio mode mixer
+  * frontend: Fix audio mixer monitoring state
+  * frontend: Update menu text when switching layouts
+  * frontend: Fix default value for full-height docks
+  * frontend: Make Add Existing Button translatable
+  * frontend: Make Audio Mixer Hidden Button translatable
+  * libobs, frontend: Signal transition_stop for cancelled transitions
+  * frontend: Prevent setting transition during transitions
+  * libobs: Add obs_transition_is_active
+  * linux-pulseaudio: Fix bad channels message format
+  * linux-pipewire: Fix format description
+  * libobs: Restore only canvases that have video info
+  * frontend: Refresh meter background on style change
+  * frontend: Fix audio mixer dialog on classic theme
+  * frontend: Only round final theme values
+  * frontend: Add vcs-browser to metainfo
+  * frontend: Remove unused audio mixer widgets
+  * frontend: Fix Audio Mixer toolbar tooltips
+  * frontend: Round theme variables with "px" units
+  * libobs: Update version to 32.1.0
+  * frontend: Fix groups not being saved to collection
+  * frontend: Replace add source dropdown with dialog
+  * linux-pipewire: Make camera framerate non-mandatory
+  * plugins: Fix typos
+  * libobs-metal: Fix typos
+  * libobs: Fix typos
+  * frontend: Fix typos
+  * docs: Fix typos
+  * CI: Fix typo
+  * cmake: Fix typo
+  * mac-capture: Avoid inadvertent capture of screen content
+  * nv-filters: Skip Blur filter for HDR
+  * nv-filters: Remove stage image for Video FX
+  * nv-filters: Fix banding issues with Blur effects
+  * CI: Add Xcode compile cache to scheduled cleanup
+  * docs: Add audio encoder priming sample APIs
+  * obs-ffmpeg: Set initial_padding in FFmpeg muxer
+  * obs-libfdk: Implement priming samples API
+  * obs-ffmpeg: Implement priming samples API
+  * coreaudio-encoder: Implement priming samples API
+  * libobs: Add API for getting priming samples from audio encoders
+  * frontend: Display volume source names with QLabel
+  * frontend: Refactor and update Audio Mixer
+  * frontend: Add Menu Checkbox widget
+  * frontend: Add icon recoloring to state style event filter
+  * frontend: Create event filter for widget state styles
+  * libobs-metal: Use concurrency-friendly present
+  * CI: Replace ccache with Xcode compile cache
+  * cmake: Remove ccache support from Xcode builds
+  * frontend: Fix QSystemTrayIcon and QMenu delete order
+  * Remove buildspec file from project
+  * CI: Remove buildspec usage from Windows builds
+  * CI: Remove buildspec usage from Zsh scripts
+  * CI: Replace buildspec in Appcast update action
+  * cmake: Update buildspec system to use preset file
+  * cmake: Add dependency information to preset
+  * frontend-tools: Add lua registered source to module
+  * build-aux,CI: Update Flatpak to 2026-01-09 deps
+  * obs-browser: Update version to 2.26.4
+  * Update translations from Crowdin
+  * build-aux: Update gersemi formatting script
+  * cmake: Apply gersemi 0.25 formatting
+  * CI: Update gersemi formula
+  * obs-outputs: Fix chapter ts when using file splitting
+  * libobs: Restore original video_t for encoders when GPU scaling is used
+  * frontend: Add more source undo/redo actions
+  * frontend: Update transform dialog
+  * frontend: Create AlignmentSelector widget
+  * frontend: Make sure all scene item properties are copied
+  * frontend: Sync Preview/Program size and positioning
+  * frontend: Refactor OBSBasic::Save to only save frontend canvas scenes/groups
+  * rtmp-services: Remove defunct servers/services
+  * frontend: Disable dock animations
+  * frontend: Move transition preview button to button box
+  * frontend: Rearrange default dock positions
+  * libobs: Remove "using namespace std" from headers
+  * frontend: Remove implicit capture of "this" using "="
+  * frontend: Replace "=" capture with "this"
+  * coreaudio-encoder: Use canonical format enum instead of bitwise or
+  * cmake: Disable char8_t on macOS with C++20
+  * mac-avcapture/legacy: Move comparison operator up
+  * frontend: Use palette for Light theme audio mixer
+  * frontend: Round display size for projectors
+  * build-aux,CI: Replace Flatpak KDE SDK with Freedesktop SDK
+  * build-aux: Replace Flatpak modules with pre-compiled dependencies
+  * plugins: Set missed default bitrates to 6000 kbps
+  * frontend: Remove Source from source names
+  * frontend: Remove "using namespace std" from headers
+  * shared/bpm: Fix NAL type for HEVC user data SEIs
+  * libobs: Fix NAL type for HEVC caption SEIs
+  * frontend/cmake: Enable Qt strict mode
+  * frontend,shared: Replace and disable contextless connect calls
+  * frontend: Replace and disable QString to QUrl casts
+  * frontend,shared: Replace and disable QByteArray to char * casts
+  * frontend: Replace #defines in YoutubeApiWrappers
+  * frontend: Avoid unnecessary QString<->const char * conversions
+  * frontend: Increase media playback slider fidelity
+  * frontend: Cleanup Qt GuiPrivate linkage
+  * obs-webrtc: Add Simulcast Support
+
+-------------------------------------------------------------------
 Thu Feb 19 02:36:16 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Restrict obs-nvenc-test installation to x86_64 architecture,

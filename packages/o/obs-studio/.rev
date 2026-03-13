@@ -84,4 +84,12 @@ There are still minor multi-architecture adjustments to refine, but the package 
   as the binary is not built on aarch64.</comment>
     <requestid>1334270</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>56862999ae1cddb2ca37e9058295a91c</srcmd5>
+    <version>32.1.0</version>
+    <time>1773433016</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1338583</requestid>
+  </revision>
 </revisionlist>

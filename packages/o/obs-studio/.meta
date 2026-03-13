@@ -3,5 +3,6 @@
   <description>Free, open source software for live streaming and recording
 
 </description>
+  <devel project="multimedia:apps" package="obs-studio"/>
   <url>https://obsproject.com/</url>
 </package>
