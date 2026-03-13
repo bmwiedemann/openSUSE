@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  6 12:19:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6:
+  * Dropped support for Django 4.2, 5.0 and 5.1.
+
+-------------------------------------------------------------------
 Thu Jan 22 08:46:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5:

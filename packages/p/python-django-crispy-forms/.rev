@@ -193,4 +193,12 @@
   * Dropped support for Python 3.8.</comment>
     <requestid>1328628</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b248d8324ec32479d2708eac11387435</srcmd5>
+    <version>2.6</version>
+    <time>1773433109</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1338736</requestid>
+  </revision>
 </revisionlist>

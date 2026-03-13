@@ -28,7 +28,7 @@
 %define mod_name django_crispy_forms
 %{?sle15_python_module_pythons}
 Name:           python-django-crispy-forms%{psuffix}
-Version:        2.5
+Version:        2.6
 Release:        0
 Summary:        Django DRY Forms
 License:        MIT
