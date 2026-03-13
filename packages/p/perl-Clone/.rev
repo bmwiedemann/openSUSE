@@ -257,4 +257,38 @@
     <comment></comment>
     <requestid>1197307</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>5dc03f51c2b31dbacde539f5ff2a6b8d</srcmd5>
+    <version>0.480.0</version>
+    <time>1773432937</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.480.0 (0.48)
+   see /usr/share/doc/packages/perl-Clone/Changes
+  0.48 2026-03-02 16:02:00 atoomic
+    - perf: optimize hot paths in Clone.xs
+    - fix: replace subtest with SKIP/bare blocks to avoid Test2 warnings
+    - fix: don't require MGf_DUP flag for ext magic duplication
+    - fix: lower MAX_DEPTH to 4000 to prevent SEGV on CPAN smokers
+    - fix: use platform-adaptive depth in t/10-deep_recursion.t for Windows
+    - Fix t/10-deep_recursion.t for Windows
+    - Fix C89 declaration-after-statement violations in Clone.xs
+    - Fix deep recursion stack overflow on Windows
+    - Fix cloning of Math::BigInt::GMP objects (fixes #16)
+    - Fix cloning of threads::shared data structures (fixes #18)
+    - Add thread safety test for Class::DBI-like patterns (fixes #14)
+    - Add comprehensive documentation with examples and limitations
+    - Improve README.md structure and installation instructions
+    - Add DBI + DBD::SQLite as recommended test dependencies
+    - Fix weakened reference cloning via deferred weakening (fixes #15)
+    - Fix memory leak when cloning non-existent hash values (fixes #42)
+    - Fix segfault when cloning DBI database handles (fixes #27)
+    - Rewrite t/09-circular.t to fix SEGV on CPAN Testers (fixes #54)
+    - Replace static recursion_depth with stack parameter
+    - Fix C++ style comments in Clone.xs for C89 portability
+    - Fix memory leak in Clone.xs (fixes #42)
+    - Allow a MAX_DEPTH recursion of 32000 calls (fixes #19 aka RT97525)
+    - Rename tests with more readable names
+    - Remove TODO from cow test</comment>
+    <requestid>1338058</requestid>
+  </revision>
 </revisionlist>

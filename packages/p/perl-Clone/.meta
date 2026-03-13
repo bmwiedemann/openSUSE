@@ -5,5 +5,4 @@ nested hash, array, scalar and reference types, including tied variables
 and objects.
 
 For a slower, but more flexible solution see Storable's dclone().</description>
-  <devel project="devel:languages:perl" package="perl-Clone"/>
 </package>
