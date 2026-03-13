@@ -296,7 +296,7 @@ mkdir -p \
 	%{buildroot}/%{_sysconfdir}/init.d \
 	%{buildroot}/%{_sysconfdir}/named.d \
 	%{buildroot}/%{_sysconfdir}/openldap/schema \
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1699
 	%{buildroot}/%{_sysconfdir}/slp.reg.d \
 %endif
 	%{buildroot}/%{_sysconfdir}/crypto-policies/back-ends \
@@ -341,7 +341,7 @@ popd
 # remove useless .la files
 rm -f %{buildroot}/%{_libdir}/lib*.{la,a} %{buildroot}/%{_libdir}/bind/*.la
 mv vendor-files/config/named.conf %{buildroot}/%{_sysconfdir}
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1699
 mv vendor-files/config/bind.reg %{buildroot}/%{_sysconfdir}/slp.reg.d
 %endif
 mv vendor-files/config/rndc-access.conf %{buildroot}/%{_sysconfdir}/named.d
@@ -420,7 +420,7 @@ make test
 %files
 %license LICENSE
 %attr(0644,root,named) %config(noreplace) /%{_sysconfdir}/named.conf
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1699
 %dir %{_sysconfdir}/slp.reg.d
 %attr(0644,root,root) %config /%{_sysconfdir}/slp.reg.d/bind.reg
 %endif

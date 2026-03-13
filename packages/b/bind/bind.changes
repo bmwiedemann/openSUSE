@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 12 14:32:20 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update %suse_version checks for SLES 16.x (jsc#PED-15788)
+
+-------------------------------------------------------------------
 Wed Mar  4 12:09:56 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to release 9.20.20

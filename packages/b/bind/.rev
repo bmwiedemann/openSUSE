@@ -2663,4 +2663,12 @@ New Features
     directive.</comment>
     <requestid>1336351</requestid>
   </revision>
+  <revision rev="229" vrev="2">
+    <srcmd5>600524bd76e7cedc2cc3fb6c20ede60f</srcmd5>
+    <version>9.20.20</version>
+    <time>1773432956</time>
+    <user>anag_factory</user>
+    <comment>- Update %suse_version checks for SLES 16.x (jsc#PED-15788)</comment>
+    <requestid>1338506</requestid>
+  </revision>
 </revisionlist>
