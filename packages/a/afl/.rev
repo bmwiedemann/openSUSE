@@ -1708,4 +1708,41 @@
     - Gramatron: fixes + cjson switch by @CarvedCoder, fix by @jubnzv (forwarded request 1324709 from msmeissn)</comment>
     <requestid>1324710</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>d0c56d95a21c3162ed366c2b4386c5ac</srcmd5>
+    <version>4.40c</version>
+    <time>1773433061</time>
+    <user>anag_factory</user>
+    <comment>- updated to 4.40c
+  - afl-fuzz:
+    - FrameShift integrated and enabled by default, disable with
+      AFL_FRAMESHIFT_DISABLE and configure effort via
+      AFL_FRAMESHIFT_MAX_OVERHEAD. In extensive fuzzbench analysis at worst
+      (on average) it does nothing, at best it improves time to new coverage
+      and total coverage unlocked. https://arxiv.org/pdf/2507.05421
+      Thanks to @hgarrereyn for the PR!
+    - Fixed several potential crashes when using IJON
+    - added `AFL_FORCE_FASTRESUME` which will ignore the saved hash of the
+      target - but note it will only work if the coverage map size did not
+      change
+    - prevent further executed instrumented programs by the fuzz target to
+      manipulate the coverage
+  - afl-cc:
+    - LLVM 22 support (they are again switching around include files ...)
+    - g_/curl_/xml_ string support for COMPCOV, thanks to @Prajwal-kp-18
+    - optimized hidden CFG instrumentation (don't instrument vector selects)
+    - plugin optimization and fixes by @nbars, @kyakdan and @koltiradw
+    - marked GCC plugins as unmaintained. We need someone who know gimple and
+      is willing to fix the plugin issues, workarounds for gcc bugs and
+      overall improve the plugin.
+    - env `AFL_LLVM_DENY_EXEC` will abort any common exec calls
+  - afl-cmin:
+    - new implementation in C by @kcwu - it is currenlty not built though
+      because of maturity issues, e.g. does not work with Nyx
+    - afl-cmin.py was changing behaviour to hash the original filenames,
+      this was reverted.
+    - afl-cmin and afl-cmin.py honor `AFL_SHA1_FILENAMES` now
+  - afl-showmap:</comment>
+    <requestid>1338665</requestid>
+  </revision>
 </revisionlist>
