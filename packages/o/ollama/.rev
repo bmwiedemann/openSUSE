@@ -712,4 +712,20 @@ because we don't need git-web and the other stuff here (forwarded request 125417
      imported from Qwen3.5 GGUF files (forwarded request 1336013 from adrianSuSE)</comment>
     <requestid>1336014</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>2a63f3b816a6ab8fa840374b852dd11a</srcmd5>
+    <version>0.17.7</version>
+    <time>1773432969</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.17.7
+  * Allow thinking levels such as &quot;medium&quot; to correctly interpreted
+    in Ollama's API for all thinking models
+  * Add context length to support compaction when using ollama launch
+
+- Update to version 0.17.6:
+  * Fixed issue where GLM-OCR would not work due to incorrect
+    prompt rendering
+  * Fixed tool calling parsing and rendering for Qwen 3.5 models</comment>
+    <requestid>1338547</requestid>
+  </revision>
 </revisionlist>

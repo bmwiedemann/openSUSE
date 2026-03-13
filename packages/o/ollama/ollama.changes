@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 12 19:13:07 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 0.17.7
+  * Allow thinking levels such as "medium" to correctly interpreted
+    in Ollama's API for all thinking models
+  * Add context length to support compaction when using ollama launch
+
+-------------------------------------------------------------------
+Wed Mar  4 23:08:17 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.17.6:
+  * Fixed issue where GLM-OCR would not work due to incorrect
+    prompt rendering
+  * Fixed tool calling parsing and rendering for Qwen 3.5 models
+
+-------------------------------------------------------------------
 Tue Mar  3 08:11:10 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Update to version 0.17.5:
