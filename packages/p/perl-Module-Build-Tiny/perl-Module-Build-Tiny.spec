@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Module-Build-Tiny
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %define cpan_name Module-Build-Tiny
 Name:           perl-Module-Build-Tiny
-Version:        0.52.0
+Version:        0.53.0
 Release:        0
-# 0.052 -> normalize -> 0.52.0
-%define cpan_version 0.052
+# 0.053 -> normalize -> 0.53.0
+%define cpan_version 0.053
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Tiny replacement for Module::Build
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEONT/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -64,7 +65,7 @@ Whereas Module::Build has over 6,700 lines of code; this module has less
 than 200, yet supports the features needed by most distributions.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Build.PL --installdirs=vendor

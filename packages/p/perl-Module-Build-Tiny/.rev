@@ -144,4 +144,16 @@
             - Add extra_compiler_flags and extra_linker_flags command line arguments</comment>
     <requestid>1282005</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>93036d6ad7d204dd4b560ca4b8afae7f</srcmd5>
+    <version>0.53.0</version>
+    <time>1773432936</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.53.0 (0.053)
+   see /usr/share/doc/packages/perl-Module-Build-Tiny/Changes
+  0.053     2026-03-03 20:42:07+01:00 Europe/Brussels
+            - Always set dynamic_config=0 in MYMETA
+            - Set PERL_DL_NONLAZY=1 during testing</comment>
+    <requestid>1338057</requestid>
+  </revision>
 </revisionlist>

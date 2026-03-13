@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  4 06:03:28 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.53.0 (0.053)
+   see /usr/share/doc/packages/perl-Module-Build-Tiny/Changes
+
+  0.053     2026-03-03 20:42:07+01:00 Europe/Brussels
+            - Always set dynamic_config=0 in MYMETA
+            - Set PERL_DL_NONLAZY=1 during testing
+
+-------------------------------------------------------------------
 Sun May 25 05:33:31 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.52.0 (0.052)
