@@ -743,4 +743,12 @@ Features
   found error in install section.</comment>
     <requestid>1331004</requestid>
   </revision>
+  <revision rev="80" vrev="3">
+    <srcmd5>f96dd9f4cd5d8aa0bea822ce75adb1d1</srcmd5>
+    <version>1.24.2</version>
+    <time>1773432956</time>
+    <user>anag_factory</user>
+    <comment>- Update %suse_version checks for SLES 16.x (jsc#PED-15789)</comment>
+    <requestid>1338508</requestid>
+  </revision>
 </revisionlist>

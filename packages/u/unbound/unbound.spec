@@ -1,7 +1,7 @@
 #
 # spec file for package unbound
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_without systemd
 # needs openssl with quic enabled - aws-lc is sadly not a drop in as it removed some functions used by unbound
 %bcond_with unbound_quic
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %bcond_without unbound_redis
 %else
 %bcond_with    unbound_redis

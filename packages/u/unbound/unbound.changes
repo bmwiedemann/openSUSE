@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 12 14:54:24 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update %suse_version checks for SLES 16.x (jsc#PED-15789)
+
+-------------------------------------------------------------------
 Fri Jan 30 12:21:42 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Create /var/lib/unbound with systemd-tmpfiles, move root.key to
