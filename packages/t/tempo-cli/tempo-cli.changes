@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 13 06:07:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.10.2:
+  * chore(deps): lock file maintenance (#6628)
+  * bugfix: set default max_result_limit for search to 256*1024
+    (#6525) (#6645)
+  * :Docs: Broken link on Tempo docs (#6610) (#6611)
+  * chore(deps): lock file maintenance (#6590)
+  * fix(deps): update module go.opentelemetry.io/otel/sdk to
+    v1.40.0 [security] (release-v2.10) (#6522)
+  * chore(deps): lock file maintenance (#6528)
+
+-------------------------------------------------------------------
 Tue Feb 17 12:59:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.10.1:
