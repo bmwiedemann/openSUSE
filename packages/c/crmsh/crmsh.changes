@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar 13 04:23:58 UTC 2026 - nicholas.yang@suse.com
+
+- Update to version 5.0.0+20260313.6235a908:
+  * Dev: sh: Use sh_helper.py for su commands (bsc#1254757)
+
+-------------------------------------------------------------------
+Thu Mar 12 09:00:03 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260312.ad57a9db:
+  * Dev: testcases: remove traceback
+  * Fix: log: Disable color when not on a TTY (bsc#1259178)
+
+-------------------------------------------------------------------
+Wed Mar 11 07:47:27 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260311.dfa9856b:
+  * Dev: bootstrap: Skip inactive cluster node when calling restart_cluster function
+
+-------------------------------------------------------------------
 Tue Mar 10 07:01:35 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.0.0+20260309.5a3c6578:
