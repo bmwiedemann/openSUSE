@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Mar 13 06:11:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.3.2:
+  * build(deps): bump aws-lc-rs from 1.16.0 to 1.16.1 (#15029)
+  * build(deps): bump schannel from 0.1.28 to 0.1.29 (#15028)
+  * build(deps): bump cmake from 0.1.54 to 0.1.57 (#15027)
+  * build(deps): bump zerocopy from 0.8.39 to 0.8.42 (#15026)
+  * build(deps): bump crypto-common from 0.1.6 to 0.1.7 (#15021)
+  * build(deps): bump tokio-metrics from 0.4.7 to 0.4.9 (#15024)
+  * build(deps): bump cc from 1.2.49 to 1.2.56 (#15023)
+  * build(deps): bump libc from 0.2.180 to 0.2.183 (#15022)
+  * build(deps): bump docker/build-push-action from 6.19.2 to 7.0.0
+    (#15006)
+  * build(deps): bump memchr from 2.7.6 to 2.8.0 (#15020)
+  * build(deps): bump rand_core from 0.9.3 to 0.9.5 (#15019)
+  * build(deps): bump unicode-ident from 1.0.23 to 1.0.24 (#15018)
+  * build(deps): bump chrono from 0.4.43 to 0.4.44 (#15017)
+  * build(deps): bump github.com/mattn/go-runewidth from 0.0.20 to
+    0.0.21 (#15016)
+  * build(deps): bump google.golang.org/grpc from 1.79.1 to 1.79.2
+    (#15015)
+  * build(deps): bump k8s.io/klog/v2 in the kube group (#15014)
+  * build(deps-dev): bump webpack from 5.105.3 to 5.105.4 in
+    /web/app (#15012)
+  * build(deps-dev): bump babel-loader from 10.0.0 to 10.1.0 in
+    /web/app (#15011)
+  * build(deps): bump docker/setup-buildx-action (#15007)
+  * build(deps): bump docker/setup-buildx-action from 3.12.0 to
+    4.0.0 (#15005)
+  * build(deps): bump regex-lite from 0.1.8 to 0.1.9 (#15004)
+  * build(deps): bump anyhow from 1.0.100 to 1.0.102 (#15003)
+  * build(deps): bump ryu from 1.0.20 to 1.0.23 (#15002)
+  * build(deps): bump pin-project-lite from 0.2.16 to 0.2.17
+    (#15001)
+
+-------------------------------------------------------------------
 Fri Mar 06 06:15:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.3.1:
