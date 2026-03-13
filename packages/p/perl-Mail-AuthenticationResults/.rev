@@ -52,4 +52,21 @@
     - Correctly parse a string beginning with a slash</comment>
     <requestid>1291925</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c069c24545f52b7da9c708e346bb9919</srcmd5>
+    <version>2.20260216</version>
+    <time>1773432933</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.20260216
+   see /usr/share/doc/packages/perl-Mail-AuthenticationResults/Changes
+  2.20260216 2026-02-16 14:47:11+11:00 Australia/Melbourne
+    - Added some helper methods which can be used to add
+      commonly used children to an object.
+       * $object-&gt;add_entry($key, $value);
+       * $object-&gt;add_sub_entry($key, $value);
+       * $object-&gt;add_comment($value);
+      each returns the new object being added which can then be
+      manipulated/added to as required.</comment>
+    <requestid>1338045</requestid>
+  </revision>
 </revisionlist>

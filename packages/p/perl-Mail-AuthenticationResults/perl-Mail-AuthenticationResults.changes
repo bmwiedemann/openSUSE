@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 16 06:16:47 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.20260216
+   see /usr/share/doc/packages/perl-Mail-AuthenticationResults/Changes
+
+  2.20260216 2026-02-16 14:47:11+11:00 Australia/Melbourne
+    - Added some helper methods which can be used to add
+      commonly used children to an object.
+       * $object->add_entry($key, $value);
+       * $object->add_sub_entry($key, $value);
+       * $object->add_comment($value);
+      each returns the new object being added which can then be
+      manipulated/added to as required.
+
+-------------------------------------------------------------------
 Thu Jul 10 05:37:29 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.20250709

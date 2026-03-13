@@ -8,5 +8,4 @@ key/value pairs are parsed when present in the authserv-id section, this is agai
 
 Comments added between key/value pairs will be added after them in the data structures and when stringified.
 </description>
-  <devel project="devel:languages:perl" package="perl-Mail-AuthenticationResults"/>
 </package>
