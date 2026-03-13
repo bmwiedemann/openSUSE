@@ -17,7 +17,7 @@
 
 
 Name:           homebank
-Version:        5.9.7
+Version:        5.10
 Release:        0
 Summary:        Application to manage personal accounts
 License:        GPL-2.0-or-later
@@ -29,7 +29,6 @@ BuildRequires:  gettext-devel
 BuildRequires:  intltool
 BuildRequires:  libofx-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0) >= 2.62
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.8
 BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0
@@ -51,7 +50,7 @@ charts.
 %lang_package
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}.0
 
 %build
 %if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
@@ -67,7 +66,6 @@ make check
 
 %install
 %make_install
-%suse_update_desktop_file -G "Personal Accounting" %{name}
 %fdupes %{buildroot}%{_datadir}
 %find_lang %{name} %{?no_lang_C}
 # Application Registry is obsolete since GNOME 2.8.

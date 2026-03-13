@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Mar 10 15:27:11 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.10 
+  * change: reworked the print layout and made some optimisation
+  * wish  : lp#2134459 print out date range for reports
+  * wish  : lp#2118816 add a quick filter type "not transfer"
+  * wish  : lp#2116818 export notes column for payees .csv
+  * wish  : lp#2115868 try to identify account with filename of
+    QIF imported file
+  * wish  : lp#2110037 add column in manage assigment to see the
+    target: memo/payee
+  * wish  : lp#2109966 add a no flags quickfilter into the ledger
+  * wish  : lp#2107578 grouping char in report table view print
+  * wish  : lp#2104203 "Edit Accountâ€¦" contextual menu item
+    action in the main views
+  * wish  : lp#2103705 Implement same day transaction sort
+    option(s)
+  * wish  : lp#2091047 pre-fill multi-edit fields with common
+    values
+  * wish  : lp#2087995 be able to set flag for templated/scheduled
+    transactions
+  * wish  : lp#2077285 add a hide closed account in manage dialog 
+  * bugfix: lp#2143259 amount in rounded 2 digits when
+    edit/inherit
+  * bugfix: lp#2142164 closing an account do not enable save
+  * bugfix: lp#2138997 Account column bottom txn list hide after
+    closing a ledger
+  * bugfix: lp#2138986 changing a pending txn of account displays
+    bad count to approve
+  * bugfix: lp#2137367 pasting amount with dot as group separator
+    error
+  * bugfix: lp#2136916 wish: view locked transaction in read only
+    in ledger and report
+  * bugfix: lp#2136501 always shows void/remind wrongly hide
+    despite filter
+  * bugfix: lp#2125939 when adding, the list behind sorted by date
+    move to top and shows old transaction
+- Drop usage of suse_update_desktop_file as it is deprecated
+    
+-------------------------------------------------------------------
 Sun Jan 11 18:55:45 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 5.9.7
