@@ -258,4 +258,13 @@
   See https://github.com/openSUSE/cpanspec/issues/47 for details</comment>
     <requestid>1312557</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9f6ad5afeb6082cd689e9acbb61d3d10</srcmd5>
+    <version>2.340.0</version>
+    <time>1773432940</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.340.0 (2.34)
+   see /usr/share/doc/packages/perl-TimeDate/Changes</comment>
+    <requestid>1338069</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-TimeDate
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define cpan_name TimeDate
 Name:           perl-TimeDate
-Version:        2.330.0
+Version:        2.340.0
 Release:        0
-# 2.33 -> normalize -> 2.330.0
-%define cpan_version 2.33
+# 2.34 -> normalize -> 2.340.0
+%define cpan_version 2.34
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Summary:        TimeDate Perl module
+Summary:        Date and time formatting subroutines
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
@@ -31,46 +31,47 @@ Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-Provides:       perl(Date::Format) = 2.240.0
-Provides:       perl(Date::Format::Generic)
-Provides:       perl(Date::Language) = 1.100.0
-Provides:       perl(Date::Language::Afar) = 0.990.0
-Provides:       perl(Date::Language::Amharic) = 1.0.0
-Provides:       perl(Date::Language::Austrian) = 1.10.0
-Provides:       perl(Date::Language::Brazilian) = 1.10.0
-Provides:       perl(Date::Language::Bulgarian) = 1.10.0
-Provides:       perl(Date::Language::Chinese) = 1.0.0
-Provides:       perl(Date::Language::Chinese_GB) = 1.10.0
-Provides:       perl(Date::Language::Czech) = 1.10.0
-Provides:       perl(Date::Language::Danish) = 1.10.0
-Provides:       perl(Date::Language::Dutch) = 1.20.0
-Provides:       perl(Date::Language::English) = 1.10.0
-Provides:       perl(Date::Language::Finnish) = 1.10.0
-Provides:       perl(Date::Language::French) = 1.40.0
-Provides:       perl(Date::Language::Gedeo) = 0.990.0
-Provides:       perl(Date::Language::German) = 1.20.0
-Provides:       perl(Date::Language::Greek) = 1.0.0
-Provides:       perl(Date::Language::Hungarian) = 1.10.0
-Provides:       perl(Date::Language::Icelandic) = 1.10.0
-Provides:       perl(Date::Language::Italian) = 1.10.0
-Provides:       perl(Date::Language::Norwegian) = 1.10.0
-Provides:       perl(Date::Language::Occitan) = 1.40.0
-Provides:       perl(Date::Language::Oromo) = 0.990.0
-Provides:       perl(Date::Language::Romanian) = 1.10.0
-Provides:       perl(Date::Language::Russian) = 1.10.0
-Provides:       perl(Date::Language::Russian_cp1251) = 1.10.0
-Provides:       perl(Date::Language::Russian_koi8r) = 1.10.0
-Provides:       perl(Date::Language::Sidama) = 0.990.0
-Provides:       perl(Date::Language::Somali) = 0.990.0
-Provides:       perl(Date::Language::Spanish) = 1.0.0
-Provides:       perl(Date::Language::Swedish) = 1.10.0
-Provides:       perl(Date::Language::Tigrinya) = 1.0.0
-Provides:       perl(Date::Language::TigrinyaEritrean) = 1.0.0
-Provides:       perl(Date::Language::TigrinyaEthiopian) = 1.0.0
-Provides:       perl(Date::Language::Turkish) = 1.0.0
+Provides:       perl(Date::Format) = %{version}
+Provides:       perl(Date::Format::Generic) = %{version}
+Provides:       perl(Date::Language) = %{version}
+Provides:       perl(Date::Language::Afar) = %{version}
+Provides:       perl(Date::Language::Amharic) = %{version}
+Provides:       perl(Date::Language::Arabic) = %{version}
+Provides:       perl(Date::Language::Austrian) = %{version}
+Provides:       perl(Date::Language::Brazilian) = %{version}
+Provides:       perl(Date::Language::Bulgarian) = %{version}
+Provides:       perl(Date::Language::Chinese) = %{version}
+Provides:       perl(Date::Language::Chinese_GB) = %{version}
+Provides:       perl(Date::Language::Czech) = %{version}
+Provides:       perl(Date::Language::Danish) = %{version}
+Provides:       perl(Date::Language::Dutch) = %{version}
+Provides:       perl(Date::Language::English) = %{version}
+Provides:       perl(Date::Language::Finnish) = %{version}
+Provides:       perl(Date::Language::French) = %{version}
+Provides:       perl(Date::Language::Gedeo) = %{version}
+Provides:       perl(Date::Language::German) = %{version}
+Provides:       perl(Date::Language::Greek) = %{version}
+Provides:       perl(Date::Language::Hungarian) = %{version}
+Provides:       perl(Date::Language::Icelandic) = %{version}
+Provides:       perl(Date::Language::Italian) = %{version}
+Provides:       perl(Date::Language::Norwegian) = %{version}
+Provides:       perl(Date::Language::Occitan) = %{version}
+Provides:       perl(Date::Language::Oromo) = %{version}
+Provides:       perl(Date::Language::Romanian) = %{version}
+Provides:       perl(Date::Language::Russian) = %{version}
+Provides:       perl(Date::Language::Russian_cp1251) = %{version}
+Provides:       perl(Date::Language::Russian_koi8r) = %{version}
+Provides:       perl(Date::Language::Sidama) = %{version}
+Provides:       perl(Date::Language::Somali) = %{version}
+Provides:       perl(Date::Language::Spanish) = %{version}
+Provides:       perl(Date::Language::Swedish) = %{version}
+Provides:       perl(Date::Language::Tigrinya) = %{version}
+Provides:       perl(Date::Language::TigrinyaEritrean) = %{version}
+Provides:       perl(Date::Language::TigrinyaEthiopian) = %{version}
+Provides:       perl(Date::Language::Turkish) = %{version}
 Provides:       perl(Date::Parse) = %{version}
-Provides:       perl(Time::Zone) = 2.240.0
-Provides:       perl(TimeDate) = 1.210.0
+Provides:       perl(Time::Zone) = %{version}
+Provides:       perl(TimeDate) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 
@@ -108,6 +109,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc ChangeLog README
+%doc Changes README
+%license LICENSE
 
 %changelog
