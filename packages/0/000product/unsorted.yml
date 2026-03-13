@@ -2018,6 +2018,7 @@ unsorted:
   - cargo1.91 
   - cargo1.92 
   - cargo1.93 
+  - cargo1.94 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -12599,7 +12600,7 @@ unsorted:
   - libcapi20-3-32bit 
   - libcapi20-devel 
   - libcapi20-devel-32bit 
-  - libcapnp-1_3_0 
+  - libcapnp-1_4_0 
   - libcapnp-devel 
   - libcapstone-devel 
   - libcapstone-devel-static 
@@ -21370,6 +21371,7 @@ unsorted:
   - patterns-cinnamon-cinnamon_basis 
   - patterns-cockpit 
   - patterns-cockpit-client 
+  - patterns-containers-runtime_docker 
   - patterns-desktop-technical_writing 
   - patterns-devel-C-C++-devel_C_C++ 
   - patterns-devel-base-devel_basis 
@@ -21551,6 +21553,7 @@ unsorted:
   - pcp-system-tools 
   - pcp-testsuite 
   - pcp-zeroconf 
+  - pcr-oracle 
   - pcre2-devel 
   - pcre2-devel-static 
   - pcre2-doc 
@@ -23814,7 +23817,6 @@ unsorted:
   - proton-vpn-local-agent 
   - protontricks 
   - protonvpn-cli 
-  - protonvpn-gui 
   - proxychains-ng 
   - prun-ohpc 
   - psgml 
@@ -33672,6 +33674,8 @@ unsorted:
   - rust1.92-src 
   - rust1.93 
   - rust1.93-src 
+  - rust1.94 
+  - rust1.94-src 
   - rustdesk-server 
   - rustdesk-server-hbbr 
   - rustdesk-server-hbbs 
