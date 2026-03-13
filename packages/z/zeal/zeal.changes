@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Sat Mar 07 21:20:55 UTC 2026 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 0.8.0:
+  * build(cmake): fix code signing
+  * chore: bump version to 0.8.0
+  * fix(ui): show update check result when triggered from menu
+  * fix(ui): correctly apply color scheme without reload
+  * ci(github): bump actions/upload-artifact from 6 to 7 (#1764)
+  * feat(app): simplify bundled html pages
+  * refactor(core): use std::underlying_type_t
+  * fix(registry,ui): do fuzzy matching only once
+  * fix(ui): do not reload toc view for the same page
+  * fix(ui): use same height in search and toc views
+  * fix(registry): defer docset loading to improve startup performance (#1748)
+  * ci(github): simplify vcpkg binary cache handling (#1756)
+  * style: order setters where possible
+  * chore(cmake,ui): update copyright year
+  * ci(github): build with Qt 6.10.2 (#1755)
+  * fix(util): fix return code in plist parser
+  * build(core): update cpp-httplib to v0.32.0
+  * fix(util): protect sqlite3_finalize with a mutex
+  * feat(registry,ui,util): use new fuzzy matching algorithm
+  * fix(browser): only scale zoom factor on hidpi
+  * fix(ui): make search delegate highlihgt fuzzy results
+  * fix(registry): use fzy algorithm for fuzzy search
+  * fix(ui): reset docset filter after list update
+  * fix: add missing error logging (#1752)
+  * ci(github): bump actions/cache from 4 to 5 (#1740)
+  * ci(github): bump actions/upload-artifact from 5 to 6 (#1741)
+  * ci(github): bump dessant/lock-threads from 5 to 6 (#1742)
+  * ci(github): bump actions/checkout from 5 to 6 (#1735)
+  * fix: fix build with Qt 6.10 (#1728)
+  * ci(github): bump actions/upload-artifact from 4 to 5 (#1729)
+  * ci(github): build with Qt 6.9.3 (#1732)
+  * ci(github): bump github/codeql-action from 3 to 4 (#1726)
+  * chore: minor spelling fixes
+  * fix(app): fix --attach-console logic
+  * feat(app): add --attach-console option on Windows
+  * feat(app,core): add --minimized command line option
+  * refactor(app): remove unused command line option
+  * refactor(app): simplify adding command line options
+  * chore: add REUSE metadata
+  * chore: add REUSE metadata, missing license/copyright info
+  * ci(github): add arm64 ubuntu builds (#1725)
+  * build(cmake): disable in-source builds
+  * refactor: fix compiler warnings
+  * build(cmake): use secure RFC 3161 timestamping
+  * build(cmake): detect empty env vars in codesign helper (#1723)
+  * build(appimage): use zstd compression
+  * build(cmake): remove references to IA-64 architecture
+  * build(cmake): use private linking consistently
+  * fix(ui): handle time drift for docset list cache
+  * refactor: use Q_DISABLE_COPY_MOVE
+  * feat(ui,util): show "humanized" docset list refreshed time (#1721)
+  * fix(sidebar): improve null safety
+  * fix(core): fix memory leak in extractor
+  * refactor: use categorized logging everywhere (#1720)
+  * fix(cmake): update logging in codesign helper
+  * build(appimage): revert to 22.04 (#1719)
+  * fix(registry): add missing error logging (#1661)
+  * ci(github): add custom vcpkg cache (#1718)
+  * build(vcpkg): set baseline commit in vcpkg.json
+  * ci(github): update AppImage build tools (#1695)
+  * fix(browser): fix broken user stylesheets (#1717)
+  * feat(ui): allow hiding menu bar (#1716)
+  * refactor(ui): add more null-safety checks (#1715)
+  * fix(ui): delete unused member variable
+  * refactor(ui): do not use UIC for main window (#1714)
+  * chore(cmake,ui): update copyright year
+  * ci(github): build on Ubuntu 24.04
+  * docs(registry): fix typo in comment
+  * fix(browser): use ApplicationWorld id for CSS script
+  * build: require Qt 5.15.2
+  * refactor(ui): use correct OS macro
+  * refactor(cmake): remove unneeded extension
+  * ci(github): update vcpkg to 2025.08.27
+  * ci(github): refactor matrix configurations (#1713)
+  * ci(github): build with Qt 6.9.2 (#1712)
+  * ci(github): remove Windows 2019 image
+  * ci(github): bump actions/checkout from 4 to 5 (#1707)
+  * ci(github): stop building on Ubuntu 20.04 (#1694)
+  * ci(github): build with Qt 6.7.3
+  * refactor: use Q_OS_WINDOWS macro consistently
+  * feat(browser): forward JS console messages to log
+  * feat(browser): enable PDF support
+  * chore: shorten header comments
+  * chore(registry,ui): add missing header comments
+  * chore: update file header comments
+  * chore: bump version to 0.7.3
+- Drop fix-qt-6.10.patch
+
+-------------------------------------------------------------------
 Tue Oct 21 15:40:08 UTC 2025 - Holden Fried <holden@opensuse.org>
 
 - Fixes for Qt 6.10:

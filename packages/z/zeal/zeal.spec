@@ -1,7 +1,7 @@
 #
 # spec file for package zeal
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global optflags %{optflags} -Wno-unused-variable
 
 Name:           zeal
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 Summary:        Offline API documentation browser
 License:        GPL-3.0-or-later
@@ -30,7 +30,6 @@ Source0:        %{name}-%{version}.tar.xz
 Source9:        zeal.1
 # PATCH-FIX-UPSTREAM zeal-cmake-find-qt-components.patch gh#zealdocs/zeal#1643 badshah400@gmail.com -- Explicitly find necessary Qt6 components to fix build with Qt 6.7.2
 Patch0:         zeal-cmake-find-qt-components.patch
-Patch1:         fix-qt-6.10.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -42,6 +41,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt6Concurrent) >= 6.2.0
 BuildRequires:  pkgconfig(Qt6Core) >= 6.2.0
 BuildRequires:  pkgconfig(Qt6Gui) >= 6.2.0
+BuildRequires:  pkgconfig(Qt6Test) >= 6.2.0
 BuildRequires:  pkgconfig(Qt6WebChannel) >= 6.2.0
 BuildRequires:  pkgconfig(Qt6WebEngineWidgets) >= 6.2.0
 BuildRequires:  pkgconfig(libarchive)
