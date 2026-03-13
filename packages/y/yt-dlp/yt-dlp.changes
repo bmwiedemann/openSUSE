@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 13 09:19:22 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2026.03.13
+  * Extractor changes:
+  * tiktok: Fix challenge solving
+  * yt: Fix android_vr player client
+  * yt: Fix use_ad_playback_context extractor-arg
+  * yt: Fix web_embedded player client
+  * yt: Request web_safari & web_creator client configs
+  * tab: Fix album extraction
+  * tab: Improve description extraction
+  * Update ejs to 0.7.0                             
+  * ejs: Fix sig value encoding by
+  * ejs: Solve new player variants
+
+-------------------------------------------------------------------
 Wed Mar  4 10:03:21 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2026.03.03
