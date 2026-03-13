@@ -1,7 +1,7 @@
 #
 # spec file for package flashrom
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           flashrom
-Version:        v1.7.0+git0.26b070db
+Version:        1.7.0+git0.26b070db
 Release:        0
 Summary:        A universal flash programming utility
 License:        GPL-2.0-only

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 11 19:00:23 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Simplify version rewrite to correctly strip leading v, avoiding "downgrade"
+  from X.X.X to vX.X.X
+
+-------------------------------------------------------------------
 Tue Mar 03 09:03:56 UTC 2026 - trenn@suse.com
 
 - Introduce _service file for easy version updates via:

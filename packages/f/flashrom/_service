@@ -8,8 +8,7 @@
 -->
     <param name="revision">v1.7.0</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
-    <param name="versionrewrite-pattern">v([\.\d]+)-(rc.*)</param>
-    <param name="versionrewrite-replacement">\1~\2</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
   </service>
   <service name="set_version" mode="manual"/>
   <service name="tar" mode="buildtime"/>
