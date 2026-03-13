@@ -122,4 +122,12 @@ via pnpm overrides to fix embedded dependency.</comment>
     get-source.sh file complexity.  </comment>
     <requestid>1336617</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>9919229c8fc8e2e3ebfc27b4c5a226fc</srcmd5>
+    <version>2.20.1</version>
+    <time>1773433015</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1338568</requestid>
+  </revision>
 </revisionlist>

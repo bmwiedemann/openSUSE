@@ -91,15 +91,16 @@ jq --indent 2 \
         "react-router": "^7.12.0",
         "react-router-dom": "^7.12.0",
         "fast-xml-parser": "5.3.6",
-        "rollup": "4.59.0"
+        "rollup": "4.59.0",
+        "@tootallnate/once": "3.0.1"
       }
   )
 
-  # === CVE-2026-3449: @tootallnate/once fix ===
+  # === CVE-2026-28292: simple-git fix ===
   | .pnpm.overrides = (
       (.pnpm.overrides // {})
       + {
-          "@tootallnate/once": "3.0.1"
+          "simple-git": "^3.32.3"
         }
     )
 ' package.json > temp.json && mv temp.json package.json

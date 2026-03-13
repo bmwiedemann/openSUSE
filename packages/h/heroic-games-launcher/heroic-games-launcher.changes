@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 12 03:06:06 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Security: Fix CVE-2026-28292 in simple-git
+  Ensure version 3.33.0 is used to prevent command
+  injection leading to remote code execution. 
+
+-------------------------------------------------------------------
 Wed Mar  4 22:40:58 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Security: Fix CVE-2026-3449 in @tootallnate/once

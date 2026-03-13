@@ -2,5 +2,6 @@
   <title>Heroic Games Launcher</title>
   <description>Heroic is an Open Source Game Launcher for Epic Games Store and GOG Games. (using legendary for epic and gogdl for gog games) Heroic is built with Web Technologies like: TypeScript, React, NodeJS and Electron.
 </description>
+  <devel project="games:tools" package="heroic-games-launcher"/>
   <url>https://heroicgameslauncher.com/</url>
 </package>
