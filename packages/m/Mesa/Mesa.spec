@@ -62,7 +62,7 @@
   %define with_opencl 1
   %ifarch %{ix86} x86_64
     %define with_vulkan 1
-    %if 0%{?suse_version} > 1600
+    %if 0%{?suse_version} >= 1699
        %ifarch x86_64
        %define vulkan_drivers swrast,amd,intel,intel_hasvk,nouveau,microsoft-experimental,imagination,asahi
        %else
@@ -74,14 +74,14 @@
   %endif
   %ifarch %{arm} aarch64
     %define with_vulkan 1
-    %if 0%{?suse_version} > 1600
+    %if 0%{?suse_version} >= 1699
        %ifarch aarch64
        %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,nouveau,panfrost,imagination,asahi
        %else
        %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,nouveau,panfrost,imagination
        %endif
     %else
-      %if 0%{?suse_version} == 1600
+      %if 0%{?suse_version} >= 1600 && %{suse_version} < 1699
         %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,panfrost
       %endif
     %endif
@@ -131,9 +131,9 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        26.0.0
+Version:        26.0.2
 Release:        0
-%define pkg_version 26.0.0
+%define pkg_version 26.0.2
 Summary:        System for rendering 3-D graphics
 License:        MIT
 Group:          System/Libraries
@@ -296,7 +296,7 @@ BuildRequires:  pkgconfig(SPIRV-Tools)
 # For NVK or libvulkan_nouveau.so
 # Rust Cbindgen >=0.25 is required
 # but it's only available on tumbleweed
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 BuildRequires:  rust-cbindgen >= 0.25
 %endif
 %if 0%{with_rusticl}
@@ -620,7 +620,7 @@ Obsoletes:      Mesa-libVulkan-devel < 22.0.0
 This package contains the Vulkan parts for Mesa.
 
 # Only available on Tumbleweed because of rust-cbindgen >= 1.25 requirement
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %ifarch x86_64 aarch64
 %package -n libvulkan_asahi
 Summary:        Mesa vulkan driver for Asahi (Apple Silicon)
@@ -641,7 +641,7 @@ This package contains the Vulkan parts for Mesa.
 %endif
 
 %ifarch %{ix86} x86_64 aarch64 %{arm} riscv64
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %package -n libvulkan_powervr
 Summary:        Mesa vulkan driver for PowerVR
 Group:          System/Libraries
@@ -653,7 +653,7 @@ This package contains the Vulkan parts for Mesa.
 %endif
 
 %ifarch %{ix86} x86_64
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %package -n libvulkan_dzn
 Summary:        Mesa vulkan driver for dzn (D3D12)
 Group:          System/Libraries
@@ -894,7 +894,7 @@ rm -fv %{buildroot}/%{_libdir}/libwayland-egl.so* \
 
 # in libvulkan_dzn
 %ifarch %{ix86} x86_64
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 rm -fv %{buildroot}/%{_libdir}/libspirv_to_dxil.a
 %endif
 %endif
@@ -1104,7 +1104,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 
 %ifarch %{ix86} x86_64 aarch64 %{arm} loongarch64
 # Only available on Tumbleweed because of rust-cbindgen >= 1.25 requirement
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %ifarch x86_64 aarch64
 %files -n libvulkan_asahi
 %{_libdir}/libvulkan_asahi.so
@@ -1122,7 +1122,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %endif
 
 %ifarch %{ix86} x86_64 aarch64 %{arm} riscv64
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %files -n libvulkan_powervr
 %{_libdir}/libvulkan_powervr_mesa.so
 %{_datadir}/vulkan/icd.d/powervr_mesa_icd.*.json
@@ -1132,7 +1132,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %endif
 
 %ifarch %{ix86} x86_64
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %files -n libvulkan_dzn
 %{_libdir}/libvulkan_dzn.so
 %{_libdir}/libspirv_to_dxil.so

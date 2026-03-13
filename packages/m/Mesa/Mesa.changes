@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar 12 12:37:20 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 26.0.2 bugfix release
+  --> https://docs.mesa3d.org/relnotes/26.0.2
+
+-------------------------------------------------------------------
+Thu Mar  5 14:30:55 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- adjusted logic for %suse_version bump with SLE16.1 Beta2 (jsc#PED-15825)
+
+-------------------------------------------------------------------
+Wed Feb 25 17:00:43 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to Mesa 26.0.1 bugfix and security release
+  * prevent out-of-bounds memory access in WebGPU (bsc#1258910)
+  * various bugfixes
+    --> https://docs.mesa3d.org/relnotes/26.0.1
+
+-------------------------------------------------------------------
 Wed Feb 11 18:46:39 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to Mesa 26.0.0 final version

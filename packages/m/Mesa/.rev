@@ -6697,4 +6697,26 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     drivers and components,</comment>
     <requestid>1332567</requestid>
   </revision>
+  <revision rev="570" vrev="1">
+    <srcmd5>985c241b6ee239ad0154e98eb74cfdaa</srcmd5>
+    <version>26.0.1</version>
+    <time>1772127401</time>
+    <user>anag_factory</user>
+    <comment>- Update to Mesa 26.0.1 bugfix and security release
+  * prevent out-of-bounds memory access in WebGPU (bsc#1258910)
+  * various bugfixes
+    --&gt; https://docs.mesa3d.org/relnotes/26.0.1</comment>
+    <requestid>1335174</requestid>
+  </revision>
+  <revision rev="571" vrev="1">
+    <srcmd5>76a820da10292fb6f38cedf0092070e4</srcmd5>
+    <version>26.0.2</version>
+    <time>1773432954</time>
+    <user>anag_factory</user>
+    <comment>- Update to 26.0.2 bugfix release
+  --&gt; https://docs.mesa3d.org/relnotes/26.0.2
+
+- adjusted logic for %suse_version bump with SLE16.1 Beta2 (jsc#PED-15825)</comment>
+    <requestid>1338491</requestid>
+  </revision>
 </revisionlist>
