@@ -1076,4 +1076,41 @@ See changelog in:
 - Update to version 3.18.5 (bsc#1248093, CVE-2025-55199):</comment>
     <requestid>1337917</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>dffdb9c6856cbbd37f24573119eec5e8</srcmd5>
+    <version>4.1.3</version>
+    <time>1773433055</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.1.3:
+  * Fixed a bug where --dry-run=server was not respecting
+    generateName #31563
+  * Fixed a bug where empty CRD resources caused a crash. Now it
+    prints an error #31578
+  * Fixed a bug where OCI references with tag+digest failed with
+    &quot;invalid byte&quot; error #31601
+  * Fixed a bug where user-provided nil value was not preserved
+    when chart has an empty map or no default for a key #31644
+  * Fixed a regression since Helm 3.18.0 where Pulling charts
+    from OCI repositories that use an index to store both
+    Container Images and Helm Charts under the same tag failed
+    #31776
+  * Fixed a Helm 4 regression where gotemplate white space
+    trimming directly after YAML doc separators, when present
+    after postrendering, caused YAML file corruption #31868
+  * Fixed a bug where `FailedStatus` is treated as a terminal
+    state, causing upgrades to fail prematurely when cluster
+    autoscalers needed time to provision nodes, or when pods were
+    being deleted during rolling updates #31897
+  * Fixed broken backwards compatibility for deprecated
+    `--atomic` flag on install command #31901
+  * SDK: Fixed a Windows 'Access Deined' error if multiple
+    processes try to download the same chart version concurrently
+    #31128
+  * SDK: Fixed a bug where users did not receive any logs from
+    the waiter, causing confusion as several minutes could pass
+    with no user feedback #31717
+  * SDK: Fixed a bug where server-side apply defaults did not
+    always match the CLI defaults #31732</comment>
+    <requestid>1338638</requestid>
+  </revision>
 </revisionlist>
