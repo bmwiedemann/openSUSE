@@ -22,10 +22,10 @@
 %define api_hash  d524b414d21f4d37f08684c1df41ac9c
 %define ada_ver   3.4.3
 %define h264_ver  2.6.0
-%define owt_ver   git20251128
+%define owt_ver   git20260123
 %define td_ver    git20260303
 Name:           telegram-desktop
-Version:        6.6.2
+Version:        6.6.3
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -39,11 +39,11 @@ Source3:        tg_owt-%{owt_ver}.tar.xz
 # n=td && cd /tmp && git clone --depth=1 https://github.com/tdlib/$n && pushd $n && v=git$(TZ=UTC date -d @`git log -1 --format=%at` +%Y%m%d) && d=$n-$v && f=$d.tar.xz && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
 Source4:        td-%{td_ver}.tar.xz
 Patch0:         tg_owt-h264-dlopen.patch
-Patch1:         tg_owt-cstring.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
 BuildRequires:  gperf
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libdispatch-devel
@@ -100,7 +100,6 @@ BuildRequires:  pkgconfig(protobuf-lite)
 BuildRequires:  pkgconfig(qrcodegen)
 BuildRequires:  pkgconfig(rnnoise)
 BuildRequires:  pkgconfig(vpx)
-BuildRequires:  pkgconfig(webkitgtk-6.0)
 BuildRequires:  pkgconfig(webrtc-audio-processing-1)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
@@ -119,6 +118,7 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       icu
 Requires:       kf6-kimageformats
 Requires:       xdg-desktop-portal
+Recommends:     WebKitGTK-4.1
 ExclusiveArch:  x86_64 aarch64
 
 %description
@@ -138,7 +138,7 @@ mv ../openh264-headers-%{h264_ver} Telegram/ThirdParty/openh264/include/wels
 
 mv ../tg_owt-%{owt_ver} Telegram/ThirdParty/tg_owt
 pushd Telegram/ThirdParty/tg_owt
-%autopatch -p1 0 1
+%autopatch -p1 0
 popd
 
 mv ../td-%{td_ver} Telegram/ThirdParty/td

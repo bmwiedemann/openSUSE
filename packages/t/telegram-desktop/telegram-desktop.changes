@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 13 06:46:56 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Added recommendation for WebKitGTK-4.1 to run web applications.
+- Updated tg_owt to git20260123.
+  * Removed tg_owt-cstring.patch
+- Updated telegram-desktop to 6.6.3
+  * https://github.com/telegramdesktop/tdesktop/releases/tag/v6.6.3
+
+-------------------------------------------------------------------
 Tue Mar  3 19:41:10 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Updated td to git20260303.
