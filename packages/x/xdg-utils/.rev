@@ -573,4 +573,24 @@ https://build.opensuse.org/request/show/121743 (forwarded request 121894 from va
     <comment></comment>
     <requestid>1337949</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>b0984e2cc9b29227d2cbb15564697843</srcmd5>
+    <version>1.2.0+20251025</version>
+    <time>1773432951</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.0+20251025:
+  * Allow using -- with xdg-open
+  * xdg-utils-common: update flatpak-info location
+  * xdg-open: support toolbx
+  * Added error catching in case parsing the .desktop file goes wrong
+  * xdg-open: Keep filepaths and URIs apart, make sure that the uri to filepath fallback works for %U adn %u
+  * xdg-open: Fix debug level evaluation in awk opener
+  * xdg-open awk opener: fixed behviour when there are too few or too many file field codes
+  * Implement proper debug levels for the new opener
+  * Remove now uneccessary functions from xdg-open
+- No need for which anymore
+
+  its installation in distrobox containers. (bsc#1254453)</comment>
+    <requestid>1338432</requestid>
+  </revision>
 </revisionlist>

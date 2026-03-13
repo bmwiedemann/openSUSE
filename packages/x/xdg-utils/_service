@@ -1,0 +1,16 @@
+<services>
+  <service mode="manual" name="tar_scm">
+    <param name="url">https://gitlab.freedesktop.org/xdg/xdg-utils.git/</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionformat">@PARENT_TAG@+%cd</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+  <service name="recompress" mode="manual">
+    <param name="file">xdg-utils-*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+
+</services>

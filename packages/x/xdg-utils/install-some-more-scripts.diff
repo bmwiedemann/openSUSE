@@ -10,8 +10,8 @@ Why are they commented in the repo?
 --- a/scripts/Makefile.in
 +++ b/scripts/Makefile.in
 @@ -20,11 +20,11 @@ SCRIPTS		= \
-     xdg-open \
      xdg-email \
+     xdg-realpath \
      xdg-screensaver \
 -    xdg-settings
 -#    xdg-su
@@ -22,5 +22,5 @@ Why are they commented in the repo?
  #    xdg-file-dialog
 -#    xdg-terminal
  
- MANPAGES=	$(SCRIPTS:%=man/%.1)
+ MANPAGES=	$(SCRIPTS:%=man/%.1) man/xdg-utils-common.7
  WEBPAGES=	$(SCRIPTS:%=html/%.html)

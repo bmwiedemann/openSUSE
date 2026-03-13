@@ -1,8 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar 11 09:34:28 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to version 1.2.0+20251025:
+  * Allow using -- with xdg-open
+  * xdg-utils-common: update flatpak-info location
+  * xdg-open: support toolbx
+  * Added error catching in case parsing the .desktop file goes wrong
+  * xdg-open: Keep filepaths and URIs apart, make sure that the uri to filepath fallback works for %U adn %u
+  * xdg-open: Fix debug level evaluation in awk opener
+  * xdg-open awk opener: fixed behviour when there are too few or too many file field codes
+  * Implement proper debug levels for the new opener
+  * Remove now uneccessary functions from xdg-open
+- No need for which anymore
+
+-------------------------------------------------------------------
 Tue Mar 10 10:45:35 UTC 2026 - Martin Wilck <martin.wilck@suse.com>
 
 - Allow xdg-utils to be installed with busybox-which. This enables
-  its installation in distrobox containers.
+  its installation in distrobox containers. (bsc#1254453)
 
 -------------------------------------------------------------------
 Sun Jul 21 08:08:07 UTC 2024 - Matej Cepl <mcepl@cepl.eu>

@@ -17,20 +17,19 @@
 
 
 Name:           xdg-utils
-Version:        1.2.1
+Version:        1.2.0+20251025
 Release:        0
 Summary:        Utilities to uniformly interface desktop environments
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://www.freedesktop.org/wiki/Software/xdg-utils/
-Source:         https://gitlab.freedesktop.org/xdg/xdg-utils/-/archive/v%{version}/xdg-utils-v%{version}.tar.gz
+Source:         xdg-utils-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE install-some-more-scripts.diff jslaby@suse.cz
 Patch0:         install-some-more-scripts.diff
 BuildRequires:  make
 # for xmlto to be able to generate text from html
 BuildRequires:  w3m
 BuildRequires:  xmlto
-Requires:       (which or busybox-which)
 Recommends:     %{name}-screensaver
 BuildArch:      noarch
 
@@ -68,7 +67,7 @@ use xdg-screensaver as root.
 Separated from the main package to isolate Perl dependency.
 
 %prep
-%autosetup -p1 -n %{name}-v%{version}
+%autosetup -p1
 
 %build
 %configure
@@ -80,6 +79,9 @@ make %{?_smp_mflags}
 # Make call-browser executable, symlink (bsc#170316)
 ln -snf xdg-open %{buildroot}%{_bindir}/call-browser
 ln -snf xdg-open %{buildroot}%{_bindir}/desktop-launch
+
+install -d 755 %{buildroot}%{_mandir}/man7
+mv %{buildroot}%{_mandir}/man{1,7}/xdg-utils-common.7
 
 %files
 %defattr(-,root,root)
@@ -93,6 +95,7 @@ ln -snf xdg-open %{buildroot}%{_bindir}/desktop-launch
 %{_bindir}/xdg-icon-resource
 %{_bindir}/xdg-mime
 %{_bindir}/xdg-open
+%{_bindir}/xdg-realpath
 %{_bindir}/xdg-su
 %{_bindir}/xdg-settings
 %{_bindir}/xdg-terminal
@@ -102,9 +105,11 @@ ln -snf xdg-open %{buildroot}%{_bindir}/desktop-launch
 %{_mandir}/man1/xdg-icon-resource.1%{?ext_man}
 %{_mandir}/man1/xdg-mime.1%{?ext_man}
 %{_mandir}/man1/xdg-open.1%{?ext_man}
+%{_mandir}/man1/xdg-realpath.1%{?ext_man}
 %{_mandir}/man1/xdg-terminal.1%{?ext_man}
 %{_mandir}/man1/xdg-settings.1%{?ext_man}
 %{_mandir}/man1/xdg-su.1%{?ext_man}
+%{_mandir}/man7/xdg-utils-common.7%{?ext_man}
 
 %files screensaver
 %license LICENSE
