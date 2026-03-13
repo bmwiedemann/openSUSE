@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  3 06:06:23 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.990.0 (6.99)
+   see /usr/share/doc/packages/perl-Date-Manip/Changes
+
+  6.99  2026-03-02
+    -  Time zone fixes
+           Newest zoneinfo data (tzdata 2026a).
+
+-------------------------------------------------------------------
 Mon Jun  2 05:36:18 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.980.0 (6.98)

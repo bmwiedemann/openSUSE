@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Date-Manip
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name Date-Manip
 Name:           perl-Date-Manip
-Version:        6.980.0
+Version:        6.990.0
 Release:        0
-# 6.98 -> normalize -> 6.980.0
-%define cpan_version 6.98
+# 6.99 -> normalize -> 6.990.0
+%define cpan_version 6.99
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Date manipulation routines
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SB/SBECK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.67

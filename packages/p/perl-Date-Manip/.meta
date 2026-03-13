@@ -12,5 +12,4 @@ can do a subset of the operations available in Date::Manip much quicker
 than those presented here, so be sure to read the section SHOULD I USE
 DATE::MANIP in the Date::Manip::Misc document before deciding which of the
 Date and Time modules from CPAN is for you.</description>
-  <devel project="devel:languages:perl" package="perl-Date-Manip"/>
 </package>

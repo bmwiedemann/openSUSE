@@ -641,4 +641,16 @@
            Newest zoneinfo data (tzdata 2025b).</comment>
     <requestid>1282012</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>c30dc729bb163aa9317f93c0f81d6d58</srcmd5>
+    <version>6.990.0</version>
+    <time>1773432941</time>
+    <user>anag_factory</user>
+    <comment>- updated to 6.990.0 (6.99)
+   see /usr/share/doc/packages/perl-Date-Manip/Changes
+  6.99  2026-03-02
+    -  Time zone fixes
+           Newest zoneinfo data (tzdata 2026a).</comment>
+    <requestid>1338071</requestid>
+  </revision>
 </revisionlist>
