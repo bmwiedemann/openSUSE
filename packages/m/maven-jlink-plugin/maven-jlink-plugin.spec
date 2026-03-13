@@ -1,7 +1,7 @@
 #
 # spec file for package maven-jlink-plugin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,29 @@
 #
 
 
-%global basever 3.0.0
-%global opt alpha
-%global optver 1
 Name:           maven-jlink-plugin
-Version:        %{basever}~%{opt}%{optver}
+Version:        3.3.0
 Release:        0
 Summary:        Apache Maven JLink Plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugins/%{name}/
-Source0:        https://archive.apache.org/dist/maven/plugins/%{name}-%{basever}-%{opt}-%{optver}-source-release.zip
-Patch0:         maven-jlink-plugin-plexus-languages-1.0.patch
+Source0:        https://archive.apache.org/dist/maven/plugins/%{name}-%{version}-source-release.zip
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 11
 BuildRequires:  maven-local
 BuildRequires:  unzip
-BuildRequires:  mvn(org.apache.commons:commons-lang3)
+BuildRequires:  mvn(commons-io:commons-io)
+BuildRequires:  mvn(javax.inject:javax.inject)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugins:pom:)
+BuildRequires:  mvn(org.apache.maven.shared:maven-filtering)
 BuildRequires:  mvn(org.apache.maven.shared:maven-shared-utils)
 BuildRequires:  mvn(org.apache.maven:maven-archiver)
+BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-core)
+BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-archiver)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-java)
@@ -55,19 +56,11 @@ Group:          Documentation/HTML
 API documentation for %{name}.
 
 %prep
-%setup -q -n %{name}-%{basever}-%{opt}-%{optver}
-%patch -P 0 -p1
-
-%pom_xpath_remove pom:project/pom:parent/pom:relativePath
-%pom_add_dep org.apache.maven:maven-compat:\${mavenVersion}
-%pom_add_dep org.apache.maven.shared:maven-shared-utils
+%setup -q
+%pom_remove_plugin :maven-dependency-plugin
 
 %build
-%{mvn_build} -f -- \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-    -Dmaven.compiler.release=8 \
-%endif
-    -Dsource=8
+%{mvn_build} -f
 
 %install
 %mvn_install

@@ -31,4 +31,12 @@
     <comment>Fix build with up-coming maven 4</comment>
     <requestid>1287975</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2ebfa5d1ebc89f0763680db6df4d35fa</srcmd5>
+    <version>3.3.0</version>
+    <time>1773432963</time>
+    <user>anag_factory</user>
+    <comment>3.3.0</comment>
+    <requestid>1338585</requestid>
+  </revision>
 </revisionlist>
