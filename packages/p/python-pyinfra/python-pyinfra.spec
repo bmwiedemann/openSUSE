@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyinfra
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
@@ -23,7 +24,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyinfra
-Version:        3.6
+Version:        3.6.1
 Release:        0
 Summary:        Infrastructure automation, provisioning and deployment
 License:        MIT

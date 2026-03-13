@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar  5 08:09:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.1:
+  * api: handle/propagate nested operation errors
+  * api: don't apply stage check in API mode
+  * api: change `iter_active_hosts` -> `get_active_hosts`
+  * operations.docker.container: add support for `--restart` and
+    `--rm` arguments (@levinion)
+  * operations.postgres: add idempotency notice on passwords to
+    `postgres.role`
+  * facts.flatpak.FlatpakPackages: handle headless output
+    correctly
+  * facts.crontab: don't return non-command cron entries in
+    `get_command`
+  * facts.files.FileContents: fix return None when no file exists
+  * facts.files.FindFiles: fix args parameter being ignored
+    (@wowi42)
+
+-------------------------------------------------------------------
 Sat Jan 31 15:25:13 UTC 2026 - Dominik Heidler <dheidler@suse.de>
 
 - Version 3.6
