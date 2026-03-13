@@ -1,7 +1,7 @@
 #
 # spec file for package sfcgal
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Ioda-Net Sàrl, Charmoille, Switzerland. Bruno Friedmann (tigerfoot)
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,17 +24,20 @@
 # and https://gitlab.com/Oslandia/SFCGAL/-/issues/258 are pending.
 # this force postgis ix86 to be build without sfcgal.
 ExcludeArch:    %{ix86}
+%define withexamples 0
 %ifarch %{ix86} x86_64
 %define withosgd 1
+%define withtest 1
 BuildRequires:  pkgconfig(openscenegraph)
 %else
 # openscenegraph not available for
 # s390x ppc64le ppc64 aarch64 armv7l
 # dummy
 %define withosgd 0
+%define withtest 0
 %endif
 Name:           sfcgal
-Version:        2.0.0
+Version:        2.2.0
 Release:        0
 Summary:        C++ wrapper library around CGAL
 License:        LGPL-2.0-or-later
@@ -42,7 +45,10 @@ Group:          Productivity/Graphics/CAD
 URL:            https://sfcgal.gitlab.io/SFCGAL/
 Source0:        https://gitlab.com/sfcgal/SFCGAL/-/archive/v%{version}/SFCGAL-v%{version}.tar.bz2
 Patch0:         boost.patch
+# PATCH-FIX-UPSTREAM fix(examples): Add missing cgal target link library - https://gitlab.com/sfcgal/SFCGAL/-/merge_requests/647
+Patch1:         647.patch
 BuildRequires:  cmake
+BuildRequires:  eigen3-devel
 BuildRequires:  gmp-devel
 BuildRequires:  lapack-devel
 BuildRequires:  libboost_chrono-devel >= 1.72
@@ -58,13 +64,16 @@ BuildRequires:  libstdc++-devel
 BuildRequires:  llvm-clang
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
+BuildRequires:  xz-devel
 BuildRequires:  pkgconfig(cunit)
 BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(gmp)
 BuildRequires:  pkgconfig(libecpg) >= 10
 BuildRequires:  pkgconfig(libecpg_compat) >= 10
 BuildRequires:  pkgconfig(libpgtypes) >= 10
 BuildRequires:  pkgconfig(libpq) >= 10
 BuildRequires:  pkgconfig(mpfr)
+BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -144,10 +153,18 @@ tmpflags="${tmpflags/-fstack-clash-protection}"
 %else
   -DSFCGAL_WITH_OSG=OFF \
 %endif
+%if %{withexamples}
   -DSFCGAL_BUILD_EXAMPLES=ON \
+%else
+  -DSFCGAL_BUILD_EXAMPLES=OFF \
+%endif
+%if %{withtest}
   -DSFCGAL_BUILD_TESTS=ON
+%else
+  -DSFCGAL_BUILD_TESTS=OFF
+%endif
 
-%cmake_build
+%cmake_build -v
 
 %install
 %cmake_install
@@ -175,12 +192,10 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 %files
 %license LICENSE
 %doc README.md AUTHORS NEWS
+%if %{withexamples}
 %{_bindir}/example-CGAL-*
 %{_bindir}/example-SFCGAL-*
-%{_bindir}/unit-test-SFCGAL
-%{_bindir}/standalone-regress-test-SFCGAL
-%{_bindir}/test-regress-convex_hull
-%{_bindir}/test-regress-polygon_triangulator
+%endif
 
 %files devel
 %license LICENSE
@@ -190,6 +205,7 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 %{_libdir}/libSFCGAL-osg.so
 %endif
 %{_libdir}/pkgconfig/sfcgal.pc
+%{_libdir}/cmake/SFCGAL
 %{_includedir}/SFCGAL
 %{_bindir}/sfcgal-config
 
