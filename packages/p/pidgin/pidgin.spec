@@ -1,7 +1,7 @@
 #
 # spec file for package pidgin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-%define _name   Pidgin
-%define sover   0
+%define         sover 0
 Name:           pidgin
 Version:        2.14.14
 Release:        0
@@ -32,12 +31,14 @@ Source3:        %{name}-prefs.xml
 Patch0:         pidgin-nonblock-common.patch
 # PATCH-FIX-OPENSUSE pidgin-nonblock-gwim.patch
 Patch1:         pidgin-nonblock-gwim.patch
-# PATCH-FIX-OPENSUSE pidgin-fix-perl-build.patch vuntz@opensuse.org -- Revert https://bitbucket.org/pidgin/main/commits/a083625 as it breaks the build.
+# PATCH-FIX-OPENSUSE pidgin-fix-perl-build.patch vuntz@opensuse.org -- Revert https://keep.imfreedom.org/pidgin/pidgin/rev/a083625 as it breaks the build.
 Patch2:         pidgin-fix-perl-build.patch
+# PATCH-FIX-OPENSUSE pidgin-always-enable-intltool.patch mgorse@suse.com -- Always enable intltool, needed for autoconf 2.71.
+Patch3:         pidgin-always-enable-intltool.patch
 # PATCH-FIX-SLE pidgin-use-default-alsa.patch bsc#886670 tiwai@suse.de -- Use ALSA as a default for avoiding broken volume control.
-Patch3:         pidgin-use-default-alsa.patch
-# PATCH-FIX-OPENSUSE pidgin-always-enable-intltool.patch mgorse@suse.com -- always enable intltool, needed for autoconf 2.71.
-Patch4:         pidgin-always-enable-intltool.patch
+Patch4:         pidgin-use-default-alsa.patch
+# PATCH-FIX-UPSREAM Libpurple SIGSEGV when unregistering GST device https://keep.imfreedom.org/pidgin/pidgin/rev/b0cd433f154a/
+Patch5:         gst-device.patch
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -49,7 +50,6 @@ BuildRequires:  libtool
 BuildRequires:  libxslt
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(avahi-glib)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
@@ -65,7 +65,6 @@ BuildRequires:  pkgconfig(gtkspell-2.0)
 BuildRequires:  pkgconfig(libgadu)
 BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(libnotify)
-# Can use external libzephyr.
 BuildRequires:  pkgconfig(libsasl2)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -82,9 +81,7 @@ Requires:       ca-certificates-mozilla
 Requires:       libpurple = %{version}
 Requires:       perl-base >= %{perl_version}
 Recommends:     gstreamer-plugins-good
-%if 0%{?suse_version} >= 1500 && !0%{?is_opensuse}
 Recommends:     purple-import-empathy
-%endif
 
 %description
 Pidgin is a messaging application which lets you log in to accounts
@@ -110,14 +107,12 @@ and plugins.
 %package -n libpurple
 Summary:        GLib-based Instant Messenger Library
 Requires:       ca-certificates-mozilla
-# Not really required, but standard XMPP accounts require it, if compiled with SASL support.
 Requires:       cyrus-sasl-digestmd5
 Requires:       cyrus-sasl-plain
 Requires:       libpurple%{sover} = %{version}
 Requires:       libpurple-branding
 Requires:       libpurple-client%{sover} = %{version}
 Requires:       perl >= %{perl_version}
-# Needed for purple-url-handler.
 Requires:       python3-dbus-python
 
 %description -n libpurple
@@ -194,7 +189,6 @@ or use Pidgin plugins written in the TCL programming language.
 %package -n libpurple-plugin-sametime
 Summary:        Sametime Plugin for Pidgin using the Meanwhile Library
 Requires:       libpurple = %{version}
-# libpurple-meanwhile was last used in openSUSE Leap 42.2.
 Provides:       libpurple-meanwhile = %{version}
 Obsoletes:      libpurple-meanwhile < %{version}
 
@@ -225,15 +219,7 @@ documentation, and libraries required for development of Finch
 scripts and plugins.
 
 %prep
-%setup -q
-%patch -P 0 -p1
-%patch -P 1 -p1
-%patch -P 2 -p1
-%if 0%{?sle_version} >= 120000 && !0%{?is_opensuse}
-%patch -P 3 -p1
-%endif
-%patch -P 4 -p1
-
+%autosetup -p1
 cp -f %{SOURCE3} %{name}-prefs.xml
 
 # Change Myanmar/Myanmar to Myanmar.
@@ -279,7 +265,6 @@ find %{buildroot} -type f -name "*.bs" -empty -delete -print
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %fdupes %{buildroot}
-%suse_update_desktop_file -N %{_name} -G "Instant Messenger" %{name}
 %find_lang %{name} %{?no_lang_C}
 
 %post -n libpurple -p /sbin/ldconfig
@@ -295,18 +280,19 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING
 %doc AUTHORS COPYRIGHT ChangeLog README doc/the_penguin.txt
 %{_bindir}/%{name}
-%{_libdir}/%{name}/
-%{_datadir}/sounds/purple/
-%{_datadir}/applications/*.desktop
-%{_datadir}/icons/hicolor/*/apps/*
-%{_datadir}/pixmaps/%{name}/
-%{_mandir}/man1/%{name}.1%{?ext_man}
-%{_datadir}/metainfo/pidgin.appdata.xml
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
+%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+%{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/pixmaps/%{name}
+%{_datadir}/sounds/purple
+%{_libdir}/%{name}
+%{_mandir}/man?/%{name}.?%{?ext_man}
 
 %files devel
-%{_includedir}/%{name}/
+%{_includedir}/%{name}
 %{_libdir}/pkgconfig/%{name}.pc
-%{_mandir}/man3/%{_name}.3*%{?ext_man}
+%{_mandir}/man?/Pidgin.?pm%{?ext_man}
 
 %files -n libpurple
 %dir %{_sysconfdir}/purple/
@@ -340,19 +326,19 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n libpurple-devel
 %doc ChangeLog.API HACKING PLUGIN_HOWTO
 %doc libpurple/purple-notifications-example
-%{_includedir}/libpurple/
+%{_includedir}/libpurple
 %{_datadir}/aclocal/purple.m4
 %{_libdir}/libpurple.so
 %{_libdir}/libpurple-client.so
 %{_libdir}/purple-2/libjabber.so
 %{_libdir}/pkgconfig/purple.pc
-%{_mandir}/man3/Purple.3pm%{?ext_man}
+%{_mandir}/man?/Purple.?pm%{?ext_man}
 
 %files -n finch
+%dir %{_libdir}/finch
 %{_bindir}/finch
-%{_libdir}/finch/
-%dir %{_libdir}/finch/
-%{_mandir}/man1/finch.1%{?ext_man}
+%{_libdir}/finch
+%{_mandir}/man?/finch.?%{?ext_man}
 
 %files -n finch-devel
 %{_includedir}/finch/

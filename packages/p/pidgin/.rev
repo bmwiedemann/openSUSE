@@ -1139,4 +1139,17 @@
 - attach a URL to the keyring (forwarded request 1241657 from rrahl0)</comment>
     <requestid>1241658</requestid>
   </revision>
+  <revision rev="150" vrev="2">
+    <srcmd5>732161801978a4a38133193018fd8dc2</srcmd5>
+    <version>2.14.14</version>
+    <time>1773433111</time>
+    <user>anag_factory</user>
+    <comment>- remove pidgin-2.14.14-fix-mediamanager-crash.patch, as gst-device.patch
+  is the final version of the same patch
+- update spec file (removing update-desktop-files, removing older Leap
+  version packaging)
+
+- add gst-device.patch to fix segmentation fault (forwarded request 1338740 from rrahl0)</comment>
+    <requestid>1338741</requestid>
+  </revision>
 </revisionlist>

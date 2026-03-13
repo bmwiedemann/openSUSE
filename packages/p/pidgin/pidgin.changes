@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar 13 13:10:44 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- remove pidgin-2.14.14-fix-mediamanager-crash.patch, as gst-device.patch
+  is the final version of the same patch
+- update spec file (removing update-desktop-files, removing older Leap
+  version packaging)
+
+-------------------------------------------------------------------
+Wed Mar  4 08:39:18 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- add gst-device.patch to fix segmentation fault
+
+-------------------------------------------------------------------
+Mon Mar  2 22:45:18 UTC 2026 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Add pidgin-2.14.14-fix-mediamanager-crash.patch: Fix a crash in
+  the media manager, from https://reviews.imfreedom.org/r/4404/
+
+-------------------------------------------------------------------
 Fri Jan 31 14:05:49 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 2.14.14:

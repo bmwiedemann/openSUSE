@@ -1,0 +1,29 @@
+
+diff -r 10a79cb5401b -r b0cd433f154a libpurple/mediamanager.c
+--- a/libpurple/mediamanager.c	Tue Mar 03 00:28:47 2026 -0600
++++ b/libpurple/mediamanager.c	Tue Mar 03 00:42:48 2026 -0600
+@@ -2216,7 +2216,8 @@
+ 			"create-cb", gst_device_create_cb,
+ 			NULL);
+ 
+-	g_object_set_data(G_OBJECT(info), "gst-device", device);
++	g_object_set_data_full(G_OBJECT(info), "gst-device", g_object_ref(device),
++	                       g_object_unref);
+ 
+ 	purple_media_manager_register_element(manager, info);
+ 
+@@ -2259,12 +2260,11 @@
+ 				gchar *id;
+ 
+ 				id = purple_media_element_info_get_id(info);
+-				purple_media_manager_unregister_element(manager,
+-						id);
++				purple_media_manager_unregister_element(manager, id);
+ 
+ 				purple_debug_info("mediamanager",
+-						"Unregistered %s device %s",
+-						device_class, name);
++				                  "Unregistered %s device %s\n",
++				                  device_class, name);
+ 
+ 				g_free(id);
