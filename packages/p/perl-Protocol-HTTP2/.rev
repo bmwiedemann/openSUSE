@@ -23,4 +23,17 @@
     <comment></comment>
     <requestid>1185183</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>adb9b9b098fa291d930f245ac1cf87f4</srcmd5>
+    <version>1.120.0</version>
+    <time>1773432938</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.120.0 (1.12)
+   see /usr/share/doc/packages/perl-Protocol-HTTP2/Changes
+  1.12 2026-02-14T12:55:50Z
+      - fix: incorrect END_HEADERS flag on CONTINUATION frames (#18) (Daniil Bondarev)
+      - fix: arriving continuation frame overwrite the existing header buffer
+      - test: test continuation frames handling</comment>
+    <requestid>1338062</requestid>
+  </revision>
 </revisionlist>

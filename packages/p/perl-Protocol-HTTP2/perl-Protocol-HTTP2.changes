@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb 15 06:11:26 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.120.0 (1.12)
+   see /usr/share/doc/packages/perl-Protocol-HTTP2/Changes
+
+  1.12 2026-02-14T12:55:50Z
+      - fix: incorrect END_HEADERS flag on CONTINUATION frames (#18) (Daniil Bondarev)
+      - fix: arriving continuation frame overwrite the existing header buffer
+      - test: test continuation frames handling
+
+-------------------------------------------------------------------
 Wed Jul  3 16:17:00 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Remove openssl3_1-adapt_tests.patch (fixed upstream)
