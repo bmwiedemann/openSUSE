@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c03a5813176912e2a444d331d9b11e05</srcmd5>
+    <version>1.0.0</version>
+    <time>1773432986</time>
+    <user>anag_factory</user>
+    <comment>new package ingress-nginx-migration: tool that analyzes Kubernetes NGINX Ingress resources to help with migration planning to Traefik</comment>
+    <requestid>1338606</requestid>
+  </revision>
+</revisionlist>

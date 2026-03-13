@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Tue Jan 13 09:25:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package ingress-nginx-migration: tool that analyzes
+  Kubernetes NGINX Ingress resources to help with migration
+  planning to Traefik

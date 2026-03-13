@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/traefik/ingress-nginx-migration.git</param>
+              <param name="changesrevision">ab0ead27ba2c4dee3d5e4ec81e5da38e6a833f7a</param></service></servicedata>
