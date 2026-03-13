@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Mar  4 11:37:30 UTC 2026 - Libor Pechacek <lpechacek@gmx.com>
+
+- update to 9.8.0:
+  o Database: update to EPSG v12.049 (#4671)
+  o Database: update ESRI records to ArcGIS Pro 3.6 (#4622)
+  o Support for Canadian vertical references MTM CGVD2013
+    epoch 1997, 2002, 2010 and UTM CGVD28 epoch 1997, 2002,
+    2010 (#4623)
+  o createOperationsCompoundToGeog(): improvement to make
+    "PNG94 / PNGMG94 zone 54 + Kumul 34 height" to "WGS 84
+    (G2139)" perform vertical transformation (#4624)
+  o Remove hardcoding of 'ETRS89-NOR [EUREF89]' cases and
+    generalize it to other ETRS89-XXX cases (#4625)
+  o Database: create ESRI aliases for geodetic_datum and
+    geodetic_crs even if they are the same as EPSG ones (#4626)
+  o Use Emscripten fetch in networkfilemanager (#4627)
+  o ProjectedCRS::identify(): do not return CRS whose ellipsoid
+    is totally different from the input one (#4635)
+  o projinfo added as a library function. This installs a new
+    header: projapps_lib.h. (#4646)
+  o respect CRS_EXTENT_USE=NONE for ConcatenatedOperations
+    (#4652)
+  o Add support for Equidistant Cylindrical ellipsoidal method
+    (EPSG:1028) (#4656)
+  o Update proj_symbol_rename.h (#4657)
+  o WKT1 importer: deal with 'VERT_CS["Geoid 2012A",' (#4659)
+  o Generate correct library name in proj.pc (#4660)
+  o Derived projected CRS related improvements (#4667)
+  o ETRS89-xxx to ETRS89-yyy related improvements (#4668)
+  o createCoordinateOperation(): tune computed accuracy of a
+    concatenated op within ETRS89 (#4670)
+  o createOperationsCompoundToGeog(): discard 2D-only
+    transformations from interpolation 3D CRS to target 3D CRS
+    (#4677)
+  * CRS identification: fix issue when identifying WKT from
+    older EPSG releases with newer ones where the ETRS89-XXX
+    national datums have been added (#4600)
+  * fix normalizeForVisualization to skip extent checks for
+    axis-swap operations (#4632)
+  * Improvements to TRACE_FETCH debug messages (#4645)
+  * tmerc spherical: fix numeric instability at lat=lat_0 (#4674)
+- Remove the CMAKE_CXX_STANDARD=14 quirrk for builds on 
+  openSUSE >= 1650 as PROJ is C++17 from release 9.6.0
+
+-------------------------------------------------------------------
 Wed Dec  3 19:18:54 UTC 2025 - Libor Pechacek <lpechacek@gmx.com>
 
 - update to 9.7.1:
@@ -16,6 +61,12 @@ Wed Dec  3 19:18:54 UTC 2025 - Libor Pechacek <lpechacek@gmx.com>
     can cause later crashes) for CRS based on 'NTF (Paris)'
     (#4601)
   * WKT/PROJJSON datum ensemble import: allow no members (#4615)
+- update data to 1.24:
+  * Czech S-JTSK / Krovak East North to S-JTSK/05 / Modified
+    Krovak East North transformation (#147)
+  * Norwegian vertical transformation from NN54 to NN2000 height
+    (#149)
+  * French RGM23 to IGN 2023 Mayotte height transformation (#150)
 
 -------------------------------------------------------------------
 Thu Sep 18 20:04:13 UTC 2025 - Libor Pechacek <lpechacek@gmx.com>

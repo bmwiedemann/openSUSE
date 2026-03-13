@@ -488,4 +488,12 @@ This package is included in Debian.
     <comment></comment>
     <requestid>1325441</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>770b9d55b771e9c60ed9548251db18e3</srcmd5>
+    <version>9.8.0</version>
+    <time>1773433084</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1338713</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package proj
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define sover   25
 %define libname lib%{name}%{sover}
 Name:           proj
-Version:        9.7.1
+Version:        9.8.0
 Release:        0
 Summary:        Cartographic projection software
 License:        MIT
@@ -126,12 +126,7 @@ License:        MIT
 export CC=gcc-13
 export CXX=g++-13
 %endif
-# c++14 needed to build tests using gtest >= 1.14
-%cmake \
-%if 0%{?suse_version} >= 1600
-  -DCMAKE_CXX_STANDARD=14 \
-%endif
-  %{nil}
+%cmake
 %cmake_build
 
 %install
