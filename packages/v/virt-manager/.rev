@@ -2286,4 +2286,12 @@
     <comment>Fix media detection failure to distinguish between sles16 and sles16.1</comment>
     <requestid>1337391</requestid>
   </revision>
+  <revision rev="289" vrev="11">
+    <srcmd5>77590650edd77c79f189bf4136701db1</srcmd5>
+    <version>5.1.0</version>
+    <time>1773432943</time>
+    <user>anag_factory</user>
+    <comment>Simplify how we detect if an OS recommends efi as the preferred firmware. No functional change.</comment>
+    <requestid>1338392</requestid>
+  </revision>
 </revisionlist>

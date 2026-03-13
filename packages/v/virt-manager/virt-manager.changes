@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 10 14:51:39 MDT 2026 - carnold@suse.com
+
+- Simplify how we detect if an OS recommends efi as the preferred
+  firmware.
+  virtinst-query-recommended-firmware.patch
+
+-------------------------------------------------------------------
 Tue Mar  3 15:51:18 MST 2026 - carnold@suse.com
 
 - Fix media detection failure to distinguish between sles16 and
