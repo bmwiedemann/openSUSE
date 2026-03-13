@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar  5 21:30:43 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
+
+- Remove redundant Neovim workaround
+
+-------------------------------------------------------------------
+Wed Jan 21 00:55:05 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.5.2:
+  * no changelog upstream, besides having a dependency of
+    tree-sitter >= 0.25.3
+
+-------------------------------------------------------------------
 Mon Dec 22 01:04:30 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.5.1:

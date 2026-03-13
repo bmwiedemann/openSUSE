@@ -18,13 +18,13 @@
 
 %define         _name markdown
 Name:           tree-sitter-markdown
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        Markdown grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-markdown
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  tree-sitter
+BuildRequires:  tree-sitter >= 0.25.3
 %treesitter_grammars %{name} %{name}-inline
 
 %description
@@ -40,18 +40,8 @@ BuildRequires:  tree-sitter
 %install
 %treesitter_install
 
-#neovim stuff
-install -d %{buildroot}%{_libdir}/tree_sitter
-ln -s %{_libdir}/libtree-sitter-%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
-ln -s %{_libdir}/libtree-sitter-%{name}-inline.so %{buildroot}%{_libdir}/tree_sitter/%{_name}_inline.so
-
 %files
 %license LICENSE
 %treesitter_files
-%{_libdir}/tree_sitter/%{_name}.so
-%{_libdir}/tree_sitter/%{_name}_inline.so
-%if 0%{?suse_version} < 1600
-%dir %{_libdir}/tree_sitter
-%endif
 
 %changelog

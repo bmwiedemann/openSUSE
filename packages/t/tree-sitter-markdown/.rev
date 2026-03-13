@@ -58,4 +58,16 @@
     <comment></comment>
     <requestid>1324037</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9092cf366d44fe09d2bae69018b47397</srcmd5>
+    <version>0.5.2</version>
+    <time>1773433081</time>
+    <user>anag_factory</user>
+    <comment>- Remove redundant Neovim workaround
+
+- Update to version 0.5.2:
+  * no changelog upstream, besides having a dependency of
+    tree-sitter &gt;= 0.25.3</comment>
+    <requestid>1338690</requestid>
+  </revision>
 </revisionlist>
