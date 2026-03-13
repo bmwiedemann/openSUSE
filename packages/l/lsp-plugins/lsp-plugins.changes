@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Mar 12 18:22:28 UTC 2026 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- update to 1.2.27
+
+  * Implemented plugin launcher for standalone plugins to avoid icon
+    flood in menus of modern desktop environments.
+  * Added new experimental light UI schema 'Paper'. Contributed by
+    suedwestlicht at github.com.
+  * Added support of filter decramping for Parametric Equalizer and
+    Filter plugin series.
+  * Moved all code related to OpenGL rendering into a separate thread to prevent
+    freezing and stuttering of the main UI loop of the host application.
+  * Added possibility to independently equalize left and right channels
+    of wet signal for convolution-base plugins series:
+
+    * Impulse Responses;
+    * Impulse Reverb;
+    * Room Builder.
+
+  * Added support of visual schema selection via the command line
+    argument for standalone versions of plugins.
+  * Added keyboard shortcuts for quickly closing some dialogs.
+  * Added support of switching presets by scrolling of the mouse wheel.
+  * Added better support of APO equalizer configuration files.
+  * Reorganized inputs and outputs of Noise Generator x2 and x4 into
+    stereo groups.
+  * Some optimizations, bugfixes and improvements in core libraries.
+  * Fixed bug in Artistic Delay plugin which could yield to crackling
+    sound when using feedback.
+  * Fixed and regressions in plugin window sizing and optimized
+    window behaviour.
+  * Fixed bug in waveform display for Multiband Clipper plugin series.
+  * Eliminated some unnecessary redrawing of widgets triggered
+    by other widgets.
+  * Memory consumption optimizations in the Slap-back Delay plugin
+    series: memory is not allocated for non-used delay lines.
+  * Fixed muting of delay line when delay is zero in Slap-back Delay
+    plugin series.
+  * Fixed bug of failing UI creation when plugins's global
+    configuration file is missing.
+
+- update .spec for new Launcher
+
+-------------------------------------------------------------------
 Mon Dec 22 07:09:14 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - update to 1.2.26

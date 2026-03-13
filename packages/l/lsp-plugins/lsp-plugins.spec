@@ -1,7 +1,7 @@
 #
 # spec file for package lsp-plugins
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
 Name:           lsp-plugins
-Version:        1.2.26
+Version:        1.2.27
 Release:        0
 Summary:        Linux Studio Plugins Project (Stand-alone)
 License:        LGPL-3.0-or-later
@@ -166,7 +166,7 @@ Development files for Linux Studio Plugins
 
 %build
 export CFLAGS="%{optflags}" CXXFLAGS="%{optflags}"
-make config PREFIX="%{_prefix}" LIBDIR="%{_libdir}" SHAREDDIR=%{_datadir} FEATURES='vst3 lv2 vst2 clap doc jack ladspa xdg gst ui'
+make config PREFIX="%{_prefix}" LIBDIR="%{_libdir}" SHAREDDIR=%{_datadir} FEATURES='vst3 lv2 vst2 clap doc jack ladspa xdg gst ui launcher'
 %make_build
 
 %install
@@ -181,17 +181,16 @@ mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}/%{_docdir}/
 %postun common -p /sbin/ldconfig
 
 %files
+%{_bindir}/%{name}
 %{_bindir}/%{name}-*
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/liblsp-plugins-jack*.so
-%dir %{_datadir}/desktop-directories
 %dir %{_sysconfdir}/xdg
 %dir %{_sysconfdir}/xdg/menus
 %dir %{_sysconfdir}/xdg/menus/applications-merged
 %{_datadir}/applications/*.desktop
-%{_datadir}/desktop-directories/*
-%exclude %{_datadir}/icons/hicolor/*
-%config %{_sysconfdir}/xdg/menus/applications-merged/lsp-plugins.menu
+%dir %{_datadir}/icons/hicolor
+%{_datadir}/icons/hicolor/*
 
 %files common
 %license COPYING COPYING.LESSER modules/lsp-plugins-shared/LICENSE_OFL.txt
