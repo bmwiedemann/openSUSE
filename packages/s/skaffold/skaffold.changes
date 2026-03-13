@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Mar 13 06:19:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.18.0:
+  * chore: Release 2.18 (#10010)
+  * chore: Upgrade golang version to 1.25.8 (#10009)
+  * chore: bumping up docker cli to address CVE-2025-15558 (#10008)
+  * chore: bump actions/upload-artifact from 6 to 7 in the
+    github-actions group (#9998)
+  * chore: bump flask from 2.2.5 to 3.1.3 in
+    /examples/hot-reload/python (#10004)
+  * chore: bump rack from 2.2.20 to 2.2.22 in
+    /integration/examples/ruby/backend (#10005)
+  * chore: bump flask from 3.1.0 to 3.1.3 in
+    /examples/buildpacks-python (#10006)
+  * Upgrade go dependencies for skaffold. (#10007)
+  * chore: bump go.opentelemetry.io/otel/sdk from 1.39.0 to 1.40.0
+    (#9996)
+  * chore: delete webhooks (#9999)
+  * chore: bump rack from 2.2.20 to 2.2.22 in
+    /examples/ruby/backend (#9981)
+  * chore: bump flask from 2.2.5 to 3.1.3 in
+    /integration/examples/hot-reload/python (#9989)
+  * chore: bump github.com/cloudflare/circl from 1.6.1 to 1.6.3
+    (#9993)
+  * Migration to Kokoro instances (#9991)
+  * chore: fixing docs due to upgrade in Hugo (#9977)
+  * Updated the node version to fix error (#9976)
+  * Updated Dockerfile to try to fix vuln bug (#9974)
+  * chore: upgrade golang to 1.25.7 (#9973)
+  * Use mirror in Dockerfiles for integration tests to prevent
+    docker hub rate limits (#9970)
+  * chore: bump golang.org/x/crypto from 0.36.0 to 0.45.0 in
+    /hack/tools (#9916)
+  * chore: bump golang.org/x/oauth2 from 0.7.0 to 0.27.0 in
+    /examples/grpc-e2e-tests/service (#9918)
+  * chore: bump github.com/go-git/go-git/v5 from 5.16.3 to 5.16.5
+    (#9971)
+  * test(integration): Update busybox and alpine:3 to use the
+    mirror to avoid docker rate hub limit errors (#9966)
+  * chore: bump github.com/theupdateframework/go-tuf/v2 from 2.3.0
+    to 2.4.1 (#9962)
+  * chore: bump github.com/sigstore/rekor from 1.4.3 to 1.5.0
+    (#9956)
+  * chore: bump github.com/sigstore/sigstore from 1.10.3 to 1.10.4
+    (#9957)
+  * cicd: bazel github presubmit flow fixes for recent bazel 9.0.0
+    release (#9961)
+  * chore: bump github.com/sigstore/cosign/v2 from 2.6.1 to 2.6.2
+    (#9948)
+  * Upgrade github.com/google/ko to v0.18.1 (#9939)
+  * chore: upgrade golang to 1.25.5 (#9944)
+  * ci: disabling kaniko integration tests due to kaniko service
+    account permissions issue and fix github workflow (#9943)
+  * chore: bump the github-actions group across 1 directory with 3
+    updates (#9934)
+  * chore: bump golang.org/x/crypto from 0.43.0 to 0.45.0 (#9917)
+
+-------------------------------------------------------------------
 Tue Mar 10 06:03:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.17.3:
