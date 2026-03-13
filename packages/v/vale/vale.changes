@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 13 02:54:23 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.14.0:
+  * chore: fix golangci-lint
+  * test: v3 syntax
+  * feat: support dasel v3
+  * chore: bump Go
+  * chore: update go to 1.25.7 (#1085)
+  * fix(core): use byte offsets for position reporting in raw-scoped script rules (#1081)
+  * feat: set path for stdin cli (#1076)
+  * feat(lint): apply defaultIgnoreDirectories to nested directories (#1072)
+  * test: remove redundant case
+
+-------------------------------------------------------------------
 Sun Feb 15 08:46:14 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.13.1:

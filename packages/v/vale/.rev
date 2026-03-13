@@ -931,4 +931,21 @@
   * chore(deps): bump golang.org/x/crypto from 0.36.0 to 0.45.0 (#1054) (forwarded request 1333409 from jfkw)</comment>
     <requestid>1333430</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>fa5f29e2bfe660b385c55e0c325244ab</srcmd5>
+    <version>3.14.0</version>
+    <time>1773433004</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.14.0:
+  * chore: fix golangci-lint
+  * test: v3 syntax
+  * feat: support dasel v3
+  * chore: bump Go
+  * chore: update go to 1.25.7 (#1085)
+  * fix(core): use byte offsets for position reporting in raw-scoped script rules (#1081)
+  * feat: set path for stdin cli (#1076)
+  * feat(lint): apply defaultIgnoreDirectories to nested directories (#1072)
+  * test: remove redundant case (forwarded request 1338580 from jfkw)</comment>
+    <requestid>1338581</requestid>
+  </revision>
 </revisionlist>
