@@ -1,7 +1,7 @@
 #
 # spec file for package perl-ExtUtils-MakeMaker
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %define cpan_name ExtUtils-MakeMaker
 Name:           perl-ExtUtils-MakeMaker
-Version:        7.76
+Version:        7.78
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Create a module Makefile
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/B/BI/BINGOS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 Patch0:         Do_not_set_RPATH_by_default.patch
 BuildArch:      noarch
 BuildRequires:  perl
@@ -63,7 +64,7 @@ Perl to handle Unicode filenames, which is not yet the case on Windows.
 See L<ExtUtils::MakeMaker::FAQ> for details of the design and usage.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p1
+%autosetup -n %{cpan_name}-%{version} -p1
 
 %build
 export BUILDING_AS_PACKAGE=1

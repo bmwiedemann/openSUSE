@@ -373,4 +373,30 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1279973</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e840c64fc3ff60e0f91ad7b8d26038db</srcmd5>
+    <version>7.78</version>
+    <time>1773432935</time>
+    <user>anag_factory</user>
+    <comment>- updated to 7.78
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+  7.78    Tue  3 Mar 20:21:53 GMT 2026
+      No changes since v7.77_03
+  7.77_03 Mon  2 Mar 17:32:54 GMT 2026
+      Macosx fixes:
+      - Unbreak Perl builds
+  7.77_02 Wed 20 Aug 11:00:32 BST 2025
+      Core fixes:
+      - Do not copy args when using PERL_MM_SHEBANG=relocatable
+  7.77_01 Mon 28 Jul 18:46:15 BST 2025
+      Enhancements:
+      - Support 'class' VERSIONs, like 'package'
+      Core fixes:
+      - Disable XS prototypes by default
+      Test fixes:
+      - Make macros portably in basic.t
+      - Can't test embedded newlines on VMS in oneliner.t
+      - Use LIBS not LDFROM to link against a library in 02-xsdynamic.t</comment>
+    <requestid>1338056</requestid>
+  </revision>
 </revisionlist>
