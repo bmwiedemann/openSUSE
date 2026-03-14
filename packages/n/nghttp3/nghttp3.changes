@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 11 10:35:30 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to 1.15.0:
+  * Add nghttp3_conn_submit_request2 to set client-side scheduling
+    hint
+  * Make client-side scheduling incremental by default
+  * Remove nghttp3_conn_submit_request2
+  * Introduce nghttp3_strlen_lit
+  * Move aux objects into the individual frames
+  * Add const to nghttp3_frame_settings.local_settings
+
+-------------------------------------------------------------------
 Tue Jan 13 10:36:46 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Remove the unrecogninzed configure option --with-cunit and the

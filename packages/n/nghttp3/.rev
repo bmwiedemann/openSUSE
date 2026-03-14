@@ -164,4 +164,12 @@
   * Clarify field size limits (forwarded request 1326937 from pmonrealgonzalez)</comment>
     <requestid>1326960</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>900d78b1e0c91a3ed6c8f022b782e47e</srcmd5>
+    <version>1.15.0</version>
+    <time>1773523236</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.0:</comment>
+    <requestid>1338666</requestid>
+  </revision>
 </revisionlist>
