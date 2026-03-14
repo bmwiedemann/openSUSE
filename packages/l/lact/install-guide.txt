@@ -1,0 +1,91 @@
+LACT Post-Installation Guide
+============================
+
+To complete the setup, please execute the following commands:
+
+1. Enable and start the LACT daemon:
+   $ sudo systemctl enable --now lactd.service
+
+2. Add your user to the lact group:
+   $ sudo usermod -aG lact $USER
+
+2.1 (Only for headless flavor) Reload CLI
+   For immediate access in the current terminal only:
+   $ newgrp lact
+   
+   Then you can use LACT CLI commands:
+   $ lact cli info
+   
+   If using SSH/remote:
+     - Disconnect completely
+     - Wait 5-10 seconds
+     - Reconnect
+
+   After reconnecting, verify:
+   $ groups | grep lact
+   
+3. Activate the group membership:
+
+   OPTION A - Reboot
+   -----------------
+   This ensures a clean user session with updated groups.
+
+   After rebooting, verify:
+   $ groups | grep lact
+
+   OPTION B - Log out
+   ------------------
+   Log out, wait 10-15 seconds before logging back in.
+   This allows the systemd user session to fully terminate.
+
+   After logging back in, verify:
+   $ groups | grep lact
+
+4. Verify the daemon is running:
+   $ systemctl status lactd.service
+
+5. Launch LACT:
+   - GUI: Search for "LACT" in your application menu
+   - CLI: $ lact cli info
+
+
+AMD OVERCLOCKING
+================
+
+To enable AMD Overclocking, please follow these steps:
+
+1. Get the correct kernel boot parameter for your AMD GPU by executing:
+    - printf 'amdgpu.ppfeaturemask=0x%x\n' "$(($(cat /sys/module/amdgpu/parameters/ppfeaturemask) | 0x4000))"
+ 
+2. Add the output to the cmdline of your bootloader (e.g. GRUB, systemd-boot, GRUB-BLS) and reboot.
+
+DISCLAIMER, none of the SUSE maintainers are responsible if you mess up your GPU by using this tool,
+especially the overclocking features. Please be careful and understand the risks before using it.
+
+
+UNDERVOLT FOR NVIDIA GPUS
+=========================
+
+For a detailed instructions, please refer to:
+https://github.com/ilya-zlobintsev/LACT/wiki/Frequently-asked-questions#how-to-undervolt-nvidia-gpus
+
+
+TROUBLESHOOTING
+===============
+
+If LACT GUI shows permission errors after following steps above:
+- Check if you're actually in the group: $ id | grep lact
+- If not shown, reboot.
+- Check daemon: $ systemctl status lactd.service
+
+If groups command shows lact but LACT still has permission errors:
+- Your GUI session may be using cached credentials
+- Try: $ sudo systemctl restart lactd.service
+- Then log out and force terminate session (Option B above)
+
+If the daemon fails to start:
+- Check logs: $ journalctl -xeu lactd.service
+- Check your configuration file in /etc/lact/config.yaml for syntax errors/missing parameters.
+
+If none of the above steps fixes your issue,
+please submit a bug or comment via https://bugs.opensuse.org/

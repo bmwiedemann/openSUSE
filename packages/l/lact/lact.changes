@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Thu Mar 12 09:20:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Don't strip binaries, OBS will do that on its own.
+
+-------------------------------------------------------------------
+Wed Feb 11 22:56:50 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Improved user/group generation according to the packaging guidelines
+- Added a DISCLAIMER text
+- Improved post-installation/uninstallation guide
+- Improved user config file
+
+-------------------------------------------------------------------
+Wed Feb 11 18:42:11 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Improved comments in .spec file
+- Trimmed description
+- Added post-installation/uninstallation guides
+  * Tell the users where to find these guides in %description
+- Added missing LICENSE & README.md doc
+
+-------------------------------------------------------------------
+Wed Feb 11 02:53:14 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Removed deprecated macros
+- Added hicolor-icon-theme as build dependency
+
+-------------------------------------------------------------------
+Mon Feb  9 07:07:09 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Minor fixes for .spec file
+
+-------------------------------------------------------------------
+Mon Feb  9 06:17:18 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Improved description, adding more exclusions in .rpmlintrc
+
+-------------------------------------------------------------------
+Mon Feb  9 05:52:55 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Set rust1.92/cargo1.92 and up as mandatory to build correctly
+
+-------------------------------------------------------------------
+Mon Feb  9 05:44:27 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Fix typo
+
+-------------------------------------------------------------------
+Mon Feb  9 05:19:36 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Improved description
+
+-------------------------------------------------------------------
+Mon Feb  9 04:43:11 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Fix LACT configuration file
+
+-------------------------------------------------------------------
+Mon Feb  9 04:11:20 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Added cargo macros in spec
+- Added custom user/group for LACT
+- Added LACT configuration file
+- Added exclusions in .rpmlintrc
+
+-------------------------------------------------------------------
+Mon Feb  9 02:29:04 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Added appstream-glib build dependency
+
+-------------------------------------------------------------------
+Mon Feb  9 02:19:29 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Fixed .sysusers
+
+-------------------------------------------------------------------
+Sun Feb 08 20:45:28 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Initial commit with version 0.8.4
+- Upstream changes for 0.8.4:
+  * chore: update metainfo for new release
+  * chore: translated using Weblate (Portuguese (Brazil))
+  * chore: translated using Weblate (Georgian)
+  * chore: translated using Weblate (Italian)
+  * chore: translated using Weblate (Hungarian)
+  * chore: translated using Weblate (French)
+  * chore: translated using Weblate (Finnish)
+  * chore: translated using Weblate (German)
+  * chore: translated using Weblate (Czech)
+  * chore: translated using Weblate (Arabic)
+  * full changelog here: https://github.com/ilya-zlobintsev/LACT/releases/tag/v0.8.4

@@ -1,0 +1,28 @@
+<services>
+  <!-- Fetch source from git -->
+  <service name="tar_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/ilya-zlobintsev/LACT</param>
+    <param name="revision">v0.8.4</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="filename">lact</param> 
+    <param name="versionrewrite-pattern">v?([0-9]+(\.[0-9])*)(\+0)?</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  
+  <!-- Update the version in spec file -->
+  <service name="set_version" mode="manual"/>
+  
+  <!-- Generate Rust vendor tarball -->
+  <service name="cargo_vendor" mode="manual">
+    <param name="src">lact-*.tar.xz</param>
+    <param name="compression">xz</param>
+    <param name="update">true</param>
+  </service>
+</services>

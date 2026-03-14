@@ -1,0 +1,9 @@
+version: 5
+daemon:
+  log_level: info
+  admin_group: lact
+  admin_user: lact
+  disable_clocks_cleanup: false
+apply_settings_timer: 5
+current_profile: null
+auto_switch_profiles: false

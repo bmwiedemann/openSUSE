@@ -1,0 +1,12 @@
+LACT Uninstallation Guide
+=========================
+
+After uninstalling LACT you can manually remove your user from the "lact" group if desired:
+
+- sudo gpasswd -d $USER lact
+
+Log out, wait 10-15 seconds before logging back in.
+
+If you enabled AMD Overclocking, you can saftely remove
+the kernel boot parameter in your bootloader configuration,
+regenerate it and reboot.

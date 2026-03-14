@@ -1,0 +1,24 @@
+<package name="lact" project="openSUSE:Factory">
+  <title>Linux GPU Control Application</title>
+  <description>This application allows you to control your AMD, Nvidia or Intel GPU on a Linux
+system.
+
+Features:
+
+- GPU information reporting (VBIOS, VRAM, hardware units)
+- Power configuration (power cap, power states)
+- Thermal management (custom fan curves, thermal limits)
+- Overclocking (GPU/VRAM clocks, voltage offset)
+- Monitoring with historical charts
+- Settings profiles with automatic activation
+- OpenTelemetry metrics exporter
+
+GPU configuration is handled by a system service that does not depend on a graphical session (Wayland/X11).
+
+The service can also be used standalone with a config file, for example in headless scenarios.
+
+DISCLAIMER, none of the SUSE maintainers are responsible if you mess up your GPU
+by using this tool, especially the overclocking features.
+Please be careful and understand the risks before using it.</description>
+  <url>https://github.com/ilya-zlobintsev/LACT</url>
+</package>
