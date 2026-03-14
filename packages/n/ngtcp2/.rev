@@ -271,4 +271,12 @@
   * Export CMake target for ngtcp2_crypto_ossl(_static) (forwarded request 1326938 from pmonrealgonzalez)</comment>
     <requestid>1326961</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>895abd8a9fafceb310a8cb2bcf3aa0c3</srcmd5>
+    <version>1.21.0</version>
+    <time>1773523229</time>
+    <user>dimstar_suse</user>
+    <comment>- Update tto 1.21.0:</comment>
+    <requestid>1338642</requestid>
+  </revision>
 </revisionlist>

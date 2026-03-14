@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 11 10:33:46 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
+
+- Update tto 1.21.0:
+  * Fix Initial/Handshake packet construction
+  * bbr: Rework spurious loss handling based on the latest draft
+  * Assert that nwrite is not larger than the provided buffer length
+  * log: Remove unused ngtcp2_log_tx_cancel
+  * Remove ngtcp2_datagram.rdata
+  * Rename in6_addr to s6_addr
+  * bbr: Add const qualifier
+
+-------------------------------------------------------------------
 Tue Jan 13 10:19:26 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.19.0:
