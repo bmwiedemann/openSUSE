@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 14 10:29:26 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8
+  * Properly support null crypto and null auth scenario (fixes
+    unencrypted SRTP failing with gstreamer's gstsrtp plugin).
+  * The key derivation function was not compliant with the RFC6188
+    when dealing with AES192CM, which has been fixed.
+
+-------------------------------------------------------------------
 Sun Mar 16 22:03:14 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.7
