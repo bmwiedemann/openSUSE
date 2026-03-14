@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 13 20:43:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.26.0:
+  * Created generic methods to get user saved items
+  * Updated `/tracks` endpoints to `/items`
+  * Switching IDs to URIs to use `/me/library` endpoint
+  * Fixed playlist limit to 50 (according to API)
+  * Added warnings for deprecated methods
+
+-------------------------------------------------------------------
 Thu Nov 27 07:15:05 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 2.25.2 (bsc#1254285):

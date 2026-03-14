@@ -511,4 +511,17 @@
 </comment>
     <requestid>1320285</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a05c2a87060f85868ea55c99b50f79a6</srcmd5>
+    <version>2.26.0</version>
+    <time>1773523349</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.26.0:
+  * Created generic methods to get user saved items
+  * Updated `/tracks` endpoints to `/items`
+  * Switching IDs to URIs to use `/me/library` endpoint
+  * Fixed playlist limit to 50 (according to API)
+  * Added warnings for deprecated methods</comment>
+    <requestid>1338814</requestid>
+  </revision>
 </revisionlist>
