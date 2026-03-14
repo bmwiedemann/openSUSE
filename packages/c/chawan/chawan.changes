@@ -1,5 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 23 11:37:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Use pkgconfig() build require symbols. Update URL. Trim
+  filler wording from summary.
+
+-------------------------------------------------------------------
 Thu Jan 15 02:42:12 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Initial package
-

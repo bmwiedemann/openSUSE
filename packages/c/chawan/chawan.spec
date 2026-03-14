@@ -2,6 +2,7 @@
 # spec file for package chawan
 #
 # Copyright (c) 2026 mantarimay
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +20,15 @@
 Name:           chawan
 Version:        0.3.3
 Release:        0
-Summary:        Modern terminal-based web browser and pager
+Summary:        Terminal-based web browser and pager
 License:        Unlicense
-URL:            https://git.sr.ht/~bptato/chawan
+URL:            https://chawan.net/
+#Git-Clone:     https://git.sr.ht/~bptato/chawan
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-v%{version}.tar.gz
-BuildRequires:  libopenssl-devel
-BuildRequires:  libbrotli-devel
-BuildRequires:  libssh2-devel
 BuildRequires:  nim
+BuildRequires:  pkgconfig(libbrotlidec)
+BuildRequires:  pkgconfig(libssh2)
+BuildRequires:  pkgconfig(libssl)
 ExcludeArch:    i586 armv7hl
 
 %description
