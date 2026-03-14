@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Mar 13 09:22:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.25.2:
+  * fix(unix): suppress EIO on close in Docker bind mounts
+  * fix(win): restore best-effort lock file cleanup on release
+  * feat(async): add AsyncReadWriteLock
+  * Suppress ValueError in _try_break_stale_lock for corrupted
+    lock files
+  * Fix ValueError in _acquire_transaction_lock when
+    blocking=False with timeout
+  * fix(ci): add trailing blank line after changelog entries
+  * fix(unix): handle ENOENT race on FUSE/NFS during acquire
+  * docs: restructure using Diataxis framework
+  * fix(test): resolve flaky write non-starvation test
+  * fix(rw): close sqlite3 cursors and skip SoftFileLock
+  * fix(soft): resolve Windows deadlock and test race condition
+  * fix(unix): auto-fallback to SoftFileLock on ENOSYS
+  * feat(lock): add poll_interval to constructor
+  * fix(win): eliminate lock file race in threaded usage
+  * feat(mode): respect POSIX default ACL inheritance
+  * fix(api): detect same-thread self-deadlock
+  * feat(lock): add cancel_check to acquire
+  * feat(lock): add lifetime parameter for lock expiration
+  * feat(soft): detect and break stale locks
+  * fix: catch ImportError for missing sqlite3 C library
+  * fix: gracefully handle missing `sqlite3` when importing
+    `ReadWriteLock`
+
+-------------------------------------------------------------------
 Mon Jan 12 11:19:38 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 3.20.3 (fixes CVE-2026-22701, bsc#1256457)

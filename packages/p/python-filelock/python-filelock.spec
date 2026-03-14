@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-filelock%{?pkg_suffix}
-Version:        3.20.3
+Version:        3.25.2
 Release:        0
 Summary:        Platform Independent File Lock in Python
 License:        Unlicense
@@ -51,6 +51,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-typing_extensions >= 4.7.1
 %endif
 Requires:       python-asyncio
+Requires:       python-sqlite3
 BuildArch:      noarch
 %python_subpackages
 
