@@ -29,4 +29,13 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1283480</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>15fb30361ad11763e64f6acf94090551</srcmd5>
+    <version>1.9.0</version>
+    <time>1773523341</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.0:
+  * Add support for Zstandard compression where available (Python 3.14+)</comment>
+    <requestid>1338807</requestid>
+  </revision>
 </revisionlist>
