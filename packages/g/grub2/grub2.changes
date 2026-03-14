@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  6 14:37:52 UTC 2026 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix LoaderConfigTimeout and LoaderConfigTimeoutOneshot (bsc#1259477)
+  * grub2-bls-loader-config-timeout-fix.patch
+
+-------------------------------------------------------------------
 Tue Feb 24 06:02:38 UTC 2026 - Michael Chang <mchang@suse.com>
 
 - Support dm multipath bootlist on PowerPC (bsc#1254415)

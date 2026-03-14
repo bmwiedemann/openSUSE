@@ -1,0 +1,130 @@
+Index: grub-2.14/grub-core/normal/menu.c
+===================================================================
+--- grub-2.14.orig/grub-core/normal/menu.c
++++ grub-2.14/grub-core/normal/menu.c
+@@ -46,6 +46,8 @@
+         { 0x4a67b082, 0x0a4c, 0x41cf, { 0xb6, 0xc7, 0x44, 0x0b, 0x29, 0xbb, 0x8c, 0x4f } }
+ static grub_guid_t grub_efi_loader_guid = GRUB_EFI_LOADER_GUID;
+ 
++#define GRUB_EFI_UINT_MAX 4294967295U
++
+ #define GRUB_EFI_LOADER_FEATURE_CONFIG_TIMEOUT          (1 << 0)
+ #define GRUB_EFI_LOADER_FEATURE_CONFIG_TIMEOUT_ONE_SHOT (1 << 1)
+ #define GRUB_EFI_LOADER_FEATURE_ENTRY_DEFAULT           (1 << 2)
+@@ -68,7 +70,8 @@ grub_err_t (*grub_gfxmenu_try_hook) (int
+ enum timeout_style {
+   TIMEOUT_STYLE_MENU,
+   TIMEOUT_STYLE_COUNTDOWN,
+-  TIMEOUT_STYLE_HIDDEN
++  TIMEOUT_STYLE_HIDDEN,
++  TIMEOUT_STYLE_DISABLED,
+ };
+ 
+ struct timeout_style_name {
+@@ -78,6 +81,7 @@ struct timeout_style_name {
+   {"menu", TIMEOUT_STYLE_MENU},
+   {"countdown", TIMEOUT_STYLE_COUNTDOWN},
+   {"hidden", TIMEOUT_STYLE_HIDDEN},
++  {"disabled", TIMEOUT_STYLE_DISABLED},
+   {NULL, 0}
+ };
+ 
+@@ -858,59 +862,60 @@ run_menu (grub_menu_t menu, int nested,
+ #ifdef GRUB_MACHINE_EFI
+   if (val && (val[0] == '1' || val[0] == 'y'))
+     {
+-      int timeout_oneshot = -1;
++      unsigned long timeout_oneshot;
++      bool has_timeout_oneshot = false;
+       /* https://systemd.io/BOOT_LOADER_INTERFACE/ */
+       char* loader_config_timeout_oneshot = get_efivar("LoaderConfigTimeoutOneShot");
+-      grub_dprintf("bls", "%s\n", loader_config_timeout_oneshot);
+       if (loader_config_timeout_oneshot)
+       {
++        /* Remove any value */
+         grub_efi_set_variable_to_string("LoaderConfigTimeoutOneShot",
+                 &grub_efi_loader_guid, "", 0);
+-        timeout_oneshot = (int) grub_strtoul (loader_config_timeout_oneshot, 0, 0);
++        timeout_oneshot = grub_strtoul (loader_config_timeout_oneshot, 0, 0);
+         if (grub_errno != GRUB_ERR_NONE)
+-          {
+-            grub_errno = GRUB_ERR_NONE;
+-            timeout_oneshot = -1;
+-          }
++          grub_errno = GRUB_ERR_NONE;
+         /* We have a valid value */
+-        if (timeout_oneshot != -1)
++        else
+           {
+             if (timeout_oneshot == 0)
+-              {
+-                /* Wait indefinitely. In this case we want to set the timeout value to -1.
+-                   In this case unsetting timeout will have the same effect. */
+-                grub_env_unset ("timeout");
+-              } else {
+-                grub_menu_set_timeout (timeout_oneshot);
+-              }
+-              grub_env_set("timeout_style", "menu");
++              /* Wait indefinitely. */
++              grub_env_unset ("timeout");
++            else {
++              grub_menu_set_timeout (timeout_oneshot);
++              has_timeout_oneshot = true;
++            }
++            grub_env_set("timeout_style", "menu");
+           }
+         grub_free(loader_config_timeout_oneshot);
+       }
+-    /* If there was no LoaderConfigTimeoutOneShot value or it was invalid
++    /* If there was no LoaderConfigTimeoutOneShot value or it was invalid,
+        read LoaderConfigTimeout */
+-    if (timeout_oneshot == -1)
++    if (!has_timeout_oneshot)
+       {
+         char* loader_config_timeout = get_efivar("LoaderConfigTimeout");
+         if (loader_config_timeout)
+           {
+             if (grub_strcmp(loader_config_timeout, "menu-force") == 0)
+               {
+-                grub_env_unset ("timeout");
++                grub_env_unset("timeout");
++                grub_env_set("timeout_style", "menu");
+               } else if (grub_strcmp(loader_config_timeout, "0") == 0 ||
+                       grub_strcmp(loader_config_timeout, "menu-hidden") == 0)
+               {
+-                grub_menu_set_timeout (1);
++                grub_menu_set_timeout (3);
+                 grub_env_set("timeout_style", "hidden");
+               } else if (grub_strcmp(loader_config_timeout, "menu-disabled") == 0)
+               {
+-                grub_menu_set_timeout (0);
+-                grub_env_unset ("timeout");
++                grub_env_set ("timeout", "0");
++                grub_env_set("timeout_style", "disabled");
+               } else {
+-                int loader_timeout = (int) grub_strtoul (loader_config_timeout, 0, 0);
++                unsigned long loader_timeout = grub_strtoul (loader_config_timeout, 0, 0);
+                 if (grub_errno == GRUB_ERR_NONE)
+                   {
+-                    grub_menu_set_timeout (loader_timeout);
++                    if (loader_timeout == GRUB_EFI_UINT_MAX)
++                      grub_env_unset("timeout");
++                    else
++                      grub_menu_set_timeout (loader_timeout);
+                     grub_env_set("timeout_style", "menu");
+                   } else {
+                     grub_errno = GRUB_ERR_NONE;
+@@ -986,10 +991,11 @@ run_menu (grub_menu_t menu, int nested,
+     }
+ 
+   /* If timeout is 0, drawing is pointless (and ugly).  */
+-  if (timeout == 0)
++  if (timeout == 0 || timeout_style == TIMEOUT_STYLE_DISABLED)
+     {
+       *auto_boot = 1;
+-      *notify_boot = timeout_style != TIMEOUT_STYLE_HIDDEN;
++      *notify_boot = timeout_style != TIMEOUT_STYLE_HIDDEN &&
++          timeout_style != TIMEOUT_STYLE_DISABLED;
+       return default_entry;
+     }
+ 
