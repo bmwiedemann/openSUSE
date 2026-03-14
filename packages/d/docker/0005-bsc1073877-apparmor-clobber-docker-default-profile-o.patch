@@ -1,4 +1,4 @@
-From 67bda5dd1f491f42fc72bb834b213643474c3425 Mon Sep 17 00:00:00 2001
+From c3550caa9642a260a4a52812b3cb2b0d5ae904d6 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Fri, 29 Jun 2018 17:59:30 +1000
 Subject: [PATCH 5/6] bsc1073877: apparmor: clobber docker-default profile on
@@ -69,10 +69,10 @@ index 37974bbb97..095aa728a7 100644
  	return nil
  }
 diff --git a/daemon/daemon.go b/daemon/daemon.go
-index a5bd3c9f78..f621a1529a 100644
+index fda78f7cac..23a959af12 100644
 --- a/daemon/daemon.go
 +++ b/daemon/daemon.go
-@@ -940,8 +940,9 @@ func NewDaemon(ctx context.Context, config *config.Config, pluginStore *plugin.S
+@@ -946,8 +946,9 @@ func NewDaemon(ctx context.Context, config *config.Config, pluginStore *plugin.S
  		log.G(ctx).Warnf("Failed to configure golang's threads limit: %v", err)
  	}
  
