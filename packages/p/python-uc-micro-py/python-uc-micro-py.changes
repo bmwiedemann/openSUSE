@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 13 20:42:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * Drop Python 3.7, 3.8, 3.9 support; minimum version is now
+    Python 3.10
+  * Add Python 3.12, 3.13, 3.14 support
+  * Update PyPI release workflow to use Trusted Publishing
+  * Add permissions to CI and PyPI workflows
+  * Update docs
+
+-------------------------------------------------------------------
 Sat Mar 16 13:42:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.3:

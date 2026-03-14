@@ -34,4 +34,18 @@
   * Update CI</comment>
     <requestid>1158483</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5ada5de34077ce95350cf34f920f5877</srcmd5>
+    <version>2.0.0</version>
+    <time>1773523275</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.0:
+  * Drop Python 3.7, 3.8, 3.9 support; minimum version is now
+    Python 3.10
+  * Add Python 3.12, 3.13, 3.14 support
+  * Update PyPI release workflow to use Trusted Publishing
+  * Add permissions to CI and PyPI workflows
+  * Update docs</comment>
+    <requestid>1338813</requestid>
+  </revision>
 </revisionlist>
