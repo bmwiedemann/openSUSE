@@ -1,8 +1,8 @@
 #
 # spec file for package clpeak
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2015-2022, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2015-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           clpeak
-Version:        1.1.5
+Version:        1.1.6
 Release:        0
 Summary:        Find peak OpenCL capacities like bandwidth & compute
 License:        SUSE-Public-Domain

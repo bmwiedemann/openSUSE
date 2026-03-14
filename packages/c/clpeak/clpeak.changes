@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 12 15:46:08 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.6:
+  * transfer_bandwidth: allow subtest filtering with --testName
+  * [workflow] add macos build
+  * android: Add compute_char.cpp and compute_short.cpp
+  * android: build fix for missing aligned_alloc in API 26
+  * workflows: Add github build workflows
+
+-------------------------------------------------------------------
+Thu Mar 12 15:45:39 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.6
+  * transfer_bandwidth: allow subtest filtering with --testName.
+
+-------------------------------------------------------------------
 Wed Jun 18 11:05:59 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.5:
