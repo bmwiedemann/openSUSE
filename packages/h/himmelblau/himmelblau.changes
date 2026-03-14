@@ -8,7 +8,7 @@ Wed Mar 11 16:20:00 UTC 2026 - David Mulder <david.mulder@suse.com>
 -------------------------------------------------------------------
 Wed Mar 11 15:31:54 UTC 2026 - David Mulder <david.mulder@suse.com>
 
-- Update to version 2.3.8+git0.dec3693 (CVE-2026-31979):
+- Update to version 2.3.8+git0.dec3693 (CVE-2026-31979, bsc#1259548):
   * Version 2.3.8
   * Add PrivateTmp back to Tasks Daemon
   * Drop dead code

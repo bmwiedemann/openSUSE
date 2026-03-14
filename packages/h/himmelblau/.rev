@@ -376,4 +376,1308 @@ for the pam approval.</comment>
     <comment></comment>
     <requestid>1338390</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>ebef1b33d63d87ce4f007c9ba3841e5a</srcmd5>
+    <version>2.3.8+git0.dec3693</version>
+    <time>1773523333</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix SELinux module packaging to use standard policy macros (bsc#1258236):
+  * Build and install precompiled himmelblaud.pp at package build time
+  * Replace custom semodule scriptlets with %selinux_modules_install/uninstall
+- Update to version 2.3.8+git0.dec3693 (CVE-2026-31979, bsc#1259548):
+  * Version 2.3.8
+  * Add PrivateTmp back to Tasks Daemon
+  * Drop dead code
+  * Drop krb5 ccache dir code
+  * Add a TODO comment
+  * Drop non working packaged krb5 snippet file
+  * Write kerberos config snippet
+  * Extend resolver interface to return kerberos config together with TGTs
+  * Backport SELinux fixes from main
+  * Use libkrimes to store TGTs
+- Update to version 2.3.7+git0.81088cd:
+  * Version 2.3.7
+  * cargo vet
+  * Fix AWS-LC has PKCS7_verify Certificate Chain Validation Bypass
+  * Revert dependency change which broke the nightly build
+  * gen_dockerfiles: only himmelblaud has tpm feature, fix all others
+  * fix(build): gen_dockerfiles.py mutates shared features list mid-loop
+  * Update to libhimmelblau
+on leap 15.6, selinux-policy-devel doesn't exist
+- Update to version 2.3.5+git0.9dd526c:
+  * Better handle Intune API version
+  * deps(rust): bump the all-cargo-updates group with 8 updates; (bsc#1257904), (CVE-2026-25727)
+  * Update make vet from main branch
+  * pam_himmelblau: call split_username once in chauthtok
+  * pam_himmelblau: return PAM_IGNORE in chauthtok for local users
+  * Don't attempt a DAG when Hello fails with SSPR demand
+- Update to version 2.3.4+git0.db5df80:
+  * Version 2.3.4
+  * cargo vet
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 8 updates
+  * Revert sketching update (which breaks SLE16 build)
+- Update to version 2.3.3+git0.25e8b73:
+  * Version 2.3.3
+  * cargo vet
+  * /var/cache/private/himmelblaud should not be created tmpfiles
+  * Updatee python vers for dataclasses dep
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 3 updates
+  * Generate pin init service file systemd &lt; 250
+  * Checkin missing himmelblaud.if file for SELinux
+  * Resolve typos in selinux package commands
+- Update to version 2.3.2+git0.5a7a598:
+  * Compile SELinux policy at install time for cross-distro compatibility
+  * Improve PAM configuration on openSUSE/SLE
+  * Fix SELinux policy
+  * Add a git hook to ensure selinux policy is tested
+  * Ignore generated himmelblau-hsm-pin-init service file
+  * Refactor SELinux policy for cross-distro compatibility
+  * cargo vet
+  * Fix NSS lookup for mapped local users
+  * Skip OS version compliance checks when min/max values are empty
+- Update to version 2.3.1+git0.2418ec2:
+  * Version 2.3.1
+  * Remove references to qrcodegen (these are 3.x features)
+  * QR Greeter compatibility for old GNOME
+  * Enable QR greeter automatically
+  * ci: Use latest cargo-vet from git to fix CI
+  * Fix HSM pin migration failure on Debian/Ubuntu upgrades from v1.4.x
+  * Version 2.3.0
+  * cargo vet
+  * Update make vet from main branch
+  * Autostart the daemons on fresh install or upgrade
+  * Restart sshd when installing the ssh config
+  * Allow tasks daemon to write krb ccache
+  * Do not enumerate mapped users in NSS
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 8 updates
+  * Update libhimmelblau to latest version
+  * Fix Tumbleweed build
+  * cargo vet
+  * Version 2.2.0
+  * Update libhimmelblau to 0.8.x series
+  * deps(rust): bump the all-cargo-updates group with 17 updates
+  * Only use OpenSSH bug workaround for ssh service
+  * Fix debug noise from removing user from sudo group
+  * systemd: install files to /usr/lib/, not /etc/
+  * Version 2.1.0
+  * Fix nightly authselect build failure
+  * Generate the authselect profiles for each distro
+  * Improve pam config handling in aad-tool
+  * Make `aad-tool configure-pam` detect location of pam files
+  * Version 2.0.5
+  * /var/lib/private/himmelblaud should be owned by root
+  * Use tmpfiles.d to create himmelblaud private data directory
+- Resolve mode mismatch with Chromium package.
+- Update to version 2.0.4+git.2.5d26a19:
+  * deps(rust): bump the all-cargo-updates group with 13 updates
+  * Version 2.0.4
+  * Update kanidm_build_profiles mask version
+  * Utilize cargo vet from main
+  * Add policies cache patch via systemd-tmpfiles
+- Update to version 2.0.3+git.4.4f6e025:
+  * Fix man page comments about change idmap_range
+  * Stub picky-krb for osc build
+  * Stub a kanidm_build_profiles which builds in osc
+  * Ensure nss cache is created on Ubuntu/Debian
+  * Request a user token if NSS hasn't been called
+  * Version 2.0.3
+  * Add nss cache patch via systemd-tmpfiles
+  * Version 2.0.2
+  * Recommend `patch` with the pam package
+  * Fix passwordless FIDO authentication not being used when available
+  * Git workflow updates for stable-2.x
+  * Only warn on Intune failure
+  * Version 2.0.1
+  * Force o365 desktop files to always rebuild
+  * Always rebuild the o365 apps
+  * Add restart on-failure to systemd services
+  * Clarify `domain` SHOULD match login domain
+  * Remove warning about `domain` himmelblau.conf opt
+  * Pseudo eliminate multi-tenant and domains section
+  * Revert &quot;Fix Hello PIN lookup when an alias domain&quot;
+  * Comment out `KbdInteractiveAuthentication on` in sshd conf
+  * Check the nxset sooner, to avoid unwanted errors
+  * Recommend oddjob_mkhomedir with authselect
+  * Pin libhimmelblau to 0.7.x
+  * Deprecate Fedora 41
+  * Cargo vet
+  * deps(rust): bump the all-cargo-updates group with 11 updates
+  * Bump github/codeql-action from 4.30.8 to 4.31.2
+  * Bump cachix/install-nix-action from 31.8.1 to 31.8.2
+  * Bump actions/upload-artifact from 4.6.2 to 5.0.0
+  * cargo clippy and rebase fix
+  * fixup! add extra debug output to NotFound error code
+  * force error output to show up in CI logs
+  * wrap repeated sources of IdpError::NotFound in helper functions
+  * add extra debug output to NotFound error code
+  * use direnv for loading the nix devshell
+  * We should still encourage mapping by name
+  * Add support for Fedora 43
+  * Provide a offline 'breakglass' mode
+  * cargo clippy
+  * Add warning about incorrect nsswitch configuration
+  * Distinguish between online and offline token fail
+  * Ensure user token uses original name
+  * Fix alias domain in auth result causing failure
+  * Resolve cargo clippy warnings
+  * Only map on cn name for the primary domain
+  * Install systemd in build scripts for gen service
+  * Fix systemd version parsing
+  * cargo vet
+  * Update libhimmelblau to 0.7.19
+  * Resolve SELinux build failures in nightly (part 2)
+  * Rocky container image updates were failing
+  * Warn instead of error when no idmap_range specified
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 7 updates
+  * Trim whitespace from local group names
+  * Fix borrowing error
+  * Fix reference to local_sudo_group in condition
+  * Only run sudo_groups if local_groups does not contain local_sudo_group
+  * Leave SELinux in permissive mode for Himmelblau
+  * Resolve SELinux build failures in nightly
+  * nix: add join_type option to nixos-module settings
+  * Build host configuration changes
+  * Ensure that hsm_pin isn't present decrypted
+  * Document Soft HSM changes to TPM bound
+  * Disable SELinux by default on NixOS
+  * sh doesn't have `source`
+  * Encrypt hsm-pin using systemd-creds
+  * Recommend uuid id mapping
+  * Improve himmelblau.conf man page formatting
+  * Implement Local User Mapping
+  * Add o365 dependency for jq
+  * Add selinux rules for gdm login
+  * Narrow the scope of selinux policy with audit2allow
+  * Generate the systemd service files
+  * Fix selinux build for SLE16
+  * Resolve SLE16 build dependency failure
+  * Fix the rawhide build
+  * Mask the sshkey-attest package
+  * Bump cachix/install-nix-action from 31.7.0 to 31.8.1
+  * cargo vet dependency updates
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 13 updates
+  * Bump actions/dependency-review-action from 4.8.0 to 4.8.1
+  * Bump cachix/install-nix-action from 31.7.0 to 31.8.0
+  * Bump github/codeql-action from 3.30.5 to 4.30.8
+  * Bump ossf/scorecard-action from 2.4.2 to 2.4.3
+  * SELinux improvements
+  * Fix a typo in package gen scripts
+  * cargo fmt
+  * Permit NSS response for mapped primary fake group
+  * Fix Nix Error With Fuzz
+  * Decrease CI fuzzer setup time
+  * Document join types
+  * Support for Entra registered devices
+  * Run `cargo test` in a container
+  * Bump cachix/install-nix-action from 31.6.2 to 31.7.0
+  * cargo vet
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 2 updates
+  * Bump github/codeql-action from 3.30.4 to 3.30.5
+  * Use pastey crate instead of unmaintained paste
+  * cargo vet
+  * Pin unmaintained serde_cbor dep to serde_cbor_2
+  * Resolve tower-http `cargo audit` warning
+  * Replace unmaintained fxhash with own version
+  * Resolve warning about workflow top level write permissions
+  * Remove dependabot automerge
+  * Resolve division by 0 in idmap code
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 3 updates
+  * [StepSecurity] ci: Harden GitHub Actions
+  * Only idmap against initialized domains
+  * Resolve invalid init of idmap with same domain
+  * Resolve division by 0 in idmap code
+  * Add fuzzing of idmap code
+  * Add basic fuzzing of the config options
+  * cargo clippy
+  * Resolve error found by fuzzing
+  * cargo vet prune
+  * deps(rust): bump regex in the all-cargo-updates group
+  * Bump actions/dependency-review-action from 4.7.3 to 4.8.0
+  * Bump actions/checkout from 3.6.0 to 5.0.0
+  * Bump cachix/cachix-action from 14 to 16
+  * Bump ossf/scorecard-action from 2.4.0 to 2.4.2
+  * Bump cachix/install-nix-action from 25 to 31
+  * Add the OpenSSF Best Practices badge
+  * Add scorecard badge
+  * [StepSecurity] Apply security best practices
+  * Fix group static mapping
+  * Move aad-tool idmap cache clear to the idmap cmd
+  * Resolve errant &quot;Hello key missing.&quot; messages
+  * Update flake.nix
+  * Slow the dependabot update frequency
+  * Audit dependabot updates
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 11 updates
+  * feat: Add support for aarch64 on Debian-based distributions
+  * Resolve possible invalid pointer dereferences
+  * Cargo clippy
+  * Cargo fmt
+  * Avoid revealing account ids in debug log
+  * Cause doc links to open in the correct apps
+  * Permit opening multiple instances of Word/Excel
+  * Modify systray and app close behavior
+  * Don't use questionably licensed icons for o365
+  * Resolve NixOS CI failure
+  * Fix building w/out deprecated interactive feature
+  * Update himmelblau.conf.5 sudo_groups example
+  * Entra group based sudo access
+  * Audited the cargo updates
+  * deps(rust): bump the all-cargo-updates group with 6 updates
+  * Vet libhimmelblau
+  * Add `make vet` command
+  * Update deny.toml
+  * Remove incompatible licenses from deps
+  * Fix RHEL8 package signing
+  * Add SBOM generation
+  * Add an IRP checklist for security incidents
+  * Run the nixos build/release on the correct version
+  * Add crate dependency auditing on MR
+  * Add some exceptions
+  * Initialize cargo vet
+  * Remove in-tree kanidm dependencies
+  * Fix Hello PIN lookup when an alias domain
+  * Raise maximum group lookup from 100 to 999
+  * Always work with lowercase account names
+  * Modify FUNDING.yml for funding sources
+  * Remove glib dependency
+  * deps(rust): bump the all-cargo-updates group with 10 updates
+  * Add CI check for licenses
+  * Update dependabot.yml to target all stable branches
+  * Add authselect module for Rocky/Fedora
+  * Recommend packages, instead of require
+  * Add a Contributing document
+  * Add a Code of Conduct
+  * add withSelinux flag to nix build, brings SELinux binaries into the build environment.
+  * deps(rust): bump tracing-subscriber in the cargo group
+  * Don't overwrite the himmelblau.conf on rpm upgrade
+  * Add help output to the Makefile
+  * Fix building packages with docker in root mode
+  * Update to latest libhimmelblau and identity_dbus_broker
+  * Make PRT SSO cookie via broker work as well for Edge
+  * Make broker work for Edge
+  * Generate Office 365 desktop apps
+  * Update README
+  * Add `make uninstall` command
+  * Remove the deprecated tests suite
+  * Himmelblau no longer has git submodules
+  * Make install using packages
+  * Add Debian 13 packages
+  * Generate Dockerfiles automatically
+  * Add SELinux configuration
+  * Himmelblau daemon requires system tss user
+  * Add cron dependency for Intune scripts
+  * Do not mangle /usr/etc configuration files
+  * Fix building packages with docker in root mode
+  * deps(rust): bump the all-cargo-updates group with 11 updates
+  * deps(rust): bump the all-cargo-updates group with 7 updates
+  * Add SLE16 (beta) build target
+  * Automatically append to nsswitch.conf in postinst
+  * Correct the RPM postinst script syntax
+  * Fix Kerberos credential cache permissions
+  * Set file owner and group before writing its content
+  * Create SECURITY.md
+  * deps(rust): bump the all-cargo-updates group with 6 updates
+  * Rev the dev version to 2.0.0
+  * Ensure alias domains match when checking Intune device id
+  * Debian 12 doesn't support ConditionPathExists and notify-reload
+  * Write scripts policy to a readable directory
+  * Apply Intune policies right after enrollment
+  * Add more debug instrumentation
+  * Provide device_id to Intune enrollment if not cached
+  * Ensure nss cache directory is created during install
+  * Remove /var/cache/himmelblaud access from tasks daemon
+  * Resolve daemon startup absolute path warnings
+  * Delay Intune enrollment on Device Auth fail
+  * Do not leak the Intune IW service token in the logs
+- Update to version 1.4.2+git.0.52da279:
+  * Version 1.4.2
+  * Rocky container image updates were failing
+  * Revert libhimmelblau unstable update
+  * Version 1.4.1
+  * Update Intune to use app version 1.2511.7
+  * Version 1.4.0
+  * Resolve build failures
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 6 updates
+  * Permit NSS response for mapped primary fake group
+- Update to version 1.3.0+git.0.f8cabb7:
+  * Resolve errant &quot;Hello key missing.&quot; messages
+  * Version 1.3.0
+  * Fix group static mapping
+  * Move aad-tool idmap cache clear to the idmap cmd
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 11 updates
+  * deps(rust): bump the all-cargo-updates group with 6 updates
+  * Fix RHEL8 package signing
+  * Fix Hello PIN lookup when an alias domain
+  * Raise maximum group lookup from 100 to 999
+  * Always work with lowercase account names
+  * Revert the self-hosted runner name
+  * deps(rust): bump the all-cargo-updates group with 23 updates
+- Update to version 1.2.2+git.0.2d04bca:
+  * Include latest branch in CI
+  * Self hosted runners
+  * Version 1.2.2
+  * deps(rust): bump tracing-subscriber in the cargo group; (bsc#1249013), (CVE-2025-58160)
+  * Version 1.2.1
+  * Automatically append to nsswitch.conf in postinst
+  * Correct the RPM postinst script syntax
+- Update to version 1.2.0+git.0.6befefc:
+  * Version 1.2.0
+  * Fix Kerberos credential cache permissions; (bsc#1247735), (CVE-2025-54882)
+  * Set file owner and group before writing its content
+  * Ensure alias domains match when checking Intune device id
+  * Debian 12 doesn't support ConditionPathExists and notify-reload
+  * Write scripts policy to a readable directory
+  * Apply Intune policies right after enrollment
+  * Add more debug instrumentation
+  * Provide device_id to Intune enrollment if not cached
+  * Ensure nss cache directory is created during install
+  * Remove /var/cache/himmelblaud access from tasks daemon
+  * Resolve daemon startup absolute path warnings
+  * Version 1.1.0
+  * Delay Intune enrollment on Device Auth fail
+  * Do not leak the Intune IW service token in the logs
+- Update to version 1.0.0+git.0.d01709b:
+  * Fix policy application
+  * Add remaining Linux password compliance policies
+  * Add custom compliance enforcement
+  * deps(rust): bump the all-cargo-updates group with 3 updates
+  * deps(rust): bump the all-cargo-updates group with 5 updates
+  * Add SLE15SP7 build target
+  * Add RHEL 10 build target
+  * Fix Intermittent auth issue AADSTSError 16000
+  * Remove old utf8proc dependency
+  * Add `fedora42` build target
+  * Handle PRT expiration and tie to offline auth
+  * Correctly delete the Hello keys on bad pin count
+  * Add ability to disable Hello PIN per-service
+  * Update NixOS support to 25.05
+  * Handle disabled device by attempting re-enrollment
+  * Always attempt confidential client creds for aad-tool
+  * Include HSM option defs in himmelblau.conf man page
+  * Update flake.nix
+  * Improve the aad-tool cache-clear command
+  * Add `mfaSshWorkaroundFlag` configuration option to Nix Flake.
+  * Add the ability to remove confidential client creds
+  * If bad PIN count is exceeded, delete the Hello key
+  * deps(rust): bump the all-cargo-updates group with 4 updates
+  * Add instructions for creating developer builds
+  * Fix GDM3 first time login password prompt
+  * Default HsmType should be soft
+  * Add himmelblaud to tss group for TPM startup
+  * Enforce strict order for the systemd units
+  * Update libhimmelblau and compact_jwt
+  * Fix builds w/tpm
+  * aad-tool Authentication flow improvements
+  * Filter out irrelevant debug in aad-tool
+  * Create a unified login experience for aad-tool
+  * Utilize confidential creds for aad-tool enumerate
+  * himmelblau should get posix attributes w/out delegate user access
+  * Always use the Object Id for mapping Group to GID
+  * Update enhancement-request.md for SPI donations
+  * Update bug_report.md with SPI donation
+  * deps(rust): bump the all-cargo-updates group with 4 updates
+  * Update build requires in README.md
+  * Enforce strict order for the systemd units
+  * Update FUNDING.yml with SPI Paypal donation button
+  * Don't break from tasks loop when policies fail
+  * Enroll in Intune as soon as it is enabled
+  * Implement `decoupled hello` behavior
+  * Cache encrypted PRT to disk for offline login SSO
+  * Update to latest hsm-crypto
+  * Enable tpm functionality
+  * Allow altering the password and PIN prompt messages
+  * Ensure Hello PIN lockout happens when online
+  * Cache the build target output to improve build times
+  * Easier build selection w/ Makefile
+  * Revert mistaken removal from Makefile
+  * Make the user wait longer with each incorrect PIN
+  * Make the bad PIN count configurable
+  * Improve aad-tool manpage
+  * aad-tool fails if the user has FIDO2 enabled
+  * Offline auth permits authentication with invalid Hello PIN
+  * PIN complexity to match Windows
+  * Update to latest SSSD idmap code
+  * Add aad-tool options for setting posix attrs
+  * Add scopes and redirect uris aad-tool application create
+  * Add aad-tool commands for managaging extension attrs
+  * deps(rust): bump the all-cargo-updates group with 4 updates
+  * cargo clippy
+  * cargo fmt
+  * Utilize the sidtoname call for object id mapping
+  * Add commands for listing/creating App registrations
+  * Potential fix for code scanning alert no. 2: Workflow does not contain permissions
+  * Potential fix for code scanning alert no. 4: Workflow does not contain permissions
+  * Potential fix for code scanning alert: Workflow does not contain permissions
+  * Never write the app_id to the server config
+  * Disable passwordless Fido by default
+  * Stop using deprecated `users` crate
+  * When group membership lookup fails, use cached groups
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 11 updates
+  * deps(rust): bump the all-cargo-updates group with 4 updates
+  * aad-tool command for enumerating users and groups
+  * Name-Based Group Matching in `pam_allow_groups` Leads to Potential Security Bypass
+  * Add the configure-pam option to aad-tool man page
+  * Add static idmap cache for on-prem to cloud migration
+  * Update bug_report.md with request for himmelblau.conf
+  * deps(rust): bump the all-cargo-updates group with 2 updates
+  * Update crates in a group
+  * Update crate bumps
+  * Utilize new Intune compliance enforcement via libhimmelblau
+  * Correct the README regarding Intune policy compliance
+  * Disable Chromium policy
+  * Re-enable Intune policy and add scripts and compliance policies
+  * himmelblau.conf alias `domain` as `domains`
+  * Support Fido auth in pam passwd
+  * Add TAP support to himmelblaud and pam passwd
+  * Mixed case names should properly identify Hello Key
+  * Update linux-entra-sso to latest version
+  * Fix group lookup for Entra Id group name
+  * Fix mixed case name lookup from PRT cache
+  * Crate updates
+  * Fix tasks daemon debug output
+  * Remove write locks where unecessary
+  * Fix deadlock in nss
+  * systemd notify fixes
+  * Console
+  * Address Feedback
+  * Order services before gdb/nss-user-target
+  * deps(rust): bump rpassword from 7.3.1 to 7.4.0
+  * deps(rust): bump tokio from 1.44.2 to 1.45.0
+  * deps(rust): bump sha2 from 0.10.8 to 0.10.9
+  * deps(rust): bump systemd-journal-logger from 2.2.0 to 2.2.2
+  * deps(rust): bump clap from 4.5.31 to 4.5.38
+  * Update notify-debouncer-full
+  * Update opentelemetry
+  * Update dependencies
+  * deps(rust): bump time from 0.3.39 to 0.3.41
+  * Replace source filter that blacklists files with filter that whitelists files.
+  * Mark himmelblau.conf as config in rpm
+  * Update README.md
+  * Ensure only the base URL is printed to log
+  * If unix_user_get fails, wait, and try again
+  * Supplying a PRT cookie to SSO doesn't require network
+  * Don't send a password prompt if the network is down
+  * Auth via MFA if Hello PIN fails 3 times
+  * Improve Hello PIN failed auth error
+  * Fix rocky9 build
+  * deps(rust): bump anyhow from 1.0.96 to 1.0.98
+  * deps(rust): bump libc from 0.2.170 to 0.2.172
+  * deps(rust): bump cc from 1.2.16 to 1.2.19
+  * Update README.md
+  * deps(rust): bump tokio from 1.43.0 to 1.44.2
+  * deps(rust): bump openssl from 0.10.71 to 0.10.72 in the cargo group
+  * deps(rust): bump reqwest from 0.12.12 to 0.12.15
+  * Update libhimmelblau in Cargo.lock
+  * Fix nss and offline checks for domain aliases
+  * Report error when MS Authenticator denies authorization
+  * Bail out of invalid offline auth
+  * Handle AADSTS errors from BeginAuth response
+  * Never dump failed reqwests to the log
+  * Update sccache-action version to use new cache service
+  * Permit daemon to start when network is down
+  * Add an nss cache for when daemon is down
+  * Additional pam info cues
+  * Proceed with Hello auth even with net down
+  * Indicate to the user what the password and PIN are
+  * Ensure pam messages are seen
+  * Display the minimum PIN length during Hello setup
+  * PAM should loop, not die on error
+  * Ensure prompt msg remains for confirmation
+  * Update bug_report.md
+  * Ignore demands for setting up MS Authenticator
+  * Login fails if Entra is configured to recommend MS authenticator
+  * Add pam configure command to aad-tool
+  * Update README.md with pam passwd instructions
+  * aad-tool authtest needs to map names
+  * Update demo video in README.md
+  * Sign RPM packages
+  * Ensure the pam module is installed correctly for SLE
+  * Improve pam error handling and messaging
+  * Only push cachix builds for stable releases
+  * Terminate linux-entra-sso when browser terminates
+  * On deb, push pam config after install
+  * Increase priority of deb PAM passwd for Himmelblau
+  * Improve offline state handling
+  * Specify request for Entra Id password in PAM
+  * QR Greeter also supports gnome-shell 47
+  * Fix profile photo loading
+  * Clarify pam_allow_groups in himmelblau.conf man page
+  * Don't hide debug for pam_allow_groups miss
+  * Handle failures in passwordless auth
+  * build all root packages
+  * split config options that can be defined per-domain from those which are global only
+  * configure cachix signing and upload in ci
+  * deps(rust): bump serde_json from 1.0.138 to 1.0.140
+  * deps(rust): bump serde from 1.0.218 to 1.0.219
+  * deps(rust): bump time from 0.3.37 to 0.3.39
+  * deps(rust): bump bytes from 1.10.0 to 1.10.1
+  * deps(rust): bump pkg-config from 0.3.31 to 0.3.32
+  * Entra Id is case insensitive, cache lookup must match
+  * deps(rust): bump ring from 0.17.9 to 0.17.13 in the cargo group
+  * Support CompanionAppsNotification mfa method
+  * QR code for gnome-shell greeter
+  * Allow tasks to start if AccountsService dir missing
+  * Remove invalid python dependency from sso package
+  * Fixes https://github.com/himmelblau-idm/himmelblau/issues/397
+  * Clear server config when clearing cache
+  * Update version in the Cargo.lock
+  * deps(rust): bump async-trait from 0.1.86 to 0.1.87
+  * deps(rust): bump chrono from 0.4.39 to 0.4.40
+  * Fix himmelblau.conf man page cn_name_mapping entry
+  * deps(rust): bump pem from 3.0.4 to 3.0.5
+  * deps(rust): bump serde from 1.0.217 to 1.0.218
+  * Version 1.0.0
+  * deps(rust): bump cc from 1.2.15 to 1.2.16
+  * Update workflow versions
+- Update to version 0.9.21+git.0.6963ee0:
+  * Fix authentication when passkeys are enabled
+  * Version 0.9.20
+  * Fix Intermittent auth issue AADSTSError 16000
+  * Version 0.9.19
+  * Disable cookies
+  * Version 0.9.18
+  * Cache the build target output to improve build times
+  * Easier build selection w/ Makefile
+  * Never write the app_id to the server config
+- Update to version 0.9.17+git.0.4a97692:
+  * Version 0.9.17
+  * Offline auth permits authentication with invalid Hello PIN; (CVE-2025-53013).
+  * Cargo fmt
+  * Don't neglect to sign the rpm packages
+- Update to version 0.9.16+git.0.aac2205:
+  * Disable passwordless Fido by default
+  * Stop using deprecated `users` crate
+  * Version 0.9.16
+  * When group membership lookup fails, use cached groups
+  * Just report whether some passwordless type is available
+  * Version 0.9.15
+  * Name-Based Group Matching in `pam_allow_groups` Leads to Potential Security Bypass
+  * Version 0.9.14
+  * Support Fido auth in pam passwd
+  * Add TAP support to himmelblaud and pam passwd
+  * Mixed case names should properly identify Hello Key
+  * Remove write locks where unecessary
+  * Fix group lookup for Entra Id group name
+  * Version 0.9.13
+  * Fix mixed case name lookup from PRT cache
+- Update to version 0.9.12+git.0.99b5ca6:
+  * Version 0.9.12
+  * Fix deadlock in nss
+  * systemd notify fixes
+- Update to version 0.9.11+git.0.04ef9c8:
+  * Ensure only the base URL is printed to log
+  * Version 0.9.11
+  * Supplying a PRT cookie to SSO doesn't require network
+  * Improve Hello PIN failed auth error
+  * Fix rocky9 build
+  * Fix nss and offline checks for domain aliases
+  * Report error when MS Authenticator denies authorization
+  * Bail out of invalid offline auth
+  * Handle AADSTS errors from BeginAuth response
+  * Never dump failed reqwests to the log
+  * Update sccache-action version to use new cache service
+  * Permit daemon to start when network is down
+  * Version 0.9.10
+  * Add an nss cache for when daemon is down
+  * Additional pam info cues
+  * Proceed with Hello auth even with net down
+  * Indicate to the user what the password and PIN are
+  * Specify request for Entra Id password in PAM
+  * Ensure pam messages are seen
+  * Display the minimum PIN length during Hello setup
+  * PAM should loop, not die on error
+  * Ensure prompt msg remains for confirmation
+- Update to version 0.9.9+git.0.5425b98:
+  * Version 0.9.9
+  * Ignore demands for setting up MS Authenticator
+- Update to version 0.9.8+git.0.3f20b1b:
+  * configure cachix signing and upload in ci
+  * Version 0.9.8
+  * Improve pam error handling and messaging
+  * Version 0.9.7
+  * Terminate linux-entra-sso when browser terminates
+  * On deb, push pam config after install
+  * Increase priority of deb PAM passwd for Himmelblau
+  * Improve offline state handling
+  * QR Greeter also supports gnome-shell 47
+  * Version 0.9.6
+  * Fix profile photo loading
+  * Clarify pam_allow_groups in himmelblau.conf man page
+  * Don't hide debug for pam_allow_groups miss
+  * Version 0.9.5
+  * Handle failures in passwordless auth
+- Update to version 0.9.4+git.0.9909238:
+  * Version 0.9.4
+  * bump ring from 0.17.9 to 0.17.13
+  * Entra Id is case insensitive, cache lookup must match
+  * Support CompanionAppsNotification mfa method
+  * Version 0.9.2
+  * QR code for gnome-shell greeter
+  * Allow tasks to start if AccountsService dir missing
+  * Remove invalid python dependency from sso package
+  * Version 0.9.1
+  * himmelblaud-tasks stops due to missing dir
+  * Clear server config when clearing cache
+  * Fix himmelblau.conf man page cn_name_mapping entry
+  * Update workflow versions
+  * Document the requirements for app_id
+  * Properly handle aad error from auth code req
+  * Provide a group gid fallback for rfc2307 id map
+  * Remove option defs from the default debian himmelblau.conf
+  * Ensure tasks daemon creates files w/ correct gid
+  * Isolate the name mapping so it only happens if enabled
+  * Default to request group info via Edge browser
+  * Avoid modifying the cache entries
+  * Utilize systemd notify to avoid tasks started fail
+  * Ubuntu PAM module configuration to change PIN
+  * Resolve migration error `real_gidnumber` missing
+  * deps(rust): bump libc from 0.2.169 to 0.2.170
+  * deps(rust): bump clap_complete from 4.5.45 to 4.5.46
+  * Fix some clippy warnings
+  * Cause tasks daemon to honor configured debug
+  * Fetch user profile photo via tasks daemon
+  * deps(rust): bump clap from 4.5.30 to 4.5.31
+  * deps(rust): bump anyhow from 1.0.95 to 1.0.96
+  * deps(rust): bump cc from 1.2.14 to 1.2.15
+  * Add apparmor whitelisting for nss mapping cache
+  * Dramatically improve debug logging
+  * Move the NixOS CI to a different workflow (w/out main)
+  * Add a sample himmelblau.conf in docs
+  * Resolve missed auth code redirect
+  * Implement mapped name caching in NSS
+  * Add script on-behalf-of flow for logon scripts
+  * Update Cargo.lock deps
+  * Update installation instructions in the README
+  * Donation requests in the issue templates
+  * Update README.md with contribute badge
+  * Update README.md with contributions statement
+  * Create FUNDING.yml
+  * Update README.md
+  * fix failing test expecting /bin/echo to be available
+  * add nixos ci tests
+  * Use sd_notify to signal service readiness, prevent startup failures
+  * Add build command to Makefile
+  * Update documentation
+  * Add NixOS Module
+  * enable build with nix
+  * Implement logon name script mapping
+  * deps(rust): update libnss requirement from 0.8.0 to 0.9.0
+  * Only the himmelblau-sso package should conflict with intune-portal
+  * deps(rust): update gethostname requirement from 0.5.0 to 1.0.0
+  * deps(rust): update lru requirement from ^0.12.3 to ^0.13.0
+  * deps(rust): update rand requirement from ^0.8.5 to ^0.9.0
+  * Fetch the group extension attrs with the group object
+  * Ensure access token has the GroupMember.Read.All scope
+  * Replace the unix attribute option with a rfc2307 idmap
+  * Map the extended attr gidNumber to primary group
+  * Permit configuration of an Application for group fetching
+  * Use posix attributes synchronized from on-prem AD
+  * Fix debug option in himmelblau.conf
+  * Add a span around server initialisation for correct log coalescing
+  * Fix GOA crash when krb5.conf doesn't include /etc/krb5.conf.d
+  * Fix libutf8proc dependency issue on Ubuntu 22.04
+  * Fix Credentials leaking in the debug log
+  * deps(rust): update rusqlite requirement from ^0.32.0 to ^0.33.0 (#345)
+  * Decrease CI build time
+  * Fix CI failure caused by package revision
+  * Support password changes when demanded
+  * Update README.md
+  * Entra Id no longer permits SFA enrollment
+  * Rewrite the sso code in Rust
+  * Add profile photo fetching
+  * Version 0.9.0
+- Update to version 0.8.3+git.5.1510f5a:
+  * Decrease CI build time
+  * Fix CI failure caused by package revision
+  * Version 0.8.4
+  * Fix libutf8proc dependency issue on Ubuntu 22.04
+  * Version 0.8.3
+  * Fix Credentials leaking in the debug log
+- Update to version 0.8.2+git.0.553c632:
+  * Version 0.8.2
+  * Entra Id no longer permits SFA enrollment
+  * Remove SSO python dependencies
+  * Version 0.8.1
+  * Rewrite the sso code in Rust
+- Update to version 0.8.0+git.0.249ba5f:
+  * Branch version stable-0.8.x
+  * Passwordless auth doesn't provide polling numbers
+  * Resolve deadlock introduced by Fido auth
+  * Implement NGC Passwordless authentication
+  * Remove unused commit checklist
+  * deps(rust): update bindgen requirement from 0.70.1 to 0.71.1
+  * Update libhimmelblau version
+  * Custom domains matching
+  * Fix IdmapError to indicate the failure
+  * Fix Fedora build dependencies
+  * Add Fido MFA
+  * Add Debian 12 packaging
+  * Disable SELinux labeling on build container volume mounts
+  * Update github CI dependencies
+  * Implement Hello Pin changes via PAM
+  * Formatting fix
+  * Utilize HimmelblauConfig directly in pam and nss
+  * Add config parsing unit tests
+  * Fix incorrect default domain
+  * Fix config hsm type Tpm error
+  * Include multi-domain important info in himmelblau.conf man
+  * Update to the latest libhimmelblau
+  * Add DAG flow as a fallback for MFA
+  * Fix CVE-2024-11738: rustls network-reachable panic in `Acceptor::accept`
+  * Update README.md with build requires
+  * Enable module for utf8proc-devel in Rocky8
+  * Remove the org.samba.himmelblau dbus service
+  * Fix missing dependency utf8proc_NFKC_Casefold
+  * The tasks daemon needs /etc/groups write access
+  * Revert &quot;Fix Ubuntu PAM fallback to password prompt&quot;
+  * Fix Ubuntu PAM fallback to password prompt
+  * Increase the cache timeout to 5 minutes
+  * Always fetch and cache the graph url
+  * Package Siemens Linux Entra SSO for Himmelblau
+  * Add Kerberos CCache support
+  * Update the tasks daemon man page
+  * Add a himmelblau.conf man page, and package the man pages
+  * Add SLE15SP6 packaging
+  * Add Fedora 41 packaging
+  * Add Fedora Rawhide packaging
+  * Provide enhancement request template
+  * Create an issue template
+  * Hello support depends on openssl3
+  * Fix sshd rpm depends
+  * Resolve RPM dependencies automatically
+  * Revert &quot;deps(rust): update notify-debouncer-full requirement from 0.3 to 0.4&quot;
+  * Add openSUSE Tumbleweed packaging
+  * Fix RPM packaging placement of systemd files
+  * Remove the failed attempt at debian packaging
+  * Add stable-0.7.x to CI workflows
+  * Version 0.8.0
+- Update to version 0.7.13+git.0.d790d31:
+  * Version 0.7.13
+  * Fix Fedora build dependencies
+  * Version 0.7.12
+  * Add Debian 12 packaging
+  * Update github CI dependencies
+  * Version 0.7.11
+  * Implement Hello Pin changes via PAM
+  * Utilize HimmelblauConfig directly in pam and nss
+  * Version 0.7.10
+  * Add config parsing unit tests
+  * Fix incorrect default domain
+  * Fix config hsm type Tpm error
+  * Include multi-domain important info in himmelblau.conf man
+- Update to version 0.7.9+git.0.93655d2:
+  * Version 0.7.9
+  * Update to the latest libhimmelblau
+  * Version 0.7.8
+  * Add a himmelblau.conf man page, and package the man pages
+  * Add DAG flow as a fallback for MFA
+- Update to version 0.7.7+git.0.b48d0bb:
+  * Version 0.7.7
+  * Fix CVE-2024-11738: rustls network-reachable panic in `Acceptor::accept`
+    (bsc#1233949).
+  * Version 0.7.6
+  * Enable module for utf8proc-devel in Rocky8
+- Update to version 0.7.5+git.0.8f421b0:
+  * Version 0.7.5
+  * Remove the org.samba.himmelblau dbus service
+- Update to version 0.7.4+git.0.d1291c6:
+  * Version 0.7.4
+  * Fix missing dependency utf8proc_NFKC_Casefold
+  * Package Siemens Linux Entra SSO for Himmelblau
+  * Add SLE15SP6 packaging
+  * Add Fedora 41 packaging
+  * Add Fedora Rawhide packaging
+  * The tasks daemon needs /etc/groups write access
+  * Version 0.7.3
+  * Increase the cache timeout to 5 minutes
+  * Always fetch and cache the graph url
+- Update to version 0.7.2+git.0.c76ac0e:
+  * Version 0.7.2
+  * Hello support depends on openssl3
+  * Version 0.7.1
+  * Fix sshd rpm depends
+  * Resolve RPM dependencies automatically
+  * Revert &quot;deps(rust): update notify-debouncer-full requirement from 0.3 to 0.4&quot;
+  * Add openSUSE Tumbleweed packaging
+  * Fix RPM packaging placement of systemd files
+  * Remove the failed attempt at debian packaging
+  * Add stable-0.7.x to CI workflows
+  * deps(rust): update utoipa requirement from 4.0.0 to 4.2.0
+  * deps(rust): update hashbrown requirement from 0.14.0 to 0.15.1
+  * Remove missing feature causing warnings
+  * deps(rust): update notify-debouncer-full requirement from 0.3 to 0.4
+  * Specify scopes when making an SSO request
+  * Implement logon script for ensuring compliance
+  * Option for adding Entra Id users to local groups
+  * Configure EL sshd with ChallengeResponseAuthentication yes
+  * Add rocky 8 packaging
+  * Add RPM packaging for EL9
+  * Modify Ubuntu defaults to fix snaps
+  * Resolve Libreoffice fails to start on Ubuntu
+  * Minor formatting fix
+  * Revert RwLock -&gt; Arc&lt;Mutex&gt; change in idmap
+  * Ignore broker scopes requests for now
+  * Ensure every file specifies the proper license
+  * postinst should not fail on patch or apparmor update
+  * Install pam module to additional location via make
+  * Add sshd config to the Makefile
+  * Don't use sudo in postinst/postrm scripts for deb
+  * PAM should be placed first in the stack
+  * Add the libutf8proc-dev dep for deb
+  * Match the object ID of the fake user and group
+  * Make it possible to stop the broker service
+  * Move sshd config into it's own debian package
+  * Allow the graph to start w/out network
+  * Add hello_pin_min_length conf option
+  * Don't attempt SFA fallback if AADSTSError
+  * Have libhimmelblau handle the DAG fallback
+  * Add a warning to user that SSH needs restarted
+  * Ensure local users are ignored when CN mapping
+  * Ensure DAG is rejected if lifetime expires
+  * Rework the poll logic to resolve timeout issues
+  * Add a sshd soft depends for the deb package
+  * CN name mapping in PAM and NSS
+  * Make CN an optional home directory attribute
+  * Remove the sssd build dependencies
+  * Configuration patches for himmelblau on Debian
+  * Simplify PAM get_item_string calls
+  * Bug in pam which needs defended against
+  * Fix deb build by adding Broker service file
+  * Install Ubuntu unix-chkpwd apparmor deps
+  * Ensure make install places pam_himmelblau correctly
+  * Add Ubuntu pam-config for pam_himmelblau
+  * Never return Err(PAM_SUCCESS) from get_user
+  * Never return the Pam result from get_user()
+  * Revert &quot;Speed up nss requests w/out auth attempt&quot;
+  * Speed up nss requests w/out auth attempt
+  * Fix some broker responses
+  * Fixes for the dbus broker
+  * Attempt to fix the cargo version in launchpad build
+  * Makefile typo fixes
+  * Version 0.7.0
+  * Add libdbus-1-dev dep
+  * Improve the README installation instructions
+  * Add `make install` command
+  * Improve Debian/Ubuntu install instructions
+  * Fix tag push permissions for tag-version workflow
+  * Add a version check script
+  * Remove the rustc dependency, breaking rustup
+  * Add a debug option to the config
+  * DBus requires that the service file match the name
+  * Add a pam option for the OpenSSH 2876 workaround
+  * Update to the latest libhimmelblau
+- Update to version 0.6.14+git.0.bbda0b6:
+  * Version 0.6.14
+  * postinst should not fail on patch or apparmor update
+  * Version 0.6.13
+  * Don't use sudo in postinst/postrm scripts for deb
+  * Version 0.6.12
+  * PAM should be placed first in the stack
+  * Match the object ID of the fake user and group
+  * Version 0.6.11
+  * Move sshd config into it's own debian package
+  * Version 0.6.10
+  * Allow the graph to start w/out network
+  * Add hello_pin_min_length conf option
+  * Version 0.6.9
+  * Don't attempt SFA fallback if AADSTSError
+  * Have libhimmelblau handle the DAG fallback
+  * Add a warning to user that SSH needs restarted
+  * Version 0.6.8
+  * Ensure local users are ignored when CN mapping
+  * Ensure DAG is rejected if lifetime expires
+  * Version 0.6.7
+  * Rework the poll logic to resolve timeout issues
+  * Version 0.6.6
+  * Add a sshd soft depends for the deb package
+  * CN name mapping in PAM and NSS
+  * Version 0.6.5
+  * Make CN an optional home directory attribute
+  * Version 0.6.4
+  * Add Ubuntu pam-config for pam_himmelblau
+  * Configuration patches for himmelblau on Debian
+  * Version 0.6.3
+  * Bug in pam which needs defended against
+  * Version 0.6.2
+  * Never return the Pam result from get_user()
+  * Correct installation directory of the deb pam module
+  * Makefile typo fixes
+  * Add libdbus-1-dev dep
+  * Version 0.6.1
+  * Debian build requires libdbus-1-dev
+- Update to version 0.6.0+git.0.b8dae18:
+  * Attempt to fix the cargo version in launchpad build
+  * Add branch stable-0.6.x to the workflows
+  * Install the pam module to the proper location
+  * Update README.md
+  * Add a debug option to the config
+  * Add a pam option for the OpenSSH 2876 workaround
+  * Update to the latest libhimmelblau
+  * Authorize all users when pam_allow_groups is empty
+  * Fix clippy warnings
+  * Fix pam echo not displayed via ssh
+  * Fix pam failure to register Pin following mfa poll
+  * Fork from kanidm
+  * Version 0.6.0
+  * Add cargo deb build
+  * Version 0.5.3
+  * Improve the README installation instructions
+  * Add `make install` command
+  * Improve Debian/Ubuntu install instructions
+  * Fix tag push permissions for tag-version workflow
+  * Version 0.5.2
+  * Add a version check script
+  * Version 0.5.1
+  * Remove the rustc dependency, breaking rustup
+  * Added Debian packaging workflow and files
+- explicitly depend on cargo to pull in latest compiler revision
+- Update to version 0.5.0+git.0.22f84f0:
+  * Update workflows for 0.5.x
+  * Update Debian dependencies in README.md
+  * Compilation fails on Ubuntu, missing ldb header
+  * Fix base32 with kandim updates
+  * deps(rust): update base32 requirement from ^0.4.0 to ^0.5.0
+  * deps(rust): update scim_proto requirement from ^0.2.1 to ^1.3.2
+  * deps(rust): update bindgen requirement from 0.69.4 to 0.70.1
+  * Fix CI failures caused by cargo 1.80.1
+  * Update to libhimmelblau version 0.2.9
+  * deps(rust): update rusqlite requirement from ^0.31.0 to ^0.32.0
+  * deps(rust): update tonic requirement from 0.11.0 to 0.12.0
+  * update libnss requirement from 0.7.0 to 0.8.0
+  * Switch to using libhimmelblau
+  * himmelblaud stops working after suspend
+  * Update required packages for tumbleweed
+  * Disable the SFA fallback by default
+  * Fix ConsolidatedTelephony MFA method
+  * Use the group ID for the name if no display name
+  * Use latest msal with MFA fixes
+  * PhoneAppNotification is not a cred request algorithm
+  * The polling_interval is in milliseconds, not seconds
+  * OneWaySMS is additionally a valid OTP
+  * Relicensing as GPL3, as SSSD source inclusion requires
+  * Utilize the graph code in msal
+  * config: Remove comments about experimental policy enforement
+  * Remove the experimental policy code from the id provider
+  * Fix a refresh token leak in debug from msal
+  * Correct README details
+  * Always normalize idmap upn inputs
+  * Add video links to the README
+  * Minor updates to the Contributing section
+  * Add a Installation section to the README
+  * Add the new SSSD idmap build deps to the README
+  * Add a section about donations
+  * Include the Samba Technical matrix channel
+  * Add github workflows for the 0.4.x branch
+  * Version 0.5.0 bump for main
+- Update to version 0.4.3+git.2.6379abc:
+  * Specifically use msal 0.2.6
+  * Version 0.4.3
+  * update libnss requirement from 0.7.0 to 0.8.0
+  * himmelblaud stops working after suspend
+  * Version 0.4.2
+  * Fix ConsolidatedTelephony MFA method
+- Update to version 0.4.1+git.0.41dd0dc:
+  * Version 0.4.1
+  * Use latest msal with MFA fixes
+  * PhoneAppNotification is not a cred request algorithm
+  * The polling_interval is in milliseconds, not seconds
+  * OneWaySMS is additionally a valid OTP
+  * Relicensing as GPL3, as SSSD source inclusion requires
+- Update to version 0.4.0+git.4.63e3704:
+  * Fix a refresh token leak in debug from msal
+- Update to version 0.4.0+git.2.7b57f5e:
+  * Always normalize idmap upn inputs
+- Update to version 0.4.0+git.0.69b64fe:
+  * Add github workflows for the 0.4.x branch
+  * Do not append to pam_allow_groups automatically
+  * Pam Allow Groups must be specified by Object ID
+  * Request the correct resource and permissions
+  * Improve error output on group lookup failure
+  * When faking a uuid for NSS, use a random uuid
+  * Fix clippy warning about inefficient use of clone()
+  * Remove the initial uid hack, use name mapping
+  * Don't stop an MR based on a clippy warning
+  * Update Kanidm tracking
+  * Modify CI workflows to handle idmap build
+  * Add CI job for cargo test
+  * Test the new and legacy idmapping
+  * Ensure duplicate providers are not started
+  * Use the SSSD Idmap code in Himmelblau
+  * Specify in conf that pam_allow_groups is required
+  * Remove code duplication in Hello PIN auth
+  * Fix Device authentication failed after enrollment
+  * Update the base64urlsafedata version
+  * Update README.md with Matrix contact info
+  * Version 0.4.0
+- Update to version 0.3.4+git.0.01d099f:
+  * Version 0.3.4
+  * Only remove cached user if it doesn't exist
+  * Use existing user token at refresh
+  * Always use the spn of the user for nss requests
+  * Generate a fake user token to please SSH
+  * Fix aad-tool to handle MFA
+  * Fix lib_crypto version
+  * Fix user dropping from NSS
+- Himmelblau requires libopenssl-3 for PRT messages.
+- Update to version 0.3.3+git.0.c2197d7:
+  * Correct the debug messages for Hello skip
+  * Version 0.3.3
+  * Allow disabling Hello PIN auth for enrolled users
+  * Add an option for disabling Windows Hello
+  * Remove the TODO doc from stable branch
+  * config: Remove comments about experimental policy enforement
+- Update to version 0.3.2+git.0.de9f5b5:
+  * Version 0.3.2
+  * Fix Hello PIN Authentication error, no nonce
+- Update to version 0.3.1+git.0.359a8d0:
+  * Add github workflows for the 0.3.x branch
+  * Fallback to SFA first if MFA fails Browse files
+  * deps(rust): update libnss requirement from 0.6.0 to 0.7.0
+  * deps(rust): update webauthn-rs-proto requirement from 0.4.8 to 0.5.0
+  * Fix deadlock caused by client write lock
+  * Add rid idmapping (replacing existing idmap)
+  * Additional debug for Hello auth
+  * Make proto Cargo.toml a physical file
+  * Push the clippy arg count limit a little higher
+  * Version 0.3.0
+  * Windows Hello PIN implementation
+  * deps(rust): update hostname requirement from ^0.3.1 to ^0.4.0
+  * Enable actions on stable branches
+  * Prevent dependabot from updating opentelemetry
+  * Revert &quot;deps(rust): update opentelemetry requirement from 0.20.0 to 0.22.0 (#93)&quot;
+  * deps(rust): update reqwest requirement from ^0.11.18 to ^0.12.2 (#95)
+  * deps(rust): update lru requirement from ^0.8.0 to ^0.12.3 (#94)
+  * deps(rust): update opentelemetry requirement from 0.20.0 to 0.22.0 (#93)
+  * deps(rust): update num_enum requirement from ^0.5.11 to ^0.7.2 (#92)
+  * deps(rust): update tonic requirement from 0.10.2 to 0.11.0 (#91)
+  * Use the Kanidm MFA patches
+  * deps(rust): update libnss requirement from 0.5.0 to 0.6.0 (#90)
+  * deps(rust): update tracing-opentelemetry requirement (#89)
+  * deps(rust): update rusqlite requirement from ^0.28.0 to ^0.31.0 (#88)
+  * deps(rust): update clap requirement from ^3.2 to ^4.5 (#87)
+  * deps(rust): update kanidm-hsm-crypto requirement from ^0.1.6 to ^0.2.0 (#86)
+  * Update dependabot.yml
+  * Add missing db dependency on sketching
+  * Set the workspace resolver version to 2
+  * Init the kanidm submodule during workflows
+  * Ignore clippy blocks_in_conditions warning in daemon
+  * Add build/clippy/dependabot_automerge workflows
+  * deps(rust): update opentelemetry-otlp requirement from 0.13.0 to 0.15.0
+  * deps(rust): update opentelemetry_sdk requirement from 0.20.0 to 0.22.1
+  * deps(rust): update base64 requirement from ^0.21.5 to ^0.22.0
+  * deps(rust): update notify-debouncer-full requirement from 0.1 to 0.3
+  * deps(rust): update systemd-journal-logger requirement
+  * Create dependabot.yml
+  * Add MFA capabilities
+  * Update to the latest Kanidm reqs
+  * Always force MFA when enrolling the device
+  * Update to latest msal
+- Himmelblau provides the features found in aad-auth packages from
+  other distros.
+- Update to version 0.2.0+git.4.904b915:
+  * Update to latest msal
+  * Version 0.2.0
+  * Himmelblau now authenticates only to configured domains
+  * Remove reference to python-msal dep in README
+  * Use the external MSAL crate for auth
+  * Rename msal in prep for external msal crate
+  * msal: Remove python msal bindings
+  * msal: Rust msal
+  * Point Cargo.toml to new project home
+  * config: Write domain join to server specific config
+  * idprovider: Invalidate cached user if PRT req fails
+  * idprovider: Pass the keystore to the auth function
+  * Update daemon from kanidm
+  * test: Add a pause to ensure tasks daemon sees himmelblau
+  * Update kanidm submodule
+  * config: Include domain sections in configured domains
+  * msal: Add acquire_token_by_refresh_token
+  * enrollment: Authentication fixes
+  * tests: Create the hsm-pin directory
+  * idprovider: Add domain join debug
+  * cargo: Use relative paths and remove most symlinks
+  * idprovider: Allow group search when device is authenticated
+  * msal: Move the application reqs from misc to msal::application
+  * msal: Move user reqs from misc to msal::user
+  * Remove duplicates from allow_groups during enrollment
+  * Remove device enrollment from TODO
+  * Implement Device enrollment
+  * enrollment: Add the nonce service request
+  * enrollment: Add enrollment service discovery
+  * Implement ConfidentialClientApplication for enrollment
+  * daemon: Fix inverted logic on cache dir check
+  * nss: Use upstream nss package
+  * idprovider: Provider auth needs to point to just the host
+  * config: Consistently use the config file provided to the daemon
+  * cargo: Use relative paths and remove most symlinks
+  * clippy: Add kanidm's clippy config
+  * config: Only check for tenant_id, authority, graph if necessary
+  * Update README.md
+  * Update version to 0.1.2
+  * config: Fix typos in the config file
+  * Make most params to acquire_token_interactive optional
+  * Config can take defaults
+  * cli: Add missing cli opt file
+  * cli: Improve aad-tool options and interface
+  * Update README.md
+  * tests: Fix tasks daemon name typo
+  * Remove MFA from TODO
+- Update to version 0.1.1+git.10.4aa76b7:
+  * daemon: Fix inverted logic on cache dir check
+  * nss: Use upstream nss package
+  * idprovider: Provider auth needs to point to just the host
+  * config: Consistently use the config file provided to the daemon
+  * cargo: Use relative paths and remove most symlinks
+  * clippy: Add kanidm's clippy config
+  * config: Only check for tenant_id, authority, graph if necessary
+  * Correct the cargo version
+- Update to version 0.1.1+git.0.6d2f645:
+  * config: Remove comments about experimental policy enforement
+  * config: Fix typos in the config file
+- Reduce size of expanded scriptlets by reducing %service_* calls
+- Wrap descriptions
+- Update to version 0.1.0+git.2.2391ac0:
+  * Update version to 0.1.0
+  * Update the README
+  * idprovider: Fix mixed case auth failure
+  * daemon: Port daemon changes from kanidm
+  * provider: Skip provider init on silent auth and offline
+  * daemon: Run himmelblaud as non-root dynamic user
+- Update to version 0.0.4+git.50.112df77:
+  * Always match DAG where present
+  * Prohibit authentication with changing IDs
+- Update to version 0.0.4+git.42.d641c8b:
+  * Run cargo fmt and cargo clippy
+  * Implement DeviceAuthorizationGrant for MFA
+  * test: Initialize the pam_allow_groups with users
+  * Use new pam state machine in himmelblau
+  * Remove the non-functional device enrollment
+  * TODO: New details regarding MS auth cache
+  * daemon: Implement pam allow groups
+  * Code rearrangement
+- Update to version 0.0.4+git.30.26c26e7:
+  * aad-tool: Disable enrollment by default
+  * provider: Fetch GECOS from old token on silent acquire
+  * msal: Add bindings for device auth flow
+  * Add debug for local user ignore
+  * provider: Only retry auth if we're sure group read was requested
+  * provider: Provide user token refresh
+  * provider: Cause unix_group_get to respond with BadRequest
+  * provider: Implement provider_authenticate
+- Update to version 0.0.4+git.9.a7c5ac2:
+  * osc breaks with workspace errors using symlinks
+  * gp: Disable MDM policies by default
+- Update to version 0.0.4+git.3.b500f1f:
+  * Update serde version
+  * Update version to 0.0.4
+  * Only build necessary bits of kanidm proto
+  * Add cache operations to daemon and aad-tool
+  * tests: Include local cache of rust deps
+  * cache: Use the kanidm cache backend
+- Update to version 0.0.3+git.10.761b4d2:
+  * gp: Apply chromium policies
+  * gp: Implement Group Policy object listing
+  * test: Fix build test failure
+  * tests: Return the correct error code from tests
+  * test: Separate project build from docker build
+  * tests: Deploy config when testing
+- Update to version 0.0.3+git.3.f0883b1:
+  * nss: Fix misaligned pointer dereference errors
+  * Fix code links
+- Update to version 0.0.3+git.1.e6847eb:
+  * Revert &quot;nss: Use kanidm nss code&quot;
+  * Update lib versions to match package version
+  * Shallow clone kanidm for pam/nss
+  * tests: Fix tar recursion
+- Update to version 0.0.2+git.22.1c3ce4b:
+  * Remove symlinks and just point to kanidm sources
+  * nss: Use kanidm nss code
+  * Add submodule commands to main Makefile
+  * pam: Use kanidm pam code, glue into himmelblau
+  * TODO: Only auth to configured domains
+- Update to version 0.0.2+git.15.d42b114:
+  * aad-tool: Enroll via the daemon
+  * config: Add func for requesting configured socket path
+  * aad-tool: Improve enroll options
+- Update to version 0.0.2+git.11.91df240:
+  * daemon: Add a systemd service
+  * daemon: Don't request group read scope if using Intune
+  * TODO: Mention the work needed for the cache
+  * README: Include homedir creation instructions
+  * daemon: If auth fails, indicate the user
+- Update to version 0.0.2+git.6.de1afd6:
+  * test: Ensure invalid users aren't cached
+  * test: Skip getent group tests failing due to nss issue
+  * tests: Add nss tests
+  * tests: Test pam auth
+  * msal: Allow fetching auth url
+- Update to version 0.0.2+git.0.5bfbedd:
+  * cache: Make the cache persistent
+  * TODO: Cannot fudge an initial nss request
+  * Use tracing for debug instead of log
+  * aad-tool: Fix some build warnings
+  * aad-tool: Add TODO comments regarding enrollment issues
+  * aad-tool: Always use interactive enrollment
+  * fix readme
+  * aad-tool: Save the device_id after enrollment
+  * aad-tool: Cannot enroll in Intune Portal directly
+  * aad-tool: Parse the enrollment response
+  * aad-tool: Add a enroll command for Azure AD device
+  * memcache: Only append existing group member if missing
+  * himmelblaud: Fix login when Intune errors on group read
+  * memcache: Create a memcache for user and group caching
+  * TODO: Group memberships
+  * TODO: NSS requests via GET reqs
+  * config: Include default for authority_host
+  * config: Specify constants for defaults
+  * Cleanup the build depencencies
+  * TODO: Fix the headings
+  * TODO: Add major reqs section
+  * Cause the odc provider to supply the authority_host
+  * TODO: Use tracing module
+  * Include offline logon in todo list
+  * Add a TODO list
+  * Discover the tenant_id in the same manner as Intune
+  * himmelblaud: Debug for unknown user/group
+  * himmelblaud: Fix failure to cache user
+  * himmelblaud: Pam Allowed and Sessions stubs
+  * himmelblaud: Implement NssGroupByGid and NssAccountByUid
+  * himmelblaud: Implement group lookups
+  * Include the gecos in the mem cache
+  * Use config for shell, homedir, uid range, tenant
+  * Improve Developer Readme
+  * config: Config should not default app_id
+  * Remove invalid comment
+  * himmelblaud: Return with failure without tenant_id
+  * config: Move the config to unix_common module
+  * himmelblaud: Make the socket path configurable
+  * himmelblaud: Use Intune portal when app_id unset
+- Update to version 0.0.1+git.15.f9a024e:
+  * Generate unix uid/gid
+  * himmelblaud: Stubs for NssGroupByName and NssGroups
+  * himmelblaud: Fix auth failure error message
+  * himmelblaud: Open socket with permissions for users to read/write
+  * msal: Fix nssaccountbyname lookup
+  * himmelblaud: Improve logging
+  * Include systemd journal logging
+  * msal: Fix failure parsing user token dict
+  * Implement simple NssAccountByName
+  * Implement basic NssAccounts request
+  * pam: Fix unused variable warning
+  * himmelblaud: Rewrite the daemon in Rust
+  * msal: Add a simple rust binding to python msal
+  * Remove the python daemon in favor of Rust
+- Update to version 0.0.1+git.0.56eb9f0:
+  * himmelblaud: Implement nss lookups in the daemon
+  * himmelblaud: Allow anyone to r/w the socket
+  * himmelblaud: Implement simple nss getpwent name
+  * pam: Remove account allowed and being session impl
+  * unix_common: UID and GID need not match
+  * himmelblaud: Improve the debug output
+  * himmelblaud: Remove stdout debug since logging to journald
+  * himmelblaud: Log to the systemd journal
+  * nss: Add the nss module
+  * Improve directory structure
+</comment>
+    <requestid>1338780</requestid>
+  </revision>
 </revisionlist>
