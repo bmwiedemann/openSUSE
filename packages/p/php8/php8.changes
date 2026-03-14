@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Mar 12 19:00:29 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- version update to 8.4.19
+    Core:
+        Fixed bug GH-21029 (zend_mm_heap corrupted on Aarch64, LTO builds).
+        Fixed bug GH-20657 (Assertion failure in zend_lazy_object_get_info triggered by setRawValueWithoutLazyInitialization() and newLazyGhost()).
+        Fixed bug GH-20504 (Assertion failure in zend_get_property_guard when accessing properties on Reflection LazyProxy via isset()).
+        Fixed OSS-Fuzz #478009707 (Borked assign-op/inc/dec on untyped hooked property backing value).
+        Fixed bug GH-21215 (Build fails with -std=).
+        Fixed bug GH-13674 (Build system installs libtool wrappers when using slibtool).
+    Curl:
+        Fixed bug GH-21023 (CURLOPT_XFERINFOFUNCTION crash with a null callback).
+        Don't truncate length.
+    Date:
+        Fixed bug GH-20936 (DatePeriod::__set_state() cannot handle null start).
+        Fix timezone offset with seconds losing precision.
+    DOM:
+        Fixed bug GH-21077 (Accessing Dom\Node::baseURI can throw TypeError).
+        Fixed bug GH-21097 (Accessing Dom\Node properties can can throw TypeError).
+    MBString:
+        Fixed bug GH-21223; mb_guess_encoding no longer crashes when passed huge list of candidate encodings (with 200,000+ entries).
+    Opcache:
+        Fixed bug GH-20718 ("Insufficient shared memory" when using JIT on Solaris).
+        Fixed bug GH-21227 (Borked SCCP of array containing partial object).
+        Fixed bug GH-21052 (Preloaded constant erroneously propagated to file-cached script).
+    OpenSSL:
+        Fix a bunch of leaks and error propagation.
+    PCNTL:
+        Fixed pcntl_setns() internal errors handling regarding errnos.
+        Fixed cpuset leak in pcntl_setcpuaffinity on out-of-range CPU ID on NetBSD/Solaris platforms.
+        Fixed pcntl_signal() signal table registering the callback first OS-wise before the internal list.
+        Fixed pcntl_signal_dispatch() stale pointer and exception handling.
+    PCRE:
+        Fixed preg_match memory leak with invalid regexes.
+    PDO_PGSQL:
+        Fixed bug GH-21055 (connection attribute status typo for GSS negotiation).
+    PGSQL:
+        Fixed bug GH-21162 (pg_connect() memory leak on error).
+    Sockets:
+        Fixed bug GH-21161 (socket_set_option() crash with array 'addr' entry as null).
+        Fixed possible addr length overflow with socket_connect() and AF_UNIX family sockets.
+    Windows:
+        Fixed compilation with clang (missing intrin.h include).
+
+-------------------------------------------------------------------
 Thu Feb 12 18:42:10 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - version update to 8.4.18
