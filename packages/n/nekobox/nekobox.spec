@@ -17,15 +17,15 @@
 
 
 Name:           nekobox
-Version:        5.10.23
+Version: 5.10.25
 Release:        0%{?autorelease}
 Summary:        Qt based cross-platform GUI proxy configuration manager (backend: sing-box)
 License:        GPL-3.0-only
 URL:            https://github.com/qr243vbi/nekobox
-Source0:        https://github.com/qr243vbi/nekobox/releases/download/%{version}/nekobox-unified-source-%{version}.tar.xz
+Source0: https://github.com/qr243vbi/nekobox/releases/download/%{version}/nekobox-unified-source-%{version}.tar.xz
 BuildRequires:  chrpath
 BuildRequires:  cmake
-BuildRequires:  golang >= 1.25
+BuildRequires:  %{!?nekobox_golang_package:golang >= 1.25}%{?nekobox_golang_package}
 BuildRequires:  pkgconfig
 BuildRequires:  sed
 BuildRequires:  thrift
@@ -39,7 +39,6 @@ BuildRequires:  cmake(Qt6Linguist)
 BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Widgets)
-BuildRequires:  ccache
 BuildRequires:  gcc-c++
 Provides:       nekoray
 Conflicts:      nekoray
