@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 13 14:21:50 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.1.0+git20260313.e9be3c9:
+  * Release version 1.1.0
+  * pam_unix_ng: try to start pwaccessd.socket via D-Bus if not running
+
+-------------------------------------------------------------------
 Wed Mar  4 09:01:25 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add #!BuildConflicts: shadow-pw-mgmt

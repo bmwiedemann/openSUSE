@@ -74,4 +74,14 @@ Add conflicts to busybox-adduser</comment>
 - Obsolete shadow-pw-mgmt for easier migration</comment>
     <requestid>1336326</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7ac0618976b1f0b533d2ed602b3567e6</srcmd5>
+    <version>1.1.0+git20260313.e9be3c9</version>
+    <time>1773523311</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0+git20260313.e9be3c9:
+  * Release version 1.1.0
+  * pam_unix_ng: try to start pwaccessd.socket via D-Bus if not running</comment>
+    <requestid>1338750</requestid>
+  </revision>
 </revisionlist>
