@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Sat Mar 14 13:32:30 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.32.0
+  ## Enhancements made
+  * Add --display-name option to kernel install subcommand #353
+    (@blink1073, @codecov-commenter)
+  ## Bugs fixed
+  * Fix %matplotlib inline raising ValueError #352 (@blink1073,
+    @codecov-commenter)
+  * Fix soft continuation in REPLWrapper.run_command() #350
+    (@blink1073, @codecov-commenter)
+  * Fix python helper function #349 (@blink1073,
+    @codecov-commenter, @ellert)
+  ## Maintenance and upkeep improvements
+  * Remove virtualenv pin #354 (@blink1073, @codecov-commenter)
+  * Add branch-coverage tests for Activity.handle_results() and
+    REPLWrapper #348 (@blink1073, @claude, @codecov-commenter)
+  * Finish typing for tests #347 (@blink1073, @codecov-commenter)
+  * Add type annotations to test helpers and resolve mypy errors
+    #346 (@blink1073, @codecov-commenter)
+  * Add typed wrappers for register_line/cell_magic and annotate
+    all magics #345 (@blink1073, @codecov-commenter)
+  * Adopt zizmor for GitHub Actions static analysis #344
+    (@blink1073, @codecov-commenter)
+  * Fix testpaths for newer pytest versions #343 (@ellert,
+    @blink1073, @codecov-commenter)
+  * Add typed get_ipython() helper and resolve all mypy errors in
+    magics #341 (@blink1073, @claude, @codecov-commenter)
+- Release 0.3.10
+  ## Enhancements made
+  * Convert top-level kernel methods to async #338 (@blink1073,
+    @codecov-commenter)
+  * Support async do_execute_direct #337 (@blink1073,
+    @codecov-commenter)
+  * Use hatch build hook to bundle kernelspecs in wheels #302
+    (@blink1073)
+  * Add type annotations and mypy support #300 (@blink1073)
+  ## Bugs fixed
+  * Use IPython DisplayFormatter directly for missing
+    repr_mimebundle #299 (@blink1073, @morlic)
+  ## Maintenance and upkeep improvements
+  * Update dependabot config #335 (@blink1073, @codecov-commenter)
+  * Remove PY3 compatibility shim #334 (@blink1073,
+    @codecov-commenter)
+  * Add no-op u() function for backwards compatibility #333
+    (@blink1073, @codecov-commenter)
+  * Add Python 3.14t free-threading CI on Ubuntu #332 (@blink1073,
+    @codecov-commenter)
+  * Add tests for core MetaKernel methods #331 (@blink1073,
+    @codecov-commenter)
+  * Add tests for include, install, kernel, and macro magics #330
+    (@blink1073, @codecov-commenter)
+  * Add tests for Activity class methods and ParallelMagic methods
+    #329 (@blink1073, @claude, @codecov-commenter)
+  * Consolidate Windows CI into main test matrix #328 (@blink1073,
+    @claude, @codecov-commenter)
+  * Add tests for Error_display, do_execute_meta, get_magic_args,
+    display, and process_metakernel classes #327 (@blink1073,
+    @codecov-commenter)
+  * Add tests for IPythonKernel, register_ipython_magics, and
+    MetaKernelApp #326 (@blink1073, @codecov-commenter)
+  * Add test module for tutor magic #324 (@blink1073,
+    @codecov-commenter)
+  * Add test module for conversation magic #323 (@blink1073,
+    @claude, @codecov-commenter)
+  * Add test module for brain magic #322 (@blink1073, @claude,
+    @codecov-commenter)
+  * Add test module for blockly magic and fix register_magics bug
+    #321 (@blink1073, @codecov-commenter)
+  * Add test module for scheme magic #320 (@blink1073,
+    @codecov-commenter)
+  * Bump cairosvg from 1.0.22 to 2.7.0 #319 (@blink1073)
+  * Add Windows CI job running just test-all #318 (@blink1073,
+    @codecov-commenter)
+  * Bump pillow from 11.3.0 to 12.1.1 #317 (@blink1073)
+  * Add test-all dependency group, activity and matplotlib magic
+    tests #316 (@blink1073, @codecov-commenter)
+  * Remove Python 2 compatibility shims and modernize string
+    formatting #315 (@blink1073, @codecov-commenter)
+  * Bump the actions group with 3 updates #314 (@blink1073)
+  * Add more pre-commit hooks and stricter typing #312 (@blink1073,
+    @codecov-commenter)
+  * Add rtd config #311 (@blink1073, @codecov-commenter)
+  * Add documentation for creating a new MetaKernel-based kernel
+    #310 (@blink1073)
+  * Add CodeQL analysis workflow configuration #309 (@blink1073)
+  * Add Codecov coverage upload #308 (@blink1073,
+    @codecov-commenter)
+  * Refactor test jobs #307 (@blink1073)
+  * Covert top level RST files to Markdown #306 (@blink1073)
+  * Switch to just and uv for development tooling #305 (@blink1073)
+  * Add pre-commit hooks with ruff, actionlint, and mdformat #304
+    (@blink1073)
+  * Move tests to top-level tests/ directory #303 (@blink1073)
+  * Fix deprecation warning pyparsing #298 (@blink1073)
+  * Bump actions/checkout from 4 to 6 #297 (@blink1073)
+  ## Other merged PRs
+  * Added mit-scheme-kernel #293 (@twaclaw, @blink1073)
+
+-------------------------------------------------------------------
 Mon Dec  1 21:51:49 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.30.4:

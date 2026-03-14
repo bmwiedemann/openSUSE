@@ -232,4 +232,41 @@
 </comment>
     <requestid>1323550</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b68f6968ad90e05d7464d35235cbb872</srcmd5>
+    <version>0.32.0</version>
+    <time>1773523381</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.32.0
+  ## Enhancements made
+  * Add --display-name option to kernel install subcommand #353
+    (@blink1073, @codecov-commenter)
+  ## Bugs fixed
+  * Fix %matplotlib inline raising ValueError #352 (@blink1073,
+    @codecov-commenter)
+  * Fix soft continuation in REPLWrapper.run_command() #350
+    (@blink1073, @codecov-commenter)
+  * Fix python helper function #349 (@blink1073,
+    @codecov-commenter, @ellert)
+  ## Maintenance and upkeep improvements
+  * Remove virtualenv pin #354 (@blink1073, @codecov-commenter)
+  * Add branch-coverage tests for Activity.handle_results() and
+    REPLWrapper #348 (@blink1073, @claude, @codecov-commenter)
+  * Finish typing for tests #347 (@blink1073, @codecov-commenter)
+  * Add type annotations to test helpers and resolve mypy errors
+    #346 (@blink1073, @codecov-commenter)
+  * Add typed wrappers for register_line/cell_magic and annotate
+    all magics #345 (@blink1073, @codecov-commenter)
+  * Adopt zizmor for GitHub Actions static analysis #344
+    (@blink1073, @codecov-commenter)
+  * Fix testpaths for newer pytest versions #343 (@ellert,
+    @blink1073, @codecov-commenter)
+  * Add typed get_ipython() helper and resolve all mypy errors in
+    magics #341 (@blink1073, @claude, @codecov-commenter)
+- Release 0.3.10
+  ## Enhancements made
+  * Convert top-level kernel methods to async #338 (@blink1073,
+    @codecov-commenter)</comment>
+    <requestid>1338881</requestid>
+  </revision>
 </revisionlist>
