@@ -1,7 +1,7 @@
 #
 # spec file for package netsniff-ng
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,7 @@ Group:          Productivity/Networking/Diagnostic
 URL:            http://netsniff-ng.org/
 Source:         http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-%{version}.tar.xz
 Patch0:         netsniff-ng-ncursesw.patch
+Patch1:         0001-mausezahn-fixed-compilation-with-gcc-15.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
