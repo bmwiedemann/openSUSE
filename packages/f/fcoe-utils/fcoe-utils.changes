@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Feb 18 20:31:21 UTC 2026 - Lee Duncan <lduncan@suse.com>
+
+- Update to version 1.0.34+9.3d27180c86c, removing the need
+  for 3 existing patches (see below):
+  * Fix build against glibc 2.43
+    (patch fcoe-utils-glibc-2.43.patch, no longer needed)
+  * updated path
+  * using vendor directory (e.g. /usr/etc) as fallback for /etc
+    (patch usr_etc.patch no longer needed)
+  * fcoemon: add snprintf string precision modifiers in fcm_netif_advance
+  * Fix GCC 12 warning.
+    (patch fcoe-utils-Fix-GCC-12-warning.patch no longer needed)
+  * Preparing for version v1.0.34
+
+-------------------------------------------------------------------
+Thu Feb  5 14:27:34 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add fcoe-utils-glibc-2.43.patch: Fix build against glibc 2.43.
+
+-------------------------------------------------------------------
+Tue Jun 10 12:21:14 UTC 2025 - Stefan Schubert <schubi@suse.com>
+
+- Moved /etc/fcoe/cfg-ethx and /etc/fcoe/config to /usr/etc.
+- This patch is upstream: https://github.com/openSUSE/fcoe-utils/pull/24
+  and is called usr_etc.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 08:34:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

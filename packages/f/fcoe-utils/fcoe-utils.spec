@@ -1,7 +1,8 @@
 #
 # spec file for package fcoe-utils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,14 +32,13 @@ Requires:       iproute
 Requires:       open-lldp
 Requires:       pkgconfig(systemd)
 %systemd_ordering
-Version:        1.0.34
+Version:        1.0.34+9.3d27180c86c
 Release:        0
 Summary:        FCoE userspace management tools
 License:        GPL-2.0-only
 Group:          System/Daemons
 Source:         %{name}-%{version}.tar.xz
 Patch0:         harden_fcoe.service.patch
-Patch1:         %{name}-Fix-GCC-12-warning.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 
@@ -46,13 +46,17 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Userspace tools to manage FibreChannel over Ethernet (FCoE)
 connections.
 
-
 %prep
 %autosetup -p1
 
 %build
 autoreconf -vi
+%if 0%{?suse_version} > 1500
+%configure  --with-vendordir=%{_distconfdir}
+#mkdir -p %{buildroot}%{_distconfdir}/fcoe
+%else
 %configure
+%endif
 make %{?_smp_mflags}
 
 %install
@@ -73,6 +77,12 @@ done
 
 %pre
 %service_add_pre fcoe.service fcoemon.socket
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in fcoe/config fcoe/cfg-ethx; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
 
 %post
 %service_add_post fcoe.service fcoemon.socket
@@ -84,6 +94,14 @@ done
 %postun
 %service_del_postun fcoe.service fcoemon.socket
 
+%if 0%{?suse_version} > 1500
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in fcoe/config fcoe/cfg-ethx; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
+
 %files
 %defattr(-,root,root,-)
 %license COPYING
@@ -92,9 +110,15 @@ done
 %{_mandir}/man8/*
 %{_unitdir}/fcoe.service
 %{_unitdir}/fcoemon.socket
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/fcoe/
+%{_distconfdir}/fcoe/config
+%{_distconfdir}/fcoe/cfg-ethx
+%else
 %{_sysconfdir}/fcoe/
 %config(noreplace) %{_sysconfdir}/fcoe/config
 %config(noreplace) %{_sysconfdir}/fcoe/cfg-ethx
+%endif
 %{_datadir}/bash-completion/completions/
 %{_libexecdir}/fcoe/
 

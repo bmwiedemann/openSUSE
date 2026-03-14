@@ -3,15 +3,15 @@
 		<param name="url">https://github.com/openSUSE/fcoe-utils.git</param>
 		<param name="scm">git</param>
 		<param name="filename">fcoe-utils</param>
-		<param name="versionformat">1.0.34</param>
-		<param name="revision">v1.0.34</param>
+		<param name="version">HEAD</param>
+		<param name="versionformat">1.0.34+@TAG_OFFSET@.%h</param>
+		<param name="match-tag">v1.0.[0-9]*</param>
+		<param name="revision">master</param>
+		<param name="changesgenerate">enable</param>
 		<param name="exclude">.git</param>
 	</service>
 	<service name="recompress" mode="disabled">
-		<param name="file">*.tar</param>
+		<param name="file">fcoe-utils*.tar</param>
 		<param name="compression">xz</param>
-	</service>
-	<service name="set_version" mode="disabled">
-		<param name="basename">fcoe-utils</param>
 	</service>
 </services>
