@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Feb 23 09:35:49 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to 0.20.01:
+  * New Stressors:
+    * numacopy: exercises copying a local page of data to/from NUMA nodes (with
+      node to node copying rate metrics)
+    * strnum: string to/from number conversion stressor (runs hot).
+  * New Options:
+    * --af-alg-type: specify crypto type
+    * --affinity-procs option to specify number of affinity processes per
+      instance
+    * --close-fds: specify number of fds to close
+    * --compact-memory: enable memory compaction
+    * --cpu-sched-procs: specify number of cpu-sched processes per instance
+    * --filerace-procs option to specify number of filerace child processes
+    * --flushcache-d-bytes: data cache allocation sizes
+    * --flushcache-i-bytes: instruction cache allocation sizes
+    * --icache-pages: specify number of pages to use for icache
+    * --lock-bytes: specify lockbus memory size
+    * --loop-bytes: specify loop device size
+    * --madvise-bytes: specify madvise mapping size
+    * --mmapfork-procs: specify number of child processes
+    * --numacopy-mode: specify mbind mode flags
+    * --pageswap-pages: specify max pages to swapout
+    * --ping-sock-max-size: specify max packet size
+    * --pipeherd-procs: specify number of pipeherd processes per instance
+    * --regs-bitflip: option to exercise register value bit-flipping
+    * --resources-num: specify number of resources to allocate
+    * --resources-proc: specify number of child processes per resource instance
+    * --rmap-procs option: specify number of rmap processes per instance
+    * --sctp-max-size: specify max data size
+    * --sockmany-max-size: specify max data size
+    * --sockpair-max-size: specify max data size
+    * --stream-discontiguous: force mmap'd regions to use physically
+      discontiguous page mappings
+    * --syscall-rank: specify how to sort the syscall output
+    * --tun-port: specify starting port
+    * --udp-flood-max-size: specify maximum size of flood packet
+    * --udp-max-size: specify maximum data UDP message size
+    * --vm-discontiguous: force mmap'd regions to use physically discontiguous
+      page mappings
+    * --zombie-clone: use clone(2) instead of fork(2)
+
+-------------------------------------------------------------------
 Mon Jan 12 10:10:52 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - update to 0.20.00:
