@@ -44,6 +44,7 @@ Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
 Patch0:         0001-fix-slow-scrolling-on-wayland.patch
 Patch1:         0001-wayland-Fix-crash-in-QWaylandShmBackingStore-scroll.patch
+Patch2:         0001-Do-not-persist-unicode-error-state-across-dirents.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 # No need to pollute the library dir with object files, install them in the qt6 subfolder
 Patch100:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
@@ -76,7 +77,10 @@ BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-macros
 %ifnarch ppc64le s390x
+%if 0%{?suse_version} >= 1699
+# Not available in Leap 15 nor 16, and fails to build for ppc and s390x
 BuildRequires:  renderdoc-devel
+%endif
 %endif
 BuildRequires:  xmlstarlet
 BuildRequires:  cmake(double-conversion)

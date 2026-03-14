@@ -669,4 +669,19 @@
     <comment>Qt 6.10.2</comment>
     <requestid>1330573</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>2f4c16e7ac18084185e402c88757377a</srcmd5>
+    <version>6.10.2</version>
+    <time>1773523226</time>
+    <user>dimstar_suse</user>
+    <comment>- Added patch to fix ignore broken unicode filenames without
+  skipping the rest of the directory (QTBUG-142913)
+  * 0001-Do-not-persist-unicode-error-state-across-dirents.patch
+
+- Just build with renderdoc on TW, since Leap 16.1 won't have it
+  neither.
+
+- Also build without renderdoc on Leap 16</comment>
+    <requestid>1338633</requestid>
+  </revision>
 </revisionlist>

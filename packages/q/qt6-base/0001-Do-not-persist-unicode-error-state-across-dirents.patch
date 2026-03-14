@@ -1,0 +1,88 @@
+From 1c212fbfdee21c9eda3d0c5822130d5833d18589 Mon Sep 17 00:00:00 2001
+From: Jake Drahos <j@kedrahos.com>
+Date: Wed, 11 Mar 2026 17:45:56 -0500
+Subject: [PATCH] Do not persist unicode error state across dirents
+
+When UTF16 conversion was changed, QStringDecoder toUtf16 was
+created as a class member. This would persist the unicode error
+state across iterations. As a result, once invalid unicode was
+encountered in d_name of one dirent, the remaining entries
+in the directory would be treated as if they had invalid unicode
+and omitted from the listing.
+
+Removed toUtf16 as a class member of QFilesystemIterator, instead
+creating a new one-shot QStringDecoder for each iteration.
+
+[ChangeLog][QtCore][QDirListing] Fixed a bug on Unix systems that
+caused a file name that failed to decode as UTF-8 to cause decoding
+errors in other file names. This also affected QDirIterator and QDir.
+
+Fixes: QTBUG-142913
+Pick-to: 6.8
+Change-Id: Ifc5d3aa4ade005f078c5d50ff726d22059ec29b2
+Reviewed-by: Thiago Macieira <thiago.macieira@intel.com>
+(cherry picked from commit 7e270fcfbd1af7779466d7ee5072bc3414549a76)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+(cherry picked from commit be168cf3466aa03311ecc0bb901e7e53c199bd84)
+---
+ src/corelib/io/qfilesystemiterator_p.h      | 5 -----
+ src/corelib/io/qfilesystemiterator_unix.cpp | 6 ++++--
+ 2 files changed, 4 insertions(+), 7 deletions(-)
+
+diff --git a/src/corelib/io/qfilesystemiterator_p.h b/src/corelib/io/qfilesystemiterator_p.h
+index a724fd6b0a1..66d8f7b578b 100644
+--- a/src/corelib/io/qfilesystemiterator_p.h
++++ b/src/corelib/io/qfilesystemiterator_p.h
+@@ -26,10 +26,6 @@
+ #include <QtCore/private/qfilesystementry_p.h>
+ #include <QtCore/private/qfilesystemmetadata_p.h>
+ 
+-#if !defined(Q_OS_WIN)
+-#include <private/qstringconverter_p.h>
+-#endif
+-
+ #include <memory>
+ 
+ QT_BEGIN_NAMESPACE
+@@ -64,7 +60,6 @@ private:
+ 
+     QT_DIRENT *dirEntry = nullptr;
+     int lastError = 0;
+-    QStringDecoder toUtf16;
+ #endif
+ 
+     Q_DISABLE_COPY_MOVE(QFileSystemIterator)
+diff --git a/src/corelib/io/qfilesystemiterator_unix.cpp b/src/corelib/io/qfilesystemiterator_unix.cpp
+index 712b942756d..4094a6f9f30 100644
+--- a/src/corelib/io/qfilesystemiterator_unix.cpp
++++ b/src/corelib/io/qfilesystemiterator_unix.cpp
+@@ -9,6 +9,8 @@
+ 
+ #include <qvarlengtharray.h>
+ 
++#include <private/qstringconverter_p.h>
++
+ #include <memory>
+ 
+ #include <stdlib.h>
+@@ -21,8 +23,7 @@ QT_BEGIN_NAMESPACE
+     libraries to iterate over the directory represented by \a entry.
+ */
+ QFileSystemIterator::QFileSystemIterator(const QFileSystemEntry &entry)
+-    : dirPath(entry.filePath()),
+-      toUtf16(QStringDecoder::Utf8)
++    : dirPath(entry.filePath())
+ {
+     dir.reset(QT_OPENDIR(entry.nativeFilePath().constData()));
+     if (!dir) {
+@@ -75,6 +76,7 @@ bool QFileSystemIterator::advance(QFileSystemEntry &fileEntry, QFileSystemMetaDa
+             QByteArrayView name(dirEntry->d_name, strlen(dirEntry->d_name));
+             // name.size() is sufficient here, see QUtf8::convertToUnicode() for details
+             QVarLengthArray<char16_t> buffer(name.size());
++            QStringDecoder toUtf16(QStringDecoder::Utf8);
+             auto *end = toUtf16.appendToBuffer(buffer.data(), name);
+             buffer.resize(end - buffer.constData());
+             if (!toUtf16.hasError()) {
+-- 
+2.53.0
+

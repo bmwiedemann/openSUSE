@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 11 18:13:43 UTC 2026 - Jake Drahos <j@kedrahos.com>
+
+- Added patch to fix ignore broken unicode filenames without
+  skipping the rest of the directory (QTBUG-142913)
+  * 0001-Do-not-persist-unicode-error-state-across-dirents.patch
+
+-------------------------------------------------------------------
+Wed Mar 11 12:27:54 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Just build with renderdoc on TW, since Leap 16.1 won't have it
+  neither.
+
+-------------------------------------------------------------------
+Mon Feb  9 19:33:13 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Also build without renderdoc on Leap 16
+
+-------------------------------------------------------------------
 Sat Jan 31 08:10:33 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.10.2:
