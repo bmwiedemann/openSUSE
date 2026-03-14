@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 13 20:47:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.5:
+  * Adapt tests to Numpy 2
+  * use Py_ssize_t everywhere
+
+-------------------------------------------------------------------
 Fri May  9 05:19:43 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

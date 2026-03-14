@@ -1,7 +1,7 @@
 #
 # spec file for package python-tinyarray
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python36 1
 Name:           python-tinyarray
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        Arrays of numbers for Python, optimized for small sizes
 License:        BSD-2-Clause

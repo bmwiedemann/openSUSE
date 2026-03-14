@@ -48,4 +48,14 @@
 - No more greedy globs in %files.</comment>
     <requestid>1276028</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>620a0b82a64c9726bd8b52e287c0d31c</srcmd5>
+    <version>1.2.5</version>
+    <time>1773523352</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.5:
+  * Adapt tests to Numpy 2
+  * use Py_ssize_t everywhere</comment>
+    <requestid>1338816</requestid>
+  </revision>
 </revisionlist>
