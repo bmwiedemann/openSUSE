@@ -266,4 +266,16 @@
   * support-new-django-graphql-jwt.patch</comment>
     <requestid>1331093</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a95787417ee1d92cb3261d46424d3883</srcmd5>
+    <version>1.14.2</version>
+    <time>1773523344</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.14.2:
+  * Fixed an issue with job ID retrieval to ensure compatibility
+    with the latest RQ version.
+  * Default S3 location for static files
+  * Support for static files in AWS</comment>
+    <requestid>1338809</requestid>
+  </revision>
 </revisionlist>

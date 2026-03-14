@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 13 20:39:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.2:
+  * Fixed an issue with job ID retrieval to ensure compatibility
+    with the latest RQ version.
+  * Default S3 location for static files
+  * Support for static files in AWS
+
+-------------------------------------------------------------------
 Thu Feb  5 05:12:51 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.13.0:
