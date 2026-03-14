@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Mar 13 22:08:20 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1773427330.0b172206:
+  * fix: Display GitHub bugrefs correctly when used within a label
+  * refactor: Improve style in `t/39-scheduled_products-table.t`
+  * feat: improve responsiveness of tabs in job details view
+  * ci(helm): override pullPolicy when install helm via ct
+  * test: Consider everything under `lib/OpenQA/Schema` covered
+  * test: Cover generating Gravatar URLs
+  * test: Cover handling failed job cancellation when scheduling iso
+  * feat: add zypper clean command in base container
+  * test: Cover computing Git log diff
+  * test: Cover adding logs to result file list
+  * refactor: Simplify and slightly improve `create_asset`
+  * refactor: Simplify error handling in function for appending job logs
+  * test: Cover setting and deleting job properties
+  * test: Cover error handling when duplicating jobs
+  * test: Mark error handling in `_hashref` as uncoverable
+  * test: Cover remaining lines of `JobModules.pm`
+  * refactor: Remove unused function `locked_by_jobs`
+  * test: Cover removing test suite defaults
+  * test: Cover rendering description of parent job group
+  * test: Consider everything under `lib/OpenQA/Script/` covered
+  * test: Cover `openqa_baseurl` used by clone script
+  * test: Cover handling unexpected return code in clone script
+
+-------------------------------------------------------------------
 Fri Mar 13 01:00:04 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1773333964.ffc5eff5:
