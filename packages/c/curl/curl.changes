@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Wed Mar 11 08:52:27 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.19.0:
+  * Security fixes:
+    - CVE-2026-1965: Bad reuse of HTTP Negotiate connection (bsc#1259362)
+    - CVE-2026-3783: Token leak with redirect and netrc (bsc#1259363)
+    - CVE-2026-3784: Wrong proxy connection reuse with credentials (bsc#1259364)
+    - CVE-2026-3805: Use after free in SMB connection reuse (bsc#1259365)
+  * Changes:
+    - BUG-BOUNTY.md: we stop the bug-bounty end of Jan 2026
+    - cmake: add 'CURL_BUILD_EVERYTHING' option
+    - mqtt: initial support for MQTTS
+    - tool: support fractions for --limit-rate and --max-filesize
+    - tool_cb_hdr: with -J, use the redirect name as a backup
+    - vquic: drop support for OpenSSL-QUIC
+  * Bugfixes:
+    - altsvc: only accept 17 byte dates from files
+    - asyn-ares: abort with OOM error when Curl_dnscache_mk_entry fails
+    - build: move curl stat struct type to the curlx namespace
+    - build: require POSIX 'strdup()'
+    - build: tidy up and dedupe 'strdup' functions
+    - cf-socket: ignore SOCK_CLOEXEC etc for socktype equality checks
+    - cf-socket: use SOCK_CLOEXEC in socket_open when available
+    - cmake: reference OpenSSL and ZLIB imported targets only when enabled
+    - cmake: skip binutils ld hack if zlib/openssl target is not 'IMPORTED'
+    - config2setopts: acknowledge OOM error from CURLOPT_MIMEPOST
+    - curl: add -I and -i to -h important
+    - curl_setup.h: simplify curl memory macro mappings
+    - curlx: drop unused 'curlx_saferealloc()'
+    - digest: escape double quotes and backslashes in realm and nonce
+    - digest: fix memory leak in auth_create_digest_http_message()
+    - digest: handle quotes in the path
+    - easy: reset errorbuf on eyeballing success
+    - easy: reset pausing when resetting request
+    - ftp: replace a 'curlx_free()' with 'curlx_dyn_free()'
+    - ftp: split ftp_state_use_port into sub functions
+    - GOVERNANCE.md: Post-Daniel BDFL
+    - gss: exclude verbose error logic from non-verbose builds
+    - h2+h3: align stream close handling
+    - hostip.c: fix leak of addrinfo
+    - hostip6: remove debug-only code
+    - hostip: fix unreachable code in rare build configuration
+    - http/3: add description for known server error codes
+    - http1: fix potential NULL dereference in 'Curl_h1_req_parse_read()'
+    - http: only send bearer if auth is allowed
+    - imap: add a check for Curl_meta_get()
+    - imap: check 'imap_sendf()' printf masks at compile-time
+    - imap: skip literals inside quoted strings
+    - include: mask computed auth/proto bitmasks to 32 bits
+    - lib: disable websockets early if no http
+    - lib: make sigpipe handling more lazy
+    - lib: reorder protocol functions to avoid forward declarations (email,ftp, misc, ssh)
+    - lib: separate scheme info from protocol implementation
+    - lib: use (u)int64_t instead of long long
+    - mbedtls: guard TLS 1.3 + session tickets usage inside ifdef
+    - mbedtls: no pinnedpubkey wo MBEDTLS_SSL_KEEP_PEER_CERTIFICATE
+    - md4, md5: drop redundant forward declarations
+    - md4, md5: replace custom types with 'uint32_t'
+    - mimepost: allocate main struct on-demand
+    - mk-ca-bundle.pl: drop support for obsolete/insecure fingerprint algos
+    - mqtt: better too-big-message-check
+    - mqtt: fix EOF handling
+    - mqtt: verify Remaining Length for CONNACK and PUBACK
+    - multi: avoid a theoretical 32-bit wrap
+    - multi: probe for IPv6 functionality in multi_init()
+    - noproxy: simplify, don't mix const non-const in strchr()
+    - openldap: avoid forward declarations in ldaps code
+    - openssl+ech: workaround for insecure handshakes
+    - openssl: adapt to OpenSSL master adding const to more APIs
+    - OpenSSL: check reuse of sessions for verify status
+    - openssl: disable local keylog feature if built-in upstream
+    - openssl: fix compiler warning with OpenSSL master
+    - openssl: fix potential OOB read in debug/verbose logging
+    - quiche: use PRIu64 for outputting the stream id
+    - request.h: rename parameter 'buf' to 'req' in Curl_req_send
+    - rtsp: fix assertion failure on zero-length RTP payload
+    - rtspd: fix to check 'realloc()' result
+    - setopt: refuse blobs with zero length
+    - ssh: dedupe state change function
+    - tftp: correct the filename length check
+    - timeout handling: auto-detect effective timeout
+    - tls: add new SSLSUPP flags for several options
+    - tls: remove checks for DEFAULT
+    - tool: enable header separation for HTTPS proxies
+    - tool_cb_hdr: suppress header output when --out-null
+    - tool_operate: reset the URL --url-query between --next
+    - url: fix reuse of connections using HTTP Negotiate
+    - urlapi: use U_CURLU_URLDECODE when toggling it off unsigned
+    - urldata: byebye 'conn->hostname_resolve'
+    - urldata: change 'keep_post' into three distinct bitfields
+    - urldata: convert 'long' fields to fixed variable types
+    - urldata: switch to uint* types
+    - usercertinmem: use the correct cert BIO
+    - vquic: handle SOCKEMSGSIZE correctly
+    - vtls: dedupe common on-session-reuse logic
+    - vtls: use ALPN http/1.0 & http/1.1 for HTTP/1.0 requests
+    - VULN-DISCLOSURE-POLICY.md: push reports to the web form
+    - VULN-DISCLOSURE-POLICY.md: use hackerone
+    - x509asn1: make encodeOID stop on too long input
+  * Remove now unrecognized option --with-openssl-quic
+  * Rebase patches:
+    - curl-disabled-redirect-protocol-message.patch
+    - dont-mess-with-rpmoptflags.patch
+    - libcurl-ocloexec.patch
+
+-------------------------------------------------------------------
+Tue Mar 10 10:25:25 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Build with --enable-ntlm. Certain Exchange Server endpoints
+  oddly permit NTLM but not Basic-type authentication.
+
+-------------------------------------------------------------------
 Wed Jan  7 11:48:31 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 8.18.0:

@@ -1,8 +1,8 @@
-Index: curl-7.82.0/lib/url.c
+Index: curl-8.19.0-rc2/lib/url.c
 ===================================================================
---- curl-7.82.0.orig/lib/url.c
-+++ curl-7.82.0/lib/url.c
-@@ -1832,9 +1832,13 @@ static CURLcode findprotocol(struct Curl
+--- curl-8.19.0-rc2.orig/lib/url.c
++++ curl-8.19.0-rc2/lib/url.c
+@@ -1552,9 +1552,13 @@ static CURLcode findprotocol(struct Curl
      /* it is allowed for "normal" request, now do an extra check if this is
         the result of a redirect */
      if(data->state.this_is_a_follow &&
@@ -17,4 +17,4 @@ Index: curl-7.82.0/lib/url.c
 +    }
      else {
        /* Perform setup complement if some. */
-       conn->handler = conn->given = p;
+       conn->scheme = conn->given = p;

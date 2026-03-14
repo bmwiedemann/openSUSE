@@ -36,7 +36,7 @@
 %endif
 
 Name:           curl%{?psuffix}
-Version:        8.18.0
+Version:        8.19.0
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl
@@ -60,6 +60,7 @@ BuildRequires:  pkgconfig(libidn2)
 BuildRequires:  pkgconfig(libnghttp2)
 %if %{with quic}
 BuildRequires:  pkgconfig(libnghttp3)
+BuildRequires:  pkgconfig(libngtcp2_crypto_ossl)
 %endif
 BuildRequires:  pkgconfig(libpsl)
 BuildRequires:  pkgconfig(libzstd)
@@ -183,7 +184,7 @@ sed -i 's/\(link_all_deplibs=\)unknown/\1no/' configure
     --with-nghttp2 \
 %if %{with quic}
     --with-nghttp3 \
-    --with-openssl-quic \
+    --with-ngtcp2 \
 %endif
     --enable-docs \
 %if %{with mini}
@@ -207,7 +208,7 @@ sed -i 's/\(link_all_deplibs=\)unknown/\1no/' configure
     --with-libssh \
 %endif
     --enable-symbol-hiding \
-    --disable-ntlm \
+    --enable-ntlm \
     --disable-static \
     --enable-threaded-resolver \
     --with-zsh-functions-dir=%{_datadir}/zsh/site-functions/ \

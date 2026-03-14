@@ -1,9 +1,9 @@
-Index: curl-8.12.0/configure.ac
+Index: curl-8.19.0-rc2/configure.ac
 ===================================================================
---- curl-8.12.0.orig/configure.ac
-+++ curl-8.12.0/configure.ac
-@@ -502,11 +502,6 @@ if test "$curl_cv_native_windows" = "yes
-   esac
+--- curl-8.19.0-rc2.orig/configure.ac
++++ curl-8.19.0-rc2/configure.ac
+@@ -602,11 +602,6 @@ if test "$curl_cv_native_windows" = "yes
+   ])
  fi
  
 -CURL_SET_COMPILER_BASIC_OPTS
