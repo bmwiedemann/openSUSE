@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-cyberjack
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,13 @@
 %endif
 
 Name:           pcsc-cyberjack
-Version:        3.99.5final.SP16
+Version:        3.99.5final.SP17
 Release:        0
 URL:            https://www.reiner-sct.com/support/support-anfrage/?productGroup=77304735&product=77304820&q=driver&os=Linux#choice5
 Summary:        PC/SC IFD Handler for the Reiner SCT Cyberjack USB-SmartCard Readers
 License:        LGPL-2.1-or-later
 Group:          Productivity/Security
-Source:         https://support.reiner-sct.de/downloads/LINUX/V3.99.5_SP16/%{name}-%{version}.tar.bz2
+Source:         https://support.reiner-sct.de/downloads/LINUX/V3.99.5_SP17/%{name}-%{version}.tar.bz2
 Source1:        %{name}-README.SUSE
 Source2:        40-cyberjack.rules
 Patch1:         ctapi-cyberjack-configure.patch
@@ -72,7 +72,9 @@ Supplements:    modalias(usb:v0C4Bp0551d*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v0C4Bp0580d*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v0C4Bp2000d*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v0C4Bp2002d*dc*dsc*dp*ic*isc*ip*)
+Supplements:    modalias(usb:v0C4Bp2004d*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v0C4Bp2007d*dc*dsc*dp*ic*isc*ip*)
+Supplements:    modalias(usb:v0C4Bp2008d*dc*dsc*dp*ic*isc*ip*)
 Requires:       pcsc-lite
 
 %description

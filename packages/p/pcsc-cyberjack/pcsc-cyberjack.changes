@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 14 12:00:11 UTC 2026 - Stephan Hemeier <Sauerlandlinux@gmx.de>
+
+- update to 3.99.5 Service Pack 17
+  * Update to the Reiner-SCT repository cyberJack 
+    DriverPackage master f3674bb325fa3580aff1ce6e200e60a36ae38038
+- update supplements device list
+- update the 40-cyberjack.rules 
+
+-------------------------------------------------------------------
 Tue Aug 27 13:29:46 UTC 2024 - Dominik Heidler <dheidler@suse.de>
 
 - update to 3.99.5 Service Pack 16
