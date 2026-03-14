@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 14 17:46:00 UTC 2026 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.26.1:
+  * Fixed crash when closing a window.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.26.1 for more details.
+
+-------------------------------------------------------------------
 Tue Mar  3 17:05:46 UTC 2026 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v1.26.0:

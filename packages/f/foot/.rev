@@ -944,4 +944,14 @@
   * See https://codeberg.org/dnkl/foot/releases/tag/1.26.0 for more details.</comment>
     <requestid>1336181</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>5e2e9d228ffb5bf9b3eef396a16b948e</srcmd5>
+    <version>1.26.1</version>
+    <time>1773523399</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.26.1:
+  * Fixed crash when closing a window.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.26.1 for more details.</comment>
+    <requestid>1338983</requestid>
+  </revision>
 </revisionlist>
