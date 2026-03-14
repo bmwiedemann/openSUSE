@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Mar 10 12:03:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.9:
+  * chore(deps): update anchore/sbom-action action to v0.23.1
+    (#373)
+  * chore(deps): update sigstore/cosign-installer action to v4.1.0
+    (#372)
+  * fix(deps): update module github.com/google/go-github/v66 to v84
+    (#363)
+  * chore(deps): update github/codeql-action digest to 0d579ff
+    (#365)
+  * chore(deps): update github artifact actions (#361)
+  * chore(deps): update anchore/sbom-action action to v0.23.0
+    (#360)
+  * chore(deps): bump github.com/moby/buildkit from 0.27.1 to
+    0.28.0 (#369)
+  * fix(deps): update module golang.org/x/sync to v0.20.0 (#371)
+  * fix(deps): update module github.com/go-git/go-billy/v5 to
+    v5.8.0 (#357)
+  * chore(deps): update aquasecurity/trivy-action action to v0.35.0
+    (#366)
+  * fix(deps): update module github.com/google/go-containerregistry
+    to v0.21.2 (#356)
+  * chore(deps): update goreleaser/goreleaser-action action to v7
+    (#355)
+  * fix(deps): update module github.com/google/go-containerregistry
+    to v0.21.0 (#352)
+  * fix(deps): update module github.com/google/go-github/v66 to v83
+    (#351)
+  * chore(deps): update aquasecurity/trivy-action action to v0.34.1
+    (#350)
+  * chore(deps): update anchore/sbom-action action to v0.22.2
+    (#348)
+  * chore(deps): update github/codeql-action digest to 89a39a4
+    (#347)
+  * chore(deps): update actions/checkout digest to de0fac2 (#337)
+  * chore: enable parallel runners for golangci-lint (#349)
+
+-------------------------------------------------------------------
 Fri Jan 30 10:20:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.8:
