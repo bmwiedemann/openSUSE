@@ -17,7 +17,7 @@
 
 
 Name:           ft2-clone
-Version:        2.09
+Version:        2.11
 Release:        0
 Summary:        Fasttracker II clone
 License:        BSD-3-Clause AND CC-BY-NC-SA-4.0
@@ -31,7 +31,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  icns-utils
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(sdl2)
 Provides:       bundled(rtmidi)
 
@@ -42,10 +41,10 @@ Fasttracker II. It can load XM, MOD, S3M, STM module files.
 %prep
 %setup -q
 icns2png -x "release/macos/ft2-clone-macos.app/Contents/Resources/ft2-clone-macos.icns"
-rm -R src/libflac
+#rm -R src/libflac
 
 %build
-%cmake -DEXTERNAL_LIBFLAC=ON
+%cmake
 %cmake_build
 
 %install

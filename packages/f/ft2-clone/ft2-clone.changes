@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 12 15:46:40 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.11
+  * Fixed: When loading stereo AIFF/WAV samples, the last sample
+    point would not be read correctly when either reading the
+    right channel or downmixing to mono.
+
+-------------------------------------------------------------------
+Sun Mar  8 08:29:05 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.10
+  * Added support for loading .OGG samples.
+  * Use miniflac for loading .FLAC samples (instead of libFLAC).
+
+-------------------------------------------------------------------
 Fri Mar  6 20:10:25 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.09
