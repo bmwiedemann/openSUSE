@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Mar 14 04:41:04 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.0.12
+  * fix issue where file priorities could be cleared by force
+    recheck
+  * fix issue in XML parser
+  * when building against OpenSSL, require at least version 1.1.1
+  * add setting to set no-copy-on-write flag on new files
+  * add performance counters to file pool
+  * add high_priority flag to torrent_handle::force_reannounce()
+  * update default DSCP value and update docs
+  * fix python binding for set_notify_function()
+  * fix error handling in mmap disk I/O when hashing files
+  * improve copy_file_range() fallback
+  * don't overwrite existing files when renaming
+  * add option to send host header in HTTP proxy CONNECT command
+  * cache DNS failures for a shorter time
+  * file_renamed_alert is always posted, regardless of alert mask
+  * add feature to request resume data synchronously
+  * don't leak file descriptors to child processes (O_CLOEXEC)
+  * optimize the utp resend
+  * optimize tracker announcements
+  * fix handling of invalid filenames
+  * add support for I2CP inbound.lengthVariance and
+    outbound.lengthVariance tunnel settings
+  * add natpmp_gateway setting to manually set the default
+    gateway for the NAT-PMP protocol
+
+-------------------------------------------------------------------
 Sun Sep 28 02:28:00 UTC 2025 - Michael Gumsley <gumsley_6@hotmail.com>
 
 - Remove libboost_system-devel from spec file for Tumbleweed.

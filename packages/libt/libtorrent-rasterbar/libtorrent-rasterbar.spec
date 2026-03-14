@@ -1,7 +1,7 @@
 #
 # spec file for package libtorrent-rasterbar
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with     examples
 %bcond_with     tests
 Name:           libtorrent-rasterbar
-Version:        2.0.11
+Version:        2.0.12
 Release:        0
 Summary:        A C++ implementation of the BitTorrent protocol
 License:        BSD-3-Clause
@@ -46,7 +46,7 @@ BuildRequires:  libboost_system1_75_0-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
-BuildRequires:  pkgconfig(openssl) >= 1.0.0
+BuildRequires:  pkgconfig(openssl) >= 1.1.1
 
 %description
 libtorrent-rasterbar is a C++ library that aims to be a good
@@ -126,7 +126,8 @@ Documentation for the libtorrent-rasterbar package.
 %endif
    -Dpython-bindings=ON \
    -Dpython-egg-info=ON \
-   -Dboost-python-module-name=python3
+   -Dboost-python-module-name=python3 \
+   -Dpython-install-system-dir=ON
 %cmake_build
 
 %install
