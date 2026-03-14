@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Fri Mar  6 07:41:56 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- update to 6.0.0 (the last version before the infringement;
+  DON’T UPGRADE UNTIL gh#chardet/chardet#327 IS RESOLVED):
+  - Features
+    - Unified single-byte charset detection: Instead of only
+      having trained language models for a handful of languages
+      (Bulgarian, Greek, Hebrew, Hungarian, Russian, Thai,
+      Turkish) and relying on special-case Latin1Prober and
+      MacRomanProber heuristics for Western encodings, chardet
+      now treats all single-byte charsets the same way: every
+      encoding gets proper language-specific bigram models
+      trained on CulturaX corpus data. This means chardet can now
+      accurately detect both the encoding and the language for
+      all supported single-byte encodings.
+    - 38 new languages: Arabic, Belarusian, Breton, Croatian,
+      Czech, Danish, Dutch, English, Esperanto, Estonian, Farsi,
+      Finnish, French, German, Icelandic, Indonesian, Irish,
+      Italian, Kazakh, Latvian, Lithuanian, Macedonian, Malay,
+      Maltese, Norwegian, Polish, Portuguese, Romanian, Scottish
+      Gaelic, Serbian, Slovak, Slovene, Spanish, Swedish, Tajik,
+      Ukrainian, Vietnamese, and Welsh. Existing models for
+      Bulgarian, Greek, Hebrew, Hungarian, Russian, Thai, and
+      Turkish were also retrained with the new pipeline.
+    - EncodingEra filtering: New encoding_era parameter to detect
+      allows filtering by an EncodingEra flag enum (MODERN_WEB,
+      LEGACY_ISO, LEGACY_MAC, LEGACY_REGIONAL, DOS, MAINFRAME,
+      ALL) allows callers to restrict detection to encodings from
+      a specific era. detect() and detect_all() default to
+      MODERN_WEB. The new MODERN_WEB default should drastically
+      improve accuracy for users who are not working with legacy
+      data. The tiers are:
+          MODERN_WEB: UTF-8/16/32, Windows-125x, CP874, CJK
+          multi-byte (widely used on the web)
+          LEGACY_ISO: ISO-8859-x, KOI8-R/U (legacy but well-known
+          standards)
+          LEGACY_MAC: Mac-specific encodings (MacRoman,
+          MacCyrillic, etc.)
+          LEGACY_REGIONAL: Uncommon regional/national encodings
+          (KOI8-T, KZ1048, CP1006, etc.)
+          DOS: DOS/OEM code pages (CP437, CP850, CP866, etc.)
+          MAINFRAME: EBCDIC variants (CP037, CP500, etc.)
+    - --encoding-era CLI flag: The chardetect CLI now accepts
+      -e/--encoding-era to control which encoding eras are
+      considered during detection.
+    - max_bytes and chunk_size parameters: detect(),
+      detect_all(), and UniversalDetector now accept max_bytes
+      (default 200KB) and chunk_size (default 64KB) parameters
+      for controlling how much data is examined. (#314, @bysiber)
+    - Encoding era preference tie-breaking: When multiple
+      encodings have very close confidence scores, the detector
+      now prefers more modern/Unicode encodings over legacy ones.
+    - Charset metadata registry: New chardet.metadata.charsets
+      module provides structured metadata about all supported
+      encodings, including their era classification and language
+      filter.
+    - should_rename_legacy now defaults intelligently: When set
+      to None (the new default), legacy renaming is automatically
+      enabled when encoding_era is MODERN_WEB.
+    - Direct GB18030 support: Replaced the redundant GB2312
+      prober with a proper GB18030 prober.
+    - EBCDIC detection: Added CP037 and CP500 EBCDIC model
+      registrations for mainframe encoding detection.
+    - Binary file detection: Added basic binary file detection to
+      abort analysis earlier on non-text files.
+    - Python 3.12, 3.13, and 3.14 support (#283, @hugovk; #311)
+    - GitHub Codespace support (#312, @oxygen-dioxide)
+  - Fixes
+    - Fix CP949 state machine: Corrected the state machine for
+      Korean CP949 encoding detection. (#268, @nenw)
+    - Fix SJIS distribution analysis: Fixed
+      SJISDistributionAnalysis discarding valid second-byte range
+      >= 0x80. (#315, @bysiber)
+    - Fix UTF-16/32 detection for non-ASCII-heavy text: Improved
+      detection of UTF-16/32 encoded CJK and other non-ASCII text
+      by adding a MIN_RATIO threshold alongside the existing
+      EXPECTED_RATIO.
+    - Fix get_charset crash: Resolved a crash when looking up
+      unknown charset names.
+    - Fix GB18030 char_len_table: Corrected the character length
+      table for GB18030 multi-byte sequences.
+    - Fix UTF-8 state machine: Updated to be more spec-compliant.
+    - Fix detect_all() returning inactive probers: Results from
+      probers that determined "definitely not this encoding" are
+      now excluded.
+    - Fix early cutoff bug: Resolved an issue where detection
+      could terminate prematurely.
+    - Default UTF-8 fallback: If UTF-8 has not been ruled out and
+      nothing else is above the minimum threshold, UTF-8 is now
+      returned as the default.
+  - Breaking changes
+    - Dropped Python 3.7, 3.8, and 3.9 support: Now requires
+      Python 3.10+. (#283, @hugovk)
+    - Removed Latin1Prober and MacRomanProber: These special-case
+      probers have been replaced by the unified model-based
+      approach described above. Latin-1, MacRoman, and all other
+      single-byte encodings are now detected by
+      SingleByteCharSetProber with trained language models,
+      giving better accuracy and language identification.
+    - Removed EUC-TW support: EUC-TW encoding detection has been
+      removed as it is extremely rare in practice.
+    - LanguageFilter.NONE removed: Use specific language filters
+      or LanguageFilter.ALL instead.
+    - Enum types changed: InputState, ProbingState, MachineState,
+      SequenceLikelihood, and CharacterCategory are now IntEnum
+      (previously plain classes or Enum). LanguageFilter values
+      changed from hardcoded hex to auto().
+    - detect() default behavior change: detect() now defaults to
+      encoding_era=EncodingEra.MODERN_WEB and
+      should_rename_legacy=None (auto-enabled for MODERN_WEB),
+      whereas previously it defaulted to considering all
+      encodings with no legacy renaming.
+  - Misc changes
+    - Switched from Poetry/setuptools to uv + hatchling: Build
+      system modernized with hatch-vcs for version management.
+    - License text updated: Updated LGPLv2.1 license text and FSF
+      notices to use URL instead of mailing address. (#304, #307,
+      @musicinmybrain)
+    - CulturaX-based model training: The create_language_model.py
+      training script was rewritten to use the CulturaX
+      multilingual corpus instead of Wikipedia, producing higher
+      quality bigram frequency models.
+    - Language class converted to frozen dataclass: The language
+      metadata class now uses @dataclass(frozen=True) with
+      num_training_docs and num_training_chars fields replacing
+      wiki_start_pages.
+    - Test infrastructure: Added pytest-timeout and pytest-xdist
+      for faster parallel test execution. Reorganized test data
+      directories.
+
+-------------------------------------------------------------------
 Mon Sep  4 16:04:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2.0:

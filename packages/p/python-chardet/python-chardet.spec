@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-chardet
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,6 @@
 #
 
 
-%if 0%{?suse_version} > 1500
-%bcond_without libalternatives
-%else
-%bcond_with libalternatives
-%endif
-
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -30,34 +24,38 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 %define skip_python36 1
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-chardet%{psuffix}
-Version:        5.2.0
+Version:        6.0.0
 Release:        0
 Summary:        Universal encoding detector
 License:        LGPL-2.1-or-later
 URL:            https://github.com/chardet/chardet
 Source0:        https://files.pythonhosted.org/packages/source/c/chardet/chardet-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
+BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
-BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module hypothesis >= 6.0.0}
+BuildRequires:  %{python_module pytest-timeout}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages
