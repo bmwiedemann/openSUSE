@@ -159,4 +159,112 @@
     <comment></comment>
     <requestid>1332119</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3352b98f666fc8c9661650cb865b6379</srcmd5>
+    <version>2026.4</version>
+    <time>1773523358</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2026.4:
+  + Added:
+    - Support for the IRCv3 react client tag
+    - Correctly record window size if window is maximized
+    - Optional settings to transform channel name casing:
+      + sidebar.channel_name_casing for channel entries in
+        the sidebar
+      + buffer.channel.channel_name_casing for channel pane
+        title bars
+  + Changed:
+    - Notification toasts can now use a subtitle on supported
+      operating systems
+    - New about screen accessible from the user menu in the
+      sidebar
+    - Added setting to mark focused buffers as read on
+      incoming messages
+    - Formatting inside code spans is ignored to prevent
+      styling breaks
+    - Links inside code spans are not detected to prevent
+      styling breaks
+    - Setting to hide consecutive timestamps
+      (buffer.timestamp.hide_consecutive)
+    - Channel name casing can be transformed via
+      channel_name_casing settings
+  + Fixed:
+    - High CPU usage when opening very large buffers
+    - Window state is saved even if altered shortly before
+      quitting
+    - Default dimmed value for server messages no longer
+      overrides dimmed = false
+    - Context menu items would not respond to clicks
+    - Filters load on first connection via bouncer-networks
+      and update on reload
+    - Compatibility with ZNC backlog service
+    - Markdown formatting inside code spans is properly
+      ignored
+  + Security:
+    - Improve link preview management to mitigate
+      spam-driven resource abuse
+- Version 2026.3:
+  + Added:
+    - Support requesting window attention for notifications
+      (notifications.&lt;type&gt;.request_attention)
+    - Default server message pseudo-type allowing
+      user-specified defaults
+    - Default internal message pseudo-type allowing
+      user-specified defaults
+    - Setting to specify queries added to the sidebar after
+      connecting
+    - Ability to disconnect on SASL auth failure
+      (enabled by default)
+    - Setting to configure font line height
+      (font.line_height)
+    - Ability to add multiple keybinds for a single shortcut
+    - Sidebar actions configurable separately for channel
+      and query buffers
+    - URL context menu supports Hide Preview / Show Preview
+    - New shortcuts:
+      + new_horizontal_buffer
+      + new_vertical_buffer
+      + quit_application
+    - Expanded show_access_levels to allow all access levels
+    - Locale specification for timestamp formatting
+    - Include chantypes / prefixes when sorting channels
+      in sidebar
+    - Manual disconnection disables auto-reconnect
+    - Disconnected servers can reconnect via sidebar
+      context menu
+    - servers.&lt;name&gt;.autoconnect setting prevents
+      connection on launch
+    - /connect and /reconnect usable in buffers for
+      disconnected servers
+    - /join without argument can rejoin channel buffers
+  + Changed:
+    - Leaving a server will no longer remove it
+      automatically from sidebar
+    - Condensed server messages enabled by default for
+      nick changes, joins, parts, and quits
+    - Default condensed server message icon is now &quot;none&quot;
+    - sidebar.user_menu.show_new_version_indicator renamed
+      to check_for_update_on_launch
+    - Default settings updated:
+      + buffer.server_messages.condense.messages now
+        includes change-host, change-nick, join, part, quit
+      + sidebar.padding.buffer changed from [5,5] to [4,4]
+      + sidebar.spacing.server changed from 12 to 6
+  + Fixed:
+    - Channel mode in pane headers not updating
+      immediately after changes
+    - Cycle next/previous unread buffer shortcuts work
+      from empty pane
+    - Message rendering virtualization improves
+      buffer performance
+    - Default proxy used when checking for updates
+    - Detect system locale when formatting timestamps
+    - Connection details update properly after
+      configuration changes
+    - Server configs update correctly when reloading
+      configuration file
+    - Join failure now shows the failure reasonn
+</comment>
+    <requestid>1338831</requestid>
+  </revision>
 </revisionlist>
