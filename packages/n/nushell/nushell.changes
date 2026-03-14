@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Mar 14 12:47:49 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 0.111.0:
+  + Smoother `input list` menus and interaction
+  + Parent command aliasing (for example `alias pl = polars`)
+  + `finally` support after `try/catch`, including with `exit`
+  + `let` can now be used in the middle of pipelines
+  + Experimental native clipboard commands (`clip copy`, `clip paste`)
+  + Breaking changes
+    * `input list` behavior and options were reworked
+    * `pipefail` is now enabled by default
+    * `is-empty`/`is-not-empty` now return booleans for empty pipelines
+    * `mktemp` without a template now creates files in tmpdir
+    * Removed `$env.config.input_list`; defaults now inherit from
+      `color_config`
+  + Additions
+    * `polars entropy` command
+    * `polars join` improvements, including `nulls-equal`
+    * `metadata set --path-columns` and `uniq-by --keep-last`
+    * More flexible INI parsing options
+    * Improved `which` output to show paths for command types
+    * Other additions
+  + Deprecations
+    * `metadata set --merge` in favor of closure-based usage
+    * `metadata set --datasource-ls` in favor of `--path-columns`
+  + Other changes
+    * `help <alias>` now shows help for the aliased command
+    * Improved `$NU_LIB_DIRS` / `$env.NU_LIB_DIRS` startup handling
+    * `table` now respects `path_columns` metadata for record rendering
+    * Additional changes
+  + Bug fixes
+    * Fixes for `error make` in `match`
+    * Fix `math median` behavior with NaN values
+    * Fix hangs when capturing large external command output
+    * `collect` now checks external command status
+    * Built-in `clip copy` now behaves like `std/clip copy`
+    * Other fixes
+  + For a full list of changes with detailed descriptions, see:
+    https://www.nushell.sh/blog/2026-02-28-nushell_v0_111_0.html
+
+-------------------------------------------------------------------
 Tue Jan 20 18:58:33 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to version 0.110.0:
