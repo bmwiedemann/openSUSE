@@ -80,7 +80,6 @@ ExclusiveArch:  do-not-build
 %endif
 %if %{with docs}
 BuildRequires:  gtk-doc
-BuildRequires:  pkgconfig(gnome-doc-utils)
 %endif
 %if "%flavor" == "gtk2"
 BuildRequires:  pkgconfig(gtk+-2.0)
