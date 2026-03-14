@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Mar 12 17:03:43 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.5:
+  * mkndx: fix filtering with multiple versions of matching
+    packages.
+  * mkndx: fix not matching pkgname-spec warning.
+  * mkndx: fix rewrite-arch error message.
+  * mkndx: fix a crash with missing arguments.
+  * additional memfd exec checks.
+  * io: synchronize istream buffer alignment with file offset.
+  * db: move initialization db->cache_fd to apk_db_init.
+  * db: fix 0 fd handling in more places.
+  * defines: generic apk_unaligned_le* implementation.
+  * remove 0 length array from apk_db_acl.
+  * convert sig to flex array.
+  * fix GCC14 flex array not at end warning.
+  * extract_v3: fix unaligned access of file mode.
+  * defines: rework apk_unaligned_* helpers.
+  * defines: align apk_array.
+  * Fixed an incorrect flag in the manpage for `apk-fetch`.
+  * io: fix invalid fetch timestamps with wget backend.
+
+-------------------------------------------------------------------
 Tue Feb 03 08:38:46 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.4:
