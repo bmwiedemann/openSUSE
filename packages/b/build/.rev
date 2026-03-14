@@ -2064,4 +2064,13 @@ Changes:
 - Do not crash on small files that start with the PE magic</comment>
     <requestid>1337927</requestid>
   </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>748505925be1b7608b77965fe783f4e7</srcmd5>
+    <version>20260312</version>
+    <time>1773523283</time>
+    <user>dimstar_suse</user>
+    <comment>- added leap-16.0 and leap-16.1 build configs.
+  (not named sl16.0 anymore, but using same string as the git branch)</comment>
+    <requestid>1338628</requestid>
+  </revision>
 </revisionlist>

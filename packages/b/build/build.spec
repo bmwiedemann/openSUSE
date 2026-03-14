@@ -1,7 +1,7 @@
 #
-# spec file for package build
+# spec file
 #
-# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Name:           %{__pkg_name}
 Summary:        A Script to Build SUSE Linux RPMs
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Tools/Building
-Version:        20260219
+Version:        20260312
 Release:        0
 Source:         obs-build-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -53,9 +53,9 @@ BuildRequires:  perl(Date::Parse)
 BuildRequires:  perl(Test::Harness)
 BuildRequires:  perl(Test::More)
 %if 0%{?fedora}
-Requires:       perl-TimeDate
 Requires:       perl(LWP::Protocol::https)
 Requires:       perl(XML::Parser)
+Requires:       perl-TimeDate
 BuildRequires:  perl-TimeDate
 %endif
 Conflicts:      bsdtar < 2.5.5
