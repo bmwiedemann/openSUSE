@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Mar 13 06:49:09 UTC 2026 - Natasha Ament <stacheldrahtje@ament-teusink.eu>
+
+- Update to version 4.0.7:
+  * Fix state icons for white monochrome theme
+    (gh#nextcloud/desktop#9391)
+  * Bundle fewer libraries in the AppImage to improve compatibility
+    (gh#nextcloud/desktop#9388)
+  * Use parameter validation regex from the server
+    (gh#nextcloud/desktop#9415)
+  * Use branded user agent for Flow v2 login request
+    (gh#nextcloud/desktop#9447)
+  * Allow creation of fav links with paths containing spaces
+    (gh#nextcloud/desktop#9465)
+  * Only increase ACL size if a new ACE is about to be added
+    (gh#nextcloud/desktop#9531)
+  * Fail and restart the sync if discovery is suspicious
+    (gh#nextcloud/desktop#9574)
+  * Update OpenSSL version
+    (gh#nextcloud/desktop#9575)
+  * Check existing account proxy type setting
+    (gh#nextcloud/desktop#9576)
+  * Improve error handling and clean menu texts
+    (gh#nextcloud/desktop#9587)
+
+-------------------------------------------------------------------
 Fri Jan 23 06:48:10 UTC 2026 - Natasha Ament <stacheldrahtje@gmail.com>
 
 - Update to version 4.0.6:
