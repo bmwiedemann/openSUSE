@@ -1,7 +1,7 @@
 #
 # spec file for package intel-opencl
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -86,7 +86,7 @@ export CXXFLAGS="%{optflags} -Wno-error=unused-variable -Wno-error=unused-but-se
 %install
 %cmake_install
 chmod +x %{buildroot}%{_libdir}/intel-opencl/libigdrcl.so
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 mkdir -p %{buildroot}/%{_datadir}/OpenCL/vendors
 mv %{buildroot}/%{_sysconfdir}/OpenCL/vendors/intel.icd %{buildroot}/%{_datadir}/OpenCL/vendors/
 %endif
@@ -105,7 +105,7 @@ rm -Rf %{buildroot}%{_prefix}/lib/debug
 %{_libdir}/libocloc.so
 %{_bindir}/ocloc-2*
 %{_libdir}/intel-opencl
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 %{_datadir}/OpenCL
 %{_datadir}/OpenCL/vendors
 %{_datadir}/OpenCL/vendors/intel.icd
