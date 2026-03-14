@@ -1,9 +1,21 @@
 -------------------------------------------------------------------
+Sat Mar 14 19:05:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.3:
+  * Add Qt6 support (fix compiler warnings), while keeping Qt5
+    support
+  * Don’t use explicit Qt INCLUDEPATH in src/src.pro
+  * Don’t use nodiscard warning of QFile.open
+  * Change weighting window to 10 % cosine (based on this)
+  * Change some of the default (plotting) parameters
+  * Some minor improvements (?) according to cppcheck
+
+-------------------------------------------------------------------
 Sat Jan 28 15:11:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.2:
   * memory leak fixes
-  * bugfixes 
+  * bugfixes
 
 -------------------------------------------------------------------
 Sat Jul  3 20:52:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>

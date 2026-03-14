@@ -1,7 +1,7 @@
 #
 # spec file for package qloud
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,19 @@
 
 
 Name:           qloud
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        Tool to measure
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://github.com/molke-productions/qloud
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Charts)
-BuildRequires:  pkgconfig(Qt5Qwt6)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  qt6-tools-linguist
+BuildRequires:  pkgconfig(Qt6Charts)
+BuildRequires:  pkgconfig(Qt6Qwt6)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(Qt6Xml)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(sndfile)
@@ -46,11 +46,11 @@ Target use:
 %autosetup -p1
 
 %build
-%qmake5 PREFIX=%{_prefix}
+%qmake6 PREFIX=%{_prefix}
 %make_build
 
 %install
-%qmake5_install
+%qmake6_install
 
 %files
 %license LICENSE
