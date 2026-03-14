@@ -1,7 +1,7 @@
 #
 # spec file for package python-httpx
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,14 @@ Summary:        Python HTTP client with async support
 License:        BSD-3-Clause
 URL:            https://github.com/encode/httpx
 Source:         https://github.com/encode/httpx/archive/%{version}.tar.gz#/httpx-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM support-chardet6-response-autodetect.patch gh#encode/httpx!3773 mcepl@suse.com
+# Allow also Windows-1252 as an alternative to ISO-8859-1 (for chardet 6.0)
+Patch0:         support-chardet6-response-autodetect.patch
+# PATCH-FIX-UPSTREAM support-chardet6-client-autodetect.patch bugno mcepl@suse.com
+# fixes the two remaining client-side failures in tests/client/test_client.py
+# one test now accepts either autodetected label
+# the miswired “explicit encoding” test now actually uses default_encoding="ISO-8859-1"
+Patch1:         support-chardet6-client-autodetect.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}

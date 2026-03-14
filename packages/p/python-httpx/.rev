@@ -288,4 +288,16 @@
     <comment>- Insist on anyio &gt;= 4, to drop out anyio3 from the choices.</comment>
     <requestid>1315394</requestid>
   </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>04395f56f5781998d9f60e0bba2d7503</srcmd5>
+    <version>0.28.1</version>
+    <time>1773523220</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support-chardet6-client-autodetect.patch and
+  support-chardet6-response-autodetect.patch (from
+  gh#encode/httpx!3773) patches to overcome incompatibility with
+  the new python-chardet &gt;= 6.0
+</comment>
+    <requestid>1338554</requestid>
+  </revision>
 </revisionlist>

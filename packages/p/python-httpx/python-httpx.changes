@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 12 19:41:21 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add support-chardet6-client-autodetect.patch and
+  support-chardet6-response-autodetect.patch (from
+  gh#encode/httpx!3773) patches to overcome incompatibility with
+  the new python-chardet >= 6.0
+
+-------------------------------------------------------------------
 Tue Nov  4 00:35:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Insist on anyio >= 4, to drop out anyio3 from the choices.

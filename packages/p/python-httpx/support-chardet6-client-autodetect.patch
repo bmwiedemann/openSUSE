@@ -1,0 +1,22 @@
+Index: httpx-0.28.1/tests/client/test_client.py
+===================================================================
+--- httpx-0.28.1.orig/tests/client/test_client.py	2024-12-06 16:35:41.000000000 +0100
++++ httpx-0.28.1/tests/client/test_client.py	2026-03-12 20:07:33.264261915 +0100
+@@ -431,7 +431,7 @@
+ 
+         assert response.status_code == 200
+         assert response.reason_phrase == "OK"
+-        assert response.encoding == "ISO-8859-1"
++        assert response.encoding in ("ISO-8859-1", "WINDOWS-1252")
+         assert response.text == text
+ 
+ 
+@@ -453,7 +453,7 @@
+         return httpx.Response(200, content=content)
+ 
+     transport = httpx.MockTransport(cp1252_but_no_content_type)
+-    with httpx.Client(transport=transport, default_encoding=autodetect) as client:
++    with httpx.Client(transport=transport, default_encoding="ISO-8859-1") as client:
+         response = client.get("http://www.example.com")
+ 
+         assert response.status_code == 200
