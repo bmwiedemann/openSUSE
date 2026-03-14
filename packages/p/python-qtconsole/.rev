@@ -341,4 +341,15 @@ This needs to go into openSUSE:Factory:Staging:adi:49 with the other jupyter sub
     <comment>- Another try to avoid flaky test errors (zmq related)</comment>
     <requestid>1323817</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>d8a3342c96b31c137e7bfebdee335a14</srcmd5>
+    <version>5.7.1</version>
+    <time>1773523395</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.7.1:
+  * Handle restarting state in connected kernels.
+  * Don't clear console after setting a new syntax style.
+</comment>
+    <requestid>1338961</requestid>
+  </revision>
 </revisionlist>

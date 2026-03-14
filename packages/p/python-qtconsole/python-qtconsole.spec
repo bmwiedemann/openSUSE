@@ -1,7 +1,7 @@
 #
 # spec file for package python-qtconsole
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-qtconsole
-Version:        5.7.0
+Version:        5.7.1
 Release:        0
 Summary:        Jupyter Qt console
 License:        BSD-3-Clause

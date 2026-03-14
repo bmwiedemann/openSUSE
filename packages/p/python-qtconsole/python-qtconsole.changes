@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  2 17:44:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.7.1:
+  * Handle restarting state in connected kernels.
+  * Don't clear console after setting a new syntax style.
+
+-------------------------------------------------------------------
 Sat Dec 20 14:53:47 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Another try to avoid flaky test errors (zmq related)
