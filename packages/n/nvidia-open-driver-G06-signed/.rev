@@ -1009,4 +1009,12 @@
 - kernel-6.19.patch: fixes build against kernel 6.19</comment>
     <requestid>1333591</requestid>
   </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>0e59ca0e964e83db4405cc595a77aecf</srcmd5>
+    <version>580.126.18</version>
+    <time>1773523248</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1338672</requestid>
+  </revision>
 </revisionlist>

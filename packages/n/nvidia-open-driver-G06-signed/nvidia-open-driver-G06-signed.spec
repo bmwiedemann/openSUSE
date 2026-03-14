@@ -23,7 +23,7 @@
 %else
 %define gfx_version 580.126.18
 %endif
-%define cuda_version 580.126.16
+%define cuda_version 580.126.20
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 
@@ -34,7 +34,7 @@
 %endif
 
 %if "%{flavor}" == "cuda"
- %if 0%{?suse_version} > 1600
+ %if 0%{?suse_version} >= 1699
 ExclusiveArch:  do_not_build
  %endif
 %{bcond_without cuda}
@@ -103,9 +103,6 @@ Source17:       kmp-post.sh
 Source18:       Check4WrongSupplements.sh
 %if 0%{?sle_version} < 150600
 Patch0:         kernel-5.14.patch
-%endif
-%if "%{flavor}" == "cuda"
-Patch1:         kernel-6.19.patch
 %endif
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes

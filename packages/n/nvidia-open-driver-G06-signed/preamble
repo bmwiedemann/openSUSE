@@ -20,7 +20,7 @@ Requires: nvidia-persistenced-cuda-lt-sp6
 %endif
 %endif
 # SLE16 doesn't set %sle_version; SLE Micro 6.x is already SLE16 !!!
-%if (0%{?sle_version:1} || (0%{?suse_version} == 1600 && !0%{?is_opensuse})) && %{with cuda}
+%if (0%{?sle_version:1} || (0%{?suse_version} >= 1600 && %{suse_version} < 1699)) && %{with cuda}
 %if 0%{?sle_version} == 150400
 Conflicts: nvidia-driver-G06-signed-kmp-%1 < 550.135
 %endif

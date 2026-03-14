@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar  5 11:38:21 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- adjusted logic for %suse_version bump with SLE16.1 Beta2 (jsc#PED-15826)
+
+-------------------------------------------------------------------
+Thu Feb 26 20:17:45 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- updated CUDA variant to version 580.126.20
+- supersedes kernel-6.19.patch
+
+-------------------------------------------------------------------
 Thu Feb 12 22:31:19 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - update non-CUDA variant to version 580.126.18 (boo#1258154)
