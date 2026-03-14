@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Mar 14 12:07:45 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.4.1:
+  * [SECURITY] Fixed authentication bypass (medium severity) when combined
+    password with certificate authentication with cert-user-oid set to
+    SAN(rfc822name): a client presenting a valid CA-signed certificate without the
+    expected RFC822 SAN field could authenticate using password credentials alone,
+    bypassing the intended certificate-to-username binding. Requires the attacker
+    to possess both a valid CA-signed certificate and valid user credentials
+  * Fixed a bug where session timeout could be bypassed by reconnecting
+  * occtl: show user command now includes a Session started at: field,
+    indicating when the VPN session was established
+  * occtl: Fix column misalignment in ban command outputs
+  * occtl: Fix show ip bans may produce invalid JSON
+  * Handle dotted client hostnames (e.g., .local) by stripping the domain suffix
+  * Renamed min-reauth-time configuration option to ban-time to better reflect
+    its purpose
+  * Fixed ocserv-worker process title
+  * Fixed ignored udp-port in vhost
+- Update to version 1.4.0:
+  * Fixed issues with PAM authentication when combined with pam_sssd
+  * Enhanced the seccomp filters to address issue in testing
+  * Fixed unexpected URL errors for Cisco AnyConnect clients
+  * Fixed the ping-leases option, which was broken since version 1.1.1
+  * Fixed maximum MTU tracking in server statistics
+  * Fixed iroute option processing to handle multiple routes
+  * Fixed session accounting for roaming users
+  * occtl: fix invalid JSON output in occtl -j show iroutes
+  * occtl: fix regression with trailing commas in occtl -j show sessions
+  * occtl: fix missing column headers in show ip bans output
+  * occtl: show ip bans no longer shows expired bans
+  * Fixed DTLS not working with systemd socket activation
+  * Fixed a bug in the ban timer logic that could prevent IP addresses
+    from being banned or cause premature unbans
+  * Session statistics are now reported at consistent intervals
+    for RADIUS compatibility
+  * Single form to enter username and password
+- revert my own require rubygem(ronn-ng), oversaw that ronn binary is
+  enough
+
+-------------------------------------------------------------------
 Sat Nov 30 00:19:36 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - use https for downloading sources (over ftp)

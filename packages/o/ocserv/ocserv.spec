@@ -1,7 +1,7 @@
 #
 # spec file for package ocserv
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,11 @@
 #
 
 
-#!BuildIgnore: pkgconfig(libevent)
-
 Name:           ocserv
-Version:        1.3.0
+Version:        1.4.1
 Release:        0
 Summary:        OpenConnect VPN Server
 License:        GPL-2.0-only
-Group:          Productivity/Networking/Security
 URL:            https://ocserv.gitlab.io/www/
 Source:         https://www.infradead.org/%{name}/download/%{name}-%{version}.tar.xz
 Source1:        https://www.infradead.org/%{name}/download/%{name}-%{version}.tar.xz.sig
@@ -40,6 +37,7 @@ Patch1:         %{name}-enable-systemd.patch
 Patch2:         %{name}.config.patch
 #PATCH-FIX-OPENSUSE marguerite@opensuse.org leap doesn't have LZ4_compress_default
 Patch3:         %{name}-LZ4_compress_default.patch
+BuildRequires:  /usr/bin/ronn
 BuildRequires:  autogen
 BuildRequires:  firewall-macros
 BuildRequires:  firewalld
@@ -63,14 +61,9 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(pam)
 BuildRequires:  pkgconfig(readline)
 BuildRequires:  pkgconfig(talloc)
-BuildRequires:  rubygem(ronn-ng)
 # /usr/bin/certtool for generating certificates
 Requires:       gnutls >= 3.1.10
 %{?systemd_requires}
-
-%if 0%{?suse_version} < 1600
-ExclusiveArch:  do_not_build
-%endif
 
 %description
 OpenConnect server (ocserv) is an SSL VPN server. Its purpose is to
