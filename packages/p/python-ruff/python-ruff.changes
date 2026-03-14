@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Mar 13 15:13:02 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.15.6 
+ * Preview features
+  * Add support for lazy import parsing 
+  * Add support for star-unpacking of comprehensions (PEP 798) 
+  * Reject semantic syntax errors for lazy imports 
+  * Drop a few rules from the preview default set 
+  * [airflow] Flag Variable.get() calls outside of task execution context (AIR003) 
+  * [airflow] Flag runtime-varying values in DAG/task constructor arguments (AIR304) 
+  * [flake8-bugbear] Implement delattr-with-constant (B043) 
+  * [flake8-tidy-imports] Add TID254 to enforce lazy imports 
+  * [flake8-tidy-imports] Allow users to ban lazy imports with TID254 
+  * [isort] Retain lazy keyword when sorting imports 
+  * [pyupgrade] Add from __future__ import annotations automatically (UP006) 
+  * [refurb] Support newline parameter in FURB101 for Python 3.13+ 
+  * [ruff] Add os-path-commonprefix (RUF071) 
+  * [ruff] Add unsafe fix for os-path-commonprefix (RUF071) 
+  * [ruff] Limit RUF036 to typing contexts; make it unsafe for non-typing-only 
+  * [ruff] Use starred unpacking for RUF017 in Python 3.15+ 
+ * Bug fixes
+  * Fix --add-noqa creating unwanted leading whitespace 
+  * Fix --add-noqa breaking shebangs 
+  * [formatter] Fix lambda body formatting for multiline calls and subscripts 
+  * [formatter] Preserve required annotation parentheses in annotated assignments 
+  * [formatter] Preserve type-expression parentheses in the formatter 
+  * [flake8-annotations] Fix stack overflow in ANN401 on quoted annotations with escape sequences 
+  * [pep8-naming] Check naming conventions in match pattern bindings (N806, N815, N816) 
+  * [perflint] Fix comment duplication in fixes (PERF401, PERF403) 
+  * [pyupgrade] Properly trigger super change in nested class (UP008) 
+  * [ruff] Avoid syntax errors in RUF036 fixes 
+ * Rule changes
+  * [flake8-bandit] Flag S501 with requests.request 
+  * [flake8-executable] Fix WSL detection in non-Docker containers 
+  * [flake8-print] Ignore pprint calls with stream= 
+ * Documentation
+  * Update docs for Markdown code block formatting 
+  * [flake8-bugbear] Fix misleading description for B904 
+
+-------------------------------------------------------------------
 Fri Mar  6 12:06:00 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.15.5 
