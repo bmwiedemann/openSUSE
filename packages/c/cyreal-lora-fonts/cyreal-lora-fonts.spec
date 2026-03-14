@@ -1,7 +1,7 @@
 #
 # spec file for package cyreal-lora-fonts
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,19 +27,20 @@ print.\
 \
 Designed by Olga Karpushina, and Alexei Vanyashin for Cyreal.
 Name:           cyreal-lora-fonts
-Version:        3.005
+Version:        3.021
 Release:        0
 Summary:        Serif family for text
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            http://www.cyreal.org/fonts/lora/
-Source0:        https://github.com/cyrealtype/Lora-Cyrillic/releases/download/v%{version}/Lora-v%{version}.zip
+Source0:        https://github.com/cyrealtype/Lora-Cyrillic/releases/download/v%{version}/Lora.zip
 Source1:        https://github.com/cyrealtype/Lora-Cyrillic/raw/v%{version}/README.md
-Source2:        https://github.com/cyrealtype/Lora-Cyrillic/raw/v%{version}/AUTHORS.txt
-Source3:        https://github.com/cyrealtype/Lora-Cyrillic/raw/v%{version}/CONTRIBUTORS.txt
-Source4:        https://github.com/cyrealtype/Lora-Cyrillic/raw/v%{version}/TRADEMARKS.txt
-Source5:        https://github.com/cyrealtype/Lora-Cyrillic/raw/v%{version}/FONTLOG.txt
-Source6:        https://github.com/cyrealtype/Lora-Cyrillic/raw/v%{version}/documentation/Lora-sample.png
+Source2:        https://github.com/cyrealtype/Lora-Cyrillic/raw/v%{version}/OFL.txt
+Source3:        https://github.com/cyrealtype/Lora-Cyrillic/raw/v%{version}/AUTHORS.txt
+Source4:        https://github.com/cyrealtype/Lora-Cyrillic/raw/v%{version}/CONTRIBUTORS.txt
+Source5:        https://github.com/cyrealtype/Lora-Cyrillic/raw/v%{version}/TRADEMARKS.txt
+Source6:        https://github.com/cyrealtype/Lora-Cyrillic/raw/v%{version}/FONTLOG.txt
+Source7:        https://github.com/cyrealtype/Lora-Cyrillic/raw/v%{version}/documentation/Lora-sample.png
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 BuildArch:      noarch
@@ -59,14 +60,13 @@ This package contains the variable version of fonts.
 %prep
 %autosetup -c
 
-cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} .
+cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} %{SOURCE7} .
 
 %build
 
 %install
 install -dm0755 %{buildroot}%{_ttfontsdir}
-install -m0644 fonts/otf/*.otf %{buildroot}%{_ttfontsdir}
-install -m0644 fonts/variable/*.ttf %{buildroot}%{_ttfontsdir}
+install -m0644 otf/*.otf variable/*.ttf %{buildroot}%{_ttfontsdir}
 
 %reconfigure_fonts_scriptlets
 %reconfigure_fonts_scriptlets -n cyreal-lora-variable-fonts
