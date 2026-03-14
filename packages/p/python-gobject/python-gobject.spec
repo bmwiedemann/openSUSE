@@ -39,7 +39,7 @@ Release:        0
 Summary:        Python bindings for GObject
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
-URL:            https://wiki.gnome.org/Projects/PyGObject/
+URL:            https://pygobject.gnome.org/
 Source0:        %{_name}-%{version}.tar.zst
 Source1:        pythoncapi-compat-vendored.tar.zst
 

@@ -902,4 +902,12 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
   + Updates and fixes for Windows documentation (forwarded request 1338260 from iznogood)</comment>
     <requestid>1338331</requestid>
   </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>51d87d5b4804c897275f8826327cea20</srcmd5>
+    <version>3.56.1</version>
+    <time>1773523231</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1338484 from dimstar)</comment>
+    <requestid>1338648</requestid>
+  </revision>
 </revisionlist>
