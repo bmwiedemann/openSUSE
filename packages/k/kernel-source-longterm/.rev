@@ -913,4 +913,12 @@ known issue: KMPs not yet propetly supported</comment>
     <comment>switch longterm to 6.18: with fixed kmp builds</comment>
     <requestid>1336685</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>98655d61b628f0262b78379ec5bb26eb</srcmd5>
+    <version>6.18.18</version>
+    <time>1773523277</time>
+    <user>dimstar_suse</user>
+    <comment>update longterm</comment>
+    <requestid>1338842</requestid>
+  </revision>
 </revisionlist>
