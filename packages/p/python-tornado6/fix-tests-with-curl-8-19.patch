@@ -1,0 +1,34 @@
+From de5e9432fb10f7081db089ec1ab75d1a48ab2772 Mon Sep 17 00:00:00 2001
+From: Carlos Henrique Lima Melara <charlesmelara@riseup.net>
+Date: Fri, 6 Mar 2026 00:56:17 -0300
+Subject: [PATCH] Make tests compatible with curl 8.19.0
+
+In 8.19.0-rc2, the error logic has been changed so any later errors are
+preserved. This changes what is returned by curl and therefore what tornado
+sees. For HTTPError variant of the test, which uses CurlAsyncHTTPClient, we get
+the error from pycurl and now it contains "Failed binding local connection
+end". This logic handles both the old version of libcurl and also the newer
+one.
+
+Co-Authored-By: Samuel Henrique <samueloph@debian.org>
+---
+ tornado/test/httpclient_test.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/tornado/test/httpclient_test.py b/tornado/test/httpclient_test.py
+index 77c0d6eb9b..caed23e045 100644
+--- a/tornado/test/httpclient_test.py
++++ b/tornado/test/httpclient_test.py
+@@ -622,7 +622,10 @@ def test_bind_source_ip(self):
+         with self.assertRaises((ValueError, HTTPError)) as context:  # type: ignore
+             request = HTTPRequest(url, network_interface="not-interface-or-ip")
+             yield self.http_client.fetch(request)
+-        self.assertIn("not-interface-or-ip", str(context.exception))
++        self.assertTrue(
++            "Failed binding local connection end" in str(context.exception)
++            or "not-interface-or-ip" in str(context.exception)
++        )
+ 
+     def test_all_methods(self):
+         for method in ["GET", "DELETE", "OPTIONS"]:
+

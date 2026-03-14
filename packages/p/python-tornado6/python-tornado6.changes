@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar 12 12:39:23 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 6.5.5 (CVE-2026-31958, bsc#1259553)
+  * ``multipart/form-data`` requests are now limited to 100 parts by default,
+    to prevent a denial-of-service attack via very large requests with many
+    parts. This limit is configurable via
+    `tornado.httputil.ParseMultipartConfig`. Multipart parsing can also be
+    disabled completely if not required for the application.
+    Thanks to 0x-Apollyon and bekkaze for reporting this issue
+  * The ``domain``, ``path``, and ``samesite`` arguments to
+    `.RequestHandler.set_cookie` are now validated for illegal characters, which
+    could be abused to inject other attributes on the cookie.
+    Thanks to Dhiral Vyas (Praetorian) for reporting this issue.
+  * Carriage return characters are no longer accepted in ``multipart/form-data``
+    headers.
+    Thanks to sergeykochanov for reporting this issue.
+- add fix-tests-with-curl-8-19.patch to fix tests with curl 8.19
+
+-------------------------------------------------------------------
 Tue Dec 16 13:42:10 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 6.5.4

@@ -1,7 +1,7 @@
 #
 # spec file for package python-tornado6
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-tornado6
-Version:        6.5.4
+Version:        6.5.5
 Release:        0
 Summary:        Open source version of scalable, non-blocking web server that power FriendFeed
 License:        Apache-2.0
@@ -27,6 +27,8 @@ Source:         https://files.pythonhosted.org/packages/source/t/tornado/tornado
 Source99:       python-tornado6-rpmlintrc
 # PATCH-FIX-OPENSUSE ignore-resourcewarning-doctests.patch -- ignore resource warnings on OBS
 Patch0:         ignore-resourcewarning-doctests.patch
+# PATCH-FIX-UPSTREAM fix-tests-with-curl-8-19.patch gh#tornadoweb/tornado@de5e943
+Patch1:         fix-tests-with-curl-8-19.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
