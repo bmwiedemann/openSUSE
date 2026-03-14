@@ -178,4 +178,28 @@
 - Changed python macro to single_pythons_311plus for module dependencies</comment>
     <requestid>1337546</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ace1b13739516bc033a73541f3af787d</srcmd5>
+    <version>1.16.4</version>
+    <time>1773523329</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 1.16.4
+- Upstream changes:
+  * Updated Portuguese translation
+  * Prefix below
+  * updated italian translation
+  * Show prefix in the deletion confirmation dialog
+  * Updated Portuguese translation
+  * Interface Combobox Improvements
+  * Add Romanian translations
+  * Improved kill button
+  * Updated Portuguese translation
+  * Check umu too when updates disabled
+  * Minor improvements
+  * Updated Portuguese translation
+  * Improved Proton Manager startup
+  * Fixed windows not using Faugus icon
+  * Added vcs-browser to metadata</comment>
+    <requestid>1338798</requestid>
+  </revision>
 </revisionlist>

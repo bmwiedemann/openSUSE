@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Mar 13 19:01:30 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.16.4
+- Upstream changes:
+  * Updated Portuguese translation
+  * Prefix below
+  * updated italian translation
+  * Show prefix in the deletion confirmation dialog
+  * Updated Portuguese translation
+  * Interface Combobox Improvements
+  * Add Romanian translations
+  * Improved kill button
+  * Updated Portuguese translation
+  * Check umu too when updates disabled
+  * Minor improvements
+  * Updated Portuguese translation
+  * Improved Proton Manager startup
+  * Fixed windows not using Faugus icon
+  * Added vcs-browser to metadata
+
+-------------------------------------------------------------------
+Wed Mar 11 18:52:22 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.16.3
+- Upstream changes for 1.16.3:
+  * Fixed Linux native games not launching
+  * Updated Dutch translation
+  * little fix
+  * updated italian translation to 1.16.2
+  * Splash window not showing up when running a Steam game
+- Version 1.16.2
+  * Fixed issue when selecting the game/launcher
+- Version 1.16.1
+  * Updated metadata screenshots
+  * Updated screenshots
+  * Updated Portuguese translation
+  * Minor adjustments for the addapp and run inside the prefix
+  * Updated Portuguese translation
+  * Updated Portuguese translation
+  * Reworked additional application
+  * Added an option to disable automatic updates
+  * No update when running file inside the prefix
+  * Run inside the prefix option
+  * Removed games and config workaround
+  * updated italian translation to 1.15.11
+
+-------------------------------------------------------------------
 Mon Mar  9 00:42:16 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Fixed dependency resolution for python modules
