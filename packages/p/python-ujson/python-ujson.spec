@@ -1,7 +1,7 @@
 #
 # spec file for package python-ujson
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ujson
-Version:        5.11.0
+Version:        5.12.0
 Release:        0
 Summary:        JSON encoder and decoder for Python
 License:        BSD-3-Clause

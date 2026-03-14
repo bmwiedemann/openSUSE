@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 13 20:32:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.12.0:
+  * Drop support for Python 3.9 (#686) @hugovk
+  * Fix buffer overflow/infinite loop from indent handling (#709)
+  * Remove upper bound of setuptools for PyPy (#704) @hugovk
+
+-------------------------------------------------------------------
 Fri Sep 12 14:28:16 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 5.11.0

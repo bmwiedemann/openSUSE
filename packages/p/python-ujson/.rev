@@ -249,4 +249,15 @@
     <comment></comment>
     <requestid>1304341</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>16206ebc6ca53c7133ce784ff4455850</srcmd5>
+    <version>5.12.0</version>
+    <time>1773523339</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.12.0:
+  * Drop support for Python 3.9 (#686) @hugovk
+  * Fix buffer overflow/infinite loop from indent handling (#709)
+  * Remove upper bound of setuptools for PyPy (#704) @hugovk</comment>
+    <requestid>1338806</requestid>
+  </revision>
 </revisionlist>
