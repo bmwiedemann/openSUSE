@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 13 17:33:22 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260313:
+  * RT-910 non-BT increase channels to 960 for Fw V0.11
+  * RT-880G follow-up fixes
+  * Fixed the issue of incorrect values for dtmfcomm and zoneinfo.
+
+-------------------------------------------------------------------
 Fri Mar  6 20:37:35 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260306:
