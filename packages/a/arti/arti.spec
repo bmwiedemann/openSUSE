@@ -1,7 +1,7 @@
 #
 # spec file for package arti
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Eyad Issa <eyadlorenzo@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%global git_hash 6c79dfb9a31e2fdde6230da4edcb71cc082ca7d9
+%global git_hash 8c0b86464ea69e365c4b62f8e337b12719807315
 
 Name:           arti
-Version:        1.8.0
+Version:        2.1.0
 Release:        0
 Summary:        A WIP implementation of Tor, in Rust
 License:        (Apache-2.0 OR MIT) AND LGPL-3.0-only

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Mar  4 19:39:24 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 2.1.0:
+  * Arti 2.1.0 continues work on relay development,
+    and introduces a new RPC backend with non-blocking IO
+    in the arti-rpc-client-core library.
+  * Upgraded our bytes dependency to 0.11.1 to avoid undefined
+    behavior due to integer overflow in BytesMut::reserve().
+    (TROVE-2026-001, RUSTSEC-2026-0007, !3645 (merged))
+  * Upgraded our keccak dependency to 0.1.6 to avoid potential
+    undefined behavior caused by incorrect assembly on ARMv8.
+  * Upgraded our time dependency to 0.3.47 to avoid a cargo-audit
+    warning caused by RUSTSEC-2026-0009.
+  * Updated to the latest list of Tor fallback directories.
+  * For a full changelog see
+    /usr/share/doc/packages/arti/CHANGELOG.md
+- Update to version 2.0.0:
+  * Arti 2.0.0 deprecates library functionality in the arti crate
+    deprecates some legacy features and configuration formats,
+    and adds support for using the inet-auto socket type
+    to automatically pick an unused TCP port for the RPC server.
+  * For a full changelog see
+    /usr/share/doc/packages/arti/CHANGELOG.md
+- Update to version 1.9.0:
+  * Arti 1.9.0 continues some behind-the-scenes work on relay and
+    directory authority development, and adds improved support for
+    running with dynamically assigned ports.
+  * For a full changelog see
+    /usr/share/doc/packages/arti/CHANGELOG.md
+
+-------------------------------------------------------------------
 Wed Dec 24 13:03:24 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 1.8.0:
