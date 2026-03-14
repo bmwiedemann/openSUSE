@@ -584,4 +584,67 @@
     + Explicitly shutdown the multiprocessing manager when run in diff mode</comment>
     <requestid>1330657</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>44954bb97ef6012240aa158acea78279</srcmd5>
+    <version>26.3.1</version>
+    <time>1773523238</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 26.3.1 (CVE-2026-32274, bsc#1259608)
+  Stable style:
+  * Prevent Jupyter notebook magic masking collisions from corrupting cells by
+    using exact-length placeholders for short magics and aborting if a
+    placeholder can no longer be unmasked safely
+  Configuration:
+  * Always hash cache filename components derived from --python-cell-magics so
+    custom magic names cannot affect cache paths
+  Blackd
+  * Disable browser-originated requests by default, add configurable origin
+    allowlisting and request body limits, and bound executor submissions to
+    improve backpressure
+- Update to 26.3.0 (CVE-2026-31900, bsc#1259546)
+  Stable Style:
+  * Don't double-decode input, causing non-UTF-8 files to be corrupted
+  * Fix crash on standalone comment in lambda default arguments
+  * Preserve parentheses when # type: ignore comments would be merged with
+    other comments on the same line, preventing AST equivalence failures
+  Preview style:
+  * fix bug where if guards in case blocks were incorrectly split when the
+    pattern had a trailing comma
+  * Fix string_processing crashing on unassigned long string literals with
+    trailing commas (one-item tuples)
+  * Simplify implementation of the power operator &quot;hugging&quot; logic
+  Packaging:
+  * Fix shutdown errors in PyInstaller builds on macOS by disabling
+    multiprocessing in frozen environments
+  Performance
+  * Introduce winloop for windows as an alternative to uvloop
+  * Remove deprecated function uvloop.install() in favor of
+    uvloop.new_event_loop()
+  * Rename maybe_install_uvloop function to maybe_use_uvloop to simplify loop
+    installation and creation of either a uvloop/winloop evenloop or default
+    eventloop
+  Output:
+  * Emit a clear warning when the target Python version is newer than the
+    running Python version, since AST safety checks cannot parse newer syntax.
+    Also replace the misleading &quot;INTERNAL ERROR&quot; message with an actionable
+    error explaining the version mismatch
+  Blackd:
+  * Introduce winloop to be used when windows in use which enables blackd to
+    run faster on windows when winloop is installed.
+  Integrations:
+  * Remove unused gallery script
+  * Harden parsing of black requirements in the GitHub Action when
+    use_pyproject is enabled so that only version specifiers are accepted and
+    direct references such as black @ https://... are rejected. Users should
+    upgrade to the latest version of the action as soon as possible. This update
+    is received automatically when using psf/black@stable, and is independent of
+    the version of Black installed by the action
+  Documentation:
+  * Expand preview style documentation with detailed examples for
+    wrap_comprehension_in, simplify_power_operator_hugging, and
+    wrap_long_dict_values_in_parens features
+  * Add detailed documentation for formatting Jupyter Notebooks
+</comment>
+    <requestid>1338668</requestid>
+  </revision>
 </revisionlist>
