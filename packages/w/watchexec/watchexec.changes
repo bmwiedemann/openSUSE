@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue Mar 10 08:29:22 UTC 2026 - david.anes@suse.com
+
+- Update to version 2.5.0:
+  * chore: Release
+  * feat: add --timeout flag to kill long-running commands (#1022)
+  *  feat: specify when --notify fires (start, end, both) (#1021)
+  * feat: add --exit-on-error to exit if the process errored (#1023)
+  * chore: Release
+  * deps: update lockfile
+  * chore: Release
+  * chore: Release
+  * fix: priority of quit events in keyboard loop
+  * chore: Release
+  * update changelog
+  * chore: Release
+  * fix: read stdin directly and embed an atomic to stop on demand (#1018)
+  * update changelogs
+  * chore: Release
+  * chore: Release
+  * chore: Release
+  * chore: Release
+  * fix: stop saying "Waiting 10s" when the process is not running
+  * fix: hang on quit in interactive mode
+  * feat: support --interactive control (#1014)
+  * chore(deps): bump actions/checkout from 4 to 6 (#977)
+  * chore(deps): bump actions/upload-artifact from 4 to 6 (#985)
+  * chore(deps): bump actions/download-artifact from 4 to 7 (#984)
+  * chore(deps): bump softprops/action-gh-release from 2.4.1 to 2.5.0 (#980)
+  * chore(deps): bump actions/cache from 4 to 5 (#986)
+  * chore: Release
+  * chore: Release
+  * chore: Release
+  * chore: Release
+  * chore: Release
+  * deps: update everything we can (2026 version) (#993)
+  * docs: mark apt.cli.rs as defunct
+  * fix: handle graceful stop when job handle dropped (#981) (#982)
+  * fix: match git's actual global ignore behavior (#973)
+  * chore(deps): bump softprops/action-gh-release from 2.3.4 to 2.4.1 (#968)
+  * chore(deps): bump softprops/action-gh-release from 2.3.3 to 2.3.4 (#966)
+  * chore(deps): bump softprops/action-gh-release from 2.2.2 to 2.3.3 (#963)
+  * doc: explain filtering order in the CLI help (#959)
+  * docs: add some new packagings
+  * docs: add legend to package list
+  * docs: update package list and add explainer for 2/3nd-parties
+  * seriously
+  * only check docs on linux
+  * remove netbsd typecheck
+  * fix: do not print "waiting" if timeout is 0 (#946)
+
+-------------------------------------------------------------------
+Tue Mar 10 08:29:09 UTC 2026 - david.anes@suse.com
+
+- Update to version 2.3.2:
+  * chore: Release
+  * cli: change the default for --wrap-process on mac to session
+  * chore: Release
+  * chore: Release
+  * chore: Release
+  * deps: update lockfile
+  * chore: Release
+  * chore: Release
+  * chore: Release
+  * chore: Release
+
+-------------------------------------------------------------------
 Mon Sep  1 11:27:47 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
 
 - Update vendored depdendencies, fix [bsc#1248014, CVE-2025-55159] in slab
