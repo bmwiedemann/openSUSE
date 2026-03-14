@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  5 15:00:36 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- adjusted logic for %suse_version bump with SLE16.1 Beta2 (jsc#PED-15824)
+
+-------------------------------------------------------------------
 Sun Jan 18 19:49:23 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.16.0
