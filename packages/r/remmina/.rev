@@ -976,4 +976,41 @@
 </comment>
     <requestid>1300987</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>138aa4514eef55dc0e9b4a3bd97c51c0</srcmd5>
+    <version>1.4.43</version>
+    <time>1773523411</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.43:
+  * Revert &quot;Added kerberos-config plug&quot; !2728 *@craig.rylance*
+  * [REM-3489] Fix issue preventing SPICE plugin from being
+    loaded !2729 *@myheroyuki*
+  * [REM-3490] Do not calculate monitor shift if using
+    freerdp_settings_set_monitor_def_array_sorted !2730
+    *@myheroyuki*
+  * Fix ssh x11 forwarding crashing in nixos !2678 *@urizafrir*
+  * Add support for smartcard authentication !2680 *@cschenk*
+  * [REM-3444] Add option to delay floating toolbar popup !2681
+    *@myheroyuki*
+  * [REM-3448] Update FreeRDP checks to newer version !2682
+    *@myheroyuki*
+  * [REM-3448] Fix typo !2683 *@myheroyuki*
+  * Update AppStream metadata !2684 *@ascfiiwolf*
+  * [FLAT-390] update ffmpeg !2685 *@myheroyuki*
+  * [Rem-3180] Create named SPICE connection !2687 *@myheroyuki*
+  * [REM-2880] Fix session stuck problem with KeePassXC !2689
+    *@CalmarBen*
+  * [REM-3453] default dynamic resolution when supported issue
+    !2690 *@CalmarBen*
+  * [REM-3258] toolbar disappearance in some multi-monitor
+    situations  !2692 *@CalmarBen*
+  * [REM-3458] Enable AAD support in Flatpak build !2694
+    *@myheroyuki*
+  * Create viewonly mode button on rcw toolbar !2696
+    *@rafarsa6363*
+  * Permit css customization in scrolled window mode !2697
+    *@CalmarBen*
+  * src/remmina_ssh.c: zero-initialize RemminaSFTP structs !2698</comment>
+    <requestid>1338994</requestid>
+  </revision>
 </revisionlist>

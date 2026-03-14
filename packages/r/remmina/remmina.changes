@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sat Mar 14 19:23:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.43:
+  * Revert "Added kerberos-config plug" !2728 *@craig.rylance*
+  * [REM-3489] Fix issue preventing SPICE plugin from being
+    loaded !2729 *@myheroyuki*
+  * [REM-3490] Do not calculate monitor shift if using
+    freerdp_settings_set_monitor_def_array_sorted !2730
+    *@myheroyuki*
+  * Fix ssh x11 forwarding crashing in nixos !2678 *@urizafrir*
+  * Add support for smartcard authentication !2680 *@cschenk*
+  * [REM-3444] Add option to delay floating toolbar popup !2681
+    *@myheroyuki*
+  * [REM-3448] Update FreeRDP checks to newer version !2682
+    *@myheroyuki*
+  * [REM-3448] Fix typo !2683 *@myheroyuki*
+  * Update AppStream metadata !2684 *@ascfiiwolf*
+  * [FLAT-390] update ffmpeg !2685 *@myheroyuki*
+  * [Rem-3180] Create named SPICE connection !2687 *@myheroyuki*
+  * [REM-2880] Fix session stuck problem with KeePassXC !2689
+    *@CalmarBen*
+  * [REM-3453] default dynamic resolution when supported issue
+    !2690 *@CalmarBen*
+  * [REM-3258] toolbar disappearance in some multi-monitor
+    situations  !2692 *@CalmarBen*
+  * [REM-3458] Enable AAD support in Flatpak build !2694
+    *@myheroyuki*
+  * Create viewonly mode button on rcw toolbar !2696
+    *@rafarsa6363*
+  * Permit css customization in scrolled window mode !2697
+    *@CalmarBen*
+  * src/remmina_ssh.c: zero-initialize RemminaSFTP structs !2698
+    *@mochaa*
+  * [plugins/rdp] fix memory leaks !2699 *@akallabeth*
+  * [REM-3462] Strip whitespace from quickconnect !2700
+    *@myheroyuki*
+  * [cmake] mark include_directories SYSTEM !2701 *@akallabeth*
+  * [rdp] fix FreeRDP_MonitorLocalShift[XY] !2702 *@akallabeth*
+  * fix various compiler warnings !2703 *@akallabeth*
+  * [REM-3454] UI: move view_toggle_button on the left !2704
+    *@CalmarBen*
+  * bug: double free on remmina_string_array_free !2706
+    *@CalmarBen*
+  * [REM-3464]run update-translations.sh !2711 *@myheroyuki*
+  * Avoid Gettext incorrectly considering c-format !2712
+    *@rafaelff
+  * [REM-3469] Disable save password prompt on quick connect
+    authentication prompts !2713 *@myheroyuki*
+  * fix UB when connecting by link-local address !2716
+    *@erindesu*
+  * Added kerberos-tickets plug  !2717 *@craig.rylance*
+  * Added kerberos-config plug !2719 *@craig.rylance*
+  * Fix floating toolbar popup regression in multimonitor !2724
+    *@CalmarBen*
+
+-------------------------------------------------------------------
 Fri Aug 22 13:25:36 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.4.41:
@@ -35,18 +91,18 @@ Fri Aug 22 13:25:36 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 Mon Jun 16 12:39:01 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.4.40:
-  * [REM-3270] Fix invalid free causing crash with sending keystrokes and clipboard contents 
-  * Fix SEGV when removing a non-exitend connection 
+  * [REM-3270] Fix invalid free causing crash with sending keystrokes and clipboard contents
+  * Fix SEGV when removing a non-exitend connection
   * [REM-3282] Adjust floating toolbar to take up less space
   * [REM-3285] Fix issue with multimonitor configuration needed for FreeRDP versions after 3.10.x
   * [REM-3286] Add option to allow ssh-rsa keys to be used for ssh connections
   * [REM-3285] Only set the max width and height to full monitor if using multimonitor
-  * [REM-3285] Revert calls back to uint 
+  * [REM-3285] Revert calls back to uint
   * [REM-3295] Fix issue with RDP scaling on connect
   * [REM-3301] Add option to force multimonitor mode
   * [REM-3314] Added the options to start connections in fullscreen mode and/or with dynamic resolution enabled for protocols that support the options
-  * [REM-3316] Allow empty passwords to be passed to FreeRDP 
-  * [REM-3289] Allow import/export of ssh tunnel settings 
+  * [REM-3316] Allow empty passwords to be passed to FreeRDP
+  * [REM-3289] Allow import/export of ssh tunnel settings
   * [REM-3333] hide local cursor when showing remote cursor
 - Add drop-unused-func.patch: drop a debug function that was not being usused anywhere in the code
 
@@ -178,44 +234,44 @@ Sun Sep 17 08:14:03 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
   * Fix memory leaks and change GTK critical errors to remmina warnings
     for null icon autostart file
   * [REM-2926] Added ability to set a fixed aspect ratio for vnc connections
-  * [REM-2936] Fix crash related to unmap events 
+  * [REM-2936] Fix crash related to unmap events
   * [REM-2938] Improved ordering of tray icon menu items
   * Fix memory leaks in remmina_plugin_manager_init with g_free and g_ptr_array_free
   * Remote assistance
   * Spelling: Various strings for assistance mode
   * Fix some compiler warnings
-  * Ability to SPICE connect to unix domain socket 
+  * Ability to SPICE connect to unix domain socket
   * update multi monitor icon
   * Save toggle options when duplicating connection
   * New feature: Allow user to specify use of modifiers when changing key preferences
   * [REM-2914] Alert user of unexpected disconnect instead of immediately closing
-    the connection window 
+    the connection window
   * Fix Remmina not using @REMMINA_BINARY_PATH@
   * Highlight top bar when Grab all keyboard events is enabled
   * [REM-2850] Add ability to automatically move mouse to keep RDP connections alive
-  * Remove unnecessary parameters from remmina_public_get_server_port_wrapper 
+  * Remove unnecessary parameters from remmina_public_get_server_port_wrapper
   * Fix freeze that occurs when loading in python modules properly
   * [REM-1923] Fix handling of pause break key for RDP connections
   * [REM-2971] When quiting Remmina from the system tray the are you sure
-    prompt now functions properly 
+    prompt now functions properly
 
 -------------------------------------------------------------------
 Fri Jun  9 11:22:44 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to remmina version 1.4.31:
   * [REM-2874] muli password changer search now matches partial
-    strings !2480 
-  * Fix segfault in VNC when using domain socket !2481 
-  * Switched pylist Append to SetItem !2482 
-  * Template texts updated !2484 
+    strings !2480
+  * Fix segfault in VNC when using domain socket !2481
+  * Switched pylist Append to SetItem !2482
+  * Template texts updated !2484
   * Add menu option to delete multiple profiles at the same time !2483
-  * add 1080p as a default resolution to remmina_pref.c !2486 
-  * Remove character limit on password length !2489 
-  * Create better postats.html !2488 
+  * add 1080p as a default resolution to remmina_pref.c !2486
+  * Remove character limit on password length !2489
+  * Create better postats.html !2488
   * Redesign santahat.png & add santahat.svg !2492
-  * Edit preferences UI !2491 
+  * Edit preferences UI !2491
   * Change the icon of the new connection button !2493
-  * Modify the checkbox of the appearance-tab !2494 
+  * Modify the checkbox of the appearance-tab !2494
   * Add valign to the switch of the debugging window !2495
   * plugins/rdp: Ensure output redirection configuration applies to
     both dynamic and static rdpsnd !2498
@@ -226,7 +282,7 @@ Fri Apr 14 10:25:01 UTC 2023 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 - Update to remmina version 1.4.30
   * Add text mime type formats to RDP clibpoard !2459
   * Ensure timer is null after destruction !2462
-  * Ability to view passwords in the clear using a toggle in the 
+  * Ability to view passwords in the clear using a toggle in the
     password field !2460
   * Made icons viewable in lower resulution. !2463
   * Improve mime file !2464
@@ -240,7 +296,7 @@ Fri Apr 14 10:25:01 UTC 2023 - Johannes Weberhofer <jweberhofer@weberhofer.at>
   * Rem 2864 !2472
   * [REM-1987] allow for dynamic resolution updates for vnc connections !2476
   * Fix overlapping text in preferences menu, terminal tab !2477
-  * Allow could not authenticate banner to go away after successful 
+  * Allow could not authenticate banner to go away after successful
     reauthentication !2478
   * Add environments for easy manual testing !2473
 
@@ -339,18 +395,18 @@ Thu May 19 14:29:06 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
   * Kiosk improvements and new command lines options
 
 - Other changes:
-  * Fix trial for 2577: Closing a VNC connection makes Remmina close all other... 
-  * Handle after-auth connection errors in VNC properly 
-  * Using Remmina from command-line for kiosked servers 
-  * Manual page refactoring fixes #2056 (closed) 
-  * Add mutex to protect RDP clipboard->srv_data. Fixes #2666 (closed) 
-  * Add '--no-tray-icon' command-line option 
-  * Make FreeRDPs TLS Security Level setting accessible in the advanced settings view 
-  * Disable grabs for SSH and SFTP, #closes #2728 (closed) 
-  * Cannot disable shared folder 
-  * Use PyInitializeEx in order to skip signal handler registration 
-  * Ignore add new connection button in kiosk mode 
-  * WWW plugin refactoring 
+  * Fix trial for 2577: Closing a VNC connection makes Remmina close all other...
+  * Handle after-auth connection errors in VNC properly
+  * Using Remmina from command-line for kiosked servers
+  * Manual page refactoring fixes #2056 (closed)
+  * Add mutex to protect RDP clipboard->srv_data. Fixes #2666 (closed)
+  * Add '--no-tray-icon' command-line option
+  * Make FreeRDPs TLS Security Level setting accessible in the advanced settings view
+  * Disable grabs for SSH and SFTP, #closes #2728 (closed)
+  * Cannot disable shared folder
+  * Use PyInitializeEx in order to skip signal handler registration
+  * Ignore add new connection button in kiosk mode
+  * WWW plugin refactoring
 
 -------------------------------------------------------------------
 Thu Mar 10 18:02:25 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
@@ -373,57 +429,57 @@ Thu Mar 10 18:02:25 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 Thu Feb 10 12:32:46 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated to remmina version 1.4.24
-  * Contribution section added to issue template 
-  * Language of VNC encoding cleaned up 
-  * Remmina Hardening and Compliance 
-  * Remmina_preferences language reworked 
-  * Thanks 2021 
-  * Resolve "Follow-up from "Remmina_preferences language reworked"" 
-  * Encryption level language reworked 
-  * Issue 2122 : Confirm on close of window 
-  * Adding flush and cairo clean up 
+  * Contribution section added to issue template
+  * Language of VNC encoding cleaned up
+  * Remmina Hardening and Compliance
+  * Remmina_preferences language reworked
+  * Thanks 2021
+  * Resolve "Follow-up from "Remmina_preferences language reworked""
+  * Encryption level language reworked
+  * Issue 2122 : Confirm on close of window
+  * Adding flush and cairo clean up
 
 -------------------------------------------------------------------
 Mon Dec 20 13:15:03 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated to remmina version 1.4.23
-  * Patch for a Remmina segfault and stats code cleaning !2358 
-  * Make Appindicator optional !2359 
-  * Added check-box to force tight encoding for VNC connections !2360 
-  * remote resolution: use multiple of four !2353 
-  * Add Keyboard mapping per client RDP !2361 
-  * Improve TLS error message, fixes #2364 (closed) !2362 
-  * Triage policy language reworked !2363 
+  * Patch for a Remmina segfault and stats code cleaning !2358
+  * Make Appindicator optional !2359
+  * Added check-box to force tight encoding for VNC connections !2360
+  * remote resolution: use multiple of four !2353
+  * Add Keyboard mapping per client RDP !2361
+  * Improve TLS error message, fixes #2364 (closed) !2362
+  * Triage policy language reworked !2363
 
 -------------------------------------------------------------------
 Mon Dec 13 11:07:44 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated to remmina version 1.4.22
-  * Fix crash if main window is closed #1692 (closed) !2330 
-  * Main window position reset after opening a connection (issue 2587) !2331 
-  * File Interface refactoring !2332 
-  * CMake refactoring and build time warnings !2333 
-  * Add Croatian language to desktop shortcuts and infos !2334 
-  * Appdata corrections and renewal !2336 
-  * Fixes for freerdp3 compatibility. !2337 
-  * X2Go: Rewrite dialog-system; Ask users which session to resume... !2328 
-  * int main(): print instructions how to enable a more verbose output of remmina !2338 
-  * Mitigations for #2635 (closed) (default printer) with freerdp < 3 !2343 
-  * X2Go: Add a session-terminate button into the session resuming selection menu !2339 
-  * Properly warn users when using a plugin which requires GtkSocket !2340 
-  * x2go_plugin.c: Make changes to source strings for translations. !2344 
-  * Fix ubuntu-impish-amd64 build errors. !2345 
-  * Hopefully fix Ubuntu Impish Build !2347 
-  * Fix string format !2348 
-  * 2634-ssh-opening-command !2342 
-  * New debug strings reworked !2341 
-  * Deduplicated "Started PyHoca" string !2346 
-  * Removing the Remmina stats sender and repurposing Remmina stats !2350 
-  * X2Go: Major rewrite of session-terminating system. !2349 
-  * Message about debugging info reworked !2351 
-  * Strings in rcw.c reworked !2352 
-  * VNC custom encodings to avoid corrupted frames. !2354 
-  * X2Go format string bugs !2355 
+  * Fix crash if main window is closed #1692 (closed) !2330
+  * Main window position reset after opening a connection (issue 2587) !2331
+  * File Interface refactoring !2332
+  * CMake refactoring and build time warnings !2333
+  * Add Croatian language to desktop shortcuts and infos !2334
+  * Appdata corrections and renewal !2336
+  * Fixes for freerdp3 compatibility. !2337
+  * X2Go: Rewrite dialog-system; Ask users which session to resume... !2328
+  * int main(): print instructions how to enable a more verbose output of remmina !2338
+  * Mitigations for #2635 (closed) (default printer) with freerdp < 3 !2343
+  * X2Go: Add a session-terminate button into the session resuming selection menu !2339
+  * Properly warn users when using a plugin which requires GtkSocket !2340
+  * x2go_plugin.c: Make changes to source strings for translations. !2344
+  * Fix ubuntu-impish-amd64 build errors. !2345
+  * Hopefully fix Ubuntu Impish Build !2347
+  * Fix string format !2348
+  * 2634-ssh-opening-command !2342
+  * New debug strings reworked !2341
+  * Deduplicated "Started PyHoca" string !2346
+  * Removing the Remmina stats sender and repurposing Remmina stats !2350
+  * X2Go: Major rewrite of session-terminating system. !2349
+  * Message about debugging info reworked !2351
+  * Strings in rcw.c reworked !2352
+  * VNC custom encodings to avoid corrupted frames. !2354
+  * X2Go format string bugs !2355
 
 -------------------------------------------------------------------
 Mon Oct 18 15:23:03 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
@@ -590,11 +646,11 @@ Mon May 10 13:56:37 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 Thu Apr  8 12:38:02 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.4.13
-  * Use freerdp_settings_get|set API 
+  * Use freerdp_settings_get|set API
   * rdp: Allow autoreconnect for ERRINFO_GRAPHICS_SUBSYSTEM_FAILED
-  * Disable cert file auth when libssh < 0.9.0 
-  * Removing redundant subtitle 
-  * Removing redundant ssh_userauth_none 
+  * Disable cert file auth when libssh < 0.9.0
+  * Removing redundant subtitle
+  * Removing redundant ssh_userauth_none
   * Fix build issues on openSUSE
 - Drop upstream_build_fixes.patch
 
@@ -620,7 +676,7 @@ Sun Mar  7 08:53:06 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
   * Fixes
     - Invalid connection option ":port" removed !2193 (merged) @kingu
-    - Add ifdefs for SPICE version less then 0.38 
+    - Add ifdefs for SPICE version less then 0.38
       (fix #2408 (closed)) !2195 (merged) @hadogenes
     - Fix for #2408 (closed) building with older SPICE libraries
       !2194 (merged) @jweberhofer
@@ -638,8 +694,8 @@ Sun Mar  7 08:53:06 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 -------------------------------------------------------------------
 Mon Feb  8 12:01:39 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
-- Added fix_upstream_2196_older_glib_issue.patch  to allow building with 
-  older glib versions 
+- Added fix_upstream_2196_older_glib_issue.patch  to allow building with
+  older glib versions
 
 -------------------------------------------------------------------
 Sun Feb  7 11:22:53 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
@@ -669,16 +725,16 @@ Wed Feb  3 15:41:22 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
     - Using curly double quotes where possible !2182 (merged) @antenore
     - Refactoring the RCW toolbar to use the right tool items types
       !2188 (merged) @antenore
-    
+
   * Fixes
     - rdp/cliprdr: Fix header of FormatList message !2147 (merged) @pnowack
     - rdp/event: Fix wheel value for GDK_SCROLL_DOWN events !2149 (merged) @pnowack
     - Resolve "Remmina does not handle file:///some/path/to/file.rdp syntax"
       !2152 (merged) @antenore
-    - Resolve "SSH tunneling, honoring ssh_config (User, HostKeyAlias, 
-      ProxyJump, HostKeyAlgorithms, IdentitiesOnly, etc.)" 
+    - Resolve "SSH tunneling, honoring ssh_config (User, HostKeyAlias,
+      ProxyJump, HostKeyAlgorithms, IdentitiesOnly, etc.)"
       !2154 (merged) @antenore
-    - Resolve "While in the main window, bind F10 keyboard shortcut to 
+    - Resolve "While in the main window, bind F10 keyboard shortcut to
       toggling the main menubutton" !2156 (merged) @antenore
     - Refactoring SSH plugin !2160 (merged) @antenore
     - Remove extra parenthesis !2164 (merged) @yurchor
@@ -738,8 +794,8 @@ Mon Nov 23 17:52:38 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
   * rdp: document freerdp Performance Flags setted by quality setting
   * Resolve "Terminal general preferences are not saved"
   * Resolve "Typo in FindFREERDP3.cmake"
-  * rdp: add freerdp log filters setting 
-  * Resolve "Extra underline character in "_Preferences" tooptip text" 
+  * rdp: add freerdp log filters setting
+  * Resolve "Extra underline character in "_Preferences" tooptip text"
 
 - Requires pcre2-devel
 
@@ -805,8 +861,8 @@ Tue Jun  9 09:23:58 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
   * Translation fixes/improvements
   * Feat/lebowski
 
-- Disabled news 
-- Enabled kiosk sessions 
+- Disabled news
+- Enabled kiosk sessions
 
 -------------------------------------------------------------------
 Mon May 25 07:39:02 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
