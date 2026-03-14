@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 13 20:32:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.2:
+  * When a weak function proxy was created for a bound method and
+    the instance it was bound to was garbage collected, calling
+    the proxy would silently call the function as unbound instead
+    of raising a ReferenceError.
+  * When deleting an attribute named __annotations__ on an object
+    proxy, the attribute was only being deleted from the proxy
+    and not also from the wrapped object.
+
+-------------------------------------------------------------------
 Tue Feb  3 05:11:19 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.1.1:

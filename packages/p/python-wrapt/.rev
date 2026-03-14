@@ -356,4 +356,19 @@
     applied to any methods of classes</comment>
     <requestid>1330660</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d57fbcf6489857a788ef7f77e7adb810</srcmd5>
+    <version>2.1.2</version>
+    <time>1773523274</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.2:
+  * When a weak function proxy was created for a bound method and
+    the instance it was bound to was garbage collected, calling
+    the proxy would silently call the function as unbound instead
+    of raising a ReferenceError.
+  * When deleting an attribute named __annotations__ on an object
+    proxy, the attribute was only being deleted from the proxy
+    and not also from the wrapped object.</comment>
+    <requestid>1338805</requestid>
+  </revision>
 </revisionlist>
