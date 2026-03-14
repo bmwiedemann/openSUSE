@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 13 10:34:11 UTC 2026 - Anthony Iliopoulos <ailiop@suse.com>
+
+- Fix nfsrahead crash (bsc#1259595)
+  - Add nfsrahead-quieten-misleading-error-for-non-NFS-block-devic.patch
+  - Add nfsrahead-zero-initialise-device_info-struct.patch
+
+-------------------------------------------------------------------
 Tue Mar 10 09:29:33 UTC 2026 - Petr Vorel <pvorel@suse.cz>
 
 - Update to 2.8.6:
