@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 14 09:25:12 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.4
+  * add a new feature where you can tunnel goshs to localhost.run
+    to make it available online even if your network can not be
+    reached directly from the internet.
+    For more information look at https://localhost.run/.
+  Bug Fix
+  * Fixed an upload problem tracked in Issue #134.
+
+-------------------------------------------------------------------
 Tue Dec 16 16:13:56 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.3

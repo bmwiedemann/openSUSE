@@ -1,7 +1,7 @@
 #
 # spec file for package goshs
 #
-# Copyright (c) 2021-2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 Name:           goshs
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        A simple HTTP server
 License:        MIT
 Group:          Productivity/Networking/Web/Servers
 URL:            https://goshs.de/
 #Git-Clone:     https://github.com/patrickhener/goshs.git
-Source:         https://github.com/patrickhener/goshs/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/patrickhener/goshs/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  go >= 1.24.1
 BuildRequires:  golang-packaging
