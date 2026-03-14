@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 13 20:34:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.5 (CVE-2026-32640):
+  * Fixes Security issues with "dangerous" modules & functions
+    leaking through as attributes of other names, see:
+  * Breaking Change:
+  * Modules & Submodules now are not directly usable as names or
+    as attributes of other items, if you still need this
+    functionality, then use the new `ModuleWrapper`, or subclass
+    SimpleEval to bypass it.
+
+-------------------------------------------------------------------
 Thu Oct 30 04:11:38 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.0.3:

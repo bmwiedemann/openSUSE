@@ -85,4 +85,19 @@
   * Various cleanups &amp; tidying warnings, deprecation warnings etc.</comment>
     <requestid>1314480</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>26850c1b0ed1b61a266f8bb30a851a42</srcmd5>
+    <version>1.0.5</version>
+    <time>1773523343</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.5 (CVE-2026-32640):
+  * Fixes Security issues with &quot;dangerous&quot; modules &amp; functions
+    leaking through as attributes of other names, see:
+  * Breaking Change:
+  * Modules &amp; Submodules now are not directly usable as names or
+    as attributes of other items, if you still need this
+    functionality, then use the new `ModuleWrapper`, or subclass
+    SimpleEval to bypass it.</comment>
+    <requestid>1338808</requestid>
+  </revision>
 </revisionlist>
