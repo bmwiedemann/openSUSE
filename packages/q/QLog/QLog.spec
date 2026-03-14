@@ -1,7 +1,7 @@
 #
 # spec file for package QLog
 #
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>:
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           QLog
-Version:        0.47.1
+Version:        0.49.0
 Release:        0
 Summary:        Amateur radio logbook software
 License:        GPL-3.0-or-later
@@ -36,6 +36,7 @@ BuildRequires:  pkgconfig(Qt6WebEngineWidgets)
 BuildRequires:  pkgconfig(Qt6WebSockets)
 BuildRequires:  pkgconfig(Qt6Xml)
 BuildRequires:  pkgconfig(hamlib)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
 Requires:       qt6-sql-sqlite
 Recommends:     tqsl
@@ -65,6 +66,7 @@ expects from the log to be. This log is not currently focused on contests.
 %license LICENSE
 %doc AUTHORS README.md Changelog
 %{_bindir}/qlog
+%{_mandir}/man1/qlog.1%{?ext_man}
 %{_datadir}/applications/qlog.desktop
 %{_datadir}/icons/hicolor
 %{_datadir}/metainfo/io.github.foldynl.QLog.metainfo.xml

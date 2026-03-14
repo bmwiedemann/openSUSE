@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 14 07:23:25 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.49.0:
+  * Add Pack and Unpack Data and Setting for data migration
+  * Add Rig Sharing via Rigctld
+  * Rig Widget - tuning rig with mous
+  * Add QSL Gallery
+  * A number of UI updates
+  * Updates for country awards / geo codes
+  * ADIF 3.1.7 - Added new modes FT2, FREEDATA, RIBBIT_PIX, RIBBIT_SMS
+  * bug fixes
+
+-------------------------------------------------------------------
 Sun Dec 21 08:31:32 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.47.1:
