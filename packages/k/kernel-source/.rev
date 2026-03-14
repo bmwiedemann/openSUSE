@@ -7392,4 +7392,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>fix perf v2; bugs: bsc#1258936 bsc#1259358</comment>
     <requestid>1337952</requestid>
   </revision>
+  <revision rev="830" vrev="1">
+    <srcmd5>5551688dcd988066ed2e7b5d29c70f59</srcmd5>
+    <version>6.19.7</version>
+    <time>1773523281</time>
+    <user>dimstar_suse</user>
+    <comment>6.19.7 &amp; fix softlockups &amp; other fixes; bugs: bsc#1012628 bsc#1258936 bsc#1259459</comment>
+    <requestid>1338458</requestid>
+  </revision>
 </revisionlist>
