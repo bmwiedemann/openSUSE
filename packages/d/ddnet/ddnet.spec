@@ -16,12 +16,8 @@
 #
 
 
-# ddnet needs a c++17 compiler at least
-%if 0%{?sle_version} && 0%{?sle_version} < 160000
-%global force_gcc_version 13
-%endif
 Name:           ddnet
-Version:        19.7
+Version:        19.8
 Release:        0
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 License:        Apache-2.0 AND CC-BY-SA-3.0 AND Zlib AND MIT AND SUSE-Public-Domain
@@ -36,7 +32,7 @@ BuildRequires:  cargo
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  gcc%{?force_gcc_version}-c++
+BuildRequires:  gcc-c++
 BuildRequires:  glslang-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libminiupnpc-devel
@@ -104,10 +100,6 @@ directory = './vendor'
 EOF
 
 %build
-%if 0%{?force_gcc_version}
-export CC="gcc-%{force_gcc_version}"
-export CXX="g++-%{force_gcc_version}"
-%endif
 export CARGO_HOME=`pwd`/cargo-home/
 mkdir -p build && cd build
 # NOTE that %%cmake macro breaks linking.

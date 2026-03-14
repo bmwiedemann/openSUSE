@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Mar 12 17:12:01 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 19.8:
+  * [Client] Predict envelopes
+  * [Client] Predict all sounds and particles
+  * [Client] Show centiseconds in scoreboard and HUD
+  * [Client] Sample loop point support (Opus)
+  * [Client] Add real HSL values to color scrollbars
+  * [Client] Hook line tip [fushi-gg]
+  * [Client] Add scoreboard popup with map info
+  * [Client] Show friends regardless of filter in server browser
+  * [Client] Render current number of players in community filter,
+    sort by player count
+  * [Client] Update unpredicted shadow, add alpha and
+    customization
+  * [Client] Demo menu mouse seek improvements
+  * [Client] Replace line breaks with spaces when pasting multiple
+    lines in chat
+  * [Client] Improve user experience when joining Tutorial server
+  * [Client] Use racefinish message to stop demo/ghost recording 
+  * [Client] Update map best time if a player joins with a better
+    time
+  * [Client] Make descriptions of refresh rate settings more clear
+  * [Client] Fix unlimited zoom crashing when zooming out really
+    far
+  * [Client] Fix changing spectator in demo player when paused
+  * [Client] Fix dead players being duplicated
+  * [Client] Fix prediction with collision tunes
+  * [Client] Fix prediction when player has no current weapon
+  * [Client] Stop forcing predicted events onto older DDrace
+    servers
+  * [Client] Prevent game from being unpaused during gameover
+  * [Client] Fix scrollbar behavior when combining multiple flags
+  * [Client] Add easter mapres from teeworlds
+  * [Editor] Fix editor map not being saved if editor is quit
+    before job is done
+  * [Editor] Fix editor can't find tele out
+  * [Editor] Add quick action to show help, fix holding down
+    F1 key
+  * [Editor] Fix "Collapse all" button collapsing empty groups
+  * [Editor] Add error message when launching local server
+  * [Editor] Fix redo of envelope edit actions
+  * [Editor] Fix BrushDraw for tile layers
+  * [Server] Add rcon/practice command setswitch 
+  * [Server] Make cmdlist list only commands without practice flag
+  * [Infra.] Split system.cpp/h into smaller modules
+  * [Infra.] Improve Emscripten support and error handling
+- Drop gcc requirement for Leap 15.6 because Leap 15.6 seems to
+  be dropped from games repository before EOL of Leap 15.6
+
+-------------------------------------------------------------------
 Fri Jan 23 14:37:41 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 19.7:
