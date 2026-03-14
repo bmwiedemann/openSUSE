@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 14 10:39:21 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.5.2
+  * ToddCoxeter refused execution when not run as part of a
+    Congruence
+
+-------------------------------------------------------------------
 Thu Mar  5 15:48:47 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Rectify version field in pkgconfig file
