@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 13 08:42:06 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Remove update-alternative usage, prepare migration to libalternatives
+
+-------------------------------------------------------------------
 Mon Jun  9 06:57:11 UTC 2025 - Martin Liška <martin.liska@hey.com>
 
 - Update to version 2.40.1

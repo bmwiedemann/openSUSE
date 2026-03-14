@@ -1,7 +1,7 @@
 #
 # spec file for package mold
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,10 @@ BuildRequires:  valgrind
 %endif
 BuildRequires:  zlib-devel
 BuildRequires:  zstd
-PreReq:         update-alternatives
+OrderWithRequires(pre): update-alternatives
+Suggests:       update-alternatives
+BuildRequires:  alts
+Requires:       alts
 
 %if %{suse_version} < 1600
 %define build_args -DMOLD_USE_MIMALLOC=OFF -DMOLD_USE_MIMALLOC=OFF -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name}
@@ -76,6 +79,10 @@ export CXX=g++-11
 
 %install
 %cmake_install
+mkdir -p %{buildroot}%{_datadir}/libalternatives/ld
+cat > %{buildroot}%{_datadir}/libalternatives/ld/5.conf <<EOF
+binary=%{_bindir}/ld.mold
+EOF
 
 %check
 %if %{suse_version} < 1550
@@ -85,22 +92,14 @@ export TEST_GXX=g++-11
 %endif
 %ctest
 
-%post
-"%_sbindir/update-alternatives" --install \
-	"%_bindir/ld" ld "%_bindir/ld.mold" 1
-
 %pre
-if [ "$1" -gt 0 ] && [ -f %{_sbindir}/update-alternatives ] ; then
-	"%_sbindir/update-alternatives" --remove ld "%_bindir/ld.mold";
-fi;
-
-%postun
-if [ ! -f %{_bindir}/lld ] ; then
-    "%{_sbindir}/update-alternatives" --remove ld "%{_bindir}/ld.mold"
+if [ $1 -eq 2 ] && [ -f %{_sbindir}/update-alternatives ] && [ -f %{_sysconfdir}/alternatives/ld ] ; then
+  "%_sbindir/update-alternatives" --remove ld "%_bindir/ld.mold"
 fi
 
 %files
-%ghost %_sysconfdir/alternatives/ld
+%dir %{_datadir}/libalternatives/ld
+%{_datadir}/libalternatives/ld/5.conf
 %{_bindir}/mold
 %{_bindir}/ld.mold
 %dir %{_libdir}/mold
