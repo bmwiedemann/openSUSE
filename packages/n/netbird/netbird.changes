@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sat Mar 14 17:16:35 UTC 2026 - Holden Fried <holden@opensuse.org>
+
+- Update to 0.66.4:
+  - Management Improvements
+    - Create a shallow copy of the account when buffering to
+      improve memory safety and performance. #5572
+    - Set network map components by default and optimize memory
+      usage. #5575
+  - Self-Hosted Improvements
+    - Removed extra proxy domain instructions from the getting
+      started guide to simplify setup. #5573
+
+-------------------------------------------------------------------
+Mon Mar  9 22:45:55 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.66.3:
+  - Client Improvements
+    - Fixed "reset connection" error after wake from sleep to
+      improve reconnection stability. #5522
+    - Fixed exit node menu not refreshing on Windows. #5553
+  - Management Improvements
+    - Added per-target options to the reverse proxy (management +
+      proxy). #5501
+    - Avoided breaking single account mode when switching domains.
+      #5511
+    - Added stable domain resolution for the combined server. #5515
+    - Fixed domain uniqueness validation. #5529
+    - Added activity events for domain operations. #5548
+    - Switched proxy registration to use real IP address. #5525
+    - Cached PKCE state to improve login flow reliability. #5516
+    - Count login request duration metrics only for successful
+      logins. #5545
+    - Aggregated gRPC metrics by account ID. #5486
+  - Proxy Improvements
+    - Refactored proxy metrics and added usage logs. #5533
+  - CI & Misc
+    - Added PR title validation workflow. #5503
+
+-------------------------------------------------------------------
+Wed Mar  4 22:06:39 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.66.2:
+  - [management] Store connected proxies in DB by @pascal-fischer
+    in #5472
+  - [management] Fix embedded IdP metrics to count local and
+    generic OIDC users by @braginini in #5498
+  - [client] Fix SSH JWT auth failure with Azure Entra ID iat
+    backdating by @hbzhost in #5471
+  - [misc] Add ISSUE_TEMPLATE configuration file by @mlsmaycon in
+    #5500
+  - [management] Replace in-memory expose tracker with SQL-backed
+    operations by @mlsmaycon in #5494
+
+-------------------------------------------------------------------
 Tue Mar  3 14:01:17 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.66.1:
