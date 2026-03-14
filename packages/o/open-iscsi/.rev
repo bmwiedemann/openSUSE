@@ -1124,4 +1124,15 @@
   * iscsi: delay reconnect until interface has valid IP. (#511)</comment>
     <requestid>1335328</requestid>
   </revision>
+  <revision rev="139" vrev="111">
+    <srcmd5>5087f05964ddf03fcd011075a421f439</srcmd5>
+    <version>unknown</version>
+    <time>1773523265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.11.suse+88.8e0635b3:
+  * Make iface.example a doc file. (#526)
+  * Updated SPEC file to deliver iface.example as a %doc
+    file, no longer in the database directory.</comment>
+    <requestid>1338787</requestid>
+  </revision>
 </revisionlist>

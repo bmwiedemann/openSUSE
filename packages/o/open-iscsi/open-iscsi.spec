@@ -47,7 +47,7 @@
 %define iscsi_minor_release 1
 %define iscsi_patch_release 11
 %define iscsi_patch_release_suse %{iscsi_patch_release}.suse
-%define iscsi_service_tag 85.4ef97a15
+%define iscsi_service_tag 88.8e0635b3
 %define libname libopeniscsiusr0
 %define libversion 0.2.0
 Name:           open-iscsi
@@ -231,9 +231,7 @@ done
 %if 0%{?_dbroot_new}
 %config %{_home_dir}/README.DB-files-moved
 %endif
-%dir %{_dbroot}
-%dir %{_dbroot}/ifaces
-%{_dbroot}/ifaces/iface.example
+%doc etc/iface.example
 %attr(0644,root,root) %{_unitdir}/iscsid.service
 %attr(0644,root,root) %{_unitdir}/iscsid.socket
 %attr(0644,root,root) %{_unitdir}/iscsi-init.service
