@@ -7,37 +7,49 @@
 set -eu
 set -o pipefail
 
+# --root is accepted for testing convenience only. It redirects all state and
+# unit file paths under the given directory, allowing tests to run without
+# touching the real filesystem.
+root=""
+if [[ "${1:-}" == --root=* ]]; then
+    root="${1#--root=}"
+    shift
+fi
+
 command="${1:?}"
 shift
 
 command -v systemctl >/dev/null || exit 0
 
 UPDATE_HELPER_USER_TIMEOUT_SEC=15
+STATE_DIR="${root}/run/systemd/rpm"
+UNIT_DIR="${root}/usr/lib/systemd"
+RUNTIME_DIR="${root}/run/systemd"
 
 do_mark_install_units() {
     mode=$1
     shift
-    mkdir -p /run/systemd/rpm/$mode/{needs-preset,dont-disable}
+    mkdir -p $STATE_DIR/$mode/{needs-preset,dont-disable}
 
     for unit in "$@" ; do
         # Clean any leftovers that might remain from a previous transaction
         # which exited abnormally.
-        rm -f /run/systemd/rpm/$mode/*/"$unit"
+        rm -f $STATE_DIR/$mode/*/"$unit"
 
-        if [ ! -e /usr/lib/systemd/$mode/"$unit" ]; then
+        if [ ! -e $UNIT_DIR/$mode/"$unit" ]; then
             # The unit is being introduced: remember we need to apply preset on
             # this new unit regardless of whether it's a package update or
             # installation.
-            touch /run/systemd/rpm/$mode/needs-preset/"$unit"
+            touch $STATE_DIR/$mode/needs-preset/"$unit"
         fi
 
         # All passed units are part of a package being installed or updated and
         # therefore should not be disabled by the removal of a different package
         # part of the same rpm transaction. This can happen when the package
-        # shipping the unit is being renamed (e.g. from "A" to "B"), where "A"
-        # is installed first, followed by the removal "B". In that case, "B" is
-        # removed and its %preun scriptlet runs %systemd_preun on the unit.
-        touch /run/systemd/rpm/$mode/dont-disable/"$unit"
+        # shipping the unit is being renamed (e.g. from "A" to "B"), where "B"
+        # is installed first, followed by the removal of "A". In that case, "A"
+        # is removed and its %preun scriptlet runs %systemd_preun on the unit.
+        touch $STATE_DIR/$mode/dont-disable/"$unit"
     done
 }
 
@@ -47,20 +59,20 @@ do_install_units() {
     units=()
 
     for unit in "$@" ; do
-        if [ -e /run/systemd/rpm/$mode/needs-preset/"$unit" ]; then
-            rm  /run/systemd/rpm/$mode/needs-preset/"$unit"
+        if [ -e $STATE_DIR/$mode/needs-preset/"$unit" ]; then
+            rm  $STATE_DIR/$mode/needs-preset/"$unit"
             units+=("$unit")
         fi
     done
 
-    [ ${#units[*]} -gt 0 ] && {
-        case $mode in
-        system)
-            systemctl --no-reload preset "${units[@]}" ;;
-        user)
-            systemctl --no-reload preset --global "${units[@]}" ;;
-        esac
-    }
+    [ ${#units[@]} -eq 0 ] && return
+
+    case $mode in
+    system)
+        systemctl --no-reload preset "${units[@]}" ;;
+    user)
+        systemctl --no-reload preset --global "${units[@]}" ;;
+    esac
 }
 
 do_remove_units() {
@@ -69,18 +81,16 @@ do_remove_units() {
     units=()
 
     for unit in "$@" ; do
-        if [ ! -e /run/systemd/rpm/$mode/dont-disable/"$unit" ]; then
+        if [ ! -e $STATE_DIR/$mode/dont-disable/"$unit" ]; then
             units+=("$unit")
-        else
-            rm /run/systemd/rpm/$mode/dont-disable/"$unit"
         fi
     done
 
-    [ ${#units[*]} -eq 0 ] && return
+    [ ${#units[@]} -eq 0 ] && return
 
     case $mode in
     system)
-        if [ -d /run/systemd/system ]; then
+        if [ -d $RUNTIME_DIR/system ]; then
             systemctl --no-reload disable --now --no-warn "${units[@]}"
         else
             systemctl --no-reload disable --no-warn "${units[@]}"
@@ -89,7 +99,7 @@ do_remove_units() {
     user)
         systemctl --global disable --no-warn "${units[@]}"
 
-        [ -d /run/systemd/system ] || return
+        [ -d $RUNTIME_DIR/system ] || return
 
         users=$(systemctl list-units 'user@*' --legend=no | sed -n -r 's/.*user@([0-9]+).service.*/\1/p')
         for user in $users; do
@@ -127,7 +137,7 @@ case "$command" in
         ;;
 
     mark-restart-system-units) # called from %postun (on upgrade)
-        [ -d /run/systemd/system ] || exit 0
+        [ -d $RUNTIME_DIR/system ] || exit 0
 
         for unit in "$@"; do
             systemctl set-property "$unit" Markers=+needs-restart &
@@ -136,7 +146,7 @@ case "$command" in
         ;;
 
     mark-restart-user-units)
-        [ -d /run/systemd/system ] || exit 0
+        [ -d $RUNTIME_DIR/system ] || exit 0
 
         users=$(systemctl list-units 'user@*' --legend=no | sed -n -r 's/.*user@([0-9]+).service.*/\1/p')
         for user in $users; do
@@ -154,7 +164,7 @@ case "$command" in
             exit 2
         fi
 
-        [ -d /run/systemd/system ] || exit 0
+        [ -d $RUNTIME_DIR/system ] || exit 0
 
         if [[ "$command" =~ reexec ]]; then
             systemctl daemon-reexec
@@ -175,7 +185,7 @@ case "$command" in
             exit 2
         fi
 
-        [ -d /run/systemd/system ] || exit 0
+        [ -d $RUNTIME_DIR/system ] || exit 0
 
         if [[ "$command" =~ reexec|reload ]]; then
             SYSTEMD_BUS_TIMEOUT=${UPDATE_HELPER_USER_TIMEOUT_SEC}s systemctl reload "user@*.service"
@@ -192,8 +202,13 @@ case "$command" in
         fi
         ;;
 
-    clean-state)
-        # Not used anymore, to be removed
+    clean-state) # called once from %transfiletriggerin
+
+        # Any dont-disable markers left at this point were created during this
+        # transaction but never consumed (i.e. no matching %preun ran), which
+        # means they are from a fresh install rather than a rename. Wipe them
+        # so they cannot interfere with a future removal transaction.
+        rm -rf $STATE_DIR
         ;;
 
     *)

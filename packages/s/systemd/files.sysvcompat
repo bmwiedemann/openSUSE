@@ -1,9 +1,11 @@
 #
 # Please keep the list sorted (with `LC_ALL=C sort`).
 #
+%if %{with docs}
 %{_mandir}/man8/rc-local.service.8.gz
 %{_mandir}/man8/systemd-rc-local-generator.8.gz
 %{_mandir}/man8/systemd-sysv-generator.8.gz
+%endif
 %{_systemd_util_dir}/systemd-sysv-install
 %{_systemdgeneratordir}/systemd-rc-local-generator
 %{_systemdgeneratordir}/systemd-sysv-generator

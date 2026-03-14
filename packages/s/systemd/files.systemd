@@ -242,17 +242,13 @@
 %{_datadir}/zsh/site-functions/_systemd
 %{_datadir}/zsh/site-functions/_systemd-analyze
 %{_datadir}/zsh/site-functions/_systemd-delta
-%if %{with upstream}
 %{_datadir}/zsh/site-functions/_systemd-id128
-%endif
 %{_datadir}/zsh/site-functions/_systemd-inhibit
 %{_datadir}/zsh/site-functions/_systemd-path
 %{_datadir}/zsh/site-functions/_systemd-run
 %{_datadir}/zsh/site-functions/_systemd-tmpfiles
 %{_datadir}/zsh/site-functions/_timedatectl
-%if %{with upstream}
 %{_datadir}/zsh/site-functions/_userdbctl
-%endif
 %{_datadir}/zsh/site-functions/_varlinkctl
 %endif
 %{_distconfdir}/profile.d/70-systemd-shell-extra.sh
@@ -263,7 +259,7 @@
 %endif
 %{_libdir}/systemd/libsystemd-core-%{base_version}-%{release}.so
 %{_libdir}/systemd/libsystemd-shared-%{base_version}-%{release}.so
-%if %{without bootstrap}
+%if %{with docs}
 %{_mandir}/man1/busctl.1.gz
 %{_mandir}/man1/coredumpctl.1.gz
 %{_mandir}/man1/hostnamectl.1.gz

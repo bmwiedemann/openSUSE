@@ -22,7 +22,6 @@
 %{_bindir}/oomctl
 %endif
 %if %{with upstream}
-%{_bindir}/systemd-mute-console
 %{_bindir}/systemd-mstack
 %endif
 %{_bindir}/systemd-mute-console
@@ -43,7 +42,7 @@
 %{_datadir}/zsh/site-functions/_oomctl
 %endif
 %{_distconfdir}/ssh/ssh_config.d/20-systemd-ssh-proxy.conf
-%if %{without bootstrap}
+%if %{with docs}
 %if %{with upstream}
 %{_mandir}/man1/mount.mstack.1.gz
 %endif

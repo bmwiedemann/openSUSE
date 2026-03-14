@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Mar 13 17:38:09 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Import commit (merge of v259.5)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/e53173d15f11454a5770e7732e3eaed3105c11fc...58a9b1726da0e2c89665897ca7e107315b2389e0
+
+-------------------------------------------------------------------
+Fri Mar 13 14:26:39 UTC 2026 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- systemd-container: require libarchive instead of tar, since
+  https://github.com/systemd/systemd/commit/a7c8f92d1f937113a279adbe62399f6f0773473f
+
+-------------------------------------------------------------------
+Fri Mar 13 08:33:43 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- systemd-update-helper: fix the clean-state command only removing
+  $STATE_DIR/system instead of $STATE_DIR/.
+
+- systemd-update-helper: add --root option for testing convenience
+
+  It allows the tests to redirect them under a temporary directory via --root
+  instead of patching the script with sed.
+
+-------------------------------------------------------------------
+Thu Mar 12 17:48:58 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Import commit e53173d15f11454a5770e7732e3eaed3105c11fc (merge of v259.4)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/1e9dbf558f2578c5f0a38a20cd93950de5d7b648...e53173d15f11454a5770e7732e3eaed3105c11fc
+
+-------------------------------------------------------------------
+Thu Mar 12 17:34:09 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- systemd-update-helper: fix incorrect skipping of systemctl disable during
+  package removal (bsc#1245551)
+
+  This bug was caused by stale dont-disable markers left over from a previous
+  install transaction. Introduce a new command 'clean-state' for
+  systemd-update-helper, which is called once via a %transfiletriggerin in the
+  systemd package at the end of any transaction installing unit files, ensuring
+  markers cannot persist across transactions.
+
+-------------------------------------------------------------------
+Thu Mar 12 14:19:09 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: introduce %bcond_without docs to allow skipping man pages and devel-doc
+
+  Add a new %bcond_without docs conditional that disables man page and HTML doc
+  generation (-Dman, -Dhtml meson options) when building with --without docs.
+
+-------------------------------------------------------------------
+Tue Mar 10 21:43:04 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- systemd-update-helper: fix do_install_units() incorrectly returning 1 when no
+  units need preset.
+
+-------------------------------------------------------------------
 Wed Mar  4 13:34:23 UTC 2026 - Franck Bui <fbui@suse.com>
 
 - Import commit 1e9dbf558f2578c5f0a38a20cd93950de5d7b648 (merge of v259.3)

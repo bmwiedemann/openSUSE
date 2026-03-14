@@ -3,7 +3,7 @@
 #
 %dir %{_systemd_util_dir}/boot
 %dir %{_systemd_util_dir}/boot/efi
-%if %{without bootstrap}
+%if %{with docs}
 %{_mandir}/man5/loader.conf.5.gz
 %{_mandir}/man7/linuxaa64.efi.stub.7.gz
 %{_mandir}/man7/linuxia32.efi.stub.7.gz

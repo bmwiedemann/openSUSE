@@ -76,6 +76,8 @@
 %{_libdir}/cryptsetup/libcryptsetup-token-systemd-fido2.so
 %{_libdir}/cryptsetup/libcryptsetup-token-systemd-pkcs11.so
 %{_libdir}/cryptsetup/libcryptsetup-token-systemd-tpm2.so
+%endif
+%if %{with docs}
 %{_mandir}/man1/bootctl.1.gz
 %{_mandir}/man1/systemd-cryptenroll.1.gz
 %{_mandir}/man5/crypttab.5.gz
@@ -177,6 +179,8 @@
 %{_mandir}/man8/systemd-volatile-root.8.gz
 %{_mandir}/man8/systemd-volatile-root.service.8.gz
 %{_mandir}/man8/udevadm.8.gz
+%endif
+%if %{without bootstrap}
 %{_prefix}/lib/kernel/install.conf
 %{_prefix}/lib/kernel/install.d/50-depmod.install
 %{_prefix}/lib/kernel/install.d/90-loaderentry.install
@@ -189,6 +193,7 @@
 %{_prefix}/lib/pcrlock.d/700-action-efi-exit-boot-services.pcrlock.d/300-present.pcrlock
 %{_prefix}/lib/pcrlock.d/700-action-efi-exit-boot-services.pcrlock.d/600-absent.pcrlock
 %{_prefix}/lib/pcrlock.d/750-enter-initrd.pcrlock
+%{_prefix}/lib/pcrlock.d/770-nvpcr-separator.pcrlock
 %{_prefix}/lib/pcrlock.d/800-leave-initrd.pcrlock
 %{_prefix}/lib/pcrlock.d/850-sysinit.pcrlock
 %{_prefix}/lib/pcrlock.d/900-ready.pcrlock

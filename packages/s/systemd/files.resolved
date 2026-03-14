@@ -15,6 +15,7 @@
 %{_datadir}/polkit-1/actions/org.freedesktop.resolve1.policy
 %{_datadir}/zsh/site-functions/_resolvectl
 %{_libdir}/libnss_resolve.so.2
+%if %{with docs}
 %{_mandir}/man1/resolvectl.1.gz
 %{_mandir}/man5/org.freedesktop.resolve1.5.gz
 %{_mandir}/man5/resolved.conf.5.gz
@@ -24,6 +25,7 @@
 %{_mandir}/man8/nss-resolve.8.gz
 %{_mandir}/man8/systemd-resolved.8.gz
 %{_mandir}/man8/systemd-resolved.service.8.gz
+%endif
 %{_systemd_util_dir}/resolv.conf
 %{_systemd_util_dir}/resolved.conf
 %{_systemd_util_dir}/systemd-resolved

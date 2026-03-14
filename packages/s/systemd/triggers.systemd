@@ -20,6 +20,13 @@ assert(rpm.execute("/usr/lib/systemd/systemd-update-helper", "system-reload-rest
 %transfiletriggerin -P 900899 -p <lua> -- /usr/lib/systemd/user /etc/systemd/user
 assert(rpm.execute("/usr/lib/systemd/systemd-update-helper", "user-reload-restart"))
 
+%transfiletriggerin -P 900800 -p <lua> -- /usr/lib/systemd/system /usr/lib/systemd/user
+-- Clean up the rpm scriptlet state directory after all other %transfiletriggerin
+-- scriptlets have run. This removes stale dont-disable markers that were set by
+-- %pre during a fresh install (as opposed to a rename), preventing them from
+-- incorrectly suppressing disable in a future removal transaction (bsc#1245551).
+assert(rpm.execute("/usr/lib/systemd/systemd-update-helper", "clean-state"))
+
 %transfiletriggerpostun -P 1000100 -p <lua> -- /usr/lib/systemd/system /etc/systemd/system
 -- On removal, we need to run daemon-reload after any units have been
 -- removed.

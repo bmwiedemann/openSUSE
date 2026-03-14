@@ -1,7 +1,6 @@
 #
 # spec file for package systemd
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,9 +31,9 @@
 %bcond_with obs_service_set_version
 
 %if %{without obs_service_set_version}
-%define systemd_version    259.3
+%define systemd_version    259.5
 %define systemd_release    0
-%define archive_version    +suse.4.g1e9dbf558f
+%define archive_version    +suse.6.g58a9b1726d
 %endif
 
 %define _testsuitedir %{_systemd_util_dir}/tests
@@ -60,6 +59,7 @@
 %else
 %global mini %nil
 %bcond_without  apparmor
+%bcond_without  docs
 %bcond_without  homed
 %bcond_without  importd
 %bcond_without  journal_remote
@@ -89,15 +89,19 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if %{without bootstrap}
 BuildRequires:  bpftool
 BuildRequires:  clang
-BuildRequires:  docbook-xsl-stylesheets
 %if %{with apparmor}
 BuildRequires:  libapparmor-devel
 %endif
 BuildRequires:  libgcrypt-devel
-BuildRequires:  libxslt-tools
 # python is only required for generating systemd.directives.xml
 BuildRequires:  python3-base
+%endif
+%if %{with docs}
+BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  libxslt-tools
 BuildRequires:  python3-lxml
+%endif
+%if %{without bootstrap}
 BuildRequires:  pkgconfig(audit)
 BuildRequires:  pkgconfig(libbpf)
 BuildRequires:  pkgconfig(libdw)
@@ -452,6 +456,7 @@ https://en.opensuse.org/Systemd-boot
 [2] https://systemd.io/BOOT_LOADER_INTERFACE/
 %endif
 
+%if %{without bootstrap}
 %package container
 Summary:        Systemd tools for container management
 License:        LGPL-2.1-or-later
@@ -461,8 +466,8 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(zlib)
 %endif
 Requires:       %{name} = %{version}-%{release}
-# import-tar needs tar and gpg
-Requires:       /usr/bin/tar
+# import-tar needs libarchive and gpg
+Requires:       libarchive13
 Requires:       /usr/bin/gpg
 %systemd_requires
 Obsoletes:      nss-mymachines < %{version}-%{release}
@@ -484,6 +489,7 @@ UID/GIDs ranges used by containers to useful names.
 
 To activate this NSS module, you will need to include it in /etc/nsswitch.conf,
 see nss-mymachines(8) manpage for more details.
+%endif
 
 %if %{with networkd}
 %package networkd
@@ -697,7 +703,9 @@ Unified Kernel Image (UKI).
 
 %if %{without bootstrap}
 %lang_package
+%endif
 
+%if %{with docs}
 %package doc
 Summary:        Additional documentation or doc formats for systemd
 License:        LGPL-2.1-or-later
@@ -777,7 +785,6 @@ for the C APIs.
         -Dfdisk=%{disabled_with bootstrap} \
         -Dgcrypt=%{disabled_with bootstrap} \
         -Dgnutls=%{disabled_with bootstrap} \
-        -Dhtml=%{disabled_with bootstrap} \
         -Dima=%{when_not bootstrap} \
         -Dkernel-install=%{when_not bootstrap} \
         -Dlibarchive=%{disabled_with bootstrap} \
@@ -790,7 +797,6 @@ for the C APIs.
         -Dlibcryptsetup=%{disabled_with bootstrap} \
         -Dlibcryptsetup-plugins=%{disabled_with bootstrap} \
         -Dlibcurl=%{disabled_with bootstrap} \
-        -Dman=%{disabled_with bootstrap} \
         -Dmountfsd=%{when_not bootstrap} \
         -Dnsresourced=%{when_not bootstrap} \
         -Dmicrohttpd=%{enabled_with journal_remote} \
@@ -816,8 +822,10 @@ for the C APIs.
         -Dapparmor=%{enabled_with apparmor} \
         -Dcoredump=%{when_not bootstrap} \
         -Dhomed=%{enabled_with homed} \
+        -Dhtml=%{enabled_with docs} \
         -Dimportd=%{enabled_with importd} \
         -Dmachined=%{when machined} \
+        -Dman=%{enabled_with docs} \
         -Dnetworkd=%{when networkd} \
         -Dportabled=%{when portabled} \
         -Dremote=%{enabled_with journal_remote} \
@@ -873,8 +881,8 @@ export BRP_PESIGN_FILES="%{_systemd_util_dir}/boot/efi/systemd-bootriscv64.efi"
 # Don't ship resolvconf symlink for now as it conflicts with the binary shipped
 # by openresolv and provides limited compatibility only.
 %if %{with resolved}
-rm %{buildroot}%{_sbindir}/resolvconf
-rm %{buildroot}%{_mandir}/man1/resolvconf.1*
+rm -f %{buildroot}%{_sbindir}/resolvconf
+rm -f %{buildroot}%{_mandir}/man1/resolvconf.1*
 %endif
 
 install -m0755 -D %{SOURCE3} %{buildroot}/%{_systemd_util_dir}/systemd-update-helper
@@ -1035,7 +1043,12 @@ install -m0644 test/integration-tests/README.md %{buildroot}%{_testsuitedir}/int
 %if %{without bootstrap}
 %find_lang systemd
 %else
-rm -f  %{buildroot}%{_journalcatalogdir}/*
+rm -f %{buildroot}%{_journalcatalogdir}/*
+rm -f %{buildroot}%{_bindir}/systemd-nspawn
+rm -f %{buildroot}%{_systemd_util_dir}/*/systemd-nspawn@.service
+%endif
+
+%if %{without docs}
 rm -fr %{buildroot}%{_docdir}/systemd
 %endif
 
@@ -1149,6 +1162,7 @@ fi
 %ldconfig_scriptlets -n libsystemd0%{?mini}
 %ldconfig_scriptlets -n libudev%{?mini}1
 
+%if %{without bootstrap}
 %pre container
 %systemd_pre systemd-mountfsd.socket
 %systemd_pre systemd-nsresourced.socket
@@ -1172,11 +1186,12 @@ fi
 %endif
 
 %post container
-%if %{with machined}
-%ldconfig
 %systemd_post systemd-mountfsd.socket
 %systemd_post systemd-nsresourced.socket
+%if %{with machined}
+%ldconfig
 %systemd_post machines.target
+%endif
 %endif
 
 %if %{with journal_remote}
@@ -1295,8 +1310,10 @@ rm -rf \
 %include %{SOURCE206}
 %endif
 
+%if %{without bootstrap}
 %files container
 %include %{SOURCE202}
+%endif
 
 %if %{with networkd}
 %files networkd
@@ -1330,7 +1347,9 @@ rm -rf \
 %if %{without bootstrap}
 %files lang -f systemd.lang
 %include %{SOURCE210}
+%endif
 
+%if %{with docs}
 %files doc
 %{_docdir}/systemd/
 %include %{SOURCE213}

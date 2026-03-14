@@ -19,6 +19,7 @@
 %{_datadir}/polkit-1/actions/org.freedesktop.network1.policy
 %{_datadir}/polkit-1/rules.d/60-systemd-networkd.rules
 %{_datadir}/zsh/site-functions/_networkctl
+%if %{with docs}
 %{_mandir}/man1/networkctl.1.gz
 %{_mandir}/man5/networkd.conf.5.gz
 %{_mandir}/man5/networkd.conf.d.5.gz
@@ -29,6 +30,7 @@
 %{_mandir}/man8/systemd-networkd-wait-online@.service.8.gz
 %{_mandir}/man8/systemd-networkd.8.gz
 %{_mandir}/man8/systemd-networkd.service.8.gz
+%endif
 %{_systemd_util_dir}/network/80-6rd-tunnel.link
 %{_systemd_util_dir}/network/80-6rd-tunnel.network
 %{_systemd_util_dir}/network/80-auto-link-local.network.example

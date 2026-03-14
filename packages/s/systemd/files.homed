@@ -12,6 +12,7 @@
 %{_datadir}/dbus-1/system.d/org.freedesktop.home1.conf
 %{_datadir}/polkit-1/actions/org.freedesktop.home1.policy
 %{_distconfdir}/ssh/sshd_config.d/20-systemd-userdb.conf
+%if %{with docs}
 %{_mandir}/man1/homectl.1.gz
 %{_mandir}/man1/systemd-homed-firstboot.service.1.gz
 %{_mandir}/man5/homed.conf.5.gz
@@ -20,6 +21,7 @@
 %{_mandir}/man8/pam_systemd_home.8.gz
 %{_mandir}/man8/systemd-homed.8.gz
 %{_mandir}/man8/systemd-homed.service.8.gz
+%endif
 %{_pam_moduledir}/pam_systemd_home.so
 %{_systemd_util_dir}/homed.conf
 %{_systemd_util_dir}/systemd-homed
