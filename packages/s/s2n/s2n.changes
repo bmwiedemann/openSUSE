@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Mar  3 07:34:12 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.7.1
+  * fix: restrict mldsa signatures based on certificate (#5713)
+  * feat(bindings): expose signature scheme API (#5708)
+  * build(deps): update crabgrind requirement from 0.1 to 0.2 in
+    /tests/regression in the all-cargo-updates group across 1 directory (#5716)
+  * ci: fix typo in readme (#5718)
+  * feat(bindings): add support for metric aggregation (#5709)
+  * fix: correct calculation of extensions bitfield size (#5719)
+  * build(deps): bump aws-actions/configure-aws-credentials from 5.1.1 to
+    6.0.0 in /.github/workflows in the all-gha-updates group (#5722)
+  * nix: Use rustup toolchain over nix packages rustc in devshell (#5712)
+  * Add X25519MLKEM768 benchmarks (#5616)
+  * ci: temporary replace clang-format-action (#5735)
+  * fix(benches): reduce flakiness in s2n-tls-bench daily job (#5728)
+  * chore: fix sidetrail timings (#5729)
+  * ci: Add CI guardrail for BoringSSL fork (#5715)
+  * feat(metrics): add EMF emitter (#5730)
+  * ci: fix fuzz failure artifact upload (#5742)
+  * chore: unpin rtshark version (#5743)
+  * ci: fix conventional commit check (#5744)
+  * fix(bindings): tie ClientHello lifetime to Fingerprint (#5747)
+  * fix: add bound check for Yc_length against server DH params (#5737)
+  * chore: unpin rust integration dependencies (#5748)
+  * build(deps): bump actions/checkout from 4 to 6 in /.github/workflows
+    in the all-gha-updates group (#5746)
+  * fix: Add additional verification checks to ECDSA curves (#5736)
+  * fix(bindings): use max_align_t for allocator alignment (#5745)
+  * chore: Delete all code that references Kyber (#5705)
+  * ci: revert clang-format workflow (#5751)
+  * ci: trigger PR title check upon edit (#5749)
+  * fix(quic support): Wipe buffers after reading post-handshake message (#5750)
+  * refactor(integration): utilities module with cert materials (#5753)
+  * build(deps): bump baptiste0928/cargo-install from 3.3.2 to 3.4.0
+    in /.github/workflows in the all-gha-updates group (#5758)
+  * build(deps): update strum requirement from 0.27 to 0.28 in /bindings/rust/standard (#5759)
+  * test(integration): add coverage of error types for cert related failures (#5755)
+  * refactor: Use strong libcrypto randomness instead of custom random (#5726)
+  * feat: add clearer errors for hostname, security policy failures (#5761)
+  * docs: Add security reporting policy (#5734)
+  * fix: rust alert getter should not modify (#5756)
+  * Necessary changes were made in the s2n module to support AIX OS. (#5724)
+  * fix: Use logical OR instead of bitwise OR (#5763)
+  * build(deps): bump actions/upload-artifact from 6 to 7 in /.github/workflows
+    in the all-gha-updates group (#5764)
+  * Merge commit from fork
+  * revert: "fix: rust alert getter should not modify" (#5766)
+- Update upstream URL in Source field
+
+-------------------------------------------------------------------
 Fri Feb  6 11:23:25 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.7.0
