@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Feb  8 14:20:03 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 3.41:
+  * engines/io_uring: remove unnecessary SQ full check
+  * io_uring: ensure accurate real_file_size setup for full device access with
+    PI enabled
+  * Fix: parse.c opt_len() to use minimal distance to delimiter to determine
+    option length
+  * io_u: fix offset calculation in randtrimwrite
+  * engines/http: fix file name
+  * engines/http: Add S3 security token support
+  * io_u: get io_u from io_u_freelist when TD_FSYNCING
+  * io_uring CQ reap cleanup
+  * Add 'filetype' option
+  * handle out-of-order write completions in verify state
+  * engines/http: Add support for range reads
+  * Sprandom
+  * Fix mandoc warnings
+  * sprandom: Fix several issues found in the sprandom implementation
+  * t/verify-state.c fixes/improvements
+
+- update to 3.40:
+  * t/read-to-pipe-async: fix -DNDEBUG support
+  * docs: update docs for verify_mode=compare of io_uring_cmd
+  * dfs: fix fail to load dfs engine
+  * Fix spelling error in IO uring engine.
+  * Fix hang on Windows when multiple --client args are present
+  * Add important info about http_host and file formatting to s3 example
+  * oslib: blkzoned: add missing blkzoned_move_zone_wp() stub
+
+- update to 3.39:
+  * Add .readthedocs.yaml file
+  * t/run-fio-tests: remove redundant pre_success lines
+  * t/jobs/t0036,0037: add tests for verify_state_save/load options
+
+-------------------------------------------------------------------
 Wed Jul  2 09:00:37 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Deactivate glusterfs backend for fio
