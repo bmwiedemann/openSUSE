@@ -1,7 +1,7 @@
 #
 # spec file for package redumper
 #
-# Copyright (c) 2024-2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           redumper
-Version:        532
+Version:        705
 Release:        0
 Summary:        Low level CD dumper utility
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/CD/Grabbers
 URL:            https://github.com/superg/redumper/
-Source:         https://github.com/superg/redumper/archive/refs/tags/build_%{version}.tar.gz#/%{name}-build_%{version}.tar.gz
+Source:         https://github.com/superg/redumper/archive/refs/tags/b%{version}.tar.gz#/%{name}-b%{version}.tar.gz
 BuildRequires:  clang19
 BuildRequires:  cmake
 BuildRequires:  libstdc++6-devel-gcc15
@@ -40,7 +40,7 @@ intelligent audio CD offset detection and a lot of other features.
 redumper also is a general purpose DVD/HD-DVD/Blu-ray disc dumper.
 
 %prep
-%autosetup -p1 -n redumper-build_%{version}
+%autosetup -p1 -n redumper-b%{version}
 
 %build
 %define _lto_cflags %{nil}

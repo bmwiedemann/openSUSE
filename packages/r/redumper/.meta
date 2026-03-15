@@ -5,5 +5,6 @@
 It supports incremental dumps, advanced SCSI/C2 repair,
 intelligent audio CD offset detection and a lot of other features.
 redumper also is a general purpose DVD/HD-DVD/Blu-ray disc dumper.</description>
+  <devel project="multimedia:apps" package="redumper"/>
   <url>https://github.com/superg/redumper/</url>
 </package>
