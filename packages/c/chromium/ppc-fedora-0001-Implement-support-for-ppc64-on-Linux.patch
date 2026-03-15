@@ -382,8 +382,8 @@ Index: chromium-144.0.7559.59/third_party/breakpad/breakpad/src/client/linux/mic
      UContextReader::FillCPUContext(&cpu, ucontext_, float_state_);
  #else
      UContextReader::FillCPUContext(&cpu, ucontext_);
-@@ -618,7 +624,9 @@ class MicrodumpWriter {
-   void* Alloc(unsigned bytes) { return dumper_->allocator()->Alloc(bytes); }
+@@ -628,7 +628,9 @@
+   }
  
    const ucontext_t* const ucontext_;
 -#if GOOGLE_BREAKPAD_CRASH_CONTEXT_HAS_FLOAT_STATE

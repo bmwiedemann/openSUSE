@@ -1,5 +1,5 @@
---- chromium-144.0.7524.0/ui/gfx/paint_vector_icon.cc	2025/11/18 14:33:28	1.1
-+++ chromium-144.0.7524.0/ui/gfx/paint_vector_icon.cc	2025/11/18 14:35:00
+--- chromium-146.0.7680.71/ui/gfx/paint_vector_icon.cc	2026/03/13 08:05:03	1.1
++++ chromium-146.0.7680.71/ui/gfx/paint_vector_icon.cc	2026/03/13 08:05:52
 @@ -235,7 +235,7 @@
          break;
  
@@ -9,7 +9,7 @@
          path.lineTo(arg(0), last_point.fY);
          break;
        }
-@@ -245,7 +246,7 @@
+@@ -245,7 +245,7 @@
          break;
  
        case V_LINE_TO: {
@@ -18,7 +18,7 @@
          path.lineTo(last_point.fX, arg(0));
          break;
        }
-@@ -273,7 +275,7 @@
+@@ -273,7 +273,7 @@
          // details.
          // Note that |x1| and |y1| will correspond to the sole control point if
          // calculating a quadratic curve.
@@ -27,8 +27,8 @@
          SkScalar delta_x = 0;
          SkScalar delta_y = 0;
          if (IsCommandTypeCurve(previous_command_type)) {
---- chromium-144.0.7524.0/components/autofill/core/browser/payments/full_card_request.cc	2025/11/21 14:06:04	1.1
-+++ chromium-144.0.7524.0/components/autofill/core/browser/payments/full_card_request.cc	2025/11/21 14:06:36
+--- chromium-146.0.7680.71/components/autofill/core/browser/payments/full_card_request.cc	2026/03/13 08:06:18	1.1
++++ chromium-146.0.7680.71/components/autofill/core/browser/payments/full_card_request.cc	2026/03/13 08:06:35
 @@ -124,7 +124,7 @@
    request_->card = std::move(card);
    request_->last_committed_primary_main_frame_origin =
@@ -38,3 +38,14 @@
    request_->selected_challenge_option = std::move(selected_challenge_option);
  
    should_unmask_card_ = request_->card.masked() ||
+--- chromium-146.0.7680.71/chrome/browser/net/profile_network_context_service.cc	2026/03/13 08:06:55	1.1
++++ chromium-146.0.7680.71/chrome/browser/net/profile_network_context_service.cc	2026/03/13 08:07:10
+@@ -1287,7 +1287,7 @@
+ ProfileNetworkContextService::GetEncryptedCachePrimaryKey() {
+   std::string encoded_encrypted_primary_key = profile_->GetPrefs()->GetString(
+       enterprise_connectors::kEncryptedCachePrimaryKey);
+-  return base::Base64Decode(encoded_encrypted_primary_key).value_or({});
++  return base::Base64Decode(encoded_encrypted_primary_key).value_or(std::vector<uint8_t>{});
+ }
+ 
+ #endif  // BUILDFLAG(ENTERPRISE_CACHE_ENCRYPTION)

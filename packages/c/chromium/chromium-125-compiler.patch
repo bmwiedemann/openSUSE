@@ -310,9 +310,9 @@ Index: chromium-144.0.7524.0/build/config/compiler/BUILD.gn
 -config("minimal_symbols") {
 +config("minimal_symbols") { }
 +config("xminimal_symbols") {
+   configs = []
    rustflags = []
    if (is_win) {
-     # Functions, files, and line tables only.
 @@ -3285,7 +3094,8 @@ config("minimal_symbols") {
  # This configuration contains function names only. That is, the compiler is
  # told to not generate debug information and the linker then just puts function

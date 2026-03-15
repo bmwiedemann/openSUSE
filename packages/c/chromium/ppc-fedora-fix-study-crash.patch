@@ -11,7 +11,7 @@ Index: chromium-144.0.7559.59/components/variations/proto/study.proto
 +    PPC64 = 5;
    }
  
-   // Enum to pass as optional bool.
+   // Possible states of the policy restriction filter.
 Index: chromium-144.0.7559.59/components/variations/service/variations_field_trial_creator.cc
 ===================================================================
 --- chromium-144.0.7559.59.orig/components/variations/service/variations_field_trial_creator.cc

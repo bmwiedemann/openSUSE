@@ -60,6 +60,7 @@
 %bcond_without noopenh264
 %define ffmpeg_version 59
 %bcond_with system_zstd
+# LLVM version
 %if 0%{?suse_version} > 1600
 # LLVM version
 %define llvm_version 21
@@ -131,7 +132,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        145.0.7632.159
+Version:        146.0.7680.80
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -191,11 +192,13 @@ Patch385:       chromium-142-rust_no_sanitize.patch
 Patch386:       chromium-143-libpng-unbundle.patch
 Patch387:       chromium-143-cookie_string_view.patch
 Patch389:       chromium-143-revert_rust_is_multiple_of.patch
-Patch390:       chromium-144-revert_gfx_value_or.patch
 Patch391:       chromium-145-blink_missing_include.patch
 Patch392:       chromium-145-use_unrar.patch
 Patch393:       force-rust-nightly.patch
 Patch394:       chromium-145-swiftshader-missing-include.patch
+Patch395:       chromium-146-mojo_chmod_mode.patch
+Patch396:       chromium-146-value_or.patch
+Patch397:       chromium-146-has_no_clone.patch
 # conditionally applied patches ppc64le only
 # where applicable patch numbers from fedora specfile + 100
 Patch400:       chromium-141-glibc-2.42-SYS_SECCOMP.patch
@@ -275,7 +278,17 @@ Patch1050:      chromium-140-old-flac.patch
 # revert upstream patch ending in compile error
 # error: static assertion expression is not an integral constant expression
 Patch1060:       chromium-24264eefbfd3464161764f31a2752c5327719452.patch
-Patch1061:       chromium-4f46f03a6c6d4c6efc1ad5d0d78030d02326f967.patch
+Patch1061:       chromium-146-static-assert.patch
+# llvm19 segfaults in
+# ../services/network/public/cpp/permissions_policy/origin_with_possible_wildcards.cc:99:1: current parser token 'std'
+Patch1062:       chromium-146-clang-19-crash.patch
+# error:  [44980s] ../components/enterprise/client_certificates/core/private_key_factory.cc:126:14: error: expression is not assignable
+Patch1063:       chromium-146-keyfactory.patch
+# error with llvm < 23
+# clang++: error: unknown argument: '-fsanitize-ignore-for-ubsan-feature=array-bounds'
+Patch1066:       chromium-146-ignore-for-ubsan.patch
+Patch1067:       chromium-146-bytemuck.patch
+#
 Patch1080:       rollup.patch
 
 # end conditionally applied patches
@@ -549,7 +562,14 @@ WebDriver is an open source tool for automated testing of webapps across many br
 clang_version="$(clang --version | sed -n 's/clang version //p')"
 if [[ $(echo ${clang_version} | cut -d. -f1) -lt 21 ]]; then
 %patch -p1 -R -P 1060
-%patch -p1 -R -P 1061
+%patch -p1 -P 1061
+%patch -p1 -P 1062
+fi
+%patch -p1 -P 1063
+
+if [[ $(echo ${clang_version} | cut -d. -f1) -lt 23 ]]; then
+%patch -p1 -P 1066
+%patch -p1 -P 1067
 fi
 
 ## ROLLUP_HACK
@@ -651,6 +671,7 @@ keeplibs=(
     third_party/catapult/third_party/html5lib-1.1/
     third_party/catapult/third_party/polymer
     third_party/catapult/third_party/six
+    third_party/catapult/third_party/typ
     third_party/catapult/tracing/third_party/d3
     third_party/catapult/tracing/third_party/gl-matrix
     third_party/catapult/tracing/third_party/jpeg-js
@@ -801,7 +822,6 @@ keeplibs=(
     third_party/simplejson
     third_party/skia
     third_party/skia/include/third_party/vulkan/
-    third_party/skia/third_party/vulkan
     third_party/smhasher
     third_party/spirv-headers
     third_party/spirv-tools

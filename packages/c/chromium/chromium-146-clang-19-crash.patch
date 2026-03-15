@@ -1,0 +1,30 @@
+Author: Andres Salomon <dilinger@queued.net>
+
+Whee, this code makes clang-19 crash!
+
+clang++-19: error: clang frontend command failed with exit code 139 (use -v to see invocation)
+Debian clang version 19.1.7 (20+b2)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /usr/bin
+clang++-19: note: diagnostic msg: 
+********************
+
+PLEASE ATTACH THE FOLLOWING FILES TO THE BUG REPORT:
+Preprocessed source(s) and associated run script(s) are located at:
+clang++-19: note: diagnostic msg: ../clang-crashreports/origin_with_possible_wildcards-399e2d.cpp
+clang++-19: note: diagnostic msg: ../clang-crashreports/origin_with_possible_wildcards-399e2d.sh
+clang++-19: note: diagnostic msg: 
+
+
+--- a/services/network/public/cpp/permissions_policy/origin_with_possible_wildcards.cc
++++ b/services/network/public/cpp/permissions_policy/origin_with_possible_wildcards.cc
+@@ -94,7 +94,7 @@ bool OriginWithPossibleWildcards::DoesMa
+ }
+ 
+ bool operator==(const OriginWithPossibleWildcards& lhs,
+-                const OriginWithPossibleWildcards& rhs) = default;
++                const OriginWithPossibleWildcards& rhs) { return lhs.csp_source == rhs.csp_source; }
+ 
+ std::strong_ordering operator<=>(const OriginWithPossibleWildcards& lhs,
+                                  const OriginWithPossibleWildcards& rhs) {

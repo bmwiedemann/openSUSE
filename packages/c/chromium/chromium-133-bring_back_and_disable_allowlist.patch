@@ -31,10 +31,10 @@ Index: chromium-142.0.7444.3/media/ffmpeg/ffmpeg_common.cc
 ===================================================================
 --- chromium-142.0.7444.3.orig/media/ffmpeg/ffmpeg_common.cc
 +++ chromium-142.0.7444.3/media/ffmpeg/ffmpeg_common.cc
-@@ -17,6 +17,7 @@
- #include "media/base/audio_timestamp_helper.h"
+@@ -19,6 +19,7 @@
  #include "media/base/decoder_buffer.h"
  #include "media/base/encryption_scheme.h"
+ #include "media/base/limits.h"
 +#include "media/base/media_switches.h"
  #include "media/base/media_util.h"
  #include "media/base/supported_types.h"

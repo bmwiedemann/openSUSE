@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Sat Mar 14 06:55:38 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 146.0.7680.80:
+  * CVE-2026-3909: Out of bounds write in Skia (boo#1259659)
+
+-------------------------------------------------------------------
+Fri Mar 13 16:12:27 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- Chromium 146.0.7680.75:
+  * CVE-2026-3910: Inappropriate implementation in V8 (boo#1259648)
+
+-------------------------------------------------------------------
+Fri Mar 13 12:43:03 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- fix ffmpeg build on ppc64le
+- modified patches: 
+  * ppc-debian-0003-third_party-ffmpeg-Add-ppc64-generated-config.patch
+
+-------------------------------------------------------------------
+Thu Mar 12 23:08:40 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- modified patches:
+  * chromium-146-value_or.patch (from debian) 
+- removed patches:
+  * chromium-144-revert_gfx_value_or.patch (contained above)
+
+-------------------------------------------------------------------
+Thu Mar 12 11:28:31 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- Chromium 146.0.7680.71 (released 2026-03-11) (boo#1259530)
+  * CVE-2026-3913: Heap buffer overflow in WebML
+  * CVE-2026-3914: Integer overflow in WebML
+  * CVE-2026-3915: Heap buffer overflow in WebML
+  * CVE-2026-3916: Out of bounds read in Web Speech
+  * CVE-2026-3917: Use after free in Agents
+  * CVE-2026-3918: Use after free in WebMCP
+  * CVE-2026-3919: Use after free in Extensions
+  * CVE-2026-3920: Out of bounds memory access in WebML
+  * CVE-2026-3921: Use after free in TextEncoding
+  * CVE-2026-3922: Use after free in MediaStream
+  * CVE-2026-3923: Use after free in WebMIDI
+  * CVE-2026-3924: Use after free in WindowDialog
+  * CVE-2026-3925: Incorrect security UI in LookalikeChecks
+  * CVE-2026-3926: Out of bounds read in V8
+  * CVE-2026-3927: Incorrect security UI in PictureInPicture
+  * CVE-2026-3928: Insufficient policy enforcement in Extensions
+  * CVE-2026-3929: Side-channel information leakage in ResourceTiming
+  * CVE-2026-3930: Unsafe navigation in Navigation
+  * CVE-2026-3931: Heap buffer overflow in Skia
+  * CVE-2026-3932: Insufficient policy enforcement in PDF
+  * CVE-2026-3934: Insufficient policy enforcement in ChromeDriver
+  * CVE-2026-3935: Incorrect security UI in WebAppInstalls
+  * CVE-2026-3936: Use after free in WebView
+  * CVE-2026-3937: Incorrect security UI in Downloads
+  * CVE-2026-3938: Insufficient policy enforcement in Clipboard
+  * CVE-2026-3939: Insufficient policy enforcement in PDF
+  * CVE-2026-3940: Insufficient policy enforcement in DevTools
+  * CVE-2026-3941: Insufficient policy enforcement in DevTools
+  * CVE-2026-3942: Incorrect security UI in PictureInPicture
+- added patches:
+  * chromium-146-mojo_chmod_mode.patch
+    (fix typo/pythonism in c code)
+  * chromium-146-value_or.patch
+    (error: no matching member function for call to 'value_or')
+  * chromium-146-has_no_clone.patch
+  * chromium-146-clang-19-crash.patch (from debian)
+  * chromium-146-keyfactory.patch (from debian)
+  * chromium-146-static-assert.patch (from debian)
+  * chromium-146-ignore-for-ubsan.patch (from debian)
+  * chromium-146-bytemuck.patch (from debian)
+- modified patches:
+  * chromium-125-compiler.patch
+  * chromium-133-bring_back_and_disable_allowlist.patch
+  * chromium-134-type-mismatch-error.patch
+  * chromium-145-use_unrar.patch
+  * force-rust-nightly.patch
+  * rollup.patch
+  * ppc-fedora-0001-Add-PPC64-support-for-boringssl.patch
+  * ppc-fedora-0002-third_party-libvpx-Remove-bad-ppc64-config.patch
+  * ppc-fedora-0001-Implement-support-for-ppc64-on-Linux.patch
+  * ppc-fedora-fix-study-crash.patch
+- removed patches:
+  * chromium-4f46f03a6c6d4c6efc1ad5d0d78030d02326f967.patch
+- keeplibs:
+  drop third_party/skia/third_party/vulkan (gone)
+  add  third_party/catapult/third_party/typ
+  (needed by base/tracing/protos/chrome_track_event_resources_grit)
+
+-------------------------------------------------------------------
 Wed Mar  4 06:28:03 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 145.0.7632.159 (boo#1259213)

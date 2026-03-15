@@ -1,8 +1,8 @@
-diff --git a/chrome/browser/safe_browsing/download_protection/file_analyzer.cc b/chrome/browser/safe_browsing/download_protection/file_analyzer.cc
-index 2a930f44908f4..095a1ac913334 100644
---- a/chrome/browser/safe_browsing/download_protection/file_analyzer.cc
-+++ b/chrome/browser/safe_browsing/download_protection/file_analyzer.cc
-@@ -78,11 +78,6 @@ void FileAnalyzer::Start(const base::FilePath& target_file_name,
+Index: chromium-146.0.7680.65/chrome/browser/safe_browsing/download_protection/file_analyzer.cc
+===================================================================
+--- chromium-146.0.7680.65.orig/chrome/browser/safe_browsing/download_protection/file_analyzer.cc
++++ chromium-146.0.7680.65/chrome/browser/safe_browsing/download_protection/file_analyzer.cc
+@@ -84,11 +84,6 @@ void FileAnalyzer::Start(const base::Fil
      return;
    }
  
@@ -14,3 +14,31 @@ index 2a930f44908f4..095a1ac913334 100644
  #if BUILDFLAG(IS_MAC)
    if (inspection_type == DownloadFileType::DMG) {
      StartExtractDmgFeatures();
+Index: chromium-146.0.7680.65/chrome/utility/safe_browsing/archive_analysis_delegate.h
+===================================================================
+--- chromium-146.0.7680.65.orig/chrome/utility/safe_browsing/archive_analysis_delegate.h
++++ chromium-146.0.7680.65/chrome/utility/safe_browsing/archive_analysis_delegate.h
+@@ -9,7 +9,9 @@
+ 
+ #include "base/files/file.h"
+ #include "chrome/utility/safe_browsing/zip_writer_delegate.h"
++#if USE_UNRAR
+ #include "third_party/unrar/google/unrar_delegates.h"
++#endif
+ #include "third_party/zlib/google/zip_reader.h"
+ 
+ namespace safe_browsing {
+Index: chromium-146.0.7680.65/chrome/services/file_util/obfuscated_archive_analysis_delegate.h
+===================================================================
+--- chromium-146.0.7680.65.orig/chrome/services/file_util/obfuscated_archive_analysis_delegate.h
++++ chromium-146.0.7680.65/chrome/services/file_util/obfuscated_archive_analysis_delegate.h
+@@ -7,7 +7,9 @@
+ 
+ #include "chrome/utility/safe_browsing/archive_analysis_delegate.h"
+ #include "components/enterprise/obfuscation/core/utils.h"
++#if USE_UNRAR
+ #include "third_party/unrar/google/unrar_wrapper.h"
++#endif
+ 
+ namespace safe_browsing {
+ 

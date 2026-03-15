@@ -1,6 +1,4 @@
-Index: chromium-145.0.7632.45/third_party/libvpx/source/config/linux/ppc64/vp8_rtcd.h
-===================================================================
---- chromium-145.0.7632.45.orig/third_party/libvpx/source/config/linux/ppc64/vp8_rtcd.h
+--- chromium-136.0.7103.48.orig/third_party/libvpx/source/config/linux/ppc64/vp8_rtcd.h	2025/05/14 22:49:40	1.1
 +++ /dev/null
 @@ -1,186 +0,0 @@
 -/*
@@ -189,9 +187,7 @@ Index: chromium-145.0.7632.45/third_party/libvpx/source/config/linux/ppc64/vp8_r
 -#endif
 -
 -#endif  // VP8_RTCD_H_
-Index: chromium-145.0.7632.45/third_party/libvpx/source/config/linux/ppc64/vp9_rtcd.h
-===================================================================
---- chromium-145.0.7632.45.orig/third_party/libvpx/source/config/linux/ppc64/vp9_rtcd.h
+--- chromium-136.0.7103.48.orig/third_party/libvpx/source/config/linux/ppc64/vp9_rtcd.h	2025/05/14 22:49:40	1.1
 +++ /dev/null
 @@ -1,119 +0,0 @@
 -/*
@@ -313,122 +309,7 @@ Index: chromium-145.0.7632.45/third_party/libvpx/source/config/linux/ppc64/vp9_r
 -#endif
 -
 -#endif  // VP9_RTCD_H_
-Index: chromium-145.0.7632.45/third_party/libvpx/source/config/linux/ppc64/vpx_config.asm
-===================================================================
---- chromium-145.0.7632.45.orig/third_party/libvpx/source/config/linux/ppc64/vpx_config.asm
-+++ /dev/null
-@@ -1,108 +0,0 @@
--@ This file was created from a .asm file
--@  using the ads2gas.pl script.
--.syntax unified
--.equ VPX_ARCH_ARM ,  0
--.equ ARCH_ARM ,  0
--.equ VPX_ARCH_AARCH64 ,  0
--.equ ARCH_AARCH64 ,  0
--.equ VPX_ARCH_MIPS ,  0
--.equ ARCH_MIPS ,  0
--.equ VPX_ARCH_X86 ,  0
--.equ ARCH_X86 ,  0
--.equ VPX_ARCH_X86_64 ,  0
--.equ ARCH_X86_64 ,  0
--.equ VPX_ARCH_PPC ,  1
--.equ ARCH_PPC ,  1
--.equ VPX_ARCH_LOONGARCH ,  0
--.equ ARCH_LOONGARCH ,  0
--.equ HAVE_NEON_ASM ,  0
--.equ HAVE_NEON ,  0
--.equ HAVE_NEON_DOTPROD ,  0
--.equ HAVE_NEON_I8MM ,  0
--.equ HAVE_SVE ,  0
--.equ HAVE_SVE2 ,  0
--.equ HAVE_MIPS32 ,  0
--.equ HAVE_DSPR2 ,  0
--.equ HAVE_MSA ,  0
--.equ HAVE_MIPS64 ,  0
--.equ HAVE_MMX ,  0
--.equ HAVE_SSE ,  0
--.equ HAVE_SSE2 ,  0
--.equ HAVE_SSE3 ,  0
--.equ HAVE_SSSE3 ,  0
--.equ HAVE_SSE4_1 ,  0
--.equ HAVE_AVX ,  0
--.equ HAVE_AVX2 ,  0
--.equ HAVE_AVX512 ,  0
--.equ HAVE_VSX ,  0
--.equ HAVE_MMI ,  0
--.equ HAVE_LSX ,  0
--.equ HAVE_LASX ,  0
--.equ HAVE_VPX_PORTS ,  1
--.equ HAVE_PTHREAD_H ,  1
--.equ HAVE_PTHREAD_SETNAME_NP ,  1
--.equ HAVE_UNISTD_H ,  0
--.equ CONFIG_DEPENDENCY_TRACKING ,  1
--.equ CONFIG_EXTERNAL_BUILD ,  1
--.equ CONFIG_INSTALL_DOCS ,  0
--.equ CONFIG_INSTALL_BINS ,  1
--.equ CONFIG_INSTALL_LIBS ,  1
--.equ CONFIG_INSTALL_SRCS ,  0
--.equ CONFIG_DEBUG ,  0
--.equ CONFIG_GPROF ,  0
--.equ CONFIG_GCOV ,  0
--.equ CONFIG_RVCT ,  0
--.equ CONFIG_GCC ,  1
--.equ CONFIG_MSVS ,  0
--.equ CONFIG_PIC ,  0
--.equ CONFIG_BIG_ENDIAN ,  0
--.equ CONFIG_CODEC_SRCS ,  0
--.equ CONFIG_DEBUG_LIBS ,  0
--.equ CONFIG_DEQUANT_TOKENS ,  0
--.equ CONFIG_DC_RECON ,  0
--.equ CONFIG_RUNTIME_CPU_DETECT ,  0
--.equ CONFIG_POSTPROC ,  1
--.equ CONFIG_VP9_POSTPROC ,  1
--.equ CONFIG_MULTITHREAD ,  1
--.equ CONFIG_INTERNAL_STATS ,  0
--.equ CONFIG_VP8_ENCODER ,  1
--.equ CONFIG_VP8_DECODER ,  1
--.equ CONFIG_VP9_ENCODER ,  1
--.equ CONFIG_VP9_DECODER ,  1
--.equ CONFIG_VP8 ,  1
--.equ CONFIG_VP9 ,  1
--.equ CONFIG_ENCODERS ,  1
--.equ CONFIG_DECODERS ,  1
--.equ CONFIG_STATIC_MSVCRT ,  0
--.equ CONFIG_SPATIAL_RESAMPLING ,  1
--.equ CONFIG_REALTIME_ONLY ,  1
--.equ CONFIG_ONTHEFLY_BITPACKING ,  0
--.equ CONFIG_ERROR_CONCEALMENT ,  0
--.equ CONFIG_SHARED ,  0
--.equ CONFIG_STATIC ,  1
--.equ CONFIG_SMALL ,  0
--.equ CONFIG_POSTPROC_VISUALIZER ,  0
--.equ CONFIG_OS_SUPPORT ,  1
--.equ CONFIG_UNIT_TESTS ,  1
--.equ CONFIG_WEBM_IO ,  1
--.equ CONFIG_LIBYUV ,  0
--.equ CONFIG_DECODE_PERF_TESTS ,  0
--.equ CONFIG_ENCODE_PERF_TESTS ,  0
--.equ CONFIG_MULTI_RES_ENCODING ,  1
--.equ CONFIG_TEMPORAL_DENOISING ,  1
--.equ CONFIG_VP9_TEMPORAL_DENOISING ,  1
--.equ CONFIG_COEFFICIENT_RANGE_CHECKING ,  0
--.equ CONFIG_VP9_HIGHBITDEPTH ,  0
--.equ CONFIG_BETTER_HW_COMPATIBILITY ,  0
--.equ CONFIG_EXPERIMENTAL ,  0
--.equ CONFIG_SIZE_LIMIT ,  1
--.equ CONFIG_ALWAYS_ADJUST_BPM ,  0
--.equ CONFIG_BITSTREAM_DEBUG ,  0
--.equ CONFIG_MISMATCH_DEBUG ,  0
--.equ CONFIG_FP_MB_STATS ,  0
--.equ CONFIG_EMULATE_HARDWARE ,  0
--.equ CONFIG_NON_GREEDY_MV ,  0
--.equ CONFIG_COLLECT_COMPONENT_TIMING ,  0
--.equ DECODE_WIDTH_LIMIT ,  16384
--.equ DECODE_HEIGHT_LIMIT ,  16384
--    .section .note.GNU-stack,"",%progbits
-Index: chromium-145.0.7632.45/third_party/libvpx/source/config/linux/ppc64/vpx_config.c
-===================================================================
---- chromium-145.0.7632.45.orig/third_party/libvpx/source/config/linux/ppc64/vpx_config.c
+--- chromium-136.0.7103.48.orig/third_party/libvpx/source/config/linux/ppc64/vpx_config.c	2025/05/14 22:49:40	1.1
 +++ /dev/null
 @@ -1,10 +0,0 @@
 -/* Copyright (c) 2011 The WebM project authors. All Rights Reserved. */
@@ -441,131 +322,7 @@ Index: chromium-145.0.7632.45/third_party/libvpx/source/config/linux/ppc64/vpx_c
 -#include "vpx/vpx_codec.h"
 -static const char* const cfg = "--target=ppc64le-linux-gcc --enable-external-build --enable-postproc --enable-multi-res-encoding --enable-temporal-denoising --enable-vp9-temporal-denoising --enable-vp9-postproc --size-limit=16384x16384 --enable-realtime-only --disable-install-docs --disable-libyuv --enable-unit-tests";
 -const char *vpx_codec_build_config(void) {return cfg;}
-Index: chromium-145.0.7632.45/third_party/libvpx/source/config/linux/ppc64/vpx_config.h
-===================================================================
---- chromium-145.0.7632.45.orig/third_party/libvpx/source/config/linux/ppc64/vpx_config.h
-+++ /dev/null
-@@ -1,117 +0,0 @@
--/* Copyright (c) 2011 The WebM project authors. All Rights Reserved. */
--/*  */
--/* Use of this source code is governed by a BSD-style license */
--/* that can be found in the LICENSE file in the root of the source */
--/* tree. An additional intellectual property rights grant can be found */
--/* in the file PATENTS.  All contributing project authors may */
--/* be found in the AUTHORS file in the root of the source tree. */
--/* This file automatically generated by configure. Do not edit! */
--#ifndef VPX_CONFIG_H
--#define VPX_CONFIG_H
--#define RESTRICT    
--#define INLINE      inline
--#define VPX_ARCH_ARM 0
--#define ARCH_ARM 0
--#define VPX_ARCH_AARCH64 0
--#define ARCH_AARCH64 0
--#define VPX_ARCH_MIPS 0
--#define ARCH_MIPS 0
--#define VPX_ARCH_X86 0
--#define ARCH_X86 0
--#define VPX_ARCH_X86_64 0
--#define ARCH_X86_64 0
--#define VPX_ARCH_PPC 1
--#define ARCH_PPC 1
--#define VPX_ARCH_LOONGARCH 0
--#define ARCH_LOONGARCH 0
--#define HAVE_NEON_ASM 0
--#define HAVE_NEON 0
--#define HAVE_NEON_DOTPROD 0
--#define HAVE_NEON_I8MM 0
--#define HAVE_SVE 0
--#define HAVE_SVE2 0
--#define HAVE_MIPS32 0
--#define HAVE_DSPR2 0
--#define HAVE_MSA 0
--#define HAVE_MIPS64 0
--#define HAVE_MMX 0
--#define HAVE_SSE 0
--#define HAVE_SSE2 0
--#define HAVE_SSE3 0
--#define HAVE_SSSE3 0
--#define HAVE_SSE4_1 0
--#define HAVE_AVX 0
--#define HAVE_AVX2 0
--#define HAVE_AVX512 0
--#define HAVE_VSX 0
--#define HAVE_MMI 0
--#define HAVE_LSX 0
--#define HAVE_LASX 0
--#define HAVE_VPX_PORTS 1
--#define HAVE_PTHREAD_H 1
--#define HAVE_PTHREAD_SETNAME_NP 1
--#define HAVE_UNISTD_H 0
--#define CONFIG_DEPENDENCY_TRACKING 1
--#define CONFIG_EXTERNAL_BUILD 1
--#define CONFIG_INSTALL_DOCS 0
--#define CONFIG_INSTALL_BINS 1
--#define CONFIG_INSTALL_LIBS 1
--#define CONFIG_INSTALL_SRCS 0
--#define CONFIG_DEBUG 0
--#define CONFIG_GPROF 0
--#define CONFIG_GCOV 0
--#define CONFIG_RVCT 0
--#define CONFIG_GCC 1
--#define CONFIG_MSVS 0
--#define CONFIG_PIC 0
--#define CONFIG_BIG_ENDIAN 0
--#define CONFIG_CODEC_SRCS 0
--#define CONFIG_DEBUG_LIBS 0
--#define CONFIG_DEQUANT_TOKENS 0
--#define CONFIG_DC_RECON 0
--#define CONFIG_RUNTIME_CPU_DETECT 0
--#define CONFIG_POSTPROC 1
--#define CONFIG_VP9_POSTPROC 1
--#define CONFIG_MULTITHREAD 1
--#define CONFIG_INTERNAL_STATS 0
--#define CONFIG_VP8_ENCODER 1
--#define CONFIG_VP8_DECODER 1
--#define CONFIG_VP9_ENCODER 1
--#define CONFIG_VP9_DECODER 1
--#define CONFIG_VP8 1
--#define CONFIG_VP9 1
--#define CONFIG_ENCODERS 1
--#define CONFIG_DECODERS 1
--#define CONFIG_STATIC_MSVCRT 0
--#define CONFIG_SPATIAL_RESAMPLING 1
--#define CONFIG_REALTIME_ONLY 1
--#define CONFIG_ONTHEFLY_BITPACKING 0
--#define CONFIG_ERROR_CONCEALMENT 0
--#define CONFIG_SHARED 0
--#define CONFIG_STATIC 1
--#define CONFIG_SMALL 0
--#define CONFIG_POSTPROC_VISUALIZER 0
--#define CONFIG_OS_SUPPORT 1
--#define CONFIG_UNIT_TESTS 1
--#define CONFIG_WEBM_IO 1
--#define CONFIG_LIBYUV 0
--#define CONFIG_DECODE_PERF_TESTS 0
--#define CONFIG_ENCODE_PERF_TESTS 0
--#define CONFIG_MULTI_RES_ENCODING 1
--#define CONFIG_TEMPORAL_DENOISING 1
--#define CONFIG_VP9_TEMPORAL_DENOISING 1
--#define CONFIG_COEFFICIENT_RANGE_CHECKING 0
--#define CONFIG_VP9_HIGHBITDEPTH 0
--#define CONFIG_BETTER_HW_COMPATIBILITY 0
--#define CONFIG_EXPERIMENTAL 0
--#define CONFIG_SIZE_LIMIT 1
--#define CONFIG_ALWAYS_ADJUST_BPM 0
--#define CONFIG_BITSTREAM_DEBUG 0
--#define CONFIG_MISMATCH_DEBUG 0
--#define CONFIG_FP_MB_STATS 0
--#define CONFIG_EMULATE_HARDWARE 0
--#define CONFIG_NON_GREEDY_MV 0
--#define CONFIG_COLLECT_COMPONENT_TIMING 0
--#define DECODE_WIDTH_LIMIT 16384
--#define DECODE_HEIGHT_LIMIT 16384
--#endif /* VPX_CONFIG_H */
-Index: chromium-145.0.7632.45/third_party/libvpx/source/config/linux/ppc64/vpx_dsp_rtcd.h
-===================================================================
---- chromium-145.0.7632.45.orig/third_party/libvpx/source/config/linux/ppc64/vpx_dsp_rtcd.h
+--- chromium-136.0.7103.48.orig/third_party/libvpx/source/config/linux/ppc64/vpx_dsp_rtcd.h	2025/05/14 22:49:40	1.1
 +++ /dev/null
 @@ -1,858 +0,0 @@
 -/*
@@ -1426,9 +1183,7 @@ Index: chromium-145.0.7632.45/third_party/libvpx/source/config/linux/ppc64/vpx_d
 -#endif
 -
 -#endif  // VPX_DSP_RTCD_H_
-Index: chromium-145.0.7632.45/third_party/libvpx/source/config/linux/ppc64/vpx_scale_rtcd.h
-===================================================================
---- chromium-145.0.7632.45.orig/third_party/libvpx/source/config/linux/ppc64/vpx_scale_rtcd.h
+--- chromium-136.0.7103.48.orig/third_party/libvpx/source/config/linux/ppc64/vpx_scale_rtcd.h	2025/05/14 22:49:40	1.1
 +++ /dev/null
 @@ -1,83 +0,0 @@
 -/*
@@ -1514,3 +1269,236 @@ Index: chromium-145.0.7632.45/third_party/libvpx/source/config/linux/ppc64/vpx_s
 -#endif
 -
 -#endif  // VPX_SCALE_RTCD_H_
+--- chromium-146.0.7670.2/third_party/libvpx/source/config/linux/ppc64/vpx_config.asm	2026/02/18 16:24:45	1.1
++++ /dev/null
+@@ -1,109 +0,0 @@
+-@ This file was created from a .asm file
+-@  using the ads2gas.pl script.
+-.syntax unified
+-.equ VPX_ARCH_ARM ,  0
+-.equ ARCH_ARM ,  0
+-.equ VPX_ARCH_AARCH64 ,  0
+-.equ ARCH_AARCH64 ,  0
+-.equ VPX_ARCH_MIPS ,  0
+-.equ ARCH_MIPS ,  0
+-.equ VPX_ARCH_X86 ,  0
+-.equ ARCH_X86 ,  0
+-.equ VPX_ARCH_X86_64 ,  0
+-.equ ARCH_X86_64 ,  0
+-.equ VPX_ARCH_PPC ,  1
+-.equ ARCH_PPC ,  1
+-.equ VPX_ARCH_LOONGARCH ,  0
+-.equ ARCH_LOONGARCH ,  0
+-.equ HAVE_NEON_ASM ,  0
+-.equ HAVE_NEON ,  0
+-.equ HAVE_NEON_DOTPROD ,  0
+-.equ HAVE_NEON_I8MM ,  0
+-.equ HAVE_SVE ,  0
+-.equ HAVE_SVE2 ,  0
+-.equ HAVE_MIPS32 ,  0
+-.equ HAVE_DSPR2 ,  0
+-.equ HAVE_MSA ,  0
+-.equ HAVE_MIPS64 ,  0
+-.equ HAVE_X86_ASM ,  0
+-.equ HAVE_MMX ,  0
+-.equ HAVE_SSE ,  0
+-.equ HAVE_SSE2 ,  0
+-.equ HAVE_SSE3 ,  0
+-.equ HAVE_SSSE3 ,  0
+-.equ HAVE_SSE4_1 ,  0
+-.equ HAVE_AVX ,  0
+-.equ HAVE_AVX2 ,  0
+-.equ HAVE_AVX512 ,  0
+-.equ HAVE_VSX ,  0
+-.equ HAVE_MMI ,  0
+-.equ HAVE_LSX ,  0
+-.equ HAVE_LASX ,  0
+-.equ HAVE_VPX_PORTS ,  1
+-.equ HAVE_PTHREAD_H ,  1
+-.equ HAVE_PTHREAD_SETNAME_NP ,  1
+-.equ HAVE_UNISTD_H ,  0
+-.equ CONFIG_DEPENDENCY_TRACKING ,  1
+-.equ CONFIG_EXTERNAL_BUILD ,  1
+-.equ CONFIG_INSTALL_DOCS ,  0
+-.equ CONFIG_INSTALL_BINS ,  1
+-.equ CONFIG_INSTALL_LIBS ,  1
+-.equ CONFIG_INSTALL_SRCS ,  0
+-.equ CONFIG_DEBUG ,  0
+-.equ CONFIG_GPROF ,  0
+-.equ CONFIG_GCOV ,  0
+-.equ CONFIG_RVCT ,  0
+-.equ CONFIG_GCC ,  1
+-.equ CONFIG_MSVS ,  0
+-.equ CONFIG_PIC ,  0
+-.equ CONFIG_BIG_ENDIAN ,  0
+-.equ CONFIG_CODEC_SRCS ,  0
+-.equ CONFIG_DEBUG_LIBS ,  0
+-.equ CONFIG_DEQUANT_TOKENS ,  0
+-.equ CONFIG_DC_RECON ,  0
+-.equ CONFIG_RUNTIME_CPU_DETECT ,  0
+-.equ CONFIG_POSTPROC ,  1
+-.equ CONFIG_VP9_POSTPROC ,  1
+-.equ CONFIG_MULTITHREAD ,  1
+-.equ CONFIG_INTERNAL_STATS ,  0
+-.equ CONFIG_VP8_ENCODER ,  1
+-.equ CONFIG_VP8_DECODER ,  1
+-.equ CONFIG_VP9_ENCODER ,  1
+-.equ CONFIG_VP9_DECODER ,  1
+-.equ CONFIG_VP8 ,  1
+-.equ CONFIG_VP9 ,  1
+-.equ CONFIG_ENCODERS ,  1
+-.equ CONFIG_DECODERS ,  1
+-.equ CONFIG_STATIC_MSVCRT ,  0
+-.equ CONFIG_SPATIAL_RESAMPLING ,  1
+-.equ CONFIG_REALTIME_ONLY ,  1
+-.equ CONFIG_ONTHEFLY_BITPACKING ,  0
+-.equ CONFIG_ERROR_CONCEALMENT ,  0
+-.equ CONFIG_SHARED ,  0
+-.equ CONFIG_STATIC ,  1
+-.equ CONFIG_SMALL ,  0
+-.equ CONFIG_POSTPROC_VISUALIZER ,  0
+-.equ CONFIG_OS_SUPPORT ,  1
+-.equ CONFIG_UNIT_TESTS ,  1
+-.equ CONFIG_WEBM_IO ,  1
+-.equ CONFIG_LIBYUV ,  0
+-.equ CONFIG_DECODE_PERF_TESTS ,  0
+-.equ CONFIG_ENCODE_PERF_TESTS ,  0
+-.equ CONFIG_MULTI_RES_ENCODING ,  1
+-.equ CONFIG_TEMPORAL_DENOISING ,  1
+-.equ CONFIG_VP9_TEMPORAL_DENOISING ,  1
+-.equ CONFIG_COEFFICIENT_RANGE_CHECKING ,  0
+-.equ CONFIG_VP9_HIGHBITDEPTH ,  0
+-.equ CONFIG_BETTER_HW_COMPATIBILITY ,  0
+-.equ CONFIG_EXPERIMENTAL ,  0
+-.equ CONFIG_SIZE_LIMIT ,  1
+-.equ CONFIG_ALWAYS_ADJUST_BPM ,  0
+-.equ CONFIG_BITSTREAM_DEBUG ,  0
+-.equ CONFIG_MISMATCH_DEBUG ,  0
+-.equ CONFIG_FP_MB_STATS ,  0
+-.equ CONFIG_EMULATE_HARDWARE ,  0
+-.equ CONFIG_NON_GREEDY_MV ,  0
+-.equ CONFIG_COLLECT_COMPONENT_TIMING ,  0
+-.equ DECODE_WIDTH_LIMIT ,  16384
+-.equ DECODE_HEIGHT_LIMIT ,  16384
+-    .section .note.GNU-stack,"",%progbits
+--- chromium-146.0.7670.2/third_party/libvpx/source/config/linux/ppc64/vpx_config.h	2026/02/18 16:24:53	1.1
++++ /dev/null
+@@ -1,118 +0,0 @@
+-/* Copyright (c) 2011 The WebM project authors. All Rights Reserved. */
+-/*  */
+-/* Use of this source code is governed by a BSD-style license */
+-/* that can be found in the LICENSE file in the root of the source */
+-/* tree. An additional intellectual property rights grant can be found */
+-/* in the file PATENTS.  All contributing project authors may */
+-/* be found in the AUTHORS file in the root of the source tree. */
+-/* This file automatically generated by configure. Do not edit! */
+-#ifndef VPX_CONFIG_H
+-#define VPX_CONFIG_H
+-#define RESTRICT    
+-#define INLINE      inline
+-#define VPX_ARCH_ARM 0
+-#define ARCH_ARM 0
+-#define VPX_ARCH_AARCH64 0
+-#define ARCH_AARCH64 0
+-#define VPX_ARCH_MIPS 0
+-#define ARCH_MIPS 0
+-#define VPX_ARCH_X86 0
+-#define ARCH_X86 0
+-#define VPX_ARCH_X86_64 0
+-#define ARCH_X86_64 0
+-#define VPX_ARCH_PPC 1
+-#define ARCH_PPC 1
+-#define VPX_ARCH_LOONGARCH 0
+-#define ARCH_LOONGARCH 0
+-#define HAVE_NEON_ASM 0
+-#define HAVE_NEON 0
+-#define HAVE_NEON_DOTPROD 0
+-#define HAVE_NEON_I8MM 0
+-#define HAVE_SVE 0
+-#define HAVE_SVE2 0
+-#define HAVE_MIPS32 0
+-#define HAVE_DSPR2 0
+-#define HAVE_MSA 0
+-#define HAVE_MIPS64 0
+-#define HAVE_X86_ASM 0
+-#define HAVE_MMX 0
+-#define HAVE_SSE 0
+-#define HAVE_SSE2 0
+-#define HAVE_SSE3 0
+-#define HAVE_SSSE3 0
+-#define HAVE_SSE4_1 0
+-#define HAVE_AVX 0
+-#define HAVE_AVX2 0
+-#define HAVE_AVX512 0
+-#define HAVE_VSX 0
+-#define HAVE_MMI 0
+-#define HAVE_LSX 0
+-#define HAVE_LASX 0
+-#define HAVE_VPX_PORTS 1
+-#define HAVE_PTHREAD_H 1
+-#define HAVE_PTHREAD_SETNAME_NP 1
+-#define HAVE_UNISTD_H 0
+-#define CONFIG_DEPENDENCY_TRACKING 1
+-#define CONFIG_EXTERNAL_BUILD 1
+-#define CONFIG_INSTALL_DOCS 0
+-#define CONFIG_INSTALL_BINS 1
+-#define CONFIG_INSTALL_LIBS 1
+-#define CONFIG_INSTALL_SRCS 0
+-#define CONFIG_DEBUG 0
+-#define CONFIG_GPROF 0
+-#define CONFIG_GCOV 0
+-#define CONFIG_RVCT 0
+-#define CONFIG_GCC 1
+-#define CONFIG_MSVS 0
+-#define CONFIG_PIC 0
+-#define CONFIG_BIG_ENDIAN 0
+-#define CONFIG_CODEC_SRCS 0
+-#define CONFIG_DEBUG_LIBS 0
+-#define CONFIG_DEQUANT_TOKENS 0
+-#define CONFIG_DC_RECON 0
+-#define CONFIG_RUNTIME_CPU_DETECT 0
+-#define CONFIG_POSTPROC 1
+-#define CONFIG_VP9_POSTPROC 1
+-#define CONFIG_MULTITHREAD 1
+-#define CONFIG_INTERNAL_STATS 0
+-#define CONFIG_VP8_ENCODER 1
+-#define CONFIG_VP8_DECODER 1
+-#define CONFIG_VP9_ENCODER 1
+-#define CONFIG_VP9_DECODER 1
+-#define CONFIG_VP8 1
+-#define CONFIG_VP9 1
+-#define CONFIG_ENCODERS 1
+-#define CONFIG_DECODERS 1
+-#define CONFIG_STATIC_MSVCRT 0
+-#define CONFIG_SPATIAL_RESAMPLING 1
+-#define CONFIG_REALTIME_ONLY 1
+-#define CONFIG_ONTHEFLY_BITPACKING 0
+-#define CONFIG_ERROR_CONCEALMENT 0
+-#define CONFIG_SHARED 0
+-#define CONFIG_STATIC 1
+-#define CONFIG_SMALL 0
+-#define CONFIG_POSTPROC_VISUALIZER 0
+-#define CONFIG_OS_SUPPORT 1
+-#define CONFIG_UNIT_TESTS 1
+-#define CONFIG_WEBM_IO 1
+-#define CONFIG_LIBYUV 0
+-#define CONFIG_DECODE_PERF_TESTS 0
+-#define CONFIG_ENCODE_PERF_TESTS 0
+-#define CONFIG_MULTI_RES_ENCODING 1
+-#define CONFIG_TEMPORAL_DENOISING 1
+-#define CONFIG_VP9_TEMPORAL_DENOISING 1
+-#define CONFIG_COEFFICIENT_RANGE_CHECKING 0
+-#define CONFIG_VP9_HIGHBITDEPTH 0
+-#define CONFIG_BETTER_HW_COMPATIBILITY 0
+-#define CONFIG_EXPERIMENTAL 0
+-#define CONFIG_SIZE_LIMIT 1
+-#define CONFIG_ALWAYS_ADJUST_BPM 0
+-#define CONFIG_BITSTREAM_DEBUG 0
+-#define CONFIG_MISMATCH_DEBUG 0
+-#define CONFIG_FP_MB_STATS 0
+-#define CONFIG_EMULATE_HARDWARE 0
+-#define CONFIG_NON_GREEDY_MV 0
+-#define CONFIG_COLLECT_COMPONENT_TIMING 0
+-#define DECODE_WIDTH_LIMIT 16384
+-#define DECODE_HEIGHT_LIMIT 16384
+-#endif /* VPX_CONFIG_H */

@@ -1,0 +1,11 @@
+--- chromium-146.0.7670.2/content/browser/webid/document_metadata.cc	2026/02/18 16:04:10	1.1
++++ chromium-146.0.7670.2/content/browser/webid/document_metadata.cc	2026/02/18 16:04:22
+@@ -27,7 +27,7 @@
+   for (const auto& property : entity.properties) {
+     if (property->name == name && property->values->is_entity_values() &&
+         !property->values->get_entity_values().empty()) {
+-      return property->values->get_entity_values()[0].Clone();
++      return std::move(property->values->get_entity_values()[0]);
+     }
+   }
+   return nullptr;

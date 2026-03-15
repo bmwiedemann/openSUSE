@@ -6289,4 +6289,41 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
   * CVE-2026-3545: Insufficient data validation in Navigation</comment>
     <requestid>1336622</requestid>
   </revision>
+  <revision rev="507" vrev="1">
+    <srcmd5>7b633a6520bf071a23ce3ba4bc0025ef</srcmd5>
+    <version>146.0.7680.80</version>
+    <time>1773581519</time>
+    <user>dimstar_suse</user>
+    <comment>- Chromium 146.0.7680.80:
+  * CVE-2026-3909: Out of bounds write in Skia (boo#1259659)
+
+- Chromium 146.0.7680.75:
+  * CVE-2026-3910: Inappropriate implementation in V8 (boo#1259648)
+
+- fix ffmpeg build on ppc64le
+- modified patches: 
+  * ppc-debian-0003-third_party-ffmpeg-Add-ppc64-generated-config.patch
+
+- modified patches:
+  * chromium-146-value_or.patch (from debian) 
+- removed patches:
+  * chromium-144-revert_gfx_value_or.patch (contained above)
+
+- Chromium 146.0.7680.71 (released 2026-03-11) (boo#1259530)
+  * CVE-2026-3913: Heap buffer overflow in WebML
+  * CVE-2026-3914: Integer overflow in WebML
+  * CVE-2026-3915: Heap buffer overflow in WebML
+  * CVE-2026-3916: Out of bounds read in Web Speech
+  * CVE-2026-3917: Use after free in Agents
+  * CVE-2026-3918: Use after free in WebMCP
+  * CVE-2026-3919: Use after free in Extensions
+  * CVE-2026-3920: Out of bounds memory access in WebML
+  * CVE-2026-3921: Use after free in TextEncoding
+  * CVE-2026-3922: Use after free in MediaStream
+  * CVE-2026-3923: Use after free in WebMIDI
+  * CVE-2026-3924: Use after free in WindowDialog
+  * CVE-2026-3925: Incorrect security UI in LookalikeChecks
+  * CVE-2026-3926: Out of bounds read in V8</comment>
+    <requestid>1338848</requestid>
+  </revision>
 </revisionlist>
