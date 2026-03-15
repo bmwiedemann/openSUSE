@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Mar 14 20:24:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.11:
+  * Refactored Clip/Tempo Adjust.. tempo/beat-detection function
+    to Breakfastquay::minibpm as a submodule, in alternative to the
+    now being deprecated (lib)aubio.
+  * Fixed 'mime-info' file to the correct MIME-type icon names.
+  * Improved/updated audio clip recording latency compensation.
+  * Save/load all plugin's paths always as relative only to
+    declared search paths (cf. View/Options.../Plugins/Paths)
+  * Audio Insert pseudo-plugins now have an extra user supplied
+  * input parameter: Latency (frames).
+  * Default Clip Fade-In/Out types (Linear, Quadratic, Cubic) are
+  * now settable as user preference options (cf. View/Options.../
+  * /General/Clips).
+  * Slightly better positioning and centering when just clicking
+  * but not dragging the main and MIDI editor thumb-views around.
+  * Mixer: temporarily hide/show either Audio or MIDI buses, from
+  * the respective Inputs and/or Outputs rack pane.
+  * Add underlying platform name (eg. xcb, wayland) to Qt version
+  * string.
+  * When selecting an Aux-Send pseudo-plugin, also highlight the
+  * respective target output bus mixer strip.
+
+-------------------------------------------------------------------
 Sun Aug 25 09:22:46 UTC 2024 - hui <sturm-fr@web.de>
 
 - update to 1.1.1:
