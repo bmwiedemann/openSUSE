@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 14 22:19:10 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.21
+  Changes:
+  * Add "configure lldp portdescription-source" to choose how to
+    populate port description.
+  Fix:
+  * Fix path traversal vulnerabilities in the privileged process.
+  * Fix arbitrary file deletion in the privileged process.
+  * Fix accuracy of Dot3 MAU types advertised and add support for
+    200G and 400G.
+  * Fix detection of wireless interfaces.
+
+-------------------------------------------------------------------
 Sat Sep 13 11:49:25 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.20
