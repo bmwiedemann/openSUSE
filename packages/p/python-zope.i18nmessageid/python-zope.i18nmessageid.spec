@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.i18nmessageid
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zope.i18nmessageid%{psuffix}
-Version:        7.0
+Version:        8.2
 Release:        0
 Summary:        Zope Location
 License:        ZPL-2.1
@@ -56,6 +56,7 @@ In Zope3, i18nmessageid are special objects that has a structural i18nmessageid.
 %package     -n %{name}-doc
 Summary:        Zope Location
 Provides:       %{python_module zope.i18nmessageid-doc = %{version}}
+BuildRequires:  %{python_module furo}
 BuildArch:      noarch
 
 %description -n %{name}-doc
@@ -92,7 +93,6 @@ sphinx-build -b html docs build/sphinx/html && rm -r build/sphinx/html/.{buildin
 %dir %{python_sitearch}/zope
 %{python_sitearch}/zope/i18nmessageid
 %{python_sitearch}/zope[_.]i18nmessageid-%{version}.dist-info
-%{python_sitearch}/zope.i18nmessageid-%{version}*-nspkg.pth
 %endif
 
 %if !%{with test}

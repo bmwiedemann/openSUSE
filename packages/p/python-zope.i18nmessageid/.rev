@@ -198,4 +198,21 @@ New dependecy of python-Pyramid</comment>
     <comment>Make it compatible with new setuptools</comment>
     <requestid>1266267</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ed55c7d7d00c426e8782dc65d9b6db56</srcmd5>
+    <version>8.2</version>
+    <time>1773581527</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.2:
+  * Move all supported package metadata into pyproject.toml.
+  * Drop support for Python 3.9.
+  * Add support for Python 3.14.
+  * Remove run-time dependency on setuptools.
+  * Replace pkg_resources namespace with PEP 420 native
+    namespace.
+  * Add preliminary support for Python 3.14 as of 3.14a4.
+  * Drop support for Python 3.8.
+  * Fix imports in setup.py.</comment>
+    <requestid>1339007</requestid>
+  </revision>
 </revisionlist>
