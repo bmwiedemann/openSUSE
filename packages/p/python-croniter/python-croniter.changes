@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Mar 14 21:02:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.0:
+  * Support for zoneinfo timezones.
+  * Add type hints to croniter.__init__, timestamp_to_datetime,
+    and property initializations.
+  * Simplify code for max_years_between_matches.
+  * Extend type check for hash_id to empty str/bytes.
+  * Drop unused _get_next_nearest and _get_prev_nearest.
+  * Reduce line length to 99 and unfold long Python code lines.
+  * Fix memory leak by removing TIMESTAMP_TO_DT_CACHE global dict
+    cache.
+  * Fix memory leak by removing EXPRESSIONS global dict cache.
+  * Fix default value of second_at_beginning to a boolean.
+  * Fix always missing the timestamp to datetime cache.
+  * Fix skipping first of March.
+  * Fix DST handling by rewriting the DST logic.
+  * Fix all flake8 complaints.
+  * Test: fix date in DST test.
+  * Test: document time jumps in DST test cases.
+  * Test: use isoformat() to compare dates with timezone information.
+
+-------------------------------------------------------------------
 Tue Jun 24 12:05:14 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - Update to 6.0.0
