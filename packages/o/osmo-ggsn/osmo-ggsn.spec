@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-ggsn
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,15 @@
 %define _lto_cflags %nil
 Name:           osmo-ggsn
 %define lname   libgtp11
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        GPRS Support Node
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          Productivity/Telephony/Servers
-URL:            https://osmocom.org/projects/openggsn/wiki/OsmoGGSN
+URL:            https://osmocom.org/projects/openggsn/wiki
+#Git-Clone:     https://gitea.osmocom.org/cellular-infrastructure/osmo-ggsn
+#Git-Clone:     https://github.com/osmocom/osmo-ggsn
+#DL-URL:        https://downloads.osmocom.org/releases/osmo-ggsn/
 Source:         https://github.com/osmocom/osmo-ggsn/archive/%version.tar.gz
 Patch1:         build-fixes.diff
 Patch2:         ppc64.diff
@@ -33,9 +36,9 @@ BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libgtpnl) >= 1.3.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.11.0
-BuildRequires:  pkgconfig(libosmoctrl) >= 1.11.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.11.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.12.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 1.12.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.12.0
 Obsoletes:      openggsn
 
 %description

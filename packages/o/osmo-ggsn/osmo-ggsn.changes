@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 14 21:40:15 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.0
+  * gtp: Send RAT type IE in update context request if present
+  * gtp: add support for SGSN Context Req/Resp/Ack
+  * sgsnemu: Initial support IPv4v6 PDP context type
+
+-------------------------------------------------------------------
 Thu Feb 13 13:44:06 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.13.0

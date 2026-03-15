@@ -119,4 +119,12 @@
     <comment>- Update to release 1.13.0</comment>
     <requestid>1245667</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2d63c14b63c7f2e1d833f2c152955920</srcmd5>
+    <version>1.14.0</version>
+    <time>1773581550</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.14.0</comment>
+    <requestid>1339034</requestid>
+  </revision>
 </revisionlist>
