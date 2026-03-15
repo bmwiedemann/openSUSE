@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 13 19:17:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.1
+  * Added IMA ADPCM support.
+  * Fixed grouping by parent directory.
+  * Fixed sorting by file name and path.
+  * Fixed detection of the PCM WAVE files with "JUNK", "bext" and
+    "fact" chunks.
+  * Fixed color scheme change issues.
+  * Fixed drawing issues in the plugin list.
+  * Updated Chinese Simplified translation.
+
+-------------------------------------------------------------------
 Tue Nov  4 20:01:41 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Use ldconfig_scriptlets macro.
