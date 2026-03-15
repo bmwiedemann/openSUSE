@@ -1,4 +1,255 @@
 -------------------------------------------------------------------
+Sun Mar 15 08:34:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.51:
+  * Fixed
+    - Code block tools: Ignore BrokenPipe when writing to tool
+      stdin, fixing intermittent failures with tools that exit
+      before consuming input (e.g., linters that validate without
+      reading fully)
+  * Changed
+    - MD076: Continuation content detection now verifies
+      indentation matches the parent list item's content column,
+      preventing false exemptions with under-indented text
+- Update to version 0.1.50:
+  * Added
+    - MD076: New allow-loose-continuation option permits blank
+      lines around continuation paragraphs in tight lists, enabling
+      tight inter-item spacing while visually separating
+      multi-paragraph content within items (#524)
+    - MD013: Reflow fix now supports footnote definitions ([^id]:
+      prose text), including multi-paragraph footnotes with code
+      blocks, blockquotes, tables, lists, and link reference
+      definitions preserved verbatim (#499)
+  * Fixed
+    - MD013: Link reference definitions inside footnotes no longer
+      terminate footnote collection prematurely
+    - MD013: Fenced code block fence markers now require
+      homogeneous characters (no mixed backtick/tilde)
+    - Code block tools: Error output now uses file:line:col: [tool]
+      message format matching rumdl's own lint output, with
+      <standard input>:N:M: references translated to absolute file
+      positions and boilerplate stripped (#521)
+  * Changed
+    - Upgrade all GitHub Actions from Node.js 20 to Node.js 24
+      (Node.js 20 deprecated June 2, 2026)
+- Update to version 0.1.49:
+  * Fixed
+    - Code block tools: Error messages now include file path, line
+      number, and language of the failing code block (#521)
+    - MD076: Blockquotes in tight lists are now treated as
+      structural content, preventing false positives (#523)
+- Update to version 0.1.48:
+  * Performance
+    - Replace O(n²) linear scans with binary search across hot
+      paths in table detection, element parsing, math span checks,
+      link/image lookups, and footnote scanning
+    - Eliminate redundant Parser::new_ext() calls in MD029, MD031,
+      MD050, and MD054
+    - Merge link and image parsers into a single pulldown-cmark
+      pass, reducing parsing overhead in LintContext
+    - Pre-compute link title ranges and lazy continuation detection
+      in LintContext cache for binary search
+    - Replace FancyRegex with standard regex in MD020, MD034,
+      MD044, MD053, MD066, MD067, and list_utils
+    - MD035: Replace 6 regex patterns with char-based thematic
+      break detection
+    - MD033: Use binary search for HTML element lookups and
+      windowed regex matching for tag parsing
+    - MD034: Skip regex passes on lines without relevant URL
+      constructs
+    - MD057: Reuse LintContext code spans instead of redundant
+      ElementCache parsing
+    - Code block tools: Skip redundant pulldown-cmark parse when no
+      matching code blocks exist
+  * Fixed
+    - MD007: Blockquoted lists no longer corrupt the parent list
+      indent stack
+    - MD013: Reflow now handles nested unordered list items and
+      checkbox continuations correctly
+    - MD013: Blank lines between parent and nested list items are
+      preserved during reflow
+    - MD013: Link reference definitions with titles are exempt from
+      line length warnings
+    - MD013: MkDocs checkbox continuation indent uses base marker
+      width
+    - MD066/MD067: Mid-line [^id]: is now treated as a reference,
+      not a footnote definition
+    - Code block tools: Formatter no longer erases content when
+      tool produces empty output
+    - Code block tools: Add missing format suffixes for tool
+      detection
+  * Changed
+    - Corrected rule trait metadata (names and descriptions) across
+      35 rules
+    - Replaced CodeRangesWithDetails tuple with named ParseResult
+      struct for clarity
+    - Deleted ElementCache struct, 31 dead regex patterns, and 8
+      dead utility functions from regex_cache
+    - Converted all remaining FancyRegex patterns to standard regex
+
+-------------------------------------------------------------------
+Fri Mar 13 06:13:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.47:
+  * Fixed
+    - MD007: MkDocs flavor now enforces 4-space indentation
+      (indent=4, style=fixed) as required by Python-Markdown;
+      conflicting user config emits a warning and is overridden
+      (#522)
+    - MD013: Reflow fix no longer dedents continuation paragraphs
+      after code blocks inside admonitions in list items (#509)
+    - MD025: Auto-fix now cascades heading demotion to child
+      headings, preserving the document's heading hierarchy (#525)
+    - MD070: Fence collision detection expanded to ~50 language
+      identifiers (Python, JS, Shell, Rust, Go, YAML, etc.) where
+      triple backtick sequences commonly appear (#518)
+    - MD070: Auto-fix integration now works correctly in both CLI
+      and LSP code action paths by including a complete Fix struct
+      on warnings
+    - MD046: Removed redundant nested fence detection that produced
+      false positives on Python code blocks containing embedded
+      markdown
+    - LSP: Server now publishes empty diagnostics to invalidate
+      client cache when switching to pull mode, preventing stale
+      errors from persisting (#517)
+
+-------------------------------------------------------------------
+Thu Mar 12 11:48:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.46:
+  * Added
+    - Per-rule enabled = false now actually disables rules; enabled
+      = true/false is fully bidirectional and takes precedence over
+      global disable/extend-disable/extend-enable lists (#520)
+  * Fixed
+    - MD032: False positive for list continuation text in nested
+      blockquotes (#519)
+    - MD014: Now reports all violations per code block, not just
+      the first (#516)
+    - MD033: allowed and disallowed shorthand config options no
+      longer produce unknown key warnings (#508)
+    - MD013: strict-sentences alias now correctly recognized in
+      config validation
+    - MD049/MD050: Skip mkdocstrings blocks in emphasis-related
+      rules to prevent false positives (#515)
+    - Code block tools: Strip ANSI codes, parse multi-line errors,
+      and combine stdout/stderr for complete diagnostic output
+      (#506)
+    - Code block tools: Default tombi tool now runs tombi lint
+      instead of tombi format when configured in the lint slot
+      (#506)
+    - Config: enabled key no longer rejected as unknown in per-rule
+      config blocks (#520)
+    - Inline config: Unified directive parser eliminates
+      disambiguation bugs between enable/disable/configure
+      directives
+  * Changed
+    - Consolidated ~110 test binaries into a single lib binary for
+      faster builds
+    - Removed dead code from rule.rs, MD014, and code_block_utils
+      modules
+
+-------------------------------------------------------------------
+Wed Mar 11 06:03:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.45:
+  * Added
+    - MD013: New require-sentence-capital option for
+      sentence-per-line and semantic-line-breaks reflow modes. When
+      set to false, periods are recognized as sentence boundaries
+      without requiring an uppercase letter afterward (#514)
+    - MD013: ! and ? are now always recognized as sentence
+      boundaries regardless of the require-sentence-capital setting
+    - MD013: Single-letter initial detection (e.g., "J. K.
+      Rowling") to prevent false sentence splits
+    - MD013: Expanded default abbreviation list with: vs, fig, no,
+      vol, ch, sec, al
+  * Fixed
+    - MD044: Names inside backtick code spans in YAML frontmatter
+      are no longer flagged when code_blocks = false (#513)
+    - MD051: HTML/JSX tags in headings (e.g., <Component />,
+      <span>text</span>) are now stripped before anchor generation,
+      preventing false-positive broken link warnings (#510)
+    - MD032: Complex nested lists with continuation paragraphs at
+      parent indent levels are no longer incorrectly split into
+      separate lists (#512)
+    - npm: Binary downloaded from npm registry is now automatically
+      made executable on macOS/Linux, fixing "permission denied"
+      errors (#511)
+  * Changed
+    - CI npm tests no longer pre-fix binary permissions, ensuring
+      the auto-chmod logic is properly tested
+    - Release workflow test job now includes a lint step
+
+-------------------------------------------------------------------
+Tue Mar 10 07:29:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.44:
+  * Fixed
+    - MD007: Accept both text-aligned and fixed indent under
+      ordered parents, resolving false positives with 4-space
+      indentation config (#504)
+    - MD007: Use accepted indent for stored content column, fixing
+      inconsistent indent detection in nested lists
+    - MD013/MD032/MD046: Suppress false positives inside JSX
+      component blocks (thanks @anaxite)
+    - MD032: Recognize parent-level continuation after nested list
+      items, preventing false positive when a list continuation
+      follows a nested item (#507)
+    - LSP: Skip documentation URLs for code-block-tool warnings,
+      avoiding invalid links like https://rumdl.dev/jq/ (#505)
+    - LSP: Plumb source_file through lint() for path-dependent
+      rules Code block tools: Include all output lines in generic
+      fallback diagnostics, providing full context from tools like
+      tombi (#506)
+  * Changed
+    - Code block tools: Classify jq as both linter and formatter
+
+-------------------------------------------------------------------
+Mon Mar 09 07:04:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.43:
+  * Added
+    - LSP: Add textDocument/rename support for markdown headings —
+      rename a heading and all references to it update
+      automatically
+    - CLI: Add "fixed" field to JSON output when --fix is active,
+      showing how many issues were auto-fixed
+    - CLI: --fix now works with batch output formats (JSON, GitLab,
+      SARIF, JUnit) instead of silently skipping fixes (#498)
+    - SARIF: Add baselineState field to SARIF output for baseline
+      comparison
+  * Fixed
+    - Fix mode: Respect inline disable comments (<!-- rumdl-disable
+      -->) in --fix mode — previously, disabled rules could still
+      apply fixes
+    - MD037: Skip HTML blocks when detecting spaces around emphasis
+      markers, preventing false positives on HTML attributes
+      containing * or _
+    - MD037: Skip inline HTML code elements (e.g.,
+      <code>*text*</code>) to prevent false positives on
+      emphasis-like patterns inside HTML tags
+    - MD042: Skip frontmatter lines to prevent false positives on
+      YAML keys that look like empty links
+    - MD051: Allow digit-starting custom anchor IDs (e.g.,
+      {#1-intro})
+    - MD076: Detect inconsistent spacing when code blocks are
+      inside list items
+    - MDX: Improve compatibility by skipping JSX/MDX content in 7
+      rules
+  * Changed
+    - MD070: Changed to opt-in rule. Its auto-fix modifies document
+      structure and can cause false positives on documentation
+      files showing code examples.  Enable with extend-enable =
+      ["MD070"] (#502)
+    - CLI: Simplify fix mode output for structured formats Upgrade
+      Rust toolchain from 1.91.0 to 1.94.0
+  * Performance
+    - MD053: Optimize link definition matching with binary search
+      and forward-tracking
+
+-------------------------------------------------------------------
 Fri Mar 06 06:10:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.42:
@@ -700,7 +951,7 @@ Tue Feb 10 05:51:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
       now reports missing
     - alt text without offering to fix it.
     - CI: Pass version in pre-commit dispatch payload
-  * - Update to version 0.1.16:
+- Update to version 0.1.16:
   * Added
     - MD013: semantic-line-breaks reflow mode (preview) — breaks
       lines at semantic
@@ -815,7 +1066,7 @@ Mon Feb 09 06:35:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
       registry instead of
     - a manually maintained list, ensuring all rules (including
       MD069-MD074) are included
-  * - Update to version 0.1.15:
+- Update to version 0.1.15:
   * Added
     - MD074: MkDocs nav validation - Validate that mkdocs.yml
       navigation entries

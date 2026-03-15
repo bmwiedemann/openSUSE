@@ -17,7 +17,7 @@
 
 
 Name:           rumdl
-Version:        0.1.42
+Version:        0.1.51
 Release:        0
 Summary:        Markdown Linter written in Rust
 License:        MIT
@@ -26,8 +26,8 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 
-# rumdl@0.0.172 requires rustc 1.91.0
-BuildRequires:  cargo >= 1.91
+# rumdl@0.1.43 requires rustc 1.94.0
+BuildRequires:  cargo >= 1.94
 
 # out-of-memory errors
 ExcludeArch:    %{ix86} %{arm} ppc64le
