@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 15 08:38:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.2:
+  * chore: upgrade Go to 1.25.8 to fix stdlib CVEs (#2548)
+  * fix: treat amd64 as equivalent to x86-64 for lifecycle binary
+    selection (#2544)
+  * build(deps): bump the go-dependencies group across 1 directory
+    with 8 updates (#2545)
+  * fix: Adding ubi9, ubi10 and noble builders on the suggested
+    builders of the pack cli (#2540)
+
+-------------------------------------------------------------------
 Tue Mar 03 06:16:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.40.1:
