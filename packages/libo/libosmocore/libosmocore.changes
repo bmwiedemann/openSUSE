@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 14 10:25:03 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.13.1
+  * socket: Introduce API osmo_sock_set_nonblock()
+  * gsm/rsl: add definition for TFO transparent container IE
+  * vty/test: Validate optional-multi-choice param followed by optional-multi-choice param
+  * gsmtap_util: Avoid sink_fd leak gsmtap_source_add_sinki() called multiple times
+  * logging_vty: Allow setting gsmtap log tgt as (blocking-io|nonblocking-io|wq)
+  * gsmtap_util: Increase source_fd's SO_SNDBUF to 4MB
+  * osmo_io: Support rx of segments up to ~UINT16_MAX
+  * osmo_io: Propagate segment_cb errors to the read_cb
+  * Use same queue length for gsmtap_log and gsmtap_file
+
+-------------------------------------------------------------------
 Wed Feb  4 17:58:53 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.12.0

@@ -17,13 +17,16 @@
 
 
 Name:           libosmocore
-Version:        1.12.0
+Version:        1.13.1
 Release:        0
 Summary:        The Open Source Mobile Communications Core Library
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Telephony/Utilities
-URL:            https://osmocom.org/projects/libosmocore/wiki/Libosmocore
-Source:         https://github.com/osmocom/libosmocore/archive/%version.tar.gz
+URL:            https://osmocom.org/projects/libosmocore/wiki
+#Git-Clone:     https://gitea.osmocom.org/osmocom/libosmocore
+#Git-Clone:     https://github.com/osmocom/libosmocore
+#DL-URL:        https://downloads.osmocom.org/releases/libosmocore/
+Source:         https://downloads.osmocom.org/releases/%name/%name-%version.tar.bz2
 BuildRequires:  automake >= 1.6
 BuildRequires:  libtool >= 2
 BuildRequires:  lksctp-tools-devel
@@ -33,7 +36,7 @@ BuildRequires:  xz
 BuildRequires:  pkgconfig(gnutls) >= 2.12.0
 BuildRequires:  pkgconfig(libmnl)
 BuildRequires:  pkgconfig(libpcsclite)
-BuildRequires:  pkgconfig(liburing)
+BuildRequires:  pkgconfig(liburing) >= 0.7
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(talloc) >= 2.1.0
 
