@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 14 12:32:32 UTC 2026 - David Anes <david.anes@suse.com>
+
+- Add libxslt-raise-max-parameters.patch to raise the number 
+  of MAX_PARAMETERS [bsc#1258990] 
+
+
+-------------------------------------------------------------------
 Wed Feb  4 07:41:13 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - CVE-2025-10911 will be fixed on libxml2 side instead [bsc#1250553]
