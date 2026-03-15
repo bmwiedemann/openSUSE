@@ -23,8 +23,10 @@ Release:        0
 Summary:        Osmocom library for the A-bis interface between BTS and BSC
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          Productivity/Telephony/Utilities
-URL:            https://gitea.osmocom.org/osmocom/libosmo-sigtran
-Source:         %name-%version.tar.xz
+URL:            https://osmocom.org/projects/libosmo-sccp/wiki
+#Git-Clone:     https://gitea.osmocom.org/osmocom/libosmo-sigtran.git
+#Git-Clone:     https://github.com/osmocom/libosmo-sigtran
+Source:         https://downloads.osmocom.org/releases/%name/%name-%version.tar.bz2
 Patch2:         0001-build-fixes.patch
 Patch3:         harden_osmo-stp.service.patch
 BuildRequires:  automake >= 1.6

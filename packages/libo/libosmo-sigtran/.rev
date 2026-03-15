@@ -23,4 +23,12 @@
     <comment>- Update to release 2.2.1</comment>
     <requestid>1331448</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c429db72c4f9b1fbd1187cc437ce1967</srcmd5>
+    <version>2.2.1</version>
+    <time>1773581548</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch from Github autocreated tarball to official tarball</comment>
+    <requestid>1339032</requestid>
+  </revision>
 </revisionlist>
