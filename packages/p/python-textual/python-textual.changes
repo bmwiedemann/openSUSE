@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 14 19:11:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.1.1:
+  * Hotfix for animation on complete
+- update to 8.1.0:
+  * Replace circuar references in DOM with weak references to
+    improve GC times
+  * When animating an attribute a second time, the original
+    `on_complete` is now called
+- update to 8.0.2:
+  * Themes are now in alphabetical order in command palette
+  * Fixed issues with Directory Tree
+
+-------------------------------------------------------------------
 Mon Mar  2 22:03:18 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 8.0.1:
