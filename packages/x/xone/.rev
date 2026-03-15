@@ -50,4 +50,19 @@ Requires: https://build.opensuse.org/requests/1330200</comment>
 I also made the version dependencies a bit stricter. xone now requires the kernel module in the same version. xone-dongle-firmware needs to be in the new version format introduced with the latest version which zypper unfortunately recognizes as lower version and doesn't want to update to. So I enforce a &quot;lower&quot; version for now.</comment>
     <requestid>1333055</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5e649ca4ebdb20c6c63c33f48e80955a</srcmd5>
+    <version>0.5.7</version>
+    <time>1773581553</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.5.7
+  * dongle, mt76: fix cold/warm firmware init and enable automatic controller reconnection
+  * Change timeout_secs to milliseconds for pairing work
+  * Simplify firmware loading cancellation logic
+- Update to release 0.5.6
+  * Add more info to the active_clients sysfs
+  * Fix small dongle pairing - add pairing scan channel rotation and diagnostics
+  * Add sleep before firmware reset</comment>
+    <requestid>1339041</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar 14 11:51:44 UTC 2026 - Tobias Görgens <suse.snooper541@passmail.net>
+
+- Update to release 0.5.7
+  * dongle, mt76: fix cold/warm firmware init and enable automatic controller reconnection
+  * Change timeout_secs to milliseconds for pairing work
+  * Simplify firmware loading cancellation logic
+- Update to release 0.5.6
+  * Add more info to the active_clients sysfs
+  * Fix small dongle pairing - add pairing scan channel rotation and diagnostics
+  * Add sleep before firmware reset
+
+-------------------------------------------------------------------
 Sun Feb  8 07:47:39 UTC 2026 - Aesara Binder <aesara@mailbox.org>
 
 - Update to release 0.5.5
