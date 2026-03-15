@@ -1,14 +1,15 @@
 ---
  CMakeLists.txt                                                                               |    5 
  client-library/src/Attestation/AttestationClient/CMakeLists.txt                              |    1 
- client-library/src/Attestation/AttestationClient/lib/DynamicLibrary/CMakeLists.txt           |   79 +++++-----
- client-library/src/Attestation/AttestationClient/lib/DynamicLibrary/azguestattestation.pc.in |    9 +
- client-library/src/Attestation/CMakeLists.txt                                                |    9 -
+ client-library/src/Attestation/AttestationClient/lib/DynamicLibrary/CMakeLists.txt           |   98 +++++-----
+ client-library/src/Attestation/AttestationClient/lib/DynamicLibrary/azguestattestation.pc.in |    9 
+ client-library/src/Attestation/AttestationClient/lib/include/AttestationLibTypes.h           |    1 
+ client-library/src/Attestation/CMakeLists.txt                                                |    9 
  client-library/src/Attestation/LinuxTpm/CMakeLists.txt                                       |    5 
- client-library/src/Attestation/LinuxTpm/lib/CMakeLists.txt                                   |   26 +--
- client-library/src/Attestation/LinuxTpm/staticshim/CMakeLists.txt                            |    7 
- cvm-attestation-sample-app/CMakeLists.txt                                                    |   29 +--
- 9 files changed, 86 insertions(+), 84 deletions(-)
+ client-library/src/Attestation/LinuxTpm/lib/CMakeLists.txt                                   |   37 +--
+ client-library/src/Attestation/LinuxTpm/staticshim/CMakeLists.txt                            |   10 -
+ cvm-attestation-sample-app/CMakeLists.txt                                                    |   29 --
+ 10 files changed, 90 insertions(+), 114 deletions(-)
 
 --- /dev/null
 +++ b/CMakeLists.txt
@@ -27,21 +28,32 @@
 -add_subdirectory(tests)
 --- a/client-library/src/Attestation/AttestationClient/lib/DynamicLibrary/CMakeLists.txt
 +++ b/client-library/src/Attestation/AttestationClient/lib/DynamicLibrary/CMakeLists.txt
-@@ -1,39 +1,52 @@
+@@ -1,55 +1,55 @@
 -cmake_minimum_required(VERSION 3.5)
 +cmake_minimum_required(VERSION 3.10)
  
  #MUST be same as the version in the latest entry in debian/changelog file.
--project(azguestattestation VERSION 1.0.2)
+-project(azguestattestation VERSION 1.0.5)
 -
 -set(CMAKE_PROJECT_TARGET azguestattestation)
-+project(azguestattestation LANGUAGES CXX VERSION 1.0.2)
+-
+-find_package(Tss2 REQUIRED)
+-include_directories(${TSS2_INCLUDE_DIRS})
++project(azguestattestation LANGUAGES CXX VERSION 1.0.5)
  
 +set (CMAKE_CXX_STANDARD 14)
 +set (MY_TARGET_API ${PROJECT_NAME}1)
  add_definitions (-DPLATFORM_UNIX)
  
+-find_path(CURL_INCLUDE_DIR NAMES curl PATHS /usr/local/attestationcurl/include
+-                                            NO_DEFAULT_PATH)
+-find_path(CRYPTO_INCLUDE_DIR NAMES openssl PATHS /usr/local/attestationssl/include
+-                                            NO_DEFAULT_PATH)
+-include_directories()
+-
 -include_directories(
+-    ${CURL_INCLUDE_DIR}
+-    ${CRYPTO_INCLUDE_DIR}
 -    ${CMAKE_CURRENT_SOURCE_DIR}/../../../LinuxTpm/include
 -    ${CMAKE_CURRENT_SOURCE_DIR}/..
 -    ${CMAKE_CURRENT_SOURCE_DIR}/../..
@@ -50,8 +62,7 @@
 -    ${CMAKE_SOURCE_DIR}/../external/SnpVmReport
 -)
 -
--add_library(${CMAKE_PROJECT_TARGET} SHARED ../../AttestationHelperBase64.cpp
--                                           ../../AttestationHelperJson.cpp
+-add_library(${CMAKE_PROJECT_TARGET} SHARED ../../AttestationHelper.cpp
 -                                           ../AttestationClientImpl.cpp
 -                                           ../AttestationClient.cpp
 -                                           ../AttestationParameters.cpp
@@ -64,28 +75,36 @@
 -                                           ../IsolationInfo.cpp
 -                                           ../HclReportParser.cpp
 -                                           ../HttpClient.cpp
+-                                           ../TpmCertOperations.cpp
+-                                           ../ImdsClient.cpp
+-                                           ../AttestationLibTelemetry.cpp
 -                                           ${CMAKE_SOURCE_DIR}/../external/jsoncpp-0.10.7/src/jsoncpp.cpp)
+-                                           
+-find_library(CURL_LIB NAMES curl PATHS /usr/local/attestationcurl/lib
+-                                           NO_DEFAULT_PATH)
 -
 -target_link_libraries(${CMAKE_PROJECT_TARGET} Tpm2)
--target_link_libraries(${CMAKE_PROJECT_TARGET} curl)
+-target_link_libraries(${CMAKE_PROJECT_TARGET} ${CURL_LIB})
 +find_package(PkgConfig REQUIRED)
 +pkg_check_modules(EXTERNAL REQUIRED jsoncpp libcrypto libcurl)
  
 -set_target_properties(${CMAKE_PROJECT_TARGET} PROPERTIES VERSION ${PROJECT_VERSION})
 -set_target_properties(${CMAKE_PROJECT_TARGET} PROPERTIES SOVERSION 1)
 +add_library(${PROJECT_NAME} SHARED
-+	../../AttestationHelperBase64.cpp
-+	../../AttestationHelperJson.cpp
++	../../AttestationHelper.cpp
 +	../AttestationClient.cpp
 +	../AttestationClientImpl.cpp
++	../AttestationLibTelemetry.cpp
 +	../AttestationLibUtils.cpp
 +	../AttestationParameters.cpp
 +	../HclReportParser.cpp
 +	../HttpClient.cpp
++	../ImdsClient.cpp
 +	../ImdsOperations.cpp
 +	../IsolationInfo.cpp
 +	../Logging.cpp
 +	../NativeConverter.cpp
++	../TpmCertOperations.cpp
 +	../TpmInfo.cpp
 +	../TpmUnseal.cpp
 +	)
@@ -97,6 +116,7 @@
 +	PUBLIC
 +		${CMAKE_CURRENT_SOURCE_DIR}/../include
 +	)
++target_compile_options(${PROJECT_NAME} PRIVATE -Wno-deprecated-declarations)
 +target_link_libraries(${PROJECT_NAME} ${EXTERNAL_LIBRARIES})
 +target_link_libraries(${PROJECT_NAME} LinuxTpm)
 +
@@ -125,14 +145,24 @@
 +Version: @PROJECT_VERSION@
 +Cflags: -I${includedir}
 +Libs: -L${libdir} -l@PROJECT_NAME@
+--- a/client-library/src/Attestation/AttestationClient/lib/include/AttestationLibTypes.h
++++ b/client-library/src/Attestation/AttestationClient/lib/include/AttestationLibTypes.h
+@@ -7,6 +7,7 @@
+ #pragma once
+ 
+ #include <string>
++#include <cstdint>
+ #include <unordered_map>
+ 
+ #define CLIENT_PARAMS_VERSION 1 // V1 contains version, attestation_endpoint_url, client_payload
 --- a/client-library/src/Attestation/CMakeLists.txt
 +++ b/client-library/src/Attestation/CMakeLists.txt
 @@ -1,13 +1,4 @@
  cmake_minimum_required(VERSION 3.5)
  
 -if (NOT DEFINED ENV{CC} )
--    set (CMAKE_C_COMPILER "/usr/bin/gcc-8")
--    set (CMAKE_CXX_COMPILER "/usr/bin/g++-8")
+-    set (CMAKE_C_COMPILER "/usr/bin/gcc")
+-    set (CMAKE_CXX_COMPILER "/usr/bin/g++")
 -endif ()
 -set (CMAKE_CXX_STANDARD 14)
 -
@@ -155,7 +185,7 @@
 -add_subdirectory(unittests)
 --- a/client-library/src/Attestation/LinuxTpm/lib/CMakeLists.txt
 +++ b/client-library/src/Attestation/LinuxTpm/lib/CMakeLists.txt
-@@ -1,18 +1,20 @@
+@@ -1,29 +1,20 @@
  cmake_minimum_required (VERSION 3.5)
  
 -set (CMAKE_PROJECT_TARGET Tpm2)
@@ -167,17 +197,28 @@
 -find_package(Tss2 REQUIRED)
 -include_directories(${TSS2_INCLUDE_DIRS})
 -
--include_directories (${CMAKE_CURRENT_SOURCE_DIR}/../include)
+-find_path(CRYPTO_INCLUDE_DIR NAMES openssl PATHS /usr/local/attestationssl/include
+-                                            NO_DEFAULT_PATH)
+-
+-include_directories (${CMAKE_CURRENT_SOURCE_DIR}/../include
+-                    ${CRYPTO_INCLUDE_DIR}
+-)
 +find_package(PkgConfig REQUIRED)
 +pkg_check_modules(EXTERNAL REQUIRED tss2-esys tss2-mu tss2-tcti-device openssl)
  
  file(GLOB SOURCES "*.cpp")
  
+-find_library(CRYPTO_LIB NAMES crypto PATHS /usr/local/attestationssl/lib64
+-                                           NO_DEFAULT_PATH)
+-find_library(SSL_LIB NAMES ssl PATHS /usr/local/attestationssl/lib64
+-                                           NO_DEFAULT_PATH)
+-
 -add_library(${CMAKE_PROJECT_TARGET} ${SOURCES})
 -target_link_libraries(${CMAKE_PROJECT_TARGET} ${TSS2_LIBRARIES})
--target_link_libraries(${CMAKE_PROJECT_TARGET} ssl crypto)
+-target_link_libraries(${CMAKE_PROJECT_TARGET} ${CRYPTO_LIB})
+-target_link_libraries(${CMAKE_PROJECT_TARGET} ${SSL_LIB})
+-target_link_libraries(${CMAKE_PROJECT_TARGET} pthread)
 -target_link_libraries(${CMAKE_PROJECT_TARGET} dl)
--target_link_libraries(${CMAKE_PROJECT_TARGET} tss2-mu)
 -set_property(TARGET ${CMAKE_PROJECT_TARGET} PROPERTY POSITION_INDEPENDENT_CODE ON)
 +add_library(${PROJECT_NAME} STATIC ${SOURCES})
 +target_include_directories(${PROJECT_NAME}
@@ -190,11 +231,14 @@
 +set_property(TARGET ${PROJECT_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
 --- a/client-library/src/Attestation/LinuxTpm/staticshim/CMakeLists.txt
 +++ b/client-library/src/Attestation/LinuxTpm/staticshim/CMakeLists.txt
-@@ -1,7 +1,6 @@
+@@ -1,10 +1,6 @@
  cmake_minimum_required(VERSION 3.5)
  
 -project(TssStaticShim)
 -set(CMAKE_PROJECT_TARGET TssStaticShim)
+-
+-find_package(Tss2 REQUIRED)
+-include_directories(${TSS2_INCLUDE_DIRS})
 -
 -add_library(${CMAKE_PROJECT_TARGET} mssim_shim.cpp)
 +project(TssStaticShim LANGUAGES CXX)
@@ -229,7 +273,7 @@
 -                                       )
 +add_executable(${PROJECT_NAME} main.cpp Utils.cpp Logger.cpp)
  
--target_link_libraries(${CMAKE_PROJECT_TARGET} azguestattestation)
+-target_link_libraries(${CMAKE_PROJECT_TARGET} azguestattestation -lz)
 -target_link_libraries(${CMAKE_PROJECT_TARGET} curl)
 -target_link_libraries(${CMAKE_PROJECT_TARGET} jsoncpp)
 \ No newline at end of file

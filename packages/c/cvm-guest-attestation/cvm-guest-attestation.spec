@@ -1,7 +1,7 @@
 #
 # spec file for package cvm-guest-attestation
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define libname libazguestattestation%somajor
 
 Name:           cvm-guest-attestation
-Version:        20240316.b613bcd
+Version:        20250905.ea95f70
 Release:        0
 Summary:        Confidential computing cvm guest attestation
 License:        MIT

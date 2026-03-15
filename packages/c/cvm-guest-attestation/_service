@@ -8,6 +8,7 @@
     <param name="exclude">SECURITY.md</param>
     <param name="exclude">SUPPORT.md</param>
     <param name="exclude">aks-linux-sample</param>
+    <param name="exclude">azure-protected-vm-secrets</param>
     <param name="exclude">client-library/src/Attestation/*.sh</param>
     <param name="exclude">client-library/src/Attestation/AttestationClient/lib/DynamicLibrary/*.sh</param>
     <param name="exclude">client-library/src/Attestation/AttestationClient/lib/DynamicLibrary/debian</param>
@@ -20,6 +21,7 @@
     <param name="exclude">client-library/src/external/jsoncpp-*</param>
     <param name="exclude">cvm-attestation-sample-app/*.config</param>
     <param name="exclude">cvm-attestation-sample-app/*.json</param>
+    <param name="exclude">cvm-attestation-sample-app/*.sh</param>
     <param name="exclude">cvm-attestation-sample-app/certs</param>
     <param name="exclude">cvm-datadisk-enc-scripts</param>
     <param name="exclude">cvm-platform-checker-exe</param>
@@ -29,7 +31,7 @@
     <param name="exclude">tdx-attestation-app/.gitignore</param>
     <param name="exclude">tdx-attestation-app/package</param>
     <param name="filename">cvm-guest-attestation</param>
-    <param name="revision">b613bcdbed70bf19e0aa4c2d53e034c1d035ca91</param>
+    <param name="revision">ea95f70d4c0e3c5ce445d95a1a7f4e5f10d46594</param>
     <param name="scm">git</param>
     <param name="url">https://github.com/Azure/confidential-computing-cvm-guest-attestation.git</param>
     <param name="versionformat">%cd.%h</param>
