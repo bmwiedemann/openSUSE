@@ -140,4 +140,27 @@
     <comment></comment>
     <requestid>1312392</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e78af000a69544b610694348b97be8af</srcmd5>
+    <version>6.1</version>
+    <time>1773581517</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.1:
+  * Add support for Python 3.14.
+  * Drop support for Python 3.9.
+  * Fix test failures when fake.py package is installed.
+  * Remove run-time dependency on setuptools.
+- drop py314.patch (obsolete)
+
+- Update to version 4.10
+  * Remove use of 2to3 for outdated versions of PyPy3, letting us
+  * Introduce option flag ``IGNORE_EXCEPTION_MODULE_IN_PYTHON2``
+    When running doctests in Python 3, the option flag will
+  * Reasonable values for ``__name__``, making sure that
+  * For ``doctestfile`` methods, provide ``filename`` and
+  * Added ``zope.testing.setupstack.mock`` as a convenience
+    ``unittest.TestCase`` classes so that they can found
+  * **Actually** remove long-deprecated ``zope.testing.doctest``</comment>
+    <requestid>1338993</requestid>
+  </revision>
 </revisionlist>

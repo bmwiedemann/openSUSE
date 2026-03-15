@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 14 19:08:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1:
+  * Add support for Python 3.14.
+  * Drop support for Python 3.9.
+  * Fix test failures when fake.py package is installed.
+  * Remove run-time dependency on setuptools.
+- drop py314.patch (obsolete)
+
+-------------------------------------------------------------------
 Mon Oct 20 08:25:53 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.0
@@ -43,7 +53,7 @@ Fri Jan  6 11:02:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Oct 11 17:32:07 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 4.10 
+- Update to version 4.10
   * Show deprecation warnings when importing modules which are not ported to Python 3.
   * Improve test coverage.
   * Port zope.testing.formparser to Python 3.
@@ -79,7 +89,7 @@ Fri Apr  5 14:44:29 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 - update to version 4.7
   * Added support for Python 3.7.
   * Remove dependencies on zope.interface and zope.exceptions.
-  * Remove use of 2to3 for outdated versions of PyPy3, letting us 
+  * Remove use of 2to3 for outdated versions of PyPy3, letting us
     build universal wheels.
 
 -------------------------------------------------------------------
@@ -93,11 +103,11 @@ Fri Jun 23 11:17:45 UTC 2017 - aloisio@gmx.com
 - Update to 4.6.1
   * Add support for Python 3.6.
   4.6.0:
-  * Introduce option flag ``IGNORE_EXCEPTION_MODULE_IN_PYTHON2`` 
+  * Introduce option flag ``IGNORE_EXCEPTION_MODULE_IN_PYTHON2``
     to normalize exception class names in traceback output.
     In Python 3 they are displayed as the full dotted name.
     In Python 2 they are displayed as "just" the class name.
-    When running doctests in Python 3, the option flag will 
+    When running doctests in Python 3, the option flag will
     not have any effect, however when running the same test in
     Python 2, the segments in the full dotted name leading up to
     the class name are stripped away from the "expected" string.
@@ -107,9 +117,9 @@ Fri Jun 23 11:17:45 UTC 2017 - aloisio@gmx.com
   4.5.0:
   * Added meta data for test case methods created with
     ``zope.testing.doctestcase``.
-  * Reasonable values for ``__name__``, making sure that 
+  * Reasonable values for ``__name__``, making sure that
     ``__name__`` starts with ``test``.
-  * For ``doctestfile`` methods, provide ``filename`` and 
+  * For ``doctestfile`` methods, provide ``filename`` and
     ``filepath`` attributes.
     The meta data us useful, for example, for selecting tests
     with the nose attribute mechanism.
@@ -124,7 +134,7 @@ Fri Jun 23 11:17:45 UTC 2017 - aloisio@gmx.com
       class MYTests(unittest.TestCase):
           ...
   4.4.0:
-  * Added ``zope.testing.setupstack.mock`` as a convenience 
+  * Added ``zope.testing.setupstack.mock`` as a convenience
     function for setting up mocks in tests.  (The Python
     ``mock`` package must be in the path for this to work. The
     excellent ``mock`` package isn't a dependency of
@@ -134,11 +144,11 @@ Fri Jun 23 11:17:45 UTC 2017 - aloisio@gmx.com
     ``unittest`` test cases.
   4.3.0:
   * Added support for creating doctests as methods of
-    ``unittest.TestCase`` classes so that they can found 
+    ``unittest.TestCase`` classes so that they can found
     automatically by test runners, like *nose* that ignore test
     suites.
   4.2.0:
-  * **Actually** remove long-deprecated ``zope.testing.doctest`` 
+  * **Actually** remove long-deprecated ``zope.testing.doctest``
     (announced as removed in 4.0.0) and
     ``zope.testing.doctestunit``.
   * Add support for PyPy and PyPy3.
