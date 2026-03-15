@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 13 20:42:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.4:
+  * **unparse:** add bytes_errors policy and handle bytes scalars
+    consistently
+- update to 1.0.3:
+  * **unparse:** serialize None text/attrs as empty values (fixes
+    #401)
+  * **readme:** fix Fedora and Arch package links
+
+-------------------------------------------------------------------
 Mon Nov 24 09:03:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.0.2
@@ -112,7 +123,7 @@ Sun Jun 19 17:47:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Tue Feb 22 10:27:36 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch skip-tests-expat-245.patch:
-  * Do not run tests that make no sense with a current Expat. 
+  * Do not run tests that make no sense with a current Expat.
 
 -------------------------------------------------------------------
 Fri May 29 10:34:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
@@ -166,7 +177,7 @@ Thu May 18 15:01:55 UTC 2017 - toddrme2178@gmail.com
 Tue Sep  6 07:25:55 UTC 2016 - mardnh@gmx.de
 
 - update to version 0.10.2
-  + Fixed defusedexpat expat import. 
+  + Fixed defusedexpat expat import.
 - v0.10.1
   + Use defusedexpat if available.
   + Allow non-string attributes in unparse.
@@ -189,15 +200,15 @@ Tue Sep  6 07:25:55 UTC 2016 - mardnh@gmx.de
 -------------------------------------------------------------------
 Thu Nov 27 14:46:28 UTC 2014 - boris@steki.net
 
-- add python-xml to all *suse distributions as SLE 12 requires it too 
+- add python-xml to all *suse distributions as SLE 12 requires it too
 
 -------------------------------------------------------------------
 Mon Nov  3 13:45:57 UTC 2014 - boris@steki.net
 
-- add python-xml to requires to enable SLE build 
+- add python-xml to requires to enable SLE build
 
 -------------------------------------------------------------------
 Wed Sep 10 12:48:51 UTC 2014 - boris@steki.net
 
-- initial packaging of 0.9.0 version 
+- initial packaging of 0.9.0 version
 

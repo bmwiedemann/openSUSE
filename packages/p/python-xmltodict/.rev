@@ -141,4 +141,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1337591</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>2975d0caff8b72392cab6c3d1d5cca4e</srcmd5>
+    <version>1.0.4</version>
+    <time>1773581512</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.4:
+  * **unparse:** add bytes_errors policy and handle bytes scalars
+    consistently
+- update to 1.0.3:
+  * **unparse:** serialize None text/attrs as empty values (fixes
+    #401)
+  * **readme:** fix Fedora and Arch package links
+
+  * Do not run tests that make no sense with a current Expat.
+  + Fixed defusedexpat expat import.
+- add python-xml to all *suse distributions as SLE 12 requires it too
+- add python-xml to requires to enable SLE build
+- initial packaging of 0.9.0 version</comment>
+    <requestid>1338812</requestid>
+  </revision>
 </revisionlist>
