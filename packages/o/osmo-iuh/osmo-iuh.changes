@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 14 22:04:24 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.0
+  * iu_client: add ranap_iu_page_cs2/ranap_iu_page_ps2
+  * iu_client: add a new event NEW_AREA
+  * iu_client: Initial N-PCSTATE.ind support
+  * iu_client: Initial N-NOTICE.ind support (Routing Failure of
+    SCCP CL messages)
+  * ranap: Introduce ranap_new_msg_error_ind()
+
+-------------------------------------------------------------------
 Thu Jun  5 21:42:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.7.0

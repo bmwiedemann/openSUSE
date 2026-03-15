@@ -151,4 +151,12 @@
     <comment>- Update to release 1.7.0</comment>
     <requestid>1283465</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ce0d3bbe98791e4f135b835e7a250a37</srcmd5>
+    <version>1.8.0</version>
+    <time>1773581551</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.8.0</comment>
+    <requestid>1339035</requestid>
+  </revision>
 </revisionlist>
