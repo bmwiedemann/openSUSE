@@ -25,7 +25,10 @@ Summary:        ASN.1 library for parsing the TCAP protocol (SS7)
 License:        GPL-2.0-or-later
 Group:          Productivity/Telephony/Utilities
 URL:            https://gitea.osmocom.org/ss7-in-c/libosmo-asn1-tcap
-Source:         https://github.com/osmocom/libosmo-asn1-tcap/archive/refs/tags/%version.tar.gz
+#Git-Clone:     https://gitea.osmocom.org/ss7-in-c/libosmo-asn1-tcap
+#Git-Clone:     https://github.com/osmocom/libosmo-asn1-tcap
+#DL-URL:        https://downloads.osmocom.org/releases/libosmo-asn1-tcap/
+Source:         https://downloads.osmocom.org/releases/%name/%name-%version.tar.bz2
 Patch1:         build.patch
 BuildRequires:  automake
 BuildRequires:  libtool >= 2
