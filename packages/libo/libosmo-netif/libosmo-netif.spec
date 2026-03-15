@@ -22,8 +22,11 @@ Release:        0
 Summary:        Osmocom library for muxed audio
 License:        GPL-2.0-or-later
 Group:          Productivity/Telephony/Utilities
-URL:            https://osmocom.org/projects/libosmo-netif
-Source:         https://github.com/osmocom/libosmo-netif/archive/%version.tar.gz
+URL:            https://osmocom.org/projects/libosmo-netif/wiki
+#Git-Clone:     https://gitea.osmocom.org/osmocom/libosmo-netif
+#Git-Clone:     https://github.com/osmocom/libosmo-netif
+#DL-URL:        https://downloads.osmocom.org/releases/libosmo-dsp/
+Source:         https://downloads.osmocom.org/releases/%name/%name-%version.tar.bz2
 Patch1:         osmo-talloc.diff
 BuildRequires:  automake
 BuildRequires:  libtool >= 2
