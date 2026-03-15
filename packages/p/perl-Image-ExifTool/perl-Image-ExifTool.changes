@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Mar  4 09:54:11 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.52:
+  * Added a number of new XMP tags written by Adobe software
+  * Added UTF-16 support for a few different metadata types in which
+    only UCS-2 was previously implemented (github #396)
+  * Added a few more Canon FlashModel values and decode FlashModel
+    for the 5DmkII (thanks Peter Wem, github #390)
+  * Added a new Canon LensType (github #395)
+  * Added some missing file attribute bits to two of the new LNK tags
+  * Decode internal serial number for the 5DmkII (thanks Peter Wem, github #398)
+  * Decode another OwnerName for the 5DmkII (thanks Peter Wem, github #397)
+  * Decode some timed GPS for a couple of new DJI drones
+  * Enable WindowsLongPath by default only if Win32::API is available
+  * Renamed the Pentax K3III AFInfo tag to AFInfoK3III
+
+-------------------------------------------------------------------
+Mon Feb 23 12:05:13 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.51:
+  * Added a new Nikon LensID
+  * Decode more tags from Windows LNK files
+  * Decode another LIGOGPSINFO variant (#394)
+  * Decode some new Canon tags #389, #390, #393)
+  * Decode some new Nikon tags
+  * Split decoding on Nikon BurstGroupID into separate tags
+  * Fixed round-off error in GPSDateTime seconds for camm6 metadata in MP4
+    videos introduced in 13.45
+  * Fixed bug generating the default-language version of
+    QuickTime:LocationInformation (#391)
+
+-------------------------------------------------------------------
 Tue Feb 10 13:19:09 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 13.50:
