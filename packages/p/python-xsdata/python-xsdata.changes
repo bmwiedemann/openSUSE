@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Mar 14 20:32:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.2:
+  * Fix elements in same choice different branches incorrectly
+    merged as list
+  * Infer XML required property from typing annotations
+  * (#1208)
+  * Generate required metadata only for attributes without
+    default values
+  * (#1208)
+  * Fixed missing imports on inheriting multiple mixins for the
+    same class
+  * Fixed choice elements with minOccurs <= 1 not marked as
+    optional
+  * Fixed incorrect max_occurs for elements in different choice
+    blocks
+  * Fixed AttributeError when retrieving subclasses from cython
+    packages
+  * Added flag for specifying extensions
+  * Added support for python 3.14
+  * Switched to Sequence when using generic containers
+  * Removed Python 3.9 support
+  * Removed cli options union-type, kw-only, postponed-
+    annotations are now always enabled
+  * Removed xsdata <SOURCE> shorthand
+
+-------------------------------------------------------------------
 Wed Sep  3 04:49:29 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 25.7.

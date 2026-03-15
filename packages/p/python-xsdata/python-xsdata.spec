@@ -1,7 +1,7 @@
 #
 # spec file for package python-xsdata
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-xsdata
-Version:        25.7
+Version:        26.2
 Release:        0
 Summary:        Python XML Binding
 License:        MIT

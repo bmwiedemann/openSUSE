@@ -7,4 +7,34 @@
     <comment>- Initial release of 25.7.</comment>
     <requestid>1302532</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dda13d9013060957ac161bba3e0c0b49</srcmd5>
+    <version>26.2</version>
+    <time>1773581531</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 26.2:
+  * Fix elements in same choice different branches incorrectly
+    merged as list
+  * Infer XML required property from typing annotations
+  * (#1208)
+  * Generate required metadata only for attributes without
+    default values
+  * (#1208)
+  * Fixed missing imports on inheriting multiple mixins for the
+    same class
+  * Fixed choice elements with minOccurs &lt;= 1 not marked as
+    optional
+  * Fixed incorrect max_occurs for elements in different choice
+    blocks
+  * Fixed AttributeError when retrieving subclasses from cython
+    packages
+  * Added flag for specifying extensions
+  * Added support for python 3.14
+  * Switched to Sequence when using generic containers
+  * Removed Python 3.9 support
+  * Removed cli options union-type, kw-only, postponed-
+    annotations are now always enabled
+  * Removed xsdata &lt;SOURCE&gt; shorthand</comment>
+    <requestid>1339012</requestid>
+  </revision>
 </revisionlist>
