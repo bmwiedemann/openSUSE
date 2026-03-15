@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar  9 21:51:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.6.0:
+  * barbican: Pass down domain/system scope
+  * Check context instance type directly
+  * barbican: Drop redundant full url composition
+  * Use more explicit import
+  * Bump vault used in tests
+  * Move vault functional tests to noble
+  * tox: Fix missing functional-vault-py310 env
+  * Fix wrong method name
+  * vault: Depreecate ineffective use\_ssl option
+  * Require valid url for vault\_url
+  * Drop redundant description about config sample
+  * vault: Restrict kv\_version
+  * Delay string interpolations at logging calls
+  * Remove reference to tag framework
+
+-------------------------------------------------------------------
 Thu Jan 22 08:52:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.5.0:

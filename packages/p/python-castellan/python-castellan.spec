@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-castellan
-Version:        5.5.0
+Version:        5.6.0
 Release:        0
 Summary:        Generic Key Manager interface for OpenStack
 License:        Apache-2.0

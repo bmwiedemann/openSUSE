@@ -359,4 +359,26 @@
   * Update master for stable/2025.2</comment>
     <requestid>1328632</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>227154a53e83875c590f856d7b6f047d</srcmd5>
+    <version>5.6.0</version>
+    <time>1773581525</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.6.0:
+  * barbican: Pass down domain/system scope
+  * Check context instance type directly
+  * barbican: Drop redundant full url composition
+  * Use more explicit import
+  * Bump vault used in tests
+  * Move vault functional tests to noble
+  * tox: Fix missing functional-vault-py310 env
+  * Fix wrong method name
+  * vault: Depreecate ineffective use\_ssl option
+  * Require valid url for vault\_url
+  * Drop redundant description about config sample
+  * vault: Restrict kv\_version
+  * Delay string interpolations at logging calls
+  * Remove reference to tag framework</comment>
+    <requestid>1339016</requestid>
+  </revision>
 </revisionlist>
