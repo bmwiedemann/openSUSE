@@ -178,4 +178,22 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1274283</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>842ec23eebdcb30964d12129b105bc71</srcmd5>
+    <version>8.3</version>
+    <time>1773581526</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.3:
+  * Move all supported package metadata into pyproject.toml.
+  * Drop support for Python 3.9.
+  * Add support for Python 3.14.
+  * Remove run-time dependency on setuptools.
+  * Fix zope.security._zope_security_checker extension build
+    failure with C23.
+  * Replace pkg_resources namespace with PEP 420 native
+    namespace.
+  * Drop support for Python 3.8.
+  * Add preliminary support for Python 3.14.</comment>
+    <requestid>1339004</requestid>
+  </revision>
 </revisionlist>

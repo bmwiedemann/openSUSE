@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.security
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-zope.security%{psuffix}
-Version:        7.3
+Version:        8.3
 Release:        0
 Summary:        Zope Security Framework
 License:        ZPL-2.1
@@ -91,7 +91,6 @@ policies on Python objects.
 %dir %{python_sitearch}/zope
 %{python_sitearch}/zope/security
 %{python_sitearch}/zope[._]security-%{version}.dist-info
-%{python_sitearch}/zope.security-%{version}*-nspkg.pth
 %endif
 
 %changelog

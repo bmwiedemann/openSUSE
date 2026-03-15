@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 14 20:08:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.3:
+  * Move all supported package metadata into pyproject.toml.
+  * Drop support for Python 3.9.
+  * Add support for Python 3.14.
+  * Remove run-time dependency on setuptools.
+  * Fix zope.security._zope_security_checker extension build
+    failure with C23.
+  * Replace pkg_resources namespace with PEP 420 native
+    namespace.
+  * Drop support for Python 3.8.
+  * Add preliminary support for Python 3.14.
+
+-------------------------------------------------------------------
 Mon May  5 03:45:29 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros. 
