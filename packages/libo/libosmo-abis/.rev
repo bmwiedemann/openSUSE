@@ -184,4 +184,12 @@ fix build with ortp 0.27</comment>
     <comment>- Update to release 2.0.1</comment>
     <requestid>1281338</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0f6892de8f32bde7c99a0be4f6ed9584</srcmd5>
+    <version>2.1.0</version>
+    <time>1773581546</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.1.0</comment>
+    <requestid>1339027</requestid>
+  </revision>
 </revisionlist>

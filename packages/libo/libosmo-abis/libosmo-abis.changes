@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Mar 14 10:38:26 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1.0
+  * trau_rtp_conv: document API functions
+  * rtp2trau HR: add support for TRAU-8k-UL frame output
+  * rtp2trau HR: bring TRAU-16k support into alignment with TRAU-8k
+  * rtp2trau: remove broken acceptance of 0-length payloads
+  * rtp2trau FR & EFR: disallow BFI in DL
+  * rtp2trau HR to DL: validate ToC octet of RFC 5993
+  * trau: add TFO frame insert/extract functions
+  * trau: factor out V.110 frame conversion functions
+  * trau: add TW-TS-007 packing and unpacking functions
+  * trau: add TW-TS-007 compression and decompression functions
+  * trau_frame: add support for config frames of 3GPP Rel5+
+  * trau: add AMR TRAU frame interworking facility
+
+-------------------------------------------------------------------
 Fri May 30 09:24:28 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.0.1
