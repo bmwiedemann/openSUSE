@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 14 19:23:32 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Udpate to version 1.11
+  * Stable branch: fix for clang 19 compiler warnings.
+  * Fix TLS test.
+  * FIX [HTTP] fix a blocking case when freeing http client.
+
+-------------------------------------------------------------------
 Mon Jun  2 15:06:50 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.10.2

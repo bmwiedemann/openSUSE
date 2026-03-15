@@ -1,8 +1,8 @@
 #
 # spec file for package nng
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2018-2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2018-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define sover 1
 Name:           nng
-Version:        1.10.2
+Version:        1.11
 Release:        0
 Summary:        Nanomsg NG - brokerless messaging
 License:        MIT
