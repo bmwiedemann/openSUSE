@@ -1,4 +1,259 @@
 -------------------------------------------------------------------
+Sun Mar 15 10:44:14 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.0.1
+  * Removed code to be able to start up MapProxy without PIL.
+  * Add python-dateutil dependency to avoid errors on startup.
+  * Add ogcapi to config-schema.json to avoid warnings on startup.
+- Release 6.0.0
+  ## Breaking:
+  * The extension for mbtiles used in MapProxy was wrong. It used
+    `.mbtile` instead of `.mbtiles`. Existing files in caches have
+    to be renamed! Here is a small script to change all files in a
+    directory recursively: `find . -type f -name "*.mbtile" -exec
+    sh -c 'mv "$1" "${1%.mbtile}.mbtiles"' _ {} \;`
+  * lxml was updated. The new version is much stricter in its
+    inputs and administrators might have to adjust featureinfo
+    services to output valid HTML.
+  ## Improvements:
+  * New source types `ogcapitiles` and `ogcapimaps` are now
+    available! See docs for further information.
+  * New util `gridconf-from-ogcapitilematrixset` to fetch grids
+    from an OGC API compliant web service was added. See docs for
+    further information.
+  * MapProxy now offers an OGCAPI compliant service for OGC API
+    Maps and OGC API Tiles. Including landing page and preview
+    maps! See docs for further information.
+  * The `SERVICE` parameter for WMS `GetMap` requests is no longer
+    mandatory as according to spec.
+  * Added test pipeline for the documentation.
+  * The GitHub actions now have better fitting permissions,
+    improving the security.
+  * WMTS capabilities now include `OperationsMetadata` for restful
+    mode.
+  * TMS capabilities now include metadata similar to WMS and WMTS.
+  ## Maintenance:
+  * Some fixes in the documentation.
+  * As shapely is no longer optional, code to check for its
+    existence has been removed.
+  ## Fixes:
+  * An error regarding unicode strings in the featureinfo parsing
+    was fixed.
+  * An error in the debug logging of configurations was fixed
+- Release 5.1.1
+  ## Improvements:
+  * Better logging of http errors if mapproxy requests tiles
+  ## Fixes:
+  * Fixed logger for merged configuration files
+- Release 5.1.0
+  ## Improvements:
+  * Added `query_layers` option to `wms_opts` to be able to
+    configure the `QUERY_LAYERS` of the wms request
+  * Added workflow to republish docker images if the base image
+    changed, i.e. for security updates
+  # Maintenance:
+  * Fixed some spelling and debug output
+  * Updated various dependencies
+  ## Fixes:
+  * Fixes some errors in the json schema regarding
+    `use_direct_level_from` and `use_direct_res_from`
+  * Fixes an error with merging resolutions of grids
+- Release 5.0.0
+  ## Breaking:
+  * The dependencies lxml, shapely, pyproj, gdal and PyYAML are no
+    longer optional
+  ## Maintenance:
+  * By default lxml, shapely, pyproj, Pillow and PyYAML are now
+    installed via pip and are not recommended to be installed as
+    apt packages anymore
+  ## Fixes:
+  * The alpine image uses the python3 plugin for uwsgi correctly
+  * An lxml encoding error is fixed
+- Release 4.1.2
+  ## Maintenance:
+  * Set Pillow versions in setup.py to actually supported versions
+  * Using PIL instead of Pillow was not working since Python 2, so
+    it is removed from setup.py
+  * Using a higher pyproj version for Python 3.13 is necessary
+  * Added a test for an older Pillow version with Python 3.9
+- Release 4.1.1
+  ## Improvements:
+  * The scale denominator in the WMTS capabilites is now rounded to
+    10 digits after the decimal place.
+- Release 4.1.0
+  ## Improvements:
+  * It is now possible to integrate the grid name into paths for
+    AWS buckets. This allows storage of tiles for multiple grids in
+    the same bucket.
+  * We are returning a 404 http status code instead of a 500 if no
+    legend graphic is found for a service.
+  * We are using utf-8 in GetFeatureInfo requests now.
+  ## Maintenance:
+  * Updated some dependencies.
+  * Updated the GitHub runner versions.
+  * Refactored the grid.py file into multiple files.
+  * Removed the implementation of odict in favour of the builtin
+    OrderedDict class.
+  * Added support for python 3.13.
+  * Skipping permissions tests if tests are run with root user.
+    This is necessary to build and test MapProxy in a chroot
+    environment which is used to package MapProxy for Debian.
+    Normal testing is not affected.
+  ## Fixes:
+  * Fixed deprecation warnings for utctime, sqlite, ImageMath.eval,
+    mock_s3.
+  * Fix entrypoint.sh to create default MapProxy configurations if
+    none are found.
+  * Allowed the trivy security scan workflow to write the results
+    to the GitHub security tab.
+  * We are not allowing the deprecated TLS Versions 1.1 or lower
+    for connections to servers anymore.
+- Release 4.0.2
+  ## Fixes:
+  * Security fix to prevent XSS injections in demo pages
+  * Security fix to prevent reading file urls
+- 4.0.1
+  ## Improvements:
+  * Added docs regarding OGC API support
+  ## Fixes:
+  * WMTS Demo now works if kvp is disabled
+- Release 4.0.0
+  ## Breaking:
+  * Removed legacy seed configuration.
+  * Removed Python 3.8 support.
+  * Removed riak support as the client library is not maintained
+    anymore. If you rely on the riak support you have to continue
+    to use version 3.1.3 with Python 3.8.
+  ## Improvements:
+  * The tile removal and refresh code is improved by simplifying
+    the usage of `remove_timestamp` and `before_timestamp` and
+    complementing them by new `remove_all` and `refresh_all`
+    parameters.
+  * Add a default logging config to the docker images.
+  * Add environment variables to the docker images to enable and
+    configure multiapp support.
+  * Added a docker compose file to make it easy to run & build
+    docker images and to use as reference.
+  * Updated and improved the documentation about usage of the
+    docker images.
+  ## Maintenance:
+  * Use python build instead of invoking setup.py.
+  * Removal of the six library.
+  * Removed array initializers in function signatures.
+  ## Fixes:
+  * Added `AdminstrativeArea` to WMTS serviceprovider metadata.
+  * Fixed spelling & grammar in seed.rst.
+  * Fixed problem with combined usage of `coverage` and the
+    `remove_all` cache config parameters.
+  * Fixed missing dimension parameters in the `remove_tile`
+    functions of various caches.
+- Release 3.1.3
+  ## Maintenance:
+  * Several dependencies for the tests and GitHub actions have been
+    updated
+  * Spelling and grammar mistakes in the documentation corrected
+  ##Fixes:
+  * The chmod to update file permissions is now only called if the
+    file was freshly created
+  * A bug with clipping polygons that become multi polygons due to
+    the clipping is now fixed
+- Release 3.1.2
+  ## Maintenance:
+  * Several dependencies for the tests and github actions have been
+    updated
+  ## Fixes:
+  * Metadata URLs are now required to have a `url`, `type` and
+    `format`
+  * The layers of a wms `req` are now correctly splitted at `,` for
+    validation
+  * The validation for seeding configs is fixed
+  * Single color tiles are now created with configured
+    file_permissions
+- Release 3.1.1
+  ## Maintenance:
+  * Werkzeug version is no longer pinned and can be chosen freely.
+  ## Fixes:
+  * The permission handling for file locks now also sets
+    permissions on the files not just on the directories.
+- Release 3.1.0
+  ## Improvements:
+  * Add new config parameters `file_permissions` and
+    `directory_permissions` to set file and directory permissions
+    on newly created cache files and directories.
+  ## Maintenance:
+  * Dependency updates
+  ## Fixes:
+  * Fix transparency in TMS demo page.
+- Release 3.0.1
+  ## Fixes:
+  * Fix capabilities links in demo page and config template
+  * Trivy report format
+- Release 3.0.0
+  ## Breaking:
+  * Add proper XML Exception when service parameter disabled /
+    invalid or missing In the past MapProxy returned WMS
+    Capabilities when no explicit service parameter was given in
+    GetCapabilities requests. With this change, an OGC exception
+    will be returned instead. Invalid service types now also return
+    a proper exception instead of an `internal error`. Besides, the
+    status code of exception responses now have a 400 or 500 code
+    instead of 200 for better conformity.
+  ## Maintenance:
+  * Add test for seeding sqlite cache
+  * Documentation updates and clarifications
+  * Dependency updates
+  ##Fixes:
+  * Fix gh-pages workflow
+- Release 2.2.0
+  ## Improvements:
+  * Add timeout to SQLite connect for geopackages. This helps
+    against locking exceptions
+  * Improvement of documentation, typos, wrong cli commands, old
+    python2 stuff
+  * The WMTS capabilites will now advertise the WMS
+    GetLegendGraphic as a LegendURL if both services are active
+  * It is possible now to configure LegendURLs that should be shown
+    in the WMTS capabilities
+  * A new method for plugins to intercept and modify requests made
+    to MapProxy was added.
+  ## Maintenance:
+  * Removal of debian package information
+  * Fix docs workflow
+  ## Fixes:
+  * Remove import of the packaging library that does not appear in
+    the `install_requires`
+  * Only install and use `importlib_resources` in python 3.8
+- Release 2.1.1
+  ## Fixes:
+  * Fix version of jsonschema in setup.py
+  * Fix alpine docker build
+  * Fix doc generation workflow
+- Release 2.1.0
+  ## Improvements:
+  * Configuration files can no be splitted into multiple files
+  * Added jsonschema to validate configuration files
+  * New theme for documentation, overall improvement of the
+    documentation and github workflow for automatic creation
+  * Improved docker images with better entrypoint and workflow to
+    build docker images with a builder image
+  * Added release workflow for automatic publishing on pypi and
+    github
+  ## Maintenance:
+  * Dependency updates
+  * Remove python 2 compatibility functions
+  * Added flake8 linting
+  * setup.py contains now required libraries
+  * Remove depracated `pkg_resources` in favor of
+    `importlib_resources`
+  * Addressed shapely deprecations
+  ## Fixes:
+  * Ensure make_app always returns MapProxyApp instance
+  * Allow feature info responses of combined sources to be empty
+  * Fix broken TMS demo
+  * Fix problem with dimensions in load_tile_metadata
+  * Fix GeoTIFF Headers
+
+-------------------------------------------------------------------
 Wed Dec  4 08:33:52 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Remove disfunct requires_eq: MapProxy does not directly load

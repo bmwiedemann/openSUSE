@@ -117,4 +117,12 @@
   load libgeos* via ctypes. Shapely does, and was fixed already. (forwarded request 1228222 from bnavigator)</comment>
     <requestid>1228223</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>14d4ee8958004ad4fb67832f382ee86e</srcmd5>
+    <version>6.0.1</version>
+    <time>1773581572</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1339081</requestid>
+  </revision>
 </revisionlist>
