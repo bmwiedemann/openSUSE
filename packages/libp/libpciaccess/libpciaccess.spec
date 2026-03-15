@@ -1,7 +1,7 @@
 #
 # spec file for package libpciaccess
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libpciaccess
 %define lname	libpciaccess0
-Version:        0.18.1
+Version:        0.19
 Release:        0
 Summary:        Generic PCI access library
 License:        MIT

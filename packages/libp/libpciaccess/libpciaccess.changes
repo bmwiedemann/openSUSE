@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 14 18:48:04 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.19
+  * This release adds a new pci_device_is_boot_display() API, with
+    support currently implemented only for Linux systems using sysfs.
+  * It also adds a -Dinstall-scanpci option to the meson
+    configuration for those who want to install this version of
+    scanpci.
+  * In addition, it corrects build issues on FreeBSD 15 and DragonFly,
+    and fixes a long-standing bug if there were multiple users of
+    libpciaccess in the same process and one called pci_system_cleanup
+    before the others were done using pciaccess.
+
+-------------------------------------------------------------------
 Sun Mar 24 08:54:18 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 0.18.1
