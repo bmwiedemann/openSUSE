@@ -124,4 +124,13 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1276034</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>04fa501704e326ede1120ce11f568275</srcmd5>
+    <version>2.0.2</version>
+    <time>1773581534</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.2:
+  * Fix bug reading sheets containing invalid formulae.</comment>
+    <requestid>1339011</requestid>
+  </revision>
 </revisionlist>
