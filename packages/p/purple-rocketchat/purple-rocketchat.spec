@@ -1,7 +1,7 @@
 #
 # spec file for package purple-rocketchat
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define _name   rocketchat
+%define         _name rocketchat
 Name:           purple-rocketchat
-Version:        0.0+git20220925
+Version:        20260223
 Release:        0
 Summary:        RocketChat protocol plugin for libpurple
 License:        GPL-2.0-or-later
@@ -27,12 +27,8 @@ Source:         %{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28.0
 BuildRequires:  pkgconfig(json-glib-1.0)
-%if 0%{?suse_version} >= 1650
 BuildRequires:  pkgconfig(libmarkdown) >= 3.0.0
-%else
-BuildRequires:  pkgconfig(libmarkdown)
-%endif
-BuildRequires:  pkgconfig(purple)
+BuildRequires:  pkgconfig(purple) < 3.0
 
 %description
 RocketChat protocol plugin for libpurple-based applications.
@@ -56,7 +52,7 @@ RocketChat protocol plugin for libpurple-based applications.
 This package provides the icon set for Pidgin.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %make_build
