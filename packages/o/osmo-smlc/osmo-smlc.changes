@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 14 22:36:33 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.4.0
+  * smlc: Initial implementation of N-PCSTATE.ind
+  * Introduce stats msc.ran_peers.{total,active}
+  * sccp: Handle N-NOTICE.ind (Routing Failure of SCCP CL messages)
+
+-------------------------------------------------------------------
 Thu Jun  5 21:45:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.3.2

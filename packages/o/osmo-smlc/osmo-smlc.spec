@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-smlc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,26 @@
 
 
 Name:           osmo-smlc
-Version:        0.3.2
+Version:        0.4.0
 Release:        0
 Summary:        Osmocom Serving Mobile Location Centre
 License:        AGPL-3.0-or-later
 Group:          Productivity/Telephony/Utilities
-URL:            https://osmocom.org/projects/osmo-smlc
-#Git-Clone:     https://git.osmocom.org/osmo-smlc/
-Source:         https://github.com/osmocom/osmo-smlc/archive/refs/tags/%version.tar.gz
+URL:            https://osmocom.org/projects/osmo-smlc/wiki/OsmoSMLC
+#Git-Clone:     https://gitea.osmocom.org/cellular-infrastructure/osmo-smlc
+#Git-Clone:     https://github.com/osmocom/osmo-smlc
+#DL-URL:        https://downloads.osmocom.org/releases/osmo-smlc/
+Source:         https://downloads.osmocom.org/releases/%name/%name-%version.tar.bz2
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  libtool >= 2
 BuildRequires:  lksctp-tools-devel
 BuildRequires:  pkg-config >= 0.20
-BuildRequires:  pkgconfig(libosmo-sigtran) >= 2.0.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.10.0
-BuildRequires:  pkgconfig(libosmoctrl) >= 1.10.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.10.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.10.0
+BuildRequires:  pkgconfig(libosmo-sigtran) >= 2.2.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.12.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 1.12.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.12.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.12.0
 
 %description
 OsmoSMLC is the Osmocom Serving Mobile Location Centre. It implements
