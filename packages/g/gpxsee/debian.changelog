@@ -1,3 +1,11 @@
+gpxsee (16.0) stable; urgency=low
+
+  * Added video previews.
+  * Fixed toolbar icons size on macOS.
+  * Minor ENC maps rendering improvements.
+
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 14 Mar 2026 19:04:35 +0100
+
 gpxsee (15.11) stable; urgency=low
 
   * Added support for Blackvue, Vantrue and GKU MP4 GPS metadata
