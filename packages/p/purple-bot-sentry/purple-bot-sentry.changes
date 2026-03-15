@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 14 20:10:21 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update spec file (autosetup, remoe older Leap releases)
+- Attach a correct license file
+- use pkgconfig for libpurple
+
+-------------------------------------------------------------------
 Mon Dec 26 12:45:18 UTC 2016 - sor.alexei@meowr.ru
 
 - Rename the source package to purple-bot-sentry.
