@@ -47,4 +47,12 @@
     <comment>- Update to version 0.5.0</comment>
     <requestid>1317180</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>19563966a2931bedbb9f01330eec4c4e</srcmd5>
+    <version>0.5.0</version>
+    <time>1773581547</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch from Github autocreated tarball to official tarball</comment>
+    <requestid>1339030</requestid>
+  </revision>
 </revisionlist>

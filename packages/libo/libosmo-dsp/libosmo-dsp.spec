@@ -1,7 +1,7 @@
 #
 # spec file for package libosmo-dsp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,11 @@ Release:        0
 Summary:        Osmocom DSP utility functions
 License:        GPL-2.0-only
 Group:          Productivity/Hamradio/Other
-URL:            https://osmocom.org/projects/libosmo-dsp
-Source:         %{name}-%{version}.tar.xz
+URL:            https://osmocom.org/projects/libosmo-dsp/wiki
+#Git-Clone:     https://gitea.osmocom.org/sdr/libosmo-dsp
+#Git-Clone:     https://github.com/osmocom/libosmo-dsp
+#DL-URL:        https://downloads.osmocom.org/releases/libosmo-dsp/
+Source:         https://downloads.osmocom.org/releases/%name/%name-%version.tar.bz2
 Patch0:         HTML_TIMESTAMP.diff
 BuildRequires:  automake >= 1.6
 BuildRequires:  doxygen
@@ -70,7 +73,8 @@ Signal Processing) primitives for SDR (Software Defined Radio).
 This subpackage contains the API documentation.
 
 %prep
-%autosetup -p1
+# wrong dir name; git commit dce1... is indeed 0.5.0
+%autosetup -p1 -n libosmodsp-0.4.0.10-dce1
 
 %build
 echo "%version" >.tarball-version
