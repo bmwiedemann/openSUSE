@@ -1,7 +1,7 @@
 #
 # spec file for package python-zc.buildout
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-zc.buildout
-Version:        4.1.11
+Version:        5.1.3
 Release:        0
 Summary:        System for managing development buildouts
 License:        ZPL-2.1
@@ -40,6 +40,7 @@ Provides:       python-zc_buildout = %{version}
 Obsoletes:      python-zc_buildout < %{version}
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module manuel}
 BuildRequires:  %{python_module zope.testing}
 # /SECTION
@@ -74,7 +75,6 @@ Buildout is a project designed to solve 2 problems:
 %license LICENSE.txt
 %dir %{python_sitelib}/zc
 %{python_sitelib}/zc/buildout
-%{python_sitelib}/zc.buildout-%{version}-py*-nspkg.pth
 %{python_sitelib}/zc[._]buildout-%{version}.dist-info
 %python_alternative %{_bindir}/buildout
 

@@ -278,4 +278,40 @@ See Request#518161</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1297180</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9a51a674aa3f555f87be8465a03440f9</srcmd5>
+    <version>5.1.3</version>
+    <time>1773581528</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.1.3:
+  * Replace 4 bare except clauses with except Exception.
+  * Accept setuptools 81. Require setuptools&lt;82. [maurits]
+  * Store buildout index url in the installer, so pip can use it.
+  * Support Python 3.14.  No changes were needed. [maurits]
+  * Warn when old-style namespaces are used in packages under
+    development. [maurits]
+  * Require setuptools&lt;81. We need the pkg_resources module which
+    is scheduled for removal in 81. [maurits]
+  * Test with pip 25.3.
+  * Fix logic in detecting namespace init files for deletion.
+  * Fix reading metadata files from dist-info in Windows.
+  * Install development eggs (editable installs) using pip.
+    Theoretically this means that you could develop a package
+    that uses for example hatchling as build system. In practice
+    this does not work yet, but the foundation is there.
+  * Install all namespace packages as native namespaces.
+  * Store eggs in a sub directory: eggs/v5. Or with abi tags for
+    example: eggs/v5/cp313. [maurits]
+  * Install most packages with pip, with only rare exceptions.
+  * The zc.buildout package itself uses native namespaces now.
+  * Require at least setuptools version 61.0.0. This is needed
+    due to the changes in the test setup. [maurits]
+  * The tests have mostly been changed to use wheels instead of
+    eggs, so they more closely resemble real life.  [maurits]
+  * Removed inactive tests for no longer existing bootstrap.py.
+  * Split the buildout.txt test file into multiple files.
+  * Fix error get_win_launcher not found on Windows on setuptools
+    80.3+. [maurits]</comment>
+    <requestid>1339010</requestid>
+  </revision>
 </revisionlist>
