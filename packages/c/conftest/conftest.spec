@@ -17,7 +17,7 @@
 
 
 Name:           conftest
-Version:        0.66.0
+Version:        0.67.0
 Release:        0
 Summary:        Tool to write tests against structured configuration data
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.25 >= 1.25.3
+BuildRequires:  go1.25 >= 1.25.8
 BuildRequires:  zsh
 
 %description

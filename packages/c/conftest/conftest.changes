@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sun Mar 15 08:34:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.67.0:
+  * Bug Fixes
+    - 69f41ed: fix(plugin): Handle spaces in the plugin command
+      path (#1242) (@jalseth)
+  * OPA Changes
+    - 59cb419: build(deps): bump github.com/open-policy-agent/opa
+      from 1.12.1 to 1.13.1 (#1262) (@dependabot[bot])
+    - 507345f: build(deps): bump github.com/open-policy-agent/opa
+      from 1.13.1 to 1.13.2 (#1274) (@dependabot[bot])
+    - 69b7329: build(deps): bump github.com/open-policy-agent/opa
+      from 1.13.2 to 1.14.1 (#1282) (@dependabot[bot])
+  * Other Changes
+    - 8ec8ba0: build(deps): bump actions/checkout from 5.0.0 to
+      6.0.1 (#1230) (@dependabot[bot])
+    - fb1d20e: build(deps): bump alpine from 3.23.2 to 3.23.3
+      (#1264) (@dependabot[bot])
+    - 84ee4f1: build(deps): bump bats-core/bats-action from 3.0.1
+      to 4.0.0 (#1270) (@dependabot[bot])
+    - 06f26a6: build(deps): bump cuelang.org/go from 0.15.1 to
+      0.15.3 (#1244) (@dependabot[bot])
+    - d01f783: build(deps): bump cuelang.org/go from 0.15.3 to
+      0.15.4 (#1259) (@dependabot[bot])
+    - b7f9627: build(deps): bump cuelang.org/go from 0.15.4 to
+      0.16.0 (#1279) (@dependabot[bot])
+    - 3e4cf98: build(deps): bump docker/build-push-action from
+      6.18.0 to 6.19.2 (#1273) (@dependabot[bot])
+    - b7060d3: build(deps): bump github.com/CycloneDX/cyclonedx-go
+      from 0.9.3 to 0.10.0 (#1265) (@dependabot[bot])
+    - e130513: build(deps): bump github.com/hashicorp/go-getter
+      from 1.8.3 to 1.8.4 (#1245) (@dependabot[bot])
+    - e5afd3f: build(deps): bump github.com/hashicorp/go-getter
+      from 1.8.4 to 1.8.5 (#1285) (@dependabot[bot])
+    - d6f5fb2: build(deps): bump github.com/moby/buildkit from
+      0.26.3 to 0.27.1 (#1260) (@dependabot[bot])
+    - c1ba806: build(deps): bump github.com/moby/buildkit from
+      0.27.1 to 0.28.0 (#1280) (@dependabot[bot])
+    - fc57996: build(deps): bump github.com/spdx/tools-golang from
+      0.5.5 to 0.5.6 (#1243) (@dependabot[bot])
+    - 95d756f: build(deps): bump github.com/spdx/tools-golang from
+      0.5.6 to 0.5.7 (#1251) (@dependabot[bot])
+    - a59b8bd: build(deps): bump golang from 1.25.5-alpine to
+      1.25.6-alpine (#1256) (@dependabot[bot])
+    - bde1457: build(deps): bump golang from 1.25.6-alpine to
+      1.26.1-alpine (#1281) (@dependabot[bot])
+    - b2e58f0: build(deps): bump golangci/golangci-lint-action from
+      8.0.0 to 9.2.0 (#1231) (@dependabot[bot])
+    - b1e9f30: ci: Update Dependabot config (#1267) (@jalseth)
+    - bf63002: ci: Update setup-go to use Go version from go.mod
+      (#1268) (@jalseth)
+
+-------------------------------------------------------------------
 Sun Jan 11 08:58:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.66.0:
