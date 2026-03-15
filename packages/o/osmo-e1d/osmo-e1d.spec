@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-e1d
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,16 @@
 
 
 Name:           osmo-e1d
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Osmocom E1 Daemon
 License:        GPL-2.0-or-later
 Group:          Productivity/Telephony/Utilities
-URL:            https://osmocom.org/projects/osmo-e1d/wiki/Wiki
-Source:         https://github.com/osmocom/osmo-e1d/archive/%version.tar.gz
+URL:            https://osmocom.org/projects/osmo-e1d/wiki
+#Git-Clone:     https://gitea.osmocom.org/retronetworking/osmo-e1d
+#Git-Clone:     https://github.com/osmocom/osmo-e1d/
+#DL-URL:        https://downloads.osmocom.org/releases/osmo-e1d/
+Source:         https://downloads.osmocom.org/releases/%name/%name-%version.tar.bz2
 BuildRequires:  automake >= 1.9
 BuildRequires:  libtool >= 2
 BuildRequires:  pkg-config >= 0.20
@@ -111,7 +114,7 @@ rm -Rf "%buildroot/%_sysconfdir/osmocom"
 %service_add_post %name.service
 
 %files
-%license COPYING COPYING.gpl2 COPYING.lgpl3
+%license COPYING
 %doc README.md
 %_bindir/osmo-e1d
 %_bindir/osmo-e1d-pipe
