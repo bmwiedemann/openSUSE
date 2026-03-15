@@ -434,4 +434,19 @@
     <comment></comment>
     <requestid>1319440</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>c8ed1d70d0f8690a650bba8e9a3e4836</srcmd5>
+    <version>1.0.5</version>
+    <time>1773581538</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.5:
+  * Graph: Save node positions as soon as they are taken or moved
+  * around, avoiding accidental re-positioning to the previous or
+  * original state.
+  * Get rid of CONFIG_WAYLAND build config option; add underlying
+  * platform name (eg. xcb, wayland) to Qt version string.
+
+  - Graph: Implement patchbay node search functionality: adds a</comment>
+    <requestid>1339013</requestid>
+  </revision>
 </revisionlist>
