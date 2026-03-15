@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 13 23:01:27 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.9.0
+  * Multiple security fixes.
+  * Fix to Web Admin password check.
+  * Cleanup of deprecated openssl APIs.
+  * Fix for CVE-2026-27624: bypass localhost and IP range block
+    using IPv4-mapped IPv6.
+- Update to version 4.8.0
+  * Faster packet validation on listener threads to improve
+    handling of DDoS attacks.
+  * Make socket buffer size configurable with sock-buf-size.
+  * Address memory leaks and potential crashes.
+  * Improve random number usage to address CVE-2025-69217.
+
+-------------------------------------------------------------------
 Sun Nov 23 09:17:14 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.7.0
