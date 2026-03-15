@@ -1,7 +1,7 @@
 #
 # spec file for package python-types-python-dateutil
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-types-python-dateutil
-Version:        2.9.0.20241003
+Version:        2.9.0.20260305
 Release:        0
 Summary:        Typing stubs for python-dateutil
 License:        Apache-2.0
 URL:            https://github.com/python/typeshed
-Source:         https://files.pythonhosted.org/packages/source/t/types-python-dateutil/types-python-dateutil-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/t/types-python-dateutil/types_python_dateutil-%{version}.tar.gz
+BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -40,7 +41,7 @@ This is a PEP 561 type stub package for the `python-dateutil` package. It
 can be used by type-checking tools like
 
 %prep
-%autosetup -p1 -n types-python-dateutil-%{version}
+%autosetup -p1 -n types_python_dateutil-%{version}
 
 %build
 %pyproject_wheel

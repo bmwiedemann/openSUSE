@@ -45,4 +45,21 @@
   * Fix types for python-dateutil's relativedelta</comment>
     <requestid>1225359</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0ddae29b010f02e9fa5e8198925a9fc2</srcmd5>
+    <version>2.9.0.20260305</version>
+    <time>1773581532</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9.0.20260305:
+  * [python-dateutil] Complete stubs
+  * [python-dateutil] Make
+    `dateutil.parser.parse(fuzzy_with_tokens=True)` return a
+    tuple
+  * [python-dateutil] Add missing annotation to 'tag' in
+    rebuild.py
+  * [python-dateutil] Add missing parameter annotations
+  * [python-dateutil] add some missing parameter types
+  * Use union instead of overloads in dateutil</comment>
+    <requestid>1339014</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 14 20:54:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.0.20260305:
+  * [python-dateutil] Complete stubs
+  * [python-dateutil] Make
+    `dateutil.parser.parse(fuzzy_with_tokens=True)` return a
+    tuple
+  * [python-dateutil] Add missing annotation to 'tag' in
+    rebuild.py
+  * [python-dateutil] Add missing parameter annotations
+  * [python-dateutil] add some missing parameter types
+  * Use union instead of overloads in dateutil
+
+-------------------------------------------------------------------
 Wed Nov 20 17:08:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.0.20241003:
