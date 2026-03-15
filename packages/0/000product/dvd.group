@@ -2386,10 +2386,11 @@
     <package name="libnftnl11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnghttp2-14" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libnghttp3-9" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libngtcp2-16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libngtcp2-16" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libngtcp2-16-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libngtcp2_crypto_gnutls8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libngtcp2_crypto_gnutls8-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libngtcp2_crypto_ossl0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libnice10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnl-config" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnl3-200" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3128,7 +3129,7 @@
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="numlockx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="nvidia-libXNVCtrl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="nvidia-open-driver-G06-signed-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="nvidia-open-driver-G06-signed-cuda-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="nvidia-open-driver-G07-signed-cuda-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="nvidia-open-driver-G07-signed-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="nvme-cli" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->

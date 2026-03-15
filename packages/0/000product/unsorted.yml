@@ -10830,6 +10830,8 @@ unsorted:
   - labwc-lang 
   - labwc-tweaks 
   - labwc-tweaks-lang 
+  - lact 
+  - lact-headless 
   - ladish 
   - ladspa 
   - ladspa-32bit 
@@ -15031,7 +15033,6 @@ unsorted:
   - libngspice0 
   - libngtcp2_crypto_gnutls-devel 
   - libngtcp2_crypto_ossl-devel 
-  - libngtcp2_crypto_ossl0 
   - libngtcp2_crypto_ossl0-32bit 
   - libnice 
   - libnice-devel 
@@ -15649,9 +15650,7 @@ unsorted:
   - libpurple-plugin-bot-sentry 
   - libpurple-plugin-bot-sentry-lang 
   - libpurple-plugin-carbons 
-  - libpurple-plugin-facebook 
   - libpurple-plugin-gnome-keyring 
-  - libpurple-plugin-import-empathy 
   - libpurple-plugin-lurch 
   - libpurple-plugin-pack 
   - libpurple-plugin-pack-extras 
@@ -20253,10 +20252,10 @@ unsorted:
   - nvidia-open-driver-G06-signed-check 
   - nvidia-open-driver-G06-signed-cuda-check 
   - nvidia-open-driver-G06-signed-cuda-default-devel 
-  - nvidia-open-driver-G06-signed-cuda-kmp-default 
   - nvidia-open-driver-G06-signed-cuda-kmp-longterm 
   - nvidia-open-driver-G06-signed-cuda-longterm-devel 
   - nvidia-open-driver-G06-signed-default-devel 
+  - nvidia-open-driver-G06-signed-kmp-default 
   - nvidia-open-driver-G06-signed-kmp-longterm 
   - nvidia-open-driver-G06-signed-longterm-devel 
   - nvidia-open-driver-G07-signed-check 
@@ -34848,7 +34847,6 @@ unsorted:
   - systemd-homed 
   - systemd-journal-remote 
   - systemd-mini 
-  - systemd-mini-container 
   - systemd-mini-devel 
   - systemd-mini-experimental 
   - systemd-networkd 
