@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 15 08:40:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.17.24:
+  * fix(secrets): provide source storage type in var groups
+  * fix(db): extra ? in create request
+  * feat(dvls): check sync
+  * feat: add flag IgnorePlain
+  * fix: fixed a race condition for task statuses with the type
+    waiting_confirmation and confirmed for runners
+
+-------------------------------------------------------------------
 Fri Mar 13 06:16:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.17.22 (no releases between .17 and this one):
