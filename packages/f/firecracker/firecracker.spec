@@ -17,7 +17,7 @@
 
 
 Name:           firecracker
-Version:        1.14.2
+Version:        1.15.0
 Release:        0
 Summary:        Virtual Machine Monitor for creating microVMs
 License:        Apache-2.0
