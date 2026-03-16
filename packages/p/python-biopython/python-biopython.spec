@@ -1,7 +1,7 @@
 #
 # spec file for package python-biopython
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_with test
 %{?sle15_python_module_pythons}
 Name:           python-biopython
-Version:        1.85
+Version:        1.86
 Release:        0
 Summary:        Python Tools for Computational Molecular Biology
 License:        BSD-3-Clause AND MIT

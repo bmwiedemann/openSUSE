@@ -210,4 +210,26 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1275964</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9e2468788603b2a11da9d83fa2f70ec5</srcmd5>
+    <version>1.86</version>
+    <time>1773667001</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.86:
+  * Bio.SearchIO now supports parsing the tabular and plain text
+    output of Infernal
+  * The default value of the gap score of a PairwiseAligner object
+    was changed in this release. Previously, for consistency with
+    Bio.pairwise2, the default value for gap score was 0. However,
+    this means that a mismatch, an insertion followed by a
+    deletion, and a deletion followed by an insertion all get
+    assigned a score of 0
+  * The iplotx library is mentioned in the Tutorial as an option
+    to visualise trees using complex style options
+  * Bio.PDB.PDBIO will now raise module specific warnings:
+    Bio.PDB.PDBExceptions.PDBIOWarning
+  * Bio.PDB.SCADIO now supports object selection by color in the
+    OpenSCAD output file.</comment>
+    <requestid>1339111</requestid>
+  </revision>
 </revisionlist>
