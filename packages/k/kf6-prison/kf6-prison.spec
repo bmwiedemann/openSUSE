@@ -19,11 +19,11 @@
 %define qt6_version 6.8.0
 
 %define rname prison
-# Full KF6 version (e.g. 6.23.0)
+# Full KF6 version (e.g. 6.24.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-prison
-Version:        6.23.0
+Version:        6.24.0
 Release:        0
 Summary:        Barcode abstraction layer library
 License:        MIT
@@ -41,7 +41,7 @@ BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
-BuildRequires:  cmake(ZXing) >= 1.2.0
+BuildRequires:  cmake(ZXing) >= 1.4.0
 BuildRequires:  pkgconfig(libdmtx)
 BuildRequires:  pkgconfig(libqrencode)
 
