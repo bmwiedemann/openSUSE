@@ -1,7 +1,7 @@
 #
 # spec file for package python-openapi-spec-validator
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,26 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-openapi-spec-validator
-Version:        0.7.2
+Version:        0.8.4
 Release:        0
 Summary:        Python module for validating OpenAPI Specs against Swagger and OAS3
 License:        Apache-2.0
 URL:            https://github.com/p1c2u/openapi-spec-validator
 Source:         https://github.com/p1c2u/openapi-spec-validator/archive/%{version}.tar.gz#/openapi-spec-validator-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module pydantic >= 2}
+BuildRequires:  %{python_module pydantic-settings >= 2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Provides:       python-openapi_spec_validator
-Requires:       (python-jsonschema >= 4.18 with python-jsonschema < 5)
-Requires:       (python-jsonschema-path >= 0.3.1 with python-jsonschema-path < 0.4)
+Provides:       python-openapi_spec_validator = %{version}
+Requires:       python-pydantic >= 2
+Requires:       python-pydantic-settings >= 2
+Requires:       (python-jsonschema >= 4.24 with python-jsonschema < 5)
+Requires:       (python-jsonschema-path >= 0.4.3 with python-jsonschema-path < 0.5)
 Requires:       (python-lazy-object-proxy >= 1.7.1 with python-lazy-object-proxy < 2)
-Requires:       (python-openapi-schema-validator >= 0.6.0 with python-openapi-schema-validator < 0.7)
+Requires:       (python-openapi-schema-validator >= 0.7.3 with python-openapi-schema-validator < 0.9)
 %if %{python_version_nodots} < 39
 Requires:       python-importlib-resources >= 5.8.0
 %endif
@@ -41,11 +45,10 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module importlib-resources >= 5.8.0 if %python-base < 3.9}
-BuildRequires:  %{python_module jsonschema >= 4.18 with %python-jsonschema < 5}
-BuildRequires:  %{python_module jsonschema-path >= 0.3.1 with %python-jsonschema-path < 0.4}
+BuildRequires:  %{python_module jsonschema >= 4.24 with %python-jsonschema < 5}
+BuildRequires:  %{python_module jsonschema-path >= 0.4.3 with %python-jsonschema-path < 0.5}
 BuildRequires:  %{python_module lazy-object-proxy >= 1.7.1 with %python-lazy-object-proxy < 2}
-BuildRequires:  %{python_module openapi-schema-validator >= 0.6.0 with %python-openapi-schema-validator < 0.7}
+BuildRequires:  %{python_module openapi-schema-validator >= 0.7.3 with %python-openapi-schema-validator < 0.9}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages

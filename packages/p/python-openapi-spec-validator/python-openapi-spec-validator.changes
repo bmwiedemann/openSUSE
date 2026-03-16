@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Mar 16 08:33:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.4:
+  * Jsonschema-rs backend #478
+- update to 0.8.3:
+  * Use resolved cache feature of jsonschema-path #479
+- update to 0.8.2:
+  * OpenAPI 3.2 support #472
+  * Add OAS 3.1 jsonSchemaDialect-aware schema meta-validation
+    #471
+- update to 0.8.1:
+  * CLI version option #466
+  * Split CLI error controls into validation and subschema modes
+    #469
+  * ## Fixes
+  * Fix malformed schema traversal to report validation errors
+    instead of internal exceptions #467
+  * Validate declared path parameters against path template #470
+  * ## Deprecations
+  * Deprecates `--error`/`--errors` CLI options #469
+- update to 0.8.0:
+  * Jsonschema-path 0.4 and openapi-schema-validator 0.7 upgrades
+    #459
+  * Python 3.13 and 3.14 support #392 #457
+  * Update openapi-schema-validator version constraint #439
+  * ## Backward incompatibilities
+  * Python 3.8 and 3.9 drop #392 #456
+
+-------------------------------------------------------------------
 Mon Jul 14 12:28:02 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.2:
