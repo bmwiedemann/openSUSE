@@ -307,6 +307,7 @@ unsorted:
   - SDL3-devel 
   - SDL3-devel-doc 
   - SDL3_image-devel 
+  - SDL3_mixer-devel 
   - SDL3_ttf-devel 
   - SDL_Pango-devel 
   - SDL_mixer-devel 
@@ -2620,6 +2621,8 @@ unsorted:
   - convmv 
   - cookiecutter-doc 
   - cool-retro-term 
+  - coolercontrol 
+  - coolercontrold 
   - coolkey 
   - coolkey-devel 
   - copacetic 
@@ -11652,6 +11655,7 @@ unsorted:
   - libSDL2_ttf-2_0-0 
   - libSDL3-0-32bit 
   - libSDL3_image0 
+  - libSDL3_mixer0 
   - libSDL3_ttf0 
   - libSDL_Pango1 
   - libSDL_bgi-devel 
@@ -13339,7 +13343,7 @@ unsorted:
   - libfluidsynth3 
   - libfluidsynth3-32bit 
   - libflux-devel 
-  - libflux0_198_0 
+  - libflux0_199_0 
   - libflxmlrpc1 
   - libfm 
   - libfm-devel 
@@ -14570,7 +14574,7 @@ unsorted:
   - liblouis-devel 
   - liblouis-doc 
   - liblouis-tools 
-  - liblowdown2 
+  - liblowdown3 
   - liblpcnetfreedv0_5 
   - liblqr-1-0-32bit 
   - liblqr-devel 
@@ -15957,7 +15961,7 @@ unsorted:
   - librdmacm-utils 
   - librdmacm1-32bit 
   - libre2-11 
-  - libre39 
+  - libre41 
   - libreadline-java 
   - libreadline-java-javadoc 
   - libreadline5 
@@ -16782,7 +16786,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent37 
+  - libtorrent38 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm2-totp0 
@@ -25931,7 +25935,6 @@ unsorted:
   - python311-gprof2dot 
   - python311-gps3 
   - python311-gpstime 
-  - python311-gpt4all 
   - python311-gpxpy 
   - python311-gql 
   - python311-graphene 
@@ -28179,15 +28182,12 @@ unsorted:
   - python312 
   - python312-base 
   - python312-base-x86-64-v3 
-  - python312-certbot-dns-cloudflare 
-  - python312-cliff 
   - python312-curses 
   - python312-dbm 
   - python312-desktop-entry-lib 
   - python312-devel 
   - python312-doc 
   - python312-doc-devhelp 
-  - python312-gpt4all 
   - python312-gwpy 
   - python312-idle 
   - python312-jupyter-sphinx 
@@ -29806,7 +29806,6 @@ unsorted:
   - python313-gprof2dot 
   - python313-gps3 
   - python313-gpstime 
-  - python313-gpt4all 
   - python313-gpxpy 
   - python313-gql 
   - python313-graphene 
@@ -46167,6 +46166,7 @@ unsorted:
   - winrs 
   - wipe 
   - wire 
+  - wiremix 
   - wireplumber-devel 
   - wireplumber-doc 
   - wireplumber-video-only-profile 
