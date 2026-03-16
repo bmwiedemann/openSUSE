@@ -94,4 +94,41 @@
   bsc#1233398</comment>
     <requestid>1226247</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1ae849d13f5fc25c50626eb1257dccbf</srcmd5>
+    <version>26.11.0</version>
+    <time>1773667014</time>
+    <user>anag_factory</user>
+    <comment>- update to 26.11.0:
+  * Add sync_agents command by @ozgen in 9d8e1b1
+  * Align modify_agent_control_scan_config with new XML shape by
+    @ozgen in 2c460e5
+  * Add missing unit test to increase coverage by @ozgen in
+    d46a3ca
+- update to 26.10.0:
+  * Add update_to_latest to modify_agents by @ozgen in #1293
+- update to 26.9.1:
+  * Fix  Add or Update detect-hidden-unicode.yml by @greenbonebot
+    in #1291
+- update to 26.9.0:
+  * Rename container_task to import_task and deprecate old API by
+    @ozgen in #1280
+- update to 26.8.0:
+  * Credential stores support by @robindittmar in 38bfd2a
+  * Added missing return statements by @robindittmar in 39d0575
+  * Added tests by @robindittmar in 4b76dda
+  * Added 'get_credential_store' by @robindittmar in 759530c
+  * Added details parameter to 'get_credential_store' by
+    @robindittmar in #1274
+  * Fixed formatting and linter errors by @robindittmar in
+    bb4b21f
+  * Fixed test coverage by @robindittmar in 9d76108
+- update to 26.7.1:
+  * Fix  Add or Update detect-hidden-unicode.yml by @greenbonebot
+    in #1270
+  * Fix  Add or Update detect-hidden-unicode.yml by @greenbonebot
+    in #1272
+- update to 26.7.0:</comment>
+    <requestid>1339161</requestid>
+  </revision>
 </revisionlist>

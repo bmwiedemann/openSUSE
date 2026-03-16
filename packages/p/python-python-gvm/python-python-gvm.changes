@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Sun Mar 15 19:44:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.11.0:
+  * Add sync_agents command by @ozgen in 9d8e1b1
+  * Align modify_agent_control_scan_config with new XML shape by
+    @ozgen in 2c460e5
+  * Add missing unit test to increase coverage by @ozgen in
+    d46a3ca
+- update to 26.10.0:
+  * Add update_to_latest to modify_agents by @ozgen in #1293
+- update to 26.9.1:
+  * Fix  Add or Update detect-hidden-unicode.yml by @greenbonebot
+    in #1291
+- update to 26.9.0:
+  * Rename container_task to import_task and deprecate old API by
+    @ozgen in #1280
+- update to 26.8.0:
+  * Credential stores support by @robindittmar in 38bfd2a
+  * Added missing return statements by @robindittmar in 39d0575
+  * Added tests by @robindittmar in 4b76dda
+  * Added 'get_credential_store' by @robindittmar in 759530c
+  * Added details parameter to 'get_credential_store' by
+    @robindittmar in #1274
+  * Fixed formatting and linter errors by @robindittmar in
+    bb4b21f
+  * Fixed test coverage by @robindittmar in 9d76108
+- update to 26.7.1:
+  * Fix  Add or Update detect-hidden-unicode.yml by @greenbonebot
+    in #1270
+  * Fix  Add or Update detect-hidden-unicode.yml by @greenbonebot
+    in #1272
+- update to 26.7.0:
+  * Add validation for agent config and raise descriptive errors
+    by @ozgen in cca3a11
+  * Add missing unit tests by @ozgen in #1259
+  * Update modify_agents and add
+    modify_agent_controller_scan_config by @ozgen in 1dabcb5
+  * Rename modify_agents and delete_agents to modify_agent and
+    delete_agent by @ozgen in #1261
+  * Fix documentation error in workflow by @ozgen in cbd8d72
+  * Fix linting issue for agent config by @ozgen in 5122f2d
+- update to 26.6.0:
+  * Added support for OCI image tasks by @a-h-abdelsalam in #1255
+- update to 26.5.0:
+  * GMP commands for agents and agent groups in GmpNext by @ozgen
+    in 30daff5
+  * Added GMP commands for OCI image targets by @a-h-abdelsalam
+    in #1249
+  * Support for agent group tasks in GmpNext by @ozgen in #1252
+- update to 26.4.0:
+  * Use all upper case GMP everywhere by @bjoernricks in #1246
+- update to 26.3.0:
+  * New GMP version 22.8 with agent installers by @timopollmeier
+    in #1243
+  * Support for the openvasd HTTP API by @timopollmeier in
+    f5e8929
+  * Add documentation for HTTP APIs, small refactoring by
+    @timopollmeier in 8b3837c
+  * Address linter warnings by @timopollmeier in abbf759
+  * Address linter warnings in HTTP tests by @timopollmeier in
+    4ce9b5f
+  * Add http2 packages to poetry files. by @ozgen in 38935d2
+  * Add new HTTP API structure and introduce modular sub-APIs by
+    @ozgen in 55b5543
+  * Add dataclass-based scan creation and get_preferences
+    endpoint by @ozgen in #1215
+  * ### :construction_worker: Changed
+  * Require httpx as direct dependency for openvasd API by
+    @bjoernricks in added46
+  * ### :bug: Bug Fixes
+  * Fix type hints for change to httpx by @timopollmeier in
+    8d323c9
+  * Fix the conflict in the poetry.lock by @ozgen in ff4b626
+  * ### :fire: Removed
+  * Remove core package from protocols.http by @ozgen in a102353
+  * Remove old implementation of openvasd1 by @ozgen in 19f2057
+  * ### :books: Documentation
+  * Update and fix openvasd API documentation pages by @ozgen in
+    56e2268
+  * Add sphinx autobuild for auto rebuilding the docs in a local
+    server by @bjoernricks in ea59759
+    * [26.3.0]: https://github.com/greenbone/python-
+    gvm/compare/v26.2.1..26.3.0
+- update to 26.2.1:
+  * Correctly determine GMP 22.7 as supported protocol by
+    @wiegandm in 8f3ea98
+  * Remove duplicate test for '22.6' by @wiegandm in #1235
+  * Add tests for current and future GMP versions by @wiegandm in
+    ea2033d
+  * [26.2.1]: https://github.com/greenbone/python-
+    gvm/compare/v26.2.0..26.2.1
+- update to 26.2.0:
+  * New openvasd scanner type and relay fields by @timopollmeier
+    in 46528e8
+  * Add missing verify_scanner tests by @timopollmeier in #1212
+  * Add argument scan_config_id for get_report to get
+    customizable reports by @Chrxxxxs in #1229
+  * Fix typo in protocol warning message by @wiegandm in #1221
+  * Remove extra GMP class constructors by @bjoernricks in #1225
+  * Use myst and markdown for the docs by @bjoernricks in #1224
+  * Generate docs for GMPv226 and GMPv227 by @bjoernricks in
+    1b8ce24
+  * [26.2.0]: https://github.com/greenbone/python-
+    gvm/compare/v26.1.1..26.2.0
+- update to 26.1.0:
+  * [26.1.0]: https://github.com/greenbone/python-
+    gvm/compare/v26.0.0...v26.1.0
+- update to 26.0.0:
+  * With this release the versioning is changed. This release and
+    all following releases will use the  Semantic Versioning
+    scheme.
+  * Official Support for Python 3.13 b81b4cc7
+
+-------------------------------------------------------------------
 Mon Nov 25 10:29:53 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add opensuse-fix-tests-1-core.patch custom patch to fix tests
@@ -9,7 +123,7 @@ Mon Nov 25 10:29:53 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 Wed Nov 13 12:28:07 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 24.8.0
-  * Drop typing_extensions dependency. Drop the use of the Self component 
+  * Drop typing_extensions dependency. Drop the use of the Self component
     from typing_extensions and use the typing library instead
   * 24.6 contains a major internal refactoring and drops support for GMP < 22.4.
   * Use base enum class for most enums in python-gvm

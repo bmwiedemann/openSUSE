@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-gvm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           python-python-gvm
-Version:        24.8.0
+Version:        26.11.0
 Release:        0
 Summary:        Library to communicate with remote servers over GMP or OSP
 License:        GPL-3.0-only
@@ -38,6 +38,7 @@ Requires:       python-lxml >= 4.5.0
 Requires:       python-paramiko >= 2.7.1
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module lxml >= 4.5.0}
 BuildRequires:  %{python_module paramiko >= 2.7.1}
 BuildRequires:  %{python_module pytest}
