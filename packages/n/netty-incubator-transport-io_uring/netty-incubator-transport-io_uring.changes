@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 15 19:15:24 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 0.0.26
+  * Changes:
+    + Catch completion handler errors (#244)
+    + Update to netty 4.1.116.Final (#262)
+
+-------------------------------------------------------------------
 Fri Nov  1 16:23:24 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

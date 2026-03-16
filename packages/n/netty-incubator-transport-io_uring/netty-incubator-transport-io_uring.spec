@@ -1,7 +1,7 @@
 #
 # spec file for package netty-incubator-transport-io_uring
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %global namedreltag .Final
 %global namedversion %{version}%{?namedreltag}
 Name:           %{group_name}-%{module_name}
-Version:        0.0.25
+Version:        0.0.26
 Release:        0
 Summary:        Netty/Incubator/Transport/Parent/io_uring
 License:        Apache-2.0
