@@ -18,12 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cliff
-Version:        4.13.1
+Version:        4.13.2
 Release:        0
 Summary:        Command Line Interface Formulation Framework
 License:        Apache-2.0
 URL:            https://docs.openstack.org/cliff/latest/
 Source:         https://files.pythonhosted.org/packages/source/c/cliff/cliff-%{version}.tar.gz
+Patch1:         cmd2-3.1.0-compat.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

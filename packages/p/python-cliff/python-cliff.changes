@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 16 09:31:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add cmd2-3.1.0-compat.patch
+
+-------------------------------------------------------------------
+Mon Feb 23 09:28:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.13.2:
+  * Revert "Deprecate CommandManager namespace argument"
+  * Add typing classifier
+
+-------------------------------------------------------------------
 Thu Jan 22 08:41:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.13.1:
