@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 15 19:12:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.0:
+  * Added input iterator support via the new `ijson.from_iter`
+    adapter.
+  * It allows users to easily consume iterators and async
+    iterators, with common examples being HTTP stream responses
+    as modelled by the `requests` and `httpx` libraries.
+  * Introdued `tox` for common task execution.
+
+-------------------------------------------------------------------
 Wed Nov 12 20:49:16 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - It's using pytest and we need pytest_arch.
