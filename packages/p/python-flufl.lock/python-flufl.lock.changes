@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 15 18:50:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.0.0:
+  * Remove support for Python 3.9.
+  * Documentation improvements.
+
+-------------------------------------------------------------------
 Mon Sep 29 11:03:28 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.2.0:

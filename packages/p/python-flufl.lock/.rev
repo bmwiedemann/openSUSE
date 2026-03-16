@@ -112,4 +112,14 @@
   * Modernize type hints.</comment>
     <requestid>1307746</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7cade6a2f716490d44317f1c8d4e4428</srcmd5>
+    <version>9.0.0</version>
+    <time>1773667002</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.0.0:
+  * Remove support for Python 3.9.
+  * Documentation improvements.</comment>
+    <requestid>1339135</requestid>
+  </revision>
 </revisionlist>
