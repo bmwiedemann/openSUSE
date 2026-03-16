@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:07:42 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.24.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.24.0
+- Changes since 6.23.0:
+  * Update dependency version to 6.24.0
+  * Remove unused include
+  * Port createRegion to QNativeInterface
+  * Port surfaceForWindow to QNativeInterface
+  * wayland: Don't try to export window that isn't xdg_toplevel (kde#516994)
+  * Port xdgToplevelForWindow to QNativeInterface
+  * wayland: Fix importing window that's not exposed but already has surface role
+  * Remove unneeded Qt version check
+  * platforms/wayland: Manage blur, contrast, and slide globals with std::unique_ptr
+  * platforms/wayland: Add missing initialize()
+  * platforms/wayland: add missing blur capability with ext-background-effect
+  * wayland: implement background effect protocol
+  * platforms/wayland: ensure we always react to surface destruction
+  * run clang-format on all files
+  * Update version to 6.24.0
+
+-------------------------------------------------------------------
 Fri Feb  6 14:26:01 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.23.0
