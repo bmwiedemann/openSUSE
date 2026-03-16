@@ -60,4 +60,25 @@
   * Update Poetry's package dependencies</comment>
     <requestid>1199451</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b63b08690fdaa7323b2f2d0f25532f4e</srcmd5>
+    <version>1.2.5</version>
+    <time>1773667005</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.2.5:
+  * Update Poetry's package dependencies
+  * Identity management functions\
+  * Introduce a new module for managing identities. It includes
+    functions to generate a UUID based on identity data and to
+    convert Unicode strings to their unaccented form.
+  * Increased minimum version for Python to 3.10\
+  * Python 3.9 reaches the end of life in October 2025. This
+    means it won't receive new updates or patches to fix security
+    issues.
+  * GrimoireLab supports Python 3.10 and higher from now on.
+  * Python 3.8 will reach its end of life in October 2024. Python
+    3.9 is
+  * the minimum version required by the project.</comment>
+    <requestid>1339139</requestid>
+  </revision>
 </revisionlist>

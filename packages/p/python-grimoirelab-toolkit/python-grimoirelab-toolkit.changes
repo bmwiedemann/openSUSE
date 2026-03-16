@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Mar 15 19:00:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.5:
+  * Update Poetry's package dependencies
+  * Identity management functions\
+  * Introduce a new module for managing identities. It includes
+    functions to generate a UUID based on identity data and to
+    convert Unicode strings to their unaccented form.
+  * Increased minimum version for Python to 3.10\
+  * Python 3.9 reaches the end of life in October 2025. This
+    means it won't receive new updates or patches to fix security
+    issues.
+  * GrimoireLab supports Python 3.10 and higher from now on.
+  * Python 3.8 will reach its end of life in October 2024. Python
+    3.9 is
+  * the minimum version required by the project.
+
+-------------------------------------------------------------------
 Sun Sep  8 13:06:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.4:
