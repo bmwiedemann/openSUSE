@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 15 19:07:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.0:
+  * fix: add a default sourceURL to aid debugging
+  * feat: add scoped CSS support
+  * fix: make scoped CSS support optional via opt-in
+
+-------------------------------------------------------------------
+Mon Sep 29 11:20:29 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.3:
+  * fix: fix: a data value of `0` turns into `{}`
+
+-------------------------------------------------------------------
 Sun Sep 15 16:47:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.11.1

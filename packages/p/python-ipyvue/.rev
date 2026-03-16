@@ -92,4 +92,18 @@
   * allow v_model to be set after first render</comment>
     <requestid>1201275</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ddb64b1d5228a657b73cfafb0f44630b</srcmd5>
+    <version>1.12.0</version>
+    <time>1773667016</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.12.0:
+  * fix: add a default sourceURL to aid debugging
+  * feat: add scoped CSS support
+  * fix: make scoped CSS support optional via opt-in
+
+- update to 1.11.3:
+  * fix: fix: a data value of `0` turns into `{}`</comment>
+    <requestid>1339143</requestid>
+  </revision>
 </revisionlist>

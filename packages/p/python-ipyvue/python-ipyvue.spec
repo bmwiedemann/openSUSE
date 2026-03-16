@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipyvue
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 # This is important for versions ending in .0
-%define python3dist_version 1.11.1
+%define python3dist_version 1.12
 Name:           python-ipyvue
-Version:        1.11.1
+Version:        1.12.0
 Release:        0
 Summary:        Jupyter widgets base for Vue libraries
 License:        MIT
