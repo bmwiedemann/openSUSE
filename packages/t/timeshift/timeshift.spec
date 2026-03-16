@@ -1,8 +1,8 @@
 #
 # spec file for package timeshift
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2017-2025 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2017-2026 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           timeshift
-Version:        25.07.7
+Version:        25.12.4
 Release:        0
 Summary:        System restore utility
 License:        GPL-3.0-only

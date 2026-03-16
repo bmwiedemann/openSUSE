@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Mar  4 14:37:30 UTC 2026 - malcolmlewis@opensuse.org
+
+- Updated to version 25.12.4:
+  * l10n: Update translations.
+- Changes from version 25.12.3:
+  * Update AppConsole.vala, (gh#linuxmint/timeshift#490)
+  * Main.vala: Fix a warning and don't update config file when
+    exiting early due to an error.
+- Changes from version 25.12.2:
+  * TeeJee.FileSystem.vala: Remove any existing destination file
+    before attempting to write.
+- Changes from version 25.12.1:
+  * l10n: Update translations.
+- Changes from version 25.12.0:
+  * Improve issue template, (gh#linuxmint/timeshift#478).
+  * Trigger backup hooks after rsync snapshots,
+    (gh#linuxmint/timeshift#470).
+  * Subvolume: Enhance nested subvolume deletion verification
+    process, (gh#linuxmint/timeshift#467).
+  * Update Main.vala function restore_current_system check that
+    dst_root is not null, (gh#linuxmint/timeshift#386).
+  * Improve retrieving of session related environment variables,
+    (gh#linuxmint/timeshift#460).
+  * Do not fail all subvolumes if one failed to remove a qgroup;
+    only sync if qgroups are going to be deleted,
+    (gh#linuxmint/timeshift#458).
+  * Add button to pause rsync snapshots,
+    (gh#linuxmint/timeshift#469).
+  * Remove dependency to which, chmod and chown.
+  * Remove unused code; fix compiler warnings; only update control
+    file if changed.
+  * Simplify `AsyncTask` code and use `RsyncTask` to estimate
+    Snapshot size, (gh#linuxmint/timeshift#428).
+  * Fix about links, (gh#linuxmint/timeshift#459).
+  * Fix notify, (gh#linuxmint/timeshift#475).
+  * Fix: replace XWayland backend with Wayland in Wayland sessions,
+    (gh#linuxmint/timeshift#414 and gh#linuxmint/timeshift#387).
+  * timeshift-launcher: Remove wayland check, rename copy_env() to
+    setup_env().
+  * Add lvm-on-luks partition to crypttab,
+    (gh#linuxmint/timeshift#398).
+  * Check if qgroup exists before attempting to destroy it,
+    (gh#linuxmint/timeshift#484).
+  * Fix: the continue loop error in the device selection logic,
+    (gh#linuxmint/timeshift#456).
+  * l10n: Update POT.
+
+-------------------------------------------------------------------
 Sat Sep  6 23:50:23 UTC 2025 - malcolmlewis@opensuse.org
 
 - Updated to version 25.07.7:
