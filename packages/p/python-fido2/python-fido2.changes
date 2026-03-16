@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Mar 15 15:38:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Fix: Platform detection in fido2.hid module for BSD's.
+  * CTAP 2.3 support:
+    * Add new GetInfo fields: enc_cred_store_state.
+    * Add support for pinComplexityPolicy extension.
+    * Add thirdPartyPayment bit to credman.
+    * Check support for config subcommands.
+  * WebAuthn:
+    * Allow UserEntity without 'name' field for improved spec
+      compliance.
+  * Update MDS3 dataclasses with new fields.
+  * Fido2Client:
+    * Fallback to PIN after UV_BLOCKED error.
+    * Improve preflight handling when message exceeds maximum
+      size.
+  * WindowsClient:
+  * Fix: Parse 'credentialProtectionPolicy' properly.
+  * Update win_api.py from latest webauthn.h.
+  * Add support for hmac-secret-mc extension.
+  * Add support for hints.
+
+-------------------------------------------------------------------
 Wed Jul 16 10:07:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.0.0:

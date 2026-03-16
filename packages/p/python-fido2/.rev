@@ -221,4 +221,31 @@
 </comment>
     <requestid>1294069</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a6992e2d821b701ae68bd5f7c5878177</srcmd5>
+    <version>2.1.1</version>
+    <time>1773666999</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.1.1:
+  * Fix: Platform detection in fido2.hid module for BSD's.
+  * CTAP 2.3 support:
+    * Add new GetInfo fields: enc_cred_store_state.
+    * Add support for pinComplexityPolicy extension.
+    * Add thirdPartyPayment bit to credman.
+    * Check support for config subcommands.
+  * WebAuthn:
+    * Allow UserEntity without 'name' field for improved spec
+      compliance.
+  * Update MDS3 dataclasses with new fields.
+  * Fido2Client:
+    * Fallback to PIN after UV_BLOCKED error.
+    * Improve preflight handling when message exceeds maximum
+      size.
+  * WindowsClient:
+  * Fix: Parse 'credentialProtectionPolicy' properly.
+  * Update win_api.py from latest webauthn.h.
+  * Add support for hmac-secret-mc extension.
+  * Add support for hints.</comment>
+    <requestid>1339112</requestid>
+  </revision>
 </revisionlist>
