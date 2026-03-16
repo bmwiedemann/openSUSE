@@ -1,0 +1,6 @@
+<package name="coolercontrol" project="openSUSE:Factory">
+  <title>Cooling control and monitoring</title>
+  <description>CoolerControl is an application for monitoring and controlling supported cooling devices.
+It features flexible control options, and live thermal data.</description>
+  <url>https://gitlab.com/coolercontrol/coolercontrol</url>
+</package>

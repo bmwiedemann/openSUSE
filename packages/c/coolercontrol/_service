@@ -1,0 +1,20 @@
+<services>
+  <service mode="manual" name="tar_scm">
+    <param name="url">https://gitlab.com/coolercontrol/coolercontrol.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="scm">git</param>
+    <param name="revision">4.0.1</param>
+    <param name="match-tag">*</param>
+  </service>
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+  <service name="cargo_vendor" mode="manual">
+     <param name="src">coolercontrol</param>
+     <param name="custom-root">coolercontrold</param>
+     <param name="compression">zst</param>
+     <param name="update">true</param>
+  </service>
+</services>
