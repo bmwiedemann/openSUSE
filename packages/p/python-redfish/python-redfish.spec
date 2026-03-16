@@ -1,8 +1,8 @@
 #
 # spec file for package python-redfish
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2020-2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2020-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           python-redfish
-Version:        3.3.4
+Version:        3.3.5
 Release:        0
 Summary:        Redfish Python Library
 License:        BSD-3-Clause
@@ -38,7 +38,7 @@ Requires:       python-requests-unixsocket
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module jsonpatch}
-BuildRequires:  %{python_module jsonpath-rw}
+BuildRequires:  %{python_module jsonpath-ng}
 BuildRequires:  %{python_module jsonpointer}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-toolbelt}

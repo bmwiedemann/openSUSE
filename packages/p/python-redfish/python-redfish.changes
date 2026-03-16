@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 13 20:43:56 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3.5
+  * Replaced jsonpath_rw in favor of jsonpath_ng
+
+-------------------------------------------------------------------
 Sat Sep 13 06:26:50 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.3.4
