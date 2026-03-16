@@ -16,9 +16,9 @@
 #
 
 
-%define lname	libtorrent37
+%define lname	libtorrent38
 Name:           libtorrent
-Version:        0.16.7
+Version:        0.16.8
 Release:        0
 Summary:        A BitTorrent library written in C++
 License:        SUSE-GPL-2.0+-with-openssl-exception

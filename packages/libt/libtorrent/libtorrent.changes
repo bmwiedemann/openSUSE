@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 16 07:06:02 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.8
+  * Fix crash on double scrape request
+  * Use callback in DnsBuffer result and catch EINTR in Listen
+
+-------------------------------------------------------------------
 Wed Mar  4 12:57:04 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.7
