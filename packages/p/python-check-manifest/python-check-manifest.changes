@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 16 11:41:39 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove breezy from BuildRequires, the current version of breezy is
+  not supported
+
+-------------------------------------------------------------------
 Tue Dec  9 14:23:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.51

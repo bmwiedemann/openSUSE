@@ -1,7 +1,7 @@
 #
 # spec file for package python-check-manifest
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,6 @@ Requires:       python-tomli
 %if %{with test}
 BuildRequires:  %{python_module check-manifest = %{version}}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  breezy
 BuildRequires:  git-core > 2.11
 BuildRequires:  mercurial
 BuildRequires:  subversion

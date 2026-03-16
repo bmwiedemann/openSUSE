@@ -203,4 +203,13 @@ Needed for python3-jupyter_ipython</comment>
     <comment></comment>
     <requestid>1321800</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>1883933a711e2b675edd127f94cc4812</srcmd5>
+    <version>0.51</version>
+    <time>1773672549</time>
+    <user>anag_factory</user>
+    <comment>- Remove breezy from BuildRequires, the current version of breezy is
+  not supported</comment>
+    <requestid>1339324</requestid>
+  </revision>
 </revisionlist>
