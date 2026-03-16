@@ -88,6 +88,13 @@ changes:
     replacements:
       - { find: "/usr/bin/env bash", replace: "/usr/bin/bash" }
 
+  - type: replace_text
+    # Replace plugin name in sap_swpm
+    files:
+      - "roles/sap_swpm/tasks/pre_install/assert_hostname.yml"
+    replacements:
+      - { find: "community.sap_install.valid", replace: "suse.sap_install.valid" }
+
   - type: remove_yaml_list_items
     # This is used to remove specific collections from ansible_requirements.yml.
     files:
@@ -110,8 +117,8 @@ changes:
       - ".git*"
       - "*/.git*"
       - "*/*/.git*"
-      - ".ansible-lint"
-      - "*/*/.ansible-lint"
+      - ".ansible-lint*"
+      - "*/*/.ansible-lint*"
       - ".yamllint*"
       - "*/*/.yamllint*"
       - ".pylintrc*"

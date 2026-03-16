@@ -50,4 +50,12 @@ Downstream source is located at https://github.com/SUSE/community.sap_install</c
     <comment>Release 1.8.0 with new features and compatibility fixes for ansible-core 2.19.</comment>
     <requestid>1327403</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>84193485694ea8f25cdf7a07b199152e</srcmd5>
+    <version>1.9.0</version>
+    <time>1773672564</time>
+    <user>anag_factory</user>
+    <comment>Release 1.9.0 with firewall enablement and compatibility fixes for ansible-core 2.19.</comment>
+    <requestid>1339378</requestid>
+  </revision>
 </revisionlist>

@@ -7,4 +7,5 @@ It automates the installation of various SAP software components,
 
 This collection can be used to simplify and accelerate the deployment,
 management, and operation of SAP systems on Linux platforms.</description>
+  <devel project="devel:sap:ansible" package="ansible-sap-install"/>
 </package>

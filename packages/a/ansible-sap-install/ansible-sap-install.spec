@@ -22,7 +22,7 @@
 Name:           ansible-sap-install
 Summary:        Ansible collection suse.sap_install for SAP Automation
 License:        Apache-2.0
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 URL:            https://github.com/SUSE/community.sap_install/
 Source0:        %{url}archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
