@@ -933,4 +933,21 @@ all changed Requires/Buildrequires seem to be available
   * Update master for stable/2025.2</comment>
     <requestid>1318325</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>cf8afa9065ffc98337b8e271e67f1964</srcmd5>
+    <version>10.3.0</version>
+    <time>1773667020</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.3.0:
+  * Adapt subcommand test for Python 3.14
+  * Add min\_length parameter
+  * Add ruff
+  * docs: Remove cruft from config files
+  * Delay string interpolations at logging calls
+  * tests: Ignore host terminal width
+  * Replace deprecated warn\_on\_missing\_entrypoint
+  * Correct test dependency name
+  * Remove reference to tag framework</comment>
+    <requestid>1339164</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar  8 20:39:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.3.0:
+  * Adapt subcommand test for Python 3.14
+  * Add min\_length parameter
+  * Add ruff
+  * docs: Remove cruft from config files
+  * Delay string interpolations at logging calls
+  * tests: Ignore host terminal width
+  * Replace deprecated warn\_on\_missing\_entrypoint
+  * Correct test dependency name
+  * Remove reference to tag framework
+
+-------------------------------------------------------------------
 Mon Nov 17 21:10:32 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.1.0:
