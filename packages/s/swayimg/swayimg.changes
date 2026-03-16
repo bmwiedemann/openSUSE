@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 15 22:20:43 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 5.0:
+  * Added marking mode;
+  * Added drag-and-drop to send current image to external apps;
+  * Added support for touchpad pinch gestures;
+  * Added multithread support for JXL decoder;
+  * EXR decoder is panic-free now.
+- Add pkgconfig(luaJit) BuildRequires: enable Lua scripting support
+- Add pkgconfig(exiv2) BuildRequires: replaced pkgconfig(libexif)
+
+-------------------------------------------------------------------
 Thu Jan 15 19:05:27 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 4.7:

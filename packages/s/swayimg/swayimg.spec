@@ -19,12 +19,12 @@
 
 %bcond_with test
 Name:           swayimg
-Version:        4.7
+Version:        5.0
 Release:        0
 Summary:        Image viewer for Sway/Wayland
 License:        MIT
 URL:            https://github.com/artemsen/swayimg
-Source:         https://github.com/artemsen/swayimg/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/v.%{version}/%{name}-v.%{version}.tar.gz
 BuildRequires:  giflib-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.60.0
@@ -37,10 +37,10 @@ BuildRequires:  pkgconfig(librsvg-2.0)
 %endif
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libavif)
-BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libheif)
 BuildRequires:  pkgconfig(libpng16)
@@ -49,6 +49,7 @@ BuildRequires:  pkgconfig(libsixel)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libwebpdemux)
+BuildRequires:  pkgconfig(luajit)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(xkbcommon)
@@ -61,7 +62,7 @@ the currently active window, which gives the illusion that you are
 opening the image directly in a terminal window.
 
 %prep
-%autosetup
+%autosetup -n %{name}-v.%{version} -p1
 
 %build
 %meson \
@@ -86,15 +87,14 @@ opening the image directly in a terminal window.
 
 %files
 %license LICENSE
-%doc README.md
+%doc README.md CONFIG.md USAGE.md
 %{_bindir}/swayimg
-%dir %{_datadir}/swayimg
-%{_datadir}/swayimg/swayimgrc
+%{_datadir}/swayimg
 %{_datadir}/applications/swayimg.desktop
 %{_datadir}/bash-completion/completions/swayimg
 %{_datadir}/icons/hicolor/*/apps/swayimg.png
 %{_mandir}/man1/swayimg.1%{?ext_man}
-%{_mandir}/man5/swayimgrc.5%{?ext_man}
 %{_datadir}/zsh/site-functions/_swayimg
+%exclude %{_datadir}/doc
 
 %changelog
