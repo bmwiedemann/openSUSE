@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:07:42 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.24.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.24.0
+- Changes since 6.23.0:
+  * Update dependency version to 6.24.0
+  * kacceleratormanager: Avoid unnecessary allocations when searching for used shortcuts
+  * kactionmenu: Be more forgiving about menu ownership
+  * kactionmenu: Fix ownership of default menu
+  * Enable LSAN in CI
+  * avoid mem-leak in KDateTimeEditTest::testDateMenu
+  * KAcceleratorManager: Avoid unnecessary allocation
+  * kmimetypechooser.h: Remove default arguments from an overlapping constructor and mark it as deprecated for 6.24
+  * Update version to 6.24.0
+
+-------------------------------------------------------------------
 Fri Feb  6 14:26:01 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.23.0
