@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:07:29 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.24.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.24.0
+- Changes since 6.23.0:
+  * Update dependency version to 6.24.0
+  * metadata: make sure the KCrashComplete group has an entry (kde#516658)
+  * Avoid using qEnvironmentVariableIntegerValue
+  * Update version to 6.24.0
+
+-------------------------------------------------------------------
 Fri Feb  6 14:25:47 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.23.0
