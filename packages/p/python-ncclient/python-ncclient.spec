@@ -1,7 +1,7 @@
 #
 # spec file for package python-ncclient
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15allpythons}
 Name:           python-ncclient
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Python library for NETCONF clients
 License:        Apache-2.0
@@ -27,9 +27,8 @@ Source:         https://github.com/ncclient/ncclient/archive/v%{version}.tar.gz#
 # PATCH-FIX-OPENSUSE allow_old_sphinx.patch mcepl@suse.com
 # Allow build with old Sphinx (< 2.0) on Leap
 Patch0:         allow_old_sphinx.patch
-# PATCH-FIX-UPSTREAM intersphinx-mapping.patch gh#ncclient/ncclient#604 mcepl@suse.com
-# use conditionally new form of intersphinx_mapping
-Patch1:         intersphinx-mapping.patch
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module lxml >= 3.3.0}
 BuildRequires:  %{python_module paramiko >= 1.15.0}
 BuildRequires:  %{python_module pip}
@@ -63,13 +62,13 @@ This package contains documentation files for %{name}.
 %if 0%{?suse_version} < 1550
 %patch -p 1 -P 0
 %endif
-%patch -p 1 -P 1
 
 find examples/ -name "*.py" -exec sed -i 's|#!/usr/bin/env python$|#!/usr/bin/python|g' {} \;
 # drop shebang
 find ncclient/operations/third_party/ -name "*.py" -exec sed -i '/^#!\//, 1d' {} \;
 
 %build
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pyproject_wheel
 cd docs && make %{?_smp_mflags} html && rm build/html/.buildinfo
 

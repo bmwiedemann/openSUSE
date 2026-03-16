@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 15 16:22:17 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.7.1
+  * Fix connect() params of libssh transport.
+  * Fix connection to Junos with libssh when netconf is disabled.
+  * Build using hatch.
+  * Merge in test.pypy.org and pypi.org tag-based publishing.
+  * Use importlib.metadata to check for ssh-python.
+  * Make RPCReplyListener creation_lock re-entrant to avoid
+    deadlock.
+- Drop patch:
+  * intersphinx-mapping.patch (not longer needed)
+
+-------------------------------------------------------------------
 Mon Nov 17 22:07:58 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.0:
