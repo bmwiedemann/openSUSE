@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 16 12:15:33 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to version 5.4.0
+  * sync with the main certbot package
+- Tests are failing beacuse of too new cloudflare, skip for now
+
+-------------------------------------------------------------------
 Tue Feb 24 15:05:08 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - update to version 5.3.1
