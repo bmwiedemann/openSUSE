@@ -77,4 +77,15 @@
 </comment>
     <requestid>1254378</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e77303efede8fbd632723cdbe4bcdffd</srcmd5>
+    <version>0.7.0</version>
+    <time>1773667034</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.7.0:
+  * Minor updates to work with recent versions of NumPy and SciPy
+  * Add support for Python 3.13, 3.14; remove testing for Python
+    3.9 and below, and for NumPy 1.22 and below.</comment>
+    <requestid>1339178</requestid>
+  </revision>
 </revisionlist>

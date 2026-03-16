@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 15 21:31:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.0:
+  * Minor updates to work with recent versions of NumPy and SciPy
+  * Add support for Python 3.13, 3.14; remove testing for Python
+    3.9 and below, and for NumPy 1.22 and below.
+
+-------------------------------------------------------------------
 Wed Mar 19 10:50:50 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Skip test_create_with_sparse_array test
