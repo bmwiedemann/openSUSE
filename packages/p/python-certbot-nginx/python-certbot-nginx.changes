@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 16 12:17:49 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to version 5.4.0
+  * certbot-nginx now requires pyparsing>=3.0.0
+
+-------------------------------------------------------------------
 Tue Feb 24 15:06:54 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - update to version 5.3.1
