@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:07:33 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.24.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.24.0
+- Changes since 6.23.0:
+  * Update dependency version to 6.24.0
+  * JP2: fix possible Undefined-shift
+  * IFF: fix buffer read overflow
+  * Fix Heap-buffer-overflow WRITE
+  * Fixed excessively frequent warning messages
+  * ossfuzz: update aom, libavif, openjpeg
+  * ANI: fix possible QByteArray allocation exception
+  * jxl: adjust metadata size limits
+  * RGB: fix a possible exception on the new
+  * TGA: fix Undefined-shift
+  * PSD: improve conversion sanity checks
+  * IFF: fix compilation warnings
+  * ANI: check for array allocation size
+  * Update version to 6.24.0
+
+-------------------------------------------------------------------
 Fri Feb  6 14:25:53 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.23.0
