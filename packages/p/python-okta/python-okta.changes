@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Mar 15 21:20:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.0:
+  * **Updated API Specifications**: The SDK has been regenerated
+    using the v5.1.0 Okta Management OpenAPI specifications,
+    bringing support for new endpoints and enhanced functionality
+    across the API surface.
+  * **Pagination Support**: List operations now support
+    pagination for efficient handling of large result sets. For
+    detailed usage instructions and examples, please refer to
+    `README.md## Pagination`.
+  * **OpenAPI Generator Tooling Update**: The SDK generation
+    process has transitioned from the npm-based `openapi-
+    generator-cli` to the JAR-based version due to configuration
+    limitations in the npm package. Contributors and maintainers
+    should now use the OpenAPI Generator JAR file for SDK
+    generation. Download instructions: https://openapi-
+    generator.tech/docs/installation#jar
+
+-------------------------------------------------------------------
 Mon May  5 08:02:16 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.9.13

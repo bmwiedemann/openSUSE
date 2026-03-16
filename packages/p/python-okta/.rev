@@ -39,4 +39,27 @@
     <comment></comment>
     <requestid>1274397</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>233523e5ad65ea07698e42690d1c370e</srcmd5>
+    <version>3.1.0</version>
+    <time>1773667032</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.1.0:
+  * **Updated API Specifications**: The SDK has been regenerated
+    using the v5.1.0 Okta Management OpenAPI specifications,
+    bringing support for new endpoints and enhanced functionality
+    across the API surface.
+  * **Pagination Support**: List operations now support
+    pagination for efficient handling of large result sets. For
+    detailed usage instructions and examples, please refer to
+    `README.md## Pagination`.
+  * **OpenAPI Generator Tooling Update**: The SDK generation
+    process has transitioned from the npm-based `openapi-
+    generator-cli` to the JAR-based version due to configuration
+    limitations in the npm package. Contributors and maintainers
+    should now use the OpenAPI Generator JAR file for SDK
+    generation. Download instructions: https://openapi-
+    generator.tech/docs/installation#jar</comment>
+    <requestid>1339176</requestid>
+  </revision>
 </revisionlist>

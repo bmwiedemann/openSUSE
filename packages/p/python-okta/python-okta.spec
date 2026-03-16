@@ -1,7 +1,7 @@
 #
 # spec file for package python-okta
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-okta
-Version:        2.9.13
+Version:        3.1.0
 Release:        0
 Summary:        Python SDK for the Okta Management API
 License:        Apache-2.0
@@ -34,14 +34,18 @@ BuildRequires:  %{python_module aenum}
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module aiohttp}
+BuildRequires:  %{python_module blinker}
 BuildRequires:  %{python_module flatdict}
 BuildRequires:  %{python_module jwcrypto}
 BuildRequires:  %{python_module pycryptodomex}
+BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module pydash}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-recording}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-dateutil}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module xmltodict}
 BuildRequires:  %{python_module yarl}
 # /SECTION
@@ -50,10 +54,14 @@ Requires:       python-PyJWT
 Requires:       python-PyYAML
 Requires:       python-aenum
 Requires:       python-aiohttp
+Requires:       python-blinker
 Requires:       python-flatdict
 Requires:       python-jwcrypto
 Requires:       python-pycryptodomex
+Requires:       python-pydantic
 Requires:       python-pydash
+Requires:       python-python-dateutil
+Requires:       python-requests
 Requires:       python-xmltodict
 Requires:       python-yarl
 BuildArch:      noarch
@@ -75,11 +83,6 @@ Python SDK for the Okta Management API.
 %check
 # skip integration tests (require a network connection)
 rm -r tests/integration
-# skip tests with "fixture 'fs' not found"
-rm tests/unit/test_client.py
-rm tests/unit/test_http_client.py
-rm tests/unit/test_models.py
-rm tests/unit/test_oauth.py
 %pytest
 
 %files %{python_files}
