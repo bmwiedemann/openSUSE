@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:10:14 UTC 2026 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Update to version 0.199.0
+  * Rust 1.89 compatibility
+- Drop allow-missing-docs-for-tests-modules.patch: upstreamed
+
+-------------------------------------------------------------------
 Sat Aug 23 07:39:47 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Update to version 0.198.0, see:
