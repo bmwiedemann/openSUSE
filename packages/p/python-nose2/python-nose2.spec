@@ -1,7 +1,7 @@
 #
 # spec file for package python-nose2
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,14 +23,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-nose2
-Version:        0.15.1
+Version:        0.16.0
 Release:        0
 Summary:        The successor to the Python testing framework nose, based on unittest
 License:        BSD-2-Clause AND Python-2.0
 URL:            https://github.com/nose-devs/nose2
 Source:         https://files.pythonhosted.org/packages/source/n/nose2/nose2-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Support Python 3.14 multiprocessing and argparse changes
-Patch0:         support-python314.patch
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-wheel}
