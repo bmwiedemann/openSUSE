@@ -40,4 +40,41 @@
   * Use valid licence registry identifier for Apache-2.0 licence</comment>
     <requestid>1243209</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1a2016d5255e4e4e94873748dd514a99</srcmd5>
+    <version>0.5.0</version>
+    <time>1773667078</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.5.0:
+  * Added richer accessor/path APIs, including
+    AccessorPath.read_value, subscriptable accessors, improved
+    AccessorPath.get overloads, NodeAccessor.__getitem__,
+    pathlib-style path manipulation, and traversability support.
+    #29 #31 #85 #93 #66 #89 #91
+  * Improved performance in core hot paths, including faster
+    parse_parts, optimized getitem, faster membership checks, and
+    better per-instance caching behavior. #92 #104 #103 #87 #71
+  * Expanded parsing and typing guarantees with stronger parsing
+    contracts and broader bytes/PathLike test coverage. #80 #81
+  * Improved correctness and diagnostics across accessors and
+    paths, including tighter KeyError messages and more
+    consistent len()/keys() behavior. #84 #75 #73
+  * Improved filesystem/stat error handling with better OSError
+    handling in accessor flows. #69
+  * Fixed separator correctness in core path operations. #67
+  * Fixed AccessorPath child-return behavior for getitem. #94
+  * ## Backward incompatibilities
+  * Dropped Python 3.7, 3.8, and 3.9 support. #24 #25 #101
+  * Python baseline is now 3.10+. #101
+  * BaseAccessor has been replaced by NodeAccessor. #39
+  * AccessorPath is now generic. #39
+  * Deprecated legacy accessor/path methods: iter, iteritems,
+    content, get, getkey. #29
+  * Deprecated content in favor of newer accessor patterns. #13
+  * Removed pyrsistent dependency. #82
+  * Added benchmark suite and CI benchmark workflow. #77 #102
+  * Updated development and CI tooling (mypy, pytest, pytest-cov,
+    flynt, pre-commit, black, isort, GitHub Actions components).</comment>
+    <requestid>1339285</requestid>
+  </revision>
 </revisionlist>

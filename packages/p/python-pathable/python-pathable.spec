@@ -1,7 +1,7 @@
 #
 # spec file for package python-pathable
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pathable
-Version:        0.4.4
+Version:        0.5.0
 Release:        0
 Summary:        Object-oriented paths
 License:        Apache-2.0
 URL:            https://github.com/p1c2u/pathable
 Source:         https://github.com/p1c2u/pathable/archive/refs/tags/%{version}.tar.gz#/pathable-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1.0}
+BuildRequires:  %{python_module poetry-core >= 2.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -56,7 +56,7 @@ sed -i '/--cov/d' pyproject.toml
 %pytest
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %{python_sitelib}/pathable
 %{python_sitelib}/pathable-%{version}.dist-info
