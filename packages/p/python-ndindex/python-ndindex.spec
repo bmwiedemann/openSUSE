@@ -1,7 +1,7 @@
 #
 # spec file for package python-ndindex
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ndindex
-Version:        1.9.2
+Version:        1.10.1
 Release:        0
 Summary:        A Python library for manipulating indices of ndarrays
 License:        MIT
@@ -27,10 +27,11 @@ Source:         https://files.pythonhosted.org/packages/source/n/ndindex/ndindex
 # PATCH-FIX-OPENSUSE custom-pytest.patch gh#Quansight-Labs/ndindex#150
 Patch2:         custom-pytest.patch
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module base > 3.8}
+BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-numpy

@@ -65,4 +65,31 @@
     <comment></comment>
     <requestid>1248963</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f5bde5d1d500902e275ec9b0a7c0b689</srcmd5>
+    <version>1.10.1</version>
+    <time>1773667035</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.10.1:
+  * Fix BooleanArray.count_nonzero() to always return a Python int
+    instead of a NumPy integer type, which could cause issues in
+    some contexts.
+  * Fix some doctests to work with recent versions of NumPy and to
+    always pass regardless of environment.
+  * Add support for free threaded builds of CPython
+
+  * Fixes an issue with pickle and deepcopy serialization introduced
+  * ndindex now uses a C extension (using Cython). Currently the
+    meaning constructing and using those classes is now much faster. In the
+    future, additional parts of ndindex will be Cythonized as performance
+    needs dictate. This does not have any user-facing changes to
+  * The documentation now includes a documentation guide for all NumPy
+    index types, extending the previous guide for slices. The slices
+    guide has also been improved and now has diagrams built using
+  * Raise an exception earlier for invalid index in
+  * The CYTHONIZE_NDINDEX environment variable for building has been
+  * {func}~.normalize_skip_axes will now raise AxisError before
+  * Keep track of when a Slice has been reduced (with no shape) to</comment>
+    <requestid>1339181</requestid>
+  </revision>
 </revisionlist>
