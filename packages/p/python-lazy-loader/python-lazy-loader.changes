@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 15 19:13:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5:
+  * Add `suppress_warning` parameter to the `load` function
+    (#146).
+  * fix: Remove problematic try/finally block (#137).
+  * Make sure that `__dir__` returns new copies of `__all__`
+    (#135).
+  * Allow disabled eager loading with EAGER_IMPORT=0 (#166).
+
+-------------------------------------------------------------------
 Sat Apr 20 21:09:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4:

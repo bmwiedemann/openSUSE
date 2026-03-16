@@ -37,4 +37,18 @@
   * Make `lazy_load.load` partially thread-safe (#90).</comment>
     <requestid>1169421</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8bdaa3f199ac4d32b2bcd2fcd1be338c</srcmd5>
+    <version>0.5</version>
+    <time>1773667011</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.5:
+  * Add `suppress_warning` parameter to the `load` function
+    (#146).
+  * fix: Remove problematic try/finally block (#137).
+  * Make sure that `__dir__` returns new copies of `__all__`
+    (#135).
+  * Allow disabled eager loading with EAGER_IMPORT=0 (#166).</comment>
+    <requestid>1339147</requestid>
+  </revision>
 </revisionlist>
