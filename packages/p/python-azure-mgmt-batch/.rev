@@ -200,4 +200,16 @@
 - Rename LICENSE.txt to LICENSE in %files section (forwarded request 1203504 from glaubitz)</comment>
     <requestid>1203538</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>34e08327e2ab193b0e8de1bf244dc125</srcmd5>
+    <version>19.0.0</version>
+    <time>1773672561</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 19.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1339328 from glaubitz)</comment>
+    <requestid>1339357</requestid>
+  </revision>
 </revisionlist>
