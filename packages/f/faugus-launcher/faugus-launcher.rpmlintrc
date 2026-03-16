@@ -1,2 +1,1 @@
-# Add an exclusion to faugus-shortcut.desktop as it's just a template
-addFilter("desktopfile-without-binary.*faugus-shortcut.desktop")
+# faugus-launcher rpmlintrc exclusions file

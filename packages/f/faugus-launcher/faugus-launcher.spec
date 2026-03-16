@@ -26,7 +26,7 @@
 %endif
 
 Name:           faugus-launcher
-Version:        1.16.4
+Version:        1.16.5
 Release:        0
 Summary:        A simple and lightweight app for running Windows games using UMU-Launcher
 License:        MIT
@@ -144,6 +144,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 %{_bindir}/faugus-launcher
 %{_bindir}/faugus-run
 %{_bindir}/faugus-proton-manager
+%{_bindir}/faugus-shortcut
 # Icons
 %{_datadir}/icons/hicolor/*
 # .desktop files

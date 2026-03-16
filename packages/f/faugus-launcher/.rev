@@ -202,4 +202,20 @@
   * Added vcs-browser to metadata</comment>
     <requestid>1338798</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9d8af8948d2a6fed18cf70b9d881745a</srcmd5>
+    <version>1.16.5</version>
+    <time>1773667021</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.16.5
+- Upstream changes:
+  * Forgot to remove the module
+  * faugus-shortcut now an executable
+  * Revert &quot;Wrapper for Faugus Shortcut&quot;
+  * Wrapper for Faugus Shortcut
+  * Fixed app restarting very time when applying settings
+- For .spec, added faugus-shortcut in _bindir
+- For .rpmlintrc, removed exclusions that are no longer required for 1.16.5</comment>
+    <requestid>1339157</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 15 19:20:26 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.16.5
+- Upstream changes:
+  * Forgot to remove the module
+  * faugus-shortcut now an executable
+  * Revert "Wrapper for Faugus Shortcut"
+  * Wrapper for Faugus Shortcut
+  * Fixed app restarting very time when applying settings
+- For .spec, added faugus-shortcut in _bindir
+- For .rpmlintrc, removed exclusions that are no longer required for 1.16.5
+
+-------------------------------------------------------------------
 Fri Mar 13 19:01:30 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.16.4
