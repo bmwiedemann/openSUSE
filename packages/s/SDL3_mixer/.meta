@@ -1,0 +1,7 @@
+<package name="SDL3_mixer" project="openSUSE:Factory">
+  <title>Sample Mixer Library for SDL3</title>
+  <description>A multi-channel audio mixer. It supports 4 channels of 16-bit stereo
+audio, plus a single channel of music, mixed by the MikMod MOD,
+Timidity MIDI, and mpg123 MP3 libraries.</description>
+  <url>https://wiki.libsdl.org/SDL3_mixer</url>
+</package>

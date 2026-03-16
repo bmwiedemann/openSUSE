@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Fri Mar 13 02:42:16 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- SDL3_mixer 3.2.0, first release
+  * compiler warnings fixes and documentation updates
+- disable installation of examples/tests
+
+-------------------------------------------------------------------
+Sat Mar  7 15:38:39 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- SDL3_mixer, based on SDL2_mixer
