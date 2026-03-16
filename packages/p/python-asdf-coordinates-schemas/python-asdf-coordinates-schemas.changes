@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 15 14:58:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.1:
+  * Fix examples (supply location attribute) in TETE frame
+    schema.
+  * Drop Python 3.9 support
+  * Add TETE and TEME coordinate frames.
+
+-------------------------------------------------------------------
 Sun Jul 13 13:38:55 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4.0:

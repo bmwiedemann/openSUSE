@@ -49,4 +49,16 @@
   * Update schemas to prefer tag over ref</comment>
     <requestid>1292512</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6c62671efe54ac560da76b1f8c720d12</srcmd5>
+    <version>0.5.1</version>
+    <time>1773667001</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.5.1:
+  * Fix examples (supply location attribute) in TETE frame
+    schema.
+  * Drop Python 3.9 support
+  * Add TETE and TEME coordinate frames.</comment>
+    <requestid>1339108</requestid>
+  </revision>
 </revisionlist>
