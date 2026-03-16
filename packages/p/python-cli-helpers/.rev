@@ -151,4 +151,14 @@
   * Provisional Python 3.6 compatibility (Union syntax).</comment>
     <requestid>1336592</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>67d427a10409f7ae85b0d1c6ca623e52</srcmd5>
+    <version>2.11.0</version>
+    <time>1773666996</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.11.0:
+  * Support and require version 0.10.x of `tabulate`.
+  * Pin `tabulate` version more tightly.</comment>
+    <requestid>1339105</requestid>
+  </revision>
 </revisionlist>

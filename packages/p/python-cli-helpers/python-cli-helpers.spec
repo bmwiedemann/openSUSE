@@ -17,7 +17,7 @@
 
 
 Name:           python-cli-helpers
-Version:        2.10.1
+Version:        2.11.0
 Release:        0
 Summary:        Helpers for building command-line apps
 License:        BSD-3-Clause
@@ -29,7 +29,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-configobj >= 5.0.5
-Requires:       python-tabulate >= 0.9.0
+Requires:       python-tabulate >= 0.10.0
 # install_requires lists tabulate[widechars]
 Requires:       python-wcwidth
 Suggests:       python-Pygments >= 2.4
@@ -39,7 +39,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Pygments >= 2.4}
 BuildRequires:  %{python_module configobj >= 5.0.5}
 BuildRequires:  %{python_module pytest >= 3.0.7}
-BuildRequires:  %{python_module tabulate >= 0.8.2}
+BuildRequires:  %{python_module tabulate >= 0.10.0}
 BuildRequires:  %{python_module wcwidth}
 %python_subpackages
 

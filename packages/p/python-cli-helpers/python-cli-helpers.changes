@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 15 14:53:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.11.0:
+  * Support and require version 0.10.x of `tabulate`.
+  * Pin `tabulate` version more tightly.
+
+-------------------------------------------------------------------
 Wed Mar  4 21:30:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.10.1:
