@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Mar 16 08:43:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.5:
+  * SchemaAccessor.resolver backward compatibility #246
+- update to 0.4.4:
+  * Prefix cache path resolver #244
+- update to 0.4.3:
+  * Add optional resolved-path LRU cache with safe invalidation
+    #242
+  * Avoid unnecessary resolver evolution in get_resolved #240
+- update to 0.4.2:
+  * SchemaPath __getitem__ final resolution fix #231
+- update to 0.4.1:
+  * Added referencing 0.37 support #230
+- update to 0.4.0:
+  * Added typed `SchemaPath` helper methods (`str_keys`,
+    `str_items`, `read_str`, `read_bool`).
+  * Added `SchemaPath.read_str_or_list()` helper.
+  * Added/expanded schema typing aliases (`Schema`, `SchemaKey`,
+    `SchemaNode`, `SchemaValue`).
+  * Fixed accessor/path resolution edge cases (`getkey`, nested
+    return values, node resolving, `getitem`, dereference
+    behavior).
+  * Upgraded `pathable 0.5.0`.
+  * Added benchmark suite and parse-path optimizations.
+  * Fixed missing `requests` dependency handling.
+  * Fixed schema mapping key invariance behavior.
+  * Fixed SchemaAccessor key dereference behavior to dereference
+    once.
+  * Fixed `SchemaAccessor` node resolving and `getitem` return
+    behavior.
+  * Fixed `SchemaPath.getkey` backward compatibility and nested
+    return behavior.
+  * Dropped Python `3.8` support.
+  * Dropped Python `3.9` support.
+  * Added Python `3.13` support.
+  * Added Python `3.14` support.
+  * Current supported range is Python `>=3.10,<4.0`.
+
+-------------------------------------------------------------------
 Wed Mar 19 12:38:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.3.4

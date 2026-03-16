@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonschema-path
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,28 +18,28 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonschema-path
-Version:        0.3.4
+Version:        0.4.5
 Release:        0
 Summary:        JSONSchema Spec with object-oriented paths
 License:        Apache-2.0
 URL:            https://github.com/p1c2u/jsonschema-path
 Source:         https://github.com/p1c2u/jsonschema-path/archive/refs/tags/%{version}.tar.gz#/jsonschema-path-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8.0}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1}
+BuildRequires:  %{python_module poetry-core >= 2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML >= 5.1}
-BuildRequires:  %{python_module pathable >= 0.4.1}
+BuildRequires:  %{python_module pathable >= 0.5}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module referencing >= 0.28.0}
+BuildRequires:  %{python_module referencing}
 BuildRequires:  %{python_module requests >= 2.31.0}
 BuildRequires:  %{python_module responses >= 0.23.0}
 # /SECTION
 Requires:       python-PyYAML >= 5.1
-Requires:       python-pathable >= 0.4.1
-Requires:       python-referencing >= 0.28.0
+Requires:       python-pathable >= 0.5
+Requires:       python-referencing
 Suggests:       python-requests >= 2.31.0
 Provides:       python-jsonschema_path = %{version}-%{release}
 BuildArch:      noarch
