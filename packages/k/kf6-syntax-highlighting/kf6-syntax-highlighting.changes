@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:07:45 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.24.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.24.0
+- Changes since 6.23.0:
+  * Update dependency version to 6.24.0
+  * move comment after white space for some shells and Perl (kde#510666)
+  * Update version to 6.24.0
+
+-------------------------------------------------------------------
 Fri Feb  6 14:26:04 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.23.0
