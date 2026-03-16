@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.logging
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.logging
-Version:        3.3.0
+Version:        3.4.0
 Release:        0
 Summary:        Tools to work with logging
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/jaraco.logging
-Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.logging/jaraco.logging-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.logging/jaraco_logging-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -41,8 +41,7 @@ BuildArch:      noarch
 jaraco.logging Tools for working with logging.
 
 %prep
-%setup -q -n jaraco.logging-%{version}
-rm -rf jaraco.logging.egg-info
+%setup -q -n jaraco_logging-%{version}
 
 %build
 %pyproject_wheel

@@ -68,4 +68,13 @@
 - Normalize metadata directory name.</comment>
     <requestid>1266255</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>613f97a34f8a3ae7a02b9db56b0f7cf2</srcmd5>
+    <version>3.4.0</version>
+    <time>1773667033</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.4.0:
+  * Add support for log_level accepting an integer input.</comment>
+    <requestid>1339177</requestid>
+  </revision>
 </revisionlist>
