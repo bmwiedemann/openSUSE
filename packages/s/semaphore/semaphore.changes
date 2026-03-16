@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 16 06:07:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.17.26:
+  * fix(secrets): null pointer
+
+-------------------------------------------------------------------
 Sun Mar 15 08:40:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.17.24:
