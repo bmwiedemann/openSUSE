@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:07:34 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.24.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.24.0
+- Changes since 6.23.1:
+  * Update dependency version to 6.24.0
+  * platform: Deprecate PlatformTheme::useAlternateBackgroundColor
+  * platform: Move useAlternateBackgroundColor from Theme to StyleHints
+  * platform: Introduce StyleHints as common API for extra style behaviour
+  * InlineViewHeader: Create a template and utilize it
+  * NavigationTab Bar/Button: Create templates
+  * Heading: Create a template, base control on top of it
+  * Mark QML singletons in documentation
+  * Remove duplicate since documentation
+  * Add missing documentation module dependency
+  * autotests: Mark test_absolutepath_recoloring of tst_icon.qml as skipped
+  * controls: Port kirigamicontrolsplugin to use Qt::StringLiterals
+  * controls: Use componentUrlForModule for looking up controls files
+  * platform: Port BasicTheme to use StyleSelector::componentUrlForModule
+  * platform: Greatly simplify StyleSelector::styleChain
+  * platform: Deprecate componentUrl, rootPath and resolveFileUrl in StyleSelector
+  * platform: Simplify StyleSelector::resolveFilePath
+  * platform: Add StyleSelector::componentUrlForModule
+  * hack
+  * Move all controls in own import
+  * fix Kirigami.InputMethod.willShowOnActive
+  * Fix placeholder
+  * Reduce text duplication for shortcut tooltips in action toolbar (kde#515958)
+  * Show keyboard shortcut in action toolbar tooltips
+  * Work around Qt bug causing kirigami components to not load when multiple qml engines are involved
+  * Update version to 6.24.0
+
+-------------------------------------------------------------------
 Mon Mar  2 21:25:18 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.23.1:

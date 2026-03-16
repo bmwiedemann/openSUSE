@@ -260,4 +260,12 @@
     <comment>Update to 6.23.1</comment>
     <requestid>1335921</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>affcfca84c6386d2ae1a7bca7032eff2</srcmd5>
+    <version>6.24.0</version>
+    <time>1773666949</time>
+    <user>anag_factory</user>
+    <comment>KDE Frameworks 6.24 (forwarded request 1338840 from krop)</comment>
+    <requestid>1338925</requestid>
+  </revision>
 </revisionlist>
