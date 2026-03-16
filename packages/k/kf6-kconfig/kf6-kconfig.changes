@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:07:28 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.24.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.24.0
+- Changes since 6.23.0:
+  * Update dependency version to 6.24.0
+  * Fix bounds check in KConfigPrivate::expandString
+  * kdesktopfile: do not needlessly cascade desktop files
+  * Add oss-fuzz integration
+  * Remove old, commented out code
+  * With get_filename_component use DIRECTORY instead of legacy alias PATH
+  * KDesktopFileTest: Update testActionGroup
+  * KDesktopFile: Check for Name since it is required field (kde#515694)
+  * Update version to 6.24.0
+
+-------------------------------------------------------------------
 Fri Feb  6 14:25:46 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.23.0
