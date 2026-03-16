@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 16 06:15:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.4.1:
+  * Fixes
+    - (!368) Generate the correct PKCE challenge verifier. This was
+      preventing fj auth login from succeeding.
+
+-------------------------------------------------------------------
 Fri Jan 30 22:53:43 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.4.0:
