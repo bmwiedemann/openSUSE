@@ -1,0 +1,16 @@
+---
+ Lib/test/test_buffer.py |    1 +
+ 1 file changed, 1 insertion(+)
+
+Index: Python-3.15.0a6/Lib/test/test_buffer.py
+===================================================================
+--- Python-3.15.0a6.orig/Lib/test/test_buffer.py	2026-02-12 00:38:25.599265172 +0100
++++ Python-3.15.0a6/Lib/test/test_buffer.py	2026-02-12 00:46:24.303091378 +0100
+@@ -4463,6 +4463,7 @@
+         self.assertEqual([ptr % align for ptr in ptrs], [0]*len(ptrs))
+ 
+     @support.cpython_only
++    @unittest.skip('test fails; gh#python/cpython#144725')
+     @unittest.skipIf(_testcapi is None, "requires _testcapi")
+     def test_array_alignment(self):
+         # gh-140557: pointer alignment of buffers including empty allocation

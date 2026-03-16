@@ -13,10 +13,10 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
  5 files changed, 37 insertions(+), 9 deletions(-)
  create mode 100644 Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst
 
-Index: Python-3.15.0a3/Doc/library/ensurepip.rst
+Index: Python-3.15.0a7/Doc/library/ensurepip.rst
 ===================================================================
---- Python-3.15.0a3.orig/Doc/library/ensurepip.rst	2025-12-16 13:26:12.000000000 +0100
-+++ Python-3.15.0a3/Doc/library/ensurepip.rst	2026-01-21 18:16:58.317178174 +0100
+--- Python-3.15.0a7.orig/Doc/library/ensurepip.rst	2026-03-10 13:31:15.000000000 +0100
++++ Python-3.15.0a7/Doc/library/ensurepip.rst	2026-03-10 21:56:04.065215023 +0100
 @@ -65,7 +65,11 @@
  By default, ``pip`` is installed into the current virtual environment
  (if one is active) or into the system site packages (if there is no
@@ -57,10 +57,10 @@ Index: Python-3.15.0a3/Doc/library/ensurepip.rst
     .. audit-event:: ensurepip.bootstrap root ensurepip.bootstrap
  
     .. note::
-Index: Python-3.15.0a3/Lib/ensurepip/__init__.py
+Index: Python-3.15.0a7/Lib/ensurepip/__init__.py
 ===================================================================
---- Python-3.15.0a3.orig/Lib/ensurepip/__init__.py	2026-01-21 18:16:36.646076159 +0100
-+++ Python-3.15.0a3/Lib/ensurepip/__init__.py	2026-01-21 18:16:58.317562933 +0100
+--- Python-3.15.0a7.orig/Lib/ensurepip/__init__.py	2026-03-10 21:55:34.138824888 +0100
++++ Python-3.15.0a7/Lib/ensurepip/__init__.py	2026-03-10 21:56:04.065631508 +0100
 @@ -106,27 +106,27 @@
      os.environ['PIP_CONFIG_FILE'] = os.devnull
  
@@ -103,7 +103,7 @@ Index: Python-3.15.0a3/Lib/ensurepip/__init__.py
          if upgrade:
              args += ["--upgrade"]
          if user:
-@@ -247,6 +249,11 @@
+@@ -249,6 +251,11 @@
          help="Install everything relative to this alternate root directory.",
      )
      parser.add_argument(
@@ -115,7 +115,7 @@ Index: Python-3.15.0a3/Lib/ensurepip/__init__.py
          "--altinstall",
          action="store_true",
          default=False,
-@@ -265,6 +272,7 @@
+@@ -267,6 +274,7 @@
  
      return _bootstrap(
          root=args.root,
@@ -123,11 +123,11 @@ Index: Python-3.15.0a3/Lib/ensurepip/__init__.py
          upgrade=args.upgrade,
          user=args.user,
          verbosity=args.verbosity,
-Index: Python-3.15.0a3/Lib/test/test_ensurepip.py
+Index: Python-3.15.0a7/Lib/test/test_ensurepip.py
 ===================================================================
---- Python-3.15.0a3.orig/Lib/test/test_ensurepip.py	2026-01-21 18:16:38.055385060 +0100
-+++ Python-3.15.0a3/Lib/test/test_ensurepip.py	2026-01-21 18:16:58.317858155 +0100
-@@ -105,6 +105,17 @@
+--- Python-3.15.0a7.orig/Lib/test/test_ensurepip.py	2026-03-10 21:55:35.709593640 +0100
++++ Python-3.15.0a7/Lib/test/test_ensurepip.py	2026-03-10 21:56:04.065975767 +0100
+@@ -111,6 +111,17 @@
              unittest.mock.ANY,
          )
  
@@ -145,11 +145,11 @@ Index: Python-3.15.0a3/Lib/test/test_ensurepip.py
      def test_bootstrapping_with_user(self):
          ensurepip.bootstrap(user=True)
  
-Index: Python-3.15.0a3/Makefile.pre.in
+Index: Python-3.15.0a7/Makefile.pre.in
 ===================================================================
---- Python-3.15.0a3.orig/Makefile.pre.in	2026-01-21 18:16:49.104742043 +0100
-+++ Python-3.15.0a3/Makefile.pre.in	2026-01-21 18:16:58.318353823 +0100
-@@ -2391,7 +2391,7 @@
+--- Python-3.15.0a7.orig/Makefile.pre.in	2026-03-10 21:55:56.002096854 +0100
++++ Python-3.15.0a7/Makefile.pre.in	2026-03-10 21:56:04.066350363 +0100
+@@ -2418,7 +2418,7 @@
  			install|*) ensurepip="" ;; \
  		esac; \
  		$(RUNSHARED) $(PYTHON_FOR_BUILD) -m ensurepip \
@@ -158,7 +158,7 @@ Index: Python-3.15.0a3/Makefile.pre.in
  	fi
  
  .PHONY: altinstall
-@@ -2402,7 +2402,7 @@
+@@ -2429,7 +2429,7 @@
  			install|*) ensurepip="--altinstall" ;; \
  		esac; \
  		$(RUNSHARED) $(PYTHON_FOR_BUILD) -m ensurepip \
@@ -167,9 +167,9 @@ Index: Python-3.15.0a3/Makefile.pre.in
  	fi
  
  .PHONY: commoninstall
-Index: Python-3.15.0a3/Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst
+Index: Python-3.15.0a7/Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ Python-3.15.0a3/Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst	2026-01-21 18:16:58.318910394 +0100
++++ Python-3.15.0a7/Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst	2026-03-10 21:56:04.067139341 +0100
 @@ -0,0 +1 @@
 +A directory prefix can now be specified when using :mod:`ensurepip`.

@@ -133,4 +133,41 @@ covered).</comment>
   basically the same as the previous patch for poplib library.</comment>
     <requestid>1331423</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ca4418ef89bcfaf26cefe606006c1c05</srcmd5>
+    <version>3.15.0~a7</version>
+    <time>1773667008</time>
+    <user>anag_factory</user>
+    <comment>- Add gh-145802-atomic-profile-update-for-PGO.patch
+  (gh#python/cpython#145803) to use gcc -fprofile-update=atomic
+  for PGO builds.
+
+- Update to 3.15.0a7:
+  - Tests
+    - gh-144741: Fix test_frame_pointer_unwind when Python is
+      built with --enable-shared. Classify also libpython frames
+      as &quot;python&quot;. Patch by Victor Stinner.
+    - gh-144739: When Python was compiled with system expat older
+      then 2.7.2 but tests run with newer expat, still skip
+      test.test_pyexpat.MemoryProtectionTest.
+  - Security
+    - gh-145506: Fixes CVE 2026-2297 by ensuring that
+      SourcelessFileLoader uses io.open_code() when opening .pyc
+      files.
+    - gh-144370: Disallow usage of control characters in status
+      in wsgiref.handlers to prevent HTTP header injections.
+      Patch by Benedikt Johannes.
+  - Library
+    - gh-145623: Fix crash in struct when calling repr() or
+      __sizeof__() on an uninitialized struct.Struct object
+      created via Struct.__new__() without calling __init__().
+    - gh-145551: Fix InvalidStateError when cancelling process
+      created by asyncio.create_subprocess_exec() or
+      asyncio.create_subprocess_shell(). Patch by Daan De Meyer.
+    - gh-141510: marshal now supports frozendict objects. The
+      marshal format version was increased to 6. Patch by Victor
+      Stinner.
+    - gh-145417: venv: Prevent incorrect preservation of SELinux</comment>
+    <requestid>1339137</requestid>
+  </revision>
 </revisionlist>

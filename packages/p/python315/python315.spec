@@ -162,8 +162,8 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.15.0~a3
-%define         tarversion 3.15.0a3
+Version:        3.15.0~a7
+%define         tarversion 3.15.0a7
 %define         tarname    Python-%{tarversion}
 Release:        0
 Summary:        Python 3 Interpreter
@@ -225,34 +225,15 @@ Patch40:        fix-test-recursion-limit-15.6.patch
 Patch41:        bsc1243155-sphinx-non-determinism.patch
 # PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
 Patch42:        gh139257-Support-docutils-0.22.patch
-# PATCH-FIX-UPSTREAM longer-time-test_thread_time.patch gh#python/cpython!143558 mcepl@suse.com
-# tolerate 100 ms instead of 20 ms to support slow CIs.
-Patch43:        longer-time-test_thread_time.patch
-# PATCH-FIX-UPSTREAM CVE-2024-6923-follow-up-EOL-email-headers.patch bsc#1257181 mcepl@suse.com
-# Encode newlines in headers when using ByteGenerator
-# patch from gh#python/cpython#144125
-Patch44:        CVE-2024-6923-follow-up-EOL-email-headers.patch
-# PATCH-FIX-UPSTREAM CVE-2025-11468-email-hdr-fold-comment.patch bsc#1257029 mcepl@suse.com
-# Email preserve parens when folding comments
-Patch45:        CVE-2025-11468-email-hdr-fold-comment.patch
-# PATCH-FIX-UPSTREAM CVE-2026-0672-http-hdr-inject-cookie-Morsel.patch bsc#1257031 mcepl@suse.com
-# Reject control characters in http cookies
-Patch46:        CVE-2026-0672-http-hdr-inject-cookie-Morsel.patch
-# PATCH-FIX-UPSTREAM CVE-2025-12781-b64decode-alt-chars.patch bsc#1257108 mcepl@suse.com
-# Fix decoding with non-standard Base64 alphabet gh#python/cpython#125346
-Patch47:        CVE-2025-12781-b64decode-alt-chars.patch
-# PATCH-FIX-UPSTREAM CVE-2026-0865-wsgiref-ctrl-chars.patch bsc#1257042 mcepl@suse.com
-# Reject control characters in wsgiref.headers.Headers
-Patch48:        CVE-2026-0865-wsgiref-ctrl-chars.patch
-# PATCH-FIX-UPSTREAM CVE-2025-15366-imap-ctrl-chars.patch bsc#1257044 mcepl@suse.com
-# Reject control characters in wsgiref.headers.Headers
-Patch49:        CVE-2025-15366-imap-ctrl-chars.patch
-# PATCH-FIX-UPSTREAM CVE-2025-15282-urllib-ctrl-chars.patch bsc#1257046 mcepl@suse.com
-# Reject control characters in wsgiref.headers.Headers
-Patch50:        CVE-2025-15282-urllib-ctrl-chars.patch
-# PATCH-FIX-UPSTREAM CVE-2025-15367-poplib-ctrl-chars.patch bsc#1257041 mcepl@suse.com
-# Reject control characters in poplib
-Patch51:        CVE-2025-15367-poplib-ctrl-chars.patch
+# PATCH-FIX-UPSTREAM skip-test_array_alignment.patch gh#python/cpython#144725 mcepl@suse.com
+# skip failing test
+Patch43:        skip-test_array_alignment.patch
+# PATCH-FIX-UPSTREAM test_ci_fuzz_stdlib-failure.patch gh#python/cpython#145762 mcepl@suse.com
+# skip over more files, which shouldn't be included in the test
+Patch44:        test_ci_fuzz_stdlib-failure.patch
+# PATCH-FIX-UPSTREAM gh-145802-atomic-profile-update-for-PGO.patch gh#python/cpython#145803 mcepl@suse.com
+# Use gcc -fprofile-update=atomic for PGO builds
+Patch45:        gh-145802-atomic-profile-update-for-PGO.patch
 #### Python 3.15 DEVELOPMENT PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

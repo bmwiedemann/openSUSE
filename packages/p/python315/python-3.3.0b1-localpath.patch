@@ -2,9 +2,11 @@
  Lib/site.py |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
---- a/Lib/site.py
-+++ b/Lib/site.py
-@@ -78,7 +78,7 @@ import stat
+Index: Python-3.15.0a7/Lib/site.py
+===================================================================
+--- Python-3.15.0a7.orig/Lib/site.py	2026-03-10 21:55:34.774030935 +0100
++++ Python-3.15.0a7/Lib/site.py	2026-03-10 21:55:45.838165991 +0100
+@@ -80,7 +80,7 @@
  import errno
  
  # Prefixes for site-packages; add additional prefixes like /usr/local here

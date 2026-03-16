@@ -16,11 +16,11 @@ The rule is made conditional on UNVERSIONED_COMPILER being defined.
  Makefile.pre.in |    7 +++++++
  1 file changed, 7 insertions(+)
 
-Index: Python-3.15.0a3/Makefile.pre.in
+Index: Python-3.15.0a7/Makefile.pre.in
 ===================================================================
---- Python-3.15.0a3.orig/Makefile.pre.in	2025-12-16 13:26:12.000000000 +0100
-+++ Python-3.15.0a3/Makefile.pre.in	2026-01-21 18:16:49.104742043 +0100
-@@ -1926,6 +1926,13 @@
+--- Python-3.15.0a7.orig/Makefile.pre.in	2026-03-10 13:31:15.000000000 +0100
++++ Python-3.15.0a7/Makefile.pre.in	2026-03-10 21:55:56.002096854 +0100
+@@ -1932,6 +1932,13 @@
  	      -DGITBRANCH="\"`LC_ALL=C $(GITBRANCH)`\"" \
  	      -o $@ $(srcdir)/Modules/getbuildinfo.c
  
