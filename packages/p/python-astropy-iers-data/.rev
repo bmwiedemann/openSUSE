@@ -157,4 +157,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1329798</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>bb86c9231108cd17d0c7219480c07470</srcmd5>
+    <version>0.2026.3.9.0.47.45</version>
+    <time>1773666996</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.2026.3.9.0.47.45:
+  * **Full Changelog**: https://github.com/astropy/astropy-iers-
+    data/compare/v0.2026.1.19.0.42.31...v0.2026.3.9.0.47.45</comment>
+    <requestid>1339106</requestid>
+  </revision>
 </revisionlist>
