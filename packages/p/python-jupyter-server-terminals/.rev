@@ -68,4 +68,18 @@
   * Maintenance and upkeep improvements</comment>
     <requestid>1163574</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>54a7830ceea98673018db462cbbfc3b4</srcmd5>
+    <version>0.5.4</version>
+    <time>1773667017</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.5.4:
+  * allow async authorization #109 (@Zsailer)
+  * Add links to source/issues/docs/funding #110 (@krassowski,
+    @Zsailer)
+  * The following people contributed discussions, new ideas, code
+    and documentation contributions, and review.
+  * See our definition of contributors.</comment>
+    <requestid>1339144</requestid>
+  </revision>
 </revisionlist>

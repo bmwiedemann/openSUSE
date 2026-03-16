@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-server-terminals
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,9 +26,9 @@
 %bcond_with test
 %endif
 
-%define distversion 0.5.3
+%define distversion 0.5.4
 Name:           python-jupyter-server-terminals%{psuffix}
-Version:        0.5.3
+Version:        0.5.4
 Release:        0
 Summary:        A Jupyter Server Extension Providing Terminals
 License:        BSD-3-Clause

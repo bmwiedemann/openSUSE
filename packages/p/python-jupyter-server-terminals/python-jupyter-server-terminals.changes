@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 15 19:10:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.4:
+  * allow async authorization #109 (@Zsailer)
+  * Add links to source/issues/docs/funding #110 (@krassowski,
+    @Zsailer)
+  * The following people contributed discussions, new ideas, code
+    and documentation contributions, and review.
+  * See our definition of contributors.
+
+-------------------------------------------------------------------
 Fri Mar 29 18:28:40 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.5.3
