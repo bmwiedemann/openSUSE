@@ -43,4 +43,15 @@
   * Fix error message.</comment>
     <requestid>1131185</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d7168c212cede119a59f9910543c8f63</srcmd5>
+    <version>2.3.0</version>
+    <time>1773667010</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.3.0:
+  * Add support for Python 3.13 and drop Python 3.8. [gforcada]
+  * Drop python 3.9 support and add Python 3.14 support.
+  * Bump pypy minimum version to 3.10.</comment>
+    <requestid>1339145</requestid>
+  </revision>
 </revisionlist>
