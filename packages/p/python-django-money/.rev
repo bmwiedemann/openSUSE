@@ -144,4 +144,20 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1282152</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f6506f9c9e2bd03d2376eb1b0f0f5b21</srcmd5>
+    <version>3.6.0</version>
+    <time>1773666995</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.6.0:
+  * Support for callable default and currency_default, and
+    currency_choices
+  * Add backend kwarg to convert_money function
+  * Add getting a limit value from a callable
+  * The auto-generated hidden input field that tracks initial
+    data in formsets with MoneyField should now work
+  * Migrate to pyproject.toml and uv #791
+  * Python 3.8 and 3.9 support was dropped to give way for typehint</comment>
+    <requestid>1339101</requestid>
+  </revision>
 </revisionlist>

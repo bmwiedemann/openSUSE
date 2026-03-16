@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 15 14:44:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.0:
+  * Support for callable default and currency_default, and
+    currency_choices
+  * Add backend kwarg to convert_money function
+  * Add getting a limit value from a callable
+  * The auto-generated hidden input field that tracks initial
+    data in formsets with MoneyField should now work
+  * Migrate to pyproject.toml and uv #791
+  * Python 3.8 and 3.9 support was dropped to give way for typehint
+
+-------------------------------------------------------------------
 Tue Jun  3 07:19:36 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
