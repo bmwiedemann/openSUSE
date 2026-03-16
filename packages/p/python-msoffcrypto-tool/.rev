@@ -94,4 +94,18 @@ v5.1.0 / 2023-07-17
   * (dev) Track poetry.lock (#71)</comment>
     <requestid>1321993</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>77b40cbf95c4b0ce773fd4fd547b5363</srcmd5>
+    <version>6.0.0</version>
+    <time>1773667025</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.0.0:
+  * (BREAKING) Drop support for Python 3.8 and 3.9, add Python
+    3.14 to CI
+  * Update dependencies
+  * Clarify error messages
+
+  * Make _packUserEditAtom spec-compliant</comment>
+    <requestid>1339166</requestid>
+  </revision>
 </revisionlist>

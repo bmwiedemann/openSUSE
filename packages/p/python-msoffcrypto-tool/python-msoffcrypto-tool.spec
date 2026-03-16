@@ -1,7 +1,7 @@
 #
 # spec file for package python-msoffcrypto-tool
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-msoffcrypto-tool
-Version:        5.4.2
+Version:        6.0.0
 Release:        0
 Summary:        Library for decrypting MS Office files
 License:        MIT
 URL:            https://github.com/nolze/msoffcrypto-tool
 Source:         https://github.com/nolze/msoffcrypto-tool/archive/v%{version}.tar.gz#/msoffcrypto_tool-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module wheel}

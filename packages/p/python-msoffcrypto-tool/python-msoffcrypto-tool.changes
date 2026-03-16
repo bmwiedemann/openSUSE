@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 15 20:45:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.0:
+  * (BREAKING) Drop support for Python 3.8 and 3.9, add Python
+    3.14 to CI
+  * Update dependencies
+  * Clarify error messages
+
+-------------------------------------------------------------------
 Wed Dec 10 14:42:35 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Use source from github to have tests
@@ -73,7 +82,7 @@ Mon May 25 06:50:54 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 Wed Apr 15 13:57:30 UTC 2020 - pgajdos@suse.com
 
 - version update to 4.10.2
-  * Make _packUserEditAtom spec-compliant 
+  * Make _packUserEditAtom spec-compliant
 
 -------------------------------------------------------------------
 Wed Sep 11 11:10:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
