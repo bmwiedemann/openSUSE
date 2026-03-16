@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 16 06:17:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.17.1:
+  * Fix
+    - fix: Remove instance error statements (37e7d3a)
+- update to 1.17.0:
+  * Feature
+    - feat: Group support for artifacts checks (#125) (f1a5ed0)
+- update to 1.16.0:
+  * Feature
+    - feat: Support GitLab inputs (#133 (closed)) (0c4b790)
+
+-------------------------------------------------------------------
 Tue Jan 27 06:26:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.15.22:
