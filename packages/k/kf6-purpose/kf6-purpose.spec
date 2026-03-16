@@ -22,11 +22,11 @@
 %define qt6_version 6.8.0
 
 %define rname purpose
-# Full KF6 version (e.g. 6.23.0)
+# Full KF6 version (e.g. 6.24.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-purpose
-Version:        6.23.0
+Version:        6.24.0
 Release:        0
 Summary:        Framework to integrate services and actions in applications
 License:        LGPL-2.1-or-later
@@ -53,6 +53,10 @@ BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  qt6qmlimport(SSO.OnlineAccounts)
+BuildRequires:  qt6qmlimport(org.kde.prison)
+BuildRequires:  qt6qmlimport(org.kde.kitemmodels)
+BuildRequires:  qt6qmlimport(org.kde.kcmutils)
 Requires:       accounts-qml-module
 Requires:       kf6-kdeclarative-imports >= %{_kf6_version}
 Requires:       kf6-kirigami-imports >= %{_kf6_version}
