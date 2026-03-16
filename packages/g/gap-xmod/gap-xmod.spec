@@ -1,7 +1,7 @@
 #
 # spec file for package gap-xmod
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-xmod
-Version:        2.97
+Version:        2.98
 Release:        0
 Summary:        GAP: Crossed Modules and Cat1-Groups
 License:        GPL-2.0-or-later
