@@ -382,4 +382,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1271344 from glaubitz)</comment>
     <requestid>1271846</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>26132de2b595240888d577feb234e6d0</srcmd5>
+    <version>9.3.0</version>
+    <time>1773672562</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 9.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1339327 from glaubitz)</comment>
+    <requestid>1339363</requestid>
+  </revision>
 </revisionlist>
