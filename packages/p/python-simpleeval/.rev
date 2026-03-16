@@ -100,4 +100,12 @@
     SimpleEval to bypass it.</comment>
     <requestid>1338808</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>101abf4b47ecad9eec29490eeffcd8c8</srcmd5>
+    <version>1.0.5</version>
+    <time>1773667081</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.5 (CVE-2026-32640, bsc#1259685):</comment>
+    <requestid>1339290</requestid>
+  </revision>
 </revisionlist>

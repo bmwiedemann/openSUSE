@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri Mar 13 20:34:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- update to 1.0.5 (CVE-2026-32640):
+- update to 1.0.5 (CVE-2026-32640, bsc#1259685):
   * Fixes Security issues with "dangerous" modules & functions
     leaking through as attributes of other names, see:
   * Breaking Change:
