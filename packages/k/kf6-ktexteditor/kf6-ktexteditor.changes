@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:07:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.24.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.24.0
+- Changes since 6.23.0:
+  * Update dependency version to 6.24.0
+  * do full update on resize
+  * search: add a way to clear the history (kde#503327)
+  * Enable Werror on CI
+  * kateviewinternal: debounce resize events
+  * Reduce QLatin1Char noise
+  * Fix clipboard warning, check if QClipboard::Selection is supported
+  * ensure we write a BOM if wanted for empty files, too
+  * Avoid temporary allocations when saving the file
+  * properly pass parent pointer for document
+  * Update version to 6.24.0
+
+-------------------------------------------------------------------
 Fri Feb  6 14:25:59 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.23.0
