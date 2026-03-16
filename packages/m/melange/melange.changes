@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 16 06:08:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.45.4:
+  * test: strip sed integration test down to just git-checkout
+    (#2420)
+  * qemu: log VM resources (arch, cpus, memory) before boot (#2417)
+  * qemu: always attach serial console for boot diagnostics (#2416)
+  * chore(config): Support var substitutions for update monitors
+    (#2413)
+
+-------------------------------------------------------------------
 Wed Mar 11 06:00:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.45.3:
