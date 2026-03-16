@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Mar 15 11:13:33 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.0
+  Added
+  * uacme: Add support for dns-persist-01 challenge.
+  * uacme: Add support for certificate profiles.
+  * uacme: Add method to check certificate existence and validity.
+  * uacme: Add support for certificate key rotation.
+  * uacme: Add support for HMAC-SHA-{384,512} in EAB Signatures.
+  Changed
+  * uacme: Use Retry-After header when server sends it.
+  * uacme: Parse RFC3339 timestamps directly.
+  * uacme: Omit Common Name in certificate for IP identifiers.
+  * uacme: Support settings from environment in nsupdate.sh.
+  * ualpn: Check that authorization isn't missing.
+  * ualpn: Bump embedded libev to version 4.33.
+
+-------------------------------------------------------------------
 Mon Dec 30 10:21:59 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.6
