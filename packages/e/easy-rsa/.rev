@@ -222,4 +222,12 @@
   * Fold easyrsa-tools.lib into easyrsa (forwarded request 1242120 from rrahl0)</comment>
     <requestid>1242121</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0226eb6225522be70f4b4e18ee674e9e</srcmd5>
+    <version>3.2.6</version>
+    <time>1773670096</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1339316</requestid>
+  </revision>
 </revisionlist>

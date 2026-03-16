@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Sun Mar 15 14:49:24 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.2.6:
+  - CI: Enable shell switch errexit in #1417
+  - V325 326 minor touches in #1421
+  - Inline sub ca v1 in #1423
+  - X509-Type ca: Enable 'basicConstraints = critical' for CA/subCA certificates in #1428
+  - Import tls key v1 in #1429
+  - import_tls_key(): Use set_no_clobber() to preserve existing key file in #1430
+- Changes from 3.2.5:
+  - Replace local / global openssl-easyrsa.cnf in #1394
+  - init-pki: Introduce configurable cryptography in #1397
+  - Drop x509 type kdc built-in in #1399
+  - Always generate an openssl-easyrsa.cnf or x509-types tmp-file in #1401
+  - Libressl use $EASYRSA_FORCE_SAFE_SSL in #1402
+  - Update EasyRSA-Advanced.md in #1403
+  - source_vars(): Add grep regex for assign by equal = in #1405
+  - export_pkcs(), PKCS12 inline: Respect $EASYRSA_NO_INLINE in #1407
+  - Introduce peer-fingerprint inline lists in #1410
+  - help: Add '-b' alias for --batch and correct default 'vars' file in #1411
+  - New function ssl_cert_sig_digest(); Extract certificae digest name in #1414
+  - Upgrading OpenSSL for Windows to 3.6.0 in #1416
+- Changes from 3.2.4:
+  - export-p12: Move inline file to 'inline/private' folder in #1356
+  - Restructure help in #1363
+  - New global option: --no-lockfile = env-var: $EASYRSA_NO_LOCKFILE in #1364
+  - Restructure verify_working_env() in #1367
+  - Improve verbose in #1368
+  - Windows easyrsa-shell-init.sh: Replace 'read -p' in #1371
+  - mutual_exclusions(): Include basic checks for --startdate/--enddate in #1372
+  - easyrsa-shell-init.sh: Allow Easy-RSA to use '\User$HOME' directory in #1374
+  - Remove 'easyrsa_mkdir()', use only 'mkdir' in #1376
+  - revoke: Archive request and private key files and expand help in #1378
+  - set_no_clobber(): Add simple error detection in #1379
+  - random: Use verify_working_env() to configure EASYRSA_OPENSSL in #1381
+  - self_sign(): Force use of Easy-RSA X509-type file 'selfsign' in #1383
+- Changes from 3.2.3:
+  - Update OpenSSL to v3.5.0
+  - renew: Print 'unique_subject = no' to index.txt.attr in #1293
+  - check_serial_unique(): Check for duplicate Subject error in #1294
+  - Correctly define options names - Remove wild-card pattern in #1297
+  - Remove all references to file:easyrsa-tools.lib in #1298
+  - Reinstate old function as 'db_date_to_iso_8601()' [Renamed] in #1303
+  - expire_status_v2(): Refactor 'if' statement to capture error correctly in #1304
+  - source_vars() improvements in #1300
+  - add_critical_attrib(): Do not add 'critical' if 'critical' exists in #1308
+  - inline_file(): Include DH file or placeholder, for RSA Servers in #1310
+  - Fix shellcheck warnings in #1311
+  - Introduce command line options --umask|--no-umask, to set 'umask' in #1312
+  - Introduce "robust" lock-file mechanism in #1313
+  - New function set_no_clobber() in #1314
+  - Easyrsa mktemp v2 in #1315
+  - add_critical_attrib_v2(): Move file access to function in #1316
+  - Command 'write': Remove options 'overwrite' and 'filename' in #1318
+  - Introduce option --text: Create CSR files with human readable text in #1319
+  - will_cert_be_valid(): Remove SSL option -noout in #1321
+  - easyrsa_mktemp(): Remove secondary atomic operation in #1322
+  - easyrsa_mkdir(): Separate Windows from *nix in #1324
+  - Update Copyright 2025 in #1327
+  - inine_file(): Correct logic and add 'dh none' for DH params file in #1330
+  - show-expire: Move setting $pre_expire_window_s to status() in #1332
+  - Always export EASYRSA_SSL_CONF, when assigned (code standard) in #1334
+  - Unit-test: Drop old *nix test in #1335
+  - add_critical_attrib(): export temp-file name as input file in #1333
+  - Inline improvements in #1337
+  - Unit-test: Minimize Windows test in #1339
+  - PKI lock-file: Move possible creation to sub-function request_lock_file() in #1340
+  - forbid_selfsign(): Compare cert serial to signing cert serial in #1342
+  - inline_file(): Use ssl_cert_serial() in #1343
+  - Inline self sign improvements in #1345
+  - peer-fingerprint mode: Make CA mode mutually exclusive to PFP mode in #1347
+  - Remove init pki soft in #1351
+
+-------------------------------------------------------------------
 Sat Feb  1 14:52:28 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 3.2.2:
