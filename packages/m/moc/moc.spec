@@ -1,7 +1,7 @@
 #
 # spec file for package moc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,9 @@ BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(flac) >= 1.1
 BuildRequires:  pkgconfig(jack)
+BuildRequires:  pkgconfig(libavcodec) < 59
+BuildRequires:  pkgconfig(libavformat) < 59
+BuildRequires:  pkgconfig(libavutil) < 57
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libmodplug) >= 0.7
 BuildRequires:  pkgconfig(librcc)
@@ -53,9 +56,6 @@ BuildRequires:  pkgconfig(taglib_c)
 BuildRequires:  pkgconfig(vorbis) >= 1.0
 BuildRequires:  pkgconfig(vorbisfile) >= 1.0
 BuildRequires:  pkgconfig(wavpack) >= 4.31
-BuildRequires:  pkgconfig(libavcodec) < 59
-BuildRequires:  pkgconfig(libavformat) < 59
-BuildRequires:  pkgconfig(libavutil) < 57
 
 %description
 MOC (music on console) is a console audio player for LINUX/UNIX designed to be
@@ -94,7 +94,7 @@ Other features:
 %autosetup -p1 -n trunk-%{version}
 
 %build
-autoreconf -fi
+autoreconf -i -I /usr/share/gettext/m4
 %configure --help
 %configure \
 	--with-gnu-ld \

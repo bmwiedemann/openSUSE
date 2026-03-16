@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 16 07:20:52 UTC 2026 - Dave Plater <davejplater@gmail.com>
+
+- Fix build with new autoconf
+
+-------------------------------------------------------------------
 Fri Oct 20 19:29:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop patches enabling/forward porting source to use of ffmpeg-5:
