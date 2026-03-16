@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Jan 28 06:36:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.1:
+  * chore(release): 1.2.1
+  * fix: remove builting kustomize
+
+-------------------------------------------------------------------
+Tue Jan 13 13:42:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.0:
+  * Features
+    - update to latest (e2ba542)
+
+-------------------------------------------------------------------
+Tue Jan 13 13:30:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.1:
+  * Bug Fixes
+    - remove diff.sh code (402596e)
+- Update to version 1.1.0:
+  * Features
+    - remove kubectl dep (#18) (1ced255)
+
+-------------------------------------------------------------------
+Tue Jan 13 13:10:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.5:
+  * Bug Fixes
+    - dummy commit to trigger release (d512846)
+- Update to version 1.0.4:
+  * Bug Fixes
+    - use correct readme path (aaf0c90)
+- Update to version 1.0.3:
+  * Bug Fixes
+    - consider rust lockfile (7e0c028)
+- Update to version 1.0.2:
+  * Bug Fixes
+    - make assets upload to release (022c16f)
+- Update to version 1.0.1:
+  * Bug Fixes
+    - publish to crates.io (7821106)
+- Update to version 1.0.0:
+  * Bug Fixes
+    - add releaserc (5aa761c)
+    - excluding .data removed changes in configmap (fdaeed2)
+    - remove READER header (94804f0)
+    - removed npm_token (cd430e7)
+    - update version (e01beb8)
+  * Features
+    - embed kustomize (#17) (16b5d58)
+    - use as a library (#16) (0df86b8)
+
+-------------------------------------------------------------------
 Fri Dec 27 13:26:34 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package kubediff: cli tool written in Rust is a wrapper

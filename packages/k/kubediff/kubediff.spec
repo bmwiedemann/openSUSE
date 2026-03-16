@@ -1,7 +1,7 @@
 #
 # spec file for package kubediff
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           kubediff
-Version:        0.1.7
+Version:        1.2.1
 Release:        0
-Summary:	Cli tool written in Rust that is a wrapper around kubectl diff
+Summary:        Cli tool written in Rust that is a wrapper around kubectl diff
 License:        MIT
 URL:            https://github.com/Ramilito/kubediff
 Source0:        %{name}-%{version}.tar.gz
@@ -51,7 +51,6 @@ install -m 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildro
 %{cargo_test}
 
 %files
-%doc .github/README.md
 %license LICENSE
 %{_bindir}/kubediff
 
