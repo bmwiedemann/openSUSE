@@ -933,4 +933,14 @@
   * sync with the main certbot package</comment>
     <requestid>1334773</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>530fcc746f859e823bc443c67b58e862</srcmd5>
+    <version>5.4.0</version>
+    <time>1773672550</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.4.0
+  * sync with the main certbot package
+</comment>
+    <requestid>1339342</requestid>
+  </revision>
 </revisionlist>
