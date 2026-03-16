@@ -175,4 +175,22 @@
   * Remove support for python 3.10</comment>
     <requestid>1318955</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3a038e904ebc7c55c8fa63c90e621de8</srcmd5>
+    <version>0.14.7</version>
+    <time>1773667003</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.14.7:
+  * Refactor image dimension validation
+  * Refactor codestream parsing
+  * Fix numpy 2.5 deprecation issue
+
+  * Fix ResolutionBox with tiff2jp2
+  * Fix ResolutionBox with tiff2jp2
+  * Add option for excluding tags from Exif UUID box.
+    Update glymur.config documentation
+- Always require importlib_resources for tests: the new python36
+  flavor on TW needs it, the python38 flavor is okay with it being</comment>
+    <requestid>1339136</requestid>
+  </revision>
 </revisionlist>

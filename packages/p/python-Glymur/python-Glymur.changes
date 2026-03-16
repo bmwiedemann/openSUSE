@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 15 18:51:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.7:
+  * Refactor image dimension validation
+  * Refactor codestream parsing
+  * Fix numpy 2.5 deprecation issue
+
+-------------------------------------------------------------------
 Fri Nov 21 06:15:11 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.14.4:
@@ -93,7 +101,7 @@ Fri Jan 12 04:57:57 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
   * Error out early when writing 1x1 tile-by-tile
   * Do not install test, test.data packages
   * Fix reads where COD segment not at index[2]
-  * Fix ResolutionBox with tiff2jp2 
+  * Fix ResolutionBox with tiff2jp2
 - Drop patch glymur-pr553-no-setuptools.patch, included upstream.
 
 -------------------------------------------------------------------
@@ -112,7 +120,7 @@ Thu Sep 22 19:12:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   * Fix reads where COD segment not at index[2]
 
 - Update to v0.11.4
-  * Fix ResolutionBox with tiff2jp2 
+  * Fix ResolutionBox with tiff2jp2
 
 - Update to v0.11.3
   * Fix placement of Resolutionbox
@@ -127,7 +135,7 @@ Thu Sep 22 19:12:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   * Add options for supporting ResolutionBoxes.
   * Fix ctypes interface to C library on windows.
   * Add option to convert XMLPacket into UUID box.
-  * Add option for excluding tags from Exif UUID box.  
+  * Add option for excluding tags from Exif UUID box.
 
 -------------------------------------------------------------------
 Tue Aug 16 16:32:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
@@ -136,7 +144,7 @@ Tue Aug 16 16:32:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
     Fix appveyor builds
     Fix tiff2jp2 when ExifTag is present
     Address warnings in TIFF interface
-    Update glymur.config documentation 
+    Update glymur.config documentation
 
 -------------------------------------------------------------------
 Thu Jul  7 19:14:14 UTC 2022 - Ben Greiner <code@bnavigator.de>
@@ -177,8 +185,8 @@ Sat Jan 23 12:18:53 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
   * Qualify on Python 3.9
   * Qualify on OpenJPEG 2.4.0
   * Add support for multithreaded writes.
-- Always require importlib_resources for tests: the new python36 
-  flavor on TW needs it, the python38 flavor is okay with it being 
+- Always require importlib_resources for tests: the new python36
+  flavor on TW needs it, the python38 flavor is okay with it being
   installed.
 
 -------------------------------------------------------------------
