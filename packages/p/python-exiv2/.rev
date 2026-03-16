@@ -168,4 +168,15 @@
     <comment></comment>
     <requestid>1314037</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e9f8291e44d9fc3cda586db227b372e6</srcmd5>
+    <version>0.18.1</version>
+    <time>1773667041</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.18.1:
+  * Binary wheels incorporate libexiv2 v0.28.8
+- Ship the license and README in the binary packages.
+- Do not install a C++ header file.</comment>
+    <requestid>1339202</requestid>
+  </revision>
 </revisionlist>

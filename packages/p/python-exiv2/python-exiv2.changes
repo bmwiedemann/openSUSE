@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 16 04:27:49 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.18.1:
+  * Binary wheels incorporate libexiv2 v0.28.8
+- Ship the license and README in the binary packages.
+- Do not install a C++ header file.
+
+-------------------------------------------------------------------
 Tue Oct 28 08:55:30 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.18.0

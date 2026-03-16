@@ -1,7 +1,7 @@
 #
 # spec file for package python-exiv2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-exiv2
-Version:        0.18.0
+Version:        0.18.1
 Release:        0
 Summary:        Python3 bindings for the exiv2 library
 License:        GPL-3.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/jim-easterbrook/python-exiv2
 Source:         https://github.com/jim-easterbrook/python-exiv2/archive/refs/tags/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM skip_network_tests.patch bsc#[0-9]+ mcepl@suse.com
-# this patch makes things totally awesome
+# PATCH-FIX-UPSTREAM gh#jim-easterbrook/python-exiv2#63
 Patch0:         skip_network_tests.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
@@ -58,6 +56,7 @@ easy manipulation of image metadata.
 
 %install
 %pyproject_install
+%python_expand rm %{buildroot}%{$python_sitearch}/exiv2/metadatum_pointer.hpp
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -65,7 +64,9 @@ export NONET=1
 %pyunittest_arch discover -v tests/
 
 %files %{python_files}
+%license LICENSE
+%doc README.rst
 %{python_sitearch}/exiv2
-%{python_sitearch}/exiv2-%{version}*-info
+%{python_sitearch}/exiv2-%{version}.dist-info
 
 %changelog
