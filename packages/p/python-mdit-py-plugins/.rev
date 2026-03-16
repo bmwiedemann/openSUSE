@@ -83,4 +83,14 @@
   * Add `allowed` option for inline/block attributes</comment>
     <requestid>1223981</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>de178fb27ecbb70b0d678528a88940fe</srcmd5>
+    <version>0.5.0</version>
+    <time>1773667040</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.5.0:
+  * Drop Python 3.9, which is EoL next month
+  * NEW: Add plugin &amp; tests to render subscripts</comment>
+    <requestid>1339200</requestid>
+  </revision>
 </revisionlist>
