@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 15 21:30:07 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.9.6:
+  * Disable outputs where all modes fail
+  * Fix regression in 0.9.4 that causes NextWindow action to
+    segfault when no outputs are connected. This fixes a
+    window-switcher crash with some Nvidia GPUs/drivers after
+    suspend
+  * Fix typo to allow xdg-dialog-v1 global
+  * Disallow X11 window always-on-top requests by default to fix an
+    issue whereby Alt+Tab cannot be used to switch to other
+    windows when using some XWayland Wine games
+
+-------------------------------------------------------------------
 Wed Mar  4 21:58:12 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.9.5:
