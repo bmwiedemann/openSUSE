@@ -15318,7 +15318,6 @@ unsorted:
   - libosmo-fl2k0 
   - libosmo-gsup-client-devel 
   - libosmo-gsup-client0 
-  - libosmo-hnbap-devel 
   - libosmo-hnbap0 
   - libosmo-mgcp-client-devel 
   - libosmo-mgcp-client9 
@@ -15326,13 +15325,10 @@ unsorted:
   - libosmo-mslookup-devel 
   - libosmo-mslookup0 
   - libosmo-octoi3 
-  - libosmo-ranap-devel 
   - libosmo-ranap7 
   - libosmo-rspro-devel 
   - libosmo-rspro1 
-  - libosmo-rua-devel 
   - libosmo-rua0 
-  - libosmo-sabp-devel 
   - libosmo-sabp1 
   - libosmo-sigtran-devel 
   - libosmo-sigtran12 
@@ -21064,6 +21060,7 @@ unsorted:
   - osmo-ggsn 
   - osmo-gtphub 
   - osmo-hlr 
+  - osmo-iuh-devel 
   - osmo-mgw 
   - osmo-mslookup-client 
   - osmo-pcap 
