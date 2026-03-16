@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:07:32 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.24.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.24.0
+- Changes since 6.23.0:
+  * Update dependency version to 6.24.0
+  * clipboard: Use buffered writes for data transfer
+  * add manual large clipboard tests
+  * ksysteminhibitor: Support Windows through PowerCreateRequest API
+  * Remove unneeded Qt version check
+  * kiconutils: remove now unnecessary Qt version check
+  * clipboard: Hold mutex before dispatching any wayland events (kde#515465)
+  * Mark WindowInsetsController as singleton in the documentation
+  * CMake: Find Qt6::GuiPrivate when USE_DBUS is enabled
+  * KKeySequenceRecorder: Accept some more keys that can be used with Shift
+  * Update version to 6.24.0
+
+-------------------------------------------------------------------
 Mon Mar  2 21:24:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.23.1:
