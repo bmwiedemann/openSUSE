@@ -1,7 +1,7 @@
 #
 # spec file for package python-gnureadline
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         _modname gnureadline
 Name:           python-gnureadline
-Version:        8.2.13
+Version:        8.3.3
 Release:        0
 Summary:        The standard Python readline extension statically linked against the GNU readline library
 License:        GPL-3.0-or-later
@@ -27,12 +27,12 @@ URL:            http://github.com/ludwigschwardt/python-gnureadline
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(ncurses)
-BuildRequires:  %{python_module pytest}
 %python_subpackages
 
 %description

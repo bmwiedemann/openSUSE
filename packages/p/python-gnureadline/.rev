@@ -7,4 +7,16 @@
     <comment>dependency for actually testing pmbootstrap</comment>
     <requestid>1284021</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>820203c45742d8ce120783ab2552b7e2</srcmd5>
+    <version>8.3.3</version>
+    <time>1773667023</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.3.3:
+  * #80, #81: Supports Python 3.14 and early 3.15 (also free-
+    threaded versions)
+  * Uses Python 3.15.0a3 readline.c (commit 4238a97, 2025-12-05)
+  * Updated to build against readline 8.3 (patch-level 3)</comment>
+    <requestid>1339163</requestid>
+  </revision>
 </revisionlist>
