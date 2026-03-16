@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 16 09:33:10 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.42.0:
+  * chore(deps): update dependency dprint to v0.53.0 (#2547)
+  * chore(deps): update rust crate tree-sitter to v0.26.7 (#2541)
+  * chore(deps): update dependency web-tree-sitter to v0.26.7 (#2540)
+  * feat: support nth-child esquery
+  * feat: support :is selector
+  * feat: support :not selector
+  * feat: support :has rule
+  * fix: remove docs
+  * refactor: simplify bound rule lookup
+
+-------------------------------------------------------------------
 Wed Mar 11 05:35:36 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.41.1:

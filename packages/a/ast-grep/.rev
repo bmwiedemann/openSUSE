@@ -1089,4 +1089,21 @@
   * fix: fix wasm package 0b92e94</comment>
     <requestid>1338194</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>b3bd5bf0741c6760e9c0df4dbfb87db6</srcmd5>
+    <version>0.42.0</version>
+    <time>1773667087</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.42.0:
+  * chore(deps): update dependency dprint to v0.53.0 (#2547)
+  * chore(deps): update rust crate tree-sitter to v0.26.7 (#2541)
+  * chore(deps): update dependency web-tree-sitter to v0.26.7 (#2540)
+  * feat: support nth-child esquery
+  * feat: support :is selector
+  * feat: support :not selector
+  * feat: support :has rule
+  * fix: remove docs
+  * refactor: simplify bound rule lookup</comment>
+    <requestid>1339305</requestid>
+  </revision>
 </revisionlist>
