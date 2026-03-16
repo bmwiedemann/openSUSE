@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 15 19:21:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.1:
+  * glyph.round fixed, thank you @adbac
+  * glyph.round now rounds image offset
+  * Update dependencies to fix issue with tests of
+    booleanOperations
+
+-------------------------------------------------------------------
 Fri Nov 14 12:36:40 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 0.13.3

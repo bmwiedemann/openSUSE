@@ -113,4 +113,16 @@ Requires python-setuptools 78 to build successfully.
     <comment></comment>
     <requestid>1318158</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>746b88eda75e9d8280675bc2abfdf02f</srcmd5>
+    <version>0.14.1</version>
+    <time>1773667012</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.14.1:
+  * glyph.round fixed, thank you @adbac
+  * glyph.round now rounds image offset
+  * Update dependencies to fix issue with tests of
+    booleanOperations</comment>
+    <requestid>1339155</requestid>
+  </revision>
 </revisionlist>
