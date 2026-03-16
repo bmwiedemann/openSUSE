@@ -1,5 +1,6 @@
 <package name="wolfictl" project="openSUSE:Factory">
   <title>A CLI used to work with the Wolfi OSS project</title>
   <description>wolfictl is a command line tool for working with Wolfi</description>
+  <devel project="Virtualization:containers" package="wolfictl"/>
   <url>https://github.com/wolfi-dev/wolfictl/</url>
 </package>

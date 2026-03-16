@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 16 06:07:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.5:
+  * dag: Allow multiple pipeline dirs (#1899)
+
+-------------------------------------------------------------------
 Mon Mar 09 06:52:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.4:
