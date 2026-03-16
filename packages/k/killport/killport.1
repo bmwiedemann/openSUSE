@@ -1,0 +1,43 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH killport 1  "killport 2.0.0" 
+.SH NAME
+killport \- A command\-line tool to easily kill processes and containers running on a specified port.
+.SH SYNOPSIS
+\fBkillport\fR [\fB\-m\fR|\fB\-\-mode\fR] [\fB\-s\fR|\fB\-\-signal\fR] [\fB\-\-dry\-run\fR] [\fB\-\-no\-fail\fR] [\fB\-v\fR|\fB\-\-verbose\fR]... [\fB\-q\fR|\fB\-\-quiet\fR]... [\fB\-h\fR|\fB\-\-help\fR] [\fB\-V\fR|\fB\-\-version\fR] <\fIports\fR> 
+.SH DESCRIPTION
+A command\-line tool to easily kill processes and containers running on a specified port.
+.SH OPTIONS
+.TP
+\fB\-m\fR, \fB\-\-mode\fR [default: auto]
+Mode of operation: auto (default, kill both), process (only processes), container (only containers)
+.br
+
+.br
+[\fIpossible values: \fRauto, process, container]
+.TP
+\fB\-s\fR, \fB\-\-signal\fR \fI<SIG>\fR [default: sigkill]
+SIG is a signal name
+.TP
+\fB\-\-dry\-run\fR
+Perform a dry run without killing any processes or containers
+.TP
+\fB\-\-no\-fail\fR
+Exit successfully even if no matching process or container is found
+.TP
+\fB\-v\fR, \fB\-\-verbose\fR
+Increase logging verbosity
+.TP
+\fB\-q\fR, \fB\-\-quiet\fR
+Decrease logging verbosity
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help
+.TP
+\fB\-V\fR, \fB\-\-version\fR
+Print version
+.TP
+<\fIports\fR>
+The list of port numbers to kill processes or containers on
+.SH VERSION
+v2.0.0

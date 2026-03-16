@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 14 15:02:52 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.0.0:
+  * man page
+  * --no-fail flag to exit successfully even when no process is found
+  * SIGPIPE handling for clean pipe behavior (e.g., killport 8080 | head)
+  * PID deduplication on Linux and macOS (prevents duplicate kill attempts)
+  * Breaking: Exit code 2 when no matching process or container is found 
+    (was 0). Use --no-fail to restore previous behavior
+  * fix Duplicate process entries when a process listens on both IPv4 and IPv6
+  * fix Killing container runtime's port forwarder process 
+    (e.g., OrbStack Helper) instead of the container
+
+-------------------------------------------------------------------
 Mon Jun  3 07:15:40 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 1.1.0:
