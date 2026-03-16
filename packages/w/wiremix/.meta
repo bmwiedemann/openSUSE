@@ -1,0 +1,5 @@
+<package name="wiremix" project="openSUSE:Factory">
+  <title>wiremix</title>
+  <description>wiremix is a simple TUI audio mixer for PipeWire</description>
+  <url>https://github.com/tsowell/wiremix</url>
+</package>
