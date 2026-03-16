@@ -1,7 +1,7 @@
 #
 # spec file for package tiled
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,12 @@
 
 
 Name:           tiled
-Version:        1.11.2
+Version:        1.12.0
 Release:        0
 Summary:        A tilemap editor
 License:        GPL-2.0-or-later
 URL:            https://www.mapeditor.org
 Source:         https://github.com/mapeditor/tiled/archive/refs/tags/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/mapeditor/tiled/pull/4167
-Patch0:         fixed-compile-against-qt-6_8_2.patch
-# PATCH-FIX-UPSTREAM https://github.com/mapeditor/tiled/pull/4182
-# (adapted to also fix qtpropertybrowser)
-Patch1:         fixed-build-with-qbs-2_6.patch
-# PATCH-FIX-UPSTREAM https://github.com/mapeditor/tiled/pull/4283
-Patch2:         do-not-install-tests.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -134,6 +127,7 @@ find -name ".uic" -or -name ".moc" -or -name ".rcc" | xargs rm -rf
 %{_libdir}/tiled/plugins/libtengine.so
 %{_libdir}/tiled/plugins/libtscn.so
 %{_libdir}/tiled/plugins/libyy.so
+%{_libdir}/tiled/plugins/librpd.so
 
 %files -n tmxtools
 %license LICENSE.BSD
