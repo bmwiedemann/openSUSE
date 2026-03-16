@@ -80,4 +80,16 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1276003</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7d2abf378406ecd110a9198d4751bd93</srcmd5>
+    <version>1.0.4</version>
+    <time>1773667075</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.4:
+  * Add knn_kwargs parameter to TSNE
+  * Add n_trees parameter to Annoy
+  * Add python 3.13 to build matrix
+  * fix various typos</comment>
+    <requestid>1339253</requestid>
+  </revision>
 </revisionlist>
