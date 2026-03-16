@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 16 12:12:03 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.4.0 
+  * The webroot plugin now supports IP address issuance.
+- Drop merged patch reset-mock-call-count.patch
+
+-------------------------------------------------------------------
 Tue Feb 24 14:52:26 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.3.1
