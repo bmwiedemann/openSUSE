@@ -149,4 +149,25 @@
 - Actually run the testsuite.</comment>
     <requestid>1325333</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6d9b7d9c1b38001298057d615743c2ac</srcmd5>
+    <version>2.7.8</version>
+    <time>1773667027</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.7.8:
+  * fix(ble): resolve BLE connection hangs on macOS without
+    --debug flag
+  * Fix '--get security' (incorrect AdminMessage.ConfigType
+    value).
+  * Fix: Update repeated field checks to use is_repeated property
+  * Add traffic management module to the python libraries
+  * Fix traceroute timeout for case of 0-hops
+  * feat: Add ESP32 WiFi Unified OTA update support
+  * FR: Add Hop Limits to send functions
+  * protobufs: v2.7.19
+- update to 2.7.7:
+  * Show favorite nodes in --nodes
+  * protobufs: v2.7.18</comment>
+    <requestid>1339171</requestid>
+  </revision>
 </revisionlist>
