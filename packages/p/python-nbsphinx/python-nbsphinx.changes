@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  1 21:57:35 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.8:
+  * Re-enable Sphinx 8.2+
+  * Support text/x-rst MIME type in raw cells
+  * Support for mathjax4_config
+  * Disable Sphinx 8.2+ (for now)
+  * Markdown: allow lists without leading blank line
+
+-------------------------------------------------------------------
 Sun Sep 15 16:30:39 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.9.5
