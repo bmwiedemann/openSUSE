@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 15 19:19:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * Add Python 3.14 support.
+  * Drop Python 3.8 and Python 3.9 support.
+  * Add Pytest 9.0 to tox test run.
+
+-------------------------------------------------------------------
 Tue Jun 17 04:13:59 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

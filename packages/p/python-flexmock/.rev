@@ -125,4 +125,15 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1286224</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4beaa3f9a866fe2051854ba29e7ce912</srcmd5>
+    <version>0.13.0</version>
+    <time>1773667012</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.13.0:
+  * Add Python 3.14 support.
+  * Drop Python 3.8 and Python 3.9 support.
+  * Add Pytest 9.0 to tox test run.</comment>
+    <requestid>1339151</requestid>
+  </revision>
 </revisionlist>
