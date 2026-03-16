@@ -7,4 +7,15 @@
     <comment>New pkg </comment>
     <requestid>1305098</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bcc550958f9bf45170c64c92f3ad7515</srcmd5>
+    <version>0.5.13</version>
+    <time>1773667018</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.5.13:
+  * Bump numpy to 1.23.0 at least
+  * improvements from debian packaging
+  https://github.com/gatagat/lap/compare/v0.5.12...v0.5.13</comment>
+    <requestid>1339149</requestid>
+  </revision>
 </revisionlist>

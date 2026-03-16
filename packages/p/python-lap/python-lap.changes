@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 15 18:57:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.13:
+  * Bump numpy to 1.23.0 at least
+  * improvements from debian packaging
+  https://github.com/gatagat/lap/compare/v0.5.12...v0.5.13
+
+-------------------------------------------------------------------
 Tue Sep 16 06:10:42 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Initial version 0.5.12

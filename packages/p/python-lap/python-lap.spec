@@ -25,7 +25,7 @@
 %endif
 
 Name:           python-lap%{psuffix}
-Version:        0.5.12
+Version:        0.5.13
 Release:        0
 Summary:        Linear Assignment Problem solver (LAPJV/LAPMOD)
 License:        BSD-2-Clause
