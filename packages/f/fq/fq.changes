@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Mar 15 18:23:47 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.17.0:
+  Changes
+  * fromjson now works more like jq and as one would expect for
+    decode value. fromjson used to be implement as normal format
+    decode which returns decode values which in turn when decoding
+    from will decode the backing binary range. This result was
+    expressions like "123" | fromjson | fromjson would return 123
+    instead of failing the second fromjson.
+  * iprint now support strings in addition to numbers.
+  * In REPL mode input_filename used to always return the last
+    filename. Now it returns null which is wrong but less confusing
+    The REPL mode needs quite a bit of refactor to fix this
+    properly.
+  * Update gojq fork. Changes from upstream:
+    + Fix gsub and sub when the replacement emits multiple values.
+    + Improve performance of regexp functions by caching compiled
+      regexps.
+    + Implement splits/2 using match/2 for better jq compatibility
+    + Fix fmax, fmin, modf functions against NaN and infinity.
+    + Fix join/1 to use add/0 implementation and handle null
+      separator.
+    + Fix significand function against subnormal numbers.
+    + Fix confusing operator precedence in funcIsnormal.
+    + Fix arithmetic operations on the minimum integer.
+    + Fix array slice update to validate index types.
+    + Fix del and delpaths on null to emit null.
+    + Fix flatten/1 to emit error when depth is nan.
+    + Fix string repetition boundary check to match jq behavior.
+    + Fix type error messages for split and match functions.
+
+-------------------------------------------------------------------
 Sun Dec  7 12:42:29 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.16.0
