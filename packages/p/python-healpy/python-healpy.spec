@@ -1,7 +1,7 @@
 #
 # spec file for package python-healpy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-healpy%{?psuffix}
-Version:        1.18.1
+Version:        1.19.0
 Release:        0
 Summary:        Python library to handle pixelated data on the sphere based on HEALPix
 License:        GPL-2.0-only
@@ -36,8 +36,8 @@ BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module numpy-devel >= 1.19}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm >= 8}
 BuildRequires:  %{python_module setuptools >= 60}
+BuildRequires:  %{python_module setuptools_scm >= 8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -51,7 +51,7 @@ Requires:       python-numpy >= 1.19
 Recommends:     python-matplotlib
 Recommends:     python-scipy
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %if %{with test}
 # SECTION Additional test requirements
 # Symbol clashes with astropy < 4.0
@@ -116,7 +116,7 @@ export CFLAGS="%{optflags}"
 export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 export MPLCONFIGDIR=${PWD}
 # Skip tests requiring network access
-%pytest_arch -k 'not (test_astropy_download_file or test_rotate_map_polarization or test_pixelweights_local_datapath)' ./test/
+%pytest_arch -k 'not (test_astropy_download_file or test_rotate_map_polarization or test_pixelweights_local_datapath or test_pixwin)' ./test/
 
 %endif
 
