@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:07:27 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.24.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.24.0
+- Changes since 6.23.0:
+  * Update dependency version to 6.24.0
+  * [KEncodingProber] Replace nsCharSetProber raw pointer with unique_ptr
+  * [KEncodingProber] Replace SMModel external with internal linkage
+  * [KEncodingProber] Replace nsCodingStateMachine raw pointer with unique_ptr
+  * [KEncodingProber] Remove unused header files
+  * [KCharsets] Remove no longer used include
+  * [KCharsets] Verify entity table is sorted at build time
+  * [KCharsets] Fix sort order in entity table
+  * [KCharsets] Add benchmark for entity lookup
+  * [KCharSets] Specify the `fromEntity` input format more explicitly
+  * [KCharSets] Fix numeric encoding for `toEntity(...)`
+  * [KCharSetsTest] Move test class declaration to implementation file
+  * [KEncodingProber] Switch state machine tables to plain uint8_t
+  * [KEncodingProber] Remove runtime unpack state machine
+  * [KEncodingProber] Use same class table for UTF16 BE and LE state models
+  * [KEncodingProber] Fix reset() method
+  * [KEncodingProber] Actually check if reset() works
+  * Remember where to re-try RFC 2047 word decoding
+  * [KEncodingProber] Default empty constructors/desctructors
+  * [KEncodingProber] Remove unused unexported member functions
+  * [KEncodingProber] Remove unused member variable
+  * [KEncodingProber] Remove no longer used include
+  * [KEncodingProber] Drop declaration of unused GetDistribution method
+  * Update version to 6.24.0
+
+-------------------------------------------------------------------
 Fri Feb  6 14:25:45 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.23.0
