@@ -144,4 +144,41 @@
     <comment></comment>
     <requestid>1200058</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b74376889d335b17700e81162a59038a</srcmd5>
+    <version>0.14.4</version>
+    <time>1773667024</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.14.4:
+  * Fixed handling of null types so that we can recognise as null
+    whatever pandas sees as null. This resolves (plotnine #1021).
+  * Fixed bug in :func:`~mizani.palettes.hue_pal` where drawing
+    24 or more colors broke the palette and you got colors from a
+    very narrow hue band close to the first color.
+  * Fixed but in :func:`~mizani._colors.to_rgba` used by plotnine
+    to recognise numpy integers and floats as alpha values. And
+    also to recognise None and and an empty string to also mean
+    &quot;none&quot;, which is recognised by Matplotlib.
+  * Changed :class:`~mizani.palettes.hue_pal` to use HCL color
+    space from HSL (or HSLuv) space. The previous functionality
+    is now available with :class:`~mizani.palettes.hls_pal`.
+  * :class:`~mizani.breaks.breaks_date` now only accepts
+    parameter n, the desired number of breaks. To generate breaks
+    by the width, use :class:`~mizani.breaks.breaks_date_width`.
+  * Added tableau color in the &quot;tab:*&quot; colorname space. e.g.
+    &quot;tab:red&quot;.
+  * :class:`~mizani.breaks.breaks_width` to generate numeric
+    breaks by specifying the width (interval between the breaks).
+  * :class:`~mizani.breaks.breaks_timedelta_width` to generate
+    timedelta breaks by specifying the width (interval between
+    the breaks).
+  * Added name &quot;gray&quot; aliases to all XKCD colors partially named
+    &quot;grey&quot;.
+  * New algorithms to calculate datetime breaks by either n the
+    desired number of breaks or width the interval between the
+    breaks. When using the new
+    :class:`~mizani.breaks.breaks_date_width`, you can align the
+    dates by using an offset. (:issue:`58`)</comment>
+    <requestid>1339165</requestid>
+  </revision>
 </revisionlist>

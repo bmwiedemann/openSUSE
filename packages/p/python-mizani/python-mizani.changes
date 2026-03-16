@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sun Mar 15 20:23:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.4:
+  * Fixed handling of null types so that we can recognise as null
+    whatever pandas sees as null. This resolves (plotnine #1021).
+  * Fixed bug in :func:`~mizani.palettes.hue_pal` where drawing
+    24 or more colors broke the palette and you got colors from a
+    very narrow hue band close to the first color.
+  * Fixed but in :func:`~mizani._colors.to_rgba` used by plotnine
+    to recognise numpy integers and floats as alpha values. And
+    also to recognise None and and an empty string to also mean
+    "none", which is recognised by Matplotlib.
+  * Changed :class:`~mizani.palettes.hue_pal` to use HCL color
+    space from HSL (or HSLuv) space. The previous functionality
+    is now available with :class:`~mizani.palettes.hls_pal`.
+  * :class:`~mizani.breaks.breaks_date` now only accepts
+    parameter n, the desired number of breaks. To generate breaks
+    by the width, use :class:`~mizani.breaks.breaks_date_width`.
+  * Added tableau color in the "tab:*" colorname space. e.g.
+    "tab:red".
+  * :class:`~mizani.breaks.breaks_width` to generate numeric
+    breaks by specifying the width (interval between the breaks).
+  * :class:`~mizani.breaks.breaks_timedelta_width` to generate
+    timedelta breaks by specifying the width (interval between
+    the breaks).
+  * Added name "gray" aliases to all XKCD colors partially named
+    "grey".
+  * New algorithms to calculate datetime breaks by either n the
+    desired number of breaks or width the interval between the
+    breaks. When using the new
+    :class:`~mizani.breaks.breaks_date_width`, you can align the
+    dates by using an offset. (:issue:`58`)
+  * Fixed using a discrete palette and requesting less colours
+    than than the smallest swatch in the palette. Among the
+    affected palettes are category10, category20, category20b,
+    category20c.
+  * Added aliases to the vega colormaps for the names used in
+    matplotlib. plotnine issue
+  * Make it possible to train discrete data that is a sequence of
+    tuples. plotnine issue
+  * For python >=3.13 ~mizani.bounds.squish_infinite and
+    ~mizani.bounds.squish do not warning about invalid values
+    when passed arrays with dtype=uint64 and a range with
+    negative values.
+  * Type checking pass with numpy 2.2.
+  * Support for numpy timedelta64 has been removed. It was not
+    well supported in the first place, so removing it should be
+    of consequence.
+  * mizani.transforms.trans_new function has been deprecated.
+  * ~mizani.breaks.breaks_date has been slightly improved for the
+    case when it generates monthly breaks.
+  * :class:`~mizani.transforms.trans` gained new method
+    diff_type_to_num that should be helpful with some arithmetic
+    operations for non-numeric domains.
+
+-------------------------------------------------------------------
 Mon Sep  9 13:07:33 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - update to 0.12.2

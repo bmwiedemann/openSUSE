@@ -1,7 +1,7 @@
 #
 # spec file for package python-mizani
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-mizani
-Version:        0.12.2
+Version:        0.14.4
 Release:        0
 Summary:        Scales for Python
 License:        BSD-3-Clause
