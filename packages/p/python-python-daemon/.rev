@@ -312,4 +312,22 @@
   setuptools: https://pagure.io/python-daemon/issue/73</comment>
     <requestid>1201440</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e90472ab72ce79775dad41f9e2f24070</srcmd5>
+    <version>3.1.2</version>
+    <time>1773667039</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.1.2:
+  * In wheel, distribute only the Python packages that should be installed.
+  * Migrate project code base from “flat layout” to “src layout”.
+  * Remove unused run-time dependency on Setuptools.
+  * Restore inclusion of documentation source in source distribution.
+  * Correct a non-deterministic test case that would sometimes fail.
+  * Increase minimum Python version required, to “&gt;= 3.7”.
+  * Get metadata from Change Log at build time only.
+  * Migrate optional dependencies to PEP 621 declarations.
+  * Remove dynamically-constructed non-standard metadata attributes.
+- Drop patch explicit-packaging.patch, no longer required.</comment>
+    <requestid>1339193</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-daemon
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-daemon
-Version:        3.0.1
+Version:        3.1.2
 Release:        0
 Summary:        Library to implement a well-behaved Unix daemon process
 License:        Apache-2.0 AND GPL-3.0-only
 URL:            https://pagure.io/python-daemon/
-Source:         https://files.pythonhosted.org/packages/source/p/python-daemon/python-daemon-%{version}.tar.gz
-# Available since 3.0.2, that was yanked because of https://pagure.io/python-daemon/issue/94
-# Source:         https://releases.pagure.org/python-daemon/python_daemon-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM explicit-packaging.patch https://pagure.io/python-daemon/c/d7bac6e
-Patch0:         explicit-packaging.patch
+Source:         https://files.pythonhosted.org/packages/source/p/python-daemon/python_daemon-%{version}.tar.gz
+BuildRequires:  %{python_module changelog-chug}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module lockfile >= 0.10}
-BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testscenarios >= 0.4}
@@ -39,8 +35,6 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lockfile >= 0.10
-Requires:       python-packaging
-Requires:       python-setuptools >= 62.4.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,9 +48,7 @@ holds the behaviour and configured process environment for the program; use the
 instance as a context manager to enter a daemon state.
 
 %prep
-%autosetup -p1 -n python-daemon-%{version}
-
-sed -i '/docutils/d' setup.py
+%autosetup -p1 -n python_daemon-%{version}
 
 %build
 %pyproject_wheel
@@ -72,6 +64,6 @@ sed -i '/docutils/d' setup.py
 %license LICENSE.ASF-2 LICENSE.GPL-3
 %doc README ChangeLog doc/*
 %{python_sitelib}/daemon
-%{python_sitelib}/python_daemon-%{version}*-info
+%{python_sitelib}/python_daemon-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 16 01:11:12 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.1.2:
+  * In wheel, distribute only the Python packages that should be installed.
+  * Migrate project code base from “flat layout” to “src layout”.
+  * Remove unused run-time dependency on Setuptools.
+  * Restore inclusion of documentation source in source distribution.
+  * Correct a non-deterministic test case that would sometimes fail.
+  * Increase minimum Python version required, to “>= 3.7”.
+  * Get metadata from Change Log at build time only.
+  * Migrate optional dependencies to PEP 621 declarations.
+  * Remove dynamically-constructed non-standard metadata attributes.
+- Drop patch explicit-packaging.patch, no longer required.
+
+-------------------------------------------------------------------
 Mon Sep 16 14:17:18 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Revert to 3.0.1. Version 3.0.2 was yanked from pypi because it
