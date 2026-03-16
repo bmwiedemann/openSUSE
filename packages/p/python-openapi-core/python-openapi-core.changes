@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar 16 08:30:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.23.0:
+  * Add OpenAPI 3.2 support and move V3 aliases to V32 #1121
+  * Add opt-in strict mode for omitted additionalProperties #1124
+  * Add explicit Falcon WSGI/ASGI middleware with dual-mode
+    compatibility #1122
+  * Add structured details for validation errors #1129
+  * Dialect-aware schema validators factory #1135
+  * Support parameter casting in composite schemas #1136
+  * Fix broken contributing guidelines link #1098
+  * Fix swapped operation/path order in request-parameters flows
+    #1120
+  * Fix deprecation warnings for omitted params and headers #1125
+  * Include root cause in request body validation errors #1128
+  * Django 6 support #1103
+  * Upgrade jsonschema-path 0.4 openapi-schema-validator 0.7 and
+    openapi-spec-validator 0.8 #1105
+  * Python 3.9 support dropped #1091
+  * V3 aliases point to V32 #1121
+  * Remove deprecated Spec #1002
+
+-------------------------------------------------------------------
 Sun Dec 28 15:11:21 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.22.0:

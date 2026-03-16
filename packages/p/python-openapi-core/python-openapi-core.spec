@@ -1,7 +1,7 @@
 #
 # spec file for package python-openapi-core
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           python-openapi-core
-Version:        0.22.0
+Version:        0.23.0
 Release:        0
 Summary:        Client- and server-side support for the OpenAPI Specification v3
 License:        BSD-3-Clause
@@ -41,12 +41,12 @@ BuildRequires:  %{python_module aiohttp >= 3}
 BuildRequires:  %{python_module asgiref >= 3.6.0}
 BuildRequires:  %{python_module falcon >= 3.0}
 BuildRequires:  %{python_module isodate}
-BuildRequires:  %{python_module jsonschema >= 4.18.0 with %python-jsonschema < 5}
-BuildRequires:  %{python_module jsonschema-path >= 0.3.1 with %python-jsonschema-path < 0.4}
+BuildRequires:  %{python_module jsonschema >= 4.23.0 with %python-jsonschema < 5}
+BuildRequires:  %{python_module jsonschema-path >= 0.4.5}
 BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module multidict >= 6.0.4}
-BuildRequires:  %{python_module openapi-schema-validator >= 0.6 with %python-openapi-schema-validator < 0.7}
-BuildRequires:  %{python_module openapi-spec-validator >= 0.7.1 with %python-openapi-spec-validator < 0.8}
+BuildRequires:  %{python_module openapi-schema-validator >= 0.7 with %python-openapi-schema-validator < 0.9}
+BuildRequires:  %{python_module openapi-spec-validator >= 0.8 with %python-openapi-spec-validator < 0.9}
 BuildRequires:  %{python_module parse}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
@@ -60,10 +60,10 @@ Requires:       python-asgiref >= 3.6.0
 Requires:       python-isodate
 Requires:       python-more-itertools
 Requires:       python-parse
-Requires:       (python-jsonschema >= 4.18.0 with python-jsonschema < 5)
-Requires:       (python-jsonschema-path >= 0.3.1 with python-jsonschema-path < 0.4)
-Requires:       (python-openapi-schema-validator >= 0.6 with python-openapi-schema-validator < 0.7)
-Requires:       (python-openapi-spec-validator >= 0.7.1 with python-openapi-spec-validator < 0.8)
+Requires:       (python-jsonschema >= 4.23.0 with python-jsonschema < 5)
+Requires:       (python-jsonschema-path >= 0.4.5)
+Requires:       (python-openapi-schema-validator >= 0.7 with python-openapi-schema-validator < 0.9)
+Requires:       (python-openapi-spec-validator >= 0.8 with python-openapi-spec-validator < 0.9)
 BuildArch:      noarch
 %python_subpackages
 
