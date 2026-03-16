@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:07:39 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.24.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.24.0
+- Changes since 6.23.1:
+  * Update dependency version to 6.24.0
+  * Make updateHash slightly faster
+  * kservice: correctly type the unused legacy field as 8 bits
+  * Enable LSAN in CI
+  * Fix KServiceAction+KService memory leak
+  * Update version to 6.24.0
+
+-------------------------------------------------------------------
 Mon Mar  2 21:21:54 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.23.1:
