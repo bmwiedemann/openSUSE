@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:07:34 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.24.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.24.0
+- Too many changes since 6.23.0, only listing bugfixes:
+  * Visual changes to KFileWidgets to bring it closer to Dolphin (kde#516063)
+  * trashimpl: use mnt_id as trashId instead of dev_id (kde#513350)
+  * filepreviewjob: Add timeout (kde#504067)
+
+-------------------------------------------------------------------
 Fri Feb  6 14:25:53 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.23.0
