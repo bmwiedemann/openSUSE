@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Mar 16 08:39:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.1:
+  * Speed up validate() with validator caching and optional
+    schema-check fast path #273
+- update to 0.8.0:
+  * Harden validate defaults for remote $ref resolution #270
+  * By default, `validate` uses a local-only empty registry to
+    avoid implicit remote $ref retrieval. To resolve external
+    references, pass an explicit `registry`. Set
+    `allow_remote_references=True` only if you explicitly accept
+    jsonschema's default remote retrieval behavior.
+- update to 0.7.3:
+  * Support official OAS 3.2 dialect and set it as default #263
+  * Add optional ecma-regex backend for strict OpenAPI pattern
+    validation #267
+  * Fix OAS 3.0 byte format validation to enforce strict base64
+    #265
+- update to 0.7.2:
+  * OAS 3.1 dialect registration and validator discovery #262
+- update to 0.7.1:
+  * Add OpenAPI 3.2.0 support (OAS32Validator) #256
+- update to 0.7.0:
+  * OAS30 strict validator #251
+  * Ignore readOnly/writeOnly set to False #248
+  * Discriminator handling for non-object instances #249
+  * Narrower handling around unresolved refs #250
+  * OAS30Validator with schema type string only accepts str
+    (before accepted both str and bytes) #251
+  * Added support for Python 3.12, 3.13 and 3.14 #205 #247
+  * Dropped support for Python 3.8 and 3.9 #205 #246
+
+-------------------------------------------------------------------
 Wed Oct  1 14:41:06 UTC 2025 - Jordi Massaguer <jmassaguerpla@suse.com>
 
 - Update to 0.6.3
@@ -68,7 +101,7 @@ Tue Mar 28 07:52:05 UTC 2023 - pgajdos@suse.com
 -------------------------------------------------------------------
 Wed Nov  9 16:16:04 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v0.3.4 
+- Update to v0.3.4
   * OASValidator 3.0 read write pass with evolve #52
 
 -------------------------------------------------------------------

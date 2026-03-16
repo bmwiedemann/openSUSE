@@ -1,7 +1,7 @@
 #
 # spec file for package python-openapi-schema-validator
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,29 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-openapi-schema-validator
-Version:        0.6.3
+Version:        0.8.1
 Release:        0
 Summary:        OpenAPI schema validator for Python
 License:        BSD-3-Clause
 URL:            https://github.com/p1c2u/openapi-schema-validator
 Source:         https://github.com/p1c2u/openapi-schema-validator/archive/%{version}.tar.gz#/openapi_schema_validator-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.0.0}
+BuildRequires:  %{python_module pydantic >= 2}
+BuildRequires:  %{python_module pydantic-settings}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       python-openapi_schema_validator = %{version}-%{release}
-Requires:       python-jsonschema-specifications >= 2023.5.2
+Requires:       python-jsonschema-specifications >= 2024.10.1
+Requires:       python-pydantic >= 2
+Requires:       python-pydantic-settings
 Requires:       python-rfc3339-validator
 Requires:       (python-jsonschema >= 4.19.1 with python-jsonschema < 5)
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module jsonschema >= 4.19.1 with %python-jsonschema < 5}
-BuildRequires:  %{python_module jsonschema-specifications >= 2023.5.2}
+BuildRequires:  %{python_module jsonschema-specifications >= 2024.10.1}
 BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module rfc3339-validator}
 # /SECTION
