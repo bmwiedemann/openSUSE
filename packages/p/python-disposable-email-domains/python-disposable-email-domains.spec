@@ -1,7 +1,7 @@
 #
 # spec file for package python-disposable-email-domains
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-disposable-email-domains
-Version:        0.0.126
+Version:        0.0.169
 Release:        0
 Summary:        A set of disposable email domains
 # the "Homepage" link on PyPi is not the source repository for the PyPI tarball and is licensed under CC
@@ -26,12 +26,12 @@ Summary:        A set of disposable email domains
 License:        MIT
 URL:            https://github.com/disposable-email-domains/python-disposable-email-domains
 Source:         https://files.pythonhosted.org/packages/source/d/disposable-email-domains/disposable_email_domains-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Suggests:       python-check-manifest
 BuildArch:      noarch
 %python_subpackages
