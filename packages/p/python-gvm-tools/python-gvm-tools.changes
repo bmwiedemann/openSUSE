@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Mar 15 19:34:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 25.4.8:
+  * Fix  Add or Update detect-hidden-unicode.yml by @greenbonebot
+  * Added whole-only families array + refactoring by
+  * Addressing PR comments by @robindittmar in #1288
+  * Automatix update for enterprise-containers by @pascalholthaus
+    in #1284
+  * Script for generating CERT-BUND-ADV scan configs now supports
+    whole-only families by @robindittmar in 8fb7969
+  * Removed unnecessary if-clause by @robindittmar in 3e7e3cf
+- update to 25.4.3:
+  * Remove openvas-enterprise-conatiner-dev by @soumya-greenbone
+    in #1279
+- update to 25.4.2:
+  * Fix  Add or Update detect-hidden-unicode.yml by @greenbonebot
+    in #1270
+  * Fix  Add or Update detect-hidden-unicode.yml by @greenbonebot
+    in #1274
+- update to 25.4.1:
+  * Removed obsolete imports. by @jhelmold in #1257
+- update to 25.4.0:
+  * Add monthly-report ++reports option, fix report id by
+    @timopollmeier in 9db3340
+  * Use "filter_string" param in scripts by @timopollmeier in
+    #1244
+  * Fix result fetching in monthly-report script by
+    @timopollmeier in c2f0fec
+  * Use different commands for adding user and group to container
+    by @bjoernricks in #1243
+  * Upgrade minimum  python-gvm dependency version to >=26.0.0 by
+    * Fix typo by @k-schlosser in #1205
+  * Fixed a small bug in the generation of random reports. by
+    @jhelmold in #1210
+
+-------------------------------------------------------------------
 Tue Oct 29 21:25:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.8.0:

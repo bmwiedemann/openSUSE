@@ -143,4 +143,41 @@
   * Replace validate_xml_string with parse_xml function 71583c5</comment>
     <requestid>1219193</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>145ebad2acaac9cb463ee88f3b96049e</srcmd5>
+    <version>25.4.8</version>
+    <time>1773667014</time>
+    <user>anag_factory</user>
+    <comment>- update to 25.4.8:
+  * Fix  Add or Update detect-hidden-unicode.yml by @greenbonebot
+  * Added whole-only families array + refactoring by
+  * Addressing PR comments by @robindittmar in #1288
+  * Automatix update for enterprise-containers by @pascalholthaus
+    in #1284
+  * Script for generating CERT-BUND-ADV scan configs now supports
+    whole-only families by @robindittmar in 8fb7969
+  * Removed unnecessary if-clause by @robindittmar in 3e7e3cf
+- update to 25.4.3:
+  * Remove openvas-enterprise-conatiner-dev by @soumya-greenbone
+    in #1279
+- update to 25.4.2:
+  * Fix  Add or Update detect-hidden-unicode.yml by @greenbonebot
+    in #1270
+  * Fix  Add or Update detect-hidden-unicode.yml by @greenbonebot
+    in #1274
+- update to 25.4.1:
+  * Removed obsolete imports. by @jhelmold in #1257
+- update to 25.4.0:
+  * Add monthly-report ++reports option, fix report id by
+    @timopollmeier in 9db3340
+  * Use &quot;filter_string&quot; param in scripts by @timopollmeier in
+    #1244
+  * Fix result fetching in monthly-report script by
+    @timopollmeier in c2f0fec
+  * Use different commands for adding user and group to container
+    by @bjoernricks in #1243
+  * Upgrade minimum  python-gvm dependency version to &gt;=26.0.0 by
+    * Fix typo by @k-schlosser in #1205</comment>
+    <requestid>1339160</requestid>
+  </revision>
 </revisionlist>
