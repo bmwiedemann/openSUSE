@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 15 19:03:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.31.2:
+  * build(deps): pp.DelimitedList (camel case) only available in
+    pyparsing>=3.1
+  * auth: use pyparsing v3 PEP8-compliant method names
+
+-------------------------------------------------------------------
 Wed Nov 26 13:54:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.31.0

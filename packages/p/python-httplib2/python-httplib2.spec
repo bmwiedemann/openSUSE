@@ -1,7 +1,7 @@
 #
 # spec file for package python-httplib2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_with tests
 %{?sle15_python_module_pythons}
 Name:           python-httplib2
-Version:        0.31.0
+Version:        0.31.2
 Release:        0
 Summary:        A Python HTTP client library
 License:        Apache-2.0 AND MIT AND (GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later)
@@ -33,7 +33,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       ca-certificates
 Requires:       python-certifi
-Requires:       python-pyparsing >= 2.4.2
+Requires:       python-pyparsing >= 3.1
 BuildArch:      noarch
 %if %{with tests}
 # Test requirements (for ssl module):

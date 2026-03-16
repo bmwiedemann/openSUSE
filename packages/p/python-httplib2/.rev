@@ -495,4 +495,15 @@ __init__.py contains code derived from a Google owned Apache project. cacerts.tx
     <comment></comment>
     <requestid>1320302</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>d24e329656379c6ba63a66fbcf177312</srcmd5>
+    <version>0.31.2</version>
+    <time>1773667005</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.31.2:
+  * build(deps): pp.DelimitedList (camel case) only available in
+    pyparsing&gt;=3.1
+  * auth: use pyparsing v3 PEP8-compliant method names</comment>
+    <requestid>1339141</requestid>
+  </revision>
 </revisionlist>
