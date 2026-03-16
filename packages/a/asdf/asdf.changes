@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Mar 04 13:50:12 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 0.18.1:
+  * chore: release 0.18.1 (#2214)
+  * chore(deps): bump actions/setup-node from 4 to 6 (#2198)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.13.0 to 5.16.5 (#2240)
+  * chore(docs): bump the docs group in /docs with 2 updates (#2239)
+  * chore(deps): update go-internal to 1.14.0 (#2249)
+  * chore(deps): bump rollup from 4.34.0 to 4.59.0 in /docs (#2247)
+  * docs: Update getting-started.md to remove macOS warning (#2231)
+  * chore(deps): bump actions/setup-go from 5 to 6 (#2181)
+  * chore(deps): bump actions/setup-python from 5 to 6 (#2180)
+  * docs: update and correct command documentation for Korean (#2225)
+  * chore(docs): bump the docs group in /docs with 2 updates (#2226)
+  * chore(deps): bump actions/cache from 4 to 5 (#2218)
+  * chore(docs): bump mdast-util-to-hast from 13.2.0 to 13.2.1 in /docs (#2215)
+  * fix: set LANG=C for locale-dependent tests (#2197)
+  * chore(deps): bump the docs group in /docs with 2 updates (#2213)
+  * chore(deps): bump actions/checkout from 5 to 6 (#2211)
+  * chore(deps): bump golang.org/x/crypto from 0.36.0 to 0.45.0 (#2209)
+  * chore(docs): bump @types/node from 24.6.1 to 24.9.2 in /docs in the docs group (#2203)
+  * chore(docs): bump vite from 5.4.20 to 5.4.21 in /docs (#2199)
+  * chore: upgrade to Go version 1.24.9 (#2200)
+  * Fix set version completion (#2172)
+  * chore(docs): bump @types/node from 24.3.0 to 24.6.1 in /docs in the docs group (#2190)
+  * chore(deps): bump actions/checkout from 4 to 5 (#2162)
+  * docs: fix typos again (#2185)
+  * chore(docs): bump vite from 5.4.19 to 5.4.20 in /docs (#2182)
+  * chore(docs): bump the docs group across 1 directory with 3 updates (#2173)
+  * chore(deps): bump amannn/action-semantic-pull-request from 6.0.1 to 6.1.1 (#2169)
+  * chore(deps): bump amannn/action-semantic-pull-request from 5.5.3 to 6.0.1 (#2165)
+  * docs: update Simplified Chinese translation for 0.16.0 (#2155)
+  * chore: allow release-build to be triggered manually because GitHub never runs it (#2129)
+
+-------------------------------------------------------------------
 Sat Jun 07 14:56:45 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 0.18.0:
