@@ -6,4 +6,5 @@ It automates suite of day to day operations for existing SAP landscape.
 
 This collection can be used to execute sapcontrol functions,
 update SAP profiles, configure firewall rules, execute RFC, etc.</description>
+  <devel project="devel:sap:ansible" package="ansible-sap-operations"/>
 </package>

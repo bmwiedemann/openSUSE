@@ -1,7 +1,7 @@
 #
 # spec file for package ansible-sap-operations
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 Name:           ansible-sap-operations
 Summary:        Ansible collection suse.sap_operations for SAP Automation
 License:        Apache-2.0
-Version:        0.9.1
+Version:        2.0.0
 Release:        0
 URL:            https://github.com/SUSE/community.sap_operations/
 Source0:        %{url}archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -45,9 +45,6 @@ BuildRequires: python3-ruamel.yaml
 This package provides a Ansible collection suse.sap_operations.
 
 It automates suite of day to day operations for existing SAP landscape.
-
-This collection can be used to execute sapcontrol functions,
-update SAP profiles, configure firewall rules, execute RFC, etc.
 
 %prep
 %autosetup -p1 -n community.%{ansible_collection_name}-%{version}

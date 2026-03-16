@@ -16,28 +16,18 @@ changes:
     # Remove all unsupported roles.
     # Remove all 'meta/main.yml' files within any role directory.
     paths:
-      - "roles/os_ansible_user"  # non-SAP
-      - "roles/os_etchosts"  # non-SAP
-      - "roles/os_knownhosts"  # non-SAP
-      - "roles/sap_fapolicy"  # non-SUSE
-      - "roles/sap_firewall"  # obsolete, replaced with posix and LSR
-      - "roles/sap_hana_backint"  # TODO: Add after rework
-      - "roles/sap_hana_sr_takeover"  # TODO: Add after rework
-      - "roles/sap_rfc"  # TODO: Add after rework
-      - "roles/sap_rhsm"  # non-SUSE
+      - "roles/sap_rfc"  # Deprecated role.
+       # Remove meta files within any role directory.
       - "roles/*/meta/main.yml"
 
   - type: remove_lines
     # Remove specific lines from README.md and all role README.md files.
     # This is used to clean up any mention of unsupported roles and leftover Ansible Lint markers.
     files:
-      # - "README.md"
+      - "README.md"
       - "roles/*/README.md"
     patterns:
-      # - "sap_rhsm"
-      # - "sap_fapolicy"
       - "\\[Ansible Lint"
-      - 'param: "all"'
 
   - type: replace_text
     # Replace specific text strings in galaxy.yml and README.md files.
@@ -49,13 +39,6 @@ changes:
       - { find: "namespace: community", replace: "namespace: suse" }
       - { find: "github.com/sap-linuxlab/community", replace: "github.com/SUSE/community" }
       - { find: "documentation:.*", replace: "documentation: https://github.com/SUSE/community.sap_operations/blob/main/README.md" }
-
-  - type: replace_text
-    # Replace obsolete plugin with sap_libs
-    files:
-      - "roles/*/README.md"
-    replacements:
-      - { find: "community.sap_operations.sap_facts:", replace: "community.sap_libs.sap_system_facts:" }
 
   - type: update_yaml_key
     # Update the 'authors' key in galaxy.yml to 'SUSE'.

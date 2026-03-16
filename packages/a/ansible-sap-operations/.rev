@@ -17,4 +17,12 @@ Downstream source is located at https://github.com/SUSE/community.sap_operations
     <comment>This is bugfix release to remove unsupported Ansible Roles and update spec file to align it with related packages.</comment>
     <requestid>1298993</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a78034d677019016c14a33f00f614b92</srcmd5>
+    <version>2.0.0</version>
+    <time>1773672565</time>
+    <user>anag_factory</user>
+    <comment>Release 2.0.0 with complete rework of all roles.</comment>
+    <requestid>1339380</requestid>
+  </revision>
 </revisionlist>
