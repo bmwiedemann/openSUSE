@@ -1,8 +1,8 @@
 #
 # spec file for package 6tunnel
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2018-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           6tunnel
-Version:        0.13
+Version:        0.14
 Release:        0
 Summary:        TCP proxy for non-IPv6 applications
 License:        GPL-2.0-or-later
@@ -26,9 +26,6 @@ Group:          Productivity/Networking/System
 URL:            https://github.com/wojtekka/6tunnel
 #Git-Clone:     https://github.com/wojtekka/6tunnel.git
 Source:         https://github.com/wojtekka/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         https://github.com/wojtekka/6tunnel/commit/9e4119f03f57eec67b97dddbf09d363b638791dc.patch
-# https://github.com/wojtekka/6tunnel/issues/19
-Patch2:         6tunnel-gcc15.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  python3

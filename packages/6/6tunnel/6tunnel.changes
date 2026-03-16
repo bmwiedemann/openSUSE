@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 15 09:38:24 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.14
+  * Modify test script to use Python 3.
+  * Remove unused variables.
+  * Stop using sockaddr for generic storage.
+  * Add -V parameter to print version.
+  * Fix compilation with GCC 15.
+- Drop not longer needed patches
+  * 6tunnel-gcc15.patch
+  * 9e4119f03f57eec67b97dddbf09d363b638791dc.patch
+
+-------------------------------------------------------------------
 Wed Jul  9 08:52:24 UTC 2025 - pgajdos@suse.com
 
 - added patches
