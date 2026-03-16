@@ -1995,4 +1995,14 @@
       xml.dom.Document.documentElement() should be used instead</comment>
     <requestid>1337545</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>8cd9e7cabe4685b4293b0a58456c95cc</srcmd5>
+    <version>3.12.13</version>
+    <time>1773672563</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2026-2297-SourcelessFileLoader-io_open_code.patch
+  ensuring that `SourcelessFileLoader` uses `io.open_code` when
+  opening `.pyc` files (bsc#1259240, CVE-2026-2297).</comment>
+    <requestid>1339367</requestid>
+  </revision>
 </revisionlist>
