@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sun Mar 08 18:31:48 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating soname from liblowdown2 -> liblowdown3
+- Update to version 3.0.0:
+  * Get ready for new version
+  * Update to oconfigure 2.0.0
+  * Update coverage table
+  * Tweak mdoc documentation
+  * Use C.UTF8 (experimental)
+  * Use codespan for header identifier
+  * Respect --roff-traditional for -tms and tune docs
+  * Formalise mdoc(7) open and close delimiters
+  * Use ROFF macros instead of NROFF
+  * Rename nroff -> roff functions
+  * Fix valgrind catch of wrong check order
+  * Add mdoc examples to markdown file
+  * Fix another memory leak
+  * Shore up some memory leaks
+  * Tests moved, --roff-manpage, semiblock-span
+  * Add support for in-line function parts
+  * In-line manpage substitution as fonts
+  * Fix man(7) Op syntax and recognise manpage links
+  * Use LOWDOWN_MS instead of LOWDOWN_NROFF
+  * Recognise document codespans as Fl/Ar/Op
+  * Have both -tman and -tmdoc re-write sections
+  * Fix possible read off end of buffer
+  * Polish language
+  * Allow multiple #include and range fix
+  * Add LOWDOWN_MDOC to manpages
+  * Add -tmdoc to utility manpages
+  * Diff colours should propogate into mdoc
+  * Polish mdoc.md and add to main index
+  * Adding regression tests for mdoc
+  * Refactor NAME parsing to be post-flush
+  * Move SEE ALSO parsing back into paragraph
+  * Add bits to build manpage guide
+  * Add SEE ALSO section to mdoc(7) recognition
+  * Add documentation for -tmdoc
+  * Handle code spans/blocks and expand sections
+  * Handle full mdoc(7) function listings
+  * Initial support for function manpages
+  * Initial complete section 1 SYNOPSIS
+  * Add section 1 SYNOPSIS parsing
+  * Add convenience function for buffer dup'ing
+  * Parse NAME into Nm/Nd and set Dt title
+  * Handle one-liner mdoc(7) with embedded nodes
+  * Fix NULL check, rename, refactor
+  * Add initial mdoc(7) support
+  * Consolidate bit for LOWODWN_SKIP_HTML
+  * Clarify documentation for link handling
+  * Allow short-link form for -tms
+  * Compact oflags by consolidating shared values
+  * Update manpage to note changed behaviour
+  * Inhibit links properly in -tms and -tman
+  * Move check if buffer is rel link into buffer.c
+
+-------------------------------------------------------------------
 Mon Nov 17 15:39:09 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 2.0.4:

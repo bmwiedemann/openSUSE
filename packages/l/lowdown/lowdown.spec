@@ -1,7 +1,7 @@
 #
 # spec file for package lowdown
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%global soname liblowdown2
+%global soname liblowdown3
 #%%global version_string VERSION_1_1_0
 
 Name:           lowdown
-Version:        2.0.4
+Version:        3.0.0
 Release:        0
 Summary:        Simple markdown translator
 License:        ISC
