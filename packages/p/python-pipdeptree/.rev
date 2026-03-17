@@ -251,4 +251,14 @@
   * Implement --exclude-dependencies</comment>
     <requestid>1329393</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>359249d92ec40e7627bec3b1a5cbf91f</srcmd5>
+    <version>2.31.0</version>
+    <time>1773770671</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.31.0:
+  * Bump packaging to 26
+  * Support --depth for graphviz output format</comment>
+    <requestid>1339441</requestid>
+  </revision>
 </revisionlist>

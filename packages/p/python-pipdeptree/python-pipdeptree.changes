@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 16 21:32:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.31.0:
+  * Bump packaging to 26
+  * Support --depth for graphviz output format
+
+-------------------------------------------------------------------
 Tue Jan 27 00:16:11 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.30.0:

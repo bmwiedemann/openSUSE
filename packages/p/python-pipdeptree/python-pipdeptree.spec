@@ -17,7 +17,7 @@
 
 
 Name:           python-pipdeptree
-Version:        2.30.0
+Version:        2.31.0
 Release:        0
 Summary:        Command line utility to show dependency tree of packages
 License:        MIT
@@ -28,13 +28,13 @@ BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-packaging >= 25
+Requires:       python-packaging >= 26
 Requires:       python-pip >= 25.2
 Suggests:       python-graphviz >= 0.21
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module graphviz >= 0.21}
-BuildRequires:  %{python_module packaging >= 25}
+BuildRequires:  %{python_module packaging >= 26}
 BuildRequires:  %{python_module pip >= 25.2}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
