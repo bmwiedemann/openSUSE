@@ -1,7 +1,7 @@
 #
 # spec file for package python-markdown-it-py
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-markdown-it-py
-Version:        3.0.0
+Version:        4.0.0
 Release:        0
 Summary:        Python port of markdown-it Markdown parsing
 License:        MIT

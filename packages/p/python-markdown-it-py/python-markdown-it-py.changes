@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 15 20:47:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.0:
+  * This primarily drops support for Python 3.9, adds support for
+    Python 3.13,
+  * and updates the parser to comply with Commonmark 0.31.2 and
+    Markdown-It v14.1.0.
+  * Improve performance of "text" inline rule in #347
+  * Use `str.removesuffix` in #348
+  * limit the number of autocompleted cells in a table in #364
+  * fix quadratic complexity in reference parser in #367
+  * Fix emphasis inside raw links bugs in #320
+
+-------------------------------------------------------------------
 Thu Aug 21 09:29:32 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only
@@ -77,7 +91,7 @@ Mon Mar  6 13:33:26 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 -------------------------------------------------------------------
 Mon Sep  5 08:05:47 UTC 2022 - Elisei Roca <eroca@mailbox.org>
 
-- Cleanup requirements, tests, files section and comments 
+- Cleanup requirements, tests, files section and comments
 
 -------------------------------------------------------------------
 Tue Apr 26 10:56:43 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
