@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 16 21:27:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.4:
+  * Potential fix for code scanning alert no. 14: Module is
+    imported with 'import' and 'import from'
+  * Potential fix for code scanning alert no. 13: Module is
+    imported with 'import' and 'import from'
+  * Potential fix for code scanning alert no. 2: Variable defined
+    multiple times
+  * Align GHA workflows in the scope of report uploads
+  * Remove preview section from PR template
+
+-------------------------------------------------------------------
 Fri Feb 13 05:03:26 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 0.3.3.

@@ -17,7 +17,7 @@
 
 
 Name:           python-linode-metadata
-Version:        0.3.3
+Version:        0.3.4
 Release:        0
 Summary:        A client to interact with the Linode Metadata service in Python
 License:        BSD-3-Clause

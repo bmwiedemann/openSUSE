@@ -7,4 +7,20 @@
     <comment>- Initial release of 0.3.3.</comment>
     <requestid>1332791</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>278eb91bcf9c1d8743cc496ffdc58f99</srcmd5>
+    <version>0.3.4</version>
+    <time>1773770670</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.3.4:
+  * Potential fix for code scanning alert no. 14: Module is
+    imported with 'import' and 'import from'
+  * Potential fix for code scanning alert no. 13: Module is
+    imported with 'import' and 'import from'
+  * Potential fix for code scanning alert no. 2: Variable defined
+    multiple times
+  * Align GHA workflows in the scope of report uploads
+  * Remove preview section from PR template</comment>
+    <requestid>1339440</requestid>
+  </revision>
 </revisionlist>
