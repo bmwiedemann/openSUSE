@@ -1,7 +1,7 @@
 #
 # spec file for package python-mediafile
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,23 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mediafile
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        Read and write audio files tags in Python
 License:        MIT
 URL:            https://github.com/beetbox/mediafile
-Source:         https://files.pythonhosted.org/packages/source/m/mediafile/mediafile-%{version}.tar.gz
+Source:         https://github.com/beetbox/mediafile/archive/refs/tags/v%{version}.tar.gz#/mediafile-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module filetype}
-BuildRequires:  %{python_module flit-core >= 2}
-BuildRequires:  %{python_module mutagen >= 1.45}
+BuildRequires:  %{python_module mutagen >= 1.46}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-filetype
-Requires:       python-mutagen >= 1.45
+Requires:       python-mutagen >= 1.46
 BuildArch:      noarch
 %python_subpackages
 
@@ -57,8 +57,7 @@ Handles low-level interfacing for files' tags. Wraps Mutagen to
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/mediafile.py
+%{python_sitelib}/mediafile/
 %{python_sitelib}/mediafile-%{version}*-info/
-%{python_sitelib}/__pycache__/mediafile*
 
 %changelog

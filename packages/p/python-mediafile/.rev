@@ -62,4 +62,33 @@
 - drop python-mediafile-remove-six.patch (upstream)</comment>
     <requestid>1225332</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>54ed4e87a94ebdd8e37b0e5b1aa48869</srcmd5>
+    <version>0.14.0</version>
+    <time>1773770665</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.14.0:
+  * ## Changes
+  * Refactored the monolith ``mediafile.py`` (2400 lines) into a
+    modular structure with multiple files under the
+    ``mediafile/`` directory. This should make it easier to
+    maintain and extend the codebase.
+  * Dropped support for Python 3.7, 3.8 and 3.9. MediaFile now
+    requires Python 3.10 or later. This aligns with the current
+    long-term support (LTS) versions of Python.
+  * Added minimal contribution guidelines to CONTRIBUTING.md
+  * Changed project linter and formatter from ``flake8`` to
+    ``ruff``. Reformatted the codebase with ``ruff``.
+  * Moved changelog into its own file, ``changelog.rst``. Also
+    added github workflow for automatic changelog reminders.
+  * Modernized package and tests setup to use ``poetry``.
+  * Run pyupgrade to align code with Python 3.10+ syntax.
+  * Added TSO2 tag to ``albumartist_sort``, matching how Picard
+    &gt;= 1.2, iTunes and Swinsian interpret tags.
+  * Added ``TXXX:LABEL`` and ``TXXX:MEDIA`` tags to ``label`` and
+    ``media`` fields, respectively, for MP3 files.
+  * **Full Changelog**: https://github.com/beetbox/mediafile/comp
+    are/v0.13.0...v0.14.0</comment>
+    <requestid>1339430</requestid>
+  </revision>
 </revisionlist>
