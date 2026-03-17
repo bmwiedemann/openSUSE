@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 17 09:17:20 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.2.0:
+  * The high-contrast style-scheme is replaced by an elementary version with
+    improved contrast for line numbers
+  * The terminal pane now follows Terminal app color-scheme setting
+  * It is now possible to disable syntax highlighting
+  * There is now an option to keep the project folders sorted
+  * Absence of Terminal or Gnome settings no longer causes a crash
+  * The terminal pane now handles the shell exiting gracefully
+  * The terminal pane now follows the current active project path on start or
+    opening
+  * It is no longer possible to open multiple PasteBin dialogs
+  * A cause of possible crashing by the sidebar on startup was fixed
+  * Two issues where global search shows incorrect information are fixed
+  * Updated translations
+
+-------------------------------------------------------------------
 Sun Dec 21 01:53:53 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 8.1.2:

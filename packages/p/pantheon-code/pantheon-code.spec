@@ -1,7 +1,7 @@
 #
 # spec file for package pantheon-code
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         sover 0
 %define         appid io.elementary.code
 Name:           pantheon-code
-Version:        8.1.2
+Version:        8.2.0
 Release:        0
 Summary:        Extensible Text Editor for the Pantheon Desktop
 License:        GPL-3.0-or-later
@@ -101,16 +101,17 @@ for %{name}.
 %files
 %license COPYING
 %doc README.md
+%dir %{_datadir}/icons/hicolor/{128x128@2,128x128@2/apps,16x16@2,16x16@2/apps,24x24@2,24x24@2/apps,32x32@2,32x32@2/apps,48x48@2,48x48@2/apps,64x64@2,64x64@2/apps}
 %{_bindir}/%{appid}
+%{_datadir}/%{appid}
 %{_datadir}/applications/%{appid}.desktop
 %{_datadir}/glib-2.0/schemas/%{appid}.{,plugins.spell.}gschema.xml
+%{_datadir}/gtksourceview-4/styles/elementary-highcontrast-light.xml
 %{_datadir}/gtksourceview-4/styles/elementary-{dark,light}.xml
 %{_datadir}/icons/hicolor/*/apps/%{appid}.svg
-%{_datadir}/%{appid}
-%{_mandir}/man?/%{appid}.?%{?ext_man}
-%{_datadir}/vala/vapi/codecore.{deps,vapi}
 %{_datadir}/metainfo/%{appid}.metainfo.xml
-%dir %{_datadir}/icons/hicolor/{128x128@2,128x128@2/apps,16x16@2,16x16@2/apps,24x24@2,24x24@2/apps,32x32@2,32x32@2/apps,48x48@2,48x48@2/apps,64x64@2,64x64@2/apps}
+%{_datadir}/vala/vapi/codecore.{deps,vapi}
+%{_mandir}/man?/%{appid}.?%{?ext_man}
 
 %files plugins
 %{_libdir}/%{appid}

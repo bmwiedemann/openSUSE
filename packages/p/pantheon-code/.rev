@@ -23,4 +23,25 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1324516</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a4197d485695f8fad3be77de97aebf53</srcmd5>
+    <version>8.2.0</version>
+    <time>1773770720</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 8.2.0:
+  * The high-contrast style-scheme is replaced by an elementary version with
+    improved contrast for line numbers
+  * The terminal pane now follows Terminal app color-scheme setting
+  * It is now possible to disable syntax highlighting
+  * There is now an option to keep the project folders sorted
+  * Absence of Terminal or Gnome settings no longer causes a crash
+  * The terminal pane now handles the shell exiting gracefully
+  * The terminal pane now follows the current active project path on start or
+    opening
+  * It is no longer possible to open multiple PasteBin dialogs
+  * A cause of possible crashing by the sidebar on startup was fixed
+  * Two issues where global search shows incorrect information are fixed
+  * Updated translations (forwarded request 1339548 from rrahl0)</comment>
+    <requestid>1339549</requestid>
+  </revision>
 </revisionlist>
