@@ -16,14 +16,14 @@
 #
 
 
-%define kf6_version 6.15.0
-%define qt6_version 6.6.0
+%define kf6_version 6.16.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 
 %define rname kirigami-addons
 Name:           kirigami-addons6
-Version:        1.10.0
+Version:        1.12.0
 Release:        0
 Summary:        Add-ons for the Kirigami framework
 License:        LGPL-3.0-only
@@ -80,11 +80,22 @@ look native with any QQC2 style (qqc2-desktop-theme, Material
 or Plasma). This package provides a library to add standard
 stateful functionality to applications using kirigami-addons.
 
+%package -n libKirigamiAddonsComponents6
+Summary:        QtQuick components for kirigami-addons
+%description -n libKirigamiAddonsComponents6
+A set of "widgets" i.e visual end user components along with a
+code to support them. Components are usable by both touch and
+desktop experiences providing a native experience on both, and
+look native with any QQC2 style (qqc2-desktop-theme, Material
+or Plasma). This package provides a library to use some
+kirigami-addons features in C++ programs.
+
 %package devel
 Summary:        Development files for kirigami-addons6
 Requires:       kirigami-addons6 = %{version}
 Requires:       libKirigamiAddonsStatefulApp6 = %{version}
 Requires:       libKirigamiApp6 = %{version}
+Requires:       libKirigamiAddonsComponents6 = %{version}
 
 %description devel
 A set of "widgets" i.e visual end user components along with a
@@ -120,6 +131,7 @@ Provides translations for %{name}.
 
 %ldconfig_scriptlets -n libKirigamiAddonsStatefulApp6
 %ldconfig_scriptlets -n libKirigamiApp6
+%ldconfig_scriptlets -n libKirigamiAddonsComponents6
 
 %files
 %license LICENSES/*
@@ -131,12 +143,16 @@ Provides translations for %{name}.
 %files -n libKirigamiApp6
 %{_kf6_libdir}/libKirigamiApp.so.*
 
+%files -n libKirigamiAddonsComponents6
+%{_kf6_libdir}/libKirigamiAddonsComponents.so.*
+
 %files devel
 %{_kf6_cmakedir}/KF6KirigamiAddons/
 %{_includedir}/KirigamiAddons/
 %{_includedir}/KirigamiAddonsStatefulApp/
 %{_kf6_libdir}/libKirigamiAddonsStatefulApp.so
 %{_kf6_libdir}/libKirigamiApp.so
+%{_kf6_libdir}/libKirigamiAddonsComponents.so
 %dir %{_kf6_sharedir}/kdevappwizard/
 %dir %{_kf6_sharedir}/kdevappwizard/templates/
 %{_kf6_sharedir}/kdevappwizard/templates/kirigamiaddons6.tar.bz2
