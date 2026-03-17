@@ -1,4 +1,133 @@
 -------------------------------------------------------------------
+Tue Mar 10 12:37:49 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 0.0.40~git20260310:
+  - Update submodules in #17847
+  - Refactor camera code to support different camera handlers in #17948
+  - [BSD] Use FreeBSD 14.3 vm in #17947
+  - [TEST] vk: Disable VK_EXT_attachment_feedback_loop_layout support for adrenalin driver in #17765
+  - Qt: deploy and apply Qt translations in #17930
+  - macOs: Deploy Qt translations in #17951
+  - Qt: Fix image dimensions passed to camera_video_sink::present in #17955
+  - Add SDL camera handler in #16849
+  - [macOS CI] Slim down builds (via static LLVM+FFmpeg), unify scripts in #17954
+  - rsx/fp: Harden the FP decompiler a bit when bogus inputs are passed in. in #17959
+  - [macOS Updater] Cleanup remnants of the old app bundle post-update in #17962
+  - Downgrade SDL to 3.2.30 in #17971
+  - Qt: try to fix drag and drop issues in #17972
+  - USB: Fixed G27 crash during reinitialization in #17970
+  - Add multi-selection context menu in #17782
+  - Refactor game_list_frame in #17975
+  - Qt: Fix game list multi-selection after Refresh in #17976
+  - move disk usage dialog box to game list's context menu in #17977
+  - Windows Clang Qt translations in #17981
+  - Update SDL to 3.4.0 in #17974
+  - Qt: Add mulit selection to game grid in #17982
+  - gl: Do not overwrite texture-cache image dimensions when updating format in #17985
+  - Qt/input: fix pressure intensity button availability in #17987
+  - Full decrypted ISO support in #17855
+  - Iso: clean up in #17995
+  - Qt: Add more ISO menu options, fix loading of some ISO icons in #18003
+  - ISO: optimizations in #18004
+  - UI: colored ANSI logs in #17993
+  - Update ffmpeg to 7.1.2 in #17017
+  - Fixed SingStar previews in #18008
+  - sys_fs: Add PPU sleep in #18009
+  - Windows ARM build in #17770
+  - Fixed more SingStar previews, this time for v05.00 in #18011
+  - cellVdec: impove error logging in #18012
+  - VS: update googletest package in #18016
+  - USB: Usbd support for microphones in #17994
+  - Setup to deploy aarch64 binaries in #18023
+  - rsx/zcull: Fix handling of report clear commands in #18019
+  - rsx/nv3089: Fix image_in source line length estimation in #18025
+  - Emulation restart fixes in #18022
+  - sceNp.cpp: Add suffix to TODO sceNpLookupUserProfileAsync in #18020
+  - Fix windows aarch64 deploy in #18027
+  - Add Delete command to RPCN in #18028
+  - rsx/gcm: Fix cellGcmGetTimeStampLocation in #18034
+  - rsx/gcm: Do not rely on GCM IOMAP table in HLE gcmIoOffsetToAddress in #18038
+  - rsx: Fixup get_address() after #18038 in #18040
+  - Export AVVER for Release Title name in #18042
+  - Qt: remove all shortcut files if requested in #18006
+  - Prepend win64 on all Windows artifacts in #18043
+  - cellVdec: Add MPEG4 profile 3 in #18045
+  - LLVM: enable FMA for ARM cpus unconditionally in #18057
+  - PPU LLVM: Use arm fmax/fmin for vmaxfp/vminfp in #18060
+  - utils: Scale busy_wait according to ARM timer frequency in #18055
+  - Fix iconv for Windows Clang in #18063
+  - USB: Summonride updates in #18069
+  - Flatbuffers to Protobuf in #18082
+  - Migration bugfixes in #18099
+  - Qt: change UI labels based on device product type in #18088
+  - change velocity for RB3 pro guitar when it stays the same twice in a row in #18064
+  - cellVdec: Document codecs and support all MPEG4 profile levels in #18049
+  - [macOS] Properly handle app bundle versioning (& minor CI fix) in #17967
+  - CI: download dependency if the filename is the same but the checksum changed in #18098
+  - rsx: Miscellaneous improvements in #18102
+  - USB: Complete Summonride figures in #18104
+  - Qt: allow to disable logging to the log frame while it is hidden in #18039
+  - vk: Fix VVL synchronization violations in #18111
+  - Revert "vk: Disable VK_EXT_attachment_feedback_loop_layout support for adrenalin driver" in #18114
+  - sceNpBasicLimitedSendMessage in #18107
+  - Implement sceNpMatching2GetSignalingOptParamLocal, sceNpMatching2GetMemoryInfo and sceNpMatching2GetCbQueueInfo in #18112
+  - hle: Register some missing Spurs/Font/SaveData/Fs/Sysmodule/sceNpTrophy OS functions in #18119
+  - Fix for an emulation shutdown hang in #18121
+  - Add Message logging and fix validation in #18118
+  - Implement sceNpMatching2GetRoomMemberDataExternalList in #18126
+  - Fix generic_async_transaction_context thread handling in #18129
+  - Add mouse-based gyro emulation in #18113
+  - rsx: Conservative MM flush during CPU handling of nv3089_image_in in #18137
+  - vk: Fix NVIDIA crash when resizing the game window quickly in #18140
+  - Qt: try to fix update downloader in #18139
+  - Switch from FFmpeg av_opt_set_* to swr_alloc_set_opts2 in #18138
+  - Log viewer improvements in #18143
+  - Update dependencies in #18144
+  - Fixed typos in rpcs3/System.cpp in #18146
+  - ARM: Use ISB instead of yield in place of x86 pause in #18151
+  - Improve add friend logging/dialogs in #18153
+  - rsx/sync: Do not allow short-circuiting behavior when releasing GCM labels via host queue in #18159
+  - Guard async transactions against spurious wakeups in #18163
+  - input: fix input guard button offsets for closing native overlays in #18168
+  - Qt: Fix ansi highlighter colors in #18160
+  - ARM64: Detect some arm features and let LLVM know if they are or aren't present via attributes in #18133
+  - macOS: Check for hw.optional.neon as fallback in #18176
+  - Microphone fixes in #18182
+  - Update docker and ccache in #18187
+  - [Build] Remove quotes protoc in #18180
+  - Update yaml-cpp to 0.9.0 in #18184
+  - Updated Fedora build dependencies list in #18147
+  - Update dependencies (7zip, cubeb, FAudio, glext, libpng) in #18188
+  - rsx: Reimplement texel value remapping rules [1 of 3] in #18170
+  - audio: Default buffering to 34ms in #18189
+  - rsx: Reimplement texel value remapping rules [2 of 3] in #18192
+  - rsx: Reimplement texel value remapping rules [3 of 3] in #18202
+  - Fixorinos in #18209
+  - win/fs: check file handle with GetFileInformationByHandle when creating fs::file in #18208
+  - Add safe wrapper for npid to string conversion in #18212
+  - rpcs3: Target c++23 in #18210
+  - cellSaveData: fix "Your comparator is not a valid strict-weak ordering" in #18116
+  - rsx: Improvements to texel remapper logic in #18216
+  - cellVdec: replace deprecated std::aligned_union_t with union in #18213
+  - Implemented sorted emit_data for YAML nodes in #18177
+  - Various sys_ fixes in #18230
+  - Home Menu improvements in #18231
+  - rsx: Support texel remapping with hardware formats in #18224
+  - openal: Update to 1.25.1 with up-to-date libpipewire in #18183
+  - More sys_ fixes in #18239
+  - Final sys_ fixes in #18240
+  - sys_fs: Fixup op_read in #18241
+  - Update submodules in #18233
+  - Clans: Tiny fixes in #18242
+  - Qt: attempt to download up to 3 times on return_code -255 in #18244
+  - NP code review in #18254
+  - config/ux: Disable double-click to fullscreen by default in #18222
+  - Qt: properly handle cancel of pkg install dialog in #18261
+  - rpcs3_version: Bump to 0.0.40 in #18255
+- Fix build error and use llvm19 for building Leap.
+  llvm21 is only use in mac build.
+
+-------------------------------------------------------------------
 Wed Feb 18 19:31:23 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Bump LLVM from 19 to 21 (upstream has been building with llvm21 
