@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 16 23:00:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.1:
+  * Export all from widget module
+  * bugfix: skip validation when Sidecar(ref=None)
+  * update yarn deps
+
+-------------------------------------------------------------------
 Mon Dec  1 21:16:45 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.0:
