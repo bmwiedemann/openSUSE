@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 16 04:48:24 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add 0001-proto-avoid-unwrapping-varint-decoding-during-parame.patch:
+  avoid unwrapping varint decoding during parameters parsing
+  (bsc#1259623 CVE-2026-31812).
+
+-------------------------------------------------------------------
 Sat Feb 14 01:12:53 UTC 2026 - William Brown <william.brown@suse.com>
 
 - bsc#1253321 - Resolve missing gcc requirement that may affect some crate building
