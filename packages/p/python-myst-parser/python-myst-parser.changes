@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Mar 16 03:52:17 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.0.0:
+  ## Breaking Changes
+  * This release updates the minimum supported versions:
+    + Python: >=3.11 (dropped Python 3.10, tests up to 3.14)
+    + Sphinx: >=8,<10 (dropped Sphinx 7, added Sphinx 9)
+    + Docutils: >=0.20,<0.23 (dropped docutils 0.19, added docutils 0.22)
+    + markdown-it-py: ~=4.0 (upgraded from v3)
+  ## Dependency Upgrades
+  * Upgrade to markdown-it-py v4
+  * Drop Python 3.10 and Sphinx 7
+  * Drop docutils 0.19
+  * Add support for Python 3.14
+  * Support Sphinx v9
+  * Allow docutils 0.22
+  ##  Improvements
+  * Improve generation of meta nodes by gh-user:AA-Turner in gh-pr:1080
+- Drop patch support-docutils-0.22.patch, no longer required.
+
+-------------------------------------------------------------------
 Thu Oct  2 04:36:38 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.0.1:

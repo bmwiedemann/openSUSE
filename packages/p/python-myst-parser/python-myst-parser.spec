@@ -1,7 +1,7 @@
 #
 # spec file for package python-myst-parser
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-myst-parser
-Version:        4.0.1
+Version:        5.0.0
 Release:        0
 Summary:        An extended commonmark compliant parser, with bridges to docutils & sphinx
 License:        MIT
@@ -31,26 +31,24 @@ URL:            https://myst-parser.readthedocs.io/
 Source:         https://github.com/executablebooks/MyST-Parser/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PyPI tarball does not contain tests
 #Source:         https://files.pythonhosted.org/packages/source/m/myst-parser/myst-parser-%%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Regenerate failing files with --regen-file-failure
-Patch0:         support-docutils-0.22.patch
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module docutils >= 0.18 with %python-docutils < 0.23}
-BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module docutils >= 0.20 with %python-docutils < 0.23}
+BuildRequires:  %{python_module flit-core >= 3.4}
 BuildRequires:  %{python_module linkify-it-py}
-BuildRequires:  %{python_module markdown-it-py}
-BuildRequires:  %{python_module mdit-py-plugins}
+BuildRequires:  %{python_module markdown-it-py >= 4}
+BuildRequires:  %{python_module mdit-py-plugins >= 0.5}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
 Requires:       python-PyYAML
 Requires:       python-Sphinx
-Requires:       python-docutils >= 0.18
-Requires:       python-markdown-it-py
-Requires:       python-mdit-py-plugins
+Requires:       python-docutils >= 0.20
+Requires:       python-markdown-it-py >= 4
+Requires:       python-mdit-py-plugins >= 0.5
 BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
@@ -85,6 +83,10 @@ It contains an extended CommonMark (https://commonmark.org)-compliant parser usi
 %prep
 %autosetup -p1 -n MyST-Parser-%{version}
 rm docs/.gitignore
+# Allow tests to be importable, correct import paths
+# This can all die post 5.0.0
+touch tests/__init__.py
+sed -i 's/from conftest import/from tests.conftest import/' tests/test_renderers/*.py
 
 %build
 %pyproject_wheel

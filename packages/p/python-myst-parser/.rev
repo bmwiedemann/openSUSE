@@ -119,4 +119,28 @@
 - Sprinkle in pytest-param-files, since it's packaged now.</comment>
     <requestid>1308493</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bbd3aca18dbaaa806619c6e162ca5b1b</srcmd5>
+    <version>5.0.0</version>
+    <time>1773770598</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.0.0:
+  ## Breaking Changes
+  * This release updates the minimum supported versions:
+    + Python: &gt;=3.11 (dropped Python 3.10, tests up to 3.14)
+    + Sphinx: &gt;=8,&lt;10 (dropped Sphinx 7, added Sphinx 9)
+    + Docutils: &gt;=0.20,&lt;0.23 (dropped docutils 0.19, added docutils 0.22)
+    + markdown-it-py: ~=4.0 (upgraded from v3)
+  ## Dependency Upgrades
+  * Upgrade to markdown-it-py v4
+  * Drop Python 3.10 and Sphinx 7
+  * Drop docutils 0.19
+  * Add support for Python 3.14
+  * Support Sphinx v9
+  * Allow docutils 0.22
+  ##  Improvements
+  * Improve generation of meta nodes by gh-user:AA-Turner in gh-pr:1080
+- Drop patch support-docutils-0.22.patch, no longer required.</comment>
+    <requestid>1339201</requestid>
+  </revision>
 </revisionlist>
