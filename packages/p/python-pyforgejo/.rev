@@ -60,4 +60,17 @@
   * update pyproject.toml (forwarded request 1309607 from rrahl0)</comment>
     <requestid>1309608</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f36fec13296cdc07e51205a6f71ee4fb</srcmd5>
+    <version>2.0.7</version>
+    <time>1773770734</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.0.7:
+  * update tests
+  * update to Python &gt;=3.11
+- Update to version 2.0.6:
+  * regenerate client
+  * update api specs (forwarded request 1339557 from rrahl0)</comment>
+    <requestid>1339558</requestid>
+  </revision>
 </revisionlist>

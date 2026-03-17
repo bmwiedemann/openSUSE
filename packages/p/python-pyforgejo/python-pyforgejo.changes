@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 17 10:11:51 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 2.0.7:
+  * update tests
+  * update to Python >=3.11
+- Update to version 2.0.6:
+  * regenerate client
+  * update api specs
+
+-------------------------------------------------------------------
 Tue Oct  7 12:01:39 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 2.0.5:
