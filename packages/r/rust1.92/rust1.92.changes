@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 16 04:48:24 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add 0001-proto-avoid-unwrapping-varint-decoding-during-parame.patch:
+  avoid unwrapping varint decoding during parameters parsing
+  (bsc#1259623 CVE-2026-31812).
+
+-------------------------------------------------------------------
 Fri Dec 12 07:53:04 UTC 2025 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add rust1.92
