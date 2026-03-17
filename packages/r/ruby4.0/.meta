@@ -23,5 +23,6 @@ tasks (as in Perl).  It is extensible.
 - Garbage Collection
 
 - Dynamic Loading of Object Files (on some architectures)</description>
+  <devel project="devel:languages:ruby" package="ruby4.0"/>
   <url>https://www.ruby-lang.org/</url>
 </package>

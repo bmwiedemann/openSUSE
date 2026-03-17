@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Tue Mar 17 08:12:42 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.0.2
+  This is a routine update that includes a bugfix in YJIT for
+  NoMethodError on Puma.
+
+  - Bug #21941: Local variable becomes nil when YJIT enabled
+    mid-method with fork/signal/ensure - Ruby - Ruby Issue Tracking
+    System
+  - Bug #21832: segfault with argument forwarding, when combined
+    with splat & positional arg - Ruby - Ruby Issue Tracking System
+  - Bug #21723: binding.irb raises a LoadError under bundle exec
+    when Gemfile contains path: or git: - Ruby - Ruby Issue
+    Tracking System
+  - Bug #21847: Backport syntax_suggest 2.0.3 to supported branches
+    - Ruby - Ruby Issue Tracking System
+  - Bug #21866: Backport Fix for integer overflow checks in
+    enumerator - Ruby - Ruby Issue Tracking System
+  - Bug #21865: Crash on signal raise - Ruby - Ruby Issue Tracking
+    System
+  - Bug #21842: Encoding of rb_interned_str - Ruby - Ruby Issue
+    Tracking System
+  - Bug #21838: Rails seeing degradation (20% slowdown) related to
+    Revision 079ef92b "Implement global allocatable slots and empty
+    pages" (from Sep 5 2024) - Ruby - Ruby Issue Tracking System
+  - Bug #21873: UnboundMethod#== returns false for methods from
+    included/extended modules - Ruby - Ruby Issue Tracking System
+  - ZJIT: Avoid runtime exceptions from RubyVM::ZJIT.stats_string
+    by k0kubun · Pull Request #16139
+  - Bug #21931: GC Crash in String#% (backport
+    726205b354d1068147719fb42e1de743f1838ef1) - Ruby - Ruby Issue
+    Tracking System
+  - Bug #21944: "Cannot allocate memory" with M:N threads or
+    Ractors on a low RAM Linux machine - Ruby - Ruby Issue Tracking
+    System
+  - Bug #21946: and? predicate confused for leading and keyword -
+    Ruby - Ruby Issue Tracking System
+  - Bug #21927: Prism: misleading error message for forwarding in
+    lambda argument - Ruby - Ruby Issue Tracking System
+  - Bug #21925: Prism misparses standalone "in" pattern matching in
+    "case/in" - Ruby - Ruby Issue Tracking System
+  - Bug #21828: An incorrect warning message related to benchmark
+    is shown when using benchmark-ips - Ruby - Ruby Issue Tracking
+    System
+  - Bug #21917: Unable to build 4.0.1 on AIX 7.2 - Ruby - Ruby
+    Issue Tracking System
+  - Bug #21945: Ripper lexes newline between identifier and and? as
+    ignored newline - Ruby - Ruby Issue Tracking System
+  - Bug #21947: Timeout.timeout doesn't use Timeout::ExitException
+    when Fiber scheduler is in use. - Ruby - Ruby Issue Tracking
+    System
+  - Bug #21926: Thread#value on popen3 wait thread hangs in
+    finalizer - Ruby - Ruby Issue Tracking System
+  - Bug #21880: The ultra_safe mode of pstore bundled with Ruby 4.0
+    is broken. - Ruby - Ruby Issue Tracking System
+  - Bug #21097: x = a rescue b in c and def f = a rescue b in c
+    parsed differently between parse.y and prism - Ruby - Ruby
+    Issue Tracking System
+
+-------------------------------------------------------------------
 Tue Jan 13 13:06:25 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.0.1

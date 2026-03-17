@@ -62,4 +62,152 @@
   https://github.com/ruby/ruby/compare/v4.0.0...v4.0.1</comment>
     <requestid>1326993</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4ddd27a13d541f1af8375c993ba29683</srcmd5>
+    <version>4.0.2</version>
+    <time>1773770588</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.0.2
+-This line, and those below, will be ignored--
+
+    Ractors on a low RAM Linux machine - Ruby - Ruby Issue Tracking
+    System
+  - Bug #21946: and? predicate confused for leading and keyword -
+    Ruby - Ruby Issue Tracking System
+  - Bug #21927: Prism: misleading error message for forwarding in
+    lambda argument - Ruby - Ruby Issue Tracking System
+  - Bug #21925: Prism misparses standalone &quot;in&quot; pattern matching in
+    &quot;case/in&quot; - Ruby - Ruby Issue Tracking System
+  - Bug #21828: An incorrect warning message related to benchmark
+    is shown when using benchmark-ips - Ruby - Ruby Issue Tracking
+    System
+  - Bug #21917: Unable to build 4.0.1 on AIX 7.2 - Ruby - Ruby
+    Issue Tracking System
+  - Bug #21945: Ripper lexes newline between identifier and and? as
+    ignored newline - Ruby - Ruby Issue Tracking System
+  - Bug #21947: Timeout.timeout doesn't use Timeout::ExitException
+    when Fiber scheduler is in use. - Ruby - Ruby Issue Tracking
+    System
+  - Bug #21926: Thread#value on popen3 wait thread hangs in
+    finalizer - Ruby - Ruby Issue Tracking System
+  - Bug #21880: The ultra_safe mode of pstore bundled with Ruby 4.0
+    is broken. - Ruby - Ruby Issue Tracking System
+  - Bug #21097: x = a rescue b in c and def f = a rescue b in c
+    parsed differently between parse.y and prism - Ruby - Ruby
+    Issue Tracking System
+
+old: openSUSE:Factory/ruby4.0
+new: devel:languages:ruby/ruby4.0 rev 13
+Index: _service
+===================================================================
+--- _service (revision 4)
++++ _service (revision 13)
+@@ -1,6 +1,7 @@
+ &lt;services&gt;
++  &lt;service name=&quot;download_files&quot; mode=&quot;manual&quot; /&gt;
+   &lt;service name=&quot;cargo_vendor&quot; mode=&quot;manual&quot;&gt;
+-    &lt;param name=&quot;srcdir&quot;&gt;ruby-4.*/&lt;/param&gt;
++    &lt;param name=&quot;src&quot;&gt;ruby-4.*.tar.xz&lt;/param&gt;
+     &lt;param name=&quot;update&quot;&gt;false&lt;/param&gt;
+     &lt;param name=&quot;compression&quot;&gt;xz&lt;/param&gt;
+   &lt;/service&gt;
+Index: ruby4.0.changes
+===================================================================
+--- ruby4.0.changes (revision 4)
++++ ruby4.0.changes (revision 13)
+@@ -1,4 +1,64 @@
+ -------------------------------------------------------------------
++Tue Mar 17 08:12:42 UTC 2026 - Marcus Rueckert &lt;mrueckert@suse.de&gt;
++
++- Update to 4.0.2
++  This is a routine update that includes a bugfix in YJIT for
++  NoMethodError on Puma.
++
++  - Bug #21941: Local variable becomes nil when YJIT enabled
++    mid-method with fork/signal/ensure - Ruby - Ruby Issue Tracking
++    System
++  - Bug #21832: segfault with argument forwarding, when combined
++    with splat &amp; positional arg - Ruby - Ruby Issue Tracking System
++  - Bug #21723: binding.irb raises a LoadError under bundle exec
++    when Gemfile contains path: or git: - Ruby - Ruby Issue
++    Tracking System
++  - Bug #21847: Backport syntax_suggest 2.0.3 to supported branches
++    - Ruby - Ruby Issue Tracking System
++  - Bug #21866: Backport Fix for integer overflow checks in
++    enumerator - Ruby - Ruby Issue Tracking System
++  - Bug #21865: Crash on signal raise - Ruby - Ruby Issue Tracking
++    System
++  - Bug #21842: Encoding of rb_interned_str - Ruby - Ruby Issue
++    Tracking System
++  - Bug #21838: Rails seeing degradation (20% slowdown) related to
++    Revision 079ef92b &quot;Implement global allocatable slots and empty
++    pages&quot; (from Sep 5 2024) - Ruby - Ruby Issue Tracking System
++  - Bug #21873: UnboundMethod#== returns false for methods from
++    included/extended modules - Ruby - Ruby Issue Tracking System
++  - ZJIT: Avoid runtime exceptions from RubyVM::ZJIT.stats_string
++    by k0kubun · Pull Request #16139
++  - Bug #21931: GC Crash in String#% (backport
++    726205b354d1068147719fb42e1de743f1838ef1) - Ruby - Ruby Issue
++    Tracking System
++  - Bug #21944: &quot;Cannot allocate memory&quot; with M:N threads or
++    Ractors on a low RAM Linux machine - Ruby - Ruby Issue Tracking
++    System
++  - Bug #21946: and? predicate confused for leading and keyword -
++    Ruby - Ruby Issue Tracking System
++  - Bug #21927: Prism: misleading error message for forwarding in
++    lambda argument - Ruby - Ruby Issue Tracking System
++  - Bug #21925: Prism misparses standalone &quot;in&quot; pattern matching in
++    &quot;case/in&quot; - Ruby - Ruby Issue Tracking System
++  - Bug #21828: An incorrect warning message related to benchmark
++    is shown when using benchmark-ips - Ruby - Ruby Issue Tracking
++    System
++  - Bug #21917: Unable to build 4.0.1 on AIX 7.2 - Ruby - Ruby
++    Issue Tracking System
++  - Bug #21945: Ripper lexes newline between identifier and and? as
++    ignored newline - Ruby - Ruby Issue Tracking System
++  - Bug #21947: Timeout.timeout doesn't use Timeout::ExitException
++    when Fiber scheduler is in use. - Ruby - Ruby Issue Tracking
++    System
++  - Bug #21926: Thread#value on popen3 wait thread hangs in
++    finalizer - Ruby - Ruby Issue Tracking System
++  - Bug #21880: The ultra_safe mode of pstore bundled with Ruby 4.0
++    is broken. - Ruby - Ruby Issue Tracking System
++  - Bug #21097: x = a rescue b in c and def f = a rescue b in c
++    parsed differently between parse.y and prism - Ruby - Ruby
++    Issue Tracking System
++
++-------------------------------------------------------------------
+ Tue Jan 13 13:06:25 UTC 2026 - Marcus Rueckert &lt;mrueckert@suse.de&gt;
+ 
+ - Update to 4.0.1
+Index: ruby4.0.spec
+===================================================================
+--- ruby4.0.spec (revision 4)
++++ ruby4.0.spec (revision 13)
+@@ -36,7 +36,7 @@
+ 
+ %global patch_level p0
+ Name:           ruby4.0%{psuffix}
+-Version:        4.0.1
++Version:        4.0.2
+ Release:        0
+ %global pkg_version %{version}
+ # make the exported API version explicit
+Index: vendor.tar.xz
+===================================================================
+--- vendor.tar.xz (revision 4)
++++ vendor.tar.xz (revision 13)
+Binary files vendor.tar.xz (revision 4) and vendor.tar.xz (revision 13) differ
+Index: ruby-4.0.2.tar.xz
+===================================================================
+--- ruby-4.0.2.tar.xz (added)
++++ ruby-4.0.2.tar.xz (revision 13)
+Binary file ruby-4.0.2.tar.xz (revision 13) added
+Index: ruby-4.0.1.tar.xz
+===================================================================
+--- ruby-4.0.1.tar.xz (revision 4)
++++ ruby-4.0.1.tar.xz (deleted)
+Binary file ruby-4.0.1.tar.xz (revision 4) deleted</comment>
+    <requestid>1339506</requestid>
+  </revision>
 </revisionlist>
