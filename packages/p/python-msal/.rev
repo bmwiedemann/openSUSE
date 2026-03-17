@@ -505,4 +505,27 @@
 - Override upstream version with 1.35.0~b1 (forwarded request 1331561 from glaubitz)</comment>
     <requestid>1331689</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>5cb51a29d56fe64ed5e88b230768944b</srcmd5>
+    <version>1.35.1</version>
+    <time>1773770570</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.35.1
+  * Instance discovery remains cloud local on known clouds by @bgavrilMS in (#875)
+- from version 1.35.0
+  * Set Redirect Uri for broker silent flow on Linux platform by @xinyuxu1026 in (#846)
+  * ROPC deprecation by @Ugonnaak1 in (#855)
+  * Update pymsalruntime version range to handle the latest 0.20.0 release
+    by @DharshanBJ in (#858)
+  * Document how to enable sha256 for client credential by @rayluo in (#833)
+  * Remove the reliance on getfqdn() by @rayluo in (#859)
+  * Thumbprint for certificate made optional by @vi7us in (#835)
+  * Support Python 3.14 by @rayluo in (#861)
+  * Add form_post response mode support for system browser authentication
+    by @ashok672 in (#868)
+  * Add OIDC issuer validation by @Avery-Dunn in (#840)
+  * Security: Remove unsafe PowerShell fallback in WSL by @RinZ27 in (#866)
+- Remove temporary version override (forwarded request 1339371 from glaubitz)</comment>
+    <requestid>1339376</requestid>
+  </revision>
 </revisionlist>

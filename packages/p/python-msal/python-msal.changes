@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 16 13:33:35 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.35.1
+  * Instance discovery remains cloud local on known clouds by @bgavrilMS in (#875)
+- from version 1.35.0
+  * Set Redirect Uri for broker silent flow on Linux platform by @xinyuxu1026 in (#846)
+  * ROPC deprecation by @Ugonnaak1 in (#855)
+  * Update pymsalruntime version range to handle the latest 0.20.0 release
+    by @DharshanBJ in (#858)
+  * Document how to enable sha256 for client credential by @rayluo in (#833)
+  * Remove the reliance on getfqdn() by @rayluo in (#859)
+  * Thumbprint for certificate made optional by @vi7us in (#835)
+  * Support Python 3.14 by @rayluo in (#861)
+  * Add form_post response mode support for system browser authentication
+    by @ashok672 in (#868)
+  * Add OIDC issuer validation by @Avery-Dunn in (#840)
+  * Security: Remove unsafe PowerShell fallback in WSL by @RinZ27 in (#866)
+- Remove temporary version override
+
+-------------------------------------------------------------------
 Fri Feb  6 09:38:14 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.35.0b1
