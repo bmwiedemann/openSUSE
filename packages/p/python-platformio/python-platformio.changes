@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Mar 16 20:42:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.19:
+  * Added support for Python 3.14
+  * Upgraded the Doctest testing framework to version 2.4.12, the
+    GoogleTest to version 1.17.0, and the Unity to version 2.6.1,
+    incorporating the latest features and improvements for
+    enhanced testing capabilities
+  * Enhanced compatibility with the CCLS language server,
+    improving integration with editors like Emacs, Sublime Text,
+    and Vim (issue #5186)
+  * Improved error messages for package installation to make it
+    easier to understand when a package is missing or
+    incompatible (pull #5336).
+  * Fixed a regression issue where custom build flags were not
+    properly reflected in the compile_commands.json file,
+    ensuring accurate compilation database generation
+  * Fixed an issue where fully-qualified serial port URLs (e.g.,
+    ``rfc2217://host:port``) were incorrectly treated as wildcard
+    patterns (issue #5225)
+  * Fixed an issue where the toolchain path in static analysis
+    was not handled correctly if it contained spaces (pull #5351)
+  * Fixed installation failure when the executable path contains
+    spaces for ``postinstall`` scripts and handling both list and
+    string command formats (pull #5366)
+  * Fixed cleanup of the ``.pio/libdeps`` folder so that leftover
+    libraries are properly removed when the lib_deps option is
+    empty (issue #5110)
+
+-------------------------------------------------------------------
 Thu May 15 08:04:39 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 6.1.18

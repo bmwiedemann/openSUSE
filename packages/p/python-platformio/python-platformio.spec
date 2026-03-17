@@ -1,7 +1,7 @@
 #
 # spec file for package python-platformio
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-platformio
-Version:        6.1.18
+Version:        6.1.19
 Release:        0
 Summary:        New Generation Ecosystem for Embedded Development
 License:        Apache-2.0
