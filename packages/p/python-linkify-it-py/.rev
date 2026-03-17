@@ -41,4 +41,18 @@
 - initial commit of python-linkify-it-py at version 1.0.2</comment>
     <requestid>1145006</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>570c88fc4d6e3685e51af8a52706416e</srcmd5>
+    <version>2.1.0</version>
+    <time>1773770582</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.1.0:
+  * Drop support for EOL Python 3.7, 3.8
+  * Drop support for EOL Python 3.9 (#75) by @hugovk
+  * Add support for Python 3.14 (#75) by @hugovk
+  * Migrate to OIDC trusted publishing for PyPI and TestPyPI
+  * Add workflow permissions for security hardening
+  * Bump GitHub Actions dependencies</comment>
+    <requestid>1339429</requestid>
+  </revision>
 </revisionlist>

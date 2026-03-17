@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 16 20:25:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Drop support for EOL Python 3.7, 3.8
+  * Drop support for EOL Python 3.9 (#75) by @hugovk
+  * Add support for Python 3.14 (#75) by @hugovk
+  * Migrate to OIDC trusted publishing for PyPI and TestPyPI
+  * Add workflow permissions for security hardening
+  * Bump GitHub Actions dependencies
+
+-------------------------------------------------------------------
 Wed Feb  7 20:17:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.3:

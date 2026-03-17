@@ -1,7 +1,7 @@
 #
 # spec file for package python-linkify-it-py
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-linkify-it-py
-Version:        2.0.3
+Version:        2.1.0
 Release:        0
 Summary:        Links recognition library with FULL unicode support
 License:        MIT
