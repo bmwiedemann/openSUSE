@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 16 14:50:27 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Update to 17.00.0008:
+  * https://odbc.postgresql.org/docs/release.html
+- fix build for SLE-15 by forcing gcc 14
+
+-------------------------------------------------------------------
 Wed Feb 21 09:09:59 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

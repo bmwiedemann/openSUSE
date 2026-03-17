@@ -336,4 +336,14 @@
   %patchN.</comment>
     <requestid>1148469</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>58770989611a4cef46fc778be8f5a773</srcmd5>
+    <version>17.00.0008</version>
+    <time>1773770642</time>
+    <user>anag_factory</user>
+    <comment>- Update to 17.00.0008:
+  * https://odbc.postgresql.org/docs/release.html
+- fix build for SLE-15 by forcing gcc 14</comment>
+    <requestid>1339407</requestid>
+  </revision>
 </revisionlist>

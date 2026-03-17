@@ -1,7 +1,7 @@
 #
 # spec file for package psqlODBC
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,23 @@
 #
 
 
-%define         tarname psqlodbc
+%if %suse_version < 1600
+%define force_gcc_version 14
+%endif
+
 Name:           psqlODBC
-Version:        16.00.0000
+Version:        17.00.0008
+%define tarv    17_00_0008
 Release:        0
 Summary:        ODBC Driver for PostgreSQL
 License:        LGPL-2.1-or-later
 Group:          Productivity/Databases/Clients
 URL:            https://odbc.postgresql.org/
-Source0:        https://ftp.postgresql.org/pub/odbc/versions/src/%{tarname}-%{version}.tar.gz
+Source0:        https://github.com/postgresql-interfaces/psqlodbc/archive/refs/tags/REL-%{tarv}.tar.gz#/psqlodbc-REL-%{tarv}.tar.gz
 Patch0:         psqlODBC-internal.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  gcc%{?force_gcc_version} >= 8
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  postgresql-devel
@@ -45,9 +50,13 @@ sample configuration files needed for applications to access a
 PostgreSQL database using ODBC.
 
 %prep
-%autosetup -p1 -n %{tarname}-%{version}
+%autosetup -p1 -n psqlodbc-REL-%{tarv}
 
 %build
+./bootstrap
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+%endif
 export CPPFLAGS="-I/usr/include/pgsql"
 %configure --with-unixodbc
 make %{?_smp_mflags}
