@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 16 13:09:36 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.1.1
+  * ELF: MIPS r3000 (32-bit) shared libraries are now supported
+  * Support CETCOMPAT flag
+
+-------------------------------------------------------------------
 Thu Jan  8 09:26:05 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.1.0
