@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 16 21:31:13 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- split postgresql images in default and contrib variants
+
+-------------------------------------------------------------------
 Tue Mar 10 21:46:15 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove move files that make containers unreproducible
