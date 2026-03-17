@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Mar  9 17:13:33 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- version update to 4.24.1
+  * New features and detections
+    + feat(930140): add AI coding assistant artifact protection by
+      @etiennemunnich in #4519
+    + feat: Expand Scanner Agents by @HackingRepo in #4532
+  * Fixes
+    + fix(942200): prevent matches against user agent strings by
+      @theseion in #4537
+    + fix(942480): don't inspect cookies twice by @touchweb-vincent
+      in #4524
+ * Other Changes
+  + refactor: create 934130 .ra file by @Xhoenix in #4487
+  + refactor: create 941330 .ra file by @fzipi in #4492
+  + refactor: create 944300 .ra file by @fzipi in #4490
+  + refactor: create 941320 .ra file by @fzipi in #4491
+  + refactor: create 921160 .ra file by @fzipi in #4497
+  + refactor: create 921120 .ra file by @fzipi in #4496
+  + refactor: create 921110 .ra file by @fzipi in #4495
+  + feat: move 930110 to regex-assembly by @fzipi in #4494
+  + refactor: create 941190 .ra file by @fzipi in #4499
+  + refactor: create 941400 .ra file by @fzipi in #4517
+  + refactor: create 942250 .ra file by @fzipi in #4512
+  + refactor: create 941370 .ra file by @fzipi in #4518
+  + refactor: create 944260 .ra file by @fzipi in #4510
+  + feat: move 943100 to regex-assembly by @fzipi in #4504
+  + refactor: create 944120 .ra file by @fzipi in #4508
+  + refactor: create 942450 .ra file by @fzipi in #4513
+  + refactor: create 942510 and 942511 .ra files with shared 
+    include by @fzipi in #4516
+  + refactor: create 944240 .ra file by @fzipi in #4509
+  + docs: comment on threshold should be more alarming by
+    @touchweb-vincent in #4330
+  + chore: add missing regex-assembly comment blocks to rules by
+    @fzipi in #4523
+  + fix(913100): adding OWASP Nettacker to known scanners list
+    by @securestep9 in #4529
+  + refactor: create 941300 .ra file by @fzipi in #4521
+- for changelog for older releases see:
+  https://github.com/coreruleset/coreruleset/blob/v4.24.1/CHANGES.md
+
+-------------------------------------------------------------------
 Mon Dec 22 13:03:06 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 4.41.0
