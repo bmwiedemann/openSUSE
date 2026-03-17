@@ -2197,12 +2197,72 @@
   * Preserve file permissions when using reflinks on Linux</comment>
     <requestid>1336574</requestid>
   </revision>
-  <revision rev="82" vrev="2">
-    <srcmd5>eff1221bf14b995f767c6e8c1806668b</srcmd5>
-    <version>0.10.8</version>
-    <time>1772702444</time>
-    <user>adrianSuSE</user>
-    <comment>update</comment>
-    <requestid>1336696</requestid>
+  <revision rev="82" vrev="1">
+    <srcmd5>d3d69c1ef11034898a20ff04a717c31b</srcmd5>
+    <version>0.10.9</version>
+    <time>1773161843</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.10.9 
+ * Enhancements
+  * Add fbgemm-gpu, fbgemm-gpu-genai, torchrec, and torchtune to the PyTorch list 
+  * Add torchcodec to PyTorch List 
+  * Log the duration we took before erroring 
+  * Warn when using uv_build settings without uv_build 
+  * Add fallback to /usr/lib/os-release on Linux system lookup failure 
+  * Use cargo auditable to include SBOM in uv builds 
+ * Configuration
+  * Add an environment variable for UV_VENV_RELOCATABLE 
+ * Performance
+  * Avoid toml Document overhead 
+  * Use a single global workspace cache 
+ * Bug fixes
+  * Continue on trampoline job assignment failures 
+  * Handle the hard link limit gracefully instead of failing 
+  * Respect build constraints for workspace members 
+  * Revalidate editables and other dependencies in scripts 
+  * Support Python 3.13+ on Android 
+  * Support cp3-none-any 
+  * Skip tool environments with broken links to Python on Windows 
+ * Documentation
+  * Add documentation for common marker values 
+  * Improve documentation on virtual dependencies</comment>
+    <requestid>1337955</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>a41724039ac856dbc3dac8d30edcc3df</srcmd5>
+    <version>0.10.11</version>
+    <time>1773770600</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.10.11 
+ * Enhancements
+  * Fetch Ruff release metadata from an Astral mirror 
+  * Use PEP 639 license metadata for uv itself 
+ * Performance
+  * Improve distribution id performance 
+ * Bug fixes
+  * Allow --project to refer to a pyproject.toml directly and reduce to a warning on other files 
+  * Disable SYSTEM_VERSION_COMPAT when querying interpreters on macOS 
+  * Enforce available distributions for supported environments 
+  * Fix uv sync --active recreating active environments when UV_PYTHON_INSTALL_DIR is relative 
+ * Documentation
+  * Add missing -o requirements.txt in uv pip compile example 
+  * Link to organization security policy 
+  * Link to the AI policy in the contributing guide 
+
+- Update vendor.tar.zst (bsc#1259624, CVE-2026-31812)
+- Ignore rsa Marvin Attack risk RUSTSEC-2023-0071 in cargo-vendor. The
+  potential key recovery through timing sidechannels doesn't affect uv
+  as it's intended to be used locally as a developer tool
+  https://rustsec.org/advisories/RUSTSEC-2023-0071.html
+- update to 0.10.10
+  * Enhancements
+    * Add --outdated flag to uv tool list 
+    * Add riscv64 musl target to build-release-binaries workflow 
+    * Fetch Ruff from an Astral mirror 
+    * Improve error handling for platform detection in Python downloads 
+    * Warn if --project directory does not exist 
+    * Warn when workspace member scripts are skipped due to missing build system 
+    * Update build backend versions used in uv init</comment>
+    <requestid>1339580</requestid>
   </revision>
 </revisionlist>

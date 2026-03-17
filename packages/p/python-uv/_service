@@ -5,5 +5,10 @@
      <param name="src">python-uv*.tar.gz</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
+     <!--
+       https://rustsec.org/advisories/RUSTSEC-2023-0071.html
+       rsa (0.9.10) Marvin Attack: potential key recovery through timing sidechannels
+     -->
+     <param name="i-accept-the-risk">RUSTSEC-2023-0071.md</param>
   </service>
 </services>

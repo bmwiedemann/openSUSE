@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Tue Mar 17 11:34:26 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.10.11 
+ * Enhancements
+  * Fetch Ruff release metadata from an Astral mirror 
+  * Use PEP 639 license metadata for uv itself 
+ * Performance
+  * Improve distribution id performance 
+ * Bug fixes
+  * Allow --project to refer to a pyproject.toml directly and reduce to a warning on other files 
+  * Disable SYSTEM_VERSION_COMPAT when querying interpreters on macOS 
+  * Enforce available distributions for supported environments 
+  * Fix uv sync --active recreating active environments when UV_PYTHON_INSTALL_DIR is relative 
+ * Documentation
+  * Add missing -o requirements.txt in uv pip compile example 
+  * Link to organization security policy 
+  * Link to the AI policy in the contributing guide 
+
+-------------------------------------------------------------------
+Mon Mar 16 09:29:33 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update vendor.tar.zst (bsc#1259624, CVE-2026-31812)
+- Ignore rsa Marvin Attack risk RUSTSEC-2023-0071 in cargo-vendor. The
+  potential key recovery through timing sidechannels doesn't affect uv
+  as it's intended to be used locally as a developer tool
+  https://rustsec.org/advisories/RUSTSEC-2023-0071.html
+- update to 0.10.10
+  * Enhancements
+    * Add --outdated flag to uv tool list 
+    * Add riscv64 musl target to build-release-binaries workflow 
+    * Fetch Ruff from an Astral mirror 
+    * Improve error handling for platform detection in Python downloads 
+    * Warn if --project directory does not exist 
+    * Warn when workspace member scripts are skipped due to missing build system 
+    * Update build backend versions used in uv init 
+    * Log explicit config file path in verbose output 
+    * Make uv cache clear an alias of uv cache clean 
+    * Reject invalid classifiers, warn on license classifiers in uv_build 
+  * Preview features
+    * Add links to uv audit output 
+    * Output/report formatting for uv audit 
+    * Switch to batched OSV queries for uv audit 
+  * Bug fixes
+    * Avoid sharing version metadata across indexes 
+    * Bump zlib-rs to 0.6.2 to fix panic on decompression of large wheels on Windows 
+    * Filter out unsupported environment wheels 
+    * Preserve absolute/relative paths in lockfiles 
+    * Recreate Python environments under uv tool install --force 
+    * Respect timestamp and other cache keys in cached environments 
+    * Simplify selected extra markers in uv export 
+    * Send pyx mint-token requests with a proper Content-Type 
+    * Fix Windows operating system and version reporting 
+  * Documentation
+    * Update the platform support policy with a tier 3 section including freebsd and 32-bit windows 
+
+-------------------------------------------------------------------
+Tue Mar 10 11:21:07 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.10.9 
+ * Enhancements
+  * Add fbgemm-gpu, fbgemm-gpu-genai, torchrec, and torchtune to the PyTorch list 
+  * Add torchcodec to PyTorch List 
+  * Log the duration we took before erroring 
+  * Warn when using uv_build settings without uv_build 
+  * Add fallback to /usr/lib/os-release on Linux system lookup failure 
+  * Use cargo auditable to include SBOM in uv builds 
+ * Configuration
+  * Add an environment variable for UV_VENV_RELOCATABLE 
+ * Performance
+  * Avoid toml Document overhead 
+  * Use a single global workspace cache 
+ * Bug fixes
+  * Continue on trampoline job assignment failures 
+  * Handle the hard link limit gracefully instead of failing 
+  * Respect build constraints for workspace members 
+  * Revalidate editables and other dependencies in scripts 
+  * Support Python 3.13+ on Android 
+  * Support cp3-none-any 
+  * Skip tool environments with broken links to Python on Windows 
+ * Documentation
+  * Add documentation for common marker values 
+  * Improve documentation on virtual dependencies 
+
+-------------------------------------------------------------------
 Wed Mar  4 17:40:36 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.10.8 
