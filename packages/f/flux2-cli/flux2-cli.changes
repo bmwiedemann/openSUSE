@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 16 15:15:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.8.3:
+  * [release/v2.8.x] Add target branch name to update branch by
+    @fluxcdbot in #5774
+  * Update toolkit components by @fluxcdbot in #5779
+
+-------------------------------------------------------------------
 Fri Mar 13 06:08:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.8.2:
