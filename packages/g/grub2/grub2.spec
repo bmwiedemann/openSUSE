@@ -399,6 +399,7 @@ Patch409:       0001-bls-Allow-configuration-of-active-console-type.patch
 Patch410:       0002-grubbls-Add-automatic-fwsetup-menu-entry.patch
 Patch411:       0001-ieee1275-support-dm-multipath-bootlist.patch
 Patch412:       grub2-bls-loader-config-timeout-fix.patch
+Patch413:       0001-mdraid1x-fix-raid_disks-decoding-on-big-endian-syste.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime

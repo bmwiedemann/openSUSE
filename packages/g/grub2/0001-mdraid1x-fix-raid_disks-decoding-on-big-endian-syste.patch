@@ -1,0 +1,66 @@
+From 8d188f597796e8559ddc4bf7c9725fede770d486 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Tue, 17 Mar 2026 10:03:46 +0800
+Subject: [PATCH] mdraid1x: fix raid_disks decoding on big-endian systems
+
+Commit 99b4c0c38 added mdraid 1.x superblock validation to prevent
+infinite recursion, but it converts the 32-bit sb.raid_disks field with
+grub_le_to_cpu64().
+
+On big-endian systems this misdecodes valid metadata, so
+grub_mdraid_detect() rejects mdraid 1.x arrays and never registers the
+mduuid/... device. Affected systems then fail to boot with "disk
+`mduuid/<UUID>' not found".
+
+Read sb.raid_disks with grub_le_to_cpu32() and reuse the converted value
+for validation and superblock size calculation. This restores mdraid 1.x
+detection on big-endian systems and allows them to boot again.
+
+Fixes: 99b4c0c38 ("mdraid1x: add superblock validation to prevent
+infinite recursion")
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/disk/mdraid1x_linux.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/grub-core/disk/mdraid1x_linux.c b/grub-core/disk/mdraid1x_linux.c
+index e8ff0b534..a239a568c 100644
+--- a/grub-core/disk/mdraid1x_linux.c
++++ b/grub-core/disk/mdraid1x_linux.c
+@@ -134,6 +134,7 @@ grub_mdraid_detect (grub_disk_t disk,
+       struct grub_diskfilter_vg *array;
+       char *uuid;
+       grub_uint64_t sb_sz, data_end, sb_end;
++      grub_uint32_t raid_disks;
+ 
+       if (size == GRUB_DISK_SIZE_UNKNOWN && minor_version == 0)
+ 	continue;
+@@ -159,12 +160,14 @@ grub_mdraid_detect (grub_disk_t disk,
+ 	  || grub_le_to_cpu64 (sb.super_offset) != sector)
+ 	continue;
+ 
++      raid_disks = grub_le_to_cpu32 (sb.raid_disks);
++
+       /*
+        * The first check follows the Linux kernel's data_size
+        * validation from v6.8-rc5.
+        */
+       if (grub_le_to_cpu64 (sb.data_size) < 10 ||
+-	  grub_le_to_cpu64 (sb.raid_disks) > GRUB_MDRAID_MAX_DISKS)
++	  raid_disks > GRUB_MDRAID_MAX_DISKS)
+ 	{
+ 	  grub_dprintf ("mdraid1x", "Corrupted superblock\n");
+ 	  return NULL;
+@@ -174,7 +177,7 @@ grub_mdraid_detect (grub_disk_t disk,
+        * Total size of superblock: 256 bytes plus 2 bytes per device
+        * in the array.
+        */
+-      sb_sz = sizeof (struct grub_raid_super_1x) + grub_le_to_cpu64 (sb.raid_disks) * 2;
++      sb_sz = sizeof (struct grub_raid_super_1x) + raid_disks * 2;
+ 
+       if (grub_add (grub_le_to_cpu64 (sb.super_offset),
+ 		    (ALIGN_UP(sb_sz, GRUB_MD_SECTOR_SIZE) >> GRUB_MD_SECTOR_SHIFT), &sb_end))
+-- 
+2.53.0
+
