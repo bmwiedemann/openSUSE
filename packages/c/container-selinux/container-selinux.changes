@@ -1,3 +1,12 @@
+Mon Mar 16 09:20:21 UTC 2026 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 2.247.0:
+  * Allow user_u users to run podman containers
+  * Allow staff_t and user_t to start podman.socket via systemd
+  * Add missing type transitions for overlay-containers directories
+  * container_t: allow listen on smc_socket
+  * Condition ptrace permission on deny_ptrace boolean
+
 -------------------------------------------------------------------
 Thu Feb 19 15:14:17 UTC 2026 - Johannes Segitz <jsegitz@suse.com>
 
