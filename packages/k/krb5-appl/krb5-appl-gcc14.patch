@@ -1,6 +1,25 @@
---- a/gssftp/ftp/cmds.c	2009-11-05 21:15:06.000000000 +0100
-+++ b/gssftp/ftp/cmds.c	2024-05-13 14:34:00.392581022 +0200
-@@ -313,6 +313,7 @@ char *plevel[] = {
+Index: krb5-appl-1.0.3/gssftp/ftp/cmds.c
+===================================================================
+--- krb5-appl-1.0.3.orig/gssftp/ftp/cmds.c
++++ krb5-appl-1.0.3/gssftp/ftp/cmds.c
+@@ -79,7 +79,6 @@ static char sccsid[] = "@(#)cmds.c	5.26
+ 
+ extern	char *globerr;
+ extern	char *home;
+-extern	char *remglob();
+ #ifndef HAVE_STRERROR
+ #define strerror(error) (sys_errlist[error])
+ #ifdef NEED_SYS_ERRLIST
+@@ -146,7 +145,7 @@ void setpeer(argc, argv)
+ 	int argc;
+ 	char *argv[];
+ {
+-	char *host, *hookup();
++	char *host;
+ 	unsigned short port;
+ 
+ 	if (connected) {
+@@ -313,6 +312,7 @@ char *plevel[] = {
   * Set control channel protection level.
   */
  void setclevel(argc, argv)
@@ -8,7 +27,7 @@
  	char *argv[];
  {
  	register struct levels *p;
-@@ -366,6 +367,7 @@ void setclevel(argc, argv)
+@@ -366,6 +366,7 @@ void setclevel(argc, argv)
   */
  void
  setdlevel(argc, argv)
@@ -16,7 +35,16 @@
  	char *argv[];
  {
  	register struct levels *p;
-@@ -848,6 +850,7 @@ void get(argc, argv)
+@@ -712,7 +713,7 @@ void mput(argc, argv)
+ 	char **argv;
+ {
+ 	register int i;
+-	sig_t oldintr;
++	sighandler_t oldintr;
+ 	int ointer;
+ 	char *tp;
+ 
+@@ -848,6 +849,7 @@ void get(argc, argv)
  static int getit(argc, argv, restartit, rmode)
  	int argc;
  	char *argv[];
@@ -24,7 +52,30 @@
  	char *rmode;
  {
  	int loc = 0;
-@@ -1165,6 +1168,7 @@ static void cstatus()
+@@ -984,7 +986,7 @@ void mget(argc, argv)
+ 	int argc;
+ 	char **argv;
+ {
+-	sig_t oldintr;
++	sighandler_t oldintr;
+ 	int ointer;
+ 	char *cp, *tp, *tp2, tmpbuf[MAXPATHLEN];
+ 
+@@ -1122,11 +1124,10 @@ remglob(argv,doswitch)
+ }
+ 
+ static char *
+-onoff(bool)
+-	int bool;
++onoff(int xbool)
+ {
+ 
+-	return (bool ? "on" : "off");
++	return (xbool ? "on" : "off");
+ }
+ 
+ static void cstatus()
+@@ -1165,6 +1166,7 @@ static void cstatus()
   */
  /*ARGSUSED*/
  void status(argc, argv)
@@ -32,9 +83,227 @@
  	char *argv[];
  {
  	int i;
---- a/telnet/telnet/commands.c	2011-07-11 21:30:55.000000000 +0200
-+++ b/telnet/telnet/commands.c	2024-05-13 14:35:18.756434224 +0200
-@@ -1892,6 +1892,7 @@ env_list()
+@@ -1383,7 +1385,7 @@ void mdelete(argc, argv)
+ 	int argc;
+ 	char **argv;
+ {
+-	sig_t oldintr;
++	sighandler_t oldintr;
+ 	int ointer;
+ 	char *cp;
+ 
+@@ -1477,7 +1479,7 @@ void mls(argc, argv)
+ 	int argc;
+ 	char **argv;
+ {
+-	sig_t oldintr;
++	sighandler_t oldintr;
+ 	int ointer, i;
+ 	char *volatile cmd, rmode[1], *dest;
+ 
+@@ -1599,7 +1601,7 @@ void shell(argc, argv)
+ 	char **argv;
+ {
+ 	int pid;
+-	sig_t old1, old2;
++	sighandler_t old1, old2;
+ 	char shellnam[40], *shellprog, *namep; 
+ #ifdef WAIT_USES_INT
+ 	int w_status;
+@@ -2027,8 +2029,7 @@ void doproxy(argc,argv)
+ 	char *argv[];
+ {
+ 	register struct cmd *c;
+-	struct cmd *getcmd();
+-	sig_t oldintr;
++	sighandler_t oldintr;
+ 
+ 	if (argc < 2 && !another(&argc, &argv, "command")) {
+ 		printf("usage: %s command\n", argv[0]);
+@@ -2373,7 +2374,6 @@ void restart(argc, argv)
+ 	int argc;
+ 	char *argv[];
+ {
+-	extern long atol();
+ 	if (argc != 2)
+ 		printf("restart: offset not specified\n");
+ 	else {
+Index: krb5-appl-1.0.3/telnet/telnet/commands.c
+===================================================================
+--- krb5-appl-1.0.3.orig/telnet/telnet/commands.c
++++ krb5-appl-1.0.3/telnet/telnet/commands.c
+@@ -125,17 +125,15 @@ char	*hostname;
+ static char _hostname[MAXDNAME];
+ static char hostaddrstring[NI_MAXHOST];
+ 
+-extern char *getenv();
++extern char **genget (char *, char **, int);
++extern int isprefix(char*,char*);
++extern int Ambiguous(void*);
+ 
+-extern int isprefix();
+-extern char **genget();
+-extern int Ambiguous();
+-
+-typedef int (*intrtn_t)();
++typedef int (*intrtn_t)(int, char**);
+ static int call (intrtn_t, ...);
+ void cmdrc (char *, char *);
+ static    int
+-send_tncmd (void (*func)(), char *, char *);
++send_tncmd (void (*func)(int,int), char *, char *);
+ static int help(int, char **);
+ 
+ typedef struct {
+@@ -451,7 +449,7 @@ send_wontcmd(name)
+ 
+ static    int
+ send_tncmd(func, cmd, name)
+-    void	(*func)();
++    void	(*func)(int,int);
+     char	*cmd, *name;
+ {
+     char **cpp;
+@@ -899,7 +897,7 @@ struct termio new_tc = { 0 };
+ struct setlist {
+     char *name;				/* name */
+     char *help;				/* help information */
+-    void (*handler)();
++    void (*handler)(char*);
+     cc_t *charp;			/* where it is located at */
+ };
+ 
+@@ -1200,7 +1198,7 @@ tel_clearmode(bit)
+ struct modelist {
+ 	char	*name;		/* command name */
+ 	char	*help;		/* help string */
+-	int	(*handler)();	/* routine which executes command */
++	int	(*handler)(int);	/* routine which executes command */
+ 	int	needconnect;	/* Do we need to be connected to execute? */
+ 	int	arg1;
+ };
+@@ -1208,34 +1206,34 @@ struct modelist {
+ static int modehelp(void);
+ 
+ static struct modelist ModeList[] = {
+-    { "character", "Disable LINEMODE option",	docharmode, 1 },
++    { "character", "Disable LINEMODE option",	(void*)docharmode, 1 },
+ #ifdef	KLUDGELINEMODE
+     { "",	"(or disable obsolete line-by-line mode)", 0 },
+ #endif
+-    { "line",	"Enable LINEMODE option",	dolinemode, 1 },
++    { "line",	"Enable LINEMODE option",	(void*)dolinemode, 1 },
+ #ifdef	KLUDGELINEMODE
+     { "",	"(or enable obsolete line-by-line mode)", 0 },
+ #endif
+     { "", "", 0 },
+     { "",	"These require the LINEMODE option to be enabled", 0 },
+-    { "isig",	"Enable signal trapping",	tel_setmode, 1, MODE_TRAPSIG },
+-    { "+isig",	0,				tel_setmode, 1, MODE_TRAPSIG },
+-    { "-isig",	"Disable signal trapping",	tel_clearmode, 1, MODE_TRAPSIG },
+-    { "edit",	"Enable character editing",	tel_setmode, 1, MODE_EDIT },
+-    { "+edit",	0,				tel_setmode, 1, MODE_EDIT },
+-    { "-edit",	"Disable character editing",	tel_clearmode, 1, MODE_EDIT },
+-    { "softtabs", "Enable tab expansion",	tel_setmode, 1, MODE_SOFT_TAB },
+-    { "+softtabs", 0,				tel_setmode, 1, MODE_SOFT_TAB },
+-    { "-softtabs", "Disable character editing",	tel_clearmode, 1, MODE_SOFT_TAB },
+-    { "litecho", "Enable literal character echo", tel_setmode, 1, MODE_LIT_ECHO },
+-    { "+litecho", 0,				tel_setmode, 1, MODE_LIT_ECHO },
+-    { "-litecho", "Disable literal character echo", tel_clearmode, 1, MODE_LIT_ECHO },
+-    { "help",	0,				modehelp, 0 },
++    { "isig",	"Enable signal trapping",	(void*)tel_setmode, 1, MODE_TRAPSIG },
++    { "+isig",	0,				(void*)tel_setmode, 1, MODE_TRAPSIG },
++    { "-isig",	"Disable signal trapping",	(void*)tel_clearmode, 1, MODE_TRAPSIG },
++    { "edit",	"Enable character editing",	(void*)tel_setmode, 1, MODE_EDIT },
++    { "+edit",	0,				(void*)tel_setmode, 1, MODE_EDIT },
++    { "-edit",	"Disable character editing",	(void*)tel_clearmode, 1, MODE_EDIT },
++    { "softtabs", "Enable tab expansion",	(void*)tel_setmode, 1, MODE_SOFT_TAB },
++    { "+softtabs", 0,				(void*)tel_setmode, 1, MODE_SOFT_TAB },
++    { "-softtabs", "Disable character editing",	(void*)tel_clearmode, 1, MODE_SOFT_TAB },
++    { "litecho", "Enable literal character echo", (void*)tel_setmode, 1, MODE_LIT_ECHO },
++    { "+litecho", 0,				(void*)tel_setmode, 1, MODE_LIT_ECHO },
++    { "-litecho", "Disable literal character echo", (void*)tel_clearmode, 1, MODE_LIT_ECHO },
++    { "help",	0,				(void*)modehelp, 0 },
+ #ifdef	KLUDGELINEMODE
+-    { "kludgeline", 0,				dokludgemode, 1 },
++    { "kludgeline", 0,				(void*)dokludgemode, 1 },
+ #endif
+     { "", "", 0 },
+-    { "?",	"Print help information",	modehelp, 0 },
++    { "?",	"Print help information",	(void*)modehelp, 0 },
+     { 0 },
+ };
+ 
+@@ -1545,7 +1543,7 @@ logout(argc, argv)
+ struct slclist {
+ 	char	*name;
+ 	char	*help;
+-	void	(*handler)();
++	void	(*handler)(int);
+ 	int	arg;
+ };
+ 
+@@ -1553,13 +1551,13 @@ static void slc_help(void);
+ 
+ struct slclist SlcList[] = {
+     { "export",	"Use local special character definitions",
+-						slc_mode_export,	0 },
++						(void*)slc_mode_export,	0 },
+     { "import",	"Use remote special character definitions",
+-						slc_mode_import,	1 },
++						(void*)slc_mode_import,	1 },
+     { "check",	"Verify remote special character definitions",
+-						slc_mode_import,	0 },
+-    { "help",	0,				slc_help,		0 },
+-    { "?",	"Print help information",	slc_help,		0 },
++						(void*)slc_mode_import,	0 },
++    { "help",	0,				(void*)slc_help,		0 },
++    { "?",	"Print help information",	(void*)slc_help,		0 },
+     { 0 },
+ };
+ 
+@@ -1621,7 +1619,7 @@ slccmd(argc, argv)
+ struct envlist {
+ 	char	*name;
+ 	char	*help;
+-	void	(*handler)();
++	void	(*handler)(char*,char*);
+ 	int	narg;
+ };
+ 
+@@ -1641,22 +1639,22 @@ static void
+ 
+ struct envlist EnvList[] = {
+     { "define",	"Define an environment variable",
+-						(void (*)())env_define,	2 },
++						(void *)env_define,	2 },
+     { "undefine", "Undefine an environment variable",
+-						env_undefine,	1 },
++						(void*)env_undefine,	1 },
+     { "export",	"Mark an environment variable for automatic export",
+-						env_export,	1 },
++						(void*)env_export,	1 },
+     { "unexport", "Don't mark an environment variable for automatic export",
+-						env_unexport,	1 },
+-    { "send",	"Send an environment variable", env_send,	1 },
++						(void*)env_unexport,	1 },
++    { "send",	"Send an environment variable", (void*)env_send,	1 },
+     { "list",	"List the current environment variables",
+-						env_list,	0 },
++						(void*)env_list,	0 },
+ #if defined(OLD_ENVIRON) && defined(ENV_HACK)
+     { "varval", "Reverse VAR and VALUE (auto, right, wrong, status)",
+-						env_varval,    1 },
++						(void*)env_varval,    1 },
+ #endif
+-    { "help",	0,				env_help,		0 },
+-    { "?",	"Print help information",	env_help,		0 },
++    { "help",	0,				(void*)env_help,		0 },
++    { "?",	"Print help information",	(void*)env_help,		0 },
+     { 0 },
+ };
+ 
+@@ -1892,6 +1890,7 @@ env_list()
  	unsigned char *
  env_default(init, welldefined)
  	int init;
@@ -42,8 +311,131 @@
  {
  	static struct env_lst *nep = NULL;
  
---- a/telnet/telnet/sys_bsd.c	2011-07-11 21:30:25.000000000 +0200
-+++ b/telnet/telnet/sys_bsd.c	2024-05-13 14:37:31.397316323 +0200
+@@ -1976,7 +1975,7 @@ unknown:
+ struct authlist {
+ 	char	*name;
+ 	char	*help;
+-	int	(*handler)();
++	int	(*handler)(char*,char*);
+ 	int	narg;
+ };
+ 
+@@ -1989,13 +1988,13 @@ static int
+ 
+ struct authlist AuthList[] = {
+     { "status",	"Display current status of authentication information",
+-						auth_status,	0 },
++						(void*)auth_status,	0 },
+     { "disable", "Disable an authentication type ('auth disable ?' for more)",
+-						auth_disable,	1 },
++						(void*)auth_disable,	1 },
+     { "enable", "Enable an authentication type ('auth enable ?' for more)",
+-						auth_enable,	1 },
+-    { "help",	0,				auth_help,		0 },
+-    { "?",	"Print help information",	auth_help,		0 },
++						(void*)auth_enable,	1 },
++    { "help",	0,				(void*)auth_help,		0 },
++    { "?",	"Print help information",	(void*)auth_help,		0 },
+     { 0 },
+ };
+ 
+@@ -2059,7 +2058,7 @@ auth_cmd(argc, argv)
+ struct encryptlist {
+ 	char	*name;
+ 	char	*help;
+-	int	(*handler)();
++	int	(*handler)(char*,char*,char*);
+ 	int	needconnect;
+ 	int	minarg;
+ 	int	maxarg;
+@@ -2081,28 +2080,28 @@ static int
+ 
+ struct encryptlist EncryptList[] = {
+     { "enable", "Enable encryption. ('encrypt enable ?' for more)",
+-						EncryptEnable, 1, 1, 2 },
++						(void*)EncryptEnable, 1, 1, 2 },
+     { "disable", "Disable encryption. ('encrypt enable ?' for more)",
+-						EncryptDisable, 0, 1, 2 },
++						(void*)EncryptDisable, 0, 1, 2 },
+     { "type", "Set encryption type. ('encrypt type ?' for more)",
+-						EncryptType, 0, 1, 1 },
++						(void*)EncryptType, 0, 1, 1 },
+     { "start", "Start encryption. ('encrypt start ?' for more)",
+-						EncryptStart, 1, 0, 1 },
++						(void*)EncryptStart, 1, 0, 1 },
+     { "stop", "Stop encryption. ('encrypt stop ?' for more)",
+-						EncryptStop, 1, 0, 1 },
++						(void*)EncryptStop, 1, 0, 1 },
+     { "input", "Start encrypting the input stream",
+-						EncryptStartInput, 1, 0, 0 },
++						(void*)EncryptStartInput, 1, 0, 0 },
+     { "-input", "Stop encrypting the input stream",
+-						EncryptStopInput, 1, 0, 0 },
++						(void*)EncryptStopInput, 1, 0, 0 },
+     { "output", "Start encrypting the output stream",
+-						EncryptStartOutput, 1, 0, 0 },
++						(void*)EncryptStartOutput, 1, 0, 0 },
+     { "-output", "Stop encrypting the output stream",
+-						EncryptStopOutput, 1, 0, 0 },
++						(void*)EncryptStopOutput, 1, 0, 0 },
+ 
+     { "status",	"Display current status of authentication information",
+-						EncryptStatus,	0, 0, 0 },
+-    { "help",	0,				EncryptHelp,	0, 0, 0 },
+-    { "?",	"Print help information",	EncryptHelp,	0, 0, 0 },
++						(void*)EncryptStatus,	0, 0, 0 },
++    { "help",	0,				(void*)EncryptHelp,	0, 0, 0 },
++    { "?",	"Print help information",	(void*)EncryptHelp,	0, 0, 0 },
+     { 0 },
+ };
+ 
+@@ -2185,7 +2184,7 @@ extern int forward_flags;
+ struct forwlist {
+ 	char	*name;
+ 	char	*help;
+-	int	(*handler)();
++	int	(*handler)(int);
+ 	int	f_flags;
+ };
+ 
+@@ -2196,18 +2195,18 @@ static int
+ 
+ struct forwlist ForwList[] = {
+     { "status",	"Display current status of credential forwarding",
+-						forw_status,	0 },
++						(void*)forw_status,	0 },
+     { "disable", "Disable credential forwarding",
+-						forw_set,	0 },
++						(void*)forw_set,	0 },
+     { "enable", "Enable credential forwarding",
+-						forw_set,
++						(void*)forw_set,
+ 						OPTS_FORWARD_CREDS },
+     { "forwardable", "Enable credential forwarding of forwardable credentials",
+-						forw_set,
++						(void*)forw_set,
+ 						OPTS_FORWARD_CREDS |
+ 						OPTS_FORWARDABLE_CREDS },
+-    { "help",	0,				forw_help,		0 },
+-    { "?",	"Print help information",	forw_help,		0 },
++    { "help",	0,				(void*)forw_help,		0 },
++    { "?",	"Print help information",	(void*)forw_help,		0 },
+     { 0 },
+ };
+ 
+@@ -2714,7 +2713,7 @@ static char
+ 	envhelp[] =	"change environment variables ('environ ?' for more)",
+ 	modestring[] = "try to enter line or character mode ('mode ?' for more)";
+ 
+-static int	help();
++static int	help(int argc,char**);
+ 
+ static Command cmdtab[] = {
+ 	{ "close",	closehelp,	bye,		1 },
+Index: krb5-appl-1.0.3/telnet/telnet/sys_bsd.c
+===================================================================
+--- krb5-appl-1.0.3.orig/telnet/telnet/sys_bsd.c
++++ krb5-appl-1.0.3/telnet/telnet/sys_bsd.c
 @@ -977,6 +977,11 @@ sys_telnet_init()
  
      int
@@ -56,4 +448,762 @@
      int poll;		/* If 0, then block until something to do */
  {
      register int c;
-
+Index: krb5-appl-1.0.3/bsd/krlogin.c
+===================================================================
+--- krb5-appl-1.0.3.orig/bsd/krlogin.c
++++ krb5-appl-1.0.3/bsd/krlogin.c
+@@ -164,7 +164,7 @@ char copyright[] =
+      
+ #define RLOGIN_BUFSIZ 5120
+ 
+-void try_normal();
++void try_normal(char**);
+ char *krb_realm = (char *)0;
+ int encrypt_flag = 0;
+ int fflag = 0, Fflag = 0;
+@@ -192,8 +192,6 @@ krb5_auth_context auth_context;
+ struct termios deftty;
+ #endif
+ 
+-char	*getenv();
+-
+ char	*name;
+ int 	rem = -1;		/* Remote socket fd */
+ int	do_inband = 0;
+@@ -256,7 +254,7 @@ krb5_sigtype	sigwinch (int);
+ int server_message (int);
+ void oob (void);
+ krb5_sigtype	lostpeer (int);
+-void setsignal (int sig, krb5_sigtype (*act)());
++void setsignal (int sig, krb5_sigtype (*act)(int));
+ static int read_wrapper(int fd, char *buf, size_t size, int *got_esc);
+ static void prf(char *f);
+ void try_normal(char **);
+@@ -276,7 +274,7 @@ static int confirm_death (void);
+ 
+ 
+ /* to allow exits from signal handlers, without conflicting declarations */
+-static krb5_sigtype exit_handler() {
++static krb5_sigtype exit_handler(int) {
+   exit(1);
+ }
+ 
+@@ -837,7 +835,7 @@ static void doit(oldmask)
+ void
+ setsignal(sig, act)
+      int sig;
+-     krb5_sigtype (*act)();
++     krb5_sigtype (*act)(int);
+ {
+ #ifdef POSIX_SIGNALS
+     sigset_t omask, igmask;
+@@ -1637,8 +1635,7 @@ prf(f)
+ 
+ 
+ #ifdef KERBEROS
+-void try_normal(argv)
+-     char **argv;
++void try_normal(char**argv)
+ {
+     register char *nhost;
+ #ifdef POSIX_SIGNALS
+Index: krb5-appl-1.0.3/bsd/krcp.c
+===================================================================
+--- krb5-appl-1.0.3.orig/bsd/krcp.c
++++ krb5-appl-1.0.3/bsd/krcp.c
+@@ -84,9 +84,8 @@ krb5_context bsd_context;
+ void	try_normal(char **);
+ char	**save_argv(int, char **);
+ #ifndef HAVE_STRSAVE
+-char	*strsave();
++char	*strsave(const char*);
+ #endif
+-int	rcmd_stream_write(), rcmd_stream_read();
+ void 	usage(void), sink(int, char **),
+     source(int, char **), rsource(char *, struct stat *), verifydir(char *);
+ int	response(void), hosteq(char *, char *), okname(char *), 
+Index: krb5-appl-1.0.3/bsd/krshd.c
+===================================================================
+--- krb5-appl-1.0.3.orig/bsd/krshd.c
++++ krb5-appl-1.0.3/bsd/krshd.c
+@@ -562,7 +562,6 @@ void doit(f, fromp)
+ #endif
+     int valid_checksum;
+     int cnt;
+-    char *crypt();
+     struct passwd *pwd;
+     char *path;
+ #ifdef CRAY
+@@ -571,7 +570,6 @@ void doit(f, fromp)
+     struct udb ue_static;
+     extern struct udb *getudbnam();
+ #endif
+-    extern struct passwd *getpwnam(), *getpwuid();
+     static int      jid;
+     int error();
+     int paddr;
+Index: krb5-appl-1.0.3/bsd/login.c
+===================================================================
+--- krb5-appl-1.0.3.orig/bsd/login.c
++++ krb5-appl-1.0.3/bsd/login.c
+@@ -267,7 +267,6 @@ char term[64], *username;
+ #define NO_MAILCHECK
+ #endif
+ 
+-char *getenv();
+ void dofork(void);
+ 
+ char *stypeof(char *);
+@@ -420,7 +419,6 @@ static int unix_passwd_okay (pass)
+     char *pass;
+ {
+     char user_pwcopy[9], *namep;
+-    char *crypt ();
+ 
+     assert (pwd != 0);
+ 
+@@ -727,7 +725,6 @@ int main(argc, argv)
+     int quietlog, passwd_req, ioctlval;
+     char *domain, **envinit, *ttyn, *tty;
+     char tbuf[MAXPATHLEN + 2];
+-    char *ttyname(), *crypt(), *getpass();
+     time_t login_time;
+     int retval;
+     int rewrite_ccache = 1; /*try to write out ccache*/
+@@ -740,7 +737,6 @@ int main(argc, argv)
+     char *tz = 0;
+     char *hostname = 0;
+ 
+-    off_t lseek();
+     handler sa;
+ 
+     handler_init (sa, timedout);
+@@ -1776,7 +1772,7 @@ void sleepexit(eval)
+ static int hungup = 0;
+ 
+ static sigtype
+-sighup() {
++sighup(int x) {
+     hungup = 1;
+ }
+ 
+Index: krb5-appl-1.0.3/bsd/krlogind.c
+===================================================================
+--- krb5-appl-1.0.3.orig/bsd/krlogind.c
++++ krb5-appl-1.0.3/bsd/krlogind.c
+@@ -210,11 +210,6 @@ char copyright[] =
+ #define killpg(pid, sig) kill(-(pid), (sig))
+ #endif
+ 
+-#ifdef HAVE_PTSNAME
+-/* HP/UX 9.04 has but does not declare ptsname.  */
+-extern char *ptsname ();
+-#endif
+-
+ #ifdef NO_WINSIZE
+ struct winsize {
+     unsigned short ws_row, ws_col;
+@@ -551,7 +546,6 @@ int main(argc, argv)
+ int	child;
+ int	netf;
+ char	line[MAXPATHLEN];
+-extern	char	*inet_ntoa();
+ 
+ #ifdef TIOCSWINSZ
+ struct winsize win = { 0, 0, 0, 0 };
+Index: krb5-appl-1.0.3/gssftp/ftp/domacro.c
+===================================================================
+--- krb5-appl-1.0.3.orig/gssftp/ftp/domacro.c
++++ krb5-appl-1.0.3/gssftp/ftp/domacro.c
+@@ -55,7 +55,7 @@ void domacro(argc, argv)
+ 	int count = 2, loopflg = 0;
+ 	char line2[200];
+ 	extern char **glob();
+-	struct cmd *getcmd(), *c;
++	struct cmd *c;
+ 
+ 	if (argc < 2 && !another(&argc, &argv, "macro name")) {
+ 		printf("Usage: %s macro_name.\n", argv[0]);
+Index: krb5-appl-1.0.3/gssftp/ftp/ftp_var.h
+===================================================================
+--- krb5-appl-1.0.3.orig/gssftp/ftp/ftp_var.h
++++ krb5-appl-1.0.3/gssftp/ftp/ftp_var.h
+@@ -155,7 +155,7 @@ struct cmd {
+ 	char	c_bell;		/* give bell when command completes */
+ 	char	c_conn;		/* must be connected to use command */
+ 	char	c_proxy;	/* proxy server may execute */
+-	void	(*c_handler)();	/* function to call */
++	void	(*c_handler)(int argc, char**argv);	/* function to call */
+ };
+ 
+ struct macel {
+@@ -173,9 +173,6 @@ extern char macbuf[4096];
+ #endif
+ 
+ extern	char *tail();
+-#ifndef _WIN32
+-extern	char *mktemp();
+-#endif
+ 
+ extern int command(char *, ...)
+ #if !defined(__cplusplus) && (__GNUC__ > 2)
+Index: krb5-appl-1.0.3/gssftp/ftp/ftp.c
+===================================================================
+--- krb5-appl-1.0.3.orig/gssftp/ftp/ftp.c
++++ krb5-appl-1.0.3/gssftp/ftp/ftp.c
+@@ -235,9 +235,6 @@ hookup(char* host, int port)
+ 	while (connect(s, (struct sockaddr *)&hisctladdr, sizeof (hisctladdr)) == SOCKET_ERROR) {
+ 		if (hp && hp->h_addr_list[1]) {
+ 			int oerrno = SOCKET_ERRNO;
+-#ifndef _WIN32
+-			extern char *inet_ntoa();
+-#endif
+ 			fprintf(stderr, "ftp: connect to address %s: ",
+ 				inet_ntoa(hisctladdr.sin_addr));
+ 			SOCKET_SET_ERRNO(oerrno);
+@@ -324,7 +321,7 @@ bad:
+ int login(char *host)
+ {
+ 	char tmp[80];
+-	char *l_user, *pass, *l_acct, *getenv(), *getlogin();
++	char *l_user, *pass, *l_acct, *getlogin();
+ 	int n, aflag = 0;
+ 
+ 	l_user = pass = l_acct = 0;
+@@ -494,7 +491,7 @@ int command(char *fmt, ...)
+ 	char in[FTP_BUFSIZ];
+ 	va_list ap;
+ 	int r;
+-	sig_t oldintr;
++	sighandler_t oldintr;
+ 
+ 	abrtflag = 0;
+ 	if (debug) {
+@@ -549,17 +546,11 @@ int getreply(int expecteof)
+ 	register int dig;
+ 	register char *cp;
+ 	int originalcode = 0, continuation = 0;
+-	sig_t oldintr;
++	sighandler_t oldintr;
+ 	int pflag = 0;
+ 	char *pt = pasv;
+ 	char ibuf[FTP_BUFSIZ], obuf[FTP_BUFSIZ];
+ 	int safe = 0;
+-#ifndef strpbrk
+-	extern char *strpbrk();
+-#endif
+-#ifndef strstr
+-	extern char *strstr();
+-#endif
+ 
+ 	ibuf[0] = '\0';
+ 	if (reply_parse) reply_ptr = reply_buf;
+@@ -784,8 +775,8 @@ void sendrequest(char *cmd, char *local,
+ 	struct timeval start, stop;
+ 	register int c, d;
+ 	FILE *volatile fin, *volatile dout = 0;
+-	int (*volatile closefunc)();
+-	volatile sig_t oldintr, oldintp;
++	int (*closefunc)(FILE*);
++	volatile sighandler_t oldintr, oldintp;
+ 	volatile long bytes = 0, hashbytes = HASHBYTES;
+ 	char *volatile lmode;
+ 	char buf[FTP_BUFSIZ], *bufp;
+@@ -1062,9 +1053,9 @@ abortrecv(int sig)
+ void recvrequest(char *cmd, char *volatile local, char *remote, char *lmode,
+ 		 int printnames, int fnameonly)
+ {
+-	FILE *volatile fout, *volatile din = 0, *popen();
+-	int (*volatile closefunc)(), pclose(), fclose();
+-	volatile sig_t oldintr, oldintp;
++	FILE *volatile fout, *volatile din = 0;
++	int (*volatile closefunc)(FILE*);
++	volatile sighandler_t oldintr, oldintp;
+ 	volatile int is_retr, tcrflag, bare_lfs = 0;
+ 	static unsigned int bufsize;
+ 	static char *buf;
+@@ -1075,7 +1066,6 @@ void recvrequest(char *cmd, char *volati
+ #ifndef NOSTBLKSIZE
+ 	struct stat st;
+ #endif
+-	off_t lseek();
+ 
+ 	is_retr = strcmp(cmd, "RETR") == 0;
+ 	if (is_retr && verbose && printnames) {
+@@ -1593,7 +1583,7 @@ psabort(int sig)
+ 
+ void pswitch(int flag)
+ {
+-	sig_t oldintr;
++	sighandler_t oldintr;
+ 	static struct comvars {
+ 		int connect;
+ 		char name[MAXHOSTNAMELEN];
+@@ -1717,7 +1707,7 @@ abortpt(int sig)
+ static void
+ proxtrans(char *cmd, char *local, char *remote)
+ {
+-	volatile sig_t oldintr;
++	volatile sighandler_t oldintr;
+ 	volatile int secndflag = 0;
+ 	int prox_type, nfnd;
+ 	char *volatile cmd2;
+Index: krb5-appl-1.0.3/gssftp/ftp/glob.c
+===================================================================
+--- krb5-appl-1.0.3.orig/gssftp/ftp/glob.c
++++ krb5-appl-1.0.3/gssftp/ftp/glob.c
+@@ -82,7 +82,6 @@ static	char **gargv;		/* Pointer to the
+ static	int gargc;		/* Number args in gargv */
+ static	int gnleft;
+ static	short gflag;
+-char	**ftpglob();
+ char	*globerr;
+ char	*home;
+ static	char *strspl (char *, char *), *strend (char *);
+@@ -92,7 +91,7 @@ static void acollect (char *), addpath (
+   collect (char *), expand (char *), 
+   Gcat (char *, char *);
+ static void ginit (char **), matchdir (char *),
+-  rscan (char **, int (*f)()), sort (void);
++  rscan (char **, int (*f)(int)), sort (void);
+ static int amatch (char *, char *), 
+   execbrc (char *, char *), match (char *, char *);
+ static int digit (int), letter (int),
+@@ -625,7 +624,7 @@ addpath(c)
+ static void
+ rscan(t, f)
+ 	register char **t;
+-	int (*f)();
++	int (*f)(int);
+ {
+ 	register char *p, c;
+ 
+Index: krb5-appl-1.0.3/gssftp/ftp/cmdtab.c
+===================================================================
+--- krb5-appl-1.0.3.orig/gssftp/ftp/cmdtab.c
++++ krb5-appl-1.0.3/gssftp/ftp/cmdtab.c
+@@ -123,88 +123,88 @@ char	setpassivehelp[] = "toggle passive
+ #endif
+ 
+ struct cmd cmdtab[] = {
+-	{ "!",		shellhelp,	0,	0,	0,	shell },
+-	{ "$",		domachelp,	1,	0,	0,	domacro },
+-	{ "account",	accounthelp,	0,	1,	1,	account},
+-	{ "append",	appendhelp,	1,	1,	1,	put },
+-	{ "ascii",	asciihelp,	0,	1,	1,	setascii },
+-	{ "bell",	beephelp,	0,	0,	0,	setbell },
+-	{ "binary",	binaryhelp,	0,	1,	1,	setbinary },
+-	{ "bye",	quithelp,	0,	0,	0,	quit },
+-	{ "case",	casehelp,	0,	0,	1,	setcase },
+-	{ "ccc",	ccchelp,	0,	1,	1,	ccc },
+-	{ "cd",		cdhelp,		0,	1,	1,	cd },
+-	{ "cdup",	cduphelp,	0,	1,	1,	cdup },
+-	{ "chmod",	chmodhelp,	0,	1,	1,	do_chmod },
+-	{ "clear",	clearhelp,	0,	1,	1,	setclear },
+-	{ "close",	disconhelp,	0,	1,	1,	disconnect },
+-	{ "cprotect",	clevelhelp,	0,	1,	1,	setclevel },
+-	{ "cr",		crhelp,		0,	0,	0,	setcr },
+-	{ "delete",	deletehelp,	0,	1,	1,	delete_file },
+-	{ "debug",	debughelp,	0,	0,	0,	setdebug },
+-	{ "dir",	dirhelp,	1,	1,	1,	ls },
+-	{ "disconnect",	disconhelp,	0,	1,	1,	disconnect },
+-	{ "form",	formhelp,	0,	1,	1,	setform },
+-	{ "get",	receivehelp,	1,	1,	1,	get },
+-	{ "glob",	globhelp,	0,	0,	0,	setglob },
+-	{ "hash",	hashhelp,	0,	0,	0,	sethash },
+-	{ "help",	helphelp,	0,	0,	1,	help },
+-	{ "idle",	idlehelp,	0,	1,	1,	siteidle },
+-	{ "image",	binaryhelp,	0,	1,	1,	setbinary },
+-	{ "lcd",	lcdhelp,	0,	0,	0,	lcd },
+-	{ "ls",		lshelp,		1,	1,	1,	ls },
+-	{ "macdef",	macdefhelp,	0,	0,	0,	macdef },
+-	{ "mdelete",	mdeletehelp,	1,	1,	1,	mdelete },
+-	{ "mdir",	mdirhelp,	1,	1,	1,	mls },
+-	{ "mget",	mgethelp,	1,	1,	1,	mget },
+-	{ "mkdir",	mkdirhelp,	0,	1,	1,	makedir },
+-	{ "mls",	mlshelp,	1,	1,	1,	mls },
+-	{ "mode",	modehelp,	0,	1,	1,	set_mode },
+-	{ "modtime",	modtimehelp,	0,	1,	1,	modtime },
+-	{ "mput",	mputhelp,	1,	1,	1,	mput },
+-	{ "newer",	newerhelp,	1,	1,	1,	newer },
+-	{ "nmap",	nmaphelp,	0,	0,	1,	setnmap },
+-	{ "nlist",	nlisthelp,	1,	1,	1,	ls },
+-	{ "ntrans",	ntranshelp,	0,	0,	1,	setntrans },
+-	{ "open",	connecthelp,	0,	0,	1,	setpeer },
++	{ "!",		shellhelp,	0,	0,	0,	(void*)shell },
++	{ "$",		domachelp,	1,	0,	0,	(void*)domacro },
++	{ "account",	accounthelp,	0,	1,	1,	(void*)account},
++	{ "append",	appendhelp,	1,	1,	1,	(void*)put },
++	{ "ascii",	asciihelp,	0,	1,	1,	(void*)setascii },
++	{ "bell",	beephelp,	0,	0,	0,	(void*)setbell },
++	{ "binary",	binaryhelp,	0,	1,	1,	(void*)setbinary },
++	{ "bye",	quithelp,	0,	0,	0,	(void*)quit },
++	{ "case",	casehelp,	0,	0,	1,	(void*)setcase },
++	{ "ccc",	ccchelp,	0,	1,	1,	(void*)ccc },
++	{ "cd",		cdhelp,		0,	1,	1,	(void*)cd },
++	{ "cdup",	cduphelp,	0,	1,	1,	(void*)cdup },
++	{ "chmod",	chmodhelp,	0,	1,	1,	(void*)do_chmod },
++	{ "clear",	clearhelp,	0,	1,	1,	(void*)setclear },
++	{ "close",	disconhelp,	0,	1,	1,	(void*)disconnect },
++	{ "cprotect",	clevelhelp,	0,	1,	1,	(void*)setclevel },
++	{ "cr",		crhelp,		0,	0,	0,	(void*)setcr },
++	{ "delete",	deletehelp,	0,	1,	1,	(void*)delete_file },
++	{ "debug",	debughelp,	0,	0,	0,	(void*)setdebug },
++	{ "dir",	dirhelp,	1,	1,	1,	(void*)ls },
++	{ "disconnect",	disconhelp,	0,	1,	1,	(void*)disconnect },
++	{ "form",	formhelp,	0,	1,	1,	(void*)setform },
++	{ "get",	receivehelp,	1,	1,	1,	(void*)get },
++	{ "glob",	globhelp,	0,	0,	0,	(void*)setglob },
++	{ "hash",	hashhelp,	0,	0,	0,	(void*)sethash },
++	{ "help",	helphelp,	0,	0,	1,	(void*)help },
++	{ "idle",	idlehelp,	0,	1,	1,	(void*)siteidle },
++	{ "image",	binaryhelp,	0,	1,	1,	(void*)setbinary },
++	{ "lcd",	lcdhelp,	0,	0,	0,	(void*)lcd },
++	{ "ls",		lshelp,		1,	1,	1,	(void*)ls },
++	{ "macdef",	macdefhelp,	0,	0,	0,	(void*)macdef },
++	{ "mdelete",	mdeletehelp,	1,	1,	1,	(void*)mdelete },
++	{ "mdir",	mdirhelp,	1,	1,	1,	(void*)mls },
++	{ "mget",	mgethelp,	1,	1,	1,	(void*)mget },
++	{ "mkdir",	mkdirhelp,	0,	1,	1,	(void*)makedir },
++	{ "mls",	mlshelp,	1,	1,	1,	(void*)mls },
++	{ "mode",	modehelp,	0,	1,	1,	(void*)set_mode },
++	{ "modtime",	modtimehelp,	0,	1,	1,	(void*)modtime },
++	{ "mput",	mputhelp,	1,	1,	1,	(void*)mput },
++	{ "newer",	newerhelp,	1,	1,	1,	(void*)newer },
++	{ "nmap",	nmaphelp,	0,	0,	1,	(void*)setnmap },
++	{ "nlist",	nlisthelp,	1,	1,	1,	(void*)ls },
++	{ "ntrans",	ntranshelp,	0,	0,	1,	(void*)setntrans },
++	{ "open",	connecthelp,	0,	0,	1,	(void*)setpeer },
+ #ifndef NO_PASSIVE_MODE
+-	{ "passive",	setpassivehelp,	0,	0,	0,	setpassive },
++	{ "passive",	setpassivehelp,	0,	0,	0,	(void*)setpassive },
+ #endif
+ #ifndef NOENCRYPTION
+-	{ "private",	privatehelp,	0,	1,	1,	setprivate },
++	{ "private",	privatehelp,	0,	1,	1,	(void*)setprivate },
+ #endif
+-	{ "prompt",	prompthelp,	0,	0,	0,	setprompt },
+-	{ "protect",	levelhelp,	0,	1,	1,	setdlevel },
+-	{ "proxy",	proxyhelp,	0,	0,	1,	doproxy },
+-	{ "sendport",	porthelp,	0,	0,	0,	setport },
+-	{ "put",	sendhelp,	1,	1,	1,	put },
+-	{ "pwd",	pwdhelp,	0,	1,	1,	pwd },
+-	{ "quit",	quithelp,	0,	0,	0,	quit },
+-	{ "quote",	quotehelp,	1,	1,	1,	quote },
+-	{ "recv",	receivehelp,	1,	1,	1,	get },
+-	{ "reget",	regethelp,	1,	1,	1,	reget },
+-	{ "rstatus",	rmtstatushelp,	0,	1,	1,	rmtstatus },
+-	{ "rhelp",	remotehelp,	0,	1,	1,	rmthelp },
+-	{ "rename",	renamehelp,	0,	1,	1,	renamefile },
+-	{ "reset",	resethelp,	0,	1,	1,	reset },
+-	{ "restart",	restarthelp,	1,	1,	1,	restart },
+-	{ "rmdir",	rmdirhelp,	0,	1,	1,	removedir },
+-	{ "runique",	runiquehelp,	0,	0,	1,	setrunique },
+-	{ "safe",	safehelp,	0,	1,	1,	setsafe },
+-	{ "send",	sendhelp,	1,	1,	1,	put },
+-	{ "site",	sitehelp,	0,	1,	1,	site },
+-	{ "size",	sizecmdhelp,	1,	1,	1,	sizecmd },
+-	{ "status",	statushelp,	0,	0,	1,	status },
+-	{ "struct",	structhelp,	0,	1,	1,	setstruct },
+-	{ "system",	systemhelp,	0,	1,	1,	syst },
+-	{ "sunique",	suniquehelp,	0,	0,	1,	setsunique },
+-	{ "tenex",	tenexhelp,	0,	1,	1,	settenex },
+-	{ "trace",	tracehelp,	0,	0,	0,	settrace },
+-	{ "type",	typehelp,	0,	1,	1,	settype },
+-	{ "user",	userhelp,	0,	1,	1,	user },
+-	{ "umask",	umaskhelp,	0,	1,	1,	do_umask },
+-	{ "verbose",	verbosehelp,	0,	0,	0,	setverbose },
+-	{ "?",		helphelp,	0,	0,	1,	help },
++	{ "prompt",	prompthelp,	0,	0,	0,	(void*)setprompt },
++	{ "protect",	levelhelp,	0,	1,	1,	(void*)setdlevel },
++	{ "proxy",	proxyhelp,	0,	0,	1,	(void*)doproxy },
++	{ "sendport",	porthelp,	0,	0,	0,	(void*)setport },
++	{ "put",	sendhelp,	1,	1,	1,	(void*)put },
++	{ "pwd",	pwdhelp,	0,	1,	1,	(void*)pwd },
++	{ "quit",	quithelp,	0,	0,	0,	(void*)quit },
++	{ "quote",	quotehelp,	1,	1,	1,	(void*)quote },
++	{ "recv",	receivehelp,	1,	1,	1,	(void*)get },
++	{ "reget",	regethelp,	1,	1,	1,	(void*)reget },
++	{ "rstatus",	rmtstatushelp,	0,	1,	1,	(void*)rmtstatus },
++	{ "rhelp",	remotehelp,	0,	1,	1,	(void*)rmthelp },
++	{ "rename",	renamehelp,	0,	1,	1,	(void*)renamefile },
++	{ "reset",	resethelp,	0,	1,	1,	(void*)reset },
++	{ "restart",	restarthelp,	1,	1,	1,	(void*)restart },
++	{ "rmdir",	rmdirhelp,	0,	1,	1,	(void*)removedir },
++	{ "runique",	runiquehelp,	0,	0,	1,	(void*)setrunique },
++	{ "safe",	safehelp,	0,	1,	1,	(void*)setsafe },
++	{ "send",	sendhelp,	1,	1,	1,	(void*)put },
++	{ "site",	sitehelp,	0,	1,	1,	(void*)site },
++	{ "size",	sizecmdhelp,	1,	1,	1,	(void*)sizecmd },
++	{ "status",	statushelp,	0,	0,	1,	(void*)status },
++	{ "struct",	structhelp,	0,	1,	1,	(void*)setstruct },
++	{ "system",	systemhelp,	0,	1,	1,	(void*)syst },
++	{ "sunique",	suniquehelp,	0,	0,	1,	(void*)setsunique },
++	{ "tenex",	tenexhelp,	0,	1,	1,	(void*)settenex },
++	{ "trace",	tracehelp,	0,	0,	0,	(void*)settrace },
++	{ "type",	typehelp,	0,	1,	1,	(void*)settype },
++	{ "user",	userhelp,	0,	1,	1,	(void*)user },
++	{ "umask",	umaskhelp,	0,	1,	1,	(void*)do_umask },
++	{ "verbose",	verbosehelp,	0,	0,	0,	(void*)setverbose },
++	{ "?",		helphelp,	0,	0,	1,	(void*)help },
+ 	{ 0 },
+ };
+ 
+Index: krb5-appl-1.0.3/gssftp/ftp/getpass.c
+===================================================================
+--- krb5-appl-1.0.3.orig/gssftp/ftp/getpass.c
++++ krb5-appl-1.0.3/gssftp/ftp/getpass.c
+@@ -124,7 +124,7 @@ char *prompt;
+ 	register char *p;
+ 	register int c;
+ 	static char pbuf[50+1];
+-	sigtype (*sig)();
++	sighandler_t sig;
+ 
+ 	if ((fi = fopen("/dev/tty", "r")) == NULL)
+ 		fi = stdin;
+Index: krb5-appl-1.0.3/gssftp/ftpd/ftpd.c
+===================================================================
+--- krb5-appl-1.0.3.orig/gssftp/ftpd/ftpd.c
++++ krb5-appl-1.0.3/gssftp/ftpd/ftpd.c
+@@ -114,9 +114,9 @@ extern char *sys_errlist[];
+ #endif
+ #endif
+ 
+-extern char *mktemp ();
+ char *ftpusers;
+ extern int yyparse(void);
++extern char **ftpglob (char *);
+ 
+ #include <k5-util.h>
+ #include "port-sockets.h"
+@@ -160,11 +160,10 @@ int have_creds;		/* User has credentials
+ # define MAXHOSTNAMELEN 256
+ #endif
+ 
+-extern	char *crypt();
+ extern	char version[];
+ extern	char *home;		/* pointer to home directory for glob */
+-extern	FILE *ftpd_popen(), *fopen(), *freopen();
+-extern	int  ftpd_pclose(), fclose();
++extern	FILE *ftpd_popen(char *,char*);
++extern	int  ftpd_pclose(FILE*);
+ extern	char cbuf[];
+ extern	off_t restart_point;
+ 
+@@ -1092,7 +1091,7 @@ retrieve(cmd, name)
+ {
+ 	FILE *fin, *dout;
+ 	struct stat st;
+-	int (*closefunc)();
++	int (*closefunc)(FILE*);
+ 
+ 	if (logging > 1 && !cmd)
+ 	        syslog(LOG_NOTICE, "get %s", path_expand(name));
+@@ -1169,7 +1168,7 @@ store_file(name, fmode, unique)
+ {
+ 	FILE *fout, *din;
+ 	struct stat st;
+-	int (*closefunc)();
++	int (*closefunc)(FILE*);
+ 
+ 	if (logging > 1) syslog(LOG_NOTICE, "put %s", path_expand(name));
+ 
+@@ -1933,8 +1932,7 @@ dolog(sin4)
+ {
+ 	struct hostent *hp = gethostbyaddr((char *)&sin4->sin_addr,
+ 		sizeof (struct in_addr), AF_INET);
+-	time_t t, time();
+-	extern char *ctime();
++	time_t t;
+ 	krb5_error_code retval;
+ 
+ 	if (hp != NULL) {
+@@ -1989,9 +1987,6 @@ myoob(sig)
+     int sig;
+ {
+ 	char *cp, *cs;
+-#ifndef strpbrk
+-	extern char *strpbrk();
+-#endif
+ 
+ 	/* only process if transfer occurring */
+ 	if (!transflag)
+@@ -2363,13 +2358,10 @@ send_file_list(whichfiles)
+ 	FILE *volatile dout = NULL;
+ 	register char **volatile dirlist, *dirname;
+ 	volatile int simple = 0;
+-#ifndef strpbrk
+-	char *strpbrk();
+-#endif
+ 	volatile int ret = 0;
+ 
+ 	if (strpbrk(whichfiles, "~{[*?") != NULL) {
+-		extern char **ftpglob(), *globerr;
++		extern char *globerr;
+ 
+ 		globerr = NULL;
+ 		dirlist = ftpglob(whichfiles);
+Index: krb5-appl-1.0.3/gssftp/ftpd/popen.c
+===================================================================
+--- krb5-appl-1.0.3.orig/gssftp/ftpd/popen.c
++++ krb5-appl-1.0.3/gssftp/ftpd/popen.c
+@@ -57,6 +57,7 @@ static char sccsid[] = "@(#)popen.c	5.9
+  */
+ static int *pids;
+ static int fds;
++extern char **ftpglob (char *);
+ 
+ #define MAX_ARGV	100
+ #define MAX_GARGV	1000
+@@ -69,7 +70,7 @@ ftpd_popen(program, type)
+ 	FILE *volatile iop;
+ 	int argc, gargc, pdes[2], pid;
+ 	char **pop, *argv[MAX_ARGV], *gargv[MAX_GARGV], *vv[2];
+-	extern char **ftpglob(), **copyblk();
++	extern char **copyblk(char**);
+ 	extern void blkfree(char **);
+ 
+ 	if ((*type != 'r' && *type != 'w') || type[1])
+Index: krb5-appl-1.0.3/gssftp/ftpd/ftpcmd.y
+===================================================================
+--- krb5-appl-1.0.3.orig/gssftp/ftpd/ftpcmd.y
++++ krb5-appl-1.0.3/gssftp/ftpd/ftpcmd.y
+@@ -120,7 +120,7 @@ extern	int usedefault;
+ extern  int transflag;
+ extern  char tmpline[];
+ 
+-char	**ftpglob();
++char	**ftpglob(char*);
+ 
+ off_t	restart_point;
+ 
+@@ -608,7 +608,6 @@ cmd:		USER SP username CRLF
+ 						(char *) $4);
+ 				} else {
+ 					register struct tm *t;
+-					struct tm *gmtime();
+ 					t = gmtime(&stbuf.st_mtime);
+ 					reply(213,
+ 					    "%4d%02d%02d%02d%02d%02d",
+Index: krb5-appl-1.0.3/telnet/libtelnet/kerberos5.c
+===================================================================
+--- krb5-appl-1.0.3.orig/telnet/libtelnet/kerberos5.c
++++ krb5-appl-1.0.3/telnet/libtelnet/kerberos5.c
+@@ -401,7 +401,6 @@ kerberos5_is(ap, data, cnt)
+ #endif
+ 	char errbuf[320];
+ 	char *name;
+-	char *getenv();
+ 	krb5_data inbuf;
+ 	krb5_authenticator *authenticator;
+ 
+Index: krb5-appl-1.0.3/telnet/libtelnet/encrypt.c
+===================================================================
+--- krb5-appl-1.0.3.orig/telnet/libtelnet/encrypt.c
++++ krb5-appl-1.0.3/telnet/libtelnet/encrypt.c
+@@ -172,7 +172,7 @@ static struct key_info {
+ 	int keylen;
+ 	int dir;
+ 	int *modep;
+-	Encryptions *(*getcrypt)();
++	Encryptions *(*getcrypt)(int);
+ } ki[2] = {
+ 	{ { 0 }, 0, DIR_ENCRYPT, &encrypt_mode, findencryption },
+ 	{ { 0 }, 0, DIR_DECRYPT, &decrypt_mode, finddecryption },
+Index: krb5-appl-1.0.3/telnet/telnet/authenc.c
+===================================================================
+--- krb5-appl-1.0.3.orig/telnet/telnet/authenc.c
++++ krb5-appl-1.0.3/telnet/telnet/authenc.c
+@@ -98,7 +98,6 @@ telnet_gets(tprompt, result, length, ech
+ 	int length;
+ 	int echo;
+ {
+-	extern char *getpass();
+ 	extern int globalmode;
+ 	int om = globalmode;
+ 	char *res;
+Index: krb5-appl-1.0.3/telnet/telnet/ring.h
+===================================================================
+--- krb5-appl-1.0.3.orig/telnet/telnet/ring.h
++++ krb5-appl-1.0.3/telnet/telnet/ring.h
+@@ -86,7 +86,7 @@ extern int
+ 
+ #ifdef	ENCRYPTION
+ extern void
+-	ring_encrypt (Ring *ring, void (*func)()),
++	ring_encrypt (Ring *ring, void (*func)(unsigned char*,int)),
+ 	ring_clearto (Ring *ring);
+ #endif	/* ENCRYPTION */
+ 
+Index: krb5-appl-1.0.3/telnet/telnet/ring.c
+===================================================================
+--- krb5-appl-1.0.3.orig/telnet/telnet/ring.c
++++ krb5-appl-1.0.3/telnet/telnet/ring.c
+@@ -336,7 +336,7 @@ ring_consume_data(ring, buffer, count)
+     void
+ ring_encrypt(ring, encryptor)
+     Ring *ring;
+-    void (*encryptor)();
++    void (*encryptor)(unsigned char*,int);
+ {
+     unsigned char *s, *c;
+ 
+Index: krb5-appl-1.0.3/telnet/telnetd/utility.c
+===================================================================
+--- krb5-appl-1.0.3.orig/telnet/telnetd/utility.c
++++ krb5-appl-1.0.3/telnet/telnetd/utility.c
+@@ -540,7 +540,7 @@ fatalperror(f, msg)
+ 	int f;
+ 	const char *msg;
+ {
+-	char buf[BUFSIZ], *strerror();
++	char buf[BUFSIZ];
+ 
+ 	(void) snprintf(buf, sizeof(buf), "%s: %s\r\n", msg, strerror(errno));
+ 	fatal(f, buf);
+Index: krb5-appl-1.0.3/telnet/telnetd/telnetd.c
+===================================================================
+--- krb5-appl-1.0.3.orig/telnet/telnetd/telnetd.c
++++ krb5-appl-1.0.3/telnet/telnetd/telnetd.c
+@@ -1274,7 +1274,7 @@ telnet(f, p, host)
+ #endif
+ 
+ 	if (getent(defent, "default") == 1) {
+-		char *getstr();
++		char *getstr(char*, char**);
+ 		char *cp=defstrs;
+ 
+ 		HEstr = getstr("he", &cp);
+Index: krb5-appl-1.0.3/telnet/telnetd/authenc.c
+===================================================================
+--- krb5-appl-1.0.3.orig/telnet/telnetd/authenc.c
++++ krb5-appl-1.0.3/telnet/telnetd/authenc.c
+@@ -72,7 +72,6 @@ telnet_spin()
+ telnet_getenv(val)
+ 	char *val;
+ {
+-	extern char *getenv();
+ 	return(getenv(val));
+ }
+ 
+Index: krb5-appl-1.0.3/telnet/telnetd/sys_term.c
+===================================================================
+--- krb5-appl-1.0.3.orig/telnet/telnetd/sys_term.c
++++ krb5-appl-1.0.3/telnet/telnetd/sys_term.c
+@@ -1192,7 +1192,6 @@ extern char **environ;
+ 	void
+ init_env()
+ {
+-	extern char *getenv();
+ 	char **envp;
+ 
+ 	envp = envinit;
+@@ -1222,7 +1221,6 @@ start_login(host, autologin, name)
+ 	char *name;
+ {
+ 	register char **argv;
+-	extern char *getenv();
+ 
+ #ifdef SOLARIS
+ 	char *term;

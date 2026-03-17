@@ -32,4 +32,13 @@
 - Mark NOTICE file as %license (forwarded request 1277456 from bmwiedemann)</comment>
     <requestid>1277675</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>167faf2a8366ad15caf6836dbc54c299</srcmd5>
+    <version>1.0.3</version>
+    <time>1773770727</time>
+    <user>anag_factory</user>
+    <comment>- fix build with gcc15
+  - added stuff to krb5-appl-gcc14.patch (forwarded request 1339532 from msmeissn)</comment>
+    <requestid>1339542</requestid>
+  </revision>
 </revisionlist>
