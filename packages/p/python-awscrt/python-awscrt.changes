@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 16 14:03:05 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.31.3
+  * Latest submodules to pick up the change for fix eventstream
+    decode leading to buffer overflow by @xiazhvera in (#724)
+
+-------------------------------------------------------------------
 Sun Feb 15 10:40:02 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.31.2
