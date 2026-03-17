@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.8.0
 %define qt6_version 6.6.0
 %define kpim6_version 6.1.0
 
 %bcond_without released
 Name:           marknote
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        Rich text notes editor
 License:        GPL-2.0-or-later
@@ -40,18 +40,21 @@ BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
-BuildRequires:  cmake(KF6KirigamiAddons) >= 1.3.0
-BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons) >= 1.11.0
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6Runner) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
+BuildRequires:  cmake(md4c)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
-BuildRequires:  cmake(md4c)
 Requires:       kf6-kirigami-imports >= %{kf6_version}
-Requires:       kirigami-addons6 >= 1.3.0
+Requires:       kirigami-addons6 >= 1.11.0
 Requires:       qt6-declarative-imports >= %{qt6_version}
 
 %description
@@ -84,6 +87,8 @@ making it easy to use your notes outside of Marknote as well as inside the app.
 %{_kf6_bindir}/marknote
 %{_kf6_debugdir}/marknote.categories
 %{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.marknote.svg
+%{_kf6_notificationsdir}/marknote.notifyrc
+%{_kf6_sharedir}/krunner/dbusplugins/plasma-runner-marknote.desktop
 
 %files lang -f %{name}.lang
 
