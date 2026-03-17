@@ -315,4 +315,13 @@
   * add field api_version to message ServiceForTransport (#14843) (forwarded request 1316877 from glaubitz)</comment>
     <requestid>1316907</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>657a7e050957d113c8e4b67cdd74e123</srcmd5>
+    <version>1.73.0</version>
+    <time>1773770762</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.73.0
+  * code formatting (#16023) (forwarded request 1339608 from glaubitz)</comment>
+    <requestid>1340715</requestid>
+  </revision>
 </revisionlist>
