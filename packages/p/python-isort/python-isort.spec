@@ -24,7 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1699
 %bcond_with pylama
 %else
 %bcond_without pylama

@@ -721,4 +721,12 @@ Let's see which package is missing in ringX for test flavor</comment>
     file</comment>
     <requestid>1338105</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>75d12cef00bef825bbc441dfc27b69bd</srcmd5>
+    <version>8.0.1</version>
+    <time>1773770736</time>
+    <user>anag_factory</user>
+    <comment>- Fix the condition with suse_version macro on SLFO (jsc#PED-15806)</comment>
+    <requestid>1339560</requestid>
+  </revision>
 </revisionlist>
