@@ -1,7 +1,7 @@
 #
 # spec file for package python-CairoSVG
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,14 +23,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-CairoSVG
-Version:        2.7.1
+Version:        2.9.0
 Release:        0
 Summary:        A Python SVG converter based on Cairo
 License:        LGPL-3.0-or-later
-URL:            http://www.cairosvg.org/
+URL:            https://github.com/Kozea/CairoSVG
 Source:         CairoSVG-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM gh#Kozea/CairoSVG#8ecb0806c4ed0813eb5dc6f27b36d9005acfa725
-Patch0:         use-underscore-in-setup.cfg.patch
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module cairocffi}
 BuildRequires:  %{python_module cssselect2}
@@ -75,8 +73,8 @@ sed -i setup.cfg \
 
 %install
 %pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/cairosvg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_clone -a %{buildroot}/%{_bindir}/cairosvg
 
 %check
 %pytest

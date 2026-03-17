@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Mar 16 11:52:32 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 2.9.0 (CVE-2026-31899, bsc#1259690)
+  * Using a lot of recursively nested use tags could lead to long rendering
+    times with relatively small inputs. CairoSVG now stops rendering when more
+    than 100k use tags are rendered.
+    Using the --unsafe option allows to render larger documents.
+  * Drop support of Python 3.9, add support of Python 3.14
+- switch to tar_Scm and clean up _service file
+- drop duplicate tarballs
+- fix usage of libalternatives
+
+-------------------------------------------------------------------
+Fri Mar 13 13:45:44 UTC 2026 - Anton Smorodskyi <anton.smorodskyi@suse.com>
+
+-  Update to 2.8.2:
+   * Allow both Unicode strings and bytes as input
+   * Allow both text- and bytes-based file objects as input
+   * Drop support of Python 3.7 and 3.8, add support of Python 3.12 and 3.13
+   * Optimize math operations
+   * Use pathlib
+   * Close paths for ellipses and circles
+   * Fix output ratio for SVG surfaces
+   * Avoid endless loops when updating def attributes
+   * Round PNG size
+   * Don’t crash when more than 2 values are given to translate and scale functions
+- Drop outdated patch 'use-underscore-in-setup.cfg.patch'
+
+-------------------------------------------------------------------
 Mon Aug 11 15:17:37 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make the libalternatives transition conditional
