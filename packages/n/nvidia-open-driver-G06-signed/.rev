@@ -1017,4 +1017,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1338672</requestid>
   </revision>
+  <revision rev="90" vrev="3">
+    <srcmd5>0965495970e261d2a7318ff844315c65</srcmd5>
+    <version>580.126.18</version>
+    <time>1773770573</time>
+    <user>anag_factory</user>
+    <comment>- add 'Provides: open-driver-non-cuda-variant = %version' for
+  non-CUDA variant to be able to distinguish between both variants;
+  to be used by nvidia-open-driver-G06-signed-kmp-meta for TW ...
+  (boo#1259740)</comment>
+    <requestid>1339428</requestid>
+  </revision>
 </revisionlist>

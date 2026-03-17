@@ -31,3 +31,7 @@ Provides:  nvidia-open-signed-kmp(%mykind)
 Conflicts: nvidia-open-signed-kmp(%otherkind)
 
 Obsoletes: nvidia-open-driver-G06 = %{-v*}
+
+%if %{without cuda}
+Provides: open-driver-non-cuda-variant = %{-v*}
+%endif

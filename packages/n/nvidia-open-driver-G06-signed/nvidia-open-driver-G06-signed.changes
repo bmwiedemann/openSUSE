@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 16 13:03:12 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- add 'Provides: open-driver-non-cuda-variant = %version' for
+  non-CUDA variant to be able to distinguish between both variants;
+  to be used by nvidia-open-driver-G06-signed-kmp-meta for TW ...
+  (boo#1259740)
+
+-------------------------------------------------------------------
 Thu Mar  5 11:38:21 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - adjusted logic for %suse_version bump with SLE16.1 Beta2 (jsc#PED-15826)
