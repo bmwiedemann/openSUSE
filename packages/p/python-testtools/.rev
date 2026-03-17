@@ -432,4 +432,35 @@
     Python 3.14.</comment>
     <requestid>1305067</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>d2839cd4ccd67cf8ebc22d953590b735</srcmd5>
+    <version>2.8.7</version>
+    <time>1773770521</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.8.7:
+  * Fix an issue with ``iterate_tests``, which was recently
+    changes to insist on accepting an instance of
+    ``unittest.TestSuite``, breaking some users.
+  * Improve the type annotations for
+    ``testtools.testcase.TestCase.skipTest``
+  * Correct a URL in the README
+  * Improve the type annotations for
+    ``testtools.testcase.TestCase.assertRaises``.
+  * This method will now be typed correctly when called as a
+    method or as a context manager.
+  * Fix the type annotations for
+    ``testtools.testcase.TestCase.useFixture``
+
+- Update to 2.8.4
+  * Switch to hatchling for building tarballs
+  * Prepare tests for upcoming twisted version
+  * Remove support for Python 3.8 + deprecated methods and classes
+  * Support addDuration
+  * Relax the return type on UseFixtureProtocol.getDetails
+  * Add typing
+- Drop merged patches:
+  * twisted.patch
+  * resolve-testcase-eq-deprecation-warning.patch</comment>
+    <requestid>1339008</requestid>
+  </revision>
 </revisionlist>

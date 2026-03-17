@@ -1,7 +1,7 @@
 #
 # spec file for package python-testtools
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,17 +26,14 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-testtools%{psuffix}
-Version:        2.7.2
+Version:        2.8.7
 Release:        0
 Summary:        Extensions to the Python Standard Library Unit Testing Framework
 License:        MIT
 URL:            https://github.com/testing-cabal/testtools
 Source0:        https://files.pythonhosted.org/packages/source/t/testtools/testtools-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/testing-cabal/testtools/commit/5b8cb6497c7159f593e68de6a13e15f7e78e56e3 Prepare tests for upcoming twisted version
-Patch0:         twisted.patch
-# PATCH-FIX-UPSTREAM gh#testing-cabal/testtools#424/commits/79fa5d41a05c423cf43a65d2b347c7c566bcdfa5
-Patch1:         resolve-testcase-eq-deprecation-warning.patch
 BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -63,6 +60,7 @@ also ports recent unittest changes all the way back to Python 2.4.
 
 %prep
 %autosetup -p1 -n testtools-%{version}
+find testtools -name "*.py" -exec chmod a-x {} +
 
 %if !%{with test}
 %build
@@ -77,7 +75,7 @@ also ports recent unittest changes all the way back to Python 2.4.
 
 %if %{with test}
 %check
-%python_exec -m testtools.run testtools.tests.test_suite
+%python_exec -m testtools.run tests.test_suite
 %endif
 
 %if !%{with test}
