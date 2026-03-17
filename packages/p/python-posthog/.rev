@@ -90,4 +90,18 @@
   * Add warning log for local flag evaluation cold start</comment>
     <requestid>1337522</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>debd69ac9a7517ab62116b98c855daef</srcmd5>
+    <version>7.9.12</version>
+    <time>1773770672</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.9.12:
+  * chore(flags): expose flag_definition_cache_provider
+  * chore(ci): fix release attribution
+  * fix(ci): attribute release tag to GitHub App
+  * Update release.yml to support commit signing
+  * feat(llma): support prompt versions in prompts sdk
+  * chore(llma): apply prompt SDK review cleanups</comment>
+    <requestid>1339442</requestid>
+  </revision>
 </revisionlist>
