@@ -1,7 +1,7 @@
 #
 # spec file for package python-openvino-telemetry
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define pythons python3
 %endif
 Name:           python-openvino-telemetry
-Version:        2025.4.1
+Version:        2026.0.0
 Release:        0
 Summary:        Module for use with openVINO toolkit to send usage statistics with user consent
 License:        Apache-2.0
