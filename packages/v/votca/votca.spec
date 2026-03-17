@@ -2,7 +2,7 @@
 # spec file for package votca
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2021-2022 Christoph Junghans
+# Copyright (c) 2021-2026 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,30 +26,23 @@
 %endif
 
 Name:           votca
-Version:        2025.1
+Version:        2026
 Release:        0
 %define         uversion %{version}
-%define         sover 2025
+%define         sover 2026
 Summary:        Versatile Object-oriented Toolkit for Coarse-graining Applications
 License:        Apache-2.0
 Group:          Productivity/Scientific/Chemistry
 URL:            https://www.votca.org
 Source0:        https://github.com/votca/votca/archive/v%{uversion}.tar.gz#/%{name}-%{uversion}.tar.gz
-Patch1:         0001-Support-building-with-Eigen3-5.0.0.patch
 BuildRequires:  cmake >= 3.13
 BuildRequires:  eigen3-devel
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
-BuildRequires:  gnuplot
-# gromacs is not available on 32-bit arm
-%ifnarch %{arm}
+# gromacs is not available on 32-bit
+%ifnarch %{arm} %{ix86}
 BuildRequires:  gromacs-devel
-# mpi gromacs is not available on 32-bit intel
-# used for testing only
-%ifnarch %ix86
-BuildRequires:  gromacs-openmpi
-%endif
 %endif
 BuildRequires:  hdf5-devel
 BuildRequires:  libboost_filesystem-devel >= 1.71.0
@@ -65,10 +58,7 @@ BuildRequires:  libint-devel
 %endif
 BuildRequires:  libxc-devel
 BuildRequires:  memory-constraints
-BuildRequires:  openmpi-macros-devel
 BuildRequires:  pkg-config
-BuildRequires:  procps
-BuildRequires:  psmisc
 BuildRequires:  python3-cma
 # only needed for testing
 BuildRequires:  python3-lxml
@@ -133,9 +123,6 @@ This package contains development headers and libraries for votca.
 Summary:        Architecture-independent data files for VOTCA
 Group:          Productivity/Scientific/Chemistry
 BuildArch:      noarch
-Requires:       /usr/bin/awk
-Requires:       bash
-Requires:       perl
 Obsoletes:      votca-csg-common <= 2022~rc1
 Provides:       votca-csg-common = %version-%release
 Obsoletes:      votca-xtp-common <= 2022~rc1
@@ -146,6 +133,7 @@ Provides:       votca-xtp-common = %version-%release
 
 This package contains the architecture-independent data files for VOTCA.
 
+%if %{with_xtp}
 %package tutorials
 Summary:        Tutorial documentation for VOTCA Coarse Graining Engine
 Group:          Productivity/Scientific/Chemistry
@@ -158,6 +146,7 @@ Provides:       votca-csg-tutorials = %version-%release
 %{votca_desc}
 
 This package contains the tutorial documentation and sample data.
+%endif
 
 %package bash
 Summary:        Bash completion for votca
@@ -177,8 +166,6 @@ This package contains the bash completion support for votca.
 %autosetup -p1 -n %{name}-%{uversion}
 
 %build
-%setup_openmpi
-
 # save some memory
 %limit_build -m 2400
 %{cmake} -DINSTALL_RC_FILES=OFF -DCMAKE_SKIP_RPATH=OFF -DENABLE_TESTING=ON -DENABLE_REGRESSION_TESTING=ON \
@@ -189,19 +176,6 @@ This package contains the bash completion support for votca.
 
 %install
 %cmake_install
-sed -i '1s@env @@' \
-  %{buildroot}/%{_datadir}/votca/scripts/inverse/{iie,cma_processor,table_smooth_at_cut_off}.py \
-  %{buildroot}/%{_datadir}/votca/csg-tutorials/LJ1-LJ2/imc/svd.py \
-  %{buildroot}/%{_datadir}/votca/csg-tutorials/spce/ibi*/spce.py \
-  %{buildroot}/%{_datadir}/votca/scripts/inverse/check_csg_xml.py
-sed -i '1s@/usr/bin/env .*perl@/usr/bin/perl@' \
-  %{buildroot}/%{_datadir}/votca/scripts/inverse/*.pl
-sed -i '1s@/usr/bin/env .*bash@/bin/bash@' \
-  %{buildroot}/%{_datadir}/votca/scripts/inverse/*.sh \
-  %{buildroot}/%{_datadir}/votca/csg-tutorials/*/*/*.sh \
-  %{buildroot}/%{_datadir}/votca/csg-tutorials/*/*.sh \
-  %{buildroot}/%{_datadir}/votca/csg-tutorials/*/*/*/*.sh \
-  %{buildroot}/%{_bindir}/csg_{call,inverse}
 
 %if %{with_xtp}
 chmod +x %{buildroot}/%{_datadir}/votca/xtp-tutorials/pyxtp/scripts/run_*.py
@@ -214,12 +188,11 @@ sed -i '1s@/usr/bin/env .*bash@/bin/bash@' \
 
 # Move bash completion file to correct location
 mkdir -p %{buildroot}%{_datadir}/bash_completion.d
-cp %{__builddir}/csg/scripts/csg-completion.bash %{buildroot}%{_datadir}/bash_completion.d/votca
+cp %{__builddir}/csg/src/tools/csg-completion.bash %{buildroot}%{_datadir}/bash_completion.d/votca
 
 %fdupes %{buildroot}%{_prefix}
 
 %check
-%setup_openmpi
 %ctest
 
 %files
@@ -240,12 +213,14 @@ cp %{__builddir}/csg/scripts/csg-completion.bash %{buildroot}%{_datadir}/bash_co
 %{_libdir}/libvotca_*.so
 %{_libdir}/cmake/VOTCA_*
 
+%if %{with_xtp}
 %files tutorials
-%{_datadir}/votca/{csg,xtp}-tutorials
+%{_datadir}/votca/xtp-tutorials
+%endif
 
 %files common
 %{_datadir}/votca
-%exclude %{_datadir}/votca/{csg,xtp}-tutorials
+%exclude %{_datadir}/votca/xtp-tutorials
 
 %files bash
 %dir %{_datadir}/bash_completion.d

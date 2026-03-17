@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Mar 11 21:21:40 UTC 2026 - Christoph Junghans <junghans@votca.org>
+
+- Drop 0001-Support-building-with-Eigen3-5.0.0.patch merged upstream
+- Update to v2026
+  - Remove csg_boltzmann ([gh#votca/votca#1184])
+  - Remove old histogram class ([gh#votca/votca#1185])
+  - Remove csg_tutorials ([gh#votca/votca#1186])
+  - CI: enable parallel testing ([gh#votca/votca#1187])
+  - Remove csg_inverse and friends ([gh#votca/votca#1188])
+  - Add support for Eigen3 v5.0.0 ([gh#votca/votca#1189])
+  - Remove GMX builds from CI ([gh#votca/votca#1190])
+  - Remove csg_property ([gh#votca/votca#1192])
+  - drop gmx 2019 support from readers ([gh#votca/votca#1193])
+  - CI: clean up setup action ([gh#votca/votca#1194])
+  - Remove csg_resample ([gh#votca/votca#1195])
+  - Move csg_density into csgapps ([gh#votca/votca#1196])
+  - Remove still_dirty scripts ([gh#votca/votca#1197])
+  - Move csg-completion into tools ([gh#votca/votca#1198])
+  - Remove votca_property ([gh#votca/votca#1199])
+  - Update sphinx doc to reflect csg_inverse removal ([gh#votca/votca#1200])
+  - CI: fix freebsd build ([gh#votca/votca#1201])
+  - fix python test ([gh#votca/votca#1203])
+  - Make pyxtp a real pip module ([gh#votca/votca#1180])
+  - Use Apple Accelerate Framework in Eigen ([gh#votca/votca#1205])
+  - fixing boost and other warnings on rawhide ([gh#votca/votca#1206])
+  - CI: drop gmx-2025 builds ([gh#votca/votca#1208])
+  - add OSX builds in CI ([gh#votca/votca#1207])
+  - fix xtp_autogen_mapping on OSX([gh#votca/votca#1211])
+  - fix reading of polarizability tensor from newer ORCA 
+    versions ([gh#votca/votca#1213])
+  - fix thread locking in orca calls ([gh#votca/votca#1215])
+  - fix HDF5 thread-safety issue ([gh#votca/votca#1217])
+  - fix building manpageson OSX ([gh#votca/votca#1218])
+  - setting PyXTP installation path to user's site-package 
+    directory ([gh#votca/votca#1219])
+  - allow for overriding python library installation 
+    directory ([gh#votca/votca#1221])
+  - add integration tests for xtp ([gh#votca/votca#1220])
+  - CI: docker build add provenance=false ([gh#votca/votca#1225])
+  - unbuffered KMC output on single thread ([gh#votca/votca#1226])
+  - CI: ignore c2y-extensions warning on rawhide ([gh#votca/votca#1228])
+
+-------------------------------------------------------------------
 Wed Feb  4 17:03:56 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-Support-building-with-Eigen3-5.0.0.patch
