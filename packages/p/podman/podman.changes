@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 12 16:14:32 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
+
+- Update to version 5.8.1:
+  * Bump to v5.8.1
+  * Release notes for v5.8.1
+  * docs: make the --migrate-db more clear
+  * update boltdb migrating warning
+  * libpod: prefer sqlite in getDBState()
+  * libpod: fix parallel migration issue
+  * libpod: return full path in sqliteStatePath()
+  * migrate to oidc
+  * Bump Podman to v5.8.1-dev
+  * Disable lint to fix CI
+
+-------------------------------------------------------------------
 Thu Feb 19 14:37:33 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
 
 - Update to version 5.8.0:
