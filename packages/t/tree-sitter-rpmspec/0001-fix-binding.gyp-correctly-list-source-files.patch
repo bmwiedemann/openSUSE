@@ -1,0 +1,29 @@
+From 00d7573da739e6d3f623bae3025797f15c019ec3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bj=C3=B6rn=20Kettunen?= <bjorn.kettunen@thaodan.de>
+Date: Mon, 16 Mar 2026 16:20:13 +0200
+Subject: [PATCH] fix(binding.gyp): correctly list source files
+
+---
+ binding.gyp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/binding.gyp b/binding.gyp
+index 8eb538e..2100a75 100644
+--- a/binding.gyp
++++ b/binding.gyp
+@@ -9,8 +9,11 @@
+         "src",
+       ],
+       "sources": [
++        "rpmspec/src/parser.c",
++        "rpmspec/src/scanner.c",
++        "rpmbash/src/parser.c",
++        "rpmbash/src/scanner.c"
+         "bindings/node/binding.cc",
+-        "src/parser.c",
+         # NOTE: if your language has an external scanner, add it here.
+       ],
+       "cflags_c": [
+-- 
+2.53.0
+

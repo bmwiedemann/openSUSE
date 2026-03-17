@@ -15,4 +15,466 @@
     <comment>- Remove redundant Neovim workaround</comment>
     <requestid>1336857</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>648332f79c6744a14b7387913cdb124c</srcmd5>
+    <version>0+20260218.12ca618</version>
+    <time>1773770610</time>
+    <user>anag_factory</user>
+    <comment>- Add patch fix building. gl#cryptomilk/tree-sitter-rpmspec#31:
+  0001-fix-binding.gyp-correctly-list-source-files.patch
+- Fix packaging, pull in tree-sitter-bash-devel.
+
+- Update to version 0+20260218.12ca618:
+  * fix(rpmspec): Allow hyphenated owner/group in %attr
+  * fix(grammar): remove ALT Linux-specific BuildRequires(pre) qualifier
+  * feat(rpmspec): Add i18n locale support for Summary, Group, and %description
+  * scripts: Generalize fuzz corpus extraction for any tree-sitter project
+  * chore(scripts): Remove update-test-ast.py
+  * feat(gitlab-ci): Provide artifacts directory for download on failure
+  * feat(scripts): Add artifacts output and summary
+  * fix(neovim): Explain how to a assign the parser to a file type
+  * feat(gitlab-ci): Use annotate-fuzzer-output.py
+  * feat(scripts): Add color output for annotate-fuzzer-output.py
+  * fix(make): Fix built scanner fuzzer names
+  * feat(gitlab-ci): Add scheduled fuzzing runners
+  * feat(gitlab-ci): Split into stages
+  * feat(make): Add fuzzing with `tree-sitter fuzz`
+  * feat(fuzz): Add tree traversal to exercise external scanner code
+  * feat(fuzz): Add input size limit to prevent timeouts
+  * feat(fuzz): Add assertions to catch unexpected failures in fuzzer
+  * docs(fuzz): Add fuzzing documentation
+  * feat(fuzz): Add a sanitizer output annotator
+  * feat(fuzz): Add corpus extraction script and seed corpus
+  * feat(make): Add Makefile targets for fuzzing workflows
+  * feat(cmake): Add CMake targets for libFuzzer-based fuzzing
+  * feat(cmake): Add TSFuzzDictionary module for libFuzzer dictionaries
+  * feat(fuzz): Add base fuzzer infrastructure from tree-sitter/fuzz-action
+  * docs(neovim): Register rpmspec for spec file extension
+  * fix(rpmbash): handle special prep macros to avoid parse errors
+  * feat(cmake): Build with -Werror=unused-function with picky developer
+  * fix(rpmspec): Remove unused function from scanner.c
+  * build: add smart dependency tracking to Makefile
+  * fix(rpmbash): remove rpm_condition injection to avoid parse errors
+  * refactor(grammar): Rename preamble to preamble_tag and add package_tag
+  * refactor(grammar): Rename macro_arithmetic_operator to binary_expression
+  * refactor(grammar): Merge boolean operators into binary_expression
+  * refactor(grammar): Rename not operators to unary_expression
+  * refactor(grammar): Rename comparison operators to binary_expression
+  * refactor(grammar): Rename simple_macro to identifier
+  * refactor(rpmspec): Replace package_name with name field
+  * refactor(rpmspec): Remove unnecessary section_name alias
+  * refactor(rpmspec): Improve macro_definition and dependency AST
+  * ci(gitlab): Fix duplicate pipelines by reordering workflow rules
+  * ci: Fix ts_query_ls validation to build parsers correctly
+  * build: Add check-queries target for local query validation
+  * build: Add ts_query_ls configuration files
+  * fix(queries): Wrap injection patterns with outer parentheses
+  * ci(gitlab): Add query validation with ts_query_ls
+  * ci: Trigger workflow on CI file changes too
+  * fix(github-ci): Fix GitHub Actions workflow issues
+  * build(rpmbash): Vendor tree-sitter-bash scanner for nvim-treesitter
+  * docs(neovim): Change URL to github
+  * ci: Add GitHub Actions workflows for CI and releases
+  * docs: Restructure NEOVIM.md with User and Developer Setup sections
+  * fix(rpmbash): Highlight closing brace consistently in macro expansions
+  * docs: Add rpmbash DESIGN.md
+  * docs: Point to NEOVIM.md for instructions in README.md
+  * docs: Move DESIGN.md to rpmspec directory
+  * fix(rpmbash): Delegate entire macros to rpmspec for highlighting
+  * fix(rpmbash): Preserve line continuations across RPM conditionals
+  * fix(rpmbash): Prevent newlines from being silently consumed
+  * fix(rpmbash): Preserve bash context across RPM conditionals
+  * feat: Add neovim dir with pre-configured queries and parser symlinks
+  * feat(rpmspec): Integrate rpmbash for scriptlet injection
+  * feat(rpmbash): Add RPM conditional support (%if/%else/%endif)
+  * feat(rpmbash): Support line continuation in macro definitions
+  * feat(rpmbash): Add macro definitions (%define, %global, %undefine)
+  * feat(rpmbash): Add shell expansion %(cmd)
+  * feat(rpmbash): Add simple macro expansion (%name)
+  * feat(rpmbash): Add RPM-aware bash grammar
+  * refactor: Move rpmspec grammar into subdirectory
+  * refactor(cmake): Extract reusable ts_add_parser_library() function
+  * chore: Update .gitignore
+  * chore(deps): Update tree-sitter to 0.25.8+
+  * refactor(grammar): Hide tags wrapper node in preamble
+  * refactor(grammar): Flatten dependency AST by hiding wrapper nodes
+  * refactor(scripts): Use tree-sitter test --update in update-test-ast.py
+  * refactor(grammar): Remove redundant whitespace from tag tokens
+  * refactor(grammar): Hide dependency list wrappers and rename versioned_dependency
+  * fix(grammar): Include colon in preamble tag tokens
+  * fix(scanner): Detect scriptlets in files-context conditionals
+  * fix(grammar): Include colon in dependency tag tokens
+  * fix(grammar): Allow macros in %attr mode/owner/group fields
+  * fix(grammar): Allow empty items in brace expansion
+  * refactor(grammar): Alias quoted_string_content to string_content
+  * fix(grammar): Allow conditional keywords inside macro bodies
+  * fix(grammar): Allow changelog items without leading dash
+  * fix(grammar): Support escape sequences in string_content
+  * fix(grammar): Support both ?! and !? orderings in conditional macros
+  * refactor(grammar): Consolidate sourcelist/patchlist conditionals
+  * refactor(grammar): Inline _macro_statement for flatter AST
+  * refactor(grammar): Extract _macro_inline helper for inline macros
+  * refactor(grammar): Extract _macro_statement helper rule
+  * refactor(grammar): Add combinator helpers and use commaSep1
+  * refactor(grammar): Remove package_name/text conflict with precedence
+  * refactor(grammar): Extract _conditional_consequence sub-rule
+  * docs: Add Tips and Tricks link to README.md
+  * fix(grammar): Allow macro expansions in %package sections
+  * fix(grammar): Prevent preamble tags from matching inside scriptlets
+  * refactor(grammar): Add PACKAGE_NAME_SPECIAL_CHARS constant
+  * refactor(grammar): Use tree-sitter-bash pattern for word tokens
+  * feat(grammar): Handle special characters in macro values
+  * feat(grammar): Support getopt-style combined flags in %setup/%autosetup
+  * feat(grammar): Handle literal percent in regex patterns
+  * feat(grammar): Support brace expansion in file paths
+  * fix(highlight): files directives
+  * fix(injection): scriptlet bash highlighting
+  * fix(injection): runtime scriptlet if/fi highlighting
+  * feat(grammar): Support macro expressions in autopatch options
+  * fix(scanner): Context-aware parametric macro matching
+  * feat(grammar): Add escape_sequence rule for backslash escapes
+  * feat(grammar): Support macro expansions in dependency qualifiers
+  * fix(scanner): Prevent section tokens from matching macro prefixes
+  * test: Add error test for tag with comment-only value
+  * fix(grammar): Allow ampersand in word rule
+  * feat(grammar): Add dependency_version_string for arbitrary versions
+  * feat(grammar): Add _package_name_word with proper character exclusions
+  * refactor(grammar): Tokenize setup/autosetup options for proper whitespace handling
+  * feat(grammar): Make ELF dependency symbol_version and arch optional
+
+- Update to version 0+20260125.b0a9b30:
+  * test: Add comprehensive dependency types test suite
+  * feat(highlights): Add syntax highlighting for dependency types
+  * refactor(grammar): Remove unused dependency_name and dependency_qualifier_suffix
+  * refactor(grammar): Update boolean operand for dependency types
+  * feat(grammar): Add versioned_dependency type for simple package dependencies
+  * feat(grammar): Add qualified dependency type for name(qualifier) patterns
+  * feat(grammar): Add path dependency type for file path dependencies
+  * feat(grammar): Add ELF dependency type for shared library dependencies
+  * refactor(grammar): Rename subpackage_name to package_name
+  * fix(grammar): Support macro-only values for URL and file tags
+  * fix(grammar): Support continuation lines in changelog entries
+  * fix(grammar): Allow standalone file qualifiers without paths
+  * fix(grammar): Support concatenation patterns in setup/autosetup
+  * fix(grammar): Allow attached numbers in setup/autosetup source options
+  * fix(grammar): Allow plus in subpackage names
+  * fix(grammar): Allow quoted strings in description text
+  * feat(scripts): Add update-test-ast.py for updating test AST
+  * fix(grammar): Handle line continuation in macros and script code
+  * fix(grammar): allow BuildRequires(pre)
+  * fix(grammar): Add BuildPreReq and PreReq
+  * feat(grammar): Split runtime_scriptlet for proper language injection
+  * fixup! feat(scanner): Add external newline token for line-sensitive parsing
+  * refactor(grammar): Replace remaining NEWLINE with /\n/
+  * refactor(grammar): Replace NEWLINE with /\n/ in section definitions
+  * refactor(grammar): Replace NEWLINE with /\n/ in conditional helpers
+  * refactor(grammar): Replace NEWLINE with /\n/ tags
+  * feat(scanner): Add external newline token for line-sensitive parsing
+  * refactor(grammar): Change extras whitespace
+  * feat(queries): Add lua injection for %{lua:...} macros
+  * feat(grammar): Add %{lua:...} macro expansion support
+  * feat(queries): Add interpreter-based language injection
+  * feat(queries): Add highlighting for interpreter nodes
+  * fix(tree-sitter): Add highlights and injections
+  * refactor(grammar): Unify trigger_interpreter with script_interpreter
+  * feat(grammar): Add script_interpreter to runtime_scriptlet
+  * feat(grammar): Add script_line for line-based grouping
+  * refactor(grammar): Rename shell_code to script_code
+  * refactor(grammar): Rename shell_content to script_content
+  * refactor(grammar): Rename shell_block to script_block
+
+- Update to version 0+20260122.4aca3b9:
+  * fix(grammar): Mark scriptlet_augment_option as argument
+  * feat(grammar): Add BuildSystem and BuildOption tag support
+
+- Update to version 0+20260122.5ffe253:
+  * docs: Update DESIGN.md
+  * test(description): Add tests for conditionals with packages
+  * fix(scanner): Fix section lookahead
+  * feat(highlights): Use @constant.macro for macro expansions
+  * fix(scanner): Allow %dir to be used in shell code.
+  * feat(grammar): Support function-style macro definitions with line continuation
+  * feat(grammar): Add %exclude file directive
+  * fix(grammar): Allow %attr and file qualifiers in any order
+  * feat(scanner): Add parametric_macro_name detection
+  * refactor(scanner): Reorganize code with section headers
+  * feat(grammar): Support %if blocks in sub-sections
+  * chore(grammar): Some small reordering
+  * feat(grammar): Allow shell expansion in description
+  * fix(scanner): Don't treat % followed by non-macro chars as macro start
+  * feat(grammar): Support nested macro expansions in string builtins
+  * refactor(grammar): Convert alias-only rules to hidden rules
+  * refactor(grammar): Unify macro options and arguments
+  * fix(grammar): Support hyphen-concatenated directory names in setup/autosetup
+  * feat(grammar): Add '--' option terminator support for macro invocations
+
+- Update to version 0+20260121.9840156:
+  * refactor(grammar): Use helpers for creating conditional statement rules
+  * feat(grammar): Add -a/-p augment options to build scriptlets
+  * feat(grammar): Use $.url for URL, Url, BugUrl tag values
+  * feat(grammar): Use url_or_file for Patch: tag values
+  * feat(grammar): Use url_or_file for Source: tag values
+  * feat(grammar): Add %patchlist section for listing patch files
+  * feat(grammar): Add %sourcelist section for listing source files
+  * chore: Restructure queries/highlights.scm
+  * feat(grammar): Add autopatch_macro for %autopatch support
+  * feat(grammar): Add autosetup_macro for %autosetup support
+- Switch from obs_scm to tar_scm
+
+old: openSUSE:Factory/tree-sitter-rpmspec
+new: editors:tree-sitter/tree-sitter-rpmspec rev None
+Index: _service
+===================================================================
+--- _service (revision 2)
++++ _service (revision 8)
+@@ -1,15 +1,15 @@
+ &lt;services&gt;
+-  &lt;service name=&quot;obs_scm&quot; mode=&quot;manual&quot;&gt;
++  &lt;service name=&quot;tar_scm&quot; mode=&quot;manual&quot;&gt;
+     &lt;param name=&quot;scm&quot;&gt;git&lt;/param&gt;
+     &lt;param name=&quot;url&quot;&gt;https://gitlab.com/cryptomilk/tree-sitter-rpmspec.git&lt;/param&gt;
+     &lt;param name=&quot;revision&quot;&gt;main&lt;/param&gt;
+     &lt;param name=&quot;versionformat&quot;&gt;0+%cd.%h&lt;/param&gt;
+     &lt;param name=&quot;versionrewrite-pattern&quot;&gt;v(.*)&lt;/param&gt;
++    &lt;param name=&quot;changesgenerate&quot;&gt;enable&lt;/param&gt;
+   &lt;/service&gt;
+-  &lt;service name=&quot;set_version&quot; mode=&quot;manual&quot; /&gt;
+-  &lt;service name=&quot;tar&quot; mode=&quot;buildtime&quot; /&gt;
+-  &lt;service name=&quot;recompress&quot; mode=&quot;buildtime&quot;&gt;
++  &lt;service name=&quot;recompress&quot; mode=&quot;manual&quot;&gt;
+     &lt;param name=&quot;file&quot;&gt;*.tar&lt;/param&gt;
+     &lt;param name=&quot;compression&quot;&gt;gz&lt;/param&gt;
+   &lt;/service&gt;
++  &lt;service name=&quot;set_version&quot; mode=&quot;manual&quot; /&gt;
+ &lt;/services&gt;
+Index: tree-sitter-rpmspec.changes
+===================================================================
+--- tree-sitter-rpmspec.changes (revision 2)
++++ tree-sitter-rpmspec.changes (revision 8)
+@@ -1,8 +1,224 @@
+ -------------------------------------------------------------------
++Mon Mar 16 14:24:16 UTC 2026 - Björn Kettunen &lt;bjorn.kettunen@thaodan.de&gt;
++
++- Add patch fix building. gl#cryptomilk/tree-sitter-rpmspec#31:
++  0001-fix-binding.gyp-correctly-list-source-files.patch
++- Fix packaging, pull in tree-sitter-bash-devel.
++
++-------------------------------------------------------------------
++Wed Mar 11 22:13:26 UTC 2026 - Matej Cepl &lt;mcepl@cepl.eu&gt;
++
++- Update to version 0+20260218.12ca618:
++  * fix(rpmspec): Allow hyphenated owner/group in %attr
++  * fix(grammar): remove ALT Linux-specific BuildRequires(pre) qualifier
++  * feat(rpmspec): Add i18n locale support for Summary, Group, and %description
++  * scripts: Generalize fuzz corpus extraction for any tree-sitter project
++  * chore(scripts): Remove update-test-ast.py
++  * feat(gitlab-ci): Provide artifacts directory for download on failure
++  * feat(scripts): Add artifacts output and summary
++  * fix(neovim): Explain how to a assign the parser to a file type
++  * feat(gitlab-ci): Use annotate-fuzzer-output.py
++  * feat(scripts): Add color output for annotate-fuzzer-output.py
++  * fix(make): Fix built scanner fuzzer names
++  * feat(gitlab-ci): Add scheduled fuzzing runners
++  * feat(gitlab-ci): Split into stages
++  * feat(make): Add fuzzing with `tree-sitter fuzz`
++  * feat(fuzz): Add tree traversal to exercise external scanner code
++  * feat(fuzz): Add input size limit to prevent timeouts
++  * feat(fuzz): Add assertions to catch unexpected failures in fuzzer
++  * docs(fuzz): Add fuzzing documentation
++  * feat(fuzz): Add a sanitizer output annotator
++  * feat(fuzz): Add corpus extraction script and seed corpus
++  * feat(make): Add Makefile targets for fuzzing workflows
++  * feat(cmake): Add CMake targets for libFuzzer-based fuzzing
++  * feat(cmake): Add TSFuzzDictionary module for libFuzzer dictionaries
++  * feat(fuzz): Add base fuzzer infrastructure from tree-sitter/fuzz-action
++  * docs(neovim): Register rpmspec for spec file extension
++  * fix(rpmbash): handle special prep macros to avoid parse errors
++  * feat(cmake): Build with -Werror=unused-function with picky developer
++  * fix(rpmspec): Remove unused function from scanner.c
++  * build: add smart dependency tracking to Makefile
++  * fix(rpmbash): remove rpm_condition injection to avoid parse errors
++  * refactor(grammar): Rename preamble to preamble_tag and add package_tag
++  * refactor(grammar): Rename macro_arithmetic_operator to binary_expression
++  * refactor(grammar): Merge boolean operators into binary_expression
++  * refactor(grammar): Rename not operators to unary_expression
++  * refactor(grammar): Rename comparison operators to binary_expression
++  * refactor(grammar): Rename simple_macro to identifier
++  * refactor(rpmspec): Replace package_name with name field
++  * refactor(rpmspec): Remove unnecessary section_name alias
++  * refactor(rpmspec): Improve macro_definition and dependency AST
++  * ci(gitlab): Fix duplicate pipelines by reordering workflow rules
++  * ci: Fix ts_query_ls validation to build parsers correctly
++  * build: Add check-queries target for local query validation
++  * build: Add ts_query_ls configuration files
++  * fix(queries): Wrap injection patterns with outer parentheses
++  * ci(gitlab): Add query validation with ts_query_ls
++  * ci: Trigger workflow on CI file changes too
++  * fix(github-ci): Fix GitHub Actions workflow issues
++  * build(rpmbash): Vendor tree-sitter-bash scanner for nvim-treesitter
++  * docs(neovim): Change URL to github
++  * ci: Add GitHub Actions workflows for CI and releases
++  * docs: Restructure NEOVIM.md with User and Developer Setup sections
++  * fix(rpmbash): Highlight closing brace consistently in macro expansions
++  * docs: Add rpmbash DESIGN.md
++  * docs: Point to NEOVIM.md for instructions in README.md
++  * docs: Move DESIGN.md to rpmspec directory
++  * fix(rpmbash): Delegate entire macros to rpmspec for highlighting
++  * fix(rpmbash): Preserve line continuations across RPM conditionals
++  * fix(rpmbash): Prevent newlines from being silently consumed
++  * fix(rpmbash): Preserve bash context across RPM conditionals
++  * feat: Add neovim dir with pre-configured queries and parser symlinks
++  * feat(rpmspec): Integrate rpmbash for scriptlet injection
++  * feat(rpmbash): Add RPM conditional support (%if/%else/%endif)
++  * feat(rpmbash): Support line continuation in macro definitions
++  * feat(rpmbash): Add macro definitions (%define, %global, %undefine)
++  * feat(rpmbash): Add shell expansion %(cmd)
++  * feat(rpmbash): Add simple macro expansion (%name)
++  * feat(rpmbash): Add RPM-aware bash grammar
++  * refactor: Move rpmspec grammar into subdirectory
++  * refactor(cmake): Extract reusable ts_add_parser_library() function
++  * chore: Update .gitignore
++  * chore(deps): Update tree-sitter to 0.25.8+
++  * refactor(grammar): Hide tags wrapper node in preamble
++  * refactor(grammar): Flatten dependency AST by hiding wrapper nodes
++  * refactor(scripts): Use tree-sitter test --update in update-test-ast.py
++  * refactor(grammar): Remove redundant whitespace from tag tokens
++  * refactor(grammar): Hide dependency list wrappers and rename versioned_dependency
++  * fix(grammar): Include colon in preamble tag tokens
++  * fix(scanner): Detect scriptlets in files-context conditionals
++  * fix(grammar): Include colon in dependency tag tokens
++  * fix(grammar): Allow macros in %attr mode/owner/group fields
++  * fix(grammar): Allow empty items in brace expansion
++  * refactor(grammar): Alias quoted_string_content to string_content
++  * fix(grammar): Allow conditional keywords inside macro bodies
++  * fix(grammar): Allow changelog items without leading dash
++  * fix(grammar): Support escape sequences in string_content
++  * fix(grammar): Support both ?! and !? orderings in conditional macros
++  * refactor(grammar): Consolidate sourcelist/patchlist conditionals
++  * refactor(grammar): Inline _macro_statement for flatter AST
++  * refactor(grammar): Extract _macro_inline helper for inline macros
++  * refactor(grammar): Extract _macro_statement helper rule
++  * refactor(grammar): Add combinator helpers and use commaSep1
++  * refactor(grammar): Remove package_name/text conflict with precedence
++  * refactor(grammar): Extract _conditional_consequence sub-rule
++  * docs: Add Tips and Tricks link to README.md
++  * fix(grammar): Allow macro expansions in %package sections
++  * fix(grammar): Prevent preamble tags from matching inside scriptlets
++  * refactor(grammar): Add PACKAGE_NAME_SPECIAL_CHARS constant
++  * refactor(grammar): Use tree-sitter-bash pattern for word tokens
++  * feat(grammar): Handle special characters in macro values
++  * feat(grammar): Support getopt-style combined flags in %setup/%autosetup
++  * feat(grammar): Handle literal percent in regex patterns
++  * feat(grammar): Support brace expansion in file paths
++  * fix(highlight): files directives
++  * fix(injection): scriptlet bash highlighting
++  * fix(injection): runtime scriptlet if/fi highlighting
++  * feat(grammar): Support macro expressions in autopatch options
++  * fix(scanner): Context-aware parametric macro matching
++  * feat(grammar): Add escape_sequence rule for backslash escapes
++  * feat(grammar): Support macro expansions in dependency qualifiers
++  * fix(scanner): Prevent section tokens from matching macro prefixes
++  * test: Add error test for tag with comment-only value
++  * fix(grammar): Allow ampersand in word rule
++  * feat(grammar): Add dependency_version_string for arbitrary versions
++  * feat(grammar): Add _package_name_word with proper character exclusions
++  * refactor(grammar): Tokenize setup/autosetup options for proper whitespace handling
++  * feat(grammar): Make ELF dependency symbol_version and arch optional
++
++-------------------------------------------------------------------
+ Thu Mar  5 21:41:44 UTC 2026 - Björn Kettunen &lt;bjorn.kettunen@thaodan.de&gt;
+ 
+ - Remove redundant Neovim workaround
+ 
+ -------------------------------------------------------------------
++Sun Jan 25 19:52:13 UTC 2026 - Matej Cepl &lt;mcepl@cepl.eu&gt;
++
++- Update to version 0+20260125.b0a9b30:
++  * test: Add comprehensive dependency types test suite
++  * feat(highlights): Add syntax highlighting for dependency types
++  * refactor(grammar): Remove unused dependency_name and dependency_qualifier_suffix
++  * refactor(grammar): Update boolean operand for dependency types
++  * feat(grammar): Add versioned_dependency type for simple package dependencies
++  * feat(grammar): Add qualified dependency type for name(qualifier) patterns
++  * feat(grammar): Add path dependency type for file path dependencies
++  * feat(grammar): Add ELF dependency type for shared library dependencies
++  * refactor(grammar): Rename subpackage_name to package_name
++  * fix(grammar): Support macro-only values for URL and file tags
++  * fix(grammar): Support continuation lines in changelog entries
++  * fix(grammar): Allow standalone file qualifiers without paths
++  * fix(grammar): Support concatenation patterns in setup/autosetup
++  * fix(grammar): Allow attached numbers in setup/autosetup source options
++  * fix(grammar): Allow plus in subpackage names
++  * fix(grammar): Allow quoted strings in description text
++  * feat(scripts): Add update-test-ast.py for updating test AST
++  * fix(grammar): Handle line continuation in macros and script code
++  * fix(grammar): allow BuildRequires(pre)
++  * fix(grammar): Add BuildPreReq and PreReq
++  * feat(grammar): Split runtime_scriptlet for proper language injection
++  * fixup! feat(scanner): Add external newline token for line-sensitive parsing
++  * refactor(grammar): Replace remaining NEWLINE with /\n/
++  * refactor(grammar): Replace NEWLINE with /\n/ in section definitions
++  * refactor(grammar): Replace NEWLINE with /\n/ in conditional helpers
++  * refactor(grammar): Replace NEWLINE with /\n/ tags
++  * feat(scanner): Add external newline token for line-sensitive parsing
++  * refactor(grammar): Change extras whitespace
++  * feat(queries): Add lua injection for %{lua:...} macros
++  * feat(grammar): Add %{lua:...} macro expansion support
++  * feat(queries): Add interpreter-based language injection
++  * feat(queries): Add highlighting for interpreter nodes
++  * fix(tree-sitter): Add highlights and injections
++  * refactor(grammar): Unify trigger_interpreter with script_interpreter
++  * feat(grammar): Add script_interpreter to runtime_scriptlet
++  * feat(grammar): Add script_line for line-based grouping
++  * refactor(grammar): Rename shell_code to script_code
++  * refactor(grammar): Rename shell_content to script_content
++  * refactor(grammar): Rename shell_block to script_block
++
++-------------------------------------------------------------------
++Thu Jan 22 23:08:36 UTC 2026 - Matej Cepl &lt;mcepl@cepl.eu&gt;
++
++- Update to version 0+20260122.4aca3b9:
++  * fix(grammar): Mark scriptlet_augment_option as argument
++  * feat(grammar): Add BuildSystem and BuildOption tag support
++
++-------------------------------------------------------------------
++Thu Jan 22 16:52:01 UTC 2026 - Matej Cepl &lt;mcepl@cepl.eu&gt;
++
++- Update to version 0+20260122.5ffe253:
++  * docs: Update DESIGN.md
++  * test(description): Add tests for conditionals with packages
++  * fix(scanner): Fix section lookahead
++  * feat(highlights): Use @constant.macro for macro expansions
++  * fix(scanner): Allow %dir to be used in shell code.
++  * feat(grammar): Support function-style macro definitions with line continuation
++  * feat(grammar): Add %exclude file directive
++  * fix(grammar): Allow %attr and file qualifiers in any order
++  * feat(scanner): Add parametric_macro_name detection
++  * refactor(scanner): Reorganize code with section headers
++  * feat(grammar): Support %if blocks in sub-sections
++  * chore(grammar): Some small reordering
++  * feat(grammar): Allow shell expansion in description
++  * fix(scanner): Don't treat % followed by non-macro chars as macro start
++  * feat(grammar): Support nested macro expansions in string builtins
++  * refactor(grammar): Convert alias-only rules to hidden rules
++  * refactor(grammar): Unify macro options and arguments
++  * fix(grammar): Support hyphen-concatenated directory names in setup/autosetup
++  * feat(grammar): Add '--' option terminator support for macro invocations
++
++-------------------------------------------------------------------
++Wed Jan 21 12:14:06 UTC 2026 - Matej Cepl &lt;mcepl@cepl.eu&gt;
++
++- Update to version 0+20260121.9840156:
++  * refactor(grammar): Use helpers for creating conditional statement rules
++  * feat(grammar): Add -a/-p augment options to build scriptlets
++  * feat(grammar): Use $.url for URL, Url, BugUrl tag values
++  * feat(grammar): Use url_or_file for Patch: tag values
++  * feat(grammar): Use url_or_file for Source: tag values
++  * feat(grammar): Add %patchlist section for listing patch files
++  * feat(grammar): Add %sourcelist section for listing source files
++  * chore: Restructure queries/highlights.scm
++  * feat(grammar): Add autopatch_macro for %autopatch support
++  * feat(grammar): Add autosetup_macro for %autosetup support
++- Switch from obs_scm to tar_scm</comment>
+    <requestid>1339387</requestid>
+  </revision>
 </revisionlist>

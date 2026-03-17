@@ -18,14 +18,17 @@
 
 %define         _name rpmspec
 Name:           tree-sitter-rpmspec
-Version:        0+20241007.a7b1cff
+Version:        0+20260218.12ca618
 Release:        0
 Summary:        RPMspec grammar for tree-sitter
 License:        MIT
 URL:            https://gitlab.com/cryptomilk/tree-sitter-rpmspec
 Source0:        %{name}-%{version}.tar.gz
+Patch1:         0001-fix-binding.gyp-correctly-list-source-files.patch
 BuildRequires:  tree-sitter
-%treesitter_grammars %{_name}
+# For rpmbash grammar
+BuildRequires:  treesitter_grammar_src(tree-sitter-bash)
+%treesitter_grammars %{_name} rpmbash
 
 %description
 %{summary}.
