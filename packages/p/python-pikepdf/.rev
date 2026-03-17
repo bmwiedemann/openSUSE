@@ -384,4 +384,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1338677</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>33c37bd62f4d4d6ad9bf6a56bfde5a61</srcmd5>
+    <version>10.5.0</version>
+    <time>1773770668</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.5.0:
+  * Fixed logger in ``ctm`` module using ``__file__`` instead of
+    ``__name__``, which produced unhelpful log names. :issue:`712`
+  * Modernized README.
+  * Test all README code blocks instead of just one.</comment>
+    <requestid>1339434</requestid>
+  </revision>
 </revisionlist>
