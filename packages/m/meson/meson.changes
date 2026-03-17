@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 16 08:39:30 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.10.2:
+  + build: Add de-duplication for non-result targets in
+    get_all_link_deps
+  + utils: introduce path_has_root
+  + ninjabackend: do not fail if only the build machine uses C++
+  + get_llvm_tool_names: recognise LLVM 22
+
+-------------------------------------------------------------------
 Tue Feb 10 11:45:57 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update 14001.patch: ensure to get valid rich deps with
