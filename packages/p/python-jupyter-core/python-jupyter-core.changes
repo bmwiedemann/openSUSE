@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec 13 13:56:04 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.9.1:
+  * nicer traceback in missing loop case outside except in
+    run_sync #437 (@AThePeanut4)
+  * Fix missing `f` specifier in f-string used to print config
+    file path #433 (@krassowski)
+  * validate inputs to is_hidden #429 (@minrk)
+  * [Docs] Use extension:filetype mapping in sphinx configuration
+    #443 (@Carreau)
+
+-------------------------------------------------------------------
 Sat Jun 21 15:50:34 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.8.1
@@ -18,7 +30,7 @@ Wed Sep 25 08:33:08 UTC 2024 - ecsos <ecsos@opensuse.org>
 -------------------------------------------------------------------
 Wed May 22 04:15:02 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Remove upper bound on pytest, and switch to importlib import-mode. 
+- Remove upper bound on pytest, and switch to importlib import-mode.
 
 -------------------------------------------------------------------
 Fri Mar 29 18:20:02 UTC 2024 - Ben Greiner <code@bnavigator.de>
@@ -179,7 +191,7 @@ Sun Mar 13 06:59:34 UTC 2022 - Ben Greiner <code@bnavigator.de>
   * set proper sys.argv[0] for subcommand by @bnavigator in #248
   * Add explicit encoding in open calls by @dlukes in #249
   * jupyter_config_dir - reorder home_dir initialization by
-    @dharmaquark in #251 
+    @dharmaquark in #251
 - Drop argv0_subcommand.patch merged upstream
 
 -------------------------------------------------------------------
@@ -242,27 +254,27 @@ Sun Jan 31 17:57:15 UTC 2021 - Ben Greiner <code@bnavigator.de>
 - Update to 4.7.1
   * Allow creating user to delete secure file
 - Changelog for 4.7.0
-  * Add a new JUPYTER_PREFER_ENV_PATH variable, which can be set 
-    to switch the order of the environment-level path and the 
-    user-level path in the Jupyter path hierarchy (e.g., jupyter 
-    --paths). It is considered set if it is a value that is not 
-    one of 'no', 'n', 'off', 'false', '0', or '0.0' (case 
-    insensitive). If you are running Jupyter in multiple virtual 
-    environments as the same user, you will likely want to set 
+  * Add a new JUPYTER_PREFER_ENV_PATH variable, which can be set
+    to switch the order of the environment-level path and the
+    user-level path in the Jupyter path hierarchy (e.g., jupyter
+    --paths). It is considered set if it is a value that is not
+    one of 'no', 'n', 'off', 'false', '0', or '0.0' (case
+    insensitive). If you are running Jupyter in multiple virtual
+    environments as the same user, you will likely want to set
     this environment variable.
-  * Drop Python 2.x and 3.5 support, as they have reached end of 
+  * Drop Python 2.x and 3.5 support, as they have reached end of
     life.
-  * jupyter --paths --debug now explains the environment 
+  * jupyter --paths --debug now explains the environment
     variables that affect the current path list.
   * Add conda environment information in jupyter troubleshoot.
-  * Update _version.version_info and _version.__version__ to 
+  * Update _version.version_info and _version.__version__ to
     follow Python conventions.
 - merge jupyter package as capability into the primary python
   package
 - fix replacement of paths:
   * fix noop introduced by overeager specfile-cleaner for system
     paths, adjust use_rpm_paths.patch
-  * don't replace ENV_CONFIG_PATH or ENV_JUPYTER_PATH because that 
+  * don't replace ENV_CONFIG_PATH or ENV_JUPYTER_PATH because that
     would break virtual environments. See also
      gh#jupyter/jupyter_core#208
 
@@ -375,7 +387,7 @@ Wed Nov 22 22:48:47 UTC 2017 - arun@gmx.de
 -------------------------------------------------------------------
 Wed Sep 20 17:53:24 UTC 2017 - toddrme2178@gmail.com
 
-- Set configuration and data paths to be correct for any 
+- Set configuration and data paths to be correct for any
   Linux distribution. This is done by using sed to replace
   hard-coded values with those provided by rpm.
   * Add use_rpms_paths.patch to make the paths easier to replace.
@@ -431,9 +443,9 @@ Wed Feb 17 14:22:56 UTC 2016 - toddrme2178@gmail.com
 Wed Feb 17 08:53:35 UTC 2016 - toddrme2178@gmail.com
 
 - Split documentation to speed up building.
-  This is a dependency of a lot of other packages, and the 
+  This is a dependency of a lot of other packages, and the
   dependencies for the documentation are very heavy.  So build
-  the documentation separately to avoid holding up the build 
+  the documentation separately to avoid holding up the build
   process.
 
 -------------------------------------------------------------------

@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-core
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-jupyter-core%{psuffix}
-Version:        5.8.1
+Version:        5.9.1
 Release:        0
 Summary:        Base package on which Jupyter projects rely
 License:        BSD-3-Clause

@@ -328,4 +328,36 @@ Update to 4.6.1</comment>
     (@hugokerstens)</comment>
     <requestid>1287584</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>0b477236be97e914b9b15a58d2730439</srcmd5>
+    <version>5.9.1</version>
+    <time>1773770528</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.9.1:
+  * nicer traceback in missing loop case outside except in
+    run_sync #437 (@AThePeanut4)
+  * Fix missing `f` specifier in f-string used to print config
+    file path #433 (@krassowski)
+  * validate inputs to is_hidden #429 (@minrk)
+  * [Docs] Use extension:filetype mapping in sphinx configuration
+    #443 (@Carreau)
+
+- Remove upper bound on pytest, and switch to importlib import-mode.
+    @dharmaquark in #251
+  * Add a new JUPYTER_PREFER_ENV_PATH variable, which can be set
+    to switch the order of the environment-level path and the
+    user-level path in the Jupyter path hierarchy (e.g., jupyter
+    --paths). It is considered set if it is a value that is not
+    one of 'no', 'n', 'off', 'false', '0', or '0.0' (case
+    insensitive). If you are running Jupyter in multiple virtual
+    environments as the same user, you will likely want to set
+  * Drop Python 2.x and 3.5 support, as they have reached end of
+  * jupyter --paths --debug now explains the environment
+  * Update _version.version_info and _version.__version__ to
+  * don't replace ENV_CONFIG_PATH or ENV_JUPYTER_PATH because that
+- Set configuration and data paths to be correct for any
+  This is a dependency of a lot of other packages, and the
+  the documentation separately to avoid holding up the build</comment>
+    <requestid>1339150</requestid>
+  </revision>
 </revisionlist>
