@@ -412,4 +412,16 @@
 - Update Requires from setup.py (forwarded request 1333676 from glaubitz)</comment>
     <requestid>1333808</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>d0fe2bbf53b5cbf7b326fa794f8a002e</srcmd5>
+    <version>1.25.3</version>
+    <time>1773770571</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.25.3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1339375 from glaubitz)</comment>
+    <requestid>1339377</requestid>
+  </revision>
 </revisionlist>
