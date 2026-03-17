@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Mar  9 09:58:03 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Updated GO to minimum version 1.25
+
+Version 3.6.10
+- CVE fixed:
+  * CVE-2026-29777 (Advisory GHSA-8q2w-wr49-whqj) boo#1259525
+  * CVE-2026-27141 (Advisory GHSA-4hjq-9h5c-252j) boo#1259062
+
+- Bugs fixed
+  * docker
+    - Bump Docker and OpenTelemetry dependencies
+  * fastproxy
+    - Bump github.com/valyala/fasthttp to v1.69.0
+  * healthcheck, grpc
+    - Remove path parsing with grpc healthcheck
+  * k8s/gatewayapi
+    - Fix Gateway API router's rules
+  * middleware
+    - Fix HasSecureHeadersDefined returning false when stsSeconds is 0
+  * otel
+    - Bump go.opentelemetry.io/otel dependencies
+  * server
+    - Bump golang.org/x/net to v0.51.0
+  * webui
+    - Fix basePath validation for dashboard template
+    - Fix priority display in dashboard and ACME bypass redirect
+
+Version 3.6.9
+- CVEs fixed:
+  * CVE-2026-26998 (Advisory GHSA-fw45-f5q2-2p4x) boo#1259276
+  * CVE-2026-26999 (Advisory GHSA-xw98-5q62-jx94) boo#1259275
+  * CVE-2026-29054 (Advisory GHSA-92mv-8f8w-wq52) boo#1259273
+
+- Bugs fixes:
+  * acme
+    - Bump github.com/go-acme/lego/v4 to v4.32.0
+  * middleware, authentication
+    - Add maxResponseBodySize configuration to forwardAuth middleware, boo#1259276
+    - Handle empty/missing User-Agent header
+  * middleware
+    - Fix case sensitivity on x-forwarded headers for Connection boo#1259273
+  * server
+    - Fix TLS handshake error handling, boo#1259275
+
+-------------------------------------------------------------------
 Mon Feb 16 10:56:51 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 Updated permissions for /var/lib/traefik to 0775 with owner root:traefik
