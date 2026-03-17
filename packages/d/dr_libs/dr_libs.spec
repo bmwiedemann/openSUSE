@@ -18,9 +18,9 @@
 
 %define         flacversion 0.13.3
 %define         mp3version 0.7.3
-%define         wavversion 0.14.4
+%define         wavversion 0.14.5
 Name:           dr_libs
-Version:        20260117
+Version:        20260315
 Release:        0
 Summary:        Audio decoding libraries for C/C++, each in a single source file
 License:        MIT-0 OR Unlicense

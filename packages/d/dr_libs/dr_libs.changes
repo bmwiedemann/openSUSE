@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 17 13:35:21 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 20260315:
+  * Try fixing a signed overflow bug in the MS-ADPCM decoder
+  * Fix a crash when loading files with a malformed "smpl" chunk
+
+-------------------------------------------------------------------
 Wed Jan 21 01:02:00 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 20260117:
