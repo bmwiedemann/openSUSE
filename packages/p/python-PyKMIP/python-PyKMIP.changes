@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 17 01:25:55 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-assertequal.patch:
+  * Use TestCase.assertEqual rather than assertEquals.
+
+-------------------------------------------------------------------
 Mon Apr 14 06:23:18 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support both lowercased and unnormalized metadata directory names.

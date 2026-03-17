@@ -1,0 +1,1047 @@
+From f9dcfbd3424857183bd3ad075c06c8babfdba7da Mon Sep 17 00:00:00 2001
+From: Karthikeyan Singaravelan <tir.karthi@gmail.com>
+Date: Sun, 17 Oct 2021 06:11:52 +0000
+Subject: [PATCH] Use assertEqual instead of assertEquals for Python 3.11
+ compatibility.
+
+---
+ .../tests/unit/core/messages/test_messages.py | 132 +++++++++---------
+ kmip/tests/unit/core/test_enums.py            |   8 +-
+ .../unit/pie/objects/test_opaque_object.py    |  38 ++---
+ .../unit/pie/objects/test_private_key.py      |  38 ++---
+ .../tests/unit/pie/objects/test_public_key.py |  38 ++---
+ .../unit/pie/objects/test_secret_data.py      |  38 ++---
+ .../unit/pie/objects/test_symmetric_key.py    |  38 ++---
+ .../unit/pie/objects/test_x509_certificate.py |  38 ++---
+ 8 files changed, 184 insertions(+), 184 deletions(-)
+
+diff --git a/kmip/tests/unit/core/messages/test_messages.py b/kmip/tests/unit/core/messages/test_messages.py
+index 1576e62a..5d62769d 100644
+--- a/kmip/tests/unit/core/messages/test_messages.py
++++ b/kmip/tests/unit/core/messages/test_messages.py
+@@ -431,9 +431,9 @@ def test_create_request_read(self):
+         msg = "Bad batch items type: expected {0}, received {1}"
+         self.assertIsInstance(batch_items, list,
+                               msg.format(list, type(batch_items)))
+-        self.assertEquals(1, len(batch_items),
+-                          self.msg.format('batch items', 'length',
+-                                          1, len(batch_items)))
++        self.assertEqual(1, len(batch_items),
++                         self.msg.format('batch items', 'length',
++                                         1, len(batch_items)))
+ 
+         batch_item = batch_items[0]
+         msg = "Bad batch item type: expected {0}, received {1}"
+@@ -479,9 +479,9 @@ def test_create_request_read(self):
+         self.assertIsInstance(attributes, list,
+                               self.msg.format('attributes', 'type',
+                                               list, type(attributes)))
+-        self.assertEquals(3, len(attributes),
+-                          self.msg.format('attributes', 'length',
+-                                          3, len(attributes)))
++        self.assertEqual(3, len(attributes),
++                         self.msg.format('attributes', 'length',
++                                         3, len(attributes)))
+ 
+         attribute_a = attributes[0]
+         self.assertIsInstance(attribute_a, objects.Attribute,
+@@ -494,10 +494,10 @@ def test_create_request_read(self):
+                               self.msg.format('attribute name', 'type',
+                                               objects.Attribute.AttributeName,
+                                               type(attribute_name)))
+-        self.assertEquals('Cryptographic Algorithm', attribute_name.value,
+-                          self.msg.format('attribute name', 'value',
+-                                          'Cryptographic Algorithm',
+-                                          attribute_name.value))
++        self.assertEqual('Cryptographic Algorithm', attribute_name.value,
++                         self.msg.format('attribute name', 'value',
++                                         'Cryptographic Algorithm',
++                                         attribute_name.value))
+ 
+         attribute_value = attribute_a.attribute_value
+         exp_type = attr.CryptographicAlgorithm
+@@ -505,11 +505,11 @@ def test_create_request_read(self):
+         self.assertIsInstance(attribute_value, exp_type,
+                               self.msg.format('attribute value', 'type',
+                                               exp_type, rcv_type))
+-        self.assertEquals(attribute_value.value,
+-                          enums.CryptographicAlgorithm.AES,
+-                          self.msg.format('cryptographic algorithm', 'value',
+-                                          enums.CryptographicAlgorithm.AES,
+-                                          attribute_value.value))
++        self.assertEqual(attribute_value.value,
++                         enums.CryptographicAlgorithm.AES,
++                         self.msg.format('cryptographic algorithm', 'value',
++                                         enums.CryptographicAlgorithm.AES,
++                                         attribute_value.value))
+ 
+         attribute_b = attributes[1]
+         self.assertIsInstance(attribute_b, objects.Attribute,
+@@ -522,10 +522,10 @@ def test_create_request_read(self):
+                               self.msg.format('attribute name', 'type',
+                                               objects.Attribute.AttributeName,
+                                               type(attribute_name)))
+-        self.assertEquals('Cryptographic Length', attribute_name.value,
+-                          self.msg.format('attribute name', 'value',
+-                                          'Cryptographic Length',
+-                                          attribute_name.value))
++        self.assertEqual('Cryptographic Length', attribute_name.value,
++                         self.msg.format('attribute name', 'value',
++                                         'Cryptographic Length',
++                                         attribute_name.value))
+ 
+         attribute_value = attribute_b.attribute_value
+         exp_type = attr.CryptographicLength
+@@ -533,9 +533,9 @@ def test_create_request_read(self):
+         self.assertIsInstance(attribute_value, exp_type,
+                               self.msg.format('attribute value', 'type',
+                                               exp_type, rcv_type))
+-        self.assertEquals(attribute_value.value, 128,
+-                          self.msg.format('cryptographic length', 'value',
+-                                          128, attribute_value.value))
++        self.assertEqual(attribute_value.value, 128,
++                         self.msg.format('cryptographic length', 'value',
++                                         128, attribute_value.value))
+ 
+         attribute_c = attributes[2]
+         self.assertIsInstance(attribute_c, objects.Attribute,
+@@ -548,10 +548,10 @@ def test_create_request_read(self):
+                               self.msg.format('attribute name', 'type',
+                                               objects.Attribute.AttributeName,
+                                               type(attribute_name)))
+-        self.assertEquals('Cryptographic Usage Mask', attribute_name.value,
+-                          self.msg.format('attribute name', 'value',
+-                                          'Cryptographic Usage Mask',
+-                                          attribute_name.value))
++        self.assertEqual('Cryptographic Usage Mask', attribute_name.value,
++                         self.msg.format('attribute name', 'value',
++                                         'Cryptographic Usage Mask',
++                                         attribute_name.value))
+ 
+         attribute_value = attribute_c.attribute_value
+         exp_type = attr.CryptographicUsageMask
+@@ -562,9 +562,9 @@ def test_create_request_read(self):
+         flag_encrypt = CryptographicUsageMask.ENCRYPT
+         flag_decrypt = CryptographicUsageMask.DECRYPT
+         exp_value = flag_encrypt.value | flag_decrypt.value
+-        self.assertEquals(attribute_value.value, exp_value,
+-                          self.msg.format('cryptographic usage mask', 'value',
+-                                          exp_value, attribute_value.value))
++        self.assertEqual(attribute_value.value, exp_value,
++                         self.msg.format('cryptographic usage mask', 'value',
++                                         exp_value, attribute_value.value))
+ 
+     def test_create_request_write(self):
+         prot_ver = contents.ProtocolVersion(1, 1)
+@@ -662,9 +662,9 @@ def test_get_request_read(self):
+         msg = "Bad batch items type: expected {0}, received {1}"
+         self.assertIsInstance(batch_items, list,
+                               msg.format(list, type(batch_items)))
+-        self.assertEquals(1, len(batch_items),
+-                          self.msg.format('batch items', 'length',
+-                                          1, len(batch_items)))
++        self.assertEqual(1, len(batch_items),
++                         self.msg.format('batch items', 'length',
++                                         1, len(batch_items)))
+ 
+         batch_item = batch_items[0]
+         msg = "Bad batch item type: expected {0}, received {1}"
+@@ -780,9 +780,9 @@ def test_destroy_request_read(self):
+         msg = "Bad batch items type: expected {0}, received {1}"
+         self.assertIsInstance(batch_items, list,
+                               msg.format(list, type(batch_items)))
+-        self.assertEquals(1, len(batch_items),
+-                          self.msg.format('batch items', 'length',
+-                                          1, len(batch_items)))
++        self.assertEqual(1, len(batch_items),
++                         self.msg.format('batch items', 'length',
++                                         1, len(batch_items)))
+ 
+         batch_item = batch_items[0]
+         msg = "Bad batch item type: expected {0}, received {1}"
+@@ -899,9 +899,9 @@ def test_register_request_read(self):
+         msg = "Bad batch items type: expected {0}, received {1}"
+         self.assertIsInstance(batch_items, list,
+                               msg.format(list, type(batch_items)))
+-        self.assertEquals(1, len(batch_items),
+-                          self.msg.format('batch items', 'length',
+-                                          1, len(batch_items)))
++        self.assertEqual(1, len(batch_items),
++                         self.msg.format('batch items', 'length',
++                                         1, len(batch_items)))
+ 
+         for batch_item in batch_items:
+             msg = "Bad batch item type: expected {0}, received {1}"
+@@ -1113,9 +1113,9 @@ def test_locate_request_read(self):
+ 
+         batch_items = request_message.batch_items
+         msg = "Bad batch items type: expected {0}, received {1}"
+-        self.assertEquals(1, len(batch_items),
+-                          self.msg.format('batch items', 'length',
+-                                          1, len(batch_items)))
++        self.assertEqual(1, len(batch_items),
++                         self.msg.format('batch items', 'length',
++                                         1, len(batch_items)))
+ 
+         batch_item = batch_items[0]
+         msg = "Bad batch item type: expected {0}, received {1}"
+@@ -1164,9 +1164,9 @@ def test_locate_request_read(self):
+                               self.msg.format('attribute name', 'type',
+                                               objects.Attribute.AttributeName,
+                                               type(attribute_name)))
+-        self.assertEquals('Object Type', attribute_name.value,
+-                          self.msg.format('attribute name', 'value',
+-                                          'Object Type',
++        self.assertEqual('Object Type', attribute_name.value,
++                         self.msg.format('attribute name', 'value',
++                                         'Object Type',
+                                           attribute_name.value))
+ 
+         attribute_value = attribute_a.attribute_value
+@@ -1175,7 +1175,7 @@ def test_locate_request_read(self):
+         self.assertIsInstance(attribute_value, exp_type,
+                               self.msg.format('attribute value', 'type',
+                                               exp_type, rcv_type))
+-        self.assertEquals(
++        self.assertEqual(
+             attribute_value.value,
+             enums.ObjectType.SYMMETRIC_KEY,
+             self.msg.format(
+@@ -1193,10 +1193,10 @@ def test_locate_request_read(self):
+                               self.msg.format('attribute name', 'type',
+                                               objects.Attribute.AttributeName,
+                                               type(attribute_name)))
+-        self.assertEquals('Name', attribute_name.value,
+-                          self.msg.format('attribute name', 'value',
+-                                          'Name',
+-                                          attribute_name.value))
++        self.assertEqual('Name', attribute_name.value,
++                         self.msg.format('attribute name', 'value',
++                                         'Name',
++                                         attribute_name.value))
+         attribute_value = attribute_b.attribute_value
+ 
+         exp_type = Name
+@@ -1204,10 +1204,10 @@ def test_locate_request_read(self):
+         self.assertIsInstance(attribute_value, exp_type,
+                               self.msg.format('attribute value', 'type',
+                                               exp_type, rcv_type))
+-        self.assertEquals('Key1', attribute_value.name_value.value,
+-                          self.msg.format('name value', 'value',
+-                                          'Key1',
+-                                          attribute_value.name_value.value))
++        self.assertEqual('Key1', attribute_value.name_value.value,
++                         self.msg.format('name value', 'value',
++                                         'Key1',
++                                         attribute_value.name_value.value))
+ 
+     def test_mac_request_read(self):
+         self.stream = BytearrayStream(self.mac)
+@@ -1260,9 +1260,9 @@ def test_mac_request_read(self):
+         msg = "Bad batch items type: expected {0}, received {1}"
+         self.assertIsInstance(batch_items, list,
+                               msg.format(list, type(batch_items)))
+-        self.assertEquals(1, len(batch_items),
+-                          self.msg.format('batch items', 'length',
+-                                          1, len(batch_items)))
++        self.assertEqual(1, len(batch_items),
++                         self.msg.format('batch items', 'length',
++                                         1, len(batch_items)))
+ 
+         batch_item = batch_items[0]
+         msg = "Bad batch item type: expected {0}, received {1}"
+@@ -1310,10 +1310,10 @@ def test_mac_request_read(self):
+                               msg.format(enums.CryptographicAlgorithm,
+                                          type(cryptographic_algorithm)))
+         msg = "Bad cryptographic algorithm value: expected {0}, received {1}"
+-        self.assertEquals(cryptographic_algorithm,
+-                          enums.CryptographicAlgorithm.HMAC_SHA512,
+-                          msg.format(cryptographic_algorithm,
+-                                     enums.CryptographicAlgorithm.HMAC_SHA512))
++        self.assertEqual(cryptographic_algorithm,
++                         enums.CryptographicAlgorithm.HMAC_SHA512,
++                         msg.format(cryptographic_algorithm,
++                                    enums.CryptographicAlgorithm.HMAC_SHA512))
+ 
+         data = request_payload.data
+         msg = "Bad data type: expected {0}, received {1}"
+@@ -1922,9 +1922,9 @@ def test_destroy_response_read(self):
+         msg = "Bad batch items type: expected {0}, received {1}"
+         self.assertIsInstance(batch_items, list,
+                               msg.format(list, type(batch_items)))
+-        self.assertEquals(1, len(batch_items),
+-                          self.msg.format('batch items', 'length',
+-                                          1, len(batch_items)))
++        self.assertEqual(1, len(batch_items),
++                         self.msg.format('batch items', 'length',
++                                         1, len(batch_items)))
+ 
+         for batch_item in batch_items:
+             msg = "Bad batch item type: expected {0}, received {1}"
+@@ -2065,9 +2065,9 @@ def test_register_response_read(self):
+         msg = "Bad batch items type: expected {0}, received {1}"
+         self.assertIsInstance(batch_items, list,
+                               msg.format(list, type(batch_items)))
+-        self.assertEquals(1, len(batch_items),
+-                          self.msg.format('batch items', 'length',
+-                                          1, len(batch_items)))
++        self.assertEqual(1, len(batch_items),
++                         self.msg.format('batch items', 'length',
++                                         1, len(batch_items)))
+ 
+         for batch_item in batch_items:
+             msg = "Bad batch item type: expected {0}, received {1}"
+diff --git a/kmip/tests/unit/core/test_enums.py b/kmip/tests/unit/core/test_enums.py
+index c0c91977..e6c7198d 100644
+--- a/kmip/tests/unit/core/test_enums.py
++++ b/kmip/tests/unit/core/test_enums.py
+@@ -34,7 +34,7 @@ def test_greater_than_or_equal(self):
+             enums.KMIPVersion.KMIP_1_0 >= enums.KMIPVersion.KMIP_2_0
+         )
+ 
+-        self.assertEquals(
++        self.assertEqual(
+             NotImplemented,
+             enums.KMIPVersion.KMIP_2_0.__ge__(enums.WrappingMethod.ENCRYPT)
+         )
+@@ -47,7 +47,7 @@ def test_greater_than(self):
+             enums.KMIPVersion.KMIP_1_1 > enums.KMIPVersion.KMIP_1_3
+         )
+ 
+-        self.assertEquals(
++        self.assertEqual(
+             NotImplemented,
+             enums.KMIPVersion.KMIP_2_0.__gt__(enums.WrappingMethod.ENCRYPT)
+         )
+@@ -60,7 +60,7 @@ def test_less_than_or_equal(self):
+             enums.KMIPVersion.KMIP_1_4 <= enums.KMIPVersion.KMIP_1_3
+         )
+ 
+-        self.assertEquals(
++        self.assertEqual(
+             NotImplemented,
+             enums.KMIPVersion.KMIP_2_0.__le__(enums.WrappingMethod.ENCRYPT)
+         )
+@@ -73,7 +73,7 @@ def test_less_than(self):
+             enums.KMIPVersion.KMIP_2_0 < enums.KMIPVersion.KMIP_1_3
+         )
+ 
+-        self.assertEquals(
++        self.assertEqual(
+             NotImplemented,
+             enums.KMIPVersion.KMIP_2_0.__lt__(enums.WrappingMethod.ENCRYPT)
+         )
+diff --git a/kmip/tests/unit/pie/objects/test_opaque_object.py b/kmip/tests/unit/pie/objects/test_opaque_object.py
+index f41f1b0e..6a7542ce 100644
+--- a/kmip/tests/unit/pie/objects/test_opaque_object.py
++++ b/kmip/tests/unit/pie/objects/test_opaque_object.py
+@@ -253,11 +253,11 @@ def test_add_multiple_names(self):
+             self.bytes_a, enums.OpaqueDataType.NONE, name=expected_names[0])
+         obj.names.append(expected_names[1])
+         obj.names.append(expected_names[2])
+-        self.assertEquals(3, obj.name_index)
++        self.assertEqual(3, obj.name_index)
+         expected_mo_names = list()
+         for i, name in enumerate(expected_names):
+             expected_mo_names.append(sqltypes.ManagedObjectName(name, i))
+-        self.assertEquals(expected_mo_names, obj._names)
++        self.assertEqual(expected_mo_names, obj._names)
+ 
+         Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+@@ -269,7 +269,7 @@ def test_add_multiple_names(self):
+             ManagedObject.unique_identifier == obj.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_remove_name(self):
+         """
+@@ -284,7 +284,7 @@ def test_remove_name(self):
+         obj.names.append(names[1])
+         obj.names.append(names[2])
+         obj.names.pop(remove_index)
+-        self.assertEquals(3, obj.name_index)
++        self.assertEqual(3, obj.name_index)
+ 
+         expected_names = list()
+         expected_mo_names = list()
+@@ -292,8 +292,8 @@ def test_remove_name(self):
+             if i != remove_index:
+                 expected_names.append(name)
+                 expected_mo_names.append(sqltypes.ManagedObjectName(name, i))
+-        self.assertEquals(expected_names, obj.names)
+-        self.assertEquals(expected_mo_names, obj._names)
++        self.assertEqual(expected_names, obj.names)
++        self.assertEqual(expected_mo_names, obj._names)
+ 
+         Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+@@ -305,8 +305,8 @@ def test_remove_name(self):
+             ManagedObject.unique_identifier == obj.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_remove_and_add_name(self):
+         """
+@@ -323,7 +323,7 @@ def test_remove_and_add_name(self):
+         obj.names.pop()
+         obj.names.pop()
+         obj.names.append('dog')
+-        self.assertEquals(4, obj.name_index)
++        self.assertEqual(4, obj.name_index)
+ 
+         expected_names = ['bowser', 'dog']
+         expected_mo_names = list()
+@@ -331,8 +331,8 @@ def test_remove_and_add_name(self):
+                                                             0))
+         expected_mo_names.append(sqltypes.ManagedObjectName(expected_names[1],
+                                                             3))
+-        self.assertEquals(expected_names, obj.names)
+-        self.assertEquals(expected_mo_names, obj._names)
++        self.assertEqual(expected_names, obj.names)
++        self.assertEqual(expected_mo_names, obj._names)
+ 
+         Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+@@ -344,8 +344,8 @@ def test_remove_and_add_name(self):
+             ManagedObject.unique_identifier == obj.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_update_with_add_name(self):
+         """
+@@ -385,8 +385,8 @@ def test_update_with_add_name(self):
+             ManagedObject.unique_identifier == obj.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_update_with_remove_name(self):
+         """
+@@ -426,8 +426,8 @@ def test_update_with_remove_name(self):
+             ManagedObject.unique_identifier == obj.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_update_with_remove_and_add_name(self):
+         """
+@@ -470,5 +470,5 @@ def test_update_with_remove_and_add_name(self):
+             ManagedObject.unique_identifier == obj.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+diff --git a/kmip/tests/unit/pie/objects/test_private_key.py b/kmip/tests/unit/pie/objects/test_private_key.py
+index 0ad425f4..d03fbdb2 100644
+--- a/kmip/tests/unit/pie/objects/test_private_key.py
++++ b/kmip/tests/unit/pie/objects/test_private_key.py
+@@ -597,11 +597,11 @@ def test_add_multiple_names(self):
+             enums.KeyFormatType.PKCS_1, name=expected_names[0])
+         key.names.append(expected_names[1])
+         key.names.append(expected_names[2])
+-        self.assertEquals(3, key.name_index)
++        self.assertEqual(3, key.name_index)
+         expected_mo_names = list()
+         for i, name in enumerate(expected_names):
+             expected_mo_names.append(sqltypes.ManagedObjectName(name, i))
+-        self.assertEquals(expected_mo_names, key._names)
++        self.assertEqual(expected_mo_names, key._names)
+ 
+         Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+@@ -613,7 +613,7 @@ def test_add_multiple_names(self):
+             ManagedObject.unique_identifier == key.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_remove_name(self):
+         """
+@@ -629,7 +629,7 @@ def test_remove_name(self):
+         key.names.append(names[1])
+         key.names.append(names[2])
+         key.names.pop(remove_index)
+-        self.assertEquals(3, key.name_index)
++        self.assertEqual(3, key.name_index)
+ 
+         expected_names = list()
+         expected_mo_names = list()
+@@ -637,8 +637,8 @@ def test_remove_name(self):
+             if i != remove_index:
+                 expected_names.append(name)
+                 expected_mo_names.append(sqltypes.ManagedObjectName(name, i))
+-        self.assertEquals(expected_names, key.names)
+-        self.assertEquals(expected_mo_names, key._names)
++        self.assertEqual(expected_names, key.names)
++        self.assertEqual(expected_mo_names, key._names)
+ 
+         Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+@@ -650,8 +650,8 @@ def test_remove_name(self):
+             ManagedObject.unique_identifier == key.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_remove_and_add_name(self):
+         """
+@@ -669,7 +669,7 @@ def test_remove_and_add_name(self):
+         key.names.pop()
+         key.names.pop()
+         key.names.append('dog')
+-        self.assertEquals(4, key.name_index)
++        self.assertEqual(4, key.name_index)
+ 
+         expected_names = ['bowser', 'dog']
+         expected_mo_names = list()
+@@ -677,8 +677,8 @@ def test_remove_and_add_name(self):
+                                                             0))
+         expected_mo_names.append(sqltypes.ManagedObjectName(expected_names[1],
+                                                             3))
+-        self.assertEquals(expected_names, key.names)
+-        self.assertEquals(expected_mo_names, key._names)
++        self.assertEqual(expected_names, key.names)
++        self.assertEqual(expected_mo_names, key._names)
+ 
+         Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+@@ -690,8 +690,8 @@ def test_remove_and_add_name(self):
+             ManagedObject.unique_identifier == key.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_update_with_add_name(self):
+         """
+@@ -732,8 +732,8 @@ def test_update_with_add_name(self):
+             ManagedObject.unique_identifier == key.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_update_with_remove_name(self):
+         """
+@@ -774,8 +774,8 @@ def test_update_with_remove_name(self):
+             ManagedObject.unique_identifier == key.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_update_with_remove_and_add_name(self):
+         """
+@@ -819,5 +819,5 @@ def test_update_with_remove_and_add_name(self):
+             ManagedObject.unique_identifier == key.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+diff --git a/kmip/tests/unit/pie/objects/test_public_key.py b/kmip/tests/unit/pie/objects/test_public_key.py
+index cf71833b..be63da38 100644
+--- a/kmip/tests/unit/pie/objects/test_public_key.py
++++ b/kmip/tests/unit/pie/objects/test_public_key.py
+@@ -495,11 +495,11 @@ def test_add_multiple_names(self):
+             enums.KeyFormatType.PKCS_1, name=expected_names[0])
+         key.names.append(expected_names[1])
+         key.names.append(expected_names[2])
+-        self.assertEquals(3, key.name_index)
++        self.assertEqual(3, key.name_index)
+         expected_mo_names = list()
+         for i, name in enumerate(expected_names):
+             expected_mo_names.append(sqltypes.ManagedObjectName(name, i))
+-        self.assertEquals(expected_mo_names, key._names)
++        self.assertEqual(expected_mo_names, key._names)
+ 
+         Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+@@ -511,7 +511,7 @@ def test_add_multiple_names(self):
+             ManagedObject.unique_identifier == key.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_remove_name(self):
+         """
+@@ -527,7 +527,7 @@ def test_remove_name(self):
+         key.names.append(names[1])
+         key.names.append(names[2])
+         key.names.pop(remove_index)
+-        self.assertEquals(3, key.name_index)
++        self.assertEqual(3, key.name_index)
+ 
+         expected_names = list()
+         expected_mo_names = list()
+@@ -535,8 +535,8 @@ def test_remove_name(self):
+             if i != remove_index:
+                 expected_names.append(name)
+                 expected_mo_names.append(sqltypes.ManagedObjectName(name, i))
+-        self.assertEquals(expected_names, key.names)
+-        self.assertEquals(expected_mo_names, key._names)
++        self.assertEqual(expected_names, key.names)
++        self.assertEqual(expected_mo_names, key._names)
+ 
+         Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+@@ -548,8 +548,8 @@ def test_remove_name(self):
+             ManagedObject.unique_identifier == key.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_remove_and_add_name(self):
+         """
+@@ -567,7 +567,7 @@ def test_remove_and_add_name(self):
+         key.names.pop()
+         key.names.pop()
+         key.names.append('dog')
+-        self.assertEquals(4, key.name_index)
++        self.assertEqual(4, key.name_index)
+ 
+         expected_names = ['bowser', 'dog']
+         expected_mo_names = list()
+@@ -575,8 +575,8 @@ def test_remove_and_add_name(self):
+                                                             0))
+         expected_mo_names.append(sqltypes.ManagedObjectName(expected_names[1],
+                                                             3))
+-        self.assertEquals(expected_names, key.names)
+-        self.assertEquals(expected_mo_names, key._names)
++        self.assertEqual(expected_names, key.names)
++        self.assertEqual(expected_mo_names, key._names)
+ 
+         Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+@@ -588,8 +588,8 @@ def test_remove_and_add_name(self):
+             ManagedObject.unique_identifier == key.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_update_with_add_name(self):
+         """
+@@ -630,8 +630,8 @@ def test_update_with_add_name(self):
+             ManagedObject.unique_identifier == key.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_update_with_remove_name(self):
+         """
+@@ -672,8 +672,8 @@ def test_update_with_remove_name(self):
+             ManagedObject.unique_identifier == key.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_update_with_remove_and_add_name(self):
+         """
+@@ -717,5 +717,5 @@ def test_update_with_remove_and_add_name(self):
+             ManagedObject.unique_identifier == key.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+diff --git a/kmip/tests/unit/pie/objects/test_secret_data.py b/kmip/tests/unit/pie/objects/test_secret_data.py
+index 1cfe075d..c11317b3 100644
+--- a/kmip/tests/unit/pie/objects/test_secret_data.py
++++ b/kmip/tests/unit/pie/objects/test_secret_data.py
+@@ -272,11 +272,11 @@ def test_add_multiple_names(self):
+                          name=expected_names[0])
+         obj.names.append(expected_names[1])
+         obj.names.append(expected_names[2])
+-        self.assertEquals(3, obj.name_index)
++        self.assertEqual(3, obj.name_index)
+         expected_mo_names = list()
+         for i, name in enumerate(expected_names):
+             expected_mo_names.append(sqltypes.ManagedObjectName(name, i))
+-        self.assertEquals(expected_mo_names, obj._names)
++        self.assertEqual(expected_mo_names, obj._names)
+ 
+         Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+@@ -288,7 +288,7 @@ def test_add_multiple_names(self):
+             ManagedObject.unique_identifier == obj.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_remove_name(self):
+         """
+@@ -303,7 +303,7 @@ def test_remove_name(self):
+         obj.names.append(names[1])
+         obj.names.append(names[2])
+         obj.names.pop(remove_index)
+-        self.assertEquals(3, obj.name_index)
++        self.assertEqual(3, obj.name_index)
+ 
+         expected_names = list()
+         expected_mo_names = list()
+@@ -311,8 +311,8 @@ def test_remove_name(self):
+             if i != remove_index:
+                 expected_names.append(name)
+                 expected_mo_names.append(sqltypes.ManagedObjectName(name, i))
+-        self.assertEquals(expected_names, obj.names)
+-        self.assertEquals(expected_mo_names, obj._names)
++        self.assertEqual(expected_names, obj.names)
++        self.assertEqual(expected_mo_names, obj._names)
+ 
+         Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+@@ -324,8 +324,8 @@ def test_remove_name(self):
+             ManagedObject.unique_identifier == obj.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_remove_and_add_name(self):
+         """
+@@ -342,7 +342,7 @@ def test_remove_and_add_name(self):
+         obj.names.pop()
+         obj.names.pop()
+         obj.names.append('dog')
+-        self.assertEquals(4, obj.name_index)
++        self.assertEqual(4, obj.name_index)
+ 
+         expected_names = ['bowser', 'dog']
+         expected_mo_names = list()
+@@ -350,8 +350,8 @@ def test_remove_and_add_name(self):
+                                                             0))
+         expected_mo_names.append(sqltypes.ManagedObjectName(expected_names[1],
+                                                             3))
+-        self.assertEquals(expected_names, obj.names)
+-        self.assertEquals(expected_mo_names, obj._names)
++        self.assertEqual(expected_names, obj.names)
++        self.assertEqual(expected_mo_names, obj._names)
+ 
+         Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+@@ -363,8 +363,8 @@ def test_remove_and_add_name(self):
+             ManagedObject.unique_identifier == obj.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_update_with_add_name(self):
+         """
+@@ -404,8 +404,8 @@ def test_update_with_add_name(self):
+             ManagedObject.unique_identifier == obj.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_update_with_remove_name(self):
+         """
+@@ -445,8 +445,8 @@ def test_update_with_remove_name(self):
+             ManagedObject.unique_identifier == obj.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_update_with_remove_and_add_name(self):
+         """
+@@ -489,5 +489,5 @@ def test_update_with_remove_and_add_name(self):
+             ManagedObject.unique_identifier == obj.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+diff --git a/kmip/tests/unit/pie/objects/test_symmetric_key.py b/kmip/tests/unit/pie/objects/test_symmetric_key.py
+index cf7f5dff..f0c7ebad 100644
+--- a/kmip/tests/unit/pie/objects/test_symmetric_key.py
++++ b/kmip/tests/unit/pie/objects/test_symmetric_key.py
+@@ -442,11 +442,11 @@ def test_add_multiple_names(self):
+             name=expected_names[0])
+         key.names.append(expected_names[1])
+         key.names.append(expected_names[2])
+-        self.assertEquals(3, key.name_index)
++        self.assertEqual(3, key.name_index)
+         expected_mo_names = list()
+         for i, name in enumerate(expected_names):
+             expected_mo_names.append(sqltypes.ManagedObjectName(name, i))
+-        self.assertEquals(expected_mo_names, key._names)
++        self.assertEqual(expected_mo_names, key._names)
+ 
+         Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+@@ -458,7 +458,7 @@ def test_add_multiple_names(self):
+             ManagedObject.unique_identifier == key.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_remove_name(self):
+         """
+@@ -474,7 +474,7 @@ def test_remove_name(self):
+         key.names.append(names[1])
+         key.names.append(names[2])
+         key.names.pop(remove_index)
+-        self.assertEquals(3, key.name_index)
++        self.assertEqual(3, key.name_index)
+ 
+         expected_names = list()
+         expected_mo_names = list()
+@@ -482,8 +482,8 @@ def test_remove_name(self):
+             if i != remove_index:
+                 expected_names.append(name)
+                 expected_mo_names.append(sqltypes.ManagedObjectName(name, i))
+-        self.assertEquals(expected_names, key.names)
+-        self.assertEquals(expected_mo_names, key._names)
++        self.assertEqual(expected_names, key.names)
++        self.assertEqual(expected_mo_names, key._names)
+ 
+         Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+@@ -495,8 +495,8 @@ def test_remove_name(self):
+             ManagedObject.unique_identifier == key.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_remove_and_add_name(self):
+         """
+@@ -514,7 +514,7 @@ def test_remove_and_add_name(self):
+         key.names.pop()
+         key.names.pop()
+         key.names.append('dog')
+-        self.assertEquals(4, key.name_index)
++        self.assertEqual(4, key.name_index)
+ 
+         expected_names = ['bowser', 'dog']
+         expected_mo_names = list()
+@@ -522,8 +522,8 @@ def test_remove_and_add_name(self):
+                                                             0))
+         expected_mo_names.append(sqltypes.ManagedObjectName(expected_names[1],
+                                                             3))
+-        self.assertEquals(expected_names, key.names)
+-        self.assertEquals(expected_mo_names, key._names)
++        self.assertEqual(expected_names, key.names)
++        self.assertEqual(expected_mo_names, key._names)
+ 
+         Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+@@ -535,8 +535,8 @@ def test_remove_and_add_name(self):
+             ManagedObject.unique_identifier == key.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_update_with_add_name(self):
+         """
+@@ -577,8 +577,8 @@ def test_update_with_add_name(self):
+             ManagedObject.unique_identifier == key.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_update_with_remove_name(self):
+         """
+@@ -619,8 +619,8 @@ def test_update_with_remove_name(self):
+             ManagedObject.unique_identifier == key.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_update_with_remove_and_add_name(self):
+         """
+@@ -664,5 +664,5 @@ def test_update_with_remove_and_add_name(self):
+             ManagedObject.unique_identifier == key.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+diff --git a/kmip/tests/unit/pie/objects/test_x509_certificate.py b/kmip/tests/unit/pie/objects/test_x509_certificate.py
+index f4d76ada..dba77617 100644
+--- a/kmip/tests/unit/pie/objects/test_x509_certificate.py
++++ b/kmip/tests/unit/pie/objects/test_x509_certificate.py
+@@ -348,11 +348,11 @@ def test_add_multiple_names(self):
+         cert = X509Certificate(self.bytes_a, name=expected_names[0])
+         cert.names.append(expected_names[1])
+         cert.names.append(expected_names[2])
+-        self.assertEquals(3, cert.name_index)
++        self.assertEqual(3, cert.name_index)
+         expected_mo_names = list()
+         for i, name in enumerate(expected_names):
+             expected_mo_names.append(sqltypes.ManagedObjectName(name, i))
+-        self.assertEquals(expected_mo_names, cert._names)
++        self.assertEqual(expected_mo_names, cert._names)
+ 
+         Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+@@ -364,7 +364,7 @@ def test_add_multiple_names(self):
+             ManagedObject.unique_identifier == cert.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_remove_name(self):
+         """
+@@ -378,7 +378,7 @@ def test_remove_name(self):
+         cert.names.append(names[1])
+         cert.names.append(names[2])
+         cert.names.pop(remove_index)
+-        self.assertEquals(3, cert.name_index)
++        self.assertEqual(3, cert.name_index)
+ 
+         expected_names = list()
+         expected_mo_names = list()
+@@ -386,8 +386,8 @@ def test_remove_name(self):
+             if i != remove_index:
+                 expected_names.append(name)
+                 expected_mo_names.append(sqltypes.ManagedObjectName(name, i))
+-        self.assertEquals(expected_names, cert.names)
+-        self.assertEquals(expected_mo_names, cert._names)
++        self.assertEqual(expected_names, cert.names)
++        self.assertEqual(expected_mo_names, cert._names)
+ 
+         Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+@@ -399,8 +399,8 @@ def test_remove_name(self):
+             ManagedObject.unique_identifier == cert.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_remove_and_add_name(self):
+         """
+@@ -416,7 +416,7 @@ def test_remove_and_add_name(self):
+         cert.names.pop()
+         cert.names.pop()
+         cert.names.append('dog')
+-        self.assertEquals(4, cert.name_index)
++        self.assertEqual(4, cert.name_index)
+ 
+         expected_names = ['bowser', 'dog']
+         expected_mo_names = list()
+@@ -424,8 +424,8 @@ def test_remove_and_add_name(self):
+                                                             0))
+         expected_mo_names.append(sqltypes.ManagedObjectName(expected_names[1],
+                                                             3))
+-        self.assertEquals(expected_names, cert.names)
+-        self.assertEquals(expected_mo_names, cert._names)
++        self.assertEqual(expected_names, cert.names)
++        self.assertEqual(expected_mo_names, cert._names)
+ 
+         Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+@@ -437,8 +437,8 @@ def test_remove_and_add_name(self):
+             ManagedObject.unique_identifier == cert.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_update_with_add_name(self):
+         """
+@@ -477,8 +477,8 @@ def test_update_with_add_name(self):
+             ManagedObject.unique_identifier == cert.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_update_with_remove_name(self):
+         """
+@@ -517,8 +517,8 @@ def test_update_with_remove_name(self):
+             ManagedObject.unique_identifier == cert.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)
+ 
+     def test_update_with_remove_and_add_name(self):
+         """
+@@ -560,5 +560,5 @@ def test_update_with_remove_and_add_name(self):
+             ManagedObject.unique_identifier == cert.unique_identifier
+             ).one()
+         session.commit()
+-        self.assertEquals(expected_names, get_obj.names)
+-        self.assertEquals(expected_mo_names, get_obj._names)
++        self.assertEqual(expected_names, get_obj.names)
++        self.assertEqual(expected_mo_names, get_obj._names)

@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyKMIP
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,8 @@ Patch3:         fix_test_mac_with_cryptographic_failure.patch
 Patch4:         crypto-42.patch
 # PATCH-FIX-UPSTREAM Based on gh#OpenKMIP/PyKMIP#707, including some changes suggested
 Patch5:         no-ssl-wrap-socket.patch
+# PATCH-FIX-UPSTREAM gh#OpenKMIP/PyKMIP#658
+Patch6:         use-assertequal.patch
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module devel}

@@ -201,4 +201,13 @@
 - Lowercase metadata directory name.</comment>
     <requestid>1269113</requestid>
   </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>80d53f4494abd4244b0f68def4b1f934</srcmd5>
+    <version>0.10.0</version>
+    <time>1773770679</time>
+    <user>anag_factory</user>
+    <comment>- Add patch use-assertequal.patch:
+  * Use TestCase.assertEqual rather than assertEquals.</comment>
+    <requestid>1339467</requestid>
+  </revision>
 </revisionlist>
