@@ -33,15 +33,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-coverage%{psuffix}
-Version:        7.10.7
+Version:        7.13.4
 Release:        0
 Summary:        Code coverage measurement for Python
 License:        Apache-2.0
 URL:            https://github.com/nedbat/coveragepy
 Source:         https://files.pythonhosted.org/packages/source/c/coverage/coverage-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/coveragepy/coveragepy/commit/cf95edab0c3be47ab934f0425f12743745dd2da5 test: a Python error message changed slightly
-Patch0:         string.patch
-BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -62,9 +60,9 @@ Requires(postun): update-alternatives
 # SECTION test requirements
 BuildRequires:  %{python_module coverage = %{version}}
 BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module hypothesis >= 6}
+BuildRequires:  %{python_module hypothesis >= 6.150}
+BuildRequires:  %{python_module pytest >= 9.0.0}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tomli}
 # for database (sqlite3) support
 BuildRequires:  %{pythons}
@@ -79,9 +77,6 @@ library to determine which lines are executable, and which have been executed.
 
 %prep
 %autosetup -p1 -n coverage-%{version}
-
-# we define everything necessary ourselves below
-sed -i -e '/addopts/d' setup.cfg
 
 %build
 %if %{without test}
@@ -121,7 +116,7 @@ fi
 $mypython igor.py zip_mods
 
 # test_version - checks for non-compiled variant, we ship only compiled one
-donttest="test_version"
+donttest="test_version or test_core"
 # test_xdist_sys_path_nuttiness_is_fixed - xdist check that we actually fail on purpose
 donttest+=" or test_xdist_sys_path_nuttiness_is_fixed"
 # does not find a usable venv
@@ -157,6 +152,7 @@ donttest+=" or test_numbits.py"
 %python_alternative %{_bindir}/coverage
 %{python_sitearch}/coverage/
 %{python_sitearch}/coverage-%{version}.dist-info
+%{python_sitearch}/a1_coverage.pth
 %endif
 
 %changelog

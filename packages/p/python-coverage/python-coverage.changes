@@ -1,4 +1,150 @@
 -------------------------------------------------------------------
+Sun Mar 15 15:14:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.13.4:
+  * Fix: the third-party code fix in 7.13.3 required examining
+    the parent directories where coverage was run. In the unusual
+    situation that one of the parent directories is unreadable, a
+    PermissionError would occur, as described in issue 2129. This
+    is now fixed.
+  * Fix: in test suites that change sys.path, coverage.py could
+    fail with "RuntimeError: Set changed size during iteration"
+    as described and fixed in pull 2130. Thanks, Noah Fatsi.
+  * We now publish ppc64le wheels, thanks to Pankhudi Jain.
+  * Fix: in some situations, third-party code was measured when
+    it shouldn't have been, slowing down test execution. This
+    happened with layered virtual environments such as uv
+    sometimes makes. The problem is fixed, closing issue 2082.
+    Now any directory on sys.path that is inside a virtualenv is
+    considered third-party code.
+  * Fix: when Python is installed via symlinks, for example with
+    Homebrew, the standard library files could be incorrectly
+    included in coverage reports. This is now fixed, closing
+    issue 2115.
+  * Fix: if a data file is created with no read permissions, the
+    combine step would fail completely. Now a warning is issued
+    and the file is skipped. Closes issue 2117.
+  * Added: the JSON report now includes a "start_line" key for
+    function and class regions, indicating the first line of the
+    region in the source. Closes issue 2110.
+  * Added: The debug data command now takes file names as
+    arguments on the command line, so you can inspect specific
+    data files without needing to set the COVERAGE_FILE
+    environment variable.
+  * Fix: the JSON report used to report module docstrings as
+    executed lines, which no other report did, as described in
+    issue 2105. This is now fixed, thanks to Jianrong Zhao.
+  * Fix: coverage.py uses a more disciplined approach to
+    detecting where third-party code is installed, and avoids
+    measuring it. This shouldn't change any behavior. If you find
+    that it does, please get in touch.
+  * Performance: data files that will be combined now record
+    their hash as part of the file name. This lets us skip
+    duplicate data more quickly, speeding the combining step.
+  * Docs: added a section explaining more about what is
+    considered a missing branch and how it is reported:
+    :ref:`branch_explain`, as requested in issue 1597. Thanks to
+    Ayisha Mohammed.
+  * Tests: the test suite misunderstood what core was being
+    tested if COVERAGE_CORE wasn't set on 3.14+. This is now
+    fixed, closing issue 2109.
+  * Feature: coverage.py now supports :file:`.coveragerc.toml`
+    configuration files. These files use TOML syntax and take
+    priority over :file:`pyproject.toml` but lower priority than
+    :file:`.coveragerc` files. Closes issue 1643 thanks to Olena
+    Yefymenko.
+  * Fix: we now include a permanent .pth file which is installed
+    with the code, fixing issue 2084.  In 7.12.1b1 this was done
+    incorrectly: it didn't work when using the source wheel
+    (py3-none-any).  This is now fixed. Thanks, Henry Schreiner.
+  * Deprecated: when coverage.py is installed, it creates three
+    command entry points: coverage, coverage3, and coverage-3.10
+    (if installed for Python 3.10). The second and third of these
+    are not needed and will eventually be removed. They still
+    work for now, but print a message about their deprecation.
+  * Fix: coverage.py now includes a permanent .pth file in the
+    distribution which is installed with the code. This fixes
+    issue 2084: failure to patch for subprocess measurement when
+    site-packages is not writable.
+  * The HTML report now shows separate coverage totals for
+    statements and branches, as well as the usual combined
+    coverage percentage. Thanks to Ryuta Otsuka for the
+    discussion and the implementation.
+  * The JSON report now includes separate coverage totals for
+    statements and branches, thanks to Ryuta Otsuka.
+  * Fix: except* clauses were not handled properly under the
+    "sysmon" measurement core, causing KeyError exceptions as
+    described in issue 2086. This is now fixed.
+  * Fix: we now defend against aggressive mocking of open() that
+    could cause errors inside coverage.py.  An example of a
+    failure is in issue 2083.
+  * Fix: in unusual cases where a test suite intentionally
+    exhausts the system's file descriptors to test handling
+    errors in open(), coverage.py would fail when trying to open
+    source files, as described in issue 2091.  This is now fixed.
+  * A small tweak to the HTML report: file paths now use thin
+    spaces around slashes to make them easier to read.
+  * Fix: the 7.11.1 changes meant that conflicts between a
+    requested measurement core and other settings would raise an
+    error. This was a breaking change from previous behavior, as
+    reported in issue 2076 and issue 2078. The previous behavior
+    has been restored: when the requested core conflicts with
+    other settings, another core is used instead, and a warning
+    is issued.
+  * For contributors: the repo has moved from Ned's nedbat GitHub
+    account to the coveragepy GitHub organization. The default
+    branch has changed from master to main.
+  * Fix: using the "sysmon" measurement core in 7.11.1, if Python
+    code was claimed to come from a non-Python file, a NotPython
+    exception could be raised. This could happen for example with
+    Jinja templates compiled to Python, as reported in issue
+    2077. This is now fixed.
+  * Doc: corrected the first entry in the 7.11.1 changelog.
+  * Fix: some chanages to details of how the measurement core is
+    chosen, and how conflicting settings are handled. The
+    "sysmon" core cannot be used with some conurrency settings,
+    with dynamic context, and in Python 3.12/3.13, with branch
+    measurement. If the core is not specified and defaults to
+    "sysmon" (Python 3.14+), but other settings conflict with
+    sysmon, then the "ctrace" core will be used instead with no
+    warning. For concurrency conflicts, this used to produce an
+    error, as described in issue 2064. If the "sysmon" core is
+    explicitly requested in your configuration, but other
+    settings conflict, an error is now raised. This used to
+    produce a warning.
+  * If the core is not specified and defaults to "sysmon" (Python
+    3.14+), but other settings conflict with sysmon, then the
+    "ctrace" core will be used instead with no warning. For
+    concurrency conflicts, this used to produce an error, as
+    described in issue 2064.
+  * If the "sysmon" core is explicitly requested in your
+    configuration, but other settings conflict, an error is now
+    raised. This used to produce a warning.
+  * Fix: some multi-line case clauses or for loops (and probably
+    other constructs) could cause incorrect claims of missing
+    branches with the sys.monitoring core, as described in issue
+    2070. This is now fixed.
+  * Fix: when running in pytest under coverage, a breakpoint()
+    would stop in the wrong frame, one level down from where it
+    should, as described in issue 1420. This was due to a
+    coverage change in v6.4.1 that seemed to give a slight
+    performance improvement, but I couldn't reproduce the
+    performance gain, so it's been reverted, fixing the debugger
+    problem.
+  * A new debug option --debug=core shows which core is in use
+    and why.
+  * Split sqlite debugging information out of the sys
+    :ref:`coverage debug <cmd_debug>` and :ref:`cmd_run_debug`
+    options since it's bulky and not very useful.
+  * Updated the :ref:`howitworks` page to better describe the
+    three different measurement cores.
+  * Dropped support for Python 3.9, declared support for Python
+    3.15 alpha.
+- Drop string.patch (upstream).
+- Update BuildRequires for python-devel and pytest to match
+  upstream requirements.
+
+-------------------------------------------------------------------
 Thu Feb  5 11:16:05 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream string.patch to fix test failure on Python 3.14

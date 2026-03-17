@@ -968,4 +968,41 @@ update to latest version</comment>
     <comment></comment>
     <requestid>1331417</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>c04c9cf48b5ccd7f6e772e7c099f3bd0</srcmd5>
+    <version>7.13.4</version>
+    <time>1773770524</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.13.4:
+  * Fix: the third-party code fix in 7.13.3 required examining
+    the parent directories where coverage was run. In the unusual
+    situation that one of the parent directories is unreadable, a
+    PermissionError would occur, as described in issue 2129. This
+    is now fixed.
+  * Fix: in test suites that change sys.path, coverage.py could
+    fail with &quot;RuntimeError: Set changed size during iteration&quot;
+    as described and fixed in pull 2130. Thanks, Noah Fatsi.
+  * We now publish ppc64le wheels, thanks to Pankhudi Jain.
+  * Fix: in some situations, third-party code was measured when
+    it shouldn't have been, slowing down test execution. This
+    happened with layered virtual environments such as uv
+    sometimes makes. The problem is fixed, closing issue 2082.
+    Now any directory on sys.path that is inside a virtualenv is
+    considered third-party code.
+  * Fix: when Python is installed via symlinks, for example with
+    Homebrew, the standard library files could be incorrectly
+    included in coverage reports. This is now fixed, closing
+    issue 2115.
+  * Fix: if a data file is created with no read permissions, the
+    combine step would fail completely. Now a warning is issued
+    and the file is skipped. Closes issue 2117.
+  * Added: the JSON report now includes a &quot;start_line&quot; key for
+    function and class regions, indicating the first line of the
+    region in the source. Closes issue 2110.
+  * Added: The debug data command now takes file names as
+    arguments on the command line, so you can inspect specific
+    data files without needing to set the COVERAGE_FILE
+    environment variable.</comment>
+    <requestid>1339133</requestid>
+  </revision>
 </revisionlist>
