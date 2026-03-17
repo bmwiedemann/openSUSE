@@ -126,4 +126,20 @@
     <comment></comment>
     <requestid>1295792</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>62fe12b4c23df187b934badf6db074f5</srcmd5>
+    <version>0.99.37</version>
+    <time>1773770723</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.99.37:
+  * Document support for Canon Pixma TR4527
+  * mdns: fixed assertion, if avahi_service_browser_new returns NULL
+  * Fixed SIGSEGV in http_data_set_content_type()
+  * Fixed compilation with ISO C23-capable compiler
+  * Document support for Brother DCP-L2530DW
+  * Document support for Brother DCP-L2660DW
+  * Documented Canon MF660C Series support
+  * Add EPSON EW-M752T to support list (forwarded request 1339550 from rrahl0)</comment>
+    <requestid>1339551</requestid>
+  </revision>
 </revisionlist>
