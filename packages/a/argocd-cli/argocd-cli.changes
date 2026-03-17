@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 16 13:15:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.3.4:
+  * docs: clarify cluster version change impact for
+    ClusterGenerator, CMP Plugins and migration (#26851)
+  * chore: bump otel-sdk (release-3.3) (#26808)
+
+-------------------------------------------------------------------
 Tue Mar 10 06:35:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.3.3:
