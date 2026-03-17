@@ -2,13 +2,25 @@
   <service mode="buildtime" name="docker_label_helper"/>
   <service mode="buildtime" name="kiwi_metainfo_helper"/>
   <service mode="buildtime" name="replace_using_package_version">
-    <param name="file">Dockerfile</param>
+    <param name="file">Dockerfile.contrib</param>
     <param name="regex">%%pg_minor_version%%</param>
     <param name="package">postgresql14-server</param>
     <param name="parse-version">minor</param>
   </service>
   <service mode="buildtime" name="replace_using_package_version">
-    <param name="file">Dockerfile</param>
+    <param name="file">Dockerfile.contrib</param>
+    <param name="regex">%%pg_patch_version%%</param>
+    <param name="package">postgresql14-server</param>
+    <param name="parse-version">patch</param>
+  </service>
+  <service mode="buildtime" name="replace_using_package_version">
+    <param name="file">Dockerfile.default</param>
+    <param name="regex">%%pg_minor_version%%</param>
+    <param name="package">postgresql14-server</param>
+    <param name="parse-version">minor</param>
+  </service>
+  <service mode="buildtime" name="replace_using_package_version">
+    <param name="file">Dockerfile.default</param>
     <param name="regex">%%pg_patch_version%%</param>
     <param name="package">postgresql14-server</param>
     <param name="parse-version">patch</param>
