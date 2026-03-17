@@ -44,4 +44,15 @@
 </comment>
     <requestid>1307544</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>56fd51823e26dc5633daf3b71962eef3</srcmd5>
+    <version>8.2.0</version>
+    <time>1773770547</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 8.2.0:
+  + Disabling loongson LASX runtime dispatching everywhere but
+    GCC15
+- Bump lib_ver to 33.0.0 and so_ver to 33: follow upstream changes. (forwarded request 1338733 from iznogood)</comment>
+    <requestid>1339235</requestid>
+  </revision>
 </revisionlist>

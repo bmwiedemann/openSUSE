@@ -2,5 +2,6 @@
   <title>Unicode validation and transcoding at billions of characters per second</title>
   <description>Unicode (UTF8, UTF16, UTF32) validation and transcoding at billions of 
 characters per second using SSE2, AVX2, NEON, AVX-512.</description>
+  <devel project="GNOME:Factory" package="simdutf"/>
   <url>https://github.com/simdutf/simdutf</url>
 </package>

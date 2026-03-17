@@ -1,7 +1,7 @@
 #
 # spec file for package simdutf
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,33 +16,33 @@
 #
 
 
-%define lib_ver 26.0.0
-%define so_ver 26
-Name:       simdutf
-Version:    7.4.0
-Release:    0
-Summary:    Unicode validation and transcoding at billions of characters per second
+%define lib_ver 33.0.0
+%define so_ver 33
+Name:           simdutf
+Version:        8.2.0
+Release:        0
+Summary:        Unicode validation and transcoding at billions of characters per second
 
-License:    Apache-2.0 AND BSD-3-Clause
-URL:        https://github.com/simdutf/simdutf
-Source0:    %{name}-%{version}.tar.zst
+License:        Apache-2.0 AND BSD-3-Clause
+URL:            https://github.com/simdutf/simdutf
+Source0:        %{name}-%{version}.tar.zst
 
-BuildRequires:  cmake
 BuildRequires:  c++_compiler
+BuildRequires:  cmake
 
 %description
-Unicode (UTF8, UTF16, UTF32) validation and transcoding at billions of 
+Unicode (UTF8, UTF16, UTF32) validation and transcoding at billions of
 characters per second using SSE2, AVX2, NEON, AVX-512.
 
 %package -n lib%{name}%so_ver
-Summary: Shared libraries for %{name}
+Summary:        Shared libraries for %{name}
 
 %description -n lib%{name}%so_ver
 The package contains shared libraries.
 
 %package devel
-Summary: Development files for %{name}
-Requires: lib%{name}%so_ver = %{version}
+Summary:        Development files for %{name}
+Requires:       lib%{name}%so_ver = %{version}
 
 %description devel
 The package contains libraries and header files for developing applications
@@ -73,7 +73,7 @@ that use %{name}.
 %{_libdir}/lib%{name}.so.%{so_ver}
 
 %files devel
-%{_includedir}/%{name}.h
+%{_includedir}/%{name}*.h
 %{_includedir}/%{name}
 %{_libdir}/cmake/%{name}
 %{_libdir}/lib%{name}.so
