@@ -1676,4 +1676,41 @@ eplacement for google-api-python-client, follow our naming convention</comment>
   * **redis:** Update the api (forwarded request 1334763 from glaubitz)</comment>
     <requestid>1334765</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>5448b566e76a323ac8120c48f08402f5</srcmd5>
+    <version>2.192.0</version>
+    <time>1773770752</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.192.0
+  * **aiplatform:** Update the api
+  * **androidmanagement:** Update the api
+  * **backupdr:** Update the api
+  * **bigquery:** Update the api
+  * **ces:** Update the api
+  * **composer:** Update the api
+  * **containeranalysis:** Update the api
+  * **datamanager:** Update the api
+  * **dataproc:** Update the api
+  * **discoveryengine:** Update the api
+  * **displayvideo:** Update the api
+  * **dns:** Update the api
+  * **documentai:** Update the api
+  * **firebaseapphosting:** Update the api
+  * **firebaseml:** Update the api
+  * **integrations:** Update the api
+  * **memcache:** Update the api
+  * **merchantapi:** Update the api
+  * **observability:** Update the api
+  * **playdeveloperreporting:** Update the api
+  * **secretmanager:** Update the api
+  * **securitycenter:** Update the api
+  * **servicenetworking:** Update the api
+  * **sqladmin:** Update the api
+  * **storagebatchoperations:** Update the api
+  * **vmwareengine:** Update the api
+  * **cloudkms:** Update the api
+  * **run:** Update the api
+- from version 2.191.0 (forwarded request 1339588 from glaubitz)</comment>
+    <requestid>1339597</requestid>
+  </revision>
 </revisionlist>

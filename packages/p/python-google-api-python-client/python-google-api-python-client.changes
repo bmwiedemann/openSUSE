@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Tue Mar 17 12:03:06 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.192.0
+  * **aiplatform:** Update the api
+  * **androidmanagement:** Update the api
+  * **backupdr:** Update the api
+  * **bigquery:** Update the api
+  * **ces:** Update the api
+  * **composer:** Update the api
+  * **containeranalysis:** Update the api
+  * **datamanager:** Update the api
+  * **dataproc:** Update the api
+  * **discoveryengine:** Update the api
+  * **displayvideo:** Update the api
+  * **dns:** Update the api
+  * **documentai:** Update the api
+  * **firebaseapphosting:** Update the api
+  * **firebaseml:** Update the api
+  * **integrations:** Update the api
+  * **memcache:** Update the api
+  * **merchantapi:** Update the api
+  * **observability:** Update the api
+  * **playdeveloperreporting:** Update the api
+  * **secretmanager:** Update the api
+  * **securitycenter:** Update the api
+  * **servicenetworking:** Update the api
+  * **sqladmin:** Update the api
+  * **storagebatchoperations:** Update the api
+  * **vmwareengine:** Update the api
+  * **cloudkms:** Update the api
+  * **run:** Update the api
+- from version 2.191.0
+  * **accesscontextmanager:** Update the api
+  * **admin:** Update the api
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **apigee:** Update the api
+  * **apihub:** Update the api
+  * **appengine:** Update the api
+  * **biglake:** Update the api
+  * **bigtableadmin:** Update the api
+  * **ces:** Update the api
+  * **chat:** Update the api
+  * **clouderrorreporting:** Update the api
+  * **cloudfunctions:** Update the api
+  * **cloudkms:** Update the api
+  * **cloudkms:** Update the api
+  * **compute:** Update the api
+  * **compute:** Update the api
+  * **connectors:** Update the api
+  * **containeranalysis:** Update the api
+  * **container:** Update the api
+  * **dataflow:** Update the api
+  * **dataflow:** Update the api
+  * **datamanager:** Update the api
+  * **dataplex:** Update the api
+  * **dataplex:** Update the api
+  * **datastream:** Update the api
+  * **dfareporting:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **discoveryengine:** Update the api
+  * **displayvideo:** Update the api
+  * **firebaseml:** Update the api
+  * **firestore:** Update the api
+  * **gkebackup:** Update the api
+  * **gkehub:** Update the api
+  * **healthcare:** Update the api
+  * **iap:** Update the api
+  * **looker:** Update the api
+  * **monitoring:** Update the api
+  * **netapp:** Update the api
+  * **networkmanagement:** Update the api
+  * **networkservices:** Update the api
+  * **ondemandscanning:** Update the api
+  * **oracledatabase:** Update the api
+  * **places:** Update the api
+  * **playdeveloperreporting:** Update the api
+  * **recommender:** Update the api
+  * **redis:** Update the api
+  * **run:** Update the api
+  * **secretmanager:** Update the api
+  * **securitycenter:** Update the api
+  * **serviceconsumermanagement:** Update the api
+  * **servicemanagement:** Update the api
+  * **servicenetworking:** Update the api
+  * **serviceusage:** Update the api
+  * **sqladmin:** Update the api
+  * **storagebatchoperations:** Update the api
+  * **storage:** Update the api
+  * **threatintelligence:** Update the api
+  * **threatintelligence:** Update the api
+  * **workloadmanager:** Update the api
+  * **eventarc:** Update the api
+  * **oracledatabase:** Update the api
+  * **run:** Update the api
+
+-------------------------------------------------------------------
 Tue Feb 24 14:22:49 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.190.0
