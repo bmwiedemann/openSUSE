@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Summary:        Python HTTP Library
 License:        Apache-2.0
 URL:            https://docs.python-requests.org/
 Source:         https://files.pythonhosted.org/packages/source/r/requests/requests-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE fix-chardet-RequestsDependencyWarning.patch munix9@googlemail.com -- based on PR 7239
+Patch0:         fix-chardet-RequestsDependencyWarning.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

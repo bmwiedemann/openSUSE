@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 16 06:04:29 UTC 2026 - munix9@googlemail.com
+
+- Add fix-chardet-RequestsDependencyWarning.patch
+  * Fix RequestsDependencyWarning with chardet (6.0.0dev0) on
+    Factory/TW (gh#psf/requests#7219) (gh#psf/requests#7220)
+    (gh#psf/requests#7239)
+
+-------------------------------------------------------------------
 Wed Oct  1 09:42:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.32.5
