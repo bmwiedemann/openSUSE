@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 17 06:28:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.11.4:
+  * Add maintainer keys and check tag signatures in CI by
+    @robin-nitrokey in #723
+  * ci: Fetch tags for signature verification by @robin-nitrokey in
+    #725
+  * Update maintainers file by @robin-nitrokey in #724
+  * Update signature key by @robin-nitrokey in #726
+  * Update locked dependencies by @robin-nitrokey in #727
+  * Update developer and packaging docs by @robin-nitrokey in #729
+  * Add CODEOWNERS file by @robin-nitrokey in #732
+  * Feat/better log file handling by @james-knippes in #733
+
+-------------------------------------------------------------------
 Mon Jan 26 06:59:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.11.3:
@@ -85,7 +100,7 @@ Tue Jul 22 15:34:03 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 Mon Jun  2 10:24:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.5:
-  This release fixes a bug in nk3 secrets when handling base32 
+  This release fixes a bug in nk3 secrets when handling base32
   secrets if the length is a multiple of 8.
   * Changelog
     - helpers.b32padding: avoid adding 8 pads when none needed by
