@@ -1,4 +1,5 @@
 <package name="python-mistral-vibe" project="openSUSE:Factory">
   <title></title>
   <description></description>
+  <devel project="science:machinelearning:mcp" package="python-mistral-vibe"/>
 </package>

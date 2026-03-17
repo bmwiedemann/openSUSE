@@ -17,7 +17,7 @@
 
 %define skip_python311 1
 Name:           python-mistral-vibe
-Version:        2.3.0
+Version:        2.4.1
 Release:        0
 Summary:        Minimal CLI coding agent by Mistral
 License:        Apache-2.0
@@ -40,7 +40,7 @@ BuildRequires:  %{python_module syrupy}
 BuildRequires:  %{python_module tree-sitter}
 BuildRequires:  %{python_module tree-sitter-bash}
 BuildRequires:  %{python_module mcp >= 1.14.0}
-BuildRequires:  %{python_module mistralai >= 1.9.11}
+BuildRequires:  %{python_module mistralai >= 1.12.4}
 BuildRequires:  %{python_module packaging >= 24.1}
 BuildRequires:  %{python_module pexpect >= 4.9.0}
 BuildRequires:  %{python_module pydantic-settings >= 2.12.0}
@@ -55,7 +55,7 @@ BuildRequires:  %{python_module PyYAML >= 6.0.0}
 BuildRequires:  %{python_module respx >= 0.22.0}
 BuildRequires:  %{python_module rich >= 14.0.0}
 BuildRequires:  %{python_module tomli-w >= 1.2.0}
-BuildRequires:  %{python_module textual >= 6.3.0}
+BuildRequires:  %{python_module textual >= 7.4.0}
 BuildRequires:  %{python_module textual-speedups >= 0.2.1}
 BuildRequires:  %{python_module tomli-w >= 1.2.0}
 BuildRequires:  %{python_module watchfiles >= 1.1.1}
