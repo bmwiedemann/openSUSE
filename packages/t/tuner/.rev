@@ -39,4 +39,35 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1228627</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>faaae99e434ecf7631098a5cb462e847</srcmd5>
+    <version>2.0.3</version>
+    <time>1773770741</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.0.3:
+  * Refactored Elementry Granite library out as a module
+  * Refactored namespaces
+  * Fixed: play/stop buttons disabled
+  * Fixed: Jukebox stops when tuning to a dead station
+  * Disabled in-app language selection for non-debug builds
+- Update to version 2.0.2:
+  * new upstream URL
+- Update to version 2.0.1:
+  * Sharpened some wording, fixed typos
+  * Updated translated strings and incorporated fresh translations
+  * Refactored Language change mechanism and applied translations to more UI elements
+  * Refactored Icon layout and build, removing unused icon files
+  * i18n - Broke out Country and Language translations to separate module
+- Update to version 2.0.0:
+  * Jukebox to shuffle through all stations, one every ten minutes
+  * Searches can now be saved
+  * Starred Station export and import
+  * Much more metadata about Stations and Streams
+  * Explore category give you a handful of new Genres on each app restart
+  * Many new default Genre categories and Genres
+  * Station &amp; Title History
+  * Responsiveness, Icons and Look &amp; Feel improved
+  * Languages are now a choice (forwarded request 1339581 from rrahl0)</comment>
+    <requestid>1339582</requestid>
+  </revision>
 </revisionlist>

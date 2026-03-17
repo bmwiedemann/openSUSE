@@ -1,7 +1,7 @@
 #
 # spec file for package tuner
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,26 @@
 #
 
 
-%define         appid com.github.louis77.tuner
+%define         appid io.github.tuner_labs.tuner
 Name:           tuner
-Version:        1.5.5
+Version:        2.0.3
 Release:        0
 Summary:        Minimalist radio station player
 License:        GPL-3.0-or-later
-Group:          Productivity/Multimedia/Sound/Players
-URL:            https://github.com/louis77/tuner
-Source:         %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/tuner-labs/tuner
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         fix-gschema.patch
+BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
+BuildRequires:  glib2-tools
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  meson
+BuildRequires:  meson >= 1.3.2
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.44
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(granite)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-player-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -54,7 +55,25 @@ An Internet Radio Station player for the Pantheon Desktop.
 %autosetup -p1
 
 %build
-%meson
+%{__meson} setup \
+        --buildtype=plain \
+        --prefix=%{_prefix} \
+        --libdir=%{_libdir} \
+        --libexecdir=%{_libexecdir} \
+        --bindir=%{_bindir} \
+        --sbindir=%{_sbindir} \
+        --includedir=%{_includedir} \
+        --datadir=%{_datadir} \
+        --mandir=%{_mandir} \
+        --infodir=%{_infodir} \
+        --localedir=%{_datadir}/locale \
+        --sysconfdir=%{_sysconfdir} \
+        --localstatedir=%{_localstatedir} \
+        --sharedstatedir=%{_sharedstatedir} \
+        --wrap-mode=%{__meson_wrap_mode} \
+        --auto-features=%{__meson_auto_features} \
+        %{_vpath_srcdir} %{_vpath_builddir} \
+        %{nil}
 %meson_build
 
 %install
@@ -68,9 +87,9 @@ An Internet Radio Station player for the Pantheon Desktop.
 %{_bindir}/%{appid}
 %{_datadir}/applications/%{appid}.desktop
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
-%{_datadir}/icons/hicolor/*/*/%{appid}.svg
-%{_datadir}/metainfo/%{appid}.appdata.xml
-%dir %{_datadir}/icons/hicolor/{128x128@2,128x128@2/apps,16x16@2,16x16@2/apps,24x24@2,24x24@2/apps,32x32@2,32x32@2/apps,48x48@2,48x48@2/apps,64x64@2,64x64@2/apps}
+%{_datadir}/icons/hicolor/scalable/apps/%{appid}-scalable.svg
+%{_datadir}/icons/hicolor/symbolic/apps/%{appid}-symbolic.svg
+%{_datadir}/metainfo/%{appid}.metainfo.xml
 
 %files lang -f %{appid}.lang
 
