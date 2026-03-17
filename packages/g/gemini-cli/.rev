@@ -380,4 +380,17 @@
   * document node limitation for shift+tab</comment>
     <requestid>1338395</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b5b42c9d765c1ad3b4b647ebe6eae049</srcmd5>
+    <version>0.33.2</version>
+    <time>1773770714</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.33.2:
+  * fix(patch): cherry-pick 48130eb to release/v0.33.1-pr-22665
+    [CONFLICTS]
+
+- Update to 0.33.1:
+  * fix(patch): cherry-pick 8432bce #22206</comment>
+    <requestid>1339518</requestid>
+  </revision>
 </revisionlist>
