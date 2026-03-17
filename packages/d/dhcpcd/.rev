@@ -105,4 +105,27 @@
   better immutable os compatibility</comment>
     <requestid>1328127</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0c9db314efb1db27734a54b8c2e395f0</srcmd5>
+    <version>10.3.1</version>
+    <time>1773770568</time>
+    <user>anag_factory</user>
+    <comment>- Update to 10.3.1
+  * BSD: don't send uninitialised memory using
+    ps_root_indirectioctl
+  * Fix fallback_time option
+  * IPv4: Ignore DHCP state when building routes
+  * options: Ensure ldop is not NULL dereferenced
+  * route: Routes may not have an interface assinged
+  * options: Ensure that an overly long bitflag string does not
+    crash
+  * options: Don't assume vsio options have an argument
+  * common: Cast via uintptr_t rather than unsigned long in UNCONST
+  * privsep: Ensure we recv for real after a successful recv
+    MSG_PEEK
+  * DHCP: Add parentheses to macro definitions
+  * ipv6nd: empty IPV6RA_EXPIRE eloop queue when dropping
+- Add ghost entry for /var/lib/dhcpcd</comment>
+    <requestid>1339332</requestid>
+  </revision>
 </revisionlist>

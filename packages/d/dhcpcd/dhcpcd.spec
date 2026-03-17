@@ -17,7 +17,7 @@
 
 
 Name:           dhcpcd
-Version:        10.3.0
+Version:        10.3.1
 Release:        0
 Summary:        Minimal DHCPv4 and DHCPv6 client
 License:        BSD-2-Clause
@@ -94,5 +94,6 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/dhcpcd.conf
 %{_unitdir}/dhcpcd@.service
 %{_sysusersdir}/dhcpcd.conf
 %{_tmpfilesdir}/dhcpcd.conf
+%ghost %{_sharedstatedir}/dhcpcd
 
 %changelog

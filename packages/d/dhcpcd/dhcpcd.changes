@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Mar 16 12:13:49 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 10.3.1
+  * BSD: don't send uninitialised memory using
+    ps_root_indirectioctl
+  * Fix fallback_time option
+  * IPv4: Ignore DHCP state when building routes
+  * options: Ensure ldop is not NULL dereferenced
+  * route: Routes may not have an interface assinged
+  * options: Ensure that an overly long bitflag string does not
+    crash
+  * options: Don't assume vsio options have an argument
+  * common: Cast via uintptr_t rather than unsigned long in UNCONST
+  * privsep: Ensure we recv for real after a successful recv
+    MSG_PEEK
+  * DHCP: Add parentheses to macro definitions
+  * ipv6nd: empty IPV6RA_EXPIRE eloop queue when dropping
+
+- Add ghost entry for /var/lib/dhcpcd
+
+-------------------------------------------------------------------
 Mon Jan 19 12:20:48 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Use systemd tmpfiles to create /var/lib/dhcpcd directory for
