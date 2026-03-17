@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Mar 16 17:19:24 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.6.2:
+  * This is a bugfix release that is API and ABI compatible with
+    the previous 1.6.x releases.
+  * Highlights
+    - Fix a potential crash when the wrong memory was freed.
+    - Fix a optimization with shared memory over some links that
+      could cause errors later on.
+    - Fix SOFA filter and default control input in LADSPA and LV2.
+    - Some other small fixes and improvements.
+  * PipeWire
+    - Remove an optimization to skip share mem in links, it causes
+      problems later on. (#5159 (closed))
+  * Modules
+    - Don't try to free invalid memory or close invalid fds when
+      the client aborted before allocating buffer memory.
+      (#5162 (closed))
+  * SPA
+    - support ACP_IGNORE_DB in udev.
+    - Use 0x as a prefix for hex values.
+    - Mark Props as write-only in libcamera.
+    - Small optimization in the audio mixer.
+    - Fix initialization of control properties for SOFA and biquads
+      in the filter-graph. (#5152 (closed))
+    - Fix min/max default values for LADSPA and LV2.
+  * JACK
+    - Fix jack_port_type_id(). Return values that are compatible
+      with JACK1/2. 
+
+-------------------------------------------------------------------
 Mon Mar  9 10:31:43 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.6.1:
