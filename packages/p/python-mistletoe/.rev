@@ -73,4 +73,14 @@
     * Describe Document's constructor and how end-of-lines are treated (#64).</comment>
     <requestid>1315972</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8b631bb2bf1dfa3f4f598788f2368ebc</srcmd5>
+    <version>1.5.1</version>
+    <time>1773770584</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.5.1:
+  * Parsing slow when there are many table-like lines on input
+  * sdist is missing test-requirements.txt (#253).</comment>
+    <requestid>1339438</requestid>
+  </revision>
 </revisionlist>
