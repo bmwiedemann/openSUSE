@@ -313,4 +313,29 @@
     <comment></comment>
     <requestid>1334514</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cf72f0564c252d0ff2ee88ae2f47d350</srcmd5>
+    <version>2.7.0</version>
+    <time>1773770721</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.7.0:
+  * feat(fsautocomplete): support slnx
+  * fix(clangd): send correct languageIds for filetypes objc, objcpp and cuda
+  * feat(kakehashi): add kakehashi lsp config
+  * feat(oxlint, oxfmt): check for local binaries in node_modules
+  * fix(oxfmt): Remove unknown filetypes
+  * fix: drop invalid filetypes javascript.jsx, typescript.tsx
+  * fix: drop invalid filetypes from legacy configs
+  * feat(oxlint): add oxlint.config.ts root marker
+  * fix(eslint): don't implicitly enable experimental.useFlatConfig
+  * fix(pony_lsp)!: rename pony_language_server to pony_lsp
+  * docs: add short description to doc title
+  * fix(pyrefly): schedule vim.notify in on_exit
+  * fix(rust_analyzer): pass environment in rust-analyzer.runSingle
+  * feat(roslyn_ls): use official roslyn binary name as fallback
+  * fix(slangd): add slangd specific root markers
+  * fix(rust_analyzer): recognize std lib sources in sysroot
+  * fix(julials): correctly read path to environment (forwarded request 1339534 from rrahl0)</comment>
+    <requestid>1339535</requestid>
+  </revision>
 </revisionlist>
