@@ -236,4 +236,16 @@
     <comment></comment>
     <requestid>1305956</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0c67d4125dc9eafc96a7f7f04cfd2967</srcmd5>
+    <version>3.2.0</version>
+    <time>1773770582</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.2.0:
+  * Announce supports for python 3.14
+  * Fix footnotes plugins for code blocks, ref links, blockquote
+    and etc.
+  * Fix ref links in TOC.</comment>
+    <requestid>1339433</requestid>
+  </revision>
 </revisionlist>

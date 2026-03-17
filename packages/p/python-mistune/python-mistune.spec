@@ -1,7 +1,7 @@
 #
 # spec file for package python-mistune
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define modname mistune
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        3.1.4
+Version:        3.2.0
 Release:        0
 Summary:        Python Markdown parser with renderers and plugins
 License:        BSD-3-Clause

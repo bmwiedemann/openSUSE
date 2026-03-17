@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 16 20:49:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * Announce supports for python 3.14
+  * Fix footnotes plugins for code blocks, ref links, blockquote
+    and etc.
+  * Fix ref links in TOC.
+
+-------------------------------------------------------------------
 Thu Sep 18 12:57:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.1.4
