@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Mar 17 14:04:58 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.70.0:
+  * Cache peer CA names on client side after handshake
+  * Add NULL checks for MakeUnique in SSL cipher list inheritance
+  * Fix gRPC integration
+  * Latent memory leaks in KEM_KEY setter functions
+  * Fix PKCS8_decrypt to handle all negative pass_len values
+  * Fix PKCS12_verify_mac OOB read with invalid password_len
+  * Cleanup EVP_DH asn1 parsing
+  * Add INT_MAX bounds check before EVP_CipherUpdate in PKCS8/PKCS12 encryption
+  * Fix PKCS8_encrypt crash when pass is NULL with negative pass_len_in
+  * IWYU: guard stdint.h in fips_shared_support.c
+  * Use proper function type for different callback types
+  * Zeroize intermediate values for ed25519
+  * Fix sizeof-on-pointer bugs in FIPS assertion failure messages
+  * Remove dead declarations in public headers
+  * TLS Transfer Serialization Findings
+  * XOF fixes
+  * Add a test that arbitrary curves can be wrapped in EVP_PKEY
+  * Improve type safety and bounds checking in EVP cipher ctrl handlers
+  * Fix uninitialized EVP_MD_CTX and harden bn_dup_into
+  * Add ACVP Support for KAS-ECC
+  * Add ACVP Support for KTS-IFC
+  * Various Small Additions to ACVP Tool
+- Update to version 1.69.0:
+  * Fix FIPS delocator handling of floating-point immediates on aarch64
+  * Fix link in README.md
+  * Various PKCS7 fixups
+  * Fix error reporting and document EC explicit params single-cert
+    behaviour
+  * Fix PKCS7 verify content memleak
+  * Retain flag after custom critical extensions check
+  * Update ACVP documentation
+  * Fix error return values for no-op UI_xxx stub functions
+  * Key state consistency in PQDSA_KEY setter functions
+  * Simplify d2i_PKCS7 by removing redundant BER-to-DER conversion
+  * Ensure all signer certificate chains are verified
+  * Use CRYPTO_memcmp instead of OPENSSL_memcmp for tag verification
+  * Return correct error value when parsing PKCS7 authenticated attributes
+    fails
+
+-------------------------------------------------------------------
 Mon Feb 23 12:57:27 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.68.0:

@@ -293,4 +293,41 @@
   * Generate Rust Bindings (forwarded request 1334511 from rrahl0)</comment>
     <requestid>1334512</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>76febee4bf7a47ca744c6c5109605fc6</srcmd5>
+    <version>1.70.0</version>
+    <time>1773770761</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.70.0:
+  * Cache peer CA names on client side after handshake
+  * Add NULL checks for MakeUnique in SSL cipher list inheritance
+  * Fix gRPC integration
+  * Latent memory leaks in KEM_KEY setter functions
+  * Fix PKCS8_decrypt to handle all negative pass_len values
+  * Fix PKCS12_verify_mac OOB read with invalid password_len
+  * Cleanup EVP_DH asn1 parsing
+  * Add INT_MAX bounds check before EVP_CipherUpdate in PKCS8/PKCS12 encryption
+  * Fix PKCS8_encrypt crash when pass is NULL with negative pass_len_in
+  * IWYU: guard stdint.h in fips_shared_support.c
+  * Use proper function type for different callback types
+  * Zeroize intermediate values for ed25519
+  * Fix sizeof-on-pointer bugs in FIPS assertion failure messages
+  * Remove dead declarations in public headers
+  * TLS Transfer Serialization Findings
+  * XOF fixes
+  * Add a test that arbitrary curves can be wrapped in EVP_PKEY
+  * Improve type safety and bounds checking in EVP cipher ctrl handlers
+  * Fix uninitialized EVP_MD_CTX and harden bn_dup_into
+  * Add ACVP Support for KAS-ECC
+  * Add ACVP Support for KTS-IFC
+  * Various Small Additions to ACVP Tool
+- Update to version 1.69.0:
+  * Fix FIPS delocator handling of floating-point immediates on aarch64
+  * Fix link in README.md
+  * Various PKCS7 fixups
+  * Fix error reporting and document EC explicit params single-cert
+    behaviour
+  * Fix PKCS7 verify content memleak (forwarded request 1339648 from rrahl0)</comment>
+    <requestid>1339649</requestid>
+  </revision>
 </revisionlist>
