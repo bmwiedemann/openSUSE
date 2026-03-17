@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 16 00:35:08 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-assertequal.patch:
+  * Use TestCase.assertEqual rather than assertEquals.
+
+-------------------------------------------------------------------
 Tue Nov  5 13:07:00 UTC 2024 - pgajdos@suse.com
 
 - do not require python-purl

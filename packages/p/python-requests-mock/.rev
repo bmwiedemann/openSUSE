@@ -358,4 +358,13 @@
     <comment></comment>
     <requestid>1221494</requestid>
   </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>db8f0636d347387a0d73d1886f5ae5a8</srcmd5>
+    <version>1.12.1</version>
+    <time>1773770534</time>
+    <user>anag_factory</user>
+    <comment>- Add patch use-assertequal.patch:
+  * Use TestCase.assertEqual rather than assertEquals.</comment>
+    <requestid>1339192</requestid>
+  </revision>
 </revisionlist>

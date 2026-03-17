@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-mock
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://github.com/jamielennox/requests-mock
 Source:         https://files.pythonhosted.org/packages/source/r/requests-mock/requests-mock-%{version}.tar.gz
 # https://github.com/jamielennox/requests-mock/issues/266
 Patch0:         python-requests-mock-no-purl.patch
+# PATCH-FIX-OPENSUSE Use assertEqual
+Patch1:         use-assertequal.patch
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
