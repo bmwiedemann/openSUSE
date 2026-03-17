@@ -18,7 +18,7 @@
 
 %define         _name markdown
 Name:           tree-sitter-markdown
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 Summary:        Markdown grammar for tree-sitter
 License:        MIT
