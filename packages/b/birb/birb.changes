@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 17 09:02:08 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.7.1:
+  * Fix a warning with birb_str_wipe
+  * Turn off pedantic warnings
+- Update to verison 0.7.0:
+  * Add birb_time_zone functions
+  * Add a simple birb_str_wipe implementation
+
+-------------------------------------------------------------------
 Tue Dec 30 16:11:34 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.6.1:

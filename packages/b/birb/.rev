@@ -45,4 +45,17 @@
   * Use int and char instead of gint and gchar (forwarded request 1324868 from rrahl0)</comment>
     <requestid>1324869</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fbf8923fd7233e5a550c17facc996964</srcmd5>
+    <version>0.7.1</version>
+    <time>1773770763</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.7.1:
+  * Fix a warning with birb_str_wipe
+  * Turn off pedantic warnings
+- Update to verison 0.7.0:
+  * Add birb_time_zone functions
+  * Add a simple birb_str_wipe implementation (forwarded request 1339530 from rrahl0)</comment>
+    <requestid>1339531</requestid>
+  </revision>
 </revisionlist>

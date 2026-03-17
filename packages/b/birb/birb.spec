@@ -1,7 +1,7 @@
 #
 # spec file for package birb
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         sover 0
 Name:           birb
-Version:        0.6.1
+Version:        0.7.1
 Release:        0
 Summary:        A library of utilities for GLib based apps
 License:        LGPL-2.1-or-later
