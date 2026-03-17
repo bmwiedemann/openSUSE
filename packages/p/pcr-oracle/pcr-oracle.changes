@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 16 08:14:36 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.6.0
+  + Initial support for CI tests
+  + Fix additional arguments following the PCR index
+  + CI: Shutdown the swtpm instance after tests
+  + Fix stop event check crash for grub-command (bsc#1258119)
+  + Print PCR values during signing or sealing 
+
+-------------------------------------------------------------------
 Mon Feb  2 07:38:47 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to 0.5.9
