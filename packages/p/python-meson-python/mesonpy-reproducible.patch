@@ -6,11 +6,11 @@ Reproducible builds require a deterministic build path.
 Use the python-rpm-macros shuffled build directory.
 
 
-Index: meson_python-0.16.0/mesonpy/__init__.py
+Index: meson_python-0.19.0/mesonpy/__init__.py
 ===================================================================
---- meson_python-0.16.0.orig/mesonpy/__init__.py
-+++ meson_python-0.16.0/mesonpy/__init__.py
-@@ -943,7 +943,10 @@ def _project(config_settings: Optional[D
+--- meson_python-0.19.0.orig/mesonpy/__init__.py
++++ meson_python-0.19.0/mesonpy/__init__.py
+@@ -1118,7 +1118,10 @@ def _project(config_settings: Optional[D
  
      with contextlib.ExitStack() as ctx:
          if build_dir is None:
@@ -20,5 +20,3 @@ Index: meson_python-0.16.0/mesonpy/__init__.py
 +            else:
 +                build_dir = ctx.enter_context(tempfile.TemporaryDirectory(prefix='.mesonpy-', dir=source_dir))
          yield Project(source_dir, build_dir, meson_args, editable_verbose)
- 
- 

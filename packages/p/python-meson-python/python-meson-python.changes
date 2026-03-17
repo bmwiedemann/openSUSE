@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 16 21:52:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.19.0:
+  * Drop Python 3.8 support.
+  * Development-related extras were moved to dependency groups.
+  * Add support for targeting the iOS platform.
+  * The strip binary is now included in synthesized cross files.
+  * Documentation improvements: add more examples for specific
+    use cases, and a contributing guide.
+  * Use trusted publishing with digital attestations to upload
+    release artifacts to PyPI.
+
+-------------------------------------------------------------------
 Fri Jul 18 08:46:56 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 1.18.0

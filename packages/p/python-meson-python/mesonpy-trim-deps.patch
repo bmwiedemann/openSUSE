@@ -1,25 +1,25 @@
 The backend does not require a mesonbuild module for every flavor.
 the `meson` command from the regular RPM package is sufficient.
 
-Index: meson_python-0.18.0/pyproject.toml
+Index: meson_python-0.19.0/pyproject.toml
 ===================================================================
---- meson_python-0.18.0.orig/pyproject.toml
-+++ meson_python-0.18.0/pyproject.toml
+--- meson_python-0.19.0.orig/pyproject.toml
++++ meson_python-0.19.0/pyproject.toml
 @@ -6,8 +6,6 @@
  build-backend = 'mesonpy'
  backend-path = ['.']
  requires = [
 -  'meson >= 0.64.0; python_version < "3.12"',
 -  'meson >= 1.2.3; python_version >= "3.12"',
-   'packaging >= 23.2',
+   'packaging >= 23.2; sys_platform != "ios"',
+   'packaging >= 24.2; sys_platform == "ios"',
    'pyproject-metadata >= 0.9.0',
-   'tomli >= 1.0.0; python_version < "3.11"',
-@@ -35,8 +33,6 @@ classifiers = [
+@@ -34,8 +32,6 @@
+   'Topic :: Software Development :: Build Tools',
  ]
- 
  dependencies = [
 -  'meson >= 0.64.0; python_version < "3.12"',
 -  'meson >= 1.2.3; python_version >= "3.12"',
-   'packaging >= 23.2',
+   'packaging >= 23.2; sys_platform != "ios"',
+   'packaging >= 24.2; sys_platform == "ios"',
    'pyproject-metadata >= 0.9.0',
-   'tomli >= 1.0.0; python_version < "3.11"',
