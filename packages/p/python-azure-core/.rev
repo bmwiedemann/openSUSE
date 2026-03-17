@@ -645,4 +645,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1333891 from glaubitz)</comment>
     <requestid>1333957</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>4542ee39af8b0bbdf539e81863628e9f</srcmd5>
+    <version>1.38.3</version>
+    <time>1773770568</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.38.3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1339360 from glaubitz)</comment>
+    <requestid>1339361</requestid>
+  </revision>
 </revisionlist>
