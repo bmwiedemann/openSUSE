@@ -1,7 +1,7 @@
 #
 # spec file for package python-extras
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ Summary:        Extra bits for Python
 License:        MIT
 URL:            https://github.com/testing-cabal/extras
 Source:         https://files.pythonhosted.org/packages/source/e/extras/extras-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#testing-cabal/extras#26
+Patch0:         fix-assertion.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -53,7 +55,7 @@ written to make the code within testtools cleaner, but now split out for
 general use outside of a testing context.
 
 %prep
-%setup -q -n extras-%{version}
+%autosetup -p1 -n extras-%{version}
 
 %build
 %pyproject_wheel
@@ -74,7 +76,7 @@ general use outside of a testing context.
 %license LICENSE
 %doc NEWS README.rst
 %{python_sitelib}/extras
-%{python_sitelib}/extras-%{version}*-info/
+%{python_sitelib}/extras-%{version}.dist-info
 %endif
 
 %changelog

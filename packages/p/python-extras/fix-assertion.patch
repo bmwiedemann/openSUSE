@@ -1,0 +1,78 @@
+From ca7a45f21ba2f42a1c345172d065c673a4de9faa Mon Sep 17 00:00:00 2001
+From: Felix Yan <felixonmars@archlinux.org>
+Date: Tue, 3 Feb 2026 11:57:26 +0800
+Subject: [PATCH] Fix assertion method from assertEquals to assertEqual
+
+Fixes the following test errors:
+
+```
+Tests running...
+======================================================================
+ERROR: extras.tests.test_extras.TestTryImport.test_error_callback
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/build/python-extras/src/extras/extras/tests/test_extras.py", line 120, in test_error_callback
+    check_error_callback(self, try_import, 'doesntexist', 1, False)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/build/python-extras/src/extras/extras/tests/test_extras.py", line 43, in check_error_callback
+    test.assertEquals(len(cb_calls), expected_error_count)
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'TestTryImport' object has no attribute 'assertEquals'. Did you mean: 'assertEqual'?
+======================================================================
+ERROR: extras.tests.test_extras.TestTryImport.test_error_callback_missing_module_member
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/build/python-extras/src/extras/extras/tests/test_extras.py", line 125, in test_error_callback_missing_module_member
+    check_error_callback(self, try_import, 'os.nonexistent', 1, False)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/build/python-extras/src/extras/extras/tests/test_extras.py", line 43, in check_error_callback
+    test.assertEquals(len(cb_calls), expected_error_count)
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'TestTryImport' object has no attribute 'assertEquals'. Did you mean: 'assertEqual'?
+======================================================================
+ERROR: extras.tests.test_extras.TestTryImport.test_error_callback_not_on_success
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/build/python-extras/src/extras/extras/tests/test_extras.py", line 129, in test_error_callback_not_on_success
+    check_error_callback(self, try_import, 'os.path', 0, True)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/build/python-extras/src/extras/extras/tests/test_extras.py", line 43, in check_error_callback
+    test.assertEquals(len(cb_calls), expected_error_count)
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'TestTryImport' object has no attribute 'assertEquals'. Did you mean: 'assertEqual'?
+======================================================================
+ERROR: extras.tests.test_extras.TestTryImports.test_error_callback
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/build/python-extras/src/extras/extras/tests/test_extras.py", line 197, in test_error_callback
+    check_error_callback(self, try_imports,
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+        ['os.doesntexist', 'os.notthiseither'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        2, False)
+        ^^^^^^^^^
+  File "/build/python-extras/src/extras/extras/tests/test_extras.py", line 43, in check_error_callback
+    test.assertEquals(len(cb_calls), expected_error_count)
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'TestTryImports' object has no attribute 'assertEquals'. Did you mean: 'assertEqual'?
+
+Ran 22 tests in 0.002s
+FAILED (failures=4)
+```
+---
+ extras/tests/test_extras.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: extras-1.0.0/extras/tests/test_extras.py
+===================================================================
+--- extras-1.0.0.orig/extras/tests/test_extras.py
++++ extras-1.0.0/extras/tests/test_extras.py
+@@ -40,7 +40,7 @@ def check_error_callback(test, function,
+             test.assertThat(result, Not(Is(None)))
+         else:
+             test.assertThat(result, Is(None))
+-    test.assertEquals(len(cb_calls), expected_error_count)
++    test.assertEqual(len(cb_calls), expected_error_count)
+ 
+ 
+ class TestSafeHasattr(TestCase):

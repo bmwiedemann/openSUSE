@@ -126,4 +126,13 @@
 </comment>
     <requestid>1280516</requestid>
   </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>b2ffea58370676e81e5bfb26e71f70f6</srcmd5>
+    <version>1.0.0</version>
+    <time>1773770537</time>
+    <user>anag_factory</user>
+    <comment>- Add patch fix-assertion.patch:
+  * Use assertEqual rather than assertEquals.</comment>
+    <requestid>1339195</requestid>
+  </revision>
 </revisionlist>
