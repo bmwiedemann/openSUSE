@@ -175,4 +175,21 @@
 - Normalize metadata directory name.</comment>
     <requestid>1266239</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f3c8b78335a848183d54a5f955e66700</srcmd5>
+    <version>4.2.0</version>
+    <time>1773770525</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.2.0:
+  * Replaced autocommand usage with Typer -- by :user:`Avasam`
+  * Fixed join_continuation's parameter type annotation -- by
+    :user:`Avasam`
+  * Complete annotations and add py.typed marker -- by
+    :user:`Avasam`
+  * Add support for start and end in jaraco.text.FoldedCase.index
+    -- by :user:`Avasam`
+  * Support None splitter argument in
+    jaraco.text.FoldedCase.split -- by :user:`Avasam`</comment>
+    <requestid>1339134</requestid>
+  </revision>
 </revisionlist>

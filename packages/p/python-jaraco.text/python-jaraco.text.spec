@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.text
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.text
-Version:        4.0.0
+Version:        4.2.0
 Release:        0
 Summary:        Tools to work with text
 License:        MIT
@@ -34,6 +34,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typer}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -45,6 +46,7 @@ Requires:       python-inflect
 Requires:       python-jaraco.context >= 4.1
 Requires:       python-jaraco.functools
 Requires:       python-more-itertools
+Requires:       python-typer
 BuildArch:      noarch
 %python_subpackages
 

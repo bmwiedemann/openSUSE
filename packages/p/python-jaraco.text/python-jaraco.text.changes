@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 15 15:35:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.0:
+  * Replaced autocommand usage with Typer -- by :user:`Avasam`
+  * Fixed join_continuation's parameter type annotation -- by
+    :user:`Avasam`
+  * Complete annotations and add py.typed marker -- by
+    :user:`Avasam`
+  * Add support for start and end in jaraco.text.FoldedCase.index
+    -- by :user:`Avasam`
+  * Support None splitter argument in
+    jaraco.text.FoldedCase.split -- by :user:`Avasam`
+
+-------------------------------------------------------------------
 Tue Apr  1 15:35:41 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make it compatible with older setuptools
