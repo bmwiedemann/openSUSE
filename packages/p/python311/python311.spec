@@ -197,6 +197,9 @@ Patch35:        CVE-2025-15367-poplib-ctrl-chars.patch
 # PATCH-FIX-UPSTREAM CVE-2025-12781-b64decode-alt-chars.patch bsc#1257108 mcepl@suse.com
 # Fix decoding with non-standard Base64 alphabet gh#python/cpython#125346
 Patch36:        CVE-2025-12781-b64decode-alt-chars.patch
+# PATCH-FIX-UPSTREAM CVE-2026-2297-SourcelessFileLoader-io_open_code.patch bsc#1259240 mcepl@suse.com
+# Ensure SourcelessFileLoader uses io.open_code
+Patch37:        CVE-2026-2297-SourcelessFileLoader-io_open_code.patch
 ### END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

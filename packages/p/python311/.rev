@@ -1833,4 +1833,14 @@ C API
     - gh-137836: Add support of the “plaintext” element, RAWTEXT</comment>
     <requestid>1337543</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>04c1c48b96d3ad1547f188971edfd4ea</srcmd5>
+    <version>3.11.15</version>
+    <time>1773770570</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2026-2297-SourcelessFileLoader-io_open_code.patch
+  ensuring that `SourcelessFileLoader` uses `io.open_code` when
+  opening `.pyc` files (bsc#1259240, CVE-2026-2297).</comment>
+    <requestid>1339368</requestid>
+  </revision>
 </revisionlist>
