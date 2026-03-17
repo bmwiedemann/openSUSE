@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.develop
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.develop
-Version:        8.17.6
+Version:        8.19.2
 Release:        0
 Summary:        Development utilities by jaraco
 License:        MIT

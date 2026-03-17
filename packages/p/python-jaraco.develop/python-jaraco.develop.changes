@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 15 19:14:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.19.2:
+  * Fixed issue due to build.
+  * Fixed linter errors.
+  * Remove support for TIDELIFT_TOKEN, no longer relevant.
+  * When finding needed secrets, exclude CODECOV_TOKEN.
+  * Change the release type of doc fragments to patch in
+    towncrier.
+
+-------------------------------------------------------------------
 Fri Jul 18 15:03:39 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - update 8.17.6
