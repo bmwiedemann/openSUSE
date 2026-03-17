@@ -311,4 +311,19 @@
     parameter.</comment>
     <requestid>1333393</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>22045744dc38bc4c2ad645fc892d0ea6</srcmd5>
+    <version>7.0.5</version>
+    <time>1773770523</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.0.5:
+  * Minor @cachedmethod performance improvements.
+  * Fix and properly document @cachedmethod.cache_key behavior.
+  * Minor documentation improvements.
+  * Fix DeprecationWarning when creating an autospec mock with
+    @cachedmethod decorations.
+  * Provide more efficient clear() implementation for all support
+    Cache classes (courtesy Josep Pon Farreny).</comment>
+    <requestid>1339019</requestid>
+  </revision>
 </revisionlist>

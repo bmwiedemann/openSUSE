@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar 14 21:59:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.5:
+  * Minor @cachedmethod performance improvements.
+  * Fix and properly document @cachedmethod.cache_key behavior.
+  * Minor documentation improvements.
+  * Fix DeprecationWarning when creating an autospec mock with
+    @cachedmethod decorations.
+  * Provide more efficient clear() implementation for all support
+    Cache classes (courtesy Josep Pon Farreny).
+
+-------------------------------------------------------------------
 Mon Feb 16 16:45:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0.1:
