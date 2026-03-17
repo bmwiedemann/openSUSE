@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Mar 16 05:45:52 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix conversion of h and H fr-afnor xkb keymap (boo#1259269).
+
+-------------------------------------------------------------------
+Mon Mar 16 01:39:40 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Replace setfont --quiet (kbd-setfont-quiet.patch) by upstream
+  solution: add setfont --check that checks for setfont
+  availability without logging errors (boo#1212970,
+  kbd-setfont-check.patch).
+
+-------------------------------------------------------------------
+Mon Mar 16 01:33:11 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.9.0:
+  * keymaps:
+    + Add Georgian font (LatCyrHebKa-16_GIA.psfu)
+      and keymap (i386/qwerty/ge).
+    + Add new i386 azerty afnor keymap (i386/azerty/fr-afnor).
+    + Disable characters >=U+F000 in qwertz/de_alt_UTF-8
+      (drop kbd-unicode-fxxx.patch).
+    + Add console keymap for Mac swiss german keyboards.
+  * libkeymap:
+    + Support KT_DEAD2 diacritics.
+    + Fix memory leaks.
+  * libkbdfile:
+    + Detect archive type based on content.
+    + Add support for decompressing files without using utilities.
+      Use ELF_DLOPEN_METADATA if possible.
+  * utils:
+    + kbd_mode: support Disabled mode (K_OFF).
+    + loadkeys: Add --tkeymap to dump the keymap as text.
+- Drop kbd-2.7.1-reproducible-gzip.patch, now handled by the
+  upstream.
+
+-------------------------------------------------------------------
 Wed Mar  4 21:05:42 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
 
 - Implement setfont --quiet to suppress warning from

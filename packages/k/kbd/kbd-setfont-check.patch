@@ -1,0 +1,181 @@
+From f5695d3e69ddc9670dc7dd28107327aceda1ec70 Mon Sep 17 00:00:00 2001
+From: Alexey Gladkov <legion@kernel.org>
+Date: Fri, 13 Mar 2026 10:38:38 +0100
+Subject: [PATCH] setfont: check whether console is suitable for font
+ operations
+
+Signed-off-by: Alexey Gladkov <legion@kernel.org>
+---
+ src/include/kbd/kfont.h   |  8 ++++++++
+ src/libkfont/kdfontop.c   | 35 ++++++++++++++++++++++++++++++++---
+ src/libkfont/libkfont.map |  9 +++++++++
+ src/setfont.c             | 15 +++++++++++----
+ 4 files changed, 60 insertions(+), 7 deletions(-)
+
+diff --git a/src/include/kbd/kfont.h b/src/include/kbd/kfont.h
+index 67ad917..11bc97c 100644
+--- a/src/include/kbd/kfont.h
++++ b/src/include/kbd/kfont.h
+@@ -188,6 +188,14 @@ int kfont_put_font(struct kfont_context *ctx, int consolefd, unsigned char *buf,
+ unsigned int kfont_get_fontsize(struct kfont_context *ctx, int consolefd)
+ 	KBD_ATTR_NONNULL(1);
+ 
++/*
++ * Check whether CONSOLEFD refers to a text-mode console suitable for
++ * font operations through KDFONTOP. The check is silent and returns 1
++ * if the console can be used, 0 otherwise.
++ */
++int kfont_is_font_console(struct kfont_context *ctx, int consolefd)
++	KBD_ATTR_NONNULL(1);
++
+ /*
+  * Restore font (doesn't work).
+  */
+diff --git a/src/libkfont/kdfontop.c b/src/libkfont/kdfontop.c
+index 4f1f0d2..64d78ad 100644
+--- a/src/libkfont/kdfontop.c
++++ b/src/libkfont/kdfontop.c
+@@ -21,22 +21,30 @@
+ #endif
+ 
+ static int
+-is_kd_text(struct kfont_context *ctx, int fd)
++is_kd_text_mode(struct kfont_context *ctx, int fd, int report_errors)
+ {
+ 	unsigned int kd_mode;
+ 
+ 	if (ioctl(fd, KDGETMODE, &kd_mode)) {
+-		KFONT_ERR(ctx, "ioctl(KDGETMODE): %m");
++		if (report_errors)
++			KFONT_ERR(ctx, "ioctl(KDGETMODE): %m");
+ 		return 0;
+ 	}
+ 
+ 	if (kd_mode == KD_TEXT)
+ 		return 1;
+ 
+-	KFONT_ERR(ctx, _("Console is not in text mode"));
++	if (report_errors)
++		KFONT_ERR(ctx, _("Console is not in text mode"));
+ 	return 0;
+ }
+ 
++static inline int
++is_kd_text(struct kfont_context *ctx, int fd)
++{
++	return is_kd_text_mode(ctx, fd, 1);
++}
++
+ int
+ kfont_restore_font(struct kfont_context *ctx, int fd)
+ {
+@@ -176,6 +184,27 @@ kfont_get_fontsize(struct kfont_context *ctx, int fd)
+ 	return 256;
+ }
+ 
++int
++kfont_is_font_console(struct kfont_context *ctx, int fd)
++{
++	if (!is_kd_text_mode(ctx, fd, 0))
++		return 0;
++
++	struct console_font_op cfo = {
++		.op        = KD_FONT_OP_GET,
++		.flags     = 0,
++		.width     = 32,
++		.height    = 32,
++		.charcount = (sizeof(unsigned char) * MAXFONTSIZE) / (64 * 128 / 8),
++		.data      = NULL,
++	};
++
++	errno = 0;
++	ioctl(fd, KDFONTOP, &cfo);
++
++	return (errno != ENOSYS && errno != ENOTTY);
++}
++
+ static int
+ put_font_kdfontop(struct kfont_context *ctx, int consolefd, unsigned char *buf,
+ 		unsigned int count,
+diff --git a/src/libkfont/libkfont.map b/src/libkfont/libkfont.map
+index 0ea76d2..e89cd86 100644
+--- a/src/libkfont/libkfont.map
++++ b/src/libkfont/libkfont.map
+@@ -36,3 +36,12 @@ KFONT_1.0 {
+   local:
+     *;
+ };
++
++/*
++ * symbols since kbd 2.9.0
++ */
++KFONT_2.9 {
++  global:
++    kfont_is_font_console;
++
++} KFONT_1.0;
+diff --git a/src/setfont.c b/src/setfont.c
+index dc336c1..8a80431 100644
+--- a/src/setfont.c
++++ b/src/setfont.c
+@@ -166,10 +166,8 @@ int main(int argc, char *argv[])
+ {
+ 	const char *ifiles[MAXIFILES];
+ 	char *mfil, *ufil, *Ofil, *ofil, *omfil, *oufil, *console;
+-	int ifilct = 0, fd, no_m, no_u;
++	int ifilct, fd, no_m, no_u, restore, check_console, ret, c;
+ 	unsigned int iunit, hwunit;
+-	int restore = 0;
+-	int ret, c;
+ 
+ 	struct kfont_context *kfont;
+ 
+@@ -183,6 +181,7 @@ int main(int argc, char *argv[])
+ 		{ "-m, --consolemap <FILE>",         _("load console screen map ('none' means don't load it).") },
+ 		{ "-u, --unicodemap <FILE>",         _("load font unicode map ('none' means don't load it).") },
+ 		{ "-C, --console <DEV>",             _("the console device to be used.") },
++		{ "-c, --check",                     _("check whether console is suitable for font operations.") },
+ 		{ "-d, --double",                    _("double size of font horizontally and vertically.") },
+ 		{ "-f, --force",                     _("force load unicode map.") },
+ 		{ "-R, --reset",                     _("reset the screen font, size, and unicode map to the bootup defaults.") },
+@@ -193,6 +192,7 @@ int main(int argc, char *argv[])
+ 	};
+ 
+ 	const struct kbd_option opts[] = {
++		{ "=c",  "check",             kbd_no_argument,       'c' },
+ 		{ "=d",  "double",            kbd_no_argument,       'd' },
+ 		{ "=f",  "force",             kbd_no_argument,       'f' },
+ 		{ "=R",  "reset",             kbd_no_argument,       'R' },
+@@ -218,7 +218,8 @@ int main(int argc, char *argv[])
+ 
+ 	ifiles[0] = mfil = ufil = Ofil = ofil = omfil = oufil = NULL;
+ 	iunit = hwunit = 0;
+-	no_m = no_u = 0;
++	ifilct = no_m = no_u = 0;
++	restore = check_console = 0;
+ 	console = NULL;
+ 
+ 	while ((c = kbd_getopt(argc, argv, opts)) != -1) {
+@@ -271,6 +272,9 @@ int main(int argc, char *argv[])
+ 			case 'R':
+ 				restore = 1;
+ 				break;
++			case 'c':
++				check_console = 1;
++				break;
+ 			case 'd':
+ 				kfont_set_option(kfont, kfont_double_size);
+ 				break;
+@@ -316,6 +320,9 @@ int main(int argc, char *argv[])
+ 	if ((fd = getfd(console)) < 0)
+ 		kbd_error(EX_OSERR, 0, _("Couldn't get a file descriptor referring to the console."));
+ 
++	if (check_console)
++		return kfont_is_font_console(kfont, fd) ? EX_OK : EXIT_FAILURE;
++
+ 	int kd_mode = -1;
+ 	if (!ioctl(fd, KDGETMODE, &kd_mode) && (kd_mode == KD_GRAPHICS)) {
+ 		/*
+-- 
+2.51.0
+

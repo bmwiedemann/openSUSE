@@ -24,7 +24,7 @@
 %define legacy_folders amiga,atari,include,mac,pine,ppc,sun
 
 Name:           kbd
-Version:        2.7.1
+Version:        2.9.0
 Release:        0
 Summary:        Keyboard and Font Utilities
 # git: git://git.altlinux.org/people/legion/packages/kbd.git
@@ -59,12 +59,8 @@ Patch12:        kbd-2.0.2-fix-bashisms.patch
 Patch13:        kbd-1.15.5-loadkeys-search-path.patch
 # PATCH-FEATURE-OPENSUSE kbdsettings-nox86.patch sbrabec@suse.cz -- Disable "bios" option for NumLock settings on non x86 platforms.
 Patch14:        kbdsettings-nox86.patch
-# PATCH-FIX-SLE kbd-unicode-fxxx.patch sbrabec@suse.com bsc1085432 -- Do not cause error on UNICODE characters >= 0xF000 (e. g. ligature fi)
-Patch15:        kbd-unicode-fxxx.patch
-# PATCH-FIX-UPSTREAM bsc#1240348 -- for reproducible builds
-Patch16:        https://github.com/legionus/kbd/commit/eebaa3b69efd9e3d218f3436dc43ff3340020ef5.patch#/kbd-2.7.1-reproducible-gzip.patch
-# PATCH-FIX-OPENSUSE kbd-setfont-quiet.patch boo1212970 sbrabec@suse.com -- Implement setfont --quiet to suppress warning from systemd-vconsole-setup.
-Patch17:        kbd-setfont-quiet.patch
+# PATCH-FIX-OPENSUSE kbd-setfont-check.patch boo1212970 sbrabec@suse.com -- Implement setfont --check that checks for setfont availability without logging errors.
+Patch17:        kbd-setfont-check.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -191,6 +187,8 @@ gcc %{optflags} -o fbtest      $RPM_SOURCE_DIR/fbtest.c
 %ifarch %{ix86} x86_64
 gcc %{optflags} -o numlockbios $RPM_SOURCE_DIR/numlockbios.c
 %endif
+# kbd-2.9.0 has a bug that would end with .gz.gz files. Work arout it. (gh#legionus/kbd#154)
+rm -r data/*_Z
 # fix lat2-16.psfu (bnc#340579)
 font=data/consolefonts/lat2a-16.psfu
 ./src/psfxtable -i $font -it  data/unimaps/lat2u.uni \
@@ -363,6 +361,10 @@ while read line; do
   # fix conversion of lowercase f in de-e1 keymap (boo#1207841)
   if [ "$XKBLAYOUT-$XKBVARIANT" == "de-e1" ]; then
     sed -i 's/^plain keycode 33 = AltGr/plain keycode 33 = +U+0066/' /tmp/"$XKBLAYOUT"-"$XKBVARIANT".map
+  fi
+  # fix conversion of h and H in fr-afnor keymap (boo#1259269)
+  if [ "$XKBLAYOUT-$XKBVARIANT" == "fr-afnor" ]; then
+    sed -i '/^keycode 35 /s/AltGr AltGr AltGr AltGr/+U+0067 +U+0047 +U+0067 +U+0047/g' /tmp/"$XKBLAYOUT"-"$XKBVARIANT".map
   fi
   # skip converted layouts which cannot input ASCII (rh#1031848)
   grep -q "U+0041" /tmp/"$XKBLAYOUT"-"$XKBVARIANT".map && \
@@ -605,6 +607,7 @@ test -f /etc/pam.d/vlock.rpmsave && mv -v /etc/pam.d/vlock.rpmsave /etc/pam.d/vl
 %files devel
 #%%doc %%{_defaultdocdir}/kbd/html
 %{_includedir}/kbd
+%{_includedir}/array_size.h
 %{_includedir}/kbdfile.h
 %{_includedir}/keymap.h
 %{_includedir}/kfont.h
