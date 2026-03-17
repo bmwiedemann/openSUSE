@@ -159,4 +159,22 @@
     <comment></comment>
     <requestid>1317153</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>62a75f582e8a32a968237c58cd6ccc43</srcmd5>
+    <version>1.11.1</version>
+    <time>1773770529</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.11.1:
+  * Add Free-Threading and Limited API/Stable ABI
+  * Fix up classifier from typo
+- update to 1.11.0:
+  * Add Free-Threading and Limited API/Stable ABI
+  * Bug: This was never pushed to PyPI due to a bug in the
+    `setup.py` classifiers. The `v1.11.1` release contains the
+    same changes here.
+
+- Update to version to 1.8.2
+ * GSSAPI extension rfc4178 (set_neg_mechs) support</comment>
+    <requestid>1339152</requestid>
+  </revision>
 </revisionlist>
