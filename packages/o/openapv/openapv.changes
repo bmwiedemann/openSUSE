@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 17 09:37:00 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.2.1.2:
+  * Prevention of decoder crash in case of malformed input stream
+  * Bug fix in handling code of thread return values
+
+-------------------------------------------------------------------
 Mon Feb 23 12:40:21 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.2.1.1:

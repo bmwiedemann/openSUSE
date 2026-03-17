@@ -90,4 +90,14 @@
     <comment></comment>
     <requestid>1334496</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d6e8c84fb25695c048f16e87b75fc398</srcmd5>
+    <version>0.2.1.2</version>
+    <time>1773770725</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.2.1.2:
+  * Prevention of decoder crash in case of malformed input stream
+  * Bug fix in handling code of thread return values (forwarded request 1339546 from rrahl0)</comment>
+    <requestid>1339547</requestid>
+  </revision>
 </revisionlist>
