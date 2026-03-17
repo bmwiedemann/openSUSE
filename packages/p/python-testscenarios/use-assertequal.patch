@@ -1,0 +1,31 @@
+From fd9a58526f1f77c192c129f6e06cb61bf06dfea4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jelmer=20Vernoo=C4=B3?= <jelmer@jelmer.uk>
+Date: Mon, 10 Nov 2025 22:59:37 +0000
+Subject: [PATCH 3/3] s/assertEquals/assertEqual/
+
+---
+ testscenarios/tests/test_scenarios.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: testscenarios-0.5.0/testscenarios/tests/test_scenarios.py
+===================================================================
+--- testscenarios-0.5.0.orig/testscenarios/tests/test_scenarios.py
++++ testscenarios-0.5.0/testscenarios/tests/test_scenarios.py
+@@ -193,7 +193,7 @@ class TestLoadTests(testtools.TestCase):
+             [self.SampleTest('test_nothing')],
+             None)
+         result_tests = list(testtools.iterate_tests(suite))
+-        self.assertEquals(
++        self.assertEqual(
+             2,
+             len(result_tests),
+             result_tests)
+@@ -206,7 +206,7 @@ class TestLoadTests(testtools.TestCase):
+             unittest.TestLoader(),
+             )
+         result_tests = list(testtools.iterate_tests(suite))
+-        self.assertEquals(
++        self.assertEqual(
+             2,
+             len(result_tests),
+             result_tests)

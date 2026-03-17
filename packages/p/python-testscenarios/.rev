@@ -78,4 +78,13 @@
 - Switch to pyproject macros.</comment>
     <requestid>1273923</requestid>
   </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>cddb56c4298db1e67c592b08afbf1ffa</srcmd5>
+    <version>0.5.0</version>
+    <time>1773770532</time>
+    <user>anag_factory</user>
+    <comment>- Add patch use-assertequal.patch:
+  * Use TestCase.assertEqual, rather than assertEquals.</comment>
+    <requestid>1339191</requestid>
+  </revision>
 </revisionlist>
