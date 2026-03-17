@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar 16 15:15:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.15:
+  * build(deps): bump step-security/harden-runner from 2.15.1 to
+    2.16.0 (#2129)
+  * build(deps): bump github/codeql-action from 4.32.6 to 4.33.0
+    (#2128)
+  * build(deps): bump golang.org/x/sys from 0.41.0 to 0.42.0
+    (#2120)
+  * build(deps): bump google.golang.org/api from 0.269.0 to 0.271.0
+    (#2125)
+  * build(deps): bump step-security/harden-runner from 2.15.0 to
+    2.15.1 (#2126)
+  * build(deps): bump chainguard-dev/actions from 1.6.6 to 1.6.8
+    (#2124)
+  * build(deps): bump github.com/charmbracelet/log from 0.4.2 to
+    1.0.0 (#2118)
+  * build(deps): bump github.com/package-url/packageurl-go from
+    0.1.4 to 0.1.5 (#2117)
+  * build(deps): bump golang.org/x/time from 0.14.0 to 0.15.0
+    (#2116)
+  * Bump default maximum decompressed apkindex size from 100 MB to
+    300 MB (#2127)
+
+-------------------------------------------------------------------
 Wed Mar 11 05:59:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.14:
