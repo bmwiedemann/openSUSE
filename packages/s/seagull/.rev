@@ -68,4 +68,16 @@
   * Add support for GError</comment>
     <requestid>1330424</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>69d0dbf7fd1abe0a5268c7a5eecaa01a</srcmd5>
+    <version>0.8.1</version>
+    <time>1773770717</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.8.1:
+  * Normalize the license headers (again)
+- Update to version 0.8.0:
+  * Add support for handling uint and uint64
+  * Normalize the license headers (forwarded request 1339528 from rrahl0)</comment>
+    <requestid>1339529</requestid>
+  </revision>
 </revisionlist>

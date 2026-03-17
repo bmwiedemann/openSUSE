@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 17 08:59:23 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.8.1:
+  * Normalize the license headers (again)
+- Update to version 0.8.0:
+  * Add support for handling uint and uint64
+  * Normalize the license headers
+
+-------------------------------------------------------------------
 Mon Feb  2 13:44:34 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.7.0:
