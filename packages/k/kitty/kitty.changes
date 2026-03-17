@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar 16 17:13:37 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.46.1:
+  * diff kitten: Highlight moved lines using a different background color
+    (kitten-diff.mark_moved_lines) (#3241)
+    - https://sw.kovidgoyal.net/kitty/kittens/diff/#opt-kitten-diff.mark_moved_lines
+  * Fix a regression that broke kitten update-self (#9642)
+  * macOS: Clear bell alert badge on dock icon on mouse/keyboard
+    activity (#9640)
+  * Fix a regression that broke accept anyway shortcut in the paste
+    confirmation dialog (#9640)
+  * Fix kitty hanging on startup on Intel macs (#9643)
+  * X11: Fix a regression that caused some high res scroll devices to be
+    treated as line based scroll devices (#9649)
+  * Wayland: Fix momentum scrolling not working on compositors that send a
+    stop frame with no axis information (#9653)
+  * Linux: Fix regression that broke drag and drop from GTK
+    applications (#9656)
+  * macOS: Fix using Fn key for start dictation not working (#9661)
+  * Don’t use neighboring tab colors for tab bar margins in translucent
+    windows (#9663)
+  * macOS: Fix OS window focus not restored when switching spaces (#9665)
+
+-------------------------------------------------------------------
 Wed Mar 11 15:20:04 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.46.0:
