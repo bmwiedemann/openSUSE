@@ -17,7 +17,7 @@
 
 
 Name:           python-gitlabcis
-Version:        1.17.1
+Version:        1.18.0
 Release:        0
 Summary:        An automated tool that assesses the GitLab CIS benchmarks against a project
 License:        MIT
