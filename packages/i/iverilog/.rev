@@ -70,4 +70,16 @@
     <comment></comment>
     <requestid>1146378</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ebe337c0bf55b5dc05704d5d43f5ae09</srcmd5>
+    <version>13.0</version>
+    <time>1773770645</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 13.0
+  * This is the first release in the stable version 13 branch.
+  * See the documentation for release note and list of fixes and
+    improvements (usr/share/doc/packages/iverilog/release/v13-0-release-note.txt)
+- Use Sphinx to build documentation</comment>
+    <requestid>1339409</requestid>
+  </revision>
 </revisionlist>

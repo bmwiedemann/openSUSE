@@ -1,7 +1,7 @@
 #
 # spec file for package iverilog
 #
-# Copyright (c) 2020-2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,21 @@
 
 
 Name:           iverilog
-Version:        12.0
+Version:        13.0
 Release:        0
-%define major_ver 12
+%define major_ver 13
 Summary:        Simulation and synthesis tool for IEEE-1364
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Electronics
 URL:            https://steveicarus.github.io/iverilog/
-Source:         https://altushost-swe.dl.sourceforge.net/project/iverilog/iverilog/%{version}/verilog-%{version}.tar.gz
+Source:         https://altushost-swe.dl.sourceforge.net/project/iverilog/iverilog/%{version}/%{name}-%{major_ver}_0.tar.gz
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  gperf
 BuildRequires:  libbz2-devel
+BuildRequires:  python3-Sphinx
 BuildRequires:  readline-devel
 BuildRequires:  zlib-devel
 
@@ -48,30 +49,42 @@ Requires:       %{name} = %{version}
 This package contains necessary header files for Icarus Verilog
 
 %prep
-%setup -q -n verilog-%{version}
+%setup -q -n %{name}-%{major_ver}_0
 
 %build
 %configure
 %make_build
+
+#build docs
+cd Documentation
+make text
+cd ..
 
 %install
 %make_install
 rm %{buildroot}/%{_libdir}/*.a
 %fdupes -s %{buildroot}/%{_libdir}/ivl/
 
+#install docs
+mkdir -p %{buildroot}/%{_docdir}/%{name}
+cp -r Documentation/_build/text/* %{buildroot}/%{_docdir}/%{name}
+
 %check
 make check
 
 %files
 %license COPYING
-%doc README.md BUGS.txt QUICK_START.txt ieee1364-notes.txt
-%doc swift.txt netlist.txt t-dll.txt vpi.txt tgt-fpga/fpga.txt
-%doc cadpli/cadpli.txt xilinx-hint.txt examples
-%{_bindir}/*
-%{_libdir}/ivl/
-%{_mandir}/man1/*
+%doc README.md
+%doc examples
+%{_docdir}/%{name}/*
+%{_bindir}/iverilog
+%{_bindir}/iverilog-vpi
+%{_bindir}/vvp
+%{_libdir}/ivl
+%{_mandir}/man1/iverilog*
+%{_mandir}/man1/vvp*
 
 %files devel
-%{_includedir}/*
+%{_includedir}/iverilog
 
 %changelog
