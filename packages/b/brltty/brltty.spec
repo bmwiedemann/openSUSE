@@ -1,7 +1,7 @@
 #
 # spec file for package brltty
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 %global _lto_cflags %_lto_cflags -ffat-lto-objects
-%define api_version 0.8.7
+%define api_version 0.8.8
 %define sover 0_8
 %define soname libbrlapi%{sover}
 Name:           brltty
-Version:        6.8
+Version:        6.9
 Release:        0
 Summary:        Braille display driver for Linux/Unix
 License:        LGPL-2.1-or-later
@@ -33,6 +33,8 @@ Source1:        README.SUSE
 Source2:        %name.rpmlintrc
 Patch0:         brltty-udev-dir.patch
 Patch2:         brltty-reproducible-jar-mtime.patch
+# PATCH-FIX-UPSTREAM brltty-handytech-crash-fix.patch mgorse@suse.com -- fix crash with some HandyTech displays via USB.
+Patch3:         brltty-handytech-crash-fix.patch
 
 Requires(pre):  system-user-brltty = %version-%release
 
@@ -309,6 +311,7 @@ System user for the Braille display driver for Linux/Unix
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
 %patch -P 2 -p1
 %endif
+%patch -P 3 -p1
 
 %build
 %sysusers_generate_pre Autostart/Systemd/sysusers system-user-brltty %name.conf
@@ -429,15 +432,15 @@ rm -f %_localstatedir/adm/update-messages/%name-%version-%release-something
 %config(noreplace) %_sysconfdir/brltty.conf
 %_datadir/brltty/
 %_bindir/brltty
-%_bindir/brltty-clip
 %_bindir/brltty-atb
+%_bindir/brltty-clip
 %_bindir/brltty-cldr
+%_bindir/brltty-cmdref
 %_bindir/brltty-config.sh
 %_bindir/brltty-ctb
 %_bindir/brltty-genkey
 %_bindir/brltty-hid
 %_bindir/brltty-ktb
-%_bindir/brltty-lscmds
 %_bindir/brltty-lsinc
 %_bindir/brltty-mkuser
 %_bindir/brltty-morse
@@ -447,6 +450,7 @@ rm -f %_localstatedir/adm/update-messages/%name-%version-%release-something
 %_bindir/brltty-prologue.sh
 %_bindir/brltty-setcaps
 %_bindir/brltty-term
+%_bindir/brltty-tmux
 %_bindir/brltty-trtxt
 %_bindir/brltty-ttb
 %_bindir/brltty-ttysize
@@ -469,7 +473,6 @@ rm -f %_localstatedir/adm/update-messages/%name-%version-%release-something
 %_unitdir/%name-device@.service
 %_unitdir/%name@.service
 %exclude %_libdir/brltty/libbrlttybba.so
-%exclude %_libdir/brltty/libbrlttyblb.so
 %exclude %_libdir/brltty/libbrlttybxw.so
 %exclude %_libdir/brltty/libbrlttyses.so
 %exclude %_libdir/brltty/libbrlttyssd.so
