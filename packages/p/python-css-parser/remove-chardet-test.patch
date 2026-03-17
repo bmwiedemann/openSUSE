@@ -1,0 +1,43 @@
+From 1205f11bff3e10a6c88b764e9dbf193b7a228702 Mon Sep 17 00:00:00 2001
+From: Kovid Goyal <kovid@kovidgoyal.net>
+Date: Sun, 22 Feb 2026 16:41:38 +0530
+Subject: [PATCH] Skip chardet test for chardet >= 6
+
+Apparently they completely broke encoding detection in 6.0.0. Sigh.
+Thankfully I no longer use this chardet in calibre, so I dont really
+care to investigate why it is so broken and get it fixed.
+
+Fixes #14
+---
+ css_parser_tests/test_encutils.py | 24 ++++++++++--------------
+ 1 file changed, 10 insertions(+), 14 deletions(-)
+
+Index: css-parser-1.0.10/css_parser_tests/test_encutils.py
+===================================================================
+--- css-parser-1.0.10.orig/css_parser_tests/test_encutils.py
++++ css-parser-1.0.10/css_parser_tests/test_encutils.py
+@@ -190,24 +190,6 @@ class AutoEncodingTestCase(unittest.Test
+         for exp, test in tests:
+             self.assertEqual(exp, encutils.detectXMLEncoding(test, log=log))
+ 
+-    def test_tryEncodings(self):
+-        "encutils.tryEncodings"
+-        try:
+-            tests = [
+-                ('ascii', 'abc'.encode('ascii')),
+-                ('windows-1252', '€'.encode('windows-1252')),
+-                ('ascii', '1'.encode('utf-8'))
+-            ]
+-        except ImportError:
+-            tests = [
+-                ('ascii', 'abc'.encode('ascii')),
+-                ('windows-1252', '€'.encode('windows-1252')),
+-                ('iso-8859-1', 'äöüß'.encode('iso-8859-1')),
+-                ('iso-8859-1', 'äöüß'.encode('windows-1252')),
+-                # ('utf-8', u'\u1111'.encode('utf-8'))
+-            ]
+-        for exp, test in tests:
+-            self.assertEqual(exp.lower(), encutils.tryEncodings(test).lower())
+ 
+     def test_getEncodingInfo(self):
+         "encutils.getEncodingInfo"

@@ -85,4 +85,12 @@
     <comment></comment>
     <requestid>1280139</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>3339135ce39adc5ccf898d792ae753c2</srcmd5>
+    <version>1.0.10</version>
+    <time>1773770679</time>
+    <user>anag_factory</user>
+    <comment>- add remove-chardet-test.patch: remove chardet dependency</comment>
+    <requestid>1339451</requestid>
+  </revision>
 </revisionlist>

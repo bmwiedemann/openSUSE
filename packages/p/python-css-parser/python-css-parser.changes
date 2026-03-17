@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 16 23:17:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add remove-chardet-test.patch: remove chardet dependency
+
+-------------------------------------------------------------------
 Mon May 26 10:42:57 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
